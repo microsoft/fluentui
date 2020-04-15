@@ -18,7 +18,6 @@ import {
   isElementFocusSubZone,
   isElementFocusZone,
   isElementTabbable,
-  on,
   raiseClick,
   shouldWrapFocus,
   warnDeprecations,
@@ -64,9 +63,6 @@ const _allInstances: {
 } = {};
 const _outerZones: Set<FocusZone> = new Set();
 
-// Track the 1 global keydown listener we hook to window.
-let _disposeGlobalKeyDownListener: (() => void) | undefined;
-
 const ALLOWED_INPUT_TYPES = ['text', 'number', 'password', 'email', 'tel', 'url', 'search'];
 
 const ALLOW_VIRTUAL_ELEMENTS = false;
@@ -77,7 +73,6 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     direction: FocusZoneDirection.bidirectional,
   };
 
-  private _disposables: Function[] = [];
   private _root: React.RefObject<HTMLElement> = React.createRef();
   private _id: string;
 
@@ -103,6 +98,8 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
 
   /** Used to allow moving to next focusable element even when we're focusing on a input element when pressing tab */
   private _processingTabKey: boolean;
+
+  private _windowElement: Window | undefined;
 
   /** Used for testing purposes only. */
   public static getOuterZones(): number {
@@ -140,7 +137,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     _allInstances[this._id] = this;
 
     if (root) {
-      const windowElement = getWindow(root);
+      this._windowElement = getWindow(root);
       let parentElement = getParent(root, ALLOW_VIRTUAL_ELEMENTS);
 
       while (parentElement && parentElement !== this._getDocument().body && parentElement.nodeType === 1) {
@@ -154,12 +151,12 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
       if (!this._isInnerZone) {
         _outerZones.add(this);
 
-        if (windowElement && _outerZones.size === 1) {
-          _disposeGlobalKeyDownListener = on(windowElement, 'keydown', this._onKeyDownCapture, true);
+        if (this._windowElement && _outerZones.size === 1) {
+          this._windowElement.addEventListener('keydown', this._onKeyDownCapture, true);
         }
       }
 
-      this._disposables.push(on(root, 'blur', this._onBlur, true));
+      this._root.current && this._root.current.addEventListener('blur', this._onBlur, true);
 
       // Assign initial tab indexes so that we can set initial focus as appropriate.
       this._updateTabIndexes();
@@ -202,18 +199,17 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
       _outerZones.delete(this);
 
       // If this is the last outer zone, remove the keydown listener.
-      if (_outerZones.size === 0 && _disposeGlobalKeyDownListener) {
-        _disposeGlobalKeyDownListener();
-        // Clear reference so closure can be garbage-collected.
-        _disposeGlobalKeyDownListener = undefined;
+      if (this._windowElement && _outerZones.size === 0) {
+        this._windowElement.removeEventListener('keydown', this._onKeyDownCapture, true);
       }
     }
 
-    // Dispose all events.
-    this._disposables.forEach((d: () => void) => d());
+    if (this._root.current) {
+      this._root.current.removeEventListener('blur', this._onBlur, true);
+    }
 
-    // Clear function references so their closures can be garbage-collected.
-    delete this._disposables;
+    this._activeElement = null;
+    this._defaultFocusElement = null;
   }
 
   public render(): React.ReactNode {
