@@ -85,15 +85,12 @@ const carouselNavigationItemStyles: ComponentSlotStylesPrepared<
     const widthAdjust = p.indicator ? 26 : 0;
 
     return {
-      ...(!p.active && {
-        opacity: 0.4,
-      }),
       whiteSpace: 'normal',
       lineHeight: 1.5,
       marginTop: pxToRem(-4),
       marginBottom: pxToRem(-4),
       display: 'inline-block',
-      width: pxToRem(60),
+      ...(p.thumbnails && { width: pxToRem(60), ...(!p.active && { opacity: 0.4 }) }),
       ...(p.vertical && {
         width: 'max-content',
         minWidth: pxToRem(46 - widthAdjust),
