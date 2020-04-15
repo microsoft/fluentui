@@ -21,6 +21,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - `Attachment.slotClassNames` were removed @layershifter ([#12674](https://github.com/microsoft/fluentui/pull/12674))
 - Styles from `Attachment` slots were moved to exact components (`AttachmentAction`, `AttachmentHeader`, etc.) @layershifter ([#12674](https://github.com/microsoft/fluentui/pull/12674))
 - CSS Grid, `linear-gradient()`, `background-clip`, `cross-fade()` are not prefixed @layershifter ([#12289](https://github.com/microsoft/fluentui/pull/12289))
+- Support for deprecated `render` callback was removed @layershifter ([#12454](https://github.com/microsoft/fluentui/pull/12454))
 
 ### Features
 - Add `body` slot to `Attachment` component @layershifter ([#12674](https://github.com/microsoft/fluentui/pull/12674))
