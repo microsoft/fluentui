@@ -26,7 +26,7 @@ const styles = mergeStyleSets({
   ],
 });
 
-export const CalloutStatusExample: React.FunctionComponent = () => {
+export const StatusCalloutExample: React.FunctionComponent = () => {
   const [isCalloutVisible, { toggle: toggleIsCalloutVisible }] = useBoolean(false);
   return (
     <>
