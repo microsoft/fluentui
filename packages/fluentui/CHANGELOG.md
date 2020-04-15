@@ -20,6 +20,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ### BREAKING CHANGES
 - `Attachment.slotClassNames` were removed @layershifter ([#12674](https://github.com/microsoft/fluentui/pull/12674))
 - Styles from `Attachment` slots were moved to exact components (`AttachmentAction`, `AttachmentHeader`, etc.) @layershifter ([#12674](https://github.com/microsoft/fluentui/pull/12674))
+- renamed `ComponentName.className` to `ComponentName.deprecated_className` for all fluent components @mnajdova ([#12702](https://github.com/microsoft/fluentui/pull/12702))
 
 ### Features
 - Add `body` slot to `Attachment` component @layershifter ([#12674](https://github.com/microsoft/fluentui/pull/12674))

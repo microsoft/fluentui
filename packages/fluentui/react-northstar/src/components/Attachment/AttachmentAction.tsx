@@ -22,7 +22,10 @@ const AttachmentAction = compose<
 >(Button, {
   className: 'ui-attachment__action',
   displayName: 'AttachmentAction',
-}) as React.FC<AttachmentActionProps> & { create?: ShorthandFactory<AttachmentActionProps>; className: string };
+}) as React.FC<AttachmentActionProps> & {
+  create?: ShorthandFactory<AttachmentActionProps>;
+  deprecated_className: string;
+};
 
 AttachmentAction.defaultProps = {
   accessibility: buttonBehavior,

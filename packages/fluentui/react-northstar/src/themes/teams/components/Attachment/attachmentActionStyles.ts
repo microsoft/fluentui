@@ -15,7 +15,7 @@ const attachmentActionStyles: ComponentSlotStylesPrepared<AttachmentActionStyles
     });
 
     return {
-      [`& .${SvgIcon.className}`]: {
+      [`& .${SvgIcon.deprecated_className}`]: {
         color: v.textColor, // this breaks the color change on hover
       },
 

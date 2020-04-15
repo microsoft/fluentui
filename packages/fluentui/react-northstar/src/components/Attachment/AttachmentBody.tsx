@@ -19,7 +19,7 @@ const AttachmentBody = compose<AttachmentBodyOwnProps, AttachmentBodyStylesProps
     className: 'ui-attachment__body',
     displayName: 'AttachmentBody',
   },
-) as React.FC<AttachmentBodyProps> & { create?: ShorthandFactory<AttachmentBodyProps>; className: string };
+) as React.FC<AttachmentBodyProps> & { create?: ShorthandFactory<AttachmentBodyProps>; deprecated_className: string };
 
 AttachmentBody.propTypes = commonPropTypes.createCommon();
 
