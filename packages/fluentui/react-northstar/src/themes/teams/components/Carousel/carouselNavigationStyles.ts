@@ -21,7 +21,7 @@ const carouselNavigationStyles: ComponentSlotStylesPrepared<CarouselNavigationPr
       ...(!vertical &&
         thumbnails && {
           justifyContent: 'start',
-          transform: `translateX(${pxToRem(v.width / 2 - 40 - +p.activeIndex * 75)})`,
+          transform: `translateX(${pxToRem(v.width / 2 - v.thumbnailWidth / 2 - +p.activeIndex * v.thumbnailWidth)})`,
           transition: 'transform .5s ease',
         }),
       ...(iconOnly && { alignItems: 'center' }),

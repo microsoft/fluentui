@@ -49,6 +49,8 @@ export interface CarouselNavigationVariables {
   indicatorActiveBackgroundColor: string;
 
   borderWidth: string;
+
+  thumbnailWidth: number;
 }
 
 export default (siteVars: any): CarouselNavigationVariables => {
@@ -105,5 +107,7 @@ export default (siteVars: any): CarouselNavigationVariables => {
     indicatorActiveBackgroundColor: siteVars.colors.brand[600],
 
     borderWidth: pxToRem(1),
+
+    thumbnailWidth: 75,
   };
 };
