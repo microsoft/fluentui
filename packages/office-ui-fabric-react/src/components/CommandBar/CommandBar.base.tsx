@@ -1,5 +1,14 @@
 import * as React from 'react';
-import { css, nullRender } from '../../Utilities';
+import {
+  classNamesFunction,
+  css,
+  nullRender,
+  IComponentAs,
+  getNativeProps,
+  divProperties,
+  composeComponentAs,
+  initializeComponentRef,
+} from '../../Utilities';
 import {
   ICommandBar,
   ICommandBarItemProps,
@@ -10,17 +19,9 @@ import {
 import { IOverflowSet, OverflowSet } from '../../OverflowSet';
 import { IResizeGroup, ResizeGroup } from '../../ResizeGroup';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
-import { classNamesFunction } from '../../Utilities';
 import { CommandBarButton, IButtonProps } from '../../Button';
 import { TooltipHost } from '../../Tooltip';
-import {
-  IComponentAs,
-  getNativeProps,
-  divProperties,
-  composeComponentAs,
-  initializeComponentRef,
-} from '@uifabric/utilities';
-import { mergeStyles, IStyle } from '@uifabric/styling';
+import { getCommandButtonStyles } from './CommandBar.styles';
 
 const getClassNames = classNamesFunction<ICommandBarStyleProps, ICommandBarStyles>();
 
@@ -155,21 +156,11 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
 
     // tslint:disable-next-line:deprecation
     const itemText = item.text || item.name;
-    const rootStyles: IStyle = {
-      height: '100%',
-    };
-    const labelStyles: IStyle = {
-      whiteSpace: 'nowrap',
-    };
     const commandButtonProps: ICommandBarItemProps = {
       allowDisabledFocus: true,
       role: 'menuitem',
       ...item,
-      styles: {
-        ...item.buttonStyles,
-        root: item.buttonStyles ? mergeStyles(rootStyles, item.buttonStyles.root) : rootStyles,
-        label: item.buttonStyles ? mergeStyles(labelStyles, item.buttonStyles.label) : labelStyles,
-      },
+      styles: getCommandButtonStyles(item.buttonStyles),
       className: css('ms-CommandBarItem-link', item.className),
       text: !item.iconOnly ? itemText : undefined,
       menuProps: item.subMenuProps,

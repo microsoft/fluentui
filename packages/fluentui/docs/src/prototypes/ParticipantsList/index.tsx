@@ -1,5 +1,6 @@
 import React from 'react';
-import { List, Avatar, Flex, Text, MenuButton, Icon } from '@fluentui/react-northstar';
+import { List, Avatar, Flex, Text, MenuButton } from '@fluentui/react-northstar';
+import { MoreIcon } from '@fluentui/react-icons-northstar';
 import { PrototypeSection, ComponentPrototype } from '../Prototypes';
 
 const menu = ['Open', 'Remove from list'];
@@ -9,7 +10,7 @@ const ActiveBarItem = props => (
     <Avatar name={props.name} size="largest" />
     <Flex gap="gap.small">
       <Text content={props.name} />
-      <MenuButton trigger={<Icon name="more" />} menu={menu} />
+      <MenuButton trigger={<MoreIcon />} menu={menu} />
     </Flex>
   </Flex>
 );

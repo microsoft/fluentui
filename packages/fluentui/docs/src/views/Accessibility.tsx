@@ -162,7 +162,7 @@ export default () => (
     <CodeSnippet
       value={`
         <Button aria-label='Download file'>
-          <Icon name='download' />
+          <DownloadIcon />
         </Button>
       `}
     />
@@ -190,7 +190,7 @@ export default () => (
     <CodeSnippet
       value={`
         <Button as={"div"} aria-label='Download file'>
-          <Icon name='download' />
+          <DownloadIcon />
         </Button>
       `}
     />

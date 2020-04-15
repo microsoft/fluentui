@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Button, Input, Slider, Flex } from '@fluentui/react-northstar';
 import { useBooleanKnob } from '@fluentui/docs-components';
+import { MicIcon, MicOffIcon } from '@fluentui/react-icons-northstar';
 
 interface SliderAction {
   type: 'toggle_mute' | 'change_value';
@@ -51,7 +52,7 @@ const SliderExampleActionShorthand = () => {
       <Button
         text
         iconOnly
-        icon={state.mute ? 'mic-off' : 'mic'}
+        icon={state.mute ? <MicOffIcon /> : <MicIcon />}
         onClick={() => dispatch({ type: 'toggle_mute' })}
         title="Toggle mute"
       />

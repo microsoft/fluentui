@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Toolbar, Input, Button, Form } from '@fluentui/react-northstar';
+import { HighlightIcon, FontColorIcon, SearchIcon } from '@fluentui/react-icons-northstar';
 
 const HighlightPopup = ({ onConfirm }) => {
   return (
@@ -34,8 +35,8 @@ const ToolbarExamplePopupShorthand = () => {
       aria-label="Toolbar can contain a popup"
       items={[
         {
+          icon: <HighlightIcon {...{ outline: true }} />,
           key: 'highlight',
-          icon: { name: 'highlight', outline: true },
           active: highlightOpen,
           title: 'Highlight',
           popup: {
@@ -53,12 +54,12 @@ const ToolbarExamplePopupShorthand = () => {
           },
         },
         {
+          icon: <FontColorIcon {...{ outline: true }} />,
           key: 'font-color',
-          icon: { name: 'font-color', outline: true },
           active: fontColorActive,
           title: 'Font color',
           popup: {
-            content: <Input icon="search" placeholder="Search..." />,
+            content: <Input icon={<SearchIcon />} placeholder="Search..." />,
             onOpenChange: () => {
               setFontColorActive(!fontColorActive);
             },

@@ -13,6 +13,10 @@ import { AccordionTitleProps } from '../../components/Accordion/AccordionTitle';
 import { AlertProps } from '../../components/Alert/Alert';
 import { AnimationProps } from '../../components/Animation/Animation';
 import { AttachmentProps } from '../../components/Attachment/Attachment';
+import { AttachmentActionStylesProps } from '../../components/Attachment/AttachmentAction';
+import { AttachmentDescriptionStylesProps } from '../../components/Attachment/AttachmentDescription';
+import { AttachmentHeaderStylesProps } from '../../components/Attachment/AttachmentHeader';
+import { AttachmentIconStylesProps } from '../../components/Attachment/AttachmentIcon';
 import { AvatarStylesProps } from '../../components/Avatar/Avatar';
 import { BoxStylesProps } from '../../components/Box/Box';
 import { ButtonGroupProps } from '../../components/Button/ButtonGroup';
@@ -33,7 +37,6 @@ import { FormProps } from '../../components/Form/Form';
 import { GridProps } from '../../components/Grid/Grid';
 import { HeaderDescriptionProps } from '../../components/Header/HeaderDescription';
 import { HeaderProps } from '../../components/Header/Header';
-import { IconStylesProps } from '../../components/Icon/Icon';
 import { ImageStylesProps } from '../../components/Image/Image';
 import { InputProps } from '../../components/Input/Input';
 import { ItemLayoutProps } from '../../components/ItemLayout/ItemLayout';
@@ -44,7 +47,7 @@ import { ListItemStylesProps } from '../../components/List/ListItem';
 import { LoaderProps } from '../../components/Loader/Loader';
 import { MenuItemProps } from '../../components/Menu/MenuItem';
 import { MenuProps } from '../../components/Menu/Menu';
-import { PopupContentProps } from '../../components/Popup/PopupContent';
+import { PopupContentStylesProps } from '../../components/Popup/PopupContent';
 import { PortalProps } from '../../components/Portal/Portal';
 import { RadioGroupItemProps } from '../../components/RadioGroup/RadioGroupItem';
 import { RadioGroupProps } from '../../components/RadioGroup/RadioGroup';
@@ -63,7 +66,7 @@ import { ToolbarMenuRadioGroupStylesProps } from '../../components/Toolbar/Toolb
 import { ToolbarMenuStylesProps } from '../../components/Toolbar/ToolbarMenu';
 import { ToolbarProps } from '../../components/Toolbar/Toolbar';
 import { ToolbarRadioGroupProps } from '../../components/Toolbar/ToolbarRadioGroup';
-import { TooltipContentProps } from '../../components/Tooltip/TooltipContent';
+import { TooltipContentStylesProps } from '../../components/Tooltip/TooltipContent';
 import { HierarchicalTreeItemProps } from '../../components/HierarchicalTree/HierarchicalTreeItem';
 import { HierarchicalTreeProps } from '../../components/HierarchicalTree/HierarchicalTree';
 import { HierarchicalTreeTitleProps } from '../../components/HierarchicalTree/HierarchicalTreeTitle';
@@ -79,6 +82,7 @@ import { CardTopControlsStylesProps } from '../../components/Card/CardTopControl
 import { CardHeaderStylesProps } from '../../components/Card/CardHeader';
 import { CardBodyStylesProps } from '../../components/Card/CardBody';
 import { CardFooterStylesProps } from '../../components/Card/CardFooter';
+import { SvgIconStylesProps } from '../../components/SvgIcon/SvgIcon';
 
 export type TeamsThemeStylesProps = {
   Accordion: AccordionProps;
@@ -87,6 +91,10 @@ export type TeamsThemeStylesProps = {
   Alert: AlertProps;
   Animation: AnimationProps;
   Attachment: AttachmentProps;
+  AttachmentAction: AttachmentActionStylesProps;
+  AttachmentDescription: AttachmentDescriptionStylesProps;
+  AttachmentHeader: AttachmentHeaderStylesProps;
+  AttachmentIcon: AttachmentIconStylesProps;
   Avatar: AvatarStylesProps;
   Button: ButtonStylesProps;
   Box: BoxStylesProps;
@@ -107,7 +115,7 @@ export type TeamsThemeStylesProps = {
   Grid: GridProps;
   Header: HeaderProps;
   HeaderDescription: HeaderDescriptionProps;
-  Icon: IconStylesProps;
+  SvgIcon: SvgIconStylesProps;
   Image: ImageStylesProps;
   Input: InputProps;
   ItemLayout: ItemLayoutProps;
@@ -119,7 +127,7 @@ export type TeamsThemeStylesProps = {
   Menu: MenuProps;
   MenuItem: MenuItemProps;
   Portal: PortalProps;
-  PopupContent: PopupContentProps;
+  PopupContent: PopupContentStylesProps;
   RadioGroup: RadioGroupProps;
   RadioGroupItem: RadioGroupItemProps;
   Reaction: ReactionProps;
@@ -136,7 +144,7 @@ export type TeamsThemeStylesProps = {
   ToolbarMenuItem: ToolbarMenuItemStylesProps;
   ToolbarMenuDivider: ToolbarMenuDividerStylesProps;
   ToolbarMenuRadioGroup: ToolbarMenuRadioGroupStylesProps;
-  TooltipContent: TooltipContentProps;
+  TooltipContent: TooltipContentStylesProps;
   Text: TextStylesProps;
   TreeItem: TreeItemStylesProps;
   TreeTitle: TreeTitleStylesProps;

@@ -81,7 +81,10 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox,
   onChange?: (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number, value?: string) => void;
 
   /**
-   * Callback issued when the user changes the pending value in ComboBox
+   * Callback issued when the user changes the pending value in ComboBox.
+   * This will be called any time the component is updated and there is a current
+   * pending value. Option, index, and value will all be undefined if no change
+   * has taken place and the previously entered pending value is still valid.
    */
   onPendingValueChanged?: (option?: IComboBoxOption, index?: number, value?: string) => void;
 

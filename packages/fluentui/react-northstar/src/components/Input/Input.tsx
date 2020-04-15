@@ -17,11 +17,11 @@ import {
 } from '../../utils';
 import { SupportedIntrinsicInputProps } from '../../utils/htmlPropsUtils';
 import { WithAsProp, ShorthandValue, ComponentEventHandler, withSafeTypeForAs } from '../../types';
-import Icon, { IconProps } from '../Icon/Icon';
 import Box, { BoxProps } from '../Box/Box';
 
 export interface InputSlotClassNames {
   input: string;
+  icon: string;
 }
 
 export interface InputProps extends UIComponentProps, ChildrenComponentProps, SupportedIntrinsicInputProps {
@@ -43,7 +43,7 @@ export interface InputProps extends UIComponentProps, ChildrenComponentProps, Su
   fluid?: boolean;
 
   /** Optional Icon to display inside the Input. */
-  icon?: ShorthandValue<IconProps>;
+  icon?: ShorthandValue<BoxProps>;
 
   /** An Input with icon can format the icon to appear at the start or at the end of the input field. */
   iconPosition?: 'start' | 'end';
@@ -100,7 +100,7 @@ class Input extends AutoControlledComponent<WithAsProp<InputProps>, InputState> 
     defaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     disabled: PropTypes.bool,
     fluid: PropTypes.bool,
-    icon: customPropTypes.itemShorthandWithoutJSX,
+    icon: customPropTypes.shorthandAllowingChildren,
     iconPosition: PropTypes.oneOf(['start', 'end']),
     input: customPropTypes.itemShorthand,
     inputRef: customPropTypes.ref,
@@ -170,10 +170,10 @@ class Input extends AutoControlledComponent<WithAsProp<InputProps>, InputState> 
                 }),
               })}
             </Ref>
-            {Icon.create(this.computeIcon(), {
+            {Box.create(this.computeIcon(), {
               defaultProps: () => ({
+                className: Input.slotClassNames.icon,
                 styles: styles.icon,
-                variables: variables.icon,
               }),
               overrideProps: this.handleIconOverrides,
             })}
@@ -218,12 +218,12 @@ class Input extends AutoControlledComponent<WithAsProp<InputProps>, InputState> 
     }
   };
 
-  computeIcon = (): ShorthandValue<IconProps> => {
+  computeIcon = (): ShorthandValue<BoxProps> => {
     const { clearable, icon } = this.props;
     const { value } = this.state;
 
     if (clearable && (value as string).length !== 0) {
-      return { name: '' };
+      return {};
     }
 
     return icon || null;
@@ -232,6 +232,7 @@ class Input extends AutoControlledComponent<WithAsProp<InputProps>, InputState> 
 
 Input.slotClassNames = {
   input: `${Input.className}__input`,
+  icon: `${Input.className}__icon`,
 };
 
 /**

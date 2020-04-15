@@ -21,7 +21,6 @@ exports[`Fabric renders a Fabric component correctly 1`] = `
       & textarea {
         font-family: inherit;
       }
-  dir="ltr"
 >
   test
 </div>
@@ -3034,7 +3033,6 @@ exports[`Fabric renders a Fabric component with applyTheme correctly 1`] = `
       & textarea {
         font-family: inherit;
       }
-  dir="ltr"
 >
   test
 </div>
@@ -3061,6 +3059,5 @@ exports[`Fabric renders as a span using the "as" prop 1`] = `
       & textarea {
         font-family: inherit;
       }
-  dir="ltr"
 />
 `;

@@ -1,7 +1,76 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 25 Mar 2020 12:30:04 GMT and should not be manually modified.
+This log was last generated on Thu, 09 Apr 2020 12:24:31 GMT and should not be manually modified.
 
+## 7.106.0
+Thu, 09 Apr 2020 12:24:31 GMT
+
+### Minor changes
+
+- Support List overrides for rendering root and surface elements (tmichon@microsoft.com)
+- ColorPicker: Add support for selecting transparency instead of alpha (elcraig@microsoft.com)
+### Patches
+
+- Combobox: Fix getActiveDescendantValue would sometimes return -listundefined. (joschect@microsoft.com)
+- DetailsList: add missing aria-label to example (joschect@microsoft.com)
+## 7.105.12
+Wed, 08 Apr 2020 12:28:27 GMT
+
+### Patches
+
+- Fabric: cleanup dir logic, don't add 'dir' unless different from context (mgodbolt@microsoft.com)
+- CommandBar: prevent command button style mutation if possible (xgao@microsoft.com)
+- fix: fix typings for asAsync & internal usages of React.Children.map (olfedias@microsoft.com)
+## 7.105.11
+Tue, 07 Apr 2020 12:35:07 GMT
+
+### Patches
+
+- GroupedList: Only invoke range selection on header click when in multiple selection mode (KevinTCoughlin@users.noreply.github.com)
+- Updated search box and divider examples to functional components (czearing@outlook.com)
+## 7.105.10
+Mon, 06 Apr 2020 12:27:21 GMT
+
+### Patches
+
+- Updated search box and divider examples to functional components (czearing@outlook.com)
+- Updating Image and Persona examples to use function components. (czearing@outlook.com)
+## 7.105.9
+Fri, 03 Apr 2020 12:27:13 GMT
+
+### Patches
+
+- ChoiceGroup: fix bad cache key for getClassNames (xgao@microsoft.com)
+- Update Layer and Modal examples to use functional components (elcraig@microsoft.com)
+## 7.105.8
+Thu, 02 Apr 2020 12:30:40 GMT
+
+### Patches
+
+- ComboBox: borderColor should be applied properly in the case of error (aneeshak@microsoft.com)
+- Button: Add an example of an IconButton that has a Tooltip. (aneeshak@microsoft.com)
+- Pivot: fixing comment typo. (czearing@outlook.com)
+## 7.105.7
+Wed, 01 Apr 2020 12:29:21 GMT
+
+### Patches
+
+- Panel: closeButton should stick to the right even if header is removed (aneeshak@microsoft.com)
+- Combobox: Update docs to make onPendingValueChanged more clear (joschect@microsoft.com)
+- ComboBox: onResolveOptions and onPointerDown callbacks should not hit when disabled. (aneeshak@microsoft.com)
+## 7.105.6
+Tue, 31 Mar 2020 12:27:26 GMT
+
+### Patches
+
+- DetailsList: Fixes following issues with Groups: 1) Add draggable attribute if required 2) Call onDragEnter and onDragLeave with right parameters 3) Use the css class returned by onDragEnter (sachinma@microsoft.com)
+- update website banner and remove reference to fabric in context menu docs (mgodbolt@microsoft.com)
+## 7.105.5
+Mon, 30 Mar 2020 19:10:08 GMT
+
+### Patches
+
+- Dialog/Panel: Change heading from 2 to 1 (joschect@microsoft.com)
 ## 7.105.3
 Wed, 25 Mar 2020 12:30:04 GMT
 

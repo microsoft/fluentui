@@ -1,5 +1,6 @@
 import { Button, Flex, Image, Text, Card, Checkbox } from '@fluentui/react-northstar';
 import * as React from 'react';
+import { LikeIcon } from '@fluentui/react-icons-northstar';
 
 const CardExampleWithPreview = () => (
   <Card compact>
@@ -19,7 +20,7 @@ const CardExampleWithPreview = () => (
         <Button content="View album" text primary />
         <Flex vAlign="center">
           <Text content="2.4k likes" />
-          <Button icon="like" iconOnly text title="More" />
+          <Button icon={<LikeIcon />} iconOnly text title="More" />
         </Flex>
       </Flex>
     </Card.Footer>

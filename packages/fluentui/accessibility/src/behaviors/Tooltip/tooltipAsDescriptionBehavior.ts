@@ -52,4 +52,6 @@ export type TooltipBehaviorProps = {
   open: boolean;
   /** Tooltip's container id. */
   contentId: string;
+  /** aria-label from trigger shorthand. */
+  triggerAriaLabel: string;
 } & Pick<AccessibilityAttributes, 'aria-label' | 'aria-labelledby' | 'aria-describedby'>;

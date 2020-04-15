@@ -3,7 +3,7 @@ import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import * as _ from 'lodash';
-
+import { ALIGNMENTS, POSITIONS } from '../../utils/positioner';
 import { WithAsProp, withSafeTypeForAs, ComponentEventHandler, ShorthandValue, ShorthandCollection } from '../../types';
 import {
   UIComponentProps,
@@ -16,18 +16,20 @@ import {
   ShorthandFactory,
   SizeValue,
 } from '../../utils';
+import SplitButtonToggle, { SplitButtonToggleProps } from './SplitButtonToggle';
 import Button, { ButtonProps } from '../Button/Button';
 import MenuButton, { MenuButtonProps } from '../MenuButton/MenuButton';
 import { MenuProps } from '../Menu/Menu';
 import { MenuItemProps } from '../Menu/MenuItem';
 import { PopupProps } from '../Popup/Popup';
+import { Ref } from '@fluentui/react-component-ref';
+import { PositioningProps } from '../../utils/positioner/types';
 
-export interface SplitButtonSlotClassNames {
-  toggleButton: string;
-  size?: SizeValue;
-}
-
-export interface SplitButtonProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
+export interface SplitButtonProps
+  extends UIComponentProps,
+    ChildrenComponentProps,
+    ContentComponentProps,
+    PositioningProps {
   /**
    * Accessibility behavior if overridden by the user.
    */
@@ -81,7 +83,7 @@ export interface SplitButtonProps extends UIComponentProps, ChildrenComponentPro
   size?: SizeValue;
 
   /** Shorthand for the toggle button. */
-  toggleButton?: ShorthandValue<ButtonProps>;
+  toggleButton?: ShorthandValue<SplitButtonToggleProps>;
 }
 
 export interface SplitButtonState {
@@ -94,11 +96,9 @@ class SplitButton extends AutoControlledComponent<WithAsProp<SplitButtonProps>, 
 
   static displayName = 'SplitButton';
 
-  static className = 'ui-splitbutton';
+  static Toggle = SplitButtonToggle;
 
-  static slotClassNames: SplitButtonSlotClassNames = {
-    toggleButton: `${SplitButton.className}__toggleButton`,
-  };
+  static className = 'ui-splitbutton';
 
   static propTypes = {
     ...commonPropTypes.createCommon({
@@ -118,15 +118,31 @@ class SplitButton extends AutoControlledComponent<WithAsProp<SplitButtonProps>, 
     primary: customPropTypes.every([customPropTypes.disallow(['secondary']), PropTypes.bool]),
     secondary: customPropTypes.every([customPropTypes.disallow(['primary']), PropTypes.bool]),
     toggleButton: customPropTypes.itemShorthand,
+    position: PropTypes.oneOf(POSITIONS),
+    align: PropTypes.oneOf(ALIGNMENTS),
+    flipBoundary: PropTypes.oneOfType([
+      PropTypes.object as PropTypes.Requireable<Element>,
+      PropTypes.oneOf<'scrollParent' | 'window' | 'viewport'>(['scrollParent', 'window', 'viewport']),
+    ]),
+    overflowBoundary: PropTypes.oneOfType([
+      PropTypes.object as PropTypes.Requireable<Element>,
+      PropTypes.oneOf<'scrollParent' | 'window' | 'viewport'>(['scrollParent', 'window', 'viewport']),
+    ]),
+    positionFixed: PropTypes.bool,
+    offset: PropTypes.string,
+    unstable_pinned: PropTypes.bool,
   };
 
   static defaultProps = {
     accessibility: splitButtonBehavior,
-    as: 'div',
     toggleButton: {},
+    position: 'below',
+    align: 'start',
   };
 
   static autoControlledProps = ['open'];
+
+  targetRef = React.createRef<HTMLDivElement>();
 
   getInitialAutoControlledState(): SplitButtonState {
     return {
@@ -168,7 +184,22 @@ class SplitButton extends AutoControlledComponent<WithAsProp<SplitButtonProps>, 
     styles,
     unhandledProps,
   }: RenderResultConfig<MenuButtonProps>): React.ReactNode {
-    const { button, disabled, menu, primary, secondary, toggleButton } = this.props;
+    const {
+      button,
+      disabled,
+      menu,
+      primary,
+      secondary,
+      toggleButton,
+      size,
+      position,
+      align,
+      flipBoundary,
+      overflowBoundary,
+      positionFixed,
+      offset,
+      unstable_pinned,
+    } = this.props;
     const trigger = Button.create(button, {
       defaultProps: () => ({
         styles: styles.menuButton,
@@ -180,45 +211,53 @@ class SplitButton extends AutoControlledComponent<WithAsProp<SplitButtonProps>, 
     });
 
     return (
-      <ElementType className={classes.root} {...accessibility.attributes.root} {...unhandledProps}>
-        {MenuButton.create(
-          {},
-          {
-            defaultProps: () => ({
-              accessibility: accessibility.childBehaviors ? accessibility.childBehaviors.menuButton : undefined,
-              menu,
-              // Opening is handled manually.
-              on: [],
-              open: this.state.open,
-              trigger,
-            }),
-            overrideProps: this.handleMenuButtonOverrides,
-          },
-        )}
-        {Button.create(toggleButton, {
-          defaultProps: () => ({
-            styles: styles.toggleButton,
-            className: SplitButton.slotClassNames.toggleButton,
-            disabled,
-            icon: 'icon-menu-arrow-down',
-            iconOnly: true,
-            primary,
-            secondary,
-            ...accessibility.attributes.toggleButton,
-          }),
-          overrideProps: (predefinedProps: ButtonProps) => ({
-            onClick: (e: React.SyntheticEvent, buttonProps: ButtonProps) => {
-              _.invoke(predefinedProps, 'onClick', e, buttonProps);
-
-              this.setState(state => {
-                const open = !state.open;
-                _.invoke(this.props, 'onOpenChange', e, { ...this.props, open });
-                return { open };
-              });
+      <Ref innerRef={this.targetRef}>
+        <ElementType className={classes.root} {...accessibility.attributes.root} {...unhandledProps}>
+          {MenuButton.create(
+            {},
+            {
+              defaultProps: () => ({
+                accessibility: accessibility.childBehaviors ? accessibility.childBehaviors.menuButton : undefined,
+                menu,
+                // Opening is handled manually.
+                on: [],
+                open: this.state.open,
+                trigger,
+                target: this.targetRef.current,
+                position,
+                align,
+                flipBoundary,
+                overflowBoundary,
+                positionFixed,
+                offset,
+                unstable_pinned,
+              }),
+              overrideProps: this.handleMenuButtonOverrides,
             },
-          }),
-        })}
-      </ElementType>
+          )}
+
+          {SplitButtonToggle.create(toggleButton, {
+            defaultProps: () => ({
+              disabled,
+              primary,
+              secondary,
+              size,
+              ...accessibility.attributes.toggleButton,
+            }),
+            overrideProps: (predefinedProps: ButtonProps) => ({
+              onClick: (e: React.SyntheticEvent, buttonProps: ButtonProps) => {
+                _.invoke(predefinedProps, 'onClick', e, buttonProps);
+
+                this.setState(state => {
+                  const open = !state.open;
+                  _.invoke(this.props, 'onOpenChange', e, { ...this.props, open });
+                  return { open };
+                });
+              },
+            }),
+          })}
+        </ElementType>
+      </Ref>
     );
   }
 }

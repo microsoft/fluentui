@@ -297,6 +297,20 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
   }
 
   /**
+   * Sets focus to the last tabbable item in the zone.
+   * @returns True if focus could be set to an active element, false if no operation was taken.
+   */
+  public focusLast(): boolean {
+    if (this._root.current) {
+      const lastChild = this._root.current && (this._root.current.lastChild as HTMLElement | null);
+
+      return this.focusElement(getPreviousElement(this._root.current, lastChild, true, true, true) as HTMLElement);
+    }
+
+    return false;
+  }
+
+  /**
    * Sets focus to a specific child element within the zone. This can be used in conjunction with
    * onBeforeFocus to created delayed focus scenarios (like animate the scroll position to the correct
    * location and then focus.)
@@ -418,14 +432,12 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
           root.setAttribute('tabindex', '-1');
         }
         root.focus();
-      } else {
-        if (!this.props.allowFocusRoot) {
-          if (this._parkedTabIndex) {
-            root.setAttribute('tabindex', this._parkedTabIndex);
-            this._parkedTabIndex = undefined;
-          } else {
-            root.removeAttribute('tabindex');
-          }
+      } else if (!this.props.allowFocusRoot) {
+        if (this._parkedTabIndex) {
+          root.setAttribute('tabindex', this._parkedTabIndex);
+          this._parkedTabIndex = undefined;
+        } else {
+          root.removeAttribute('tabindex');
         }
       }
     }
