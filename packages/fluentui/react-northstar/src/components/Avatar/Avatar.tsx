@@ -79,7 +79,7 @@ const Avatar: React.FC<WithAsProp<AvatarProps>> & FluentComponentStaticProps<Ava
     rtl: context.rtl,
   });
   const { classes, styles: resolvedStyles } = useStyles(Avatar.displayName, {
-    className: Avatar.deprecated_className,
+    className: avatarClassName,
     mapPropsToStyles: () => ({ size, square }),
     mapPropsToInlineStyles: () => ({
       className,
