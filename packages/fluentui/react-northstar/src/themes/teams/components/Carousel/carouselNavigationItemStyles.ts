@@ -50,7 +50,8 @@ const carouselNavigationItemStyles: ComponentSlotStylesPrepared<
       // focus styles
       ':focus-visible': {
         ...(iconOnly && {
-          borderRadius: thumbnails ? '0' : '50%',
+          borderRadius: '50%',
+          ...(thumbnails && {borderRadius:'0'}) ,
           borderColor: v.iconOnlyColorActive,
           ...getIconFillOrOutlineStyles({ outline: false }),
         }),
