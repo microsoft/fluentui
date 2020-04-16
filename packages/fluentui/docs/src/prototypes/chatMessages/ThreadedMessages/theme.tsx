@@ -1,11 +1,11 @@
-import { ThemeInput, ChatItem, Input, SvgIcon, Button, pxToRem } from '@fluentui/react-northstar';
+import { ThemeInput, chatItemSlotClassNames, Input, SvgIcon, Button, pxToRem } from '@fluentui/react-northstar';
 import classNames from './classNames';
 
 const customizedTheme: ThemeInput = {
   componentStyles: {
     ChatItem: {
       root: ({ props: p, theme: { siteVariables } }) => ({
-        [`& .${ChatItem.slotClassNames.message}`]: {
+        [`& .${chatItemSlotClassNames.message}`]: {
           width: '100%',
         },
         [`&.${classNames.threadReplies.chatItem}`]: {

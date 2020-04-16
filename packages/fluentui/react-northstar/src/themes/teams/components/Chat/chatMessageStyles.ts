@@ -1,6 +1,6 @@
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import * as _ from 'lodash';
-import { default as ChatMessage, ChatMessageStylesProps } from '../../../../components/Chat/ChatMessage';
+import { ChatMessageStylesProps, chatMessageSlotClassNames } from '../../../../components/Chat/ChatMessage';
 import { ChatMessageVariables } from './chatMessageVariables';
 import { screenReaderContainerStyles } from '../../../../utils/accessibility/Styles/accessibilityStyles';
 import { pxToRem } from '../../../../utils';
@@ -52,7 +52,7 @@ const chatMessageStyles: ComponentSlotStylesPrepared<ChatMessageStylesProps, Cha
     // Otherwise, if the variable is not provided, the default appearance logic will be used for actions menu.
     ...(_.isNil(v.showActionMenu) && {
       ':hover': {
-        [`> .${ChatMessage.slotClassNames.actionMenu}`]: {
+        [`> .${chatMessageSlotClassNames.actionMenu}`]: {
           opacity: 1,
           width: 'auto',
 
