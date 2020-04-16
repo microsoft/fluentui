@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Initial publish.",
+  "packageName": "@fluentui/react-icons",
+  "email": "dzearing@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-04-16T04:40:36.272Z"
+}
