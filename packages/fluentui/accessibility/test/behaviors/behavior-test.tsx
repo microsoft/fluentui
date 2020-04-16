@@ -83,7 +83,7 @@ import {
   gridCellWithFocusableElementBehavior,
   cardBehavior,
   cardFocusableBehavior,
-  cardMultipleFocusableBehavior,
+  cardChildrenFocusableBehavior,
 } from '@fluentui/accessibility';
 import { TestHelper } from './testHelper';
 import definitions from './testDefinitions';
@@ -171,6 +171,6 @@ testHelper.addBehavior('gridCellMultipleFocusableBehavior', gridCellMultipleFocu
 testHelper.addBehavior('gridCellWithFocusableElementBehavior', gridCellWithFocusableElementBehavior);
 testHelper.addBehavior('cardBehavior', cardBehavior);
 testHelper.addBehavior('cardFocusableBehavior', cardFocusableBehavior);
-testHelper.addBehavior('cardMultipleFocusableBehavior', cardMultipleFocusableBehavior);
+testHelper.addBehavior('cardChildrenFocusableBehavior', cardChildrenFocusableBehavior);
 
 testHelper.run(behaviorMenuItems);

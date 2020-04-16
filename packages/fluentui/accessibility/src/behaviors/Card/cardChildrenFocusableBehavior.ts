@@ -1,6 +1,7 @@
 import { Accessibility } from '../../types';
 import { CardBehaviorProps } from './cardBehavior';
-import { IS_FOCUSABLE_ATTRIBUTE, FocusZoneDirection } from '../..';
+import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
+import { FocusZoneDirection } from '../../focusZone/types';
 import * as keyboardKey from 'keyboard-key';
 
 /**
@@ -14,7 +15,7 @@ import * as keyboardKey from 'keyboard-key';
  * Provides arrow key navigation in bidirectional direction.
  * Triggers 'focusCard' action with 'Escape' on 'root'.
  */
-const cardMultipleFocusableBehavior: Accessibility<CardBehaviorProps> = props => ({
+const cardChildrenFocusableBehavior: Accessibility<CardBehaviorProps> = props => ({
   attributes: {
     root: {
       role: 'group',
@@ -37,4 +38,4 @@ const cardMultipleFocusableBehavior: Accessibility<CardBehaviorProps> = props =>
   },
 });
 
-export default cardMultipleFocusableBehavior;
+export default cardChildrenFocusableBehavior;

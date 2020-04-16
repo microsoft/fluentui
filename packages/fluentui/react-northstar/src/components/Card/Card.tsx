@@ -166,7 +166,7 @@ Card.create = createShorthandFactory({ Component: Card });
  * * @accessibility
  * By default adds `group` role ([more information available in aria documentation](https://www.w3.org/TR/wai-aria-1.1/#group)), thus it's necessary to provide `aria-roledescription` for correct widget description. [More information available in aria documentation.](https://www.w3.org/TR/wai-aria-1.1/#aria-roledescription-property)
  * When card is actionable (i.e. has `onClick` property), use [cardFocusableBehavior](/components/card/accessibility#card-focusable). [More information available in aria documentation.](https://www.w3.org/TR/wai-aria-practices/#gridNav_focus)
- * When card contains multiple actionable elements, use [cardMultipleFocusableBehavior](/components/card/accessibility#card-multiple-focusable).
+ * When card contains actionable elements, use [cardChildrenFocusableBehavior](/components/card/accessibility#card-children-focusable).
  *
  */
 export default withSafeTypeForAs<typeof Card, CardProps, 'div'>(Card);

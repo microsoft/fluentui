@@ -107,4 +107,4 @@ export { default as gridCellWithFocusableElementBehavior } from './Table/gridCel
 export { default as cardBehavior } from './Card/cardBehavior';
 export * from './Card/cardBehavior';
 export { default as cardFocusableBehavior } from './Card/cardFocusableBehavior';
-export { default as cardMultipleFocusableBehavior } from './Card/cardMultipleFocusableBehavior';
+export { default as cardChildrenFocusableBehavior } from './Card/cardChildrenFocusableBehavior';
