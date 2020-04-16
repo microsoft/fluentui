@@ -75,6 +75,7 @@ export interface TreeTitleProps extends UIComponentProps, ChildrenComponentProps
 }
 
 export type TreeTitleStylesProps = Pick<TreeTitleProps, 'selected' | 'selectable' | 'disabled' | 'selectableParent'>;
+export const treeTitleClassName = 'ui-tree__title';
 
 const TreeTitle: React.FC<WithAsProp<TreeTitleProps>> &
   FluentComponentStaticProps<TreeTitleProps> & { slotClassNames: TreeTitleSlotClassNames } = props => {
@@ -177,7 +178,7 @@ const TreeTitle: React.FC<WithAsProp<TreeTitleProps>> &
   return element;
 };
 
-TreeTitle.deprecated_className = 'ui-tree__title';
+TreeTitle.deprecated_className = treeTitleClassName;
 TreeTitle.displayName = 'TreeTitle';
 
 TreeTitle.slotClassNames = {

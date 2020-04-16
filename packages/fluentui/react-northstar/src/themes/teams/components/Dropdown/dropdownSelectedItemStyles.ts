@@ -1,6 +1,6 @@
 import {
-  default as DropDownSelectedItem,
   DropdownSelectedItemProps,
+  dropdownSelectedItemSlotClassNames,
 } from '../../../../components/Dropdown/DropdownSelectedItem';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { DropdownVariables } from './dropdownVariables';
@@ -31,7 +31,7 @@ const dropdownSelectedItemStyles: ComponentSlotStylesPrepared<DropdownSelectedIt
       ':hover': {
         color: v.selectedItemColorHover,
         backgroundColor: v.selectedItemBackgroundColorHover,
-        [`& .${DropDownSelectedItem.slotClassNames.icon}`]: {
+        [`& .${dropdownSelectedItemSlotClassNames.icon}`]: {
           color: v.selectedItemIconColorHover,
         },
       },

@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import Tooltip from 'src/components/Tooltip/Tooltip';
+import { tooltipContentClassName } from 'src/components/Tooltip/TooltipContent';
 import Button, { buttonClassName } from 'src/components/Button/Button';
 
 import { mountWithProvider, findIntrinsicElement } from '../../../utils';
@@ -25,14 +26,14 @@ describe('Tooltip', () => {
       const contentId = 'element-id';
 
       const wrapper = mountWithProvider(<Tooltip defaultOpen trigger={<Button />} content={{ id: contentId }} />);
-      const content = findIntrinsicElement(wrapper, `.${Tooltip.slotClassNames.content}`);
+      const content = findIntrinsicElement(wrapper, `.${tooltipContentClassName}`);
 
       expect(content.prop('id')).toBe(contentId);
     });
 
     it('uses computed "id" if "content" is passed without "id"', () => {
       const wrapper = mountWithProvider(<Tooltip defaultOpen trigger={<Button />} content="Welcome" />);
-      const content = findIntrinsicElement(wrapper, `.${Tooltip.slotClassNames.content}`);
+      const content = findIntrinsicElement(wrapper, `.${tooltipContentClassName}`);
 
       expect(content.prop('id')).toMatch(/tooltip-content-\d+/);
     });
