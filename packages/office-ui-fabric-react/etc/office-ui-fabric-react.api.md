@@ -6245,9 +6245,9 @@ export interface IPivotItemProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 // @public (undocumented)
-export interface IPivotProps extends React.ClassAttributes<PivotBase>, React.HTMLAttributes<HTMLDivElement> {
+export interface IPivotProps extends React.HTMLAttributes<HTMLDivElement> {
     className?: string;
-    componentRef?: IRefObject<IPivot>;
+    componentRef?: React.RefObject<IPivot>;
     defaultSelectedIndex?: number;
     defaultSelectedKey?: string;
     getTabId?: (itemKey: string, index: number) => string;
@@ -8544,13 +8544,8 @@ export namespace personaSize {
 // @public
 export const Pivot: React.FunctionComponent<IPivotProps>;
 
-// @public
-export class PivotBase extends React.Component<IPivotProps, IPivotState> {
-    constructor(props: IPivotProps);
-    focus(): void;
-    // (undocumented)
-    render(): JSX.Element;
-    }
+// @public (undocumented)
+export const PivotBase: React.FunctionComponent<IPivotProps>;
 
 // @public (undocumented)
 export class PivotItem extends React.Component<IPivotItemProps, {}> {

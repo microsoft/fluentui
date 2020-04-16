@@ -1,25 +1,16 @@
 import * as React from 'react';
-import {
-  warnDeprecations,
-  KeyCodes,
-  getId,
-  getNativeProps,
-  divProperties,
-  classNamesFunction,
-  warn,
-} from '../../Utilities';
+import { warnDeprecations, KeyCodes, getNativeProps, divProperties, classNamesFunction, warn } from '../../Utilities';
 import { CommandButton } from '../../Button';
-import { IPivotProps, IPivotStyleProps, IPivotStyles } from './Pivot.types';
+import { IPivotProps, IPivotStyleProps, IPivotStyles, IPivot } from './Pivot.types';
 import { IPivotItemProps } from './PivotItem.types';
-import { FocusZone, FocusZoneDirection } from '../../FocusZone';
+import { FocusZone, FocusZoneDirection, IFocusZone } from '../../FocusZone';
 import { PivotItem } from './PivotItem';
 import { PivotLinkFormat } from './Pivot.types';
 import { PivotLinkSize } from './Pivot.types';
 import { Icon } from '../../Icon';
+import { useId } from '@uifabric/react-hooks';
 
 const getClassNamesCall = classNamesFunction<IPivotStyleProps, IPivotStyles>();
-const PivotName = 'Pivot';
-
 export interface IPivotState {
   selectedKey: string | undefined;
 }
@@ -30,119 +21,119 @@ type PivotLinkCollection = {
   keyToTabIdMapping: { [key: string]: string };
 };
 
+const getTabId = (props: IPivotProps, pivotId: string, itemKey: string, index: number): string => {
+  if (props.getTabId) {
+    return props.getTabId(itemKey, index);
+  }
+  return pivotId + `-Tab${index}`;
+};
+
+const getLinkItems = (props: IPivotProps, pivotId: string): PivotLinkCollection => {
+  const result: PivotLinkCollection = {
+    links: [],
+    keyToIndexMapping: {},
+    keyToTabIdMapping: {},
+  };
+  React.Children.forEach(React.Children.toArray(props.children), (child: React.ReactChild, index: number) => {
+    if (isPivotItem(child)) {
+      const { linkText, ...pivotItemProps } = child.props;
+      const itemKey = child.props.itemKey || index.toString();
+      result.links.push({
+        headerText: linkText,
+        ...pivotItemProps,
+        itemKey: itemKey,
+      });
+      result.keyToIndexMapping[itemKey] = index;
+      result.keyToTabIdMapping[itemKey] = getTabId(props, pivotId, itemKey, index);
+    } else if (child) {
+      warn('The children of a Pivot component must be of type PivotItem to be rendered.');
+    }
+  });
+  return result;
+};
+
+const getDefaultKey = (props: IPivotProps, pivotId: string): string => {
+  const { defaultSelectedKey, defaultSelectedIndex } = props;
+
+  if (defaultSelectedKey !== undefined) {
+    return defaultSelectedKey;
+  }
+
+  const pivotLinks = getLinkItems(props, pivotId).links;
+
+  if (defaultSelectedIndex !== undefined) {
+    return pivotLinks[defaultSelectedIndex]?.itemKey || '';
+  } else if (pivotLinks.length) {
+    return pivotLinks[0]?.itemKey || '';
+  }
+
+  return '';
+};
+
+const isPivotItem = (item: React.ReactNode): item is PivotItem => {
+  return ((item as React.ReactElement)?.type as React.ComponentType)?.name === PivotItem.name;
+};
+
 export const PivotBase: React.FunctionComponent<IPivotProps> = (props: IPivotProps) => {
   const { componentRef } = props;
-  const [selectedKey, setSelectedKey] = React.useState(props.defaultSelectedKey);
-  const pivotId: string = getId(PivotName);
-  const focusZone = React.useRef<FocusZone>();
+  const pivotId: string = useId('Pivot');
+  const [selectedKey, setSelectedKey] = React.useState<string>(() => getDefaultKey(props, pivotId));
+  const focusZoneRef = React.useRef<IFocusZone>();
   let classNames: { [key in keyof IPivotStyles]: string };
 
-  React.useImperativeHandle(componentRef, () => ({
+  React.useImperativeHandle(componentRef as React.RefObject<IPivot>, () => ({
     focus: () => {
-      focusZone.current?.focus();
+      focusZoneRef.current?.focus();
     },
   }));
 
   if (process.env.NODE_ENV !== 'production') {
-    warnDeprecations(PivotName, props, {
+    warnDeprecations(pivotId, props, {
       initialSelectedKey: 'defaultSelectedKey',
       initialSelectedIndex: 'defaultSelectedIndex',
     });
   }
 
-  const getTabId = (itemKey: string, index: number): string => {
-    if (props.getTabId) {
-      return props.getTabId(itemKey, index);
-    }
-    return pivotId + `-Tab${index}`;
-  };
-
-  const getPivotLinks = (): PivotLinkCollection => {
-    const result: PivotLinkCollection = {
-      links: [],
-      keyToIndexMapping: {},
-      keyToTabIdMapping: {},
-    };
-    React.Children.map(React.Children.toArray(props.children), (child: React.ReactChild, index: number) => {
-      if (isPivotItem(child)) {
-        const pivotItem = child;
-        const { linkText, ...pivotItemProps } = pivotItem.props;
-        const itemKey = pivotItem.props.itemKey || index.toString();
-        result.links.push({
-          headerText: linkText,
-          ...pivotItemProps,
-          itemKey: itemKey,
-        });
-        result.keyToIndexMapping[itemKey] = index;
-        result.keyToTabIdMapping[itemKey] = getTabId(itemKey, index);
-      } else {
-        warn('The children of a Pivot component must be of type PivotItem to be rendered.');
-      }
-    });
-    return result;
-  };
-
-  const render = (): JSX.Element => {
-    const linkCollection = getPivotLinks();
-    const index = linkCollection.keyToIndexMapping[selectedKey];
-    const selectedTabId = linkCollection.keyToTabIdMapping[selectedKey];
-    const renderSelectedKey = selectedKey;
-    const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(props, divProperties);
-    classNames = getClassNames();
-    const items = linkCollection.links.map(l => renderPivotLink(linkCollection, l, renderSelectedKey));
-
-    return (
-      <div role="toolbar" {...divProps}>
-        <FocusZone componentRef={focusZone} direction={FocusZoneDirection.horizontal}>
-          <div className={classNames.root} role="tablist">
-            {items}
-          </div>
-        </FocusZone>
-        <div role="tabpanel" aria-labelledby={selectedTabId} className={classNames.itemContainer}>
-          {React.Children.toArray(props.children)[index]}
-        </div>
-      </div>
-    );
-  };
-
   const renderLinkContent = (link: IPivotItemProps): JSX.Element => {
     const { itemCount, itemIcon, headerText } = link;
-    const renderLinkContentClassNames = classNames;
-
     return (
-      <span className={renderLinkContentClassNames.linkContent}>
+      <span className={classNames.linkContent}>
         {itemIcon !== undefined && (
-          <span className={renderLinkContentClassNames.icon}>
+          <span className={classNames.icon}>
             <Icon iconName={itemIcon} />
           </span>
         )}
-        {headerText !== undefined && <span className={renderLinkContentClassNames.text}> {link.headerText}</span>}
-        {itemCount !== undefined && <span className={renderLinkContentClassNames.count}> ({itemCount})</span>}
+        {headerText !== undefined && <span className={classNames.text}> {link.headerText}</span>}
+        {itemCount !== undefined && <span className={classNames.count}> ({itemCount})</span>}
       </span>
     );
   };
 
+  const onKeyPress = (itemKey: string, ev: React.KeyboardEvent<HTMLElement>): void => {
+    if (ev.which === KeyCodes.enter) {
+      ev.preventDefault();
+      updateSelectedItem(itemKey);
+    }
+  };
+
   const renderPivotLink = (
-    linkCollection: PivotLinkCollection,
+    renderLinkCollection: PivotLinkCollection,
     link: IPivotItemProps,
     renderPivotLinkSelectedKey: string | null | undefined,
   ): JSX.Element => {
     const { itemKey, headerButtonProps } = link;
-    const tabId = linkCollection.keyToTabIdMapping[itemKey!];
+    const tabId = renderLinkCollection.keyToTabIdMapping[itemKey!];
     const { onRenderItemLink } = link;
     let linkContent: JSX.Element | null;
     const isSelected: boolean = renderPivotLinkSelectedKey === itemKey;
-
     if (onRenderItemLink) {
       linkContent = onRenderItemLink(link, renderLinkContent);
     } else {
       linkContent = renderLinkContent(link);
     }
-
     let contentString = link.headerText || '';
     contentString += link.itemCount ? ' (' + link.itemCount + ')' : '';
     contentString += link.itemIcon ? ' xx' : '';
-
     return (
       <CommandButton
         {...headerButtonProps}
@@ -168,18 +159,11 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = (props: IPivotPro
     updateSelectedItem(itemKey, ev);
   };
 
-  const onKeyPress = (itemKey: string, ev: React.KeyboardEvent<HTMLElement>): void => {
-    if (ev.which === KeyCodes.enter) {
-      ev.preventDefault();
-      updateSelectedItem(itemKey);
-    }
-  };
-
   const updateSelectedItem = (itemKey: string, ev?: React.MouseEvent<HTMLElement>): void => {
     setSelectedKey(itemKey);
-    const linkCollection = getPivotLinks();
+    linkCollection = getLinkItems(props, pivotId);
     if (props.onLinkClick && linkCollection.keyToIndexMapping[itemKey] >= 0) {
-      const index = linkCollection.keyToIndexMapping[itemKey];
+      index = linkCollection.keyToIndexMapping[itemKey];
       const item = React.Children.toArray(props.children)[index];
       if (isPivotItem(item)) {
         props.onLinkClick(item, ev);
@@ -197,14 +181,24 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = (props: IPivotPro
       rootIsTabs,
     });
   };
-  return render();
-};
 
-function isPivotItem(item: React.ReactNode): item is PivotItem {
+  let linkCollection = getLinkItems(props, pivotId);
+  const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(props, divProperties);
+  let index = linkCollection.keyToIndexMapping[selectedKey];
+  const selectedTabId = linkCollection.keyToTabIdMapping[selectedKey];
+  const renderSelectedKey = selectedKey;
+  classNames = getClassNames();
+  const items = linkCollection.links.map(l => renderPivotLink(linkCollection, l, renderSelectedKey));
   return (
-    !!item &&
-    typeof item === 'object' &&
-    !!(item as React.ReactElement).type &&
-    ((item as React.ReactElement).type as React.ComponentType).name === PivotItem.name
+    <div role="toolbar" {...divProps}>
+      <FocusZone componentRef={focusZoneRef} direction={FocusZoneDirection.horizontal}>
+        <div className={classNames.root} role="tablist">
+          {items}
+        </div>
+      </FocusZone>
+      <div role="tabpanel" aria-labelledby={selectedTabId} className={classNames.itemContainer}>
+        {React.Children.toArray(props.children)[index]}
+      </div>
+    </div>
   );
-}
+};
