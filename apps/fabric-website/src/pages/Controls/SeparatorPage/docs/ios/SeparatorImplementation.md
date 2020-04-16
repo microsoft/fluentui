@@ -4,8 +4,8 @@
 
 ### Source code
 
-[MSSeparator](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric/Controls/MSSeparator.swift)
+[MSSeparator](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI/Controls/MSSeparator.swift)
 
 ### Sample code
 
-[Used in MSTableViewCell](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric/Table%20View/MSTableViewCell.swift)
+[Used in MSTableViewCell](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI/Table%20View/MSTableViewCell.swift)

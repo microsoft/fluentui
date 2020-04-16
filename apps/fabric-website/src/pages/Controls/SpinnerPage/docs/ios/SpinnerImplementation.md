@@ -6,12 +6,12 @@
 
 ### Source code
 
-[MSActivityIndicatorView](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric/Controls/MSActivityIndicatorView.swift)
+[MSActivityIndicatorView](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI/Controls/MSActivityIndicatorView.swift)
 
-[MSHUD](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric/HUD/MSHUD.swift)
+[MSHUD](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI/HUD/MSHUD.swift)
 
 ### Sample code
 
-[MSActivityIndicatorView demo](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric.Demo/OfficeUIFabric.Demo/Demos/MSActivityIndicatorViewDemoController.swift)
+[MSActivityIndicatorView demo](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI.Demo/FluentUI.Demo/Demos/MSActivityIndicatorViewDemoController.swift)
 
-[MSHUD demo](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric.Demo/OfficeUIFabric.Demo/Demos/MSHUDDemoController.swift)
+[MSHUD demo](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI.Demo/FluentUI.Demo/Demos/MSHUDDemoController.swift)

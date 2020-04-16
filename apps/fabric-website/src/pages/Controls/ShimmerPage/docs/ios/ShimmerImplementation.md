@@ -6,12 +6,12 @@
 
 ### Source code
 
-[MSShimmerView](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric/Shimmer/MSShimmerView.swift)
+[MSShimmerView](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI/Shimmer/MSShimmerView.swift)
 
-[MSShimmerLinesView](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric/Shimmer/MSShimmerLinesView.swift)
+[MSShimmerLinesView](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI/Shimmer/MSShimmerLinesView.swift)
 
 ### Sample code
 
-[MSShimmerView in Collection View Cell demo](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric.Demo/OfficeUIFabric.Demo/Demos/MSCollectionViewCellShimmerDemoController.swift)
+[MSShimmerView in Table View Cell demo](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI.Demo/FluentUI.Demo/Demos/MSTableViewCellShimmerDemoController.swift)
 
-[MSShimmerLinesView demo](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric.Demo/OfficeUIFabric.Demo/Demos/MSShimmerLinesViewDemoController.swift)
+[MSShimmerLinesView demo](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI.Demo/FluentUI.Demo/Demos/MSShimmerLinesViewDemoController.swift)
