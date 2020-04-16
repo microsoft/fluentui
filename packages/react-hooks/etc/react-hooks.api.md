@@ -7,7 +7,7 @@
 import * as React from 'react';
 
 // @public (undocumented)
-export type ChangeCallback<TElement extends HTMLElement, TValue> = (ev: React.FormEvent<TElement>, newValue: TValue | undefined) => void;
+export type ChangeCallback<TElement extends HTMLElement, TValue> = (ev: React.FormEvent<TElement> | undefined, newValue: TValue | undefined) => void;
 
 // @public
 export interface IUseBooleanCallbacks {
@@ -29,7 +29,7 @@ export function useConstCallback<T extends (...args: any[]) => any>(callback: T)
 export function useControllableValue<TValue, TElement extends HTMLElement>(controlledValue: TValue | undefined, defaultUncontrolledValue: TValue | undefined): Readonly<[TValue | undefined, (newValue: TValue | undefined) => void]>;
 
 // @public (undocumented)
-export function useControllableValue<TValue, TElement extends HTMLElement, TCallback extends ChangeCallback<TElement, TValue> | undefined>(controlledValue: TValue | undefined, defaultUncontrolledValue: TValue | undefined, onChange: TCallback): Readonly<[TValue | undefined, (newValue: TValue | undefined, ev: React.FormEvent<TElement>) => void]>;
+export function useControllableValue<TValue, TElement extends HTMLElement, TCallback extends ChangeCallback<TElement, TValue> | undefined>(controlledValue: TValue | undefined, defaultUncontrolledValue: TValue | undefined, onChange: TCallback): Readonly<[TValue | undefined, (newValue: TValue | undefined, ev?: React.FormEvent<TElement>) => void]>;
 
 // @public
 export function useId(prefix?: string, providedId?: string): string;
