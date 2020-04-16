@@ -172,7 +172,7 @@ const TreeItem: React.FC<WithAsProp<TreeItemProps>> &
         handleSiblingsExpand(e);
       },
     },
-    debugName: TreeItem.className,
+    debugName: TreeItem.deprecated_className,
     mapPropsToBehavior: () => ({
       expanded,
       level,
@@ -186,7 +186,7 @@ const TreeItem: React.FC<WithAsProp<TreeItemProps>> &
     rtl: context.rtl,
   });
   const { classes } = useStyles<TreeItemStylesProps>(TreeItem.displayName, {
-    className: TreeItem.className,
+    className: TreeItem.deprecated_className,
     mapPropsToStyles: () => ({
       level,
     }),
@@ -256,12 +256,12 @@ const TreeItem: React.FC<WithAsProp<TreeItemProps>> &
   return elementWithRef;
 };
 
-TreeItem.className = 'ui-tree__item';
+TreeItem.deprecated_className = 'ui-tree__item';
 TreeItem.displayName = 'TreeItem';
 
 TreeItem.slotClassNames = {
-  title: `${TreeItem.className}__title`,
-  subtree: `${TreeItem.className}__subtree`,
+  title: `${TreeItem.deprecated_className}__title`,
+  subtree: `${TreeItem.deprecated_className}__subtree`,
 };
 
 TreeItem.propTypes = {

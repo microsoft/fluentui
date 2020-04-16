@@ -1,7 +1,32 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Mon, 30 Mar 2020 19:10:08 GMT and should not be manually modified.
+This log was last generated on Thu, 16 Apr 2020 04:01:45 GMT and should not be manually modified.
 
+<!-- Start content -->
+
+## [7.15.7](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.15.7)
+
+Thu, 16 Apr 2020 04:01:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.15.6..@uifabric/utilities_v7.15.7)
+
+### Patches
+
+- Readme: Remove irrelevant details; Fabric=>Fluent wording updates ([PR #12508](https://github.com/microsoft/fluentui/pull/12508) by elcraig@microsoft.com)
+- merge: null values are now preserved. ([PR #12646](https://github.com/microsoft/fluentui/pull/12646) by dzearing@microsoft.com)
+
+## 7.15.6
+Thu, 09 Apr 2020 12:24:31 GMT
+
+### Patches
+
+- chore: bump @types/react (olfedias@microsoft.com)
+## 7.15.5
+Wed, 08 Apr 2020 12:28:27 GMT
+
+### Patches
+
+- Customizable: improve perf by avoid mutating styles when concatination is enabled (xgao@microsoft.com)
+- fix: fix typings for asAsync & internal usages of React.Children.map (olfedias@microsoft.com)
 ## 7.15.4
 Mon, 30 Mar 2020 19:10:08 GMT
 
@@ -1598,4 +1623,3 @@ Mon, 16 Jan 2017 21:57:33 GMT
 ### Breaking changes
 
 - Introducing a new package to contain all baseline utilities that are commonly used amongst Fabric components.
-

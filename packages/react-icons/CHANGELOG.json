@@ -1,0 +1,20 @@
+{
+  "name": "@fluentui/react-icons",
+  "entries": [
+    {
+      "date": "Thu, 16 Apr 2020 05:06:13 GMT",
+      "tag": "@fluentui/react-icons_v0.1.1",
+      "version": "0.1.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Initial publish.",
+            "author": "dzearing@microsoft.com",
+            "commit": "e7d03cc930fa094538adf9d272b312e21ed934b5",
+            "package": "@fluentui/react-icons"
+          }
+        ]
+      }
+    }
+  ]
+}

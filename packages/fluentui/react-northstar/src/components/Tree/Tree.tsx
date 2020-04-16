@@ -110,10 +110,10 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
 
   static displayName = 'Tree';
 
-  static className = 'ui-tree';
+  static deprecated_className = 'ui-tree';
 
   static slotClassNames: TreeSlotClassNames = {
-    item: `${Tree.className}__item`,
+    item: `${Tree.deprecated_className}__item`,
   };
 
   static propTypes = {

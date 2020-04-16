@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { getTheme, mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 import { lorem } from '@uifabric/example-data';
-import { ScrollablePane } from 'office-ui-fabric-react/lib/ScrollablePane';
+import { ScrollablePane, IScrollablePaneStyles } from 'office-ui-fabric-react/lib/ScrollablePane';
 import { Sticky, StickyPositionType } from 'office-ui-fabric-react/lib/Sticky';
 
 const theme = getTheme();
@@ -26,6 +26,8 @@ const classNames = mergeStyleSets({
     padding: '15px 10px',
   },
 });
+
+const scrollablePaneStyles: Partial<IScrollablePaneStyles> = { root: classNames.pane };
 
 export interface IScrollablePaneExampleItem {
   color: string;
@@ -56,7 +58,7 @@ export class ScrollablePaneDefaultExample extends React.Component {
 
     return (
       <div className={classNames.wrapper}>
-        <ScrollablePane styles={{ root: classNames.pane }}>{...contentAreas}</ScrollablePane>
+        <ScrollablePane styles={scrollablePaneStyles}>{...contentAreas}</ScrollablePane>
       </div>
     );
   }

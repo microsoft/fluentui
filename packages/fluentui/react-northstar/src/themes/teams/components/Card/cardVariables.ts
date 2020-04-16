@@ -4,6 +4,9 @@ export interface CardVariables {
   borderStyle: string;
   borderColor: string;
   borderWidth: string;
+  borderRadius: string;
+  boxShadow: string;
+  boxShadowHover: string;
   padding: string;
   compactPadding: string;
   previewMargin: string;
@@ -17,6 +20,16 @@ export interface CardVariables {
   previewMarginHorizontal: string;
   topControlsTop: string;
   topControlsRight: string;
+  width: string;
+  height: string;
+  sizeSmallWidth: string;
+  sizeSmallHeight: string;
+  sizeSmallPadding: string;
+  sizeLargeWidth: string;
+  sizeLargeHeight: string;
+  sizeLargePadding: string;
+  fluidHeight: string;
+  fluidWidth: string;
 }
 
 export default (siteVars): CardVariables => {
@@ -24,6 +37,9 @@ export default (siteVars): CardVariables => {
     borderStyle: 'solid',
     borderColor: siteVars.colors.black,
     borderWidth: siteVars.borderWidth,
+    borderRadius: pxToRem(4),
+    boxShadow: undefined,
+    boxShadowHover: siteVars.shadowLevel3,
     padding: pxToRem(10),
     compactPadding: pxToRem(0),
     previewMargin: `0 0 ${pxToRem(10)} 0`,
@@ -37,5 +53,16 @@ export default (siteVars): CardVariables => {
     previewMarginHorizontal: `0 ${pxToRem(10)} 0 0`,
     topControlsTop: pxToRem(10),
     topControlsRight: pxToRem(0),
+    // TODO: update with latest values from design
+    width: pxToRem(300),
+    height: '100%',
+    sizeSmallWidth: pxToRem(200),
+    sizeSmallHeight: '100%',
+    sizeSmallPadding: pxToRem(5),
+    sizeLargeWidth: pxToRem(500),
+    sizeLargeHeight: '100%',
+    sizeLargePadding: pxToRem(20),
+    fluidWidth: '100%',
+    fluidHeight: '100%',
   };
 };

@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import Tooltip from 'src/components/Tooltip/Tooltip';
-import Button from 'src/components/Button/Button';
+import Button, { buttonClassName } from 'src/components/Button/Button';
 
 import { mountWithProvider, findIntrinsicElement } from '../../../utils';
 import implementsPopperProps from 'test/specs/commonTests/implementsPopperProps';
@@ -9,6 +9,15 @@ import implementsPopperProps from 'test/specs/commonTests/implementsPopperProps'
 describe('Tooltip', () => {
   implementsPopperProps(Tooltip, {
     requiredProps: { open: true },
+  });
+
+  test('aria-labelledby is not added on trigger if aria-label is passed to trigger shorthand', () => {
+    const ariaLabelTestValue = 'test-aria-label';
+    const wrapper = mountWithProvider(<Tooltip defaultOpen trigger={<Button aria-label={ariaLabelTestValue} />} />);
+    const trigger = findIntrinsicElement(wrapper, `.${buttonClassName}`);
+
+    expect(trigger.getDOMNode()).toHaveAttribute('aria-label', ariaLabelTestValue);
+    expect(trigger.getDOMNode()).not.toHaveAttribute('aria-labelledby');
   });
 
   describe('content', () => {
@@ -65,7 +74,7 @@ describe('Tooltip', () => {
       const wrapper = mountWithProvider(<Tooltip trigger={<button />} content="Foo" />);
       expect(wrapper.find('Popper').prop('enabled')).toBe(false);
 
-      wrapper.setProps({ open: true } as any);
+      wrapper.setProps({ open: true });
       expect(wrapper.find('Popper').prop('enabled')).toBe(true);
     });
   });

@@ -3,7 +3,7 @@
  * @param node - DOM node.
  * @returns - parent DOM node.
  */
-const getParentNode = (node: Node): Node => {
+export const getParentNode = (node: HTMLElement): HTMLElement => {
   if (node.nodeName === 'HTML') return node;
   return node.parentNode || (node as any).host;
 };
@@ -13,11 +13,11 @@ const getParentNode = (node: Node): Node => {
  * @param node - DOM node.
  * @returns - CSS styles.
  */
-const getStyleComputedProperty = (node: Node): Partial<CSSStyleDeclaration> => {
+const getStyleComputedProperty = (node: HTMLElement): Partial<CSSStyleDeclaration> => {
   if (node.nodeType !== 1) return {};
 
   const window = node.ownerDocument.defaultView;
-  return window.getComputedStyle(node as Element, null);
+  return window.getComputedStyle(node, null);
 };
 
 /**
@@ -25,9 +25,9 @@ const getStyleComputedProperty = (node: Node): Partial<CSSStyleDeclaration> => {
  * @param node - DOM node.
  * @returns - the first scrollable parent.
  */
-const getScrollParent = (node: Node): Node => {
+const getScrollParent = (node: Document | HTMLElement): HTMLElement => {
   // Return body, `getScroll` will take care to get the correct `scrollTop` from it
-  const parentNode = node && getParentNode(node);
+  const parentNode = node && getParentNode(node as HTMLElement);
   // eslint-disable-next-line
   if (!parentNode) return document.body;
 
@@ -36,7 +36,7 @@ const getScrollParent = (node: Node): Node => {
     case 'BODY':
       return parentNode.ownerDocument.body;
     case '#document':
-      return (parentNode as Document).body;
+      return ((parentNode as unknown) as Document).body;
   }
 
   // If any of the overflow props is defined for the node then we return it as the parent

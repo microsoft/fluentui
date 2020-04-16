@@ -13,9 +13,10 @@ interface ResponsiveTableProps extends TableProps {
 const ResponsiveTableContainer: React.FC<ResponsiveTableProps> = props => {
   const { columns: config, children } = props;
 
-  const responsiveTableID = React.useMemo(() => props.id || _.uniqueId(`${Table.className}__responsive-wrapper`), [
-    props.id,
-  ]);
+  const responsiveTableID = React.useMemo(
+    () => props.id || _.uniqueId(`${Table.deprecated_className}__responsive-wrapper`),
+    [props.id],
+  );
 
   const [breakpoints, setBreakpoints] = React.useState<Breakpoint | undefined>();
 
@@ -37,7 +38,7 @@ const ResponsiveTableContainer: React.FC<ResponsiveTableProps> = props => {
                 ${breakpoint
                   .map(
                     column =>
-                      `#${responsiveTableID} .${TableCell.className}:nth-child(${column.childIndex}) { display: none }`,
+                      `#${responsiveTableID} .${TableCell.deprecated_className}:nth-child(${column.childIndex}) { display: none }`,
                   )
                   .join('\n  ')}
               }`,

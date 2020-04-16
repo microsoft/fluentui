@@ -92,7 +92,7 @@ export interface ToolbarProps
 class Toolbar extends UIComponent<WithAsProp<ToolbarProps>> {
   static create: ShorthandFactory<ToolbarProps>;
 
-  static className = 'ui-toolbar';
+  static deprecated_className = 'ui-toolbar';
 
   static displayName = 'Toolbar';
 
@@ -452,7 +452,7 @@ class Toolbar extends UIComponent<WithAsProp<ToolbarProps>> {
             icon: <MoreIcon {...{ outline: true }} />,
           }),
           overrideProps: {
-            menu: this.props.overflowOpen ? this.getOverflowItems() : [],
+            menu: { items: this.props.overflowOpen ? this.getOverflowItems() : [], popper: { positionFixed: true } },
             menuOpen: this.props.overflowOpen,
             onMenuOpenChange: (e, { menuOpen }) => {
               _.invoke(this.props, 'onOverflowOpenChange', e, {

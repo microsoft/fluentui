@@ -145,6 +145,7 @@ const Tooltip: React.FC<TooltipProps> &
       'aria-label': props['aria-label'],
       'aria-labelledby': props['aria-labelledby'],
       contentId: contentId.current,
+      triggerAriaLabel: trigger && trigger.props['aria-label'],
       open,
     }),
   });
@@ -253,11 +254,11 @@ const Tooltip: React.FC<TooltipProps> &
   return element;
 };
 
-Tooltip.className = 'ui-tooltip';
+Tooltip.deprecated_className = 'ui-tooltip';
 Tooltip.displayName = 'Tooltip';
 
 Tooltip.slotClassNames = {
-  content: `${Tooltip.className}__content`,
+  content: `${Tooltip.deprecated_className}__content`,
 };
 
 Tooltip.defaultProps = {
@@ -277,7 +278,10 @@ Tooltip.propTypes = {
   defaultOpen: PropTypes.bool,
   mountNode: customPropTypes.domNode,
   mouseLeaveDelay: PropTypes.number,
-  offset: PropTypes.string,
+  offset: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.arrayOf(PropTypes.number) as PropTypes.Requireable<[number, number]>,
+  ]),
   open: PropTypes.bool,
   onOpenChange: PropTypes.func,
   pointing: PropTypes.bool,
@@ -288,12 +292,14 @@ Tooltip.propTypes = {
   content: customPropTypes.shorthandAllowingChildren,
   unstable_pinned: PropTypes.bool,
   flipBoundary: PropTypes.oneOfType([
-    PropTypes.object as PropTypes.Requireable<Element>,
-    PropTypes.oneOf<'scrollParent' | 'window' | 'viewport'>(['scrollParent', 'window', 'viewport']),
+    PropTypes.object as PropTypes.Requireable<HTMLElement>,
+    PropTypes.arrayOf(PropTypes.object) as PropTypes.Requireable<HTMLElement[]>,
+    PropTypes.oneOf<'clippingParents' | 'window' | 'scrollParent'>(['clippingParents', 'window', 'scrollParent']),
   ]),
   overflowBoundary: PropTypes.oneOfType([
-    PropTypes.object as PropTypes.Requireable<Element>,
-    PropTypes.oneOf<'scrollParent' | 'window' | 'viewport'>(['scrollParent', 'window', 'viewport']),
+    PropTypes.object as PropTypes.Requireable<HTMLElement>,
+    PropTypes.arrayOf(PropTypes.object) as PropTypes.Requireable<HTMLElement[]>,
+    PropTypes.oneOf<'clippingParents' | 'window' | 'scrollParent'>(['clippingParents', 'window', 'scrollParent']),
   ]),
 };
 Tooltip.handledProps = Object.keys(Tooltip.propTypes) as any;

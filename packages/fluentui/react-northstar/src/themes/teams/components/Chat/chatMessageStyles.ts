@@ -4,7 +4,6 @@ import { default as ChatMessage, ChatMessageStylesProps } from '../../../../comp
 import { ChatMessageVariables } from './chatMessageVariables';
 import { screenReaderContainerStyles } from '../../../../utils/accessibility/Styles/accessibilityStyles';
 import { pxToRem } from '../../../../utils';
-import initialPopperStyles from '../../../../utils/positioner/initialStyles';
 import getBorderFocusStyles from '../../getBorderFocusStyles';
 
 const chatMessageStyles: ComponentSlotStylesPrepared<ChatMessageStylesProps, ChatMessageVariables> = {
@@ -57,7 +56,7 @@ const chatMessageStyles: ComponentSlotStylesPrepared<ChatMessageStylesProps, Cha
           opacity: 1,
           width: 'auto',
 
-          '[x-out-of-boundaries]': {
+          '[data-popper-escaped]': {
             opacity: 0,
           },
         },
@@ -89,8 +88,6 @@ const chatMessageStyles: ComponentSlotStylesPrepared<ChatMessageStylesProps, Cha
     // we need higher zIndex for the action menu in order to be displayed above the focus border of the chat message
     zIndex: v.overlayZIndex,
 
-    ...(initialPopperStyles as ICSSInJSStyle),
-
     ...(_.isNil(v.showActionMenu) && {
       overflow: p.focused ? 'visible' : 'hidden',
       // hide and squash actions menu to prevent accidental hovers over its invisible area
@@ -106,7 +103,7 @@ const chatMessageStyles: ComponentSlotStylesPrepared<ChatMessageStylesProps, Cha
       width: v.showActionMenu ? 'auto' : 0,
     }),
 
-    '[x-out-of-boundaries]': {
+    '[data-popper-escaped]': {
       opacity: 0,
     },
   }),

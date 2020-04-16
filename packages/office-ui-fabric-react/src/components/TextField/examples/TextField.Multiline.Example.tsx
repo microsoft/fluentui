@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { lorem } from '@uifabric/example-data';
-import { Stack, IStackProps } from 'office-ui-fabric-react/lib/Stack';
+import { Stack, IStackProps, IStackStyles } from 'office-ui-fabric-react/lib/Stack';
+
+const stackStyles: Partial<IStackStyles> = { root: { width: 650 } };
 
 export interface ITextFieldMultilineExampleState {
   multiline: boolean;
@@ -19,7 +21,7 @@ export class TextFieldMultilineExample extends React.Component<{}, ITextFieldMul
     };
 
     return (
-      <Stack horizontal tokens={{ childrenGap: 50 }} styles={{ root: { width: 650 } }}>
+      <Stack horizontal tokens={{ childrenGap: 50 }} styles={stackStyles}>
         <Stack {...columnProps}>
           <TextField label="Standard" multiline rows={3} />
           <TextField label="Disabled" multiline rows={3} disabled defaultValue={this._lorem} />

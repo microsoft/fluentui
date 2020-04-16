@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Animation, Icon, Grid, Text, Provider } from '@fluentui/react-northstar';
+import { Animation, Grid, Text, Provider } from '@fluentui/react-northstar';
+import { MentionIcon } from '@fluentui/react-icons-northstar';
 
 const colorChanger = {
   keyframe: {
@@ -19,22 +20,22 @@ const AnimationExampleFillMode = () => (
       <Text content="Both" />
       <div>
         <Animation name="colorChanger" fillMode="none" delay="3s" iterationCount="1">
-          <Icon name="mention" circular bordered />
+          <MentionIcon circular bordered />
         </Animation>
       </div>
       <div>
         <Animation name="colorChanger" fillMode="forwards" delay="3s" iterationCount="1">
-          <Icon name="mention" circular bordered />
+          <MentionIcon circular bordered />
         </Animation>
       </div>
       <div>
         <Animation name="colorChanger" fillMode="backwards" delay="3s" iterationCount="1">
-          <Icon name="mention" circular bordered />
+          <MentionIcon circular bordered />
         </Animation>
       </div>
       <div>
         <Animation name="colorChanger" fillMode="both" delay="3s" iterationCount="1">
-          <Icon name="mention" circular bordered />
+          <MentionIcon circular bordered />
         </Animation>
       </div>
     </Grid>

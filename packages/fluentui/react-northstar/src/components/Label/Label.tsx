@@ -90,7 +90,7 @@ const Label: React.FC<WithAsProp<LabelProps>> & FluentComponentStaticProps = pro
     rtl: context.rtl,
   });
   const { classes, styles: resolvedStyles } = useStyles<LabelStylesProps>(Label.displayName, {
-    className: Label.className,
+    className: Label.deprecated_className,
     mapPropsToStyles: () => ({
       hasActionableIcon: _.has(icon, 'onClick'),
       hasImage: !!image,
@@ -165,7 +165,7 @@ const Label: React.FC<WithAsProp<LabelProps>> & FluentComponentStaticProps = pro
 };
 
 Label.displayName = 'Label';
-Label.className = 'ui-label';
+Label.deprecated_className = 'ui-label';
 
 Label.propTypes = {
   ...commonPropTypes.createCommon({ color: true, content: 'shorthand' }),

@@ -2,6 +2,63 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Thu, 16 Apr 2020 04:01:45 GMT",
+      "tag": "@uifabric/charting_v1.4.0",
+      "version": "1.4.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Readme: Fabric=>Fluent wording updates",
+            "author": "elcraig@microsoft.com",
+            "commit": "9e3c7c7d4b92e132820cdbcd61a667829c712ecb",
+            "package": "@uifabric/charting"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Provide customization for line chart tooltip and Y Axis label",
+            "author": "v-satgar@microsoft.com",
+            "commit": "41dcfb48c91fdbb12d68d503bea0441bc6f85449",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "Add Callout and Legends for vertical bar chart",
+            "author": "v-satgar@microsoft.com",
+            "commit": "17d77efd8b504dc212b5cb2ce731df3aee4e3718",
+            "package": "@uifabric/charting"
+          }
+        ],
+        "none": [
+          {
+            "comment": "fix out-of-sync package version",
+            "author": "xgao@microsoft.com",
+            "commit": "92cefe9175b6d67e1d7cdd84272a5933901b7e6f",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "sync package version",
+            "author": "xgao@microsoft.com",
+            "commit": "6f39958352207acb3029458503db0969a4359806",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 Apr 2020 12:24:31 GMT",
+      "tag": "@uifabric/charting_v1.1.4",
+      "version": "1.1.4",
+      "comments": {
+        "none": [
+          {
+            "comment": "chore: bump @types/react",
+            "author": "olfedias@microsoft.com",
+            "commit": "1c25191a3a6a1b6e8a0aca3c7cf7f3a629171738"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 02 Apr 2020 12:30:40 GMT",
       "tag": "@uifabric/charting_v1.1.0",
       "version": "1.1.0",

@@ -1,6 +1,17 @@
 # Change Log - @uifabric/tsx-editor
 
-This log was last generated on Wed, 25 Mar 2020 12:30:04 GMT and should not be manually modified.
+This log was last generated on Thu, 16 Apr 2020 04:01:45 GMT and should not be manually modified.
+
+<!-- Start content -->
+
+## [0.11.50](https://github.com/microsoft/fluentui/tree/@uifabric/tsx-editor_v0.11.50)
+
+Thu, 16 Apr 2020 04:01:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/tsx-editor_v0.11.49..@uifabric/tsx-editor_v0.11.50)
+
+### Patches
+
+- Readme: Fabric=>Fluent wording updates ([PR #12508](https://github.com/microsoft/fluentui/pull/12508) by elcraig@microsoft.com)
 
 ## 0.11.41
 Wed, 25 Mar 2020 12:30:04 GMT

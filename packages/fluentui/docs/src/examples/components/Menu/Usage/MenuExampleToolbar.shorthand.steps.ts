@@ -2,9 +2,9 @@ import { Menu } from '@fluentui/react-northstar';
 import getScreenerSteps from '../commonScreenerSteps';
 
 const selectors = {
-  menu: `.${Menu.className}`,
-  item: (itemIndex: number) => `.${Menu.className} li:nth-child(${itemIndex}) a`,
-  lastItem: `.${Menu.className} li:last-child a`,
+  menu: `.${Menu.deprecated_className}`,
+  item: (itemIndex: number) => `.${Menu.deprecated_className} li:nth-child(${itemIndex}) a`,
+  lastItem: `.${Menu.deprecated_className} li:last-child a`,
 };
 
 const config: ScreenerTestsConfig = {

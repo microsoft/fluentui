@@ -1,9 +1,10 @@
 import { TreeItem, TreeTitle } from '@fluentui/react-northstar';
 
 const selectors = {
-  treeTitle: (itemIndex: number) => `.${TreeItem.className}:nth-of-type(${itemIndex}) .${TreeTitle.className}`,
+  treeTitle: (itemIndex: number) =>
+    `.${TreeItem.deprecated_className}:nth-of-type(${itemIndex}) .${TreeTitle.deprecated_className}`,
   selectionIndicator: (itemIndex: number) =>
-    `.${TreeItem.className}:nth-of-type(${itemIndex}) .${TreeTitle.slotClassNames.indicator}`,
+    `.${TreeItem.deprecated_className}:nth-of-type(${itemIndex}) .${TreeTitle.slotClassNames.indicator}`,
 };
 
 const config: ScreenerTestsConfig = {

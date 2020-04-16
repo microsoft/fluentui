@@ -24,7 +24,7 @@ describe('ProviderConsumer', () => {
 
   describe('render', () => {
     test('is a callback that receives the prepared theme', () => {
-      expect.assertions(13);
+      expect.assertions(11);
 
       const inputTheme: ThemeInput = {
         siteVariables: { a: 'b' },
@@ -32,12 +32,6 @@ describe('ProviderConsumer', () => {
         componentStyles: { Button: { root: { color: 'red' } } },
         fontFaces: [{ name: 'name', paths: ['path.woff2'], props: { fontWeight: 400 } }],
         staticStyles: ['body{margin:0;}', { body: { margin: 0 } }],
-        icons: {
-          user: { icon: { content: '\\f1', fontFamily: 'i' } },
-          userFunc: { icon: () => ({ content: '\\f1', fontFamily: 'i' }) },
-          userSvg: { isSvg: true, icon: <svg /> },
-          userSvgFunc: { isSvg: true, icon: () => <svg /> },
-        },
       };
 
       mount(
@@ -67,9 +61,6 @@ describe('ProviderConsumer', () => {
               expect(preparedTheme).toHaveProperty('staticStyles');
               expect(preparedTheme.staticStyles).toMatchObject(inputTheme.staticStyles);
 
-              // icons
-              expect(preparedTheme).toHaveProperty('icons');
-              expect(preparedTheme.icons).toMatchObject(inputTheme.icons);
               return null;
             }}
           />

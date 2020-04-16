@@ -48,13 +48,13 @@ const handleVariablesOverrides = variables => predefinedProps => ({
 
 class Table extends UIComponent<WithAsProp<TableProps>> {
   static displayName = 'Table';
-  static className = 'ui-table';
+  static deprecated_className = 'ui-table';
 
   static Cell = TableCell;
   static Row = TableRow;
 
   static slotClassNames: TableSlotClassNames = {
-    header: `${Table.className}__header`,
+    header: `${Table.deprecated_className}__header`,
   };
 
   static propTypes = {

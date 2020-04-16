@@ -3,7 +3,7 @@ import { Toolbar, ToolbarItemShorthandKinds, Input, ToolbarMenu } from '@fluentu
 import { ItalicIcon } from '@fluentui/react-icons-northstar';
 
 export const selectors = {
-  toolbarMenu: ToolbarMenu.className,
+  toolbarMenu: ToolbarMenu.deprecated_className,
   menuButtonId: 'menuButton',
   popupTriggerId: 'popupTrigger',
   popupElementId: 'popupElement',

@@ -123,18 +123,16 @@ const TreeTitle: React.FC<WithAsProp<TreeTitleProps>> &
     rtl: context.rtl,
   });
   const { classes, styles: resolvedStyles } = useStyles<TreeTitleStylesProps>(TreeTitle.displayName, {
-    className: TreeTitle.className,
-    mapPropsToStyles: () => ({
-      selected,
-      selectableParent,
-      disabled,
-      selectable,
-    }),
+    className: TreeTitle.deprecated_className,
     mapPropsToInlineStyles: () => ({
       className,
       design,
       styles,
       variables,
+      selected,
+      selectableParent,
+      disabled,
+      selectable,
     }),
     rtl: context.rtl,
   });
@@ -179,11 +177,11 @@ const TreeTitle: React.FC<WithAsProp<TreeTitleProps>> &
   return element;
 };
 
-TreeTitle.className = 'ui-tree__title';
+TreeTitle.deprecated_className = 'ui-tree__title';
 TreeTitle.displayName = 'TreeTitle';
 
 TreeTitle.slotClassNames = {
-  indicator: `${TreeTitle.className}__selection-indicator`,
+  indicator: `${TreeTitle.deprecated_className}__selection-indicator`,
 };
 
 TreeTitle.propTypes = {

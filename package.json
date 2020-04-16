@@ -1,7 +1,7 @@
 {
-  "name": "office-ui-fabric-react-repo",
+  "name": "fluent-ui-react-repo",
   "version": "7.0.0",
-  "description": "Reusable React components for building experiences for Office 365.",
+  "description": "Reusable React components for building experiences for Microsoft 365.",
   "private": true,
   "repository": {
     "type": "git",
@@ -31,6 +31,7 @@
     "dom-test": "cd apps/dom-tests && just-scripts jest-dom-with-webpack",
     "generate-version-files": "yarn workspace @uifabric/build just generate-version-files",
     "lint": "lerna run lint --stream",
+    "sync:beachball": "beachball sync --scope \"!packages/fluentui/*\"",
     "publish:beachball": "beachball publish --scope \"!packages/fluentui/*\"",
     "check-for-changed-files": "cd scripts && just-scripts check-for-modified-files",
     "perf": "cross-env PERF=true gulp perf --times=100",
@@ -60,7 +61,7 @@
     "vrtest": "cd apps && cd vr-tests && npm run screener"
   },
   "devDependencies": {
-    "beachball": "^1.20.4",
+    "beachball": "^1.29.1",
     "lerna": "^3.15.0",
     "lint-staged": "^7.0.5",
     "cross-env": "^5.1.4",
@@ -99,20 +100,6 @@
       "packages/*",
       "scripts",
       "packages/fluentui/*"
-    ]
-  },
-  "beachball": {
-    "groups": [
-      {
-        "name": "fluent ui react",
-        "include": [
-          "packages/office-ui-fabric-react",
-          "packages/react"
-        ],
-        "disallowedChangeTypes": [
-          "major"
-        ]
-      }
     ]
   },
   "resolutions": {

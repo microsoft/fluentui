@@ -1,7 +1,24 @@
 # Change Log - @uifabric/react-hooks
 
-This log was last generated on Fri, 03 Apr 2020 12:27:13 GMT and should not be manually modified.
+This log was last generated on Thu, 16 Apr 2020 04:01:45 GMT and should not be manually modified.
 
+<!-- Start content -->
+
+## [7.1.3](https://github.com/microsoft/fluentui/tree/@uifabric/react-hooks_v7.1.3)
+
+Thu, 16 Apr 2020 04:01:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/react-hooks_v7.1.2..@uifabric/react-hooks_v7.1.3)
+
+### Patches
+
+- Readme: Fabric=>Fluent wording updates; add note about reusability ([PR #12508](https://github.com/microsoft/fluentui/pull/12508) by elcraig@microsoft.com)
+
+## 7.1.1
+Tue, 07 Apr 2020 12:35:07 GMT
+
+### Patches
+
+- Simplifying some of the examples for VerticalDivider and SearchBox. (czearing@outlook.com)
 ## 7.1.0
 Fri, 03 Apr 2020 12:27:13 GMT
 

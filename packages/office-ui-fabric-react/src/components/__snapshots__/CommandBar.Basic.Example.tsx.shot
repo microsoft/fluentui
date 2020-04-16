@@ -374,7 +374,7 @@ exports[`Component Examples renders CommandBar.Basic.Example.tsx correctly 1`] =
                       color: #323130;
                     }
                 data-is-focusable={true}
-                href="https://dev.office.com/fabric"
+                href="https://developer.microsoft.com/en-us/fluentui"
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 onKeyPress={[Function]}
