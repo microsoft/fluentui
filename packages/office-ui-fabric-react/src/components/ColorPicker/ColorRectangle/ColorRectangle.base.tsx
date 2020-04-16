@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { classNamesFunction, EventGroup, initializeComponentRef, KeyCodes, getId } from '../../../Utilities';
+import { classNamesFunction, on, initializeComponentRef, KeyCodes, getId } from '../../../Utilities';
 import {
   IColorRectangleProps,
   IColorRectangleStyleProps,
@@ -32,7 +32,7 @@ export class ColorRectangleBase extends React.Component<IColorRectangleProps, IC
     ariaDescription: 'Use left and right arrow keys to set saturation. Use up and down arrow keys to set brightness.',
   };
 
-  private _events: EventGroup;
+  private _disposables: (() => void)[] = [];
   private _root = React.createRef<HTMLDivElement>();
   private _isAdjustingSaturation: boolean = true;
   private _descriptionId = getId('ColorRectangle-description');
@@ -41,7 +41,6 @@ export class ColorRectangleBase extends React.Component<IColorRectangleProps, IC
     super(props);
 
     initializeComponentRef(this);
-    this._events = new EventGroup(this);
 
     this.state = { color: props.color };
   }
@@ -62,7 +61,7 @@ export class ColorRectangleBase extends React.Component<IColorRectangleProps, IC
   }
 
   public componentWillUnmount() {
-    this._events.dispose();
+    this._disposeListeners();
   }
 
   public render(): JSX.Element {
@@ -167,8 +166,10 @@ export class ColorRectangleBase extends React.Component<IColorRectangleProps, IC
   }
 
   private _onMouseDown = (ev: React.MouseEvent): void => {
-    this._events.on(window, 'mousemove', this._onMouseMove, true);
-    this._events.on(window, 'mouseup', this._disableEvents, true);
+    this._disposables.push(
+      on(window, 'mousemove', this._onMouseMove, true),
+      on(window, 'mouseup', this._disposeListeners, true),
+    );
 
     this._onMouseMove(ev);
   };
@@ -183,7 +184,7 @@ export class ColorRectangleBase extends React.Component<IColorRectangleProps, IC
     // the event handlers and exit.
     // tslint:disable-next-line:no-bitwise
     // if (!(ev.buttons & 1)) {
-    //   this._disableEvents();
+    //   this._disposeListeners();
     //   return;
     // }
 
@@ -193,8 +194,9 @@ export class ColorRectangleBase extends React.Component<IColorRectangleProps, IC
     }
   };
 
-  private _disableEvents = (): void => {
-    this._events.off();
+  private _disposeListeners = (): void => {
+    this._disposables.forEach(dispose => dispose());
+    this._disposables = [];
   };
 }
 
