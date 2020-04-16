@@ -4,6 +4,9 @@
 
 ```ts
 
+import { Async } from '@uifabric/utilities';
+import * as CSS from 'csstype';
+import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
 // @public
@@ -12,6 +15,9 @@ export interface IUseBooleanCallbacks {
     setTrue: () => void;
     toggle: () => void;
 }
+
+// @public (undocumented)
+export function useAsync(): Async;
 
 // @public
 export function useBoolean(initialState: boolean): [boolean, IUseBooleanCallbacks];
@@ -35,6 +41,11 @@ export function useId(prefix?: string, providedId?: string): string;
 
 // @public
 export function useMergedRefs<T>(...refs: React.Ref<T>[]): (value: T) => void;
+
+// Warning: (ae-forgotten-export) The symbol "React" needs to be exported by the entry point index.d.ts
+//
+// @public
+export function useOnEvent<TElement extends Element>(element: React_2.RefObject<TElement | undefined | null> | TElement | Window | undefined | null, eventName: string, callback: (ev: Event) => void, useCapture?: boolean): void;
 
 
 // (No @packageDocumentation comment for this package)
