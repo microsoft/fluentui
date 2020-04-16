@@ -120,7 +120,7 @@ Hook to manage the current value for a component that could be either controlled
 
 Its two required parameters are the `controlledValue` (the current value of the control in the controlled state), and the `defaultUncontrolledValue` (for the uncontrolled state). Optionally, you may pass a third `onChange` callback to be notified of any changes triggered by the control.
 
-The return value will be a setter function that will set the internal state in the unctrolled state, and invoke the onChange callback if present.
+The return value will be a setter function that will set the internal state in the uncontrolled state, and invoke the `onChange` callback if present.
 
 See [React docs](https://reactjs.org/docs/uncontrolled-components.html) about the distinction between controlled and uncontrolled components.
 
