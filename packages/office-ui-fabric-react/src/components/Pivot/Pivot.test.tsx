@@ -1,9 +1,9 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-
+import { mount } from 'enzyme';
 import { resetIds } from '../../Utilities';
 
-import { Pivot, PivotItem, PivotLinkFormat, PivotLinkSize } from './index';
+import { Pivot, PivotItem, PivotLinkFormat, PivotLinkSize, IPivot } from './index';
 
 describe('Pivot', () => {
   beforeEach(() => {
@@ -20,6 +20,21 @@ describe('Pivot', () => {
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  it('can be focused', () => {
+    const pivotRef = React.createRef<IPivot>();
+
+    mount(
+      <Pivot componentRef={pivotRef}>
+        <PivotItem id="link1" headerText="Link 1" />
+        <PivotItem id="link2" headerText="Link 2" />
+      </Pivot>,
+    );
+
+    pivotRef.current!.focus();
+    expect(document.activeElement).toBeTruthy();
+    expect(document.activeElement!.id).toEqual('link1');
   });
 
   it('supports JSX expressions', () => {

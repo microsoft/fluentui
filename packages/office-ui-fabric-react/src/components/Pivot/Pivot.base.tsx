@@ -7,6 +7,7 @@ import {
   divProperties,
   classNamesFunction,
   warn,
+  initializeComponentRef,
 } from '../../Utilities';
 import { CommandButton } from '../../Button';
 import { IPivotProps, IPivotStyleProps, IPivotStyles } from './Pivot.types';
@@ -52,6 +53,8 @@ export class PivotBase extends React.Component<IPivotProps, IPivotState> {
 
   constructor(props: IPivotProps) {
     super(props);
+
+    initializeComponentRef(this);
 
     if (process.env.NODE_ENV !== 'production') {
       warnDeprecations(PivotName, props, {
