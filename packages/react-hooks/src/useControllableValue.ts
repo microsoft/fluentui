@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useConst } from './useConst';
 
 export type ChangeCallback<TElement extends HTMLElement, TValue> = (
   ev: React.FormEvent<TElement>,
@@ -34,18 +35,19 @@ export function useControllableValue<
   const [value, setValue] = React.useState<TValue | undefined>(
     controlledValue !== undefined ? controlledValue : defaultUncontrolledValue,
   );
+  const isControlled = useConst<boolean>(!!controlledValue);
 
   const setValueOrCallOnChange = React.useCallback(
     (newValue: TValue | undefined, ev?: React.FormEvent<TElement>) => {
       if (onChange) {
         onChange(ev!, newValue);
       }
-      if (controlledValue === undefined) {
+      if (!isControlled) {
         setValue(newValue);
       }
     },
-    [onChange, controlledValue === undefined],
+    [onChange],
   );
 
-  return [controlledValue !== undefined ? controlledValue : value, setValueOrCallOnChange] as const;
+  return [isControlled ? controlledValue : value, setValueOrCallOnChange] as const;
 }
