@@ -163,7 +163,9 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
 
       if (this.props.defaultActiveElement) {
         this._activeElement = this._getDocument().querySelector(this.props.defaultActiveElement) as HTMLElement;
-        this.focus();
+        if (this.props.shouldFocusOnMount) {
+          this.focus();
+        }
       }
     }
   }
