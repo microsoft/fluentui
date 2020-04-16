@@ -1,6 +1,18 @@
 # Change Log - @uifabric/react-cards
 
-This log was last generated on Wed, 08 Apr 2020 12:28:27 GMT and should not be manually modified.
+This log was last generated on Thu, 16 Apr 2020 04:01:45 GMT and should not be manually modified.
+
+<!-- Start content -->
+
+## [0.109.54](https://github.com/microsoft/fluentui/tree/@uifabric/react-cards_v0.109.54)
+
+Thu, 16 Apr 2020 04:01:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/react-cards_v0.109.53..@uifabric/react-cards_v0.109.54)
+
+### Patches
+
+- Readme: Remove graduation details; Fabric=>Fluent wording updates ([PR #12508](https://github.com/microsoft/fluentui/pull/12508) by elcraig@microsoft.com)
+- Card: Removing unwanted outline when Cards are clicked. ([PR #12667](https://github.com/microsoft/fluentui/pull/12667) by humbertomakotomorimoto@gmail.com)
 
 ## 0.109.53
 Wed, 08 Apr 2020 12:28:27 GMT
@@ -263,4 +275,3 @@ Tue, 26 Mar 2019 12:32:51 GMT
 Fri, 08 Mar 2019 13:32:10 GMT
 
 *Initial release*
-

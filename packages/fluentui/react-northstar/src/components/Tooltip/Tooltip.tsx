@@ -32,10 +32,6 @@ import {
 import PortalInner from '../Portal/PortalInner';
 import TooltipContent, { TooltipContentProps } from './TooltipContent';
 
-export interface TooltipSlotClassNames {
-  content: string;
-}
-
 export interface TooltipProps
   extends StyledComponentProps<TooltipProps>,
     ChildrenComponentProps<React.ReactElement>,
@@ -82,6 +78,8 @@ export interface TooltipProps
   trigger?: JSX.Element;
 }
 
+export const tooltipClassName = 'ui-tooltip';
+
 /**
  * A Tooltip displays additional non-modal information on top of its target element.
  * Tooltip doesn't receive focus and cannot contain focusable elements.
@@ -92,7 +90,6 @@ export interface TooltipProps
 const Tooltip: React.FC<TooltipProps> &
   FluentComponentStaticProps<TooltipProps> & {
     Content: typeof TooltipContent;
-    slotClassNames: TooltipSlotClassNames;
   } = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(Tooltip.displayName, context.telemetry);
@@ -254,12 +251,8 @@ const Tooltip: React.FC<TooltipProps> &
   return element;
 };
 
-Tooltip.className = 'ui-tooltip';
+Tooltip.deprecated_className = tooltipClassName;
 Tooltip.displayName = 'Tooltip';
-
-Tooltip.slotClassNames = {
-  content: `${Tooltip.className}__content`,
-};
 
 Tooltip.defaultProps = {
   align: 'center',
@@ -278,7 +271,10 @@ Tooltip.propTypes = {
   defaultOpen: PropTypes.bool,
   mountNode: customPropTypes.domNode,
   mouseLeaveDelay: PropTypes.number,
-  offset: PropTypes.string,
+  offset: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.arrayOf(PropTypes.number) as PropTypes.Requireable<[number, number]>,
+  ]),
   open: PropTypes.bool,
   onOpenChange: PropTypes.func,
   pointing: PropTypes.bool,
@@ -289,12 +285,14 @@ Tooltip.propTypes = {
   content: customPropTypes.shorthandAllowingChildren,
   unstable_pinned: PropTypes.bool,
   flipBoundary: PropTypes.oneOfType([
-    PropTypes.object as PropTypes.Requireable<Element>,
-    PropTypes.oneOf<'scrollParent' | 'window' | 'viewport'>(['scrollParent', 'window', 'viewport']),
+    PropTypes.object as PropTypes.Requireable<HTMLElement>,
+    PropTypes.arrayOf(PropTypes.object) as PropTypes.Requireable<HTMLElement[]>,
+    PropTypes.oneOf<'clippingParents' | 'window' | 'scrollParent'>(['clippingParents', 'window', 'scrollParent']),
   ]),
   overflowBoundary: PropTypes.oneOfType([
-    PropTypes.object as PropTypes.Requireable<Element>,
-    PropTypes.oneOf<'scrollParent' | 'window' | 'viewport'>(['scrollParent', 'window', 'viewport']),
+    PropTypes.object as PropTypes.Requireable<HTMLElement>,
+    PropTypes.arrayOf(PropTypes.object) as PropTypes.Requireable<HTMLElement[]>,
+    PropTypes.oneOf<'clippingParents' | 'window' | 'scrollParent'>(['clippingParents', 'window', 'scrollParent']),
   ]),
 };
 Tooltip.handledProps = Object.keys(Tooltip.propTypes) as any;

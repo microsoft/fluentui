@@ -1,6 +1,7 @@
 import { Accessibility, AriaRole, IS_FOCUSABLE_ATTRIBUTE } from '@fluentui/accessibility';
 import { FocusZone, Telemetry } from '@fluentui/react-bindings';
 import { Ref, RefFindNode } from '@fluentui/react-component-ref';
+import { ComposedComponent } from '@fluentui/react-compose';
 import * as faker from 'faker';
 import * as _ from 'lodash';
 import * as React from 'react';
@@ -45,9 +46,9 @@ export interface Conformant {
  */
 export default function isConformant(
   Component: React.ComponentType<any> & {
-    handledProps: FluentUI.ObjectOf<any>;
+    handledProps?: string[];
     autoControlledProps?: string[];
-    className: string;
+    deprecated_className?: string;
   },
   options: Conformant = {},
 ) {
@@ -65,6 +66,8 @@ export default function isConformant(
   const { throwError } = helpers('isConformant', Component);
 
   const componentType = typeof Component;
+  // composed components store `handledProps` under config
+  const handledProps = (Component as ComposedComponent).fluentComposeConfig?.handledProps || Component.handledProps;
 
   const helperComponentNames = [...[Ref, RefFindNode], ...(wrapperComponent ? [wrapperComponent] : [])].map(
     getDisplayName,
@@ -258,21 +261,40 @@ export default function isConformant(
     });
   }
 
+  // ---------------------------------------
+  // Autocontrolled props
+  // ---------------------------------------
+  test('autoControlled props should have prop, default prop and on change handler in handled props', () => {
+    autoControlledProps.forEach(propName => {
+      const capitalisedPropName = `${propName.slice(0, 1).toUpperCase()}${propName.slice(1)}`;
+      const expectedDefaultProp = `default${capitalisedPropName}`;
+      const expectedChangeHandler =
+        propName === 'value' || propName === 'checked' ? 'onChange' : `on${capitalisedPropName}Change`;
+
+      expect(handledProps).toContain(propName);
+      expect(handledProps).toContain(expectedDefaultProp);
+      expect(handledProps).toContain(expectedChangeHandler);
+    });
+  });
+
+  // ---------------------------------------
+  // Handled props
+  // ---------------------------------------
   describe('handles props', () => {
-    test('defines handled props in Component.handledProps', () => {
-      expect(Component.handledProps).toBeDefined();
-      expect(Array.isArray(Component.handledProps)).toEqual(true);
+    test('defines handled props in handledProps', () => {
+      expect(handledProps).toBeDefined();
+      expect(Array.isArray(handledProps)).toEqual(true);
     });
 
     test(`has 'styles' as handled prop`, () => {
-      expect(Component.handledProps).toContain('styles');
+      expect(handledProps).toContain('styles');
     });
 
     test(`has 'variables' as handled prop`, () => {
-      expect(Component.handledProps).toContain('variables');
+      expect(handledProps).toContain('variables');
     });
 
-    test('Component.handledProps includes all handled props', () => {
+    test('handledProps includes all handled props', () => {
       const computedProps = _.union(
         Component.autoControlledProps,
         _.keys(Component.defaultProps),
@@ -287,23 +309,10 @@ export default function isConformant(
 
       expect({
         message,
-        handledProps: Component.handledProps.sort(),
+        handledProps: handledProps.sort(),
       }).toEqual({
         message,
         handledProps: expectedProps,
-      });
-    });
-
-    test('autoControlled props should have prop, default prop and on change handler in handled props', () => {
-      autoControlledProps.forEach(propName => {
-        const capitalisedPropName = `${propName.slice(0, 1).toUpperCase()}${propName.slice(1)}`;
-        const expectedDefaultProp = `default${capitalisedPropName}`;
-        const expectedChangeHandler =
-          propName === 'value' || propName === 'checked' ? 'onChange' : `on${capitalisedPropName}Change`;
-
-        expect(Component.handledProps).toContain(propName);
-        expect(Component.handledProps).toContain(expectedDefaultProp);
-        expect(Component.handledProps).toContain(expectedChangeHandler);
       });
     });
 
@@ -330,8 +339,8 @@ export default function isConformant(
       },
     });
 
-    test('defines an "accessibility" prop in Component.handledProps', () => {
-      expect(Component.handledProps).toContain('accessibility');
+    test('defines an "accessibility" prop in handledProps', () => {
+      expect(handledProps).toContain('accessibility');
     });
 
     test('spreads "attributes" on root', () => {
@@ -481,7 +490,7 @@ export default function isConformant(
     };
 
     test(`is a static equal to "${componentClassName}"`, () => {
-      expect(Component.className).toEqual(componentClassName);
+      expect(Component.deprecated_className).toEqual(componentClassName);
     });
 
     test(`is applied to the root element`, () => {
@@ -557,7 +566,6 @@ export default function isConformant(
   // ---------------------------------------
   // Telemetry
   // ---------------------------------------
-
   describe('telemetry', () => {
     test('reports telemetry to its Provider', () => {
       const telemetry = new Telemetry();

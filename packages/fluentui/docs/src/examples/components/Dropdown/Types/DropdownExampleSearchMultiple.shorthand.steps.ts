@@ -1,10 +1,10 @@
-import { Dropdown, DropdownSearchInput } from '@fluentui/react-northstar';
+import { dropdownSearchInputSlotClassNames, dropdownSlotClassNames } from '@fluentui/react-northstar';
 
 const selectors = {
-  toggleIndicator: `.${Dropdown.slotClassNames.toggleIndicator}`,
-  input: `.${DropdownSearchInput.slotClassNames.input}`,
-  item: (itemIndex: number) => `.${Dropdown.slotClassNames.itemsList} li:nth-child(${itemIndex})`,
-  selectedItem: (itemIndex: number) => `.${Dropdown.slotClassNames.selectedItems} span:nth-child(${itemIndex})`,
+  toggleIndicator: `.${dropdownSlotClassNames.toggleIndicator}`,
+  input: `.${dropdownSearchInputSlotClassNames.input}`,
+  item: (itemIndex: number) => `.${dropdownSlotClassNames.itemsList} li:nth-child(${itemIndex})`,
+  selectedItem: (itemIndex: number) => `.${dropdownSlotClassNames.selectedItems} span:nth-child(${itemIndex})`,
 };
 
 const config: ScreenerTestsConfig = {

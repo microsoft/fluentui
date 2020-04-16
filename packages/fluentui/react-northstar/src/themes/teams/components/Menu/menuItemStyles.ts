@@ -1,7 +1,12 @@
 import { pxToRem } from '../../../../utils';
 import { StrictColorScheme, ItemType } from '../../../types';
 import { MenuVariables, menuColorAreas } from './menuVariables';
-import MenuItem, { MenuItemProps, MenuItemState } from '../../../../components/Menu/MenuItem';
+import {
+  MenuItemProps,
+  MenuItemState,
+  menuItemClassName,
+  menuItemSlotClassNames,
+} from '../../../../components/Menu/MenuItem';
 import { getColorScheme } from '../../colors';
 import getIconFillOrOutlineStyles from '../../getIconFillOrOutlineStyles';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
@@ -254,7 +259,7 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
           color: v.iconOnlyColorHover,
         }),
 
-        [`&>.${MenuItem.className}>.${MenuItem.slotClassNames.indicator}`]: {
+        [`&>.${menuItemClassName}>.${menuItemSlotClassNames.indicator}`]: {
           backgroundImage: submenuIndicatorUrl(v.indicatorColorHover, vertical),
 
           ...(primary && {

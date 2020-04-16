@@ -8,6 +8,7 @@ import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import * as keyboardKey from 'keyboard-key';
+import { disableBodyScroll, enableBodyScroll } from './utils';
 
 import {
   UIComponentProps,
@@ -105,10 +106,19 @@ export interface DialogState {
   headerId?: string;
   open?: boolean;
 }
+const dialogsCounterAttribute = 'fluent-dialogs-count';
+export const dialogClassName = 'ui-dialog';
+export const dialogSlotClassNames: DialogSlotClassNames = {
+  header: `${dialogClassName}__header`,
+  headerAction: `${dialogClassName}__headerAction`,
+  content: `${dialogClassName}__content`,
+  overlay: `${dialogClassName}__overlay`,
+  footer: `${dialogClassName}__footer`,
+};
 
 class Dialog extends AutoControlledComponent<WithAsProp<DialogProps>, DialogState> {
   static displayName = 'Dialog';
-  static className = 'ui-dialog';
+  static deprecated_className = dialogClassName;
 
   static slotClassNames: DialogSlotClassNames;
 
@@ -227,6 +237,50 @@ class Dialog extends AutoControlledComponent<WithAsProp<DialogProps>, DialogStat
     }
   };
 
+  lockBodyScroll() {
+    const openDialogs = (+this.context.target.body.getAttribute(dialogsCounterAttribute) || 0) + 1;
+    this.context.target.body.setAttribute(dialogsCounterAttribute, `${openDialogs}`);
+
+    // Avoid to block scroll in nested dialogs
+    if (openDialogs === 1) {
+      disableBodyScroll(this.context.target.body);
+    }
+  }
+
+  unlockBodyScroll() {
+    const openDialogs = (+this.context.target.body.getAttribute(dialogsCounterAttribute) || 0) - 1;
+    this.context.target.body.setAttribute(dialogsCounterAttribute, `${openDialogs}`);
+
+    // Only enables scroll if all dialogs are closed
+    if (openDialogs === 0) {
+      enableBodyScroll(this.context.target.body);
+      this.context.target.body.removeAttribute(dialogsCounterAttribute);
+    }
+  }
+
+  componentDidUpdate(_, prevState) {
+    // Open -> Closed
+    if (prevState.open && !this.state.open) {
+      this.unlockBodyScroll();
+    }
+    // Closed -> Open
+    if (!prevState.open && this.state.open) {
+      this.lockBodyScroll();
+    }
+  }
+
+  componentDidMount() {
+    if (this.state.open) {
+      this.lockBodyScroll();
+    }
+  }
+
+  componentWillUnmount() {
+    if (this.state.open) {
+      this.unlockBodyScroll();
+    }
+  }
+
   renderComponent({ accessibility, classes, ElementType, styles, unhandledProps, rtl }) {
     const {
       actions,
@@ -280,33 +334,31 @@ class Dialog extends AutoControlledComponent<WithAsProp<DialogProps>, DialogStat
           {Header.create(header, {
             defaultProps: () => ({
               as: 'h2',
-              className: Dialog.slotClassNames.header,
+              className: dialogSlotClassNames.header,
               styles: styles.header,
               ...accessibility.attributes.header,
             }),
           })}
           {Button.create(headerAction, {
             defaultProps: () => ({
-              className: Dialog.slotClassNames.headerAction,
+              className: dialogSlotClassNames.headerAction,
               styles: styles.headerAction,
               text: true,
               iconOnly: true,
               ...accessibility.attributes.headerAction,
             }),
           })}
-
           {Box.create(content, {
             defaultProps: () => ({
               styles: styles.content,
-              className: Dialog.slotClassNames.content,
+              className: dialogSlotClassNames.content,
               ...accessibility.attributes.content,
             }),
           })}
-
           {DialogFooter.create(footer, {
             overrideProps: {
               content: dialogActions,
-              className: Dialog.slotClassNames.footer,
+              className: dialogSlotClassNames.footer,
               styles: styles.footer,
             },
           })}
@@ -339,7 +391,7 @@ class Dialog extends AutoControlledComponent<WithAsProp<DialogProps>, DialogStat
               >
                 {Box.create(overlay, {
                   defaultProps: () => ({
-                    className: Dialog.slotClassNames.overlay,
+                    className: dialogSlotClassNames.overlay,
                     styles: styles.overlay,
                   }),
                   overrideProps: { content: dialogContent },
@@ -363,13 +415,7 @@ class Dialog extends AutoControlledComponent<WithAsProp<DialogProps>, DialogStat
   }
 }
 
-Dialog.slotClassNames = {
-  header: `${Dialog.className}__header`,
-  headerAction: `${Dialog.className}__headerAction`,
-  content: `${Dialog.className}__content`,
-  overlay: `${Dialog.className}__overlay`,
-  footer: `${Dialog.className}__footer`,
-};
+Dialog.slotClassNames = dialogSlotClassNames;
 
 /**
  * A Dialog displays important information on top of a page which requires a user's attention, confirmation, or interaction.

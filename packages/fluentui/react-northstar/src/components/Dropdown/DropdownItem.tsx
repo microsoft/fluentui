@@ -69,6 +69,15 @@ export interface DropdownItemProps extends UIComponentProps<DropdownItemProps> {
   selected?: boolean;
 }
 
+export const dropdownItemClassName = 'ui-dropdown__item';
+export const dropdownItemSlotClassNames: DropdownItemSlotClassNames = {
+  main: `${dropdownItemClassName}__main`,
+  content: `${dropdownItemClassName}__content`,
+  header: `${dropdownItemClassName}__header`,
+  image: `${dropdownItemClassName}__image`,
+  checkableIndicator: `${dropdownItemClassName}__checkable-indicator`,
+};
+
 const DropdownItem: React.FC<WithAsProp<DropdownItemProps> & { index: number }> &
   FluentComponentStaticProps<DropdownItemProps> & {
     slotClassNames: DropdownItemSlotClassNames;
@@ -95,7 +104,7 @@ const DropdownItem: React.FC<WithAsProp<DropdownItemProps> & { index: number }> 
   } = props;
 
   const { classes, styles: resolvedStyles } = useStyles(DropdownItem.displayName, {
-    className: DropdownItem.className,
+    className: dropdownItemClassName,
     mapPropsToStyles: () => ({
       active,
       isFromKeyboard,
@@ -116,13 +125,13 @@ const DropdownItem: React.FC<WithAsProp<DropdownItemProps> & { index: number }> 
 
   const contentElement = Box.create(content, {
     defaultProps: () => ({
-      className: DropdownItem.slotClassNames.content,
+      className: dropdownItemSlotClassNames.content,
       styles: resolvedStyles.content,
     }),
   });
   const headerElement = Box.create(header, {
     defaultProps: () => ({
-      className: DropdownItem.slotClassNames.header,
+      className: dropdownItemSlotClassNames.header,
       styles: resolvedStyles.header,
     }),
   });
@@ -130,7 +139,7 @@ const DropdownItem: React.FC<WithAsProp<DropdownItemProps> & { index: number }> 
     selected && checkable
       ? Box.create(checkableIndicator, {
           defaultProps: () => ({
-            className: DropdownItem.slotClassNames.checkableIndicator,
+            className: dropdownItemSlotClassNames.checkableIndicator,
             styles: resolvedStyles.checkableIndicator,
             accessibility: indicatorBehavior,
           }),
@@ -140,13 +149,13 @@ const DropdownItem: React.FC<WithAsProp<DropdownItemProps> & { index: number }> 
     Image.create(image, {
       defaultProps: () => ({
         avatar: true,
-        className: DropdownItem.slotClassNames.image,
+        className: dropdownItemSlotClassNames.image,
         styles: resolvedStyles.image,
       }),
     }),
     {
       defaultProps: () => ({
-        className: DropdownItem.slotClassNames.image,
+        className: dropdownItemSlotClassNames.image,
         styles: resolvedStyles.media,
       }),
     },
@@ -156,7 +165,7 @@ const DropdownItem: React.FC<WithAsProp<DropdownItemProps> & { index: number }> 
     <ElementType className={classes.root} onClick={handleClick} {...accessibilityItemProps} {...unhandledProps}>
       {imageElement}
 
-      <div className={cx(DropdownItem.slotClassNames.main, classes.main)}>
+      <div className={cx(dropdownItemSlotClassNames.main, classes.main)}>
         {headerElement}
         {contentElement}
       </div>
@@ -170,7 +179,7 @@ const DropdownItem: React.FC<WithAsProp<DropdownItemProps> & { index: number }> 
   return element;
 };
 
-DropdownItem.className = 'ui-dropdown__item';
+DropdownItem.deprecated_className = dropdownItemClassName;
 DropdownItem.displayName = 'DropdownItem';
 
 DropdownItem.defaultProps = {
@@ -198,13 +207,7 @@ DropdownItem.propTypes = {
 };
 DropdownItem.handledProps = Object.keys(DropdownItem.propTypes) as any;
 
-DropdownItem.slotClassNames = {
-  main: `${DropdownItem.className}__main`,
-  content: `${DropdownItem.className}__content`,
-  header: `${DropdownItem.className}__header`,
-  image: `${DropdownItem.className}__image`,
-  checkableIndicator: `${DropdownItem.className}__checkable-indicator`,
-};
+DropdownItem.slotClassNames = dropdownItemSlotClassNames;
 
 DropdownItem.create = createShorthandFactory({ Component: DropdownItem, mappedProp: 'header' });
 

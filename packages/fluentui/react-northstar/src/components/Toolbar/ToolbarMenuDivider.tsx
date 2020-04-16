@@ -23,6 +23,7 @@ export interface ToolbarMenuDividerProps extends UIComponentProps, ChildrenCompo
 }
 
 export type ToolbarMenuDividerStylesProps = never;
+export const toolbarMenuDividerClassName = 'ui-toolbar__menudivider';
 
 const ToolbarMenuDivider: React.FC<WithAsProp<ToolbarMenuDividerProps>> &
   FluentComponentStaticProps<ToolbarMenuDividerProps> = props => {
@@ -38,7 +39,7 @@ const ToolbarMenuDivider: React.FC<WithAsProp<ToolbarMenuDividerProps>> &
     rtl: context.rtl,
   });
   const { classes } = useStyles<ToolbarMenuDividerStylesProps>(ToolbarMenuDivider.displayName, {
-    className: ToolbarMenuDivider.className,
+    className: toolbarMenuDividerClassName,
     mapPropsToInlineStyles: () => ({
       className,
       design,
@@ -57,7 +58,7 @@ const ToolbarMenuDivider: React.FC<WithAsProp<ToolbarMenuDividerProps>> &
   return element;
 };
 
-ToolbarMenuDivider.className = 'ui-toolbar__menudivider';
+ToolbarMenuDivider.deprecated_className = toolbarMenuDividerClassName;
 ToolbarMenuDivider.displayName = 'ToolbarMenuDivider';
 
 ToolbarMenuDivider.propTypes = commonPropTypes.createCommon();

@@ -1,6 +1,22 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Thu, 02 Apr 2020 12:30:40 GMT and should not be manually modified.
+This log was last generated on Thu, 16 Apr 2020 04:01:45 GMT and should not be manually modified.
+
+<!-- Start content -->
+
+## [1.4.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v1.4.0)
+
+Thu, 16 Apr 2020 04:01:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v1.1.4..@uifabric/charting_v1.4.0)
+
+### Minor changes
+
+- Provide customization for line chart tooltip and Y Axis label ([PR #12622](https://github.com/microsoft/fluentui/pull/12622) by v-satgar@microsoft.com)
+- Add Callout and Legends for vertical bar chart ([PR #12623](https://github.com/microsoft/fluentui/pull/12623) by v-satgar@microsoft.com)
+
+### Patches
+
+- Readme: Fabric=>Fluent wording updates ([PR #12508](https://github.com/microsoft/fluentui/pull/12508) by elcraig@microsoft.com)
 
 ## 1.1.0
 Thu, 02 Apr 2020 12:30:40 GMT
@@ -1411,4 +1427,3 @@ Wed, 16 Aug 2017 10:11:43 GMT
 Tue, 15 Aug 2017 10:19:22 GMT
 
 *Initial release*
-

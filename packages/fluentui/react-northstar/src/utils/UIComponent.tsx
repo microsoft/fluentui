@@ -12,7 +12,7 @@ class UIComponent<P, S = {}> extends React.Component<P, S> {
   readonly childClass = this.constructor as typeof UIComponent;
   static defaultProps: { [key: string]: any };
   static displayName: string;
-  static className: string;
+  static deprecated_className: string;
 
   static contextType = ThemeContext;
   static propTypes: any;
@@ -56,7 +56,7 @@ class UIComponent<P, S = {}> extends React.Component<P, S> {
   render() {
     return renderComponent(
       {
-        className: this.childClass.className,
+        className: this.childClass.deprecated_className,
         displayName: this.childClass.displayName,
         handledProps: this.childClass.handledProps,
         props: this.props,

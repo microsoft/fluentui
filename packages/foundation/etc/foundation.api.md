@@ -107,7 +107,7 @@ export type ISlotDefinition<TSlots> = {
 };
 
 // @public
-export type ISlotFactory<TProps extends ValidProps, TShorthandProp extends ValidShorthand> = (componentProps: TProps & IProcessedSlotProps, userProps: ISlotProp<TProps, TShorthandProp>, slotOptions: ISlotOptions<TProps> | undefined, defaultStyles: IStyle) => ReturnType<React.FunctionComponent<TProps>>;
+export type ISlotFactory<TProps extends ValidProps, TShorthandProp extends ValidShorthand> = (componentProps: TProps & IProcessedSlotProps, userProps: ISlotProp<TProps, TShorthandProp>, slotOptions: ISlotOptions<TProps> | undefined, defaultStyles: IStyle, theme?: ITheme) => ReturnType<React.FunctionComponent<TProps>>;
 
 // @public
 export interface ISlotOptions<TProps> {

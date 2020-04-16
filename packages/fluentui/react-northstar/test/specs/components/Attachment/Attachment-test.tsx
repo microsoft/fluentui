@@ -1,13 +1,14 @@
+import { ReactWrapper } from 'enzyme';
 import * as React from 'react';
 import { isConformant, implementsShorthandProp, handlesAccessibility } from 'test/specs/commonTests';
 import { mountWithProvider, findIntrinsicElement } from 'test/utils';
 import * as keyboardKey from 'keyboard-key';
 
-import Attachment from 'src/components/Attachment/Attachment';
-import Box from 'src/components/Box/Box';
-import Button from 'src/components/Button/Button';
-import Text from 'src/components/Text/Text';
-import { ReactWrapper } from 'enzyme';
+import Attachment, { attachmentClassName } from 'src/components/Attachment/Attachment';
+import AttachmentAction, { attachmentActionClassName } from 'src/components/Attachment/AttachmentAction';
+import AttachmentDescription from 'src/components/Attachment/AttachmentDescription';
+import AttachmentHeader from 'src/components/Attachment/AttachmentHeader';
+import AttachmentIcon from 'src/components/Attachment/AttachmentIcon';
 
 const attachmentImplementsShorthandProp = implementsShorthandProp(Attachment);
 
@@ -27,10 +28,10 @@ const getAttachment = (onClickAttachment: jest.Mock, onClickButton: jest.Mock): 
 describe('Attachment', () => {
   isConformant(Attachment, { constructorName: 'Attachment' });
 
-  attachmentImplementsShorthandProp('action', Button);
-  attachmentImplementsShorthandProp('description', Text);
-  attachmentImplementsShorthandProp('icon', Box, { mapsValueToProp: 'children' });
-  attachmentImplementsShorthandProp('header', Text);
+  attachmentImplementsShorthandProp('action', AttachmentAction);
+  attachmentImplementsShorthandProp('description', AttachmentDescription);
+  attachmentImplementsShorthandProp('icon', AttachmentIcon);
+  attachmentImplementsShorthandProp('header', AttachmentHeader);
 
   describe('accessibility', () => {
     handlesAccessibility(Attachment, {
@@ -41,7 +42,7 @@ describe('Attachment', () => {
       const onClickAttachment = jest.fn();
       const onClickButton = jest.fn();
       const attachment = getAttachment(onClickAttachment, onClickButton);
-      attachment.find(`.${Attachment.className}`).simulate('keydown', { keyCode: keyboardKey.Enter });
+      attachment.find(`.${attachmentClassName}`).simulate('keydown', { keyCode: keyboardKey.Enter });
       expect(onClickAttachment).toHaveBeenCalledTimes(1);
     });
 
@@ -49,7 +50,7 @@ describe('Attachment', () => {
       const onClickAttachment = jest.fn();
       const onClickButton = jest.fn();
       const attachment = getAttachment(onClickAttachment, onClickButton);
-      findIntrinsicElement(attachment, `.${Attachment.slotClassNames.action}`).simulate('keydown', {
+      findIntrinsicElement(attachment, `.${attachmentActionClassName}`).simulate('keydown', {
         keyCode: keyboardKey.Enter,
       });
       expect(onClickAttachment).not.toBeCalled();

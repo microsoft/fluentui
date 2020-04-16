@@ -2,6 +2,41 @@
   "name": "@fluentui/react-compose",
   "entries": [
     {
+      "date": "Thu, 16 Apr 2020 04:01:45 GMT",
+      "tag": "@fluentui/react-compose_v0.2.6",
+      "version": "0.2.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update package description",
+            "author": "elcraig@microsoft.com",
+            "commit": "9e3c7c7d4b92e132820cdbcd61a667829c712ecb",
+            "package": "@fluentui/react-compose"
+          },
+          {
+            "comment": "fix(compose): add className as static and fix handling of handledProps",
+            "author": "olfedias@microsoft.com",
+            "commit": "b2867e57e2eaba8ac9c6c7c3e838d3802843d640",
+            "package": "@fluentui/react-compose"
+          },
+          {
+            "comment": "renamed className to deprecated_className",
+            "author": "mnajdova@gmail.com",
+            "commit": "7422b5965d79047303f4e31ad5668555edafee5e",
+            "package": "@fluentui/react-compose"
+          }
+        ],
+        "none": [
+          {
+            "comment": "sync package version",
+            "author": "xgao@microsoft.com",
+            "commit": "6f39958352207acb3029458503db0969a4359806",
+            "package": "@fluentui/react-compose"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 09 Apr 2020 12:24:31 GMT",
       "tag": "@fluentui/react-compose_v0.2.4",
       "version": "0.2.4",

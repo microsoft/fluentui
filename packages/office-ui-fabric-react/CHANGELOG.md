@@ -1,6 +1,38 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 09 Apr 2020 12:24:31 GMT and should not be manually modified.
+This log was last generated on Thu, 16 Apr 2020 12:37:31 GMT and should not be manually modified.
+
+<!-- Start content -->
+
+## [7.106.3](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.106.3)
+
+Thu, 16 Apr 2020 12:37:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.106.1..office-ui-fabric-react_v7.106.3)
+
+### Patches
+
+- Replace uses of EventGroup with the 'on' function and _disposables pattern in ColorRectangle, ColorSlider, and Slider ([PR #12717](https://github.com/microsoft/fluentui/pull/12717) by behowell@microsoft.com)
+- changed svg factory example and added icon components tests ([PR #12675](https://github.com/microsoft/fluentui/pull/12675) by mnajdova@gmail.com)
+
+## [7.106.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.106.1)
+
+Thu, 16 Apr 2020 04:01:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.106.0..office-ui-fabric-react_v7.106.1)
+
+### Patches
+
+- Adding Stack snapshot test for RTL scenarios. ([PR #12649](https://github.com/microsoft/fluentui/pull/12649) by Humberto.Morimoto@microsoft.com)
+- Readme: Add migration info ([PR #12508](https://github.com/microsoft/fluentui/pull/12508) by elcraig@microsoft.com)
+- removing more references to wrong icon-ppt.png icon in wrong folder ([PR #12422](https://github.com/microsoft/fluentui/pull/12422) by caperez@microsoft.com)
+- Fixed a bug in the DatePicker causing an existing validation error to be cleared when tabbing through the component. ([PR #12602](https://github.com/microsoft/fluentui/pull/12602) by michaelmajgaard@outlook.com)
+- Panel: passing close button styles down using subComponentStyles ([PR #12630](https://github.com/microsoft/fluentui/pull/12630) by xgao@microsoft.com)
+- Examples: fix bad practice styles prop ([PR #12631](https://github.com/microsoft/fluentui/pull/12631) by xgao@microsoft.com)
+- Updated DatePicker and ComboBox examples to use function components ([PR #12637](https://github.com/microsoft/fluentui/pull/12637) by czearing@outlook.com)
+- Updating Rating, Text, OverflowSet, and Dropdown examples to use function components ([PR #12638](https://github.com/microsoft/fluentui/pull/12638) by czearing@outlook.com)
+- always return explicit Fabric dir ([PR #12647](https://github.com/microsoft/fluentui/pull/12647) by mgodbolt@microsoft.com)
+- Adding SVG icon examples ([PR #12608](https://github.com/microsoft/fluentui/pull/12608) by dzearing@microsoft.com)
+- Keyframes are calculated on access. This helps with SSR generation, as namespace will be respected. ([PR #12668](https://github.com/microsoft/fluentui/pull/12668) by dzearing@microsoft.com)
+- DetailsRow.base bug fix for cellStyleProps ([PR #12691](https://github.com/microsoft/fluentui/pull/12691) by SGonzalezBustos@Gmail.com)
 
 ## 7.106.0
 Thu, 09 Apr 2020 12:24:31 GMT
@@ -9853,4 +9885,3 @@ Mon, 05 Dec 2016 04:02:30 GMT
 ### Minor changes
 
 - Facepile: updating default behavior.
-

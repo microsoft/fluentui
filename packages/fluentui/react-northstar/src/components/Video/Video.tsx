@@ -26,10 +26,12 @@ export interface VideoProps extends UIComponentProps {
   src?: string;
 }
 
+export const videoClassName = 'ui-video';
+
 class Video extends UIComponent<WithAsProp<VideoProps>> {
   static create: ShorthandFactory<VideoProps>;
 
-  static className = 'ui-video';
+  static deprecated_className = videoClassName;
 
   static displayName = 'Video';
 

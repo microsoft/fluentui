@@ -6,7 +6,7 @@ import { ReactWrapper } from 'enzyme';
 import { mountWithProvider as mount } from 'test/utils';
 import { isConformant, implementsShorthandProp, implementsWrapperProp } from 'test/specs/commonTests';
 
-import Input from 'src/components/Input/Input';
+import Input, { inputSlotClassNames } from 'src/components/Input/Input';
 import Box from 'src/components/Box/Box';
 
 const testValue = 'test value';
@@ -65,7 +65,7 @@ describe('Input', () => {
       const wrapper = mount(<Input clearable defaultValue={faker.lorem.word()} onChange={onChange} />);
 
       wrapper
-        .find(`.${Input.slotClassNames.icon}`)
+        .find(`.${inputSlotClassNames.icon}`)
         .first()
         .simulate('click');
       expect(onChange).toBeCalledTimes(1);
@@ -124,7 +124,7 @@ describe('Input', () => {
       const inputComp = mount(<Input clearable />);
       const domNode = getInputDomNode(inputComp);
       setUserInputValue(inputComp, testValue); // user types into the input
-      const iconComp = inputComp.find(`Box[className~="${Input.slotClassNames.icon}"]`);
+      const iconComp = inputComp.find(`Box[className~="${inputSlotClassNames.icon}"]`);
 
       expect(domNode.value).toEqual(testValue); // input value is the one typed by the user
       expect(iconComp.length).toBeGreaterThan(0); // the 'x' icon appears
@@ -132,7 +132,7 @@ describe('Input', () => {
       iconComp.simulate('click'); // user clicks on 'x' icon
 
       expect(domNode.value).toEqual(''); // input value gets cleared
-      expect(inputComp.find(`Box[className~="${Input.slotClassNames.icon}"]`).length).toEqual(0); // the 'x' icon disappears
+      expect(inputComp.find(`Box[className~="${inputSlotClassNames.icon}"]`).length).toEqual(0); // the 'x' icon disappears
     });
   });
 

@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "explicitly set RTL false on website",
-  "packageName": "@uifabric/fabric-website",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-04-10T15:53:34.257Z"
-}
