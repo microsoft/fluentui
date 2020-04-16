@@ -191,10 +191,13 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = (props: IPivotPro
   const items = linkCollection.links.map(l => renderPivotLink(linkCollection, l, renderSelectedKey));
   return (
     <div role="toolbar" {...divProps}>
-      <FocusZone componentRef={focusZoneRef} direction={FocusZoneDirection.horizontal}>
-        <div className={classNames.root} role="tablist">
-          {items}
-        </div>
+      <FocusZone
+        componentRef={focusZoneRef}
+        direction={FocusZoneDirection.horizontal}
+        className={classNames.root}
+        role="tablist"
+      >
+        {items}
       </FocusZone>
       <div role="tabpanel" aria-labelledby={selectedTabId} className={classNames.itemContainer}>
         {React.Children.toArray(props.children)[index]}
