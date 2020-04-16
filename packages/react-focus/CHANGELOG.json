@@ -2,6 +2,28 @@
   "name": "@fluentui/react-focus",
   "entries": [
     {
+      "date": "Thu, 16 Apr 2020 12:37:31 GMT",
+      "tag": "@fluentui/react-focus_v7.4.0",
+      "version": "7.4.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "cbf3c8eaa552f7c60485968f18d5cdf373844492",
+            "package": "@fluentui/react-focus"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "FocusZone: Bringing shouldFocusOnMount prop from v0 to v7.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "cbf3c8eaa552f7c60485968f18d5cdf373844492",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 16 Apr 2020 05:06:13 GMT",
       "tag": "@fluentui/react-focus_v7.3.1",
       "version": "7.3.1",

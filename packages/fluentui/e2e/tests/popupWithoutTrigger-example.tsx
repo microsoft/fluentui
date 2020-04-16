@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { Popup, Button, buttonClassName } from '@fluentui/react-northstar';
+import { Popup, Button, buttonClassName, popupContentClassName } from '@fluentui/react-northstar';
 
 export const selectors = {
-  popupContent: PopuplotClassNames.content,
+  popupContent: popupContentClassName,
   button: buttonClassName,
 };
 

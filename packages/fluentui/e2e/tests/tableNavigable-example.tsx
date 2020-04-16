@@ -1,4 +1,14 @@
-import { Table, Button, Flex, MenuButton, TableRow, TableCell, Ref, buttonClassName } from '@fluentui/react-northstar';
+import {
+  Table,
+  Button,
+  Flex,
+  MenuButton,
+  Ref,
+  tableRowClassName,
+  tableCellClassName,
+  buttonClassName,
+  tableSlotClassNames,
+} from '@fluentui/react-northstar';
 import {
   gridNestedBehavior,
   gridCellWithFocusableElementBehavior,
@@ -8,9 +18,9 @@ import * as React from 'react';
 
 export const selectors = {
   buttonClassName,
-  tableHeaderClass: Table.slotClassNames.header,
-  row: TableRow.deprecated_className,
-  cell: TableCell.deprecated_className,
+  tableHeaderClass: tableSlotClassNames.header,
+  row: tableRowClassName,
+  cell: tableCellClassName,
   beforeTableId: 'before-table',
   afterTableId: 'after-table',
   moreOptionsButtonId: 'more-options',
