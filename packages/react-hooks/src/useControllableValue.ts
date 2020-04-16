@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-type ChangeCallback<TElement extends HTMLElement, TValue> = (
+export type ChangeCallback<TElement extends HTMLElement, TValue> = (
   ev: React.FormEvent<TElement>,
   newValue: TValue | undefined,
 ) => void;
