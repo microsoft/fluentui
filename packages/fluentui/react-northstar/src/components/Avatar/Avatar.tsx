@@ -51,6 +51,7 @@ export interface AvatarProps extends UIComponentProps {
 }
 
 export type AvatarStylesProps = Pick<AvatarProps, 'size' | 'square'>;
+export const avatarClassName = 'ui-avatar';
 
 const Avatar: React.FC<WithAsProp<AvatarProps>> & FluentComponentStaticProps<AvatarProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
@@ -78,7 +79,7 @@ const Avatar: React.FC<WithAsProp<AvatarProps>> & FluentComponentStaticProps<Ava
     rtl: context.rtl,
   });
   const { classes, styles: resolvedStyles } = useStyles(Avatar.displayName, {
-    className: Avatar.deprecated_className,
+    className: avatarClassName,
     mapPropsToStyles: () => ({ size, square }),
     mapPropsToInlineStyles: () => ({
       className,
@@ -140,7 +141,7 @@ const Avatar: React.FC<WithAsProp<AvatarProps>> & FluentComponentStaticProps<Ava
   return result;
 };
 
-Avatar.deprecated_className = 'ui-avatar';
+Avatar.deprecated_className = avatarClassName;
 Avatar.displayName = 'Avatar';
 
 Avatar.defaultProps = {

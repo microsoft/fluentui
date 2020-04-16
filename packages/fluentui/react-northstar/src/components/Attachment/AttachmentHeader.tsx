@@ -9,6 +9,7 @@ interface AttachmentHeaderOwnProps {}
 export interface AttachmentHeaderProps extends AttachmentHeaderOwnProps, WithAsProp<BoxProps> {}
 
 export type AttachmentHeaderStylesProps = never;
+export const attachmentHeaderClassName = 'ui-attachment__header';
 
 /**
  * A AttachmentHeader provides a title for the Attachment.
@@ -19,7 +20,7 @@ const AttachmentHeader = compose<
   WithAsProp<BoxProps>,
   BoxStylesProps
 >(Box, {
-  className: 'ui-attachment__header',
+  className: attachmentHeaderClassName,
   displayName: 'AttachmentHeader',
 
   overrideStyles: true,
