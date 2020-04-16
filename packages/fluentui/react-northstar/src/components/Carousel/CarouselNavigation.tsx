@@ -50,10 +50,12 @@ export interface CarouselNavigationProps extends UIComponentProps, ChildrenCompo
   vertical?: boolean;
 }
 
+export const carouselNavigationClassName = 'ui-carousel__navigation';
+
 class CarouselNavigation extends UIComponent<WithAsProp<CarouselNavigationProps>> {
   static displayName = 'CarouselNavigation';
 
-  static deprecated_className = 'ui-carousel__navigation';
+  static deprecated_className = carouselNavigationClassName;
 
   static create: ShorthandFactory<CarouselNavigationProps>;
 
