@@ -10,7 +10,12 @@ export interface IIconState {
   imageLoadError: boolean;
 }
 
-const getClassNames = classNamesFunction<IIconStyleProps, IIconStyles>();
+const getClassNames = classNamesFunction<IIconStyleProps, IIconStyles>({
+  // Icon is used a lot by other components.
+  // It's likely to see expected cases which pass different className to the Icon.
+  // Therefore setting a larger cache size.
+  cacheSize: 100,
+});
 
 export class IconBase extends React.Component<IIconProps, IIconState> {
   constructor(props: IIconProps) {

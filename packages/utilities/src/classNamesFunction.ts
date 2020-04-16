@@ -1,6 +1,7 @@
 import { mergeCssSets, IStyleSet, IProcessedStyleSet, Stylesheet } from '@uifabric/merge-styles';
 import { IStyleFunctionOrObject } from '@uifabric/merge-styles';
 import { getRTL } from './rtl';
+import { getWindow } from './dom';
 
 const MAX_CACHE_COUNT = 50;
 let _memoizedClassNames = 0;
@@ -23,11 +24,18 @@ interface IRecursiveMemoNode extends Map<any, IRecursiveMemoNode> {
   [RetVal]?: string;
 }
 
+type AppWindow = (Window & { FabricConfig?: { enableClassNameCacheFullWarning?: boolean } }) | undefined;
+
 export interface IClassNamesFunctionOptions {
   /**
    * Disables class caching for scenarios where styleProp parts mutate frequently.
    */
   disableCaching?: boolean;
+
+  /**
+   * Size of the cache. It overwrites default cache size when defined.
+   */
+  cacheSize?: number;
 }
 
 /**
@@ -98,22 +106,21 @@ export function classNamesFunction<TStyleProps extends {}, TStyleSet extends ISt
       }
     }
 
-    if (styleCalcCount > MAX_CACHE_COUNT) {
+    if (styleCalcCount > (options.cacheSize || MAX_CACHE_COUNT)) {
+      const win = getWindow() as AppWindow;
+      if (win?.FabricConfig?.enableClassNameCacheFullWarning) {
+        console.warn(
+          `Styles are being recalculated too frequently. Cache miss rate is ${styleCalcCount}/${getClassNamesCount}.`,
+        );
+        // tslint:disable-next-line:no-console
+        console.trace();
+      }
+
       map.clear();
       styleCalcCount = 0;
 
       // Mutate the options passed in, that's all we can do.
       options.disableCaching = true;
-
-      if (process.env.NODE_ENV !== 'production') {
-        console.warn(
-          'Styles are being recalculated too frequently. ' +
-            `Cache miss rate is ${styleCalcCount}/${getClassNamesCount}.\n` +
-            `Check out our wiki on performance: https://github.com/microsoft/fluentui/wiki/Performance. `,
-        );
-        // tslint:disable-next-line:no-console
-        console.trace();
-      }
     }
 
     // Note: the RetVal is an attached property on the Map; not a key in the Map. We use this attached property to
