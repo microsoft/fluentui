@@ -7590,6 +7590,7 @@ export interface ITeachingBubbleProps extends React.ClassAttributes<TeachingBubb
     ariaLabelledBy?: string;
     calloutProps?: ICalloutProps;
     componentRef?: IRefObject<ITeachingBubble>;
+    focusTrapZoneProps?: IFocusTrapZoneProps;
     footerContent?: string | JSX.Element;
     hasCloseButton?: boolean;
     // @deprecated (undocumented)

@@ -8,6 +8,7 @@ const scenarioIterations = {
   Dialog: 1000,
   ComboBox: 1000,
   Persona: 1000,
+  ContextualMenu: 1000,
 };
 
 module.exports = scenarioIterations;

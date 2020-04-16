@@ -178,3 +178,61 @@ export interface IVerticalStackedChartProps {
    */
   chartTitle?: string;
 }
+
+export interface IGVBarChartSeriesPoint {
+  /**
+   * Text for // need to check use of this
+   */
+  key: string;
+
+  /**
+   * Data for bar height of Grouped vertical bar chart
+   */
+  data: number;
+
+  /**
+   * Color for the legend in the chart
+   */
+  color: string;
+
+  /**
+   * Legend text in the chart
+   */
+  legend: string;
+}
+
+export interface IGroupedVerticalBarChartData {
+  /**
+   * Data for X axis label
+   */
+  name: string;
+
+  /**
+   * Data points for Grouped vertical bar chart
+   */
+  series: IGVBarChartSeriesPoint[];
+}
+
+export interface IGVDataPoint {
+  /**
+   * This interface used for - While forming datapoints from given prop "data" in code
+   * datapoints are used for to draw graph
+   */
+  [key: string]: number | string;
+}
+
+export interface IGVSingleDataPoint {
+  /**
+   * While forming datapoints from given prop "data" in code.
+   * These datapoints are used for to draw graph easily.
+   */
+  [key: string]: IGVDataPoint;
+}
+
+export interface IGVForBarChart {
+  /**
+   * While forming datapoints from given prop "data"
+   * These datapoints are used for to draw graph.
+   */
+  [key: string]: IGVBarChartSeriesPoint;
+}
