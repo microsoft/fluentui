@@ -27,14 +27,16 @@ describe('Pivot', () => {
 
     mount(
       <Pivot componentRef={pivotRef}>
-        <PivotItem id="link1" headerText="Link 1" />
-        <PivotItem id="link2" headerText="Link 2" />
+        <PivotItem headerText="Link 1" headerButtonProps={{ 'data-is-visible': true }} />
+        <PivotItem headerText="Link 2" headerButtonProps={{ 'data-is-visible': true }} />
       </Pivot>,
     );
 
+    expect(pivotRef.current).toBeTruthy();
+
     pivotRef.current!.focus();
     expect(document.activeElement).toBeTruthy();
-    expect(document.activeElement!.id).toEqual('link1');
+    expect(document.activeElement!.textContent?.trim()).toEqual('Link 1');
   });
 
   it('supports JSX expressions', () => {

@@ -135,10 +135,13 @@ export class PivotBase extends React.Component<IPivotProps, IPivotState> {
     const items = linkCollection.links.map(l => this._renderPivotLink(linkCollection, l, selectedKey));
 
     return (
-      <FocusZone componentRef={this._focusZone} direction={FocusZoneDirection.horizontal}>
-        <div className={this._classNames.root} role="tablist">
-          {items}
-        </div>
+      <FocusZone
+        className={this._classNames.root}
+        role="tablist"
+        componentRef={this._focusZone}
+        direction={FocusZoneDirection.horizontal}
+      >
+        {items}
       </FocusZone>
     );
   }
