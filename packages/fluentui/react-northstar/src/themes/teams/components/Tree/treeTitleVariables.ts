@@ -1,5 +1,4 @@
 import { pxToRem } from '../../../../utils';
-import * as _ from 'lodash';
 
 export interface TreeTitleVariables {
   color: string;
