@@ -118,7 +118,7 @@ const MyComponent = () => {
 
 Hook to manage the current value for a component that could be either controlled or uncontrolled, such as a checkbox or input field.
 
-It's two required parameters are the `controlledValue` (the current calue of the control in the controlled state), and the `defaultUncontrolledValue` (for the uncontrolled state). Optionally, you may pass a third `onChange` callback to be notified of any changes triggered by the control.
+Its two required parameters are the `controlledValue` (the current value of the control in the controlled state), and the `defaultUncontrolledValue` (for the uncontrolled state). Optionally, you may pass a third `onChange` callback to be notified of any changes triggered by the control.
 
 The return value will be a setter function that will set the internal state in the unctrolled state, and invoke the onChange callback if present.
 
