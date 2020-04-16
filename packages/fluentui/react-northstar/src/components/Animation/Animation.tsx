@@ -252,7 +252,7 @@ const Animation: React.FC<AnimationProps> & {
       onExiting={handleAnimationEvent('onExiting')}
       onExited={handleAnimationEvent('onExited')}
       {...unhandledProps}
-      className={!isChildrenFunction ? cx(classes.root, (child as any)?.props?.deprecated_className) : ''}
+      className={!isChildrenFunction ? cx(classes.root, (child as any)?.props?.className) : ''}
     >
       {isChildrenFunction ? () => (children as AnimationChildrenProp)({ classes: classes.root }) : child}
     </Transition>
