@@ -99,7 +99,7 @@ const Card: React.FC<WithAsProp<CardProps>> &
       compact,
       size,
       fluid,
-      actionable: onClick !== undefined,
+      actionable: !!onClick,
     }),
     mapPropsToInlineStyles: () => ({
       className,
