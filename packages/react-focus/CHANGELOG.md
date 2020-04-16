@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-focus
 
-This log was last generated on Thu, 16 Apr 2020 04:01:45 GMT and should not be manually modified.
+This log was last generated on Thu, 16 Apr 2020 05:06:13 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.3.1)
+
+Thu, 16 Apr 2020 05:06:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v7.3.0..@fluentui/react-focus_v7.3.1)
+
+### Patches
+
+- FocusZone: Replacing use of 'on' helper with native eventing. ([PR #12710](https://github.com/microsoft/fluentui/pull/12710) by humbertomakotomorimoto@gmail.com)
 
 ## [7.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.3.0)
 

@@ -2,6 +2,21 @@
   "name": "@fluentui/react-focus",
   "entries": [
     {
+      "date": "Thu, 16 Apr 2020 05:06:13 GMT",
+      "tag": "@fluentui/react-focus_v7.3.1",
+      "version": "7.3.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "FocusZone: Replacing use of 'on' helper with native eventing.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "8a155ad45348707cd27bd524926485933ae3c377",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 16 Apr 2020 04:01:45 GMT",
       "tag": "@fluentui/react-focus_v7.3.0",
       "version": "7.3.0",
