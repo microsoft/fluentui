@@ -11,13 +11,7 @@ import Knobs from './Knobs';
 import List from './List';
 import Toolbar from './Toolbar';
 
-import {
-  jsonTreeFindElement,
-  renderJSONTreeToJSXElement,
-  resolveComponent,
-  resolveDraggingProps,
-  resolveDrop,
-} from '../config';
+import { jsonTreeFindElement, renderJSONTreeToJSXElement, resolveDraggingElement, resolveDrop } from '../config';
 import { readTreeFromStore, removeTreeFromStore, writeTreeToStore } from '../utils/treeStore';
 
 import { DesignerMode, JSONTreeElement } from './types';
@@ -139,12 +133,7 @@ class Designer extends React.Component<any, DesignerState> {
   handleDragStart = (info, e) => {
     // console.log('Designer:handleDragStart')
     this.setState({
-      draggingElement: {
-        uuid: getUUID(),
-        type: info.displayName,
-        displayName: info.displayName,
-        props: resolveDraggingProps(info.displayName),
-      },
+      draggingElement: resolveDraggingElement(info.displayName),
     });
     this.draggingPosition = { x: e.clientX, y: e.clientY };
   };
@@ -288,7 +277,7 @@ class Designer extends React.Component<any, DesignerState> {
                   zIndex: 999999,
                 }}
               >
-                {React.createElement(resolveComponent(draggingElement.type), draggingElement.props)}
+                {renderJSONTreeToJSXElement(draggingElement)}
               </div>
             </Ref>
           </>
@@ -389,7 +378,7 @@ class Designer extends React.Component<any, DesignerState> {
           {selectedComponentInfo && (
             <div style={{ width: '20rem', padding: '1rem', overflow: 'auto' }}>
               <Description selectedJSONTreeElement={selectedJSONTreeElement} componentInfo={selectedComponentInfo} />
-              {/*<Anatomy componentInfo={selectedComponentInfo} />*/}
+              {/* <Anatomy componentInfo={selectedComponentInfo} /> */}
               {selectedJSONTreeElement && (
                 <Knobs
                   onPropChange={this.handlePropChange}

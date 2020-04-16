@@ -3,7 +3,7 @@ import * as React from 'react';
 import { Box, Menu } from '@fluentui/react-northstar';
 import { ComponentInfo } from '@fluentui/docs/src/types';
 import componentInfoContext from '@fluentui/docs/src/utils/componentInfoContext';
-import { DRAGGING_PROPS, EXCLUDED_COMPONENTS, resolveComponent, resolveDraggingProps } from '../config';
+import { DRAGGING_ELEMENTS, EXCLUDED_COMPONENTS } from '../config';
 
 export type ListDisplayModes = 'Display Name' | 'Rendered';
 
@@ -24,7 +24,7 @@ const List = ({
   );
 
   const [supportedComponents, unsupportedComponents] = _.partition(componentInfoContext.parents, ({ displayName }) => {
-    return !EXCLUDED_COMPONENTS.some(name => name === displayName) && !!DRAGGING_PROPS[displayName];
+    return !EXCLUDED_COMPONENTS.some(name => name === displayName) && !!DRAGGING_ELEMENTS[displayName];
   });
 
   return (
@@ -76,7 +76,7 @@ const List = ({
             <div style={{ position: 'relative' }}>
               <div style={{ fontWeight: 'bold', opacity: 0.5 }}>{info.displayName}</div>
               <div style={{ padding: '0.5rem', pointerEvents: 'none' }}>
-                {React.createElement(resolveComponent(info.displayName), resolveDraggingProps(info.displayName))}
+                {/* FIXME {React.createElement(resolveComponent(info.displayName), resolveDraggingProps(info.displayName))} */}
               </div>
             </div>
           )}

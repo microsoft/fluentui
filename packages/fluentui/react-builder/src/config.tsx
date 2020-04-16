@@ -1,15 +1,17 @@
 import * as React from 'react';
+import { isElement } from 'react-is';
+import * as _ from 'lodash';
 
 import * as FUI from '@fluentui/react-northstar';
 import * as FUIIcons from '@fluentui/react-icons-northstar';
+
 import { JSONTreeElement } from './components/types';
-import * as _ from 'lodash';
 
 type FiberNavigator = FUI.FiberNavigator;
 
 export const EXCLUDED_COMPONENTS = ['Animation', 'Debug', 'Design', 'FocusZone', 'Portal', 'Provider', 'Ref'];
 
-export const DRAGGING_PROPS = {
+export const DRAGGING_ELEMENTS = {
   // HTML ELEMENTS
   div: { children: 'I am a <div>' },
   span: { children: 'I am a <span>' },
@@ -17,278 +19,338 @@ export const DRAGGING_PROPS = {
 
   // FLUENT v0 COMPONENTS
   Accordion: {
-    panels: [{ title: 'Accordion title', content: 'Accordion content' }],
-  } as FUI.AccordionProps,
+    props: {
+      panels: [{ title: 'Accordion title', content: 'Accordion content' }],
+    } as FUI.AccordionProps,
+  },
 
-  Alert: { warning: true, icon: <FUIIcons.InfoIcon />, content: 'Info alert' } as FUI.AlertProps,
+  Alert: {
+    props: { warning: true, icon: <FUIIcons.InfoIcon />, content: 'Info alert' } as FUI.AlertProps,
+  },
 
-  // Animation: { name: 'fade' } as FUI.AnimationProps,
+  // Animation: { props: { name: 'fade' } as FUI.AnimationProps },
 
   Attachment: {
-    icon: <FUIIcons.WordIcon />,
-    header: 'A file attachment',
-    description: '100kb',
-  } as FUI.AttachmentProps,
+    props: {
+      icon: <FUIIcons.WordIcon />,
+      header: 'A file attachment',
+      description: '100kb',
+    } as FUI.AttachmentProps,
+  },
 
-  Avatar: { image: 'https://picsum.photos/100?random' } as FUI.AvatarProps,
+  Avatar: {
+    props: { image: 'https://picsum.photos/100?random' } as FUI.AvatarProps,
+  },
 
-  Box: { content: 'A Box' } as FUI.BoxProps,
+  Box: {
+    props: { content: 'A Box' } as FUI.BoxProps,
+  },
 
-  Button: {
-    icon: <FUIIcons.CallIcon />,
-    content: 'Button',
-  } as FUI.ButtonProps,
+  // this can be ReactElement directly 👍
+  Button: <FUI.Button content="Button" icon={<FUIIcons.CallIcon />} />,
 
   Carousel: {
-    getItemPositionText: (index: number, size: number) => `${index + 1} of ${size}`,
-    items: [
-      {
-        key: 'one',
-        id: 'one',
-        content: <img src={`https://picsum.photos/seed/${Math.random()}/360/240?random`} />,
-      },
-      {
-        key: 'two',
-        id: 'two',
-        content: <img src={`https://picsum.photos/seed/${Math.random()}/360/240?random`} />,
-      },
-    ],
-  } as FUI.CarouselProps,
+    props: {
+      getItemPositionText: (index: number, size: number) => `${index + 1} of ${size}`,
+      items: [
+        {
+          key: 'one',
+          id: 'one',
+          content: <img src={`https://picsum.photos/seed/${Math.random()}/360/240?random`} />,
+        },
+        {
+          key: 'two',
+          id: 'two',
+          content: <img src={`https://picsum.photos/seed/${Math.random()}/360/240?random`} />,
+        },
+      ],
+    } as FUI.CarouselProps,
+  },
 
   Chat: {
-    items: [
-      {
-        gutter: (
-          <FUI.Avatar
-            image="public/images/avatar/small/ade.jpg"
-            status={{ color: 'green', icon: <FUIIcons.AcceptIcon /> }}
-          />
-        ),
-        message: <FUI.Chat.Message content="Hi!" author="Jane Doe" timestamp="Yesterday, 10:15 PM" />,
-        attached: 'top',
-        key: 'message-id-4',
-      },
-      {
-        message: <FUI.Chat.Message content="Hello!" author="John Doe" timestamp="Yesterday, 10:15 PM" mine />,
-        contentPosition: 'end',
-        attached: true,
-        key: 'message-id-2',
-      },
-    ],
-  } as FUI.ChatProps,
+    props: {
+      items: [
+        {
+          gutter: (
+            <FUI.Avatar
+              image="public/images/avatar/small/ade.jpg"
+              status={{ color: 'green', icon: <FUIIcons.AcceptIcon /> }}
+            />
+          ),
+          message: <FUI.Chat.Message content="Hi!" author="Jane Doe" timestamp="Yesterday, 10:15 PM" />,
+          attached: 'top',
+          key: 'message-id-4',
+        },
+        {
+          message: <FUI.Chat.Message content="Hello!" author="John Doe" timestamp="Yesterday, 10:15 PM" mine />,
+          contentPosition: 'end',
+          attached: true,
+          key: 'message-id-2',
+        },
+      ],
+    } as FUI.ChatProps,
+  },
 
-  Checkbox: { label: 'Checkbox' } as FUI.CheckboxProps,
+  Checkbox: {
+    props: { label: 'Checkbox' } as FUI.CheckboxProps,
+  },
 
-  // Debug: { content: 'Debug' } as FUI.DebugProps,
+  // Debug: { props: { content: 'Debug' } as FUI.DebugProps },
 
-  // Design: { config: {} } as FUI.DesignProps,
+  // Design: { props: { config: {} } as FUI.DesignProps },
 
   Dialog: {
-    trigger: <button>Open Dialog</button>,
-    header: 'Header',
-    content: 'Content',
-    actions: [
-      {
-        content: 'Cancel',
-      },
-    ],
-  } as FUI.DialogProps,
+    props: {
+      trigger: <FUI.Button>Open Dialog</FUI.Button>,
+      header: 'Header',
+      content: 'Content',
+      actions: [
+        {
+          content: 'Cancel',
+        },
+      ],
+    } as FUI.DialogProps,
+  },
 
-  Divider: { content: 'Divider' } as FUI.DividerProps,
+  Divider: {
+    props: { content: 'Divider' } as FUI.DividerProps,
+  },
 
   Dropdown: {
-    placeholder: 'Dropdown',
-    items: ['Item 1', 'Item 2', 'Item 3'],
-  } as FUI.DropdownProps,
+    props: {
+      placeholder: 'Dropdown',
+      items: ['Item 1', 'Item 2', 'Item 3'],
+    } as FUI.DropdownProps,
+  },
 
-  // Embed: { content: 'Embed' } as FUI.EmbedProps,
+  // Embed: { props: { content: 'Embed' } as FUI.EmbedProps },
 
-  Flex: { children: 'Flex' } as FUI.FlexProps,
+  Flex: {
+    props: { children: 'Flex' } as FUI.FlexProps,
+  },
 
-  // FocusZone: { content: 'FocusZone' } as FUI.FocusZoneProps,
+  // FocusZone: { props: { content: 'FocusZone' } as FUI.FocusZoneProps },
 
   Form: {
-    fields: [
-      {
-        label: 'First name',
-        name: 'firstName',
-        id: 'first-name-shorthand',
-        key: 'first-name',
-        required: true,
-      },
-      {
-        label: 'Last name',
-        name: 'lastName',
-        id: 'last-name-shorthand',
-        key: 'last-name',
-        required: true,
-      },
-      {
-        label: 'I agree to the Terms and Conditions',
-        control: { as: 'input' },
-        type: 'checkbox',
-        id: 'conditions-shorthand',
-        key: 'conditions',
-      },
-      {
-        control: { as: FUI.Button, content: 'Submit' },
-        key: 'submit',
-      },
-    ],
-  } as FUI.FormProps,
+    props: {
+      fields: [
+        {
+          label: 'First name',
+          name: 'firstName',
+          id: 'first-name-shorthand',
+          key: 'first-name',
+          required: true,
+        },
+        {
+          label: 'Last name',
+          name: 'lastName',
+          id: 'last-name-shorthand',
+          key: 'last-name',
+          required: true,
+        },
+        {
+          label: 'I agree to the Terms and Conditions',
+          control: { as: 'input' },
+          type: 'checkbox',
+          id: 'conditions-shorthand',
+          key: 'conditions',
+        },
+        {
+          control: { as: FUI.Button, content: 'Submit' },
+          key: 'submit',
+        },
+      ],
+    } as FUI.FormProps,
+  },
 
-  // Grid: { content: 'Grid' } as FUI.GridProps,
+  // Grid: { props: { content: 'Grid' } as FUI.GridProps},
 
-  Header: { content: 'Header', description: 'Description' } as FUI.HeaderProps,
+  Header: {
+    props: { content: 'Header', description: 'Description' } as FUI.HeaderProps,
+  },
 
-  // HierarchicalTree: { content: 'HierarchicalTree' } as FUI.HierarchicalTreeProps,
+  // HierarchicalTree: { props: { content: 'HierarchicalTree' } as FUI.HierarchicalTreeProps },
 
-  // Icon: { name: 'like' } as FUI.IconProps,
+  // Icon: { props: { name: 'like' } as FUI.IconProps },
 
-  Image: { src: 'https://picsum.photos/200' } as FUI.ImageProps,
+  Image: {
+    props: { src: 'https://picsum.photos/200' } as FUI.ImageProps,
+  },
 
-  Input: { placeholder: 'Type...' } as FUI.InputProps,
+  Input: {
+    props: { placeholder: 'Type...' } as FUI.InputProps,
+  },
 
-  // ItemLayout: { content: 'ItemLayout' } as FUI.ItemLayoutProps,
+  // ItemLayout: { props: { content: 'ItemLayout' } as FUI.ItemLayoutProps },
 
-  Label: { icon: <FUIIcons.EmailIcon />, content: '23 Messages' } as FUI.LabelProps,
+  Label: {
+    props: { icon: <FUIIcons.EmailIcon />, content: '23 Messages' } as FUI.LabelProps,
+  },
 
   Layout: {
-    debug: true,
-    start: 'Start content.',
-    main: 'Main content.',
-    end: 'End content.',
-  } as FUI.LayoutProps,
+    props: {
+      debug: true,
+      start: 'Start content.',
+      main: 'Main content.',
+      end: 'End content.',
+    } as FUI.LayoutProps,
+  },
 
   List: {
-    items: [
-      {
-        key: 'irving',
-        media: <FUI.Image src="public/images/avatar/small/matt.jpg" avatar />,
-        header: 'Irving Kuhic',
-        headerMedia: '7:26:56 AM',
-        content: 'Program the sensor to the SAS alarm through the haptic SQL card!',
-      },
-      {
-        key: 'skyler',
-        media: <FUI.Image src="public/images/avatar/small/steve.jpg" avatar />,
-        header: 'Skyler Parks',
-        headerMedia: '11:30:17 PM',
-        content: 'Use the online FTP application to input the multi-byte application!',
-      },
-      {
-        key: 'dante',
-        media: <FUI.Image src="public/images/avatar/small/nom.jpg" avatar />,
-        header: 'Dante Schneider',
-        headerMedia: '5:22:40 PM',
-        content: 'The GB pixel is down, navigate the virtual interface!',
-      },
-    ],
-  } as FUI.ListProps,
+    props: {
+      items: [
+        {
+          key: 'irving',
+          media: <FUI.Image src="public/images/avatar/small/matt.jpg" avatar />,
+          header: 'Irving Kuhic',
+          headerMedia: '7:26:56 AM',
+          content: 'Program the sensor to the SAS alarm through the haptic SQL card!',
+        },
+        {
+          key: 'skyler',
+          media: <FUI.Image src="public/images/avatar/small/steve.jpg" avatar />,
+          header: 'Skyler Parks',
+          headerMedia: '11:30:17 PM',
+          content: 'Use the online FTP application to input the multi-byte application!',
+        },
+        {
+          key: 'dante',
+          media: <FUI.Image src="public/images/avatar/small/nom.jpg" avatar />,
+          header: 'Dante Schneider',
+          headerMedia: '5:22:40 PM',
+          content: 'The GB pixel is down, navigate the virtual interface!',
+        },
+      ],
+    } as FUI.ListProps,
+  },
 
   Loader: {
-    label: 'Loading...',
-  } as FUI.LoaderProps,
+    props: {
+      label: 'Loading...',
+    } as FUI.LoaderProps,
+  },
 
   Menu: {
-    items: ['Item 1', 'Item 2', 'Item 3'],
-  } as FUI.MenuProps,
+    props: {
+      items: ['Item 1', 'Item 2', 'Item 3'],
+    } as FUI.MenuProps,
+  },
 
   MenuButton: {
-    trigger: <FUI.Button>MenuButton</FUI.Button>,
-    menu: [
-      'Item 1',
-      'Item 2',
-      'Item 3',
-      {
-        content: 'Submenu',
-        menu: ['4', '5'],
-      },
-    ],
-  } as FUI.MenuButtonProps,
+    props: {
+      trigger: <FUI.Button>MenuButton</FUI.Button>,
+      menu: [
+        'Item 1',
+        'Item 2',
+        'Item 3',
+        {
+          content: 'Submenu',
+          menu: ['4', '5'],
+        },
+      ],
+    } as FUI.MenuButtonProps,
+  },
 
   Popup: {
-    trigger: <button>Show Popup</button>,
-    content: 'Hello from popup!',
-  } as FUI.PopupProps,
+    props: {
+      trigger: <FUI.Button>Show Popup</FUI.Button>,
+      content: 'Hello from popup!',
+    } as FUI.PopupProps,
+  },
 
-  // Portal: { content: 'Portal' } as FUI.PortalProps,
+  // Portal: { props: { content: 'Portal' } as FUI.PortalProps },
 
-  // Provider: { content: 'Provider' } as FUI.ProviderProps,
+  // Provider: { props: { content: 'Provider' } as FUI.ProviderProps},
 
   RadioGroup: {
-    items: [
-      { name: 'pizza', key: 'Capricciosa', label: 'Capricciosa', value: 'capricciosa' },
-      { name: 'pizza', key: 'Prosciutto', label: 'Prosciutto', value: 'prosciutto' },
-      { name: 'pizza', key: 'Custom', label: 'Custom', value: 'custom' },
-    ],
-  } as FUI.RadioGroupProps,
+    props: {
+      items: [
+        { name: 'pizza', key: 'Capricciosa', label: 'Capricciosa', value: 'capricciosa' },
+        { name: 'pizza', key: 'Prosciutto', label: 'Prosciutto', value: 'prosciutto' },
+        { name: 'pizza', key: 'Custom', label: 'Custom', value: 'custom' },
+      ],
+    } as FUI.RadioGroupProps,
+  },
 
-  Reaction: { icon: <FUIIcons.LikeIcon />, content: 10 } as FUI.ReactionProps,
+  Reaction: {
+    props: { icon: <FUIIcons.LikeIcon />, content: 10 } as FUI.ReactionProps,
+  },
 
-  Segment: { content: 'Segment' } as FUI.SegmentProps,
+  Segment: {
+    props: { content: 'Segment' } as FUI.SegmentProps,
+  },
 
-  Slider: {} as FUI.SliderProps,
+  Slider: {
+    props: {} as FUI.SliderProps,
+  },
 
-  // SplitButton: { content: 'SplitButton' } as FUI.SplitButtonProps,
+  // SplitButton: { props: { content: 'SplitButton' } as FUI.SplitButtonProps},
 
-  Status: { state: 'success' } as FUI.StatusProps,
+  Status: {
+    props: { state: 'success' } as FUI.StatusProps,
+  },
 
-  // Table: { content: 'Table' } as FUI.TableProps,
+  // Table: { props: { content: 'Table' } as FUI.TableProps },
 
-  Text: { content: 'Text' } as FUI.TextProps,
+  Text: {
+    props: { content: 'Text' } as FUI.TextProps,
+  },
 
-  TextArea: { defaultValue: 'Hello there!' } as FUI.TextAreaProps,
+  TextArea: {
+    props: { defaultValue: 'Hello there!' } as FUI.TextAreaProps,
+  },
 
-  // Toolbar: { content: 'Toolbar' } as FUI.ToolbarProps,
+  // Toolbar: { props: { content: 'Toolbar' } as FUI.ToolbarProps },
 
-  // Tooltip: { content: 'Tooltip' } as FUI.TooltipProps,
+  // Tooltip: { props: { content: 'Tooltip' } as FUI.TooltipProps },
 
   Tree: {
-    items: [
-      {
-        id: '1',
-        title: 'Level 1',
-        items: [
-          {
-            id: '11',
-            title: 'Level 1.1',
-            items: [
-              { id: '111', title: 'Level 1.1.1' },
-              { id: '112', title: 'Level 1.1.2' },
-              { id: '113', title: 'Level 1.1.3' },
-            ],
-          },
-          {
-            id: '12',
-            title: 'Level 1.2',
-            items: [
-              { id: '121', title: 'Level 1.2.1' },
-              { id: '122', title: 'Level 1.2.2' },
-              { id: '123', title: 'Level 1.2.3' },
-            ],
-          },
-        ],
-      },
-      {
-        id: '2',
-        title: 'Level 2',
-        items: [
-          {
-            id: '21',
-            title: 'Level 2.1',
-            items: [
-              { id: '211', title: 'Level 2.1.1' },
-              { id: '212', title: 'Level 2.1.2' },
-              { id: '213', title: 'Level 2.1.3' },
-            ],
-          },
-        ],
-      },
-    ],
-  } as FUI.TreeProps,
+    props: {
+      items: [
+        {
+          id: '1',
+          title: 'Level 1',
+          items: [
+            {
+              id: '11',
+              title: 'Level 1.1',
+              items: [
+                { id: '111', title: 'Level 1.1.1' },
+                { id: '112', title: 'Level 1.1.2' },
+                { id: '113', title: 'Level 1.1.3' },
+              ],
+            },
+            {
+              id: '12',
+              title: 'Level 1.2',
+              items: [
+                { id: '121', title: 'Level 1.2.1' },
+                { id: '122', title: 'Level 1.2.2' },
+                { id: '123', title: 'Level 1.2.3' },
+              ],
+            },
+          ],
+        },
+        {
+          id: '2',
+          title: 'Level 2',
+          items: [
+            {
+              id: '21',
+              title: 'Level 2.1',
+              items: [
+                { id: '211', title: 'Level 2.1.1' },
+                { id: '212', title: 'Level 2.1.2' },
+                { id: '213', title: 'Level 2.1.3' },
+              ],
+            },
+          ],
+        },
+      ],
+    } as FUI.TreeProps,
+  },
 
-  // Video: { content: 'Video' } as FUI.VideoProps,
+  // Video: { props: { content: 'Video' } as FUI.VideoProps },
 };
 
 /**
@@ -365,12 +427,47 @@ export const knobs = {
 };
 
 export const resolveComponent = (displayName): React.ElementType => {
-  return FUI[displayName] || displayName;
+  return FUI[displayName] || FUIIcons[displayName] || displayName;
 };
 
-export const resolveDraggingProps = displayName => {
-  // TODO: if references aren't broken, then json tree updates mutate the config's props
-  return _.cloneDeep(DRAGGING_PROPS[displayName]);
+// FIXME: breaks for <button>btn</button>
+const toJSONTreeElement = input => {
+  if (isElement(input)) {
+    return {
+      $$typeof: 'Symbol(react.element)',
+      type: ((input as React.ReactElement).type as any).displayName,
+      props: toJSONTreeElement(input.props),
+    };
+  }
+  const result = _.transform(input, (acc, value, key) => {
+    if (Array.isArray(value)) {
+      acc[key] = toJSONTreeElement(value);
+    } else if (_.isPlainObject(value)) {
+      acc[key] = toJSONTreeElement(value);
+    } else {
+      acc[key] = value;
+    }
+  });
+  return result;
+};
+
+const getUUID = () =>
+  Math.random()
+    .toString(36)
+    .slice(2);
+
+export const resolveDraggingElement: (displayName: string, draggingElements?) => JSONTreeElement = (
+  displayName,
+  draggingElements = DRAGGING_ELEMENTS,
+) => {
+  const jsonTreeElement = toJSONTreeElement(draggingElements[displayName]);
+  return {
+    uuid: getUUID(),
+    $$typeof: 'Symbol(react.element)',
+    type: displayName,
+    displayName,
+    ...jsonTreeElement,
+  };
 };
 
 // TODO: this allows mutating `target`, OK?
@@ -397,15 +494,19 @@ export const resolveDrop = (source: JSONTreeElement, target: JSONTreeElement) =>
 
   // TODO: handle dropping before/after the target as well as "into" the target's children
 
-  if (!target.children) {
-    target.children = [];
+  if (!target.props) {
+    target.props = {};
+  }
+
+  if (!target.props.children) {
+    target.props.children = [];
   }
 
   // clean up props that are incompatible with element children
-  delete target.props.children;
-  delete target.props.content;
+  // delete target.props?.children;
+  delete target.props?.content;
 
-  target.children = [...target.children, source];
+  target.props.children = [...target.props.children, source];
 
   console.log('config:resolveDrop RESULT', JSON.parse(JSON.stringify({ source, target })));
 };
@@ -413,35 +514,34 @@ export const resolveDrop = (source: JSONTreeElement, target: JSONTreeElement) =>
 // TODO: From here down probably does not belong in client config.
 //       It is internal implementation details.
 
+const resolveProps = (input, cb) => {
+  const result = _.transform(input, (acc, value, key) => {
+    if (_.isPlainObject(value)) {
+      if ((value as any).$$typeof === 'Symbol(react.element)') {
+        acc[key] = renderJSONTreeToJSXElement(value as any, cb);
+      } else {
+        acc[key] = resolveProps(value, cb);
+      }
+    } else if (Array.isArray(value)) {
+      acc[key] = resolveProps(value, cb);
+    } else {
+      acc[key] = value;
+    }
+  });
+  return result;
+};
+
 export const renderJSONTreeToJSXElement = (tree: JSONTreeElement, cb = x => x) => {
   if (tree === null) {
     return null;
   }
 
-  let { children = null } = tree;
+  let { props = null } = tree;
 
-  if (Array.isArray(children)) {
-    // @ts-ignore
-    children = children.map(child => {
-      if (typeof child === 'string') {
-        return child;
-      }
+  props = resolveProps(props, cb);
+  const modifiedTree = cb({ ...tree, props });
 
-      if (typeof child === 'object' && child !== null) {
-        return renderJSONTreeToJSXElement(child, cb);
-      }
-
-      return null;
-    });
-  }
-
-  const modifiedTree = cb(tree);
-
-  return React.createElement(
-    resolveComponent(modifiedTree.type),
-    { ...modifiedTree.props, key: modifiedTree.uuid },
-    children,
-  );
+  return React.createElement(resolveComponent(modifiedTree.type), { ...modifiedTree.props, key: modifiedTree.uuid });
 };
 
 /**
@@ -507,9 +607,9 @@ export const jsonTreeFindElement = (tree: JSONTreeElement, uuid: string | number
   if (tree.uuid === uuidFromKey) return tree;
 
   let ret = null;
-  if (Array.isArray(tree.children)) {
-    for (let i = 0; i < tree.children.length && ret === null; ++i) {
-      const e = tree.children[i];
+  if (Array.isArray(tree?.props?.children)) {
+    for (let i = 0; i < tree?.props?.children.length && ret === null; ++i) {
+      const e = tree?.props?.children[i];
       if (typeof e !== 'string') {
         ret = jsonTreeFindElement(e, uuidFromKey);
       }

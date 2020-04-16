@@ -85,7 +85,7 @@ const Canvas = ({
       <FrameContextConsumer>
         {({ document, window }) => (
           <>
-            {(!jsonTree.children || jsonTree.children.length === 0) && (
+            {(!jsonTree.props?.children || jsonTree.props.children.length === 0) && (
               <div
                 style={{
                   padding: '8rem',
