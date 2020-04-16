@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "FocusZone: Bringing shouldFocusOnMount prop from v0 to v7.",
-  "packageName": "@fluentui/react-focus",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-04-15T19:11:19.189Z"
-}
