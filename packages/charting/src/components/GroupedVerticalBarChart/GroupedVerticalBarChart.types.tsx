@@ -21,6 +21,16 @@ export interface IGroupedVerticalBarChartProps {
   height?: number;
 
   /**
+   * Barwidth automacally adjusted based upon given parent width, data and scale.
+   * If barwidth given through prop, then is shold be less than given formula.
+   * If not, graph will adjust and your value may not be reflected.
+   * Formula: width of parent div / (Number Of Groups * (Number Of single bars in group + 2))
+   * Note: By changing barwidth manually it may cause some spatial and graph override issues,
+   * better to avoid using this prop.
+   */
+  barwidth?: number;
+
+  /**
    * Number of ticks on the y-axis.
    * This is a optional parameter and default value is 5.
    */

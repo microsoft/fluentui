@@ -12,7 +12,7 @@ export class GroupedVerticalBarChartStyledExample extends React.Component<Readon
   public render(): React.ReactNode {
     const data = [
       {
-        name: 'India',
+        name: '2000',
         series: [
           {
             key: 'series1',
@@ -35,7 +35,7 @@ export class GroupedVerticalBarChartStyledExample extends React.Component<Readon
         ],
       },
       {
-        name: 'Italy',
+        name: '2010',
         series: [
           {
             key: 'series1',
@@ -58,7 +58,7 @@ export class GroupedVerticalBarChartStyledExample extends React.Component<Readon
         ],
       },
       {
-        name: 'Austraila',
+        name: '2020',
         series: [
           {
             key: 'series1',
@@ -93,6 +93,7 @@ export class GroupedVerticalBarChartStyledExample extends React.Component<Readon
           yAxisTickCount={10}
           showXAxisPath
           showYAxisPath
+          barwidth={43}
         />
       </div>
     );

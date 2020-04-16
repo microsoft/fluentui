@@ -12,30 +12,42 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<Readonl
   public render(): React.ReactNode {
     const data = [
       {
-        name: 'India',
+        name: '2000',
         series: [
           {
             key: 'series1',
-            data: 90,
+            data: 9,
             color: DefaultPalette.accent,
             legend: 'MetaData1',
           },
           {
             key: 'series2',
-            data: 13,
+            data: 85,
             color: DefaultPalette.blueMid,
             legend: 'MetaData2',
           },
           {
             key: 'series3',
-            data: 34,
+            data: 36,
             color: DefaultPalette.blueLight,
             legend: 'MetaData3',
+          },
+          {
+            key: 'series4',
+            data: 66,
+            color: DefaultPalette.blue,
+            legend: 'MetaData4',
+          },
+          {
+            key: 'series5',
+            data: 34,
+            color: DefaultPalette.blueDark,
+            legend: 'MetaData5',
           },
         ],
       },
       {
-        name: 'Italy',
+        name: '2010',
         series: [
           {
             key: 'series1',
@@ -45,7 +57,7 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<Readonl
           },
           {
             key: 'series2',
-            data: 90,
+            data: 50,
             color: DefaultPalette.blueMid,
             legend: 'MetaData2',
           },
@@ -54,6 +66,53 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<Readonl
             data: 33,
             color: DefaultPalette.blueLight,
             legend: 'MetaData3',
+          },
+          {
+            key: 'series4',
+            data: 44,
+            color: DefaultPalette.blue,
+            legend: 'MetaData4',
+          },
+          {
+            key: 'series5',
+            data: 72,
+            color: DefaultPalette.blueDark,
+            legend: 'MetaData5',
+          },
+        ],
+      },
+      {
+        name: '2020',
+        series: [
+          {
+            key: 'series1',
+            data: 33,
+            color: DefaultPalette.accent,
+            legend: 'MetaData1',
+          },
+          {
+            key: 'series2',
+            data: 3,
+            color: DefaultPalette.blueMid,
+            legend: 'MetaData2',
+          },
+          {
+            key: 'series3',
+            data: 75,
+            color: DefaultPalette.blueLight,
+            legend: 'MetaData3',
+          },
+          {
+            key: 'series4',
+            data: 29,
+            color: DefaultPalette.blue,
+            legend: 'MetaData4',
+          },
+          {
+            key: 'series5',
+            data: 90,
+            color: DefaultPalette.blueDark,
+            legend: 'MetaData5',
           },
         ],
       },

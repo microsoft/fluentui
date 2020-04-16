@@ -52,7 +52,8 @@ export class GroupedVerticalBarChartBase extends React.Component<
 > {
   private _points: IGroupedVerticalBarChartData[];
   private _yAxisTickCount: number;
-  private _barPadding: number = 4;
+  private _xAxisLabels: string[];
+  private _barWidth: number;
   private _groupPadding: number = 16;
   private _showXAxisGridLines: boolean;
   private _showYAxisGridLines: boolean;
@@ -120,9 +121,9 @@ export class GroupedVerticalBarChartBase extends React.Component<
       this._fitParentContainer();
     }
 
-    const xAxisLabels: string[] = this._createXAxisProperties();
+    this._xAxisLabels = this._createXAxisProperties();
     this._datasetForBars = this._createDataset();
-    this._xScale0 = this._createX0Scale(xAxisLabels);
+    this._xScale0 = this._createX0Scale(this._xAxisLabels);
     this._xScale1 = this._createX1Scale(this._xScale0);
     const x0Axis = this._createx0Axis(this._xScale0);
     const yAxis: numericAxis = this._createYAxis(this._dataset);
@@ -195,6 +196,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
     this._showYAxisGridLines = this.props.showYAxisGridLines || false;
     this._showXAxisPath = this.props.showXAxisPath || false;
     this._showYAxisPath = this.props.showYAxisPath || false;
+    this._barWidth = this.props.barwidth!;
   }
 
   private _fitParentContainer(): void {
@@ -308,7 +310,14 @@ export class GroupedVerticalBarChartBase extends React.Component<
       .append('g')
       .attr('transform', (d: IGVForBarChart) => `translate(${this._xScale0(d.xAxisPoint)}, 0)`);
 
-    const tempDataSet = Object.keys(this._datasetForBars[0]).splice(0, 3);
+    let widthOfBar: number;
+    if (this._barWidth && this._barWidth < this._xScale1.bandwidth()) {
+      widthOfBar = this._barWidth;
+    } else {
+      widthOfBar = this._xScale1.bandwidth();
+    }
+
+    const tempDataSet = Object.keys(this._datasetForBars[0]).splice(0, this._keys.length);
     tempDataSet.map((datasetKey: string, index: number) => {
       seriesName
         .selectAll(`.${datasetKey}`)
@@ -324,7 +333,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
         .attr('y', (d: IGVForBarChart) => {
           return this.state.containerHeight - this.margins.bottom - yBarScale(d[datasetKey].data);
         })
-        .attr('width', this._xScale1.bandwidth())
+        .attr('width', widthOfBar)
         .attr('height', (d: IGVForBarChart) => {
           return yBarScale(d[datasetKey].data);
         })
@@ -355,14 +364,14 @@ export class GroupedVerticalBarChartBase extends React.Component<
     const keys: string[] = [];
     const colors: string[] = [];
 
-    this._points &&
-      this._points.map((singlePoint: IGroupedVerticalBarChartData) => {
-        xAxisLabels.push(singlePoint.name);
-        singlePoint.series.map((singleKey: IGVBarChartSeriesPoint) => {
-          keys.push(singleKey.key);
-          colors.push(singleKey.color);
-        });
-      });
+    this._points.map((singlePoint: IGroupedVerticalBarChartData) => {
+      xAxisLabels.push(singlePoint.name);
+    });
+
+    this._points[0].series.map((singleKey: IGVBarChartSeriesPoint) => {
+      keys.push(singleKey.key);
+      colors.push(singleKey.color);
+    });
 
     this._keys = keys;
 
@@ -409,7 +418,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
     return d3ScaleBand()
       .domain(this._keys)
       .range([0, xScale0.bandwidth()])
-      .padding(this._barPadding / 100);
+      .padding(0.05);
   };
 
   // tslint:disable-next-line:no-any
