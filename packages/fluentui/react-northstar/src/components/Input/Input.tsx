@@ -83,10 +83,16 @@ export interface InputState {
   hasValue?: boolean;
 }
 
+export const inputClassName = 'ui-input';
+export const inputSlotClassNames: InputSlotClassNames = {
+  input: `${inputClassName}__input`,
+  icon: `${inputClassName}__icon`,
+};
+
 class Input extends AutoControlledComponent<WithAsProp<InputProps>, InputState> {
   inputRef = React.createRef<HTMLElement>();
 
-  static className = 'ui-input';
+  static deprecated_className = inputClassName;
 
   static displayName = 'Input';
 
@@ -147,7 +153,7 @@ class Input extends AutoControlledComponent<WithAsProp<InputProps>, InputState> 
     return Box.create(wrapper, {
       defaultProps: () => ({
         ...accessibility.attributes.root,
-        className: cx(Input.className, className),
+        className: cx(inputClassName, className),
         children: (
           <>
             <Ref
@@ -163,7 +169,7 @@ class Input extends AutoControlledComponent<WithAsProp<InputProps>, InputState> 
                   disabled,
                   type,
                   value,
-                  className: Input.slotClassNames.input,
+                  className: inputSlotClassNames.input,
                   styles: styles.input,
                   onChange: this.handleChange,
                   ...applyAccessibilityKeyHandlers(accessibility.keyHandlers.input, htmlInputProps),
@@ -172,7 +178,7 @@ class Input extends AutoControlledComponent<WithAsProp<InputProps>, InputState> 
             </Ref>
             {Box.create(this.computeIcon(), {
               defaultProps: () => ({
-                className: Input.slotClassNames.icon,
+                className: inputSlotClassNames.icon,
                 styles: styles.icon,
               }),
               overrideProps: this.handleIconOverrides,
@@ -230,10 +236,7 @@ class Input extends AutoControlledComponent<WithAsProp<InputProps>, InputState> 
   };
 }
 
-Input.slotClassNames = {
-  input: `${Input.className}__input`,
-  icon: `${Input.className}__icon`,
-};
+Input.slotClassNames = inputSlotClassNames;
 
 /**
  * An Input is a field used to elicit an input from a user.

@@ -101,17 +101,20 @@ export interface AlertState {
   bodyId: string;
 }
 
+export const alertClassName = 'ui-alert';
+export const alertSlotClassNames: AlertSlotClassNames = {
+  content: `${alertClassName}__content`,
+  actions: `${alertClassName}__actions`,
+  icon: `${alertClassName}__icon`,
+  header: `${alertClassName}__header`,
+  body: `${alertClassName}__body`,
+};
+
 class Alert extends AutoControlledComponent<WithAsProp<AlertProps>, AlertState> {
   static displayName = 'Alert';
-  static className = 'ui-alert';
+  static deprecated_className = alertClassName;
 
-  static slotClassNames: AlertSlotClassNames = {
-    content: `${Alert.className}__content`,
-    actions: `${Alert.className}__actions`,
-    icon: `${Alert.className}__icon`,
-    header: `${Alert.className}__header`,
-    body: `${Alert.className}__body`,
-  };
+  static slotClassNames = alertSlotClassNames;
 
   static propTypes = {
     ...commonPropTypes.createCommon({ content: 'shorthand' }),
@@ -183,14 +186,14 @@ class Alert extends AutoControlledComponent<WithAsProp<AlertProps>, AlertState> 
       <>
         {Text.create(header, {
           defaultProps: () => ({
-            className: Alert.slotClassNames.header,
+            className: alertSlotClassNames.header,
             styles: styles.header,
             ...accessibility.attributes.header,
           }),
         })}
         {Box.create(content, {
           defaultProps: () => ({
-            className: Alert.slotClassNames.content,
+            className: alertSlotClassNames.content,
             styles: styles.content,
             ...accessibility.attributes.content,
           }),
@@ -202,14 +205,14 @@ class Alert extends AutoControlledComponent<WithAsProp<AlertProps>, AlertState> 
       <>
         {Box.create(icon, {
           defaultProps: () => ({
-            className: Alert.slotClassNames.icon,
+            className: alertSlotClassNames.icon,
             styles: styles.icon,
           }),
         })}
         {Box.create(body, {
           defaultProps: () => ({
             id: this.state.bodyId,
-            className: Alert.slotClassNames.body,
+            className: alertSlotClassNames.body,
             ...accessibility.attributes.body,
             styles: styles.body,
           }),
@@ -220,7 +223,7 @@ class Alert extends AutoControlledComponent<WithAsProp<AlertProps>, AlertState> 
 
         {ButtonGroup.create(actions, {
           defaultProps: () => ({
-            className: Alert.slotClassNames.actions,
+            className: alertSlotClassNames.actions,
             styles: styles.actions,
           }),
         })}

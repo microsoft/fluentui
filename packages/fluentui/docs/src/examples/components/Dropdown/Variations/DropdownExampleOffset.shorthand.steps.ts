@@ -1,7 +1,7 @@
-import { Dropdown } from '@fluentui/react-northstar';
+import { dropdownSlotClassNames } from '@fluentui/react-northstar';
 
 const selectors = {
-  trigger: `.${Dropdown.slotClassNames.triggerButton}`,
+  trigger: `.${dropdownSlotClassNames.triggerButton}`,
 };
 
 const config: ScreenerTestsConfig = {

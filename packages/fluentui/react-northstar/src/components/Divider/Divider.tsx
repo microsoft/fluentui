@@ -40,12 +40,14 @@ export interface DividerProps
   vertical?: boolean;
 }
 
+export const dividerClassName = 'ui-divider';
+
 class Divider extends UIComponent<WithAsProp<DividerProps>, any> {
   static displayName = 'Divider';
 
   static create: ShorthandFactory<DividerProps>;
 
-  static className = 'ui-divider';
+  static deprecated_className = dividerClassName;
 
   static propTypes = {
     ...commonPropTypes.createCommon({ color: true }),

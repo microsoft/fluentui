@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Expose keytoclassnames to app, so it can be cached by the app in places like indexed db.",
-  "packageName": "@uifabric/merge-styles",
-  "email": "pingj@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-04-11T05:14:03.928Z"
-}

@@ -63,6 +63,7 @@ export type LabelStylesProps = Pick<LabelProps, 'circular' | 'color' | 'imagePos
   hasIcon: boolean;
   hasActionableIcon: boolean;
 };
+export const labelClassName = 'ui-label';
 
 const Label: React.FC<WithAsProp<LabelProps>> & FluentComponentStaticProps = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
@@ -90,7 +91,7 @@ const Label: React.FC<WithAsProp<LabelProps>> & FluentComponentStaticProps = pro
     rtl: context.rtl,
   });
   const { classes, styles: resolvedStyles } = useStyles<LabelStylesProps>(Label.displayName, {
-    className: Label.className,
+    className: labelClassName,
     mapPropsToStyles: () => ({
       hasActionableIcon: _.has(icon, 'onClick'),
       hasImage: !!image,
@@ -165,7 +166,7 @@ const Label: React.FC<WithAsProp<LabelProps>> & FluentComponentStaticProps = pro
 };
 
 Label.displayName = 'Label';
-Label.className = 'ui-label';
+Label.deprecated_className = labelClassName;
 
 Label.propTypes = {
   ...commonPropTypes.createCommon({ color: true, content: 'shorthand' }),

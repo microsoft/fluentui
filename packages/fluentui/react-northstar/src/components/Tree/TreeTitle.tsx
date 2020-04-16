@@ -52,6 +52,7 @@ export interface TreeTitleProps extends UIComponentProps, ChildrenComponentProps
 }
 
 export type TreeTitleStylesProps = never;
+export const treeTitleClassName = 'ui-tree__title';
 
 const TreeTitle: React.FC<WithAsProp<TreeTitleProps>> & FluentComponentStaticProps<TreeTitleProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
@@ -89,7 +90,7 @@ const TreeTitle: React.FC<WithAsProp<TreeTitleProps>> & FluentComponentStaticPro
     rtl: context.rtl,
   });
   const { classes } = useStyles<TreeTitleStylesProps>(TreeTitle.displayName, {
-    className: TreeTitle.className,
+    className: treeTitleClassName,
     mapPropsToInlineStyles: () => ({
       className,
       design,
@@ -123,7 +124,7 @@ const TreeTitle: React.FC<WithAsProp<TreeTitleProps>> & FluentComponentStaticPro
   return element;
 };
 
-TreeTitle.className = 'ui-tree__title';
+TreeTitle.deprecated_className = treeTitleClassName;
 TreeTitle.displayName = 'TreeTitle';
 
 TreeTitle.propTypes = {

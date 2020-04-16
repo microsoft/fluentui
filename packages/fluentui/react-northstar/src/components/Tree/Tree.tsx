@@ -29,10 +29,6 @@ import {
 } from '../../types';
 import { hasSubtree, removeItemAtIndex, getSiblings, TreeContext, TreeRenderContextValue } from './utils';
 
-export interface TreeSlotClassNames {
-  item: string;
-}
-
 export interface TreeProps extends UIComponentProps, ChildrenComponentProps {
   /** Accessibility behavior if overridden by the user. */
   accessibility?: Accessibility;
@@ -88,16 +84,14 @@ export interface TreeState {
   activeItemIds: string[];
 }
 
+export const treeClassNames = 'ui-tree';
+
 class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
   static create: ShorthandFactory<TreeProps>;
 
   static displayName = 'Tree';
 
-  static className = 'ui-tree';
-
-  static slotClassNames: TreeSlotClassNames = {
-    item: `${Tree.className}__item`,
-  };
+  static deprecated_className = treeClassNames;
 
   static propTypes = {
     ...commonPropTypes.createCommon({
@@ -280,7 +274,6 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
         const renderedItem = TreeItem.create(item, {
           defaultProps: () => ({
             accessibility: accessibility.childBehaviors ? accessibility.childBehaviors.item : undefined,
-            className: Tree.slotClassNames.item,
             expanded: isSubtreeExpanded,
             renderItemTitle,
             key: item['id'],

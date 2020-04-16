@@ -111,6 +111,11 @@ export interface ToolbarItemSlotClassNames {
   wrapper: string;
 }
 
+export const toolbarItemClassName = 'ui-toolbar__item';
+export const toolbarItemSlotClassNames: ToolbarItemSlotClassNames = {
+  wrapper: `${toolbarItemClassName}__wrapper`,
+};
+
 const ToolbarItem: React.FC<WithAsProp<ToolbarItemProps>> &
   FluentComponentStaticProps<ToolbarItemProps> & { slotClassNames: ToolbarItemSlotClassNames } = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
@@ -168,7 +173,7 @@ const ToolbarItem: React.FC<WithAsProp<ToolbarItemProps>> &
     rtl: context.rtl,
   });
   const { classes } = useStyles<ToolbarItemStylesProps>(ToolbarItem.displayName, {
-    className: ToolbarItem.className,
+    className: toolbarItemClassName,
     mapPropsToStyles: () => ({ active, disabled }),
     mapPropsToInlineStyles: () => ({
       className,
@@ -273,17 +278,7 @@ const ToolbarItem: React.FC<WithAsProp<ToolbarItemProps>> &
               menuRef.current = node;
             }}
           >
-            <Popper
-              align="start"
-              position="above"
-              modifiers={{
-                preventOverflow: {
-                  escapeWithReference: false, // escapeWithReference breaks positioning of ToolbarMenu in overflow mode because Popper components sets modifiers on scrollable container
-                },
-              }}
-              targetRef={itemRef}
-              {...getPopperPropsFromShorthand(menu)}
-            >
+            <Popper align="start" position="above" targetRef={itemRef} {...getPopperPropsFromShorthand(menu)}>
               <ToolbarVariablesProvider value={mergedVariables}>
                 {ToolbarMenu.create(menu, {
                   overrideProps: handleMenuOverrides(getRefs),
@@ -325,7 +320,7 @@ const ToolbarItem: React.FC<WithAsProp<ToolbarItemProps>> &
       const wrapperElement = Box.create(wrapper, {
         defaultProps: () =>
           getA11yProps('wrapper', {
-            className: cx(ToolbarItem.slotClassNames.wrapper, classes.wrapper),
+            className: cx(toolbarItemSlotClassNames.wrapper, classes.wrapper),
           }),
         overrideProps: predefinedProps => ({
           children: contentElement,
@@ -350,12 +345,10 @@ const ToolbarItem: React.FC<WithAsProp<ToolbarItemProps>> &
   return refElement;
 };
 
-ToolbarItem.className = 'ui-toolbar__item';
+ToolbarItem.deprecated_className = toolbarItemClassName;
 ToolbarItem.displayName = 'ToolbarItem';
 
-ToolbarItem.slotClassNames = {
-  wrapper: `${ToolbarItem.className}__wrapper`,
-};
+ToolbarItem.slotClassNames = toolbarItemSlotClassNames;
 
 ToolbarItem.defaultProps = {
   as: 'button',

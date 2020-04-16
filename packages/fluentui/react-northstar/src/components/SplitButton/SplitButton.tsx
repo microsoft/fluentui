@@ -91,6 +91,8 @@ export interface SplitButtonState {
   open: boolean;
 }
 
+export const splitButtonClassName = 'ui-splitbutton';
+
 class SplitButton extends AutoControlledComponent<WithAsProp<SplitButtonProps>, SplitButtonState> {
   static create: ShorthandFactory<SplitButton>;
 
@@ -98,7 +100,7 @@ class SplitButton extends AutoControlledComponent<WithAsProp<SplitButtonProps>, 
 
   static Toggle = SplitButtonToggle;
 
-  static className = 'ui-splitbutton';
+  static deprecated_className = splitButtonClassName;
 
   static propTypes = {
     ...commonPropTypes.createCommon({
@@ -129,7 +131,10 @@ class SplitButton extends AutoControlledComponent<WithAsProp<SplitButtonProps>, 
       PropTypes.oneOf<'scrollParent' | 'window' | 'viewport'>(['scrollParent', 'window', 'viewport']),
     ]),
     positionFixed: PropTypes.bool,
-    offset: PropTypes.string,
+    offset: PropTypes.oneOfType([
+      PropTypes.func,
+      PropTypes.arrayOf(PropTypes.number) as PropTypes.Requireable<[number, number]>,
+    ]),
     unstable_pinned: PropTypes.bool,
   };
 

@@ -49,6 +49,7 @@ export interface ToolbarRadioGroupProps extends UIComponentProps, ChildrenCompon
 }
 
 export type ToolbarRadioGroupStylesProps = never;
+export const toolbarRadioGroupClassName = 'ui-toolbars'; // FIXME: required by getComponentInfo/isConformant. But this is group inside a toolbar not a group of toolbars
 
 const ToolbarRadioGroup: React.FC<WithAsProp<ToolbarRadioGroupProps>> &
   FluentComponentStaticProps<ToolbarRadioGroupProps> = props => {
@@ -71,7 +72,7 @@ const ToolbarRadioGroup: React.FC<WithAsProp<ToolbarRadioGroupProps>> &
     rtl: context.rtl,
   });
   const { classes } = useStyles<ToolbarRadioGroupStylesProps>(ToolbarRadioGroup.displayName, {
-    className: ToolbarRadioGroup.className,
+    className: toolbarRadioGroupClassName,
     mapPropsToInlineStyles: () => ({ className, design, styles, variables: mergedVariables }),
     rtl: context.rtl,
   });
@@ -158,7 +159,7 @@ const ToolbarRadioGroup: React.FC<WithAsProp<ToolbarRadioGroupProps>> &
 };
 
 ToolbarRadioGroup.displayName = 'ToolbarRadioGroup';
-ToolbarRadioGroup.className = 'ui-toolbars'; // FIXME: required by getComponentInfo/isConformant. But this is group inside a toolbar not a group of toolbars
+ToolbarRadioGroup.deprecated_className = toolbarRadioGroupClassName;
 
 ToolbarRadioGroup.propTypes = {
   ...commonPropTypes.createCommon(),

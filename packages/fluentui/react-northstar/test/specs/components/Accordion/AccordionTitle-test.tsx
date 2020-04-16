@@ -1,13 +1,13 @@
 import * as React from 'react';
 import * as keyboardKey from 'keyboard-key';
-import AccordionTitle from 'src/components/Accordion/AccordionTitle';
+import AccordionTitle, { accordionTitleSlotClassNames } from 'src/components/Accordion/AccordionTitle';
 import { isConformant, handlesAccessibility } from 'test/specs/commonTests';
 import { mountWithProvider } from 'test/utils';
 
 describe('AccordionTitle', () => {
   isConformant(AccordionTitle, {
     eventTargets: {
-      onClick: `.${AccordionTitle.slotClassNames.contentWrapper}`,
+      onClick: `.${accordionTitleSlotClassNames.contentWrapper}`,
     },
   });
 
@@ -25,7 +25,7 @@ describe('AccordionTitle', () => {
     });
   });
 
-  const getContent = wrapper => wrapper.find(`div.${AccordionTitle.slotClassNames.contentWrapper}`);
+  const getContent = wrapper => wrapper.find(`div.${accordionTitleSlotClassNames.contentWrapper}`);
 
   describe('click handler', () => {
     it('is called on click', () => {

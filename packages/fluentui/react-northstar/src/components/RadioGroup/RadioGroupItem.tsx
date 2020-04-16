@@ -71,6 +71,11 @@ export interface RadioGroupItemState {
   checked: boolean;
 }
 
+export const radioGroupItemClassName = 'ui-radiogroup__item';
+export const radioGroupItemSlotClassNames: RadioGroupItemSlotClassNames = {
+  indicator: `${radioGroupItemClassName}__indicator`,
+};
+
 class RadioGroupItem extends AutoControlledComponent<WithAsProp<RadioGroupItemProps>, RadioGroupItemState> {
   elementRef = React.createRef<HTMLElement>();
 
@@ -78,11 +83,9 @@ class RadioGroupItem extends AutoControlledComponent<WithAsProp<RadioGroupItemPr
 
   static displayName = 'RadioGroupItem';
 
-  static className = 'ui-radiogroup__item';
+  static deprecated_className = radioGroupItemClassName;
 
-  static slotClassNames: RadioGroupItemSlotClassNames = {
-    indicator: `${RadioGroupItem.className}__indicator`,
-  };
+  static slotClassNames = radioGroupItemSlotClassNames;
 
   static propTypes = {
     ...commonPropTypes.createCommon({
@@ -148,7 +151,7 @@ class RadioGroupItem extends AutoControlledComponent<WithAsProp<RadioGroupItemPr
         >
           {Box.create(indicator, {
             defaultProps: () => ({
-              className: RadioGroupItem.slotClassNames.indicator,
+              className: radioGroupItemSlotClassNames.indicator,
               styles: styles.indicator,
             }),
           })}
