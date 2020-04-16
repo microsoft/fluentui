@@ -35,7 +35,7 @@ export function useControllableValue<TValue, TElement extends HTMLElement, TCall
 export function useId(prefix?: string, providedId?: string): string;
 
 // @public
-export function useMergedRefs<T>(...refs: React.Ref<T>[]): (value: T) => void;
+export function useMergedRefs<T>(...refs: React.Ref<T>[]): (instance: T) => void;
 
 
 // (No @packageDocumentation comment for this package)
