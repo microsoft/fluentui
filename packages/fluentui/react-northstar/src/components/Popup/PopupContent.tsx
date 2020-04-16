@@ -11,9 +11,9 @@ import {
   useUnhandledProps,
 } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
+import * as PopperJs from '@popperjs/core';
 import cx from 'classnames';
 import * as _ from 'lodash';
-import Popper from 'popper.js';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 // @ts-ignore
@@ -76,7 +76,7 @@ export interface PopupContentProps extends UIComponentProps, ChildrenComponentPr
 }
 
 export type PopupContentStylesProps = Required<Pick<PopupContentProps, 'pointing'>> & {
-  basePlacement: Popper.Position;
+  basePlacement: PopperJs.BasePlacement;
 };
 
 const PopupContent: React.FC<WithAsProp<PopupContentProps>> &
@@ -105,7 +105,7 @@ const PopupContent: React.FC<WithAsProp<PopupContentProps>> &
     rtl: context.rtl,
   });
   const { classes } = useStyles<PopupContentStylesProps>(PopupContent.displayName, {
-    className: PopupContent.className,
+    className: PopupContent.deprecated_className,
     mapPropsToStyles: () => ({
       basePlacement: getBasePlacement(placement, context.rtl),
       pointing,
@@ -167,11 +167,11 @@ const PopupContent: React.FC<WithAsProp<PopupContentProps>> &
 };
 
 PopupContent.displayName = 'PopupContent';
-PopupContent.className = 'ui-popup__content';
+PopupContent.deprecated_className = 'ui-popup__content';
 
 PopupContent.propTypes = {
   ...commonPropTypes.createCommon(),
-  placement: PropTypes.oneOf<Popper.Placement>([
+  placement: PropTypes.oneOf<PopperJs.Placement>([
     'auto-start',
     'auto',
     'auto-end',
@@ -198,7 +198,7 @@ PopupContent.propTypes = {
 PopupContent.handledProps = Object.keys(PopupContent.propTypes) as any;
 
 PopupContent.slotClassNames = {
-  content: `${PopupContent.className}__content`,
+  content: `${PopupContent.deprecated_className}__content`,
 };
 
 PopupContent.create = createShorthandFactory({ Component: PopupContent, mappedProp: 'content' });

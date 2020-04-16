@@ -81,6 +81,7 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
     onFocusNotification?: () => void;
     // @deprecated
     rootProps?: React.HTMLAttributes<HTMLDivElement>;
+    shouldFocusOnMount?: boolean;
     shouldInputLoseFocusOnArrowKey?: (inputElement: HTMLInputElement) => boolean;
 }
 

@@ -91,15 +91,18 @@ export interface AccordionState {
   focusedIndex: number;
 }
 
+export const accordionClassName = 'ui-accordion';
+export const accordionSlotClassNames: AccordionSlotClassNames = {
+  content: `${accordionClassName}__content`,
+  title: `${accordionClassName}__title`,
+};
+
 class Accordion extends AutoControlledComponent<WithAsProp<AccordionProps>, AccordionState> {
   static displayName = 'Accordion';
 
-  static className = 'ui-accordion';
+  static deprecated_className = accordionClassName;
 
-  static slotClassNames: AccordionSlotClassNames = {
-    content: `${Accordion.className}__content`,
-    title: `${Accordion.className}__title`,
-  };
+  static slotClassNames = accordionSlotClassNames;
 
   static propTypes = {
     ...commonPropTypes.createCommon({
@@ -264,7 +267,7 @@ class Accordion extends AutoControlledComponent<WithAsProp<AccordionProps>, Acco
       children.push(
         AccordionTitle.create(title, {
           defaultProps: () => ({
-            className: Accordion.slotClassNames.title,
+            className: accordionSlotClassNames.title,
             active,
             index,
             contentRef,
@@ -279,7 +282,7 @@ class Accordion extends AutoControlledComponent<WithAsProp<AccordionProps>, Acco
       children.push(
         AccordionContent.create(content, {
           defaultProps: () => ({
-            className: Accordion.slotClassNames.content,
+            className: accordionSlotClassNames.content,
             active,
             id: contentId,
             accordionTitleId: titleId,

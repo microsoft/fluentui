@@ -1,11 +1,17 @@
-import { Chat, ChatItem, ChatMessage, MenuItem } from '@fluentui/react-northstar';
+import {
+  chatClassName,
+  chatItemClassName,
+  chatMessageSlotClassNames,
+  MenuItem,
+  chatMessageClassName,
+} from '@fluentui/react-northstar';
 
 const selectors = {
-  chat: `.${Chat.className}`,
-  item: (itemIndex: number) => `.${ChatItem.className}:nth-child(${itemIndex}) .${ChatMessage.className}`,
+  chat: `.${chatClassName}`,
+  item: (itemIndex: number) => `.${chatItemClassName}:nth-child(${itemIndex}) .${chatMessageClassName}`,
   maxActions: '#actions-to-max',
   moreAction: (itemIndex: number) =>
-    `.${ChatItem.className}:nth-child(${itemIndex}) .${ChatMessage.slotClassNames.actionMenu} :nth-child(7) .${MenuItem.className}`,
+    `.${chatItemClassName}:nth-child(${itemIndex}) .${chatMessageSlotClassNames.actionMenu} :nth-child(7) .${MenuItem.deprecated_className}`,
 };
 
 const config: ScreenerTestsConfig = {

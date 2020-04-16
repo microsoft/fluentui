@@ -89,7 +89,7 @@ const TreeTitle: React.FC<WithAsProp<TreeTitleProps>> & FluentComponentStaticPro
     rtl: context.rtl,
   });
   const { classes } = useStyles<TreeTitleStylesProps>(TreeTitle.displayName, {
-    className: TreeTitle.className,
+    className: TreeTitle.deprecated_className,
     mapPropsToInlineStyles: () => ({
       className,
       design,
@@ -123,7 +123,7 @@ const TreeTitle: React.FC<WithAsProp<TreeTitleProps>> & FluentComponentStaticPro
   return element;
 };
 
-TreeTitle.className = 'ui-tree__title';
+TreeTitle.deprecated_className = 'ui-tree__title';
 TreeTitle.displayName = 'TreeTitle';
 
 TreeTitle.propTypes = {

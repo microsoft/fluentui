@@ -1,11 +1,11 @@
 import * as React from 'react';
 
 import { isConformant } from 'test/specs/commonTests';
-import Carousel, { CarouselProps } from 'src/components/Carousel/Carousel';
+import Carousel, { CarouselProps, carouselSlotClassNames } from 'src/components/Carousel/Carousel';
 import Button from 'src/components/Button/Button';
-import CarouselItem from 'src/components/Carousel/CarouselItem';
-import CarouselNavigation from 'src/components/Carousel/CarouselNavigation';
-import CarouselNavigationItem from 'src/components/Carousel/CarouselNavigationItem';
+import { carouselItemClassName } from 'src/components/Carousel/CarouselItem';
+import { carouselNavigationClassName } from 'src/components/Carousel/CarouselNavigation';
+import { carouselNavigationItemClassName } from 'src/components/Carousel/CarouselNavigationItem';
 import Text from 'src/components/Text/Text';
 import { ReactWrapper, CommonWrapper } from 'enzyme';
 import { findIntrinsicElement, mountWithProvider } from 'test/utils';
@@ -46,19 +46,19 @@ function renderCarousel(props?: CarouselProps): ReactWrapper {
 }
 
 const getItemsContainer = (wrapper: ReactWrapper): CommonWrapper =>
-  findIntrinsicElement(wrapper, `.${Carousel.slotClassNames.itemsContainer}`);
+  findIntrinsicElement(wrapper, `.${carouselSlotClassNames.itemsContainer}`);
 const getPaddleNextWrapper = (wrapper: ReactWrapper): CommonWrapper =>
-  findIntrinsicElement(wrapper, `.${Carousel.slotClassNames.paddleNext}`);
+  findIntrinsicElement(wrapper, `.${carouselSlotClassNames.paddleNext}`);
 const getPaddlePreviousWrapper = (wrapper: ReactWrapper): CommonWrapper =>
-  findIntrinsicElement(wrapper, `.${Carousel.slotClassNames.paddlePrevious}`);
+  findIntrinsicElement(wrapper, `.${carouselSlotClassNames.paddlePrevious}`);
 const getPaginationWrapper = (wrapper: ReactWrapper): CommonWrapper =>
-  findIntrinsicElement(wrapper, `.${Carousel.slotClassNames.pagination}`);
+  findIntrinsicElement(wrapper, `.${carouselSlotClassNames.pagination}`);
 const getNavigationNavigationWrapper = (wrapper: ReactWrapper): CommonWrapper =>
-  findIntrinsicElement(wrapper, `.${CarouselNavigation.className}`);
+  findIntrinsicElement(wrapper, `.${carouselNavigationClassName}`);
 const getNavigationNavigationItemAtIndexWrapper = (wrapper: ReactWrapper, index: number): CommonWrapper =>
-  findIntrinsicElement(wrapper, `.${CarouselNavigationItem.className}`).at(index);
+  findIntrinsicElement(wrapper, `.${carouselNavigationItemClassName}`).at(index);
 const getItemAtIndexWrapper = (wrapper: ReactWrapper, index: number): CommonWrapper =>
-  findIntrinsicElement(wrapper, `.${CarouselItem.className}`).at(index);
+  findIntrinsicElement(wrapper, `.${carouselItemClassName}`).at(index);
 const getButtonWrapper = (wrapper: ReactWrapper): CommonWrapper => findIntrinsicElement(wrapper, `#${buttonName}`);
 
 jest.useFakeTimers();
@@ -182,29 +182,29 @@ describe('Carousel', () => {
     it('next should be hidden on last element if not circular', () => {
       const wrapper = renderCarousel({ defaultActiveIndex: 3, circular: true });
 
-      expect(!wrapper.exists(`.${Carousel.slotClassNames.paddleNext}`));
-      expect(wrapper.exists(`.${Carousel.slotClassNames.paddlePrevious}`));
+      expect(!wrapper.exists(`.${carouselSlotClassNames.paddleNext}`));
+      expect(wrapper.exists(`.${carouselSlotClassNames.paddlePrevious}`));
     });
 
     it('previous should be hidden on last element if not circular', () => {
       const wrapper = renderCarousel({ circular: true });
 
-      expect(!wrapper.exists(`.${Carousel.slotClassNames.paddlePrevious}`));
-      expect(wrapper.exists(`.${Carousel.slotClassNames.paddleNext}`));
+      expect(!wrapper.exists(`.${carouselSlotClassNames.paddlePrevious}`));
+      expect(wrapper.exists(`.${carouselSlotClassNames.paddleNext}`));
     });
 
     it('next should not be hidden on last element if circular', () => {
       const wrapper = renderCarousel({ defaultActiveIndex: 3, circular: true });
 
-      expect(wrapper.exists(`.${Carousel.slotClassNames.paddleNext}`));
-      expect(wrapper.exists(`.${Carousel.slotClassNames.paddlePrevious}`));
+      expect(wrapper.exists(`.${carouselSlotClassNames.paddleNext}`));
+      expect(wrapper.exists(`.${carouselSlotClassNames.paddlePrevious}`));
     });
 
     it('previous should not be hidden on last element if circular', () => {
       const wrapper = renderCarousel({ circular: true });
 
-      expect(wrapper.exists(`.${Carousel.slotClassNames.paddlePrevious}`));
-      expect(wrapper.exists(`.${Carousel.slotClassNames.paddleNext}`));
+      expect(wrapper.exists(`.${carouselSlotClassNames.paddlePrevious}`));
+      expect(wrapper.exists(`.${carouselSlotClassNames.paddleNext}`));
     });
 
     it('next should be focused on last slide transition if pagination and not circular', () => {
