@@ -10,11 +10,6 @@ const items = [
         id: 'tree-item-11',
         title: 'Tywin',
         selectableParent: true,
-        selectionIndicator: {
-          children: (Component, { expanded, ...props }) => {
-            return <Text {...props} content={expanded && 'select all'} />;
-          },
-        },
         items: [
           {
             id: '1',
@@ -78,6 +73,12 @@ const items = [
   {
     id: 'tree-item-2',
     title: 'House Targaryen',
+    selectionIndicator: {
+      children: (Component, { expanded, ...props }) => {
+        return <Text {...props} content={expanded && 'select all'} />;
+      },
+    },
+    selectableParent: true,
     items: [
       {
         id: 'tree-item-21',
