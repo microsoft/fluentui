@@ -63,6 +63,11 @@ export interface ToolbarMenuRadioGroupSlotClassNames {
   wrapper: string;
 }
 
+export const toolbarMenuRadioGroupClassName = 'ui-toolbars'; // FIXME: required by getComponentInfo/isConformant. But this is group inside a toolbar not a group of toolbars
+export const toolbarMenuRadioGroupSlotClassNames: ToolbarMenuRadioGroupSlotClassNames = {
+  wrapper: `${toolbarMenuRadioGroupClassName}__wrapper`,
+};
+
 const ToolbarMenuRadioGroup: React.FC<WithAsProp<ToolbarMenuRadioGroupProps>> &
   FluentComponentStaticProps<ToolbarMenuRadioGroupProps> & {
     slotClassNames: ToolbarMenuRadioGroupSlotClassNames;
@@ -126,7 +131,7 @@ const ToolbarMenuRadioGroup: React.FC<WithAsProp<ToolbarMenuRadioGroupProps>> &
     defaultProps: () =>
       getA11yProps('wrapper', {
         as: 'li',
-        className: ToolbarMenuRadioGroup.slotClassNames.wrapper,
+        className: toolbarMenuRadioGroupSlotClassNames.wrapper,
         styles: resolvedStyles.wrapper,
       }),
     overrideProps: {
@@ -138,12 +143,9 @@ const ToolbarMenuRadioGroup: React.FC<WithAsProp<ToolbarMenuRadioGroupProps>> &
   return element;
 };
 
-ToolbarMenuRadioGroup.deprecated_className = 'ui-toolbars'; // FIXME: required by getComponentInfo/isConformant. But this is group inside a toolbar not a group of toolbars
+ToolbarMenuRadioGroup.deprecated_className = toolbarMenuRadioGroupClassName;
 ToolbarMenuRadioGroup.displayName = 'ToolbarMenuRadioGroup';
-ToolbarMenuRadioGroup.slotClassNames = {
-  wrapper: `${ToolbarMenuRadioGroup.deprecated_className}__wrapper`,
-};
-
+ToolbarMenuRadioGroup.slotClassNames = toolbarMenuRadioGroupSlotClassNames;
 ToolbarMenuRadioGroup.defaultProps = {
   as: 'ul',
   accessibility: toolbarMenuRadioGroupBehavior,
