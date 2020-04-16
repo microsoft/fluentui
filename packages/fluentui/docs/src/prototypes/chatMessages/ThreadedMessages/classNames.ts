@@ -1,4 +1,4 @@
-import { Button, ChatMessage, ChatItem } from '@fluentui/react-northstar';
+import { buttonClassName, ChatMessage, ChatItem } from '@fluentui/react-northstar';
 
 const classNames = {
   threadedMessage: {
@@ -9,7 +9,7 @@ const classNames = {
     timestamp: `${ChatMessage.slotClassNames.timestamp}-inner`,
   },
   threadReplies: {
-    trigger: `${Button.deprecated_className}__reply`,
+    trigger: `${buttonClassName}__reply`,
     message: `${ChatMessage.deprecated_className}__reply`,
     gutter: `${ChatItem.deprecated_className}__reply__gutter`,
     chatItem: `${ChatItem.deprecated_className}__reply`,
