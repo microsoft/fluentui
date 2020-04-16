@@ -16,10 +16,6 @@ import {
 import { ComponentEventHandler, WithAsProp, ShorthandCollection, withSafeTypeForAs } from '../../types';
 import FormField, { FormFieldProps } from './FormField';
 
-export interface FormSlotClassNames {
-  field: string;
-}
-
 export interface FormProps extends UIComponentProps, ChildrenComponentProps {
   /**
    * Accessibility behavior if overridden by the user.
@@ -40,16 +36,14 @@ export interface FormProps extends UIComponentProps, ChildrenComponentProps {
   onSubmit?: ComponentEventHandler<FormProps>;
 }
 
+export const formClassName = 'ui-form';
+
 class Form extends UIComponent<WithAsProp<FormProps>, any> {
   static create: ShorthandFactory<FormProps>;
 
   static displayName = 'Form';
 
-  static deprecated_className = 'ui-form';
-
-  static slotClassNames: FormSlotClassNames = {
-    field: `${Form.deprecated_className}__field`,
-  };
+  static deprecated_className = formClassName;
 
   static propTypes = {
     ...commonPropTypes.createCommon({
@@ -93,9 +87,7 @@ class Form extends UIComponent<WithAsProp<FormProps>, any> {
 
   renderFields = () => {
     const { fields } = this.props;
-    return _.map(fields, field =>
-      FormField.create(field, { defaultProps: () => ({ className: Form.slotClassNames.field }) }),
-    );
+    return _.map(fields, field => FormField.create(field));
   };
 }
 

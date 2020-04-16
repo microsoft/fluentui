@@ -1,7 +1,7 @@
 import {
   ThemeInput,
   chatItemSlotClassNames,
-  Input,
+  inputSlotClassNames,
   SvgIcon,
   buttonClassName,
   pxToRem,
@@ -95,7 +95,7 @@ const customizedTheme: ThemeInput = {
     },
     Input: {
       root: ({ props: p, theme: { siteVariables } }) => ({
-        [`& .${Input.slotClassNames.input}`]: {
+        [`& .${inputSlotClassNames.input}`]: {
           height: pxToRem(50),
           backgroundColor: siteVariables.colorScheme.default.background,
         },

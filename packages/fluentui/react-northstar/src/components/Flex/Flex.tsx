@@ -45,6 +45,7 @@ export type FlexStylesProps = Pick<
   FlexProps,
   'column' | 'debug' | 'fill' | 'gap' | 'hAlign' | 'inline' | 'padding' | 'space' | 'vAlign' | 'wrap'
 >;
+export const flexClassName = 'ui-flex';
 
 const Flex: React.FC<WithAsProp<FlexProps>> & {
   deprecated_className: string;
@@ -74,7 +75,7 @@ const Flex: React.FC<WithAsProp<FlexProps>> & {
   } = props;
 
   const { classes } = useStyles<FlexStylesProps>(Flex.displayName, {
-    className: Flex.deprecated_className,
+    className: flexClassName,
     mapPropsToStyles: () => ({
       column,
       debug,
@@ -118,7 +119,7 @@ const Flex: React.FC<WithAsProp<FlexProps>> & {
   return element;
 };
 
-Flex.deprecated_className = 'ui-flex';
+Flex.deprecated_className = flexClassName;
 Flex.displayName = 'Flex';
 
 Flex.propTypes = {
