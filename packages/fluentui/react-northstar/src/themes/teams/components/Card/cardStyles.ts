@@ -25,15 +25,7 @@ const cardStyles: ComponentSlotStylesPrepared<CardStylesProps, CardVariables> = 
       ':hover': {
         boxShadow: v.boxShadowHover,
       },
-      ...(p.actionable && {
-        cursor: 'pointer',
-        ':focus': {
-          boxShadow: v.boxShadowFocus,
-        },
-        ':active': {
-          boxShadow: v.boxShadowPressed,
-        },
-      }),
+
       borderWidth: v.borderWidth,
       borderStyle: v.borderStyle,
       borderColor: v.borderColor,
@@ -45,6 +37,16 @@ const cardStyles: ComponentSlotStylesPrepared<CardStylesProps, CardVariables> = 
       ...(p.horizontal && { flexDirection: 'row' }),
       ...(p.compact && { padding: v.compactPadding }),
       ...(p.centered && { alignItems: 'center' }),
+
+      ...(p.actionable && {
+        cursor: 'pointer',
+        ':focus-visible': {
+          boxShadow: v.boxShadowFocus,
+        },
+        ':active': {
+          boxShadow: v.boxShadowPressed,
+        },
+      }),
 
       ...borderFocusStyles,
     };
