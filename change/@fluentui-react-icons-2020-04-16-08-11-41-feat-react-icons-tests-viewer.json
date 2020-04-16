@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "-added tests",
+  "comment": "added component icons conformant tests",
   "packageName": "@fluentui/react-icons",
   "email": "mnajdova@gmail.com",
   "dependentChangeType": "patch",
