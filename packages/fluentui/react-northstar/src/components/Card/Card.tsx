@@ -55,14 +55,7 @@ export interface CardProps extends UIComponentProps {
 }
 
 export type CardStylesProps = Pick<CardProps, 'compact' | 'horizontal' | 'centered' | 'size' | 'fluid'>;
-
-export interface CardSlotClassNames {
-  header: string;
-  body: string;
-  footer: string;
-  preview: string;
-  topControls: string;
-}
+export const cardClassName = 'ui-card';
 
 const Card: React.FC<WithAsProp<CardProps>> &
   FluentComponentStaticProps<CardProps> & {
@@ -72,7 +65,6 @@ const Card: React.FC<WithAsProp<CardProps>> &
     Preview: typeof CardPreview;
     TopControls: typeof CardPreview;
     Column: typeof CardColumn;
-    slotClassNames: CardSlotClassNames;
   } = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(Card.displayName, context.telemetry);
@@ -92,7 +84,7 @@ const Card: React.FC<WithAsProp<CardProps>> &
   });
 
   const { classes } = useStyles<CardStylesProps>(Card.displayName, {
-    className: Card.deprecated_className,
+    className: cardClassName,
     mapPropsToStyles: () => ({
       centered,
       horizontal,
@@ -129,15 +121,7 @@ const Card: React.FC<WithAsProp<CardProps>> &
 };
 
 Card.displayName = 'Card';
-Card.deprecated_className = 'ui-card';
-
-Card.slotClassNames = {
-  header: `${Card.deprecated_className}__header`,
-  body: `${Card.deprecated_className}__body`,
-  footer: `${Card.deprecated_className}__footer`,
-  preview: `${Card.deprecated_className}__preview`,
-  topControls: `${Card.deprecated_className}__top-controls`,
-};
+Card.deprecated_className = cardClassName;
 
 Card.propTypes = {
   ...commonPropTypes.createCommon(),

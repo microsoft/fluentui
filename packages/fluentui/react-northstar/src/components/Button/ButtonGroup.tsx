@@ -31,12 +31,14 @@ export interface ButtonGroupProps extends UIComponentProps, ChildrenComponentPro
   circular?: boolean;
 }
 
+export const buttonGroupClassName = 'ui-buttons';
+
 class ButtonGroup extends UIComponent<WithAsProp<ButtonGroupProps>, any> {
   static create: ShorthandFactory<ButtonGroupProps>;
 
   static displayName = 'ButtonGroup';
 
-  static deprecated_className = 'ui-buttons';
+  static deprecated_className = buttonGroupClassName;
 
   static propTypes = {
     ...commonPropTypes.createCommon(),

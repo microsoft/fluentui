@@ -18,6 +18,7 @@ export interface CardHeaderProps extends UIComponentProps, ChildrenComponentProp
 }
 
 export type CardHeaderStylesProps = Pick<CardHeaderProps, 'fitted'>;
+export const cardHeaderClassName = 'ui-card__header';
 
 const CardHeader: React.FC<WithAsProp<CardHeaderProps>> & FluentComponentStaticProps<CardHeaderProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
@@ -33,7 +34,7 @@ const CardHeader: React.FC<WithAsProp<CardHeaderProps>> & FluentComponentStaticP
   });
 
   const { classes } = useStyles<CardHeaderStylesProps>(CardHeader.displayName, {
-    className: CardHeader.deprecated_className,
+    className: cardHeaderClassName,
     mapPropsToStyles: () => ({ fitted }),
     mapPropsToInlineStyles: () => ({
       className,
@@ -59,7 +60,7 @@ const CardHeader: React.FC<WithAsProp<CardHeaderProps>> & FluentComponentStaticP
 };
 
 CardHeader.displayName = 'CardHeader';
-CardHeader.deprecated_className = 'ui-card__header';
+CardHeader.deprecated_className = cardHeaderClassName;
 
 CardHeader.propTypes = {
   ...commonPropTypes.createCommon(),
