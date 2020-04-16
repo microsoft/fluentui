@@ -474,7 +474,6 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
         {menuListProps.items.map((item, index) => {
           let contextualMenuItemRenderProps = item as IContextualMenuItemRenderProps;
           contextualMenuItemRenderProps.index = index;
-          f;
           contextualMenuItemRenderProps.focusableElementIndex = indexCorrection;
           contextualMenuItemRenderProps.totalItemCount = menuListProps.totalItemCount;
           contextualMenuItemRenderProps.hasCheckmarks = menuListProps.hasCheckmarks;
