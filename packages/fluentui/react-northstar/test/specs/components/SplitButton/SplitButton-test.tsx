@@ -7,7 +7,7 @@ import { isConformant } from 'test/specs/commonTests';
 import { ReactWrapper, CommonWrapper } from 'enzyme';
 import { mountWithProvider, findIntrinsicElement } from '../../../utils';
 import { menuClassName } from 'src/components/Menu/Menu';
-import { menuItemClassName } from 'src/components/Menu/Menuitem';
+import { menuItemClassName } from 'src/components/Menu/MenuItem';
 import MenuButton from 'src/components/MenuButton/MenuButton';
 import { buttonClassName } from 'src/components/Button/Button';
 import implementsPopperProps from 'test/specs/commonTests/implementsPopperProps';
