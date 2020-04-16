@@ -48,6 +48,7 @@ const cardStyles: ComponentSlotStylesPrepared<CardStylesProps, CardVariables> = 
         }),
 
       ...(p.disabled && {
+        cursor: 'not-allowed',
         color: v.colorDisabled,
         borderColor: v.borderColorDisabled,
         boxShadow: v.boxShadowDisabled,
