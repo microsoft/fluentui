@@ -72,9 +72,15 @@ export interface TreeTitleProps extends UIComponentProps, ChildrenComponentProps
 
   /** Whether or not tree title is selectable. */
   selectable?: boolean;
+
+  /** For selectable parents define if all nested children are checked */
+  incompleteChecked?: boolean;
 }
 
-export type TreeTitleStylesProps = Pick<TreeTitleProps, 'selected' | 'selectable' | 'disabled' | 'selectableParent'>;
+export type TreeTitleStylesProps = Pick<
+  TreeTitleProps,
+  'selected' | 'selectable' | 'disabled' | 'selectableParent' | 'incompleteChecked'
+>;
 
 const TreeTitle: React.FC<WithAsProp<TreeTitleProps>> &
   FluentComponentStaticProps<TreeTitleProps> & { slotClassNames: TreeTitleSlotClassNames } = props => {
@@ -100,6 +106,7 @@ const TreeTitle: React.FC<WithAsProp<TreeTitleProps>> &
     selectable,
     selectableParent,
     expanded,
+    incompleteChecked,
   } = props;
 
   const getA11Props = useAccessibility(accessibility, {
@@ -133,6 +140,7 @@ const TreeTitle: React.FC<WithAsProp<TreeTitleProps>> &
       selectableParent,
       disabled,
       selectable,
+      incompleteChecked,
     }),
     rtl: context.rtl,
   });
@@ -147,12 +155,10 @@ const TreeTitle: React.FC<WithAsProp<TreeTitleProps>> &
     defaultProps: () => ({
       as: 'span',
       selected,
-      ...(selectableParent && { expanded }),
+      ...(selectableParent && !_.isEmpty(selectionIndicator) && { expanded }),
       ...getA11Props('indicator', {
         className: TreeTitle.slotClassNames.indicator,
-        ...(selectable &&
-          !hasSubtree &&
-          _.isEmpty(selectionIndicator) && { styles: resolvedStyles.selectionIndicator }),
+        ...(selectable && _.isEmpty(selectionIndicator) && { styles: resolvedStyles.selectionIndicator }),
       }),
     }),
   });
@@ -196,6 +202,7 @@ TreeTitle.propTypes = {
   selectableParent: PropTypes.bool,
   treeSize: PropTypes.number,
   selectionIndicator: customPropTypes.shorthandAllowingChildren,
+  incompleteChecked: PropTypes.bool,
 };
 TreeTitle.defaultProps = {
   as: 'a',
