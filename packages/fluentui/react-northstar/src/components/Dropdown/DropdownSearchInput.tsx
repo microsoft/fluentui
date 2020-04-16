@@ -71,11 +71,17 @@ export interface DropdownSearchInputProps extends UIComponentProps<DropdownSearc
   placeholder?: string;
 }
 
+export const dropdownSearchInputClassName = 'ui-dropdown__searchinput';
+export const dropdownSearchInputSlotClassNames: DropdownSearchInputSlotClassNames = {
+  input: `${dropdownSearchInputClassName}__input`,
+  wrapper: `${dropdownSearchInputClassName}__wrapper`,
+};
+
 class DropdownSearchInput extends UIComponent<WithAsProp<DropdownSearchInputProps>, any> {
   static displayName = 'DropdownSearchInput';
   static create: ShorthandFactory<DropdownSearchInputProps>;
   static slotClassNames: DropdownSearchInputSlotClassNames;
-  static deprecated_className = 'ui-dropdown__searchinput';
+  static deprecated_className = dropdownSearchInputClassName;
 
   static propTypes = {
     ...commonPropTypes.createCommon({
@@ -121,14 +127,14 @@ class DropdownSearchInput extends UIComponent<WithAsProp<DropdownSearchInputProp
         onKeyUp={this.handleKeyUp}
         {...unhandledProps}
         wrapper={{
-          className: DropdownSearchInput.slotClassNames.wrapper,
+          className: dropdownSearchInputSlotClassNames.wrapper,
           styles: styles.root,
           ...accessibilityComboboxProps,
           ...unhandledProps.wrapper,
         }}
         input={{
           type: 'text',
-          className: DropdownSearchInput.slotClassNames.input,
+          className: dropdownSearchInputSlotClassNames.input,
           styles: styles.input,
           placeholder,
           onBlur: this.handleInputBlur,
@@ -141,10 +147,7 @@ class DropdownSearchInput extends UIComponent<WithAsProp<DropdownSearchInputProp
   }
 }
 
-DropdownSearchInput.slotClassNames = {
-  input: `${DropdownSearchInput.deprecated_className}__input`,
-  wrapper: `${DropdownSearchInput.deprecated_className}__wrapper`,
-};
+DropdownSearchInput.slotClassNames = dropdownSearchInputSlotClassNames;
 
 DropdownSearchInput.create = createShorthandFactory({ Component: DropdownSearchInput });
 

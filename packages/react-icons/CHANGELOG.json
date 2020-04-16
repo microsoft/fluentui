@@ -2,6 +2,21 @@
   "name": "@fluentui/react-icons",
   "entries": [
     {
+      "date": "Thu, 16 Apr 2020 12:37:31 GMT",
+      "tag": "@fluentui/react-icons_v0.1.2",
+      "version": "0.1.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "added component icons conformant tests",
+            "author": "mnajdova@gmail.com",
+            "commit": "c02f831775ac80f5f43667f284d73c603bf3979f",
+            "package": "@fluentui/react-icons"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 16 Apr 2020 05:06:13 GMT",
       "tag": "@fluentui/react-icons_v0.1.1",
       "version": "0.1.1",

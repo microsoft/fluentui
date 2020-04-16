@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import Loader from 'src/components/Loader/Loader';
+import Loader, { loaderClassName } from 'src/components/Loader/Loader';
 import { isConformant } from 'test/specs/commonTests';
 import { mountWithProvider } from 'test/utils';
 
@@ -17,7 +17,7 @@ describe('Loader', () => {
     it('renders children only when "delay" is passed', () => {
       jest.useFakeTimers();
 
-      const selector = `.${Loader.deprecated_className}`;
+      const selector = `.${loaderClassName}`;
       const wrapper = mountWithProvider(<Loader delay={500} />);
 
       expect(wrapper.find(selector).exists()).toBe(false);

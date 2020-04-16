@@ -46,12 +46,23 @@ export interface LayoutProps extends UIComponentProps {
   vertical?: boolean;
 }
 
+export const layoutClassName = 'ui-layout';
+export const layoutSlotClassNames: LayoutSlotClassNames = {
+  start: `${layoutClassName}__start`,
+  main: `${layoutClassName}__main`,
+  end: `${layoutClassName}__end`,
+  gap: `${layoutClassName}__gap`,
+  reducedStart: `${layoutClassName}--reduced__start`,
+  reducedMain: `${layoutClassName}--reduced__main`,
+  reducedEnd: `${layoutClassName}--reduced__end`,
+};
+
 class Layout extends UIComponent<WithAsProp<LayoutProps>, any> {
-  static deprecated_className = 'ui-layout';
+  static deprecated_className = layoutClassName;
 
   static displayName = 'Layout';
 
-  static slotClassNames: LayoutSlotClassNames;
+  static slotClassNames = layoutSlotClassNames;
 
   static propTypes = {
     ...commonPropTypes.createCommon({
@@ -102,7 +113,7 @@ class Layout extends UIComponent<WithAsProp<LayoutProps>, any> {
       return (
         start && (
           <div
-            className={cx(Layout.slotClassNames.start, classes.start)}
+            className={cx(layoutSlotClassNames.start, classes.start)}
             {...rtlTextContainer.getAttributes({ forElements: [start] })}
           >
             {start}
@@ -115,7 +126,7 @@ class Layout extends UIComponent<WithAsProp<LayoutProps>, any> {
       return (
         main && (
           <div
-            className={cx(Layout.slotClassNames.main, classes.main)}
+            className={cx(layoutSlotClassNames.main, classes.main)}
             {...rtlTextContainer.getAttributes({ forElements: [main] })}
           >
             {main}
@@ -128,7 +139,7 @@ class Layout extends UIComponent<WithAsProp<LayoutProps>, any> {
       return (
         end && (
           <div
-            className={cx(Layout.slotClassNames.end, classes.end)}
+            className={cx(layoutSlotClassNames.end, classes.end)}
             {...rtlTextContainer.getAttributes({ forElements: [end] })}
           >
             {end}
@@ -140,7 +151,7 @@ class Layout extends UIComponent<WithAsProp<LayoutProps>, any> {
     // Heads up!
     // IE11 Doesn't support grid-gap, insert virtual columns instead
     renderGap({ gap, classes }) {
-      return gap && <span className={cx(Layout.slotClassNames.gap, classes.gap)} />;
+      return gap && <span className={cx(layoutSlotClassNames.gap, classes.gap)} />;
     },
   };
 
@@ -176,9 +187,9 @@ class Layout extends UIComponent<WithAsProp<LayoutProps>, any> {
     if (reducing && isSingleArea) {
       const composedClasses = cx(
         classes.root,
-        startArea && Layout.slotClassNames.reducedStart,
-        mainArea && Layout.slotClassNames.reducedMain,
-        endArea && Layout.slotClassNames.reducedEnd,
+        startArea && layoutSlotClassNames.reducedStart,
+        mainArea && layoutSlotClassNames.reducedMain,
+        endArea && layoutSlotClassNames.reducedEnd,
       );
       return (
         <ElementType {...unhandledProps} className={composedClasses}>
@@ -199,15 +210,7 @@ class Layout extends UIComponent<WithAsProp<LayoutProps>, any> {
   }
 }
 
-Layout.slotClassNames = {
-  start: `${Layout.deprecated_className}__start`,
-  main: `${Layout.deprecated_className}__main`,
-  end: `${Layout.deprecated_className}__end`,
-  gap: `${Layout.deprecated_className}__gap`,
-  reducedStart: `${Layout.deprecated_className}--reduced__start`,
-  reducedMain: `${Layout.deprecated_className}--reduced__main`,
-  reducedEnd: `${Layout.deprecated_className}--reduced__end`,
-};
+Layout.slotClassNames = layoutSlotClassNames;
 
 /**
  * (DEPRECATED) A layout is a utility for arranging the content of a component.

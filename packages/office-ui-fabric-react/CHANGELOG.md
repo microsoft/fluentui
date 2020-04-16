@@ -1,8 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 16 Apr 2020 04:01:45 GMT and should not be manually modified.
+This log was last generated on Thu, 16 Apr 2020 12:37:31 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.106.3](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.106.3)
+
+Thu, 16 Apr 2020 12:37:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.106.1..office-ui-fabric-react_v7.106.3)
+
+### Patches
+
+- Replace uses of EventGroup with the 'on' function and _disposables pattern in ColorRectangle, ColorSlider, and Slider ([PR #12717](https://github.com/microsoft/fluentui/pull/12717) by behowell@microsoft.com)
+- changed svg factory example and added icon components tests ([PR #12675](https://github.com/microsoft/fluentui/pull/12675) by mnajdova@gmail.com)
 
 ## [7.106.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.106.1)
 
