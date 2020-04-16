@@ -2,6 +2,95 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 16 Apr 2020 04:01:45 GMT",
+      "tag": "office-ui-fabric-react_v7.106.1",
+      "version": "7.106.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding Stack snapshot test for RTL scenarios.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "ae20fbeb9eb4002c49137a21c4bc08b228dcef63",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Readme: Add migration info",
+            "author": "elcraig@microsoft.com",
+            "commit": "9e3c7c7d4b92e132820cdbcd61a667829c712ecb",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "removing more references to wrong icon-ppt.png icon in wrong folder",
+            "author": "caperez@microsoft.com",
+            "commit": "c847450db51500f13847542b8f4c89dd277bb2bb",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Fixed a bug in the DatePicker causing an existing validation error to be cleared when tabbing through the component.",
+            "author": "michaelmajgaard@outlook.com",
+            "commit": "ae8d486c544cd9a6461ab705f37cb5b01718db5d",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Panel: passing close button styles down using subComponentStyles",
+            "author": "xgao@microsoft.com",
+            "commit": "3f95bf337123ad9196a552ed12f893fa75a272fc",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Examples: fix bad practice styles prop",
+            "author": "xgao@microsoft.com",
+            "commit": "642de92739615f658af5cd1eceff8319f2e1a3f9",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Updated DatePicker and ComboBox examples to use function components",
+            "author": "czearing@outlook.com",
+            "commit": "dcd45c9db66a816a5adda7c011e143170aebc6c9",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Updating Rating, Text, OverflowSet, and Dropdown examples to use function components",
+            "author": "czearing@outlook.com",
+            "commit": "a2e04f01900539a45757f79df7395bcb55ff030c",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "always return explicit Fabric dir",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "3fc3e55205965c1fc603415b220a8e22ba379c95",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Adding SVG icon examples",
+            "author": "dzearing@microsoft.com",
+            "commit": "447b9dee90b3533e69416939bc841db3feef1e6f",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Keyframes are calculated on access. This helps with SSR generation, as namespace will be respected.",
+            "author": "dzearing@microsoft.com",
+            "commit": "85fb387089c967e32a0cfa587750719b7fae17c9",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "DetailsRow.base bug fix for cellStyleProps",
+            "author": "SGonzalezBustos@Gmail.com",
+            "commit": "0eb5b3bcb86468253ae8492ffb0dadcdbf016b67",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "none": [
+          {
+            "comment": "removing withInfo button from fabric storybook",
+            "author": "czearing@outlook.com",
+            "commit": "5af5fbc9e3aa5c1b40a78548287f4637b7849b9c",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 09 Apr 2020 12:24:31 GMT",
       "tag": "office-ui-fabric-react_v7.106.0",
       "version": "7.106.0",

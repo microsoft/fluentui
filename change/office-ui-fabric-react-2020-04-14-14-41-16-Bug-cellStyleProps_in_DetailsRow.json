@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "DetailsRow.base bug fix for cellStyleProps",
-  "packageName": "office-ui-fabric-react",
-  "email": "SGonzalezBustos@Gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-04-14T18:41:16.879Z"
-}

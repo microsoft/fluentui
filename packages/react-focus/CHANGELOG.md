@@ -1,6 +1,21 @@
 # Change Log - @fluentui/react-focus
 
-This log was last generated on Mon, 30 Mar 2020 19:10:08 GMT and should not be manually modified.
+This log was last generated on Thu, 16 Apr 2020 04:01:45 GMT and should not be manually modified.
+
+<!-- Start content -->
+
+## [7.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.3.0)
+
+Thu, 16 Apr 2020 04:01:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v7.1.13..@fluentui/react-focus_v7.3.0)
+
+### Minor changes
+
+- FocusZone: Adding focusLast imperative method to v7. ([PR #12600](https://github.com/microsoft/fluentui/pull/12600) by humbertomakotomorimoto@gmail.com)
+
+### Patches
+
+- FocusZone: Updating comment of allowFocusRoot to be more descriptive of its functionality. ([PR #12666](https://github.com/microsoft/fluentui/pull/12666) by humbertomakotomorimoto@gmail.com)
 
 ## 7.1.12
 Mon, 30 Mar 2020 19:10:08 GMT
