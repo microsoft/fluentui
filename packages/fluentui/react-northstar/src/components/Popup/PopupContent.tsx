@@ -79,6 +79,11 @@ export type PopupContentStylesProps = Required<Pick<PopupContentProps, 'pointing
   basePlacement: PopperJs.BasePlacement;
 };
 
+export const popupContentClassName = 'ui-popup__content';
+export const popupContentSlotClassNames: PopupContentSlotClassNames = {
+  content: `${popupContentClassName}__content`,
+};
+
 const PopupContent: React.FC<WithAsProp<PopupContentProps>> &
   FluentComponentStaticProps<PopupContentProps> & { slotClassNames: PopupContentSlotClassNames } = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
@@ -105,7 +110,7 @@ const PopupContent: React.FC<WithAsProp<PopupContentProps>> &
     rtl: context.rtl,
   });
   const { classes } = useStyles<PopupContentStylesProps>(PopupContent.displayName, {
-    className: PopupContent.deprecated_className,
+    className: popupContentClassName,
     mapPropsToStyles: () => ({
       basePlacement: getBasePlacement(placement, context.rtl),
       pointing,
@@ -135,7 +140,7 @@ const PopupContent: React.FC<WithAsProp<PopupContentProps>> &
   const popupContent = (
     <>
       {pointing && <div className={classes.pointer} ref={pointerRef} />}
-      <div className={cx(PopupContent.slotClassNames.content, classes.content)}>
+      <div className={cx(popupContentSlotClassNames.content, classes.content)}>
         {childrenExist(children) ? children : content}
       </div>
     </>
@@ -167,7 +172,7 @@ const PopupContent: React.FC<WithAsProp<PopupContentProps>> &
 };
 
 PopupContent.displayName = 'PopupContent';
-PopupContent.deprecated_className = 'ui-popup__content';
+PopupContent.deprecated_className = popupContentClassName;
 
 PopupContent.propTypes = {
   ...commonPropTypes.createCommon(),
@@ -197,9 +202,7 @@ PopupContent.propTypes = {
 };
 PopupContent.handledProps = Object.keys(PopupContent.propTypes) as any;
 
-PopupContent.slotClassNames = {
-  content: `${PopupContent.deprecated_className}__content`,
-};
+PopupContent.slotClassNames = popupContentSlotClassNames;
 
 PopupContent.create = createShorthandFactory({ Component: PopupContent, mappedProp: 'content' });
 

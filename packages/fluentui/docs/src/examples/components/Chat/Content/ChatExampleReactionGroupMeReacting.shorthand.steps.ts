@@ -1,8 +1,8 @@
-import { Reaction, chatMessageSlotClassNames } from '@fluentui/react-northstar';
+import { reactionClassName, chatMessageSlotClassNames } from '@fluentui/react-northstar';
 
 const selectors = {
   chatMessageContent: `.${chatMessageSlotClassNames.content}`,
-  reaction: `.${Reaction.deprecated_className}`,
+  reaction: `.${reactionClassName}`,
 };
 
 const config: ScreenerTestsConfig = {

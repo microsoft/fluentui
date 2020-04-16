@@ -46,6 +46,11 @@ export interface TableCellSlotClassNames {
   content: string;
 }
 
+export const tableCellClassName = 'ui-table__cell';
+export const tableCellSlotClassNames: TableCellSlotClassNames = {
+  content: `${tableCellClassName}__content`,
+};
+
 const TableCell: React.FC<WithAsProp<TableCellProps>> &
   FluentComponentStaticProps<TableCellProps> & {
     slotClassNames: TableCellSlotClassNames;
@@ -74,7 +79,7 @@ const TableCell: React.FC<WithAsProp<TableCellProps>> &
   });
 
   const { classes, styles: resolvedStyles } = useStyles<TableCellStylesProps>(TableCell.displayName, {
-    className: TableCell.deprecated_className,
+    className: tableCellClassName,
     mapPropsToStyles: () => ({
       truncateContent,
     }),
@@ -107,7 +112,7 @@ const TableCell: React.FC<WithAsProp<TableCellProps>> &
           {hasChildren
             ? children
             : Box.create(content, {
-                defaultProps: () => ({ styles: resolvedStyles.content }),
+                defaultProps: () => ({ className: tableCellSlotClassNames.content, styles: resolvedStyles.content }),
               })}
         </ElementType>,
       )}
@@ -119,11 +124,9 @@ const TableCell: React.FC<WithAsProp<TableCellProps>> &
 
 TableCell.displayName = 'TableCell';
 
-TableCell.deprecated_className = 'ui-table__cell';
+TableCell.deprecated_className = tableCellClassName;
 
-TableCell.slotClassNames = {
-  content: `${TableCell.deprecated_className}__content`,
-};
+TableCell.slotClassNames = tableCellSlotClassNames;
 
 TableCell.propTypes = {
   ...commonPropTypes.createCommon({

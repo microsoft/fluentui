@@ -2,22 +2,22 @@ import * as React from 'react';
 import * as keyboardKey from 'keyboard-key';
 
 import SplitButton from 'src/components/SplitButton/SplitButton';
-import SplitButtonToggle from 'src/components/SplitButton/SplitButtonToggle';
+import { splitButtonToggleClassName } from 'src/components/SplitButton/SplitButtonToggle';
 import { isConformant } from 'test/specs/commonTests';
 import { ReactWrapper, CommonWrapper } from 'enzyme';
 import { mountWithProvider, findIntrinsicElement } from '../../../utils';
 import { menuClassName } from 'src/components/Menu/Menu';
 import { menuItemClassName } from 'src/components/Menu/MenuItem';
-import MenuButton from 'src/components/MenuButton/MenuButton';
+import { menuButtonClassName } from 'src/components/MenuButton/MenuButton';
 import { buttonClassName } from 'src/components/Button/Button';
 import implementsPopperProps from 'test/specs/commonTests/implementsPopperProps';
 
 const mockMenu = { items: ['1', '2', '3'] };
 
 const getToggleButton = (wrapper: ReactWrapper): CommonWrapper =>
-  findIntrinsicElement(wrapper, `.${SplitButtonToggle.deprecated_className}`);
+  findIntrinsicElement(wrapper, `.${splitButtonToggleClassName}`);
 const getMainButton = (wrapper: ReactWrapper): CommonWrapper =>
-  findIntrinsicElement(wrapper, `.${MenuButton.deprecated_className} .${buttonClassName}`);
+  findIntrinsicElement(wrapper, `.${menuButtonClassName} .${buttonClassName}`);
 const getMenuItems = (wrapper: ReactWrapper): CommonWrapper => findIntrinsicElement(wrapper, `.${menuItemClassName}`);
 const getMenu = (wrapper: ReactWrapper): CommonWrapper => findIntrinsicElement(wrapper, `.${menuClassName}`);
 

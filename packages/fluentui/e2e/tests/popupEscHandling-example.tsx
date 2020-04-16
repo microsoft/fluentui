@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { Button, Dropdown, Popup, dropdownSlotClassNames } from '@fluentui/react-northstar';
+import { Button, Dropdown, Popup, dropdownSlotClassNames, popupContentClassName } from '@fluentui/react-northstar';
 
 const inputItems = ['Bruce Wayne', 'Natasha Romanoff', 'Steven Strange'];
 
 export const selectors = {
   popupTriggerId: 'trigger',
-  popupContentClass: Popup.slotClassNames.content,
+  popupContentClass: popupContentClassName,
   dropdownTriggerClass: dropdownSlotClassNames.triggerButton,
 };
 
