@@ -1,8 +1,10 @@
+import { mergeStyles } from '@fluentui/styles';
 import cx from 'classnames';
 import * as _ from 'lodash';
 import * as React from 'react';
+import * as ReactIs from 'react-is';
+
 import { ShorthandValue, Props, PropsOf, ShorthandRenderFunction } from '../types';
-import { mergeStyles } from '@fluentui/styles';
 
 type HTMLTag = 'iframe' | 'img' | 'input';
 type ShorthandProp = 'children' | 'src' | 'type';
@@ -64,7 +66,7 @@ export function createShorthandFactory<TInstance extends React.Component, P>(con
   allowsJSX?: boolean;
 }): ShorthandFactory<P>;
 export function createShorthandFactory<P>({ Component, mappedProp, mappedArrayProp, allowsJSX }) {
-  if (typeof Component !== 'function' && typeof Component !== 'string') {
+  if (!ReactIs.isValidElementType(Component)) {
     throw new Error('createShorthandFactory() Component must be a string or function.');
   }
 
@@ -98,9 +100,10 @@ export function createShorthand<P>({
   value?: ShorthandValue<P>;
   options?: CreateShorthandOptions<P>;
 }) {
-  if (typeof Component !== 'function' && typeof Component !== 'string') {
+  if (!ReactIs.isValidElementType(Component)) {
     throw new Error('createShorthand() Component must be a string or function.');
   }
+
   // short circuit noop values
   const valIsNoop = _.isNil(value) || typeof value === 'boolean';
   if (valIsNoop && !options.render) return null;

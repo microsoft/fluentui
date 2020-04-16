@@ -1,75 +1,37 @@
-import * as React from 'react';
-import { useStyles, useTelemetry, getElementType, useUnhandledProps } from '@fluentui/react-bindings';
+import { compose, ComponentWithAs } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
-import { childrenExist, commonPropTypes, createShorthandFactory, rtlTextContainer } from '../../utils';
-import { FluentComponentStaticProps, ProviderContextPrepared, WithAsProp, withSafeTypeForAs } from '../../types';
-import { BoxProps } from '../Box/Box';
-import { ButtonProps } from './Button';
+import { commonPropTypes, createShorthandFactory, ShorthandFactory, SizeValue } from '../../utils';
+import Box, { BoxProps, BoxStylesProps } from '../Box/Box';
+import { ButtonStylesProps } from 'src/components/Button/Button';
 
-export interface ButtonContentProps extends BoxProps {
-  size?: ButtonProps['size'];
+interface ButtonContentOwnProps {
+  size?: SizeValue;
 }
 
+export interface ButtonContentProps extends BoxProps, ButtonContentOwnProps {}
 export type ButtonContentStylesProps = Pick<ButtonContentProps, 'size'>;
+
 export const buttonContentClassName = 'ui-button__content';
 
-const ButtonContent: React.FC<WithAsProp<ButtonContentProps>> &
-  FluentComponentStaticProps<ButtonContentProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
-  const { setStart, setEnd } = useTelemetry(ButtonContent.displayName, context.telemetry);
-  setStart();
+/**
+ * A ButtonContent allows a user to have a dedicated component that can be targeted from the theme.
+ */
+const ButtonContent = compose<'div', ButtonContentProps, ButtonStylesProps, BoxProps, BoxStylesProps>(Box, {
+  className: buttonContentClassName,
+  displayName: 'ButtonContent',
+  handledProps: ['size'],
 
-  const { size, content, children, className, styles, variables, design } = props;
-
-  const { classes } = useStyles<ButtonContentStylesProps>(ButtonContent.displayName, {
-    className: buttonContentClassName,
-    mapPropsToStyles: () => ({ size }),
-    mapPropsToInlineStyles: () => ({
-      className,
-      styles,
-      variables,
-      design,
-    }),
-    rtl: context.rtl,
-  });
-
-  const ElementType = getElementType(props);
-  const unhandledProps = useUnhandledProps(ButtonContent.handledProps, props);
-
-  const result = (
-    <ElementType
-      {...rtlTextContainer.getAttributes({ forElements: [children, content] })}
-      className={classes.root}
-      {...unhandledProps}
-    >
-      {childrenExist(children) ? children : content}
-    </ElementType>
-  );
-
-  setEnd();
-
-  return result;
-};
-
-ButtonContent.displayName = 'ButtonContent';
-ButtonContent.deprecated_className = buttonContentClassName;
+  overrideStyles: true,
+}) as ComponentWithAs<'div', ButtonContentProps> & { create: ShorthandFactory<ButtonContentProps> };
 
 ButtonContent.propTypes = {
   ...commonPropTypes.createCommon(),
   size: customPropTypes.size,
 };
-
-ButtonContent.handledProps = Object.keys(ButtonContent.propTypes) as any;
-
 ButtonContent.create = createShorthandFactory({
   Component: ButtonContent,
   mappedProp: 'content',
 });
 
-/**
- * A ButtonContent allows a user to have a dedicated component that can be targeted from the theme.
- */
-export default withSafeTypeForAs<typeof ButtonContent, ButtonContentProps>(ButtonContent);
+export default ButtonContent;

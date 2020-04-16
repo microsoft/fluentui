@@ -63,6 +63,7 @@ type ComposedComponentProps = { hidden?: boolean; visible?: boolean };
 type ComposedComponentStylesProps = { visible: boolean | undefined };
 
 const ComposedComponent = compose<
+  'div',
   ComposedComponentProps,
   ComposedComponentStylesProps,
   BaseComponentProps,
@@ -75,6 +76,7 @@ const ComposedComponent = compose<
 });
 
 const MultipleComposedComponent = compose<
+  'div',
   ComposedComponentProps,
   ComposedComponentStylesProps,
   BaseComponentProps & ComposedComponentProps,

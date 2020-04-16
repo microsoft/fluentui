@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "some changes",
+  "packageName": "@fluentui/react-compose",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-04-16T15:52:55.674Z"
+}

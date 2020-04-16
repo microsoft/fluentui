@@ -1,13 +1,11 @@
 import { buttonBehavior } from '@fluentui/accessibility';
-import { compose } from '@fluentui/react-bindings';
-import * as React from 'react';
+import { compose, ComponentWithAs } from '@fluentui/react-bindings';
 
-import { WithAsProp } from '../../types';
 import { createShorthandFactory, ShorthandFactory } from '../../utils';
 import Button, { ButtonProps, ButtonStylesProps } from '../Button/Button';
 
 interface AttachmentActionOwnProps {}
-export interface AttachmentActionProps extends AttachmentActionOwnProps, WithAsProp<ButtonProps> {}
+export interface AttachmentActionProps extends AttachmentActionOwnProps, ButtonProps {}
 
 export type AttachmentActionStylesProps = never;
 export const attachmentActionClassName = 'ui-attachment__action';
@@ -16,17 +14,15 @@ export const attachmentActionClassName = 'ui-attachment__action';
  * An AttachmentAction provides a slot for actions in the Attachment.
  */
 const AttachmentAction = compose<
+  'button',
   AttachmentActionOwnProps,
   AttachmentActionStylesProps,
-  WithAsProp<ButtonProps>,
+  ButtonProps,
   ButtonStylesProps
 >(Button, {
   className: attachmentActionClassName,
   displayName: 'AttachmentAction',
-}) as React.FC<AttachmentActionProps> & {
-  create?: ShorthandFactory<AttachmentActionProps>;
-  deprecated_className: string;
-};
+}) as ComponentWithAs<'button', AttachmentActionProps> & { create: ShorthandFactory<any> };
 
 AttachmentAction.defaultProps = {
   accessibility: buttonBehavior,
@@ -34,7 +30,7 @@ AttachmentAction.defaultProps = {
   iconOnly: true,
   text: true,
 };
-AttachmentAction.propTypes = (Button as React.FC).propTypes;
+AttachmentAction.propTypes = Button.propTypes;
 
 AttachmentAction.create = createShorthandFactory({ Component: AttachmentAction, mappedProp: 'content' });
 

@@ -1,7 +1,6 @@
 import { Accessibility, AriaRole, IS_FOCUSABLE_ATTRIBUTE } from '@fluentui/accessibility';
-import { FocusZone, Telemetry } from '@fluentui/react-bindings';
+import { ComposedComponent, FocusZone, Telemetry } from '@fluentui/react-bindings';
 import { Ref, RefFindNode } from '@fluentui/react-component-ref';
-import { ComposedComponent } from '@fluentui/react-compose';
 import * as faker from 'faker';
 import * as _ from 'lodash';
 import * as React from 'react';

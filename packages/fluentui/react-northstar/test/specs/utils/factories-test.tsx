@@ -11,7 +11,7 @@ import { consoleUtil } from 'test/utils';
 // ----------------------------------------
 
 type ShorthandConfig = {
-  Component?: React.ReactType;
+  Component?: React.ElementType;
   defaultProps?: () => Props;
   mappedProp?: string;
   mappedArrayProp?: string;
@@ -156,6 +156,14 @@ describe('factories', () => {
       const goodUsage = () =>
         // @ts-ignore
         createShorthandFactory({ Component: () => <div />, mappedProp: 'children' });
+
+      expect(goodUsage).not.toThrowError();
+    });
+
+    test('does not throw if passed a forwardRef Component', () => {
+      const goodUsage = () =>
+        // @ts-ignore
+        createShorthandFactory({ Component: React.forwardRef(() => null), mappedProp: 'children' });
 
       expect(goodUsage).not.toThrowError();
     });

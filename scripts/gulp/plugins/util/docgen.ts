@@ -173,8 +173,10 @@ const defaultPropFilter = (prop, component) => {
 };
 
 const getComponentSymbolOfType = (type: MaybeIntersectType) => {
+  console.log('getComponentSymbolOfType', { ...type, checker: undefined, target: undefined });
   if (type.symbol) {
     const symbolName = type.symbol.getName();
+    console.log('symbolName', symbolName, { ...type, checker: undefined, target: undefined });
     if (reactComponentSymbolNames.indexOf(symbolName) !== -1) {
       return type.symbol;
     }
@@ -204,16 +206,21 @@ export class Parser {
     source: ts.SourceFile,
     componentNameResolver: ComponentNameResolver = () => undefined,
   ): ComponentDoc | null {
+    console.log('getComponentInfo 1');
     if (!!symbolParam.declarations && symbolParam.declarations.length === 0) {
       return null;
     }
 
+    console.log('getComponentInfo 2');
     let exp = symbolParam;
 
     const type = this.checker.getTypeOfSymbolAtLocation(exp, exp.valueDeclaration || exp.declarations![0]);
     let commentSource = exp;
+    console.log('getComponentInfo 3');
 
     if (!exp.valueDeclaration) {
+      console.log('getComponentInfo 4');
+
       const componentSymbol = getComponentSymbolOfType(type);
 
       exp = type.symbol || componentSymbol;
@@ -719,8 +726,8 @@ function parseWithProgramProvider(
 ): ComponentDoc[] {
   const filePaths = Array.isArray(filePathOrPaths) ? filePathOrPaths : [filePathOrPaths];
 
-  const program = programProvider ? programProvider() : ts.createProgram(filePaths, compilerOptions);
-
+  const program: ts.Program = programProvider ? programProvider() : ts.createProgram(filePaths, compilerOptions);
+  console.log(program.ge);
   const parser = new Parser(program, parserOpts);
 
   const checker = program.getTypeChecker();
