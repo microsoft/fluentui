@@ -1,8 +1,8 @@
-import { Attachment } from '@fluentui/react-northstar';
+import { Attachment, AttachmentAction } from '@fluentui/react-northstar';
 
 const selectors = {
-  root: `.${Attachment.className}`,
-  action: `.${Attachment.slotClassNames.action}`,
+  root: `.${Attachment.deprecated_className}`,
+  action: `.${AttachmentAction.deprecated_className}`,
 };
 
 const getScreenerSteps = (): ScreenerSteps => [

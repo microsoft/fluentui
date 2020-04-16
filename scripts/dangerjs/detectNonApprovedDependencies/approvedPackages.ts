@@ -69,6 +69,7 @@ export default [
   'lodash-es@4.17.15',
   'object-assign@4.1.1',
   'popper.js@1.15.0',
+  '@popperjs/core@2.1.1',
   'prop-types@15.6.2',
   'prop-types@15.7.2',
   'raf-schd@4.0.2',
@@ -87,6 +88,7 @@ export default [
   'rtl-css-js@1.11.0',
   'scheduler@0.13.3',
   'scheduler@0.13.6',
+  'stylis@3.5.4',
   'webpack@4.25.1',
 ];
 

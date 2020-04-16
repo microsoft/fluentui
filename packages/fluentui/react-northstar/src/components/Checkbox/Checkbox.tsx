@@ -116,7 +116,7 @@ const Checkbox: React.FC<WithAsProp<CheckboxProps>> &
     rtl: context.rtl,
   });
   const { classes, styles: resolvedStyles } = useStyles<CheckboxStylesProps>(Checkbox.displayName, {
-    className: Checkbox.className,
+    className: Checkbox.deprecated_className,
     mapPropsToStyles: () => ({
       checked: state.checked,
       disabled,
@@ -190,7 +190,7 @@ const Checkbox: React.FC<WithAsProp<CheckboxProps>> &
 };
 
 Checkbox.displayName = 'Checkbox';
-Checkbox.className = 'ui-checkbox';
+Checkbox.deprecated_className = 'ui-checkbox';
 
 Checkbox.defaultProps = {
   accessibility: checkboxBehavior,
@@ -214,8 +214,8 @@ Checkbox.propTypes = {
 Checkbox.handledProps = Object.keys(Checkbox.propTypes) as any;
 
 Checkbox.slotClassNames = {
-  label: `${Checkbox.className}__label`,
-  indicator: `${Checkbox.className}__indicator`,
+  label: `${Checkbox.deprecated_className}__label`,
+  indicator: `${Checkbox.deprecated_className}__indicator`,
 };
 
 Checkbox.create = createShorthandFactory({

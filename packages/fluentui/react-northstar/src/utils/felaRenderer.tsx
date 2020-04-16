@@ -3,7 +3,6 @@ import { createRenderer as createFelaRenderer } from 'fela';
 import felaPluginEmbedded from 'fela-plugin-embedded';
 import felaPluginFallbackValue from 'fela-plugin-fallback-value';
 import felaPluginPlaceholderPrefixer from 'fela-plugin-placeholder-prefixer';
-import felaPluginPrefixer from 'fela-plugin-prefixer';
 import felaPluginRtl from 'fela-plugin-rtl';
 
 import felaDisableAnimationsPlugin from './felaDisableAnimationsPlugin';
@@ -11,6 +10,7 @@ import felaExpandCssShorthandsPlugin from './felaExpandCssShorthandsPlugin';
 import felaFocusVisibleEnhancer from './felaFocusVisibleEnhancer';
 import felaInvokeKeyframesPlugin from './felaInvokeKeyframesPlugin';
 import felaSanitizeCss from './felaSanitizeCssPlugin';
+import felaStylisEnhancer from './felaStylisEnhancer';
 
 let felaDevMode = false;
 
@@ -52,7 +52,7 @@ const filterClassName = (className: string): boolean =>
 const rendererConfig = {
   devMode: felaDevMode,
   filterClassName,
-  enhancers: [felaFocusVisibleEnhancer],
+  enhancers: [felaFocusVisibleEnhancer, felaStylisEnhancer],
   plugins: [
     felaDisableAnimationsPlugin(),
 
@@ -65,7 +65,6 @@ const rendererConfig = {
     felaPluginPlaceholderPrefixer(),
     felaInvokeKeyframesPlugin(),
     felaPluginEmbedded(),
-    felaPluginPrefixer(),
 
     felaExpandCssShorthandsPlugin(),
 

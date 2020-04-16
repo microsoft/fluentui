@@ -19,7 +19,7 @@ class DialogFooter extends UIComponent<WithAsProp<DialogFooterProps>> {
   static create: ShorthandFactory<DialogFooterProps>;
 
   static displayName = 'DialogFooter';
-  static className = 'ui-dialog__footer';
+  static deprecated_className = 'ui-dialog__footer';
 
   static propTypes = {
     ...commonPropTypes.createCommon(),

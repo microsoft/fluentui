@@ -77,7 +77,7 @@ const SplitButtonToggle: React.FC<WithAsProp<SplitButtonToggleProps>> &
     rtl: context.rtl,
   });
   const { classes } = useStyles<SplitButtonToggleStylesProps>(SplitButtonToggle.displayName, {
-    className: SplitButtonToggle.className,
+    className: SplitButtonToggle.deprecated_className,
     mapPropsToStyles: () => ({
       primary,
       disabled,
@@ -129,7 +129,7 @@ SplitButtonToggle.defaultProps = {
 };
 
 SplitButtonToggle.displayName = 'SplitButtonToggle';
-SplitButtonToggle.className = 'ui-splitbutton__toggle';
+SplitButtonToggle.deprecated_className = 'ui-splitbutton__toggle';
 
 SplitButtonToggle.propTypes = {
   ...commonPropTypes.createCommon({}),

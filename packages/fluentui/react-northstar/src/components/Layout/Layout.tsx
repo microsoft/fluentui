@@ -47,7 +47,7 @@ export interface LayoutProps extends UIComponentProps {
 }
 
 class Layout extends UIComponent<WithAsProp<LayoutProps>, any> {
-  static className = 'ui-layout';
+  static deprecated_className = 'ui-layout';
 
   static displayName = 'Layout';
 
@@ -200,13 +200,13 @@ class Layout extends UIComponent<WithAsProp<LayoutProps>, any> {
 }
 
 Layout.slotClassNames = {
-  start: `${Layout.className}__start`,
-  main: `${Layout.className}__main`,
-  end: `${Layout.className}__end`,
-  gap: `${Layout.className}__gap`,
-  reducedStart: `${Layout.className}--reduced__start`,
-  reducedMain: `${Layout.className}--reduced__main`,
-  reducedEnd: `${Layout.className}--reduced__end`,
+  start: `${Layout.deprecated_className}__start`,
+  main: `${Layout.deprecated_className}__main`,
+  end: `${Layout.deprecated_className}__end`,
+  gap: `${Layout.deprecated_className}__gap`,
+  reducedStart: `${Layout.deprecated_className}--reduced__start`,
+  reducedMain: `${Layout.deprecated_className}--reduced__main`,
+  reducedEnd: `${Layout.deprecated_className}--reduced__end`,
 };
 
 /**

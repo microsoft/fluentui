@@ -1,6 +1,17 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Wed, 25 Mar 2020 12:30:04 GMT and should not be manually modified.
+This log was last generated on Thu, 16 Apr 2020 04:01:45 GMT and should not be manually modified.
+
+<!-- Start content -->
+
+## [7.12.34](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.12.34)
+
+Thu, 16 Apr 2020 04:01:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.12.32..@uifabric/example-app-base_v7.12.34)
+
+### Patches
+
+- Readme: Recommend Storybook instead; Fabric=>Fluent wording updates ([PR #12508](https://github.com/microsoft/fluentui/pull/12508) by elcraig@microsoft.com)
 
 ## 7.12.24
 Wed, 25 Mar 2020 12:30:04 GMT
@@ -1335,4 +1346,3 @@ Wed, 08 Feb 2017 05:10:53 GMT
 ### Patches
 
 - Adding new package to host all example app base code, which allows us to share common doc website code across many projects.
-

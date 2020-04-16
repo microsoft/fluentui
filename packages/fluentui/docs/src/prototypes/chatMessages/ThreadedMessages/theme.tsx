@@ -112,7 +112,7 @@ const customizedTheme: ThemeInput = {
           backgroundColor: siteVariables.colorScheme.brand.foreground,
         },
 
-        [`& .${Button.className} .${SvgIcon.className}`]: {
+        [`& .${Button.deprecated_className} .${SvgIcon.deprecated_className}`]: {
           color: siteVariables.colorScheme.default.background,
         },
       }),

@@ -71,9 +71,9 @@ const items = [
 ];
 
 export const selectors = {
-  treeClass: HierarchicalTree.className,
-  treeItemClass: HierarchicalTreeItem.className,
-  treeTitleClass: HierarchicalTreeTitle.className,
+  treeClass: HierarchicalTree.deprecated_className,
+  treeItemClass: HierarchicalTreeItem.deprecated_className,
+  treeTitleClass: HierarchicalTreeTitle.deprecated_className,
 };
 
 const TreeExample = () => <HierarchicalTree items={items} />;

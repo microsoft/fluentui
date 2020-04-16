@@ -1,8 +1,8 @@
 import { Button } from '@fluentui/react-northstar';
 
 const selectors = {
-  triggerButton: `.${Button.className}[title*="Open popup"]`,
-  closeButton: `.${Button.className}[title*="Close"]`,
+  triggerButton: `.${Button.deprecated_className}[title*="Open popup"]`,
+  closeButton: `.${Button.deprecated_className}[title*="Close"]`,
 };
 
 const config: ScreenerTestsConfig = {

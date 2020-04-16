@@ -12,8 +12,14 @@ const accordionTitleStyles: ComponentSlotStylesPrepared<AccordionTitleProps, Acc
     cursor: p.disabled ? 'default' : 'pointer',
   }),
   contentWrapper: ({ props: p }) => ({
-    display: 'grid',
-    gridTemplateColumns: `auto ${p.content ? '1fr' : ''}`,
+    display: ['grid', '-ms-grid'],
+    gridTemplateColumns: 'auto',
+    msGridColumns: 'auto',
+
+    ...(p.content && {
+      gridTemplateColumns: 'auto 1fr',
+      msGridColumns: 'auto 1fr',
+    }),
   }),
   indicator: ({ props: p, variables: v, rtl }) => ({
     alignItems: 'center',

@@ -21,12 +21,16 @@ const cardStyles: ComponentSlotStylesPrepared<CardStylesProps, CardVariables> = 
       padding: v.padding,
       width: v.width,
       height: v.height,
+      boxShadow: v.boxShadow,
       ...(p.size === 'small' && { width: v.sizeSmallWidth, height: v.sizeSmallHeight, padding: v.sizeSmallPadding }),
       ...(p.size === 'large' && { width: v.sizeLargeWidth, height: v.sizeLargeHeight, padding: v.sizeLargePadding }),
       ...(p.fluid && { width: v.fluidWidth, height: v.fluidHeight }),
       ...(p.horizontal && { flexDirection: 'row' }),
       ...(p.compact && { padding: v.compactPadding }),
       ...(p.centered && { alignItems: 'center' }),
+      ':hover': {
+        boxShadow: v.boxShadowHover,
+      },
 
       borderWidth: v.borderWidth,
       borderStyle: v.borderStyle,

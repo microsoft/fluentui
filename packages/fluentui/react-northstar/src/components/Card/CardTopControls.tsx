@@ -30,7 +30,7 @@ const CardTopControls: React.FC<WithAsProp<CardTopControlsProps>> &
   });
 
   const { classes } = useStyles<CardTopControlsStylesProps>(CardTopControls.displayName, {
-    className: CardTopControls.className,
+    className: CardTopControls.deprecated_className,
     mapPropsToInlineStyles: () => ({
       className,
       design,
@@ -55,7 +55,7 @@ const CardTopControls: React.FC<WithAsProp<CardTopControlsProps>> &
 };
 
 CardTopControls.displayName = 'CardTopControls';
-CardTopControls.className = 'ui-card__topcontrols';
+CardTopControls.deprecated_className = 'ui-card__topcontrols';
 
 CardTopControls.propTypes = {
   ...commonPropTypes.createCommon(),
