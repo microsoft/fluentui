@@ -1,7 +1,7 @@
-import { List } from '@fluentui/react-northstar';
+import { List, listClassName } from '@fluentui/react-northstar';
 
 const selectors = {
-  list: `.${List.deprecated_className}`,
+  list: `.${listClassName}`,
   item: (itemIndex: number) =>
     `.${List.deprecated_className} .${List.Item.deprecated_className}:nth-of-type(${itemIndex})`,
 };

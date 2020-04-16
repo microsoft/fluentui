@@ -106,3 +106,5 @@ export { default as gridCellMultipleFocusableBehavior } from './Table/gridCellMu
 export { default as gridCellWithFocusableElementBehavior } from './Table/gridCellWithFocusableElementBehavior';
 export { default as cardBehavior } from './Card/cardBehavior';
 export * from './Card/cardBehavior';
+export { default as cardFocusableBehavior } from './Card/cardFocusableBehavior';
+export { default as cardChildrenFocusableBehavior } from './Card/cardChildrenFocusableBehavior';

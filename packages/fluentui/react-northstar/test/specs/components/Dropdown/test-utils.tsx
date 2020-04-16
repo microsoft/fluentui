@@ -1,23 +1,23 @@
 import * as React from 'react';
 import * as _ from 'lodash';
 
-import Dropdown, { DropdownProps } from 'src/components/Dropdown/Dropdown';
-import DropdownSearchInput from 'src/components/Dropdown/DropdownSearchInput';
+import Dropdown, { DropdownProps, dropdownSlotClassNames } from 'src/components/Dropdown/Dropdown';
+import { dropdownSearchInputSlotClassNames } from 'src/components/Dropdown/DropdownSearchInput';
 import { findIntrinsicElement, mountWithProvider } from 'test/utils';
 
 const items = ['item0', 'item1', 'item2', 'item3', 'item4', 'item5'];
 
 const renderDropdown = (props: DropdownProps = {}) => {
   const wrapper = mountWithProvider(<Dropdown items={items} {...props} />);
-  const triggerButtonWrapper = findIntrinsicElement(wrapper, `.${Dropdown.slotClassNames.triggerButton}`);
-  const toggleIndicatorWrapper = findIntrinsicElement(wrapper, `.${Dropdown.slotClassNames.toggleIndicator}`);
-  const searchInputWrapper = findIntrinsicElement(wrapper, `.${DropdownSearchInput.slotClassNames.input}`);
-  const itemsListWrapper = findIntrinsicElement(wrapper, `.${Dropdown.slotClassNames.itemsList}`);
-  const getItemsWrapper = () => findIntrinsicElement(wrapper, `.${Dropdown.slotClassNames.item}`);
-  const getSelectedItemsWrapper = () => findIntrinsicElement(wrapper, `.${Dropdown.slotClassNames.selectedItem}`);
+  const triggerButtonWrapper = findIntrinsicElement(wrapper, `.${dropdownSlotClassNames.triggerButton}`);
+  const toggleIndicatorWrapper = findIntrinsicElement(wrapper, `.${dropdownSlotClassNames.toggleIndicator}`);
+  const searchInputWrapper = findIntrinsicElement(wrapper, `.${dropdownSearchInputSlotClassNames.input}`);
+  const itemsListWrapper = findIntrinsicElement(wrapper, `.${dropdownSlotClassNames.itemsList}`);
+  const getItemsWrapper = () => findIntrinsicElement(wrapper, `.${dropdownSlotClassNames.item}`);
+  const getSelectedItemsWrapper = () => findIntrinsicElement(wrapper, `.${dropdownSlotClassNames.selectedItem}`);
   const getSelectedItemWrapperAtIndex = index => getSelectedItemsWrapper().at(index);
   const getItemWrapperAtIndex = index => getItemsWrapper().at(index);
-  const getClearIndicatorWrapper = () => findIntrinsicElement(wrapper, `.${Dropdown.slotClassNames.clearIndicator}`);
+  const getClearIndicatorWrapper = () => findIntrinsicElement(wrapper, `.${dropdownSlotClassNames.clearIndicator}`);
 
   return {
     wrapper,

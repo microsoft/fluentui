@@ -9,7 +9,6 @@ const cardStyles: ComponentSlotStylesPrepared<CardStylesProps, CardVariables> = 
 
     const borderFocusStyles = getBorderFocusStyles({
       variables: siteVariables,
-      borderWidth: v.borderWidth,
       borderRadius: v.borderRadius,
     });
 
@@ -17,17 +16,10 @@ const cardStyles: ComponentSlotStylesPrepared<CardStylesProps, CardVariables> = 
       display: 'flex',
       flexDirection: 'column',
       position: 'relative',
-      overflow: 'hidden',
       padding: v.padding,
       width: v.width,
       height: v.height,
       boxShadow: v.boxShadow,
-      ...(p.size === 'small' && { width: v.sizeSmallWidth, height: v.sizeSmallHeight, padding: v.sizeSmallPadding }),
-      ...(p.size === 'large' && { width: v.sizeLargeWidth, height: v.sizeLargeHeight, padding: v.sizeLargePadding }),
-      ...(p.fluid && { width: v.fluidWidth, height: v.fluidHeight }),
-      ...(p.horizontal && { flexDirection: 'row' }),
-      ...(p.compact && { padding: v.compactPadding }),
-      ...(p.centered && { alignItems: 'center' }),
       ':hover': {
         boxShadow: v.boxShadowHover,
       },
@@ -36,6 +28,24 @@ const cardStyles: ComponentSlotStylesPrepared<CardStylesProps, CardVariables> = 
       borderStyle: v.borderStyle,
       borderColor: v.borderColor,
       borderRadius: v.borderRadius,
+
+      ...(p.size === 'small' && { width: v.sizeSmallWidth, height: v.sizeSmallHeight, padding: v.sizeSmallPadding }),
+      ...(p.size === 'large' && { width: v.sizeLargeWidth, height: v.sizeLargeHeight, padding: v.sizeLargePadding }),
+      ...(p.fluid && { width: v.fluidWidth, height: v.fluidHeight }),
+      ...(p.horizontal && { flexDirection: 'row' }),
+      ...(p.compact && { padding: v.compactPadding }),
+      ...(p.centered && { alignItems: 'center' }),
+
+      ...(p.actionable && {
+        cursor: 'pointer',
+        ':focus-visible': {
+          boxShadow: v.boxShadowFocus,
+        },
+        ':active': {
+          boxShadow: v.boxShadowPressed,
+        },
+      }),
+
       ...borderFocusStyles,
     };
   },

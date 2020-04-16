@@ -53,14 +53,25 @@ export interface ItemLayoutProps extends UIComponentProps, ContentComponentProps
   endMediaCSS?: React.CSSProperties;
 }
 
+export const itemLayoutClassName = 'ui-itemlayout';
+export const itemLayoutSlotClassNames: ItemLayoutSlotClassNames = {
+  header: `${itemLayoutClassName}__header`,
+  headerMedia: `${itemLayoutClassName}__headerMedia`,
+  main: `${itemLayoutClassName}__main`,
+  content: `${itemLayoutClassName}__content`,
+  contentMedia: `${itemLayoutClassName}__contentMedia`,
+  media: `${itemLayoutClassName}__media`,
+  endMedia: `${itemLayoutClassName}__endMedia`,
+};
+
 class ItemLayout extends UIComponent<WithAsProp<ItemLayoutProps>, any> {
   static create: ShorthandFactory<ItemLayoutProps>;
 
   static displayName = 'ItemLayout';
 
-  static deprecated_className = 'ui-itemlayout';
+  static deprecated_className = itemLayoutClassName;
 
-  static slotClassNames: ItemLayoutSlotClassNames;
+  static slotClassNames = itemLayoutSlotClassNames;
 
   static propTypes = {
     ...commonPropTypes.createCommon({
@@ -98,7 +109,7 @@ class ItemLayout extends UIComponent<WithAsProp<ItemLayoutProps>, any> {
 
       return (
         <div
-          className={ItemLayout.slotClassNames.main}
+          className={itemLayoutSlotClassNames.main}
           style={{
             gridTemplateRows: '1fr 1fr',
           }}
@@ -112,8 +123,8 @@ class ItemLayout extends UIComponent<WithAsProp<ItemLayoutProps>, any> {
     renderHeaderArea: (props, state, classes) => {
       const { debug, header, headerMedia, headerCSS, headerMediaCSS } = props;
 
-      const mergedClasses = cx(ItemLayout.slotClassNames.header, classes.header);
-      const mediaClasses = cx(ItemLayout.slotClassNames.headerMedia, classes.headerMedia);
+      const mergedClasses = cx(itemLayoutSlotClassNames.header, classes.header);
+      const mediaClasses = cx(itemLayoutSlotClassNames.headerMedia, classes.headerMedia);
 
       return !header && !headerMedia ? null : (
         <Layout
@@ -137,8 +148,8 @@ class ItemLayout extends UIComponent<WithAsProp<ItemLayoutProps>, any> {
     renderContentArea: (props, state, classes) => {
       const { debug, content, contentMedia, contentCSS, contentMediaCSS } = props;
 
-      const mergedClasses = cx(ItemLayout.slotClassNames.content, classes.content);
-      const mediaClasses = cx(ItemLayout.slotClassNames.contentMedia, classes.contentMedia);
+      const mergedClasses = cx(itemLayoutSlotClassNames.content, classes.content);
+      const mediaClasses = cx(itemLayoutSlotClassNames.contentMedia, classes.contentMedia);
 
       return !content && !contentMedia ? null : (
         <Layout
@@ -167,8 +178,8 @@ class ItemLayout extends UIComponent<WithAsProp<ItemLayoutProps>, any> {
     const mainArea = renderMainArea(this.props, this.state, classes);
     const endArea = endMedia;
 
-    const mergedMediaClasses = cx(ItemLayout.slotClassNames.media, classes.media);
-    const mergedEndMediaClasses = cx(ItemLayout.slotClassNames.endMedia, classes.endMedia);
+    const mergedMediaClasses = cx(itemLayoutSlotClassNames.media, classes.media);
+    const mergedEndMediaClasses = cx(itemLayoutSlotClassNames.endMedia, classes.endMedia);
 
     return (
       <Layout
@@ -202,15 +213,7 @@ class ItemLayout extends UIComponent<WithAsProp<ItemLayoutProps>, any> {
 }
 
 ItemLayout.create = createShorthandFactory({ Component: ItemLayout, mappedProp: 'content' });
-ItemLayout.slotClassNames = {
-  header: `${ItemLayout.deprecated_className}__header`,
-  headerMedia: `${ItemLayout.deprecated_className}__headerMedia`,
-  main: `${ItemLayout.deprecated_className}__main`,
-  content: `${ItemLayout.deprecated_className}__content`,
-  contentMedia: `${ItemLayout.deprecated_className}__contentMedia`,
-  media: `${ItemLayout.deprecated_className}__media`,
-  endMedia: `${ItemLayout.deprecated_className}__endMedia`,
-};
+ItemLayout.slotClassNames = itemLayoutSlotClassNames;
 
 /**
  * (DEPRECATED) The Item Layout handles layout styles for menu items, list items and other similar item templates.

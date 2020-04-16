@@ -2,7 +2,7 @@ import { Card, Flex, Image, Text } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 const CardExampleBody = () => (
-  <Card>
+  <Card aria-roledescription="card with image and text">
     <Card.Body fitted>
       <Flex column gap="gap.small">
         <Image src="public/images/wireframe/square-image.png" />

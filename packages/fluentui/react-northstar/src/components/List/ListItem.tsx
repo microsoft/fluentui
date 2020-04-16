@@ -76,6 +76,19 @@ export type ListItemStylesProps = Pick<
   hasHeaderMedia?: boolean;
 };
 
+export const listItemClassName = 'ui-list__item';
+export const listItemSlotClassNames: ListItemSlotClassNames = {
+  header: `${listItemClassName}__header`,
+  headerMedia: `${listItemClassName}__headerMedia`,
+  headerWrapper: `${listItemClassName}__headerWrapper`,
+  main: `${listItemClassName}__main`,
+  content: `${listItemClassName}__content`,
+  contentMedia: `${listItemClassName}__contentMedia`,
+  contentWrapper: `${listItemClassName}__contentWrapper`,
+  media: `${listItemClassName}__media`,
+  endMedia: `${listItemClassName}__endMedia`,
+};
+
 const ListItem: React.FC<WithAsProp<ListItemProps> & { index: number }> &
   FluentComponentStaticProps<ListItemProps> & {
     slotClassNames: ListItemSlotClassNames;
@@ -135,7 +148,7 @@ const ListItem: React.FC<WithAsProp<ListItemProps> & { index: number }> &
     rtl: context.rtl,
   });
   const { classes, styles: resolvedStyles } = useStyles<ListItemStylesProps>(ListItem.displayName, {
-    className: ListItem.deprecated_className,
+    className: listItemClassName,
     mapPropsToStyles: () => ({
       debug,
       navigable,
@@ -164,37 +177,37 @@ const ListItem: React.FC<WithAsProp<ListItemProps> & { index: number }> &
 
   const contentElement = Box.create(content, {
     defaultProps: () => ({
-      className: ListItem.slotClassNames.content,
+      className: listItemSlotClassNames.content,
       styles: resolvedStyles.content,
     }),
   });
   const contentMediaElement = Box.create(contentMedia, {
     defaultProps: () => ({
-      className: ListItem.slotClassNames.contentMedia,
+      className: listItemSlotClassNames.contentMedia,
       styles: resolvedStyles.contentMedia,
     }),
   });
   const headerElement = Box.create(header, {
     defaultProps: () => ({
-      className: ListItem.slotClassNames.header,
+      className: listItemSlotClassNames.header,
       styles: resolvedStyles.header,
     }),
   });
   const headerMediaElement = Box.create(headerMedia, {
     defaultProps: () => ({
-      className: ListItem.slotClassNames.headerMedia,
+      className: listItemSlotClassNames.headerMedia,
       styles: resolvedStyles.headerMedia,
     }),
   });
   const endMediaElement = Box.create(endMedia, {
     defaultProps: () => ({
-      className: ListItem.slotClassNames.endMedia,
+      className: listItemSlotClassNames.endMedia,
       styles: resolvedStyles.endMedia,
     }),
   });
   const mediaElement = Box.create(media, {
     defaultProps: () => ({
-      className: ListItem.slotClassNames.media,
+      className: listItemSlotClassNames.media,
       styles: resolvedStyles.media,
     }),
   });
@@ -209,15 +222,15 @@ const ListItem: React.FC<WithAsProp<ListItemProps> & { index: number }> &
     >
       {mediaElement}
 
-      <div className={cx(ListItem.slotClassNames.main, classes.main)}>
+      <div className={cx(listItemSlotClassNames.main, classes.main)}>
         {(headerElement || headerMediaElement) && (
-          <div className={cx(ListItem.slotClassNames.headerWrapper, classes.headerWrapper)}>
+          <div className={cx(listItemSlotClassNames.headerWrapper, classes.headerWrapper)}>
             {headerElement}
             {headerMediaElement}
           </div>
         )}
         {(contentElement || contentMediaElement) && (
-          <div className={cx(ListItem.slotClassNames.contentWrapper, classes.contentWrapper)}>
+          <div className={cx(listItemSlotClassNames.contentWrapper, classes.contentWrapper)}>
             {contentElement}
             {contentMediaElement}
           </div>
@@ -233,7 +246,7 @@ const ListItem: React.FC<WithAsProp<ListItemProps> & { index: number }> &
   return element;
 };
 
-ListItem.deprecated_className = 'ui-list__item';
+ListItem.deprecated_className = listItemClassName;
 ListItem.displayName = 'ListItem';
 
 ListItem.defaultProps = {
@@ -269,17 +282,7 @@ ListItem.propTypes = {
 };
 ListItem.handledProps = Object.keys(ListItem.propTypes) as any;
 
-ListItem.slotClassNames = {
-  header: `${ListItem.deprecated_className}__header`,
-  headerMedia: `${ListItem.deprecated_className}__headerMedia`,
-  headerWrapper: `${ListItem.deprecated_className}__headerWrapper`,
-  main: `${ListItem.deprecated_className}__main`,
-  content: `${ListItem.deprecated_className}__content`,
-  contentMedia: `${ListItem.deprecated_className}__contentMedia`,
-  contentWrapper: `${ListItem.deprecated_className}__contentWrapper`,
-  media: `${ListItem.deprecated_className}__media`,
-  endMedia: `${ListItem.deprecated_className}__endMedia`,
-};
+ListItem.slotClassNames = listItemSlotClassNames;
 
 ListItem.create = createShorthandFactory({ Component: ListItem, mappedProp: 'content' });
 
