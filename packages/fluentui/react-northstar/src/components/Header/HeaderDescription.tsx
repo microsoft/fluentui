@@ -27,10 +27,12 @@ export interface HeaderDescriptionProps
   accessibility?: Accessibility;
 }
 
+export const headerDescriptionClassName = 'ui-header__description';
+
 class HeaderDescription extends UIComponent<WithAsProp<HeaderDescriptionProps>, any> {
   static create: ShorthandFactory<HeaderDescriptionProps>;
 
-  static deprecated_className = 'ui-header__description';
+  static deprecated_className = headerDescriptionClassName;
 
   static displayName = 'HeaderDescription';
 
