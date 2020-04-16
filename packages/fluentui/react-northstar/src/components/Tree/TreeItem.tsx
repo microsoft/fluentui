@@ -172,7 +172,7 @@ const TreeItem: React.FC<WithAsProp<TreeItemProps>> &
         handleSiblingsExpand(e);
       },
     },
-    debugName: TreeItem.deprecated_className,
+    debugName: TreeItem.displayName,
     mapPropsToBehavior: () => ({
       expanded,
       level,
