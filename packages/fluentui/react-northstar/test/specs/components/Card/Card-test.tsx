@@ -13,7 +13,7 @@ describe('Card', () => {
   describe('onClick', () => {
     test('is called with (e, props) on a click', () => {
       const onClick = jest.fn();
-      const card = mountWithProviderAndGetComponent(Card, <Card onClick={onClick} />);
+      const card = mount(Card, <Card onClick={onClick} />);
 
       card.simulate('click');
 
