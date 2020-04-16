@@ -55,12 +55,14 @@ task('clean:docs', () =>
   ),
 );
 
+task('clean:docs:component-info', () => del([paths.docsSrc('componentInfo')], { force: true }));
+
 // ----------------------------------------
 // Build
 // ----------------------------------------
 
 const componentsSrc = [
-  `${paths.posix.packageSrc('react-northstar')}/components/*/[A-Z]*.tsx`,
+  `${paths.posix.packageSrc('react-northstar')}/components/*/[A-Z]ttach*.tsx`,
   `${paths.posix.packageSrc('react-bindings')}/FocusZone/[A-Z]!(*.types).tsx`,
   `${paths.posix.packageSrc('react-component-ref')}/[A-Z]*.tsx`,
 ];
@@ -72,13 +74,17 @@ const schemaSrc = `${paths.posix.packages('ability-attributes')}/schema.json`;
 
 task('build:docs:component-info', () =>
   src(componentsSrc, { since: lastRun('build:docs:component-info'), cwd: paths.base(), cwdbase: true })
-    .pipe(cache(gulpReactDocgen(['DOMAttributes', 'HTMLAttributes']), { name: 'componentInfo-1' }))
+    .pipe(
+      cache(gulpReactDocgen(paths.docs('tsconfig.json'), ['DOMAttributes', 'HTMLAttributes']), {
+        name: 'componentInfo-1',
+      }),
+    )
     .pipe(dest(paths.docsSrc('componentInfo'), { cwd: paths.base() })),
 );
 
 task('build:docs:component-menu', () =>
   src(componentsSrc, { since: lastRun('build:docs:component-menu') })
-    .pipe(gulpComponentMenu())
+    .pipe(gulpComponentMenu(paths.docs('tsconfig.json')))
     .pipe(dest(paths.docsSrc())),
 );
 
