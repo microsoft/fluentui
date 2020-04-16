@@ -27,16 +27,23 @@ describe('Pivot', () => {
 
     mount(
       <Pivot componentRef={pivotRef}>
-        <PivotItem headerText="Link 1" headerButtonProps={{ 'data-is-visible': true }} />
-        <PivotItem headerText="Link 2" headerButtonProps={{ 'data-is-visible': true }} />
+        <PivotItem headerText="Link 1" />
+        <PivotItem headerText="Link 2" />
       </Pivot>,
     );
 
-    expect(pivotRef.current).toBeTruthy();
+    // Instruct FocusZone to treat all elements as visible.
+    (HTMLElement.prototype as any).isVisible = true;
 
-    pivotRef.current!.focus();
-    expect(document.activeElement).toBeTruthy();
-    expect(document.activeElement!.textContent?.trim()).toEqual('Link 1');
+    try {
+      expect(pivotRef.current).toBeTruthy();
+
+      pivotRef.current!.focus();
+      expect(document.activeElement).toBeTruthy();
+      expect(document.activeElement!.textContent?.trim()).toEqual('Link 1');
+    } finally {
+      delete (HTMLElement.prototype as any).isVisible;
+    }
   });
 
   it('supports JSX expressions', () => {
