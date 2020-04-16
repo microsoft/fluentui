@@ -33,7 +33,7 @@ const CardHeader: React.FC<WithAsProp<CardHeaderProps>> & FluentComponentStaticP
   });
 
   const { classes } = useStyles<CardHeaderStylesProps>(CardHeader.displayName, {
-    className: CardHeader.className,
+    className: CardHeader.deprecated_className,
     mapPropsToStyles: () => ({ fitted }),
     mapPropsToInlineStyles: () => ({
       className,
@@ -59,7 +59,7 @@ const CardHeader: React.FC<WithAsProp<CardHeaderProps>> & FluentComponentStaticP
 };
 
 CardHeader.displayName = 'CardHeader';
-CardHeader.className = 'ui-card__header';
+CardHeader.deprecated_className = 'ui-card__header';
 
 CardHeader.propTypes = {
   ...commonPropTypes.createCommon(),

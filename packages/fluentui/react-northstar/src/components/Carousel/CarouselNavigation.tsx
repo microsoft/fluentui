@@ -53,7 +53,7 @@ export interface CarouselNavigationProps extends UIComponentProps, ChildrenCompo
 class CarouselNavigation extends UIComponent<WithAsProp<CarouselNavigationProps>> {
   static displayName = 'CarouselNavigation';
 
-  static className = 'ui-carousel__navigation';
+  static deprecated_className = 'ui-carousel__navigation';
 
   static create: ShorthandFactory<CarouselNavigationProps>;
 

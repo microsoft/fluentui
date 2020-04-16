@@ -44,10 +44,10 @@ export interface HeaderProps
 class Header extends UIComponent<WithAsProp<HeaderProps>, any> {
   static displayName = 'Header';
 
-  static className = 'ui-header';
+  static deprecated_className = 'ui-header';
 
   static slotClassNames: HeaderSlotClassNames = {
-    description: `${Header.className}__description`,
+    description: `${Header.deprecated_className}__description`,
   };
 
   static create: ShorthandFactory<HeaderProps>;

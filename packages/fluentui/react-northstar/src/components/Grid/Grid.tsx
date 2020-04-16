@@ -31,7 +31,7 @@ export interface GridProps extends UIComponentProps, ChildrenComponentProps, Con
 class Grid extends UIComponent<WithAsProp<GridProps>> {
   static displayName = 'Grid';
 
-  static className = 'ui-grid';
+  static deprecated_className = 'ui-grid';
 
   static propTypes = {
     ...commonPropTypes.createCommon({

@@ -75,7 +75,7 @@ class DropdownSelectedItem extends UIComponent<WithAsProp<DropdownSelectedItemPr
   static displayName = 'DropdownSelectedItem';
   static create: ShorthandFactory<DropdownSelectedItemProps>;
   static slotClassNames: DropdownSelectedItemSlotClassNames;
-  static className = 'ui-dropdown__selecteditem';
+  static deprecated_className = 'ui-dropdown__selecteditem';
 
   static propTypes = {
     ...commonPropTypes.createCommon({
@@ -184,9 +184,9 @@ class DropdownSelectedItem extends UIComponent<WithAsProp<DropdownSelectedItemPr
 }
 
 DropdownSelectedItem.slotClassNames = {
-  header: `${DropdownSelectedItem.className}__header`,
-  icon: `${DropdownSelectedItem.className}__icon`,
-  image: `${DropdownSelectedItem.className}__image`,
+  header: `${DropdownSelectedItem.deprecated_className}__header`,
+  icon: `${DropdownSelectedItem.deprecated_className}__icon`,
+  image: `${DropdownSelectedItem.deprecated_className}__image`,
 };
 
 DropdownSelectedItem.create = createShorthandFactory({

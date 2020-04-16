@@ -60,11 +60,11 @@ export interface CarouselNavigationItemProps extends UIComponentProps, ChildrenC
 class CarouselNavigationItem extends UIComponent<WithAsProp<CarouselNavigationItemProps>> {
   static displayName = 'CarouselNavigationItem';
 
-  static className = 'ui-carousel__navigationitem';
+  static deprecated_className = 'ui-carousel__navigationitem';
 
   static slotClassNames: CarouselNavigationItemSlotClassNames = {
-    indicator: `${CarouselNavigationItem.className}__indicator`,
-    content: `${CarouselNavigationItem.className}__content`,
+    indicator: `${CarouselNavigationItem.deprecated_className}__indicator`,
+    content: `${CarouselNavigationItem.deprecated_className}__content`,
   };
 
   static create: ShorthandFactory<CarouselNavigationItemProps>;

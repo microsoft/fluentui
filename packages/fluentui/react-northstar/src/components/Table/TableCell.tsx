@@ -74,7 +74,7 @@ const TableCell: React.FC<WithAsProp<TableCellProps>> &
   });
 
   const { classes, styles: resolvedStyles } = useStyles<TableCellStylesProps>(TableCell.displayName, {
-    className: TableCell.className,
+    className: TableCell.deprecated_className,
     mapPropsToStyles: () => ({
       truncateContent,
     }),
@@ -119,10 +119,10 @@ const TableCell: React.FC<WithAsProp<TableCellProps>> &
 
 TableCell.displayName = 'TableCell';
 
-TableCell.className = 'ui-table__cell';
+TableCell.deprecated_className = 'ui-table__cell';
 
 TableCell.slotClassNames = {
-  content: `${TableCell.className}__content`,
+  content: `${TableCell.deprecated_className}__content`,
 };
 
 TableCell.propTypes = {

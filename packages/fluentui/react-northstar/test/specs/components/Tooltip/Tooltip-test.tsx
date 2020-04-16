@@ -14,7 +14,7 @@ describe('Tooltip', () => {
   test('aria-labelledby is not added on trigger if aria-label is passed to trigger shorthand', () => {
     const ariaLabelTestValue = 'test-aria-label';
     const wrapper = mountWithProvider(<Tooltip defaultOpen trigger={<Button aria-label={ariaLabelTestValue} />} />);
-    const trigger = findIntrinsicElement(wrapper, `.${Button.className}`);
+    const trigger = findIntrinsicElement(wrapper, `.${Button.deprecated_className}`);
 
     expect(trigger.getDOMNode()).toHaveAttribute('aria-label', ariaLabelTestValue);
     expect(trigger.getDOMNode()).not.toHaveAttribute('aria-labelledby');

@@ -98,7 +98,7 @@ const CarouselPaddle: React.FC<WithAsProp<CarouselPaddleProps>> &
     rtl: context.rtl,
   });
   const { classes, styles: resolvedStyles } = useStyles<CarouselPaddleStylesProps>(CarouselPaddle.displayName, {
-    className: CarouselPaddle.className,
+    className: CarouselPaddle.deprecated_className,
     mapPropsToStyles: () => ({
       disabled,
       hidden,
@@ -161,7 +161,7 @@ CarouselPaddle.defaultProps = {
 };
 
 CarouselPaddle.displayName = 'CarouselPaddle';
-CarouselPaddle.className = 'ui-carousel__paddle';
+CarouselPaddle.deprecated_className = 'ui-carousel__paddle';
 
 CarouselPaddle.propTypes = {
   ...commonPropTypes.createCommon({
@@ -179,7 +179,7 @@ CarouselPaddle.handledProps = Object.keys(CarouselPaddle.propTypes) as any;
 CarouselPaddle.create = createShorthandFactory({ Component: CarouselPaddle, mappedProp: 'content' });
 
 CarouselPaddle.slotClassNames = {
-  content: `${CarouselPaddle.className}__content`,
+  content: `${CarouselPaddle.deprecated_className}__content`,
 };
 
 /**

@@ -5,9 +5,9 @@ const config: ScreenerTestsConfig = {
   steps: [
     builder =>
       builder
-        .click(`.${ToolbarItem.className}:nth-child(1)`)
+        .click(`.${ToolbarItem.deprecated_className}:nth-child(1)`)
         .snapshot('Shows menu')
-        .click(`.${ToolbarMenuItem.className}:nth-child(1)`)
+        .click(`.${ToolbarMenuItem.deprecated_className}:nth-child(1)`)
         .snapshot('Shows popup'),
   ],
 };

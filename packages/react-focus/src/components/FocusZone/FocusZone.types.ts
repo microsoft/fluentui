@@ -66,6 +66,12 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
   defaultActiveElement?: string;
 
   /**
+   * Determines if a default tabbable element should be force focused on FocusZone mount.
+   * @default false
+   */
+  shouldFocusOnMount?: boolean;
+
+  /**
    * If set, the FocusZone will not be tabbable and keyboard navigation will be disabled.
    * This does not affect disabled attribute of any child.
    */
@@ -127,7 +133,7 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
    */
   onBeforeFocus?: (childElement?: HTMLElement) => boolean;
 
-  /** Allow focus to move to root */
+  /** Allows focus to park on root when focus is in the `FocusZone` at render time. */
   allowFocusRoot?: boolean;
 
   /**

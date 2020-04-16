@@ -1,6 +1,17 @@
 # Change Log - @uifabric/api-docs
 
-This log was last generated on Wed, 25 Mar 2020 12:30:04 GMT and should not be manually modified.
+This log was last generated on Thu, 16 Apr 2020 04:01:45 GMT and should not be manually modified.
+
+<!-- Start content -->
+
+## [7.2.50](https://github.com/microsoft/fluentui/tree/@uifabric/api-docs_v7.2.50)
+
+Thu, 16 Apr 2020 04:01:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/api-docs_v7.2.40..@uifabric/api-docs_v7.2.50)
+
+### Patches
+
+- Readme: Fabric=>Fluent wording updates ([PR #12508](https://github.com/microsoft/fluentui/pull/12508) by elcraig@microsoft.com)
 
 ## 7.2.40
 Wed, 25 Mar 2020 12:30:04 GMT
@@ -134,4 +145,3 @@ Sat, 04 May 2019 00:01:53 GMT
 ### Patches
 
 - Updates for new website
-

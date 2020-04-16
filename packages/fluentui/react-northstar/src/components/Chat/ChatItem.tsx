@@ -76,7 +76,7 @@ const ChatItem: React.FC<WithAsProp<ChatItemProps>> &
     rtl: context.rtl,
   });
   const { classes, styles: resolvedStyles } = useStyles<ChatItemStylesProps>(ChatItem.displayName, {
-    className: ChatItem.className,
+    className: ChatItem.deprecated_className,
     mapPropsToStyles: () => ({
       attached,
       contentPosition,
@@ -134,12 +134,12 @@ const ChatItem: React.FC<WithAsProp<ChatItemProps>> &
   return element;
 };
 
-ChatItem.className = 'ui-chat__item';
+ChatItem.deprecated_className = 'ui-chat__item';
 ChatItem.displayName = 'ChatItem';
 
 ChatItem.slotClassNames = {
-  message: `${ChatItem.className}__message`,
-  gutter: `${ChatItem.className}__gutter`,
+  message: `${ChatItem.deprecated_className}__message`,
+  gutter: `${ChatItem.deprecated_className}__gutter`,
 };
 
 ChatItem.defaultProps = {

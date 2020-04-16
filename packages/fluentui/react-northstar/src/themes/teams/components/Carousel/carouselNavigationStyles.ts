@@ -8,7 +8,7 @@ const carouselNavigationStyles: ComponentSlotStylesPrepared<CarouselNavigationPr
   root: ({ props: p, variables: v }): ICSSInJSStyle => {
     const { iconOnly, primary, vertical, thumbnails } = p;
     const colors = getColorScheme(v.colorScheme, null, primary);
-
+    console.log(v.width, v.thumbnailWidth, p.activeIndex, v.thumbnailWidth);
     return {
       display: 'flex',
       minHeight: pxToRem(24),
@@ -21,7 +21,7 @@ const carouselNavigationStyles: ComponentSlotStylesPrepared<CarouselNavigationPr
       ...(!vertical &&
         thumbnails && {
           justifyContent: 'start',
-          transform: `translateX(${pxToRem(v.width / 2 - v.thumbnailWidth / 2 - +p.activeIndex * v.thumbnailWidth)})`,
+          transform: `translateX(${+v.width / 2 - +v.thumbnailWidth / 2 - +p.activeIndex * +v.thumbnailWidth})`,
           transition: 'transform .5s ease',
         }),
       ...(iconOnly && { alignItems: 'center' }),

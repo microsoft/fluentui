@@ -12,6 +12,6 @@ export function updateT(color: IColor, t: number): IColor {
     ...color,
     t,
     a,
-    str: _rgbaOrHexString(color.r, color.g, color.b, a, color.hex)
+    str: _rgbaOrHexString(color.r, color.g, color.b, a, color.hex),
   };
 }

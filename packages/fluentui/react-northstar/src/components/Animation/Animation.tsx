@@ -144,7 +144,7 @@ export interface AnimationProps
  * An Animation provides animation effects to rendered elements.
  */
 const Animation: React.FC<AnimationProps> & {
-  className: string;
+  deprecated_className: string;
   handledProps: (keyof AnimationProps)[];
 } = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
@@ -190,7 +190,7 @@ const Animation: React.FC<AnimationProps> & {
     };
 
     return getStyles({
-      className: Animation.className,
+      className: Animation.deprecated_className,
       displayNames: [Animation.displayName],
       props: {
         className,
@@ -250,7 +250,7 @@ const Animation: React.FC<AnimationProps> & {
       onExiting={handleAnimationEvent('onExiting')}
       onExited={handleAnimationEvent('onExited')}
       {...unhandledProps}
-      className={!isChildrenFunction ? cx(classes.root, (child as any)?.props?.className) : ''}
+      className={!isChildrenFunction ? cx(classes.root, (child as any)?.props?.deprecated_className) : ''}
     >
       {isChildrenFunction ? () => (children as AnimationChildrenProp)({ classes: classes.root }) : child}
     </Transition>
@@ -260,7 +260,7 @@ const Animation: React.FC<AnimationProps> & {
   return element;
 };
 
-Animation.className = 'ui-animation';
+Animation.deprecated_className = 'ui-animation';
 Animation.displayName = 'Animation';
 
 Animation.propTypes = {

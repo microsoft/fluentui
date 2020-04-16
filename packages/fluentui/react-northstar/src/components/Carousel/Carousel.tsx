@@ -124,14 +124,14 @@ class Carousel extends AutoControlledComponent<WithAsProp<CarouselProps>, Carous
 
   static displayName = 'Carousel';
 
-  static className = 'ui-carousel';
+  static deprecated_className = 'ui-carousel';
 
   static slotClassNames: CarouselSlotClassNames = {
-    itemsContainer: `${Carousel.className}__itemscontainer`,
-    paddleNext: `${Carousel.className}__paddlenext`,
-    paddlePrevious: `${Carousel.className}__paddleprevious`,
-    pagination: `${Carousel.className}__pagination`,
-    navigation: `${Carousel.className}__navigation`,
+    itemsContainer: `${Carousel.deprecated_className}__itemscontainer`,
+    paddleNext: `${Carousel.deprecated_className}__paddlenext`,
+    paddlePrevious: `${Carousel.deprecated_className}__paddleprevious`,
+    pagination: `${Carousel.deprecated_className}__pagination`,
+    navigation: `${Carousel.deprecated_className}__navigation`,
   };
 
   static propTypes = {

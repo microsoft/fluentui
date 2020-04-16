@@ -50,10 +50,10 @@ export interface RadioGroupProps extends UIComponentProps, ChildrenComponentProp
 class RadioGroup extends AutoControlledComponent<WithAsProp<RadioGroupProps>, any> {
   static displayName = 'RadioGroup';
 
-  static className = 'ui-radiogroup';
+  static deprecated_className = 'ui-radiogroup';
 
   static slotClassNames: RadioGroupSlotClassNames = {
-    item: `${RadioGroup.className}__item`,
+    item: `${RadioGroup.deprecated_className}__item`,
   };
 
   static create: ShorthandFactory<RadioGroupProps>;

@@ -17,7 +17,7 @@ export const menuColorAreas = stringLiteralsArray(
 export type MenuColorSchemeMapping = TeamsSchemeMappingWithAreas<ItemType<typeof menuColorAreas>>;
 
 export interface CarouselNavigationVariables {
-  width: number;
+  width: string;
   colorScheme: MenuColorSchemeMapping;
   color: string;
 
@@ -50,12 +50,12 @@ export interface CarouselNavigationVariables {
 
   borderWidth: string;
 
-  thumbnailWidth: number;
+  thumbnailWidth: string;
 }
 
 export default (siteVars: any): CarouselNavigationVariables => {
   return {
-    width: 300,
+    width: pxToRem(300),
     colorScheme: pickValuesFromColorScheme(
       extendColorScheme(siteVars.colorScheme, {
         default: {
@@ -108,6 +108,6 @@ export default (siteVars: any): CarouselNavigationVariables => {
 
     borderWidth: pxToRem(1),
 
-    thumbnailWidth: 75,
+    thumbnailWidth: pxToRem(75),
   };
 };

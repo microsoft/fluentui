@@ -1,7 +1,8 @@
 import { Toolbar } from '@fluentui/react-northstar';
 
 const selectors = {
-  item: (itemIndex: number) => `.${Toolbar.className} .${Toolbar.Item.className}:nth-child(${itemIndex})`,
+  item: (itemIndex: number) =>
+    `.${Toolbar.deprecated_className} .${Toolbar.Item.deprecated_className}:nth-child(${itemIndex})`,
 };
 
 const config: ScreenerTestsConfig = {
