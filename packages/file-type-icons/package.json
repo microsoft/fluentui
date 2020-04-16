@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/file-type-icons",
-  "version": "7.2.28",
+  "version": "7.2.29",
   "description": "Fluent UI React file type icon set.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
