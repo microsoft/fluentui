@@ -44,6 +44,9 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ### Performance
 - Replace `fela-plugin-prexifer` with `stylis` @layershifter ([#12289](https://github.com/microsoft/fluentui/pull/12289))
 
+### Fixes
+- Replace `escape` with `encodeURIComponent` in the svg urls in Teams theme @mnajdova ([#12742](https://github.com/microsoft/fluentui/pull/12742))
+
 <!--------------------------------[ v0.48.0 ]------------------------------- -->
 ## [v0.48.0](https://github.com/OfficeDev/office-ui-fabric-react/tree/fluentui_v0.48.0) (2020-04-15)
 [Compare changes](https://github.com/OfficeDev/office-ui-fabric-react/compare/fluentuizero_v0.47.1..@fluentui/react-northstar_v0.48.0)
