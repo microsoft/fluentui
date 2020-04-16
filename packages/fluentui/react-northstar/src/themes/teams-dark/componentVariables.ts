@@ -1,4 +1,3 @@
-export { default as Attachment } from './components/Attachment/attachmentVariables';
 export { default as Avatar } from './components/Avatar/avatarVariables';
 export { default as Chat } from './components/Chat/chatVariables';
 export { default as ChatMessage } from './components/Chat/chatMessageVariables';

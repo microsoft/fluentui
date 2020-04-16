@@ -6,7 +6,6 @@ import { pxToRem } from '../../../../utils';
 import SvgIcon from '../../../../components/SvgIcon/SvgIcon';
 import getBorderFocusStyles from '../../getBorderFocusStyles';
 import getIconFillOrOutlineStyles from '../../getIconFillOrOutlineStyles';
-import Button from '../../../../components/Button/Button';
 
 const attachmentStyles: ComponentSlotStylesPrepared<AttachmentStylesProps, AttachmentVariables> = {
   root: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => {
@@ -41,25 +40,17 @@ const attachmentStyles: ComponentSlotStylesPrepared<AttachmentStylesProps, Attac
           backgroundColor: v.focusBackgroundColor,
           color: v.focusColor,
 
-          [`& .${Button.className}`]: {
-            color: v.siblingsFocusColor,
-          },
-
           [`& .${SvgIcon.className}`]: {
-            color: v.siblingsFocusColor,
+            color: v.focusColor,
           },
         },
 
         ':hover': {
-          background: v.backgroundColorHover,
+          backgroundColor: v.backgroundColorHover,
           color: v.textColorHover,
 
-          [`& .${Button.className}`]: {
-            color: v.siblingsHoverColor,
-          },
-
           [`& .${SvgIcon.className}`]: {
-            color: v.siblingsHoverColor,
+            color: v.textColorHover,
           },
         },
       }),
@@ -107,7 +98,7 @@ const attachmentStyles: ComponentSlotStylesPrepared<AttachmentStylesProps, Attac
 
     return {
       [`& .${SvgIcon.className}`]: {
-        color: v.textColor, // this breaks the color change on hover
+        color: v.textColor,
       },
 
       ...getIconFillOrOutlineStyles({ outline: true }),
