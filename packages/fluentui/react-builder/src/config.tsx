@@ -468,13 +468,10 @@ export const fiberNavFindOwnerInJSONTree = (fiberNav: FiberNavigator, jsonTree: 
   // This way, they can't "reach in" to a component and manipulate its children.
   // This is analogous to how a developer can only import a component and use its props but not
   //   edit the components children directly.
-  // We need to traverse the owner fibers and find one that has a uuid that exists in the json tree
-  if (jsonTreeFindElement(jsonTree, fiberNav.key)) {
-    return fiberNav;
-  }
+  // We need to traverse the parent fibers and find one that has a uuid that exists in the json tree
 
-  return fiberNav.findOwner(owner => {
-    return !!jsonTreeFindElement(jsonTree, owner.key);
+  return fiberNav.findParent(parent => {
+    return !!jsonTreeFindElement(jsonTree, parent.key);
   });
 };
 
