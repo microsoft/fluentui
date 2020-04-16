@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { SliderVariables } from './sliderVariables';
-import Slider, { SliderStylesProps } from '../../../../components/Slider/Slider';
+import { SliderStylesProps, sliderSlotClassNames } from '../../../../components/Slider/Slider';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import getBorderFocusStyles from '../../getBorderFocusStyles';
 
@@ -22,7 +22,7 @@ const getCommonSlotStyles = (p: SliderStylesProps, v: SliderVariables): ICSSInJS
 });
 
 // this selector is used to identify the thumb slot from a previous sibling
-const thumbFromPreviousSiblingSelector = `&+ .${Slider.slotClassNames.thumb}`;
+const thumbFromPreviousSiblingSelector = `&+ .${sliderSlotClassNames.thumb}`;
 
 const getFluidStyles = (p: SliderStylesProps) => p.fluid && !p.vertical && { width: '100%' };
 

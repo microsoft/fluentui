@@ -2,6 +2,27 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 16 Apr 2020 12:37:31 GMT",
+      "tag": "office-ui-fabric-react_v7.106.3",
+      "version": "7.106.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Replace uses of EventGroup with the 'on' function and _disposables pattern in ColorRectangle, ColorSlider, and Slider",
+            "author": "behowell@microsoft.com",
+            "commit": "971317f1d7dadb1f212b0bbd17e8e54e12e888f5",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "changed svg factory example and added icon components tests",
+            "author": "mnajdova@gmail.com",
+            "commit": "c02f831775ac80f5f43667f284d73c603bf3979f",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 16 Apr 2020 04:01:45 GMT",
       "tag": "office-ui-fabric-react_v7.106.1",
       "version": "7.106.1",

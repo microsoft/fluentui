@@ -120,12 +120,13 @@ export interface PopupProps
   autoFocus?: boolean | AutoFocusZoneProps;
 }
 
+export const popupClassName = 'ui-popup';
+
 /**
  * A Popup displays a non-modal, often rich content, on top of its target element.
  */
 const Popup: React.FC<PopupProps> &
   FluentComponentStaticProps<PopupProps> & {
-    slotClassNames: PopupSlotClassNames;
     Content: typeof PopupContent;
   } = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
@@ -545,11 +546,8 @@ const Popup: React.FC<PopupProps> &
   return element;
 };
 
-Popup.deprecated_className = 'ui-popup';
+Popup.deprecated_className = popupClassName;
 Popup.displayName = 'Popup';
-Popup.slotClassNames = {
-  content: `${Popup.deprecated_className}__content`,
-};
 
 Popup.propTypes = {
   ...commonPropTypes.createCommon({

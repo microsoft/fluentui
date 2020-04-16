@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "changed svg factory example and added icon components tests",
-  "packageName": "office-ui-fabric-react",
-  "email": "mnajdova@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-04-14T07:54:48.349Z"
-}

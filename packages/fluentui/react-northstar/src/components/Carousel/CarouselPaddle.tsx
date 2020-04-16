@@ -59,6 +59,10 @@ export type CarouselPaddleSlotClassNames = {
 };
 
 export type CarouselPaddleStylesProps = Pick<CarouselPaddleProps, 'disabled' | 'next' | 'previous' | 'hidden'>;
+export const carouselPaddleClassName = 'ui-carousel__paddle';
+export const carouselPaddleSlotClassNames: CarouselPaddleSlotClassNames = {
+  content: `${carouselPaddleClassName}__content`,
+};
 
 const CarouselPaddle: React.FC<WithAsProp<CarouselPaddleProps>> &
   FluentComponentStaticProps<CarouselPaddleProps> & { slotClassNames: CarouselPaddleSlotClassNames } = props => {
@@ -98,7 +102,7 @@ const CarouselPaddle: React.FC<WithAsProp<CarouselPaddleProps>> &
     rtl: context.rtl,
   });
   const { classes, styles: resolvedStyles } = useStyles<CarouselPaddleStylesProps>(CarouselPaddle.displayName, {
-    className: CarouselPaddle.deprecated_className,
+    className: carouselPaddleClassName,
     mapPropsToStyles: () => ({
       disabled,
       hidden,
@@ -142,7 +146,7 @@ const CarouselPaddle: React.FC<WithAsProp<CarouselPaddleProps>> &
             defaultProps: () =>
               getA11Props('content', {
                 as: 'span',
-                className: CarouselPaddle.slotClassNames.content,
+                className: carouselPaddleSlotClassNames.content,
                 styles: resolvedStyles.content,
               }),
           })}
@@ -161,7 +165,7 @@ CarouselPaddle.defaultProps = {
 };
 
 CarouselPaddle.displayName = 'CarouselPaddle';
-CarouselPaddle.deprecated_className = 'ui-carousel__paddle';
+CarouselPaddle.deprecated_className = carouselPaddleClassName;
 
 CarouselPaddle.propTypes = {
   ...commonPropTypes.createCommon({
@@ -178,9 +182,7 @@ CarouselPaddle.handledProps = Object.keys(CarouselPaddle.propTypes) as any;
 
 CarouselPaddle.create = createShorthandFactory({ Component: CarouselPaddle, mappedProp: 'content' });
 
-CarouselPaddle.slotClassNames = {
-  content: `${CarouselPaddle.deprecated_className}__content`,
-};
+CarouselPaddle.slotClassNames = carouselPaddleSlotClassNames;
 
 /**
  * A CarouselPaddle allows users to customize the paddles inside the Carousel component.
