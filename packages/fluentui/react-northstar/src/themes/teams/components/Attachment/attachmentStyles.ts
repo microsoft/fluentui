@@ -1,10 +1,10 @@
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import { svgIconClassName } from '@fluentui/react-icons-northstar';
 
 import { AttachmentStylesProps } from '../../../../components/Attachment/Attachment';
 import { attachmentActionClassName } from '../../../../components/Attachment/AttachmentAction';
 import { AttachmentVariables } from './attachmentVariables';
 import { pxToRem } from '../../../../utils';
-import SvgIcon from '../../../../components/SvgIcon/SvgIcon';
 import getBorderFocusStyles from '../../getBorderFocusStyles';
 
 const attachmentStyles: ComponentSlotStylesPrepared<AttachmentStylesProps, AttachmentVariables> = {
@@ -55,7 +55,7 @@ const attachmentStyles: ComponentSlotStylesPrepared<AttachmentStylesProps, Attac
             color: v.siblingsFocusColor,
           },
 
-          [`& .${SvgIcon.deprecated_className}`]: {
+          [`& .${svgIconClassName}`]: {
             color: v.siblingsFocusColor,
           },
         },
@@ -68,7 +68,7 @@ const attachmentStyles: ComponentSlotStylesPrepared<AttachmentStylesProps, Attac
             color: v.siblingsHoverColor,
           },
 
-          [`& .${SvgIcon.deprecated_className}`]: {
+          [`& .${svgIconClassName}`]: {
             color: v.siblingsHoverColor,
           },
         },

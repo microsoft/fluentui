@@ -88,7 +88,7 @@ const ToolbarMenuRadioGroup: React.FC<WithAsProp<ToolbarMenuRadioGroupProps>> &
   const { classes, styles: resolvedStyles } = useStyles<ToolbarMenuRadioGroupStylesProps>(
     ToolbarMenuRadioGroup.displayName,
     {
-      className: ToolbarMenuRadioGroup.deprecated_className,
+      className: toolbarMenuRadioGroupClassName,
       mapPropsToInlineStyles: () => ({
         className,
         design,

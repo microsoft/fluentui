@@ -203,7 +203,7 @@ const ToolbarMenuItem: React.FC<WithAsProp<ToolbarMenuItemProps>> &
   });
 
   const { classes, styles: resolvedStyles } = useStyles<ToolbarMenuItemStylesProps>(ToolbarMenuItem.displayName, {
-    className: ToolbarMenuItem.deprecated_className,
+    className: toolbarMenuItemClassName,
     mapPropsToStyles: () => ({
       disabled,
       hasContent: !!content,
