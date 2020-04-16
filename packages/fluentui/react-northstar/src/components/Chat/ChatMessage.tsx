@@ -127,6 +127,16 @@ export type ChatMessageStylesProps = Pick<ChatMessageProps, 'attached' | 'badgeP
   hasReactionGroup: boolean;
 };
 
+export const chatMessageClassName = 'ui-chat__message';
+export const chatMessageSlotClassNames: ChatMessageSlotClassNames = {
+  actionMenu: `${chatMessageClassName}__actions`,
+  author: `${chatMessageClassName}__author`,
+  timestamp: `${chatMessageClassName}__timestamp`,
+  badge: `${chatMessageClassName}__badge`,
+  content: `${chatMessageClassName}__content`,
+  reactionGroup: `${chatMessageClassName}__reactions`,
+};
+
 const ChatMessage: React.FC<WithAsProp<ChatMessageProps>> &
   FluentComponentStaticProps<ChatMessageProps> & {
     slotClassNames: ChatMessageSlotClassNames;
@@ -182,7 +192,7 @@ const ChatMessage: React.FC<WithAsProp<ChatMessageProps>> &
     },
   });
   const { classes, styles: resolvedStyles } = useStyles<ChatMessageStylesProps>(ChatMessage.displayName, {
-    className: ChatMessage.deprecated_className,
+    className: chatMessageClassName,
     mapPropsToStyles: () => ({
       attached,
       badgePosition,
@@ -226,7 +236,7 @@ const ChatMessage: React.FC<WithAsProp<ChatMessageProps>> &
       defaultProps: () => ({
         [IS_FOCUSABLE_ATTRIBUTE]: true,
         accessibility: menuAsToolbarBehavior,
-        className: ChatMessage.slotClassNames.actionMenu,
+        className: chatMessageSlotClassNames.actionMenu,
         styles: resolvedStyles.actionMenu,
       }),
     });
@@ -272,14 +282,14 @@ const ChatMessage: React.FC<WithAsProp<ChatMessageProps>> &
 
   const badgeElement = Label.create(badge, {
     defaultProps: () => ({
-      className: ChatMessage.slotClassNames.badge,
+      className: chatMessageSlotClassNames.badge,
       styles: resolvedStyles.badge,
     }),
   });
 
   const reactionGroupElement = Reaction.Group.create(reactionGroup, {
     defaultProps: () => ({
-      className: ChatMessage.slotClassNames.reactionGroup,
+      className: chatMessageSlotClassNames.reactionGroup,
       styles: resolvedStyles.reactionGroup,
     }),
   });
@@ -290,7 +300,7 @@ const ChatMessage: React.FC<WithAsProp<ChatMessageProps>> &
     defaultProps: () => ({
       size: 'small',
       styles: resolvedStyles.author,
-      className: ChatMessage.slotClassNames.author,
+      className: chatMessageSlotClassNames.author,
     }),
   });
 
@@ -299,13 +309,13 @@ const ChatMessage: React.FC<WithAsProp<ChatMessageProps>> &
       size: 'small',
       styles: resolvedStyles.timestamp,
       timestamp: true,
-      className: ChatMessage.slotClassNames.timestamp,
+      className: chatMessageSlotClassNames.timestamp,
     }),
   });
 
   const messageContent = Box.create(content, {
     defaultProps: () => ({
-      className: ChatMessage.slotClassNames.content,
+      className: chatMessageSlotClassNames.content,
       styles: resolvedStyles.content,
     }),
   });
@@ -346,7 +356,7 @@ const ChatMessage: React.FC<WithAsProp<ChatMessageProps>> &
   return element;
 };
 
-ChatMessage.deprecated_className = 'ui-chat__message';
+ChatMessage.deprecated_className = chatMessageClassName;
 ChatMessage.displayName = 'ChatMessage';
 
 ChatMessage.defaultProps = {
@@ -375,14 +385,7 @@ ChatMessage.propTypes = {
 ChatMessage.handledProps = Object.keys(ChatMessage.propTypes) as any;
 
 ChatMessage.create = createShorthandFactory({ Component: ChatMessage, mappedProp: 'content' });
-ChatMessage.slotClassNames = {
-  actionMenu: `${ChatMessage.deprecated_className}__actions`,
-  author: `${ChatMessage.deprecated_className}__author`,
-  timestamp: `${ChatMessage.deprecated_className}__timestamp`,
-  badge: `${ChatMessage.deprecated_className}__badge`,
-  content: `${ChatMessage.deprecated_className}__content`,
-  reactionGroup: `${ChatMessage.deprecated_className}__reactions`,
-};
+ChatMessage.slotClassNames = chatMessageSlotClassNames;
 
 /**
  * A ChatMessage represents a single message in chat.

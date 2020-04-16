@@ -1,6 +1,7 @@
 import { pxToRem } from '../../../../utils';
-import CarouselNavigationItem, {
+import {
   CarouselNavigationItemProps,
+  carouselNavigationItemSlotClassNames,
 } from '../../../../components/Carousel/CarouselNavigationItem';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { CarouselNavigationVariables } from './carouselNavigationVariables';
@@ -51,7 +52,7 @@ const carouselNavigationItemStyles: ComponentSlotStylesPrepared<
       ':focus-visible': {
         ...(iconOnly && {
           borderRadius: '50%',
-          ...(thumbnails && {borderRadius:'0'}) ,
+          ...(thumbnails && { borderRadius: '0' }),
           borderColor: v.iconOnlyColorActive,
           ...getIconFillOrOutlineStyles({ outline: false }),
         }),
@@ -71,7 +72,7 @@ const carouselNavigationItemStyles: ComponentSlotStylesPrepared<
       ':hover': {
         color: 'inherit',
 
-        [`& .${CarouselNavigationItem.slotClassNames.indicator}`]: {
+        [`& .${carouselNavigationItemSlotClassNames.indicator}`]: {
           background: v.indicatorBackgroundColor,
         },
 
