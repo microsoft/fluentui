@@ -19,7 +19,7 @@ export const PanelConfirmDismissExample: React.FunctionComponent = () => {
   const [isDialogVisible, setIsDialogVisible] = React.useState(false);
 
   const openPanel = useConstCallback(() => setIsPanelOpen(true));
-  const onDismiss = useConstCallback((ev?: React.SyntheticEvent) => {
+  const onDismiss = useConstCallback((ev?: React.SyntheticEvent | Event) => {
     if (ev) {
       // Instead of closing the panel immediately, cancel that action and show a dialog
       ev.preventDefault();

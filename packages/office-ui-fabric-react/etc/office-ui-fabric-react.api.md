@@ -5914,7 +5914,7 @@ export interface IPageSpecification {
 
 // @public (undocumented)
 export interface IPanel {
-    dismiss: (ev?: React.KeyboardEvent<HTMLElement>) => void;
+    dismiss: (ev?: React.KeyboardEvent<HTMLElement> | Event) => void;
     open: () => void;
 }
 
@@ -5953,7 +5953,7 @@ export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
     isLightDismiss?: boolean;
     isOpen?: boolean;
     layerProps?: ILayerProps;
-    onDismiss?: (ev?: React.SyntheticEvent<HTMLElement>) => void;
+    onDismiss?: (ev?: React.SyntheticEvent<HTMLElement> | Event) => void;
     onDismissed?: () => void;
     onLightDismissClick?: () => void;
     onOpen?: () => void;
@@ -6347,20 +6347,14 @@ export interface IPlainCardStyles extends IBaseCardStyles {
 }
 
 // @public (undocumented)
-export interface IPopupProps extends React.HTMLAttributes<Popup> {
+export interface IPopupProps extends React.HTMLAttributes<HTMLDivElement> {
     ariaDescribedBy?: string;
     ariaLabel?: string;
     ariaLabelledBy?: string;
     className?: string;
-    onDismiss?: (ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => any;
+    onDismiss?: (ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement> | KeyboardEvent) => any;
     role?: string;
     shouldRestoreFocus?: boolean;
-}
-
-// @public (undocumented)
-export interface IPopupState {
-    // (undocumented)
-    needsVerticalScrollBar?: boolean;
 }
 
 // @public (undocumented)
@@ -8615,23 +8609,7 @@ export class PlainCardBase extends React.Component<IPlainCardProps, {}> {
 }
 
 // @public
-export class Popup extends React.Component<IPopupProps, IPopupState> {
-    constructor(props: IPopupProps);
-    // (undocumented)
-    componentDidMount(): void;
-    // (undocumented)
-    componentDidUpdate(): void;
-    // (undocumented)
-    componentWillUnmount(): void;
-    // (undocumented)
-    static defaultProps: IPopupProps;
-    // (undocumented)
-    render(): JSX.Element;
-    // (undocumented)
-    _root: React.RefObject<HTMLDivElement>;
-    // (undocumented)
-    UNSAFE_componentWillMount(): void;
-    }
+export const Popup: React.ForwardRefExoticComponent<IPopupProps & React.RefAttributes<HTMLDivElement>>;
 
 // @public (undocumented)
 export class PositioningContainer extends React.Component<IPositioningContainerProps, IPositioningContainerState> implements PositioningContainer {
