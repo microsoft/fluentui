@@ -68,12 +68,17 @@ export interface AccordionTitleProps
   indicator?: ShorthandValue<BoxProps>;
 }
 
+export const accordionTitleClassName = 'ui-accordion__title';
+export const accordionTitleSlotClassNames: AccordionTitleSlotClassNames = {
+  contentWrapper: `${accordionTitleClassName}__content-wrapper`,
+};
+
 class AccordionTitle extends UIComponent<WithAsProp<AccordionTitleProps>, any> {
   static displayName = 'AccordionTitle';
 
   static create: ShorthandFactory<AccordionTitleProps>;
 
-  static deprecated_className = 'ui-accordion__title';
+  static deprecated_className = accordionTitleClassName;
 
   static slotClassNames: AccordionTitleSlotClassNames;
 
@@ -134,7 +139,7 @@ class AccordionTitle extends UIComponent<WithAsProp<AccordionTitleProps>, any> {
       <Ref innerRef={contentRef}>
         {Box.create(contentWrapper, {
           defaultProps: () => ({
-            className: AccordionTitle.slotClassNames.contentWrapper,
+            className: accordionTitleSlotClassNames.contentWrapper,
             styles: styles.contentWrapper,
             ...accessibility.attributes.content,
             ...applyAccessibilityKeyHandlers(accessibility.keyHandlers.content, unhandledProps),
@@ -178,9 +183,7 @@ class AccordionTitle extends UIComponent<WithAsProp<AccordionTitleProps>, any> {
 
 AccordionTitle.create = createShorthandFactory({ Component: AccordionTitle, mappedProp: 'content' });
 
-AccordionTitle.slotClassNames = {
-  contentWrapper: `${AccordionTitle.deprecated_className}__content-wrapper`,
-};
+AccordionTitle.slotClassNames = accordionTitleSlotClassNames;
 
 /**
  * An AccordionTitle represents the title of Accordion's item that can be interacted with to expand or collapse the item's content.

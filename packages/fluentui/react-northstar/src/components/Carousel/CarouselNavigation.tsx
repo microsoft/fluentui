@@ -26,6 +26,9 @@ export interface CarouselNavigationProps extends UIComponentProps, ChildrenCompo
   /** A navigation may have just icons. */
   iconOnly?: boolean;
 
+  /** A navigation may have thumbnails. */
+  thumbnails?: boolean;
+
   /** Shorthand array of props for Navigation. */
   items?: ShorthandCollection<CarouselNavigationItemProps>;
 
@@ -60,6 +63,7 @@ class CarouselNavigation extends UIComponent<WithAsProp<CarouselNavigationProps>
     }),
     activeIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     iconOnly: PropTypes.bool,
+    thumbnails: PropTypes.bool,
     items: customPropTypes.collectionShorthand,
     onItemClick: PropTypes.func,
     primary: customPropTypes.every([customPropTypes.disallow(['secondary']), PropTypes.bool]),
@@ -81,7 +85,7 @@ class CarouselNavigation extends UIComponent<WithAsProp<CarouselNavigationProps>
   });
 
   renderItems = (variables: ComponentVariablesObject, accessibility: ReactAccessibilityBehavior) => {
-    const { activeIndex, iconOnly, items, primary, secondary, vertical } = this.props;
+    const { activeIndex, iconOnly, items, primary, secondary, vertical, thumbnails } = this.props;
 
     return _.map(items, (item, index) =>
       CarouselNavigationItem.create(item, {
@@ -92,6 +96,7 @@ class CarouselNavigation extends UIComponent<WithAsProp<CarouselNavigationProps>
           primary,
           secondary,
           vertical,
+          thumbnails,
           accessibility: accessibility.childBehaviors ? accessibility.childBehaviors.item : undefined,
         }),
         overrideProps: this.handleItemOverrides(variables),
