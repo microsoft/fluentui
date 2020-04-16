@@ -1,5 +1,5 @@
 import {
-  Button,
+  buttonClassName,
   chatMessageSlotClassNames,
   chatItemSlotClassNames,
   chatItemClassName,
@@ -15,7 +15,7 @@ const classNames = {
     timestamp: `${chatMessageSlotClassNames.timestamp}-inner`,
   },
   threadReplies: {
-    trigger: `${Button.deprecated_className}__reply`,
+    trigger: `${buttonClassName}__reply`,
     message: `${chatMessageClassName}__reply`,
     gutter: `${chatItemClassName}__reply__gutter`,
     chatItem: `${chatItemClassName}__reply`,

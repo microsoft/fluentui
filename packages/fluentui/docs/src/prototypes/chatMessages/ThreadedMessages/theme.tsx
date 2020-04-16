@@ -1,4 +1,11 @@
-import { ThemeInput, chatItemSlotClassNames, Input, SvgIcon, Button, pxToRem } from '@fluentui/react-northstar';
+import {
+  ThemeInput,
+  chatItemSlotClassNames,
+  Input,
+  SvgIcon,
+  buttonClassName,
+  pxToRem,
+} from '@fluentui/react-northstar';
 import classNames from './classNames';
 
 const customizedTheme: ThemeInput = {
@@ -112,7 +119,7 @@ const customizedTheme: ThemeInput = {
           backgroundColor: siteVariables.colorScheme.brand.foreground,
         },
 
-        [`& .${Button.deprecated_className} .${SvgIcon.deprecated_className}`]: {
+        [`& .${buttonClassName} .${SvgIcon.deprecated_className}`]: {
           color: siteVariables.colorScheme.default.background,
         },
       }),

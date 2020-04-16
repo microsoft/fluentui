@@ -21,6 +21,7 @@ import Box, { BoxProps } from '../Box/Box';
 
 export interface CarouselNavigationItemSlotClassNames {
   indicator: string;
+  content: string;
 }
 
 export interface CarouselNavigationItemProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
@@ -52,11 +53,14 @@ export interface CarouselNavigationItemProps extends UIComponentProps, ChildrenC
 
   /** A vertical carousel navigation displays elements vertically. */
   vertical?: boolean;
+
+  thumbnails?: boolean;
 }
 
 export const carouselNavigationItemClassName = 'ui-carousel__navigationitem';
 export const carouselNavigationItemSlotClassNames: CarouselNavigationItemSlotClassNames = {
   indicator: `${carouselNavigationItemClassName}__indicator`,
+  content: `${carouselNavigationItemClassName}__content`,
 };
 
 class CarouselNavigationItem extends UIComponent<WithAsProp<CarouselNavigationItemProps>> {
@@ -78,6 +82,7 @@ class CarouselNavigationItem extends UIComponent<WithAsProp<CarouselNavigationIt
     primary: customPropTypes.every([customPropTypes.disallow(['secondary']), PropTypes.bool]),
     secondary: customPropTypes.every([customPropTypes.disallow(['primary']), PropTypes.bool]),
     vertical: PropTypes.bool,
+    thumbnails: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -85,6 +90,23 @@ class CarouselNavigationItem extends UIComponent<WithAsProp<CarouselNavigationIt
     as: 'li',
     indicator: {},
   };
+
+  renderContent({ content, indicator, styles }) {
+    return content
+      ? Box.create(content, {
+          defaultProps: () => ({
+            as: 'span',
+            className: carouselNavigationItemSlotClassNames.content,
+            styles: styles.content,
+          }),
+        })
+      : Box.create(indicator, {
+          defaultProps: () => ({
+            className: carouselNavigationItemSlotClassNames.indicator,
+            styles: styles.indicator,
+          }),
+        });
+  }
 
   renderComponent({ ElementType, classes, accessibility, styles, variables, unhandledProps }) {
     const { children, content, indicator } = this.props;
@@ -102,15 +124,7 @@ class CarouselNavigationItem extends UIComponent<WithAsProp<CarouselNavigationIt
         {...applyAccessibilityKeyHandlers(accessibility.keyHandlers.root, unhandledProps)}
         {...unhandledProps}
       >
-        {Box.create(indicator, {
-          defaultProps: () => ({
-            className: carouselNavigationItemSlotClassNames.indicator,
-            styles: styles.indicator,
-          }),
-        })}
-        {Box.create(content, {
-          defaultProps: () => ({ as: 'span', styles: styles.content }),
-        })}
+        {this.renderContent({ content, indicator, styles })}
       </ElementType>
     );
   }
