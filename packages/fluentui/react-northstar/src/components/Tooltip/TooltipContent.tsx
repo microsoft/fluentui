@@ -43,6 +43,8 @@ export type TooltipContentStylesProps = Required<Pick<TooltipContentProps, 'poin
   basePlacement: PopperJs.BasePlacement;
 };
 
+export const tooltipContentClassName = 'ui-tooltip__content';
+
 const TooltipContent: React.FC<WithAsProp<TooltipContentProps>> &
   FluentComponentStaticProps<TooltipContentProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
@@ -68,7 +70,7 @@ const TooltipContent: React.FC<WithAsProp<TooltipContentProps>> &
     rtl: context.rtl,
   });
   const { classes } = useStyles<TooltipContentStylesProps>(TooltipContent.displayName, {
-    className: TooltipContent.deprecated_className,
+    className: tooltipContentClassName,
     mapPropsToStyles: () => ({
       basePlacement: getBasePlacement(placement, context.rtl),
       open,
@@ -107,7 +109,7 @@ const TooltipContent: React.FC<WithAsProp<TooltipContentProps>> &
 };
 
 TooltipContent.displayName = 'TooltipContent';
-TooltipContent.deprecated_className = 'ui-tooltip__content';
+TooltipContent.deprecated_className = tooltipContentClassName;
 
 TooltipContent.propTypes = {
   ...commonPropTypes.createCommon(),
