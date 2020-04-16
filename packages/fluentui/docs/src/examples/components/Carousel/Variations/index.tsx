@@ -11,6 +11,12 @@ const Variations = () => (
     />
 
     <ComponentExample
+      title="Thumbnails"
+      description="A Carousel's items navigation can be thumbnail."
+      examplePath="components/Carousel/Variations/CarouselThumbnailsExample"
+    />
+
+    <ComponentExample
       title="Carousel with actionable elements"
       description="A Carousel can have actionable elements inside."
       examplePath="components/Carousel/Variations/CarouselExampleWithFocusableElements"

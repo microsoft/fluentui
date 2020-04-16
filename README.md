@@ -25,7 +25,6 @@ Please see the [wiki](https://github.com/microsoft/fluentui/wiki).
 ## Contents
 
 - [Using Fluent UI React](#using-fluent-ui-react)
-  - [Starter apps](#starter-apps)
   - [Integrating in your project](#integrating-in-your-project)
   - [Version policy](#version-policy)
   - [Browser support](#browser-support)

@@ -2,6 +2,43 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "date": "Thu, 16 Apr 2020 04:01:45 GMT",
+      "tag": "@uifabric/merge-styles_v7.10.0",
+      "version": "7.10.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Readme: Fabric=>Fluent wording updates",
+            "author": "elcraig@microsoft.com",
+            "commit": "9e3c7c7d4b92e132820cdbcd61a667829c712ecb",
+            "package": "@uifabric/merge-styles"
+          },
+          {
+            "comment": "Fix typing for subComponentStyles in StyleSet",
+            "author": "xgao@microsoft.com",
+            "commit": "3f95bf337123ad9196a552ed12f893fa75a272fc",
+            "package": "@uifabric/merge-styles"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Expose keytoclassnames to app, so it can be cached by the app in places like indexed db.",
+            "author": "pingj@microsoft.com",
+            "commit": "ece3cc7675b6bec05f3810a5f8df4928cab548c7",
+            "package": "@uifabric/merge-styles"
+          }
+        ],
+        "none": [
+          {
+            "comment": "sync package version",
+            "author": "xgao@microsoft.com",
+            "commit": "6f39958352207acb3029458503db0969a4359806",
+            "package": "@uifabric/merge-styles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 30 Mar 2020 19:10:08 GMT",
       "tag": "@uifabric/merge-styles_v7.8.11",
       "version": "7.8.11",

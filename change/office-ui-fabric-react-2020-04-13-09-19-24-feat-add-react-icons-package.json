@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Adding SVG icon examples",
-  "packageName": "office-ui-fabric-react",
-  "email": "dzearing@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-04-13T16:19:23.983Z"
-}

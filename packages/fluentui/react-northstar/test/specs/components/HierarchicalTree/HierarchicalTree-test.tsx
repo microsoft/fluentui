@@ -56,9 +56,9 @@ const items = [
 ];
 
 const getTitles = (wrapper: ReactWrapper): CommonWrapper =>
-  wrapper.find(`.${HierarchicalTreeTitle.className}`).filterWhere(n => typeof n.type() === 'string');
+  wrapper.find(`.${HierarchicalTreeTitle.deprecated_className}`).filterWhere(n => typeof n.type() === 'string');
 const getItems = (wrapper: ReactWrapper): CommonWrapper =>
-  wrapper.find(`.${HierarchicalTreeItem.className}`).filterWhere(n => typeof n.type() === 'string');
+  wrapper.find(`.${HierarchicalTreeItem.deprecated_className}`).filterWhere(n => typeof n.type() === 'string');
 
 const checkOpenTitles = (wrapper: ReactWrapper, expected: string[]): void => {
   const titles = getTitles(wrapper);

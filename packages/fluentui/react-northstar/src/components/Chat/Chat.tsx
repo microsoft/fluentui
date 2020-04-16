@@ -56,7 +56,7 @@ const Chat: React.FC<WithAsProp<ChatProps>> &
     rtl: context.rtl,
   });
   const { classes } = useStyles<ChatStylesProps>(Chat.displayName, {
-    className: Chat.className,
+    className: Chat.deprecated_className,
     mapPropsToInlineStyles: () => ({
       className,
       design,
@@ -91,11 +91,11 @@ const Chat: React.FC<WithAsProp<ChatProps>> &
   return element;
 };
 
-Chat.className = 'ui-chat';
+Chat.deprecated_className = 'ui-chat';
 Chat.displayName = 'Chat';
 
 Chat.slotClassNames = {
-  item: `${Chat.className}__item`,
+  item: `${Chat.deprecated_className}__item`,
 };
 
 Chat.defaultProps = {

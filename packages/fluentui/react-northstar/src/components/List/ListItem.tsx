@@ -135,7 +135,7 @@ const ListItem: React.FC<WithAsProp<ListItemProps> & { index: number }> &
     rtl: context.rtl,
   });
   const { classes, styles: resolvedStyles } = useStyles<ListItemStylesProps>(ListItem.displayName, {
-    className: ListItem.className,
+    className: ListItem.deprecated_className,
     mapPropsToStyles: () => ({
       debug,
       navigable,
@@ -233,7 +233,7 @@ const ListItem: React.FC<WithAsProp<ListItemProps> & { index: number }> &
   return element;
 };
 
-ListItem.className = 'ui-list__item';
+ListItem.deprecated_className = 'ui-list__item';
 ListItem.displayName = 'ListItem';
 
 ListItem.defaultProps = {
@@ -270,15 +270,15 @@ ListItem.propTypes = {
 ListItem.handledProps = Object.keys(ListItem.propTypes) as any;
 
 ListItem.slotClassNames = {
-  header: `${ListItem.className}__header`,
-  headerMedia: `${ListItem.className}__headerMedia`,
-  headerWrapper: `${ListItem.className}__headerWrapper`,
-  main: `${ListItem.className}__main`,
-  content: `${ListItem.className}__content`,
-  contentMedia: `${ListItem.className}__contentMedia`,
-  contentWrapper: `${ListItem.className}__contentWrapper`,
-  media: `${ListItem.className}__media`,
-  endMedia: `${ListItem.className}__endMedia`,
+  header: `${ListItem.deprecated_className}__header`,
+  headerMedia: `${ListItem.deprecated_className}__headerMedia`,
+  headerWrapper: `${ListItem.deprecated_className}__headerWrapper`,
+  main: `${ListItem.deprecated_className}__main`,
+  content: `${ListItem.deprecated_className}__content`,
+  contentMedia: `${ListItem.deprecated_className}__contentMedia`,
+  contentWrapper: `${ListItem.deprecated_className}__contentWrapper`,
+  media: `${ListItem.deprecated_className}__media`,
+  endMedia: `${ListItem.deprecated_className}__endMedia`,
 };
 
 ListItem.create = createShorthandFactory({ Component: ListItem, mappedProp: 'content' });

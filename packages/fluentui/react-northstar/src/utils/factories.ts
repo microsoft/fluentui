@@ -1,14 +1,7 @@
 import cx from 'classnames';
 import * as _ from 'lodash';
 import * as React from 'react';
-import {
-  ShorthandValue,
-  Props,
-  PropsOf,
-  ShorthandRenderCallback,
-  ShorthandRenderFunction,
-  ShorthandRenderer,
-} from '../types';
+import { ShorthandValue, Props, PropsOf, ShorthandRenderFunction } from '../types';
 import { mergeStyles } from '@fluentui/styles';
 
 type HTMLTag = 'iframe' | 'img' | 'input';
@@ -35,67 +28,15 @@ const mappedProps: { [key in HTMLTag]: ShorthandProp } = {
   input: 'type',
 };
 
-// ============================================================
-// Factories
-// ============================================================
-
-/** A more robust React.createElement. It can create elements from primitive values. */
-export function createShorthand<P>({
-  allowsJSX,
-  Component,
-  mappedProp,
-  mappedArrayProp,
-  valueOrRenderCallback,
-  options = {},
-}: {
-  Component: React.ElementType;
-  allowsJSX?: boolean;
-  mappedProp?: string;
-  mappedArrayProp?: string;
-  valueOrRenderCallback?: ShorthandValue<P> | ShorthandRenderCallback<P>;
-  options?: CreateShorthandOptions<P>;
-}): React.ReactElement<Props> | null | undefined {
-  const valIsRenderFunction =
-    typeof valueOrRenderCallback === 'function' && !React.isValidElement(valueOrRenderCallback);
-  if (valIsRenderFunction) {
-    if (process.env.NODE_ENV !== 'production') {
-      // eslint-disable-next-line no-console
-      console.warn(
-        [
-          '@fluentui/react-northstar:',
-          'The usage of render callback is deprecated and will be removed soon. Please use render props for shorthands instead.',
-          'See: https://microsoft.github.io/fluent-ui-react/shorthand-props',
-        ].join(' '),
-      );
-    }
-
-    return createShorthandFromRenderCallback({
-      allowsJSX,
-      Component,
-      renderCallback: valueOrRenderCallback as ShorthandRenderCallback<P>,
-      mappedProp,
-      mappedArrayProp,
-      options,
-    });
-  }
-
-  return createShorthandFromValue({
-    allowsJSX,
-    Component,
-    mappedProp,
-    mappedArrayProp,
-    value: valueOrRenderCallback as ShorthandValue<Props>,
-    options,
-  });
-}
-
 export type ShorthandFactory<P> = (
   value: ShorthandValue<P>,
   options?: CreateShorthandOptions<P>,
 ) => React.ReactElement | null | undefined;
+
 // ============================================================
 // Factory Creators
 // ============================================================
+
 /**
  * @param config - Options passed to factory
  * @returns A shorthand factory function waiting for `val` and `defaultProps`.
@@ -127,30 +68,30 @@ export function createShorthandFactory<P>({ Component, mappedProp, mappedArrayPr
     throw new Error('createShorthandFactory() Component must be a string or function.');
   }
 
-  return (val, options: CreateShorthandOptions<P>) =>
+  return (value, options: CreateShorthandOptions<P>) =>
     createShorthand({
+      allowsJSX,
       Component,
       mappedProp,
       mappedArrayProp,
-      allowsJSX,
-      valueOrRenderCallback: val,
+      value,
       options,
     });
 }
 
 // ============================================================
-// Private Utils
+// Factories
 // ============================================================
 
-function createShorthandFromValue<P>({
+export function createShorthand<P>({
   Component,
   mappedProp,
   mappedArrayProp,
   value,
-  options,
+  options = {},
   allowsJSX = true,
 }: {
-  Component: React.ElementType;
+  Component: React.ElementType<P>;
   mappedProp?: string;
   mappedArrayProp?: string;
   allowsJSX?: boolean;
@@ -292,36 +233,4 @@ function createShorthandFromValue<P>({
   }
 
   return null;
-}
-
-function createShorthandFromRenderCallback<P>({
-  Component,
-  renderCallback,
-  mappedProp,
-  mappedArrayProp,
-  allowsJSX,
-  options,
-}: {
-  Component: React.ReactType;
-  renderCallback: ShorthandRenderCallback<P>;
-  mappedProp?: string;
-  mappedArrayProp?: string;
-  allowsJSX?: boolean;
-  options?: CreateShorthandOptions<P>;
-}) {
-  const render: ShorthandRenderer<P> = (shorthandValue, renderTree) => {
-    return createShorthandFromValue({
-      Component,
-      mappedProp,
-      mappedArrayProp,
-      allowsJSX,
-      value: shorthandValue,
-      options: {
-        ...options,
-        ...(renderTree && { render: renderTree }),
-      },
-    });
-  };
-
-  return renderCallback(render);
 }

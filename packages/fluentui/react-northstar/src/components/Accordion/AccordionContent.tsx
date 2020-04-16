@@ -32,12 +32,14 @@ export interface AccordionContentProps extends UIComponentProps, ChildrenCompone
   onClick?: ComponentEventHandler<AccordionContentProps>;
 }
 
+export const accordionContentClassName = 'ui-accordion__content';
+
 class AccordionContent extends UIComponent<WithAsProp<AccordionContentProps>, any> {
   static displayName = 'AccordionContent';
 
   static create: ShorthandFactory<AccordionContentProps>;
 
-  static className = 'ui-accordion__content';
+  static deprecated_className = accordionContentClassName;
 
   static propTypes = {
     ...commonPropTypes.createCommon(),

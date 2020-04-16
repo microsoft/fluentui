@@ -78,6 +78,8 @@ export interface CarouselProps extends UIComponentProps, ChildrenComponentProps 
   /** Shorthand array of props for CarouselItem. */
   items?: ShorthandCollection<CarouselItemProps>;
 
+  thumbnails?: boolean;
+
   /** Shorthand array of props for the buttons of the CarouselNavigation. */
   navigation?: ShorthandValue<CarouselNavigationProps> | ShorthandCollection<CarouselNavigationItemProps>;
 
@@ -122,14 +124,14 @@ class Carousel extends AutoControlledComponent<WithAsProp<CarouselProps>, Carous
 
   static displayName = 'Carousel';
 
-  static className = 'ui-carousel';
+  static deprecated_className = 'ui-carousel';
 
   static slotClassNames: CarouselSlotClassNames = {
-    itemsContainer: `${Carousel.className}__itemscontainer`,
-    paddleNext: `${Carousel.className}__paddlenext`,
-    paddlePrevious: `${Carousel.className}__paddleprevious`,
-    pagination: `${Carousel.className}__pagination`,
-    navigation: `${Carousel.className}__navigation`,
+    itemsContainer: `${Carousel.deprecated_className}__itemscontainer`,
+    paddleNext: `${Carousel.deprecated_className}__paddlenext`,
+    paddlePrevious: `${Carousel.deprecated_className}__paddleprevious`,
+    pagination: `${Carousel.deprecated_className}__pagination`,
+    navigation: `${Carousel.deprecated_className}__navigation`,
   };
 
   static propTypes = {
@@ -149,6 +151,7 @@ class Carousel extends AutoControlledComponent<WithAsProp<CarouselProps>, Carous
     paddleNext: customPropTypes.itemShorthand,
     paddlesPosition: PropTypes.string,
     paddlePrevious: customPropTypes.itemShorthand,
+    thumbnails: PropTypes.bool,
   };
 
   static autoControlledProps = ['activeIndex'];
@@ -418,7 +421,7 @@ class Carousel extends AutoControlledComponent<WithAsProp<CarouselProps>, Carous
   };
 
   renderNavigation = () => {
-    const { getItemPositionText, navigation, items } = this.props;
+    const { getItemPositionText, navigation, items, thumbnails } = this.props;
 
     if (!items || !items.length) {
       return null;
@@ -432,6 +435,7 @@ class Carousel extends AutoControlledComponent<WithAsProp<CarouselProps>, Carous
           className: Carousel.slotClassNames.navigation,
           iconOnly: true,
           activeIndex,
+          thumbnails,
         }),
         overrideProps: (predefinedProps: CarouselNavigationItemProps) => ({
           onItemClick: (e: React.SyntheticEvent, itemProps: CarouselNavigationItemProps) => {

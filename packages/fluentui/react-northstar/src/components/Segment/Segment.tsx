@@ -33,7 +33,7 @@ export interface SegmentProps
 }
 
 class Segment extends UIComponent<WithAsProp<SegmentProps>, any> {
-  static className = 'ui-segment';
+  static deprecated_className = 'ui-segment';
 
   static displayName = 'Segment';
 
