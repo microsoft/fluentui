@@ -119,7 +119,7 @@ const List: React.FC<WithAsProp<ListProps>> &
     rtl: context.rtl,
   });
   const { classes } = useStyles<ListStylesProps>(List.displayName, {
-    className: List.className,
+    className: List.deprecated_className,
     mapPropsToStyles: () => ({ isListTag: as === 'ol' || as === 'ul', debug, horizontal }),
     mapPropsToInlineStyles: () => ({ className, design, styles, variables }),
     rtl: context.rtl,
@@ -175,7 +175,7 @@ const List: React.FC<WithAsProp<ListProps>> &
   return element;
 };
 
-List.className = 'ui-list';
+List.deprecated_className = 'ui-list';
 List.displayName = 'List';
 
 List.defaultProps = {

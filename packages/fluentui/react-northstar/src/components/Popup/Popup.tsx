@@ -10,9 +10,9 @@ import { EventListener } from '@fluentui/react-component-event-listener';
 import { NodeRef, Unstable_NestingAuto } from '@fluentui/react-component-nesting-registry';
 import { handleRef, Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
+import * as PopperJs from '@popperjs/core';
 import * as keyboardKey from 'keyboard-key';
 import * as _ from 'lodash';
-import PopperJs from 'popper.js';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 // @ts-ignore
@@ -170,7 +170,7 @@ const Popup: React.FC<PopupProps> &
   const triggerRef = React.useRef<HTMLElement>();
   // focusable element which has triggered Popup, can be either triggerDomElement or the element inside it
   const triggerFocusableRef = React.useRef<HTMLElement>();
-  const rightClickReferenceObject = React.useRef<PopperJs.ReferenceObject | null>();
+  const rightClickReferenceObject = React.useRef<PopperJs.VirtualElement | null>();
 
   const getA11yProps = useAccessibility(accessibility, {
     debugName: Popup.displayName,
@@ -545,10 +545,10 @@ const Popup: React.FC<PopupProps> &
   return element;
 };
 
-Popup.className = 'ui-popup';
+Popup.deprecated_className = 'ui-popup';
 Popup.displayName = 'Popup';
 Popup.slotClassNames = {
-  content: `${Popup.className}__content`,
+  content: `${Popup.deprecated_className}__content`,
 };
 
 Popup.propTypes = {
@@ -561,14 +561,19 @@ Popup.propTypes = {
   inline: PropTypes.bool,
   mountNode: customPropTypes.domNode,
   mouseLeaveDelay: PropTypes.number,
-  offset: PropTypes.string,
+  offset: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.arrayOf(PropTypes.number) as PropTypes.Requireable<[number, number]>,
+  ]),
   flipBoundary: PropTypes.oneOfType([
-    PropTypes.object as PropTypes.Requireable<Element>,
-    PropTypes.oneOf<'scrollParent' | 'window' | 'viewport'>(['scrollParent', 'window', 'viewport']),
+    PropTypes.object as PropTypes.Requireable<HTMLElement>,
+    PropTypes.arrayOf(PropTypes.object) as PropTypes.Requireable<HTMLElement[]>,
+    PropTypes.oneOf<'clippingParents' | 'window' | 'scrollParent'>(['clippingParents', 'window', 'scrollParent']),
   ]),
   overflowBoundary: PropTypes.oneOfType([
-    PropTypes.object as PropTypes.Requireable<Element>,
-    PropTypes.oneOf<'scrollParent' | 'window' | 'viewport'>(['scrollParent', 'window', 'viewport']),
+    PropTypes.object as PropTypes.Requireable<HTMLElement>,
+    PropTypes.arrayOf(PropTypes.object) as PropTypes.Requireable<HTMLElement[]>,
+    PropTypes.oneOf<'clippingParents' | 'window' | 'scrollParent'>(['clippingParents', 'window', 'scrollParent']),
   ]),
   on: PropTypes.oneOfType([
     PropTypes.oneOf(['hover', 'click', 'focus', 'context']),

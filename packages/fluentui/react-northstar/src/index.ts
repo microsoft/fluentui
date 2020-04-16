@@ -29,6 +29,16 @@ export { default as AlertDismissAction } from './components/Alert/AlertDismissAc
 
 export * from './components/Attachment/Attachment';
 export { default as Attachment } from './components/Attachment/Attachment';
+export * from './components/Attachment/AttachmentAction';
+export { default as AttachmentAction } from './components/Attachment/AttachmentAction';
+export * from './components/Attachment/AttachmentBody';
+export { default as AttachmentBody } from './components/Attachment/AttachmentBody';
+export * from './components/Attachment/AttachmentDescription';
+export { default as AttachmentDescription } from './components/Attachment/AttachmentDescription';
+export * from './components/Attachment/AttachmentHeader';
+export { default as AttachmentHeader } from './components/Attachment/AttachmentHeader';
+export * from './components/Attachment/AttachmentIcon';
+export { default as AttachmentIcon } from './components/Attachment/AttachmentIcon';
 
 export * from './components/Avatar/Avatar';
 export { default as Avatar } from './components/Avatar/Avatar';

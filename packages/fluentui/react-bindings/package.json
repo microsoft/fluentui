@@ -1,16 +1,16 @@
 {
   "name": "@fluentui/react-bindings",
   "description": "A set of components and hooks to build components libraries and UI kits.",
-  "version": "0.47.0",
+  "version": "0.48.0",
   "author": "Oleksandr Fediashov <a@fedyashov.com>",
   "bugs": "https://github.com/microsoft/fluentui/issues",
   "dependencies": {
     "@babel/runtime": "^7.7.6",
-    "@fluentui/accessibility": "^0.47.0",
-    "@fluentui/react-compose": "^0.2.4",
-    "@fluentui/state": "^0.47.0",
-    "@fluentui/styles": "^0.47.0",
-    "@uifabric/utilities": "^7.15.6",
+    "@fluentui/accessibility": "^0.48.0",
+    "@fluentui/react-compose": "^0.2.6",
+    "@fluentui/state": "^0.48.0",
+    "@fluentui/styles": "^0.48.0",
+    "@uifabric/utilities": "^7.15.7",
     "classnames": "^2.2.6",
     "fela": "^10.6.1",
     "lodash": "^4.17.15"

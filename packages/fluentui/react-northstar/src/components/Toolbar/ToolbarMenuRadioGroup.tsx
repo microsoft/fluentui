@@ -83,7 +83,7 @@ const ToolbarMenuRadioGroup: React.FC<WithAsProp<ToolbarMenuRadioGroupProps>> &
   const { classes, styles: resolvedStyles } = useStyles<ToolbarMenuRadioGroupStylesProps>(
     ToolbarMenuRadioGroup.displayName,
     {
-      className: ToolbarMenuRadioGroup.className,
+      className: ToolbarMenuRadioGroup.deprecated_className,
       mapPropsToInlineStyles: () => ({
         className,
         design,
@@ -138,10 +138,10 @@ const ToolbarMenuRadioGroup: React.FC<WithAsProp<ToolbarMenuRadioGroupProps>> &
   return element;
 };
 
-ToolbarMenuRadioGroup.className = 'ui-toolbars'; // FIXME: required by getComponentInfo/isConformant. But this is group inside a toolbar not a group of toolbars
+ToolbarMenuRadioGroup.deprecated_className = 'ui-toolbars'; // FIXME: required by getComponentInfo/isConformant. But this is group inside a toolbar not a group of toolbars
 ToolbarMenuRadioGroup.displayName = 'ToolbarMenuRadioGroup';
 ToolbarMenuRadioGroup.slotClassNames = {
-  wrapper: `${ToolbarMenuRadioGroup.className}__wrapper`,
+  wrapper: `${ToolbarMenuRadioGroup.deprecated_className}__wrapper`,
 };
 
 ToolbarMenuRadioGroup.defaultProps = {

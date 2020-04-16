@@ -1,6 +1,18 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Thu, 09 Apr 2020 12:24:31 GMT and should not be manually modified.
+This log was last generated on Thu, 16 Apr 2020 04:01:45 GMT and should not be manually modified.
+
+<!-- Start content -->
+
+## [7.23.2](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.23.2)
+
+Thu, 16 Apr 2020 04:01:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.23.0..@uifabric/experiments_v7.23.2)
+
+### Patches
+
+- Readme: Remove graduation details; Fabric=>Fluent wording updates ([PR #12508](https://github.com/microsoft/fluentui/pull/12508) by elcraig@microsoft.com)
+- removing more references to wrong filetype icons from a deprecated folder ([PR #12422](https://github.com/microsoft/fluentui/pull/12422) by caperez@microsoft.com)
 
 ## 7.23.0
 Thu, 09 Apr 2020 12:24:31 GMT
@@ -2635,4 +2647,3 @@ Wed, 16 Aug 2017 10:11:43 GMT
 Tue, 15 Aug 2017 10:19:22 GMT
 
 *Initial release*
-
