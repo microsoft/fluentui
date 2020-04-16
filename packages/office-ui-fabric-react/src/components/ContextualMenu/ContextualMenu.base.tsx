@@ -115,7 +115,7 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
   private _isFocusingPreviousElement: boolean;
   private _enterTimerId: number | undefined;
   private _targetWindow: Window;
-  private _target: Element | MouseEvent | IPoint | null;
+  private _target: Element | MouseEvent | Point | null;
   private _isScrollIdle: boolean;
   private _scrollIdleTimeoutId: number | undefined;
   /** True if the most recent keydown event was for alt (option) or meta (command). */
