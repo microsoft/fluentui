@@ -191,7 +191,7 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
 
     return {
       activeItemIds,
-      selectedItemIds,
+      selectedItemIds: selectedItemIds || [],
     };
   }
 
@@ -357,6 +357,23 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
     });
   };
 
+  getAllSelectableChildrenId = items => {
+    return items.reduce((acc, item) => {
+      return item.items ? [...acc, ...this.getAllSelectableChildrenId(item.items)] : [...acc, item.id];
+    }, []);
+  };
+
+  isIncompletedGroupChecked = (items: TreeItemProps[]) => {
+    const selectableItemIds = this.getAllSelectableChildrenId(items);
+
+    return !this.isAllGroupChecked(items) && selectableItemIds.some(id => this.state.selectedItemIds.indexOf(id) > -1);
+  };
+
+  isAllGroupChecked = (items: TreeItemProps[]) => {
+    const selectableItemIds = this.getAllSelectableChildrenId(items);
+    return selectableItemIds.every(id => this.state.selectedItemIds.indexOf(id) > -1);
+  };
+
   contextValue: TreeRenderContextValue = {
     onFocusParent: this.onFocusParent,
     onSiblingsExpand: this.onSiblingsExpand,
@@ -379,7 +396,8 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
         const isSubtree = hasSubtree(item);
         const isSubtreeExpanded = isSubtree && this.isActiveItem(itemId);
         const isSelectedItem = this.isSelectedItem(itemId);
-
+        const incompleteChecked = item['items'] && this.isIncompletedGroupChecked(item['items']);
+        const selected = item['items'] && this.isAllGroupChecked(item['items']);
         if (!this.itemsRef.has(itemId)) {
           this.itemsRef.set(itemId, React.createRef<HTMLElement>());
         }
@@ -398,6 +416,8 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
             index: index + 1, // Used for aria-posinset and it's 1-based.
             contentRef: this.itemsRef.get(itemId),
             treeSize: items.length,
+            incompleteChecked,
+            ...(isSubtree && { selected }),
           }),
         });
 
