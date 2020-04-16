@@ -33,7 +33,7 @@ export function useControllableValue<
   TCallback extends ChangeCallback<TElement, TValue> | undefined
 >(controlledValue: TValue | undefined, defaultUncontrolledValue: TValue | undefined, onChange?: TCallback) {
   const [value, setValue] = React.useState<TValue | undefined>(defaultUncontrolledValue);
-  const isControlled = useConst<boolean>(!!controlledValue);
+  const isControlled = useConst<boolean>(controlledValue !== undefined);
 
   const setValueOrCallOnChange = React.useCallback(
     (newValue: TValue | undefined, ev?: React.FormEvent<TElement>) => {
