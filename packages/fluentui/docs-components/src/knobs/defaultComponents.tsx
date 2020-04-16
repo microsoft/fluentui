@@ -47,7 +47,7 @@ const KnobNumber: React.FunctionComponent<KnobNumberKnobComponentProps> = props 
       const newValue = parseInt(e.target.value, 10);
       const min = parseInt(props.min, 10);
       const max = parseInt(props.max, 10);
-      props.setValue(newValue < min ? props.min : newValue > max ? props.max : newValue);
+      props.setValue(newValue < min ? props.min : newValue > max ? props.max : newValue || props.min);
     }}
     min={props.min}
     max={props.max}
