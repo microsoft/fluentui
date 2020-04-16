@@ -54,14 +54,17 @@ export interface CarouselNavigationItemProps extends UIComponentProps, ChildrenC
   vertical?: boolean;
 }
 
+export const carouselNavigationItemClassName = 'ui-carousel__navigationitem';
+export const carouselNavigationItemSlotClassNames: CarouselNavigationItemSlotClassNames = {
+  indicator: `${carouselNavigationItemClassName}__indicator`,
+};
+
 class CarouselNavigationItem extends UIComponent<WithAsProp<CarouselNavigationItemProps>> {
   static displayName = 'CarouselNavigationItem';
 
-  static deprecated_className = 'ui-carousel__navigationitem';
+  static deprecated_className = carouselNavigationItemClassName;
 
-  static slotClassNames: CarouselNavigationItemSlotClassNames = {
-    indicator: `${CarouselNavigationItem.deprecated_className}__indicator`,
-  };
+  static slotClassNames = carouselNavigationItemSlotClassNames;
 
   static create: ShorthandFactory<CarouselNavigationItemProps>;
 
@@ -101,7 +104,7 @@ class CarouselNavigationItem extends UIComponent<WithAsProp<CarouselNavigationIt
       >
         {Box.create(indicator, {
           defaultProps: () => ({
-            className: CarouselNavigationItem.slotClassNames.indicator,
+            className: carouselNavigationItemSlotClassNames.indicator,
             styles: styles.indicator,
           }),
         })}
