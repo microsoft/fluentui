@@ -74,7 +74,7 @@ task('build:docs:component-info', () =>
   src(componentsSrc, { since: lastRun('build:docs:component-info'), cwd: paths.base(), cwdbase: true })
     .pipe(
       cache(gulpReactDocgen(paths.docs('tsconfig.json'), ['DOMAttributes', 'HTMLAttributes']), {
-        name: 'componentInfo-1',
+        name: 'componentInfo-2',
       }),
     )
     .pipe(dest(paths.docsSrc('componentInfo'), { cwd: paths.base() })),
