@@ -37,7 +37,7 @@ const ANIMATIONS: { [key: number]: string | undefined } = {
 };
 
 const getClassNames = classNamesFunction<ICalloutContentStyleProps, ICalloutContentStyles>({
-  disableCaching: true, // disabling caching becasue stylesProp.position mutates often
+  disableCaching: true, // disabling caching because stylesProp.position mutates often
 });
 
 const BEAK_ORIGIN_POSITION = { top: 0, left: 0 };
