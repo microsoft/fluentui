@@ -33,7 +33,7 @@ export function mergeComposeOptions(
 ): ComposePreparedOptions {
   return {
     className: inputOptions.className || parentOptions.className,
-    displayName: inputOptions.displayName,
+    displayName: inputOptions.displayName || parentOptions.displayName,
     displayNames: computeDisplayNames(inputOptions, parentOptions),
 
     mapPropsToStylesPropsChain: inputOptions.mapPropsToStylesProps
@@ -41,7 +41,7 @@ export function mergeComposeOptions(
       : parentOptions.mapPropsToStylesPropsChain,
     render: typeof input === 'function' ? input : parentOptions.render,
 
-    handledProps: [...parentOptions.handledProps, ...(inputOptions.handledProps || ([] as never[]))],
+    handledProps: [...parentOptions.handledProps, ...((inputOptions.handledProps as never[]) || ([] as never[]))],
     overrideStyles: inputOptions.overrideStyles || false,
   };
 }

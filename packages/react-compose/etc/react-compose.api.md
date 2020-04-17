@@ -32,13 +32,14 @@ export type ComposeOptions<InputProps = {}, InputStylesProps = {}, ParentStylesP
     className?: string;
     displayName?: string;
     mapPropsToStylesProps?: (props: ParentStylesProps & InputProps) => InputStylesProps;
-    handledProps?: (keyof InputProps)[];
+    handledProps?: (keyof InputProps & 'as')[];
     overrideStyles?: boolean;
 };
 
 // @public (undocumented)
 export type ComposePreparedOptions<Props = {}> = {
     className: string;
+    displayName: string;
     displayNames: string[];
     mapPropsToStylesPropsChain: ((props: object) => object)[];
     render: ComposeRenderFunction;

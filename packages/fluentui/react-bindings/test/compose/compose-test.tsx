@@ -46,6 +46,7 @@ const TestProvider: React.FC<{ theme: ThemeInput }> = props => {
 type BaseComponentProps = { color?: string } & React.HTMLAttributes<HTMLButtonElement>;
 type BaseComponentStylesProps = { color: string | undefined; open: boolean };
 
+/* TODO: update to use compose() */
 const BaseComponent: React.FC<BaseComponentProps> = props => {
   const { color } = props;
 

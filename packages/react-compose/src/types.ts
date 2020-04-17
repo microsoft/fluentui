@@ -43,7 +43,7 @@ export type ComposeOptions<InputProps = {}, InputStylesProps = {}, ParentStylesP
 
   mapPropsToStylesProps?: (props: ParentStylesProps & InputProps) => InputStylesProps;
 
-  handledProps?: (keyof InputProps)[];
+  handledProps?: (keyof InputProps | 'as')[];
   overrideStyles?: boolean;
 };
 

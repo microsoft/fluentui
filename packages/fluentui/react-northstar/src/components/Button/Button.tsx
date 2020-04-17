@@ -254,6 +254,7 @@ const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
 
     handledProps: [
       'accessibility',
+      'as',
       'children',
       'circular',
       'className',
