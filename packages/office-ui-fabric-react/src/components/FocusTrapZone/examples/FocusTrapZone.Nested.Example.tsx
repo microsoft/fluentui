@@ -14,10 +14,9 @@ const getStackStyles = memoizeFunction(
 
 const fixedWidthToggleStyles: Partial<IToggleStyles> = { root: { width: 200 } };
 
-const FocusTrapComponent: React.FunctionComponent = props => {
+const FocusTrapComponent: React.FunctionComponent<React.PropsWithChildren<{ zoneNumber: number }>> = props => {
   const [isActive, { toggle: toggleIsActive }] = useBoolean(false);
   const { zoneNumber, children } = props;
-
   const onStringButtonClicked = (): void => {
     alert(`Button ${zoneNumber} clicked`);
   };

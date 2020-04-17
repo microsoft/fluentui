@@ -45,7 +45,7 @@ const onWrapDefaultLabelRenderer = (
 ): JSX.Element => {
   return (
     <>
-      <Stack horizontal verticalAlign="center" tokens={{ childrenGap: 6 }}>
+      <Stack horizontal verticalAlign="center" tokens={{ childrenGap: 8 }}>
         <span>{defaultRender(props)}</span>
         <Icon iconName="Globe" title="Globe" ariaLabel="Globe" styles={iconStyles} />
       </Stack>
@@ -53,41 +53,43 @@ const onWrapDefaultLabelRenderer = (
   );
 };
 
-export const TextFieldCustomRenderExample: React.FunctionComponent = () => {
+const CustomLabel = (props: ITextFieldProps): JSX.Element => {
   const [isCalloutVisible, { toggle: toggleIsCalloutVisible }] = useBoolean(false);
-  const onRenderLabel = (props: ITextFieldProps): JSX.Element => {
-    return (
-      <>
-        <Stack horizontal verticalAlign="center">
-          <span id={labelId}>{props.label}</span>
-          <IconButton
-            id={iconButtonId}
-            iconProps={{ iconName: 'Info' }}
-            title="Info"
-            ariaLabel="Info"
-            onClick={toggleIsCalloutVisible}
-            styles={iconButtonStyles}
-          />
-        </Stack>
-        {isCalloutVisible && (
-          <Callout
-            target={'#' + iconButtonId}
-            setInitialFocus
-            onDismiss={toggleIsCalloutVisible}
-            ariaDescribedBy={descriptionId}
-            role="alertdialog"
-          >
-            <Stack tokens={stackTokens} horizontalAlign="start" styles={labelCalloutStackStyles}>
-              <span id={descriptionId}>
-                The custom label includes an IconButton that displays this Callout on click.
-              </span>
-              <DefaultButton onClick={toggleIsCalloutVisible}>Close</DefaultButton>
-            </Stack>
-          </Callout>
-        )}
-      </>
-    );
-  };
+
+  return (
+    <>
+      <Stack horizontal verticalAlign="center" tokens={{ childrenGap: 4 }}>
+        <span id={labelId}>{props.label}</span>
+        <IconButton
+          id={iconButtonId}
+          iconProps={{ iconName: 'Info' }}
+          title="Info"
+          ariaLabel="Info"
+          onClick={toggleIsCalloutVisible}
+          styles={iconButtonStyles}
+        />
+      </Stack>
+      {isCalloutVisible && (
+        <Callout
+          target={'#' + iconButtonId}
+          setInitialFocus
+          onDismiss={toggleIsCalloutVisible}
+          ariaDescribedBy={descriptionId}
+          role="alertdialog"
+        >
+          <Stack tokens={stackTokens} horizontalAlign="start" styles={labelCalloutStackStyles}>
+            <span id={descriptionId}>The custom label includes an IconButton that displays this Callout on click.</span>
+            <DefaultButton onClick={toggleIsCalloutVisible}>Close</DefaultButton>
+          </Stack>
+        </Callout>
+      )}
+    </>
+  );
+};
+
+export const TextFieldCustomRenderExample: React.FunctionComponent = () => {
+  const onRenderLabel = (props: ITextFieldProps) => <CustomLabel {...props} />;
+
   return (
     <Stack tokens={stackTokens}>
       <TextField
@@ -96,9 +98,7 @@ export const TextFieldCustomRenderExample: React.FunctionComponent = () => {
         onRenderLabel={onRenderLabel}
         description="Click the (i) icon!"
       />
-
       <TextField label="Wrapping default label renderer" onRenderLabel={onWrapDefaultLabelRenderer} />
-
       <TextField
         label="Custom description rendering"
         description="A colorful description!"
