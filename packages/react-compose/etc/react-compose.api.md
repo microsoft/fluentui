@@ -32,7 +32,7 @@ export type ComposeOptions<InputProps = {}, InputStylesProps = {}, ParentStylesP
     className?: string;
     displayName?: string;
     mapPropsToStylesProps?: (props: ParentStylesProps & InputProps) => InputStylesProps;
-    handledProps?: (keyof InputProps & 'as')[];
+    handledProps?: (keyof InputProps | 'as')[];
     overrideStyles?: boolean;
 };
 
