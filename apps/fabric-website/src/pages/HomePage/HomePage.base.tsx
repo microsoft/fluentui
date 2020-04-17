@@ -17,7 +17,7 @@ import {
 } from 'office-ui-fabric-react';
 import { trackEvent, EventNames, getSiteArea, MarkdownHeader } from '@uifabric/example-app-base/lib/index2';
 import { platforms } from '../../SiteDefinition/SiteDefinition.platforms';
-import { AndroidLogo, AppleLogo, WebLogo, WindowsLogo, MacLogo } from '../../utilities/index';
+import { AndroidLogoColor, AppleLogoColor, WebLogoColor, WindowsLogoColor, MacLogoColor } from '../../utilities/index';
 import { IHomePageProps, IHomePageStyles, IHomePageStyleProps } from './HomePage.types';
 import { monoFont } from './HomePage.styles';
 const reactPackageData = require<any>('office-ui-fabric-react/package.json');
@@ -26,11 +26,11 @@ const getClassNames = classNamesFunction<IHomePageStyleProps, IHomePageStyles>()
 
 registerIcons({
   icons: {
-    'AndroidLogo-homePage': AndroidLogo({ iconColor: 'white', iconSize: 64 }),
-    'AppleLogo-homePage': AppleLogo({ iconColor: 'white', iconSize: 64 }),
-    'WebLogo-homePage': WebLogo({ iconColor: 'white', iconSize: 64 }),
-    'WindowsLogo-homePage': WindowsLogo({ iconColor: 'white', iconSize: 64 }),
-    'MacLogo-homePage': MacLogo({ iconColor: 'white', iconSize: 64 }),
+    'AndroidLogo-homePage': AndroidLogoColor({ iconSize: 64 }),
+    'AppleLogo-homePage': AppleLogoColor({ iconSize: 64 }),
+    'WebLogo-homePage': WebLogoColor({ iconSize: 64 }),
+    'WindowsLogo-homePage': WindowsLogoColor({ iconSize: 64 }),
+    'MacLogo-homePage': MacLogoColor({ iconSize: 64 }),
   },
 });
 
