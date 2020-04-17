@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Add \"useRenderFunction\" react hook to generate a parameterless render function based on whether a custom render function was provided.",
+  "packageName": "@uifabric/react-hooks",
+  "email": "miclo@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-04-17T20:48:50.304Z"
+}
