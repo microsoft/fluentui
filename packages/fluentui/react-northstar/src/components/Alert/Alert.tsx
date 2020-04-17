@@ -126,18 +126,20 @@ class Alert extends AutoControlledComponent<WithAsProp<AlertProps>, AlertState> 
     danger: PropTypes.bool,
     defaultVisible: PropTypes.bool,
     dismissible: PropTypes.bool,
-    dismissAction: customPropTypes.itemShorthand,
+    dismissAction: customPropTypes.shorthandAllowingChildren,
     info: PropTypes.bool,
     onVisibleChange: PropTypes.func,
     onFocus: PropTypes.func,
     success: PropTypes.bool,
     visible: PropTypes.bool,
     warning: PropTypes.bool,
-    body: customPropTypes.itemShorthand,
+    body: customPropTypes.shorthandAllowingChildren,
   };
 
   static defaultProps = {
     accessibility: alertBehavior,
+    dismissAction: {},
+    body: {},
   };
 
   static DismissAction = AlertDismissAction;
@@ -168,11 +170,11 @@ class Alert extends AutoControlledComponent<WithAsProp<AlertProps>, AlertState> 
     const {
       actions,
       dismissible,
-      dismissAction = {},
+      dismissAction,
       content,
       icon,
       header,
-      body = {},
+      body,
       danger,
       warning,
       info,
