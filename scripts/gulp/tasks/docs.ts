@@ -72,13 +72,17 @@ const schemaSrc = `${paths.posix.packages('ability-attributes')}/schema.json`;
 
 task('build:docs:component-info', () =>
   src(componentsSrc, { since: lastRun('build:docs:component-info'), cwd: paths.base(), cwdbase: true })
-    .pipe(cache(gulpReactDocgen(['DOMAttributes', 'HTMLAttributes']), { name: 'componentInfo-1' }))
+    .pipe(
+      cache(gulpReactDocgen(paths.docs('tsconfig.json'), ['DOMAttributes', 'HTMLAttributes']), {
+        name: 'componentInfo-2',
+      }),
+    )
     .pipe(dest(paths.docsSrc('componentInfo'), { cwd: paths.base() })),
 );
 
 task('build:docs:component-menu', () =>
   src(componentsSrc, { since: lastRun('build:docs:component-menu') })
-    .pipe(gulpComponentMenu())
+    .pipe(gulpComponentMenu(paths.docs('tsconfig.json')))
     .pipe(dest(paths.docsSrc())),
 );
 
