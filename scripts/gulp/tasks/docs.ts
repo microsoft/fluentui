@@ -55,8 +55,6 @@ task('clean:docs', () =>
   ),
 );
 
-task('clean:docs:component-info', () => del([paths.docsSrc('componentInfo')], { force: true }));
-
 // ----------------------------------------
 // Build
 // ----------------------------------------
