@@ -1,4 +1,4 @@
-import * as icons from '@fluentui/react-icons';
+import * as icons from './index';
 import * as fs from 'fs';
 import * as path from 'path';
 import * as ReactIs from 'react-is';
