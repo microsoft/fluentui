@@ -2,6 +2,33 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 17 Apr 2020 12:34:08 GMT",
+      "tag": "office-ui-fabric-react_v7.107.0",
+      "version": "7.107.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Allow forwarding of FocusTrapZone props in TeachingBubble",
+            "author": "mhensler@microsoft.com",
+            "commit": "87a6a7e812631df5c762c61a2cd85090925a2b2e",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Pivot: componentRef now resolves correctly, unnecessary DOM element removed.",
+            "author": "dzearing@microsoft.com",
+            "commit": "c2fe1a53eb679b1f61d0bad35c06167ff6a91b9e",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "added set of svg icons",
+            "author": "mnajdova@gmail.com",
+            "commit": "d8a2780c9e811136241a0b21985e379f0a29e23e",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 16 Apr 2020 12:37:31 GMT",
       "tag": "office-ui-fabric-react_v7.106.3",
       "version": "7.106.3",

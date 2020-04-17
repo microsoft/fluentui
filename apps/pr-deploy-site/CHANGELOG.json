@@ -2,6 +2,21 @@
   "name": "@uifabric/pr-deploy-site",
   "entries": [
     {
+      "date": "Fri, 17 Apr 2020 12:34:08 GMT",
+      "tag": "@uifabric/pr-deploy-site_v7.0.45",
+      "version": "7.0.45",
+      "comments": {
+        "patch": [
+          {
+            "comment": "removing more references to wrong filetype icons from a deprecated folder",
+            "author": "caperez@microsoft.com",
+            "commit": "c847450db51500f13847542b8f4c89dd277bb2bb",
+            "package": "@uifabric/pr-deploy-site"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 16 Apr 2020 12:37:31 GMT",
       "tag": "@uifabric/pr-deploy-site_v7.0.45",
       "version": "7.0.45",

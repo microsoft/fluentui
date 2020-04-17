@@ -1,8 +1,17 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Thu, 16 Apr 2020 04:01:45 GMT and should not be manually modified.
+This log was last generated on Fri, 17 Apr 2020 12:34:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.11.0](https://github.com/microsoft/fluentui/tree/@uifabric/merge-styles_v7.11.0)
+
+Fri, 17 Apr 2020 12:34:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/merge-styles_v7.10.0..@uifabric/merge-styles_v7.11.0)
+
+### Minor changes
+
+- add WebkitTextSizeAdjust and textSizeAdjust as a valid CSS property ([PR #12751](https://github.com/microsoft/fluentui/pull/12751) by sochhay@microsoft.com)
 
 ## [7.10.0](https://github.com/microsoft/fluentui/tree/@uifabric/merge-styles_v7.10.0)
 
