@@ -70,24 +70,22 @@ let columnCount: number;
 let columnWidth: number;
 let rowHeight: number;
 
-const onRenderCell = (item: any, index: number | undefined): JSX.Element => {
-  return (
-    <div
-      className={classNames.listGridExampleTile}
-      data-is-focusable={true}
-      style={{
-        width: 100 / columnCount + '%',
-      }}
-    >
-      <div className={classNames.listGridExampleSizer}>
-        <div className={classNames.listGridExamplePadder}>
-          <img src={item.thumbnail} className={classNames.listGridExampleImage} />
-          <span className={classNames.listGridExampleLabel}>{`item ${index}`}</span>
-        </div>
+const onRenderCell = (item: any, index: number | undefined): JSX.Element => (
+  <div
+    className={classNames.listGridExampleTile}
+    data-is-focusable={true}
+    style={{
+      width: 100 / columnCount + '%',
+    }}
+  >
+    <div className={classNames.listGridExampleSizer}>
+      <div className={classNames.listGridExamplePadder}>
+        <img src={item.thumbnail} className={classNames.listGridExampleImage} />
+        <span className={classNames.listGridExampleLabel}>{`item ${index}`}</span>
       </div>
     </div>
-  );
-};
+  </div>
+);
 
 const getItemCountForPage = (itemIndex: number, surfaceRect: IRectangle): number => {
   if (itemIndex === 0) {
@@ -102,17 +100,15 @@ const getPageHeight = (): number => {
   return rowHeight * ROWS_PER_PAGE;
 };
 
-export const ListGridExample: React.FunctionComponent = () => {
-  return (
-    <FocusZone>
-      <List
-        className={classNames.listGridExample}
-        items={items}
-        getItemCountForPage={getItemCountForPage}
-        getPageHeight={getPageHeight}
-        renderedWindowsAhead={4}
-        onRenderCell={onRenderCell}
-      />
-    </FocusZone>
-  );
-};
+export const ListGridExample: React.FunctionComponent = () => (
+  <FocusZone>
+    <List
+      className={classNames.listGridExample}
+      items={items}
+      getItemCountForPage={getItemCountForPage}
+      getPageHeight={getPageHeight}
+      renderedWindowsAhead={4}
+      onRenderCell={onRenderCell}
+    />
+  </FocusZone>
+);
