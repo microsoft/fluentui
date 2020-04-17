@@ -116,7 +116,7 @@ export const KeytipsOverflowExample: React.FunctionComponent = () => {
   return (
     <div>
       <p>
-        Keytips in an overflow well have a special behavior. When a keytip goes into the overflow button menu, it will
+        Keytips in an overflow will have a special behavior. When a keytip goes into the overflow button menu, it will
         also register a 'persisted' keytip that can be accessed from the top level as a shortcut. A shortcut to a normal
         button item will trigger that button. A shortcut to a menu button item will open the overflow button menu and
         then open that item's menu as well. In this example triggering 'T' and 'Y' will show off this functionality (see

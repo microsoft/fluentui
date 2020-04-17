@@ -33,72 +33,45 @@ const facepileProps: IFacepileProps = {
   ariaLabel: 'Example list of Facepile personas',
 };
 
-export interface IFacepileOverflowExampleState {
-  displayedPersonas: any;
-  overflowButtonType: OverflowButtonType;
-}
+export const FacepileOverflowExample: React.FunctionComponent = () => {
+  const [displayedPersonas, setDisplayedPersonas] = React.useState(5);
+  const [overflowButtonType, setOverflowButtonType] = React.useState(OverflowButtonType.none);
 
-export class FacepileOverflowExample extends React.Component<{}, IFacepileOverflowExampleState> {
-  constructor(props: {}) {
-    super(props);
+  const onChangeType = (event: React.FormEvent<HTMLDivElement>, value: IDropdownOption): void => {
+    setOverflowButtonType(value.key as OverflowButtonType);
+  };
 
-    this.state = {
-      displayedPersonas: 5,
-      overflowButtonType: OverflowButtonType.none,
-    };
-  }
+  const onChangePersonaNumber = (value: number): void => {
+    setDisplayedPersonas(value);
+  };
 
-  public render(): JSX.Element {
-    const { displayedPersonas, overflowButtonType } = this.state;
-    facepileProps.maxDisplayablePersonas = displayedPersonas;
-    facepileProps.overflowButtonType = overflowButtonType;
-
-    return (
-      <div className={styles.container}>
-        <Facepile {...facepileProps} />
-        <div className={styles.control}>
-          <Slider
-            label="Number of Personas:"
-            className={styles.slider}
-            min={1}
-            max={5}
-            step={1}
-            showValue={true}
-            value={this.state.displayedPersonas}
-            onChange={this._onChangePersonaNumber}
-          />
-          <Dropdown
-            label="Overflow Button Type:"
-            className={styles.dropdown}
-            selectedKey={this.state.overflowButtonType}
-            options={[
-              { key: OverflowButtonType.none, text: OverflowButtonType[OverflowButtonType.none] },
-              { key: OverflowButtonType.descriptive, text: OverflowButtonType[OverflowButtonType.descriptive] },
-              { key: OverflowButtonType.downArrow, text: OverflowButtonType[OverflowButtonType.downArrow] },
-              { key: OverflowButtonType.more, text: OverflowButtonType[OverflowButtonType.more] },
-            ]}
-            onChange={this._onChangeType}
-          />
-        </div>
+  return (
+    <div className={styles.container}>
+      <Facepile {...facepileProps} />
+      <div className={styles.control}>
+        <Slider
+          label="Number of Personas:"
+          className={styles.slider}
+          min={1}
+          max={5}
+          step={1}
+          showValue
+          value={displayedPersonas}
+          onChange={onChangePersonaNumber}
+        />
+        <Dropdown
+          label="Overflow Button Type:"
+          className={styles.dropdown}
+          selectedKey={overflowButtonType}
+          options={[
+            { key: OverflowButtonType.none, text: OverflowButtonType[OverflowButtonType.none] },
+            { key: OverflowButtonType.descriptive, text: OverflowButtonType[OverflowButtonType.descriptive] },
+            { key: OverflowButtonType.downArrow, text: OverflowButtonType[OverflowButtonType.downArrow] },
+            { key: OverflowButtonType.more, text: OverflowButtonType[OverflowButtonType.more] },
+          ]}
+          onChange={onChangeType}
+        />
       </div>
-    );
-  }
-
-  private _onChangePersonaNumber = (value: number): void => {
-    this.setState(
-      (prevState: IFacepileOverflowExampleState): IFacepileOverflowExampleState => {
-        prevState.displayedPersonas = value;
-        return prevState;
-      },
-    );
-  };
-
-  private _onChangeType = (event: React.FormEvent<HTMLDivElement>, value: IDropdownOption): void => {
-    this.setState(
-      (prevState: IFacepileOverflowExampleState): IFacepileOverflowExampleState => {
-        prevState.overflowButtonType = value.key as OverflowButtonType;
-        return prevState;
-      },
-    );
-  };
-}
+    </div>
+  );
+};

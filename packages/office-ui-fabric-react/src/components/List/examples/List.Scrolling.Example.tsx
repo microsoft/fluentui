@@ -81,7 +81,7 @@ export const ListScrollingExample: React.FunctionComponent = (props: IListScroll
   const [selectedIndex, setSelectedIndex] = React.useState(0);
   const [scrollToMode, setScrollToMode] = React.useState(ScrollToMode.auto);
   const [showItemIndexInView, { toggle: toggleShowItemIndexInView }] = useBoolean(false);
-
+  const list: List<IExampleItem>;
   const items = props.items || createListItems(5000);
 
   //   private _scroll = (index: number, scrollToMode: ScrollToMode): void => {

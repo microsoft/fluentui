@@ -6,7 +6,7 @@ export const KeytipsDynamicExample: React.FunctionComponent = () => {
   const startSequence = currButton === 'Button 1' ? 'gg1' : 'gg2';
 
   const updateButton = (button: string) => {
-    console.log('hi');
+    setCurrButton(button);
   };
 
   return (
@@ -20,7 +20,7 @@ export const KeytipsDynamicExample: React.FunctionComponent = () => {
       </p>
       <DefaultButton
         text="Button 1"
-        onClick={updateButton('Button 1')}
+        onClick={setCurrButton('Button 1')}
         keytipProps={{
           content: 'GG1',
           keySequences: ['gg1'],
@@ -29,7 +29,7 @@ export const KeytipsDynamicExample: React.FunctionComponent = () => {
       />
       <DefaultButton
         text="Button 2"
-        onClick={updateButton('Button 2')}
+        onClick={setCurrButton('Button 2')}
         keytipProps={{
           content: 'GG2',
           keySequences: ['gg2'],
