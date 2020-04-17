@@ -168,7 +168,7 @@ class Alert extends AutoControlledComponent<WithAsProp<AlertProps>, AlertState> 
     const {
       actions,
       dismissible,
-      dismissAction,
+      dismissAction = {},
       content,
       icon,
       header,
