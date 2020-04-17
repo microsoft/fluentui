@@ -85,7 +85,7 @@ const initialOverflowItems = [
 
 export const KeytipsOverflowExample: React.FunctionComponent = () => {
   const [items, setItems] = React.useState(initialItems);
-  const [overflowItems, setOverflowItems] = React.useState(initialOverflowItems);
+  const [overflowItems, setOverflowItems] = React.useState<typeof initialItems>(initialOverflowItems);
 
   const onRenderItem = (item: IOverflowSetItemProps): JSX.Element => (
     <CommandBarButton role="menuitem" {...item} styles={commandBarButtonStyles} menuProps={item.subMenuProps}>

@@ -4,10 +4,7 @@ import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 export const KeytipsDynamicExample: React.FunctionComponent = () => {
   const [currButton, setCurrButton] = React.useState('Button 1');
   const startSequence = currButton === 'Button 1' ? 'gg1' : 'gg2';
-
-  const updateButton = (button: string) => {
-    setCurrButton(button);
-  };
+  const onClick = (ev: React.MouseEvent<{}>) => setCurrButton((ev.target as Element).id);
 
   return (
     <div>
@@ -19,8 +16,9 @@ export const KeytipsDynamicExample: React.FunctionComponent = () => {
         true` in their keytip props
       </p>
       <DefaultButton
+        id="Button 1"
         text="Button 1"
-        onClick={setCurrButton('Button 1')}
+        onClick={onClick}
         keytipProps={{
           content: 'GG1',
           keySequences: ['gg1'],
@@ -28,8 +26,9 @@ export const KeytipsDynamicExample: React.FunctionComponent = () => {
         }}
       />
       <DefaultButton
+        id="Button 2"
         text="Button 2"
-        onClick={setCurrButton('Button 2')}
+        onClick={onClick}
         keytipProps={{
           content: 'GG2',
           keySequences: ['gg2'],
