@@ -8,9 +8,12 @@ import { BoldIcon, ItalicIcon } from '@fluentui/react-icons-northstar';
 
 type BaseComponentProps = { color?: string } & React.HTMLAttributes<HTMLButtonElement>;
 
+const boldButtonId = 'item1';
+const italicButtonId = 'item2';
+
 const BaseComponent: React.FC<BaseComponentProps> = props => {
   const [bold, setBold] = React.useState(false);
-  const [italic, setItalic] = React.useState(false);
+  const [italic, setItalic] = React.useState(true);
 
   const getItems = () => [
     {
@@ -19,7 +22,7 @@ const BaseComponent: React.FC<BaseComponentProps> = props => {
       icon: <BoldIcon {...{ outline: true }} />,
       title: 'Toggle bold',
       onClick: () => setBold(!bold),
-      id: 'item1',
+      id: boldButtonId,
       key: 'toolbar-item-1',
     },
     {
@@ -27,8 +30,8 @@ const BaseComponent: React.FC<BaseComponentProps> = props => {
       active: italic,
       icon: <ItalicIcon {...{ outline: true }} />,
       title: 'Toggle italic',
-      onClick: () => setItalic(italic),
-      id: 'item2',
+      onClick: () => setItalic(!italic),
+      id: italicButtonId,
       key: 'toolbar-item-2',
     },
   ];
@@ -46,11 +49,16 @@ describe('Toolbar', () => {
     it('renders children', () => {
       const wrapper = mountWithProvider(<BaseComponent />);
 
-      const toolbarButton = findIntrinsicElement(wrapper, `#item1`);
-      expect(getRenderedAttribute(toolbarButton, 'aria-pressed', '')).toBe('false');
+      const boldToolbarButton = findIntrinsicElement(wrapper, `#${boldButtonId}`);
+      const italicToolbarButton = findIntrinsicElement(wrapper, `#${italicButtonId}`);
+      expect(getRenderedAttribute(boldToolbarButton, 'aria-pressed', '')).toBe('false');
+      expect(getRenderedAttribute(italicToolbarButton, 'aria-pressed', '')).toBe('true');
 
-      toolbarButton.simulate('click');
-      expect(getRenderedAttribute(toolbarButton, 'aria-pressed', '')).toBe('true');
+      boldToolbarButton.simulate('click');
+      italicToolbarButton.simulate('click');
+
+      expect(getRenderedAttribute(boldToolbarButton, 'aria-pressed', '')).toBe('true');
+      expect(getRenderedAttribute(italicToolbarButton, 'aria-pressed', '')).toBe('false');
     });
   });
 });
