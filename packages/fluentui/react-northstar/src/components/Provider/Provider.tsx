@@ -86,6 +86,8 @@ const renderStaticStyles = (renderer: Renderer, theme: ThemeInput, siteVariables
   });
 };
 
+export const providerClassName = 'ui-provider';
+
 /**
  * The Provider passes the CSS-in-JS renderer, theme styles and other settings to Fluent UI components.
  */
@@ -132,7 +134,7 @@ const Provider: React.FC<WithAsProp<ProviderProps>> & {
   }
 
   const { classes } = unstable_getStyles({
-    className: Provider.deprecated_className,
+    className: providerClassName,
     displayNames: [Provider.displayName],
     props: {
       className,
@@ -196,7 +198,7 @@ const Provider: React.FC<WithAsProp<ProviderProps>> & {
   );
 };
 
-Provider.deprecated_className = 'ui-provider';
+Provider.deprecated_className = providerClassName;
 Provider.displayName = 'Provider';
 
 Provider.defaultProps = {

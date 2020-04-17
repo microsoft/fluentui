@@ -30,7 +30,7 @@ const getAvailableBehaviors = (accessibilityProp: ComponentProp): BehaviorInfo[]
     }));
 };
 
-const getComponentInfo = (filepath: string, ignoredParentInterfaces: string[]): ComponentInfo => {
+const getComponentInfo = (tsConfigPath: string, filepath: string, ignoredParentInterfaces: string[]): ComponentInfo => {
   const absPath = path.resolve(process.cwd(), filepath);
 
   const dir = path.dirname(absPath);
@@ -42,7 +42,7 @@ const getComponentInfo = (filepath: string, ignoredParentInterfaces: string[]): 
   // "element" for "src/elements/Button/Button.js"
   const componentType = path.basename(path.dirname(dir)).replace(/s$/, '') as ComponentInfo['type'];
 
-  const components = docgen.withDefaultConfig().parse(absPath);
+  const components = docgen.withCustomConfig(tsConfigPath, {}).parse(absPath);
 
   if (!components.length) {
     throw new Error(`Could not find a component definition in "${filepath}".`);

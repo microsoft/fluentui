@@ -9,6 +9,7 @@ interface AttachmentBodyOwnProps {}
 export interface AttachmentBodyProps extends AttachmentBodyOwnProps, WithAsProp<BoxProps> {}
 
 export type AttachmentBodyStylesProps = never;
+export const attachmentBodyClassName = 'ui-attachment__body';
 
 /**
  * An AttachmentBody provides a slot for header and description in the Attachment.
@@ -16,7 +17,7 @@ export type AttachmentBodyStylesProps = never;
 const AttachmentBody = compose<AttachmentBodyOwnProps, AttachmentBodyStylesProps, WithAsProp<BoxProps>, BoxStylesProps>(
   Box,
   {
-    className: 'ui-attachment__body',
+    className: attachmentBodyClassName,
     displayName: 'AttachmentBody',
   },
 ) as React.FC<AttachmentBodyProps> & { create?: ShorthandFactory<AttachmentBodyProps>; deprecated_className: string };

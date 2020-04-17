@@ -1,6 +1,17 @@
 # Change Log - @uifabric/test-utilities
 
-This log was last generated on Wed, 25 Mar 2020 12:30:04 GMT and should not be manually modified.
+This log was last generated on Thu, 16 Apr 2020 04:01:45 GMT and should not be manually modified.
+
+<!-- Start content -->
+
+## [7.0.17](https://github.com/microsoft/fluentui/tree/@uifabric/test-utilities_v7.0.17)
+
+Thu, 16 Apr 2020 04:01:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/test-utilities_v7.0.16..@uifabric/test-utilities_v7.0.17)
+
+### Patches
+
+- Readme: Fabric=>Fluent wording updates ([PR #12508](https://github.com/microsoft/fluentui/pull/12508) by elcraig@microsoft.com)
 
 ## 7.0.15
 Wed, 25 Mar 2020 12:30:04 GMT
@@ -90,4 +101,3 @@ Fri, 09 Nov 2018 13:32:57 GMT
 ### Patches
 
 - Publishing bits.
-

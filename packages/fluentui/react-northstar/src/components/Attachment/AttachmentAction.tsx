@@ -10,6 +10,7 @@ interface AttachmentActionOwnProps {}
 export interface AttachmentActionProps extends AttachmentActionOwnProps, WithAsProp<ButtonProps> {}
 
 export type AttachmentActionStylesProps = never;
+export const attachmentActionClassName = 'ui-attachment__action';
 
 /**
  * An AttachmentAction provides a slot for actions in the Attachment.
@@ -20,7 +21,7 @@ const AttachmentAction = compose<
   WithAsProp<ButtonProps>,
   ButtonStylesProps
 >(Button, {
-  className: 'ui-attachment__action',
+  className: attachmentActionClassName,
   displayName: 'AttachmentAction',
 }) as React.FC<AttachmentActionProps> & {
   create?: ShorthandFactory<AttachmentActionProps>;

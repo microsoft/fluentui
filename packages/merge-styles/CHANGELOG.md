@@ -1,6 +1,31 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Mon, 30 Mar 2020 19:10:08 GMT and should not be manually modified.
+This log was last generated on Fri, 17 Apr 2020 12:34:08 GMT and should not be manually modified.
+
+<!-- Start content -->
+
+## [7.11.0](https://github.com/microsoft/fluentui/tree/@uifabric/merge-styles_v7.11.0)
+
+Fri, 17 Apr 2020 12:34:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/merge-styles_v7.10.0..@uifabric/merge-styles_v7.11.0)
+
+### Minor changes
+
+- add WebkitTextSizeAdjust and textSizeAdjust as a valid CSS property ([PR #12751](https://github.com/microsoft/fluentui/pull/12751) by sochhay@microsoft.com)
+
+## [7.10.0](https://github.com/microsoft/fluentui/tree/@uifabric/merge-styles_v7.10.0)
+
+Thu, 16 Apr 2020 04:01:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/merge-styles_v7.8.11..@uifabric/merge-styles_v7.10.0)
+
+### Minor changes
+
+- Expose keytoclassnames to app, so it can be cached by the app in places like indexed db. ([PR #12651](https://github.com/microsoft/fluentui/pull/12651) by pingj@microsoft.com)
+
+### Patches
+
+- Readme: Fabric=>Fluent wording updates ([PR #12508](https://github.com/microsoft/fluentui/pull/12508) by elcraig@microsoft.com)
+- Fix typing for subComponentStyles in StyleSet ([PR #12630](https://github.com/microsoft/fluentui/pull/12630) by xgao@microsoft.com)
 
 ## 7.8.11
 Mon, 30 Mar 2020 19:10:08 GMT
@@ -720,4 +745,3 @@ Fri, 29 Sep 2017 10:20:24 GMT
 ### Minor changes
 
 - The `mergeStyleSets` method's type safety was not correct. Now with significantly better type safety.
-

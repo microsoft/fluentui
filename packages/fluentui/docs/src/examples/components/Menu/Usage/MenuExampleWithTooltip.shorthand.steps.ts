@@ -1,8 +1,8 @@
-import { Menu } from '@fluentui/react-northstar';
+import { menuClassName } from '@fluentui/react-northstar';
 
 const selectors = {
-  menu: `.${Menu.deprecated_className}`,
-  item: (itemIndex: number) => `.${Menu.deprecated_className} li:nth-child(${itemIndex}) a`,
+  menu: `.${menuClassName}`,
+  item: (itemIndex: number) => `.${menuClassName} li:nth-child(${itemIndex}) a`,
 };
 
 const config: ScreenerTestsConfig = {

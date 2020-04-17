@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "check for window before testing locadtion",
-  "packageName": "@uifabric/fabric-website",
-  "email": "micahgodbolt@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-04-14T20:55:47.218Z"
-}

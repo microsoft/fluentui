@@ -50,10 +50,12 @@ const handleVariablesOverrides = variables => predefinedProps => ({
   variables: mergeComponentVariables(variables, predefinedProps.variables),
 });
 
+export const tableRowClassName = 'ui-table__row';
+
 class TableRow extends UIComponent<WithAsProp<TableRowProps>> {
   static displayName = 'TableRow';
 
-  static deprecated_className = 'ui-table__row';
+  static deprecated_className = tableRowClassName;
 
   static create: ShorthandFactory<TableRowProps>;
 
