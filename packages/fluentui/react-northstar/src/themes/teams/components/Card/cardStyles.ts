@@ -9,7 +9,6 @@ const cardStyles: ComponentSlotStylesPrepared<CardStylesProps, CardVariables> = 
 
     const borderFocusStyles = getBorderFocusStyles({
       variables: siteVariables,
-      borderWidth: v.borderWidth,
       borderRadius: v.borderRadius,
     });
 
@@ -17,10 +16,19 @@ const cardStyles: ComponentSlotStylesPrepared<CardStylesProps, CardVariables> = 
       display: 'flex',
       flexDirection: 'column',
       position: 'relative',
-      overflow: 'hidden',
       padding: v.padding,
       width: v.width,
       height: v.height,
+      boxShadow: v.boxShadow,
+      ':hover': {
+        boxShadow: v.boxShadowHover,
+      },
+
+      borderWidth: v.borderWidth,
+      borderStyle: v.borderStyle,
+      borderColor: v.borderColor,
+      borderRadius: v.borderRadius,
+
       ...(p.size === 'small' && { width: v.sizeSmallWidth, height: v.sizeSmallHeight, padding: v.sizeSmallPadding }),
       ...(p.size === 'large' && { width: v.sizeLargeWidth, height: v.sizeLargeHeight, padding: v.sizeLargePadding }),
       ...(p.fluid && { width: v.fluidWidth, height: v.fluidHeight }),
@@ -28,10 +36,32 @@ const cardStyles: ComponentSlotStylesPrepared<CardStylesProps, CardVariables> = 
       ...(p.compact && { padding: v.compactPadding }),
       ...(p.centered && { alignItems: 'center' }),
 
-      borderWidth: v.borderWidth,
-      borderStyle: v.borderStyle,
-      borderColor: v.borderColor,
-      borderRadius: v.borderRadius,
+      ...(p.actionable && {
+        cursor: 'pointer',
+        ':focus-visible': {
+          boxShadow: v.boxShadowFocus,
+        },
+        ':active': {
+          boxShadow: v.boxShadowPressed,
+        },
+      }),
+
+      ...(p.disabled && {
+        cursor: 'not-allowed',
+        color: v.colorDisabled,
+        borderColor: v.borderColorDisabled,
+        boxShadow: v.boxShadowDisabled,
+        ':hover': {
+          boxShadow: v.boxShadowDisabled,
+        },
+        ':focus-visible': {
+          boxShadow: v.boxShadowDisabled,
+        },
+        ':active': {
+          boxShadow: v.boxShadowDisabled,
+        },
+      }),
+
       ...borderFocusStyles,
     };
   },

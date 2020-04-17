@@ -92,6 +92,10 @@ describe('useCompose', () => {
     expect(wrapper.find('button').prop('className')).toContain('color-red');
   });
 
+  it('"className" is added as statics on composed component', () => {
+    expect(ComposedComponent).toHaveProperty('deprecated_className', 'ui-composed');
+  });
+
   it('applies props on composed component', () => {
     const wrapper = mount(<ComposedComponent hidden color="red" visible />, { wrappingComponent: TestProvider });
 

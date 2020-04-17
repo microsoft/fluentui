@@ -27,12 +27,14 @@ export interface ReactionGroupProps extends UIComponentProps, ChildrenComponentP
   items?: ShorthandCollection<ReactionProps>;
 }
 
+export const reactionGroupClassName = 'ui-reactions';
+
 class ReactionGroup extends UIComponent<WithAsProp<ReactionGroupProps>> {
   static create: ShorthandFactory<ReactionGroupProps>;
 
   static displayName = 'ReactionGroup';
 
-  static className = 'ui-reactions';
+  static deprecated_className = reactionGroupClassName;
 
   static propTypes = {
     ...commonPropTypes.createCommon(),

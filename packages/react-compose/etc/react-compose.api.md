@@ -9,10 +9,12 @@ import * as React from 'react';
 // @public (undocumented)
 export function compose<InputProps, InputStylesProps, ParentProps, ParentStylesProps>(InputComponent: React.FunctionComponent<ParentProps> & {
     fluentComposeConfig?: ComposePreparedOptions;
+    handledProps?: (keyof ParentProps)[];
 }, composeOptions?: ComposeOptions<InputProps, InputStylesProps, ParentStylesProps>): ComposedComponent<InputProps, InputStylesProps, ParentProps, ParentStylesProps>;
 
 // @public (undocumented)
 export type ComposedComponent<InputProps = {}, InputStylesProps = {}, ParentProps = {}, ParentStylesProps = {}> = React.FunctionComponent<InputProps & ParentProps> & {
+    deprecated_className: string;
     fluentComposeConfig: ComposePreparedOptions<InputProps, InputStylesProps, ParentProps, ParentStylesProps>;
 };
 

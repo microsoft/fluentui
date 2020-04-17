@@ -1,5 +1,5 @@
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { default as Dropdown, DropdownProps, DropdownState } from '../../../../components/Dropdown/Dropdown';
+import { dropdownSlotClassNames, DropdownProps, DropdownState } from '../../../../components/Dropdown/Dropdown';
 import { DropdownVariables } from './dropdownVariables';
 import { pxToRem } from '../../../../utils';
 import getBorderFocusStyles from '../../getBorderFocusStyles';
@@ -130,7 +130,7 @@ const dropdownStyles: ComponentSlotStylesPrepared<DropdownPropsAndState, Dropdow
       },
     }),
 
-    [`& .${Dropdown.slotClassNames.triggerButton}`]: {
+    [`& .${dropdownSlotClassNames.triggerButton}`]: {
       ...(p.disabled && {
         color: siteVariables.colorScheme.default.foregroundDisabled,
       }),
@@ -209,12 +209,16 @@ const dropdownStyles: ComponentSlotStylesPrepared<DropdownPropsAndState, Dropdow
   }),
 
   loadingMessage: ({ variables: v }): ICSSInJSStyle => ({
-    backgroundColor: v.listItemBackgroundColor,
+    backgroundColor: v.loadingMessageBackgroundColor,
   }),
 
   noResultsMessage: ({ variables: v }): ICSSInJSStyle => ({
-    backgroundColor: v.listItemBackgroundColor,
+    backgroundColor: v.noResultsMessageBackgroundColor,
     fontWeight: 'bold',
+  }),
+
+  headerMessage: ({ variables: v }): ICSSInJSStyle => ({
+    backgroundColor: v.headerMessageBackgroundColor,
   }),
 
   toggleIndicator: ({ props: p, variables: v }) => ({

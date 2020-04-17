@@ -3,12 +3,14 @@ import { GroupedList, IGroup } from 'office-ui-fabric-react/lib/GroupedList';
 import { IColumn, DetailsRow } from 'office-ui-fabric-react/lib/DetailsList';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 import { Selection, SelectionMode, SelectionZone } from 'office-ui-fabric-react/lib/Selection';
-import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
+import { Toggle, IToggleStyles } from 'office-ui-fabric-react/lib/Toggle';
 
 import { createListItems, createGroups, IExampleItem } from '@uifabric/example-data';
 
 const groupCount = 3;
 const groupDepth = 3;
+
+const toggleStyles: Partial<IToggleStyles> = { root: { marginBottom: '20px' } };
 
 export interface IGroupedListExampleState {
   isCompactMode?: boolean;
@@ -55,7 +57,7 @@ export class GroupedListBasicExample extends React.Component<{}, IGroupedListExa
           onChange={this._onChangeCompactMode}
           onText="Compact"
           offText="Normal"
-          styles={{ root: { marginBottom: '20px' } }}
+          styles={toggleStyles}
         />
         <FocusZone>
           <SelectionZone selection={this._selection} selectionMode={SelectionMode.multiple}>

@@ -1,6 +1,6 @@
 ---
 name: Bug report
-about: Found a bug in Fabric? Please let us know.
+about: Found a bug in Fluent UI React? Please let us know.
 ---
 
 <!--

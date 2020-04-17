@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/pr-deploy-site",
-  "version": "7.0.44",
+  "version": "7.0.45",
   "description": "A site to be deployed as a static site to view what is built during PR",
   "main": "index.js",
   "private": true,
@@ -12,13 +12,12 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@uifabric/charting": "^1.1.4",
-    "@uifabric/date-time": "^7.8.53",
-    "@uifabric/experiments": "^7.23.0",
-    "@uifabric/fabric-website": "^7.10.21",
-    "@uifabric/fabric-website-resources": "^7.6.34",
-    "@uifabric/foundation-scenarios": "^0.102.56",
-    "office-ui-fabric-react": "^7.106.0",
+    "@uifabric/charting": "^2.0.0",
+    "@uifabric/date-time": "^7.8.58",
+    "@uifabric/experiments": "^7.23.5",
+    "@uifabric/fabric-website": "^7.10.26",
+    "@uifabric/fabric-website-resources": "^7.6.39",
+    "office-ui-fabric-react": "^7.107.0",
     "perf-test": "^7.0.0",
     "theming-designer": "^7.0.0",
     "todo-app": "^7.0.0"

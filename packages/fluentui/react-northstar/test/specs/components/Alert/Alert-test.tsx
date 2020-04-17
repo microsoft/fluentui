@@ -7,7 +7,7 @@ import {
   htmlIsAccessibilityCompliant,
 } from 'test/specs/commonTests';
 
-import Alert from 'src/components/Alert/Alert';
+import Alert, { alertSlotClassNames } from 'src/components/Alert/Alert';
 import Box from 'src/components/Box/Box';
 import AlertDismissAction from 'src/components/Alert/AlertDismissAction';
 
@@ -18,12 +18,12 @@ describe('Alert', () => {
   handlesAccessibility(Alert, { defaultRootRole: undefined, requiredProps: { content: 'test' } });
   handlesAccessibility(Alert, {
     defaultRootRole: undefined,
-    partSelector: `.${Alert.slotClassNames.body}`,
+    partSelector: `.${alertSlotClassNames.body}`,
     requiredProps: { content: 'test' },
   });
   handlesAccessibility(Alert, {
     defaultRootRole: 'alert',
-    partSelector: `.${Alert.slotClassNames.body}`,
+    partSelector: `.${alertSlotClassNames.body}`,
     requiredProps: { content: 'test', warning: true },
   });
 

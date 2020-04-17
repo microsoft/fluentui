@@ -14,6 +14,7 @@ export interface ButtonContentProps extends BoxProps {
 }
 
 export type ButtonContentStylesProps = Pick<ButtonContentProps, 'size'>;
+export const buttonContentClassName = 'ui-button__content';
 
 const ButtonContent: React.FC<WithAsProp<ButtonContentProps>> &
   FluentComponentStaticProps<ButtonContentProps> = props => {
@@ -24,7 +25,7 @@ const ButtonContent: React.FC<WithAsProp<ButtonContentProps>> &
   const { size, content, children, className, styles, variables, design } = props;
 
   const { classes } = useStyles<ButtonContentStylesProps>(ButtonContent.displayName, {
-    className: ButtonContent.className,
+    className: buttonContentClassName,
     mapPropsToStyles: () => ({ size }),
     mapPropsToInlineStyles: () => ({
       className,
@@ -54,7 +55,7 @@ const ButtonContent: React.FC<WithAsProp<ButtonContentProps>> &
 };
 
 ButtonContent.displayName = 'ButtonContent';
-ButtonContent.className = 'ui-button__content';
+ButtonContent.deprecated_className = buttonContentClassName;
 
 ButtonContent.propTypes = {
   ...commonPropTypes.createCommon(),

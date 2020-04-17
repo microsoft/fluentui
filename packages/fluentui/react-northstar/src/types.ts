@@ -25,7 +25,7 @@ export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 // ========================================================
 
 export type FluentComponentStaticProps<P = {}> = {
-  className: string;
+  deprecated_className: string;
   handledProps: (keyof P)[];
   create: ShorthandFactory<P>;
 };
@@ -57,23 +57,14 @@ export type PropsOf<T> = T extends React.Component<infer TProps>
 // Shorthand Factories
 // ========================================================
 
-export type ShorthandRenderFunction<P> = (Component: React.ReactType, props: P) => React.ReactElement<any>;
-
-export type ShorthandRenderer<P> = (
-  value: ShorthandValue<P>,
-  renderTree?: ShorthandRenderFunction<P>,
-) => React.ReactElement<any>;
-
-export type ShorthandRenderCallback<P> = (render: ShorthandRenderer<P>) => React.ReactElement<any>;
+export type ShorthandRenderFunction<P> = (Component: React.ElementType<P>, props: P) => React.ReactNode;
 
 // The ReactFragment here is replaced from the original typings with ReactNodeArray because of incorrect inheriting of the type when it is defined as {}
 type ReactNode = React.ReactChild | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined;
 
-export type ShorthandRenderProp<P> = (Component: React.ElementType, props: P) => React.ReactNode;
-
 export type ShorthandValue<P extends Props> =
   | ReactNode
-  | (Props<P> & { children?: P['children'] | ShorthandRenderProp<P> });
+  | (Props<P> & { children?: P['children'] | ShorthandRenderFunction<P> });
 export type ShorthandCollection<P, K = never> = ShorthandValue<P & { kind?: K }>[];
 
 // ========================================================

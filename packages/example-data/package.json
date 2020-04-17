@@ -1,7 +1,7 @@
 {
   "name": "@uifabric/example-data",
-  "version": "7.0.9",
-  "description": "Data generators for Office UI Fabric React examples.",
+  "version": "7.0.11",
+  "description": "Data generators for Fluent UI React examples.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -23,7 +23,7 @@
   "devDependencies": {
     "@types/webpack-env": "1.15.1",
     "@uifabric/build": "^7.0.0",
-    "@uifabric/tslint-rules": "^7.1.2"
+    "@uifabric/tslint-rules": "^7.1.3"
   },
   "dependencies": {
     "tslib": "^1.10.0"

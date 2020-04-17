@@ -2,8 +2,17 @@ import * as React from 'react';
 
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { FocusTrapZone } from 'office-ui-fabric-react/lib/FocusTrapZone';
-import { Stack } from 'office-ui-fabric-react/lib/Stack';
-import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
+import { Stack, IStackStyles } from 'office-ui-fabric-react/lib/Stack';
+import { Toggle, IToggleStyles } from 'office-ui-fabric-react/lib/Toggle';
+import { memoizeFunction } from 'office-ui-fabric-react/lib/Utilities';
+
+const getStackStyles = memoizeFunction(
+  (isActive: boolean): Partial<IStackStyles> => ({
+    root: { border: `2px solid ${isActive ? '#ababab' : 'transparent'}`, padding: 10 },
+  }),
+);
+
+const fixedWidthToggleStyles: Partial<IToggleStyles> = { root: { width: 200 } };
 
 interface IFocusTrapComponentProps {
   zoneNumber: number;
@@ -17,23 +26,15 @@ class FocusTrapComponent extends React.Component<IFocusTrapComponentProps> {
 
     return (
       <FocusTrapZone disabled={!isActive} forceFocusInsideTrap={false}>
-        <Stack
-          horizontalAlign="start"
-          tokens={{ childrenGap: 10 }}
-          styles={{
-            root: { border: `2px solid ${isActive ? '#ababab' : 'transparent'}`, padding: 10 },
-          }}
-        >
+        <Stack horizontalAlign="start" tokens={{ childrenGap: 10 }} styles={getStackStyles(isActive)}>
           <Toggle
             checked={isActive}
             onChange={this._onFocusTrapZoneToggleChanged}
             label={'Enable trap zone ' + zoneNumber}
             onText="On (toggle to exit)"
             offText="Off"
-            styles={{
-              // Set a width on these toggles in the horizontal zone to prevent jumping when enabled
-              root: zoneNumber >= 2 && zoneNumber <= 4 && { width: 200 },
-            }}
+            // Set a width on these toggles in the horizontal zone to prevent jumping when enabled
+            styles={zoneNumber >= 2 && zoneNumber <= 4 ? fixedWidthToggleStyles : undefined}
           />
           <DefaultButton onClick={this._onStringButtonClicked} text={`Zone ${zoneNumber} button`} />
           {children}

@@ -34,6 +34,7 @@ export interface StatusProps extends UIComponentProps {
 }
 
 export type StatusStylesProps = Pick<StatusProps, 'color' | 'size' | 'state'>;
+export const statusClassName = 'ui-status';
 
 const Status: React.FC<WithAsProp<StatusProps>> & FluentComponentStaticProps = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
@@ -42,7 +43,7 @@ const Status: React.FC<WithAsProp<StatusProps>> & FluentComponentStaticProps = p
 
   const { className, color, icon, size, state, design, styles, variables } = props;
   const { classes, styles: resolvedStyles } = useStyles<StatusStylesProps>(Status.displayName, {
-    className: Status.className,
+    className: statusClassName,
     mapPropsToStyles: () => ({
       color,
       size,
@@ -79,7 +80,7 @@ const Status: React.FC<WithAsProp<StatusProps>> & FluentComponentStaticProps = p
   return element;
 };
 
-Status.className = 'ui-status';
+Status.deprecated_className = statusClassName;
 Status.displayName = 'Status';
 Status.propTypes = {
   ...commonPropTypes.createCommon({

@@ -29,11 +29,6 @@ import {
 import TreeTitle, { TreeTitleProps } from './TreeTitle';
 import { hasSubtree, TreeContext } from './utils';
 
-export interface TreeItemSlotClassNames {
-  title: string;
-  subtree: string;
-}
-
 export interface TreeItemProps extends UIComponentProps, ChildrenComponentProps {
   /** Accessibility behavior if overridden by the user. */
   accessibility?: Accessibility<TreeItemBehaviorProps>;
@@ -89,9 +84,9 @@ export interface TreeItemProps extends UIComponentProps, ChildrenComponentProps 
 }
 
 export type TreeItemStylesProps = Required<Pick<TreeItemProps, 'level'>>;
+export const treeItemClassName = 'ui-tree__item';
 
-const TreeItem: React.FC<WithAsProp<TreeItemProps>> &
-  FluentComponentStaticProps<TreeItemProps> & { slotClassNames: TreeItemSlotClassNames } = props => {
+const TreeItem: React.FC<WithAsProp<TreeItemProps>> & FluentComponentStaticProps<TreeItemProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(TreeItem.displayName, context.telemetry);
   setStart();
@@ -154,7 +149,7 @@ const TreeItem: React.FC<WithAsProp<TreeItemProps>> &
         handleSiblingsExpand(e);
       },
     },
-    debugName: TreeItem.className,
+    debugName: TreeItem.displayName,
     mapPropsToBehavior: () => ({
       expanded,
       level,
@@ -165,7 +160,7 @@ const TreeItem: React.FC<WithAsProp<TreeItemProps>> &
     rtl: context.rtl,
   });
   const { classes } = useStyles<TreeItemStylesProps>(TreeItem.displayName, {
-    className: TreeItem.className,
+    className: treeItemClassName,
     mapPropsToStyles: () => ({
       level,
     }),
@@ -212,7 +207,6 @@ const TreeItem: React.FC<WithAsProp<TreeItemProps>> &
         : TreeTitle.create(title, {
             defaultProps: () =>
               getA11Props('title', {
-                className: TreeItem.slotClassNames.title,
                 expanded,
                 hasSubtree: hasSubtreeItem,
                 as: hasSubtreeItem ? 'span' : 'a',
@@ -232,13 +226,8 @@ const TreeItem: React.FC<WithAsProp<TreeItemProps>> &
   return elementWithRef;
 };
 
-TreeItem.className = 'ui-tree__item';
+TreeItem.deprecated_className = treeItemClassName;
 TreeItem.displayName = 'TreeItem';
-
-TreeItem.slotClassNames = {
-  title: `${TreeItem.className}__title`,
-  subtree: `${TreeItem.className}__subtree`,
-};
 
 TreeItem.propTypes = {
   ...commonPropTypes.createCommon({
