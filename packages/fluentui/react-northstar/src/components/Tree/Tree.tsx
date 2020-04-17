@@ -363,13 +363,19 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
     }, []);
   };
 
-  isIncompletedGroupChecked = (items: TreeItemProps[]) => {
+  isIncompletedGroupChecked = (item: TreeItemProps) => {
+    if (!item.selectableParent || !item.items) {
+      return false;
+    }
+
+    const { items } = item;
+
     const selectableItemIds = this.getAllSelectableChildrenId(items);
 
     return !this.isAllGroupChecked(items) && selectableItemIds.some(id => this.state.selectedItemIds.indexOf(id) > -1);
   };
 
-  isAllGroupChecked = (items: TreeItemProps[]) => {
+  isAllGroupChecked = (items: ShorthandCollection<TreeItemProps, never>) => {
     const selectableItemIds = this.getAllSelectableChildrenId(items);
     return selectableItemIds.every(id => this.state.selectedItemIds.indexOf(id) > -1);
   };
@@ -395,9 +401,8 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
         const itemId = item['id'];
         const isSubtree = hasSubtree(item);
         const isSubtreeExpanded = isSubtree && this.isActiveItem(itemId);
-        const isSelectedItem = this.isSelectedItem(itemId);
-        const incompleteChecked = item['items'] && this.isIncompletedGroupChecked(item['items']);
-        const selected = item['items'] && this.isAllGroupChecked(item['items']);
+        const isSelectedItem = this.isSelectedItem(item as TreeItemProps);
+        const incompleteChecked = this.isIncompletedGroupChecked(item as TreeItemProps);
         if (!this.itemsRef.has(itemId)) {
           this.itemsRef.set(itemId, React.createRef<HTMLElement>());
         }
@@ -417,7 +422,6 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
             contentRef: this.itemsRef.get(itemId),
             treeSize: items.length,
             incompleteChecked,
-            ...(isSubtree && { selected }),
           }),
         });
 
@@ -461,9 +465,14 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
     return activeItemIds.indexOf(id) > -1;
   };
 
-  isSelectedItem = (id: string): boolean => {
+  isSelectedItem = (item: TreeItemProps): boolean => {
     const { selectedItemIds } = this.state;
-    return selectedItemIds && selectedItemIds.indexOf(id) > -1;
+
+    if (item.selectableParent && item.items) {
+      return this.isAllGroupChecked(item.items);
+    }
+
+    return selectedItemIds && selectedItemIds.indexOf(item.id) > -1;
   };
 }
 
