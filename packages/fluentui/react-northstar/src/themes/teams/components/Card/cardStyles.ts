@@ -36,16 +36,15 @@ const cardStyles: ComponentSlotStylesPrepared<CardStylesProps, CardVariables> = 
       ...(p.compact && { padding: v.compactPadding }),
       ...(p.centered && { alignItems: 'center' }),
 
-      ...(p.actionable &&
-        !p.disabled && {
-          cursor: 'pointer',
-          ':focus-visible': {
-            boxShadow: v.boxShadowFocus,
-          },
-          ':active': {
-            boxShadow: v.boxShadowPressed,
-          },
-        }),
+      ...(p.actionable && {
+        cursor: 'pointer',
+        ':focus-visible': {
+          boxShadow: v.boxShadowFocus,
+        },
+        ':active': {
+          boxShadow: v.boxShadowPressed,
+        },
+      }),
 
       ...(p.disabled && {
         cursor: 'not-allowed',
@@ -53,6 +52,12 @@ const cardStyles: ComponentSlotStylesPrepared<CardStylesProps, CardVariables> = 
         borderColor: v.borderColorDisabled,
         boxShadow: v.boxShadowDisabled,
         ':hover': {
+          boxShadow: v.boxShadowDisabled,
+        },
+        ':focus-visible': {
+          boxShadow: v.boxShadowDisabled,
+        },
+        ':active': {
           boxShadow: v.boxShadowDisabled,
         },
       }),
