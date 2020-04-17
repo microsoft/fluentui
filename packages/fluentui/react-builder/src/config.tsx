@@ -126,7 +126,7 @@ export const DRAGGING_ELEMENTS = {
   // Embed: { props: { content: 'Embed' } as FUI.EmbedProps },
 
   Flex: {
-    props: { children: 'Flex' } as FUI.FlexProps,
+    props: {} as FUI.FlexProps,
   },
 
   // FocusZone: { props: { content: 'FocusZone' } as FUI.FocusZoneProps },
@@ -353,79 +353,6 @@ export const DRAGGING_ELEMENTS = {
   // Video: { props: { content: 'Video' } as FUI.VideoProps },
 };
 
-/**
- * Displays a knob with the ability to switch between data `types`.
- */
-export const MultiTypeKnob: React.FC<{
-  label: string;
-  types: ('boolean' | 'number' | 'string' | 'literal')[];
-  value: any;
-  onChange: (value: any) => void;
-  literalOptions: string[];
-}> = ({ label, types, value, onChange, literalOptions }) => {
-  const valueType = typeof value;
-  const defaultType = valueType !== 'undefined' ? valueType : types[0];
-  const [type, setType] = React.useState(defaultType);
-  const knob = knobs[type];
-  const handleChangeType = React.useCallback(
-    e => setType(e.target.value), // @ts-ignore
-    [],
-  );
-
-  console.log('MultiTypeKnob', { label, value, type, types });
-
-  return (
-    <div style={{ paddingBottom: '4px', marginBottom: '4px', opacity: knob ? 1 : 0.4 }}>
-      <div>
-        {type !== 'boolean' && <label>{label} </label>}
-        {types.length === 1 ? (
-          <code style={{ float: 'right' }}>{type}</code>
-        ) : (
-          types.map(t => (
-            <button key={t} onClick={() => handleChangeType(t)}>
-              {t}
-            </button>
-          ))
-        )}
-      </div>
-      {knob && knob({ options: literalOptions, value, onChange })}
-      {type === 'boolean' && <label> {label}</label>}
-    </div>
-  );
-};
-
-export const knobs = {
-  boolean: ({ value, onChange }) => (
-    <input type="checkbox" checked={!!value} onChange={e => onChange(!!e.target.checked)} />
-  ),
-
-  number: ({ value, onChange }) => (
-    <input
-      style={{ width: '100%' }}
-      type="number"
-      value={Number(value)}
-      onChange={e => onChange(Number(e.target.value))}
-    />
-  ),
-
-  string: ({ value, onChange }) => (
-    <input style={{ width: '100%' }} value={String(value)} onChange={e => onChange(e.target.value)} />
-  ),
-
-  literal: ({ options, value, onChange }) => (
-    <select onChange={e => onChange(e.target.value)} value={value}>
-      {options.map(opt => (
-        <option key={opt} value={opt}>
-          {opt}
-        </option>
-      ))}
-    </select>
-  ),
-
-  ReactText: (value, onChange) => knobs.string({ value, onChange }),
-  'React.ElementType': (value, onChange) => knobs.string({ value, onChange }),
-};
-
 export const resolveComponent = (displayName): React.ElementType => {
   return FUI[displayName] || FUIIcons[displayName] || displayName;
 };
@@ -501,18 +428,21 @@ export const resolveDrop = (source: JSONTreeElement, target: JSONTreeElement) =>
   if (!target.props.children) {
     target.props.children = [];
   }
-
-  // clean up props that are incompatible with element children
-  // delete target.props?.children;
-  delete target.props?.content;
+  if (target.props) {
+    // clean up props that are incompatible with element children
+    // delete target.props?.children;
+    delete target.props?.content;
+  }
 
   target.props.children = [...target.props.children, source];
 
   console.log('config:resolveDrop RESULT', JSON.parse(JSON.stringify({ source, target })));
 };
 
+// ///////////////////////////////////////////////////////////////////////////////////////
 // TODO: From here down probably does not belong in client config.
 //       It is internal implementation details.
+// ///////////////////////////////////////////////////////////////////////////////////////
 
 const resolveProps = (input, cb) => {
   const result = _.transform(input, (acc, value, key) => {
@@ -531,17 +461,24 @@ const resolveProps = (input, cb) => {
   return result;
 };
 
-export const renderJSONTreeToJSXElement = (tree: JSONTreeElement, cb = x => x) => {
+export const renderJSONTreeToJSXElement = (
+  tree: JSONTreeElement,
+  iterator: (jsonTreeElement: JSONTreeElement) => JSONTreeElement = x => x,
+) => {
   if (tree === null) {
     return null;
   }
 
   let { props = null } = tree;
 
-  props = resolveProps(props, cb);
-  const modifiedTree = cb({ ...tree, props });
+  props = resolveProps(props, iterator);
+  const modifiedTree = iterator({ ...tree, props });
 
-  return React.createElement(resolveComponent(modifiedTree.type), { ...modifiedTree.props, key: modifiedTree.uuid });
+  return React.createElement(resolveComponent(modifiedTree.type), {
+    ...modifiedTree.props,
+    key: modifiedTree.uuid,
+    'data-builder-id': modifiedTree.uuid,
+  });
 };
 
 /**
@@ -616,4 +553,77 @@ export const jsonTreeFindElement = (tree: JSONTreeElement, uuid: string | number
     }
   }
   return ret;
+};
+
+/**
+ * Displays a knob with the ability to switch between data `types`.
+ */
+export const MultiTypeKnob: React.FC<{
+  label: string;
+  types: ('boolean' | 'number' | 'string' | 'literal')[];
+  value: any;
+  onChange: (value: any) => void;
+  literalOptions: string[];
+}> = ({ label, types, value, onChange, literalOptions }) => {
+  const valueType = typeof value;
+  const defaultType = valueType !== 'undefined' ? valueType : types[0];
+  const [type, setType] = React.useState(defaultType);
+  const knob = knobs[type];
+  const handleChangeType = React.useCallback(
+    e => setType(e.target.value), // @ts-ignore
+    [],
+  );
+
+  // console.log('MultiTypeKnob', { label, value, type, types });
+
+  return (
+    <div style={{ paddingBottom: '4px', marginBottom: '4px', opacity: knob ? 1 : 0.4 }}>
+      <div>
+        {type !== 'boolean' && <label>{label} </label>}
+        {types.length === 1 ? (
+          <code style={{ float: 'right' }}>{type}</code>
+        ) : (
+          types.map(t => (
+            <button key={t} onClick={() => handleChangeType(t)}>
+              {t}
+            </button>
+          ))
+        )}
+      </div>
+      {knob && knob({ options: literalOptions, value, onChange })}
+      {type === 'boolean' && <label> {label}</label>}
+    </div>
+  );
+};
+
+export const knobs = {
+  boolean: ({ value, onChange }) => (
+    <input type="checkbox" checked={!!value} onChange={e => onChange(!!e.target.checked)} />
+  ),
+
+  number: ({ value, onChange }) => (
+    <input
+      style={{ width: '100%' }}
+      type="number"
+      value={Number(value)}
+      onChange={e => onChange(Number(e.target.value))}
+    />
+  ),
+
+  string: ({ value, onChange }) => (
+    <input style={{ width: '100%' }} value={String(value)} onChange={e => onChange(e.target.value)} />
+  ),
+
+  literal: ({ options, value, onChange }) => (
+    <select onChange={e => onChange(e.target.value)} value={value}>
+      {options.map(opt => (
+        <option key={opt} value={opt}>
+          {opt}
+        </option>
+      ))}
+    </select>
+  ),
+
+  ReactText: (value, onChange) => knobs.string({ value, onChange }),
+  'React.ElementType': (value, onChange) => knobs.string({ value, onChange }),
 };

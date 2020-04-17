@@ -101,7 +101,7 @@ class Designer extends React.Component<any, DesignerState> {
     },
   ];
 
-  getDefaultJSONTree = (): JSONTreeElement => ({ uuid: 'json-tree-root', type: 'div' });
+  getDefaultJSONTree = (): JSONTreeElement => ({ uuid: 'builder-root', type: 'div' });
 
   componentDidUpdate(prevProps: Readonly<any>, prevState: Readonly<DesignerState>, snapshot?: any): void {
     writeTreeToStore(this.state.jsonTree);
@@ -269,11 +269,11 @@ class Designer extends React.Component<any, DesignerState> {
                   }),
                   pointerEvents: 'none',
                   lineHeight: 1,
-                  border: `1px solid rgba(0, 0, 0, 0.5)`,
+                  border: `1px solid salmon`,
                   backgroundColor: 'rgba(255, 255, 255, 0.5)',
                   backgroundImage:
                     'url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAKUlEQVQoU2NkYGAwZkAD////RxdiYBwKCv///4/hGUZGkNNRAeMQUAgAtxof+nLDzyUAAAAASUVORK5CYII=")',
-                  backgroundBlendMode: 'softlight',
+                  backgroundBlendMode: 'soft-light',
                   zIndex: 999999,
                 }}
               >
@@ -299,7 +299,17 @@ class Designer extends React.Component<any, DesignerState> {
         />
 
         <div style={{ display: 'flex', flex: 1, minWidth: '10rem', overflow: 'hidden' }}>
-          <div style={{ overflowY: 'auto', minWidth: '12rem' }}>
+          <div
+            style={{
+              overflowY: 'auto',
+              minWidth: '12rem',
+              transition: 'opacity 0.2s',
+              ...(mode === 'use' && {
+                pointerEvents: 'none',
+                opacity: 0,
+              }),
+            }}
+          >
             <List onDragStart={this.handleDragStart} />
           </div>
 
@@ -319,35 +329,22 @@ class Designer extends React.Component<any, DesignerState> {
                 minHeight: `calc(100vh - ${HEADER_HEIGHT}`,
               }}
             >
-              <BrowserWindow showNavBar={false} style={{ flex: 1, margin: '1rem' }}>
+              <BrowserWindow
+                showNavBar={false}
+                style={{
+                  flex: 1,
+                  margin: '1rem',
+                  boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
+                  transition: 'box-shadow 0.5s',
+                }}
+              >
                 <Canvas
-                  renderJSONTreeElement={treeElement => {
-                    treeElement.props = treeElement.props || {};
-
-                    if (isExpanding) {
-                      treeElement.props.style = {
-                        ...treeElement?.props?.style,
-                        ...(treeElement.uuid === 'json-tree-root'
-                          ? { minHeight: '100vh', padding: '1rem' }
-                          : {
-                              padding: '0.5rem',
-                              margin: '0.5rem',
-                              outline: '1px dashed rgba(0, 0, 0, 0.25)',
-                              outlineOffset: '-1px',
-                            }),
-                      };
-                    } else {
-                      // TODO: Need to ensure when turning build mode off, styles are restored
-                      delete treeElement.props.style;
-                    }
-
-                    return treeElement;
-                  }}
                   {...(draggingElement && {
                     onMouseMove: this.handleDrag,
                     onMouseUp: this.handleCanvasMouseUp,
                   })}
-                  isSelecting={!!isSelecting || !!draggingElement}
+                  isExpanding={isExpanding}
+                  isSelecting={isSelecting || !!draggingElement}
                   onSelectComponent={this.handleSelectComponent}
                   onSelectorHover={this.handleSelectorHover}
                   jsonTree={jsonTree}
@@ -376,7 +373,18 @@ class Designer extends React.Component<any, DesignerState> {
           </div>
 
           {selectedComponentInfo && (
-            <div style={{ width: '20rem', padding: '1rem', overflow: 'auto' }}>
+            <div
+              style={{
+                width: '20rem',
+                padding: '1rem',
+                overflow: 'auto',
+                transition: 'opacity 0.2s',
+                ...(mode === 'use' && {
+                  pointerEvents: 'none',
+                  opacity: 0,
+                }),
+              }}
+            >
               <Description selectedJSONTreeElement={selectedJSONTreeElement} componentInfo={selectedComponentInfo} />
               {/* <Anatomy componentInfo={selectedComponentInfo} /> */}
               {selectedJSONTreeElement && (

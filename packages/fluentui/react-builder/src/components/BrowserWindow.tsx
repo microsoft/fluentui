@@ -35,10 +35,9 @@ const styles: {
     flexDirection: 'column',
     height: '800px',
     overflow: 'hidden',
-    // background: '#EEE',
+    background: '#FFF',
     border: '1px solid #CCC',
     borderRadius: '4px',
-    boxShadow: '0 0.5em 2em rgba(0, 0, 0, 0.2)',
     userSelect: 'none',
   },
 

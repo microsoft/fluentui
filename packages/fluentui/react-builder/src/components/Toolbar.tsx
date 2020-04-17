@@ -45,30 +45,35 @@ const Toolbar = ({
       FluentUI
       <div style={{ position: 'absolute', fontSize: '11px', opacity: 0.625 }}>Builder</div>
     </div>
-    <RadioGroup
-      checkedValue={mode}
-      onCheckedValueChange={(e, data: RadioGroupItemProps & { value: DesignerMode }) => {
-        onModeChange(data.value);
-      }}
-      items={[
-        {
-          key: 'build',
-          label: 'Build',
-          value: 'build',
-        },
-        {
-          key: 'design',
-          label: 'Design',
-          value: 'design',
-        },
-        {
-          key: 'use',
-          label: 'Test',
-          value: 'use',
-        },
-      ]}
-    />
-    &nbsp;
+    <div>
+      <strong>Mode:</strong>
+      &emsp;
+      <RadioGroup
+        style={{ display: 'inline-block' }}
+        checkedValue={mode}
+        onCheckedValueChange={(e, data: RadioGroupItemProps & { value: DesignerMode }) => {
+          onModeChange(data.value);
+        }}
+        items={[
+          {
+            key: 'build',
+            label: 'Build',
+            value: 'build',
+          },
+          {
+            key: 'design',
+            label: 'Design',
+            value: 'design',
+          },
+          {
+            key: 'use',
+            label: 'Use',
+            value: 'use',
+          },
+        ]}
+      />
+    </div>
+    &nbsp; &nbsp;
     <Button
       text
       icon={<OpenOutsideIcon />}

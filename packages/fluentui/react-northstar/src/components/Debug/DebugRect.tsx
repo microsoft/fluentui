@@ -2,6 +2,7 @@ import * as React from 'react';
 import FiberNavigator from './FiberNavigator';
 
 interface DebugRectProps {
+  showBackground?: boolean;
   showClassName?: boolean;
   showCropMarks?: boolean;
   showElement?: boolean;
@@ -18,8 +19,8 @@ class DebugRect extends React.Component<DebugRectProps> {
   selectorRef = React.createRef<HTMLPreElement>();
 
   static defaultProps = {
+    showBackground: true,
     showClassName: true,
-    showCropMarks: true,
     showElement: true,
     renderLabel: fiberNav => `<${fiberNav.name} />`,
   };
@@ -54,7 +55,7 @@ class DebugRect extends React.Component<DebugRectProps> {
   };
 
   render() {
-    const { fiberNav, showClassName, showCropMarks, showElement, renderLabel } = this.props;
+    const { fiberNav, showBackground, showClassName, showCropMarks, showElement, renderLabel } = this.props;
 
     if (!fiberNav) {
       return null;
@@ -69,8 +70,9 @@ class DebugRect extends React.Component<DebugRectProps> {
           position: 'fixed',
           padding: 0,
           margin: 0,
-          background: '#6495ed11',
-          border: '1px solid #6495edcc',
+          background: showBackground ? '#6495ed11' : 'none',
+          outline: '2px solid #6495edcc',
+          outlineOffset: '-1px',
           zIndex: 99999999,
           pointerEvents: 'none',
           userSelect: 'none',
@@ -86,6 +88,7 @@ class DebugRect extends React.Component<DebugRectProps> {
               left: 0,
               color: '#fff',
               background: '#6495ed',
+              zIndex: 1, // above crop marks
             }}
           >
             <span style={{ fontWeight: 'bold' }}>{renderLabel(fiberNav)}</span>

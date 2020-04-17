@@ -13,7 +13,9 @@ export type DebugSelectorProps = {
   onSelect?: (fiberNav: FiberNavigator) => void;
   onHover?: (fiberNav: FiberNavigator) => void;
   renderLabel?: (fiberNav: FiberNavigator) => string;
+  showBackground?: boolean;
   showClassName?: boolean;
+  showCropMarks?: boolean;
   showElement?: boolean;
   filter?: (fiberNav: FiberNavigator) => FiberNavigator | null;
   active?: boolean;
@@ -85,7 +87,15 @@ class DebugSelector extends React.Component<DebugSelectorProps, DebugSelectorSta
   };
 
   render() {
-    const { active, mountDocument, renderLabel, showClassName, showElement } = this.props;
+    const {
+      active,
+      mountDocument,
+      renderLabel,
+      showBackground,
+      showClassName,
+      showCropMarks,
+      showElement,
+    } = this.props;
     const { fiberNav } = this.state;
 
     return (
@@ -97,8 +107,10 @@ class DebugSelector extends React.Component<DebugSelectorProps, DebugSelectorSta
         )}
         {active && fiberNav && (
           <DebugRect
+            showBackground={showBackground}
             showClassName={showClassName}
             showElement={showElement}
+            showCropMarks={showCropMarks}
             fiberNav={fiberNav}
             renderLabel={renderLabel}
           />
