@@ -159,7 +159,6 @@ const ToolbarRadioGroup: React.FC<WithAsProp<ToolbarRadioGroupProps>> &
 };
 
 ToolbarRadioGroup.displayName = 'ToolbarRadioGroup';
-ToolbarRadioGroup.deprecated_className = toolbarRadioGroupClassName;
 
 ToolbarRadioGroup.propTypes = {
   ...commonPropTypes.createCommon(),

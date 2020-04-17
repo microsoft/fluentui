@@ -120,8 +120,6 @@ class Dialog extends AutoControlledComponent<WithAsProp<DialogProps>, DialogStat
   static displayName = 'Dialog';
   static deprecated_className = dialogClassName;
 
-  static slotClassNames: DialogSlotClassNames;
-
   static propTypes = {
     ...commonPropTypes.createCommon({
       children: false,
@@ -414,8 +412,6 @@ class Dialog extends AutoControlledComponent<WithAsProp<DialogProps>, DialogStat
     );
   }
 }
-
-Dialog.slotClassNames = dialogSlotClassNames;
 
 /**
  * A Dialog displays important information on top of a page which requires a user's attention, confirmation, or interaction.

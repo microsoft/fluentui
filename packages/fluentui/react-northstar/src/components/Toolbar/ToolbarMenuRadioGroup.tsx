@@ -69,9 +69,7 @@ export const toolbarMenuRadioGroupSlotClassNames: ToolbarMenuRadioGroupSlotClass
 };
 
 const ToolbarMenuRadioGroup: React.FC<WithAsProp<ToolbarMenuRadioGroupProps>> &
-  FluentComponentStaticProps<ToolbarMenuRadioGroupProps> & {
-    slotClassNames: ToolbarMenuRadioGroupSlotClassNames;
-  } = props => {
+  FluentComponentStaticProps<ToolbarMenuRadioGroupProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(ToolbarMenuRadioGroup.displayName, context.telemetry);
   setStart();
@@ -143,9 +141,7 @@ const ToolbarMenuRadioGroup: React.FC<WithAsProp<ToolbarMenuRadioGroupProps>> &
   return element;
 };
 
-ToolbarMenuRadioGroup.deprecated_className = toolbarMenuRadioGroupClassName;
 ToolbarMenuRadioGroup.displayName = 'ToolbarMenuRadioGroup';
-ToolbarMenuRadioGroup.slotClassNames = toolbarMenuRadioGroupSlotClassNames;
 ToolbarMenuRadioGroup.defaultProps = {
   as: 'ul',
   accessibility: toolbarMenuRadioGroupBehavior,

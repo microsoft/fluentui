@@ -73,7 +73,7 @@ export const flexItemClassName = 'ui-flex__item';
 /**
  * A FlexItem is a layout component that customizes alignment of Flex child.
  */
-const FlexItem: React.FC<FlexItemProps> & { deprecated_className: string; __isFlexItem: boolean } = props => {
+const FlexItem: React.FC<FlexItemProps> & { __isFlexItem: boolean } = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(FlexItem.displayName, context.telemetry);
   setStart();
@@ -118,7 +118,6 @@ const FlexItem: React.FC<FlexItemProps> & { deprecated_className: string; __isFl
   return element;
 };
 
-FlexItem.deprecated_className = flexItemClassName;
 FlexItem.displayName = 'FlexItem';
 
 FlexItem.propTypes = {

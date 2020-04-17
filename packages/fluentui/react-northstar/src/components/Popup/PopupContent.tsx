@@ -84,8 +84,7 @@ export const popupContentSlotClassNames: PopupContentSlotClassNames = {
   content: `${popupContentClassName}__content`,
 };
 
-const PopupContent: React.FC<WithAsProp<PopupContentProps>> &
-  FluentComponentStaticProps<PopupContentProps> & { slotClassNames: PopupContentSlotClassNames } = props => {
+const PopupContent: React.FC<WithAsProp<PopupContentProps>> & FluentComponentStaticProps<PopupContentProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(PopupContent.displayName, context.telemetry);
   setStart();
@@ -172,7 +171,6 @@ const PopupContent: React.FC<WithAsProp<PopupContentProps>> &
 };
 
 PopupContent.displayName = 'PopupContent';
-PopupContent.deprecated_className = popupContentClassName;
 
 PopupContent.propTypes = {
   ...commonPropTypes.createCommon(),
@@ -201,8 +199,6 @@ PopupContent.propTypes = {
   autoFocus: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
 };
 PopupContent.handledProps = Object.keys(PopupContent.propTypes) as any;
-
-PopupContent.slotClassNames = popupContentSlotClassNames;
 
 PopupContent.create = createShorthandFactory({ Component: PopupContent, mappedProp: 'content' });
 

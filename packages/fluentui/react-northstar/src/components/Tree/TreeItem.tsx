@@ -226,7 +226,6 @@ const TreeItem: React.FC<WithAsProp<TreeItemProps>> & FluentComponentStaticProps
   return elementWithRef;
 };
 
-TreeItem.deprecated_className = treeItemClassName;
 TreeItem.displayName = 'TreeItem';
 
 TreeItem.propTypes = {

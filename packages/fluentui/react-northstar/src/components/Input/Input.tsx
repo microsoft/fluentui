@@ -96,8 +96,6 @@ class Input extends AutoControlledComponent<WithAsProp<InputProps>, InputState> 
 
   static displayName = 'Input';
 
-  static slotClassNames: InputSlotClassNames;
-
   static propTypes = {
     ...commonPropTypes.createCommon({
       content: false,
@@ -235,8 +233,6 @@ class Input extends AutoControlledComponent<WithAsProp<InputProps>, InputState> 
     return icon || null;
   };
 }
-
-Input.slotClassNames = inputSlotClassNames;
 
 /**
  * An Input is a field used to elicit an input from a user.

@@ -124,7 +124,6 @@ const TreeTitle: React.FC<WithAsProp<TreeTitleProps>> & FluentComponentStaticPro
   return element;
 };
 
-TreeTitle.deprecated_className = treeTitleClassName;
 TreeTitle.displayName = 'TreeTitle';
 
 TreeTitle.propTypes = {
