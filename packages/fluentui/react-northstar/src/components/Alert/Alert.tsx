@@ -138,8 +138,6 @@ class Alert extends AutoControlledComponent<WithAsProp<AlertProps>, AlertState> 
 
   static defaultProps = {
     accessibility: alertBehavior,
-    dismissAction: {},
-    body: {},
   };
 
   static DismissAction = AlertDismissAction;
@@ -174,7 +172,7 @@ class Alert extends AutoControlledComponent<WithAsProp<AlertProps>, AlertState> 
       content,
       icon,
       header,
-      body,
+      body = {},
       danger,
       warning,
       info,
