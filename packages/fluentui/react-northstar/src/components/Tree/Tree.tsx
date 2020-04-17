@@ -24,7 +24,6 @@ import {
   WithAsProp,
   withSafeTypeForAs,
   ShorthandCollection,
-  ShorthandValue,
   ComponentEventHandler,
 } from '../../types';
 import { hasSubtree, removeItemAtIndex, getSiblings, TreeContext, TreeRenderContextValue } from './utils';
@@ -363,19 +362,15 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
 
     if (!items) return null;
 
-    const renderItems = (
-      items: ShorthandCollection<TreeItemProps>,
-      level = 1,
-      parent?: string,
-    ): React.ReactElement[] => {
-      return items.reduce((renderedItems: React.ReactElement[], item: ShorthandValue<TreeItemProps>, index: number) => {
-        const itemId = item['id'];
+    const renderItems = (items: TreeItemProps[], level = 1, parent?: string): React.ReactElement[] => {
+      return items.reduce((renderedItems: React.ReactElement[], item: TreeItemProps, index: number) => {
+        const { id } = item;
         const isSubtree = hasSubtree(item);
-        const isSubtreeExpanded = isSubtree && this.isActiveItem(itemId);
-        const isSelectedItem = this.isSelectedItem(itemId);
+        const isSubtreeExpanded = isSubtree && this.isActiveItem(id);
+        const isSelectedItem = this.isSelectedItem(id);
 
-        if (!this.itemsRef.has(itemId)) {
-          this.itemsRef.set(itemId, React.createRef<HTMLElement>());
+        if (!this.itemsRef.has(id)) {
+          this.itemsRef.set(id, React.createRef<HTMLElement>());
         }
 
         const renderedItem = TreeItem.create(item, {
@@ -385,11 +380,11 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
             selected: isSelectedItem,
             selectable,
             renderItemTitle,
-            key: item['id'],
+            key: id,
             parent,
             level,
             index: index + 1, // Used for aria-posinset and it's 1-based.
-            contentRef: this.itemsRef.get(itemId),
+            contentRef: this.itemsRef.get(id),
             treeSize: items.length,
           }),
         });
@@ -397,12 +392,12 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
         return [
           ...renderedItems,
           renderedItem,
-          ...(isSubtreeExpanded ? renderItems(item['items'], level + 1, itemId) : ([] as any)),
+          ...(isSubtreeExpanded ? renderItems(item.items as TreeItemProps[], level + 1, id) : ([] as any)),
         ];
       }, []);
     };
 
-    return renderItems(items);
+    return renderItems(items as TreeItemProps[]);
   }
 
   renderComponent({ ElementType, classes, accessibility, unhandledProps }) {
