@@ -62,7 +62,7 @@ task('clean:docs:component-info', () => del([paths.docsSrc('componentInfo')], { 
 // ----------------------------------------
 
 const componentsSrc = [
-  `${paths.posix.packageSrc('react-northstar')}/components/*/[A-Z]ttach*.tsx`,
+  `${paths.posix.packageSrc('react-northstar')}/components/*/[A-Z]*.tsx`,
   `${paths.posix.packageSrc('react-bindings')}/FocusZone/[A-Z]!(*.types).tsx`,
   `${paths.posix.packageSrc('react-component-ref')}/[A-Z]*.tsx`,
 ];
