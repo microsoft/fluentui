@@ -126,7 +126,7 @@ export const DRAGGING_ELEMENTS = {
   // Embed: { props: { content: 'Embed' } as FUI.EmbedProps },
 
   Flex: {
-    props: { children: 'Flex' } as FUI.FlexProps,
+    props: {} as FUI.FlexProps,
   },
 
   // FocusZone: { props: { content: 'FocusZone' } as FUI.FocusZoneProps },
@@ -506,7 +506,10 @@ export const resolveDrop = (source: JSONTreeElement, target: JSONTreeElement) =>
   // delete target.props?.children;
   delete target.props?.content;
 
-  target.props.children = [...target.props.children, source];
+  target.props.children = [
+    ...(Array.isArray(target.props.children) ? target.props.children : [target.props.children]),
+    source,
+  ];
 
   console.log('config:resolveDrop RESULT', JSON.parse(JSON.stringify({ source, target })));
 };

@@ -324,21 +324,20 @@ class Designer extends React.Component<any, DesignerState> {
                   renderJSONTreeElement={treeElement => {
                     treeElement.props = treeElement.props || {};
 
-                    if (isExpanding) {
+                    if (treeElement.uuid === 'json-tree-root') {
                       treeElement.props.style = {
                         ...treeElement?.props?.style,
-                        ...(treeElement.uuid === 'json-tree-root'
-                          ? { minHeight: '100vh', padding: '1rem' }
-                          : {
-                              padding: '0.5rem',
-                              margin: '0.5rem',
-                              outline: '1px dashed rgba(0, 0, 0, 0.25)',
-                              outlineOffset: '-1px',
-                            }),
+                        minHeight: '100vh',
+                        padding: '1rem',
                       };
-                    } else {
-                      // TODO: Need to ensure when turning build mode off, styles are restored
-                      delete treeElement.props.style;
+                    } else if (isExpanding) {
+                      treeElement.props.style = {
+                        ...treeElement?.props?.style,
+                        padding: '0.5rem',
+                        margin: '0.5rem',
+                        outline: '1px dashed rgba(0, 0, 0, 0.25)',
+                        outlineOffset: '-1px',
+                      };
                     }
 
                     return treeElement;
