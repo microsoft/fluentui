@@ -23,7 +23,8 @@ describe('useRenderFunction', () => {
   });
 
   it('uses the latest custom render', () => {
-    const wrapper = mount(<TestComponent onRenderContent={() => <div id="first" />} />);
+    const onRenderContent = () => <div id="first" />;
+    const wrapper = mount(<TestComponent onRenderContent={onRenderContent} />);
 
     expect(wrapper.getDOMNode()?.id).toBe('first');
 
