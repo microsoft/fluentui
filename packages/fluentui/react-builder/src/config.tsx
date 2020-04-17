@@ -434,7 +434,10 @@ export const resolveDrop = (source: JSONTreeElement, target: JSONTreeElement) =>
     delete target.props?.content;
   }
 
-  target.props.children = [...target.props.children, source];
+  target.props.children = [
+    ...(Array.isArray(target.props.children) ? target.props.children : [target.props.children]),
+    source,
+  ];
 
   console.log('config:resolveDrop RESULT', JSON.parse(JSON.stringify({ source, target })));
 };
