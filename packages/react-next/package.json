@@ -1,6 +1,13 @@
 {
   "name": "@fluentui/react-next",
   "version": "8.0.0-beta",
+  "beachball": {
+    "disallowedChangeTypes": [
+      "patch",
+      "minor",
+      "major"
+    ]
+  },
   "description": "Next major release staging package: Reusable React components for building web experiences.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
