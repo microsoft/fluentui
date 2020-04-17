@@ -3,13 +3,16 @@ import { pxToRem } from '../../../../utils';
 export interface CardVariables {
   borderStyle: string;
   borderColor: string;
+  borderColorDisabled: string;
   borderWidth: string;
   borderRadius: string;
   boxShadow: string;
   boxShadowHover: string;
   boxShadowFocus: string;
   boxShadowPressed: string;
+  boxShadowDisabled: string;
   padding: string;
+  colorDisabled: string;
   compactPadding: string;
   previewMargin: string;
   headerMargin: string;
@@ -45,6 +48,7 @@ export default (siteVars): CardVariables => {
     boxShadowFocus: siteVars.shadowLevel2,
     boxShadowPressed: siteVars.shadowLevel1,
     padding: pxToRem(10),
+    colorDisabled: siteVars.colorScheme.default.foregroundDisabled,
     compactPadding: pxToRem(0),
     previewMargin: `0 0 ${pxToRem(10)} 0`,
     headerMargin: `0 0 ${pxToRem(10)} 0`,
@@ -68,5 +72,7 @@ export default (siteVars): CardVariables => {
     sizeLargePadding: pxToRem(20),
     fluidWidth: '100%',
     fluidHeight: '100%',
+    borderColorDisabled: siteVars.colorScheme.default.borderDisabled,
+    boxShadowDisabled: undefined,
   };
 };

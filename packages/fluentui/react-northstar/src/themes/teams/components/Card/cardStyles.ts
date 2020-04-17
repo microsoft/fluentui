@@ -46,6 +46,22 @@ const cardStyles: ComponentSlotStylesPrepared<CardStylesProps, CardVariables> = 
         },
       }),
 
+      ...(p.disabled && {
+        cursor: 'not-allowed',
+        color: v.colorDisabled,
+        borderColor: v.borderColorDisabled,
+        boxShadow: v.boxShadowDisabled,
+        ':hover': {
+          boxShadow: v.boxShadowDisabled,
+        },
+        ':focus-visible': {
+          boxShadow: v.boxShadowDisabled,
+        },
+        ':active': {
+          boxShadow: v.boxShadowDisabled,
+        },
+      }),
+
       ...borderFocusStyles,
     };
   },
