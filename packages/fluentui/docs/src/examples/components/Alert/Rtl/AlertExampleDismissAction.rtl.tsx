@@ -8,9 +8,11 @@ const AlertExampleDismissActionRtl = () => (
       {
         content: 'مرحبا',
         primary: true,
+        key: 'مرحبا',
       },
       {
         content: 'عالم',
+        key: 'عالم',
       },
     ]}
     icon={<ExclamationTriangleIcon />}
