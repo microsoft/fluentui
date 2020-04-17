@@ -66,7 +66,7 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
               text-overflow: ellipsis;
             }
             & > *:not(:first-child) {
-              margin-left: 0px;
+              margin-left: 4px;
             }
             & > *:not(.ms-StackItem) {
               flex-shrink: 1;
@@ -381,7 +381,7 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
               text-overflow: ellipsis;
             }
             & > *:not(:first-child) {
-              margin-left: 6px;
+              margin-left: 8px;
             }
             & > *:not(.ms-StackItem) {
               flex-shrink: 1;
