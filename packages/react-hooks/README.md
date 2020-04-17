@@ -109,3 +109,32 @@ const MyComponent = () => {
   // ... code that shows a dialog when a button is clicked ...
 };
 ```
+
+## useRenderFunction
+
+`function useRenderFunction<TProps extends {}, TRenderFunctionName extends RenderFunctionNames<TProps>>(props: TProps, renderFunctionName: TRenderFunctionName, defaultRender: (props: TProps) => JSX.Element | null): () => JSX.Element | null`
+
+Hook to return a rendering function that can be overridden by a custom rendering function in component properties.
+
+The hook returns a parameterless function to render the element according to the custom rendering function, if provided, or the default function otherwise.
+
+Example
+
+```tsx
+import { useRenderFunction } from '@uifabric/react-hooks';
+import { IRenderFunction } from '@uifabric/utilities';
+
+interface IMyComponentProps {
+  onRenderContent?: IRenderFunction<IMyComponentProps>;
+}
+
+const MyComponent = props => {
+  const renderContent = useBoolean(props, 'onRenderContent', () => <div>I'm the default!</div>);
+
+  return <section>{renderContent()}</section>;
+  // ^^^ Instead of:
+  // const _renderContent = () => <div>I'm the default!</div>;
+  // const { onRenderContent = _renderContent } = props;
+  // return <section>{onRenderContent(props, _renderContent)}</section>
+};
+```

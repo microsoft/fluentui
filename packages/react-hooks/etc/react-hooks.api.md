@@ -4,12 +4,19 @@
 
 ```ts
 
+import { IRenderFunction } from '@uifabric/utilities';
+
 // @public
 export interface IUseBooleanCallbacks {
     setFalse: () => void;
     setTrue: () => void;
     toggle: () => void;
 }
+
+// @public
+export type RenderFunctionNames<TProps extends {}> = {
+    [K in keyof TProps]: any extends TProps[K] ? never : IRenderFunction<TProps> extends TProps[K] ? K : never;
+}[keyof TProps];
 
 // @public
 export function useBoolean(initialState: boolean): [boolean, IUseBooleanCallbacks];
@@ -22,6 +29,9 @@ export function useConstCallback<T extends (...args: any[]) => any>(callback: T)
 
 // @public
 export function useId(prefix?: string): string;
+
+// @public
+export function useRenderFunction<TProps extends {}, TRenderFunctionName extends RenderFunctionNames<TProps>>(props: TProps, renderFunctionName: TRenderFunctionName, defaultRender: (props: TProps) => JSX.Element | null): () => JSX.Element | null;
 
 
 // (No @packageDocumentation comment for this package)
