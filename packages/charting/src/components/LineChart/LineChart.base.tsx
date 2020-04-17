@@ -51,7 +51,6 @@ export class LineChartBase extends React.Component<
   private _reqID: number;
   private xAxisElement: SVGElement | null;
   private yAxisElement: SVGElement | null;
-  private currentRef = React.createRef<SVGLineElement>();
   // tslint:disable-next-line:no-any
   private _xAxisScale: any = '';
   // tslint:disable-next-line:no-any
