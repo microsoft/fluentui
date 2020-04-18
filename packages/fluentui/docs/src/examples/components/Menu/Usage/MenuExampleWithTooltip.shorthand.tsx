@@ -5,7 +5,7 @@ const itemRenderer = (MenuItem, props) => {
   const { tooltip = '', ...rest } = props;
 
   return (
-    <Tooltip content={tooltip}>
+    <Tooltip content={tooltip} key={rest.key}>
       <MenuItem {...rest} />
     </Tooltip>
   );
