@@ -38,7 +38,6 @@ class RadioGroupVerticalExample extends React.Component {
           </Text>
         ),
         value: 'custom',
-
         'aria-label': 'Press Tab to change flavour',
       },
     ];
