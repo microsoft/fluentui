@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Doc site: disable live code editing until it does not cause infinite loops resulting in browser crashes.",
+  "comment": "Doc site: disable live code editing until we have a fix for the OOM errors.",
   "packageName": "@uifabric/example-app-base",
   "email": "dzearing@microsoft.com",
   "dependentChangeType": "patch",
