@@ -585,7 +585,7 @@ Popup.propTypes = {
   positionFixed: PropTypes.bool,
   renderContent: PropTypes.func,
   target: PropTypes.any,
-  trigger: customPropTypes.every([customPropTypes.disallow(['children']), PropTypes.any]),
+  trigger: customPropTypes.shorthandAllowingChildren,
   tabbableTrigger: PropTypes.bool,
   unstable_pinned: PropTypes.bool,
   content: customPropTypes.shorthandAllowingChildren,
