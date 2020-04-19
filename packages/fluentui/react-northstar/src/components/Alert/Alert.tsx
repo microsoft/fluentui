@@ -27,6 +27,7 @@ import Text, { TextProps } from '../Text/Text';
 
 import ButtonGroup, { ButtonGroupProps } from '../Button/ButtonGroup';
 import AlertDismissAction, { AlertDismissActionProps } from './AlertDismissAction';
+import { ChildrenComponentProps } from '../../../dist/dts/src/utils/commonPropInterfaces';
 import {
   useAccessibility,
   getElementType,
@@ -44,7 +45,10 @@ export interface AlertSlotClassNames {
   body: string;
 }
 
-export interface AlertProps extends UIComponentProps, ContentComponentProps<ShorthandValue<BoxProps>> {
+export interface AlertProps
+  extends UIComponentProps,
+    ContentComponentProps<ShorthandValue<BoxProps>>,
+    ChildrenComponentProps<ShorthandValue<AlertDismissActionProps>> {
   /**
    * Accessibility behavior if overridden by the user.
    * @available alertWarningBehavior
@@ -135,6 +139,7 @@ export const alertSlotClassNames: AlertSlotClassNames = {
 export const Alert: React.FC<WithAsProp<AlertProps>> &
   FluentComponentStaticProps<AlertProps> & {
     autoControlledProps: string[];
+    DismissAction: ShorthandValue<typeof AlertDismissAction>;
   } = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(Alert.displayName, context.telemetry);
@@ -337,6 +342,7 @@ Alert.create = createShorthandFactory({
 });
 
 Alert.autoControlledProps = ['visible'];
+Alert.DismissAction = AlertDismissAction;
 /**
  * An Alert displays a brief, important message to attract a user's attention without interrupting their current task.
  *
