@@ -153,7 +153,6 @@ export const Alert: React.FC<WithAsProp<AlertProps>> & FluentComponentStaticProp
     icon,
     header,
     body,
-    info,
   } = props;
 
   const [bodyId] = React.useState(_.uniqueId('alert-body-'));
