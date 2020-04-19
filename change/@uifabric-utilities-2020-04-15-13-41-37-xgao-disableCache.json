@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "classNamesFunction: add warning on cache full",
-  "packageName": "@uifabric/utilities",
-  "email": "xgao@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-04-15T20:41:37.017Z"
-}

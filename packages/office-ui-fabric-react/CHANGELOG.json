@@ -2,6 +2,29 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Sun, 19 Apr 2020 02:02:09 GMT",
+      "tag": "office-ui-fabric-react_v7.107.1",
+      "version": "7.107.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "implementing storybook-addon-performance plugin to office-ui-fabric-react",
+            "author": "czearing@outlook.com",
+            "commit": "e86cb37304000c112bc355ef5d0235ea23cee34e",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Enable classnames caching for label and icon",
+            "author": "xgao@microsoft.com",
+            "commit": "890f38c5ebe341a34bdc59417a6b777a3c646047",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 17 Apr 2020 12:34:08 GMT",
       "tag": "office-ui-fabric-react_v7.107.0",
       "version": "7.107.0",
