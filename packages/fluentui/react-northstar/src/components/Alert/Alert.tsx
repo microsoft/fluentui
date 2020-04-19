@@ -132,7 +132,10 @@ export const alertSlotClassNames: AlertSlotClassNames = {
   body: `${alertClassName}__body`,
 };
 
-export const Alert: React.FC<WithAsProp<AlertProps>> & FluentComponentStaticProps<AlertProps> = props => {
+export const Alert: React.FC<WithAsProp<AlertProps>> &
+  FluentComponentStaticProps<AlertProps> & {
+    autoControlledProps: string[];
+  } = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(Alert.displayName, context.telemetry);
   setStart();
@@ -174,6 +177,7 @@ export const Alert: React.FC<WithAsProp<AlertProps>> & FluentComponentStaticProp
       warning,
       danger,
       bodyId,
+      visible,
     }),
     rtl: context.rtl,
   });
@@ -332,6 +336,7 @@ Alert.create = createShorthandFactory({
   Component: Alert,
 });
 
+Alert.autoControlledProps = ['visible'];
 /**
  * An Alert displays a brief, important message to attract a user's attention without interrupting their current task.
  *
