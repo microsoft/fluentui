@@ -112,11 +112,6 @@ export interface AlertProps extends UIComponentProps, ContentComponentProps<Shor
   body?: ShorthandValue<BoxProps>;
 }
 
-export interface AlertState {
-  visible: boolean;
-  bodyId: string;
-}
-
 export type AlertStylesProps = Pick<
   AlertProps,
   'danger' | 'warning' | 'info' | 'success' | 'attached' | 'fitted' | 'dismissible'
