@@ -11,7 +11,6 @@ import {
   commonPropTypes,
   childrenExist,
   createShorthandFactory,
-  ChildrenComponentProps,
 } from '../../utils';
 import {
   ComponentEventHandler,
@@ -28,7 +27,14 @@ import Text, { TextProps } from '../Text/Text';
 
 import ButtonGroup, { ButtonGroupProps } from '../Button/ButtonGroup';
 import AlertDismissAction, { AlertDismissActionProps } from './AlertDismissAction';
-import { useAccessibility, getElementType, useStyles, useTelemetry, useUnhandledProps } from '@fluentui/react-bindings';
+import {
+  useAccessibility,
+  getElementType,
+  useStyles,
+  useTelemetry,
+  useUnhandledProps,
+  useAutoControlled,
+} from '@fluentui/react-bindings';
 
 export interface AlertSlotClassNames {
   content: string;
@@ -38,10 +44,7 @@ export interface AlertSlotClassNames {
   body: string;
 }
 
-export interface AlertProps
-  extends UIComponentProps,
-    ChildrenComponentProps,
-    ContentComponentProps<ShorthandValue<BoxProps>> {
+export interface AlertProps extends UIComponentProps, ContentComponentProps<ShorthandValue<BoxProps>> {
   /**
    * Accessibility behavior if overridden by the user.
    * @available alertWarningBehavior
@@ -146,7 +149,7 @@ export const Alert: React.FC<WithAsProp<AlertProps>> & FluentComponentStaticProp
     design,
     styles,
     children,
-    visible,
+    defaultVisible,
     actions,
     dismissAction,
     content,
@@ -154,6 +157,12 @@ export const Alert: React.FC<WithAsProp<AlertProps>> & FluentComponentStaticProp
     header,
     body,
   } = props;
+
+  const [visible, setVisible] = useAutoControlled({
+    defaultValue: defaultVisible,
+    value: props.visible,
+    initialValue: true,
+  });
 
   const [bodyId] = React.useState(_.uniqueId('alert-body-'));
   const ElementType = getElementType(props);
@@ -180,6 +189,7 @@ export const Alert: React.FC<WithAsProp<AlertProps>> & FluentComponentStaticProp
       fitted,
       dismissible,
       actionable: false,
+      visible,
     }),
     mapPropsToInlineStyles: () => ({
       className,
@@ -194,8 +204,8 @@ export const Alert: React.FC<WithAsProp<AlertProps>> & FluentComponentStaticProp
   const handleDismissOverrides = (predefinedProps: ButtonProps) => ({
     onClick: (e: React.SyntheticEvent, buttonProps: ButtonProps) => {
       _.invoke(predefinedProps, 'onClick', e, buttonProps);
-
-      _.invoke(props, 'onVisibleChange', e, { ...props, visible: false });
+      _.invoke(props, 'onVisibleChange', e, { ...props, visible });
+      setVisible(false);
     },
   });
 
