@@ -45,10 +45,7 @@ export interface AlertSlotClassNames {
   body: string;
 }
 
-export interface AlertProps
-  extends UIComponentProps,
-    ContentComponentProps<ShorthandValue<BoxProps>>,
-    ChildrenComponentProps<ShorthandValue<AlertDismissActionProps>> {
+export interface AlertProps extends UIComponentProps, ContentComponentProps<ShorthandValue<BoxProps>> {
   /**
    * Accessibility behavior if overridden by the user.
    * @available alertWarningBehavior
