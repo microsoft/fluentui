@@ -100,11 +100,16 @@ export class PivotBase extends React.Component<IPivotProps, IPivotState> {
     const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties);
 
     this._classNames = this._getClassNames(this.props);
+    const { renderActiveOnly } = this.props;
 
     return (
       <div role="toolbar" {...divProps}>
         {this._renderPivotLinks(linkCollection, selectedKey)}
-        {selectedKey && this._renderPivotItem(linkCollection, selectedKey)}
+        {renderActiveOnly !== false
+          ? selectedKey && this._renderPivotItem(linkCollection, selectedKey)
+          : linkCollection.links.map(link =>
+              this._renderPivotItem(linkCollection, link.itemKey, selectedKey === link.itemKey),
+            )}
       </div>
     );
   }
@@ -208,7 +213,11 @@ export class PivotBase extends React.Component<IPivotProps, IPivotState> {
   /**
    * Renders the current Pivot Item
    */
-  private _renderPivotItem(linkCollection: PivotLinkCollection, itemKey: string | undefined): JSX.Element | null {
+  private _renderPivotItem(
+    linkCollection: PivotLinkCollection,
+    itemKey: string | undefined,
+    isActive = true,
+  ): JSX.Element | null {
     if (this.props.headersOnly || !itemKey) {
       return null;
     }
@@ -217,7 +226,13 @@ export class PivotBase extends React.Component<IPivotProps, IPivotState> {
     const selectedTabId = linkCollection.keyToTabIdMapping[itemKey];
 
     return (
-      <div role="tabpanel" aria-labelledby={selectedTabId} className={this._classNames.itemContainer}>
+      <div
+        role="tabpanel"
+        hidden={!isActive}
+        aria-hidden={!isActive}
+        aria-labelledby={selectedTabId}
+        className={this._classNames.itemContainer}
+      >
         {React.Children.toArray(this.props.children)[index]}
       </div>
     );

@@ -106,6 +106,14 @@ export interface IPivotProps extends React.ClassAttributes<PivotBase>, React.HTM
    * Useful if you're rendering content outside and need to connect aria-labelledby.
    */
   getTabId?: (itemKey: string, index: number) => string;
+
+  /**
+   * Whether to render only the active (selected) pivot item or render everything and only hide the inactive pivot items.
+   * Useful if you're rendering content that is expensive to mount.
+   *
+   * @defaultvalue true
+   */
+  renderActiveOnly?: boolean;
 }
 
 /**
