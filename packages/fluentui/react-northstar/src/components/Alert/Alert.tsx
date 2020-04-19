@@ -27,7 +27,6 @@ import Text, { TextProps } from '../Text/Text';
 
 import ButtonGroup, { ButtonGroupProps } from '../Button/ButtonGroup';
 import AlertDismissAction, { AlertDismissActionProps } from './AlertDismissAction';
-import { ChildrenComponentProps } from '../../../dist/dts/src/utils/commonPropInterfaces';
 import {
   useAccessibility,
   getElementType,
