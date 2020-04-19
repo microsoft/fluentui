@@ -28,14 +28,7 @@ import Text, { TextProps } from '../Text/Text';
 
 import ButtonGroup, { ButtonGroupProps } from '../Button/ButtonGroup';
 import AlertDismissAction, { AlertDismissActionProps } from './AlertDismissAction';
-import {
-  useAutoControlled,
-  useAccessibility,
-  getElementType,
-  useStyles,
-  useTelemetry,
-  useUnhandledProps,
-} from '@fluentui/react-bindings';
+import { useAccessibility, getElementType, useStyles, useTelemetry, useUnhandledProps } from '@fluentui/react-bindings';
 
 export interface AlertSlotClassNames {
   content: string;
@@ -154,12 +147,15 @@ export const Alert: React.FC<WithAsProp<AlertProps>> & FluentComponentStaticProp
     styles,
     children,
     visible,
+    actions,
+    dismissAction,
+    content,
+    icon,
+    header,
+    body,
+    info,
   } = props;
-  // const [visible, setVisible] = useAutoControlled({
-  //   defaultValue: props.defaultVisible,
-  //   value: props.visible,
-  //   initialValue: true,
-  // });
+
   const [bodyId] = React.useState(_.uniqueId('alert-body-'));
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Alert.handledProps, props);
@@ -209,8 +205,6 @@ export const Alert: React.FC<WithAsProp<AlertProps>> & FluentComponentStaticProp
   };
 
   const renderContent = () => {
-    const { actions, dismissAction, content, icon, header, body, info } = props;
-
     const bodyContent = (
       <>
         {Text.create(header, {
