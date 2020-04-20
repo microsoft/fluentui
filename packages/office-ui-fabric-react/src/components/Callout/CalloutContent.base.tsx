@@ -471,8 +471,6 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
           // Define which window segment are the coordinates in and calculate bounds based on that.
           for (const segment of segments) {
             if (x && segment.left <= x && segment.right >= x && y && segment.top <= y && segment.bottom >= y) {
-              console.log(x, y);
-              console.log(segment);
               currentBounds = {
                 top: segment.top + this.props.minPagePadding!,
                 left: segment.left + this.props.minPagePadding!,
@@ -484,8 +482,6 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
               break;
             }
           }
-
-          console.log(currentBounds);
         }
       }
       this._bounds = currentBounds;
