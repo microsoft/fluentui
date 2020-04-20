@@ -102,8 +102,6 @@ class Accordion extends AutoControlledComponent<WithAsProp<AccordionProps>, Acco
 
   static deprecated_className = accordionClassName;
 
-  static slotClassNames = accordionSlotClassNames;
-
   static propTypes = {
     ...commonPropTypes.createCommon({
       content: false,

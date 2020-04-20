@@ -2,6 +2,21 @@
   "name": "@fluentui/react-compose",
   "entries": [
     {
+      "date": "Mon, 20 Apr 2020 15:55:12 GMT",
+      "tag": "@fluentui/react-compose_v0.2.7",
+      "version": "0.2.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "removed deprecated_className",
+            "author": "mnajdova@gmail.com",
+            "commit": "aedb9d2f99c0ae1b195961c93afbead285c55641",
+            "package": "@fluentui/react-compose"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 16 Apr 2020 04:01:45 GMT",
       "tag": "@fluentui/react-compose_v0.2.6",
       "version": "0.2.6",

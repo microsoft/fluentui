@@ -166,7 +166,6 @@ const Label: React.FC<WithAsProp<LabelProps>> & FluentComponentStaticProps = pro
 };
 
 Label.displayName = 'Label';
-Label.deprecated_className = labelClassName;
 
 Label.propTypes = {
   ...commonPropTypes.createCommon({ color: true, content: 'shorthand' }),
