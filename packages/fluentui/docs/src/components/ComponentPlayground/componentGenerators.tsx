@@ -1,6 +1,7 @@
 import { useStringKnob, useBooleanKnob } from '@fluentui/docs-components';
 import {
   AvatarProps,
+  AlertProps,
   BoxProps,
   CardProps,
   DialogProps,

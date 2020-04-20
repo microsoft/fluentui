@@ -1,9 +1,10 @@
 import { ComponentSlotStylesPrepared, ICSSInJSStyle, SiteVariablesPrepared } from '@fluentui/styles';
 import { AlertStylesProps } from '../../../../components/Alert/Alert';
 import { AlertVariables } from './alertVariables';
+import { AlertDismissActionStylesProps } from '../../../../components/Alert/AlertDismissAction';
 
 export const getIntentColorsFromProps = (
-  p: AlertStylesProps,
+  p: AlertDismissActionStylesProps,
   v: AlertVariables,
   siteVars: SiteVariablesPrepared,
 ): ICSSInJSStyle => {
