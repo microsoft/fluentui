@@ -1,8 +1,38 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 16 Apr 2020 04:01:45 GMT and should not be manually modified.
+This log was last generated on Sun, 19 Apr 2020 02:02:09 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.107.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.107.1)
+
+Sun, 19 Apr 2020 02:02:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.107.0..office-ui-fabric-react_v7.107.1)
+
+### Patches
+
+- Enable classnames caching for label and icon ([PR #12712](https://github.com/microsoft/fluentui/pull/12712) by xgao@microsoft.com)
+
+## [7.107.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.107.0)
+
+Fri, 17 Apr 2020 12:34:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.106.3..office-ui-fabric-react_v7.107.0)
+
+### Minor changes
+
+- Allow forwarding of FocusTrapZone props in TeachingBubble ([PR #12693](https://github.com/microsoft/fluentui/pull/12693) by mhensler@microsoft.com)
+- Pivot: componentRef now resolves correctly, unnecessary DOM element removed. ([PR #12748](https://github.com/microsoft/fluentui/pull/12748) by dzearing@microsoft.com)
+- added set of svg icons ([PR #12641](https://github.com/microsoft/fluentui/pull/12641) by mnajdova@gmail.com)
+
+## [7.106.3](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.106.3)
+
+Thu, 16 Apr 2020 12:37:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.106.1..office-ui-fabric-react_v7.106.3)
+
+### Patches
+
+- Replace uses of EventGroup with the 'on' function and _disposables pattern in ColorRectangle, ColorSlider, and Slider ([PR #12717](https://github.com/microsoft/fluentui/pull/12717) by behowell@microsoft.com)
+- changed svg factory example and added icon components tests ([PR #12675](https://github.com/microsoft/fluentui/pull/12675) by mnajdova@gmail.com)
 
 ## [7.106.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.106.1)
 

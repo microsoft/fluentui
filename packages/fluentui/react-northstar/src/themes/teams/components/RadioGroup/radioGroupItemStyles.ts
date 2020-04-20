@@ -1,7 +1,8 @@
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import RadioGroupItem, {
+import {
   RadioGroupItemProps,
   RadioGroupItemState,
+  radioGroupItemSlotClassNames,
 } from '../../../../components/RadioGroup/RadioGroupItem';
 import { RadioGroupItemVariables } from './radioGroupItemVariables';
 import { pxToRem } from '../../../../utils';
@@ -36,7 +37,7 @@ const radioStyles: ComponentSlotStylesPrepared<RadioGroupItemProps & RadioGroupI
     ':hover': {
       color: v.textColorDefaultHoverFocus,
 
-      [`& .${RadioGroupItem.slotClassNames.indicator}`]: {
+      [`& .${radioGroupItemSlotClassNames.indicator}`]: {
         borderColor: v.textColorDefaultHoverFocus,
 
         ...(!p.disabled &&

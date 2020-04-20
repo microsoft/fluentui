@@ -25,7 +25,6 @@ const AttachmentAction = compose<
   displayName: 'AttachmentAction',
 }) as React.FC<AttachmentActionProps> & {
   create?: ShorthandFactory<AttachmentActionProps>;
-  deprecated_className: string;
 };
 
 AttachmentAction.defaultProps = {

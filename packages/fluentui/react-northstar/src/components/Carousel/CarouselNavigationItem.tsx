@@ -57,15 +57,16 @@ export interface CarouselNavigationItemProps extends UIComponentProps, ChildrenC
   thumbnails?: boolean;
 }
 
+export const carouselNavigationItemClassName = 'ui-carousel__navigationitem';
+export const carouselNavigationItemSlotClassNames: CarouselNavigationItemSlotClassNames = {
+  indicator: `${carouselNavigationItemClassName}__indicator`,
+  content: `${carouselNavigationItemClassName}__content`,
+};
+
 class CarouselNavigationItem extends UIComponent<WithAsProp<CarouselNavigationItemProps>> {
   static displayName = 'CarouselNavigationItem';
 
-  static deprecated_className = 'ui-carousel__navigationitem';
-
-  static slotClassNames: CarouselNavigationItemSlotClassNames = {
-    indicator: `${CarouselNavigationItem.deprecated_className}__indicator`,
-    content: `${CarouselNavigationItem.deprecated_className}__content`,
-  };
+  static deprecated_className = carouselNavigationItemClassName;
 
   static create: ShorthandFactory<CarouselNavigationItemProps>;
 
@@ -91,11 +92,15 @@ class CarouselNavigationItem extends UIComponent<WithAsProp<CarouselNavigationIt
   renderContent({ content, indicator, styles }) {
     return content
       ? Box.create(content, {
-          defaultProps: () => ({ as: 'span', styles: styles.content }),
+          defaultProps: () => ({
+            as: 'span',
+            className: carouselNavigationItemSlotClassNames.content,
+            styles: styles.content,
+          }),
         })
       : Box.create(indicator, {
           defaultProps: () => ({
-            className: CarouselNavigationItem.slotClassNames.indicator,
+            className: carouselNavigationItemSlotClassNames.indicator,
             styles: styles.indicator,
           }),
         });

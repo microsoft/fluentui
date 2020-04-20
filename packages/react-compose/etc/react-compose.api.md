@@ -14,7 +14,6 @@ export function compose<InputProps, InputStylesProps, ParentProps, ParentStylesP
 
 // @public (undocumented)
 export type ComposedComponent<InputProps = {}, InputStylesProps = {}, ParentProps = {}, ParentStylesProps = {}> = React.FunctionComponent<InputProps & ParentProps> & {
-    deprecated_className: string;
     fluentComposeConfig: ComposePreparedOptions<InputProps, InputStylesProps, ParentProps, ParentStylesProps>;
 };
 

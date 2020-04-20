@@ -2,6 +2,77 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Sun, 19 Apr 2020 02:02:09 GMT",
+      "tag": "office-ui-fabric-react_v7.107.1",
+      "version": "7.107.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "implementing storybook-addon-performance plugin to office-ui-fabric-react",
+            "author": "czearing@outlook.com",
+            "commit": "e86cb37304000c112bc355ef5d0235ea23cee34e",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Enable classnames caching for label and icon",
+            "author": "xgao@microsoft.com",
+            "commit": "890f38c5ebe341a34bdc59417a6b777a3c646047",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 17 Apr 2020 12:34:08 GMT",
+      "tag": "office-ui-fabric-react_v7.107.0",
+      "version": "7.107.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Allow forwarding of FocusTrapZone props in TeachingBubble",
+            "author": "mhensler@microsoft.com",
+            "commit": "87a6a7e812631df5c762c61a2cd85090925a2b2e",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Pivot: componentRef now resolves correctly, unnecessary DOM element removed.",
+            "author": "dzearing@microsoft.com",
+            "commit": "c2fe1a53eb679b1f61d0bad35c06167ff6a91b9e",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "added set of svg icons",
+            "author": "mnajdova@gmail.com",
+            "commit": "d8a2780c9e811136241a0b21985e379f0a29e23e",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Apr 2020 12:37:31 GMT",
+      "tag": "office-ui-fabric-react_v7.106.3",
+      "version": "7.106.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Replace uses of EventGroup with the 'on' function and _disposables pattern in ColorRectangle, ColorSlider, and Slider",
+            "author": "behowell@microsoft.com",
+            "commit": "971317f1d7dadb1f212b0bbd17e8e54e12e888f5",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "changed svg factory example and added icon components tests",
+            "author": "mnajdova@gmail.com",
+            "commit": "c02f831775ac80f5f43667f284d73c603bf3979f",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 16 Apr 2020 04:01:45 GMT",
       "tag": "office-ui-fabric-react_v7.106.1",
       "version": "7.106.1",

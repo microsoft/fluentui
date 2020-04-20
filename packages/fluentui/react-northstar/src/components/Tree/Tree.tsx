@@ -24,14 +24,9 @@ import {
   WithAsProp,
   withSafeTypeForAs,
   ShorthandCollection,
-  ShorthandValue,
   ComponentEventHandler,
 } from '../../types';
 import { hasSubtree, removeItemAtIndex, getSiblings, TreeContext, TreeRenderContextValue } from './utils';
-
-export interface TreeSlotClassNames {
-  item: string;
-}
 
 export interface TreeProps extends UIComponentProps, ChildrenComponentProps {
   /** Accessibility behavior if overridden by the user. */
@@ -105,16 +100,14 @@ export interface TreeState {
   selectedItemIds: string[];
 }
 
+export const treeClassName = 'ui-tree';
+
 class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
   static create: ShorthandFactory<TreeProps>;
 
   static displayName = 'Tree';
 
-  static deprecated_className = 'ui-tree';
-
-  static slotClassNames: TreeSlotClassNames = {
-    item: `${Tree.deprecated_className}__item`,
-  };
+  static deprecated_className = treeClassName;
 
   static propTypes = {
     ...commonPropTypes.createCommon({
@@ -191,7 +184,7 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
 
     return {
       activeItemIds,
-      selectedItemIds: selectedItemIds || [],
+      selectedItemIds,
     };
   }
 
@@ -392,34 +385,30 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
 
     if (!items) return null;
 
-    const renderItems = (
-      items: ShorthandCollection<TreeItemProps>,
-      level = 1,
-      parent?: string,
-    ): React.ReactElement[] => {
-      return items.reduce((renderedItems: React.ReactElement[], item: ShorthandValue<TreeItemProps>, index: number) => {
-        const itemId = item['id'];
+    const renderItems = (items: TreeItemProps[], level = 1, parent?: string): React.ReactElement[] => {
+      return items.reduce((renderedItems: React.ReactElement[], item: TreeItemProps, index: number) => {
+        const { id } = item;
         const isSubtree = hasSubtree(item);
-        const isSubtreeExpanded = isSubtree && this.isActiveItem(itemId);
-        const isSelectedItem = this.isSelectedItem(item as TreeItemProps);
-        const incompleteChecked = this.isIncompletedGroupChecked(item as TreeItemProps);
-        if (!this.itemsRef.has(itemId)) {
-          this.itemsRef.set(itemId, React.createRef<HTMLElement>());
+        const isSubtreeExpanded = isSubtree && this.isActiveItem(id);
+        const isSelectedItem = this.isSelectedItem(item);
+        const incompleteChecked = this.isIncompletedGroupChecked(item);
+
+        if (!this.itemsRef.has(id)) {
+          this.itemsRef.set(id, React.createRef<HTMLElement>());
         }
 
         const renderedItem = TreeItem.create(item, {
           defaultProps: () => ({
             accessibility: accessibility.childBehaviors ? accessibility.childBehaviors.item : undefined,
-            className: Tree.slotClassNames.item,
             expanded: isSubtreeExpanded,
             selected: isSelectedItem,
             selectable,
             renderItemTitle,
-            key: item['id'],
+            key: id,
             parent,
             level,
             index: index + 1, // Used for aria-posinset and it's 1-based.
-            contentRef: this.itemsRef.get(itemId),
+            contentRef: this.itemsRef.get(id),
             treeSize: items.length,
             incompleteChecked,
           }),
@@ -428,12 +417,12 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
         return [
           ...renderedItems,
           renderedItem,
-          ...(isSubtreeExpanded ? renderItems(item['items'], level + 1, itemId) : ([] as any)),
+          ...(isSubtreeExpanded ? renderItems(item.items as TreeItemProps[], level + 1, id) : ([] as any)),
         ];
       }, []);
     };
 
-    return renderItems(items);
+    return renderItems(items as TreeItemProps[]);
   }
 
   renderComponent({ ElementType, classes, accessibility, unhandledProps }) {

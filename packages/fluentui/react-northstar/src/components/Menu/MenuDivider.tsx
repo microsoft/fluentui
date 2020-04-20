@@ -25,12 +25,14 @@ export interface MenuDividerProps extends UIComponentProps, ChildrenComponentPro
   inSubmenu?: boolean;
 }
 
+export const menuDividerClassName = 'ui-menu__divider';
+
 class MenuDivider extends UIComponent<WithAsProp<MenuDividerProps>> {
   static displayName = 'MenuDivider';
 
   static create: ShorthandFactory<MenuDividerProps>;
 
-  static deprecated_className = 'ui-menu__divider';
+  static deprecated_className = menuDividerClassName;
 
   static defaultProps = {
     as: 'li',

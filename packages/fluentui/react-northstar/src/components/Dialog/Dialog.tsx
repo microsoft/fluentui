@@ -107,12 +107,18 @@ export interface DialogState {
   open?: boolean;
 }
 const dialogsCounterAttribute = 'fluent-dialogs-count';
+export const dialogClassName = 'ui-dialog';
+export const dialogSlotClassNames: DialogSlotClassNames = {
+  header: `${dialogClassName}__header`,
+  headerAction: `${dialogClassName}__headerAction`,
+  content: `${dialogClassName}__content`,
+  overlay: `${dialogClassName}__overlay`,
+  footer: `${dialogClassName}__footer`,
+};
 
 class Dialog extends AutoControlledComponent<WithAsProp<DialogProps>, DialogState> {
   static displayName = 'Dialog';
-  static deprecated_className = 'ui-dialog';
-
-  static slotClassNames: DialogSlotClassNames;
+  static deprecated_className = dialogClassName;
 
   static propTypes = {
     ...commonPropTypes.createCommon({
@@ -326,14 +332,14 @@ class Dialog extends AutoControlledComponent<WithAsProp<DialogProps>, DialogStat
           {Header.create(header, {
             defaultProps: () => ({
               as: 'h2',
-              className: Dialog.slotClassNames.header,
+              className: dialogSlotClassNames.header,
               styles: styles.header,
               ...accessibility.attributes.header,
             }),
           })}
           {Button.create(headerAction, {
             defaultProps: () => ({
-              className: Dialog.slotClassNames.headerAction,
+              className: dialogSlotClassNames.headerAction,
               styles: styles.headerAction,
               text: true,
               iconOnly: true,
@@ -343,14 +349,14 @@ class Dialog extends AutoControlledComponent<WithAsProp<DialogProps>, DialogStat
           {Box.create(content, {
             defaultProps: () => ({
               styles: styles.content,
-              className: Dialog.slotClassNames.content,
+              className: dialogSlotClassNames.content,
               ...accessibility.attributes.content,
             }),
           })}
           {DialogFooter.create(footer, {
             overrideProps: {
               content: dialogActions,
-              className: Dialog.slotClassNames.footer,
+              className: dialogSlotClassNames.footer,
               styles: styles.footer,
             },
           })}
@@ -383,7 +389,7 @@ class Dialog extends AutoControlledComponent<WithAsProp<DialogProps>, DialogStat
               >
                 {Box.create(overlay, {
                   defaultProps: () => ({
-                    className: Dialog.slotClassNames.overlay,
+                    className: dialogSlotClassNames.overlay,
                     styles: styles.overlay,
                   }),
                   overrideProps: { content: dialogContent },
@@ -406,14 +412,6 @@ class Dialog extends AutoControlledComponent<WithAsProp<DialogProps>, DialogStat
     );
   }
 }
-
-Dialog.slotClassNames = {
-  header: `${Dialog.deprecated_className}__header`,
-  headerAction: `${Dialog.deprecated_className}__headerAction`,
-  content: `${Dialog.deprecated_className}__content`,
-  overlay: `${Dialog.deprecated_className}__overlay`,
-  footer: `${Dialog.deprecated_className}__footer`,
-};
 
 /**
  * A Dialog displays important information on top of a page which requires a user's attention, confirmation, or interaction.

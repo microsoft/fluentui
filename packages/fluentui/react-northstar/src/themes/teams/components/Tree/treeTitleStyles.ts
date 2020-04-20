@@ -62,14 +62,6 @@ const treeTitleStyles: ComponentSlotStylesPrepared<TreeTitleStylesProps, TreeTit
         backgroundImage: checkboxIndicatorUrl(v.disabledCheckedIndicatorColor, v.disabledBackgroundChecked),
       }),
   }),
-
-  customSelectionIndicator: ({ props: p, variables: v }): ICSSInJSStyle => ({
-    display: 'inline-block',
-    float: 'right',
-    boxShadow: 'unset',
-    height: pxToRem(16),
-    margin: v.selectionIndicatorMargin,
-  }),
 };
 
 export default treeTitleStyles;

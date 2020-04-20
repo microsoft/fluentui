@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-focus
 
-This log was last generated on Thu, 16 Apr 2020 05:06:13 GMT and should not be manually modified.
+This log was last generated on Thu, 16 Apr 2020 12:37:31 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.4.0)
+
+Thu, 16 Apr 2020 12:37:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v7.3.1..@fluentui/react-focus_v7.4.0)
+
+### Minor changes
+
+- FocusZone: Bringing shouldFocusOnMount prop from v0 to v7. ([PR #12709](https://github.com/microsoft/fluentui/pull/12709) by humbertomakotomorimoto@gmail.com)
+
+### Patches
+
+- undefined ([PR #12709](https://github.com/microsoft/fluentui/pull/12709) by humbertomakotomorimoto@gmail.com)
 
 ## [7.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.3.1)
 

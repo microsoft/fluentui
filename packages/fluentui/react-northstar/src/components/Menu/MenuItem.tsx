@@ -139,16 +139,17 @@ export interface MenuItemState {
   menuOpen: boolean;
 }
 
+export const menuItemClassName = 'ui-menu__item';
+export const menuItemSlotClassNames: MenuItemSlotClassNames = {
+  submenu: `${menuItemClassName}__submenu`,
+  wrapper: `${menuItemClassName}__wrapper`,
+  indicator: `${menuItemClassName}__indicator`,
+};
+
 class MenuItem extends AutoControlledComponent<WithAsProp<MenuItemProps>, MenuItemState> {
   static displayName = 'MenuItem';
 
-  static deprecated_className = 'ui-menu__item';
-
-  static slotClassNames: MenuItemSlotClassNames = {
-    submenu: `${MenuItem.deprecated_className}__submenu`,
-    wrapper: `${MenuItem.deprecated_className}__wrapper`,
-    indicator: `${MenuItem.deprecated_className}__indicator`,
-  };
+  static deprecated_className = menuItemClassName;
 
   static create: ShorthandFactory<MenuItemProps>;
 
@@ -236,7 +237,7 @@ class MenuItem extends AutoControlledComponent<WithAsProp<MenuItemProps>, MenuIt
             Box.create(indicator, {
               defaultProps: () => ({
                 as: 'span',
-                className: MenuItem.slotClassNames.indicator,
+                className: menuItemSlotClassNames.indicator,
                 styles: styles.indicator,
                 accessibility: indicatorBehavior,
               }),
@@ -257,7 +258,7 @@ class MenuItem extends AutoControlledComponent<WithAsProp<MenuItemProps>, MenuIt
               {Menu.create(menu, {
                 defaultProps: () => ({
                   accessibility: submenuBehavior,
-                  className: MenuItem.slotClassNames.submenu,
+                  className: menuItemSlotClassNames.submenu,
                   vertical: true,
                   primary,
                   secondary,
@@ -275,7 +276,7 @@ class MenuItem extends AutoControlledComponent<WithAsProp<MenuItemProps>, MenuIt
     if (wrapper) {
       return Box.create(wrapper, {
         defaultProps: () => ({
-          className: cx(MenuItem.slotClassNames.wrapper, classes.wrapper),
+          className: cx(menuItemSlotClassNames.wrapper, classes.wrapper),
           ...accessibility.attributes.wrapper,
           ...applyAccessibilityKeyHandlers(accessibility.keyHandlers.wrapper, wrapper),
         }),
