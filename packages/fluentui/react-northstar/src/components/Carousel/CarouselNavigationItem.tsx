@@ -68,8 +68,6 @@ class CarouselNavigationItem extends UIComponent<WithAsProp<CarouselNavigationIt
 
   static deprecated_className = carouselNavigationItemClassName;
 
-  static slotClassNames = carouselNavigationItemSlotClassNames;
-
   static create: ShorthandFactory<CarouselNavigationItemProps>;
 
   static propTypes = {

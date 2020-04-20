@@ -116,8 +116,7 @@ export const toolbarItemSlotClassNames: ToolbarItemSlotClassNames = {
   wrapper: `${toolbarItemClassName}__wrapper`,
 };
 
-const ToolbarItem: React.FC<WithAsProp<ToolbarItemProps>> &
-  FluentComponentStaticProps<ToolbarItemProps> & { slotClassNames: ToolbarItemSlotClassNames } = props => {
+const ToolbarItem: React.FC<WithAsProp<ToolbarItemProps>> & FluentComponentStaticProps<ToolbarItemProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(ToolbarItem.displayName, context.telemetry);
   setStart();
@@ -345,10 +344,7 @@ const ToolbarItem: React.FC<WithAsProp<ToolbarItemProps>> &
   return refElement;
 };
 
-ToolbarItem.deprecated_className = toolbarItemClassName;
 ToolbarItem.displayName = 'ToolbarItem';
-
-ToolbarItem.slotClassNames = toolbarItemSlotClassNames;
 
 ToolbarItem.defaultProps = {
   as: 'button',

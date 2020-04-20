@@ -48,7 +48,6 @@ export type FlexStylesProps = Pick<
 export const flexClassName = 'ui-flex';
 
 const Flex: React.FC<WithAsProp<FlexProps>> & {
-  deprecated_className: string;
   handledProps: (keyof FlexProps)[];
   Item: typeof FlexItem;
 } = props => {
@@ -119,7 +118,6 @@ const Flex: React.FC<WithAsProp<FlexProps>> & {
   return element;
 };
 
-Flex.deprecated_className = flexClassName;
 Flex.displayName = 'Flex';
 
 Flex.propTypes = {

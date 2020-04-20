@@ -47,10 +47,6 @@ export type RestrictedClickEvents = 'click' | 'focus';
 export type RestrictedHoverEvents = 'hover' | 'focus' | 'context';
 export type PopupEventsArray = RestrictedClickEvents[] | RestrictedHoverEvents[];
 
-export interface PopupSlotClassNames {
-  content: string;
-}
-
 export interface PopupProps
   extends StyledComponentProps<PopupProps>,
     ChildrenComponentProps,
@@ -546,7 +542,6 @@ const Popup: React.FC<PopupProps> &
   return element;
 };
 
-Popup.deprecated_className = popupClassName;
 Popup.displayName = 'Popup';
 
 Popup.propTypes = {
