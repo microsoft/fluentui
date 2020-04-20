@@ -51,11 +51,15 @@ export type ComposePreparedOptions<Props = {}> = {
 export type ComposeRenderFunction<T extends React.ElementType = 'div', P = {}> = (props: P, ref: React.Ref<T>, composeOptions: ComposePreparedOptions) => React.ReactElement | null;
 
 // @public (undocumented)
-export type Input<T extends React.ElementType = 'div', P = {}> = (React.FunctionComponent<P> & {
-    fluentComposeConfig?: ComposePreparedOptions;
-}) | ComposeRenderFunction<T, P & {
+export type Input<T extends React.ElementType = 'div', P = {}> = InputComposeComponent<P> | ComposeRenderFunction<T, P & {
     as?: React.ElementType;
 }>;
+
+// @public (undocumented)
+export type InputComposeComponent<P = {}> = React.FunctionComponent<P> & {
+    fluentComposeConfig?: ComposePreparedOptions;
+    defaultProps?: Partial<P>;
+};
 
 // @public (undocumented)
 export type PropsOfElement<E extends keyof JSX.IntrinsicElements | React.JSXElementConstructor<any>> = JSX.LibraryManagedAttributes<E, React.ComponentPropsWithRef<E>>;

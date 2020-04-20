@@ -236,8 +236,8 @@ const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
           <>
             {loading && renderLoader()}
             {iconPosition !== 'after' && renderIcon()}
-            {(ButtonContent as any).create(content, {
-              defaultProps: () => getA11Props('content', { as: 'span', size, styles: resolvedStyles.content }),
+            {ButtonContent.create(content, {
+              defaultProps: () => getA11Props('content', { as: 'span', size }),
             })}
             {iconPosition === 'after' && renderIcon()}
           </>
