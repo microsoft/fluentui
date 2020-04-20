@@ -27,8 +27,13 @@ export type ComposedComponent<P = {}> = React.FunctionComponent<P> & {
   fluentComposeConfig: ComposePreparedOptions;
 };
 
+export type InputComposeComponent<P = {}> = React.FunctionComponent<P> & {
+  fluentComposeConfig?: ComposePreparedOptions;
+  defaultProps?: Partial<P>;
+};
+
 export type Input<T extends React.ElementType = 'div', P = {}> =
-  | (React.FunctionComponent<P> & { fluentComposeConfig?: ComposePreparedOptions })
+  | InputComposeComponent<P>
   | ComposeRenderFunction<T, P & { as?: React.ElementType }>;
 
 export type ComposeRenderFunction<T extends React.ElementType = 'div', P = {}> = (

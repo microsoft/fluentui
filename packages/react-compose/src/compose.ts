@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { ComponentWithAs, ComposedComponent, ComposeOptions, Input } from './types';
+import { ComponentWithAs, ComposedComponent, ComposeOptions, Input, InputComposeComponent } from './types';
 import { mergeComposeOptions, wasComposedPreviously } from './utils';
 
 function compose<T extends React.ElementType, InputProps, InputStylesProps, ParentProps, ParentStylesProps>(
@@ -19,9 +19,8 @@ function compose<T extends React.ElementType, InputProps, InputStylesProps, Pare
 
   Component.displayName = composeOptions.displayName;
 
-  // TODO: fix any
-  if ((input as any).defaultProps) {
-    Component.defaultProps = (input as any).defaultProps;
+  if ((input as InputComposeComponent).defaultProps) {
+    Component.defaultProps = (input as InputComposeComponent).defaultProps;
   }
 
   (Component as ComposedComponent).fluentComposeConfig = composeOptions;
