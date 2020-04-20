@@ -22,9 +22,9 @@
     "@uifabric/build": "^7.0.0"
   },
   "dependencies": {
-    "@uifabric/react-cards": "^0.109.58",
+    "@uifabric/react-cards": "^0.109.59",
     "@uifabric/merge-styles": "^7.11.0",
-    "@uifabric/example-app-base": "^7.12.38",
+    "@uifabric/example-app-base": "^7.12.39",
     "@uifabric/variants": "^7.1.46",
     "@uifabric/set-version": "^7.0.10",
     "@uifabric/icons": "^7.3.29",
