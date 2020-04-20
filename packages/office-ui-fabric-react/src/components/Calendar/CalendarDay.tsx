@@ -89,6 +89,151 @@ export class CalendarDay extends React.Component<ICalendarDayProps, ICalendarDay
   private navigatedDay: HTMLElement | null;
   private days: { [key: string]: HTMLElement | null } = {};
 
+  // tslint:disable-next-line function-name
+  public static getDerivedStateFromProps(nextProps: ICalendarDayProps) {
+    return {
+      weeks: CalendarDay._getWeeks(nextProps),
+    };
+  }
+
+  private static _getBoundedDateRange(dateRange: Date[], minDate?: Date, maxDate?: Date): Date[] {
+    let boundedDateRange = [...dateRange];
+    if (minDate) {
+      boundedDateRange = boundedDateRange.filter(date => compareDatePart(date, minDate as Date) >= 0);
+    }
+    if (maxDate) {
+      boundedDateRange = boundedDateRange.filter(date => compareDatePart(date, maxDate as Date) <= 0);
+    }
+    return boundedDateRange;
+  }
+
+  private static _getIsRestrictedDate(date: Date, { restrictedDates }: ICalendarDayProps): boolean {
+    if (!restrictedDates) {
+      return false;
+    }
+    const restrictedDate = find(restrictedDates, rd => {
+      return compareDates(rd, date);
+    });
+    return restrictedDate ? true : false;
+  }
+
+  private static _onSelectDate = (
+    props: ICalendarDayProps,
+    selectedDate: Date,
+    ev: React.SyntheticEvent<HTMLElement>,
+  ): void => {
+    const {
+      onSelectDate,
+      dateRangeType,
+      firstDayOfWeek,
+      navigatedDate,
+      autoNavigateOnSelection,
+      minDate,
+      maxDate,
+      workWeekDays,
+    } = props;
+
+    if (ev) {
+      ev.stopPropagation();
+    }
+
+    let dateRange = getDateRangeArray(selectedDate, dateRangeType, firstDayOfWeek, workWeekDays);
+    if (dateRangeType !== DateRangeType.Day) {
+      dateRange = CalendarDay._getBoundedDateRange(dateRange, minDate, maxDate);
+    }
+    dateRange = dateRange.filter(d => {
+      return !CalendarDay._getIsRestrictedDate(d, props);
+    });
+
+    if (onSelectDate) {
+      onSelectDate(selectedDate, dateRange);
+    }
+
+    // Navigate to next or previous month if needed
+    if (autoNavigateOnSelection && selectedDate.getMonth() !== navigatedDate.getMonth()) {
+      const compareResult = compareDatePart(selectedDate, navigatedDate);
+      if (compareResult < 0) {
+        onSelectPrevMonth(props);
+      } else if (compareResult > 0) {
+        onSelectNextMonth(props);
+      }
+    }
+  };
+
+  private static _getWeeks(propsToUse: ICalendarDayProps): IDayInfo[][] {
+    const {
+      navigatedDate,
+      selectedDate,
+      dateRangeType,
+      firstDayOfWeek,
+      today,
+      minDate,
+      maxDate,
+      showSixWeeksByDefault,
+      workWeekDays,
+    } = propsToUse;
+    const date = new Date(navigatedDate.getFullYear(), navigatedDate.getMonth(), 1);
+    const todaysDate = today || new Date();
+    const weeks: IDayInfo[][] = [];
+
+    // Cycle the date backwards to get to the first day of the week.
+    while (date.getDay() !== firstDayOfWeek) {
+      date.setDate(date.getDate() - 1);
+    }
+
+    // a flag to indicate whether all days of the week are in the month
+    let isAllDaysOfWeekOutOfMonth = false;
+
+    // in work week view we want to select the whole week
+    const selectedDateRangeType = dateRangeType === DateRangeType.WorkWeek ? DateRangeType.Week : dateRangeType;
+    let selectedDates = getDateRangeArray(selectedDate, selectedDateRangeType, firstDayOfWeek, workWeekDays);
+    if (dateRangeType !== DateRangeType.Day) {
+      selectedDates = CalendarDay._getBoundedDateRange(selectedDates, minDate, maxDate);
+    }
+
+    let shouldGetWeeks = true;
+
+    for (let weekIndex = 0; shouldGetWeeks; weekIndex++) {
+      const week: IDayInfo[] = [];
+
+      isAllDaysOfWeekOutOfMonth = true;
+
+      for (let dayIndex = 0; dayIndex < DAYS_IN_WEEK; dayIndex++) {
+        const originalDate = new Date(date.toString());
+        const dayInfo: IDayInfo = {
+          key: date.toString(),
+          date: date.getDate().toString(),
+          originalDate: originalDate,
+          isInMonth: date.getMonth() === navigatedDate.getMonth(),
+          isToday: compareDates(todaysDate, date),
+          isSelected: isInDateRangeArray(date, selectedDates),
+          onSelected: CalendarDay._onSelectDate.bind(null, propsToUse, originalDate),
+          isInBounds:
+            (minDate ? compareDatePart(minDate, date) < 1 : true) &&
+            (maxDate ? compareDatePart(date, maxDate) < 1 : true) &&
+            !CalendarDay._getIsRestrictedDate(date, propsToUse),
+        };
+
+        week.push(dayInfo);
+
+        if (dayInfo.isInMonth) {
+          isAllDaysOfWeekOutOfMonth = false;
+        }
+
+        date.setDate(date.getDate() + 1);
+      }
+
+      // We append the condition of the loop depending upon the showSixWeeksByDefault prop.
+      shouldGetWeeks = showSixWeeksByDefault
+        ? !isAllDaysOfWeekOutOfMonth || weekIndex <= 5
+        : !isAllDaysOfWeekOutOfMonth;
+      if (shouldGetWeeks) {
+        weeks.push(week);
+      }
+    }
+
+    return weeks;
+  }
   public constructor(props: ICalendarDayProps) {
     super(props);
 
@@ -96,19 +241,10 @@ export class CalendarDay extends React.Component<ICalendarDayProps, ICalendarDay
 
     this.state = {
       activeDescendantId: getId('DatePickerDay-active'),
-      weeks: this._getWeeks(props),
+      weeks: CalendarDay._getWeeks(props),
     };
 
-    this._onSelectNextMonth = this._onSelectNextMonth.bind(this);
-    this._onSelectPrevMonth = this._onSelectPrevMonth.bind(this);
     this._onClose = this._onClose.bind(this);
-  }
-
-  // tslint:disable-next-line function-name
-  public UNSAFE_componentWillReceiveProps(nextProps: ICalendarDayProps): void {
-    this.setState({
-      weeks: this._getWeeks(nextProps),
-    });
   }
 
   public render(): JSX.Element {
@@ -557,7 +693,7 @@ export class CalendarDay extends React.Component<ICalendarDayProps, ICalendarDay
   ): ((ev: React.KeyboardEvent<HTMLElement>) => void) => {
     return (ev: React.KeyboardEvent<HTMLElement>): void => {
       if (ev.which === KeyCodes.enter) {
-        this._onSelectDate(originalDate, ev);
+        CalendarDay._onSelectDate(this.props, originalDate, ev);
         ev.preventDefault();
       } else {
         this._navigateMonthEdge(ev, originalDate, weekIndex, dayIndex);
@@ -714,51 +850,12 @@ export class CalendarDay extends React.Component<ICalendarDayProps, ICalendarDay
     }
   }
 
-  private _onSelectDate = (selectedDate: Date, ev: React.SyntheticEvent<HTMLElement>): void => {
-    const {
-      onSelectDate,
-      dateRangeType,
-      firstDayOfWeek,
-      navigatedDate,
-      autoNavigateOnSelection,
-      minDate,
-      maxDate,
-      workWeekDays,
-    } = this.props;
-
-    if (ev) {
-      ev.stopPropagation();
-    }
-
-    let dateRange = getDateRangeArray(selectedDate, dateRangeType, firstDayOfWeek, workWeekDays);
-    if (dateRangeType !== DateRangeType.Day) {
-      dateRange = this._getBoundedDateRange(dateRange, minDate, maxDate);
-    }
-    dateRange = dateRange.filter(d => {
-      return !this._getIsRestrictedDate(d);
-    });
-
-    if (onSelectDate) {
-      onSelectDate(selectedDate, dateRange);
-    }
-
-    // Navigate to next or previous month if needed
-    if (autoNavigateOnSelection && selectedDate.getMonth() !== navigatedDate.getMonth()) {
-      const compareResult = compareDatePart(selectedDate, navigatedDate);
-      if (compareResult < 0) {
-        this._onSelectPrevMonth();
-      } else if (compareResult > 0) {
-        this._onSelectNextMonth();
-      }
-    }
+  private _onSelectPrevMonth = () => {
+    onSelectPrevMonth(this.props);
   };
 
-  private _onSelectNextMonth = (): void => {
-    this.props.onNavigateDate(addMonths(this.props.navigatedDate, 1), false);
-  };
-
-  private _onSelectPrevMonth = (): void => {
-    this.props.onNavigateDate(addMonths(this.props.navigatedDate, -1), false);
+  private _onSelectNextMonth = () => {
+    onSelectNextMonth(this.props);
   };
 
   private _onClose = (): void => {
@@ -799,103 +896,6 @@ export class CalendarDay extends React.Component<ICalendarDayProps, ICalendarDay
     }
   };
 
-  private _getWeeks(propsToUse: ICalendarDayProps): IDayInfo[][] {
-    const {
-      navigatedDate,
-      selectedDate,
-      dateRangeType,
-      firstDayOfWeek,
-      today,
-      minDate,
-      maxDate,
-      showSixWeeksByDefault,
-      workWeekDays,
-    } = propsToUse;
-    const date = new Date(navigatedDate.getFullYear(), navigatedDate.getMonth(), 1);
-    const todaysDate = today || new Date();
-    const weeks: IDayInfo[][] = [];
-
-    // Cycle the date backwards to get to the first day of the week.
-    while (date.getDay() !== firstDayOfWeek) {
-      date.setDate(date.getDate() - 1);
-    }
-
-    // a flag to indicate whether all days of the week are in the month
-    let isAllDaysOfWeekOutOfMonth = false;
-
-    // in work week view we want to select the whole week
-    const selectedDateRangeType = dateRangeType === DateRangeType.WorkWeek ? DateRangeType.Week : dateRangeType;
-    let selectedDates = getDateRangeArray(selectedDate, selectedDateRangeType, firstDayOfWeek, workWeekDays);
-    if (dateRangeType !== DateRangeType.Day) {
-      selectedDates = this._getBoundedDateRange(selectedDates, minDate, maxDate);
-    }
-
-    let shouldGetWeeks = true;
-
-    for (let weekIndex = 0; shouldGetWeeks; weekIndex++) {
-      const week: IDayInfo[] = [];
-
-      isAllDaysOfWeekOutOfMonth = true;
-
-      for (let dayIndex = 0; dayIndex < DAYS_IN_WEEK; dayIndex++) {
-        const originalDate = new Date(date.toString());
-        const dayInfo: IDayInfo = {
-          key: date.toString(),
-          date: date.getDate().toString(),
-          originalDate: originalDate,
-          isInMonth: date.getMonth() === navigatedDate.getMonth(),
-          isToday: compareDates(todaysDate, date),
-          isSelected: isInDateRangeArray(date, selectedDates),
-          onSelected: this._onSelectDate.bind(this, originalDate),
-          isInBounds:
-            (minDate ? compareDatePart(minDate, date) < 1 : true) &&
-            (maxDate ? compareDatePart(date, maxDate) < 1 : true) &&
-            !this._getIsRestrictedDate(date),
-        };
-
-        week.push(dayInfo);
-
-        if (dayInfo.isInMonth) {
-          isAllDaysOfWeekOutOfMonth = false;
-        }
-
-        date.setDate(date.getDate() + 1);
-      }
-
-      // We append the condition of the loop depending upon the showSixWeeksByDefault prop.
-      shouldGetWeeks = showSixWeeksByDefault
-        ? !isAllDaysOfWeekOutOfMonth || weekIndex <= 5
-        : !isAllDaysOfWeekOutOfMonth;
-      if (shouldGetWeeks) {
-        weeks.push(week);
-      }
-    }
-
-    return weeks;
-  }
-
-  private _getIsRestrictedDate(date: Date): boolean {
-    const { restrictedDates } = this.props;
-    if (!restrictedDates) {
-      return false;
-    }
-    const restrictedDate = find(restrictedDates, rd => {
-      return compareDates(rd, date);
-    });
-    return restrictedDate ? true : false;
-  }
-
-  private _getBoundedDateRange(dateRange: Date[], minDate?: Date, maxDate?: Date): Date[] {
-    let boundedDateRange = [...dateRange];
-    if (minDate) {
-      boundedDateRange = boundedDateRange.filter(date => compareDatePart(date, minDate as Date) >= 0);
-    }
-    if (maxDate) {
-      boundedDateRange = boundedDateRange.filter(date => compareDatePart(date, maxDate as Date) <= 0);
-    }
-    return boundedDateRange;
-  }
-
   /**
    * Returns the index of the last element in the array where the predicate is true, and -1
    * otherwise
@@ -915,3 +915,11 @@ export class CalendarDay extends React.Component<ICalendarDayProps, ICalendarDay
     return -1;
   }
 }
+
+const onSelectNextMonth = ({ onNavigateDate, navigatedDate }: ICalendarDayProps): void => {
+  onNavigateDate(addMonths(navigatedDate, 1), false);
+};
+
+const onSelectPrevMonth = ({ onNavigateDate, navigatedDate }: ICalendarDayProps): void => {
+  onNavigateDate(addMonths(navigatedDate, -1), false);
+};
