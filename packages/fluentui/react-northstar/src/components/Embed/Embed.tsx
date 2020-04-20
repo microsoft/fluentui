@@ -100,8 +100,6 @@ class Embed extends AutoControlledComponent<WithAsProp<EmbedProps>, EmbedState> 
 
   static autoControlledProps = ['active'];
 
-  static slotClassNames = embedSlotClassNames;
-
   actionHandlers = {
     performClick: event => this.handleClick(event),
   };

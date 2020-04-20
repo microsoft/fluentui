@@ -71,8 +71,6 @@ class ItemLayout extends UIComponent<WithAsProp<ItemLayoutProps>, any> {
 
   static deprecated_className = itemLayoutClassName;
 
-  static slotClassNames = itemLayoutSlotClassNames;
-
   static propTypes = {
     ...commonPropTypes.createCommon({
       accessibility: false,
@@ -213,7 +211,6 @@ class ItemLayout extends UIComponent<WithAsProp<ItemLayoutProps>, any> {
 }
 
 ItemLayout.create = createShorthandFactory({ Component: ItemLayout, mappedProp: 'content' });
-ItemLayout.slotClassNames = itemLayoutSlotClassNames;
 
 /**
  * (DEPRECATED) The Item Layout handles layout styles for menu items, list items and other similar item templates.

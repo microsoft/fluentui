@@ -26,7 +26,6 @@ const AttachmentDescription = compose<
   overrideStyles: true,
 }) as React.FC<AttachmentDescriptionProps> & {
   create?: ShorthandFactory<AttachmentDescriptionProps>;
-  deprecated_className: string;
 };
 
 AttachmentDescription.defaultProps = {

@@ -156,7 +156,6 @@ const Card: React.FC<WithAsProp<CardProps>> &
 };
 
 Card.displayName = 'Card';
-Card.deprecated_className = cardClassName;
 
 Card.propTypes = {
   ...commonPropTypes.createCommon(),
