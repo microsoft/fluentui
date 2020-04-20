@@ -80,7 +80,6 @@ export const dropdownSearchInputSlotClassNames: DropdownSearchInputSlotClassName
 class DropdownSearchInput extends UIComponent<WithAsProp<DropdownSearchInputProps>, any> {
   static displayName = 'DropdownSearchInput';
   static create: ShorthandFactory<DropdownSearchInputProps>;
-  static slotClassNames: DropdownSearchInputSlotClassNames;
   static deprecated_className = dropdownSearchInputClassName;
 
   static propTypes = {
@@ -146,8 +145,6 @@ class DropdownSearchInput extends UIComponent<WithAsProp<DropdownSearchInputProp
     );
   }
 }
-
-DropdownSearchInput.slotClassNames = dropdownSearchInputSlotClassNames;
 
 DropdownSearchInput.create = createShorthandFactory({ Component: DropdownSearchInput });
 

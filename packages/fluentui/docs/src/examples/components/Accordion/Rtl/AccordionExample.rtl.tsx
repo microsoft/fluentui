@@ -3,13 +3,11 @@ import { Accordion } from '@fluentui/react-northstar';
 
 const panels = [
   {
-    key: 'first',
-    title: 'مرحبا العالم',
+    title: { key: 'rtl-content-1', content: 'مرحبا العالم' },
     content: 'مرحبا العالم',
   },
   {
-    key: 'second',
-    title: 'مرحبا المريخ',
+    title: { key: 'rtl-content-2', content: 'مرحبا المريخ' },
     content: 'مرحبا المريخ',
   },
 ];

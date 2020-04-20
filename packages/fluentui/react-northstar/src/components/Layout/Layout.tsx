@@ -62,8 +62,6 @@ class Layout extends UIComponent<WithAsProp<LayoutProps>, any> {
 
   static displayName = 'Layout';
 
-  static slotClassNames = layoutSlotClassNames;
-
   static propTypes = {
     ...commonPropTypes.createCommon({
       accessibility: false,
@@ -209,8 +207,6 @@ class Layout extends UIComponent<WithAsProp<LayoutProps>, any> {
     );
   }
 }
-
-Layout.slotClassNames = layoutSlotClassNames;
 
 /**
  * (DEPRECATED) A layout is a utility for arranging the content of a component.

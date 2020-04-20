@@ -1,8 +1,8 @@
 {
   "type": "patch",
-  "comment": "classNamesFunction: add warning on cache full",
+  "comment": "classNamesFunction: fix not traversing the changed styles function",
   "packageName": "@uifabric/utilities",
   "email": "xgao@microsoft.com",
   "dependentChangeType": "patch",
-  "date": "2020-04-15T20:41:37.017Z"
+  "date": "2020-04-16T20:45:59.092Z"
 }
