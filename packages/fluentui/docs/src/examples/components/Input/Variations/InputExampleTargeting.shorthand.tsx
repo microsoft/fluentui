@@ -20,17 +20,17 @@ const propsTargettingInput = {
 const InputExampleTargeting = () => (
   <Grid columns="1fr 1fr" styles={{ justifyItems: 'start', alignItems: 'center', gap: '10px' }}>
     <Text content="Input with props that will be applied to either the input or the wrapper:" />
-    <Input id="inputID-1" {...propsForInput} {...propsForWrapper} />
+    <Input id="input-targeting-1" {...propsForInput} {...propsForWrapper} />
 
     <Text content="Input with input slot props that have to be applied to the input element:" />
-    <Input id="inputID-2" {...propsForInput} {...propsForWrapper} input={propsTargettingInput} />
+    <Input id="input-targeting-2" {...propsForInput} {...propsForWrapper} input={propsTargettingInput} />
 
     <Text content="Input with wrapper slot props that have to be applied to the wrapper element:" />
-    <Input id="inputID-3" {...propsForInput} {...propsForWrapper} wrapper={propsTargettingWrapper} />
+    <Input id="input-targeting-3" {...propsForInput} {...propsForWrapper} wrapper={propsTargettingWrapper} />
 
     <Text content="Input with input and wrapper slot props that have to be applied to the input and wrapper elements, respectively:" />
     <Input
-      id="inputID-4"
+      id="input-targeting-4"
       {...propsForInput}
       {...propsForWrapper}
       input={propsTargettingInput}
