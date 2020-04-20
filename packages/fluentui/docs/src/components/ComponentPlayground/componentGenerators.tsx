@@ -1,6 +1,7 @@
-import { useStringKnob } from '@fluentui/docs-components';
+import { useStringKnob, useBooleanKnob } from '@fluentui/docs-components';
 import {
   AvatarProps,
+  AlertProps,
   BoxProps,
   CardProps,
   DialogProps,
@@ -89,6 +90,14 @@ export const Image: KnobComponentGenerators<ImageProps> = {
     hook: useStringKnob,
     name: propName,
     initialValue: faker.image.avatar(),
+  }),
+};
+
+export const Alert: KnobComponentGenerators<AlertProps> = {
+  visible: ({ propName }) => ({
+    hook: useBooleanKnob,
+    name: propName,
+    initialValue: true,
   }),
 };
 
