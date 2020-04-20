@@ -48,6 +48,7 @@ const treeTitleStyles: ComponentSlotStylesPrepared<TreeTitleStylesProps, TreeTit
     }),
 
     ...(p.incompleteChecked && {
+      borderColor: v.checkedBorderColor,
       backgroundImage: checkboxIndicatorIndeterminatedUrl(v.checkedIndicatorColor, v.checkedBackground),
     }),
 
