@@ -73,9 +73,7 @@ export const alertDismissActionSlotClassNames: AlertDismissActionSlotClassNames 
 };
 
 const AlertDismissAction: React.FC<WithAsProp<AlertDismissActionProps>> &
-  FluentComponentStaticProps<AlertDismissActionProps> & {
-    slotClassNames: AlertDismissActionSlotClassNames;
-  } = props => {
+  FluentComponentStaticProps<AlertDismissActionProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(AlertDismissAction.displayName, context.telemetry);
   setStart();
@@ -179,7 +177,6 @@ AlertDismissAction.defaultProps = {
 };
 
 AlertDismissAction.displayName = 'AlertDismissAction';
-AlertDismissAction.deprecated_className = alertDismissActionClassName;
 
 AlertDismissAction.propTypes = {
   ...commonPropTypes.createCommon({
@@ -195,8 +192,6 @@ AlertDismissAction.propTypes = {
 AlertDismissAction.handledProps = Object.keys(AlertDismissAction.propTypes) as any;
 
 AlertDismissAction.create = createShorthandFactory({ Component: AlertDismissAction, mappedProp: 'content' });
-
-AlertDismissAction.slotClassNames = alertDismissActionSlotClassNames;
 
 /**
  * A AlertDismissAction allows users to customize the dismissAction slot  inside the Alert component.

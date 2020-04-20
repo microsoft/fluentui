@@ -85,8 +85,6 @@ class RadioGroupItem extends AutoControlledComponent<WithAsProp<RadioGroupItemPr
 
   static deprecated_className = radioGroupItemClassName;
 
-  static slotClassNames = radioGroupItemSlotClassNames;
-
   static propTypes = {
     ...commonPropTypes.createCommon({
       content: false,

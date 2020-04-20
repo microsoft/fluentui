@@ -87,7 +87,15 @@ const defaultOptions: ts.CompilerOptions = {
   allowUnreachableCode: true,
 };
 
-const reactComponentSymbolNames = ['StatelessComponent', 'Stateless', 'StyledComponentClass', 'FunctionComponent'];
+const reactComponentSymbolNames = [
+  'StatelessComponent',
+  'Stateless',
+  'StyledComponentClass',
+  'FunctionComponent',
+
+  // magic for ComponentWithAs
+  '__type',
+];
 
 type MaybeIntersectType = ts.Type & { types?: ts.Type[] };
 

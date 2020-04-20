@@ -85,7 +85,6 @@ const Image: React.FC<WithAsProp<ImageProps>> & FluentComponentStaticProps<Image
   return result;
 };
 
-Image.deprecated_className = imageClassName;
 Image.displayName = 'Image';
 Image.defaultProps = {
   as: 'img',

@@ -80,8 +80,6 @@ class AccordionTitle extends UIComponent<WithAsProp<AccordionTitleProps>, any> {
 
   static deprecated_className = accordionTitleClassName;
 
-  static slotClassNames: AccordionTitleSlotClassNames;
-
   static propTypes = {
     ...commonPropTypes.createCommon({ content: 'shorthand' }),
     accordionContentId: PropTypes.string,
@@ -182,8 +180,6 @@ class AccordionTitle extends UIComponent<WithAsProp<AccordionTitleProps>, any> {
 }
 
 AccordionTitle.create = createShorthandFactory({ Component: AccordionTitle, mappedProp: 'content' });
-
-AccordionTitle.slotClassNames = accordionTitleSlotClassNames;
 
 /**
  * An AccordionTitle represents the title of Accordion's item that can be interacted with to expand or collapse the item's content.

@@ -163,7 +163,6 @@ const ToolbarMenu: React.FC<WithAsProp<ToolbarMenuProps>> & FluentComponentStati
   return element;
 };
 
-ToolbarMenu.deprecated_className = toolbarMenuClassName;
 ToolbarMenu.displayName = 'ToolbarMenu';
 
 ToolbarMenu.propTypes = {

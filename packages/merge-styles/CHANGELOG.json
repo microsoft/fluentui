@@ -2,6 +2,21 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "date": "Fri, 17 Apr 2020 12:34:08 GMT",
+      "tag": "@uifabric/merge-styles_v7.11.0",
+      "version": "7.11.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "add WebkitTextSizeAdjust and textSizeAdjust as a valid CSS property",
+            "author": "sochhay@microsoft.com",
+            "commit": "dedb9ae121ac9fb983e35877fe4dbb6512fd8235",
+            "package": "@uifabric/merge-styles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 16 Apr 2020 04:01:45 GMT",
       "tag": "@uifabric/merge-styles_v7.10.0",
       "version": "7.10.0",

@@ -77,8 +77,6 @@ class HierarchicalTreeItem extends UIComponent<WithAsProp<HierarchicalTreeItemPr
 
   static deprecated_className = hierarchicalTreeItemClassName;
 
-  static slotClassNames = hierarchicalTreeItemSlotClassNames;
-
   static propTypes = {
     ...commonPropTypes.createCommon({
       content: false,

@@ -53,9 +53,12 @@ export interface CardProps extends UIComponentProps {
 
   /** A card can take up the width and height of its container. */
   fluid?: boolean;
+
+  /** A card can show that it cannot be interacted with. */
+  disabled?: boolean;
 }
 
-export type CardStylesProps = Pick<CardProps, 'compact' | 'horizontal' | 'centered' | 'size' | 'fluid'> & {
+export type CardStylesProps = Pick<CardProps, 'compact' | 'horizontal' | 'centered' | 'size' | 'fluid' | 'disabled'> & {
   actionable: boolean;
 };
 
@@ -75,7 +78,20 @@ const Card: React.FC<WithAsProp<CardProps>> &
   setStart();
   const cardRef = React.useRef<HTMLElement>();
 
-  const { className, design, styles, variables, children, compact, horizontal, centered, size, fluid, onClick } = props;
+  const {
+    className,
+    design,
+    styles,
+    variables,
+    children,
+    compact,
+    horizontal,
+    centered,
+    size,
+    fluid,
+    onClick,
+    disabled,
+  } = props;
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Card.handledProps, props);
   const getA11yProps = useAccessibility(props.accessibility, {
@@ -100,6 +116,7 @@ const Card: React.FC<WithAsProp<CardProps>> &
       size,
       fluid,
       actionable: !!onClick,
+      disabled,
     }),
     mapPropsToInlineStyles: () => ({
       className,
@@ -111,6 +128,11 @@ const Card: React.FC<WithAsProp<CardProps>> &
   });
 
   const handleClick = (e: React.MouseEvent | React.KeyboardEvent) => {
+    if (disabled) {
+      e.preventDefault();
+      return;
+    }
+
     _.invoke(props, 'onClick', e, props);
   };
 
@@ -134,7 +156,6 @@ const Card: React.FC<WithAsProp<CardProps>> &
 };
 
 Card.displayName = 'Card';
-Card.deprecated_className = cardClassName;
 
 Card.propTypes = {
   ...commonPropTypes.createCommon(),

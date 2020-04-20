@@ -125,8 +125,7 @@ export const sliderSlotClassNames: SliderSlotClassNames = {
   track: `${sliderClassName}__track`,
 };
 
-const Slider: React.FC<WithAsProp<SliderProps>> &
-  FluentComponentStaticProps & { slotClassNames: SliderSlotClassNames } = props => {
+const Slider: React.FC<WithAsProp<SliderProps>> & FluentComponentStaticProps = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(Slider.displayName, context.telemetry);
   setStart();
@@ -263,10 +262,7 @@ const Slider: React.FC<WithAsProp<SliderProps>> &
   return element;
 };
 
-Slider.deprecated_className = sliderClassName;
 Slider.displayName = 'Slider';
-
-Slider.slotClassNames = sliderSlotClassNames;
 
 Slider.defaultProps = {
   accessibility: sliderBehavior,
