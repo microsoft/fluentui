@@ -472,7 +472,7 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
     return (
       <ul className={this._classNames.list} onKeyDown={this._onKeyDown} onKeyUp={this._onKeyUp} role="menu">
         {menuListProps.items.map((item, index) => {
-          let contextualMenuItemRenderProps: IContextualMenuItemRenderProps = {
+          const contextualMenuItemRenderProps: IContextualMenuItemRenderProps = {
             item,
             index,
             focusableElementIndex: indexCorrection,
@@ -629,7 +629,7 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
               {headerItem &&
                 this._renderListItem(headerItem, sectionItem.key || index, menuClassNames, sectionItem.title)}
               {sectionProps.items.map((contextualMenuItem, itemsIndex) => {
-                let contextualMenuItemRenderProps: IContextualMenuItemRenderProps = {
+                const contextualMenuItemRenderProps: IContextualMenuItemRenderProps = {
                   item: contextualMenuItem,
                   index: itemsIndex,
                   focusableElementIndex: itemsIndex,
