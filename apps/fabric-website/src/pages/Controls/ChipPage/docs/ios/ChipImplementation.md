@@ -6,12 +6,12 @@
 
 ### Source code
 
-[MSBadgeView](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric/Badge%20Field/MSBadgeView.swift)
+[MSBadgeView](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI/Badge%20Field/MSBadgeView.swift)
 
-[MSBadgeField](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric/Badge%20Field/MSBadgeField.swift)
+[MSBadgeField](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI/Badge%20Field/MSBadgeField.swift)
 
 ### Sample code
 
-[MSBadgeView demo](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric.Demo/OfficeUIFabric.Demo/Demos/MSBadgeViewDemoController.swift)
+[MSBadgeView demo](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI.Demo/FluentUI.Demo/Demos/MSBadgeViewDemoController.swift)
 
-[MSBadgeField demo](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric.Demo/OfficeUIFabric.Demo/Demos/MSBadgeFieldDemoController.swift)
+[MSBadgeField demo](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI.Demo/FluentUI.Demo/Demos/MSBadgeFieldDemoController.swift)

@@ -4,8 +4,8 @@
 
 ### Source code
 
-[MSSegmentedControl](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric/Controls/MSSegmentedControl.swift)
+[MSSegmentedControl](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI/Controls/MSSegmentedControl.swift)
 
 ### Sample code
 
-[MSSegmentedControl demo](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric.Demo/OfficeUIFabric.Demo/Demos/MSSegmentedControlDemoController.swift)
+[MSSegmentedControl demo](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI.Demo/FluentUI.Demo/Demos/MSSegmentedControlDemoController.swift)

@@ -4,8 +4,8 @@
 
 ### Source code
 
-[MSNavigationController](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric/Navigation/MSNavigationController.swift)
+[MSNavigationController](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI/Navigation/MSNavigationController.swift)
 
 ### Sample code
 
-[MSNavigationController demo](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric.Demo/OfficeUIFabric.Demo/Demos/MSNavigationControllerDemoController.swift)
+[MSNavigationController demo](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI.Demo/FluentUI.Demo/Demos/MSNavigationControllerDemoController.swift)
