@@ -27,6 +27,7 @@ import Text, { TextProps } from '../Text/Text';
 
 import ButtonGroup, { ButtonGroupProps } from '../Button/ButtonGroup';
 import AlertDismissAction, { AlertDismissActionProps } from './AlertDismissAction';
+import { AlertBehaviorProps } from '../../../../accessibility/src/behaviors/Alert/alertBehavior';
 import {
   useAccessibility,
   getElementType,
@@ -49,7 +50,7 @@ export interface AlertProps extends UIComponentProps, ContentComponentProps<Shor
    * Accessibility behavior if overridden by the user.
    * @available alertWarningBehavior
    */
-  accessibility?: Accessibility;
+  accessibility?: Accessibility<AlertBehaviorProps>;
 
   /** An alert can contain action buttons. */
   actions?: ShorthandValue<ButtonGroupProps> | ShorthandCollection<ButtonProps>;
