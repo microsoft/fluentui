@@ -9,10 +9,10 @@ import alertBaseBehavior from './alertBaseBehavior';
 const alertBehavior: Accessibility<AlertBehaviorProps> = props =>
   props.warning || props.danger ? alertWarningBehavior(props) : alertBaseBehavior(props);
 
+export default alertBehavior;
+
 export type AlertBehaviorProps = {
   warning?: boolean;
   danger?: boolean;
   bodyId?: string;
 };
-
-export default alertBehavior;

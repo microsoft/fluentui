@@ -1,4 +1,4 @@
-import { Accessibility, alertBehavior } from '@fluentui/accessibility';
+import { Accessibility, alertBehavior, AlertBehaviorProps } from '@fluentui/accessibility';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
@@ -27,7 +27,6 @@ import Text, { TextProps } from '../Text/Text';
 
 import ButtonGroup, { ButtonGroupProps } from '../Button/ButtonGroup';
 import AlertDismissAction, { AlertDismissActionProps } from './AlertDismissAction';
-import { AlertBehaviorProps } from '../../../../accessibility/src/behaviors/Alert/alertBehavior';
 import {
   useAccessibility,
   getElementType,
