@@ -2,6 +2,21 @@
   "name": "@fluentui/react-icons",
   "entries": [
     {
+      "date": "Fri, 17 Apr 2020 12:34:08 GMT",
+      "tag": "@fluentui/react-icons_v0.1.3",
+      "version": "0.1.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "added set of svg icons",
+            "author": "mnajdova@gmail.com",
+            "commit": "d8a2780c9e811136241a0b21985e379f0a29e23e",
+            "package": "@fluentui/react-icons"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 16 Apr 2020 12:37:31 GMT",
       "tag": "@fluentui/react-icons_v0.1.2",
       "version": "0.1.2",

@@ -44,10 +44,17 @@ const KnobBoolean: React.FunctionComponent<KnobComponentProps> = props => (
 const KnobNumber: React.FunctionComponent<KnobNumberKnobComponentProps> = props => (
   <input
     onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-      const newValue = parseInt(e.target.value, 10);
+      let newValue = parseInt(e.target.value, 10);
       const min = parseInt(props.min, 10);
       const max = parseInt(props.max, 10);
-      props.setValue(newValue < min ? props.min : newValue > max ? props.max : newValue);
+
+      if (newValue < min) {
+        newValue = min;
+      } else if (newValue > max) {
+        newValue = max;
+      }
+
+      props.setValue(newValue || props.min);
     }}
     min={props.min}
     max={props.max}

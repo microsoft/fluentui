@@ -100,14 +100,14 @@ export interface TreeState {
   selectedItemIds: string[];
 }
 
-export const treeClassNames = 'ui-tree';
+export const treeClassName = 'ui-tree';
 
 class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
   static create: ShorthandFactory<TreeProps>;
 
   static displayName = 'Tree';
 
-  static deprecated_className = treeClassNames;
+  static deprecated_className = treeClassName;
 
   static propTypes = {
     ...commonPropTypes.createCommon({
