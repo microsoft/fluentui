@@ -55,6 +55,7 @@ const items = [
 // TreeTitle with just text, while the level 2 titles are rendered as ListItems.
 const titleRenderer = (Component, { content, header, headerMedia, media, ...restProps }) => {
   // as providing all props to List.Item was showing console errors, therefore reducing props
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { treeSize, expanded, hasSubtree, selectableParent, selectionIndicator, ...restReducedProps } = restProps;
   return !header ? (
     <Component {...restProps}>{content}</Component>
