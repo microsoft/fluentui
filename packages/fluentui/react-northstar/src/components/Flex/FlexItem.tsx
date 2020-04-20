@@ -58,7 +58,7 @@ const applyStyles = (
   // if element is DOM element
   if (typeof element.type === 'string') {
     return React.cloneElement(element, {
-      className: cx(element.props.deprecated_className, classes.root),
+      className: cx(element.props.className, classes.root),
     });
   }
 
