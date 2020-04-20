@@ -173,7 +173,7 @@ export class ColorSliderBase extends React.Component<IColorSliderProps, IColorSl
 
     if (win) {
       this._disposables.push(
-        on(win, 'mousemove', this._onMouseMove, true),
+        on(win, 'mousemove', this._onMouseMove as (ev: MouseEvent) => void, true),
         on(win, 'mouseup', this._disposeListeners, true),
       );
     }
@@ -181,7 +181,7 @@ export class ColorSliderBase extends React.Component<IColorSliderProps, IColorSl
     this._onMouseMove(ev);
   };
 
-  private _onMouseMove = (ev: React.MouseEvent): void => {
+  private _onMouseMove = (ev: MouseEvent | React.MouseEvent): void => {
     if (!this._root.current) {
       return;
     }
@@ -200,7 +200,7 @@ export class ColorSliderBase extends React.Component<IColorSliderProps, IColorSl
     this._disposables = [];
   };
 
-  private _updateValue(ev: React.MouseEvent | React.KeyboardEvent, newValue: number) {
+  private _updateValue(ev: MouseEvent | KeyboardEvent | React.MouseEvent | React.KeyboardEvent, newValue: number) {
     if (newValue === this.value) {
       return;
     }
@@ -208,7 +208,7 @@ export class ColorSliderBase extends React.Component<IColorSliderProps, IColorSl
     const { onChange } = this.props;
 
     if (onChange) {
-      onChange(ev, newValue);
+      onChange(ev as React.MouseEvent | React.KeyboardEvent, newValue);
     }
 
     if (!ev.defaultPrevented) {
