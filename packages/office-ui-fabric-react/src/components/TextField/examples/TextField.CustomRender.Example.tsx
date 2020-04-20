@@ -7,20 +7,21 @@ import { IStackTokens, Stack, IStackStyles } from 'office-ui-fabric-react/lib/St
 import { Text } from 'office-ui-fabric-react/lib/Text';
 import { getId, IRenderFunction, memoizeFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { getTheme, FontWeights, ITheme } from 'office-ui-fabric-react/lib/Styling';
-import { useBoolean } from '@uifabric/react-hooks';
+import { useBoolean, useId } from '@uifabric/react-hooks';
 
 export interface ITextFieldCustomRenderExampleState {
   isCalloutVisible: boolean;
 }
 
 const stackTokens: IStackTokens = {
-  childrenGap: 20,
+  childrenGap: 4,
   maxWidth: 300,
 };
 
 const labelCalloutStackStyles: Partial<IStackStyles> = { root: { padding: 20 } };
 const iconButtonStyles: Partial<IButtonStyles> = { root: { marginBottom: -3 } };
 const iconStyles: Partial<IIconStyles> = { root: { marginBottom: -3 } };
+const iconProps = { iconName: 'Info' };
 
 const getDescriptionStyles = memoizeFunction((theme: ITheme) => ({
   root: { color: theme.palette.green, fontWeight: FontWeights.bold },
@@ -45,7 +46,7 @@ const onWrapDefaultLabelRenderer = (
 ): JSX.Element => {
   return (
     <>
-      <Stack horizontal verticalAlign="center" tokens={{ childrenGap: 8 }}>
+      <Stack horizontal verticalAlign="center" tokens={stackTokens}>
         <span>{defaultRender(props)}</span>
         <Icon iconName="Globe" title="Globe" ariaLabel="Globe" styles={iconStyles} />
       </Stack>
@@ -58,11 +59,11 @@ const CustomLabel = (props: ITextFieldProps): JSX.Element => {
 
   return (
     <>
-      <Stack horizontal verticalAlign="center" tokens={{ childrenGap: 4 }}>
+      <Stack horizontal verticalAlign="center" tokens={stackTokens}>
         <span id={labelId}>{props.label}</span>
         <IconButton
           id={iconButtonId}
-          iconProps={{ iconName: 'Info' }}
+          iconProps={iconProps}
           title="Info"
           ariaLabel="Info"
           onClick={toggleIsCalloutVisible}

@@ -1,10 +1,22 @@
 import * as React from 'react';
-
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Dialog, DialogType, DialogFooter } from 'office-ui-fabric-react/lib/Dialog';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
 import { useBoolean } from '@uifabric/react-hooks';
+
+const dialogContentProps = {
+  type: DialogType.normal,
+  title: 'This dialog also makes use of FocusTrapZone. Focus should be trapped in the dialog.',
+  subText: "Focus will move back to the panel if you press 'OK' or 'Cancel'.",
+};
+
+const modelProps = {
+  titleAriaId: 'myLabelId',
+  subtitleAriaId: 'mySubTextId',
+  isBlocking: false,
+  styles: { main: { maxWidth: 450 } },
+};
 
 export const FocusTrapZoneDialogInPanelExample: React.FunctionComponent = () => {
   const [showPanel, { toggle: toggleShowPanel }] = useBoolean(false);
@@ -24,17 +36,8 @@ export const FocusTrapZoneDialogInPanelExample: React.FunctionComponent = () => 
           hidden={hideDialog}
           onDismiss={toggleHideDialog}
           isBlocking
-          dialogContentProps={{
-            type: DialogType.normal,
-            title: 'This dialog also makes use of FocusTrapZone. Focus should be trapped in the dialog.',
-            subText: "Focus will move back to the panel if you press 'OK' or 'Cancel'.",
-          }}
-          modalProps={{
-            titleAriaId: 'myLabelId',
-            subtitleAriaId: 'mySubTextId',
-            isBlocking: false,
-            styles: { main: { maxWidth: 450 } },
-          }}
+          dialogContentProps={dialogContentProps}
+          modalProps={modelProps}
         >
           <DialogFooter>
             <PrimaryButton onClick={toggleHideDialog} text="OK" />

@@ -14,14 +14,14 @@ const getStackStyles = memoizeFunction(
 );
 
 const textFieldStyles: Partial<ITextFieldStyles> = { root: { width: 300 } };
-
+const stackToken = { childrenGap: 15 };
 const toggle = React.createRef<IToggle>();
 
 export const FocusTrapZoneBoxClickExample: React.FunctionComponent = () => {
   const [useTrapZone, { toggle: toggleUseTrapZone }] = useBoolean(false);
   return (
     <FocusTrapZone disabled={!useTrapZone} isClickableOutsideFocusTrap forceFocusInsideTrap={false}>
-      <Stack horizontalAlign="start" tokens={{ childrenGap: 15 }} styles={getStackStyles(useTrapZone)}>
+      <Stack horizontalAlign="start" tokens={stackToken} styles={getStackStyles(useTrapZone)}>
         <Toggle
           label="Use trap zone"
           componentRef={toggle}

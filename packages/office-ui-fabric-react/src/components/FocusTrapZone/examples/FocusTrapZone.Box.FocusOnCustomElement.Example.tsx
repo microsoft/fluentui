@@ -17,7 +17,7 @@ const getStackStyles = memoizeFunction(
 );
 
 const textFieldStyles: Partial<ITextFieldStyles> = { root: { width: 300 } };
-
+const stackTokens = { childrenGap: 8 };
 export interface IFocusTrapZoneBoxCustomElementExampleState {
   useTrapZone: boolean;
 }
@@ -28,7 +28,7 @@ const toggle = React.createRef<IToggle>();
 export const FocusTrapZoneBoxCustomElementExample = () => {
   const [useTrapZone, { toggle: toggleUseTrapZone }] = useBoolean(false);
   return (
-    <Stack tokens={{ childrenGap: 8 }}>
+    <Stack tokens={stackTokens}>
       <Stack.Item>
         <Text>If this button is used to enable FocusTrapZone, the hyperlink should be focused.</Text>
       </Stack.Item>
@@ -36,7 +36,7 @@ export const FocusTrapZoneBoxCustomElementExample = () => {
         <DefaultButton onClick={toggleUseTrapZone} text="Focus Custom Element" />
       </Stack.Item>
       <FocusTrapZone disabled={!useTrapZone} firstFocusableSelector={_focusClassName}>
-        <Stack horizontalAlign="start" tokens={{ childrenGap: 15 }} styles={getStackStyles(useTrapZone)}>
+        <Stack horizontalAlign="start" tokens={stackTokens} styles={getStackStyles(useTrapZone)}>
           <Toggle
             label="Use trap zone"
             componentRef={toggle}

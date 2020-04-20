@@ -12,8 +12,8 @@ const getStackStyles = memoizeFunction(
   }),
 );
 
+const stackTokens = { childrenGap: 10 };
 const fixedWidthToggleStyles: Partial<IToggleStyles> = { root: { width: 200 } };
-
 const FocusTrapComponent: React.FunctionComponent<React.PropsWithChildren<{ zoneNumber: number }>> = props => {
   const [isActive, { toggle: toggleIsActive }] = useBoolean(false);
   const { zoneNumber, children } = props;
@@ -23,7 +23,7 @@ const FocusTrapComponent: React.FunctionComponent<React.PropsWithChildren<{ zone
 
   return (
     <FocusTrapZone disabled={!isActive} forceFocusInsideTrap={false}>
-      <Stack horizontalAlign="start" tokens={{ childrenGap: 10 }} styles={getStackStyles(isActive)}>
+      <Stack horizontalAlign="start" tokens={stackTokens} styles={getStackStyles(isActive)}>
         <Toggle
           checked={isActive}
           onChange={toggleIsActive}
