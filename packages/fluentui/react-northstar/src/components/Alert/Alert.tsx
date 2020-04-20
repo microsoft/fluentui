@@ -315,8 +315,6 @@ Alert.propTypes = {
 
 Alert.displayName = 'Alert';
 
-Alert.deprecated_className = alertClassName;
-
 Alert.handledProps = Object.keys(Alert.propTypes) as any;
 
 Alert.create = createShorthandFactory({
