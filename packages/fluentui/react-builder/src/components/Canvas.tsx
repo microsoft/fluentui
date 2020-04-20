@@ -5,6 +5,7 @@ import { DebugSelector, FiberNavigator, Provider, themes } from '@fluentui/react
 import { JSONTreeElement } from './types';
 import { EventListener } from '@fluentui/react-component-event-listener';
 import { fiberNavFindOwnerInJSONTree, fiberNavToJSONTreeElement, renderJSONTreeToJSXElement } from '../config';
+import { DebugFrame } from './DebugFrame';
 
 const Canvas = ({
   renderJSONTreeElement,
@@ -16,6 +17,9 @@ const Canvas = ({
   onMouseUp,
   onSelectComponent,
   onSelectorHover,
+  selectedComponent,
+  onDeleteComponent,
+  onGoToParentComponent,
 }: {
   renderJSONTreeElement?: (jsonTreeElement: JSONTreeElement) => JSONTreeElement;
   style?: React.CSSProperties;
@@ -26,6 +30,9 @@ const Canvas = ({
   onMouseUp?: () => void;
   onSelectComponent?: (jsonTreeElement: JSONTreeElement) => void;
   onSelectorHover?: (jsonTreeElement: JSONTreeElement) => void;
+  selectedComponent?: JSONTreeElement;
+  onDeleteComponent?: () => void;
+  onGoToParentComponent?: () => void;
 }) => {
   const iframeId = React.useMemo(
     () =>
@@ -218,7 +225,13 @@ const Canvas = ({
 
             <DebugSelector
               active={isSelecting}
-              filter={fiberNav => fiberNavFindOwnerInJSONTree(fiberNav, jsonTree)}
+              filter={fiberNav => {
+                const owner = fiberNavFindOwnerInJSONTree(fiberNav, jsonTree);
+                if (owner?.props?.['data-builder-id'] === selectedComponent?.uuid) {
+                  return null;
+                }
+                return owner;
+              }}
               mountDocument={document}
               renderLabel={fiberNav => fiberNav.name}
               showBackground={false}
@@ -228,6 +241,14 @@ const Canvas = ({
               onSelect={handleSelectComponent}
               onHover={handleSelectorHover}
             />
+            {selectedComponent && (
+              <DebugFrame
+                target={document}
+                selector={`[data-builder-id="${selectedComponent.uuid}"]`}
+                onDelete={onDeleteComponent}
+                onGoToParent={onGoToParentComponent}
+              />
+            )}
 
             <Provider theme={themes.teams} target={document}>
               {onMouseMove && <EventListener type="mousemove" listener={handleMouseMove} target={document} />}

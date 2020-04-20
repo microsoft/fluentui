@@ -493,7 +493,7 @@ export const fiberNavToJSONTreeElement = (fiberNav: FiberNavigator): JSONTreeEle
   }
 
   return {
-    uuid: fiberNav.key,
+    uuid: keyToUUID(fiberNav.key),
     type: fiberNav.elementType,
     displayName: fiberNav.name,
     props: fiberNav.props,
@@ -527,17 +527,17 @@ export const jsonTreeMap = (tree: JSONTreeElement, cb) => {
   return newTree;
 };
 
-export const jsonTreeFindElement = (tree: JSONTreeElement, uuid: string | number): JSONTreeElement | null => {
-  // TODO: When dropping components into Flex, React prefixes the fiber key with ".$"
-  //       This prefix must be stripped to find the element in the JSON tree by its original uuid.
-  //       Otherwise, we're looking for `".$" + uuid` in the JSON tree
-  //       -- WHY?
-  //       This is apparently due to the use of Reach.children.map which prefixes the new children's keys.
-  //       If you replace React.Children.map from Flex and just return `children`, no prefixing occurs.
-  //       -- FIX?
-  //       The builder could use some other way of relating JSON tree elements to React elements besides key.
-  const keyToUUID = key => (typeof key === 'string' ? key.replace(/^\.\$/, '') : key);
+// TODO: When dropping components into Flex, React prefixes the fiber key with ".$"
+//       This prefix must be stripped to find the element in the JSON tree by its original uuid.
+//       Otherwise, we're looking for `".$" + uuid` in the JSON tree
+//       -- WHY?
+//       This is apparently due to the use of Reach.children.map which prefixes the new children's keys.
+//       If you replace React.Children.map from Flex and just return `children`, no prefixing occurs.
+//       -- FIX?
+//       The builder could use some other way of relating JSON tree elements to React elements besides key.
+const keyToUUID = key => (typeof key === 'string' ? key.replace(/^\.\$/, '') : key);
 
+export const jsonTreeFindElement = (tree: JSONTreeElement, uuid: string | number): JSONTreeElement | null => {
   const uuidFromKey = keyToUUID(uuid);
 
   if (typeof uuidFromKey === 'undefined' || uuidFromKey === null) {
@@ -556,6 +556,48 @@ export const jsonTreeFindElement = (tree: JSONTreeElement, uuid: string | number
     }
   }
   return ret;
+};
+
+export const jsonTreeFindParent = (tree: JSONTreeElement, uuid: string | number): JSONTreeElement | null => {
+  const uuidFromKey = keyToUUID(uuid);
+
+  if (typeof uuidFromKey === 'undefined' || uuidFromKey === null) {
+    return null;
+  }
+
+  let ret = null;
+  if (Array.isArray(tree?.props?.children)) {
+    if (tree.props.children.find(jte => typeof jte !== 'string' && jte.uuid === uuidFromKey)) {
+      return tree;
+    }
+    for (let i = 0; i < tree?.props?.children.length && ret === null; ++i) {
+      const e = tree?.props?.children[i];
+      if (typeof e !== 'string') {
+        ret = jsonTreeFindParent(e, uuidFromKey);
+      }
+    }
+  }
+  return ret;
+};
+
+export const jsonTreeDeleteElement = (tree: JSONTreeElement, uuid: string | number): JSONTreeElement => {
+  const uuidFromKey = keyToUUID(uuid);
+
+  const omitChildWithUuid = (tree: JSONTreeElement, uuid: string | number): JSONTreeElement => {
+    if (Array.isArray(tree?.props?.children)) {
+      tree.props.children = tree.props.children
+        .filter(jte => typeof jte === 'string' || jte.uuid !== uuid)
+        .map(jte => (typeof jte === 'string' ? jte : omitChildWithUuid(jte, uuid)));
+    }
+
+    return tree;
+  };
+
+  if (tree.uuid === uuidFromKey) {
+    return null;
+  }
+
+  return omitChildWithUuid(tree, uuid);
 };
 
 /**

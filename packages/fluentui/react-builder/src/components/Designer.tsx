@@ -11,7 +11,14 @@ import Knobs from './Knobs';
 import List from './List';
 import Toolbar from './Toolbar';
 
-import { jsonTreeFindElement, renderJSONTreeToJSXElement, resolveDraggingElement, resolveDrop } from '../config';
+import {
+  jsonTreeDeleteElement,
+  jsonTreeFindElement,
+  jsonTreeFindParent,
+  renderJSONTreeToJSXElement,
+  resolveDraggingElement,
+  resolveDrop,
+} from '../config';
 import { readTreeFromStore, removeTreeFromStore, writeTreeToStore } from '../utils/treeStore';
 
 import { DesignerMode, JSONTreeElement } from './types';
@@ -190,16 +197,28 @@ class Designer extends React.Component<any, DesignerState> {
   handleSelectComponent = jsonTreeElement => {
     const { selectedJSONTreeElement } = this.state;
 
-    if (!jsonTreeElement || (selectedJSONTreeElement && selectedJSONTreeElement.uuid === jsonTreeElement.uuid)) {
-      return;
+    if (jsonTreeElement) {
+      if (!selectedJSONTreeElement || selectedJSONTreeElement.uuid !== jsonTreeElement.uuid) {
+        console.log('Designer:handleSelectComponent - select', jsonTreeElement);
+        this.setState({
+          selectedJSONTreeElement: jsonTreeElement,
+          selectedComponentInfo: componentInfoContext.byDisplayName[jsonTreeElement.displayName],
+        });
+      }
+      if (selectedJSONTreeElement && selectedJSONTreeElement.uuid === jsonTreeElement.uuid) {
+        console.log('Designer:handleSelectComponent - deselect', jsonTreeElement);
+        this.setState({
+          selectedJSONTreeElement: null,
+          selectedComponentInfo: null,
+        });
+      }
+    } else if (selectedJSONTreeElement) {
+      console.log('Designer:handleSelectComponent - reset', jsonTreeElement);
+      this.setState({
+        selectedJSONTreeElement: null,
+        selectedComponentInfo: null,
+      });
     }
-
-    console.log('Designer:handleSelectComponent', jsonTreeElement);
-
-    this.setState({
-      selectedJSONTreeElement: jsonTreeElement,
-      selectedComponentInfo: componentInfoContext.byDisplayName[jsonTreeElement.displayName],
-    });
   };
 
   handleModeChange = mode => {
@@ -226,6 +245,35 @@ class Designer extends React.Component<any, DesignerState> {
 
   handleSelecting = isSelecting => {
     this.setState({ isSelecting });
+  };
+
+  handleDeleteComponent = () => {
+    console.log('Designer:handleDeleteComponent', this.state.selectedJSONTreeElement);
+    this.setState(state => {
+      if (!this.state.selectedJSONTreeElement.uuid) {
+        return null;
+      }
+      const modifiedTree = jsonTreeDeleteElement(state.jsonTree, this.state.selectedJSONTreeElement.uuid);
+      return {
+        jsonTree: modifiedTree,
+        selectedJSONTreeElement: null,
+        selectedComponentInfo: null,
+      };
+    });
+  };
+
+  handleGoToParentComponent = () => {
+    console.log('Designer:handleGoToParentComponent', this.state.selectedJSONTreeElement);
+    this.setState(state => {
+      const parent = jsonTreeFindParent(state.jsonTree, this.state.selectedJSONTreeElement.uuid);
+      if (!parent) {
+        return null;
+      }
+      return {
+        selectedJSONTreeElement: parent,
+        selectedComponentInfo: componentInfoContext.byDisplayName[parent.displayName],
+      };
+    });
   };
 
   render() {
@@ -348,6 +396,15 @@ class Designer extends React.Component<any, DesignerState> {
                   onSelectComponent={this.handleSelectComponent}
                   onSelectorHover={this.handleSelectorHover}
                   jsonTree={jsonTree}
+                  selectedComponent={
+                    !draggingElement &&
+                    mode !== 'use' &&
+                    selectedJSONTreeElement?.uuid &&
+                    selectedJSONTreeElement.uuid !== 'builder-root' &&
+                    selectedJSONTreeElement
+                  }
+                  onDeleteComponent={this.handleDeleteComponent}
+                  onGoToParentComponent={this.handleGoToParentComponent}
                 />
               </BrowserWindow>
 
