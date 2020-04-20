@@ -142,12 +142,17 @@ function _traverseEdge(current: Map<any, any>, value: any): Map<any, any> {
 }
 
 function _traverseMap(current: Map<any, any>, inputs: any[] | Object): Map<any, any> {
-  // The styled helper will generate the styles function and will attach the cached
-  // inputs (consisting of the default styles, customzied styles, and user provided styles.)
-  // These should be used as cache keys for deriving the memoized value.
-  if (typeof inputs === 'function' && (inputs as any).__cachedInputs__) {
-    for (const input of (inputs as any).__cachedInputs__) {
-      current = _traverseEdge(current, input);
+  if (typeof inputs === 'function') {
+    const cachedInputsFromStyled = (inputs as any).__cachedInputs__;
+    if (cachedInputsFromStyled) {
+      // The styled helper will generate the styles function and will attach the cached
+      // inputs (consisting of the default styles, customzied styles, and user provided styles.)
+      // These should be used as cache keys for deriving the memoized value.
+      for (const input of (inputs as any).__cachedInputs__) {
+        current = _traverseEdge(current, input);
+      }
+    } else {
+      current = _traverseEdge(current, inputs);
     }
   } else if (typeof inputs === 'object') {
     for (const propName in inputs) {
