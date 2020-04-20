@@ -1082,6 +1082,19 @@ describe('Dropdown', () => {
       expect(getSelectedItemNodes()).toHaveLength(1);
       expect(getSelectedItemNodeAtIndex(0)).toHaveTextContent(items[1]);
     });
+
+    it('keeps selection when the same item is selected', () => {
+      const selectedItemIndex = 0;
+      const selectedItem = items[selectedItemIndex];
+      const { clickOnItemAtIndex, triggerButtonNode } = renderDropdown({
+        defaultValue: selectedItem,
+        defaultOpen: true,
+      });
+
+      clickOnItemAtIndex(selectedItemIndex);
+
+      expect(triggerButtonNode).toHaveTextContent(selectedItem);
+    });
   });
 
   describe('getA11ySelectionMessage', () => {
