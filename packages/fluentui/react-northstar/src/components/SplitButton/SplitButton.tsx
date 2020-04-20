@@ -9,6 +9,7 @@ import {
   UIComponentProps,
   ChildrenComponentProps,
   ContentComponentProps,
+  createShorthand,
   isFromKeyboard,
   commonPropTypes,
   AutoControlledComponent,
@@ -205,7 +206,7 @@ class SplitButton extends AutoControlledComponent<WithAsProp<SplitButtonProps>, 
       offset,
       unstable_pinned,
     } = this.props;
-    const trigger = Button.create(button, {
+    const trigger = createShorthand<ButtonProps>(Button, button, {
       defaultProps: () => ({
         styles: styles.menuButton,
         primary,

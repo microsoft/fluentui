@@ -33,6 +33,12 @@ export type ShorthandFactory<P> = (
   options?: CreateShorthandOptions<P>,
 ) => React.ReactElement | null | undefined;
 
+export interface ShorthandConfig {
+  mappedProp?: string;
+  mappedArrayProp?: string;
+  allowsJSX?: boolean;
+}
+
 // ============================================================
 // Factory Creators
 // ============================================================
@@ -69,7 +75,7 @@ export function createShorthandFactory<P>({ Component, mappedProp, mappedArrayPr
   }
 
   return (value, options: CreateShorthandOptions<P>) =>
-    createShorthand({
+    createShorthandInternal({
       allowsJSX,
       Component,
       mappedProp,
@@ -83,7 +89,7 @@ export function createShorthandFactory<P>({ Component, mappedProp, mappedArrayPr
 // Factories
 // ============================================================
 
-export function createShorthand<P>({
+export function createShorthandInternal<P>({
   Component,
   mappedProp,
   mappedArrayProp,
@@ -98,6 +104,7 @@ export function createShorthand<P>({
   value?: ShorthandValue<P>;
   options?: CreateShorthandOptions<P>;
 }) {
+  // console.log("mappedProp ", mappedProp);
   if (typeof Component !== 'function' && typeof Component !== 'string') {
     throw new Error('createShorthand() Component must be a string or function.');
   }
@@ -234,3 +241,20 @@ export function createShorthand<P>({
 
   return null;
 }
+
+export const createShorthand = <P>(
+  Component: React.ElementType<P> & { shorthandConfig?: ShorthandConfig },
+  value?: ShorthandValue<P>,
+  options?: CreateShorthandOptions<P>,
+) => {
+  const { mappedProp = 'children', allowsJSX = true, mappedArrayProp = undefined } = Component.shorthandConfig || {};
+
+  return createShorthandInternal<P>({
+    Component,
+    mappedProp,
+    allowsJSX,
+    mappedArrayProp,
+    value,
+    options: options || {},
+  });
+};
