@@ -187,7 +187,6 @@ export const Alert: React.FC<WithAsProp<AlertProps>> &
       attached,
       fitted,
       dismissible,
-      actionable: false,
       visible,
     }),
     mapPropsToInlineStyles: () => ({
