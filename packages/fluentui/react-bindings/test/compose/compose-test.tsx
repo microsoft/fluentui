@@ -46,19 +46,31 @@ const TestProvider: React.FC<{ theme: ThemeInput }> = props => {
 type BaseComponentProps = { color?: string } & React.HTMLAttributes<HTMLButtonElement>;
 type BaseComponentStylesProps = { color: string | undefined; open: boolean };
 
-/* TODO: update to use compose() */
-const BaseComponent: React.FC<BaseComponentProps> = props => {
-  const { color } = props;
+const BaseComponent: React.FC<BaseComponentProps> = compose<
+  'div',
+  BaseComponentProps,
+  BaseComponentStylesProps,
+  {},
+  {}
+>(
+  (props, ref, composeOptions) => {
+    const { color } = props;
 
-  const [open, setOpen] = React.useState(false);
-  const { classes } = useStyles<BaseComponentStylesProps>('BaseComponent', {
+    const [open, setOpen] = React.useState(false);
+    const { classes } = useStyles<BaseComponentStylesProps>(composeOptions.displayName, {
+      className: composeOptions.className,
+      mapPropsToStyles: () => ({ color, open }),
+    });
+    const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
+
+    return <button className={classes.root} onClick={() => setOpen(!open)} {...unhandledProps} />;
+  },
+  {
     className: 'ui-base',
-    mapPropsToStyles: () => ({ color, open }),
-  });
-  const unhandledProps = useUnhandledProps(['className', 'color'], props);
-
-  return <button className={classes.root} onClick={() => setOpen(!open)} {...unhandledProps} />;
-};
+    displayName: 'BaseComponent',
+    handledProps: ['className', 'color'],
+  },
+);
 
 type ComposedComponentProps = { hidden?: boolean; visible?: boolean };
 type ComposedComponentStylesProps = { visible: boolean | undefined };
