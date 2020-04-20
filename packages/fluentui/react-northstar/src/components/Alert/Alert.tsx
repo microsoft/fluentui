@@ -126,7 +126,6 @@ export const alertSlotClassNames: AlertSlotClassNames = {
 
 export const Alert: React.FC<WithAsProp<AlertProps>> &
   FluentComponentStaticProps<AlertProps> & {
-    autoControlledProps: string[];
     DismissAction: typeof AlertDismissAction;
   } = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
@@ -325,7 +324,6 @@ Alert.create = createShorthandFactory({
   Component: Alert,
 });
 
-Alert.autoControlledProps = ['visible'];
 Alert.DismissAction = AlertDismissAction;
 /**
  * An Alert displays a brief, important message to attract a user's attention without interrupting their current task.
