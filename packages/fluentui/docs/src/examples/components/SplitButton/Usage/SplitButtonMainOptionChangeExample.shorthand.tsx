@@ -1,4 +1,4 @@
-import { useRangeKnob } from '@fluentui/docs-components';
+import { useNumberKnob } from '@fluentui/docs-components';
 import { SplitButton } from '@fluentui/react-northstar';
 import * as React from 'react';
 
@@ -9,7 +9,7 @@ const items = [
 ];
 
 const SplitButtonMainOptionChangeExample = () => {
-  const [activeIndex, setActiveIndex] = useRangeKnob<number>({ name: 'activeIndex', min: 0, max: 2, initialValue: 0 });
+  const [activeIndex, setActiveIndex] = useNumberKnob({ name: 'activeIndex', min: 0, max: 2, initialValue: 0 });
   const activeItem = items[activeIndex];
 
   return (

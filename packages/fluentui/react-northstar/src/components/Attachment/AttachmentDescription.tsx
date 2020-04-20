@@ -9,6 +9,7 @@ interface AttachmentDescriptionOwnProps {}
 export interface AttachmentDescriptionProps extends AttachmentDescriptionOwnProps, WithAsProp<BoxProps> {}
 
 export type AttachmentDescriptionStylesProps = never;
+export const attachmentDescriptionClassName = 'ui-attachment__description';
 
 /**
  * A AttachmentDescription provides more detailed information about the Attachment.
@@ -19,13 +20,12 @@ const AttachmentDescription = compose<
   WithAsProp<BoxProps>,
   BoxStylesProps
 >(Box, {
-  className: 'ui-attachment__description',
+  className: attachmentDescriptionClassName,
   displayName: 'AttachmentDescription',
 
   overrideStyles: true,
 }) as React.FC<AttachmentDescriptionProps> & {
   create?: ShorthandFactory<AttachmentDescriptionProps>;
-  deprecated_className: string;
 };
 
 AttachmentDescription.defaultProps = {

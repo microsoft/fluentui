@@ -4,7 +4,7 @@ import * as keyboardKey from 'keyboard-key';
 import Accordion from 'src/components/Accordion/Accordion';
 import { isConformant, handlesAccessibility } from 'test/specs/commonTests';
 import { mountWithProvider, mountWithProviderAndGetComponent } from 'test/utils';
-import AccordionTitle from 'src/components/Accordion/AccordionTitle';
+import { accordionTitleSlotClassNames } from 'src/components/Accordion/AccordionTitle';
 import { ReactWrapper, CommonWrapper } from 'enzyme';
 
 const panels = [
@@ -27,7 +27,7 @@ const panels = [
 
 const getTitleButtonAtIndex = (wrapper: ReactWrapper, index: number): CommonWrapper => {
   return wrapper
-    .find(`.${AccordionTitle.slotClassNames.contentWrapper}`)
+    .find(`.${accordionTitleSlotClassNames.contentWrapper}`)
     .filterWhere(n => typeof n.type() === 'string')
     .at(index);
 };

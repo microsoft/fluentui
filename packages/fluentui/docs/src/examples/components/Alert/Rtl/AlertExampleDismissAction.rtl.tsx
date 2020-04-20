@@ -6,10 +6,12 @@ const AlertExampleDismissActionRtl = () => (
   <Alert
     actions={[
       {
+        key: 'content-1',
         content: 'مرحبا',
         primary: true,
       },
       {
+        key: 'content-2',
         content: 'عالم',
       },
     ]}

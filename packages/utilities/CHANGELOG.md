@@ -1,6 +1,36 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Thu, 09 Apr 2020 12:24:31 GMT and should not be manually modified.
+This log was last generated on Sun, 19 Apr 2020 02:02:09 GMT and should not be manually modified.
+
+<!-- Start content -->
+
+## [7.15.10](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.15.10)
+
+Sun, 19 Apr 2020 02:02:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.15.8..@uifabric/utilities_v7.15.10)
+
+### Patches
+
+- classNamesFunction: add warning on cache full ([PR #12712](https://github.com/microsoft/fluentui/pull/12712) by xgao@microsoft.com)
+
+## [7.15.8](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.15.8)
+
+Thu, 16 Apr 2020 12:37:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.15.7..@uifabric/utilities_v7.15.8)
+
+### Patches
+
+- Update 'on' function to accept React events ([PR #12717](https://github.com/microsoft/fluentui/pull/12717) by behowell@microsoft.com)
+
+## [7.15.7](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.15.7)
+
+Thu, 16 Apr 2020 04:01:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.15.6..@uifabric/utilities_v7.15.7)
+
+### Patches
+
+- Readme: Remove irrelevant details; Fabric=>Fluent wording updates ([PR #12508](https://github.com/microsoft/fluentui/pull/12508) by elcraig@microsoft.com)
+- merge: null values are now preserved. ([PR #12646](https://github.com/microsoft/fluentui/pull/12646) by dzearing@microsoft.com)
 
 ## 7.15.6
 Thu, 09 Apr 2020 12:24:31 GMT
@@ -1611,4 +1641,3 @@ Mon, 16 Jan 2017 21:57:33 GMT
 ### Breaking changes
 
 - Introducing a new package to contain all baseline utilities that are commonly used amongst Fabric components.
-
