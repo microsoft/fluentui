@@ -190,7 +190,6 @@ export const Alert: React.FC<WithAsProp<AlertProps>> &
       design,
       styles,
       variables,
-      visible,
     }),
     rtl: context.rtl,
   });
