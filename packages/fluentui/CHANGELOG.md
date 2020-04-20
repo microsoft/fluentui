@@ -50,6 +50,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ### Fixes
 - Replace `escape` with `encodeURIComponent` in the svg urls in Teams theme @mnajdova ([#12742](https://github.com/microsoft/fluentui/pull/12742))
+- Prevent value clear on same item selection in `Dropdown` @silviuavram ([#12784](https://github.com/microsoft/fluentui/pull/12784))
 
 <!--------------------------------[ v0.48.0 ]------------------------------- -->
 ## [v0.48.0](https://github.com/OfficeDev/office-ui-fabric-react/tree/fluentui_v0.48.0) (2020-04-15)
