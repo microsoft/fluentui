@@ -104,7 +104,6 @@ export function createShorthandInternal<P>({
   value?: ShorthandValue<P>;
   options?: CreateShorthandOptions<P>;
 }) {
-  // console.log("mappedProp ", mappedProp);
   if (typeof Component !== 'function' && typeof Component !== 'string') {
     throw new Error('createShorthand() Component must be a string or function.');
   }
