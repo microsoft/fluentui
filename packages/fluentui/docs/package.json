@@ -37,8 +37,6 @@
     "access": "public"
   },
   "scripts": {
-    "clean:force": "gulp clean:cache && gulp clean:docs && gulp clean:docs:component-info",
-    "build:info": "gulp build:docs:component-info",
     "build": "gulp build:docs",
     "start": "gulp docs"
   }
