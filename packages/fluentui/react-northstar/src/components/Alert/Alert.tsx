@@ -204,7 +204,7 @@ export const Alert: React.FC<WithAsProp<AlertProps>> &
   const handleDismissOverrides = (predefinedProps: ButtonProps) => ({
     onClick: (e: React.SyntheticEvent, buttonProps: ButtonProps) => {
       _.invoke(predefinedProps, 'onClick', e, buttonProps);
-      _.invoke(props, 'onVisibleChange', e, { ...props, visible });
+      _.invoke(props, 'onVisibleChange', e, { ...props, visible: false });
       setVisible(false);
     },
   });
@@ -325,8 +325,6 @@ Alert.displayName = 'Alert';
 Alert.deprecated_className = alertClassName;
 
 Alert.handledProps = Object.keys(Alert.propTypes) as any;
-
-// AlertFC.slotClassNames = alertSlotClassNames;
 
 Alert.create = createShorthandFactory({
   Component: Alert,
