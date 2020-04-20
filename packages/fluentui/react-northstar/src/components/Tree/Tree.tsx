@@ -28,6 +28,7 @@ import {
   ComponentEventHandler,
 } from '../../types';
 import { hasSubtree, removeItemAtIndex, getSiblings, TreeContext, TreeRenderContextValue } from './utils';
+import * as keyboardKey from 'keyboard-key';
 
 export interface TreeSlotClassNames {
   item: string;
@@ -140,8 +141,8 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
 
   static autoControlledProps = ['activeItemIds', 'selectedItemIds'];
 
-  static Item = TreeItem;
-  static Title = TreeTitle;
+  static Item: typeof TreeItem = TreeItem;
+  static Title: typeof TreeTitle = TreeTitle;
 
   static getAutoControlledStateFromProps(nextProps: TreeProps, prevState: TreeState) {
     const { items, selectable } = nextProps;
@@ -232,7 +233,7 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
     }
 
     // if the target is equal to currentTarget it means treeItem should be collapsed, not procced with selection
-    if (isExpandedSelectableParent && e.target === e.currentTarget) {
+    if (isExpandedSelectableParent && e.target === e.currentTarget && keyboardKey.getCode(e) === keyboardKey.Enter) {
       return;
     }
 
@@ -240,18 +241,23 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
     // not parent itself, therefore not procced with selection
 
     if (isExpandedSelectableParent) {
-      const selectItems = items => {
-        items.forEach(item => {
-          if (selectedItemIds.indexOf(item['id']) === -1) {
-            if (item.items) {
-              selectItems(item.items);
-            } else {
-              selectedItemIds.push(item['id']);
+      if (this.isAllGroupChecked(items)) {
+        const selectedItems = this.getAllSelectableChildrenId(items);
+        selectedItemIds = selectedItemIds.filter(id => selectedItems.indexOf(id) === -1);
+      } else {
+        const selectItems = items => {
+          items.forEach(item => {
+            if (selectedItemIds.indexOf(item['id']) === -1) {
+              if (item.items) {
+                selectItems(item.items);
+              } else {
+                selectedItemIds.push(item['id']);
+              }
             }
-          }
-        });
-      };
-      selectItems(items);
+          });
+        };
+        selectItems(items);
+      }
       this.setSelectedItemIds(e, selectedItemIds);
       return;
     }
@@ -273,7 +279,10 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
     if (treeItemProps.selectable) {
       this.processItemsForSelection(e, treeItemProps);
       // do not continue with collapsing if the parent is selectable and selection on parent was executed
-      if (treeItemProps.selectableParent && treeItemProps.expanded && e.target !== e.currentTarget) {
+      if (
+        treeItemProps.selectableParent &&
+        ((treeItemProps.expanded && e.target !== e.currentTarget) || keyboardKey.getCode(e) === keyboardKey.Spacebar)
+      ) {
         return;
       }
     }
