@@ -246,7 +246,7 @@ export const createShorthand = <P>(
   value?: ShorthandValue<P>,
   options?: CreateShorthandOptions<P>,
 ) => {
-  const { mappedProp = 'children', allowsJSX = true, mappedArrayProp = undefined } = Component.shorthandConfig || {};
+  const { mappedProp = 'children', allowsJSX = true, mappedArrayProp } = Component.shorthandConfig || {};
 
   return createShorthandInternal<P>({
     Component,
