@@ -598,7 +598,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
 
     return (
       <Ref innerRef={this.buttonRef}>
-        {createShorthand<ButtonProps>(Button, triggerButton, {
+        {createShorthand<WithAsProp<ButtonProps>>(Button, triggerButton, {
           defaultProps: () => ({
             className: dropdownSlotClassNames.triggerButton,
             content,

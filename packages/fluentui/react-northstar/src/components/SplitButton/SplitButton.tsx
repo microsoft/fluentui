@@ -206,7 +206,7 @@ class SplitButton extends AutoControlledComponent<WithAsProp<SplitButtonProps>, 
       offset,
       unstable_pinned,
     } = this.props;
-    const trigger = createShorthand<ButtonProps>(Button, button, {
+    const trigger = createShorthand<WithAsProp<ButtonProps>>(Button, button, {
       defaultProps: () => ({
         styles: styles.menuButton,
         primary,

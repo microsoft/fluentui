@@ -69,7 +69,7 @@ class ButtonGroup extends UIComponent<WithAsProp<ButtonGroupProps>, any> {
     return (
       <ElementType {...unhandledProps} className={classes.root}>
         {_.map(buttons, (button, idx) =>
-          createShorthand<ButtonProps>(Button, button, {
+          createShorthand<WithAsProp<ButtonProps>>(Button, button, {
             defaultProps: () => ({
               circular,
               styles: this.getStyleForButtonIndex(styles, idx === 0, idx === buttons.length - 1),
