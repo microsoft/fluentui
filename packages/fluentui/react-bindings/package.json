@@ -10,7 +10,7 @@
     "@fluentui/react-compose": "^0.2.6",
     "@fluentui/state": "^0.48.0",
     "@fluentui/styles": "^0.48.0",
-    "@uifabric/utilities": "^7.15.9",
+    "@uifabric/utilities": "^7.15.10",
     "classnames": "^2.2.6",
     "fela": "^10.6.1",
     "lodash": "^4.17.15"

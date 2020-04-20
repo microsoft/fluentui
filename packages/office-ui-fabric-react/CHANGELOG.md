@@ -1,8 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 17 Apr 2020 12:34:08 GMT and should not be manually modified.
+This log was last generated on Sun, 19 Apr 2020 02:02:09 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.107.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.107.1)
+
+Sun, 19 Apr 2020 02:02:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.107.0..office-ui-fabric-react_v7.107.1)
+
+### Patches
+
+- Enable classnames caching for label and icon ([PR #12712](https://github.com/microsoft/fluentui/pull/12712) by xgao@microsoft.com)
 
 ## [7.107.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.107.0)
 
