@@ -33,6 +33,9 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Restricted prop sets in the `Alert` component which are passed to styles functions @assuncaocharles ([#12777](https://github.com/microsoft/fluentui/pull/12777))
 - removed `className` (`deprecated_className`) and `slotClassNames` static props from the fluent components, constants for className and slotClassNames should be used instead @mnajdova ([#12765](https://github.com/microsoft/fluentui/pull/12765))
 
+### Fixes
+- Visually align checkbox and label elements in `Checkbox` component @silviuavram ([#12590](https://github.com/microsoft/fluentui/pull/12590))
+
 ### Features
 - Add `body` slot to `Attachment` component @layershifter ([#12674](https://github.com/microsoft/fluentui/pull/12674))
 - Export `componentNameClassName` and `componentNameSlotClassName` const inside `Accordion`*, `Alert`*, `Animation`, `Attachment`*, `Avatar` @mnajdova ([#12706](https://github.com/microsoft/fluentui/pull/12706))
