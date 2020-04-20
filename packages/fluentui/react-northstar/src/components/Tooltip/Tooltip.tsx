@@ -251,7 +251,6 @@ const Tooltip: React.FC<TooltipProps> &
   return element;
 };
 
-Tooltip.deprecated_className = tooltipClassName;
 Tooltip.displayName = 'Tooltip';
 
 Tooltip.defaultProps = {

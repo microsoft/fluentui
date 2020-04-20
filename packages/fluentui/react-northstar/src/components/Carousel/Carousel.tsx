@@ -135,8 +135,6 @@ class Carousel extends AutoControlledComponent<WithAsProp<CarouselProps>, Carous
 
   static deprecated_className = carouselClassName;
 
-  static slotClassNames = carouselSlotClassNames;
-
   static propTypes = {
     ...commonPropTypes.createCommon({
       content: false,

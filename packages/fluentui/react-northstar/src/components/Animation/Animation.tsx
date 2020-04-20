@@ -146,7 +146,6 @@ export const animationClassName = 'ui-animation';
  * An Animation provides animation effects to rendered elements.
  */
 const Animation: React.FC<AnimationProps> & {
-  deprecated_className: string;
   handledProps: (keyof AnimationProps)[];
 } = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
@@ -262,7 +261,6 @@ const Animation: React.FC<AnimationProps> & {
   return element;
 };
 
-Animation.deprecated_className = animationClassName;
 Animation.displayName = 'Animation';
 
 Animation.propTypes = {
