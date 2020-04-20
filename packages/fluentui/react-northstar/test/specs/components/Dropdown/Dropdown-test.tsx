@@ -1086,12 +1086,22 @@ describe('Dropdown', () => {
     it('keeps selection when the same item is selected', () => {
       const selectedItemIndex = 0;
       const selectedItem = items[selectedItemIndex];
-      const { clickOnItemAtIndex, triggerButtonNode } = renderDropdown({
+      const { clickOnItemAtIndex, triggerButtonNode, clickOnTriggerButton, keyDownOnItemsList } = renderDropdown({
         defaultValue: selectedItem,
         defaultOpen: true,
       });
 
       clickOnItemAtIndex(selectedItemIndex);
+
+      expect(triggerButtonNode).toHaveTextContent(selectedItem);
+
+      clickOnTriggerButton();
+      keyDownOnItemsList('Enter');
+
+      expect(triggerButtonNode).toHaveTextContent(selectedItem);
+
+      clickOnTriggerButton();
+      keyDownOnItemsList('Tab');
 
       expect(triggerButtonNode).toHaveTextContent(selectedItem);
     });
