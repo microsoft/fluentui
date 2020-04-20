@@ -179,6 +179,7 @@ const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
         variables,
       }),
       rtl: context.rtl,
+      composeOptions,
       unstable_props: props,
     });
 
