@@ -162,7 +162,7 @@ export const Alert: React.FC<WithAsProp<AlertProps>> &
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Alert.handledProps, props);
 
-  const getA11Props = useAccessibility(props.accessibility, {
+  const getA11yProps = useAccessibility(props.accessibility, {
     debugName: Alert.displayName,
     mapPropsToBehavior: () => ({
       warning,
@@ -211,14 +211,14 @@ export const Alert: React.FC<WithAsProp<AlertProps>> &
       <>
         {Text.create(header, {
           defaultProps: () =>
-            getA11Props('header', {
+            getA11yProps('header', {
               className: alertSlotClassNames.header,
               styles: resolvedStyles.header,
             }),
         })}
         {Box.create(content, {
           defaultProps: () =>
-            getA11Props('content', {
+            getA11yProps('content', {
               className: alertSlotClassNames.content,
               styles: resolvedStyles.content,
             }),
@@ -230,14 +230,14 @@ export const Alert: React.FC<WithAsProp<AlertProps>> &
       <>
         {Box.create(icon, {
           defaultProps: () =>
-            getA11Props('icon', {
+            getA11yProps('icon', {
               className: alertSlotClassNames.icon,
               styles: resolvedStyles.icon,
             }),
         })}
         {Box.create(body, {
           defaultProps: () =>
-            getA11Props('body', {
+            getA11yProps('body', {
               className: alertSlotClassNames.body,
               styles: resolvedStyles.body,
               id: bodyId,
@@ -249,7 +249,7 @@ export const Alert: React.FC<WithAsProp<AlertProps>> &
 
         {ButtonGroup.create(actions, {
           defaultProps: () =>
-            getA11Props('actions', {
+            getA11yProps('actions', {
               className: alertSlotClassNames.actions,
               styles: resolvedStyles.actions,
             }),
@@ -257,7 +257,7 @@ export const Alert: React.FC<WithAsProp<AlertProps>> &
         {dismissible &&
           AlertDismissAction.create(dismissAction, {
             defaultProps: () =>
-              getA11Props('dismissAction', {
+              getA11yProps('dismissAction', {
                 danger,
                 warning,
                 info,
@@ -272,7 +272,7 @@ export const Alert: React.FC<WithAsProp<AlertProps>> &
 
   const element = (
     <ElementType
-      {...getA11Props('root', {
+      {...getA11yProps('root', {
         className: classes.root,
         onFocus: handleFocus,
         ...unhandledProps,
