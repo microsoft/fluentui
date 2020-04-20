@@ -4,8 +4,8 @@
 
 ### Source code
 
-[MSLabel](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric/Controls/MSLabel.swift)
+[MSLabel](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI/Controls/MSLabel.swift)
 
 ### Sample code
 
-[MSLabel demo](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric.Demo/OfficeUIFabric.Demo/Demos/MSLabelDemoController.swift)
+[MSLabel demo](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI.Demo/FluentUI.Demo/Demos/MSLabelDemoController.swift)
