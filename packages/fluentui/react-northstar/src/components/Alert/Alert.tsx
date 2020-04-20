@@ -148,7 +148,6 @@ export const Alert: React.FC<WithAsProp<AlertProps>> &
     design,
     styles,
     children,
-    defaultVisible,
     actions,
     dismissAction,
     content,
@@ -158,7 +157,7 @@ export const Alert: React.FC<WithAsProp<AlertProps>> &
   } = props;
 
   const [visible, setVisible] = useAutoControlled({
-    defaultValue: defaultVisible,
+    defaultValue: props.defaultVisible,
     value: props.visible,
     initialValue: true,
   });
