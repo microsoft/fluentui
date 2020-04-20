@@ -111,12 +111,9 @@ export interface AlertProps extends UIComponentProps, ContentComponentProps<Shor
   body?: ShorthandValue<BoxProps>;
 }
 
-export type AlertStylesProps = Pick<
-  AlertProps,
-  'danger' | 'warning' | 'info' | 'success' | 'attached' | 'fitted' | 'dismissible'
-> & {
-  actionable: boolean;
-};
+export type AlertStylesProps = Required<
+  Pick<AlertProps, 'danger' | 'warning' | 'info' | 'success' | 'attached' | 'fitted' | 'dismissible'>
+>;
 
 export const alertClassName = 'ui-alert';
 export const alertSlotClassNames: AlertSlotClassNames = {
