@@ -47,8 +47,6 @@ class Reaction extends UIComponent<WithAsProp<ReactionProps>> {
 
   static deprecated_className = reactionClassName;
 
-  static slotClassNames: ReactionSlotClassNames;
-
   static displayName = 'Reaction';
 
   static propTypes = {
@@ -98,7 +96,6 @@ class Reaction extends UIComponent<WithAsProp<ReactionProps>> {
 }
 
 Reaction.create = createShorthandFactory({ Component: Reaction, mappedProp: 'content' });
-Reaction.slotClassNames = reactionSlotClassNames;
 
 /**
  * A Reaction indicates user's emotion or perception.

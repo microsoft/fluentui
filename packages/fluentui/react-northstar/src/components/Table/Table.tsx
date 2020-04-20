@@ -58,8 +58,6 @@ class Table extends UIComponent<WithAsProp<TableProps>> {
   static Cell = TableCell;
   static Row = TableRow;
 
-  static slotClassNames = tableSlotClassNames;
-
   static propTypes = {
     ...commonPropTypes.createCommon({
       content: false,

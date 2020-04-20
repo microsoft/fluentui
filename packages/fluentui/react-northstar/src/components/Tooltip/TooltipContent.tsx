@@ -109,7 +109,6 @@ const TooltipContent: React.FC<WithAsProp<TooltipContentProps>> &
 };
 
 TooltipContent.displayName = 'TooltipContent';
-TooltipContent.deprecated_className = tooltipContentClassName;
 
 TooltipContent.propTypes = {
   ...commonPropTypes.createCommon(),

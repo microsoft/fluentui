@@ -63,7 +63,6 @@ const CardPreview: React.FC<WithAsProp<CardPreviewProps>> & FluentComponentStati
 };
 
 CardPreview.displayName = 'CardPreview';
-CardPreview.deprecated_className = cardPreviewClassName;
 
 CardPreview.propTypes = {
   ...commonPropTypes.createCommon(),

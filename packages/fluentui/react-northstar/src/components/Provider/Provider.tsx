@@ -92,7 +92,6 @@ export const providerClassName = 'ui-provider';
  * The Provider passes the CSS-in-JS renderer, theme styles and other settings to Fluent UI components.
  */
 const Provider: React.FC<WithAsProp<ProviderProps>> & {
-  deprecated_className: string;
   Consumer: typeof ProviderConsumer;
   handledProps: (keyof ProviderProps)[];
 } = props => {
@@ -198,7 +197,6 @@ const Provider: React.FC<WithAsProp<ProviderProps>> & {
   );
 };
 
-Provider.deprecated_className = providerClassName;
 Provider.displayName = 'Provider';
 
 Provider.defaultProps = {
