@@ -482,19 +482,20 @@ export default function isConformant(
   // ----------------------------------------
   // Handles className
   // ----------------------------------------
-  describe('static className (common)', () => {
+  describe('className const (common)', () => {
     const componentClassName = info.componentClassName || `ui-${Component.displayName}`.toLowerCase();
     const getClassesOfRootElement = component => {
-      const classes = component
+      return component
         .find('[className]')
         .hostNodes()
         .at(wrapperComponent ? 1 : 0)
         .prop('className');
-      return classes;
     };
 
-    test(`is a static equal to "${componentClassName}"`, () => {
-      expect(Component.deprecated_className).toEqual(componentClassName);
+    const constClassName = _.camelCase(`${Component.displayName}ClassName`);
+
+    test(`exports a const equal to "${componentClassName}"`, () => {
+      expect(FluentUI[constClassName]).toEqual(componentClassName);
     });
 
     test(`is applied to the root element`, () => {

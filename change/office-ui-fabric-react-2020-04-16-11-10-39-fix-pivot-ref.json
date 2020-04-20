@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Pivot: componentRef now resolves correctly, unnecessary DOM element removed.",
-  "packageName": "office-ui-fabric-react",
-  "email": "dzearing@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-04-16T18:10:39.565Z"
-}

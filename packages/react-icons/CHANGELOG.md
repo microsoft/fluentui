@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-icons
 
-This log was last generated on Thu, 16 Apr 2020 12:37:31 GMT and should not be manually modified.
+This log was last generated on Fri, 17 Apr 2020 12:34:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.1.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-icons_v0.1.3)
+
+Fri, 17 Apr 2020 12:34:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-icons_v0.1.2..@fluentui/react-icons_v0.1.3)
+
+### Patches
+
+- added set of svg icons ([PR #12641](https://github.com/microsoft/fluentui/pull/12641) by mnajdova@gmail.com)
 
 ## [0.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-icons_v0.1.2)
 
