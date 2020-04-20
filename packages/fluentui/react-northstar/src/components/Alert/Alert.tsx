@@ -130,7 +130,7 @@ export const alertSlotClassNames: AlertSlotClassNames = {
 export const Alert: React.FC<WithAsProp<AlertProps>> &
   FluentComponentStaticProps<AlertProps> & {
     autoControlledProps: string[];
-    DismissAction: ShorthandValue<typeof AlertDismissAction>;
+    DismissAction: typeof AlertDismissAction;
   } = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(Alert.displayName, context.telemetry);
