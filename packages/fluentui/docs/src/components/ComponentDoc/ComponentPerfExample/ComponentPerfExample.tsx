@@ -32,7 +32,7 @@ const ComponentPerfExample: React.FC<ComponentPerfExampleProps> = props => {
               items={[
                 {
                   content: 'Performance',
-                  key: 'perf',
+                  key: 'perfomance',
                   active: currentChart === 'perf',
                   onClick: () => setCurrentChart('perf'),
                 },
