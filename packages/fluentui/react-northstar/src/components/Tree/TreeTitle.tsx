@@ -1,5 +1,8 @@
 import { Accessibility, treeTitleBehavior, TreeTitleBehaviorProps } from '@fluentui/accessibility';
 import { getElementType, useUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import Box, { BoxProps } from '../Box/Box';
+import { SupportedIntrinsicInputProps } from '../../utils/htmlPropsUtils';
+import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
@@ -21,7 +24,12 @@ import {
   ProviderContextPrepared,
   WithAsProp,
   withSafeTypeForAs,
+  ShorthandValue,
 } from '../../types';
+
+export interface TreeTitleSlotClassNames {
+  indicator: string;
+}
 
 export interface TreeTitleProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
   /** Accessibility behavior if overridden by the user. */
@@ -49,12 +57,28 @@ export interface TreeTitleProps extends UIComponentProps, ChildrenComponentProps
 
   /** Size of the tree containing this title without any children. */
   treeSize?: number;
+
+  /** Whether or not tree title is part of the selectable parent. */
+  selectableParent?: boolean;
+
+  /** A selection indicator icon can be customized. */
+  selectionIndicator?: ShorthandValue<BoxProps>;
+
+  /** A selection indicator can appear disabled and be unable to change states. */
+  disabled?: SupportedIntrinsicInputProps['disabled'];
+
+  /** A state of selection indicator. */
+  selected?: boolean;
+
+  /** Whether or not tree title is selectable. */
+  selectable?: boolean;
 }
 
-export type TreeTitleStylesProps = never;
+export type TreeTitleStylesProps = Pick<TreeTitleProps, 'selected' | 'selectable' | 'disabled' | 'selectableParent'>;
 export const treeTitleClassName = 'ui-tree__title';
 
-const TreeTitle: React.FC<WithAsProp<TreeTitleProps>> & FluentComponentStaticProps<TreeTitleProps> = props => {
+const TreeTitle: React.FC<WithAsProp<TreeTitleProps>> &
+  FluentComponentStaticProps<TreeTitleProps> & { slotClassNames: TreeTitleSlotClassNames } = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(TreeTitle.displayName, context.telemetry);
   setStart();
@@ -71,6 +95,12 @@ const TreeTitle: React.FC<WithAsProp<TreeTitleProps>> & FluentComponentStaticPro
     styles,
     treeSize,
     variables,
+    selectionIndicator,
+    disabled,
+    selected,
+    selectable,
+    selectableParent,
+    expanded,
   } = props;
 
   const getA11Props = useAccessibility(accessibility, {
@@ -78,6 +108,7 @@ const TreeTitle: React.FC<WithAsProp<TreeTitleProps>> & FluentComponentStaticPro
     actionHandlers: {
       performClick: e => {
         e.preventDefault();
+        e.stopPropagation();
         handleClick(e);
       },
     },
@@ -86,37 +117,60 @@ const TreeTitle: React.FC<WithAsProp<TreeTitleProps>> & FluentComponentStaticPro
       level,
       index,
       treeSize,
+      selected,
+      selectable,
+      selectableParent,
     }),
     rtl: context.rtl,
   });
-  const { classes } = useStyles<TreeTitleStylesProps>(TreeTitle.displayName, {
-    className: treeTitleClassName,
+  const { classes, styles: resolvedStyles } = useStyles<TreeTitleStylesProps>(TreeTitle.displayName, {
+    className: TreeTitle.deprecated_className,
     mapPropsToInlineStyles: () => ({
       className,
       design,
       styles,
       variables,
+      selected,
+      selectableParent,
+      disabled,
+      selectable,
     }),
     rtl: context.rtl,
   });
 
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(TreeTitle.handledProps, props);
-
   const handleClick = e => {
     _.invoke(props, 'onClick', e, props);
   };
+
+  const selectIndicator = Box.create(selectionIndicator, {
+    defaultProps: () => ({
+      as: 'span',
+      selected,
+      ...(selectableParent && { expanded }),
+      ...getA11Props('indicator', {
+        className: TreeTitle.slotClassNames.indicator,
+        ...(selectable &&
+          !hasSubtree &&
+          _.isEmpty(selectionIndicator) && { styles: resolvedStyles.selectionIndicator }),
+      }),
+    }),
+  });
 
   const element = (
     <ElementType
       {...getA11Props('root', {
         className: classes.root,
         onClick: handleClick,
+        selected,
         ...rtlTextContainer.getAttributes({ forElements: [children, content] }),
         ...unhandledProps,
       })}
     >
       {childrenExist(children) ? children : content}
+
+      {selectable && selectIndicator}
     </ElementType>
   );
   setEnd();
@@ -126,6 +180,10 @@ const TreeTitle: React.FC<WithAsProp<TreeTitleProps>> & FluentComponentStaticPro
 
 TreeTitle.displayName = 'TreeTitle';
 
+TreeTitle.slotClassNames = {
+  indicator: `${TreeTitle.deprecated_className}__selection-indicator`,
+};
+
 TreeTitle.propTypes = {
   ...commonPropTypes.createCommon(),
   hasSubtree: PropTypes.bool,
@@ -133,10 +191,15 @@ TreeTitle.propTypes = {
   level: PropTypes.number,
   onClick: PropTypes.func,
   expanded: PropTypes.bool,
+  selected: PropTypes.bool,
+  selectable: PropTypes.bool,
+  selectableParent: PropTypes.bool,
   treeSize: PropTypes.number,
+  selectionIndicator: customPropTypes.shorthandAllowingChildren,
 };
 TreeTitle.defaultProps = {
   as: 'a',
+  selectionIndicator: {},
   accessibility: treeTitleBehavior,
 };
 TreeTitle.handledProps = Object.keys(TreeTitle.propTypes) as any;

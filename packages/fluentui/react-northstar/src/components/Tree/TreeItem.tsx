@@ -27,6 +27,7 @@ import {
   ProviderContextPrepared,
 } from '../../types';
 import TreeTitle, { TreeTitleProps } from './TreeTitle';
+import { BoxProps } from '../Box/Box';
 import { hasSubtree, TreeContext } from './utils';
 
 export interface TreeItemProps extends UIComponentProps, ChildrenComponentProps {
@@ -81,6 +82,18 @@ export interface TreeItemProps extends UIComponentProps, ChildrenComponentProps 
 
   /** Properties for TreeTitle. */
   title?: ShorthandValue<TreeTitleProps>;
+
+  /** Whether or not the item can be selectable. */
+  selectable?: boolean;
+
+  /** A state of selection indicator. */
+  selected?: boolean;
+
+  /** A selection indicator icon can be customized. */
+  selectionIndicator?: ShorthandValue<BoxProps>;
+
+  /** Whether or not tree item is part of the selectable parent. */
+  selectableParent?: boolean;
 }
 
 export type TreeItemStylesProps = Required<Pick<TreeItemProps, 'level'>>;
@@ -105,9 +118,14 @@ const TreeItem: React.FC<WithAsProp<TreeItemProps>> & FluentComponentStaticProps
     styles,
     variables,
     treeSize,
+    selectionIndicator,
+    selectableParent,
+    selected,
+    selectable,
   } = props;
 
   const hasSubtreeItem = hasSubtree(props);
+
   const { onFocusParent, onSiblingsExpand, onFocusFirstChild, onTitleClick } = React.useContext(TreeContext);
 
   const getA11Props = useAccessibility(accessibility, {
@@ -156,6 +174,9 @@ const TreeItem: React.FC<WithAsProp<TreeItemProps>> & FluentComponentStaticProps
       index,
       hasSubtree: hasSubtreeItem,
       treeSize,
+      selected,
+      selectable,
+      selectableParent,
     }),
     rtl: context.rtl,
   });
@@ -193,7 +214,6 @@ const TreeItem: React.FC<WithAsProp<TreeItemProps>> & FluentComponentStaticProps
 
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(TreeItem.handledProps, props);
-
   const element = (
     <ElementType
       {...getA11Props('root', {
@@ -207,12 +227,16 @@ const TreeItem: React.FC<WithAsProp<TreeItemProps>> & FluentComponentStaticProps
         : TreeTitle.create(title, {
             defaultProps: () =>
               getA11Props('title', {
-                expanded,
                 hasSubtree: hasSubtreeItem,
                 as: hasSubtreeItem ? 'span' : 'a',
                 level,
                 treeSize,
+                expanded,
                 index,
+                selected,
+                selectable,
+                selectableParent,
+                selectionIndicator,
               }),
             render: renderItemTitle,
             overrideProps: handleTitleOverrides,
@@ -246,6 +270,10 @@ TreeItem.propTypes = {
   renderItemTitle: PropTypes.func,
   treeSize: PropTypes.number,
   title: customPropTypes.itemShorthand,
+  selectionIndicator: customPropTypes.shorthandAllowingChildren,
+  selected: PropTypes.bool,
+  selectable: PropTypes.bool,
+  selectableParent: PropTypes.bool,
 };
 TreeItem.defaultProps = {
   accessibility: treeItemBehavior,
