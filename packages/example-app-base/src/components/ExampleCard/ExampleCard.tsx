@@ -168,11 +168,7 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
               </div>
               {isCodeVisible ? (
                 <EditorWrapper
-                  // Disable editor for list examples until crash can be figured out
-                  useEditor={
-                    !/^export (const|class) (List|DetailsList|GroupedList)\w+Example/m.test(latestCode) &&
-                    !/<(List|DetailsList|GroupedList)\b/.test(latestCode)
-                  }
+                  useEditor={false}
                   code={latestCode}
                   supportedPackages={editorSupportedPackages}
                   editorClassName={classNames.code}
