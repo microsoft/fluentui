@@ -1,18 +1,10 @@
-import { Toolbar, toolbarMenuBehavior, Accessibility, ToolbarMenuBehaviorProps } from '@fluentui/react-northstar';
+import { Toolbar } from '@fluentui/react-northstar';
 import * as React from 'react';
 import { CallVideoIcon, MoreIcon, SkypeLogoIcon } from '@fluentui/react-icons-northstar';
-
-// behavior is overridden, as focus was causing inconsistency in displaying focus outline for screener tests
-const notAutoFocusToolbarMenuBehavior: Accessibility<ToolbarMenuBehaviorProps> = props => {
-  const behavior = toolbarMenuBehavior(props);
-  behavior.focusZone.props.shouldFocusOnMount = false;
-  return behavior;
-};
 
 const ToolbarExampleVariables = () => {
   return (
     <Toolbar
-      accessibility={notAutoFocusToolbarMenuBehavior}
       variables={{
         background: 'lightblue',
         dividerBorder: 'red',
