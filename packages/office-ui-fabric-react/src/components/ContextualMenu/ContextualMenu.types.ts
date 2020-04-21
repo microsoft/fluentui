@@ -276,8 +276,7 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
 /**
  * {@docCategory ContextualMenu}
  */
-export interface IContextualMenuItemRenderProps {
-  item: IContextualMenuItem;
+export interface IContextualMenuItemRenderProps extends IContextualMenuItem {
   index: number;
   focusableElementIndex: number;
   totalItemCount: number;
