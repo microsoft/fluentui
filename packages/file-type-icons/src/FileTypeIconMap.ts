@@ -333,7 +333,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   pdf: {
     extensions: ['pdf'],
   },
-  powerbi: { },
+  powerbi: {},
   photo: {
     extensions: [
       'arw',
