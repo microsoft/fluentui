@@ -90,6 +90,15 @@ export const controlsPagesIos: INavPage[] = [
           require.ensure([], require => cb(require<any>('../../../pages/Controls/NavBarPage/NavBarPage').NavBarPage)),
       },
       {
+        title: 'Pill Button Bar',
+        url: '#/controls/ios/pillbuttonbar',
+        component: () => <LoadingComponent title="Pill Button Bar" />,
+        getComponent: cb =>
+          require.ensure([], require =>
+            cb(require<any>('../../../pages/Controls/PillButtonBarPage/PillButtonBarPage').PillButtonBarPage),
+          ),
+      },
+      {
         title: 'Pivot',
         url: '#/controls/ios/pivot',
         component: () => <LoadingComponent title="Pivot" />,
