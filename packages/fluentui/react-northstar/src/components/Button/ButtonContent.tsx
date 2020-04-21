@@ -1,7 +1,7 @@
 import { compose, ComponentWithAs } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 
-import { commonPropTypes, createShorthandFactory, ShorthandFactory, SizeValue } from '../../utils';
+import { commonPropTypes, ShorthandConfig, SizeValue } from '../../utils';
 import Box, { BoxProps } from '../Box/Box';
 import { ButtonStylesProps } from 'src/components/Button/Button';
 
@@ -24,15 +24,14 @@ const ButtonContent = compose<'div', ButtonContentProps, ButtonStylesProps, BoxP
   handledProps: ['size'],
 
   overrideStyles: true,
-}) as ComponentWithAs<'div', ButtonContentProps> & { create: ShorthandFactory<ButtonContentProps> };
+}) as ComponentWithAs<'div', ButtonContentProps> & { shorthandConfig: ShorthandConfig<ButtonContentProps> };
 
 ButtonContent.propTypes = {
   ...commonPropTypes.createCommon(),
   size: customPropTypes.size,
 };
-ButtonContent.create = createShorthandFactory({
-  Component: ButtonContent,
+ButtonContent.shorthandConfig = {
   mappedProp: 'content',
-});
+};
 
 export default ButtonContent;

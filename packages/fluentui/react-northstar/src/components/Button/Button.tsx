@@ -25,6 +25,8 @@ import {
   rtlTextContainer,
   SizeValue,
   ShorthandFactory,
+  createShorthand,
+  ShorthandConfig,
 } from '../../utils';
 import Box, { BoxProps } from '../Box/Box';
 import Loader, { LoaderProps } from '../Loader/Loader';
@@ -187,7 +189,7 @@ const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
     const ElementType = getElementType(props);
 
     const renderIcon = () => {
-      return Box.create(icon, {
+      return createShorthand(Box, icon, {
         defaultProps: () =>
           getA11Props('icon', {
             styles: resolvedStyles.icon,
@@ -196,7 +198,7 @@ const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
     };
 
     const renderLoader = () => {
-      return Loader.create(loader || {}, {
+      return createShorthand(Loader, loader || {}, {
         defaultProps: () =>
           getA11Props('loader', {
             role: undefined,
@@ -236,7 +238,7 @@ const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
           <>
             {loading && renderLoader()}
             {iconPosition !== 'after' && renderIcon()}
-            {ButtonContent.create(content, {
+            {createShorthand(ButtonContent, content, {
               defaultProps: () => getA11Props('content', { as: 'span', size }),
             })}
             {iconPosition === 'after' && renderIcon()}
@@ -281,7 +283,7 @@ const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
   },
 ) as ComponentWithAs<'button', ButtonProps> & {
   create: ShorthandFactory<ButtonProps>;
-
+  shorthandConfig: ShorthandConfig<ButtonProps>;
   Content: typeof ButtonContent;
   Group: typeof ButtonGroup;
 };
