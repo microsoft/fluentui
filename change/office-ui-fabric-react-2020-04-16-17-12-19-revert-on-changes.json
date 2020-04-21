@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Update ColorRectangle and ColorSlider to handle native events when using the 'on' utility",
+  "packageName": "office-ui-fabric-react",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-04-17T00:11:41.405Z"
+}
