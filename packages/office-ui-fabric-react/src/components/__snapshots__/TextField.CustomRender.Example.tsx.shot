@@ -17,7 +17,7 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
         text-overflow: ellipsis;
       }
       & > *:not(:first-child) {
-        margin-top: 20px;
+        margin-top: 4px;
       }
       & > *:not(.ms-StackItem) {
         flex-shrink: 1;
@@ -60,6 +60,7 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
               flex-direction: row;
               flex-wrap: nowrap;
               height: auto;
+              max-width: 300px;
               width: auto;
             }
             & > * {
@@ -375,13 +376,14 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
               flex-direction: row;
               flex-wrap: nowrap;
               height: auto;
+              max-width: 300px;
               width: auto;
             }
             & > * {
               text-overflow: ellipsis;
             }
             & > *:not(:first-child) {
-              margin-left: 8px;
+              margin-left: 4px;
             }
             & > *:not(.ms-StackItem) {
               flex-shrink: 1;
