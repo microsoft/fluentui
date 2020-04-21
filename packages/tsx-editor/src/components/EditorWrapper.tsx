@@ -48,8 +48,8 @@ export const EditorWrapper: React.FunctionComponent<IEditorWrapperProps> = props
   const onTransformFinished = React.useCallback(
     (result: ITransformedExample) => {
       setTransformResult(result);
-      if (props.onTransformFinished) {
-        props.onTransformFinished(result);
+      if (onTransformFinishedFromProps) {
+        onTransformFinishedFromProps(result);
       }
     },
     [onTransformFinishedFromProps],
