@@ -32,10 +32,6 @@ import {
 import PortalInner from '../Portal/PortalInner';
 import TooltipContent, { TooltipContentProps } from './TooltipContent';
 
-export interface TooltipSlotClassNames {
-  content: string;
-}
-
 export interface TooltipProps
   extends StyledComponentProps<TooltipProps>,
     ChildrenComponentProps<React.ReactElement>,
@@ -82,6 +78,8 @@ export interface TooltipProps
   trigger?: JSX.Element;
 }
 
+export const tooltipClassName = 'ui-tooltip';
+
 /**
  * A Tooltip displays additional non-modal information on top of its target element.
  * Tooltip doesn't receive focus and cannot contain focusable elements.
@@ -92,7 +90,6 @@ export interface TooltipProps
 const Tooltip: React.FC<TooltipProps> &
   FluentComponentStaticProps<TooltipProps> & {
     Content: typeof TooltipContent;
-    slotClassNames: TooltipSlotClassNames;
   } = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(Tooltip.displayName, context.telemetry);
@@ -254,12 +251,7 @@ const Tooltip: React.FC<TooltipProps> &
   return element;
 };
 
-Tooltip.deprecated_className = 'ui-tooltip';
 Tooltip.displayName = 'Tooltip';
-
-Tooltip.slotClassNames = {
-  content: `${Tooltip.deprecated_className}__content`,
-};
 
 Tooltip.defaultProps = {
   align: 'center',

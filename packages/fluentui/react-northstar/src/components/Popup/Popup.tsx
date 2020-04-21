@@ -47,10 +47,6 @@ export type RestrictedClickEvents = 'click' | 'focus';
 export type RestrictedHoverEvents = 'hover' | 'focus' | 'context';
 export type PopupEventsArray = RestrictedClickEvents[] | RestrictedHoverEvents[];
 
-export interface PopupSlotClassNames {
-  content: string;
-}
-
 export interface PopupProps
   extends StyledComponentProps<PopupProps>,
     ChildrenComponentProps,
@@ -120,12 +116,13 @@ export interface PopupProps
   autoFocus?: boolean | AutoFocusZoneProps;
 }
 
+export const popupClassName = 'ui-popup';
+
 /**
  * A Popup displays a non-modal, often rich content, on top of its target element.
  */
 const Popup: React.FC<PopupProps> &
   FluentComponentStaticProps<PopupProps> & {
-    slotClassNames: PopupSlotClassNames;
     Content: typeof PopupContent;
   } = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
@@ -545,11 +542,7 @@ const Popup: React.FC<PopupProps> &
   return element;
 };
 
-Popup.deprecated_className = 'ui-popup';
 Popup.displayName = 'Popup';
-Popup.slotClassNames = {
-  content: `${Popup.deprecated_className}__content`,
-};
 
 Popup.propTypes = {
   ...commonPropTypes.createCommon({

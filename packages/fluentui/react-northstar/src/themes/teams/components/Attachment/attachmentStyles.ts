@@ -1,10 +1,10 @@
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import { svgIconClassName } from '@fluentui/react-icons-northstar';
 
 import { AttachmentStylesProps } from '../../../../components/Attachment/Attachment';
-import AttachmentAction from '../../../../components/Attachment/AttachmentAction';
+import { attachmentActionClassName } from '../../../../components/Attachment/AttachmentAction';
 import { AttachmentVariables } from './attachmentVariables';
 import { pxToRem } from '../../../../utils';
-import SvgIcon from '../../../../components/SvgIcon/SvgIcon';
 import getBorderFocusStyles from '../../getBorderFocusStyles';
 
 const attachmentStyles: ComponentSlotStylesPrepared<AttachmentStylesProps, AttachmentVariables> = {
@@ -51,11 +51,11 @@ const attachmentStyles: ComponentSlotStylesPrepared<AttachmentStylesProps, Attac
           backgroundColor: v.focusBackgroundColor,
           color: v.focusColor,
 
-          [`& .${AttachmentAction.deprecated_className}`]: {
+          [`& .${attachmentActionClassName}`]: {
             color: v.siblingsFocusColor,
           },
 
-          [`& .${SvgIcon.deprecated_className}`]: {
+          [`& .${svgIconClassName}`]: {
             color: v.siblingsFocusColor,
           },
         },
@@ -64,11 +64,11 @@ const attachmentStyles: ComponentSlotStylesPrepared<AttachmentStylesProps, Attac
           background: v.backgroundColorHover,
           color: v.textColorHover,
 
-          [`& .${AttachmentAction.deprecated_className}`]: {
+          [`& .${attachmentActionClassName}`]: {
             color: v.siblingsHoverColor,
           },
 
-          [`& .${SvgIcon.deprecated_className}`]: {
+          [`& .${svgIconClassName}`]: {
             color: v.siblingsHoverColor,
           },
         },

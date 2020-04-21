@@ -1,6 +1,17 @@
 # Change Log - @uifabric/monaco-editor
 
-This log was last generated on Wed, 25 Mar 2020 12:30:04 GMT and should not be manually modified.
+This log was last generated on Thu, 16 Apr 2020 04:01:45 GMT and should not be manually modified.
+
+<!-- Start content -->
+
+## [0.5.7](https://github.com/microsoft/fluentui/tree/@uifabric/monaco-editor_v0.5.7)
+
+Thu, 16 Apr 2020 04:01:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/monaco-editor_v0.5.5..@uifabric/monaco-editor_v0.5.7)
+
+### Patches
+
+- Readme: Fabric=>Fluent wording updates ([PR #12508](https://github.com/microsoft/fluentui/pull/12508) by elcraig@microsoft.com)
 
 ## 0.5.5
 Wed, 25 Mar 2020 12:30:04 GMT

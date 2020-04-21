@@ -1,6 +1,6 @@
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { DropdownVariables } from './dropdownVariables';
-import DropdownItem, { DropdownItemProps } from '../../../../components/Dropdown/DropdownItem';
+import { DropdownItemProps, dropdownItemSlotClassNames } from '../../../../components/Dropdown/DropdownItem';
 import getBorderFocusStyles from '../../getBorderFocusStyles';
 import { pxToRem } from '../../../../utils';
 import checkableIndicatorUrl from './checkableIndicatorUrl';
@@ -30,12 +30,12 @@ const dropdownItemStyles: ComponentSlotStylesPrepared<DropdownItemStylesProps, D
         color: v.listItemColorHover,
         backgroundColor: v.listItemBackgroundColorHover,
         ...(p.hasHeader && {
-          [`& .${DropdownItem.slotClassNames.header}`]: {
+          [`& .${dropdownItemSlotClassNames.header}`]: {
             color: v.listItemColorHover,
           },
         }),
         ...(p.hasContent && {
-          [`& .${DropdownItem.slotClassNames.content}`]: {
+          [`& .${dropdownItemSlotClassNames.content}`]: {
             color: v.listItemColorHover,
           },
         }),

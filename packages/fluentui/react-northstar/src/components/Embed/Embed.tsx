@@ -65,10 +65,15 @@ export interface EmbedState {
   iframeLoaded: boolean;
 }
 
+export const embedClassName = 'ui-embed';
+export const embedSlotClassNames: EmbedSlotClassNames = {
+  control: `${embedClassName}__control`,
+};
+
 class Embed extends AutoControlledComponent<WithAsProp<EmbedProps>, EmbedState> {
   static create: ShorthandFactory<EmbedProps>;
 
-  static deprecated_className = 'ui-embed';
+  static deprecated_className = embedClassName;
 
   static displayName = 'Embed';
 
@@ -94,10 +99,6 @@ class Embed extends AutoControlledComponent<WithAsProp<EmbedProps>, EmbedState> 
   };
 
   static autoControlledProps = ['active'];
-
-  static slotClassNames: EmbedSlotClassNames = {
-    control: `${Embed.deprecated_className}__control`,
-  };
 
   actionHandlers = {
     performClick: event => this.handleClick(event),
@@ -188,7 +189,7 @@ class Embed extends AutoControlledComponent<WithAsProp<EmbedProps>, EmbedState> 
         {controlVisible &&
           Box.create(control, {
             defaultProps: () => ({
-              className: Embed.slotClassNames.control,
+              className: embedSlotClassNames.control,
               styles: styles.control,
             }),
           })}

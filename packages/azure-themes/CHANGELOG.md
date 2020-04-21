@@ -1,6 +1,17 @@
 # Change Log - @uifabric/azure-themes
 
-This log was last generated on Wed, 25 Mar 2020 12:30:04 GMT and should not be manually modified.
+This log was last generated on Thu, 16 Apr 2020 04:01:45 GMT and should not be manually modified.
+
+<!-- Start content -->
+
+## [7.0.59](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.0.59)
+
+Thu, 16 Apr 2020 04:01:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.0.50..@uifabric/azure-themes_v7.0.59)
+
+### Patches
+
+- Readme: Fabric=>Fluent wording updates ([PR #12508](https://github.com/microsoft/fluentui/pull/12508) by elcraig@microsoft.com)
 
 ## 7.0.50
 Wed, 25 Mar 2020 12:30:04 GMT
@@ -174,4 +185,3 @@ Mon, 21 Jan 2019 13:36:01 GMT
 Thu, 17 Jan 2019 13:34:42 GMT
 
 *Initial release*
-

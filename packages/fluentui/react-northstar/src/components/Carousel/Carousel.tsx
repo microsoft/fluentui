@@ -78,6 +78,8 @@ export interface CarouselProps extends UIComponentProps, ChildrenComponentProps 
   /** Shorthand array of props for CarouselItem. */
   items?: ShorthandCollection<CarouselItemProps>;
 
+  thumbnails?: boolean;
+
   /** Shorthand array of props for the buttons of the CarouselNavigation. */
   navigation?: ShorthandValue<CarouselNavigationProps> | ShorthandCollection<CarouselNavigationItemProps>;
 
@@ -117,20 +119,21 @@ export interface CarouselState {
   isFromKeyboard: boolean;
 }
 
+export const carouselClassName = 'ui-carousel';
+export const carouselSlotClassNames: CarouselSlotClassNames = {
+  itemsContainer: `${carouselClassName}__itemscontainer`,
+  paddleNext: `${carouselClassName}__paddlenext`,
+  paddlePrevious: `${carouselClassName}__paddleprevious`,
+  pagination: `${carouselClassName}__pagination`,
+  navigation: `${carouselClassName}__navigation`,
+};
+
 class Carousel extends AutoControlledComponent<WithAsProp<CarouselProps>, CarouselState> {
   static create: ShorthandFactory<CarouselProps>;
 
   static displayName = 'Carousel';
 
-  static deprecated_className = 'ui-carousel';
-
-  static slotClassNames: CarouselSlotClassNames = {
-    itemsContainer: `${Carousel.deprecated_className}__itemscontainer`,
-    paddleNext: `${Carousel.deprecated_className}__paddlenext`,
-    paddlePrevious: `${Carousel.deprecated_className}__paddleprevious`,
-    pagination: `${Carousel.deprecated_className}__pagination`,
-    navigation: `${Carousel.deprecated_className}__navigation`,
-  };
+  static deprecated_className = carouselClassName;
 
   static propTypes = {
     ...commonPropTypes.createCommon({
@@ -149,6 +152,7 @@ class Carousel extends AutoControlledComponent<WithAsProp<CarouselProps>, Carous
     paddleNext: customPropTypes.itemShorthand,
     paddlesPosition: PropTypes.string,
     paddlePrevious: customPropTypes.itemShorthand,
+    thumbnails: PropTypes.bool,
   };
 
   static autoControlledProps = ['activeIndex'];
@@ -277,7 +281,7 @@ class Carousel extends AutoControlledComponent<WithAsProp<CarouselProps>, Carous
     return (
       <div className={classes.itemsContainerWrapper} {...accessibility.attributes.itemsContainerWrapper}>
         <div
-          className={cx(Carousel.slotClassNames.itemsContainer, classes.itemsContainer)}
+          className={cx(carouselSlotClassNames.itemsContainer, classes.itemsContainer)}
           {...accessibility.attributes.itemsContainer}
           {...applyAccessibilityKeyHandlers(accessibility.keyHandlers.itemsContainer, unhandledProps)}
         >
@@ -390,7 +394,7 @@ class Carousel extends AutoControlledComponent<WithAsProp<CarouselProps>, Carous
         <Ref innerRef={this.paddlePreviousRef}>
           {CarouselPaddle.create(paddlePrevious, {
             defaultProps: () => ({
-              className: Carousel.slotClassNames.paddlePrevious,
+              className: carouselSlotClassNames.paddlePrevious,
               previous: true,
               hidden: items !== undefined && !circular && activeIndex === 0,
               ...accessibility.attributes.paddlePrevious,
@@ -403,7 +407,7 @@ class Carousel extends AutoControlledComponent<WithAsProp<CarouselProps>, Carous
         <Ref innerRef={this.paddleNextRef}>
           {CarouselPaddle.create(paddleNext, {
             defaultProps: () => ({
-              className: Carousel.slotClassNames.paddleNext,
+              className: carouselSlotClassNames.paddleNext,
               next: true,
               hidden: items !== undefined && !circular && activeIndex === items.length - 1,
               ...accessibility.attributes.paddleNext,
@@ -418,7 +422,7 @@ class Carousel extends AutoControlledComponent<WithAsProp<CarouselProps>, Carous
   };
 
   renderNavigation = () => {
-    const { getItemPositionText, navigation, items } = this.props;
+    const { getItemPositionText, navigation, items, thumbnails } = this.props;
 
     if (!items || !items.length) {
       return null;
@@ -429,9 +433,10 @@ class Carousel extends AutoControlledComponent<WithAsProp<CarouselProps>, Carous
     return navigation ? (
       CarouselNavigation.create(navigation, {
         defaultProps: () => ({
-          className: Carousel.slotClassNames.navigation,
+          className: carouselSlotClassNames.navigation,
           iconOnly: true,
           activeIndex,
+          thumbnails,
         }),
         overrideProps: (predefinedProps: CarouselNavigationItemProps) => ({
           onItemClick: (e: React.SyntheticEvent, itemProps: CarouselNavigationItemProps) => {
@@ -446,7 +451,7 @@ class Carousel extends AutoControlledComponent<WithAsProp<CarouselProps>, Carous
     ) : (
       <Text
         aria-hidden="true"
-        className={Carousel.slotClassNames.pagination}
+        className={carouselSlotClassNames.pagination}
         content={getItemPositionText(activeIndex, items.length)}
       />
     );

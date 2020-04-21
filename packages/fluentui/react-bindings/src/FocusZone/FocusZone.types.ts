@@ -56,7 +56,8 @@ export interface FocusZoneProps extends FocusZoneProperties, React.HTMLAttribute
   defaultTabbableElement?: (root: HTMLElement) => HTMLElement;
 
   /**
-   * If a default tabbable element should be force focused on FocusZone mount.
+   * Determines if a default tabbable element should be force focused on FocusZone mount.
+   * @default false
    */
   shouldFocusOnMount?: boolean;
 
