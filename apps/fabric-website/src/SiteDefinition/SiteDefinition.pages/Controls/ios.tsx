@@ -130,7 +130,7 @@ export const controlsPagesIos: INavPage[] = [
     isCategory: true,
     pages: [
       {
-        title: 'MessageBar',
+        title: 'Message Bar',
         url: '#/controls/ios/messagebar',
         component: () => <LoadingComponent title="Message Bar" />,
         getComponent: cb =>

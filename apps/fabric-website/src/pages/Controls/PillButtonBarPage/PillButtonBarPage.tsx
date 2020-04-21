@@ -24,13 +24,7 @@ function _otherSections(platform?: Platforms): IPageSectionProps<Platforms>[] | 
         {
           sectionName: 'Implementation',
           editUrl: baseUrl + 'docs/ios/PillButtonBarImplementation.md',
-          content: (
-            <Markdown>
-              {
-                require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/PillButtonBarPage/docs/ios/PillButtonBarImplementation.md') as string
-              }
-            </Markdown>
-          ),
+          content: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/PillButtonBarPage/docs/ios/PillButtonBarImplementation.md') as string,
         },
       ];
   }

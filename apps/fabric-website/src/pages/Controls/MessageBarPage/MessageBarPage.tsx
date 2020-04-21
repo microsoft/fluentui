@@ -24,13 +24,7 @@ function _otherSections(platform?: Platforms): IPageSectionProps<Platforms>[] | 
         {
           sectionName: 'Implementation',
           editUrl: baseUrl + 'docs/ios/MessageBarImplementation.md',
-          content: (
-            <Markdown>
-              {
-                require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/MessageBarPage/docs/ios/MessageBarImplementation.md') as string
-              }
-            </Markdown>
-          ),
+          content: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/MessageBarPage/docs/ios/MessageBarImplementation.md') as string,
         },
       ];
   }
