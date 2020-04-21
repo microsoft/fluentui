@@ -391,7 +391,7 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
         const isSubtree = hasSubtree(item);
         const isSubtreeExpanded = isSubtree && this.isActiveItem(id);
         const isSelectedItem = this.isSelectedItem(item);
-        const incompleteChecked = this.isIncompletedGroupChecked(item);
+        const indeterminate = this.isIncompletedGroupChecked(item);
 
         if (!this.itemsRef.has(id)) {
           this.itemsRef.set(id, React.createRef<HTMLElement>());
@@ -410,7 +410,7 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
             index: index + 1, // Used for aria-posinset and it's 1-based.
             contentRef: this.itemsRef.get(id),
             treeSize: items.length,
-            incompleteChecked,
+            indeterminate,
           }),
         });
 

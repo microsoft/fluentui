@@ -5,7 +5,7 @@ import { TreeTitleStylesProps } from '../../../../components/Tree/TreeTitle';
 import { TreeTitleVariables } from './treeTitleVariables';
 import { pxToRem } from '../../../../utils';
 import checkboxIndicatorUrl from '../Checkbox/checkboxIndicatorUrl';
-import checkboxIndicatorIndeterminatedUrl from '../Checkbox/checkboxIndicatorIndeterminatedUrl';
+import checkboxIndicatorIndeterminatedUrl from './checkboxIndicatorIndeterminatedUrl';
 
 const treeTitleStyles: ComponentSlotStylesPrepared<TreeTitleStylesProps, TreeTitleVariables> = {
   root: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => ({
@@ -47,7 +47,7 @@ const treeTitleStyles: ComponentSlotStylesPrepared<TreeTitleStylesProps, TreeTit
       backgroundImage: checkboxIndicatorUrl(v.checkedIndicatorColor, v.checkedBackground),
     }),
 
-    ...(p.incompleteChecked && {
+    ...(p.indeterminate && {
       borderColor: v.checkedBorderColor,
       backgroundImage: checkboxIndicatorIndeterminatedUrl(v.checkedIndicatorColor, v.checkedBackground),
     }),
