@@ -1,6 +1,11 @@
 import { pxToRem } from '../../../../utils';
 
 export interface CardVariables {
+  backgroundColor: string;
+  backgroundColorDisabled: string;
+  backgroundColorFocus: string;
+  backgroundColorHover: string;
+  backgroundColorPressed: string;
   borderStyle: string;
   borderColor: string;
   borderColorDisabled: string;
@@ -39,11 +44,16 @@ export interface CardVariables {
 
 export default (siteVars): CardVariables => {
   return {
+    backgroundColor: siteVars.colorScheme.default.background,
+    backgroundColorDisabled: siteVars.colorScheme.default.backgroundDisabled,
+    backgroundColorFocus: siteVars.colorScheme.default.backgroundFocus,
+    backgroundColorHover: siteVars.colorScheme.default.backgroundHover,
+    backgroundColorPressed: siteVars.colorScheme.default.backgroundPressed,
     borderStyle: 'solid',
     borderColor: siteVars.colors.black,
     borderWidth: siteVars.borderWidth,
     borderRadius: pxToRem(4),
-    boxShadow: undefined,
+    boxShadow: 'none',
     boxShadowHover: siteVars.shadowLevel3,
     boxShadowFocus: siteVars.shadowLevel2,
     boxShadowPressed: siteVars.shadowLevel1,

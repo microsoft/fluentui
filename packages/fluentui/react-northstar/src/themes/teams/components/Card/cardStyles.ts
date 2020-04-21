@@ -19,8 +19,10 @@ const cardStyles: ComponentSlotStylesPrepared<CardStylesProps, CardVariables> = 
       padding: v.padding,
       width: v.width,
       height: v.height,
+      backgroundColor: v.backgroundColor,
       boxShadow: v.boxShadow,
       ':hover': {
+        backgroundColor: v.backgroundColorHover,
         boxShadow: v.boxShadowHover,
       },
 
@@ -39,9 +41,11 @@ const cardStyles: ComponentSlotStylesPrepared<CardStylesProps, CardVariables> = 
       ...(p.actionable && {
         cursor: 'pointer',
         ':focus-visible': {
+          backgroundColor: v.backgroundColorFocus,
           boxShadow: v.boxShadowFocus,
         },
         ':active': {
+          backgroundColor: v.backgroundColorPressed,
           boxShadow: v.boxShadowPressed,
         },
       }),
@@ -49,15 +53,19 @@ const cardStyles: ComponentSlotStylesPrepared<CardStylesProps, CardVariables> = 
       ...(p.disabled && {
         cursor: 'not-allowed',
         color: v.colorDisabled,
+        backgroundColor: v.backgroundColorDisabled,
         borderColor: v.borderColorDisabled,
         boxShadow: v.boxShadowDisabled,
         ':hover': {
+          backgroundColor: v.backgroundColorDisabled,
           boxShadow: v.boxShadowDisabled,
         },
         ':focus-visible': {
+          backgroundColor: v.backgroundColorDisabled,
           boxShadow: v.boxShadowDisabled,
         },
         ':active': {
+          backgroundColor: v.backgroundColorDisabled,
           boxShadow: v.boxShadowDisabled,
         },
       }),
