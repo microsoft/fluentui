@@ -13,7 +13,6 @@ import { ThemeContext } from 'react-fela';
 export interface VideoProps extends UIComponentProps {
   /**
    * Accessibility behavior if overridden by the user.
-   * @available alertWarningBehavior
    */
   accessibility?: Accessibility<VideoBehaviorProps>;
 
