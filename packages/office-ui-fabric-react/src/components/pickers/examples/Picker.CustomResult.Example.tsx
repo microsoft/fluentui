@@ -377,7 +377,7 @@ export class PickerCustomResultExample extends React.Component<{}, IPeoplePicker
     });
   };
 
-  private _onFilterChanged(filterText: string, items: IFullDocumentCardProps[]): IFullDocumentCardProps[] {
+  private _onFilterChanged(filterText: string, items?: IFullDocumentCardProps[]): IFullDocumentCardProps[] {
     if (!items)
        return [];
     
