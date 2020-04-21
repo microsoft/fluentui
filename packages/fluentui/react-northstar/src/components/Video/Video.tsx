@@ -6,7 +6,7 @@ import { Accessibility, VideoBehaviorProps, videoBehavior } from '@fluentui/acce
 import { createShorthandFactory, UIComponentProps, commonPropTypes } from '../../utils';
 import { WithAsProp, withSafeTypeForAs, FluentComponentStaticProps } from '../../types';
 import { getElementType, useStyles, useUnhandledProps, useTelemetry, useAccessibility } from '@fluentui/react-bindings';
-import { ProviderContextPrepared, ComponentVariablesInput } from '@fluentui/react-northstar';
+import { ProviderContextPrepared } from '@fluentui/react-northstar';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 
