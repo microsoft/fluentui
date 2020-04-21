@@ -28,7 +28,7 @@ export type FluentComponentStaticProps<P = {}> = {
   deprecated_className: string;
   handledProps: (keyof P)[];
   create: ShorthandFactory<P>;
-  shorthandConfig?: ShorthandConfig;
+  shorthandConfig?: ShorthandConfig<P>;
 };
 
 // ========================================================

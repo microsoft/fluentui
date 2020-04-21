@@ -33,9 +33,9 @@ export type ShorthandFactory<P> = (
   options?: CreateShorthandOptions<P>,
 ) => React.ReactElement | null | undefined;
 
-export interface ShorthandConfig {
-  mappedProp?: string;
-  mappedArrayProp?: string;
+export interface ShorthandConfig<P> {
+  mappedProp?: keyof P;
+  mappedArrayProp?: keyof P;
   allowsJSX?: boolean;
 }
 
@@ -241,11 +241,17 @@ export function createShorthandInternal<P>({
   return null;
 }
 
-export const createShorthand = <P>(
-  Component: React.ElementType<P> & { shorthandConfig?: ShorthandConfig },
-  value?: ShorthandValue<P>,
-  options?: CreateShorthandOptions<P>,
-) => {
+export function createShorthand<TFunctionComponent extends React.FunctionComponent>(
+  Component: TFunctionComponent & { shorthandConfig?: ShorthandConfig<PropsOf<TFunctionComponent>> },
+  value?: ShorthandValue<PropsOf<TFunctionComponent>>,
+  options?: CreateShorthandOptions<PropsOf<TFunctionComponent>>,
+): React.ReactElement;
+export function createShorthand<TInstance extends React.Component>(
+  Component: { new (...args: any[]): TInstance } & { shorthandConfig?: ShorthandConfig<PropsOf<TInstance>> },
+  value?: ShorthandValue<PropsOf<TInstance>>,
+  options?: CreateShorthandOptions<PropsOf<TInstance>>,
+): React.ReactElement;
+export function createShorthand<P>(Component, value?, options?) {
   const { mappedProp = 'children', allowsJSX = true, mappedArrayProp } = Component.shorthandConfig || {};
 
   return createShorthandInternal<P>({
@@ -256,4 +262,4 @@ export const createShorthand = <P>(
     value,
     options: options || {},
   });
-};
+}

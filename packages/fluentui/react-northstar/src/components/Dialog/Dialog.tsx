@@ -298,11 +298,11 @@ class Dialog extends AutoControlledComponent<WithAsProp<DialogProps>, DialogStat
     } = this.props;
     const { open } = this.state;
 
-    const cancelElement = createShorthand<WithAsProp<ButtonProps>>(Button, cancelButton, {
+    const cancelElement = createShorthand(Button, cancelButton, {
       overrideProps: this.handleCancelButtonOverrides,
     });
 
-    const confirmElement = createShorthand<WithAsProp<ButtonProps>>(Button, confirmButton, {
+    const confirmElement = createShorthand(Button, confirmButton, {
       defaultProps: () => ({
         primary: true,
       }),
@@ -341,7 +341,7 @@ class Dialog extends AutoControlledComponent<WithAsProp<DialogProps>, DialogStat
               ...accessibility.attributes.header,
             }),
           })}
-          {createShorthand<WithAsProp<ButtonProps>>(Button, headerAction, {
+          {createShorthand(Button, headerAction, {
             defaultProps: () => ({
               className: dialogSlotClassNames.headerAction,
               styles: styles.headerAction,
