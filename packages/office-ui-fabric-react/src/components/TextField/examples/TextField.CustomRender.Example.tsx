@@ -5,10 +5,9 @@ import { Icon, IIconStyles } from 'office-ui-fabric-react/lib/Icon';
 import { Callout } from 'office-ui-fabric-react/lib/Callout';
 import { IStackTokens, Stack, IStackStyles } from 'office-ui-fabric-react/lib/Stack';
 import { Text } from 'office-ui-fabric-react/lib/Text';
-import { getId, IRenderFunction, memoizeFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { IRenderFunction, memoizeFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { getTheme, FontWeights, ITheme } from 'office-ui-fabric-react/lib/Styling';
 import { useBoolean, useId } from '@uifabric/react-hooks';
-import { ProgressIndicatorPageProps } from '../../ProgressIndicator/ProgressIndicator.doc';
 
 export interface ITextFieldCustomRenderExampleState {
   isCalloutVisible: boolean;
