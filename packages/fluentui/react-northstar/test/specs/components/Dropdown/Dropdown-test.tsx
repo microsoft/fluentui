@@ -75,7 +75,7 @@ describe('Dropdown', () => {
       });
 
       expect(getClearIndicatorNode()).not.toHaveAttribute('tabindex');
-      expect(getClearIndicatorNode()).not.toHaveAttribute('role');
+      expect(getClearIndicatorNode()).not.toHaveAttribute('role', 'button');
     });
   });
 
