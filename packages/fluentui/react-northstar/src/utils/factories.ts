@@ -1,4 +1,5 @@
 import { mergeStyles } from '@fluentui/styles';
+import { ComponentWithAs } from '@fluentui/react-compose';
 import cx from 'classnames';
 import * as _ from 'lodash';
 import * as React from 'react';
@@ -253,6 +254,11 @@ export function createShorthand<TInstance extends React.Component>(
   Component: { new (...args: any[]): TInstance } & { shorthandConfig?: ShorthandConfig<PropsOf<TInstance>> },
   value?: ShorthandValue<PropsOf<TInstance>>,
   options?: CreateShorthandOptions<PropsOf<TInstance>>,
+): React.ReactElement;
+export function createShorthand<E extends React.ElementType, P>(
+  Component: ComponentWithAs<E, P> & { shorthandConfig?: ShorthandConfig<P> },
+  value?: ShorthandValue<P>,
+  options?: CreateShorthandOptions<P>,
 ): React.ReactElement;
 export function createShorthand<P>(Component, value?, options?) {
   const { mappedProp = 'children', allowsJSX = true, mappedArrayProp } = Component.shorthandConfig || {};

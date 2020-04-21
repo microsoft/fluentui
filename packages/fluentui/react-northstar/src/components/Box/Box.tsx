@@ -86,9 +86,8 @@ const Box = compose<'div', BoxProps, BoxStylesProps, {}, {}>(
     displayName: 'Box',
     handledProps: ['accessibility', 'as', 'className', 'children', 'content', 'design', 'styles', 'variables'],
   },
-) as ComponentWithAs<'div', BoxProps> & { create: ShorthandFactory<BoxProps>; deprecated_className: string };
+) as ComponentWithAs<'div', BoxProps> & { create: ShorthandFactory<BoxProps> };
 
-Box.deprecated_className = boxClassName;
 Box.propTypes = commonPropTypes.createCommon();
 Box.create = createShorthandFactory({ Component: Box });
 
