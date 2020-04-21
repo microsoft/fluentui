@@ -59,15 +59,12 @@ const cardStyles: ComponentSlotStylesPrepared<CardStylesProps, CardVariables> = 
         borderColor: v.borderColorDisabled,
         boxShadow: v.boxShadowDisabled,
         ':hover': {
-          backgroundColor: v.backgroundColorDisabled,
           boxShadow: v.boxShadowDisabled,
         },
         ':focus-visible': {
-          backgroundColor: v.backgroundColorDisabled,
           boxShadow: v.boxShadowDisabled,
         },
         ':active': {
-          backgroundColor: v.backgroundColorDisabled,
           boxShadow: v.boxShadowDisabled,
         },
       }),
