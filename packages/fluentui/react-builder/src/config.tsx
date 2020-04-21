@@ -661,7 +661,9 @@ export const knobs = {
 
   literal: ({ options, value, onChange }) => (
     <select onChange={e => onChange(e.target.value)} value={value}>
-      {options.map(opt => (
+      {options?.map((
+        opt, // FIXME the optional is workaround for showing `Dialog` props when selected from component tree
+      ) => (
         <option key={opt} value={opt}>
           {opt}
         </option>

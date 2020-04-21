@@ -26,6 +26,7 @@ import { EventListener } from '@fluentui/react-component-event-listener';
 import { CodeSnippet } from '@fluentui/docs-components';
 import renderElementToJSX from '@fluentui/docs/src/components/ExampleSnippet/renderElementToJSX';
 import { Ref } from '@fluentui/react-component-ref';
+import { ComponentTree } from './ComponentTree';
 
 const HEADER_HEIGHT = '3rem';
 
@@ -289,6 +290,13 @@ class Designer extends React.Component<any, DesignerState> {
       showJSONTree,
     } = this.state;
 
+    const selectedComponent =
+      !draggingElement &&
+      mode !== 'use' &&
+      selectedJSONTreeElement?.uuid &&
+      selectedJSONTreeElement.uuid !== 'builder-root' &&
+      selectedJSONTreeElement;
+
     return (
       <div
         style={{
@@ -349,7 +357,8 @@ class Designer extends React.Component<any, DesignerState> {
         <div style={{ display: 'flex', flex: 1, minWidth: '10rem', overflow: 'hidden' }}>
           <div
             style={{
-              overflowY: 'auto',
+              display: 'flex',
+              flexDirection: 'column',
               minWidth: '12rem',
               transition: 'opacity 0.2s',
               ...(mode === 'use' && {
@@ -358,7 +367,12 @@ class Designer extends React.Component<any, DesignerState> {
               }),
             }}
           >
-            <List onDragStart={this.handleDragStart} />
+            <List style={{ overflowY: 'auto' }} onDragStart={this.handleDragStart} />
+            <ComponentTree
+              tree={jsonTree}
+              selectedComponent={selectedComponent}
+              onSelectComponent={this.handleSelectComponent}
+            />
           </div>
 
           <div
@@ -396,13 +410,7 @@ class Designer extends React.Component<any, DesignerState> {
                   onSelectComponent={this.handleSelectComponent}
                   onSelectorHover={this.handleSelectorHover}
                   jsonTree={jsonTree}
-                  selectedComponent={
-                    !draggingElement &&
-                    mode !== 'use' &&
-                    selectedJSONTreeElement?.uuid &&
-                    selectedJSONTreeElement.uuid !== 'builder-root' &&
-                    selectedJSONTreeElement
-                  }
+                  selectedComponent={selectedComponent}
                   onDeleteComponent={this.handleDeleteComponent}
                   onGoToParentComponent={this.handleGoToParentComponent}
                 />
