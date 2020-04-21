@@ -13,7 +13,7 @@ import {
 } from '../../utilities/dateMath/DateMath';
 import { Icon } from '../../Icon';
 import * as stylesImport from './Calendar.scss';
-import { CalendarYear, ICalendarYearRange } from './CalendarYear';
+import { CalendarYear, ICalendarYearRange, ICalendarYear } from './CalendarYear';
 const styles: any = stylesImport;
 const MONTHS_PER_ROW: number = 4;
 
@@ -40,7 +40,7 @@ export interface ICalendarMonthProps {
 
 function useFocusHandler(
   { componentRef }: ICalendarMonthProps,
-  _calendarYearRef: React.RefObject<CalendarYear | null>,
+  _calendarYearRef: React.RefObject<ICalendarYear | null>,
   _navigatedMonthRef: React.RefObject<HTMLButtonElement | null>,
 ) {
   const _focusOnUpdate = React.useRef<boolean>(false);
@@ -169,7 +169,7 @@ function useStringFunctions(props: ICalendarMonthProps) {
 export const CalendarMonth = React.memo(
   React.forwardRef((props: ICalendarMonthProps, forwardedRef: React.Ref<HTMLDivElement>) => {
     const [isYearPickerVisible, setIsYearPickerVisible] = React.useState(false);
-    const _calendarYearRef = React.useRef<CalendarYear | null>(null);
+    const _calendarYearRef = React.useRef<ICalendarYear | null>(null);
     const _navigatedMonthRef = React.useRef<HTMLButtonElement | null>(null);
 
     const setFocusOnUpdate = useFocusHandler(props, _calendarYearRef, _navigatedMonthRef);
@@ -228,12 +228,6 @@ export const CalendarMonth = React.memo(
     if (isYearPickerVisible) {
       // default the year picker to the current navigated date
       const currentSelectedDate = navigatedDate ? navigatedDate.getFullYear() : undefined;
-      /**
-       * ******************************
-       * TODO
-       * ******************************
-       * pass the forwarded ref on to CalendarYear
-       */
       return (
         <CalendarYear
           key={'calendarYear_' + (currentSelectedDate && currentSelectedDate.toString())}
@@ -249,7 +243,8 @@ export const CalendarMonth = React.memo(
             prevRangeAriaLabel: _yearRangeToPrevDecadeLabel,
             nextRangeAriaLabel: _yearRangeToNextDecadeLabel,
           }}
-          ref={_calendarYearRef}
+          componentRef={_calendarYearRef}
+          ref={forwardedRef}
         />
       );
     }
