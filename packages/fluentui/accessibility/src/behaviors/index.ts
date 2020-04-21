@@ -1,4 +1,5 @@
 export { default as alertBehavior } from './Alert/alertBehavior';
+export * from './Alert/alertBehavior';
 export { default as alertWarningBehavior } from './Alert/alertWarningBehavior';
 export { default as alertBaseBehavior } from './Alert/alertBaseBehavior';
 export * from './Attachment/attachmentBehavior';
@@ -108,3 +109,4 @@ export { default as cardBehavior } from './Card/cardBehavior';
 export * from './Card/cardBehavior';
 export { default as cardFocusableBehavior } from './Card/cardFocusableBehavior';
 export { default as cardChildrenFocusableBehavior } from './Card/cardChildrenFocusableBehavior';
+export { default as videoBehavior } from './Video/videoBehavior';

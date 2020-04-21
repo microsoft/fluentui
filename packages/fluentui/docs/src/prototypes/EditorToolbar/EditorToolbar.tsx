@@ -35,8 +35,9 @@ import {
   TableIcon,
   TrashCanIcon,
   UnderlineIcon,
+  ChevronDownIcon,
+  QnaIcon,
 } from '@fluentui/react-icons-northstar';
-import { ChevronDownIcon, QnaIcon } from '@fluentui/react-icons-northstar';
 
 type EditorToolbarProps = EditorToolbarState & {
   dispatch: React.Dispatch<EditorToolbarAction>;

@@ -14,21 +14,19 @@
     "function-name": [
       true,
       {
-        "method-regex": "^[a-z][\\w\\d]+$",
-        "private-method-regex": "^_[a-z][\\w\\d]+$",
-        "protected-method-regex": "^[_]?[a-z][\\w\\d]+$",
-        "static-method-regex": "^[a-z][\\w\\d]+$",
-        "function-regex": "^[_]?[a-z][\\w\\d]+$"
+        "method-regex": "^[a-z][a-zA-Z\\d]+$",
+        "private-method-regex": "^_[a-z][a-zA-Z\\d]+$",
+        "protected-method-regex": "^_?[a-z][a-zA-Z\\d]+$",
+        "static-method-regex": "^[a-z][a-zA-Z\\d]+$",
+        "function-regex": "^_?[a-z][a-zA-Z\\d]+$"
       }
     ],
     "jsx-no-bind": true,
-    "jsx-boolean-value": [
-      "never"
-    ],
+    "jsx-boolean-value": ["never"], // should be [true, "never"],
     "jsx-key": true,
     "jsx-no-lambda": true,
     "jsx-self-close": true,
-    "jsx-no-multiline-js": false,
+    "jsx-no-multiline-js": false, // override tslint-react
     "jsx-no-string-ref": true,
     "jsx-ban-props": [
       true,
@@ -52,12 +50,7 @@
     ],
     "no-arg": true,
     "radix": true,
-    "typedef": [false],
     "prefer-const": true,
-    "no-inferrable-types": false,
-    "no-null-keyword": false,
-    "export-name": false,
-    "no-switch-case-fall-through": false,
     "variable-name": [
       true,
       "check-format",
@@ -100,7 +93,6 @@
         ]
       }
     ],
-    "missing-optional-annotation": true,
     "no-any": true,
     "no-bitwise": true,
     "no-console": [
@@ -115,18 +107,13 @@
     "no-construct": true,
     "no-debugger": true,
     "no-duplicate-switch-case": true,
-    "no-duplicate-parameter-names": true,
     "no-empty": true,
     "no-eval": true,
     "no-function-expression": true,
     "no-internal-module": true,
     "no-shadowed-variable": true,
     "no-string-literal": true,
-    "no-unused-expression": false,
-    "no-unused-variable": false, // defer to typescript's no unused local instead
-    "no-with-statement": false,
     "no-var-keyword": true,
-    "object-literal-sort-keys": false,
     "use-named-parameter": true,
     "ban": [
       true,
