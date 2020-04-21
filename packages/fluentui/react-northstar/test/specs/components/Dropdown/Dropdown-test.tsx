@@ -64,6 +64,7 @@ describe('Dropdown', () => {
       });
 
       expect(getClearIndicatorNode()).toHaveAttribute('tabindex', '0');
+      expect(getClearIndicatorNode()).toHaveAttribute('role', 'button');
     });
 
     it('should not have the indicator tabbable if a search', () => {
@@ -74,6 +75,7 @@ describe('Dropdown', () => {
       });
 
       expect(getClearIndicatorNode()).not.toHaveAttribute('tabindex');
+      expect(getClearIndicatorNode()).not.toHaveAttribute('role');
     });
   });
 
