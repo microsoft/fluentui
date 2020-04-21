@@ -7,7 +7,8 @@ import { IStackTokens, Stack, IStackStyles } from 'office-ui-fabric-react/lib/St
 import { Text } from 'office-ui-fabric-react/lib/Text';
 import { getId, IRenderFunction, memoizeFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { getTheme, FontWeights, ITheme } from 'office-ui-fabric-react/lib/Styling';
-import { useBoolean } from '@uifabric/react-hooks';
+import { useBoolean, useId } from '@uifabric/react-hooks';
+import { ProgressIndicatorPageProps } from '../../ProgressIndicator/ProgressIndicator.doc';
 
 export interface ITextFieldCustomRenderExampleState {
   isCalloutVisible: boolean;
@@ -26,10 +27,6 @@ const iconProps = { iconName: 'Info' };
 const getDescriptionStyles = memoizeFunction((theme: ITheme) => ({
   root: { color: theme.palette.green, fontWeight: FontWeights.bold },
 }));
-
-const descriptionId: string = getId('description');
-const iconButtonId: string = getId('iconButton');
-const labelId: string = getId('label');
 
 const onRenderDescription = (props: ITextFieldProps): JSX.Element => {
   const theme = getTheme();
@@ -56,11 +53,13 @@ const onWrapDefaultLabelRenderer = (
 
 const CustomLabel = (props: ITextFieldProps): JSX.Element => {
   const [isCalloutVisible, { toggle: toggleIsCalloutVisible }] = useBoolean(false);
+  const descriptionId: string = useId('description');
+  const iconButtonId: string = useId('iconButton');
 
   return (
     <>
       <Stack horizontal verticalAlign="center" tokens={stackTokens}>
-        <span id={labelId}>{props.label}</span>
+        <span id={props.id}>{props.label}</span>
         <IconButton
           id={iconButtonId}
           iconProps={iconProps}
@@ -89,7 +88,8 @@ const CustomLabel = (props: ITextFieldProps): JSX.Element => {
 };
 
 export const TextFieldCustomRenderExample: React.FunctionComponent = () => {
-  const onRenderLabel = (props: ITextFieldProps) => <CustomLabel {...props} />;
+  const labelId: string = useId('label');
+  const onRenderLabel = (props: ITextFieldProps) => <CustomLabel id={labelId} {...props} />;
 
   return (
     <Stack tokens={stackTokens}>
