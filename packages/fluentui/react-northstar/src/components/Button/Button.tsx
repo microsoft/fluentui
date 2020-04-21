@@ -25,6 +25,7 @@ import {
   rtlTextContainer,
   SizeValue,
   ShorthandFactory,
+  ShorthandConfig,
 } from '../../utils';
 import Box, { BoxProps } from '../Box/Box';
 import Loader, { LoaderProps } from '../Loader/Loader';
@@ -281,7 +282,7 @@ const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
   },
 ) as ComponentWithAs<'button', ButtonProps> & {
   create: ShorthandFactory<ButtonProps>;
-
+  shorthandConfig: ShorthandConfig<ButtonProps>;
   Content: typeof ButtonContent;
   Group: typeof ButtonGroup;
 };
