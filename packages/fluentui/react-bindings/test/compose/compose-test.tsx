@@ -59,7 +59,9 @@ const BaseComponent: React.FC<BaseComponentProps> = compose<
     const [open, setOpen] = React.useState(false);
     const { classes } = useStyles<BaseComponentStylesProps>(composeOptions.displayName, {
       className: composeOptions.className,
+      composeOptions,
       mapPropsToStyles: () => ({ color, open }),
+      unstable_props: props,
     });
     const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
 
@@ -77,7 +79,7 @@ type ComposedComponentProps = { hidden?: boolean; visible?: boolean };
 type ComposedComponentStylesProps = { visible: boolean | undefined };
 
 const ComposedComponent = compose<
-  'div',
+  'button',
   ComposedComponentProps,
   ComposedComponentStylesProps,
   BaseComponentProps,
@@ -90,7 +92,7 @@ const ComposedComponent = compose<
 });
 
 const MultipleComposedComponent = compose<
-  'div',
+  'button',
   ComposedComponentProps,
   ComposedComponentStylesProps,
   BaseComponentProps & ComposedComponentProps,
