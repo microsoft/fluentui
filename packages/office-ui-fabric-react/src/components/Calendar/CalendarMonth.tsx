@@ -38,10 +38,259 @@ export interface ICalendarMonthProps {
   yearPickerHidden?: boolean;
 }
 
-export interface ICalendarMonthState {
-  /** State used to show/hide month picker */
-  isYearPickerVisible?: boolean;
-}
+export const CalendarMonth = React.memo(
+  React.forwardRef((props: ICalendarMonthProps, forwardedRef: React.Ref<HTMLDivElement>) => {
+    const [isYearPickerVisible, setIsYearPickerVisible] = React.useState(false);
+    const _calendarYearRef = React.useRef<CalendarYear | null>(null);
+    const _navigatedMonthRef = React.useRef<HTMLButtonElement | null>(null);
+
+    const _focusOnUpdate = React.useRef<boolean>(false);
+
+    React.useEffect(() => {
+      if (_focusOnUpdate.current) {
+        focus();
+      }
+    });
+
+    const focus = React.useCallback(() => {
+      if (_calendarYearRef.current) {
+        _calendarYearRef.current.focus();
+      } else if (_navigatedMonthRef.current) {
+        _navigatedMonthRef.current.tabIndex = 0;
+        _navigatedMonthRef.current.focus();
+      }
+    }, []);
+
+    React.useImperativeHandle(props.componentRef, () => ({ focus }), [focus]);
+
+    const { navigatedDate, strings, navigationIcons, dateTimeFormatter, minDate, maxDate, yearPickerHidden } = props;
+
+    const _onSelectYear = React.useCallback(
+      (selectedYear: number) => {
+        _focusOnUpdate.current = true;
+        const { navigatedDate, onNavigateDate, maxDate, minDate } = props;
+        const navYear = navigatedDate.getFullYear();
+        if (navYear !== selectedYear) {
+          let newNavigationDate = new Date(navigatedDate.getTime());
+          newNavigationDate.setFullYear(selectedYear);
+          // for min and max dates, adjust the new navigation date - perhaps this should be
+          // checked on the master navigation date handler (i.e. in Calendar)
+          if (maxDate && newNavigationDate > maxDate) {
+            newNavigationDate = setMonth(newNavigationDate, maxDate.getMonth());
+          } else if (minDate && newNavigationDate < minDate) {
+            newNavigationDate = setMonth(newNavigationDate, minDate.getMonth());
+          }
+          onNavigateDate(newNavigationDate, true);
+        }
+        setIsYearPickerVisible(false);
+      },
+      [props.navigatedDate, props.onNavigateDate, props.maxDate, props.minDate],
+    );
+
+    const _onSelectNextYear = React.useCallback((): void => {
+      const { navigatedDate, onNavigateDate } = props;
+      onNavigateDate(addYears(navigatedDate, 1), false);
+    }, [props.navigatedDate, props.onNavigateDate]);
+
+    const _onSelectNextYearKeyDown = React.useCallback(_onKeyDown(_onSelectNextYear), [_onSelectNextYear]);
+
+    const _onSelectPrevYear = React.useCallback((): void => {
+      const { navigatedDate, onNavigateDate } = props;
+      onNavigateDate(addYears(navigatedDate, 1), false);
+    }, [props.navigatedDate, props.onNavigateDate]);
+
+    const _onSelectPrevYearKeyDown = React.useCallback(_onKeyDown(_onSelectPrevYear), [_onSelectPrevYear]);
+
+    const _yearToString = React.useCallback(
+      (year: number) => {
+        const { navigatedDate, dateTimeFormatter } = props;
+        if (dateTimeFormatter) {
+          // create a date based on the current nav date
+          const yearFormattingDate = new Date(navigatedDate.getTime());
+          yearFormattingDate.setFullYear(year);
+          return dateTimeFormatter.formatYear(yearFormattingDate);
+        }
+        return String(year);
+      },
+      [props.navigatedDate, props.dateTimeFormatter],
+    );
+
+    const _yearRangeToString = React.useCallback(
+      (yearRange: ICalendarYearRange) => {
+        return `${_yearToString(yearRange.fromYear)} - ${_yearToString(yearRange.toYear)}`;
+      },
+      [_yearToString],
+    );
+
+    const _yearRangeToNextDecadeLabel = React.useCallback(
+      (yearRange: ICalendarYearRange) => {
+        const { strings } = props;
+        return strings.nextYearRangeAriaLabel
+          ? `${strings.nextYearRangeAriaLabel} ${_yearRangeToString(yearRange)}`
+          : '';
+      },
+      [props.strings, _yearRangeToString],
+    );
+
+    const _yearRangeToPrevDecadeLabel = React.useCallback(
+      (yearRange: ICalendarYearRange) => {
+        const { strings } = props;
+        return strings.prevYearRangeAriaLabel
+          ? `${strings.prevYearRangeAriaLabel} ${_yearRangeToString(yearRange)}`
+          : '';
+      },
+      [props.strings, _yearRangeToString],
+    );
+
+    const _onYearPickerHeaderSelect = React.useCallback((focus: boolean): void => {
+      _focusOnUpdate.current = focus;
+      setIsYearPickerVisible(false);
+    }, []);
+
+    const _onHeaderSelect = React.useCallback((): void => {
+      const { onHeaderSelect, yearPickerHidden } = props;
+      if (!yearPickerHidden) {
+        _focusOnUpdate.current = true;
+        setIsYearPickerVisible(true);
+      } else if (onHeaderSelect) {
+        onHeaderSelect(true);
+      }
+    }, [props.onHeaderSelect, props.yearPickerHidden]);
+
+    const _onHeaderKeyDown = React.useCallback(
+      (ev: React.KeyboardEvent<HTMLElement>): void => {
+        if (ev.which === KeyCodes.enter || ev.which === KeyCodes.space) {
+          _onHeaderSelect();
+        }
+      },
+      [_onHeaderSelect],
+    );
+
+    if (isYearPickerVisible) {
+      // default the year picker to the current navigated date
+      const currentSelectedDate = navigatedDate ? navigatedDate.getFullYear() : undefined;
+      return (
+        <CalendarYear
+          key={'calendarYear_' + (currentSelectedDate && currentSelectedDate.toString())}
+          minYear={minDate ? minDate.getFullYear() : undefined}
+          maxYear={maxDate ? maxDate.getFullYear() : undefined}
+          onSelectYear={_onSelectYear}
+          navigationIcons={navigationIcons}
+          onHeaderSelect={_onYearPickerHeaderSelect}
+          selectedYear={currentSelectedDate}
+          onRenderYear={_yearToString}
+          strings={{
+            rangeAriaLabel: _yearRangeToString,
+            prevRangeAriaLabel: _yearRangeToPrevDecadeLabel,
+            nextRangeAriaLabel: _yearRangeToNextDecadeLabel,
+          }}
+          ref={_calendarYearRef}
+        />
+      );
+    }
+
+    const rowIndexes = [];
+    for (let i = 0; i < strings.shortMonths.length / MONTHS_PER_ROW; i++) {
+      rowIndexes.push(i);
+    }
+
+    const leftNavigationIcon = navigationIcons.leftNavigation;
+    const rightNavigationIcon = navigationIcons.rightNavigation;
+
+    // determine if previous/next years are in bounds
+    const isPrevYearInBounds = minDate ? compareDatePart(minDate, getYearStart(navigatedDate)) < 0 : true;
+    const isNextYearInBounds = maxDate ? compareDatePart(getYearEnd(navigatedDate), maxDate) < 0 : true;
+
+    return (
+      <div className={css('ms-DatePicker-monthPicker', styles.monthPicker)}>
+        <div className={css('ms-DatePicker-header', styles.header)}>
+          {props.onHeaderSelect || !yearPickerHidden ? (
+            <div
+              className={css(
+                'ms-DatePicker-currentYear js-showYearPicker',
+                styles.currentYear,
+                styles.headerToggleView,
+              )}
+              onClick={_onHeaderSelect}
+              onKeyDown={_onHeaderKeyDown}
+              aria-label={dateTimeFormatter.formatYear(navigatedDate)}
+              role="button"
+              aria-atomic={true}
+              aria-live="polite"
+              tabIndex={0}
+            >
+              {dateTimeFormatter.formatYear(navigatedDate)}
+            </div>
+          ) : (
+            <div className={css('ms-DatePicker-currentYear js-showYearPicker', styles.currentYear)}>
+              {dateTimeFormatter.formatYear(navigatedDate)}
+            </div>
+          )}
+          <div className={css('ms-DatePicker-yearComponents', styles.yearComponents)}>
+            <div className={css('ms-DatePicker-navContainer', styles.navContainer)}>
+              <button
+                className={css('ms-DatePicker-prevYear js-prevYear', styles.prevYear, {
+                  ['ms-DatePicker-prevYear--disabled ' + styles.prevYearIsDisabled]: !isPrevYearInBounds,
+                })}
+                disabled={!isPrevYearInBounds}
+                onClick={isPrevYearInBounds ? _onSelectPrevYear : undefined}
+                onKeyDown={isPrevYearInBounds ? _onSelectPrevYearKeyDown : undefined}
+                title={
+                  strings.prevYearAriaLabel
+                    ? strings.prevYearAriaLabel + ' ' + dateTimeFormatter.formatYear(addYears(navigatedDate, -1))
+                    : undefined
+                }
+                role="button"
+                type="button"
+              >
+                <Icon iconName={getRTL() ? rightNavigationIcon : leftNavigationIcon} />
+              </button>
+              <button
+                className={css('ms-DatePicker-nextYear js-nextYear', styles.nextYear, {
+                  ['ms-DatePicker-nextYear--disabled ' + styles.nextYearIsDisabled]: !isNextYearInBounds,
+                })}
+                disabled={!isNextYearInBounds}
+                onClick={isNextYearInBounds ? _onSelectNextYear : undefined}
+                onKeyDown={isNextYearInBounds ? _onSelectNextYearKeyDown : undefined}
+                title={
+                  strings.nextYearAriaLabel
+                    ? strings.nextYearAriaLabel + ' ' + dateTimeFormatter.formatYear(addYears(navigatedDate, 1))
+                    : undefined
+                }
+                role="button"
+                type="button"
+              >
+                <Icon iconName={getRTL() ? leftNavigationIcon : rightNavigationIcon} />
+              </button>
+            </div>
+          </div>
+        </div>
+        <FocusZone>
+          <div className={css('ms-DatePicker-optionGrid', styles.optionGrid)} role="grid" aria-readonly="true">
+            {rowIndexes.map((rowNum: number) => {
+              const monthsForRow = strings.shortMonths.slice(rowNum * MONTHS_PER_ROW, (rowNum + 1) * MONTHS_PER_ROW);
+              return (
+                <div key={'monthRow_' + rowNum} role="row">
+                  {monthsForRow.map((month: string, index: number) => {
+                    const monthIndex = rowNum * MONTHS_PER_ROW + index;
+                    return (
+                      <CalendarMonthButton
+                        key={monthIndex}
+                        monthIndex={monthIndex}
+                        {...props}
+                        ref={navigatedDate.getMonth() === monthIndex ? _navigatedMonthRef : undefined}
+                      />
+                    );
+                  })}
+                </div>
+              );
+            })}
+          </div>
+        </FocusZone>
+      </div>
+    );
+  }),
+);
 
 const CalendarMonthButton = React.memo(
   React.forwardRef(
@@ -106,271 +355,6 @@ const CalendarMonthButton = React.memo(
     },
   ),
 );
-
-export class CalendarMonth extends React.Component<ICalendarMonthProps, ICalendarMonthState> {
-  private _calendarYearRef: CalendarYear;
-  private _navigatedMonthRef: React.RefObject<HTMLButtonElement> = React.createRef<HTMLButtonElement>();
-  private _focusOnUpdate: boolean;
-
-  public constructor(props: ICalendarMonthProps) {
-    super(props);
-
-    initializeComponentRef(this);
-
-    this.state = { isYearPickerVisible: false };
-  }
-
-  public componentDidUpdate(): void {
-    if (this._focusOnUpdate) {
-      this.focus();
-      this._focusOnUpdate = false;
-    }
-  }
-
-  public render(): JSX.Element {
-    const {
-      navigatedDate,
-      strings,
-      navigationIcons,
-      dateTimeFormatter,
-      minDate,
-      maxDate,
-      yearPickerHidden,
-    } = this.props;
-
-    if (this.state.isYearPickerVisible) {
-      // default the year picker to the current navigated date
-      const currentSelectedDate = navigatedDate ? navigatedDate.getFullYear() : undefined;
-      return (
-        <CalendarYear
-          key={'calendarYear_' + (currentSelectedDate && currentSelectedDate.toString())}
-          minYear={minDate ? minDate.getFullYear() : undefined}
-          maxYear={maxDate ? maxDate.getFullYear() : undefined}
-          onSelectYear={this._onSelectYear}
-          navigationIcons={navigationIcons}
-          onHeaderSelect={this._onYearPickerHeaderSelect}
-          selectedYear={currentSelectedDate}
-          onRenderYear={this._onRenderYear}
-          strings={{
-            rangeAriaLabel: this._yearRangeToString,
-            prevRangeAriaLabel: this._yearRangeToPrevDecadeLabel,
-            nextRangeAriaLabel: this._yearRangeToNextDecadeLabel,
-          }}
-          ref={this._onCalendarYearRef}
-        />
-      );
-    }
-
-    const rowIndexes = [];
-    for (let i = 0; i < strings.shortMonths.length / MONTHS_PER_ROW; i++) {
-      rowIndexes.push(i);
-    }
-
-    const leftNavigationIcon = navigationIcons.leftNavigation;
-    const rightNavigationIcon = navigationIcons.rightNavigation;
-
-    // determine if previous/next years are in bounds
-    const isPrevYearInBounds = minDate ? compareDatePart(minDate, getYearStart(navigatedDate)) < 0 : true;
-    const isNextYearInBounds = maxDate ? compareDatePart(getYearEnd(navigatedDate), maxDate) < 0 : true;
-
-    return (
-      <div className={css('ms-DatePicker-monthPicker', styles.monthPicker)}>
-        <div className={css('ms-DatePicker-header', styles.header)}>
-          {this.props.onHeaderSelect || !yearPickerHidden ? (
-            <div
-              className={css(
-                'ms-DatePicker-currentYear js-showYearPicker',
-                styles.currentYear,
-                styles.headerToggleView,
-              )}
-              onClick={this._onHeaderSelect}
-              onKeyDown={this._onHeaderKeyDown}
-              aria-label={dateTimeFormatter.formatYear(navigatedDate)}
-              role="button"
-              aria-atomic={true}
-              aria-live="polite"
-              tabIndex={0}
-            >
-              {dateTimeFormatter.formatYear(navigatedDate)}
-            </div>
-          ) : (
-            <div className={css('ms-DatePicker-currentYear js-showYearPicker', styles.currentYear)}>
-              {dateTimeFormatter.formatYear(navigatedDate)}
-            </div>
-          )}
-          <div className={css('ms-DatePicker-yearComponents', styles.yearComponents)}>
-            <div className={css('ms-DatePicker-navContainer', styles.navContainer)}>
-              <button
-                className={css('ms-DatePicker-prevYear js-prevYear', styles.prevYear, {
-                  ['ms-DatePicker-prevYear--disabled ' + styles.prevYearIsDisabled]: !isPrevYearInBounds,
-                })}
-                disabled={!isPrevYearInBounds}
-                onClick={isPrevYearInBounds ? this._onSelectPrevYear : undefined}
-                onKeyDown={isPrevYearInBounds ? this._onSelectPrevYearKeyDown : undefined}
-                title={
-                  strings.prevYearAriaLabel
-                    ? strings.prevYearAriaLabel + ' ' + dateTimeFormatter.formatYear(addYears(navigatedDate, -1))
-                    : undefined
-                }
-                role="button"
-                type="button"
-              >
-                <Icon iconName={getRTL() ? rightNavigationIcon : leftNavigationIcon} />
-              </button>
-              <button
-                className={css('ms-DatePicker-nextYear js-nextYear', styles.nextYear, {
-                  ['ms-DatePicker-nextYear--disabled ' + styles.nextYearIsDisabled]: !isNextYearInBounds,
-                })}
-                disabled={!isNextYearInBounds}
-                onClick={isNextYearInBounds ? this._onSelectNextYear : undefined}
-                onKeyDown={isNextYearInBounds ? this._onSelectNextYearKeyDown : undefined}
-                title={
-                  strings.nextYearAriaLabel
-                    ? strings.nextYearAriaLabel + ' ' + dateTimeFormatter.formatYear(addYears(navigatedDate, 1))
-                    : undefined
-                }
-                role="button"
-                type="button"
-              >
-                <Icon iconName={getRTL() ? leftNavigationIcon : rightNavigationIcon} />
-              </button>
-            </div>
-          </div>
-        </div>
-        <FocusZone>
-          <div className={css('ms-DatePicker-optionGrid', styles.optionGrid)} role="grid" aria-readonly="true">
-            {rowIndexes.map((rowNum: number) => {
-              const monthsForRow = strings.shortMonths.slice(rowNum * MONTHS_PER_ROW, (rowNum + 1) * MONTHS_PER_ROW);
-              return (
-                <div key={'monthRow_' + rowNum} role="row">
-                  {monthsForRow.map((month: string, index: number) => {
-                    const monthIndex = rowNum * MONTHS_PER_ROW + index;
-                    return (
-                      <CalendarMonthButton
-                        key={monthIndex}
-                        monthIndex={monthIndex}
-                        {...this.props}
-                        ref={navigatedDate.getMonth() === monthIndex ? this._navigatedMonthRef : undefined}
-                      />
-                    );
-                  })}
-                </div>
-              );
-            })}
-          </div>
-        </FocusZone>
-      </div>
-    );
-  }
-
-  public focus() {
-    if (this._calendarYearRef) {
-      this._calendarYearRef.focus();
-    } else if (this._navigatedMonthRef.current) {
-      this._navigatedMonthRef.current.tabIndex = 0;
-      this._navigatedMonthRef.current.focus();
-    }
-  }
-
-  private _onCalendarYearRef = (ref: CalendarYear) => {
-    this._calendarYearRef = ref;
-  };
-
-  private _onSelectYear = (selectedYear: number) => {
-    this._focusOnUpdate = true;
-    const { navigatedDate, onNavigateDate, maxDate, minDate } = this.props;
-    const navYear = navigatedDate.getFullYear();
-    if (navYear !== selectedYear) {
-      let newNavigationDate = new Date(navigatedDate.getTime());
-      newNavigationDate.setFullYear(selectedYear);
-      // for min and max dates, adjust the new navigation date - perhaps this should be
-      // checked on the master navigation date handler (i.e. in Calendar)
-      if (maxDate && newNavigationDate > maxDate) {
-        newNavigationDate = setMonth(newNavigationDate, maxDate.getMonth());
-      } else if (minDate && newNavigationDate < minDate) {
-        newNavigationDate = setMonth(newNavigationDate, minDate.getMonth());
-      }
-      onNavigateDate(newNavigationDate, true);
-    }
-    this.setState({ isYearPickerVisible: false });
-  };
-
-  private _yearToString = (year: number) => {
-    const { navigatedDate, dateTimeFormatter } = this.props;
-    if (dateTimeFormatter) {
-      // create a date based on the current nav date
-      const yearFormattingDate = new Date(navigatedDate.getTime());
-      yearFormattingDate.setFullYear(year);
-      return dateTimeFormatter.formatYear(yearFormattingDate);
-    }
-    return String(year);
-  };
-
-  private _yearRangeToString = (yearRange: ICalendarYearRange) => {
-    return `${this._yearToString(yearRange.fromYear)} - ${this._yearToString(yearRange.toYear)}`;
-  };
-
-  private _yearRangeToNextDecadeLabel = (yearRange: ICalendarYearRange) => {
-    const { strings } = this.props;
-    return strings.nextYearRangeAriaLabel
-      ? `${strings.nextYearRangeAriaLabel} ${this._yearRangeToString(yearRange)}`
-      : '';
-  };
-
-  private _yearRangeToPrevDecadeLabel = (yearRange: ICalendarYearRange) => {
-    const { strings } = this.props;
-    return strings.prevYearRangeAriaLabel
-      ? `${strings.prevYearRangeAriaLabel} ${this._yearRangeToString(yearRange)}`
-      : '';
-  };
-
-  private _onRenderYear = (year: number) => {
-    return this._yearToString(year);
-  };
-
-  private _onSelectNextYear = (): void => {
-    const { navigatedDate, onNavigateDate } = this.props;
-    onNavigateDate(addYears(navigatedDate, 1), false);
-  };
-
-  private _onSelectNextYearKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
-    if (ev.which === KeyCodes.enter) {
-      _onKeyDown(this._onSelectNextYear)(ev);
-    }
-  };
-
-  private _onSelectPrevYear = (): void => {
-    const { navigatedDate, onNavigateDate } = this.props;
-    onNavigateDate(addYears(navigatedDate, -1), false);
-  };
-
-  private _onSelectPrevYearKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
-    if (ev.which === KeyCodes.enter) {
-      _onKeyDown(this._onSelectPrevYear)(ev);
-    }
-  };
-
-  private _onHeaderSelect = (): void => {
-    const { onHeaderSelect, yearPickerHidden } = this.props;
-    if (!yearPickerHidden) {
-      this._focusOnUpdate = true;
-      this.setState({ isYearPickerVisible: true });
-    } else if (onHeaderSelect) {
-      onHeaderSelect(true);
-    }
-  };
-
-  private _onYearPickerHeaderSelect = (focus: boolean): void => {
-    this._focusOnUpdate = focus;
-    this.setState({ isYearPickerVisible: false });
-  };
-
-  private _onHeaderKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
-    if (this._onHeaderSelect && (ev.which === KeyCodes.enter || ev.which === KeyCodes.space)) {
-      this._onHeaderSelect();
-    }
-  };
-}
 
 function _isCurrentMonth(month: number, year: number, today: Date): boolean {
   return today.getFullYear() === year && today.getMonth() === month;
