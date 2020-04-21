@@ -23,6 +23,7 @@ const cardStyles: ComponentSlotStylesPrepared<CardStylesProps, CardVariables> = 
       boxShadow: v.boxShadow,
       ':hover': {
         backgroundColor: v.backgroundColorHover,
+        borderColor: v.borderColorHover,
         boxShadow: v.boxShadowHover,
       },
 
@@ -46,6 +47,7 @@ const cardStyles: ComponentSlotStylesPrepared<CardStylesProps, CardVariables> = 
         },
         ':active': {
           backgroundColor: v.backgroundColorPressed,
+          borderColor: v.borderColorPressed,
           boxShadow: v.boxShadowPressed,
         },
       }),

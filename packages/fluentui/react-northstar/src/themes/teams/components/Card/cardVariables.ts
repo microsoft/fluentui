@@ -9,6 +9,8 @@ export interface CardVariables {
   borderStyle: string;
   borderColor: string;
   borderColorDisabled: string;
+  borderColorHover: string;
+  borderColorPressed: string;
   borderWidth: string;
   borderRadius: string;
   boxShadow: string;
@@ -51,9 +53,13 @@ export default (siteVars): CardVariables => {
     backgroundColorPressed: siteVars.colorScheme.default.backgroundPressed,
     borderStyle: 'solid',
     borderColor: siteVars.colors.black,
+    borderColorDisabled: siteVars.colorScheme.default.borderDisabled,
+    borderColorHover: siteVars.colors.black,
+    borderColorPressed: siteVars.colorScheme.default.borderPressed,
     borderWidth: siteVars.borderWidth,
     borderRadius: pxToRem(4),
     boxShadow: 'none',
+    boxShadowDisabled: 'none',
     boxShadowHover: siteVars.shadowLevel3,
     boxShadowFocus: siteVars.shadowLevel2,
     boxShadowPressed: siteVars.shadowLevel1,
@@ -82,7 +88,5 @@ export default (siteVars): CardVariables => {
     sizeLargePadding: pxToRem(20),
     fluidWidth: '100%',
     fluidHeight: '100%',
-    borderColorDisabled: siteVars.colorScheme.default.borderDisabled,
-    boxShadowDisabled: undefined,
   };
 };
