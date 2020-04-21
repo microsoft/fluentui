@@ -2,6 +2,21 @@
   "name": "@uifabric/tsx-editor",
   "entries": [
     {
+      "date": "Tue, 21 Apr 2020 12:34:50 GMT",
+      "tag": "@uifabric/tsx-editor_v0.11.55",
+      "version": "0.11.55",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add useEditor=1 support to force editor on",
+            "author": "elcraig@microsoft.com",
+            "commit": "89b53e7f43d70ffac4e9d308428356c90b8ac06b",
+            "package": "@uifabric/tsx-editor"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 16 Apr 2020 04:01:45 GMT",
       "tag": "@uifabric/tsx-editor_v0.11.50",
       "version": "0.11.50",
