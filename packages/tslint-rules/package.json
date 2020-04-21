@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/tslint-rules",
-  "version": "7.1.3",
+  "version": "7.2.0",
   "description": "Shared TSLint rules for Fluent UI projects",
   "main": "tslint.json",
   "repository": {

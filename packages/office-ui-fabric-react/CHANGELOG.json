@@ -2,6 +2,27 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Tue, 21 Apr 2020 12:34:50 GMT",
+      "tag": "office-ui-fabric-react_v7.107.2",
+      "version": "7.107.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ContextualMenu: Improve perf by doing less merge styles",
+            "author": "xgao@microsoft.com",
+            "commit": "1d6687743e9fdf6a7a20a61ee61d18d36f45e0d0",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Update ColorRectangle and ColorSlider to handle native events when using the 'on' utility",
+            "author": "behowell@microsoft.com",
+            "commit": "65a2edff2455c57d4af59cc3e054ca8f4af1e499",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Sun, 19 Apr 2020 02:02:09 GMT",
       "tag": "office-ui-fabric-react_v7.107.1",
       "version": "7.107.1",
