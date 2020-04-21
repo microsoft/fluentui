@@ -1,6 +1,6 @@
 import { getPropsWithDefaults } from './getPropsWithDefaults';
 
-interface Props {
+interface IProps {
   num?: number;
   bool?: boolean;
   str?: string;
@@ -8,7 +8,7 @@ interface Props {
   nul?: string | null;
 }
 
-const defaultProps: Props = {
+const defaultProps: IProps = {
   num: 4,
   bool: true,
   str: 'default',
@@ -20,7 +20,7 @@ const defaultProps: Props = {
 
 describe('getPropsWithDefaults', () => {
   it("doesn't override non-undefined specified values", () => {
-    const propsWithoutDefaults: Props = {
+    const propsWithoutDefaults: IProps = {
       num: 0,
       bool: false,
       str: '',
@@ -38,7 +38,7 @@ describe('getPropsWithDefaults', () => {
   });
 
   it('overrides specified undefined values', () => {
-    const propsWithoutDefaults: Props = {
+    const propsWithoutDefaults: IProps = {
       num: undefined,
       bool: undefined,
       str: undefined,
@@ -56,7 +56,7 @@ describe('getPropsWithDefaults', () => {
   });
 
   it('overrides unspecified values', () => {
-    const propsWithoutDefaults: Props = {};
+    const propsWithoutDefaults: IProps = {};
 
     const props = getPropsWithDefaults(defaultProps, propsWithoutDefaults);
 
