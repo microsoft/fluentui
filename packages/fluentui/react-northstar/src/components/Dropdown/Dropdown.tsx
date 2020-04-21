@@ -289,8 +289,6 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
   static a11yStatusCleanupTime = 500;
   static charKeyPressedCleanupTime = 500;
 
-  static slotClassNames: DropdownSlotClassNames;
-
   static propTypes = {
     ...commonPropTypes.createCommon({
       accessibility: false,
@@ -1528,8 +1526,6 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
     this.setState({ startingString: '' });
   }, Dropdown.charKeyPressedCleanupTime);
 }
-
-Dropdown.slotClassNames = dropdownSlotClassNames;
 
 /**
  * A Dropdown allows user to select one or more values from a list of options.

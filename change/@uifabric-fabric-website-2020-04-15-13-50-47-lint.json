@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "Remove unnecessary lint rule overrides",
+  "packageName": "@uifabric/fabric-website",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "none",
+  "date": "2020-04-15T20:50:43.039Z"
+}

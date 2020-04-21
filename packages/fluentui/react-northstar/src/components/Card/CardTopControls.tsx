@@ -56,7 +56,6 @@ const CardTopControls: React.FC<WithAsProp<CardTopControlsProps>> &
 };
 
 CardTopControls.displayName = 'CardTopControls';
-CardTopControls.deprecated_className = cardTopControlsClassName;
 
 CardTopControls.propTypes = {
   ...commonPropTypes.createCommon(),

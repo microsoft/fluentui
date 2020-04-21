@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Revert changes to 'on': it should not use React events",
+  "packageName": "@uifabric/utilities",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-04-17T00:12:19.752Z"
+}

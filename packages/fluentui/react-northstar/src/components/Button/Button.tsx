@@ -245,7 +245,6 @@ Button.defaultProps = {
 };
 
 Button.displayName = 'Button';
-Button.deprecated_className = buttonClassName;
 
 Button.propTypes = {
   ...commonPropTypes.createCommon({

@@ -176,7 +176,6 @@ const List: React.FC<WithAsProp<ListProps>> &
   return element;
 };
 
-List.deprecated_className = listClassName;
 List.displayName = 'List';
 
 List.defaultProps = {

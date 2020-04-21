@@ -1,9 +1,7 @@
-import * as React from 'react';
-
 export function on(
   element: Element | Window,
   eventName: string,
-  callback: (ev: Event | React.SyntheticEvent<Element, Event>) => void,
+  callback: (ev: Event) => void,
   options?: boolean,
 ): () => void {
   element.addEventListener(eventName, callback, options);

@@ -10,7 +10,7 @@ import {
 import { AccordionContentProps } from '../../components/Accordion/AccordionContent';
 import { AccordionProps } from '../../components/Accordion/Accordion';
 import { AccordionTitleProps } from '../../components/Accordion/AccordionTitle';
-import { AlertProps } from '../../components/Alert/Alert';
+import { AlertStylesProps } from '../../components/Alert/Alert';
 import { AnimationProps } from '../../components/Animation/Animation';
 import { AttachmentProps } from '../../components/Attachment/Attachment';
 import { AttachmentActionStylesProps } from '../../components/Attachment/AttachmentAction';
@@ -88,7 +88,7 @@ export type TeamsThemeStylesProps = {
   Accordion: AccordionProps;
   AccordionTitle: AccordionTitleProps;
   AccordionContent: AccordionContentProps;
-  Alert: AlertProps;
+  Alert: AlertStylesProps;
   Animation: AnimationProps;
   Attachment: AttachmentProps;
   AttachmentAction: AttachmentActionStylesProps;

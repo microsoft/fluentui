@@ -57,8 +57,6 @@ class CarouselItem extends UIComponent<WithAsProp<CarouselItemProps>> {
     accessibility: carouselItemBehavior,
   };
 
-  static slotClassNames = carouselItemSlotClassNames;
-
   actionHandlers = {
     arrowKeysNavigationStopPropagation: e => {
       // let event propagate, when it was invoke on the element where arrow keys should rotate carousel

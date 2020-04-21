@@ -2,6 +2,21 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Mon, 20 Apr 2020 15:55:12 GMT",
+      "tag": "@uifabric/fabric-website_v7.10.28",
+      "version": "7.10.28",
+      "comments": {
+        "patch": [
+          {
+            "comment": "guard against window and location not being available",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "268cfa142c6a06085678337222a840ebfe948ae8",
+            "package": "@uifabric/fabric-website"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 16 Apr 2020 04:01:45 GMT",
       "tag": "@uifabric/fabric-website_v7.10.23",
       "version": "7.10.23",

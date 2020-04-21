@@ -80,7 +80,6 @@ const Status: React.FC<WithAsProp<StatusProps>> & FluentComponentStaticProps = p
   return element;
 };
 
-Status.deprecated_className = statusClassName;
 Status.displayName = 'Status';
 Status.propTypes = {
   ...commonPropTypes.createCommon({

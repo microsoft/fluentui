@@ -67,7 +67,6 @@ class Loader extends UIComponent<WithAsProp<LoaderProps>, LoaderState> {
   static create: ShorthandFactory<LoaderProps>;
   static displayName = 'Loader';
   static deprecated_className = loaderClassName;
-  static slotClassNames = loaderSlotClassNames;
 
   static propTypes = {
     ...commonPropTypes.createCommon({
