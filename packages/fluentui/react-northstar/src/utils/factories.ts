@@ -6,7 +6,6 @@ import * as React from 'react';
 import * as ReactIs from 'react-is';
 
 import { ShorthandValue, Props, PropsOf, ShorthandRenderFunction } from '../types';
-import { ComponentWithAs } from '@fluentui/react-compose';
 
 type HTMLTag = 'iframe' | 'img' | 'input';
 type ShorthandProp = 'children' | 'src' | 'type';

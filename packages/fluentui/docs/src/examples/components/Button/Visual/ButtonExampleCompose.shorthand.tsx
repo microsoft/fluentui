@@ -1,4 +1,14 @@
-import { compose, Button, ButtonProps, ButtonStylesProps, Flex, Header, Provider } from '@fluentui/react-northstar';
+import {
+  compose,
+  Button,
+  ButtonProps,
+  ButtonStylesProps,
+  Flex,
+  Header,
+  Provider,
+  ButtonContent,
+  ButtonContentProps,
+} from '@fluentui/react-northstar';
 import { ComponentSlotStylesInput, ComponentVariablesInput, ThemeInput } from '@fluentui/styles';
 import * as React from 'react';
 
@@ -25,8 +35,15 @@ const TertiaryButton = compose<'button', TertiaryButtonProps, TertiaryButtonStyl
 // Adds overrides for a design term
 //
 
+const CompactTertiaryButtonContent = compose(ButtonContent, {
+  displayName: 'CompactTertiaryButtonContent',
+});
+
 const CompactTertiaryButton = compose(TertiaryButton, {
   displayName: 'CompactTertiaryButton',
+  slots: {
+    content: CompactTertiaryButtonContent,
+  },
 });
 
 // Composes custom button
@@ -57,6 +74,7 @@ const OverriddenButton = compose<'button', OverriddenButtonProps, OverriddenButt
 
 type ComponentStylesProps = {
   CompactTertiaryButton: ButtonStylesProps & TertiaryButtonProps;
+  CompactTertiaryButtonContent: ButtonContentProps;
   TertiaryButton: ButtonStylesProps & TertiaryButtonProps;
   OverriddenButton: ButtonStylesProps & OverriddenButtonProps;
 };
@@ -69,6 +87,9 @@ type ComponentVariables = {
   };
   CompactTertiaryButton: {
     tertiaryPadding: string;
+  };
+  CompactTertiaryButtonContent: {
+    fontSize: string;
   };
 };
 
@@ -90,6 +111,11 @@ const componentStyles: {
       ...(p.tertiary && {
         padding: v.tertiaryPadding,
       }),
+    }),
+  },
+  CompactTertiaryButtonContent: {
+    root: ({ variables: v }) => ({
+      fontSize: v.fontSize,
     }),
   },
 
@@ -133,6 +159,9 @@ const componentVariables: ComponentVariablesInput = {
   }),
   CompactTertiaryButton: (): ComponentVariables['CompactTertiaryButton'] => ({
     tertiaryPadding: '.5rem',
+  }),
+  CompactTertiaryButtonContent: (siteVariables): ComponentVariables['CompactTertiaryButtonContent'] => ({
+    fontSize: siteVariables.fontSizes.smaller,
   }),
 };
 

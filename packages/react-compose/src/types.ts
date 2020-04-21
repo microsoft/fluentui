@@ -8,7 +8,7 @@ export type PropsOfElement<
   E extends keyof JSX.IntrinsicElements | React.JSXElementConstructor<any>
 > = JSX.LibraryManagedAttributes<E, React.ComponentPropsWithRef<E>>;
 
-export type ComponentWithAs<E extends React.ElementType, P> = (<EE extends React.ElementType = E>(
+export type ComponentWithAs<E extends React.ElementType = 'div', P = {}> = (<EE extends React.ElementType = E>(
   props: Omit<PropsOfElement<EE>, 'as' | keyof P> & { as?: EE } & P,
 ) => JSX.Element) & {
   displayName?: string;
@@ -49,6 +49,8 @@ export type ComposeOptions<InputProps = {}, InputStylesProps = {}, ParentStylesP
 
   handledProps?: (keyof InputProps | 'as')[];
   overrideStyles?: boolean;
+
+  slots?: Record<string, React.FunctionComponent | React.Component | ComponentWithAs>;
 };
 
 export type ComposePreparedOptions<Props = {}> = {
@@ -61,4 +63,6 @@ export type ComposePreparedOptions<Props = {}> = {
 
   handledProps: (keyof Props)[];
   overrideStyles: boolean;
+
+  slots: Record<string, React.FunctionComponent | React.Component | ComponentWithAs>;
 };

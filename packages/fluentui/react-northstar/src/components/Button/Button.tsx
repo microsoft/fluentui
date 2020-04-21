@@ -189,7 +189,7 @@ const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
     const ElementType = getElementType(props);
 
     const renderIcon = () => {
-      return createShorthand(Box, icon, {
+      return createShorthand(composeOptions.slots.icon, icon, {
         defaultProps: () =>
           getA11Props('icon', {
             styles: resolvedStyles.icon,
@@ -198,7 +198,7 @@ const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
     };
 
     const renderLoader = () => {
-      return createShorthand(Loader, loader || {}, {
+      return createShorthand(composeOptions.slots.loader, loader || {}, {
         defaultProps: () =>
           getA11Props('loader', {
             role: undefined,
@@ -238,7 +238,7 @@ const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
           <>
             {loading && renderLoader()}
             {iconPosition !== 'after' && renderIcon()}
-            {createShorthand(ButtonContent, content, {
+            {createShorthand(composeOptions.slots.content, content, {
               defaultProps: () => getA11Props('content', { as: 'span', size }),
             })}
             {iconPosition === 'after' && renderIcon()}
@@ -254,6 +254,12 @@ const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
   {
     className: buttonClassName,
     displayName: 'Button',
+
+    slots: {
+      content: ButtonContent,
+      icon: Box,
+      loader: Loader,
+    },
 
     handledProps: [
       'accessibility',

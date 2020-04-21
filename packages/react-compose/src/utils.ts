@@ -24,6 +24,7 @@ export const defaultComposeOptions: ComposePreparedOptions = {
 
   handledProps: [] as never[],
   overrideStyles: false,
+  slots: {},
 };
 
 export function mergeComposeOptions(
@@ -43,6 +44,11 @@ export function mergeComposeOptions(
 
     handledProps: [...parentOptions.handledProps, ...((inputOptions.handledProps as never[]) || ([] as never[]))],
     overrideStyles: inputOptions.overrideStyles || false,
+
+    slots: {
+      ...(parentOptions.slots || {}),
+      ...(inputOptions.slots || {}),
+    },
   };
 }
 
