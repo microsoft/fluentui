@@ -25,8 +25,8 @@ import {
   rtlTextContainer,
   SizeValue,
   ShorthandFactory,
-  createShorthand,
   ShorthandConfig,
+  createShorthand,
 } from '../../utils';
 import Box, { BoxProps } from '../Box/Box';
 import Loader, { LoaderProps } from '../Loader/Loader';

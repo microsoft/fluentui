@@ -1,4 +1,5 @@
 import { mergeStyles } from '@fluentui/styles';
+import { ComponentWithAs } from '@fluentui/react-compose';
 import cx from 'classnames';
 import * as _ from 'lodash';
 import * as React from 'react';
