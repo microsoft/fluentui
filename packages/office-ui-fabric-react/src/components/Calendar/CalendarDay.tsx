@@ -89,7 +89,6 @@ export class CalendarDay extends React.Component<ICalendarDayProps, ICalendarDay
   private navigatedDay: HTMLElement | null;
   private days: { [key: string]: HTMLElement | null } = {};
 
-  // tslint:disable-next-line function-name
   public static getDerivedStateFromProps(nextProps: ICalendarDayProps) {
     return {
       weeks: CalendarDay._getWeeks(nextProps),
