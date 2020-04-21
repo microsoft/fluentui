@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Add useEditor=1 support to force editor on",
+  "packageName": "@uifabric/tsx-editor",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-04-21T00:50:55.297Z"
+}

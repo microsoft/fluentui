@@ -2,10 +2,10 @@ import * as React from 'react';
 import { Menu, Tooltip } from '@fluentui/react-northstar';
 
 const itemRenderer = (MenuItem, props) => {
-  const { tooltip = '', ...rest } = props;
+  const { tooltip = '', key, ...rest } = props;
 
   return (
-    <Tooltip content={tooltip}>
+    <Tooltip content={tooltip} key={key}>
       <MenuItem {...rest} />
     </Tooltip>
   );

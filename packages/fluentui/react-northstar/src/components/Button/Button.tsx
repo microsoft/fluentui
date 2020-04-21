@@ -316,6 +316,10 @@ Button.propTypes = {
 Button.Group = ButtonGroup;
 Button.Content = ButtonContent;
 
+Button.shorthandConfig = {
+  mappedProp: 'content',
+};
+
 Button.create = createShorthandFactory({ Component: Button, mappedProp: 'content' });
 
 export default Button;
