@@ -513,14 +513,18 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
     );
   };
 
-  private _renderMenuItem = (renderProps: IContextualMenuItemRenderProps): React.ReactNode => {
+  private _renderMenuItem = (item: IContextualMenuItemRenderProps): React.ReactNode => {
     const renderedItems: React.ReactNode[] = [];
-    const { item, index, focusableElementIndex, totalItemCount, hasCheckmarks, hasIcons } = renderProps;
+    const iconProps = item.iconProps || { iconName: 'None' };
     const {
       getItemClassNames, // tslint:disable-line:deprecation
       itemProps,
+      index,
+      focusableElementIndex,
+      totalItemCount,
+      hasCheckmarks,
+      hasIcons,
     } = item;
-    const iconProps = item.iconProps || { iconName: 'None' };
     const styles = itemProps ? itemProps.styles : undefined;
 
     // We only send a dividerClassName when the item to be rendered is a divider.
