@@ -1,8 +1,17 @@
 # Change Log - @uifabric/tslint-rules
 
-This log was last generated on Thu, 16 Apr 2020 04:01:45 GMT and should not be manually modified.
+This log was last generated on Tue, 21 Apr 2020 12:34:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.2.0](https://github.com/microsoft/fluentui/tree/@uifabric/tslint-rules_v7.2.0)
+
+Tue, 21 Apr 2020 12:34:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/tslint-rules_v7.1.3..@uifabric/tslint-rules_v7.2.0)
+
+### Minor changes
+
+- Remove unnecessary lint rule overrides ([PR #12711](https://github.com/microsoft/fluentui/pull/12711) by elcraig@microsoft.com)
 
 ## [7.1.3](https://github.com/microsoft/fluentui/tree/@uifabric/tslint-rules_v7.1.3)
 

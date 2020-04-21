@@ -15,6 +15,7 @@ import {
   rtlTextContainer,
   createShorthandFactory,
   ShorthandFactory,
+  createShorthand,
 } from '../../utils';
 import Button, { ButtonProps } from './Button';
 
@@ -68,7 +69,7 @@ class ButtonGroup extends UIComponent<WithAsProp<ButtonGroupProps>, any> {
     return (
       <ElementType {...unhandledProps} className={classes.root}>
         {_.map(buttons, (button, idx) =>
-          Button.create(button, {
+          createShorthand(Button, button, {
             defaultProps: () => ({
               circular,
               styles: this.getStyleForButtonIndex(styles, idx === 0, idx === buttons.length - 1),

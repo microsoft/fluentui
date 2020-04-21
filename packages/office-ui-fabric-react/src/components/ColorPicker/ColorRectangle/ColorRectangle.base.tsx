@@ -147,7 +147,7 @@ export class ColorRectangleBase extends React.Component<IColorRectangleProps, IC
     this._updateColor(ev, updateSV(color, clamp(s, MAX_COLOR_SATURATION), clamp(v, MAX_COLOR_VALUE)));
   };
 
-  private _updateColor(ev: React.MouseEvent | React.KeyboardEvent, color: IColor): void {
+  private _updateColor(ev: MouseEvent | KeyboardEvent | React.MouseEvent | React.KeyboardEvent, color: IColor): void {
     const { onChange } = this.props;
 
     const oldColor = this.state.color;
@@ -156,7 +156,7 @@ export class ColorRectangleBase extends React.Component<IColorRectangleProps, IC
     }
 
     if (onChange) {
-      onChange(ev, color);
+      onChange(ev as React.MouseEvent | React.KeyboardEvent, color);
     }
 
     if (!ev.defaultPrevented) {
@@ -167,14 +167,14 @@ export class ColorRectangleBase extends React.Component<IColorRectangleProps, IC
 
   private _onMouseDown = (ev: React.MouseEvent): void => {
     this._disposables.push(
-      on(window, 'mousemove', this._onMouseMove, true),
+      on(window, 'mousemove', this._onMouseMove as (ev: MouseEvent) => void, true),
       on(window, 'mouseup', this._disposeListeners, true),
     );
 
     this._onMouseMove(ev);
   };
 
-  private _onMouseMove = (ev: React.MouseEvent): void => {
+  private _onMouseMove = (ev: MouseEvent | React.MouseEvent): void => {
     if (!this._root.current) {
       return;
     }
@@ -204,7 +204,11 @@ export class ColorRectangleBase extends React.Component<IColorRectangleProps, IC
  * Exported for testing only.
  * @internal
  */
-export function _getNewColor(ev: React.MouseEvent, prevColor: IColor, root: HTMLElement): IColor | undefined {
+export function _getNewColor(
+  ev: MouseEvent | React.MouseEvent,
+  prevColor: IColor,
+  root: HTMLElement,
+): IColor | undefined {
   const rectSize = root.getBoundingClientRect();
 
   const sPercentage = (ev.clientX - rectSize.left) / rectSize.width;
