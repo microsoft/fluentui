@@ -10,7 +10,7 @@ import { DayOfWeek, FirstWeekOfYear, DateRangeType } from '../../utilities/dateV
 import { CalendarDay, ICalendarDay } from './CalendarDay';
 import { CalendarMonth, ICalendarMonth } from './CalendarMonth';
 import { getDateRangeArray, compareDates } from '../../utilities/dateMath/DateMath';
-import { css, KeyCodes, getNativeProps, divProperties, FocusRects } from '../../Utilities';
+import { css, KeyCodes, getNativeProps, divProperties, FocusRects, getPropsWithDefaults } from '../../Utilities';
 import * as stylesImport from './Calendar.scss';
 const styles: any = stylesImport;
 
@@ -56,7 +56,7 @@ export interface ICalendarState {
   isDayPickerVisible?: boolean;
 }
 
-const defautProps: ICalendarProps = {
+const defaultProps: ICalendarProps = {
   onSelectDate: undefined,
   onDismiss: undefined,
   isMonthPickerVisible: true,
@@ -81,20 +81,9 @@ const defautProps: ICalendarProps = {
   allFocusable: false,
 };
 
-function getPropsWithDefaults(propsWithoutDefaults: ICalendarProps): ICalendarProps {
-  const props = { ...propsWithoutDefaults };
-  for (const key of Object.keys(defautProps) as (keyof ICalendarProps)[]) {
-    if (props[key] === undefined) {
-      props[key] = defautProps[key];
-    }
-  }
-
-  return props;
-}
-
 export const Calendar = React.memo(
   React.forwardRef((propsWithoutDefaults: ICalendarProps, forwardedRef: React.Ref<HTMLDivElement>) => {
-    const props = getPropsWithDefaults(propsWithoutDefaults);
+    const props = getPropsWithDefaults(defaultProps, propsWithoutDefaults);
 
     const {
       firstDayOfWeek,
