@@ -70,7 +70,7 @@ import { TooltipContentStylesProps } from '../../components/Tooltip/TooltipConte
 import { HierarchicalTreeItemProps } from '../../components/HierarchicalTree/HierarchicalTreeItem';
 import { HierarchicalTreeProps } from '../../components/HierarchicalTree/HierarchicalTree';
 import { HierarchicalTreeTitleProps } from '../../components/HierarchicalTree/HierarchicalTreeTitle';
-import { VideoProps } from '../../components/Video/Video';
+import { VideoStylesProps } from '../../components/Video/Video';
 import { TreeItemStylesProps } from '../../components/Tree/TreeItem';
 import { TreeTitleStylesProps } from '../../components/Tree/TreeTitle';
 import { TableProps } from '../../components/Table/Table';
@@ -151,7 +151,7 @@ export type TeamsThemeStylesProps = {
   HierarchicalTree: HierarchicalTreeProps;
   HierarchicalTreeItem: HierarchicalTreeItemProps;
   HierarchicalTreeTitle: HierarchicalTreeTitleProps;
-  Video: VideoProps;
+  Video: VideoStylesProps;
   Table: TableProps;
   TableRow: TableRowProps;
   TableCell: TableCellStylesProps;
