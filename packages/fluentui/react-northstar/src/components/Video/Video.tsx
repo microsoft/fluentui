@@ -11,6 +11,12 @@ import { ProviderContextPrepared, ComponentVariablesInput } from '@fluentui/reac
 import { ThemeContext } from 'react-fela';
 
 export interface VideoProps extends UIComponentProps {
+  /**
+   * Accessibility behavior if overridden by the user.
+   * @available alertWarningBehavior
+   */
+  accessibility?: Accessibility<VideoBehaviorProps>;
+
   /** Whether the video should start playing when rendered. Autoplay videos must be muted or they will not play immediately in certain browers like Chrome. */
   autoPlay?: boolean;
 
@@ -28,8 +34,6 @@ export interface VideoProps extends UIComponentProps {
 
   /** Video source URL. */
   src?: string;
-
-  accessibility?: Accessibility<VideoBehaviorProps>;
 }
 
 export const videoClassName = 'ui-video';
@@ -40,7 +44,7 @@ export const Video: React.FC<WithAsProp<VideoProps>> & FluentComponentStaticProp
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(Video.displayName, context.telemetry);
   setStart();
-  const { controls, autoPlay, loop, poster, src, muted, variables, className } = props;
+  const { controls, autoPlay, loop, poster, src, muted, variables, className, design, styles } = props;
   const ElementType = getElementType(props);
   const videoRef = React.createRef<HTMLVideoElement>();
   const unhandledProps = useUnhandledProps(Video.handledProps, props);
@@ -56,9 +60,9 @@ export const Video: React.FC<WithAsProp<VideoProps>> & FluentComponentStaticProp
     }
   }, [muted]);
 
-  const { classes, styles } = useStyles<VideoStylesProps>(Video.displayName, {
+  const { classes } = useStyles<VideoStylesProps>(Video.displayName, {
     className: videoClassName,
-    mapPropsToInlineStyles: () => ({ className, variables }),
+    mapPropsToInlineStyles: () => ({ className, variables, design, styles }),
   });
 
   const element = (
@@ -66,7 +70,6 @@ export const Video: React.FC<WithAsProp<VideoProps>> & FluentComponentStaticProp
       <ElementType
         {...getA11yProps('root', {
           className: classes.root,
-          styles,
           autoPlay,
           controls,
           loop,
