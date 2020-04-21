@@ -230,11 +230,14 @@ const ToolbarItem: React.FC<WithAsProp<ToolbarItemProps>> & FluentComponentStati
 
   const handleMenuOverrides = (getRefs: GetRefs) => (predefinedProps: ToolbarMenuProps) => ({
     onBlur: (e: React.FocusEvent) => {
-      const isInside = _.some(getRefs(), (childRef: NodeRef) => {
-        return childRef.current.contains(e.relatedTarget as HTMLElement);
+      const isInsideorMenuTrigger = _.some(getRefs(), (childRef: NodeRef) => {
+        return (
+          childRef.current.contains(e.relatedTarget as HTMLElement) ||
+          itemRef.current.contains(e.relatedTarget as HTMLElement)
+        );
       });
 
-      if (!isInside) {
+      if (!isInsideorMenuTrigger) {
         trySetMenuOpen(false, e);
       }
     },
