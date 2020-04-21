@@ -235,11 +235,13 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
     if (isExpandedSelectableParent) {
       const selectItems = items => {
         items.forEach(item => {
-          if (selectedItemIds.indexOf(item['id']) === -1) {
+          const selectble = item.hasOwnProperty('selectable') ? item.selectable : treeItemProps.selectable;
+
+          if (selectedItemIds.indexOf(item.id) === -1) {
             if (item.items) {
               selectItems(item.items);
-            } else {
-              selectedItemIds.push(item['id']);
+            } else if (selectble) {
+              selectedItemIds.push(item.id);
             }
           }
         });
