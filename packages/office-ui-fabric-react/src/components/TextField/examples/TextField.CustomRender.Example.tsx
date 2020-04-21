@@ -7,7 +7,7 @@ import { IStackTokens, Stack, IStackStyles } from 'office-ui-fabric-react/lib/St
 import { Text } from 'office-ui-fabric-react/lib/Text';
 import { getId, IRenderFunction, memoizeFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { getTheme, FontWeights, ITheme } from 'office-ui-fabric-react/lib/Styling';
-import { useBoolean, useId } from '@uifabric/react-hooks';
+import { useBoolean } from '@uifabric/react-hooks';
 
 export interface ITextFieldCustomRenderExampleState {
   isCalloutVisible: boolean;
