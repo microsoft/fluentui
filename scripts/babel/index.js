@@ -1,5 +1,5 @@
 const isNodeCaller = caller => {
-  return caller && (caller.name === '@babel/register' || caller.name === 'babel-jest');
+  return caller && caller.name === 'babel-jest';
 };
 const isDistCaller = caller => {
   return !!(caller && caller.name === 'babel-gulp');

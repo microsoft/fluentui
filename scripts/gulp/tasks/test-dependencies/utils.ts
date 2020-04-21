@@ -53,7 +53,7 @@ export const prepareWebpackConfig = (options: WebpackOptions) => {
             return modules[0].packageJson.name;
           });
 
-          return null;
+          return '';
         },
       }),
     ],

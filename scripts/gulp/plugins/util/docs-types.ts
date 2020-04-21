@@ -38,7 +38,7 @@ export type ComponentInfo = {
   props: ComponentProp[];
   repoPath: string;
   subcomponentName: null | string;
-  subcomponents: string[];
+  subcomponents: string[] | null;
   type: 'component';
 };
 

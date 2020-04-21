@@ -1,6 +1,6 @@
 // @ts-check
 
-require('@uifabric/build/babel/register');
+require('@uifabric/build/ts-node-register');
 
 const cp = require('child_process');
 
