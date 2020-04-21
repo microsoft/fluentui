@@ -266,5 +266,12 @@ describe('Carousel', () => {
       expect(wrapper.state('activeIndex')).toEqual(1);
       expect(document.activeElement.firstElementChild.innerHTML).toEqual('item2');
     });
+
+    it('should show no pagination if getItemPositionText is not passed', () => {
+      const wrapper = renderCarousel({ getItemPositionText: undefined });
+      const paginationWrapper = getPaginationWrapper(wrapper);
+
+      expect(paginationWrapper.exists()).toBe(false);
+    });
   });
 });
