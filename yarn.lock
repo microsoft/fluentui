@@ -1161,115 +1161,6 @@
     reflect-metadata "^0.1.12"
     tslib "^1.8.1"
 
-"@fluentui/accessibility@^0.47.1":
-  version "0.47.1"
-  resolved "https://registry.yarnpkg.com/@fluentui/accessibility/-/accessibility-0.47.1.tgz#9dd86e3a7bf5101c32683fd5a762e4d165139127"
-  integrity sha512-oPdY5hV9OR+pozGhPYh+zAk0b5Xg6JVfkKKcQRcUKPmTtDOgJVNmdnlfPj7DkxvjS/pwU7xasRL3UbSV03OQRw==
-  dependencies:
-    "@babel/runtime" "^7.7.6"
-    keyboard-key "1.0.1"
-    lodash "^4.17.15"
-
-"@fluentui/react-bindings@^0.47.1":
-  version "0.47.1"
-  resolved "https://registry.yarnpkg.com/@fluentui/react-bindings/-/react-bindings-0.47.1.tgz#a906f5e9d9b072562f8d0d47f4f4be04bade3337"
-  integrity sha512-okabY4wS0xUs+4ZIgXfJnItorBvvXQa5tytY1Csr+6KmGt4vBiyZ8Dde5MR0NAkBr7beJ01NygCJruuVgnc7wA==
-  dependencies:
-    "@babel/runtime" "^7.7.6"
-    "@fluentui/accessibility" "^0.47.1"
-    "@fluentui/state" "^0.47.1"
-    "@fluentui/styles" "^0.47.1"
-    classnames "^2.2.6"
-    fela "^10.6.1"
-    lodash "^4.17.15"
-
-"@fluentui/react-component-event-listener@^0.47.0", "@fluentui/react-component-event-listener@^0.47.1":
-  version "0.47.1"
-  resolved "https://registry.yarnpkg.com/@fluentui/react-component-event-listener/-/react-component-event-listener-0.47.1.tgz#d39db071cb7ab4ef8d6dddab5c45138e09579c94"
-  integrity sha512-JILkO3yHRwa4dOqsJZew5xkrH4uUUelSSssPB2QaN9lNjq3FAB765uWGKrUD0JaFzBpOdE20UvlnzKVnVicaHA==
-  dependencies:
-    "@babel/runtime" "^7.7.6"
-    prop-types "^15.7.2"
-
-"@fluentui/react-component-nesting-registry@^0.47.1":
-  version "0.47.1"
-  resolved "https://registry.yarnpkg.com/@fluentui/react-component-nesting-registry/-/react-component-nesting-registry-0.47.1.tgz#52a3964d3a2b9fe825b89b4c2f8409132f42d8df"
-  integrity sha512-TFGwqISnFLB71mzgYzNq4OS+N8+yl9WCtj6T1I9bTrwEuDjEATuEnQZOc7OUYehjglh8/pekRM4+a0WArupj7w==
-  dependencies:
-    "@babel/runtime" "^7.7.6"
-    prop-types "^15.7.2"
-
-"@fluentui/react-component-ref@^0.47.1":
-  version "0.47.1"
-  resolved "https://registry.yarnpkg.com/@fluentui/react-component-ref/-/react-component-ref-0.47.1.tgz#d1352a6a5d272d6600d39bfa885d6ce3d4a8235f"
-  integrity sha512-fF0BQ1nmC0xtQXvcaEuoCc7fD/q6CgxP7GmKmqbmZdUtx5HXRniO5TQ4pYlbL9p2duPFCodTdyv2kdH7itfGPw==
-  dependencies:
-    "@babel/runtime" "^7.7.6"
-    prop-types "^15.7.2"
-    react-is "^16.6.3"
-
-"@fluentui/react-context-selector@^0.47.1":
-  version "0.47.1"
-  resolved "https://registry.yarnpkg.com/@fluentui/react-context-selector/-/react-context-selector-0.47.1.tgz#b96016506936551189f07f5eafda90f4baa20fec"
-  integrity sha512-j3PCuiRPOfjCv7wHwCWGzaYRBVjtbhJ0qtA451XFvVC1jDXcnEawizDMuOETGDDDPFy0d55gbKO3vn8BA7nMXg==
-  dependencies:
-    "@babel/runtime" "^7.7.6"
-
-"@fluentui/react-northstar@^0.47.0":
-  version "0.47.1"
-  resolved "https://registry.yarnpkg.com/@fluentui/react-northstar/-/react-northstar-0.47.1.tgz#736028ffc26f9af09d8717d2c6f152fc3dae0cb4"
-  integrity sha512-4FhrRE8sVlZZYPMxPHg9JbyrkfUUuYbZRINRzLXFkEo+c/hg+NE5LMQybDh/iDgVADQfMkaACYLh4FZyFNFx+w==
-  dependencies:
-    "@babel/runtime" "^7.7.6"
-    "@fluentui/accessibility" "^0.47.1"
-    "@fluentui/react-bindings" "^0.47.1"
-    "@fluentui/react-component-event-listener" "^0.47.1"
-    "@fluentui/react-component-nesting-registry" "^0.47.1"
-    "@fluentui/react-component-ref" "^0.47.1"
-    "@fluentui/react-context-selector" "^0.47.1"
-    "@fluentui/react-proptypes" "^0.47.1"
-    "@fluentui/styles" "^0.47.1"
-    classnames "^2.2.6"
-    downshift "3.2.14"
-    fela "^10.6.1"
-    fela-plugin-embedded "^10.6.1"
-    fela-plugin-fallback-value "^10.6.1"
-    fela-plugin-placeholder-prefixer "^10.6.1"
-    fela-plugin-prefixer "^10.6.1"
-    fela-plugin-rtl "^10.6.1"
-    inline-style-expand-shorthand "^1.2.0"
-    keyboard-key "1.0.1"
-    lodash "^4.17.15"
-    popper.js "^1.15.0"
-    prop-types "^15.7.2"
-    react-fela "^10.6.1"
-    react-transition-group "^4.3.0"
-
-"@fluentui/react-proptypes@^0.47.1":
-  version "0.47.1"
-  resolved "https://registry.yarnpkg.com/@fluentui/react-proptypes/-/react-proptypes-0.47.1.tgz#d9d70ee09a1b6f60f448ac71c41ffd23ee37d37a"
-  integrity sha512-C95IROOjnVebiMqGiWw+H81pxmQaAjk7j0yXJ7TzK6GmTsgBXjEKk8mvwnyWh7/uu3c6nb7l0l/czOhaBpqQtQ==
-  dependencies:
-    "@babel/runtime" "^7.7.6"
-    lodash "^4.17.15"
-    prop-types "^15.7.2"
-
-"@fluentui/state@^0.47.1":
-  version "0.47.1"
-  resolved "https://registry.yarnpkg.com/@fluentui/state/-/state-0.47.1.tgz#3d07e18da6376651d56df8df9a443f2645775a0b"
-  integrity sha512-1JEFOTBr/9DJkK8Pf59Qy+Xq+WnA4m+Wkv/XVaLyh889Cvnpg4OTWXdhWqbMOKOVVa2bUd4wbicggwUbdwGIoA==
-  dependencies:
-    "@babel/runtime" "^7.7.6"
-
-"@fluentui/styles@^0.47.1":
-  version "0.47.1"
-  resolved "https://registry.yarnpkg.com/@fluentui/styles/-/styles-0.47.1.tgz#d8dd894b27c4ecd7336472760e3a12bca21d92c7"
-  integrity sha512-d4ypNO/2WJDnoDrm2glok/1KseVdsZZ9j1WuRM3Mgz9M1k5m1QjMdGn0ePIzD077nDadEh2sEA1U1AisMBQrvA==
-  dependencies:
-    "@babel/runtime" "^7.7.6"
-    csstype "^2.6.7"
-    lodash "^4.17.15"
-
 "@gulp-sourcemaps/identity-map@1.X":
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@gulp-sourcemaps/identity-map/-/identity-map-1.0.2.tgz#1e6fe5d8027b1f285dc0d31762f566bccd73d5a9"
@@ -7616,14 +7507,6 @@ css-color-names@0.0.4:
   resolved "https://registry.yarnpkg.com/css-color-names/-/css-color-names-0.0.4.tgz#808adc2e79cf84738069b646cb20ec27beb629e0"
   integrity sha1-gIrcLnnPhHOAabZGyyDsJ762KeA=
 
-css-in-js-utils@^2.0.0:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/css-in-js-utils/-/css-in-js-utils-2.0.1.tgz#3b472b398787291b47cfe3e44fecfdd9e914ba99"
-  integrity sha512-PJF0SpJT+WdbVVt0AOYp9C8GnuruRlL/UFW7932nLWmFLQTaWEzTBQEx7/hn4BuV+WON75iAViSUJLiU3PKbpA==
-  dependencies:
-    hyphenate-style-name "^1.0.2"
-    isobject "^3.0.1"
-
 css-in-js-utils@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/css-in-js-utils/-/css-in-js-utils-3.0.0.tgz#4379185f5cc79f9eba39b4e795c317f253ffaa40"
@@ -9897,7 +9780,7 @@ fela-plugin-embedded@^10.6.1:
     fast-loops "^1.0.0"
     isobject "^3.0.1"
 
-fela-plugin-fallback-value@^10.6.1, fela-plugin-fallback-value@^10.8.2:
+fela-plugin-fallback-value@^10.6.1:
   version "10.8.2"
   resolved "https://registry.yarnpkg.com/fela-plugin-fallback-value/-/fela-plugin-fallback-value-10.8.2.tgz#c34ba7e369478f03bf24e798f64789d7306485e2"
   integrity sha512-pjNQ4TJVJz8rDS8kEB7afRDHelQFzi0kIOhLSR0/LWLLFC7CfaQ3Vop9/w5Ot7iJtH8oR1dAxSQEyk497QcyPw==
@@ -9912,17 +9795,6 @@ fela-plugin-placeholder-prefixer@^10.6.1:
   dependencies:
     fast-loops "^1.0.0"
     fela-plugin-custom-property "^10.6.1"
-
-fela-plugin-prefixer@^10.6.1:
-  version "10.8.2"
-  resolved "https://registry.yarnpkg.com/fela-plugin-prefixer/-/fela-plugin-prefixer-10.8.2.tgz#968633dd060ebb2776208dc10a801a59b6ac4e06"
-  integrity sha512-xwrSBzDIyrh39EzRXE8XDuz3gEAKhWH58yzZJVJpSH3Zy6suaRkki8vxFf3QCizBTMZBXVLsklQfNP53WxKk3w==
-  dependencies:
-    css-in-js-utils "^3.0.0"
-    fast-loops "^1.0.0"
-    fela-plugin-fallback-value "^10.8.2"
-    inline-style-prefixer "^5.1.0"
-    isobject "^3.0.1"
 
 fela-plugin-rtl@^10.6.1:
   version "10.8.2"
@@ -11940,13 +11812,6 @@ inline-style-parser@0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/inline-style-parser/-/inline-style-parser-0.1.1.tgz#ec8a3b429274e9c0a1f1c4ffa9453a7fef72cea1"
   integrity sha512-7NXolsK4CAS5+xvdj5OMMbI962hU/wvwoxk+LWR9Ek9bVtyuuYScDN6eS0rUm6TxApFpw7CX1o4uJzcd4AyD3Q==
-
-inline-style-prefixer@^5.1.0:
-  version "5.1.2"
-  resolved "https://registry.yarnpkg.com/inline-style-prefixer/-/inline-style-prefixer-5.1.2.tgz#e5a5a3515e25600e016b71e39138971228486c33"
-  integrity sha512-PYUF+94gDfhy+LsQxM0g3d6Hge4l1pAqOSOiZuHWzMvQEGsbRQ/ck2WioLqrY2ZkHyPgVUXxn+hrkF7D6QUGbA==
-  dependencies:
-    css-in-js-utils "^2.0.0"
 
 inquirer@6.5.0:
   version "6.5.0"
@@ -16844,11 +16709,6 @@ popper.js@^1.14.4, popper.js@^1.14.7:
   version "1.15.0"
   resolved "https://registry.yarnpkg.com/popper.js/-/popper.js-1.15.0.tgz#5560b99bbad7647e9faa475c6b8056621f5a4ff2"
   integrity sha512-w010cY1oCUmI+9KwwlWki+r5jxKfTFDVoadl7MSrIujHU5MJ5OR6HTDj6Xo8aoR/QsA56x8jKjA59qGH4ELtrA==
-
-popper.js@^1.15.0:
-  version "1.16.1"
-  resolved "https://registry.yarnpkg.com/popper.js/-/popper.js-1.16.1.tgz#2a223cb3dc7b6213d740e40372be40de43e65b1b"
-  integrity sha512-Wb4p1J4zyFTbM+u6WuO4XstYx4Ky9Cewe4DWrel7B0w6VVICvPwdOpotjzcf6eD8TsckVnIMNONQyPIUFOUbCQ==
 
 portfinder@^1.0.20, portfinder@^1.0.25:
   version "1.0.25"
