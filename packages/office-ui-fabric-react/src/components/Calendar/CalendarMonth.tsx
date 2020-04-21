@@ -21,7 +21,7 @@ export interface ICalendarMonth {
   focus(): void;
 }
 
-export interface ICalendarMonthProps extends React.ClassAttributes<CalendarMonth> {
+export interface ICalendarMonthProps {
   componentRef?: IRefObject<ICalendarMonth>;
   navigatedDate: Date;
   selectedDate: Date;
@@ -43,16 +43,71 @@ export interface ICalendarMonthState {
   isYearPickerVisible?: boolean;
 }
 
-export class CalendarMonth extends React.Component<ICalendarMonthProps, ICalendarMonthState> {
-  /**
-   * @deprecated unused, prefer 'ref' and 'componentRef' of ICalendarMonthProps.
-   */
-  public refs: {
-    [key: string]: React.ReactInstance;
-    navigatedMonth: HTMLElement;
-  };
+const CalendarMonthButton = React.memo(
+  React.forwardRef(
+    (
+      {
+        navigatedDate,
+        monthIndex,
+        today,
+        selectedDate,
+        minDate,
+        maxDate,
+        highlightCurrentMonth,
+        highlightSelectedMonth,
+        strings,
+        dateTimeFormatter,
+        onNavigateDate,
+        onHeaderSelect,
+      }: {
+        monthIndex: number;
+      } & ICalendarMonthProps,
+      forwardedRef: React.Ref<HTMLButtonElement>,
+    ) => {
+      const indexedMonth = setMonth(navigatedDate, monthIndex);
+      const isCurrentMonth = _isCurrentMonth(monthIndex, navigatedDate.getFullYear(), today!);
+      const isNavigatedMonth = navigatedDate.getMonth() === monthIndex;
+      const isSelectedMonth = selectedDate.getMonth() === monthIndex;
+      const isSelectedYear = selectedDate.getFullYear() === navigatedDate.getFullYear();
+      const isInBounds =
+        (minDate ? compareDatePart(minDate, getMonthEnd(indexedMonth)) < 1 : true) &&
+        (maxDate ? compareDatePart(getMonthStart(indexedMonth), maxDate) < 1 : true);
 
-  private _selectMonthCallbacks: (() => void)[];
+      const _onSelectMonth = React.useCallback((): void => {
+        // If header is clickable the calendars are overlayed, switch back to day picker when month is clicked
+        onHeaderSelect?.(true);
+        onNavigateDate(setMonth(navigatedDate, monthIndex), true);
+      }, [onHeaderSelect, onNavigateDate, navigatedDate, monthIndex]);
+
+      const _onSelectMonthKeyDown = React.useCallback(_onKeyDown(_onSelectMonth), [_onSelectMonth]);
+
+      return (
+        <button
+          role={'gridcell'}
+          className={css('ms-DatePicker-monthOption', styles.monthOption, {
+            ['ms-DatePicker-day--today ' + styles.monthIsCurrentMonth]: highlightCurrentMonth && isCurrentMonth!,
+            ['ms-DatePicker-day--highlighted ' + styles.monthIsHighlighted]:
+              (highlightCurrentMonth || highlightSelectedMonth) && isSelectedMonth && isSelectedYear,
+            ['ms-DatePicker-monthOption--disabled ' + styles.monthOptionIsDisabled]: !isInBounds,
+          })}
+          disabled={!isInBounds}
+          key={monthIndex}
+          onClick={isInBounds ? _onSelectMonth : undefined}
+          onKeyDown={isInBounds ? _onSelectMonthKeyDown : undefined}
+          aria-label={dateTimeFormatter.formatMonthYear(indexedMonth, strings)}
+          aria-selected={isNavigatedMonth}
+          data-is-focusable={isInBounds ? true : undefined}
+          ref={forwardedRef}
+          type="button"
+        >
+          {strings.shortMonths[monthIndex]}
+        </button>
+      );
+    },
+  ),
+);
+
+export class CalendarMonth extends React.Component<ICalendarMonthProps, ICalendarMonthState> {
   private _calendarYearRef: CalendarYear;
   private _navigatedMonthRef: React.RefObject<HTMLButtonElement> = React.createRef<HTMLButtonElement>();
   private _focusOnUpdate: boolean;
@@ -61,16 +116,6 @@ export class CalendarMonth extends React.Component<ICalendarMonthProps, ICalenda
     super(props);
 
     initializeComponentRef(this);
-
-    this._selectMonthCallbacks = [];
-    props.strings.shortMonths.map((month, index) => {
-      this._selectMonthCallbacks[index] = this._onSelectMonth.bind(this, index);
-    });
-
-    this._isCurrentMonth = this._isCurrentMonth.bind(this);
-    this._onSelectNextYear = this._onSelectNextYear.bind(this);
-    this._onSelectPrevYear = this._onSelectPrevYear.bind(this);
-    this._onSelectMonth = this._onSelectMonth.bind(this);
 
     this.state = { isYearPickerVisible: false };
   }
@@ -85,11 +130,7 @@ export class CalendarMonth extends React.Component<ICalendarMonthProps, ICalenda
   public render(): JSX.Element {
     const {
       navigatedDate,
-      selectedDate,
       strings,
-      today,
-      highlightCurrentMonth,
-      highlightSelectedMonth,
       navigationIcons,
       dateTimeFormatter,
       minDate,
@@ -204,37 +245,13 @@ export class CalendarMonth extends React.Component<ICalendarMonthProps, ICalenda
                 <div key={'monthRow_' + rowNum} role="row">
                   {monthsForRow.map((month: string, index: number) => {
                     const monthIndex = rowNum * MONTHS_PER_ROW + index;
-                    const indexedMonth = setMonth(navigatedDate, monthIndex);
-                    const isCurrentMonth = this._isCurrentMonth(monthIndex, navigatedDate.getFullYear(), today!);
-                    const isNavigatedMonth = navigatedDate.getMonth() === monthIndex;
-                    const isSelectedMonth = selectedDate.getMonth() === monthIndex;
-                    const isSelectedYear = selectedDate.getFullYear() === navigatedDate.getFullYear();
-                    const isInBounds =
-                      (minDate ? compareDatePart(minDate, getMonthEnd(indexedMonth)) < 1 : true) &&
-                      (maxDate ? compareDatePart(getMonthStart(indexedMonth), maxDate) < 1 : true);
-
                     return (
-                      <button
-                        role={'gridcell'}
-                        className={css('ms-DatePicker-monthOption', styles.monthOption, {
-                          ['ms-DatePicker-day--today ' + styles.monthIsCurrentMonth]:
-                            highlightCurrentMonth && isCurrentMonth!,
-                          ['ms-DatePicker-day--highlighted ' + styles.monthIsHighlighted]:
-                            (highlightCurrentMonth || highlightSelectedMonth) && isSelectedMonth && isSelectedYear,
-                          ['ms-DatePicker-monthOption--disabled ' + styles.monthOptionIsDisabled]: !isInBounds,
-                        })}
-                        disabled={!isInBounds}
+                      <CalendarMonthButton
                         key={monthIndex}
-                        onClick={isInBounds ? this._selectMonthCallbacks[monthIndex] : undefined}
-                        onKeyDown={isInBounds ? this._onSelectMonthKeyDown(monthIndex) : undefined}
-                        aria-label={dateTimeFormatter.formatMonthYear(indexedMonth, strings)}
-                        aria-selected={isNavigatedMonth}
-                        data-is-focusable={isInBounds ? true : undefined}
-                        ref={isNavigatedMonth ? this._navigatedMonthRef : undefined}
-                        type="button"
-                      >
-                        {month}
-                      </button>
+                        monthIndex={monthIndex}
+                        {...this.props}
+                        ref={navigatedDate.getMonth() === monthIndex ? this._navigatedMonthRef : undefined}
+                      />
                     );
                   })}
                 </div>
@@ -257,16 +274,6 @@ export class CalendarMonth extends React.Component<ICalendarMonthProps, ICalenda
 
   private _onCalendarYearRef = (ref: CalendarYear) => {
     this._calendarYearRef = ref;
-  };
-
-  private _isCurrentMonth(month: number, year: number, today: Date): boolean {
-    return today.getFullYear() === year && today.getMonth() === month;
-  }
-
-  private _onKeyDown = (callback: () => void, ev: React.KeyboardEvent<HTMLElement>): void => {
-    if (ev.which === KeyCodes.enter) {
-      callback();
-    }
   };
 
   private _onSelectYear = (selectedYear: number) => {
@@ -328,7 +335,7 @@ export class CalendarMonth extends React.Component<ICalendarMonthProps, ICalenda
 
   private _onSelectNextYearKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
     if (ev.which === KeyCodes.enter) {
-      this._onKeyDown(this._onSelectNextYear, ev);
+      _onKeyDown(this._onSelectNextYear)(ev);
     }
   };
 
@@ -339,22 +346,8 @@ export class CalendarMonth extends React.Component<ICalendarMonthProps, ICalenda
 
   private _onSelectPrevYearKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
     if (ev.which === KeyCodes.enter) {
-      this._onKeyDown(this._onSelectPrevYear, ev);
+      _onKeyDown(this._onSelectPrevYear)(ev);
     }
-  };
-
-  private _onSelectMonthKeyDown = (index: number): ((ev: React.KeyboardEvent<HTMLElement>) => void) => {
-    return (ev: React.KeyboardEvent<HTMLElement>) => this._onKeyDown(() => this._onSelectMonth(index), ev);
-  };
-
-  private _onSelectMonth = (newMonth: number): void => {
-    const { navigatedDate, onNavigateDate, onHeaderSelect } = this.props;
-
-    // If header is clickable the calendars are overlayed, switch back to day picker when month is clicked
-    if (onHeaderSelect) {
-      onHeaderSelect(true);
-    }
-    onNavigateDate(setMonth(navigatedDate, newMonth), true);
   };
 
   private _onHeaderSelect = (): void => {
@@ -378,3 +371,13 @@ export class CalendarMonth extends React.Component<ICalendarMonthProps, ICalenda
     }
   };
 }
+
+function _isCurrentMonth(month: number, year: number, today: Date): boolean {
+  return today.getFullYear() === year && today.getMonth() === month;
+}
+
+const _onKeyDown = (callback: () => void) => (ev: React.KeyboardEvent<HTMLElement>): void => {
+  if (ev.which === KeyCodes.enter) {
+    callback();
+  }
+};
