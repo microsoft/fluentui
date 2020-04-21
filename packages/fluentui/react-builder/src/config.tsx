@@ -9,13 +9,45 @@ import { JSONTreeElement } from './components/types';
 
 type FiberNavigator = FUI.FiberNavigator;
 
-export const EXCLUDED_COMPONENTS = ['Animation', 'Debug', 'Design', 'FocusZone', 'Portal', 'Provider', 'Ref'];
-
 export const DRAGGING_ELEMENTS = {
   // HTML ELEMENTS
   div: { children: 'I am a <div>' },
   span: { children: 'I am a <span>' },
   p: { children: 'I am a <p>' },
+
+  // TODO: sort
+
+  ButtonGroup: (
+    <FUI.ButtonGroup
+      buttons={[
+        {
+          icon: <FUIIcons.EmojiIcon />,
+          key: 'emoji',
+          iconOnly: true,
+          title: 'Emoji',
+        },
+        {
+          icon: <FUIIcons.TranslationIcon />,
+          key: 'translation',
+          iconOnly: true,
+          title: 'Translation',
+        },
+        {
+          icon: <FUIIcons.PlayIcon />,
+          key: 'play',
+          iconOnly: true,
+          title: 'Play',
+        },
+      ]}
+    />
+  ),
+  Card: <FUI.Card />,
+  CardHeader: <FUI.CardHeader />,
+  CardBody: <FUI.CardBody />,
+  CardFooter: <FUI.CardFooter />,
+  CardPreview: <FUI.CardPreview />,
+  CardColumn: <FUI.CardColumn />,
+  CardTopControls: <FUI.CardTopControls />,
 
   // FLUENT v0 COMPONENTS
   Accordion: {
