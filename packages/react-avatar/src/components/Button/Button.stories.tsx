@@ -33,8 +33,12 @@ export const ButtonMergeStyles = () => (
   </StoryExample>
 );
 
+const lightTheme = convertTeamsTheme(themes.teams);
+const darkTheme = convertTeamsTheme(themes.teamsDark);
+const hcTheme = convertTeamsTheme(themes.teamsHighContrast);
+
 export const ButtonCss = () => (
-  <ThemeProvider theme={convertTeamsTheme(themes.teams)}>
+  <ThemeProvider theme={lightTheme}>
     <StoryExample title="Button (css)">
       <Button icon="X" content="Hello, world" />
       <Button primary content="Hello, world" />
@@ -48,7 +52,7 @@ export const ButtonCss = () => (
 
 export const ButtonCssThemes = () => (
   <>
-    <ThemeProvider theme={convertTeamsTheme(themes.teams)}>
+    <ThemeProvider theme={lightTheme}>
       <StoryExample title="Button (css, custom theme provider, light)">
         <Button icon="X" content="Hello, world" />
         <Button primary content="Hello, world" />
@@ -58,7 +62,7 @@ export const ButtonCssThemes = () => (
         <Button disabled circular icon="X" />
       </StoryExample>
     </ThemeProvider>
-    <ThemeProvider theme={convertTeamsTheme(themes.teamsDark)}>
+    <ThemeProvider theme={darkTheme}>
       <StoryExample title="Button (css, custom theme provider, dark)">
         <Button icon="X" content="Hello, world" />
         <Button primary content="Hello, world" />
@@ -68,7 +72,7 @@ export const ButtonCssThemes = () => (
         <Button disabled circular icon="X" />
       </StoryExample>
     </ThemeProvider>
-    <ThemeProvider theme={convertTeamsTheme(themes.teamsHighContrast)}>
+    <ThemeProvider theme={hcTheme}>
       <StoryExample title="Button (css, custom theme provider, hc)">
         <Button icon="X" content="Hello, world" />
         <Button primary content="Hello, world" />

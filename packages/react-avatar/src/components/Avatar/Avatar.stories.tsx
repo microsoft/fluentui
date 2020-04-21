@@ -5,6 +5,8 @@ import { Provider, themes, Header, Avatar as FUIAvatar, Flex } from '@fluentui/r
 import { PulsingAvatar } from './PulsingAvatar';
 import { StylesheetProvider } from '../utils/StylesheetProvider';
 import { StoryExample } from '../utils/StoryExample';
+import { ThemeProvider } from '../utils/ThemeProvider';
+import { convertTeamsTheme } from '../utils/convertTeamsTheme';
 
 const imageUrl = 'http://www.fillmurray.com/192/192';
 
@@ -124,38 +126,42 @@ export const AvatarMergeStyles = () => (
   </StoryExample>
 );
 
-export const AvatarCss = () => (
-  <StoryExample title="Avatar (css)">
-    <Avatar size="smallest" name="John Doe" status="success" />
-    <Avatar size="smaller" name="John Doe" status="success" />
-    <Avatar size="small" name="John Doe" status="success" />
-    <Avatar name="John Doe" status="success" />
-    <Avatar size="large" name="Jane Doe" status="error" />
-    <Avatar size="larger" name="Lorem Ipsum" status="warning" />
-    <Avatar size="largest" name="Lorem Ipsum" status="warning" />
-    <Avatar square size="smallest" name="John Doe" status="success" />
-    <Avatar square size="smaller" name="John Doe" status="success" />
-    <Avatar square size="small" name="John Doe" status="success" />
-    <Avatar square name="John Doe" status="success" />
-    <Avatar square size="large" name="Jane Doe" status="error" />
-    <Avatar square size="larger" name="Lorem Ipsum" status="warning" />
-    <Avatar square size="largest" name="Lorem Ipsum" status="warning" />
+const teamsLight = convertTeamsTheme(themes.teams);
 
-    <Avatar size="smallest" name="John Doe" status="success" image={imageUrl} />
-    <Avatar size="smaller" name="John Doe" status="success" image={imageUrl} />
-    <Avatar size="small" name="John Doe" status="success" image={imageUrl} />
-    <Avatar name="John Doe" status="success" image={imageUrl} />
-    <Avatar size="large" name="Jane Doe" status="error" image={imageUrl} />
-    <Avatar size="larger" name="Lorem Ipsum" status="warning" image={imageUrl} />
-    <Avatar size="largest" name="Lorem Ipsum" status="warning" image={imageUrl} />
-    <Avatar square size="smallest" name="John Doe" status="success" image={imageUrl} />
-    <Avatar square size="smaller" name="John Doe" status="success" image={imageUrl} />
-    <Avatar square size="small" name="John Doe" status="success" image={imageUrl} />
-    <Avatar square name="John Doe" status="success" image={imageUrl} />
-    <Avatar square size="large" name="Jane Doe" status="error" image={imageUrl} />
-    <Avatar square size="larger" name="Lorem Ipsum" status="warning" image={imageUrl} />
-    <Avatar square size="largest" name="Lorem Ipsum" status="warning" image={imageUrl} />
-  </StoryExample>
+export const AvatarCss = () => (
+  <ThemeProvider theme={teamsLight}>
+    <StoryExample title="Avatar (css)">
+      <Avatar size="smallest" name="John Doe" status="success" />
+      <Avatar size="smaller" name="John Doe" status="success" />
+      <Avatar size="small" name="John Doe" status="success" />
+      <Avatar name="John Doe" status="success" />
+      <Avatar size="large" name="Jane Doe" status="error" />
+      <Avatar size="larger" name="Lorem Ipsum" status="warning" />
+      <Avatar size="largest" name="Lorem Ipsum" status="warning" />
+      <Avatar square size="smallest" name="John Doe" status="success" />
+      <Avatar square size="smaller" name="John Doe" status="success" />
+      <Avatar square size="small" name="John Doe" status="success" />
+      <Avatar square name="John Doe" status="success" />
+      <Avatar square size="large" name="Jane Doe" status="error" />
+      <Avatar square size="larger" name="Lorem Ipsum" status="warning" />
+      <Avatar square size="largest" name="Lorem Ipsum" status="warning" />
+
+      <Avatar size="smallest" name="John Doe" status="success" image={imageUrl} />
+      <Avatar size="smaller" name="John Doe" status="success" image={imageUrl} />
+      <Avatar size="small" name="John Doe" status="success" image={imageUrl} />
+      <Avatar name="John Doe" status="success" image={imageUrl} />
+      <Avatar size="large" name="Jane Doe" status="error" image={imageUrl} />
+      <Avatar size="larger" name="Lorem Ipsum" status="warning" image={imageUrl} />
+      <Avatar size="largest" name="Lorem Ipsum" status="warning" image={imageUrl} />
+      <Avatar square size="smallest" name="John Doe" status="success" image={imageUrl} />
+      <Avatar square size="smaller" name="John Doe" status="success" image={imageUrl} />
+      <Avatar square size="small" name="John Doe" status="success" image={imageUrl} />
+      <Avatar square name="John Doe" status="success" image={imageUrl} />
+      <Avatar square size="large" name="Jane Doe" status="error" image={imageUrl} />
+      <Avatar square size="larger" name="Lorem Ipsum" status="warning" image={imageUrl} />
+      <Avatar square size="largest" name="Lorem Ipsum" status="warning" image={imageUrl} />
+    </StoryExample>
+  </ThemeProvider>
 );
 
 export const PulsingAvatarExample = () => (
