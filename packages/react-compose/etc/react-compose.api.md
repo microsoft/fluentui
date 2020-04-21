@@ -58,7 +58,6 @@ export type Input<T extends React.ElementType = 'div', P = {}> = InputComposeCom
 // @public (undocumented)
 export type InputComposeComponent<P = {}> = React.FunctionComponent<P> & {
     fluentComposeConfig?: ComposePreparedOptions;
-    defaultProps?: Partial<P>;
 };
 
 // @public (undocumented)
