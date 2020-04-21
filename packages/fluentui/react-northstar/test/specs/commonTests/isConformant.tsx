@@ -170,7 +170,7 @@ export default function isConformant(
   });
 
   // find the apiPath in the top level API
-  const foundAsSubcomponent = _.isFunction(_.get(FluentUI, info.apiPath));
+  const foundAsSubcomponent = ReactIs.isValidElementType(_.get(FluentUI, info.apiPath));
 
   exportedAtTopLevel && isExportedAtTopLevel(constructorName, info.displayName);
   if (info.isChild) {
