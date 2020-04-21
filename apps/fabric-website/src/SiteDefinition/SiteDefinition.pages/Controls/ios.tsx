@@ -126,6 +126,30 @@ export const controlsPagesIos: INavPage[] = [
     ],
   },
   {
+    title: 'Notification & Engagement',
+    isCategory: true,
+    pages: [
+      {
+        title: 'MessageBar',
+        url: '#/controls/ios/messagebar',
+        component: () => <LoadingComponent title="Message Bar" />,
+        getComponent: cb =>
+          require.ensure([], require =>
+            cb(require<any>('../../../pages/Controls/MessageBarPage/MessageBarPage').MessageBarPage),
+          ),
+      },
+      {
+        title: 'Tooltip',
+        url: '#/controls/ios/tooltip',
+        component: () => <LoadingComponent title="Tooltip" />,
+        getComponent: cb =>
+          require.ensure([], require =>
+            cb(require<any>('../../../pages/Controls/TooltipPage/TooltipPage').TooltipPage),
+          ),
+      },
+    ],
+  },
+  {
     title: 'Progress',
     isCategory: true,
     pages: [
@@ -159,15 +183,6 @@ export const controlsPagesIos: INavPage[] = [
         component: () => <LoadingComponent title="Drawer" />,
         getComponent: cb =>
           require.ensure([], require => cb(require<any>('../../../pages/Controls/DrawerPage/DrawerPage').DrawerPage)),
-      },
-      {
-        title: 'Tooltip',
-        url: '#/controls/ios/tooltip',
-        component: () => <LoadingComponent title="Tooltip" />,
-        getComponent: cb =>
-          require.ensure([], require =>
-            cb(require<any>('../../../pages/Controls/TooltipPage/TooltipPage').TooltipPage),
-          ),
       },
     ],
   },
