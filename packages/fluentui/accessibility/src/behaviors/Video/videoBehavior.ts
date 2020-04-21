@@ -18,3 +18,5 @@ const videoBehavior: Accessibility = () => ({
 });
 
 export default videoBehavior;
+
+export type VideoBehaviorProps = never;

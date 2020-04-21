@@ -2,7 +2,7 @@ import { Ref } from '@fluentui/react-component-ref';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
-import { Accessibility } from '@fluentui/accessibility';
+import { Accessibility, VideoBehaviorProps, videoBehavior } from '@fluentui/accessibility';
 import { createShorthandFactory, UIComponentProps, commonPropTypes } from '../../utils';
 import { WithAsProp, withSafeTypeForAs, FluentComponentStaticProps } from '../../types';
 import { getElementType, useStyles, useUnhandledProps, useTelemetry, useAccessibility } from '@fluentui/react-bindings';
@@ -29,12 +29,12 @@ export interface VideoProps extends UIComponentProps {
   /** Video source URL. */
   src?: string;
 
-  accessibility?: Accessibility;
-
-  variables?: ComponentVariablesInput;
+  accessibility?: Accessibility<VideoBehaviorProps>;
 }
 
 export const videoClassName = 'ui-video';
+
+export type VideoStylesProps = Required<Pick<VideoProps, 'variables'>>;
 
 export const Video: React.FC<WithAsProp<VideoProps>> & FluentComponentStaticProps<VideoProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
@@ -48,24 +48,17 @@ export const Video: React.FC<WithAsProp<VideoProps>> & FluentComponentStaticProp
     debugName: Video.displayName,
   });
 
-  const setVideoAttributes = () => {
+  React.useEffect(() => {
     // React doesn't guaranty that props will be set:
     // https://github.com/facebook/react/issues/10389
     if (videoRef.current) {
       videoRef.current.muted = !!muted;
     }
-  };
-
-  React.useEffect(() => {
-    setVideoAttributes();
   }, [muted]);
 
-  const { classes, styles: ResolvedStyles } = useStyles(Video.displayName, {
+  const { classes, styles } = useStyles<VideoStylesProps>(Video.displayName, {
     className: videoClassName,
-    mapPropsToStyles: () => ({
-      variables,
-    }),
-    mapPropsToInlineStyles: () => ({ className }),
+    mapPropsToInlineStyles: () => ({ className, variables }),
   });
 
   const element = (
@@ -73,16 +66,14 @@ export const Video: React.FC<WithAsProp<VideoProps>> & FluentComponentStaticProp
       <ElementType
         {...getA11yProps('root', {
           className: classes.root,
+          styles,
+          autoPlay,
+          controls,
+          loop,
+          poster,
+          src,
           ...unhandledProps,
-          styles: ResolvedStyles,
         })}
-        autoPlay={autoPlay}
-        className={classes.root}
-        controls={controls}
-        loop={loop}
-        poster={poster}
-        src={src}
-        {...unhandledProps}
       />
     </Ref>
   );
@@ -109,6 +100,7 @@ Video.propTypes = {
 
 Video.defaultProps = {
   as: 'video',
+  accessibility: videoBehavior,
   controls: true,
   autoPlay: false,
   muted: false,
