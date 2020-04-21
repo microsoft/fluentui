@@ -2986,7 +2986,7 @@ export interface IContextualMenuItemProps extends React.HTMLAttributes<IContextu
 }
 
 // @public (undocumented)
-export interface IContextualMenuItemRenderProps {
+export interface IContextualMenuItemRenderProps extends IContextualMenuItem {
     // (undocumented)
     focusableElementIndex: number;
     // (undocumented)
@@ -2995,8 +2995,6 @@ export interface IContextualMenuItemRenderProps {
     hasIcons: boolean;
     // (undocumented)
     index: number;
-    // (undocumented)
-    item: IContextualMenuItem;
     // (undocumented)
     totalItemCount: number;
 }
