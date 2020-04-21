@@ -108,119 +108,19 @@ export const Calendar = React.memo(
     const _dayPicker = React.useRef<ICalendarDay | null>(null);
     const _monthPicker = React.useRef<ICalendarMonth | null>(null);
 
-    const _focusOnUpdate = React.useRef<boolean>(false);
-
-    const currentDate = props.value && !isNaN(props.value.getTime()) ? props.value : props.today || new Date();
-    const [selectedDate, setSelectedDate] = React.useState<Date>(currentDate);
-    const [navigatedDayDate, setNavigateDayDate] = React.useState<Date | undefined>(currentDate);
-    const [navigatedMonthDate, setNavigatedMonthDate] = React.useState<Date | undefined>(currentDate);
-
-    const [isMonthPickerVisible, setIsMonthPickerVisible] = React.useState<boolean>(
-      props.showMonthPickerAsOverlay ? false : !!props.isMonthPickerVisible,
-    );
-    const [isDayPickerVisible, setIsDayPickerVisible] = React.useState<boolean>(
-      props.showMonthPickerAsOverlay ? true : !!props.isDayPickerVisible,
-    );
-
-    useAutoNavigation(props, setNavigateDayDate, setNavigatedMonthDate, setSelectedDate);
-
-    const focus = React.useCallback(() => {
-      if (isDayPickerVisible && _dayPicker.current) {
-        _dayPicker.current.focus();
-      } else if (isMonthPickerVisible && _monthPicker.current) {
-        _monthPicker.current.focus();
-      }
-    }, [isDayPickerVisible, isMonthPickerVisible]);
-
+    const [focus, setFocusOnUpdate] = useFocusMethod(_dayPicker, _monthPicker);
     React.useImperativeHandle<ICalendar, ICalendar>(props.componentRef, () => ({ focus }), [focus]);
 
-    React.useEffect(() => {
-      if (_focusOnUpdate.current) {
-        focus();
-        _focusOnUpdate.current = false;
-      }
-    });
-
-    const _navigateDayPickerDay = React.useCallback((date: Date): void => {
-      setNavigateDayDate(date);
-      setNavigatedMonthDate(date);
-    }, []);
-
-    const _navigateMonthPickerDay = React.useCallback((date: Date): void => {
-      setNavigatedMonthDate(date);
-    }, []);
-
-    const _onNavigateDayDate = React.useCallback(
-      (date: Date, focusOnNavigatedDay: boolean): void => {
-        _navigateDayPickerDay(date);
-        _focusOnUpdate.current = focusOnNavigatedDay;
-      },
-      [_navigateDayPickerDay],
-    );
-
-    const _onNavigateMonthDate = React.useCallback(
-      (date: Date, focusOnNavigatedDay: boolean): void => {
-        if (!focusOnNavigatedDay) {
-          _navigateMonthPickerDay(date);
-          _focusOnUpdate.current = focusOnNavigatedDay;
-          return;
-        }
-
-        const monthPickerOnly = !props.showMonthPickerAsOverlay && !props.isDayPickerVisible;
-
-        if (monthPickerOnly) {
-          _onSelectDate(date);
-        }
-
-        _navigateDayPickerDay(date);
-      },
-      [_navigateMonthPickerDay, props.showMonthPickerAsOverlay, props.isDayPickerVisible],
-    );
-
-    const _onSelectDate = React.useCallback(
-      (date: Date, selectedDateRangeArray?: Date[]): void => {
-        const { onSelectDate } = props;
-
-        setSelectedDate(date);
-
-        if (onSelectDate) {
-          onSelectDate(date, selectedDateRangeArray);
-        }
-      },
-      [props.onSelectDate],
-    );
-
-    const _onHeaderSelect = React.useCallback((shouldFocus: boolean): void => {
-      setIsDayPickerVisible(!isDayPickerVisible);
-      setIsMonthPickerVisible(!isMonthPickerVisible);
-
-      if (shouldFocus) {
-        _focusOnUpdate.current = true;
-      }
-    }, []);
-
-    const _onGotoToday = React.useCallback((): void => {
-      const { dateRangeType, firstDayOfWeek, today, workWeekDays, selectDateOnClick } = props;
-
-      if (selectDateOnClick) {
-        // When using Defaultprops, TypeScript doesn't know that React is going to inject defaults
-        // so we use exclamation mark as a hint to the type checker (see link below)
-        // https://decembersoft.com/posts/error-ts2532-optional-react-component-props-in-typescript/
-        const dates = getDateRangeArray(today!, dateRangeType!, firstDayOfWeek!, workWeekDays!);
-        _onSelectDate(today!, dates);
-      }
-
-      _navigateDayPickerDay(today!);
-      _focusOnUpdate.current = true;
-    }, [
-      props.dateRangeType,
-      props.firstDayOfWeek,
-      props.today,
-      props.workWeekDays,
-      props.selectDateOnClick,
+    const [
+      selectedDate,
+      navigatedDayDate,
+      navigatedMonthDate,
+      _onNavigateDayDate,
+      _onNavigateMonthDate,
       _onSelectDate,
-      _navigateDayPickerDay,
-    ]);
+      _onGotoToday,
+    ] = useNavigationState(props, setFocusOnUpdate);
+    const [isMonthPickerVisible, isDayPickerVisible, _onHeaderSelect] = usePickerVisibility(props, setFocusOnUpdate);
 
     const _onGotoTodayKeyDown = React.useCallback(
       (ev: React.KeyboardEvent<HTMLElement>): void => {
@@ -368,6 +268,141 @@ export const Calendar = React.memo(
     );
   }),
 );
+
+function usePickerVisibility(props: ICalendarProps, setFocusOnUpdate: (shouldFocus: boolean) => void) {
+  const [isMonthPickerVisible, setIsMonthPickerVisible] = React.useState<boolean>(
+    props.showMonthPickerAsOverlay ? false : !!props.isMonthPickerVisible,
+  );
+  const [isDayPickerVisible, setIsDayPickerVisible] = React.useState<boolean>(
+    props.showMonthPickerAsOverlay ? true : !!props.isDayPickerVisible,
+  );
+
+  const _onHeaderSelect = React.useCallback((shouldFocus: boolean): void => {
+    setIsDayPickerVisible(!isDayPickerVisible);
+    setIsMonthPickerVisible(!isMonthPickerVisible);
+
+    setFocusOnUpdate(shouldFocus);
+  }, []);
+
+  return [isMonthPickerVisible, isDayPickerVisible, _onHeaderSelect] as const;
+}
+
+function useFocusMethod(
+  _dayPicker: React.RefObject<ICalendarDay | null>,
+  _monthPicker: React.RefObject<ICalendarMonth | null>,
+) {
+  const _focusOnUpdate = React.useRef<boolean>(false);
+  const focus = React.useCallback(() => {
+    if (_dayPicker.current) {
+      _dayPicker.current.focus();
+    } else if (_monthPicker.current) {
+      _monthPicker.current.focus();
+    }
+  }, []);
+
+  React.useEffect(() => {
+    if (_focusOnUpdate.current) {
+      focus();
+      _focusOnUpdate.current = false;
+    }
+  });
+
+  const setFocusOnUpdate = React.useCallback((shouldFocusOnUpdate: boolean) => {
+    _focusOnUpdate.current = shouldFocusOnUpdate;
+  }, []);
+
+  return [focus, setFocusOnUpdate] as const;
+}
+
+function useNavigationState(props: ICalendarProps, setFocusOnUpdate: (shouldFocus: boolean) => void) {
+  const currentDate = props.value && !isNaN(props.value.getTime()) ? props.value : props.today || new Date();
+  const [selectedDate, setSelectedDate] = React.useState<Date>(currentDate);
+  const [navigatedDayDate, setNavigateDayDate] = React.useState<Date | undefined>(currentDate);
+  const [navigatedMonthDate, setNavigatedMonthDate] = React.useState<Date | undefined>(currentDate);
+  useAutoNavigation(props, setNavigateDayDate, setNavigatedMonthDate, setSelectedDate);
+
+  const _navigateDayPickerDay = React.useCallback((date: Date): void => {
+    setNavigateDayDate(date);
+    setNavigatedMonthDate(date);
+  }, []);
+
+  const _navigateMonthPickerDay = React.useCallback((date: Date): void => {
+    setNavigatedMonthDate(date);
+  }, []);
+
+  const _onNavigateDayDate = React.useCallback(
+    (date: Date, focusOnNavigatedDay: boolean): void => {
+      _navigateDayPickerDay(date);
+      setFocusOnUpdate(focusOnNavigatedDay);
+    },
+    [_navigateDayPickerDay, setFocusOnUpdate],
+  );
+
+  const _onNavigateMonthDate = React.useCallback(
+    (date: Date, focusOnNavigatedDay: boolean): void => {
+      if (!focusOnNavigatedDay) {
+        _navigateMonthPickerDay(date);
+        setFocusOnUpdate(focusOnNavigatedDay);
+        return;
+      }
+
+      const monthPickerOnly = !props.showMonthPickerAsOverlay && !props.isDayPickerVisible;
+
+      if (monthPickerOnly) {
+        _onSelectDate(date);
+      }
+
+      _navigateDayPickerDay(date);
+    },
+    [_navigateMonthPickerDay, props.showMonthPickerAsOverlay, props.isDayPickerVisible],
+  );
+
+  const _onSelectDate = React.useCallback(
+    (date: Date, selectedDateRangeArray?: Date[]): void => {
+      const { onSelectDate } = props;
+
+      setSelectedDate(date);
+
+      if (onSelectDate) {
+        onSelectDate(date, selectedDateRangeArray);
+      }
+    },
+    [props.onSelectDate],
+  );
+
+  const _onGotoToday = React.useCallback((): void => {
+    const { dateRangeType, firstDayOfWeek, today, workWeekDays, selectDateOnClick } = props;
+
+    if (selectDateOnClick) {
+      // When using Defaultprops, TypeScript doesn't know that React is going to inject defaults
+      // so we use exclamation mark as a hint to the type checker (see link below)
+      // https://decembersoft.com/posts/error-ts2532-optional-react-component-props-in-typescript/
+      const dates = getDateRangeArray(today!, dateRangeType!, firstDayOfWeek!, workWeekDays!);
+      _onSelectDate(today!, dates);
+    }
+
+    _navigateDayPickerDay(today!);
+    setFocusOnUpdate(true);
+  }, [
+    props.dateRangeType,
+    props.firstDayOfWeek,
+    props.today,
+    props.workWeekDays,
+    props.selectDateOnClick,
+    _onSelectDate,
+    _navigateDayPickerDay,
+  ]);
+
+  return [
+    selectedDate,
+    navigatedDayDate,
+    navigatedMonthDate,
+    _onNavigateDayDate,
+    _onNavigateMonthDate,
+    _onSelectDate,
+    _onGotoToday,
+  ] as const;
+}
 
 function useAutoNavigation(
   props: ICalendarProps,
