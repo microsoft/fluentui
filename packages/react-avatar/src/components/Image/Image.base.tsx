@@ -12,9 +12,10 @@ export const ImageBase = compose<ImageProps, {}, {}, ComposeStandardStatics>(
   {
     defaultProps: {
       as: 'img',
+      alt: '',
     },
     statics: {
-      handledProp: 'src',
+      mappedProp: 'src',
       displayName: 'ImageBase',
     },
   },

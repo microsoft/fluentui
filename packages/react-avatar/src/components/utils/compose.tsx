@@ -1,5 +1,5 @@
 import { forwardRef, RefObject } from 'react';
-import { assign, merge } from '@uifabric/utilities';
+import { assign } from '@uifabric/utilities';
 import { useStylesheet } from './StylesheetProvider';
 import cx from 'classnames';
 
@@ -33,12 +33,12 @@ export type ComposedComponent<
 
 export interface ComposeStandardStatics {
   displayName?: string;
-  handledProp?: string;
+  mappedProp?: string;
   stylesheets?: string[];
 }
 
 // tslint:disable-next-line:no-any
-export const extractFromSass = (classes: any) => {
+export const extractFromSass = (classes: any): { classes: any; stylesheet: string } => {
   return {
     classes: classes.locals,
     stylesheet: classes && classes[0] && classes[0][1],

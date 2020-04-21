@@ -23,7 +23,7 @@ export const StatusBase = compose<StatusProps, StatusSlots, StatusSlotProps, Com
     },
     statics: {
       displayName: 'StatusBase',
-      handledProp: 'state',
+      mappedProp: 'state',
     },
   },
 );

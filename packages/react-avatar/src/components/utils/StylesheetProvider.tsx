@@ -35,7 +35,6 @@ const defaultRegister = (stylesheets: string[], target: Document) => {
   }
 
   if (contentToRegister) {
-    console.log('registering', contentToRegister);
     const styleElement = target.createElement('style');
 
     styleElement.textContent = contentToRegister;

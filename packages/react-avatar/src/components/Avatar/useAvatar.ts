@@ -10,9 +10,6 @@ import { getInitials as defaultGetInitials } from '@uifabric/utilities';
 export const useAvatar = (props: AvatarProps, options: AvatarOptions) => {
   const getInitials = props.getInitials || defaultGetInitials;
 
-  // TODO: rtl!
-  // const rtl = useRtl();
-
   return mergeProps<AvatarProps, AvatarSlots, AvatarSlotProps>(props, options, {
     // TODO: should this be shorthand string?
     label: { children: getInitials(props.name || '', false) },

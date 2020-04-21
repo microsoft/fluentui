@@ -25,6 +25,7 @@ export const AvatarBase = compose<AvatarProps, AvatarSlots, AvatarSlotProps, Com
       status: null,
     },
     statics: {
+      mappedProp: 'name',
       displayName: 'AvatarBase',
     },
   },

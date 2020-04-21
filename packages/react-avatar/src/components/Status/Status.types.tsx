@@ -1,5 +1,4 @@
-import { SizeValue } from '@fluentui/react-northstar';
-import { ComponentProps, ShorthandValue } from '../utils/commonTypes';
+import { ComponentProps, ShorthandValue, SizeValue } from '../utils/commonTypes';
 import { ComposeOptions, ComposeStandardStatics } from '../utils/compose';
 
 // tslint:disable-next-line:no-any

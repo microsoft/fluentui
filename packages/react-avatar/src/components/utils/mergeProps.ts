@@ -108,9 +108,9 @@ export function mergeProps<TState, TSlots, TSlotProps>(
       const isLiteral = slotPropType === 'string' || slotPropType === 'number' || slotPropType === 'boolean';
 
       if (isLiteral || React.isValidElement(slotProp)) {
-        const handledProp = slot.handledProp || 'children';
+        const mappedProp = slot.mappedProp || 'children';
 
-        slotProp = { [handledProp]: slotProp };
+        slotProp = { [mappedProp]: slotProp };
       }
 
       // If children is a function replace the slot.

@@ -1,0 +1,8 @@
+.root {
+  background: var(--site-body-fill);
+  color: var(--site-body-text);
+
+  > * {
+    box-sizing: border-box;
+  }
+}
