@@ -47,7 +47,7 @@ type BaseComponentProps = { color?: string } & React.HTMLAttributes<HTMLButtonEl
 type BaseComponentStylesProps = { color: string | undefined; open: boolean };
 
 const BaseComponent: React.FC<BaseComponentProps> = compose<
-  'div',
+  'button',
   BaseComponentProps,
   BaseComponentStylesProps,
   {},
@@ -63,7 +63,8 @@ const BaseComponent: React.FC<BaseComponentProps> = compose<
     });
     const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
 
-    return <button className={classes.root} onClick={() => setOpen(!open)} {...unhandledProps} />;
+    // @ts-ignore
+    return <button className={classes.root} onClick={() => setOpen(!open)} {...unhandledProps} ref={ref} />;
   },
   {
     className: 'ui-base',
