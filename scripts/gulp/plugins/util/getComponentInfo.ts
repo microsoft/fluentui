@@ -4,14 +4,14 @@ import _ from 'lodash';
 import path from 'path';
 import fs from 'fs';
 
-import { BehaviorInfo, ComponentInfo, ComponentProp } from 'docs/src/types';
+import { BehaviorInfo, ComponentInfo, ComponentProp } from './docs-types';
 import * as docgen from './docgen';
 import parseDefaultValue from './parseDefaultValue';
 import parseDocblock from './parseDocblock';
 import parseType from './parseType';
 import getShorthandInfo from './getShorthandInfo';
 
-const getAvailableBehaviors = (accessibilityProp: ComponentProp): BehaviorInfo[] => {
+const getAvailableBehaviors = (accessibilityProp: ComponentProp): BehaviorInfo[] | undefined => {
   const docTags = accessibilityProp && accessibilityProp.tags;
   const availableTag = _.find(docTags, { title: 'available' });
   const availableBehaviorNames = _.get(availableTag, 'description', '');

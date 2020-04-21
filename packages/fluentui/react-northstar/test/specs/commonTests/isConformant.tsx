@@ -116,7 +116,7 @@ export default function isConformant(
   // This is pretty ugly because:
   // - jest doesn't support custom error messages
   // - jest will run all test
-  const infoJSONPath = `docs/src/componentInfo/${constructorName}.info.json`;
+  const infoJSONPath = `@fluentui/docs/src/componentInfo/${constructorName}.info.json`;
 
   let info;
 
