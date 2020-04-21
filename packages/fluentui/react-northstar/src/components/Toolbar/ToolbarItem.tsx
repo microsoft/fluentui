@@ -237,7 +237,7 @@ const ToolbarItem: React.FC<WithAsProp<ToolbarItemProps>> & FluentComponentStati
         );
       });
 
-      if (!isInsideorMenuTrigger) {
+      if (!isInsideOrMenuTrigger) {
         trySetMenuOpen(false, e);
       }
     },
