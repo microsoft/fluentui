@@ -58,7 +58,7 @@ export const Video: React.FC<WithAsProp<VideoProps>> & FluentComponentStaticProp
 
   React.useEffect(() => {
     setVideoAttributes();
-  });
+  }, [muted]);
 
   const { classes, styles: ResolvedStyles } = useStyles(Video.displayName, {
     className: videoClassName,
