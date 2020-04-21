@@ -1,7 +1,7 @@
 import { Accessibility } from '../../types';
 import { CardBehaviorProps } from './cardBehavior';
 import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
-import { FocusZoneDirection } from '../../focusZone/types';
+import { FocusZoneTabbableElements } from '../../focusZone/types';
 import * as keyboardKey from 'keyboard-key';
 
 /**
@@ -27,8 +27,8 @@ const cardChildrenFocusableBehavior: Accessibility<CardBehaviorProps> = props =>
   },
   focusZone: {
     props: {
-      direction: FocusZoneDirection.bidirectional,
-      shouldEnterInnerZone: event => keyboardKey.getCode(event) === keyboardKey.Enter,
+      handleTabKey: FocusZoneTabbableElements.all,
+      isCircularNavigation: true,
     },
   },
   keyActions: {

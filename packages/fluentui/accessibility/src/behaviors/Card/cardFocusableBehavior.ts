@@ -1,6 +1,7 @@
 import { Accessibility } from '../../types';
 import { CardBehaviorProps } from './cardBehavior';
 import * as keyboardKey from 'keyboard-key';
+import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
 
 /**
  * @description
@@ -16,6 +17,7 @@ const cardFocusableBehavior: Accessibility<CardBehaviorProps> = props => ({
     root: {
       role: 'group',
       tabIndex: 0,
+      [IS_FOCUSABLE_ATTRIBUTE]: true,
       'aria-disabled': props.disabled,
     },
   },

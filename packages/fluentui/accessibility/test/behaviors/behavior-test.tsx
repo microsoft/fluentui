@@ -40,6 +40,7 @@ import {
   hierarchicalSubtreeBehavior,
   gridBehavior,
   gridHorizontalBehavior,
+  gridWithInnerZoneBehavior,
   statusBehavior,
   alertWarningBehavior,
   alertBaseBehavior,
@@ -128,6 +129,7 @@ testHelper.addBehavior('hierarchicalTreeBehavior', hierarchicalTreeBehavior);
 testHelper.addBehavior('hierarchicalTreeItemBehavior', hierarchicalTreeItemBehavior);
 testHelper.addBehavior('hierarchicalSubtreeBehavior', hierarchicalSubtreeBehavior);
 testHelper.addBehavior('gridBehavior', gridBehavior);
+testHelper.addBehavior('gridWithInnerZoneBehavior', gridWithInnerZoneBehavior);
 testHelper.addBehavior('gridHorizontalBehavior', gridHorizontalBehavior);
 testHelper.addBehavior('dialogBehavior', dialogBehavior);
 testHelper.addBehavior('statusBehavior', statusBehavior);
