@@ -53,19 +53,12 @@ export interface IListScrollingExampleState {
 const evenItemHeight = 25;
 const oddItemHeight = 50;
 const numberOfItemsOnPage = 10;
-
-const resolveList = (list: List<IExampleItem>): void => {
-  list = list;
-};
-
-const getPageHeight = (idx: number): number => {
-  let h = 0;
-  for (let i = idx; i < idx + numberOfItemsOnPage; ++i) {
-    const isEvenRow = i % 2 === 0;
-    h += isEvenRow ? evenItemHeight : oddItemHeight;
-  }
-  return h;
-};
+const dropdownOption = [
+  { key: 'auto', text: 'Auto' },
+  { key: 'top', text: 'Top' },
+  { key: 'bottom', text: 'Bottom' },
+  { key: 'center', text: 'Center' },
+];
 
 const onRenderCell = (item: IExampleItem, index: number): JSX.Element => {
   return (
@@ -77,29 +70,14 @@ const onRenderCell = (item: IExampleItem, index: number): JSX.Element => {
   );
 };
 
-export const ListScrollingExample: React.FunctionComponent = (props: IListScrollingExampleProps) => {
+export const ListScrollingExample: React.FunctionComponent<IListScrollingExampleState> = (
+  props: IListScrollingExampleProps,
+) => {
   const [selectedIndex, setSelectedIndex] = React.useState(0);
   const [scrollToMode, setScrollToMode] = React.useState(ScrollToMode.auto);
   const [showItemIndexInView, { toggle: toggleShowItemIndexInView }] = useBoolean(false);
   const list: List<IExampleItem>;
   const items = props.items || createListItems(5000);
-
-  //   private _scroll = (index: number, scrollToMode: ScrollToMode): void => {
-  //     const updatedSelectedIndex = Math.min(Math.max(index, 0), this._items.length - 1);
-  //     this.setState(
-  //       {
-  //         selectedIndex: updatedSelectedIndex,
-  //         scrollToMode: scrollToMode,
-  //       },
-  //       () => {
-  //         this._list.scrollToIndex(
-  //           updatedSelectedIndex,
-  //           idx => (idx % 2 === 0 ? evenItemHeight : oddItemHeight),
-  //           scrollToMode,
-  //         );
-  //       },
-  //     );
-  //   };
 
   const scroll = (index: number, propScrollToMode: ScrollToMode): void => {
     const updatedSelectedIndex = Math.min(Math.max(index, 0), items.length - 1);
@@ -108,14 +86,24 @@ export const ListScrollingExample: React.FunctionComponent = (props: IListScroll
     list.scrollToIndex(updatedSelectedIndex, idx => (idx % 2 === 0 ? evenItemHeight : oddItemHeight), scrollToMode);
   };
 
-  const onChangeText = (ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, value: string): void => {
-    scroll(parseInt(value, 10) || 0, scrollToMode);
+  const getPageHeight = (idx: number): number => {
+    let h = 0;
+    for (let i = idx; i < idx + numberOfItemsOnPage; ++i) {
+      const isEvenRow = i % 2 === 0;
+
+      h += isEvenRow ? evenItemHeight : oddItemHeight;
+    }
+    return h;
   };
 
   const scrollRelative = (delta: number): (() => void) => {
     return (): void => {
       scroll(selectedIndex + delta, scrollToMode);
     };
+  };
+
+  const onChangeText = (ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, value: string): void => {
+    scroll(parseInt(value, 10) || 0, scrollToMode);
   };
 
   const onDropdownChange = (event: React.FormEvent<HTMLDivElement>, option: IDropdownOption) => {
@@ -137,6 +125,10 @@ export const ListScrollingExample: React.FunctionComponent = (props: IListScroll
     scroll(selectedIndex, scrollMode);
   };
 
+  const resolveList = (list: List<IExampleItem>): void => {
+    list = list;
+  };
+
   return (
     <FocusZone direction={FocusZoneDirection.vertical}>
       <div>
@@ -150,12 +142,7 @@ export const ListScrollingExample: React.FunctionComponent = (props: IListScroll
         label="Scroll To Mode:"
         ariaLabel="Scroll To Mode"
         defaultSelectedKey={'auto'}
-        options={[
-          { key: 'auto', text: 'Auto' },
-          { key: 'top', text: 'Top' },
-          { key: 'bottom', text: 'Bottom' },
-          { key: 'center', text: 'Center' },
-        ]}
+        options={dropdownOption}
         onChange={onDropdownChange}
       />
       <div>
@@ -175,15 +162,6 @@ export const ListScrollingExample: React.FunctionComponent = (props: IListScroll
     </FocusZone>
   );
 };
-
-// const componentWillUnmount = () => {
-//   if (showItemIndexInView) {
-//     const itemIndexInView = list!.getStartItemIndexInView(
-//       idx => (idx % 2 === 0 ? evenItemHeight : oddItemHeight) /* measureItem */,
-//     );
-//     alert('unmounting, getting first item index that was in view: ' + itemIndexInView);
-//   }
-// }
 
 // export class ListScrollingExample extends React.Component<IListScrollingExampleProps, IListScrollingExampleState> {
 //   private _list: List<IExampleItem>;
