@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { renderDropdown, items, getItemIdRegexByIndex } from './test-utils';
 import Dropdown from 'src/components/Dropdown/Dropdown';
-import DropdownSelectedItem from 'src/components/Dropdown/DropdownSelectedItem';
+import { dropdownSelectedItemSlotClassNames } from 'src/components/Dropdown/DropdownSelectedItem';
 import { implementsShorthandProp, isConformant } from 'test/specs/commonTests';
 import { findIntrinsicElement } from 'test/utils';
 import { DropdownItemProps } from 'src/components/Dropdown/DropdownItem';
@@ -1075,7 +1075,7 @@ describe('Dropdown', () => {
         defaultValue: [items[0], items[1]],
       });
 
-      findIntrinsicElement(wrapper, `.${DropdownSelectedItem.slotClassNames.icon}`)
+      findIntrinsicElement(wrapper, `.${dropdownSelectedItemSlotClassNames.icon}`)
         .at(0)
         .simulate('click');
 

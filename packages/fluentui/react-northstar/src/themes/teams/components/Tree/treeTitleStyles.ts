@@ -4,7 +4,8 @@ import getBorderFocusStyles from '../../getBorderFocusStyles';
 import { TreeTitleStylesProps } from '../../../../components/Tree/TreeTitle';
 import { TreeTitleVariables } from './treeTitleVariables';
 import { pxToRem } from '../../../../utils';
-import checkboxIndicatorUrl, { checkboxIndicatorIndeterminatedUrl } from '../Checkbox/checkboxIndicatorUrl';
+import checkboxIndicatorUrl from '../Checkbox/checkboxIndicatorUrl';
+import checkboxIndicatorIndeterminatedUrl from '../Checkbox/checkboxIndicatorIndeterminatedUrl';
 
 const treeTitleStyles: ComponentSlotStylesPrepared<TreeTitleStylesProps, TreeTitleVariables> = {
   root: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => ({
@@ -47,6 +48,7 @@ const treeTitleStyles: ComponentSlotStylesPrepared<TreeTitleStylesProps, TreeTit
     }),
 
     ...(p.incompleteChecked && {
+      borderColor: v.checkedBorderColor,
       backgroundImage: checkboxIndicatorIndeterminatedUrl(v.checkedIndicatorColor, v.checkedBackground),
     }),
 
@@ -61,14 +63,6 @@ const treeTitleStyles: ComponentSlotStylesPrepared<TreeTitleStylesProps, TreeTit
         borderColor: v.disabledBackgroundChecked,
         backgroundImage: checkboxIndicatorUrl(v.disabledCheckedIndicatorColor, v.disabledBackgroundChecked),
       }),
-  }),
-
-  customSelectionIndicator: ({ props: p, variables: v }): ICSSInJSStyle => ({
-    display: 'inline-block',
-    float: 'right',
-    boxShadow: 'unset',
-    height: pxToRem(16),
-    margin: v.selectionIndicatorMargin,
   }),
 };
 

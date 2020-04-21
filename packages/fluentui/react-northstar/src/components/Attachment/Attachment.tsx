@@ -157,7 +157,6 @@ const Attachment: React.FC<WithAsProp<AttachmentProps>> &
 
 Attachment.create = createShorthandFactory({ Component: Attachment, mappedProp: 'header' });
 
-Attachment.deprecated_className = attachmentClassName;
 Attachment.displayName = 'Attachment';
 
 Attachment.propTypes = {

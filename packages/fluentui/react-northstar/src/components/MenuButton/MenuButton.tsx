@@ -93,6 +93,11 @@ export interface MenuButtonState {
   triggerId: string;
 }
 
+export const menuButtonClassName = 'ui-menubutton';
+export const menuButtonSlotClassNames: MenuButtonSlotClassNames = {
+  menu: `${menuButtonClassName}__menu`,
+};
+
 /**
  * A MenuButton displays a menu connected to trigger element.
  * @accessibility
@@ -100,13 +105,9 @@ export interface MenuButtonState {
 export default class MenuButton extends AutoControlledComponent<MenuButtonProps, MenuButtonState> {
   static displayName = 'MenuButton';
 
-  static deprecated_className = 'ui-menubutton';
+  static deprecated_className = menuButtonClassName;
 
   static create: ShorthandFactory<MenuButtonProps>;
-
-  static slotClassNames: MenuButtonSlotClassNames = {
-    menu: `${MenuButton.deprecated_className}__menu`,
-  };
 
   static propTypes = {
     ...commonPropTypes.createCommon({
@@ -264,6 +265,7 @@ export default class MenuButton extends AutoControlledComponent<MenuButtonProps,
       defaultProps: () => ({
         ...accessibility.attributes.menu,
         vertical: true,
+        className: menuButtonSlotClassNames.menu,
       }),
       overrideProps: this.handleMenuOverrides,
     });

@@ -46,16 +46,17 @@ const handleVariablesOverrides = variables => predefinedProps => ({
   variables: mergeComponentVariables(variables, predefinedProps.variables),
 });
 
+export const tableClassName = 'ui-table';
+export const tableSlotClassNames: TableSlotClassNames = {
+  header: `${tableClassName}__header`,
+};
+
 class Table extends UIComponent<WithAsProp<TableProps>> {
   static displayName = 'Table';
-  static deprecated_className = 'ui-table';
+  static deprecated_className = tableClassName;
 
   static Cell = TableCell;
   static Row = TableRow;
-
-  static slotClassNames: TableSlotClassNames = {
-    header: `${Table.deprecated_className}__header`,
-  };
 
   static propTypes = {
     ...commonPropTypes.createCommon({
@@ -105,7 +106,7 @@ class Table extends UIComponent<WithAsProp<TableProps>> {
     const headerRowProps = {
       header: true,
       compact,
-      className: Table.slotClassNames.header,
+      className: tableSlotClassNames.header,
     } as TableRowProps;
 
     const overrideProps = handleVariablesOverrides(variables);

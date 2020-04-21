@@ -12,6 +12,12 @@ We have a lot in store for Fluent UI - [Read our announcement here.](https://dev
 
 Fluent UI React is a collection of robust React-based components designed to make it simple for you to create consistent web experiences using the Fluent Design Language.
 
+## Learn about Fluent UI
+
+[Fluent UI React current release documentation](https://developer.microsoft.com/en-us/fluentui)
+
+[Fluent UI Northstar documentation for Teams developers](https://aka.ms/fluent-ui)
+
 ## Who uses Fluent UI React?
 
 ![image](https://user-images.githubusercontent.com/785361/50458071-45b58d00-0915-11e9-90c0-ad8789c99db5.png)

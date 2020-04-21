@@ -1,10 +1,9 @@
-import { TreeItem, TreeTitle } from '@fluentui/react-northstar';
+import { treeItemClassName, treeTitleClassName, treeTitleSlotClassNames } from '@fluentui/react-northstar';
 
 const selectors = {
-  treeTitle: (itemIndex: number) =>
-    `.${TreeItem.deprecated_className}:nth-of-type(${itemIndex}) .${TreeTitle.deprecated_className}`,
+  treeTitle: (itemIndex: number) => `.${treeItemClassName}:nth-of-type(${itemIndex}) .${treeTitleClassName}`,
   selectionIndicator: (itemIndex: number) =>
-    `.${TreeItem.deprecated_className}:nth-of-type(${itemIndex}) .${TreeTitle.slotClassNames.indicator}`,
+    `.${treeItemClassName}:nth-of-type(${itemIndex}) .${treeTitleSlotClassNames.indicator}`,
 };
 
 const config: ScreenerTestsConfig = {
@@ -22,7 +21,9 @@ const config: ScreenerTestsConfig = {
         .click(selectors.selectionIndicator(12))
         .snapshot('selected, when clicked on selection indicator')
         .click(selectors.treeTitle(13))
-        .snapshot('selected, when clicked on tree title')
+        .snapshot('selected, when clicked on selection indicator')
+        .click(selectors.treeTitle(4))
+        .snapshot('selected, when group partially selected')
         .click(selectors.selectionIndicator(2))
         .snapshot('all children selected')
         .keys(selectors.treeTitle(7), keys.space)

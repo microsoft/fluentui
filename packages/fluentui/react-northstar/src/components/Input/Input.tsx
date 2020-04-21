@@ -83,14 +83,18 @@ export interface InputState {
   hasValue?: boolean;
 }
 
+export const inputClassName = 'ui-input';
+export const inputSlotClassNames: InputSlotClassNames = {
+  input: `${inputClassName}__input`,
+  icon: `${inputClassName}__icon`,
+};
+
 class Input extends AutoControlledComponent<WithAsProp<InputProps>, InputState> {
   inputRef = React.createRef<HTMLElement>();
 
-  static deprecated_className = 'ui-input';
+  static deprecated_className = inputClassName;
 
   static displayName = 'Input';
-
-  static slotClassNames: InputSlotClassNames;
 
   static propTypes = {
     ...commonPropTypes.createCommon({
@@ -147,7 +151,7 @@ class Input extends AutoControlledComponent<WithAsProp<InputProps>, InputState> 
     return Box.create(wrapper, {
       defaultProps: () => ({
         ...accessibility.attributes.root,
-        className: cx(Input.deprecated_className, className),
+        className: cx(inputClassName, className),
         children: (
           <>
             <Ref
@@ -163,7 +167,7 @@ class Input extends AutoControlledComponent<WithAsProp<InputProps>, InputState> 
                   disabled,
                   type,
                   value,
-                  className: Input.slotClassNames.input,
+                  className: inputSlotClassNames.input,
                   styles: styles.input,
                   onChange: this.handleChange,
                   ...applyAccessibilityKeyHandlers(accessibility.keyHandlers.input, htmlInputProps),
@@ -172,7 +176,7 @@ class Input extends AutoControlledComponent<WithAsProp<InputProps>, InputState> 
             </Ref>
             {Box.create(this.computeIcon(), {
               defaultProps: () => ({
-                className: Input.slotClassNames.icon,
+                className: inputSlotClassNames.icon,
                 styles: styles.icon,
               }),
               overrideProps: this.handleIconOverrides,
@@ -229,11 +233,6 @@ class Input extends AutoControlledComponent<WithAsProp<InputProps>, InputState> 
     return icon || null;
   };
 }
-
-Input.slotClassNames = {
-  input: `${Input.deprecated_className}__input`,
-  icon: `${Input.deprecated_className}__icon`,
-};
 
 /**
  * An Input is a field used to elicit an input from a user.

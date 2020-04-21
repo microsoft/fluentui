@@ -114,8 +114,6 @@ class Alert extends AutoControlledComponent<WithAsProp<AlertProps>, AlertState> 
   static displayName = 'Alert';
   static deprecated_className = alertClassName;
 
-  static slotClassNames = alertSlotClassNames;
-
   static propTypes = {
     ...commonPropTypes.createCommon({ content: 'shorthand' }),
     actions: PropTypes.oneOfType([customPropTypes.itemShorthand, customPropTypes.collectionShorthand]),

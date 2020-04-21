@@ -1,5 +1,4 @@
 import { pxToRem } from '../../../../utils';
-import * as _ from 'lodash';
 
 export interface TreeTitleVariables {
   color: string;
@@ -23,8 +22,6 @@ export interface TreeTitleVariables {
   disabledCheckedIndicatorColor: string;
 }
 
-const defaultValue = 'red';
-
 export default (siteVars: any): TreeTitleVariables => {
   return {
     color: siteVars.colorScheme.default.foreground,
@@ -39,12 +36,12 @@ export default (siteVars: any): TreeTitleVariables => {
     background: 'transparent',
 
     checkedBackground: siteVars.colorScheme.brand.backgroundActive1,
-    checkedBorderColor: _.get(siteVars, 'colorScheme.brand.backgroundActive1', defaultValue),
-    checkedIndicatorColor: _.get(siteVars, 'colorScheme.default.background', defaultValue),
+    checkedBorderColor: siteVars.colorScheme.brand.backgroundActive1,
+    checkedIndicatorColor: siteVars.colorScheme.default.background,
 
-    disabledBackground: _.get(siteVars, 'colorScheme.default.background', defaultValue),
-    disabledBackgroundChecked: _.get(siteVars, 'colorScheme.default.backgroundDisabled', defaultValue),
-    disabledBorderColor: _.get(siteVars, 'colorScheme.default.foregroundDisabled1', defaultValue),
-    disabledCheckedIndicatorColor: _.get(siteVars, 'colorScheme.default.foregroundDisabled', defaultValue),
+    disabledBackground: siteVars.colorScheme.default.background,
+    disabledBackgroundChecked: siteVars.colorScheme.default.backgroundDisabled,
+    disabledBorderColor: siteVars.colorScheme.default.foregroundDisabled1,
+    disabledCheckedIndicatorColor: siteVars.colorScheme.default.foregroundDisabled,
   };
 };

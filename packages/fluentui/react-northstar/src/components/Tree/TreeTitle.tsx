@@ -82,8 +82,12 @@ export type TreeTitleStylesProps = Pick<
   'selected' | 'selectable' | 'disabled' | 'selectableParent' | 'incompleteChecked'
 >;
 
-const TreeTitle: React.FC<WithAsProp<TreeTitleProps>> &
-  FluentComponentStaticProps<TreeTitleProps> & { slotClassNames: TreeTitleSlotClassNames } = props => {
+export const treeTitleClassName = 'ui-tree__title';
+
+export const treeTitleSlotClassNames = {
+  indicator: `${treeTitleClassName}__selection-indicator`,
+};
+const TreeTitle: React.FC<WithAsProp<TreeTitleProps>> & FluentComponentStaticProps<TreeTitleProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(TreeTitle.displayName, context.telemetry);
   setStart();
@@ -130,7 +134,7 @@ const TreeTitle: React.FC<WithAsProp<TreeTitleProps>> &
     rtl: context.rtl,
   });
   const { classes, styles: resolvedStyles } = useStyles<TreeTitleStylesProps>(TreeTitle.displayName, {
-    className: TreeTitle.deprecated_className,
+    className: treeTitleClassName,
     mapPropsToInlineStyles: () => ({
       className,
       design,
@@ -157,7 +161,7 @@ const TreeTitle: React.FC<WithAsProp<TreeTitleProps>> &
       selected,
       ...(selectableParent && !_.isEmpty(selectionIndicator) && { expanded }),
       ...getA11Props('indicator', {
-        className: TreeTitle.slotClassNames.indicator,
+        className: treeTitleSlotClassNames.indicator,
         ...(selectable && _.isEmpty(selectionIndicator) && { styles: resolvedStyles.selectionIndicator }),
       }),
     }),
@@ -183,12 +187,7 @@ const TreeTitle: React.FC<WithAsProp<TreeTitleProps>> &
   return element;
 };
 
-TreeTitle.deprecated_className = 'ui-tree__title';
 TreeTitle.displayName = 'TreeTitle';
-
-TreeTitle.slotClassNames = {
-  indicator: `${TreeTitle.deprecated_className}__selection-indicator`,
-};
 
 TreeTitle.propTypes = {
   ...commonPropTypes.createCommon(),
