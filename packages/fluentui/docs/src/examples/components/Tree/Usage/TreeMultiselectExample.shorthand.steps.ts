@@ -21,11 +21,17 @@ const config: ScreenerTestsConfig = {
         .click(selectors.selectionIndicator(12))
         .snapshot('selected, when clicked on selection indicator')
         .click(selectors.treeTitle(13))
-        .snapshot('selected, when clicked on tree title')
+        .snapshot('selected, when clicked on selection indicator')
+        .click(selectors.treeTitle(4))
+        .snapshot('selected, when group partially selected')
         .click(selectors.selectionIndicator(2))
         .snapshot('all children selected')
         .keys(selectors.treeTitle(7), keys.space)
-        .snapshot('selected, when space pressed'),
+        .snapshot('selected, when space pressed')
+        .click(selectors.treeTitle(15))
+        .keys(selectors.treeTitle(16), keys.space)
+        .keys(selectors.treeTitle(17), keys.space)
+        .snapshot('selected, when group has non selectable item'),
   ],
 };
 
