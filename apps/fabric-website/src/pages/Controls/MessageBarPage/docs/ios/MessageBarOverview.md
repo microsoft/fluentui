@@ -1,7 +1,5 @@
 `MSNotificationView` can be used to present a toast (`.primaryToast` and `.neutralToast` styles) or a message bar (`.primaryBar`, `.primaryOutlineBar`, and `.neutralBar` styles) with information and actions at the bottom of the screen.
 
-<!-- prettier-ignore-start -->
-
 <DisplayToggle onText="Dark" offText="Light" label="Theme Switcher">
 
 ## Toast
@@ -15,4 +13,3 @@
 <img className="on" src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/ios/updated/img_notifications_01_standard_dark.png?text=DarkMode" />
 
 </DisplayToggle>
-<!-- prettier-ignore-end -->
