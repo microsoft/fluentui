@@ -32,6 +32,7 @@ import {
   commonPropTypes,
   UIComponentProps,
   isFromKeyboard,
+  createShorthand,
 } from '../../utils';
 import List, { ListProps } from '../List/List';
 import DropdownItem, { DropdownItemProps } from './DropdownItem';
@@ -520,6 +521,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
                           className: dropdownSlotClassNames.clearIndicator,
                           styles: styles.clearIndicator,
                           accessibility: indicatorBehavior,
+                          ...(!search && { tabIndex: 0, role: 'button' }),
                         }),
                         overrideProps: (predefinedProps: BoxProps) => ({
                           onClick: (e: React.SyntheticEvent<HTMLElement>) => {
@@ -595,7 +597,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
 
     return (
       <Ref innerRef={this.buttonRef}>
-        {Button.create(triggerButton, {
+        {createShorthand(Button, triggerButton, {
           defaultProps: () => ({
             className: dropdownSlotClassNames.triggerButton,
             content,

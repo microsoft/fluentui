@@ -2,6 +2,44 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Tue, 21 Apr 2020 12:34:50 GMT",
+      "tag": "@uifabric/fabric-website_v7.10.29",
+      "version": "7.10.29",
+      "comments": {
+        "none": [
+          {
+            "comment": "Remove unnecessary lint rule overrides",
+            "author": "elcraig@microsoft.com",
+            "commit": "03aa5f753a01c7a4fe0fb6ba8591027e9d3c9db3",
+            "package": "@uifabric/fabric-website"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Always build dev bundle of website even in production mode",
+            "author": "elcraig@microsoft.com",
+            "commit": "89b53e7f43d70ffac4e9d308428356c90b8ac06b",
+            "package": "@uifabric/fabric-website"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 20 Apr 2020 15:55:12 GMT",
+      "tag": "@uifabric/fabric-website_v7.10.28",
+      "version": "7.10.28",
+      "comments": {
+        "patch": [
+          {
+            "comment": "guard against window and location not being available",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "268cfa142c6a06085678337222a840ebfe948ae8",
+            "package": "@uifabric/fabric-website"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 16 Apr 2020 04:01:45 GMT",
       "tag": "@uifabric/fabric-website_v7.10.23",
       "version": "7.10.23",

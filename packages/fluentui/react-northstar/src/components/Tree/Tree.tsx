@@ -240,17 +240,19 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
       } else {
         const selectItems = items => {
           items.forEach(item => {
-            if (selectedItemIds.indexOf(item['id']) === -1) {
+            const selectble = item.hasOwnProperty('selectable') ? item.selectable : treeItemProps.selectable;
+            if (selectedItemIds.indexOf(item.id) === -1) {
               if (item.items) {
                 selectItems(item.items);
-              } else {
-                selectedItemIds.push(item['id']);
+              } else if (selectble) {
+                selectedItemIds.push(item.id);
               }
             }
           });
         };
         selectItems(items);
       }
+
       this.setSelectedItemIds(e, selectedItemIds);
       return;
     }
@@ -274,7 +276,7 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
       // do not continue with collapsing if the parent is selectable and selection on parent was executed
       if (
         treeItemProps.selectableParent &&
-        ((treeItemProps.expanded && e.target !== e.currentTarget) || keyboardKey.getCode(e) === keyboardKey.Spacebar)
+        ((treeItemProps.expanded && e.target !== e.currentTarget) || keyboardKey.getCode(e) === keyboardKey.Enter)
       ) {
         return;
       }
@@ -361,11 +363,14 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
 
   getAllSelectableChildrenId = items => {
     return items.reduce((acc, item) => {
-      return item.items ? [...acc, ...this.getAllSelectableChildrenId(item.items)] : [...acc, item.id];
+      if (item.items) {
+        return [...acc, ...this.getAllSelectableChildrenId(item.items)];
+      }
+      return item.hasOwnProperty('selectable') && !item.selectable ? acc : [...acc, item.id];
     }, []);
   };
 
-  isIncompletedGroupChecked = (item: TreeItemProps) => {
+  isIndeterminate = (item: TreeItemProps) => {
     if (!item.selectableParent || !item.items) {
       return false;
     }
@@ -400,7 +405,7 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
         const isSubtree = hasSubtree(item);
         const isSubtreeExpanded = isSubtree && this.isActiveItem(id);
         const isSelectedItem = this.isSelectedItem(item);
-        const incompleteChecked = this.isIncompletedGroupChecked(item);
+        const indeterminate = this.isIndeterminate(item);
 
         if (!this.itemsRef.has(id)) {
           this.itemsRef.set(id, React.createRef<HTMLElement>());
@@ -419,7 +424,7 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
             index: index + 1, // Used for aria-posinset and it's 1-based.
             contentRef: this.itemsRef.get(id),
             treeSize: items.length,
-            incompleteChecked,
+            indeterminate,
           }),
         });
 

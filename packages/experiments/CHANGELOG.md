@@ -1,8 +1,17 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Thu, 16 Apr 2020 04:01:45 GMT and should not be manually modified.
+This log was last generated on Wed, 22 Apr 2020 12:33:04 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.23.9](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.23.9)
+
+Wed, 22 Apr 2020 12:33:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.23.2..@uifabric/experiments_v7.23.9)
+
+### Patches
+
+- Fix incorrect aria-colindex values in TilesList ([PR #12801](https://github.com/microsoft/fluentui/pull/12801) by tmichon@microsoft.com)
 
 ## [7.23.2](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.23.2)
 

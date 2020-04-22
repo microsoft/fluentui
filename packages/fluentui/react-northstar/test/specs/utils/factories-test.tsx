@@ -2,7 +2,7 @@ import { callable } from '@fluentui/styles';
 import * as React from 'react';
 import * as _ from 'lodash';
 import { shallow } from 'enzyme';
-import { createShorthand, createShorthandFactory } from 'src/utils';
+import { createShorthandInternal as createShorthand, createShorthandFactory } from 'src/utils';
 import { Props, ShorthandValue, ObjectOf, ShorthandRenderFunction } from 'src/types';
 import { consoleUtil } from 'test/utils';
 
@@ -10,7 +10,7 @@ import { consoleUtil } from 'test/utils';
 // Utils
 // ----------------------------------------
 
-type ShorthandConfig = {
+type GetShorthandConfig = {
   Component?: React.ReactType;
   defaultProps?: () => Props;
   mappedProp?: string;
@@ -33,7 +33,7 @@ const getShorthand = ({
   generateKey,
   value,
   render,
-}: ShorthandConfig) =>
+}: GetShorthandConfig) =>
   createShorthand({
     Component,
     mappedProp,
@@ -50,7 +50,7 @@ const getShorthand = ({
 const isValuePrimitive = (value: ShorthandValue<Props>) =>
   typeof value === 'string' || typeof value === 'number' || React.isValidElement(value);
 
-const testCreateShorthand = (shorthandArgs: ShorthandConfig, expectedResult: ObjectOf<any>) =>
+const testCreateShorthand = (shorthandArgs: GetShorthandConfig, expectedResult: ObjectOf<any>) =>
   expect(shallow(getShorthand(shorthandArgs)).props()).toEqual(expectedResult);
 
 // ----------------------------------------
@@ -115,7 +115,7 @@ const itMergesClassNames = (
   });
 };
 
-const itAppliesProps = (propsSource: string, expectedProps: Props, shorthandConfig: ShorthandConfig) => {
+const itAppliesProps = (propsSource: string, expectedProps: Props, shorthandConfig: GetShorthandConfig) => {
   test(`applies props from the ${propsSource} props`, () => {
     testCreateShorthand(shorthandConfig, expectedProps);
   });

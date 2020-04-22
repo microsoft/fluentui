@@ -74,12 +74,12 @@ export interface TreeTitleProps extends UIComponentProps, ChildrenComponentProps
   selectable?: boolean;
 
   /** For selectable parents define if all nested children are checked */
-  incompleteChecked?: boolean;
+  indeterminate?: boolean;
 }
 
 export type TreeTitleStylesProps = Pick<
   TreeTitleProps,
-  'selected' | 'selectable' | 'disabled' | 'selectableParent' | 'incompleteChecked'
+  'selected' | 'selectable' | 'disabled' | 'selectableParent' | 'indeterminate'
 >;
 
 export const treeTitleClassName = 'ui-tree__title';
@@ -110,7 +110,7 @@ const TreeTitle: React.FC<WithAsProp<TreeTitleProps>> & FluentComponentStaticPro
     selectable,
     selectableParent,
     expanded,
-    incompleteChecked,
+    indeterminate,
   } = props;
 
   const getA11Props = useAccessibility(accessibility, {
@@ -144,7 +144,7 @@ const TreeTitle: React.FC<WithAsProp<TreeTitleProps>> & FluentComponentStaticPro
       selectableParent,
       disabled,
       selectable,
-      incompleteChecked,
+      indeterminate,
     }),
     rtl: context.rtl,
   });
@@ -162,7 +162,10 @@ const TreeTitle: React.FC<WithAsProp<TreeTitleProps>> & FluentComponentStaticPro
       ...(selectableParent && !_.isEmpty(selectionIndicator) && { expanded }),
       ...getA11Props('indicator', {
         className: treeTitleSlotClassNames.indicator,
-        ...(selectable && _.isEmpty(selectionIndicator) && { styles: resolvedStyles.selectionIndicator }),
+        ...(((selectable && !hasSubtree) || (selectableParent && expanded)) &&
+          _.isEmpty(selectionIndicator) && {
+            styles: resolvedStyles.selectionIndicator,
+          }),
       }),
     }),
   });
@@ -201,7 +204,7 @@ TreeTitle.propTypes = {
   selectableParent: PropTypes.bool,
   treeSize: PropTypes.number,
   selectionIndicator: customPropTypes.shorthandAllowingChildren,
-  incompleteChecked: PropTypes.bool,
+  indeterminate: PropTypes.bool,
 };
 TreeTitle.defaultProps = {
   as: 'a',

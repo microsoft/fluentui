@@ -12,7 +12,6 @@ const notAutoFocusToolbarMenuBehavior: Accessibility<ToolbarMenuBehaviorProps> =
 const ToolbarExampleVariables = () => {
   return (
     <Toolbar
-      accessibility={notAutoFocusToolbarMenuBehavior}
       variables={{
         background: 'lightblue',
         dividerBorder: 'red',
@@ -67,6 +66,7 @@ const ToolbarExampleVariables = () => {
           icon: <MoreIcon />,
           key: 'item-menu',
           menu: {
+            accessibility: notAutoFocusToolbarMenuBehavior,
             items: [
               // ToolbarMenuDivider
               { kind: 'divider', key: 'divider' },
@@ -81,6 +81,7 @@ const ToolbarExampleVariables = () => {
                 key: 'item-menu',
                 content: 'Item',
                 menu: {
+                  accessibility: notAutoFocusToolbarMenuBehavior,
                   items: [
                     { key: 'item', content: 'Item' },
                     { key: 'item-variables', content: 'Item', variables: { menuItemForeground: 'gold' } },
@@ -93,6 +94,7 @@ const ToolbarExampleVariables = () => {
                 key: 'item-menu-variables',
                 content: 'Item',
                 menu: {
+                  accessibility: notAutoFocusToolbarMenuBehavior,
                   items: [
                     { key: 'item', content: 'Item' },
                     { key: 'item-variables', content: 'Item', variables: { menuItemForeground: 'gold' } },
@@ -115,6 +117,7 @@ const ToolbarExampleVariables = () => {
           icon: <MoreIcon />,
           key: 'item-menu-variables',
           menu: {
+            accessibility: notAutoFocusToolbarMenuBehavior,
             items: [
               { kind: 'divider', key: 'divider' },
               { kind: 'divider', key: 'divider-variables', variables: { menuDividerBorder: 'orange' } },
@@ -127,6 +130,7 @@ const ToolbarExampleVariables = () => {
                 key: 'item-menu',
                 content: 'Item',
                 menu: {
+                  accessibility: notAutoFocusToolbarMenuBehavior,
                   items: [
                     { key: 'item', content: 'Item' },
                     { key: 'item-variables', content: 'Item', variables: { menuItemForeground: 'gold' } },
@@ -139,6 +143,7 @@ const ToolbarExampleVariables = () => {
                 key: 'item-menu-variables',
                 content: 'Item',
                 menu: {
+                  accessibility: notAutoFocusToolbarMenuBehavior,
                   items: [
                     { key: 'item', content: 'Item' },
                     { key: 'item-variables', content: 'Item', variables: { menuItemForeground: 'gold' } },

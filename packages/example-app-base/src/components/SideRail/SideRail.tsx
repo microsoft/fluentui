@@ -156,7 +156,7 @@ class SideRailBase extends React.Component<ISideRailProps, ISideRailState> {
 
   private _getJumpLinkUrl(anchor: string): string {
     // This makes sure that location hash changes don't append
-    return `${removeAnchorLink(location.hash)}#${anchor}`;
+    return typeof location !== 'undefined' ? `${removeAnchorLink(location.hash)}#${anchor}` : '';
   }
 }
 
