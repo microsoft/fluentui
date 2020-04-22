@@ -19,6 +19,11 @@ import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react';
 
 const getClassNames = classNamesFunction<ILineChartStyleProps, ILineChartStyles>();
 
+export interface IRefArrayData {
+  index?: string;
+  refElement?: SVGGElement;
+}
+
 export class LineChartBase extends React.Component<
   ILineChartProps,
   {
@@ -30,6 +35,7 @@ export class LineChartBase extends React.Component<
     YValueHover: { legend?: string; y?: number; color?: string }[];
     hoverYValue: string | number | null;
     hoverXValue: string | number | null;
+    refArray: IRefArrayData[];
     activeLegend: string;
     lineColor: string;
     // tslint:disable-next-line:no-any
@@ -45,7 +51,6 @@ export class LineChartBase extends React.Component<
   private _reqID: number;
   private xAxisElement: SVGElement | null;
   private yAxisElement: SVGElement | null;
-  private currentRef = React.createRef<SVGLineElement>();
   // tslint:disable-next-line:no-any
   private _xAxisScale: any = '';
   // tslint:disable-next-line:no-any
@@ -66,6 +71,7 @@ export class LineChartBase extends React.Component<
       containerWidth: 0,
       isCalloutVisible: false,
       hoverYValue: '',
+      refArray: [],
       hoverXValue: '',
       activeLegend: '',
       YValueHover: [],
@@ -449,7 +455,9 @@ export class LineChartBase extends React.Component<
               x2={this._xAxisScale(this._points[i].data[j].x)}
               y2={this._yAxisScale(this._points[i].data[j].y)}
               strokeWidth={strokeWidth}
-              ref={this.currentRef}
+              ref={(e: SVGLineElement | null) => {
+                this._refCallback(e!, keyVal);
+              }}
               stroke={lineColor}
               strokeLinecap={'round'}
               onMouseOver={this._handleHover.bind(this, x1, y1, lineColor, xAxisCalloutData)}
@@ -457,7 +465,7 @@ export class LineChartBase extends React.Component<
               onMouseOut={this._handleMouseOut}
               opacity={1}
               data-is-focusable={i === 0 ? true : false}
-              onFocus={this._handleHover.bind(this, x1, y1, lineColor, xAxisCalloutData)}
+              onFocus={this._handleFocus.bind(this, keyVal, x1, y1, lineColor, xAxisCalloutData)}
               onBlur={this._handleMouseOut}
               aria-labelledby={this._calloutId}
             />,
@@ -482,6 +490,33 @@ export class LineChartBase extends React.Component<
     }
     return lines;
   }
+
+  private _refCallback(element: SVGGElement, legendTitle: string): void {
+    this.state.refArray.push({ index: legendTitle, refElement: element });
+  }
+
+  private _handleFocus = (
+    keyVal: string,
+    x: number | Date,
+    y: number | string,
+    lineColor: string,
+    xAxisCalloutData: string,
+  ) => {
+    const formattedData = x instanceof Date ? x.toLocaleDateString() : x;
+    const found = this._calloutPoints.find((element: { x: string | number }) => element.x === formattedData);
+    this.state.refArray.map((obj: IRefArrayData) => {
+      if (obj.index === keyVal) {
+        this.setState({
+          isCalloutVisible: true,
+          refSelected: obj.refElement,
+          hoverXValue: xAxisCalloutData ? xAxisCalloutData : '' + formattedData,
+          hoverYValue: y,
+          YValueHover: found.values,
+          lineColor: lineColor,
+        });
+      }
+    });
+  };
 
   private _handleHover = (
     x: number | Date,

@@ -65,7 +65,7 @@ export const carouselPaddleSlotClassNames: CarouselPaddleSlotClassNames = {
 };
 
 const CarouselPaddle: React.FC<WithAsProp<CarouselPaddleProps>> &
-  FluentComponentStaticProps<CarouselPaddleProps> & { slotClassNames: CarouselPaddleSlotClassNames } = props => {
+  FluentComponentStaticProps<CarouselPaddleProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(CarouselPaddle.displayName, context.telemetry);
   setStart();
@@ -165,7 +165,6 @@ CarouselPaddle.defaultProps = {
 };
 
 CarouselPaddle.displayName = 'CarouselPaddle';
-CarouselPaddle.deprecated_className = carouselPaddleClassName;
 
 CarouselPaddle.propTypes = {
   ...commonPropTypes.createCommon({
@@ -181,8 +180,6 @@ CarouselPaddle.propTypes = {
 CarouselPaddle.handledProps = Object.keys(CarouselPaddle.propTypes) as any;
 
 CarouselPaddle.create = createShorthandFactory({ Component: CarouselPaddle, mappedProp: 'content' });
-
-CarouselPaddle.slotClassNames = carouselPaddleSlotClassNames;
 
 /**
  * A CarouselPaddle allows users to customize the paddles inside the Carousel component.

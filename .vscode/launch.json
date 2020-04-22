@@ -27,7 +27,7 @@
       "stopOnEntry": false,
       "args": ["-i", "--testPathPattern=\\b${fileBasenameNoExtension}", "--watch"],
       "runtimeExecutable": null,
-      "runtimeArgs": ["--nolazy", "--debug"],
+      "runtimeArgs": ["--nolazy", "--inspect"],
       "env": {
         "NODE_ENV": "development"
       },

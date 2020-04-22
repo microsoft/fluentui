@@ -66,7 +66,6 @@ const Box: React.FC<WithAsProp<BoxProps>> & FluentComponentStaticProps<BoxProps>
   return result;
 };
 
-Box.deprecated_className = boxClassName;
 Box.displayName = 'Box';
 
 Box.propTypes = commonPropTypes.createCommon();

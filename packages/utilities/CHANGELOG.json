@@ -2,6 +2,33 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "date": "Tue, 21 Apr 2020 12:34:50 GMT",
+      "tag": "@uifabric/utilities_v7.15.11",
+      "version": "7.15.11",
+      "comments": {
+        "patch": [
+          {
+            "comment": "classNamesFunction: fix not traversing the changed styles function",
+            "author": "xgao@microsoft.com",
+            "commit": "1d6687743e9fdf6a7a20a61ee61d18d36f45e0d0",
+            "package": "@uifabric/utilities"
+          },
+          {
+            "comment": "Revert changes to 'on': it should not use React events",
+            "author": "behowell@microsoft.com",
+            "commit": "65a2edff2455c57d4af59cc3e054ca8f4af1e499",
+            "package": "@uifabric/utilities"
+          },
+          {
+            "comment": "Fix lint rule violation",
+            "author": "elcraig@microsoft.com",
+            "commit": "03aa5f753a01c7a4fe0fb6ba8591027e9d3c9db3",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
       "date": "Sun, 19 Apr 2020 02:02:09 GMT",
       "tag": "@uifabric/utilities_v7.15.10",
       "version": "7.15.10",

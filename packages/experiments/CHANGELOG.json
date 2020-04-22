@@ -2,6 +2,21 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Wed, 22 Apr 2020 12:33:04 GMT",
+      "tag": "@uifabric/experiments_v7.23.9",
+      "version": "7.23.9",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix incorrect aria-colindex values in TilesList",
+            "author": "tmichon@microsoft.com",
+            "commit": "8578ee792752b16633eca2194dc7f80e60112c55",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 16 Apr 2020 04:01:45 GMT",
       "tag": "@uifabric/experiments_v7.23.2",
       "version": "7.23.2",

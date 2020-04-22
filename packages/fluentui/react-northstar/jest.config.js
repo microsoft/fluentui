@@ -4,7 +4,10 @@ module.exports = {
   ...commonConfig,
   name: 'react',
   moduleNameMapper: {
-    ...require('lerna-alias').jest(),
+    ...require('lerna-alias').jest({
+      directory: require('@uifabric/build/monorepo/findGitRoot')(),
+    }),
+
     'docs/(.*)$': `<rootDir>/../docs/$1`,
 
     // Legacy aliases, they should not be used in new tests
