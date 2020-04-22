@@ -1,5 +1,4 @@
-import { Accessibility, tableRowBehavior } from '@fluentui/accessibility';
-import { GridRowBehaviorProps } from '@fluentui/accessibility/dist/es/behaviors/Table/gridRowBehavior';
+import { Accessibility, tableRowBehavior, GridRowBehaviorProps } from '@fluentui/accessibility';
 import { getElementType, useAccessibility, useStyles, useTelemetry, useUnhandledProps } from '@fluentui/react-bindings';
 import { Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
