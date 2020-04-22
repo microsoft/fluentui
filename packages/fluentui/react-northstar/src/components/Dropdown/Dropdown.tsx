@@ -916,14 +916,15 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
         const newValue = isSameItemSelected ? value[0] : changes.selectedItem;
 
         newState.searchQuery = this.getSelectedItemAsString(newValue);
-        if (!isSameItemSelected) {
-          newState.value = multiple ? [...value, changes.selectedItem] : [changes.selectedItem];
-        }
         newState.open = false;
         newState.highlightedIndex = shouldAddHighlightedIndex ? items.indexOf(newValue) : null;
 
-        if (getA11ySelectionMessage && getA11ySelectionMessage.onAdd && !isSameItemSelected) {
-          this.setA11ySelectionMessage(getA11ySelectionMessage.onAdd(newValue));
+        if (!isSameItemSelected) {
+          newState.value = multiple ? [...value, changes.selectedItem] : [changes.selectedItem];
+
+          if (getA11ySelectionMessage && getA11ySelectionMessage.onAdd) {
+            this.setA11ySelectionMessage(getA11ySelectionMessage.onAdd(newValue));
+          }
         }
 
         if (multiple) {
