@@ -2,6 +2,27 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 22 Apr 2020 12:33:04 GMT",
+      "tag": "office-ui-fabric-react_v7.107.3",
+      "version": "7.107.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating Announced, Callout, and Calendar examples to function components",
+            "author": "czearing@outlook.com",
+            "commit": "a88adc3e90f83ae18b9eb5432dceae1d62362a84",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Fix SASS default values for theme.effects",
+            "author": "phkuo@microsoft.com",
+            "commit": "ae4e2db15a4cf25dc4abc4aef8f304f29002374a",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 21 Apr 2020 12:34:50 GMT",
       "tag": "office-ui-fabric-react_v7.107.2",
       "version": "7.107.2",

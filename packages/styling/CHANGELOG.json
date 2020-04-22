@@ -2,6 +2,21 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "date": "Wed, 22 Apr 2020 12:33:04 GMT",
+      "tag": "@uifabric/styling_v7.11.8",
+      "version": "7.11.8",
+      "comments": {
+        "patch": [
+          {
+            "comment": "remove outdated comment",
+            "author": "phkuo@microsoft.com",
+            "commit": "ae4e2db15a4cf25dc4abc4aef8f304f29002374a",
+            "package": "@uifabric/styling"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 16 Apr 2020 04:01:45 GMT",
       "tag": "@uifabric/styling_v7.11.3",
       "version": "7.11.3",
