@@ -3,7 +3,7 @@ import cx from 'classnames';
 import createSvgIcon from '../utils/createSvgIcon';
 import { iconClassNames } from '../utils/iconClassNames';
 
-const FluidAvatarIcon = createSvgIcon({
+const FluidIcon = createSvgIcon({
   svg: ({ classes }) => (
     <svg role="presentation" focusable="false" viewBox="8 8 16 16" className={classes.svg}>
       <g className={cx(iconClassNames.outline, classes.outlinePart)}>
@@ -20,7 +20,7 @@ const FluidAvatarIcon = createSvgIcon({
       </g>
     </svg>
   ),
-  displayName: 'FluidAvatarIcon',
+  displayName: 'FluidIcon',
 });
 
-export default FluidAvatarIcon;
+export default FluidIcon;
