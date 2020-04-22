@@ -14,6 +14,7 @@ import {
   ShorthandCollection,
   WithAsProp,
   withSafeTypeForAs,
+  ComponentEventHandler,
 } from '../../types';
 import { childrenExist, commonPropTypes, createShorthandFactory, UIComponentProps } from '../../utils';
 import TableCell, { TableCellProps } from './TableCell';
@@ -43,6 +44,14 @@ export interface TableRowProps extends UIComponentProps {
    * Whether a row is currently selected or not.
    */
   selected?: boolean;
+
+  /**
+   * Called on click.
+   *
+   * @param event - React's original SyntheticEvent.
+   * @param data - All props.
+   */
+  onClick?: ComponentEventHandler<TableRowProps>;
 }
 
 const handleVariablesOverrides = variables => predefinedProps => ({
