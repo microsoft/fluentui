@@ -165,21 +165,25 @@ const Canvas = ({
             .filter(Boolean)
             .join('\n');
 
-      style.innerHTML = isExpanding
-        ? `
-        [data-builder-id="builder-root"] {
-          padding: ${debugSize};
-          min-height: 100vh;
-        }
-
-        [data-builder-id]:not([data-builder-id="builder-root"]) {
-          outline: 1px dotted cornflowerblue;
-          outline-offset: -1px;
-        }
-        
-        ${elementStyles}
-        `
-        : elementStyles;
+      style.innerHTML = [
+        isSelecting &&
+          `
+          [data-builder-id="builder-root"] {
+            ${isExpanding ? `padding: ${debugSize};` : ''}
+            min-height: 100vh;
+          }
+          `,
+        isExpanding &&
+          `
+          [data-builder-id]:not([data-builder-id="builder-root"]) {
+            outline: 1px dotted cornflowerblue;
+            outline-offset: -1px;
+          }
+          `,
+        elementStyles,
+      ]
+        .filter(Boolean)
+        .join('\n');
 
       // console.log('Canvas:effect style element:', style.innerHTML);
     });
