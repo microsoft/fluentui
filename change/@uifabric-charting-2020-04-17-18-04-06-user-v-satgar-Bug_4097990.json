@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Fix issue line chart 'Tool tip' is displayed top of the page throgh accessibility",
+  "packageName": "@uifabric/charting",
+  "email": "v-satgar@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-04-17T12:34:06.339Z"
+}

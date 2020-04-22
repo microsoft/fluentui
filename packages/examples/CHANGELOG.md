@@ -1,6 +1,17 @@
 # Change Log - @fluentui/examples
 
-This log was last generated on Wed, 25 Mar 2020 12:30:04 GMT and should not be manually modified.
+This log was last generated on Thu, 16 Apr 2020 04:01:45 GMT and should not be manually modified.
+
+<!-- Start content -->
+
+## [0.1.32](https://github.com/microsoft/fluentui/tree/@fluentui/examples_v0.1.32)
+
+Thu, 16 Apr 2020 04:01:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/examples_v0.1.30..@fluentui/examples_v0.1.32)
+
+### Patches
+
+- Readme: Fabric=>Fluent wording updates ([PR #12508](https://github.com/microsoft/fluentui/pull/12508) by elcraig@microsoft.com)
 
 ## 0.1.21
 Wed, 25 Mar 2020 12:30:04 GMT

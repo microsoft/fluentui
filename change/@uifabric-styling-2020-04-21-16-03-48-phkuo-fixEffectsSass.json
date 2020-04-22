@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "remove outdated comment",
+  "packageName": "@uifabric/styling",
+  "email": "phkuo@microsoft.com",
+  "commit": "305d4629031039d2179eaae063cd6b2f091122d1",
+  "date": "2020-04-21T23:03:48.374Z"
+}

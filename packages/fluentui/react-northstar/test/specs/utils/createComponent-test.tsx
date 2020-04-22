@@ -11,7 +11,7 @@ describe('createComponent', () => {
         render: () => <div>Hello</div>,
       });
 
-      expect(TestComponent.className).toBe('ui-test-component');
+      expect(TestComponent.deprecated_className).toBe('ui-test-component');
     });
 
     it('sets default className value if not provided by client', () => {
@@ -20,7 +20,7 @@ describe('createComponent', () => {
         render: () => <div>Hello</div>,
       });
 
-      expect(TestComponent.className).toBe('fluent-ui-component');
+      expect(TestComponent.deprecated_className).toBe('fluent-ui-component');
     });
   });
 });

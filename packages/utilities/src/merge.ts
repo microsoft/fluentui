@@ -24,7 +24,7 @@ function _merge<T extends Object>(target: T, source: T, circularReferences: any[
   for (let name in source) {
     if (source.hasOwnProperty(name)) {
       const value: T[Extract<keyof T, string>] = source[name];
-      if (typeof value === 'object') {
+      if (typeof value === 'object' && value !== null) {
         const isCircularReference = circularReferences.indexOf(value) > -1;
         target[name] = (isCircularReference
           ? value

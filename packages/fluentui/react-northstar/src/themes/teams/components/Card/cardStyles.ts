@@ -1,7 +1,6 @@
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { CardVariables } from './cardVariables';
 import { CardStylesProps } from '../../../../components/Card/Card';
-import { pxToRem } from '../../../../utils';
 import getBorderFocusStyles from '../../getBorderFocusStyles';
 
 const cardStyles: ComponentSlotStylesPrepared<CardStylesProps, CardVariables> = {
@@ -10,7 +9,6 @@ const cardStyles: ComponentSlotStylesPrepared<CardStylesProps, CardVariables> = 
 
     const borderFocusStyles = getBorderFocusStyles({
       variables: siteVariables,
-      borderWidth: v.borderWidth,
       borderRadius: v.borderRadius,
     });
 
@@ -18,18 +16,59 @@ const cardStyles: ComponentSlotStylesPrepared<CardStylesProps, CardVariables> = 
       display: 'flex',
       flexDirection: 'column',
       position: 'relative',
-      overflow: 'hidden',
       padding: v.padding,
-      ...(p.horizontal && { flexDirection: 'row' }),
-      ...(p.compact && { padding: v.compactPadding }),
-      ...(p.centered && { alignItems: 'center' }),
+      width: v.width,
+      height: v.height,
+      backgroundColor: v.backgroundColor,
+      boxShadow: v.boxShadow,
+      ':hover': {
+        backgroundColor: v.backgroundColorHover,
+        borderColor: v.borderColorHover,
+        boxShadow: v.boxShadowHover,
+      },
 
-      // TODO: update with latest design spec
-      width: pxToRem(300),
       borderWidth: v.borderWidth,
       borderStyle: v.borderStyle,
       borderColor: v.borderColor,
       borderRadius: v.borderRadius,
+
+      ...(p.size === 'small' && { width: v.sizeSmallWidth, height: v.sizeSmallHeight, padding: v.sizeSmallPadding }),
+      ...(p.size === 'large' && { width: v.sizeLargeWidth, height: v.sizeLargeHeight, padding: v.sizeLargePadding }),
+      ...(p.fluid && { width: v.fluidWidth, height: v.fluidHeight }),
+      ...(p.horizontal && { flexDirection: 'row' }),
+      ...(p.compact && { padding: v.compactPadding }),
+      ...(p.centered && { alignItems: 'center' }),
+
+      ...(p.actionable && {
+        cursor: 'pointer',
+        ':focus-visible': {
+          backgroundColor: v.backgroundColorFocus,
+          boxShadow: v.boxShadowFocus,
+        },
+        ':active': {
+          backgroundColor: v.backgroundColorPressed,
+          borderColor: v.borderColorPressed,
+          boxShadow: v.boxShadowPressed,
+        },
+      }),
+
+      ...(p.disabled && {
+        cursor: 'not-allowed',
+        color: v.colorDisabled,
+        backgroundColor: v.backgroundColorDisabled,
+        borderColor: v.borderColorDisabled,
+        boxShadow: v.boxShadowDisabled,
+        ':hover': {
+          boxShadow: v.boxShadowDisabled,
+        },
+        ':focus-visible': {
+          boxShadow: v.boxShadowDisabled,
+        },
+        ':active': {
+          boxShadow: v.boxShadowDisabled,
+        },
+      }),
+
       ...borderFocusStyles,
     };
   },

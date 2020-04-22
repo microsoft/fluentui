@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: fix typings for asAsync & internal usages of React.Children.map",
-  "packageName": "@uifabric/experiments",
-  "email": "olfedias@microsoft.com",
-  "commit": "5d5891f4757c292ad5a59a7522a00437ae7ac248",
-  "dependentChangeType": "patch",
-  "date": "2020-04-07T12:34:30.384Z"
-}
