@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Fix incorrect aria-colindex values in TilesList",
+  "packageName": "@uifabric/experiments",
+  "email": "tmichon@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-04-21T22:49:22.462Z"
+}

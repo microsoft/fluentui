@@ -109,3 +109,5 @@ export { default as cardBehavior } from './Card/cardBehavior';
 export * from './Card/cardBehavior';
 export { default as cardFocusableBehavior } from './Card/cardFocusableBehavior';
 export { default as cardChildrenFocusableBehavior } from './Card/cardChildrenFocusableBehavior';
+export { default as videoBehavior } from './Video/videoBehavior';
+export * from './Video/videoBehavior';
