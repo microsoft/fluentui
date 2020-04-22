@@ -56,4 +56,8 @@ const splitButtonBehavior: Accessibility = props => {
   };
 };
 
+export type SplitButtonBehaviorProps = {
+  open?: boolean;
+};
+
 export default splitButtonBehavior;

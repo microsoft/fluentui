@@ -83,6 +83,7 @@ import { CardHeaderStylesProps } from '../../components/Card/CardHeader';
 import { CardBodyStylesProps } from '../../components/Card/CardBody';
 import { CardFooterStylesProps } from '../../components/Card/CardFooter';
 import { SvgIconStylesProps } from '../../components/SvgIcon/SvgIcon';
+import { SplitButtonStylesProps } from '../../components/SplitButton/SplitButton';
 
 export type TeamsThemeStylesProps = {
   Accordion: AccordionProps;
@@ -134,6 +135,7 @@ export type TeamsThemeStylesProps = {
   ReactionGroup: ReactionGroupProps;
   Segment: SegmentProps;
   Slider: SliderStylesProps;
+  SplitButton: SplitButtonStylesProps;
   Status: StatusStylesProps;
   Toolbar: ToolbarProps;
   ToolbarCustomItem: ToolbarCustomItemStylesProps;
