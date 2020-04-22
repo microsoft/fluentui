@@ -23,7 +23,7 @@ const ButtonContent = compose<'span', ButtonContentProps, ButtonContentStylesPro
   handledProps: ['size'],
 
   overrideStyles: true,
-}) as ComponentWithAs<'span', ButtonContentProps> & { create: ShorthandFactory<ButtonContentProps> };
+}) as ComponentWithAs<'span', ButtonContentProps> & { shorthandConfig: ShorthandConfig<ButtonContentProps> };
 
 ButtonContent.defaultProps = {
   as: 'span',
