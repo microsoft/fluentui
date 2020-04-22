@@ -11,7 +11,6 @@ import {
 } from 'office-ui-fabric-react';
 import { useBoolean } from '@uifabric/react-hooks';
 
-const theme = getTheme();
 const styles = mergeStyleSets({
   buttonArea: {
     verticalAlign: 'top',
@@ -77,13 +76,13 @@ export const CalloutFocusTrapExample: React.FunctionComponent = () => {
             setInitialFocus={true}
           >
             <div className={styles.header}>
-              <p className={styles.title}>Callout title here</p>
+              <Text className={styles.title}>Callout title here</Text>
             </div>
             <div className={styles.inner}>
               <div>
-                <p className={styles.subtext}>
+                <Text className={styles.subtext}>
                   Content is wrapped in a FocusTrapZone so that user cannot accidently tab out of this callout.
-                </p>
+                </Text>
               </div>
             </div>
             <FocusZone>

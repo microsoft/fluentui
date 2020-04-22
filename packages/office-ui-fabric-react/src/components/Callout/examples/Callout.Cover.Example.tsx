@@ -91,7 +91,7 @@ export const CalloutCoverExample: React.FunctionComponent = () => {
           setInitialFocus
         >
           <div className={styles.header}>
-            <p className={styles.title}>I'm covering the target!</p>
+            <Text className={styles.title}>I'm covering the target!</Text>
           </div>
           <div className={styles.inner}>
             <DefaultButton onClick={toggleIsCalloutVisible} text="Click to dismiss" />
