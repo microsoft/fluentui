@@ -293,12 +293,14 @@ SplitButton.propTypes = {
   position: PropTypes.oneOf(POSITIONS),
   align: PropTypes.oneOf(ALIGNMENTS),
   flipBoundary: PropTypes.oneOfType([
-    PropTypes.object as PropTypes.Requireable<Element>,
-    PropTypes.oneOf<'scrollParent' | 'window' | 'viewport'>(['scrollParent', 'window', 'viewport']),
+    PropTypes.object as PropTypes.Requireable<HTMLElement>,
+    PropTypes.arrayOf(PropTypes.object) as PropTypes.Requireable<HTMLElement[]>,
+    PropTypes.oneOf<'clippingParents' | 'window' | 'scrollParent'>(['clippingParents', 'window', 'scrollParent']),
   ]),
   overflowBoundary: PropTypes.oneOfType([
-    PropTypes.object as PropTypes.Requireable<Element>,
-    PropTypes.oneOf<'scrollParent' | 'window' | 'viewport'>(['scrollParent', 'window', 'viewport']),
+    PropTypes.object as PropTypes.Requireable<HTMLElement>,
+    PropTypes.arrayOf(PropTypes.object) as PropTypes.Requireable<HTMLElement[]>,
+    PropTypes.oneOf<'clippingParents' | 'window' | 'scrollParent'>(['clippingParents', 'window', 'scrollParent']),
   ]),
   positionFixed: PropTypes.bool,
   offset: PropTypes.oneOfType([
