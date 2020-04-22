@@ -24,6 +24,7 @@ import {
   IPosition,
   RectangleEdge,
   positionCard,
+  getBoundsFromTargetWindow,
 } from '../../utilities/positioning';
 import { Popup } from '../../Popup';
 import { classNamesFunction } from '../../Utilities';
@@ -437,52 +438,15 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
       let currentBounds = typeof bounds === 'function' ? bounds(this.props.target, this._targetWindow) : bounds;
 
       if (!currentBounds) {
-        // Establish default currentBounds if dealing with single screen scenarios
+        currentBounds = getBoundsFromTargetWindow(this._target, this._targetWindow);
         currentBounds = {
-          top: 0 + this.props.minPagePadding!,
-          left: 0 + this.props.minPagePadding!,
-          right: this._targetWindow.innerWidth - this.props.minPagePadding!,
-          bottom: this._targetWindow.innerHeight - this.props.minPagePadding!,
-          width: this._targetWindow.innerWidth - this.props.minPagePadding! * 2,
-          height: this._targetWindow.innerHeight - this.props.minPagePadding! * 2,
+          top: currentBounds.top + this.props.minPagePadding!,
+          left: currentBounds.left + this.props.minPagePadding!,
+          right: currentBounds.right! - this.props.minPagePadding!,
+          bottom: currentBounds.bottom! - this.props.minPagePadding!,
+          width: currentBounds.width - this.props.minPagePadding! * 2,
+          height: currentBounds.height - this.props.minPagePadding! * 2,
         };
-
-        let segments = undefined;
-        if ((this._targetWindow as any).getWindowSegments) {
-          segments = (this._targetWindow as any).getWindowSegments();
-        }
-        if (segments !== undefined && segments.length > 1) {
-          let x;
-          let y;
-
-          // If the target is an Element get coordinates for its center.
-          if (!!(this._target as Element).getBoundingClientRect) {
-            const clientRect = (this._target as Element).getBoundingClientRect();
-            console.log(clientRect);
-            x = (clientRect.left + clientRect.right) / 2;
-            y = (clientRect.top + clientRect.bottom) / 2;
-          }
-          // If the target is a MouseEvent or an IPoint get x and y coordinates directly.
-          else if (this._target !== null) {
-            x = (this._target as MouseEvent | IPoint).x;
-            y = (this._target as MouseEvent | IPoint).y;
-          }
-
-          // Define which window segment are the coordinates in and calculate bounds based on that.
-          for (const segment of segments) {
-            if (x && segment.left <= x && segment.right >= x && y && segment.top <= y && segment.bottom >= y) {
-              currentBounds = {
-                top: segment.top + this.props.minPagePadding!,
-                left: segment.left + this.props.minPagePadding!,
-                right: segment.right - this.props.minPagePadding!,
-                bottom: segment.bottom - this.props.minPagePadding!,
-                width: segment.width - this.props.minPagePadding! * 2,
-                height: segment.height - this.props.minPagePadding! * 2,
-              };
-              break;
-            }
-          }
-        }
       }
       this._bounds = currentBounds;
     }
