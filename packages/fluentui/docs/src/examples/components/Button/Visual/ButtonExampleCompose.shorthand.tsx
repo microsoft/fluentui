@@ -132,7 +132,7 @@ const componentVariables: ComponentVariablesInput = {
     tertiaryColor: siteVariables.colorScheme.default.foreground3,
   }),
   CompactTertiaryButton: (): ComponentVariables['CompactTertiaryButton'] => ({
-    tertiaryPadding: '.5rem',
+    tertiaryPadding: '0 .5rem',
   }),
 };
 
