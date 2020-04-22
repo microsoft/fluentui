@@ -66,7 +66,7 @@ const Box = compose<'div', BoxProps, BoxStylesProps, {}, {}>(
 
     const result = (
       <ElementType
-        {...getA11Props('root', {
+        {...getA11yProps('root', {
           ...rtlTextContainer.getAttributes({ forElements: [children, content] }),
           className: classes.root,
           ref,

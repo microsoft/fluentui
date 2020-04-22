@@ -190,7 +190,7 @@ const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
     const renderIcon = () => {
       return Box.create(icon, {
         defaultProps: () =>
-          getA11Props('icon', {
+          getA11yProps('icon', {
             styles: resolvedStyles.icon,
           }),
       });
@@ -199,7 +199,7 @@ const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
     const renderLoader = () => {
       return Loader.create(loader || {}, {
         defaultProps: () =>
-          getA11Props('loader', {
+          getA11yProps('loader', {
             role: undefined,
             styles: resolvedStyles.loader,
           }),
@@ -222,7 +222,7 @@ const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
     const result = (
       <ElementType
         {...rtlTextContainer.getAttributes({ forElements: [children] })}
-        {...getA11Props('root', {
+        {...getA11yProps('root', {
           onClick: handleClick,
           disabled,
           className: classes.root,
@@ -238,7 +238,7 @@ const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
             {loading && renderLoader()}
             {iconPosition !== 'after' && renderIcon()}
             {ButtonContent.create(content, {
-              defaultProps: () => getA11Props('content', { as: 'span', size }),
+              defaultProps: () => getA11yProps('content', { as: 'span', size }),
             })}
             {iconPosition === 'after' && renderIcon()}
           </>
