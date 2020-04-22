@@ -158,6 +158,7 @@ TableRow.propTypes = {
   header: PropTypes.bool,
   compact: PropTypes.bool,
   selected: PropTypes.bool,
+  onClick: PropTypes.func,
 };
 
 TableRow.handledProps = Object.keys(TableRow.propTypes) as any;
