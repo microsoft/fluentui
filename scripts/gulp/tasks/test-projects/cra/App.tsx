@@ -1,7 +1,9 @@
 import {
   Accordion,
   Animation,
+  Attachment,
   Avatar,
+  Button,
   Divider,
   Header,
   CalendarIcon,
@@ -14,7 +16,6 @@ import {
 } from '@fluentui/react-northstar';
 import * as React from 'react';
 
-// TODO: revert changes here
 class App extends React.Component {
   render() {
     return (
@@ -24,12 +25,14 @@ class App extends React.Component {
           <Animation name="spinner">
             <CalendarIcon circular bordered />
           </Animation>
+          <Attachment header="Document.docx" />
           <Avatar image="//placehold.it" />
+          <Button content="Click me" />
           <Divider />
           <Header content="This is " />
           <Image accessibility={imageBehavior} src="//placehold.it" />
           <Input placeholder="Type here" />
-          <Popup trigger={<button>Popup</button>} content="Popup content" />
+          <Popup trigger={<Button content="Popup" />} content="Popup content" />
         </div>
       </Provider>
     );
