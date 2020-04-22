@@ -1,16 +1,5 @@
 import * as React from 'react';
-import {
-  KeyCodes,
-  css,
-  getId,
-  getRTL,
-  getRTLSafeKeyCode,
-  format,
-  IRefObject,
-  findIndex,
-  find,
-  initializeComponentRef,
-} from '../../Utilities';
+import { KeyCodes, css, getRTL, getRTLSafeKeyCode, format, IRefObject, findIndex, find } from '../../Utilities';
 import { ICalendarStrings, ICalendarIconStrings, ICalendarFormatDateCallbacks } from './Calendar.types';
 import { DayOfWeek, FirstWeekOfYear, DateRangeType } from '../../utilities/dateValues/DateValues';
 import { FocusZone } from '../../FocusZone';
@@ -30,6 +19,7 @@ import {
 } from '../../utilities/dateMath/DateMath';
 
 import * as stylesImport from './Calendar.scss';
+import { useId } from '@uifabric/react-hooks';
 
 const styles: any = stylesImport;
 
@@ -50,7 +40,7 @@ export interface ICalendarDay {
   focus(): void;
 }
 
-export interface ICalendarDayProps extends React.ClassAttributes<CalendarDay> {
+export interface ICalendarDayProps {
   componentRef?: IRefObject<ICalendarDay>;
   strings: ICalendarStrings;
   selectedDate: Date;
@@ -76,46 +66,140 @@ export interface ICalendarDayProps extends React.ClassAttributes<CalendarDay> {
   allFocusable?: boolean;
 }
 
-export interface ICalendarDayState {
-  weeks?: IDayInfo[][];
-}
-
 interface IWeekCorners {
   [key: string]: string;
 }
 
-export class CalendarDay extends React.Component<ICalendarDayProps, ICalendarDayState> {
-  private navigatedDay = React.createRef<HTMLButtonElement>();
-  private days: { [key: string]: HTMLElement | null } = {};
-  private activeDescendantId = getId('DatePickerDay-active');
+//#region CalendarDay
+function useDayRefs(weeks: IDayInfo[][]) {
+  const days = React.useRef<Record<string, HTMLElement | null>>({});
 
-  public static getDerivedStateFromProps(nextProps: ICalendarDayProps) {
-    return {
-      weeks: _getWeeks(nextProps),
-    };
-  }
+  const _setDayCellRef = React.useCallback((element: HTMLElement | null, { key }: IDayInfo) => {
+    if (element) {
+      days.current[key] = element;
+    } else {
+      delete days.current[key];
+    }
+  }, []);
 
-  public constructor(props: ICalendarDayProps) {
-    super(props);
+  const _applyFunctionToDayRefs = React.useCallback(
+    (func: (ref: HTMLElement | null, day: IDayInfo, weekIndex?: number) => void) => () => {
+      weeks.map((week: IDayInfo[], weekIndex: number) => {
+        week.map(day => {
+          const ref = days.current[day.key];
+          func(ref, day, weekIndex);
+        });
+      });
+    },
+    [weeks],
+  );
 
-    initializeComponentRef(this);
+  return [_setDayCellRef, _applyFunctionToDayRefs] as const;
+}
 
-    this.state = {
-      weeks: _getWeeks(props),
-    };
+function useTableEventHandlers(
+  { dateRangeType }: ICalendarDayProps,
+  applyFunctionToDayRefs: (func: (ref: HTMLElement | null, day: IDayInfo, weekIndex?: number) => void) => void,
+) {
+  const removeClasses = React.useCallback(
+    (classesToRemove: string[]) => (ev: React.MouseEvent<HTMLElement>): void => {
+      if (
+        (ev.target as HTMLElement).contains &&
+        ev.relatedTarget &&
+        (ev.target as HTMLElement).contains(ev.relatedTarget as HTMLElement)
+      ) {
+        return;
+      }
 
-    this._onClose = this._onClose.bind(this);
-  }
+      applyFunctionToDayRefs((ref, day) => {
+        if (ref) {
+          classesToRemove.forEach(className => ref.classList.remove(className));
+        }
+      });
+    },
+    [applyFunctionToDayRefs],
+  );
+  const _onTableMouseLeave = React.useCallback(removeClasses([styles.dayPress, styles.dayHover]), [removeClasses]);
+  const _onTableMouseUp = React.useCallback(removeClasses([styles.dayPress]), [removeClasses]);
 
-  public render(): JSX.Element {
-    const { weeks } = this.state;
+  return dateRangeType !== DateRangeType.Day
+    ? ([_onTableMouseLeave, _onTableMouseUp] as const)
+    : (([] as unknown) as [undefined, undefined]);
+}
+
+function useHeaderEventHandlers({ onHeaderSelect }: ICalendarDayProps) {
+  const _onHeaderSelect = React.useCallback(() => onHeaderSelect?.(true), [onHeaderSelect]);
+  const _onHeaderKeyDown = React.useCallback(_onKeyDown(_onHeaderSelect), [_onHeaderSelect]);
+
+  return [_onHeaderSelect, _onHeaderKeyDown] as const;
+}
+
+function useMonthNavigationHandlers({ onNavigateDate, navigatedDate }: ICalendarDayProps) {
+  const _onSelectPrevMonth = React.useCallback(() => onSelectPrevMonth({ onNavigateDate, navigatedDate }), [
+    onNavigateDate,
+    navigatedDate,
+  ]);
+  const _onSelectNextMonth = React.useCallback(() => onSelectNextMonth({ onNavigateDate, navigatedDate }), [
+    onNavigateDate,
+    navigatedDate,
+  ]);
+  const _onPrevMonthKeyDown = _onKeyDown(_onSelectPrevMonth);
+  const _onNextMonthKeyDown = _onKeyDown(_onSelectNextMonth);
+
+  return [_onSelectPrevMonth, _onSelectNextMonth, _onPrevMonthKeyDown, _onNextMonthKeyDown] as const;
+}
+
+function useCloseHandlers({ onDismiss }: ICalendarDayProps) {
+  const _onClose = React.useCallback(() => onDismiss?.(), [onDismiss]);
+  const _onCloseButtonKeyDown = _onKeyDown(_onClose);
+
+  return [_onClose, _onCloseButtonKeyDown] as const;
+}
+
+function useComponentRef({ componentRef }: ICalendarDayProps, navigatedDay: React.RefObject<HTMLButtonElement | null>) {
+  React.useImperativeHandle(
+    componentRef,
+    () => ({
+      focus() {
+        navigatedDay.current?.focus?.();
+      },
+    }),
+    [],
+  );
+}
+
+export const CalendarDay = React.memo(
+  React.forwardRef((props: ICalendarDayProps, ref: React.Ref<HTMLDivElement>) => {
+    const _navigatedDay = React.useRef<HTMLButtonElement>(null);
+    const activeDescendantId = useId('DatePickerDay-active');
+    const dayPickerId = useId('DatePickerDay-dayPicker');
+    const monthAndYearId = useId('DatePickerDay-monthAndYear');
+
+    useComponentRef(props, _navigatedDay);
+
+    const weeks = React.useMemo(() => _getWeeks(props), [props]);
+    const [_setDayCellRef, _applyFunctionToDayRefs] = useDayRefs(weeks);
+    const [_onTableMouseLeave, _onTableMouseUp] = useTableEventHandlers(props, _applyFunctionToDayRefs);
+    const [_onHeaderSelect, _onHeaderKeyDown] = useHeaderEventHandlers(props);
+    const [
+      _onSelectPrevMonth,
+      _onSelectNextMonth,
+      _onPrevMonthKeyDown,
+      _onNextMonthKeyDown,
+    ] = useMonthNavigationHandlers(props);
+    const [_onClose, _onCloseButtonKeyDown] = useCloseHandlers(props);
+
     const {
       firstDayOfWeek,
       strings,
       navigatedDate,
       selectedDate,
       dateRangeType,
-      navigationIcons,
+      navigationIcons: {
+        leftNavigation: leftNavigationIcon,
+        rightNavigation: rightNavigationIcon,
+        closeIcon: closeNavigationIcon,
+      },
       showWeekNumbers,
       firstWeekOfYear,
       dateTimeFormatter,
@@ -123,12 +207,8 @@ export class CalendarDay extends React.Component<ICalendarDayProps, ICalendarDay
       maxDate,
       showCloseButton,
       allFocusable,
-    } = this.props;
-    const dayPickerId = getId('DatePickerDay-dayPicker');
-    const monthAndYearId = getId('DatePickerDay-monthAndYear');
-    const leftNavigationIcon = navigationIcons.leftNavigation;
-    const rightNavigationIcon = navigationIcons.rightNavigation;
-    const closeNavigationIcon = navigationIcons.closeIcon;
+      onHeaderSelect,
+    } = props;
     const weekNumbers = showWeekNumbers
       ? getWeekNumbersInMonth(weeks!.length, firstDayOfWeek, firstWeekOfYear, navigatedDate)
       : null;
@@ -162,11 +242,11 @@ export class CalendarDay extends React.Component<ICalendarDayProps, ICalendarDay
             id={monthAndYearId}
             className={styles.monthAndYear}
           >
-            {this.props.onHeaderSelect ? (
+            {onHeaderSelect ? (
               <div
                 className={css('ms-DatePicker-monthAndYear js-showMonthPicker', styles.headerToggleView)}
-                onClick={this._onHeaderSelect}
-                onKeyDown={this._onHeaderKeyDown}
+                onClick={_onHeaderSelect}
+                onKeyDown={_onHeaderKeyDown}
                 aria-label={dateTimeFormatter.formatMonthYear(navigatedDate, strings)}
                 role="button"
                 tabIndex={0}
@@ -187,8 +267,8 @@ export class CalendarDay extends React.Component<ICalendarDayProps, ICalendarDay
                 })}
                 disabled={!allFocusable && !prevMonthInBounds}
                 aria-disabled={!prevMonthInBounds}
-                onClick={prevMonthInBounds ? this._onSelectPrevMonth : undefined}
-                onKeyDown={prevMonthInBounds ? this._onPrevMonthKeyDown : undefined}
+                onClick={prevMonthInBounds ? _onSelectPrevMonth : undefined}
+                onKeyDown={prevMonthInBounds ? _onPrevMonthKeyDown : undefined}
                 aria-controls={dayPickerId}
                 title={
                   strings.prevMonthAriaLabel
@@ -206,8 +286,8 @@ export class CalendarDay extends React.Component<ICalendarDayProps, ICalendarDay
                 })}
                 disabled={!allFocusable && !nextMonthInBounds}
                 aria-disabled={!nextMonthInBounds}
-                onClick={nextMonthInBounds ? this._onSelectNextMonth : undefined}
-                onKeyDown={nextMonthInBounds ? this._onNextMonthKeyDown : undefined}
+                onClick={nextMonthInBounds ? _onSelectNextMonth : undefined}
+                onKeyDown={nextMonthInBounds ? _onNextMonthKeyDown : undefined}
                 aria-controls={dayPickerId}
                 title={
                   strings.nextMonthAriaLabel
@@ -222,8 +302,8 @@ export class CalendarDay extends React.Component<ICalendarDayProps, ICalendarDay
               {showCloseButton && (
                 <button
                   className={css('ms-DatePicker-closeButton js-closeButton', styles.closeButton)}
-                  onClick={this._onClose}
-                  onKeyDown={this._onCloseButtonKeyDown}
+                  onClick={_onClose}
+                  onKeyDown={_onCloseButtonKeyDown}
                   title={strings.closeButtonAriaLabel}
                   role="button"
                   type="button"
@@ -240,7 +320,7 @@ export class CalendarDay extends React.Component<ICalendarDayProps, ICalendarDay
             aria-readonly="true"
             aria-multiselectable="false"
             aria-labelledby={monthAndYearId}
-            aria-activedescendant={this.activeDescendantId}
+            aria-activedescendant={activeDescendantId}
             role="grid"
           >
             <thead>
@@ -261,10 +341,7 @@ export class CalendarDay extends React.Component<ICalendarDayProps, ICalendarDay
                 ))}
               </tr>
             </thead>
-            <tbody
-              onMouseLeave={dateRangeType !== DateRangeType.Day ? this._onTableMouseLeave : undefined}
-              onMouseUp={dateRangeType !== DateRangeType.Day ? this._onTableMouseUp : undefined}
-            >
+            <tbody onMouseLeave={_onTableMouseLeave} onMouseUp={_onTableMouseUp}>
               {weeks!.map((week, weekIndex) => (
                 <tr key={weekNumbers ? weekNumbers[weekIndex] : weekIndex}>
                   {showWeekNumbers && weekNumbers && (
@@ -298,78 +375,21 @@ export class CalendarDay extends React.Component<ICalendarDayProps, ICalendarDay
                       </div>
                     </th>
                   )}
-                  {week.map((day, dayIndex) => {
-                    const isNavigatedDate = compareDates(navigatedDate, day.originalDate);
-                    return (
-                      <td
-                        key={day.key}
-                        onClick={day.isInBounds ? day.onSelected : undefined}
-                        className={css(
-                          styles.dayWrapper,
-                          'ms-DatePicker-day',
-                          _getHighlightedCornerStyle(weekCorners, dayIndex, weekIndex),
-                          {
-                            ['ms-DatePicker-weekBackground ' + styles.weekBackground]:
-                              day.isSelected &&
-                              (dateRangeType === DateRangeType.Week || dateRangeType === DateRangeType.WorkWeek),
-                            ['ms-DatePicker-dayBackground ' + styles.dayBackground]:
-                              dateRangeType === DateRangeType.Day,
-                            ['ms-DatePicker-day--highlighted ' + styles.dayIsHighlighted]:
-                              day.isSelected && dateRangeType === DateRangeType.Day,
-                            ['ms-DatePicker-day--infocus ' + styles.dayIsFocused]: day.isInBounds && day.isInMonth,
-                            ['ms-DatePicker-day--outfocus ' + styles.dayIsUnfocused]: day.isInBounds && !day.isInMonth,
-                            [styles.daySelection]: dateRangeType === DateRangeType.Day,
-                            [styles.weekSelection]:
-                              dateRangeType === DateRangeType.Week || dateRangeType === DateRangeType.WorkWeek,
-                            [styles.monthSelection]: dateRangeType === DateRangeType.Month,
-                          },
-                        )}
-                        ref={element => this._setDayCellRef(element, day)}
-                        onMouseOver={
-                          dateRangeType !== DateRangeType.Day && day.isInBounds
-                            ? this._onDayMouseOver(day.originalDate, weekIndex, dateRangeType)
-                            : undefined
-                        }
-                        onMouseLeave={
-                          dateRangeType !== DateRangeType.Day && day.isInBounds
-                            ? this._onDayMouseLeave(day.originalDate, weekIndex, dateRangeType)
-                            : undefined
-                        }
-                        onMouseDown={
-                          dateRangeType !== DateRangeType.Day && day.isInBounds
-                            ? this._onDayMouseDown(day.originalDate, weekIndex, dateRangeType)
-                            : undefined
-                        }
-                        onMouseUp={
-                          dateRangeType !== DateRangeType.Day && day.isInBounds
-                            ? this._onDayMouseUp(day.originalDate, weekIndex, dateRangeType)
-                            : undefined
-                        }
-                        role={'gridcell'}
-                      >
-                        <button
-                          key={day.key + 'button'}
-                          onClick={day.isInBounds ? day.onSelected : undefined}
-                          className={css(styles.day, 'ms-DatePicker-day-button', {
-                            ['ms-DatePicker-day--disabled ' + styles.dayIsDisabled]: !day.isInBounds,
-                            ['ms-DatePicker-day--today ' + styles.dayIsToday]: day.isToday,
-                          })}
-                          onKeyDown={this._onDayKeyDown(day.originalDate, weekIndex, dayIndex)}
-                          aria-label={dateTimeFormatter.formatMonthDayYear(day.originalDate, strings)}
-                          id={isNavigatedDate ? this.activeDescendantId : undefined}
-                          aria-readonly={true}
-                          aria-selected={day.isInBounds ? day.isSelected : undefined}
-                          data-is-focusable={allFocusable || (day.isInBounds ? true : undefined)}
-                          ref={isNavigatedDate ? this.navigatedDay : undefined}
-                          disabled={!allFocusable && !day.isInBounds}
-                          aria-disabled={!day.isInBounds}
-                          type="button"
-                        >
-                          <span aria-hidden="true">{dateTimeFormatter.formatDay(day.originalDate)}</span>
-                        </button>
-                      </td>
-                    );
-                  })}
+                  {week.map((day, dayIndex) => (
+                    <CalendarDayGridCell
+                      key={day.key}
+                      {...props}
+                      weeks={weeks}
+                      day={day}
+                      weekCorners={weekCorners}
+                      dayIndex={dayIndex}
+                      weekIndex={weekIndex}
+                      setDayCellRef={_setDayCellRef}
+                      activeDescendantId={activeDescendantId}
+                      navigatedDay={_navigatedDay}
+                      applyFunctionToDayRefs={_applyFunctionToDayRefs}
+                    />
+                  ))}
                 </tr>
               ))}
             </tbody>
@@ -377,231 +397,211 @@ export class CalendarDay extends React.Component<ICalendarDayProps, ICalendarDay
         </FocusZone>
       </div>
     );
-  }
+  }),
+);
+//#endregion CalendarDay
 
-  public focus() {
-    if (this.navigatedDay.current) {
-      this.navigatedDay.current.tabIndex = 0;
-      this.navigatedDay.current.focus();
-    }
-  }
+//#region CalendarDayGridCell
 
-  private _setDayCellRef(element: HTMLElement | null, day: IDayInfo): void {
-    this.days[day.key] = element;
-  }
-
-  private _navigateMonthEdge(
-    ev: React.KeyboardEvent<HTMLElement>,
-    date: Date,
-    weekIndex: number,
-    dayIndex: number,
-  ): void {
-    const { minDate, maxDate } = this.props;
-    let targetDate: Date | undefined = undefined;
-
-    if (weekIndex === 0 && ev.which === KeyCodes.up) {
-      targetDate = addWeeks(date, -1);
-    } else if (weekIndex === this.state.weeks!.length - 1 && ev.which === KeyCodes.down) {
-      targetDate = addWeeks(date, 1);
-    } else if (dayIndex === 0 && ev.which === getRTLSafeKeyCode(KeyCodes.left)) {
-      targetDate = addDays(date, -1);
-    } else if (dayIndex === DAYS_IN_WEEK - 1 && ev.which === getRTLSafeKeyCode(KeyCodes.right)) {
-      targetDate = addDays(date, 1);
-    }
-
-    // Don't navigate to out-of-bounds date
-    if (
-      targetDate &&
-      (minDate ? compareDatePart(minDate, targetDate) < 1 : true) &&
-      (maxDate ? compareDatePart(targetDate, maxDate) < 1 : true)
-    ) {
-      this.props.onNavigateDate(targetDate, true);
-      ev.preventDefault();
-    }
-  }
-
-  private _onDayKeyDown = (
-    originalDate: Date,
-    weekIndex: number,
-    dayIndex: number,
-  ): ((ev: React.KeyboardEvent<HTMLElement>) => void) => {
-    return (ev: React.KeyboardEvent<HTMLElement>): void => {
-      if (ev.which === KeyCodes.enter) {
-        _onSelectDate(this.props, originalDate, ev);
-        ev.preventDefault();
-      } else {
-        this._navigateMonthEdge(ev, originalDate, weekIndex, dayIndex);
-      }
-    };
-  };
-
-  private _onDayMouseDown = (originalDate: Date, weekIndex: number, dateRangeType: DateRangeType) => {
-    return (): void => {
-      // set the press styling
-      if (dateRangeType === DateRangeType.Month) {
-        this._applyFunctionToDayRefs((ref, day) => {
-          if (ref && day.originalDate.getMonth() === originalDate.getMonth() && day.isInBounds) {
-            ref.classList.add(styles.dayPress);
-          }
-        });
-      } else {
-        // week or work week view
-        this._applyFunctionToDayRefs((ref, day, dayWeekIndex) => {
-          if (ref && dayWeekIndex === weekIndex && day.isInBounds) {
-            ref.classList.add(styles.dayPress);
-            ref.classList.add(styles.dayIsHighlighted);
-          } else if (ref) {
-            ref.classList.remove(styles.dayIsHighlighted);
-          }
-        });
-      }
-    };
-  };
-
-  private _onDayMouseUp = (originalDate: Date, weekIndex: number, dateRangeType: DateRangeType) => {
-    return (): void => {
-      // remove press styling
-      if (dateRangeType === DateRangeType.Month) {
-        this._applyFunctionToDayRefs((ref, day) => {
-          if (ref && day.originalDate.getMonth() === originalDate.getMonth() && day.isInBounds) {
-            ref.classList.remove(styles.dayPress);
-          }
-        });
-      } else {
-        // week or work week view
-        this._applyFunctionToDayRefs((ref, day, dayWeekIndex) => {
-          if (ref && dayWeekIndex === weekIndex && day.isInBounds) {
-            ref.classList.remove(styles.dayPress);
-          }
-        });
-      }
-    };
-  };
-
-  private _onDayMouseOver = (originalDate: Date, weekIndex: number, dateRangeType: DateRangeType) => {
-    return (): void => {
-      // set the hover styling on every day in the same month
-      if (dateRangeType === DateRangeType.Month) {
-        this._applyFunctionToDayRefs((ref, day) => {
-          if (ref && day.originalDate.getMonth() === originalDate.getMonth() && day.isInBounds) {
-            ref.classList.add(styles.dayHover);
-          }
-        });
-      } else {
-        // week or work week view
-        this._applyFunctionToDayRefs((ref, day, dayWeekIndex) => {
-          if (ref && dayWeekIndex === weekIndex && day.isInBounds) {
-            ref.classList.add(styles.dayHover);
-          }
-        });
-      }
-    };
-  };
-
-  private _onDayMouseLeave = (originalDate: Date, weekIndex: number, dateRangeType: DateRangeType) => {
-    return (): void => {
-      // remove the hover and pressed styling
-      if (dateRangeType === DateRangeType.Month) {
-        this._applyFunctionToDayRefs((ref, day) => {
-          if (ref && day.originalDate.getMonth() === originalDate.getMonth() && day.isInBounds) {
-            ref.classList.remove(styles.dayHover);
-          }
-        });
-      } else {
-        // week or work week view
-        this._applyFunctionToDayRefs((ref, day, dayWeekIndex) => {
-          if (ref && dayWeekIndex === weekIndex && day.isInBounds) {
-            ref.classList.remove(styles.dayHover);
-          }
-        });
-      }
-    };
-  };
-
-  private _onTableMouseLeave = (ev: React.MouseEvent<HTMLElement>): void => {
-    if (
-      (ev.target as HTMLElement).contains &&
-      ev.relatedTarget &&
-      (ev.relatedTarget as HTMLElement).contains &&
-      (ev.target as HTMLElement).contains(ev.relatedTarget as HTMLElement)
-    ) {
-      return;
-    }
-
-    this._applyFunctionToDayRefs((ref, day) => {
-      if (ref) {
-        ref.classList.remove(styles.dayHover);
-        ref.classList.remove(styles.dayPress);
-      }
-    });
-  };
-
-  private _onTableMouseUp = (ev: React.MouseEvent<HTMLElement>): void => {
-    if (
-      (ev.target as HTMLElement).contains &&
-      ev.relatedTarget &&
-      (ev.relatedTarget as HTMLElement).contains &&
-      (ev.target as HTMLElement).contains(ev.relatedTarget as HTMLElement)
-    ) {
-      return;
-    }
-
-    this._applyFunctionToDayRefs(ref => {
-      if (ref) {
-        ref.classList.remove(styles.dayPress);
-      }
-    });
-  };
-
-  private _applyFunctionToDayRefs(func: (ref: HTMLElement | null, day: IDayInfo, weekIndex?: number) => void) {
-    if (this.state.weeks) {
-      this.state.weeks.map((week: IDayInfo[], weekIndex: number) => {
-        week.map(day => {
-          const ref = this.days[day.key];
-          func(ref, day, weekIndex);
-        });
-      });
-    }
-  }
-
-  private _onSelectPrevMonth = () => {
-    onSelectPrevMonth(this.props);
-  };
-
-  private _onSelectNextMonth = () => {
-    onSelectNextMonth(this.props);
-  };
-
-  private _onClose = (): void => {
-    if (this.props.onDismiss) {
-      this.props.onDismiss();
-    }
-  };
-
-  private _onHeaderSelect = (): void => {
-    const { onHeaderSelect } = this.props;
-    if (onHeaderSelect) {
-      onHeaderSelect(true);
-    }
-  };
-
-  private _onHeaderKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
-    const { onHeaderSelect } = this.props;
-    if (onHeaderSelect && (ev.which === KeyCodes.enter || ev.which === KeyCodes.space)) {
-      onHeaderSelect(true);
-    }
-  };
-
-  private _onPrevMonthKeyDown = _onKeyDown(this._onSelectPrevMonth);
-  private _onNextMonthKeyDown = _onKeyDown(this._onSelectNextMonth);
-  private _onCloseButtonKeyDown = _onKeyDown(this._onClose);
+interface ICalendarDayGridCellProps extends ICalendarDayProps {
+  weeks: IDayInfo[][];
+  day: IDayInfo;
+  weekCorners: IWeekCorners;
+  dayIndex: number;
+  weekIndex: number;
+  setDayCellRef: (element: HTMLElement | null, { key }: IDayInfo) => void;
+  activeDescendantId: string;
+  navigatedDay: React.Ref<HTMLButtonElement>;
+  applyFunctionToDayRefs(func: (ref: HTMLElement | null, day: IDayInfo, weekIndex?: number) => void): void;
 }
 
-const onSelectNextMonth = ({ onNavigateDate, navigatedDate }: ICalendarDayProps): void => {
+function useDayCellEventHandlers(props: ICalendarDayGridCellProps) {
+  const {
+    dateRangeType,
+    day,
+    day: { originalDate },
+    weekIndex,
+    applyFunctionToDayRefs,
+    dayIndex,
+    minDate,
+    maxDate,
+    weeks,
+    onNavigateDate,
+  } = props;
+
+  const navigateMonthEdge = React.useCallback(
+    (ev: React.KeyboardEvent<HTMLElement>): void => {
+      let targetDate: Date | undefined = undefined;
+
+      if (weekIndex === 0 && ev.which === KeyCodes.up) {
+        targetDate = addWeeks(originalDate, -1);
+      } else if (weekIndex === weeks!.length - 1 && ev.which === KeyCodes.down) {
+        targetDate = addWeeks(originalDate, 1);
+      } else if (dayIndex === 0 && ev.which === getRTLSafeKeyCode(KeyCodes.left)) {
+        targetDate = addDays(originalDate, -1);
+      } else if (dayIndex === DAYS_IN_WEEK - 1 && ev.which === getRTLSafeKeyCode(KeyCodes.right)) {
+        targetDate = addDays(originalDate, 1);
+      }
+
+      // Don't navigate to out-of-bounds date
+      if (
+        targetDate &&
+        (minDate ? compareDatePart(minDate, targetDate) < 1 : true) &&
+        (maxDate ? compareDatePart(targetDate, maxDate) < 1 : true)
+      ) {
+        onNavigateDate(targetDate, true);
+        ev.preventDefault();
+      }
+    },
+    [weekIndex, dayIndex, weeks, originalDate, minDate, maxDate, onNavigateDate],
+  );
+
+  const getChangeCellStylesCallback = React.useCallback(
+    (stylesToAdd: string[] | undefined, stylesToRemove?: string[] | undefined) => () => {
+      if (stylesToRemove) {
+        applyFunctionToDayRefs(ref => {
+          stylesToRemove.forEach(styleToRemove => ref && ref.classList.remove(styleToRemove));
+        });
+      }
+      if (stylesToAdd) {
+        applyFunctionToDayRefs((ref, refDay, dayWeekIndex) => {
+          if (dateRangeType === DateRangeType.Month) {
+            if (ref && refDay.originalDate.getMonth() === originalDate.getMonth() && refDay.isInBounds) {
+              stylesToAdd.forEach(styleToAdd => ref && ref.classList.add(styleToAdd));
+            }
+          } else if (ref && dayWeekIndex === weekIndex && refDay.isInBounds) {
+            stylesToAdd.forEach(styleToAdd => ref && ref.classList.add(styleToAdd));
+          }
+        });
+      }
+    },
+    [applyFunctionToDayRefs, dateRangeType, originalDate, weekIndex],
+  );
+
+  const _onDayMouseDown = React.useCallback(
+    getChangeCellStylesCallback([styles.dayPress, styles.dayIsHighlighted], [styles.dayIsHighlighted]),
+    [getChangeCellStylesCallback],
+  );
+
+  const _onDayMouseUp = React.useCallback(getChangeCellStylesCallback([styles.dayPress]), [
+    getChangeCellStylesCallback,
+  ]);
+
+  const _onDayMouseOver = React.useCallback(getChangeCellStylesCallback([styles.dayHover]), [
+    getChangeCellStylesCallback,
+  ]);
+
+  const _onDayMouseLeave = React.useCallback(getChangeCellStylesCallback(undefined, [styles.dayHover]), [
+    getChangeCellStylesCallback,
+  ]);
+
+  const _onDayKeyDown = React.useCallback(
+    (ev: React.KeyboardEvent<HTMLElement>): void => {
+      if (ev.which === KeyCodes.enter) {
+        _onSelectDate(props, originalDate, ev);
+        ev.preventDefault();
+      } else {
+        navigateMonthEdge(ev);
+      }
+    },
+    [props, navigateMonthEdge, originalDate, weekIndex, dayIndex],
+  );
+
+  return dateRangeType !== DateRangeType.Day && day.isInBounds
+    ? ([_onDayKeyDown, _onDayMouseDown, _onDayMouseUp, _onDayMouseOver, _onDayMouseLeave] as const)
+    : (([_onDayKeyDown] as unknown) as [
+        (ev: React.KeyboardEvent<HTMLElement>) => void,
+        undefined,
+        undefined,
+        undefined,
+        undefined,
+      ]);
+}
+
+const CalendarDayGridCell = React.memo((props: ICalendarDayGridCellProps) => {
+  const {
+    navigatedDate,
+    day,
+    weekCorners,
+    dayIndex,
+    weekIndex,
+    dateRangeType,
+    setDayCellRef,
+    dateTimeFormatter,
+    strings,
+    activeDescendantId,
+    allFocusable,
+    navigatedDay,
+  } = props;
+
+  const [_onDayKeyDown, _onDayMouseDown, _onDayMouseUp, _onDayMouseOver, _onDayMouseLeave] = useDayCellEventHandlers(
+    props,
+  );
+  const isNavigatedDate = compareDates(navigatedDate, day.originalDate);
+  return (
+    <td
+      onClick={day.isInBounds ? day.onSelected : undefined}
+      className={css(
+        styles.dayWrapper,
+        'ms-DatePicker-day',
+        _getHighlightedCornerStyle(weekCorners, dayIndex, weekIndex),
+        {
+          ['ms-DatePicker-weekBackground ' + styles.weekBackground]:
+            day.isSelected && (dateRangeType === DateRangeType.Week || dateRangeType === DateRangeType.WorkWeek),
+          ['ms-DatePicker-dayBackground ' + styles.dayBackground]: dateRangeType === DateRangeType.Day,
+          ['ms-DatePicker-day--highlighted ' + styles.dayIsHighlighted]:
+            day.isSelected && dateRangeType === DateRangeType.Day,
+          ['ms-DatePicker-day--infocus ' + styles.dayIsFocused]: day.isInBounds && day.isInMonth,
+          ['ms-DatePicker-day--outfocus ' + styles.dayIsUnfocused]: day.isInBounds && !day.isInMonth,
+          [styles.daySelection]: dateRangeType === DateRangeType.Day,
+          [styles.weekSelection]: dateRangeType === DateRangeType.Week || dateRangeType === DateRangeType.WorkWeek,
+          [styles.monthSelection]: dateRangeType === DateRangeType.Month,
+        },
+      )}
+      ref={element => setDayCellRef(element, day)}
+      onMouseOver={_onDayMouseOver}
+      onMouseLeave={_onDayMouseLeave}
+      onMouseDown={_onDayMouseDown}
+      onMouseUp={_onDayMouseUp}
+      role={'gridcell'}
+    >
+      <button
+        key={day.key + 'button'}
+        onClick={day.isInBounds ? day.onSelected : undefined}
+        className={css(styles.day, 'ms-DatePicker-day-button', {
+          ['ms-DatePicker-day--disabled ' + styles.dayIsDisabled]: !day.isInBounds,
+          ['ms-DatePicker-day--today ' + styles.dayIsToday]: day.isToday,
+        })}
+        onKeyDown={_onDayKeyDown}
+        aria-label={dateTimeFormatter.formatMonthDayYear(day.originalDate, strings)}
+        id={isNavigatedDate ? activeDescendantId : undefined}
+        aria-readonly={true}
+        aria-selected={day.isInBounds ? day.isSelected : undefined}
+        data-is-focusable={allFocusable || (day.isInBounds ? true : undefined)}
+        ref={isNavigatedDate ? navigatedDay : undefined}
+        disabled={!allFocusable && !day.isInBounds}
+        aria-disabled={!day.isInBounds}
+        type="button"
+      >
+        <span aria-hidden="true">{dateTimeFormatter.formatDay(day.originalDate)}</span>
+      </button>
+    </td>
+  );
+});
+
+//#endregion CalendarDayGridCell
+
+const onSelectNextMonth = ({
+  onNavigateDate,
+  navigatedDate,
+}: Pick<ICalendarDayProps, 'onNavigateDate' | 'navigatedDate'>): void => {
   onNavigateDate(addMonths(navigatedDate, 1), false);
 };
 
-const onSelectPrevMonth = ({ onNavigateDate, navigatedDate }: ICalendarDayProps): void => {
+const onSelectPrevMonth = ({
+  onNavigateDate,
+  navigatedDate,
+}: Pick<ICalendarDayProps, 'onNavigateDate' | 'navigatedDate'>): void => {
   onNavigateDate(addMonths(navigatedDate, -1), false);
 };
 
