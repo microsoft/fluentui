@@ -143,7 +143,7 @@ const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
 
     const hasChildren = childrenExist(children);
 
-    const getA11Props = useAccessibility(accessibility, {
+    const getA11yProps = useAccessibility(accessibility, {
       debugName: composeOptions.displayName,
       mapPropsToBehavior: () => ({
         as,
@@ -191,7 +191,7 @@ const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
     const renderIcon = () => {
       return createShorthand(composeOptions.slots.icon, icon, {
         defaultProps: () =>
-          getA11Props('icon', {
+          getA11yProps('icon', {
             styles: resolvedStyles.icon,
           }),
       });
@@ -200,7 +200,7 @@ const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
     const renderLoader = () => {
       return createShorthand(composeOptions.slots.loader, loader || {}, {
         defaultProps: () =>
-          getA11Props('loader', {
+          getA11yProps('loader', {
             role: undefined,
             styles: resolvedStyles.loader,
           }),
@@ -223,7 +223,7 @@ const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
     const result = (
       <ElementType
         {...rtlTextContainer.getAttributes({ forElements: [children] })}
-        {...getA11Props('root', {
+        {...getA11yProps('root', {
           onClick: handleClick,
           disabled,
           className: classes.root,
@@ -239,7 +239,7 @@ const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
             {loading && renderLoader()}
             {iconPosition !== 'after' && renderIcon()}
             {createShorthand(composeOptions.slots.content, content, {
-              defaultProps: () => getA11Props('content', { as: 'span', size }),
+              defaultProps: () => getA11yProps('content', { as: 'span', size }),
             })}
             {iconPosition === 'after' && renderIcon()}
           </>

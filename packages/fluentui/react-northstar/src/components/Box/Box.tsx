@@ -44,7 +44,7 @@ const Box = compose<'div', BoxProps, BoxStylesProps, {}, {}>(
 
     const { accessibility, className, design, styles, variables, children, content } = props;
 
-    const getA11Props = useAccessibility(accessibility, {
+    const getA11yProps = useAccessibility(accessibility, {
       debugName: composeOptions.displayName,
       rtl: context.rtl,
     });
@@ -66,7 +66,7 @@ const Box = compose<'div', BoxProps, BoxStylesProps, {}, {}>(
 
     const result = (
       <ElementType
-        {...getA11Props('root', {
+        {...getA11yProps('root', {
           ...rtlTextContainer.getAttributes({ forElements: [children, content] }),
           className: classes.root,
           ref,

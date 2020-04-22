@@ -5,6 +5,7 @@ import * as React from 'react';
 //
 
 export type PropsOfElement<
+  // tslint:disable-next-line:no-any
   E extends keyof JSX.IntrinsicElements | React.JSXElementConstructor<any>
 > = JSX.LibraryManagedAttributes<E, React.ComponentPropsWithRef<E>>;
 
@@ -15,6 +16,7 @@ export type ComponentWithAs<E extends React.ElementType = 'div', P = {}> = (<EE 
 
   defaultProps?: Partial<P & { as: E }>;
   propTypes?: React.WeakValidationMap<P> & {
+    // tslint:disable-next-line:no-any
     as: React.Requireable<string | ((props: any, context?: any) => any) | (new (props: any, context?: any) => any)>;
   };
 };
