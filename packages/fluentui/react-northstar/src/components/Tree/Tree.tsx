@@ -357,11 +357,11 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
       if (item.items) {
         return [...acc, ...this.getAllSelectableChildrenId(item.items)];
       }
-      return item.hasOwnProperty('selectable') && !item.item ? acc : [...acc, item.id];
+      return item.hasOwnProperty('selectable') && !item.selectable ? acc : [...acc, item.id];
     }, []);
   };
 
-  isIncompletedGroupChecked = (item: TreeItemProps) => {
+  isIndeterminate = (item: TreeItemProps) => {
     if (!item.selectableParent || !item.items) {
       return false;
     }
@@ -396,7 +396,7 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
         const isSubtree = hasSubtree(item);
         const isSubtreeExpanded = isSubtree && this.isActiveItem(id);
         const isSelectedItem = this.isSelectedItem(item);
-        const indeterminate = this.isIncompletedGroupChecked(item);
+        const indeterminate = this.isIndeterminate(item);
 
         if (!this.itemsRef.has(id)) {
           this.itemsRef.set(id, React.createRef<HTMLElement>());
