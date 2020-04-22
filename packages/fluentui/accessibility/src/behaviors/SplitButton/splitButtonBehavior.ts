@@ -2,7 +2,7 @@ import * as keyboardKey from 'keyboard-key';
 import * as _ from 'lodash';
 
 import { Accessibility } from '../../types';
-import menuButtonBehavior, { MenuButtonBehaviorProps } from '../MenuButton/menuButtonBehavior';
+import menuButtonBehavior from '../MenuButton/menuButtonBehavior';
 
 /**
  * @description
@@ -58,6 +58,6 @@ const splitButtonBehavior: Accessibility = props => {
 
 export type SplitButtonBehaviorProps = {
   open?: boolean;
-} & MenuButtonBehaviorProps;
+};
 
 export default splitButtonBehavior;
