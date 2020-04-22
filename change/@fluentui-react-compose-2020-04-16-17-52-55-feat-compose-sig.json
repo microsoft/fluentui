@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "some changes",
+  "comment": "improving compose API",
   "packageName": "@fluentui/react-compose",
   "email": "olfedias@microsoft.com",
   "dependentChangeType": "patch",
