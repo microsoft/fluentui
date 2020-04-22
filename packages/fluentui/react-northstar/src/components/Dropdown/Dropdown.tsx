@@ -32,6 +32,7 @@ import {
   commonPropTypes,
   UIComponentProps,
   isFromKeyboard,
+  createShorthand,
 } from '../../utils';
 import List, { ListProps } from '../List/List';
 import DropdownItem, { DropdownItemProps } from './DropdownItem';
@@ -261,6 +262,19 @@ export interface DropdownState {
   isFromKeyboard: boolean;
 }
 
+export const dropdownClassName = 'ui-dropdown';
+export const dropdownSlotClassNames: DropdownSlotClassNames = {
+  clearIndicator: `${dropdownClassName}__clear-indicator`,
+  container: `${dropdownClassName}__container`,
+  toggleIndicator: `${dropdownClassName}__toggle-indicator`,
+  item: `${dropdownClassName}__item`,
+  itemsList: `${dropdownClassName}__items-list`,
+  searchInput: `${dropdownClassName}__searchinput`,
+  selectedItem: `${dropdownClassName}__selecteditem`,
+  selectedItems: `${dropdownClassName}__selected-items`,
+  triggerButton: `${dropdownClassName}__trigger-button`,
+};
+
 class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, DropdownState> {
   buttonRef = React.createRef<HTMLElement>();
   inputRef = React.createRef<HTMLInputElement>();
@@ -270,12 +284,10 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
 
   static displayName = 'Dropdown';
 
-  static className = 'ui-dropdown';
+  static deprecated_className = dropdownClassName;
 
   static a11yStatusCleanupTime = 500;
   static charKeyPressedCleanupTime = 500;
-
-  static slotClassNames: DropdownSlotClassNames;
 
   static propTypes = {
     ...commonPropTypes.createCommon({
@@ -312,7 +324,10 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
     moveFocusOnTab: PropTypes.bool,
     multiple: PropTypes.bool,
     noResultsMessage: customPropTypes.itemShorthand,
-    offset: PropTypes.string,
+    offset: PropTypes.oneOfType([
+      PropTypes.func,
+      PropTypes.arrayOf(PropTypes.number) as PropTypes.Requireable<[number, number]>,
+    ]),
     onOpenChange: PropTypes.func,
     onSearchQueryChange: PropTypes.func,
     onChange: PropTypes.func,
@@ -480,12 +495,12 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
               <Ref innerRef={innerRef}>
                 <div
                   ref={this.containerRef}
-                  className={cx(Dropdown.slotClassNames.container, classes.container)}
+                  className={cx(dropdownSlotClassNames.container, classes.container)}
                   onClick={search && !open ? this.handleContainerClick : undefined}
                 >
                   <div
                     ref={this.selectedItemsRef}
-                    className={cx(Dropdown.slotClassNames.selectedItems, classes.selectedItems)}
+                    className={cx(dropdownSlotClassNames.selectedItems, classes.selectedItems)}
                   >
                     {multiple && this.renderSelectedItems(variables, rtl)}
                     {search
@@ -503,9 +518,10 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
                   {showClearIndicator
                     ? Box.create(clearIndicator, {
                         defaultProps: () => ({
-                          className: Dropdown.slotClassNames.clearIndicator,
+                          className: dropdownSlotClassNames.clearIndicator,
                           styles: styles.clearIndicator,
                           accessibility: indicatorBehavior,
+                          ...(!search && { tabIndex: 0, role: 'button' }),
                         }),
                         overrideProps: (predefinedProps: BoxProps) => ({
                           onClick: (e: React.SyntheticEvent<HTMLElement>) => {
@@ -516,7 +532,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
                       })
                     : Box.create(toggleIndicator, {
                         defaultProps: () => ({
-                          className: Dropdown.slotClassNames.toggleIndicator,
+                          className: dropdownSlotClassNames.toggleIndicator,
                           styles: styles.toggleIndicator,
                           accessibility: indicatorBehavior,
                         }),
@@ -581,9 +597,9 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
 
     return (
       <Ref innerRef={this.buttonRef}>
-        {Button.create(triggerButton, {
+        {createShorthand(Button, triggerButton, {
           defaultProps: () => ({
-            className: Dropdown.slotClassNames.triggerButton,
+            className: dropdownSlotClassNames.triggerButton,
             content,
             disabled,
             id: triggerButtonId,
@@ -636,7 +652,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
 
     return DropdownSearchInput.create(searchInput || {}, {
       defaultProps: () => ({
-        className: Dropdown.slotClassNames.searchInput,
+        className: dropdownSlotClassNames.searchInput,
         placeholder: noPlaceholder ? '' : placeholder,
         inline,
         variables,
@@ -706,7 +722,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
         >
           {List.create(list, {
             defaultProps: () => ({
-              className: Dropdown.slotClassNames.itemsList,
+              className: dropdownSlotClassNames.itemsList,
               ...accessibilityMenuProps,
               styles: styles.list,
               items,
@@ -747,7 +763,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
 
         return DropdownItem.create(item, {
           defaultProps: () => ({
-            className: Dropdown.slotClassNames.item,
+            className: dropdownSlotClassNames.item,
             active: highlightedIndex === index,
             selected,
             checkable,
@@ -832,7 +848,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
       // (!) an item matches DropdownItemProps
       DropdownSelectedItem.create(item, {
         defaultProps: () => ({
-          className: Dropdown.slotClassNames.selectedItem,
+          className: dropdownSlotClassNames.selectedItem,
           active: this.isSelectedItemActive(index),
           variables,
           ...(typeof item === 'object' &&
@@ -896,14 +912,19 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
       case Downshift.stateChangeTypes.keyDownEnter:
       case Downshift.stateChangeTypes.clickItem:
         const shouldAddHighlightedIndex = !multiple && items && items.length > 0;
+        const isSameItemSelected = changes.selectedItem === undefined;
+        const newValue = isSameItemSelected ? value[0] : changes.selectedItem;
 
-        newState.searchQuery = this.getSelectedItemAsString(changes.selectedItem);
-        newState.value = multiple ? [...value, changes.selectedItem] : [changes.selectedItem];
+        newState.searchQuery = this.getSelectedItemAsString(newValue);
         newState.open = false;
-        newState.highlightedIndex = shouldAddHighlightedIndex ? items.indexOf(changes.selectedItem) : null;
+        newState.highlightedIndex = shouldAddHighlightedIndex ? items.indexOf(newValue) : null;
 
-        if (getA11ySelectionMessage && getA11ySelectionMessage.onAdd) {
-          this.setA11ySelectionMessage(getA11ySelectionMessage.onAdd(changes.selectedItem));
+        if (!isSameItemSelected) {
+          newState.value = multiple ? [...value, changes.selectedItem] : [changes.selectedItem];
+
+          if (getA11ySelectionMessage && getA11ySelectionMessage.onAdd) {
+            this.setA11ySelectionMessage(getA11ySelectionMessage.onAdd(newValue));
+          }
         }
 
         if (multiple) {
@@ -1511,18 +1532,6 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
     this.setState({ startingString: '' });
   }, Dropdown.charKeyPressedCleanupTime);
 }
-
-Dropdown.slotClassNames = {
-  clearIndicator: `${Dropdown.className}__clear-indicator`,
-  container: `${Dropdown.className}__container`,
-  toggleIndicator: `${Dropdown.className}__toggle-indicator`,
-  item: `${Dropdown.className}__item`,
-  itemsList: `${Dropdown.className}__items-list`,
-  searchInput: `${Dropdown.className}__searchinput`,
-  selectedItem: `${Dropdown.className}__selecteditem`,
-  selectedItems: `${Dropdown.className}__selected-items`,
-  triggerButton: `${Dropdown.className}__trigger-button`,
-};
 
 /**
  * A Dropdown allows user to select one or more values from a list of options.

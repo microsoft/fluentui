@@ -335,6 +335,7 @@ export interface IRawStyleBase extends IRawFontStyle {
     textOverlineWidth?: ICSSRule | ICSSPixelUnitRule;
     textRendering?: ICSSRule | string;
     textShadow?: ICSSRule | string;
+    textSizeAdjust?: 'none' | 'auto' | ICSSPercentageRule | ICSSRule;
     textTransform?: ICSSRule | string;
     textUnderlinePosition?: ICSSRule | string;
     textUnderlineStyle?: ICSSRule | string;
@@ -367,6 +368,7 @@ export interface IRawStyleBase extends IRawFontStyle {
     WebkitFontSmoothing?: 'none' | 'antialiased' | 'grayscale' | 'subpixel-antialiased';
     WebkitOverflowScrolling?: 'auto' | 'touch';
     WebkitTapHighlightColor?: string;
+    WebkitTextSizeAdjust?: 'none' | 'auto' | ICSSPercentageRule | ICSSRule;
     whiteSpace?: ICSSRule | string;
     widows?: ICSSRule | number;
     width?: ICSSRule | ICSSPixelUnitRule;

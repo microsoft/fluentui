@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { Toolbar, ToolbarItemShorthandKinds, Input, ToolbarMenu } from '@fluentui/react-northstar';
+import { Toolbar, ToolbarItemShorthandKinds, Input, toolbarMenuClassName } from '@fluentui/react-northstar';
 import { ItalicIcon } from '@fluentui/react-icons-northstar';
 
 export const selectors = {
-  toolbarMenu: ToolbarMenu.className,
+  toolbarMenu: toolbarMenuClassName,
   menuButtonId: 'menuButton',
   popupTriggerId: 'popupTrigger',
   popupElementId: 'popupElement',

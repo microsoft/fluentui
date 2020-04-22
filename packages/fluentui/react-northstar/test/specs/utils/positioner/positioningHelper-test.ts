@@ -1,12 +1,12 @@
-import { Placement } from 'popper.js';
+import * as PopperJs from '@popperjs/core';
 
-import { Alignment, Position } from 'src/utils/positioner';
-import { getPlacement, applyRtlToOffset } from 'src/utils/positioner/positioningHelper';
+import { Alignment, OffsetFunction, Position } from 'src/utils/positioner';
+import { applyRtlToOffset, getPlacement } from 'src/utils/positioner/positioningHelper';
 
 type PositionTestInput = {
   align: Alignment;
   position: Position;
-  expectedPlacement: Placement;
+  expectedPlacement: PopperJs.Placement;
   rtl?: boolean;
 };
 
@@ -71,41 +71,15 @@ describe('positioningHelper', () => {
   });
 
   describe('positioningHelper offset argument transformed correctly in RTL', () => {
-    it("applies transform only for 'above' and 'below' postioning", () => {
-      const originalOffsetValue = '100%';
-
-      expect(applyRtlToOffset(originalOffsetValue, 'above')).not.toBe(originalOffsetValue);
-      expect(applyRtlToOffset(originalOffsetValue, 'below')).not.toBe(originalOffsetValue);
-
-      expect(applyRtlToOffset(originalOffsetValue, 'before')).toBe(originalOffsetValue);
-      expect(applyRtlToOffset(originalOffsetValue, 'after')).toBe(originalOffsetValue);
+    it('flips an axis value RTL for an array', () => {
+      expect(applyRtlToOffset([10, 10])).toEqual([-10, 10]);
     });
 
-    const expectOffsetTransformResult = (originalOffset, resultOffset) => {
-      expect(applyRtlToOffset(originalOffset, 'above')).toBe(resultOffset);
-    };
+    it('flips an axis value RTL for a function', () => {
+      const offsetFn: OffsetFunction = () => [10, 10];
+      const flippedFn = applyRtlToOffset(offsetFn) as OffsetFunction;
 
-    it('flips sign of simple expressions', () => {
-      expectOffsetTransformResult('100%', '-100%');
-      expectOffsetTransformResult('  2000%p ', '-2000%p');
-      expectOffsetTransformResult('100  ', '-100');
-      expectOffsetTransformResult(' - 200vh', '200vh');
-    });
-
-    it('flips sign of complex expressions', () => {
-      expectOffsetTransformResult('100% + 200', '-100% - 200');
-      expectOffsetTransformResult(' - 2000%p - 400 +800vh ', '2000%p + 400 -800vh');
-    });
-
-    it('transforms only horizontal offset value', () => {
-      const xOffset = '-100%';
-      const yOffset = '800vh';
-
-      const offsetValue = [xOffset, yOffset].join(',');
-      const [xOffsetTransformed, yOffsetTransformed] = applyRtlToOffset(offsetValue, 'above').split(',');
-
-      expect(xOffsetTransformed.trim()).not.toBe(xOffset);
-      expect(yOffsetTransformed.trim()).toBe(yOffset);
+      expect(flippedFn({} as any)).toEqual([-10, 10]);
     });
   });
 });

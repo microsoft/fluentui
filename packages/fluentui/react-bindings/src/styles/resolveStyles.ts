@@ -93,7 +93,13 @@ const resolveStyles = (
   if (displayNames.length === 1) {
     mergedStyles = theme.componentStyles[displayNames[0]] || { root: () => ({}) };
   } else {
-    mergedStyles = mergeComponentStyles(...displayNames.map(displayName => theme.componentStyles[displayName]));
+    const styles = displayNames.map(displayName => theme.componentStyles[displayName]).filter(Boolean);
+
+    if (styles.length > 0) {
+      mergedStyles = mergeComponentStyles(...styles);
+    } else {
+      mergedStyles = { root: () => ({}) };
+    }
   }
 
   if (!noInlineStylesOverrides) {

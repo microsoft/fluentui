@@ -52,7 +52,7 @@ export const Notification = createComponent<NotificationProps>({
     };
 
     if (target || trigger) {
-      return Tooltip.create({ ...tooltipProps, offset: '0 10' });
+      return Tooltip.create({ ...tooltipProps, offset: [0, 10] });
     }
 
     return (
