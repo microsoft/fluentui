@@ -17,7 +17,7 @@ import {
   UIComponentProps,
   ChildrenComponentProps,
   ContentComponentProps,
-  isFromKeyboard,
+  isFromKeyboard as checkIsFromKeyboard,
   commonPropTypes,
   SizeValue,
   createShorthand,
@@ -146,11 +146,7 @@ export const SplitButton: React.FC<WithAsProp<SplitButtonProps>> &
     initialValue: false,
   });
 
-  const [fromKeyboard, setIsFromKeyboard] = useAutoControlled({
-    defaultValue: props.defaultOpen,
-    value: props.open,
-    initialValue: false,
-  });
+  const [isFromKeyboard, setIsFromKeyboard] = React.useState<boolean>(false);
 
   const getA11yProps = useAccessibility<SplitButtonBehaviorProps>(accessibility, {
     debugName: SplitButton.displayName,
@@ -163,7 +159,7 @@ export const SplitButton: React.FC<WithAsProp<SplitButtonProps>> &
   const { classes, styles: resolvedStyles } = useStyles<SplitButtonStylesProps>(SplitButton.displayName, {
     className: splitButtonClassName,
     mapPropsToStyles: () => ({
-      isFromKeyboard: fromKeyboard,
+      isFromKeyboard,
       size,
     }),
     mapPropsToInlineStyles: () => ({
@@ -197,7 +193,7 @@ export const SplitButton: React.FC<WithAsProp<SplitButtonProps>> &
     },
     onFocus: (e: React.SyntheticEvent, buttonProps: ButtonProps) => {
       _.invoke(predefinedProps, 'onFocus', e, buttonProps);
-      setIsFromKeyboard(isFromKeyboard());
+      setIsFromKeyboard(checkIsFromKeyboard());
     },
   });
 
