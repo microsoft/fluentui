@@ -148,6 +148,12 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown,
    * Call to provide customized styling that will layer on top of the variant rules.
    */
   styles?: IStyleFunctionOrObject<IDropdownStyleProps, IDropdownStyles>;
+
+  /**
+   * Whether or not the dropdown field is underlined.
+   * @defaultvalue false
+   */
+  underlined?: boolean;
 }
 
 /**
@@ -165,7 +171,7 @@ export interface IDropdownOption extends ISelectableOption {
  * The props needed to construct styles. This represents the simplified set of immutable things which control the class names.
  * {@docCategory Dropdown}
  */
-export type IDropdownStyleProps = Pick<IDropdownProps, 'theme' | 'className' | 'disabled' | 'required'> & {
+export type IDropdownStyleProps = Pick<IDropdownProps, 'theme' | 'className' | 'disabled' | 'required' | 'underlined'> & {
   /**
    * Whether the dropdown is in an error state.
    */

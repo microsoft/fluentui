@@ -17,6 +17,7 @@ const GlobalClassNames = {
   root: 'ms-Dropdown-container',
   label: 'ms-Dropdown-label',
   dropdown: 'ms-Dropdown',
+  underlined: 'ms-Dropdown-underlined',
   title: 'ms-Dropdown-title',
   caretDownWrapper: 'ms-Dropdown-caretDownWrapper',
   caretDown: 'ms-Dropdown-caretDown',
@@ -78,7 +79,8 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
     isRenderingPlaceholder,
     panelClassName,
     calloutClassName,
-    calloutRenderEdge
+    calloutRenderEdge,
+    underlined
   } = props;
 
   if (!theme) {
@@ -251,6 +253,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
     ],
     title: [
       globalClassnames.title,
+      underlined && globalClassnames.underlined,
       normalize,
       {
         backgroundColor: semanticColors.inputBackground,
@@ -276,6 +279,10 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
         color: semanticColors.disabledText,
         cursor: 'default',
         selectors: { [HighContrastSelector]: { border: '1px solid GrayText', color: 'GrayText' } }
+      },
+      underlined && {
+        borderStyle: 'none none solid none',
+        borderRadius: 0
       }
     ],
     caretDownWrapper: [

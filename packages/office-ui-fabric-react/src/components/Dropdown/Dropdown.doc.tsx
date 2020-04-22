@@ -7,6 +7,7 @@ import { DropdownControlledMultiExample } from './examples/Dropdown.ControlledMu
 import { DropdownCustomExample } from './examples/Dropdown.Custom.Example';
 import { DropdownErrorExample } from './examples/Dropdown.Error.Example';
 import { DropdownRequiredExample } from './examples/Dropdown.Required.Example';
+import { DropdownUnderlinedExample } from './examples/Dropdown.Underlined.Example';
 
 const DropdownBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Dropdown/examples/Dropdown.Basic.Example.tsx') as string;
 const DropdownBasicExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Dropdown/examples/Dropdown.Basic.Example.tsx') as string;
@@ -20,6 +21,8 @@ const DropdownErrorExampleCode = require('!raw-loader!office-ui-fabric-react/src
 const DropdownErrorExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Dropdown/examples/Dropdown.Error.Example.tsx') as string;
 const DropdownRequiredExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Dropdown/examples/Dropdown.Required.Example.tsx') as string;
 const DropdownRequiredExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Dropdown/examples/Dropdown.Required.Example.tsx') as string;
+const DropdownUnderlinedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Dropdown/examples/Dropdown.Underlined.Example.tsx') as string;
+const DropdownUnderlinedExampleCodepen = require('!raw-loader!office-ui-fabric-react/src/components/Dropdown/examples/Dropdown.Underlined.Example.tsx') as string;
 
 export const DropdownPageProps: IDocPageProps = {
   title: 'Dropdown',
@@ -43,6 +46,12 @@ export const DropdownPageProps: IDocPageProps = {
       code: DropdownControlledMultiExampleCode,
       view: <DropdownControlledMultiExample />,
       codepenJS: DropdownControlledMultiExampleCodepen
+    },
+    {
+      title: 'Underlined Dropdown',
+      code: DropdownUnderlinedExampleCode,
+      view: <DropdownUnderlinedExample />,
+      codepenJS: DropdownUnderlinedExampleCodepen
     },
     {
       title: 'Customized Dropdown',

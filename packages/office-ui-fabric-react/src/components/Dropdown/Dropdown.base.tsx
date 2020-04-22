@@ -201,7 +201,8 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
       onRenderTitle = this._onRenderTitle,
       onRenderContainer = this._onRenderContainer,
       onRenderCaretDown = this._onRenderCaretDown,
-      onRenderLabel = this._onRenderLabel
+      onRenderLabel = this._onRenderLabel,
+      underlined
     } = props;
     const { isOpen, selectedIndices, hasFocus, calloutRenderEdge } = this.state;
     const onRenderPlaceholder = props.onRenderPlaceholder || props.onRenderPlaceHolder || this._onRenderPlaceholder;
@@ -244,7 +245,8 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
       isRenderingPlaceholder: !selectedOptions.length,
       panelClassName: !!panelProps ? panelProps.className : undefined,
       calloutClassName: !!calloutProps ? calloutProps.className : undefined,
-      calloutRenderEdge: calloutRenderEdge
+      calloutRenderEdge: calloutRenderEdge,
+      underlined
     });
 
     return (
