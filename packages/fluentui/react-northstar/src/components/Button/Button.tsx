@@ -189,8 +189,7 @@ const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
     const ElementType = getElementType(props);
 
     const renderIcon = () => {
-      // TODO: Fix this :S
-      // @ts-ignore
+      // @ts-ignore TODO: fix me
       return createShorthand(composeOptions.slots.icon, icon, {
         defaultProps: () =>
           getA11yProps('icon', {
@@ -200,8 +199,7 @@ const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
     };
 
     const renderLoader = () => {
-      // TODO: Fix this :S
-      // @ts-ignore
+      // @ts-ignore TODO: fix me
       return createShorthand(composeOptions.slots.loader, loader || {}, {
         defaultProps: () =>
           getA11yProps('loader', {
@@ -212,8 +210,7 @@ const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
     };
 
     const renderContent = () => {
-      // TODO: Fix this :S
-      // @ts-config
+      // @ts-ignore TODO: fix me
       return createShorthand(composeOptions.slots.content, content, {
         defaultProps: () => getA11yProps('content', { as: 'span', size }),
       });
