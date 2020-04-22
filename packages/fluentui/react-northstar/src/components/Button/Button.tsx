@@ -142,7 +142,7 @@ const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
 
     const hasChildren = childrenExist(children);
 
-    const getA11Props = useAccessibility(accessibility, {
+    const getA11yProps = useAccessibility(accessibility, {
       debugName: composeOptions.displayName,
       mapPropsToBehavior: () => ({
         as,
