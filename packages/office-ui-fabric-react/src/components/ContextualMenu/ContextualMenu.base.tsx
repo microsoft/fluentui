@@ -493,7 +493,7 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
     return (
       <ul className={this._classNames.list} onKeyDown={this._onKeyDown} onKeyUp={this._onKeyUp} role="menu">
         {menuListProps.items.map((item, index) => {
-          const contextualMenuItemRenderProps: IContextualMenuItemRenderProps = this._convertMenuItemToMenuItemRenderProps(
+          const renderProps: IContextualMenuItemRenderProps = this._convertMenuItemToMenuItemRenderProps(
             item,
             index,
             indexCorrection,
@@ -501,7 +501,7 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
             menuListProps.hasCheckmarks,
             menuListProps.hasIcons,
           );
-          const menuItem = this._renderMenuItem(contextualMenuItemRenderProps);
+          const menuItem = this._renderMenuItem(renderProps);
           if (item.itemType !== ContextualMenuItemType.Divider && item.itemType !== ContextualMenuItemType.Header) {
             const indexIncrease = item.customOnRenderListLength ? item.customOnRenderListLength : 1;
             indexCorrection += indexIncrease;
@@ -654,7 +654,7 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
               {headerItem &&
                 this._renderListItem(headerItem, sectionItem.key || index, menuClassNames, sectionItem.title)}
               {sectionProps.items.map((contextualMenuItem, itemsIndex) => {
-                const contextualMenuItemRenderProps: IContextualMenuItemRenderProps = this._convertMenuItemToMenuItemRenderProps(
+                const renderProps: IContextualMenuItemRenderProps = this._convertMenuItemToMenuItemRenderProps(
                   contextualMenuItem,
                   itemsIndex,
                   itemsIndex,
@@ -662,7 +662,7 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
                   hasCheckmarks,
                   hasIcons,
                 );
-                return this._renderMenuItem(contextualMenuItemRenderProps);
+                return this._renderMenuItem(renderProps);
               })}
               {sectionProps.bottomDivider && this._renderSeparator(index, menuClassNames, false, true)}
             </ul>
