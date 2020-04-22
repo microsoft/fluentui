@@ -3,6 +3,7 @@ import { Async } from 'office-ui-fabric-react/lib/Utilities';
 import { createListItems, IExampleItem } from '@uifabric/example-data';
 import { IColumn, buildColumns, SelectionMode, Toggle } from 'office-ui-fabric-react/lib/index';
 import { ShimmeredDetailsList } from 'office-ui-fabric-react/lib/ShimmeredDetailsList';
+import { useBoolean } from '@uifabric/react-hooks';
 
 const fileIcons: { name: string }[] = [
   { name: 'accdb' },
@@ -41,6 +42,104 @@ export interface IShimmerApplicationExampleState {
   columns?: IColumn[];
   isDataLoaded?: boolean;
 }
+
+const randomFileIcon = (): { docType: string; url: string } => {
+  const docType: string = fileIcons[Math.floor(Math.random() * fileIcons.length) + 0].name;
+  return {
+    docType,
+    url: `https://static2.sharepointonline.com/files/fabric/assets/item-types/16/${docType}.svg`,
+  };
+};
+
+export const ShimmerApplicationExample: React.FunctionComponent = () => {
+  const [items, setItems] = React.useState([]);
+  const [columns, setColumns] = React.useState(buildColumns());
+  const [isDataLoaded, { toggle: toggleIsDataLoaded }] = useBoolean(false);
+
+  const loadData = (): void => {
+    const randomQuantity: number = Math.floor(Math.random() * 10) + 1;
+    const itemsCopy = items!.slice(0);
+    itemsCopy.splice(
+      lastIndexWithData,
+      randomQuantity,
+      ...items.slice(lastIndexWithData, lastIndexWithData + randomQuantity),
+    );
+    lastIndexWithData += randomQuantity;
+    setItems(itemsCopy);
+  };
+
+  const onLoadData = (ev: React.MouseEvent<HTMLElement>, checked: boolean): void => {
+    if (!_items) {
+      _items = createListItems(ITEMS_COUNT);
+      _items.map((item: IExampleItem) => {
+        const randomFileType = randomFileIcon();
+        item.thumbnail = randomFileType.url;
+      });
+    }
+
+    let item: IExampleItem[];
+    const randomQuantity: number = Math.floor(Math.random() * 10) + 1;
+    if (checked) {
+      item = _items.slice(0, randomQuantity).concat(new Array(ITEMS_COUNT - randomQuantity));
+      lastIndexWithData = randomQuantity;
+      loadData();
+    } else {
+      items = [];
+      async.clearInterval(lastIntervalId);
+    }
+    toggleIsDataLoaded();
+    setItems(item);
+  };
+
+  const onRenderItemColumn = (item: IExampleItem, index: number, column: IColumn): JSX.Element | string | number => {
+    if (column.key === 'thumbnail') {
+      return <img src={item.thumbnail} />;
+    }
+    return item[column.key as keyof IExampleItem];
+  };
+
+  const buildColumns = (): IColumn[] => {
+    const item = createListItems(1);
+    const columns: IColumn[] = buildColumns(item);
+    for (const column of columns) {
+      if (column.key === 'thumbnail') {
+        column.name = 'FileType';
+        column.minWidth = 16;
+        column.maxWidth = 16;
+        column.isIconOnly;
+        column.iconName = 'Page';
+        break;
+      }
+    }
+    return columns;
+  };
+
+  return (
+    <div>
+      <Toggle
+        label="Toggle to load content"
+        style={{ display: 'block', marginBottom: '20px' }}
+        checked={isDataLoaded}
+        onChange={onLoadData}
+        onText="Content"
+        offText="Shimmer"
+      />
+      <div>
+        <ShimmeredDetailsList
+          setKey="items"
+          items={items}
+          columns={columns}
+          selectionMode={SelectionMode.none}
+          onRenderItemColumn={onRenderItemColumn}
+          enableShimmer={!isDataLoaded}
+          ariaLabelForShimmer="Content is being fetched"
+          ariaLabelForGrid="Item details"
+          listProps={{ renderedWindowsAhead: 0, renderedWindowsBehind: 0 }}
+        />
+      </div>
+    </div>
+  );
+};
 
 export class ShimmerApplicationExample extends React.Component<{}, IShimmerApplicationExampleState> {
   private _lastIntervalId: number;

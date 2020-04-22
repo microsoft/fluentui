@@ -30,6 +30,66 @@ const colorCellsExample2 = [
   { id: 'l', label: 'gray20', color: '#69797e' },
 ];
 
+export const SwatchColorPickerBasicExample: React.FunctionComponent = () => {
+  const [firstColor, setFirstColor] = React.useState(undefined);
+  const [previewColor, setPreviewColor] = React.useState(undefined);
+  const [secondColor, setSecondColor] = React.useState(undefined);
+  const [previewSecondColor, setPreviewSecondColor] = React.useState(undefined);
+
+  const swatchColorPickerOnCellHovered = () => {
+    setPreviewColor(firstColor!);
+  };
+
+  return (
+    <div>
+      <div>Simple circle swatch color picker:</div>
+      <SwatchColorPicker columnCount={5} selectedId={firstColor} cellShape={'circle'} colorCells={colorCellsExample1} />
+      <div>Simple square swatch color picker with default size of 20px:</div>
+      <SwatchColorPicker columnCount={5} selectedId={firstColor} cellShape={'square'} colorCells={colorCellsExample1} />
+      <div>Simple square swatch color picker with custom size of 35px:</div>
+      <SwatchColorPicker
+        columnCount={5}
+        cellHeight={35}
+        cellWidth={35}
+        selectedId={firstColor}
+        cellShape={'square'}
+        colorCells={colorCellsExample1}
+      />
+      <div>
+        Simple swatch color picker with multiple rows and larger cells that updates its icon color and shows a preview
+        color:
+      </div>
+      <div
+        style={{
+          color: previewColor ? previewColor : firstColor ? firstColor : undefined,
+          fontSize: '24px',
+        }}
+      >
+        Sample Text
+      </div>
+      <SwatchColorPicker
+        selectedId={firstColor}
+        onCellHovered={swatchColorPickerOnCellHovered}
+        onCellFocused={swatchColorPickerOnCellHovered}
+        columnCount={4}
+        cellShape={'circle'}
+        cellHeight={35}
+        cellWidth={35}
+        cellBorderWidth={3}
+        colorCells={colorCellsExample2}
+      />
+      <div>Simple disabled circle swatch color picker:</div>
+      <SwatchColorPicker
+        disabled
+        columnCount={5}
+        selectedId={firstColor}
+        cellShape={'circle'}
+        colorCells={colorCellsExample1}
+      />
+    </div>
+  );
+};
+
 export class SwatchColorPickerBasicExample extends React.Component<any, IBasicSwatchColorPickerExampleState> {
   constructor(props: any) {
     super(props);
