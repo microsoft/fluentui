@@ -20,10 +20,6 @@ import HeaderDescription, { HeaderDescriptionProps } from './HeaderDescription';
 
 import { WithAsProp, ShorthandValue, withSafeTypeForAs } from '../../types';
 
-export interface HeaderSlotClassNames {
-  description: string;
-}
-
 export interface HeaderProps
   extends UIComponentProps,
     ChildrenComponentProps,
@@ -41,14 +37,12 @@ export interface HeaderProps
   align?: AlignValue;
 }
 
+export const headerClassName = 'ui-header';
+
 class Header extends UIComponent<WithAsProp<HeaderProps>, any> {
   static displayName = 'Header';
 
-  static className = 'ui-header';
-
-  static slotClassNames: HeaderSlotClassNames = {
-    description: `${Header.className}__description`,
-  };
+  static deprecated_className = headerClassName;
 
   static create: ShorthandFactory<HeaderProps>;
 
@@ -85,7 +79,6 @@ class Header extends UIComponent<WithAsProp<HeaderProps>, any> {
         {!hasChildren &&
           HeaderDescription.create(description, {
             defaultProps: () => ({
-              className: Header.slotClassNames.description,
               variables: {
                 ...(v.descriptionColor && { color: v.descriptionColor }),
               },

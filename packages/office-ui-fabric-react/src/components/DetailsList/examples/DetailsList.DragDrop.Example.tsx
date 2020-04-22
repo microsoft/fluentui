@@ -12,7 +12,7 @@ import {
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { createListItems, IExampleItem } from '@uifabric/example-data';
 import { TextField, ITextFieldStyles } from 'office-ui-fabric-react/lib/TextField';
-import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
+import { Toggle, IToggleStyles } from 'office-ui-fabric-react/lib/Toggle';
 import { getTheme, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
 const theme = getTheme();
@@ -28,6 +28,7 @@ const textFieldStyles: Partial<ITextFieldStyles> = {
   root: { margin: margin },
   fieldGroup: { maxWidth: '100px' },
 };
+const togglesStyles: Partial<IToggleStyles> = { root: { margin } };
 
 export interface IDetailsListDragDropExampleState {
   items: IExampleItem[];
@@ -72,7 +73,7 @@ export class DetailsListDragDropExample extends React.Component<{}, IDetailsList
             onChange={this._onChangeColumnReorderEnabled}
             onText="Enabled"
             offText="Disabled"
-            styles={{ root: { margin: margin } }}
+            styles={togglesStyles}
           />
           <TextField
             label="Number of left frozen columns"

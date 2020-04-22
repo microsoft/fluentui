@@ -25,11 +25,6 @@ import { BoxProps } from '../Box/Box';
 
 export type MenuShorthandKinds = 'divider' | 'item';
 
-export interface MenuSlotClassNames {
-  divider: string;
-  item: string;
-}
-
 export interface MenuProps extends UIComponentProps, ChildrenComponentProps {
   /**
    * Accessibility behavior if overridden by the user.
@@ -99,15 +94,12 @@ export interface MenuState {
   activeIndex?: number | string;
 }
 
+export const menuClassName = 'ui-menu';
+
 class Menu extends AutoControlledComponent<WithAsProp<MenuProps>, MenuState> {
   static displayName = 'Menu';
 
-  static className = 'ui-menu';
-
-  static slotClassNames: MenuSlotClassNames = {
-    divider: `${Menu.className}__divider`,
-    item: `${Menu.className}__item`,
-  };
+  static deprecated_className = menuClassName;
 
   static create: ShorthandFactory<MenuProps>;
 
@@ -203,7 +195,6 @@ class Menu extends AutoControlledComponent<WithAsProp<MenuProps>, MenuState> {
       if (kind === 'divider') {
         return MenuDivider.create(item, {
           defaultProps: () => ({
-            className: Menu.slotClassNames.divider,
             primary,
             secondary,
             vertical,
@@ -219,7 +210,6 @@ class Menu extends AutoControlledComponent<WithAsProp<MenuProps>, MenuState> {
 
       return MenuItem.create(item, {
         defaultProps: () => ({
-          className: Menu.slotClassNames.item,
           iconOnly,
           pills,
           pointing,

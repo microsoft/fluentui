@@ -4,6 +4,7 @@ import CopyToClipboard from './CopyToClipboard';
 import { PrototypeSection, ComponentPrototype } from '../Prototypes';
 import themeOverrides from './themeOverrides';
 import { NotificationProvider } from './NotificationProvider';
+import { ClipboardCopiedToIcon } from '@fluentui/react-icons-northstar';
 
 type CopyToClipboardPrototypeProps = {
   value: string;
@@ -21,7 +22,7 @@ const CopyToClipboardPrototype: React.FC<CopyToClipboardPrototypeProps> = props 
         attached={props.attached}
         target={props.target}
         value={props.value}
-        trigger={<Button iconOnly icon="clipboard-copied-to" />}
+        trigger={<Button iconOnly icon={<ClipboardCopiedToIcon />} />}
       />
     </Flex>
   );

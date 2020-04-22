@@ -15,6 +15,7 @@ import {
   rtlTextContainer,
   createShorthandFactory,
   ShorthandFactory,
+  createShorthand,
 } from '../../utils';
 import Button, { ButtonProps } from './Button';
 
@@ -31,12 +32,14 @@ export interface ButtonGroupProps extends UIComponentProps, ChildrenComponentPro
   circular?: boolean;
 }
 
+export const buttonGroupClassName = 'ui-buttons';
+
 class ButtonGroup extends UIComponent<WithAsProp<ButtonGroupProps>, any> {
   static create: ShorthandFactory<ButtonGroupProps>;
 
   static displayName = 'ButtonGroup';
 
-  static className = 'ui-buttons';
+  static deprecated_className = buttonGroupClassName;
 
   static propTypes = {
     ...commonPropTypes.createCommon(),
@@ -66,7 +69,7 @@ class ButtonGroup extends UIComponent<WithAsProp<ButtonGroupProps>, any> {
     return (
       <ElementType {...unhandledProps} className={classes.root}>
         {_.map(buttons, (button, idx) =>
-          Button.create(button, {
+          createShorthand(Button, button, {
             defaultProps: () => ({
               circular,
               styles: this.getStyleForButtonIndex(styles, idx === 0, idx === buttons.length - 1),

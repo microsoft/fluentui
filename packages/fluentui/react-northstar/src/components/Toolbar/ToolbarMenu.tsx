@@ -65,6 +65,7 @@ export interface ToolbarMenuProps extends UIComponentProps, ChildrenComponentPro
 }
 
 export type ToolbarMenuStylesProps = never;
+export const toolbarMenuClassName = 'ui-toolbar__menu';
 
 const ToolbarMenu: React.FC<WithAsProp<ToolbarMenuProps>> & FluentComponentStaticProps = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
@@ -86,7 +87,7 @@ const ToolbarMenu: React.FC<WithAsProp<ToolbarMenuProps>> & FluentComponentStati
     rtl: context.rtl,
   });
   const { classes } = useStyles<ToolbarMenuStylesProps>(ToolbarMenu.displayName, {
-    className: ToolbarMenu.className,
+    className: toolbarMenuClassName,
     mapPropsToInlineStyles: () => ({
       className,
       design,
@@ -162,7 +163,6 @@ const ToolbarMenu: React.FC<WithAsProp<ToolbarMenuProps>> & FluentComponentStati
   return element;
 };
 
-ToolbarMenu.className = 'ui-toolbar__menu';
 ToolbarMenu.displayName = 'ToolbarMenu';
 
 ToolbarMenu.propTypes = {

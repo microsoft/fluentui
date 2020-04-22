@@ -4,6 +4,7 @@ import { ILayerProps } from '../../Layer';
 import { IOverlayProps } from '../../Overlay';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
+import { IButtonStyles } from '../Button/Button.types';
 import { PanelBase } from './Panel.base';
 
 /**
@@ -421,15 +422,12 @@ export interface IPanelStyleProps {
   hasCustomNavigation?: boolean;
 }
 
-// TODO -Issue #5689: Comment in once Button is converted to mergeStyles
-// export interface IPanelSubComponentStyles {
-//   /**
-//    * Styling for Icon child component.
-//    */
-//   // TODO: this should be the interface once we're on TS 2.9.2 but otherwise causes errors in 2.8.4
-//   // button: IStyleFunctionOrObject<IButtonStyleProps, IButtonStyles>;
-//   button: IStyleFunctionOrObject<any, any>;
-// }
+export interface IPanelSubComponentStyles {
+  /**
+   * Styling for close button child component.
+   */
+  closeButton: Partial<IButtonStyles>;
+}
 
 /**
  * {@docCategory Panel}
@@ -477,8 +475,9 @@ export interface IPanelStyles {
 
   /**
    * Style for the close button IconButton element.
+   * @deprecated Use `subComponentStyles.closeButton` instead.
    */
-  closeButton: IStyle;
+  closeButton?: IStyle;
 
   /**
    * Style for the header container div element.
@@ -505,9 +504,8 @@ export interface IPanelStyles {
    */
   footerInner: IStyle;
 
-  // TODO -Issue #5689: Comment in once Button is converted to mergeStyles
   /**
    * Styling for subcomponents.
    */
-  // subComponentStyles: IPanelSubComponentStyles;
+  subComponentStyles: IPanelSubComponentStyles;
 }

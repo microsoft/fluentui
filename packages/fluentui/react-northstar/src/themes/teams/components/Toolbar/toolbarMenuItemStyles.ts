@@ -2,7 +2,10 @@ import { ICSSInJSStyle, ComponentSlotStylesPrepared } from '@fluentui/styles';
 import { getColorScheme } from '../../colors';
 import { pxToRem } from '../../../../utils';
 import getBorderFocusStyles from '../../getBorderFocusStyles';
-import { default as ToolbarMenuItem, ToolbarMenuItemStylesProps } from '../../../../components/Toolbar/ToolbarMenuItem';
+import {
+  ToolbarMenuItemStylesProps,
+  toolbarMenuItemSlotClassNames,
+} from '../../../../components/Toolbar/ToolbarMenuItem';
 import { ToolbarVariables } from './toolbarVariables';
 import submenuIndicatorUrl from './submenuIndicatorUrl';
 import activeIndicatorUrl from './activeIndicatorUrl';
@@ -36,10 +39,10 @@ const toolbarMenuItemStyles: ComponentSlotStylesPrepared<ToolbarMenuItemStylesPr
       ':hover': {
         color: v.menuItemForegroundHover || colors.menuItemForegroundHover,
         backgroundColor: v.menuItemBackgroundHover || colors.menuItemBackgroundHover,
-        [`& .${ToolbarMenuItem.slotClassNames.submenuIndicator}`]: {
+        [`& .${toolbarMenuItemSlotClassNames.submenuIndicator}`]: {
           backgroundImage: submenuIndicatorUrl(v.menuItemForegroundHover || colors.menuItemForegroundHover),
         },
-        [`& .${ToolbarMenuItem.slotClassNames.activeIndicator}`]: {
+        [`& .${toolbarMenuItemSlotClassNames.activeIndicator}`]: {
           backgroundImage: activeIndicatorUrl(v.menuItemForegroundHover || colors.menuItemForegroundHover),
         },
       },
@@ -50,10 +53,10 @@ const toolbarMenuItemStyles: ComponentSlotStylesPrepared<ToolbarMenuItemStylesPr
         cursor: 'default',
         color: v.menuItemForegroundDisabled || colors.foregroundDisabled1,
         backgroundColor: v.menuItemBackgroundDisabled,
-        [`& .${ToolbarMenuItem.slotClassNames.submenuIndicator}`]: {
+        [`& .${toolbarMenuItemSlotClassNames.submenuIndicator}`]: {
           backgroundImage: submenuIndicatorUrl(v.menuItemForegroundDisabled || colors.foregroundDisabled1),
         },
-        [`& .${ToolbarMenuItem.slotClassNames.activeIndicator}`]: {
+        [`& .${toolbarMenuItemSlotClassNames.activeIndicator}`]: {
           backgroundImage: activeIndicatorUrl(v.menuItemForegroundDisabled || colors.foregroundDisabled1),
         },
         ':hover': {
@@ -94,6 +97,12 @@ const toolbarMenuItemStyles: ComponentSlotStylesPrepared<ToolbarMenuItemStylesPr
 
   wrapper: () => ({
     display: 'block',
+  }),
+
+  icon: ({ props: p }) => ({
+    ...(p.hasContent && {
+      marginRight: pxToRem(10),
+    }),
   }),
 };
 

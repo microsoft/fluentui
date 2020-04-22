@@ -17,11 +17,11 @@ import {
 } from '../../utils';
 import { SupportedIntrinsicInputProps } from '../../utils/htmlPropsUtils';
 import { WithAsProp, ShorthandValue, ComponentEventHandler, withSafeTypeForAs } from '../../types';
-import Icon, { IconProps } from '../Icon/Icon';
 import Box, { BoxProps } from '../Box/Box';
 
 export interface InputSlotClassNames {
   input: string;
+  icon: string;
 }
 
 export interface InputProps extends UIComponentProps, ChildrenComponentProps, SupportedIntrinsicInputProps {
@@ -43,7 +43,7 @@ export interface InputProps extends UIComponentProps, ChildrenComponentProps, Su
   fluid?: boolean;
 
   /** Optional Icon to display inside the Input. */
-  icon?: ShorthandValue<IconProps>;
+  icon?: ShorthandValue<BoxProps>;
 
   /** An Input with icon can format the icon to appear at the start or at the end of the input field. */
   iconPosition?: 'start' | 'end';
@@ -83,14 +83,18 @@ export interface InputState {
   hasValue?: boolean;
 }
 
+export const inputClassName = 'ui-input';
+export const inputSlotClassNames: InputSlotClassNames = {
+  input: `${inputClassName}__input`,
+  icon: `${inputClassName}__icon`,
+};
+
 class Input extends AutoControlledComponent<WithAsProp<InputProps>, InputState> {
   inputRef = React.createRef<HTMLElement>();
 
-  static className = 'ui-input';
+  static deprecated_className = inputClassName;
 
   static displayName = 'Input';
-
-  static slotClassNames: InputSlotClassNames;
 
   static propTypes = {
     ...commonPropTypes.createCommon({
@@ -100,7 +104,7 @@ class Input extends AutoControlledComponent<WithAsProp<InputProps>, InputState> 
     defaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     disabled: PropTypes.bool,
     fluid: PropTypes.bool,
-    icon: customPropTypes.itemShorthandWithoutJSX,
+    icon: customPropTypes.shorthandAllowingChildren,
     iconPosition: PropTypes.oneOf(['start', 'end']),
     input: customPropTypes.itemShorthand,
     inputRef: customPropTypes.ref,
@@ -147,7 +151,7 @@ class Input extends AutoControlledComponent<WithAsProp<InputProps>, InputState> 
     return Box.create(wrapper, {
       defaultProps: () => ({
         ...accessibility.attributes.root,
-        className: cx(Input.className, className),
+        className: cx(inputClassName, className),
         children: (
           <>
             <Ref
@@ -163,17 +167,17 @@ class Input extends AutoControlledComponent<WithAsProp<InputProps>, InputState> 
                   disabled,
                   type,
                   value,
-                  className: Input.slotClassNames.input,
+                  className: inputSlotClassNames.input,
                   styles: styles.input,
                   onChange: this.handleChange,
                   ...applyAccessibilityKeyHandlers(accessibility.keyHandlers.input, htmlInputProps),
                 }),
               })}
             </Ref>
-            {Icon.create(this.computeIcon(), {
+            {Box.create(this.computeIcon(), {
               defaultProps: () => ({
+                className: inputSlotClassNames.icon,
                 styles: styles.icon,
-                variables: variables.icon,
               }),
               overrideProps: this.handleIconOverrides,
             })}
@@ -218,21 +222,17 @@ class Input extends AutoControlledComponent<WithAsProp<InputProps>, InputState> 
     }
   };
 
-  computeIcon = (): ShorthandValue<IconProps> => {
+  computeIcon = (): ShorthandValue<BoxProps> => {
     const { clearable, icon } = this.props;
     const { value } = this.state;
 
     if (clearable && (value as string).length !== 0) {
-      return { name: '' };
+      return {};
     }
 
     return icon || null;
   };
 }
-
-Input.slotClassNames = {
-  input: `${Input.className}__input`,
-};
 
 /**
  * An Input is a field used to elicit an input from a user.

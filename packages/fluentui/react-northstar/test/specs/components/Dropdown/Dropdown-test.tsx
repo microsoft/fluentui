@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { renderDropdown, items, getItemIdRegexByIndex } from './test-utils';
 import Dropdown from 'src/components/Dropdown/Dropdown';
-import DropdownSelectedItem from 'src/components/Dropdown/DropdownSelectedItem';
+import { dropdownSelectedItemSlotClassNames } from 'src/components/Dropdown/DropdownSelectedItem';
 import { implementsShorthandProp, isConformant } from 'test/specs/commonTests';
 import { findIntrinsicElement } from 'test/utils';
 import { DropdownItemProps } from 'src/components/Dropdown/DropdownItem';
@@ -1075,7 +1075,7 @@ describe('Dropdown', () => {
         defaultValue: [items[0], items[1]],
       });
 
-      findIntrinsicElement(wrapper, `.${DropdownSelectedItem.slotClassNames.icon}`)
+      findIntrinsicElement(wrapper, `.${dropdownSelectedItemSlotClassNames.icon}`)
         .at(0)
         .simulate('click');
 
@@ -1710,6 +1710,87 @@ describe('Dropdown', () => {
       toggleIndicatorNode.focus();
 
       expect(toggleIndicatorNode).not.toHaveFocus();
+    });
+  });
+
+  describe('footer and header messages', () => {
+    it('shows loadingMessage when status is loading', () => {
+      const loadingMessage = 'loading results';
+      const { getItemNodeAtIndex } = renderDropdown({
+        open: true,
+        loadingMessage,
+        loading: true,
+      });
+
+      expect(getItemNodeAtIndex(items.length)).toHaveTextContent(loadingMessage);
+    });
+
+    it('shows noResultsMessage when status is no results', () => {
+      const noResultsMessage = 'oups we found nothing';
+      const { getItemNodeAtIndex } = renderDropdown({
+        open: true,
+        noResultsMessage,
+        items: [],
+      });
+
+      expect(getItemNodeAtIndex(0)).toHaveTextContent(noResultsMessage);
+    });
+
+    it('shows headerMessage when status is custom', () => {
+      const headerMessage = 'just some status';
+      const { getItemNodeAtIndex } = renderDropdown({
+        open: true,
+        headerMessage,
+      });
+
+      expect(getItemNodeAtIndex(0)).toHaveTextContent(headerMessage);
+    });
+
+    it('can juggle between messages depending on the status', () => {
+      const headerMessage = 'just some status';
+      const noResultsMessage = 'oups we found nothing';
+      const loadingMessage = 'loading results';
+      const { getItemNodeAtIndex, getItemNodes, rerender } = renderDropdown({
+        open: true,
+        noResultsMessage,
+        loadingMessage,
+      });
+
+      expect(getItemNodes()).toHaveLength(items.length);
+
+      rerender({ headerMessage });
+
+      expect(getItemNodes()).toHaveLength(items.length + 1);
+      expect(getItemNodeAtIndex(0)).toHaveTextContent(headerMessage);
+
+      rerender({ loading: true });
+
+      expect(getItemNodes()).toHaveLength(items.length + 2);
+      expect(getItemNodeAtIndex(0)).toHaveTextContent(headerMessage);
+      expect(getItemNodeAtIndex(items.length + 1)).toHaveTextContent(loadingMessage);
+
+      rerender({ items: [] });
+
+      expect(getItemNodes()).toHaveLength(2);
+      expect(getItemNodeAtIndex(0)).toHaveTextContent(headerMessage);
+      expect(getItemNodeAtIndex(1)).toHaveTextContent(loadingMessage);
+
+      rerender({ loading: false });
+
+      expect(getItemNodes()).toHaveLength(2);
+      expect(getItemNodeAtIndex(0)).toHaveTextContent(headerMessage);
+      expect(getItemNodeAtIndex(1)).toHaveTextContent(noResultsMessage);
+
+      rerender({ items: [items[0]] });
+
+      expect(getItemNodes()).toHaveLength(2);
+      expect(getItemNodeAtIndex(0)).toHaveTextContent(headerMessage);
+      expect(getItemNodeAtIndex(1)).toHaveTextContent(items[0]);
+
+      rerender({ headerMessage: undefined });
+
+      expect(getItemNodes()).toHaveLength(1);
+      expect(getItemNodeAtIndex(0)).toHaveTextContent(items[0]);
     });
   });
 });

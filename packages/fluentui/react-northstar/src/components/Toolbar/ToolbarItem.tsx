@@ -34,7 +34,6 @@ import {
 import { getPopperPropsFromShorthand, Popper, PopperShorthandProps } from '../../utils/positioner';
 
 import ToolbarMenu, { ToolbarMenuProps } from './ToolbarMenu';
-import Icon, { IconProps } from '../Icon/Icon';
 import Box, { BoxProps } from '../Box/Box';
 import Popup, { PopupProps } from '../Popup/Popup';
 import { ToolbarMenuItemProps } from '../Toolbar/ToolbarMenuItem';
@@ -52,7 +51,7 @@ export interface ToolbarItemProps extends UIComponentProps, ChildrenComponentPro
   disabled?: boolean;
 
   /** Name or shorthand for Toolbar Item Icon */
-  icon?: ShorthandValue<IconProps>;
+  icon?: ShorthandValue<BoxProps>;
 
   /**
    * Shorthand for the submenu.
@@ -112,8 +111,12 @@ export interface ToolbarItemSlotClassNames {
   wrapper: string;
 }
 
-const ToolbarItem: React.FC<WithAsProp<ToolbarItemProps>> &
-  FluentComponentStaticProps<ToolbarItemProps> & { slotClassNames: ToolbarItemSlotClassNames } = props => {
+export const toolbarItemClassName = 'ui-toolbar__item';
+export const toolbarItemSlotClassNames: ToolbarItemSlotClassNames = {
+  wrapper: `${toolbarItemClassName}__wrapper`,
+};
+
+const ToolbarItem: React.FC<WithAsProp<ToolbarItemProps>> & FluentComponentStaticProps<ToolbarItemProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(ToolbarItem.displayName, context.telemetry);
   setStart();
@@ -164,11 +167,12 @@ const ToolbarItem: React.FC<WithAsProp<ToolbarItemProps>> &
       hasMenu: !!menu,
       hasPopup: !!popup,
       menuOpen,
+      active,
     }),
     rtl: context.rtl,
   });
   const { classes } = useStyles<ToolbarItemStylesProps>(ToolbarItem.displayName, {
-    className: ToolbarItem.className,
+    className: toolbarItemClassName,
     mapPropsToStyles: () => ({ active, disabled }),
     mapPropsToInlineStyles: () => ({
       className,
@@ -226,11 +230,14 @@ const ToolbarItem: React.FC<WithAsProp<ToolbarItemProps>> &
 
   const handleMenuOverrides = (getRefs: GetRefs) => (predefinedProps: ToolbarMenuProps) => ({
     onBlur: (e: React.FocusEvent) => {
-      const isInside = _.some(getRefs(), (childRef: NodeRef) => {
-        return childRef.current.contains(e.relatedTarget as HTMLElement);
+      const isInsideOrMenuTrigger = _.some(getRefs(), (childRef: NodeRef) => {
+        return (
+          childRef.current.contains(e.relatedTarget as HTMLElement) ||
+          itemRef.current.contains(e.relatedTarget as HTMLElement)
+        );
       });
 
-      if (!isInside) {
+      if (!isInsideOrMenuTrigger) {
         trySetMenuOpen(false, e);
       }
     },
@@ -259,7 +266,7 @@ const ToolbarItem: React.FC<WithAsProp<ToolbarItemProps>> &
         onClick: handleClick,
       })}
     >
-      {childrenExist(children) ? children : Icon.create(icon)}
+      {childrenExist(children) ? children : Box.create(icon)}
     </ElementType>
   );
 
@@ -273,17 +280,7 @@ const ToolbarItem: React.FC<WithAsProp<ToolbarItemProps>> &
               menuRef.current = node;
             }}
           >
-            <Popper
-              align="start"
-              position="above"
-              modifiers={{
-                preventOverflow: {
-                  escapeWithReference: false, // escapeWithReference breaks positioning of ToolbarMenu in overflow mode because Popper components sets modifiers on scrollable container
-                },
-              }}
-              targetRef={itemRef}
-              {...getPopperPropsFromShorthand(menu)}
-            >
+            <Popper align="start" position="above" targetRef={itemRef} {...getPopperPropsFromShorthand(menu)}>
               <ToolbarVariablesProvider value={mergedVariables}>
                 {ToolbarMenu.create(menu, {
                   overrideProps: handleMenuOverrides(getRefs),
@@ -325,7 +322,7 @@ const ToolbarItem: React.FC<WithAsProp<ToolbarItemProps>> &
       const wrapperElement = Box.create(wrapper, {
         defaultProps: () =>
           getA11yProps('wrapper', {
-            className: cx(ToolbarItem.slotClassNames.wrapper, classes.wrapper),
+            className: cx(toolbarItemSlotClassNames.wrapper, classes.wrapper),
           }),
         overrideProps: predefinedProps => ({
           children: contentElement,
@@ -350,12 +347,7 @@ const ToolbarItem: React.FC<WithAsProp<ToolbarItemProps>> &
   return refElement;
 };
 
-ToolbarItem.className = 'ui-toolbar__item';
 ToolbarItem.displayName = 'ToolbarItem';
-
-ToolbarItem.slotClassNames = {
-  wrapper: `${ToolbarItem.className}__wrapper`,
-};
 
 ToolbarItem.defaultProps = {
   as: 'button',
@@ -366,7 +358,7 @@ ToolbarItem.propTypes = {
   ...commonPropTypes.createCommon(),
   active: PropTypes.bool,
   disabled: PropTypes.bool,
-  icon: customPropTypes.itemShorthandWithoutJSX,
+  icon: customPropTypes.shorthandAllowingChildren,
   menu: PropTypes.oneOfType([
     customPropTypes.shorthandAllowingChildren,
     PropTypes.arrayOf(customPropTypes.shorthandAllowingChildren),

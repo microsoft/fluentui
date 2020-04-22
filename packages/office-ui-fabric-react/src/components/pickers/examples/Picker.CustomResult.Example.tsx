@@ -14,7 +14,7 @@ import {
 } from 'office-ui-fabric-react/lib/DocumentCard';
 import { ImageFit } from 'office-ui-fabric-react/lib/Image';
 import { Persona, PersonaSize } from 'office-ui-fabric-react/lib/Persona';
-import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
+import { Checkbox, ICheckboxStyles } from 'office-ui-fabric-react/lib/Checkbox';
 import {
   IBasePickerProps,
   BasePickerListBelow,
@@ -49,7 +49,7 @@ const TestImages = {
   documentPreview: baseProductionCdnUrl + 'document-preview.png',
   documentPreviewTwo: baseProductionCdnUrl + 'document-preview2.png',
   documentPreviewThree: baseProductionCdnUrl + 'document-preview3.png',
-  iconPpt: baseProductionCdnUrl + 'icon-ppt.png',
+  iconPpt: 'https://static2.sharepointonline.com/files/fabric/assets/item-types/32/pptx.png',
   personaFemale: baseProductionCdnUrl + 'persona-female.png',
 };
 
@@ -326,6 +326,8 @@ const SelectedDocumentItem: (documentProps: IPickerItemProps<IFullDocumentCardPr
 
 class DocumentPicker extends BasePickerListBelow<IFullDocumentCardProps, IDocumentPickerProps> {}
 
+const checkboxStyles: Partial<ICheckboxStyles> = { root: { margin: '10px 0' } };
+
 export class PickerCustomResultExample extends React.Component<{}, IPeoplePickerExampleState> {
   constructor(props: {}) {
     super(props);
@@ -339,7 +341,7 @@ export class PickerCustomResultExample extends React.Component<{}, IPeoplePicker
     return (
       <div className={rootClass}>
         <Checkbox
-          styles={{ root: { margin: '10px 0' } }}
+          styles={checkboxStyles}
           label="Disable Document Picker"
           checked={this.state.isPickerDisabled}
           onChange={this._onDisabledButtonClick}

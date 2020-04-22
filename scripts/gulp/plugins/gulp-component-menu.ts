@@ -15,7 +15,7 @@ type ComponentMenuItem = {
   type: string;
 };
 
-export default () => {
+export default (tsConfigPath: string) => {
   const result: ComponentMenuItem[] = [];
 
   function bufferContents(file, enc, cb) {
@@ -40,7 +40,7 @@ export default () => {
         const jsonInfo = fs.readFileSync(infoFilePath);
         componentInfo = JSON.parse(jsonInfo.toString());
       } else {
-        componentInfo = getComponentInfo(file.path, []);
+        componentInfo = getComponentInfo(tsConfigPath, file.path, []);
       }
 
       if (componentInfo.isParent) {

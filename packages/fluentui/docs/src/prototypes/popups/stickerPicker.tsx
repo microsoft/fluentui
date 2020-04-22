@@ -8,6 +8,7 @@ import {
   tabListBehavior,
   MenuItemProps,
 } from '@fluentui/react-northstar';
+import { StickerIcon } from '@fluentui/react-icons-northstar';
 import * as _ from 'lodash';
 import { arrayOfStickerImagesNames, getItemsData } from './dataMocks';
 import GridImagePicker from './GridImagePicker/GridImagePicker';
@@ -42,7 +43,7 @@ class StickerPicker extends React.Component {
       <Popup
         accessibility={dialogBehavior}
         position="below"
-        trigger={<Button icon="sticky note" aria-label="Choose a sticker." />}
+        trigger={<Button icon={<StickerIcon />} aria-label="Choose a sticker." />}
         content={{
           'aria-label': 'Choose a sticker. Press Enter key to insert sticker.',
           content: (

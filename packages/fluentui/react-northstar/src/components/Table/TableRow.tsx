@@ -39,16 +39,23 @@ export interface TableRowProps extends UIComponentProps {
    * Render table in compact mode
    */
   compact?: boolean;
+
+  /**
+   * Whether a row is currently selected or not.
+   */
+  selected?: boolean;
 }
 
 const handleVariablesOverrides = variables => predefinedProps => ({
   variables: mergeComponentVariables(variables, predefinedProps.variables),
 });
 
+export const tableRowClassName = 'ui-table__row';
+
 class TableRow extends UIComponent<WithAsProp<TableRowProps>> {
   static displayName = 'TableRow';
 
-  static className = 'ui-table__row';
+  static deprecated_className = tableRowClassName;
 
   static create: ShorthandFactory<TableRowProps>;
 
@@ -63,6 +70,7 @@ class TableRow extends UIComponent<WithAsProp<TableRowProps>> {
     items: customPropTypes.collectionShorthand,
     header: PropTypes.bool,
     compact: PropTypes.bool,
+    selected: PropTypes.bool,
   };
 
   static defaultProps = {

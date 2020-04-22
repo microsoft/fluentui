@@ -33,6 +33,8 @@ export const colorScheme: ColorSchemeMapping = {
     backgroundHover: colors.grey[550],
     backgroundHover1: colors.grey[550],
     backgroundHover2: 'transparent',
+    backgroundHover3: colors.grey[850],
+    backgroundHover4: colors.grey[600],
 
     borderHover: colors.grey[400],
 
@@ -100,6 +102,7 @@ export const colorScheme: ColorSchemeMapping = {
 
     backgroundHover: colors.brand[500],
     backgroundHover1: colors.brand[900],
+    backgroundHover2: colors.brand[900],
 
     foregroundPressed: colors.brand[200],
     foregroundPressed1: colors.white,

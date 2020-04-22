@@ -3,10 +3,19 @@ import * as React from 'react';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { FocusTrapZone } from 'office-ui-fabric-react/lib/FocusTrapZone';
 import { Link } from 'office-ui-fabric-react/lib/Link';
-import { Stack } from 'office-ui-fabric-react/lib/Stack';
+import { Stack, IStackStyles } from 'office-ui-fabric-react/lib/Stack';
 import { Text } from 'office-ui-fabric-react/lib/Text';
-import { TextField } from 'office-ui-fabric-react/lib/TextField';
+import { TextField, ITextFieldStyles } from 'office-ui-fabric-react/lib/TextField';
 import { Toggle, IToggle } from 'office-ui-fabric-react/lib/Toggle';
+import { memoizeFunction } from 'office-ui-fabric-react/lib/Utilities';
+
+const getStackStyles = memoizeFunction(
+  (useTrapZone: boolean): Partial<IStackStyles> => ({
+    root: { border: `2px solid ${useTrapZone ? '#ababab' : 'transparent'}`, padding: 10 },
+  }),
+);
+
+const textFieldStyles: Partial<ITextFieldStyles> = { root: { width: 300 } };
 
 export interface IFocusTrapZoneBoxExampleState {
   useTrapZone: boolean;
@@ -34,13 +43,7 @@ export class FocusTrapZoneBoxExample extends React.Component<{}, IFocusTrapZoneB
           <DefaultButton onClick={this._onButtonClickHandler} text="Trap Focus" />
         </Stack.Item>
         <FocusTrapZone disabled={!useTrapZone}>
-          <Stack
-            horizontalAlign="start"
-            tokens={{ childrenGap: 15 }}
-            styles={{
-              root: { border: `2px solid ${useTrapZone ? '#ababab' : 'transparent'}`, padding: 10 },
-            }}
-          >
+          <Stack horizontalAlign="start" tokens={{ childrenGap: 15 }} styles={getStackStyles(useTrapZone)}>
             <Toggle
               label="Use trap zone"
               componentRef={this._toggle}
@@ -49,7 +52,7 @@ export class FocusTrapZoneBoxExample extends React.Component<{}, IFocusTrapZoneB
               onText="On (toggle to exit)"
               offText="Off"
             />
-            <TextField label="Input inside trap zone" styles={{ root: { width: 300 } }} />
+            <TextField label="Input inside trap zone" styles={textFieldStyles} />
             <Link href="https://bing.com" target="_blank">
               Hyperlink inside trap zone
             </Link>

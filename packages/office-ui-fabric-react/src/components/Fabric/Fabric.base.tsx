@@ -16,15 +16,21 @@ import { ITheme, createTheme } from '../../Styling';
 
 const getClassNames = classNamesFunction<IFabricStyleProps, IFabricStyles>();
 const getFabricTheme = memoizeFunction((theme?: ITheme, isRTL?: boolean) => createTheme({ ...theme, rtl: isRTL }));
-const getDir = memoizeFunction((theme?: ITheme, dir?: IFabricProps['dir']) => {
-  if (dir) {
-    return dir;
-  }
-  if (theme && theme.rtl !== undefined) {
-    return theme.rtl ? 'rtl' : 'ltr';
-  }
-  return getRTL() ? 'rtl' : 'ltr';
-});
+
+const getDir = (theme?: ITheme, dir?: IFabricProps['dir']) => {
+  const contextDir = getRTL(theme) ? 'rtl' : 'ltr';
+  const pageDir = getRTL() ? 'rtl' : 'ltr';
+  const componentDir = dir ? dir : contextDir;
+  return {
+    // If Fabric dir !== contextDir
+    // Or If contextDir !== pageDir
+    // Then we need to set dir of the Fabric root
+    rootDir: componentDir !== contextDir || componentDir !== pageDir ? componentDir : dir,
+    // If dir !== contextDir || pageDir
+    // then set contextual theme around content
+    needsTheme: componentDir !== contextDir,
+  };
+};
 
 export class FabricBase extends React.Component<IFabricProps> {
   private _rootElement = React.createRef<HTMLDivElement>();
@@ -34,13 +40,11 @@ export class FabricBase extends React.Component<IFabricProps> {
     const { as: Root = 'div', theme, dir } = this.props;
     const classNames = this._getClassNames();
     const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties, ['dir']);
-    const componentDir = getDir(theme, dir);
-    const parentDir = getDir(theme);
+    const { rootDir, needsTheme } = getDir(theme, dir);
 
-    let renderedContent = <Root dir={componentDir} {...divProps} className={classNames.root} ref={this._rootElement} />;
+    let renderedContent = <Root dir={rootDir} {...divProps} className={classNames.root} ref={this._rootElement} />;
 
-    // Create the contextual theme if component direction does not match parent direction.
-    if (componentDir !== parentDir) {
+    if (needsTheme) {
       renderedContent = (
         <Customizer settings={{ theme: getFabricTheme(theme, dir === 'rtl') }}>{renderedContent}</Customizer>
       );
