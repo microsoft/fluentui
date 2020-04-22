@@ -9,13 +9,7 @@ import {
 import * as _ from 'lodash';
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
-import {
-  UIComponentProps,
-  ChildrenComponentProps,
-  commonPropTypes,
-  applyAccessibilityKeyHandlers,
-  createShorthandFactory,
-} from '../../utils';
+import { UIComponentProps, ChildrenComponentProps, commonPropTypes, createShorthandFactory } from '../../utils';
 import {
   useAutoControlled,
   getElementType,
@@ -78,7 +72,7 @@ export const TextArea: React.FC<WithAsProp<TextAreaProps>> & FluentComponentStat
 
   const unhandledProps = useUnhandledProps(TextArea.handledProps, props);
 
-  const getA11yProps = useAccessibility<TextAreaBehaviorProps>(props.accessibility, {
+  const getA11yProps = useAccessibility<TextAreaBehaviorProps>(accessibility, {
     debugName: TextArea.displayName,
     mapPropsToBehavior: () => ({
       disabled,
@@ -108,7 +102,7 @@ export const TextArea: React.FC<WithAsProp<TextAreaProps>> & FluentComponentStat
   const handleChange = (e: React.ChangeEvent | React.FormEvent) => {
     const newValue = _.get(e, 'target.value');
 
-    _.invoke(props, 'onChange', e, { ...props, value });
+    _.invoke(props, 'onChange', e, { ...props, value: newValue });
     setValue(newValue);
   };
 
@@ -121,7 +115,6 @@ export const TextArea: React.FC<WithAsProp<TextAreaProps>> & FluentComponentStat
         onChange: handleChange,
         ...unhandledProps,
       })}
-      {...applyAccessibilityKeyHandlers(accessibility && accessibility({ disabled }).keyActions?.root, unhandledProps)}
     />
   );
   setEnd();
