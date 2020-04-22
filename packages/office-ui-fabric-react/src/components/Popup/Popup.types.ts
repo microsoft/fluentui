@@ -40,6 +40,14 @@ export interface IPopupProps extends React.HTMLAttributes<Popup> {
    * If true, when this component is unmounted, focus will be restored to the element that had focus when the component
    * first mounted.
    * @defaultvalue true
+   * @deprecated use restoreFocus callback instead
    */
   shouldRestoreFocus?: boolean;
+
+  /**
+   * Called when the component is unmounting, and focus needs to be restored.
+   * Argument passed down contains two variables, the element that popup believes focus should go to
+   * and whether or not the popup currently contains focus.
+   */
+  onRestoreFocus?: (options: { originalElement?: HTMLElement | Window; containsFocus: boolean }) => void;
 }

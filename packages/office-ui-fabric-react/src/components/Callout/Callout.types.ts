@@ -243,12 +243,20 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
   shouldUpdateWhenHidden?: boolean;
 
   /**
-   * If specified, determines whether the underlying "Popup" component should try to restore
-   * focus when it is dismissed.  When set to false, the Popup won't try to restore focus to
-   * the last focused element.
-   * @defaultvalue true;
+   * If true, when this component is unmounted, focus will be restored to the element that had focus when the component
+   * first mounted.
+   * @defaultvalue true
+   * @deprecated use restoreFocus callback instead
    */
   shouldRestoreFocus?: boolean;
+
+  /**
+   * Called when the component is unmounting, and focus needs to be restored.
+   * Argument passed down contains two variables, the element that the underlying
+   * popup believes focus should go to
+   * and whether or not the popup currently contains focus.
+   */
+  onRestoreFocus?: (options: { originalElement?: HTMLElement | Window; containsFocus: boolean }) => void;
 }
 
 /**

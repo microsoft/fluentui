@@ -224,8 +224,6 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
 
   // Invoked immediately before a component is unmounted from the DOM.
   public componentWillUnmount() {
-    this._tryFocusPreviousActiveElement();
-
     if (this.props.onMenuDismissed) {
       this.props.onMenuDismissed(this.props);
     }
@@ -343,6 +341,7 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
         <Callout
           styles={calloutStyles}
           {...calloutProps}
+          onRestoreFocus={this._tryFocusPreviousActiveElement}
           target={target}
           isBeakVisible={isBeakVisible}
           beakWidth={beakWidth}
@@ -437,17 +436,11 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
     });
   }
 
-  private _tryFocusPreviousActiveElement() {
-    if (this._isFocusingPreviousElement && this._previousActiveElement) {
-      // This slight delay is required so that we can unwind the stack, const react try to mess with focus, and then
-      // apply the correct focus. Without the setTimeout, we end up focusing the correct thing, and then React wants
-      // to reset the focus back to the thing it thinks should have been focused.
-      // Note: Cannot be replaced by this._async.setTimout because those will be removed by the time this is called.
-      setTimeout(() => {
-        this._previousActiveElement && this._previousActiveElement!.focus();
-      }, 0);
+  private _tryFocusPreviousActiveElement = (options?: any) => {
+    if (options && options.containsFocus && this._previousActiveElement) {
+      this._previousActiveElement && this._previousActiveElement!.focus();
     }
-  }
+  };
 
   /**
    * Gets the focusZoneDirection by using the arrowDirection if specified,
