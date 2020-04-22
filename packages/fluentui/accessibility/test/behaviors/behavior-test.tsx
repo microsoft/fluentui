@@ -40,7 +40,6 @@ import {
   hierarchicalSubtreeBehavior,
   gridBehavior,
   gridHorizontalBehavior,
-  gridWithInnerZoneBehavior,
   statusBehavior,
   alertWarningBehavior,
   alertBaseBehavior,
@@ -85,6 +84,7 @@ import {
   cardBehavior,
   cardFocusableBehavior,
   cardChildrenFocusableBehavior,
+  cardsContainerBehavior,
   videoBehavior,
 } from '@fluentui/accessibility';
 import { TestHelper } from './testHelper';
@@ -129,7 +129,6 @@ testHelper.addBehavior('hierarchicalTreeBehavior', hierarchicalTreeBehavior);
 testHelper.addBehavior('hierarchicalTreeItemBehavior', hierarchicalTreeItemBehavior);
 testHelper.addBehavior('hierarchicalSubtreeBehavior', hierarchicalSubtreeBehavior);
 testHelper.addBehavior('gridBehavior', gridBehavior);
-testHelper.addBehavior('gridWithInnerZoneBehavior', gridWithInnerZoneBehavior);
 testHelper.addBehavior('gridHorizontalBehavior', gridHorizontalBehavior);
 testHelper.addBehavior('dialogBehavior', dialogBehavior);
 testHelper.addBehavior('statusBehavior', statusBehavior);
@@ -175,6 +174,7 @@ testHelper.addBehavior('gridCellWithFocusableElementBehavior', gridCellWithFocus
 testHelper.addBehavior('cardBehavior', cardBehavior);
 testHelper.addBehavior('cardFocusableBehavior', cardFocusableBehavior);
 testHelper.addBehavior('cardChildrenFocusableBehavior', cardChildrenFocusableBehavior);
+testHelper.addBehavior('cardsContainerBehavior', cardsContainerBehavior);
 testHelper.addBehavior('videoBehavior', videoBehavior);
 
 testHelper.run(behaviorMenuItems);

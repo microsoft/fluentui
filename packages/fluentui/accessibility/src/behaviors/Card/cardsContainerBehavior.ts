@@ -9,8 +9,9 @@ import * as keyboardKey from 'keyboard-key';
  *
  * @specification
  * Provides arrow key navigation in bidirectional direction.
+ * Focus can be moved inside a child component with embeded inner FocusZone by pressing a specified key.
  */
-const gridWithInnerZoneBehavior: Accessibility = () => ({
+const cardsContainerBehavior: Accessibility = () => ({
   attributes: {},
   focusZone: {
     props: {
@@ -20,4 +21,4 @@ const gridWithInnerZoneBehavior: Accessibility = () => ({
   },
 });
 
-export default gridWithInnerZoneBehavior;
+export default cardsContainerBehavior;

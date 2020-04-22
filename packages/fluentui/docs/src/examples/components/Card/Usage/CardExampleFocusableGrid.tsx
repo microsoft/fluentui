@@ -1,4 +1,12 @@
-import { Flex, Image, Text, Card, cardFocusableBehavior, Grid, gridBehavior } from '@fluentui/react-northstar';
+import {
+  Flex,
+  Image,
+  Text,
+  Card,
+  cardFocusableBehavior,
+  Grid,
+  cardsContainerBehavior,
+} from '@fluentui/react-northstar';
 import * as React from 'react';
 
 type ClickableCardProps = {
@@ -12,7 +20,7 @@ const ClickableCard: React.FC<ClickableCardProps> = ({ index }) => {
   };
 
   return (
-    <Card accessibility={cardFocusableBehavior} onClick={updateClickCount} aria-roledescription="clickable card">
+    <Card accessibility={cardFocusableBehavior} onClick={updateClickCount} aria-roledescription="user card">
       <Card.Header>
         <Text content={`Card #${index}`} weight="bold" />
         <Text content={`Card was clicked ${clickCount} times.`} temporary />
@@ -27,7 +35,7 @@ const ClickableCard: React.FC<ClickableCardProps> = ({ index }) => {
 };
 
 const CardExampleFocusableGrid = () => (
-  <Grid accessibility={gridBehavior} columns="3">
+  <Grid accessibility={cardsContainerBehavior} columns="3">
     <ClickableCard index={1} />
     <ClickableCard index={2} />
     <ClickableCard index={3} />
