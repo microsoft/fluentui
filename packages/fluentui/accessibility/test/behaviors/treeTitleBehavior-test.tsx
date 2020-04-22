@@ -41,10 +41,11 @@ describe('TreeTitleBehavior', () => {
   });
 
   describe('keyboard interaction', () => {
-    test(`click is executed only with 'spacebar', when tree title is 'selectable'`, () => {
+    test(`click is executed only with 'spacebar' or 'enter', when tree title is 'selectable'`, () => {
       const expectedResult = treeTitleBehavior({ selectable: true, hasSubtree: true });
-      expect(expectedResult.keyActions.root.performClick.keyCombinations).toHaveLength(1);
+      expect(expectedResult.keyActions.root.performClick.keyCombinations).toHaveLength(2);
       expect(expectedResult.keyActions.root.performClick.keyCombinations[0].keyCode).toEqual(keyboardKey['Spacebar']);
+      expect(expectedResult.keyActions.root.performClick.keyCombinations[1].keyCode).toEqual(keyboardKey['Enter']);
     });
   });
 });
