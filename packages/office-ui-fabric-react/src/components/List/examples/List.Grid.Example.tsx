@@ -5,7 +5,6 @@ import { IRectangle } from 'office-ui-fabric-react/lib/Utilities';
 import { ITheme, getTheme, mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 import { createListItems } from '@uifabric/example-data';
 
-const items = createListItems(5000);
 let columnCount: number;
 let columnWidth: number;
 let rowHeight: number;
@@ -97,15 +96,19 @@ const getPageHeight = (): number => {
   return rowHeight * ROWS_PER_PAGE;
 };
 
-export const ListGridExample: React.FunctionComponent = () => (
-  <FocusZone>
-    <List
-      className={classNames.listGridExample}
-      items={items}
-      getItemCountForPage={getItemCountForPage}
-      getPageHeight={getPageHeight}
-      renderedWindowsAhead={4}
-      onRenderCell={onRenderCell}
-    />
-  </FocusZone>
-);
+export const ListGridExample: React.FunctionComponent = () => {
+  const [items] = React.useState(() => createListItems(5000));
+
+  return (
+    <FocusZone>
+      <List
+        className={classNames.listGridExample}
+        items={items}
+        getItemCountForPage={getItemCountForPage}
+        getPageHeight={getPageHeight}
+        renderedWindowsAhead={4}
+        onRenderCell={onRenderCell}
+      />
+    </FocusZone>
+  );
+};

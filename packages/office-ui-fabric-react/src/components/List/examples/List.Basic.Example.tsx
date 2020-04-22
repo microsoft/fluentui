@@ -10,7 +10,7 @@ import { createListItems, IExampleItem } from '@uifabric/example-data';
 
 const theme: ITheme = getTheme();
 const { palette, semanticColors, fonts } = theme;
-const originalItems = createListItems(5000);
+
 const classNames = mergeStyleSets({
   itemCell: [
     getFocusStyle(theme, { inset: -1 }),
@@ -69,6 +69,7 @@ const onRenderCell = (item: IExampleItem, index: number | undefined): JSX.Elemen
 };
 
 export const ListBasicExample: React.FunctionComponent = () => {
+  const [originalItems] = React.useState(() => createListItems(5000));
   const [items, setItems] = React.useState(originalItems);
   const resultCountText =
     items.length === originalItems.length ? '' : ` (${items.length} of ${originalItems.length} shown)`;

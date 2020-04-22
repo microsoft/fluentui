@@ -7,10 +7,6 @@ import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { createListItems, IExampleItem } from '@uifabric/example-data';
 import { mergeStyleSets, getTheme, normalize } from 'office-ui-fabric-react/lib/Styling';
 
-export interface IListScrollingExampleProps {
-  items?: IExampleItem[];
-}
-
 const evenItemHeight = 25;
 const oddItemHeight = 50;
 const numberOfItemsOnPage = 10;
@@ -21,6 +17,7 @@ const dropdownOption = [
   { key: 'bottom', text: 'Bottom' },
   { key: 'center', text: 'Center' },
 ];
+
 const styles = mergeStyleSets({
   container: {
     overflow: 'auto',
@@ -62,13 +59,11 @@ const onRenderCell = (item: IExampleItem, index: number): JSX.Element => {
   );
 };
 
-export const ListScrollingExample: React.FunctionComponent<IListScrollingExampleProps> = (
-  props: IListScrollingExampleProps,
-) => {
+export const ListScrollingExample: React.FunctionComponent = () => {
+  const [items] = React.useState(() => createListItems(5000));
   const [selectedIndex, setSelectedIndex] = React.useState(0);
   const [scrollToMode, setScrollToMode] = React.useState<ScrollToMode>(ScrollToMode.auto);
   const listRef: React.RefObject<IList> = React.useRef(null);
-  const items = props.items || createListItems(5000);
 
   const scroll = (index: number, propScrollToMode: ScrollToMode): void => {
     const updatedSelectedIndex = Math.min(Math.max(index, 0), items.length - 1);

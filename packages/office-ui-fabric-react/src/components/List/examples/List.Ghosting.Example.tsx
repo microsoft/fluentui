@@ -7,7 +7,6 @@ import { createListItems, IExampleItem } from '@uifabric/example-data';
 
 const theme: ITheme = getTheme();
 const { palette, semanticColors, fonts } = theme;
-const items = createListItems(5000);
 const classNames = mergeStyleSets({
   container: {
     overflow: 'auto',
@@ -75,6 +74,8 @@ const onRenderCell = (item: IExampleItem, index: number, isScrolling: boolean): 
 };
 
 export const ListGhostingExample: React.FunctionComponent = () => {
+  const [items] = React.useState(() => createListItems(5000));
+
   return (
     <FocusZone direction={FocusZoneDirection.vertical}>
       <div className={classNames.container} data-is-scrollable>
