@@ -15,5 +15,21 @@ describe('RefForward', () => {
       expect(forwardedRef.current).toBeInstanceOf(Element);
       expect(innerRef.current).toBeInstanceOf(Element);
     });
+
+    it('handles updates of props', () => {
+      const initialRef = jest.fn();
+      const updatedRef = jest.fn();
+
+      const wrapper = mount(<RefForward innerRef={initialRef}>{(<ForwardedRef />) as any}</RefForward>);
+
+      expect(initialRef).toHaveBeenCalled();
+      expect(updatedRef).not.toHaveBeenCalled();
+
+      jest.resetAllMocks();
+      wrapper.setProps({ innerRef: updatedRef });
+
+      expect(initialRef).not.toHaveBeenCalled();
+      expect(updatedRef).toHaveBeenCalled();
+    });
   });
 });
