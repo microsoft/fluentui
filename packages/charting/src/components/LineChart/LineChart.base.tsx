@@ -469,6 +469,7 @@ export class LineChartBase extends React.Component<
               onFocus={this._handleFocus.bind(this, keyVal, x1, y1, lineColor, xAxisCalloutData)}
               onBlur={this._handleMouseOut}
               aria-labelledby={this._calloutId}
+              onClick={this._onLineClick.bind(this, this._points[i].onLineClick)}
             />,
           );
         } else {
@@ -538,6 +539,12 @@ export class LineChartBase extends React.Component<
       YValueHover: found.values,
       lineColor: lineColor,
     });
+  };
+
+  private _onLineClick = (func: () => void) => {
+    if (!!func) {
+      func();
+    }
   };
 
   private _handleMouseOut = () => {
