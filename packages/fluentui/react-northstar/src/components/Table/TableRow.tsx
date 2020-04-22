@@ -105,14 +105,14 @@ const TableRow: React.FC<WithAsProp<TableRowProps>> & FluentComponentStaticProps
 
   const renderCells = () => {
     // TODO: consider moving to useAccessibility()
-    const childBehavior = accessibility && accessibility({ header, selected }).childBehaviors;
+    const childBehaviors = accessibility && accessibility({ header, selected }).childBehaviors;
 
     return _.map(items, (item: TableCellProps, index: number) => {
       const overrideProps = handleVariablesOverrides(variables);
       return TableCell.create(item, {
         defaultProps: () =>
           getA11yProps('cell', {
-            accessibility: childBehavior ? childBehavior.cell : undefined,
+            accessibility: childBehaviors ? childBehaviors.cell : undefined,
             ...overrideProps,
           }),
       });
