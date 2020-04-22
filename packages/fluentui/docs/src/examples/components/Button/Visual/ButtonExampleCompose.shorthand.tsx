@@ -8,6 +8,7 @@ import {
   Provider,
   ButtonContent,
   ButtonContentProps,
+  ShorthandValue,
 } from '@fluentui/react-northstar';
 import { ComponentSlotStylesInput, ComponentVariablesInput, ThemeInput } from '@fluentui/styles';
 import * as React from 'react';
@@ -19,17 +20,37 @@ import * as React from 'react';
 // Adds a custom design term
 //
 
-type TertiaryButtonProps = {
+type TertiaryButtonContentProps = {
   tertiary?: boolean;
 };
 
+type TertiaryButtonContentStylesProps = TertiaryButtonContentProps;
+
+type TertiaryButtonProps = {
+  tertiary?: boolean;
+  content?: ShorthandValue<ButtonContentProps & TertiaryButtonContentProps>;
+};
+
 type TertiaryButtonStylesProps = TertiaryButtonProps;
+
+const TertiaryButtonContent = compose<
+  'span',
+  TertiaryButtonContentProps,
+  TertiaryButtonContentStylesProps,
+  ButtonContentProps,
+  {}
+>(ButtonContent, {
+  displayName: 'TertiaryButtonContent',
+  mapPropsToStylesProps: props => ({ tertiary: props.tertiary }),
+  handledProps: ['tertiary'],
+});
 
 const TertiaryButton = compose<'button', TertiaryButtonProps, TertiaryButtonStylesProps, ButtonProps, {}>(Button, {
   className: 'ui-tertiary-button',
   displayName: 'TertiaryButton',
   mapPropsToStylesProps: props => ({ tertiary: props.tertiary }),
   handledProps: ['tertiary'],
+  slots: { content: TertiaryButtonContent },
 });
 
 // Adds overrides for a design term
@@ -178,7 +199,10 @@ const ButtonExample = () => (
   <Provider theme={customTheme}>
     <Header as="h3" content="A tertiary button" description="Adds a custom design term" />
     <Flex>
-      <TertiaryButton content="Click here" />
+      <Button content={{ content: 'Click here' }} />
+      <TertiaryButton content={{ content: 'Click me', tertiary: true }}>
+        <TertiaryButtonContent>Click here</TertiaryButtonContent>
+      </TertiaryButton>
       <TertiaryButton content="Click here" tertiary />
     </Flex>
 
