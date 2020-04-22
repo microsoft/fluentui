@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/migration",
-  "version": "7.0.16",
+  "version": "7.0.17",
   "description": "Migration scripts for UI Fabric",
   "main": "lib/index.js",
   "bin": {
@@ -30,7 +30,7 @@
     "@types/mock-fs": "3.6.30",
     "@types/node": "^10.3.2",
     "@types/semver": "^5.5.0",
-    "@uifabric/tslint-rules": "^7.1.3",
+    "@uifabric/tslint-rules": "^7.2.0",
     "glob": "^7.1.2",
     "mock-fs": "4.10.0",
     "@uifabric/build": "^7.0.0"

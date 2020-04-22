@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Updating Announced, Callout, and Calendar examples to function components",
+  "packageName": "office-ui-fabric-react",
+  "email": "czearing@outlook.com",
+  "dependentChangeType": "patch",
+  "date": "2020-04-14T00:43:35.087Z"
+}

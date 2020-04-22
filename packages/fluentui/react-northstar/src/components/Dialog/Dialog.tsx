@@ -18,6 +18,7 @@ import {
   doesNodeContainClick,
   applyAccessibilityKeyHandlers,
   getOrGenerateIdFromShorthand,
+  createShorthand,
 } from '../../utils';
 import { ComponentEventHandler, WithAsProp, ShorthandValue, withSafeTypeForAs } from '../../types';
 import Button, { ButtonProps } from '../Button/Button';
@@ -295,10 +296,11 @@ class Dialog extends AutoControlledComponent<WithAsProp<DialogProps>, DialogStat
     } = this.props;
     const { open } = this.state;
 
-    const cancelElement = Button.create(cancelButton, {
+    const cancelElement = createShorthand(Button, cancelButton, {
       overrideProps: this.handleCancelButtonOverrides,
     });
-    const confirmElement = Button.create(confirmButton, {
+
+    const confirmElement = createShorthand(Button, confirmButton, {
       defaultProps: () => ({
         primary: true,
       }),
@@ -337,7 +339,7 @@ class Dialog extends AutoControlledComponent<WithAsProp<DialogProps>, DialogStat
               ...accessibility.attributes.header,
             }),
           })}
-          {Button.create(headerAction, {
+          {createShorthand(Button, headerAction, {
             defaultProps: () => ({
               className: dialogSlotClassNames.headerAction,
               styles: styles.headerAction,

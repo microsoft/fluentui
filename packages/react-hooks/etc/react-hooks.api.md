@@ -4,6 +4,11 @@
 
 ```ts
 
+import * as React from 'react';
+
+// @public (undocumented)
+export type ChangeCallback<TElement extends HTMLElement, TValue> = (ev: React.FormEvent<TElement> | undefined, newValue: TValue | undefined) => void;
+
 // @public
 export interface IUseBooleanCallbacks {
     setFalse: () => void;
@@ -21,7 +26,16 @@ export function useConst<T>(initialValue: T | (() => T)): T;
 export function useConstCallback<T extends (...args: any[]) => any>(callback: T): T;
 
 // @public
-export function useId(prefix?: string): string;
+export function useControllableValue<TValue, TElement extends HTMLElement>(controlledValue: TValue | undefined, defaultUncontrolledValue: TValue | undefined): Readonly<[TValue | undefined, (newValue: TValue | undefined) => void]>;
+
+// @public (undocumented)
+export function useControllableValue<TValue, TElement extends HTMLElement, TCallback extends ChangeCallback<TElement, TValue> | undefined>(controlledValue: TValue | undefined, defaultUncontrolledValue: TValue | undefined, onChange: TCallback): Readonly<[TValue | undefined, (newValue: TValue | undefined, ev?: React.FormEvent<TElement>) => void]>;
+
+// @public
+export function useId(prefix?: string, providedId?: string): string;
+
+// @public
+export function useMergedRefs<T>(...refs: React.Ref<T>[]): (instance: T) => void;
 
 
 // (No @packageDocumentation comment for this package)

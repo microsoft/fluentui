@@ -448,13 +448,13 @@ class Carousel extends AutoControlledComponent<WithAsProp<CarouselProps>, Carous
           },
         }),
       })
-    ) : (
+    ) : getItemPositionText ? (
       <Text
         aria-hidden="true"
         className={carouselSlotClassNames.pagination}
         content={getItemPositionText(activeIndex, items.length)}
       />
-    );
+    ) : null;
   };
 
   renderComponent({ ElementType, classes, accessibility, unhandledProps }) {
