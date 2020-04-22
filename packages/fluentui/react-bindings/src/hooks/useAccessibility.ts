@@ -18,6 +18,7 @@ type UseAccessibilityResult = (<SlotProps extends Record<string, any> & UserProp
   slotProps: SlotProps,
 ) => MergedProps<SlotProps>) & {
   unstable_wrapWithFocusZone: (children: React.ReactElement) => React.ReactElement;
+  getSlotBehavior: <SlotBehaviorProps>(slotName: string) => Accessibility<SlotBehaviorProps> | null;
 };
 
 type UserProps = {
@@ -87,6 +88,15 @@ const useAccessibility = <Props>(behavior: Accessibility<Props>, options: UseAcc
     }
 
     return element;
+  };
+
+  // Provides an experimental handling for child behaviors
+  getA11yProps.getSlotBehavior = <SlotBehaviorProps>(slotName: string) => {
+    if (definition.childBehaviors) {
+      return definition.childBehaviors[slotName] as Accessibility<SlotBehaviorProps>;
+    }
+
+    return null;
   };
 
   return getA11yProps;
