@@ -8,8 +8,7 @@ import { useId, useControllableValue } from '@uifabric/react-hooks';
 const getClassNames = classNamesFunction<ICheckboxStyleProps, ICheckboxStyles>();
 
 export const CheckboxBase = React.memo(
-  // tslint:disable-next-line:no-function-expression
-  React.forwardRef(function(props: ICheckboxProps, ref: React.Ref<HTMLDivElement>) {
+  React.forwardRef((props: ICheckboxProps, ref: React.Ref<HTMLDivElement>) => {
     const {
       className,
       disabled,
