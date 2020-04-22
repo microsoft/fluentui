@@ -1,7 +1,7 @@
 import { StylesContextInputValue, StylesContextValue, Telemetry } from '@fluentui/react-bindings';
 import * as React from 'react';
 
-import { ShorthandFactory } from './utils/factories';
+import { ShorthandConfig, ShorthandFactory } from './utils/factories';
 
 // Temporary workaround for @lodash dependency
 
@@ -25,9 +25,9 @@ export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 // ========================================================
 
 export type FluentComponentStaticProps<P = {}> = {
-  deprecated_className: string;
   handledProps: (keyof P)[];
   create: ShorthandFactory<P>;
+  shorthandConfig?: ShorthandConfig<P>;
 };
 
 // ========================================================

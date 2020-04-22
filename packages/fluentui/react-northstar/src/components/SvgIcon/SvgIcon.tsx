@@ -18,7 +18,6 @@ export type SvgIconStylesProps = Required<
 >;
 
 const SvgIcon: React.FC<WithAsProp<SvgIconProps & { children: SvgIconChildrenFn<SvgIconProps> }>> & {
-  deprecated_className: string;
   handledProps: (keyof (SvgIconProps & { children: SvgIconChildrenFn<SvgIconProps> }))[];
 } = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
@@ -77,7 +76,6 @@ const SvgIcon: React.FC<WithAsProp<SvgIconProps & { children: SvgIconChildrenFn<
   return element;
 };
 
-SvgIcon.deprecated_className = svgIconClassName;
 SvgIcon.displayName = svgIconDisplayName;
 SvgIcon.handledProps = [...svgIconHandledProps, 'children'];
 SvgIcon.defaultProps = {

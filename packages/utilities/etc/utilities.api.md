@@ -445,6 +445,7 @@ export type IClassNames<T> = {
 
 // @public (undocumented)
 export interface IClassNamesFunctionOptions {
+    cacheSize?: number;
     disableCaching?: boolean;
 }
 
@@ -972,7 +973,7 @@ export const olProperties: string[];
 export { Omit }
 
 // @public (undocumented)
-export function on(element: Element | Window, eventName: string, callback: (ev: Event | React.SyntheticEvent<Element, Event>) => void, options?: boolean): () => void;
+export function on(element: Element | Window, eventName: string, callback: (ev: Event) => void, options?: boolean): () => void;
 
 // @public (undocumented)
 export const optionProperties: string[];

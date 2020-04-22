@@ -141,7 +141,6 @@ const Avatar: React.FC<WithAsProp<AvatarProps>> & FluentComponentStaticProps<Ava
   return result;
 };
 
-Avatar.deprecated_className = avatarClassName;
 Avatar.displayName = 'Avatar';
 
 Avatar.defaultProps = {

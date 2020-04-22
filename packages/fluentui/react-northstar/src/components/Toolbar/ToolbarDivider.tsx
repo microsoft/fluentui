@@ -58,7 +58,6 @@ const ToolbarDivider: React.FC<WithAsProp<ToolbarDividerProps>> &
   return element;
 };
 
-ToolbarDivider.deprecated_className = toolbarDividerClassName;
 ToolbarDivider.displayName = 'ToolbarDivider';
 
 ToolbarDivider.propTypes = commonPropTypes.createCommon();

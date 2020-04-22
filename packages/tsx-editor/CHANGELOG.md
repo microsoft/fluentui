@@ -1,8 +1,17 @@
 # Change Log - @uifabric/tsx-editor
 
-This log was last generated on Thu, 16 Apr 2020 04:01:45 GMT and should not be manually modified.
+This log was last generated on Tue, 21 Apr 2020 12:34:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.11.55](https://github.com/microsoft/fluentui/tree/@uifabric/tsx-editor_v0.11.55)
+
+Tue, 21 Apr 2020 12:34:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/tsx-editor_v0.11.50..@uifabric/tsx-editor_v0.11.55)
+
+### Patches
+
+- Add useEditor=1 support to force editor on ([PR #12786](https://github.com/microsoft/fluentui/pull/12786) by elcraig@microsoft.com)
 
 ## [0.11.50](https://github.com/microsoft/fluentui/tree/@uifabric/tsx-editor_v0.11.50)
 

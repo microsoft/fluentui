@@ -20,7 +20,7 @@ const AttachmentBody = compose<AttachmentBodyOwnProps, AttachmentBodyStylesProps
     className: attachmentBodyClassName,
     displayName: 'AttachmentBody',
   },
-) as React.FC<AttachmentBodyProps> & { create?: ShorthandFactory<AttachmentBodyProps>; deprecated_className: string };
+) as React.FC<AttachmentBodyProps> & { create?: ShorthandFactory<AttachmentBodyProps> };
 
 AttachmentBody.propTypes = commonPropTypes.createCommon();
 

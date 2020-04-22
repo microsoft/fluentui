@@ -149,9 +149,7 @@ export const menuItemSlotClassNames: MenuItemSlotClassNames = {
 class MenuItem extends AutoControlledComponent<WithAsProp<MenuItemProps>, MenuItemState> {
   static displayName = 'MenuItem';
 
-  static deprecated_className = 'ui-menu__item';
-
-  static slotClassNames: MenuItemSlotClassNames = menuItemSlotClassNames;
+  static deprecated_className = menuItemClassName;
 
   static create: ShorthandFactory<MenuItemProps>;
 

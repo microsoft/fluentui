@@ -12,12 +12,12 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@uifabric/charting": "^1.4.2",
-    "@uifabric/date-time": "^7.8.57",
-    "@uifabric/experiments": "^7.23.4",
-    "@uifabric/fabric-website": "^7.10.25",
-    "@uifabric/fabric-website-resources": "^7.6.38",
-    "office-ui-fabric-react": "^7.106.3",
+    "@uifabric/charting": "^2.0.4",
+    "@uifabric/date-time": "^7.8.62",
+    "@uifabric/experiments": "^7.23.9",
+    "@uifabric/fabric-website": "^7.10.30",
+    "@uifabric/fabric-website-resources": "^7.6.43",
+    "office-ui-fabric-react": "^7.107.3",
     "perf-test": "^7.0.0",
     "theming-designer": "^7.0.0",
     "todo-app": "^7.0.0"

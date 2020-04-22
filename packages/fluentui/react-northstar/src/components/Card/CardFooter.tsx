@@ -60,7 +60,6 @@ const CardFooter: React.FC<WithAsProp<CardFooterProps>> & FluentComponentStaticP
 };
 
 CardFooter.displayName = 'CardFooter';
-CardFooter.deprecated_className = cardFooterClassName;
 
 CardFooter.propTypes = {
   ...commonPropTypes.createCommon(),

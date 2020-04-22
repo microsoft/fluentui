@@ -1,15 +1,25 @@
 import { pxToRem } from '../../../../utils';
 
 export interface CardVariables {
+  backgroundColor: string;
+  backgroundColorDisabled: string;
+  backgroundColorFocus: string;
+  backgroundColorHover: string;
+  backgroundColorPressed: string;
   borderStyle: string;
   borderColor: string;
+  borderColorDisabled: string;
+  borderColorHover: string;
+  borderColorPressed: string;
   borderWidth: string;
   borderRadius: string;
   boxShadow: string;
   boxShadowHover: string;
   boxShadowFocus: string;
   boxShadowPressed: string;
+  boxShadowDisabled: string;
   padding: string;
+  colorDisabled: string;
   compactPadding: string;
   previewMargin: string;
   headerMargin: string;
@@ -36,15 +46,25 @@ export interface CardVariables {
 
 export default (siteVars): CardVariables => {
   return {
+    backgroundColor: siteVars.colorScheme.default.background,
+    backgroundColorDisabled: siteVars.colorScheme.default.backgroundDisabled,
+    backgroundColorFocus: siteVars.colorScheme.default.backgroundFocus,
+    backgroundColorHover: siteVars.colorScheme.default.backgroundHover,
+    backgroundColorPressed: siteVars.colorScheme.default.backgroundPressed,
     borderStyle: 'solid',
-    borderColor: siteVars.colors.black,
+    borderColor: siteVars.colorScheme.default.border,
+    borderColorDisabled: siteVars.colorScheme.default.borderDisabled,
+    borderColorHover: siteVars.colorScheme.default.borderHover,
+    borderColorPressed: siteVars.colorScheme.default.borderPressed,
     borderWidth: siteVars.borderWidth,
     borderRadius: pxToRem(4),
-    boxShadow: undefined,
+    boxShadow: 'none',
+    boxShadowDisabled: 'none',
     boxShadowHover: siteVars.shadowLevel3,
     boxShadowFocus: siteVars.shadowLevel2,
     boxShadowPressed: siteVars.shadowLevel1,
     padding: pxToRem(10),
+    colorDisabled: siteVars.colorScheme.default.foregroundDisabled,
     compactPadding: pxToRem(0),
     previewMargin: `0 0 ${pxToRem(10)} 0`,
     headerMargin: `0 0 ${pxToRem(10)} 0`,

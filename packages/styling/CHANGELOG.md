@@ -1,8 +1,17 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Thu, 16 Apr 2020 04:01:45 GMT and should not be manually modified.
+This log was last generated on Wed, 22 Apr 2020 12:33:04 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.11.8](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.11.8)
+
+Wed, 22 Apr 2020 12:33:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/styling_v7.11.3..@uifabric/styling_v7.11.8)
+
+### Patches
+
+- remove outdated comment ([PR #12802](https://github.com/microsoft/fluentui/pull/12802) by phkuo@microsoft.com)
 
 ## [7.11.3](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.11.3)
 

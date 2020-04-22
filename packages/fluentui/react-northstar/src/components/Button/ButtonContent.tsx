@@ -55,7 +55,6 @@ const ButtonContent: React.FC<WithAsProp<ButtonContentProps>> &
 };
 
 ButtonContent.displayName = 'ButtonContent';
-ButtonContent.deprecated_className = buttonContentClassName;
 
 ButtonContent.propTypes = {
   ...commonPropTypes.createCommon(),

@@ -22,7 +22,7 @@ const AttachmentIcon = compose<AttachmentIconOwnProps, AttachmentIconStylesProps
 
     overrideStyles: true,
   },
-) as React.FC<AttachmentIconProps> & { create?: ShorthandFactory<AttachmentIconProps>; deprecated_className: string };
+) as React.FC<AttachmentIconProps> & { create?: ShorthandFactory<AttachmentIconProps> };
 
 AttachmentIcon.defaultProps = {
   as: 'span',
