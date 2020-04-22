@@ -56,6 +56,27 @@ describe('Dropdown', () => {
         }),
       );
     });
+
+    it('should have the indicator tabbable if not a search', () => {
+      const { getClearIndicatorNode } = renderDropdown({
+        clearable: true,
+        defaultValue: items[0],
+      });
+
+      expect(getClearIndicatorNode()).toHaveAttribute('tabindex', '0');
+      expect(getClearIndicatorNode()).toHaveAttribute('role', 'button');
+    });
+
+    it('should not have the indicator tabbable if a search', () => {
+      const { getClearIndicatorNode } = renderDropdown({
+        clearable: true,
+        defaultValue: items[0],
+        search: true,
+      });
+
+      expect(getClearIndicatorNode()).not.toHaveAttribute('tabindex');
+      expect(getClearIndicatorNode()).not.toHaveAttribute('role', 'button');
+    });
   });
 
   describe('open', () => {
