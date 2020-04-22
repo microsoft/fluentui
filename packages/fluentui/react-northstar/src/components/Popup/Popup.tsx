@@ -350,6 +350,16 @@ const Popup: React.FC<PopupProps> &
         }
         predefinedProps && _.invoke(predefinedProps, 'onBlur', e, contentProps);
       };
+    } else {
+      /**
+       * Otherwise add onBlur and close on document losing focus
+       */
+      contentHandlerProps.onBlur = (e, contentProps) => {
+        if (shouldBlurClose(e) && !context.target.hasFocus()) {
+          trySetOpen(false, e);
+        }
+        predefinedProps && _.invoke(predefinedProps, 'onBlur', e, contentProps);
+      };
     }
 
     /**
