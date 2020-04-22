@@ -71,8 +71,9 @@ export const TextArea: React.FC<WithAsProp<TextAreaProps>> & FluentComponentStat
   const { disabled, accessibility, inverted, resize, fluid, className, design, styles, variables } = props;
 
   const [value, setValue] = useAutoControlled({
-    defaultValue: props.value,
+    defaultValue: props.defaultValue,
     value: props.value,
+    initialValue: props.defaultValue || props.value,
   });
 
   const unhandledProps = useUnhandledProps(TextArea.handledProps, props);
@@ -107,7 +108,7 @@ export const TextArea: React.FC<WithAsProp<TextAreaProps>> & FluentComponentStat
   const handleChange = (e: React.ChangeEvent | React.FormEvent) => {
     const newValue = _.get(e, 'target.value');
 
-    _.invoke(this.props, 'onChange', e, { ...props, value });
+    _.invoke(props, 'onChange', e, { ...props, value });
     setValue(newValue);
   };
 
@@ -120,7 +121,7 @@ export const TextArea: React.FC<WithAsProp<TextAreaProps>> & FluentComponentStat
         onChange: handleChange,
         ...unhandledProps,
       })}
-      {...applyAccessibilityKeyHandlers(accessibility && accessibility({ disabled }).keyActions.root, unhandledProps)}
+      {...applyAccessibilityKeyHandlers(accessibility && accessibility({ disabled }).keyActions?.root, unhandledProps)}
     />
   );
   setEnd();
