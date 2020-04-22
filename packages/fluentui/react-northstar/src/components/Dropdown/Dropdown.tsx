@@ -521,6 +521,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
                           className: dropdownSlotClassNames.clearIndicator,
                           styles: styles.clearIndicator,
                           accessibility: indicatorBehavior,
+                          ...(!search && { tabIndex: 0, role: 'button' }),
                         }),
                         overrideProps: (predefinedProps: BoxProps) => ({
                           onClick: (e: React.SyntheticEvent<HTMLElement>) => {
