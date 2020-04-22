@@ -51,10 +51,7 @@ export const tableCellSlotClassNames: TableCellSlotClassNames = {
   content: `${tableCellClassName}__content`,
 };
 
-const TableCell: React.FC<WithAsProp<TableCellProps>> &
-  FluentComponentStaticProps<TableCellProps> & {
-    slotClassNames: TableCellSlotClassNames;
-  } = props => {
+const TableCell: React.FC<WithAsProp<TableCellProps>> & FluentComponentStaticProps<TableCellProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(TableCell.displayName, context.telemetry);
   setStart();
@@ -123,10 +120,6 @@ const TableCell: React.FC<WithAsProp<TableCellProps>> &
 };
 
 TableCell.displayName = 'TableCell';
-
-TableCell.deprecated_className = tableCellClassName;
-
-TableCell.slotClassNames = tableCellSlotClassNames;
 
 TableCell.propTypes = {
   ...commonPropTypes.createCommon({

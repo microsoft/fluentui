@@ -137,10 +137,7 @@ export const chatMessageSlotClassNames: ChatMessageSlotClassNames = {
   reactionGroup: `${chatMessageClassName}__reactions`,
 };
 
-const ChatMessage: React.FC<WithAsProp<ChatMessageProps>> &
-  FluentComponentStaticProps<ChatMessageProps> & {
-    slotClassNames: ChatMessageSlotClassNames;
-  } = props => {
+const ChatMessage: React.FC<WithAsProp<ChatMessageProps>> & FluentComponentStaticProps<ChatMessageProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(ChatMessage.displayName, context.telemetry);
   setStart();
@@ -356,7 +353,6 @@ const ChatMessage: React.FC<WithAsProp<ChatMessageProps>> &
   return element;
 };
 
-ChatMessage.deprecated_className = chatMessageClassName;
 ChatMessage.displayName = 'ChatMessage';
 
 ChatMessage.defaultProps = {
@@ -385,7 +381,6 @@ ChatMessage.propTypes = {
 ChatMessage.handledProps = Object.keys(ChatMessage.propTypes) as any;
 
 ChatMessage.create = createShorthandFactory({ Component: ChatMessage, mappedProp: 'content' });
-ChatMessage.slotClassNames = chatMessageSlotClassNames;
 
 /**
  * A ChatMessage represents a single message in chat.

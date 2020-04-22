@@ -34,10 +34,8 @@
   "scripts": {
     "build": "gulp bundle:package:no-umd",
     "clean": "gulp bundle:package:clean",
-    "lint": "yarn lint:eslint && yarn lint:old",
-    "lint:eslint": "eslint --ext .js,.ts,.tsx .",
-    "lint:fix": "yarn lint:eslint --fix && yarn lint:old --fix",
-    "lint:old": "tslint -t stylish -p .",
+    "lint": "eslint --ext .js,.ts,.tsx .",
+    "lint:fix": "yarn lint --fix",
     "test": "gulp test",
     "test:watch": "gulp test:watch"
   },

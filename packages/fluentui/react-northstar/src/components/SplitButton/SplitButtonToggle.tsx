@@ -130,7 +130,6 @@ SplitButtonToggle.defaultProps = {
 };
 
 SplitButtonToggle.displayName = 'SplitButtonToggle';
-SplitButtonToggle.deprecated_className = splitButtonToggleClassName;
 
 SplitButtonToggle.propTypes = {
   ...commonPropTypes.createCommon({}),

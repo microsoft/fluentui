@@ -80,10 +80,7 @@ export const checkboxSlotClassNames: CheckboxSlotClassNames = {
   indicator: `${checkboxClassName}__indicator`,
 };
 
-const Checkbox: React.FC<WithAsProp<CheckboxProps>> &
-  FluentComponentStaticProps<CheckboxProps> & {
-    slotClassNames: CheckboxSlotClassNames;
-  } = props => {
+const Checkbox: React.FC<WithAsProp<CheckboxProps>> & FluentComponentStaticProps<CheckboxProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(Checkbox.displayName, context.telemetry);
   setStart();
@@ -195,7 +192,6 @@ const Checkbox: React.FC<WithAsProp<CheckboxProps>> &
 };
 
 Checkbox.displayName = 'Checkbox';
-Checkbox.deprecated_className = checkboxClassName;
 
 Checkbox.defaultProps = {
   accessibility: checkboxBehavior,
@@ -217,8 +213,6 @@ Checkbox.propTypes = {
   toggle: PropTypes.bool,
 };
 Checkbox.handledProps = Object.keys(Checkbox.propTypes) as any;
-
-Checkbox.slotClassNames = checkboxSlotClassNames;
 
 Checkbox.create = createShorthandFactory({
   Component: Checkbox,

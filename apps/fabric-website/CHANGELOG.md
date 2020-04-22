@@ -1,8 +1,26 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Thu, 16 Apr 2020 04:01:45 GMT and should not be manually modified.
+This log was last generated on Tue, 21 Apr 2020 12:34:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.10.29](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.10.29)
+
+Tue, 21 Apr 2020 12:34:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.10.28..@uifabric/fabric-website_v7.10.29)
+
+### Patches
+
+- Always build dev bundle of website even in production mode ([PR #12786](https://github.com/microsoft/fluentui/pull/12786) by elcraig@microsoft.com)
+
+## [7.10.28](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.10.28)
+
+Mon, 20 Apr 2020 15:55:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.10.23..@uifabric/fabric-website_v7.10.28)
+
+### Patches
+
+- guard against window and location not being available ([PR #12769](https://github.com/microsoft/fluentui/pull/12769) by mgodbolt@microsoft.com)
 
 ## [7.10.23](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.10.23)
 

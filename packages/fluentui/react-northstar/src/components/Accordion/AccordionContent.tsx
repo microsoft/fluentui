@@ -13,6 +13,7 @@ import {
   commonPropTypes,
   rtlTextContainer,
   ShorthandFactory,
+  ShorthandConfig,
 } from '../../utils';
 import { WithAsProp, ComponentEventHandler, withSafeTypeForAs } from '../../types';
 
@@ -38,6 +39,9 @@ class AccordionContent extends UIComponent<WithAsProp<AccordionContentProps>, an
   static displayName = 'AccordionContent';
 
   static create: ShorthandFactory<AccordionContentProps>;
+  static shorthandConfig: ShorthandConfig<AccordionContentProps> = {
+    mappedProp: 'content',
+  };
 
   static deprecated_className = accordionContentClassName;
 

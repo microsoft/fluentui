@@ -114,7 +114,6 @@ const ToolbarCustomItem: React.FC<WithAsProp<ToolbarCustomItemProps>> & FluentCo
   return element;
 };
 
-ToolbarCustomItem.deprecated_className = toolbarCustomItemClassName;
 ToolbarCustomItem.displayName = 'ToolbarCustomItem';
 
 ToolbarCustomItem.propTypes = {
