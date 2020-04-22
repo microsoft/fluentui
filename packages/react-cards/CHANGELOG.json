@@ -2,6 +2,27 @@
   "name": "@uifabric/react-cards",
   "entries": [
     {
+      "date": "Thu, 16 Apr 2020 04:01:45 GMT",
+      "tag": "@uifabric/react-cards_v0.109.54",
+      "version": "0.109.54",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Readme: Remove graduation details; Fabric=>Fluent wording updates",
+            "author": "elcraig@microsoft.com",
+            "commit": "9e3c7c7d4b92e132820cdbcd61a667829c712ecb",
+            "package": "@uifabric/react-cards"
+          },
+          {
+            "comment": "Card: Removing unwanted outline when Cards are clicked.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "ad8326f205013584301337084e15067937f49b7e",
+            "package": "@uifabric/react-cards"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 09 Apr 2020 12:24:31 GMT",
       "tag": "@uifabric/react-cards_v0.109.53",
       "version": "0.109.53",

@@ -4,7 +4,23 @@ import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { FocusTrapZone } from 'office-ui-fabric-react/lib/FocusTrapZone';
 import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
 import { Toggle, IToggle } from 'office-ui-fabric-react/lib/Toggle';
-import { Stack, IStackTokens } from 'office-ui-fabric-react/lib/Stack';
+import { Stack, IStackTokens, IStackStyles } from 'office-ui-fabric-react/lib/Stack';
+import { memoizeFunction } from 'office-ui-fabric-react/lib/Utilities';
+
+const tokens: IStackTokens = { childrenGap: 10 };
+
+const getTrapZoneStackStyles = memoizeFunction(
+  (useTrapZone: boolean): Partial<IStackStyles> => ({
+    root: { border: `2px solid ${useTrapZone ? '#ababab' : 'transparent'}`, padding: 10 },
+  }),
+);
+
+const focusZoneStackStyles: Partial<IStackStyles> = {
+  root: {
+    border: '2px dashed #ababab',
+    padding: 10,
+  },
+};
 
 export interface IFocusTrapZoneFocusZoneExampleState {
   useTrapZone: boolean;
@@ -19,14 +35,10 @@ export class FocusTrapZoneFocusZoneExample extends React.Component<{}, IFocusTra
 
   public render() {
     const { useTrapZone } = this.state;
-    const padding = 10;
-    const border = '2px dashed #ababab';
-    const rootBorder = `2px solid ${useTrapZone ? '#ababab' : 'transparent'}`;
-    const tokens: IStackTokens = { childrenGap: 10 };
 
     return (
       <FocusTrapZone disabled={!useTrapZone} forceFocusInsideTrap={true} focusPreviouslyFocusedInnerElement={true}>
-        <Stack tokens={tokens} horizontalAlign="start" styles={{ root: { border: rootBorder, padding } }}>
+        <Stack tokens={tokens} horizontalAlign="start" styles={getTrapZoneStackStyles(useTrapZone)}>
           <Toggle
             label="Use trap zone"
             componentRef={this._toggle}
@@ -37,7 +49,7 @@ export class FocusTrapZoneFocusZoneExample extends React.Component<{}, IFocusTra
           />
 
           <FocusZone direction={FocusZoneDirection.horizontal} data-is-visible={true}>
-            <Stack horizontal tokens={tokens} styles={{ root: { border, padding } }}>
+            <Stack horizontal tokens={tokens} styles={focusZoneStackStyles}>
               <DefaultButton text="FZ1" />
               <DefaultButton text="FZ1" />
               <DefaultButton text="FZ1" />
@@ -47,7 +59,7 @@ export class FocusTrapZoneFocusZoneExample extends React.Component<{}, IFocusTra
           <DefaultButton text="No FZ" />
 
           <FocusZone direction={FocusZoneDirection.horizontal} data-is-visible={true}>
-            <Stack horizontal tokens={tokens} styles={{ root: { border, padding } }}>
+            <Stack horizontal tokens={tokens} styles={focusZoneStackStyles}>
               <DefaultButton text="FZ2" />
               <DefaultButton text="FZ2" />
               <DefaultButton text="FZ2" />

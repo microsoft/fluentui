@@ -27,12 +27,8 @@ import {
   ProviderContextPrepared,
 } from '../../types';
 import TreeTitle, { TreeTitleProps } from './TreeTitle';
+import { BoxProps } from '../Box/Box';
 import { hasSubtree, TreeContext } from './utils';
-
-export interface TreeItemSlotClassNames {
-  title: string;
-  subtree: string;
-}
 
 export interface TreeItemProps extends UIComponentProps, ChildrenComponentProps {
   /** Accessibility behavior if overridden by the user. */
@@ -86,12 +82,26 @@ export interface TreeItemProps extends UIComponentProps, ChildrenComponentProps 
 
   /** Properties for TreeTitle. */
   title?: ShorthandValue<TreeTitleProps>;
+
+  /** Whether or not the item can be selectable. */
+  selectable?: boolean;
+
+  /** A state of selection indicator. */
+  selected?: boolean;
+
+  /** A selection indicator icon can be customized. */
+  selectionIndicator?: ShorthandValue<BoxProps>;
+
+  /** Whether or not tree item is part of the selectable parent. */
+  selectableParent?: boolean;
+
+  indeterminate?: boolean;
 }
 
 export type TreeItemStylesProps = Required<Pick<TreeItemProps, 'level'>>;
+export const treeItemClassName = 'ui-tree__item';
 
-const TreeItem: React.FC<WithAsProp<TreeItemProps>> &
-  FluentComponentStaticProps<TreeItemProps> & { slotClassNames: TreeItemSlotClassNames } = props => {
+const TreeItem: React.FC<WithAsProp<TreeItemProps>> & FluentComponentStaticProps<TreeItemProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(TreeItem.displayName, context.telemetry);
   setStart();
@@ -110,9 +120,15 @@ const TreeItem: React.FC<WithAsProp<TreeItemProps>> &
     styles,
     variables,
     treeSize,
+    selectionIndicator,
+    selectableParent,
+    selected,
+    selectable,
+    indeterminate,
   } = props;
 
   const hasSubtreeItem = hasSubtree(props);
+
   const { onFocusParent, onSiblingsExpand, onFocusFirstChild, onTitleClick } = React.useContext(TreeContext);
 
   const getA11Props = useAccessibility(accessibility, {
@@ -154,18 +170,21 @@ const TreeItem: React.FC<WithAsProp<TreeItemProps>> &
         handleSiblingsExpand(e);
       },
     },
-    debugName: TreeItem.className,
+    debugName: TreeItem.displayName,
     mapPropsToBehavior: () => ({
       expanded,
       level,
       index,
       hasSubtree: hasSubtreeItem,
       treeSize,
+      selected,
+      selectable,
+      selectableParent,
     }),
     rtl: context.rtl,
   });
   const { classes } = useStyles<TreeItemStylesProps>(TreeItem.displayName, {
-    className: TreeItem.className,
+    className: treeItemClassName,
     mapPropsToStyles: () => ({
       level,
     }),
@@ -198,7 +217,6 @@ const TreeItem: React.FC<WithAsProp<TreeItemProps>> &
 
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(TreeItem.handledProps, props);
-
   const element = (
     <ElementType
       {...getA11Props('root', {
@@ -212,13 +230,18 @@ const TreeItem: React.FC<WithAsProp<TreeItemProps>> &
         : TreeTitle.create(title, {
             defaultProps: () =>
               getA11Props('title', {
-                className: TreeItem.slotClassNames.title,
-                expanded,
                 hasSubtree: hasSubtreeItem,
                 as: hasSubtreeItem ? 'span' : 'a',
                 level,
                 treeSize,
+                expanded,
                 index,
+                selected,
+                selectable,
+                ...(hasSubtreeItem && !selectableParent && { selectable: false }),
+                ...(selectableParent && { indeterminate }),
+                selectableParent,
+                selectionIndicator,
               }),
             render: renderItemTitle,
             overrideProps: handleTitleOverrides,
@@ -232,13 +255,7 @@ const TreeItem: React.FC<WithAsProp<TreeItemProps>> &
   return elementWithRef;
 };
 
-TreeItem.className = 'ui-tree__item';
 TreeItem.displayName = 'TreeItem';
-
-TreeItem.slotClassNames = {
-  title: `${TreeItem.className}__title`,
-  subtree: `${TreeItem.className}__subtree`,
-};
 
 TreeItem.propTypes = {
   ...commonPropTypes.createCommon({
@@ -258,6 +275,11 @@ TreeItem.propTypes = {
   renderItemTitle: PropTypes.func,
   treeSize: PropTypes.number,
   title: customPropTypes.itemShorthand,
+  selectionIndicator: customPropTypes.shorthandAllowingChildren,
+  selected: PropTypes.bool,
+  selectable: PropTypes.bool,
+  selectableParent: PropTypes.bool,
+  indeterminate: PropTypes.bool,
 };
 TreeItem.defaultProps = {
   accessibility: treeItemBehavior,

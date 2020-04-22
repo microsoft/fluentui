@@ -11,6 +11,7 @@ import {
   IToggleStyles,
   mergeStyles,
   Toggle,
+  IButtonStyles,
 } from 'office-ui-fabric-react';
 
 const margin = '0 20px 20px 0';
@@ -22,6 +23,7 @@ const toggleStyles: Partial<IToggleStyles> = {
   root: { margin: margin },
   label: { marginLeft: 10 },
 };
+const addItemButtonStyles: Partial<IButtonStyles> = { root: { margin: margin } };
 
 export interface IDetailsListGroupedExampleItem {
   key: string;
@@ -81,7 +83,7 @@ export class DetailsListGroupedExample extends React.Component<{}, IDetailsListG
     return (
       <div>
         <div className={controlWrapperClass}>
-          <DefaultButton onClick={this._addItem} text="Add an item" styles={{ root: { margin: margin } }} />
+          <DefaultButton onClick={this._addItem} text="Add an item" styles={addItemButtonStyles} />
           <Toggle
             label="Compact mode"
             inlineLabel

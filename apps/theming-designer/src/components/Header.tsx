@@ -103,7 +103,7 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
             aria-label="Microsoft Fabric Theme Designer page"
             styles={pipeFabricStyles}
           >
-            | UI Fabric Theme Designer
+            | Fluent UI Theme Designer
           </Link>
         </Stack>
         <PrimaryButton text="Export theme" onClick={this.showPanel} />

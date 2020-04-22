@@ -1,0 +1,9 @@
+{
+  "type": "minor",
+  "comment": "adding onclick to the line in the line chart",
+  "packageName": "@uifabric/charting",
+  "email": "v-sivsar@microsoft.com",
+  "commit": "173ac10508c6b91998a93e609eab7099b7ad66ba",
+  "dependentChangeType": "patch",
+  "date": "2020-04-06T08:03:55.847Z"
+}

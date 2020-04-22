@@ -9,11 +9,13 @@ const popupContentStyles: ComponentSlotStylesPrepared<PopupContentStylesProps, P
     display: 'block',
     zIndex: v.zIndex,
 
-    ...(p.pointing &&
-      getContainerStyles({
+    ...(p.pointing && {
+      pointerEvents: 'none',
+      ...getContainerStyles({
         placement: p.basePlacement,
         margin: v.pointerMargin,
-      })),
+      }),
+    }),
   }),
 
   pointer: ({ props: p, variables: v, rtl }): ICSSInJSStyle =>
@@ -29,7 +31,7 @@ const popupContentStyles: ComponentSlotStylesPrepared<PopupContentStylesProps, P
       rtl,
     }),
 
-  content: ({ variables: v }): ICSSInJSStyle => ({
+  content: ({ props: p, variables: v }): ICSSInJSStyle => ({
     display: 'block',
     background: v.backgroundColor,
     color: v.color,
@@ -40,6 +42,10 @@ const popupContentStyles: ComponentSlotStylesPrepared<PopupContentStylesProps, P
 
     padding: v.padding,
     transform: 'rotate(360deg)',
+
+    ...(p.pointing && {
+      pointerEvents: 'all',
+    }),
   }),
 };
 

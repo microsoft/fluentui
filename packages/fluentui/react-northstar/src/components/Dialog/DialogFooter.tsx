@@ -14,12 +14,13 @@ import {
 import { WithAsProp, withSafeTypeForAs } from '../../types';
 
 export interface DialogFooterProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {}
+export const dialogFooterClassName = 'ui-dialog__footer';
 
 class DialogFooter extends UIComponent<WithAsProp<DialogFooterProps>> {
   static create: ShorthandFactory<DialogFooterProps>;
 
   static displayName = 'DialogFooter';
-  static className = 'ui-dialog__footer';
+  static deprecated_className = dialogFooterClassName;
 
   static propTypes = {
     ...commonPropTypes.createCommon(),

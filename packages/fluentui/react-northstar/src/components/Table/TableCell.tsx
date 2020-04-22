@@ -46,10 +46,12 @@ export interface TableCellSlotClassNames {
   content: string;
 }
 
-const TableCell: React.FC<WithAsProp<TableCellProps>> &
-  FluentComponentStaticProps<TableCellProps> & {
-    slotClassNames: TableCellSlotClassNames;
-  } = props => {
+export const tableCellClassName = 'ui-table__cell';
+export const tableCellSlotClassNames: TableCellSlotClassNames = {
+  content: `${tableCellClassName}__content`,
+};
+
+const TableCell: React.FC<WithAsProp<TableCellProps>> & FluentComponentStaticProps<TableCellProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(TableCell.displayName, context.telemetry);
   setStart();
@@ -74,7 +76,7 @@ const TableCell: React.FC<WithAsProp<TableCellProps>> &
   });
 
   const { classes, styles: resolvedStyles } = useStyles<TableCellStylesProps>(TableCell.displayName, {
-    className: TableCell.className,
+    className: tableCellClassName,
     mapPropsToStyles: () => ({
       truncateContent,
     }),
@@ -107,7 +109,7 @@ const TableCell: React.FC<WithAsProp<TableCellProps>> &
           {hasChildren
             ? children
             : Box.create(content, {
-                defaultProps: () => ({ styles: resolvedStyles.content }),
+                defaultProps: () => ({ className: tableCellSlotClassNames.content, styles: resolvedStyles.content }),
               })}
         </ElementType>,
       )}
@@ -118,12 +120,6 @@ const TableCell: React.FC<WithAsProp<TableCellProps>> &
 };
 
 TableCell.displayName = 'TableCell';
-
-TableCell.className = 'ui-table__cell';
-
-TableCell.slotClassNames = {
-  content: `${TableCell.className}__content`,
-};
 
 TableCell.propTypes = {
   ...commonPropTypes.createCommon({

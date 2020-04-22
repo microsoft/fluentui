@@ -19,10 +19,6 @@ import {
 import RadioGroupItem, { RadioGroupItemProps } from './RadioGroupItem';
 import { WithAsProp, ComponentEventHandler, withSafeTypeForAs, ShorthandCollection } from '../../types';
 
-export interface RadioGroupSlotClassNames {
-  item: string;
-}
-
 export interface RadioGroupProps extends UIComponentProps, ChildrenComponentProps {
   /** Accessibility behavior if overridden by the user. */
   accessibility?: Accessibility;
@@ -47,14 +43,12 @@ export interface RadioGroupProps extends UIComponentProps, ChildrenComponentProp
   vertical?: boolean;
 }
 
+export const radioGroupClassName = 'ui-radiogroup';
+
 class RadioGroup extends AutoControlledComponent<WithAsProp<RadioGroupProps>, any> {
   static displayName = 'RadioGroup';
 
-  static className = 'ui-radiogroup';
-
-  static slotClassNames: RadioGroupSlotClassNames = {
-    item: `${RadioGroup.className}__item`,
-  };
+  static deprecated_className = radioGroupClassName;
 
   static create: ShorthandFactory<RadioGroupProps>;
 
@@ -165,7 +159,6 @@ class RadioGroup extends AutoControlledComponent<WithAsProp<RadioGroupProps>, an
     return _.map(items, (item, index) =>
       RadioGroupItem.create(item, {
         defaultProps: () => ({
-          className: RadioGroup.slotClassNames.item,
           vertical,
           ...(index === 0 && isNoneValueSelected && { tabIndex: 0 }),
         }),

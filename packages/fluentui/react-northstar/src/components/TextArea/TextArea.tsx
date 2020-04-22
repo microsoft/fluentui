@@ -47,8 +47,10 @@ export interface TextAreaState {
   value?: TextAreaProps['value'];
 }
 
+export const textAreaClassName = 'ui-textarea';
+
 class TextArea extends AutoControlledComponent<WithAsProp<TextAreaProps>, TextAreaState> {
-  static className = 'ui-textarea';
+  static deprecated_className = textAreaClassName;
 
   static displayName = 'TextArea';
 

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Announced } from 'office-ui-fabric-react/lib/Announced';
-import { TextField } from 'office-ui-fabric-react/lib/TextField';
+import { TextField, ITextFieldStyles } from 'office-ui-fabric-react/lib/TextField';
 import { DetailsList, DetailsListLayoutMode, Selection, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
@@ -10,6 +10,8 @@ const exampleChildClass = mergeStyles({
   display: 'block',
   marginBottom: '10px',
 });
+
+const textFieldStyles: Partial<ITextFieldStyles> = { root: { maxWidth: '300px' } };
 
 export interface IDetailsListBasicExampleItem {
   key: number;
@@ -66,7 +68,7 @@ export class DetailsListBasicExample extends React.Component<{}, IDetailsListBas
           className={exampleChildClass}
           label="Filter by name:"
           onChange={this._onFilter}
-          styles={{ root: { maxWidth: '300px' } }}
+          styles={textFieldStyles}
         />
         <Announced message={`Number of items after filter applied: ${items.length}.`} />
         <MarqueeSelection selection={this._selection}>
