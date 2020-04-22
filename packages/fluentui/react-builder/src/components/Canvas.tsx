@@ -245,6 +245,7 @@ const Canvas = ({
               <DebugFrame
                 target={document}
                 selector={`[data-builder-id="${selectedComponent.uuid}"]`}
+                componentName={selectedComponent.displayName}
                 onDelete={onDeleteComponent}
                 onGoToParent={onGoToParentComponent}
               />
