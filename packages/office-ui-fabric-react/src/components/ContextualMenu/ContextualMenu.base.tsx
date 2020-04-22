@@ -35,8 +35,9 @@ import {
   isIOS,
   isMac,
   initializeComponentRef,
+  memoizeFunction,
 } from '../../Utilities';
-import { hasSubmenu, getIsChecked, isItemDisabled, memoizeLastResultPerId } from '../../utilities/contextualMenu/index';
+import { hasSubmenu, getIsChecked, isItemDisabled } from '../../utilities/contextualMenu/index';
 import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 import { Callout, ICalloutContentStyleProps, ICalloutContentStyles, Target } from '../../Callout';
 import { ContextualMenuItem } from './ContextualMenuItem';
@@ -464,9 +465,8 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
     );
   }
 
-  private _convertMenuItemToMenuItemRenderProps = memoizeLastResultPerId(
+  private _convertMenuItemToMenuItemRenderProps = memoizeFunction(
     (
-      _id: string,
       item: IContextualMenuItem,
       index: number,
       focusableElementIndex: number,
@@ -494,7 +494,6 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
       <ul className={this._classNames.list} onKeyDown={this._onKeyDown} onKeyUp={this._onKeyUp} role="menu">
         {menuListProps.items.map((item, index) => {
           const contextualMenuItemRenderProps: IContextualMenuItemRenderProps = this._convertMenuItemToMenuItemRenderProps(
-            this.props.id + item.key,
             item,
             index,
             indexCorrection,
@@ -656,7 +655,6 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
                 this._renderListItem(headerItem, sectionItem.key || index, menuClassNames, sectionItem.title)}
               {sectionProps.items.map((contextualMenuItem, itemsIndex) => {
                 const contextualMenuItemRenderProps: IContextualMenuItemRenderProps = this._convertMenuItemToMenuItemRenderProps(
-                  this.props.id + contextualMenuItem.key,
                   contextualMenuItem,
                   itemsIndex,
                   itemsIndex,
