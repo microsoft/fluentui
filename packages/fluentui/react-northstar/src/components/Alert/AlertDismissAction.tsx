@@ -67,10 +67,13 @@ export type AlertDismissActionStylesProps = Pick<
   hasContent?: boolean;
 };
 
+export const alertDismissActionClassName = 'ui-alert__dismissaction';
+export const alertDismissActionSlotClassNames: AlertDismissActionSlotClassNames = {
+  content: `${alertDismissActionClassName}__content`,
+};
+
 const AlertDismissAction: React.FC<WithAsProp<AlertDismissActionProps>> &
-  FluentComponentStaticProps<AlertDismissActionProps> & {
-    slotClassNames: AlertDismissActionSlotClassNames;
-  } = props => {
+  FluentComponentStaticProps<AlertDismissActionProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(AlertDismissAction.displayName, context.telemetry);
   setStart();
@@ -109,7 +112,7 @@ const AlertDismissAction: React.FC<WithAsProp<AlertDismissActionProps>> &
     rtl: context.rtl,
   });
   const { classes, styles: resolvedStyles } = useStyles<AlertDismissActionStylesProps>(AlertDismissAction.displayName, {
-    className: AlertDismissAction.className,
+    className: alertDismissActionClassName,
     mapPropsToStyles: () => ({
       disabled,
       danger,
@@ -155,7 +158,7 @@ const AlertDismissAction: React.FC<WithAsProp<AlertDismissActionProps>> &
             defaultProps: () =>
               getA11Props('content', {
                 as: 'span',
-                className: AlertDismissAction.slotClassNames.content,
+                className: alertDismissActionSlotClassNames.content,
                 styles: resolvedStyles.content,
               }),
           })}
@@ -174,7 +177,6 @@ AlertDismissAction.defaultProps = {
 };
 
 AlertDismissAction.displayName = 'AlertDismissAction';
-AlertDismissAction.className = 'ui-alert__dismissaction';
 
 AlertDismissAction.propTypes = {
   ...commonPropTypes.createCommon({
@@ -190,10 +192,6 @@ AlertDismissAction.propTypes = {
 AlertDismissAction.handledProps = Object.keys(AlertDismissAction.propTypes) as any;
 
 AlertDismissAction.create = createShorthandFactory({ Component: AlertDismissAction, mappedProp: 'content' });
-
-AlertDismissAction.slotClassNames = {
-  content: `${AlertDismissAction.className}__content`,
-};
 
 /**
  * A AlertDismissAction allows users to customize the dismissAction slot  inside the Alert component.

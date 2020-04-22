@@ -1,6 +1,26 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Wed, 25 Mar 2020 12:30:04 GMT and should not be manually modified.
+This log was last generated on Wed, 22 Apr 2020 12:33:04 GMT and should not be manually modified.
+
+<!-- Start content -->
+
+## [7.11.8](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.11.8)
+
+Wed, 22 Apr 2020 12:33:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/styling_v7.11.3..@uifabric/styling_v7.11.8)
+
+### Patches
+
+- remove outdated comment ([PR #12802](https://github.com/microsoft/fluentui/pull/12802) by phkuo@microsoft.com)
+
+## [7.11.3](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.11.3)
+
+Thu, 16 Apr 2020 04:01:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/styling_v7.11.2..@uifabric/styling_v7.11.3)
+
+### Patches
+
+- Readme: Fabric=>Fluent wording updates ([PR #12508](https://github.com/microsoft/fluentui/pull/12508) by elcraig@microsoft.com)
 
 ## 7.11.0
 Wed, 25 Mar 2020 12:30:04 GMT
@@ -1566,4 +1586,3 @@ Fri, 21 Apr 2017 06:23:54 GMT
 ### Patches
 
 - Adding the initial styling package. Initial checkin, not meant to be consumed until we release a 1.0.0.
-

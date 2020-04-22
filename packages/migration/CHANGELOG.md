@@ -1,6 +1,17 @@
 # Change Log - @uifabric/migration
 
-This log was last generated on Wed, 25 Mar 2020 12:30:04 GMT and should not be manually modified.
+This log was last generated on Thu, 16 Apr 2020 04:01:45 GMT and should not be manually modified.
+
+<!-- Start content -->
+
+## [7.0.16](https://github.com/microsoft/fluentui/tree/@uifabric/migration_v7.0.16)
+
+Thu, 16 Apr 2020 04:01:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/migration_v7.0.14..@uifabric/migration_v7.0.16)
+
+### Patches
+
+- Readme: Fabric=>Fluent wording updates ([PR #12508](https://github.com/microsoft/fluentui/pull/12508) by elcraig@microsoft.com)
 
 ## 7.0.14
 Wed, 25 Mar 2020 12:30:04 GMT
@@ -136,4 +147,3 @@ Tue, 19 Mar 2019 18:05:11 GMT
 ### Patches
 
 - Initial release, under construction
-

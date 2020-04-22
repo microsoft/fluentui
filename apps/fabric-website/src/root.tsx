@@ -1,4 +1,4 @@
-import { registerIcons, on, KeyCodes } from 'office-ui-fabric-react';
+import { registerIcons, on, KeyCodes, setRTL } from 'office-ui-fabric-react';
 import { initializeFileTypeIcons } from '@uifabric/file-type-icons';
 import { createSite } from './utilities/createSite';
 import * as platformPickerStyles from '@uifabric/example-app-base/lib/components/PlatformPicker/PlatformPicker.module.scss';
@@ -10,6 +10,8 @@ import { AndroidLogo, AppleLogo, WebLogo } from './utilities/index';
 // TODO: handle redirects
 
 initializeFileTypeIcons('https://static2.sharepointonline.com/files/fabric/assets/item-types/');
+
+setRTL(false);
 
 registerIcons({
   icons: {

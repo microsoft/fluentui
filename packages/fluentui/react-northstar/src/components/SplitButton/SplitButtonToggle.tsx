@@ -51,6 +51,7 @@ export interface SplitButtonToggleProps extends UIComponentProps, ContentCompone
 }
 
 export type SplitButtonToggleStylesProps = Pick<SplitButtonToggleProps, 'primary' | 'disabled' | 'size'>;
+export const splitButtonToggleClassName = 'ui-splitbutton__toggle';
 
 const SplitButtonToggle: React.FC<WithAsProp<SplitButtonToggleProps>> &
   FluentComponentStaticProps<SplitButtonToggleProps> = props => {
@@ -77,7 +78,7 @@ const SplitButtonToggle: React.FC<WithAsProp<SplitButtonToggleProps>> &
     rtl: context.rtl,
   });
   const { classes } = useStyles<SplitButtonToggleStylesProps>(SplitButtonToggle.displayName, {
-    className: SplitButtonToggle.className,
+    className: splitButtonToggleClassName,
     mapPropsToStyles: () => ({
       primary,
       disabled,
@@ -129,7 +130,6 @@ SplitButtonToggle.defaultProps = {
 };
 
 SplitButtonToggle.displayName = 'SplitButtonToggle';
-SplitButtonToggle.className = 'ui-splitbutton__toggle';
 
 SplitButtonToggle.propTypes = {
   ...commonPropTypes.createCommon({}),

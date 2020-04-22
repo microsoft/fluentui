@@ -54,10 +54,11 @@ export const CardStyles: ICardComponent['styles'] = (props, theme, tokens): ICar
         boxShadow: tokens.boxShadow,
         cursor: tokens.cursor,
         height: tokens.height,
-        width: tokens.width,
-        minWidth: tokens.minWidth,
         maxWidth: tokens.maxWidth,
+        minWidth: tokens.minWidth,
+        outline: 'none',
         transition: 'box-shadow 0.5s ease',
+        width: tokens.width,
 
         selectors: {
           ':hover': {

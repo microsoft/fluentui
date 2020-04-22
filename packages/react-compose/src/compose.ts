@@ -26,7 +26,10 @@ function computeDisplayNames<InputProps, InputStylesProps, ParentProps, ParentSt
 }
 
 function compose<InputProps, InputStylesProps, ParentProps, ParentStylesProps>(
-  InputComponent: React.FunctionComponent<ParentProps> & { fluentComposeConfig?: ComposePreparedOptions },
+  InputComponent: React.FunctionComponent<ParentProps> & {
+    fluentComposeConfig?: ComposePreparedOptions;
+    handledProps?: (keyof ParentProps)[];
+  },
   composeOptions: ComposeOptions<InputProps, InputStylesProps, ParentStylesProps> = {},
 ): ComposedComponent<InputProps, InputStylesProps, ParentProps, ParentStylesProps> {
   const Component = (InputComponent.bind(null) as unknown) as ComposedComponent<
@@ -40,18 +43,22 @@ function compose<InputProps, InputStylesProps, ParentProps, ParentStylesProps>(
     ...defaultComposeOptions,
     ...(InputComponent.displayName && { displayNames: [InputComponent.displayName] }),
   };
-  const { handledProps = [], mapPropsToStylesProps } = composeOptions;
 
   Component.displayName = composeOptions.displayName || InputComponent.displayName;
+
   Component.fluentComposeConfig = {
     className: composeOptions.className || inputOptions.className,
     displayNames: computeDisplayNames(inputOptions, composeOptions),
 
-    mapPropsToStylesPropsChain: (mapPropsToStylesProps
-      ? [...inputOptions.mapPropsToStylesPropsChain, mapPropsToStylesProps]
+    mapPropsToStylesPropsChain: (composeOptions.mapPropsToStylesProps
+      ? [...inputOptions.mapPropsToStylesPropsChain, composeOptions.mapPropsToStylesProps]
       : inputOptions.mapPropsToStylesPropsChain) as ((props: ParentStylesProps & InputProps) => InputStylesProps)[],
 
-    handledProps: [...inputOptions.handledProps, ...handledProps],
+    handledProps: [
+      ...(InputComponent.handledProps || []),
+      ...inputOptions.handledProps,
+      ...(composeOptions.handledProps || []),
+    ],
     overrideStyles: composeOptions.overrideStyles || false,
   };
 
