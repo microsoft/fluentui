@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "import path changed",
+  "packageName": "@uifabric/charting",
+  "email": "email not defined",
+  "dependentChangeType": "patch",
+  "date": "2020-04-22T11:26:50.295Z"
+}
