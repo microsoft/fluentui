@@ -168,6 +168,8 @@ class Designer extends React.Component<any, DesignerState> {
         on: this.potentialDropTarget,
       });
 
+      let addedComponent: JSONTreeElement | null = null;
+
       if (this.potentialDropTarget) {
         // TODO: it sucks we have to rely on referential mutation of the jsonTree to update it.
         //       example, here we can't simply drop 'draggingElement' on 'potentialDropTarget'.
@@ -176,11 +178,16 @@ class Designer extends React.Component<any, DesignerState> {
         const droppedOn = jsonTreeFindElement(jsonTree, this.potentialDropTarget.uuid);
         console.log({ droppedOn });
         resolveDrop(draggingElement, droppedOn);
+        addedComponent = jsonTreeFindElement(jsonTree, draggingElement.uuid);
       }
 
       return {
         draggingElement: null,
         jsonTree,
+        ...(addedComponent && {
+          selectedJSONTreeElement: addedComponent,
+          selectedComponentInfo: componentInfoContext.byDisplayName[addedComponent.displayName],
+        }),
       };
     });
   };
