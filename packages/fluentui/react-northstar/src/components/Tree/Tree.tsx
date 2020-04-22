@@ -226,7 +226,7 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
     }
 
     // if the target is equal to currentTarget it means treeItem should be collapsed, not procced with selection
-    if (isExpandedSelectableParent && e.target === e.currentTarget && keyboardKey.getCode(e) === keyboardKey.Enter) {
+    if (isExpandedSelectableParent && e.target === e.currentTarget && keyboardKey.getCode(e) !== keyboardKey.Enter) {
       return;
     }
 

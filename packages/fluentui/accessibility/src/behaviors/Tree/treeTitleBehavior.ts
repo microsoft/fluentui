@@ -36,7 +36,7 @@ const treeTitleBehavior: Accessibility<TreeTitleBehaviorProps> = props => ({
       },
       ...(props.selectable && {
         performClick: {
-          keyCombinations: [{ keyCode: keyboardKey.Spacebar }],
+          keyCombinations: [{ keyCode: keyboardKey.Spacebar }, { keyCode: keyboardKey.Enter }],
         },
       }),
     },
