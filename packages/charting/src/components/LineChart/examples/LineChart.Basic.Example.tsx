@@ -27,23 +27,23 @@ export class LineChartBasicExample extends React.Component<{}, {}> {
           data: [
             {
               x: new Date('2020-03-03T00:00:00.000Z'),
-              y: 297,
+              y: 217,
             },
             {
               x: new Date('2020-03-04T00:00:00.000Z'),
-              y: 284,
+              y: 248,
             },
             {
               x: new Date('2020-03-05T00:00:00.000Z'),
-              y: 282,
+              y: 252,
             },
             {
               x: new Date('2020-03-06T00:00:00.000Z'),
-              y: 294,
+              y: 274,
             },
             {
               x: new Date('2020-03-07T00:00:00.000Z'),
-              y: 294,
+              y: 260,
             },
             {
               x: new Date('2020-03-08T00:00:00.000Z'),
@@ -51,10 +51,11 @@ export class LineChartBasicExample extends React.Component<{}, {}> {
             },
             {
               x: new Date('2020-03-09T00:00:00.000Z'),
-              y: 298,
+              y: 218,
             },
           ],
           color: DefaultPalette.blue,
+          onLineClick: () => console.log('From_Legacy_to_O365'),
         },
         {
           legend: 'All',
@@ -77,7 +78,7 @@ export class LineChartBasicExample extends React.Component<{}, {}> {
             },
             {
               x: new Date('2020-03-07T00:00:00.000Z'),
-              y: 294,
+              y: 224,
             },
             {
               x: new Date('2020-03-08T00:00:00.000Z'),
@@ -98,7 +99,7 @@ export class LineChartBasicExample extends React.Component<{}, {}> {
         <LineChart
           data={data}
           legendsOverflowText={'Overflow Items'}
-          yMinValue={282}
+          yMinValue={200}
           yMaxValue={301}
           yAxisTickFormat={d3.format('$,')}
         />
