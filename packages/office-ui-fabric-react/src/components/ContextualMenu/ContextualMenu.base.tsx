@@ -118,7 +118,6 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
   private _id: string;
   private _host: HTMLElement;
   private _previousActiveElement: HTMLElement | null;
-  private _isFocusingPreviousElement: boolean;
   private _enterTimerId: number | undefined;
   private _targetWindow: Window;
   private _target: Element | MouseEvent | IPoint | null;
@@ -152,7 +151,6 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
     };
 
     this._id = props.id || getId('ContextualMenu');
-    this._isFocusingPreviousElement = false;
     this._isScrollIdle = true;
     this._shouldUpdateFocusOnMouseEvent = !this.props.delayUpdateFocusOnHover;
     this._gotMouseMove = false;
@@ -936,7 +934,6 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
     let handled = false;
 
     if (shouldHandleKey(ev)) {
-      this._isFocusingPreviousElement = true;
       this.dismiss(ev, dismissAllMenus);
       ev.preventDefault();
       ev.stopPropagation();
