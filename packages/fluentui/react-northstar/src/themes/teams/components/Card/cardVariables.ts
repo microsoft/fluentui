@@ -1,9 +1,16 @@
 import { pxToRem } from '../../../../utils';
 
 export interface CardVariables {
+  backgroundColor: string;
+  backgroundColorDisabled: string;
+  backgroundColorFocus: string;
+  backgroundColorHover: string;
+  backgroundColorPressed: string;
   borderStyle: string;
   borderColor: string;
   borderColorDisabled: string;
+  borderColorHover: string;
+  borderColorPressed: string;
   borderWidth: string;
   borderRadius: string;
   boxShadow: string;
@@ -39,11 +46,20 @@ export interface CardVariables {
 
 export default (siteVars): CardVariables => {
   return {
+    backgroundColor: siteVars.colorScheme.default.background,
+    backgroundColorDisabled: siteVars.colorScheme.default.backgroundDisabled,
+    backgroundColorFocus: siteVars.colorScheme.default.backgroundFocus,
+    backgroundColorHover: siteVars.colorScheme.default.backgroundHover,
+    backgroundColorPressed: siteVars.colorScheme.default.backgroundPressed,
     borderStyle: 'solid',
-    borderColor: siteVars.colors.black,
+    borderColor: siteVars.colorScheme.default.border,
+    borderColorDisabled: siteVars.colorScheme.default.borderDisabled,
+    borderColorHover: siteVars.colorScheme.default.borderHover,
+    borderColorPressed: siteVars.colorScheme.default.borderPressed,
     borderWidth: siteVars.borderWidth,
     borderRadius: pxToRem(4),
-    boxShadow: undefined,
+    boxShadow: 'none',
+    boxShadowDisabled: 'none',
     boxShadowHover: siteVars.shadowLevel3,
     boxShadowFocus: siteVars.shadowLevel2,
     boxShadowPressed: siteVars.shadowLevel1,
@@ -72,7 +88,5 @@ export default (siteVars): CardVariables => {
     sizeLargePadding: pxToRem(20),
     fluidWidth: '100%',
     fluidHeight: '100%',
-    borderColorDisabled: siteVars.colorScheme.default.borderDisabled,
-    boxShadowDisabled: undefined,
   };
 };

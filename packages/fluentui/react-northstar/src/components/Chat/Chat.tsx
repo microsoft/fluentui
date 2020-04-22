@@ -45,7 +45,6 @@ export const chatSlotClassNames: ChatSlotClassNames = {
 
 const Chat: React.FC<WithAsProp<ChatProps>> &
   FluentComponentStaticProps<ChatProps> & {
-    slotClassNames: ChatSlotClassNames;
     Item: typeof ChatItem;
     Message: typeof ChatMessage;
   } = props => {
@@ -95,10 +94,7 @@ const Chat: React.FC<WithAsProp<ChatProps>> &
   return element;
 };
 
-Chat.deprecated_className = chatClassName;
 Chat.displayName = 'Chat';
-
-Chat.slotClassNames = chatSlotClassNames;
 
 Chat.defaultProps = {
   accessibility: chatBehavior,

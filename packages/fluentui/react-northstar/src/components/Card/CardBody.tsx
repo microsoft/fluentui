@@ -60,7 +60,6 @@ const CardBody: React.FC<WithAsProp<CardBodyProps>> & FluentComponentStaticProps
 };
 
 CardBody.displayName = 'CardBody';
-CardBody.deprecated_className = cardBodyClassName;
 
 CardBody.propTypes = {
   ...commonPropTypes.createCommon(),

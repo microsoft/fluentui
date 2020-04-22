@@ -159,7 +159,6 @@ const Text: React.FC<WithAsProp<TextProps>> & FluentComponentStaticProps<TextPro
   return element;
 };
 
-Text.deprecated_className = textClassName;
 Text.displayName = 'Text';
 
 Text.defaultProps = {

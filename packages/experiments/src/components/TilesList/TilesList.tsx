@@ -226,7 +226,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
             item: item.content,
             finalSize: { width: 0, height: 0 },
             position: {
-              column: 0,
+              column,
             },
           })}
         </div>
@@ -256,7 +256,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
             item: item.content,
             finalSize,
             position: {
-              column: 0,
+              column,
             },
           })}
         </div>

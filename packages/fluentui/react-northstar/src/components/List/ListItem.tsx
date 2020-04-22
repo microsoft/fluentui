@@ -90,9 +90,7 @@ export const listItemSlotClassNames: ListItemSlotClassNames = {
 };
 
 const ListItem: React.FC<WithAsProp<ListItemProps> & { index: number }> &
-  FluentComponentStaticProps<ListItemProps> & {
-    slotClassNames: ListItemSlotClassNames;
-  } = props => {
+  FluentComponentStaticProps<ListItemProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(ListItem.displayName, context.telemetry);
 
@@ -246,7 +244,6 @@ const ListItem: React.FC<WithAsProp<ListItemProps> & { index: number }> &
   return element;
 };
 
-ListItem.deprecated_className = listItemClassName;
 ListItem.displayName = 'ListItem';
 
 ListItem.defaultProps = {
@@ -281,8 +278,6 @@ ListItem.propTypes = {
   onClick: PropTypes.func,
 };
 ListItem.handledProps = Object.keys(ListItem.propTypes) as any;
-
-ListItem.slotClassNames = listItemSlotClassNames;
 
 ListItem.create = createShorthandFactory({ Component: ListItem, mappedProp: 'content' });
 

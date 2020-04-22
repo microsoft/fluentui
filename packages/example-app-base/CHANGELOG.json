@@ -2,6 +2,21 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "date": "Mon, 20 Apr 2020 15:55:12 GMT",
+      "tag": "@uifabric/example-app-base_v7.12.39",
+      "version": "7.12.39",
+      "comments": {
+        "patch": [
+          {
+            "comment": "guard against window and location not being available",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "268cfa142c6a06085678337222a840ebfe948ae8",
+            "package": "@uifabric/example-app-base"
+          }
+        ]
+      }
+    },
+    {
       "date": "Sun, 19 Apr 2020 02:02:09 GMT",
       "tag": "@uifabric/example-app-base_v7.12.38",
       "version": "7.12.38",

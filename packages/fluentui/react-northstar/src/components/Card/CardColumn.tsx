@@ -55,7 +55,6 @@ const CardColumn: React.FC<WithAsProp<CardColumnProps>> & FluentComponentStaticP
 };
 
 CardColumn.displayName = 'CardColumn';
-CardColumn.deprecated_className = cardColumnClassName;
 
 CardColumn.propTypes = {
   ...commonPropTypes.createCommon(),

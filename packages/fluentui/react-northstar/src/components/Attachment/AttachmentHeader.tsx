@@ -26,7 +26,6 @@ const AttachmentHeader = compose<
   overrideStyles: true,
 }) as React.FC<AttachmentHeaderProps> & {
   create?: ShorthandFactory<AttachmentHeaderProps>;
-  deprecated_className: string;
 };
 
 AttachmentHeader.defaultProps = {

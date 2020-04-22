@@ -12,6 +12,7 @@ import {
   commonPropTypes,
   rtlTextContainer,
   applyAccessibilityKeyHandlers,
+  createShorthand,
 } from '../../utils';
 import AccordionTitle, { AccordionTitleProps } from './AccordionTitle';
 import AccordionContent, { AccordionContentProps } from './AccordionContent';
@@ -101,8 +102,6 @@ class Accordion extends AutoControlledComponent<WithAsProp<AccordionProps>, Acco
   static displayName = 'Accordion';
 
   static deprecated_className = accordionClassName;
-
-  static slotClassNames = accordionSlotClassNames;
 
   static propTypes = {
     ...commonPropTypes.createCommon({
@@ -265,7 +264,7 @@ class Accordion extends AutoControlledComponent<WithAsProp<AccordionProps>, Acco
       this.itemRefs[index] = contentRef;
 
       children.push(
-        AccordionTitle.create(title, {
+        createShorthand(AccordionTitle, title, {
           defaultProps: () => ({
             className: accordionSlotClassNames.title,
             active,
@@ -280,7 +279,7 @@ class Accordion extends AutoControlledComponent<WithAsProp<AccordionProps>, Acco
         }),
       );
       children.push(
-        AccordionContent.create(content, {
+        createShorthand(AccordionContent, content, {
           defaultProps: () => ({
             className: accordionSlotClassNames.content,
             active,

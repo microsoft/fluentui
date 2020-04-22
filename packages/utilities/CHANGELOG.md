@@ -1,8 +1,19 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Sun, 19 Apr 2020 02:02:09 GMT and should not be manually modified.
+This log was last generated on Tue, 21 Apr 2020 12:34:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.15.11](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.15.11)
+
+Tue, 21 Apr 2020 12:34:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.15.10..@uifabric/utilities_v7.15.11)
+
+### Patches
+
+- classNamesFunction: fix not traversing the changed styles function ([PR #12752](https://github.com/microsoft/fluentui/pull/12752) by xgao@microsoft.com)
+- Revert changes to 'on': it should not use React events ([PR #12753](https://github.com/microsoft/fluentui/pull/12753) by behowell@microsoft.com)
+- Fix lint rule violation ([PR #12711](https://github.com/microsoft/fluentui/pull/12711) by elcraig@microsoft.com)
 
 ## [7.15.10](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.15.10)
 

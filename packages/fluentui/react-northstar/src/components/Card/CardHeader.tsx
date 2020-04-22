@@ -60,7 +60,6 @@ const CardHeader: React.FC<WithAsProp<CardHeaderProps>> & FluentComponentStaticP
 };
 
 CardHeader.displayName = 'CardHeader';
-CardHeader.deprecated_className = cardHeaderClassName;
 
 CardHeader.propTypes = {
   ...commonPropTypes.createCommon(),

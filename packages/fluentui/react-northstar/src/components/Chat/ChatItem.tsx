@@ -56,10 +56,7 @@ export interface ChatItemProps extends UIComponentProps, ChildrenComponentProps 
 
 export type ChatItemStylesProps = Pick<ChatItemProps, 'attached' | 'contentPosition'>;
 
-const ChatItem: React.FC<WithAsProp<ChatItemProps>> &
-  FluentComponentStaticProps<ChatItemProps> & {
-    slotClassNames: ChatItemSlotClassNames;
-  } = props => {
+const ChatItem: React.FC<WithAsProp<ChatItemProps>> & FluentComponentStaticProps<ChatItemProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(ChatItem.displayName, context.telemetry);
   setStart();
@@ -140,10 +137,7 @@ const ChatItem: React.FC<WithAsProp<ChatItemProps>> &
   return element;
 };
 
-ChatItem.deprecated_className = chatItemClassName;
 ChatItem.displayName = 'ChatItem';
-
-ChatItem.slotClassNames = chatItemSlotClassNames;
 
 ChatItem.defaultProps = {
   as: 'li',
