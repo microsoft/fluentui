@@ -130,6 +130,26 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
   // tslint:disable-next-line:deprecation
   private _classNames: IProcessedStyleSet<IContextualMenuStyles> | IContextualMenuClassNames;
 
+  private _convertMenuItemToMenuItemRenderProps = memoizeFunction(
+    (
+      item: IContextualMenuItem,
+      index: number,
+      focusableElementIndex: number,
+      totalItemCount: number,
+      hasCheckmarks: boolean,
+      hasIcons: boolean,
+    ): IContextualMenuItemRenderProps => {
+      return {
+        ...item,
+        index,
+        focusableElementIndex,
+        totalItemCount,
+        hasCheckmarks,
+        hasIcons,
+      };
+    },
+  );
+
   constructor(props: IContextualMenuProps) {
     super(props);
 
@@ -464,26 +484,6 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
         'Please ensure to set `onRenderSubMenu` property either manually or with `styled` helper.',
     );
   }
-
-  private _convertMenuItemToMenuItemRenderProps = memoizeFunction(
-    (
-      item: IContextualMenuItem,
-      index: number,
-      focusableElementIndex: number,
-      totalItemCount: number,
-      hasCheckmarks: boolean,
-      hasIcons: boolean,
-    ): IContextualMenuItemRenderProps => {
-      return {
-        ...item,
-        index,
-        focusableElementIndex,
-        totalItemCount,
-        hasCheckmarks,
-        hasIcons,
-      };
-    },
-  );
 
   private _onRenderMenuList = (
     menuListProps: IContextualMenuListProps,
