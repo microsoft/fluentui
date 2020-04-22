@@ -74,7 +74,7 @@ import { VideoStylesProps } from '../../components/Video/Video';
 import { TreeItemStylesProps } from '../../components/Tree/TreeItem';
 import { TreeTitleStylesProps } from '../../components/Tree/TreeTitle';
 import { TableProps } from '../../components/Table/Table';
-import { TableRowProps } from '../../components/Table/TableRow';
+import { TableRowStylesProps } from '../../components/Table/TableRow';
 import { TableCellStylesProps } from '../../components/Table/TableCell';
 import { CardStylesProps } from '../../components/Card/Card';
 import { CardPreviewStylesProps } from '../../components/Card/CardPreview';
@@ -155,7 +155,7 @@ export type TeamsThemeStylesProps = {
   HierarchicalTreeTitle: HierarchicalTreeTitleProps;
   Video: VideoStylesProps;
   Table: TableProps;
-  TableRow: TableRowProps;
+  TableRow: TableRowStylesProps;
   TableCell: TableCellStylesProps;
   Card: CardStylesProps;
   CardPreview: CardPreviewStylesProps;
