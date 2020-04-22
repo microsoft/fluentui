@@ -47,7 +47,7 @@ type BaseComponentProps = { color?: string } & React.HTMLAttributes<HTMLButtonEl
 type BaseComponentStylesProps = { color: string | undefined; open: boolean };
 
 const BaseComponent: React.FC<BaseComponentProps> = compose<
-  'div',
+  'button',
   BaseComponentProps,
   BaseComponentStylesProps,
   {},
@@ -59,11 +59,14 @@ const BaseComponent: React.FC<BaseComponentProps> = compose<
     const [open, setOpen] = React.useState(false);
     const { classes } = useStyles<BaseComponentStylesProps>(composeOptions.displayName, {
       className: composeOptions.className,
+      composeOptions,
       mapPropsToStyles: () => ({ color, open }),
+      unstable_props: props,
     });
     const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
 
-    return <button className={classes.root} onClick={() => setOpen(!open)} {...unhandledProps} />;
+    // @ts-ignore
+    return <button className={classes.root} onClick={() => setOpen(!open)} {...unhandledProps} ref={ref} />;
   },
   {
     className: 'ui-base',
@@ -76,7 +79,7 @@ type ComposedComponentProps = { hidden?: boolean; visible?: boolean };
 type ComposedComponentStylesProps = { visible: boolean | undefined };
 
 const ComposedComponent = compose<
-  'div',
+  'button',
   ComposedComponentProps,
   ComposedComponentStylesProps,
   BaseComponentProps,
@@ -89,7 +92,7 @@ const ComposedComponent = compose<
 });
 
 const MultipleComposedComponent = compose<
-  'div',
+  'button',
   ComposedComponentProps,
   ComposedComponentStylesProps,
   BaseComponentProps & ComposedComponentProps,

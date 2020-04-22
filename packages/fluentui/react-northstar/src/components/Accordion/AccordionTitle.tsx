@@ -1,5 +1,4 @@
 import { accordionTitleBehavior, indicatorBehavior } from '@fluentui/accessibility';
-import { Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
@@ -16,6 +15,7 @@ import {
   rtlTextContainer,
   applyAccessibilityKeyHandlers,
   ShorthandFactory,
+  ShorthandConfig,
 } from '../../utils';
 import { WithAsProp, ComponentEventHandler, ShorthandValue, withSafeTypeForAs } from '../../types';
 import Box, { BoxProps } from '../Box/Box';
@@ -77,6 +77,9 @@ class AccordionTitle extends UIComponent<WithAsProp<AccordionTitleProps>, any> {
   static displayName = 'AccordionTitle';
 
   static create: ShorthandFactory<AccordionTitleProps>;
+  static shorthandConfig: ShorthandConfig<AccordionTitleProps> = {
+    mappedProp: 'content',
+  };
 
   static deprecated_className = accordionTitleClassName;
 
@@ -133,37 +136,34 @@ class AccordionTitle extends UIComponent<WithAsProp<AccordionTitleProps>, any> {
   renderComponent({ ElementType, classes, unhandledProps, styles, accessibility }) {
     const { contentRef, children, content, indicator, contentWrapper } = this.props;
 
-    const contentWrapperElement = (
-      <Ref innerRef={contentRef}>
-        {Box.create(contentWrapper, {
-          defaultProps: () => ({
-            className: accordionTitleSlotClassNames.contentWrapper,
-            styles: styles.contentWrapper,
-            ...accessibility.attributes.content,
-            ...applyAccessibilityKeyHandlers(accessibility.keyHandlers.content, unhandledProps),
-          }),
-          overrideProps: predefinedProps => ({
-            children: (
-              <>
-                {Box.create(indicator, {
-                  defaultProps: () => ({
-                    styles: styles.indicator,
-                    accessibility: indicatorBehavior,
-                  }),
-                })}
-                {Box.create(content, {
-                  defaultProps: () => ({
-                    as: 'span',
-                    styles: styles.content,
-                  }),
-                })}
-              </>
-            ),
-            ...this.handleWrapperOverrides(predefinedProps),
-          }),
-        })}
-      </Ref>
-    );
+    const contentWrapperElement = Box.create(contentWrapper, {
+      defaultProps: () => ({
+        className: accordionTitleSlotClassNames.contentWrapper,
+        styles: styles.contentWrapper,
+        ref: contentRef,
+        ...accessibility.attributes.content,
+        ...applyAccessibilityKeyHandlers(accessibility.keyHandlers.content, unhandledProps),
+      }),
+      overrideProps: predefinedProps => ({
+        children: (
+          <>
+            {Box.create(indicator, {
+              defaultProps: () => ({
+                styles: styles.indicator,
+                accessibility: indicatorBehavior,
+              }),
+            })}
+            {Box.create(content, {
+              defaultProps: () => ({
+                as: 'span',
+                styles: styles.content,
+              }),
+            })}
+          </>
+        ),
+        ...this.handleWrapperOverrides(predefinedProps),
+      }),
+    });
 
     return (
       <ElementType

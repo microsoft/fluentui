@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/test-utilities",
-  "version": "7.0.18",
+  "version": "7.0.19",
   "description": "Utilities used when testing components.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -33,8 +33,8 @@
     "@types/react-dom": "16.8.4",
     "@types/react-test-renderer": "^16.0.0",
     "@types/webpack-env": "1.15.1",
-    "@uifabric/jest-serializer-merge-styles": "^7.0.18",
-    "@uifabric/tslint-rules": "^7.1.3",
+    "@uifabric/jest-serializer-merge-styles": "^7.0.19",
+    "@uifabric/tslint-rules": "^7.2.0",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
     "es6-weak-map": "^2.0.2",
@@ -45,7 +45,7 @@
     "@uifabric/build": "^7.0.0"
   },
   "dependencies": {
-    "@uifabric/set-version": "^7.0.10"
+    "@uifabric/set-version": "^7.0.11"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <17.0.0",

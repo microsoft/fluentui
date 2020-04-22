@@ -25,6 +25,7 @@ import {
   rtlTextContainer,
   SizeValue,
   ShorthandFactory,
+  ShorthandConfig,
 } from '../../utils';
 import Box, { BoxProps } from '../Box/Box';
 import Loader, { LoaderProps } from '../Loader/Loader';
@@ -141,7 +142,7 @@ const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
 
     const hasChildren = childrenExist(children);
 
-    const getA11Props = useAccessibility(accessibility, {
+    const getA11yProps = useAccessibility(accessibility, {
       debugName: composeOptions.displayName,
       mapPropsToBehavior: () => ({
         as,
@@ -189,7 +190,7 @@ const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
     const renderIcon = () => {
       return Box.create(icon, {
         defaultProps: () =>
-          getA11Props('icon', {
+          getA11yProps('icon', {
             styles: resolvedStyles.icon,
           }),
       });
@@ -198,7 +199,7 @@ const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
     const renderLoader = () => {
       return Loader.create(loader || {}, {
         defaultProps: () =>
-          getA11Props('loader', {
+          getA11yProps('loader', {
             role: undefined,
             styles: resolvedStyles.loader,
           }),
@@ -221,7 +222,7 @@ const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
     const result = (
       <ElementType
         {...rtlTextContainer.getAttributes({ forElements: [children] })}
-        {...getA11Props('root', {
+        {...getA11yProps('root', {
           onClick: handleClick,
           disabled,
           className: classes.root,
@@ -237,7 +238,7 @@ const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
             {loading && renderLoader()}
             {iconPosition !== 'after' && renderIcon()}
             {ButtonContent.create(content, {
-              defaultProps: () => getA11Props('content', { as: 'span', size }),
+              defaultProps: () => getA11yProps('content', { as: 'span', size }),
             })}
             {iconPosition === 'after' && renderIcon()}
           </>
@@ -281,7 +282,7 @@ const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
   },
 ) as ComponentWithAs<'button', ButtonProps> & {
   create: ShorthandFactory<ButtonProps>;
-
+  shorthandConfig: ShorthandConfig<ButtonProps>;
   Content: typeof ButtonContent;
   Group: typeof ButtonGroup;
 };
@@ -315,6 +316,10 @@ Button.propTypes = {
 
 Button.Group = ButtonGroup;
 Button.Content = ButtonContent;
+
+Button.shorthandConfig = {
+  mappedProp: 'content',
+};
 
 Button.create = createShorthandFactory({ Component: Button, mappedProp: 'content' });
 
