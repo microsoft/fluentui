@@ -20,31 +20,33 @@ const styles = mergeStyleSets({
     margin: '10px 0',
   },
 });
-
-const facepileProps: IFacepileProps = {
-  personas: facepilePersonas,
-  maxDisplayablePersonas: 5,
-  overflowButtonType: OverflowButtonType.downArrow,
-  overflowButtonProps: {
-    ariaLabel: 'More users',
-    onClick: (ev: React.MouseEvent<HTMLButtonElement>) => alert('overflow icon clicked'),
-  },
-  ariaDescription: 'To move through the items use left and right arrow keys.',
-  ariaLabel: 'Example list of Facepile personas',
-};
+const dropdownOptions = [
+  { key: OverflowButtonType.none, text: OverflowButtonType[OverflowButtonType.none] },
+  { key: OverflowButtonType.descriptive, text: OverflowButtonType[OverflowButtonType.descriptive] },
+  { key: OverflowButtonType.downArrow, text: OverflowButtonType[OverflowButtonType.downArrow] },
+  { key: OverflowButtonType.more, text: OverflowButtonType[OverflowButtonType.more] },
+];
 
 export const FacepileOverflowExample: React.FunctionComponent = () => {
   const [displayedPersonas, setDisplayedPersonas] = React.useState(5);
   const [overflowButtonType, setOverflowButtonType] = React.useState(OverflowButtonType.none);
-
   const onChangeType = (event: React.FormEvent<HTMLDivElement>, value: IDropdownOption): void => {
     setOverflowButtonType(value.key as OverflowButtonType);
   };
-
   const onChangePersonaNumber = (value: number): void => {
     setDisplayedPersonas(value);
   };
-
+  const facepileProps: IFacepileProps = {
+    personas: facepilePersonas,
+    maxDisplayablePersonas: displayedPersonas,
+    overflowButtonType: overflowButtonType,
+    overflowButtonProps: {
+      ariaLabel: 'More users',
+      onClick: (ev: React.MouseEvent<HTMLButtonElement>) => alert('overflow icon clicked'),
+    },
+    ariaDescription: 'To move through the items use left and right arrow keys.',
+    ariaLabel: 'Example list of Facepile personas',
+  };
   return (
     <div className={styles.container}>
       <Facepile {...facepileProps} />
@@ -63,12 +65,7 @@ export const FacepileOverflowExample: React.FunctionComponent = () => {
           label="Overflow Button Type:"
           className={styles.dropdown}
           selectedKey={overflowButtonType}
-          options={[
-            { key: OverflowButtonType.none, text: OverflowButtonType[OverflowButtonType.none] },
-            { key: OverflowButtonType.descriptive, text: OverflowButtonType[OverflowButtonType.descriptive] },
-            { key: OverflowButtonType.downArrow, text: OverflowButtonType[OverflowButtonType.downArrow] },
-            { key: OverflowButtonType.more, text: OverflowButtonType[OverflowButtonType.more] },
-          ]}
+          options={dropdownOptions}
           onChange={onChangeType}
         />
       </div>

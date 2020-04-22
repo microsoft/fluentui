@@ -26,14 +26,19 @@ const styles = mergeStyleSets({
     margin: '10px 0',
   },
 });
-
+const dropdownOptions = [
+  { key: PersonaSize.size8, text: PersonaSize[PersonaSize.size8] },
+  { key: PersonaSize.size24, text: PersonaSize[PersonaSize.size24] },
+  { key: PersonaSize.size32, text: PersonaSize[PersonaSize.size32] },
+  { key: PersonaSize.size40, text: PersonaSize[PersonaSize.size40] },
+  { key: PersonaSize.size48, text: PersonaSize[PersonaSize.size48] },
+];
 const checkboxStyles: Partial<ICheckboxStyles> = { root: { margin: '10px 0' } };
 
 export const FacepileBasicExample: React.FunctionComponent = () => {
   const [imagesFadeIn, { toggle: toggleImagesFadeIn }] = useBoolean(true);
   const [numberOfFaces, setNumberOfFaces] = React.useState(3);
   const [personaSize, setPersonaSize] = React.useState(PersonaSize.size32);
-
   const facepileProps: IFacepileProps = {
     personaSize: personaSize,
     personas: facepilePersonas.slice(0, numberOfFaces),
@@ -47,15 +52,12 @@ export const FacepileBasicExample: React.FunctionComponent = () => {
     ariaDescription: 'To move through the items use left and right arrow keys.',
     ariaLabel: 'Example list of Facepile personas',
   };
-
   const onChangePersonaSize = (event: React.FormEvent<HTMLDivElement>, value: IDropdownOption): void => {
     setPersonaSize(value.key as PersonaSize);
   };
-
   const onChangePersonaNumber = (value: number): void => {
     setNumberOfFaces(value);
   };
-
   const personaPresence = (personaName: string): PersonaPresence => {
     const presences: any = [
       PersonaPresence.away,
@@ -64,10 +66,8 @@ export const FacepileBasicExample: React.FunctionComponent = () => {
       PersonaPresence.offline,
       PersonaPresence.offline,
     ];
-
     return presences[personaName.charCodeAt(1) % 5];
   };
-
   return (
     <div className={styles.container}>
       <Facepile {...facepileProps} />
@@ -86,13 +86,7 @@ export const FacepileBasicExample: React.FunctionComponent = () => {
           label="Persona Size:"
           selectedKey={personaSize}
           className={styles.dropdown}
-          options={[
-            { key: PersonaSize.size8, text: PersonaSize[PersonaSize.size8] },
-            { key: PersonaSize.size24, text: PersonaSize[PersonaSize.size24] },
-            { key: PersonaSize.size32, text: PersonaSize[PersonaSize.size32] },
-            { key: PersonaSize.size40, text: PersonaSize[PersonaSize.size40] },
-            { key: PersonaSize.size48, text: PersonaSize[PersonaSize.size48] },
-          ]}
+          options={dropdownOptions}
           onChange={onChangePersonaSize}
         />
         <Checkbox

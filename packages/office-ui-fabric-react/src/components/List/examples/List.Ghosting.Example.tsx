@@ -7,7 +7,7 @@ import { createListItems, IExampleItem } from '@uifabric/example-data';
 
 const theme: ITheme = getTheme();
 const { palette, semanticColors, fonts } = theme;
-
+const items = createListItems(5000);
 const classNames = mergeStyleSets({
   container: {
     overflow: 'auto',
@@ -56,8 +56,6 @@ const classNames = mergeStyleSets({
   },
 });
 
-const items = createListItems(5000);
-
 const onRenderCell = (item: IExampleItem, index: number, isScrolling: boolean): JSX.Element => {
   return (
     <div className={classNames.itemCell} data-is-focusable={true}>
@@ -79,7 +77,7 @@ const onRenderCell = (item: IExampleItem, index: number, isScrolling: boolean): 
 export const ListGhostingExample: React.FunctionComponent = () => {
   return (
     <FocusZone direction={FocusZoneDirection.vertical}>
-      <div className={classNames.container} data-is-scrollable={true}>
+      <div className={classNames.container} data-is-scrollable>
         <List items={items} onRenderCell={onRenderCell} />
       </div>
     </FocusZone>

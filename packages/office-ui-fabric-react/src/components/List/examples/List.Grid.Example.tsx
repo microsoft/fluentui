@@ -5,9 +5,14 @@ import { IRectangle } from 'office-ui-fabric-react/lib/Utilities';
 import { ITheme, getTheme, mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 import { createListItems } from '@uifabric/example-data';
 
+const items = createListItems(5000);
+let columnCount: number;
+let columnWidth: number;
+let rowHeight: number;
 const theme: ITheme = getTheme();
 const { palette, fonts } = theme;
-
+const ROWS_PER_PAGE = 3;
+const MAX_ROW_HEIGHT = 250;
 const classNames = mergeStyleSets({
   listGridExample: {
     overflow: 'hidden',
@@ -62,18 +67,10 @@ const classNames = mergeStyleSets({
   },
 });
 
-const ROWS_PER_PAGE = 3;
-const MAX_ROW_HEIGHT = 250;
-
-const items = createListItems(5000);
-let columnCount: number;
-let columnWidth: number;
-let rowHeight: number;
-
 const onRenderCell = (item: any, index: number | undefined): JSX.Element => (
   <div
     className={classNames.listGridExampleTile}
-    data-is-focusable={true}
+    data-is-focusable
     style={{
       width: 100 / columnCount + '%',
     }}

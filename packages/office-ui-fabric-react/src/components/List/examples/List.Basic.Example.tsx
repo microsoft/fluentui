@@ -10,7 +10,7 @@ import { createListItems, IExampleItem } from '@uifabric/example-data';
 
 const theme: ITheme = getTheme();
 const { palette, semanticColors, fonts } = theme;
-
+const originalItems = createListItems(5000);
 const classNames = mergeStyleSets({
   itemCell: [
     getFocusStyle(theme, { inset: -1 }),
@@ -54,9 +54,6 @@ const classNames = mergeStyleSets({
     flexShrink: 0,
   },
 });
-
-const originalItems = createListItems(5000);
-
 const onRenderCell = (item: IExampleItem, index: number | undefined): JSX.Element => {
   return (
     <div className={classNames.itemCell} data-is-focusable={true}>
@@ -75,11 +72,9 @@ export const ListBasicExample: React.FunctionComponent = () => {
   const [items, setItems] = React.useState(originalItems);
   const resultCountText =
     items.length === originalItems.length ? '' : ` (${items.length} of ${originalItems.length} shown)`;
-
   const onFilterChanged = (_: any, text: string): void => {
     setItems(originalItems.filter(item => item.name.toLowerCase().indexOf(text.toLowerCase()) >= 0));
   };
-
   return (
     <FocusZone direction={FocusZoneDirection.vertical}>
       <TextField label={'Filter by name' + resultCountText} onChange={onFilterChanged} />
