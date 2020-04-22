@@ -244,6 +244,9 @@ class Designer extends React.Component<any, DesignerState> {
       const element = jsonTreeFindElement(state.jsonTree, jsonTreeElement.uuid);
 
       console.log('...BEFORE PROP CHANGE', element);
+      if (!element.props) {
+        element.props = {};
+      }
       element.props[name] = value;
       console.log('...AFTER PROP CHANGE', element);
 

@@ -74,7 +74,7 @@ const Knobs: React.FC<DesignKnobProps> = ({ onPropChange, info, jsonTreeElement 
         // only allow knobs for regular props, not default props
         .filter(prop => !/default[A-Z]/.test(prop.name))
         .map(prop => {
-          const propValue = jsonTreeElement.props[prop.name];
+          const propValue = jsonTreeElement.props?.[prop.name];
           const types = _.uniq(_.map(prop.types, 'name'));
           const isLiteral = _.every(types, name => name === 'literal');
           const options = isLiteral ? _.map(prop.types, 'value') : null;

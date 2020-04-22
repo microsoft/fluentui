@@ -9,6 +9,8 @@ import { JSONTreeElement } from './components/types';
 
 type FiberNavigator = FUI.FiberNavigator;
 
+export const EXCLUDED_COMPONENTS = ['Animation', 'Debug', 'Design', 'FocusZone', 'Portal', 'Provider', 'Ref'];
+
 export const DRAGGING_ELEMENTS = {
   // HTML ELEMENTS
   div: { children: 'I am a <div>' },
@@ -41,13 +43,13 @@ export const DRAGGING_ELEMENTS = {
       ]}
     />
   ),
-  Card: <FUI.Card />,
-  CardHeader: <FUI.CardHeader />,
-  CardBody: <FUI.CardBody />,
-  CardFooter: <FUI.CardFooter />,
-  CardPreview: <FUI.CardPreview />,
-  CardColumn: <FUI.CardColumn />,
-  CardTopControls: <FUI.CardTopControls />,
+  // Card: <FUI.Card />,
+  // CardHeader: <FUI.CardHeader />,
+  // CardBody: <FUI.CardBody />,
+  // CardFooter: <FUI.CardFooter />,
+  // CardPreview: <FUI.CardPreview />,
+  // CardColumn: <FUI.CardColumn />,
+  // CardTopControls: <FUI.CardTopControls />,
 
   // FLUENT v0 COMPONENTS
   Accordion: {
@@ -74,9 +76,9 @@ export const DRAGGING_ELEMENTS = {
     props: { image: 'https://picsum.photos/100?random' } as FUI.AvatarProps,
   },
 
-  Box: {
-    props: { content: 'A Box' } as FUI.BoxProps,
-  },
+  // Box: {
+  //   props: { content: 'A Box' } as FUI.BoxProps,
+  // },
 
   // this can be ReactElement directly 👍
   Button: <FUI.Button content="Button" icon={<FUIIcons.CallIcon />} />,
