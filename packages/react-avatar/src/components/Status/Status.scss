@@ -36,52 +36,52 @@
   height: var(--statusSizeMedium);
 }
 
-._state_success {
+.state_success {
   background-color: var(--successBackgroundColor);
   color: var(--successTextColor);
 }
 
-._state_info {
+.state_info {
   background-color: var(--infoBackgroundColor);
   color: var(--infoTextColor);
 }
 
-._state_warning {
+.state_warning {
   background-color: var(--warningBackgroundColor);
   color: var(--warningTextColor);
 }
 
-._state_error {
+.state_error {
   background-color: var(--errorBackgroundColor);
   color: var(--errorTextColor);
 }
 
-._size_smallest {
+.size_smallest {
   width: var(--statusSizeSmallest);
   height: var(--statusSizeSmallest);
 }
 
-._size_smaller {
+.size_smaller {
   width: var(--statusSizeSmaller);
   height: var(--statusSizeSmaller);
 }
 
-._size_small {
+.size_small {
   width: var(--statusSizeSmall);
   height: var(--statusSizeSmall);
 }
 
-._size_large {
+.size_large {
   width: var(--statusSizeLarge);
   height: var(--statusSizeLarge);
 }
 
-._size_larger {
+.size_larger {
   width: var(--statusSizeLarger);
   height: var(--statusSizeLarger);
 }
 
-._size_largest {
+.size_largest {
   width: var(--statusSizeLargest);
   height: var(--statusSizeLargest);
 }

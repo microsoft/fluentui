@@ -12,7 +12,7 @@ export const ButtonBase = compose<ButtonProps, ButtonSlots, ButtonSlotProps, Com
       <slots.root ref={ref} {...slotProps.root}>
         {props.loading && <slots.loader {...slotProps.loader} />}
         {props.icon && props.iconPosition !== 'after' && <slots.icon {...slotProps.icon} />}
-        {props.content && <slots.content {...slotProps.content} />}
+        {!props.iconOnly && props.content && <slots.content {...slotProps.content} />}
         {props.icon && props.iconPosition === 'after' && <slots.icon {...slotProps.icon} />}
       </slots.root>
     );

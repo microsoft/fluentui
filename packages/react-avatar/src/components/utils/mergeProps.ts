@@ -40,25 +40,22 @@ const mergeClassesIntoSlotProps = (
     // classes = resolveClasses(props, classes);
 
     Object.keys(classes).forEach(key => {
-      // If the classname starts with "_", break it up.
-      const parts = key.split('_');
-
-      if (parts.length === 2) {
-        // flag
-        const slotProp = (slotProps.root = slotProps.root || {});
-        slotProp.className = cx(slotProp.className, props[parts[1]] && classes[key]);
-      } else if (parts.length === 3) {
-        const slotProp = (slotProps.root = slotProps.root || {});
-        const enumName = parts[1];
-        const enumValue = parts[2];
-
-        // enum
-        slotProp.className = cx(slotProp.className, props[enumName] === enumValue && classes[key]);
-      } else if (slots[key]) {
-        if (!slotProps[key]) {
-          slotProps[key] = {};
-        }
+      if (slots[key]) {
+        slotProps[key] = slotProps[key] || {};
         slotProps[key].className = cx(key === 'root' && props.className, slotProps.className, classes[key]);
+      } else {
+        const slotProp = (slotProps.root = slotProps.root || {});
+
+        // If the classname has "_", it's an enum, otherwise it's a modifier.
+        if (key.indexOf('_') >= 0) {
+          const parts = key.split('_');
+          const enumName = parts[0];
+          const enumValue = parts[1];
+
+          slotProp.className = cx(slotProp.className, props[enumName] === enumValue && classes[key]);
+        } else {
+          slotProp.className = cx(slotProp.className, props[key] && classes[key]);
+        }
       }
     });
   }

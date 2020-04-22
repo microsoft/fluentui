@@ -54,7 +54,6 @@
   width: var(--avatarSize, var(--avatarSizeMedium));
   height: var(--avatarSize, var(--avatarSizeMedium));
 
-  // fontSize: pxToRem(sizeToPxValue[p._size_ 2.333),
   vertical-align: top;
   text-align: center;
   padding: 0px;
@@ -69,39 +68,39 @@
   box-shadow: 0 0 0 var(--statusBorderWidth) var(--statusBorderColor);
 }
 
-// Root modifier when props._size_ smallest
-._size_smallest {
+// Root modifier when props.size_ smallest
+.size_smallest {
   --avatarSize: var(--avatarSizeSmallest);
 }
 
-// Root modifier when props._size_ smaller
-._size_smaller {
+// Root modifier when props.size_ smaller
+.size_smaller {
   --avatarSize: var(--avatarSizeSmaller);
 }
 
-// Root modifier when props._size_ small
-._size_small {
+// Root modifier when props.size_ small
+.size_small {
   --avatarSize: var(--avatarSizeSmall);
 }
 
-// Root modifier when props._size_ large
-._size_large {
+// Root modifier when props.size_ large
+.size_large {
   --avatarSize: var(--avatarSizeLarge);
 }
 
-// Root modifier when props._size_ larger
+// Root modifier when props.size_ larger
 // larger-abc123
-._size_larger {
+.size_larger {
   --avatarSize: var(--avatarSizeLarger);
 }
 
-// Root modifier when props._size_ largest
-._size_largest {
+// Root modifier when props.size_ largest
+.size_largest {
   --avatarSize: var(--avatarSizeLargest);
 }
 
 // Modifiers
-._square {
+.square {
   .image {
     border-radius: var(--squareAvatarBorderRadius);
   }

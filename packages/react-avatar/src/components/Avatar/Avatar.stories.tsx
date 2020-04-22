@@ -1,9 +1,8 @@
 import * as React from 'react';
 import { Avatar } from './Avatar';
 import { PersonaCoin, PersonaSize, PersonaPresence } from '@fluentui/react/lib/Persona';
-import { Provider, themes, Header, Avatar as FUIAvatar, Flex } from '@fluentui/react-northstar';
+import { Provider, themes, Avatar as FUIAvatar } from '@fluentui/react-northstar';
 import { PulsingAvatar } from './PulsingAvatar';
-import { StylesheetProvider } from '../utils/StylesheetProvider';
 import { StoryExample } from '../utils/StoryExample';
 import { ThemeProvider } from '../utils/ThemeProvider';
 import { convertTeamsTheme } from '../utils/convertTeamsTheme';
@@ -166,8 +165,8 @@ export const AvatarCss = () => (
 
 export const PulsingAvatarExample = () => (
   <Provider theme={themes.teams}>
-    <StylesheetProvider>
-      <PulsingAvatar name="David Zearing" pulsing />
-    </StylesheetProvider>
+    <StoryExample title="A recomposed Avatar with a pulsing flag">
+      <PulsingAvatar name="David Zearing" pulsing size="larger" />
+    </StoryExample>
   </Provider>
 );

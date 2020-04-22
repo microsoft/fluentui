@@ -4,7 +4,8 @@
   --button-height: 32px;
   --button-minWidth: 96px;
   --button-maxWidth: 280px;
-  --button-borderRadius: var(--site-borderRadius);
+  // THIS DOESNT WORK !
+  // --button-borderRadius: var(--site-borderRadius);
   --button-contentGap: 10px;
   --button-iconSize: 16px;
 
@@ -135,7 +136,7 @@
 }
 /* modifiers */
 
-._primary {
+.primary {
   --button-fill: var(--site-accent-fill);
   --button-fill-hover: var(--site-accent-fill-hover);
   --button-fill-active: var(--site-accent-fill-active);
@@ -147,12 +148,12 @@
   --button-borderColor: transparent;
 }
 
-._iconOnly {
+.iconOnly {
   width: var(--button-height);
   padding: 0;
 }
 
-._circular {
+.circular {
   --button-borderRadius: 50000px;
 
   border-radius: 10000px;
@@ -160,7 +161,7 @@
   width: var(--button-height);
 }
 
-._disabled {
+.disabled {
   pointer-events: none;
   background-color: var(--button-fill-disabled);
   color: var(--button-text-disabled);

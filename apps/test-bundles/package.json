@@ -29,6 +29,7 @@
     "parallel-webpack": "^2.4.0"
   },
   "dependencies": {
+    "@fluentui/react-avatar": "^0.1.0",
     "@uifabric/experiments": "^7.23.0",
     "@fluentui/keyboard-key": "^0.1.4",
     "@uifabric/set-version": "^7.0.9",
