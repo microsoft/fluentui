@@ -28,8 +28,9 @@ const config: ScreenerTestsConfig = {
         .snapshot('all children selected')
         .keys(selectors.treeTitle(7), keys.space)
         .snapshot('selected, when space pressed')
-        .click(selectors.treeTitle(3))
-        .keys(selectors.treeTitle(3), keys.space)
+        .click(selectors.treeTitle(15))
+        .keys(selectors.treeTitle(16), keys.space)
+        .keys(selectors.treeTitle(17), keys.space)
         .snapshot('selected, when group has non selectable item'),
   ],
 };
