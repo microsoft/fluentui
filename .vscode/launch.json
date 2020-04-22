@@ -209,9 +209,7 @@
       "args": ["build"],
       "cwd": "${workspaceRoot}/packages/fluentui/react-northstar",
       "env": {
-        "NODE_ENV": "development",
-        // This is used in scripts/babel/index.js to enable sourcemaps
-        "DEBUG": "1"
+        "NODE_ENV": "development"
       },
       "sourceMaps": true,
       "console": "integratedTerminal"
