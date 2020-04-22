@@ -37,7 +37,6 @@ const buttonProps = {
   ],
 };
 
-/* tslint:disable:jsx-no-lambda */
 export const KeytipsButtonExample: React.FunctionComponent = () => {
   const [btnDisabled, { toggle: toggleBtnDisabled }] = useBoolean(false);
   const log = (text: string): (() => void) => () => console.log(text);
