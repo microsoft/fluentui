@@ -147,11 +147,10 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
           </div>
           <div className={this._classNames.oneFourth}>
             <p>
-              A collection of UX frameworks for creating beatufiul, cross-platforms apps that share code, design, and
+              A collection of UX frameworks for creating beautiful, cross-platforms apps that share code, design, and
               interaction behavior.
             </p>
             <p>Build for one platform or for all. Everything you need is here.</p>
-            <p>{this._renderLink('#/get-started', 'Get started', { isCTA: true, dark: false })}</p>
           </div>
         </div>
       </section>

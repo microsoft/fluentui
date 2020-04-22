@@ -20,6 +20,6 @@ Reference these step-by-step processes for contributing to Fluent UI.
 
 [Give feedback on a control by filing an issue on GitHub](https://github.com/OfficeDev/ui-fabric-android/issues)
 
-### Fluent UI for macOS
+### Fluent UI macOS
 
 [Give feedback on a control by filing an issue on GitHub](https://github.com/microsoft/fluentui-apple)
