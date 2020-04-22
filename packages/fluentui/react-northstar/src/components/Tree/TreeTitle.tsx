@@ -162,9 +162,10 @@ const TreeTitle: React.FC<WithAsProp<TreeTitleProps>> & FluentComponentStaticPro
       ...(selectableParent && !_.isEmpty(selectionIndicator) && { expanded }),
       ...getA11Props('indicator', {
         className: treeTitleSlotClassNames.indicator,
-        ...(((selectable && _.isEmpty(selectionIndicator) && !hasSubtree) || (selectableParent && expanded)) && {
-          styles: resolvedStyles.selectionIndicator,
-        }),
+        ...(((selectable && !hasSubtree) || (selectableParent && expanded)) &&
+          _.isEmpty(selectionIndicator) && {
+            styles: resolvedStyles.selectionIndicator,
+          }),
       }),
     }),
   });

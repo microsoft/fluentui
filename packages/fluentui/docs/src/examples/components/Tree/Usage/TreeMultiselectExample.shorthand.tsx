@@ -101,6 +101,26 @@ const items = [
       },
     ],
   },
+  {
+    id: '100',
+    title: 'House Skywalker',
+    selectableParent: true,
+    items: [
+      {
+        id: '102',
+        title: 'Leia',
+      },
+      {
+        id: '103',
+        title: 'Luke',
+      },
+      {
+        id: '104',
+        title: 'Rey',
+        selectable: false,
+      },
+    ],
+  },
 ];
 
 const TreeMultiselectExample = () => (

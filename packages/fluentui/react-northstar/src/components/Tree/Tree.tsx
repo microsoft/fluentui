@@ -354,7 +354,10 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
 
   getAllSelectableChildrenId = items => {
     return items.reduce((acc, item) => {
-      return item.items ? [...acc, ...this.getAllSelectableChildrenId(item.items)] : [...acc, item.id];
+      if (item.items) {
+        return [...acc, ...this.getAllSelectableChildrenId(item.items)];
+      }
+      return item.hasOwnProperty('selectable') && !item.item ? acc : [...acc, item.id];
     }, []);
   };
 
