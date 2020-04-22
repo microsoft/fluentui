@@ -2,19 +2,18 @@ import * as React from 'react';
 import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
-import { List, ScrollToMode } from 'office-ui-fabric-react/lib/List';
+import { List, ScrollToMode, IList } from 'office-ui-fabric-react/lib/List';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
-import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { createListItems, IExampleItem } from '@uifabric/example-data';
 import { mergeStyleSets, getTheme, normalize } from 'office-ui-fabric-react/lib/Styling';
-import { useBoolean } from '@uifabric/react-hooks';
 
 const theme = getTheme();
 
 const styles = mergeStyleSets({
   container: {
     overflow: 'auto',
-    maxHeight: 500,
+    maxHeight: 400,
+    border: '1px solid #CCC',
     marginTop: 20,
     selectors: {
       '.ms-List-cell:nth-child(odd)': {
@@ -33,6 +32,7 @@ const styles = mergeStyleSets({
     normalize,
     {
       position: 'relative',
+      boxSizing: 'border-box',
       display: 'block',
       borderLeft: '3px solid ' + theme.palette.themePrimary,
       paddingLeft: 27,
@@ -62,7 +62,7 @@ const dropdownOption = [
 
 const onRenderCell = (item: IExampleItem, index: number): JSX.Element => {
   return (
-    <div data-is-focusable={true}>
+    <div data-is-focusable>
       <div className={styles.itemContent}>
         {index} &nbsp; {item.name}
       </div>
@@ -70,20 +70,24 @@ const onRenderCell = (item: IExampleItem, index: number): JSX.Element => {
   );
 };
 
-export const ListScrollingExample: React.FunctionComponent<IListScrollingExampleState> = (
+export const ListScrollingExample: React.FunctionComponent<IListScrollingExampleProps> = (
   props: IListScrollingExampleProps,
 ) => {
   const [selectedIndex, setSelectedIndex] = React.useState(0);
-  const [scrollToMode, setScrollToMode] = React.useState(ScrollToMode.auto);
-  const [showItemIndexInView, { toggle: toggleShowItemIndexInView }] = useBoolean(false);
-  const list: List<IExampleItem>;
+  const [scrollToMode, setScrollToMode] = React.useState<ScrollToMode>(ScrollToMode.auto);
+  const listRef: React.RefObject<IList> = React.useRef(null);
   const items = props.items || createListItems(5000);
 
   const scroll = (index: number, propScrollToMode: ScrollToMode): void => {
     const updatedSelectedIndex = Math.min(Math.max(index, 0), items.length - 1);
     setSelectedIndex(updatedSelectedIndex);
     setScrollToMode(propScrollToMode);
-    list.scrollToIndex(updatedSelectedIndex, idx => (idx % 2 === 0 ? evenItemHeight : oddItemHeight), scrollToMode);
+
+    listRef.current?.scrollToIndex(
+      updatedSelectedIndex,
+      idx => (idx % 2 === 0 ? evenItemHeight : oddItemHeight),
+      scrollToMode,
+    );
   };
 
   const getPageHeight = (idx: number): number => {
@@ -125,10 +129,6 @@ export const ListScrollingExample: React.FunctionComponent<IListScrollingExample
     scroll(selectedIndex, scrollMode);
   };
 
-  const resolveList = (list: List<IExampleItem>): void => {
-    list = list;
-  };
-
   return (
     <FocusZone direction={FocusZoneDirection.vertical}>
       <div>
@@ -149,15 +149,8 @@ export const ListScrollingExample: React.FunctionComponent<IListScrollingExample
         Scroll item index:
         <TextField value={selectedIndex.toString(10)} onChange={onChangeText} />
       </div>
-      <div>
-        <Checkbox
-          label="Show index of the first item in view when unmounting"
-          checked={showItemIndexInView}
-          onChange={toggleShowItemIndexInView}
-        />
-      </div>
       <div className={styles.container} data-is-scrollable={true}>
-        <List ref={resolveList} items={items} getPageHeight={getPageHeight} onRenderCell={onRenderCell} />
+        <List componentRef={listRef} items={items} getPageHeight={getPageHeight} onRenderCell={onRenderCell} />
       </div>
     </FocusZone>
   );
