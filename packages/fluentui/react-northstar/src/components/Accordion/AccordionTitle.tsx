@@ -1,4 +1,5 @@
 import { accordionTitleBehavior, indicatorBehavior } from '@fluentui/accessibility';
+import { Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
@@ -136,34 +137,37 @@ class AccordionTitle extends UIComponent<WithAsProp<AccordionTitleProps>, any> {
   renderComponent({ ElementType, classes, unhandledProps, styles, accessibility }) {
     const { contentRef, children, content, indicator, contentWrapper } = this.props;
 
-    const contentWrapperElement = Box.create(contentWrapper, {
-      defaultProps: () => ({
-        className: accordionTitleSlotClassNames.contentWrapper,
-        styles: styles.contentWrapper,
-        ref: contentRef,
-        ...accessibility.attributes.content,
-        ...applyAccessibilityKeyHandlers(accessibility.keyHandlers.content, unhandledProps),
-      }),
-      overrideProps: predefinedProps => ({
-        children: (
-          <>
-            {Box.create(indicator, {
-              defaultProps: () => ({
-                styles: styles.indicator,
-                accessibility: indicatorBehavior,
-              }),
-            })}
-            {Box.create(content, {
-              defaultProps: () => ({
-                as: 'span',
-                styles: styles.content,
-              }),
-            })}
-          </>
-        ),
-        ...this.handleWrapperOverrides(predefinedProps),
-      }),
-    });
+    const contentWrapperElement = (
+      <Ref innerRef={contentRef}>
+        {Box.create(contentWrapper, {
+          defaultProps: () => ({
+            className: accordionTitleSlotClassNames.contentWrapper,
+            styles: styles.contentWrapper,
+            ...accessibility.attributes.content,
+            ...applyAccessibilityKeyHandlers(accessibility.keyHandlers.content, unhandledProps),
+          }),
+          overrideProps: predefinedProps => ({
+            children: (
+              <>
+                {Box.create(indicator, {
+                  defaultProps: () => ({
+                    styles: styles.indicator,
+                    accessibility: indicatorBehavior,
+                  }),
+                })}
+                {Box.create(content, {
+                  defaultProps: () => ({
+                    as: 'span',
+                    styles: styles.content,
+                  }),
+                })}
+              </>
+            ),
+            ...this.handleWrapperOverrides(predefinedProps),
+          }),
+        })}
+      </Ref>
+    );
 
     return (
       <ElementType
