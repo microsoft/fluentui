@@ -485,19 +485,7 @@ export enum ButtonType {
 }
 
 // @public (undocumented)
-export class Calendar extends React.Component<ICalendarProps, ICalendarState> implements ICalendar {
-    constructor(props: ICalendarProps);
-    // (undocumented)
-    componentDidUpdate(): void;
-    // (undocumented)
-    static defaultProps: ICalendarProps;
-    // (undocumented)
-    focus(): void;
-    // (undocumented)
-    render(): JSX.Element;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(nextProps: ICalendarProps): void;
-}
+export const Calendar: React.MemoExoticComponent<React.ForwardRefExoticComponent<ICalendarProps & React.RefAttributes<HTMLDivElement>>>;
 
 // Warning: (ae-forgotten-export) The symbol "ICalloutState" needs to be exported by the entry point index.d.ts
 //
