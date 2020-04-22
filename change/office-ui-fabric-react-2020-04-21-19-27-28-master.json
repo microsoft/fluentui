@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "add underlined variants to dropdown component",
+  "packageName": "office-ui-fabric-react",
+  "email": "steple@microsoft.com",
+  "commit": "2ab404de8e6529c99a8da38b5584d369989e57e7",
+  "date": "2020-04-22T02:27:28.326Z"
+}
