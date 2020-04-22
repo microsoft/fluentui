@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { css, createArray } from 'office-ui-fabric-react/lib/Utilities';
-import { Checkbox, ICheckboxStyles } from 'office-ui-fabric-react/lib/Checkbox';
+import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { MarqueeSelection, Selection, IObjectWithKey } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { getTheme, mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 import { useBoolean } from '@uifabric/react-hooks';
@@ -48,22 +48,38 @@ const styles = mergeStyleSets({
       },
     },
   },
+  checkbox: {
+    margin: '10px 0',
+  },
 });
 
-const checkboxStyles: Partial<ICheckboxStyles> = { root: { margin: '10px 0' } };
+const useForceUpdate = () => {
+  const [, setCount] = React.useState(0);
+  console.log('update');
+  return React.useCallback(() => setCount(current => current + 1), []);
+};
 
 export const MarqueeSelectionBasicExample: React.FunctionComponent = () => {
   const [isMarqueeEnabled, { toggle: toggleIsMarqueeEnabled }] = useBoolean(true);
-  const selection = new Selection({
-    onSelectionChanged: () => {
-      if (isMounted) {
-        forceUpdate();
-      }
-    },
+  const forceUpdate = useForceUpdate();
+  const [selection] = React.useState(() => {
+    const newSelection = new Selection({
+      items: PHOTOS,
+      onSelectionChanged: forceUpdate,
+    });
+
+    newSelection.setItems(PHOTOS);
+    return newSelection;
   });
+
   return (
     <MarqueeSelection selection={selection} isEnabled={isMarqueeEnabled}>
-      <Checkbox styles={checkboxStyles} label="Is marquee enabled" defaultChecked onChange={toggleIsMarqueeEnabled} />
+      <Checkbox
+        className={styles.checkbox}
+        label="Is marquee enabled"
+        defaultChecked
+        onChange={toggleIsMarqueeEnabled}
+      />
       <p>Drag a rectangle around the items below to select them:</p>
       <ul className={styles.photoList}>
         {PHOTOS.map((photo, index) => (
