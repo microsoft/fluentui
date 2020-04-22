@@ -1,16 +1,12 @@
 # [Fluent UI React](https://developer.microsoft.com/en-us/fluentui)
 
-**The React-based front-end framework for building experiences for Microsoft 365.**
+**The React-based front-end framework for building web experiences.**
 
-**Fluent UI 8**
+**Fluent UI React 8**
 
 This package represents a staging ground for breaking changes in v8. We will be
-staging potentially breaking updates here with the intent that
+staging potentially breaking updates for shippig later this summer.
 
-**Fluent UI 7** Summary, breaking changes, and more details available in [the wiki](https://github.com/microsoft/fluentui/wiki/Fabric-7).
+Please see the tracking issue here for more information on v8:
 
-Fluent UI React is a collection of robust React-based components designed to make it simple for you to create consistent web experiences using the [Fluent Design System](https://www.microsoft.com/design/fluent/#/).
-
-For information about available controls, see the [Fluent UI website](https://developer.microsoft.com/en-us/fluentui).
-
-To get started using or contributing to Fluent UI, see the [full readme](https://github.com/microsoft/fluentui/blob/master/README.md).
+https://github.com/microsoft/fluentui/issues/12770
