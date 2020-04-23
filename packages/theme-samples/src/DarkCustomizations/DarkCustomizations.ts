@@ -6,7 +6,8 @@ import {
   IPersonaCoinStyleProps,
   IPersonaCoinStyles,
 } from 'office-ui-fabric-react';
-import { DatePickerStyles, PeoplePickerItemStyles } from './styles';
+import { DatePickerStyles } from './styles/DatePickerStyles';
+import { PeoplePickerItemStyles } from './styles/PeoplePickerStyles';
 import { addVariants } from '@uifabric/variants';
 
 const DarkDefaultPalette: Partial<IPalette> = {
