@@ -211,7 +211,7 @@ export class PivotBase extends React.Component<IPivotProps, IPivotState> {
   };
 
   /**
-   * Renders the current Pivot Item
+   * Renders a Pivot Item
    */
   private _renderPivotItem(
     linkCollection: PivotLinkCollection,
