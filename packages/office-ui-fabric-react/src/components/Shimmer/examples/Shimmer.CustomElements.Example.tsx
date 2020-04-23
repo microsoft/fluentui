@@ -99,8 +99,8 @@ const getCustomElementsExampleThree = (): JSX.Element => {
 export const ShimmerCustomElementsExample: React.FunctionComponent = () => (
   <Fabric className={wrapperClass}>
     Using ShimmerElementsGroup component to build complex structures of the placeholder you need.
-    <Shimmer customElementsGroup={getCustomElementsExampleOne()} width={350} />
-    <Shimmer customElementsGroup={getCustomElementsExampleTwo()} width={550} />
-    <Shimmer customElementsGroup={getCustomElementsExampleThree()} width={'90%'} />
+    <Shimmer customElementsGroup={getCustomElementsExampleOne()} width="350" />
+    <Shimmer customElementsGroup={getCustomElementsExampleTwo()} width="550" />
+    <Shimmer customElementsGroup={getCustomElementsExampleThree()} width="90%" />
   </Fabric>
 );

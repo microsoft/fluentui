@@ -10,14 +10,8 @@ import { Stack } from 'office-ui-fabric-react/lib/Stack';
 import { people, groupOne, groupTwo } from '@uifabric/example-data';
 
 const primaryButtonStyles: Partial<IButtonStyles> = { root: { display: 'block', marginBottom: 20 } };
-const selectionList = React.createRef<SelectedPeopleList>();
-
 const onRenderItem = (props: ISelectedPeopleItemProps): JSX.Element => {
   return <ExtendedSelectedItem {...props} />;
-};
-const onExpandItem = (item: IExtendedPersonaProps): void => {
-  const expandedItem = item.text === 'Group One' ? groupOne : item.text === 'Group Two' ? groupTwo : [];
-  selectionList.current!.replaceItem(item, expandedItem);
 };
 const onCopyItems = (items: IExtendedPersonaProps[]): string => {
   return items.map((item: IExtendedPersonaProps) => item.text).join(', ');
@@ -25,6 +19,11 @@ const onCopyItems = (items: IExtendedPersonaProps[]): string => {
 
 export const SelectedPeopleListBasicExample: React.FunctionComponent = () => {
   const [nextPersonIndex, setNextPersonIndex] = React.useState(0);
+  const selectionList = React.useRef<SelectedPeopleList>(null);
+  const onExpandItem = (item: IExtendedPersonaProps): void => {
+    const expandedItem = item.text === 'Group One' ? groupOne : item.text === 'Group Two' ? groupTwo : [];
+    selectionList.current!.replaceItem(item, expandedItem);
+  };
   const onAddItemButtonClicked = (): void => {
     if (selectionList.current) {
       selectionList.current.addItems([people[nextPersonIndex]]);

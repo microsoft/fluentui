@@ -11,8 +11,6 @@ import { people, groupOne, groupTwo } from '@uifabric/example-data';
 
 const primaryButtonStyles: Partial<IButtonStyles> = { root: { display: 'block', marginBottom: 20 } };
 const stackStyles: Partial<IStackStyles> = { root: { maxWidth: '100%' } };
-
-const selectionList = React.createRef<SelectedPeopleList>();
 const onRenderItem = (props: ISelectedPeopleItemProps): JSX.Element => {
   return <ExtendedSelectedItem {...props} />;
 };
@@ -23,6 +21,7 @@ const onCopyItems = (items: IExtendedPersonaProps[]): string => {
 export const SelectedPeopleListControlledExample: React.FunctionComponent = () => {
   const [nextPersonIndex, setNextPersonIndex] = React.useState(0);
   const [currentSelectedItems, setCurrentSelectedItems] = React.useState([people[40]]);
+  const selectionList = React.useRef<SelectedPeopleList>(null);
   const onAddItemButtonClicked = (): void => {
     setCurrentSelectedItems([...currentSelectedItems, people[nextPersonIndex]]);
     setNextPersonIndex(nextPersonIndex + 1);

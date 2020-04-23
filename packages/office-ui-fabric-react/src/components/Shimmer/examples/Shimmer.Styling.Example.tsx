@@ -140,7 +140,7 @@ export const ShimmerStylingExample: React.FunctionComponent = () => {
       <div className={classNames.themedBackgroundWrapper2}>
         <Shimmer
           customElementsGroup={getCustomElements(customThemeForShimmer.palette.white)}
-          width={300}
+          width="300"
           shimmerColors={{
             shimmer: customThemeForShimmer.palette.themeTertiary,
             shimmerWave: customThemeForShimmer.palette.themeSecondary,
@@ -152,7 +152,7 @@ export const ShimmerStylingExample: React.FunctionComponent = () => {
       </div>
       <Customizer settings={{ theme: { ...customThemeForShimmer } }}>
         <div className={classNames.themedBackgroundWrapper2}>
-          <Shimmer customElementsGroup={getCustomElements()} width={300} />
+          <Shimmer customElementsGroup={getCustomElements()} width="300" />
         </div>
       </Customizer>
       <div>

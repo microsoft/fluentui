@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Shimmer, ShimmerElementsGroup, ShimmerElementType } from 'office-ui-fabric-react/lib/Shimmer';
-import { Persona, PersonaSize, PersonaPresence, IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
+import { Persona, PersonaSize, PersonaPresence } from 'office-ui-fabric-react/lib/Persona';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 import { useBoolean } from '@uifabric/react-hooks';
@@ -91,7 +91,7 @@ export const ShimmerLoadDataExample: React.FunctionComponent = () => {
         onText="Toggle to show shimmer"
         offText="Toggle to load content"
       />
-      <Shimmer customElementsGroup={getCustomElements()} width={300} isDataLoaded={isDataLoadedTwo}>
+      <Shimmer customElementsGroup={getCustomElements()} width="300" isDataLoaded={isDataLoadedTwo}>
         <Persona {...examplePersona} size={PersonaSize.size40} presence={PersonaPresence.away} />
       </Shimmer>
     </div>

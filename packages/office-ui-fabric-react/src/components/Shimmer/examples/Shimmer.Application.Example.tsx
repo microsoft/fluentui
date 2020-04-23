@@ -5,6 +5,12 @@ import { IColumn, buildColumns, SelectionMode, Toggle } from 'office-ui-fabric-r
 import { ShimmeredDetailsList } from 'office-ui-fabric-react/lib/ShimmeredDetailsList';
 import { useBoolean } from '@uifabric/react-hooks';
 
+export interface IShimmerApplicationExampleState {
+  items: IExampleItem[]; // DetailsList `items` prop is required so it expects at least an empty array.
+  columns?: IColumn[];
+  isDataLoaded?: boolean;
+}
+
 const fileIcons: { name: string }[] = [
   { name: 'accdb' },
   { name: 'audio' },
@@ -32,17 +38,6 @@ const fileIcons: { name: string }[] = [
   { name: 'xsn' },
 ];
 
-const ITEMS_COUNT = 200;
-const INTERVAL_DELAY = 2500;
-
-let _items: IExampleItem[];
-
-export interface IShimmerApplicationExampleState {
-  items: IExampleItem[]; // DetailsList `items` prop is required so it expects at least an empty array.
-  columns?: IColumn[];
-  isDataLoaded?: boolean;
-}
-
 const randomFileIcon = (): { docType: string; url: string } => {
   const docType: string = fileIcons[Math.floor(Math.random() * fileIcons.length) + 0].name;
   return {
@@ -51,21 +46,43 @@ const randomFileIcon = (): { docType: string; url: string } => {
   };
 };
 
-export const ShimmerApplicationExample: React.FunctionComponent = () => {
-  const [items, setItems] = React.useState([]);
+const ITEMS_COUNT = 200;
+const INTERVAL_DELAY = 2500;
+const shimmeredDetailsListProps = { renderedWindowsAhead: 0, renderedWindowsBehind: 0 };
+let _items: IExampleItem[];
+
+const buildColumns = (columns): IColumn[] => {
+  // const listItems = createListItems(1);
+  // const builtColumns: IColumn[] = buildColumns(listItems);
+  for (let i = 0; i < columns; i++) {
+    if (columns.key === 'thumbnail') {
+      columns.name = 'FileType';
+      columns.minWidth = 16;
+      columns.maxWidth = 16;
+      columns.isIconOnly = true;
+      columns.iconName = 'Page';
+      break;
+    }
+  }
+  return columns;
+};
+export const ShimmerApplicationExample: React.FunctionComponent<IShimmerApplicationExampleState> = () => {
+  const [items, setItems] = React.useState();
   const [columns, setColumns] = React.useState(buildColumns());
   const [isDataLoaded, { toggle: toggleIsDataLoaded }] = useBoolean(false);
 
   const loadData = (): void => {
-    const randomQuantity: number = Math.floor(Math.random() * 10) + 1;
-    const itemsCopy = items!.slice(0);
-    itemsCopy.splice(
-      lastIndexWithData,
-      randomQuantity,
-      ...items.slice(lastIndexWithData, lastIndexWithData + randomQuantity),
-    );
-    lastIndexWithData += randomQuantity;
-    setItems(itemsCopy);
+    lastIntervalId = async.setInterval(() => {
+      const randomQuantity: number = Math.floor(Math.random() * 10) + 1;
+      const itemsCopy = items!.slice(0);
+      itemsCopy.splice(
+        lastIndexWithData,
+        randomQuantity,
+        ..._items.slice(lastIndexWithData, lastIndexWithData + randomQuantity),
+      );
+      lastIndexWithData += randomQuantity;
+      setItems(itemsCopy);
+    }, INTERVAL_DELAY);
   };
 
   const onLoadData = (ev: React.MouseEvent<HTMLElement>, checked: boolean): void => {
@@ -76,19 +93,18 @@ export const ShimmerApplicationExample: React.FunctionComponent = () => {
         item.thumbnail = randomFileType.url;
       });
     }
-
-    let item: IExampleItem[];
+    let currentItems: IExampleItem[];
     const randomQuantity: number = Math.floor(Math.random() * 10) + 1;
     if (checked) {
-      item = _items.slice(0, randomQuantity).concat(new Array(ITEMS_COUNT - randomQuantity));
+      currentItems = _items.slice(0, randomQuantity).concat(new Array(ITEMS_COUNT - randomQuantity));
       lastIndexWithData = randomQuantity;
       loadData();
     } else {
-      items = [];
+      currentItems = [];
       async.clearInterval(lastIntervalId);
     }
     toggleIsDataLoaded();
-    setItems(item);
+    setItems(currentItems);
   };
 
   const onRenderItemColumn = (item: IExampleItem, index: number, column: IColumn): JSX.Element | string | number => {
@@ -98,24 +114,8 @@ export const ShimmerApplicationExample: React.FunctionComponent = () => {
     return item[column.key as keyof IExampleItem];
   };
 
-  const buildColumns = (): IColumn[] => {
-    const item = createListItems(1);
-    const columns: IColumn[] = buildColumns(item);
-    for (const column of columns) {
-      if (column.key === 'thumbnail') {
-        column.name = 'FileType';
-        column.minWidth = 16;
-        column.maxWidth = 16;
-        column.isIconOnly;
-        column.iconName = 'Page';
-        break;
-      }
-    }
-    return columns;
-  };
-
   return (
-    <div>
+    <>
       <Toggle
         label="Toggle to load content"
         style={{ display: 'block', marginBottom: '20px' }}
@@ -134,10 +134,10 @@ export const ShimmerApplicationExample: React.FunctionComponent = () => {
           enableShimmer={!isDataLoaded}
           ariaLabelForShimmer="Content is being fetched"
           ariaLabelForGrid="Item details"
-          listProps={{ renderedWindowsAhead: 0, renderedWindowsBehind: 0 }}
+          listProps={shimmeredDetailsListProps}
         />
       </div>
-    </div>
+    </>
   );
 };
 
