@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { classNamesFunction, mergeAriaAttributeValues, warnMutuallyExclusive, FocusRects } from '../../Utilities';
+import { classNamesFunction, mergeAriaAttributeValues, warnMutuallyExclusive } from '../../Utilities';
 import { Icon } from '../../Icon';
 import { ICheckboxProps, ICheckboxStyleProps, ICheckboxStyles } from './Checkbox.types';
 import { KeytipData } from '../../KeytipData';
@@ -75,7 +75,6 @@ export const CheckboxBase = React.memo(
       <KeytipData keytipProps={keytipProps} disabled={disabled}>
         {(keytipAttributes: any): JSX.Element => (
           <div className={classNames.root} title={title} ref={mergedRootRefs}>
-            <FocusRects />
             <input
               type="checkbox"
               {...inputProps}
