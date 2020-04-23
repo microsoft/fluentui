@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Updating Shimmer, Slider, SelectedPeopleList, MarqueeSelection, and SwatchColorPickerBasicExample",
+  "comment": "Selection added `items` to prop constructor options",
   "packageName": "@uifabric/utilities",
   "email": "czearing@outlook.com",
   "dependentChangeType": "patch",
