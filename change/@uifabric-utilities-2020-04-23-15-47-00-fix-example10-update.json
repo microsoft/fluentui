@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Updating Shimmer, Slider, SelectedPeopleList, MarqueeSelection, and SwatchColorPickerBasicExample",
+  "packageName": "@uifabric/utilities",
+  "email": "czearing@outlook.com",
+  "dependentChangeType": "patch",
+  "date": "2020-04-23T22:47:00.726Z"
+}

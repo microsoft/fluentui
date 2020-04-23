@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "updating Shimmer, Slider, SelectedPeopleList, MarqueeSelection, and SwatchColorPickerBasicExample",
+  "packageName": "office-ui-fabric-react",
+  "email": "czearing@outlook.com",
+  "dependentChangeType": "patch",
+  "date": "2020-04-23T22:46:35.659Z"
+}
