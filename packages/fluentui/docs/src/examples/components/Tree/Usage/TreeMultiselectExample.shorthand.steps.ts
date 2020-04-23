@@ -14,8 +14,6 @@ const config: ScreenerTestsConfig = {
         .click(selectors.treeTitle(1))
         .snapshot('first expanded, not custom checkbox visible')
         .click(selectors.treeTitle(2))
-        .keys(selectors.treeTitle(2), keys.space)
-        .snapshot('select group with space')
         .click(selectors.treeTitle(6))
         .click(selectors.treeTitle(10))
         .click(selectors.treeTitle(11))
