@@ -62,7 +62,7 @@ const useAccessibility = <Props>(behavior: Accessibility<Props>, options: UseAcc
     }
 
     const finalProps: MergedProps = {
-      accessibility: childBehavior,
+      ...(childBehavior && { accessibility: childBehavior }),
       ...definition.attributes[slotName],
       ...userProps,
       onKeyDown: slotHandlers.current[slotName],
