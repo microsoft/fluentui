@@ -57,7 +57,8 @@ export function LabelLink(props: ILabelLinkProps) {
   }
 
   return (
-    <div>
+    <>
+      {/* tslint:disable-next-line: jsx-ban-props */}
       <g ref={gRef} onClick={onClick} data-is-focusable={true} style={{ cursor: 'pointer' }}>
         <Textbox
           text={text}
@@ -71,6 +72,6 @@ export function LabelLink(props: ILabelLinkProps) {
         />
       </g>
       {callout}
-    </div>
+    </>
   );
 }
