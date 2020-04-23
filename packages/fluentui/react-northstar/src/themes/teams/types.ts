@@ -70,11 +70,11 @@ import { TooltipContentStylesProps } from '../../components/Tooltip/TooltipConte
 import { HierarchicalTreeItemProps } from '../../components/HierarchicalTree/HierarchicalTreeItem';
 import { HierarchicalTreeProps } from '../../components/HierarchicalTree/HierarchicalTree';
 import { HierarchicalTreeTitleProps } from '../../components/HierarchicalTree/HierarchicalTreeTitle';
-import { VideoProps } from '../../components/Video/Video';
+import { VideoStylesProps } from '../../components/Video/Video';
 import { TreeItemStylesProps } from '../../components/Tree/TreeItem';
 import { TreeTitleStylesProps } from '../../components/Tree/TreeTitle';
 import { TableProps } from '../../components/Table/Table';
-import { TableRowProps } from '../../components/Table/TableRow';
+import { TableRowStylesProps } from '../../components/Table/TableRow';
 import { TableCellStylesProps } from '../../components/Table/TableCell';
 import { CardStylesProps } from '../../components/Card/Card';
 import { CardPreviewStylesProps } from '../../components/Card/CardPreview';
@@ -83,6 +83,7 @@ import { CardHeaderStylesProps } from '../../components/Card/CardHeader';
 import { CardBodyStylesProps } from '../../components/Card/CardBody';
 import { CardFooterStylesProps } from '../../components/Card/CardFooter';
 import { SvgIconStylesProps } from '../../components/SvgIcon/SvgIcon';
+import { SplitButtonStylesProps } from '../../components/SplitButton/SplitButton';
 
 export type TeamsThemeStylesProps = {
   Accordion: AccordionProps;
@@ -134,6 +135,7 @@ export type TeamsThemeStylesProps = {
   ReactionGroup: ReactionGroupProps;
   Segment: SegmentProps;
   Slider: SliderStylesProps;
+  SplitButton: SplitButtonStylesProps;
   Status: StatusStylesProps;
   Toolbar: ToolbarProps;
   ToolbarCustomItem: ToolbarCustomItemStylesProps;
@@ -151,9 +153,9 @@ export type TeamsThemeStylesProps = {
   HierarchicalTree: HierarchicalTreeProps;
   HierarchicalTreeItem: HierarchicalTreeItemProps;
   HierarchicalTreeTitle: HierarchicalTreeTitleProps;
-  Video: VideoProps;
+  Video: VideoStylesProps;
   Table: TableProps;
-  TableRow: TableRowProps;
+  TableRow: TableRowStylesProps;
   TableCell: TableCellStylesProps;
   Card: CardStylesProps;
   CardPreview: CardPreviewStylesProps;

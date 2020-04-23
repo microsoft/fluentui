@@ -126,6 +126,11 @@ export interface ILineChartPoints {
    * Defines the function that is executed on clicking this legend
    */
   onLegendClick?: (selectedLegend: string | null) => void;
+
+  /**
+   * Defines the function that is executed on clicking  line
+   */
+  onLineClick?: () => void;
 }
 
 export interface IChartProps {
