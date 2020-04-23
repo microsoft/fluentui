@@ -6,6 +6,6 @@ Fluent UI iOS includes an expanding library of controls written in Swift and sup
 
 Documentation for the controls is a work in progress. Some controls can be found in the [Controls section](#/controls/ios) of this site, and the full list can be viewed in [this source folder](https://github.com/OfficeDev/ui-fabric-ios/tree/master/OfficeUIFabric).
 
-### More Information
+### More information
 
 Setup instructions and more information can be found in [the library's readme](https://github.com/OfficeDev/ui-fabric-ios#readme).
