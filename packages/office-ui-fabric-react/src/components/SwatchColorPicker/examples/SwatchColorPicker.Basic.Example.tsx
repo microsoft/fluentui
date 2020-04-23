@@ -24,9 +24,9 @@ const colorCellsExample2 = [
 ];
 
 export const SwatchColorPickerBasicExample: React.FunctionComponent = () => {
-  const [previewColor, setPreviewColor] = React.useState(undefined);
+  const [previewColor, setPreviewColor] = React.useState<string>();
 
-  const swatchColorPickerOnCellHovered = (id, color) => {
+  const swatchColorPickerOnCellHovered = (id: string, color: string) => {
     setPreviewColor(color!);
   };
 

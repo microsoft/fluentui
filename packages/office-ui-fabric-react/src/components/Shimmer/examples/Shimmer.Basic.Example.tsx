@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Shimmer, ShimmerElementType } from 'office-ui-fabric-react/lib/Shimmer';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
+import { IShimmerElement } from '../Shimmer.types';
 
 const wrapperClass = mergeStyles({
   padding: 2,
@@ -38,7 +39,7 @@ const shimmerWithElementThirdRow = [
   { type: ShimmerElementType.gap, width: '10%' },
   { type: ShimmerElementType.line, height: 16 },
 ];
-const shimmerVerticalElement = [
+const shimmerVerticalElement: IShimmerElement[] = [
   { type: ShimmerElementType.circle },
   { type: ShimmerElementType.gap, width: '2%' },
   { type: ShimmerElementType.circle, height: 15, verticalAlign: 'top' },

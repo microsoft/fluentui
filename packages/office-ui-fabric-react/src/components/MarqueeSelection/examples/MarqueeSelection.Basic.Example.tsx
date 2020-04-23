@@ -63,7 +63,7 @@ export const MarqueeSelectionBasicExample: React.FunctionComponent = () => {
   const [isMarqueeEnabled, { toggle: toggleIsMarqueeEnabled }] = useBoolean(true);
   const forceUpdate = useForceUpdate();
   const [selection] = React.useState(() => {
-    const newSelection = new Selection({
+    const newSelection = new Selection<IPhoto>({
       items: PHOTOS,
       onSelectionChanged: forceUpdate,
     });
