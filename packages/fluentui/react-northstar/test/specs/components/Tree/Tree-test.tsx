@@ -112,11 +112,10 @@ describe('Tree', () => {
 
     it('should contain index of item open by ArrowRight', () => {
       const wrapper = mountWithProvider(<Tree items={items} />);
-
       getTitles(wrapper)
         .at(0) // title 1
         .simulate('keydown', { keyCode: keyboardKey.ArrowRight });
-      checkOpenTitles(wrapper, ['1', '11', '12', '2', '3']);
+      checkOpenTitles(wrapper, ['1', '2', '3']);
     });
 
     it('should have index of item removed if closed by ArrowLeft', () => {
