@@ -1,11 +1,5 @@
 import { IPoint, Rectangle } from '../Utilities';
-import {
-  __positioningTestPackage,
-  getBoundsFromTargetWindow,
-  RectangleEdge,
-  IElementPosition,
-  IWindowWithSegments,
-} from './positioning';
+import { __positioningTestPackage, getBoundsFromTargetWindow, RectangleEdge, IElementPosition } from './positioning';
 import { DirectionalHint } from '../common/DirectionalHint';
 interface ITestValidation {
   callout: Rectangle;
@@ -267,6 +261,13 @@ describe('Callout Positioning', () => {
 });
 
 describe('getBoundingRectangle', () => {
+  /**
+   * Window with typings for experimental features regarding Dual Screen devices.
+   */
+  interface IWindowWithSegments extends Window {
+    getWindowSegments?: () => DOMRect[];
+  }
+
   const __INNER_HEIGHT = 1080;
   const __INNER_WIDTH = 1920;
 

@@ -893,7 +893,7 @@ export function getOppositeEdge(edge: RectangleEdge): RectangleEdge {
 /**
  * Window with typings for experimental features regarding Dual Screen devices.
  */
-export interface IWindowWithSegments extends Window {
+interface IWindowWithSegments extends Window {
   getWindowSegments?: () => DOMRect[];
 }
 
