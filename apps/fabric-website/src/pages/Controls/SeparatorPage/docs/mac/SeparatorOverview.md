@@ -1,1 +1,1 @@
-macOS Separator Overview
+macOS Separator overview

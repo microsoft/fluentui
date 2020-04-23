@@ -1,1 +1,1 @@
-Windows Text Implementation
+Windows Text implementation

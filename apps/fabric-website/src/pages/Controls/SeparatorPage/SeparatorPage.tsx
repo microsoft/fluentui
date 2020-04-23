@@ -38,5 +38,23 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
           content: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/SeparatorPage/docs/android/SeparatorImplementation.md') as string,
         },
       ];
+
+    case 'windows':
+      return [
+        {
+          sectionName: 'Implementation',
+          editUrl: baseUrl + 'docs/windows/SeparatorImplementation.md',
+          content: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/SeparatorPage/docs/windows/SeparatorImplementation.md') as string,
+        },
+      ];
+
+    case 'mac':
+      return [
+        {
+          sectionName: 'Implementation',
+          editUrl: baseUrl + 'docs/mac/SeparatorImplementation.md',
+          content: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/SeparatorPage/docs/mac/SeparatorImplementation.md') as string,
+        },
+      ];
   }
 }
