@@ -265,7 +265,6 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
             ariaLabelledBy={titleAriaId}
             ariaDescribedBy={subtitleAriaId}
             onDismiss={onDismiss}
-            // @ts-ignore
             shouldRestoreFocus={!ignoreExternalFocusing}
           >
             <div className={classNames.root}>

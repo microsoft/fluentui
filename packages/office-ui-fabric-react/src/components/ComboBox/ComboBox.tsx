@@ -1218,7 +1218,6 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
       onRenderLowerContent = this._onRenderLowerContent,
       useComboBoxAsMenuWidth,
       persistMenu,
-      // @ts-ignore
       shouldRestoreFocus = true,
     } = props;
 
@@ -1251,7 +1250,6 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
         }
         calloutMaxWidth={dropdownMaxWidth ? dropdownMaxWidth : comboBoxMenuWidth}
         hidden={persistMenu ? !isOpen : undefined}
-        // @ts-ignore
         shouldRestoreFocus={shouldRestoreFocus}
       >
         {onRenderUpperContent(this.props, this._onRenderUpperContent)}

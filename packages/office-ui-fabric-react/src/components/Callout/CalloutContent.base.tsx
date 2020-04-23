@@ -199,7 +199,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
       backgroundColor,
       calloutMaxHeight,
       onScroll,
-      // @ts-ignore
+      // tslint:disable-next-line: deprecation
       shouldRestoreFocus = true,
     } = this.props;
     target = this._getTarget();
@@ -256,7 +256,6 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
             className={this._classNames.calloutMain}
             onDismiss={this.dismiss}
             onScroll={onScroll}
-            // @ts-ignore
             shouldRestoreFocus={shouldRestoreFocus}
             style={overflowStyle}
             onMouseDown={this._mouseDownOnPopup}
