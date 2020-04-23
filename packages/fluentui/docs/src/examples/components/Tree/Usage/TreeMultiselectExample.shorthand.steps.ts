@@ -14,6 +14,9 @@ const config: ScreenerTestsConfig = {
         .click(selectors.treeTitle(1))
         .snapshot('first expanded, not custom checkbox visible')
         .click(selectors.treeTitle(2))
+        .click(selectors.treeTitle(3))
+        .keys(selectors.treeTitle(2), keys.space)
+        .snapshot('toggle selection with space on selectable parent')
         .click(selectors.treeTitle(6))
         .click(selectors.treeTitle(10))
         .click(selectors.treeTitle(11))
@@ -31,10 +34,7 @@ const config: ScreenerTestsConfig = {
         .click(selectors.treeTitle(15))
         .keys(selectors.treeTitle(16), keys.space)
         .keys(selectors.treeTitle(17), keys.space)
-        .snapshot('selected, when group has non selectable item')
-        .keys(selectors.treeTitle(2), keys.space)
-        .snapshot('toggle selection with space on selectable parent'),
-    ,
+        .snapshot('selected, when group has non selectable item'),
   ],
 };
 
