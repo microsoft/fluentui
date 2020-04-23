@@ -6,7 +6,6 @@ import {
   IContextualMenuListProps,
   IContextualMenuStyleProps,
   IContextualMenuStyles,
-  IContextualMenuItemRenderProps,
 } from './ContextualMenu.types';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { FocusZone, FocusZoneDirection, IFocusZoneProps, FocusZoneTabbableElements } from '../../FocusZone';
@@ -386,7 +385,6 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
                     totalItemCount,
                     hasCheckmarks,
                     hasIcons,
-                    defaultMenuItemRenderer: this._renderMenuItem,
                   },
                   this._onRenderMenuList,
                 )}
@@ -478,14 +476,14 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
     return (
       <ul className={this._classNames.list} onKeyDown={this._onKeyDown} onKeyUp={this._onKeyUp} role="menu">
         {menuListProps.items.map((item, index) => {
-          const menuItem = this._renderMenuItem({
-            ...item,
+          const menuItem = this._renderMenuItem(
+            item,
             index,
-            focusableElementIndex: indexCorrection,
-            totalItemCount: menuListProps.totalItemCount,
-            hasCheckmarks: menuListProps.hasCheckmarks,
-            hasIcons: menuListProps.hasIcons,
-          });
+            indexCorrection,
+            menuListProps.totalItemCount,
+            menuListProps.hasCheckmarks,
+            menuListProps.hasIcons,
+          );
           if (item.itemType !== ContextualMenuItemType.Divider && item.itemType !== ContextualMenuItemType.Header) {
             const indexIncrease = item.customOnRenderListLength ? item.customOnRenderListLength : 1;
             indexCorrection += indexIncrease;
@@ -496,18 +494,18 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
     );
   };
 
-  private _renderMenuItem = (item: IContextualMenuItemRenderProps): React.ReactNode => {
+  private _renderMenuItem(
+    item: IContextualMenuItem,
+    index: number,
+    focusableElementIndex: number,
+    totalItemCount: number,
+    hasCheckmarks: boolean,
+    hasIcons: boolean,
+  ): React.ReactNode {
     const renderedItems: React.ReactNode[] = [];
     const iconProps = item.iconProps || { iconName: 'None' };
-    const {
-      getItemClassNames, // tslint:disable-line:deprecation
-      itemProps,
-      index,
-      focusableElementIndex,
-      totalItemCount,
-      hasCheckmarks,
-      hasIcons,
-    } = item;
+    // tslint:disable-next-line:deprecation
+    const { getItemClassNames, itemProps } = item;
     const styles = itemProps ? itemProps.styles : undefined;
 
     // We only send a dividerClassName when the item to be rendered is a divider.
@@ -588,7 +586,7 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
     }
 
     return renderedItems;
-  };
+  }
 
   private _renderSectionItem(
     sectionItem: IContextualMenuItem,
@@ -630,14 +628,14 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
               {headerItem &&
                 this._renderListItem(headerItem, sectionItem.key || index, menuClassNames, sectionItem.title)}
               {sectionProps.items.map((contextualMenuItem, itemsIndex) =>
-                this._renderMenuItem({
-                  ...contextualMenuItem,
-                  index: itemsIndex,
-                  focusableElementIndex: itemsIndex,
-                  totalItemCount: sectionProps.items.length,
+                this._renderMenuItem(
+                  contextualMenuItem,
+                  itemsIndex,
+                  itemsIndex,
+                  sectionProps.items.length,
                   hasCheckmarks,
                   hasIcons,
-                }),
+                ),
               )}
               {sectionProps.bottomDivider && this._renderSeparator(index, menuClassNames, false, true)}
             </ul>
