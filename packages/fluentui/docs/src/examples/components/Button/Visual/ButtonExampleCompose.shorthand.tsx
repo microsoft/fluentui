@@ -15,7 +15,7 @@ type TertiaryButtonProps = {
 
 type TertiaryButtonStylesProps = TertiaryButtonProps;
 
-const TertiaryButton = compose<TertiaryButtonProps, TertiaryButtonStylesProps, ButtonProps, {}>(Button, {
+const TertiaryButton = compose<'button', TertiaryButtonProps, TertiaryButtonStylesProps, ButtonProps, {}>(Button, {
   className: 'ui-tertiary-button',
   displayName: 'TertiaryButton',
   mapPropsToStylesProps: props => ({ tertiary: props.tertiary }),
@@ -38,15 +38,18 @@ type OverriddenButtonProps = {
 
 type OverriddenButtonStylesProps = Required<OverriddenButtonProps>;
 
-const OverriddenButton = compose<OverriddenButtonProps, OverriddenButtonStylesProps, ButtonProps, {}>(Button, {
-  className: 'ui-overridden-button',
-  displayName: 'OverriddenButton',
-  mapPropsToStylesProps: props => ({
-    fitted: props.fitted,
-  }),
-  handledProps: ['fitted'],
-  overrideStyles: true,
-});
+const OverriddenButton = compose<'button', OverriddenButtonProps, OverriddenButtonStylesProps, ButtonProps, {}>(
+  Button,
+  {
+    className: 'ui-overridden-button',
+    displayName: 'OverriddenButton',
+    mapPropsToStylesProps: props => ({
+      fitted: props.fitted,
+    }),
+    handledProps: ['fitted'],
+    overrideStyles: true,
+  },
+);
 
 //
 // Theme
@@ -129,7 +132,7 @@ const componentVariables: ComponentVariablesInput = {
     tertiaryColor: siteVariables.colorScheme.default.foreground3,
   }),
   CompactTertiaryButton: (): ComponentVariables['CompactTertiaryButton'] => ({
-    tertiaryPadding: '.5rem',
+    tertiaryPadding: '0 .5rem',
   }),
 };
 
