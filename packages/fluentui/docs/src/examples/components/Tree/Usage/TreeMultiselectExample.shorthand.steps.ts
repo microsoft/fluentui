@@ -33,7 +33,7 @@ const config: ScreenerTestsConfig = {
         .keys(selectors.treeTitle(17), keys.space)
         .snapshot('selected, when group has non selectable item')
         .keys(selectors.treeTitle(2), keys.space)
-        .snapshot('toggle selection with space'),
+        .snapshot('toggle selection with space on selectable parent'),
     ,
   ],
 };
