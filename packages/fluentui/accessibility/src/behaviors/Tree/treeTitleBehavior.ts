@@ -32,7 +32,7 @@ const treeTitleBehavior: Accessibility<TreeTitleBehaviorProps> = props => ({
   keyActions: {
     root: {
       performClick: {
-        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }],
+        keyCombinations: [{ keyCode: keyboardKey.Spacebar }],
       },
     },
   },
