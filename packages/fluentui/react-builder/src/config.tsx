@@ -433,13 +433,13 @@ export const resolveDraggingElement: (displayName: string, draggingElements?) =>
 
 // TODO: this allows mutating `target`, OK?
 /**
- * Handles dropping a display name onto a json tree element.
- * Should mutate the drop target json element as a result of the drop.
+ * Handles dropping a new child element into a parent element.
+ * Should mutate the parent as a result of the drop.
  */
-export const resolveDrop = (source: JSONTreeElement, target: JSONTreeElement) => {
-  console.log('config:resolveDrop', JSON.parse(JSON.stringify({ source, target })));
+export const resolveDrop = (newChild: JSONTreeElement, parent: JSONTreeElement, childIndex: number) => {
+  console.log('config:resolveDrop', JSON.parse(JSON.stringify({ source: newChild, target: parent })));
 
-  if (!source || !target) {
+  if (!newChild || !parent) {
     return;
   }
 
@@ -448,32 +448,28 @@ export const resolveDrop = (source: JSONTreeElement, target: JSONTreeElement) =>
   // TODO: This is where we'd handle special drop logic and json tree updates
   //       Right now, we just update the children of the element that was dropped on.
   // TODO: Icon component was removed
-  if (target.type === 'Button' && source.type === 'Icon') {
-    target.props.icon = source.props;
+  if (parent.type === 'Button' && newChild.type === 'Icon') {
+    parent.props.icon = newChild.props;
     return;
   }
 
   // TODO: handle dropping before/after the target as well as "into" the target's children
 
-  if (!target.props) {
-    target.props = {};
+  if (!parent.props) {
+    parent.props = {};
   }
 
-  if (!target.props.children) {
-    target.props.children = [];
-  }
-  if (target.props) {
-    // clean up props that are incompatible with element children
-    // delete target.props?.children;
-    delete target.props?.content;
+  if (!parent.props.children) {
+    parent.props.children = [];
   }
 
-  target.props.children = [
-    ...(Array.isArray(target.props.children) ? target.props.children : [target.props.children]),
-    source,
-  ];
+  parent.props.children = [].concat(parent.props.children);
+  parent.props.children.splice(childIndex, 0, newChild);
 
-  console.log('config:resolveDrop RESULT', JSON.parse(JSON.stringify({ source, target })));
+  // clean up props that are incompatible with element children
+  delete parent.props?.content;
+
+  console.log('config:resolveDrop RESULT', JSON.parse(JSON.stringify({ source: newChild, target: parent })));
 };
 
 // ///////////////////////////////////////////////////////////////////////////////////////
@@ -521,17 +517,12 @@ export const renderJSONTreeToJSXElement = (
 /**
  * Converts a fiberNav into a JSON Tree element
  */
-export const fiberNavToJSONTreeElement = (fiberNav: FiberNavigator): JSONTreeElement | null => {
+export const fiberNavFindJSONTreeElement = (jsonTree, fiberNav: FiberNavigator): JSONTreeElement | null => {
   if (!fiberNav) {
     return null;
   }
 
-  return {
-    uuid: keyToUUID(fiberNav.key),
-    type: fiberNav.elementType,
-    displayName: fiberNav.name,
-    props: fiberNav.props,
-  };
+  return jsonTreeFindElement(jsonTree, keyToUUID(fiberNav.key));
 };
 
 /**

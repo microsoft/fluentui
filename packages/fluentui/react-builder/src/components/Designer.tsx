@@ -49,6 +49,8 @@ export type DesignerState = {
 
 class Designer extends React.Component<any, DesignerState> {
   potentialDropTarget: JSONTreeElement | null = null;
+  dropIndex: number = -1;
+  dropParent: JSONTreeElement | null = null;
   draggingPosition: { x: number; y: number } = { x: 0, y: 0 };
   draggingElementRef = React.createRef<HTMLElement>();
 
@@ -164,20 +166,21 @@ class Designer extends React.Component<any, DesignerState> {
   handleCanvasMouseUp = () => {
     this.setState(({ draggingElement, jsonTree }) => {
       console.log('Designer:handleCanvasMouseUp', {
-        drop: draggingElement,
-        on: this.potentialDropTarget,
+        dropChild: draggingElement,
+        dropParent: this.dropParent,
+        dropIndex: this.dropIndex,
       });
 
       let addedComponent: JSONTreeElement | null = null;
 
-      if (this.potentialDropTarget) {
+      if (this.dropParent) {
         // TODO: it sucks we have to rely on referential mutation of the jsonTree to update it.
         //       example, here we can't simply drop 'draggingElement' on 'potentialDropTarget'.
         //       otherwise, it won't get updated in state because it isn't a reference to the jsonTree element.
         //       we first must get a reference to the element with the same uuid, then mutated that reference. womp.
-        const droppedOn = jsonTreeFindElement(jsonTree, this.potentialDropTarget.uuid);
-        console.log({ droppedOn });
-        resolveDrop(draggingElement, droppedOn);
+        const dropParent = jsonTreeFindElement(jsonTree, this.dropParent.uuid);
+        console.log({ dropParent });
+        resolveDrop(draggingElement, dropParent, this.dropIndex);
         addedComponent = jsonTreeFindElement(jsonTree, draggingElement.uuid);
       }
 
@@ -193,13 +196,16 @@ class Designer extends React.Component<any, DesignerState> {
   };
 
   handleSelectorHover = jsonTreeElement => {
-    if (this.potentialDropTarget?.uuid === jsonTreeElement?.uuid) {
-      return;
-    }
-
     console.log('Designer:handleSelectorHover', jsonTreeElement);
 
     this.potentialDropTarget = jsonTreeElement;
+  };
+
+  handleDropPositionChange = (dropParent, dropIndex) => {
+    console.log('Designer:handleDropPositionChange', { dropIndex, dropParent });
+
+    this.dropParent = dropParent;
+    this.dropIndex = dropIndex;
   };
 
   handleSelectComponent = jsonTreeElement => {
@@ -411,14 +417,14 @@ class Designer extends React.Component<any, DesignerState> {
                 }}
               >
                 <Canvas
-                  {...(draggingElement && {
-                    onMouseMove: this.handleDrag,
-                    onMouseUp: this.handleCanvasMouseUp,
-                  })}
+                  draggingElement={draggingElement}
                   isExpanding={isExpanding}
                   isSelecting={isSelecting || !!draggingElement}
+                  onMouseMove={this.handleDrag}
+                  onMouseUp={this.handleCanvasMouseUp}
                   onSelectComponent={this.handleSelectComponent}
                   onSelectorHover={this.handleSelectorHover}
+                  onDropPositionChange={this.handleDropPositionChange}
                   jsonTree={jsonTree}
                   selectedComponent={selectedComponent}
                   onDeleteComponent={this.handleDeleteComponent}

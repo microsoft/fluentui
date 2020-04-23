@@ -3,12 +3,14 @@ import * as _ from 'lodash';
 import { EventListener } from '@fluentui/react-component-event-listener';
 import { isBrowser } from '@fluentui/react-northstar';
 import FiberNavigator from '../../../react-northstar/src/components/Debug/FiberNavigator';
-import { fiberNavToJSONTreeElement } from '../config';
+import { fiberNavFindJSONTreeElement, jsonTreeFindParent } from '../config';
 import { JSONTreeElement } from './types';
 
 export type DropSelectorProps = {
-  mountDocument?: Document;
+  onDropPositionChange: (dropParent: JSONTreeElement, dropIndex: number) => void;
   filter?;
+  jsonTree: JSONTreeElement;
+  mountDocument?: Document;
 };
 
 type InElementPosition = 'top' | 'right' | 'bottom' | 'left' | 'center';
@@ -60,6 +62,8 @@ const findBestIndex: (parent: HTMLElement, children: JSONTreeElement[], mouse: {
 };
 
 export const DropSelector: React.FunctionComponent<DropSelectorProps> = ({
+  jsonTree,
+  onDropPositionChange,
   mountDocument = isBrowser() ? window.document : null,
   filter = fiberNav => fiberNav,
 }) => {
@@ -86,7 +90,7 @@ export const DropSelector: React.FunctionComponent<DropSelectorProps> = ({
         return;
       }
 
-      const jsonTreeElement = fiberNavToJSONTreeElement(fiberNav);
+      const jsonTreeElement = fiberNavFindJSONTreeElement(jsonTree, fiberNav);
 
       const targetRect = targetElement.getBoundingClientRect();
       // console.log('DropSelector:handleMouseMove', targetElement, targetRect, jsonTreeElement);
@@ -110,22 +114,38 @@ export const DropSelector: React.FunctionComponent<DropSelectorProps> = ({
       );
 
       if (inElementPosition === 'center') {
+        // We're inside an element so we care about where we drop among it's children here
         if (jsonTreeElement.props?.children?.length > 0) {
+          // Drop inside parent WITH children
           const bestIndex = findBestIndex(targetElement, jsonTreeElement.props.children as JSONTreeElement[], {
             x: e.x,
             y: e.y,
           });
-          console.log('DropSelector bestIndex', bestIndex);
+          console.log('DropSelector bestIndex', bestIndex, jsonTreeElement);
 
           selectorRef.current.style.outline = '2px solid pink';
+          onDropPositionChange(jsonTreeElement, bestIndex);
         } else {
+          // Drop inside parent WITH NO children
           selectorRef.current.style.outline = '2px solid red';
+          onDropPositionChange(jsonTreeElement, 0);
         }
       } else {
+        // We're inside an element but at edge, we care about where we drop outside among siblings
+        // jsonTreeElement - is your sibling and inElementPosition
+        // parent, insertAtIndex
         selectorRef.current.style[`border${_.startCase(inElementPosition)}`] = '4px solid red';
+        const dropParent = jsonTreeFindParent(jsonTree, jsonTreeElement.uuid);
+        const dropIndex = dropParent?.props?.children.indexOf(jsonTreeElement);
+
+        if (inElementPosition === 'right' || inElementPosition === 'bottom') {
+          onDropPositionChange(dropParent, dropIndex + 1);
+        } else {
+          onDropPositionChange(dropParent, dropIndex);
+        }
       }
     },
-    [selectorRef, mouseRef],
+    [selectorRef, mouseRef, jsonTree],
   );
 
   const handleMouseLeave = React.useCallback(() => {

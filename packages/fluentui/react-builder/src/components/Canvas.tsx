@@ -4,16 +4,16 @@ import Frame, { FrameContextConsumer } from 'react-frame-component';
 import { DebugSelector, FiberNavigator, Provider, themes } from '@fluentui/react-northstar';
 import { JSONTreeElement } from './types';
 import { EventListener } from '@fluentui/react-component-event-listener';
-import { fiberNavFindOwnerInJSONTree, fiberNavToJSONTreeElement, renderJSONTreeToJSXElement } from '../config';
+import { fiberNavFindJSONTreeElement, fiberNavFindOwnerInJSONTree, renderJSONTreeToJSXElement } from '../config';
 import { DebugFrame } from './DebugFrame';
 import { DropSelector } from './DropSelector';
 
 const Canvas = ({
-  renderJSONTreeElement,
-  style,
+  draggingElement,
   isExpanding,
   isSelecting,
   jsonTree,
+  onDropPositionChange,
   onMouseMove,
   onMouseUp,
   onSelectComponent,
@@ -21,12 +21,14 @@ const Canvas = ({
   selectedComponent,
   onDeleteComponent,
   onGoToParentComponent,
+  renderJSONTreeElement,
+  style,
 }: {
-  renderJSONTreeElement?: (jsonTreeElement: JSONTreeElement) => JSONTreeElement;
-  style?: React.CSSProperties;
+  draggingElement: JSONTreeElement;
   jsonTree: JSONTreeElement;
   isExpanding?: boolean;
   isSelecting?: boolean;
+  onDropPositionChange: (dropParent: JSONTreeElement, dropIndex: number) => void;
   onMouseMove?: ({ clientX, clientY }: { clientX: number; clientY: number }) => void;
   onMouseUp?: () => void;
   onSelectComponent?: (jsonTreeElement: JSONTreeElement) => void;
@@ -34,6 +36,8 @@ const Canvas = ({
   selectedComponent?: JSONTreeElement;
   onDeleteComponent?: () => void;
   onGoToParentComponent?: () => void;
+  renderJSONTreeElement?: (jsonTreeElement: JSONTreeElement) => JSONTreeElement;
+  style?: React.CSSProperties;
 }) => {
   const iframeId = React.useMemo(
     () =>
@@ -70,14 +74,14 @@ const Canvas = ({
 
   const handleSelectComponent = React.useCallback(
     (fiberNav: FiberNavigator) => {
-      onSelectComponent?.(fiberNavToJSONTreeElement(fiberNav));
+      onSelectComponent?.(fiberNavFindJSONTreeElement(jsonTree, fiberNav));
     },
     [onSelectComponent],
   );
 
   const handleSelectorHover = React.useCallback(
     (fiberNav: FiberNavigator) => {
-      onSelectorHover?.(fiberNavToJSONTreeElement(fiberNav));
+      onSelectorHover?.(fiberNavFindJSONTreeElement(jsonTree, fiberNav));
     },
     [onSelectorHover],
   );
@@ -255,17 +259,18 @@ const Canvas = ({
                 onGoToParent={onGoToParentComponent}
               />
             )}
-            <DropSelector
-              mountDocument={document}
-              filter={fiberNav => {
-                const owner = fiberNavFindOwnerInJSONTree(fiberNav, jsonTree);
-                return owner;
-              }}
-            />
+            {draggingElement && (
+              <DropSelector
+                filter={fiberNav => fiberNavFindOwnerInJSONTree(fiberNav, jsonTree)}
+                jsonTree={jsonTree}
+                mountDocument={document}
+                onDropPositionChange={onDropPositionChange}
+              />
+            )}
 
             <Provider theme={themes.teams} target={document}>
-              {onMouseMove && <EventListener type="mousemove" listener={handleMouseMove} target={document} />}
-              {onMouseUp && <EventListener type="mouseup" listener={handleMouseUp} target={document} />}
+              {draggingElement && <EventListener type="mousemove" listener={handleMouseMove} target={document} />}
+              {draggingElement && <EventListener type="mouseup" listener={handleMouseUp} target={document} />}
               {renderJSONTreeToJSXElement(jsonTree, renderJSONTreeElement)}
             </Provider>
           </>
