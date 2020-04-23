@@ -113,8 +113,6 @@ const TableRow: React.FC<WithAsProp<TableRowProps>> & FluentComponentStaticProps
   };
 
   const renderCells = () => {
-    // TODO: consider moving to useAccessibility()
-
     return _.map(items, (item: TableCellProps, index: number) => {
       const overrideProps = handleVariablesOverrides(variables);
       return TableCell.create(item, {
