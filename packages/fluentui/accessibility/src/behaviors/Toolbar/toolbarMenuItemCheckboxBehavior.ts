@@ -1,3 +1,4 @@
+import * as keyboardKey from 'keyboard-key';
 import { Accessibility } from '../../types';
 
 /**
@@ -16,6 +17,13 @@ const toolbarMenuItemCheckboxBehavior: Accessibility<ToolbarMenuItemCheckboxBeha
       'aria-checked': props.active,
       'aria-disabled': props.disabled,
       role: 'menuitemcheckbox',
+    },
+  },
+  keyActions: {
+    root: {
+      performClick: {
+        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }],
+      },
     },
   },
 });
