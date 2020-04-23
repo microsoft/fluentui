@@ -6,4 +6,9 @@ Besides a profile picture, Persona controls can include text elements. The user'
 
 Persona controls are also available as a performant list view. The `MSPersonaListView` controls are perfect for listing many people. Examples of this may be an Address Book or a People Picker auto-complete experience.
 
-<img src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/ios/persona/mspersonalistview.png" alt="Example of Personas arranged in a list on iOS" style="width: 50%;" />
+<DisplayToggle onText="Dark" offText="Light" label="Theme Switcher">
+
+<img className="off" src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/ios/updated/img_personalistview_01_light.png?text=LightMode" />
+<img className="on" src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/ios/updated/img_personalistview_01_dark.png?text=DarkMode" />
+
+</DisplayToggle>

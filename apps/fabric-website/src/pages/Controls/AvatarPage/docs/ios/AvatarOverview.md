@@ -12,4 +12,9 @@
 <img className="off" src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/ios/updated/img_avatar_01_profilepicture_light.png?text=LightMode" />
 <img className="on" src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/ios/updated/img_avatar_01_profilepicture_dark.png?text=DarkMode" />
 
+### Group
+
+<img className="off" src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/ios/updated/img_avatar_03_groups_light.png?text=LightMode" />
+<img className="on" src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/ios/updated/img_avatar_03_groups_dark.png?text=DarkMode" />
+
 </DisplayToggle>
