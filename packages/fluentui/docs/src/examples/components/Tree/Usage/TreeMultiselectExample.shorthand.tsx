@@ -75,7 +75,6 @@ const items = [
     title: 'House Targaryen',
     selectionIndicator: {
       children: (Component, { expanded, selected, ...props }) => {
-        console.log(props);
         return <Text {...props} content={expanded && (selected ? 'unselect all' : 'select all')} />;
       },
     },

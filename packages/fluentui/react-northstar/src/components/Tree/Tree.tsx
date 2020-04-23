@@ -214,7 +214,7 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
     });
   };
 
-  processItemsForSelection = (e: React.SyntheticEvent, treeItemProps: TreeItemProps) => {
+  processItemsForSelection = (e: React.SyntheticEvent, treeItemProps: TreeItemProps, executeSelection: boolean) => {
     let { selectedItemIds } = this.state;
     const { id, selectableParent, items, expanded } = treeItemProps;
     const treeItemHasSubtree = hasSubtree(treeItemProps);
@@ -226,9 +226,9 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
     }
 
     // if the target is equal to currentTarget it means treeItem should be collapsed, not procced with selection
-    if (isExpandedSelectableParent && e.target === e.currentTarget && keyboardKey.getCode(e) !== keyboardKey.Enter) {
-      return;
-    }
+    // if (isExpandedSelectableParent && !executeSelection) {
+    //   return;
+    // }
 
     // push all tree items under particular parent into selection array
     // not parent itself, therefore not procced with selection
@@ -267,25 +267,23 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
     this.setSelectedItemIds(e, selectedItemIds);
   };
 
-  onTitleClick = (e: React.SyntheticEvent, treeItemProps: TreeItemProps) => {
+  onTitleClick = (e: React.SyntheticEvent, treeItemProps: TreeItemProps, executeSelection: boolean = false) => {
+    const treeItemHasSubtree = hasSubtree(treeItemProps);
+
     if (!treeItemProps) {
       return;
     }
+
     if (treeItemProps.selectable) {
-      this.processItemsForSelection(e, treeItemProps);
-      // do not continue with collapsing if the parent is selectable and selection on parent was executed
-      if (
-        treeItemProps.selectableParent &&
-        ((treeItemProps.expanded && e.target !== e.currentTarget) || keyboardKey.getCode(e) === keyboardKey.Enter)
-      ) {
-        return;
-      }
+      this.processItemsForSelection(e, treeItemProps, executeSelection);
     }
 
-    if (!hasSubtree(treeItemProps)) {
-      return;
+    if (treeItemHasSubtree && !executeSelection && e.target === e.currentTarget) {
+      this.expandItems(e, treeItemProps);
     }
+  };
 
+  expandItems(e: React.SyntheticEvent, treeItemProps: TreeItemProps) {
     let { activeItemIds } = this.state;
     const { id } = treeItemProps;
     const { exclusive, items } = this.props;
@@ -312,7 +310,7 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
     }
 
     this.setActiveItemIds(e, activeItemIds);
-  };
+  }
 
   onFocusFirstChild = (itemId: string) => {
     const currentElement = this.itemsRef.get(itemId);

@@ -27,6 +27,7 @@ const treeItemBehavior: Accessibility<TreeItemBehaviorProps> = props => ({
       role: 'none',
       ...(props.hasSubtree && {
         'aria-expanded': props.expanded,
+        'aria-selected': props.selectable ? props.selected || false : undefined,
         tabIndex: -1,
         [IS_FOCUSABLE_ATTRIBUTE]: true,
         role: 'treeitem',
@@ -66,9 +67,10 @@ const treeItemBehavior: Accessibility<TreeItemBehaviorProps> = props => ({
       },
       ...(props.selectable && {
         performClick: {
-          keyCombinations: props.hasSubtree
-            ? [{ keyCode: keyboardKey.Spacebar }, { keyCode: keyboardKey.Enter }]
-            : [{ keyCode: keyboardKey.Spacebar }],
+          keyCombinations: props.hasSubtree ? [{ keyCode: keyboardKey.Enter }] : [{ keyCode: keyboardKey.Spacebar }],
+        },
+        performSelection: {
+          keyCombinations: [{ keyCode: keyboardKey.Spacebar }],
         },
       }),
     },
@@ -86,6 +88,7 @@ export type TreeItemBehaviorProps = {
   hasSubtree?: boolean;
   treeSize?: number;
   selectable?: boolean;
+  selected?: boolean;
 };
 
 /** Checks if current tree item has a subtree and it is expanded */
