@@ -24,6 +24,7 @@ interface ILabelLinkProps {
   mergedLabel: (count: number) => string;
 }
 
+/* tslint:disable-next-line:function-name */
 export function LabelLink(props: ILabelLinkProps) {
   const gRef = React.useRef<SVGGElement>(null);
   const [showCard, setShowCard] = React.useState(false);
@@ -56,7 +57,7 @@ export function LabelLink(props: ILabelLinkProps) {
   }
 
   return (
-    <>
+    <div>
       <g ref={gRef} onClick={onClick} data-is-focusable={true} style={{ cursor: 'pointer' }}>
         <Textbox
           text={text}
@@ -70,6 +71,6 @@ export function LabelLink(props: ILabelLinkProps) {
         />
       </g>
       {callout}
-    </>
+    </div>
   );
 }

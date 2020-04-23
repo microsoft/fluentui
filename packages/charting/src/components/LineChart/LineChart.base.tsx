@@ -106,7 +106,16 @@ export class LineChartBase extends React.Component<
   }
 
   public render(): JSX.Element {
-    const { theme, className, styles, tickValues, tickFormat, yAxisTickFormat, hideLegend = false, eventAnnotationProps } = this.props;
+    const {
+      theme,
+      className,
+      styles,
+      tickValues,
+      tickFormat,
+      yAxisTickFormat,
+      hideLegend = false,
+      eventAnnotationProps,
+    } = this.props;
     this._points = this.props.data.lineChartData ? this.props.data.lineChartData : [];
     if (this.props.parentRef) {
       this._fitParentContainer();

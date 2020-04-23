@@ -10,6 +10,7 @@ interface IEventsAnnotationExtendProps extends IEventsAnnotationProps {
   chartYTop: number;
 }
 
+/* tslint:disable-next-line:function-name */
 export function EventsAnnotation(props: IEventsAnnotationExtendProps) {
   const textWidth = props.labelWidth ? props.labelWidth : 105;
   const textY = props.chartYTop - 20;
