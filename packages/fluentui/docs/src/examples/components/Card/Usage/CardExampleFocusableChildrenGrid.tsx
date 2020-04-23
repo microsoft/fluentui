@@ -38,19 +38,39 @@ const SampleCard: React.FC<SampleCardProps> = ({ index, ...unhandledProps }) => 
 };
 
 const CardExampleFocusableGrid = () => {
-  const navigationMessageDivId = 'navigationMessage';
-  const [navigationMessageId, setNavigationMessageId] = React.useState(null);
+  const navigationMessageId = 'navigationMessage';
+  const defaultMessage = 'Press arrow keys to navigate between cards.';
+  const [navigationMessage, setNavigationMessage] = React.useState(defaultMessage);
+  const timeout = React.useRef<ReturnType<typeof setTimeout>>();
   const handleGridFocus = () => {
-    setNavigationMessageId(navigationMessageDivId);
+    console.log(navigationMessage);
+    if (navigationMessage !== null) {
+      timeout.current = setTimeout(() => {
+        setNavigationMessage(null);
+      }, 3000);
+    }
   };
-  const handleGridBlur = () => {
-    setNavigationMessageId(null);
+
+  const handleGridBlur = e => {
+    if (!e.currentTarget.contains(e.relatedTarget)) {
+      setNavigationMessage(defaultMessage);
+    }
   };
+
+  const cleanup = () => {
+    if (timeout.current) {
+      clearTimeout(timeout.current);
+    }
+  };
+
+  // make sure our timeout gets cleared if
+  // our consuming component gets unmounted
+  React.useEffect(() => cleanup, []);
 
   return (
     <>
-      <div id={navigationMessageDivId} style={screenReaderContainerStyles}>
-        Press arrow keys to navigate between cards.
+      <div id={navigationMessageId} style={screenReaderContainerStyles}>
+        {navigationMessage}
       </div>
       <Grid accessibility={cardsContainerBehavior} columns="3" onFocus={handleGridFocus} onBlur={handleGridBlur}>
         <SampleCard index={1} aria-label="1 of 18" aria-describedby={navigationMessageId} />
@@ -72,6 +92,7 @@ const CardExampleFocusableGrid = () => {
         <SampleCard index={17} aria-label="17 of 18" aria-describedby={navigationMessageId} />
         <SampleCard index={18} aria-label="18 of 18" aria-describedby={navigationMessageId} />
       </Grid>
+      <Button content="Test focus" />
     </>
   );
 };
