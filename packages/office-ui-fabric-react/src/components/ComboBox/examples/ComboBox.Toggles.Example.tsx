@@ -7,6 +7,7 @@ import {
   SelectableOptionMenuItemType,
   Toggle,
 } from 'office-ui-fabric-react/lib/index';
+import { useBoolean } from '@uifabric/react-hooks';
 
 const INITIAL_OPTIONS: IComboBoxOption[] = [
   { key: 'Header1', text: 'First heading', itemType: SelectableOptionMenuItemType.Header },
@@ -32,44 +33,21 @@ const wrapperClassName = mergeStyles({
   },
 });
 
-export interface IComboBoxTogglesExampleState {
-  autoComplete: boolean;
-  allowFreeform: boolean;
-}
+export const ComboBoxTogglesExample: React.FC = () => {
+  const [autoComplete, { toggle: ToggleAutoComplete }] = useBoolean(false);
+  const [allowFreeform, { toggle: ToggleAllowFreeform }] = useBoolean(true);
 
-// tslint:disable:jsx-no-lambda
-export class ComboBoxTogglesExample extends React.Component<{}, IComboBoxTogglesExampleState> {
-  public state: IComboBoxTogglesExampleState = {
-    autoComplete: false,
-    allowFreeform: true,
-  };
-
-  public render(): JSX.Element {
-    const state = this.state;
-    return (
-      <Fabric className={wrapperClassName}>
-        <ComboBox
-          label="ComboBox with toggleable freeform/auto-complete"
-          key={'' + state.autoComplete + state.allowFreeform /*key causes re-render when toggles change*/}
-          allowFreeform={state.allowFreeform}
-          autoComplete={state.autoComplete ? 'on' : 'off'}
-          options={INITIAL_OPTIONS}
-        />
-        <Toggle
-          label="Allow freeform"
-          checked={state.allowFreeform}
-          onChange={(ev: React.MouseEvent<HTMLElement>, checked?: boolean) => {
-            this.setState({ allowFreeform: !!checked });
-          }}
-        />
-        <Toggle
-          label="Auto-complete"
-          checked={state.autoComplete}
-          onChange={(ev: React.MouseEvent<HTMLElement>, checked?: boolean) => {
-            this.setState({ autoComplete: !!checked });
-          }}
-        />
-      </Fabric>
-    );
-  }
-}
+  return (
+    <Fabric className={wrapperClassName}>
+      <ComboBox
+        label="ComboBox with toggleable freeform/auto-complete"
+        key={'' + autoComplete + allowFreeform}
+        allowFreeform={allowFreeform}
+        autoComplete={autoComplete ? 'on' : 'off'}
+        options={INITIAL_OPTIONS}
+      />
+      <Toggle label="Allow freeform" checked={allowFreeform} onChange={ToggleAllowFreeform} />
+      <Toggle label="Auto-complete" checked={autoComplete} onChange={ToggleAutoComplete} />
+    </Fabric>
+  );
+};

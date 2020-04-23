@@ -97,6 +97,7 @@ export type ButtonStylesProps = Pick<
 > & {
   hasContent?: boolean;
 };
+export const buttonClassName = 'ui-button';
 
 const Button: React.FC<WithAsProp<ButtonProps>> &
   FluentComponentStaticProps<ButtonProps> & { Group: typeof ButtonGroup; Content: typeof ButtonContent } = props => {
@@ -148,7 +149,7 @@ const Button: React.FC<WithAsProp<ButtonProps>> &
     rtl: context.rtl,
   });
   const { classes, styles: resolvedStyles } = useStyles<ButtonStylesProps>(Button.displayName, {
-    className: Button.className,
+    className: buttonClassName,
     mapPropsToStyles: () => ({
       text,
       primary,
@@ -244,7 +245,6 @@ Button.defaultProps = {
 };
 
 Button.displayName = 'Button';
-Button.className = 'ui-button';
 
 Button.propTypes = {
   ...commonPropTypes.createCommon({
@@ -271,6 +271,10 @@ Button.handledProps = Object.keys(Button.propTypes) as any;
 
 Button.Group = ButtonGroup;
 Button.Content = ButtonContent;
+
+Button.shorthandConfig = {
+  mappedProp: 'content',
+};
 
 Button.create = createShorthandFactory({ Component: Button, mappedProp: 'content' });
 

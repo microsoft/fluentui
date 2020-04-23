@@ -1,7 +1,7 @@
 import { IRawStyle } from '@uifabric/merge-styles';
 
 /**
- * UI Fabric font set.
+ * Fluent UI font set.
  * {@docCategory IFontStyles}
  */
 export interface IFontStyles {

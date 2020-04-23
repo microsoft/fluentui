@@ -101,6 +101,14 @@ export interface ILineChartProps {
   // tslint:disable-next-line: no-any
   yAxisTickFormat?: any;
 
+  /** decides wether to show/hide legends
+   * @defaultvalue false
+   */
+  hideLegend?: boolean;
+
+  /**
+   * Show event annotation
+   */
   eventAnnotationProps?: IEventsAnnotationProps;
 }
 

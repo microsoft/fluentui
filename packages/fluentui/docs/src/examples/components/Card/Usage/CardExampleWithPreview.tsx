@@ -3,7 +3,7 @@ import * as React from 'react';
 import { LikeIcon } from '@fluentui/react-icons-northstar';
 
 const CardExampleWithPreview = () => (
-  <Card compact>
+  <Card compact aria-roledescription="card with image, text and action buttons">
     <Card.TopControls>
       <Checkbox aria-label="test checkbox" />
     </Card.TopControls>

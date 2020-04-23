@@ -445,6 +445,7 @@ export type IClassNames<T> = {
 
 // @public (undocumented)
 export interface IClassNamesFunctionOptions {
+    cacheSize?: number;
     disableCaching?: boolean;
 }
 

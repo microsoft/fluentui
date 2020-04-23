@@ -18,7 +18,6 @@ import {
   isElementFocusSubZone,
   isElementFocusZone,
   isElementTabbable,
-  on,
   raiseClick,
   shouldWrapFocus,
   warnDeprecations,
@@ -64,9 +63,6 @@ const _allInstances: {
 } = {};
 const _outerZones: Set<FocusZone> = new Set();
 
-// Track the 1 global keydown listener we hook to window.
-let _disposeGlobalKeyDownListener: (() => void) | undefined;
-
 const ALLOWED_INPUT_TYPES = ['text', 'number', 'password', 'email', 'tel', 'url', 'search'];
 
 const ALLOW_VIRTUAL_ELEMENTS = false;
@@ -75,9 +71,9 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
   public static defaultProps: IFocusZoneProps = {
     isCircularNavigation: false,
     direction: FocusZoneDirection.bidirectional,
+    preventDefaultWhenHandled: true,
   };
 
-  private _disposables: Function[] = [];
   private _root: React.RefObject<HTMLElement> = React.createRef();
   private _id: string;
 
@@ -103,6 +99,8 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
 
   /** Used to allow moving to next focusable element even when we're focusing on a input element when pressing tab */
   private _processingTabKey: boolean;
+
+  private _windowElement: Window | undefined;
 
   /** Used for testing purposes only. */
   public static getOuterZones(): number {
@@ -140,7 +138,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     _allInstances[this._id] = this;
 
     if (root) {
-      const windowElement = getWindow(root);
+      this._windowElement = getWindow(root);
       let parentElement = getParent(root, ALLOW_VIRTUAL_ELEMENTS);
 
       while (parentElement && parentElement !== this._getDocument().body && parentElement.nodeType === 1) {
@@ -154,19 +152,21 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
       if (!this._isInnerZone) {
         _outerZones.add(this);
 
-        if (windowElement && _outerZones.size === 1) {
-          _disposeGlobalKeyDownListener = on(windowElement, 'keydown', this._onKeyDownCapture, true);
+        if (this._windowElement && _outerZones.size === 1) {
+          this._windowElement.addEventListener('keydown', this._onKeyDownCapture, true);
         }
       }
 
-      this._disposables.push(on(root, 'blur', this._onBlur, true));
+      this._root.current && this._root.current.addEventListener('blur', this._onBlur, true);
 
       // Assign initial tab indexes so that we can set initial focus as appropriate.
       this._updateTabIndexes();
 
       if (this.props.defaultActiveElement) {
         this._activeElement = this._getDocument().querySelector(this.props.defaultActiveElement) as HTMLElement;
-        this.focus();
+        if (this.props.shouldFocusOnMount) {
+          this.focus();
+        }
       }
     }
   }
@@ -202,18 +202,17 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
       _outerZones.delete(this);
 
       // If this is the last outer zone, remove the keydown listener.
-      if (_outerZones.size === 0 && _disposeGlobalKeyDownListener) {
-        _disposeGlobalKeyDownListener();
-        // Clear reference so closure can be garbage-collected.
-        _disposeGlobalKeyDownListener = undefined;
+      if (this._windowElement && _outerZones.size === 0) {
+        this._windowElement.removeEventListener('keydown', this._onKeyDownCapture, true);
       }
     }
 
-    // Dispose all events.
-    this._disposables.forEach((d: () => void) => d());
+    if (this._root.current) {
+      this._root.current.removeEventListener('blur', this._onBlur, true);
+    }
 
-    // Clear function references so their closures can be garbage-collected.
-    delete this._disposables;
+    this._activeElement = null;
+    this._defaultFocusElement = null;
   }
 
   public render(): React.ReactNode {
@@ -293,6 +292,20 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
         return this.focusElement(getNextElement(this._root.current, firstChild, true) as HTMLElement);
       }
     }
+    return false;
+  }
+
+  /**
+   * Sets focus to the last tabbable item in the zone.
+   * @returns True if focus could be set to an active element, false if no operation was taken.
+   */
+  public focusLast(): boolean {
+    if (this._root.current) {
+      const lastChild = this._root.current && (this._root.current.lastChild as HTMLElement | null);
+
+      return this.focusElement(getPreviousElement(this._root.current, lastChild, true, true, true) as HTMLElement);
+    }
+
     return false;
   }
 
@@ -418,14 +431,12 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
           root.setAttribute('tabindex', '-1');
         }
         root.focus();
-      } else {
-        if (!this.props.allowFocusRoot) {
-          if (this._parkedTabIndex) {
-            root.setAttribute('tabindex', this._parkedTabIndex);
-            this._parkedTabIndex = undefined;
-          } else {
-            root.removeAttribute('tabindex');
-          }
+      } else if (!this.props.allowFocusRoot) {
+        if (this._parkedTabIndex) {
+          root.setAttribute('tabindex', this._parkedTabIndex);
+          this._parkedTabIndex = undefined;
+        } else {
+          root.removeAttribute('tabindex');
         }
       }
     }
@@ -500,6 +511,10 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     }
   }
 
+  private _preventDefaultWhenHandled(ev: React.KeyboardEvent<HTMLElement>): void {
+    this.props.preventDefaultWhenHandled && ev.preventDefault();
+  }
+
   /**
    * Handle the keystrokes.
    */
@@ -568,26 +583,38 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
           return;
 
         case KeyCodes.left:
-          if (direction !== FocusZoneDirection.vertical && this._moveFocusLeft()) {
-            break;
+          if (direction !== FocusZoneDirection.vertical) {
+            this._preventDefaultWhenHandled(ev);
+            if (this._moveFocusLeft()) {
+              break;
+            }
           }
           return;
 
         case KeyCodes.right:
-          if (direction !== FocusZoneDirection.vertical && this._moveFocusRight()) {
-            break;
+          if (direction !== FocusZoneDirection.vertical) {
+            this._preventDefaultWhenHandled(ev);
+            if (this._moveFocusRight()) {
+              break;
+            }
           }
           return;
 
         case KeyCodes.up:
-          if (direction !== FocusZoneDirection.horizontal && this._moveFocusUp()) {
-            break;
+          if (direction !== FocusZoneDirection.horizontal) {
+            this._preventDefaultWhenHandled(ev);
+            if (this._moveFocusUp()) {
+              break;
+            }
           }
           return;
 
         case KeyCodes.down:
-          if (direction !== FocusZoneDirection.horizontal && this._moveFocusDown()) {
-            break;
+          if (direction !== FocusZoneDirection.horizontal) {
+            this._preventDefaultWhenHandled(ev);
+            if (this._moveFocusDown()) {
+              break;
+            }
           }
           return;
         case KeyCodes.pageDown:

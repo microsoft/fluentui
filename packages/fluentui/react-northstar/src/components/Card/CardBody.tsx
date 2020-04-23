@@ -18,6 +18,7 @@ export interface CardBodyProps extends UIComponentProps, ChildrenComponentProps 
 }
 
 export type CardBodyStylesProps = Pick<CardBodyProps, 'fitted'>;
+export const cardBodyClassName = 'ui-card__body';
 
 const CardBody: React.FC<WithAsProp<CardBodyProps>> & FluentComponentStaticProps<CardBodyProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
@@ -33,7 +34,7 @@ const CardBody: React.FC<WithAsProp<CardBodyProps>> & FluentComponentStaticProps
   });
 
   const { classes } = useStyles<CardBodyStylesProps>(CardBody.displayName, {
-    className: CardBody.className,
+    className: cardBodyClassName,
     mapPropsToStyles: () => ({ fitted }),
     mapPropsToInlineStyles: () => ({
       className,
@@ -59,7 +60,6 @@ const CardBody: React.FC<WithAsProp<CardBodyProps>> & FluentComponentStaticProps
 };
 
 CardBody.displayName = 'CardBody';
-CardBody.className = 'ui-card__body';
 
 CardBody.propTypes = {
   ...commonPropTypes.createCommon(),

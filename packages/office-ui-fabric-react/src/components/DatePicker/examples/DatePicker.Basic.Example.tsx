@@ -39,74 +39,58 @@ const controlClass = mergeStyleSets({
   },
 });
 
-export interface IDatePickerBasicExampleState {
-  firstDayOfWeek?: DayOfWeek;
-}
+export const DatePickerBasicExample: React.FC = () => {
+  const [firstDayOfWeek, setFirstDayOfWeek] = React.useState(DayOfWeek.Sunday);
 
-export class DatePickerBasicExample extends React.Component<{}, IDatePickerBasicExampleState> {
-  public constructor(props: {}) {
-    super(props);
-
-    this.state = {
-      firstDayOfWeek: DayOfWeek.Sunday,
-    };
-  }
-
-  public render() {
-    const { firstDayOfWeek } = this.state;
-
-    return (
-      <div className="docs-DatePickerExample">
-        <DatePicker
-          className={controlClass.control}
-          firstDayOfWeek={firstDayOfWeek}
-          strings={DayPickerStrings}
-          placeholder="Select a date..."
-          ariaLabel="Select a date"
-        />
-        <Dropdown
-          className={controlClass.control}
-          label="Select the first day of the week"
-          options={[
-            {
-              text: 'Sunday',
-              key: DayOfWeek[DayOfWeek.Sunday],
-            },
-            {
-              text: 'Monday',
-              key: DayOfWeek[DayOfWeek.Monday],
-            },
-            {
-              text: 'Tuesday',
-              key: DayOfWeek[DayOfWeek.Tuesday],
-            },
-            {
-              text: 'Wednesday',
-              key: DayOfWeek[DayOfWeek.Wednesday],
-            },
-            {
-              text: 'Thursday',
-              key: DayOfWeek[DayOfWeek.Thursday],
-            },
-            {
-              text: 'Friday',
-              key: DayOfWeek[DayOfWeek.Friday],
-            },
-            {
-              text: 'Saturday',
-              key: DayOfWeek[DayOfWeek.Saturday],
-            },
-          ]}
-          selectedKey={DayOfWeek[firstDayOfWeek!]}
-          onChange={this._onDropdownChange}
-        />
-      </div>
-    );
-  }
-
-  private _onDropdownChange = (event: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void => {
-    this.setState({
-      firstDayOfWeek: (DayOfWeek as any)[option.key],
-    });
+  const onDropdownChange = (event: React.FormEvent<HTMLDivElement>, option: IDropdownOption) => {
+    setFirstDayOfWeek((DayOfWeek as any)[option.key]);
   };
-}
+
+  return (
+    <div>
+      <DatePicker
+        className={controlClass.control}
+        firstDayOfWeek={firstDayOfWeek}
+        strings={DayPickerStrings}
+        placeholder="Select a date..."
+        ariaLabel="Select a date"
+      />
+      <Dropdown
+        className={controlClass.control}
+        label="Select the first day of the week"
+        options={[
+          {
+            text: 'Sunday',
+            key: DayOfWeek[DayOfWeek.Sunday],
+          },
+          {
+            text: 'Monday',
+            key: DayOfWeek[DayOfWeek.Monday],
+          },
+          {
+            text: 'Tuesday',
+            key: DayOfWeek[DayOfWeek.Tuesday],
+          },
+          {
+            text: 'Wednesday',
+            key: DayOfWeek[DayOfWeek.Wednesday],
+          },
+          {
+            text: 'Thursday',
+            key: DayOfWeek[DayOfWeek.Thursday],
+          },
+          {
+            text: 'Friday',
+            key: DayOfWeek[DayOfWeek.Friday],
+          },
+          {
+            text: 'Saturday',
+            key: DayOfWeek[DayOfWeek.Saturday],
+          },
+        ]}
+        selectedKey={DayOfWeek[firstDayOfWeek!]}
+        onChange={onDropdownChange}
+      />
+    </div>
+  );
+};

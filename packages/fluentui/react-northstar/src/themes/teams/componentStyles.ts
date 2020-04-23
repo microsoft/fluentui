@@ -6,6 +6,11 @@ export { default as Alert } from './components/Alert/alertStyles';
 export { default as AlertDismissAction } from './components/Alert/alertDismissActionStyles';
 
 export { default as Attachment } from './components/Attachment/attachmentStyles';
+export { default as AttachmentAction } from './components/Attachment/attachmentActionStyles';
+export { default as AttachmentBody } from './components/Attachment/attachmentBodyStyles';
+export { default as AttachmentDescription } from './components/Attachment/attachmentDescriptionStyles';
+export { default as AttachmentHeader } from './components/Attachment/attachmentHeaderStyles';
+export { default as AttachmentIcon } from './components/Attachment/attachmentIconStyles';
 
 export { default as Avatar } from './components/Avatar/avatarStyles';
 

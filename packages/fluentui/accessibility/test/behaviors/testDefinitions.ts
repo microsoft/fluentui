@@ -666,7 +666,7 @@ definitions.push({
   regexp: /Triggers '(\w+)' action with '(\w+)' on '([\w-]+)', when has a closed subtree\./g,
   testMethod: (parameters: TestMethod) => {
     const [action, key, elementToPerformAction] = [...parameters.props];
-    const propertyClosedSubtree = { open: false, expanded: false, hasSubtree: false };
+    const propertyClosedSubtree = { open: false, expanded: false, hasSubtree: true };
     const expectedKeyNumberVertical = parameters.behavior(propertyClosedSubtree).keyActions[elementToPerformAction][
       action
     ].keyCombinations[0].keyCode;

@@ -9,7 +9,7 @@ export interface IUnifiedPickerStyles {
 
 const GlobalClassNames = {
   pickerText: 'ms-UnifiedPicker-text',
-  pickerInput: 'ms-UnifiedPicker-input'
+  pickerInput: 'ms-UnifiedPicker-input',
 };
 
 export const getStyles = (props: IUnifiedPickerStyleProps): IUnifiedPickerStyles => {
@@ -37,10 +37,10 @@ export const getStyles = (props: IUnifiedPickerStyleProps): IUnifiedPickerStyles
         minHeight: '32px',
         selectors: {
           '&:hover': {
-            borderColor: themeLight
-          }
-        }
-      }
+            borderColor: themeLight,
+          },
+        },
+      },
     ],
     pickerInput: [
       classNames.pickerInput,
@@ -53,10 +53,10 @@ export const getStyles = (props: IUnifiedPickerStyleProps): IUnifiedPickerStyles
         margin: '1px',
         selectors: {
           '&::-ms-clear': {
-            display: 'none'
-          }
-        }
-      }
-    ]
+            display: 'none',
+          },
+        },
+      },
+    ],
   };
 };

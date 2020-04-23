@@ -1,5 +1,5 @@
 /**
- * UI Fabric color palette.
+ * Fluent UI color palette.
  * {@docCategory IPalette}
  */
 export interface IPalette {
