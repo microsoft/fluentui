@@ -490,8 +490,10 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
     );
   };
 
-  // While we have access to the underlying menu item, we should not mutate or expand it into a new object as it will
-  // cause the menu items to always rerender even if the same props object is passed in.
+  /**
+   * !!!IMPORTANT!!! Avoid mutating `item: IContextualMenuItem` argument. It will
+   * cause the menu items to always re-render because the component update is based on shallow comparison.
+   */
   private _renderMenuItem = (
     item: IContextualMenuItem,
     index: number,
