@@ -597,8 +597,8 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
   };
 
   private _defaultMenuItemRenderer = (item: IContextualMenuItemRenderProps): React.ReactNode => {
-    const { index, focusableElementIndex, totalItemCount, hasCheckmarks, hasIcons, rest } = item;
-    return this._renderMenuItem(rest, index, focusableElementIndex, totalItemCount, hasCheckmarks, hasIcons);
+    const { index, focusableElementIndex, totalItemCount, hasCheckmarks, hasIcons } = item;
+    return this._renderMenuItem(item, index, focusableElementIndex, totalItemCount, hasCheckmarks, hasIcons);
   };
 
   private _renderSectionItem(
