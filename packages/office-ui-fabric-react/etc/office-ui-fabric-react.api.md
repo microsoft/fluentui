@@ -2986,20 +2986,6 @@ export interface IContextualMenuItemProps extends React.HTMLAttributes<IContextu
 }
 
 // @public (undocumented)
-export interface IContextualMenuItemRenderProps extends IContextualMenuItem {
-    // (undocumented)
-    focusableElementIndex: number;
-    // (undocumented)
-    hasCheckmarks: boolean;
-    // (undocumented)
-    hasIcons: boolean;
-    // (undocumented)
-    index: number;
-    // (undocumented)
-    totalItemCount: number;
-}
-
-// @public (undocumented)
 export interface IContextualMenuItemStyleProps {
     checked: boolean;
     className?: string;
@@ -3036,8 +3022,6 @@ export interface IContextualMenuItemStyles extends IButtonStyles {
 
 // @public (undocumented)
 export interface IContextualMenuListProps {
-    // (undocumented)
-    defaultMenuItemRenderer: (item: IContextualMenuItemRenderProps) => React.ReactNode;
     // (undocumented)
     hasCheckmarks: boolean;
     // (undocumented)
