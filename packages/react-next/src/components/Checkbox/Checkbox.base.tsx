@@ -3,12 +3,13 @@ import { classNamesFunction, mergeAriaAttributeValues, warnMutuallyExclusive, Fo
 import { Icon } from '../../Icon';
 import { ICheckboxProps, ICheckboxStyleProps, ICheckboxStyles } from './Checkbox.types';
 import { KeytipData } from '../../KeytipData';
-import { useId, useControllableValue } from '@uifabric/react-hooks';
+import { useId, useControllableValue, useMergedRefs } from '@uifabric/react-hooks';
+import { useFocusRects } from 'office-ui-fabric-react';
 
 const getClassNames = classNamesFunction<ICheckboxStyleProps, ICheckboxStyles>();
 
 export const CheckboxBase = React.memo(
-  React.forwardRef((props: ICheckboxProps, ref: React.Ref<HTMLDivElement>) => {
+  React.forwardRef((props: ICheckboxProps, forwardedRef: React.Ref<HTMLDivElement>) => {
     const {
       className,
       disabled,
@@ -29,10 +30,13 @@ export const CheckboxBase = React.memo(
       onChange,
     } = props;
 
+    const rootRef = React.useRef<HTMLDivElement | null>(null);
+    const mergedRootRefs = useMergedRefs(rootRef, forwardedRef);
     const checkBox = React.useRef<HTMLInputElement>(null);
     const [isChecked, setIsChecked] = useControllableValue(props.checked, props.defaultChecked, onChange);
     const [isIndeterminate, setIsIndeterminate] = useControllableValue(props.indeterminate, props.defaultIndeterminate);
 
+    useFocusRects(rootRef);
     useDebugWarning(props);
     useComponentRef(props, isChecked, isIndeterminate, checkBox);
 
@@ -73,7 +77,7 @@ export const CheckboxBase = React.memo(
     return (
       <KeytipData keytipProps={keytipProps} disabled={disabled}>
         {(keytipAttributes: any): JSX.Element => (
-          <div className={classNames.root} title={title} ref={ref}>
+          <div className={classNames.root} title={title} ref={mergedRootRefs}>
             <FocusRects />
             <input
               type="checkbox"
