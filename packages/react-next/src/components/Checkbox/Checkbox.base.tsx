@@ -55,25 +55,6 @@ export const CheckboxBase = React.memo(
       ) : null;
     };
 
-    //#region Input callbacks
-    const _onFocus = React.useCallback(
-      (ev: React.FocusEvent<HTMLElement>): void => {
-        if (inputProps?.onFocus) {
-          inputProps.onFocus(ev);
-        }
-      },
-      [inputProps?.onFocus],
-    );
-
-    const _onBlur = React.useCallback(
-      (ev: React.FocusEvent<HTMLElement>): void => {
-        if (inputProps?.onBlur) {
-          inputProps.onBlur(ev);
-        }
-      },
-      [inputProps?.onBlur],
-    );
-
     const _onChange = React.useCallback(
       (ev: React.ChangeEvent<HTMLElement>): void => {
         if (!isIndeterminate) {
@@ -88,7 +69,6 @@ export const CheckboxBase = React.memo(
       },
       [isChecked, isIndeterminate],
     );
-    //#endregion
 
     return (
       <KeytipData keytipProps={keytipProps} disabled={disabled}>
@@ -107,8 +87,8 @@ export const CheckboxBase = React.memo(
               id={id}
               title={title}
               onChange={_onChange}
-              onFocus={_onFocus}
-              onBlur={_onBlur}
+              onFocus={inputProps?.onFocus}
+              onBlur={inputProps?.onBlur}
               aria-disabled={disabled}
               aria-label={ariaLabel || label}
               aria-labelledby={ariaLabelledBy}
