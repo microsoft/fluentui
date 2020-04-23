@@ -30,6 +30,7 @@ const FocusTrapComponent: React.FunctionComponent<React.PropsWithChildren<{ zone
           label={'Enable trap zone ' + zoneNumber}
           onText="On (toggle to exit)"
           offText="Off"
+          // Set a width on these toggles in the horizontal zone to prevent jumping when enabled
           styles={zoneNumber >= 2 && zoneNumber <= 4 ? fixedWidthToggleStyles : undefined}
         />
         <DefaultButton onClick={onStringButtonClicked} text={`Zone ${zoneNumber} button`} />

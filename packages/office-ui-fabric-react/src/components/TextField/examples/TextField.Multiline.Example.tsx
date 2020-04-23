@@ -5,13 +5,7 @@ import { lorem } from '@uifabric/example-data';
 import { Stack, IStackProps, IStackStyles } from 'office-ui-fabric-react/lib/Stack';
 
 const stackStyles: Partial<IStackStyles> = { root: { width: 650 } };
-
-export interface ITextFieldMultilineExampleState {
-  multiline: boolean;
-}
-
 const dummyText: string = lorem(100);
-
 const columnProps: Partial<IStackProps> = {
   tokens: { childrenGap: 15 },
   styles: { root: { width: 300 } },
@@ -19,14 +13,12 @@ const columnProps: Partial<IStackProps> = {
 
 export const TextFieldMultilineExample: React.FunctionComponent = () => {
   const [multiline, { toggle: toggleMultiline }] = useBoolean(false);
-
   const onChange = (ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newText: string): void => {
     const newMultiline = newText.length > 50;
     if (newMultiline !== multiline) {
       toggleMultiline();
     }
   };
-
   return (
     <Stack horizontal tokens={{ childrenGap: 50 }} styles={stackStyles}>
       <Stack {...columnProps}>

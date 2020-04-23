@@ -1,5 +1,4 @@
 import * as React from 'react';
-
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { FocusTrapZone } from 'office-ui-fabric-react/lib/FocusTrapZone';
 import { Link } from 'office-ui-fabric-react/lib/Link';
@@ -15,18 +14,13 @@ const getStackStyles = memoizeFunction(
     root: { border: `2px solid ${useTrapZone ? '#ababab' : 'transparent'}`, padding: 10 },
   }),
 );
-
 const textFieldStyles: Partial<ITextFieldStyles> = { root: { width: 300 } };
 const stackTokens = { childrenGap: 8 };
-export interface IFocusTrapZoneBoxCustomElementExampleState {
-  useTrapZone: boolean;
-}
+const focusClassName = 'shouldFocusInput';
 
-const _focusClassName = 'shouldFocusInput';
-
-const toggle = React.createRef<IToggle>();
 export const FocusTrapZoneBoxCustomElementExample = () => {
   const [useTrapZone, { toggle: toggleUseTrapZone }] = useBoolean(false);
+  const toggle = React.useRef<IToggle>(null);
   return (
     <Stack tokens={stackTokens}>
       <Stack.Item>
@@ -35,7 +29,7 @@ export const FocusTrapZoneBoxCustomElementExample = () => {
       <Stack.Item>
         <DefaultButton onClick={toggleUseTrapZone} text="Focus Custom Element" />
       </Stack.Item>
-      <FocusTrapZone disabled={!useTrapZone} firstFocusableSelector={_focusClassName}>
+      <FocusTrapZone disabled={!useTrapZone} firstFocusableSelector={focusClassName}>
         <Stack horizontalAlign="start" tokens={stackTokens} styles={getStackStyles(useTrapZone)}>
           <Toggle
             label="Use trap zone"
@@ -46,7 +40,7 @@ export const FocusTrapZoneBoxCustomElementExample = () => {
             offText="Off"
           />
           <TextField label="Input inside trap zone" styles={textFieldStyles} />
-          <Link href="https://bing.com" className={_focusClassName} target="_blank">
+          <Link href="https://bing.com" className={focusClassName} target="_blank">
             Hyperlink which will receive initial focus when trap zone is activated
           </Link>
         </Stack>
