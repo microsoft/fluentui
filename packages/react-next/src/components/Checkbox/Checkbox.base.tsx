@@ -59,20 +59,17 @@ export const CheckboxBase = React.memo(
       ) : null;
     };
 
-    const _onChange = React.useCallback(
-      (ev: React.ChangeEvent<HTMLElement>): void => {
-        if (!isIndeterminate) {
-          setIsChecked(!isChecked, ev);
-        } else {
-          // If indeterminate, clicking the checkbox *only* removes the indeterminate state (or if
-          // controlled, lets the consumer know to change it by calling onChange). It doesn't
-          // change the checked state.
-          setIsChecked(!!isChecked, ev);
-          setIsIndeterminate(false);
-        }
-      },
-      [isChecked, isIndeterminate],
-    );
+    const _onChange = (ev: React.ChangeEvent<HTMLElement>): void => {
+      if (!isIndeterminate) {
+        setIsChecked(!isChecked, ev);
+      } else {
+        // If indeterminate, clicking the checkbox *only* removes the indeterminate state (or if
+        // controlled, lets the consumer know to change it by calling onChange). It doesn't
+        // change the checked state.
+        setIsChecked(!!isChecked, ev);
+        setIsIndeterminate(false);
+      }
+    };
 
     return (
       <KeytipData keytipProps={keytipProps} disabled={disabled}>
