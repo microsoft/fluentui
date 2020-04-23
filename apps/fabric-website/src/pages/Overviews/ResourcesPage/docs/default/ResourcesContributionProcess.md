@@ -14,7 +14,7 @@ Reference these step-by-step processes for contributing to Fluent UI.
 
 ### Fluent UI iOS
 
-[Give feedback on a control by filing an issue on GitHub](https://github.com/OfficeDev/ui-fabric-ios/issues)
+[Give feedback on a control by filing an issue on GitHub](https://github.com/microsoft/fluentui-apple/issues)
 
 ### Fluent UI Android
 
@@ -22,4 +22,4 @@ Reference these step-by-step processes for contributing to Fluent UI.
 
 ### Fluent UI macOS
 
-[Give feedback on a control by filing an issue on GitHub](https://github.com/microsoft/fluentui-apple)
+[Give feedback on a control by filing an issue on GitHub](https://github.com/microsoft/fluentui-apple/issues)
