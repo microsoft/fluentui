@@ -1,8 +1,9 @@
-import { treeItemClassName, treeTitleClassName } from '@fluentui/react-northstar';
+import { treeItemClassName, treeTitleSlotClassNames } from '@fluentui/react-northstar';
 
 const selectors = {
-  treeTitle: (itemIndex: number) => `.${treeItemClassName}:nth-of-type(${itemIndex}) .${treeTitleClassName}`,
-  selectionIndicator: (itemIndex: number) => `.${treeItemClassName}:nth-of-type(${itemIndex})`,
+  treeTitle: (itemIndex: number) => `.${treeItemClassName}:nth-of-type(${itemIndex})`,
+  selectionIndicator: (itemIndex: number) =>
+    `.${treeItemClassName}:nth-of-type(${itemIndex}) .${treeTitleSlotClassNames.indicator}`,
 };
 
 const config: ScreenerTestsConfig = {
