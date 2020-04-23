@@ -32,13 +32,6 @@ const config: ScreenerTestsConfig = {
         .keys(selectors.treeTitle(16), keys.space)
         .keys(selectors.treeTitle(17), keys.space)
         .snapshot('selected, when group has non selectable item'),
-    (builder, keys) =>
-      builder
-        .click(selectors.treeTitle(1))
-        .click(selectors.treeTitle(2))
-        .click(selectors.treeTitle(3))
-        .snapshot('expand all group'),
-    ,
   ],
 };
 
