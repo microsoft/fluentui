@@ -94,6 +94,8 @@ export interface TreeItemProps extends UIComponentProps, ChildrenComponentProps 
 
   /** Whether or not tree item is part of the selectable parent. */
   selectableParent?: boolean;
+
+  indeterminate?: boolean;
 }
 
 export type TreeItemStylesProps = Required<Pick<TreeItemProps, 'level'>>;
@@ -122,6 +124,7 @@ const TreeItem: React.FC<WithAsProp<TreeItemProps>> & FluentComponentStaticProps
     selectableParent,
     selected,
     selectable,
+    indeterminate,
   } = props;
 
   const hasSubtreeItem = hasSubtree(props);
@@ -235,6 +238,8 @@ const TreeItem: React.FC<WithAsProp<TreeItemProps>> & FluentComponentStaticProps
                 index,
                 selected,
                 selectable,
+                ...(hasSubtreeItem && !selectableParent && { selectable: false }),
+                ...(selectableParent && { indeterminate }),
                 selectableParent,
                 selectionIndicator,
               }),
@@ -274,6 +279,7 @@ TreeItem.propTypes = {
   selected: PropTypes.bool,
   selectable: PropTypes.bool,
   selectableParent: PropTypes.bool,
+  indeterminate: PropTypes.bool,
 };
 TreeItem.defaultProps = {
   accessibility: treeItemBehavior,

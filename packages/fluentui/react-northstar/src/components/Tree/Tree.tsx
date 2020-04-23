@@ -235,11 +235,13 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
     if (isExpandedSelectableParent) {
       const selectItems = items => {
         items.forEach(item => {
-          if (selectedItemIds.indexOf(item['id']) === -1) {
+          const selectble = item.hasOwnProperty('selectable') ? item.selectable : treeItemProps.selectable;
+
+          if (selectedItemIds.indexOf(item.id) === -1) {
             if (item.items) {
               selectItems(item.items);
-            } else {
-              selectedItemIds.push(item['id']);
+            } else if (selectble) {
+              selectedItemIds.push(item.id);
             }
           }
         });
@@ -350,6 +352,32 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
     });
   };
 
+  getAllSelectableChildrenId = items => {
+    return items.reduce((acc, item) => {
+      if (item.items) {
+        return [...acc, ...this.getAllSelectableChildrenId(item.items)];
+      }
+      return item.hasOwnProperty('selectable') && !item.selectable ? acc : [...acc, item.id];
+    }, []);
+  };
+
+  isIndeterminate = (item: TreeItemProps) => {
+    if (!item.selectableParent || !item.items) {
+      return false;
+    }
+
+    const { items } = item;
+
+    const selectableItemIds = this.getAllSelectableChildrenId(items);
+
+    return !this.isAllGroupChecked(items) && selectableItemIds.some(id => this.state.selectedItemIds.indexOf(id) > -1);
+  };
+
+  isAllGroupChecked = (items: ShorthandCollection<TreeItemProps, never>) => {
+    const selectableItemIds = this.getAllSelectableChildrenId(items);
+    return selectableItemIds.every(id => this.state.selectedItemIds.indexOf(id) > -1);
+  };
+
   contextValue: TreeRenderContextValue = {
     onFocusParent: this.onFocusParent,
     onSiblingsExpand: this.onSiblingsExpand,
@@ -367,7 +395,8 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
         const { id } = item;
         const isSubtree = hasSubtree(item);
         const isSubtreeExpanded = isSubtree && this.isActiveItem(id);
-        const isSelectedItem = this.isSelectedItem(id);
+        const isSelectedItem = this.isSelectedItem(item);
+        const indeterminate = this.isIndeterminate(item);
 
         if (!this.itemsRef.has(id)) {
           this.itemsRef.set(id, React.createRef<HTMLElement>());
@@ -386,6 +415,7 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
             index: index + 1, // Used for aria-posinset and it's 1-based.
             contentRef: this.itemsRef.get(id),
             treeSize: items.length,
+            indeterminate,
           }),
         });
 
@@ -429,9 +459,14 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
     return activeItemIds.indexOf(id) > -1;
   };
 
-  isSelectedItem = (id: string): boolean => {
+  isSelectedItem = (item: TreeItemProps): boolean => {
     const { selectedItemIds } = this.state;
-    return selectedItemIds && selectedItemIds.indexOf(id) > -1;
+
+    if (item.selectableParent && item.items) {
+      return this.isAllGroupChecked(item.items);
+    }
+
+    return selectedItemIds && selectedItemIds.indexOf(item.id) > -1;
   };
 }
 
