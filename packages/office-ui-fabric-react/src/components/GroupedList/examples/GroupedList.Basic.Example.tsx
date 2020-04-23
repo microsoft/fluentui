@@ -23,10 +23,14 @@ const columns = Object.keys(items[0])
   );
 
 const groups = createGroups(groupCount, groupDepth, 0, groupCount);
-const selection = new Selection();
 
 export const GroupedListBasicExample: React.FunctionComponent = () => {
   const [isCompactMode, { toggle: toggleIsCompactMode }] = useBoolean(false);
+  const [selection] = React.useState<Selection>(() => {
+    const s = new Selection();
+    s.setItems(items, true);
+    return s;
+  });
 
   const onRenderCell = (nestingDepth: number, item: IExampleItem, itemIndex: number): JSX.Element => {
     return (
