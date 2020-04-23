@@ -89,9 +89,30 @@ export const DarkCustomizations: ICustomizations = {
         },
       },
     },
+    ActionButton: {
+      styles: {
+        root: {
+          backgroundColor: DarkTheme.palette.white,
+        },
+        rootDisabled: {
+          backgroundColor: DarkTheme.palette.neutralLighter,
+        },
+        rootHovered: {
+          backgroundColor: DarkTheme.palette.neutralLight,
+        },
+        rootPressed: {
+          backgroundColor: DarkTheme.palette.neutralQuaternaryAlt,
+        },
+      },
+    },
     DetailsRow: {
       styles: {
         root: {
+          selectors: {
+            ':hover': {
+              background: DarkTheme.palette.neutralLighter,
+            },
+          },
           borderColor: DarkTheme.palette.neutralQuaternaryAlt,
         },
       },
@@ -100,6 +121,13 @@ export const DarkCustomizations: ICustomizations = {
       styles: {
         main: {
           backgroundColor: DarkTheme.palette.neutralLighter,
+        },
+      },
+    },
+    Overlay: {
+      styles: {
+        root: {
+          background: DarkTheme.palette.blackTranslucent40,
         },
       },
     },
@@ -153,6 +181,20 @@ export const DarkCustomizations: ICustomizations = {
     },
     PersonaCoin: {
       styles: PersonaCoinStyles,
+    },
+    Separator: {
+      styles: {
+        root: {
+          selectors: {
+            ':before': {
+              backgroundColor: DarkTheme.palette.neutralQuaternaryAlt,
+            },
+            ':after': {
+              backgroundColor: DarkTheme.palette.neutralQuaternaryAlt,
+            },
+          },
+        },
+      },
     },
     SpinButton: {
       styles: {
