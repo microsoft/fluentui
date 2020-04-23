@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Change file",
+  "comment": "Change contextual menu renderMenuItem function to prevent prop mutation and unneeded rerenders",
   "packageName": "office-ui-fabric-react",
   "email": "tabrumle@microsoft.com",
   "dependentChangeType": "patch",
