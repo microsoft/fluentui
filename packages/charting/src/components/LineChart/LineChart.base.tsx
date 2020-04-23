@@ -101,7 +101,7 @@ export class LineChartBase extends React.Component<
   }
 
   public render(): JSX.Element {
-    const { theme, className, styles, tickValues, tickFormat, yAxisTickFormat } = this.props;
+    const { theme, className, styles, tickValues, tickFormat, yAxisTickFormat, hideLegend = false } = this.props;
     this._points = this.props.data.lineChartData ? this.props.data.lineChartData : [];
     if (this.props.parentRef) {
       this._fitParentContainer();
@@ -162,7 +162,7 @@ export class LineChartBase extends React.Component<
           </svg>
         </FocusZone>
         <div ref={(e: HTMLDivElement) => (this.legendContainer = e)} className={this._classNames.legendContainer}>
-          {legendBars}
+          {!hideLegend && legendBars}
         </div>
         {this.state.isCalloutVisible ? (
           <Callout
@@ -263,11 +263,12 @@ export class LineChartBase extends React.Component<
 
   private _fitParentContainer(): void {
     const { containerWidth, containerHeight } = this.state;
+    const { hideLegend = false } = this.props;
 
     this._reqID = requestAnimationFrame(() => {
       const legendContainerComputedStyles = getComputedStyle(this.legendContainer);
       const legendContainerHeight =
-        (this.legendContainer.getBoundingClientRect().height || this.minLegendContainerHeight) +
+        (this.legendContainer.getBoundingClientRect().height || (!hideLegend ? this.minLegendContainerHeight : 0)) +
         parseFloat(legendContainerComputedStyles.marginTop || '0') +
         parseFloat(legendContainerComputedStyles.marginBottom || '0');
 
@@ -468,6 +469,7 @@ export class LineChartBase extends React.Component<
               onFocus={this._handleFocus.bind(this, keyVal, x1, y1, lineColor, xAxisCalloutData)}
               onBlur={this._handleMouseOut}
               aria-labelledby={this._calloutId}
+              onClick={this._onLineClick.bind(this, this._points[i].onLineClick)}
             />,
           );
         } else {
@@ -537,6 +539,12 @@ export class LineChartBase extends React.Component<
       YValueHover: found.values,
       lineColor: lineColor,
     });
+  };
+
+  private _onLineClick = (func: () => void) => {
+    if (!!func) {
+      func();
+    }
   };
 
   private _handleMouseOut = () => {

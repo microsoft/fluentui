@@ -24,6 +24,7 @@ import {
   IPosition,
   RectangleEdge,
   positionCard,
+  getBoundsFromTargetWindow,
 } from '../../utilities/positioning';
 import { Popup } from '../../Popup';
 import { classNamesFunction } from '../../Utilities';
@@ -437,13 +438,14 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
       let currentBounds = typeof bounds === 'function' ? bounds(this.props.target, this._targetWindow) : bounds;
 
       if (!currentBounds) {
+        currentBounds = getBoundsFromTargetWindow(this._target, this._targetWindow);
         currentBounds = {
-          top: 0 + this.props.minPagePadding!,
-          left: 0 + this.props.minPagePadding!,
-          right: this._targetWindow.innerWidth - this.props.minPagePadding!,
-          bottom: this._targetWindow.innerHeight - this.props.minPagePadding!,
-          width: this._targetWindow.innerWidth - this.props.minPagePadding! * 2,
-          height: this._targetWindow.innerHeight - this.props.minPagePadding! * 2,
+          top: currentBounds.top + this.props.minPagePadding!,
+          left: currentBounds.left + this.props.minPagePadding!,
+          right: currentBounds.right! - this.props.minPagePadding!,
+          bottom: currentBounds.bottom! - this.props.minPagePadding!,
+          width: currentBounds.width - this.props.minPagePadding! * 2,
+          height: currentBounds.height - this.props.minPagePadding! * 2,
         };
       }
       this._bounds = currentBounds;
