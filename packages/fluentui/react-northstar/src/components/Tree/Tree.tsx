@@ -27,7 +27,6 @@ import {
   ComponentEventHandler,
 } from '../../types';
 import { hasSubtree, removeItemAtIndex, getSiblings, TreeContext, TreeRenderContextValue } from './utils';
-import * as keyboardKey from 'keyboard-key';
 
 export interface TreeProps extends UIComponentProps, ChildrenComponentProps {
   /** Accessibility behavior if overridden by the user. */
