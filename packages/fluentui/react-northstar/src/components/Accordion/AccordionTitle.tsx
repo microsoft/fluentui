@@ -157,7 +157,6 @@ class AccordionTitle extends UIComponent<WithAsProp<AccordionTitleProps>, any> {
                 })}
                 {Box.create(content, {
                   defaultProps: () => ({
-                    as: 'div',
                     styles: styles.content,
                   }),
                 })}
