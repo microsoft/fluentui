@@ -60,6 +60,6 @@ const _farItems: ICommandBarItemProps[] = [
   },
 ];
 
-const scenario = <CommandBar items={_items} overflowItems={_overflowItems} farItems={_farItems} />;
+const Scenario = () => <CommandBar items={_items} overflowItems={_overflowItems} farItems={_farItems} />;
 
-export default scenario;
+export default Scenario;

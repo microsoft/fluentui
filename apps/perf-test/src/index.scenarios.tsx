@@ -2,13 +2,16 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { initializeIcons } from 'office-ui-fabric-react/lib/Icons';
 import * as qs from 'querystring';
-
 const scenarios = require('./scenarios/scenarioList');
 
 initializeIcons();
 
 const div = document.createElement('div');
 document.body.appendChild(div);
+
+const renderFinishedMarkerId = 'render-done';
+const renderFinishedMarker = document.createElement('div');
+renderFinishedMarker.id = renderFinishedMarkerId;
 
 // TODO: could default to displaying list of scenarios if param is not provided.
 const defaultScenarioName = Object.keys(scenarios)[0];
@@ -30,6 +33,14 @@ if (checkRerender) {
       }
     }, [renderCount]);
 
+    if (renderCount >= iterations) {
+      return (
+        <>
+          <PerfTestScenario />
+          <div id={renderFinishedMarkerId} />
+        </>
+      );
+    }
     return <PerfTestScenario />;
   };
 
@@ -48,5 +59,6 @@ if (checkRerender) {
       ))}
     </div>,
     div,
+    () => div.appendChild(renderFinishedMarker),
   );
 }

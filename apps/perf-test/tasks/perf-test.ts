@@ -235,10 +235,16 @@ module.exports = async function getPerfRegressions() {
     const iterations = iterationsArg || scenarioIterations[scenarioName] || iterationsDefault;
     // These lines can be used to check for consistency.
     // Array.from({ length: 20 }, (entry, index) => {
-    scenarios[scenarioName] = {
+    scenarios[`${scenarioName}-mount`] = {
       // scenarios[scenarioName + index] = {
-      baseline: `${urlForMaster}?scenario=${scenarioName}&iterations=${iterations}`,
+      baseline: `${urlForDeploy}?scenario=${scenarioName}&iterations=${iterations}`,
       scenario: `${urlForDeploy}?scenario=${scenarioName}&iterations=${iterations}`,
+    };
+
+    scenarios[`${scenarioName}-render`] = {
+      // scenarios[scenarioName + index] = {
+      baseline: `${urlForDeploy}?scenario=${scenarioName}&iterations=${iterations}&rerender=1`,
+      scenario: `${urlForDeploy}?scenario=${scenarioName}&iterations=${iterations}&rerender=1`,
     };
 
     scenarioSettings[scenarioName] = {
@@ -264,7 +270,7 @@ module.exports = async function getPerfRegressions() {
   }
 
   /** @type {ScenarioConfig} */
-  const scenarioConfig = { outDir, tempDir };
+  const scenarioConfig = { outDir, tempDir, pageWaitForSelector: '#render-done' };
   /** @type {CookResults} */
   const scenarioResults = await flamegrill.cook(scenarios, scenarioConfig);
 
