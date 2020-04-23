@@ -62,7 +62,7 @@ const getItems = (wrapper: ReactWrapper): CommonWrapper =>
 
 const checkOpenTitles = (wrapper: ReactWrapper, expected: string[]): void => {
   const titles = getTitles(wrapper);
-  console.log(titles);
+
   expect(titles.length).toEqual(expected.length);
 
   expected.forEach((expectedTitle, index) => {
