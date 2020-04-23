@@ -199,6 +199,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
       backgroundColor,
       calloutMaxHeight,
       onScroll,
+      // @ts-ignore
       shouldRestoreFocus = true,
     } = this.props;
     target = this._getTarget();

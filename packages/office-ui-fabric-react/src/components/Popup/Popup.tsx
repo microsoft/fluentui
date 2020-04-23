@@ -21,6 +21,7 @@ export interface IPopupState {
  */
 export class Popup extends React.Component<IPopupProps, IPopupState> {
   public static defaultProps: IPopupProps = {
+    // @ts-ignore
     shouldRestoreFocus: true,
   };
 
@@ -67,7 +68,8 @@ export class Popup extends React.Component<IPopupProps, IPopupState> {
   public componentWillUnmount(): void {
     this._disposables.forEach((dispose: () => void) => dispose());
 
-    if (this.props.onRestoreFocus) {
+    // @ts-ignore
+    if (this.props.shouldRestoreFocus) {
       const { onRestoreFocus = defaultFocusRestorer } = this.props;
       onRestoreFocus({ originalElement: this._originalFocusedElement, containsFocus: this._containsFocus });
     }
