@@ -225,7 +225,7 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
     }
 
     // if the target is equal to currentTarget it means treeItem should be collapsed, not procced with selection
-    if (isExpandedSelectableParent && !executeSelection) {
+    if (treeItemHasSubtree && e.target === e.currentTarget && !executeSelection) {
       return;
     }
 
