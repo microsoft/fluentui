@@ -7,6 +7,7 @@ import treeTitleBehavior from './treeTitleBehavior';
 /**
  * @description
  * Triggers 'performClick' action with 'Spacebar' on 'root', when tree item is selectable and has no subtree. In other cases 'performClick' is triggered with 'Spacebar' or 'Enter'.
+ * Triggers 'performSelection' action with 'Spacebar' on 'root', when has a opened subtree.
  * @specification
  * Adds attribute 'aria-expanded=true' based on the property 'expanded' if the component has 'hasSubtree' property.
  * Adds attribute 'tabIndex=-1' to 'root' slot if 'hasSubtree' property is true. Does not set the attribute otherwise.
