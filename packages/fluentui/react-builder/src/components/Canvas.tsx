@@ -6,6 +6,7 @@ import { JSONTreeElement } from './types';
 import { EventListener } from '@fluentui/react-component-event-listener';
 import { fiberNavFindOwnerInJSONTree, fiberNavToJSONTreeElement, renderJSONTreeToJSXElement } from '../config';
 import { DebugFrame } from './DebugFrame';
+import { DropSelector } from './DropSelector';
 
 const Canvas = ({
   renderJSONTreeElement,
@@ -254,6 +255,13 @@ const Canvas = ({
                 onGoToParent={onGoToParentComponent}
               />
             )}
+            <DropSelector
+              mountDocument={document}
+              filter={fiberNav => {
+                const owner = fiberNavFindOwnerInJSONTree(fiberNav, jsonTree);
+                return owner;
+              }}
+            />
 
             <Provider theme={themes.teams} target={document}>
               {onMouseMove && <EventListener type="mousemove" listener={handleMouseMove} target={document} />}
