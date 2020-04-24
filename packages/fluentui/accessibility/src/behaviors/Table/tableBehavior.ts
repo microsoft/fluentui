@@ -20,7 +20,7 @@ const tableBehavior: Accessibility<TableBehaviorProps> = props => ({
 });
 
 export type TableBehaviorProps = {
-  header?: any;
+  header?: boolean;
 };
 
 export default tableBehavior;
