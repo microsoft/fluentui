@@ -9,6 +9,7 @@ import {
   ButtonContent,
   ButtonContentProps,
   ShorthandValue,
+  ButtonContentStylesProps,
 } from '@fluentui/react-northstar';
 import { ComponentSlotStylesInput, ComponentVariablesInput, ThemeInput } from '@fluentui/styles';
 import * as React from 'react';
@@ -51,6 +52,9 @@ const TertiaryButton = compose<'button', TertiaryButtonProps, TertiaryButtonStyl
   mapPropsToStylesProps: props => ({ tertiary: props.tertiary }),
   handledProps: ['tertiary'],
   slots: { content: TertiaryButtonContent },
+  slotProps: {
+    content: props => ({ tertiary: props.tertiary }),
+  },
 });
 
 // Adds overrides for a design term
@@ -97,6 +101,7 @@ type ComponentStylesProps = {
   CompactTertiaryButton: ButtonStylesProps & TertiaryButtonProps;
   CompactTertiaryButtonContent: ButtonContentProps;
   TertiaryButton: ButtonStylesProps & TertiaryButtonProps;
+  TertiaryButtonContent: ButtonContentStylesProps & TertiaryButtonContentProps;
   OverriddenButton: ButtonStylesProps & OverriddenButtonProps;
 };
 
@@ -105,6 +110,9 @@ type ComponentVariables = {
     tertiaryBackground: string;
     tertiaryBorderColor: string;
     tertiaryColor: string;
+  };
+  TertiaryButtonContent: {
+    tertiaryFontWeight: string;
   };
   CompactTertiaryButton: {
     tertiaryPadding: string;
@@ -124,6 +132,13 @@ const componentStyles: {
         background: v.tertiaryBackground,
         borderColor: v.tertiaryBorderColor,
         color: v.tertiaryColor,
+      }),
+    }),
+  },
+  TertiaryButtonContent: {
+    root: ({ props: p, variables: v }) => ({
+      ...(p.tertiary && {
+        fontWeight: v.tertiaryFontWeight,
       }),
     }),
   },
@@ -178,6 +193,9 @@ const componentVariables: ComponentVariablesInput = {
     tertiaryBorderColor: siteVariables.colorScheme.default.border2,
     tertiaryColor: siteVariables.colorScheme.default.foreground3,
   }),
+  TertiaryButtonContent: (siteVariables): ComponentVariables['TertiaryButtonContent'] => ({
+    tertiaryFontWeight: siteVariables.fontWeightLight,
+  }),
   CompactTertiaryButton: (): ComponentVariables['CompactTertiaryButton'] => ({
     tertiaryPadding: '0 .5rem',
   }),
@@ -200,10 +218,12 @@ const ButtonExample = () => (
     <Header as="h3" content="A tertiary button" description="Adds a custom design term" />
     <Flex>
       <Button content={{ content: 'Click here' }} />
-      <TertiaryButton content={{ content: 'Click me', tertiary: true }}>
-        <TertiaryButtonContent>Click here</TertiaryButtonContent>
-      </TertiaryButton>
+      <TertiaryButton content="Click me" />
       <TertiaryButton content="Click here" tertiary />
+
+      <Button content={{ content: 'Click here' }} size="small" />
+      <TertiaryButton content="Click here" size="small" />
+      <TertiaryButton content="Click here" tertiary size="small" />
     </Flex>
 
     <Header as="h3" content="A tertiary button" description="Provides overrides for a design term" />
