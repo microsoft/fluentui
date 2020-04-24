@@ -272,7 +272,6 @@ const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
       loader: Loader,
     },
 
-    // TODO: merge these
     slotProps: {
       content: props => ({
         size: props.size,

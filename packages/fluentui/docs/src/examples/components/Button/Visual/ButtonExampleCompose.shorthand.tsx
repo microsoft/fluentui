@@ -59,17 +59,12 @@ const TertiaryButton = compose<'button', TertiaryButtonProps, TertiaryButtonStyl
 
 // Adds overrides for a design term
 //
-
-const CompactTertiaryButtonContent = compose(ButtonContent, {
-  displayName: 'CompactTertiaryButtonContent',
-});
-
-const CompactTertiaryButton = compose(TertiaryButton, {
-  displayName: 'CompactTertiaryButton',
-  slots: {
-    content: CompactTertiaryButtonContent,
+const CompactTertiaryButton = compose<'button', TertiaryButtonProps, TertiaryButtonStylesProps, ButtonProps, {}>(
+  TertiaryButton,
+  {
+    displayName: 'CompactTertiaryButton',
   },
-});
+);
 
 // Composes custom button
 //
