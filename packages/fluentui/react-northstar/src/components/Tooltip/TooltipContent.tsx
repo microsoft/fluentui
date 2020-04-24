@@ -1,7 +1,7 @@
 import { Accessibility } from '@fluentui/accessibility';
 import { getElementType, useUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
-import Popper from 'popper.js';
+import * as PopperJs from '@popperjs/core';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 // @ts-ignore
@@ -17,7 +17,7 @@ import {
   rtlTextContainer,
 } from '../../utils';
 
-import { PopperChildrenProps } from '../../utils/positioner';
+import { getBasePlacement, PopperChildrenProps } from '../../utils/positioner';
 import { FluentComponentStaticProps, ProviderContextPrepared, WithAsProp, withSafeTypeForAs } from '../../types';
 
 export interface TooltipContentProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
@@ -38,6 +38,12 @@ export interface TooltipContentProps extends UIComponentProps, ChildrenComponent
   /** A ref to a pointer element. */
   pointerRef?: React.Ref<HTMLDivElement>;
 }
+
+export type TooltipContentStylesProps = Required<Pick<TooltipContentProps, 'pointing' | 'open'>> & {
+  basePlacement: PopperJs.BasePlacement;
+};
+
+export const tooltipContentClassName = 'ui-tooltip__content';
 
 const TooltipContent: React.FC<WithAsProp<TooltipContentProps>> &
   FluentComponentStaticProps<TooltipContentProps> = props => {
@@ -63,11 +69,11 @@ const TooltipContent: React.FC<WithAsProp<TooltipContentProps>> &
     debugName: TooltipContent.displayName,
     rtl: context.rtl,
   });
-  const { classes } = useStyles(TooltipContent.displayName, {
-    className: TooltipContent.className,
+  const { classes } = useStyles<TooltipContentStylesProps>(TooltipContent.displayName, {
+    className: tooltipContentClassName,
     mapPropsToStyles: () => ({
+      basePlacement: getBasePlacement(placement, context.rtl),
       open,
-      placement,
       pointing,
     }),
     mapPropsToInlineStyles: () => ({
@@ -103,11 +109,10 @@ const TooltipContent: React.FC<WithAsProp<TooltipContentProps>> &
 };
 
 TooltipContent.displayName = 'TooltipContent';
-TooltipContent.className = 'ui-tooltip__content';
 
 TooltipContent.propTypes = {
   ...commonPropTypes.createCommon(),
-  placement: PropTypes.oneOf<Popper.Placement>([
+  placement: PropTypes.oneOf<PopperJs.Placement>([
     'auto-start',
     'auto',
     'auto-end',

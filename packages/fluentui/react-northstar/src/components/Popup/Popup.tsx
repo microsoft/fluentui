@@ -10,9 +10,9 @@ import { EventListener } from '@fluentui/react-component-event-listener';
 import { NodeRef, Unstable_NestingAuto } from '@fluentui/react-component-nesting-registry';
 import { handleRef, Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
+import * as PopperJs from '@popperjs/core';
 import * as keyboardKey from 'keyboard-key';
 import * as _ from 'lodash';
-import PopperJs from 'popper.js';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 // @ts-ignore
@@ -46,10 +46,6 @@ export type PopupEvents = 'click' | 'hover' | 'focus' | 'context';
 export type RestrictedClickEvents = 'click' | 'focus';
 export type RestrictedHoverEvents = 'hover' | 'focus' | 'context';
 export type PopupEventsArray = RestrictedClickEvents[] | RestrictedHoverEvents[];
-
-export interface PopupSlotClassNames {
-  content: string;
-}
 
 export interface PopupProps
   extends StyledComponentProps<PopupProps>,
@@ -120,12 +116,13 @@ export interface PopupProps
   autoFocus?: boolean | AutoFocusZoneProps;
 }
 
+export const popupClassName = 'ui-popup';
+
 /**
  * A Popup displays a non-modal, often rich content, on top of its target element.
  */
 const Popup: React.FC<PopupProps> &
   FluentComponentStaticProps<PopupProps> & {
-    slotClassNames: PopupSlotClassNames;
     Content: typeof PopupContent;
   } = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
@@ -139,12 +136,15 @@ const Popup: React.FC<PopupProps> &
     inline,
     children,
     contentRef,
+    flipBoundary,
     on,
     mountNode,
     mouseLeaveDelay,
     offset,
+    overflowBoundary,
     pointing,
     position,
+    positionFixed,
     renderContent,
     tabbableTrigger,
     target,
@@ -167,7 +167,7 @@ const Popup: React.FC<PopupProps> &
   const triggerRef = React.useRef<HTMLElement>();
   // focusable element which has triggered Popup, can be either triggerDomElement or the element inside it
   const triggerFocusableRef = React.useRef<HTMLElement>();
-  const rightClickReferenceObject = React.useRef<PopperJs.ReferenceObject | null>();
+  const rightClickReferenceObject = React.useRef<PopperJs.VirtualElement | null>();
 
   const getA11yProps = useAccessibility(accessibility, {
     debugName: Popup.displayName,
@@ -514,8 +514,11 @@ const Popup: React.FC<PopupProps> &
     <Popper
       pointerTargetRef={pointerTargetRef}
       align={align}
+      flipBoundary={flipBoundary}
       position={position}
+      positionFixed={positionFixed}
       offset={offset}
+      overflowBoundary={overflowBoundary}
       rtl={context.rtl}
       unstable_pinned={unstable_pinned}
       targetRef={rightClickReferenceObject.current || target || triggerRef}
@@ -539,11 +542,7 @@ const Popup: React.FC<PopupProps> &
   return element;
 };
 
-Popup.className = 'ui-popup';
 Popup.displayName = 'Popup';
-Popup.slotClassNames = {
-  content: `${Popup.className}__content`,
-};
 
 Popup.propTypes = {
   ...commonPropTypes.createCommon({
@@ -555,7 +554,20 @@ Popup.propTypes = {
   inline: PropTypes.bool,
   mountNode: customPropTypes.domNode,
   mouseLeaveDelay: PropTypes.number,
-  offset: PropTypes.string,
+  offset: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.arrayOf(PropTypes.number) as PropTypes.Requireable<[number, number]>,
+  ]),
+  flipBoundary: PropTypes.oneOfType([
+    PropTypes.object as PropTypes.Requireable<HTMLElement>,
+    PropTypes.arrayOf(PropTypes.object) as PropTypes.Requireable<HTMLElement[]>,
+    PropTypes.oneOf<'clippingParents' | 'window' | 'scrollParent'>(['clippingParents', 'window', 'scrollParent']),
+  ]),
+  overflowBoundary: PropTypes.oneOfType([
+    PropTypes.object as PropTypes.Requireable<HTMLElement>,
+    PropTypes.arrayOf(PropTypes.object) as PropTypes.Requireable<HTMLElement[]>,
+    PropTypes.oneOf<'clippingParents' | 'window' | 'scrollParent'>(['clippingParents', 'window', 'scrollParent']),
+  ]),
   on: PropTypes.oneOfType([
     PropTypes.oneOf(['hover', 'click', 'focus', 'context']),
     PropTypes.arrayOf(PropTypes.oneOf(['click', 'focus', 'context'])),
@@ -565,6 +577,7 @@ Popup.propTypes = {
   onOpenChange: PropTypes.func,
   pointing: PropTypes.bool,
   position: PropTypes.oneOf(POSITIONS),
+  positionFixed: PropTypes.bool,
   renderContent: PropTypes.func,
   target: PropTypes.any,
   trigger: customPropTypes.every([customPropTypes.disallow(['children']), PropTypes.any]),

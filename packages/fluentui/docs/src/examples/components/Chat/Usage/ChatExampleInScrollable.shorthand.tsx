@@ -1,22 +1,23 @@
 import { useBooleanKnob, useRangeKnob } from '@fluentui/docs-components';
-import { Avatar, Chat, ChatItemProps, ShorthandCollection } from '@fluentui/react-northstar';
+import { Avatar, Chat, ChatMessageProps, ChatProps, MenuButton } from '@fluentui/react-northstar';
 import * as React from 'react';
-
-const actionItems = [
-  { key: 'add', icon: 'add', title: 'Add' },
-  { key: 'ban', icon: 'ban', title: 'Ban' },
-  { key: 'bookmark', icon: 'bookmark', title: 'Bookmark' },
-  { key: 'broadcast', icon: 'broadcast', title: 'Broadcast' },
-  { key: 'calendar', icon: 'calendar', title: 'Calendar' },
-  { key: 'like', icon: 'like', title: 'Like' },
-  { key: 'star', icon: 'star', title: 'Star' },
-  { key: 'edit', icon: 'edit', title: 'Edit' },
-  { key: 'lock', icon: 'lock', title: 'Lock' },
-  { key: 'more', icon: 'more', title: 'More actions' },
-];
+import {
+  AddIcon,
+  BanIcon,
+  BookmarkIcon,
+  BroadcastIcon,
+  CalendarIcon,
+  CloseIcon,
+  EditIcon,
+  LikeIcon,
+  LockIcon,
+  MoreIcon,
+  StarIcon,
+  ReplyIcon,
+} from '@fluentui/react-icons-northstar';
 
 const ChatExampleInScrollableShorthand = () => {
-  const [actionCount] = useRangeKnob({ name: 'actionCount', initialValue: 7, min: 1, max: 10 });
+  const [actionCount, setActionCount] = useRangeKnob({ name: 'actionCount', initialValue: 7, min: 1, max: 10 });
   const [overflow] = useBooleanKnob({ name: 'overflow', initialValue: true });
   const [height] = useRangeKnob({
     name: 'height',
@@ -33,11 +34,45 @@ const ChatExampleInScrollableShorthand = () => {
     step: 10,
   });
 
-  const actionMenu = {
+  const actionItems = [
+    { key: 'add', icon: <AddIcon />, title: 'Add' },
+    { key: 'ban', icon: <BanIcon />, title: 'Ban' },
+    { key: 'bookmark', icon: <BookmarkIcon />, title: 'Bookmark' },
+    { key: 'broadcast', icon: <BroadcastIcon />, title: 'Broadcast' },
+    { key: 'calendar', icon: <CalendarIcon />, title: 'Calendar' },
+    { key: 'like', icon: <LikeIcon />, title: 'Like' },
+    { key: 'star', icon: <StarIcon />, title: 'Star' },
+    { key: 'edit', icon: <EditIcon />, title: 'Edit' },
+    { key: 'lock', icon: <LockIcon />, title: 'Lock' },
+    {
+      key: 'more',
+      icon: <MoreIcon />,
+      title: 'More actions',
+      children: (Component, props) => (
+        <MenuButton
+          key="more"
+          menu={[
+            { key: 'reply', content: 'Reply', icon: <ReplyIcon /> },
+            { key: 'edit', content: 'Edit', icon: <EditIcon /> },
+            { key: 'save', content: 'Save message', icon: <BookmarkIcon /> },
+            { key: 'delete', content: 'Delete', icon: <CloseIcon /> },
+          ]}
+          position="above"
+          trigger={<Component {...props} />}
+          {...(overflow && {
+            flipBoundary: 'window',
+            overflowBoundary: 'window',
+          })}
+        />
+      ),
+    },
+  ];
+  const actionMenu: ChatMessageProps['actionMenu'] = {
     iconOnly: true,
-    items: actionItems.slice(0, actionCount - 1),
+    items: actionItems.slice(-actionCount),
   };
-  const items: ShorthandCollection<ChatItemProps> = [
+
+  const items: ChatProps['items'] = [
     {
       attached: 'top',
       contentPosition: 'end',
@@ -160,9 +195,15 @@ const ChatExampleInScrollableShorthand = () => {
   ];
 
   return (
-    <div style={{ height, width, overflow: 'scroll', margin: 75, marginLeft: 0 }}>
-      <Chat items={items} styles={{ minHeight: '100%' }} />
-    </div>
+    <>
+      <div style={{ height, width, overflow: 'scroll', margin: 150, marginBottom: 0, marginLeft: 50 }}>
+        <Chat items={items} styles={{ minHeight: '100%' }} />
+      </div>
+
+      <button id="actions-to-max" onClick={() => setActionCount(actionItems.length)}>
+        Set action count to max
+      </button>
+    </>
   );
 };
 

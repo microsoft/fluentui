@@ -1,59 +1,29 @@
 import * as React from 'react';
-import { ComposedComponent, ComposeOptions, ComposePreparedOptions } from './types';
 
-const defaultComposeOptions: ComposePreparedOptions = {
-  className: process.env.NODE_ENV === 'production' ? '' : 'no-classname-🙉',
-  displayNames: [],
+import { ComponentWithAs, ComposedComponent, ComposeOptions, Input, InputComposeComponent } from './types';
+import { mergeComposeOptions, wasComposedPreviously } from './utils';
 
-  mapPropsToStylesPropsChain: [],
+function compose<T extends React.ElementType, InputProps, InputStylesProps, ParentProps, ParentStylesProps>(
+  input: Input<T, InputProps>,
+  inputOptions: ComposeOptions<InputProps, InputStylesProps, ParentStylesProps> = {},
+) {
+  const composeOptions = mergeComposeOptions(
+    input as Input,
+    (inputOptions as unknown) as ComposeOptions,
+    wasComposedPreviously(input) ? input.fluentComposeConfig : undefined,
+  );
 
-  handledProps: [],
-  overrideStyles: false,
-};
+  const Component = (React.forwardRef<T, InputProps & ParentProps & { as?: React.ElementType }>((props, ref) => {
+    return composeOptions.render(props, ref as React.Ref<'div'>, composeOptions);
+  }) as unknown) as ComponentWithAs<T, InputProps & ParentProps>;
 
-function computeDisplayNames<InputProps, InputStylesProps, ParentProps, ParentStylesProps>(
-  options: ComposeOptions<InputProps, InputStylesProps, ParentStylesProps>,
-  inputDisplayName?: string,
-  inputOptions?: ComposePreparedOptions,
-): string[] {
-  if (options.overrideStyles) {
-    return [options.displayName || inputDisplayName].filter(Boolean) as string[];
+  Component.displayName = composeOptions.displayName;
+
+  if ((input as InputComposeComponent).defaultProps) {
+    Component.defaultProps = (input as InputComposeComponent).defaultProps;
   }
 
-  // To support styles composition we need to properly pick up display names
-  if (inputOptions) {
-    return options.displayName ? inputOptions.displayNames.concat(options.displayName) : inputOptions.displayNames;
-  }
-
-  return [inputDisplayName, options.displayName].filter(Boolean) as string[];
-}
-
-function compose<InputProps, InputStylesProps, ParentProps, ParentStylesProps>(
-  InputComponent: React.FunctionComponent<ParentProps> & { fluentComposeConfig?: ComposePreparedOptions },
-  composeOptions: ComposeOptions<InputProps, InputStylesProps, ParentStylesProps> = {},
-): ComposedComponent<InputProps, InputStylesProps, ParentProps, ParentStylesProps> {
-  const Component = (InputComponent.bind(null) as unknown) as ComposedComponent<
-    InputProps,
-    InputStylesProps,
-    ParentProps,
-    ParentStylesProps
-  >;
-
-  const inputOptions: ComposePreparedOptions = InputComponent.fluentComposeConfig || defaultComposeOptions;
-  const { handledProps = [], mapPropsToStylesProps } = composeOptions;
-
-  Component.displayName = composeOptions.displayName || InputComponent.displayName;
-  Component.fluentComposeConfig = {
-    className: composeOptions.className || inputOptions.className,
-    displayNames: computeDisplayNames(composeOptions, InputComponent.displayName, inputOptions),
-
-    mapPropsToStylesPropsChain: (mapPropsToStylesProps
-      ? [...inputOptions.mapPropsToStylesPropsChain, mapPropsToStylesProps]
-      : inputOptions.mapPropsToStylesPropsChain) as ((props: ParentStylesProps & InputProps) => InputStylesProps)[],
-
-    handledProps: [...inputOptions.handledProps, ...handledProps],
-    overrideStyles: composeOptions.overrideStyles || false,
-  };
+  (Component as ComposedComponent).fluentComposeConfig = composeOptions;
 
   return Component;
 }

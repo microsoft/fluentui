@@ -32,11 +32,12 @@ export class Nav extends React.Component<INavProps, INavState> {
   public constructor(props: INavProps) {
     super(props);
 
-    this._localItems = !!window.localStorage
-      ? {
-          defaultSortState: NavSortType[localStorage.getItem('defaultSortState') as keyof typeof NavSortType],
-        }
-      : {};
+    this._localItems =
+      typeof window !== 'undefined' && window.localStorage
+        ? {
+            defaultSortState: NavSortType[localStorage.getItem('defaultSortState') as keyof typeof NavSortType],
+          }
+        : {};
 
     this.state = {
       defaultSortState: this._localItems.defaultSortState

@@ -9,11 +9,7 @@ import {
   mergeStyleSets,
   FontWeights,
 } from 'office-ui-fabric-react';
-
-export interface ICalloutCoverExampleState {
-  isCalloutVisible?: boolean;
-  directionalHint?: DirectionalHint;
-}
+import { useBoolean } from '@uifabric/react-hooks';
 
 const DIRECTION_OPTIONS = [
   { key: DirectionalHint.topLeftEdge, text: 'Top Left Edge' },
@@ -65,75 +61,46 @@ const styles = mergeStyleSets({
   },
 });
 
-export class CalloutCoverExample extends React.Component<{}, ICalloutCoverExampleState> {
-  private _menuButtonElement: HTMLElement | null;
+export const CalloutCoverExample: React.FunctionComponent = () => {
+  const [isCalloutVisible, { toggle: toggleIsCalloutVisible }] = useBoolean(false);
+  const [directionalHint, setDirectionalHint] = React.useState<DirectionalHint>(DirectionalHint.bottomLeftEdge);
 
-  public constructor(props: {}) {
-    super(props);
+  const onDirectionalChanged = (event: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void => {
+    setDirectionalHint(option.key as DirectionalHint);
+  };
 
-    this._onDismiss = this._onDismiss.bind(this);
-    this._onShowMenuClicked = this._onShowMenuClicked.bind(this);
-    this._onDirectionalChanged = this._onDirectionalChanged.bind(this);
-
-    this.state = {
-      isCalloutVisible: false,
-      directionalHint: DirectionalHint.bottomLeftEdge,
-    };
-  }
-
-  public render(): JSX.Element {
-    const { isCalloutVisible, directionalHint } = this.state;
-    // ms-Callout-smallbeak is used in this directional example to reflect all the positions.
-    // Large beak will disable some position to avoid beak over the callout edge.
-    return (
-      <>
-        <div className={styles.configArea}>
-          <Dropdown
-            label="Directional hint"
-            selectedKey={directionalHint!}
-            options={DIRECTION_OPTIONS}
-            onChange={this._onDirectionalChanged}
-          />
-        </div>
-        <div className={styles.buttonArea} ref={menuButton => (this._menuButtonElement = menuButton)}>
-          <DefaultButton text={isCalloutVisible ? 'Hide callout' : 'Show callout'} onClick={this._onShowMenuClicked} />
-        </div>
-        {isCalloutVisible ? (
-          <Callout
-            className={styles.callout}
-            onDismiss={this._onDismiss}
-            target={this._menuButtonElement}
-            directionalHint={directionalHint}
-            coverTarget={true}
-            isBeakVisible={false}
-            gapSpace={0}
-            setInitialFocus={true}
-          >
-            <div className={styles.header}>
-              <p className={styles.title}>I'm covering the target!</p>
-            </div>
-            <div className={styles.inner}>
-              <DefaultButton onClick={this._onShowMenuClicked} text="Click to dismiss" />
-            </div>
-          </Callout>
-        ) : null}
-      </>
-    );
-  }
-
-  private _onDismiss(): void {
-    this.setState({ isCalloutVisible: false });
-  }
-
-  private _onShowMenuClicked(): void {
-    this.setState({
-      isCalloutVisible: !this.state.isCalloutVisible,
-    });
-  }
-
-  private _onDirectionalChanged(event: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void {
-    this.setState({
-      directionalHint: option.key as DirectionalHint,
-    });
-  }
-}
+  return (
+    <>
+      <div className={styles.configArea}>
+        <Dropdown
+          label="Directional hint"
+          selectedKey={directionalHint!}
+          options={DIRECTION_OPTIONS}
+          onChange={onDirectionalChanged}
+        />
+      </div>
+      <div className={styles.buttonArea}>
+        <DefaultButton text={isCalloutVisible ? 'Hide callout' : 'Show callout'} onClick={toggleIsCalloutVisible} />
+      </div>
+      {isCalloutVisible ? (
+        <Callout
+          className={styles.callout}
+          onDismiss={toggleIsCalloutVisible}
+          target={`.${styles.buttonArea}`}
+          directionalHint={directionalHint}
+          coverTarget
+          isBeakVisible={false}
+          gapSpace={0}
+          setInitialFocus
+        >
+          <div className={styles.header}>
+            <p className={styles.title}>I'm covering the target!</p>
+          </div>
+          <div className={styles.inner}>
+            <DefaultButton onClick={toggleIsCalloutVisible} text="Click to dismiss" />
+          </div>
+        </Callout>
+      ) : null}
+    </>
+  );
+};

@@ -18,10 +18,7 @@ const SplitButtonExampleToggleButtonShorthand = () => {
           'aria-describedby': 'instruction-message-icon',
         }}
         toggleButton={{
-          icon: {
-            name: 'icon-menu-arrow-down',
-            style: open ? { transform: 'rotate(180deg)' } : null,
-          },
+          styles: open ? { transform: 'rotate(180deg)' } : null,
           'aria-label': 'more options',
         }}
         onOpenChange={(e, { open }) => setOpen(open)}

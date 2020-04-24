@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { Avatar, Chat, ChatItemProps, ShorthandCollection } from '@fluentui/react-northstar';
+import { MentionIcon, RedbangIcon, AcceptIcon } from '@fluentui/react-icons-northstar';
 
 const janeAvatar = {
   image: 'public/images/avatar/small/ade.jpg',
-  status: { color: 'green', icon: 'icon-checkmark' },
+  status: { color: 'green', icon: <AcceptIcon /> },
 };
 
 const items: ShorthandCollection<ChatItemProps> = [
@@ -15,7 +16,7 @@ const items: ShorthandCollection<ChatItemProps> = [
         timestamp="Yesterday, 10:15 PM"
         mine
         badge={{
-          icon: 'redbang',
+          icon: <RedbangIcon />,
         }}
         badgePosition="start"
         variables={{ isImportant: true }}
@@ -32,7 +33,7 @@ const items: ShorthandCollection<ChatItemProps> = [
         author="Jane Doe"
         timestamp="Yesterday, 10:15 PM"
         badge={{
-          icon: 'mention',
+          icon: <MentionIcon />,
         }}
         variables={{ hasMention: true }}
       />

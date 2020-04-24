@@ -15,7 +15,6 @@ import {
 import { Accessibility } from '@fluentui/accessibility';
 
 import { WithAsProp, ShorthandValue, withSafeTypeForAs } from '../../types';
-import Icon, { IconProps } from '../Icon/Icon';
 import Box, { BoxProps } from '../Box/Box';
 import ReactionGroup from './ReactionGroup';
 
@@ -34,15 +33,19 @@ export interface ReactionProps
   accessibility?: Accessibility;
 
   /** A reaction can have icon for the indicator of the reaction. */
-  icon?: ShorthandValue<IconProps>;
+  icon?: ShorthandValue<BoxProps>;
 }
+
+export const reactionClassName = 'ui-reaction';
+export const reactionSlotClassNames: ReactionSlotClassNames = {
+  icon: `${reactionClassName}__icon`,
+  content: `${reactionClassName}__content`,
+};
 
 class Reaction extends UIComponent<WithAsProp<ReactionProps>> {
   static create: ShorthandFactory<ReactionProps>;
 
-  static className = 'ui-reaction';
-
-  static slotClassNames: ReactionSlotClassNames;
+  static deprecated_className = reactionClassName;
 
   static displayName = 'Reaction';
 
@@ -50,7 +53,7 @@ class Reaction extends UIComponent<WithAsProp<ReactionProps>> {
     ...commonPropTypes.createCommon({
       content: 'shorthand',
     }),
-    icon: customPropTypes.itemShorthandWithoutJSX,
+    icon: customPropTypes.shorthandAllowingChildren,
   };
 
   static defaultProps = {
@@ -73,15 +76,15 @@ class Reaction extends UIComponent<WithAsProp<ReactionProps>> {
           children
         ) : (
           <>
-            {Icon.create(icon, {
+            {Box.create(icon, {
               defaultProps: () => ({
-                className: Reaction.slotClassNames.icon,
+                className: reactionSlotClassNames.icon,
                 styles: styles.icon,
               }),
             })}
             {Box.create(content, {
               defaultProps: () => ({
-                className: Reaction.slotClassNames.content,
+                className: reactionSlotClassNames.content,
                 styles: styles.content,
               }),
             })}
@@ -93,10 +96,6 @@ class Reaction extends UIComponent<WithAsProp<ReactionProps>> {
 }
 
 Reaction.create = createShorthandFactory({ Component: Reaction, mappedProp: 'content' });
-Reaction.slotClassNames = {
-  icon: `${Reaction.className}__icon`,
-  content: `${Reaction.className}__content`,
-};
 
 /**
  * A Reaction indicates user's emotion or perception.

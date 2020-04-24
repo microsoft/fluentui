@@ -24,7 +24,7 @@ import {
   ALIGNMENTS,
   POSITIONS,
   Popper,
-  BasicPositioningProps,
+  PositioningProps,
   PopperChildrenProps,
   Alignment,
   Position,
@@ -32,15 +32,11 @@ import {
 import PortalInner from '../Portal/PortalInner';
 import TooltipContent, { TooltipContentProps } from './TooltipContent';
 
-export interface TooltipSlotClassNames {
-  content: string;
-}
-
 export interface TooltipProps
   extends StyledComponentProps<TooltipProps>,
     ChildrenComponentProps<React.ReactElement>,
     ContentComponentProps<ShorthandValue<TooltipContentProps>>,
-    BasicPositioningProps {
+    PositioningProps {
   /**
    * Accessibility behavior if overridden by the user.
    * @default tooltipBehavior
@@ -70,16 +66,6 @@ export interface TooltipProps
    */
   onOpenChange?: (e: React.MouseEvent | React.FocusEvent | React.KeyboardEvent, data: TooltipProps) => void;
 
-  /**
-   * Offset value to apply to rendered component. Accepts the following units:
-   * - px or unit-less, interpreted as pixels
-   * - %, percentage relative to the length of the trigger element
-   * - %p, percentage relative to the length of the component element
-   * - vw, CSS viewport width unit
-   * - vh, CSS viewport height unit
-   */
-  offset?: string;
-
   /** A tooltip can show a pointer to trigger. */
   pointing?: boolean;
 
@@ -92,6 +78,8 @@ export interface TooltipProps
   trigger?: JSX.Element;
 }
 
+export const tooltipClassName = 'ui-tooltip';
+
 /**
  * A Tooltip displays additional non-modal information on top of its target element.
  * Tooltip doesn't receive focus and cannot contain focusable elements.
@@ -102,7 +90,6 @@ export interface TooltipProps
 const Tooltip: React.FC<TooltipProps> &
   FluentComponentStaticProps<TooltipProps> & {
     Content: typeof TooltipContent;
-    slotClassNames: TooltipSlotClassNames;
   } = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(Tooltip.displayName, context.telemetry);
@@ -113,13 +100,17 @@ const Tooltip: React.FC<TooltipProps> &
     align,
     children,
     content,
+    flipBoundary,
     mountNode,
     mouseLeaveDelay,
     offset,
+    overflowBoundary,
     pointing,
     position,
+    positionFixed,
     target,
     trigger,
+    unstable_pinned,
   } = props;
 
   const [open, setOpen] = useAutoControlled({
@@ -151,6 +142,7 @@ const Tooltip: React.FC<TooltipProps> &
       'aria-label': props['aria-label'],
       'aria-labelledby': props['aria-labelledby'],
       contentId: contentId.current,
+      triggerAriaLabel: trigger && trigger.props['aria-label'],
       open,
     }),
   });
@@ -238,14 +230,18 @@ const Tooltip: React.FC<TooltipProps> &
       )}
       <PortalInner mountNode={mountNode}>
         <Popper
-          pointerTargetRef={pointerTargetRef}
           align={align}
+          flipBoundary={flipBoundary}
           offset={offset}
+          overflowBoundary={overflowBoundary}
+          pointerTargetRef={pointerTargetRef}
           position={position}
+          positionFixed={positionFixed}
           enabled={open}
           rtl={context.rtl}
           targetRef={target || triggerRef}
           children={renderPopperChildren}
+          unstable_pinned={unstable_pinned}
         />
       </PortalInner>
     </>
@@ -255,12 +251,7 @@ const Tooltip: React.FC<TooltipProps> &
   return element;
 };
 
-Tooltip.className = 'ui-tooltip';
 Tooltip.displayName = 'Tooltip';
-
-Tooltip.slotClassNames = {
-  content: `${Tooltip.className}__content`,
-};
 
 Tooltip.defaultProps = {
   align: 'center',
@@ -279,14 +270,29 @@ Tooltip.propTypes = {
   defaultOpen: PropTypes.bool,
   mountNode: customPropTypes.domNode,
   mouseLeaveDelay: PropTypes.number,
-  offset: PropTypes.string,
+  offset: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.arrayOf(PropTypes.number) as PropTypes.Requireable<[number, number]>,
+  ]),
   open: PropTypes.bool,
   onOpenChange: PropTypes.func,
   pointing: PropTypes.bool,
   position: PropTypes.oneOf<Position>(POSITIONS),
+  positionFixed: PropTypes.bool,
   target: customPropTypes.domNode,
   trigger: customPropTypes.every([customPropTypes.disallow(['children']), PropTypes.element]),
   content: customPropTypes.shorthandAllowingChildren,
+  unstable_pinned: PropTypes.bool,
+  flipBoundary: PropTypes.oneOfType([
+    PropTypes.object as PropTypes.Requireable<HTMLElement>,
+    PropTypes.arrayOf(PropTypes.object) as PropTypes.Requireable<HTMLElement[]>,
+    PropTypes.oneOf<'clippingParents' | 'window' | 'scrollParent'>(['clippingParents', 'window', 'scrollParent']),
+  ]),
+  overflowBoundary: PropTypes.oneOfType([
+    PropTypes.object as PropTypes.Requireable<HTMLElement>,
+    PropTypes.arrayOf(PropTypes.object) as PropTypes.Requireable<HTMLElement[]>,
+    PropTypes.oneOf<'clippingParents' | 'window' | 'scrollParent'>(['clippingParents', 'window', 'scrollParent']),
+  ]),
 };
 Tooltip.handledProps = Object.keys(Tooltip.propTypes) as any;
 

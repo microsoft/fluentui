@@ -15,6 +15,16 @@ const Usage = () => (
       description="Example of adding Checkbox in TopControls and setting up media preview"
       examplePath="components/Card/Usage/CardExampleWithPreview"
     />
+    <ComponentExample
+      title="Focusable card"
+      description="Example of card which can be focused and clicked"
+      examplePath="components/Card/Usage/CardExampleFocusable"
+    />
+    <ComponentExample
+      title="Card with focusable children"
+      description="Example of card which children can be focused and clicked"
+      examplePath="components/Card/Usage/CardExampleFocusableChildren"
+    />
   </ExampleSection>
 );
 

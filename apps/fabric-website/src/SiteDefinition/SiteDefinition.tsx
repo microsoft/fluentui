@@ -64,11 +64,7 @@ export const SiteDefinition: ISiteDefinition<Platforms> = {
   messageBars: [
     {
       path: '#',
-      text: (
-        <span>
-          <strong style={{ fontWeight: 700 }}>Coming soon</strong> UI Fabric is evolving into Fluent UI.
-        </span>
-      ),
+      text: <span>UI Fabric is evolving into Fluent UI.</span>,
       linkText: 'Learn more',
       linkUrl: 'https://developer.microsoft.com/en-us/office/blogs/ui-fabric-is-evolving-into-fluent-ui/',
       sessionStoragePrefix: 'FluentUI',

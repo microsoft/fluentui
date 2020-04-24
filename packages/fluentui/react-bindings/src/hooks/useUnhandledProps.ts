@@ -8,9 +8,12 @@ import getUnhandledProps from '../utils/getUnhandledProps';
  * @param props - A ReactElement props object
  * @returns A shallow copy of the prop object
  */
-function useUnhandledProps<P extends Record<string, any>>(handledProps: (keyof P)[], props: P): Partial<P> {
+function useUnhandledProps(handledProps: string[], props: Record<string, any>): Record<string, any> {
   if (process.env.NODE_ENV === 'test') {
-    return getUnhandledProps(handledProps, { ...props, 'data-uses-unhanded-props': true });
+    return getUnhandledProps(handledProps, {
+      ...props,
+      'data-uses-unhanded-props': true,
+    } as Record<string, any>);
   }
 
   return getUnhandledProps(handledProps, props);
