@@ -23,6 +23,13 @@ export const controlsPagesMac: INavPage[] = [
         getComponent: cb =>
           require.ensure([], require => cb(require<any>('../../../pages/Controls/ButtonPage/ButtonPage').ButtonPage)),
       },
+      {
+        title: 'Link',
+        url: '#/controls/mac/link',
+        component: () => <LoadingComponent title="Link" />,
+        getComponent: cb =>
+          require.ensure([], require => cb(require<any>('../../../pages/Controls/LinkPage/LinkPage').LinkPage)),
+      },
     ],
   },
   {
@@ -41,6 +48,21 @@ export const controlsPagesMac: INavPage[] = [
     ],
   },
   {
+    title: 'Items & Lists',
+    isCategory: true,
+    pages: [
+      {
+        title: 'Persona',
+        url: '#/controls/mac/persona',
+        component: () => <LoadingComponent title="Persona" />,
+        getComponent: cb =>
+          require.ensure([], require =>
+            cb(require<any>('../../../pages/Controls/PersonaPage/PersonaPage').PersonaPage),
+          ),
+      },
+    ],
+  },
+  {
     title: 'Utilities',
     isCategory: true,
     pages: [
@@ -50,6 +72,15 @@ export const controlsPagesMac: INavPage[] = [
         component: () => <LoadingComponent title="Text" />,
         getComponent: cb =>
           require.ensure([], require => cb(require<any>('../../../pages/Controls/TextPage/TextPage').TextPage)),
+      },
+      {
+        title: 'Separator',
+        url: '#/controls/mac/separator',
+        component: () => <LoadingComponent title="Separator" />,
+        getComponent: cb =>
+          require.ensure([], require =>
+            cb(require<any>('../../../pages/Controls/SeparatorPage/SeparatorPage').SeparatorPage),
+          ),
       },
     ],
   },

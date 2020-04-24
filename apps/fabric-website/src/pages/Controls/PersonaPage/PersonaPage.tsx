@@ -49,5 +49,35 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
           ),
         },
       ];
+
+    case 'windows':
+      return [
+        {
+          sectionName: 'Implementation',
+          editUrl: baseUrl + 'docs/windows/PersonaImplementation.md',
+          content: (
+            <Markdown>
+              {
+                require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/PersonaPage/docs/windows/PersonaImplementation.md') as string
+              }
+            </Markdown>
+          ),
+        },
+      ];
+
+    case 'mac':
+      return [
+        {
+          sectionName: 'Implementation',
+          editUrl: baseUrl + 'docs/mac/PersonaImplementation.md',
+          content: (
+            <Markdown>
+              {
+                require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/PersonaPage/docs/mac/PersonaImplementation.md') as string
+              }
+            </Markdown>
+          ),
+        },
+      ];
   }
 }

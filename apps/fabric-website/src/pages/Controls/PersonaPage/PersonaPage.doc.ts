@@ -22,4 +22,14 @@ export const PersonaPageProps: TFabricPlatformPageProps = {
     related,
     componentUrl,
   },
+  windows: {
+    overview: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/PersonaPage/docs/windows/PersonaOverview.md') as string,
+    related,
+    componentUrl,
+  },
+  mac: {
+    overview: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/PersonaPage/docs/mac/PersonaOverview.md') as string,
+    related,
+    componentUrl,
+  },
 };

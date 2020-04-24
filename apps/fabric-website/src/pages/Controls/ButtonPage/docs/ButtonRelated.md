@@ -2,3 +2,4 @@
 - [iOS Button](#/controls/ios/button)
 - [Android Button](#/controls/android/button)
 - [macOS Button](#/controls/mac/button)
+- [Windows Button](#/controls/windows/button)
