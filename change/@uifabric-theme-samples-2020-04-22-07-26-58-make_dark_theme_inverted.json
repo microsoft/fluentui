@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "set isInverted for dark sample theme",
+  "packageName": "@uifabric/theme-samples",
+  "email": "chrismo@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-04-22T14:26:57.935Z"
+}
