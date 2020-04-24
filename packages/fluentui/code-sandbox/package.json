@@ -19,7 +19,7 @@
   "main": "dist/commonjs/index.js",
   "module": "dist/es/index.js",
   "peerDependencies": {
-    "@fluentui/react-northstar": "0.47.0",
+    "@fluentui/react-northstar": "0.48.0",
     "react": "^16.8.0",
     "react-dom": "^16.8.0"
   },
@@ -30,10 +30,8 @@
   "scripts": {
     "build": "gulp bundle:package:no-umd",
     "clean": "gulp bundle:package:clean",
-    "lint": "yarn lint:eslint && yarn lint:old",
-    "lint:eslint": "eslint --ext .js,.ts,.tsx .",
-    "lint:fix": "yarn lint:eslint --fix && yarn lint:old --fix",
-    "lint:old": "tslint -t stylish -p ."
+    "lint": "eslint --ext .js,.ts,.tsx .",
+    "lint:fix": "yarn lint --fix"
   },
   "sideEffects": false,
   "types": "dist/es/index.d.ts"

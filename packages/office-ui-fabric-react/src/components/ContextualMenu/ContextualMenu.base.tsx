@@ -35,6 +35,7 @@ import {
   isIOS,
   isMac,
   initializeComponentRef,
+  memoizeFunction,
 } from '../../Utilities';
 import { hasSubmenu, getIsChecked, isItemDisabled } from '../../utilities/contextualMenu/index';
 import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
@@ -45,16 +46,12 @@ import {
   ContextualMenuButton,
   ContextualMenuAnchor,
 } from './ContextualMenuItemWrapper/index';
-import { IProcessedStyleSet, mergeStyleSets } from '../../Styling';
+import { IProcessedStyleSet, concatStyleSetsWithProps } from '../../Styling';
 import { IContextualMenuItemStyleProps, IContextualMenuItemStyles } from './ContextualMenuItem.types';
 import { getItemStyles } from './ContextualMenu.classNames';
 
-const getClassNames = classNamesFunction<IContextualMenuStyleProps, IContextualMenuStyles>({
-  disableCaching: true,
-});
-const getContextualMenuItemClassNames = classNamesFunction<IContextualMenuItemStyleProps, IContextualMenuItemStyles>({
-  disableCaching: true,
-});
+const getClassNames = classNamesFunction<IContextualMenuStyleProps, IContextualMenuStyles>();
+const getContextualMenuItemClassNames = classNamesFunction<IContextualMenuItemStyleProps, IContextualMenuItemStyles>();
 
 export interface IContextualMenuState {
   expandedMenuItemKey?: string;
@@ -95,6 +92,15 @@ export function canAnyMenuItemsCheck(items: IContextualMenuItem[]): boolean {
 const NavigationIdleDelay = 250 /* ms */;
 
 const COMPONENT_NAME = 'ContextualMenu';
+
+const _getMenuItemStylesFunction = memoizeFunction(
+  (
+    ...styles: (IStyleFunctionOrObject<IContextualMenuItemStyleProps, IContextualMenuItemStyles> | undefined)[]
+  ): IStyleFunctionOrObject<IContextualMenuItemStyleProps, IContextualMenuItemStyles> => {
+    return (styleProps: IContextualMenuItemStyleProps) =>
+      concatStyleSetsWithProps(styleProps, getItemStyles, ...styles);
+  },
+);
 
 @withResponsiveMode
 export class ContextualMenuBase extends React.Component<IContextualMenuProps, IContextualMenuState> {
@@ -543,19 +549,11 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
         primaryDisabled: item.primaryDisabled,
       };
 
-      const menuItemStyles = this._classNames.subComponentStyles
-        ? (this._classNames.subComponentStyles.menuItem as IStyleFunctionOrObject<
-            IContextualMenuItemStyleProps,
-            IContextualMenuItemStyles
-          >)
-        : undefined;
-
       // We need to generate default styles then override if styles are provided
       // since the ContextualMenu currently handles item classNames.
-      itemClassNames = mergeStyleSets(
-        getContextualMenuItemClassNames(getItemStyles, itemStyleProps),
-        getContextualMenuItemClassNames(menuItemStyles, itemStyleProps),
-        getContextualMenuItemClassNames(styles, itemStyleProps),
+      itemClassNames = getContextualMenuItemClassNames(
+        _getMenuItemStylesFunction(this._classNames.subComponentStyles?.menuItem, styles),
+        itemStyleProps,
       );
     }
 

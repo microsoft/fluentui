@@ -11,7 +11,7 @@ const { paths } = config;
 
 const pluginName = 'gulp-react-docgen';
 
-export default (ignoredInterfaces: string[] = []) =>
+export default (tsConfigPath: string, ignoredInterfaces: string[] = []) =>
   through2.obj(function bufferContents(file, enc, cb) {
     if (file.isNull()) {
       cb(null, file);
@@ -25,7 +25,7 @@ export default (ignoredInterfaces: string[] = []) =>
 
     try {
       const infoFilename = file.basename.replace(/\.tsx$/, '.info.json');
-      const contents = getComponentInfo(file.path, ignoredInterfaces);
+      const contents = getComponentInfo(tsConfigPath, file.path, ignoredInterfaces);
 
       // Forcing the base & cwd to be paths.base() to make sure this is cached & restored at the right location
       const infoFile = new Vinyl({

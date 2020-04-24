@@ -26,10 +26,6 @@ import {
   ComponentEventHandler,
 } from '../../types';
 
-export interface HierarchicalTreeSlotClassNames {
-  item: string;
-}
-
 export interface HierarchicalTreeProps extends UIComponentProps, ChildrenComponentProps {
   /** Index of the currently active subtree. */
   activeIndex?: number[] | number;
@@ -67,16 +63,14 @@ export interface HierarchicalTreeState {
   activeIndex: number[] | number;
 }
 
+export const hierarchicalTreeClassName = 'ui-hierarchicaltree';
+
 class HierarchicalTree extends AutoControlledComponent<WithAsProp<HierarchicalTreeProps>, HierarchicalTreeState> {
   static create: ShorthandFactory<HierarchicalTreeProps>;
 
   static displayName = 'HierarchicalTree';
 
-  static deprecated_className = 'ui-hierarchicaltree';
-
-  static slotClassNames: HierarchicalTreeSlotClassNames = {
-    item: `${HierarchicalTree.deprecated_className}__item`,
-  };
+  static deprecated_className = hierarchicalTreeClassName;
 
   static propTypes = {
     ...commonPropTypes.createCommon({
@@ -169,7 +163,6 @@ class HierarchicalTree extends AutoControlledComponent<WithAsProp<HierarchicalTr
     return _.map(items, (item: ShorthandValue<HierarchicalTreeItemProps>, index: number) =>
       HierarchicalTreeItem.create(item, {
         defaultProps: () => ({
-          className: HierarchicalTree.slotClassNames.item,
           index,
           exclusive,
           renderItemTitle,

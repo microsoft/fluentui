@@ -7,15 +7,24 @@
 import * as React from 'react';
 
 // @public (undocumented)
-export function compose<InputProps, InputStylesProps, ParentProps, ParentStylesProps>(InputComponent: React.FunctionComponent<ParentProps> & {
-    fluentComposeConfig?: ComposePreparedOptions;
-    handledProps?: (keyof ParentProps)[];
-}, composeOptions?: ComposeOptions<InputProps, InputStylesProps, ParentStylesProps>): ComposedComponent<InputProps, InputStylesProps, ParentProps, ParentStylesProps>;
+export type ComponentWithAs<E extends React.ElementType, P> = (<EE extends React.ElementType = E>(props: Omit<PropsOfElement<EE>, 'as' | keyof P> & {
+    as?: EE;
+} & P) => JSX.Element) & {
+    displayName?: string;
+    defaultProps?: Partial<P & {
+        as: E;
+    }>;
+    propTypes?: React.WeakValidationMap<P> & {
+        as: React.Requireable<string | ((props: any, context?: any) => any) | (new (props: any, context?: any) => any)>;
+    };
+};
 
 // @public (undocumented)
-export type ComposedComponent<InputProps = {}, InputStylesProps = {}, ParentProps = {}, ParentStylesProps = {}> = React.FunctionComponent<InputProps & ParentProps> & {
-    deprecated_className: string;
-    fluentComposeConfig: ComposePreparedOptions<InputProps, InputStylesProps, ParentProps, ParentStylesProps>;
+export function compose<T extends React.ElementType, InputProps, InputStylesProps, ParentProps, ParentStylesProps>(input: Input<T, InputProps>, inputOptions?: ComposeOptions<InputProps, InputStylesProps, ParentStylesProps>): ComponentWithAs<T, InputProps & ParentProps>;
+
+// @public (undocumented)
+export type ComposedComponent<P = {}> = React.FunctionComponent<P> & {
+    fluentComposeConfig: ComposePreparedOptions;
 };
 
 // @public (undocumented)
@@ -23,18 +32,36 @@ export type ComposeOptions<InputProps = {}, InputStylesProps = {}, ParentStylesP
     className?: string;
     displayName?: string;
     mapPropsToStylesProps?: (props: ParentStylesProps & InputProps) => InputStylesProps;
-    handledProps?: (keyof InputProps)[];
+    handledProps?: (keyof InputProps | 'as')[];
     overrideStyles?: boolean;
 };
 
 // @public (undocumented)
-export type ComposePreparedOptions<InputProps = {}, InputStylesProps = {}, ParentProps = {}, ParentStylesProps = {}> = {
+export type ComposePreparedOptions<Props = {}> = {
     className: string;
+    displayName: string;
     displayNames: string[];
-    mapPropsToStylesPropsChain: ((props: ParentStylesProps & InputProps) => InputStylesProps)[];
-    handledProps: (keyof (ParentProps & InputProps))[];
+    mapPropsToStylesPropsChain: ((props: object) => object)[];
+    render: ComposeRenderFunction;
+    handledProps: (keyof Props)[];
     overrideStyles: boolean;
 };
+
+// @public (undocumented)
+export type ComposeRenderFunction<T extends React.ElementType = 'div', P = {}> = (props: P, ref: React.Ref<T>, composeOptions: ComposePreparedOptions) => React.ReactElement | null;
+
+// @public (undocumented)
+export type Input<T extends React.ElementType = 'div', P = {}> = InputComposeComponent<P> | ComposeRenderFunction<T, P & {
+    as?: React.ElementType;
+}>;
+
+// @public (undocumented)
+export type InputComposeComponent<P = {}> = React.FunctionComponent<P> & {
+    fluentComposeConfig?: ComposePreparedOptions;
+};
+
+// @public (undocumented)
+export type PropsOfElement<E extends keyof JSX.IntrinsicElements | React.JSXElementConstructor<any>> = JSX.LibraryManagedAttributes<E, React.ComponentPropsWithRef<E>>;
 
 
 // (No @packageDocumentation comment for this package)

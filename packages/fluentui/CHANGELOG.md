@@ -24,12 +24,52 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - `offset` for components that use `Popper` (`Popup`, `Tooltip`, `MenuButton`, etc.) can be specified only as a tuple or function @layershifter ([#12530](https://github.com/microsoft/fluentui/pull/12530))
 - Support for deprecated `render` callback was removed @layershifter ([#12454](https://github.com/microsoft/fluentui/pull/12454))
 - renamed `ComponentName.className` to `ComponentName.deprecated_className` for all fluent components @mnajdova ([#12702](https://github.com/microsoft/fluentui/pull/12702))
+- removed `Card.slotClassNames`, dedicated component's classnames should be used @mnajdova ([#12731](https://github.com/microsoft/fluentui/pull/12731))
+- removed `Header.slotClassNames`, `Form.slotClassNames`, dedicated component's classnames should be used @mnajdova ([#12735](https://github.com/microsoft/fluentui/pull/12735))
+- removed `HierarchicalTreeItemSlotClassNames`'s `title` slot, `HierarchicalTreeTitle`'s className should be used @mnajdova ([#12735](https://github.com/microsoft/fluentui/pull/12735))
+- removed `Menu.slotClassNames`, dedicated component's classNames should be used @mnajdova ([#12736](https://github.com/microsoft/fluentui/pull/12736))
+- removed `RadioGroup.slotClassNames` and `Popup.slotClassNames`, dedicated component's classnames should be used @mnajdova ([#12738](https://github.com/microsoft/fluentui/pull/12738))
+- removed `Tooltip.slotClassNames` and `TreeItem.slotClassNames` dedicated component's classnames should be used @mnajdova ([#12741](https://github.com/microsoft/fluentui/pull/12741))
+- Restricted prop sets in the `Alert` component which are passed to styles functions @assuncaocharles ([#12777](https://github.com/microsoft/fluentui/pull/12777))
+- removed `className` (`deprecated_className`) and `slotClassNames` static props from the fluent components, constants for className and slotClassNames should be used instead @mnajdova ([#12765](https://github.com/microsoft/fluentui/pull/12765))
+- changed `createShorthand` signature, to use the optional `shorthandConfig` static on the component @mnajdova ([#12783](https://github.com/microsoft/fluentui/pull/12783))
+- Restricted prop sets in the `Video` component which are passed to styles functions @assuncaocharles ([#12799](https://github.com/microsoft/fluentui/pull/12799))
+- Restricted prop sets in the `SplitButton` component which are passed to styles functions @assuncaocharles ([#12809](https://github.com/microsoft/fluentui/pull/12809))
+- Restricted prop sets in the `TableRow` component which are passed to styles functions @pompomon, @assuncaocharles ([#12797](https://github.com/microsoft/fluentui/pull/12797))
+- Restricted prop sets in the `TextArea` component which are passed to styles functions, @assuncaocharles ([#12857](https://github.com/microsoft/fluentui/pull/12857))
+
+### Fixes
+- Visually align checkbox and label elements in `Checkbox` component @silviuavram ([#12590](https://github.com/microsoft/fluentui/pull/12590))
+- Fix `Ref` to react on props changes when `forwardRef` is used @mnajdova ([#12817](https://github.com/microsoft/fluentui/pull/12817))
+- Fix `AccordionTitle` to be rendered as `div` by default @pompomon ([#12840](https://github.com/microsoft/fluentui/pull/12840))
 
 ### Features
 - Add `body` slot to `Attachment` component @layershifter ([#12674](https://github.com/microsoft/fluentui/pull/12674))
+- Export `componentNameClassName` and `componentNameSlotClassName` const inside `Accordion`*, `Alert`*, `Animation`, `Attachment`*, `Avatar` @mnajdova ([#12706](https://github.com/microsoft/fluentui/pull/12706))
+- Export `componentNameClassName` and `componentNameSlotClassName` const inside `Box`, `Button`*, `Card`* @mnajdova ([#12731](https://github.com/microsoft/fluentui/pull/12731))
+- Export `componentNameClassName` and `componentNameSlotClassName` const inside `Carousel`*, `Chat`*, `Checkbox` @mnajdova ([#12733](https://github.com/microsoft/fluentui/pull/12733))
+- Export `componentNameClassName` and `componentNameSlotClassName` const inside `Dialog`*, `Divider`, `Dropdown`*, `Embed` @mnajdova ([#12734](https://github.com/microsoft/fluentui/pull/12734))
+- Export `componentNameClassName` and `componentNameSlotClassName` const inside `Flex`*, `Form`*, `Grid`, `Header`*, `HierarchicalTree`*, `Image`, `Input` @mnajdova ([#12735](https://github.com/microsoft/fluentui/pull/12735))
+- Export `componentNameClassName` and `componentNameSlotClassName` const inside `ItemLayout`, `Label`*, `Layout`, `List`*, `Loader`, `Menu`* @mnajdova ([#12736](https://github.com/microsoft/fluentui/pull/12736))
+- Export `componentNameClassName` and `componentNameSlotClassName` const inside `MenuButton`, `Popup`*, `Provider`, `RadioGroup`*, `Reaction`*, `Segment`, `Slider`*, `SplitButton`*, `Status`, `Slider`, `Table`* @mnajdova ([#12738](https://github.com/microsoft/fluentui/pull/12738))
+- Export `componentNameClassName` and `componentNameSlotClassName` const inside `Text`, `TextArea`, `Toolbar`*, `Tooltip`*, `Tree`*, `Video` @mnajdova ([#12741](https://github.com/microsoft/fluentui/pull/12741))
+- Add `onClick` prop and focusable behaviors to `Card` component @pompomon ([#12688](https://github.com/microsoft/fluentui/pull/12688))
+- Add `disabled` prop and styles to `Card` component @pompomon ([#12743](https://github.com/microsoft/fluentui/pull/12743))
+- Adding multiselection for the `Tree` @kolaps33, @assuncaocharles ([#12362](https://github.com/microsoft/fluentui/pull/12362))
+- Add `background` and `border` colors to `Card` in Teams theme @pompomon ([#12790](https://github.com/microsoft/fluentui/pull/12790))
+- Added `FluidIcon` @TanelVari ([#12803](https://github.com/microsoft/fluentui/pull/12803))
+- Add compose options to `useStyles` @layershifter @mnajdova ([#12745](https://github.com/microsoft/fluentui/pull/12745))
+- Converted Box, Button* and Attachment* components to use compose @layershifter @mnajdova ([#12745](https://github.com/microsoft/fluentui/pull/12745))
+- Respect `childBehaviors` for slots in `useAccessibility` hook @pompomon ([#12835](https://github.com/microsoft/fluentui/pull/12835))
 
 ### Performance
 - Replace `fela-plugin-prexifer` with `stylis` @layershifter ([#12289](https://github.com/microsoft/fluentui/pull/12289))
+
+### Fixes
+- Replace `escape` with `encodeURIComponent` in the svg urls in Teams theme @mnajdova ([#12742](https://github.com/microsoft/fluentui/pull/12742))
+- Prevent value clear on same item selection in `Dropdown` @silviuavram ([#12784](https://github.com/microsoft/fluentui/pull/12784))
+- Make the `clearIndicator` tabbable in a non-search `Dropdown` @silviuavram ([#12684](https://github.com/microsoft/fluentui/pull/12684))
+- Check for `getItemPositionText` in `Carousel` before rendering the pagination text @silviuavram ([#12791](https://github.com/microsoft/fluentui/pull/12791))
 
 <!--------------------------------[ v0.48.0 ]------------------------------- -->
 ## [v0.48.0](https://github.com/OfficeDev/office-ui-fabric-react/tree/fluentui_v0.48.0) (2020-04-15)

@@ -17,7 +17,7 @@
     "@fluentui/styles": "^0.48.0",
     "@popperjs/core": "^2.1.1",
     "classnames": "^2.2.6",
-    "downshift": "3.2.14",
+    "downshift": "5.0.5",
     "fela": "^10.6.1",
     "fela-plugin-embedded": "^10.6.1",
     "fela-plugin-fallback-value": "^10.6.1",
@@ -62,10 +62,8 @@
   "scripts": {
     "build": "gulp bundle:package",
     "clean": "gulp bundle:package:clean",
-    "lint": "yarn lint:eslint && yarn lint:old",
-    "lint:eslint": "eslint --ext .js,.ts,.tsx .",
-    "lint:fix": "yarn lint:eslint --fix && yarn lint:old --fix",
-    "lint:old": "tslint -t stylish -p .",
+    "lint": "eslint --ext .js,.ts,.tsx .",
+    "lint:fix": "yarn lint --fix",
     "test": "gulp test",
     "test:watch": "gulp test:watch"
   },

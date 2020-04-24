@@ -32,8 +32,10 @@ export interface SegmentProps
   inverted?: boolean;
 }
 
+export const segmentClassName = 'ui-segment';
+
 class Segment extends UIComponent<WithAsProp<SegmentProps>, any> {
-  static deprecated_className = 'ui-segment';
+  static deprecated_className = segmentClassName;
 
   static displayName = 'Segment';
 

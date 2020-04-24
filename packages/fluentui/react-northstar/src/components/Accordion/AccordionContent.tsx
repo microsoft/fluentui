@@ -13,6 +13,7 @@ import {
   commonPropTypes,
   rtlTextContainer,
   ShorthandFactory,
+  ShorthandConfig,
 } from '../../utils';
 import { WithAsProp, ComponentEventHandler, withSafeTypeForAs } from '../../types';
 
@@ -32,12 +33,17 @@ export interface AccordionContentProps extends UIComponentProps, ChildrenCompone
   onClick?: ComponentEventHandler<AccordionContentProps>;
 }
 
+export const accordionContentClassName = 'ui-accordion__content';
+
 class AccordionContent extends UIComponent<WithAsProp<AccordionContentProps>, any> {
   static displayName = 'AccordionContent';
 
   static create: ShorthandFactory<AccordionContentProps>;
+  static shorthandConfig: ShorthandConfig<AccordionContentProps> = {
+    mappedProp: 'content',
+  };
 
-  static deprecated_className = 'ui-accordion__content';
+  static deprecated_className = accordionContentClassName;
 
   static propTypes = {
     ...commonPropTypes.createCommon(),

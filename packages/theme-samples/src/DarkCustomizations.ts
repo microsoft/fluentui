@@ -53,6 +53,7 @@ const DarkTheme: ITheme = createTheme({
     menuItemText: DarkDefaultPalette.neutralPrimary,
     menuItemTextHovered: DarkDefaultPalette.neutralDark,
   },
+  isInverted: true,
 });
 
 export const PeoplePickerItemStyles = (

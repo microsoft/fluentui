@@ -1,6 +1,26 @@
 # Change Log - @uifabric/theme-samples
 
-This log was last generated on Wed, 25 Mar 2020 12:30:04 GMT and should not be manually modified.
+This log was last generated on Fri, 24 Apr 2020 12:39:25 GMT and should not be manually modified.
+
+<!-- Start content -->
+
+## [7.0.60](https://github.com/microsoft/fluentui/tree/@uifabric/theme-samples_v7.0.60)
+
+Fri, 24 Apr 2020 12:39:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/theme-samples_v7.0.52..@uifabric/theme-samples_v7.0.60)
+
+### Patches
+
+- set isInverted for dark sample theme ([PR #12819](https://github.com/microsoft/fluentui/pull/12819) by chrismo@microsoft.com)
+
+## [7.0.52](https://github.com/microsoft/fluentui/tree/@uifabric/theme-samples_v7.0.52)
+
+Thu, 16 Apr 2020 04:01:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/theme-samples_v7.0.44..@uifabric/theme-samples_v7.0.52)
+
+### Patches
+
+- Readme: Fabric=>Fluent wording updates ([PR #12508](https://github.com/microsoft/fluentui/pull/12508) by elcraig@microsoft.com)
 
 ## 7.0.44
 Wed, 25 Mar 2020 12:30:04 GMT
@@ -108,4 +128,3 @@ Thu, 18 Oct 2018 20:22:36 GMT
 
 - Create new package for centralizing theme definitions.
 - Add index file to fix release build.
-

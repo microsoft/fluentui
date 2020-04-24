@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "merge: null values are now preserved.",
-  "packageName": "@uifabric/utilities",
-  "email": "dzearing@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-04-10T15:53:35.887Z"
-}

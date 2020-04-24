@@ -34,12 +34,17 @@ export interface CarouselItemProps extends UIComponentProps, ChildrenComponentPr
   navigation?: boolean;
 }
 
+export const carouselItemClassName = 'ui-carousel__item';
+export const carouselItemSlotClassNames: CarouselItemSlotClassNames = {
+  itemPositionText: `${carouselItemClassName}__itemPositionText`,
+};
+
 class CarouselItem extends UIComponent<WithAsProp<CarouselItemProps>> {
   static create: ShorthandFactory<CarouselItemProps>;
 
   static displayName = 'CarouselItem';
 
-  static deprecated_className = 'ui-carousel__item';
+  static deprecated_className = carouselItemClassName;
 
   static propTypes = {
     ...commonPropTypes.createCommon(),
@@ -50,10 +55,6 @@ class CarouselItem extends UIComponent<WithAsProp<CarouselItemProps>> {
 
   static defaultProps = {
     accessibility: carouselItemBehavior,
-  };
-
-  static slotClassNames: CarouselItemSlotClassNames = {
-    itemPositionText: `${CarouselItem.deprecated_className}__itemPositionText`,
   };
 
   actionHandlers = {
@@ -75,7 +76,7 @@ class CarouselItem extends UIComponent<WithAsProp<CarouselItemProps>> {
         {...applyAccessibilityKeyHandlers(accessibility.keyHandlers.root, unhandledProps)}
       >
         {childrenExist(children) ? children : content}
-        <div className={CarouselItem.slotClassNames.itemPositionText} style={screenReaderContainerStyles}>
+        <div className={carouselItemSlotClassNames.itemPositionText} style={screenReaderContainerStyles}>
           {itemPositionText}
         </div>
       </ElementType>

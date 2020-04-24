@@ -36,12 +36,16 @@ export interface ReactionProps
   icon?: ShorthandValue<BoxProps>;
 }
 
+export const reactionClassName = 'ui-reaction';
+export const reactionSlotClassNames: ReactionSlotClassNames = {
+  icon: `${reactionClassName}__icon`,
+  content: `${reactionClassName}__content`,
+};
+
 class Reaction extends UIComponent<WithAsProp<ReactionProps>> {
   static create: ShorthandFactory<ReactionProps>;
 
-  static deprecated_className = 'ui-reaction';
-
-  static slotClassNames: ReactionSlotClassNames;
+  static deprecated_className = reactionClassName;
 
   static displayName = 'Reaction';
 
@@ -74,13 +78,13 @@ class Reaction extends UIComponent<WithAsProp<ReactionProps>> {
           <>
             {Box.create(icon, {
               defaultProps: () => ({
-                className: Reaction.slotClassNames.icon,
+                className: reactionSlotClassNames.icon,
                 styles: styles.icon,
               }),
             })}
             {Box.create(content, {
               defaultProps: () => ({
-                className: Reaction.slotClassNames.content,
+                className: reactionSlotClassNames.content,
                 styles: styles.content,
               }),
             })}
@@ -92,10 +96,6 @@ class Reaction extends UIComponent<WithAsProp<ReactionProps>> {
 }
 
 Reaction.create = createShorthandFactory({ Component: Reaction, mappedProp: 'content' });
-Reaction.slotClassNames = {
-  icon: `${Reaction.deprecated_className}__icon`,
-  content: `${Reaction.deprecated_className}__content`,
-};
 
 /**
  * A Reaction indicates user's emotion or perception.

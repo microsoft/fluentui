@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { Toolbar, Button, ToolbarMenu, Ref } from '@fluentui/react-northstar';
+import { Toolbar, Button, toolbarMenuClassName, Ref } from '@fluentui/react-northstar';
 
 export const selectors = {
   beforeToolbarId: 'before',
   afterToolbarId: 'after',
   triggerButtonId: 'trigger',
   menuItemButtonId: 'menu-button',
-  toolbarMenu: ToolbarMenu.deprecated_className,
+  toolbarMenu: toolbarMenuClassName,
 };
 
 const ToolbarExampleMenuShorthand = () => {

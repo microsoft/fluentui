@@ -89,10 +89,12 @@ export interface ToolbarProps
   getOverflowItems?: (startIndex: number) => ShorthandCollection<ToolbarMenuItemProps, ToolbarItemShorthandKinds>; // FIXME: use correct kind
 }
 
+export const toolbarClassName = 'ui-toolbar';
+
 class Toolbar extends UIComponent<WithAsProp<ToolbarProps>> {
   static create: ShorthandFactory<ToolbarProps>;
 
-  static deprecated_className = 'ui-toolbar';
+  static deprecated_className = toolbarClassName;
 
   static displayName = 'Toolbar';
 

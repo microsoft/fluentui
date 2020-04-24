@@ -46,23 +46,40 @@ const TestProvider: React.FC<{ theme: ThemeInput }> = props => {
 type BaseComponentProps = { color?: string } & React.HTMLAttributes<HTMLButtonElement>;
 type BaseComponentStylesProps = { color: string | undefined; open: boolean };
 
-const BaseComponent: React.FC<BaseComponentProps> = props => {
-  const { color } = props;
+const BaseComponent: React.FC<BaseComponentProps> = compose<
+  'button',
+  BaseComponentProps,
+  BaseComponentStylesProps,
+  {},
+  {}
+>(
+  (props, ref, composeOptions) => {
+    const { color } = props;
 
-  const [open, setOpen] = React.useState(false);
-  const { classes } = useStyles<BaseComponentStylesProps>('BaseComponent', {
+    const [open, setOpen] = React.useState(false);
+    const { classes } = useStyles<BaseComponentStylesProps>(composeOptions.displayName, {
+      className: composeOptions.className,
+      composeOptions,
+      mapPropsToStyles: () => ({ color, open }),
+      unstable_props: props,
+    });
+    const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
+
+    // @ts-ignore
+    return <button className={classes.root} onClick={() => setOpen(!open)} {...unhandledProps} ref={ref} />;
+  },
+  {
     className: 'ui-base',
-    mapPropsToStyles: () => ({ color, open }),
-  });
-  const unhandledProps = useUnhandledProps(['className', 'color'], props);
-
-  return <button className={classes.root} onClick={() => setOpen(!open)} {...unhandledProps} />;
-};
+    displayName: 'BaseComponent',
+    handledProps: ['className', 'color'],
+  },
+);
 
 type ComposedComponentProps = { hidden?: boolean; visible?: boolean };
 type ComposedComponentStylesProps = { visible: boolean | undefined };
 
 const ComposedComponent = compose<
+  'button',
   ComposedComponentProps,
   ComposedComponentStylesProps,
   BaseComponentProps,
@@ -75,6 +92,7 @@ const ComposedComponent = compose<
 });
 
 const MultipleComposedComponent = compose<
+  'button',
   ComposedComponentProps,
   ComposedComponentStylesProps,
   BaseComponentProps & ComposedComponentProps,
@@ -90,10 +108,6 @@ describe('useCompose', () => {
 
     expect(wrapper.find('button').prop('className')).toContain('ui-base');
     expect(wrapper.find('button').prop('className')).toContain('color-red');
-  });
-
-  it('"className" is added as statics on composed component', () => {
-    expect(ComposedComponent).toHaveProperty('deprecated_className', 'ui-composed');
   });
 
   it('applies props on composed component', () => {

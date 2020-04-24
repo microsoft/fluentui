@@ -2,6 +2,97 @@
   "name": "@fluentui/react-focus",
   "entries": [
     {
+      "date": "Thu, 23 Apr 2020 12:32:40 GMT",
+      "tag": "@fluentui/react-focus_v7.5.0",
+      "version": "7.5.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "FocusZone: Adding preventDefaultWhenHandled to v7 version.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "2859bacd22e5a42dd4ba9128c4f61b792234c8f9",
+            "package": "@fluentui/react-focus"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "FocusZone: Updating comment for preventDefaultWhenHandled prop.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "a7de477cfecd904300a45c78cfad3f3a456de035",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Apr 2020 12:37:31 GMT",
+      "tag": "@fluentui/react-focus_v7.4.0",
+      "version": "7.4.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "cbf3c8eaa552f7c60485968f18d5cdf373844492",
+            "package": "@fluentui/react-focus"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "FocusZone: Bringing shouldFocusOnMount prop from v0 to v7.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "cbf3c8eaa552f7c60485968f18d5cdf373844492",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Apr 2020 05:06:13 GMT",
+      "tag": "@fluentui/react-focus_v7.3.1",
+      "version": "7.3.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "FocusZone: Replacing use of 'on' helper with native eventing.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "8a155ad45348707cd27bd524926485933ae3c377",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Apr 2020 04:01:45 GMT",
+      "tag": "@fluentui/react-focus_v7.3.0",
+      "version": "7.3.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "FocusZone: Adding focusLast imperative method to v7.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "030cf5bdc02f32cdc4b0549836d0c17aa3ee3772",
+            "package": "@fluentui/react-focus"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "FocusZone: Updating comment of allowFocusRoot to be more descriptive of its functionality.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "1cd43457876168890e024bc5222c8e0a39becb37",
+            "package": "@fluentui/react-focus"
+          }
+        ],
+        "none": [
+          {
+            "comment": "sync package version",
+            "author": "xgao@microsoft.com",
+            "commit": "6f39958352207acb3029458503db0969a4359806",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 09 Apr 2020 12:24:31 GMT",
       "tag": "@fluentui/react-focus_v7.1.13",
       "version": "7.1.13",
