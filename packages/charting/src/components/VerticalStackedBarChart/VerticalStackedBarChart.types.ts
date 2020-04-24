@@ -1,7 +1,7 @@
 import { ITheme, IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { IVerticalStackedChartProps } from '@uifabric/charting';
 import { IOverflowSetProps } from 'office-ui-fabric-react/lib/OverflowSet';
-import { IFocusZoneProps } from '@fluentui/react-focus';
+import { IFocusZoneProps } from 'office-ui-fabric-react/lib/FocusZone';
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 
 export interface IVerticalStackedBarChartProps {
