@@ -7,6 +7,7 @@ import { Callout } from './Callout';
 import { ICalloutProps } from './Callout.types';
 import { CalloutContent } from './CalloutContent';
 import { DirectionalHint } from '../../common/DirectionalHint';
+import { KeyCodes } from '../../Utilities';
 
 class CalloutContentWrapper extends React.Component<ICalloutProps, {}> {
   public render(): JSX.Element {
@@ -140,5 +141,73 @@ describe('Callout', () => {
     jest.runAllTimers();
     focusTarget.focus();
     expect(gotEvent).toEqual(true);
+  });
+
+  it('It will correctly return focus to element that spawned it', () => {
+    jest.useFakeTimers();
+    let visible = true;
+    let threwException = false;
+    let previousFocusElement;
+    let isFocused;
+    let restoreCalled = false;
+    const onRestoreFocus = (options: { originalElement: any; containsFocus: any }) => {
+      previousFocusElement = options.originalElement;
+      isFocused = options.containsFocus;
+      restoreCalled = true;
+    };
+
+    const onDismiss = () => {
+      visible = false;
+    };
+
+    // In order to have eventlisteners that have been added to the window to be called the JSX needs
+    // to be rendered into the real dom rather than the testutil simulated dom.
+    const root = document.createElement('div');
+    document.body.appendChild(root);
+    try {
+      ReactDOM.render<HTMLDivElement>(
+        <div>
+          <button id="focustarget"> button </button>
+          <button id="target" style={{ top: '10px', left: '10px', height: '0', width: '0px' }}>
+            {' '}
+            target{' '}
+          </button>
+          {visible && (
+            <Callout
+              onDismiss={onDismiss}
+              target="#target"
+              directionalHint={DirectionalHint.topLeftEdge}
+              onRestoreFocus={onRestoreFocus}
+            >
+              {/* must be a button to be focusable for the test*/}
+              <button id={'inner'}>Content</button>
+            </Callout>
+          )}
+        </div>,
+        root,
+      );
+    } catch (e) {
+      threwException = true;
+    }
+    expect(threwException).toEqual(false);
+    const originalElement = document.querySelector('#focustarget') as HTMLElement;
+    const focusTarget = document.querySelector('#inner') as HTMLDivElement;
+
+    jest.runAllTimers();
+
+    // Make sure that focus is in the callout
+    focusTarget.focus();
+
+    // Unmounting everything is the same as dismissing the Callout. As
+    // the tree is unmounted, popup will get unmounted first and the
+    // onRestoreFocus method will get called
+    ReactDOM.unmountComponentAtNode(root);
+
+    expect(restoreCalled).toEqual(true);
+    expect(isFocused).toEqual(true);
+
+    // Just to make sure that both elements are not undefined
+    expect(previousFocusElement).not.toBeFalsy();
+    expect(previousFocusElement).toEqual(originalElement);
   });
 });
