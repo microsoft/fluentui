@@ -228,28 +228,31 @@ module.exports = async function getPerfRegressions() {
   /** @type {Scenarios} */
   const scenarios = {};
   const scenarioSettings = {};
+  const testTypes = ['mount', 'render'];
+
   scenarioList.forEach(scenarioName => {
     if (!scenariosAvailable.includes(scenarioName)) {
       throw new Error(`Invalid scenario: ${scenarioName}.`);
     }
     const iterations = iterationsArg || scenarioIterations[scenarioName] || iterationsDefault;
-    // These lines can be used to check for consistency.
-    // Array.from({ length: 20 }, (entry, index) => {
-    scenarios[`${scenarioName}-mount`] = {
-      // scenarios[scenarioName + index] = {
-      baseline: `${urlForDeploy}?scenario=${scenarioName}&iterations=${iterations}`,
-      scenario: `${urlForDeploy}?scenario=${scenarioName}&iterations=${iterations}`,
-    };
+    testTypes.forEach(testType => {
+      const scenarioKey = `${scenarioName}-${testType}`;
+      const testUrlParams = `?scenario=${scenarioName}&iterations=${iterations}${
+        testType === 'render' ? '&rerender=1' : ''
+      }`;
 
-    scenarios[`${scenarioName}-render`] = {
-      // scenarios[scenarioName + index] = {
-      baseline: `${urlForDeploy}?scenario=${scenarioName}&iterations=${iterations}&rerender=1`,
-      scenario: `${urlForDeploy}?scenario=${scenarioName}&iterations=${iterations}&rerender=1`,
-    };
+      // These lines can be used to check for consistency.
+      // Array.from({ length: 20 }, (entry, index) => {
+      scenarios[scenarioKey] = {
+        // scenarios[scenarioName + index] = {
+        baseline: `${urlForDeploy}${testUrlParams}`, // TODO: need to fix to use master
+        scenario: `${urlForDeploy}${testUrlParams}`,
+      };
 
-    scenarioSettings[scenarioName] = {
-      iterations,
-    };
+      scenarioSettings[scenarioKey] = {
+        iterations,
+      };
+    });
   });
   // });
 
@@ -270,7 +273,15 @@ module.exports = async function getPerfRegressions() {
   }
 
   /** @type {ScenarioConfig} */
-  const scenarioConfig = { outDir, tempDir, pageWaitForSelector: '#render-done' };
+  const scenarioConfig = {
+    outDir,
+    tempDir,
+    pageActions: async (page, options) => {
+      await page.goto(options.url);
+      await page.waitForSelector('#render-done');
+    },
+  };
+
   /** @type {CookResults} */
   const scenarioResults = await flamegrill.cook(scenarios, scenarioConfig);
 

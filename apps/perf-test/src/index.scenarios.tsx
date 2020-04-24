@@ -33,15 +33,16 @@ if (checkRerender) {
       }
     }, [renderCount]);
 
-    if (renderCount >= iterations) {
+    if (renderCount < iterations) {
+      return <PerfTestScenario />;
+    } else {
       return (
-        <>
+        <div>
           <PerfTestScenario />
-          <div id={renderFinishedMarkerId} />
-        </>
+          <div id="render-done" />
+        </div>
       );
     }
-    return <PerfTestScenario />;
   };
 
   ReactDOM.render(<PerfTestScenarioWrapper />, div);
