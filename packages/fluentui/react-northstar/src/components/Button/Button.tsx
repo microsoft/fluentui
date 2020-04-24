@@ -6,6 +6,7 @@ import {
   useAccessibility,
   useStyles,
   useTelemetry,
+  useSlotProps,
   useUnhandledProps,
 } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
@@ -185,6 +186,8 @@ const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
       unstable_props: props,
     });
 
+    const getSlotProps = useSlotProps(composeOptions.slotProps, props);
+
     const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
     const ElementType = getElementType(props);
 
@@ -194,6 +197,7 @@ const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
         defaultProps: () =>
           getA11yProps('icon', {
             styles: resolvedStyles.icon,
+            ...getSlotProps('icon'),
           }),
       });
     };
@@ -203,8 +207,8 @@ const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
       return createShorthand(composeOptions.slots.loader, loader || {}, {
         defaultProps: () =>
           getA11yProps('loader', {
-            role: undefined,
             styles: resolvedStyles.loader,
+            ...getSlotProps('loader'),
           }),
       });
     };
@@ -212,7 +216,7 @@ const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
     const renderContent = () => {
       // @ts-ignore TODO: fix me
       return createShorthand(composeOptions.slots.content, content, {
-        defaultProps: () => getA11yProps('content', { as: 'span', size }),
+        defaultProps: () => getA11yProps('content', getSlotProps('content')),
       });
     };
 
@@ -266,6 +270,17 @@ const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
       content: ButtonContent,
       icon: Box,
       loader: Loader,
+    },
+
+    // TODO: merge these
+    slotProps: {
+      content: props => ({
+        size: props.size,
+        as: 'span',
+      }),
+      loader: () => ({
+        role: undefined,
+      }),
     },
 
     handledProps: [
