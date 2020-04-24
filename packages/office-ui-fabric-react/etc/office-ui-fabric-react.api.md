@@ -4295,6 +4295,7 @@ export interface IDragDropEvents {
     onDragEnd?: (item?: any, event?: DragEvent) => void;
     onDragEnter?: (item?: any, event?: DragEvent) => string;
     onDragLeave?: (item?: any, event?: DragEvent) => void;
+    onDragOver?: (item?: any, event?: DragEvent) => void;
     onDragStart?: (item?: any, itemIndex?: number, selectedItems?: any[], event?: MouseEvent) => void;
     onDrop?: (item?: any, event?: DragEvent) => void;
 }
@@ -4832,7 +4833,6 @@ export interface IGroupedListSectionProps extends React.ClassAttributes<GroupedL
     componentRef?: () => void;
     dragDropEvents?: IDragDropEvents;
     dragDropHelper?: IDragDropHelper;
-    dragDropOptions?: IDragDropOptions;
     eventsToRegister?: {
         eventName: string;
         callback: (context: IDragDropContext, event?: any) => void;
