@@ -71,7 +71,7 @@ export type ComposeOptions<InputProps = {}, InputStylesProps = {}, ParentStylesP
   handledProps?: (keyof InputProps | 'as')[];
   overrideStyles?: boolean;
 
-  slots?: Record<string, React.FunctionComponent | React.Component | ComponentWithAs>;
+  slots?: Record<string, React.ElementType>;
   slotProps?: Record<string, (props: Extendable<InputProps>) => object>;
 };
 
@@ -86,6 +86,6 @@ export type ComposePreparedOptions<Props = {}> = {
   handledProps: (keyof Props)[];
   overrideStyles: boolean;
 
-  slots: Record<string, React.FunctionComponent | React.Component | ComponentWithAs>;
+  slots: Record<string, React.ElementType>;
   slotPropsChain: Record<string, (props: Extendable<Props>) => object>[];
 };
