@@ -1,0 +1,9 @@
+{
+  "type": "minor",
+  "comment": "FocusZone: Bringing shouldResetActiveElementWhenTabFromZone to v7.",
+  "packageName": "@fluentui/react-focus",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "commit": "fc5f95c6d1dd6fb501edf9ad9eb7863c45074f14",
+  "dependentChangeType": "patch",
+  "date": "2020-04-07T20:12:12.537Z"
+}

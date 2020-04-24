@@ -649,6 +649,8 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
             this._processingTabKey = false;
             if (focusChanged) {
               break;
+            } else if (this.props.shouldResetActiveElementWhenTabFromZone) {
+              this._activeElement = null;
             }
           }
           return;
