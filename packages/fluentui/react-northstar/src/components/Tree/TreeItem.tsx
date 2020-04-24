@@ -169,6 +169,11 @@ const TreeItem: React.FC<WithAsProp<TreeItemProps>> & FluentComponentStaticProps
 
         handleSiblingsExpand(e);
       },
+      performSelection: e => {
+        e.preventDefault();
+        e.stopPropagation();
+        handleSelection(e);
+      },
     },
     debugName: TreeItem.displayName,
     mapPropsToBehavior: () => ({
@@ -191,6 +196,11 @@ const TreeItem: React.FC<WithAsProp<TreeItemProps>> & FluentComponentStaticProps
     mapPropsToInlineStyles: () => ({ className, design, styles, variables }),
     rtl: context.rtl,
   });
+
+  const handleSelection = e => {
+    onTitleClick(e, props, true);
+    _.invoke(props, 'onTitleClick', e, props);
+  };
 
   const handleTitleClick = e => {
     onTitleClick(e, props);
@@ -221,6 +231,7 @@ const TreeItem: React.FC<WithAsProp<TreeItemProps>> & FluentComponentStaticProps
     <ElementType
       {...getA11Props('root', {
         className: classes.root,
+        selected,
         ...rtlTextContainer.getAttributes({ forElements: [children] }),
         ...unhandledProps,
       })}
