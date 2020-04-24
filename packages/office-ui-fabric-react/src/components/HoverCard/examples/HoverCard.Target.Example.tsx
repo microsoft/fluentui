@@ -81,9 +81,11 @@ const onRenderExpandedCard = (item: IExampleItem): JSX.Element => {
   );
 };
 const onRenderItemColumn = (item: IExampleItem, index: number, column: IColumn): JSX.Element | React.ReactText => {
+  const [contentRendered, { toggle: toggleContentRendered }] = useBoolean(false);
+  const targetElementRef: React.RefObject<HTMLDivElement> = React.useRef<HTMLDivElement>(null);
   const expandingCardProps: IExpandingCardProps = {
-    onRenderCompactCard: onRenderCompactCard,
-    onRenderExpandedCard: onRenderExpandedCard,
+    onRenderCompactCard,
+    onRenderExpandedCard,
     renderData: item,
     directionalHint: DirectionalHint.rightTopEdge,
     gapSpace: 16,
@@ -94,7 +96,20 @@ const onRenderItemColumn = (item: IExampleItem, index: number, column: IColumn):
   if (column.key === 'key') {
     return (
       <div className={classNames.item}>
-        <HoverCardField content={item.key} expandingCardProps={expandingCardProps} />
+        <div ref={targetElementRef} data-is-focusable>
+          {item.key}
+          {contentRendered && (
+            <HoverCard
+              expandingCardProps={expandingCardProps}
+              target={targetElementRef.current}
+              cardDismissDelay={300}
+              onCardVisible={log('onCardVisible')}
+              onCardHide={log('onCardHide')}
+              trapFocus
+              openHotKey={KeyCodes.enter}
+            />
+          )}
+        </div>
       </div>
     );
   }

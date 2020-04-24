@@ -15,7 +15,6 @@ const itemClass = mergeStyles({
     },
   },
 });
-
 const items: IExampleItem[] = createListItems(10);
 const buildColumn = (): IColumn[] => {
   return buildColumns(items).filter(
@@ -43,6 +42,7 @@ const onRenderItemColumn = (item: IExampleItem, index: number, column: IColumn):
   }
   return item[column.key as keyof IExampleItem];
 };
+
 export const HoverCardPlainCardExample: React.FunctionComponent = () => {
   return (
     <Fabric>
