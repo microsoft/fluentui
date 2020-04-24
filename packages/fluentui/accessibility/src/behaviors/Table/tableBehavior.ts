@@ -19,6 +19,8 @@ const tableBehavior: Accessibility<TableBehaviorProps> = props => ({
   },
 });
 
-export type TableBehaviorProps = never;
+export type TableBehaviorProps = {
+  header?: boolean;
+};
 
 export default tableBehavior;
