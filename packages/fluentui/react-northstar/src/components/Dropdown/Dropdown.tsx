@@ -19,7 +19,7 @@ import { ComponentSlotStylesInput, ComponentVariablesInput } from '@fluentui/sty
 import Downshift, {
   DownshiftState,
   StateChangeOptions,
-  A11yStatusMessageOptions as DownshiftA11yStatusMessageOptions,
+  A11yStatusMessageOptions,
   GetMenuPropsOptions,
   GetPropsCommonOptions,
   GetInputPropsOptions,
@@ -49,6 +49,11 @@ import {
   PopperShorthandProps,
   getPopperPropsFromShorthand,
 } from '../../utils/positioner';
+
+// ToDo: remove this (and "as any" from Downshift call) and use the original one from Downshift once update 5.2.0 lands.
+export interface DownshiftA11yStatusMessageOptions<Item> extends A11yStatusMessageOptions<Item> {
+  previousResultCount: number;
+}
 
 export interface DropdownSlotClassNames {
   clearIndicator: string;
@@ -453,7 +458,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
           itemToString={itemToString}
           // downshift does not work with arrays as selectedItem.
           selectedItem={multiple || !value.length ? null : value[0]}
-          getA11yStatusMessage={getA11yStatusMessage}
+          getA11yStatusMessage={getA11yStatusMessage as any} // ToDo: remove this once Dowshift 5.2.0 lands
           highlightedIndex={highlightedIndex}
           onStateChange={this.handleStateChange}
           labelId={this.props['aria-labelledby']}

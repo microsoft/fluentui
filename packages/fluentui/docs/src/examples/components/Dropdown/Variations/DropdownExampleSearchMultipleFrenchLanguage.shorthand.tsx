@@ -29,9 +29,7 @@ const DropdownExampleSearchMultipleFrenchLanguage = () => (
   />
 );
 
-// ToDo: remove default parameter from previousResultCount when issue is fixed
-// https://github.com/downshift-js/downshift/issues/999
-const getA11yStatusMessage = ({ isOpen, itemToString, previousResultCount = -1, resultCount, selectedItem }) => {
+const getA11yStatusMessage = ({ isOpen, itemToString, previousResultCount, resultCount, selectedItem }) => {
   if (!isOpen) {
     return selectedItem ? itemToString(selectedItem) : '';
   }
