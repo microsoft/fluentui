@@ -418,9 +418,11 @@ export const getStyles = memoizeFunction(
       rootDisabled: getDisabledStyles(theme),
 
       rootError: {
-        borderColor: root.erroredColor,
         selectors: {
-          ':hover': {
+          ':after': {
+            borderColor: root.erroredColor,
+          },
+          ':hover:after': {
             borderColor: semanticColors.inputBorderHovered,
           },
         },

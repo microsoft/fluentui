@@ -63,9 +63,20 @@ export interface IDonutChartProps {
   legendsOverflowText?: string;
 
   /**
+   * props for inside donut value
+   */
+  valueInsideDonut?: string | number;
+
+  /**
    * focus zone props in hover card for legends
    */
   focusZonePropsForLegendsInHoverCard?: IFocusZoneProps;
+
+  /**
+   * decides wether to show/hide legends
+   * @defaultvalue false
+   */
+  hideLegend?: boolean;
 }
 
 export interface IDonutChartStyleProps {

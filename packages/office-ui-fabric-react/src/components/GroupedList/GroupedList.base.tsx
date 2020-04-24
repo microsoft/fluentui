@@ -293,8 +293,10 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
   };
 
   private _onToggleSelectGroup = (group: IGroup): void => {
-    if (group) {
-      this.props.selection!.toggleRangeSelected(group.startIndex, group.count);
+    const { selection, selectionMode } = this.props;
+
+    if (group && selection && selectionMode === SelectionMode.multiple) {
+      selection.toggleRangeSelected(group.startIndex, group.count);
     }
   };
 

@@ -81,6 +81,8 @@ export type TextStylesProps = Pick<
   | 'size'
 >;
 
+export const textClassName = 'ui-text';
+
 const Text: React.FC<WithAsProp<TextProps>> & FluentComponentStaticProps<TextProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(Text.displayName, context.telemetry);
@@ -113,7 +115,7 @@ const Text: React.FC<WithAsProp<TextProps>> & FluentComponentStaticProps<TextPro
     rtl: context.rtl,
   });
   const { classes } = useStyles<TextStylesProps>(Text.displayName, {
-    className: Text.className,
+    className: textClassName,
     mapPropsToStyles: () => ({
       atMention,
       color,
@@ -157,7 +159,6 @@ const Text: React.FC<WithAsProp<TextProps>> & FluentComponentStaticProps<TextPro
   return element;
 };
 
-Text.className = 'ui-text';
 Text.displayName = 'Text';
 
 Text.defaultProps = {

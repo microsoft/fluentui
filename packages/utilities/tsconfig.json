@@ -19,5 +19,5 @@
     "typeRoots": ["../../node_modules/@types", "../../typings"],
     "types": ["jest", "custom-global", "node"]
   },
-  "include": ["src", "../../typings"]
+  "include": ["src"]
 }

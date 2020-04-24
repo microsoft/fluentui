@@ -9,7 +9,7 @@ module.exports = {
   rules: {
     // False positive on arg types:
     // https://github.com/typescript-eslint/typescript-eslint/issues/46
-    '@typescript-eslint/no-unused-vars': ['error', { args: 'none' }],
+    '@typescript-eslint/no-unused-vars': ['error', { args: 'none', ignoreRestSiblings: true }],
 
     'import/no-unresolved': 'off',
     'react/jsx-filename-extension': ['error', { extensions: ['.js', '.tsx'] }],

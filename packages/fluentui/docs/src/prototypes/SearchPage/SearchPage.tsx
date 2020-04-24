@@ -1,7 +1,8 @@
 import * as faker from 'faker';
 import * as _ from 'lodash';
 import * as React from 'react';
-import { Avatar, Header, Input, List, Segment } from '@fluentui/react-northstar';
+import { Avatar, Header, Input, List, Segment, Loader } from '@fluentui/react-northstar';
+import { SearchIcon } from '@fluentui/react-icons-northstar';
 
 // ----------------------------------------
 // Types
@@ -83,7 +84,7 @@ class SearchPage extends React.Component<SearchPageState, any> {
             ref="input"
             value={query}
             placeholder={`Try "${_.sample(DATA_RECORDS).firstName}"`}
-            icon={loading ? 'spinner' : 'search'}
+            icon={loading ? <Loader size="small" /> : <SearchIcon />}
             onChange={this.handleSearchChange}
           />
         </p>

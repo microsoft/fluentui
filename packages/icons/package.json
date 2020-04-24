@@ -1,7 +1,7 @@
 {
   "name": "@uifabric/icons",
-  "version": "7.3.23",
-  "description": "Office UI Fabric icon set.",
+  "version": "7.3.31",
+  "description": "Fluent UI React icon set.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "sideEffects": [
@@ -25,11 +25,11 @@
   },
   "devDependencies": {
     "@uifabric/build": "^7.0.0",
-    "@uifabric/tslint-rules": "^7.1.2"
+    "@uifabric/tslint-rules": "^7.2.0"
   },
   "dependencies": {
-    "@uifabric/set-version": "^7.0.9",
-    "@uifabric/styling": "^7.11.1",
+    "@uifabric/set-version": "^7.0.11",
+    "@uifabric/styling": "^7.11.8",
     "tslib": "^1.10.0"
   }
 }

@@ -1,6 +1,6 @@
 import { Telemetry, UseTelemetryResult } from './types';
 
-const useTelemetry = (displayName: string, telemetry: Telemetry | undefined): UseTelemetryResult => {
+export const getTelemetry = (displayName: string, telemetry: Telemetry | undefined): UseTelemetryResult => {
   let start: number = -1;
   let end: number = -1;
 
@@ -29,6 +29,10 @@ const useTelemetry = (displayName: string, telemetry: Telemetry | undefined): Us
   };
 
   return { setStart, setEnd };
+};
+
+const useTelemetry = (displayName: string, telemetry: Telemetry | undefined): UseTelemetryResult => {
+  return getTelemetry(displayName, telemetry);
 };
 
 export default useTelemetry;

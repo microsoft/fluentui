@@ -68,6 +68,11 @@ export interface IStyleSheetConfig {
    * Callback executed when a rule is inserted.
    */
   onInsertRule?: (rule: string) => void;
+
+  /**
+   * Initial value for classnames cache. Key is serialized css rules associated with a classname.
+   */
+  classNameCache?: { [key: string]: string };
 }
 
 const STYLESHEET_SETTING = '__stylesheet__';
@@ -114,7 +119,6 @@ export class Stylesheet {
    * Gets the singleton instance.
    */
   public static getInstance(): Stylesheet {
-    // tslint:disable-next-line:no-any
     _stylesheet = _global[STYLESHEET_SETTING] as Stylesheet;
 
     if (!_stylesheet || (_stylesheet._lastStyleElement && _stylesheet._lastStyleElement.ownerDocument !== document)) {
@@ -135,6 +139,8 @@ export class Stylesheet {
       cspSettings: undefined,
       ...config,
     };
+
+    this._keyToClassName = this._config.classNameCache || {};
   }
 
   /**
@@ -186,6 +192,13 @@ export class Stylesheet {
    */
   public classNameFromKey(key: string): string | undefined {
     return this._keyToClassName[key];
+  }
+
+  /**
+   * Gets all classnames cache with the stylesheet.
+   */
+  public getClassNameCache(): { [key: string]: string } {
+    return this._keyToClassName;
   }
 
   /**

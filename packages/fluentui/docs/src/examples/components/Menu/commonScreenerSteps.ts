@@ -1,4 +1,4 @@
-import { Menu } from '@fluentui/react-northstar';
+import { menuClassName } from '@fluentui/react-northstar';
 
 interface StepsOptions {
   vertical?: boolean;
@@ -7,8 +7,8 @@ interface StepsOptions {
 }
 
 export const selectors = {
-  menu: `.${Menu.className}`,
-  item: (itemIndex: number) => `.${Menu.className} li:nth-child(${itemIndex}) a`,
+  menu: `.${menuClassName}`,
+  item: (itemIndex: number) => `.${menuClassName} li:nth-child(${itemIndex}) a`,
 };
 
 const getScreenerSteps = ({ vertical, startItem = 2, endItem = 3 }: StepsOptions = {}): ScreenerSteps => [

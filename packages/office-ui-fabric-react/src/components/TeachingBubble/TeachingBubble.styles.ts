@@ -8,6 +8,7 @@ import {
   IStyle,
   keyframes,
 } from '../../Styling';
+import { memoizeFunction } from '../../Utilities';
 
 const globalClassNames = {
   root: 'ms-TeachingBubble',
@@ -32,17 +33,19 @@ const globalClassNames = {
   buttonLabel: 'ms-Button-label',
 };
 
-const opacityFadeIn: string = keyframes({
-  '0%': {
-    opacity: 0,
-    animationTimingFunction: AnimationVariables.easeFunction1,
-    transform: 'scale3d(.90,.90,.90)',
-  },
-  '100%': {
-    opacity: 1,
-    transform: 'scale3d(1,1,1)',
-  },
-});
+const opacityFadeIn = memoizeFunction(() =>
+  keyframes({
+    '0%': {
+      opacity: 0,
+      animationTimingFunction: AnimationVariables.easeFunction1,
+      transform: 'scale3d(.90,.90,.90)',
+    },
+    '100%': {
+      opacity: 1,
+      transform: 'scale3d(1,1,1)',
+    },
+  }),
+);
 
 const rootStyle = (isWide?: boolean, calloutProps?: ICalloutContentStyleProps): IStyle[] => {
   const { calloutWidth, calloutMaxWidth } = calloutProps || {};
@@ -54,7 +57,7 @@ const rootStyle = (isWide?: boolean, calloutProps?: ICalloutContentStyleProps): 
       border: 0,
       outline: 'transparent',
       width: calloutWidth || 'calc(100% + 1px)',
-      animationName: `${opacityFadeIn}`,
+      animationName: `${opacityFadeIn()}`,
       animationDuration: '300ms',
       animationTimingFunction: 'linear',
       animationFillMode: 'both',

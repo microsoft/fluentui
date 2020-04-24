@@ -29,7 +29,7 @@ const DIRECTION_OPTIONS = [
   { key: DirectionalHint.rightBottomEdge, text: 'Right Bottom Edge' },
 ];
 
-const checkboxStyles: ICheckboxStyles = { root: { margin: '10px 0' } };
+const checkboxStyles: Partial<ICheckboxStyles> = { root: { margin: '10px 0' } };
 
 export const ContextualMenuDirectionalExample: React.FunctionComponent = () => {
   const [isBeakVisible, setIsBeakVisible] = React.useState(false);

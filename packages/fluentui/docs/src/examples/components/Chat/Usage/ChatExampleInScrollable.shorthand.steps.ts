@@ -1,10 +1,17 @@
-import { Chat, ChatItem, ChatMessage, MenuItem } from '@fluentui/react-northstar';
+import {
+  chatClassName,
+  chatItemClassName,
+  chatMessageSlotClassNames,
+  menuItemClassName,
+  chatMessageClassName,
+} from '@fluentui/react-northstar';
 
 const selectors = {
-  chat: `.${Chat.className}`,
-  item: (itemIndex: number) => `.${ChatItem.className}:nth-child(${itemIndex}) .${ChatMessage.className}`,
+  chat: `.${chatClassName}`,
+  item: (itemIndex: number) => `.${chatItemClassName}:nth-child(${itemIndex}) .${chatMessageClassName}`,
+  maxActions: '#actions-to-max',
   moreAction: (itemIndex: number) =>
-    `.${ChatItem.className}:nth-child(${itemIndex}) .${ChatMessage.slotClassNames.actionMenu} :nth-child(7) .${MenuItem.className}`,
+    `.${chatItemClassName}:nth-child(${itemIndex}) .${chatMessageSlotClassNames.actionMenu} :nth-child(7) .${menuItemClassName}`,
 };
 
 const config: ScreenerTestsConfig = {
@@ -30,6 +37,13 @@ const config: ScreenerTestsConfig = {
         .click(selectors.item(2))
         .click(selectors.moreAction(2))
         .snapshot('Clicks first message in scrolled view and opens a menu'),
+    builder =>
+      builder
+        .click(selectors.maxActions)
+        .hover(selectors.item(3))
+        .snapshot('Hovers third message')
+        .hover(selectors.item(4))
+        .snapshot('Hovers fourth message'),
   ],
 };
 

@@ -1,7 +1,7 @@
 import { pxToRem } from '../../../../utils';
 import { screenReaderContainerStyles } from '../../../../utils/accessibility/Styles/accessibilityStyles';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { default as ListItem, ListItemStylesProps } from '../../../../components/List/ListItem';
+import { ListItemStylesProps, listItemSlotClassNames } from '../../../../components/List/ListItem';
 import getBorderFocusStyles from '../../getBorderFocusStyles';
 import { ListItemVariables } from './listItemVariables';
 
@@ -16,18 +16,18 @@ const selectableHoverStyle = (p: ListItemStylesProps, v): ICSSInJSStyle => ({
   color: v.selectableFocusHoverColor,
   cursor: 'pointer',
 
-  [`& .${ListItem.slotClassNames.header}`]: { color: 'inherit' },
-  [`& .${ListItem.slotClassNames.content}`]: { color: 'inherit' },
+  [`& .${listItemSlotClassNames.header}`]: { color: 'inherit' },
+  [`& .${listItemSlotClassNames.content}`]: { color: 'inherit' },
 
   // hide the header media and content media on hover
-  [`& .${ListItem.slotClassNames.headerMedia}`]: {
+  [`& .${listItemSlotClassNames.headerMedia}`]: {
     ...screenReaderContainerStyles,
     color: 'inherit',
   },
-  [`& .${ListItem.slotClassNames.contentMedia}`]: { display: 'none', color: 'inherit' },
+  [`& .${listItemSlotClassNames.contentMedia}`]: { display: 'none', color: 'inherit' },
 
   // show the end media on hover
-  [`& .${ListItem.slotClassNames.endMedia}`]: { display: 'block', color: 'inherit' },
+  [`& .${listItemSlotClassNames.endMedia}`]: { display: 'block', color: 'inherit' },
 });
 
 const selectedStyle = variables => ({
@@ -50,7 +50,7 @@ const listItemStyles: ComponentSlotStylesPrepared<ListItemStylesProps, ListItemV
         position: 'relative',
 
         // hide the end media by default
-        [`& .${ListItem.slotClassNames.endMedia}`]: { display: 'none' },
+        [`& .${listItemSlotClassNames.endMedia}`]: { display: 'none' },
 
         '&:hover': selectableHoverStyle(p, v),
         ':focus': borderFocusStyles[':focus'],
