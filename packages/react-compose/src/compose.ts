@@ -23,7 +23,7 @@ function compose<T extends React.ElementType, InputProps, InputStylesProps, Pare
     Component.defaultProps = (input as InputComposeComponent).defaultProps;
   }
 
-  ((Component as unknown) as ComposedComponent).fluentComposeConfig = composeOptions;
+  (Component as ComposedComponent).fluentComposeConfig = composeOptions;
 
   return Component;
 }

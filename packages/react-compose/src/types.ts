@@ -1,10 +1,5 @@
 import * as React from 'react';
 
-// tslint:disable-next-line:no-any
-type Extendable<T, V = any> = T & {
-  [key: string]: V;
-};
-
 //
 // "as" type safety
 //
@@ -72,7 +67,7 @@ export type ComposeOptions<InputProps = {}, InputStylesProps = {}, ParentStylesP
   overrideStyles?: boolean;
 
   slots?: Record<string, React.ElementType>;
-  slotProps?: Record<string, (props: Extendable<InputProps>) => object>;
+  slotProps?: Record<string, (props: InputProps) => object>;
 };
 
 export type ComposePreparedOptions<Props = {}> = {
@@ -87,5 +82,5 @@ export type ComposePreparedOptions<Props = {}> = {
   overrideStyles: boolean;
 
   slots: Record<string, React.ElementType>;
-  slotPropsChain: Record<string, (props: Extendable<Props>) => object>[];
+  slotPropsChain: Record<string, (props: Props) => object>[];
 };

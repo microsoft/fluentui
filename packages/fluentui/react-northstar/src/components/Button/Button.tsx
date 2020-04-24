@@ -272,7 +272,6 @@ const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
     slotProps: {
       content: props => ({
         size: props.size,
-        as: 'span',
       }),
       loader: () => ({
         role: undefined,
