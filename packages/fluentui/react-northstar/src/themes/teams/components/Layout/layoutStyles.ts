@@ -25,7 +25,7 @@ const layoutStyles: ComponentSlotStylesPrepared<LayoutProps> = {
       ...(debug && debugRoot()),
       justifyItems,
       alignItems,
-      display: 'grid',
+      display: ['grid', '-ms-grid'],
       [vertical ? 'gridTemplateRows' : 'gridTemplateColumns']: [
         // Heads up!
         // IE11 Doesn't support grid-gap, insert virtual columns instead
@@ -60,7 +60,7 @@ const layoutStyles: ComponentSlotStylesPrepared<LayoutProps> = {
   main: ({ props: p }): ICSSInJSStyle => ({
     ...(p.debug && debugArea()),
     alignItems: 'center',
-    display: 'grid',
+    display: ['grid', '-ms-grid'],
     [p.vertical ? '-ms-grid-row' : '-ms-grid-column']: countTrue([p.start, p.start && p.gap, p.main]),
     ...p.mainCSS,
   }),

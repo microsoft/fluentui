@@ -9,6 +9,7 @@ declare module 'screener-runner' {
       alt: string;
       control: string;
       enter: string;
+      space: string;
       escape: string;
       return: string;
       shift: string;

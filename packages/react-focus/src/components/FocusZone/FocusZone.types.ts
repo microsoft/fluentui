@@ -16,6 +16,12 @@ export interface IFocusZone {
   focus(forceIntoFirstElement?: boolean): boolean;
 
   /**
+   * Sets focus to the last tabbable item in the zone.
+   * @returns True if focus could be set to an active element, false if no operation was taken.
+   */
+  focusLast(): boolean;
+
+  /**
    * Sets focus to a specific child element within the zone. This can be used in conjunction with
    * onBeforeFocus to created delayed focus scenarios (like animate the scroll position to the correct
    * location and then focus.)
@@ -58,6 +64,12 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
    * Optionally provide a selector for identifying the intial active element.
    */
   defaultActiveElement?: string;
+
+  /**
+   * Determines if a default tabbable element should be force focused on FocusZone mount.
+   * @default false
+   */
+  shouldFocusOnMount?: boolean;
 
   /**
    * If set, the FocusZone will not be tabbable and keyboard navigation will be disabled.
@@ -121,7 +133,7 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
    */
   onBeforeFocus?: (childElement?: HTMLElement) => boolean;
 
-  /** Allow focus to move to root */
+  /** Allows focus to park on root when focus is in the `FocusZone` at render time. */
   allowFocusRoot?: boolean;
 
   /**
@@ -169,6 +181,12 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
    * Callback to notify creators that focus has been set on the FocusZone
    */
   onFocusNotification?: () => void;
+
+  /**
+   * If true, FocusZone prevents the default behavior of Keyboard events when changing focus between elements.
+   * @defaultvalue true
+   */
+  preventDefaultWhenHandled?: boolean;
 }
 /**
  * {@docCategory FocusZone}

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IStyle } from '@uifabric/styling';
+import { IStyle, ITheme } from '@uifabric/styling';
 import { IComponentStyles } from './IComponent';
 
 /**
@@ -53,6 +53,7 @@ export type ISlotFactory<TProps extends ValidProps, TShorthandProp extends Valid
   userProps: ISlotProp<TProps, TShorthandProp>,
   slotOptions: ISlotOptions<TProps> | undefined,
   defaultStyles: IStyle,
+  theme?: ITheme,
 ) => ReturnType<React.FunctionComponent<TProps>>;
 
 /**

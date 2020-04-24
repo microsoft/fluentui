@@ -1,12 +1,12 @@
 import { Accessibility } from '../../types';
-import { AlertProps } from './alertWarningBehavior';
+import { AlertBehaviorProps } from './alertBehavior';
 
 /**
  * @description
  * Use attribute 'aria-describedby' for dismiss action.
  */
 
-const alertBaseBehavior: Accessibility<AlertProps> = props => ({
+const alertBaseBehavior: Accessibility<AlertBehaviorProps> = props => ({
   attributes: {
     dismissAction: {
       'aria-describedby': props.bodyId,

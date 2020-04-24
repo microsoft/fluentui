@@ -1,12 +1,13 @@
 import {
   IFloatingSuggestionOnRenderItemProps,
   IFloatingSuggestionItemProps,
+  IFloatingSuggestionItem,
 } from '../FloatingSuggestionsItem/FloatingSuggestionsItem.types';
 import { IRenderFunction } from '@uifabric/utilities';
 import { IStyle } from '@uifabric/styling';
 
 export interface IFloatingSuggestionsListProps<T> {
-  suggestionItems: IFloatingSuggestionItemProps<T>[];
+  suggestionItems: IFloatingSuggestionItem<T>[];
   className?: string;
   suggestionsItemClassName?: string;
   suggestionsHeaderText?: string;

@@ -1,13 +1,13 @@
-import { Button } from '@fluentui/react-northstar';
+import { buttonClassName } from '@fluentui/react-northstar';
 
 const config: ScreenerTestsConfig = {
   steps: [
-    builder => builder.hover(`.${Button.className}`).snapshot('Shows tooltip'),
+    builder => builder.hover(`.${buttonClassName}`).snapshot('Shows tooltip'),
     (builder, keys) =>
       builder
         .keys('body', keys.tab)
         .snapshot('Has outline on keyboard')
-        .click(`.${Button.className}`)
+        .click(`.${buttonClassName}`)
         .snapshot('No outline after click'),
   ],
 };

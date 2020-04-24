@@ -1,7 +1,43 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Thu, 02 Apr 2020 12:30:40 GMT and should not be manually modified.
+This log was last generated on Wed, 22 Apr 2020 12:33:04 GMT and should not be manually modified.
 
+<!-- Start content -->
+
+## [7.23.9](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.23.9)
+
+Wed, 22 Apr 2020 12:33:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.23.2..@uifabric/experiments_v7.23.9)
+
+### Patches
+
+- Fix incorrect aria-colindex values in TilesList ([PR #12801](https://github.com/microsoft/fluentui/pull/12801) by tmichon@microsoft.com)
+
+## [7.23.2](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.23.2)
+
+Thu, 16 Apr 2020 04:01:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.23.0..@uifabric/experiments_v7.23.2)
+
+### Patches
+
+- Readme: Remove graduation details; Fabric=>Fluent wording updates ([PR #12508](https://github.com/microsoft/fluentui/pull/12508) by elcraig@microsoft.com)
+- removing more references to wrong filetype icons from a deprecated folder ([PR #12422](https://github.com/microsoft/fluentui/pull/12422) by caperez@microsoft.com)
+
+## 7.23.0
+Thu, 09 Apr 2020 12:24:31 GMT
+
+### Minor changes
+
+- Support TilesList overrides for altering list semantics for grid accessibility (tmichon@microsoft.com)
+### Patches
+
+- Update experiments testing instructions (elcraig@microsoft.com)
+## 7.22.16
+Wed, 08 Apr 2020 12:28:27 GMT
+
+### Patches
+
+- fix: fix typings for asAsync & internal usages of React.Children.map (olfedias@microsoft.com)
 ## 7.22.12
 Thu, 02 Apr 2020 12:30:40 GMT
 
@@ -2620,4 +2656,3 @@ Wed, 16 Aug 2017 10:11:43 GMT
 Tue, 15 Aug 2017 10:19:22 GMT
 
 *Initial release*
-
