@@ -9,8 +9,8 @@ import {
   StarIcon,
   DownloadIcon,
   MoreIcon,
+  screenReaderContainerStyles,
 } from '@fluentui/react-northstar';
-import { screenReaderContainerStyles } from '@fluentui/react-northstar';
 import * as React from 'react';
 import * as _ from 'lodash';
 
