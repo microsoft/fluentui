@@ -8,6 +8,7 @@ import {
   cardsContainerBehavior,
 } from '@fluentui/react-northstar';
 import * as React from 'react';
+import * as _ from 'lodash';
 
 type ClickableCardProps = {
   index?: number;
@@ -34,20 +35,19 @@ const ClickableCard: React.FC<ClickableCardProps> = ({ index }) => {
   );
 };
 
-const CardExampleFocusableGrid = () => (
-  <Grid accessibility={cardsContainerBehavior} columns="3">
-    <ClickableCard index={1} />
-    <ClickableCard index={2} />
-    <ClickableCard index={3} />
-    <ClickableCard index={4} />
-    <ClickableCard index={5} />
-    <ClickableCard index={6} />
-    <ClickableCard index={7} />
-    <ClickableCard index={9} />
-    <ClickableCard index={10} />
-    <ClickableCard index={11} />
-    <ClickableCard index={12} />
-  </Grid>
-);
+const CardExampleFocusableGrid = () => {
+  const cardsNumber = 12;
+
+  return (
+    <Grid accessibility={cardsContainerBehavior} columns="3">
+      {_.times(cardsNumber, i => {
+        const nonZeroIndex = i + 1;
+        return (
+          <ClickableCard key={nonZeroIndex} index={nonZeroIndex} aria-label={`${nonZeroIndex} of ${cardsNumber}`} />
+        );
+      })}
+    </Grid>
+  );
+};
 
 export default CardExampleFocusableGrid;
