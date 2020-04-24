@@ -4832,6 +4832,7 @@ export interface IGroupedListSectionProps extends React.ClassAttributes<GroupedL
     componentRef?: () => void;
     dragDropEvents?: IDragDropEvents;
     dragDropHelper?: IDragDropHelper;
+    dragDropOptions?: IDragDropOptions;
     eventsToRegister?: {
         eventName: string;
         callback: (context: IDragDropContext, event?: any) => void;

@@ -35,6 +35,9 @@ export interface IGroupedListSectionProps extends React.ClassAttributes<GroupedL
   /** Map of callback functions related to drag and drop functionality. */
   dragDropEvents?: IDragDropEvents;
 
+  /** Map of callback functions related to drag and drop options. */
+  dragDropOptions?: IDragDropOptions;
+
   /** helper to manage drag/drop across item rows and groups */
   dragDropHelper?: IDragDropHelper;
 
@@ -425,7 +428,7 @@ export class GroupedListSection extends React.Component<IGroupedListSectionProps
    * collect all the data we need to enable drag/drop for a group
    */
   private _getGroupDragDropOptions = (): IDragDropOptions => {
-    const { group, groupIndex, dragDropEvents, eventsToRegister } = this.props;
+    const { group, groupIndex, dragDropEvents, dragDropOptions, eventsToRegister } = this.props;
     const options = {
       eventMap: eventsToRegister,
       selectionIndex: -1,
@@ -438,6 +441,7 @@ export class GroupedListSection extends React.Component<IGroupedListSectionProps
       onDragEnter: dragDropEvents!.onDragEnter,
       onDragLeave: dragDropEvents!.onDragLeave,
       onDragEnd: dragDropEvents!.onDragEnd,
+      onDragOver: dragDropOptions!.onDragEnd,
     };
     return options as IDragDropOptions;
   };
