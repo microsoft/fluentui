@@ -58,7 +58,7 @@ export const tableSlotClassNames: TableSlotClassNames = {
   header: `${tableClassName}__header`,
 };
 
-export type TableStylesProps = Required<Pick<TableProps, 'variables'>>;
+export type TableStylesProps = never
 
 export const Table: React.FC<WithAsProp<TableProps>> &
   FluentComponentStaticProps<TableProps> & {
