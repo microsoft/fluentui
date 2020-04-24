@@ -1,6 +1,5 @@
 import { Accessibility } from '../../types';
 import tableRowBehavior from './tableRowBehavior';
-import { TableProps } from '@fluentui/react-northstar';
 
 /**
  * @description
@@ -9,7 +8,7 @@ import { TableProps } from '@fluentui/react-northstar';
  * Adds role='table'.
  * Applies 'tableRowBehavior' for 'row' child component.
  */
-const tableBehavior: Accessibility = props => ({
+const tableBehavior: Accessibility<TableBehaviorProps> = props => ({
   attributes: {
     root: {
       role: 'table',
@@ -20,6 +19,8 @@ const tableBehavior: Accessibility = props => ({
   },
 });
 
-export type TableBehaviorProps = Pick<TableProps, 'header'>;
+export type TableBehaviorProps = {
+  header?: any;
+};
 
 export default tableBehavior;
