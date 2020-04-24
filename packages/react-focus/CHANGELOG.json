@@ -2,6 +2,29 @@
   "name": "@fluentui/react-focus",
   "entries": [
     {
+      "date": "Thu, 23 Apr 2020 12:32:40 GMT",
+      "tag": "@fluentui/react-focus_v7.5.0",
+      "version": "7.5.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "FocusZone: Adding preventDefaultWhenHandled to v7 version.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "2859bacd22e5a42dd4ba9128c4f61b792234c8f9",
+            "package": "@fluentui/react-focus"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "FocusZone: Updating comment for preventDefaultWhenHandled prop.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "a7de477cfecd904300a45c78cfad3f3a456de035",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 16 Apr 2020 12:37:31 GMT",
       "tag": "@fluentui/react-focus_v7.4.0",
       "version": "7.4.0",

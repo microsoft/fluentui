@@ -177,6 +177,7 @@ const ToolbarMenuItem: React.FC<WithAsProp<ToolbarMenuItemProps>> &
     debugName: ToolbarMenuItem.displayName,
     mapPropsToBehavior: () => ({
       menu,
+      active,
       menuOpen,
       disabled,
       'aria-label': props['aria-label'],
