@@ -7,7 +7,6 @@ import { Callout } from './Callout';
 import { ICalloutProps } from './Callout.types';
 import { CalloutContent } from './CalloutContent';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { KeyCodes } from '../../Utilities';
 
 class CalloutContentWrapper extends React.Component<ICalloutProps, {}> {
   public render(): JSX.Element {
