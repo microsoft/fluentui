@@ -101,7 +101,6 @@ export const Table: React.FC<WithAsProp<TableProps>> &
       return TableRow.create(row, {
         defaultProps: () => ({
           ...props,
-          accessibility: (accessibility && accessibility({ header: !!header })?.childBehaviors.row) || undefined,
         }),
         overrideProps,
       });
@@ -124,7 +123,6 @@ export const Table: React.FC<WithAsProp<TableProps>> &
     return TableRow.create(header, {
       defaultProps: () => ({
         ...headerRowProps,
-        accessibility: (accessibility && accessibility({ header: !!header })?.childBehaviors.row) || undefined,
       }),
       overrideProps,
     });
