@@ -246,7 +246,7 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
    * If true, when this component is unmounted, focus will be restored to the element that had focus when the component
    * first mounted.
    * @defaultvalue true
-   * @deprecated use restoreFocus callback instead
+   * @deprecated use onRestoreFocus callback instead
    */
   shouldRestoreFocus?: boolean;
 
@@ -255,8 +255,8 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
    * Argument passed down contains two variables, the element that the underlying
    * popup believes focus should go to
    * and whether or not the popup currently contains focus.
-   * If this is provided, focus will not be restored automatically, you'll need to
-   * restore it by calling originalElement.focus()
+   * If this is provided, focus will not be restored automatically, you'll need to call
+   * originalElement.focus()
    */
   onRestoreFocus?: (options: { originalElement?: HTMLElement | Window; containsFocus: boolean }) => void;
 }
