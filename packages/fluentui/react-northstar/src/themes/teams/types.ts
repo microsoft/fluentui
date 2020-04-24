@@ -1,3 +1,4 @@
+import { TextAreStylesProps } from './../../components/TextArea/TextArea';
 import {
   ColorScheme,
   ColorSchemeMapping,
@@ -148,6 +149,7 @@ export type TeamsThemeStylesProps = {
   ToolbarMenuRadioGroup: ToolbarMenuRadioGroupStylesProps;
   TooltipContent: TooltipContentStylesProps;
   Text: TextStylesProps;
+  TextAre: TextAreStylesProps;
   TreeItem: TreeItemStylesProps;
   TreeTitle: TreeTitleStylesProps;
   HierarchicalTree: HierarchicalTreeProps;
