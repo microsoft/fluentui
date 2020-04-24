@@ -67,7 +67,7 @@ export const TextArea: React.FC<WithAsProp<TextAreaProps>> & FluentComponentStat
   const [value, setValue] = useAutoControlled({
     defaultValue: props.defaultValue,
     value: props.value,
-    initialValue: props.defaultValue || props.value,
+    initialValue: '',
   });
 
   const unhandledProps = useUnhandledProps(TextArea.handledProps, props);
