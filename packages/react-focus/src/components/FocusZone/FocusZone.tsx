@@ -162,7 +162,14 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
       // Assign initial tab indexes so that we can set initial focus as appropriate.
       this._updateTabIndexes();
 
-      if (this.props.defaultActiveElement) {
+      if (this.props.defaultTabbableElement && typeof this.props.defaultTabbableElement === 'string') {
+        this._activeElement = this._getDocument().querySelector(this.props.defaultTabbableElement) as HTMLElement;
+        if (this.props.shouldFocusOnMount) {
+          this.focus();
+        }
+        // tslint:disable-next-line:deprecation
+      } else if (this.props.defaultActiveElement) {
+        // tslint:disable-next-line:deprecation
         this._activeElement = this._getDocument().querySelector(this.props.defaultActiveElement) as HTMLElement;
         if (this.props.shouldFocusOnMount) {
           this.focus();
@@ -366,9 +373,15 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
       return;
     }
 
-    const { onActiveElementChanged, doNotAllowFocusEventToPropagate, onFocusNotification } = this.props;
+    const {
+      onActiveElementChanged,
+      doNotAllowFocusEventToPropagate,
+      onFocusNotification,
+      shouldFocusInnerElementWhenReceivedFocus,
+      defaultTabbableElement,
+    } = this.props;
     const isImmediateDescendant = this._isImmediateDescendantOfZone(ev.target as HTMLElement);
-    let newActiveElement: HTMLElement | undefined;
+    let newActiveElement: HTMLElement | null | undefined;
 
     if (onFocusNotification) {
       onFocusNotification();
@@ -385,6 +398,27 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
           break;
         }
         parentElement = getParent(parentElement, ALLOW_VIRTUAL_ELEMENTS) as HTMLElement;
+      }
+    }
+
+    // If an inner focusable element should be focused when FocusZone container receives focus
+    if (shouldFocusInnerElementWhenReceivedFocus && ev.target === this._root.current) {
+      const maybeElementToFocus =
+        defaultTabbableElement &&
+        typeof defaultTabbableElement === 'function' &&
+        defaultTabbableElement(this._root.current);
+
+      // try to focus defaultTabbable element
+      if (maybeElementToFocus && isElementTabbable(maybeElementToFocus)) {
+        newActiveElement = maybeElementToFocus;
+        maybeElementToFocus.focus();
+      } else {
+        // force focus on first focusable element
+        this.focus(true);
+        if (this._activeElement) {
+          // set to null as new active element was handled in method above
+          newActiveElement = null;
+        }
       }
     }
 
@@ -1175,6 +1209,14 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
   }
 
   private _updateTabIndexes(element?: HTMLElement): void {
+    if (
+      !this._activeElement &&
+      this.props.defaultTabbableElement &&
+      typeof this.props.defaultTabbableElement === 'function'
+    ) {
+      this._activeElement = this.props.defaultTabbableElement(this._root.current as HTMLElement);
+    }
+
     if (!element && this._root.current) {
       this._defaultFocusElement = null;
       element = this._root.current;
