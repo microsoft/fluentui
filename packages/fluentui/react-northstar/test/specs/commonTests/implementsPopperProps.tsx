@@ -9,9 +9,9 @@ type ImplementsPopperPropsOptions<P> = {
 
 export const positioningProps: Required<PositioningProps> = {
   align: 'bottom',
-  flipBoundary: 'viewport',
-  offset: '20px',
-  overflowBoundary: 'viewport',
+  flipBoundary: document.body,
+  offset: [20, 20],
+  overflowBoundary: document.body,
   position: 'above',
   positionFixed: true,
   unstable_pinned: true,

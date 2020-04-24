@@ -87,6 +87,12 @@ const excludedExampleFileRegexes: RegExp[] = [
   /^Panel\./,
 ];
 
+function setCacheFullWarning(enabled: boolean) {
+  (window as any).FabricConfig = {
+    enableClassNameCacheFullWarning: enabled,
+  };
+}
+
 declare const global: any;
 
 /**
@@ -148,6 +154,10 @@ describe('Component Examples', () => {
     jest.spyOn(Math, 'random').mockImplementation(() => {
       return 0;
     });
+
+    // Enable cache full warning. If warning occurs, the test will fail.
+    // This helps us catch mutating styles which cause cache to always miss.
+    setCacheFullWarning(true);
   });
 
   afterAll(() => {
@@ -177,6 +187,8 @@ describe('Component Examples', () => {
         globalSnapshotState.added += snapshotState.added;
       }
     });
+
+    setCacheFullWarning(false);
   });
 
   for (const examplePath of examplePaths) {

@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix options merging in compose()",
-  "packageName": "@fluentui/react-compose",
-  "email": "olfedias@microsoft.com",
-  "commit": "5577b5e41ab354d9e92ee593d930c1d593d1195f",
-  "dependentChangeType": "patch",
-  "date": "2020-03-18T13:35:15.090Z"
-}

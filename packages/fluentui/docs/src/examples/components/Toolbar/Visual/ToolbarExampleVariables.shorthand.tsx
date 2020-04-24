@@ -1,7 +1,15 @@
-import { Toolbar } from '@fluentui/react-northstar';
+import { Toolbar, toolbarMenuBehavior, Accessibility, ToolbarMenuBehaviorProps } from '@fluentui/react-northstar';
 import * as React from 'react';
+import { CallVideoIcon, MoreIcon, SkypeLogoIcon } from '@fluentui/react-icons-northstar';
 
-const ToolbarExampleMenuWithSubmenuShorthand = () => {
+// behavior is overridden, as focus was causing inconsistency in displaying focus outline for screener tests
+const notAutoFocusToolbarMenuBehavior: Accessibility<ToolbarMenuBehaviorProps> = props => {
+  const behavior = toolbarMenuBehavior(props);
+  behavior.focusZone.props.shouldFocusOnMount = false;
+  return behavior;
+};
+
+const ToolbarExampleVariables = () => {
   return (
     <Toolbar
       variables={{
@@ -27,8 +35,8 @@ const ToolbarExampleMenuWithSubmenuShorthand = () => {
             { kind: 'divider', key: 'divider-variables', variables: { dividerBorder: 'orange' } },
 
             // ToolbarItem
-            { key: 'item', active: true, icon: 'skype' },
-            { key: 'item-variables', active: true, icon: 'skype', variables: { foregroundActive: 'orange' } },
+            { key: 'item', active: true, icon: <SkypeLogoIcon /> },
+            { key: 'item-variables', active: true, icon: <SkypeLogoIcon />, variables: { foregroundActive: 'orange' } },
           ],
         },
 
@@ -40,14 +48,25 @@ const ToolbarExampleMenuWithSubmenuShorthand = () => {
         { kind: 'custom', key: 'custom-variables', content: 'Custom', variables: { background: 'pink' } },
 
         // ToolbarItem
-        { key: 'item', active: true, icon: 'camera' },
-        { key: 'item-variables', active: true, icon: 'camera', variables: { foregroundActive: 'green' } },
+        {
+          // switched to svg icon
+          icon: <CallVideoIcon />,
+          key: 'item',
+          active: true,
+        },
+        {
+          icon: <CallVideoIcon />,
+          key: 'item-variables',
+          active: true,
+          variables: { foregroundActive: 'green' },
+        },
 
         // ToolbarItem with menu
         {
+          icon: <MoreIcon />,
           key: 'item-menu',
-          icon: 'more',
           menu: {
+            accessibility: notAutoFocusToolbarMenuBehavior,
             items: [
               // ToolbarMenuDivider
               { kind: 'divider', key: 'divider' },
@@ -59,9 +78,10 @@ const ToolbarExampleMenuWithSubmenuShorthand = () => {
 
               // ToolbarMenuItem with menu
               {
-                key: 'item',
+                key: 'item-menu',
                 content: 'Item',
                 menu: {
+                  accessibility: notAutoFocusToolbarMenuBehavior,
                   items: [
                     { key: 'item', content: 'Item' },
                     { key: 'item-variables', content: 'Item', variables: { menuItemForeground: 'gold' } },
@@ -71,9 +91,10 @@ const ToolbarExampleMenuWithSubmenuShorthand = () => {
                 menuOpen: true,
               },
               {
-                key: 'item-variables',
+                key: 'item-menu-variables',
                 content: 'Item',
                 menu: {
+                  accessibility: notAutoFocusToolbarMenuBehavior,
                   items: [
                     { key: 'item', content: 'Item' },
                     { key: 'item-variables', content: 'Item', variables: { menuItemForeground: 'gold' } },
@@ -93,9 +114,10 @@ const ToolbarExampleMenuWithSubmenuShorthand = () => {
           styles: { marginRight: '200px' /* avoid collision with other opened menu */ },
         },
         {
+          icon: <MoreIcon />,
           key: 'item-menu-variables',
-          icon: 'more',
           menu: {
+            accessibility: notAutoFocusToolbarMenuBehavior,
             items: [
               { kind: 'divider', key: 'divider' },
               { kind: 'divider', key: 'divider-variables', variables: { menuDividerBorder: 'orange' } },
@@ -105,9 +127,10 @@ const ToolbarExampleMenuWithSubmenuShorthand = () => {
               { key: 'item-variables', content: 'Item', variables: { menuItemForeground: 'orange' } },
               // ToolbarMenuItem with menu
               {
-                key: 'item',
+                key: 'item-menu',
                 content: 'Item',
                 menu: {
+                  accessibility: notAutoFocusToolbarMenuBehavior,
                   items: [
                     { key: 'item', content: 'Item' },
                     { key: 'item-variables', content: 'Item', variables: { menuItemForeground: 'gold' } },
@@ -117,9 +140,10 @@ const ToolbarExampleMenuWithSubmenuShorthand = () => {
                 menuOpen: true,
               },
               {
-                key: 'item-variables',
+                key: 'item-menu-variables',
                 content: 'Item',
                 menu: {
+                  accessibility: notAutoFocusToolbarMenuBehavior,
                   items: [
                     { key: 'item', content: 'Item' },
                     { key: 'item-variables', content: 'Item', variables: { menuItemForeground: 'gold' } },
@@ -141,4 +165,4 @@ const ToolbarExampleMenuWithSubmenuShorthand = () => {
   );
 };
 
-export default ToolbarExampleMenuWithSubmenuShorthand;
+export default ToolbarExampleVariables;

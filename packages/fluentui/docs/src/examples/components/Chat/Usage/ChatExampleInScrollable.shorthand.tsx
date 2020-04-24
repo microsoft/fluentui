@@ -1,9 +1,23 @@
 import { useBooleanKnob, useRangeKnob } from '@fluentui/docs-components';
 import { Avatar, Chat, ChatMessageProps, ChatProps, MenuButton } from '@fluentui/react-northstar';
 import * as React from 'react';
+import {
+  AddIcon,
+  BanIcon,
+  BookmarkIcon,
+  BroadcastIcon,
+  CalendarIcon,
+  CloseIcon,
+  EditIcon,
+  LikeIcon,
+  LockIcon,
+  MoreIcon,
+  StarIcon,
+  ReplyIcon,
+} from '@fluentui/react-icons-northstar';
 
 const ChatExampleInScrollableShorthand = () => {
-  const [actionCount] = useRangeKnob({ name: 'actionCount', initialValue: 7, min: 1, max: 10 });
+  const [actionCount, setActionCount] = useRangeKnob({ name: 'actionCount', initialValue: 7, min: 1, max: 10 });
   const [overflow] = useBooleanKnob({ name: 'overflow', initialValue: true });
   const [height] = useRangeKnob({
     name: 'height',
@@ -21,26 +35,27 @@ const ChatExampleInScrollableShorthand = () => {
   });
 
   const actionItems = [
-    { key: 'add', icon: 'add', title: 'Add' },
-    { key: 'ban', icon: 'ban', title: 'Ban' },
-    { key: 'bookmark', icon: 'bookmark', title: 'Bookmark' },
-    { key: 'broadcast', icon: 'broadcast', title: 'Broadcast' },
-    { key: 'calendar', icon: 'calendar', title: 'Calendar' },
-    { key: 'like', icon: 'like', title: 'Like' },
-    { key: 'star', icon: 'star', title: 'Star' },
-    { key: 'edit', icon: 'edit', title: 'Edit' },
-    { key: 'lock', icon: 'lock', title: 'Lock' },
+    { key: 'add', icon: <AddIcon />, title: 'Add' },
+    { key: 'ban', icon: <BanIcon />, title: 'Ban' },
+    { key: 'bookmark', icon: <BookmarkIcon />, title: 'Bookmark' },
+    { key: 'broadcast', icon: <BroadcastIcon />, title: 'Broadcast' },
+    { key: 'calendar', icon: <CalendarIcon />, title: 'Calendar' },
+    { key: 'like', icon: <LikeIcon />, title: 'Like' },
+    { key: 'star', icon: <StarIcon />, title: 'Star' },
+    { key: 'edit', icon: <EditIcon />, title: 'Edit' },
+    { key: 'lock', icon: <LockIcon />, title: 'Lock' },
     {
       key: 'more',
-      icon: 'more',
+      icon: <MoreIcon />,
       title: 'More actions',
       children: (Component, props) => (
         <MenuButton
+          key="more"
           menu={[
-            { key: 'reply', content: 'Reply', icon: 'reply' },
-            { key: 'edit', content: 'Edit', icon: 'edit' },
-            { key: 'save', content: 'Save message', icon: 'bookmark' },
-            { key: 'delete', content: 'Delete', icon: 'icon-close' },
+            { key: 'reply', content: 'Reply', icon: <ReplyIcon /> },
+            { key: 'edit', content: 'Edit', icon: <EditIcon /> },
+            { key: 'save', content: 'Save message', icon: <BookmarkIcon /> },
+            { key: 'delete', content: 'Delete', icon: <CloseIcon /> },
           ]}
           position="above"
           trigger={<Component {...props} />}
@@ -180,9 +195,15 @@ const ChatExampleInScrollableShorthand = () => {
   ];
 
   return (
-    <div style={{ height, width, overflow: 'scroll', margin: 150, marginLeft: 0 }}>
-      <Chat items={items} styles={{ minHeight: '100%' }} />
-    </div>
+    <>
+      <div style={{ height, width, overflow: 'scroll', margin: 150, marginBottom: 0, marginLeft: 50 }}>
+        <Chat items={items} styles={{ minHeight: '100%' }} />
+      </div>
+
+      <button id="actions-to-max" onClick={() => setActionCount(actionItems.length)}>
+        Set action count to max
+      </button>
+    </>
   );
 };
 

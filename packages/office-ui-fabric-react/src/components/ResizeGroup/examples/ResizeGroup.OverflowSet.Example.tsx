@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { CommandBarButton } from 'office-ui-fabric-react/lib/Button';
 import { ResizeGroup } from 'office-ui-fabric-react/lib/ResizeGroup';
-import { OverflowSet } from 'office-ui-fabric-react/lib/OverflowSet';
+import { OverflowSet, IOverflowSetStyles } from 'office-ui-fabric-react/lib/OverflowSet';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
@@ -21,6 +21,8 @@ const styles = mergeStyleSets({
     width: '180px',
   },
 });
+
+const overflowSetStyles: Partial<IOverflowSetStyles> = { root: { height: 40 } };
 
 export interface IOverflowData {
   primary: IContextualMenuItem[];
@@ -112,7 +114,7 @@ export class ResizeGroupOverflowSetExample extends React.Component<{}, IResizeGr
                 onRenderOverflowButton={overflowItems => {
                   return <CommandBarButton role="menuitem" menuProps={{ items: overflowItems! }} />;
                 }}
-                styles={{ root: { height: 40 } }}
+                styles={overflowSetStyles}
               />
             );
           }}

@@ -3,7 +3,7 @@ import { IAppDefinition } from '@uifabric/example-app-base';
 import { AppCustomizations } from './customizations';
 
 export const AppDefinition: IAppDefinition = {
-  appTitle: 'UI Fabric - Experiments',
+  appTitle: 'Fluent UI React - Experiments',
   customizations: AppCustomizations,
   testPages: [],
   examplePages: [
@@ -153,6 +153,14 @@ export const AppDefinition: IAppDefinition = {
           name: 'Theming',
           url: '#/examples/theming',
         },
+        {
+          component: require<any>('../components/UnifiedPicker/UnifiedPeoplePicker/UnifiedPeoplePickerPage')
+            .UnifiedPeoplePickerPage,
+          key: 'UnifiedPeoplePickerPage',
+          name: 'UnifiedPeoplePickerPage',
+          url: '#examples/unifiedpeoplepicker',
+          category: 'Data Collections',
+        },
       ],
     },
   ],
@@ -163,7 +171,7 @@ export const AppDefinition: IAppDefinition = {
     },
     {
       name: 'Fabric',
-      url: 'https://dev.microsoft.com/fabric',
+      url: 'https://developer.microsoft.com/en-us/fluentui',
     },
     {
       name: 'GitHub',

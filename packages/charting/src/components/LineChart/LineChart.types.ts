@@ -52,6 +52,16 @@ export interface ILineChartProps {
   tickValues?: number[] | Date[];
 
   /**
+   * minimum  data value point in y-axis
+   */
+  yMinValue?: number;
+
+  /**
+   * maximum data value point in y-axis
+   */
+  yMaxValue?: number;
+
+  /**
    * the format in for the data on x-axis. For date object this can be specified to your requirement. Eg: '%m/%d', '%d'
    * Please look at https://www.npmjs.com/package/d3-time-format for all the formats supported
    */
@@ -81,6 +91,19 @@ export interface ILineChartProps {
    * focus zone props in hover card for legends
    */
   focusZonePropsForLegendsInHoverCard?: IFocusZoneProps;
+
+  /**
+   * the format in for the data on y-axis. For data object this can be specified to your requirement.
+   *  Eg: d3.format(".0%")(0.123),d3.format("+20")(42);
+   * Please look at https://github.com/d3/d3-format for all the formats supported
+   */
+  // tslint:disable-next-line: no-any
+  yAxisTickFormat?: any;
+
+  /** decides wether to show/hide legends
+   * @defaultvalue false
+   */
+  hideLegend?: boolean;
 }
 
 export interface ILineChartStyleProps {

@@ -24,9 +24,21 @@ export { default as AccordionContent } from './components/Accordion/AccordionCon
 
 export * from './components/Alert/Alert';
 export { default as Alert } from './components/Alert/Alert';
+export * from './components/Alert/AlertDismissAction';
+export { default as AlertDismissAction } from './components/Alert/AlertDismissAction';
 
 export * from './components/Attachment/Attachment';
 export { default as Attachment } from './components/Attachment/Attachment';
+export * from './components/Attachment/AttachmentAction';
+export { default as AttachmentAction } from './components/Attachment/AttachmentAction';
+export * from './components/Attachment/AttachmentBody';
+export { default as AttachmentBody } from './components/Attachment/AttachmentBody';
+export * from './components/Attachment/AttachmentDescription';
+export { default as AttachmentDescription } from './components/Attachment/AttachmentDescription';
+export * from './components/Attachment/AttachmentHeader';
+export { default as AttachmentHeader } from './components/Attachment/AttachmentHeader';
+export * from './components/Attachment/AttachmentIcon';
+export { default as AttachmentIcon } from './components/Attachment/AttachmentIcon';
 
 export * from './components/Avatar/Avatar';
 export { default as Avatar } from './components/Avatar/Avatar';
@@ -99,10 +111,8 @@ export { default as Header } from './components/Header/Header';
 export * from './components/Header/HeaderDescription';
 export { default as HeaderDescription } from './components/Header/HeaderDescription';
 
-export * from './components/Icon/Icon';
-export { default as Icon } from './components/Icon/Icon';
-export * from './components/Icon/SvgIcon';
-export { default as SvgIcon } from './components/Icon/SvgIcon';
+export * from './components/SvgIcon/SvgIcon';
+export { default as SvgIcon } from './components/SvgIcon/SvgIcon';
 
 export * from './components/Image/Image';
 export { default as Image } from './components/Image/Image';
@@ -288,4 +298,5 @@ export const FocusZoneUtilities = {
 export * from '@fluentui/accessibility';
 export * from '@fluentui/react-component-ref';
 export * from '@fluentui/react-bindings';
+export * from '@fluentui/react-icons-northstar';
 export * from '@fluentui/styles';

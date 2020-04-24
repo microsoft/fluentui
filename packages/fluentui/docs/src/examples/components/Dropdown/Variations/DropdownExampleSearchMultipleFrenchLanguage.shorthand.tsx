@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Dropdown } from '@fluentui/react-northstar';
+import { CloseIcon } from '@fluentui/react-icons-northstar';
 
 const inputItems = [
   { header: 'Louis Vuitton' },
@@ -13,10 +14,7 @@ const inputItems = [
   { header: 'Marion Cotillard' },
 ].map(item => ({
   ...item,
-  icon: {
-    name: 'close',
-    'aria-label': `Éliminer ${item.header} de la sélection.`,
-  },
+  icon: <CloseIcon aria-label={`Éliminer ${item.header} de la sélection.`} />,
 }));
 
 const DropdownExampleSearchMultipleFrenchLanguage = () => (

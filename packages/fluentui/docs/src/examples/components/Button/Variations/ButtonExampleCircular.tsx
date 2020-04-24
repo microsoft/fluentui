@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Button, Flex, Icon } from '@fluentui/react-northstar';
+import { Button, Flex } from '@fluentui/react-northstar';
+import { EmojiIcon, BroadcastIcon } from '@fluentui/react-icons-northstar';
 
 const ButtonExampleCircular = () => (
   <Flex gap="gap.smaller">
@@ -7,10 +8,10 @@ const ButtonExampleCircular = () => (
       <Button.Content>C</Button.Content>
     </Button>
     <Button circular icon title="Emoji">
-      <Icon name="emoji" xSpacing="none" />
+      <EmojiIcon xSpacing="none" />
     </Button>
     <Button circular icon primary title="Broadcast">
-      <Icon name="broadcast" xSpacing="none" />
+      <BroadcastIcon xSpacing="none" />
     </Button>
   </Flex>
 );

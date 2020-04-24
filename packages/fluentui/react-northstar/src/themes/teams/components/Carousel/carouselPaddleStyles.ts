@@ -1,6 +1,9 @@
 import { unstable_createAnimationStyles as createAnimationStyles } from '@fluentui/react-bindings';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import CarouselPaddle, { CarouselPaddleStylesProps } from '../../../../components/Carousel/CarouselPaddle';
+import {
+  CarouselPaddleStylesProps,
+  carouselPaddleSlotClassNames,
+} from '../../../../components/Carousel/CarouselPaddle';
 import { CarouselVariables } from './carouselVariables';
 import getBorderFocusStyles from '../../getBorderFocusStyles';
 import getIconFillOrOutlineStyles from '../../getIconFillOrOutlineStyles';
@@ -69,7 +72,7 @@ const carouselPaddleStyles: ComponentSlotStylesPrepared<CarouselPaddleStylesProp
 
       ':hover': {
         ...getIconFillOrOutlineStyles({ outline: false }),
-        [`& .${CarouselPaddle.slotClassNames.content}`]: {
+        [`& .${carouselPaddleSlotClassNames.content}`]: {
           ...getIndicatorStyles(v.paddleColorHover, p.next, v.paddleIndicatorSize),
         },
         color: v.paddleColorHover,

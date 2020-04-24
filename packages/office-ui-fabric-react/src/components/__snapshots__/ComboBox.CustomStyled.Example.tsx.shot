@@ -27,7 +27,6 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
       & .ms-ComboBox {
         max-width: 300px;
       }
-  dir="ltr"
 >
   <div
     className=
@@ -330,8 +329,8 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
               color: ButtonText;
             }
             &:hover {
-              background-color: #5c2d91;
-              color: white;
+              background-color: #f3f2f1;
+              color: #201f1e;
               cursor: pointer;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
