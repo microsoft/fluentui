@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-focus
 
-This log was last generated on Thu, 16 Apr 2020 12:37:31 GMT and should not be manually modified.
+This log was last generated on Thu, 23 Apr 2020 12:32:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.5.0)
+
+Thu, 23 Apr 2020 12:32:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v7.4.0..@fluentui/react-focus_v7.5.0)
+
+### Minor changes
+
+- FocusZone: Adding preventDefaultWhenHandled to v7 version. ([PR #12636](https://github.com/microsoft/fluentui/pull/12636) by humbertomakotomorimoto@gmail.com)
+
+### Patches
+
+- FocusZone: Updating comment for preventDefaultWhenHandled prop. ([PR #12830](https://github.com/microsoft/fluentui/pull/12830) by Humberto.Morimoto@microsoft.com)
 
 ## [7.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.4.0)
 
