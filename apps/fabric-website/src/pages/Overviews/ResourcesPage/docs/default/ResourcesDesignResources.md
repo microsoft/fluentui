@@ -1,4 +1,4 @@
-### Design Toolkits
+### Design toolkits
 
 These design toolkits provide styles, controls and layout templates that enable you to create beautiful and coherent Microsoft experiences.
 
@@ -42,7 +42,7 @@ The Add-ins design toolkit provides layouts for interface elements and commonly 
   <li class="mdut--half">[Android font](https://fonts.google.com/specimen/Roboto)</li>
 </ul>
 
-### Native OS Platforms
+### Native OS platforms
 
 <ul class="md-list--flex">
   <li class="mdut--half">[iOS Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines/ios/overview/themes/)</li>

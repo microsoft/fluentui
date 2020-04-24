@@ -147,11 +147,10 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
           </div>
           <div className={this._classNames.oneFourth}>
             <p>
-              A collection of UX frameworks for creating beatufiul, cross-platforms apps that share code, design, and
+              A collection of UX frameworks for creating beautiful, cross-platform apps that share code, design, and
               interaction behavior.
             </p>
             <p>Build for one platform or for all. Everything you need is here.</p>
-            <p>{this._renderLink('#/get-started', 'Get started', { isCTA: true, dark: false })}</p>
           </div>
         </div>
       </section>
@@ -339,10 +338,7 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
         <div className={this._classNames.sectionContent}>
           <div className={this._classNames.oneFourth}>
             <h2 className={this._classNames.usageTitle}>Who at Microsoft uses Fluent UI?</h2>
-            <p>
-              From Word, PowerPoint and Excel to PowerBI, many teams in Microsoft utilize the functionality of Fluent
-              UI.
-            </p>
+            <p>From Word and Excel to PowerBI and Teams, many Microsoft apps utilize Fluent UI functionality.</p>
           </div>
           <div className={this._classNames.oneFourth} />
           <figure style={{ alignSelf: 'flex-end' }} className={this._classNames.oneHalf}>

@@ -16,9 +16,11 @@ export const DisplayToggle = (props: IDisplayToggle) => {
     className,
   );
 
+  const onToggle = () => setToggleState(!toggleState);
+
   return (
     <RootType className={rootClass}>
-      <Toggle onText={onText} offText={offText} label={label} onChange={() => setToggleState(!toggleState)} />
+      <Toggle onText={onText} offText={offText} label={label} onChange={onToggle} />
       {children}
     </RootType>
   );

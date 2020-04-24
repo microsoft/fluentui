@@ -12,7 +12,7 @@ module.exports = createRule({
     type: 'problem',
     docs: {
       description: 'Require omit modifiers on class properties and methods',
-      category: 'Best Practices',
+      category: 'Best practices',
       recommended: 'error',
     },
     messages: {

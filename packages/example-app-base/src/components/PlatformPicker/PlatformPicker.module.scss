@@ -9,7 +9,7 @@ $icon-size: 16px;
 
 .platformPickerList {
   padding: 0;
-  grid-gap: 4px 8px;
+  grid-gap: 12px 12px;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
   -ms-grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
