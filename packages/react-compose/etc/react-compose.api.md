@@ -40,7 +40,7 @@ export type ComposeOptions<InputProps = {}, InputStylesProps = {}, ParentStylesP
     handledProps?: (keyof InputProps | 'as')[];
     overrideStyles?: boolean;
     slots?: Record<string, React.ElementType>;
-    slotProps?: Record<string, (props: Extendable<InputProps>) => object>;
+    slotProps?: Record<string, (props: InputProps) => object>;
 };
 
 // @public (undocumented)
@@ -53,7 +53,7 @@ export type ComposePreparedOptions<Props = {}> = {
     handledProps: (keyof Props)[];
     overrideStyles: boolean;
     slots: Record<string, React.ElementType>;
-    slotPropsChain: Record<string, (props: Extendable<Props>) => object>[];
+    slotPropsChain: Record<string, (props: Props) => object>[];
 };
 
 // @public (undocumented)
@@ -72,10 +72,6 @@ export type InputComposeComponent<P = {}> = React.FunctionComponent<P> & {
 // @public (undocumented)
 export type PropsOfElement<E extends keyof JSX.IntrinsicElements | React.JSXElementConstructor<any>> = JSX.LibraryManagedAttributes<E, React.ComponentPropsWithRef<E>>;
 
-
-// Warnings were encountered during analysis:
-//
-// lib/types.d.ts:35:5 - (ae-forgotten-export) The symbol "Extendable" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 
