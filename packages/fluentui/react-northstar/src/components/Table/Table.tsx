@@ -161,7 +161,11 @@ Table.create = createShorthandFactory({
 });
 
 Table.propTypes = {
-  ...commonPropTypes.createCommon({ content: 'shorthand' }),
+  ...commonPropTypes.createCommon({ content: false }),
+  content: customPropTypes.every([
+    customPropTypes.disallow(['children']),
+    PropTypes.oneOfType([PropTypes.arrayOf(customPropTypes.nodeContent), customPropTypes.nodeContent]),
+  ]),
   header: customPropTypes.itemShorthand,
   rows: customPropTypes.collectionShorthand,
   compact: PropTypes.bool,
