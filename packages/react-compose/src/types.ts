@@ -71,10 +71,7 @@ export type ComposeOptions<InputProps = {}, InputStylesProps = {}, ParentStylesP
   handledProps?: (keyof InputProps | 'as')[];
   overrideStyles?: boolean;
 
-  // TODO: add typings for slots
   slots?: Record<string, React.FunctionComponent | React.Component | ComponentWithAs>;
-
-  // TODO: add typings
   slotProps?: Record<string, (props: Extendable<InputProps>) => object>;
 };
 
