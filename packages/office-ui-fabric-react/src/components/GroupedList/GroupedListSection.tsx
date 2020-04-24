@@ -441,7 +441,7 @@ export class GroupedListSection extends React.Component<IGroupedListSectionProps
       onDragEnter: dragDropEvents!.onDragEnter,
       onDragLeave: dragDropEvents!.onDragLeave,
       onDragEnd: dragDropEvents!.onDragEnd,
-      onDragOver: dragDropOptions!.onDragEnd,
+      onDragOver: dragDropOptions!.onDragOver,
     };
     return options as IDragDropOptions;
   };
