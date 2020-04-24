@@ -255,6 +255,8 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
    * Argument passed down contains two variables, the element that the underlying
    * popup believes focus should go to
    * and whether or not the popup currently contains focus.
+   * If this is provided, focus will not be restored automatically, you'll need to
+   * restore it by calling originalElement.focus()
    */
   onRestoreFocus?: (options: { originalElement?: HTMLElement | Window; containsFocus: boolean }) => void;
 }
