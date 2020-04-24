@@ -3,11 +3,11 @@ import {
   ComponentSlotClasses,
   FocusZone,
   getElementType,
+  deprecated_getTelemetry as getTelemetry,
   getUnhandledProps,
   ReactAccessibilityBehavior,
   unstable_getAccessibility as getAccessibility,
   unstable_getStyles as getStyles,
-  useTelemetry,
 } from '@fluentui/react-bindings';
 import {
   emptyTheme,
@@ -57,7 +57,7 @@ const renderComponent = <P extends {}>(
     logProviderMissingWarning();
   }
 
-  const { setStart, setEnd } = useTelemetry(displayName, context.telemetry);
+  const { setStart, setEnd } = getTelemetry(displayName, context.telemetry);
   const rtl = context.rtl || false;
 
   setStart();

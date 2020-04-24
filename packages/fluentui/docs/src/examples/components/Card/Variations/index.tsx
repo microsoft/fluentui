@@ -15,6 +15,16 @@ const Variations = () => (
       description="Horizontal card"
       examplePath="components/Card/Variations/CardExampleHorizontal"
     />
+    <ComponentExample
+      title="Sizes"
+      description="A card can have assorted sizes"
+      examplePath="components/Card/Variations/CardExampleSize"
+    />
+    <ComponentExample
+      title="Fluid"
+      description="A card can take up the width and height of its container"
+      examplePath="components/Card/Variations/CardExampleFluid"
+    />
   </ExampleSection>
 );
 

@@ -2,8 +2,14 @@ export { default as Accordion } from './components/Accordion/accordionVariables'
 export { default as AccordionTitle } from './components/Accordion/accordionTitleVariables';
 
 export { default as Attachment } from './components/Attachment/attachmentVariables';
+export { default as AttachmentAction } from './components/Attachment/attachmentActionVariables';
+export { default as AttachmentBody } from './components/Attachment/attachmentBodyVariables';
+export { default as AttachmentDescription } from './components/Attachment/attachmentDescriptionVariables';
+export { default as AttachmentHeader } from './components/Attachment/attachmentHeaderVariables';
+export { default as AttachmentIcon } from './components/Attachment/attachmentIconVariables';
 
 export { default as Alert } from './components/Alert/alertVariables';
+export { default as AlertDismissAction } from './components/Alert/alertDismissActionVariables';
 
 export { default as Avatar } from './components/Avatar/avatarVariables';
 
@@ -38,8 +44,7 @@ export { default as HeaderDescription } from './components/Header/headerDescript
 
 export { default as HierarchicalTreeTitle } from './components/HierarchicalTree/hierarchicalTreeTitleVariables';
 
-export { default as Icon } from './components/Icon/iconVariables';
-export { default as SvgIcon } from './components/Icon/iconVariables';
+export { default as SvgIcon } from './components/SvgIcon/svgIconVariables';
 
 export { default as Image } from './components/Image/imageVariables';
 

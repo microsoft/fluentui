@@ -29,7 +29,6 @@ import {
 } from '../../types';
 
 export interface HierarchicalTreeItemSlotClassNames {
-  title: string;
   subtree: string;
 }
 
@@ -66,17 +65,17 @@ export interface HierarchicalTreeItemProps extends UIComponentProps, ChildrenCom
   title?: ShorthandValue<HierarchicalTreeTitleProps>;
 }
 
+export const hierarchicalTreeItemClassName = 'ui-hierarchicaltree__item';
+export const hierarchicalTreeItemSlotClassNames: HierarchicalTreeItemSlotClassNames = {
+  subtree: `${hierarchicalTreeItemClassName}__subtree`,
+};
+
 class HierarchicalTreeItem extends UIComponent<WithAsProp<HierarchicalTreeItemProps>> {
   static create: ShorthandFactory<HierarchicalTreeItemProps>;
 
   static displayName = 'HierarchicalTreeItem';
 
-  static className = 'ui-hierarchicaltree__item';
-
-  static slotClassNames: HierarchicalTreeItemSlotClassNames = {
-    title: `${HierarchicalTreeItem.className}__title`,
-    subtree: `${HierarchicalTreeItem.className}__subtree`,
-  };
+  static deprecated_className = hierarchicalTreeItemClassName;
 
   static propTypes = {
     ...commonPropTypes.createCommon({
@@ -164,7 +163,6 @@ class HierarchicalTreeItem extends UIComponent<WithAsProp<HierarchicalTreeItemPr
       <>
         {HierarchicalTreeTitle.create(title, {
           defaultProps: () => ({
-            className: HierarchicalTreeItem.slotClassNames.title,
             open,
             hasSubtree,
             as: hasSubtree ? 'span' : 'a',
@@ -177,7 +175,7 @@ class HierarchicalTreeItem extends UIComponent<WithAsProp<HierarchicalTreeItemPr
             {HierarchicalTree.create(items, {
               defaultProps: () => ({
                 accessibility: hierarchicalSubtreeBehavior,
-                className: HierarchicalTreeItem.slotClassNames.subtree,
+                className: hierarchicalTreeItemSlotClassNames.subtree,
                 exclusive,
                 renderItemTitle,
               }),

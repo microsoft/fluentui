@@ -9,7 +9,7 @@ const path = require('path');
 
 // The package name can be given as a named or positional argument
 const newPackageName = /** @type {string} */ (argv.name || argv._[0]);
-const newPackageNpmName = '@uifabric/' + newPackageName;
+const newPackageNpmName = '@fluentui/' + newPackageName;
 
 if (!newPackageName) {
   console.error('Please specify a name for the new package.');
@@ -47,24 +47,19 @@ const experimentsPackageJson = JSON.parse(fs.readFileSync(experimentsPackagePath
 const steps = [
   { template: 'NpmIgnore', output: '.npmignore' },
   { template: 'Npmrc', output: '.npmrc' },
-  { template: 'ChangelogJson', output: 'CHANGELOG.json' },
-  { template: 'ChangelogMarkdown', output: 'CHANGELOG.md' },
   { template: 'License', output: 'LICENSE' },
   { template: 'Readme', output: 'README.md' },
-  { template: 'JustConfig', output: 'just.config.js' },
+  { template: 'JustConfig', output: 'just.config.ts' },
   { template: 'JestConfig', output: 'jest.config.js' },
   { template: 'PackageJson', output: 'package.json' },
   { template: 'TsConfig', output: 'tsconfig.json' },
   { template: 'TsLint', output: 'tslint.json' },
-  { template: 'WebpackConfig', output: 'webpack.config.js' },
-  { template: 'WebpackServeConfig', output: 'webpack.serve.config.js' },
+  { template: 'StorybookMain', output: '.storybook/main.js' },
+  { template: 'StorybookManager', output: '.storybook/manager.js' },
+  { template: 'StorybookPreview', output: '.storybook/preview.js' },
   { template: 'Tests', output: 'config/tests.js' },
-  { template: 'PreCopy', output: 'config/pre-copy.json' },
   { template: 'IndexTs', output: 'src/index.ts' },
   { template: 'Version', output: 'src/version.ts' },
-  { template: 'AppDefinition', output: 'src/demo/AppDefinition.tsx' },
-  { template: 'GettingStartedPage', output: 'src/demo/GettingStartedPage.tsx' },
-  { template: 'Demo', output: 'src/demo/index.tsx' },
 ];
 
 // Strings
@@ -177,9 +172,9 @@ function makePackage(error) {
     return;
   }
 
+  fs.mkdirSync(`${packagePath}/.storybook`);
   fs.mkdirSync(`${packagePath}/config`);
   fs.mkdirSync(`${packagePath}/src`);
-  fs.mkdirSync(`${packagePath}/src/demo`);
   fs.mkdirSync(`${packagePath}/src/components`);
 
   performStep(0);

@@ -889,3 +889,73 @@ export function getMaxHeight(
 export function getOppositeEdge(edge: RectangleEdge): RectangleEdge {
   return edge * -1;
 }
+
+/**
+ * Window with typings for experimental features regarding Dual Screen devices.
+ */
+interface IWindowWithSegments extends Window {
+  getWindowSegments?: () => DOMRect[];
+}
+
+function _getBoundsFromTargetWindow(
+  target: Element | MouseEvent | IPoint | null,
+  targetWindow: IWindowWithSegments,
+): IRectangle {
+  let segments = undefined;
+  if (targetWindow.getWindowSegments) {
+    segments = targetWindow.getWindowSegments();
+  }
+
+  // Identify if we're dealing with single screen scenarios.
+  if (segments === undefined || segments.length <= 1) {
+    return {
+      top: 0,
+      left: 0,
+      right: targetWindow.innerWidth,
+      bottom: targetWindow.innerHeight,
+      width: targetWindow.innerWidth,
+      height: targetWindow.innerHeight,
+    };
+  }
+
+  // Logic for determining dual screen scenarios.
+  let x = 0;
+  let y = 0;
+
+  // If the target is an Element get coordinates for its center.
+  if (target !== null && !!(target as Element).getBoundingClientRect) {
+    const clientRect = (target as Element).getBoundingClientRect();
+    x = (clientRect.left + clientRect.right) / 2;
+    y = (clientRect.top + clientRect.bottom) / 2;
+  }
+  // If the target is a MouseEvent or an IPoint get x and y coordinates directly.
+  else if (target !== null) {
+    x = (target as MouseEvent | IPoint).x;
+    y = (target as MouseEvent | IPoint).y;
+  }
+
+  let bounds = { top: 0, left: 0, right: 0, bottom: 0, width: 0, height: 0 };
+
+  // Define which window segment are the coordinates in and calculate bounds based on that.
+  for (const segment of segments) {
+    if (x && segment.left <= x && segment.right >= x && y && segment.top <= y && segment.bottom >= y) {
+      bounds = {
+        top: segment.top,
+        left: segment.left,
+        right: segment.right,
+        bottom: segment.bottom,
+        width: segment.width,
+        height: segment.height,
+      };
+    }
+  }
+
+  return bounds;
+}
+
+export function getBoundsFromTargetWindow(
+  target: Element | MouseEvent | IPoint | null,
+  targetWindow: IWindowWithSegments,
+): IRectangle {
+  return _getBoundsFromTargetWindow(target, targetWindow);
+}

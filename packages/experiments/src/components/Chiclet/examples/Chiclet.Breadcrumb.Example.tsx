@@ -50,7 +50,7 @@ export class ChicletBreadcrumbExample extends React.Component {
       <Chiclet
         url={SAMPLE_URL}
         title="Quarterly Results.docx"
-        image="https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/svg/docx_48x1.svg"
+        image="https://static2.sharepointonline.com/files/fabric/assets/item-types/96/docx.svg"
         size={ChicletSize.medium}
         description={breadcrumb}
       />

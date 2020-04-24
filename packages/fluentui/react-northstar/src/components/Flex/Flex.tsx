@@ -45,9 +45,9 @@ export type FlexStylesProps = Pick<
   FlexProps,
   'column' | 'debug' | 'fill' | 'gap' | 'hAlign' | 'inline' | 'padding' | 'space' | 'vAlign' | 'wrap'
 >;
+export const flexClassName = 'ui-flex';
 
 const Flex: React.FC<WithAsProp<FlexProps>> & {
-  className: string;
   handledProps: (keyof FlexProps)[];
   Item: typeof FlexItem;
 } = props => {
@@ -74,7 +74,7 @@ const Flex: React.FC<WithAsProp<FlexProps>> & {
   } = props;
 
   const { classes } = useStyles<FlexStylesProps>(Flex.displayName, {
-    className: Flex.className,
+    className: flexClassName,
     mapPropsToStyles: () => ({
       column,
       debug,
@@ -118,7 +118,6 @@ const Flex: React.FC<WithAsProp<FlexProps>> & {
   return element;
 };
 
-Flex.className = 'ui-flex';
 Flex.displayName = 'Flex';
 
 Flex.propTypes = {

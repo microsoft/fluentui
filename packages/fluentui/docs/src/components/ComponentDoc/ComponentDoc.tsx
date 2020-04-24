@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
-import { tabListBehavior, Header, Icon, Dropdown, Text, Grid, Menu } from '@fluentui/react-northstar';
+import { tabListBehavior, Header, Dropdown, Text, Grid, Menu } from '@fluentui/react-northstar';
+import { ArrowDownIcon } from '@fluentui/react-icons-northstar';
 
 import { getFormattedHash } from '../../utils';
 // import ComponentDocLinks from './ComponentDocLinks'
@@ -221,7 +222,7 @@ class ComponentDoc extends React.Component<ComponentDocProps, ComponentDocState>
           )}
 
           <div style={exampleEndStyle}>
-            This is the bottom <Icon name="pointing down" />
+            This is the bottom <ArrowDownIcon />
           </div>
         </div>
       </div>

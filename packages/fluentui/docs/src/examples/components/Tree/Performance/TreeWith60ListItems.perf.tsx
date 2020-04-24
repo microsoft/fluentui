@@ -1,4 +1,5 @@
 import { Tree, Avatar, List } from '@fluentui/react-northstar';
+import { AcceptIcon } from '@fluentui/react-icons-northstar';
 import * as _ from 'lodash';
 import * as React from 'react';
 
@@ -8,7 +9,7 @@ const avatars = {
 };
 const janeAvatar = {
   image: `data:image/jpeg;base64,${avatars.ade}`,
-  status: { color: 'green', icon: 'icon-checkmark' },
+  status: { color: 'green', icon: <AcceptIcon /> },
 };
 
 const headers = ['Irving Kuhic', 'Skyler Parks', 'Dante Schneider'];
@@ -53,10 +54,12 @@ const items = [
 // This renders titles depending on their level. The level one titles are rendered as default
 // TreeTitle with just text, while the level 2 titles are rendered as ListItems.
 const titleRenderer = (Component, { content, header, headerMedia, media, ...restProps }) => {
+  // as providing all props to List.Item was showing console errors, therefore reducing props
+  const { treeSize, expanded, hasSubtree, selectableParent, selectionIndicator, ...restReducedProps } = restProps;
   return !header ? (
     <Component {...restProps}>{content}</Component>
   ) : (
-    <List.Item {...restProps} content={content} header={header} headerMedia={headerMedia} media={media} />
+    <List.Item {...restReducedProps} content={content} header={header} headerMedia={headerMedia} media={media} />
   );
 };
 

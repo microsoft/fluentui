@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { css, createArray } from 'office-ui-fabric-react/lib/Utilities';
-import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
+import { Checkbox, ICheckboxStyles } from 'office-ui-fabric-react/lib/Checkbox';
 import { MarqueeSelection, Selection, IObjectWithKey } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { getTheme, mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 
@@ -50,6 +50,8 @@ const styles = mergeStyleSets({
   },
 });
 
+const checkboxStyles: Partial<ICheckboxStyles> = { root: { margin: '10px 0' } };
+
 export interface IMarqueeSelectionBasicExampleState {
   isMarqueeEnabled: boolean;
 }
@@ -83,12 +85,7 @@ export class MarqueeSelectionBasicExample extends React.Component<{}, IMarqueeSe
   public render(): JSX.Element {
     return (
       <MarqueeSelection selection={this._selection} isEnabled={this.state.isMarqueeEnabled}>
-        <Checkbox
-          styles={{ root: { margin: '10px 0' } }}
-          label="Is marquee enabled"
-          defaultChecked={true}
-          onChange={this._onChange}
-        />
+        <Checkbox styles={checkboxStyles} label="Is marquee enabled" defaultChecked={true} onChange={this._onChange} />
         <p>Drag a rectangle around the items below to select them:</p>
         <ul className={styles.photoList}>
           {PHOTOS.map((photo, index) => (

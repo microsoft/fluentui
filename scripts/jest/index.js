@@ -8,4 +8,5 @@ module.exports = {
     '^.+\\.tsx?$': 'babel-jest',
   },
   verbose: false,
+  watchPlugins: ['jest-watch-typeahead/filename', 'jest-watch-typeahead/testname'],
 };

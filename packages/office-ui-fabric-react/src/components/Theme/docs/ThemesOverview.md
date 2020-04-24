@@ -6,7 +6,7 @@ To use themes, an application must call `loadTheme()` immediately at app startup
 Here is an example:
 
 ```tsx
-import { loadTheme } from 'office-ui-fabric-react/lib/Styling';
+import { loadTheme } from '@fluentui/react';
 
 loadTheme({
   palette: {
@@ -45,7 +45,7 @@ These can be used separately, or together, as shown in the example below.
 The overrides can include any property from [`IRawStyle`](#/controls/web/references/irawstyle).
 
 ```tsx
-import { loadTheme } from 'office-ui-fabric-react';
+import { loadTheme } from '@fluentui/react';
 
 loadTheme({
   defaultFontStyle: { fontFamily: 'Monaco, Menlo, Consolas', fontWeight: 'regular' },

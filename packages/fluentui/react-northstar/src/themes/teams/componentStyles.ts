@@ -3,8 +3,14 @@ export { default as AccordionContent } from './components/Accordion/accordionCon
 export { default as AccordionTitle } from './components/Accordion/accordionTitleStyles';
 
 export { default as Alert } from './components/Alert/alertStyles';
+export { default as AlertDismissAction } from './components/Alert/alertDismissActionStyles';
 
 export { default as Attachment } from './components/Attachment/attachmentStyles';
+export { default as AttachmentAction } from './components/Attachment/attachmentActionStyles';
+export { default as AttachmentBody } from './components/Attachment/attachmentBodyStyles';
+export { default as AttachmentDescription } from './components/Attachment/attachmentDescriptionStyles';
+export { default as AttachmentHeader } from './components/Attachment/attachmentHeaderStyles';
+export { default as AttachmentIcon } from './components/Attachment/attachmentIconStyles';
 
 export { default as Avatar } from './components/Avatar/avatarStyles';
 
@@ -45,8 +51,7 @@ export { default as HierarchicalTree } from './components/HierarchicalTree/hiera
 export { default as HierarchicalTreeItem } from './components/HierarchicalTree/hierarchicalTreeItemStyles';
 export { default as HierarchicalTreeTitle } from './components/HierarchicalTree/hierarchicalTreeTitleStyles';
 
-export { default as Icon } from './components/Icon/iconStyles';
-export { default as SvgIcon } from './components/Icon/svgIconStyles';
+export { default as SvgIcon } from './components/SvgIcon/svgIconStyles';
 
 export { default as Image } from './components/Image/imageStyles';
 

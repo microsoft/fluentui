@@ -1,6 +1,6 @@
 import { ComponentSlotStylesPrepared } from '@fluentui/styles';
 import { MenuButtonProps } from '../../../../components/MenuButton/MenuButton';
-import PopupContent from '../../../../components/Popup/PopupContent';
+import { popupContentSlotClassNames } from '../../../../components/Popup/PopupContent';
 
 const menuButtonStyles: ComponentSlotStylesPrepared<MenuButtonProps> = {
   root: () => ({
@@ -8,10 +8,10 @@ const menuButtonStyles: ComponentSlotStylesPrepared<MenuButtonProps> = {
     display: 'inline-block',
   }),
   popupContent: () => ({
-    [`& .${PopupContent.slotClassNames.content}`]: {
+    [`& .${popupContentSlotClassNames.content}`]: {
+      borderWidth: '0px',
       padding: '0px',
     },
-    borderWidth: '0px',
   }),
 };
 
