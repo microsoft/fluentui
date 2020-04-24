@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Callout: Updating positioning logic to account for dual screen scenarios.",
-  "packageName": "office-ui-fabric-react",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-04-20T20:28:44.638Z"
-}
