@@ -99,10 +99,10 @@ export const Table: React.FC<WithAsProp<TableProps>> &
       } as TableRowProps;
       const overrideProps = handleVariablesOverrides(variables);
       return TableRow.create(row, {
-        defaultProps: () => ({
-          ...props,
-          accessibility: (accessibility && accessibility({ header: !!header })?.childBehaviors.row) || undefined,
-        }),
+        defaultProps: () =>
+          getA11yProps('row', {
+            ...props,
+          }),
         overrideProps,
       });
     });
@@ -122,10 +122,10 @@ export const Table: React.FC<WithAsProp<TableProps>> &
     const overrideProps = handleVariablesOverrides(variables);
 
     return TableRow.create(header, {
-      defaultProps: () => ({
-        ...headerRowProps,
-        accessibility: (accessibility && accessibility({ header: !!header })?.childBehaviors.row) || undefined,
-      }),
+      defaultProps: () =>
+        getA11yProps('row', {
+          ...headerRowProps,
+        }),
       overrideProps,
     });
   };
