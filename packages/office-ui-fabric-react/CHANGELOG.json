@@ -2,6 +2,21 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 24 Apr 2020 12:39:25 GMT",
+      "tag": "office-ui-fabric-react_v7.107.5",
+      "version": "7.107.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Callout: Updating positioning logic to account for dual screen scenarios.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "78cf512baecab4ae38d59a70f3157ed8c2da2bf9",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 22 Apr 2020 12:33:04 GMT",
       "tag": "office-ui-fabric-react_v7.107.3",
       "version": "7.107.3",
