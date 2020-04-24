@@ -43,6 +43,7 @@ const useAccessibility = <Props>(behavior: Accessibility<Props>, options: UseAcc
 
   const getA11yProps: UseAccessibilityResult = (slotName, userProps) => {
     const hasKeyDownHandlers = Boolean(definition.keyHandlers[slotName] || userProps.onKeyDown);
+    const childBehavior = definition.childBehaviors ? definition.childBehaviors[slotName] : undefined;
     slotProps.current[slotName] = userProps;
 
     // We want to avoid adding event handlers until it's really needed
@@ -61,6 +62,7 @@ const useAccessibility = <Props>(behavior: Accessibility<Props>, options: UseAcc
     }
 
     const finalProps: MergedProps = {
+      ...(childBehavior && { accessibility: childBehavior }),
       ...definition.attributes[slotName],
       ...userProps,
       onKeyDown: slotHandlers.current[slotName],
