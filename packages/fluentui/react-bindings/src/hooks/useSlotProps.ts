@@ -1,4 +1,4 @@
-type UseSlotPropsResult = (slot: string) => object;
+type UseSlotPropsResult = (slot: string) => Record<string, any>;
 
 const useSlotProps = <P = {}>(
   slotPropsChain: Record<string, (props: P) => Record<string, any> | Record<string, any>>[],

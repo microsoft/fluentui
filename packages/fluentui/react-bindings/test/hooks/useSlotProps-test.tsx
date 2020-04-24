@@ -43,8 +43,8 @@ describe('useSlotProps', () => {
   it('applies slotProps to correct slots', () => {
     const slotPropsChain = [
       {
-        start: props => ({ squared: props.squared }),
-        content: props => ({ circular: props.circular }),
+        start: (props: TestComponentProps) => ({ squared: props.squared }),
+        content: (props: TestComponentProps) => ({ circular: props.circular }),
       },
     ];
 
@@ -66,12 +66,12 @@ describe('useSlotProps', () => {
   it('merges slotProps along the chain', () => {
     const slotPropsChain = [
       {
-        start: props => ({ squared: props.squared }),
-        content: props => ({ circular: props.circular }),
+        start: (props: TestComponentProps) => ({ squared: props.squared }),
+        content: (props: TestComponentProps) => ({ circular: props.circular }),
       },
       {
-        start: props => ({ triangled: props.triangled }),
-        content: props => ({ squared: props.squared }),
+        start: (props: TestComponentProps) => ({ triangled: props.triangled }),
+        content: (props: TestComponentProps) => ({ squared: props.squared }),
       },
     ];
 
@@ -93,12 +93,12 @@ describe('useSlotProps', () => {
   it('overrides slotProps along the chain', () => {
     const slotPropsChain = [
       {
-        start: props => ({ squared: props.squared }),
-        content: props => ({ circular: props.circular }),
+        start: (props: TestComponentProps) => ({ squared: props.squared }),
+        content: (props: TestComponentProps) => ({ circular: props.circular }),
       },
       {
-        start: props => ({ squared: false, triangled: props.triangled }),
-        content: props => ({ squared: props.squared, circular: true }),
+        start: (props: TestComponentProps) => ({ squared: false, triangled: props.triangled }),
+        content: (props: TestComponentProps) => ({ squared: props.squared, circular: true }),
       },
     ];
 
