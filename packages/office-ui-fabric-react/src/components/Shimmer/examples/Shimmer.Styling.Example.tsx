@@ -9,10 +9,14 @@ import {
 import { mergeStyleSets, ITheme, createTheme } from 'office-ui-fabric-react/lib/Styling';
 import { Customizer } from 'office-ui-fabric-react/lib/Utilities';
 
+// Custom theme passed to Customizer
 const customThemeForShimmer: ITheme = createTheme({
   palette: {
+    // palette slot used in Shimmer for main background
     neutralLight: '#bdd4ed',
+    // palette slot used in Shimmer for tip of the moving wave
     neutralLighter: '#7AAFE7',
+    // palette slot used in Shimmer for all the space around the shimmering elements
     white: '#0078D4',
   },
 });
@@ -45,6 +49,7 @@ const classNames = mergeStyleSets({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'stretch',
+    // using the palette color to match the gaps and borders of the shimmer.
     background: customThemeForShimmer.palette.white,
     selectors: {
       '& > .ms-Shimmer-container': {
@@ -59,6 +64,7 @@ const classNames = mergeStyleSets({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    // using the palette color to match the gaps and borders of the shimmer.
     background: customThemeForShimmer.palette.white,
     outline: `1px solid ${customThemeForShimmer.palette.neutralPrimary}`,
     outlineOffset: '-10px',
@@ -68,6 +74,7 @@ const classNames = mergeStyleSets({
   },
 });
 
+// Passing a color to match the background color of the containing div.
 const getCustomElements = (backgroundColor?: string) => {
   return (
     <div style={{ display: 'flex' }}>
