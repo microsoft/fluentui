@@ -1,4 +1,4 @@
-import { Accessibility, tableBehavior } from '@fluentui/accessibility';
+import { Accessibility, tableBehavior, TableBehaviorProps } from '@fluentui/accessibility';
 import { getElementType, useTelemetry, useUnhandledProps, useAccessibility, useStyles } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
@@ -33,7 +33,7 @@ export interface TableProps extends UIComponentProps, ChildrenComponentProps {
   /**
    * Accessibility behavior if overridden by the user.
    * */
-  accessibility?: Accessibility;
+  accessibility?: Accessibility<TableBehaviorProps>;
 
   /** The columns of the Table with a space-separated list of values.
    */
@@ -73,7 +73,7 @@ export const Table: React.FC<WithAsProp<TableProps>> &
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Table.handledProps, props);
 
-  const getA11yProps = useAccessibility(accessibility, {
+  const getA11yProps = useAccessibility<TableBehaviorProps>(accessibility, {
     debugName: Table.displayName,
     rtl: context.rtl,
   });
@@ -101,7 +101,7 @@ export const Table: React.FC<WithAsProp<TableProps>> &
       return TableRow.create(row, {
         defaultProps: () => ({
           ...props,
-          accessibility: (accessibility && accessibility({ header })?.childBehaviors.row) || undefined,
+          accessibility: (accessibility && accessibility({ header: !!header })?.childBehaviors.row) || undefined,
         }),
         overrideProps,
       });
@@ -124,7 +124,7 @@ export const Table: React.FC<WithAsProp<TableProps>> &
     return TableRow.create(header, {
       defaultProps: () => ({
         ...headerRowProps,
-        accessibility: (accessibility && accessibility({ header })?.childBehaviors.row) || undefined,
+        accessibility: (accessibility && accessibility({ header: !!header })?.childBehaviors.row) || undefined,
       }),
       overrideProps,
     });
