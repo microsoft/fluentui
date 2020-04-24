@@ -1,4 +1,4 @@
-import { Accessibility, tableBehavior, TableBehaviorProps } from '@fluentui/accessibility';
+import { Accessibility, tableBehavior } from '@fluentui/accessibility';
 import { getElementType, useTelemetry, useUnhandledProps, useAccessibility, useStyles } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
@@ -33,7 +33,7 @@ export interface TableProps extends UIComponentProps, ChildrenComponentProps {
   /**
    * Accessibility behavior if overridden by the user.
    * */
-  accessibility?: Accessibility<TableBehaviorProps>;
+  accessibility?: Accessibility;
 
   /** The columns of the Table with a space-separated list of values.
    */
@@ -73,7 +73,7 @@ export const Table: React.FC<WithAsProp<TableProps>> &
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Table.handledProps, props);
 
-  const getA11yProps = useAccessibility<TableBehaviorProps>(accessibility, {
+  const getA11yProps = useAccessibility(accessibility, {
     debugName: Table.displayName,
     rtl: context.rtl,
   });
@@ -101,7 +101,7 @@ export const Table: React.FC<WithAsProp<TableProps>> &
       return TableRow.create(row, {
         defaultProps: () => ({
           ...props,
-          accessibility: (accessibility && accessibility({ header: !!header })?.childBehaviors.row) || undefined,
+          accessibility: (accessibility && accessibility({ header })?.childBehaviors.row) || undefined,
         }),
         overrideProps,
       });
@@ -124,13 +124,13 @@ export const Table: React.FC<WithAsProp<TableProps>> &
     return TableRow.create(header, {
       defaultProps: () => ({
         ...headerRowProps,
-        accessibility: (accessibility && accessibility({ header: !!header })?.childBehaviors.row) || undefined,
+        accessibility: (accessibility && accessibility({ header })?.childBehaviors.row) || undefined,
       }),
       overrideProps,
     });
   };
 
-  const element = (
+  const element = getA11yProps.unstable_wrapWithFocusZone(
     <ElementType
       {...getA11yProps('root', {
         className: classes.root,
@@ -144,7 +144,7 @@ export const Table: React.FC<WithAsProp<TableProps>> &
       {/* <tbody> */}
       {!hasChildren && renderRows()}
       {/* </tbody> */}
-    </ElementType>
+    </ElementType>,
   );
   setEnd();
   return element;
