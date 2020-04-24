@@ -1,7 +1,7 @@
-import { treeItemClassName, treeTitleSlotClassNames } from '@fluentui/react-northstar';
+import { treeItemClassName, treeTitleClassName, treeTitleSlotClassNames } from '@fluentui/react-northstar';
 
 const selectors = {
-  treeTitle: (itemIndex: number) => `.${treeItemClassName}:nth-of-type(${itemIndex})`,
+  treeTitle: (itemIndex: number) => `.${treeItemClassName}:nth-of-type(${itemIndex}) .${treeTitleClassName}`,
   selectionIndicator: (itemIndex: number) =>
     `.${treeItemClassName}:nth-of-type(${itemIndex}) .${treeTitleSlotClassNames.indicator}`,
 };
@@ -14,6 +14,7 @@ const config: ScreenerTestsConfig = {
         .click(selectors.treeTitle(1))
         .snapshot('first expanded, not custom checkbox visible')
         .click(selectors.treeTitle(2))
+        .click(selectors.treeTitle(3))
         .click(selectors.treeTitle(6))
         .click(selectors.treeTitle(10))
         .click(selectors.treeTitle(11))
