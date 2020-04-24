@@ -186,7 +186,7 @@ const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
       unstable_props: props,
     });
 
-    const getSlotProps = useSlotProps(composeOptions.slotPropsChain, props);
+    const getSlotProps = useSlotProps<ButtonProps>(composeOptions.slotPropsChain, props);
 
     const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
     const ElementType = getElementType(props);

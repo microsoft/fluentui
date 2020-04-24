@@ -1,7 +1,7 @@
 type UseSlotPropsResult = (slot: string) => object;
 
 const useSlotProps = <P = {}>(
-  slotPropsChain: Record<string, (props: P) => Partial<P> | Partial<P>>[],
+  slotPropsChain: Record<string, (props: P) => Record<string, any> | Record<string, any>>[],
   props: P,
 ): UseSlotPropsResult => {
   const getSlotProps: UseSlotPropsResult = slot => {
