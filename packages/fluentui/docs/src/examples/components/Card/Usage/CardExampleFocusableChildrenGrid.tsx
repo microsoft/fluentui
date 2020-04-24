@@ -18,11 +18,62 @@ type SampleCardProps = {
   index?: number;
 };
 
+const names = [
+  'Beatris',
+  'Theodore',
+  'Raylene',
+  'Exie',
+  'Mozell',
+  'Tim',
+  'Dann',
+  'Carlyn',
+  'Virgil',
+  'Olin',
+  'Beatris',
+  'Theodore',
+  'Raylene',
+  'Exie',
+  'Mozell',
+  'Tim',
+  'Dann',
+  'Carlyn',
+  'Virgil',
+  'Olin',
+];
+const positions = [
+  'Art Director',
+  'Janitor',
+  'Landscaper',
+  'Zoologist',
+  'Groundskeeper',
+  'Economist',
+  'Social Worker',
+  'Artist',
+  'Electrician',
+  'Computer Specialist',
+  'Art Director',
+  'Janitor',
+  'Landscaper',
+  'Zoologist',
+  'Groundskeeper',
+  'Economist',
+  'Social Worker',
+  'Artist',
+  'Electrician',
+  'Computer Specialist',
+];
+
 const SampleCard: React.FC<SampleCardProps> = ({ index, ...unhandledProps }) => {
   return (
-    <Card accessibility={cardChildrenFocusableBehavior} aria-roledescription="user card" {...unhandledProps}>
+    <Card
+      id={`card_${index}`}
+      accessibility={cardChildrenFocusableBehavior}
+      aria-roledescription="user card"
+      {...unhandledProps}
+    >
       <Card.Header>
-        <Text content={`User #${index}`} weight="bold" />
+        <Text content={`${names[index]}`} weight="bold" id={`cardUserName_${index}`} />
+        <Text content={`${positions[index]}`} temporary id={`cardUserPosition_${index}`} />
       </Card.Header>
       <Card.Footer>
         <Flex space="between">
@@ -78,6 +129,7 @@ const CardExampleFocusableGrid = () => {
             <SampleCard
               key={nonZeroIndex}
               index={nonZeroIndex}
+              aria-labelledby={`cardUserName_${nonZeroIndex} cardUserPosition_${nonZeroIndex} card_${nonZeroIndex} `}
               aria-label={`${nonZeroIndex} of ${cardsNumber}`}
               aria-describedby={navigationMessageId}
             />
