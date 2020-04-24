@@ -161,7 +161,9 @@ Table.create = createShorthandFactory({
 });
 
 Table.propTypes = {
-  ...commonPropTypes.createCommon({ content: false }),
+  ...commonPropTypes.createCommon({
+    content: false,
+  }),
   content: customPropTypes.every([
     customPropTypes.disallow(['children']),
     PropTypes.oneOfType([PropTypes.arrayOf(customPropTypes.nodeContent), customPropTypes.nodeContent]),

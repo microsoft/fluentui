@@ -1,5 +1,6 @@
 import { Accessibility } from '../../types';
 import tableRowBehavior from './tableRowBehavior';
+import { TableProps } from '@fluentui/react-northstar';
 
 /**
  * @description
@@ -19,6 +20,6 @@ const tableBehavior: Accessibility = props => ({
   },
 });
 
-export type TableBehaviorProps = never;
+export type TableBehaviorProps = Pick<TableProps, 'header'>;
 
 export default tableBehavior;
