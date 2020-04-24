@@ -338,8 +338,8 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
       return (
         <Callout
           styles={calloutStyles}
-          {...calloutProps}
           onRestoreFocus={this._tryFocusPreviousActiveElement}
+          {...calloutProps}
           target={target}
           isBeakVisible={isBeakVisible}
           beakWidth={beakWidth}
