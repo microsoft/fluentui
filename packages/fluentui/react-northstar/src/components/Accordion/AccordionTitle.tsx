@@ -16,6 +16,7 @@ import {
   rtlTextContainer,
   applyAccessibilityKeyHandlers,
   ShorthandFactory,
+  ShorthandConfig,
 } from '../../utils';
 import { WithAsProp, ComponentEventHandler, ShorthandValue, withSafeTypeForAs } from '../../types';
 import Box, { BoxProps } from '../Box/Box';
@@ -77,6 +78,9 @@ class AccordionTitle extends UIComponent<WithAsProp<AccordionTitleProps>, any> {
   static displayName = 'AccordionTitle';
 
   static create: ShorthandFactory<AccordionTitleProps>;
+  static shorthandConfig: ShorthandConfig<AccordionTitleProps> = {
+    mappedProp: 'content',
+  };
 
   static deprecated_className = accordionTitleClassName;
 
@@ -153,7 +157,6 @@ class AccordionTitle extends UIComponent<WithAsProp<AccordionTitleProps>, any> {
                 })}
                 {Box.create(content, {
                   defaultProps: () => ({
-                    as: 'span',
                     styles: styles.content,
                   }),
                 })}

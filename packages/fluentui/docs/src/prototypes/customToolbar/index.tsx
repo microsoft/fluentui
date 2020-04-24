@@ -79,8 +79,10 @@ const CustomToolbarPrototype: React.FunctionComponent = () => {
       { count: 0, msTotal: 0 },
     );
 
+    /* eslint-disable no-console */
     console.log(`Rendered ${totals.count} Fluent UI components in ${totals.msTotal} ms`);
     console.table(telemetry.performance);
+    /* eslint-enable no-console */
   });
 
   if (telemetryRef.current) {

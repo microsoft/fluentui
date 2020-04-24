@@ -20,18 +20,16 @@
     "build": "just-scripts build",
     "clean": "just-scripts clean",
     "just": "just-scripts",
-    "lint": "yarn lint:eslint && yarn lint:old",
-    "lint:eslint": "eslint --ext .js,.ts,.tsx .",
-    "lint:fix": "yarn lint:eslint --fix && yarn lint:old --fix",
-    "lint:old": "tslint -t stylish -p .",
+    "lint": "eslint --ext .js,.ts,.tsx .",
+    "lint:fix": "yarn lint --fix",
     "start-test": "just-scripts test:watch",
     "test": "just-scripts test"
   },
   "dependencies": {
     "@types/classnames": "^2.2.9",
     "@types/jss": "^9.5.8",
-    "@uifabric/merge-styles": "^7.11.0",
-    "@uifabric/utilities": "^7.15.10",
+    "@uifabric/merge-styles": "^7.11.1",
+    "@uifabric/utilities": "^7.15.11",
     "classnames": "^2.2.6",
     "jss": "^10.0.0",
     "jss-preset-default": "^10.0.0"

@@ -69,10 +69,16 @@ const packProjectPackages = async (logger: Function): Promise<void> => {
     '@fluentui/perf',
     '@fluentui/perf-test',
   ];
+
+  // other local packages that we depend on, but are not inside packages/fluentui
+  const whitelistedPkgs = ['@fluentui/react-compose'];
+
   for (const [pkg, pkgPath] of Object.entries(projectPackages)) {
     // Don't pack fabric packages or dev tools
     if (path.basename(path.dirname(pkgPath)) !== 'fluentui' || excludedPkgs.includes(pkg)) {
-      delete projectPackages[pkg];
+      if (!whitelistedPkgs.includes(pkg)) {
+        delete projectPackages[pkg];
+      }
     }
   }
 

@@ -13,13 +13,13 @@
     "update-snapshots": "just-scripts jest -u"
   },
   "dependencies": {
-    "@uifabric/fabric-website-resources": "^7.6.40",
+    "@uifabric/fabric-website-resources": "^7.6.45",
     "axe-core": "^3.2.2",
     "axe-puppeteer": "^1.0.0",
     "axe-sarif-converter": "^2.0.1",
     "glob": "^7.1.2",
     "mkdirp": "^0.5.1",
-    "office-ui-fabric-react": "^7.107.1",
+    "office-ui-fabric-react": "^7.107.5",
     "puppeteer": "^1.13.0",
     "tslib": "^1.10.0",
     "react": "16.8.6",
@@ -35,7 +35,7 @@
     "@types/react-dom": "16.8.4",
     "@types/sarif": "^2.1.1",
     "@uifabric/build": "^7.0.0",
-    "@uifabric/icons": "^7.3.29",
-    "@uifabric/tslint-rules": "^7.1.3"
+    "@uifabric/icons": "^7.3.31",
+    "@uifabric/tslint-rules": "^7.2.0"
   }
 }

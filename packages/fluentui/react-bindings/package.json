@@ -7,10 +7,10 @@
   "dependencies": {
     "@babel/runtime": "^7.7.6",
     "@fluentui/accessibility": "^0.48.0",
-    "@fluentui/react-compose": "^0.2.6",
+    "@fluentui/react-compose": "^0.2.9",
     "@fluentui/state": "^0.48.0",
     "@fluentui/styles": "^0.48.0",
-    "@uifabric/utilities": "^7.15.10",
+    "@uifabric/utilities": "^7.15.11",
     "classnames": "^2.2.6",
     "fela": "^10.6.1",
     "lodash": "^4.17.15"
@@ -40,10 +40,8 @@
   "scripts": {
     "build": "gulp bundle:package:no-umd",
     "clean": "gulp bundle:package:clean",
-    "lint": "yarn lint:eslint && yarn lint:old",
-    "lint:eslint": "eslint --ext .js,.ts,.tsx .",
-    "lint:fix": "yarn lint:eslint --fix && yarn lint:old --fix",
-    "lint:old": "tslint -t stylish -p .",
+    "lint": "eslint --ext .js,.ts,.tsx .",
+    "lint:fix": "yarn lint --fix",
     "test": "gulp test",
     "test:watch": "gulp test:watch"
   },

@@ -2,6 +2,42 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Thu, 23 Apr 2020 12:32:40 GMT",
+      "tag": "@uifabric/charting_v2.1.0",
+      "version": "2.1.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "adding new prop hideLegend in donut chart and line chart which decides to show or hide legends",
+            "author": "v-sivsar@microsoft.com",
+            "commit": "55bae2f1b472a93a88975f4eed8633f790b29e29",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "adding onclick to the line in the line chart",
+            "author": "v-sivsar@microsoft.com",
+            "commit": "c4d15d82cea45a5abf4906756086bdd94eef5bb9",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 22 Apr 2020 12:33:04 GMT",
+      "tag": "@uifabric/charting_v2.0.4",
+      "version": "2.0.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix issue line chart 'Tool tip' is displayed top of the page throgh accessibility",
+            "author": "v-satgar@microsoft.com",
+            "commit": "5d9a8736b2d49938dc1c80134d58eebb4ff3f31b",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 17 Apr 2020 12:34:08 GMT",
       "tag": "@uifabric/charting_v2.0.0",
       "version": "2.0.0",

@@ -2,6 +2,63 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 24 Apr 2020 12:39:25 GMT",
+      "tag": "office-ui-fabric-react_v7.107.5",
+      "version": "7.107.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Callout: Updating positioning logic to account for dual screen scenarios.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "78cf512baecab4ae38d59a70f3157ed8c2da2bf9",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 22 Apr 2020 12:33:04 GMT",
+      "tag": "office-ui-fabric-react_v7.107.3",
+      "version": "7.107.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating Announced, Callout, and Calendar examples to function components",
+            "author": "czearing@outlook.com",
+            "commit": "a88adc3e90f83ae18b9eb5432dceae1d62362a84",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Fix SASS default values for theme.effects",
+            "author": "phkuo@microsoft.com",
+            "commit": "ae4e2db15a4cf25dc4abc4aef8f304f29002374a",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 21 Apr 2020 12:34:50 GMT",
+      "tag": "office-ui-fabric-react_v7.107.2",
+      "version": "7.107.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ContextualMenu: Improve perf by doing less merge styles",
+            "author": "xgao@microsoft.com",
+            "commit": "1d6687743e9fdf6a7a20a61ee61d18d36f45e0d0",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Update ColorRectangle and ColorSlider to handle native events when using the 'on' utility",
+            "author": "behowell@microsoft.com",
+            "commit": "65a2edff2455c57d4af59cc3e054ca8f4af1e499",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Sun, 19 Apr 2020 02:02:09 GMT",
       "tag": "office-ui-fabric-react_v7.107.1",
       "version": "7.107.1",

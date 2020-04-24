@@ -1,8 +1,17 @@
 # Change Log - @uifabric/react-hooks
 
-This log was last generated on Thu, 16 Apr 2020 04:01:45 GMT and should not be manually modified.
+This log was last generated on Wed, 22 Apr 2020 12:33:04 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.2.0](https://github.com/microsoft/fluentui/tree/@uifabric/react-hooks_v7.2.0)
+
+Wed, 22 Apr 2020 12:33:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/react-hooks_v7.1.7..@uifabric/react-hooks_v7.2.0)
+
+### Minor changes
+
+- Add new hooks used in migrating Fabric components to functional components ([PR #12629](https://github.com/microsoft/fluentui/pull/12629) by miclo@microsoft.com)
 
 ## [7.1.3](https://github.com/microsoft/fluentui/tree/@uifabric/react-hooks_v7.1.3)
 
