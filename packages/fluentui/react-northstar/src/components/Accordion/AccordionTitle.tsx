@@ -124,7 +124,7 @@ export const AccordionTitle: React.FC<WithAsProp<AccordionTitleProps>> &
       },
     },
     mapPropsToBehavior: () => ({
-      content: true,
+      hasContent: !!content,
       canBeCollapsed,
       as,
       active,
