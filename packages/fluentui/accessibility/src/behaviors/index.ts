@@ -72,6 +72,7 @@ export { default as embedBehavior } from './Embed/embedBehavior';
 export { default as accordionBehavior } from './Accordion/accordionBehavior';
 export { default as accordionTitleBehavior } from './Accordion/accordionTitleBehavior';
 export { default as accordionContentBehavior } from './Accordion/accordionContentBehavior';
+export * from './Accordion/accordionContentBehavior';
 export { default as checkboxBehavior } from './Checkbox/checkboxBehavior';
 export * from './Checkbox/checkboxBehavior';
 export * from './Tooltip/tooltipAsDescriptionBehavior';
