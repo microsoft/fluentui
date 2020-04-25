@@ -121,6 +121,11 @@ const TreeTitle: React.FC<WithAsProp<TreeTitleProps>> & FluentComponentStaticPro
         e.stopPropagation();
         handleClick(e);
       },
+      performSelection: e => {
+        e.preventDefault();
+        e.stopPropagation();
+        handleClick(e);
+      },
     },
     mapPropsToBehavior: () => ({
       hasSubtree,
