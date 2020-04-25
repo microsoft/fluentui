@@ -7,11 +7,6 @@ import { KeyCodes } from 'office-ui-fabric-react/lib/Utilities';
 import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 import { useBoolean } from '@uifabric/react-hooks';
 
-interface IHoverCardFieldProps {
-  content: string;
-  expandingCardProps: IExpandingCardProps;
-}
-
 const classNames = mergeStyleSets({
   compactCard: {
     display: 'flex',
@@ -36,28 +31,6 @@ const log = (text: string): (() => void) => {
     console.log(text);
   };
 };
-
-const HoverCardField: React.FunctionComponent<IHoverCardFieldProps> = (props: IHoverCardFieldProps) => {
-  const [contentRendered, { toggle: toggleContentRendered }] = useBoolean(false);
-  const targetElementRef: React.RefObject<HTMLDivElement> = React.useRef<HTMLDivElement>(null);
-  return (
-    <div ref={targetElementRef} data-is-focusable>
-      {props.content}
-      {contentRendered && (
-        <HoverCard
-          expandingCardProps={props.expandingCardProps}
-          target={targetElementRef.current}
-          cardDismissDelay={300}
-          onCardVisible={log('onCardVisible')}
-          onCardHide={log('onCardHide')}
-          trapFocus
-          openHotKey={KeyCodes.enter}
-        />
-      )}
-    </div>
-  );
-};
-
 const items: IExampleItem[] = createListItems(10);
 const buildColumn = (): IColumn[] => {
   return buildColumns(items).filter(column => column.name === 'location' || column.name === 'key');
@@ -93,6 +66,8 @@ const onRenderItemColumn = (item: IExampleItem, index: number, column: IColumn):
       isBeakVisible: true,
     },
   };
+  React.useEffect(toggleContentRendered, []);
+
   if (column.key === 'key') {
     return (
       <div className={classNames.item}>

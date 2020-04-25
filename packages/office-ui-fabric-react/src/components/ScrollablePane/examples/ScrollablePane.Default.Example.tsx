@@ -38,7 +38,6 @@ const items = Array.from({ length: 5 }).map((item, index) => ({
   text: lorem(200),
   index,
 }));
-
 const createContentArea = (item: IScrollablePaneExampleItem) => (
   <div
     key={item.index}
@@ -53,7 +52,6 @@ const createContentArea = (item: IScrollablePaneExampleItem) => (
   </div>
 );
 const contentAreas = items.map(createContentArea);
-
 export const ScrollablePaneDefaultExample: React.FunctionComponent = () => (
   <div className={classNames.wrapper}>
     <ScrollablePane styles={scrollablePaneStyles}>{...contentAreas}</ScrollablePane>
