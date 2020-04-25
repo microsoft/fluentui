@@ -3,7 +3,7 @@ import { getScrollbarWidth, getRTL, Rectangle as FullRectangle, IRectangle } fro
 import {
   IPositionDirectionalHintData,
   IPositionedData,
-  IPoint,
+  Point,
   ICalloutPositionedInfo,
   ICalloutBeakPositionedInfo,
   IPositionProps,
@@ -638,7 +638,7 @@ function _getRectangleFromIRect(rect: IRectangle): Rectangle {
   return new Rectangle(rect.left, rect.right, rect.top, rect.bottom);
 }
 
-function _getTargetRect(bounds: Rectangle, target: Element | MouseEvent | IPoint | undefined): Rectangle {
+function _getTargetRect(bounds: Rectangle, target: Element | MouseEvent | Point | undefined): Rectangle {
   let targetRectangle: Rectangle;
   if (target) {
     if (!!(target as MouseEvent).preventDefault) {
@@ -648,7 +648,7 @@ function _getTargetRect(bounds: Rectangle, target: Element | MouseEvent | IPoint
       targetRectangle = _getRectangleFromElement(target as Element);
       // HTMLImgElements can have x and y values. The check for it being a point must go last.
     } else {
-      const point: IPoint = target as IPoint;
+      const point: Point = target as Point;
       // tslint:disable-next-line:deprecation
       const left = point.left || point.x;
       // tslint:disable-next-line:deprecation
@@ -862,7 +862,7 @@ export function positionCard(
  * If no bounds are provided then the window is treated as the bounds.
  */
 export function getMaxHeight(
-  target: Element | MouseEvent | IPoint,
+  target: Element | MouseEvent | Point,
   targetEdge: DirectionalHint,
   gapSpace: number = 0,
   bounds?: IRectangle,
@@ -870,7 +870,7 @@ export function getMaxHeight(
 ): number {
   const mouseTarget: MouseEvent = target as MouseEvent;
   const elementTarget: Element = target as Element;
-  const pointTarget: IPoint = target as IPoint;
+  const pointTarget: Point = target as Point;
   let targetRect: Rectangle;
   const boundingRectangle = bounds
     ? _getRectangleFromIRect(bounds)
@@ -907,7 +907,7 @@ interface IWindowWithSegments extends Window {
 }
 
 function _getBoundsFromTargetWindow(
-  target: Element | MouseEvent | IPoint | null,
+  target: Element | MouseEvent | Point | null,
   targetWindow: IWindowWithSegments,
 ): IRectangle {
   let segments = undefined;
@@ -928,8 +928,8 @@ function _getBoundsFromTargetWindow(
   }
 
   // Logic for determining dual screen scenarios.
-  let x = 0;
-  let y = 0;
+  let x: number | undefined = 0;
+  let y: number | undefined = 0;
 
   // If the target is an Element get coordinates for its center.
   if (target !== null && !!(target as Element).getBoundingClientRect) {
@@ -937,10 +937,12 @@ function _getBoundsFromTargetWindow(
     x = (clientRect.left + clientRect.right) / 2;
     y = (clientRect.top + clientRect.bottom) / 2;
   }
-  // If the target is a MouseEvent or an IPoint get x and y coordinates directly.
+  // If the target is not null get x-axis and y-axis coordinates directly.
   else if (target !== null) {
-    x = (target as MouseEvent | IPoint).x;
-    y = (target as MouseEvent | IPoint).y;
+    // tslint:disable-next-line:deprecation
+    x = (target as Point).left || (target as MouseEvent | Point).x;
+    // tslint:disable-next-line:deprecation
+    y = (target as Point).top || (target as MouseEvent | Point).y;
   }
 
   let bounds = { top: 0, left: 0, right: 0, bottom: 0, width: 0, height: 0 };
@@ -963,7 +965,7 @@ function _getBoundsFromTargetWindow(
 }
 
 export function getBoundsFromTargetWindow(
-  target: Element | MouseEvent | IPoint | null,
+  target: Element | MouseEvent | Point | null,
   targetWindow: IWindowWithSegments,
 ): IRectangle {
   return _getBoundsFromTargetWindow(target, targetWindow);
