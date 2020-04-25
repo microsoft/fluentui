@@ -9,7 +9,7 @@ import {
 } from '../types';
 
 import { AccordionContentProps } from '../../components/Accordion/AccordionContent';
-import { AccordionProps } from '../../components/Accordion/Accordion';
+import { AccordionStylesProps } from '../../components/Accordion/Accordion';
 import { AccordionTitleProps } from '../../components/Accordion/AccordionTitle';
 import { AlertStylesProps } from '../../components/Alert/Alert';
 import { AnimationProps } from '../../components/Animation/Animation';
@@ -87,7 +87,7 @@ import { SvgIconStylesProps } from '../../components/SvgIcon/SvgIcon';
 import { SplitButtonStylesProps } from '../../components/SplitButton/SplitButton';
 
 export type TeamsThemeStylesProps = {
-  Accordion: AccordionProps;
+  Accordion: AccordionStylesProps;
   AccordionTitle: AccordionTitleProps;
   AccordionContent: AccordionContentProps;
   Alert: AlertStylesProps;

@@ -3,7 +3,7 @@ import * as keyboardKey from 'keyboard-key';
 
 import Accordion from 'src/components/Accordion/Accordion';
 import { isConformant, handlesAccessibility } from 'test/specs/commonTests';
-import { mountWithProvider, mountWithProviderAndGetComponent } from 'test/utils';
+import { mountWithProvider, mountWithProviderAndGetComponent, findIntrinsicElement } from 'test/utils';
 import { accordionTitleSlotClassNames } from 'src/components/Accordion/AccordionTitle';
 import { ReactWrapper, CommonWrapper } from 'enzyme';
 
@@ -32,28 +32,48 @@ const getTitleButtonAtIndex = (wrapper: ReactWrapper, index: number): CommonWrap
     .at(index);
 };
 
+const getExclusiveItemWithPropIndex = (accordion, prop) =>
+  accordion.find('AccordionTitle').filterWhere(accordionTitle => accordionTitle.prop(prop));
+
+const getNonExclusiveItemWithPropIndex = (accordion, prop) =>
+  accordion
+    .find('AccordionTitle')
+    .filterWhere(accordionTitle => accordionTitle.prop(prop))
+    .prop('index');
+
+const getNonExclusiveItemWithPropArray = (accordion, prop) =>
+  accordion
+    .find('AccordionTitle')
+    .filterWhere(accordionTitle => accordionTitle.prop(prop))
+    .map(node => node.prop('index'));
+
+const getAccordionTitleAtIndex = (accordion, index) =>
+  findIntrinsicElement(accordion, `.${accordionTitleSlotClassNames.contentWrapper}`)
+    .at(index)
+    .getDOMNode();
+
 describe('Accordion', () => {
-  isConformant(Accordion, { autoControlledProps: ['activeIndex'] });
+  isConformant(Accordion, { constructorName: 'Accordion', autoControlledProps: ['activeIndex'] });
 
   describe('activeIndex', () => {
-    it('is -1 by default in an exclusive accordion', () => {
+    it('has no active item by default when exclusive', () => {
       const accordion = mountWithProviderAndGetComponent(Accordion, <Accordion panels={panels} exclusive />);
-      expect(accordion.state('activeIndex')).toBe(-1);
+      expect(getExclusiveItemWithPropIndex(accordion, 'active')).toHaveLength(0);
     });
 
     it('is [-1] by default in an non-exclusive accordion', () => {
       const accordion = mountWithProviderAndGetComponent(Accordion, <Accordion panels={panels} />);
-      expect(accordion.state('activeIndex')).toEqual(expect.arrayContaining([-1]));
+      expect(getExclusiveItemWithPropIndex(accordion, 'active')).toHaveLength(0);
     });
 
     it('is 0 by default in an exclusive expanded accordion', () => {
       const accordion = mountWithProviderAndGetComponent(Accordion, <Accordion panels={panels} exclusive expanded />);
-      expect(accordion.state('activeIndex')).toBe(0);
+      expect(getNonExclusiveItemWithPropIndex(accordion, 'active')).toBe(0);
     });
 
-    it('is [0] by default in an non-exclusive expanded accordion', () => {
+    it('is only 0 by default in an non-exclusive expanded accordion', () => {
       const accordion = mountWithProviderAndGetComponent(Accordion, <Accordion panels={panels} expanded />);
-      expect(accordion.state('activeIndex')).toEqual(expect.arrayContaining([0]));
+      expect(getNonExclusiveItemWithPropIndex(accordion, 'active')).toBe(0);
     });
 
     it('is the value of prop defaultActiveIndex is passed', () => {
@@ -62,43 +82,48 @@ describe('Accordion', () => {
         Accordion,
         <Accordion panels={panels} defaultActiveIndex={defaultActiveIndex} />,
       );
-      expect(accordion.state('activeIndex')).toEqual(expect.arrayContaining(defaultActiveIndex));
+      expect(getNonExclusiveItemWithPropArray(accordion, 'active')).toEqual(expect.arrayContaining(defaultActiveIndex));
     });
 
     it('contains the indexes clicked by the user if the panels were closed', () => {
-      const wrapper = mountWithProvider(<Accordion panels={panels} />);
-      const accordion = wrapper.find(Accordion);
-      getTitleButtonAtIndex(wrapper, 0).simulate('click');
-      getTitleButtonAtIndex(wrapper, 2).simulate('click');
-
-      expect(accordion.state('activeIndex')).toEqual(expect.arrayContaining([0, 2]));
+      const accordion = mountWithProvider(<Accordion panels={panels} />);
+      getTitleButtonAtIndex(accordion, 0).simulate('click');
+      getTitleButtonAtIndex(accordion, 2).simulate('click');
+      expect(getNonExclusiveItemWithPropArray(accordion, 'active')).toEqual(expect.arrayContaining([0, 2]));
     });
 
     it('contains the only one index clicked by the user if exclusive prop is passed', () => {
-      const wrapper = mountWithProvider(<Accordion panels={panels} exclusive />);
-      const accordion = wrapper.find(Accordion);
-      getTitleButtonAtIndex(wrapper, 0).simulate('click');
-      expect(accordion.state('activeIndex')).toEqual(0);
+      const accordion = mountWithProvider(<Accordion panels={panels} exclusive />);
 
-      getTitleButtonAtIndex(wrapper, 2).simulate('click');
-      expect(accordion.state('activeIndex')).toEqual(2);
+      getTitleButtonAtIndex(accordion, 0).simulate('click');
+      expect(
+        accordion
+          .find('AccordionTitle')
+          .filterWhere(accordionTitle => accordionTitle.prop('active'))
+          .prop('index'),
+      ).toEqual(0);
+
+      getTitleButtonAtIndex(accordion, 2).simulate('click');
+      expect(
+        accordion
+          .find('AccordionTitle')
+          .filterWhere(accordionTitle => accordionTitle.prop('active'))
+          .prop('index'),
+      ).toEqual(2);
     });
 
     it('has indexes removed when their panels are closed by the user', () => {
-      const wrapper = mountWithProvider(<Accordion panels={panels} defaultActiveIndex={[0, 1, 2]} />);
-      const accordion = wrapper.find(Accordion);
-      getTitleButtonAtIndex(wrapper, 0).simulate('click');
-      getTitleButtonAtIndex(wrapper, 2).simulate('click');
+      const accordion = mountWithProvider(<Accordion panels={panels} defaultActiveIndex={[0, 1, 2]} />);
+      getTitleButtonAtIndex(accordion, 0).simulate('click');
+      getTitleButtonAtIndex(accordion, 2).simulate('click');
 
-      expect(accordion.state('activeIndex')).toEqual(expect.arrayContaining([1]));
+      expect(getNonExclusiveItemWithPropArray(accordion, 'active')).toEqual(expect.arrayContaining([1]));
     });
 
     it('keeps the at least one panel open if expanded prop is passed', () => {
-      const wrapper = mountWithProvider(<Accordion panels={panels} defaultActiveIndex={[0]} expanded />);
-      const accordion = wrapper.find(Accordion);
-      getTitleButtonAtIndex(wrapper, 0).simulate('click');
-
-      expect(accordion.state('activeIndex')).toEqual(expect.arrayContaining([0]));
+      const accordion = mountWithProvider(<Accordion panels={panels} defaultActiveIndex={[0]} expanded />);
+      getTitleButtonAtIndex(accordion, 0).simulate('click');
+      expect(getNonExclusiveItemWithPropArray(accordion, 'active')).toEqual(expect.arrayContaining([0]));
     });
   });
 
@@ -107,7 +132,7 @@ describe('Accordion', () => {
       const wrapper = mountWithProvider(<Accordion panels={panels} />);
       const accordion = wrapper.find(Accordion);
       getTitleButtonAtIndex(wrapper, 1).simulate('click');
-      expect(accordion.state('focusedIndex')).toEqual(1);
+      expect(getAccordionTitleAtIndex(accordion, 1)).toEqual(document.activeElement);
     });
 
     it('is changed by arrow key navigation', () => {
@@ -118,13 +143,13 @@ describe('Accordion', () => {
         keyCode: keyboardKey.ArrowUp,
         key: 'ArrowUp',
       });
-      expect(accordion.state('focusedIndex')).toEqual(0);
+      expect(getAccordionTitleAtIndex(accordion, 0)).toEqual(document.activeElement);
 
       getTitleButtonAtIndex(wrapper, 0).simulate('keydown', {
         keyCode: keyboardKey.ArrowDown,
         key: 'ArrowDown',
       });
-      expect(accordion.state('focusedIndex')).toEqual(1);
+      expect(getAccordionTitleAtIndex(accordion, 1)).toEqual(document.activeElement);
     });
 
     it('is changed by arrow key navigation in a circular way', () => {
@@ -135,13 +160,13 @@ describe('Accordion', () => {
         keyCode: keyboardKey.ArrowUp,
         key: 'ArrowUp',
       });
-      expect(accordion.state('focusedIndex')).toEqual(panels.length - 1);
+      expect(getAccordionTitleAtIndex(accordion, panels.length - 1)).toEqual(document.activeElement);
 
       getTitleButtonAtIndex(wrapper, panels.length - 1).simulate('keydown', {
         keyCode: keyboardKey.ArrowDown,
         key: 'ArrowDown',
       });
-      expect(accordion.state('focusedIndex')).toEqual(0);
+      expect(getAccordionTitleAtIndex(accordion, 0)).toEqual(document.activeElement);
     });
 
     it('is changed to `0` at Home keydown', () => {
@@ -152,7 +177,7 @@ describe('Accordion', () => {
         keyCode: keyboardKey.Home,
         key: 'Home',
       });
-      expect(accordion.state('focusedIndex')).toEqual(0);
+      expect(getAccordionTitleAtIndex(accordion, 0)).toEqual(document.activeElement);
     });
 
     it('is changed to last index at End keydown', () => {
@@ -163,7 +188,7 @@ describe('Accordion', () => {
         keyCode: keyboardKey.End,
         key: 'End',
       });
-      expect(accordion.state('focusedIndex')).toEqual(panels.length - 1);
+      expect(getAccordionTitleAtIndex(accordion, panels.length - 1)).toEqual(document.activeElement);
     });
 
     it('focuses the button element when is changed via focus handler', () => {
