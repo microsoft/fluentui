@@ -61,22 +61,22 @@ describe('Accordion', () => {
       expect(getExclusiveItemWithPropIndex(accordion, 'active')).toHaveLength(0);
     });
 
-    it('is [-1] by default in an non-exclusive accordion', () => {
+    it('is no active item by default in an non-exclusive accordion', () => {
       const accordion = mountWithProviderAndGetComponent(Accordion, <Accordion panels={panels} />);
       expect(getExclusiveItemWithPropIndex(accordion, 'active')).toHaveLength(0);
     });
 
-    it('is 0 by default in an exclusive expanded accordion', () => {
+    it('is has the first element active by default in an exclusive expanded accordion', () => {
       const accordion = mountWithProviderAndGetComponent(Accordion, <Accordion panels={panels} exclusive expanded />);
       expect(getNonExclusiveItemWithPropIndex(accordion, 'active')).toBe(0);
     });
 
-    it('is only 0 by default in an non-exclusive expanded accordion', () => {
+    it('is has only the first element active by default in an non-exclusive expanded accordion', () => {
       const accordion = mountWithProviderAndGetComponent(Accordion, <Accordion panels={panels} expanded />);
       expect(getNonExclusiveItemWithPropIndex(accordion, 'active')).toBe(0);
     });
 
-    it('is the value of prop defaultActiveIndex is passed', () => {
+    it('is has the active elements corresponding to the prop defaultActiveIndex passed', () => {
       const defaultActiveIndex = [1, 2];
       const accordion = mountWithProviderAndGetComponent(
         Accordion,
@@ -85,14 +85,14 @@ describe('Accordion', () => {
       expect(getNonExclusiveItemWithPropArray(accordion, 'active')).toEqual(expect.arrayContaining(defaultActiveIndex));
     });
 
-    it('contains the indexes clicked by the user if the panels were closed', () => {
+    it('actives the indexes clicked by the user if the panels were closed', () => {
       const accordion = mountWithProvider(<Accordion panels={panels} />);
       getTitleButtonAtIndex(accordion, 0).simulate('click');
       getTitleButtonAtIndex(accordion, 2).simulate('click');
       expect(getNonExclusiveItemWithPropArray(accordion, 'active')).toEqual(expect.arrayContaining([0, 2]));
     });
 
-    it('contains the only one index clicked by the user if exclusive prop is passed', () => {
+    it('actives the only one index clicked by the user if exclusive prop is passed', () => {
       const accordion = mountWithProvider(<Accordion panels={panels} exclusive />);
 
       getTitleButtonAtIndex(accordion, 0).simulate('click');
@@ -112,7 +112,7 @@ describe('Accordion', () => {
       ).toEqual(2);
     });
 
-    it('has indexes removed when their panels are closed by the user', () => {
+    it('deactivate indexes removed when their panels are closed by the user', () => {
       const accordion = mountWithProvider(<Accordion panels={panels} defaultActiveIndex={[0, 1, 2]} />);
       getTitleButtonAtIndex(accordion, 0).simulate('click');
       getTitleButtonAtIndex(accordion, 2).simulate('click');
