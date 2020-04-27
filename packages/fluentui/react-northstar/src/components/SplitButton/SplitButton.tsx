@@ -210,7 +210,6 @@ export const SplitButton: React.FC<WithAsProp<SplitButtonProps>> &
           {
             defaultProps: () =>
               getA11yProps('menuButton', {
-                accessibility: accessibility && accessibility({ ...props, open }).childBehaviors?.menuButton,
                 menu,
                 on: [],
                 open,

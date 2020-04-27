@@ -31,7 +31,7 @@ const isShorthandExpression = (componentName: string, path: NodePath<t.Assignmen
 
 const getShorthandInfo = (componentFile: t.File, componentName: string): ShorthandInfo => {
   let implementsCreateShorthand = false;
-  let mappedShorthandProp = undefined;
+  let mappedShorthandProp: string | undefined;
 
   Babel.traverse(componentFile, {
     AssignmentExpression: path => {
@@ -41,7 +41,7 @@ const getShorthandInfo = (componentFile: t.File, componentName: string): Shortha
         const config = path.get('right.arguments.0') as NodePath<t.ObjectExpression>;
         config.assertObjectExpression();
 
-        const mappedProperty = config.node.properties.find((property: t.ObjectProperty) => {
+        const mappedProperty = (config.node.properties as any[]).find((property: t.ObjectProperty) => {
           return t.isIdentifier(property.key, { name: 'mappedProp' });
         }) as t.ObjectProperty | null;
 
@@ -59,7 +59,7 @@ const getShorthandInfo = (componentFile: t.File, componentName: string): Shortha
 
   return {
     implementsCreateShorthand,
-    mappedShorthandProp,
+    mappedShorthandProp: mappedShorthandProp || '',
   };
 };
 

@@ -36,10 +36,13 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Restricted prop sets in the `Video` component which are passed to styles functions @assuncaocharles ([#12799](https://github.com/microsoft/fluentui/pull/12799))
 - Restricted prop sets in the `SplitButton` component which are passed to styles functions @assuncaocharles ([#12809](https://github.com/microsoft/fluentui/pull/12809))
 - Restricted prop sets in the `TableRow` component which are passed to styles functions @pompomon, @assuncaocharles ([#12797](https://github.com/microsoft/fluentui/pull/12797))
+- Restricted prop sets in the `Table` component which are passed to styles functions @assuncaocharles ([#12860](https://github.com/microsoft/fluentui/pull/12860))
+- Restricted prop sets in the `TextArea` component which are passed to styles functions, @assuncaocharles ([#12857](https://github.com/microsoft/fluentui/pull/12857))
 
 ### Fixes
 - Visually align checkbox and label elements in `Checkbox` component @silviuavram ([#12590](https://github.com/microsoft/fluentui/pull/12590))
 - Fix `Ref` to react on props changes when `forwardRef` is used @mnajdova ([#12817](https://github.com/microsoft/fluentui/pull/12817))
+- Fix `AccordionTitle` to be rendered as `div` by default @pompomon ([#12840](https://github.com/microsoft/fluentui/pull/12840))
 
 ### Features
 - Add `body` slot to `Attachment` component @layershifter ([#12674](https://github.com/microsoft/fluentui/pull/12674))
@@ -55,6 +58,11 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add `disabled` prop and styles to `Card` component @pompomon ([#12743](https://github.com/microsoft/fluentui/pull/12743))
 - Adding multiselection for the `Tree` @kolaps33, @assuncaocharles ([#12362](https://github.com/microsoft/fluentui/pull/12362))
 - Add `background` and `border` colors to `Card` in Teams theme @pompomon ([#12790](https://github.com/microsoft/fluentui/pull/12790))
+- Added `FluidIcon` @TanelVari ([#12803](https://github.com/microsoft/fluentui/pull/12803))
+- Add compose options to `useStyles` @layershifter @mnajdova ([#12745](https://github.com/microsoft/fluentui/pull/12745))
+- Converted Box, Button* and Attachment* components to use compose @layershifter @mnajdova ([#12745](https://github.com/microsoft/fluentui/pull/12745))
+- Respect `childBehaviors` for slots in `useAccessibility` hook @pompomon ([#12835](https://github.com/microsoft/fluentui/pull/12835))
+- Add `cardsContainerBehavior` for `Card`s in `Grid` navigation @mpompomon ([#12800](https://github.com/microsoft/fluentui/pull/12800))
 
 ### Performance
 - Replace `fela-plugin-prexifer` with `stylis` @layershifter ([#12289](https://github.com/microsoft/fluentui/pull/12289))

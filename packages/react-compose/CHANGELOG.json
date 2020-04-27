@@ -2,6 +2,21 @@
   "name": "@fluentui/react-compose",
   "entries": [
     {
+      "date": "Thu, 23 Apr 2020 12:32:40 GMT",
+      "tag": "@fluentui/react-compose_v0.2.9",
+      "version": "0.2.9",
+      "comments": {
+        "patch": [
+          {
+            "comment": "improving compose API",
+            "author": "olfedias@microsoft.com",
+            "commit": "4fa63dfabb932e4eb91ecbf49d3dca49c59aee38",
+            "package": "@fluentui/react-compose"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 20 Apr 2020 15:55:12 GMT",
       "tag": "@fluentui/react-compose_v0.2.7",
       "version": "0.2.7",

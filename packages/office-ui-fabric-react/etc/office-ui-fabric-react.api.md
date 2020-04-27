@@ -16,7 +16,6 @@ import { IFocusZoneProps } from '@fluentui/react-focus';
 import { IFontStyles } from '@uifabric/styling';
 import { IHTMLSlot } from '@uifabric/foundation';
 import { IObjectWithKey } from '@uifabric/utilities';
-import { IPoint } from '@uifabric/utilities';
 import { IProcessedStyleSet } from '@uifabric/styling';
 import { IRawStyle } from '@uifabric/styling';
 import { IRectangle } from '@uifabric/utilities';
@@ -35,6 +34,7 @@ import { IStyleSet } from '@uifabric/styling';
 import { ITheme } from '@uifabric/styling';
 import { KeyCodes } from '@uifabric/utilities';
 import { Omit } from '@uifabric/utilities';
+import { Point } from '@uifabric/utilities';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import { Selection } from '@uifabric/utilities';
@@ -5230,7 +5230,7 @@ export interface IKeytipProps {
     hasDynamicChildren?: boolean;
     hasMenu?: boolean;
     keySequences: string[];
-    offset?: IPoint;
+    offset?: Point;
     onExecute?: (executeTarget: HTMLElement | null, target: HTMLElement | null) => void;
     onReturn?: (executeTarget: HTMLElement | null, target: HTMLElement | null) => void;
     overflowSetSequence?: string[];
@@ -6393,9 +6393,9 @@ export interface IPositioningContainerProps extends IBaseProps<IPositioningConta
     preventDismissOnScroll?: boolean;
     role?: string;
     setInitialFocus?: boolean;
-    target?: HTMLElement | string | MouseEvent | IPoint | null;
+    target?: HTMLElement | string | MouseEvent | Point | null;
     // @deprecated
-    targetPoint?: IPoint;
+    targetPoint?: Point;
     // @deprecated
     useTargetPoint?: boolean;
 }
@@ -9410,7 +9410,7 @@ export class TagPickerBase extends BasePicker<ITag, ITagPickerProps> {
 }
 
 // @public (undocumented)
-export type Target = Element | string | MouseEvent | IPoint | null | React.RefObject<Element>;
+export type Target = Element | string | MouseEvent | Point | null | React.RefObject<Element>;
 
 // @public (undocumented)
 export const TeachingBubble: React.FunctionComponent<ITeachingBubbleProps>;

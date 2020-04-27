@@ -11,7 +11,7 @@ import parseDocblock from './parseDocblock';
 import parseType from './parseType';
 import getShorthandInfo from './getShorthandInfo';
 
-const getAvailableBehaviors = (accessibilityProp: ComponentProp): BehaviorInfo[] => {
+const getAvailableBehaviors = (accessibilityProp: ComponentProp | undefined): BehaviorInfo[] | undefined => {
   const docTags = accessibilityProp && accessibilityProp.tags;
   const availableTag = _.find(docTags, { title: 'available' });
   const availableBehaviorNames = _.get(availableTag, 'description', '');
@@ -87,7 +87,7 @@ const getComponentInfo = (tsConfigPath: string, filepath: string, ignoredParentI
   const isChild = !isParent;
   const parentDisplayName = isParent ? null : dirname;
   // "Field" for "FormField" since it is accessed as "Form.Field" in the API
-  const subcomponentName = isParent ? null : info.displayName.replace(parentDisplayName, '');
+  const subcomponentName = isParent ? null : info.displayName.replace(parentDisplayName!, '');
 
   // "ListItem.js" is a subcomponent is the "List" directory
   const subcomponentRegExp = new RegExp(`^${dirname}\\w+\\.tsx$`);
