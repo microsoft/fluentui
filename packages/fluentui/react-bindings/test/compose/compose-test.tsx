@@ -107,7 +107,7 @@ type BaseComponentWithSlotsProps = {
   'data-main'?: boolean;
   'data-end'?: boolean;
 } & React.HTMLAttributes<HTMLButtonElement>;
-type BaseComponentWithSlotsStylesProps = { color: string | undefined; open: boolean };
+type BaseComponentWithSlotsStylesProps = {};
 
 const BaseComponentWithSlots: React.FC<BaseComponentProps> = compose<
   'button',
@@ -117,12 +117,9 @@ const BaseComponentWithSlots: React.FC<BaseComponentProps> = compose<
   {}
 >(
   (props, ref, composeOptions) => {
-    const { color } = props;
-
     const { classes } = useStyles<BaseComponentStylesProps>(composeOptions.displayName, {
       className: composeOptions.className,
       composeOptions,
-      mapPropsToStyles: () => ({ color }),
       unstable_props: props,
     });
     const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
