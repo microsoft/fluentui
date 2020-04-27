@@ -19,7 +19,7 @@ import { ComponentSlotStylesInput, ComponentVariablesInput } from '@fluentui/sty
 import Downshift, {
   DownshiftState,
   StateChangeOptions,
-  A11yStatusMessageOptions as DownshiftA11yStatusMessageOptions,
+  A11yStatusMessageOptions,
   GetMenuPropsOptions,
   GetPropsCommonOptions,
   GetInputPropsOptions,
@@ -50,6 +50,8 @@ import {
   PopperShorthandProps,
   getPopperPropsFromShorthand,
 } from '../../utils/positioner';
+
+export interface DownshiftA11yStatusMessageOptions<Item> extends Required<A11yStatusMessageOptions<Item>> {}
 
 export interface DropdownSlotClassNames {
   clearIndicator: string;

@@ -2,6 +2,7 @@ import { treeItemClassName, treeTitleClassName, treeTitleSlotClassNames } from '
 
 const selectors = {
   treeTitle: (itemIndex: number) => `.${treeItemClassName}:nth-of-type(${itemIndex}) .${treeTitleClassName}`,
+  treeItem: (itemIndex: number) => `.${treeItemClassName}:nth-of-type(${itemIndex})`,
   selectionIndicator: (itemIndex: number) =>
     `.${treeItemClassName}:nth-of-type(${itemIndex}) .${treeTitleSlotClassNames.indicator}`,
 };
@@ -31,7 +32,9 @@ const config: ScreenerTestsConfig = {
         .click(selectors.treeTitle(15))
         .keys(selectors.treeTitle(16), keys.space)
         .keys(selectors.treeTitle(17), keys.space)
-        .snapshot('selected, when group has non selectable item'),
+        .snapshot('selected, when group has non selectable item')
+        .keys(selectors.treeItem(15), keys.space)
+        .snapshot('toggle group selected'),
   ],
 };
 

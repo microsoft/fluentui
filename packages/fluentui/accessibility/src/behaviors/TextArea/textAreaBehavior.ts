@@ -13,6 +13,6 @@ const textAreaBehavior: Accessibility<TextAreaBehaviorProps> = props => ({
 
 export default textAreaBehavior;
 
-type TextAreaBehaviorProps = {
+export type TextAreaBehaviorProps = {
   disabled?: boolean;
 };

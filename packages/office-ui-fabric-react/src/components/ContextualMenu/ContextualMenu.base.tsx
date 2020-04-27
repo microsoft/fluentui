@@ -28,7 +28,7 @@ import {
   getRTL,
   getWindow,
   IRenderFunction,
-  IPoint,
+  Point,
   KeyCodes,
   shouldWrapFocus,
   IStyleFunctionOrObject,
@@ -121,7 +121,7 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
   private _isFocusingPreviousElement: boolean;
   private _enterTimerId: number | undefined;
   private _targetWindow: Window;
-  private _target: Element | MouseEvent | IPoint | null;
+  private _target: Element | MouseEvent | Point | null;
   private _isScrollIdle: boolean;
   private _scrollIdleTimeoutId: number | undefined;
   /** True if the most recent keydown event was for alt (option) or meta (command). */
@@ -1309,9 +1309,14 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
       } else if (!!(target as MouseEvent).stopPropagation) {
         this._targetWindow = getWindow((target as MouseEvent).target as HTMLElement)!;
         this._target = target as MouseEvent;
-      } else if ((target as IPoint).x !== undefined && (target as IPoint).y !== undefined) {
+      } else if (
+        // tslint:disable-next-line:deprecation
+        ((target as Point).left !== undefined || (target as Point).x !== undefined) &&
+        // tslint:disable-next-line:deprecation
+        ((target as Point).top !== undefined || (target as Point).y !== undefined)
+      ) {
         this._targetWindow = getWindow(currentElement)!;
-        this._target = target as IPoint;
+        this._target = target as Point;
       } else if ((target as React.RefObject<Element>).current !== undefined) {
         this._target = (target as React.RefObject<Element>).current;
         this._targetWindow = getWindow(this._target)!;
