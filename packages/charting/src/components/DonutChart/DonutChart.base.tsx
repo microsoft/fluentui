@@ -78,10 +78,10 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     });
   }
   public render(): JSX.Element {
-    const { data, href } = this.props;
+    const { data, href, hideLegend = false } = this.props;
     const { _width, _height } = this.state;
 
-    const { theme, className, styles, innerRadius } = this.props;
+    const { theme, className, styles, innerRadius, valueInsideDonut } = this.props;
     const { palette } = theme!;
     this._classNames = getClassNames(styles!, {
       theme: theme!,
@@ -113,6 +113,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
                 activeArc={this.state.activeLegend}
                 href={href}
                 calloutId={this._calloutId}
+                valueInsideDonut={valueInsideDonut}
               />
             </svg>
           </div>
@@ -134,7 +135,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
             </div>
           </Callout>
         ) : null}
-        <div className={this._classNames.legendContainer}>{legendBars}</div>
+        <div className={this._classNames.legendContainer}>{!hideLegend && legendBars}</div>
       </div>
     );
   }

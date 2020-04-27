@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { TextField, ITextFieldProps } from 'office-ui-fabric-react/lib/TextField';
-import { DefaultButton, IconButton } from 'office-ui-fabric-react/lib/Button';
-import { Icon } from 'office-ui-fabric-react/lib/Icon';
+import { DefaultButton, IconButton, IButtonStyles } from 'office-ui-fabric-react/lib/Button';
+import { Icon, IIconStyles } from 'office-ui-fabric-react/lib/Icon';
 import { Callout } from 'office-ui-fabric-react/lib/Callout';
-import { IStackTokens, Stack } from 'office-ui-fabric-react/lib/Stack';
+import { IStackTokens, Stack, IStackStyles } from 'office-ui-fabric-react/lib/Stack';
 import { Text } from 'office-ui-fabric-react/lib/Text';
-import { getId, IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
-import { getTheme, FontWeights } from 'office-ui-fabric-react/lib/Styling';
+import { getId, IRenderFunction, memoizeFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { getTheme, FontWeights, ITheme } from 'office-ui-fabric-react/lib/Styling';
 
 export interface ITextFieldCustomRenderExampleState {
   isCalloutVisible: boolean;
@@ -16,6 +16,14 @@ const stackTokens: IStackTokens = {
   childrenGap: 20,
   maxWidth: 300,
 };
+
+const labelCalloutStackStyles: Partial<IStackStyles> = { root: { padding: 20 } };
+const iconButtonStyles: Partial<IButtonStyles> = { root: { marginBottom: -3 } };
+const iconStyles: Partial<IIconStyles> = { root: { marginBottom: -3 } };
+
+const getDescriptionStyles = memoizeFunction((theme: ITheme) => ({
+  root: { color: theme.palette.green, fontWeight: FontWeights.bold },
+}));
 
 export class TextFieldCustomRenderExample extends React.Component<{}, ITextFieldCustomRenderExampleState> {
   public state: ITextFieldCustomRenderExampleState = { isCalloutVisible: false };
@@ -48,7 +56,7 @@ export class TextFieldCustomRenderExample extends React.Component<{}, ITextField
   private _onRenderDescription = (props: ITextFieldProps): JSX.Element => {
     const theme = getTheme();
     return (
-      <Text variant="small" styles={{ root: { color: theme.palette.green, fontWeight: FontWeights.bold } }}>
+      <Text variant="small" styles={getDescriptionStyles(theme)}>
         {props.description}
       </Text>
     );
@@ -65,7 +73,7 @@ export class TextFieldCustomRenderExample extends React.Component<{}, ITextField
             title="Info"
             ariaLabel="Info"
             onClick={this._onIconClick}
-            styles={{ root: { marginBottom: -3 } }}
+            styles={iconButtonStyles}
           />
         </Stack>
         {this.state.isCalloutVisible && (
@@ -76,7 +84,7 @@ export class TextFieldCustomRenderExample extends React.Component<{}, ITextField
             ariaDescribedBy={this._descriptionId}
             role="alertdialog"
           >
-            <Stack tokens={stackTokens} horizontalAlign="start" styles={{ root: { padding: 20 } }}>
+            <Stack tokens={stackTokens} horizontalAlign="start" styles={labelCalloutStackStyles}>
               <span id={this._descriptionId}>
                 The custom label includes an IconButton that displays this Callout on click.
               </span>
@@ -96,7 +104,7 @@ export class TextFieldCustomRenderExample extends React.Component<{}, ITextField
       <>
         <Stack horizontal verticalAlign="center" tokens={{ childrenGap: 6 }}>
           <span>{defaultRender(props)}</span>
-          <Icon iconName="Globe" title="Globe" ariaLabel="Globe" styles={{ root: { marginBottom: -3 } }} />
+          <Icon iconName="Globe" title="Globe" ariaLabel="Globe" styles={iconStyles} />
         </Stack>
       </>
     );

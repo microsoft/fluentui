@@ -78,7 +78,7 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = (props: IPivotPro
   const { componentRef } = props;
   const pivotId: string = useId('Pivot');
   const [selectedKey, setSelectedKey] = React.useState<string>(() => getDefaultKey(props, pivotId));
-  const focusZoneRef = React.useRef<IFocusZone>();
+  const focusZoneRef = React.useRef<IFocusZone>(null);
   let classNames: { [key in keyof IPivotStyles]: string };
 
   React.useImperativeHandle(componentRef as React.RefObject<IPivot>, () => ({

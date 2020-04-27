@@ -10,6 +10,7 @@ export function getColorFromRGBA(rgba: IRGB): IColor {
   const { h, s, v } = rgb2hsv(r, g, b);
   const hex = rgb2hex(r, g, b);
   const str = _rgbaOrHexString(r, g, b, a, hex);
+  const t = MAX_COLOR_ALPHA - a;
 
-  return { a, b, g, h, hex, r, s, str, v };
+  return { a, b, g, h, hex, r, s, str, v, t };
 }

@@ -31,15 +31,14 @@ const getExampleClassNames = memoizeFunction(
   },
 );
 
-export class VerticalDividerBasicExample extends React.Component<any, any> {
-  public render(): JSX.Element {
-    const classNames = getExampleClassNames();
-    return (
-      <div className={classNames.wrapper}>
-        <p className={classNames.text}> Some text before the divider. </p>
-        <VerticalDivider />
-        <p className={classNames.text}>Some text after the divider. </p>
-      </div>
-    );
-  }
-}
+export const VerticalDividerBasicExample = () => {
+  const classNames = getExampleClassNames();
+
+  return (
+    <div className={classNames.wrapper}>
+      <p className={classNames.text}>Some text before the divider. </p>
+      <VerticalDivider />
+      <p className={classNames.text}>Some text after the divider. </p>
+    </div>
+  );
+};

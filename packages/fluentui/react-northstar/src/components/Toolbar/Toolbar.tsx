@@ -30,6 +30,7 @@ import ToolbarMenuItem, { ToolbarMenuItemProps } from './ToolbarMenuItem';
 import ToolbarMenuRadioGroup from './ToolbarMenuRadioGroup';
 import ToolbarRadioGroup from './ToolbarRadioGroup';
 import { ToolbarVariablesProvider } from './toolbarVariablesContext';
+import { MoreIcon } from '@fluentui/react-icons-northstar';
 
 export type ToolbarItemShorthandKinds = 'divider' | 'item' | 'group' | 'toggle' | 'custom';
 
@@ -88,10 +89,12 @@ export interface ToolbarProps
   getOverflowItems?: (startIndex: number) => ShorthandCollection<ToolbarMenuItemProps, ToolbarItemShorthandKinds>; // FIXME: use correct kind
 }
 
+export const toolbarClassName = 'ui-toolbar';
+
 class Toolbar extends UIComponent<WithAsProp<ToolbarProps>> {
   static create: ShorthandFactory<ToolbarProps>;
 
-  static className = 'ui-toolbar';
+  static deprecated_className = toolbarClassName;
 
   static displayName = 'Toolbar';
 
@@ -447,10 +450,11 @@ class Toolbar extends UIComponent<WithAsProp<ToolbarProps>> {
       <Ref innerRef={this.overflowItemRef}>
         {ToolbarItem.create(overflowItem, {
           defaultProps: () => ({
-            icon: { name: 'more', outline: true },
+            // TODO: ups
+            icon: <MoreIcon {...{ outline: true }} />,
           }),
           overrideProps: {
-            menu: this.props.overflowOpen ? this.getOverflowItems() : [],
+            menu: { items: this.props.overflowOpen ? this.getOverflowItems() : [], popper: { positionFixed: true } },
             menuOpen: this.props.overflowOpen,
             onMenuOpenChange: (e, { menuOpen }) => {
               _.invoke(this.props, 'onOverflowOpenChange', e, {

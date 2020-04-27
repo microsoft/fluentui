@@ -1,12 +1,12 @@
-import { useSelectKnob, useStringKnob } from '@fluentui/docs-components';
+import { useStringKnob, useBooleanKnob } from '@fluentui/docs-components';
 import {
   AvatarProps,
+  AlertProps,
   BoxProps,
   CardProps,
   DialogProps,
   DividerProps,
   EmbedProps,
-  IconProps,
   ImageProps,
   VideoProps,
   Avatar as _Avatar,
@@ -85,31 +85,19 @@ export const Embed: KnobComponentGenerators<EmbedProps> = {
   }),
 };
 
-export const Icon: KnobComponentGenerators<IconProps> = {
-  name: ({ componentInfo, propDef, propName, theme }) => {
-    const values = Object.keys(theme.icons).slice(0, 10);
-
-    // This generator can be used for shorthands via recursion.
-    // Due wrong type definitions on `Icon` the `name` prop there is neither required, nor does not
-    // have default value.
-    // TODO: remove this hack once we will clarify types for Icon component
-    const isIconComponent = propName === 'name';
-
-    return {
-      hook: useSelectKnob,
-      name: propName,
-      allowsNone: _.isNil(propDef.defaultValue) && !isIconComponent,
-      initialValue: isIconComponent ? values[0] : propDef.defaultValue,
-      values,
-    };
-  },
-};
-
 export const Image: KnobComponentGenerators<ImageProps> = {
   src: ({ propName }) => ({
     hook: useStringKnob,
     name: propName,
     initialValue: faker.image.avatar(),
+  }),
+};
+
+export const Alert: KnobComponentGenerators<AlertProps> = {
+  visible: ({ propName }) => ({
+    hook: useBooleanKnob,
+    name: propName,
+    initialValue: true,
   }),
 };
 

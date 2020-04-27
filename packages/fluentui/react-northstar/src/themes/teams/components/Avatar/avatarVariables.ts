@@ -6,6 +6,8 @@ export interface AvatarVariables {
   squareAvatarBorderRadius: string;
   statusBorderColor: string;
   statusBorderWidth: string;
+  iconColor: string;
+  iconBackgroundColor: string;
 }
 
 export default (siteVariables): AvatarVariables => ({
@@ -14,4 +16,6 @@ export default (siteVariables): AvatarVariables => ({
   squareAvatarBorderRadius: pxToRem(3),
   statusBorderColor: siteVariables.bodyBackground,
   statusBorderWidth: '2px',
+  iconColor: siteVariables.colors.white,
+  iconBackgroundColor: siteVariables.colors.brand[600],
 });

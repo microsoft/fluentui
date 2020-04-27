@@ -1,3 +1,0 @@
-{
-  "extends": ["../../../scripts/tslint.fluentui.json"]
-}

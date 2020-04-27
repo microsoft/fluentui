@@ -2,6 +2,10 @@ import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
 import { resetIds } from '../../Utilities';
+<<<<<<< HEAD
+=======
+
+>>>>>>> b9b783bdcc6466b55268324885eb7a6312b60ec6
 import { Pivot, PivotItem, PivotLinkFormat, PivotLinkSize, IPivot } from './index';
 
 describe('Pivot', () => {

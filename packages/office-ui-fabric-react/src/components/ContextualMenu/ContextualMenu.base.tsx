@@ -28,13 +28,14 @@ import {
   getRTL,
   getWindow,
   IRenderFunction,
-  IPoint,
+  Point,
   KeyCodes,
   shouldWrapFocus,
   IStyleFunctionOrObject,
   isIOS,
   isMac,
   initializeComponentRef,
+  memoizeFunction,
 } from '../../Utilities';
 import { hasSubmenu, getIsChecked, isItemDisabled } from '../../utilities/contextualMenu/index';
 import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
@@ -45,16 +46,12 @@ import {
   ContextualMenuButton,
   ContextualMenuAnchor,
 } from './ContextualMenuItemWrapper/index';
-import { IProcessedStyleSet, mergeStyleSets } from '../../Styling';
+import { IProcessedStyleSet, concatStyleSetsWithProps } from '../../Styling';
 import { IContextualMenuItemStyleProps, IContextualMenuItemStyles } from './ContextualMenuItem.types';
 import { getItemStyles } from './ContextualMenu.classNames';
 
-const getClassNames = classNamesFunction<IContextualMenuStyleProps, IContextualMenuStyles>({
-  disableCaching: true,
-});
-const getContextualMenuItemClassNames = classNamesFunction<IContextualMenuItemStyleProps, IContextualMenuItemStyles>({
-  disableCaching: true,
-});
+const getClassNames = classNamesFunction<IContextualMenuStyleProps, IContextualMenuStyles>();
+const getContextualMenuItemClassNames = classNamesFunction<IContextualMenuItemStyleProps, IContextualMenuItemStyles>();
 
 export interface IContextualMenuState {
   expandedMenuItemKey?: string;
@@ -96,6 +93,15 @@ const NavigationIdleDelay = 250 /* ms */;
 
 const COMPONENT_NAME = 'ContextualMenu';
 
+const _getMenuItemStylesFunction = memoizeFunction(
+  (
+    ...styles: (IStyleFunctionOrObject<IContextualMenuItemStyleProps, IContextualMenuItemStyles> | undefined)[]
+  ): IStyleFunctionOrObject<IContextualMenuItemStyleProps, IContextualMenuItemStyles> => {
+    return (styleProps: IContextualMenuItemStyleProps) =>
+      concatStyleSetsWithProps(styleProps, getItemStyles, ...styles);
+  },
+);
+
 @withResponsiveMode
 export class ContextualMenuBase extends React.Component<IContextualMenuProps, IContextualMenuState> {
   // The default ContextualMenu properties have no items and beak, the default submenu direction is right and top.
@@ -115,7 +121,7 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
   private _isFocusingPreviousElement: boolean;
   private _enterTimerId: number | undefined;
   private _targetWindow: Window;
-  private _target: Element | MouseEvent | IPoint | null;
+  private _target: Element | MouseEvent | Point | null;
   private _isScrollIdle: boolean;
   private _scrollIdleTimeoutId: number | undefined;
   /** True if the most recent keydown event was for alt (option) or meta (command). */
@@ -543,19 +549,11 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
         primaryDisabled: item.primaryDisabled,
       };
 
-      const menuItemStyles = this._classNames.subComponentStyles
-        ? (this._classNames.subComponentStyles.menuItem as IStyleFunctionOrObject<
-            IContextualMenuItemStyleProps,
-            IContextualMenuItemStyles
-          >)
-        : undefined;
-
       // We need to generate default styles then override if styles are provided
       // since the ContextualMenu currently handles item classNames.
-      itemClassNames = mergeStyleSets(
-        getContextualMenuItemClassNames(getItemStyles, itemStyleProps),
-        getContextualMenuItemClassNames(menuItemStyles, itemStyleProps),
-        getContextualMenuItemClassNames(styles, itemStyleProps),
+      itemClassNames = getContextualMenuItemClassNames(
+        _getMenuItemStylesFunction(this._classNames.subComponentStyles?.menuItem, styles),
+        itemStyleProps,
       );
     }
 
@@ -1311,9 +1309,14 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
       } else if (!!(target as MouseEvent).stopPropagation) {
         this._targetWindow = getWindow((target as MouseEvent).target as HTMLElement)!;
         this._target = target as MouseEvent;
-      } else if ((target as IPoint).x !== undefined && (target as IPoint).y !== undefined) {
+      } else if (
+        // tslint:disable-next-line:deprecation
+        ((target as Point).left !== undefined || (target as Point).x !== undefined) &&
+        // tslint:disable-next-line:deprecation
+        ((target as Point).top !== undefined || (target as Point).y !== undefined)
+      ) {
         this._targetWindow = getWindow(currentElement)!;
-        this._target = target as IPoint;
+        this._target = target as Point;
       } else if ((target as React.RefObject<Element>).current !== undefined) {
         this._target = (target as React.RefObject<Element>).current;
         this._targetWindow = getWindow(this._target)!;

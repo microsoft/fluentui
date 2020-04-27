@@ -14,6 +14,7 @@ export interface CardTopControlsProps extends UIComponentProps, ChildrenComponen
 }
 
 export type CardTopControlsStylesProps = never;
+export const cardTopControlsClassName = 'ui-card__topcontrols';
 
 const CardTopControls: React.FC<WithAsProp<CardTopControlsProps>> &
   FluentComponentStaticProps<CardTopControlsProps> = props => {
@@ -30,7 +31,7 @@ const CardTopControls: React.FC<WithAsProp<CardTopControlsProps>> &
   });
 
   const { classes } = useStyles<CardTopControlsStylesProps>(CardTopControls.displayName, {
-    className: CardTopControls.className,
+    className: cardTopControlsClassName,
     mapPropsToInlineStyles: () => ({
       className,
       design,
@@ -55,7 +56,6 @@ const CardTopControls: React.FC<WithAsProp<CardTopControlsProps>> &
 };
 
 CardTopControls.displayName = 'CardTopControls';
-CardTopControls.className = 'ui-card__topcontrols';
 
 CardTopControls.propTypes = {
   ...commonPropTypes.createCommon(),

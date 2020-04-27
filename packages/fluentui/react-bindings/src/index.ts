@@ -1,8 +1,7 @@
 export { default as unstable_getAccessibility } from './accessibility/getAccessibility';
 export * from './accessibility/types';
 
-export { compose } from '@fluentui/react-compose';
-export { default as useComposeOptions } from './compose/useComposeOptions';
+export * from '@fluentui/react-compose';
 
 export { default as AutoFocusZone } from './FocusZone/AutoFocusZone';
 export * from './FocusZone/AutoFocusZone.types';
@@ -25,7 +24,7 @@ export { default as unstable_calculateAnimationTimeout } from './styles/calculat
 export { default as unstable_getStyles } from './styles/getStyles';
 export * from './styles/types';
 
-export { default as useTelemetry } from './telemetry/useTelemetry';
+export { getTelemetry as deprecated_getTelemetry, default as useTelemetry } from './telemetry/useTelemetry';
 export * from './telemetry/types';
 
 export { default as getElementType } from './utils/getElementType';

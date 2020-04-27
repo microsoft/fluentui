@@ -45,7 +45,7 @@ export interface TreeRenderContextValue {
   onFocusFirstChild: (itemId: string) => void;
   onFocusParent: (itemId: string) => void;
   onSiblingsExpand: (e: React.SyntheticEvent, itemProps: TreeItemProps) => void;
-  onTitleClick: (e: React.SyntheticEvent, itemProps: TreeItemProps) => void;
+  onTitleClick: (e: React.SyntheticEvent, itemProps: TreeItemProps, executeSelection?: boolean) => void;
 }
 
 export const TreeContext = React.createContext<TreeRenderContextValue>({
