@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { FocusZone } from './FocusZone';
-import { IRefObject, IPoint } from '@uifabric/utilities';
+import { IRefObject, Point } from '@uifabric/utilities';
 
 /**
  * FocusZone component class interface.
@@ -35,7 +35,7 @@ export interface IFocusZone {
    * than a center based on the last horizontal motion.
    * @param point - the new reference point.
    */
-  setFocusAlignment(point: IPoint): void;
+  setFocusAlignment(point: Point): void;
 }
 
 /**

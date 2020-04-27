@@ -9,7 +9,7 @@ export * from './GlobalSettings';
 export * from './IClassNames';
 export * from './IComponentAs';
 export * from './IDisposable';
-export * from './IPoint';
+export * from './Point';
 export * from './IRectangle';
 export * from './IRenderComponent';
 export * from './IRenderFunction';
