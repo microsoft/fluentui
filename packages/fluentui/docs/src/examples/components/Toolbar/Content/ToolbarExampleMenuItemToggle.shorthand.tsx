@@ -1,7 +1,7 @@
 import { Toolbar, ToolbarMenuItemProps } from '@fluentui/react-northstar';
 import * as _ from 'lodash';
 import * as React from 'react';
-import { BoldIcon, ItalicIcon, MoreIcon } from '@fluentui/react-icons-northstar';
+import { BoldIcon, ItalicIcon, MoreIcon, HighlightIcon, BulletsIcon } from '@fluentui/react-icons-northstar';
 
 const ToolbarExampleMenuItemToggle = () => {
   const [menuOpen, setMenuOpen] = React.useState(false);
@@ -15,10 +15,21 @@ const ToolbarExampleMenuItemToggle = () => {
     }
   };
 
+  const toolbarItem = (iconName, icon) => {
+    return {
+      key: iconName,
+      content: iconName,
+      icon: icon,
+      title: iconName,
+    };
+  };
+
   return (
     <Toolbar
       aria-label="Toolbar can contain toggle items in a menu"
       items={[
+        toolbarItem('highlight', <HighlightIcon />),
+        toolbarItem('bullets', <BulletsIcon />),
         {
           icon: <MoreIcon />,
           key: 'more',

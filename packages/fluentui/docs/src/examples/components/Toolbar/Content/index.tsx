@@ -43,6 +43,7 @@ const Content = () => (
     />
     <ComponentExample
       title="Toolbar can contain a submenu in a menu"
+      toolbarAriaLabel="Example Toolbar can contain a submenu in a menu"
       description="Toolbar item can open a menu with submenu."
       examplePath="components/Toolbar/Content/ToolbarExampleMenuWithSubmenu"
     />

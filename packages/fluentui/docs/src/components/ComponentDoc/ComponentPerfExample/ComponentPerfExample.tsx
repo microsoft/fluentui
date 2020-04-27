@@ -11,6 +11,7 @@ export interface ComponentPerfExampleProps {
   title: React.ReactNode;
   description?: React.ReactNode;
   examplePath: string;
+  toolbarAriaLabel?: string;
 }
 
 const ComponentPerfExample: React.FC<ComponentPerfExampleProps> = props => {

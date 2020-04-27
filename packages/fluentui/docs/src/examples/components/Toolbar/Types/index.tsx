@@ -6,6 +6,7 @@ const Types = () => (
   <ExampleSection title="Types">
     <ComponentExample
       title="Default"
+      toolbarAriaLabel="Example default"
       description="A default Toolbar."
       examplePath="components/Toolbar/Types/ToolbarExample"
     />

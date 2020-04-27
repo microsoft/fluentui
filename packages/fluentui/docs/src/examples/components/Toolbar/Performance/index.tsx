@@ -7,6 +7,7 @@ const Performance = () => (
   <ExampleSection title="Performance">
     <ComponentPerfExample
       title="Custom styled"
+      toolbarAriaLabel="Example performance"
       description="Custom styled toolbar"
       examplePath="components/Toolbar/Performance/CustomToolbar.perf"
     />
