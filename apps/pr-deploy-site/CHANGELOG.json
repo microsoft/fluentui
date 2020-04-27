@@ -2,6 +2,66 @@
   "name": "@uifabric/pr-deploy-site",
   "entries": [
     {
+      "date": "Mon, 27 Apr 2020 12:33:11 GMT",
+      "tag": "@uifabric/pr-deploy-site_v7.0.45",
+      "version": "7.0.45",
+      "comments": {
+        "patch": [
+          {
+            "comment": "removing more references to wrong filetype icons from a deprecated folder",
+            "author": "caperez@microsoft.com",
+            "commit": "c847450db51500f13847542b8f4c89dd277bb2bb",
+            "package": "@uifabric/pr-deploy-site"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 24 Apr 2020 12:39:25 GMT",
+      "tag": "@uifabric/pr-deploy-site_v7.0.45",
+      "version": "7.0.45",
+      "comments": {
+        "patch": [
+          {
+            "comment": "removing more references to wrong filetype icons from a deprecated folder",
+            "author": "caperez@microsoft.com",
+            "commit": "c847450db51500f13847542b8f4c89dd277bb2bb",
+            "package": "@uifabric/pr-deploy-site"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 23 Apr 2020 12:32:40 GMT",
+      "tag": "@uifabric/pr-deploy-site_v7.0.45",
+      "version": "7.0.45",
+      "comments": {
+        "patch": [
+          {
+            "comment": "removing more references to wrong filetype icons from a deprecated folder",
+            "author": "caperez@microsoft.com",
+            "commit": "c847450db51500f13847542b8f4c89dd277bb2bb",
+            "package": "@uifabric/pr-deploy-site"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 22 Apr 2020 12:33:04 GMT",
+      "tag": "@uifabric/pr-deploy-site_v7.0.45",
+      "version": "7.0.45",
+      "comments": {
+        "patch": [
+          {
+            "comment": "removing more references to wrong filetype icons from a deprecated folder",
+            "author": "caperez@microsoft.com",
+            "commit": "c847450db51500f13847542b8f4c89dd277bb2bb",
+            "package": "@uifabric/pr-deploy-site"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 21 Apr 2020 12:34:50 GMT",
       "tag": "@uifabric/pr-deploy-site_v7.0.45",
       "version": "7.0.45",
