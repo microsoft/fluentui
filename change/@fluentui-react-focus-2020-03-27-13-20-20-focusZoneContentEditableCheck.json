@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "FocusZone: Adding check to see if element has editable content in Home and End keystroke scenarios.",
+  "packageName": "@fluentui/react-focus",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "commit": "8acbb43e6e060829161cacb7ddbe5f06325a32ac",
+  "dependentChangeType": "patch",
+  "date": "2020-03-27T20:20:20.242Z"
+}

@@ -1,8 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 22 Apr 2020 12:33:04 GMT and should not be manually modified.
+This log was last generated on Fri, 24 Apr 2020 12:39:25 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.107.5](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.107.5)
+
+Fri, 24 Apr 2020 12:39:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.107.3..office-ui-fabric-react_v7.107.5)
+
+### Patches
+
+- Callout: Updating positioning logic to account for dual screen scenarios. ([PR #12785](https://github.com/microsoft/fluentui/pull/12785) by Humberto.Morimoto@microsoft.com)
 
 ## [7.107.3](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.107.3)
 
