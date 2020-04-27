@@ -11,10 +11,11 @@ const wrapperClass = mergeStyles({
     },
   },
 });
-
+const wrapperStyle = { display: 'flex' };
+const exampleThreeGroupStyling = { display: 'flex', flexWrap: 'wrap', width: '100%' };
 const getCustomElementsExampleOne = (): JSX.Element => {
   return (
-    <div style={{ display: 'flex' }}>
+    <div style={wrapperStyle}>
       <ShimmerElementsGroup
         shimmerElements={[
           { type: ShimmerElementType.line, width: 40, height: 40 },
@@ -35,7 +36,7 @@ const getCustomElementsExampleOne = (): JSX.Element => {
 
 const getCustomElementsExampleTwo = (): JSX.Element => {
   return (
-    <div style={{ display: 'flex' }}>
+    <div style={wrapperStyle}>
       <ShimmerElementsGroup
         shimmerElements={[
           { type: ShimmerElementType.circle, height: 40 },
@@ -56,7 +57,7 @@ const getCustomElementsExampleTwo = (): JSX.Element => {
 
 const getCustomElementsExampleThree = (): JSX.Element => {
   return (
-    <div style={{ display: 'flex' }}>
+    <div style={wrapperStyle}>
       <ShimmerElementsGroup
         width={'90px'}
         shimmerElements={[

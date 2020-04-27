@@ -13,10 +13,11 @@ const wrapperClass = mergeStyles({
     },
   },
 });
+const wrapperStyles = { display: 'flex' };
 
 const getCustomElements = (): JSX.Element => {
   return (
-    <div style={{ display: 'flex' }}>
+    <div style={wrapperStyles}>
       <ShimmerElementsGroup
         shimmerElements={[
           { type: ShimmerElementType.circle, height: 40 },
