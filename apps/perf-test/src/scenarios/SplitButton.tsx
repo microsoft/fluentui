@@ -20,6 +20,6 @@ const menuProps = {
   ],
 };
 
-const scenario = <DefaultButton split={true} text="I am a button" onClick={alertClicked} menuProps={menuProps} />;
+const Scenario = () => <DefaultButton split={true} text="I am a button" onClick={alertClicked} menuProps={menuProps} />;
 
-export default scenario;
+export default Scenario;

@@ -17,10 +17,12 @@ const options: IComboBoxOption[] = [
   { key: 'J', text: 'Option J' },
 ];
 
-const scenario = (
+const defaultKeys = ['C', 'E'];
+
+const Scenario = () => (
   <ComboBox
     multiSelect
-    defaultSelectedKey={['C', 'E']}
+    defaultSelectedKey={defaultKeys}
     label="Multi-select ComboBox (uncontrolled)"
     allowFreeform
     autoComplete="on"
@@ -28,4 +30,4 @@ const scenario = (
   />
 );
 
-export default scenario;
+export default Scenario;

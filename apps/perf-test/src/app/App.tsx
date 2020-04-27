@@ -1,10 +1,5 @@
 import * as React from 'react';
-import { Dropdown, PrimaryButton, Stack, TextField, Text } from 'office-ui-fabric-react';
-import { Measurer, MeasurerTimings } from './Measurer';
-import { useTimer } from './useTimer';
-import { Scenarios } from './Scenarios';
-import Checkbox from '../scenarios/Checkbox';
-import CommandBar from '../scenarios/CommandBar';
+import Target from '../scenarios/ContextualMenu';
 
 // tslint:disable
 export const App: React.FunctionComponent = () => {
@@ -15,7 +10,8 @@ export const App: React.FunctionComponent = () => {
     }
   }, [renderCount]);
 
-  return <CommandBar />;
+  console.log('render App');
+  return <Target />;
 };
 
 // export const App = () => {

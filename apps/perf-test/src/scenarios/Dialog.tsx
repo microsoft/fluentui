@@ -16,6 +16,6 @@ const DialogExample: React.FunctionComponent = () => {
   );
 };
 
-const scenario = <DialogExample />;
+const Scenario = () => <DialogExample />;
 
-export default scenario;
+export default Scenario;

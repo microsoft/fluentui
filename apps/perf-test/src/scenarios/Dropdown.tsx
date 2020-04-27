@@ -14,6 +14,6 @@ const options: IDropdownOption[] = [
   { key: 'lettuce', text: 'Lettuce' },
 ];
 
-const scenario = <Dropdown placeholder="Select an option" label="Basic uncontrolled example" options={options} />;
+const Scenario = () => <Dropdown placeholder="Select an option" label="Basic uncontrolled example" options={options} />;
 
-export default scenario;
+export default Scenario;
