@@ -295,7 +295,11 @@ export class FacepileBase extends React.Component<IFacepileProps, {}> {
     const { _classNames } = this;
 
     return (): JSX.Element => {
-      return <span className={_classNames.overflowInitialsIcon}>{'+' + numPersonasNotPictured}</span>;
+      return (
+        <span className={_classNames.overflowInitialsIcon}>
+          {numPersonasNotPictured < 100 ? '+' + numPersonasNotPictured : '99+'}
+        </span>
+      );
     };
   }
 }
