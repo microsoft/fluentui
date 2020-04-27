@@ -17,7 +17,7 @@ const Usage = () => (
     />
     <ComponentExample
       title="With context menu"
-      description="Example of adding ContextMenu in TopControls"
+      description="Example of adding ContextMenu to the card"
       examplePath="components/Card/Usage/CardExampleContextMenu"
     />
     <ComponentExample
