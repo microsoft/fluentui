@@ -33,7 +33,7 @@ const getAccessibility = <Props extends Record<string, any>>(
   if (process.env.NODE_ENV !== 'production') {
     // For the non-production builds we enable the runtime accessibility attributes validator.
     // We're adding the data-aa-class attribute which is being consumed by the validator, the
-    // schema is located in @stardust-ui/ability-attributes package.
+    // schema is located in @fluentui/ability-attributes package.
     if (definition.attributes) {
       Object.keys(definition.attributes).forEach(slotName => {
         const validatorName =
