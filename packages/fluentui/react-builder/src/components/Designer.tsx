@@ -388,6 +388,7 @@ class Designer extends React.Component<any, DesignerState> {
               tree={jsonTree}
               selectedComponent={selectedComponent}
               onSelectComponent={this.handleSelectComponent}
+              onDeleteComponent={this.handleDeleteComponent}
             />
           </div>
 
