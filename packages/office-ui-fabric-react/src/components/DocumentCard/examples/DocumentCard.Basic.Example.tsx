@@ -27,21 +27,19 @@ const previewProps: IDocumentCardPreviewProps = {
 };
 const DocumentCardActivityPeople = [{ name: 'Annie Lindqvist', profileImageSrc: TestImages.personaFemale }];
 
-export const DocumentCardBasicExample: React.FunctionComponent = () => {
-  return (
-    <DocumentCard
-      aria-label="Default Document Card with large file name. Created by Annie Lindqvist a few minutes ago."
-      onClickHref="http://bing.com"
-    >
-      <DocumentCardPreview {...previewProps} />
-      <DocumentCardTitle
-        title={
-          'Large_file_name_with_underscores_used_to_separate_all_of_the_words_and_there_are_so_many_words_' +
-          'it_needs_truncating.pptx'
-        }
-        shouldTruncate
-      />
-      <DocumentCardActivity activity="Created a few minutes ago" people={DocumentCardActivityPeople} />
-    </DocumentCard>
-  );
-};
+export const DocumentCardBasicExample: React.FunctionComponent = () => (
+  <DocumentCard
+    aria-label="Default Document Card with large file name. Created by Annie Lindqvist a few minutes ago."
+    onClickHref="http://bing.com"
+  >
+    <DocumentCardPreview {...previewProps} />
+    <DocumentCardTitle
+      title={
+        'Large_file_name_with_underscores_used_to_separate_all_of_the_words_and_there_are_so_many_words_' +
+        'it_needs_truncating.pptx'
+      }
+      shouldTruncate
+    />
+    <DocumentCardActivity activity="Created a few minutes ago" people={DocumentCardActivityPeople} />
+  </DocumentCard>
+);
