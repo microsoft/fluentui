@@ -10,9 +10,7 @@ import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import config from '../config';
 
 const { paths } = config;
-const { __DEV__, __PROD__ } = config.compiler_globals;
-
-const useHotReload = __DEV__ && !process.env.PR_DEPLOY;
+const { __DEV__, __PROD__, __HOT__ } = config.compiler_globals;
 
 const webpackConfig: webpack.Configuration = {
   name: 'client',
@@ -59,7 +57,7 @@ const webpackConfig: webpack.Configuration = {
         options: {
           cacheCompression: false,
           cacheDirectory: __DEV__,
-          plugins: [useHotReload && 'react-hot-loader/babel'].filter(Boolean),
+          plugins: [__HOT__ && 'react-hot-loader/babel'].filter(Boolean),
         },
       },
       {
@@ -140,7 +138,7 @@ const webpackConfig: webpack.Configuration = {
 // ------------------------------------
 // Environment Configuration
 // ------------------------------------
-if (useHotReload) {
+if (__HOT__) {
   const webpackHotPath = `${config.compiler_public_path}__webpack_hmr`;
   const webpackHotMiddlewareEntry = `webpack-hot-middleware/client?${_.map(
     {
