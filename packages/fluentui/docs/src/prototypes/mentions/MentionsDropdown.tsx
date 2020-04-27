@@ -19,7 +19,7 @@ const MentionsDropdown: React.FunctionComponent<MentionsContainerProps> = props 
     <Provider.Consumer
       render={({ siteVariables: siteVars }) => (
         <Dropdown
-          highlightFirstItemOnOpen={true}
+          highlightFirstItemOnOpen
           open
           inline
           search
