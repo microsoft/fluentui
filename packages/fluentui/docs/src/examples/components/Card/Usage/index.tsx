@@ -16,6 +16,11 @@ const Usage = () => (
       examplePath="components/Card/Usage/CardExampleWithPreview"
     />
     <ComponentExample
+      title="With context menu"
+      description="Example of adding ContextMenu in TopControls"
+      examplePath="components/Card/Usage/CardExampleContextMenu"
+    />
+    <ComponentExample
       title="Focusable card"
       description="Example of card which can be focused and clicked"
       examplePath="components/Card/Usage/CardExampleFocusable"
