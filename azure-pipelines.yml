@@ -146,7 +146,7 @@ jobs:
   - job: Deploy
     dependsOn: Build
     variables:
-      __BASENAME__: '/pr-deploy-site/refs/pull/$(System.PullRequest.PullRequestNumber)/merge/react-northstar'
+      PR_DEPLOY: 1
     steps:
       - template: azure-pipelines.cache.yml
 

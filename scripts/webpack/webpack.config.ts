@@ -12,6 +12,8 @@ import config from '../config';
 const { paths } = config;
 const { __DEV__, __PROD__ } = config.compiler_globals;
 
+const useHotReload = __DEV__ && !process.env.PR_DEPLOY;
+
 const webpackConfig: webpack.Configuration = {
   name: 'client',
   target: 'web',
@@ -57,7 +59,7 @@ const webpackConfig: webpack.Configuration = {
         options: {
           cacheCompression: false,
           cacheDirectory: __DEV__,
-          plugins: [__DEV__ && 'react-hot-loader/babel'].filter(Boolean),
+          plugins: [useHotReload && 'react-hot-loader/babel'].filter(Boolean),
         },
       },
       {
@@ -138,7 +140,7 @@ const webpackConfig: webpack.Configuration = {
 // ------------------------------------
 // Environment Configuration
 // ------------------------------------
-if (__DEV__) {
+if (useHotReload) {
   const webpackHotPath = `${config.compiler_public_path}__webpack_hmr`;
   const webpackHotMiddlewareEntry = `webpack-hot-middleware/client?${_.map(
     {
@@ -154,17 +156,17 @@ if (__DEV__) {
   const entry = webpackConfig.entry as webpack.Entry;
   entry.app = [webpackHotMiddlewareEntry].concat((entry as webpack.Entry).app);
 
-  webpackConfig.plugins.push(new webpack.HotModuleReplacementPlugin(), new webpack.NoEmitOnErrorsPlugin());
+  webpackConfig.plugins!.push(new webpack.HotModuleReplacementPlugin(), new webpack.NoEmitOnErrorsPlugin());
 }
 
 if (__PROD__) {
-  webpackConfig.plugins.push(
+  webpackConfig.plugins!.push(
     new webpack.LoaderOptionsPlugin({
       minimize: true,
     }),
   );
 
-  webpackConfig.optimization.minimizer = [
+  webpackConfig.optimization!.minimizer = [
     new TerserPlugin({
       terserOptions: {
         output: {
@@ -176,7 +178,7 @@ if (__PROD__) {
 }
 
 if (process.env.ANALYZE) {
-  webpackConfig.plugins.push(new BundleAnalyzerPlugin());
+  webpackConfig.plugins!.push(new BundleAnalyzerPlugin());
 }
 
 export default webpackConfig;

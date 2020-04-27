@@ -9,7 +9,9 @@ const env = process.env.NODE_ENV || 'development';
 const __DEV__ = env === 'development';
 const __PERF__ = !!process.env.PERF;
 const __PROD__ = env === 'production';
-const __BASENAME__ = process.env.__BASENAME__ || '/';
+const __BASENAME__ = process.env.PR_DEPLOY
+  ? `/pr-deploy-site/refs/pull/${process.env.SYSTEM_PULLREQUEST_PULLREQUESTNUMBER}/merge/react-northstar`
+  : '/';
 
 const __SKIP_ERRORS__ = !!process.env.SKIP_ERRORS;
 
