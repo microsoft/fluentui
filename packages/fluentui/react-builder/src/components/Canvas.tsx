@@ -19,6 +19,7 @@ const Canvas = ({
   onSelectComponent,
   onSelectorHover,
   selectedComponent,
+  onCloneComponent,
   onDeleteComponent,
   onGoToParentComponent,
   renderJSONTreeElement,
@@ -34,6 +35,7 @@ const Canvas = ({
   onSelectComponent?: (jsonTreeElement: JSONTreeElement) => void;
   onSelectorHover?: (jsonTreeElement: JSONTreeElement) => void;
   selectedComponent?: JSONTreeElement;
+  onCloneComponent?: ({ clientX, clientY }: { clientX: number; clientY: number }) => void;
   onDeleteComponent?: () => void;
   onGoToParentComponent?: () => void;
   renderJSONTreeElement?: (jsonTreeElement: JSONTreeElement) => JSONTreeElement;
@@ -47,15 +49,19 @@ const Canvas = ({
     [],
   );
 
+  const iframeCoordinatesToWindowCoordinates: (e: MouseEvent) => { clientX: number; clientY: number } = e => {
+    const window = (e.target as HTMLElement).ownerDocument.defaultView;
+    const $iframe = window.parent.document.getElementById(iframeId);
+
+    return {
+      clientX: $iframe.offsetLeft + e.clientX,
+      clientY: $iframe.offsetTop + e.clientY,
+    };
+  };
+
   const handleMouseMove = React.useCallback(
     (e: MouseEvent) => {
-      const window = (e.target as HTMLElement).ownerDocument.defaultView;
-      const $iframe = window.parent.document.getElementById(iframeId);
-
-      onMouseMove({
-        clientX: $iframe.offsetLeft + e.clientX,
-        clientY: $iframe.offsetTop + e.clientY,
-      });
+      onMouseMove?.(iframeCoordinatesToWindowCoordinates(e));
     },
     [onMouseMove],
   );
@@ -76,14 +82,21 @@ const Canvas = ({
     (fiberNav: FiberNavigator) => {
       onSelectComponent?.(fiberNavFindJSONTreeElement(jsonTree, fiberNav));
     },
-    [onSelectComponent],
+    [onSelectComponent, jsonTree],
   );
 
   const handleSelectorHover = React.useCallback(
     (fiberNav: FiberNavigator) => {
       onSelectorHover?.(fiberNavFindJSONTreeElement(jsonTree, fiberNav));
     },
-    [onSelectorHover],
+    [onSelectorHover, jsonTree],
+  );
+
+  const handleCloneElement = React.useCallback(
+    (e: MouseEvent) => {
+      onCloneComponent?.(iframeCoordinatesToWindowCoordinates(e));
+    },
+    [onCloneComponent],
   );
 
   const debugSize = '8px';
@@ -234,6 +247,10 @@ const Canvas = ({
 
             <DebugSelector
               active={isSelecting}
+              key={
+                `debug-selector-${selectedComponent?.uuid ??
+                  'unknown'}` /* HACK: changing the key whenever selected component changes to remount the debug selector and hide it if needed */
+              }
               filter={fiberNav => {
                 const owner = fiberNavFindOwnerInJSONTree(fiberNav, jsonTree);
                 if (owner?.props?.['data-builder-id'] === selectedComponent?.uuid) {
@@ -255,6 +272,7 @@ const Canvas = ({
                 target={document}
                 selector={`[data-builder-id="${selectedComponent.uuid}"]`}
                 componentName={selectedComponent.displayName}
+                onClone={handleCloneElement}
                 onDelete={onDeleteComponent}
                 onGoToParent={onGoToParentComponent}
               />

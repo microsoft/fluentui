@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { jsonTreeFindElement, resolveDraggingElement } from '../src/config';
+import { jsonTreeCloneElement, jsonTreeFindElement, resolveDraggingElement } from '../src/config';
 import { JSONTreeElement } from '../src/components/types';
 
 describe('config', () => {
@@ -72,6 +72,119 @@ describe('config', () => {
       const ret = jsonTreeFindElement(tree, 'c1->2->2->1');
       expect(ret).not.toBeNull();
       expect(ret.uuid).toEqual('c1->2->2->1');
+    });
+  });
+
+  describe('jsonTreeCloneElement', () => {
+    it('clones leaf', () => {
+      const c1Uuid = 'c1';
+      const src: JSONTreeElement = {
+        uuid: 'root',
+        type: 'test',
+        props: {
+          children: [{ $$typeof: 'Symbol(react.element)', type: 'test_c1', uuid: c1Uuid }],
+        },
+      };
+
+      const dst = jsonTreeCloneElement(src, jsonTreeFindElement(src, c1Uuid));
+      expect(dst).not.toBeNull();
+      expect(dst).toMatchObject({
+        $$typeof: 'Symbol(react.element)',
+        type: 'test_c1',
+      });
+      expect(dst.uuid).not.toMatch(c1Uuid);
+    });
+
+    it('does not touch uuid out of Symbol(react.element)', () => {
+      const c1Uuid = 'c1';
+      const anotherUuid = 'another_uuid';
+      const src: JSONTreeElement = {
+        uuid: 'root',
+        type: 'test',
+        props: {
+          children: [
+            { $$typeof: 'Symbol(react.element)', type: 'test_c1', uuid: c1Uuid, props: { uuid: anotherUuid } },
+          ],
+        },
+      };
+
+      const dst = jsonTreeCloneElement(src, jsonTreeFindElement(src, c1Uuid));
+      expect(dst.props.uuid).toMatch(anotherUuid);
+    });
+
+    it('changes uuid in slots', () => {
+      const c1Uuid = 'c1';
+      const c1SlotUUid = 'c1->slot';
+      const src: JSONTreeElement = {
+        uuid: 'root',
+        type: 'test',
+        props: {
+          children: [
+            {
+              $$typeof: 'Symbol(react.element)',
+              type: 'test_c1',
+              uuid: c1Uuid,
+              props: {
+                slot: {
+                  $$typeof: 'Symbol(react.element)',
+                  type: 'test_c1',
+                  uuid: c1SlotUUid,
+                },
+              },
+            },
+          ],
+        },
+      };
+
+      const dst = jsonTreeCloneElement(src, jsonTreeFindElement(src, c1Uuid));
+      expect(dst.props.slot.uuid).not.toMatch(c1SlotUUid);
+    });
+
+    it('clones deep structure', () => {
+      const c1Uuid = 'c1';
+      const c11Uuid = 'c1->1';
+      const src: JSONTreeElement = {
+        uuid: 'root',
+        type: 'test',
+        props: {
+          children: [
+            {
+              $$typeof: 'Symbol(react.element)',
+              type: 'test_c1',
+              uuid: c1Uuid,
+              props: {
+                children: [
+                  'just_a_string',
+                  {
+                    $$typeof: 'Symbol(react.element)',
+                    type: 'test_c1_1',
+                    uuid: c11Uuid,
+                  },
+                ],
+              },
+            },
+          ],
+        },
+      };
+      const dst = jsonTreeCloneElement(src, jsonTreeFindElement(src, c1Uuid));
+      expect(dst).toMatchObject({
+        $$typeof: 'Symbol(react.element)',
+        type: 'test_c1',
+        props: {
+          children: [
+            'just_a_string',
+            {
+              $$typeof: 'Symbol(react.element)',
+              type: 'test_c1_1',
+            },
+          ],
+        },
+      });
+      expect(dst.uuid).toBeDefined();
+      expect(dst.uuid).not.toMatch(c1Uuid);
+
+      expect((dst.props.children[1] as JSONTreeElement).uuid).toBeDefined();
+      expect((dst.props.children[1] as JSONTreeElement).uuid).not.toMatch(c11Uuid);
     });
   });
 

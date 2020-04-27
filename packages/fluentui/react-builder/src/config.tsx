@@ -625,6 +625,23 @@ export const jsonTreeDeleteElement = (tree: JSONTreeElement, uuid: string | numb
   return omitChildWithUuid(tree, uuid);
 };
 
+export const jsonTreeCloneElement = (tree: JSONTreeElement, element: any): JSONTreeElement => {
+  const result = _.transform(element, (acc, value, key) => {
+    if (_.isPlainObject(value)) {
+      acc[key] = jsonTreeCloneElement(tree, value);
+    } else if (Array.isArray(value)) {
+      acc[key] = jsonTreeCloneElement(tree, value);
+    } else {
+      acc[key] = value;
+    }
+  }) as any;
+
+  if (_.isPlainObject(result) && result.$$typeof === 'Symbol(react.element)' && result.uuid) {
+    result.uuid = getUUID();
+  }
+  return result;
+};
+
 /**
  * Displays a knob with the ability to switch between data `types`.
  */

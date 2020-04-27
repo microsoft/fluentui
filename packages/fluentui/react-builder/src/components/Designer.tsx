@@ -12,6 +12,7 @@ import List from './List';
 import Toolbar from './Toolbar';
 
 import {
+  jsonTreeCloneElement,
   jsonTreeDeleteElement,
   jsonTreeFindElement,
   jsonTreeFindParent,
@@ -196,7 +197,7 @@ class Designer extends React.Component<any, DesignerState> {
   };
 
   handleSelectorHover = jsonTreeElement => {
-    console.log('Designer:handleSelectorHover', jsonTreeElement);
+    // console.log('Designer:handleSelectorHover', jsonTreeElement);
 
     this.potentialDropTarget = jsonTreeElement;
   };
@@ -262,6 +263,17 @@ class Designer extends React.Component<any, DesignerState> {
 
   handleSelecting = isSelecting => {
     this.setState({ isSelecting });
+  };
+
+  handleCloneComponent = (e: MouseEvent) => {
+    console.log('Designer:handleCloneComponent', this.state.selectedJSONTreeElement);
+
+    this.setState(({ jsonTree, selectedJSONTreeElement }) => {
+      this.draggingPosition = { x: e.clientX, y: e.clientY };
+      return {
+        draggingElement: jsonTreeCloneElement(jsonTree, selectedJSONTreeElement),
+      };
+    });
   };
 
   handleDeleteComponent = () => {
@@ -388,6 +400,7 @@ class Designer extends React.Component<any, DesignerState> {
               tree={jsonTree}
               selectedComponent={selectedComponent}
               onSelectComponent={this.handleSelectComponent}
+              onCloneComponent={this.handleCloneComponent}
               onDeleteComponent={this.handleDeleteComponent}
             />
           </div>
@@ -428,6 +441,7 @@ class Designer extends React.Component<any, DesignerState> {
                   onDropPositionChange={this.handleDropPositionChange}
                   jsonTree={jsonTree}
                   selectedComponent={selectedComponent}
+                  onCloneComponent={this.handleCloneComponent}
                   onDeleteComponent={this.handleDeleteComponent}
                   onGoToParentComponent={this.handleGoToParentComponent}
                 />

@@ -2,12 +2,13 @@ import * as React from 'react';
 import { JSONTreeElement } from './types';
 import { TreeItemProps, Tree } from '@fluentui/react-northstar';
 import { jsonTreeFindElement } from '../config';
-import { TrashDebugButton } from './DebugButtons';
+import { CloneDebugButton, TrashDebugButton } from './DebugButtons';
 
 export type ComponentTreeProps = {
   tree: JSONTreeElement;
   selectedComponent?: JSONTreeElement;
   onSelectComponent?: (jsonTreeElement: JSONTreeElement) => void;
+  onCloneComponent?: ({ clientX, clientY }: { clientX: number; clientY: number }) => void;
   onDeleteComponent?: () => void;
 };
 
@@ -15,8 +16,9 @@ const jsonTreeToTreeItems: (
   tree: JSONTreeElement | string,
   selectedComponentId: string,
   handleSelectedComponent: TreeItemProps['onTitleClick'],
+  handleClone: React.MouseEventHandler<HTMLButtonElement>,
   handleDelete: React.MouseEventHandler<HTMLButtonElement>,
-) => TreeItemProps = (tree, selectedComponentId, handleSelectedComponent, handleDelete) => {
+) => TreeItemProps = (tree, selectedComponentId, handleSelectedComponent, handleClone, handleDelete) => {
   if (typeof tree === 'string') {
     return {
       id: Math.random()
@@ -46,14 +48,15 @@ const jsonTreeToTreeItems: (
         return (
           <C {...props}>
             <span style={{ flex: 1 }}>{content}</span>
-            <TrashDebugButton onClick={handleDelete} title="Delete" />
+            <CloneDebugButton onClick={handleClone} />
+            <TrashDebugButton onClick={handleDelete} />
           </C>
         );
       },
     }),
     expanded: true,
     items: tree.props?.children?.map(item =>
-      jsonTreeToTreeItems(item, selectedComponentId, handleSelectedComponent, handleDelete),
+      jsonTreeToTreeItems(item, selectedComponentId, handleSelectedComponent, handleClone, handleDelete),
     ),
   };
 };
@@ -62,6 +65,7 @@ export const ComponentTree: React.FunctionComponent<ComponentTreeProps> = ({
   tree,
   selectedComponent,
   onSelectComponent,
+  onCloneComponent,
   onDeleteComponent,
 }) => {
   const handleSelectComponent = React.useCallback(
@@ -71,8 +75,17 @@ export const ComponentTree: React.FunctionComponent<ComponentTreeProps> = ({
     [onSelectComponent, tree],
   );
 
+  const handleClone = React.useCallback(
+    e => {
+      onCloneComponent?.({ clientX: e.clientX, clientY: e.clientY });
+      e.stopPropagation();
+      e.preventDefault();
+    },
+    [onCloneComponent],
+  );
+
   const handleDelete = React.useCallback(
-    (e, ...args) => {
+    e => {
       onDeleteComponent?.();
       e.stopPropagation();
       e.preventDefault();
@@ -83,7 +96,7 @@ export const ComponentTree: React.FunctionComponent<ComponentTreeProps> = ({
   const selectedComponentId = selectedComponent?.uuid as string;
   const items: TreeItemProps[] =
     tree.props?.children?.map(item =>
-      jsonTreeToTreeItems(item, selectedComponentId, handleSelectComponent, handleDelete),
+      jsonTreeToTreeItems(item, selectedComponentId, handleSelectComponent, handleClone, handleDelete),
     ) ?? [];
   return <Tree items={items} />;
 };
