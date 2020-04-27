@@ -12,7 +12,6 @@ const wrapperClass = mergeStyles({
   },
 });
 const wrapperStyle = { display: 'flex' };
-const exampleThreeGroupStyling = { display: 'flex', flexWrap: 'wrap', width: '100%' };
 const getCustomElementsExampleOne = (): JSX.Element => {
   return (
     <div style={wrapperStyle}>
