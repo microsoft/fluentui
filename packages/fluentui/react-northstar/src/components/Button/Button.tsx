@@ -185,7 +185,7 @@ const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
       unstable_props: props,
     });
 
-    const getSlotProps = composeOptions.resolveSlotProps<ButtonProps>(props);
+    const slotProps = composeOptions.resolveSlotProps<ButtonProps>(props);
 
     const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
     const ElementType = getElementType(props);
@@ -195,7 +195,7 @@ const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
         defaultProps: () =>
           getA11yProps('icon', {
             styles: resolvedStyles.icon,
-            ...getSlotProps('icon'),
+            ...slotProps.icon,
           }),
       });
     };
@@ -205,14 +205,14 @@ const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
         defaultProps: () =>
           getA11yProps('loader', {
             styles: resolvedStyles.loader,
-            ...getSlotProps('loader'),
+            ...slotProps.loader,
           }),
       });
     };
 
     const renderContent = () => {
       return createShorthand(composeOptions.slots.content, content, {
-        defaultProps: () => getA11yProps('content', getSlotProps('content')),
+        defaultProps: () => getA11yProps('content', slotProps.content),
       });
     };
 

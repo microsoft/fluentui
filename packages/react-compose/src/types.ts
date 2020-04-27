@@ -55,7 +55,7 @@ export type ComposeOptions<InputProps = {}, InputStylesProps = {}, ParentStylesP
   overrideStyles?: boolean;
 
   slots?: Record<string, React.ElementType>;
-  // TODO: we should add here state in the typings
+
   mapPropsToSlotProps?: (props: InputProps) => Record<string, object>;
 };
 
@@ -73,5 +73,5 @@ export type ComposePreparedOptions<Props = {}> = {
   slots: Record<string, React.ElementType>;
   mapPropsToSlotPropsChain: ((props: Props) => Record<string, object>)[];
 
-  resolveSlotProps: <P>(props: P) => (slotName: string) => object;
+  resolveSlotProps: <P>(props: P) => Record<string, object>;
 };

@@ -131,14 +131,14 @@ const BaseComponentWithSlots: React.FC<BaseComponentProps> = compose<
     const Main = composeOptions.slots.main;
     const End = composeOptions.slots.end;
 
-    const getSlotProps = composeOptions.resolveSlotProps(props);
+    const slotProps = composeOptions.resolveSlotProps(props);
 
     // @ts-ignore
     return (
       <button className={classes.root} {...unhandledProps} ref={ref}>
-        <Start className={classes.root} id="start" {...getSlotProps('start')} />
-        <Main className={classes.root} id="main" {...getSlotProps('main')} />
-        <End className={classes.root} id="end" {...getSlotProps('end')} />
+        <Start className={classes.root} id="start" {...slotProps.start} />
+        <Main className={classes.root} id="main" {...slotProps.main} />
+        <End className={classes.root} id="end" {...slotProps.end} />
       </button>
     );
   },
@@ -239,12 +239,17 @@ describe('useCompose', () => {
       handledProps: ['data-main-composed'],
     });
 
-    const wrapper = shallow(<ComposedComponentWithSlots data-start={true} data-main-composed={true} />);
+    const wrapper = shallow(
+      <ComposedComponentWithSlots data-start={true} data-main={true} data-main-composed={true} />,
+    );
 
     const startDataAttr = wrapper.find('#start').prop('data-attr');
     expect(startDataAttr).toEqual(false);
 
-    const mainDataAttr = wrapper.find('#main').prop('data-main-composed');
+    const mainComposedDataAttr = wrapper.find('#main').prop('data-main-composed');
+    expect(mainComposedDataAttr).toEqual(true);
+
+    const mainDataAttr = wrapper.find('#main').prop('data-attr');
     expect(mainDataAttr).toEqual(true);
   });
 });

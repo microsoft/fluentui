@@ -26,10 +26,7 @@ export const defaultComposeOptions: ComposePreparedOptions = {
   overrideStyles: false,
   slots: {},
   mapPropsToSlotPropsChain: [],
-  // tslint:disable-next-line:no-empty
-  resolveSlotProps: () => {
-    return () => ({});
-  },
+  resolveSlotProps: () => ({}),
 };
 
 export function mergeComposeOptions(
@@ -41,18 +38,24 @@ export function mergeComposeOptions(
     ? [...parentOptions.mapPropsToSlotPropsChain, inputOptions.mapPropsToSlotProps]
     : parentOptions.mapPropsToSlotPropsChain;
 
-  const resolveSlotProps = <P = {}>(props: P) => {
-    const getSlotProps = (slot: string) => {
-      return mapPropsToSlotPropsChain.reduce(
-        (acc, definition) => ({
-          ...acc,
-          ...(definition(props)[slot] || {}),
-        }),
-        {},
-      );
-    };
-    return getSlotProps;
-  };
+  const resolveSlotProps = <P = {}>(props: P) =>
+    mapPropsToSlotPropsChain.reduce<Record<string, object>>((acc, definition) => {
+      const nextProps = definition(props) || {};
+      const slots: string[] = [...Object.keys(acc), ...Object.keys(nextProps)];
+
+      const mergedSlotProps: Record<string, object> = {};
+
+      slots.forEach(slot => {
+        if (!mergedSlotProps[slot]) {
+          mergedSlotProps[slot] = {
+            ...acc[slot],
+            ...nextProps[slot],
+          };
+        }
+      });
+
+      return mergedSlotProps;
+    }, {});
 
   return {
     className: inputOptions.className || parentOptions.className,
