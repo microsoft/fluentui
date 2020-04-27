@@ -52,9 +52,9 @@ const TertiaryButton = compose<'button', TertiaryButtonProps, TertiaryButtonStyl
   mapPropsToStylesProps: props => ({ tertiary: props.tertiary }),
   handledProps: ['tertiary'],
   slots: { content: TertiaryButtonContent },
-  slotProps: {
-    content: props => ({ tertiary: props.tertiary }),
-  },
+  mapPropsToSlotProps: props => ({
+    content: { tertiary: props.tertiary },
+  }),
 });
 
 // Adds overrides for a design term

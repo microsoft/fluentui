@@ -8,9 +8,9 @@ interface TestComponentProps {
   triangled?: boolean;
 }
 
-const getComponent = (slotPropsChain: Record<string, (props: TestComponentProps) => object>[]) => {
+const getComponent = (mapPropsToSlotPropsChain: ((props: TestComponentProps) => Record<string, object>)[]) => {
   const TestComponent: React.FunctionComponent<TestComponentProps> = props => {
-    const getSlotProps = useSlotProps<TestComponentProps>(slotPropsChain, props);
+    const getSlotProps = useSlotProps<TestComponentProps>(mapPropsToSlotPropsChain, props);
 
     return (
       <>
@@ -41,14 +41,14 @@ const getComponent = (slotPropsChain: Record<string, (props: TestComponentProps)
 
 describe('useSlotProps', () => {
   it('applies slotProps to correct slots', () => {
-    const slotPropsChain = [
-      {
-        start: (props: TestComponentProps) => ({ squared: props.squared }),
-        content: (props: TestComponentProps) => ({ circular: props.circular }),
-      },
+    const mapPropsToSlotPropsChain = [
+      (props: TestComponentProps) => ({
+        start: { squared: props.squared },
+        content: { circular: props.circular },
+      }),
     ];
 
-    const TestComponent = getComponent(slotPropsChain);
+    const TestComponent = getComponent(mapPropsToSlotPropsChain);
 
     const wrapper = shallow(<TestComponent squared circular />);
 
@@ -64,18 +64,18 @@ describe('useSlotProps', () => {
   });
 
   it('merges slotProps along the chain', () => {
-    const slotPropsChain = [
-      {
-        start: (props: TestComponentProps) => ({ squared: props.squared }),
-        content: (props: TestComponentProps) => ({ circular: props.circular }),
-      },
-      {
-        start: (props: TestComponentProps) => ({ triangled: props.triangled }),
-        content: (props: TestComponentProps) => ({ squared: props.squared }),
-      },
+    const mapPropsToSlotPropsChain = [
+      (props: TestComponentProps) => ({
+        start: { squared: props.squared },
+        content: { circular: props.circular },
+      }),
+      (props: TestComponentProps) => ({
+        start: { triangled: props.triangled },
+        content: { squared: props.squared },
+      }),
     ];
 
-    const TestComponent = getComponent(slotPropsChain);
+    const TestComponent = getComponent(mapPropsToSlotPropsChain);
 
     const wrapper = shallow(<TestComponent squared circular triangled={false} />);
 
@@ -91,18 +91,18 @@ describe('useSlotProps', () => {
   });
 
   it('overrides slotProps along the chain', () => {
-    const slotPropsChain = [
-      {
-        start: (props: TestComponentProps) => ({ squared: props.squared }),
-        content: (props: TestComponentProps) => ({ circular: props.circular }),
-      },
-      {
-        start: (props: TestComponentProps) => ({ squared: false, triangled: props.triangled }),
-        content: (props: TestComponentProps) => ({ squared: props.squared, circular: true }),
-      },
+    const mapPropsToSlotPropsChain = [
+      (props: TestComponentProps) => ({
+        start: { squared: props.squared },
+        content: { circular: props.circular },
+      }),
+      (props: TestComponentProps) => ({
+        start: { squared: false, triangled: props.triangled },
+        content: { squared: props.squared, circular: true },
+      }),
     ];
 
-    const TestComponent = getComponent(slotPropsChain);
+    const TestComponent = getComponent(mapPropsToSlotPropsChain);
 
     const wrapper = shallow(<TestComponent squared circular={false} triangled={false} />);
 

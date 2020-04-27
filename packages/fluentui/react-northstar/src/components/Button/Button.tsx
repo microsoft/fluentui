@@ -186,7 +186,7 @@ const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
       unstable_props: props,
     });
 
-    const getSlotProps = useSlotProps<ButtonProps>(composeOptions.slotPropsChain, props);
+    const getSlotProps = useSlotProps<ButtonProps>(composeOptions.mapPropsToSlotPropsChain, props);
 
     const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
     const ElementType = getElementType(props);
@@ -269,14 +269,14 @@ const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
       loader: Loader,
     },
 
-    slotProps: {
-      content: props => ({
+    mapPropsToSlotProps: props => ({
+      content: {
         size: props.size,
-      }),
-      loader: () => ({
+      },
+      loader: {
         role: undefined,
-      }),
-    },
+      },
+    }),
 
     handledProps: [
       'accessibility',

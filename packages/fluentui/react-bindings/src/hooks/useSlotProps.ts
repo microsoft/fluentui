@@ -1,14 +1,14 @@
 type UseSlotPropsResult = (slot: string) => Record<string, any>;
 
 const useSlotProps = <P = {}>(
-  slotPropsChain: Record<string, (props: P) => Record<string, any> | Record<string, any>>[],
+  mapPropsToSlotPropsChain: ((props: P) => Record<string, object>)[],
   props: P,
 ): UseSlotPropsResult => {
   const getSlotProps: UseSlotPropsResult = slot => {
-    return slotPropsChain.reduce(
-      (acc, slotProps) => ({
+    return mapPropsToSlotPropsChain.reduce(
+      (acc, definition) => ({
         ...acc,
-        ...(typeof slotProps[slot] === 'function' ? slotProps[slot](props) : slotProps[slot] || {}),
+        ...(definition(props)[slot] || {}),
       }),
       {},
     );

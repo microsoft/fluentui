@@ -9,18 +9,6 @@ export type PropsOfElement<
   E extends keyof JSX.IntrinsicElements | React.JSXElementConstructor<any>
 > = JSX.LibraryManagedAttributes<E, React.ComponentPropsWithRef<E>>;
 
-// export type ComponentWithAs<E extends React.ElementType = 'div', P = {}> = (<EE extends React.ElementType = E>(
-//   props: Omit<PropsOfElement<EE>, 'as' | keyof P> & { as?: EE } & P,
-// ) => JSX.Element) & {
-//   displayName?: string;
-//
-//   defaultProps?: Partial<P & { as: E }>;
-//   propTypes?: React.WeakValidationMap<P> & {
-//     // tslint:disable-next-line:no-any
-//     as: React.Requireable<string | ((props: any, context?: any) => any) | (new (props: any, context?: any) => any)>;
-//   };
-// };
-
 // tslint:disable-next-line:interface-name
 export interface ComponentWithAs<E extends React.ElementType = 'div', P = {}> extends React.FunctionComponent {
   <EE extends React.ElementType = E>(
@@ -67,7 +55,8 @@ export type ComposeOptions<InputProps = {}, InputStylesProps = {}, ParentStylesP
   overrideStyles?: boolean;
 
   slots?: Record<string, React.ElementType>;
-  slotProps?: Record<string, (props: InputProps) => object>;
+  // TODO: we should add here state in the typings
+  mapPropsToSlotProps?: (props: InputProps) => Record<string, object>;
 };
 
 export type ComposePreparedOptions<Props = {}> = {
@@ -82,5 +71,5 @@ export type ComposePreparedOptions<Props = {}> = {
   overrideStyles: boolean;
 
   slots: Record<string, React.ElementType>;
-  slotPropsChain: Record<string, (props: Props) => object>[];
+  mapPropsToSlotPropsChain: ((props: Props) => Record<string, object>)[];
 };

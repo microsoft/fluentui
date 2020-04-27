@@ -25,7 +25,7 @@ export const defaultComposeOptions: ComposePreparedOptions = {
   handledProps: [] as never[],
   overrideStyles: false,
   slots: {},
-  slotPropsChain: [],
+  mapPropsToSlotPropsChain: [],
 };
 
 export function mergeComposeOptions(
@@ -50,9 +50,9 @@ export function mergeComposeOptions(
       ...(parentOptions.slots || {}),
       ...(inputOptions.slots || {}),
     },
-    slotPropsChain: inputOptions.slotProps
-      ? [...parentOptions.slotPropsChain, inputOptions.slotProps]
-      : parentOptions.slotPropsChain,
+    mapPropsToSlotPropsChain: inputOptions.mapPropsToSlotProps
+      ? [...parentOptions.mapPropsToSlotPropsChain, inputOptions.mapPropsToSlotProps]
+      : parentOptions.mapPropsToSlotPropsChain,
   };
 }
 
