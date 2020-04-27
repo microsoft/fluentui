@@ -40,7 +40,7 @@ export type ComposeOptions<InputProps = {}, InputStylesProps = {}, ParentStylesP
     handledProps?: (keyof InputProps | 'as')[];
     overrideStyles?: boolean;
     slots?: Record<string, React.ElementType>;
-    slotProps?: Record<string, (props: InputProps) => object>;
+    mapPropsToSlotProps?: (props: InputProps) => Record<string, object>;
 };
 
 // @public (undocumented)
@@ -53,7 +53,8 @@ export type ComposePreparedOptions<Props = {}> = {
     handledProps: (keyof Props)[];
     overrideStyles: boolean;
     slots: Record<string, React.ElementType>;
-    slotPropsChain: Record<string, (props: Props) => object>[];
+    mapPropsToSlotPropsChain: ((props: Props) => Record<string, object>)[];
+    resolveSlotProps: <P>(props: P) => Record<string, object>;
 };
 
 // @public (undocumented)
