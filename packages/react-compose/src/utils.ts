@@ -26,6 +26,10 @@ export const defaultComposeOptions: ComposePreparedOptions = {
   overrideStyles: false,
   slots: {},
   mapPropsToSlotPropsChain: [],
+  // tslint:disable-next-line:no-empty
+  resolveSlotProps: () => {
+    return () => ({});
+  },
 };
 
 export function mergeComposeOptions(
@@ -33,6 +37,23 @@ export function mergeComposeOptions(
   inputOptions: ComposeOptions,
   parentOptions: ComposePreparedOptions = defaultComposeOptions,
 ): ComposePreparedOptions {
+  const mapPropsToSlotPropsChain = inputOptions.mapPropsToSlotProps
+    ? [...parentOptions.mapPropsToSlotPropsChain, inputOptions.mapPropsToSlotProps]
+    : parentOptions.mapPropsToSlotPropsChain;
+
+  const resolveSlotProps = <P = {}>(props: P) => {
+    const getSlotProps = (slot: string) => {
+      return mapPropsToSlotPropsChain.reduce(
+        (acc, definition) => ({
+          ...acc,
+          ...(definition(props)[slot] || {}),
+        }),
+        {},
+      );
+    };
+    return getSlotProps;
+  };
+
   return {
     className: inputOptions.className || parentOptions.className,
     displayName: inputOptions.displayName || parentOptions.displayName,
@@ -50,9 +71,8 @@ export function mergeComposeOptions(
       ...(parentOptions.slots || {}),
       ...(inputOptions.slots || {}),
     },
-    mapPropsToSlotPropsChain: inputOptions.mapPropsToSlotProps
-      ? [...parentOptions.mapPropsToSlotPropsChain, inputOptions.mapPropsToSlotProps]
-      : parentOptions.mapPropsToSlotPropsChain,
+    mapPropsToSlotPropsChain,
+    resolveSlotProps,
   };
 }
 

@@ -6,7 +6,6 @@ import {
   useAccessibility,
   useStyles,
   useTelemetry,
-  useSlotProps,
   useUnhandledProps,
 } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
@@ -186,7 +185,7 @@ const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
       unstable_props: props,
     });
 
-    const getSlotProps = useSlotProps<ButtonProps>(composeOptions.mapPropsToSlotPropsChain, props);
+    const getSlotProps = composeOptions.resolveSlotProps<ButtonProps>(props);
 
     const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
     const ElementType = getElementType(props);

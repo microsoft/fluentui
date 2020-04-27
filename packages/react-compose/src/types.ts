@@ -72,4 +72,6 @@ export type ComposePreparedOptions<Props = {}> = {
 
   slots: Record<string, React.ElementType>;
   mapPropsToSlotPropsChain: ((props: Props) => Record<string, object>)[];
+
+  resolveSlotProps: <P>(props: P) => (slotName: string) => object;
 };
