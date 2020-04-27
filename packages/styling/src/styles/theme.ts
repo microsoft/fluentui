@@ -299,7 +299,7 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depCom
 
     // Deprecated slots, second pass by _fixDeprecatedSlots() later for self-referential slots
     warningHighlight: !isInverted ? '#ffb900' : '#fff100',
-    warningText: !isInverted ? '#333333' : '#ffffff',
+    warningText: '',
     successText: !isInverted ? '#107C10' : '#92c353',
     listTextColor: '',
     menuItemBackgroundChecked: p.neutralLight,
@@ -322,7 +322,7 @@ function _fixDeprecatedSlots(s: ISemanticColors, depComments: boolean): ISemanti
   // tslint:disable-next-line:deprecation
   s.warningHighlight += dep;
   // tslint:disable-next-line:deprecation
-  s.warningText += dep;
+  s.warningText = s.messageText + dep;
   // tslint:disable-next-line:deprecation
   s.successText += dep;
   return s;
