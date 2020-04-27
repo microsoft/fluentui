@@ -25,7 +25,10 @@ repoDeps.forEach(dep => {
         ),
       );
     } else if (dep.packageJson.name === '@fluentui/docs') {
-      instructions.push(...copyInstructions.copyFilesInDirectory(sourcePath, path.join('dist', 'react-northstar')));
+      if (process.env.SYSTEM_PULLREQUEST_TARGETBRANCH) {
+        // Only deploy react-northstar docs for PRs
+        instructions.push(...copyInstructions.copyFilesInDirectory(sourcePath, path.join('dist', 'react-northstar')));
+      }
     } else {
       instructions.push(
         ...copyInstructions.copyFilesInDirectory(sourcePath, path.join('dist', path.basename(dep.packagePath))),
