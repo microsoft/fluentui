@@ -71,8 +71,8 @@ export function mergeComposeOptions(
     overrideStyles: inputOptions.overrideStyles || false,
 
     slots: {
-      ...(parentOptions.slots || {}),
-      ...(inputOptions.slots || {}),
+      ...parentOptions.slots,
+      ...inputOptions.slots,
     },
     mapPropsToSlotPropsChain,
     resolveSlotProps,
