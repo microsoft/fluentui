@@ -130,8 +130,8 @@ const BaseComponentWithSlots: React.FC<BaseComponentProps> = compose<
 
     const slotProps = composeOptions.resolveSlotProps(props);
 
-    // @ts-ignore
     return (
+      // @ts-ignore
       <button className={classes.root} {...unhandledProps} ref={ref}>
         <Start className={classes.root} id="start" {...slotProps.start} />
         <Main className={classes.root} id="main" {...slotProps.main} />
