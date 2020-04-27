@@ -36,7 +36,9 @@ const getAccessibility = <Props extends Record<string, any>>(
     // schema is located in @stardust-ui/ability-attributes package.
     if (definition.attributes) {
       Object.keys(definition.attributes).forEach(slotName => {
-        const validatorName = `${displayName}${slotName === 'root' ? '' : `__${slotName}`}`;
+        const validatorName =
+          (definition.attributes as AccessibilityAttributesBySlot)[slotName]['data-aa-class'] ||
+          `${displayName}${slotName === 'root' ? '' : `__${slotName}`}`;
 
         if (!(definition.attributes as AccessibilityAttributesBySlot)[slotName]) {
           (definition.attributes as AccessibilityAttributesBySlot)[slotName] = {} as AccessibilityAttributes;
