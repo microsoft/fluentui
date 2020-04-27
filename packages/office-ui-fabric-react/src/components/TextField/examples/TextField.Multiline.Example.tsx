@@ -5,6 +5,7 @@ import { lorem } from '@uifabric/example-data';
 import { Stack, IStackProps, IStackStyles } from 'office-ui-fabric-react/lib/Stack';
 
 const stackStyles: Partial<IStackStyles> = { root: { width: 650 } };
+const stackTokens = { childrenGap: 50 };
 const dummyText: string = lorem(100);
 const columnProps: Partial<IStackProps> = {
   tokens: { childrenGap: 15 },
@@ -20,7 +21,7 @@ export const TextFieldMultilineExample: React.FunctionComponent = () => {
     }
   };
   return (
-    <Stack horizontal tokens={{ childrenGap: 50 }} styles={stackStyles}>
+    <Stack horizontal tokens={stackTokens} styles={stackStyles}>
       <Stack {...columnProps}>
         <TextField label="Standard" multiline rows={3} />
         <TextField label="Disabled" multiline rows={3} disabled defaultValue={dummyText} />

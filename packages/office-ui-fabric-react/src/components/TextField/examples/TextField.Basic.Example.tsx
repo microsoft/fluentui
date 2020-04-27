@@ -3,6 +3,7 @@ import { TextField, MaskedTextField } from 'office-ui-fabric-react/lib/TextField
 import { Stack, IStackProps, IStackStyles } from 'office-ui-fabric-react/lib/Stack';
 
 const stackTokens = { childrenGap: 50 };
+const iconProps = { iconName: 'Calendar' };
 const stackStyles: Partial<IStackStyles> = { root: { width: 650 } };
 const columnProps: Partial<IStackProps> = {
   tokens: { childrenGap: 15 },
@@ -22,7 +23,7 @@ export const TextFieldBasicExample: React.FunctionComponent = () => {
       </Stack>
       <Stack {...columnProps}>
         <MaskedTextField label="With input mask" mask="m\ask: (999) 999 - 9999" />
-        <TextField label="With an icon" iconProps={{ iconName: 'Calendar' }} />
+        <TextField label="With an icon" iconProps={iconProps} />
         <TextField label="With placeholder" placeholder="Please enter text here" />
         <TextField label="Disabled with placeholder" disabled placeholder="I am disabled" />
       </Stack>
