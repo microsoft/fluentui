@@ -88,6 +88,7 @@ export { default as treeItemBehavior } from './Tree/treeItemBehavior';
 export * from './Tree/treeTitleBehavior';
 export { default as treeTitleBehavior } from './Tree/treeTitleBehavior';
 export { default as textAreaBehavior } from './TextArea/textAreaBehavior';
+export * from './TextArea/textAreaBehavior';
 export { default as treeAsListBehavior } from './Tree/treeAsListBehavior';
 export { default as treeItemAsListItemBehavior } from './Tree/treeItemAsListItemBehavior';
 export { default as treeTitleAsListItemTitleBehavior } from './Tree/treeTitleAsListItemTitleBehavior';
