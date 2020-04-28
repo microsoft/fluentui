@@ -4,9 +4,12 @@ import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { PivotItem, IPivotItemProps, Pivot } from 'office-ui-fabric-react/lib/Pivot';
 import { IStyleSet } from 'office-ui-fabric-react/lib/Styling';
 
+// tslint:disable:jsx-ban-props
+
 const labelStyles: Partial<IStyleSet<ILabelStyles>> = {
   root: { marginTop: 10 },
 };
+const iconStyling = { color: 'red' };
 
 export const PivotIconCountExample: React.FunctionComponent = () => {
   return (
@@ -36,7 +39,7 @@ function _customRenderer(link: IPivotItemProps, defaultRenderer: (link: IPivotIt
   return (
     <span>
       {defaultRenderer(link)}
-      <Icon iconName="Airplane" style={{ color: 'red' }} />
+      <Icon iconName="Airplane" style={iconStyling} />
     </span>
   );
 }
