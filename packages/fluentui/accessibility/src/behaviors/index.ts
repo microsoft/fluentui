@@ -95,6 +95,7 @@ export { default as treeTitleAsListItemTitleBehavior } from './Tree/treeTitleAsL
 export { default as carouselBehavior } from './Carousel/carouselBehavior';
 export { default as carouselItemBehavior } from './Carousel/carouselItemBehavior';
 export { default as tableBehavior } from './Table/tableBehavior';
+export * from './Table/tableBehavior';
 export { default as tableRowBehavior } from './Table/tableRowBehavior';
 export { default as tableCellBehavior } from './Table/tableCellBehavior';
 export * from './Table/tableCellBehavior';
@@ -112,5 +113,6 @@ export { default as cardBehavior } from './Card/cardBehavior';
 export * from './Card/cardBehavior';
 export { default as cardFocusableBehavior } from './Card/cardFocusableBehavior';
 export { default as cardChildrenFocusableBehavior } from './Card/cardChildrenFocusableBehavior';
+export { default as cardsContainerBehavior } from './Card/cardsContainerBehavior';
 export { default as videoBehavior } from './Video/videoBehavior';
 export * from './Video/videoBehavior';

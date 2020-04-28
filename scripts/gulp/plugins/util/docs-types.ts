@@ -1,5 +1,5 @@
-import { UseKnobOptions } from '@fluentui/docs-components';
-import { ThemePrepared } from '@fluentui/react-northstar';
+// Temporary copy from packages/fluentui/docs/src/types.ts
+// TODO: move types to shared location
 
 export type ExampleSource = {
   js: string;
@@ -62,15 +62,3 @@ export type ComponentPropType = {
   parameters?: ComponentPropType[];
   value?: string;
 };
-
-export type KnobGeneratorOptions = {
-  propName?: string;
-  propDef: ComponentProp;
-  componentInfo: ComponentInfo;
-  theme: ThemePrepared;
-};
-export type KnobDefinition = UseKnobOptions<any> & { hook: Function };
-
-export type KnobGenerator<T> = (options: KnobGeneratorOptions) => KnobDefinition;
-
-export type KnobComponentGenerators<P> = Partial<Record<keyof P, KnobGenerator<any>>>;
