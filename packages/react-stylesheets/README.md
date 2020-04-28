@@ -10,9 +10,9 @@ styles into the document on component mount. This creates a few problems:
 1. **Load styles into the page.** By default, the `useStylesheet` React hook will register styles into
    the document.head.
 
-1. **Child window scenarios.** A child window is often rendered from the parent. When components render within the child window context, they need a contextual way to render their stylesheet within the parent.
+2. **Child window scenarios.** A child window is often rendered from the parent. When components render within the child window context, they need a contextual way to render their stylesheet within the parent.
 
-1. **Server side rendering.** A component heirarchy is dynamically rendered on the server in a node session. Only stylesheets which are needed for the scenario should return.
+3. **Server side rendering.** A component hierarchy is dynamically rendered on the server in a node session. Only stylesheets which are needed for the scenario should return.
 
 This package contains utilities for providing stylesheets to a given target using a contextual stylesheet provider.
 
@@ -96,7 +96,7 @@ getPage = () => {
 ### Order of stylesheet registration
 
 Typical webpack `style-loader` style registration approach would dictate that styles would be
-registered in module import order. This means leaf node end up registering styles first, then root elements.
+registered in module import order. This means leaf nodes end up registering styles first, then root elements.
 
 Because React renders components root to child, stylesheet ordering gets reversed.
 
