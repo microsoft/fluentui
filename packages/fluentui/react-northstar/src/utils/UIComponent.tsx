@@ -37,7 +37,14 @@ class UIComponent<P, S = {}> extends React.Component<P, S> {
 
   constructor(props, context) {
     super(props, context);
+
     if (process.env.NODE_ENV !== 'production') {
+      // Hack used by conformance tests to get the path of the tested component
+      // eslint-disable-next-line
+      if (typeof window !== 'undefined' && (window as any).gettingComponentPath) {
+        throw new Error();
+      }
+
       const child = this.constructor;
       const childName = child.name;
 

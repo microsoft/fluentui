@@ -10,7 +10,7 @@ import { ReactWrapper } from 'enzyme';
 import * as ReactDOMServer from 'react-dom/server';
 import { act } from 'react-dom/test-utils';
 
-import isExportedAtTopLevel from './isExportedAtTopLevel';
+import isExportedAtTopLevel from './utils/isExportedAtTopLevel';
 import {
   assertBodyContains,
   consoleUtil,
@@ -18,10 +18,16 @@ import {
   mountWithProvider as mount,
   syntheticEvent,
 } from 'test/utils';
-import helpers from './commonHelpers';
+import helpers from './utils/commonHelpers';
 
 import * as FluentUI from 'src/index';
-import { getEventTargetComponent, EVENT_TARGET_ATTRIBUTE } from './eventTarget';
+import { getEventTargetComponent, EVENT_TARGET_ATTRIBUTE } from './utils/eventTarget';
+
+import getComponentPath from './utils/getComponentPath';
+import config from '@uifabric/build/config';
+import { getFluentConformanceInfo } from '@fluentui/react-docgen';
+
+/* eslint-disable no-console */
 
 export interface Conformant {
   constructorName?: string;
@@ -114,37 +120,20 @@ export default function isConformant(
     );
   }
 
-  // ----------------------------------------
-  // Component info
-  // ----------------------------------------
-  // This is pretty ugly because:
-  // - jest doesn't support custom error messages
-  // - jest will run all test
-  const infoJSONPath = `@fluentui/docs/src/componentInfo/${constructorName}.info.json`;
-
-  let info;
-
-  try {
-    info = require(infoJSONPath);
-  } catch (err) {
-    // handled in the test() below
-    test('component info file exists', () => {
-      throw new Error(
-        [
-          '!! ==========================================================',
-          `!! Missing ${infoJSONPath}.`,
-          '!! Run `yarn test` or `yarn test:watch` again to generate one.',
-          '!! ==========================================================',
-        ].join('\n'),
-      );
-    });
-    return null;
-  }
+  const repoPath = getComponentPath(Component, constructorName);
+  const {
+    filenameWithoutExt,
+    apiPath,
+    isChild,
+    parentDisplayName,
+    docblock,
+    componentClassName,
+  } = getFluentConformanceInfo(constructorName, config.paths.base(repoPath));
 
   // ----------------------------------------
   // Docblock description
   // ----------------------------------------
-  const hasDocblockDescription = info.docblock.description.trim().length > 0;
+  const hasDocblockDescription = docblock.description.trim().length > 0;
 
   test('has a docblock description', () => {
     expect(hasDocblockDescription).toEqual(true);
@@ -153,12 +142,17 @@ export default function isConformant(
   if (hasDocblockDescription) {
     const minWords = 5;
     const maxWords = 25;
+    const wordCount = _.words(docblock.description).length;
+    if (wordCount < 5 || wordCount > 25) {
+      console.warn(`Docblock is too long/short: \n${docblock.description}`);
+    }
+
     test(`docblock description is long enough to be meaningful (>${minWords} words)`, () => {
-      expect(_.words(info.docblock.description).length).toBeGreaterThanOrEqual(minWords);
+      expect(wordCount).toBeGreaterThanOrEqual(minWords);
     });
 
     test(`docblock description is short enough to be quickly understood (<${maxWords} words)`, () => {
-      expect(_.words(info.docblock.description).length).toBeLessThan(maxWords);
+      expect(wordCount).toBeLessThan(maxWords);
     });
   }
 
@@ -166,18 +160,19 @@ export default function isConformant(
   // Class and file name
   // ----------------------------------------
   test(`constructor name matches filename "${constructorName}"`, () => {
-    expect(constructorName).toEqual(info.filenameWithoutExt);
+    expect(constructorName).toEqual(filenameWithoutExt);
   });
 
   // find the apiPath in the top level API
-  const foundAsSubcomponent = ReactIs.isValidElementType(_.get(FluentUI, info.apiPath));
+  const foundAsSubcomponent = ReactIs.isValidElementType(_.get(FluentUI, apiPath));
 
-  exportedAtTopLevel && isExportedAtTopLevel(constructorName, info.displayName);
-  if (info.isChild) {
+  exportedAtTopLevel && isExportedAtTopLevel(constructorName);
+
+  if (isChild) {
     test('is a static component on its parent', () => {
       const message =
-        `'${info.displayName}' is a child component (is in ${info.repoPath}).` +
-        ` It must be a static prop of its parent '${info.parentDisplayName}'`;
+        `'${constructorName}' is a child component (located at ${repoPath}). ` +
+        `It must be a static prop of its parent '${parentDisplayName}'.`;
       expect({ foundAsSubcomponent, message }).toEqual({
         message,
         foundAsSubcomponent: true,
@@ -433,7 +428,7 @@ export default function isConformant(
 
         // <Dropdown onBlur={handleBlur} />
         //                   ^ was not called once on "blur"
-        const leftPad = ' '.repeat(info.displayName.length + listenerName.length + 3);
+        const leftPad = ' '.repeat(constructorName.length + listenerName.length + 3);
 
         // onKeyDown => handleKeyDown
         const handlerName = _.camelCase(listenerName.replace('on', 'handle'));
@@ -443,7 +438,7 @@ export default function isConformant(
         } catch (err) {
           throw new Error(
             [
-              `<${info.displayName} ${listenerName}={${handlerName}} />\n`,
+              `<${constructorName} ${listenerName}={${handlerName}} />\n`,
               `${leftPad} ^ was not called once on "${eventName}".`,
               'You may need to hoist your event handlers up to the root element.\n',
             ].join(''),
@@ -468,7 +463,7 @@ export default function isConformant(
         } catch (err) {
           throw new Error(
             [
-              `<${info.displayName} ${listenerName}={${handlerName}} />\n`,
+              `<${constructorName} ${listenerName}={${handlerName}} />\n`,
               `${leftPad} ^ ${errorMessage}`,
               'It was called with args:',
               JSON.stringify(handlerSpy.mock.calls[0], null, 2),
@@ -483,7 +478,6 @@ export default function isConformant(
   // Handles className
   // ----------------------------------------
   describe('className const (common)', () => {
-    const componentClassName = info.componentClassName || `ui-${Component.displayName}`.toLowerCase();
     const getClassesOfRootElement = component => {
       return component
         .find('[className]')

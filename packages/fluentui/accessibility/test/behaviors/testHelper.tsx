@@ -1,5 +1,6 @@
 import * as _ from 'lodash';
 import { Accessibility } from '@fluentui/accessibility';
+import { FluentBehaviorInfo } from '@fluentui/react-docgen-types';
 
 interface FilteredSpecification {
   behaviorName: string;
@@ -48,7 +49,7 @@ export class TestHelper {
     });
   }
 
-  run(behaviorMenuItems: any) {
+  run(behaviorMenuItems: FluentBehaviorInfo[]) {
     this.findRegexAndAssingCorrespondingInfoToArray(behaviorMenuItems);
 
     const groupedByBehavior = _.groupBy(this.filteredSpecificationWithAssignedTestMethod, 'behaviorName');
@@ -67,7 +68,7 @@ export class TestHelper {
     });
   }
 
-  findRegexAndAssingCorrespondingInfoToArray(behaviorMenuItems: any) {
+  findRegexAndAssingCorrespondingInfoToArray(behaviorMenuItems: FluentBehaviorInfo[]) {
     behaviorMenuItems.forEach(behavior => {
       behavior.variations.forEach(variant => {
         if (!variant.specification && !variant.description) {

@@ -5,7 +5,7 @@ import { act } from 'react-dom/test-utils';
 
 import { mountWithProviderAndGetComponent, mountWithProvider } from 'test/utils';
 import { UIComponent } from 'src/utils';
-import { EVENT_TARGET_ATTRIBUTE, getEventTargetComponent } from './eventTarget';
+import { EVENT_TARGET_ATTRIBUTE, getEventTargetComponent } from './utils/eventTarget';
 
 export const getRenderedAttribute = (renderedComponent, propName, partSelector) => {
   const target = partSelector ? renderedComponent.render().find(partSelector) : renderedComponent.render();

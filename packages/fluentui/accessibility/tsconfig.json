@@ -4,5 +4,6 @@
     "composite": true,
     "outDir": "dist/dts"
   },
-  "include": ["src", "test"]
+  "include": ["src", "test"],
+  "references": [{ "path": "../../react-docgen" }]
 }

@@ -58,7 +58,7 @@ export const tableSlotClassNames: TableSlotClassNames = {
   header: `${tableClassName}__header`,
 };
 
-export type TableStylesProps = never
+export type TableStylesProps = never;
 
 export const Table: React.FC<WithAsProp<TableProps>> &
   FluentComponentStaticProps<TableProps> & {
@@ -178,7 +178,7 @@ Table.defaultProps = {
 
 /**
  * A Table is used to display data in tabular layout
- * * @accessibility
+ * @accessibility
  * Implements ARIA [Data Grid](https://www.w3.org/TR/wai-aria-practices/#dataGrid) design pattern for presenting tabular information.
  * When gridcell contains actionable element, use [gridCellWithFocusableElementBehavior](/components/table/accessibility#grid-cell-with-focusable-element-behavior-ts). [More information available in aria documentation.](https://www.w3.org/TR/wai-aria-practices/#gridNav_focus)
  * Use [gridCellMultipleFocusableBehavior](/components/table/accessibility#gridCellMultipleFocusableBehavior), when gridcell contains:

@@ -60,9 +60,6 @@ export const loaderSlotClassNames: LoaderSlotClassNames = {
   svg: `${loaderClassName}__svg`,
 };
 
-/**
- * A loader alerts a user that content is being loaded or processed and they should wait for the activity to complete.
- */
 class Loader extends UIComponent<WithAsProp<LoaderProps>, LoaderState> {
   static create: ShorthandFactory<LoaderProps>;
   static displayName = 'Loader';

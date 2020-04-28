@@ -6,7 +6,9 @@
     "baseUrl": "../../",
     "paths": {
       "@uifabric/build": ["scripts"],
-      "@fluentui/*": ["packages/fluentui/*/src"]
+      "@fluentui/*": ["packages/fluentui/*/src"],
+      "@fluentui/react-compose": ["packages/react-compose/src/index"],
+      "@fluentui/react-docgen": ["packages/react-docgen/src/index"]
     },
     "types": ["node", "jest"],
     "jsx": "react",
