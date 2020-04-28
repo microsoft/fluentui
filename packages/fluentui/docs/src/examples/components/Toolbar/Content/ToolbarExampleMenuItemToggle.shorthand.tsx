@@ -1,4 +1,4 @@
-import { Toolbar, ToolbarMenuItemProps } from '@fluentui/react-northstar';
+import { Toolbar, ToolbarMenuItemProps, ShorthandValue, BoxProps } from '@fluentui/react-northstar';
 import * as _ from 'lodash';
 import * as React from 'react';
 import { BoldIcon, ItalicIcon, MoreIcon, HighlightIcon, BulletsIcon } from '@fluentui/react-icons-northstar';
@@ -15,12 +15,12 @@ const ToolbarExampleMenuItemToggle = () => {
     }
   };
 
-  const toolbarItem = (iconName, icon) => {
+  const toolbarItem = (itemName: string, itemIcon: ShorthandValue<BoxProps>) => {
     return {
-      key: iconName,
-      content: iconName,
-      icon: icon,
-      title: iconName,
+      key: itemName,
+      content: itemName,
+      icon: itemIcon,
+      title: itemName,
     };
   };
 

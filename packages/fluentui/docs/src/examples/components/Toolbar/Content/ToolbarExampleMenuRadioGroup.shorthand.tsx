@@ -1,4 +1,4 @@
-import { Toolbar } from '@fluentui/react-northstar';
+import { Toolbar, ShorthandValue, BoxProps } from '@fluentui/react-northstar';
 import * as React from 'react';
 import { MoreIcon, UnderlineIcon, FontColorIcon } from '@fluentui/react-icons-northstar';
 
@@ -6,12 +6,12 @@ const ToolbarExampleMenuRadioGroup = () => {
   const [activeIndex, setActiveIndex] = React.useState(0);
   const [menuOpen, setMenuOpen] = React.useState();
 
-  const toolbarItem = (iconName, icon) => {
+  const toolbarItem = (itemName: string, itemIcon: ShorthandValue<BoxProps>) => {
     return {
-      key: iconName,
-      content: iconName,
-      icon: icon,
-      title: iconName,
+      key: itemName,
+      content: itemName,
+      icon: itemIcon,
+      title: itemName,
     };
   };
 

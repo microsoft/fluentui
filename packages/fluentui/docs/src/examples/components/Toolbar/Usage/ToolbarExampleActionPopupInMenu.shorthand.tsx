@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Toolbar, Button, Form } from '@fluentui/react-northstar';
+import { Toolbar, Button, Form, BoxProps, ShorthandValue } from '@fluentui/react-northstar';
 import { MoreIcon, ItalicIcon, UnderlineIcon } from '@fluentui/react-icons-northstar';
 
 const CustomPopup = ({ onConfirm }) => {
@@ -27,12 +27,12 @@ const CustomPopup = ({ onConfirm }) => {
   );
 };
 
-const toolbarItem = (iconName, icon) => {
+const toolbarItem = (itemName: string, itemIcon: ShorthandValue<BoxProps>) => {
   return {
-    key: iconName,
-    content: iconName,
-    icon: icon,
-    title: iconName,
+    key: itemName,
+    content: itemName,
+    icon: itemIcon,
+    title: itemName,
   };
 };
 
