@@ -21,9 +21,9 @@ module.exports = resources.createConfig(BUNDLE_NAME, IS_PRODUCTION, {
 
   resolve: {
     alias: {
-      '@fluentui/react-focus/src': path.join(__dirname, 'src'),
-      '@fluentui/react-focus/lib': path.join(__dirname, 'lib'),
-      '@fluentui/react-focus': path.join(__dirname, 'lib'),
+      '@fluentui/react-stylesheets/src': path.join(__dirname, 'src'),
+      '@fluentui/react-stylesheets/lib': path.join(__dirname, 'lib'),
+      '@fluentui/react-stylesheets': path.join(__dirname, 'lib'),
     },
   },
 });
