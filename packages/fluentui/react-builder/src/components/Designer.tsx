@@ -276,6 +276,19 @@ class Designer extends React.Component<any, DesignerState> {
     });
   };
 
+  handleMoveComponent = (e: MouseEvent) => {
+    console.log('Designer:handleMoveComponent', this.state.selectedJSONTreeElement);
+
+    this.setState(({ jsonTree, selectedJSONTreeElement }) => {
+      jsonTreeDeleteElement(jsonTree, selectedJSONTreeElement.uuid);
+      this.draggingPosition = { x: e.clientX, y: e.clientY };
+      return {
+        jsonTree,
+        draggingElement: jsonTreeCloneElement(jsonTree, selectedJSONTreeElement),
+      };
+    });
+  };
+
   handleDeleteComponent = () => {
     console.log('Designer:handleDeleteComponent', this.state.selectedJSONTreeElement);
     this.setState(state => {
@@ -401,6 +414,7 @@ class Designer extends React.Component<any, DesignerState> {
               selectedComponent={selectedComponent}
               onSelectComponent={this.handleSelectComponent}
               onCloneComponent={this.handleCloneComponent}
+              onMoveComponent={this.handleMoveComponent}
               onDeleteComponent={this.handleDeleteComponent}
             />
           </div>
@@ -442,6 +456,7 @@ class Designer extends React.Component<any, DesignerState> {
                   jsonTree={jsonTree}
                   selectedComponent={selectedComponent}
                   onCloneComponent={this.handleCloneComponent}
+                  onMoveComponent={this.handleMoveComponent}
                   onDeleteComponent={this.handleDeleteComponent}
                   onGoToParentComponent={this.handleGoToParentComponent}
                 />

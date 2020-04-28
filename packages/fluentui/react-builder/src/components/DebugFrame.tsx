@@ -8,6 +8,7 @@ export type DebugFrameProps = {
   componentName?;
   onClone?;
   onDelete?;
+  onMove?;
   onGoToParent?;
 };
 
@@ -18,6 +19,7 @@ export const DebugFrame: React.FunctionComponent<DebugFrameProps> = ({
   componentName,
   onClone,
   onDelete,
+  onMove,
   onGoToParent,
 }) => {
   const frameRef = React.useRef<HTMLDivElement>();
@@ -37,6 +39,13 @@ export const DebugFrame: React.FunctionComponent<DebugFrameProps> = ({
   const hideFrame = frameEl => {
     frameEl.style.display = 'none';
   };
+
+  const handleMove = React.useCallback(
+    e => {
+      onMove?.(e);
+    },
+    [onMove],
+  );
 
   const handleClone = React.useCallback(
     e => {
@@ -111,7 +120,7 @@ export const DebugFrame: React.FunctionComponent<DebugFrameProps> = ({
         >
           <span style={{ fontWeight: 'bold' }}>{componentName}</span>
           <LevelUpDebugButton onClick={handleGoToParent} />
-          {/* <MoveDebugButton onClick={() => {}} /> */}
+          <MoveDebugButton onClick={handleMove} />
           <CloneDebugButton onClick={handleClone} />
           <TrashDebugButton onClick={handleDelete} />
         </div>

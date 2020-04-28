@@ -20,6 +20,7 @@ const Canvas = ({
   onSelectorHover,
   selectedComponent,
   onCloneComponent,
+  onMoveComponent,
   onDeleteComponent,
   onGoToParentComponent,
   renderJSONTreeElement,
@@ -36,6 +37,7 @@ const Canvas = ({
   onSelectorHover?: (jsonTreeElement: JSONTreeElement) => void;
   selectedComponent?: JSONTreeElement;
   onCloneComponent?: ({ clientX, clientY }: { clientX: number; clientY: number }) => void;
+  onMoveComponent?: ({ clientX, clientY }: { clientX: number; clientY: number }) => void;
   onDeleteComponent?: () => void;
   onGoToParentComponent?: () => void;
   renderJSONTreeElement?: (jsonTreeElement: JSONTreeElement) => JSONTreeElement;
@@ -92,11 +94,18 @@ const Canvas = ({
     [onSelectorHover, jsonTree],
   );
 
-  const handleCloneElement = React.useCallback(
+  const handleCloneComponent = React.useCallback(
     (e: MouseEvent) => {
       onCloneComponent?.(iframeCoordinatesToWindowCoordinates(e));
     },
     [onCloneComponent],
+  );
+
+  const handleMoveComponent = React.useCallback(
+    (e: MouseEvent) => {
+      onMoveComponent?.(iframeCoordinatesToWindowCoordinates(e));
+    },
+    [onMoveComponent],
   );
 
   const debugSize = '8px';
@@ -272,7 +281,8 @@ const Canvas = ({
                 target={document}
                 selector={`[data-builder-id="${selectedComponent.uuid}"]`}
                 componentName={selectedComponent.displayName}
-                onClone={handleCloneElement}
+                onClone={handleCloneComponent}
+                onMove={handleMoveComponent}
                 onDelete={onDeleteComponent}
                 onGoToParent={onGoToParentComponent}
               />
