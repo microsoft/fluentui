@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Point: Renaming IPoint to point, x to left and y to top and deprecating old names.",
+  "packageName": "@uifabric/utilities",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-04-16T00:39:30.560Z"
+}
