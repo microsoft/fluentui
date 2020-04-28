@@ -44,8 +44,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/react/<%= htmlWebpackPlugin.options.versions.react %>/umd/react<%= __PROD__ ? '.production.min' : '.development' %>.js"></script>
   <%if (__HOT__) {%>
     <script src="https://cdn.jsdelivr.net/npm/@hot-loader/react-dom@<%= htmlWebpackPlugin.options.versions.reactDOM %>/umd/react-dom.development.js"></script>
-  <% } else{ %>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/<%= htmlWebpackPlugin.options.versions.reactDOM %>/umd/react-dom.production.min.js"></script>
+  <% } else { %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/<%= htmlWebpackPlugin.options.versions.reactDOM %>/umd/react-dom<%= __PROD__ ? '.production.min' : '.development' %>.js"></script>
   <%}%>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/<%= htmlWebpackPlugin.options.versions.reactDOM %>/umd/react-dom-server.browser<%= __PROD__ ? '.production.min' : '.development' %>.js"></script>
 
