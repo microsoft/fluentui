@@ -1,8 +1,0 @@
-{
-  "type": "none",
-  "comment": "Remove unnecessary lint rule overrides",
-  "packageName": "@uifabric/react-hooks",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none",
-  "date": "2020-04-15T20:50:45.902Z"
-}

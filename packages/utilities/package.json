@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/utilities",
-  "version": "7.15.10",
+  "version": "7.15.11",
   "description": "Fluent UI React utilities for building components.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -36,9 +36,9 @@
     "@types/react-test-renderer": "^16.0.0",
     "@types/sinon": "2.2.2",
     "@uifabric/build": "^7.0.0",
-    "@uifabric/jest-serializer-merge-styles": "^7.0.18",
-    "@uifabric/test-utilities": "^7.0.18",
-    "@uifabric/tslint-rules": "^7.1.3",
+    "@uifabric/jest-serializer-merge-styles": "^7.0.19",
+    "@uifabric/test-utilities": "^7.0.19",
+    "@uifabric/tslint-rules": "^7.2.0",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
     "react": "16.8.6",
@@ -48,8 +48,8 @@
     "sinon": "^4.1.3"
   },
   "dependencies": {
-    "@uifabric/merge-styles": "^7.11.0",
-    "@uifabric/set-version": "^7.0.10",
+    "@uifabric/merge-styles": "^7.11.1",
+    "@uifabric/set-version": "^7.0.11",
     "prop-types": "^15.7.2",
     "tslib": "^1.10.0"
   },

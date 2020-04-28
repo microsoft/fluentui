@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "added slots and slotProps",
+  "packageName": "@fluentui/react-compose",
+  "email": "mnajdova@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-04-24T13:08:35.295Z"
+}

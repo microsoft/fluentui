@@ -1,8 +1,37 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Sun, 19 Apr 2020 02:02:09 GMT and should not be manually modified.
+This log was last generated on Fri, 24 Apr 2020 12:39:25 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.107.5](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.107.5)
+
+Fri, 24 Apr 2020 12:39:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.107.3..office-ui-fabric-react_v7.107.5)
+
+### Patches
+
+- Callout: Updating positioning logic to account for dual screen scenarios. ([PR #12785](https://github.com/microsoft/fluentui/pull/12785) by Humberto.Morimoto@microsoft.com)
+
+## [7.107.3](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.107.3)
+
+Wed, 22 Apr 2020 12:33:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.107.2..office-ui-fabric-react_v7.107.3)
+
+### Patches
+
+- Updating Announced, Callout, and Calendar examples to function components ([PR #12670](https://github.com/microsoft/fluentui/pull/12670) by czearing@outlook.com)
+- Fix SASS default values for theme.effects ([PR #12802](https://github.com/microsoft/fluentui/pull/12802) by phkuo@microsoft.com)
+
+## [7.107.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.107.2)
+
+Tue, 21 Apr 2020 12:34:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.107.1..office-ui-fabric-react_v7.107.2)
+
+### Patches
+
+- ContextualMenu: Improve perf by doing less merge styles ([PR #12752](https://github.com/microsoft/fluentui/pull/12752) by xgao@microsoft.com)
+- Update ColorRectangle and ColorSlider to handle native events when using the 'on' utility ([PR #12753](https://github.com/microsoft/fluentui/pull/12753) by behowell@microsoft.com)
 
 ## [7.107.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.107.1)
 

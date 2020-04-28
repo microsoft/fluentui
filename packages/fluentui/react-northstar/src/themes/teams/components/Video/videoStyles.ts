@@ -1,5 +1,5 @@
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { VideoProps } from '../../../../components/Video/Video';
+import { VideoStylesProps } from '../../../../components/Video/Video';
 import { VideoVariables } from './videoVariables';
 
 export default {
@@ -9,4 +9,4 @@ export default {
     width: v.width,
     height: v.height || 'auto',
   }),
-} as ComponentSlotStylesPrepared<VideoProps, VideoVariables>;
+} as ComponentSlotStylesPrepared<VideoStylesProps, VideoVariables>;

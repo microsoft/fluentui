@@ -21,9 +21,14 @@ const Usage = () => (
       examplePath="components/Card/Usage/CardExampleFocusable"
     />
     <ComponentExample
-      title="Card with focusable children"
-      description="Example of card which children can be focused and clicked"
-      examplePath="components/Card/Usage/CardExampleFocusableChildren"
+      title="Cards in navigable grid"
+      description="Example of cards in a grid with keyboard navigation"
+      examplePath="components/Card/Usage/CardExampleFocusableGrid"
+    />
+    <ComponentExample
+      title="Cards with actionable children in navigable grid"
+      description="Example of cards in a grid with keyboard navigation for cards and inside cards"
+      examplePath="components/Card/Usage/CardExampleFocusableChildrenGrid"
     />
   </ExampleSection>
 );
