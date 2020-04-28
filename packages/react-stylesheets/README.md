@@ -10,7 +10,7 @@ styles into the document on component mount. This creates a few problems:
 1. **Load styles into the page.** By default, the `useStylesheet` React hook will register styles into
    the document.head.
 
-1. **Child window scenarios.** A child window is often rendered from the parent. When components render within the child window context, they need a contextual way to render their stylesheet within the parent.
+2. **Child window scenarios.** A child window is often rendered from the parent. When components render within the child window context, they need a contextual way to render their stylesheet within the parent.
 
 1. **Server side rendering.** A component heirarchy is dynamically rendered on the server in a node session. Only stylesheets which are needed for the scenario should return.
 
