@@ -2,7 +2,7 @@ import * as Babel from '@babel/core';
 import { NodePath } from '@babel/traverse';
 import * as t from '@babel/types';
 
-import { ComponentInfo } from 'docs/src/types';
+import { ComponentInfo } from './docs-types';
 
 type ShorthandInfo = Required<Pick<ComponentInfo, 'implementsCreateShorthand' | 'mappedShorthandProp'>>;
 

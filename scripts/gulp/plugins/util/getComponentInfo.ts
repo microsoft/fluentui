@@ -4,7 +4,7 @@ import _ from 'lodash';
 import path from 'path';
 import fs from 'fs';
 
-import { BehaviorInfo, ComponentInfo, ComponentProp } from 'docs/src/types';
+import { BehaviorInfo, ComponentInfo, ComponentProp } from './docs-types';
 import * as docgen from './docgen';
 import parseDefaultValue from './parseDefaultValue';
 import parseDocblock from './parseDocblock';

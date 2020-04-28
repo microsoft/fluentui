@@ -2104,12 +2104,23 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
     onDismiss?: (ev?: any) => void;
     onLayerMounted?: () => void;
     onPositioned?: (positions?: ICalloutPositionedInfo) => void;
+<<<<<<< HEAD
+=======
+    onRestoreFocus?: (options: {
+        originalElement?: HTMLElement | Window;
+        containsFocus: boolean;
+    }) => void;
+>>>>>>> 6c2672609b55e65efb5b35484727ac33bfe93694
     onScroll?: () => void;
     preventDismissOnLostFocus?: boolean;
     preventDismissOnResize?: boolean;
     preventDismissOnScroll?: boolean;
     role?: string;
     setInitialFocus?: boolean;
+<<<<<<< HEAD
+=======
+    // @deprecated
+>>>>>>> 6c2672609b55e65efb5b35484727ac33bfe93694
     shouldRestoreFocus?: boolean;
     shouldUpdateWhenHidden?: boolean;
     style?: React.CSSProperties;
@@ -6353,7 +6364,16 @@ export interface IPopupProps extends React.HTMLAttributes<Popup> {
     ariaLabelledBy?: string;
     className?: string;
     onDismiss?: (ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => any;
+<<<<<<< HEAD
     role?: string;
+=======
+    onRestoreFocus?: (options: {
+        originalElement?: HTMLElement | Window;
+        containsFocus: boolean;
+    }) => void;
+    role?: string;
+    // @deprecated
+>>>>>>> 6c2672609b55e65efb5b35484727ac33bfe93694
     shouldRestoreFocus?: boolean;
 }
 
@@ -8251,8 +8271,11 @@ export enum MessageBarType {
     blocked = 2,
     error = 1,
     info = 0,
+<<<<<<< HEAD
     // @deprecated
     remove = 90000,
+=======
+>>>>>>> 6c2672609b55e65efb5b35484727ac33bfe93694
     severeWarning = 3,
     success = 4,
     warning = 5
