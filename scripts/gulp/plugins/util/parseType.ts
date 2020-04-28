@@ -3,7 +3,7 @@ import { NodePath } from '@babel/traverse';
 import * as t from '@babel/types';
 import _ from 'lodash';
 
-import { ComponentPropType } from 'docs/src/types';
+import { ComponentPropType } from './docs-types';
 import { PropItem } from './docgen';
 import parseTypeAnnotation from './parseTypeAnnotation';
 
