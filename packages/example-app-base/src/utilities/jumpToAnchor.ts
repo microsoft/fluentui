@@ -10,7 +10,8 @@ const SCROLL_DISTANCE = 52;
  * @param scrollDistance - Offset from the top
  */
 export function jumpToAnchor(anchor?: string, scrollDistance: number = SCROLL_DISTANCE): void {
-  const hash = anchor || extractAnchorLink(window.location.hash);
+  const windowLink = typeof window !== 'undefined' ? extractAnchorLink(window.location.hash) : undefined;
+  const hash = anchor || windowLink;
   const el = hash && document.getElementById(hash);
   if (hash && el) {
     const elRect = el.getBoundingClientRect();

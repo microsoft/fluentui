@@ -118,7 +118,6 @@ const webpackConfig: webpack.Configuration = {
     alias: {
       ...lernaAliases(),
       src: paths.packageSrc('react-northstar'),
-      docs: paths.docs(),
     },
   },
   optimization: {

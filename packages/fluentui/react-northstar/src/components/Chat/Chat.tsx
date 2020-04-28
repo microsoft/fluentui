@@ -38,10 +38,13 @@ export interface ChatProps extends UIComponentProps, ChildrenComponentProps {
 }
 
 export type ChatStylesProps = {};
+export const chatClassName = 'ui-chat';
+export const chatSlotClassNames: ChatSlotClassNames = {
+  item: `${chatClassName}__item`,
+};
 
 const Chat: React.FC<WithAsProp<ChatProps>> &
   FluentComponentStaticProps<ChatProps> & {
-    slotClassNames: ChatSlotClassNames;
     Item: typeof ChatItem;
     Message: typeof ChatMessage;
   } = props => {
@@ -56,7 +59,7 @@ const Chat: React.FC<WithAsProp<ChatProps>> &
     rtl: context.rtl,
   });
   const { classes } = useStyles<ChatStylesProps>(Chat.displayName, {
-    className: Chat.className,
+    className: chatClassName,
     mapPropsToInlineStyles: () => ({
       className,
       design,
@@ -81,7 +84,7 @@ const Chat: React.FC<WithAsProp<ChatProps>> &
         ? children
         : _.map(items, item =>
             ChatItem.create(item, {
-              defaultProps: () => ({ className: Chat.slotClassNames.item }),
+              defaultProps: () => ({ className: chatSlotClassNames.item }),
             }),
           )}
     </ElementType>,
@@ -91,12 +94,7 @@ const Chat: React.FC<WithAsProp<ChatProps>> &
   return element;
 };
 
-Chat.className = 'ui-chat';
 Chat.displayName = 'Chat';
-
-Chat.slotClassNames = {
-  item: `${Chat.className}__item`,
-};
 
 Chat.defaultProps = {
   accessibility: chatBehavior,

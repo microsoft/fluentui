@@ -13,9 +13,7 @@ const PopupCustomTargetExample: React.FC = () => {
         trigger={<Button icon={<QnaIcon />} circular styles={{ cursor: 'pointer' }} title="Q&amp;A" />}
         content="well, yes, I am just a garbish text ¯\_(ツ)_/¯"
         position="below"
-      >
-        <Button icon={<QnaIcon />} circular styles={{ cursor: 'pointer' }} title="Q&amp;A" />
-      </Popup>
+      />
 
       <div style={{ marginLeft: 10 }}>
         <Text>Could you guess what does this text means? :)</Text>

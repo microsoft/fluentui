@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { renderDropdown, items, getItemIdRegexByIndex } from './test-utils';
 import Dropdown from 'src/components/Dropdown/Dropdown';
-import DropdownSelectedItem from 'src/components/Dropdown/DropdownSelectedItem';
+import { dropdownSelectedItemSlotClassNames } from 'src/components/Dropdown/DropdownSelectedItem';
 import { implementsShorthandProp, isConformant } from 'test/specs/commonTests';
 import { findIntrinsicElement } from 'test/utils';
 import { DropdownItemProps } from 'src/components/Dropdown/DropdownItem';
@@ -55,6 +55,27 @@ describe('Dropdown', () => {
           value: null,
         }),
       );
+    });
+
+    it('should have the indicator tabbable if not a search', () => {
+      const { getClearIndicatorNode } = renderDropdown({
+        clearable: true,
+        defaultValue: items[0],
+      });
+
+      expect(getClearIndicatorNode()).toHaveAttribute('tabindex', '0');
+      expect(getClearIndicatorNode()).toHaveAttribute('role', 'button');
+    });
+
+    it('should not have the indicator tabbable if a search', () => {
+      const { getClearIndicatorNode } = renderDropdown({
+        clearable: true,
+        defaultValue: items[0],
+        search: true,
+      });
+
+      expect(getClearIndicatorNode()).not.toHaveAttribute('tabindex');
+      expect(getClearIndicatorNode()).not.toHaveAttribute('role', 'button');
     });
   });
 
@@ -1075,12 +1096,35 @@ describe('Dropdown', () => {
         defaultValue: [items[0], items[1]],
       });
 
-      findIntrinsicElement(wrapper, `.${DropdownSelectedItem.slotClassNames.icon}`)
+      findIntrinsicElement(wrapper, `.${dropdownSelectedItemSlotClassNames.icon}`)
         .at(0)
         .simulate('click');
 
       expect(getSelectedItemNodes()).toHaveLength(1);
       expect(getSelectedItemNodeAtIndex(0)).toHaveTextContent(items[1]);
+    });
+
+    it('keeps selection when the same item is selected', () => {
+      const selectedItemIndex = 0;
+      const selectedItem = items[selectedItemIndex];
+      const { clickOnItemAtIndex, triggerButtonNode, clickOnTriggerButton, keyDownOnItemsList } = renderDropdown({
+        defaultValue: selectedItem,
+        defaultOpen: true,
+      });
+
+      clickOnItemAtIndex(selectedItemIndex);
+
+      expect(triggerButtonNode).toHaveTextContent(selectedItem);
+
+      clickOnTriggerButton();
+      keyDownOnItemsList('Enter');
+
+      expect(triggerButtonNode).toHaveTextContent(selectedItem);
+
+      clickOnTriggerButton();
+      keyDownOnItemsList('Tab');
+
+      expect(triggerButtonNode).toHaveTextContent(selectedItem);
     });
   });
 

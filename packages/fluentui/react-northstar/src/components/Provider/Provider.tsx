@@ -38,7 +38,6 @@ export interface ProviderProps extends ChildrenComponentProps, UIComponentProps 
   overwrite?: boolean;
   target?: Document;
   theme?: ThemeInput;
-  registerStyles?: (stylesheet: string, target: Document) => void;
   telemetryRef?: React.MutableRefObject<Telemetry>;
 }
 
@@ -87,45 +86,16 @@ const renderStaticStyles = (renderer: Renderer, theme: ThemeInput, siteVariables
   });
 };
 
-// Cache for which documents have registered which stylesheets.
-const docStyleMap = new WeakMap<Document, Map<string, boolean>>();
-
-const defaultRegisterStyles = (stylesheet: string, target: Document) => {
-  let styleMap = docStyleMap.get(target);
-
-  if (!styleMap) {
-    styleMap = new Map();
-    docStyleMap.set(target, styleMap);
-  }
-
-  if (!styleMap.has(stylesheet)) {
-    const styleElement = target.createElement('style');
-
-    styleElement.textContent = stylesheet;
-    target.head.appendChild(styleElement);
-
-    styleMap.set(stylesheet, true);
-  }
-};
+export const providerClassName = 'ui-provider';
 
 /**
  * The Provider passes the CSS-in-JS renderer, theme styles and other settings to Fluent UI components.
  */
 const Provider: React.FC<WithAsProp<ProviderProps>> & {
-  className: string;
   Consumer: typeof ProviderConsumer;
   handledProps: (keyof ProviderProps)[];
 } = props => {
-  const {
-    children,
-    className,
-    design,
-    overwrite,
-    styles,
-    variables,
-    telemetryRef,
-    registerStyles = defaultRegisterStyles,
-  } = props;
+  const { children, className, design, overwrite, styles, variables, telemetryRef } = props;
 
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Provider.handledProps, props);
@@ -149,7 +119,6 @@ const Provider: React.FC<WithAsProp<ProviderProps>> & {
     renderer: props.renderer,
     target: props.target,
     telemetry,
-    registerStyles,
   };
 
   const consumedContext: ProviderContextPrepared = React.useContext(ThemeContext);
@@ -164,7 +133,7 @@ const Provider: React.FC<WithAsProp<ProviderProps>> & {
   }
 
   const { classes } = unstable_getStyles({
-    className: Provider.className,
+    className: providerClassName,
     displayNames: [Provider.displayName],
     props: {
       className,
@@ -228,7 +197,6 @@ const Provider: React.FC<WithAsProp<ProviderProps>> & {
   );
 };
 
-Provider.className = 'ui-provider';
 Provider.displayName = 'Provider';
 
 Provider.defaultProps = {
@@ -239,7 +207,6 @@ Provider.propTypes = {
   design: PropTypes.object,
   variables: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
   styles: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
-  registerStyles: PropTypes.func,
   theme: PropTypes.shape({
     siteVariables: PropTypes.object,
     componentVariables: PropTypes.object,

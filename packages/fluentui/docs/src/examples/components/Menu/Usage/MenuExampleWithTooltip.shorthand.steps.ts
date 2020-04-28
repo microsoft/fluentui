@@ -1,8 +1,8 @@
-import { Menu } from '@fluentui/react-northstar';
+import { menuClassName } from '@fluentui/react-northstar';
 
 const selectors = {
-  menu: `.${Menu.className}`,
-  item: (itemIndex: number) => `.${Menu.className} li:nth-child(${itemIndex}) a`,
+  menu: `.${menuClassName}`,
+  item: (itemIndex: number) => `.${menuClassName} li:nth-child(${itemIndex}) a`,
 };
 
 const config: ScreenerTestsConfig = {

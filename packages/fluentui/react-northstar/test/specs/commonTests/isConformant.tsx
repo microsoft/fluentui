@@ -1,9 +1,11 @@
 import { Accessibility, AriaRole, IS_FOCUSABLE_ATTRIBUTE } from '@fluentui/accessibility';
-import { FocusZone, Telemetry } from '@fluentui/react-bindings';
+import { compose, ComposedComponent, FocusZone, Renderer, Telemetry } from '@fluentui/react-bindings';
 import { Ref, RefFindNode } from '@fluentui/react-component-ref';
+import { ComponentSlotStylesPrepared, emptyTheme } from '@fluentui/styles';
 import * as faker from 'faker';
 import * as _ from 'lodash';
 import * as React from 'react';
+import * as ReactIs from 'react-is';
 import { ReactWrapper } from 'enzyme';
 import * as ReactDOMServer from 'react-dom/server';
 import { act } from 'react-dom/test-utils';
@@ -45,9 +47,9 @@ export interface Conformant {
  */
 export default function isConformant(
   Component: React.ComponentType<any> & {
-    handledProps: FluentUI.ObjectOf<any>;
+    handledProps?: string[];
     autoControlledProps?: string[];
-    className: string;
+    deprecated_className?: string;
   },
   options: Conformant = {},
 ) {
@@ -65,6 +67,11 @@ export default function isConformant(
   const { throwError } = helpers('isConformant', Component);
 
   const componentType = typeof Component;
+  // composed components store `handledProps` under config
+  const isComposedComponent: boolean = !!(Component as ComposedComponent).fluentComposeConfig;
+  const handledProps = isComposedComponent
+    ? (Component as ComposedComponent).fluentComposeConfig?.handledProps
+    : Component.handledProps;
 
   const helperComponentNames = [...[Ref, RefFindNode], ...(wrapperComponent ? [wrapperComponent] : [])].map(
     getDisplayName,
@@ -93,8 +100,8 @@ export default function isConformant(
   };
 
   // make sure components are properly exported
-  if (componentType !== 'function') {
-    throwError(`Components should export a class or function, got: ${componentType}.`);
+  if (!ReactIs.isValidElementType(Component)) {
+    throwError(`Components should export a valid React element type, got: ${componentType}.`);
   }
 
   // tests depend on Component constructor names, enforce them
@@ -113,7 +120,7 @@ export default function isConformant(
   // This is pretty ugly because:
   // - jest doesn't support custom error messages
   // - jest will run all test
-  const infoJSONPath = `docs/src/componentInfo/${constructorName}.info.json`;
+  const infoJSONPath = `@fluentui/docs/src/componentInfo/${constructorName}.info.json`;
 
   let info;
 
@@ -163,7 +170,7 @@ export default function isConformant(
   });
 
   // find the apiPath in the top level API
-  const foundAsSubcomponent = _.isFunction(_.get(FluentUI, info.apiPath));
+  const foundAsSubcomponent = ReactIs.isValidElementType(_.get(FluentUI, info.apiPath));
 
   exportedAtTopLevel && isExportedAtTopLevel(constructorName, info.displayName);
   if (info.isChild) {
@@ -258,21 +265,40 @@ export default function isConformant(
     });
   }
 
+  // ---------------------------------------
+  // Autocontrolled props
+  // ---------------------------------------
+  test('autoControlled props should have prop, default prop and on change handler in handled props', () => {
+    autoControlledProps.forEach(propName => {
+      const capitalisedPropName = `${propName.slice(0, 1).toUpperCase()}${propName.slice(1)}`;
+      const expectedDefaultProp = `default${capitalisedPropName}`;
+      const expectedChangeHandler =
+        propName === 'value' || propName === 'checked' ? 'onChange' : `on${capitalisedPropName}Change`;
+
+      expect(handledProps).toContain(propName);
+      expect(handledProps).toContain(expectedDefaultProp);
+      expect(handledProps).toContain(expectedChangeHandler);
+    });
+  });
+
+  // ---------------------------------------
+  // Handled props
+  // ---------------------------------------
   describe('handles props', () => {
-    test('defines handled props in Component.handledProps', () => {
-      expect(Component.handledProps).toBeDefined();
-      expect(Array.isArray(Component.handledProps)).toEqual(true);
+    test('defines handled props in handledProps', () => {
+      expect(handledProps).toBeDefined();
+      expect(Array.isArray(handledProps)).toEqual(true);
     });
 
     test(`has 'styles' as handled prop`, () => {
-      expect(Component.handledProps).toContain('styles');
+      expect(handledProps).toContain('styles');
     });
 
     test(`has 'variables' as handled prop`, () => {
-      expect(Component.handledProps).toContain('variables');
+      expect(handledProps).toContain('variables');
     });
 
-    test('Component.handledProps includes all handled props', () => {
+    test('handledProps includes all handled props', () => {
       const computedProps = _.union(
         Component.autoControlledProps,
         _.keys(Component.defaultProps),
@@ -287,23 +313,10 @@ export default function isConformant(
 
       expect({
         message,
-        handledProps: Component.handledProps.sort(),
+        handledProps: handledProps.sort(),
       }).toEqual({
         message,
         handledProps: expectedProps,
-      });
-    });
-
-    test('autoControlled props should have prop, default prop and on change handler in handled props', () => {
-      autoControlledProps.forEach(propName => {
-        const capitalisedPropName = `${propName.slice(0, 1).toUpperCase()}${propName.slice(1)}`;
-        const expectedDefaultProp = `default${capitalisedPropName}`;
-        const expectedChangeHandler =
-          propName === 'value' || propName === 'checked' ? 'onChange' : `on${capitalisedPropName}Change`;
-
-        expect(Component.handledProps).toContain(propName);
-        expect(Component.handledProps).toContain(expectedDefaultProp);
-        expect(Component.handledProps).toContain(expectedChangeHandler);
       });
     });
 
@@ -330,8 +343,8 @@ export default function isConformant(
       },
     });
 
-    test('defines an "accessibility" prop in Component.handledProps', () => {
-      expect(Component.handledProps).toContain('accessibility');
+    test('defines an "accessibility" prop in handledProps', () => {
+      expect(handledProps).toContain('accessibility');
     });
 
     test('spreads "attributes" on root', () => {
@@ -469,19 +482,20 @@ export default function isConformant(
   // ----------------------------------------
   // Handles className
   // ----------------------------------------
-  describe('static className (common)', () => {
+  describe('className const (common)', () => {
     const componentClassName = info.componentClassName || `ui-${Component.displayName}`.toLowerCase();
     const getClassesOfRootElement = component => {
-      const classes = component
+      return component
         .find('[className]')
         .hostNodes()
         .at(wrapperComponent ? 1 : 0)
         .prop('className');
-      return classes;
     };
 
-    test(`is a static equal to "${componentClassName}"`, () => {
-      expect(Component.className).toEqual(componentClassName);
+    const constClassName = _.camelCase(`${Component.displayName}ClassName`);
+
+    test(`exports a const equal to "${componentClassName}"`, () => {
+      expect(FluentUI[constClassName]).toEqual(componentClassName);
     });
 
     test(`is applied to the root element`, () => {
@@ -557,7 +571,6 @@ export default function isConformant(
   // ---------------------------------------
   // Telemetry
   // ---------------------------------------
-
   describe('telemetry', () => {
     test('reports telemetry to its Provider', () => {
       const telemetry = new Telemetry();
@@ -569,4 +582,104 @@ export default function isConformant(
       expect(telemetry.performance).toHaveProperty(Component.displayName);
     });
   });
+
+  // ---------------------------------------
+  // compose()
+  // ---------------------------------------
+
+  if (isComposedComponent) {
+    describe('compose', () => {
+      describe('debug', () => {
+        const displayName = 'ComposedComponent';
+        const ComposedComponent = compose(Component as ComposedComponent, {
+          displayName,
+        });
+
+        it('overrides default "displayName"', () => {
+          expect(ComposedComponent.displayName).toBe(displayName);
+        });
+
+        it('overrides default debug name for accessibility', () => {
+          const noopBehavior: Accessibility = () => ({
+            attributes: {
+              root: { 'aria-label': 'test' },
+            },
+          });
+
+          const wrapper = mount(<ComposedComponent {...requiredProps} accessibility={noopBehavior} />);
+          const element = getComponent(wrapper);
+
+          expect(element.prop('data-aa-class')).toBe(displayName);
+        });
+
+        it('overrides default name for telemetry', () => {
+          const telemetry = new Telemetry();
+          const wrapper = mount(<ComposedComponent {...requiredProps} />, {
+            wrappingComponentProps: { telemetry },
+          });
+
+          wrapper.unmount();
+          expect(telemetry.performance).toHaveProperty(displayName);
+        });
+      });
+
+      describe('styles', () => {
+        type ComposedComponentProps = { test?: boolean };
+        type ComposedComponentStylesProps = { stylesTest: boolean | undefined };
+
+        const ComposedComponent = compose<'footer', ComposedComponentProps, ComposedComponentStylesProps, {}, {}>(
+          Component as ComposedComponent,
+          {
+            className: 'ui-composed',
+            mapPropsToStylesProps: props => ({ stylesTest: props.test }),
+            handledProps: ['test'],
+          },
+        );
+
+        it('overrides default "className"', () => {
+          const wrapper = mount(<ComposedComponent {...requiredProps} test />);
+          const element = getComponent(wrapper);
+
+          expect(element.prop('className')).toContain('ui-composed');
+        });
+
+        it('allows to define additional styles props', () => {
+          const renderer: Partial<Renderer> = {
+            renderRule: rule => {
+              const props = (rule() as unknown) as ComposedComponentStylesProps;
+
+              return props.stylesTest ? 'has-test' : 'has-not-test';
+            },
+          };
+          const theme = {
+            ...emptyTheme,
+            // Noop to pass all props as styles to `renderRule()`
+            componentStyles: new Proxy(
+              {},
+              { get: (): ComponentSlotStylesPrepared => ({ root: ({ props }) => props }) },
+            ),
+          };
+
+          const wrapper = mount(<ComposedComponent {...requiredProps} />, {
+            wrappingComponentProps: { renderer, theme },
+          });
+          expect(getComponent(wrapper).prop('className')).toContain('has-not-test');
+
+          wrapper.setProps({ test: true });
+          expect(getComponent(wrapper).prop('className')).toContain('has-test');
+        });
+      });
+
+      it('passes a ref to "root" element', () => {
+        const ComposedComponent = compose(Component as ComposedComponent);
+        const rootRef = jest.fn();
+
+        const wrapper = mount(<ComposedComponent {...requiredProps} ref={rootRef} />);
+        const element = getComponent(wrapper);
+
+        expect(typeof element.type()).toBe('string');
+        expect(rootRef).toBeCalledWith(expect.objectContaining({ tagName: _.upperCase(element.type()) }));
+      });
+    });
+  }
 }
