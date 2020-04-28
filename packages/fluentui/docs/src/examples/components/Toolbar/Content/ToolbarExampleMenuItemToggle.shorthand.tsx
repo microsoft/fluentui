@@ -15,14 +15,12 @@ const ToolbarExampleMenuItemToggle = () => {
     }
   };
 
-  const toolbarItem = (itemName: string, itemIcon: ShorthandValue<BoxProps>) => {
-    return {
-      key: itemName,
-      content: itemName,
-      icon: itemIcon,
-      title: itemName,
-    };
-  };
+  const toolbarItem = (itemName: string, itemIcon: ShorthandValue<BoxProps>) => ({
+    key: itemName,
+    content: itemName,
+    icon: itemIcon,
+    title: itemName,
+  });
 
   return (
     <Toolbar
