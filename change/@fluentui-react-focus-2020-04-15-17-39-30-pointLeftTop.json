@@ -1,8 +1,8 @@
 {
   "type": "minor",
-  "comment": "FocusZone: Adding preventDefaultWhenHandled to v7 version.",
+  "comment": "Updating IPoint, x and y references to Point, left and top respectively.",
   "packageName": "@fluentui/react-focus",
   "email": "humbertomakotomorimoto@gmail.com",
   "dependentChangeType": "patch",
-  "date": "2020-04-09T23:27:48.048Z"
+  "date": "2020-04-16T00:39:16.712Z"
 }

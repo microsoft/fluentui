@@ -86,6 +86,7 @@ export { default as FilesUploadIcon } from './components/FilesUploadIcon';
 export { default as FilesVideoIcon } from './components/FilesVideoIcon';
 export { default as FilesZipIcon } from './components/FilesZipIcon';
 export { default as FlagIcon } from './components/FlagIcon';
+export { default as FluidIcon } from './components/FluidIcon';
 export { default as FontColorIcon } from './components/FontColorIcon';
 export { default as FontSizeIcon } from './components/FontSizeIcon';
 export { default as FormatIcon } from './components/FormatIcon';
