@@ -7,6 +7,7 @@ import {
   htmlElementProperties,
   css,
   initializeComponentRef,
+  Customizer,
 } from '../../Utilities';
 import { IconButton } from '../../Button';
 import { Icon } from '../../Icon';
@@ -32,8 +33,6 @@ export class MessageBarBase extends React.Component<IMessageBarProps, IMessageBa
     [MessageBarType.warning]: 'Info',
     [MessageBarType.error]: 'ErrorBadge',
     [MessageBarType.blocked]: 'Blocked2',
-    // tslint:disable-next-line:deprecation
-    [MessageBarType.remove]: 'Blocked', // TODO remove deprecated value at >= 1.0.0
     [MessageBarType.severeWarning]: 'Warning',
     [MessageBarType.success]: 'Completed',
   };
@@ -121,34 +120,27 @@ export class MessageBarBase extends React.Component<IMessageBarProps, IMessageBa
   }
 
   private _renderMultiLine(): React.ReactElement<React.HTMLAttributes<HTMLAreaElement>> {
-    const { theme } = this.props;
-
     return (
-      <div style={{ background: theme!.semanticColors.bodyBackground }}>
-        <div className={this._classNames.root} {...this._getRegionProps()}>
-          <div className={this._classNames.content}>
-            {this._getIconSpan()}
-            {this._renderInnerText()}
-            {this._getDismissDiv()}
-          </div>
-          {this._getActionsDiv()}
+      <div className={this._classNames.root} {...this._getRegionProps()}>
+        <div className={this._classNames.content}>
+          {this._getIconSpan()}
+          {this._renderInnerText()}
+          {this._getDismissDiv()}
         </div>
+        {this._getActionsDiv()}
       </div>
     );
   }
 
   private _renderSingleLine(): React.ReactElement<React.HTMLAttributes<HTMLAreaElement>> {
-    const { theme } = this.props;
     return (
-      <div style={{ background: theme!.semanticColors.bodyBackground }}>
-        <div className={this._classNames.root} {...this._getRegionProps()}>
-          <div className={this._classNames.content}>
-            {this._getIconSpan()}
-            {this._renderInnerText()}
-            {this._getExpandSingleLine()}
-            {this._getActionsDiv()}
-            {this._getDismissSingleLine()}
-          </div>
+      <div className={this._classNames.root} {...this._getRegionProps()}>
+        <div className={this._classNames.content}>
+          {this._getIconSpan()}
+          {this._renderInnerText()}
+          {this._getExpandSingleLine()}
+          {this._getActionsDiv()}
+          {this._getDismissSingleLine()}
         </div>
       </div>
     );
@@ -158,20 +150,34 @@ export class MessageBarBase extends React.Component<IMessageBarProps, IMessageBa
     const nativeProps = getNativeProps<React.HTMLAttributes<HTMLSpanElement>>(this.props, htmlElementProperties, [
       'className',
     ]);
+    const theme = this.props.theme!;
+
+    const settings = {
+      theme: {
+        ...theme,
+        semanticColors: {
+          ...theme.semanticColors,
+          link: theme.semanticColors.messageLink,
+          linkHovered: theme.semanticColors.messageLinkHovered,
+        },
+      },
+    };
 
     return (
-      <div
-        className={this._classNames.text}
-        id={this.state.labelId}
-        role="status"
-        aria-live={this._getAnnouncementPriority()}
-      >
-        <span className={this._classNames.innerText} {...nativeProps}>
-          <DelayedRender>
-            <span>{this.props.children}</span>
-          </DelayedRender>
-        </span>
-      </div>
+      <Customizer settings={settings}>
+        <div
+          className={this._classNames.text}
+          id={this.state.labelId}
+          role="status"
+          aria-live={this._getAnnouncementPriority()}
+        >
+          <span className={this._classNames.innerText} {...nativeProps}>
+            <DelayedRender>
+              <span>{this.props.children}</span>
+            </DelayedRender>
+          </span>
+        </div>
+      </Customizer>
     );
   }
 
