@@ -1,8 +1,23 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 24 Apr 2020 12:39:25 GMT and should not be manually modified.
+This log was last generated on Tue, 28 Apr 2020 12:34:09 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.108.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.108.0)
+
+Tue, 28 Apr 2020 12:34:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.107.5..office-ui-fabric-react_v7.108.0)
+
+### Minor changes
+
+- Updating IPoint, x and y references to Point, left and top respectively. ([PR #12722](https://github.com/microsoft/fluentui/pull/12722) by humbertomakotomorimoto@gmail.com)
+- Popup: add onRestoreFocus method to replace shouldRestoreFocus ([PR #12806](https://github.com/microsoft/fluentui/pull/12806) by joschect@microsoft.com)
+
+### Patches
+
+- Change contextual menu renderMenuItem function to prevent prop mutation and unneeded rerenders ([PR #12750](https://github.com/microsoft/fluentui/pull/12750) by tabrumle@microsoft.com)
+- Updating examples for ScrollablePane and HoverCard to use FC ([PR #12871](https://github.com/microsoft/fluentui/pull/12871) by czearing@outlook.com)
 
 ## [7.107.5](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.107.5)
 

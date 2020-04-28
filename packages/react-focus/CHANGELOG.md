@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-focus
 
-This log was last generated on Mon, 27 Apr 2020 12:33:11 GMT and should not be manually modified.
+This log was last generated on Tue, 28 Apr 2020 12:34:09 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.7.0)
+
+Tue, 28 Apr 2020 12:34:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v7.6.0..@fluentui/react-focus_v7.7.0)
+
+### Minor changes
+
+- Updating IPoint, x and y references to Point, left and top respectively. ([PR #12722](https://github.com/microsoft/fluentui/pull/12722) by humbertomakotomorimoto@gmail.com)
 
 ## [7.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.6.0)
 
