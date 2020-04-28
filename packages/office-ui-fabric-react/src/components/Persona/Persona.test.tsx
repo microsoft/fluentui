@@ -5,7 +5,7 @@ import { TestImages } from '@uifabric/example-data';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { setRTL, IRenderFunction } from '../../Utilities';
 import { Persona } from './Persona';
-import { mount } from 'enzyme';
+import { mount, ReactWrapper } from 'enzyme';
 import { getIcon } from '../../Styling';
 import { IPersonaSharedProps, IPersonaProps, IPersonaCoinProps, PersonaPresence, PersonaSize } from '../../index';
 
@@ -188,16 +188,16 @@ describe('Persona', () => {
   describe('image', () => {
     it('renders empty alt text by default', () => {
       const wrapper = mount(<Persona text="Kat Larrson" imageUrl={testImage1x1} />);
-      const image: HTMLImageElement | null = wrapper.getDOMNode().querySelector('img');
+      const image: ReactWrapper<React.ImgHTMLAttributes<any>, any> = wrapper.find('ImageBase');
 
-      expect(image?.alt).toEqual('');
+      expect(image.props().alt).toEqual('');
     });
 
     it('renders its given alt text', () => {
       const wrapper = mount(<Persona text="Kat Larrson" imageUrl={testImage1x1} imageAlt="ALT TEXT" />);
-      const image: HTMLImageElement | null = wrapper.getDOMNode().querySelector('img');
+      const image: ReactWrapper<React.ImgHTMLAttributes<any>, any> = wrapper.find('ImageBase');
 
-      expect(image?.alt).toEqual('ALT TEXT');
+      expect(image.props().alt).toEqual('ALT TEXT');
     });
   });
 });

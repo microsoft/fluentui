@@ -3,7 +3,7 @@ import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { setRTL, setWarningCallback } from '@uifabric/utilities';
 import { Persona } from './Persona';
-import { mount } from 'enzyme';
+import { mount, ReactWrapper } from 'enzyme';
 import { getIcon } from '../../Styling';
 
 const testImage1x1 =
@@ -111,16 +111,16 @@ describe('Persona', () => {
   describe('image', () => {
     it('renders empty alt text by default', () => {
       const wrapper = mount(<Persona primaryText="Kat Larrson" imageUrl={testImage1x1} />);
-      const image: HTMLImageElement | null = wrapper.getDOMNode().querySelector('img');
+      const image: ReactWrapper<React.ImgHTMLAttributes<any>, any> = wrapper.find('ImageBase');
 
-      expect(image?.alt).toEqual('');
+      expect(image.props().alt).toEqual('');
     });
 
     it('renders its given alt text', () => {
       const wrapper = mount(<Persona primaryText="Kat Larrson" imageUrl={testImage1x1} imageAlt="ALT TEXT" />);
-      const image: HTMLImageElement | null = wrapper.getDOMNode().querySelector('img');
+      const image: ReactWrapper<React.ImgHTMLAttributes<any>, any> = wrapper.find('ImageBase');
 
-      expect(image?.alt).toEqual('ALT TEXT');
+      expect(image.props().alt).toEqual('ALT TEXT');
     });
   });
 });
