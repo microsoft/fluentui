@@ -2,7 +2,7 @@
   "type": "patch",
   "comment": "import path of focusZone and IFocusZoneProps changd from OUFR to Fluentui/react-focus",
   "packageName": "@uifabric/charting",
-  "email": "email not defined",
+  "email": "v-jasha@microsoft.com",
   "dependentChangeType": "patch",
   "date": "2020-04-28T07:16:26.329Z"
 }
