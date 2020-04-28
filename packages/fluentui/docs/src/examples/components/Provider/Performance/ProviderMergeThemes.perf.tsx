@@ -22,6 +22,7 @@ const providerMergeThemesPerf = () => {
         return undefined;
       }
       if (typeof partStyle !== 'function') {
+        // eslint-disable-next-line no-console
         console.log(componentName, partStyle, partName);
       }
       return partStyle(styleParam);

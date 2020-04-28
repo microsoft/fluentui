@@ -21,6 +21,7 @@ export interface CardPreviewProps extends UIComponentProps, ChildrenComponentPro
 }
 
 export type CardPreviewStylesProps = Pick<CardPreviewProps, 'horizontal' | 'fitted'>;
+export const cardPreviewClassName = 'ui-card__preview';
 
 const CardPreview: React.FC<WithAsProp<CardPreviewProps>> & FluentComponentStaticProps<CardPreviewProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
@@ -36,7 +37,7 @@ const CardPreview: React.FC<WithAsProp<CardPreviewProps>> & FluentComponentStati
   });
 
   const { classes } = useStyles<CardPreviewStylesProps>(CardPreview.displayName, {
-    className: CardPreview.className,
+    className: cardPreviewClassName,
     mapPropsToStyles: () => ({ horizontal, fitted }),
     mapPropsToInlineStyles: () => ({
       className,
@@ -62,7 +63,6 @@ const CardPreview: React.FC<WithAsProp<CardPreviewProps>> & FluentComponentStati
 };
 
 CardPreview.displayName = 'CardPreview';
-CardPreview.className = 'ui-card__preview';
 
 CardPreview.propTypes = {
   ...commonPropTypes.createCommon(),

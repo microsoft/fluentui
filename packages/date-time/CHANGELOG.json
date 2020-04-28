@@ -2,6 +2,35 @@
   "name": "@uifabric/date-time",
   "entries": [
     {
+      "date": "Thu, 16 Apr 2020 04:01:45 GMT",
+      "tag": "@uifabric/date-time_v7.8.55",
+      "version": "7.8.55",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Readme: Fabric=>Fluent wording updates",
+            "author": "elcraig@microsoft.com",
+            "commit": "9e3c7c7d4b92e132820cdbcd61a667829c712ecb",
+            "package": "@uifabric/date-time"
+          },
+          {
+            "comment": "Fixed a bug in the DatePicker causing an existing validation error to be cleared when tabbing through the component.",
+            "author": "michaelmajgaard@outlook.com",
+            "commit": "ae8d486c544cd9a6461ab705f37cb5b01718db5d",
+            "package": "@uifabric/date-time"
+          }
+        ],
+        "none": [
+          {
+            "comment": "sync package version",
+            "author": "xgao@microsoft.com",
+            "commit": "6f39958352207acb3029458503db0969a4359806",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 09 Apr 2020 12:24:31 GMT",
       "tag": "@uifabric/date-time_v7.8.53",
       "version": "7.8.53",

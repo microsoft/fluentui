@@ -1,13 +1,13 @@
 {
   "name": "@fluentui/react-icons-northstar",
   "description": "A set svg icons and utilities for creating custom ones.",
-  "version": "0.47.0",
+  "version": "0.48.0",
   "bugs": "https://github.com/microsoft/fluentui/issues",
   "dependencies": {
     "@babel/runtime": "^7.7.6",
-    "@fluentui/accessibility": "^0.47.0",
-    "@fluentui/styles": "^0.47.0",
-    "@fluentui/react-bindings": "^0.47.0",
+    "@fluentui/accessibility": "^0.48.0",
+    "@fluentui/react-bindings": "^0.48.0",
+    "@fluentui/styles": "^0.48.0",
     "classnames": "^2.2.6",
     "fela": "^10.6.1",
     "lodash": "^4.17.15"
@@ -39,10 +39,8 @@
   "scripts": {
     "build": "gulp bundle:package:no-umd",
     "clean": "gulp bundle:package:clean",
-    "lint": "yarn lint:eslint && yarn lint:old",
-    "lint:eslint": "eslint --ext .js,.ts,.tsx .",
-    "lint:fix": "yarn lint:eslint --fix && yarn lint:old --fix",
-    "lint:old": "tslint -t stylish -p .",
+    "lint": "eslint --ext .js,.ts,.tsx .",
+    "lint:fix": "yarn lint --fix",
     "test": "gulp test",
     "test:watch": "gulp test:watch"
   },

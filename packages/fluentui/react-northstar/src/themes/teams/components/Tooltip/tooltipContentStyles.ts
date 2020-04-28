@@ -12,11 +12,14 @@ const tooltipContentStyles: ComponentSlotStylesPrepared<TooltipContentStylesProp
     maxWidth: v.maxWidth,
     zIndex: v.zIndex,
 
-    ...(p.pointing &&
-      getContainerStyles({
+    ...(p.pointing && {
+      pointerEvents: 'all',
+
+      ...getContainerStyles({
         placement: p.basePlacement,
         margin: v.pointerMargin,
-      })),
+      }),
+    }),
 
     ...(!p.open && {
       opacity: 0,
@@ -41,7 +44,7 @@ const tooltipContentStyles: ComponentSlotStylesPrepared<TooltipContentStylesProp
       svg: pointerSvg(v.backgroundColor),
     }),
   }),
-  content: ({ variables: v }): ICSSInJSStyle => ({
+  content: ({ props: p, variables: v }): ICSSInJSStyle => ({
     display: 'block',
     padding: v.padding,
     textAlign: 'left',
@@ -50,6 +53,10 @@ const tooltipContentStyles: ComponentSlotStylesPrepared<TooltipContentStylesProp
     background: v.backgroundColor,
     borderRadius: v.borderRadius,
     boxShadow: v.boxShadow,
+
+    ...(p.pointing && {
+      pointerEvents: 'all',
+    }),
   }),
 };
 

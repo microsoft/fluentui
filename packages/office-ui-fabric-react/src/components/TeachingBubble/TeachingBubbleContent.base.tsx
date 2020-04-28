@@ -66,6 +66,7 @@ export class TeachingBubbleContentBase extends React.Component<ITeachingBubblePr
       ariaDescribedBy,
       ariaLabelledBy,
       footerContent: customFooterContent,
+      focusTrapZoneProps,
     } = this.props;
 
     let imageContent;
@@ -152,7 +153,7 @@ export class TeachingBubbleContentBase extends React.Component<ITeachingBubblePr
         data-is-focusable={true}
       >
         {imageContent}
-        <FocusTrapZone isClickableOutsideFocusTrap={true}>
+        <FocusTrapZone isClickableOutsideFocusTrap={true} {...focusTrapZoneProps}>
           <div className={classNames.bodyContent}>
             {headerContent}
             {bodyContent}

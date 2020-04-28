@@ -2,7 +2,7 @@ import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { pxToRem } from '../../../../utils';
 import getBorderFocusStyles from '../../getBorderFocusStyles';
 import { TreeItemStylesProps } from '../../../../components/Tree/TreeItem';
-import TreeTitle from '../../../../components/Tree/TreeTitle';
+import { treeTitleClassName } from '../../../../components/Tree/TreeTitle';
 
 const treeItemStyles: ComponentSlotStylesPrepared<TreeItemStylesProps> = {
   root: ({ theme: { siteVariables }, props: p }): ICSSInJSStyle => ({
@@ -11,7 +11,7 @@ const treeItemStyles: ComponentSlotStylesPrepared<TreeItemStylesProps> = {
     ...getBorderFocusStyles({ variables: siteVariables })[':focus'],
     ':focus-visible': {
       outline: 0,
-      [`> .${TreeTitle.className}`]: {
+      [`> .${treeTitleClassName}`]: {
         position: 'relative',
         ...getBorderFocusStyles({ variables: siteVariables })[':focus-visible'],
       },

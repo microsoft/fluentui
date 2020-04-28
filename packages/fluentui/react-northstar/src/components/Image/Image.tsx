@@ -31,6 +31,7 @@ export interface ImageProps extends UIComponentProps, ImageBehaviorProps {
 }
 
 export type ImageStylesProps = Pick<ImageProps, 'avatar' | 'circular' | 'fluid'>;
+export const imageClassName = 'ui-image';
 
 const Image: React.FC<WithAsProp<ImageProps>> & FluentComponentStaticProps<ImageProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
@@ -59,7 +60,7 @@ const Image: React.FC<WithAsProp<ImageProps>> & FluentComponentStaticProps<Image
     rtl: context.rtl,
   });
   const { classes } = useStyles<ImageStylesProps>(Image.displayName, {
-    className: Image.className,
+    className: imageClassName,
     mapPropsToStyles: () => ({
       avatar,
       circular,
@@ -84,7 +85,6 @@ const Image: React.FC<WithAsProp<ImageProps>> & FluentComponentStaticProps<Image
   return result;
 };
 
-Image.className = 'ui-image';
 Image.displayName = 'Image';
 Image.defaultProps = {
   as: 'img',

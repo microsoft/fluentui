@@ -1,22 +1,29 @@
-import { Accessibility, tableBehavior } from '@fluentui/accessibility';
-import { ReactAccessibilityBehavior } from '@fluentui/react-bindings';
+import { Accessibility, tableBehavior, TableBehaviorProps } from '@fluentui/accessibility';
+import { getElementType, useTelemetry, useUnhandledProps, useAccessibility, useStyles } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
 import * as _ from 'lodash';
 import * as React from 'react';
 import {
-  RenderResultConfig,
   UIComponentProps,
   ChildrenComponentProps,
   commonPropTypes,
-  UIComponent,
-  applyAccessibilityKeyHandlers,
   childrenExist,
+  createShorthandFactory,
 } from '../../utils';
-import { ComponentVariablesObject, mergeComponentVariables } from '@fluentui/styles';
+import { mergeComponentVariables } from '@fluentui/styles';
 import TableRow, { TableRowProps } from './TableRow';
 import TableCell from './TableCell';
-import { WithAsProp, ShorthandCollection, ShorthandValue, withSafeTypeForAs } from '../../types';
+// @ts-ignore
+import { ThemeContext } from 'react-fela';
+import {
+  WithAsProp,
+  ShorthandCollection,
+  ShorthandValue,
+  withSafeTypeForAs,
+  FluentComponentStaticProps,
+  ProviderContextPrepared,
+} from '../../types';
 
 export interface TableSlotClassNames {
   header: string;
@@ -26,7 +33,7 @@ export interface TableProps extends UIComponentProps, ChildrenComponentProps {
   /**
    * Accessibility behavior if overridden by the user.
    * */
-  accessibility?: Accessibility;
+  accessibility?: Accessibility<TableBehaviorProps>;
 
   /** The columns of the Table with a space-separated list of values.
    */
@@ -46,38 +53,43 @@ const handleVariablesOverrides = variables => predefinedProps => ({
   variables: mergeComponentVariables(variables, predefinedProps.variables),
 });
 
-class Table extends UIComponent<WithAsProp<TableProps>> {
-  static displayName = 'Table';
-  static className = 'ui-table';
+export const tableClassName = 'ui-table';
+export const tableSlotClassNames: TableSlotClassNames = {
+  header: `${tableClassName}__header`,
+};
 
-  static Cell = TableCell;
-  static Row = TableRow;
+export type TableStylesProps = never
 
-  static slotClassNames: TableSlotClassNames = {
-    header: `${Table.className}__header`,
-  };
+export const Table: React.FC<WithAsProp<TableProps>> &
+  FluentComponentStaticProps<TableProps> & {
+    Cell: typeof TableCell;
+    Row: typeof TableRow;
+  } = props => {
+  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const { setStart, setEnd } = useTelemetry(Table.displayName, context.telemetry);
+  setStart();
+  const { children, rows, header, compact, accessibility, className, design, styles, variables } = props;
+  const hasChildren = childrenExist(children);
+  const ElementType = getElementType(props);
+  const unhandledProps = useUnhandledProps(Table.handledProps, props);
 
-  static propTypes = {
-    ...commonPropTypes.createCommon({
-      content: false,
+  const getA11yProps = useAccessibility<TableBehaviorProps>(accessibility, {
+    debugName: Table.displayName,
+    rtl: context.rtl,
+  });
+
+  const { classes } = useStyles<TableStylesProps>(Table.displayName, {
+    className: tableClassName,
+    mapPropsToInlineStyles: () => ({
+      className,
+      design,
+      styles,
+      variables,
     }),
-    content: customPropTypes.every([
-      customPropTypes.disallow(['children']),
-      PropTypes.oneOfType([PropTypes.arrayOf(customPropTypes.nodeContent), customPropTypes.nodeContent]),
-    ]),
-    header: customPropTypes.itemShorthand,
-    rows: customPropTypes.collectionShorthand,
-    compact: PropTypes.bool,
-  };
+    rtl: context.rtl,
+  });
 
-  static defaultProps = {
-    as: 'div',
-    accessibility: tableBehavior as Accessibility,
-  };
-
-  renderRows(accessibility: ReactAccessibilityBehavior, variables: ComponentVariablesObject) {
-    const { rows, compact } = this.props;
-
+  const renderRows = () => {
     return _.map(rows, (row: TableRowProps, index: number) => {
       const props = {
         compact,
@@ -87,17 +99,16 @@ class Table extends UIComponent<WithAsProp<TableProps>> {
       } as TableRowProps;
       const overrideProps = handleVariablesOverrides(variables);
       return TableRow.create(row, {
-        defaultProps: () => ({
-          ...props,
-          accessibility: accessibility.childBehaviors ? accessibility.childBehaviors.row : undefined,
-        }),
+        defaultProps: () =>
+          getA11yProps('row', {
+            ...props,
+          }),
         overrideProps,
       });
     });
-  }
+  };
 
-  renderHeader(accessibility: ReactAccessibilityBehavior, variables: ComponentVariablesObject) {
-    const { header, compact } = this.props;
+  const renderHeader = () => {
     if (!header) {
       return null;
     }
@@ -105,48 +116,65 @@ class Table extends UIComponent<WithAsProp<TableProps>> {
     const headerRowProps = {
       header: true,
       compact,
-      className: Table.slotClassNames.header,
+      className: tableSlotClassNames.header,
     } as TableRowProps;
 
     const overrideProps = handleVariablesOverrides(variables);
 
     return TableRow.create(header, {
-      defaultProps: () => ({
-        ...headerRowProps,
-        accessibility: accessibility.childBehaviors ? accessibility.childBehaviors.row : undefined,
-      }),
+      defaultProps: () =>
+        getA11yProps('row', {
+          ...headerRowProps,
+        }),
       overrideProps,
     });
-  }
+  };
 
-  renderComponent({
-    accessibility,
-    ElementType,
-    classes,
-    variables,
-    unhandledProps,
-  }: RenderResultConfig<any>): React.ReactNode {
-    const { children } = this.props;
-    const hasChildren = childrenExist(children);
+  const element = getA11yProps.unstable_wrapWithFocusZone(
+    <ElementType
+      {...getA11yProps('root', {
+        className: classes.root,
+        ...unhandledProps,
+      })}
+    >
+      {hasChildren && children}
+      {/* <thead> */}
+      {!hasChildren && renderHeader()}
+      {/* </thead> */}
+      {/* <tbody> */}
+      {!hasChildren && renderRows()}
+      {/* </tbody> */}
+    </ElementType>,
+  );
+  setEnd();
+  return element;
+};
 
-    return (
-      <ElementType
-        className={classes.root}
-        {...accessibility.attributes.root}
-        {...unhandledProps}
-        {...applyAccessibilityKeyHandlers(accessibility.keyHandlers.root, unhandledProps)}
-      >
-        {hasChildren && children}
-        {/* <thead> */}
-        {!hasChildren && this.renderHeader(accessibility, variables)}
-        {/* </thead> */}
-        {/* <tbody> */}
-        {!hasChildren && this.renderRows(accessibility, variables)}
-        {/* </tbody> */}
-      </ElementType>
-    );
-  }
-}
+Table.displayName = 'Table';
+
+Table.Cell = TableCell;
+
+Table.Row = TableRow;
+
+Table.create = createShorthandFactory({
+  Component: Table,
+});
+
+Table.propTypes = {
+  ...commonPropTypes.createCommon({
+    content: false,
+  }),
+  header: customPropTypes.itemShorthand,
+  rows: customPropTypes.collectionShorthand,
+  compact: PropTypes.bool,
+};
+
+Table.handledProps = Object.keys(Table.propTypes) as any;
+
+Table.defaultProps = {
+  as: 'div',
+  accessibility: tableBehavior as Accessibility,
+};
 
 /**
  * A Table is used to display data in tabular layout
