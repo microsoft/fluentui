@@ -4,8 +4,177 @@
 
 ```ts
 
+import { IStyle } from 'office-ui-fabric-react/lib/Styling';
+import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
+import { ITheme } from 'office-ui-fabric-react/lib/Styling';
+import * as React from 'react';
 
-export * from "office-ui-fabric-react";
+// @public (undocumented)
+export interface IImage {
+}
+
+// @public (undocumented)
+export interface IImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
+    className?: string;
+    coverStyle?: ImageCoverStyle;
+    // @deprecated
+    errorSrc?: string;
+    imageFit?: ImageFit;
+    maximizeFrame?: boolean;
+    onLoadingStateChange?: (loadState: ImageLoadState) => void;
+    shouldFadeIn?: boolean;
+    shouldStartVisible?: boolean;
+    styles?: IStyleFunctionOrObject<IImageStyleProps, IImageStyles>;
+    theme?: ITheme;
+}
+
+// @public (undocumented)
+export interface IImageState {
+    // (undocumented)
+    loadState?: ImageLoadState;
+}
+
+// @public (undocumented)
+export interface IImageStyleProps {
+    className?: string;
+    height?: number | string;
+    isCenter?: boolean;
+    // (undocumented)
+    isCenterContain?: boolean;
+    // (undocumented)
+    isCenterCover?: boolean;
+    // (undocumented)
+    isContain?: boolean;
+    // (undocumented)
+    isCover?: boolean;
+    isError?: boolean;
+    isLandscape?: boolean;
+    isLoaded?: boolean;
+    // (undocumented)
+    isNone?: boolean;
+    isNotImageFit?: boolean;
+    maximizeFrame?: boolean;
+    shouldFadeIn?: boolean;
+    shouldStartVisible?: boolean;
+    theme: ITheme;
+    width?: number | string;
+}
+
+// @public (undocumented)
+export interface IImageStyles {
+    image: IStyle;
+    root: IStyle;
+}
+
+// @public (undocumented)
+export const Image: React.FunctionComponent<IImageProps>;
+
+// @public (undocumented)
+export const ImageBase: React.ForwardRefExoticComponent<IImageProps & React.RefAttributes<HTMLImageElement>>;
+
+// @public
+export enum ImageCoverStyle {
+    landscape = 0,
+    portrait = 1
+}
+
+// @public
+export enum ImageFit {
+    center = 0,
+    centerContain = 5,
+    centerCover = 4,
+    contain = 1,
+    cover = 2,
+    none = 3
+}
+
+// @public (undocumented)
+export enum ImageLoadState {
+    error = 2,
+    // @deprecated
+    errorLoaded = 3,
+    loaded = 1,
+    notLoaded = 0
+}
+
+
+export * from "office-ui-fabric-react/lib/ActivityItem";
+export * from "office-ui-fabric-react/lib/Announced";
+export * from "office-ui-fabric-react/lib/Autofill";
+export * from "office-ui-fabric-react/lib/Breadcrumb";
+export * from "office-ui-fabric-react/lib/Button";
+export * from "office-ui-fabric-react/lib/Calendar";
+export * from "office-ui-fabric-react/lib/Callout";
+export * from "office-ui-fabric-react/lib/Check";
+export * from "office-ui-fabric-react/lib/Checkbox";
+export * from "office-ui-fabric-react/lib/ChoiceGroup";
+export * from "office-ui-fabric-react/lib/Coachmark";
+export * from "office-ui-fabric-react/lib/Color";
+export * from "office-ui-fabric-react/lib/ColorPicker";
+export * from "office-ui-fabric-react/lib/ComboBox";
+export * from "office-ui-fabric-react/lib/CommandBar";
+export * from "office-ui-fabric-react/lib/ContextualMenu";
+export * from "office-ui-fabric-react/lib/DatePicker";
+export * from "office-ui-fabric-react/lib/DetailsList";
+export * from "office-ui-fabric-react/lib/Dialog";
+export * from "office-ui-fabric-react/lib/Divider";
+export * from "office-ui-fabric-react/lib/DocumentCard";
+export * from "office-ui-fabric-react/lib/Dropdown";
+export * from "office-ui-fabric-react/lib/ExtendedPicker";
+export * from "office-ui-fabric-react/lib/Fabric";
+export * from "office-ui-fabric-react/lib/Facepile";
+export * from "office-ui-fabric-react/lib/FloatingPicker";
+export * from "office-ui-fabric-react/lib/FocusTrapZone";
+export * from "office-ui-fabric-react/lib/FocusZone";
+export * from "office-ui-fabric-react/lib/Grid";
+export * from "office-ui-fabric-react/lib/GroupedList";
+export * from "office-ui-fabric-react/lib/HoverCard";
+export * from "office-ui-fabric-react/lib/Icon";
+export * from "office-ui-fabric-react/lib/Icons";
+export * from "office-ui-fabric-react/lib/Keytip";
+export * from "office-ui-fabric-react/lib/KeytipData";
+export * from "office-ui-fabric-react/lib/KeytipLayer";
+export * from "office-ui-fabric-react/lib/Label";
+export * from "office-ui-fabric-react/lib/Layer";
+export * from "office-ui-fabric-react/lib/Link";
+export * from "office-ui-fabric-react/lib/List";
+export * from "office-ui-fabric-react/lib/MarqueeSelection";
+export * from "office-ui-fabric-react/lib/MessageBar";
+export * from "office-ui-fabric-react/lib/Modal";
+export * from "office-ui-fabric-react/lib/Nav";
+export * from "office-ui-fabric-react/lib/OverflowSet";
+export * from "office-ui-fabric-react/lib/Overlay";
+export * from "office-ui-fabric-react/lib/Panel";
+export * from "office-ui-fabric-react/lib/Persona";
+export * from "office-ui-fabric-react/lib/Pickers";
+export * from "office-ui-fabric-react/lib/Pivot";
+export * from "office-ui-fabric-react/lib/Popup";
+export * from "office-ui-fabric-react/lib/PositioningContainer";
+export * from "office-ui-fabric-react/lib/ProgressIndicator";
+export * from "office-ui-fabric-react/lib/Rating";
+export * from "office-ui-fabric-react/lib/ResizeGroup";
+export * from "office-ui-fabric-react/lib/ScrollablePane";
+export * from "office-ui-fabric-react/lib/SearchBox";
+export * from "office-ui-fabric-react/lib/SelectableOption";
+export * from "office-ui-fabric-react/lib/SelectedItemsList";
+export * from "office-ui-fabric-react/lib/Selection";
+export * from "office-ui-fabric-react/lib/Separator";
+export * from "office-ui-fabric-react/lib/Shimmer";
+export * from "office-ui-fabric-react/lib/ShimmeredDetailsList";
+export * from "office-ui-fabric-react/lib/Slider";
+export * from "office-ui-fabric-react/lib/SpinButton";
+export * from "office-ui-fabric-react/lib/Spinner";
+export * from "office-ui-fabric-react/lib/Stack";
+export * from "office-ui-fabric-react/lib/Sticky";
+export * from "office-ui-fabric-react/lib/Styling";
+export * from "office-ui-fabric-react/lib/SwatchColorPicker";
+export * from "office-ui-fabric-react/lib/TeachingBubble";
+export * from "office-ui-fabric-react/lib/Text";
+export * from "office-ui-fabric-react/lib/TextField";
+export * from "office-ui-fabric-react/lib/ThemeGenerator";
+export * from "office-ui-fabric-react/lib/Toggle";
+export * from "office-ui-fabric-react/lib/Tooltip";
+export * from "office-ui-fabric-react/lib/Utilities";
 
 // (No @packageDocumentation comment for this package)
 
