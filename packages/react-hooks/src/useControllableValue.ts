@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { useConst } from './useConst';
 
-export type ChangeCallback<TElement extends HTMLElement, TValue> = (
-  ev: React.FormEvent<TElement> | undefined,
+type ChangeCallback<TElement extends HTMLElement, TValue> = (
+  ev: React.FormEvent<TElement>,
   newValue: TValue | undefined,
 ) => void;
 
@@ -26,26 +25,27 @@ export function useControllableValue<
   controlledValue: TValue | undefined,
   defaultUncontrolledValue: TValue | undefined,
   onChange: TCallback,
-): Readonly<[TValue | undefined, (newValue: TValue | undefined, ev?: React.FormEvent<TElement>) => void]>;
+): Readonly<[TValue | undefined, (newValue: TValue | undefined, ev: React.FormEvent<TElement>) => void]>;
 export function useControllableValue<
   TValue,
   TElement extends HTMLElement,
   TCallback extends ChangeCallback<TElement, TValue> | undefined
 >(controlledValue: TValue | undefined, defaultUncontrolledValue: TValue | undefined, onChange?: TCallback) {
-  const [value, setValue] = React.useState<TValue | undefined>(defaultUncontrolledValue);
-  const isControlled = useConst<boolean>(controlledValue !== undefined);
+  const [value, setValue] = React.useState<TValue | undefined>(
+    controlledValue !== undefined ? controlledValue : defaultUncontrolledValue,
+  );
 
   const setValueOrCallOnChange = React.useCallback(
     (newValue: TValue | undefined, ev?: React.FormEvent<TElement>) => {
       if (onChange) {
         onChange(ev!, newValue);
       }
-      if (!isControlled) {
+      if (controlledValue === undefined) {
         setValue(newValue);
       }
     },
-    [onChange],
+    [onChange, controlledValue === undefined],
   );
 
-  return [isControlled ? controlledValue : value, setValueOrCallOnChange] as const;
+  return [controlledValue !== undefined ? controlledValue : value, setValueOrCallOnChange] as const;
 }

@@ -19,7 +19,7 @@ export interface IPanel {
   /**
    * Forces the panel to dismiss.
    */
-  dismiss: (ev?: React.KeyboardEvent<HTMLElement> | Event) => void;
+  dismiss: (ev?: React.KeyboardEvent<HTMLElement>) => void;
 }
 
 /**
@@ -97,7 +97,7 @@ export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
    * A callback function for when the panel is closed, before the animation completes.
    * If the panel should NOT be dismissed based on some keyboard event, then simply call ev.preventDefault() on it
    */
-  onDismiss?: (ev?: React.SyntheticEvent<HTMLElement> | Event) => void;
+  onDismiss?: (ev?: React.SyntheticEvent<HTMLElement>) => void;
 
   /**
    * A callback function which is called **after** the Panel is dismissed and the animation is complete.

@@ -1,3 +1,4 @@
 {
-  "extends": ["@uifabric/tslint-rules"]
+  "extends": ["@uifabric/tslint-rules"],
+  "rules": { "typedef": false }
 }
