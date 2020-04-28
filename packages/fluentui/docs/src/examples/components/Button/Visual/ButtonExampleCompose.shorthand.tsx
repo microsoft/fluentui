@@ -212,11 +212,9 @@ const ButtonExample = () => (
   <Provider theme={customTheme}>
     <Header as="h3" content="A tertiary button" description="Adds a custom design term" />
     <Flex>
-      <Button content={{ content: 'Click here' }} />
       <TertiaryButton content="Click me" />
       <TertiaryButton content="Click here" tertiary />
-
-      <Button content={{ content: 'Click here' }} size="small" />
+      &nbsp;
       <TertiaryButton content="Click here" size="small" />
       <TertiaryButton content="Click here" tertiary size="small" />
     </Flex>
