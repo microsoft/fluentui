@@ -4,8 +4,6 @@ import { useStylesheet } from './useStylesheet';
 import { StylesheetContext, StylesheetContextType, register } from './StylesheetContext';
 import { mount } from 'enzyme';
 
-// tslint:disable:jsx-no-lambda
-
 const FooStylesheet = 'Foo';
 const ParentRenderingFooStylesheet = 'ParentRenderingFoo';
 
