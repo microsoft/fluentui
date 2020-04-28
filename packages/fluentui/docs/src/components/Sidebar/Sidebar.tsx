@@ -20,25 +20,34 @@ import keyboardKey from 'keyboard-key';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import { NavLink, NavLinkProps, withRouter } from 'react-router-dom';
+import { NavLink, NavLinkProps, withRouter, RouteComponentProps } from 'react-router-dom';
 import { SearchIcon, TriangleDownIcon, TriangleUpIcon, FilesTxtIcon } from '@fluentui/react-icons-northstar';
-
-type ComponentMenuItem = { displayName: string; type: string };
+import { ComponentMenuItem } from '../../types';
 
 const pkg = require('@fluentui/react-northstar/package.json');
 const componentMenu: ComponentMenuItem[] = require('../../componentMenu');
-const behaviorMenu: ComponentMenuItem[] = require('../../behaviorMenu');
 
 const componentsBlackList = ['Debug', 'Design'];
 
-class Sidebar extends React.Component<any, any> {
+type SidebarProps = RouteComponentProps<any> & {
+  width: number;
+  treeItemStyle: object;
+  style?: object;
+};
+
+type SidebarState = {
+  query: string;
+  activeCategoryIndex: number | number[];
+};
+
+class Sidebar extends React.Component<SidebarProps, SidebarState> {
   static propTypes = {
     match: PropTypes.object.isRequired,
     location: PropTypes.object.isRequired,
     history: PropTypes.object.isRequired,
     style: PropTypes.object,
   };
-  state: any = { query: '', activeCategoryIndex: 0 };
+  state: SidebarState = { query: '', activeCategoryIndex: 0 };
   searchInputRef = React.createRef<HTMLInputElement>();
 
   componentDidMount() {
@@ -295,18 +304,14 @@ class Sidebar extends React.Component<any, any> {
   };
 
   getSectionsWithoutSearchFilter = (): HierarchicalTreeItemProps[] => {
-    const treeItemsByType = _.map(constants.typeOrder, nextType => {
-      const items = _.chain([...componentMenu, ...behaviorMenu])
-        .filter(({ type }) => type === nextType)
-        .filter(({ displayName }) => !_.includes(componentsBlackList, displayName))
-        .map(info => ({
-          key: info.displayName.concat(nextType),
-          title: { content: info.displayName, as: NavLink, to: getComponentPathname(info) },
-        }))
-        .value();
-
-      return { items };
-    });
+    const componentsTreeItems = {
+      items: componentMenu
+        .filter(menuItem => menuItem.type === 'component' && !_.includes(componentsBlackList, menuItem.displayName))
+        .map(menuItem => ({
+          key: `${menuItem.displayName}component`,
+          title: { content: menuItem.displayName, as: NavLink, to: getComponentPathname(menuItem) },
+        })),
+    };
 
     const prototypesTreeItems: (ShorthandValue<{}> & { key: string; public: boolean })[] = [
       {
@@ -426,7 +431,7 @@ class Sidebar extends React.Component<any, any> {
     const componentTreeSection = {
       key: 'components',
       title: 'Components',
-      items: treeItemsByType[0].items,
+      items: componentsTreeItems,
     };
 
     const treeItems = this.getTreeItems();

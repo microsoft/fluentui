@@ -8,7 +8,7 @@ import { getComponentPathname, getInfoForSeeTags } from '../../utils';
 
 const listStyle = { display: 'block' };
 
-const ComponentDocSee: any = ({ displayName }) => {
+const ComponentDocSee: React.FunctionComponent<{ displayName: string }> = ({ displayName }) => {
   const items = getInfoForSeeTags(displayName);
 
   if (_.isEmpty(items)) return null;

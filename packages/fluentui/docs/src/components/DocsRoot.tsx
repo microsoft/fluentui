@@ -6,8 +6,10 @@ import ComponentDoc from '../components/ComponentDoc';
 import PageNotFound from '../views/PageNotFound';
 import componentInfoContext from '../utils/componentInfoContext';
 import { containsAccessibility } from './ComponentDoc/ComponentDocAccessibility';
+import { FluentComponentInfo } from '@fluentui/react-docgen';
+import { RouteComponentProps } from 'react-router-dom';
 
-class DocsRoot extends React.Component<any, any> {
+class DocsRoot extends React.Component<RouteComponentProps<{ name: string; tab: string }>> {
   static propTypes = {
     children: PropTypes.node,
     match: PropTypes.shape({
@@ -18,9 +20,7 @@ class DocsRoot extends React.Component<any, any> {
     }),
   };
 
-  state = {};
-
-  getNonEmptyTabs(info) {
+  getNonEmptyTabs(info: FluentComponentInfo) {
     const tabs = ['Definition'];
 
     tabs.push('Props');
@@ -35,9 +35,6 @@ class DocsRoot extends React.Component<any, any> {
   render() {
     const { match } = this.props;
     const displayName = _.startCase(match.params.name).replace(/ /g, '');
-    if (match.params.type === 'behaviors') {
-      return null;
-    }
     const info = componentInfoContext.byDisplayName[displayName];
     const tabs = this.getNonEmptyTabs(info);
 

@@ -1,7 +1,7 @@
 import componentInfoContext from '../../utils/componentInfoContext';
-import { ComponentInfo } from '../../types';
+import { ComponentProp } from '@fluentui/react-docgen';
 
-const useComponentProps = (componentName: string): ComponentInfo['props'] => {
+const useComponentProps = (componentName: string): ComponentProp[] => {
   const info = componentInfoContext.byDisplayName[componentName];
 
   if (!info) {

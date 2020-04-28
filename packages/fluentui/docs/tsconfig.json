@@ -5,6 +5,7 @@
     "paths": {
       "@fluentui/*": ["packages/fluentui/*/src/index"],
       "@fluentui/react-compose": ["packages/react-compose/src/index"],
+      "@fluentui/react-docgen": ["packages/react-docgen/src/index"],
       "@uifabric/merge-styles": ["packages/merge-styles/src"],
       "@uifabric/set-version": ["packages/set-version/src"],
       "@uifabric/utilities": ["packages/utilities/src"],

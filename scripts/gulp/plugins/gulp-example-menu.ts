@@ -19,7 +19,7 @@ const SECTION_ORDER = {
   Performance: 11,
 };
 
-const getSectionOrder = sectionName =>
+const getSectionOrder = (sectionName: string) =>
   _.find(SECTION_ORDER, (val, key) => _.includes(sectionName, key)) || SECTION_ORDER.DEFAULT_ORDER;
 
 const pluginName = 'gulp-example-menu';
@@ -37,7 +37,7 @@ export default () => {
     >
   > = {};
 
-  function bufferContents(this: Transform, file, enc, cb) {
+  function bufferContents(this: Transform, file: Vinyl, enc: string, cb: (err?: any, data?: any) => void) {
     if (file.isNull()) {
       cb(null, file);
       return;
@@ -77,7 +77,7 @@ export default () => {
     }
   }
 
-  function endStream(this: Transform, cb) {
+  function endStream(this: Transform, cb: () => void) {
     _.forEach(exampleFilesByDisplayName, (contents, displayName) => {
       const sortedContents = _.sortBy(contents, ['order', 'sectionName']).map(({ sectionName, examples }) => ({
         sectionName,

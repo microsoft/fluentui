@@ -5,10 +5,12 @@ import { Header, Segment, Divider, ICSSInJSStyle } from '@fluentui/react-northst
 import DocumentTitle from 'react-document-title';
 import ComponentExampleTitle from './ComponentDoc/ComponentExample/ComponentExampleTitle';
 import BehaviorDescription from './ComponentDoc/BehaviorDescription';
+import { FluentBehaviorInfo } from '@fluentui/react-docgen';
+import { RouteComponentProps } from 'react-router-dom';
 
-const behaviorMenuItems = require('../behaviorMenu');
+const behaviorInfos: FluentBehaviorInfo[] = require('../behaviorInfo');
 
-class DocsBehaviorRoot extends React.Component<any, any> {
+class DocsBehaviorRoot extends React.Component<RouteComponentProps<{ name: string }>> {
   static propTypes = {
     children: PropTypes.node,
     match: PropTypes.shape({
@@ -36,7 +38,7 @@ class DocsBehaviorRoot extends React.Component<any, any> {
         <Segment styles={{ backgroundColor: 'transparent' }}>
           <Header as="h1" aria-level={2} content={pageTitle} />
 
-          {behaviorMenuItems
+          {behaviorInfos
             .find(behavior => behavior.displayName === componentName)
             .variations.map((variation, keyValue) => (
               <React.Fragment key={keyValue}>

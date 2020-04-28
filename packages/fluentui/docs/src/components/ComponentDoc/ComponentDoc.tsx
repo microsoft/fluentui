@@ -12,9 +12,9 @@ import { ComponentDocAccessibility } from './ComponentDocAccessibility';
 import { ThemeContext } from '../../context/ThemeContext';
 import ExampleContext from '../../context/ExampleContext';
 import ComponentPlayground from '../ComponentPlayground/ComponentPlayground';
-import { ComponentInfo } from '../../types';
 import ComponentBestPractices from './ComponentBestPractices';
 import * as _ from 'lodash';
+import { FluentComponentInfo } from '@fluentui/react-docgen';
 
 const exampleEndStyle: React.CSSProperties = {
   textAlign: 'center',
@@ -23,7 +23,7 @@ const exampleEndStyle: React.CSSProperties = {
 };
 
 type ComponentDocProps = {
-  info: ComponentInfo;
+  info: FluentComponentInfo;
   tabs: string[];
 } & RouteComponentProps<{}>;
 
@@ -177,12 +177,7 @@ class ComponentDoc extends React.Component<ComponentDocProps, ComponentDocState>
         {/* <ComponentDocSee displayName={info.displayName} /> */}
 
         <div style={{ padding: PAGE_PADDING }}>
-          {/* <ComponentDocLinks */}
-          {/*  displayName={info.displayName} */}
-          {/*  parentDisplayName={info.parentDisplayName} */}
-          {/*  repoPath={info.repoPath} */}
-          {/*  type={info.type} */}
-          {/* /> */}
+          {/* <ComponentDocLinks repoPath={info.repoPath} /> */}
 
           {this.getCurrentTabTitle() === 'Accessibility' && <ComponentDocAccessibility info={info} />}
 

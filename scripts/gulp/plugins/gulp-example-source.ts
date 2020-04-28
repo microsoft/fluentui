@@ -5,18 +5,19 @@ import prettier from 'prettier';
 import through from 'through2';
 import Vinyl from 'vinyl';
 
+import { ExampleSource } from '../../docs/types';
 import transformStarImportPlugin from '../../babel/transform-star-import-plugin';
 import { getRelativePathToSourceFile } from './util';
 
-const prettierConfig = require('../../../prettier.config');
+import * as prettierConfig from '../../../prettier.config';
 
 const ESLint = new CLIEngine({
   fix: true,
 });
 const pluginName = 'gulp-example-source';
 
-const createExampleSourceCode = (file: Vinyl): { js: string; ts: string } => {
-  const tsSource = file.contents.toString();
+const createExampleSourceCode = (file: Vinyl): ExampleSource => {
+  const tsSource = file.contents!.toString();
 
   const babelResult = Babel.transform(tsSource, {
     // This plugin transforms TS files for docs, we want to apply exactly this config.
@@ -25,7 +26,7 @@ const createExampleSourceCode = (file: Vinyl): { js: string; ts: string } => {
     presets: [['@babel/preset-typescript', { allExtensions: true, isTSX: true }]],
     sourceType: 'module',
   });
-  const prettierResult = prettier.format(babelResult.code, {
+  const prettierResult = prettier.format(babelResult!.code, {
     ...prettierConfig,
     trailingComma: 'all',
     printWidth: 100,

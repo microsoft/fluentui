@@ -5,6 +5,7 @@ import remember from 'gulp-remember';
 import { log } from 'gulp-util';
 import fs from 'fs';
 import path from 'path';
+import _ from 'lodash';
 import del from 'del';
 import through2 from 'through2';
 import webpack from 'webpack';
@@ -13,16 +14,23 @@ import WebpackHotMiddleware from 'webpack-hot-middleware';
 
 import sh from '../sh';
 import config from '../../config';
-import gulpComponentMenu from '../plugins/gulp-component-menu';
-import gulpComponentMenuBehaviors from '../plugins/gulp-component-menu-behaviors';
 import gulpDoctoc from '../plugins/gulp-doctoc';
 import gulpExampleMenu from '../plugins/gulp-example-menu';
 import gulpExampleSource from '../plugins/gulp-example-source';
-import gulpReactDocgen from '../plugins/gulp-react-docgen';
 import { getRelativePathToSourceFile } from '../plugins/util';
 import webpackPlugin from '../plugins/gulp-webpack';
 import { Server } from 'http';
 import serve, { forceClose } from '../serve';
+import {
+  componentMenuFile,
+  behaviorInfoFile,
+  componentInfoFolder,
+  behaviorSrc,
+  componentsSrcByPackage,
+} from '../../docs/constants';
+import { writeComponentMenu } from '../../docs/writeComponentMenu';
+import { writeBehaviorInfo } from '../../docs/writeBehaviorInfo';
+import { writeComponentInfo } from '../../docs/writeComponentInfo';
 
 const { paths } = config;
 
@@ -45,8 +53,10 @@ task('clean:docs', () =>
   del(
     [
       paths.packages('ability-attributes/src/schema.ts'),
-      paths.docsSrc('componentMenu.json'),
-      paths.docsSrc('behaviorMenu.json'),
+      componentMenuFile,
+      behaviorInfoFile,
+      paths.docsSrc('behaviorMenu.json'), // old name
+      componentInfoFolder,
       paths.docsDist(),
       paths.docsSrc('exampleMenus'),
       paths.docsSrc('exampleSources'),
@@ -59,39 +69,28 @@ task('clean:docs', () =>
 // Build
 // ----------------------------------------
 
-const componentsSrc = [
-  `${paths.posix.packageSrc('react-northstar')}/components/*/[A-Z]*.tsx`,
-  `${paths.posix.packageSrc('react-bindings')}/FocusZone/[A-Z]!(*.types).tsx`,
-  `${paths.posix.packageSrc('react-component-ref')}/[A-Z]*.tsx`,
-];
-const behaviorSrc = [`${paths.posix.packageSrc('accessibility')}/behaviors/*/[a-z]*Behavior.ts`];
+const componentsSrc = _.map(componentsSrcByPackage, (packageName, relativeGlob) =>
+  paths.posix.packageSrc(packageName, relativeGlob),
+);
 const examplesIndexSrc = `${paths.posix.docsSrc()}/examples/*/*/*/index.tsx`;
 const examplesSrc = `${paths.posix.docsSrc()}/examples/*/*/*/!(*index|.knobs).tsx`;
 const markdownSrc = ['packages/fluentui/!(CHANGELOG).md', 'specifications/*.md'];
 const schemaSrc = `${paths.posix.packages('ability-attributes')}/schema.json`;
 
-task('build:docs:component-info', () =>
-  src(componentsSrc, { since: lastRun('build:docs:component-info'), cwd: paths.base(), cwdbase: true })
-    .pipe(
-      cache(gulpReactDocgen(paths.docs('tsconfig.json'), ['DOMAttributes', 'HTMLAttributes']), {
-        name: 'componentInfo-2',
-      }),
-    )
-    .pipe(dest(paths.docsSrc('componentInfo'), { cwd: paths.base() })),
-);
+task('build:docs:component-info', cb => {
+  writeComponentInfo();
+  cb();
+});
 
-task('build:docs:component-menu', () =>
-  src(componentsSrc, { since: lastRun('build:docs:component-menu') })
-    .pipe(gulpComponentMenu(paths.docs('tsconfig.json')))
-    .pipe(dest(paths.docsSrc())),
-);
+task('build:docs:component-menu', cb => {
+  writeComponentMenu();
+  cb();
+});
 
-task('build:docs:component-menu-behaviors', () =>
-  src(behaviorSrc, { since: lastRun('build:docs:component-menu-behaviors') })
-    .pipe(remember('component-menu-behaviors'))
-    .pipe(gulpComponentMenuBehaviors())
-    .pipe(dest(paths.docsSrc())),
-);
+task('build:docs:behavior-info', cb => {
+  writeBehaviorInfo();
+  cb();
+});
 
 task('build:docs:example-menu', () =>
   src(examplesIndexSrc, { since: lastRun('build:docs:example-menu') })
@@ -114,7 +113,7 @@ task(
   'build:docs:json',
   parallel(
     series('build:docs:component-info', 'build:docs:component-menu'),
-    'build:docs:component-menu-behaviors',
+    'build:docs:behavior-info',
     'build:docs:example-menu',
     'build:docs:example-sources',
   ),
@@ -213,11 +212,11 @@ task('watch:docs:component-info', cb => {
   cb();
 });
 
-task('watch:docs:component-menu-behaviors', cb => {
-  watch(behaviorSrc, series('build:docs:component-menu-behaviors'))
+task('watch:docs:behavior-info', cb => {
+  watch(behaviorSrc, series('build:docs:behavior-info'))
     .on('add', logWatchAdd)
     .on('change', logWatchChange)
-    .on('unlink', filePath => handleWatchUnlink('component-menu-behaviors', filePath));
+    .on('unlink', filePath => handleWatchUnlink('behavior-info', filePath));
 
   cb();
 });
@@ -254,7 +253,7 @@ task('watch:docs:other', cb => {
   cb();
 });
 
-task('watch:docs', series('watch:docs:component-info', 'watch:docs:component-menu-behaviors', 'watch:docs:other'));
+task('watch:docs', series('watch:docs:component-info', 'watch:docs:behavior-info', 'watch:docs:other'));
 
 // ----------------------------------------
 // Default

@@ -1,10 +1,10 @@
 import componentInfoContext from './componentInfoContext';
-import { ComponentInfo } from '../types';
+import { FluentComponentInfo } from '@fluentui/react-docgen';
 
 /**
  * Returns a component's info.json file and subcomponent info.json files grouped by displayName.
  */
-const getComponentGroup = (displayName: string): { [key: string]: ComponentInfo } => {
+const getComponentGroup = (displayName: string): { [key: string]: FluentComponentInfo } => {
   const info = componentInfoContext.byDisplayName[displayName];
 
   const group = {

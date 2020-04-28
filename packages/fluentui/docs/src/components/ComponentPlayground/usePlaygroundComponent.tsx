@@ -4,14 +4,13 @@ import * as React from 'react';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 
-import { ComponentInfo } from '../../types';
 import componentInfoContext from '../../utils/componentInfoContext';
 
 import createHookGenerator from './createHookGenerator';
 
 const usePlaygroundComponent = (componentName: string): [React.ReactElement, string[]] => {
   const context: FluentUI.ProviderContextPrepared = React.useContext(ThemeContext);
-  const componentInfo: ComponentInfo = componentInfoContext.byDisplayName[componentName];
+  const componentInfo = componentInfoContext.byDisplayName[componentName];
 
   if (process.env.NODE_ENV !== 'production') {
     if (!componentInfo) {

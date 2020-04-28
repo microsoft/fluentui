@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ComponentInfo } from '../types';
+import { FluentComponentInfo } from '@fluentui/react-docgen';
 
 /**
  * Get the Webpack Context for all Component.info.json files.
@@ -7,12 +7,12 @@ import { ComponentInfo } from '../types';
 const requireContext = require.context('../componentInfo', true, /\.info\.json$/);
 
 const keys: string[] = requireContext.keys();
-const infoObjects = keys.map(requireContext) as ComponentInfo[];
+const infoObjects = keys.map(requireContext) as FluentComponentInfo[];
 
 const componentInfoContext: {
-  byDisplayName: { [componentName: string]: ComponentInfo };
-  fromComponent: (Component: React.ComponentType) => ComponentInfo;
-  parents: ComponentInfo[];
+  byDisplayName: { [componentName: string]: FluentComponentInfo };
+  fromComponent: (Component: React.ComponentType) => FluentComponentInfo;
+  parents: FluentComponentInfo[];
 } = {} as any;
 
 componentInfoContext.byDisplayName = infoObjects.reduce((acc, next) => {

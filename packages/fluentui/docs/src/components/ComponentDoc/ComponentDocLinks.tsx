@@ -2,10 +2,11 @@ import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import { Flex, constants, Image } from '@fluentui/react-northstar';
 
-export default class ComponentDocLinks extends React.PureComponent<any, any> {
+export default class ComponentDocLinks extends React.PureComponent<{
+  repoPath: string;
+}> {
   static propTypes = {
     repoPath: PropTypes.string.isRequired,
-    type: PropTypes.string.isRequired,
   };
 
   render() {

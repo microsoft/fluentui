@@ -2,20 +2,25 @@ import * as React from 'react';
 import * as _ from 'lodash';
 import { Flex, Loader, Text, Segment, Header } from '@fluentui/react-northstar';
 import { link } from '../../utils/helpers';
-import { BehaviorInfo, ComponentInfo, BehaviorVariantionInfo } from '../../types';
+import {
+  FluentComponentInfo,
+  FluentBehaviorInfo,
+  FluentBehavior,
+  FluentBehaviorVariation,
+} from '@fluentui/react-docgen';
 import { BehaviorCard, exampleStyle, behaviorVariantDisplayName } from './BehaviorCard';
 
 const InlineMarkdown = React.lazy(() => import('./InlineMarkdown'));
 
-const behaviorMenu = require('../../behaviorMenu');
+const behaviorInfos: FluentBehaviorInfo[] = require('../../behaviorInfo');
 
 const knownIsusesId = 'known-issues';
 
 type ComponentDocAccessibility = {
-  info: ComponentInfo;
+  info: FluentComponentInfo;
 };
 
-export function containsAccessibility(info) {
+export function containsAccessibility(info: FluentComponentInfo) {
   const defaulBehaviorName = getDefaultBehaviorName(info);
   return (
     !!getDescription(info) ||
@@ -25,30 +30,31 @@ export function containsAccessibility(info) {
   );
 }
 
-function getDescription(info) {
+function getDescription(info: FluentComponentInfo) {
   return _.get(_.find(info.docblock.tags, { title: 'accessibility' }), 'description');
 }
 
-function getDefaultBehaviorName(info) {
+function getDefaultBehaviorName(info: FluentComponentInfo) {
   const defaultValue = _.get(_.find(info.props, { name: 'accessibility' }), 'defaultValue');
   return defaultValue && defaultValue.split('.').pop();
 }
 
-function getBehaviorName(defaulBehaviorName) {
+function getBehaviorName(defaulBehaviorName: string) {
   const filename = defaulBehaviorName && `${_.camelCase(defaulBehaviorName)}.ts`;
-  for (const category of behaviorMenu) {
+  for (const category of behaviorInfos) {
     const behavior = category.variations.find(variation => variation.name === filename);
     if (behavior) {
       return category.displayName;
     }
   }
+  return undefined;
 }
 
-function getAvailableVariantsFromJson(availableBehaviors: BehaviorInfo[]): BehaviorVariantionInfo[] {
+function getAvailableVariantsFromJson(availableBehaviors: FluentBehavior[]): FluentBehaviorVariation[] {
   const availableBehaviorsFromJson = [];
   availableBehaviors.forEach(availableBehavior => {
     const fileName = `${availableBehavior.name}.ts`;
-    behaviorMenu.forEach(category => {
+    behaviorInfos.forEach(category => {
       const result = category.variations.find(variation => variation.name === fileName);
       if (result) {
         availableBehaviorsFromJson.push(result);
@@ -58,18 +64,18 @@ function getAvailableVariantsFromJson(availableBehaviors: BehaviorInfo[]): Behav
   return availableBehaviorsFromJson;
 }
 
-function getAccIssues(info) {
+function getAccIssues(info: FluentComponentInfo) {
   return _.get(_.find(info.docblock.tags, { title: 'accessibilityIssues' }), 'description');
 }
 
 function getAllAvailableBehaviors(
   behaviorName: string,
   defaultBehaviorFileName: string,
-  availableBehaviors: BehaviorInfo[],
-): BehaviorVariantionInfo[] {
+  availableBehaviors: FluentBehavior[],
+): FluentBehaviorVariation[] {
   let behaviorVariantsWithoutDefault = [];
   if (defaultBehaviorFileName && behaviorName) {
-    behaviorVariantsWithoutDefault = behaviorMenu
+    behaviorVariantsWithoutDefault = behaviorInfos
       .find(behavior => behavior.displayName === behaviorName)
       .variations.filter(behavior => behavior.name !== defaultBehaviorFileName);
   }
@@ -124,7 +130,7 @@ export const ComponentDocAccessibility: React.FC<ComponentDocAccessibility> = ({
       {behaviorName && (
         <>
           <Header content="Default behavior" id="default-behavior" as="h2" />
-          {behaviorMenu
+          {behaviorInfos
             .find(behavior => behavior.displayName === behaviorName)
             .variations.filter(behavior => behavior.name === defaultBehaviorFileName)
             .map(variation => (

@@ -1,35 +1,46 @@
-import * as _ from 'lodash';
-import traverse from '@babel/traverse';
+import traverse, { NodePath } from '@babel/traverse';
+import * as t from '@babel/types';
+import { parse } from '@babel/parser';
 
-import parseBuffer from './parseBuffer';
-
-const getJSXAttributes = jsxPath =>
-  _.map(_.get(jsxPath, 'node.attributes'), attr => ({
-    name: _.get(attr, 'name.name'),
-    value: _.get(attr, 'value.value'),
-  }));
-
-const getAttributeValue = (attributes, name) => _.get(_.find(attributes, { name }), 'value');
+type JsxAttribute = {
+  name: string | undefined;
+  value: any; // tslint:disable-line:no-any
+};
 
 type Example = {
   title: string;
   examplePath: string;
 };
 
+const getJSXAttributes = (jsxPath: NodePath<t.JSXOpeningElement>): JsxAttribute[] => {
+  return ((jsxPath.node?.attributes || []) as t.JSXAttribute[]).map(attr => ({
+    name: attr.name?.name as string,
+    value: (attr.value as any)?.value, // tslint:disable-line:no-any
+  }));
+};
+
+const getAttributeValue = (attributes: JsxAttribute[], name: string) =>
+  attributes.find(attr => attr.name === name)?.value;
+
 /**
  * Parses the section view of component examples and builds an object with examples titles and paths.
  *
  * @param buffer - The content of a view
  */
-const parseDocSection = (buffer: any): { examples: Example[]; sectionName: string } => {
-  const ast = parseBuffer(buffer);
+const parseDocSection = (
+  buffer: Buffer | NodeJS.ReadableStream,
+): { examples: Example[]; sectionName: string | undefined } => {
+  const ast = parse(buffer.toString(), {
+    plugins: ['classProperties', 'jsx'],
+    sourceType: 'module',
+  });
   const examples: Example[] = [];
-  let sectionName: string;
+  let sectionName: string | undefined;
 
   traverse(ast, {
     JSXOpeningElement: path => {
       const attributes = getJSXAttributes(path);
-      const name = _.get(path, 'node.name.name');
+      const name = (path.node?.name as t.JSXIdentifier)?.name;
 
       const title = getAttributeValue(attributes, 'title');
       const examplePath = getAttributeValue(attributes, 'examplePath');

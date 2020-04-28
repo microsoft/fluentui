@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as _ from 'lodash';
 import { Link } from 'react-router-dom';
 
-import { ComponentProp, ComponentPropType } from '../../../types';
+import { ComponentProp, ComponentPropType } from '@fluentui/react-docgen';
 import componentInfoContext from '../../../utils/componentInfoContext';
 import ComponentPropName from '../ComponentProp/ComponentPropName';
 import { getComponentGroup } from '../../../utils';

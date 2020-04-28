@@ -1,11 +1,13 @@
 import * as _ from 'lodash';
+import { ComponentMenuItem } from '../types';
 
 /**
  * Returns a pathname for a given component.
  *
- * @param info - A Component's *.info.json
+ * @param infoOrMenuItem - A Component's *.info.json or a menu item from `componentMenu.json`.
  */
-const getComponentPathname = (info: { type: string; displayName: string }): string =>
-  `/${info.type}s/${_.kebabCase(info.displayName)}`;
+const getComponentPathname = (infoOrMenuItem: ComponentMenuItem): string => {
+  return `/${infoOrMenuItem.type}s/${_.kebabCase(infoOrMenuItem.displayName)}`;
+};
 
 export default getComponentPathname;

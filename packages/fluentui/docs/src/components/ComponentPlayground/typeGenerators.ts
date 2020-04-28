@@ -1,7 +1,7 @@
 import { useBooleanKnob, useNumberKnob, useSelectKnob, useStringKnob } from '@fluentui/docs-components';
 import * as _ from 'lodash';
 
-import { ComponentInfo, KnobComponentGenerators, KnobGenerator } from '../../types';
+import { KnobComponentGenerators, KnobGenerator } from '../../types';
 import componentInfoContext from '../../utils/componentInfoContext';
 import * as componentGenerators from './componentGenerators';
 import createHookGenerator from './createHookGenerator';
@@ -40,7 +40,7 @@ export const ShorthandValue: KnobGenerator<string> = ({ propDef, componentInfo, 
   const shorthandPropType = propDef.types[0].parameters[0].name;
   const shorthandComponentName: string = shorthandPropType.replace(/Props$/, '');
 
-  const shorthandComponentInfo: ComponentInfo = componentInfoContext.byDisplayName[shorthandComponentName];
+  const shorthandComponentInfo = componentInfoContext.byDisplayName[shorthandComponentName];
 
   const mappedShorthandProp = shorthandComponentInfo.mappedShorthandProp;
   const shorthandPropDef = _.find(shorthandComponentInfo.props, { name: mappedShorthandProp });
