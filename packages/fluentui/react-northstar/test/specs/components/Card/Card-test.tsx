@@ -23,5 +23,13 @@ describe('Card', () => {
         expect.objectContaining({ onClick }),
       );
     });
+
+    test('does not call onClick when the card is disabled', () => {
+      const onClick = jest.fn();
+      const card = mount(Card, <Card disabled onClick={onClick} />);
+      card.simulate('click');
+
+      expect(onClick).not.toHaveBeenCalled();
+    });
   });
 });

@@ -1,6 +1,13 @@
-import { Toolbar } from '@fluentui/react-northstar';
+import { Toolbar, toolbarMenuBehavior, Accessibility, ToolbarMenuBehaviorProps } from '@fluentui/react-northstar';
 import * as React from 'react';
 import { CallVideoIcon, MoreIcon, SkypeLogoIcon } from '@fluentui/react-icons-northstar';
+
+// behavior is overridden, as focus was causing inconsistency in displaying focus outline for screener tests
+const notAutoFocusToolbarMenuBehavior: Accessibility<ToolbarMenuBehaviorProps> = props => {
+  const behavior = toolbarMenuBehavior(props);
+  behavior.focusZone.props.shouldFocusOnMount = false;
+  return behavior;
+};
 
 const ToolbarExampleVariables = () => {
   return (
@@ -59,6 +66,7 @@ const ToolbarExampleVariables = () => {
           icon: <MoreIcon />,
           key: 'item-menu',
           menu: {
+            accessibility: notAutoFocusToolbarMenuBehavior,
             items: [
               // ToolbarMenuDivider
               { kind: 'divider', key: 'divider' },
@@ -73,6 +81,7 @@ const ToolbarExampleVariables = () => {
                 key: 'item-menu',
                 content: 'Item',
                 menu: {
+                  accessibility: notAutoFocusToolbarMenuBehavior,
                   items: [
                     { key: 'item', content: 'Item' },
                     { key: 'item-variables', content: 'Item', variables: { menuItemForeground: 'gold' } },
@@ -85,6 +94,7 @@ const ToolbarExampleVariables = () => {
                 key: 'item-menu-variables',
                 content: 'Item',
                 menu: {
+                  accessibility: notAutoFocusToolbarMenuBehavior,
                   items: [
                     { key: 'item', content: 'Item' },
                     { key: 'item-variables', content: 'Item', variables: { menuItemForeground: 'gold' } },
@@ -107,6 +117,7 @@ const ToolbarExampleVariables = () => {
           icon: <MoreIcon />,
           key: 'item-menu-variables',
           menu: {
+            accessibility: notAutoFocusToolbarMenuBehavior,
             items: [
               { kind: 'divider', key: 'divider' },
               { kind: 'divider', key: 'divider-variables', variables: { menuDividerBorder: 'orange' } },
@@ -119,6 +130,7 @@ const ToolbarExampleVariables = () => {
                 key: 'item-menu',
                 content: 'Item',
                 menu: {
+                  accessibility: notAutoFocusToolbarMenuBehavior,
                   items: [
                     { key: 'item', content: 'Item' },
                     { key: 'item-variables', content: 'Item', variables: { menuItemForeground: 'gold' } },
@@ -131,6 +143,7 @@ const ToolbarExampleVariables = () => {
                 key: 'item-menu-variables',
                 content: 'Item',
                 menu: {
+                  accessibility: notAutoFocusToolbarMenuBehavior,
                   items: [
                     { key: 'item', content: 'Item' },
                     { key: 'item-variables', content: 'Item', variables: { menuItemForeground: 'gold' } },

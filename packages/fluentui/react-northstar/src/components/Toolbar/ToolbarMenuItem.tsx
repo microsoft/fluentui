@@ -135,9 +135,7 @@ export const toolbarMenuItemSlotClassNames: ToolbarMenuItemSlotClassNames = {
 };
 
 const ToolbarMenuItem: React.FC<WithAsProp<ToolbarMenuItemProps>> &
-  FluentComponentStaticProps<ToolbarMenuItemProps> & {
-    slotClassNames: ToolbarMenuItemSlotClassNames;
-  } = props => {
+  FluentComponentStaticProps<ToolbarMenuItemProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(ToolbarMenuItem.displayName, context.telemetry);
   setStart();
@@ -179,6 +177,7 @@ const ToolbarMenuItem: React.FC<WithAsProp<ToolbarMenuItemProps>> &
     debugName: ToolbarMenuItem.displayName,
     mapPropsToBehavior: () => ({
       menu,
+      active,
       menuOpen,
       disabled,
       'aria-label': props['aria-label'],
@@ -444,10 +443,6 @@ const ToolbarMenuItem: React.FC<WithAsProp<ToolbarMenuItemProps>> &
 };
 
 ToolbarMenuItem.displayName = 'ToolbarMenuItem';
-
-ToolbarMenuItem.deprecated_className = toolbarMenuItemClassName;
-
-ToolbarMenuItem.slotClassNames = toolbarMenuItemSlotClassNames;
 
 ToolbarMenuItem.propTypes = {
   ...commonPropTypes.createCommon(),

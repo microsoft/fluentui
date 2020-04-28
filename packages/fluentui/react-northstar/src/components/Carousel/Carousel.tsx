@@ -135,8 +135,6 @@ class Carousel extends AutoControlledComponent<WithAsProp<CarouselProps>, Carous
 
   static deprecated_className = carouselClassName;
 
-  static slotClassNames = carouselSlotClassNames;
-
   static propTypes = {
     ...commonPropTypes.createCommon({
       content: false,
@@ -450,13 +448,13 @@ class Carousel extends AutoControlledComponent<WithAsProp<CarouselProps>, Carous
           },
         }),
       })
-    ) : (
+    ) : getItemPositionText ? (
       <Text
         aria-hidden="true"
         className={carouselSlotClassNames.pagination}
         content={getItemPositionText(activeIndex, items.length)}
       />
-    );
+    ) : null;
   };
 
   renderComponent({ ElementType, classes, accessibility, unhandledProps }) {

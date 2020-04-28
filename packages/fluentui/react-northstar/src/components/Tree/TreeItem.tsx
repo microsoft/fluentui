@@ -27,6 +27,7 @@ import {
   ProviderContextPrepared,
 } from '../../types';
 import TreeTitle, { TreeTitleProps } from './TreeTitle';
+import { BoxProps } from '../Box/Box';
 import { hasSubtree, TreeContext } from './utils';
 
 export interface TreeItemProps extends UIComponentProps, ChildrenComponentProps {
@@ -81,6 +82,20 @@ export interface TreeItemProps extends UIComponentProps, ChildrenComponentProps 
 
   /** Properties for TreeTitle. */
   title?: ShorthandValue<TreeTitleProps>;
+
+  /** Whether or not the item can be selectable. */
+  selectable?: boolean;
+
+  /** A state of selection indicator. */
+  selected?: boolean;
+
+  /** A selection indicator icon can be customized. */
+  selectionIndicator?: ShorthandValue<BoxProps>;
+
+  /** Whether or not tree item is part of the selectable parent. */
+  selectableParent?: boolean;
+
+  indeterminate?: boolean;
 }
 
 export type TreeItemStylesProps = Required<Pick<TreeItemProps, 'level'>>;
@@ -105,9 +120,15 @@ const TreeItem: React.FC<WithAsProp<TreeItemProps>> & FluentComponentStaticProps
     styles,
     variables,
     treeSize,
+    selectionIndicator,
+    selectableParent,
+    selected,
+    selectable,
+    indeterminate,
   } = props;
 
   const hasSubtreeItem = hasSubtree(props);
+
   const { onFocusParent, onSiblingsExpand, onFocusFirstChild, onTitleClick } = React.useContext(TreeContext);
 
   const getA11Props = useAccessibility(accessibility, {
@@ -148,6 +169,11 @@ const TreeItem: React.FC<WithAsProp<TreeItemProps>> & FluentComponentStaticProps
 
         handleSiblingsExpand(e);
       },
+      performSelection: e => {
+        e.preventDefault();
+        e.stopPropagation();
+        handleSelection(e);
+      },
     },
     debugName: TreeItem.displayName,
     mapPropsToBehavior: () => ({
@@ -156,6 +182,9 @@ const TreeItem: React.FC<WithAsProp<TreeItemProps>> & FluentComponentStaticProps
       index,
       hasSubtree: hasSubtreeItem,
       treeSize,
+      selected,
+      selectable,
+      selectableParent,
     }),
     rtl: context.rtl,
   });
@@ -167,6 +196,11 @@ const TreeItem: React.FC<WithAsProp<TreeItemProps>> & FluentComponentStaticProps
     mapPropsToInlineStyles: () => ({ className, design, styles, variables }),
     rtl: context.rtl,
   });
+
+  const handleSelection = e => {
+    onTitleClick(e, props, true);
+    _.invoke(props, 'onTitleClick', e, props);
+  };
 
   const handleTitleClick = e => {
     onTitleClick(e, props);
@@ -193,11 +227,11 @@ const TreeItem: React.FC<WithAsProp<TreeItemProps>> & FluentComponentStaticProps
 
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(TreeItem.handledProps, props);
-
   const element = (
     <ElementType
       {...getA11Props('root', {
         className: classes.root,
+        selected,
         ...rtlTextContainer.getAttributes({ forElements: [children] }),
         ...unhandledProps,
       })}
@@ -207,12 +241,18 @@ const TreeItem: React.FC<WithAsProp<TreeItemProps>> & FluentComponentStaticProps
         : TreeTitle.create(title, {
             defaultProps: () =>
               getA11Props('title', {
-                expanded,
                 hasSubtree: hasSubtreeItem,
                 as: hasSubtreeItem ? 'span' : 'a',
                 level,
                 treeSize,
+                expanded,
                 index,
+                selected,
+                selectable,
+                ...(hasSubtreeItem && !selectableParent && { selectable: false }),
+                ...(selectableParent && { indeterminate }),
+                selectableParent,
+                selectionIndicator,
               }),
             render: renderItemTitle,
             overrideProps: handleTitleOverrides,
@@ -226,7 +266,6 @@ const TreeItem: React.FC<WithAsProp<TreeItemProps>> & FluentComponentStaticProps
   return elementWithRef;
 };
 
-TreeItem.deprecated_className = treeItemClassName;
 TreeItem.displayName = 'TreeItem';
 
 TreeItem.propTypes = {
@@ -247,6 +286,11 @@ TreeItem.propTypes = {
   renderItemTitle: PropTypes.func,
   treeSize: PropTypes.number,
   title: customPropTypes.itemShorthand,
+  selectionIndicator: customPropTypes.shorthandAllowingChildren,
+  selected: PropTypes.bool,
+  selectable: PropTypes.bool,
+  selectableParent: PropTypes.bool,
+  indeterminate: PropTypes.bool,
 };
 TreeItem.defaultProps = {
   accessibility: treeItemBehavior,

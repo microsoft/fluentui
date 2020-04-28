@@ -18,6 +18,7 @@ import {
   doesNodeContainClick,
   applyAccessibilityKeyHandlers,
   getOrGenerateIdFromShorthand,
+  createShorthand,
 } from '../../utils';
 import { ComponentEventHandler, WithAsProp, ShorthandValue, withSafeTypeForAs } from '../../types';
 import Button, { ButtonProps } from '../Button/Button';
@@ -119,8 +120,6 @@ export const dialogSlotClassNames: DialogSlotClassNames = {
 class Dialog extends AutoControlledComponent<WithAsProp<DialogProps>, DialogState> {
   static displayName = 'Dialog';
   static deprecated_className = dialogClassName;
-
-  static slotClassNames: DialogSlotClassNames;
 
   static propTypes = {
     ...commonPropTypes.createCommon({
@@ -297,10 +296,11 @@ class Dialog extends AutoControlledComponent<WithAsProp<DialogProps>, DialogStat
     } = this.props;
     const { open } = this.state;
 
-    const cancelElement = Button.create(cancelButton, {
+    const cancelElement = createShorthand(Button, cancelButton, {
       overrideProps: this.handleCancelButtonOverrides,
     });
-    const confirmElement = Button.create(confirmButton, {
+
+    const confirmElement = createShorthand(Button, confirmButton, {
       defaultProps: () => ({
         primary: true,
       }),
@@ -339,7 +339,7 @@ class Dialog extends AutoControlledComponent<WithAsProp<DialogProps>, DialogStat
               ...accessibility.attributes.header,
             }),
           })}
-          {Button.create(headerAction, {
+          {createShorthand(Button, headerAction, {
             defaultProps: () => ({
               className: dialogSlotClassNames.headerAction,
               styles: styles.headerAction,
@@ -414,8 +414,6 @@ class Dialog extends AutoControlledComponent<WithAsProp<DialogProps>, DialogStat
     );
   }
 }
-
-Dialog.slotClassNames = dialogSlotClassNames;
 
 /**
  * A Dialog displays important information on top of a page which requires a user's attention, confirmation, or interaction.

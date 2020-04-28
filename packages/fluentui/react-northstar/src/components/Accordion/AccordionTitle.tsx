@@ -16,6 +16,7 @@ import {
   rtlTextContainer,
   applyAccessibilityKeyHandlers,
   ShorthandFactory,
+  ShorthandConfig,
 } from '../../utils';
 import { WithAsProp, ComponentEventHandler, ShorthandValue, withSafeTypeForAs } from '../../types';
 import Box, { BoxProps } from '../Box/Box';
@@ -77,10 +78,11 @@ class AccordionTitle extends UIComponent<WithAsProp<AccordionTitleProps>, any> {
   static displayName = 'AccordionTitle';
 
   static create: ShorthandFactory<AccordionTitleProps>;
+  static shorthandConfig: ShorthandConfig<AccordionTitleProps> = {
+    mappedProp: 'content',
+  };
 
   static deprecated_className = accordionTitleClassName;
-
-  static slotClassNames: AccordionTitleSlotClassNames;
 
   static propTypes = {
     ...commonPropTypes.createCommon({ content: 'shorthand' }),
@@ -155,7 +157,6 @@ class AccordionTitle extends UIComponent<WithAsProp<AccordionTitleProps>, any> {
                 })}
                 {Box.create(content, {
                   defaultProps: () => ({
-                    as: 'span',
                     styles: styles.content,
                   }),
                 })}
@@ -182,8 +183,6 @@ class AccordionTitle extends UIComponent<WithAsProp<AccordionTitleProps>, any> {
 }
 
 AccordionTitle.create = createShorthandFactory({ Component: AccordionTitle, mappedProp: 'content' });
-
-AccordionTitle.slotClassNames = accordionTitleSlotClassNames;
 
 /**
  * An AccordionTitle represents the title of Accordion's item that can be interacted with to expand or collapse the item's content.

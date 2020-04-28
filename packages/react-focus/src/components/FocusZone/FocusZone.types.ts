@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { FocusZone } from './FocusZone';
-import { IRefObject, IPoint } from '@uifabric/utilities';
+import { IRefObject, Point } from '@uifabric/utilities';
 
 /**
  * FocusZone component class interface.
@@ -35,7 +35,7 @@ export interface IFocusZone {
    * than a center based on the last horizontal motion.
    * @param point - the new reference point.
    */
-  setFocusAlignment(point: IPoint): void;
+  setFocusAlignment(point: Point): void;
 }
 
 /**
@@ -153,6 +153,12 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
   handleTabKey?: FocusZoneTabbableElements;
 
   /**
+   * If true and TAB key is not handled by FocusZone, resets current active element to null value.
+   * For example, when roving index is not desirable and focus should always reset to the default tabbable element.
+   */
+  shouldResetActiveElementWhenTabFromZone?: boolean;
+
+  /**
    * A callback method to determine if the input element should lose focus on arrow keys
    *  @param inputElement - The input element which is to loose focus.
    *  @returns True if input element should loose focus or false otherwise.
@@ -175,6 +181,12 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
    * Callback to notify creators that focus has been set on the FocusZone
    */
   onFocusNotification?: () => void;
+
+  /**
+   * If true, FocusZone prevents the default behavior of Keyboard events when changing focus between elements.
+   * @defaultvalue true
+   */
+  preventDefaultWhenHandled?: boolean;
 }
 /**
  * {@docCategory FocusZone}

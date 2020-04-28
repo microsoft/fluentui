@@ -19,7 +19,7 @@ import { ComponentSlotStylesInput, ComponentVariablesInput } from '@fluentui/sty
 import Downshift, {
   DownshiftState,
   StateChangeOptions,
-  A11yStatusMessageOptions as DownshiftA11yStatusMessageOptions,
+  A11yStatusMessageOptions,
   GetMenuPropsOptions,
   GetPropsCommonOptions,
   GetInputPropsOptions,
@@ -32,6 +32,7 @@ import {
   commonPropTypes,
   UIComponentProps,
   isFromKeyboard,
+  createShorthand,
 } from '../../utils';
 import List, { ListProps } from '../List/List';
 import DropdownItem, { DropdownItemProps } from './DropdownItem';
@@ -49,6 +50,8 @@ import {
   PopperShorthandProps,
   getPopperPropsFromShorthand,
 } from '../../utils/positioner';
+
+export interface DownshiftA11yStatusMessageOptions<Item> extends Required<A11yStatusMessageOptions<Item>> {}
 
 export interface DropdownSlotClassNames {
   clearIndicator: string;
@@ -288,8 +291,6 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
   static a11yStatusCleanupTime = 500;
   static charKeyPressedCleanupTime = 500;
 
-  static slotClassNames: DropdownSlotClassNames;
-
   static propTypes = {
     ...commonPropTypes.createCommon({
       accessibility: false,
@@ -522,6 +523,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
                           className: dropdownSlotClassNames.clearIndicator,
                           styles: styles.clearIndicator,
                           accessibility: indicatorBehavior,
+                          ...(!search && { tabIndex: 0, role: 'button' }),
                         }),
                         overrideProps: (predefinedProps: BoxProps) => ({
                           onClick: (e: React.SyntheticEvent<HTMLElement>) => {
@@ -597,7 +599,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
 
     return (
       <Ref innerRef={this.buttonRef}>
-        {Button.create(triggerButton, {
+        {createShorthand(Button, triggerButton, {
           defaultProps: () => ({
             className: dropdownSlotClassNames.triggerButton,
             content,
@@ -912,14 +914,19 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
       case Downshift.stateChangeTypes.keyDownEnter:
       case Downshift.stateChangeTypes.clickItem:
         const shouldAddHighlightedIndex = !multiple && items && items.length > 0;
+        const isSameItemSelected = changes.selectedItem === undefined;
+        const newValue = isSameItemSelected ? value[0] : changes.selectedItem;
 
-        newState.searchQuery = this.getSelectedItemAsString(changes.selectedItem);
-        newState.value = multiple ? [...value, changes.selectedItem] : [changes.selectedItem];
+        newState.searchQuery = this.getSelectedItemAsString(newValue);
         newState.open = false;
-        newState.highlightedIndex = shouldAddHighlightedIndex ? items.indexOf(changes.selectedItem) : null;
+        newState.highlightedIndex = shouldAddHighlightedIndex ? items.indexOf(newValue) : null;
 
-        if (getA11ySelectionMessage && getA11ySelectionMessage.onAdd) {
-          this.setA11ySelectionMessage(getA11ySelectionMessage.onAdd(changes.selectedItem));
+        if (!isSameItemSelected) {
+          newState.value = multiple ? [...value, changes.selectedItem] : [changes.selectedItem];
+
+          if (getA11ySelectionMessage && getA11ySelectionMessage.onAdd) {
+            this.setA11ySelectionMessage(getA11ySelectionMessage.onAdd(newValue));
+          }
         }
 
         if (multiple) {
@@ -1527,8 +1534,6 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
     this.setState({ startingString: '' });
   }, Dropdown.charKeyPressedCleanupTime);
 }
-
-Dropdown.slotClassNames = dropdownSlotClassNames;
 
 /**
  * A Dropdown allows user to select one or more values from a list of options.

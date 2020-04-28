@@ -11,6 +11,7 @@ import {
   SizeValue,
   ShorthandFactory,
   getOrGenerateIdFromShorthand,
+  ShorthandConfig,
 } from '../../utils';
 import { WithAsProp, ShorthandValue, withSafeTypeForAs } from '../../types';
 import Box, { BoxProps } from '../Box/Box';
@@ -67,7 +68,7 @@ class Loader extends UIComponent<WithAsProp<LoaderProps>, LoaderState> {
   static create: ShorthandFactory<LoaderProps>;
   static displayName = 'Loader';
   static deprecated_className = loaderClassName;
-  static slotClassNames = loaderSlotClassNames;
+  static shorthandConfig: ShorthandConfig<LoaderProps>;
 
   static propTypes = {
     ...commonPropTypes.createCommon({
@@ -156,6 +157,7 @@ class Loader extends UIComponent<WithAsProp<LoaderProps>, LoaderState> {
 }
 
 Loader.create = createShorthandFactory({ Component: Loader, mappedProp: 'label' });
+Loader.shorthandConfig = { mappedProp: 'label' };
 
 /**
  * A Loader alerts a user to wait for an activity to complete.

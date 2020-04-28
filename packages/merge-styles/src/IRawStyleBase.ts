@@ -308,6 +308,12 @@ export interface IRawStyleBase extends IRawFontStyle {
   WebkitTapHighlightColor?: string;
 
   /**
+   * (Webkit specific) controls the text inflation algorithm used on some smartphones and tablets.
+   * Other browsers will ignore this property.
+   */
+  WebkitTextSizeAdjust?: 'none' | 'auto' | ICSSPercentageRule | ICSSRule;
+
+  /**
    * Aligns a flex container's lines within the flex container when there is extra space
    * in the cross-axis, similar to how justify-content aligns individual items within the main-axis.
    */
@@ -1833,6 +1839,12 @@ export interface IRawStyleBase extends IRawFontStyle {
    * text, along with optional color and blur radius values.
    */
   textShadow?: ICSSRule | string;
+
+  /**
+   * The text-size-adjust CSS property controls the text inflation algorithm used
+   * on some smartphones and tablets. Other browsers will ignore this property.
+   */
+  textSizeAdjust?: 'none' | 'auto' | ICSSPercentageRule | ICSSRule;
 
   /**
    * This property transforms text for styling purposes. (It has no effect on the

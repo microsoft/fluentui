@@ -1,8 +1,26 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Thu, 16 Apr 2020 04:01:45 GMT and should not be manually modified.
+This log was last generated on Mon, 20 Apr 2020 15:55:12 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.12.39](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.12.39)
+
+Mon, 20 Apr 2020 15:55:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.12.38..@uifabric/example-app-base_v7.12.39)
+
+### Patches
+
+- guard against window and location not being available ([PR #12769](https://github.com/microsoft/fluentui/pull/12769) by mgodbolt@microsoft.com)
+
+## [7.12.38](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.12.38)
+
+Sun, 19 Apr 2020 02:02:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.12.34..@uifabric/example-app-base_v7.12.38)
+
+### Patches
+
+- Doc site: disable live code editing until we have a fix for the OOM errors. ([PR #12776](https://github.com/microsoft/fluentui/pull/12776) by dzearing@microsoft.com)
 
 ## [7.12.34](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.12.34)
 

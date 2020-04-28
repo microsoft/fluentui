@@ -79,9 +79,7 @@ export const dropdownItemSlotClassNames: DropdownItemSlotClassNames = {
 };
 
 const DropdownItem: React.FC<WithAsProp<DropdownItemProps> & { index: number }> &
-  FluentComponentStaticProps<DropdownItemProps> & {
-    slotClassNames: DropdownItemSlotClassNames;
-  } = props => {
+  FluentComponentStaticProps<DropdownItemProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(DropdownItem.displayName, context.telemetry);
 
@@ -179,7 +177,6 @@ const DropdownItem: React.FC<WithAsProp<DropdownItemProps> & { index: number }> 
   return element;
 };
 
-DropdownItem.deprecated_className = dropdownItemClassName;
 DropdownItem.displayName = 'DropdownItem';
 
 DropdownItem.defaultProps = {
@@ -206,8 +203,6 @@ DropdownItem.propTypes = {
   selected: PropTypes.bool,
 };
 DropdownItem.handledProps = Object.keys(DropdownItem.propTypes) as any;
-
-DropdownItem.slotClassNames = dropdownItemSlotClassNames;
 
 DropdownItem.create = createShorthandFactory({ Component: DropdownItem, mappedProp: 'header' });
 

@@ -301,7 +301,7 @@ export const formProperties: string[];
 export function getChildren(parent: HTMLElement, allowVirtualChildren?: boolean): HTMLElement[];
 
 // @public
-export function getDistanceBetweenPoints(point1: IPoint, point2: IPoint): number;
+export function getDistanceBetweenPoints(point1: Point, point2: Point): number;
 
 // @public
 export function getDocument(rootElement?: HTMLElement | null): Document | undefined;
@@ -445,6 +445,7 @@ export type IClassNames<T> = {
 
 // @public (undocumented)
 export interface IClassNamesFunctionOptions {
+    cacheSize?: number;
     disableCaching?: boolean;
 }
 
@@ -627,12 +628,8 @@ export interface IPerfSummary {
     [key: string]: IPerfMeasurement;
 }
 
-// @public
-export interface IPoint {
-    // (undocumented)
-    x: number;
-    // (undocumented)
-    y: number;
+// @public @deprecated
+export interface IPoint extends Point {
 }
 
 // @public (undocumented)
@@ -972,10 +969,22 @@ export const olProperties: string[];
 export { Omit }
 
 // @public (undocumented)
-export function on(element: Element | Window, eventName: string, callback: (ev: Event | React.SyntheticEvent<Element, Event>) => void, options?: boolean): () => void;
+export function on(element: Element | Window, eventName: string, callback: (ev: Event) => void, options?: boolean): () => void;
 
 // @public (undocumented)
 export const optionProperties: string[];
+
+// @public
+export interface Point {
+    // (undocumented)
+    left?: number;
+    // (undocumented)
+    top?: number;
+    // @deprecated (undocumented)
+    x?: number;
+    // @deprecated (undocumented)
+    y?: number;
+}
 
 // @public
 export function portalContainsElement(target: HTMLElement, parent?: HTMLElement): boolean;

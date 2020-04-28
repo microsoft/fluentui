@@ -10,6 +10,7 @@ export default [
   'downshift@3.2.6',
   'downshift@3.2.10',
   'downshift@3.2.14',
+  'downshift@5.0.5',
   'fast-loops@1.0.1',
   'fast-memoize@2.5.1',
   'fbjs@0.8.17',

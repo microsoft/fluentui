@@ -1,4 +1,12 @@
-import { getElementType, useUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import {
+  compose,
+  ComponentWithAs,
+  getElementType,
+  useUnhandledProps,
+  useAccessibility,
+  useStyles,
+  useTelemetry,
+} from '@fluentui/react-bindings';
 import { Accessibility } from '@fluentui/accessibility';
 import * as React from 'react';
 // @ts-ignore
@@ -12,70 +20,75 @@ import {
   commonPropTypes,
   rtlTextContainer,
   UIComponentProps,
+  ShorthandFactory,
 } from '../../utils';
-import { ProviderContextPrepared, WithAsProp, withSafeTypeForAs, FluentComponentStaticProps } from '../../types';
+import { ProviderContextPrepared } from '../../types';
 
 export interface BoxProps extends UIComponentProps<BoxProps>, ContentComponentProps, ChildrenComponentProps {
   /** Accessibility behavior if overridden by the user. */
   accessibility?: Accessibility<never>;
 }
-
 export type BoxStylesProps = never;
+
 export const boxClassName = 'ui-box';
-
-const Box: React.FC<WithAsProp<BoxProps>> & FluentComponentStaticProps<BoxProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
-  const { setStart, setEnd } = useTelemetry(Box.displayName, context.telemetry);
-  setStart();
-
-  const { accessibility, className, design, styles, variables, children, content } = props;
-
-  const getA11Props = useAccessibility(accessibility, {
-    debugName: Box.displayName,
-    rtl: context.rtl,
-  });
-
-  const { classes } = useStyles<BoxStylesProps>(Box.displayName, {
-    className: boxClassName,
-    mapPropsToInlineStyles: () => ({
-      className,
-      design,
-      styles,
-      variables,
-    }),
-    rtl: context.rtl,
-  });
-
-  const unhandledProps = useUnhandledProps(Box.handledProps, props);
-  const ElementType = getElementType(props);
-
-  const result = (
-    <ElementType
-      {...getA11Props('root', {
-        ...rtlTextContainer.getAttributes({ forElements: [children, content] }),
-        className: classes.root,
-        ...unhandledProps,
-      })}
-    >
-      {childrenExist(children) ? children : content}
-    </ElementType>
-  );
-
-  setEnd();
-
-  return result;
-};
-
-Box.deprecated_className = boxClassName;
-Box.displayName = 'Box';
-
-Box.propTypes = commonPropTypes.createCommon();
-Box.handledProps = Object.keys(Box.propTypes) as any;
-
-Box.create = createShorthandFactory({ Component: Box });
 
 /**
  * A Box is a basic component, commonly used for slots in other Fluent UI components.
  * By default it just renders a `div`.
  */
-export default withSafeTypeForAs<typeof Box, BoxProps>(Box);
+const Box = compose<'div', BoxProps, BoxStylesProps, {}, {}>(
+  (props, ref, composeOptions) => {
+    const context: ProviderContextPrepared = React.useContext(ThemeContext);
+    const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
+    setStart();
+
+    const { accessibility, className, design, styles, variables, children, content } = props;
+
+    const getA11yProps = useAccessibility(accessibility, {
+      debugName: composeOptions.displayName,
+      rtl: context.rtl,
+    });
+    const { classes } = useStyles<BoxStylesProps>(composeOptions.displayName, {
+      className: composeOptions.className,
+      composeOptions,
+      mapPropsToInlineStyles: () => ({
+        className,
+        design,
+        styles,
+        variables,
+      }),
+      rtl: context.rtl,
+      unstable_props: props,
+    });
+
+    const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
+    const ElementType = getElementType(props);
+
+    const result = (
+      <ElementType
+        {...getA11yProps('root', {
+          ...rtlTextContainer.getAttributes({ forElements: [children, content] }),
+          className: classes.root,
+          ref,
+          ...unhandledProps,
+        })}
+      >
+        {childrenExist(children) ? children : content}
+      </ElementType>
+    );
+
+    setEnd();
+
+    return result;
+  },
+  {
+    className: boxClassName,
+    displayName: 'Box',
+    handledProps: ['accessibility', 'as', 'className', 'children', 'content', 'design', 'styles', 'variables'],
+  },
+) as ComponentWithAs<'div', BoxProps> & { create: ShorthandFactory<BoxProps> };
+
+Box.propTypes = commonPropTypes.createCommon();
+Box.create = createShorthandFactory({ Component: Box });
+
+export default Box;

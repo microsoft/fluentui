@@ -55,7 +55,6 @@ const webpackConfig: webpack.Configuration = {
     extensions: ['.ts', '.tsx', '.js', '.json'],
     alias: {
       ...lernaAliases(),
-      docs: paths.docs(),
       src: paths.packageSrc('react-northstar'),
 
       // We are using React in production mode with tracing.
