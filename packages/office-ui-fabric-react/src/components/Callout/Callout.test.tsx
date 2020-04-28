@@ -175,8 +175,7 @@ describe('Callout', () => {
       ReactDOM.render<HTMLDivElement>(
         <div>
           <button id="target" style={{ top: '10px', left: '10px', height: '0', width: '0px' }}>
-            {' '}
-            target{' '}
+target
           </button>
           <Callout target="#target" directionalHint={DirectionalHint.topLeftEdge} onRestoreFocus={onRestoreFocus}>
             {/* must be a button to be focusable for the test*/}
