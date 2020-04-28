@@ -10,7 +10,7 @@ export interface StylesheetContextType {
 }
 
 /**
- * Default registration function for stylesheets.
+ * Default registerStyles function for stylesheets.
  */
 export const registerStyles = (stylesheets: string[], context: StylesheetContextType) => {
   const { styleCache, target } = context;
@@ -30,14 +30,16 @@ export const registerStyles = (stylesheets: string[], context: StylesheetContext
     }
   }
 
-  // If there is no target, call renderSheets immediately.
-  if (!target) {
+  // If there is no target, call renderStyles immediately, expecting that there is no.
+  const isSSR = !target;
+
+  if (isSSR) {
     renderStyles(context.enqueuedSheets, context);
   }
 };
 
 /**
- * Default renderSheets implementation, which will render the give sheets to the contextual
+ * Default renderStyles implementation, which will render the give sheets to the contextual
  * target.
  */
 const renderStyles = (sheets: string[], context: StylesheetContextType) => {
