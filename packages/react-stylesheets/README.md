@@ -96,7 +96,7 @@ getPage = () => {
 ### Order of stylesheet registration
 
 Typical webpack `style-loader` style registration approach would dictate that styles would be
-registered in module import order. This means leaf node end up registering styles first, then root elements.
+registered in module import order. This means leaf nodes end up registering styles first, then root elements.
 
 Because React renders components root to child, stylesheet ordering gets reversed.
 
