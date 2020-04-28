@@ -5,7 +5,6 @@ import prettier from 'prettier';
 import through from 'through2';
 import Vinyl from 'vinyl';
 
-import { ExampleSource } from './util/docs-types';
 import transformStarImportPlugin from '../../babel/transform-star-import-plugin';
 import { getRelativePathToSourceFile } from './util';
 
@@ -16,7 +15,7 @@ const ESLint = new CLIEngine({
 });
 const pluginName = 'gulp-example-source';
 
-const createExampleSourceCode = (file: Vinyl): ExampleSource => {
+const createExampleSourceCode = (file: Vinyl): { js: string; ts: string } => {
   const tsSource = file.contents.toString();
 
   const babelResult = Babel.transform(tsSource, {

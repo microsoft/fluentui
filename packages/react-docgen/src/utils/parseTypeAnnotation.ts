@@ -1,7 +1,7 @@
 import * as t from '@babel/types';
-import _ from 'lodash';
+import * as _ from 'lodash';
 
-import { ComponentPropType } from './docs-types';
+import { ComponentPropType } from '@fluentui/react-docgen-types';
 
 const keywords: Record<string, Function> = {
   any: t.isTSAnyKeyword,
@@ -13,7 +13,7 @@ const keywords: Record<string, Function> = {
   string: t.isTSStringKeyword,
 };
 
-const parseTypeAnnotation = (propName: string, propType: string, tsType: t.TSType): ComponentPropType[] => {
+export function parseTypeAnnotation(propName: string, propType: string, tsType: t.TSType): ComponentPropType[] {
   if (t.isTSParenthesizedType(tsType)) {
     return parseTypeAnnotation(propName, propType, tsType.typeAnnotation);
   }
@@ -75,6 +75,6 @@ const parseTypeAnnotation = (propName: string, propType: string, tsType: t.TSTyp
   }
 
   throw new Error(`A prop "${propName}" has unsupported type definition: ${propType}`);
-};
+}
 
 export default parseTypeAnnotation;

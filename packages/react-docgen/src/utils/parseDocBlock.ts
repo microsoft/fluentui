@@ -1,6 +1,7 @@
 import * as doctrine from 'doctrine';
+import { DocBlock } from '@fluentui/react-docgen-types';
 
-const parseDocblock = (docblock: string) => {
+export function parseDocBlock(docblock: string): DocBlock {
   const { description = '', tags = [], ...rest } = doctrine.parse(docblock || '', { unwrap: true });
 
   return {
@@ -8,6 +9,4 @@ const parseDocblock = (docblock: string) => {
     description,
     tags,
   };
-};
-
-export default parseDocblock;
+}

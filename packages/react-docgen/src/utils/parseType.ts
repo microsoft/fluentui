@@ -1,14 +1,14 @@
 import * as Babel from '@babel/core';
 import { NodePath } from '@babel/traverse';
 import * as t from '@babel/types';
-import _ from 'lodash';
+import * as _ from 'lodash';
 
-import { ComponentPropType } from './docs-types';
+import { ComponentPropType } from '@fluentui/react-docgen-types';
 import { PropItem } from './docgen';
 import parseTypeAnnotation from './parseTypeAnnotation';
 
 /** Performs transform: `ShorthandValue<T & { kind?: N }>` to `ShorthandCollection<T, N>[]`. */
-const normalizeShorthandCollection = (propType: string): string => {
+function normalizeShorthandCollection(propType: string): string {
   const regex = /ShorthandValue<(.+) & { kind\?: (.+); }>\[]$/;
   const result = regex.exec(propType);
 
@@ -17,21 +17,21 @@ const normalizeShorthandCollection = (propType: string): string => {
   }
 
   return propType;
-};
+}
 
-const normalizeType = (propType: string): string => {
+function normalizeType(propType: string): string {
   _.reduce(
     [normalizeShorthandCollection],
-    (propType, normalizer): string => {
-      return normalizer(propType);
+    (pt, normalizer): string => {
+      return normalizer(pt);
     },
     propType,
   );
 
   return normalizeShorthandCollection(propType);
-};
+}
 
-const getTypeFromBabelTree = (componentFile: t.File, componentName: string, propName: string) => {
+function getTypeFromBabelTree(componentFile: t.File, componentName: string, propName: string): t.TSType | undefined {
   let typeAnnotation: t.TSType | undefined;
 
   const propertyVisitor: Babel.Visitor = {
@@ -53,14 +53,14 @@ const getTypeFromBabelTree = (componentFile: t.File, componentName: string, prop
   });
 
   return typeAnnotation;
-};
+}
 
-const parseType = (
+export function parseType(
   componentFile: t.File,
   componentName: string,
   propName: string,
   propInfo: PropItem,
-): ComponentPropType[] => {
+): ComponentPropType[] {
   const propType = normalizeType(propInfo.type.name);
 
   let typeAnnotation: t.TSType | undefined;
@@ -84,6 +84,4 @@ const parseType = (
   }
 
   return typeAnnotation ? parseTypeAnnotation(propName, propType, typeAnnotation) : [];
-};
-
-export default parseType;
+}

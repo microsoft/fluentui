@@ -1,21 +1,19 @@
-import fs from 'fs';
-import path from 'path';
-import ts from 'typescript';
+import * as path from 'path';
+import * as ts from 'typescript';
+import { parseTsconfig } from './parseTsconfig';
 
 /**
  * THIS MODULE is largely based on the parser's logic
  * of react-docgen-typescript library: https://github.com/styleguidist/react-docgen-typescript/blob/master/src/parser.ts
  *
  * All the essential parts are moved from there with the following changes applied:
- * - removed support for component methods pasing
+ * - removed support for component methods parsing
  * - extended support for intersection component types
  *
- * The last one served as the main driver for making this split,
- * as, otherwise, there was no possibility to extend component types
- * with static 'create' factory method.
+ * The last one served as the main driver for making this split, as, otherwise, there was no
+ * possibility to extend component types with static 'create' factory method.
  *
- * This is a reference to the corresponding issue of react-docgen-typescript
- * that haven't been resolved at time this module was introduced:
+ * This is a reference to the corresponding issue which hasn't been resolved as of writing:
  * https://github.com/styleguidist/react-docgen-typescript/issues/158
  */
 
@@ -40,7 +38,7 @@ export interface PropItem {
   required: boolean;
   type: PropItemType;
   description: string;
-  defaultValue: any;
+  defaultValue: any; // tslint:disable-line:no-any
   parent?: ParentType;
 }
 
@@ -50,7 +48,7 @@ export interface Component {
 
 export interface PropItemType {
   name: string;
-  value?: any;
+  value?: any; // tslint:disable-line:no-any
 }
 
 export interface ParentType {
@@ -61,6 +59,8 @@ export interface ParentType {
 export type PropFilter = (props: PropItem, component: Component) => boolean;
 
 export type ComponentNameResolver = (exp: ts.Symbol, source: ts.SourceFile) => string | undefined | null | false;
+
+export type ProgramProvider = () => ts.Program;
 
 export interface ParserOptions {
   propFilter?: StaticPropFilter | PropFilter;
@@ -76,7 +76,7 @@ export const defaultParserOpts: ParserOptions = {};
 
 export interface FileParser {
   parse(filePathOrPaths: string | string[]): ComponentDoc[];
-  parseWithProgramProvider(filePathOrPaths: string | string[], programProvider?: () => ts.Program): ComponentDoc[];
+  parseWithProgramProvider(filePathOrPaths: string | string[], programProvider?: ProgramProvider): ComponentDoc[];
 }
 
 const defaultOptions: ts.CompilerOptions = {
@@ -118,20 +118,7 @@ export function withDefaultConfig(parserOpts: ParserOptions = defaultParserOpts)
  * Constructs a parser for a specified tsconfig file.
  */
 export function withCustomConfig(tsconfigPath: string, parserOpts: ParserOptions): FileParser {
-  const basePath = path.dirname(tsconfigPath);
-  const { config, error } = ts.readConfigFile(tsconfigPath, filename => fs.readFileSync(filename, 'utf8'));
-
-  if (error !== undefined) {
-    const errorText = `Cannot load custom tsconfig.json from provided path: ${tsconfigPath}, with error code: ${error.code}, message: ${error.messageText}`;
-    throw new Error(errorText);
-  }
-
-  const { options, errors } = ts.parseJsonConfigFileContent(config, ts.sys, basePath, {}, tsconfigPath);
-
-  if (errors && errors.length) {
-    throw errors[0];
-  }
-
+  const options = parseTsconfig(tsconfigPath);
   return withCompilerOptions(options, parserOpts);
 }
 
@@ -164,15 +151,15 @@ const defaultJSDoc: JSDoc = {
   tags: {},
 };
 
-const defaultPropFilter = (prop, component) => {
+function defaultPropFilter(prop: PropItem) {
   // skip children property in case it has no custom documentation
   if (prop.name === 'children' && prop.description.length === 0) {
     return false;
   }
   return true;
-};
+}
 
-const getComponentSymbolOfType = (type: MaybeIntersectType) => {
+function getComponentSymbolOfType(type: MaybeIntersectType): ts.Symbol | undefined {
   if (type.symbol) {
     const symbolName = type.symbol.getName();
     if (reactComponentSymbolNames.indexOf(symbolName) !== -1) {
@@ -188,7 +175,7 @@ const getComponentSymbolOfType = (type: MaybeIntersectType) => {
       }
     }
   }
-};
+}
 
 export class Parser {
   private checker: ts.TypeChecker;
@@ -339,7 +326,7 @@ export class Parser {
 
       const jsDocComment = this.findDocComment(prop);
 
-      let defaultValue: any = null;
+      let defaultValue: any = null; // tslint:disable-line:no-any
 
       if (defaultProps[propName] !== undefined) {
         defaultValue = { value: defaultProps[propName] };
@@ -671,6 +658,7 @@ export function getDefaultExportForFile(source: ts.SourceFile) {
 function getParentType(prop: ts.Symbol): ParentType | undefined {
   const declarations = prop.getDeclarations();
 
+  // tslint:disable-next-line:triple-equals
   if (declarations == null || declarations.length === 0) {
     return undefined;
   }
@@ -715,7 +703,7 @@ function parseWithProgramProvider(
   filePathOrPaths: string | string[],
   compilerOptions: ts.CompilerOptions,
   parserOpts: ParserOptions,
-  programProvider?: () => ts.Program,
+  programProvider?: ProgramProvider,
 ): ComponentDoc[] {
   const filePaths = Array.isArray(filePathOrPaths) ? filePathOrPaths : [filePathOrPaths];
 

@@ -1,12 +1,14 @@
-import _ from 'lodash';
+import * as _ from 'lodash';
 import * as React from 'react';
 
-import { ComponentPropType } from './docs-types';
+import { ComponentPropType } from '@fluentui/react-docgen-types';
 import { PropItem } from './docgen';
 
-const parseDefaultValue = (Component: React.ComponentType, propDef: PropItem, types: ComponentPropType[]) => {
-  if (Component.defaultProps && _.has(Component.defaultProps, propDef.name)) {
-    const defaultValue = Component.defaultProps[propDef.name];
+export function parseDefaultValue(Component: React.ComponentType, propDef: PropItem, types: ComponentPropType[]) {
+  // tslint:disable:no-any
+  if (Component.defaultProps && (Component.defaultProps as any)[propDef.name]) {
+    const defaultValue = (Component.defaultProps as any)[propDef.name];
+    // tslint:enable:no-any
 
     if (_.isFunction(defaultValue)) {
       return defaultValue.name;
@@ -36,6 +38,4 @@ const parseDefaultValue = (Component: React.ComponentType, propDef: PropItem, ty
   }
 
   return undefined;
-};
-
-export default parseDefaultValue;
+}

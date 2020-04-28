@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "outDir": "lib",
+    "target": "ES2018", // Node 10
+    "lib": ["ES2018"],
+    "module": "commonjs",
+    "isolatedModules": true,
+    "jsx": "react",
+    "declaration": true,
+    "sourceMap": true,
+    "importHelpers": false,
+    "noUnusedLocals": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "moduleResolution": "node",
+    "types": ["node"],
+    "composite": true
+  },
+  "include": ["src"]
+}

@@ -4,14 +4,19 @@ import _ from 'lodash';
 import path from 'path';
 import fs from 'fs';
 
-import { BehaviorInfo, ComponentInfo, ComponentProp } from './docs-types';
-import * as docgen from './docgen';
-import parseDefaultValue from './parseDefaultValue';
-import parseDocblock from './parseDocblock';
-import parseType from './parseType';
-import getShorthandInfo from './getShorthandInfo';
+//
+// THIS FILE IS GOING AWAY ASAP!
+// ALL DEEP IMPORTS AND TYPE REMOVAL ARE TEMPORARY!
+//
 
-const getAvailableBehaviors = (accessibilityProp: ComponentProp | undefined): BehaviorInfo[] | undefined => {
+import { ComponentProp } from '@fluentui/react-docgen-types';
+import * as docgen from '@fluentui/react-docgen/src/utils/docgen';
+import { parseDefaultValue } from '@fluentui/react-docgen/src/utils/parseDefaultValue';
+import { parseDocBlock } from '@fluentui/react-docgen/src/utils/parseDocBlock';
+import { parseType } from '@fluentui/react-docgen/src/utils/parseType';
+import { getMappedShorthandProp } from '@fluentui/react-docgen/src/utils/getMappedShorthandProp';
+
+const getAvailableBehaviors = (accessibilityProp: ComponentProp | undefined) => {
   const docTags = accessibilityProp && accessibilityProp.tags;
   const availableTag = _.find(docTags, { title: 'available' });
   const availableBehaviorNames = _.get(availableTag, 'description', '');
@@ -30,7 +35,8 @@ const getAvailableBehaviors = (accessibilityProp: ComponentProp | undefined): Be
     }));
 };
 
-const getComponentInfo = (tsConfigPath: string, filepath: string, ignoredParentInterfaces: string[]): ComponentInfo => {
+// TEMPORARY any (this file is going away)
+const getComponentInfo = (tsConfigPath: string, filepath: string, ignoredParentInterfaces: string[]): any => {
   const absPath = path.resolve(process.cwd(), filepath);
 
   const dir = path.dirname(absPath);
@@ -40,7 +46,7 @@ const getComponentInfo = (tsConfigPath: string, filepath: string, ignoredParentI
 
   // singular form of the component's ../../ directory
   // "element" for "src/elements/Button/Button.js"
-  const componentType = path.basename(path.dirname(dir)).replace(/s$/, '') as ComponentInfo['type'];
+  const componentType = path.basename(path.dirname(dir)).replace(/s$/, '');
 
   const components = docgen.withCustomConfig(tsConfigPath, {}).parse(absPath);
 
@@ -112,7 +118,7 @@ const getComponentInfo = (tsConfigPath: string, filepath: string, ignoredParentI
   ).toLowerCase();
 
   // replace the component.description string with a parsed docblock object
-  const docblock = parseDocblock(info.description);
+  const docblock = parseDocBlock(info.description);
 
   // file and path info
   const repoPath = absPath
@@ -122,7 +128,7 @@ const getComponentInfo = (tsConfigPath: string, filepath: string, ignoredParentI
   let props: ComponentProp[] = [];
 
   _.forEach(info.props, (propDef: docgen.PropItem, propName: string) => {
-    const { description, tags } = parseDocblock(propDef.description);
+    const { description, tags } = parseDocBlock(propDef.description);
     const parentInterface = _.get(propDef, 'parent.name');
 
     // `propDef.parent` should be defined to avoid insertion of computed props
@@ -140,7 +146,7 @@ const getComponentInfo = (tsConfigPath: string, filepath: string, ignoredParentI
         types,
         name: propName,
         required: propDef.required,
-      });
+      } as any);
     }
   });
 
@@ -162,8 +168,11 @@ const getComponentInfo = (tsConfigPath: string, filepath: string, ignoredParentI
   // available behaviors
   const behaviors = getAvailableBehaviors(_.find(props, { name: 'accessibility' }));
 
+  const mappedShorthandProp = getMappedShorthandProp(componentFile, info.displayName);
+
   return {
-    ...getShorthandInfo(componentFile, info.displayName),
+    mappedShorthandProp,
+    implementsCreateShorthand: !!mappedShorthandProp,
     apiPath,
     behaviors,
     componentClassName,
