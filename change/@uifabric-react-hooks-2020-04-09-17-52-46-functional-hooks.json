@@ -1,9 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Add new hooks used in migrating Fabric components to functional components",
-  "packageName": "@uifabric/react-hooks",
-  "email": "miclo@microsoft.com",
-  "commit": "42e75e0c956a1d2afb40f0cb0147c31156ea3ae0",
-  "dependentChangeType": "patch",
-  "date": "2020-04-09T17:52:46.940Z"
-}
