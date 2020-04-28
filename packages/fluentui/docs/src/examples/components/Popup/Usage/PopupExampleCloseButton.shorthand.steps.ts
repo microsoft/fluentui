@@ -1,9 +1,9 @@
-import { Dropdown, Button } from '@fluentui/react-northstar';
+import { dropdownSlotClassNames, buttonClassName } from '@fluentui/react-northstar';
 
 const selectors = {
-  toggleIndicator: `.${Dropdown.slotClassNames.toggleIndicator}`,
-  item: (itemIndex: number) => `.${Dropdown.slotClassNames.itemsList} li:nth-child(${itemIndex})`,
-  popupTrigger: `.${Button.deprecated_className}`,
+  toggleIndicator: `.${dropdownSlotClassNames.toggleIndicator}`,
+  item: (itemIndex: number) => `.${dropdownSlotClassNames.itemsList} li:nth-child(${itemIndex})`,
+  popupTrigger: `.${buttonClassName}`,
 };
 
 const config: ScreenerTestsConfig = {

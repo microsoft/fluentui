@@ -1,6 +1,9 @@
 import { unstable_createAnimationStyles as createAnimationStyles } from '@fluentui/react-bindings';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import AlertDismissAction, { AlertDismissActionStylesProps } from '../../../../components/Alert/AlertDismissAction';
+import {
+  AlertDismissActionStylesProps,
+  alertDismissActionSlotClassNames,
+} from '../../../../components/Alert/AlertDismissAction';
 import { AlertVariables } from './alertVariables';
 import getBorderFocusStyles from '../../getBorderFocusStyles';
 import getIconFillOrOutlineStyles from '../../getIconFillOrOutlineStyles';
@@ -52,7 +55,7 @@ const alertDismissActionStyles: ComponentSlotStylesPrepared<AlertDismissActionSt
       ...getIconFillOrOutlineStyles({ outline: true }),
 
       ...(!p.hasContent && {
-        [`& .${AlertDismissAction.slotClassNames.content}`]: {
+        [`& .${alertDismissActionSlotClassNames.content}`]: {
           ...getIndicatorStyles(dismissActionIndicatorColor, true, v.dismissActionIndicatorSize),
         },
       }),
@@ -63,7 +66,7 @@ const alertDismissActionStyles: ComponentSlotStylesPrepared<AlertDismissActionSt
         ...getIconFillOrOutlineStyles({ outline: false }),
 
         ...(!p.hasContent && {
-          [`& .${AlertDismissAction.slotClassNames.content}`]: {
+          [`& .${alertDismissActionSlotClassNames.content}`]: {
             ...getIndicatorStyles(dismissActionIndicatorColor, false, v.dismissActionIndicatorSize),
           },
         }),
@@ -97,7 +100,7 @@ const alertDismissActionStyles: ComponentSlotStylesPrepared<AlertDismissActionSt
         ...getIconFillOrOutlineStyles({ outline: false }),
 
         ...(!p.hasContent && {
-          [`& .${AlertDismissAction.slotClassNames.content}`]: {
+          [`& .${alertDismissActionSlotClassNames.content}`]: {
             ...getIndicatorStyles(dismissActionIndicatorColor, false, v.dismissActionIndicatorSize),
           },
         }),

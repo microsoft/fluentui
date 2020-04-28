@@ -1,7 +1,7 @@
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import { svgIconClassName } from '@fluentui/react-icons-northstar';
 
 import { AttachmentActionStylesProps } from '../../../../components/Attachment/AttachmentAction';
-import SvgIcon from '../../../../components/SvgIcon/SvgIcon';
 import getIconFillOrOutlineStyles from '../../getIconFillOrOutlineStyles';
 import getBorderFocusStyles from '../../getBorderFocusStyles';
 import { AttachmentActionVariables } from './attachmentActionVariables';
@@ -15,7 +15,7 @@ const attachmentActionStyles: ComponentSlotStylesPrepared<AttachmentActionStyles
     });
 
     return {
-      [`& .${SvgIcon.deprecated_className}`]: {
+      [`& .${svgIconClassName}`]: {
         color: v.textColor, // this breaks the color change on hover
       },
 

@@ -11,6 +11,7 @@ import {
   SizeValue,
   ShorthandFactory,
   getOrGenerateIdFromShorthand,
+  ShorthandConfig,
 } from '../../utils';
 import { WithAsProp, ShorthandValue, withSafeTypeForAs } from '../../types';
 import Box, { BoxProps } from '../Box/Box';
@@ -53,18 +54,21 @@ export interface LoaderState {
   labelId: string;
 }
 
+export const loaderClassName = 'ui-loader';
+export const loaderSlotClassNames: LoaderSlotClassNames = {
+  indicator: `${loaderClassName}__indicator`,
+  label: `${loaderClassName}__label`,
+  svg: `${loaderClassName}__svg`,
+};
+
 /**
  * A loader alerts a user that content is being loaded or processed and they should wait for the activity to complete.
  */
 class Loader extends UIComponent<WithAsProp<LoaderProps>, LoaderState> {
   static create: ShorthandFactory<LoaderProps>;
   static displayName = 'Loader';
-  static deprecated_className = 'ui-loader';
-  static slotClassNames: LoaderSlotClassNames = {
-    indicator: `${Loader.deprecated_className}__indicator`,
-    label: `${Loader.deprecated_className}__label`,
-    svg: `${Loader.deprecated_className}__svg`,
-  };
+  static deprecated_className = loaderClassName;
+  static shorthandConfig: ShorthandConfig<LoaderProps>;
 
   static propTypes = {
     ...commonPropTypes.createCommon({
@@ -126,7 +130,7 @@ class Loader extends UIComponent<WithAsProp<LoaderProps>, LoaderState> {
     const { visible, labelId } = this.state;
 
     const svgElement = Box.create(svg, {
-      defaultProps: () => ({ className: Loader.slotClassNames.svg, styles: styles.svg }),
+      defaultProps: () => ({ className: loaderSlotClassNames.svg, styles: styles.svg }),
     });
 
     return (
@@ -135,13 +139,13 @@ class Loader extends UIComponent<WithAsProp<LoaderProps>, LoaderState> {
           {Box.create(indicator, {
             defaultProps: () => ({
               children: svgElement,
-              className: Loader.slotClassNames.indicator,
+              className: loaderSlotClassNames.indicator,
               styles: styles.indicator,
             }),
           })}
           {Text.create(label, {
             defaultProps: () => ({
-              className: Loader.slotClassNames.label,
+              className: loaderSlotClassNames.label,
               styles: styles.label,
               id: labelId,
             }),
@@ -153,6 +157,7 @@ class Loader extends UIComponent<WithAsProp<LoaderProps>, LoaderState> {
 }
 
 Loader.create = createShorthandFactory({ Component: Loader, mappedProp: 'label' });
+Loader.shorthandConfig = { mappedProp: 'label' };
 
 /**
  * A Loader alerts a user to wait for an activity to complete.

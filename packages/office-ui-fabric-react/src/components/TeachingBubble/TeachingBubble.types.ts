@@ -8,6 +8,7 @@ import { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
 import { ICalloutProps, ICalloutContentStyleProps, Target } from '../../Callout';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import { IFocusTrapZoneProps } from '../FocusTrapZone/index';
 
 /**
  * {@docCategory TeachingBubble}
@@ -44,6 +45,11 @@ export interface ITeachingBubbleProps
    * Properties to pass through for Callout, reference detail properties in ICalloutProps
    */
   calloutProps?: ICalloutProps;
+
+  /**
+   * Properties to pass through for FocusTrapZone, reference detail properties in IFocusTrapZoneProps
+   */
+  focusTrapZoneProps?: IFocusTrapZoneProps;
 
   /**
    * A headline for the Teaching Bubble.

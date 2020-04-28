@@ -1,5 +1,5 @@
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import Checkbox, { CheckboxStylesProps } from '../../../../components/Checkbox/Checkbox';
+import { CheckboxStylesProps, checkboxSlotClassNames } from '../../../../components/Checkbox/Checkbox';
 import { CheckboxVariables } from './checkboxVariables';
 import getBorderFocusStyles from '../../getBorderFocusStyles';
 import checkboxIndicatorUrl from './checkboxIndicatorUrl';
@@ -41,7 +41,7 @@ const checkboxStyles: ComponentSlotStylesPrepared<CheckboxStylesProps, CheckboxV
     ':hover': {
       color: v.textColorHover,
 
-      [`& .${Checkbox.slotClassNames.indicator}`]: {
+      [`& .${checkboxSlotClassNames.indicator}`]: {
         ...(!p.toggle && {
           ...(p.checked && {
             borderColor: v.checkedBackgroundHover,

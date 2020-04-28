@@ -2,6 +2,56 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Wed, 22 Apr 2020 12:33:04 GMT",
+      "tag": "@uifabric/experiments_v7.23.9",
+      "version": "7.23.9",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix incorrect aria-colindex values in TilesList",
+            "author": "tmichon@microsoft.com",
+            "commit": "8578ee792752b16633eca2194dc7f80e60112c55",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Apr 2020 04:01:45 GMT",
+      "tag": "@uifabric/experiments_v7.23.2",
+      "version": "7.23.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Readme: Remove graduation details; Fabric=>Fluent wording updates",
+            "author": "elcraig@microsoft.com",
+            "commit": "9e3c7c7d4b92e132820cdbcd61a667829c712ecb",
+            "package": "@uifabric/experiments"
+          },
+          {
+            "comment": "removing more references to wrong filetype icons from a deprecated folder",
+            "author": "caperez@microsoft.com",
+            "commit": "c847450db51500f13847542b8f4c89dd277bb2bb",
+            "package": "@uifabric/experiments"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Minor prettier changes.",
+            "author": "dzearing@microsoft.com",
+            "commit": "447b9dee90b3533e69416939bc841db3feef1e6f",
+            "package": "@uifabric/experiments"
+          },
+          {
+            "comment": "sync package version",
+            "author": "xgao@microsoft.com",
+            "commit": "6f39958352207acb3029458503db0969a4359806",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 09 Apr 2020 12:24:31 GMT",
       "tag": "@uifabric/experiments_v7.23.0",
       "version": "7.23.0",

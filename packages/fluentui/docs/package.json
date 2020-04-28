@@ -38,6 +38,8 @@
   },
   "scripts": {
     "build": "gulp build:docs",
+    "lint": "eslint --ext .js,.ts,.tsx .",
+    "lint:fix": "yarn lint --fix",
     "start": "gulp docs"
   }
 }

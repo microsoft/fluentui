@@ -1,6 +1,7 @@
 import { Accessibility } from '../../types';
 import tableCellBehavior from './tableCellBehavior';
 import tableHeaderCellBehavior from './tableHeaderCellBehavior';
+import { GridRowBehaviorProps } from './gridRowBehavior';
 
 /**
  * @description
@@ -8,7 +9,7 @@ import tableHeaderCellBehavior from './tableHeaderCellBehavior';
  * @specification
  * Adds role='row'.
  */
-const tableRowBehavior: Accessibility = props => ({
+const tableRowBehavior: Accessibility<GridRowBehaviorProps> = props => ({
   attributes: {
     root: {
       role: 'row',
