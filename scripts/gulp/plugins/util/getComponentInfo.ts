@@ -9,7 +9,7 @@ import fs from 'fs';
 // ALL DEEP IMPORTS AND TYPE REMOVAL ARE TEMPORARY!
 //
 
-import { ComponentProp } from '@fluentui/react-docgen-types';
+import { ComponentProp } from '@fluentui/react-docgen';
 import * as docgen from '@fluentui/react-docgen/src/utils/docgen';
 import { parseDefaultValue } from '@fluentui/react-docgen/src/utils/parseDefaultValue';
 import { parseDocBlock } from '@fluentui/react-docgen/src/utils/parseDocBlock';

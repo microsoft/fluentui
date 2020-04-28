@@ -1,4 +1,4 @@
-import { FluentApiPathInfo } from '@fluentui/react-docgen-types';
+import { FluentApiPathInfo } from '../types';
 
 export function getFluentComponentClassName(displayName: string, apiPathInfo: FluentApiPathInfo): string {
   const { isChild, subcomponentName, parentDisplayName } = apiPathInfo;

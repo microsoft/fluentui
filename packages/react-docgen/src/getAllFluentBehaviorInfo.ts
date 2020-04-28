@@ -1,7 +1,7 @@
 import * as path from 'path';
 import * as _ from 'lodash';
 
-import { FluentBehaviorInfo, FluentBehaviorVariation, DocTag } from '@fluentui/react-docgen-types';
+import { FluentBehaviorInfo, FluentBehaviorVariation, DocTag } from './types';
 import { getDocBlock } from './utils/index';
 
 function getTextFromCommentToken(commentTokens: DocTag[], tokenTitle: string): string {

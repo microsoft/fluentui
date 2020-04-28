@@ -2,7 +2,7 @@ import * as _ from 'lodash';
 import * as path from 'path';
 import * as fs from 'fs';
 
-import { ComponentProp, FluentComponentInfo } from '@fluentui/react-docgen-types';
+import { ComponentProp, FluentComponentInfo } from './types';
 import {
   parseDefaultValue,
   getMappedShorthandProp,

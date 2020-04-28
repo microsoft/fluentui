@@ -5,7 +5,7 @@ import * as path from 'path';
 import * as fs from 'fs';
 import * as ts from 'typescript';
 
-import { ComponentInfo, ComponentProp } from '@fluentui/react-docgen-types';
+import { ComponentInfo, ComponentProp } from './types';
 import { ComponentDoc, PropItem, withDefaultConfig, withCustomConfig } from './utils/docgen';
 import { parseDefaultValue, parseDocBlock, parseType, getComponentFileInfo } from './utils/index';
 

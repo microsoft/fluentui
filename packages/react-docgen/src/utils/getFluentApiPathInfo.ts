@@ -1,5 +1,5 @@
 import * as path from 'path';
-import { FluentApiPathInfo, ComponentFileInfo } from '@fluentui/react-docgen-types';
+import { FluentApiPathInfo, ComponentFileInfo } from '../types';
 // This file MUST NOT depend on react-docgen-typescript (or local fork)!
 
 export function getFluentApiPathInfo(

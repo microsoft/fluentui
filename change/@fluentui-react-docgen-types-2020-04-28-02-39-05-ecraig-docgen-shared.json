@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Add package for doc generation types",
-  "packageName": "@fluentui/react-docgen-types",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-04-28T09:38:58.228Z"
-}

@@ -1,5 +1,5 @@
 import * as fs from 'fs';
-import { DocBlock } from '@fluentui/react-docgen-types';
+import { DocBlock } from '../types';
 import { parseDocBlock } from './parseDocBlock';
 
 /** Get top-level doc comments: group 1 is the comment and group 2 is the next line. */

@@ -1,5 +1,5 @@
 import * as path from 'path';
-import { ComponentFileInfo } from '@fluentui/react-docgen-types';
+import { ComponentFileInfo } from '../types';
 // This file MUST NOT depend on react-docgen-typescript (or local fork)!
 
 /**

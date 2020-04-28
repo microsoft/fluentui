@@ -1,7 +1,7 @@
 import * as _ from 'lodash';
 import * as React from 'react';
 
-import { ComponentPropType } from '@fluentui/react-docgen-types';
+import { ComponentPropType } from '../types';
 import { PropItem } from './docgen';
 
 export function parseDefaultValue(Component: React.ComponentType, propDef: PropItem, types: ComponentPropType[]) {

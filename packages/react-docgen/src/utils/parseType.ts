@@ -3,7 +3,7 @@ import { NodePath } from '@babel/traverse';
 import * as t from '@babel/types';
 import * as _ from 'lodash';
 
-import { ComponentPropType } from '@fluentui/react-docgen-types';
+import { ComponentPropType } from '../types';
 import { PropItem } from './docgen';
 import parseTypeAnnotation from './parseTypeAnnotation';
 

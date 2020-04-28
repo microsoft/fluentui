@@ -1,4 +1,4 @@
-import { ComponentFileInfo, FluentApiPathInfo, FluentComponentInfo } from '@fluentui/react-docgen-types';
+import { ComponentFileInfo, FluentApiPathInfo, FluentComponentInfo } from './types';
 import { getComponentFileInfo, getFluentApiPathInfo, getFluentComponentClassName, getDocBlock } from './utils/index';
 // This file MUST NOT depend on react-docgen-typescript (or local fork)!
 

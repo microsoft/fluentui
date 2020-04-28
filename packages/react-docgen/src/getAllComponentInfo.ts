@@ -1,6 +1,6 @@
 import * as path from 'path';
 import * as ts from 'typescript';
-import { ComponentInfo } from '@fluentui/react-docgen-types';
+import { ComponentInfo } from './types';
 import { ComponentInfoSchemaResolver, getComponentInfo } from './getComponentInfo';
 import { parseTsconfig } from './utils';
 

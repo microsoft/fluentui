@@ -1,6 +1,8 @@
-import { Annotation as DocBlock, Tag as DocTag } from 'doctrine';
+import { Annotation, Tag } from 'doctrine';
 
-export { DocBlock, DocTag };
+// Hack to get around isolatedModules limitation
+export interface DocBlock extends Annotation {}
+export interface DocTag extends Tag {}
 
 export interface ComponentFileInfo {
   /** Name (no path) of the component file, with extension, e.g. `Popup.tsx` */
