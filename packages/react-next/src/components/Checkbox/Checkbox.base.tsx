@@ -108,6 +108,8 @@ export const CheckboxBase = React.forwardRef((props: ICheckboxProps, forwardedRe
   );
 });
 
+CheckboxBase.displayName = 'CheckboxBase';
+
 function useDebugWarning(props: ICheckboxProps) {
   React.useEffect(() => {
     if (process.env.NODE_ENV !== 'production') {
