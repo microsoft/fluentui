@@ -28,7 +28,7 @@ const getRuntimeDependencies = (packageName: string) => {
   return output
     .split('\n')
     .map(line => line.match(dependencyRegex))
-    .filter(match => !!match)
+    .filter((match): match is RegExpMatchArray => !!match)
     .map(match => match[1]);
 };
 
