@@ -111,14 +111,16 @@ export const CheckboxBase = React.forwardRef((props: ICheckboxProps, forwardedRe
 CheckboxBase.displayName = 'CheckboxBase';
 
 function useDebugWarning(props: ICheckboxProps) {
-  React.useEffect(() => {
-    if (process.env.NODE_ENV !== 'production') {
+  if (process.env.NODE_ENV !== 'production') {
+    // This is a build-time conditional that will be constant at runtime
+    // tslint:disable-next-line:react-hooks-nesting
+    React.useEffect(() => {
       warnMutuallyExclusive('Checkbox', props, {
         checked: 'defaultChecked',
         indeterminate: 'defaultIndeterminate',
       });
-    }
-  }, []);
+    }, []);
+  }
 }
 
 function useComponentRef(
