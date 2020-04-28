@@ -132,7 +132,7 @@ describe('Accordion', () => {
       const wrapper = mountWithProvider(<Accordion panels={panels} />);
       const accordion = wrapper.find(Accordion);
       getTitleButtonAtIndex(wrapper, 1).simulate('click');
-      expect(getAccordionTitleAtIndex(accordion, 1)).toEqual(document.activeElement);
+      expect(getAccordionTitleAtIndex(accordion, 1)).toHaveFocus();
     });
 
     it('is changed by arrow key navigation', () => {
@@ -143,13 +143,13 @@ describe('Accordion', () => {
         keyCode: keyboardKey.ArrowUp,
         key: 'ArrowUp',
       });
-      expect(getAccordionTitleAtIndex(accordion, 0)).toEqual(document.activeElement);
+      expect(getAccordionTitleAtIndex(accordion, 0)).toHaveFocus();
 
       getTitleButtonAtIndex(wrapper, 0).simulate('keydown', {
         keyCode: keyboardKey.ArrowDown,
         key: 'ArrowDown',
       });
-      expect(getAccordionTitleAtIndex(accordion, 1)).toEqual(document.activeElement);
+      expect(getAccordionTitleAtIndex(accordion, 1)).toHaveFocus();
     });
 
     it('is changed by arrow key navigation in a circular way', () => {
@@ -160,13 +160,13 @@ describe('Accordion', () => {
         keyCode: keyboardKey.ArrowUp,
         key: 'ArrowUp',
       });
-      expect(getAccordionTitleAtIndex(accordion, panels.length - 1)).toEqual(document.activeElement);
+      expect(getAccordionTitleAtIndex(accordion, panels.length - 1)).toHaveFocus();
 
       getTitleButtonAtIndex(wrapper, panels.length - 1).simulate('keydown', {
         keyCode: keyboardKey.ArrowDown,
         key: 'ArrowDown',
       });
-      expect(getAccordionTitleAtIndex(accordion, 0)).toEqual(document.activeElement);
+      expect(getAccordionTitleAtIndex(accordion, 0)).toHaveFocus();
     });
 
     it('is changed to `0` at Home keydown', () => {
@@ -177,7 +177,7 @@ describe('Accordion', () => {
         keyCode: keyboardKey.Home,
         key: 'Home',
       });
-      expect(getAccordionTitleAtIndex(accordion, 0)).toEqual(document.activeElement);
+      expect(getAccordionTitleAtIndex(accordion, 0)).toHaveFocus();
     });
 
     it('is changed to last index at End keydown', () => {
@@ -188,7 +188,7 @@ describe('Accordion', () => {
         keyCode: keyboardKey.End,
         key: 'End',
       });
-      expect(getAccordionTitleAtIndex(accordion, panels.length - 1)).toEqual(document.activeElement);
+      expect(getAccordionTitleAtIndex(accordion, panels.length - 1)).toHaveFocus();
     });
 
     it('focuses the button element when is changed via focus handler', () => {

@@ -170,7 +170,7 @@ export const Accordion: React.FC<WithAsProp<AccordionProps>> &
     rtl: context.rtl,
   });
 
-  const [focusedIndex, setfocusedIndex] = React.useState(0);
+  const [focusedIndex, setfocusedIndex] = React.useState<number>();
 
   const handleNavigationFocus = (index: number) => {
     setfocusedIndex(index);
@@ -192,8 +192,8 @@ export const Accordion: React.FC<WithAsProp<AccordionProps>> &
   );
 
   let itemRefs = [];
-  const defaultAccordionTitleId = _.uniqueId('accordion-title-');
-  const defaultAccordionContentId = _.uniqueId('accordion-content-');
+  const defaultAccordionTitleId = React.useMemo(() => _.uniqueId('accordion-title-'), []);
+  const defaultAccordionContentId = React.useMemo(() => _.uniqueId('accordion-content-'), []);
 
   const computeNewIndex = (index: number): number | number[] => {
     if (!isIndexActionable(index)) {
