@@ -386,7 +386,7 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
                     totalItemCount,
                     hasCheckmarks,
                     hasIcons,
-                    defaultMenuItemRenderer: this._renderMenuItem,
+                    defaultMenuItemRenderer: this._defaultMenuItemRenderer,
                   },
                   this._onRenderMenuList,
                 )}
@@ -478,14 +478,14 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
     return (
       <ul className={this._classNames.list} onKeyDown={this._onKeyDown} onKeyUp={this._onKeyUp} role="menu">
         {menuListProps.items.map((item, index) => {
-          const menuItem = this._renderMenuItem({
-            ...item,
+          const menuItem = this._renderMenuItem(
+            item,
             index,
-            focusableElementIndex: indexCorrection,
-            totalItemCount: menuListProps.totalItemCount,
-            hasCheckmarks: menuListProps.hasCheckmarks,
-            hasIcons: menuListProps.hasIcons,
-          });
+            indexCorrection,
+            menuListProps.totalItemCount,
+            menuListProps.hasCheckmarks,
+            menuListProps.hasIcons,
+          );
           if (item.itemType !== ContextualMenuItemType.Divider && item.itemType !== ContextualMenuItemType.Header) {
             const indexIncrease = item.customOnRenderListLength ? item.customOnRenderListLength : 1;
             indexCorrection += indexIncrease;
@@ -496,17 +496,23 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
     );
   };
 
-  private _renderMenuItem = (item: IContextualMenuItemRenderProps): React.ReactNode => {
+  /**
+   * !!!IMPORTANT!!! Avoid mutating `item: IContextualMenuItem` argument. It will
+   * cause the menu items to always re-render because the component update is based on shallow comparison.
+   */
+  private _renderMenuItem = (
+    item: IContextualMenuItem,
+    index: number,
+    focusableElementIndex: number,
+    totalItemCount: number,
+    hasCheckmarks: boolean,
+    hasIcons: boolean,
+  ): React.ReactNode => {
     const renderedItems: React.ReactNode[] = [];
     const iconProps = item.iconProps || { iconName: 'None' };
     const {
       getItemClassNames, // tslint:disable-line:deprecation
       itemProps,
-      index,
-      focusableElementIndex,
-      totalItemCount,
-      hasCheckmarks,
-      hasIcons,
     } = item;
     const styles = itemProps ? itemProps.styles : undefined;
 
@@ -590,6 +596,11 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
     return renderedItems;
   };
 
+  private _defaultMenuItemRenderer = (item: IContextualMenuItemRenderProps): React.ReactNode => {
+    const { index, focusableElementIndex, totalItemCount, hasCheckmarks, hasIcons } = item;
+    return this._renderMenuItem(item, index, focusableElementIndex, totalItemCount, hasCheckmarks, hasIcons);
+  };
+
   private _renderSectionItem(
     sectionItem: IContextualMenuItem,
     // tslint:disable-next-line:deprecation
@@ -630,14 +641,14 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
               {headerItem &&
                 this._renderListItem(headerItem, sectionItem.key || index, menuClassNames, sectionItem.title)}
               {sectionProps.items.map((contextualMenuItem, itemsIndex) =>
-                this._renderMenuItem({
-                  ...contextualMenuItem,
-                  index: itemsIndex,
-                  focusableElementIndex: itemsIndex,
-                  totalItemCount: sectionProps.items.length,
+                this._renderMenuItem(
+                  contextualMenuItem,
+                  itemsIndex,
+                  itemsIndex,
+                  sectionProps.items.length,
                   hasCheckmarks,
                   hasIcons,
-                }),
+                ),
               )}
               {sectionProps.bottomDivider && this._renderSeparator(index, menuClassNames, false, true)}
             </ul>
