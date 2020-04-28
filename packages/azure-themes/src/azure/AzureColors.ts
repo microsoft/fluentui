@@ -15,8 +15,8 @@ export namespace BaseColors {
   export const BLUE_6CB8F6 = '#6cb8f6';
   export const BLUE_4894FE = '#4894fe';
   export const BLUE_257FFE = '#257FFE';
-  export const BLUE_2899f5 = '#2899f5';
-  export const BLUE_3aa0f3 = '#3aa0f3';
+  export const BLUE_2899F5 = '#2899f5';
+  export const BLUE_3AA0F3 = '#3aa0f3';
   export const BLUE_55B3FF = '#55b3ff';
   export const GREEN_E6FFCC = '#e6ffcc';
   export const GREEN_5DB300 = '#5db300';
@@ -35,7 +35,7 @@ export namespace BaseColors {
   export const PURPLE_471754 = '#471754';
   export const GRAY_111111 = '#111111';
   export const GRAY_161616 = '#161616';
-  export const GRAY_1b1a19 = '#1b1a19';
+  export const GRAY_1b1A19 = '#1b1a19';
   export const GRAY_201F1E = '#201F1E';
   export const GRAY_252423 = '#252423';
   export const GRAY_292827 = '#292827';

@@ -15,7 +15,7 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
       boxShadow: Depths.depth8,
       selectors: {
         ['.ms-Callout-main']: {
-          //dropdown container
+          // dropdown container
           backgroundColor: semanticColors.inputBackground,
           borderColor: semanticColors.inputBorder,
           borderStyle: StyleConstants.borderSolid,

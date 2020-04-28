@@ -57,6 +57,6 @@ function _getMenu(props: IContextualMenuProps): JSX.Element {
   return <ContextualMenu {...props} />;
 }
 
-function _onMenuClick(ev?: React.SyntheticEvent<any>) {
+function _onMenuClick(ev?: React.SyntheticEvent<string>) {
   console.log(ev);
 }

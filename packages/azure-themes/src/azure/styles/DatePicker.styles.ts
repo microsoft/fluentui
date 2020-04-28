@@ -14,7 +14,7 @@ export const DatePickerStyles = (props: IDatePickerStyleProps): Partial<IDatePic
     return {
       color: BaseColors.BLACK,
       backgroundColor: BaseColors.GRAY_F3F2F1,
-      //cursor: 'pointer'
+      // cursor: 'pointer'
     };
   };
   const TodayAndSelectedDayStyle = () => {

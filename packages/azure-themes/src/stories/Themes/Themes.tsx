@@ -8,6 +8,7 @@ import {
   Fabric,
   CompoundButton,
   Checkbox,
+  DatePicker,
   SearchBox,
   Link,
 } from 'office-ui-fabric-react';
@@ -26,7 +27,6 @@ import { ToggleBasicExample } from '../components/toggle';
 import { ColorPickerBasicExample } from '../components/colorpicker';
 import { ComboBoxBasicExample } from '../components/comboBox';
 import { ContextualMenuDefaultExample } from '../components/ContextMenu';
-import { DatePickerBasicExample } from '../components/datepicker';
 import { DropdownBasicExample } from '../components/dropdown';
 
 const Example = () => (
@@ -66,9 +66,9 @@ const Example = () => (
 
     <ContextualMenuDefaultExample />
 
-    <DatePickerBasicExample />
+    <DatePicker />
 
-    <p style={{ color: 'red' }}>Checked components are not supported in the portal, listed below</p>
+    <p>Checked components are not supported in the portal, listed below</p>
     <CompoundButton checked={true} primary text="CompoundButton" />
     <CompoundButton checked={true} secondaryText="This is the secondary text." text="CompoundButton" />
     <DefaultButton checked={true} disabled text="Default disabled" />
@@ -77,7 +77,7 @@ const Example = () => (
     <ButtonSplitExample checked={true} />
     <PrimaryButton checked={true} text="PrimaryButton checked" />
     <DefaultButton checked={true} text="DefaultButton checked" />
-    <p style={{ color: 'red' }}>end checked components</p>
+    <p>end checked components</p>
   </Stack>
 );
 

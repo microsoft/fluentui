@@ -70,7 +70,7 @@ export class ComboBoxBasicExample extends React.Component<{}, IComboBoxBasicExam
 
           <PrimaryButton
             text="Open ComboBox"
-            style={{ display: 'block', marginTop: '10px' }}
+            // style={{ display: 'block', marginTop: '10px' }}
             onClick={() => {
               if (this._basicComboBox.current) {
                 this._basicComboBox.current.focus(true);

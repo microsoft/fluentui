@@ -70,7 +70,7 @@ export const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): Pa
               checked && {
                 selectors: {
                   ':before': {
-                    //hover circle border
+                    // hover circle border
                     borderColor: extendedSemanticColors.primaryButtonBackgroundPressed,
                   },
                 },
