@@ -17,7 +17,7 @@ import * as React from 'react';
 export const Checkbox: React.FunctionComponent<ICheckboxProps>;
 
 // @public (undocumented)
-export const CheckboxBase: React.MemoExoticComponent<React.ForwardRefExoticComponent<ICheckboxProps & React.RefAttributes<HTMLDivElement>>>;
+export const CheckboxBase: React.ForwardRefExoticComponent<ICheckboxProps & React.RefAttributes<HTMLDivElement>>;
 
 // @public
 export interface ICheckbox {
