@@ -4,14 +4,14 @@ import _ from 'lodash';
 import path from 'path';
 import fs from 'fs';
 
-import { BehaviorInfo, ComponentInfo, ComponentProp } from 'docs/src/types';
+import { BehaviorInfo, ComponentInfo, ComponentProp } from './docs-types';
 import * as docgen from './docgen';
 import parseDefaultValue from './parseDefaultValue';
 import parseDocblock from './parseDocblock';
 import parseType from './parseType';
 import getShorthandInfo from './getShorthandInfo';
 
-const getAvailableBehaviors = (accessibilityProp: ComponentProp): BehaviorInfo[] => {
+const getAvailableBehaviors = (accessibilityProp: ComponentProp | undefined): BehaviorInfo[] | undefined => {
   const docTags = accessibilityProp && accessibilityProp.tags;
   const availableTag = _.find(docTags, { title: 'available' });
   const availableBehaviorNames = _.get(availableTag, 'description', '');
@@ -30,7 +30,7 @@ const getAvailableBehaviors = (accessibilityProp: ComponentProp): BehaviorInfo[]
     }));
 };
 
-const getComponentInfo = (filepath: string, ignoredParentInterfaces: string[]): ComponentInfo => {
+const getComponentInfo = (tsConfigPath: string, filepath: string, ignoredParentInterfaces: string[]): ComponentInfo => {
   const absPath = path.resolve(process.cwd(), filepath);
 
   const dir = path.dirname(absPath);
@@ -42,7 +42,7 @@ const getComponentInfo = (filepath: string, ignoredParentInterfaces: string[]): 
   // "element" for "src/elements/Button/Button.js"
   const componentType = path.basename(path.dirname(dir)).replace(/s$/, '') as ComponentInfo['type'];
 
-  const components = docgen.withDefaultConfig().parse(absPath);
+  const components = docgen.withCustomConfig(tsConfigPath, {}).parse(absPath);
 
   if (!components.length) {
     throw new Error(`Could not find a component definition in "${filepath}".`);
@@ -87,7 +87,7 @@ const getComponentInfo = (filepath: string, ignoredParentInterfaces: string[]): 
   const isChild = !isParent;
   const parentDisplayName = isParent ? null : dirname;
   // "Field" for "FormField" since it is accessed as "Form.Field" in the API
-  const subcomponentName = isParent ? null : info.displayName.replace(parentDisplayName, '');
+  const subcomponentName = isParent ? null : info.displayName.replace(parentDisplayName!, '');
 
   // "ListItem.js" is a subcomponent is the "List" directory
   const subcomponentRegExp = new RegExp(`^${dirname}\\w+\\.tsx$`);

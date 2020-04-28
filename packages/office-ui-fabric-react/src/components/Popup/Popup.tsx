@@ -6,6 +6,7 @@ import {
   getDocument,
   getNativeProps,
   getWindow,
+  elementContains,
 } from '../../Utilities';
 import { IPopupProps } from './Popup.types';
 import { useMergedRefs, useAsync, useOnEvent } from '@uifabric/react-hooks';

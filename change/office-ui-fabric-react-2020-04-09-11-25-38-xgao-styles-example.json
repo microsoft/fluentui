@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Examples: fix bad practice styles prop",
-  "packageName": "office-ui-fabric-react",
-  "email": "xgao@microsoft.com",
-  "commit": "76a30973aa5e158a44aa0159c9445c9d065cb72b",
-  "dependentChangeType": "patch",
-  "date": "2020-04-09T18:25:38.590Z"
-}

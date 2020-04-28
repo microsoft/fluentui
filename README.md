@@ -6,11 +6,17 @@ We have a lot in store for Fluent UI - [Read our announcement here.](https://dev
 
 # [Fluent UI React](https://developer.microsoft.com/en-us/fluentui)
 
-**The React-based front-end framework for building experiences for Microsoft 365.**
+**The React-based front-end framework for building web experiences.**
 
 [![npm version](https://badge.fury.io/js/%40fluentui%2Freact.svg)](https://badge.fury.io/js/%40fluentui%2Freact) [![Build Status](https://dev.azure.com/uifabric/fabricpublic/_apis/build/status/office-ui-fabric-react%20-%20PR?branchName=master)](https://dev.azure.com/uifabric/fabricpublic/_build/latest?definitionId=84&branchName=master)
 
 Fluent UI React is a collection of robust React-based components designed to make it simple for you to create consistent web experiences using the Fluent Design Language.
+
+## Learn about Fluent UI
+
+[Fluent UI React current release documentation](https://developer.microsoft.com/en-us/fluentui)
+
+[Fluent UI Northstar documentation for Teams developers](https://aka.ms/fluent-ui)
 
 ## Who uses Fluent UI React?
 
@@ -25,7 +31,6 @@ Please see the [wiki](https://github.com/microsoft/fluentui/wiki).
 ## Contents
 
 - [Using Fluent UI React](#using-fluent-ui-react)
-  - [Starter apps](#starter-apps)
   - [Integrating in your project](#integrating-in-your-project)
   - [Version policy](#version-policy)
   - [Browser support](#browser-support)
