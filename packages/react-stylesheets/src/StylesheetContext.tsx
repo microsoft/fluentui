@@ -3,16 +3,16 @@ export type HTMLDirection = 'rtl' | 'ltr' | 'auto';
 
 export interface StylesheetContextType {
   target: Document | undefined;
-  register: (stylesheets: string[], context: StylesheetContextType) => void;
+  registerStyles: (stylesheets: string[], context: StylesheetContextType) => void;
   styleCache: WeakMap<Document, Map<string, boolean>>;
   enqueuedSheets: string[];
-  renderSheets: (stylesheets: string[], context: StylesheetContextType) => void;
+  renderStyles: (stylesheets: string[], context: StylesheetContextType) => void;
 }
 
 /**
  * Default registration function for stylesheets.
  */
-export const register = (stylesheets: string[], context: StylesheetContextType) => {
+export const registerStyles = (stylesheets: string[], context: StylesheetContextType) => {
   const { styleCache, target } = context;
 
   // Grab the style cache for the target document.
@@ -32,7 +32,7 @@ export const register = (stylesheets: string[], context: StylesheetContextType) 
 
   // If there is no target, call renderSheets immediately.
   if (!target) {
-    renderSheets(context.enqueuedSheets, context);
+    renderStyles(context.enqueuedSheets, context);
   }
 };
 
@@ -40,10 +40,10 @@ export const register = (stylesheets: string[], context: StylesheetContextType) 
  * Default renderSheets implementation, which will render the give sheets to the contextual
  * target.
  */
-const renderSheets = (sheets: string[], context: StylesheetContextType) => {
-  const { target, enqueuedSheets } = context;
+const renderStyles = (sheets: string[], context: StylesheetContextType) => {
+  const { target } = context;
 
-  if (enqueuedSheets.length && target) {
+  if (sheets.length && target) {
     const styleElement = target.createElement('style');
 
     styleElement.textContent = sheets.join('');
@@ -53,8 +53,8 @@ const renderSheets = (sheets: string[], context: StylesheetContextType) => {
 
 // Shared stylesheet context, providing the registration function and target document.
 export const StylesheetContext = React.createContext<StylesheetContextType>({
-  register,
-  renderSheets,
+  registerStyles,
+  renderStyles,
   target: typeof window === 'object' ? window.document : undefined,
   styleCache: new WeakMap<Document, Map<string, boolean>>(),
   enqueuedSheets: [],

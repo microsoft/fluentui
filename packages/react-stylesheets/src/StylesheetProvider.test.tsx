@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { StylesheetProvider } from './StylesheetProvider';
 import { useStylesheet } from './useStylesheet';
-import { StylesheetContext, StylesheetContextType, register } from './StylesheetContext';
+import { StylesheetContext, StylesheetContextType, registerStyles } from './StylesheetContext';
 import { mount } from 'enzyme';
 
 const FooStylesheet = 'Foo';
@@ -33,11 +33,11 @@ describe('StylesheetProvider', () => {
   beforeEach(() => {
     result = [];
     customContext = {
-      register,
+      registerStyles,
       target: document,
       styleCache: new WeakMap(),
       enqueuedSheets: [],
-      renderSheets: (sheets: string[]) => {
+      renderStyles: (sheets: string[]) => {
         result.push(...sheets);
       },
     };
@@ -50,7 +50,7 @@ describe('StylesheetProvider', () => {
     };
 
     mountWithContext(
-      <StylesheetProvider renderSheets={customRenderer}>
+      <StylesheetProvider renderStyles={customRenderer}>
         <Foo />
         <Foo />
       </StylesheetProvider>,
