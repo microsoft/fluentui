@@ -15,6 +15,8 @@ export const StylesheetProvider = (props: React.PropsWithChildren<StylesheetProv
       ...(context as any),
       ...props,
     }),
+    // Only recompute the context to pass down if the parent passes a new one. Props should not
+    // be mutating dynamically for a provider, or may be doing so accidentally. Avoid recomputations.
     [context],
   );
 
