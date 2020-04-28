@@ -533,15 +533,6 @@ exports[`Component Examples renders Pivot.Separate.Example.tsx correctly 1`] = `
           </span>
         </span>
       </button>
-<<<<<<< HEAD
-    </div>
-    <div
-      aria-labelledby="ShapeColorPivot_rectangleRed"
-      role="tabpanel"
-    >
-      <div />
-=======
->>>>>>> b9b783bdcc6466b55268324885eb7a6312b60ec6
     </div>
   </div>
 </div>
