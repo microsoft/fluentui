@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Add EventAnnotation feature for linechart.",
+  "packageName": "@uifabric/charting",
+  "email": "Qian.Zheqi@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-04-14T08:43:54.443Z"
+}
