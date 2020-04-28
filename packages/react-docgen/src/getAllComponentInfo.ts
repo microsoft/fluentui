@@ -18,7 +18,11 @@ export interface GetAllComponentInfoOptions<T extends ComponentInfo = ComponentI
 }
 
 /**
- * Get component info for a list of files, grouped by package.
+ * Get documentation metadata for a list of files, grouped by package.
+ *
+ * This will be much faster than calling `getComponentInfo` for files individually because it
+ * allows reuse of the same `ts.Program` object (which is expensive to create in a large project)
+ * across multiple files.
  */
 export function getAllComponentInfo<T extends ComponentInfo = ComponentInfo>(
   options: GetAllComponentInfoOptions<T>,

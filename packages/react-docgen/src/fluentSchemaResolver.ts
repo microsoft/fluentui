@@ -2,7 +2,7 @@ import * as _ from 'lodash';
 import * as path from 'path';
 import * as fs from 'fs';
 
-import { ComponentProp, FluentComponentInfo } from './types';
+import { ComponentProp, FluentComponentInfo, FluentBehavior } from './types';
 import {
   parseDefaultValue,
   getMappedShorthandProp,
@@ -11,7 +11,7 @@ import {
 } from './utils/index';
 import { ComponentInfoSchemaResolver } from './getComponentInfo';
 
-function getAvailableBehaviors(accessibilityProp: ComponentProp | undefined): FluentComponentInfo['behaviors'] {
+function getAvailableBehaviors(accessibilityProp: ComponentProp | undefined): FluentBehavior[] | undefined {
   const docTags = accessibilityProp && accessibilityProp.tags;
   const availableTag = _.find(docTags, { title: 'available' });
   const availableBehaviorNames = availableTag?.description ?? '';
@@ -30,6 +30,9 @@ function getAvailableBehaviors(accessibilityProp: ComponentProp | undefined): Fl
     }));
 }
 
+/**
+ * Function to add `@fluentui/react-northstar`-specific properties to the component info schema.
+ */
 export const fluentSchemaResolver: ComponentInfoSchemaResolver<FluentComponentInfo> = params => {
   const { absPath, componentDoc, componentFile, Component, sharedComponentInfo } = params;
   const { displayName } = sharedComponentInfo;

@@ -42,6 +42,13 @@ export interface GetComponentInfoOptions<T extends ComponentInfo = ComponentInfo
   ignoredParentInterfaces?: string[];
 }
 
+/**
+ * Get documentation metadata about a component.
+ *
+ * If you'll be processing multiple files in the same package, it's highly recommended for
+ * performance to pass in a TS program (`options.program`) containing all the files, or use
+ * `getAllComponentInfo` which handles this automatically.
+ */
 export function getComponentInfo<T extends ComponentInfo = ComponentInfo>(options: GetComponentInfoOptions): T {
   const { filePath, tsconfigPath, program, schemaResolver, ignoredParentInterfaces = [] } = options;
 
