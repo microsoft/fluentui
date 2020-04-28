@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "Popup: add onRestoreFocus method to repalce shouldRestoreFocus",
+  "comment": "Popup: add onRestoreFocus method to replace shouldRestoreFocus",
   "packageName": "office-ui-fabric-react",
   "email": "joschect@microsoft.com",
   "dependentChangeType": "patch",
