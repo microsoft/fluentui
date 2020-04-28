@@ -12,6 +12,7 @@ import {
   commonPropTypes,
   rtlTextContainer,
   applyAccessibilityKeyHandlers,
+  createShorthand,
 } from '../../utils';
 import AccordionTitle, { AccordionTitleProps } from './AccordionTitle';
 import AccordionContent, { AccordionContentProps } from './AccordionContent';
@@ -91,15 +92,16 @@ export interface AccordionState {
   focusedIndex: number;
 }
 
+export const accordionClassName = 'ui-accordion';
+export const accordionSlotClassNames: AccordionSlotClassNames = {
+  content: `${accordionClassName}__content`,
+  title: `${accordionClassName}__title`,
+};
+
 class Accordion extends AutoControlledComponent<WithAsProp<AccordionProps>, AccordionState> {
   static displayName = 'Accordion';
 
-  static deprecated_className = 'ui-accordion';
-
-  static slotClassNames: AccordionSlotClassNames = {
-    content: `${Accordion.deprecated_className}__content`,
-    title: `${Accordion.deprecated_className}__title`,
-  };
+  static deprecated_className = accordionClassName;
 
   static propTypes = {
     ...commonPropTypes.createCommon({
@@ -262,9 +264,9 @@ class Accordion extends AutoControlledComponent<WithAsProp<AccordionProps>, Acco
       this.itemRefs[index] = contentRef;
 
       children.push(
-        AccordionTitle.create(title, {
+        createShorthand(AccordionTitle, title, {
           defaultProps: () => ({
-            className: Accordion.slotClassNames.title,
+            className: accordionSlotClassNames.title,
             active,
             index,
             contentRef,
@@ -277,9 +279,9 @@ class Accordion extends AutoControlledComponent<WithAsProp<AccordionProps>, Acco
         }),
       );
       children.push(
-        AccordionContent.create(content, {
+        createShorthand(AccordionContent, content, {
           defaultProps: () => ({
-            className: Accordion.slotClassNames.content,
+            className: accordionSlotClassNames.content,
             active,
             id: contentId,
             accordionTitleId: titleId,

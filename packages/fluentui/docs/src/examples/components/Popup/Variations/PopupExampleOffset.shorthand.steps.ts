@@ -1,7 +1,7 @@
-import { Button } from '@fluentui/react-northstar';
+import { buttonClassName } from '@fluentui/react-northstar';
 
 const selectors = {
-  trigger: `.${Button.deprecated_className}`,
+  trigger: `.${buttonClassName}`,
 };
 
 const config: ScreenerTestsConfig = {

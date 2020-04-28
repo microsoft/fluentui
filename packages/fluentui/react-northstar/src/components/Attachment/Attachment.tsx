@@ -59,6 +59,7 @@ export interface AttachmentProps extends UIComponentProps, ChildrenComponentProp
 }
 
 export type AttachmentStylesProps = Required<Pick<AttachmentProps, 'actionable' | 'disabled'>>;
+export const attachmentClassName = 'ui-attachment';
 
 const Attachment: React.FC<WithAsProp<AttachmentProps>> &
   FluentComponentStaticProps<AttachmentProps> & {
@@ -103,7 +104,7 @@ const Attachment: React.FC<WithAsProp<AttachmentProps>> &
   });
 
   const { classes } = useStyles<AttachmentStylesProps>(Attachment.displayName, {
-    className: Attachment.deprecated_className,
+    className: attachmentClassName,
     mapPropsToStyles: () => ({
       actionable: actionable || !!onClick,
       disabled,
@@ -156,7 +157,6 @@ const Attachment: React.FC<WithAsProp<AttachmentProps>> &
 
 Attachment.create = createShorthandFactory({ Component: Attachment, mappedProp: 'header' });
 
-Attachment.deprecated_className = 'ui-attachment';
 Attachment.displayName = 'Attachment';
 
 Attachment.propTypes = {

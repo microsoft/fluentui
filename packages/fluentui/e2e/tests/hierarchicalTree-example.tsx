@@ -1,5 +1,10 @@
 import * as React from 'react';
-import { HierarchicalTree, HierarchicalTreeItem, HierarchicalTreeTitle } from '@fluentui/react-northstar';
+import {
+  HierarchicalTree,
+  hierarchicalTreeClassName,
+  hierarchicalTreeItemClassName,
+  hierarchicalTreeTitleClassName,
+} from '@fluentui/react-northstar';
 
 const items = [
   {
@@ -71,9 +76,9 @@ const items = [
 ];
 
 export const selectors = {
-  treeClass: HierarchicalTree.deprecated_className,
-  treeItemClass: HierarchicalTreeItem.deprecated_className,
-  treeTitleClass: HierarchicalTreeTitle.deprecated_className,
+  treeClass: hierarchicalTreeClassName,
+  treeItemClass: hierarchicalTreeItemClassName,
+  treeTitleClass: hierarchicalTreeTitleClassName,
 };
 
 const TreeExample = () => <HierarchicalTree items={items} />;

@@ -111,8 +111,12 @@ export interface ToolbarItemSlotClassNames {
   wrapper: string;
 }
 
-const ToolbarItem: React.FC<WithAsProp<ToolbarItemProps>> &
-  FluentComponentStaticProps<ToolbarItemProps> & { slotClassNames: ToolbarItemSlotClassNames } = props => {
+export const toolbarItemClassName = 'ui-toolbar__item';
+export const toolbarItemSlotClassNames: ToolbarItemSlotClassNames = {
+  wrapper: `${toolbarItemClassName}__wrapper`,
+};
+
+const ToolbarItem: React.FC<WithAsProp<ToolbarItemProps>> & FluentComponentStaticProps<ToolbarItemProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(ToolbarItem.displayName, context.telemetry);
   setStart();
@@ -168,7 +172,7 @@ const ToolbarItem: React.FC<WithAsProp<ToolbarItemProps>> &
     rtl: context.rtl,
   });
   const { classes } = useStyles<ToolbarItemStylesProps>(ToolbarItem.displayName, {
-    className: ToolbarItem.deprecated_className,
+    className: toolbarItemClassName,
     mapPropsToStyles: () => ({ active, disabled }),
     mapPropsToInlineStyles: () => ({
       className,
@@ -226,11 +230,14 @@ const ToolbarItem: React.FC<WithAsProp<ToolbarItemProps>> &
 
   const handleMenuOverrides = (getRefs: GetRefs) => (predefinedProps: ToolbarMenuProps) => ({
     onBlur: (e: React.FocusEvent) => {
-      const isInside = _.some(getRefs(), (childRef: NodeRef) => {
-        return childRef.current.contains(e.relatedTarget as HTMLElement);
+      const isInsideOrMenuTrigger = _.some(getRefs(), (childRef: NodeRef) => {
+        return (
+          childRef.current.contains(e.relatedTarget as HTMLElement) ||
+          itemRef.current.contains(e.relatedTarget as HTMLElement)
+        );
       });
 
-      if (!isInside) {
+      if (!isInsideOrMenuTrigger) {
         trySetMenuOpen(false, e);
       }
     },
@@ -315,7 +322,7 @@ const ToolbarItem: React.FC<WithAsProp<ToolbarItemProps>> &
       const wrapperElement = Box.create(wrapper, {
         defaultProps: () =>
           getA11yProps('wrapper', {
-            className: cx(ToolbarItem.slotClassNames.wrapper, classes.wrapper),
+            className: cx(toolbarItemSlotClassNames.wrapper, classes.wrapper),
           }),
         overrideProps: predefinedProps => ({
           children: contentElement,
@@ -340,12 +347,7 @@ const ToolbarItem: React.FC<WithAsProp<ToolbarItemProps>> &
   return refElement;
 };
 
-ToolbarItem.deprecated_className = 'ui-toolbar__item';
 ToolbarItem.displayName = 'ToolbarItem';
-
-ToolbarItem.slotClassNames = {
-  wrapper: `${ToolbarItem.deprecated_className}__wrapper`,
-};
 
 ToolbarItem.defaultProps = {
   as: 'button',

@@ -55,6 +55,7 @@ export interface ToolbarCustomItemProps extends UIComponentProps, ChildrenCompon
 }
 
 export type ToolbarCustomItemStylesProps = Required<Pick<ToolbarCustomItemProps, 'fitted'>>;
+export const toolbarCustomItemClassName = 'ui-toolbar__customitem';
 
 const ToolbarCustomItem: React.FC<WithAsProp<ToolbarCustomItemProps>> & FluentComponentStaticProps = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
@@ -69,7 +70,7 @@ const ToolbarCustomItem: React.FC<WithAsProp<ToolbarCustomItemProps>> & FluentCo
     rtl: context.rtl,
   });
   const { classes } = useStyles<ToolbarCustomItemStylesProps>(ToolbarCustomItem.displayName, {
-    className: ToolbarCustomItem.deprecated_className,
+    className: toolbarCustomItemClassName,
     mapPropsToStyles: () => ({ fitted }),
     mapPropsToInlineStyles: () => ({
       className,
@@ -113,7 +114,6 @@ const ToolbarCustomItem: React.FC<WithAsProp<ToolbarCustomItemProps>> & FluentCo
   return element;
 };
 
-ToolbarCustomItem.deprecated_className = 'ui-toolbar__customitem';
 ToolbarCustomItem.displayName = 'ToolbarCustomItem';
 
 ToolbarCustomItem.propTypes = {
