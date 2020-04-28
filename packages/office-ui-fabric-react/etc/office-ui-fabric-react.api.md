@@ -2104,12 +2104,17 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
     onDismiss?: (ev?: any) => void;
     onLayerMounted?: () => void;
     onPositioned?: (positions?: ICalloutPositionedInfo) => void;
+    onRestoreFocus?: (options: {
+        originalElement?: HTMLElement | Window;
+        containsFocus: boolean;
+    }) => void;
     onScroll?: () => void;
     preventDismissOnLostFocus?: boolean;
     preventDismissOnResize?: boolean;
     preventDismissOnScroll?: boolean;
     role?: string;
     setInitialFocus?: boolean;
+    // @deprecated
     shouldRestoreFocus?: boolean;
     shouldUpdateWhenHidden?: boolean;
     style?: React.CSSProperties;
@@ -6353,7 +6358,12 @@ export interface IPopupProps extends React.HTMLAttributes<Popup> {
     ariaLabelledBy?: string;
     className?: string;
     onDismiss?: (ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => any;
+    onRestoreFocus?: (options: {
+        originalElement?: HTMLElement | Window;
+        containsFocus: boolean;
+    }) => void;
     role?: string;
+    // @deprecated
     shouldRestoreFocus?: boolean;
 }
 

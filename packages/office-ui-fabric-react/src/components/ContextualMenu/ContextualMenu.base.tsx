@@ -117,8 +117,7 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
   private _events: EventGroup;
   private _id: string;
   private _host: HTMLElement;
-  private _previousActiveElement: HTMLElement | null;
-  private _isFocusingPreviousElement: boolean;
+  private _previousActiveElement: HTMLElement | undefined;
   private _enterTimerId: number | undefined;
   private _targetWindow: Window;
   private _target: Element | MouseEvent | Point | null;
@@ -129,6 +128,7 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
   private _shouldUpdateFocusOnMouseEvent: boolean;
   private _gotMouseMove: boolean;
   private _mounted = false;
+  private _focusingPreviousElement: boolean;
 
   private _adjustedFocusZoneProps: IFocusZoneProps;
 
@@ -152,7 +152,7 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
     };
 
     this._id = props.id || getId('ContextualMenu');
-    this._isFocusingPreviousElement = false;
+    this._focusingPreviousElement = false;
     this._isScrollIdle = true;
     this._shouldUpdateFocusOnMouseEvent = !this.props.delayUpdateFocusOnHover;
     this._gotMouseMove = false;
@@ -189,7 +189,7 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
         this._onMenuOpened();
         this._previousActiveElement = this._targetWindow
           ? (this._targetWindow.document.activeElement as HTMLElement)
-          : null;
+          : undefined;
       }
     }
     if (newProps.delayUpdateFocusOnHover !== this.props.delayUpdateFocusOnHover) {
@@ -209,7 +209,7 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
     if (!this.props.hidden) {
       this._previousActiveElement = this._targetWindow
         ? (this._targetWindow.document.activeElement as HTMLElement)
-        : null;
+        : undefined;
     }
   }
 
@@ -224,8 +224,6 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
 
   // Invoked immediately before a component is unmounted from the DOM.
   public componentWillUnmount() {
-    this._tryFocusPreviousActiveElement();
-
     if (this.props.onMenuDismissed) {
       this.props.onMenuDismissed(this.props);
     }
@@ -342,6 +340,7 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
       return (
         <Callout
           styles={calloutStyles}
+          onRestoreFocus={this._tryFocusPreviousActiveElement}
           {...calloutProps}
           target={target}
           isBeakVisible={isBeakVisible}
@@ -419,7 +418,15 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
 
   private _onMenuClosed() {
     this._events.off(this._targetWindow, 'resize', this.dismiss);
-    this._tryFocusPreviousActiveElement();
+
+    // This is kept for backwards compatability with hidden for right now.
+    // This preserves the way that this behaved in the past
+    // TODO find a better way to handle this by using the same conventions that
+    // Popup uses to determine if focus is contained when dismissal occurs
+    this._tryFocusPreviousActiveElement({
+      containsFocus: this._focusingPreviousElement,
+      originalElement: this._previousActiveElement,
+    });
 
     if (this.props.onMenuDismissed) {
       this.props.onMenuDismissed(this.props);
@@ -437,17 +444,14 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
     });
   }
 
-  private _tryFocusPreviousActiveElement() {
-    if (this._isFocusingPreviousElement && this._previousActiveElement) {
-      // This slight delay is required so that we can unwind the stack, const react try to mess with focus, and then
-      // apply the correct focus. Without the setTimeout, we end up focusing the correct thing, and then React wants
-      // to reset the focus back to the thing it thinks should have been focused.
-      // Note: Cannot be replaced by this._async.setTimout because those will be removed by the time this is called.
-      setTimeout(() => {
-        this._previousActiveElement && this._previousActiveElement!.focus();
-      }, 0);
+  private _tryFocusPreviousActiveElement = (options: {
+    containsFocus: boolean;
+    originalElement: HTMLElement | Window | undefined;
+  }) => {
+    if (options && options.containsFocus && this._previousActiveElement) {
+      this._previousActiveElement && this._previousActiveElement.focus();
     }
-  }
+  };
 
   /**
    * Gets the focusZoneDirection by using the arrowDirection if specified,
@@ -954,7 +958,7 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
     let handled = false;
 
     if (shouldHandleKey(ev)) {
-      this._isFocusingPreviousElement = true;
+      this._focusingPreviousElement = false;
       this.dismiss(ev, dismissAllMenus);
       ev.preventDefault();
       ev.stopPropagation();
