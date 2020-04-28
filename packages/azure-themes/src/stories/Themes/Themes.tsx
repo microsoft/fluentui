@@ -7,7 +7,6 @@ import {
   Stack,
   Fabric,
   CompoundButton,
-  // ActionButton,
   Checkbox,
   SearchBox,
   Link,
@@ -42,7 +41,7 @@ const Example = () => (
     <ButtonIconWithTooltipExample />
     <ButtonContextualMenuExample />
     <ButtonActionExample />
-    <ButtonToggleExample />
+
     <ButtonSplitExample checked={false} />
     <CalloutBasicExample />
     <Checkbox label="Unchecked checkbox (uncontrolled)" />

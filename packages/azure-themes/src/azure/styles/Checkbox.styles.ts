@@ -1,7 +1,7 @@
 import { ICheckboxStyleProps, ICheckboxStyles } from 'office-ui-fabric-react/lib/Checkbox';
 import { FontSizes } from '../AzureType';
 import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
-// import { divProperties } from 'office-ui-fabric-react';
+import { BaseColors } from '../AzureColors';
 
 export const CheckboxStyles = (props: ICheckboxStyleProps): Partial<ICheckboxStyles> => {
   const { disabled, checked, theme, indeterminate } = props;
@@ -15,38 +15,39 @@ export const CheckboxStyles = (props: ICheckboxStyleProps): Partial<ICheckboxSty
         color: semanticColors.bodyText,
       },
       disabled && {
-        color: extendedSemanticColors.iconButtonDisabledColor,
+        color: semanticColors.disabledBodyText,
       },
     ],
     checkbox: [
       {
         backgroundColor: semanticColors.bodyBackground,
-        borderColor: extendedSemanticColors.checkboxBorder,
+        borderColor: extendedSemanticColors.checkBoxBorder,
         selectors: {
           '::after': {
-            backgroundColor: '#0078D4',
+            backgroundColor: BaseColors.BLUE_0078D4,
           },
         },
       },
       checked && {
-        backgroundColor: '#ffffff',
-        borderColor: extendedSemanticColors.controlOutline,
+        backgroundColor: BaseColors.WHITE,
+        borderColor: extendedSemanticColors.checkBoxBorderChecked,
         selectors: {},
       },
       disabled && {
-        borderColor: extendedSemanticColors.checkboxBorderDisabled,
+        borderColor: extendedSemanticColors.checkBoxDisabled,
       },
       disabled &&
         checked && {
-          backgroundColor: extendedSemanticColors.checkboxCheckedDisabled,
+          borderColor: extendedSemanticColors.checkBoxDisabled,
+          backgroundColor: extendedSemanticColors.checkBoxDisabled,
         },
     ],
     checkmark: [
       {
-        color: extendedSemanticColors.checkMarkFill,
+        color: semanticColors.primaryButtonText,
       },
       disabled && {
-        color: extendedSemanticColors.checkboxCheckedMarkDisabled,
+        color: extendedSemanticColors.primaryButtonText,
       },
     ],
     root: [
@@ -54,23 +55,23 @@ export const CheckboxStyles = (props: ICheckboxStyleProps): Partial<ICheckboxSty
         !checked && {
           selectors: {
             ':hover .ms-Checkbox-label .ms-Checkbox-checkbox': {
-              borderColor: extendedSemanticColors.controlOutlineHovered,
+              borderColor: extendedSemanticColors.buttonText,
             },
             ':hover .ms-Checkbox-label .ms-Checkbox-checkmark': {
+              color: extendedSemanticColors.checkBoxCheckHover,
               opacity: '1',
-              color: extendedSemanticColors.checkmarkColorHover,
             },
           },
         },
         checked && {
           selectors: {
             '.ms-Checkbox-label .ms-Checkbox-checkbox': {
-              background: '#0078D4',
-              borderColor: '#0078D4',
+              background: BaseColors.BLUE_0078D4,
+              borderColor: BaseColors.BLUE_0078D4,
             },
             ':hover .ms-Checkbox-label .ms-Checkbox-checkbox': {
-              borderColor: '#005A9E',
-              backgroundColor: '#005A9E',
+              borderColor: BaseColors.BLUE_005A9E,
+              backgroundColor: BaseColors.BLUE_005A9E,
             },
             ':focus .ms-Checkbox-label .ms-Checkbox-checkbox': {
               borderColor: extendedSemanticColors.focusBorder,
@@ -81,11 +82,11 @@ export const CheckboxStyles = (props: ICheckboxStyleProps): Partial<ICheckboxSty
           checked && {
             selectors: {
               '.ms-Checkbox-label .ms-Checkbox-checkbox': {
-                background: extendedSemanticColors.checkboxIndeterminateBackground,
-                borderColor: extendedSemanticColors.checkboxBorder,
+                background: extendedSemanticColors.checkBoxIndeterminateBackground,
+                borderColor: extendedSemanticColors.checkBoxBorder,
               },
               ':hover .ms-Checkbox-label .ms-Checkbox-checkbox': {
-                borderColor: extendedSemanticColors.controlOutlineHovered,
+                borderColor: extendedSemanticColors.buttonText,
                 backgroundColor: 'transparent',
               },
             },

@@ -11,11 +11,12 @@ export const ComboBoxStyles = (theme: ITheme): Partial<IComboBoxStyles> => {
     root: {
       height: StyleConstants.inputControlHeight,
       fontSize: FontSizes.size13,
+      lineHeight: StyleConstants.inputControlHeight,
       selectors: {
         '.ms-Button': {
           backgroundColor: semanticColors.bodyBackground,
           color: semanticColors.inputText,
-          marginTop: '3px',
+          paddingTop: '5px',
         },
         '.ms-Button:hover': {
           backgroundColor: semanticColors.bodyBackground,
@@ -31,7 +32,6 @@ export const ComboBoxStyles = (theme: ITheme): Partial<IComboBoxStyles> => {
     },
     input: {
       height: StyleConstants.inputControlHeightInner,
-      marginTop: '2px',
       selectors: {
         '::placeholder': {
           fontStyle: 'italic',

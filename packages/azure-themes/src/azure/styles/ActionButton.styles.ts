@@ -1,13 +1,12 @@
 import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import { ITheme } from 'office-ui-fabric-react/lib/Styling';
-import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 import * as StyleConstants from '../Constants';
 import { FontSizes } from '../AzureType';
+import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 
 export const ActionButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
   const { semanticColors } = theme;
   const extendedSemanticColors = semanticColors as IExtendedSemanticColors;
-
   const iconColor = (color: string) => {
     return {
       selectors: {
@@ -18,62 +17,60 @@ export const ActionButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
   return {
     root: {
       fontSize: FontSizes.size13,
-      border: `${StyleConstants.borderWidth} solid ${extendedSemanticColors.buttonBorderColor}`,
+      border: `${StyleConstants.borderWidth} solid ${semanticColors.inputBorder}`,
       backgroundColor: semanticColors.buttonBackground,
       color: semanticColors.buttonText,
-      ...iconColor(extendedSemanticColors.iconButtonColor),
+      ...iconColor(semanticColors.primaryButtonBackground),
     },
     rootDisabled: {
       border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonTextDisabled}`,
       backgroundColor: semanticColors.buttonBackgroundDisabled,
       color: semanticColors.buttonTextDisabled,
-      ...iconColor(semanticColors.buttonTextDisabled),
+      ...iconColor(semanticColors.primaryButtonBackgroundDisabled),
     },
     rootHovered: {
-      color: semanticColors.buttonText,
-      fill: semanticColors.buttonText,
-      backgroundColor: extendedSemanticColors.buttonBackgroundHoveredDefault,
-      border: `${StyleConstants.borderWidth} solid ${extendedSemanticColors.buttonBorderHovered}`,
+      border: `${StyleConstants.borderWidth} solid ${semanticColors.inputBorderHovered}`,
+      backgroundColor: semanticColors.buttonBackgroundHovered,
+      color: semanticColors.buttonTextHovered,
       selectors: {
         ':hover': {
-          ...iconColor(extendedSemanticColors.iconHoveredColor),
+          ...iconColor(semanticColors.primaryButtonBackgroundHovered),
         },
       },
     },
     rootPressed: {
-      borderColor: extendedSemanticColors.buttonBorderColor,
+      border: `${StyleConstants.borderWidth} solid ${extendedSemanticColors.inputBorderPressed}`,
       backgroundColor: semanticColors.buttonBackgroundPressed,
-      color: semanticColors.buttonText,
+      color: semanticColors.buttonTextPressed,
       selectors: {
         ':active': {
-          ...iconColor(extendedSemanticColors.iconPressedColor),
+          ...iconColor(semanticColors.primaryButtonBackgroundPressed),
         },
       },
     },
     rootChecked: {
-      border: `${StyleConstants.borderWidth} solid ${extendedSemanticColors.buttonBorderColor}`,
+      border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonTextPressed}`,
       backgroundColor: semanticColors.buttonBackgroundPressed,
-      color: semanticColors.buttonText,
-      ...iconColor(extendedSemanticColors.iconPressedColor),
+      color: semanticColors.buttonTextPressed,
+      ...iconColor(semanticColors.primaryButtonBackgroundPressed),
     },
     rootCheckedHovered: {
-      color: semanticColors.buttonText,
-      fill: semanticColors.buttonText,
-      backgroundColor: extendedSemanticColors.buttonBackgroundHoveredDefault,
-      border: `${StyleConstants.borderWidth} solid ${extendedSemanticColors.buttonBorderHovered}`,
+      border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonTextHovered}`,
+      backgroundColor: semanticColors.buttonBackgroundHovered,
+      color: semanticColors.buttonTextHovered,
       selectors: {
         ':hover': {
-          ...iconColor(extendedSemanticColors.iconHoveredColor),
+          ...iconColor(semanticColors.primaryButtonBackgroundPressed),
         },
       },
     },
     rootCheckedPressed: {
-      borderColor: extendedSemanticColors.buttonBorderColor,
+      border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonTextPressed}`,
       backgroundColor: semanticColors.buttonBackgroundPressed,
-      color: semanticColors.buttonText,
+      color: semanticColors.buttonTextPressed,
       selectors: {
         ':active': {
-          ...iconColor(extendedSemanticColors.iconPressedColor),
+          ...iconColor(semanticColors.primaryButtonBackgroundPressed),
         },
       },
     },

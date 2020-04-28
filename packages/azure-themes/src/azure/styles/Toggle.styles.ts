@@ -1,7 +1,7 @@
 import { FontSizes } from '../AzureType';
 import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 import { IToggleStyleProps, IToggleStyles } from 'office-ui-fabric-react/lib/Toggle';
-// import { BaseColors } from '../AzureColors';
+import { BaseColors } from '../AzureColors';
 
 export const ToggleStyles = (props: IToggleStyleProps): Partial<IToggleStyles> => {
   const { theme, disabled, checked } = props;
@@ -18,15 +18,15 @@ export const ToggleStyles = (props: IToggleStyleProps): Partial<IToggleStyles> =
         backgroundColor: extendedSemanticColors.controlAccent,
       },
       disabled && {
-        backgroundColor: extendedSemanticColors.controlOutlineDisabled,
-      },
-      !checked && {
-        borderColor: '#605E5C',
+        backgroundColor: BaseColors.GRAY_C8C6C4,
       },
       !checked &&
         disabled && {
-          backgroundColor: extendedSemanticColors.disabledToggleBackground,
-          borderColor: extendedSemanticColors.controlOutlineDisabled,
+          backgroundColor: semanticColors.disabledBackground,
+        },
+      disabled &&
+        !checked && {
+          backgroundColor: extendedSemanticColors.toggleDisabledBackground,
         },
     ],
     // toggle circle
@@ -35,18 +35,18 @@ export const ToggleStyles = (props: IToggleStyleProps): Partial<IToggleStyles> =
         backgroundColor: extendedSemanticColors.controlOutlineHovered,
       },
       disabled && {
-        backgroundColor: extendedSemanticColors.thumbDisabled,
+        backgroundColor: extendedSemanticColors.buttonBackgroundHovered,
       },
       !checked && {
-        backgroundColor: extendedSemanticColors.thumbNotCheck,
+        backgroundColor: extendedSemanticColors.controlOutlineHovered,
       },
       checked &&
         !disabled && {
-          backgroundColor: extendedSemanticColors.thumbEnabledChecked,
+          backgroundColor: BaseColors.WHITE,
         },
       disabled &&
         !checked && {
-          backgroundColor: extendedSemanticColors.thumbDisabledNotChecked,
+          backgroundColor: BaseColors.GRAY_C8C6C4,
         },
     ],
     root: [

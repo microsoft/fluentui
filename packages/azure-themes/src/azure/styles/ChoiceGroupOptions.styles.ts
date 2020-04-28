@@ -2,7 +2,6 @@ import { IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles } from 'office-u
 import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 import { FontSizes } from '../AzureType';
 import * as StyleConstants from '../Constants';
-// import { Light } from '../../stories/Themes/Themes';
 
 export const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): Partial<IChoiceGroupOptionStyles> => {
   const { checked, disabled, theme, hasIcon, hasImage } = props;
@@ -31,7 +30,7 @@ export const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): Pa
             },
             checked && {
               backgroundColor: 'transparent',
-              borderColor: extendedSemanticColors.groupChoiceFill,
+              borderColor: extendedSemanticColors.primaryButtonBackground,
             },
             disabled && {
               backgroundColor: semanticColors.bodyBackground,
@@ -46,7 +45,7 @@ export const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): Pa
           // The dot
           ':after': [
             {
-              borderColor: '#0078D4',
+              borderColor: semanticColors.primaryButtonBackground,
             },
             checked &&
               disabled && {
@@ -60,22 +59,19 @@ export const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): Pa
             !disabled && {
               selectors: {
                 '.ms-ChoiceFieldLabel': {
-                  //color: extendedSemanticColors.controlOutlineHovered
+                  color: extendedSemanticColors.bodyTextHovered,
                 },
                 ':before': {
-                  borderColor: extendedSemanticColors.controlGroupBorder,
+                  borderColor: extendedSemanticColors.controlOutlineHovered,
                 },
               },
             },
-
             !disabled &&
               checked && {
                 selectors: {
-                  '.ms-ChoiceFieldLabel': {
-                    //color: extendedSemanticColors.controlOutlineHovered
-                  },
                   ':before': {
-                    borderColor: extendedSemanticColors.checkBoxselectedBorderHover,
+                    //hover circle border
+                    borderColor: extendedSemanticColors.primaryButtonBackgroundPressed,
                   },
                 },
               },

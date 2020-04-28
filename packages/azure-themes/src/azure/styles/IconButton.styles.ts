@@ -1,37 +1,34 @@
 import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import { ITheme } from 'office-ui-fabric-react/lib/Styling';
-import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
-
 import * as StyleConstants from '../Constants';
 
 export const IconButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
   const { semanticColors } = theme;
-  const extendedSemanticColors = semanticColors as IExtendedSemanticColors;
 
   return {
     root: {
       backgroundColor: StyleConstants.transparent,
-      color: extendedSemanticColors.iconButtonColor,
+      color: semanticColors.primaryButtonBackground,
     },
     rootDisabled: {
       backgroundColor: StyleConstants.transparent,
-      color: extendedSemanticColors.iconButtonDisabledColor,
+      color: semanticColors.buttonTextDisabled,
     },
     rootHovered: {
-      backgroundColor: extendedSemanticColors.buttonBackgroundHoveredDefault,
-      color: extendedSemanticColors.iconHoveredColor,
+      backgroundColor: StyleConstants.transparent,
+      color: semanticColors.primaryButtonBackgroundHovered,
     },
     rootPressed: {
-      backgroundColor: extendedSemanticColors.buttonBackgroundPressed,
-      color: extendedSemanticColors.iconPressedColor,
+      backgroundColor: StyleConstants.transparent,
+      color: semanticColors.primaryButtonBackgroundPressed,
     },
     rootChecked: {
-      backgroundColor: extendedSemanticColors.buttonBackgroundHoveredDefault,
-      color: extendedSemanticColors.iconHoveredColor,
+      backgroundColor: StyleConstants.transparent,
+      color: semanticColors.primaryButtonBackgroundPressed,
     },
     rootCheckedHovered: {
-      backgroundColor: extendedSemanticColors.buttonBackgroundPressed,
-      color: extendedSemanticColors.iconPressedColor,
+      backgroundColor: StyleConstants.transparent,
+      color: semanticColors.primaryButtonBackgroundHovered,
     },
   };
 };
