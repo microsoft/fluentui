@@ -35,7 +35,6 @@ describe('StylesheetProvider', () => {
   beforeEach(() => {
     result = [];
     customContext = {
-      dir: 'ltr',
       register,
       target: document,
       styleCache: new WeakMap(),

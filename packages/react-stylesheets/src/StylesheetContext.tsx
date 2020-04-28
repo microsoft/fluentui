@@ -2,39 +2,31 @@ import * as React from 'react';
 export type HTMLDirection = 'rtl' | 'ltr' | 'auto';
 
 export interface StylesheetContextType {
-  dir: HTMLDirection;
   target: Document | undefined;
   register: (stylesheets: string[], context: StylesheetContextType) => void;
-  styleCache: WeakMap<Document, Map<string, Map<string, boolean>>>;
+  styleCache: WeakMap<Document, Map<string, boolean>>;
   enqueuedSheets: string[];
   renderSheets: (stylesheets: string[], context: StylesheetContextType) => void;
-  // hasRegistered: (stylehseet: string, context: StylesheetContextType) => boolean;
 }
 
-// Default registration function for stylesheets.
+/**
+ * Default registration function for stylesheets.
+ */
 export const register = (stylesheets: string[], context: StylesheetContextType) => {
-  const { styleCache, target, dir } = context;
+  const { styleCache, target } = context;
 
   // Grab the style cache for the target document.
-  let targetDirections = styleCache.get(target!);
+  let targetStylesheets = styleCache.get(target!);
 
-  if (!targetDirections) {
-    targetDirections = new Map();
-    styleCache.set(target!, targetDirections);
-  }
-
-  // Grab the sheet set for the correct direction.
-  let sheets = targetDirections.get(dir);
-
-  if (!sheets) {
-    sheets = new Map();
-    targetDirections.set(dir, sheets);
+  if (!targetStylesheets) {
+    targetStylesheets = new Map();
+    styleCache.set(target!, targetStylesheets);
   }
 
   for (const stylesheet of stylesheets) {
-    if (!sheets.has(stylesheet)) {
+    if (!targetStylesheets.has(stylesheet)) {
       context.enqueuedSheets.unshift(stylesheet);
-      sheets.set(stylesheet, true);
+      targetStylesheets.set(stylesheet, true);
     }
   }
 
@@ -44,6 +36,10 @@ export const register = (stylesheets: string[], context: StylesheetContextType) 
   }
 };
 
+/**
+ * Default renderSheets implementation, which will render the give sheets to the contextual
+ * target.
+ */
 const renderSheets = (sheets: string[], context: StylesheetContextType) => {
   const { target, enqueuedSheets } = context;
 
@@ -59,8 +55,7 @@ const renderSheets = (sheets: string[], context: StylesheetContextType) => {
 export const StylesheetContext = React.createContext<StylesheetContextType>({
   register,
   renderSheets,
-  dir: 'ltr',
   target: typeof window === 'object' ? window.document : undefined,
-  styleCache: new WeakMap<Document, Map<string, Map<string, boolean>>>(),
+  styleCache: new WeakMap<Document, Map<string, boolean>>(),
   enqueuedSheets: [],
 });

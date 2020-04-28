@@ -14,21 +14,13 @@ export const StylesheetContext: React.Context<StylesheetContextType>;
 // @public
 export const StylesheetProvider: (props: React.PropsWithChildren<StylesheetProviderProps>) => JSX.Element;
 
-// @public (undocumented)
+// @public
 export interface StylesheetProviderProps {
-    // Warning: (ae-forgotten-export) The symbol "HTMLDirection" needs to be exported by the entry point index.d.ts
-    //
-    // (undocumented)
-    dir?: HTMLDirection;
-    // (undocumented)
-    register?: (stylesheets: string[], context: StylesheetProviderProps) => void;
-    // (undocumented)
     renderSheets?: (stylesheets: string[], context: StylesheetProviderProps) => void;
-    // (undocumented)
     target?: Document;
 }
 
-// @public (undocumented)
+// @public
 export const useStylesheet: (stylesheets: string | string[]) => void;
 
 

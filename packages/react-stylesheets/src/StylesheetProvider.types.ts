@@ -1,26 +1,14 @@
-import { HTMLDirection } from './StylesheetContext';
-
 /**
- *
+ * Props for the StylesheetProvider conmponent.
  */
 export interface StylesheetProviderProps {
   /**
-   *
-   */
-  register?: (stylesheets: string[], context: StylesheetProviderProps) => void;
-
-  /**
-   *
+   * Optional callback for overriding the default render function for rendering stylesheets.
    */
   renderSheets?: (stylesheets: string[], context: StylesheetProviderProps) => void;
 
   /**
-   *
+   * Target document to render styles to. Defaults to the `document` global object.
    */
   target?: Document;
-
-  /**
-   *
-   */
-  dir?: HTMLDirection;
 }

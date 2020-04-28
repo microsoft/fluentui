@@ -1,7 +1,7 @@
 const path = require('path');
 const resources = require('@uifabric/build/webpack/webpack-resources');
 
-const BUNDLE_NAME = 'react-focus';
+const BUNDLE_NAME = 'react-stylesheets';
 const IS_PRODUCTION = process.argv.indexOf('--production') > -1;
 
 module.exports = resources.createConfig(BUNDLE_NAME, IS_PRODUCTION, {
