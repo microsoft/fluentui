@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "change file",
+  "packageName": "@uifabric/charting",
+  "email": "email not defined",
+  "dependentChangeType": "patch",
+  "date": "2020-04-28T09:46:25.726Z"
+}
