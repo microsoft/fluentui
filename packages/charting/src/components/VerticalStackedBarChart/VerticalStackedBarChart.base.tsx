@@ -27,14 +27,16 @@ export interface IRefArrayData {
   refElement?: SVGGElement;
 }
 export interface IVerticalStackedBarChartState {
+  color: string;
+  dataForHoverCard: number;
   isCalloutVisible: boolean;
   isLegendSelected: boolean;
   isLegendHovered: boolean;
-  selectedLegendTitle: string;
   // tslint:disable-next-line:no-any
   refSelected: any;
-  dataForHoverCard: number;
-  color: string;
+  titleForHoverCard: string;
+  xCalloutValue: string;
+  yCalloutValue: string;
 }
 
 export class VerticalStackedBarChartBase extends React.Component<
@@ -53,13 +55,15 @@ export class VerticalStackedBarChartBase extends React.Component<
   public constructor(props: IVerticalStackedBarChartProps) {
     super(props);
     this.state = {
+      color: '',
+      dataForHoverCard: 0,
       isCalloutVisible: false,
       isLegendSelected: false,
       isLegendHovered: false,
-      selectedLegendTitle: '',
       refSelected: null,
-      dataForHoverCard: 0,
-      color: '',
+      titleForHoverCard: '',
+      xCalloutValue: '',
+      yCalloutValue: '',
     };
     this._onLegendLeave = this._onLegendLeave.bind(this);
     this._onBarLeave = this._onBarLeave.bind(this);
@@ -108,8 +112,12 @@ export class VerticalStackedBarChartBase extends React.Component<
             directionalHint={DirectionalHint.topRightEdge}
           >
             <div className={this._classNames.hoverCardRoot}>
-              <div className={this._classNames.hoverCardTextStyles}>{this.state.selectedLegendTitle}</div>
-              <div className={this._classNames.hoverCardDataStyles}>{this.state.dataForHoverCard}</div>
+              <div className={this._classNames.hoverCardTextStyles}>
+                {this.state.xCalloutValue ? this.state.xCalloutValue : this.state.titleForHoverCard}
+              </div>
+              <div className={this._classNames.hoverCardDataStyles}>
+                {this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard}
+              </div>
             </div>
           </Callout>
         ) : null}
@@ -191,20 +199,20 @@ export class VerticalStackedBarChartBase extends React.Component<
 
   private _onLegendClick(customMessage: string): void {
     if (this.state.isLegendSelected) {
-      if (this.state.selectedLegendTitle === customMessage) {
+      if (this.state.titleForHoverCard === customMessage) {
         this.setState({
           isLegendSelected: false,
-          selectedLegendTitle: customMessage,
+          titleForHoverCard: customMessage,
         });
       } else {
         this.setState({
-          selectedLegendTitle: customMessage,
+          titleForHoverCard: customMessage,
         });
       }
     } else {
       this.setState({
         isLegendSelected: true,
-        selectedLegendTitle: customMessage,
+        titleForHoverCard: customMessage,
       });
     }
   }
@@ -213,7 +221,7 @@ export class VerticalStackedBarChartBase extends React.Component<
     if (this.state.isLegendSelected === false) {
       this.setState({
         isLegendHovered: true,
-        selectedLegendTitle: customMessage,
+        titleForHoverCard: customMessage,
       });
     }
   }
@@ -222,7 +230,7 @@ export class VerticalStackedBarChartBase extends React.Component<
     if (!!isLegendFocused || this.state.isLegendSelected === false) {
       this.setState({
         isLegendHovered: false,
-        selectedLegendTitle: '',
+        titleForHoverCard: '',
         isLegendSelected: !!isLegendFocused ? false : this.state.isLegendSelected,
       });
     }
@@ -275,36 +283,49 @@ export class VerticalStackedBarChartBase extends React.Component<
     customMessage: string,
     pointData: number,
     color: string,
+    xAxisCalloutData: string,
+    yAxisCalloutData: string,
     mouseEvent: React.MouseEvent<SVGPathElement>,
   ): void {
     mouseEvent.persist();
     if (
       this.state.isLegendSelected === false ||
-      (this.state.isLegendSelected && this.state.selectedLegendTitle === customMessage)
+      (this.state.isLegendSelected && this.state.titleForHoverCard === customMessage)
     ) {
       this.setState({
         refSelected: mouseEvent,
         isCalloutVisible: true,
-        selectedLegendTitle: customMessage,
+        titleForHoverCard: customMessage,
         dataForHoverCard: pointData,
         color: color,
+        xCalloutValue: xAxisCalloutData,
+        yCalloutValue: yAxisCalloutData,
       });
     }
   }
 
-  private _onBarFocus(legendText: string, pointData: number, color: string, refArrayIndexNumber: number): void {
+  private _onBarFocus(
+    legendText: string,
+    pointData: number,
+    color: string,
+    refArrayIndexNumber: number,
+    xAxisCalloutData: string,
+    yAxisCalloutData: string,
+  ): void {
     if (
       this.state.isLegendSelected === false ||
-      (this.state.isLegendSelected && this.state.selectedLegendTitle === legendText)
+      (this.state.isLegendSelected && this.state.titleForHoverCard === legendText)
     ) {
       this._refArray.map((obj: IRefArrayData, index: number) => {
         if (obj.legendText === legendText && refArrayIndexNumber === index) {
           this.setState({
             refSelected: obj.refElement,
             isCalloutVisible: true,
-            selectedLegendTitle: legendText,
+            titleForHoverCard: legendText,
             dataForHoverCard: pointData,
             color: color,
+            xCalloutValue: xAxisCalloutData,
+            yCalloutValue: yAxisCalloutData,
           });
         }
       });
@@ -337,7 +358,7 @@ export class VerticalStackedBarChartBase extends React.Component<
 
       let shouldHighlight = true;
       if (this.state.isLegendHovered || this.state.isLegendSelected) {
-        shouldHighlight = this.state.selectedLegendTitle === point.legend;
+        shouldHighlight = this.state.titleForHoverCard === point.legend;
       }
 
       const { theme, styles, className } = this.props;
@@ -371,10 +392,32 @@ export class VerticalStackedBarChartBase extends React.Component<
           }}
           data-is-focusable={true}
           focusable={'true'}
-          onMouseOver={this._onBarHover.bind(this, point.legend, point.data, color)}
-          onMouseMove={this._onBarHover.bind(this, point.legend, point.data, color)}
+          onMouseOver={this._onBarHover.bind(
+            this,
+            point.legend,
+            point.data,
+            color,
+            point.xAxisCalloutData!,
+            point.yAxisCalloutData!,
+          )}
+          onMouseMove={this._onBarHover.bind(
+            this,
+            point.legend,
+            point.data,
+            color,
+            point.xAxisCalloutData!,
+            point.yAxisCalloutData!,
+          )}
           onMouseLeave={this._onBarLeave}
-          onFocus={this._onBarFocus.bind(this, point.legend, point.data, color, refArrayIndexNumber)}
+          onFocus={this._onBarFocus.bind(
+            this,
+            point.legend,
+            point.data,
+            color,
+            refArrayIndexNumber,
+            point.xAxisCalloutData!,
+            point.yAxisCalloutData!,
+          )}
           onBlur={this._onBarLeave}
           onClick={this._redirectToUrl.bind(this, href)}
         />

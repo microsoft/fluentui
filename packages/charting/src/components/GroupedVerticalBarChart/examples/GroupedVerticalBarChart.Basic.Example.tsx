@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { GroupedVerticalBarChart } from '@uifabric/charting/lib/GroupedVerticalBarChart';
+import { GroupedVerticalBarChart } from '@uifabric/charting';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
@@ -19,30 +19,40 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<Readonl
             data: 9,
             color: DefaultPalette.accent,
             legend: 'MetaData1',
+            xAxisCalloutData: '2020/29/04',
+            yAxisCalloutData: '9%',
           },
           {
             key: 'series2',
             data: 85,
             color: DefaultPalette.blueMid,
             legend: 'MetaData2',
+            xAxisCalloutData: '2020/29/04',
+            yAxisCalloutData: '85%',
           },
           {
             key: 'series3',
             data: 36,
             color: DefaultPalette.blueLight,
             legend: 'MetaData3',
+            xAxisCalloutData: '2020/29/04',
+            yAxisCalloutData: '36%',
           },
           {
             key: 'series4',
             data: 66,
             color: DefaultPalette.blue,
             legend: 'MetaData4',
+            xAxisCalloutData: '2020/29/04',
+            yAxisCalloutData: '66%',
           },
           {
             key: 'series5',
             data: 34,
             color: DefaultPalette.blueDark,
             legend: 'MetaData5',
+            xAxisCalloutData: '2020/29/04',
+            yAxisCalloutData: '34%',
           },
         ],
       },

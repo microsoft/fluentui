@@ -4,11 +4,41 @@ import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 export const MultiStackedBarChartExample: React.FunctionComponent<{}> = () => {
   const firstChartPoints: IChartDataPoint[] = [
-    { legend: 'Debit card numbers (EU and USA)', data: 40, color: DefaultPalette.red },
-    { legend: 'Passport numbers (USA)', data: 23, color: DefaultPalette.green },
-    { legend: 'Social security numbers', data: 35, color: DefaultPalette.yellow },
-    { legend: 'Credit card numbers', data: 87, color: DefaultPalette.blueLight },
-    { legend: 'Tax identification numbers (USA)', data: 87, color: DefaultPalette.black },
+    {
+      legend: 'Debit card numbers (EU and USA)',
+      data: 40,
+      color: DefaultPalette.red,
+      xAxisCalloutData: '2020/04/29',
+      yAxisCalloutData: '40%',
+    },
+    {
+      legend: 'Passport numbers (USA)',
+      data: 23,
+      color: DefaultPalette.green,
+      xAxisCalloutData: '2020/04/29',
+      yAxisCalloutData: '23%',
+    },
+    {
+      legend: 'Social security numbers',
+      data: 35,
+      color: DefaultPalette.yellow,
+      xAxisCalloutData: '2020/04/29',
+      yAxisCalloutData: '35%',
+    },
+    {
+      legend: 'Credit card numbers',
+      data: 87,
+      color: DefaultPalette.blueLight,
+      xAxisCalloutData: '2020/04/29',
+      yAxisCalloutData: '87%',
+    },
+    {
+      legend: 'Tax identification numbers (USA)',
+      data: 87,
+      color: DefaultPalette.black,
+      xAxisCalloutData: '2020/04/29',
+      yAxisCalloutData: '88%',
+    },
   ];
   const firstChartPoints1: IChartDataPoint[] = [
     { legend: 'Debit card numbers (EU and USA)', data: 40, color: DefaultPalette.red },

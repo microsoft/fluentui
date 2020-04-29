@@ -8,8 +8,8 @@ export class DonutChartBasicExample extends React.Component<IDonutChartProps, {}
 
   public render(): JSX.Element {
     const points: IChartDataPoint[] = [
-      { legend: 'first', data: 20000, color: '#E5E5E5' },
-      { legend: 'second', data: 39000, color: '#0078D4' },
+      { legend: 'first', data: 20000, color: '#E5E5E5', xAxisCalloutData: '2020/29/04', yAxisCalloutData: '200%' },
+      { legend: 'second', data: 39000, color: '#0078D4', xAxisCalloutData: '2020/29/04', yAxisCalloutData: '390%' },
     ];
 
     const chartTitle = 'Stacked Bar chart example';

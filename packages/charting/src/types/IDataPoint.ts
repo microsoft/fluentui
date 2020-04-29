@@ -56,6 +56,18 @@ export interface IChartDataPoint {
    * placeholder data point
    */
   placeHolder?: boolean;
+
+  /**
+   * Callout data for x axis,
+   * Its an optionsal prop and if haven't given then legend will be callout title.
+   */
+  xAxisCalloutData?: string;
+
+  /**
+   * Callout data for y axis
+   * Optional prop and if haven't given then data will be callout data.
+   */
+  yAxisCalloutData?: string;
 }
 
 export interface IVerticalBarChartDataPoint {
@@ -80,6 +92,18 @@ export interface IVerticalBarChartDataPoint {
    * color for the legend in the chart
    */
   color?: string;
+
+  /**
+   * Callout data for x axis,
+   * Its an optionsal prop and if haven't given then legend will be callout title.
+   */
+  xAxisCalloutData?: string;
+
+  /**
+   * Callout data for y axis
+   * Optional prop and if haven't given then data will be callout data.
+   */
+  yAxisCalloutData?: string;
 }
 
 export interface ILineChartDataPoint {
@@ -165,6 +189,18 @@ export interface IVSChartDataPoint {
    * color for the legend in the chart
    */
   color?: string;
+
+  /**
+   * Callout data for x axis,
+   * Its an optionsal prop and if haven't given then legend will be callout title.
+   */
+  xAxisCalloutData?: string;
+
+  /**
+   * Callout data for y axis
+   * Optional prop and if haven't given then data will be callout data.
+   */
+  yAxisCalloutData?: string;
 }
 
 export interface IVerticalStackedChartProps {
@@ -204,6 +240,18 @@ export interface IGVBarChartSeriesPoint {
    * Legend text in the chart
    */
   legend: string;
+
+  /**
+   * Callout data for x axis
+   * Its an optionsal prop and if haven't given then legend will be callout title.
+   */
+  xAxisCalloutData?: string;
+
+  /**
+   * Callout data for y axis
+   *  Optional prop and if haven't given then data will be callout data.
+   */
+  yAxisCalloutData?: string;
 }
 
 export interface IGroupedVerticalBarChartData {

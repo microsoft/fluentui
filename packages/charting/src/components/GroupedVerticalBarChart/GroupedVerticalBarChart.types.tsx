@@ -11,16 +11,6 @@ export interface IGroupedVerticalBarChartProps {
   data: IGroupedVerticalBarChartData[];
 
   /**
-   * Width of the chart.
-   */
-  width?: number;
-
-  /**
-   * Height of the chart.
-   */
-  height?: number;
-
-  /**
    * Barwidth automacally adjusted based upon given parent width, data and scale.
    * If barwidth given through prop, then is shold be less than given formula.
    * If not, graph will adjust and your value may not be reflected.
@@ -110,16 +100,6 @@ export interface IGroupedVerticalBarChartStyleProps {
    * Theme (provided through customization.)
    */
   theme: ITheme;
-
-  /**
-   * Width of the chart.
-   */
-  width: number;
-
-  /**
-   * Height of the chart.
-   */
-  height: number;
 
   /**
    * Additional CSS class(es) to apply to the StackedBarChart.
