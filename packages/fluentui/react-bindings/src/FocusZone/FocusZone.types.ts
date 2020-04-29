@@ -56,7 +56,8 @@ export interface FocusZoneProps extends FocusZoneProperties, React.HTMLAttribute
   defaultTabbableElement?: (root: HTMLElement) => HTMLElement;
 
   /**
-   * If a default tabbable element should be force focused on FocusZone mount.
+   * Determines if a default tabbable element should be force focused on FocusZone mount.
+   * @default false
    */
   shouldFocusOnMount?: boolean;
 
@@ -112,6 +113,9 @@ export interface FocusZoneProps extends FocusZoneProperties, React.HTMLAttribute
    */
   shouldReceiveFocus?: (childElement?: HTMLElement) => boolean;
 
+  /** Allows focus to park on root when focus is in the `FocusZone` at render time. */
+  allowFocusRoot?: boolean;
+
   /**
    * Allows TAB key to be handled, thus alows tabbing through a focusable list of items in the
    * focus zone. A side effect is that users will not be able to TAB out of the focus zone and
@@ -150,7 +154,7 @@ export interface FocusZoneProps extends FocusZoneProperties, React.HTMLAttribute
   onFocus?: (event: React.FocusEvent<HTMLElement | FocusZone>) => void;
 
   /**
-   * If true, FocusZone prevents default behavior.
+   * If true, FocusZone prevents the default behavior of Keyboard events when changing focus between elements.
    */
   preventDefaultWhenHandled?: boolean;
 

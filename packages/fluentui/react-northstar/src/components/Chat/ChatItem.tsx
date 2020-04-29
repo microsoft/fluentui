@@ -29,6 +29,12 @@ export interface ChatItemSlotClassNames {
   gutter: string;
 }
 
+export const chatItemClassName = 'ui-chat__item';
+export const chatItemSlotClassNames: ChatItemSlotClassNames = {
+  message: `${chatItemClassName}__message`,
+  gutter: `${chatItemClassName}__gutter`,
+};
+
 export interface ChatItemProps extends UIComponentProps, ChildrenComponentProps {
   /**
    * Accessibility behavior if overridden by the user.
@@ -50,10 +56,7 @@ export interface ChatItemProps extends UIComponentProps, ChildrenComponentProps 
 
 export type ChatItemStylesProps = Pick<ChatItemProps, 'attached' | 'contentPosition'>;
 
-const ChatItem: React.FC<WithAsProp<ChatItemProps>> &
-  FluentComponentStaticProps<ChatItemProps> & {
-    slotClassNames: ChatItemSlotClassNames;
-  } = props => {
+const ChatItem: React.FC<WithAsProp<ChatItemProps>> & FluentComponentStaticProps<ChatItemProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(ChatItem.displayName, context.telemetry);
   setStart();
@@ -76,7 +79,7 @@ const ChatItem: React.FC<WithAsProp<ChatItemProps>> &
     rtl: context.rtl,
   });
   const { classes, styles: resolvedStyles } = useStyles<ChatItemStylesProps>(ChatItem.displayName, {
-    className: ChatItem.className,
+    className: chatItemClassName,
     mapPropsToStyles: () => ({
       attached,
       contentPosition,
@@ -94,14 +97,14 @@ const ChatItem: React.FC<WithAsProp<ChatItemProps>> &
     const gutterElement = Box.create(gutter, {
       defaultProps: () =>
         getA11Props('gutter', {
-          className: ChatItem.slotClassNames.gutter,
+          className: chatItemSlotClassNames.gutter,
           styles: resolvedStyles.gutter,
         }),
     });
     const messageElement = Box.create(message, {
       defaultProps: () =>
         getA11Props('message', {
-          className: ChatItem.slotClassNames.message,
+          className: chatItemSlotClassNames.message,
           styles: resolvedStyles.message,
         }),
     });
@@ -134,13 +137,7 @@ const ChatItem: React.FC<WithAsProp<ChatItemProps>> &
   return element;
 };
 
-ChatItem.className = 'ui-chat__item';
 ChatItem.displayName = 'ChatItem';
-
-ChatItem.slotClassNames = {
-  message: `${ChatItem.className}__message`,
-  gutter: `${ChatItem.className}__gutter`,
-};
 
 ChatItem.defaultProps = {
   as: 'li',

@@ -15,4 +15,6 @@ export default gridRowBehavior;
 export type GridRowBehaviorProps = {
   /** Indicates if a table row is header. */
   header?: boolean;
+  /** Indicated is table row is selected.  */
+  selected?: boolean;
 };

@@ -17,6 +17,12 @@ describe('merge', () => {
     });
   });
 
+  it('can handle null values', () => {
+    expect(merge({}, { a: null })).toEqual({
+      a: null,
+    });
+  });
+
   it('can merge deeply', () => {
     expect(merge<{ a: { c: number }; b: number }>({}, { b: 0 }, { a: { c: 1 } }, { a: { c: 2 } })).toEqual({
       a: { c: 2 },

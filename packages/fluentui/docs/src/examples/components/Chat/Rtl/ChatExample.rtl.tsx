@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Avatar, Chat, ChatItemProps, ShorthandCollection } from '@fluentui/react-northstar';
+import { AcceptIcon } from '@fluentui/react-icons-northstar';
 
 const items: ShorthandCollection<ChatItemProps> = [
   {
@@ -10,7 +11,7 @@ const items: ShorthandCollection<ChatItemProps> = [
     key: 'message-id-1',
   },
   {
-    gutter: <Avatar image="public/images/avatar/small/ade.jpg" status={{ color: 'green', icon: 'icon-checkmark' }} />,
+    gutter: <Avatar image="public/images/avatar/small/ade.jpg" status={{ color: 'green', icon: <AcceptIcon /> }} />,
     message: <Chat.Message content="تأكد منJohn. دعونا جدولة اجتماع." author="Jane Doe" timestamp="بالأمس ، 10:15" />,
     attached: 'top',
     key: 'message-id-2',

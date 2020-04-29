@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as _ from 'lodash';
 import { Button, Grid, Popup, Alignment, Position } from '@fluentui/react-northstar';
 import { useBooleanKnob, useSelectKnob } from '@fluentui/docs-components';
+import { ArrowDownIcon, ArrowLeftIcon, ArrowRightIcon, ArrowUpIcon } from '@fluentui/react-icons-northstar';
 
 const PopupExamplePosition = () => {
   const [open] = useBooleanKnob({ name: 'open', initialValue: true });
@@ -31,11 +32,7 @@ const PopupExamplePosition = () => {
           </p>
         }
       >
-        <Button
-          icon={{ name: iconNames[position], circular: true, bordered: true }}
-          styles={buttonStyles}
-          title="Show popup"
-        />
+        <Button icon={icons[position]} styles={buttonStyles} title="Show popup" />
       </Popup>
     </Grid>
   );
@@ -58,11 +55,11 @@ const positionAndAlignValues = [
   'after-bottom',
 ];
 
-const iconNames: Record<Position, string> = {
-  above: 'arrow-up',
-  below: 'arrow-down',
-  before: 'arrow-left',
-  after: 'arrow-right',
+const icons: Record<Position, React.ReactNode> = {
+  above: <ArrowUpIcon circular bordered />,
+  below: <ArrowDownIcon circular bordered />,
+  before: <ArrowLeftIcon circular bordered />,
+  after: <ArrowRightIcon circular bordered />,
 };
 
 const paddings: Record<string, React.CSSProperties['padding']> = {

@@ -7,7 +7,7 @@ const fs = require('fs');
 
 const { clean } = require('./tasks/clean');
 const { copy } = require('./tasks/copy');
-const { jest, jestWatch } = require('./tasks/jest');
+const { jest: jestTask, jestWatch } = require('./tasks/jest');
 const { sass } = require('./tasks/sass');
 const { ts } = require('./tasks/ts');
 const { tslint } = require('./tasks/tslint');
@@ -49,7 +49,7 @@ module.exports = function preset() {
 
   task('clean', clean);
   task('copy', copy);
-  task('jest', jest);
+  task('jest', jestTask);
   task('jest-watch', jestWatch);
   task('sass', sass);
   task('ts:postprocess', postprocessTask());

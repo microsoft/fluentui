@@ -21,7 +21,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
       & textarea {
         font-family: inherit;
       }
-  dir="ltr"
 >
   <div
     className=
@@ -1543,7 +1542,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                     max-width: 16px;
                                     vertical-align: middle;
                                   }
-                              src="https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/svg/accdb_16x1.svg"
+                              src="https://static2.sharepointonline.com/files/fabric/assets/item-types/16/accdb.svg"
                             />
                           </div>
                           <div
@@ -1862,7 +1861,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                     max-width: 16px;
                                     vertical-align: middle;
                                   }
-                              src="https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/svg/accdb_16x1.svg"
+                              src="https://static2.sharepointonline.com/files/fabric/assets/item-types/16/accdb.svg"
                             />
                           </div>
                           <div
@@ -2181,7 +2180,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                     max-width: 16px;
                                     vertical-align: middle;
                                   }
-                              src="https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/svg/accdb_16x1.svg"
+                              src="https://static2.sharepointonline.com/files/fabric/assets/item-types/16/accdb.svg"
                             />
                           </div>
                           <div
@@ -2500,7 +2499,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                     max-width: 16px;
                                     vertical-align: middle;
                                   }
-                              src="https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/svg/accdb_16x1.svg"
+                              src="https://static2.sharepointonline.com/files/fabric/assets/item-types/16/accdb.svg"
                             />
                           </div>
                           <div
@@ -2819,7 +2818,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                     max-width: 16px;
                                     vertical-align: middle;
                                   }
-                              src="https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/svg/accdb_16x1.svg"
+                              src="https://static2.sharepointonline.com/files/fabric/assets/item-types/16/accdb.svg"
                             />
                           </div>
                           <div
@@ -3138,7 +3137,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                     max-width: 16px;
                                     vertical-align: middle;
                                   }
-                              src="https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/svg/accdb_16x1.svg"
+                              src="https://static2.sharepointonline.com/files/fabric/assets/item-types/16/accdb.svg"
                             />
                           </div>
                           <div
@@ -3457,7 +3456,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                     max-width: 16px;
                                     vertical-align: middle;
                                   }
-                              src="https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/svg/accdb_16x1.svg"
+                              src="https://static2.sharepointonline.com/files/fabric/assets/item-types/16/accdb.svg"
                             />
                           </div>
                           <div
@@ -3776,7 +3775,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                     max-width: 16px;
                                     vertical-align: middle;
                                   }
-                              src="https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/svg/accdb_16x1.svg"
+                              src="https://static2.sharepointonline.com/files/fabric/assets/item-types/16/accdb.svg"
                             />
                           </div>
                           <div
@@ -4095,7 +4094,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                     max-width: 16px;
                                     vertical-align: middle;
                                   }
-                              src="https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/svg/accdb_16x1.svg"
+                              src="https://static2.sharepointonline.com/files/fabric/assets/item-types/16/accdb.svg"
                             />
                           </div>
                           <div
@@ -4414,7 +4413,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                     max-width: 16px;
                                     vertical-align: middle;
                                   }
-                              src="https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/svg/accdb_16x1.svg"
+                              src="https://static2.sharepointonline.com/files/fabric/assets/item-types/16/accdb.svg"
                             />
                           </div>
                           <div
