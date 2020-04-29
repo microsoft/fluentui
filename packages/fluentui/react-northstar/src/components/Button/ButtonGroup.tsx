@@ -1,4 +1,4 @@
-import { Accessibility, ButtonGroupBehaviorProps } from '@fluentui/accessibility';
+import { Accessibility } from '@fluentui/accessibility';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
@@ -30,7 +30,7 @@ export interface ButtonGroupProps extends UIComponentProps, ChildrenComponentPro
   /**
    * Accessibility behavior if overridden by the user.
    */
-  accessibility?: Accessibility<ButtonGroupBehaviorProps>;
+  accessibility?: Accessibility;
 
   /** The buttons contained inside the ButtonGroup. */
   buttons?: ShorthandCollection<ButtonProps>;
@@ -65,7 +65,7 @@ export const ButtonGroup: React.FC<WithAsProp<ButtonGroupProps>> &
     rtl: context.rtl,
   });
 
-  const getA11yProps = useAccessibility<ButtonGroupBehaviorProps>(props.accessibility, {
+  const getA11yProps = useAccessibility(props.accessibility, {
     debugName: ButtonGroup.displayName,
     rtl: context.rtl,
   });
