@@ -147,6 +147,10 @@ export interface ISemanticColors extends ISemanticTextColors {
 
   //// Invariants - slots that rarely change color theme-to-theme because the color has meaning
   /**
+   * Background for informational messages.
+   */
+  infoBackground: string;
+  /**
    * The background for errors, if necessary, or highlighting the section of the page where the error is present.
    */
   errorBackground: string;
@@ -159,13 +163,45 @@ export interface ISemanticColors extends ISemanticTextColors {
    */
   warningBackground: string;
   /**
-   * Foreground color for warning highlights
+   * Background for severe warning messages.
    */
-  warningHighlight: string;
+  severeWarningBackground: string;
   /**
    * Background for success
    */
   successBackground: string;
+  /**
+   * Color for icons on infoBackground.
+   */
+  infoIcon: string;
+  /**
+   * Color for icons on errorBackground.
+   */
+  errorIcon: string;
+  /**
+   * Color for icons on blockingBackground.
+   */
+  blockingIcon: string;
+  /**
+   * Color for icons on warningBackground.
+   */
+  warningIcon: string;
+  /**
+   * Color for icons on severeWarningBackground.
+   */
+  severeWarningIcon: string;
+  /**
+   * Color for icons on successBackground.
+   */
+  successIcon: string;
+  /**
+   * Color of links within a Message.
+   */
+  messageLink: string;
+  /**
+   * Color of links within a Message when hovered.
+   */
+  messageLinkHovered: string;
 
   //// Input controls slots (text fields, checkboxes, radios...)
 
@@ -390,4 +426,11 @@ export interface ISemanticColors extends ISemanticTextColors {
    * The background of checked menu item; e.g. a menu item whose submenu is open, a selected dropdown item.
    */
   menuItemBackgroundChecked: string;
+
+  /**
+   * @deprecated
+   * (no longer used)
+   * Foreground color for warning highlights
+   */
+  warningHighlight: string;
 }

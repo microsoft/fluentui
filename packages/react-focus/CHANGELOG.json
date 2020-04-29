@@ -2,6 +2,21 @@
   "name": "@fluentui/react-focus",
   "entries": [
     {
+      "date": "Tue, 28 Apr 2020 12:34:09 GMT",
+      "tag": "@fluentui/react-focus_v7.7.0",
+      "version": "7.7.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Updating IPoint, x and y references to Point, left and top respectively.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "beb8886ffcbccd2bbef9c4e7a8afd742497289a5",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 27 Apr 2020 12:33:11 GMT",
       "tag": "@fluentui/react-focus_v7.6.0",
       "version": "7.6.0",

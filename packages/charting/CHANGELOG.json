@@ -2,6 +2,21 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Wed, 29 Apr 2020 12:34:58 GMT",
+      "tag": "@uifabric/charting_v2.2.0",
+      "version": "2.2.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add EventAnnotation feature for linechart.",
+            "author": "Qian.Zheqi@microsoft.com",
+            "commit": "e430aa5e7be222d544c2d2c849455ceefbdc0500",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 23 Apr 2020 12:32:40 GMT",
       "tag": "@uifabric/charting_v2.1.0",
       "version": "2.1.0",
