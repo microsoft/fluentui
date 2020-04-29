@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "Adding onDragOverEventHandler for GroupedList component",
+  "comment": "Adding onDragOver method to IDragDropEvents",
   "packageName": "office-ui-fabric-react",
   "email": "pawsing@microsoft.com",
   "dependentChangeType": "patch",
