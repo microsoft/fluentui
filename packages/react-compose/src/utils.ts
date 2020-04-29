@@ -2,6 +2,10 @@ import * as React from 'react';
 import * as ReactIs from 'react-is';
 
 import { ComposedComponent, ComposeOptions, ComposePreparedOptions, Input } from './types';
+import cx from 'classnames';
+
+// tslint:disable-next-line:no-any
+export type ClassDictionary = any;
 
 function computeDisplayNames(inputOptions: ComposeOptions, parentOptions: ComposePreparedOptions): string[] {
   if (inputOptions.overrideStyles) {
@@ -13,6 +17,35 @@ function computeDisplayNames(inputOptions: ComposeOptions, parentOptions: Compos
     ? parentOptions.displayNames.concat(inputOptions.displayName)
     : parentOptions.displayNames;
 }
+
+const collectStylesheets = (
+  // tslint:disable-next-line:no-any
+  slots: { [key: string]: any },
+  defaultSheets: string[] = [],
+  stylesheets: string[] = [...defaultSheets],
+) => {
+  if (slots) {
+    Object.keys(slots).forEach(slotName => {
+      const slot = slots[slotName];
+
+      if (slot && slot.stylesheets) {
+        stylesheets = slot.stylesheets.concat(stylesheets);
+      }
+    });
+  }
+
+  return stylesheets.filter(sheet => !!sheet);
+};
+
+const mergeClasses = (classes1: ClassDictionary, classes2: ClassDictionary) => {
+  const result = { ...classes1 };
+
+  if (classes2) {
+    Object.keys(classes2).forEach(name => (result[name] = cx(result[name], classes2[name])));
+  }
+  console.log(result);
+  return result;
+};
 
 export const defaultComposeOptions: ComposePreparedOptions = {
   className: process.env.NODE_ENV === 'production' ? '' : 'no-classname-🙉',
@@ -57,6 +90,27 @@ export function mergeComposeOptions(
       return mergedSlotProps;
     }, {});
 
+  const mergedSlots = {
+    ...parentOptions.slots,
+    ...inputOptions.slots,
+  };
+
+  let mergedStylesheets: string[] = [];
+
+  if (inputOptions.stylesheet) {
+    mergedStylesheets.unshift(inputOptions.stylesheet);
+  }
+
+  // tslint:disable-next-line:no-any
+  if (parentOptions.stylesheets) {
+    // tslint:disable-next-line:no-any
+    mergedStylesheets = parentOptions.stylesheets.concat(mergedStylesheets);
+  }
+
+  mergedStylesheets = collectStylesheets(mergedSlots, mergedStylesheets);
+
+  // @ts-ignore
+  // @ts-ignore
   return {
     className: inputOptions.className || parentOptions.className,
     displayName: inputOptions.displayName || parentOptions.displayName,
@@ -70,12 +124,14 @@ export function mergeComposeOptions(
     handledProps: [...parentOptions.handledProps, ...((inputOptions.handledProps as never[]) || ([] as never[]))],
     overrideStyles: inputOptions.overrideStyles || false,
 
-    slots: {
-      ...parentOptions.slots,
-      ...inputOptions.slots,
-    },
+    slots: mergedSlots,
     mapPropsToSlotPropsChain,
     resolveSlotProps,
+
+    // @ts-ignore TODO: string or string[]
+    stylesheet: [parentOptions.stylesheet, inputOptions.stylesheet],
+    stylesheets: mergedStylesheets,
+    classes: mergeClasses(parentOptions.classes, inputOptions.classes),
   };
 }
 

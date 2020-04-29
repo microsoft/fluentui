@@ -1,11 +1,13 @@
 import * as React from 'react';
-import { AvatarProps, AvatarOptions, AvatarSlots, AvatarSlotProps } from './Avatar.types';
-import { compose, ComposeStandardStatics } from '../utils/compose';
+// TODO: add correct typings
+import { AvatarProps } from './Avatar.types';
+import { compose } from '@fluentui/react-compose';
+import { getInitials as defaultGetInitials } from '@uifabric/utilities';
 import { useAvatar } from './useAvatar';
 
-export const AvatarBase = compose<AvatarProps, AvatarSlots, AvatarSlotProps, ComposeStandardStatics>(
-  (props: AvatarProps & AvatarOptions, ref: React.RefObject<HTMLElement>, options: AvatarOptions) => {
-    const { slots, slotProps } = useAvatar(props, options);
+export const AvatarBase = compose<'span', AvatarProps, AvatarProps, {}, {}>(
+  (props, ref, composeOptions) => {
+    const { slots, slotProps } = useAvatar(props, composeOptions);
 
     return (
       <slots.root ref={ref} {...slotProps.root}>
@@ -16,17 +18,32 @@ export const AvatarBase = compose<AvatarProps, AvatarSlots, AvatarSlotProps, Com
     );
   },
   {
-    defaultProps: {
-      as: 'span',
-    },
     slots: {
+      root: 'span',
       label: 'span',
-      image: null,
-      status: null,
+      image: 'img',
+      status: 'span',
     },
-    statics: {
-      mappedProp: 'name',
-      displayName: 'AvatarBase',
-    },
+    mapPropsToSlotProps: props => ({
+      status: {
+        size: props.size,
+      },
+      label: {
+        children: props.getInitials
+          ? props.getInitials(props.name || '', false)
+          : defaultGetInitials(props.name || '', false),
+      },
+    }),
+    displayName: 'AvatarBase',
   },
 );
+
+AvatarBase.defaultProps = {
+  as: 'span',
+};
+
+// TODO: add typings
+// tslint:disable-next-line:no-any
+(AvatarBase as any).shorthandConfig = {
+  mappedProp: 'name',
+};

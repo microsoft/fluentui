@@ -7,6 +7,9 @@
 import * as React from 'react';
 
 // @public (undocumented)
+export type ClassDictionary = any;
+
+// @public (undocumented)
 export interface ComponentWithAs<E extends React.ElementType = 'div', P = {}> extends React.FunctionComponent {
     // (undocumented)
     <EE extends React.ElementType = E>(props: Omit<PropsOfElement<EE>, 'as' | keyof P> & {
@@ -41,6 +44,9 @@ export type ComposeOptions<InputProps = {}, InputStylesProps = {}, ParentStylesP
     overrideStyles?: boolean;
     slots?: Record<string, React.ElementType>;
     mapPropsToSlotProps?: (props: InputProps) => Record<string, object>;
+    classes?: ClassDictionary;
+    stylesheet?: string;
+    stylesheets?: string[];
 };
 
 // @public (undocumented)
@@ -55,6 +61,9 @@ export type ComposePreparedOptions<Props = {}> = {
     slots: Record<string, React.ElementType>;
     mapPropsToSlotPropsChain: ((props: Props) => Record<string, object>)[];
     resolveSlotProps: <P>(props: P) => Record<string, object>;
+    classes?: ClassDictionary;
+    stylesheet?: string;
+    stylesheets?: string[];
 };
 
 // @public (undocumented)

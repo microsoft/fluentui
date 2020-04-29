@@ -1,5 +1,8 @@
 import * as React from 'react';
 
+// tslint:disable-next-line:no-any
+export type ClassDictionary = any;
+
 //
 // "as" type safety
 //
@@ -57,6 +60,10 @@ export type ComposeOptions<InputProps = {}, InputStylesProps = {}, ParentStylesP
   slots?: Record<string, React.ElementType>;
 
   mapPropsToSlotProps?: (props: InputProps) => Record<string, object>;
+
+  classes?: ClassDictionary;
+  stylesheet?: string;
+  stylesheets?: string[];
 };
 
 export type ComposePreparedOptions<Props = {}> = {
@@ -74,4 +81,9 @@ export type ComposePreparedOptions<Props = {}> = {
   mapPropsToSlotPropsChain: ((props: Props) => Record<string, object>)[];
 
   resolveSlotProps: <P>(props: P) => Record<string, object>;
+
+  // support for stylesheets
+  classes?: ClassDictionary;
+  stylesheet?: string;
+  stylesheets?: string[];
 };

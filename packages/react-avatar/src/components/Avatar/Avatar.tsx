@@ -1,5 +1,6 @@
 import { AvatarBase } from './Avatar.base';
-import { compose, extractFromSass } from '../utils/compose';
+import { extractFromSass } from '../utils/compose';
+import { compose } from '@fluentui/react-compose';
 import { Status } from '../Status/index';
 import { Image } from '../Image/index';
 
@@ -11,7 +12,5 @@ export const Avatar = compose(AvatarBase, {
     status: Status,
     image: Image,
   },
-  statics: {
-    displayName: 'Avatar',
-  },
+  displayName: 'Avatar',
 });
