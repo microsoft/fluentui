@@ -26,7 +26,7 @@ const groups = createGroups(groupCount, groupDepth, 0, groupCount);
 
 export const GroupedListBasicExample: React.FunctionComponent = () => {
   const [isCompactMode, { toggle: toggleIsCompactMode }] = useBoolean(false);
-  const [selection] = React.useState<Selection>(() => {
+  const selection = useConst(() => {
     const s = new Selection();
     s.setItems(items, true);
     return s;
