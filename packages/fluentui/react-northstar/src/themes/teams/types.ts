@@ -8,7 +8,7 @@ import {
   PrimitiveColors,
 } from '../types';
 
-import { AccordionContentProps } from '../../components/Accordion/AccordionContent';
+import { AccordionContentStylesProps } from '../../components/Accordion/AccordionContent';
 import { AccordionProps } from '../../components/Accordion/Accordion';
 import { AccordionTitleStylesProps } from '../../components/Accordion/AccordionTitle';
 import { AlertStylesProps } from '../../components/Alert/Alert';
@@ -89,7 +89,7 @@ import { SplitButtonStylesProps } from '../../components/SplitButton/SplitButton
 export type TeamsThemeStylesProps = {
   Accordion: AccordionProps;
   AccordionTitle: AccordionTitleStylesProps;
-  AccordionContent: AccordionContentProps;
+  AccordionContent: AccordionContentStylesProps;
   Alert: AlertStylesProps;
   Animation: AnimationProps;
   Attachment: AttachmentProps;
