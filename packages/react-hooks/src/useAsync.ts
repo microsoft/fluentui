@@ -1,5 +1,5 @@
 import { Async } from '@uifabric/utilities';
-import { useEffect } from 'react';
+import * as React from 'react';
 import { useConst } from './useConst';
 
 /**
@@ -9,7 +9,7 @@ export function useAsync() {
   const asyncRef = useConst<Async>(() => new Async());
 
   // Function that returns a function in order to dispose the async instance on unmount
-  useEffect(() => () => asyncRef.dispose(), []);
+  React.useEffect(() => () => asyncRef.dispose(), []);
 
   return asyncRef;
 }

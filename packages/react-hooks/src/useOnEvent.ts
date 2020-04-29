@@ -1,5 +1,5 @@
 import { on } from '@uifabric/utilities';
-import { useEffect } from 'react';
+import * as React from 'react';
 
 /**
  * Hook to attach an event handler on mount and handle cleanup
@@ -14,7 +14,7 @@ export function useOnEvent<TElement extends Element>(
   callback: (ev: Event) => void,
   useCapture?: boolean,
 ) {
-  useEffect(() => {
+  React.useEffect(() => {
     if (element && 'current' in element) {
       element = element.current;
     }
