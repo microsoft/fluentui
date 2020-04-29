@@ -10,6 +10,7 @@ import * as keyboardKey from 'keyboard-key';
  * @specification
  * Adds role='group'.
  * Adds attribute 'aria-disabled=true' based on the property 'disabled'.
+ * Adds attribute 'aria-selected=true' based on the property 'selected'.
  * Adds attribute 'tabIndex=0' to 'root' slot.
  * Adds attribute 'data-is-focusable=true' to 'root' slot.
  * Triggers 'focusCard' action with 'Escape' on 'root'.
@@ -21,6 +22,7 @@ const cardChildrenFocusableBehavior: Accessibility<CardBehaviorProps> = props =>
       tabIndex: 0,
       [IS_FOCUSABLE_ATTRIBUTE]: true,
       'aria-disabled': props.disabled,
+      'aria-selected': props.selected,
     },
   },
   focusZone: {

@@ -55,6 +55,11 @@ const cardStyles: ComponentSlotStylesPrepared<CardStylesProps, CardVariables> = 
           boxShadow: v.boxShadowPressed,
         },
       }),
+      ...(p.selected && {
+        backgroundColor: v.backgroundColorSelected,
+        borderColor: v.borderColorSelected,
+        boxShadow: v.boxShadowSelected,
+      }),
 
       ...(p.elevated && {
         boxShadow: v.elevatedBoxShadow,

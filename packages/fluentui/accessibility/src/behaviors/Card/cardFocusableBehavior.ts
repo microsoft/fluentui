@@ -9,6 +9,7 @@ import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
  * @specification
  * Adds role='group'.
  * Adds attribute 'aria-disabled=true' based on the property 'disabled'.
+ * Adds attribute 'aria-selected=true' based on the property 'selected'.
  * Adds attribute 'tabIndex=0' to 'root' slot.
  * Adds attribute 'data-is-focusable=true' to 'root' slot.
  * Triggers 'performClick' action with 'Enter' or 'Spacebar' on 'root'.
@@ -20,6 +21,7 @@ const cardFocusableBehavior: Accessibility<CardBehaviorProps> = props => ({
       tabIndex: 0,
       [IS_FOCUSABLE_ATTRIBUTE]: true,
       'aria-disabled': props.disabled,
+      'aria-selected': props.selected,
     },
   },
   keyActions: {
