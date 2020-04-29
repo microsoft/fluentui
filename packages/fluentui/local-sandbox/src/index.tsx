@@ -1,11 +1,10 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Provider, themes, Header, Text } from '@fluentui/react-northstar';
+import { Provider, themes, Button } from '@fluentui/react-northstar';
 
 const App = () => (
   <Provider theme={themes.teams}>
-    <Header>@fluentui/local-sandbox</Header>
-    <Text>Sandbox to test Fluent UI with production React.</Text>
+    <Button>Click here</Button>
   </Provider>
 );
 
