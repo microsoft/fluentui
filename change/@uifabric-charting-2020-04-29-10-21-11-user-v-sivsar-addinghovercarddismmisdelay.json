@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "addding dismiss delay to overcome instant closing on blur",
+  "packageName": "@uifabric/charting",
+  "email": "v-sivsar@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-04-29T04:51:11.676Z"
+}
