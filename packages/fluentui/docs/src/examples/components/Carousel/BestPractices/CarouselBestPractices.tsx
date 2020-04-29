@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Text, Box } from '@fluentui/react-northstar';
 import { link } from '../../../../utils/helpers';
 
-import ComponentBestPractices from 'docs/src/components/ComponentBestPractices';
+import ComponentBestPractices from '../../../../components/ComponentBestPractices';
 
 const doList = [
   <Text>

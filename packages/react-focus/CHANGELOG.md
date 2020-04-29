@@ -1,8 +1,30 @@
 # Change Log - @fluentui/react-focus
 
-This log was last generated on Thu, 23 Apr 2020 12:32:40 GMT and should not be manually modified.
+This log was last generated on Tue, 28 Apr 2020 12:34:09 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.7.0)
+
+Tue, 28 Apr 2020 12:34:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v7.6.0..@fluentui/react-focus_v7.7.0)
+
+### Minor changes
+
+- Updating IPoint, x and y references to Point, left and top respectively. ([PR #12722](https://github.com/microsoft/fluentui/pull/12722) by humbertomakotomorimoto@gmail.com)
+
+## [7.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.6.0)
+
+Mon, 27 Apr 2020 12:33:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v7.5.0..@fluentui/react-focus_v7.6.0)
+
+### Minor changes
+
+- FocusZone: Bringing shouldResetActiveElementWhenTabFromZone to v7. ([PR #12593](https://github.com/microsoft/fluentui/pull/12593) by Humberto.Morimoto@microsoft.com)
+
+### Patches
+
+- FocusZone: Adding check to see if element has editable content in Home and End keystroke scenarios. ([PR #12456](https://github.com/microsoft/fluentui/pull/12456) by humbertomakotomorimoto@gmail.com)
 
 ## [7.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.5.0)
 
