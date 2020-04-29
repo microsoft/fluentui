@@ -11,7 +11,7 @@ type PackageJson = {
 
 type Constraints = { [PackageId: string]: string[] };
 
-const findPackageJsonOf = (dependencyPackageId: string, packagePath: string): string => {
+const findPackageJsonOf = (dependencyPackageId: string, packagePath: string): string | null => {
   if (!packagePath) {
     return null;
   }
@@ -70,7 +70,7 @@ export const getDependenciesVersionConstraints = async (
   dependencyChain: string[],
 ): Promise<Constraints> => {
   let detectedConstraints: Constraints = {};
-  const dependenciesWithConstraints = (await parsePackageJson(packageJsonPath)).dependencies;
+  const dependenciesWithConstraints = (await parsePackageJson(packageJsonPath)).dependencies || [];
 
   const pendingTasks = dependenciesWithConstraints.map(async dependencyPackageId => {
     if (isIgnored(dependencyPackageId)) {
