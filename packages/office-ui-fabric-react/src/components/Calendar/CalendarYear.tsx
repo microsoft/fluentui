@@ -40,7 +40,6 @@ export interface ICalendarYearProps {
   onRenderYear?: (year: number) => React.ReactNode;
   className?: string;
   strings?: ICalendarYearStrings;
-  componentRef?: React.Ref<ICalendarYear>;
 }
 
 const DefaultCalendarYearStrings: ICalendarYearStrings = {
@@ -67,31 +66,17 @@ interface ICalendarYearGridCellProps {
   onRenderYear?: (year: number) => React.ReactNode;
 }
 
-const CalendarYearGridCell = React.memo(
-  React.forwardRef((props: ICalendarYearGridCellProps, forwardedRef: React.Ref<ICalendarYearGridCell>) => {
-    const _buttonRef = React.useRef<HTMLButtonElement>(null);
+class CalendarYearGridCell extends React.Component<ICalendarYearGridCellProps, {}> implements ICalendarYearGridCell {
+  private _buttonRef = React.createRef<HTMLButtonElement>();
 
-    const focus = React.useCallback(() => {
-      _buttonRef.current?.focus?.();
-    }, []);
+  public focus() {
+    if (this._buttonRef.current) {
+      this._buttonRef.current.focus();
+    }
+  }
 
-    React.useImperativeHandle(forwardedRef, () => ({ focus }), [focus]);
-
-    const { year, selected, disabled, onSelectYear, onRenderYear } = props;
-
-    const _onClick = React.useCallback(() => {
-      onSelectYear?.(year);
-    }, [onSelectYear, year]);
-
-    const _onKeyDown = React.useCallback(
-      (ev: React.KeyboardEvent<HTMLElement>) => {
-        if (ev.which === KeyCodes.enter) {
-          onSelectYear?.(year);
-        }
-      },
-      [onSelectYear, year],
-    );
-
+  public render() {
+    const { year, selected, disabled, onSelectYear } = this.props;
     return (
       <button
         className={css('ms-DatePicker-yearOption', styles.yearOption, {
@@ -100,18 +85,38 @@ const CalendarYearGridCell = React.memo(
         })}
         type="button"
         role="gridcell"
-        onClick={!disabled && onSelectYear ? _onClick : undefined}
-        onKeyDown={!disabled && onSelectYear ? _onKeyDown : undefined}
+        onClick={!disabled && onSelectYear ? this._onClick : undefined}
+        onKeyDown={!disabled && onSelectYear ? this._onKeyDown : undefined}
         disabled={disabled}
         aria-label={String(year)}
         aria-selected={selected}
-        ref={_buttonRef}
+        ref={this._buttonRef}
       >
-        {onRenderYear ? onRenderYear(year) : year}
+        {this._onRenderYear()}
       </button>
     );
-  }),
-);
+  }
+
+  private _onRenderYear = () => {
+    const { year, onRenderYear } = this.props;
+    if (onRenderYear) {
+      return onRenderYear(year);
+    }
+    return year;
+  };
+
+  private _onClick = () => {
+    if (this.props.onSelectYear) {
+      this.props.onSelectYear(this.props.year);
+    }
+  };
+
+  private _onKeyDown = (ev: React.KeyboardEvent<HTMLElement>) => {
+    if (this.props.onSelectYear && ev.which === KeyCodes.enter) {
+      this.props.onSelectYear(this.props.year);
+    }
+  };
+}
 
 interface ICalendarYearGrid {
   focus(): void;
@@ -121,45 +126,25 @@ interface ICalendarYearGridProps extends ICalendarYearProps, ICalendarYearRange 
   selectedYear?: number;
 }
 
-const CalendarYearGrid = React.memo(
-  React.forwardRef((props: ICalendarYearGridProps, forwardedRef: React.Ref<ICalendarYearGrid>) => {
-    const _selectedCellRef = React.useRef<ICalendarYearGridCell>(null);
-    const _currentCellRef = React.useRef<ICalendarYearGridCell>(null);
+class CalendarYearGrid extends React.Component<ICalendarYearGridProps, {}> implements ICalendarYearGrid {
+  private _selectedCellRef = React.createRef<CalendarYearGridCell>();
+  private _currentCellRef = React.createRef<CalendarYearGridCell>();
 
-    const focus = React.useCallback(() => {
-      if (_selectedCellRef.current) {
-        _selectedCellRef.current.focus();
-      } else if (_currentCellRef.current) {
-        _currentCellRef.current.focus();
-      }
-    }, []);
+  public focus() {
+    if (this._selectedCellRef.current) {
+      this._selectedCellRef.current.focus();
+    } else if (this._currentCellRef.current) {
+      this._currentCellRef.current.focus();
+    }
+  }
 
-    React.useImperativeHandle(forwardedRef, () => ({ focus }), [focus]);
-
-    const { fromYear, toYear, selectedYear, minYear, maxYear, onSelectYear } = props;
-
-    const _renderCell = (year: number): React.ReactNode => {
-      const selected = year === selectedYear;
-      const disabled = (minYear !== undefined && year < minYear) || (maxYear !== undefined && year > maxYear);
-      const current = year === new Date().getFullYear();
-      return (
-        <CalendarYearGridCell
-          key={year}
-          year={year}
-          selected={selected}
-          current={current}
-          disabled={disabled}
-          onSelectYear={onSelectYear}
-          ref={selected ? _selectedCellRef : current ? _currentCellRef : undefined}
-        />
-      );
-    };
-
-    let currentlyRenderedYear = fromYear;
+  public render() {
+    const { fromYear, toYear } = this.props;
+    let year = fromYear;
     const cells = [];
-    while (currentlyRenderedYear <= toYear) {
-      cells.push(_renderCell(currentlyRenderedYear));
-      currentlyRenderedYear++;
+    while (year <= toYear) {
+      cells.push(this._renderCell(year));
+      year++;
     }
     return (
       <FocusZone>
@@ -168,140 +153,219 @@ const CalendarYearGrid = React.memo(
         </div>
       </FocusZone>
     );
-  }),
-);
+  }
+
+  private _renderCell = (year: number): React.ReactNode => {
+    const selected = year === this.props.selectedYear;
+    const { minYear, maxYear, onSelectYear } = this.props;
+    const disabled = (minYear !== undefined && year < minYear) || (maxYear !== undefined && year > maxYear);
+    const current = year === new Date().getFullYear();
+    return (
+      <CalendarYearGridCell
+        key={year}
+        year={year}
+        selected={selected}
+        current={current}
+        disabled={disabled}
+        onSelectYear={onSelectYear}
+        ref={selected ? this._selectedCellRef : current ? this._currentCellRef : undefined}
+      />
+    );
+  };
+}
 
 export interface ICalendarYearHeaderProps extends ICalendarYearProps, ICalendarYearRange {
   onSelectPrev?: () => void;
   onSelectNext?: () => void;
 }
 
-const CalendarYearNavDir = React.memo(
-  ({
-    minYear,
-    maxYear,
-    fromYear,
-    toYear,
-    navigationIcons,
-    strings,
-    onSelectPrev,
-    onSelectNext,
-    dir,
-  }: ICalendarYearHeaderProps & { dir: 'prev' | 'next' }) => {
-    const isPrev = dir === 'prev';
-    const isDisabled = isPrev
-      ? minYear !== undefined && fromYear < minYear
-      : maxYear !== undefined && fromYear + CELL_COUNT > maxYear;
-
-    const _onSelect = React.useCallback(() => {
-      if (!isDisabled) {
-        isPrev ? onSelectPrev?.() : onSelectNext?.();
-      }
-    }, [isDisabled, onSelectPrev, onSelectNext, dir]);
-
-    const _onKeyDown = React.useCallback(
-      (ev: React.KeyboardEvent<HTMLElement>) => {
-        if (ev.which === KeyCodes.enter) {
-          _onSelect();
-        }
-      },
-      [_onSelect],
-    );
-
-    const iconStrings = navigationIcons || DefaultNavigationIcons;
-    const rangeAriaLabel = (strings || DefaultCalendarYearStrings)[
-      isPrev ? 'prevRangeAriaLabel' : 'nextRangeAriaLabel'
-    ];
-    const rangeOffset = isPrev ? -CELL_COUNT : CELL_COUNT;
-    const range = { fromYear: fromYear + rangeOffset, toYear: toYear + rangeOffset };
-    const ariaLabel = rangeAriaLabel
-      ? typeof rangeAriaLabel === 'string'
-        ? (rangeAriaLabel as string)
-        : (rangeAriaLabel as ICalendarYearRangeToString)(range)
+class CalendarYearNavPrev extends React.Component<ICalendarYearHeaderProps, any> {
+  public render() {
+    const iconStrings = this.props.navigationIcons || DefaultNavigationIcons;
+    const strings = this.props.strings || DefaultCalendarYearStrings;
+    const prevRangeAriaLabel = strings.prevRangeAriaLabel;
+    const prevRange = { fromYear: this.props.fromYear - CELL_COUNT, toYear: this.props.toYear - CELL_COUNT };
+    const prevAriaLabel = prevRangeAriaLabel
+      ? typeof prevRangeAriaLabel === 'string'
+        ? (prevRangeAriaLabel as string)
+        : (prevRangeAriaLabel as ICalendarYearRangeToString)(prevRange)
       : undefined;
+    const disabled = this.isDisabled;
+    const { onSelectPrev } = this.props;
     return (
       <button
         className={css('ms-DatePicker-prevDecade', styles.prevDecade, {
-          ['ms-DatePicker-prevDecade--disabled ' + styles.prevDecadeIsDisabled]: isDisabled,
+          ['ms-DatePicker-prevDecade--disabled ' + styles.prevDecadeIsDisabled]: disabled,
         })}
-        onClick={!isDisabled && onSelectPrev ? _onSelect : undefined}
-        onKeyDown={!isDisabled && onSelectPrev ? _onKeyDown : undefined}
+        onClick={!disabled && onSelectPrev ? this._onSelectPrev : undefined}
+        onKeyDown={!disabled && onSelectPrev ? this._onKeyDown : undefined}
         type="button"
         tabIndex={0}
-        title={ariaLabel}
-        disabled={isDisabled}
+        title={prevAriaLabel}
+        disabled={disabled}
       >
         <Icon iconName={getRTL() ? iconStrings.rightNavigation : iconStrings.leftNavigation} />
       </button>
     );
-  },
-);
+  }
 
-const CalendarYearNav = React.memo((props: ICalendarYearHeaderProps) => {
-  return (
-    <div className={css('ms-DatePicker-decadeComponents', styles.decadeComponents)}>
-      <div className={css('ms-DatePicker-navContainer', styles.navContainer)}>
-        <CalendarYearNavDir {...props} dir="prev" />
-        <CalendarYearNavDir {...props} dir="next" />
-      </div>
-    </div>
-  );
-});
+  get isDisabled() {
+    const { minYear } = this.props;
+    return minYear !== undefined && this.props.fromYear < minYear;
+  }
 
-const CalendarYearTitle = React.memo((props: ICalendarYearHeaderProps) => {
-  const { fromYear, toYear, onHeaderSelect, onRenderYear } = props;
-
-  const _onRenderYear = (year: number) => onRenderYear?.(year) ?? year;
-
-  const _onHeaderSelect = () => {
-    onHeaderSelect?.(true);
-  };
-
-  const _onHeaderKeyDown = (ev: React.KeyboardEvent<HTMLElement>) => {
-    if (ev.which === KeyCodes.enter || ev.which === KeyCodes.space) {
-      _onHeaderSelect();
+  private _onSelectPrev = () => {
+    if (!this.isDisabled && this.props.onSelectPrev) {
+      this.props.onSelectPrev();
     }
   };
 
-  if (onHeaderSelect) {
-    const strings = props.strings || DefaultCalendarYearStrings;
-    const rangeAriaLabel = strings.rangeAriaLabel;
-    const ariaLabel = rangeAriaLabel
-      ? typeof rangeAriaLabel === 'string'
-        ? (rangeAriaLabel as string)
-        : (rangeAriaLabel as ICalendarYearRangeToString)(props)
+  private _onKeyDown = (ev: React.KeyboardEvent<HTMLElement>) => {
+    if (ev.which === KeyCodes.enter) {
+      this._onSelectPrev();
+    }
+  };
+}
+
+class CalendarYearNavNext extends React.Component<ICalendarYearHeaderProps, any> {
+  public render() {
+    const iconStrings = this.props.navigationIcons || DefaultNavigationIcons;
+    const strings = this.props.strings || DefaultCalendarYearStrings;
+    const nextRangeAriaLabel = strings.nextRangeAriaLabel;
+    const nextRange = { fromYear: this.props.fromYear + CELL_COUNT, toYear: this.props.toYear + CELL_COUNT };
+    const nextAriaLabel = nextRangeAriaLabel
+      ? typeof nextRangeAriaLabel === 'string'
+        ? (nextRangeAriaLabel as string)
+        : (nextRangeAriaLabel as ICalendarYearRangeToString)(nextRange)
       : undefined;
+    const { onSelectNext } = this.props;
+    const disabled = this.isDisabled;
     return (
-      <div
-        className={css('ms-DatePicker-currentDecade js-showYearPicker', styles.currentDecade, styles.headerToggleView)}
-        onClick={_onHeaderSelect}
-        onKeyDown={_onHeaderKeyDown}
-        aria-label={ariaLabel}
-        role="button"
-        aria-atomic={true}
-        aria-live="polite"
+      <button
+        className={css('ms-DatePicker-nextDecade', styles.nextDecade, {
+          ['ms-DatePicker-nextDecade--disabled ' + styles.nextDecadeIsDisabled]: disabled,
+        })}
+        onClick={!disabled && onSelectNext ? this._onSelectNext : undefined}
+        onKeyDown={!disabled && onSelectNext ? this._onKeyDown : undefined}
+        type="button"
         tabIndex={0}
+        title={nextAriaLabel}
+        disabled={this.isDisabled}
       >
-        {_onRenderYear(fromYear)} - {_onRenderYear(toYear)}
+        <Icon iconName={getRTL() ? iconStrings.leftNavigation : iconStrings.rightNavigation} />
+      </button>
+    );
+  }
+
+  get isDisabled() {
+    const { maxYear } = this.props;
+    return maxYear !== undefined && this.props.fromYear + CELL_COUNT > maxYear;
+  }
+
+  private _onSelectNext = () => {
+    if (!this.isDisabled && this.props.onSelectNext) {
+      this.props.onSelectNext();
+    }
+  };
+
+  private _onKeyDown = (ev: React.KeyboardEvent<HTMLElement>) => {
+    if (ev.which === KeyCodes.enter) {
+      this._onSelectNext();
+    }
+  };
+}
+
+class CalendarYearNav extends React.Component<ICalendarYearHeaderProps, any> {
+  public render() {
+    return (
+      <div className={css('ms-DatePicker-decadeComponents', styles.decadeComponents)}>
+        <div className={css('ms-DatePicker-navContainer', styles.navContainer)}>
+          <CalendarYearNavPrev {...this.props} />
+          <CalendarYearNavNext {...this.props} />
+        </div>
       </div>
     );
   }
-  return (
-    <div className={css('ms-DatePicker-currentDecade js-showYearPicker', styles.currentDecade)}>
-      {_onRenderYear(fromYear)} - {_onRenderYear(toYear)}
-    </div>
-  );
-});
+}
 
-const CalendarYearHeader = React.memo((props: ICalendarYearHeaderProps) => {
-  const { onRenderTitle } = props;
-  return (
-    <div className={css('ms-DatePicker-header', styles.header)}>
-      {onRenderTitle?.(props) ?? <CalendarYearTitle {...props} />}
-      <CalendarYearNav {...props} />
-    </div>
-  );
-});
+class CalendarYearTitle extends React.Component<ICalendarYearHeaderProps, any> {
+  public render() {
+    const { fromYear, toYear, onHeaderSelect } = this.props;
+    if (onHeaderSelect) {
+      const strings = this.props.strings || DefaultCalendarYearStrings;
+      const rangeAriaLabel = strings.rangeAriaLabel;
+      const ariaLabel = rangeAriaLabel
+        ? typeof rangeAriaLabel === 'string'
+          ? (rangeAriaLabel as string)
+          : (rangeAriaLabel as ICalendarYearRangeToString)(this.props)
+        : undefined;
+      return (
+        <div
+          className={css(
+            'ms-DatePicker-currentDecade js-showYearPicker',
+            styles.currentDecade,
+            styles.headerToggleView,
+          )}
+          onClick={this._onHeaderSelect}
+          onKeyDown={this._onHeaderKeyDown}
+          aria-label={ariaLabel}
+          role="button"
+          aria-atomic={true}
+          aria-live="polite"
+          tabIndex={0}
+        >
+          {this._onRenderYear(fromYear)} - {this._onRenderYear(toYear)}
+        </div>
+      );
+    }
+    return (
+      <div className={css('ms-DatePicker-currentDecade js-showYearPicker', styles.currentDecade)}>
+        {this._onRenderYear(fromYear)} - {this._onRenderYear(toYear)}
+      </div>
+    );
+  }
+
+  private _onHeaderSelect = () => {
+    if (this.props.onHeaderSelect) {
+      this.props.onHeaderSelect(true);
+    }
+  };
+
+  private _onHeaderKeyDown = (ev: React.KeyboardEvent<HTMLElement>) => {
+    if (this.props.onHeaderSelect && (ev.which === KeyCodes.enter || ev.which === KeyCodes.space)) {
+      this.props.onHeaderSelect(true);
+    }
+  };
+
+  private _onRenderYear = (year: number) => {
+    if (this.props.onRenderYear) {
+      return this.props.onRenderYear(year);
+    }
+    return year;
+  };
+}
+
+class CalendarYearHeader extends React.Component<ICalendarYearHeaderProps, any> {
+  public render() {
+    return (
+      <div className={css('ms-DatePicker-header', styles.header)}>
+        {this._onRenderTitle()}
+        {this._onRenderNav()}
+      </div>
+    );
+  }
+
+  private _onRenderTitle = () => {
+    if (this.props.onRenderTitle) {
+      return this.props.onRenderTitle(this.props);
+    }
+    return <CalendarYearTitle {...this.props} />;
+  };
+
+  private _onRenderNav = () => {
+    return <CalendarYearNav {...this.props} />;
+  };
+}
 
 export interface ICalendarYearState {
   fromYear: number;
@@ -309,40 +373,68 @@ export interface ICalendarYearState {
   selectedYear?: number;
 }
 
-export const CalendarYear = React.memo(
-  React.forwardRef((props: ICalendarYearProps, forwardedRef: React.Ref<HTMLDivElement>) => {
-    const _gridRef = React.useRef<ICalendarYearGrid>(null);
-    const [fromYear, offsetFromYear] = React.useReducer(
-      (state: number, offset: number) => state + offset,
-      undefined,
-      () => Math.floor((props.selectedYear || props.navigatedYear || new Date().getFullYear()) / 10) * 10,
-    );
+export class CalendarYear extends React.Component<ICalendarYearProps, ICalendarYearState> implements ICalendarYear {
+  private _gridRef = React.createRef<CalendarYearGrid>();
 
-    const focus = React.useCallback(() => {
-      _gridRef.current?.focus?.();
-    }, []);
+  public constructor(props: ICalendarYearProps) {
+    super(props);
+    this.state = this._calculateInitialStateFromProps(props);
+  }
 
-    React.useImperativeHandle(props.componentRef, () => ({ focus }), [focus]);
+  public focus() {
+    if (this._gridRef.current) {
+      this._gridRef.current.focus();
+    }
+  }
 
-    const _onNavNext = React.useCallback(() => {
-      offsetFromYear(CELL_COUNT);
-    }, []);
-
-    const _onNavPrev = React.useCallback(() => {
-      offsetFromYear(-CELL_COUNT);
-    }, []);
-
+  public render() {
     return (
       <div className={css('ms-DatePicker-yearPicker', styles.yearPicker)}>
-        <CalendarYearHeader
-          {...props}
-          fromYear={fromYear}
-          toYear={fromYear + CELL_COUNT - 1}
-          onSelectPrev={_onNavPrev}
-          onSelectNext={_onNavNext}
-        />
-        <CalendarYearGrid {...props} fromYear={fromYear} toYear={fromYear + CELL_COUNT - 1} ref={_gridRef} />
+        {this._renderHeader()}
+        {this._renderGrid()}
       </div>
     );
-  }),
-);
+  }
+
+  private _onNavNext = () => {
+    this.setState({ fromYear: this.state.fromYear + CELL_COUNT });
+  };
+
+  private _onNavPrev = () => {
+    this.setState({ fromYear: this.state.fromYear - CELL_COUNT });
+  };
+
+  private _renderHeader = (): React.ReactNode => {
+    return (
+      <CalendarYearHeader
+        {...this.props}
+        fromYear={this.state.fromYear}
+        toYear={this.state.fromYear + CELL_COUNT - 1}
+        onSelectPrev={this._onNavPrev}
+        onSelectNext={this._onNavNext}
+      />
+    );
+  };
+
+  private _renderGrid = (): React.ReactNode => {
+    return (
+      <CalendarYearGrid
+        {...this.props}
+        fromYear={this.state.fromYear}
+        toYear={this.state.fromYear + CELL_COUNT - 1}
+        ref={this._gridRef}
+      />
+    );
+  };
+
+  private _calculateInitialStateFromProps(props: ICalendarYearProps): ICalendarYearState {
+    const { selectedYear, navigatedYear } = props;
+    const rangeYear = selectedYear || navigatedYear || new Date().getFullYear();
+    const fromYear = Math.floor(rangeYear / 10) * 10;
+    return {
+      fromYear: fromYear,
+      navigatedYear: navigatedYear,
+      selectedYear: selectedYear,
+    };
+  }
+}
