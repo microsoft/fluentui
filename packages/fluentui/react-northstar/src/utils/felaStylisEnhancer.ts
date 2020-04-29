@@ -1,6 +1,5 @@
 import { RULE_TYPE } from 'fela-utils';
-// @ts-ignore
-import Stylis from 'stylis';
+import * as Stylis from 'stylis';
 
 import { Renderer, RendererChange } from './types';
 
