@@ -1,10 +1,10 @@
 import { ComponentSlotStylesPrepared } from '@fluentui/styles';
-import { AccordionTitleProps } from '../../../../components/Accordion/AccordionTitle';
+import { AccordionTitleStylesProps } from '../../../../components/Accordion/AccordionTitle';
 import { AccordionVariables } from './accordionVariables';
 import activeIndicatorUrl from './activeIndicatorUrl';
 import { pxToRem } from '../../../../utils';
 
-const accordionTitleStyles: ComponentSlotStylesPrepared<AccordionTitleProps, AccordionVariables> = {
+const accordionTitleStyles: ComponentSlotStylesPrepared<AccordionTitleStylesProps, AccordionVariables> = {
   root: ({ props: p }) => ({
     display: 'inline-block',
     verticalAlign: 'middle',

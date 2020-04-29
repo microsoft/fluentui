@@ -7,9 +7,6 @@ module.exports = {
     ...require('lerna-alias').jest({
       directory: require('@uifabric/build/monorepo/findGitRoot')(),
     }),
-
-    'docs/(.*)$': `<rootDir>/../docs/$1`,
-
     // Legacy aliases, they should not be used in new tests
     '^src/(.*)$': `<rootDir>/src/$1`,
     'test/(.*)$': `<rootDir>/test/$1`,

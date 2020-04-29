@@ -4,8 +4,8 @@
 
 ```ts
 
-import { IPoint } from '@uifabric/utilities';
 import { IRefObject } from '@uifabric/utilities';
+import { Point } from '@uifabric/utilities';
 import * as React from 'react';
 
 // @public (undocumented)
@@ -25,7 +25,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     static getOuterZones(): number;
     // (undocumented)
     render(): React.ReactNode;
-    setFocusAlignment(point: IPoint): void;
+    setFocusAlignment(point: Point): void;
     }
 
 // @public (undocumented)
@@ -51,7 +51,7 @@ export interface IFocusZone {
     focus(forceIntoFirstElement?: boolean): boolean;
     focusElement(childElement?: HTMLElement): boolean;
     focusLast(): boolean;
-    setFocusAlignment(point: IPoint): void;
+    setFocusAlignment(point: Point): void;
 }
 
 // @public
@@ -84,6 +84,7 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
     rootProps?: React.HTMLAttributes<HTMLDivElement>;
     shouldFocusOnMount?: boolean;
     shouldInputLoseFocusOnArrowKey?: (inputElement: HTMLInputElement) => boolean;
+    shouldResetActiveElementWhenTabFromZone?: boolean;
 }
 
 

@@ -24,6 +24,9 @@ export const defaultComposeOptions: ComposePreparedOptions = {
 
   handledProps: [] as never[],
   overrideStyles: false,
+  slots: {},
+  mapPropsToSlotPropsChain: [],
+  resolveSlotProps: () => ({}),
 };
 
 export function mergeComposeOptions(
@@ -31,6 +34,29 @@ export function mergeComposeOptions(
   inputOptions: ComposeOptions,
   parentOptions: ComposePreparedOptions = defaultComposeOptions,
 ): ComposePreparedOptions {
+  const mapPropsToSlotPropsChain = inputOptions.mapPropsToSlotProps
+    ? [...parentOptions.mapPropsToSlotPropsChain, inputOptions.mapPropsToSlotProps]
+    : parentOptions.mapPropsToSlotPropsChain;
+
+  const resolveSlotProps = <P = {}>(props: P) =>
+    mapPropsToSlotPropsChain.reduce<Record<string, object>>((acc, definition) => {
+      const nextProps = { ...definition(props) };
+      const slots: string[] = [...Object.keys(acc), ...Object.keys(nextProps)];
+
+      const mergedSlotProps: Record<string, object> = {};
+
+      slots.forEach(slot => {
+        if (!mergedSlotProps[slot]) {
+          mergedSlotProps[slot] = {
+            ...acc[slot],
+            ...nextProps[slot],
+          };
+        }
+      });
+
+      return mergedSlotProps;
+    }, {});
+
   return {
     className: inputOptions.className || parentOptions.className,
     displayName: inputOptions.displayName || parentOptions.displayName,
@@ -43,6 +69,13 @@ export function mergeComposeOptions(
 
     handledProps: [...parentOptions.handledProps, ...((inputOptions.handledProps as never[]) || ([] as never[]))],
     overrideStyles: inputOptions.overrideStyles || false,
+
+    slots: {
+      ...parentOptions.slots,
+      ...inputOptions.slots,
+    },
+    mapPropsToSlotPropsChain,
+    resolveSlotProps,
   };
 }
 
