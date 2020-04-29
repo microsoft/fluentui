@@ -9,7 +9,7 @@ import {
   getNativeProps,
   inputProperties,
 } from '../../Utilities';
-
+import { useBoolean } from '@uifabric/react-hooks';
 import { IconButton } from '../../Button';
 import { Icon } from '../../Icon';
 
@@ -21,244 +21,418 @@ export interface ISearchBoxState {
   hasFocus?: boolean;
 }
 
-export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxState> {
-  public static defaultProps: Pick<ISearchBoxProps, 'disableAnimation' | 'clearButtonProps'> = {
-    disableAnimation: false,
-    clearButtonProps: { ariaLabel: 'Clear text' },
+export const SearchBoxBase: React.FunctionComponent = (props: ISearchBoxProps) => {
+  const [hasFocus, { toggle: toggleHasFocus }] = useBoolean(false);
+  let latestValue = props.value || '';
+  const [value, setValue] = React.useState(latestValue);
+  const rootElement = React.useRef<HTMLDivElement>(null);
+  const inputElement = React.useRef<HTMLInputElement>(null);
+  const fallbackId = getId(COMPONENT_NAME);
+
+  warnDeprecations(COMPONENT_NAME, props, {
+    labelText: 'placeholder',
+    defaultValue: 'value',
+  });
+
+  const {
+    ariaLabel,
+    placeholder,
+    className,
+    disabled,
+    underlined,
+    styles,
+    // tslint:disable-next-line:deprecation
+    labelText,
+    theme,
+    clearButtonProps,
+    disableAnimation,
+    iconProps,
+    id = fallbackId,
+  } = props;
+
+  const placeholderValue = placeholder !== undefined ? placeholder : labelText;
+
+  const classNames = getClassNames(styles!, {
+    theme: theme!,
+    className,
+    underlined,
+    hasFocus,
+    disabled,
+    hasInput: value!.length > 0,
+    disableAnimation,
+  });
+
+  const nativeProps = getNativeProps<React.InputHTMLAttributes<HTMLInputElement>>(props, inputProperties, [
+    'className',
+    'placeholder',
+    'onFocus',
+    'onBlur',
+    'value',
+  ]);
+
+  const callOnChange = (ev?: React.ChangeEvent<HTMLInputElement>, newValue?: string): void => {
+    // tslint:disable-next-line:deprecation
+    const { onChange, onChanged } = props;
+    // Call @deprecated method.
+    if (onChanged) {
+      onChanged(newValue);
+    }
+    if (onChange) {
+      onChange(ev, newValue);
+    }
   };
 
-  private _rootElement = React.createRef<HTMLDivElement>();
-  private _inputElement = React.createRef<HTMLInputElement>();
-  private _latestValue: string;
-  private _fallbackId: string;
-
-  public constructor(props: ISearchBoxProps) {
-    super(props);
-
-    initializeComponentRef(this);
-
-    warnDeprecations(COMPONENT_NAME, props, {
-      labelText: 'placeholder',
-      defaultValue: 'value',
-    });
-
-    this._latestValue = props.value || '';
-    this._fallbackId = getId(COMPONENT_NAME);
-
-    this.state = {
-      value: this._latestValue,
-      hasFocus: false,
-    };
-  }
-
-  // tslint:disable-next-line function-name
-  public UNSAFE_componentWillReceiveProps(newProps: ISearchBoxProps): void {
-    if (newProps.value !== undefined) {
-      this._latestValue = newProps.value;
-      // If the user passes in null, substitute an empty string
-      // (passing null is not allowed per typings, but users might do it anyway)
-      this.setState({
-        value: newProps.value || '',
-      });
-    }
-  }
-
-  public render() {
-    const {
-      ariaLabel,
-      placeholder,
-      className,
-      disabled,
-      underlined,
-      styles,
-      // tslint:disable-next-line:deprecation
-      labelText,
-      theme,
-      clearButtonProps,
-      disableAnimation,
-      iconProps,
-      id = this._fallbackId,
-    } = this.props;
-    const { value, hasFocus } = this.state;
-    const placeholderValue = placeholder !== undefined ? placeholder : labelText;
-
-    const classNames = getClassNames(styles!, {
-      theme: theme!,
-      className,
-      underlined,
-      hasFocus,
-      disabled,
-      hasInput: value!.length > 0,
-      disableAnimation,
-    });
-
-    const nativeProps = getNativeProps<React.InputHTMLAttributes<HTMLInputElement>>(this.props, inputProperties, [
-      'className',
-      'placeholder',
-      'onFocus',
-      'onBlur',
-      'value',
-    ]);
-
-    return (
-      <div role="search" ref={this._rootElement} className={classNames.root} onFocusCapture={this._onFocusCapture}>
-        <div className={classNames.iconContainer} onClick={this._onClickFocus} aria-hidden={true}>
-          <Icon iconName="Search" {...iconProps} className={classNames.icon} />
-        </div>
-        <input
-          {...nativeProps}
-          id={id}
-          className={classNames.field}
-          placeholder={placeholderValue}
-          onChange={this._onInputChange}
-          onInput={this._onInputChange}
-          onBlur={this._onBlur}
-          onKeyDown={this._onKeyDown}
-          value={value}
-          disabled={disabled}
-          role="searchbox"
-          aria-label={ariaLabel}
-          ref={this._inputElement}
-        />
-        {value!.length > 0 && (
-          <div className={classNames.clearButton}>
-            <IconButton
-              onBlur={this._onBlur}
-              styles={{ root: { height: 'auto' }, icon: { fontSize: '12px' } }}
-              iconProps={{ iconName: 'Clear' }}
-              {...clearButtonProps}
-              onClick={this._onClearClick}
-            />
-          </div>
-        )}
-      </div>
-    );
-  }
-
-  /**
-   * Sets focus to the search box input field
-   */
-  public focus() {
-    if (this._inputElement.current) {
-      this._inputElement.current.focus();
-    }
-  }
-
-  /**
-   * Returns whether or not the SearchBox has focus
-   */
-  public hasFocus(): boolean {
-    return !!this.state.hasFocus;
-  }
-
-  private _onClear(ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement> | React.KeyboardEvent<HTMLElement>) {
-    this.props.onClear && this.props.onClear(ev);
+  const onClear = (ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement> | React.KeyboardEvent<HTMLElement>) => {
+    props.onClear && props.onClear(ev);
     if (!ev.defaultPrevented) {
-      this._latestValue = '';
-      this.setState({
-        value: '',
-      });
-      this._callOnChange(undefined, '');
+      latestValue = '';
+      setValue('');
+      callOnChange(undefined, '');
       ev.stopPropagation();
       ev.preventDefault();
-
-      this.focus();
-    }
-  }
-
-  private _onClickFocus = () => {
-    const inputElement = this._inputElement.current;
-    if (inputElement) {
-      this.focus();
-      inputElement.selectionStart = inputElement.selectionEnd = 0;
+      toggleHasFocus();
     }
   };
 
-  private _onFocusCapture = (ev: React.FocusEvent<HTMLElement>) => {
-    this.setState({
-      hasFocus: true,
-    });
-
-    if (this.props.onFocus) {
-      this.props.onFocus(ev as React.FocusEvent<HTMLInputElement>);
+  const onClickFocus = () => {
+    if (inputElement.current) {
+      this.focus();
+      inputElement.current.selectionStart = inputElement.current.selectionEnd = 0;
     }
   };
 
-  private _onClearClick = (ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => {
-    const { clearButtonProps } = this.props;
+  const onFocusCapture = (ev: React.FocusEvent<HTMLElement>) => {
+    toggleHasFocus();
+    if (props.onFocus) {
+      props.onFocus(ev as React.FocusEvent<HTMLInputElement>);
+    }
+  };
 
+  const onClearClick = (ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => {
     if (clearButtonProps && clearButtonProps.onClick) {
       clearButtonProps.onClick(ev);
     }
-
     if (!ev.defaultPrevented) {
-      this._onClear(ev);
+      onClear(ev);
     }
   };
 
-  private _onKeyDown = (ev: React.KeyboardEvent<HTMLInputElement>) => {
+  const onBlur = (ev: React.FocusEvent<HTMLInputElement>): void => {
+    toggleHasFocus();
+    if (props.onBlur) {
+      props.onBlur(ev);
+    }
+  };
+
+  const onInputChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
+    if (ev.target.value === latestValue) {
+      return;
+    }
+    latestValue = ev.target.value;
+    // setValue(ev.target.value);
+    callOnChange(ev, ev.target.value);
+  };
+
+  const onKeyDown = (ev: React.KeyboardEvent<HTMLInputElement>) => {
     switch (ev.which) {
       case KeyCodes.escape:
-        this.props.onEscape && this.props.onEscape(ev);
+        props.onEscape && props.onEscape(ev);
         if (!ev.defaultPrevented) {
-          this._onClear(ev);
+          onClear(ev);
         }
         break;
-
       case KeyCodes.enter:
-        if (this.props.onSearch) {
-          this.props.onSearch(this.state.value);
+        if (props.onSearch) {
+          props.onSearch(value);
           break;
         }
         // if we don't handle the enter press then we shouldn't prevent default
         return;
-
       default:
-        this.props.onKeyDown && this.props.onKeyDown(ev);
+        props.onKeyDown && props.onKeyDown(ev);
         if (!ev.defaultPrevented) {
           return;
         }
     }
-
     // We only get here if the keypress has been handled,
     // or preventDefault was called in case of default keyDown handler
     ev.preventDefault();
     ev.stopPropagation();
   };
 
-  private _onBlur = (ev: React.FocusEvent<HTMLInputElement>): void => {
-    this.setState({
-      hasFocus: false,
-    });
+  return (
+    <div role="search" ref={rootElement} className={classNames.root} onFocusCapture={onFocusCapture}>
+      <div className={classNames.iconContainer} onClick={onClickFocus} aria-hidden>
+        <Icon iconName="Search" {...iconProps} className={classNames.icon} />
+      </div>
+      <input
+        {...nativeProps}
+        id={id}
+        className={classNames.field}
+        placeholder={placeholderValue}
+        onChange={onInputChange}
+        onInput={onInputChange}
+        onBlur={onBlur}
+        onKeyDown={onKeyDown}
+        value={value}
+        disabled={disabled}
+        role="searchbox"
+        aria-label={ariaLabel}
+        ref={inputElement}
+      />
+      {value!.length > 0 && (
+        <div className={classNames.clearButton}>
+          <IconButton
+            onBlur={onBlur}
+            styles={{ root: { height: 'auto' }, icon: { fontSize: '12px' } }}
+            iconProps={{ iconName: 'Clear' }}
+            {...clearButtonProps}
+            onClick={onClearClick}
+          />
+        </div>
+      )}
+    </div>
+  );
+};
 
-    if (this.props.onBlur) {
-      this.props.onBlur(ev);
-    }
-  };
+// export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxState> {
+//   public static defaultProps: Pick<ISearchBoxProps, 'disableAnimation' | 'clearButtonProps'> = {
+//     disableAnimation: false,
+//     clearButtonProps: { ariaLabel: 'Clear text' },
+//   };
 
-  private _onInputChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
-    const value = ev.target.value;
+//   private _rootElement = React.createRef<HTMLDivElement>();
+//   private _inputElement = React.createRef<HTMLInputElement>();
+//   private _latestValue: string;
+//   private _fallbackId: string;
 
-    if (value === this._latestValue) {
-      return;
-    }
-    this._latestValue = value;
+//   public constructor(props: ISearchBoxProps) {
+//     super(props);
 
-    this.setState({ value });
-    this._callOnChange(ev, value);
-  };
+//     initializeComponentRef(this);
 
-  private _callOnChange(ev?: React.ChangeEvent<HTMLInputElement>, newValue?: string): void {
-    // tslint:disable-next-line:deprecation
-    const { onChange, onChanged } = this.props;
+//     warnDeprecations(COMPONENT_NAME, props, {
+//       labelText: 'placeholder',
+//       defaultValue: 'value',
+//     });
 
-    // Call @deprecated method.
-    if (onChanged) {
-      onChanged(newValue);
-    }
+//     this._latestValue = props.value || '';
+//     this._fallbackId = getId(COMPONENT_NAME);
 
-    if (onChange) {
-      onChange(ev, newValue);
-    }
-  }
-}
+//     this.state = {
+//       value: this._latestValue,
+//       hasFocus: false,
+//     };
+//   }
+
+//   // tslint:disable-next-line function-name
+//   public UNSAFE_componentWillReceiveProps(newProps: ISearchBoxProps): void {
+//     if (newProps.value !== undefined) {
+//       this._latestValue = newProps.value;
+//       // If the user passes in null, substitute an empty string
+//       // (passing null is not allowed per typings, but users might do it anyway)
+//       this.setState({
+//         value: newProps.value || '',
+//       });
+//     }
+//   }
+
+//   public render() {
+//     const {
+//       ariaLabel,
+//       placeholder,
+//       className,
+//       disabled,
+//       underlined,
+//       styles,
+//       // tslint:disable-next-line:deprecation
+//       labelText,
+//       theme,
+//       clearButtonProps,
+//       disableAnimation,
+//       iconProps,
+//       id = this._fallbackId,
+//     } = this.props;
+//     const { value, hasFocus } = this.state;
+//     const placeholderValue = placeholder !== undefined ? placeholder : labelText;
+
+//     const classNames = getClassNames(styles!, {
+//       theme: theme!,
+//       className,
+//       underlined,
+//       hasFocus,
+//       disabled,
+//       hasInput: value!.length > 0,
+//       disableAnimation,
+//     });
+
+//     const nativeProps = getNativeProps<React.InputHTMLAttributes<HTMLInputElement>>(this.props, inputProperties, [
+//       'className',
+//       'placeholder',
+//       'onFocus',
+//       'onBlur',
+//       'value',
+//     ]);
+
+//     return (
+//       <div role="search" ref={this._rootElement} className={classNames.root} onFocusCapture={this._onFocusCapture}>
+//         <div className={classNames.iconContainer} onClick={this._onClickFocus} aria-hidden={true}>
+//           <Icon iconName="Search" {...iconProps} className={classNames.icon} />
+//         </div>
+//         <input
+//           {...nativeProps}
+//           id={id}
+//           className={classNames.field}
+//           placeholder={placeholderValue}
+//           onChange={this._onInputChange}
+//           onInput={this._onInputChange}
+//           onBlur={this._onBlur}
+//           onKeyDown={this._onKeyDown}
+//           value={value}
+//           disabled={disabled}
+//           role="searchbox"
+//           aria-label={ariaLabel}
+//           ref={this._inputElement}
+//         />
+//         {value!.length > 0 && (
+//           <div className={classNames.clearButton}>
+//             <IconButton
+//               onBlur={this._onBlur}
+//               styles={{ root: { height: 'auto' }, icon: { fontSize: '12px' } }}
+//               iconProps={{ iconName: 'Clear' }}
+//               {...clearButtonProps}
+//               onClick={this._onClearClick}
+//             />
+//           </div>
+//         )}
+//       </div>
+//     );
+//   }
+
+//   /**
+//    * Sets focus to the search box input field
+//    */
+//   public focus() {
+//     if (this._inputElement.current) {
+//       this._inputElement.current.focus();
+//     }
+//   }
+
+//   /**
+//    * Returns whether or not the SearchBox has focus
+//    */
+//   public hasFocus(): boolean {
+//     return !!this.state.hasFocus;
+//   }
+
+//   private _onClear(ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement> | React.KeyboardEvent<HTMLElement>) {
+//     this.props.onClear && this.props.onClear(ev);
+//     if (!ev.defaultPrevented) {
+//       this._latestValue = '';
+//       this.setState({
+//         value: '',
+//       });
+//       this._callOnChange(undefined, '');
+//       ev.stopPropagation();
+//       ev.preventDefault();
+
+//       this.focus();
+//     }
+//   }
+
+//   private _onClickFocus = () => {
+//     const inputElement = this._inputElement.current;
+//     if (inputElement) {
+//       this.focus();
+//       inputElement.selectionStart = inputElement.selectionEnd = 0;
+//     }
+//   };
+
+//   private _onFocusCapture = (ev: React.FocusEvent<HTMLElement>) => {
+//     this.setState({
+//       hasFocus: true,
+//     });
+
+//     if (this.props.onFocus) {
+//       this.props.onFocus(ev as React.FocusEvent<HTMLInputElement>);
+//     }
+//   };
+
+//   private _onClearClick = (ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => {
+//     const { clearButtonProps } = this.props;
+
+//     if (clearButtonProps && clearButtonProps.onClick) {
+//       clearButtonProps.onClick(ev);
+//     }
+
+//     if (!ev.defaultPrevented) {
+//       this._onClear(ev);
+//     }
+//   };
+
+//   private _onKeyDown = (ev: React.KeyboardEvent<HTMLInputElement>) => {
+//     switch (ev.which) {
+//       case KeyCodes.escape:
+//         this.props.onEscape && this.props.onEscape(ev);
+//         if (!ev.defaultPrevented) {
+//           this._onClear(ev);
+//         }
+//         break;
+
+//       case KeyCodes.enter:
+//         if (this.props.onSearch) {
+//           this.props.onSearch(this.state.value);
+//           break;
+//         }
+//         // if we don't handle the enter press then we shouldn't prevent default
+//         return;
+
+//       default:
+//         this.props.onKeyDown && this.props.onKeyDown(ev);
+//         if (!ev.defaultPrevented) {
+//           return;
+//         }
+//     }
+
+//     // We only get here if the keypress has been handled,
+//     // or preventDefault was called in case of default keyDown handler
+//     ev.preventDefault();
+//     ev.stopPropagation();
+//   };
+
+//   private _onBlur = (ev: React.FocusEvent<HTMLInputElement>): void => {
+//     this.setState({
+//       hasFocus: false,
+//     });
+
+//     if (this.props.onBlur) {
+//       this.props.onBlur(ev);
+//     }
+//   };
+
+//   private _onInputChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
+//     const value = ev.target.value;
+
+//     if (value === this._latestValue) {
+//       return;
+//     }
+//     this._latestValue = value;
+
+//     this.setState({ value });
+//     this._callOnChange(ev, value);
+//   };
+
+//   private _callOnChange(ev?: React.ChangeEvent<HTMLInputElement>, newValue?: string): void {
+//     // tslint:disable-next-line:deprecation
+//     const { onChange, onChanged } = this.props;
+
+//     // Call @deprecated method.
+//     if (onChanged) {
+//       onChanged(newValue);
+//     }
+
+//     if (onChange) {
+//       onChange(ev, newValue);
+//     }
+//   }
+// }
