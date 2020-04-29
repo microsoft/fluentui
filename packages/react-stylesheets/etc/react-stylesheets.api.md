@@ -16,7 +16,7 @@ export const StylesheetProvider: (props: React.PropsWithChildren<StylesheetProvi
 
 // @public
 export interface StylesheetProviderProps {
-    renderSheets?: (stylesheets: string[], context: StylesheetProviderProps) => void;
+    renderStyles?: (stylesheets: string[], context: StylesheetProviderProps) => void;
     target?: Document;
 }
 
