@@ -26,6 +26,7 @@ import {
   SizeValue,
   ShorthandFactory,
   ShorthandConfig,
+  createShorthand,
 } from '../../utils';
 import Box, { BoxProps } from '../Box/Box';
 import Loader, { LoaderProps } from '../Loader/Loader';
@@ -184,25 +185,34 @@ const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
       unstable_props: props,
     });
 
+    const slotProps = composeOptions.resolveSlotProps<ButtonProps>(props);
+
     const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
     const ElementType = getElementType(props);
 
     const renderIcon = () => {
-      return Box.create(icon, {
+      return createShorthand(composeOptions.slots.icon, icon, {
         defaultProps: () =>
           getA11yProps('icon', {
             styles: resolvedStyles.icon,
+            ...slotProps.icon,
           }),
       });
     };
 
     const renderLoader = () => {
-      return Loader.create(loader || {}, {
+      return createShorthand(composeOptions.slots.loader, loader || {}, {
         defaultProps: () =>
           getA11yProps('loader', {
-            role: undefined,
             styles: resolvedStyles.loader,
+            ...slotProps.loader,
           }),
+      });
+    };
+
+    const renderContent = () => {
+      return createShorthand(composeOptions.slots.content, content, {
+        defaultProps: () => getA11yProps('content', slotProps.content),
       });
     };
 
@@ -237,9 +247,7 @@ const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
           <>
             {loading && renderLoader()}
             {iconPosition !== 'after' && renderIcon()}
-            {ButtonContent.create(content, {
-              defaultProps: () => getA11yProps('content', { as: 'span', size }),
-            })}
+            {renderContent()}
             {iconPosition === 'after' && renderIcon()}
           </>
         )}
@@ -253,6 +261,21 @@ const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
   {
     className: buttonClassName,
     displayName: 'Button',
+
+    slots: {
+      content: ButtonContent,
+      icon: Box,
+      loader: Loader,
+    },
+
+    mapPropsToSlotProps: props => ({
+      content: {
+        size: props.size,
+      },
+      loader: {
+        role: undefined,
+      },
+    }),
 
     handledProps: [
       'accessibility',

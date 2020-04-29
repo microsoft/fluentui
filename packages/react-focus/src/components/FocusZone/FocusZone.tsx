@@ -22,7 +22,7 @@ import {
   shouldWrapFocus,
   warnDeprecations,
   portalContainsElement,
-  IPoint,
+  Point,
   getWindow,
   findScrollableParent,
 } from '@uifabric/utilities';
@@ -93,7 +93,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
 
   /** The child element with tabindex=0. */
   private _defaultFocusElement: HTMLElement | null;
-  private _focusAlignment: IPoint;
+  private _focusAlignment: Point;
   private _isInnerZone: boolean;
   private _parkedTabIndex: string | null | undefined;
 
@@ -125,8 +125,8 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     this._id = getId('FocusZone');
 
     this._focusAlignment = {
-      x: 0,
-      y: 0,
+      left: 0,
+      top: 0,
     };
 
     this._processingTabKey = false;
@@ -216,10 +216,11 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
   }
 
   public render(): React.ReactNode {
-    // tslint:disable:deprecation
+    // tslint:disable-next-line:deprecation
     const { rootProps, ariaDescribedBy, ariaLabelledBy, className } = this.props;
     const divProps = getNativeProps(this.props, htmlElementProperties);
 
+    // tslint:disable-next-line:deprecation
     const Tag = this.props.as || this.props.elementType || 'div';
 
     // Note, right before rendering/reconciling proceeds, we need to record if focus
@@ -341,7 +342,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
    * rather than a center based on the last horizontal motion.
    * @param point - the new reference point.
    */
-  public setFocusAlignment(point: IPoint): void {
+  public setFocusAlignment(point: Point): void {
     this._focusAlignment = point;
   }
 
@@ -450,6 +451,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
    * Handle global tab presses so that we can patch tabindexes on the fly.
    */
   private _onKeyDownCapture = (ev: KeyboardEvent): void => {
+    // tslint:disable-next-line:deprecation
     if (ev.which === KeyCodes.tab) {
       _outerZones.forEach((zone: FocusZone) => zone._updateTabIndexes());
     }
@@ -630,6 +632,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
 
         case KeyCodes.tab:
           if (
+            // tslint:disable-next-line:deprecation
             this.props.allowTabKey ||
             this.props.handleTabKey === FocusZoneTabbableElements.all ||
             (this.props.handleTabKey === FocusZoneTabbableElements.inputOnly &&
@@ -649,14 +652,17 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
             this._processingTabKey = false;
             if (focusChanged) {
               break;
+            } else if (this.props.shouldResetActiveElementWhenTabFromZone) {
+              this._activeElement = null;
             }
           }
           return;
 
         case KeyCodes.home:
           if (
-            this._isElementInput(ev.target as HTMLElement) &&
-            !this._shouldInputLoseFocus(ev.target as HTMLInputElement, false)
+            this._isContentEditableElement(ev.target as HTMLElement) ||
+            (this._isElementInput(ev.target as HTMLElement) &&
+              !this._shouldInputLoseFocus(ev.target as HTMLInputElement, false))
           ) {
             return false;
           }
@@ -672,8 +678,9 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
 
         case KeyCodes.end:
           if (
-            this._isElementInput(ev.target as HTMLElement) &&
-            !this._shouldInputLoseFocus(ev.target as HTMLInputElement, true)
+            this._isContentEditableElement(ev.target as HTMLElement) ||
+            (this._isElementInput(ev.target as HTMLElement) &&
+              !this._shouldInputLoseFocus(ev.target as HTMLInputElement, true))
           ) {
             return false;
           }
@@ -848,7 +855,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
 
   private _moveFocusDown(): boolean {
     let targetTop = -1;
-    const leftAlignment = this._focusAlignment.x;
+    const leftAlignment = this._focusAlignment.left || 0;
 
     if (
       this._moveFocus(true, (activeRect: ClientRect, targetRect: ClientRect) => {
@@ -889,7 +896,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
 
   private _moveFocusUp(): boolean {
     let targetTop = -1;
-    const leftAlignment = this._focusAlignment.x;
+    const leftAlignment = this._focusAlignment.left || 0;
 
     if (
       this._moveFocus(false, (activeRect: ClientRect, targetRect: ClientRect) => {
@@ -1019,7 +1026,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     activeRect: ClientRect,
     targetRect: ClientRect,
   ): number => {
-    const leftAlignment = this._focusAlignment.x;
+    const leftAlignment = this._focusAlignment.left || 0;
     // ClientRect values can be floats that differ by very small fractions of a decimal.
     // If the difference between top and bottom are within a pixel then we should treat
     // them as equivalent by using Math.floor. For instance 5.2222 and 5.222221 should be equivalent,
@@ -1140,18 +1147,15 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
       const top = rect.top + rect.height / 2;
 
       if (!this._focusAlignment) {
-        this._focusAlignment = {
-          x: left,
-          y: top,
-        };
+        this._focusAlignment = { left, top };
       }
 
       if (isHorizontal) {
-        this._focusAlignment.x = left;
+        this._focusAlignment.left = left;
       }
 
       if (isVertical) {
-        this._focusAlignment.y = top;
+        this._focusAlignment.top = top;
       }
     }
   }
@@ -1234,6 +1238,10 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
 
       this._updateTabIndexes(child);
     }
+  }
+
+  private _isContentEditableElement(element: HTMLElement): boolean {
+    return element && element.getAttribute('contenteditable') === 'true';
   }
 
   private _isElementInput(element: HTMLElement): boolean {

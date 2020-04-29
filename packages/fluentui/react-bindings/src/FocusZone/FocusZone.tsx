@@ -611,7 +611,7 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
             this._processingTabKey = true;
             if (direction === FocusZoneDirection.vertical) {
               focusChanged = ev.shiftKey ? this.moveFocusUp() : this.moveFocusDown();
-            } else if (direction === FocusZoneDirection.horizontal || direction === FocusZoneDirection.bidirectional) {
+            } else {
               const tabWithDirection = this.props.isRtl ? !ev.shiftKey : ev.shiftKey;
               focusChanged = tabWithDirection ? this.moveFocusLeft() : this.moveFocusRight();
             }
@@ -1090,18 +1090,19 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
       const selectionEnd = element.selectionEnd;
       const isRangeSelected = selectionStart !== selectionEnd;
       const inputValue = element.value;
+      const isReadonly = element.readOnly;
 
       // We shouldn't lose focus in the following cases:
       // 1. There is range selected.
-      // 2. When selection start is larger than 0 and it is backward.
-      // 3. when selection start is not the end of length and it is forward.
+      // 2. When selection start is larger than 0 and it is backward and not readOnly.
+      // 3. when selection start is not the end of length and it is forward and not readOnly.
       // 4. We press any of the arrow keys when our handleTabKey isn't none or undefined (only losing focus if we hit tab)
       // and if shouldInputLoseFocusOnArrowKey is defined, if scenario prefers to not loose the focus which is determined by calling the
       // callback shouldInputLoseFocusOnArrowKey
       if (
         isRangeSelected ||
-        (selectionStart! > 0 && !isForward) ||
-        (selectionStart !== inputValue.length && isForward) ||
+        (selectionStart! > 0 && !isForward && !isReadonly) ||
+        (selectionStart !== inputValue.length && isForward && !isReadonly) ||
         (!!this.props.handleTabKey &&
           !(this.props.shouldInputLoseFocusOnArrowKey && this.props.shouldInputLoseFocusOnArrowKey(element)))
       ) {
