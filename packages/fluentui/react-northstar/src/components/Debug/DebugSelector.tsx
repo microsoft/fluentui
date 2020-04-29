@@ -63,8 +63,8 @@ class DebugSelector extends React.Component<DebugSelectorProps, DebugSelectorSta
 
   setCurrentFiberNav = (fiberNav: FiberNavigator | null) => {
     this.setState(prevState => {
-      if (fiberNav !== prevState.fiberNav) {
-        this.props.onHover?.(fiberNav); // TODO: is it ok to call a cb() from inside setState()?
+      if (fiberNav?.__fiber !== prevState.fiberNav?.__fiber) {
+        this.props.onHover?.(fiberNav);
         return { fiberNav };
       }
       return null;
