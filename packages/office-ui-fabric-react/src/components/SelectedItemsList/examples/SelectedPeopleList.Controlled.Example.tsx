@@ -22,10 +22,12 @@ export const SelectedPeopleListControlledExample: React.FunctionComponent = () =
   const [nextPersonIndex, setNextPersonIndex] = React.useState(0);
   const [currentSelectedItems, setCurrentSelectedItems] = React.useState<any[]>([people[40]]);
   const selectionList = React.useRef<SelectedPeopleList>(null);
+
   const onAddItemButtonClicked = (): void => {
     setCurrentSelectedItems([...currentSelectedItems, people[nextPersonIndex]]);
     setNextPersonIndex(nextPersonIndex + 1);
   };
+
   const onExpandItem = (item: IExtendedPersonaProps): void => {
     const expandedItem = item.text === 'Group One' ? groupOne : item.text === 'Group Two' ? groupTwo : [];
     const indexToExpand = currentSelectedItems.indexOf(item);
@@ -36,12 +38,14 @@ export const SelectedPeopleListControlledExample: React.FunctionComponent = () =
         .concat(currentSelectedItems.slice(indexToExpand + 1)),
     );
   };
+
   const onItemDeleted = (item: IExtendedPersonaProps): void => {
     const indexToRemove = currentSelectedItems.indexOf(item);
     const newSelectedItems = [...currentSelectedItems];
     newSelectedItems.splice(indexToRemove, 1);
     setCurrentSelectedItems(newSelectedItems);
   };
+
   return (
     <div>
       <PrimaryButton
