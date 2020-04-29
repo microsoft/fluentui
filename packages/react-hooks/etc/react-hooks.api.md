@@ -16,7 +16,7 @@ export interface IUseBooleanCallbacks {
     toggle: () => void;
 }
 
-// @public (undocumented)
+// @public
 export function useAsync(): Async;
 
 // @public
