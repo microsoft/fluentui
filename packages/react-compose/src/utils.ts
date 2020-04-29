@@ -110,7 +110,6 @@ export function mergeComposeOptions(
   mergedStylesheets = collectStylesheets(mergedSlots, mergedStylesheets);
 
   // @ts-ignore
-  // @ts-ignore
   return {
     className: inputOptions.className || parentOptions.className,
     displayName: inputOptions.displayName || parentOptions.displayName,
