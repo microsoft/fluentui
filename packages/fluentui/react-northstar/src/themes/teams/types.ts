@@ -1,3 +1,4 @@
+import { TextAreaStylesProps } from './../../components/TextArea/TextArea';
 import {
   ColorScheme,
   ColorSchemeMapping,
@@ -7,9 +8,9 @@ import {
   PrimitiveColors,
 } from '../types';
 
-import { AccordionContentProps } from '../../components/Accordion/AccordionContent';
+import { AccordionContentStylesProps } from '../../components/Accordion/AccordionContent';
 import { AccordionProps } from '../../components/Accordion/Accordion';
-import { AccordionTitleProps } from '../../components/Accordion/AccordionTitle';
+import { AccordionTitleStylesProps } from '../../components/Accordion/AccordionTitle';
 import { AlertStylesProps } from '../../components/Alert/Alert';
 import { AnimationProps } from '../../components/Animation/Animation';
 import { AttachmentProps } from '../../components/Attachment/Attachment';
@@ -29,7 +30,7 @@ import { CheckboxStylesProps } from '../../components/Checkbox/Checkbox';
 import { DividerProps } from '../../components/Divider/Divider';
 import { DialogProps } from '../../components/Dialog/Dialog';
 import { DropdownProps } from '../../components/Dropdown/Dropdown';
-import { EmbedProps } from '../../components/Embed/Embed';
+import { EmbedStylesProps } from '../../components/Embed/Embed';
 import { FlexItemStylesProps } from '../../components/Flex/FlexItem';
 import { FlexStylesProps } from '../../components/Flex/Flex';
 import { FormFieldProps } from '../../components/Form/FormField';
@@ -73,8 +74,8 @@ import { HierarchicalTreeTitleProps } from '../../components/HierarchicalTree/Hi
 import { VideoStylesProps } from '../../components/Video/Video';
 import { TreeItemStylesProps } from '../../components/Tree/TreeItem';
 import { TreeTitleStylesProps } from '../../components/Tree/TreeTitle';
-import { TableProps } from '../../components/Table/Table';
-import { TableRowProps } from '../../components/Table/TableRow';
+import { TableStylesProps } from '../../components/Table/Table';
+import { TableRowStylesProps } from '../../components/Table/TableRow';
 import { TableCellStylesProps } from '../../components/Table/TableCell';
 import { CardStylesProps } from '../../components/Card/Card';
 import { CardPreviewStylesProps } from '../../components/Card/CardPreview';
@@ -83,11 +84,12 @@ import { CardHeaderStylesProps } from '../../components/Card/CardHeader';
 import { CardBodyStylesProps } from '../../components/Card/CardBody';
 import { CardFooterStylesProps } from '../../components/Card/CardFooter';
 import { SvgIconStylesProps } from '../../components/SvgIcon/SvgIcon';
+import { SplitButtonStylesProps } from '../../components/SplitButton/SplitButton';
 
 export type TeamsThemeStylesProps = {
   Accordion: AccordionProps;
-  AccordionTitle: AccordionTitleProps;
-  AccordionContent: AccordionContentProps;
+  AccordionContent: AccordionContentStylesProps;
+  AccordionTitle: AccordionTitleStylesProps;
   Alert: AlertStylesProps;
   Animation: AnimationProps;
   Attachment: AttachmentProps;
@@ -107,7 +109,7 @@ export type TeamsThemeStylesProps = {
   Divider: DividerProps;
   Dialog: DialogProps;
   Dropdown: DropdownProps;
-  Embed: EmbedProps;
+  Embed: EmbedStylesProps;
   Flex: FlexStylesProps;
   FlexItem: FlexItemStylesProps;
   Form: FormProps;
@@ -134,6 +136,7 @@ export type TeamsThemeStylesProps = {
   ReactionGroup: ReactionGroupProps;
   Segment: SegmentProps;
   Slider: SliderStylesProps;
+  SplitButton: SplitButtonStylesProps;
   Status: StatusStylesProps;
   Toolbar: ToolbarProps;
   ToolbarCustomItem: ToolbarCustomItemStylesProps;
@@ -146,14 +149,15 @@ export type TeamsThemeStylesProps = {
   ToolbarMenuRadioGroup: ToolbarMenuRadioGroupStylesProps;
   TooltipContent: TooltipContentStylesProps;
   Text: TextStylesProps;
+  TextArea: TextAreaStylesProps;
   TreeItem: TreeItemStylesProps;
   TreeTitle: TreeTitleStylesProps;
   HierarchicalTree: HierarchicalTreeProps;
   HierarchicalTreeItem: HierarchicalTreeItemProps;
   HierarchicalTreeTitle: HierarchicalTreeTitleProps;
   Video: VideoStylesProps;
-  Table: TableProps;
-  TableRow: TableRowProps;
+  Table: TableStylesProps;
+  TableRow: TableRowStylesProps;
   TableCell: TableCellStylesProps;
   Card: CardStylesProps;
   CardPreview: CardPreviewStylesProps;

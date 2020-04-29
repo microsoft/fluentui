@@ -6,7 +6,7 @@ We have a lot in store for Fluent UI - [Read our announcement here.](https://dev
 
 # [Fluent UI React](https://developer.microsoft.com/en-us/fluentui)
 
-**The React-based front-end framework for building experiences for Microsoft 365.**
+**The React-based front-end framework for building web experiences.**
 
 [![npm version](https://badge.fury.io/js/%40fluentui%2Freact.svg)](https://badge.fury.io/js/%40fluentui%2Freact) [![Build Status](https://dev.azure.com/uifabric/fabricpublic/_apis/build/status/office-ui-fabric-react%20-%20PR?branchName=master)](https://dev.azure.com/uifabric/fabricpublic/_build/latest?definitionId=84&branchName=master)
 

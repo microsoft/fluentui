@@ -32,6 +32,7 @@ const renderDropdown = (props: DropdownProps = {}) => {
     getSelectedItemNodes: () => getSelectedItemsWrapper().map(nodeWrapper => nodeWrapper.getDOMNode()),
     getSelectedItemNodeAtIndex: index => getSelectedItemWrapperAtIndex(index).getDOMNode(),
     getClearIndicatorWrapper,
+    getClearIndicatorNode: () => getClearIndicatorWrapper().getDOMNode(),
     mouseOverItemAtIndex: index => getItemWrapperAtIndex(index).simulate('mousemove'),
     changeSearchInput: value => {
       searchInputWrapper.simulate('change', { target: { value } });

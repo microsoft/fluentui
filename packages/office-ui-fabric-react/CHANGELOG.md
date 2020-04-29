@@ -1,8 +1,55 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 21 Apr 2020 12:34:50 GMT and should not be manually modified.
+This log was last generated on Wed, 29 Apr 2020 12:34:58 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.109.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.109.0)
+
+Wed, 29 Apr 2020 12:34:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.108.0..office-ui-fabric-react_v7.109.0)
+
+### Minor changes
+
+- update MessageBar colors ([PR #12821](https://github.com/microsoft/fluentui/pull/12821) by chrismo@microsoft.com)
+
+### Patches
+
+- Updating FocusTrapZone, Overlay, and TextField to use function components ([PR #12774](https://github.com/microsoft/fluentui/pull/12774) by czearing@outlook.com)
+
+## [7.108.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.108.0)
+
+Tue, 28 Apr 2020 12:34:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.107.5..office-ui-fabric-react_v7.108.0)
+
+### Minor changes
+
+- Updating IPoint, x and y references to Point, left and top respectively. ([PR #12722](https://github.com/microsoft/fluentui/pull/12722) by humbertomakotomorimoto@gmail.com)
+- Popup: add onRestoreFocus method to replace shouldRestoreFocus ([PR #12806](https://github.com/microsoft/fluentui/pull/12806) by joschect@microsoft.com)
+
+### Patches
+
+- Change contextual menu renderMenuItem function to prevent prop mutation and unneeded rerenders ([PR #12750](https://github.com/microsoft/fluentui/pull/12750) by tabrumle@microsoft.com)
+- Updating examples for ScrollablePane and HoverCard to use FC ([PR #12871](https://github.com/microsoft/fluentui/pull/12871) by czearing@outlook.com)
+
+## [7.107.5](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.107.5)
+
+Fri, 24 Apr 2020 12:39:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.107.3..office-ui-fabric-react_v7.107.5)
+
+### Patches
+
+- Callout: Updating positioning logic to account for dual screen scenarios. ([PR #12785](https://github.com/microsoft/fluentui/pull/12785) by Humberto.Morimoto@microsoft.com)
+
+## [7.107.3](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.107.3)
+
+Wed, 22 Apr 2020 12:33:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.107.2..office-ui-fabric-react_v7.107.3)
+
+### Patches
+
+- Updating Announced, Callout, and Calendar examples to function components ([PR #12670](https://github.com/microsoft/fluentui/pull/12670) by czearing@outlook.com)
+- Fix SASS default values for theme.effects ([PR #12802](https://github.com/microsoft/fluentui/pull/12802) by phkuo@microsoft.com)
 
 ## [7.107.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.107.2)
 

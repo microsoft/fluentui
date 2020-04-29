@@ -15,7 +15,8 @@ import {
   ILineChartPoints,
 } from './LineChart.types';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
-import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react';
+import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
+import { EventsAnnotation } from './eventAnnotation/EventAnnotation';
 
 const getClassNames = classNamesFunction<ILineChartStyleProps, ILineChartStyles>();
 
@@ -62,6 +63,7 @@ export class LineChartBase extends React.Component<
   // These margins are necessary for d3Scales to appear without cutting off
   private margins = { top: 20, right: 20, bottom: 35, left: 40 };
   private minLegendContainerHeight: number = 32;
+  private eventLabelHeight: number = 36;
   constructor(props: ILineChartProps) {
     super(props);
     this.state = {
@@ -89,6 +91,9 @@ export class LineChartBase extends React.Component<
         .toString(36)
         .substring(7);
     this._fitParentContainer = this._fitParentContainer.bind(this);
+    props.eventAnnotationProps &&
+      props.eventAnnotationProps.labelHeight &&
+      (this.eventLabelHeight = props.eventAnnotationProps.labelHeight);
   }
 
   public componentDidMount(): void {
@@ -101,7 +106,16 @@ export class LineChartBase extends React.Component<
   }
 
   public render(): JSX.Element {
-    const { theme, className, styles, tickValues, tickFormat, yAxisTickFormat } = this.props;
+    const {
+      theme,
+      className,
+      styles,
+      tickValues,
+      tickFormat,
+      yAxisTickFormat,
+      hideLegend = false,
+      eventAnnotationProps,
+    } = this.props;
     this._points = this.props.data.lineChartData ? this.props.data.lineChartData : [];
     if (this.props.parentRef) {
       this._fitParentContainer();
@@ -159,10 +173,18 @@ export class LineChartBase extends React.Component<
               className={this._classNames.yAxis}
             />
             <g>{lines}</g>
+            {eventAnnotationProps && (
+              <EventsAnnotation
+                {...eventAnnotationProps}
+                scale={this._xAxisScale}
+                chartYTop={this.margins.top + this.eventLabelHeight}
+                chartYBottom={svgDimensions.height - 35}
+              />
+            )}
           </svg>
         </FocusZone>
         <div ref={(e: HTMLDivElement) => (this.legendContainer = e)} className={this._classNames.legendContainer}>
-          {legendBars}
+          {!hideLegend && legendBars}
         </div>
         {this.state.isCalloutVisible ? (
           <Callout
@@ -263,11 +285,12 @@ export class LineChartBase extends React.Component<
 
   private _fitParentContainer(): void {
     const { containerWidth, containerHeight } = this.state;
+    const { hideLegend = false } = this.props;
 
     this._reqID = requestAnimationFrame(() => {
       const legendContainerComputedStyles = getComputedStyle(this.legendContainer);
       const legendContainerHeight =
-        (this.legendContainer.getBoundingClientRect().height || this.minLegendContainerHeight) +
+        (this.legendContainer.getBoundingClientRect().height || (!hideLegend ? this.minLegendContainerHeight : 0)) +
         parseFloat(legendContainerComputedStyles.marginTop || '0') +
         parseFloat(legendContainerComputedStyles.marginBottom || '0');
 
@@ -405,7 +428,10 @@ export class LineChartBase extends React.Component<
     const domainValues = this._prepareDatapoints(finalYmax, finalYmin, 4);
     const yAxisScale = d3ScaleLinear()
       .domain([finalYmin, domainValues[domainValues.length - 1]])
-      .range([this.state.containerHeight - this.margins.bottom, this.margins.top]);
+      .range([
+        this.state.containerHeight - this.margins.bottom,
+        this.margins.top + (this.props.eventAnnotationProps ? this.eventLabelHeight : 0),
+      ]);
     this._yAxisScale = yAxisScale;
     const yAxis = d3AxisLeft(yAxisScale)
       .tickSize(-(this.state.containerWidth - this.margins.left - this.margins.right))
@@ -468,6 +494,7 @@ export class LineChartBase extends React.Component<
               onFocus={this._handleFocus.bind(this, keyVal, x1, y1, lineColor, xAxisCalloutData)}
               onBlur={this._handleMouseOut}
               aria-labelledby={this._calloutId}
+              onClick={this._onLineClick.bind(this, this._points[i].onLineClick)}
             />,
           );
         } else {
@@ -537,6 +564,12 @@ export class LineChartBase extends React.Component<
       YValueHover: found.values,
       lineColor: lineColor,
     });
+  };
+
+  private _onLineClick = (func: () => void) => {
+    if (!!func) {
+      func();
+    }
   };
 
   private _handleMouseOut = () => {

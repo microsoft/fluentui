@@ -9,6 +9,10 @@ type TestBehaviorProps = {
   disabled: boolean;
 };
 
+type ChildBehaviorProps = {
+  pressed: boolean;
+};
+
 const testBehavior: Accessibility<TestBehaviorProps> = props => ({
   attributes: {
     root: {
@@ -60,12 +64,58 @@ const focusZoneBehavior: Accessibility<never> = () => ({
   },
 });
 
+const childOverriddenBehavior: Accessibility<ChildBehaviorProps> = props => ({
+  attributes: {
+    root: {
+      'aria-pressed': props.pressed,
+      'aria-label': 'overridden',
+    },
+  },
+});
+
+const childBehavior: Accessibility<ChildBehaviorProps> = props => ({
+  attributes: {
+    root: {
+      'aria-pressed': props.pressed,
+    },
+  },
+});
+
+const overriddenChildBehavior: Accessibility<TestBehaviorProps> = props => ({
+  attributes: {
+    root: {
+      'aria-disabled': props.disabled,
+      tabIndex: 1,
+    },
+    img: {
+      'aria-label': 'Pixel',
+      role: 'presentation',
+    },
+  },
+  keyActions: {
+    root: {
+      click: {
+        keyCombinations: [{ keyCode: keyboardKey.ArrowDown }],
+      },
+    },
+  },
+  childBehaviors: {
+    child: childOverriddenBehavior,
+  },
+});
+
 type TestComponentProps = {
   accessibility?: Accessibility<TestBehaviorProps>;
   disabled?: boolean;
   onClick?: (e: React.KeyboardEvent<HTMLDivElement>, slotName: string) => void;
   onKeyDown?: React.KeyboardEventHandler<HTMLDivElement>;
 } & React.HTMLAttributes<HTMLDivElement>;
+
+type ChildComponentProps = {
+  accessibility?: Accessibility<ChildBehaviorProps>;
+  pressed?: boolean;
+  onKeyDown?: React.KeyboardEventHandler<HTMLDivElement>;
+};
 
 const TestComponent: React.FunctionComponent<TestComponentProps> = props => {
   const { accessibility = testBehavior, disabled, onClick, onKeyDown, ...rest } = props;
@@ -87,8 +137,20 @@ const TestComponent: React.FunctionComponent<TestComponentProps> = props => {
           src: 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==',
         })}
       />
+      <ChildComponent {...getA11Props('child', {})} />
     </div>,
   );
+};
+
+const ChildComponent: React.FunctionComponent<ChildComponentProps> = props => {
+  const { accessibility = childBehavior, pressed, onKeyDown, ...rest } = props;
+  const getA11Props = useAccessibility(accessibility, {
+    mapPropsToBehavior: () => ({
+      pressed,
+    }),
+  });
+
+  return <button {...getA11Props('root', { onKeyDown, ...rest })} />;
 };
 
 type FocusZoneComponentProps = {
@@ -109,6 +171,7 @@ describe('useAccessibility', () => {
 
     expect(wrapper.find('div').prop('tabIndex')).toBe(1);
     expect(wrapper.find('img').prop('role')).toBe('presentation');
+    expect(wrapper.find('ChildComponent').prop('accessibility')).toBe(undefined);
   });
 
   it('attributes can be conditional', () => {
@@ -130,6 +193,14 @@ describe('useAccessibility', () => {
         .find('div')
         .prop('tabIndex'),
     ).toBe(-1);
+  });
+
+  it('child behaviors can be overridden', () => {
+    expect(
+      shallow(<TestComponent accessibility={overriddenChildBehavior} />)
+        .find('ChildComponent')
+        .prop('accessibility'),
+    ).toBe(childOverriddenBehavior);
   });
 
   it('adds event handlers', () => {

@@ -2,6 +2,21 @@
   "name": "@uifabric/react-hooks",
   "entries": [
     {
+      "date": "Wed, 22 Apr 2020 12:33:04 GMT",
+      "tag": "@uifabric/react-hooks_v7.2.0",
+      "version": "7.2.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add new hooks used in migrating Fabric components to functional components",
+            "author": "miclo@microsoft.com",
+            "commit": "b3651dd6e182275be6e4052d61d1e1559a3380f6",
+            "package": "@uifabric/react-hooks"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 21 Apr 2020 12:34:50 GMT",
       "tag": "@uifabric/react-hooks_v7.1.7",
       "version": "7.1.7",

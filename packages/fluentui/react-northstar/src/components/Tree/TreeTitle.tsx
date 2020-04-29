@@ -72,15 +72,21 @@ export interface TreeTitleProps extends UIComponentProps, ChildrenComponentProps
 
   /** Whether or not tree title is selectable. */
   selectable?: boolean;
+
+  /** For selectable parents define if all nested children are checked */
+  indeterminate?: boolean;
 }
 
-export type TreeTitleStylesProps = Pick<TreeTitleProps, 'selected' | 'selectable' | 'disabled' | 'selectableParent'>;
+export type TreeTitleStylesProps = Pick<
+  TreeTitleProps,
+  'selected' | 'selectable' | 'disabled' | 'selectableParent' | 'indeterminate'
+>;
+
 export const treeTitleClassName = 'ui-tree__title';
 
 export const treeTitleSlotClassNames = {
   indicator: `${treeTitleClassName}__selection-indicator`,
 };
-
 const TreeTitle: React.FC<WithAsProp<TreeTitleProps>> & FluentComponentStaticProps<TreeTitleProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(TreeTitle.displayName, context.telemetry);
@@ -104,12 +110,18 @@ const TreeTitle: React.FC<WithAsProp<TreeTitleProps>> & FluentComponentStaticPro
     selectable,
     selectableParent,
     expanded,
+    indeterminate,
   } = props;
 
   const getA11Props = useAccessibility(accessibility, {
     debugName: TreeTitle.displayName,
     actionHandlers: {
       performClick: e => {
+        e.preventDefault();
+        e.stopPropagation();
+        handleClick(e);
+      },
+      performSelection: e => {
         e.preventDefault();
         e.stopPropagation();
         handleClick(e);
@@ -137,6 +149,7 @@ const TreeTitle: React.FC<WithAsProp<TreeTitleProps>> & FluentComponentStaticPro
       selectableParent,
       disabled,
       selectable,
+      indeterminate,
     }),
     rtl: context.rtl,
   });
@@ -151,12 +164,13 @@ const TreeTitle: React.FC<WithAsProp<TreeTitleProps>> & FluentComponentStaticPro
     defaultProps: () => ({
       as: 'span',
       selected,
-      ...(selectableParent && { expanded }),
+      ...(selectableParent && !_.isEmpty(selectionIndicator) && { expanded }),
       ...getA11Props('indicator', {
         className: treeTitleSlotClassNames.indicator,
-        ...(selectable &&
-          !hasSubtree &&
-          _.isEmpty(selectionIndicator) && { styles: resolvedStyles.selectionIndicator }),
+        ...(((selectable && !hasSubtree) || (selectableParent && expanded)) &&
+          _.isEmpty(selectionIndicator) && {
+            styles: resolvedStyles.selectionIndicator,
+          }),
       }),
     }),
   });
@@ -195,6 +209,7 @@ TreeTitle.propTypes = {
   selectableParent: PropTypes.bool,
   treeSize: PropTypes.number,
   selectionIndicator: customPropTypes.shorthandAllowingChildren,
+  indeterminate: PropTypes.bool,
 };
 TreeTitle.defaultProps = {
   as: 'a',

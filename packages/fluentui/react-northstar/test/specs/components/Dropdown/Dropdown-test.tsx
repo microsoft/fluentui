@@ -56,6 +56,27 @@ describe('Dropdown', () => {
         }),
       );
     });
+
+    it('should have the indicator tabbable if not a search', () => {
+      const { getClearIndicatorNode } = renderDropdown({
+        clearable: true,
+        defaultValue: items[0],
+      });
+
+      expect(getClearIndicatorNode()).toHaveAttribute('tabindex', '0');
+      expect(getClearIndicatorNode()).toHaveAttribute('role', 'button');
+    });
+
+    it('should not have the indicator tabbable if a search', () => {
+      const { getClearIndicatorNode } = renderDropdown({
+        clearable: true,
+        defaultValue: items[0],
+        search: true,
+      });
+
+      expect(getClearIndicatorNode()).not.toHaveAttribute('tabindex');
+      expect(getClearIndicatorNode()).not.toHaveAttribute('role', 'button');
+    });
   });
 
   describe('open', () => {
@@ -1081,6 +1102,29 @@ describe('Dropdown', () => {
 
       expect(getSelectedItemNodes()).toHaveLength(1);
       expect(getSelectedItemNodeAtIndex(0)).toHaveTextContent(items[1]);
+    });
+
+    it('keeps selection when the same item is selected', () => {
+      const selectedItemIndex = 0;
+      const selectedItem = items[selectedItemIndex];
+      const { clickOnItemAtIndex, triggerButtonNode, clickOnTriggerButton, keyDownOnItemsList } = renderDropdown({
+        defaultValue: selectedItem,
+        defaultOpen: true,
+      });
+
+      clickOnItemAtIndex(selectedItemIndex);
+
+      expect(triggerButtonNode).toHaveTextContent(selectedItem);
+
+      clickOnTriggerButton();
+      keyDownOnItemsList('Enter');
+
+      expect(triggerButtonNode).toHaveTextContent(selectedItem);
+
+      clickOnTriggerButton();
+      keyDownOnItemsList('Tab');
+
+      expect(triggerButtonNode).toHaveTextContent(selectedItem);
     });
   });
 

@@ -34,9 +34,20 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - removed `className` (`deprecated_className`) and `slotClassNames` static props from the fluent components, constants for className and slotClassNames should be used instead @mnajdova ([#12765](https://github.com/microsoft/fluentui/pull/12765))
 - changed `createShorthand` signature, to use the optional `shorthandConfig` static on the component @mnajdova ([#12783](https://github.com/microsoft/fluentui/pull/12783))
 - Restricted prop sets in the `Video` component which are passed to styles functions @assuncaocharles ([#12799](https://github.com/microsoft/fluentui/pull/12799))
+- Restricted prop sets in the `SplitButton` component which are passed to styles functions @assuncaocharles ([#12809](https://github.com/microsoft/fluentui/pull/12809))
+- Restricted prop sets in the `TableRow` component which are passed to styles functions @pompomon, @assuncaocharles ([#12797](https://github.com/microsoft/fluentui/pull/12797))
+- Restricted prop sets in the `Table` component which are passed to styles functions @assuncaocharles ([#12860](https://github.com/microsoft/fluentui/pull/12860))
+- Restricted prop sets in the `TextArea` component which are passed to styles functions, @assuncaocharles ([#12857](https://github.com/microsoft/fluentui/pull/12857))
+- Restricted prop sets in the `AccordionTitle` component which are passed to styles functions, @assuncaocharles ([#12874](https://github.com/microsoft/fluentui/pull/12874))
+- Restricted prop sets in the `ButtonGroup` component which are passed to styles functions, @assuncaocharles ([#12866](https://github.com/microsoft/fluentui/pull/12866))
+- Restricted prop sets in the `AccordionContent` component which are passed to styles functions, @assuncaocharles ([#12875](https://github.com/microsoft/fluentui/pull/12875))
+- Restricted prop sets in the `Embed` component which are passed to styles functions, @assuncaocharles ([#12918](https://github.com/microsoft/fluentui/pull/12918))
+
 
 ### Fixes
 - Visually align checkbox and label elements in `Checkbox` component @silviuavram ([#12590](https://github.com/microsoft/fluentui/pull/12590))
+- Fix `Ref` to react on props changes when `forwardRef` is used @mnajdova ([#12817](https://github.com/microsoft/fluentui/pull/12817))
+- Fix `AccordionTitle` to be rendered as `div` by default @pompomon ([#12840](https://github.com/microsoft/fluentui/pull/12840))
 
 ### Features
 - Add `body` slot to `Attachment` component @layershifter ([#12674](https://github.com/microsoft/fluentui/pull/12674))
@@ -52,12 +63,20 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add `disabled` prop and styles to `Card` component @pompomon ([#12743](https://github.com/microsoft/fluentui/pull/12743))
 - Adding multiselection for the `Tree` @kolaps33, @assuncaocharles ([#12362](https://github.com/microsoft/fluentui/pull/12362))
 - Add `background` and `border` colors to `Card` in Teams theme @pompomon ([#12790](https://github.com/microsoft/fluentui/pull/12790))
+- Added `FluidIcon` @TanelVari ([#12803](https://github.com/microsoft/fluentui/pull/12803))
+- Add compose options to `useStyles` @layershifter @mnajdova ([#12745](https://github.com/microsoft/fluentui/pull/12745))
+- Converted Box, Button* and Attachment* components to use compose @layershifter @mnajdova ([#12745](https://github.com/microsoft/fluentui/pull/12745))
+- Respect `childBehaviors` for slots in `useAccessibility` hook @pompomon ([#12835](https://github.com/microsoft/fluentui/pull/12835))
+- Add `cardsContainerBehavior` for `Card`s in `Grid` navigation @mpompomon ([#12800](https://github.com/microsoft/fluentui/pull/12800))
+- Added `slots` and `mapPropsToSlotProps` in compose and added example usage in the `Button` component @mnajdova ([#12858](https://github.com/microsoft/fluentui/pull/12858))
 
 ### Performance
 - Replace `fela-plugin-prexifer` with `stylis` @layershifter ([#12289](https://github.com/microsoft/fluentui/pull/12289))
 
 ### Fixes
 - Replace `escape` with `encodeURIComponent` in the svg urls in Teams theme @mnajdova ([#12742](https://github.com/microsoft/fluentui/pull/12742))
+- Prevent value clear on same item selection in `Dropdown` @silviuavram ([#12784](https://github.com/microsoft/fluentui/pull/12784))
+- Make the `clearIndicator` tabbable in a non-search `Dropdown` @silviuavram ([#12684](https://github.com/microsoft/fluentui/pull/12684))
 - Check for `getItemPositionText` in `Carousel` before rendering the pagination text @silviuavram ([#12791](https://github.com/microsoft/fluentui/pull/12791))
 
 <!--------------------------------[ v0.48.0 ]------------------------------- -->
