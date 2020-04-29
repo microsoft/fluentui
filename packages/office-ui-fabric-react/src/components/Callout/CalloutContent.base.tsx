@@ -3,7 +3,7 @@ import { ICalloutProps, ICalloutContentStyleProps, ICalloutContentStyles, Target
 import { DirectionalHint } from '../../common/DirectionalHint';
 import {
   Async,
-  IPoint,
+  Point,
   IRectangle,
   assign,
   css,
@@ -24,6 +24,7 @@ import {
   IPosition,
   RectangleEdge,
   positionCard,
+  getBoundsFromTargetWindow,
 } from '../../utilities/positioning';
 import { Popup } from '../../Popup';
 import { classNamesFunction } from '../../Utilities';
@@ -37,8 +38,9 @@ const ANIMATIONS: { [key: number]: string | undefined } = {
 };
 
 const getClassNames = classNamesFunction<ICalloutContentStyleProps, ICalloutContentStyles>({
-  disableCaching: true,
+  disableCaching: true, // disabling caching because stylesProp.position mutates often
 });
+
 const BEAK_ORIGIN_POSITION = { top: 0, left: 0 };
 // Microsoft Edge will overwrite inline styles if there is an animation pertaining to that style.
 // To help ensure that edge will respect the offscreen style opacity
@@ -75,7 +77,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
   private _targetWindow: Window;
   private _bounds: IRectangle | undefined;
   private _positionAttempts: number;
-  private _target: Element | MouseEvent | IPoint | null;
+  private _target: Element | MouseEvent | Point | null;
   private _setHeightOffsetTimer: number;
   private _hasListeners = false;
   private _maxHeight: number | undefined;
@@ -198,6 +200,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
       backgroundColor,
       calloutMaxHeight,
       onScroll,
+      // tslint:disable-next-line: deprecation
       shouldRestoreFocus = true,
     } = this.props;
     target = this._getTarget();
@@ -248,6 +251,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
           <Popup
             {...getNativeProps(this.props, ARIA_ROLE_ATTRIBUTES)}
             ariaLabel={ariaLabel}
+            onRestoreFocus={this.props.onRestoreFocus}
             ariaDescribedBy={ariaDescribedBy}
             ariaLabelledBy={ariaLabelledBy}
             className={this._classNames.calloutMain}
@@ -436,13 +440,14 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
       let currentBounds = typeof bounds === 'function' ? bounds(this.props.target, this._targetWindow) : bounds;
 
       if (!currentBounds) {
+        currentBounds = getBoundsFromTargetWindow(this._target, this._targetWindow);
         currentBounds = {
-          top: 0 + this.props.minPagePadding!,
-          left: 0 + this.props.minPagePadding!,
-          right: this._targetWindow.innerWidth - this.props.minPagePadding!,
-          bottom: this._targetWindow.innerHeight - this.props.minPagePadding!,
-          width: this._targetWindow.innerWidth - this.props.minPagePadding! * 2,
-          height: this._targetWindow.innerHeight - this.props.minPagePadding! * 2,
+          top: currentBounds.top + this.props.minPagePadding!,
+          left: currentBounds.left + this.props.minPagePadding!,
+          right: currentBounds.right! - this.props.minPagePadding!,
+          bottom: currentBounds.bottom! - this.props.minPagePadding!,
+          width: currentBounds.width - this.props.minPagePadding! * 2,
+          height: currentBounds.height - this.props.minPagePadding! * 2,
         };
       }
       this._bounds = currentBounds;
@@ -526,7 +531,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
         // HTMLImgElements can have x and y values. The check for it being a point must go last.
       } else {
         this._targetWindow = getWindow(currentElement)!;
-        this._target = target as IPoint;
+        this._target = target as Point;
       }
     } else {
       this._targetWindow = getWindow(currentElement)!;

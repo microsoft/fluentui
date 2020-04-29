@@ -28,10 +28,12 @@ export interface GridProps extends UIComponentProps, ChildrenComponentProps, Con
   rows?: string | number;
 }
 
+export const gridClassName = 'ui-grid';
+
 class Grid extends UIComponent<WithAsProp<GridProps>> {
   static displayName = 'Grid';
 
-  static className = 'ui-grid';
+  static deprecated_className = gridClassName;
 
   static propTypes = {
     ...commonPropTypes.createCommon({

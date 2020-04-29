@@ -58,6 +58,30 @@ export interface IChartDataPoint {
   placeHolder?: boolean;
 }
 
+export interface IVerticalBarChartDataPoint {
+  /**
+   * Independent value of the data point, rendered along the x-axis.
+   * If x is a number, then each y-coordinate is plotted at its x-coordinate.
+   * If x is a string, then the data is evenly spaced along the x-axis.
+   */
+  x: number | string;
+
+  /**
+   * Dependent value of the data point, rendered along the y-axis.
+   */
+  y: number;
+
+  /**
+   * Legend text for the datapoint in the chart
+   */
+  legend?: string;
+
+  /**
+   * color for the legend in the chart
+   */
+  color?: string;
+}
+
 export interface ILineChartDataPoint {
   /**
    * Independent value of the data point, rendered along the x-axis.
@@ -102,6 +126,11 @@ export interface ILineChartPoints {
    * Defines the function that is executed on clicking this legend
    */
   onLegendClick?: (selectedLegend: string | null) => void;
+
+  /**
+   * Defines the function that is executed on clicking  line
+   */
+  onLineClick?: () => void;
 }
 
 export interface IChartProps {
@@ -153,4 +182,62 @@ export interface IVerticalStackedChartProps {
    * chart title for the chart
    */
   chartTitle?: string;
+}
+
+export interface IGVBarChartSeriesPoint {
+  /**
+   * Text for // need to check use of this
+   */
+  key: string;
+
+  /**
+   * Data for bar height of Grouped vertical bar chart
+   */
+  data: number;
+
+  /**
+   * Color for the legend in the chart
+   */
+  color: string;
+
+  /**
+   * Legend text in the chart
+   */
+  legend: string;
+}
+
+export interface IGroupedVerticalBarChartData {
+  /**
+   * Data for X axis label
+   */
+  name: string;
+
+  /**
+   * Data points for Grouped vertical bar chart
+   */
+  series: IGVBarChartSeriesPoint[];
+}
+
+export interface IGVDataPoint {
+  /**
+   * This interface used for - While forming datapoints from given prop "data" in code
+   * datapoints are used for to draw graph
+   */
+  [key: string]: number | string;
+}
+
+export interface IGVSingleDataPoint {
+  /**
+   * While forming datapoints from given prop "data" in code.
+   * These datapoints are used for to draw graph easily.
+   */
+  [key: string]: IGVDataPoint;
+}
+
+export interface IGVForBarChart {
+  /**
+   * While forming datapoints from given prop "data"
+   * These datapoints are used for to draw graph.
+   */
+  [key: string]: IGVBarChartSeriesPoint;
 }

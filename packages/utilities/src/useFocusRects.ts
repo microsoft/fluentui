@@ -39,7 +39,7 @@ type AppWindow = (Window & { FabricConfig?: { disableFocusRects?: boolean } }) |
  *
  * @param rootRef - A Ref object. Focus rectangle can be applied on itself and all its children.
  */
-export function useFocusRects<TElement extends HTMLElement | undefined>(rootRef?: React.RefObject<TElement>): void {
+export function useFocusRects(rootRef?: React.RefObject<HTMLElement>): void {
   const win = getWindow(rootRef?.current) as AppWindow;
 
   React.useEffect(() => {
@@ -73,9 +73,7 @@ export function useFocusRects<TElement extends HTMLElement | undefined>(rootRef?
  * Function Component wrapper which enables calling `useFocusRects` hook.
  * Renders nothing.
  */
-export const FocusRects = <TElement extends HTMLElement | undefined>(props: {
-  rootRef?: React.RefObject<TElement>;
-}) => {
+export const FocusRects: React.FunctionComponent<{ rootRef?: React.RefObject<HTMLElement> }> = props => {
   useFocusRects(props.rootRef);
   return null;
 };

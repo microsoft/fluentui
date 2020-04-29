@@ -1,12 +1,12 @@
-import Popper from 'popper.js';
+import * as PopperJs from '@popperjs/core';
 
-const rtlMapping: Partial<Record<Popper.Position, Popper.Position>> = {
+const rtlMapping: Partial<Record<PopperJs.BasePlacement, PopperJs.BasePlacement>> = {
   left: 'right',
   right: 'left',
 };
 
-function getBasePlacement(placement: Popper.Placement | undefined, rtl: boolean): Popper.Position {
-  const basePlacement = (placement || '').split('-', 1).pop() as Popper.Position;
+function getBasePlacement(placement: PopperJs.Placement | undefined, rtl: boolean): PopperJs.BasePlacement {
+  const basePlacement = (placement || '').split('-', 1).pop() as PopperJs.BasePlacement;
 
   return (rtl && rtlMapping[basePlacement]) || basePlacement;
 }

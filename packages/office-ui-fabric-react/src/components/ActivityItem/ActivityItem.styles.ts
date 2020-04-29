@@ -17,6 +17,20 @@ const ANIMATION_INNER_DIMENSION = '4px';
 const ANIMATION_OUTER_DIMENSION = '28px';
 const ANIMATION_BORDER_WIDTH = '4px';
 
+const fadeIn = memoizeFunction(() =>
+  keyframes({
+    from: { opacity: 0 },
+    to: { opacity: 1 },
+  }),
+);
+
+const slideIn = memoizeFunction(() =>
+  keyframes({
+    from: { transform: 'translateX(-10px)' },
+    to: { transform: 'translateX(0)' },
+  }),
+);
+
 export const getStyles = memoizeFunction(
   (
     theme: ITheme = getTheme(),
@@ -34,16 +48,6 @@ export const getStyles = memoizeFunction(
       ANIMATION_BORDER_WIDTH,
     );
 
-    const fadeIn: string = keyframes({
-      from: { opacity: 0 },
-      to: { opacity: 1 },
-    });
-
-    const slideIn: string = keyframes({
-      from: { transform: 'translateX(-10px)' },
-      to: { transform: 'translateX(0)' },
-    });
-
     const continuousPulseAnimation = {
       animationName: continuousPulse,
       animationIterationCount: '1',
@@ -52,13 +56,13 @@ export const getStyles = memoizeFunction(
     };
 
     const slideInAnimation = {
-      animationName: slideIn,
+      animationName: slideIn(),
       animationIterationCount: '1',
       animationDuration: '.5s',
     };
 
     const fadeInAnimation = {
-      animationName: fadeIn,
+      animationName: fadeIn(),
       animationIterationCount: '1',
       animationDuration: '.5s',
     };

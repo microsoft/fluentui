@@ -74,11 +74,13 @@ export interface CheckboxProps extends UIComponentProps, ChildrenComponentProps 
 }
 
 export type CheckboxStylesProps = Pick<CheckboxProps, 'checked' | 'disabled' | 'labelPosition' | 'toggle'>;
+export const checkboxClassName = 'ui-checkbox';
+export const checkboxSlotClassNames: CheckboxSlotClassNames = {
+  label: `${checkboxClassName}__label`,
+  indicator: `${checkboxClassName}__indicator`,
+};
 
-const Checkbox: React.FC<WithAsProp<CheckboxProps>> &
-  FluentComponentStaticProps<CheckboxProps> & {
-    slotClassNames: CheckboxSlotClassNames;
-  } = props => {
+const Checkbox: React.FC<WithAsProp<CheckboxProps>> & FluentComponentStaticProps<CheckboxProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(Checkbox.displayName, context.telemetry);
   setStart();
@@ -116,7 +118,7 @@ const Checkbox: React.FC<WithAsProp<CheckboxProps>> &
     rtl: context.rtl,
   });
   const { classes, styles: resolvedStyles } = useStyles<CheckboxStylesProps>(Checkbox.displayName, {
-    className: Checkbox.className,
+    className: checkboxClassName,
     mapPropsToStyles: () => ({
       checked: state.checked,
       disabled,
@@ -160,7 +162,7 @@ const Checkbox: React.FC<WithAsProp<CheckboxProps>> &
     defaultProps: () =>
       getA11Props('label', {
         styles: resolvedStyles.label,
-        className: Checkbox.slotClassNames.label,
+        className: checkboxSlotClassNames.label,
       }),
   });
 
@@ -177,7 +179,7 @@ const Checkbox: React.FC<WithAsProp<CheckboxProps>> &
       {Box.create(indicator, {
         defaultProps: () =>
           getA11Props('indicator', {
-            className: Checkbox.slotClassNames.indicator,
+            className: checkboxSlotClassNames.indicator,
             styles: toggle ? resolvedStyles.toggle : resolvedStyles.checkbox,
           }),
       })}
@@ -190,7 +192,6 @@ const Checkbox: React.FC<WithAsProp<CheckboxProps>> &
 };
 
 Checkbox.displayName = 'Checkbox';
-Checkbox.className = 'ui-checkbox';
 
 Checkbox.defaultProps = {
   accessibility: checkboxBehavior,
@@ -212,11 +213,6 @@ Checkbox.propTypes = {
   toggle: PropTypes.bool,
 };
 Checkbox.handledProps = Object.keys(Checkbox.propTypes) as any;
-
-Checkbox.slotClassNames = {
-  label: `${Checkbox.className}__label`,
-  indicator: `${Checkbox.className}__indicator`,
-};
 
 Checkbox.create = createShorthandFactory({
   Component: Checkbox,

@@ -2,6 +2,281 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 29 Apr 2020 12:34:58 GMT",
+      "tag": "office-ui-fabric-react_v7.109.0",
+      "version": "7.109.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating FocusTrapZone, Overlay, and TextField to use function components",
+            "author": "czearing@outlook.com",
+            "commit": "d7cc6f11f4a202d21445993d6b78ebc33f558302",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "update MessageBar colors",
+            "author": "chrismo@microsoft.com",
+            "commit": "6c2672609b55e65efb5b35484727ac33bfe93694",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 28 Apr 2020 12:34:09 GMT",
+      "tag": "office-ui-fabric-react_v7.108.0",
+      "version": "7.108.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Updating IPoint, x and y references to Point, left and top respectively.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "beb8886ffcbccd2bbef9c4e7a8afd742497289a5",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Popup: add onRestoreFocus method to replace shouldRestoreFocus",
+            "author": "joschect@microsoft.com",
+            "commit": "a26fffcf83ed3ca094107dc8da4fdfd3be4d42b8",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Change contextual menu renderMenuItem function to prevent prop mutation and unneeded rerenders",
+            "author": "tabrumle@microsoft.com",
+            "commit": "c1dd105487e075a3dcd73e1bbe7f638a1a80467b",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Updating examples for ScrollablePane and HoverCard to use FC",
+            "author": "czearing@outlook.com",
+            "commit": "b9b783bdcc6466b55268324885eb7a6312b60ec6",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 24 Apr 2020 12:39:25 GMT",
+      "tag": "office-ui-fabric-react_v7.107.5",
+      "version": "7.107.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Callout: Updating positioning logic to account for dual screen scenarios.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "78cf512baecab4ae38d59a70f3157ed8c2da2bf9",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 22 Apr 2020 12:33:04 GMT",
+      "tag": "office-ui-fabric-react_v7.107.3",
+      "version": "7.107.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating Announced, Callout, and Calendar examples to function components",
+            "author": "czearing@outlook.com",
+            "commit": "a88adc3e90f83ae18b9eb5432dceae1d62362a84",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Fix SASS default values for theme.effects",
+            "author": "phkuo@microsoft.com",
+            "commit": "ae4e2db15a4cf25dc4abc4aef8f304f29002374a",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 21 Apr 2020 12:34:50 GMT",
+      "tag": "office-ui-fabric-react_v7.107.2",
+      "version": "7.107.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ContextualMenu: Improve perf by doing less merge styles",
+            "author": "xgao@microsoft.com",
+            "commit": "1d6687743e9fdf6a7a20a61ee61d18d36f45e0d0",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Update ColorRectangle and ColorSlider to handle native events when using the 'on' utility",
+            "author": "behowell@microsoft.com",
+            "commit": "65a2edff2455c57d4af59cc3e054ca8f4af1e499",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Sun, 19 Apr 2020 02:02:09 GMT",
+      "tag": "office-ui-fabric-react_v7.107.1",
+      "version": "7.107.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "implementing storybook-addon-performance plugin to office-ui-fabric-react",
+            "author": "czearing@outlook.com",
+            "commit": "e86cb37304000c112bc355ef5d0235ea23cee34e",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Enable classnames caching for label and icon",
+            "author": "xgao@microsoft.com",
+            "commit": "890f38c5ebe341a34bdc59417a6b777a3c646047",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 17 Apr 2020 12:34:08 GMT",
+      "tag": "office-ui-fabric-react_v7.107.0",
+      "version": "7.107.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Allow forwarding of FocusTrapZone props in TeachingBubble",
+            "author": "mhensler@microsoft.com",
+            "commit": "87a6a7e812631df5c762c61a2cd85090925a2b2e",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Pivot: componentRef now resolves correctly, unnecessary DOM element removed.",
+            "author": "dzearing@microsoft.com",
+            "commit": "c2fe1a53eb679b1f61d0bad35c06167ff6a91b9e",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "added set of svg icons",
+            "author": "mnajdova@gmail.com",
+            "commit": "d8a2780c9e811136241a0b21985e379f0a29e23e",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Apr 2020 12:37:31 GMT",
+      "tag": "office-ui-fabric-react_v7.106.3",
+      "version": "7.106.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Replace uses of EventGroup with the 'on' function and _disposables pattern in ColorRectangle, ColorSlider, and Slider",
+            "author": "behowell@microsoft.com",
+            "commit": "971317f1d7dadb1f212b0bbd17e8e54e12e888f5",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "changed svg factory example and added icon components tests",
+            "author": "mnajdova@gmail.com",
+            "commit": "c02f831775ac80f5f43667f284d73c603bf3979f",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Apr 2020 04:01:45 GMT",
+      "tag": "office-ui-fabric-react_v7.106.1",
+      "version": "7.106.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding Stack snapshot test for RTL scenarios.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "ae20fbeb9eb4002c49137a21c4bc08b228dcef63",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Readme: Add migration info",
+            "author": "elcraig@microsoft.com",
+            "commit": "9e3c7c7d4b92e132820cdbcd61a667829c712ecb",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "removing more references to wrong icon-ppt.png icon in wrong folder",
+            "author": "caperez@microsoft.com",
+            "commit": "c847450db51500f13847542b8f4c89dd277bb2bb",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Fixed a bug in the DatePicker causing an existing validation error to be cleared when tabbing through the component.",
+            "author": "michaelmajgaard@outlook.com",
+            "commit": "ae8d486c544cd9a6461ab705f37cb5b01718db5d",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Panel: passing close button styles down using subComponentStyles",
+            "author": "xgao@microsoft.com",
+            "commit": "3f95bf337123ad9196a552ed12f893fa75a272fc",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Examples: fix bad practice styles prop",
+            "author": "xgao@microsoft.com",
+            "commit": "642de92739615f658af5cd1eceff8319f2e1a3f9",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Updated DatePicker and ComboBox examples to use function components",
+            "author": "czearing@outlook.com",
+            "commit": "dcd45c9db66a816a5adda7c011e143170aebc6c9",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Updating Rating, Text, OverflowSet, and Dropdown examples to use function components",
+            "author": "czearing@outlook.com",
+            "commit": "a2e04f01900539a45757f79df7395bcb55ff030c",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "always return explicit Fabric dir",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "3fc3e55205965c1fc603415b220a8e22ba379c95",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Adding SVG icon examples",
+            "author": "dzearing@microsoft.com",
+            "commit": "447b9dee90b3533e69416939bc841db3feef1e6f",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Keyframes are calculated on access. This helps with SSR generation, as namespace will be respected.",
+            "author": "dzearing@microsoft.com",
+            "commit": "85fb387089c967e32a0cfa587750719b7fae17c9",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "DetailsRow.base bug fix for cellStyleProps",
+            "author": "SGonzalezBustos@Gmail.com",
+            "commit": "0eb5b3bcb86468253ae8492ffb0dadcdbf016b67",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "none": [
+          {
+            "comment": "removing withInfo button from fabric storybook",
+            "author": "czearing@outlook.com",
+            "commit": "5af5fbc9e3aa5c1b40a78548287f4637b7849b9c",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 09 Apr 2020 12:24:31 GMT",
       "tag": "office-ui-fabric-react_v7.106.0",
       "version": "7.106.0",

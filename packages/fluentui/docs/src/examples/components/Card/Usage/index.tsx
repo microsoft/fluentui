@@ -15,6 +15,21 @@ const Usage = () => (
       description="Example of adding Checkbox in TopControls and setting up media preview"
       examplePath="components/Card/Usage/CardExampleWithPreview"
     />
+    <ComponentExample
+      title="Focusable card"
+      description="Example of card which can be focused and clicked"
+      examplePath="components/Card/Usage/CardExampleFocusable"
+    />
+    <ComponentExample
+      title="Cards in navigable grid"
+      description="Example of cards in a grid with keyboard navigation"
+      examplePath="components/Card/Usage/CardExampleFocusableGrid"
+    />
+    <ComponentExample
+      title="Cards with actionable children in navigable grid"
+      description="Example of cards in a grid with keyboard navigation for cards and inside cards"
+      examplePath="components/Card/Usage/CardExampleFocusableChildrenGrid"
+    />
   </ExampleSection>
 );
 

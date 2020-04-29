@@ -2,6 +2,74 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "date": "Wed, 29 Apr 2020 12:34:58 GMT",
+      "tag": "@uifabric/example-app-base_v7.12.46",
+      "version": "7.12.46",
+      "comments": {
+        "patch": [
+          {
+            "comment": "update MessageBar colors",
+            "author": "chrismo@microsoft.com",
+            "commit": "6c2672609b55e65efb5b35484727ac33bfe93694",
+            "package": "@uifabric/example-app-base"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 20 Apr 2020 15:55:12 GMT",
+      "tag": "@uifabric/example-app-base_v7.12.39",
+      "version": "7.12.39",
+      "comments": {
+        "patch": [
+          {
+            "comment": "guard against window and location not being available",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "268cfa142c6a06085678337222a840ebfe948ae8",
+            "package": "@uifabric/example-app-base"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Sun, 19 Apr 2020 02:02:09 GMT",
+      "tag": "@uifabric/example-app-base_v7.12.38",
+      "version": "7.12.38",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Doc site: disable live code editing until we have a fix for the OOM errors.",
+            "author": "dzearing@microsoft.com",
+            "commit": "50348a6b08c77ed043e231429efe63a83f036e29",
+            "package": "@uifabric/example-app-base"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Apr 2020 04:01:45 GMT",
+      "tag": "@uifabric/example-app-base_v7.12.34",
+      "version": "7.12.34",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Readme: Recommend Storybook instead; Fabric=>Fluent wording updates",
+            "author": "elcraig@microsoft.com",
+            "commit": "9e3c7c7d4b92e132820cdbcd61a667829c712ecb",
+            "package": "@uifabric/example-app-base"
+          }
+        ],
+        "none": [
+          {
+            "comment": "sync package version",
+            "author": "xgao@microsoft.com",
+            "commit": "6f39958352207acb3029458503db0969a4359806",
+            "package": "@uifabric/example-app-base"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 09 Apr 2020 12:24:31 GMT",
       "tag": "@uifabric/example-app-base_v7.12.32",
       "version": "7.12.32",

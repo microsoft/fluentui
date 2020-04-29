@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {
   Checkbox,
+  ICheckboxStyles,
   DefaultPalette,
   Dropdown,
   IDropdownOption,
@@ -129,6 +130,9 @@ function _range(start: number, end: number): number[] {
 const sectionStackTokens: IStackTokens = { childrenGap: 10 };
 const configureStackTokens: IStackTokens = { childrenGap: 20 };
 
+const shadowItemCheckboxStyles: Partial<ICheckboxStyles> = { root: { marginRight: 10 } };
+const wrapItemCheckboxStyles: Partial<ICheckboxStyles> = { root: { marginBottom: 10 } };
+
 export class HorizontalStackConfigureExample extends React.Component<{}, IExampleOptions> {
   public state: IExampleOptions = {
     numItems: 5,
@@ -183,7 +187,7 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
                 <Checkbox
                   label="Shadow around items"
                   onChange={this._onBoxShadowChange}
-                  styles={{ root: { marginRight: 10 } }}
+                  styles={shadowItemCheckboxStyles}
                 />
                 <Checkbox label="Prevent item overflow" onChange={this._onPreventOverflowChange} />
               </Stack>
@@ -192,7 +196,7 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
           <Stack.Item grow>
             <Stack horizontal disableShrink tokens={configureStackTokens}>
               <Stack>
-                <Checkbox label="Wrap items" onChange={this._onWrapChange} styles={{ root: { marginBottom: 10 } }} />
+                <Checkbox label="Wrap items" onChange={this._onWrapChange} styles={wrapItemCheckboxStyles} />
                 <Checkbox label="Shrink items" onChange={this._onShrinkChange} />
               </Stack>
               <Stack.Item grow>
