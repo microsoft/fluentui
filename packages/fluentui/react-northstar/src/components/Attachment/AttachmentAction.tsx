@@ -22,6 +22,7 @@ const AttachmentAction = compose<
 >(Button, {
   className: attachmentActionClassName,
   displayName: 'AttachmentAction',
+  overrideStyles: true,
 }) as ComponentWithAs<'button', AttachmentActionProps> & { create: ShorthandFactory<any> };
 
 AttachmentAction.defaultProps = {
