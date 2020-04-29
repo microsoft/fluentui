@@ -170,10 +170,19 @@ export const getStyles = (props: IHomePageStyleProps): IHomePageStyles => {
     heroTitle: [
       classNames.heroTitle,
       {
-        fontSize: FontSizes.size68, // @TODO: Mock uses 64
+        fontSize: 128, // @TODO: Mock uses 64
         color: palette.white, // @TODO: Fluent color palette?
         lineHeight: '1.1',
         margin: 0,
+        whiteSpace: 'nowrap',
+        selectors: {
+          [mediaQuery.maxLarge]: {
+            fontSize: 96,
+          },
+          [mediaQuery.maxMobile]: {
+            fontSize: FontSizes.size68,
+          },
+        },
       },
     ],
 
@@ -364,7 +373,7 @@ export const getStyles = (props: IHomePageStyleProps): IHomePageStyles => {
         alignItems: 'center',
         flexWrap: 'wrap',
         lineHeight: '1.6',
-        marginBottom: 12,
+        marginBottom: 22,
       },
     ],
 
@@ -379,12 +388,14 @@ export const getStyles = (props: IHomePageStyleProps): IHomePageStyles => {
     link: [
       classNames.link,
       {
-        fontFamily: monoFont,
         display: 'flex',
         alignItems: 'center',
         color: theme.palette.white,
 
         selectors: {
+          span: {
+            fontWeight: 600,
+          },
           // Override default link styles and UHF styles
           // (due to UHF styles, we have to use a specific color rather than 'inherit')
           [allLinkStatesSelector]: {

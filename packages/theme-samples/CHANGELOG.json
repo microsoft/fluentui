@@ -2,6 +2,21 @@
   "name": "@uifabric/theme-samples",
   "entries": [
     {
+      "date": "Fri, 24 Apr 2020 12:39:25 GMT",
+      "tag": "@uifabric/theme-samples_v7.0.60",
+      "version": "7.0.60",
+      "comments": {
+        "patch": [
+          {
+            "comment": "set isInverted for dark sample theme",
+            "author": "chrismo@microsoft.com",
+            "commit": "b8b675cf78bb832befffc6ff3c3087318f2f5873",
+            "package": "@uifabric/theme-samples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 16 Apr 2020 04:01:45 GMT",
       "tag": "@uifabric/theme-samples_v7.0.52",
       "version": "7.0.52",

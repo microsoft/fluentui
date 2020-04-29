@@ -125,7 +125,7 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
           <div className={this._classNames.oneHalf}>
             <h2 className={this._classNames.heroTitle}>
               Fluent{' '}
-              <svg width="107" height="92" viewBox="0 0 107 92" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg width="128" height="92" viewBox="0 0 128 92" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <text x="0" y="90" fill="url(#paint0_linear)">
                   UI
                 </text>
@@ -145,7 +145,7 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
               </svg>
             </h2>
           </div>
-          <div className={this._classNames.oneFourth}>
+          <div className={this._classNames.oneFourth} style={{ flexBasis: '31%' }}>
             <p>
               A collection of UX frameworks for creating beautiful, cross-platform apps that share code, design, and
               interaction behavior.
@@ -335,12 +335,13 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
   private _renderUsageSection = (): JSX.Element => {
     return (
       <section className={this._classNames.usageSection}>
-        <div className={this._classNames.sectionContent}>
-          <div className={this._classNames.oneFourth}>
-            <h2 className={this._classNames.usageTitle}>Who at Microsoft uses Fluent UI?</h2>
+        <div className={this._classNames.sectionContent} style={{ justifyContent: 'space-between' }}>
+          <div className={this._classNames.oneFourth} style={{ flexBasis: '33%' }}>
+            <h2 className={this._classNames.usageTitle}>
+              Who at Microsoft <br /> uses Fluent UI?
+            </h2>
             <p>From Word and Excel to PowerBI and Teams, many Microsoft apps utilize Fluent UI functionality.</p>
           </div>
-          <div className={this._classNames.oneFourth} />
           <figure style={{ alignSelf: 'flex-end' }} className={this._classNames.oneHalf}>
             <ul className={this._classNames.usageIconList}>{this._renderUsageIconList()}</ul>
             <figcaption>
