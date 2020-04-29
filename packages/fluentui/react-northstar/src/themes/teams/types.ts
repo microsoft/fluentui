@@ -88,7 +88,6 @@ import { SplitButtonStylesProps } from '../../components/SplitButton/SplitButton
 
 export type TeamsThemeStylesProps = {
   Accordion: AccordionProps;
-  AccordionTitle: AccordionTitleProps;
   AccordionContent: AccordionContentStylesProps;
   AccordionTitle: AccordionTitleStylesProps;
   Alert: AlertStylesProps;
