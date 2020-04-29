@@ -6,6 +6,7 @@ import { mountWithProvider } from 'test/utils';
 
 describe('AccordionTitle', () => {
   isConformant(AccordionTitle, {
+    constructorName: 'AccordionTitle',
     eventTargets: {
       onClick: `.${accordionTitleSlotClassNames.contentWrapper}`,
     },
