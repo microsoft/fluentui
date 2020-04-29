@@ -41,7 +41,6 @@ export interface ComponentExampleProps
   title: React.ReactNode;
   description?: React.ReactNode;
   examplePath: string;
-  toolbarAriaLabel?: string;
   resetTheme?: boolean;
 }
 
@@ -424,7 +423,6 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
       onError,
       title,
       wasCodeChanged,
-      toolbarAriaLabel,
       resetTheme,
     } = this.props;
     const {
@@ -464,7 +462,7 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
                 <ComponentExampleTitle description={description} title={title} />
 
                 <ComponentControls
-                  toolbarAriaLabel={toolbarAriaLabel}
+                  title={title}
                   anchorName={anchorName}
                   exampleCode={currentCode}
                   exampleLanguage={currentCodeLanguage}
