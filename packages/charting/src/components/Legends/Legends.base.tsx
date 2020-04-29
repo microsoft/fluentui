@@ -238,6 +238,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
         trapFocus={true}
         onCardVisible={this._hoverCardVisible}
         styles={classNames.subComponentStyles.hoverCardStyles}
+        cardDismissDelay={300}
       >
         <div className={classNames.overflowIndicationTextStyle}>
           {items.length} {overflowString}
