@@ -13,7 +13,6 @@ import { getStyles } from './Fabric.styles';
 import { IFabricProps, IFabricStyleProps, IFabricStyles } from './Fabric.types';
 import { IProcessedStyleSet } from '@uifabric/merge-styles';
 import { ITheme, createTheme } from '../../Styling';
-import { useMergedRefs } from '@uifabric/react-hooks';
 
 const getClassNames = classNamesFunction<IFabricStyleProps, IFabricStyles>();
 const getFabricTheme = memoizeFunction((theme?: ITheme, isRTL?: boolean) => createTheme({ ...theme, rtl: isRTL }));
@@ -33,66 +32,62 @@ const getDir = (theme?: ITheme, dir?: IFabricProps['dir']) => {
   };
 };
 
-// tslint:disable-next-line:function-name no-function-expression
-export const FabricBase = React.forwardRef(function(props: IFabricProps, ref: React.Ref<HTMLDivElement>) {
-  const { className, theme, applyTheme, applyThemeToBody } = props;
+export class FabricBase extends React.Component<IFabricProps> {
+  private _rootElement = React.createRef<HTMLDivElement>();
+  private _removeClassNameFromBody?: () => void = undefined;
 
-  const classNames = getClassNames(getStyles, {
-    theme: theme!,
-    applyTheme: applyTheme,
-    className,
-  });
+  public render() {
+    const { as: Root = 'div', theme, dir } = this.props;
+    const classNames = this._getClassNames();
+    const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties, ['dir']);
+    const { rootDir, needsTheme } = getDir(theme, dir);
 
-  const rootElement = React.useRef<HTMLDivElement>();
-  useApplyThemeToBody(applyThemeToBody, classNames, rootElement);
+    let renderedContent = <Root dir={rootDir} {...divProps} className={classNames.root} ref={this._rootElement} />;
 
-  return (
-    <>
-      {useRenderedContent(props, classNames, rootElement, ref)}
-      <FocusRects rootRef={rootElement} />
-    </>
-  );
-});
+    if (needsTheme) {
+      renderedContent = (
+        <Customizer settings={{ theme: getFabricTheme(theme, dir === 'rtl') }}>{renderedContent}</Customizer>
+      );
+    }
 
-function useRenderedContent(
-  props: IFabricProps,
-  { root }: IProcessedStyleSet<IFabricStyles>,
-  rootElement: React.RefObject<HTMLDivElement | undefined>,
-  ref: React.Ref<HTMLDivElement>,
-) {
-  const { as: Root = 'div', dir, theme } = props;
-  const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(props, divProperties, ['dir']);
-
-  const { rootDir, needsTheme } = getDir(theme, dir);
-
-  let renderedContent = <Root dir={rootDir} {...divProps} className={root} ref={useMergedRefs(rootElement, ref)} />;
-
-  // Create the contextual theme if component direction does not match parent direction.
-  if (needsTheme) {
-    renderedContent = (
-      <Customizer settings={{ theme: getFabricTheme(theme, dir === 'rtl') }}>{renderedContent}</Customizer>
+    return (
+      <>
+        {renderedContent}
+        <FocusRects rootRef={this._rootElement} />
+      </>
     );
   }
 
-  return renderedContent;
-}
+  public componentDidMount(): void {
+    this._addClassNameToBody();
+  }
 
-function useApplyThemeToBody(
-  applyThemeToBody: boolean | undefined,
-  { bodyThemed }: IProcessedStyleSet<IFabricStyles>,
-  rootElement: React.RefObject<HTMLDivElement | undefined>,
-) {
-  React.useEffect((): void | (() => void) => {
-    if (applyThemeToBody) {
-      const currentDoc = getDocument(rootElement.current);
+  public componentWillUnmount(): void {
+    if (this._removeClassNameFromBody) {
+      this._removeClassNameFromBody();
+    }
+  }
+
+  private _getClassNames(): IProcessedStyleSet<IFabricStyles> {
+    const { className, theme, applyTheme } = this.props;
+    const classNames = getClassNames(getStyles, {
+      theme: theme!,
+      applyTheme: applyTheme,
+      className,
+    });
+    return classNames;
+  }
+
+  private _addClassNameToBody(): void {
+    if (this.props.applyThemeToBody) {
+      const classNames = this._getClassNames();
+      const currentDoc = getDocument(this._rootElement.current);
       if (currentDoc) {
-        currentDoc.body.classList.add(bodyThemed);
-        return () => {
-          currentDoc.body.classList.remove(bodyThemed);
+        currentDoc.body.classList.add(classNames.bodyThemed);
+        this._removeClassNameFromBody = () => {
+          currentDoc.body.classList.remove(classNames.bodyThemed);
         };
       }
     }
-  }, [bodyThemed]);
-
-  return rootElement;
+  }
 }
