@@ -2,6 +2,21 @@
   "name": "@fluentui/react-compose",
   "entries": [
     {
+      "date": "Tue, 28 Apr 2020 12:34:09 GMT",
+      "tag": "@fluentui/react-compose_v0.2.10",
+      "version": "0.2.10",
+      "comments": {
+        "patch": [
+          {
+            "comment": "added slots and slotProps",
+            "author": "mnajdova@gmail.com",
+            "commit": "79c21127de029a2cd49620469270a4043ee626dd",
+            "package": "@fluentui/react-compose"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 23 Apr 2020 12:32:40 GMT",
       "tag": "@fluentui/react-compose_v0.2.9",
       "version": "0.2.9",
