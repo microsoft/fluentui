@@ -99,7 +99,3 @@ Typical webpack `style-loader` style registration approach would dictate that st
 registered in module import order. This means leaf nodes end up registering styles first, then root elements.
 
 Because React renders components root to child, stylesheet ordering gets reversed.
-
-### nonce
-
-TBD
