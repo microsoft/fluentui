@@ -19,7 +19,7 @@ const accordionContentBehavior: Accessibility<AccordionContentBehaviorProps> = p
 
 export default accordionContentBehavior;
 
-type AccordionContentBehaviorProps = {
+export type AccordionContentBehaviorProps = {
   /** id of the accordion title element. */
   accordionTitleId?: string;
 };

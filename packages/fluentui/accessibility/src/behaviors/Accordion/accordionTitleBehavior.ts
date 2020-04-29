@@ -43,7 +43,7 @@ const accordionTitleBehavior: Accessibility<AccordionTitleBehaviorProps> = props
 
 export default accordionTitleBehavior;
 
-type AccordionTitleBehaviorProps = {
+export type AccordionTitleBehaviorProps = {
   /** Element type. */
   as?: string;
   /** Whether or not the title is in the open state. */
