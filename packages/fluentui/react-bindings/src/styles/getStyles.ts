@@ -1,6 +1,7 @@
 import { ComponentSlotStylesResolved, ComponentVariablesObject, isDebugEnabled } from '@fluentui/styles';
-import cx from 'classnames';
+
 import * as _ from 'lodash';
+
 import { ComponentSlotClasses, ResolveStylesOptions, StylesContextValue } from '../styles/types';
 import resolveVariables from './resolveVariables';
 import resolveStyles from './resolveStyles';
@@ -47,10 +48,6 @@ const getStyles = (options: ResolveStylesOptions): GetStylesResult => {
         return true;
       }),
     });
-  }
-
-  if (options.props.classes) {
-    Object.entries(options.props.classes).forEach(([key, value]) => (classes[key] = cx(classes[key], value as any)));
   }
 
   return {

@@ -61,7 +61,6 @@ const mergeProviderContexts = (
       animations: {},
     },
     rtl: false,
-    registerStyles: undefined,
     disableAnimations: false,
     target: isBrowser() ? document : undefined, // eslint-disable-line no-undef
     performance: {
@@ -85,9 +84,6 @@ const mergeProviderContexts = (
       if (typeof mergedRTL === 'boolean') {
         acc.rtl = mergedRTL;
       }
-
-      //
-      acc.registerStyles = next.registerStyles || acc.registerStyles;
 
       // Use provided renderer if it is defined
       acc.target = next.target || acc.target;

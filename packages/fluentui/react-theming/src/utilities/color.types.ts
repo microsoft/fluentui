@@ -8,7 +8,7 @@ export interface IRGB {
   a?: number;
 }
 
-export interface HSL {
+export interface IHSL {
   /** hue, a value from 0 to 360 representing position on a color wheel */
   h: number;
 
@@ -18,5 +18,3 @@ export interface HSL {
   /** lightness value, ranges from 0 to 1 */
   l: number;
 }
-
-export type IHSL = HSL;
