@@ -4,8 +4,8 @@
 
 ```ts
 
-import { IPoint } from '@uifabric/utilities';
 import { IRefObject } from '@uifabric/utilities';
+import { Point } from '@uifabric/utilities';
 import * as React from 'react';
 
 // @public (undocumented)
@@ -21,10 +21,11 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     static defaultProps: IFocusZoneProps;
     focus(forceIntoFirstElement?: boolean): boolean;
     focusElement(element: HTMLElement): boolean;
+    focusLast(): boolean;
     static getOuterZones(): number;
     // (undocumented)
     render(): React.ReactNode;
-    setFocusAlignment(point: IPoint): void;
+    setFocusAlignment(point: Point): void;
     }
 
 // @public (undocumented)
@@ -49,7 +50,8 @@ export type FocusZoneTabbableElements = typeof FocusZoneTabbableElements[keyof t
 export interface IFocusZone {
     focus(forceIntoFirstElement?: boolean): boolean;
     focusElement(childElement?: HTMLElement): boolean;
-    setFocusAlignment(point: IPoint): void;
+    focusLast(): boolean;
+    setFocusAlignment(point: Point): void;
 }
 
 // @public
@@ -77,9 +79,12 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
     onActiveElementChanged?: (element?: HTMLElement, ev?: React.FocusEvent<HTMLElement>) => void;
     onBeforeFocus?: (childElement?: HTMLElement) => boolean;
     onFocusNotification?: () => void;
+    preventDefaultWhenHandled?: boolean;
     // @deprecated
     rootProps?: React.HTMLAttributes<HTMLDivElement>;
+    shouldFocusOnMount?: boolean;
     shouldInputLoseFocusOnArrowKey?: (inputElement: HTMLInputElement) => boolean;
+    shouldResetActiveElementWhenTabFromZone?: boolean;
 }
 
 

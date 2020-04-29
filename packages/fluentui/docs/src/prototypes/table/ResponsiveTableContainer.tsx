@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { TableCell, TableProps, Table } from '@fluentui/react-northstar';
+import { TableProps, Table, tableCellClassName, tableClassName } from '@fluentui/react-northstar';
 import calculateBreakpoints, { Column, Breakpoint } from './calculateBreakpoints';
 import * as _ from 'lodash';
 
@@ -13,7 +13,7 @@ interface ResponsiveTableProps extends TableProps {
 const ResponsiveTableContainer: React.FC<ResponsiveTableProps> = props => {
   const { columns: config, children } = props;
 
-  const responsiveTableID = React.useMemo(() => props.id || _.uniqueId(`${Table.className}__responsive-wrapper`), [
+  const responsiveTableID = React.useMemo(() => props.id || _.uniqueId(`${tableClassName}__responsive-wrapper`), [
     props.id,
   ]);
 
@@ -37,7 +37,7 @@ const ResponsiveTableContainer: React.FC<ResponsiveTableProps> = props => {
                 ${breakpoint
                   .map(
                     column =>
-                      `#${responsiveTableID} .${TableCell.className}:nth-child(${column.childIndex}) { display: none }`,
+                      `#${responsiveTableID} .${tableCellClassName}:nth-child(${column.childIndex}) { display: none }`,
                   )
                   .join('\n  ')}
               }`,

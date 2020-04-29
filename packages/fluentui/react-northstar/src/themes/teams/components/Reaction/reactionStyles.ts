@@ -1,10 +1,10 @@
 import { FontWeightProperty } from 'csstype';
 import { ICSSInJSStyle, ComponentSlotStylesPrepared } from '@fluentui/styles';
-import { default as Reaction, ReactionProps } from '../../../../components/Reaction/Reaction';
+import { ReactionProps, reactionSlotClassNames } from '../../../../components/Reaction/Reaction';
 import { pxToRem } from '../../../../utils';
 import { ReactionVariables } from './reactionVariables';
 
-const contentClassNameSelector = `& .${Reaction.slotClassNames.content}`;
+const contentClassNameSelector = `& .${reactionSlotClassNames.content}`;
 
 const reactionStyles: ComponentSlotStylesPrepared<ReactionProps, ReactionVariables> = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => ({
@@ -43,6 +43,9 @@ const reactionStyles: ComponentSlotStylesPrepared<ReactionProps, ReactionVariabl
     },
   }),
   icon: ({ props: p }) => ({
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
     marginRight: p.content ? pxToRem(4) : pxToRem(0),
   }),
   content: ({ variables: v }) => ({

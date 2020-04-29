@@ -4,6 +4,8 @@ This is a list of changes made to this Stardust copy of FocusZone in comparison 
 
 ### Converge `FocusZone` with v7's version
 - chore(FocusZone): Using the same DOM utilities in v0 that we use in v7. ([#12192](https://github.com/OfficeDev/office-ui-fabric-react/pull/12192))
+- chore(FocusZone): Adding read only check in shouldInputLoseFocus. ([#12457](https://github.com/microsoft/fluentui/pull/12457))
+- fix(FocusZone): Fixing tab keystroke not handling bidirectionalDomOrder direction. ([#12459](https://github.com/microsoft/fluentui/pull/12459))
 - feat(FocusZone): Adding implementation for tryInvokeClickForFocusable function. ([#12478](https://github.com/microsoft/fluentui/pull/12478))
 
 ### Fixes

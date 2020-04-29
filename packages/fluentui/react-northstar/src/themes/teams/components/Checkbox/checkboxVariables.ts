@@ -84,7 +84,7 @@ export default (siteVars: any): CheckboxVariables => ({
   borderWidth: pxToRem(1),
   indicatorColor: 'transparent',
   gap: pxToRem(12),
-  margin: `${pxToRem(2)} 0 0 0`,
+  margin: `${pxToRem(2.8)} 0 0 0`,
   padding,
   rootPadding: '3px 5px',
 

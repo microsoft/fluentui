@@ -44,7 +44,7 @@ const _items: ICommandBarItemProps[] = [
     key: 'upload',
     text: 'Upload',
     iconProps: { iconName: 'Upload' },
-    href: 'https://dev.office.com/fabric',
+    href: 'https://developer.microsoft.com/en-us/fluentui',
   },
   {
     key: 'share',

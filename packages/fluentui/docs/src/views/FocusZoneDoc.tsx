@@ -44,7 +44,10 @@ export default () => (
     </ul>
     <p>
       Fluent UI leverages {code('FocusZone')} component which is based on the{' '}
-      {link('Focus Zone from Office UI Fabric.', 'https://developer.microsoft.com/en-us/fabric#/components/focuszone')}{' '}
+      {link(
+        'Focus Zone from Fluent UI React.',
+        'https://developer.microsoft.com/en-us/fluentui#/controls/web/focuszone',
+      )}{' '}
       The Focus Zone can wrap any component / element and adds arrow key navigation functionality.
     </p>
     <Header as="h2">Usage</Header>

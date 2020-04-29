@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Icon, HierarchicalTree } from '@fluentui/react-northstar';
+import { HierarchicalTree } from '@fluentui/react-northstar';
+import { ArrowDownIcon, ArrowRightIcon } from '@fluentui/react-icons-northstar';
 
 const items = [
   {
@@ -32,7 +33,7 @@ const items = [
 
 const titleRenderer = (Component, { content, open, hasSubtree, ...restProps }) => (
   <Component open={open} hasSubtree={hasSubtree} {...restProps}>
-    {hasSubtree && <Icon name={open ? 'arrow-down' : 'arrow-right'} />}
+    {hasSubtree && open ? <ArrowDownIcon /> : <ArrowRightIcon />}
     <span>{content}</span>
   </Component>
 );

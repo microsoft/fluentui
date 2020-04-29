@@ -1,4 +1,3 @@
-import useComposeOptions from '../compose/useComposeOptions';
 import getUnhandledProps from '../utils/getUnhandledProps';
 
 /**
@@ -9,17 +8,15 @@ import getUnhandledProps from '../utils/getUnhandledProps';
  * @param props - A ReactElement props object
  * @returns A shallow copy of the prop object
  */
-function useUnhandledProps<P extends Record<string, any>>(handledProps: (keyof P)[], props: P): Partial<P> {
-  const composeOptions = useComposeOptions();
-
+function useUnhandledProps(handledProps: string[], props: Record<string, any>): Record<string, any> {
   if (process.env.NODE_ENV === 'test') {
-    return getUnhandledProps([...handledProps, ...(composeOptions?.handledProps || [])], {
+    return getUnhandledProps(handledProps, {
       ...props,
       'data-uses-unhanded-props': true,
-    });
+    } as Record<string, any>);
   }
 
-  return getUnhandledProps([...handledProps, ...(composeOptions?.handledProps || [])], props);
+  return getUnhandledProps(handledProps, props);
 }
 
 export default useUnhandledProps;

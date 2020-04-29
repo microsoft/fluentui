@@ -86,6 +86,14 @@ storiesOf('ComboBox', module)
       disabled
     />,
   )
+  .addStory('Error', () => (
+    <ComboBox
+      defaultSelectedKey="A"
+      label="Error"
+      errorMessage="Oh no! This ComboBox has an error!"
+      options={testOptions}
+    />
+  ))
   .addStory('Placeholder', () =>
     // prettier-ignore
     <ComboBox

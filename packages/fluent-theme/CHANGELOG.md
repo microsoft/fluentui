@@ -1,6 +1,17 @@
 # Change Log - @uifabric/fluent-theme
 
-This log was last generated on Wed, 25 Mar 2020 12:30:04 GMT and should not be manually modified.
+This log was last generated on Thu, 16 Apr 2020 04:01:45 GMT and should not be manually modified.
+
+<!-- Start content -->
+
+## [7.1.53](https://github.com/microsoft/fluentui/tree/@uifabric/fluent-theme_v7.1.53)
+
+Thu, 16 Apr 2020 04:01:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fluent-theme_v7.1.43..@uifabric/fluent-theme_v7.1.53)
+
+### Patches
+
+- Readme: Fabric=>Fluent wording updates ([PR #12508](https://github.com/microsoft/fluentui/pull/12508) by elcraig@microsoft.com)
 
 ## 7.1.43
 Wed, 25 Mar 2020 12:30:04 GMT
@@ -413,4 +424,3 @@ Fri, 19 Oct 2018 12:29:20 GMT
 ### Patches
 
 - Create new package for housing Fluent customizations.
-
