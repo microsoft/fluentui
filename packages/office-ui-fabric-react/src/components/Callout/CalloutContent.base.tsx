@@ -3,7 +3,7 @@ import { ICalloutProps, ICalloutContentStyleProps, ICalloutContentStyles, Target
 import { DirectionalHint } from '../../common/DirectionalHint';
 import {
   Async,
-  IPoint,
+  Point,
   IRectangle,
   assign,
   css,
@@ -77,7 +77,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
   private _targetWindow: Window;
   private _bounds: IRectangle | undefined;
   private _positionAttempts: number;
-  private _target: Element | MouseEvent | IPoint | null;
+  private _target: Element | MouseEvent | Point | null;
   private _setHeightOffsetTimer: number;
   private _hasListeners = false;
   private _maxHeight: number | undefined;
@@ -200,6 +200,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
       backgroundColor,
       calloutMaxHeight,
       onScroll,
+      // tslint:disable-next-line: deprecation
       shouldRestoreFocus = true,
     } = this.props;
     target = this._getTarget();
@@ -250,6 +251,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
           <Popup
             {...getNativeProps(this.props, ARIA_ROLE_ATTRIBUTES)}
             ariaLabel={ariaLabel}
+            onRestoreFocus={this.props.onRestoreFocus}
             ariaDescribedBy={ariaDescribedBy}
             ariaLabelledBy={ariaLabelledBy}
             className={this._classNames.calloutMain}
@@ -529,7 +531,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
         // HTMLImgElements can have x and y values. The check for it being a point must go last.
       } else {
         this._targetWindow = getWindow(currentElement)!;
-        this._target = target as IPoint;
+        this._target = target as Point;
       }
     } else {
       this._targetWindow = getWindow(currentElement)!;

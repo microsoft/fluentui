@@ -11,12 +11,12 @@ module.exports = createRule({
   meta: {
     type: 'problem',
     docs: {
-      description: 'Require omit modifiers on class properties and methods',
+      description: 'Require omitting visibility modifiers on class properties and methods',
       category: 'Best Practices',
       recommended: 'error',
     },
     messages: {
-      presentModifier: 'Present accessibility modifier on {{type}} {{name}}.',
+      presentModifier: 'Visibility modifier present on {{type}} {{name}}.',
     },
     schema: [],
   },

@@ -69,9 +69,12 @@ export { default as hierarchicalSubtreeBehavior } from './HierarchicalTree/hiera
 export { default as dialogBehavior } from './Dialog/dialogBehavior';
 export { default as statusBehavior } from './Status/statusBehavior';
 export { default as embedBehavior } from './Embed/embedBehavior';
+export * from './Embed/embedBehavior';
 export { default as accordionBehavior } from './Accordion/accordionBehavior';
 export { default as accordionTitleBehavior } from './Accordion/accordionTitleBehavior';
+export * from './Accordion/accordionTitleBehavior';
 export { default as accordionContentBehavior } from './Accordion/accordionContentBehavior';
+export * from './Accordion/accordionContentBehavior';
 export { default as checkboxBehavior } from './Checkbox/checkboxBehavior';
 export * from './Checkbox/checkboxBehavior';
 export * from './Tooltip/tooltipAsDescriptionBehavior';
@@ -95,6 +98,7 @@ export { default as treeTitleAsListItemTitleBehavior } from './Tree/treeTitleAsL
 export { default as carouselBehavior } from './Carousel/carouselBehavior';
 export { default as carouselItemBehavior } from './Carousel/carouselItemBehavior';
 export { default as tableBehavior } from './Table/tableBehavior';
+export * from './Table/tableBehavior';
 export { default as tableRowBehavior } from './Table/tableRowBehavior';
 export { default as tableCellBehavior } from './Table/tableCellBehavior';
 export * from './Table/tableCellBehavior';
@@ -112,5 +116,6 @@ export { default as cardBehavior } from './Card/cardBehavior';
 export * from './Card/cardBehavior';
 export { default as cardFocusableBehavior } from './Card/cardFocusableBehavior';
 export { default as cardChildrenFocusableBehavior } from './Card/cardChildrenFocusableBehavior';
+export { default as cardsContainerBehavior } from './Card/cardsContainerBehavior';
 export { default as videoBehavior } from './Video/videoBehavior';
 export * from './Video/videoBehavior';
