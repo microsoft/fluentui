@@ -26,7 +26,7 @@ const getDir = (theme?: ITheme, dir?: IFabricProps['dir']) => {
     // If Fabric dir !== contextDir
     // Or If contextDir !== pageDir
     // Then we need to set dir of the Fabric root
-    rootDir: componentDir !== contextDir || componentDir !== pageDir ? componentDir : undefined,
+    rootDir: componentDir !== contextDir || componentDir !== pageDir ? componentDir : dir,
     // If dir !== contextDir || pageDir
     // then set contextual theme around content
     needsTheme: componentDir !== contextDir,
