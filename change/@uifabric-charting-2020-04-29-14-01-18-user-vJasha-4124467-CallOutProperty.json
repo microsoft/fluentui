@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Callout property added and imports path updated",
+  "packageName": "@uifabric/charting",
+  "email": "email not defined",
+  "dependentChangeType": "patch",
+  "date": "2020-04-29T08:31:18.833Z"
+}
