@@ -34,7 +34,7 @@ export interface EmbedSlotClassNames {
 
 export interface EmbedProps extends UIComponentProps {
   /** Accessibility behavior if overridden by the user. */
-  accessibility?: Accessibility;
+  accessibility?: Accessibility<EmbedBehaviorProps>;
 
   /** Alternative text. */
   alt?: string;
@@ -191,10 +191,11 @@ export const Embed: React.FC<WithAsProp<EmbedProps>> & FluentComponentStaticProp
           {iframe && (
             <Ref innerRef={frameRef}>
               {Box.create(iframe, {
-                defaultProps: () => ({
-                  as: 'iframe',
-                  styles: resolvedStyles.iframe,
-                }),
+                defaultProps: () =>
+                  getA11yProps('iframe', {
+                    as: 'iframe',
+                    styles: resolvedStyles.iframe,
+                  }),
                 overrideProps: handleFrameOverrides,
               })}
             </Ref>
