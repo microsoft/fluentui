@@ -4,7 +4,7 @@ import { IColumn, DetailsRow } from 'office-ui-fabric-react/lib/DetailsList';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 import { Selection, SelectionMode, SelectionZone } from 'office-ui-fabric-react/lib/Selection';
 import { Toggle, IToggleStyles } from 'office-ui-fabric-react/lib/Toggle';
-import { useBoolean } from '@uifabric/react-hooks';
+import { useBoolean, useConst } from '@uifabric/react-hooks';
 import { createListItems, createGroups, IExampleItem } from '@uifabric/example-data';
 
 const toggleStyles: Partial<IToggleStyles> = { root: { marginBottom: '20px' } };
