@@ -11,6 +11,7 @@ import {
   commonPropTypes,
   rtlTextContainer,
   ContentComponentProps,
+  ChildrenComponentProps,
 } from '../../utils';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
@@ -30,7 +31,7 @@ export interface CarouselNavigationItemSlotClassNames {
   content: string;
 }
 
-export interface CarouselNavigationItemProps extends UIComponentProps, ContentComponentProps<ShorthandValue<BoxProps>> {
+export interface CarouselNavigationItemProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
   /**
    * Accessibility behavior if overridden by the user.
    */
@@ -162,9 +163,7 @@ export const CarouselNavigationItem: React.FC<WithAsProp<CarouselNavigationItemP
     _.invoke(props, 'onFocus', e, props);
   };
 
-  const element = childrenExist(children) ? (
-    children
-  ) : (
+  const element = (
     <ElementType
       {...getA11yProps('root', {
         className: classes.root,
@@ -175,7 +174,7 @@ export const CarouselNavigationItem: React.FC<WithAsProp<CarouselNavigationItemP
       })}
       {...rtlTextContainer.getAttributes({ forElements: [children] })}
     >
-      {renderContent()}
+      {childrenExist(children) ? children : renderContent()}
     </ElementType>
   );
 
