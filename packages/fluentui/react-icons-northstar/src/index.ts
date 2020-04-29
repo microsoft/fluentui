@@ -176,6 +176,7 @@ export { default as ShareToIcon } from './components/ShareToIcon';
 export { default as SkypeLogoIcon } from './components/SkypeLogoIcon';
 export { default as SpeakerMuteIcon } from './components/SpeakerMuteIcon';
 export { default as SpotlightIcon } from './components/SpotlightIcon';
+export { default as SpotlightStopIcon } from './components/SpotlightStopIcon';
 export { default as StarIcon } from './components/StarIcon';
 export { default as StickerIcon } from './components/StickerIcon';
 export { default as StrikeIcon } from './components/StrikeIcon';
