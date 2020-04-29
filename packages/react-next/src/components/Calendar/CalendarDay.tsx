@@ -399,6 +399,7 @@ export const CalendarDay = React.memo(
     );
   }),
 );
+CalendarDay.displayName = 'CalendarDay';
 //#endregion CalendarDay
 
 //#region CalendarDayGridCell
@@ -588,7 +589,7 @@ const CalendarDayGridCell = React.memo((props: ICalendarDayGridCellProps) => {
     </td>
   );
 });
-
+CalendarDayGridCell.displayName = 'CalendarDayGridCell';
 //#endregion CalendarDayGridCell
 
 const onSelectNextMonth = ({

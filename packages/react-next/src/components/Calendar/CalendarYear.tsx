@@ -112,6 +112,7 @@ const CalendarYearGridCell = React.memo(
     );
   }),
 );
+CalendarYearGridCell.displayName = 'CalendarYearGridCell';
 
 interface ICalendarYearGrid {
   focus(): void;
@@ -170,6 +171,7 @@ const CalendarYearGrid = React.memo(
     );
   }),
 );
+CalendarYearGrid.displayName = 'CalendarYearGrid';
 
 export interface ICalendarYearHeaderProps extends ICalendarYearProps, ICalendarYearRange {
   onSelectPrev?: () => void;
@@ -236,6 +238,7 @@ const CalendarYearNavDir = React.memo(
     );
   },
 );
+CalendarYearNavDir.displayName = 'CalendarYearNavDir';
 
 const CalendarYearNav = React.memo((props: ICalendarYearHeaderProps) => {
   return (
@@ -247,6 +250,7 @@ const CalendarYearNav = React.memo((props: ICalendarYearHeaderProps) => {
     </div>
   );
 });
+CalendarYearNav.displayName = 'CalendarYearNav';
 
 const CalendarYearTitle = React.memo((props: ICalendarYearHeaderProps) => {
   const { fromYear, toYear, onHeaderSelect, onRenderYear } = props;
@@ -292,6 +296,7 @@ const CalendarYearTitle = React.memo((props: ICalendarYearHeaderProps) => {
     </div>
   );
 });
+CalendarYearTitle.displayName = 'CalendarYearTitle';
 
 const CalendarYearHeader = React.memo((props: ICalendarYearHeaderProps) => {
   const { onRenderTitle } = props;
@@ -302,6 +307,7 @@ const CalendarYearHeader = React.memo((props: ICalendarYearHeaderProps) => {
     </div>
   );
 });
+CalendarYearHeader.displayName = 'CalendarYearHeader';
 
 export interface ICalendarYearState {
   fromYear: number;
@@ -346,3 +352,4 @@ export const CalendarYear = React.memo(
     );
   }),
 );
+CalendarYear.displayName = 'CalendarYear';

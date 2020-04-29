@@ -268,6 +268,7 @@ export const Calendar = React.memo(
     );
   }),
 );
+Calendar.displayName = 'Calendar';
 
 function usePickerVisibility(props: ICalendarProps, setFocusOnUpdate: (shouldFocus: boolean) => void) {
   const [isMonthPickerVisible, setIsMonthPickerVisible] = React.useState<boolean>(

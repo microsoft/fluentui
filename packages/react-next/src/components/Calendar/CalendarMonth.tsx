@@ -351,6 +351,7 @@ export const CalendarMonth = React.memo(
     );
   }),
 );
+CalendarMonth.displayName = 'CalendarMonth';
 
 const CalendarMonthButton = React.memo(
   React.forwardRef(
@@ -415,6 +416,7 @@ const CalendarMonthButton = React.memo(
     },
   ),
 );
+CalendarMonthButton.displayName = 'CalendarMonthButton';
 
 function _isCurrentMonth(month: number, year: number, today: Date): boolean {
   return today.getFullYear() === year && today.getMonth() === month;
