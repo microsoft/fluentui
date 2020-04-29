@@ -40,6 +40,7 @@ const onRenderHeader = (props: IGroupHeaderProps): JSX.Element => {
     </div>
   );
 };
+
 const onRenderCell = (nestingDepth: number, item: IExampleItem, itemIndex: number): JSX.Element => {
   return (
     <div data-selection-index={itemIndex}>
@@ -47,9 +48,11 @@ const onRenderCell = (nestingDepth: number, item: IExampleItem, itemIndex: numbe
     </div>
   );
 };
+
 const onRenderFooter = (props: IGroupFooterProps): JSX.Element => {
   return <div className={classNames.footer}>This is a custom footer for {props.group!.name}</div>;
 };
+
 const groupedListProps = {
   onRenderHeader,
   onRenderFooter,
