@@ -1,8 +1,17 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Tue, 21 Apr 2020 12:34:50 GMT and should not be manually modified.
+This log was last generated on Tue, 28 Apr 2020 12:34:09 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.16.0](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.16.0)
+
+Tue, 28 Apr 2020 12:34:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.15.11..@uifabric/utilities_v7.16.0)
+
+### Minor changes
+
+- Point: Renaming IPoint to point, x to left and y to top and deprecating old names. ([PR #12722](https://github.com/microsoft/fluentui/pull/12722) by humbertomakotomorimoto@gmail.com)
 
 ## [7.15.11](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.15.11)
 

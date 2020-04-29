@@ -10,7 +10,7 @@ import {
 
 import { AccordionContentStylesProps } from '../../components/Accordion/AccordionContent';
 import { AccordionProps } from '../../components/Accordion/Accordion';
-import { AccordionTitleProps } from '../../components/Accordion/AccordionTitle';
+import { AccordionTitleStylesProps } from '../../components/Accordion/AccordionTitle';
 import { AlertStylesProps } from '../../components/Alert/Alert';
 import { AnimationProps } from '../../components/Animation/Animation';
 import { AttachmentProps } from '../../components/Attachment/Attachment';
@@ -74,7 +74,7 @@ import { HierarchicalTreeTitleProps } from '../../components/HierarchicalTree/Hi
 import { VideoStylesProps } from '../../components/Video/Video';
 import { TreeItemStylesProps } from '../../components/Tree/TreeItem';
 import { TreeTitleStylesProps } from '../../components/Tree/TreeTitle';
-import { TableProps } from '../../components/Table/Table';
+import { TableStylesProps } from '../../components/Table/Table';
 import { TableRowStylesProps } from '../../components/Table/TableRow';
 import { TableCellStylesProps } from '../../components/Table/TableCell';
 import { CardStylesProps } from '../../components/Card/Card';
@@ -90,6 +90,7 @@ export type TeamsThemeStylesProps = {
   Accordion: AccordionProps;
   AccordionTitle: AccordionTitleProps;
   AccordionContent: AccordionContentStylesProps;
+  AccordionTitle: AccordionTitleStylesProps;
   Alert: AlertStylesProps;
   Animation: AnimationProps;
   Attachment: AttachmentProps;
@@ -156,7 +157,7 @@ export type TeamsThemeStylesProps = {
   HierarchicalTreeItem: HierarchicalTreeItemProps;
   HierarchicalTreeTitle: HierarchicalTreeTitleProps;
   Video: VideoStylesProps;
-  Table: TableProps;
+  Table: TableStylesProps;
   TableRow: TableRowStylesProps;
   TableCell: TableCellStylesProps;
   Card: CardStylesProps;

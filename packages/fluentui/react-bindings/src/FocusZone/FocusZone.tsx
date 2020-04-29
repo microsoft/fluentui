@@ -611,7 +611,7 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
             this._processingTabKey = true;
             if (direction === FocusZoneDirection.vertical) {
               focusChanged = ev.shiftKey ? this.moveFocusUp() : this.moveFocusDown();
-            } else if (direction === FocusZoneDirection.horizontal || direction === FocusZoneDirection.bidirectional) {
+            } else {
               const tabWithDirection = this.props.isRtl ? !ev.shiftKey : ev.shiftKey;
               focusChanged = tabWithDirection ? this.moveFocusLeft() : this.moveFocusRight();
             }
