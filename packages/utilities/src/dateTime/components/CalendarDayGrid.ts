@@ -15,6 +15,16 @@ export interface IDayInfo {
   onSelected: () => void;
 }
 
+export interface ICalendarDayGridState {
+  /**
+   * Weeks is a 2D array. Weeks[0] contains the last week of the prior range,
+   * Weeks[weeks.length - 1] contains first week of next range. These are for transition states.
+   *
+   * Weeks[1... weeks.length - 2] contains the actual visible data
+   */
+  weeks?: IDayInfo[][];
+}
+
 export interface ICalendarDayGridProps {
   /**
    * The currently selected date
@@ -78,17 +88,11 @@ export interface ICalendarDayGridProps {
    * @defaultvalue [Monday,Tuesday,Wednesday,Thursday,Friday]
    */
   workWeekDays?: DayOfWeek[];
-
-  /**
-   * Weeks is a 2D array. Weeks[0] contains the last week of the prior range,
-   * Weeks[weeks.length - 1] contains first week of next range. These are for transition states.
-   *
-   * Weeks[1... weeks.length - 2] contains the actual visible data
-   */
-  weeks?: IDayInfo[][];
 }
 
-export function getIsRestrictedDate(props: ICalendarDayGridProps, date: Date): boolean {
+export interface ICalendarDayGridStateAndProps extends ICalendarDayGridProps, ICalendarDayGridState {}
+
+export function getIsRestrictedDate(props: ICalendarDayGridStateAndProps, date: Date): boolean {
   const { restrictedDates, minDate, maxDate } = props;
   if (!restrictedDates && !minDate && !maxDate) {
     return false;
@@ -101,18 +105,18 @@ export function getIsRestrictedDate(props: ICalendarDayGridProps, date: Date): b
   return inRestrictedDates || getIsBeforeMinDate(props, date) || getIsAfterMaxDate(props, date);
 }
 
-export function getIsBeforeMinDate(props: ICalendarDayGridProps, date: Date): boolean {
+export function getIsBeforeMinDate(props: ICalendarDayGridStateAndProps, date: Date): boolean {
   const { minDate } = props;
   return minDate ? compareDatePart(minDate, date) >= 1 : false;
 }
 
-export function getIsAfterMaxDate(props: ICalendarDayGridProps, date: Date): boolean {
+export function getIsAfterMaxDate(props: ICalendarDayGridStateAndProps, date: Date): boolean {
   const { maxDate } = props;
   return maxDate ? compareDatePart(date, maxDate) >= 1 : false;
 }
 
 export function findAvailableDate(
-  props: ICalendarDayGridProps,
+  props: ICalendarDayGridStateAndProps,
   initialDate: Date,
   targetDate: Date,
   direction: number,
@@ -156,11 +160,11 @@ export function getBoundedDateRange(dateRange: Date[], minDate?: Date, maxDate?:
  * to set classnames on all relevant child refs to apply the styling
  *
  */
-export function getDayInfosInRangeOfDay(props: ICalendarDayGridProps, day: IDayInfo): IDayInfo[] {
+export function getDayInfosInRangeOfDay(props: ICalendarDayGridStateAndProps, day: IDayInfo): IDayInfo[] {
   const { dateRangeType, firstDayOfWeek, workWeekDays, daysToSelectInDayView, weeks } = props;
 
   // The hover state looks weird with non-contiguous days in work week view. In work week, show week hover state
-  const dateRangeHoverType = this.getDateRangeTypeToUse(dateRangeType, workWeekDays);
+  const dateRangeHoverType = getDateRangeTypeToUse(dateRangeType, workWeekDays);
 
   // gets all the dates for the given date range type that are in the same date range as the given day
   const dateRange = getDateRangeArray(
@@ -179,4 +183,30 @@ export function getDayInfosInRangeOfDay(props: ICalendarDayGridProps, day: IDayI
   }, []);
 
   return dayInfosInRange;
+}
+
+/**
+ * When given work week, if the days are non-contiguous, the hover states look really weird. So for non-contiguous
+ * work weeks, we'll just show week view instead.
+ */
+export function getDateRangeTypeToUse(
+  dateRangeType: DateRangeType,
+  workWeekDays: DayOfWeek[] | undefined,
+): DateRangeType {
+  if (workWeekDays && dateRangeType === DateRangeType.WorkWeek) {
+    const sortedWWDays = workWeekDays.slice().sort();
+    let isContiguous = true;
+    for (let i = 1; i < sortedWWDays.length; i++) {
+      if (sortedWWDays[i] !== sortedWWDays[i - 1] + 1) {
+        isContiguous = false;
+        break;
+      }
+    }
+
+    if (!isContiguous || workWeekDays.length === 0) {
+      return DateRangeType.Week;
+    }
+  }
+
+  return dateRangeType;
 }

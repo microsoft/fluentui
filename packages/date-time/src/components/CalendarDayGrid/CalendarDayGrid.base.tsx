@@ -12,13 +12,14 @@ import {
   getIsRestrictedDate,
   findAvailableDate,
   getDayInfosInRangeOfDay,
+  getBoundedDateRange,
+  getDateRangeTypeToUse,
 } from '@uifabric/utilities';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 import {
   addDays,
   addWeeks,
   compareDates,
-  getBoundedDateRange,
   getDateRangeArray,
   isInDateRangeArray,
   getWeekNumbersInMonth,
@@ -339,11 +340,11 @@ export class CalendarDayGridBase extends React.Component<ICalendarDayGridProps, 
 
     // target date is restricted, search in whatever direction until finding the next possible date,
     // stopping at boundaries
-    let nextDate = findAvailableDate(date, targetDate, direction);
+    let nextDate = findAvailableDate({ weeks: this.state.weeks, ...this.props }, date, targetDate, direction);
 
     if (!nextDate) {
       // if no dates available in initial direction, try going backwards
-      nextDate = findAvailableDate(date, targetDate, -direction);
+      nextDate = findAvailableDate({ weeks: this.state.weeks, ...this.props }, date, targetDate, -direction);
     }
 
     // if the nextDate is still inside the same focusZone area, let the focusZone handle setting the focus so we
@@ -457,7 +458,7 @@ export class CalendarDayGridBase extends React.Component<ICalendarDayGridProps, 
     let isAllDaysOfWeekOutOfMonth = false;
 
     // in work week view if the days aren't contiguous we use week view instead
-    const selectedDateRangeType = this.getDateRangeTypeToUse(dateRangeType, workWeekDays);
+    const selectedDateRangeType = getDateRangeTypeToUse(dateRangeType, workWeekDays);
 
     let selectedDates = getDateRangeArray(
       selectedDate,
@@ -750,31 +751,5 @@ export class CalendarDayGridBase extends React.Component<ICalendarDayGridProps, 
         }
       });
     };
-  };
-
-  /**
-   * When given work week, if the days are non-contiguous, the hover states look really weird. So for non-contiguous
-   * work weeks, we'll just show week view instead.
-   */
-  private getDateRangeTypeToUse = (
-    dateRangeType: DateRangeType,
-    workWeekDays: DayOfWeek[] | undefined,
-  ): DateRangeType => {
-    if (workWeekDays && dateRangeType === DateRangeType.WorkWeek) {
-      const sortedWWDays = workWeekDays.slice().sort();
-      let isContiguous = true;
-      for (let i = 1; i < sortedWWDays.length; i++) {
-        if (sortedWWDays[i] !== sortedWWDays[i - 1] + 1) {
-          isContiguous = false;
-          break;
-        }
-      }
-
-      if (!isContiguous || workWeekDays.length === 0) {
-        return DateRangeType.Week;
-      }
-    }
-
-    return dateRangeType;
   };
 }
