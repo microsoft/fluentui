@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Add logic to cap the number we show in the facepile descrtiptive overflow at 99 to prevent large numbers from overflowing outside of the buttons bounds",
+  "comment": "Add logic to cap the number we show in the facepile descrtiptive overflow at 99 to prevent text overflow",
   "packageName": "office-ui-fabric-react",
   "email": "tabrumle@microsoft.com",
   "dependentChangeType": "patch",
