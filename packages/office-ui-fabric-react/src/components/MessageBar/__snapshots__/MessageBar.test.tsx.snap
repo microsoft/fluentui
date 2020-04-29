@@ -8,8 +8,6 @@ exports[`MessageBar renders MessageBar correctly 1`] = `
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
-        background: #f3f2f1;
-        color: #323130;
         display: flex;
         flex-direction: column;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -57,7 +55,6 @@ exports[`MessageBar renders MessageBar correctly 1`] = `
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              color: #605e5c;
               display: inline-block;
               font-family: "FabricMDL2Icons";
               font-style: normal;
