@@ -1,22 +1,25 @@
 import * as React from 'react';
-import { ImageProps, ImageOptions } from './Image.types';
-import { compose, ComposeStandardStatics } from '../utils/compose';
+import { ImageProps } from './Image.types';
+import { compose } from '@fluentui/react-compose';
 import { useImage } from './useImage';
 
-export const ImageBase = compose<ImageProps, {}, {}, ComposeStandardStatics>(
-  (props: ImageProps & ImageOptions, ref: React.RefObject<HTMLElement>, options: ImageOptions) => {
-    const { slots, slotProps } = useImage(props, options);
+export const ImageBase = compose<'img', ImageProps, ImageProps, {}, {}>(
+  (props, ref, composeOptions) => {
+    const { slots, slotProps } = useImage(props, composeOptions);
 
     return <slots.root ref={ref} {...slotProps.root} />;
   },
   {
-    defaultProps: {
-      as: 'img',
-      alt: '',
-    },
-    statics: {
-      mappedProp: 'src',
-      displayName: 'ImageBase',
-    },
+    displayName: 'ImageBase',
   },
 );
+
+ImageBase.defaultProps = {
+  as: 'img',
+  alt: '',
+};
+
+// @ts-ignore
+ImageBase.shorthandConfig = {
+  mappedProp: 'src',
+};

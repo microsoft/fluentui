@@ -8,6 +8,17 @@ type GenericDictionary = { [key: string]: any };
 
 const EmptyRender = () => null;
 
+// Picked up from @fluentui/react-northstar factories
+type HTMLTag = 'iframe' | 'img' | 'input';
+type ShorthandProp = 'children' | 'src' | 'type';
+
+// It's only necessary to map props that don't use 'children' as value ('children' is the default)
+const mappedProps: { [key in HTMLTag]: ShorthandProp } = {
+  iframe: 'src',
+  img: 'src',
+  input: 'type',
+};
+
 // tslint:disable-next-line:no-any
 const filterProps = (props: any): any => {
   let allowedProps: string[];
@@ -104,7 +115,11 @@ export function mergeProps<TState, TSlots, TSlotProps>(
       const isLiteral = slotPropType === 'string' || slotPropType === 'number' || slotPropType === 'boolean';
 
       if (isLiteral || React.isValidElement(slotProp)) {
-        const mappedProp = slot.mappedProp || 'children';
+        const mappedProp =
+          (slot && slot.shorthandConfig && slot.shorthandConfig.mappedProp) ||
+          // @ts-ignore
+          mappedProps[slot] ||
+          'children';
 
         slotProp = { [mappedProp]: slotProp };
       }
