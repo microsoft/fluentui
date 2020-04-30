@@ -1,8 +1,17 @@
 # Change Log - @uifabric/react-hooks
 
-This log was last generated on Wed, 22 Apr 2020 12:33:04 GMT and should not be manually modified.
+This log was last generated on Thu, 30 Apr 2020 12:31:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.2.2](https://github.com/microsoft/fluentui/tree/@uifabric/react-hooks_v7.2.2)
+
+Thu, 30 Apr 2020 12:31:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/react-hooks_v7.2.0..@uifabric/react-hooks_v7.2.2)
+
+### Patches
+
+- Change useBoolean to preserve toggle callback identity ([PR #12912](https://github.com/microsoft/fluentui/pull/12912) by elcraig@microsoft.com)
 
 ## [7.2.0](https://github.com/microsoft/fluentui/tree/@uifabric/react-hooks_v7.2.0)
 
