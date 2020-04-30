@@ -6,6 +6,6 @@ Fluent UI Android includes an expanding library of controls written in Kotlin. T
 
 Documentation for the controls is a work in progress. Some controls can be found in the [Controls section](#/controls/android) of this site, and the full list can be viewed in [this source folder](https://github.com/OfficeDev/ui-fabric-android/blob/master/OfficeUIFabric/src/main/java/com/microsoft/officeuifabric).
 
-### More information
+### Start developing
 
 Setup instructions and more information can be found in [the library's readme](https://github.com/OfficeDev/ui-fabric-android#readme).

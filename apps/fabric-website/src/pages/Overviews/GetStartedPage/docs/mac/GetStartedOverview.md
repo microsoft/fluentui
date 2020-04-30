@@ -6,6 +6,6 @@ Fluent UI macOS includes an expanding library of controls written in Swift and s
 
 Documentation for the controls is a work in progress. Some controls can be found in the [Controls section](#/controls/mac) of this site, and the full list can be viewed in [this source folder](https://github.com/microsoft/fluentui-apple/tree/master/macos/FluentUI).
 
-### More information
+### Start developing
 
 Setup instructions and more information can be found in [the library's readme](https://github.com/microsoft/fluentui-apple/blob/master/macos/README.md).
