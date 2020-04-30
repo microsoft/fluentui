@@ -191,7 +191,16 @@ export const Accordion: React.FC<WithAsProp<AccordionProps>> &
     true,
   );
 
-  let itemRefs = [];
+  const [itemRefs, setItemRefs] = React.useState([]);
+
+  React.useEffect(() => {
+    setItemRefs(elRefs =>
+      Array(panels.length)
+        .fill(null)
+        .map((_, i) => elRefs[i] || React.createRef<HTMLElement>()),
+    );
+  }, [panels.length]);
+
   const defaultAccordionTitleId = React.useMemo(() => _.uniqueId('accordion-title-'), []);
   const defaultAccordionContentId = React.useMemo(() => _.uniqueId('accordion-content-'), []);
 
@@ -245,10 +254,9 @@ export const Accordion: React.FC<WithAsProp<AccordionProps>> &
     return !expanded || (!exclusive && (activeIndex as number[]).length > 1);
   };
 
-  const renderPanels = React.useMemo(() => {
+  const renderPanels = () => {
     const children: any[] = [];
 
-    itemRefs = [];
     focusHandler.syncFocusedIndex(focusedIndex);
     _.each(panels, (panel, index) => {
       const { content, title } = panel;
@@ -256,10 +264,7 @@ export const Accordion: React.FC<WithAsProp<AccordionProps>> &
       const canBeCollapsed = isIndexActionable(+index);
       const titleId = title['id'] || `${defaultAccordionTitleId}${index}`;
       const contentId = content['id'] || `${defaultAccordionContentId}${index}`;
-      const contentRef = itemRefs[index] || React.createRef<HTMLElement>();
-      if (itemRefs[index]) {
-        itemRefs[index] = contentRef;
-      }
+      const contentRef = itemRefs[index];
 
       children.push(
         createShorthand(AccordionTitle, title, {
@@ -289,7 +294,7 @@ export const Accordion: React.FC<WithAsProp<AccordionProps>> &
       );
     });
     return children;
-  }, [panels, activeIndex]);
+  };
 
   const element = (
     <ElementType
@@ -299,7 +304,7 @@ export const Accordion: React.FC<WithAsProp<AccordionProps>> &
       })}
       {...rtlTextContainer.getAttributes({ forElements: [children] })}
     >
-      {childrenExist(children) ? children : renderPanels}
+      {childrenExist(children) ? children : renderPanels()}
     </ElementType>
   );
 
