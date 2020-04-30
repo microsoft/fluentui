@@ -22,6 +22,7 @@ const styles = mergeStyleSets({
     width: '180px',
   },
 });
+
 const overflowSetStyles: Partial<IOverflowSetStyles> = { root: { height: 40 } };
 const dropdownOptions = [
   { key: '20', text: '20' },
@@ -37,6 +38,7 @@ export interface IOverflowData {
   overflow: IContextualMenuItem[];
   cacheKey?: string;
 }
+
 const generateData = (count: number, cachingEnabled: boolean, checked: boolean): IOverflowData => {
   const icons = ['Add', 'Share', 'Upload'];
   const dataItems = [];
@@ -60,10 +62,11 @@ const generateData = (count: number, cachingEnabled: boolean, checked: boolean):
   }
   return result;
 };
+
 const computeCacheKey = (primaryControls: IContextualMenuItem[]): string => {
   return primaryControls.reduce((acc, current) => acc + current.key, '');
 };
-const short = false;
+
 const onRenderItem = (item: any) => (
   <CommandBarButton
     role="menuitem"
@@ -81,7 +84,7 @@ export const ResizeGroupOverflowSetExample: React.FunctionComponent = () => {
   const [onGrowDataEnabled, { toggle: toggleOnGrowDataEnabled }] = useBoolean(false);
   const dataToRender = generateData(numberOfItems, cachingEnabled, buttonsChecked);
 
-  const onReduceData = (currentData: any): any => {
+  const onReduceData = (currentData: any) => {
     if (currentData.primary.length === 0) {
       return undefined;
     }
@@ -93,7 +96,8 @@ export const ResizeGroupOverflowSetExample: React.FunctionComponent = () => {
     }
     return { primary, overflow, cacheKey };
   };
-  const onGrowData = (currentData: any): any => {
+
+  const onGrowData = (currentData: any) => {
     if (currentData.overflow.length === 0) {
       return undefined;
     }
@@ -105,9 +109,11 @@ export const ResizeGroupOverflowSetExample: React.FunctionComponent = () => {
     }
     return { primary, overflow, cacheKey };
   };
+
   const onRenderOverflowButton = (overflowItems: any) => (
     <CommandBarButton role="menuitem" menuProps={{ items: overflowItems! }} />
   );
+
   const onRenderData = (data: any) => {
     return (
       <OverflowSet
@@ -120,11 +126,14 @@ export const ResizeGroupOverflowSetExample: React.FunctionComponent = () => {
       />
     );
   };
+
   const onNumberOfItemsChanged = (event: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void => {
     setNumberOfItems(parseInt(option.text, 10));
   };
+
   return (
-    <div className={short ? styles.resizeIsShort : 'notResized'}>
+    // tslint:disable-next-line:no-constant-condition
+    <div className={false ? styles.resizeIsShort : 'notResized'}>
       <ResizeGroup
         role="tabpanel"
         aria-label="Resize Group with an Overflow Set"

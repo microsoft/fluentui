@@ -8,8 +8,8 @@ import {
   OverflowSet,
   IButtonStyles,
   DirectionalHint,
+  createArray,
 } from 'office-ui-fabric-react';
-
 export interface IOverflowData {
   primary: IContextualMenuItem[];
   overflow: IContextualMenuItem[];
@@ -19,7 +19,7 @@ export interface IOverflowData {
 const generateData = (count: number, cachingEnabled: boolean, checked: boolean): IOverflowData => {
   const icons = ['Add', 'Share', 'Upload'];
   let cacheKey = '';
-  const dataItems = Array.from({ length: count }).map((item, index) => {
+  const dataItems = createArray(count, index => {
     cacheKey = cacheKey + `item${index}`;
     return {
       key: `item${index}`,
@@ -28,7 +28,6 @@ const generateData = (count: number, cachingEnabled: boolean, checked: boolean):
       checked: checked,
     };
   });
-
   let result: IOverflowData = {
     primary: dataItems,
     overflow: [] as any[],
@@ -38,6 +37,7 @@ const generateData = (count: number, cachingEnabled: boolean, checked: boolean):
   }
   return result;
 };
+
 const buttonStyles: IButtonStyles = {
   root: {
     paddingBottom: 10,
