@@ -16,7 +16,6 @@ import { IFocusZoneProps } from '@fluentui/react-focus';
 import { IFontStyles } from '@uifabric/styling';
 import { IHTMLSlot } from '@uifabric/foundation';
 import { IObjectWithKey } from '@uifabric/utilities';
-import { IPoint } from '@uifabric/utilities';
 import { IProcessedStyleSet } from '@uifabric/styling';
 import { IRawStyle } from '@uifabric/styling';
 import { IRectangle } from '@uifabric/utilities';
@@ -35,6 +34,7 @@ import { IStyleSet } from '@uifabric/styling';
 import { ITheme } from '@uifabric/styling';
 import { KeyCodes } from '@uifabric/utilities';
 import { Omit } from '@uifabric/utilities';
+import { Point } from '@uifabric/utilities';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import { Selection } from '@uifabric/utilities';
@@ -305,8 +305,6 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
     // (undocumented)
     protected input: React.RefObject<IAutofill>;
     // (undocumented)
-    protected _isFocusZoneInnerKeystroke: (ev: React.KeyboardEvent<HTMLElement>) => boolean;
-    // (undocumented)
     readonly items: T[];
     // (undocumented)
     protected onBackspace(ev: React.KeyboardEvent<HTMLElement>): void;
@@ -357,6 +355,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
     protected root: React.RefObject<HTMLDivElement>;
     // (undocumented)
     protected selection: Selection;
+    // (undocumented)
+    protected _shouldFocusZoneEnterInnerZone: (ev: React.KeyboardEvent<HTMLElement>) => boolean;
     // (undocumented)
     protected suggestionElement: React.RefObject<ISuggestions<T>>;
     // @deprecated (undocumented)
@@ -2104,12 +2104,17 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
     onDismiss?: (ev?: any) => void;
     onLayerMounted?: () => void;
     onPositioned?: (positions?: ICalloutPositionedInfo) => void;
+    onRestoreFocus?: (options: {
+        originalElement?: HTMLElement | Window;
+        containsFocus: boolean;
+    }) => void;
     onScroll?: () => void;
     preventDismissOnLostFocus?: boolean;
     preventDismissOnResize?: boolean;
     preventDismissOnScroll?: boolean;
     role?: string;
     setInitialFocus?: boolean;
+    // @deprecated
     shouldRestoreFocus?: boolean;
     shouldUpdateWhenHidden?: boolean;
     style?: React.CSSProperties;
@@ -5230,7 +5235,7 @@ export interface IKeytipProps {
     hasDynamicChildren?: boolean;
     hasMenu?: boolean;
     keySequences: string[];
-    offset?: IPoint;
+    offset?: Point;
     onExecute?: (executeTarget: HTMLElement | null, target: HTMLElement | null) => void;
     onReturn?: (executeTarget: HTMLElement | null, target: HTMLElement | null) => void;
     overflowSetSequence?: string[];
@@ -6353,7 +6358,12 @@ export interface IPopupProps extends React.HTMLAttributes<Popup> {
     ariaLabelledBy?: string;
     className?: string;
     onDismiss?: (ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => any;
+    onRestoreFocus?: (options: {
+        originalElement?: HTMLElement | Window;
+        containsFocus: boolean;
+    }) => void;
     role?: string;
+    // @deprecated
     shouldRestoreFocus?: boolean;
 }
 
@@ -6393,9 +6403,9 @@ export interface IPositioningContainerProps extends IBaseProps<IPositioningConta
     preventDismissOnScroll?: boolean;
     role?: string;
     setInitialFocus?: boolean;
-    target?: HTMLElement | string | MouseEvent | IPoint | null;
+    target?: HTMLElement | string | MouseEvent | Point | null;
     // @deprecated
-    targetPoint?: IPoint;
+    targetPoint?: Point;
     // @deprecated
     useTargetPoint?: boolean;
 }
@@ -8251,8 +8261,6 @@ export enum MessageBarType {
     blocked = 2,
     error = 1,
     info = 0,
-    // @deprecated
-    remove = 90000,
     severeWarning = 3,
     success = 4,
     warning = 5
@@ -9410,7 +9418,7 @@ export class TagPickerBase extends BasePicker<ITag, ITagPickerProps> {
 }
 
 // @public (undocumented)
-export type Target = Element | string | MouseEvent | IPoint | null | React.RefObject<Element>;
+export type Target = Element | string | MouseEvent | Point | null | React.RefObject<Element>;
 
 // @public (undocumented)
 export const TeachingBubble: React.FunctionComponent<ITeachingBubbleProps>;

@@ -1,22 +1,32 @@
-import { Accessibility, embedBehavior } from '@fluentui/accessibility';
+import { Accessibility, embedBehavior, EmbedBehaviorProps } from '@fluentui/accessibility';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import * as customPropTypes from '@fluentui/react-proptypes';
 
-import {
-  createShorthandFactory,
-  UIComponentProps,
-  applyAccessibilityKeyHandlers,
-  commonPropTypes,
-  AutoControlledComponent,
-  ShorthandFactory,
-} from '../../utils';
+import { createShorthandFactory, UIComponentProps, commonPropTypes } from '../../utils';
 import Image from '../Image/Image';
 import Video, { VideoProps } from '../Video/Video';
 import Box, { BoxProps } from '../Box/Box';
-import { ComponentEventHandler, WithAsProp, ShorthandValue, withSafeTypeForAs } from '../../types';
+import {
+  ComponentEventHandler,
+  WithAsProp,
+  ShorthandValue,
+  withSafeTypeForAs,
+  FluentComponentStaticProps,
+  ProviderContextPrepared,
+} from '../../types';
 import { Ref } from '@fluentui/react-component-ref';
+import {
+  getElementType,
+  useUnhandledProps,
+  useAutoControlled,
+  useAccessibility,
+  useTelemetry,
+  useStyles,
+} from '@fluentui/react-bindings';
+// @ts-ignore
+import { ThemeContext } from 'react-fela';
 
 export interface EmbedSlotClassNames {
   control: string;
@@ -24,7 +34,13 @@ export interface EmbedSlotClassNames {
 
 export interface EmbedProps extends UIComponentProps {
   /** Accessibility behavior if overridden by the user. */
-  accessibility?: Accessibility;
+  accessibility?: Accessibility<EmbedBehaviorProps>;
+
+  /** Alternative text. */
+  alt?: string;
+
+  /** Corresponds to HTML title attribute. */
+  title?: string;
 
   /** Whether the embedded object should be active. */
   active?: boolean;
@@ -60,143 +76,174 @@ export interface EmbedProps extends UIComponentProps {
   video?: ShorthandValue<VideoProps>;
 }
 
-export interface EmbedState {
-  active: boolean;
-  iframeLoaded: boolean;
-}
-
 export const embedClassName = 'ui-embed';
 export const embedSlotClassNames: EmbedSlotClassNames = {
   control: `${embedClassName}__control`,
 };
 
-class Embed extends AutoControlledComponent<WithAsProp<EmbedProps>, EmbedState> {
-  static create: ShorthandFactory<EmbedProps>;
+export type EmbedStylesProps = Required<Pick<EmbedProps, 'active'>> & { iframeLoaded: boolean };
 
-  static deprecated_className = embedClassName;
+export const Embed: React.FC<WithAsProp<EmbedProps>> & FluentComponentStaticProps<EmbedProps> = props => {
+  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const { setStart, setEnd } = useTelemetry(Embed.displayName, context.telemetry);
+  setStart();
+  const { alt, title, control, iframe, placeholder, video, variables, styles, className, design } = props;
+  const ElementType = getElementType(props);
+  const unhandledProps = useUnhandledProps(Embed.handledProps, props);
 
-  static displayName = 'Embed';
-
-  static propTypes = {
-    ...commonPropTypes.createCommon({
-      children: false,
-      content: false,
+  const getA11yProps = useAccessibility<EmbedBehaviorProps>(props.accessibility, {
+    debugName: Embed.displayName,
+    actionHandlers: {
+      performClick: event => handleClick(event),
+    },
+    mapPropsToBehavior: () => ({
+      alt,
+      title,
     }),
-    active: PropTypes.bool,
-    defaultActive: PropTypes.bool,
-    control: customPropTypes.itemShorthand,
-    iframe: customPropTypes.every([customPropTypes.disallow(['video']), customPropTypes.itemShorthand]),
-    onActiveChange: PropTypes.func,
-    onClick: PropTypes.func,
-    placeholder: PropTypes.string,
-    video: customPropTypes.every([customPropTypes.disallow(['iframe']), customPropTypes.itemShorthand]),
-  };
+    rtl: context.rtl,
+  });
 
-  static defaultProps = {
-    as: 'span',
-    accessibility: embedBehavior as Accessibility,
-    control: {},
-  };
+  const [active, setACtive] = useAutoControlled({
+    defaultValue: props.defaultActive,
+    value: props.active,
+    initialValue: false,
+  });
 
-  static autoControlledProps = ['active'];
+  const [iframeLoaded, setIframeLoaded] = React.useState(false);
+  const frameRef = React.useRef<HTMLFrameElement>();
 
-  actionHandlers = {
-    performClick: event => this.handleClick(event),
-  };
-
-  frameRef = React.createRef<HTMLFrameElement>();
-
-  getInitialAutoControlledState(): EmbedState {
-    return { active: false, iframeLoaded: false };
-  }
-
-  handleClick = e => {
+  const handleClick = e => {
     e.stopPropagation();
     e.preventDefault();
 
-    const iframeNil = _.isNil(this.props.iframe);
-    const newActive = !this.state.active;
+    const iframeNil = _.isNil(props.iframe);
+    const newActive = !active;
 
     if (iframeNil || (!iframeNil && newActive)) {
-      this.setState({ active: newActive });
-      _.invoke(this.props, 'onActiveChange', e, { ...this.props, active: newActive });
+      setACtive(newActive);
+      _.invoke(props, 'onActiveChange', e, { ...props, active: newActive });
     }
 
-    _.invoke(this.props, 'onClick', e, { ...this.props, active: newActive });
+    _.invoke(props, 'onClick', e, { ...props, active: newActive });
   };
 
-  handleFrameOverrides = predefinedProps => ({
+  const handleFrameOverrides = predefinedProps => ({
     onLoad: (e: React.SyntheticEvent) => {
       _.invoke(predefinedProps, 'onLoad', e);
-
-      this.setState({ iframeLoaded: true });
-      this.frameRef.current.contentWindow.focus();
+      setIframeLoaded(true);
+      frameRef.current.contentWindow.focus();
     },
   });
 
-  renderComponent({ ElementType, classes, accessibility, unhandledProps, styles, variables }) {
-    const { control, iframe, placeholder, video } = this.props;
-    const { active, iframeLoaded } = this.state;
+  const { classes, styles: resolvedStyles } = useStyles<EmbedStylesProps>(Embed.displayName, {
+    className: embedClassName,
+    mapPropsToStyles: () => ({
+      iframeLoaded,
+      active,
+    }),
+    mapPropsToInlineStyles: () => ({
+      className,
+      design,
+      styles,
+      variables,
+    }),
+    rtl: context.rtl,
+  });
 
-    const placeholderElement = placeholder ? (
-      <Image src={placeholder} styles={styles.image} variables={{ width: variables.width, height: variables.height }} />
-    ) : null;
+  const placeholderElement = placeholder ? (
+    <Image
+      src={placeholder}
+      styles={resolvedStyles.image}
+      variables={{ width: variables.width, height: variables.height }}
+    />
+  ) : null;
 
-    const hasIframe = !_.isNil(iframe);
-    const hasVideo = !_.isNil(video);
-    const controlVisible = !active || hasVideo;
-    const placeholderVisible = !active || (hasIframe && active && !iframeLoaded);
+  const hasIframe = !_.isNil(iframe);
+  const hasVideo = !_.isNil(video);
+  const controlVisible = !active || hasVideo;
+  const placeholderVisible = !active || (hasIframe && active && !iframeLoaded);
 
-    return (
-      <ElementType
-        className={classes.root}
-        onClick={this.handleClick}
-        {...accessibility.attributes.root}
-        {...unhandledProps}
-        {...applyAccessibilityKeyHandlers(accessibility.keyHandlers.root, unhandledProps)}
-      >
-        {active && (
-          <>
-            {Video.create(video, {
-              defaultProps: () => ({
+  const element = (
+    <ElementType
+      {...getA11yProps('root', {
+        className: classes.root,
+        onClick: handleClick,
+        ...unhandledProps,
+      })}
+    >
+      {active && (
+        <>
+          {Video.create(video, {
+            defaultProps: () =>
+              getA11yProps('video', {
                 autoPlay: true,
                 controls: false,
                 loop: true,
                 muted: true,
                 poster: placeholder,
-                styles: styles.video,
+                styles: resolvedStyles.video,
                 variables: {
                   width: variables.width,
                   height: variables.height,
                 },
               }),
-            })}
-            {iframe && (
-              <Ref innerRef={this.frameRef}>
-                {Box.create(iframe, {
-                  defaultProps: () => ({
-                    as: 'iframe',
-                    styles: styles.iframe,
-                  }),
-                  overrideProps: this.handleFrameOverrides,
-                })}
-              </Ref>
-            )}
-          </>
-        )}
-
-        {placeholderVisible && placeholderElement}
-        {controlVisible &&
-          Box.create(control, {
-            defaultProps: () => ({
-              className: embedSlotClassNames.control,
-              styles: styles.control,
-            }),
           })}
-      </ElementType>
-    );
-  }
-}
+          {iframe && (
+            <Ref innerRef={frameRef}>
+              {Box.create(iframe, {
+                defaultProps: () =>
+                  getA11yProps('iframe', {
+                    as: 'iframe',
+                    styles: resolvedStyles.iframe,
+                  }),
+                overrideProps: handleFrameOverrides,
+              })}
+            </Ref>
+          )}
+        </>
+      )}
+
+      {placeholderVisible && placeholderElement}
+      {controlVisible &&
+        Box.create(control, {
+          defaultProps: () =>
+            getA11yProps('control', {
+              className: embedSlotClassNames.control,
+              styles: resolvedStyles.control,
+            }),
+        })}
+    </ElementType>
+  );
+
+  setEnd();
+
+  return element;
+};
+
+Embed.displayName = 'Embed';
+
+Embed.propTypes = {
+  ...commonPropTypes.createCommon({
+    children: false,
+    content: false,
+  }),
+  active: PropTypes.bool,
+  defaultActive: PropTypes.bool,
+  control: customPropTypes.itemShorthand,
+  iframe: customPropTypes.every([customPropTypes.disallow(['video']), customPropTypes.itemShorthand]),
+  onActiveChange: PropTypes.func,
+  onClick: PropTypes.func,
+  placeholder: PropTypes.string,
+  video: customPropTypes.every([customPropTypes.disallow(['iframe']), customPropTypes.itemShorthand]),
+};
+
+Embed.defaultProps = {
+  as: 'span',
+  accessibility: embedBehavior,
+  control: {},
+};
+
+Embed.handledProps = Object.keys(Embed.propTypes) as any;
 
 Embed.create = createShorthandFactory({ Component: Embed });
 

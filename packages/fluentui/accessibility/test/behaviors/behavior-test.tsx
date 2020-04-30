@@ -84,7 +84,9 @@ import {
   cardBehavior,
   cardFocusableBehavior,
   cardChildrenFocusableBehavior,
+  cardsContainerBehavior,
   videoBehavior,
+  buttonGroupBehavior,
 } from '@fluentui/accessibility';
 import { TestHelper } from './testHelper';
 import definitions from './testDefinitions';
@@ -98,6 +100,7 @@ testHelper.addBehavior('attachmentBehavior', attachmentBehavior);
 testHelper.addBehavior('basicListBehavior', basicListBehavior);
 testHelper.addBehavior('basicListItemBehavior', basicListItemBehavior);
 testHelper.addBehavior('buttonBehavior', buttonBehavior);
+testHelper.addBehavior('buttonGroupBehavior', buttonGroupBehavior);
 testHelper.addBehavior('checkboxBehavior', checkboxBehavior);
 testHelper.addBehavior('embedBehavior', embedBehavior);
 testHelper.addBehavior('iconBehavior', iconBehavior);
@@ -173,6 +176,7 @@ testHelper.addBehavior('gridCellWithFocusableElementBehavior', gridCellWithFocus
 testHelper.addBehavior('cardBehavior', cardBehavior);
 testHelper.addBehavior('cardFocusableBehavior', cardFocusableBehavior);
 testHelper.addBehavior('cardChildrenFocusableBehavior', cardChildrenFocusableBehavior);
+testHelper.addBehavior('cardsContainerBehavior', cardsContainerBehavior);
 testHelper.addBehavior('videoBehavior', videoBehavior);
 
 testHelper.run(behaviorMenuItems);

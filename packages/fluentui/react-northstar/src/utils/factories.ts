@@ -260,6 +260,11 @@ export function createShorthand<E extends React.ElementType, P>(
   value?: ShorthandValue<P>,
   options?: CreateShorthandOptions<P>,
 ): React.ReactElement;
+export function createShorthand<TElementType extends React.ElementType>(
+  Component: TElementType & { shorthandConfig?: ShorthandConfig<PropsOf<TElementType>> },
+  value?: ShorthandValue<PropsOf<TElementType>>,
+  options?: CreateShorthandOptions<PropsOf<TElementType>>,
+): React.ReactElement;
 export function createShorthand<P>(Component, value?, options?) {
   const { mappedProp = 'children', allowsJSX = true, mappedArrayProp } = Component.shorthandConfig || {};
 
