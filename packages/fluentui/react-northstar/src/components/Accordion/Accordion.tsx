@@ -289,7 +289,7 @@ export const Accordion: React.FC<WithAsProp<AccordionProps>> &
       );
     });
     return children;
-  }, [panels, expanded, activeIndex]);
+  }, [panels, activeIndex]);
 
   const element = (
     <ElementType
