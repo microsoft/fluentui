@@ -2,6 +2,27 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Thu, 30 Apr 2020 12:31:44 GMT",
+      "tag": "@uifabric/charting_v2.2.1",
+      "version": "2.2.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "addding dismiss delay to overcome instant closing on blur",
+            "author": "v-sivsar@microsoft.com",
+            "commit": "a7dc291399e573ae0c407d2dcb6b34a93d33166e",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "Charting: Change FocusZone imports to @fluentui/react-focus from office-ui-fabric-react/lib/FocusZone",
+            "author": "v-satgar@microsoft.com",
+            "commit": "bf19e43d9c475e09cc191eca92f9d93805af4fe7",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 29 Apr 2020 12:34:58 GMT",
       "tag": "@uifabric/charting_v2.2.0",
       "version": "2.2.0",

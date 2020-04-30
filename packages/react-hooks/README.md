@@ -91,7 +91,7 @@ The hook returns a tuple containing the current value and an object with callbac
 
 - `setTrue: () => void`: Set the value to true. Always has the same identity.
 - `setFalse: () => void`: Set the value to false. Always has the same identity.
-- `toggle: () => void`: Toggle the value. If the value is currently true, this will be the `setFalse` callback. If it's currently false, this will be the `setTrue` callback.
+- `toggle: () => void`: Toggle the value. Always has the same identity.
 
 ### Example
 

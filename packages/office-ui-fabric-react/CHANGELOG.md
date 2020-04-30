@@ -1,8 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 29 Apr 2020 12:34:58 GMT and should not be manually modified.
+This log was last generated on Thu, 30 Apr 2020 12:31:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.109.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.109.1)
+
+Thu, 30 Apr 2020 12:31:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.109.0..office-ui-fabric-react_v7.109.1)
+
+### Patches
+
+- Example: update Callout example to use Text component ([PR #12423](https://github.com/microsoft/fluentui/pull/12423) by marygans@microsoft.com)
 
 ## [7.109.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.109.0)
 
