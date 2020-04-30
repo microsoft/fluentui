@@ -1,38 +1,45 @@
 import * as React from 'react';
 import { ISearchBoxProps, ISearchBoxStyleProps, ISearchBoxStyles } from './SearchBox.types';
-import {
-  initializeComponentRef,
-  warnDeprecations,
-  getId,
-  KeyCodes,
-  classNamesFunction,
-  getNativeProps,
-  inputProperties,
-} from '../../Utilities';
-import { useBoolean } from '@uifabric/react-hooks';
+import { warnDeprecations, KeyCodes, classNamesFunction, getNativeProps, inputProperties } from '../../Utilities';
+import { useBoolean, useControllableValue, useId } from '@uifabric/react-hooks';
 import { IconButton } from '../../Button';
 import { Icon } from '../../Icon';
 
 const getClassNames = classNamesFunction<ISearchBoxStyleProps, ISearchBoxStyles>();
-const COMPONENT_NAME = 'SearchBox';
 
 export interface ISearchBoxState {
   value?: string;
   hasFocus?: boolean;
 }
+const COMPONENT_NAME = 'SearchBox';
+
+const useComponentRef = (
+  props: ISearchBoxProps,
+  inputElementRef: React.RefObject<HTMLInputElement>,
+  hasFocus: boolean,
+) => {
+  React.useImperativeHandle(
+    props.componentRef,
+    () => ({
+      focus: () => {
+        inputElementRef.current?.focus();
+      },
+      hasFocus: () => {
+        return hasFocus;
+      },
+    }),
+    [inputElementRef, hasFocus],
+  );
+};
 
 export const SearchBoxBase: React.FunctionComponent = (props: ISearchBoxProps) => {
   const [hasFocus, { toggle: toggleHasFocus }] = useBoolean(false);
-  let latestValue = props.value || '';
-  const [value, setValue] = React.useState(latestValue);
-  const rootElement = React.useRef<HTMLDivElement>(null);
-  const inputElement = React.useRef<HTMLInputElement>(null);
-  const fallbackId = getId(COMPONENT_NAME);
+  const [value, setValue] = useControllableValue(props.value, props.defaultValue || '', props.onChange);
+  const rootElementRef = React.useRef<HTMLDivElement>(null);
+  const inputElementRef = React.useRef<HTMLInputElement>(null);
+  const fallbackId = useId('SearchBox', props.id);
 
-  warnDeprecations(COMPONENT_NAME, props, {
-    labelText: 'placeholder',
-    defaultValue: 'value',
-  });
+  // const fallbackId = getId(COMPONENT_NAME);
 
   const {
     ariaLabel,
@@ -44,13 +51,20 @@ export const SearchBoxBase: React.FunctionComponent = (props: ISearchBoxProps) =
     // tslint:disable-next-line:deprecation
     labelText,
     theme,
-    clearButtonProps,
-    disableAnimation,
+    clearButtonProps = { ariaLabel: 'Clear text' },
+    disableAnimation = false,
     iconProps,
     id = fallbackId,
   } = props;
-
   const placeholderValue = placeholder !== undefined ? placeholder : labelText;
+
+  const componentWillReceiveProps = (newProps: ISearchBoxProps): void => {
+    if (newProps.value !== undefined) {
+      // If the user passes in null, substitute an empty string
+      // (passing null is not allowed per typings, but users might do it anyway)
+      setValue(newProps.value || '');
+    }
+  };
 
   const classNames = getClassNames(styles!, {
     theme: theme!,
@@ -61,7 +75,6 @@ export const SearchBoxBase: React.FunctionComponent = (props: ISearchBoxProps) =
     hasInput: value!.length > 0,
     disableAnimation,
   });
-
   const nativeProps = getNativeProps<React.InputHTMLAttributes<HTMLInputElement>>(props, inputProperties, [
     'className',
     'placeholder',
@@ -70,34 +83,20 @@ export const SearchBoxBase: React.FunctionComponent = (props: ISearchBoxProps) =
     'value',
   ]);
 
-  const callOnChange = (ev?: React.ChangeEvent<HTMLInputElement>, newValue?: string): void => {
-    // tslint:disable-next-line:deprecation
-    const { onChange, onChanged } = props;
-    // Call @deprecated method.
-    if (onChanged) {
-      onChanged(newValue);
-    }
-    if (onChange) {
-      onChange(ev, newValue);
-    }
-  };
-
   const onClear = (ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement> | React.KeyboardEvent<HTMLElement>) => {
     props.onClear && props.onClear(ev);
     if (!ev.defaultPrevented) {
-      latestValue = '';
       setValue('');
-      callOnChange(undefined, '');
+      inputElementRef.current?.focus();
       ev.stopPropagation();
       ev.preventDefault();
-      toggleHasFocus();
     }
   };
 
   const onClickFocus = () => {
-    if (inputElement.current) {
-      this.focus();
-      inputElement.current.selectionStart = inputElement.current.selectionEnd = 0;
+    if (inputElementRef.current) {
+      focus();
+      inputElementRef.current.selectionStart = inputElementRef.current.selectionEnd = 0;
     }
   };
 
@@ -125,12 +124,25 @@ export const SearchBoxBase: React.FunctionComponent = (props: ISearchBoxProps) =
   };
 
   const onInputChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
-    if (ev.target.value === latestValue) {
-      return;
+    // if (ev.target.value !== undefined) {
+    //   // If the user passes in null, substitute an empty string
+    //   // (passing null is not allowed per typings, but users might do it anyway)
+    //   setValue(ev.target.value || '');
+    // }
+    setValue(ev.target.value);
+    // callOnChange(ev, ev.target.value);
+  };
+
+  const callOnChange = (ev?: React.ChangeEvent<HTMLInputElement>, newValue?: string): void => {
+    // tslint:disable-next-line:deprecation
+    const { onChange, onChanged } = props;
+    // Call @deprecated method.
+    if (onChanged) {
+      onChanged(newValue);
     }
-    latestValue = ev.target.value;
-    // setValue(ev.target.value);
-    callOnChange(ev, ev.target.value);
+    if (onChange) {
+      onChange(ev, newValue);
+    }
   };
 
   const onKeyDown = (ev: React.KeyboardEvent<HTMLInputElement>) => {
@@ -149,7 +161,7 @@ export const SearchBoxBase: React.FunctionComponent = (props: ISearchBoxProps) =
         // if we don't handle the enter press then we shouldn't prevent default
         return;
       default:
-        props.onKeyDown && props.onKeyDown(ev);
+        onKeyDown && onKeyDown(ev);
         if (!ev.defaultPrevented) {
           return;
         }
@@ -160,8 +172,15 @@ export const SearchBoxBase: React.FunctionComponent = (props: ISearchBoxProps) =
     ev.stopPropagation();
   };
 
+  warnDeprecations(COMPONENT_NAME, props, {
+    labelText: 'placeholder',
+    defaultValue: 'value',
+  });
+
+  useComponentRef(props, inputElementRef, hasFocus);
+
   return (
-    <div role="search" ref={rootElement} className={classNames.root} onFocusCapture={onFocusCapture}>
+    <div role="search" ref={rootElementRef} className={classNames.root} onFocusCapture={onFocusCapture}>
       <div className={classNames.iconContainer} onClick={onClickFocus} aria-hidden>
         <Icon iconName="Search" {...iconProps} className={classNames.icon} />
       </div>
@@ -178,7 +197,7 @@ export const SearchBoxBase: React.FunctionComponent = (props: ISearchBoxProps) =
         disabled={disabled}
         role="searchbox"
         aria-label={ariaLabel}
-        ref={inputElement}
+        ref={inputElementRef}
       />
       {value!.length > 0 && (
         <div className={classNames.clearButton}>

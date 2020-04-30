@@ -2,15 +2,19 @@ import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { mount, ReactWrapper } from 'enzyme';
 import { SearchBox } from './SearchBox';
-import { KeyCodes } from '../../Utilities';
+import { KeyCodes, resetIds } from '../../Utilities';
 import { ISearchBoxProps } from './SearchBox.types';
-import { ISearchBoxState, SearchBoxBase } from './SearchBox.base';
+import { ISearchBoxState } from './SearchBox.base';
 
 // tslint:disable:jsx-no-lambda
 
 describe('SearchBox', () => {
   let component: renderer.ReactTestRenderer | undefined;
-  let wrapper: ReactWrapper<ISearchBoxProps, ISearchBoxState, SearchBoxBase> | undefined;
+  let wrapper: ReactWrapper<ISearchBoxProps, ISearchBoxState> | undefined;
+
+  beforeEach(() => {
+    resetIds();
+  });
 
   afterEach(() => {
     if (component) {
