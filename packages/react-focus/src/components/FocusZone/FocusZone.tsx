@@ -526,7 +526,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
       return;
     }
 
-    const { direction, disabled, isInnerZoneKeystroke } = this.props;
+    const { direction, disabled, isInnerZoneKeystroke, pagingSupportDisabled } = this.props;
 
     if (disabled) {
       return;
@@ -620,12 +620,12 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
           }
           return;
         case KeyCodes.pageDown:
-          if (this._moveFocusPaging(true)) {
+          if (this._moveFocusPaging(true) && !pagingSupportDisabled) {
             break;
           }
           return;
         case KeyCodes.pageUp:
-          if (this._moveFocusPaging(false)) {
+          if (this._moveFocusPaging(false) && !pagingSupportDisabled) {
             break;
           }
           return;

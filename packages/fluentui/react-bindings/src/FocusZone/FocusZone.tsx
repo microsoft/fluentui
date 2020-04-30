@@ -513,7 +513,7 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
    * Handle the keystrokes.
    */
   _onKeyDown = (ev: React.KeyboardEvent<HTMLElement>): boolean | undefined => {
-    const { direction, disabled, shouldEnterInnerZone } = this.props;
+    const { direction, disabled, shouldEnterInnerZone, pagingSupportDisabled } = this.props;
 
     if (disabled) {
       return undefined;
@@ -612,13 +612,13 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
           return undefined;
 
         case keyboardKey.PageDown:
-          if (this.moveFocusPaging(true)) {
+          if (this.moveFocusPaging(true) && !pagingSupportDisabled) {
             break;
           }
           return undefined;
 
         case keyboardKey.PageUp:
-          if (this.moveFocusPaging(false)) {
+          if (this.moveFocusPaging(false) && !pagingSupportDisabled) {
             break;
           }
           return undefined;
