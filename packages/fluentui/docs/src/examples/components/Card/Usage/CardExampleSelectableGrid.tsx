@@ -31,6 +31,7 @@ const SelectableCard: React.FC<SelectableCardProps> = ({ index, selected, handle
         <Checkbox
           aria-label={`User #${index} checkbox`}
           checked={selected}
+          data-is-focusable="false"
           onClick={(event, props) => {
             event.preventDefault();
             handleClick(props.checked, index);
