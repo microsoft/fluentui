@@ -2,6 +2,7 @@ import * as React from 'react';
 import { classNamesFunction, getNativeProps, imgProperties } from '../../Utilities';
 import { IImageProps, IImageStyleProps, IImageStyles, ImageCoverStyle, ImageFit, ImageLoadState } from './Image.types';
 import { useMergedRefs } from '@uifabric/react-hooks';
+import { frame } from '../Calendar/Calendar.scss';
 
 const getClassNames = classNamesFunction<IImageStyleProps, IImageStyles>();
 
@@ -15,8 +16,11 @@ const KEY_PREFIX = 'fabricImage';
 function useLoadState(
   props: IImageProps,
   imageElement: React.RefObject<HTMLImageElement>,
-  frameElement: React.RefObject<HTMLDivElement>,
-) {
+): readonly [
+  ImageLoadState,
+  /* onImageLoad */ (ev: React.SyntheticEvent<HTMLImageElement>) => void,
+  /* onImageError */ (ev: React.SyntheticEvent<HTMLImageElement>) => void,
+] {
   const [loadState, setLoadState] = React.useState<ImageLoadState>(ImageLoadState.notLoaded);
 
   React.useLayoutEffect(() => {
@@ -71,7 +75,7 @@ function useLoadState(
 export const ImageBase = React.forwardRef((props: IImageProps, forwardedRef: React.Ref<HTMLImageElement>) => {
   const frameElement = React.useRef<HTMLDivElement>() as React.RefObject<HTMLDivElement>;
   const imageElement = React.useRef<HTMLImageElement>() as React.RefObject<HTMLImageElement>;
-  const [loadState, onImageLoaded, onImageError] = useLoadState(props, imageElement, frameElement);
+  const [loadState, onImageLoaded, onImageError] = useLoadState(props, imageElement);
 
   const imageProps = getNativeProps<React.ImgHTMLAttributes<HTMLImageElement>>(props, imgProperties, [
     'width',
@@ -91,7 +95,7 @@ export const ImageBase = React.forwardRef((props: IImageProps, forwardedRef: Rea
     styles,
     theme,
   } = props;
-  const coverStyle = computeCoverStyle(props, loadState, imageElement, frameElement);
+  const coverStyle = useCoverStyle(props, loadState, imageElement, frameElement);
   const classNames = getClassNames(styles!, {
     theme: theme!,
     className,
@@ -131,6 +135,27 @@ export const ImageBase = React.forwardRef((props: IImageProps, forwardedRef: Rea
   );
 });
 ImageBase.displayName = 'ImageBase';
+
+function useCoverStyle(
+  props: IImageProps,
+  loadState: ImageLoadState,
+  imageElement: React.RefObject<HTMLImageElement>,
+  frameElement: React.RefObject<HTMLDivElement>,
+) {
+  const previousLoadState = React.useRef(loadState);
+  const coverStyle = React.useRef<ImageCoverStyle | undefined>();
+
+  if (
+    coverStyle === undefined ||
+    (previousLoadState.current === ImageLoadState.notLoaded && loadState === ImageLoadState.loaded)
+  ) {
+    coverStyle.current = computeCoverStyle(props, loadState, imageElement, frameElement);
+  }
+
+  previousLoadState.current = loadState;
+
+  return coverStyle.current!;
+}
 
 function computeCoverStyle(
   props: IImageProps,
