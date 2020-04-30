@@ -36,7 +36,13 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Restricted prop sets in the `Video` component which are passed to styles functions @assuncaocharles ([#12799](https://github.com/microsoft/fluentui/pull/12799))
 - Restricted prop sets in the `SplitButton` component which are passed to styles functions @assuncaocharles ([#12809](https://github.com/microsoft/fluentui/pull/12809))
 - Restricted prop sets in the `TableRow` component which are passed to styles functions @pompomon, @assuncaocharles ([#12797](https://github.com/microsoft/fluentui/pull/12797))
+- Restricted prop sets in the `Table` component which are passed to styles functions @assuncaocharles ([#12860](https://github.com/microsoft/fluentui/pull/12860))
 - Restricted prop sets in the `TextArea` component which are passed to styles functions, @assuncaocharles ([#12857](https://github.com/microsoft/fluentui/pull/12857))
+- Restricted prop sets in the `AccordionTitle` component which are passed to styles functions, @assuncaocharles ([#12874](https://github.com/microsoft/fluentui/pull/12874))
+- Restricted prop sets in the `ButtonGroup` component which are passed to styles functions, @assuncaocharles ([#12866](https://github.com/microsoft/fluentui/pull/12866))
+- Restricted prop sets in the `AccordionContent` component which are passed to styles functions, @assuncaocharles ([#12875](https://github.com/microsoft/fluentui/pull/12875))
+- Restricted prop sets in the `Embed` component which are passed to styles functions, @assuncaocharles ([#12918](https://github.com/microsoft/fluentui/pull/12918))
+
 
 ### Fixes
 - Visually align checkbox and label elements in `Checkbox` component @silviuavram ([#12590](https://github.com/microsoft/fluentui/pull/12590))
@@ -61,6 +67,8 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add compose options to `useStyles` @layershifter @mnajdova ([#12745](https://github.com/microsoft/fluentui/pull/12745))
 - Converted Box, Button* and Attachment* components to use compose @layershifter @mnajdova ([#12745](https://github.com/microsoft/fluentui/pull/12745))
 - Respect `childBehaviors` for slots in `useAccessibility` hook @pompomon ([#12835](https://github.com/microsoft/fluentui/pull/12835))
+- Add `cardsContainerBehavior` for `Card`s in `Grid` navigation @mpompomon ([#12800](https://github.com/microsoft/fluentui/pull/12800))
+- Added `slots` and `mapPropsToSlotProps` in compose and added example usage in the `Button` component @mnajdova ([#12858](https://github.com/microsoft/fluentui/pull/12858))
 
 ### Performance
 - Replace `fela-plugin-prexifer` with `stylis` @layershifter ([#12289](https://github.com/microsoft/fluentui/pull/12289))

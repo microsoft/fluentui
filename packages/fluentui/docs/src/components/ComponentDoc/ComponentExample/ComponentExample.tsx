@@ -336,7 +336,7 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
         children: (Component, props) => (
           <CopyToClipboard key="copy" value={currentCode}>
             {(active, onClick) => (
-              <Component {...props} active={active} icon={active ? 'check' : 'copy'} onClick={onClick} />
+              <Component {...props} active={active} icon={active && <AcceptIcon />} onClick={onClick} />
             )}
           </CopyToClipboard>
         ),

@@ -2,6 +2,21 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "date": "Wed, 29 Apr 2020 12:34:58 GMT",
+      "tag": "@uifabric/styling_v7.12.0",
+      "version": "7.12.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "update MessageBar colors",
+            "author": "chrismo@microsoft.com",
+            "commit": "6c2672609b55e65efb5b35484727ac33bfe93694",
+            "package": "@uifabric/styling"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 22 Apr 2020 12:33:04 GMT",
       "tag": "@uifabric/styling_v7.11.8",
       "version": "7.11.8",

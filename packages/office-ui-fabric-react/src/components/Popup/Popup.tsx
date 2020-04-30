@@ -8,6 +8,7 @@ import {
   getNativeProps,
   on,
   getWindow,
+  elementContains,
 } from '../../Utilities';
 import { IPopupProps } from './Popup.types';
 
@@ -65,20 +66,12 @@ export class Popup extends React.Component<IPopupProps, IPopupState> {
 
   public componentWillUnmount(): void {
     this._disposables.forEach((dispose: () => void) => dispose());
-    if (
-      this.props.shouldRestoreFocus &&
-      this._originalFocusedElement &&
-      this._containsFocus &&
-      (this._originalFocusedElement as any) !== window
-    ) {
-      // This slight delay is required so that we can unwind the stack, let react try to mess with focus, and then
-      // apply the correct focus. Without the setTimeout, we end up focusing the correct thing, and then React wants
-      // to reset the focus back to the thing it thinks should have been focused.
-      if (this._originalFocusedElement) {
-        this._originalFocusedElement.focus();
-      }
-    }
 
+    // tslint:disable-next-line:deprecation
+    if (this.props.shouldRestoreFocus) {
+      const { onRestoreFocus = defaultFocusRestorer } = this.props;
+      onRestoreFocus({ originalElement: this._originalFocusedElement, containsFocus: this._containsFocus });
+    }
     // De-reference DOM Node to avoid retainment via transpiled closure of _onKeyDown
     delete this._originalFocusedElement;
   }
@@ -166,8 +159,20 @@ export class Popup extends React.Component<IPopupProps, IPopupState> {
      * If relatedTarget is undefined or null that usually means that a
      * keyboard event occured and focus didn't change
      */
-    if (this._root.current && ev.relatedTarget && !this._root.current.contains(ev.relatedTarget as HTMLElement)) {
+    if (
+      this._root.current &&
+      ev.relatedTarget &&
+      !elementContains(this._root.current, ev.relatedTarget as HTMLElement)
+    ) {
       this._containsFocus = false;
     }
   };
+}
+
+function defaultFocusRestorer(options: { originalElement?: HTMLElement | Window; containsFocus: boolean }) {
+  const { originalElement, containsFocus } = options;
+
+  if (originalElement && containsFocus && originalElement !== window) {
+    originalElement.focus();
+  }
 }

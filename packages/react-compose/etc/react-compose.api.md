@@ -7,17 +7,22 @@
 import * as React from 'react';
 
 // @public (undocumented)
-export type ComponentWithAs<E extends React.ElementType, P> = (<EE extends React.ElementType = E>(props: Omit<PropsOfElement<EE>, 'as' | keyof P> & {
-    as?: EE;
-} & P) => JSX.Element) & {
-    displayName?: string;
+export interface ComponentWithAs<E extends React.ElementType = 'div', P = {}> extends React.FunctionComponent {
+    // (undocumented)
+    <EE extends React.ElementType = E>(props: Omit<PropsOfElement<EE>, 'as' | keyof P> & {
+        as?: EE;
+    } & P): JSX.Element | null;
+    // (undocumented)
     defaultProps?: Partial<P & {
         as: E;
     }>;
+    // (undocumented)
+    displayName?: string;
+    // (undocumented)
     propTypes?: React.WeakValidationMap<P> & {
         as: React.Requireable<string | ((props: any, context?: any) => any) | (new (props: any, context?: any) => any)>;
     };
-};
+}
 
 // @public (undocumented)
 export function compose<T extends React.ElementType, InputProps, InputStylesProps, ParentProps, ParentStylesProps>(input: Input<T, InputProps>, inputOptions?: ComposeOptions<InputProps, InputStylesProps, ParentStylesProps>): ComponentWithAs<T, InputProps & ParentProps>;
@@ -34,6 +39,8 @@ export type ComposeOptions<InputProps = {}, InputStylesProps = {}, ParentStylesP
     mapPropsToStylesProps?: (props: ParentStylesProps & InputProps) => InputStylesProps;
     handledProps?: (keyof InputProps | 'as')[];
     overrideStyles?: boolean;
+    slots?: Record<string, React.ElementType>;
+    mapPropsToSlotProps?: (props: InputProps) => Record<string, object>;
 };
 
 // @public (undocumented)
@@ -45,6 +52,9 @@ export type ComposePreparedOptions<Props = {}> = {
     render: ComposeRenderFunction;
     handledProps: (keyof Props)[];
     overrideStyles: boolean;
+    slots: Record<string, React.ElementType>;
+    mapPropsToSlotPropsChain: ((props: Props) => Record<string, object>)[];
+    resolveSlotProps: <P>(props: P) => Record<string, object>;
 };
 
 // @public (undocumented)
