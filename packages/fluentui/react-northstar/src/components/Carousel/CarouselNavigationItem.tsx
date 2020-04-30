@@ -123,7 +123,7 @@ export const CarouselNavigationItem: React.FC<WithAsProp<CarouselNavigationItemP
         hasContent: !!content,
         iconOnly,
         primary,
-        hasIndicator: !!indicator && !_.isEmpty(indicator),
+        hasIndicator: !!indicator,
       }),
       mapPropsToInlineStyles: () => ({
         className,
