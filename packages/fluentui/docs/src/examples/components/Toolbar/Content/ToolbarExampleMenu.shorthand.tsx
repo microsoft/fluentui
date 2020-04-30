@@ -1,6 +1,6 @@
 import { createCallbackLogFormatter } from '@fluentui/code-sandbox';
 import { useLogKnob } from '@fluentui/docs-components';
-import { Toolbar, ShorthandValue, BoxProps } from '@fluentui/react-northstar';
+import { Toolbar } from '@fluentui/react-northstar';
 import * as React from 'react';
 import { MoreIcon, PauseIcon, PlayIcon, BoldIcon, UnderlineIcon } from '@fluentui/react-icons-northstar';
 
@@ -14,19 +14,22 @@ const ToolbarExampleMenuShorthand = () => {
     createCallbackLogFormatter(['menuOpen']),
   );
 
-  const toolbarItem = (itemName: string, itemIcon: ShorthandValue<BoxProps>) => ({
-    key: itemName,
-    content: itemName,
-    icon: itemIcon,
-    title: itemName,
-  });
-
   return (
     <Toolbar
       aria-label="Toolbar can contain a menu"
       items={[
-        toolbarItem('bold', <BoldIcon />),
-        toolbarItem('underline', <UnderlineIcon />),
+        {
+          key: 'bold',
+          content: 'bold',
+          icon: <BoldIcon />,
+          title: 'Bold',
+        },
+        {
+          key: 'underline',
+          content: 'underline',
+          icon: <UnderlineIcon />,
+          title: 'Underline',
+        },
         {
           icon: <MoreIcon />,
           key: 'more',

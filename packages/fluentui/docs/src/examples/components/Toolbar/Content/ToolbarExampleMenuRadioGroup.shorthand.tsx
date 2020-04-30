@@ -1,4 +1,4 @@
-import { Toolbar, ShorthandValue, BoxProps } from '@fluentui/react-northstar';
+import { Toolbar } from '@fluentui/react-northstar';
 import * as React from 'react';
 import { MoreIcon, UnderlineIcon, FontColorIcon } from '@fluentui/react-icons-northstar';
 
@@ -6,19 +6,22 @@ const ToolbarExampleMenuRadioGroup = () => {
   const [activeIndex, setActiveIndex] = React.useState(0);
   const [menuOpen, setMenuOpen] = React.useState();
 
-  const toolbarItem = (itemName: string, itemIcon: ShorthandValue<BoxProps>) => ({
-    key: itemName,
-    content: itemName,
-    icon: itemIcon,
-    title: itemName,
-  });
-
   return (
     <Toolbar
       aria-label="Toolbar can contain a radio group in a menu"
       items={[
-        toolbarItem('underline', <UnderlineIcon />),
-        toolbarItem('font color', <FontColorIcon />),
+        {
+          key: 'underline',
+          content: 'underline',
+          icon: <UnderlineIcon />,
+          title: 'Underline',
+        },
+        {
+          key: 'font color',
+          content: 'font color',
+          icon: <FontColorIcon />,
+          title: 'Font color',
+        },
         {
           icon: <MoreIcon />,
           key: 'more',
