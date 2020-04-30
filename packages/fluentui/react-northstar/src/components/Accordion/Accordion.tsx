@@ -191,13 +191,7 @@ export const Accordion: React.FC<WithAsProp<AccordionProps>> &
     true,
   );
 
-  let itemRefs;
-
-  React.useEffect(() => {
-    itemRefs = Array(panels.length)
-      .fill(null)
-      .map((_, i) => itemRefs[i] || React.createRef<HTMLElement>());
-  }, [panels]);
+  let [itemRefs] = React.useState(Array(panels.length).fill(React.useRef<HTMLElement>()));
 
   const defaultAccordionTitleId = React.useMemo(() => _.uniqueId('accordion-title-'), []);
   const defaultAccordionContentId = React.useMemo(() => _.uniqueId('accordion-content-'), []);
@@ -254,7 +248,7 @@ export const Accordion: React.FC<WithAsProp<AccordionProps>> &
 
   const renderPanels = () => {
     const children: any[] = [];
-
+    console.log('renderPanels');
     focusHandler.syncFocusedIndex(focusedIndex);
     _.each(panels, (panel, index) => {
       const { content, title } = panel;
