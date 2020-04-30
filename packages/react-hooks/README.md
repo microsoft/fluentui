@@ -109,3 +109,34 @@ const MyComponent = () => {
   // ... code that shows a dialog when a button is clicked ...
 };
 ```
+
+## useControllableValue
+
+`function useControllableValue<TValue, TElement extends HTMLElement>( controlledValue: TValue | undefined, defaultUncontrolledValue: TValue | undefined, ): Readonly<[TValue | undefined, (newValue: TValue | undefined) => void]>`
+
+`function useControllableValue< TValue, TElement extends HTMLElement, TCallback extends ChangeCallback<TElement, TValue> | undefined \>( controlledValue: TValue | undefined, defaultUncontrolledValue: TValue | undefined, onChange: TCallback, ): Readonly<[TValue | undefined, (newValue: TValue | undefined, ev: React.FormEvent<TElement>) => void]>`
+
+Hook to manage the current value for a component that could be either controlled or uncontrolled, such as a checkbox or input field.
+
+Its two required parameters are the `controlledValue` (the current value of the control in the controlled state), and the `defaultUncontrolledValue` (for the uncontrolled state). Optionally, you may pass a third `onChange` callback to be notified of any changes triggered by the control.
+
+The return value will be a setter function that will set the internal state in the uncontrolled state, and invoke the `onChange` callback if present.
+
+See [React docs](https://reactjs.org/docs/uncontrolled-components.html) about the distinction between controlled and uncontrolled components.
+
+## useMergedRefs
+
+`function useMergedRefs<T>(...refs: React.Ref<T>[]): (instance: T) => void`
+
+Hook to merge multiple refs (such as one passed in as a prop and one used locally) into a single ref callback that can be passed on to a child component.
+
+```typescriptreact
+const Example = React.forwardRef(function Example(props:{}, forwardedRef: React.Ref<HTMLDivElement>) {
+  const localRef = React.useRef<HTMLDivElement>();
+  const mergedRef = useMergedRef(localRef, forwardedRef);
+
+  React.useEffect(() => { localRef.current.focus() }, []);
+
+  return <div>Example</div>;
+})
+```

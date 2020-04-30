@@ -6,7 +6,7 @@ This log was last generated on Thu, 30 Apr 2020 12:31:44 GMT and should not be m
 
 ## [7.2.2](https://github.com/microsoft/fluentui/tree/@uifabric/react-hooks_v7.2.2)
 
-Thu, 30 Apr 2020 12:31:44 GMT
+Thu, 30 Apr 2020 12:31:44 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/react-hooks_v7.2.0..@uifabric/react-hooks_v7.2.2)
 
 ### Patches
@@ -15,7 +15,7 @@ Thu, 30 Apr 2020 12:31:44 GMT
 
 ## [7.2.0](https://github.com/microsoft/fluentui/tree/@uifabric/react-hooks_v7.2.0)
 
-Wed, 22 Apr 2020 12:33:04 GMT
+Wed, 22 Apr 2020 12:33:04 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/react-hooks_v7.1.7..@uifabric/react-hooks_v7.2.0)
 
 ### Minor changes
@@ -24,7 +24,7 @@ Wed, 22 Apr 2020 12:33:04 GMT
 
 ## [7.1.3](https://github.com/microsoft/fluentui/tree/@uifabric/react-hooks_v7.1.3)
 
-Thu, 16 Apr 2020 04:01:45 GMT
+Thu, 16 Apr 2020 04:01:45 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/react-hooks_v7.1.2..@uifabric/react-hooks_v7.1.3)
 
 ### Patches

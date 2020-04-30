@@ -4,8 +4,10 @@
 
 ```ts
 
-import { Async } from '@uifabric/utilities';
 import * as React from 'react';
+
+// @public (undocumented)
+export type ChangeCallback<TElement extends HTMLElement, TValue> = (ev: React.FormEvent<TElement> | undefined, newValue: TValue | undefined) => void;
 
 // @public
 export interface IUseBooleanCallbacks {
@@ -13,9 +15,6 @@ export interface IUseBooleanCallbacks {
     setTrue: () => void;
     toggle: () => void;
 }
-
-// @public
-export function useAsync(): Async;
 
 // @public
 export function useBoolean(initialState: boolean): [boolean, IUseBooleanCallbacks];
@@ -29,19 +28,14 @@ export function useConstCallback<T extends (...args: any[]) => any>(callback: T)
 // @public
 export function useControllableValue<TValue, TElement extends HTMLElement>(controlledValue: TValue | undefined, defaultUncontrolledValue: TValue | undefined): Readonly<[TValue | undefined, (newValue: TValue | undefined) => void]>;
 
-// Warning: (ae-forgotten-export) The symbol "ChangeCallback" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
-export function useControllableValue<TValue, TElement extends HTMLElement, TCallback extends ChangeCallback<TElement, TValue> | undefined>(controlledValue: TValue | undefined, defaultUncontrolledValue: TValue | undefined, onChange: TCallback): Readonly<[TValue | undefined, (newValue: TValue | undefined, ev: React.FormEvent<TElement>) => void]>;
+export function useControllableValue<TValue, TElement extends HTMLElement, TCallback extends ChangeCallback<TElement, TValue> | undefined>(controlledValue: TValue | undefined, defaultUncontrolledValue: TValue | undefined, onChange: TCallback): Readonly<[TValue | undefined, (newValue: TValue | undefined, ev?: React.FormEvent<TElement>) => void]>;
 
 // @public
 export function useId(prefix?: string, providedId?: string): string;
 
 // @public
-export function useMergedRefs<T>(...refs: React.Ref<T>[]): (value: T) => void;
-
-// @public
-export function useOnEvent<TElement extends Element>(element: React.RefObject<TElement | undefined | null> | TElement | Window | undefined | null, eventName: string, callback: (ev: Event) => void, useCapture?: boolean): void;
+export function useMergedRefs<T>(...refs: React.Ref<T>[]): (instance: T) => void;
 
 
 // (No @packageDocumentation comment for this package)

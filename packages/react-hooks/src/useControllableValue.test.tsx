@@ -40,23 +40,6 @@ describe('useControllableValue', () => {
     expect(resultValue!).toBe(true);
   });
 
-  it('uses an updated controlled value over a default value', () => {
-    let resultValue: boolean | undefined;
-    const TestComponent: React.FunctionComponent<{ value?: boolean; defaultValue?: boolean }> = ({
-      value,
-      defaultValue,
-    }) => {
-      [resultValue] = useControllableValue(value, defaultValue);
-      return <div />;
-    };
-
-    const wrapper = mount(<TestComponent defaultValue={true} />);
-    expect(resultValue!).toBe(true);
-
-    wrapper.setProps({ value: false, defaultValue: true });
-    expect(resultValue!).toBe(false);
-  });
-
   it('does not change value when the default value changes', () => {
     let resultValue: boolean | undefined;
     const TestComponent: React.FunctionComponent<{ value?: boolean; defaultValue?: boolean }> = ({
