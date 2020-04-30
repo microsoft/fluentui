@@ -66,7 +66,7 @@ const ToolbarExamplePopupShorthand = () => {
           },
         },
         {
-          icon: <ItalicIcon {...{ outline: true }} />,
+          icon: <ItalicIcon outline />,
           key: 'italic',
           title: 'Italic',
         },
