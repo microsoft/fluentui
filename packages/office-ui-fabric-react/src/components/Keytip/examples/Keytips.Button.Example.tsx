@@ -37,9 +37,10 @@ const buttonProps = {
   ],
 };
 
+const log = (text: string): (() => void) => () => console.log(text);
+
 export const KeytipsButtonExample: React.FunctionComponent = () => {
   const [btnDisabled, { toggle: toggleBtnDisabled }] = useBoolean(false);
-  const log = (text: string): (() => void) => () => console.log(text);
   return (
     <div>
       <p>When multiple Keytips start with the same character, typing that character will filter the visible keytips.</p>

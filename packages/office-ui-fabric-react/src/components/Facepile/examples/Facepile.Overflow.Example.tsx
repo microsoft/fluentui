@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IFacepileProps, Facepile, OverflowButtonType } from 'office-ui-fabric-react/lib/Facepile';
+import { Facepile, OverflowButtonType } from 'office-ui-fabric-react/lib/Facepile';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { Slider } from 'office-ui-fabric-react/lib/Slider';
 import { facepilePersonas } from '@uifabric/example-data';
@@ -30,26 +30,30 @@ const dropdownOptions = [
 export const FacepileOverflowExample: React.FunctionComponent = () => {
   const [displayedPersonas, setDisplayedPersonas] = React.useState(5);
   const [overflowButtonType, setOverflowButtonType] = React.useState(OverflowButtonType.none);
+
+  const overflowButtonProps = {
+    ariaLabel: 'More users',
+    onClick: (ev: React.MouseEvent<HTMLButtonElement>) => alert('overflow icon clicked'),
+  };
+
   const onChangeType = (event: React.FormEvent<HTMLDivElement>, value: IDropdownOption): void => {
     setOverflowButtonType(value.key as OverflowButtonType);
   };
+
   const onChangePersonaNumber = (value: number): void => {
     setDisplayedPersonas(value);
   };
-  const facepileProps: IFacepileProps = {
-    personas: facepilePersonas,
-    maxDisplayablePersonas: displayedPersonas,
-    overflowButtonType: overflowButtonType,
-    overflowButtonProps: {
-      ariaLabel: 'More users',
-      onClick: (ev: React.MouseEvent<HTMLButtonElement>) => alert('overflow icon clicked'),
-    },
-    ariaDescription: 'To move through the items use left and right arrow keys.',
-    ariaLabel: 'Example list of Facepile personas',
-  };
+
   return (
     <div className={styles.container}>
-      <Facepile {...facepileProps} />
+      <Facepile
+        personas={facepilePersonas}
+        maxDisplayablePersonas={displayedPersonas}
+        overflowButtonType={overflowButtonType}
+        overflowButtonProps={overflowButtonProps}
+        ariaDescription={'To move through the items use left and right arrow keys.'}
+        ariaLabel={'Example list of Facepile personas'}
+      />
       <div className={styles.control}>
         <Slider
           label="Number of Personas:"

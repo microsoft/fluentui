@@ -12,6 +12,14 @@ export const KeytipsDynamicExample: React.FunctionComponent = () => {
   const startSequence = currButton === 'Button 1' ? 'gg1' : 'gg2';
   const onClick = (ev: React.MouseEvent<{}>) => setCurrButton((ev.target as Element).id);
 
+  const buttonThreeKeytipProps = React.useMemo(
+    () => ({
+      content: 'GG3',
+      keySequences: [startSequence, 'gg3'],
+    }),
+    [startSequence],
+  );
+
   return (
     <>
       <p>
@@ -24,10 +32,7 @@ export const KeytipsDynamicExample: React.FunctionComponent = () => {
       <DefaultButton id="Button 1" text="Button 1" onClick={onClick} keytipProps={keytipProps} />
       <DefaultButton id="Button 2" text="Button 2" onClick={onClick} keytipProps={keytipProps} />
       <div>
-        <DefaultButton
-          text={'Button 3, active button is: ' + currButton}
-          keytipProps={{ content: 'GG3', keySequences: [startSequence, 'gg3'] }}
-        />
+        <DefaultButton text={'Button 3, active button is: ' + currButton} keytipProps={buttonThreeKeytipProps} />
       </div>
     </>
   );

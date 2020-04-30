@@ -7,6 +7,7 @@ import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { List } from 'office-ui-fabric-react/lib/List';
 import { ITheme, mergeStyleSets, getTheme, getFocusStyle } from 'office-ui-fabric-react/lib/Styling';
 import { createListItems, IExampleItem } from '@uifabric/example-data';
+import { useConst } from '@uifabric/react-hooks';
 
 const theme: ITheme = getTheme();
 const { palette, semanticColors, fonts } = theme;
@@ -54,6 +55,7 @@ const classNames = mergeStyleSets({
     flexShrink: 0,
   },
 });
+
 const onRenderCell = (item: IExampleItem, index: number | undefined): JSX.Element => {
   return (
     <div className={classNames.itemCell} data-is-focusable={true}>
@@ -69,13 +71,16 @@ const onRenderCell = (item: IExampleItem, index: number | undefined): JSX.Elemen
 };
 
 export const ListBasicExample: React.FunctionComponent = () => {
-  const [originalItems] = React.useState(() => createListItems(5000));
+  const originalItems = useConst(() => createListItems(5000));
   const [items, setItems] = React.useState(originalItems);
+
   const resultCountText =
     items.length === originalItems.length ? '' : ` (${items.length} of ${originalItems.length} shown)`;
+
   const onFilterChanged = (_: any, text: string): void => {
     setItems(originalItems.filter(item => item.name.toLowerCase().indexOf(text.toLowerCase()) >= 0));
   };
+
   return (
     <FocusZone direction={FocusZoneDirection.vertical}>
       <TextField label={'Filter by name' + resultCountText} onChange={onFilterChanged} />

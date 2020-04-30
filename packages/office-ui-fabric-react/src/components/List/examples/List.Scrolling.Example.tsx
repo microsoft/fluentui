@@ -11,7 +11,7 @@ const evenItemHeight = 25;
 const oddItemHeight = 50;
 const numberOfItemsOnPage = 10;
 const theme = getTheme();
-const dropdownOption = [
+const dropdownOptions = [
   { key: 'auto', text: 'Auto' },
   { key: 'top', text: 'Top' },
   { key: 'bottom', text: 'Bottom' },
@@ -129,7 +129,7 @@ export const ListScrollingExample: React.FunctionComponent = () => {
         label="Scroll To Mode:"
         ariaLabel="Scroll To Mode"
         defaultSelectedKey={'auto'}
-        options={dropdownOption}
+        options={dropdownOptions}
         onChange={onDropdownChange}
       />
       <div>

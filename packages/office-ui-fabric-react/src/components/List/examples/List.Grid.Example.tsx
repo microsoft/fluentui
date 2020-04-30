@@ -3,7 +3,7 @@ import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 import { List } from 'office-ui-fabric-react/lib/List';
 import { IRectangle } from 'office-ui-fabric-react/lib/Utilities';
 import { ITheme, getTheme, mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
-import { createListItems } from '@uifabric/example-data';
+import { createListItems, IExampleItem } from '@uifabric/example-data';
 
 let columnCount: number;
 let columnWidth: number;
@@ -66,7 +66,7 @@ const classNames = mergeStyleSets({
   },
 });
 
-const onRenderCell = (item: any, index: number | undefined): JSX.Element => (
+const onRenderCell = (item: IExampleItem, index: number | undefined): JSX.Element => (
   <div
     className={classNames.listGridExampleTile}
     data-is-focusable

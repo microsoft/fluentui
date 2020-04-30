@@ -103,7 +103,7 @@ export const KeytipsOverflowExample: React.FunctionComponent = () => {
     );
   };
 
-  const toggleOverflowItems = (): void => {
+  const onToggleOverflowItems = React.useCallback(() => {
     if (overflowItems.length) {
       setItems(items.concat(overflowItems));
       setOverflowItems([]);
@@ -111,7 +111,7 @@ export const KeytipsOverflowExample: React.FunctionComponent = () => {
       setOverflowItems(items.slice(-2));
       setItems(items.slice(0, -2));
     }
-  };
+  }, [items, overflowItems]);
 
   return (
     <div>
@@ -133,7 +133,7 @@ export const KeytipsOverflowExample: React.FunctionComponent = () => {
       />
 
       <p>When an item is moved out of the overflow well, it behaves as a normal keytip.</p>
-      <DefaultButton text={'Move overflow items'} onClick={toggleOverflowItems} />
+      <DefaultButton text={'Move overflow items'} onClick={onToggleOverflowItems} />
     </div>
   );
 };

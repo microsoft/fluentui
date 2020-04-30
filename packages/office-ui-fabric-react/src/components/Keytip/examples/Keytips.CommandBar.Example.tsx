@@ -3,7 +3,7 @@ import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
 import { keytipMap } from 'office-ui-fabric-react/lib/components/Keytip/examples/KeytipSetup';
 import { Modal } from 'office-ui-fabric-react/lib/Modal';
 import { MessageBar, MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
-import { useBoolean } from '@uifabric/react-hooks';
+import { useBoolean, useConst } from '@uifabric/react-hooks';
 
 const commandBarFarItemsProps = [
   {
@@ -73,7 +73,7 @@ const commandBarFarItemsProps = [
 export const KeytipsCommandBarExample: React.FunctionComponent = () => {
   const [showModal, { toggle: toggleShowModal }] = useBoolean(false);
   const [showMessageBar, { toggle: toggleShowMessageBar }] = useBoolean(false);
-  const commandBarItemProps = [
+  const commandBarItems = useConst(() => [
     {
       key: 'commandBarItem1',
       text: 'New',
@@ -92,10 +92,11 @@ export const KeytipsCommandBarExample: React.FunctionComponent = () => {
       onClick: toggleShowMessageBar,
       keytipProps: keytipMap.CommandButton2Keytip,
     },
-  ];
+  ]);
+
   return (
     <>
-      <CommandBar items={commandBarItemProps} farItems={commandBarFarItemsProps} />
+      <CommandBar items={commandBarItems} farItems={commandBarFarItemsProps} />
       {showMessageBar && <MessageBar messageBarType={MessageBarType.success}>Success Uploading</MessageBar>}
       <Modal isOpen={showModal} onDismiss={toggleShowModal} isBlocking={false}>
         <h3>New Modal</h3>
