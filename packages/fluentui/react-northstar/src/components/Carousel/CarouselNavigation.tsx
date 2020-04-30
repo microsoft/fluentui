@@ -30,7 +30,7 @@ export interface CarouselNavigationProps extends UIComponentProps, ChildrenCompo
   /**
    * Accessibility behavior if overridden by the user.
    */
-  accessibility?: Accessibility;
+  accessibility?: Accessibility<never>;
 
   /** Index of the currently active item. */
   activeIndex?: number | string;
