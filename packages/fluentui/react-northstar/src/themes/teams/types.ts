@@ -85,6 +85,7 @@ import { CardBodyStylesProps } from '../../components/Card/CardBody';
 import { CardFooterStylesProps } from '../../components/Card/CardFooter';
 import { SvgIconStylesProps } from '../../components/SvgIcon/SvgIcon';
 import { SplitButtonStylesProps } from '../../components/SplitButton/SplitButton';
+import { CarouselItemStylesProps } from '../../components/Carousel/CarouselItem';
 
 export type TeamsThemeStylesProps = {
   Accordion: AccordionProps;
@@ -102,6 +103,7 @@ export type TeamsThemeStylesProps = {
   Box: BoxStylesProps;
   ButtonContent: ButtonContentStylesProps;
   ButtonGroup: ButtonGroupProps;
+  CarouselItem: CarouselItemStylesProps;
   Chat: ChatStylesProps;
   ChatItem: ChatItemStylesProps;
   ChatMessage: ChatMessageStylesProps;
