@@ -1,4 +1,4 @@
-import { TextAreaStylesProps } from './../../components/TextArea/TextArea';
+import { TextAreStylesProps } from './../../components/TextArea/TextArea';
 import {
   ColorScheme,
   ColorSchemeMapping,
@@ -8,7 +8,7 @@ import {
   PrimitiveColors,
 } from '../types';
 
-import { AccordionContentStylesProps } from '../../components/Accordion/AccordionContent';
+import { AccordionContentProps } from '../../components/Accordion/AccordionContent';
 import { AccordionProps } from '../../components/Accordion/Accordion';
 import { AccordionTitleStylesProps } from '../../components/Accordion/AccordionTitle';
 import { AlertStylesProps } from '../../components/Alert/Alert';
@@ -30,7 +30,7 @@ import { CheckboxStylesProps } from '../../components/Checkbox/Checkbox';
 import { DividerProps } from '../../components/Divider/Divider';
 import { DialogProps } from '../../components/Dialog/Dialog';
 import { DropdownProps } from '../../components/Dropdown/Dropdown';
-import { EmbedStylesProps } from '../../components/Embed/Embed';
+import { EmbedProps } from '../../components/Embed/Embed';
 import { FlexItemStylesProps } from '../../components/Flex/FlexItem';
 import { FlexStylesProps } from '../../components/Flex/Flex';
 import { FormFieldProps } from '../../components/Form/FormField';
@@ -88,8 +88,8 @@ import { SplitButtonStylesProps } from '../../components/SplitButton/SplitButton
 
 export type TeamsThemeStylesProps = {
   Accordion: AccordionProps;
-  AccordionContent: AccordionContentStylesProps;
   AccordionTitle: AccordionTitleStylesProps;
+  AccordionContent: AccordionContentProps;
   Alert: AlertStylesProps;
   Animation: AnimationProps;
   Attachment: AttachmentProps;
@@ -109,7 +109,7 @@ export type TeamsThemeStylesProps = {
   Divider: DividerProps;
   Dialog: DialogProps;
   Dropdown: DropdownProps;
-  Embed: EmbedStylesProps;
+  Embed: EmbedProps;
   Flex: FlexStylesProps;
   FlexItem: FlexItemStylesProps;
   Form: FormProps;
@@ -149,7 +149,7 @@ export type TeamsThemeStylesProps = {
   ToolbarMenuRadioGroup: ToolbarMenuRadioGroupStylesProps;
   TooltipContent: TooltipContentStylesProps;
   Text: TextStylesProps;
-  TextArea: TextAreaStylesProps;
+  TextAre: TextAreStylesProps;
   TreeItem: TreeItemStylesProps;
   TreeTitle: TreeTitleStylesProps;
   HierarchicalTree: HierarchicalTreeProps;

@@ -2,7 +2,7 @@ import { ITheme, IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 import { IDataPoint } from '../../types/IDataPoint';
 import { IOverflowSetProps } from 'office-ui-fabric-react/lib/OverflowSet';
-import { IFocusZoneProps } from '@fluentui/react-focus';
+import { IFocusZoneProps } from 'office-ui-fabric-react/lib/FocusZone';
 
 export { IDataPoint, IVerticalBarChartDataPoint } from '../../types/IDataPoint';
 

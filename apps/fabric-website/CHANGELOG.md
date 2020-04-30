@@ -1,17 +1,8 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Wed, 29 Apr 2020 12:34:58 GMT and should not be manually modified.
+This log was last generated on Tue, 21 Apr 2020 12:34:50 GMT and should not be manually modified.
 
 <!-- Start content -->
-
-## [7.10.35](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.10.35)
-
-Wed, 29 Apr 2020 12:34:58 GMT 
-[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.10.29..@uifabric/fabric-website_v7.10.35)
-
-### Patches
-
-- update MessageBar colors ([PR #12821](https://github.com/microsoft/fluentui/pull/12821) by chrismo@microsoft.com)
 
 ## [7.10.29](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.10.29)
 

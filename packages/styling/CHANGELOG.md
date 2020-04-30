@@ -1,17 +1,8 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Wed, 29 Apr 2020 12:34:58 GMT and should not be manually modified.
+This log was last generated on Wed, 22 Apr 2020 12:33:04 GMT and should not be manually modified.
 
 <!-- Start content -->
-
-## [7.12.0](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.12.0)
-
-Wed, 29 Apr 2020 12:34:58 GMT 
-[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/styling_v7.11.8..@uifabric/styling_v7.12.0)
-
-### Minor changes
-
-- update MessageBar colors ([PR #12821](https://github.com/microsoft/fluentui/pull/12821) by chrismo@microsoft.com)
 
 ## [7.11.8](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.11.8)
 

@@ -2,21 +2,6 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
-      "date": "Wed, 29 Apr 2020 12:34:58 GMT",
-      "tag": "@uifabric/fabric-website_v7.10.35",
-      "version": "7.10.35",
-      "comments": {
-        "patch": [
-          {
-            "comment": "update MessageBar colors",
-            "author": "chrismo@microsoft.com",
-            "commit": "6c2672609b55e65efb5b35484727ac33bfe93694",
-            "package": "@uifabric/fabric-website"
-          }
-        ]
-      }
-    },
-    {
       "date": "Tue, 21 Apr 2020 12:34:50 GMT",
       "tag": "@uifabric/fabric-website_v7.10.29",
       "version": "7.10.29",

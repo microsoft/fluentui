@@ -1,4 +1,4 @@
-import { accordionContentBehavior, Accessibility, AccordionContentBehaviorProps } from '@fluentui/accessibility';
+import { accordionContentBehavior } from '@fluentui/accessibility';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import * as _ from 'lodash';
@@ -6,29 +6,18 @@ import * as _ from 'lodash';
 import {
   childrenExist,
   createShorthandFactory,
+  UIComponent,
   UIComponentProps,
   ChildrenComponentProps,
   ContentComponentProps,
   commonPropTypes,
   rtlTextContainer,
+  ShorthandFactory,
+  ShorthandConfig,
 } from '../../utils';
-import {
-  WithAsProp,
-  ComponentEventHandler,
-  withSafeTypeForAs,
-  FluentComponentStaticProps,
-  ProviderContextPrepared,
-} from '../../types';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
-import { useTelemetry, getElementType, useAccessibility, useUnhandledProps, useStyles } from '@fluentui/react-bindings';
+import { WithAsProp, ComponentEventHandler, withSafeTypeForAs } from '../../types';
 
 export interface AccordionContentProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
-  /**
-   * Accessibility behavior if overridden by the user.
-   */
-  accessibility?: Accessibility<AccordionContentBehaviorProps>;
-
   /** Id of the title it belongs to. */
   accordionTitleId?: string;
 
@@ -46,80 +35,48 @@ export interface AccordionContentProps extends UIComponentProps, ChildrenCompone
 
 export const accordionContentClassName = 'ui-accordion__content';
 
-export type AccordionContentStylesProps = Required<Pick<AccordionContentProps, 'active'>>;
+class AccordionContent extends UIComponent<WithAsProp<AccordionContentProps>, any> {
+  static displayName = 'AccordionContent';
 
-export const AccordionContent: React.FC<WithAsProp<AccordionContentProps>> &
-  FluentComponentStaticProps<AccordionContentProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
-  const { setStart, setEnd } = useTelemetry(AccordionContent.displayName, context.telemetry);
-
-  setStart();
-  const { children, content, accordionTitleId, active, className, design, styles, variables } = props;
-  const ElementType = getElementType(props);
-  const unhandledProps = useUnhandledProps(AccordionContent.handledProps, props);
-
-  const getA11yProps = useAccessibility(props.accessibility, {
-    debugName: AccordionContent.displayName,
-    mapPropsToBehavior: () => ({
-      accordionTitleId,
-    }),
-    rtl: context.rtl,
-  });
-  const handleClick = (e: React.SyntheticEvent) => {
-    _.invoke(props, 'onClick', e, props);
+  static create: ShorthandFactory<AccordionContentProps>;
+  static shorthandConfig: ShorthandConfig<AccordionContentProps> = {
+    mappedProp: 'content',
   };
 
-  const { classes } = useStyles<AccordionContentStylesProps>(AccordionContent.displayName, {
-    className: accordionContentClassName,
-    mapPropsToStyles: () => ({
-      active,
-    }),
-    mapPropsToInlineStyles: () => ({
-      className,
-      design,
-      styles,
-      variables,
-    }),
-    rtl: context.rtl,
-  });
+  static deprecated_className = accordionContentClassName;
 
-  const element = (
-    <ElementType
-      {...getA11yProps('root', {
-        className: classes.root,
-        onClick: handleClick,
-        ...unhandledProps,
-      })}
-      {...rtlTextContainer.getAttributes({ forElements: [children, content] })}
-    >
-      {childrenExist(children) ? children : content}
-    </ElementType>
-  );
+  static propTypes = {
+    ...commonPropTypes.createCommon(),
+    accordionTitleId: PropTypes.string,
+    active: PropTypes.bool,
+    onClick: PropTypes.func,
+  };
 
-  setEnd();
+  static defaultProps = {
+    accessibility: accordionContentBehavior,
+    as: 'dd',
+  };
 
-  return element;
-};
+  handleClick = (e: React.SyntheticEvent) => {
+    _.invoke(this.props, 'onClick', e, this.props);
+  };
 
-AccordionContent.displayName = 'AccordionContent';
+  renderComponent({ ElementType, classes, unhandledProps, accessibility }) {
+    const { children, content } = this.props;
 
-AccordionContent.shorthandConfig = {
-  mappedProp: 'content',
-};
-
-AccordionContent.propTypes = {
-  ...commonPropTypes.createCommon(),
-  accordionTitleId: PropTypes.string,
-  active: PropTypes.bool,
-  onClick: PropTypes.func,
-};
-
-AccordionContent.defaultProps = {
-  accessibility: accordionContentBehavior,
-  as: 'dd',
-};
-
-AccordionContent.handledProps = Object.keys(AccordionContent.propTypes) as any;
+    return (
+      <ElementType
+        onClick={this.handleClick}
+        {...rtlTextContainer.getAttributes({ forElements: [children, content] })}
+        {...accessibility.attributes.root}
+        {...unhandledProps}
+        className={classes.root}
+      >
+        {childrenExist(children) ? children : content}
+      </ElementType>
+    );
+  }
+}
 
 AccordionContent.create = createShorthandFactory({
   Component: AccordionContent,

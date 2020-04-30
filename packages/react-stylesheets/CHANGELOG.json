@@ -1,20 +1,5 @@
 {
   "name": "@fluentui/react-stylesheets",
   "entries": [
-    {
-      "date": "Wed, 29 Apr 2020 12:34:58 GMT",
-      "tag": "@fluentui/react-stylesheets_v0.0.2",
-      "version": "0.0.2",
-      "comments": {
-        "patch": [
-          {
-            "comment": "Initial publish.",
-            "author": "dzearing@microsoft.com",
-            "commit": "6ece05f6818a915facc4b10a3fecadb14362ea1f",
-            "package": "@fluentui/react-stylesheets"
-          }
-        ]
-      }
-    }
   ]
 }
