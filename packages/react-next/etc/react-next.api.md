@@ -4,10 +4,80 @@
 
 ```ts
 
+import { IIconProps } from 'office-ui-fabric-react/lib/Icon';
+import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
+import { IRefObject } from 'office-ui-fabric-react/lib/Utilities';
+import { IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 import { ITheme } from 'office-ui-fabric-react/lib/Styling';
 import * as React from 'react';
+
+// @public (undocumented)
+export const Checkbox: React.FunctionComponent<ICheckboxProps>;
+
+// @public (undocumented)
+export const CheckboxBase: React.ForwardRefExoticComponent<ICheckboxProps & React.RefAttributes<HTMLDivElement>>;
+
+// @public
+export interface ICheckbox {
+    checked: boolean;
+    focus: () => void;
+    indeterminate: boolean;
+}
+
+// @public
+export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement | HTMLInputElement> {
+    ariaDescribedBy?: string;
+    ariaLabel?: string;
+    ariaLabelledBy?: string;
+    ariaPositionInSet?: number;
+    ariaSetSize?: number;
+    boxSide?: 'start' | 'end';
+    checked?: boolean;
+    checkmarkIconProps?: IIconProps;
+    className?: string;
+    componentRef?: IRefObject<ICheckbox>;
+    defaultChecked?: boolean;
+    defaultIndeterminate?: boolean;
+    disabled?: boolean;
+    indeterminate?: boolean;
+    inputProps?: React.ButtonHTMLAttributes<HTMLElement | HTMLButtonElement>;
+    keytipProps?: IKeytipProps;
+    label?: string;
+    onChange?: (ev?: React.FormEvent<HTMLElement | HTMLInputElement>, checked?: boolean) => void;
+    onRenderLabel?: IRenderFunction<ICheckboxProps>;
+    styles?: IStyleFunctionOrObject<ICheckboxStyleProps, ICheckboxStyles>;
+    theme?: ITheme;
+}
+
+// @public (undocumented)
+export interface ICheckboxStyleProps {
+    // (undocumented)
+    checked?: boolean;
+    // (undocumented)
+    className?: string;
+    // (undocumented)
+    disabled?: boolean;
+    // (undocumented)
+    indeterminate?: boolean;
+    // (undocumented)
+    isUsingCustomLabelRender: boolean;
+    // (undocumented)
+    reversed?: boolean;
+    // (undocumented)
+    theme: ITheme;
+}
+
+// @public (undocumented)
+export interface ICheckboxStyles {
+    checkbox?: IStyle;
+    checkmark?: IStyle;
+    input?: IStyle;
+    label?: IStyle;
+    root?: IStyle;
+    text?: IStyle;
+}
 
 // @public (undocumented)
 export interface IImage {
@@ -106,7 +176,6 @@ export * from "office-ui-fabric-react/lib/Button";
 export * from "office-ui-fabric-react/lib/Calendar";
 export * from "office-ui-fabric-react/lib/Callout";
 export * from "office-ui-fabric-react/lib/Check";
-export * from "office-ui-fabric-react/lib/Checkbox";
 export * from "office-ui-fabric-react/lib/ChoiceGroup";
 export * from "office-ui-fabric-react/lib/Coachmark";
 export * from "office-ui-fabric-react/lib/Color";

@@ -2,7 +2,6 @@ import * as React from 'react';
 import { classNamesFunction, getNativeProps, imgProperties } from '../../Utilities';
 import { IImageProps, IImageStyleProps, IImageStyles, ImageCoverStyle, ImageFit, ImageLoadState } from './Image.types';
 import { useMergedRefs } from '@uifabric/react-hooks';
-import { frame } from '../Calendar/Calendar.scss';
 
 const getClassNames = classNamesFunction<IImageStyleProps, IImageStyles>();
 
