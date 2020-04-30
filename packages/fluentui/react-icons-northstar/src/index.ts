@@ -94,6 +94,7 @@ export { default as GalleryIcon } from './components/GalleryIcon';
 export { default as GiphyIcon } from './components/GiphyIcon';
 export { default as GroupVideoCallGridIcon } from './components/GroupVideoCallGridIcon';
 export { default as HandIcon } from './components/HandIcon';
+export { default as HeadsetIcon } from './components/HeadsetIcon';
 export { default as HighlightIcon } from './components/HighlightIcon';
 export { default as HorizontalRuleIcon } from './components/HorizontalRuleIcon';
 export { default as ImageUnavailableIcon } from './components/ImageUnavailableIcon';
