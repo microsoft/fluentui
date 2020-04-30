@@ -191,7 +191,10 @@ export const Accordion: React.FC<WithAsProp<AccordionProps>> &
     true,
   );
 
-  const itemRefs = React.useMemo(() => Array.from({ length: panels.length }, () => React.createRef()), [panels.length]);
+  const itemRefs = React.useMemo<React.RefObject<HTMLElement>[]>(
+    () => Array.from({ length: panels.length }, () => React.createRef()),
+    [panels.length],
+  );
 
   const defaultAccordionTitleId = React.useMemo(() => _.uniqueId('accordion-title-'), []);
   const defaultAccordionContentId = React.useMemo(() => _.uniqueId('accordion-content-'), []);
