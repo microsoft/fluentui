@@ -14,6 +14,7 @@ export const DatePickerStyles = (props: IDatePickerStyleProps): Partial<IDatePic
     return {
       color: BaseColors.BLACK,
       backgroundColor: BaseColors.GRAY_F3F2F1,
+      // TODO: devops task to add mouse hover state https://dev.azure.com/CloudDesignStudioMSFT/Design%20Engineering/_workitems/edit/3853/
     };
   };
   const TodayAndSelectedDayStyle = () => {
