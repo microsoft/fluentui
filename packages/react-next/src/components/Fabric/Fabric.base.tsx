@@ -33,8 +33,7 @@ const getDir = ({ theme, dir }: IFabricProps) => {
   };
 };
 
-// tslint:disable-next-line:function-name no-function-expression
-export const FabricBase = React.forwardRef(function(props: IFabricProps, ref: React.Ref<HTMLDivElement>) {
+export const FabricBase = React.forwardRef((props: IFabricProps, ref: React.Ref<HTMLDivElement>) => {
   const { className, theme, applyTheme, applyThemeToBody } = props;
 
   const classNames = getClassNames(getStyles, {
@@ -49,6 +48,7 @@ export const FabricBase = React.forwardRef(function(props: IFabricProps, ref: Re
 
   return <>{useRenderedContent(props, classNames, rootElement, ref)}</>;
 });
+FabricBase.displayName = 'FabricBase';
 
 function useRenderedContent(
   props: IFabricProps,
