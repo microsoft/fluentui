@@ -6,6 +6,7 @@ This is a list of changes made to this Stardust copy of FocusZone in comparison 
 - chore(FocusZone): Using the same DOM utilities in v0 that we use in v7. ([#12192](https://github.com/OfficeDev/office-ui-fabric-react/pull/12192))
 - chore(FocusZone): Adding read only check in `shouldInputLoseFocus`. ([#12457](https://github.com/microsoft/fluentui/pull/12457))
 - fix(FocusZone): Fixing tab keystroke not handling `bidirectionalDomOrder direction`. ([#12459](https://github.com/microsoft/fluentui/pull/12459))
+- chore(FocusZone): Updating some const names used in tests and some comments to bring v0 and v7 versions closer together. ([#12484](https://github.com/microsoft/fluentui/pull/12484))
 - feat(FocusZone): Changing `restoreFocusFromRoot` to `preventFocusRestoration` to make default value be false. [#12615](https://github.com/microsoft/fluentui/pull/12615)
 
 ### Fixes
