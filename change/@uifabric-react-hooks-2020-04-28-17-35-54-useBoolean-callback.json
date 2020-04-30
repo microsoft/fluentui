@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Change useBoolean to preserve toggle callback identity",
-  "packageName": "@uifabric/react-hooks",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-04-29T00:35:54.629Z"
-}
