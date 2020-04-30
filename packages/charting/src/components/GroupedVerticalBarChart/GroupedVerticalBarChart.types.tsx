@@ -112,16 +112,6 @@ export interface IGroupedVerticalBarChartStyleProps {
   theme: ITheme;
 
   /**
-   * Width of the chart.
-   */
-  width: number;
-
-  /**
-   * Height of the chart.
-   */
-  height: number;
-
-  /**
    * Additional CSS class(es) to apply to the StackedBarChart.
    */
   className?: string;

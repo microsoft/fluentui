@@ -5,7 +5,7 @@ import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 export class StackedBarChartBasicExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     const points: IChartDataPoint[] = [
-      { legend: 'first', data: 1, color: DefaultPalette.blue },
+      { legend: 'first', data: 1, color: DefaultPalette.blue, xAxisCalloutData: '2020/04/30', yAxisCalloutData: '40%' },
       { legend: 'second', color: DefaultPalette.green },
     ];
 
