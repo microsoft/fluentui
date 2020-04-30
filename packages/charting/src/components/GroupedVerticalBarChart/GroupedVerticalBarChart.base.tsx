@@ -44,6 +44,8 @@ export interface IGroupedVerticalBarChartState {
   refSelected: any;
   xCalloutValue?: string;
   yCalloutValue?: string;
+  _width?: number;
+  _height?: number;
 }
 
 export class GroupedVerticalBarChartBase extends React.Component<
@@ -91,6 +93,8 @@ export class GroupedVerticalBarChartBase extends React.Component<
       titleForHoverCard: '',
       xCalloutValue: '',
       yCalloutValue: '',
+      _width: this.props.width || 600,
+      _height: this.props.height || 350,
     };
     this._refArray = [];
     this._adjustProps();
@@ -136,6 +140,8 @@ export class GroupedVerticalBarChartBase extends React.Component<
       showXAxisPath: this._showXAxisPath,
       showYAxisPath: this._showYAxisPath,
       href: this.props.href,
+      width: this.state._width,
+      height: this.state._height,
     });
 
     const svgDimensions = {
