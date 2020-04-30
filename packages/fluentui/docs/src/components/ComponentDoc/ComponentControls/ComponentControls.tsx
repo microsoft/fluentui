@@ -78,7 +78,7 @@ const ComponentControls: React.FC<ComponentControlsProps> = props => {
             {...rest}
             iconOnly
             accessibility={menuAsToolbarBehavior}
-            aria-label={`Actions for ${titleForAriaLabel ? titleForAriaLabel : 'untitled'} example`}
+            aria-label={`Actions for ${titleForAriaLabel || 'untitled'} example`}
             items={[
               {
                 icon: <CodeSnippetIcon style={{ width: '20px', height: '20px' }} />,
