@@ -248,7 +248,6 @@ export const Accordion: React.FC<WithAsProp<AccordionProps>> &
 
   const renderPanels = () => {
     const children: any[] = [];
-    console.log('renderPanels');
     focusHandler.syncFocusedIndex(focusedIndex);
     _.each(panels, (panel, index) => {
       const { content, title } = panel;
