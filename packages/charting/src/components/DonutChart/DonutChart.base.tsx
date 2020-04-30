@@ -20,8 +20,8 @@ interface IDonutChartState {
   activeLegend?: string;
   color?: string | undefined;
   isLegendSelected?: boolean;
-  xCalloutValue: string;
-  yCalloutValue: string;
+  xCalloutValue?: string;
+  yCalloutValue?: string;
 }
 
 export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChartState> {
