@@ -16,12 +16,10 @@ function compose<T extends React.ElementType, InputProps, InputStylesProps, Pare
 
   const Component = (React.forwardRef<T, InputProps & ParentProps & { as?: React.ElementType }>((props, ref) => {
     // Register styles as needed.
-    if (composeOptions.stylesheet) {
-      const { register, hasRegistered } = useStylesheet();
+    const { register, hasRegistered } = useStylesheet();
 
-      if (inputOptions.stylesheet && !hasRegistered(inputOptions.stylesheet)) {
-        register(composeOptions.stylesheets || []);
-      }
+    if (inputOptions.stylesheet && !hasRegistered(inputOptions.stylesheet)) {
+      register(composeOptions.stylesheets || []);
     }
 
     return composeOptions.render(props, ref as React.Ref<'div'>, composeOptions);
