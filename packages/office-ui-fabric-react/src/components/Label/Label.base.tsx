@@ -8,6 +8,8 @@ const getClassNames = classNamesFunction<ILabelStyleProps, ILabelStyles>({
   // It's likely to see expected cases which pass different className to the Label.
   // Therefore setting a larger cache size.
   cacheSize: 100,
+
+  useStaticStyles: true,
 });
 
 export class LabelBase extends React.Component<ILabelProps, {}> {

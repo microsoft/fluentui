@@ -110,6 +110,9 @@ export function styled<
 
         // tslint:disable-next-line:no-any
         (this._styles as any).__cachedInputs__ = [baseStyles, customizedStyles, this.props.styles];
+
+        // tslint:disable-next-line:no-any
+        (this._styles as any).__noStyleOverride__ = !customizedStyles && !this.props.styles;
       }
     }
 

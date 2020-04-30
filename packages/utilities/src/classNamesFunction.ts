@@ -36,6 +36,8 @@ export interface IClassNamesFunctionOptions {
    * Size of the cache. It overwrites default cache size when defined.
    */
   cacheSize?: number;
+
+  useStaticStyles?: boolean;
 }
 
 /**
@@ -74,6 +76,12 @@ export function classNamesFunction<TStyleProps extends {}, TStyleSet extends ISt
     const rtl = theme && theme.rtl !== undefined ? theme.rtl : getRTL();
 
     const disableCaching = options.disableCaching;
+
+    if (options.useStaticStyles && (styleFunctionOrObject as any).__noStyleOverride__) {
+      const results =
+        typeof styleFunctionOrObject === 'function' ? styleFunctionOrObject(styleProps) : styleFunctionOrObject;
+      return results as IProcessedStyleSet<TStyleSet>;
+    }
 
     // On reset of our stylesheet, reset memoized cache.
     if (currentMemoizedClassNames !== _memoizedClassNames) {

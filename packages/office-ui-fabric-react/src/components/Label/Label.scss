@@ -1,0 +1,33 @@
+:root {
+  --labelFontWeight: 600;
+  --labelColor: #323130;
+  --labelDisabledColor: #a19f9d;
+  --labelRequiredStarColor: #a4262c;
+}
+
+.root {
+  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto',
+    'Helvetica Neue', sans-serif; // TODO: get it from theme
+  font-size: 14px; // TODO: get it from theme
+  font-weight: var(--labelFontWeight);
+  color: var(--labelColor);
+  box-sizing: border-box;
+  box-shadow: none;
+  margin: 0;
+  display: block;
+  padding: 5px 0;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+
+  &.rootDisabled {
+    color: var(--labelDisabledColor);
+  }
+
+  &.rootRequired {
+    &::after {
+      content: ' *';
+      color: var(--labelRequiredStarColor);
+      padding-right: 12;
+    }
+  }
+}
