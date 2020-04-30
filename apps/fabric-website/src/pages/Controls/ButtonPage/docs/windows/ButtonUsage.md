@@ -1,4 +1,4 @@
-Fluent UI React Native Buttons have default styling based on the Fluent Design Language. To customize the button's visuals, you should use the "compose" pattern to customize the tokens. For more information on the compose pattern, please see our [compose documentation](https://github.com/microsoft/fluentui-react-native/blob/master/packages/framework/foundation-compose/README.md).
+Fluent UI React Native Buttons have default styling based on the Fluent UI Design Language. To customize the button's visuals, you should use the "compose" pattern to customize the tokens. For more information on the compose pattern, please see our [compose documentation](https://github.com/microsoft/fluentui-react-native/blob/master/packages/framework/foundation-compose/README.md).
 
 - TODO: Add Default Button image
 - TODO: Add Primary Button image

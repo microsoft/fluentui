@@ -1,3 +1,5 @@
 - [Web Persona](#/controls/web/persona)
 - [iOS Persona](#/controls/ios/persona)
 - [Android Persona](#/controls/android/persona)
+- [Windows Persona](#/controls/windows/persona)
+- [macOS Persona](#/controls/mac/persona)

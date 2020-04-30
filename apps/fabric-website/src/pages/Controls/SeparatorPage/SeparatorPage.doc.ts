@@ -22,11 +22,13 @@ export const SeparatorPageProps: TFabricPlatformPageProps = {
   },
   windows: {
     overview: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/SeparatorPage/docs/windows/SeparatorOverview.md') as string,
+    usage: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/SeparatorPage/docs/windows/SeparatorUsage.md') as string,
     related,
     componentUrl,
   },
   mac: {
     overview: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/SeparatorPage/docs/mac/SeparatorOverview.md') as string,
+    usage: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/SeparatorPage/docs/mac/SeparatorUsage.md') as string,
     related,
     componentUrl,
   },

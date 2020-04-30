@@ -2,3 +2,5 @@
 - [iOS Separator](#/controls/ios/separator)
 - [Android Separator](#/controls/android/separator)
 - [Android ListItemDivider](#/controls/android/listcells)
+- [Windows Separator](#/controls/windows/separator)
+- [macOS Separator](#/controls/mac/separator)

@@ -3,6 +3,7 @@ import { IPageSectionProps, Markdown } from '@uifabric/example-app-base/lib/inde
 import { ControlsAreaPage, IControlsPageProps } from '../ControlsAreaPage';
 import { LinkPageProps } from './LinkPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
+import { ImplementationSection } from '@uifabric/example-app-base/lib/index2';
 
 const baseUrl = 'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Controls/LinkPage';
 
@@ -25,11 +26,51 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
           sectionName: 'Implementation',
           editUrl: baseUrl + 'docs/windows/LinkImplementation.md',
           content: (
-            <Markdown>
-              {
-                require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/LinkPage/docs/windows/LinkImplementation.md') as string
-              }
-            </Markdown>
+            <ImplementationSection
+              jsonDocs={{
+                tables: [
+                  {
+                    kind: 'interface',
+                    name: 'ILinkProps',
+                    description: '\n',
+                    members: [
+                      {
+                        name: 'componentRef',
+                        typeTokens: [
+                          {
+                            text: 'React.RefObject<IFocusable>',
+                          },
+                        ],
+                        kind: 'property',
+                        description:
+                          'A RefObject to access the IButton interface. Use this to access the public methods and properties of the component.\n',
+                      },
+                      {
+                        name: 'content',
+                        typeTokens: [
+                          {
+                            text: 'string',
+                          },
+                        ],
+                        kind: 'property',
+                        description: 'The visible text of the link that the user sees.\n',
+                      },
+                      {
+                        name: 'url',
+                        typeTokens: [
+                          {
+                            text: 'string',
+                          },
+                        ],
+                        kind: 'property',
+                        description:
+                          'The URL that is opened when the link is clicked.  This value supersedes the onPress callback when both are present.\n',
+                      },
+                    ],
+                  },
+                ],
+              }}
+            />
           ),
         },
       ];

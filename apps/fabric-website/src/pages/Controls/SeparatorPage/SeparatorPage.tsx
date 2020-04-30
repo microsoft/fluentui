@@ -3,6 +3,7 @@ import { ControlsAreaPage, IControlsPageProps } from '../ControlsAreaPage';
 import { SeparatorPageProps } from './SeparatorPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
 import { IPageSectionProps } from '@uifabric/example-app-base/lib/index2';
+import { ImplementationSection } from '@uifabric/example-app-base/lib/index2';
 
 const baseUrl =
   'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Controls/SeparatorPage/';
@@ -44,7 +45,52 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
         {
           sectionName: 'Implementation',
           editUrl: baseUrl + 'docs/windows/SeparatorImplementation.md',
-          content: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/SeparatorPage/docs/windows/SeparatorImplementation.md') as string,
+          content: (
+            <ImplementationSection
+              jsonDocs={{
+                tables: [
+                  {
+                    kind: 'interface',
+                    name: 'ISeparatorPropTokens ',
+                    description: '\n',
+                    members: [
+                      {
+                        name: 'vertical',
+                        typeTokens: [
+                          {
+                            text: 'boolean',
+                          },
+                        ],
+                        kind: 'property',
+                        defaultValue: 'false',
+                        description:
+                          "Specifies whether the separator is vertical or horizontal. If true, then it's vertical.\n",
+                      },
+                    ],
+                  },
+                  {
+                    kind: 'interface',
+                    name: 'ISeparatorTokens ',
+                    description: '\n',
+                    members: [
+                      {
+                        name: 'separatorWidth',
+                        typeTokens: [
+                          {
+                            text: 'number',
+                          },
+                        ],
+                        kind: 'property',
+                        defaultValue: '1',
+                        description:
+                          'Specifies the width of the separator. This will be interpreted as DIPs on Windows and Android, but as points on Mac and iOS.\n',
+                      },
+                    ],
+                  },
+                ],
+              }}
+            />
+          ),
         },
       ];
 
