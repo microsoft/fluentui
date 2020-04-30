@@ -38,7 +38,7 @@ export interface ComponentExampleProps
     ExampleContextValue {
   error: Error | null;
   onError: (error: Error | null) => void;
-  title: React.ReactNode;
+  title: string;
   description?: React.ReactNode;
   examplePath: string;
   resetTheme?: boolean;

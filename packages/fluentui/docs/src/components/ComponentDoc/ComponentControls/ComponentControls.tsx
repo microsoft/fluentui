@@ -33,7 +33,7 @@ type ComponentControlsProps = {
   showRtl: boolean;
   showVariables: boolean;
   showTransparent: boolean;
-  title?: React.ReactNode;
+  title?: string;
 };
 
 const ComponentControls: React.FC<ComponentControlsProps> = props => {
