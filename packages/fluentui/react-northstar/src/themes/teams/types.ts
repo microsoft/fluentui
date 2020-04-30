@@ -10,6 +10,7 @@ import {
 import { AccordionContentStylesProps } from '../../components/Accordion/AccordionContent';
 import { AccordionStylesProps } from '../../components/Accordion/Accordion';
 import { AccordionTitleStylesProps } from '../../components/Accordion/AccordionTitle';
+import { CarouselNavigationItemStylesProps } from '../../components/Carousel/CarouselNavigationItem';
 import { AlertStylesProps } from '../../components/Alert/Alert';
 import { AnimationProps } from '../../components/Animation/Animation';
 import { AttachmentProps } from '../../components/Attachment/Attachment';
@@ -166,6 +167,7 @@ export type TeamsThemeStylesProps = {
   CardHeader: CardHeaderStylesProps;
   CardBody: CardBodyStylesProps;
   CardFooter: CardFooterStylesProps;
+  CarouselNavigationItem: CarouselNavigationItemStylesProps;
 };
 
 export type TeamsContextualColors = {
