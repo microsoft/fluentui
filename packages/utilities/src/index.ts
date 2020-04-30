@@ -66,6 +66,8 @@ export * from './styled';
 export * from './warn';
 export * from './ie11Detector';
 export * from './dateTime/components/CalendarDayGrid';
+export * from './dateTime/components/Calendar';
+export * from './dateTime/defaults';
 export * from './dateTime/dateMath/DateMath';
 export * from './dateTime/dateValues/DateValues';
 export * from './dateTime/dateValues/TimeConstants';
