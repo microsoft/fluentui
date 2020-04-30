@@ -6,14 +6,7 @@ This functionality is in the experimental stage and **should never be used in pr
 
 ### Usage
 
-```tsx
-import { compose } from '@fluentui/react-compose';
-
-compose(
-  renderFunction, // Or composed component
-  options,
-);
-```
+_Currently supported only by functional components in `@fluentui/react-northstar`._
 
 To import `compose` and use:
 
