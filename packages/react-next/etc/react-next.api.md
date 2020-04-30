@@ -19,6 +19,12 @@ export const Checkbox: React.FunctionComponent<ICheckboxProps>;
 // @public (undocumented)
 export const CheckboxBase: React.ForwardRefExoticComponent<ICheckboxProps & React.RefAttributes<HTMLDivElement>>;
 
+// @public (undocumented)
+export const Fabric: React.FunctionComponent<IFabricProps>;
+
+// @public (undocumented)
+export const FabricBase: React.ForwardRefExoticComponent<IFabricProps & React.RefAttributes<HTMLDivElement>>;
+
 // @public
 export interface ICheckbox {
     checked: boolean;
@@ -77,6 +83,32 @@ export interface ICheckboxStyles {
     label?: IStyle;
     root?: IStyle;
     text?: IStyle;
+}
+
+// @public (undocumented)
+export interface IFabricProps extends React.HTMLAttributes<HTMLDivElement> {
+    applyTheme?: boolean;
+    applyThemeToBody?: boolean;
+    as?: React.ElementType;
+    // (undocumented)
+    componentRef?: IRefObject<{}>;
+    dir?: 'rtl' | 'ltr' | 'auto';
+    styles?: IStyleFunctionOrObject<IFabricStyleProps, IFabricStyles>;
+    theme?: ITheme;
+}
+
+// @public (undocumented)
+export interface IFabricStyleProps extends IFabricProps {
+    // (undocumented)
+    theme: ITheme;
+}
+
+// @public (undocumented)
+export interface IFabricStyles {
+    // (undocumented)
+    bodyThemed: IStyle;
+    // (undocumented)
+    root: IStyle;
 }
 
 // @public (undocumented)
@@ -190,7 +222,6 @@ export * from "office-ui-fabric-react/lib/Divider";
 export * from "office-ui-fabric-react/lib/DocumentCard";
 export * from "office-ui-fabric-react/lib/Dropdown";
 export * from "office-ui-fabric-react/lib/ExtendedPicker";
-export * from "office-ui-fabric-react/lib/Fabric";
 export * from "office-ui-fabric-react/lib/Facepile";
 export * from "office-ui-fabric-react/lib/FloatingPicker";
 export * from "office-ui-fabric-react/lib/FocusTrapZone";
