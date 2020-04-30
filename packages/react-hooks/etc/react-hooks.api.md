@@ -4,6 +4,7 @@
 
 ```ts
 
+import { Async } from '@uifabric/utilities';
 import * as React from 'react';
 
 // @public (undocumented)
@@ -15,6 +16,9 @@ export interface IUseBooleanCallbacks {
     setTrue: () => void;
     toggle: () => void;
 }
+
+// @public
+export function useAsync(): Async;
 
 // @public
 export function useBoolean(initialState: boolean): [boolean, IUseBooleanCallbacks];
@@ -36,6 +40,9 @@ export function useId(prefix?: string, providedId?: string): string;
 
 // @public
 export function useMergedRefs<T>(...refs: React.Ref<T>[]): (instance: T) => void;
+
+// @public
+export function useOnEvent<TElement extends Element>(element: React.RefObject<TElement | undefined | null> | TElement | Window | undefined | null, eventName: string, callback: (ev: Event) => void, useCapture?: boolean): void;
 
 
 // (No @packageDocumentation comment for this package)
