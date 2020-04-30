@@ -1,8 +1,18 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Wed, 29 Apr 2020 12:34:58 GMT and should not be manually modified.
+This log was last generated on Thu, 30 Apr 2020 12:31:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.2.1](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.2.1)
+
+Thu, 30 Apr 2020 12:31:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.2.0..@uifabric/charting_v2.2.1)
+
+### Patches
+
+- addding dismiss delay to overcome instant closing on blur ([PR #12911](https://github.com/microsoft/fluentui/pull/12911) by v-sivsar@microsoft.com)
+- Charting: Change FocusZone imports to @fluentui/react-focus from office-ui-fabric-react/lib/FocusZone ([PR #12917](https://github.com/microsoft/fluentui/pull/12917) by v-satgar@microsoft.com)
 
 ## [2.2.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.2.0)
 
