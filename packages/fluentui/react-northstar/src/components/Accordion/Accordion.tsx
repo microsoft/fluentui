@@ -245,7 +245,7 @@ export const Accordion: React.FC<WithAsProp<AccordionProps>> &
     return !expanded || (!exclusive && (activeIndex as number[]).length > 1);
   };
 
-  const renderPanels = () => {
+  const renderPanels = React.useMemo(() => {
     const children: any[] = [];
 
     itemRefs = [];
@@ -254,10 +254,12 @@ export const Accordion: React.FC<WithAsProp<AccordionProps>> &
       const { content, title } = panel;
       const active = isIndexActive(+index);
       const canBeCollapsed = isIndexActionable(+index);
-      const contentRef = React.createRef<HTMLElement>();
       const titleId = title['id'] || `${defaultAccordionTitleId}${index}`;
       const contentId = content['id'] || `${defaultAccordionContentId}${index}`;
-      itemRefs[index] = contentRef;
+      const contentRef = itemRefs[index] || React.createRef<HTMLElement>();
+      if (itemRefs[index]) {
+        itemRefs[index] = contentRef;
+      }
 
       children.push(
         createShorthand(AccordionTitle, title, {
@@ -287,7 +289,7 @@ export const Accordion: React.FC<WithAsProp<AccordionProps>> &
       );
     });
     return children;
-  };
+  }, [panels, expanded, activeIndex]);
 
   const element = (
     <ElementType
@@ -297,7 +299,7 @@ export const Accordion: React.FC<WithAsProp<AccordionProps>> &
       })}
       {...rtlTextContainer.getAttributes({ forElements: [children] })}
     >
-      {childrenExist(children) ? children : renderPanels()}
+      {childrenExist(children) ? children : renderPanels}
     </ElementType>
   );
 
