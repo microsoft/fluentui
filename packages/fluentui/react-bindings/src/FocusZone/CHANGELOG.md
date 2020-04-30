@@ -7,6 +7,7 @@ This is a list of changes made to this Stardust copy of FocusZone in comparison 
 - feat(FocusZone): Adding wrapping and Page Up/Down functionality. ([#12448](https://github.com/microsoft/fluentui/pull/12448))
 - chore(FocusZone): Adding read only check in shouldInputLoseFocus. ([#12457](https://github.com/microsoft/fluentui/pull/12457))
 - fix(FocusZone): Fixing tab keystroke not handling bidirectionalDomOrder direction. ([#12459](https://github.com/microsoft/fluentui/pull/12459))
+- chore(FocusZone): Updating some const names used in tests and some comments to bring v0 and v7 versions closer together. ([#12484](https://github.com/microsoft/fluentui/pull/12484))
 
 ### Fixes
 - fix(Accessibility): When parking focus needs to be detected, IE11 returns `null` for `activeElement`, causing focus to not be restored. We now check for `null` to ensure the feature works correctly in this environment.
