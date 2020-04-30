@@ -71,6 +71,7 @@ export { default as statusBehavior } from './Status/statusBehavior';
 export { default as embedBehavior } from './Embed/embedBehavior';
 export * from './Embed/embedBehavior';
 export { default as accordionBehavior } from './Accordion/accordionBehavior';
+export * from './Accordion/accordionBehavior';
 export { default as accordionTitleBehavior } from './Accordion/accordionTitleBehavior';
 export * from './Accordion/accordionTitleBehavior';
 export { default as accordionContentBehavior } from './Accordion/accordionContentBehavior';
