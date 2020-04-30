@@ -1,8 +1,9 @@
 import { Button, Flex, Image, Text, Avatar, Card } from '@fluentui/react-northstar';
 import * as React from 'react';
+import { StarIcon, DownloadIcon, MoreIcon } from '@fluentui/react-icons-northstar';
 
 const CardExampleCentered = () => (
-  <Card centered>
+  <Card centered aria-roledescription="card with avatar, image and action buttons">
     <Card.Header>
       <Flex gap="gap.small" column hAlign="center">
         <Avatar image="public/images/avatar/small/matt.jpg" label="Copy bandwidth" name="Evie yundt" status="unknown" />
@@ -20,9 +21,9 @@ const CardExampleCentered = () => (
       <Flex space="between">
         <Button content="Action" />
         <Flex>
-          <Button icon="star" iconOnly text title="Favourite" />
-          <Button icon="download" iconOnly text title="Download" />
-          <Button icon="more" iconOnly text title="More" />
+          <Button icon={<StarIcon />} iconOnly text title="Favourite" />
+          <Button icon={<DownloadIcon />} iconOnly text title="Download" />
+          <Button icon={<MoreIcon />} iconOnly text title="More" />
         </Flex>
       </Flex>
     </Card.Footer>

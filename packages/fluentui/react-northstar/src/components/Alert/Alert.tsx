@@ -1,30 +1,44 @@
-import { Accessibility, alertBehavior } from '@fluentui/accessibility';
+import { Accessibility, alertBehavior, AlertBehaviorProps } from '@fluentui/accessibility';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-
+// @ts-ignore
+import { ThemeContext } from 'react-fela';
 import {
-  AutoControlledComponent,
   UIComponentProps,
   ContentComponentProps,
   commonPropTypes,
   childrenExist,
-  rtlTextContainer,
+  createShorthandFactory,
 } from '../../utils';
-import { RenderResultConfig } from '../../utils/renderComponent';
-import { ComponentEventHandler, WithAsProp, ShorthandValue, withSafeTypeForAs, ShorthandCollection } from '../../types';
+import {
+  ComponentEventHandler,
+  WithAsProp,
+  ShorthandValue,
+  withSafeTypeForAs,
+  ShorthandCollection,
+  FluentComponentStaticProps,
+  ProviderContextPrepared,
+} from '../../types';
 import Box, { BoxProps } from '../Box/Box';
-import Button, { ButtonProps } from '../Button/Button';
-import Icon, { IconProps } from '../Icon/Icon';
+import { ButtonProps } from '../Button/Button';
 import Text, { TextProps } from '../Text/Text';
 
 import ButtonGroup, { ButtonGroupProps } from '../Button/ButtonGroup';
+import AlertDismissAction, { AlertDismissActionProps } from './AlertDismissAction';
+import {
+  useAccessibility,
+  getElementType,
+  useStyles,
+  useTelemetry,
+  useUnhandledProps,
+  useAutoControlled,
+} from '@fluentui/react-bindings';
 
 export interface AlertSlotClassNames {
   content: string;
   actions: string;
-  dismissAction: string;
   icon: string;
   header: string;
   body: string;
@@ -35,13 +49,13 @@ export interface AlertProps extends UIComponentProps, ContentComponentProps<Shor
    * Accessibility behavior if overridden by the user.
    * @available alertWarningBehavior
    */
-  accessibility?: Accessibility;
+  accessibility?: Accessibility<AlertBehaviorProps>;
 
   /** An alert can contain action buttons. */
   actions?: ShorthandValue<ButtonGroupProps> | ShorthandCollection<ButtonProps>;
 
   /** An alert may contain an icon. */
-  icon?: ShorthandValue<IconProps>;
+  icon?: ShorthandValue<BoxProps>;
 
   /** An alert may contain a header. */
   header?: ShorthandValue<TextProps>;
@@ -65,7 +79,7 @@ export interface AlertProps extends UIComponentProps, ContentComponentProps<Shor
    * A button shorthand for the dismiss action slot. To use this slot the alert should be
    * dismissible.
    */
-  dismissAction?: ShorthandValue<ButtonProps>;
+  dismissAction?: ShorthandValue<AlertDismissActionProps>;
 
   /** An alert may be formatted to display information. */
   info?: boolean;
@@ -97,153 +111,217 @@ export interface AlertProps extends UIComponentProps, ContentComponentProps<Shor
   body?: ShorthandValue<BoxProps>;
 }
 
-export interface AlertState {
-  visible: boolean;
-  bodyId: string;
-}
+export type AlertStylesProps = Required<
+  Pick<AlertProps, 'danger' | 'warning' | 'info' | 'success' | 'attached' | 'fitted' | 'dismissible' | 'visible'>
+>;
 
-class Alert extends AutoControlledComponent<WithAsProp<AlertProps>, AlertState> {
-  static displayName = 'Alert';
-  static className = 'ui-alert';
+export const alertClassName = 'ui-alert';
+export const alertSlotClassNames: AlertSlotClassNames = {
+  content: `${alertClassName}__content`,
+  actions: `${alertClassName}__actions`,
+  icon: `${alertClassName}__icon`,
+  header: `${alertClassName}__header`,
+  body: `${alertClassName}__body`,
+};
 
-  static slotClassNames: AlertSlotClassNames = {
-    content: `${Alert.className}__content`,
-    actions: `${Alert.className}__actions`,
-    dismissAction: `${Alert.className}__dismissAction`,
-    icon: `${Alert.className}__icon`,
-    header: `${Alert.className}__header`,
-    body: `${Alert.className}__body`,
-  };
+export const Alert: React.FC<WithAsProp<AlertProps>> &
+  FluentComponentStaticProps<AlertProps> & {
+    DismissAction: typeof AlertDismissAction;
+  } = props => {
+  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const { setStart, setEnd } = useTelemetry(Alert.displayName, context.telemetry);
+  setStart();
+  const {
+    warning,
+    danger,
+    info,
+    success,
+    attached,
+    fitted,
+    dismissible,
+    variables,
+    className,
+    design,
+    styles,
+    children,
+    actions,
+    dismissAction,
+    content,
+    icon,
+    header,
+    body,
+  } = props;
 
-  static propTypes = {
-    ...commonPropTypes.createCommon({ content: 'shorthand' }),
-    actions: PropTypes.oneOfType([customPropTypes.itemShorthand, customPropTypes.collectionShorthand]),
-    icon: customPropTypes.itemShorthandWithoutJSX,
-    header: customPropTypes.itemShorthand,
-    attached: PropTypes.oneOfType([PropTypes.bool, PropTypes.oneOf(['top', 'bottom'])]),
-    fitted: PropTypes.bool,
-    danger: PropTypes.bool,
-    defaultVisible: PropTypes.bool,
-    dismissible: PropTypes.bool,
-    dismissAction: customPropTypes.itemShorthand,
-    info: PropTypes.bool,
-    onVisibleChange: PropTypes.func,
-    onFocus: PropTypes.func,
-    success: PropTypes.bool,
-    visible: PropTypes.bool,
-    warning: PropTypes.bool,
-    body: customPropTypes.itemShorthand,
-  };
+  const [visible, setVisible] = useAutoControlled({
+    defaultValue: props.defaultVisible,
+    value: props.visible,
+    initialValue: true,
+  });
 
-  static defaultProps = {
-    accessibility: alertBehavior,
-    dismissAction: { icon: 'close' },
-    body: {},
-  };
+  const [bodyId] = React.useState(_.uniqueId('alert-body-'));
+  const ElementType = getElementType(props);
+  const unhandledProps = useUnhandledProps(Alert.handledProps, props);
 
-  static autoControlledProps = ['visible'];
+  const getA11yProps = useAccessibility(props.accessibility, {
+    debugName: Alert.displayName,
+    mapPropsToBehavior: () => ({
+      warning,
+      danger,
+      bodyId,
+      visible,
+    }),
+    rtl: context.rtl,
+  });
 
-  getInitialAutoControlledState(): AlertState {
-    return {
-      visible: true,
-      bodyId: _.uniqueId('alert-body-'),
-    };
-  }
+  const { classes, styles: resolvedStyles } = useStyles<AlertStylesProps>(Alert.displayName, {
+    className: alertClassName,
+    mapPropsToStyles: () => ({
+      warning,
+      danger,
+      info,
+      success,
+      attached,
+      fitted,
+      dismissible,
+      visible,
+    }),
+    mapPropsToInlineStyles: () => ({
+      className,
+      design,
+      styles,
+      variables,
+    }),
+    rtl: context.rtl,
+  });
 
-  handleDismissOverrides = (predefinedProps: ButtonProps) => ({
+  const handleDismissOverrides = (predefinedProps: ButtonProps) => ({
     onClick: (e: React.SyntheticEvent, buttonProps: ButtonProps) => {
       _.invoke(predefinedProps, 'onClick', e, buttonProps);
-
-      _.invoke(this.props, 'onVisibleChange', e, { ...this.props, visible: false });
-      this.setState({ visible: false });
+      _.invoke(props, 'onVisibleChange', e, { ...props, visible: false });
+      setVisible(false);
     },
   });
 
-  handleFocus = (e: React.SyntheticEvent) => {
-    _.invoke(this.props, 'onFocus', e, this.props);
+  const handleFocus = (e: React.SyntheticEvent) => {
+    _.invoke(props, 'onFocus', e, props);
   };
 
-  renderContent = ({ styles, accessibility }: RenderResultConfig<AlertProps>) => {
-    const { actions, dismissible, dismissAction, content, icon, header, body } = this.props;
-
+  const renderContent = () => {
     const bodyContent = (
       <>
         {Text.create(header, {
-          defaultProps: () => ({
-            className: Alert.slotClassNames.header,
-            styles: styles.header,
-            ...accessibility.attributes.header,
-          }),
+          defaultProps: () =>
+            getA11yProps('header', {
+              className: alertSlotClassNames.header,
+              styles: resolvedStyles.header,
+            }),
         })}
         {Box.create(content, {
-          defaultProps: () => ({
-            className: Alert.slotClassNames.content,
-            styles: styles.content,
-            ...accessibility.attributes.content,
-          }),
+          defaultProps: () =>
+            getA11yProps('content', {
+              className: alertSlotClassNames.content,
+              styles: resolvedStyles.content,
+            }),
         })}
       </>
     );
 
     return (
       <>
-        {Icon.create(icon, {
-          defaultProps: () => ({
-            className: Alert.slotClassNames.icon,
-            styles: styles.icon,
-          }),
+        {Box.create(icon, {
+          defaultProps: () =>
+            getA11yProps('icon', {
+              className: alertSlotClassNames.icon,
+              styles: resolvedStyles.icon,
+            }),
         })}
         {Box.create(body, {
-          defaultProps: () => ({
-            id: this.state.bodyId,
-            className: Alert.slotClassNames.body,
-            ...accessibility.attributes.body,
-            styles: styles.body,
-          }),
+          defaultProps: () =>
+            getA11yProps('body', {
+              className: alertSlotClassNames.body,
+              styles: resolvedStyles.body,
+              id: bodyId,
+            }),
           overrideProps: {
             children: bodyContent,
           },
         })}
 
         {ButtonGroup.create(actions, {
-          defaultProps: () => ({
-            className: Alert.slotClassNames.actions,
-            styles: styles.actions,
-          }),
+          defaultProps: () =>
+            getA11yProps('actions', {
+              className: alertSlotClassNames.actions,
+              styles: resolvedStyles.actions,
+            }),
         })}
         {dismissible &&
-          Button.create(dismissAction, {
-            defaultProps: () => ({
-              iconOnly: true,
-              text: true,
-              className: Alert.slotClassNames.dismissAction,
-              styles: styles.dismissAction,
-              ...accessibility.attributes.dismissAction,
-            }),
-            overrideProps: this.handleDismissOverrides,
+          AlertDismissAction.create(dismissAction, {
+            defaultProps: () =>
+              getA11yProps('dismissAction', {
+                danger,
+                warning,
+                info,
+                success,
+                variables,
+              }),
+            overrideProps: handleDismissOverrides,
           })}
       </>
     );
   };
 
-  renderComponent(config: RenderResultConfig<AlertProps>) {
-    const { accessibility, classes, ElementType, unhandledProps } = config;
-    const { children } = this.props;
+  const element = (
+    <ElementType
+      {...getA11yProps('root', {
+        className: classes.root,
+        onFocus: handleFocus,
+        ...unhandledProps,
+      })}
+    >
+      {childrenExist(children) ? children : renderContent()}
+    </ElementType>
+  );
 
-    return (
-      <ElementType
-        className={classes.root}
-        onFocus={this.handleFocus}
-        {...accessibility.attributes.root}
-        {...rtlTextContainer.getAttributes({ forElements: [children] })}
-        {...unhandledProps}
-      >
-        {childrenExist(children) ? children : this.renderContent(config)}
-      </ElementType>
-    );
-  }
-}
+  setEnd();
 
+  return element;
+};
+
+Alert.defaultProps = {
+  accessibility: alertBehavior,
+  dismissAction: {},
+  body: {},
+};
+
+Alert.propTypes = {
+  ...commonPropTypes.createCommon({ content: 'shorthand' }),
+  actions: PropTypes.oneOfType([customPropTypes.itemShorthand, customPropTypes.collectionShorthand]),
+  icon: customPropTypes.shorthandAllowingChildren,
+  header: customPropTypes.itemShorthand,
+  attached: PropTypes.oneOf([true, false, 'top', 'bottom']),
+  fitted: PropTypes.bool,
+  danger: PropTypes.bool,
+  defaultVisible: PropTypes.bool,
+  dismissible: PropTypes.bool,
+  dismissAction: customPropTypes.shorthandAllowingChildren,
+  info: PropTypes.bool,
+  onVisibleChange: PropTypes.func,
+  onFocus: PropTypes.func,
+  success: PropTypes.bool,
+  visible: PropTypes.bool,
+  warning: PropTypes.bool,
+  body: customPropTypes.shorthandAllowingChildren,
+};
+
+Alert.displayName = 'Alert';
+
+Alert.handledProps = Object.keys(Alert.propTypes) as any;
+
+Alert.create = createShorthandFactory({
+  Component: Alert,
+});
+
+Alert.DismissAction = AlertDismissAction;
 /**
  * An Alert displays a brief, important message to attract a user's attention without interrupting their current task.
  *

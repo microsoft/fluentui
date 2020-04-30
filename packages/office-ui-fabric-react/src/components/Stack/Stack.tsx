@@ -17,7 +17,7 @@ const StackView: IStackComponent['view'] = props => {
     padding: 'tokens.padding',
   });
 
-  const stackChildren: (React.ReactChild | null)[] = React.Children.map(
+  const stackChildren: (React.ReactChild | null)[] | null | undefined = React.Children.map(
     props.children,
     (child: React.ReactElement<IStackItemProps>, index: number) => {
       if (!child) {

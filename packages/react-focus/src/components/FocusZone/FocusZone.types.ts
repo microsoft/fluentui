@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { FocusZone } from './FocusZone';
-import { IRefObject, IPoint } from '@uifabric/utilities';
+import { IRefObject, Point } from '@uifabric/utilities';
 
 /**
  * FocusZone component class interface.
@@ -16,6 +16,12 @@ export interface IFocusZone {
   focus(forceIntoFirstElement?: boolean): boolean;
 
   /**
+   * Sets focus to the last tabbable item in the zone.
+   * @returns True if focus could be set to an active element, false if no operation was taken.
+   */
+  focusLast(): boolean;
+
+  /**
    * Sets focus to a specific child element within the zone. This can be used in conjunction with
    * shouldReceiveFocus to create delayed focus scenarios (like animate the scroll position to the correct
    * location and then focus.)
@@ -29,7 +35,7 @@ export interface IFocusZone {
    * than a center based on the last horizontal motion.
    * @param point - the new reference point.
    */
-  setFocusAlignment(point: IPoint): void;
+  setFocusAlignment(point: Point): void;
 }
 
 /**
@@ -58,6 +64,12 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
    * Optionally provide a selector for identifying the intial active element.
    */
   defaultActiveElement?: string;
+
+  /**
+   * Determines if a default tabbable element should be force focused on FocusZone mount.
+   * @default false
+   */
+  shouldFocusOnMount?: boolean;
 
   /**
    * If set, the FocusZone will not be tabbable and keyboard navigation will be disabled.
@@ -136,7 +148,7 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
    */
   shouldReceiveFocus?: (childElement?: HTMLElement) => boolean;
 
-  /** Allow focus to move to root */
+  /** Allows focus to park on root when focus is in the `FocusZone` at render time. */
   allowFocusRoot?: boolean;
 
   /**
@@ -154,6 +166,12 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
    * and have to hit escape or some other key.
    */
   handleTabKey?: FocusZoneTabbableElements;
+
+  /**
+   * If true and TAB key is not handled by FocusZone, resets current active element to null value.
+   * For example, when roving index is not desirable and focus should always reset to the default tabbable element.
+   */
+  shouldResetActiveElementWhenTabFromZone?: boolean;
 
   /**
    * A callback method to determine if the input element should lose focus on arrow keys
@@ -191,6 +209,12 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
    * @param event - React's original FocusEvent.
    */
   onFocus?: (event: React.FocusEvent<HTMLElement | FocusZone>) => void;
+
+  /**
+   * If true, FocusZone prevents the default behavior of Keyboard events when changing focus between elements.
+   * @defaultvalue true
+   */
+  preventDefaultWhenHandled?: boolean;
 }
 /**
  * {@docCategory FocusZone}

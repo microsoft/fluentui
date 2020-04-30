@@ -1,15 +1,16 @@
 import * as React from 'react';
 import { List, Status } from '@fluentui/react-northstar';
+import { ErrorIcon, AcceptIcon } from '@fluentui/react-icons-northstar';
 
 const items = [
   {
     key: 'irving',
-    media: <Status state="error" icon="error" />,
+    media: <Status state="error" icon={<ErrorIcon />} />,
     header: 'Irving Kuhic',
   },
   {
     key: 'skyler',
-    media: <Status state="success" icon="icon-checkmark" />,
+    media: <Status state="success" icon={<AcceptIcon />} />,
     header: 'Skyler Parks',
   },
   {

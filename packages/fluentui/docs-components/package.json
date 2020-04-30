@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/docs-components",
   "description": "A set of React components to build docs sites.",
-  "version": "0.47.0",
+  "version": "0.48.0",
   "author": "Oleksandr Fediashov <a@fedyashov.com>",
   "bugs": "https://github.com/microsoft/fluentui/issues",
   "dependencies": {
@@ -31,10 +31,8 @@
   "scripts": {
     "build": "gulp bundle:package:no-umd",
     "clean": "gulp bundle:package:clean",
-    "lint": "yarn lint:eslint && yarn lint:old",
-    "lint:eslint": "eslint --ext .js,.ts,.tsx .",
-    "lint:fix": "yarn lint:eslint --fix && yarn lint:old --fix",
-    "lint:old": "tslint -t stylish -p ."
+    "lint": "eslint --ext .js,.ts,.tsx .",
+    "lint:fix": "yarn lint --fix"
   },
   "sideEffects": false,
   "types": "dist/es/index.d.ts"

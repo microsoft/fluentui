@@ -1,10 +1,10 @@
 import { ComponentSlotStylesPrepared } from '@fluentui/styles';
-import { AccordionTitleProps } from '../../../../components/Accordion/AccordionTitle';
+import { AccordionTitleStylesProps } from '../../../../components/Accordion/AccordionTitle';
 import { AccordionVariables } from './accordionVariables';
 import activeIndicatorUrl from './activeIndicatorUrl';
 import { pxToRem } from '../../../../utils';
 
-const accordionTitleStyles: ComponentSlotStylesPrepared<AccordionTitleProps, AccordionVariables> = {
+const accordionTitleStyles: ComponentSlotStylesPrepared<AccordionTitleStylesProps, AccordionVariables> = {
   root: ({ props: p }) => ({
     display: 'inline-block',
     verticalAlign: 'middle',
@@ -12,8 +12,14 @@ const accordionTitleStyles: ComponentSlotStylesPrepared<AccordionTitleProps, Acc
     cursor: p.disabled ? 'default' : 'pointer',
   }),
   contentWrapper: ({ props: p }) => ({
-    display: 'grid',
-    gridTemplateColumns: `auto ${p.content ? '1fr' : ''}`,
+    display: ['grid', '-ms-grid'],
+    gridTemplateColumns: 'auto',
+    msGridColumns: 'auto',
+
+    ...(p.content && {
+      gridTemplateColumns: 'auto 1fr',
+      msGridColumns: 'auto 1fr',
+    }),
   }),
   indicator: ({ props: p, variables: v, rtl }) => ({
     alignItems: 'center',

@@ -1,5 +1,5 @@
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import Checkbox, { CheckboxStylesProps } from '../../../../components/Checkbox/Checkbox';
+import { CheckboxStylesProps, checkboxSlotClassNames } from '../../../../components/Checkbox/Checkbox';
 import { CheckboxVariables } from './checkboxVariables';
 import getBorderFocusStyles from '../../getBorderFocusStyles';
 import checkboxIndicatorUrl from './checkboxIndicatorUrl';
@@ -18,9 +18,16 @@ const checkboxStyles: ComponentSlotStylesPrepared<CheckboxStylesProps, CheckboxV
   root: ({ props: p, variables: v, theme: t }): ICSSInJSStyle => ({
     position: 'relative',
 
-    display: 'inline-grid',
+    display: ['inline-grid', '-ms-inline-grid'],
+    gridTemplateColumns: `1fr ${v.gap} auto`,
     // IE11: Gap is done via virtual column as in autoprefixer
-    gridTemplateColumns: p.labelPosition === 'start' ? `1fr ${v.gap} auto` : `auto ${v.gap} 1fr`,
+    msGridColumns: `auto ${v.gap} 1fr`,
+
+    ...(p.labelPosition === 'start' && {
+      gridTemplateColumns: `1fr ${v.gap} auto`,
+      msGridColumns: `1fr ${v.gap} auto`,
+    }),
+
     cursor: 'pointer',
     outline: 0,
 
@@ -34,7 +41,7 @@ const checkboxStyles: ComponentSlotStylesPrepared<CheckboxStylesProps, CheckboxV
     ':hover': {
       color: v.textColorHover,
 
-      [`& .${Checkbox.slotClassNames.indicator}`]: {
+      [`& .${checkboxSlotClassNames.indicator}`]: {
         ...(!p.toggle && {
           ...(p.checked && {
             borderColor: v.checkedBackgroundHover,
@@ -82,8 +89,15 @@ const checkboxStyles: ComponentSlotStylesPrepared<CheckboxStylesProps, CheckboxV
   }),
 
   checkbox: ({ props: p, variables: v }): ICSSInJSStyle => ({
-    gridColumn: p.labelPosition === 'start' ? 3 : 1,
-    '-ms-grid-row-align': 'center',
+    msGridRowAlign: 'center',
+    gridColumn: 1,
+    msGridColumn: 1,
+
+    ...(p.labelPosition === 'start' && {
+      gridColumn: 3,
+      msGridColumn: 3,
+    }),
+
     boxShadow: 'unset',
     width: pxToRem(16),
     height: pxToRem(16),
@@ -120,8 +134,15 @@ const checkboxStyles: ComponentSlotStylesPrepared<CheckboxStylesProps, CheckboxV
   }),
 
   toggle: ({ props: p, variables: v }): ICSSInJSStyle => ({
-    '-ms-grid-row-align': 'center',
-    gridColumn: p.labelPosition === 'start' ? 3 : 1,
+    msGridRowAlign: 'center',
+    gridColumn: 1,
+    msGridColumn: 1,
+
+    ...(p.labelPosition === 'start' && {
+      gridColumn: 3,
+      msGridColumn: 3,
+    }),
+
     boxShadow: 'unset',
     boxSizing: 'border-box',
 
@@ -170,7 +191,14 @@ const checkboxStyles: ComponentSlotStylesPrepared<CheckboxStylesProps, CheckboxV
 
   label: ({ props: p }): ICSSInJSStyle => ({
     display: 'block', // IE11: should be forced to be block, as inline-block is not supported
-    gridColumn: p.labelPosition === 'start' ? 1 : 3,
+
+    gridColumn: 3,
+    msGridColumn: 3,
+
+    ...(p.labelPosition === 'start' && {
+      gridColumn: 1,
+      msGridColumn: 1,
+    }),
   }),
 };
 

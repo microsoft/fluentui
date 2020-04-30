@@ -84,7 +84,7 @@ packages/office-ui-fabric-react/src/components/Calendar/ @lorejoh
 packages/office-ui-fabric-react/src/components/Callout/ @joschect
 packages/office-ui-fabric-react/src/components/react-cards/Card/  @khmakoto
 packages/office-ui-fabric-react/src/components/Check/ @KevinTCoughlin
-packages/office-ui-fabric-react/src/components/Checkbox/ @cliffkoh
+packages/office-ui-fabric-react/src/components/Checkbox/ @khmakoto
 packages/office-ui-fabric-react/src/components/ChoiceGroup/ @ecraig12345
 packages/office-ui-fabric-react/src/components/Coachmark/ @leddie24
 packages/office-ui-fabric-react/src/components/ColorPicker/ @ecraig12345
@@ -106,7 +106,7 @@ packages/office-ui-fabric-react/src/components/GroupedList/  @aditima @KevinTCou
 packages/office-ui-fabric-react/src/components/HoverCard/   @atneik @Jahnp @Vitalius1
 packages/office-ui-fabric-react/src/components/Icon/ @dzearing @ecraig12345
 packages/office-ui-fabric-react/src/components/Image/ @dzearing
-packages/office-ui-fabric-react/src/components/Label/ @cliffkoh
+packages/office-ui-fabric-react/src/components/Label/ @khmakoto
 packages/office-ui-fabric-react/src/components/Layer/  @ThomasMichon
 packages/office-ui-fabric-react/src/components/Link/ @khmakoto
 packages/office-ui-fabric-react/src/components/List/ @KevinTCoughlin

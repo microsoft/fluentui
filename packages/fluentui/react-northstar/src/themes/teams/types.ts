@@ -1,3 +1,4 @@
+import { TextAreaStylesProps } from './../../components/TextArea/TextArea';
 import {
   ColorScheme,
   ColorSchemeMapping,
@@ -7,12 +8,16 @@ import {
   PrimitiveColors,
 } from '../types';
 
-import { AccordionContentProps } from '../../components/Accordion/AccordionContent';
+import { AccordionContentStylesProps } from '../../components/Accordion/AccordionContent';
 import { AccordionProps } from '../../components/Accordion/Accordion';
-import { AccordionTitleProps } from '../../components/Accordion/AccordionTitle';
-import { AlertProps } from '../../components/Alert/Alert';
+import { AccordionTitleStylesProps } from '../../components/Accordion/AccordionTitle';
+import { AlertStylesProps } from '../../components/Alert/Alert';
 import { AnimationProps } from '../../components/Animation/Animation';
 import { AttachmentProps } from '../../components/Attachment/Attachment';
+import { AttachmentActionStylesProps } from '../../components/Attachment/AttachmentAction';
+import { AttachmentDescriptionStylesProps } from '../../components/Attachment/AttachmentDescription';
+import { AttachmentHeaderStylesProps } from '../../components/Attachment/AttachmentHeader';
+import { AttachmentIconStylesProps } from '../../components/Attachment/AttachmentIcon';
 import { AvatarStylesProps } from '../../components/Avatar/Avatar';
 import { BoxStylesProps } from '../../components/Box/Box';
 import { ButtonGroupProps } from '../../components/Button/ButtonGroup';
@@ -25,7 +30,7 @@ import { CheckboxStylesProps } from '../../components/Checkbox/Checkbox';
 import { DividerProps } from '../../components/Divider/Divider';
 import { DialogProps } from '../../components/Dialog/Dialog';
 import { DropdownProps } from '../../components/Dropdown/Dropdown';
-import { EmbedProps } from '../../components/Embed/Embed';
+import { EmbedStylesProps } from '../../components/Embed/Embed';
 import { FlexItemStylesProps } from '../../components/Flex/FlexItem';
 import { FlexStylesProps } from '../../components/Flex/Flex';
 import { FormFieldProps } from '../../components/Form/FormField';
@@ -33,7 +38,6 @@ import { FormProps } from '../../components/Form/Form';
 import { GridProps } from '../../components/Grid/Grid';
 import { HeaderDescriptionProps } from '../../components/Header/HeaderDescription';
 import { HeaderProps } from '../../components/Header/Header';
-import { IconStylesProps } from '../../components/Icon/Icon';
 import { ImageStylesProps } from '../../components/Image/Image';
 import { InputProps } from '../../components/Input/Input';
 import { ItemLayoutProps } from '../../components/ItemLayout/ItemLayout';
@@ -44,7 +48,7 @@ import { ListItemStylesProps } from '../../components/List/ListItem';
 import { LoaderProps } from '../../components/Loader/Loader';
 import { MenuItemProps } from '../../components/Menu/MenuItem';
 import { MenuProps } from '../../components/Menu/Menu';
-import { PopupContentProps } from '../../components/Popup/PopupContent';
+import { PopupContentStylesProps } from '../../components/Popup/PopupContent';
 import { PortalProps } from '../../components/Portal/Portal';
 import { RadioGroupItemProps } from '../../components/RadioGroup/RadioGroupItem';
 import { RadioGroupProps } from '../../components/RadioGroup/RadioGroup';
@@ -63,15 +67,15 @@ import { ToolbarMenuRadioGroupStylesProps } from '../../components/Toolbar/Toolb
 import { ToolbarMenuStylesProps } from '../../components/Toolbar/ToolbarMenu';
 import { ToolbarProps } from '../../components/Toolbar/Toolbar';
 import { ToolbarRadioGroupProps } from '../../components/Toolbar/ToolbarRadioGroup';
-import { TooltipContentProps } from '../../components/Tooltip/TooltipContent';
+import { TooltipContentStylesProps } from '../../components/Tooltip/TooltipContent';
 import { HierarchicalTreeItemProps } from '../../components/HierarchicalTree/HierarchicalTreeItem';
 import { HierarchicalTreeProps } from '../../components/HierarchicalTree/HierarchicalTree';
 import { HierarchicalTreeTitleProps } from '../../components/HierarchicalTree/HierarchicalTreeTitle';
-import { VideoProps } from '../../components/Video/Video';
+import { VideoStylesProps } from '../../components/Video/Video';
 import { TreeItemStylesProps } from '../../components/Tree/TreeItem';
 import { TreeTitleStylesProps } from '../../components/Tree/TreeTitle';
-import { TableProps } from '../../components/Table/Table';
-import { TableRowProps } from '../../components/Table/TableRow';
+import { TableStylesProps } from '../../components/Table/Table';
+import { TableRowStylesProps } from '../../components/Table/TableRow';
 import { TableCellStylesProps } from '../../components/Table/TableCell';
 import { CardStylesProps } from '../../components/Card/Card';
 import { CardPreviewStylesProps } from '../../components/Card/CardPreview';
@@ -79,14 +83,20 @@ import { CardTopControlsStylesProps } from '../../components/Card/CardTopControl
 import { CardHeaderStylesProps } from '../../components/Card/CardHeader';
 import { CardBodyStylesProps } from '../../components/Card/CardBody';
 import { CardFooterStylesProps } from '../../components/Card/CardFooter';
+import { SvgIconStylesProps } from '../../components/SvgIcon/SvgIcon';
+import { SplitButtonStylesProps } from '../../components/SplitButton/SplitButton';
 
 export type TeamsThemeStylesProps = {
   Accordion: AccordionProps;
-  AccordionTitle: AccordionTitleProps;
-  AccordionContent: AccordionContentProps;
-  Alert: AlertProps;
+  AccordionContent: AccordionContentStylesProps;
+  AccordionTitle: AccordionTitleStylesProps;
+  Alert: AlertStylesProps;
   Animation: AnimationProps;
   Attachment: AttachmentProps;
+  AttachmentAction: AttachmentActionStylesProps;
+  AttachmentDescription: AttachmentDescriptionStylesProps;
+  AttachmentHeader: AttachmentHeaderStylesProps;
+  AttachmentIcon: AttachmentIconStylesProps;
   Avatar: AvatarStylesProps;
   Button: ButtonStylesProps;
   Box: BoxStylesProps;
@@ -99,7 +109,7 @@ export type TeamsThemeStylesProps = {
   Divider: DividerProps;
   Dialog: DialogProps;
   Dropdown: DropdownProps;
-  Embed: EmbedProps;
+  Embed: EmbedStylesProps;
   Flex: FlexStylesProps;
   FlexItem: FlexItemStylesProps;
   Form: FormProps;
@@ -107,7 +117,7 @@ export type TeamsThemeStylesProps = {
   Grid: GridProps;
   Header: HeaderProps;
   HeaderDescription: HeaderDescriptionProps;
-  Icon: IconStylesProps;
+  SvgIcon: SvgIconStylesProps;
   Image: ImageStylesProps;
   Input: InputProps;
   ItemLayout: ItemLayoutProps;
@@ -119,13 +129,14 @@ export type TeamsThemeStylesProps = {
   Menu: MenuProps;
   MenuItem: MenuItemProps;
   Portal: PortalProps;
-  PopupContent: PopupContentProps;
+  PopupContent: PopupContentStylesProps;
   RadioGroup: RadioGroupProps;
   RadioGroupItem: RadioGroupItemProps;
   Reaction: ReactionProps;
   ReactionGroup: ReactionGroupProps;
   Segment: SegmentProps;
   Slider: SliderStylesProps;
+  SplitButton: SplitButtonStylesProps;
   Status: StatusStylesProps;
   Toolbar: ToolbarProps;
   ToolbarCustomItem: ToolbarCustomItemStylesProps;
@@ -136,16 +147,17 @@ export type TeamsThemeStylesProps = {
   ToolbarMenuItem: ToolbarMenuItemStylesProps;
   ToolbarMenuDivider: ToolbarMenuDividerStylesProps;
   ToolbarMenuRadioGroup: ToolbarMenuRadioGroupStylesProps;
-  TooltipContent: TooltipContentProps;
+  TooltipContent: TooltipContentStylesProps;
   Text: TextStylesProps;
+  TextArea: TextAreaStylesProps;
   TreeItem: TreeItemStylesProps;
   TreeTitle: TreeTitleStylesProps;
   HierarchicalTree: HierarchicalTreeProps;
   HierarchicalTreeItem: HierarchicalTreeItemProps;
   HierarchicalTreeTitle: HierarchicalTreeTitleProps;
-  Video: VideoProps;
-  Table: TableProps;
-  TableRow: TableRowProps;
+  Video: VideoStylesProps;
+  Table: TableStylesProps;
+  TableRow: TableRowStylesProps;
   TableCell: TableCellStylesProps;
   Card: CardStylesProps;
   CardPreview: CardPreviewStylesProps;

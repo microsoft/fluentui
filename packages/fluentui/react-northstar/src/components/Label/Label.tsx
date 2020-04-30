@@ -18,7 +18,6 @@ import {
   rtlTextContainer,
 } from '../../utils';
 
-import Icon, { IconProps } from '../Icon/Icon';
 import Image, { ImageProps } from '../Image/Image';
 import Box, { BoxProps } from '../Box/Box';
 
@@ -47,7 +46,7 @@ export interface LabelProps
   fluid?: boolean;
 
   /** A Label can have an icon. */
-  icon?: ShorthandValue<IconProps>;
+  icon?: ShorthandValue<BoxProps>;
 
   /** A Label can position its Icon at the start or end of the layout. */
   iconPosition?: 'start' | 'end';
@@ -64,6 +63,7 @@ export type LabelStylesProps = Pick<LabelProps, 'circular' | 'color' | 'imagePos
   hasIcon: boolean;
   hasActionableIcon: boolean;
 };
+export const labelClassName = 'ui-label';
 
 const Label: React.FC<WithAsProp<LabelProps>> & FluentComponentStaticProps = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
@@ -91,7 +91,7 @@ const Label: React.FC<WithAsProp<LabelProps>> & FluentComponentStaticProps = pro
     rtl: context.rtl,
   });
   const { classes, styles: resolvedStyles } = useStyles<LabelStylesProps>(Label.displayName, {
-    className: Label.className,
+    className: labelClassName,
     mapPropsToStyles: () => ({
       hasActionableIcon: _.has(icon, 'onClick'),
       hasImage: !!image,
@@ -103,12 +103,6 @@ const Label: React.FC<WithAsProp<LabelProps>> & FluentComponentStaticProps = pro
     }),
     mapPropsToInlineStyles: () => ({ className, design, styles, variables }),
     rtl: context.rtl,
-  });
-
-  const handleIconOverrides = (predefinedProps: IconProps) => ({
-    ...(!predefinedProps.xSpacing && {
-      xSpacing: 'none',
-    }),
   });
 
   const ElementType = getElementType(props);
@@ -136,11 +130,10 @@ const Label: React.FC<WithAsProp<LabelProps>> & FluentComponentStaticProps = pro
       styles: resolvedStyles.image,
     }),
   });
-  const iconElement = Icon.create(icon, {
+  const iconElement = Box.create(icon, {
     defaultProps: () => ({
       styles: resolvedStyles.icon,
     }),
-    overrideProps: handleIconOverrides,
   });
   const contentElement = Box.create(content, {
     defaultProps: () => ({
@@ -173,12 +166,11 @@ const Label: React.FC<WithAsProp<LabelProps>> & FluentComponentStaticProps = pro
 };
 
 Label.displayName = 'Label';
-Label.className = 'ui-label';
 
 Label.propTypes = {
   ...commonPropTypes.createCommon({ color: true, content: 'shorthand' }),
   circular: PropTypes.bool,
-  icon: customPropTypes.itemShorthandWithoutJSX,
+  icon: customPropTypes.shorthandAllowingChildren,
   iconPosition: PropTypes.oneOf(['start', 'end']),
   image: customPropTypes.itemShorthandWithoutJSX,
   imagePosition: PropTypes.oneOf(['start', 'end']),

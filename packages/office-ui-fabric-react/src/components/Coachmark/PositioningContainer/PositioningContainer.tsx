@@ -6,7 +6,7 @@ import { Layer } from '../../../Layer';
 // Utilites/Helpers
 import { DirectionalHint } from '../../../common/DirectionalHint';
 import {
-  IPoint,
+  Point,
   IRectangle,
   assign,
   css,
@@ -93,7 +93,7 @@ export class PositioningContainer extends React.Component<IPositioningContainerP
    */
   private _maxHeight: number | undefined;
   private _positionAttempts: number;
-  private _target: HTMLElement | MouseEvent | IPoint | null;
+  private _target: HTMLElement | MouseEvent | Point | null;
   private _setHeightOffsetTimer: number;
   private _async: Async;
   private _events: EventGroup;
@@ -378,7 +378,7 @@ export class PositioningContainer extends React.Component<IPositioningContainerP
     return true;
   }
 
-  private _setTargetWindowAndElement(target: HTMLElement | string | MouseEvent | IPoint | null): void {
+  private _setTargetWindowAndElement(target: HTMLElement | string | MouseEvent | Point | null): void {
     const currentElement = this._positionedHost.current;
 
     if (target) {
@@ -389,7 +389,12 @@ export class PositioningContainer extends React.Component<IPositioningContainerP
       } else if (!!(target as MouseEvent).stopPropagation) {
         this._targetWindow = getWindow((target as MouseEvent).target as HTMLElement)!;
         this._target = target;
-      } else if ((target as IPoint).x !== undefined && (target as IPoint).y !== undefined) {
+      } else if (
+        // tslint:disable-next-line:deprecation
+        ((target as Point).left !== undefined || (target as Point).x !== undefined) &&
+        // tslint:disable-next-line:deprecation
+        ((target as Point).top !== undefined || (target as Point).y !== undefined)
+      ) {
         this._targetWindow = getWindow(currentElement)!;
         this._target = target;
       } else {
@@ -430,9 +435,7 @@ export class PositioningContainer extends React.Component<IPositioningContainerP
     }
   }
 
-  private _getTarget(
-    props: IPositioningContainerProps = this.props,
-  ): HTMLElement | string | MouseEvent | IPoint | null {
+  private _getTarget(props: IPositioningContainerProps = this.props): HTMLElement | string | MouseEvent | Point | null {
     const { target } = props;
     return target!;
   }
