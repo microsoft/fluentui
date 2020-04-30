@@ -277,16 +277,30 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depCom
     menuItemText: p.neutralPrimary,
     menuItemTextHovered: p.neutralDark,
 
-    errorText: !isInverted ? p.redDark : '#ff5f5f',
-    warningText: !isInverted ? '#333333' : '#ffffff',
-    successText: !isInverted ? '#107C10' : '#92c353',
-    errorBackground: !isInverted ? 'rgba(245, 135, 145, .2)' : 'rgba(232, 17, 35, .5)',
-    blockingBackground: !isInverted ? 'rgba(250, 65, 0, .2)' : 'rgba(234, 67, 0, .5)',
-    warningBackground: !isInverted ? 'rgba(255, 200, 10, .2)' : 'rgba(255, 251, 0, .6)',
-    warningHighlight: !isInverted ? '#ffb900' : '#fff100',
-    successBackground: !isInverted ? 'rgba(95, 210, 85, .2)' : 'rgba(186, 216, 10, .4)',
+    errorText: !isInverted ? '#a4262c' : '#F1707B',
+
+    messageText: !isInverted ? '#323130' : '#F3F2F1',
+    messageLink: !isInverted ? '#005A9E' : '#6CB8F6',
+    messageLinkHovered: !isInverted ? '#004578' : '#82C7FF',
+
+    infoIcon: !isInverted ? '#605e5c' : '#C8C6C4',
+    errorIcon: !isInverted ? '#A80000' : '#F1707B',
+    blockingIcon: !isInverted ? '#FDE7E9' : '#442726',
+    warningIcon: !isInverted ? '#797775' : '#C8C6C4',
+    severeWarningIcon: !isInverted ? '#D83B01' : '#FCE100',
+    successIcon: !isInverted ? '#107C10' : '#92C353',
+
+    infoBackground: !isInverted ? '#f3f2f1' : '#323130',
+    errorBackground: !isInverted ? '#FDE7E9' : '#442726',
+    blockingBackground: !isInverted ? '#FDE7E9' : '#442726',
+    warningBackground: !isInverted ? '#FFF4CE' : '#433519',
+    severeWarningBackground: !isInverted ? '#FED9CC' : '#4F2A0F',
+    successBackground: !isInverted ? '#DFF6DD' : '#393D1B',
 
     // Deprecated slots, second pass by _fixDeprecatedSlots() later for self-referential slots
+    warningHighlight: !isInverted ? '#ffb900' : '#fff100',
+    warningText: '',
+    successText: !isInverted ? '#107C10' : '#92c353',
     listTextColor: '',
     menuItemBackgroundChecked: p.neutralLight,
   };
@@ -305,5 +319,11 @@ function _fixDeprecatedSlots(s: ISemanticColors, depComments: boolean): ISemanti
   s.listTextColor = s.listText + dep;
   // tslint:disable-next-line:deprecation
   s.menuItemBackgroundChecked += dep;
+  // tslint:disable-next-line:deprecation
+  s.warningHighlight += dep;
+  // tslint:disable-next-line:deprecation
+  s.warningText = s.messageText + dep;
+  // tslint:disable-next-line:deprecation
+  s.successText += dep;
   return s;
 }

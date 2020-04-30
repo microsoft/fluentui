@@ -8261,8 +8261,6 @@ export enum MessageBarType {
     blocked = 2,
     error = 1,
     info = 0,
-    // @deprecated
-    remove = 90000,
     severeWarning = 3,
     success = 4,
     warning = 5

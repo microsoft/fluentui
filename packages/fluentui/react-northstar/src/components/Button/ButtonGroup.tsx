@@ -4,9 +4,14 @@ import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import * as _ from 'lodash';
 
-import { WithAsProp, withSafeTypeForAs, ShorthandCollection } from '../../types';
 import {
-  UIComponent,
+  WithAsProp,
+  withSafeTypeForAs,
+  ShorthandCollection,
+  FluentComponentStaticProps,
+  ProviderContextPrepared,
+} from '../../types';
+import {
   childrenExist,
   UIComponentProps,
   ChildrenComponentProps,
@@ -14,10 +19,12 @@ import {
   commonPropTypes,
   rtlTextContainer,
   createShorthandFactory,
-  ShorthandFactory,
   createShorthand,
 } from '../../utils';
 import Button, { ButtonProps } from './Button';
+import { getElementType, useAccessibility, useUnhandledProps, useTelemetry, useStyles } from '@fluentui/react-bindings';
+// @ts-ignore
+import { ThemeContext } from 'react-fela';
 
 export interface ButtonGroupProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
   /**
@@ -32,55 +39,38 @@ export interface ButtonGroupProps extends UIComponentProps, ChildrenComponentPro
   circular?: boolean;
 }
 
+export type ButtonGroupStylesProps = Required<Pick<ButtonGroupProps, 'circular'>>;
+
 export const buttonGroupClassName = 'ui-buttons';
 
-class ButtonGroup extends UIComponent<WithAsProp<ButtonGroupProps>, any> {
-  static create: ShorthandFactory<ButtonGroupProps>;
+export const ButtonGroup: React.FC<WithAsProp<ButtonGroupProps>> &
+  FluentComponentStaticProps<ButtonGroupProps> = props => {
+  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const { setStart, setEnd } = useTelemetry(ButtonGroup.displayName, context.telemetry);
+  setStart();
+  const { children, buttons, circular, content, className, design, styles, variables } = props;
+  const ElementType = getElementType(props);
+  const unhandledProps = useUnhandledProps(ButtonGroup.handledProps, props);
+  const { classes, styles: ResolvedStyles } = useStyles<ButtonGroupStylesProps>(ButtonGroup.displayName, {
+    className: buttonGroupClassName,
+    mapPropsToStyles: () => ({
+      circular,
+    }),
+    mapPropsToInlineStyles: () => ({
+      className,
+      design,
+      styles,
+      variables,
+    }),
+    rtl: context.rtl,
+  });
 
-  static displayName = 'ButtonGroup';
+  const getA11yProps = useAccessibility(props.accessibility, {
+    debugName: ButtonGroup.displayName,
+    rtl: context.rtl,
+  });
 
-  static deprecated_className = buttonGroupClassName;
-
-  static propTypes = {
-    ...commonPropTypes.createCommon(),
-    buttons: customPropTypes.collectionShorthand,
-    circular: PropTypes.bool,
-  };
-
-  static defaultProps = {
-    as: 'div',
-  };
-
-  renderComponent({ ElementType, classes, accessibility, styles, unhandledProps }): React.ReactNode {
-    const { children, buttons, circular, content } = this.props;
-    if (_.isNil(buttons)) {
-      return (
-        <ElementType
-          {...accessibility.attributes.root}
-          {...rtlTextContainer.getAttributes({ forElements: [children, content] })}
-          {...unhandledProps}
-          className={classes.root}
-        >
-          {childrenExist(children) ? children : content}
-        </ElementType>
-      );
-    }
-
-    return (
-      <ElementType {...unhandledProps} className={classes.root}>
-        {_.map(buttons, (button, idx) =>
-          createShorthand(Button, button, {
-            defaultProps: () => ({
-              circular,
-              styles: this.getStyleForButtonIndex(styles, idx === 0, idx === buttons.length - 1),
-            }),
-          }),
-        )}
-      </ElementType>
-    );
-  }
-
-  getStyleForButtonIndex = (styles, isFirst, isLast) => {
+  const getStyleForButtonIndex = (styles, isFirst, isLast) => {
     let resultStyles = {};
     if (isFirst) {
       resultStyles = styles.firstButton;
@@ -93,7 +83,52 @@ class ButtonGroup extends UIComponent<WithAsProp<ButtonGroupProps>, any> {
     }
     return resultStyles;
   };
-}
+
+  const emptyButtons = _.isNil(buttons);
+
+  const element = (
+    <ElementType
+      {...{
+        ...getA11yProps('root', {
+          className: classes.root,
+          ...unhandledProps,
+        }),
+        ...(emptyButtons && { ...rtlTextContainer.getAttributes({ forElements: [children, content] }) }),
+      }}
+    >
+      {emptyButtons
+        ? childrenExist(children)
+          ? children
+          : content
+        : _.map(buttons, (button, idx) =>
+            createShorthand(Button, button, {
+              defaultProps: () => ({
+                circular,
+                styles: getStyleForButtonIndex(ResolvedStyles, idx === 0, idx === buttons.length - 1),
+              }),
+            }),
+          )}
+    </ElementType>
+  );
+
+  setEnd();
+
+  return element;
+};
+
+ButtonGroup.displayName = 'ButtonGroup';
+
+ButtonGroup.propTypes = {
+  ...commonPropTypes.createCommon(),
+  buttons: customPropTypes.collectionShorthand,
+  circular: PropTypes.bool,
+};
+
+ButtonGroup.defaultProps = {
+  as: 'div',
+};
+
+ButtonGroup.handledProps = Object.keys(ButtonGroup.propTypes) as any;
 
 ButtonGroup.create = createShorthandFactory({
   Component: ButtonGroup,
