@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fixes",
+  "comment": "Theming: fix SASS slot autogenerator and run it",
   "packageName": "office-ui-fabric-react",
   "email": "phkuo@microsoft.com",
   "dependentChangeType": "patch",
