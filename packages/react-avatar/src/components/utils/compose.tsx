@@ -1,6 +1,6 @@
 import { forwardRef, RefObject } from 'react';
 import { assign } from '@uifabric/utilities';
-import { useStylesheet } from './StylesheetProvider';
+import { useStylesheet } from '@fluentui/react-stylesheets';
 import cx from 'classnames';
 
 export type ComposeRender<TProps, TOptions> = (
@@ -112,15 +112,7 @@ export function compose<TProps = {}, TSlots = {}, TSlotProps = {}, TStatics = Co
   // tslint:disable-next-line:no-any
   const ComposedComponentImpl: any = forwardRef((userProps: TProps, ref: RefObject<HTMLElement>) => {
     // Register styles as needed.
-    if (mergedOptions.stylesheet) {
-      const { register, hasRegistered } = useStylesheet();
-
-      if (options.stylesheet && !hasRegistered(options.stylesheet)) {
-        // We haven't tried registering this stylesheet. We need to collect all stylesheets starting at leafs.
-        console.log(mergedStylesheets);
-        register(mergedStylesheets);
-      }
-    }
+    useStylesheet(mergedStylesheets);
 
     // Render component.
     return mergedOptions.render(userProps, ref, mergedOptions);

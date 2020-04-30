@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as sassClasses from './ThemeProvider.scss';
 import { compose, extractFromSass } from './compose';
 import cx from 'classnames';
-import { useStylesheet } from './StylesheetProvider';
+import { useStylesheet, StylesheetProvider } from '@fluentui/react-stylesheets';
 
 export type ThemeColorSet =
   | Partial<{
@@ -68,15 +68,16 @@ const classObj = extractFromSass(sassClasses);
 
 export const ThemeProvider = compose<ThemeProviderProps>(
   ({ theme, className, style, ...rest }: React.PropsWithChildren<ThemeProviderProps>) => {
-    const { register } = useStylesheet();
     const inlineStyle = React.useMemo<React.CSSProperties>(() => getInlineStyle(theme!, style), [theme, style]);
 
-    if (theme?.stylesheets) {
-      register(theme.stylesheets);
-    }
+    useStylesheet(theme?.stylesheets || '');
 
     // tslint:disable-next-line:jsx-ban-props
-    return <div {...rest} className={cx(className, classObj.classes.root)} style={inlineStyle} />;
+    return (
+      <StylesheetProvider>
+        <div {...rest} className={cx(className, classObj.classes.root)} style={inlineStyle} />
+      </StylesheetProvider>
+    );
   },
   {
     ...classObj,
