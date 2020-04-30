@@ -72,6 +72,16 @@ function _otherControlsRequestSections(platform: Platforms): IPageSectionProps<P
         sectionName: 'Need a control Fluent UI Android doesn’t have?',
         content: require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/ControlsPage/docs/android/ControlsRequest.md') as string,
       };
+    case 'mac':
+      return {
+        sectionName: 'Need a control Fluent UI macOS doesn’t have?',
+        content: require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/ControlsPage/docs/mac/ControlsRequest.md') as string,
+      };
+    case 'windows':
+      return {
+        sectionName: 'Need a control Fluent UI Windows doesn’t have?',
+        content: require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/ControlsPage/docs/windows/ControlsRequest.md') as string,
+      };
   }
 }
 
