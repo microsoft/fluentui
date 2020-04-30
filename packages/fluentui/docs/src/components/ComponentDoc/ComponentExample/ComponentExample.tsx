@@ -39,6 +39,7 @@ export interface ComponentExampleProps
   error: Error | null;
   onError: (error: Error | null) => void;
   title: string;
+  titleForAriaLabel?: string;
   description?: React.ReactNode;
   examplePath: string;
   resetTheme?: boolean;
@@ -422,6 +423,7 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
       defaultExport,
       onError,
       title,
+      titleForAriaLabel,
       wasCodeChanged,
       resetTheme,
     } = this.props;
@@ -462,7 +464,7 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
                 <ComponentExampleTitle description={description} title={title} />
 
                 <ComponentControls
-                  title={title}
+                  titleForAriaLabel={title || titleForAriaLabel}
                   anchorName={anchorName}
                   exampleCode={currentCode}
                   exampleLanguage={currentCodeLanguage}

@@ -5,14 +5,8 @@ import NonPublicSection from '../../../../components/ComponentDoc/NonPublicSecti
 
 const Usage = () => (
   <NonPublicSection title="Visual tests">
-    <ComponentExample
-      toolbarAriaLabel="Example visual test with expanded state "
-      examplePath="components/Toolbar/Visual/ToolbarExampleVariables"
-    />
-    <ComponentExample
-      toolbarAriaLabel="Example visual test with editor toolbar"
-      examplePath="components/Toolbar/Visual/ToolbarExampleOverflowPositioning"
-    />
+    <ComponentExample examplePath="components/Toolbar/Visual/ToolbarExampleVariables" />
+    <ComponentExample examplePath="components/Toolbar/Visual/ToolbarExampleOverflowPositioning" />
   </NonPublicSection>
 );
 

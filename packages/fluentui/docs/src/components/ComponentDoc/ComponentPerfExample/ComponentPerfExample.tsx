@@ -11,7 +11,6 @@ export interface ComponentPerfExampleProps {
   title: React.ReactNode;
   description?: React.ReactNode;
   examplePath: string;
-  toolbarAriaLabel?: string;
 }
 
 const ComponentPerfExample: React.FC<ComponentPerfExampleProps> = props => {
@@ -67,7 +66,7 @@ const ComponentPerfExample: React.FC<ComponentPerfExampleProps> = props => {
                 },
                 content: {
                   key: 'c',
-                  content: <ComponentExample {..._.omit(props, 'title', 'description')} />, // FIXME: defer rendering until opened
+                  content: <ComponentExample titleForAria={title} {..._.omit(props, 'title', 'description')} />, // FIXME: defer rendering until opened
                 },
               },
             ] as any[]
