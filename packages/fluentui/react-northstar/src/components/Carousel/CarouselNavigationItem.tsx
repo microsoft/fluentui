@@ -120,7 +120,7 @@ export const CarouselNavigationItem: React.FC<WithAsProp<CarouselNavigationItemP
         thumbnails,
         vertical,
         active,
-        hasContent: !!content && !_.isEmpty(content),
+        hasContent: !!content,
         iconOnly,
         primary,
         hasIndicator: !!indicator && !_.isEmpty(indicator),
