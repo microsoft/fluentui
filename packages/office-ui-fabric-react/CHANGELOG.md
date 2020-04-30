@@ -1,8 +1,30 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 28 Apr 2020 12:34:09 GMT and should not be manually modified.
+This log was last generated on Thu, 30 Apr 2020 12:31:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.109.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.109.1)
+
+Thu, 30 Apr 2020 12:31:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.109.0..office-ui-fabric-react_v7.109.1)
+
+### Patches
+
+- Example: update Callout example to use Text component ([PR #12423](https://github.com/microsoft/fluentui/pull/12423) by marygans@microsoft.com)
+
+## [7.109.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.109.0)
+
+Wed, 29 Apr 2020 12:34:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.108.0..office-ui-fabric-react_v7.109.0)
+
+### Minor changes
+
+- update MessageBar colors ([PR #12821](https://github.com/microsoft/fluentui/pull/12821) by chrismo@microsoft.com)
+
+### Patches
+
+- Updating FocusTrapZone, Overlay, and TextField to use function components ([PR #12774](https://github.com/microsoft/fluentui/pull/12774) by czearing@outlook.com)
 
 ## [7.108.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.108.0)
 

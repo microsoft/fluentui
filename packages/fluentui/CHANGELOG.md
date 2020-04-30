@@ -38,11 +38,18 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Restricted prop sets in the `TableRow` component which are passed to styles functions @pompomon, @assuncaocharles ([#12797](https://github.com/microsoft/fluentui/pull/12797))
 - Restricted prop sets in the `Table` component which are passed to styles functions @assuncaocharles ([#12860](https://github.com/microsoft/fluentui/pull/12860))
 - Restricted prop sets in the `TextArea` component which are passed to styles functions, @assuncaocharles ([#12857](https://github.com/microsoft/fluentui/pull/12857))
+- Restricted prop sets in the `Accordion` component which are passed to styles functions, @assuncaocharles ([#12876](https://github.com/microsoft/fluentui/pull/12876))
+- Restricted prop sets in the `AccordionTitle` component which are passed to styles functions, @assuncaocharles ([#12874](https://github.com/microsoft/fluentui/pull/12874))
+- Restricted prop sets in the `ButtonGroup` component which are passed to styles functions, @assuncaocharles ([#12866](https://github.com/microsoft/fluentui/pull/12866))
+- Restricted prop sets in the `AccordionContent` component which are passed to styles functions, @assuncaocharles ([#12875](https://github.com/microsoft/fluentui/pull/12875))
+- Restricted prop sets in the `Embed` component which are passed to styles functions, @assuncaocharles ([#12918](https://github.com/microsoft/fluentui/pull/12918))
+- Restricted prop sets in the `CarouselItem` component which are passed to styles functions, @assuncaocharles ([#12938](https://github.com/microsoft/fluentui/pull/12938))
 
 ### Fixes
 - Visually align checkbox and label elements in `Checkbox` component @silviuavram ([#12590](https://github.com/microsoft/fluentui/pull/12590))
 - Fix `Ref` to react on props changes when `forwardRef` is used @mnajdova ([#12817](https://github.com/microsoft/fluentui/pull/12817))
 - Fix `AccordionTitle` to be rendered as `div` by default @pompomon ([#12840](https://github.com/microsoft/fluentui/pull/12840))
+- Fix `ButtonGroup` accessibility adding `aria-role="group"` @assuncaocharles ([#12916](https://github.com/microsoft/fluentui/pull/12916))
 
 ### Features
 - Add `body` slot to `Attachment` component @layershifter ([#12674](https://github.com/microsoft/fluentui/pull/12674))

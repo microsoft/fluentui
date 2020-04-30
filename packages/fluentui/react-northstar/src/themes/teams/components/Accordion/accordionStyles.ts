@@ -1,7 +1,7 @@
 import { ComponentSlotStylesPrepared } from '@fluentui/styles';
-import { AccordionProps } from '../../../../components/Accordion/Accordion';
+import { AccordionStylesProps } from '../../../../components/Accordion/Accordion';
 
-const accordionStyles: ComponentSlotStylesPrepared<AccordionProps> = {
+const accordionStyles: ComponentSlotStylesPrepared<AccordionStylesProps> = {
   root: () => ({
     verticalAlign: 'middle',
     display: 'flex',
