@@ -23,6 +23,17 @@ describe('Toolbar menu on', () => {
     expect(await e2e.exists(toolbarMenu)).toBe(false);
   });
 
+  it('Should toggle the menu', async () => {
+    // opens menu
+    await e2e.clickOn(menuTrigger);
+    expect(await e2e.exists(toolbarMenu)).toBe(true);
+
+    await e2e.clickOn(menuTrigger);
+
+    expect(await e2e.isFocused(menuTrigger)).toBe(true);
+    expect(await e2e.exists(toolbarMenu)).toBe(false);
+  });
+
   it('Shift+TAB moves focus to previous tabbable element before toolbar', async () => {
     // opens menu
     await e2e.clickOn(menuTrigger);

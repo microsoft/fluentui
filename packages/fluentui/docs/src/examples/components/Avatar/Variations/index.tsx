@@ -11,8 +11,8 @@ const Variations = () => (
     />
     <ComponentExample
       title="Image customizations"
-      description="The image slot inside the Avatar can be customized."
-      examplePath="components/Avatar/Variations/AvatarExampleImageCustomization"
+      description="An Avatar can contain icon."
+      examplePath="components/Avatar/Variations/AvatarExampleIcon"
     />
     <ComponentExample
       title="Label"

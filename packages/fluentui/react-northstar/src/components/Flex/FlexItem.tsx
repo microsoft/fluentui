@@ -68,10 +68,12 @@ const applyStyles = (
   });
 };
 
+export const flexItemClassName = 'ui-flex__item';
+
 /**
  * A FlexItem is a layout component that customizes alignment of Flex child.
  */
-const FlexItem: React.FC<FlexItemProps> & { className: string; __isFlexItem: boolean } = props => {
+const FlexItem: React.FC<FlexItemProps> & { __isFlexItem: boolean } = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(FlexItem.displayName, context.telemetry);
   setStart();
@@ -79,7 +81,7 @@ const FlexItem: React.FC<FlexItemProps> & { className: string; __isFlexItem: boo
   const { align, children, className, design, grow, flexDirection, push, shrink, size, styles, variables } = props;
 
   const { classes, styles: resolvedStyles } = useStyles<FlexItemStylesProps>(FlexItem.displayName, {
-    className: FlexItem.className,
+    className: flexItemClassName,
     mapPropsToStyles: () => ({
       align,
       grow,
@@ -116,7 +118,6 @@ const FlexItem: React.FC<FlexItemProps> & { className: string; __isFlexItem: boo
   return element;
 };
 
-FlexItem.className = 'ui-flex__item';
 FlexItem.displayName = 'FlexItem';
 
 FlexItem.propTypes = {

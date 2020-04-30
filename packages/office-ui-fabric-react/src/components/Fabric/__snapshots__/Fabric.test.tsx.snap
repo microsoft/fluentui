@@ -48,6 +48,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
         & textarea {
           font-family: inherit;
         }
+    dir="ltr"
   >
     <div
       className=
@@ -2037,6 +2038,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
         & textarea {
           font-family: inherit;
         }
+    dir="ltr"
   >
     <div
       className=

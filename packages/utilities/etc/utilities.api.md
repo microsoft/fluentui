@@ -34,7 +34,7 @@ export function arraysEqual<T>(array1: T[], array2: T[]): boolean;
 
 // @public
 export function asAsync<TProps>(options: IAsAsyncOptions<TProps>): React.ForwardRefExoticComponent<React.PropsWithoutRef<TProps & {
-    asyncPlaceholder?: "symbol" | "object" | "text" | "table" | "ruby" | "small" | "input" | "progress" | "select" | "a" | "abbr" | "address" | "area" | "article" | "aside" | "audio" | "b" | "base" | "bdi" | "bdo" | "blockquote" | "body" | "br" | "button" | "canvas" | "caption" | "cite" | "code" | "col" | "colgroup" | "data" | "datalist" | "dd" | "del" | "details" | "dfn" | "dialog" | "div" | "dl" | "dt" | "em" | "embed" | "fieldset" | "figcaption" | "figure" | "footer" | "form" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "head" | "header" | "hgroup" | "hr" | "html" | "i" | "iframe" | "img" | "ins" | "kbd" | "label" | "legend" | "li" | "link" | "main" | "map" | "mark" | "menu" | "meta" | "meter" | "nav" | "noscript" | "ol" | "optgroup" | "option" | "output" | "p" | "param" | "picture" | "pre" | "q" | "rp" | "rt" | "s" | "samp" | "script" | "section" | "source" | "span" | "strong" | "style" | "sub" | "summary" | "sup" | "tbody" | "td" | "textarea" | "tfoot" | "th" | "thead" | "time" | "title" | "tr" | "track" | "u" | "ul" | "var" | "video" | "wbr" | "big" | React.ComponentClass<any, any> | React.FunctionComponent<any> | "keygen" | "menuitem" | "noindex" | "webview" | "svg" | "animate" | "animateMotion" | "animateTransform" | "circle" | "clipPath" | "defs" | "desc" | "ellipse" | "feBlend" | "feColorMatrix" | "feComponentTransfer" | "feComposite" | "feConvolveMatrix" | "feDiffuseLighting" | "feDisplacementMap" | "feDistantLight" | "feDropShadow" | "feFlood" | "feFuncA" | "feFuncB" | "feFuncG" | "feFuncR" | "feGaussianBlur" | "feImage" | "feMerge" | "feMergeNode" | "feMorphology" | "feOffset" | "fePointLight" | "feSpecularLighting" | "feSpotLight" | "feTile" | "feTurbulence" | "filter" | "foreignObject" | "g" | "image" | "line" | "linearGradient" | "marker" | "mask" | "metadata" | "mpath" | "path" | "pattern" | "polygon" | "polyline" | "radialGradient" | "rect" | "stop" | "switch" | "textPath" | "tspan" | "use" | "view" | undefined;
+    asyncPlaceholder?: "symbol" | "object" | "text" | "table" | "ruby" | "small" | "input" | "progress" | "select" | "a" | "abbr" | "address" | "area" | "article" | "aside" | "audio" | "b" | "base" | "bdi" | "bdo" | "blockquote" | "body" | "br" | "button" | "canvas" | "caption" | "cite" | "code" | "col" | "colgroup" | "data" | "datalist" | "dd" | "del" | "details" | "dfn" | "dialog" | "div" | "dl" | "dt" | "em" | "embed" | "fieldset" | "figcaption" | "figure" | "footer" | "form" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "head" | "header" | "hgroup" | "hr" | "html" | "i" | "iframe" | "img" | "ins" | "kbd" | "label" | "legend" | "li" | "link" | "main" | "map" | "mark" | "menu" | "meta" | "meter" | "nav" | "noscript" | "ol" | "optgroup" | "option" | "output" | "p" | "param" | "picture" | "pre" | "q" | "rp" | "rt" | "s" | "samp" | "script" | "section" | "source" | "span" | "strong" | "style" | "sub" | "summary" | "sup" | "tbody" | "td" | "template" | "textarea" | "tfoot" | "th" | "thead" | "time" | "title" | "tr" | "track" | "u" | "ul" | "var" | "video" | "wbr" | "big" | React.ComponentClass<any, any> | React.FunctionComponent<any> | "keygen" | "menuitem" | "noindex" | "webview" | "svg" | "animate" | "animateMotion" | "animateTransform" | "circle" | "clipPath" | "defs" | "desc" | "ellipse" | "feBlend" | "feColorMatrix" | "feComponentTransfer" | "feComposite" | "feConvolveMatrix" | "feDiffuseLighting" | "feDisplacementMap" | "feDistantLight" | "feDropShadow" | "feFlood" | "feFuncA" | "feFuncB" | "feFuncG" | "feFuncR" | "feGaussianBlur" | "feImage" | "feMerge" | "feMergeNode" | "feMorphology" | "feOffset" | "fePointLight" | "feSpecularLighting" | "feSpotLight" | "feTile" | "feTurbulence" | "filter" | "foreignObject" | "g" | "image" | "line" | "linearGradient" | "marker" | "mask" | "metadata" | "mpath" | "path" | "pattern" | "polygon" | "polyline" | "radialGradient" | "rect" | "stop" | "switch" | "textPath" | "tspan" | "use" | "view" | undefined;
 }> & React.RefAttributes<React.ElementType<TProps>>>;
 
 // @public
@@ -301,7 +301,7 @@ export const formProperties: string[];
 export function getChildren(parent: HTMLElement, allowVirtualChildren?: boolean): HTMLElement[];
 
 // @public
-export function getDistanceBetweenPoints(point1: IPoint, point2: IPoint): number;
+export function getDistanceBetweenPoints(point1: Point, point2: Point): number;
 
 // @public
 export function getDocument(rootElement?: HTMLElement | null): Document | undefined;
@@ -445,6 +445,7 @@ export type IClassNames<T> = {
 
 // @public (undocumented)
 export interface IClassNamesFunctionOptions {
+    cacheSize?: number;
     disableCaching?: boolean;
 }
 
@@ -627,12 +628,8 @@ export interface IPerfSummary {
     [key: string]: IPerfMeasurement;
 }
 
-// @public
-export interface IPoint {
-    // (undocumented)
-    x: number;
-    // (undocumented)
-    y: number;
+// @public @deprecated
+export interface IPoint extends Point {
 }
 
 // @public (undocumented)
@@ -976,6 +973,18 @@ export function on(element: Element | Window, eventName: string, callback: (ev: 
 
 // @public (undocumented)
 export const optionProperties: string[];
+
+// @public
+export interface Point {
+    // (undocumented)
+    left?: number;
+    // (undocumented)
+    top?: number;
+    // @deprecated (undocumented)
+    x?: number;
+    // @deprecated (undocumented)
+    y?: number;
+}
 
 // @public
 export function portalContainsElement(target: HTMLElement, parent?: HTMLElement): boolean;

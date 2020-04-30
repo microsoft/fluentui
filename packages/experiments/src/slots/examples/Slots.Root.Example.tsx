@@ -11,7 +11,7 @@ export class SlotsRootExample extends React.Component<{}, {}> {
       <Stack {...stackProps}>
         <Button
           icon="share"
-          href="https://developer.microsoft.com/en-us/fabric"
+          href="https://developer.microsoft.com/en-us/fluentui"
           content="Root: Implicit 'a' via href prop"
         />
         <Button

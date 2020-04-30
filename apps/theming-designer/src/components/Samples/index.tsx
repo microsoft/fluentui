@@ -81,7 +81,7 @@ const commandBarItems = [
     iconProps: {
       iconName: 'Upload',
     },
-    href: 'https://dev.office.com/fabric',
+    href: 'https://developer.microsoft.com/en-us/fluentui',
     ['data-automation-id']: 'uploadButton',
   },
   {

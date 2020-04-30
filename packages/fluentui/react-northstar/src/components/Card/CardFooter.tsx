@@ -18,6 +18,7 @@ export interface CardFooterProps extends UIComponentProps, ChildrenComponentProp
 }
 
 export type CardFooterStylesProps = Pick<CardFooterProps, 'fitted'>;
+export const cardFooterClassName = 'ui-card__footer';
 
 const CardFooter: React.FC<WithAsProp<CardFooterProps>> & FluentComponentStaticProps<CardFooterProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
@@ -33,7 +34,7 @@ const CardFooter: React.FC<WithAsProp<CardFooterProps>> & FluentComponentStaticP
   });
 
   const { classes } = useStyles<CardFooterStylesProps>(CardFooter.displayName, {
-    className: CardFooter.className,
+    className: cardFooterClassName,
     mapPropsToStyles: () => ({ fitted }),
     mapPropsToInlineStyles: () => ({
       className,
@@ -59,7 +60,6 @@ const CardFooter: React.FC<WithAsProp<CardFooterProps>> & FluentComponentStaticP
 };
 
 CardFooter.displayName = 'CardFooter';
-CardFooter.className = 'ui-card__footer';
 
 CardFooter.propTypes = {
   ...commonPropTypes.createCommon(),

@@ -69,13 +69,19 @@ export interface DropdownSelectedItemProps extends UIComponentProps<DropdownSele
   onRemove?: ComponentEventHandler<DropdownSelectedItemProps>;
 }
 
+export const dropdownSelectedItemClassName = 'ui-dropdown__selecteditem';
+export const dropdownSelectedItemSlotClassNames: DropdownSelectedItemSlotClassNames = {
+  header: `${dropdownSelectedItemClassName}__header`,
+  icon: `${dropdownSelectedItemClassName}__icon`,
+  image: `${dropdownSelectedItemClassName}__image`,
+};
+
 class DropdownSelectedItem extends UIComponent<WithAsProp<DropdownSelectedItemProps>, any> {
   itemRef = React.createRef<HTMLElement>();
 
   static displayName = 'DropdownSelectedItem';
   static create: ShorthandFactory<DropdownSelectedItemProps>;
-  static slotClassNames: DropdownSelectedItemSlotClassNames;
-  static className = 'ui-dropdown__selecteditem';
+  static deprecated_className = dropdownSelectedItemClassName;
 
   static propTypes = {
     ...commonPropTypes.createCommon({
@@ -132,7 +138,7 @@ class DropdownSelectedItem extends UIComponent<WithAsProp<DropdownSelectedItemPr
     const contentElement = Box.create(header, {
       defaultProps: () => ({
         as: 'span',
-        className: DropdownSelectedItem.slotClassNames.header,
+        className: dropdownSelectedItemSlotClassNames.header,
         styles: styles.header,
       }),
     });
@@ -144,7 +150,7 @@ class DropdownSelectedItem extends UIComponent<WithAsProp<DropdownSelectedItemPr
             Box.create(icon, {
               defaultProps: () => ({
                 'aria-label': `Remove ${header} from selection.`, // TODO: Extract this in a behaviour.
-                className: DropdownSelectedItem.slotClassNames.icon,
+                className: dropdownSelectedItemSlotClassNames.icon,
                 styles: styles.icon,
               }),
               overrideProps: this.handleIconOverrides(props),
@@ -157,7 +163,7 @@ class DropdownSelectedItem extends UIComponent<WithAsProp<DropdownSelectedItemPr
             Image.create(image, {
               defaultProps: () => ({
                 avatar: true,
-                className: DropdownSelectedItem.slotClassNames.image,
+                className: dropdownSelectedItemSlotClassNames.image,
                 styles: styles.image,
               }),
               overrideProps: props,
@@ -182,12 +188,6 @@ class DropdownSelectedItem extends UIComponent<WithAsProp<DropdownSelectedItemPr
     );
   }
 }
-
-DropdownSelectedItem.slotClassNames = {
-  header: `${DropdownSelectedItem.className}__header`,
-  icon: `${DropdownSelectedItem.className}__icon`,
-  image: `${DropdownSelectedItem.className}__image`,
-};
 
 DropdownSelectedItem.create = createShorthandFactory({
   Component: DropdownSelectedItem,

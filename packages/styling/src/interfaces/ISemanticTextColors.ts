@@ -63,21 +63,15 @@ export interface ISemanticTextColors {
   disabledBodySubtext: string;
 
   //// Invariants - slots that rarely change color theme-to-theme because the color has meaning
-
   /**
    * The default color of error text on bodyBackground.
    */
   errorText: string;
 
   /**
-   * The default color of text on errorBackground, warningBackground, blockingBackground, or successBackground.
+   * The default color of text in a message bar.
    */
-  warningText: string;
-
-  /**
-   * The default color of success text on successBackground.
-   */
-  successText: string;
+  messageText: string;
 
   /**
    * The color of input text.
@@ -158,4 +152,14 @@ export interface ISemanticTextColors {
   /** @deprecated
    * This slot was incorrectly named. Use listText instead. */
   listTextColor: string;
+
+  /** @deprecated
+   * No longer used. Consider using messageText and/or warningIcon instead.
+   */
+  warningText: string;
+
+  /** @deprecated
+   * No longer used. Consider using messageText and/or successIcon instead.
+   */
+  successText: string;
 }

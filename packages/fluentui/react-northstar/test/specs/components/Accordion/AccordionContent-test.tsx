@@ -5,7 +5,7 @@ import { isConformant, handlesAccessibility, getRenderedAttribute } from 'test/s
 import { mountWithProviderAndGetComponent } from 'test/utils';
 
 describe('AccordionContent', () => {
-  isConformant(AccordionContent);
+  isConformant(AccordionContent, { constructorName: 'AccordionContent' });
 
   describe('accessiblity', () => {
     handlesAccessibility(AccordionContent);

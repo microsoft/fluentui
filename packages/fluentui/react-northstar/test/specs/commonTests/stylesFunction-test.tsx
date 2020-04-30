@@ -27,7 +27,7 @@ const testStylesForComponent = ({
   expected,
 }: { props?: Props; state?: State; expected?: PropsAndState } = {}) => {
   class TestComponent extends UIComponent<Extendable<Props>, State> {
-    static className = testClassName;
+    static deprecated_className = testClassName;
     static propTypes = {
       propsAttr: PropTypes.any,
       commonAttr: PropTypes.any,

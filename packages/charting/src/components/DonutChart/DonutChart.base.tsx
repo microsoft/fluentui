@@ -7,7 +7,7 @@ import * as scale from 'd3-scale';
 import { IProcessedStyleSet, IPalette } from 'office-ui-fabric-react/lib/Styling';
 import { IChartDataPoint, IChartProps } from './index';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
-import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
+import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 
 const getClassNames = classNamesFunction<IDonutChartStyleProps, IDonutChartStyles>();
 
@@ -78,7 +78,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     });
   }
   public render(): JSX.Element {
-    const { data, href } = this.props;
+    const { data, href, hideLegend = false } = this.props;
     const { _width, _height } = this.state;
 
     const { theme, className, styles, innerRadius, valueInsideDonut } = this.props;
@@ -135,7 +135,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
             </div>
           </Callout>
         ) : null}
-        <div className={this._classNames.legendContainer}>{legendBars}</div>
+        <div className={this._classNames.legendContainer}>{!hideLegend && legendBars}</div>
       </div>
     );
   }

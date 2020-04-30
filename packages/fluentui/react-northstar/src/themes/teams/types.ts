@@ -1,3 +1,4 @@
+import { TextAreaStylesProps } from './../../components/TextArea/TextArea';
 import {
   ColorScheme,
   ColorSchemeMapping,
@@ -6,13 +7,17 @@ import {
   StrictColorSchemeMapping,
   PrimitiveColors,
 } from '../types';
-
-import { AccordionContentProps } from '../../components/Accordion/AccordionContent';
-import { AccordionProps } from '../../components/Accordion/Accordion';
-import { AccordionTitleProps } from '../../components/Accordion/AccordionTitle';
-import { AlertProps } from '../../components/Alert/Alert';
+import { AccordionContentStylesProps } from '../../components/Accordion/AccordionContent';
+import { AccordionStylesProps } from '../../components/Accordion/Accordion';
+import { AccordionTitleStylesProps } from '../../components/Accordion/AccordionTitle';
+import { CarouselNavigationItemStylesProps } from '../../components/Carousel/CarouselNavigationItem';
+import { AlertStylesProps } from '../../components/Alert/Alert';
 import { AnimationProps } from '../../components/Animation/Animation';
 import { AttachmentProps } from '../../components/Attachment/Attachment';
+import { AttachmentActionStylesProps } from '../../components/Attachment/AttachmentAction';
+import { AttachmentDescriptionStylesProps } from '../../components/Attachment/AttachmentDescription';
+import { AttachmentHeaderStylesProps } from '../../components/Attachment/AttachmentHeader';
+import { AttachmentIconStylesProps } from '../../components/Attachment/AttachmentIcon';
 import { AvatarStylesProps } from '../../components/Avatar/Avatar';
 import { BoxStylesProps } from '../../components/Box/Box';
 import { ButtonGroupProps } from '../../components/Button/ButtonGroup';
@@ -25,7 +30,7 @@ import { CheckboxStylesProps } from '../../components/Checkbox/Checkbox';
 import { DividerProps } from '../../components/Divider/Divider';
 import { DialogProps } from '../../components/Dialog/Dialog';
 import { DropdownProps } from '../../components/Dropdown/Dropdown';
-import { EmbedProps } from '../../components/Embed/Embed';
+import { EmbedStylesProps } from '../../components/Embed/Embed';
 import { FlexItemStylesProps } from '../../components/Flex/FlexItem';
 import { FlexStylesProps } from '../../components/Flex/Flex';
 import { FormFieldProps } from '../../components/Form/FormField';
@@ -66,11 +71,11 @@ import { TooltipContentStylesProps } from '../../components/Tooltip/TooltipConte
 import { HierarchicalTreeItemProps } from '../../components/HierarchicalTree/HierarchicalTreeItem';
 import { HierarchicalTreeProps } from '../../components/HierarchicalTree/HierarchicalTree';
 import { HierarchicalTreeTitleProps } from '../../components/HierarchicalTree/HierarchicalTreeTitle';
-import { VideoProps } from '../../components/Video/Video';
+import { VideoStylesProps } from '../../components/Video/Video';
 import { TreeItemStylesProps } from '../../components/Tree/TreeItem';
 import { TreeTitleStylesProps } from '../../components/Tree/TreeTitle';
-import { TableProps } from '../../components/Table/Table';
-import { TableRowProps } from '../../components/Table/TableRow';
+import { TableStylesProps } from '../../components/Table/Table';
+import { TableRowStylesProps } from '../../components/Table/TableRow';
 import { TableCellStylesProps } from '../../components/Table/TableCell';
 import { CardStylesProps } from '../../components/Card/Card';
 import { CardPreviewStylesProps } from '../../components/Card/CardPreview';
@@ -79,19 +84,26 @@ import { CardHeaderStylesProps } from '../../components/Card/CardHeader';
 import { CardBodyStylesProps } from '../../components/Card/CardBody';
 import { CardFooterStylesProps } from '../../components/Card/CardFooter';
 import { SvgIconStylesProps } from '../../components/SvgIcon/SvgIcon';
+import { SplitButtonStylesProps } from '../../components/SplitButton/SplitButton';
+import { CarouselItemStylesProps } from '../../components/Carousel/CarouselItem';
 
 export type TeamsThemeStylesProps = {
-  Accordion: AccordionProps;
-  AccordionTitle: AccordionTitleProps;
-  AccordionContent: AccordionContentProps;
-  Alert: AlertProps;
+  Accordion: AccordionStylesProps;
+  AccordionContent: AccordionContentStylesProps;
+  AccordionTitle: AccordionTitleStylesProps;
+  Alert: AlertStylesProps;
   Animation: AnimationProps;
   Attachment: AttachmentProps;
+  AttachmentAction: AttachmentActionStylesProps;
+  AttachmentDescription: AttachmentDescriptionStylesProps;
+  AttachmentHeader: AttachmentHeaderStylesProps;
+  AttachmentIcon: AttachmentIconStylesProps;
   Avatar: AvatarStylesProps;
   Button: ButtonStylesProps;
   Box: BoxStylesProps;
   ButtonContent: ButtonContentStylesProps;
   ButtonGroup: ButtonGroupProps;
+  CarouselItem: CarouselItemStylesProps;
   Chat: ChatStylesProps;
   ChatItem: ChatItemStylesProps;
   ChatMessage: ChatMessageStylesProps;
@@ -99,7 +111,7 @@ export type TeamsThemeStylesProps = {
   Divider: DividerProps;
   Dialog: DialogProps;
   Dropdown: DropdownProps;
-  Embed: EmbedProps;
+  Embed: EmbedStylesProps;
   Flex: FlexStylesProps;
   FlexItem: FlexItemStylesProps;
   Form: FormProps;
@@ -126,6 +138,7 @@ export type TeamsThemeStylesProps = {
   ReactionGroup: ReactionGroupProps;
   Segment: SegmentProps;
   Slider: SliderStylesProps;
+  SplitButton: SplitButtonStylesProps;
   Status: StatusStylesProps;
   Toolbar: ToolbarProps;
   ToolbarCustomItem: ToolbarCustomItemStylesProps;
@@ -138,14 +151,15 @@ export type TeamsThemeStylesProps = {
   ToolbarMenuRadioGroup: ToolbarMenuRadioGroupStylesProps;
   TooltipContent: TooltipContentStylesProps;
   Text: TextStylesProps;
+  TextArea: TextAreaStylesProps;
   TreeItem: TreeItemStylesProps;
   TreeTitle: TreeTitleStylesProps;
   HierarchicalTree: HierarchicalTreeProps;
   HierarchicalTreeItem: HierarchicalTreeItemProps;
   HierarchicalTreeTitle: HierarchicalTreeTitleProps;
-  Video: VideoProps;
-  Table: TableProps;
-  TableRow: TableRowProps;
+  Video: VideoStylesProps;
+  Table: TableStylesProps;
+  TableRow: TableRowStylesProps;
   TableCell: TableCellStylesProps;
   Card: CardStylesProps;
   CardPreview: CardPreviewStylesProps;
@@ -153,6 +167,7 @@ export type TeamsThemeStylesProps = {
   CardHeader: CardHeaderStylesProps;
   CardBody: CardBodyStylesProps;
   CardFooter: CardFooterStylesProps;
+  CarouselNavigationItem: CarouselNavigationItemStylesProps;
 };
 
 export type TeamsContextualColors = {

@@ -3,6 +3,7 @@ import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
 import { FocusZoneDirection } from '../../focusZone/types';
 import * as keyboardKey from 'keyboard-key';
 import gridCellBehavior from './gridCellBehavior';
+import { GridRowBehaviorProps } from './gridRowBehavior';
 
 /**
  * @specification
@@ -15,7 +16,7 @@ import gridCellBehavior from './gridCellBehavior';
  * Triggers 'unsetRowTabbable' action using 'shiftKey' + 'Tab' key on 'root'.
  * Applies 'gridCellBehavior' for 'cell' child component.
  */
-const gridRowNestedBehavior: Accessibility = props => ({
+const gridRowNestedBehavior: Accessibility<GridRowBehaviorProps> = props => ({
   attributes: {
     root: {
       [IS_FOCUSABLE_ATTRIBUTE]: true,

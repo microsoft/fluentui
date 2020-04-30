@@ -5,10 +5,12 @@ import { ComponentPage, ExampleCard, IComponentDemoPageProps, PropertiesTableSet
 import { LineChartBasicExample } from './examples/LineChart.Basic.Example';
 import { LineChartStyledExample } from './examples/LineChart.Styled.Example';
 import { LineChartMultipleExample } from './examples/LineChart.Multiple.Example';
+import { LineChartEventsExample } from './examples/LineChart.Events.Example';
 
 const LineChartBasicExampleCode = require('!raw-loader!@uifabric/charting/src/components/LineChart/examples/LineChart.Basic.Example.tsx') as string;
 const LineChartStyledExampleCode = require('!raw-loader!@uifabric/charting/src/components/LineChart/examples/LineChart.Styled.Example.tsx') as string;
 const MultipleLineChartExampleCode = require('!raw-loader!@uifabric/charting/src/components/LineChart/examples/LineChart.Multiple.Example.tsx') as string;
+const LineChartEventsExampleCode = require('!raw-loader!@uifabric/charting/src/components/LineChart/examples/LineChart.Events.Example.tsx') as string;
 
 export class LineChartPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -26,6 +28,9 @@ export class LineChartPage extends React.Component<IComponentDemoPageProps, {}> 
             </ExampleCard>
             <ExampleCard title="Multiple Line chart" code={MultipleLineChartExampleCode}>
               <LineChartMultipleExample />
+            </ExampleCard>
+            <ExampleCard title="LineChart with events" code={LineChartEventsExampleCode}>
+              <LineChartEventsExample />
             </ExampleCard>
           </div>
         }

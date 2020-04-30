@@ -1,8 +1,9 @@
 import { ITheme, IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 import { IOverflowSetProps } from 'office-ui-fabric-react/lib/OverflowSet';
-import { IFocusZoneProps } from 'office-ui-fabric-react/lib/FocusZone';
+import { IFocusZoneProps } from '@fluentui/react-focus';
 import { IChartProps } from '../../types/IDataPoint';
+import { IEventAnnotation } from '../../types/IEventAnnotation';
 
 export { IChartProps, IDataPoint, ILineChartDataPoint, ILineChartPoints } from '../../types/IDataPoint';
 
@@ -91,6 +92,33 @@ export interface ILineChartProps {
    * focus zone props in hover card for legends
    */
   focusZonePropsForLegendsInHoverCard?: IFocusZoneProps;
+
+  /**
+   * the format in for the data on y-axis. For data object this can be specified to your requirement.
+   *  Eg: d3.format(".0%")(0.123),d3.format("+20")(42);
+   * Please look at https://github.com/d3/d3-format for all the formats supported
+   */
+  // tslint:disable-next-line: no-any
+  yAxisTickFormat?: any;
+
+  /** decides wether to show/hide legends
+   * @defaultvalue false
+   */
+  hideLegend?: boolean;
+
+  /**
+   * Show event annotation
+   */
+  eventAnnotationProps?: IEventsAnnotationProps;
+}
+
+export interface IEventsAnnotationProps {
+  events: IEventAnnotation[];
+  strokeColor: string;
+  labelColor: string;
+  labelHeight?: number;
+  labelWidth?: number;
+  mergedLabel: (count: number) => string;
 }
 
 export interface ILineChartStyleProps {
