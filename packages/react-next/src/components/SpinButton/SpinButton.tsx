@@ -280,20 +280,20 @@ export const SpinButton: React.FunctionComponent = (props: ISpinButtonProps) => 
       spinningByMouse = shouldSpin;
     }
     if (shouldSpin) {
-      currentStepFunctionHandle = this._async.setTimeout(() => {
-        updateValue(shouldSpin, propStepDelay, stepFunction);
-      }, propStepDelay);
+      React.useEffect(() => {
+        const id = setInterval(() => {
+          updateValue(shouldSpin, propStepDelay, stepFunction);
+        }, propStepDelay);
+        return () => {
+          clearInterval(id);
+        };
+      });
+
+      // currentStepFunctionHandle = this._async.setTimeout(() => {
+      //   updateValue(shouldSpin, propStepDelay, stepFunction);
+      // }, propStepDelay);
     }
   };
-
-  React.useEffect(() => {
-    const id = setInterval(() => {
-      setPercentComplete((intervalIncrement + percentComplete) % 1);
-    }, intervalDelay);
-    return () => {
-      clearInterval(id);
-    };
-  });
 
   /**
    * Stop spinning (clear any currently pending update and set spinning to false)
