@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
+import { SearchBox } from '../SearchBox';
 import { IIconProps } from 'office-ui-fabric-react/lib/Icon';
 
 const filterIcon: IIconProps = { iconName: 'Filter' };

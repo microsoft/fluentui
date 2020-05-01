@@ -38,7 +38,6 @@ export const SearchBoxBase: React.FunctionComponent = (props: ISearchBoxProps) =
   const rootElementRef = React.useRef<HTMLDivElement>(null);
   const inputElementRef = React.useRef<HTMLInputElement>(null);
   const fallbackId = useId('SearchBox', props.id);
-
   // const fallbackId = getId(COMPONENT_NAME);
 
   const {
@@ -57,14 +56,6 @@ export const SearchBoxBase: React.FunctionComponent = (props: ISearchBoxProps) =
     id = fallbackId,
   } = props;
   const placeholderValue = placeholder !== undefined ? placeholder : labelText;
-
-  const componentWillReceiveProps = (newProps: ISearchBoxProps): void => {
-    if (newProps.value !== undefined) {
-      // If the user passes in null, substitute an empty string
-      // (passing null is not allowed per typings, but users might do it anyway)
-      setValue(newProps.value || '');
-    }
-  };
 
   const classNames = getClassNames(styles!, {
     theme: theme!,
@@ -133,17 +124,17 @@ export const SearchBoxBase: React.FunctionComponent = (props: ISearchBoxProps) =
     // callOnChange(ev, ev.target.value);
   };
 
-  const callOnChange = (ev?: React.ChangeEvent<HTMLInputElement>, newValue?: string): void => {
-    // tslint:disable-next-line:deprecation
-    const { onChange, onChanged } = props;
-    // Call @deprecated method.
-    if (onChanged) {
-      onChanged(newValue);
-    }
-    if (onChange) {
-      onChange(ev, newValue);
-    }
-  };
+  // const callOnChange = (ev?: React.ChangeEvent<HTMLInputElement>, newValue?: string): void => {
+  //   // tslint:disable-next-line:deprecation
+  //   const { onChange, onChanged } = props;
+  //   // Call @deprecated method.
+  //   if (onChanged) {
+  //     onChanged(newValue);
+  //   }
+  //   if (onChange) {
+  //     onChange(ev, newValue);
+  //   }
+  // };
 
   const onKeyDown = (ev: React.KeyboardEvent<HTMLInputElement>) => {
     switch (ev.which) {
