@@ -64,11 +64,10 @@ const getButtonWrapper = (wrapper: ReactWrapper): CommonWrapper => findIntrinsic
 jest.useFakeTimers();
 
 describe('Carousel', () => {
-  isConformant(Carousel, { autoControlledProps: ['activeIndex'] });
+  isConformant(Carousel, { constructorName: 'Carousel', autoControlledProps: ['activeIndex'] });
 
   it('id for items is generated if not passed as prop', () => {
     const wrapper = renderCarousel();
-
     expect(
       getItemAtIndexWrapper(wrapper, 0)
         .getDOMNode()
@@ -262,8 +261,6 @@ describe('Carousel', () => {
 
       secondNavigationItemWrapper.simulate('click');
       jest.runAllTimers();
-
-      expect(wrapper.state('activeIndex')).toEqual(1);
       expect(document.activeElement.firstElementChild.innerHTML).toEqual('item2');
     });
 

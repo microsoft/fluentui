@@ -1,23 +1,21 @@
 import * as customPropTypes from '@fluentui/react-proptypes';
-import { Accessibility, carouselBehavior } from '@fluentui/accessibility';
+import { Accessibility, carouselBehavior, CarouselBehaviorProps } from '@fluentui/accessibility';
 import * as React from 'react';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import cx from 'classnames';
 import { Ref } from '@fluentui/react-component-ref';
 import Animation from '../Animation/Animation';
-
+// @ts-ignore
+import { ThemeContext } from 'react-fela';
 import {
   UIComponentProps,
   createShorthandFactory,
-  ShorthandFactory,
   commonPropTypes,
-  applyAccessibilityKeyHandlers,
   childrenExist,
   ChildrenComponentProps,
+  isFromKeyboard as isEventFromKeyboard,
   getOrGenerateIdFromShorthand,
-  AutoControlledComponent,
-  isFromKeyboard,
 } from '../../utils';
 import {
   WithAsProp,
@@ -26,12 +24,31 @@ import {
   ShorthandCollection,
   ShorthandValue,
   ComponentEventHandler,
+  FluentComponentStaticProps,
+  ProviderContextPrepared,
 } from '../../types';
 import CarouselItem, { CarouselItemProps } from './CarouselItem';
 import Text from '../Text/Text';
 import CarouselNavigation, { CarouselNavigationProps } from './CarouselNavigation';
 import CarouselNavigationItem, { CarouselNavigationItemProps } from './CarouselNavigationItem';
 import CarouselPaddle, { CarouselPaddleProps } from './CarouselPaddle';
+import {
+  getElementType,
+  useAutoControlled,
+  useAccessibility,
+  useStyles,
+  useTelemetry,
+  useUnhandledProps,
+} from '@fluentui/react-bindings';
+import CarouselReducer, {
+  CarouselInitialState,
+  CarouselActionsType,
+  UpdatePreActiveIndex,
+  UpdateItemIds,
+  UpdateAriaLiveOn,
+  UpdateShouldFocusContainer,
+  UpdateIsFromKeyboard,
+} from './util';
 
 export interface CarouselSlotClassNames {
   itemsContainer: string;
@@ -110,14 +127,7 @@ export interface CarouselProps extends UIComponentProps, ChildrenComponentProps 
   paddlePrevious?: ShorthandValue<CarouselPaddleProps>;
 }
 
-export interface CarouselState {
-  activeIndex: number;
-  prevActiveIndex: number;
-  ariaLiveOn: boolean;
-  itemIds: string[];
-  shouldFocusContainer: boolean;
-  isFromKeyboard: boolean;
-}
+export type CarouselStylesProps = { isFromKeyboard: boolean; shouldFocusContainer: boolean };
 
 export const carouselClassName = 'ui-carousel';
 export const carouselSlotClassNames: CarouselSlotClassNames = {
@@ -128,104 +138,111 @@ export const carouselSlotClassNames: CarouselSlotClassNames = {
   navigation: `${carouselClassName}__navigation`,
 };
 
-class Carousel extends AutoControlledComponent<WithAsProp<CarouselProps>, CarouselState> {
-  static create: ShorthandFactory<CarouselProps>;
+let itemRefs = [] as React.RefObject<HTMLElement>[];
 
-  static displayName = 'Carousel';
+export const Carousel: React.FC<WithAsProp<CarouselProps>> &
+  FluentComponentStaticProps<CarouselProps> & {
+    Item: typeof CarouselItem;
+    Navigation: typeof CarouselNavigation;
+    NavigationItem: typeof CarouselNavigationItem;
+    Paddle: typeof CarouselPaddle;
+  } = props => {
+  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const { setStart, setEnd } = useTelemetry(Carousel.displayName, context.telemetry);
+  setStart();
+  const {
+    accessibility,
+    items,
+    circular,
+    getItemPositionText,
+    paddlePrevious,
+    paddleNext,
+    navigation,
+    thumbnails,
+    children,
+    ariaRoleDescription,
+    ariaLabel,
+    className,
+    design,
+    styles,
+    variables,
+  } = props;
 
-  static deprecated_className = carouselClassName;
+  const ElementType = getElementType(props);
+  const [activeIndex, setActiveIndexState] = useAutoControlled({
+    defaultValue: props.defaultActiveIndex,
+    value: props.activeIndex,
+    initialValue: 0,
+  });
 
-  static propTypes = {
-    ...commonPropTypes.createCommon({
-      content: false,
+  const [{ prevActiveIndex, ariaLiveOn, itemIds, shouldFocusContainer, isFromKeyboard }, dispatch] = React.useReducer(
+    CarouselReducer,
+    CarouselInitialState,
+  );
+
+  const unhandledProps = useUnhandledProps(Carousel.handledProps, props);
+  const getA11yProps = useAccessibility<CarouselBehaviorProps>(accessibility, {
+    debugName: Carousel.displayName,
+    actionHandlers: {
+      showNextSlideByKeyboardNavigation: e => {
+        e.preventDefault();
+        showNextSlide(e, true);
+      },
+      showPreviousSlideByKeyboardNavigation: e => {
+        e.preventDefault();
+        showPreviousSlide(e, true);
+      },
+      showNextSlideByPaddlePress: e => {
+        e.preventDefault();
+        showNextSlide(e, false);
+        handleNextPaddleFocus();
+      },
+      showPreviousSlideByPaddlePress: e => {
+        e.preventDefault();
+        showPreviousSlide(e, false);
+        handlePreviousPaddleFocus();
+      },
+    },
+    mapPropsToBehavior: () => ({
+      navigation,
+      ariaLiveOn,
+      ariaRoleDescription,
+      ariaLabel,
     }),
-    activeIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-    ariaRoleDescription: PropTypes.string,
-    ariaLabel: PropTypes.string,
-    circular: PropTypes.bool,
-    defaultActiveIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-    getItemPositionText: PropTypes.func,
-    items: customPropTypes.collectionShorthand,
-    navigation: PropTypes.oneOfType([customPropTypes.collectionShorthand, customPropTypes.itemShorthand]),
-    navigationPosition: PropTypes.string,
-    onActiveIndexChange: PropTypes.func,
-    paddleNext: customPropTypes.itemShorthand,
-    paddlesPosition: PropTypes.string,
-    paddlePrevious: customPropTypes.itemShorthand,
-    thumbnails: PropTypes.bool,
-  };
+  });
 
-  static autoControlledProps = ['activeIndex'];
+  const { classes } = useStyles<CarouselStylesProps>(Carousel.displayName, {
+    className: carouselClassName,
+    mapPropsToStyles: () => ({
+      shouldFocusContainer,
+      isFromKeyboard,
+    }),
+    mapPropsToInlineStyles: () => ({
+      className,
+      design,
+      styles,
+      variables,
+    }),
+    rtl: context.rtl,
+  });
 
-  static defaultProps = {
-    accessibility: carouselBehavior as Accessibility,
-    paddlePrevious: {},
-    paddleNext: {},
-  };
+  const paddleNextRef = React.createRef<HTMLElement>();
+  const paddlePreviousRef = React.createRef<HTMLElement>();
 
-  static Item = CarouselItem;
-  static Navigation = CarouselNavigation;
-  static NavigationItem = CarouselNavigationItem;
-  static Paddle = CarouselPaddle;
-
-  static getAutoControlledStateFromProps(props: CarouselProps, state: CarouselState) {
-    const { items } = props;
-    const { itemIds } = state;
-
-    if (!items) {
-      return null;
-    }
-
-    return {
-      itemIds: items.map((item, index) => getOrGenerateIdFromShorthand('carousel-item-', item, itemIds[index])),
-    };
-  }
-
-  componentWillUnmount() {
-    this.focusItemAtIndex.cancel();
-  }
-
-  actionHandlers = {
-    showNextSlideByKeyboardNavigation: e => {
-      e.preventDefault();
-      this.showNextSlide(e, true);
-    },
-    showPreviousSlideByKeyboardNavigation: e => {
-      e.preventDefault();
-      this.showPreviousSlide(e, true);
-    },
-    showNextSlideByPaddlePress: e => {
-      e.preventDefault();
-      this.showNextSlide(e, false);
-      this.handleNextPaddleFocus();
-    },
-    showPreviousSlideByPaddlePress: e => {
-      e.preventDefault();
-      this.showPreviousSlide(e, false);
-      this.handlePreviousPaddleFocus();
-    },
-  };
-
-  getInitialAutoControlledState(): CarouselState {
-    return {
-      activeIndex: 0,
-      prevActiveIndex: -1,
-      ariaLiveOn: false,
-      itemIds: [] as string[],
-      shouldFocusContainer: false,
-      isFromKeyboard: false,
-    };
-  }
-
-  itemRefs = [] as React.RefObject<HTMLElement>[];
-  paddleNextRef = React.createRef<HTMLElement>();
-  paddlePreviousRef = React.createRef<HTMLElement>();
-  focusItemAtIndex: DebounceResultFn<(index: number) => void> = _.debounce((index: number) => {
-    this.itemRefs[index].current.focus();
+  const focusItemAtIndex: DebounceResultFn<(index: number) => void> = _.debounce((index: number) => {
+    itemRefs[index].current?.focus();
   }, 400);
 
-  setActiveIndex(e: React.SyntheticEvent, index: number, focusItem: boolean): void {
-    const { circular, items } = this.props;
+  React.useEffect(() => {
+    dispatch(
+      UpdateItemIds(items?.map((item, index) => getOrGenerateIdFromShorthand('carousel-item-', item, itemIds[index]))),
+    );
+    return () => {
+      focusItemAtIndex.cancel();
+    };
+  }, [items]);
+
+  const setActiveIndex = (e: React.SyntheticEvent, index: number, focusItem: boolean): void => {
     const lastItemIndex = items.length - 1;
     let activeIndex = index;
 
@@ -243,52 +260,47 @@ class Carousel extends AutoControlledComponent<WithAsProp<CarouselProps>, Carous
       activeIndex = 0;
     }
 
-    this.setState({
-      prevActiveIndex: this.state.activeIndex,
-      activeIndex,
-    });
+    dispatch(UpdatePreActiveIndex(prevActiveIndex));
+    setActiveIndexState(activeIndex);
 
-    _.invoke(this.props, 'onActiveIndexChange', e, this.props);
+    _.invoke(props, 'onActiveIndexChange', e, props);
 
     if (focusItem) {
-      this.focusItemAtIndex(activeIndex);
+      focusItemAtIndex(activeIndex);
     }
-  }
+  };
 
-  overrideItemProps = predefinedProps => ({
+  const overrideItemProps = predefinedProps => ({
     onFocus: (e, itemProps) => {
-      this.setState({
-        shouldFocusContainer: e.currentTarget === e.target,
-        isFromKeyboard: isFromKeyboard(),
-      });
+      dispatch(UpdateShouldFocusContainer(e.currentTarget === e.target));
+      dispatch(UpdateIsFromKeyboard(isEventFromKeyboard()));
       _.invoke(predefinedProps, 'onFocus', e, itemProps);
     },
     onBlur: (e, itemProps) => {
-      this.setState({
-        shouldFocusContainer: e.currentTarget.contains(e.relatedTarget),
-        isFromKeyboard: false,
-      });
+      dispatch(UpdateShouldFocusContainer(e.currentTarget.contains(e.relatedTarget)));
+      dispatch(UpdateIsFromKeyboard(false));
       _.invoke(predefinedProps, 'onBlur', e, itemProps);
     },
   });
 
-  renderContent = (accessibility, classes, unhandledProps) => {
-    const { getItemPositionText, items, circular } = this.props;
-    const { activeIndex, itemIds, prevActiveIndex } = this.state;
-
-    this.itemRefs = [];
+  const renderContent = () => {
+    itemRefs = [];
 
     return (
-      <div className={classes.itemsContainerWrapper} {...accessibility.attributes.itemsContainerWrapper}>
+      <div
+        {...getA11yProps('itemsContainerWrapper', {
+          className: classes.itemsContainerWrapper,
+        })}
+      >
         <div
-          className={cx(carouselSlotClassNames.itemsContainer, classes.itemsContainer)}
-          {...accessibility.attributes.itemsContainer}
-          {...applyAccessibilityKeyHandlers(accessibility.keyHandlers.itemsContainer, unhandledProps)}
+          {...getA11yProps('itemsContainer', {
+            className: cx(carouselSlotClassNames.itemsContainer, classes.itemsContainer),
+          })}
         >
           {items &&
             items.map((item, index) => {
               const itemRef = React.createRef<HTMLElement>();
-              this.itemRefs.push(itemRef);
+              itemRefs.push(itemRef);
               const active = activeIndex === index;
               let slideToNext = prevActiveIndex < activeIndex;
 
@@ -323,12 +335,12 @@ class Carousel extends AutoControlledComponent<WithAsProp<CarouselProps>, Carous
                       defaultProps: () => ({
                         active,
                         id: itemIds[index],
-                        navigation: !!this.props.navigation,
+                        navigation: !!props.navigation,
                         ...(getItemPositionText && {
                           itemPositionText: getItemPositionText(index, items.length),
                         }),
                       }),
-                      overrideProps: this.overrideItemProps,
+                      overrideProps: overrideItemProps,
                     })}
                   </Ref>
                 </Animation>
@@ -339,96 +351,85 @@ class Carousel extends AutoControlledComponent<WithAsProp<CarouselProps>, Carous
     );
   };
 
-  handleNextPaddleFocus = () => {
+  const handleNextPaddleFocus = () => {
     // if 'next' paddle will disappear, will focus 'previous' one.
-    if (!this.props.navigation && this.state.activeIndex >= this.props.items.length - 2 && !this.props.circular) {
-      this.paddlePreviousRef.current.focus();
+    if (!props.navigation && activeIndex >= props.items.length - 2 && !props.circular) {
+      paddlePreviousRef.current.focus();
     }
   };
 
-  handlePreviousPaddleFocus = () => {
+  const handlePreviousPaddleFocus = () => {
     // if 'previous' paddle will disappear, will focus 'next' one.
-    if (!this.props.navigation && this.state.activeIndex <= 1 && !this.props.circular) {
-      this.paddleNextRef.current.focus();
+    if (!props.navigation && activeIndex <= 1 && !props.circular) {
+      paddleNextRef.current.focus();
     }
   };
 
-  showPreviousSlide = (e: React.SyntheticEvent, focusItem: boolean) => {
-    this.setActiveIndex(e, this.state.activeIndex - 1, focusItem);
+  const showPreviousSlide = (e: React.SyntheticEvent, focusItem: boolean) => {
+    setActiveIndex(e, +activeIndex - 1, focusItem);
   };
 
-  showNextSlide = (e: React.SyntheticEvent, focusItem: boolean) => {
-    this.setActiveIndex(e, this.state.activeIndex + 1, focusItem);
+  const showNextSlide = (e: React.SyntheticEvent, focusItem: boolean) => {
+    setActiveIndex(e, +activeIndex + 1, focusItem);
   };
 
-  handlePaddleOverrides = (predefinedProps: CarouselPaddleProps, paddleName: string) => ({
+  const handlePaddleOverrides = (predefinedProps: CarouselPaddleProps, paddleName: string) => ({
     onClick: (e: React.SyntheticEvent, paddleProps: CarouselPaddleProps) => {
       _.invoke(predefinedProps, 'onClick', e, paddleProps);
       if (paddleName === 'paddleNext') {
-        this.showNextSlide(e, false);
-        this.handleNextPaddleFocus();
+        showNextSlide(e, false);
+        handleNextPaddleFocus();
       } else if (paddleName === 'paddlePrevious') {
-        this.showPreviousSlide(e, false);
-        this.handlePreviousPaddleFocus();
+        showPreviousSlide(e, false);
+        handlePreviousPaddleFocus();
       }
     },
     onBlur: (e: React.FocusEvent, paddleProps: CarouselPaddleProps) => {
-      if (e.relatedTarget !== this.paddleNextRef.current) {
-        this.setState({ ariaLiveOn: false });
+      if (e.relatedTarget !== paddleNextRef.current) {
+        dispatch(UpdateAriaLiveOn(false));
       }
     },
     onFocus: (e: React.SyntheticEvent, paddleProps: CarouselPaddleProps) => {
       _.invoke(predefinedProps, 'onFocus', e, paddleProps);
-      this.setState({
-        ariaLiveOn: true,
-      });
+      dispatch(UpdateAriaLiveOn(true));
     },
   });
 
-  renderPaddles = accessibility => {
-    const { paddlePrevious, paddleNext, items, circular } = this.props;
-    const { activeIndex } = this.state;
-
+  const renderPaddles = () => {
     return (
       <>
-        <Ref innerRef={this.paddlePreviousRef}>
+        <Ref innerRef={paddlePreviousRef}>
           {CarouselPaddle.create(paddlePrevious, {
-            defaultProps: () => ({
-              className: carouselSlotClassNames.paddlePrevious,
-              previous: true,
-              hidden: items !== undefined && !circular && activeIndex === 0,
-              ...accessibility.attributes.paddlePrevious,
-              ...applyAccessibilityKeyHandlers(accessibility.keyHandlers.paddlePrevious, paddlePrevious),
-            }),
+            defaultProps: () =>
+              getA11yProps('paddlePrevious', {
+                className: carouselSlotClassNames.paddlePrevious,
+                previous: true,
+                hidden: items !== undefined && !circular && activeIndex === 0,
+              }),
             overrideProps: (predefinedProps: CarouselPaddleProps) =>
-              this.handlePaddleOverrides(predefinedProps, 'paddlePrevious'),
+              handlePaddleOverrides(predefinedProps, 'paddlePrevious'),
           })}
         </Ref>
-        <Ref innerRef={this.paddleNextRef}>
+        <Ref innerRef={paddleNextRef}>
           {CarouselPaddle.create(paddleNext, {
-            defaultProps: () => ({
-              className: carouselSlotClassNames.paddleNext,
-              next: true,
-              hidden: items !== undefined && !circular && activeIndex === items.length - 1,
-              ...accessibility.attributes.paddleNext,
-              ...applyAccessibilityKeyHandlers(accessibility.keyHandlers.paddleNext, paddleNext),
-            }),
+            defaultProps: () =>
+              getA11yProps('paddleNext', {
+                className: carouselSlotClassNames.paddleNext,
+                next: true,
+                hidden: items !== undefined && !circular && activeIndex === items.length - 1,
+              }),
             overrideProps: (predefinedProps: CarouselPaddleProps) =>
-              this.handlePaddleOverrides(predefinedProps, 'paddleNext'),
+              handlePaddleOverrides(predefinedProps, 'paddleNext'),
           })}
         </Ref>
       </>
     );
   };
 
-  renderNavigation = () => {
-    const { getItemPositionText, navigation, items, thumbnails } = this.props;
-
+  const renderNavigation = () => {
     if (!items || !items.length) {
       return null;
     }
-
-    const { activeIndex } = this.state;
 
     return navigation ? (
       CarouselNavigation.create(navigation, {
@@ -442,7 +443,7 @@ class Carousel extends AutoControlledComponent<WithAsProp<CarouselProps>, Carous
           onItemClick: (e: React.SyntheticEvent, itemProps: CarouselNavigationItemProps) => {
             const { index } = itemProps;
 
-            this.setActiveIndex(e, index, true);
+            setActiveIndex(e, index, true);
 
             _.invoke(predefinedProps, 'onClick', e, itemProps);
           },
@@ -452,33 +453,67 @@ class Carousel extends AutoControlledComponent<WithAsProp<CarouselProps>, Carous
       <Text
         aria-hidden="true"
         className={carouselSlotClassNames.pagination}
-        content={getItemPositionText(activeIndex, items.length)}
+        content={getItemPositionText(+activeIndex, items.length)}
       />
     ) : null;
   };
 
-  renderComponent({ ElementType, classes, accessibility, unhandledProps }) {
-    const { children } = this.props;
-    return (
-      <ElementType
-        className={classes.root}
-        {...accessibility.attributes.root}
-        {...unhandledProps}
-        {...applyAccessibilityKeyHandlers(accessibility.keyHandlers.root, unhandledProps)}
-      >
-        {childrenExist(children) ? (
-          children
-        ) : (
-          <>
-            {this.renderContent(accessibility, classes, unhandledProps)}
-            {this.renderPaddles(accessibility)}
-            {this.renderNavigation()}
-          </>
-        )}
-      </ElementType>
-    );
-  }
-}
+  const element = (
+    <ElementType
+      {...getA11yProps('root', {
+        className: classes.root,
+        ...unhandledProps,
+      })}
+    >
+      {childrenExist(children) ? (
+        children
+      ) : (
+        <>
+          {renderContent()}
+          {renderPaddles()}
+          {renderNavigation()}
+        </>
+      )}
+    </ElementType>
+  );
+  setEnd();
+  return element;
+};
+
+Carousel.displayName = 'Carousel';
+
+Carousel.propTypes = {
+  ...commonPropTypes.createCommon({
+    content: false,
+  }),
+  activeIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  ariaRoleDescription: PropTypes.string,
+  ariaLabel: PropTypes.string,
+  circular: PropTypes.bool,
+  defaultActiveIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  getItemPositionText: PropTypes.func,
+  items: customPropTypes.collectionShorthand,
+  navigation: PropTypes.oneOfType([customPropTypes.collectionShorthand, customPropTypes.itemShorthand]),
+  navigationPosition: PropTypes.oneOf(['below', 'above', 'start', 'end']),
+  onActiveIndexChange: PropTypes.func,
+  paddleNext: customPropTypes.itemShorthand,
+  paddlesPosition: PropTypes.oneOf(['inside', 'outside', 'inline']),
+  paddlePrevious: customPropTypes.itemShorthand,
+  thumbnails: PropTypes.bool,
+};
+
+Carousel.defaultProps = {
+  accessibility: carouselBehavior as Accessibility,
+  paddlePrevious: {},
+  paddleNext: {},
+};
+
+Carousel.Item = CarouselItem;
+Carousel.Navigation = CarouselNavigation;
+Carousel.NavigationItem = CarouselNavigationItem;
+Carousel.Paddle = CarouselPaddle;
+
+Carousel.handledProps = Object.keys(Carousel.propTypes) as any;
 
 Carousel.create = createShorthandFactory({
   Component: Carousel,

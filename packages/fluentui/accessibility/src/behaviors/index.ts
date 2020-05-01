@@ -99,6 +99,7 @@ export { default as treeAsListBehavior } from './Tree/treeAsListBehavior';
 export { default as treeItemAsListItemBehavior } from './Tree/treeItemAsListItemBehavior';
 export { default as treeTitleAsListItemTitleBehavior } from './Tree/treeTitleAsListItemTitleBehavior';
 export { default as carouselBehavior } from './Carousel/carouselBehavior';
+export * from './Carousel/carouselBehavior';
 export { default as carouselItemBehavior } from './Carousel/carouselItemBehavior';
 export * from './Carousel/carouselItemBehavior';
 export { default as tableBehavior } from './Table/tableBehavior';
