@@ -1,4 +1,4 @@
-`MSNotificationView` can be used to present a toast (`.primaryToast` and `.neutralToast` styles) or a message bar (`.primaryBar`, `.primaryOutlineBar`, and `.neutralBar` styles) with information and actions at the bottom of the screen.
+`NotificationView` can be used to present a toast (`.primaryToast` and `.neutralToast` styles) or a message bar (`.primaryBar`, `.primaryOutlineBar`, and `.neutralBar` styles) with information and actions at the bottom of the screen.
 
 <DisplayToggle onText="Dark" offText="Light" label="Theme Switcher">
 
