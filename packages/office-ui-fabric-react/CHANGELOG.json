@@ -2,6 +2,36 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 01 May 2020 12:28:41 GMT",
+      "tag": "office-ui-fabric-react_v7.110.1",
+      "version": "7.110.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Theming: fix SASS slot autogenerator and run it",
+            "author": "phkuo@microsoft.com",
+            "commit": "2408412993a71f675b82905a3012135202470306",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 01 May 2020 00:19:21 GMT",
+      "tag": "office-ui-fabric-react_v7.110.0",
+      "version": "7.110.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Updating usage of FocusZone to use non-deprecated prop names.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "91115267502dc233cd9d513133d52344cef2e1f8",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 30 Apr 2020 12:31:44 GMT",
       "tag": "office-ui-fabric-react_v7.109.1",
       "version": "7.109.1",
