@@ -861,7 +861,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
   }
 
   private _handleTouchAndPointerEvent() {
-    // Touch and pointer events don't focus the button naturally.
+    // Touch and pointer events don't focus the button naturally, so adding an imperative focus call to guarantee this behavior.
     this.focus();
 
     // If we already have an existing timeeout from a previous touch and pointer event
