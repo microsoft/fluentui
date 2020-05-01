@@ -286,7 +286,7 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
             <TitleStack>
               <Icon iconName="CrossPlatformLogo-homePage" className={classNames.cardIcon} />
               <MarkdownHeader as="h3" className={classNames.cardTitle}>
-                Cross Platform
+                Cross-platform
               </MarkdownHeader>
             </TitleStack>
             <ul className={classNames.cardList}>

@@ -28,7 +28,7 @@ export const platforms: { [x in Platforms]?: IPlatform } = {
     color: '#cf8fff',
   },
   cross: {
-    name: 'Cross Platform',
+    name: 'Cross-platform',
     icon: 'CrossPlatformLogo-platformPicker',
     color: '#28a8ea',
   },

@@ -1,1 +1,1 @@
-Cross Platform Overview
+Cross-platform Overview

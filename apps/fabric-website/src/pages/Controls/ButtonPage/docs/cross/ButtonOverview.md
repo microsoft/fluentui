@@ -1,1 +1,1 @@
-Cross Platform Button overview
+Cross-platform Button overview

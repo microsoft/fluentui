@@ -3,4 +3,4 @@
 - [Android Button](#/controls/android/button)
 - [macOS Button](#/controls/mac/button)
 - [Windows Button](#/controls/windows/button)
-- [Cross Platform Button](#/controls/crossplatform/button)
+- [Cross-platform Button](#/controls/crossplatform/button)

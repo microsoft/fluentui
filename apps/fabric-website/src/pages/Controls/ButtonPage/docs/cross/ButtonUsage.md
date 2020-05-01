@@ -1,1 +1,1 @@
-Cross Platform Button usage
+Cross-platform Button usage

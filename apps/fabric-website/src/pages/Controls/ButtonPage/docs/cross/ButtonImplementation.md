@@ -1,1 +1,1 @@
-Cross Platform Button implementation
+Cross-platform Button implementation
