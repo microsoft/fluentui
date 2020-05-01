@@ -56,14 +56,10 @@ function useRestoreFocus(props: IPopupProps, root: React.RefObject<HTMLDivElemen
     _originalFocusedElement.current = getDocument()!.activeElement as HTMLElement;
 
     return () => {
-      if (
-        props.shouldRestoreFocus &&
-        _originalFocusedElement.current &&
-        _containsFocus.current &&
-        (_originalFocusedElement as any) !== window
-      ) {
-        _originalFocusedElement?.current?.focus?.();
-      }
+      props.onRestoreFocus?.({
+        originalElement: _originalFocusedElement.current,
+        containsFocus: _containsFocus.current,
+      });
 
       // De-reference DOM Node to avoid retainment via transpiled closure of _onKeyDown
       _originalFocusedElement.current = undefined;
@@ -123,6 +119,7 @@ export const Popup = React.forwardRef(function(props: IPopupProps, forwardedRef:
 
   const _onKeyDown = React.useCallback(
     (ev: React.KeyboardEvent<HTMLElement> | KeyboardEvent): void => {
+      // tslint:disable-next-line: deprecation
       switch (ev.which) {
         case KeyCodes.escape:
           if (props.onDismiss) {
