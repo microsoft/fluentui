@@ -39,7 +39,6 @@ export const SearchBoxBase: React.FunctionComponent = (props: ISearchBoxProps) =
   const inputElementRef = React.useRef<HTMLInputElement>(null);
   const fallbackId = useId('SearchBox', props.id);
   // const fallbackId = getId(COMPONENT_NAME);
-
   const {
     ariaLabel,
     placeholder,
