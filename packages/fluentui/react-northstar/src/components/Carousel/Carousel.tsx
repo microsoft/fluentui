@@ -137,8 +137,6 @@ export const carouselSlotClassNames: CarouselSlotClassNames = {
   navigation: `${carouselClassName}__navigation`,
 };
 
-let itemRefs = [] as React.RefObject<HTMLElement>[];
-
 export const Carousel: React.FC<WithAsProp<CarouselProps>> &
   FluentComponentStaticProps<CarouselProps> & {
     Item: typeof CarouselItem;
@@ -177,6 +175,11 @@ export const Carousel: React.FC<WithAsProp<CarouselProps>> &
   const [{ prevActiveIndex, ariaLiveOn, itemIds, shouldFocusContainer, isFromKeyboard }, dispatch] = React.useReducer(
     CarouselReducer,
     CarouselInitialState,
+  );
+
+  const itemRefs = React.useMemo<React.RefObject<HTMLElement>[]>(
+    () => Array.from({ length: items?.length }, () => React.createRef()),
+    [items?.length],
   );
 
   const unhandledProps = useUnhandledProps(Carousel.handledProps, props);
@@ -283,8 +286,6 @@ export const Carousel: React.FC<WithAsProp<CarouselProps>> &
   });
 
   const renderContent = () => {
-    itemRefs = [];
-
     return (
       <div
         {...getA11yProps('itemsContainerWrapper', {
@@ -298,8 +299,7 @@ export const Carousel: React.FC<WithAsProp<CarouselProps>> &
         >
           {items &&
             items.map((item, index) => {
-              const itemRef = React.createRef<HTMLElement>();
-              itemRefs.push(itemRef);
+              const itemRef = itemRefs[index];
               const active = activeIndex === index;
               let slideToNext = prevActiveIndex < activeIndex;
 
