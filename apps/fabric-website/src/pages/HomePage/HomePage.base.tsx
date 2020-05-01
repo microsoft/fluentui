@@ -17,7 +17,14 @@ import {
 } from 'office-ui-fabric-react';
 import { trackEvent, EventNames, getSiteArea, MarkdownHeader } from '@uifabric/example-app-base/lib/index2';
 import { platforms } from '../../SiteDefinition/SiteDefinition.platforms';
-import { AndroidLogoColor, AppleLogoColor, WebLogoColor, WindowsLogoColor, MacLogoColor } from '../../utilities/index';
+import {
+  AndroidLogoColor,
+  AppleLogoColor,
+  WebLogoColor,
+  WindowsLogoColor,
+  MacLogoColor,
+  CrossPlatformLogoColor,
+} from '../../utilities/index';
 import { IHomePageProps, IHomePageStyles, IHomePageStyleProps } from './HomePage.types';
 import { monoFont } from './HomePage.styles';
 const reactPackageData = require<any>('office-ui-fabric-react/package.json');
@@ -31,6 +38,7 @@ registerIcons({
     'WebLogo-homePage': WebLogoColor({ iconSize: 64 }),
     'WindowsLogo-homePage': WindowsLogoColor({ iconSize: 64 }),
     'MacLogo-homePage': MacLogoColor({ iconSize: 64 }),
+    'CrossPlatformLogo-homePage': CrossPlatformLogoColor({ iconSize: 64 }),
   },
 });
 
@@ -272,6 +280,20 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
             <ul className={classNames.cardList}>
               <li className={classNames.cardListItem}>{this._renderLink('#/controls/mac', 'Controls')}</li>
               <li className={classNames.cardListItem}>{this._renderLink('#/get-started/mac', 'Get started')}</li>
+            </ul>
+          </div>
+          <div className={classNames.card} style={{}}>
+            <TitleStack>
+              <Icon iconName="CrossPlatformLogo-homePage" className={classNames.cardIcon} />
+              <MarkdownHeader as="h3" className={classNames.cardTitle}>
+                Cross Platform
+              </MarkdownHeader>
+            </TitleStack>
+            <ul className={classNames.cardList}>
+              <li className={classNames.cardListItem}>{this._renderLink('#/controls/crossplatform', 'Controls')}</li>
+              <li className={classNames.cardListItem}>
+                {this._renderLink('#/get-started/crossplatform', 'Get started')}
+              </li>
             </ul>
           </div>
         </div>

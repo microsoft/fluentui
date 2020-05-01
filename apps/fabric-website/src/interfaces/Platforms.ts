@@ -8,6 +8,7 @@ export enum Platforms {
   android = 'android',
   mac = 'mac',
   windows = 'windows',
+  cross = 'cross',
 }
 
 export type TFabricPlatformPageProps = TPlatformPageProps<Platforms>;

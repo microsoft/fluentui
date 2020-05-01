@@ -48,7 +48,6 @@ export class ButtonPage extends React.Component<
   }
 
   public render() {
-    console.log(this.props.platform);
     const { areButtonsDisabled, areButtonsChecked } = this.state;
     const buttonPageProps = ButtonPageProps(areButtonsDisabled, areButtonsChecked);
     return (
@@ -95,6 +94,14 @@ export class ButtonPage extends React.Component<
             sectionName: 'Implementation',
             editUrl: baseUrl + 'docs/windows/ButtonImplementation.md',
             content: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/ButtonPage/docs/windows/ButtonImplementation.md') as string,
+          },
+        ];
+      case 'cross':
+        return [
+          {
+            sectionName: 'Implementation',
+            editUrl: baseUrl + 'docs/cross/ButtonImplementation.md',
+            content: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/ButtonPage/docs/cross/ButtonImplementation.md') as string,
           },
         ];
     }
