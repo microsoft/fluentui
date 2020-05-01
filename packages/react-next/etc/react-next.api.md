@@ -4,6 +4,7 @@
 
 ```ts
 
+import { IComponentAs } from 'office-ui-fabric-react/lib/Utilities';
 import { IIconProps } from 'office-ui-fabric-react/lib/Icon';
 import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
 import { IRefObject } from 'office-ui-fabric-react/lib/Utilities';
@@ -199,6 +200,78 @@ export enum ImageLoadState {
     notLoaded = 0
 }
 
+// @public (undocumented)
+export interface IToggle {
+    // (undocumented)
+    focus: () => void;
+}
+
+// @public
+export interface IToggleProps extends React.HTMLAttributes<HTMLElement> {
+    ariaLabel?: string;
+    as?: IComponentAs<React.HTMLAttributes<HTMLElement>>;
+    checked?: boolean;
+    componentRef?: IRefObject<IToggle>;
+    defaultChecked?: boolean;
+    disabled?: boolean;
+    inlineLabel?: boolean;
+    keytipProps?: IKeytipProps;
+    label?: string | JSX.Element;
+    // @deprecated (undocumented)
+    offAriaLabel?: string;
+    offText?: string;
+    // @deprecated (undocumented)
+    onAriaLabel?: string;
+    onChange?: (event: React.MouseEvent<HTMLElement>, checked?: boolean) => void;
+    // @deprecated (undocumented)
+    onChanged?: (checked: boolean) => void;
+    onText?: string;
+    role?: 'checkbox' | 'switch' | 'menuitemcheckbox';
+    styles?: IStyleFunctionOrObject<IToggleStyleProps, IToggleStyles>;
+    theme?: ITheme;
+}
+
+// @public (undocumented)
+export interface IToggleState {
+    // (undocumented)
+    checked: boolean;
+}
+
+// @public
+export interface IToggleStyleProps {
+    checked?: boolean;
+    className?: string;
+    disabled?: boolean;
+    inlineLabel?: boolean;
+    onOffMissing?: boolean;
+    theme: ITheme;
+}
+
+// @public
+export interface IToggleStyles {
+    container: IStyle;
+    label: IStyle;
+    pill: IStyle;
+    root: IStyle;
+    text: IStyle;
+    thumb: IStyle;
+}
+
+// @public (undocumented)
+export const Toggle: React.FunctionComponent<IToggleProps>;
+
+// @public (undocumented)
+export class ToggleBase extends React.Component<IToggleProps, IToggleState> implements IToggle {
+    constructor(props: IToggleProps);
+    readonly checked: boolean;
+    // (undocumented)
+    focus(): void;
+    // (undocumented)
+    static getDerivedStateFromProps(nextProps: Readonly<IToggleProps>, prevState: Readonly<IToggleState>): Partial<IToggleState> | null;
+    // (undocumented)
+    render(): JSX.Element;
+    }
+
 
 export * from "office-ui-fabric-react/lib/ActivityItem";
 export * from "office-ui-fabric-react/lib/Announced";
@@ -272,7 +345,6 @@ export * from "office-ui-fabric-react/lib/TeachingBubble";
 export * from "office-ui-fabric-react/lib/Text";
 export * from "office-ui-fabric-react/lib/TextField";
 export * from "office-ui-fabric-react/lib/ThemeGenerator";
-export * from "office-ui-fabric-react/lib/Toggle";
 export * from "office-ui-fabric-react/lib/Tooltip";
 export * from "office-ui-fabric-react/lib/Utilities";
 
