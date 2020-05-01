@@ -1,8 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 30 Apr 2020 12:31:44 GMT and should not be manually modified.
+This log was last generated on Fri, 01 May 2020 00:19:21 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.110.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.110.0)
+
+Fri, 01 May 2020 00:19:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.109.1..office-ui-fabric-react_v7.110.0)
+
+### Minor changes
+
+- Updating usage of FocusZone to use non-deprecated prop names. ([PR #12484](https://github.com/microsoft/fluentui/pull/12484) by humbertomakotomorimoto@gmail.com)
 
 ## [7.109.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.109.1)
 
