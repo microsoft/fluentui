@@ -1,11 +1,11 @@
 ### Control name
 
-`MSSegmentedControl`
+`SegmentedControl` in Swift, `MSFSegmentedControl` in Objective-C
 
 ### Source code
 
-[MSSegmentedControl](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI/Controls/MSSegmentedControl.swift)
+[SegmentedControl](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI/Controls/SegmentedControl.swift)
 
 ### Sample code
 
-[MSSegmentedControl demo](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI.Demo/FluentUI.Demo/Demos/MSSegmentedControlDemoController.swift)
+[SegmentedControl demo](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI.Demo/FluentUI.Demo/Demos/SegmentedControlDemoController.swift)

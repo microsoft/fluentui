@@ -4,7 +4,7 @@ Persona controls display the profile picture and online status of the user. When
 
 Besides a profile picture, Persona controls can include text elements. The user's full name can show alongside other metadata, such as job title, company, and more.
 
-Persona controls are also available as a performant list view. The `MSPersonaListView` controls are perfect for listing many people. Examples of this may be an Address Book or a People Picker auto-complete experience.
+Persona controls are also available as a performant list view. The `PersonaListView` controls are perfect for listing many people. Examples of this may be an Address Book or a People Picker auto-complete experience.
 
 <DisplayToggle onText="Dark" offText="Light" label="Theme Switcher">
 
