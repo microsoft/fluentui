@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
+    "outDir": "lib",
     "target": "es5",
     "module": "commonjs",
     "jsx": "react",
@@ -9,27 +10,16 @@
     "experimentalDecorators": true,
     "importHelpers": true,
     "moduleResolution": "node",
-    "lib": [
-      "es2017",
-      "dom"
-    ],
-    "types": [
-      "chai",
-      "mocha",
-      "webpack-env"
-    ],
+    "noImplicitAny": false,
+    "strictNullChecks": true,
+    "forceConsistentCasingInFileNames": true,
+    "preserveConstEnums": true,
+    "lib": ["es5", "dom"],
+    "typeRoots": ["../../node_modules/@types", "../../typings"],
+    "types": ["jest", "webpack-env", "custom-global"],
     "paths": {
-      "@uifabric/styling": [
-        "./src"
-      ]
+      "@uifabric/styling": ["./src"]
     }
   },
-  "exclude": [
-    "node_modules",
-    "dist",
-    "lib",
-    "lib-amd",
-    "api",
-    "temp"
-  ]
+  "include": ["src"]
 }

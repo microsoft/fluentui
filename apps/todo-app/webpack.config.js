@@ -1,59 +1,25 @@
-'use strict';
-
-/** Note: this require may need to be fixed to point to the build that exports the gulp-core-build-webpack instance. */
-let webpackTaskResources = require('@microsoft/web-library-build').webpack.resources;
-let webpack = webpackTaskResources.webpack;
-
 let path = require('path');
-let isProduction = process.argv.indexOf('--production') > -1;
-let packageJSON = require('./package.json');
+const resources = require('../../scripts/webpack/webpack-resources');
 
-let webpackConfig = {
-  context: path.join(__dirname, 'lib/'),
+const BUNDLE_NAME = 'todo-app';
+const IS_PRODUCTION = process.argv.indexOf('--production') > -1;
 
+module.exports = resources.createConfig(BUNDLE_NAME, IS_PRODUCTION, {
   entry: {
-    [packageJSON.name]: './index.js'
+    [BUNDLE_NAME]: './lib/index.js',
   },
 
   output: {
-    libraryTarget: 'umd',
-    path: path.join(__dirname, '/dist'),
-    filename: `[name]${isProduction ? '.min' : ''}.js`
-  },
-
-  devtool: 'source-map',
-
-  devServer: {
-    stats: 'none'
+    libraryTarget: 'var',
+    library: 'Fabric',
   },
 
   externals: [
     {
-      'react': 'React'
-
+      react: 'React',
     },
     {
-      'react-dom': 'ReactDOM'
-    }
+      'react-dom': 'ReactDOM',
+    },
   ],
-
-  module: {
-    loaders: [
-    ]
-  },
-
-  plugins: [
-    //  new WebpackNotifierPlugin()
-  ]
-};
-
-if (isProduction) {
-  webpackConfig.plugins.push(new webpack.optimize.UglifyJsPlugin({
-    minimize: true,
-    compress: {
-      warnings: false
-    }
-  }));
-}
-
-module.exports = webpackConfig;
+});

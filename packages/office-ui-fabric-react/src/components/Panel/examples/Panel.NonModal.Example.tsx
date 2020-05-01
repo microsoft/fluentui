@@ -1,32 +1,33 @@
 import * as React from 'react';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
+import { Panel } from 'office-ui-fabric-react/lib/Panel';
+import { useConstCallback } from '@uifabric/react-hooks';
 
-export class PanelNonModalExample extends React.Component<any, any> {
+const explanation =
+  "This panel is non-modal: even when it's open, it allows interacting with content outside the panel.";
 
-  constructor() {
-    super();
-    this.state = { showPanel: false };
-  }
+export const PanelNonModalExample: React.FunctionComponent = () => {
+  const [isOpen, setIsOpen] = React.useState(false);
 
-  public render() {
-    return (
-      <div>
-        <DefaultButton
-          text='Open panel'
-          onClick={ () => this.setState({ showPanel: true }) }
-        />
-        <Panel
-          isBlocking={ false }
-          isOpen={ this.state.showPanel }
-          onDismiss={ () => this.setState({ showPanel: false }) }
-          type={ PanelType.medium }
-          headerText='Non-Modal Panel'
-          closeButtonAriaLabel='Close'
-        >
-          <span>Content goes here.</span>
-        </Panel>
-      </div>
-    );
-  }
-}
+  const openPanel = useConstCallback(() => setIsOpen(true));
+  const dismissPanel = useConstCallback(() => setIsOpen(false));
+
+  return (
+    <div>
+      {explanation}
+      <br />
+      <br />
+      <DefaultButton text="Open panel" onClick={openPanel} />
+      <Panel
+        headerText="Non-modal panel"
+        // this prop makes the panel non-modal
+        isBlocking={false}
+        isOpen={isOpen}
+        onDismiss={dismissPanel}
+        closeButtonAriaLabel="Close"
+      >
+        <p>{explanation}</p>
+      </Panel>
+    </div>
+  );
+};

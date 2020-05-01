@@ -1,0 +1,3 @@
+- Use sentence casing, e.g. “First name”.
+- Be short and concise.
+- When adding a Label to components, use the text as a noun or short noun phrase.

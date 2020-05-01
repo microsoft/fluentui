@@ -1,137 +1,52 @@
-/* tslint:disable:no-unused-variable */
-import * as React from 'react';
-/* tslint:enable:no-unused-variable */
-import * as ReactDOM from 'react-dom';
-import { App } from './components/App/App';
-import { AppState } from './components/App/AppState';
-import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
-import { Route, Router } from 'office-ui-fabric-react/lib/utilities/router/index';
-import { setBaseUrl } from '@uifabric/utilities/lib/resources';
+import { registerIcons, on, KeyCodes, setRTL } from 'office-ui-fabric-react';
+import { initializeFileTypeIcons } from '@uifabric/file-type-icons';
+import { createSite } from './utilities/createSite';
+import * as platformPickerStyles from '@uifabric/example-app-base/lib/components/PlatformPicker/PlatformPicker.module.scss';
+import { SiteDefinition } from './SiteDefinition/index';
 import { HomePage } from './pages/HomePage/HomePage';
-import WindowWidthUtility from './utilities/WindowWidthUtility';
-import './styles/styles.scss';
+import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
+import { AndroidLogo, AppleLogo, WebLogo } from './utilities/index';
 
-let isProduction = process.argv.indexOf('--production') > -1;
+// TODO: handle redirects
 
-if (!isProduction) {
-  setBaseUrl('./dist/');
-} else {
-  setBaseUrl('https://static2.sharepointonline.com/files/fabric/fabric-website/dist/');
-}
+initializeFileTypeIcons('https://static2.sharepointonline.com/files/fabric/assets/item-types/');
 
-let rootElement;
-let currentBreakpoint;
-let scrollDistance;
+setRTL(false);
 
-function _routerDidMount() {
-  if (_hasAnchorLink(window.location.hash)) {
-    let hash = _extractAnchorLink(window.location.hash);
-    let el = document.getElementById(hash);
-    let elRect = el.getBoundingClientRect();
-    let bodySTop = document.body.scrollTop;
-    let currentScrollPosition;
-    currentScrollPosition = bodySTop + elRect.top;
-    document.body.scrollTop = currentScrollPosition - scrollDistance;
-  }
-}
+registerIcons({
+  icons: {
+    'AndroidLogo-platformPicker': AndroidLogo({
+      className: platformPickerStyles.icon,
+    }),
+    'AppleLogo-platformPicker': AppleLogo({
+      className: platformPickerStyles.icon,
+    }),
+    'WebLogo-platformPicker': WebLogo({
+      className: platformPickerStyles.icon,
+    }),
+  },
+});
 
-function _getBreakpoint() {
-  currentBreakpoint = WindowWidthUtility.currentFabricBreakpoint();
-  scrollDistance = _setScrollDistance();
-}
+const skipToMain = document.getElementById('uhfSkipToMain') as HTMLAnchorElement;
+if (skipToMain) {
+  // This link points to #mainContent by default, which would be interpreted as a route in our app.
+  // Handle focusing the main content manually instead.
+  const focusMainContent = (ev: Event) => {
+    ev.preventDefault(); // don't navigate
 
-function _setScrollDistance() {
-  switch (currentBreakpoint) {
-    case ('LG'):
-      return 240;
-    default:
-      return 200;
-  }
-}
+    // focus content root
+    const mainContent = document.querySelector('[data-app-content-div="true"]') as HTMLDivElement | null;
+    if (mainContent) {
+      mainContent.focus();
+    }
+  };
 
-function _hasAnchorLink(path) {
-  return (path.match(/#/g) || []).length > 1;
-}
-
-function _extractAnchorLink(path) {
-  let split = path.split('#');
-  let cleanedSplit = split.filter((value) => {
-    if (value === '') {
-      return false;
-    } else {
-      return true;
+  on(skipToMain, 'click', focusMainContent);
+  on(skipToMain, 'keydown', (ev: KeyboardEvent) => {
+    if (ev.which === KeyCodes.enter) {
+      focusMainContent(ev);
     }
   });
-  return cleanedSplit[cleanedSplit.length - 1];
 }
 
-function _onLoad() {
-
-  // Load the app into this element.
-  rootElement = rootElement || document.getElementById('main');
-  _getBreakpoint();
-
-  ReactDOM.render(
-    <Fabric>
-      <Router onNewRouteLoaded={ _routerDidMount }>
-        <Route component={ App }>
-          { _getAppRoutes() }
-        </Route>
-      </Router>
-    </Fabric>,
-    rootElement);
-}
-
-function _createRoutes(pages): any[] {
-  let routes = [];
-  let pageRoutes = [];
-  pages.forEach((page, pageIndex) => {
-    routes.push(<Route
-      key={ pageIndex }
-      path={ page.url }
-      component={ page.component }
-      getComponent={ page.getComponent }
-    />);
-    if (page.pages) {
-      routes = routes.concat(_createRoutes(page.pages));
-    }
-  });
-  return routes;
-}
-
-function _getAppRoutes() {
-  let routes = [];
-  routes = _createRoutes(AppState.pages);
-
-  // Add the default route
-  routes.push(
-    <Route key='home' component={ HomePage } />
-  );
-
-  return routes;
-}
-
-function _onUnload() {
-  if (rootElement) {
-    ReactDOM.unmountComponentAtNode(rootElement);
-  }
-}
-
-let isReady = document.readyState === 'interactive' || document.readyState === 'complete';
-
-if (isReady) {
-  _onLoad();
-} else {
-  window.onload = _onLoad;
-}
-
-window.onunload = _onUnload;
-function addCSSToHeader(fileName) {
-  let headEl = document.head;
-  let linkEl = document.createElement('link');
-  linkEl.type = 'text/css'
-  linkEl.rel = 'stylesheet'
-  linkEl.href = fileName
-  headEl.appendChild(linkEl)
-}
-addCSSToHeader('https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/7.1.0/css/fabric.min.css')
+createSite(SiteDefinition, [NotFoundPage, HomePage]);

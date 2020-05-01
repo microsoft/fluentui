@@ -1,0 +1,24 @@
+import * as React from 'react';
+import * as renderer from 'react-test-renderer';
+
+import { {{componentName}} } from './{{componentName}}';
+
+describe('{{componentName}}', () => {
+  it('renders correctly with no props', () => {
+    const tree = renderer
+      .create(
+        <{{componentName}} />
+      )
+      .toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders text prop correctly', () => {
+    const tree = renderer
+      .create(
+        <{{componentName}} text="textProp" />
+      )
+      .toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+});

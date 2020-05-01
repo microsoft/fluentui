@@ -1,50 +1,50 @@
 import * as React from 'react';
 import { Slider } from 'office-ui-fabric-react/lib/Slider';
-import './Slider.Basic.Example.scss';
+import { IStackTokens, Stack, IStackStyles } from 'office-ui-fabric-react/lib/Stack';
 
-export class SliderBasicExample extends React.Component<any, any> {
-  constructor() {
-    super();
+const stackStyles: Partial<IStackStyles> = { root: { maxWidth: 300 } };
 
-    this.state = {
-      value: 0
-    };
-  }
+export interface ISliderBasicExampleState {
+  value: number;
+}
 
-  public render() {
+// tslint:disable:jsx-no-lambda
+export class SliderBasicExample extends React.Component<{}, ISliderBasicExampleState> {
+  public state: ISliderBasicExampleState = { value: 0 };
+
+  public render(): JSX.Element {
+    const stackTokens: IStackTokens = { childrenGap: 20 };
+
     return (
-      <div className='ms-SliderBasicExample'>
-
+      <Stack tokens={stackTokens} styles={stackStyles}>
+        <Slider />
         <Slider
-          label='Basic example:'
-          min={ 1 }
-          max={ 3 }
-          step={ 1 }
-          defaultValue={ 2 }
-          showValue={ true }
-          onChange={ (value) => console.log(value) }
+          label="Snapping slider example"
+          min={0}
+          max={50}
+          step={10}
+          defaultValue={20}
+          showValue={true}
+          onChange={(value: number) => console.log(value)}
+          snapToStep
         />
-
+        <Slider label="Disabled example" min={50} max={500} step={50} defaultValue={300} showValue={true} disabled />
         <Slider
-          label='Disabled example:'
-          min={ 50 }
-          max={ 500 }
-          step={ 50 }
-          defaultValue={ 300 }
-          showValue={ true }
-          disabled={ true }
+          label="Controlled example"
+          max={10}
+          value={this.state.value}
+          onChange={(value: number) => this.setState({ value })}
+          showValue={true}
         />
-
         <Slider
-          label='Controlled example:'
-          max={ 10 }
-          value={ this.state.value }
-          onChange={ value => this.setState({ value }) }
-          showValue={ true }
+          label="Example with formatted value"
+          max={100}
+          ariaValueText={(value: number) => `${value} percent`}
+          valueFormat={(value: number) => `${value}%`}
+          showValue={true}
         />
-
-      </div>
+        <Slider label="Origin from zero" min={-5} max={5} step={1} defaultValue={2} showValue originFromZero />
+      </Stack>
     );
   }
-
 }

@@ -1,68 +1,70 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
-
 import * as ReactDOM from 'react-dom';
-import * as ReactTestUtils from 'react-addons-test-utils';
-let { expect } = chai;
-
-import { isElementVisible, isElementTabbable } from './focus';
+import * as ReactTestUtils from 'react-dom/test-utils';
+import {
+  isElementVisible,
+  isElementTabbable,
+  focusAsync,
+  getElementIndexPath,
+  getFirstTabbable,
+  getFocusableByIndexPath,
+  getLastTabbable,
+} from './focus';
 
 let _hiddenElement: HTMLElement | undefined;
 let _visibleElement: HTMLElement | undefined;
 let _element: HTMLElement | undefined;
 
-function renderIntoDocument(element: React.ReactElement<any>): HTMLElement {
+function renderIntoDocument(element: React.ReactElement<{}>): HTMLElement {
   const component = ReactTestUtils.renderIntoDocument(element);
-  const renderedDOM: Element = ReactDOM.findDOMNode(component as React.ReactInstance);
+  const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
   return renderedDOM as HTMLElement;
 }
 
-function _initialize() {
+function _initialize(): void {
   _hiddenElement = renderIntoDocument(
-    <div data-is-visible={ false }>
-      <button></button>
-    </div>
+    <div data-is-visible={false}>
+      <button />
+    </div>,
   ) as HTMLElement;
   _visibleElement = renderIntoDocument(
-    <div data-is-visible={ true }>
-      <button></button>
-    </div>
+    <div data-is-visible={true}>
+      <button />
+    </div>,
   ) as HTMLElement;
   _element = renderIntoDocument(
     <div>
-      <button></button>
-    </div>
+      <button />
+    </div>,
   ) as HTMLElement;
+  // tslint:disable-next-line:no-any
   (_element as any).isVisible = true;
 }
 
 describe('isElementVisible', () => {
   beforeEach(() => _initialize());
   it('returns false if data-is-visible is false', () => {
-    expect(isElementVisible(_hiddenElement)).equals(false, 'Element is not visible');
+    expect(isElementVisible(_hiddenElement)).toEqual(false);
   });
 
   it('returns true if data-is-visible is true', () => {
-    expect(isElementVisible(_visibleElement)).equals(true, 'Element is visible');
+    expect(isElementVisible(_visibleElement)).toEqual(true);
   });
 
   it('returns true if data-is-visible is undefined but element is visible', () => {
-    expect(isElementVisible(_element)).equals(true, 'Element is visible but data-is-visible is undefined');
+    expect(isElementVisible(_element)).toEqual(true);
   });
-
 });
 
 describe('isElementTabbable', () => {
-
   it('returns false on null', () => {
-    expect(isElementVisible(null)).is.false;
+    expect(isElementVisible(null)).toEqual(false);
   });
 
   it('returns false on normal divs', () => {
     let div = document.createElement('div');
 
-    expect(isElementTabbable(div)).is.false;
+    expect(isElementTabbable(div)).toEqual(false);
   });
 
   it('returns false on disabled buttons', () => {
@@ -70,32 +72,37 @@ describe('isElementTabbable', () => {
 
     button.setAttribute('disabled', 'true');
 
-    expect(isElementTabbable(button)).is.false;
-
+    expect(isElementTabbable(button)).toEqual(false);
   });
 
   it('returns true on buttons', () => {
     let button = document.createElement('button');
 
-    expect(isElementTabbable(button)).is.true;
+    expect(isElementTabbable(button)).toEqual(true);
   });
 
   it('returns true on anchors', () => {
     let anchor = document.createElement('a');
 
-    expect(isElementTabbable(anchor)).is.true;
+    expect(isElementTabbable(anchor)).toEqual(true);
   });
 
   it('returns true on input elements', () => {
     let input = document.createElement('input');
 
-    expect(isElementTabbable(input)).is.true;
+    expect(isElementTabbable(input)).toEqual(true);
+  });
+
+  it('returns true on select elements', () => {
+    let select = document.createElement('select');
+
+    expect(isElementTabbable(select)).toEqual(true);
   });
 
   it('returns true on textarea elements', () => {
     let textarea = document.createElement('textarea');
 
-    expect(isElementTabbable(textarea)).is.true;
+    expect(isElementTabbable(textarea)).toEqual(true);
   });
 
   it('works with tabbable divs', () => {
@@ -103,15 +110,15 @@ describe('isElementTabbable', () => {
 
     div.tabIndex = 0;
 
-    expect(isElementTabbable(div)).is.true;
+    expect(isElementTabbable(div)).toEqual(true);
   });
 
-  it('returns true with role=button divs', () => {
+  it('returns false with role=button divs', () => {
     let div = document.createElement('div');
 
     div.setAttribute('role', 'button');
 
-    expect(isElementTabbable(div)).is.true;
+    expect(isElementTabbable(div)).toEqual(false);
   });
 
   it('returns false with role=button disabled buttons', () => {
@@ -120,7 +127,252 @@ describe('isElementTabbable', () => {
     button.setAttribute('role', 'button');
     button.setAttribute('disabled', 'true');
 
-    expect(isElementTabbable(button)).is.false;
+    expect(isElementTabbable(button)).toEqual(false);
   });
 
+  it('returns false with -1 tabIndex', () => {
+    let button = document.createElement('button');
+
+    button.tabIndex = -1;
+
+    expect(isElementTabbable(button, true)).toEqual(false);
+  });
+});
+
+describe('focusAsync', () => {
+  // rAF does not exist in node - let's mock it
+  window.requestAnimationFrame = (callback: FrameRequestCallback) => {
+    return window.setTimeout(callback, 16);
+  };
+
+  jest.useFakeTimers();
+
+  it('focuses on an item on the next frame', () => {
+    const component = renderIntoDocument(
+      <div>
+        <button className="a">a</button>
+        <button className="b">b</button>
+        <button className="c">c</button>
+      </div>,
+    );
+
+    const container = ReactDOM.findDOMNode(component as React.ReactInstance) as Element;
+    const buttonA = container.querySelector('.a') as HTMLElement;
+    const buttonB = container.querySelector('.b') as HTMLElement;
+    const buttonC = container.querySelector('.c') as HTMLElement;
+
+    // Focus the first button.
+    focusAsync(buttonA);
+    window.requestAnimationFrame(() => {
+      expect(container.ownerDocument!.activeElement).toBe(buttonA);
+
+      // Focus the second button, then the third before the next frame
+      focusAsync(buttonB);
+      focusAsync(buttonC);
+      window.requestAnimationFrame(() => {
+        expect(container.ownerDocument!.activeElement).toBe(buttonC);
+      });
+    });
+
+    jest.runAllTimers();
+  });
+
+  it('can focus a component which implements focus()', () => {
+    let calledFocus = false;
+    const fakeComponent = {
+      ownerDocument: {},
+      focus: () => (calledFocus = true),
+    };
+
+    focusAsync(fakeComponent);
+    jest.runAllTimers();
+    expect(calledFocus).toEqual(true);
+  });
+});
+
+describe('getFocusableByIndexPath', () => {
+  it('can recover a path', () => {
+    const parent = document.createElement('div');
+
+    parent.innerHTML = `
+    <div>
+      <div></div>
+      <div></div>
+      <div>
+        <div></div>
+        <button id='child' data-is-visible='true' />
+      </div>
+    </div>
+  `;
+
+    const child = parent.querySelector('#child') as HTMLElement;
+
+    expect(getFocusableByIndexPath(parent, [0, 2, 1])).toEqual(child);
+  });
+
+  it('ignores hidden elements', () => {
+    const parent = document.createElement('div');
+
+    parent.innerHTML = `
+    <div>
+      <div></div>
+      <div></div>
+      <div>
+        <div></div>
+        <button id='child' data-is-visible='false' />
+      </div>
+    </div>
+  `;
+
+    parent.querySelector('#child') as HTMLElement;
+
+    expect(getFocusableByIndexPath(parent, [0, 2, 1])).toEqual(null);
+  });
+
+  it('can fallback to a previous element', () => {
+    const parent = document.createElement('div');
+
+    parent.innerHTML = `
+    <div>
+      <button id='child' data-is-visible='true'>
+        <div>
+          <div/>
+        </div>
+      </button>
+    </div>
+  `;
+
+    const child = parent.querySelector('#child') as HTMLElement;
+
+    expect(getFocusableByIndexPath(parent, [0, 0, 0, 0, 0, 0])).toEqual(child);
+  });
+});
+
+describe('getElementIndexPath', () => {
+  it('can get a path', () => {
+    const parent = document.createElement('div');
+
+    parent.innerHTML = `
+      <div>
+        <div></div>
+        <div></div>
+        <div>
+          <div></div>
+          <div id='child'></div>
+        </div>
+      </div>
+    `;
+
+    const child = parent.querySelector('#child') as HTMLElement;
+
+    expect(getElementIndexPath(parent, child)).toEqual([0, 2, 1]);
+  });
+
+  it('can handle the same element', () => {
+    const parent = document.createElement('div');
+
+    expect(getElementIndexPath(parent, parent)).toEqual([]);
+  });
+});
+
+describe('getFirstTabbable', () => {
+  it('focuses on the next tabbable item', () => {
+    const component = renderIntoDocument(
+      <div>
+        <div className="parent">
+          <button className="a" data-is-visible={true}>
+            a
+          </button>
+          <button className="b" data-is-visible={true}>
+            b
+          </button>
+          <button className="c" data-is-visible={true}>
+            c
+          </button>
+        </div>
+      </div>,
+    );
+
+    const container = ReactDOM.findDOMNode(component as React.ReactInstance) as HTMLElement;
+    const parent = container.querySelector('.parent') as HTMLElement;
+    const buttonA = container.querySelector('.a') as HTMLElement;
+    const buttonB = container.querySelector('.b') as HTMLElement;
+
+    expect(getFirstTabbable(parent, buttonA, true, false)).toEqual(buttonB);
+  });
+
+  it('does not focus on an item with tabIndex of -1', () => {
+    const component = renderIntoDocument(
+      <div>
+        <div className="parent">
+          <button className="a" data-is-visible={true} tabIndex={-1}>
+            a
+          </button>
+          <button className="b" data-is-visible={true} tabIndex={-1}>
+            b
+          </button>
+          <button className="c" data-is-visible={true} tabIndex={-1}>
+            c
+          </button>
+        </div>
+      </div>,
+    );
+
+    const container = ReactDOM.findDOMNode(component as React.ReactInstance) as HTMLElement;
+    const parent = container.querySelector('.parent') as HTMLElement;
+    const buttonA = container.querySelector('.a') as HTMLElement;
+
+    expect(getFirstTabbable(parent, buttonA, true, false)).toEqual(null);
+  });
+});
+
+describe('getLastTabbable', () => {
+  it('focuses on the last tabbable item', () => {
+    const component = renderIntoDocument(
+      <div>
+        <div className="parent">
+          <button className="a" data-is-visible={true}>
+            a
+          </button>
+          <button className="b" data-is-visible={true}>
+            b
+          </button>
+          <button className="c" data-is-visible={true}>
+            c
+          </button>
+        </div>
+      </div>,
+    );
+
+    const container = ReactDOM.findDOMNode(component as React.ReactInstance) as HTMLElement;
+    const parent = container.querySelector('.parent') as HTMLElement;
+    const buttonB = container.querySelector('.b') as HTMLElement;
+    const buttonC = container.querySelector('.c') as HTMLElement;
+
+    expect(getLastTabbable(parent, buttonC, true, false)).toEqual(buttonB);
+  });
+
+  it('does not focus on an item with tabIndex of -1', () => {
+    const component = renderIntoDocument(
+      <div>
+        <div className="parent">
+          <button className="a" data-is-visible={true} tabIndex={-1}>
+            a
+          </button>
+          <button className="b" data-is-visible={true} tabIndex={-1}>
+            b
+          </button>
+          <button className="c" data-is-visible={true} tabIndex={-1}>
+            c
+          </button>
+        </div>
+      </div>,
+    );
+
+    const container = ReactDOM.findDOMNode(component as React.ReactInstance) as HTMLElement;
+    const parent = container.querySelector('.parent') as HTMLElement;
+    const buttonC = container.querySelector('.c') as HTMLElement;
+
+    expect(getLastTabbable(parent, buttonC, true, false)).toEqual(null);
+  });
 });

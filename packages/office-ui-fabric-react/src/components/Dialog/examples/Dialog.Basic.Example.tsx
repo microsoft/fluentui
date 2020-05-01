@@ -1,73 +1,81 @@
 import * as React from 'react';
 import { Dialog, DialogType, DialogFooter } from 'office-ui-fabric-react/lib/Dialog';
 import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { ChoiceGroup } from 'office-ui-fabric-react/lib/ChoiceGroup';
-import './Dialog.Basic.Example.scss';
+import { getId } from 'office-ui-fabric-react/lib/Utilities';
+import { hiddenContentStyle, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
+import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
+import { ContextualMenu } from 'office-ui-fabric-react/lib/ContextualMenu';
 
-export class DialogBasicExample extends React.Component<any, any> {
+const screenReaderOnly = mergeStyles(hiddenContentStyle);
 
-  constructor() {
-    super();
-    this.state = {
-      showDialog: false
-    };
-  }
+export interface IDialogBasicExampleState {
+  hideDialog: boolean;
+  isDraggable: boolean;
+}
+
+export class DialogBasicExample extends React.Component<{}, IDialogBasicExampleState> {
+  public state: IDialogBasicExampleState = {
+    hideDialog: true,
+    isDraggable: false,
+  };
+  // Use getId() to ensure that the IDs are unique on the page.
+  // (It's also okay to use plain strings without getId() and manually ensure uniqueness.)
+  private _labelId: string = getId('dialogLabel');
+  private _subTextId: string = getId('subTextLabel');
+  private _dragOptions = {
+    moveMenuItemText: 'Move',
+    closeMenuItemText: 'Close',
+    menu: ContextualMenu,
+  };
 
   public render() {
+    const { hideDialog, isDraggable } = this.state;
     return (
       <div>
-        <DefaultButton
-          description='Opens the Sample Dialog'
-          onClick={ this._showDialog.bind(this) }
-          text='Open Dialog'
-        />
+        <Checkbox label="Is draggable" onChange={this._toggleDraggable} checked={isDraggable} />
+        <DefaultButton secondaryText="Opens the Sample Dialog" onClick={this._showDialog} text="Open Dialog" />
+        <label id={this._labelId} className={screenReaderOnly}>
+          My sample Label
+        </label>
+        <label id={this._subTextId} className={screenReaderOnly}>
+          My Sample description
+        </label>
+
         <Dialog
-          isOpen={ this.state.showDialog }
-          type={ DialogType.normal }
-          onDismiss={ this._closeDialog.bind(this) }
-          title='All emails together'
-          subText='Your Inbox has changed. No longer does it include favorites, it is a singular destination for your emails.'
-          isBlocking={ false }
-          containerClassName='ms-dialogMainOverride'
+          hidden={hideDialog}
+          onDismiss={this._closeDialog}
+          dialogContentProps={{
+            type: DialogType.normal,
+            title: 'Missing Subject',
+            closeButtonAriaLabel: 'Close',
+            subText: 'Do you want to send this message without a subject?',
+          }}
+          modalProps={{
+            titleAriaId: this._labelId,
+            subtitleAriaId: this._subTextId,
+            isBlocking: false,
+            styles: { main: { maxWidth: 450 } },
+            dragOptions: isDraggable ? this._dragOptions : undefined,
+          }}
         >
-          <ChoiceGroup
-            options={ [
-              {
-                key: 'A',
-                text: 'Option A'
-              },
-              {
-                key: 'B',
-                text: 'Option B',
-                checked: true
-              },
-              {
-                key: 'C',
-                text: 'Option C',
-                disabled: true
-              }
-            ] }
-            onChanged={ this._onChoiceChanged }
-          />
-          { null /** You can also include null values as the result of conditionals */ }
           <DialogFooter>
-            <PrimaryButton onClick={ this._closeDialog.bind(this) } text='Save' />
-            <DefaultButton onClick={ this._closeDialog.bind(this) } text='Cancel' />
+            <PrimaryButton onClick={this._closeDialog} text="Send" />
+            <DefaultButton onClick={this._closeDialog} text="Don't send" />
           </DialogFooter>
         </Dialog>
       </div>
     );
   }
 
-  private _showDialog() {
-    this.setState({ showDialog: true });
-  }
+  private _showDialog = (): void => {
+    this.setState({ hideDialog: false });
+  };
 
-  private _closeDialog() {
-    this.setState({ showDialog: false });
-  }
+  private _closeDialog = (): void => {
+    this.setState({ hideDialog: true });
+  };
 
-  private _onChoiceChanged() {
-    console.log('Choice option change');
-  }
+  private _toggleDraggable = (): void => {
+    this.setState({ isDraggable: !this.state.isDraggable });
+  };
 }

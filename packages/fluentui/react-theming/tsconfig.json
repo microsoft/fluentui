@@ -1,0 +1,9 @@
+{
+  "extends": "@uifabric/build/typescript/tsconfig.common",
+  "compilerOptions": {
+    "composite": true,
+    "rootDir": "src",
+    "outDir": "lib"
+  },
+  "include": ["src"]
+}

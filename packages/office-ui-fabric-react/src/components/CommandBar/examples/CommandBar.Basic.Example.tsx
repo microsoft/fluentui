@@ -1,62 +1,88 @@
 import * as React from 'react';
-import { assign } from 'office-ui-fabric-react/lib/Utilities';
-import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
-import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
+import { CommandBar, ICommandBarItemProps } from 'office-ui-fabric-react/lib/CommandBar';
+import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
 
-export class CommandBarBasicExample extends React.Component<any, any> {
+const overflowProps: IButtonProps = { ariaLabel: 'More commands' };
 
-  constructor(props: any) {
-    super(props);
-    this.state = {
-      isSearchBoxVisible: true,
-      areNamesVisible: true,
-      areIconsVisible: true
-    };
-  }
+export const CommandBarBasicExample: React.FunctionComponent = () => {
+  return (
+    <div>
+      <CommandBar
+        items={_items}
+        overflowItems={_overflowItems}
+        overflowButtonProps={overflowProps}
+        farItems={_farItems}
+        ariaLabel="Use left and right arrow keys to navigate between commands"
+      />
+    </div>
+  );
+};
 
-  public render() {
-    let { items, farItems } = this.props;
-    let { isSearchBoxVisible: searchBoxVisible, areIconsVisible: iconsVisible, areNamesVisible: namesVisible } = this.state;
+const _items: ICommandBarItemProps[] = [
+  {
+    key: 'newItem',
+    text: 'New',
+    cacheKey: 'myCacheKey', // changing this key will invalidate this item's cache
+    iconProps: { iconName: 'Add' },
+    subMenuProps: {
+      items: [
+        {
+          key: 'emailMessage',
+          text: 'Email message',
+          iconProps: { iconName: 'Mail' },
+          ['data-automation-id']: 'newEmailButton', // optional
+        },
+        {
+          key: 'calendarEvent',
+          text: 'Calendar event',
+          iconProps: { iconName: 'Calendar' },
+        },
+      ],
+    },
+  },
+  {
+    key: 'upload',
+    text: 'Upload',
+    iconProps: { iconName: 'Upload' },
+    href: 'https://developer.microsoft.com/en-us/fluentui',
+  },
+  {
+    key: 'share',
+    text: 'Share',
+    iconProps: { iconName: 'Share' },
+    onClick: () => console.log('Share'),
+  },
+  {
+    key: 'download',
+    text: 'Download',
+    iconProps: { iconName: 'Download' },
+    onClick: () => console.log('Download'),
+  },
+];
 
-    let filteredItems = items.map(item => assign({}, item, {
-      name: namesVisible ? item.name : '',
-      icon: iconsVisible ? item.icon : ''
-    }));
+const _overflowItems: ICommandBarItemProps[] = [
+  { key: 'move', text: 'Move to...', onClick: () => console.log('Move to'), iconProps: { iconName: 'MoveToFolder' } },
+  { key: 'copy', text: 'Copy to...', onClick: () => console.log('Copy to'), iconProps: { iconName: 'Copy' } },
+  { key: 'rename', text: 'Rename...', onClick: () => console.log('Rename'), iconProps: { iconName: 'Edit' } },
+];
 
-    let filteredFarItems = farItems.map(item => assign({}, item, {
-      name: namesVisible ? item.name : '',
-      icon: iconsVisible ? item.icon : ''
-    }));
-
-    return (
-      <div>
-        <Toggle
-          label='Show search box'
-          checked={ searchBoxVisible }
-          onChanged={ isSearchBoxVisible => this.setState({ isSearchBoxVisible }) }
-          onText='Visible'
-          offText='Hidden'
-        />
-        <Toggle
-          label='Show names'
-          checked={ namesVisible }
-          onChanged={ areNamesVisible => this.setState({ areNamesVisible }) }
-          onText='Visible'
-          offText='Hidden' />
-        <Toggle
-          label='Show icons'
-          checked={ iconsVisible }
-          onChanged={ areIconsVisible => this.setState({ areIconsVisible }) }
-          onText='Visible'
-          offText='Hidden' />
-        <CommandBar
-          isSearchBoxVisible={ searchBoxVisible }
-          searchPlaceholderText='Search...'
-          elipisisAriaLabel='More options'
-          items={ filteredItems }
-          farItems={ filteredFarItems }
-        />
-      </div>
-    );
-  }
-}
+const _farItems: ICommandBarItemProps[] = [
+  {
+    key: 'tile',
+    text: 'Grid view',
+    // This needs an ariaLabel since it's icon-only
+    ariaLabel: 'Grid view',
+    iconOnly: true,
+    iconProps: { iconName: 'Tiles' },
+    onClick: () => console.log('Tiles'),
+  },
+  {
+    key: 'info',
+    text: 'Info',
+    // This needs an ariaLabel since it's icon-only
+    ariaLabel: 'Info',
+    iconOnly: true,
+    iconProps: { iconName: 'Info' },
+    onClick: () => console.log('Info'),
+  },
+];

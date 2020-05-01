@@ -7,21 +7,17 @@
     "sourceMap": true,
     "experimentalDecorators": true,
     "importHelpers": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitAny": true,
+    "noUnusedLocals": true,
+    "strictNullChecks": true,
     "moduleResolution": "node",
-    "lib": [
-      "es2017",
-      "dom"
-    ],
-    "types": [
-      "chai",
-      "mocha",
-      "webpack-env"
-    ]
+    "preserveConstEnums": true,
+    "skipLibCheck": true,
+    "noImplicitThis": true,
+    "outDir": "lib",
+    "lib": ["es5", "dom"],
+    "types": ["webpack-env", "jest", "es6-promise"]
   },
-  "exclude": [
-    "node_modules",
-    "dist",
-    "lib",
-    "lib-amd"
-  ]
+  "include": ["src"]
 }

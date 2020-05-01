@@ -1,3 +1,5 @@
 export * from './TeachingBubble';
+export * from './TeachingBubble.base';
+export * from './TeachingBubble.types';
 export * from './TeachingBubbleContent';
-export * from './TeachingBubble.Props';
+export * from './TeachingBubbleContent.base';

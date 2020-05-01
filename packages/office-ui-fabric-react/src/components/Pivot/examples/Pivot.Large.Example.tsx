@@ -1,28 +1,19 @@
 import * as React from 'react';
 import { Label } from 'office-ui-fabric-react/lib/Label';
-import {
-  Pivot,
-  PivotItem,
-  PivotLinkSize
-} from 'office-ui-fabric-react/lib/Pivot';
+import { Pivot, PivotItem, PivotLinkSize } from 'office-ui-fabric-react/lib/Pivot';
 
-export class PivotLargeExample extends React.Component<any, any> {
-  public render() {
-    return (
-      <div>
-        <Pivot linkSize={ PivotLinkSize.large }>
-          <PivotItem linkText='My Files'>
-            <Label>Pivot #1</Label>
-          </PivotItem>
-          <PivotItem linkText='Recent'>
-            <Label>Pivot #2</Label>
-          </PivotItem>
-          <PivotItem linkText='Shared with me'>
-            <Label>Pivot #3</Label>
-          </PivotItem>
-        </Pivot>
-      </div>
-    );
-  }
-
-}
+export const PivotLargeExample = () => (
+  <div>
+    <Pivot aria-label="Large Link Size Pivot Example" linkSize={PivotLinkSize.large}>
+      <PivotItem headerText="My Files">
+        <Label>Pivot #1</Label>
+      </PivotItem>
+      <PivotItem headerText="Recent">
+        <Label>Pivot #2</Label>
+      </PivotItem>
+      <PivotItem headerText="Shared with me">
+        <Label>Pivot #3</Label>
+      </PivotItem>
+    </Pivot>
+  </div>
+);

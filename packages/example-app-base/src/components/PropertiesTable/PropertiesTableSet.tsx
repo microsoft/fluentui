@@ -1,60 +1,53 @@
 import * as React from 'react';
-import { IProperty, PropertyType } from '../../utilities/parser/index';
+import { IProperty, PropertyType, parse } from '../../utilities/parser/index';
 import { PropertiesTable } from './PropertiesTable';
-import { IPropertiesTableSetProps } from './PropertiesTableSet.Props';
-import { parse } from '../../utilities/parser/index';
+import {
+  IPropertiesTableSetProps,
+  IPropertiesTableSetStyleProps,
+  IPropertiesTableSetStyles,
+} from './PropertiesTableSet.types';
+import { getStyles } from './PropertiesTableSet.styles';
+import { styled } from 'office-ui-fabric-react/lib/Utilities';
 
-export interface IPropertiesTableSetState {
-  properties: Array<IProperty>;
-}
+const PropertiesTableSetBase: React.FunctionComponent<IPropertiesTableSetProps> = props => {
+  const { componentName, componentPath, sources } = props;
+  let src: string;
+  let properties: IProperty[] = [];
 
-export class PropertiesTableSet extends React.Component<IPropertiesTableSetProps, IPropertiesTableSetState> {
-  public static defaultProps = {
-    title: 'Properties'
-  };
-
-  constructor(props: IPropertiesTableSetProps) {
-    super(props);
-    let { componentName, componentPath, sources } = props;
-    let src;
-    let properties: IProperty[] = [];
-
-    if (sources) {
-      src = '';
-      sources.forEach(source => src += source);
-    } else if (componentPath && componentName) {
-      src = require(componentPath + componentName + '.Props.ts');
-    } else {
-      throw new Error('PropertiesTableSet was used without source or a componentPath/name');
-    }
-
-    if (props.renderOnly) {
-      props.renderOnly.forEach((item: string) => {
-        properties = properties.concat(parse(src, item));
-      });
-    } else {
-      properties = parse(src);
-    }
-
-    this.state = {
-      properties: properties
-    };
+  if (sources) {
+    src = sources.join('');
+  } else if (componentPath && componentName) {
+    src = require(componentPath + componentName + '.types.ts');
+  } else {
+    throw new Error('PropertiesTableSet was used without source or a componentPath/name');
   }
 
-  public renderEach() {
-    return this.state.properties.map((item: IProperty) =>
-      (<PropertiesTable
-        key={ item.propertyName }
-        title={ item.name === ('I' + this.props.componentName) ? (this.props.componentName + ' class') : item.propertyName }
-        properties={ item.property }
-        renderAsEnum={ item.propertyType === PropertyType.enum } />));
+  if (props.renderOnly) {
+    props.renderOnly.forEach((item: string) => {
+      properties = properties.concat(parse(src, item));
+    });
+  } else {
+    properties = parse(src);
   }
 
-  public render() {
-    return (
-      <div>
-        { this.renderEach() }
-      </div>
-    );
-  }
-}
+  return (
+    <div>
+      {properties.map(item => (
+        <PropertiesTable
+          key={item.propertyName}
+          title={item.name === 'I' + props.componentName ? props.componentName + ' class' : item.propertyName}
+          properties={item.property}
+          renderAsEnum={item.propertyType === PropertyType.enum}
+        />
+      ))}
+    </div>
+  );
+};
+
+export const PropertiesTableSet: React.FunctionComponent<IPropertiesTableSetProps> = styled<
+  IPropertiesTableSetProps,
+  IPropertiesTableSetStyleProps,
+  IPropertiesTableSetStyles
+>(PropertiesTableSetBase, getStyles, undefined, {
+  scope: 'PropertiesTableSet',
+});

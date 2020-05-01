@@ -1,0 +1,2 @@
+- Overload your Nav. Too many items in the Nav is indicative of an app that is poorly organized or trying to do too much.
+- Include actions. You may reserve a space for actions, if you keep them well separated from the main Nav and their appearance makes it obvious that tapping them will execute a command instead of navigating.

@@ -1,120 +1,53 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
-
-/* tslint:disable:no-string-literal */
-
-import * as ReactDOM from 'react-dom';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { FocusTrapZone } from 'office-ui-fabric-react/lib/FocusTrapZone';
-import { Link } from 'office-ui-fabric-react/lib/Link';
-import { TextField } from 'office-ui-fabric-react/lib/TextField';
-import { Toggle, IToggle } from 'office-ui-fabric-react/lib/Toggle';
-import { autobind } from 'office-ui-fabric-react/lib/Utilities';
-import './FocusTrapZone.Box.Example.scss';
+import { Stack, IStackStyles } from 'office-ui-fabric-react/lib/Stack';
+import { Toggle, IToggleStyles } from 'office-ui-fabric-react/lib/Toggle';
+import { memoizeFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { useBoolean } from '@uifabric/react-hooks';
 
-interface IFocusTrapComponentProps {
-  name: string;
-  isActive: boolean;
-  setIsActive: (name: string, isActive: boolean) => void;
-}
+const getStackStyles = memoizeFunction(
+  (isActive: boolean): Partial<IStackStyles> => ({
+    root: { border: `2px solid ${isActive ? '#ababab' : 'transparent'}`, padding: 10 },
+  }),
+);
 
-interface IFocusTrapComponentState {
-}
-
-class FocusTrapComponent extends React.Component<IFocusTrapComponentProps, IFocusTrapComponentState> {
-
-  public render() {
-    let contents = (
-      <div className='ms-FocusTrapComponent'>
-        <DefaultButton
-          onClick={ this._onStringButtonClicked }
-          text={ this.props.name }
-        />
-        <Toggle
-          defaultChecked={ this.props.isActive }
-          onChanged={ this._onFocusTrapZoneToggleChanged }
-          label='Focus Trap Zone'
-          onText='On'
-          offText='Off' />
-        {
-          this.props.children
-        }
-      </div>
-    );
-
-    if (this.props.isActive) {
-      return (
-        <FocusTrapZone forceFocusInsideTrap={ false }>
-          {
-            contents
-          }
-        </FocusTrapZone>
-      );
-    }
-    return contents;
-  }
-
-  @autobind
-  private _onStringButtonClicked() {
-    console.log(this.props.name);
-  }
-
-  @autobind
-  private _onFocusTrapZoneToggleChanged(isChecked: boolean) {
-    this.props.setIsActive(this.props.name, isChecked);
-  }
-
-}
-
-export interface IFocusTrapZoneNestedExampleState {
-  stateMap: {
-    [key: string]: boolean;
+const stackTokens = { childrenGap: 10 };
+const fixedWidthToggleStyles: Partial<IToggleStyles> = { root: { width: 200 } };
+const FocusTrapComponent: React.FunctionComponent<React.PropsWithChildren<{ zoneNumber: number }>> = props => {
+  const [isActive, { toggle: toggleIsActive }] = useBoolean(false);
+  const { zoneNumber, children } = props;
+  const onStringButtonClicked = (): void => {
+    alert(`Button ${zoneNumber} clicked`);
   };
-}
 
-const NAMES: string[] = ['One', 'Two', 'Three', 'Four', 'Five'];
+  return (
+    <FocusTrapZone disabled={!isActive} forceFocusInsideTrap={false}>
+      <Stack horizontalAlign="start" tokens={stackTokens} styles={getStackStyles(isActive)}>
+        <Toggle
+          checked={isActive}
+          onChange={toggleIsActive}
+          label={'Enable trap zone ' + zoneNumber}
+          onText="On (toggle to exit)"
+          offText="Off"
+          // Set a width on these toggles in the horizontal zone to prevent jumping when enabled
+          styles={zoneNumber >= 2 && zoneNumber <= 4 ? fixedWidthToggleStyles : undefined}
+        />
+        <DefaultButton onClick={onStringButtonClicked} text={`Zone ${zoneNumber} button`} />
+        {children}
+      </Stack>
+    </FocusTrapZone>
+  );
+};
 
-export default class FocusTrapZoneNestedExample extends React.Component<React.HTMLAttributes<HTMLDivElement>, IFocusTrapZoneNestedExampleState> {
-
-  constructor() {
-    super();
-
-    this.state = {
-      stateMap: {}
-    };
-  }
-
-  public render() {
-    let { stateMap } = this.state;
-
-    return (
-      <div>
-        <FocusTrapComponent name={ 'One' } isActive={ !!stateMap['One'] } setIsActive={ this._setIsActive } >
-          <FocusTrapComponent name={ 'Two' } isActive={ !!stateMap['Two'] } setIsActive={ this._setIsActive } >
-            <FocusTrapComponent name={ 'Three' } isActive={ !!stateMap['Three'] } setIsActive={ this._setIsActive } />
-            <FocusTrapComponent name={ 'Four' } isActive={ !!stateMap['Four'] } setIsActive={ this._setIsActive } />
-          </FocusTrapComponent>
-          <FocusTrapComponent name={ 'Five' } isActive={ !!stateMap['Five'] } setIsActive={ this._setIsActive } />
-        </FocusTrapComponent>
-        <DefaultButton onClick={ this._randomize }>Randomize</DefaultButton>
-      </div>
-    );
-  }
-
-  @autobind
-  private _setIsActive(name: string, isActive: boolean): void {
-    this.state.stateMap[name] = isActive;
-    this.forceUpdate();
-  }
-
-  @autobind
-  private _randomize(): void {
-    NAMES.forEach((name) => {
-      this.state.stateMap[name] = Math.random() >= .5;
-    });
-
-    this.forceUpdate();
-  }
-
-}
+export const FocusTrapZoneNestedExample = () => (
+  <div>
+    <FocusTrapComponent zoneNumber={1}>
+      <FocusTrapComponent zoneNumber={2}>
+        <FocusTrapComponent zoneNumber={3} />
+        <FocusTrapComponent zoneNumber={4} />
+      </FocusTrapComponent>
+      <FocusTrapComponent zoneNumber={5} />
+    </FocusTrapComponent>
+  </div>
+);

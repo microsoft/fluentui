@@ -1,28 +1,40 @@
-import {
-  mergeStyles,
-  mergeStyleSets,
-  ITheme,
-  getTheme
-} from '../../Styling';
-import {
-  memoizeFunction
-} from '../../Utilities';
-import { IIconStyles } from './Icon.Props';
+import { IIconStyleProps, IIconStyles } from './Icon.types';
+import { mergeStyleSets } from '../../Styling';
 
-export const getStyles = memoizeFunction((
-  theme: ITheme = getTheme(),
-  customStyles: IIconStyles = undefined
-): IIconStyles => {
-  let iconStyles = {
-
-    root: mergeStyles({
-      display: 'inline-block'
-    }),
-
-    imageContainer: mergeStyles({
-      overflow: 'hidden'
-    })
-  };
-
-  return mergeStyleSets(iconStyles, customStyles);
+/** Class names used in themeable and non-themeable Icon components */
+export const classNames = mergeStyleSets({
+  root: {
+    display: 'inline-block',
+  },
+  placeholder: [
+    'ms-Icon-placeHolder',
+    {
+      width: '1em',
+    },
+  ],
+  image: [
+    'ms-Icon-imageContainer',
+    {
+      overflow: 'hidden',
+    },
+  ],
 });
+/** Class name used only in non-themeable Icon components */
+export const MS_ICON = 'ms-Icon';
+
+export const getStyles = (props: IIconStyleProps): IIconStyles => {
+  const { className, iconClassName, isPlaceholder, isImage, styles } = props;
+
+  return {
+    root: [
+      isPlaceholder && classNames.placeholder,
+      classNames.root,
+      isImage && classNames.image,
+      iconClassName,
+      className,
+      styles && styles.root,
+      // tslint:disable-next-line:deprecation
+      styles && styles.imageContainer,
+    ],
+  };
+};

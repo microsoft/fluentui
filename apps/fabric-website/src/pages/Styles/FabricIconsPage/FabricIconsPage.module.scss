@@ -1,0 +1,5 @@
+@import '../../../styles/variables';
+
+.iconGrid ul {
+  @include ms-padding-left(0);
+}

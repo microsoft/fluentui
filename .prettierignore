@@ -1,0 +1,26 @@
+# generated or imported files
+package-deps.json
+CHANGELOG.*
+fabric-icons-*
+version.ts
+dndSim.js
+monaco-typescript.d.ts
+*.api.md
+*.scss.ts
+_*.scss
+
+# messes up formatting
+packages/tslint-rules/tslint.json
+
+# folders of generated files
+lib
+lib-amd
+lib-esm
+lib-commonjs
+dist
+node_modules
+common/changes
+common/scripts
+coverage
+etc
+change

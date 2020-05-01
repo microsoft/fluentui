@@ -1,0 +1,74 @@
+[
+  {
+    "name": "themeDarker",
+    "hex": "#004578",
+    "code": {
+      "core": "$ms-color-themeDarker",
+      "themeSlot": "themeDarker"
+    }
+  },
+  {
+    "name": "themeDark",
+    "hex": "#005a9e",
+    "code": {
+      "core": "$ms-color-themeDark",
+      "themeSlot": "themeDark"
+    }
+  },
+  {
+    "name": "themeDarkAlt",
+    "hex": "#106ebe",
+    "code": {
+      "core": "$ms-color-themeDarkAlt",
+      "themeSlot": "themeDarkAlt"
+    }
+  },
+  {
+    "name": "themePrimary",
+    "hex": "#0078d4",
+    "code": {
+      "core": "$ms-color-themePrimary",
+      "themeSlot": "themePrimary"
+    }
+  },
+  {
+    "name": "themeSecondary",
+    "hex": "#2b88d8",
+    "code": {
+      "core": "$ms-color-themeSecondary",
+      "themeSlot": "themeSecondary"
+    }
+  },
+  {
+    "name": "themeTertiary",
+    "hex": "#71afe5",
+    "code": {
+      "core": "$ms-color-themeTertiary",
+      "themeSlot": "themeTertiary"
+    }
+  },
+  {
+    "name": "themeLight",
+    "hex": "#c7e0f4",
+    "code": {
+      "core": "$ms-color-themeLight",
+      "themeSlot": "themeLight"
+    }
+  },
+  {
+    "name": "themeLighter",
+    "hex": "#deecf9",
+    "code": {
+      "core": "$ms-color-themeLighter",
+      "themeSlot": "themeLighter"
+    }
+  },
+  {
+    "name": "themeLighterAlt",
+    "hex": "#eff6fc",
+    "code": {
+      "core": "$ms-color-themeLighterAlt",
+      "themeSlot": "themeLighterAlt"
+    }
+  }
+]

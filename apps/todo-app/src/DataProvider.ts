@@ -1,4 +1,4 @@
-import update = require('immutability-helper');
+import * as update from 'immutability-helper';
 import { Promise } from 'es6-promise';
 import { findIndex } from 'office-ui-fabric-react/lib/Utilities';
 import { ITodoItem, IDataProvider } from './types/index';
@@ -25,7 +25,9 @@ export default class DataProvider implements IDataProvider {
   /**
    * The items store in the local. It only contains the data recently fetched from server.
    */
-  public get items(): Array<ITodoItem> { return this._items; }
+  public get items(): Array<ITodoItem> {
+    return this._items;
+  }
   public set items(value: Array<ITodoItem>) {
     this._items = value;
     this._emitChange();
@@ -34,7 +36,9 @@ export default class DataProvider implements IDataProvider {
   /**
    * Whether there is unfinished server request currently.
    */
-  public get isLoading(): boolean { return this._isLoading; }
+  public get isLoading(): boolean {
+    return this._isLoading;
+  }
   public set isLoading(value: boolean) {
     this._isLoading = value;
     this._emitChange();
@@ -45,23 +49,23 @@ export default class DataProvider implements IDataProvider {
       {
         id: '61b59681-2a82-4a51-b221-8c35e333ae89',
         title: 'Finish Sample Todo web part before dev kitchen',
-        isComplete: false
+        isComplete: false,
       },
       {
         id: '94a844ae-0c6a-4820-8042-dbc386bdf930',
         title: 'Finish All the work in Todo web part before dev kitchen',
-        isComplete: false
+        isComplete: false,
       },
       {
         id: '5fa55618-90f9-4b5f-b12d-60c9fb1fc7f0',
         title: 'SharePoint API investigation for Todo web part',
-        isComplete: true
+        isComplete: true,
       },
       {
         id: '2ae54c74-1395-4a49-8dd2-4857efdd0e5e',
         title: 'Bug fixing of Pivot Control',
-        isComplete: true
-      }
+        isComplete: true,
+      },
     ];
     this._isLoading = false;
 
@@ -77,11 +81,11 @@ export default class DataProvider implements IDataProvider {
   public createItem(title: string): Promise<ITodoItem[]> {
     this.isLoading = true;
 
-    return new Promise<ITodoItem[]>((resolve) => {
+    return new Promise<ITodoItem[]>(resolve => {
       const newItem: ITodoItem = {
         id: this._generateGuid(),
         title: title,
-        isComplete: false
+        isComplete: false,
       };
 
       setTimeout(() => {
@@ -96,9 +100,8 @@ export default class DataProvider implements IDataProvider {
    * Delete a item from the list through data provider.
    */
   public deleteItem(delItem: ITodoItem): Promise<ITodoItem[]> {
-    return new Promise<ITodoItem[]>((resolve) => {
-      this.items =
-        this.items.filter((item: ITodoItem) => item.id !== delItem.id);
+    return new Promise<ITodoItem[]>(resolve => {
+      this.items = this.items.filter((item: ITodoItem) => item.id !== delItem.id);
       resolve(this.items);
     });
   }
@@ -110,16 +113,12 @@ export default class DataProvider implements IDataProvider {
    */
   public toggleComplete(item: ITodoItem): Promise<ITodoItem[]> {
     // Create a new Item in which the PercentComplete value has been changed.
-    const newItem: ITodoItem = update(item, {
-      isComplete: { $set: item.isComplete === true ? false : true }
+    const newItem: ITodoItem = (update as any)(item, {
+      isComplete: { $set: item.isComplete === true ? false : true },
     });
 
     return new Promise<ITodoItem[]>((resolve, reject) => {
-      const index: number =
-        findIndex(
-          this.items,
-          (item: ITodoItem) => item.id === newItem.id
-        );
+      const index: number = findIndex(this.items, (current: ITodoItem) => current.id === newItem.id);
       if (index !== -1) {
         this.items[index] = newItem;
         this.items = this.items.slice(0);
@@ -159,8 +158,12 @@ export default class DataProvider implements IDataProvider {
   }
 
   private _generateGuid(): string {
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-      var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {
+      // tslint:disable-next-line:no-bitwise
+      const r = (Math.random() * 16) | 0;
+      // tslint:disable-next-line:no-bitwise
+      const v = c === 'x' ? r : (r & 0x3) | 0x8;
+
       return v.toString(16);
     });
   }

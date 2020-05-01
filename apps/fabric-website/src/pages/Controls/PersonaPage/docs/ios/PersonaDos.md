@@ -1,0 +1,2 @@
+- Choose the metadata in a PersonaListView that makes the most sense for the task at hand. In business settings, the person's role or title is most commonly seen.
+- Decide whether the view you are making requires an online status. Choose to switch this option on or off. The online status of a user depicts whether that user is "Online", "Busy", "Out of Office", etc.

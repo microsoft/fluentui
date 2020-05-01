@@ -1,13 +1,8 @@
 @import '../../common/common';
 
-// Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information.
-
-//
-// Office UI Fabric
-// --------------------------------------------------
 // Check styles
 
-$checkBoxHeight: 24px;
+$checkBoxHeight: 18px;
 
 .root {
   line-height: 1;
@@ -15,37 +10,62 @@ $checkBoxHeight: 24px;
   height: $checkBoxHeight;
   vertical-align: top;
   position: relative;
+
   @include ms-user-select(none);
+
+  &:before {
+    content: '';
+    position: absolute;
+    left: 1px;
+    right: 1px;
+    bottom: 1px;
+    top: 1px;
+    border-radius: 50%;
+    opacity: 1;
+    background: $bodyBackgroundColor;
+  }
+
+  &.rootIsChecked:before {
+    background: $ms-color-themePrimary;
+    opacity: 1;
+    @include high-contrast {
+      background: Window;
+    }
+  }
+
+  .check {
+    opacity: 0;
+  }
+
+  .checkHost:hover &,
+  .checkHost:focus &,
+  &:hover,
+  &:focus,
+  &.rootIsChecked {
+    .check {
+      opacity: 1;
+    }
+  }
 }
 
-.root:hover,
-.root:focus,
-.rootIsChecked {
-  opacity: 1;
-}
-
-.background,
 .circle,
 .check {
-  position: absolute;
-  height: $checkBoxHeight;
-  width: $checkBoxHeight;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
   font-size: $checkBoxHeight;
-}
-
-.background {
-  color: $ms-color-white;
-}
-
-.rootIsChecked .background {
-  color: $ms-color-themePrimary;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: $checkBoxHeight;
+  height: $checkBoxHeight;
+  text-align: center;
+  vertical-align: middle;
 }
 
 .circle {
-  color: $ms-color-neutralTertiaryAlt;
+  color: $ms-color-neutralSecondary;
+
+  @include high-contrast {
+    color: WindowText;
+  }
 }
 
 .rootIsChecked .circle {
@@ -53,13 +73,21 @@ $checkBoxHeight: 24px;
 }
 
 .check {
-  width: auto;
-  height: auto;
-  color: $ms-color-neutralTertiaryAlt;
-  font-size: 12px;
+  color: $ms-color-neutralSecondary;
+  font-size: 16px;
+  left: 0.5px;
+
+  @include high-contrast {
+    -ms-high-contrast-adjust: none;
+  }
 }
 
 .rootIsChecked .check {
   color: $ms-color-white;
   font-weight: 900;
+
+  @include high-contrast {
+    border: none;
+    color: WindowText;
+  }
 }

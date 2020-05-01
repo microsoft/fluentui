@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MarqueeSelection renders MarqueeSelection correctly 1`] = `
+<div
+  class=
+
+      {
+        cursor: default;
+        position: relative;
+      }
+>
+  <div
+    class=
+
+        {
+          background: rgba(255, 0, 0, 0);
+          bottom: 0px;
+          left: 0px;
+          position: absolute;
+          right: 0px;
+          top: 0px;
+        }
+        @media screen and (-ms-high-contrast: active){& {
+          background-color: transparent;
+          background: none;
+        }
+  />
+  <div
+    class=
+
+        {
+          border: 1px solid #0078d4;
+          box-sizing: border-box;
+          pointer-events: none;
+          position: absolute;
+          z-index: 10;
+        }
+        @media screen and (-ms-high-contrast: active){& {
+          border-color: Highlight;
+        }
+    style="left: 0px; top: 0px; width: 100px; height: 100px;"
+  >
+    <div
+      class=
+
+          {
+            background-color: #0078d4;
+            bottom: 0px;
+            box-sizing: border-box;
+            left: 0px;
+            opacity: 0.1;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+          }
+          @media screen and (-ms-high-contrast: active){& {
+            background-color: transparent;
+            background: none;
+          }
+    />
+  </div>
+</div>
+`;

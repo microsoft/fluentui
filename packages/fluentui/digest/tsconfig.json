@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "outDir": "lib",
+    "lib": ["es2015", "dom"],
+    "jsx": "react",
+    "moduleResolution": "node",
+    "declaration": true,
+    "skipLibCheck": true,
+    "types": ["node"],
+    "baseUrl": ".",
+    "allowSyntheticDefaultImports": true,
+    "paths": {
+      "stories/*": ["src/*"]
+    }
+  },
+  "include": ["src"]
+}

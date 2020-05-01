@@ -1,3 +1,18 @@
+# FluentUI code
+*.source.json
+*.info.json
+*.tsbuildinfo
+packages/fluentui/docs/src/componentInfo
+packages/fluentui/docs/src/componentMenu.json
+packages/fluentui/docs/src/behaviorMenu.json
+packages/fluentui/docs/src/bundleStats.json
+packages/fluentui/docs/src/currentBundleStats.json
+packages/fluentui/docs/src/exampleMenus
+packages/fluentui/docs/src/exampleSources
+packages/fluentui/docs/dist/
+packages/fluentui/ability-attributes/src/schema.ts
+stats/
+
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
@@ -42,11 +57,11 @@ node_modules
 temp
 lib
 lib-amd
+lib-commonjs
+lib-es2015
 coverage
 dist
-npm-debug.log
-npminstall-log.txt
-test-dependencies
+dist-storybook
 screenshots
 
 *.tar.gz
@@ -62,15 +77,10 @@ drop/
 
 # Visual Studio Temp Project
 .vs/
-bin/
-*.suo
-*.csproj.user
-*.userosscache
 *.sublime-project
 *.sublime-workspace
 .idea
 /.settings/
-OneDrive.sln.ide/*
 
 # NPM Install Temp
 __temp/
@@ -94,8 +104,12 @@ ftpconfig.json
 # Package output folder
 package
 
-# Log files from building
+# Logs
 *.log
+npminstall-log.txt
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
 # Dependency change files generated from npmx aka rush
 package-deps.json
@@ -111,3 +125,25 @@ gulp-cache
 
 # NPM debug logs
 npm-debug.log.*
+shrinkwrap.yaml
+package-lock.json
+
+*.swp
+
+# Temporary files
+*~
+*swp
+*swo
+
+# Fabric website
+apps/fabric-website/flights/
+
+# Rush files - since we are moving away from it
+/common
+rush.json
+
+# package manifest
+/package-manifest.json
+
+# Copied monaco-editor files
+/packages/monaco-editor/esm

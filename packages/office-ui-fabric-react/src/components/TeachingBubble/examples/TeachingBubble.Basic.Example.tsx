@@ -1,65 +1,42 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
-
 import { DefaultButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import { TeachingBubble } from 'office-ui-fabric-react/lib/TeachingBubble';
+import { useBoolean } from '@uifabric/react-hooks';
 
-export interface ITeachingBubbleBasicExampleState {
-  isTeachingBubbleVisible?: boolean;
-}
+const examplePrimaryButtonProps: IButtonProps = {
+  children: 'Try it out',
+};
 
-export class TeachingBubbleBasicExample extends React.Component<any, ITeachingBubbleBasicExampleState> {
-  private _menuButtonElement: HTMLElement;
+export const TeachingBubbleBasicExample: React.FunctionComponent = () => {
+  const [teachingBubbleVisible, { toggle: toggleTeachingBubbleVisible }] = useBoolean(false);
+  const exampleSecondaryButtonProps: IButtonProps = React.useMemo(
+    () => ({
+      children: 'Maybe later',
+      onClick: toggleTeachingBubbleVisible,
+    }),
+    [toggleTeachingBubbleVisible],
+  );
 
-  public constructor() {
-    super();
+  return (
+    <div>
+      <DefaultButton
+        id="targetButton"
+        onClick={toggleTeachingBubbleVisible}
+        text={teachingBubbleVisible ? 'Hide TeachingBubble' : 'Show TeachingBubble'}
+      />
 
-    this._onDismiss = this._onDismiss.bind(this);
-
-    this.state = {
-      isTeachingBubbleVisible: false,
-    };
-  }
-
-  public render() {
-    let { isTeachingBubbleVisible } = this.state;
-    let examplePrimaryButton: IButtonProps = {
-      children: 'Try it out'
-    };
-    let exampleSecondaryButtonProps: IButtonProps = {
-      children: 'May be later',
-      onClick: this._onDismiss
-    };
-
-    return (
-      <div className='ms-TeachingBubbleExample'>
-        <span className='ms-TeachingBubbleBasicExample-buttonArea' ref={ (menuButton) => this._menuButtonElement = menuButton }>
-          <DefaultButton
-            onClick={ this._onDismiss }
-            text={ isTeachingBubbleVisible ? 'Hide TeachingBubble' : 'Show TeachingBubble' }
-          />
-        </span>
-        { isTeachingBubbleVisible ? (
-          <div>
-            <TeachingBubble
-              targetElement={ this._menuButtonElement }
-              primaryButtonProps={ examplePrimaryButton }
-              secondaryButtonProps={ exampleSecondaryButtonProps }
-              onDismiss={ this._onDismiss }
-              headline='Discover what’s trending around you'
-            >
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, nulla, ipsum? Molestiae quis aliquam magni harum non?
-            </TeachingBubble>
-          </div>
-        ) : (null) }
-      </div>
-    );
-  }
-
-  private _onDismiss(ev: any) {
-    this.setState({
-      isTeachingBubbleVisible: !this.state.isTeachingBubbleVisible
-    });
-  }
-}
+      {teachingBubbleVisible && (
+        <TeachingBubble
+          target="#targetButton"
+          primaryButtonProps={examplePrimaryButtonProps}
+          secondaryButtonProps={exampleSecondaryButtonProps}
+          onDismiss={toggleTeachingBubbleVisible}
+          headline="Discover what’s trending around you"
+        >
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, nulla, ipsum? Molestiae quis aliquam magni
+          harum non?
+        </TeachingBubble>
+      )}
+    </div>
+  );
+};

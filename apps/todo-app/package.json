@@ -1,35 +1,36 @@
 {
   "name": "todo-app",
   "description": "Sample todo app using office-ui-fabric-react.",
-  "version": "1.0.3",
+  "version": "7.0.0",
   "private": true,
   "scripts": {
-    "build": "gulp",
-    "clean": "gulp clean",
-    "start": "gulp serve",
-    "test": "gulp test"
+    "build": "just-scripts build",
+    "bundle": "just-scripts bundle",
+    "lint": "just-scripts lint",
+    "test": "just-scripts test",
+    "just": "just-scripts",
+    "clean": "just-scripts clean",
+    "code-style": "just-scripts code-style",
+    "start": "just-scripts dev"
   },
   "devDependencies": {
-    "@microsoft/web-library-build": ">=3.0.0-0 <4.0.0-0",
-    "@types/chai": "^3.4.35",
-    "@types/enzyme": "^2.7.5",
-    "@types/es6-promise": "^0.0.32",
-    "@types/mocha": "^2.2.39",
-    "@types/react": "^15.0.25",
-    "@types/react-addons-test-utils": "^0.14.18",
-    "@types/react-dom": "^15.5.0",
-    "@types/webpack-env": "^1.13.0",
-    "react-addons-test-utils": "^15.4.2"
+    "@types/es6-promise": "0.0.32",
+    "@types/react": "16.8.25",
+    "@types/react-dom": "16.8.4",
+    "@types/webpack-env": "1.15.1",
+    "@uifabric/tslint-rules": "^7.2.0",
+    "@uifabric/build": "^7.0.0"
   },
   "dependencies": {
-    "@microsoft/load-themed-styles": ">=1.2.2 <2.0.0",
+    "@uifabric/set-version": "^7.0.11",
+    "@microsoft/load-themed-styles": "^1.10.26",
     "es6-promise": "^4.1.0",
-    "immutability-helper": "^2.0.0",
-    "office-ui-fabric-core": ">=7.0.0 <8.0.0",
-    "office-ui-fabric-react": ">=4.5.0 <5.0.0",
-    "react": "^15.4.2",
-    "react-dom": "^15.4.2",
-    "typescript": "2.2.2",
-    "tslib": "^1.6.0"
+    "immutability-helper": "~2.8.1",
+    "office-ui-fabric-react": "^7.110.1",
+    "react": "16.8.6",
+    "react-app-polyfill": "~1.0.1",
+    "react-dom": "16.8.6",
+    "typescript": "3.7.2",
+    "tslib": "^1.10.0"
   }
 }

@@ -1,0 +1,36 @@
+{
+  "name": "@uifabric/merge-styles",
+  "version": "7.11.1",
+  "description": "Style loading utilities.",
+  "main": "lib-commonjs/index.js",
+  "module": "lib/index.js",
+  "sideEffects": [
+    "lib/version.js"
+  ],
+  "typings": "lib/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/fluentui"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "just-scripts build",
+    "bundle": "just-scripts bundle",
+    "lint": "just-scripts lint",
+    "test": "just-scripts test",
+    "just": "just-scripts",
+    "clean": "just-scripts clean",
+    "code-style": "just-scripts code-style",
+    "start-test": "just-scripts jest-watch",
+    "update-api": "just-scripts update-api"
+  },
+  "devDependencies": {
+    "@types/jest": "~24.9.0",
+    "@uifabric/tslint-rules": "^7.2.0",
+    "@uifabric/build": "^7.0.0"
+  },
+  "dependencies": {
+    "@uifabric/set-version": "^7.0.11",
+    "tslib": "^1.10.0"
+  }
+}

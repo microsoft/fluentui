@@ -5,16 +5,13 @@
 // Variables
 @import 'variables';
 
-// Utilities
-@import 'utilities';
-
 // Mixins
 @import 'mixins';
 
 // Reset all browser styling
 @import 'reset';
 
-// Fabric overrides
+// Fluent UI overrides
 @import 'overrides';
 
 // Base styles
@@ -22,6 +19,3 @@
 
 // Typography
 @import 'typography';
-
-// Code highlights
-@import 'highlight';

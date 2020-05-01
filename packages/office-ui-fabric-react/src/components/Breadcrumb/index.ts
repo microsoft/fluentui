@@ -1,2 +1,3 @@
 export * from './Breadcrumb';
-export * from './Breadcrumb.Props';
+export * from './Breadcrumb.base';
+export * from './Breadcrumb.types';

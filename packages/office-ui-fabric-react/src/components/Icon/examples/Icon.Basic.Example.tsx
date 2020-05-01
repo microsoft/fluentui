@@ -1,17 +1,22 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
-import { Icon } from 'office-ui-fabric-react/lib/Icon';
-import './IconExample.scss';
+import { FontIcon } from 'office-ui-fabric-react/lib/Icon';
+import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
-export class IconBasicExample extends React.Component<any, any> {
-  public render() {
-    return (
-      <div>
-        <Icon iconName='CompassNW' className='ms-IconExample' />
-        <Icon iconName='Dictionary' className='ms-IconExample' />
-        <Icon iconName='TrainSolid' className='ms-IconExample' />
-      </div>
-    );
-  }
-}
+const iconClass = mergeStyles({
+  fontSize: 50,
+  height: 50,
+  width: 50,
+  margin: '0 25px',
+});
+
+export const IconBasicExample: React.FunctionComponent = () => {
+  // FontIcon is an optimized variant of standard Icon.
+  // You could also use the standard Icon here.
+  return (
+    <div>
+      <FontIcon iconName="CompassNW" className={iconClass} />
+      <FontIcon iconName="Dictionary" className={iconClass} />
+      <FontIcon iconName="TrainSolid" className={iconClass} />
+    </div>
+  );
+};

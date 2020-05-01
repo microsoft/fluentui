@@ -1,4 +1,5 @@
 export * from './Pivot';
-export { PivotItem as PivotItem } from './PivotItem';
-export * from './Pivot.Props';
-export * from './PivotItem.Props';
+export * from './Pivot.base';
+export { PivotItem } from './PivotItem';
+export * from './Pivot.types';
+export * from './PivotItem.types';

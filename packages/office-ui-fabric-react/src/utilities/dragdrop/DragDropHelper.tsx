@@ -1,16 +1,9 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { EventGroup } from '../../Utilities';
-import {
-  IDragDropHelper,
-  IDragDropTarget,
-  IDragDropOptions,
-  IDragDropEvent,
-  IDragDropContext
-} from './interfaces';
+import { EventGroup, getDocument } from '../../Utilities';
+import { IDragDropHelper, IDragDropTarget, IDragDropOptions, IDragDropEvent, IDragDropContext } from './interfaces';
 import { ISelection } from '../../utilities/selection/interfaces';
 
-const DISTANCE_FOR_DRAG_SQUARED = 25; // the minimum mouse move distance to treat it as drag event
 const MOUSEDOWN_PRIMARY_BUTTON = 0; // for mouse down event we are using ev.button property, 0 means left button
 const MOUSEMOVE_PRIMARY_BUTTON = 1; // for mouse move event we are using ev.buttons property, 1 means left button
 
@@ -21,16 +14,15 @@ export interface IDragDropHelperParams {
 
 export class DragDropHelper implements IDragDropHelper {
   private _dragEnterCounts: { [key: string]: number };
-  private readonly _distanceSquaredForDrag: number;
   private _isDragging: boolean;
   private _dragData: {
-    eventTarget: EventTarget;
+    eventTarget: EventTarget | null;
     clientX: number;
     clientY: number;
     dataTransfer?: DataTransfer;
     dropTarget?: IDragDropTarget;
     dragTarget?: IDragDropTarget;
-  };
+  } | null;
   private _selection: ISelection;
   private _activeTargets: {
     [key: string]: {
@@ -40,32 +32,47 @@ export class DragDropHelper implements IDragDropHelper {
   };
   private _events: EventGroup;
   private _lastId: number;
+  private _initialized: boolean;
 
   constructor(params: IDragDropHelperParams) {
     this._selection = params.selection;
     this._dragEnterCounts = {};
     this._activeTargets = {};
     this._lastId = 0;
-    this._distanceSquaredForDrag = typeof params.minimumPixelsForDrag === 'number' ?
-      params.minimumPixelsForDrag * params.minimumPixelsForDrag : DISTANCE_FOR_DRAG_SQUARED;
-
-    this._events = new EventGroup(this);
-    // clear drag data when mouse up, use capture event to ensure it will be run
-    this._events.on(document.body, 'mouseup', this._onMouseUp.bind(this), true);
-    this._events.on(document, 'mouseup', this._onDocumentMouseUp.bind(this), true);
+    // To make this class cheap to create, which allows simplifying some logic elsewhere,
+    // only initialize the event group and global event handlers as needed.
+    this._initialized = false;
   }
 
-  public dispose() {
-    this._events.dispose();
+  public dispose(): void {
+    if (this._events) {
+      this._events.dispose();
+    }
   }
 
-  public subscribe(root: HTMLElement, events: EventGroup, dragDropOptions: IDragDropOptions): {
+  public subscribe(
+    root: HTMLElement,
+    events: EventGroup,
+    dragDropOptions: IDragDropOptions,
+  ): {
     key: string;
     dispose(): void;
   } {
-    const {
-      key = `${++this._lastId}`
-    } = dragDropOptions;
+    if (!this._initialized) {
+      this._events = new EventGroup(this);
+
+      const doc = getDocument();
+
+      // clear drag data when mouse up, use capture event to ensure it will be run
+      if (doc) {
+        this._events.on(doc.body, 'mouseup', this._onMouseUp.bind(this), true);
+        this._events.on(doc, 'mouseup', this._onDocumentMouseUp.bind(this), true);
+      }
+
+      this._initialized = true;
+    }
+
+    const { key = `${++this._lastId}` } = dragDropOptions;
 
     const handlers: {
       callback: (context: IDragDropContext, event?: any) => void;
@@ -89,16 +96,12 @@ export class DragDropHelper implements IDragDropHelper {
     };
 
     if (dragDropOptions && root) {
-      const {
-        eventMap,
-        context,
-        updateDropState
-      } = dragDropOptions;
+      const { eventMap, context, updateDropState } = dragDropOptions;
 
       const dragDropTarget: IDragDropTarget = {
         root: root,
         options: dragDropOptions,
-        key: key
+        key: key,
       };
 
       isDraggable = this._isDraggable(dragDropTarget);
@@ -109,7 +112,7 @@ export class DragDropHelper implements IDragDropHelper {
           for (const event of eventMap) {
             const handler = {
               callback: event.callback.bind(null, context),
-              eventName: event.eventName
+              eventName: event.eventName,
             };
 
             handlers.push(handler);
@@ -158,6 +161,9 @@ export class DragDropHelper implements IDragDropHelper {
 
         onDragOver = (event: DragEvent) => {
           event.preventDefault();
+          if (dragDropOptions.onDragOver) {
+            dragDropOptions.onDragOver(dragDropOptions.context.data, event);
+          }
         };
 
         this._dragEnterCounts[key] = 0;
@@ -179,7 +185,14 @@ export class DragDropHelper implements IDragDropHelper {
 
         // We need to add in data so that on Firefox we show the ghost element when dragging
         onDragStart = (event: DragEvent) => {
-          event.dataTransfer.setData('id', root.id);
+          const options = dragDropOptions;
+          if (options && options.onDragStart) {
+            options.onDragStart(options.context.data, options.context.index, this._selection.getSelection(), event);
+          }
+          this._isDragging = true;
+          if (event.dataTransfer) {
+            event.dataTransfer.setData('id', root.id);
+          }
         };
 
         events.on(root, 'dragstart', onDragStart);
@@ -213,7 +226,7 @@ export class DragDropHelper implements IDragDropHelper {
               events.off(root, 'dragend', onDragEnd);
             }
           }
-        }
+        },
       };
 
       this._activeTargets[key] = activeTarget;
@@ -225,7 +238,7 @@ export class DragDropHelper implements IDragDropHelper {
         if (activeTarget) {
           activeTarget.dispose();
         }
-      }
+      },
     };
   }
 
@@ -237,8 +250,8 @@ export class DragDropHelper implements IDragDropHelper {
     }
   }
 
-  private _onDragEnd(target: IDragDropTarget, event: DragEvent) {
-    let { options } = target;
+  private _onDragEnd(target: IDragDropTarget, event: DragEvent): void {
+    const { options } = target;
     if (options.onDragEnd) {
       options.onDragEnd(options.context.data, event);
     }
@@ -247,7 +260,7 @@ export class DragDropHelper implements IDragDropHelper {
   /**
    * clear drag data when mouse up on body
    */
-  private _onMouseUp(event: MouseEvent) {
+  private _onMouseUp(event: MouseEvent): void {
     this._isDragging = false;
     if (this._dragData) {
       for (const key of Object.keys(this._activeTargets)) {
@@ -271,8 +284,10 @@ export class DragDropHelper implements IDragDropHelper {
   /**
    * clear drag data when mouse up outside of the document
    */
-  private _onDocumentMouseUp(event: MouseEvent) {
-    if (event.target === document.documentElement) {
+  private _onDocumentMouseUp(event: MouseEvent): void {
+    const doc = getDocument();
+
+    if (doc && event.target === doc.documentElement) {
       this._onMouseUp(event);
     }
   }
@@ -282,11 +297,11 @@ export class DragDropHelper implements IDragDropHelper {
    * fire dragleave on the old target and fire dragenter to the new target
    * The target will handle style change on dragenter and dragleave events.
    */
-  private _onMouseMove(target: IDragDropTarget, event: MouseEvent) {
-    let {
+  private _onMouseMove(target: IDragDropTarget, event: MouseEvent): void {
+    const {
       // use buttons property here since ev.button in some edge case is not updating well during the move.
       // but firefox doesn't support it, so we set the default value when it is not defined.
-      buttons = MOUSEMOVE_PRIMARY_BUTTON
+      buttons = MOUSEMOVE_PRIMARY_BUTTON,
     } = event;
 
     if (this._dragData && buttons !== MOUSEMOVE_PRIMARY_BUTTON) {
@@ -295,34 +310,24 @@ export class DragDropHelper implements IDragDropHelper {
       return;
     }
 
-    let { root, options, key } = target;
+    const { root, key } = target;
     if (this._isDragging) {
       if (this._isDroppable(target)) {
         // we can have nested drop targets in the DOM, like a folder inside a group. In that case, when we drag into
         // the inner target (folder), we first set dropTarget to the inner element. But the same event is bubbled to the
         // outer target too, and we need to prevent the outer one from taking over.
         // So, check if the last dropTarget is not a child of the current.
-        if (this._dragData.dropTarget &&
-          this._dragData.dropTarget.key !== key &&
-          !this._isChild(root, this._dragData.dropTarget.root)) {
-          EventGroup.raise(this._dragData.dropTarget.root, 'dragleave');
-          this._dragData.dropTarget = null;
-        }
 
-        if (!this._dragData.dropTarget) {
-          EventGroup.raise(root, 'dragenter');
-          this._dragData.dropTarget = target;
-        }
-      }
-    } else if (this._dragData) {
-      if (this._isDraggable(target)) {
-        let xDiff = this._dragData.clientX - event.clientX;
-        let yDiff = this._dragData.clientY - event.clientY;
-        if (xDiff * xDiff + yDiff * yDiff >= this._distanceSquaredForDrag) {
-          if (this._dragData.dragTarget) {
-            this._isDragging = true;
-            if (options.onDragStart) {
-              options.onDragStart(options.context.data, options.context.index, this._selection.getSelection(), event);
+        if (this._dragData) {
+          if (
+            this._dragData.dropTarget &&
+            this._dragData.dropTarget.key !== key &&
+            !this._isChild(root, this._dragData.dropTarget.root)
+          ) {
+            if (this._dragEnterCounts[this._dragData.dropTarget.key] > 0) {
+              EventGroup.raise(this._dragData.dropTarget.root, 'dragleave');
+              EventGroup.raise(root, 'dragenter');
+              this._dragData.dropTarget = target;
             }
           }
         }
@@ -333,11 +338,11 @@ export class DragDropHelper implements IDragDropHelper {
   /**
    * when mouse leave a target while dragging some items, fire dragleave to the target
    */
-  private _onMouseLeave(target: IDragDropTarget, event: MouseEvent) {
+  private _onMouseLeave(target: IDragDropTarget, event: MouseEvent): void {
     if (this._isDragging) {
       if (this._dragData && this._dragData.dropTarget && this._dragData.dropTarget.key === target.key) {
         EventGroup.raise(target.root, 'dragleave');
-        this._dragData.dropTarget = null;
+        this._dragData.dropTarget = undefined;
       }
     }
   }
@@ -345,7 +350,7 @@ export class DragDropHelper implements IDragDropHelper {
   /**
    * when mouse down on a draggable item, we start to track dragdata.
    */
-  private _onMouseDown(target: IDragDropTarget, event: MouseEvent) {
+  private _onMouseDown(target: IDragDropTarget, event: MouseEvent): void {
     if (event.button !== MOUSEDOWN_PRIMARY_BUTTON) {
       // Ignore anything except the primary button.
       return;
@@ -356,7 +361,7 @@ export class DragDropHelper implements IDragDropHelper {
         clientX: event.clientX,
         clientY: event.clientY,
         eventTarget: event.target,
-        dragTarget: target
+        dragTarget: target,
       };
 
       for (const key of Object.keys(this._activeTargets)) {
@@ -375,7 +380,7 @@ export class DragDropHelper implements IDragDropHelper {
    * determine whether the child target is a descendant of the parent
    */
   private _isChild(parent: React.ReactInstance, child: React.ReactInstance): boolean {
-    let parentElement = ReactDOM.findDOMNode(parent);
+    const parentElement = ReactDOM.findDOMNode(parent);
     let childElement = ReactDOM.findDOMNode(child);
     while (childElement && childElement.parentElement) {
       if (childElement.parentElement === parentElement) {
@@ -387,14 +392,15 @@ export class DragDropHelper implements IDragDropHelper {
   }
 
   private _isDraggable(target: IDragDropTarget): boolean {
-    let { options } = target;
-    return options.canDrag && options.canDrag(options.context.data);
+    const { options } = target;
+    return !!(options.canDrag && options.canDrag(options.context.data));
   }
 
   private _isDroppable(target: IDragDropTarget): boolean {
     // TODO: take the drag item into consideration to prevent dragging an item into the same group
-    let { options } = target;
-    let dragContext = this._dragData && this._dragData.dragTarget ? this._dragData.dragTarget.options.context : null;
-    return options.canDrop && options.canDrop(options.context, dragContext);
+    const { options } = target;
+    const dragContext =
+      this._dragData && this._dragData.dragTarget ? this._dragData.dragTarget.options.context : undefined;
+    return !!(options.canDrop && options.canDrop(options.context, dragContext));
   }
 }

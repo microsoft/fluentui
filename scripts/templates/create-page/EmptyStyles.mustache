@@ -1,0 +1,17 @@
+import { IStyle } from 'office-ui-fabric-react';
+import { I{{pageName}}PageStyleProps, I{{pageName}}PageStyles } from './{{pageName}}Page.types';
+
+export const getStyles = (props: I{{pageName}}PageStyleProps): I{{pageName}}PageStyles => {
+  const { theme, className } = props;
+
+  return {
+    root: [
+      {
+        // Add your styles here
+      },
+      className
+    ]
+
+    // Define your other classNames below
+  };
+};

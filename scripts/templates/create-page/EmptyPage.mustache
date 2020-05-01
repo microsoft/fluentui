@@ -1,0 +1,12 @@
+import * as React from 'react';
+import { styled } from 'office-ui-fabric-react';
+import { I{{pageName}}PageProps, I{{pageName}}PageStyles, I{{pageName}}PageStyleProps } from './{{pageName}}Page.types';
+import { getStyles } from './{{pageName}}Page.styles';
+import { {{pageName}}PageBase } from './{{pageName}}Page.base';
+
+export const {{pageName}}Page: React.StatelessComponent<I{{pageName}}PageProps> = styled<I{{pageName}}PageProps, I{{pageName}}PageStyleProps, I{{pageName}}PageStyles>(
+  {{pageName}}PageBase,
+  getStyles,
+  undefined,
+  { scope: '{{pageName}}Page' }
+);

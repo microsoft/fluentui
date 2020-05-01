@@ -12,17 +12,17 @@
   }
 
   .ms-ContextualMenuDirectionalExample-buttonArea {
-      position: absolute;
-      vertical-align: top;
-      width: 300px;
-      top: 108px;
-      margin: 0 100px;
-      text-align: center;
+    position: absolute;
+    vertical-align: top;
+    width: 300px;
+    top: 70px;
+    margin: 0 100px;
+    text-align: center;
   }
 
   .ms-ContextualMenuDirectionalExample-buttonArea .ms-Button {
-      text-align: center;
-      width: 100%;
+    text-align: center;
+    width: 100%;
   }
 
   .ms-ContextualMenu-customizationExample-item {
@@ -47,18 +47,17 @@
   }
 
   .ms-ContextualMenu-customizationExample-categorySwatch {
-    margin: 6px 8px;
     width: 24px;
     height: 24px;
     vertical-align: top;
   }
 
   .ms-ContextualMenu-example-clickableArea {
-      background: lightblue;
-      border: none;
-      font-size:0;
-      height: 200px;
-      width: 100%;
+    background: lightblue;
+    border: none;
+    font-size: 0;
+    height: 200px;
+    width: 100%;
   }
 
   .ms-ContextualMenu-customizationExample {
@@ -68,4 +67,28 @@
       height: auto;
     }
   }
+
+  .ms-ContextualMenu-customizationExample-button {
+    width: 40%;
+    margin: 2%;
+  }
+}
+
+.iconContainer {
+  position: relative;
+  margin: 0 4px;
+  height: 32px;
+  width: 14px;
+}
+
+.logoFillIcon,
+.logoIcon {
+  position: absolute;
+  left: 0;
+  right: 0;
+  color: $ms-color-themeDarkAlt;
+}
+
+.logoFillIcon {
+  color: #ffffff;
 }

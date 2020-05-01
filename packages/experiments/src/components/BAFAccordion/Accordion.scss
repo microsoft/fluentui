@@ -1,0 +1,18 @@
+:global {
+  .ba-Accordion {
+    width: 100%;
+
+    .ba-Accordion-header {
+      width: 100%;
+      min-width: 0;
+      text-align: left;
+    }
+  }
+
+  .ba-Accordion-content {
+    > * {
+      width: 100%;
+      display: block;
+    }
+  }
+}

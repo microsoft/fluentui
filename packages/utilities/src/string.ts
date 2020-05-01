@@ -5,18 +5,25 @@ const FORMAT_ARGS_REGEX = /[\{\}]/g;
 const FORMAT_REGEX = /\{\d+\}/g;
 
 /**
- * String Format is like C# string format.
- * Usage Example: "hello {0}!".format("mike") will return "hello mike!"
- * Calling format on a string with less arguments than specified in the format is invalid
- * Example "I love {0} every {1}".format("CXP") will result in a Debug Exception.
- */
-export function format(s: string, ...values: any[]): string {
-  'use strict';
+ * String format method, used for scenarios where at runtime you
+ * need to evaluate a formatted string given a tokenized string. This
+ * usually only is needed in localization scenarios.
 
+ * @example
+ * ```tsx
+ * "I love {0} every {1}".format("CXP")
+ * ```
+ * will result in a Debug Exception.
+ *
+ * @public
+ */
+// tslint:disable-next-line:no-any
+export function format(s: string, ...values: any[]): string {
   let args = values;
   // Callback match function
-  function replace_func(match: string) {
+  function replaceFunc(match: string): string {
     // looks up in the args
+    // tslint:disable-next-line:no-any
     let replacement = args[match.replace(FORMAT_ARGS_REGEX, '') as any];
 
     // catches undefined in nondebug and null in debug and nondebug
@@ -26,5 +33,5 @@ export function format(s: string, ...values: any[]): string {
 
     return replacement;
   }
-  return (s.replace(FORMAT_REGEX, replace_func));
+  return s.replace(FORMAT_REGEX, replaceFunc);
 }

@@ -1,0 +1,31 @@
+.tile {
+  display: inline-block;
+  position: relative;
+  margin: 4px;
+}
+
+.smallTile {
+  width: 138px;
+  height: 135px;
+}
+
+.largeTile {
+  width: 176px;
+  height: 171px;
+}
+
+.tileFolder {
+  display: inline-block;
+  margin: 3px;
+}
+
+.tileImage {
+  display: block;
+}
+
+.activityBlock {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

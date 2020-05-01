@@ -1,0 +1,4 @@
+- Use them to display content.
+- Show commands as one large group.
+- Mix checks and icons.
+- Create submenus of submenus.

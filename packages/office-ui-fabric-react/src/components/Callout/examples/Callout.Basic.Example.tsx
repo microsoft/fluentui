@@ -1,79 +1,104 @@
 import * as React from 'react';
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { Callout } from 'office-ui-fabric-react/lib/Callout';
-import { Link } from 'office-ui-fabric-react/lib/Link';
-import './CalloutExample.scss';
+import {
+  DefaultButton,
+  Callout,
+  Link,
+  getTheme,
+  FontWeights,
+  mergeStyleSets,
+  getId,
+  Text,
+} from 'office-ui-fabric-react';
+import { useBoolean } from '@uifabric/react-hooks';
 
-export interface ICalloutBaiscExampleState {
-  isCalloutVisible?: boolean;
-}
+const theme = getTheme();
+const styles = mergeStyleSets({
+  buttonArea: {
+    verticalAlign: 'top',
+    display: 'inline-block',
+    textAlign: 'center',
+    margin: '0 100px',
+    minWidth: 130,
+    height: 32,
+  },
+  callout: {
+    maxWidth: 300,
+  },
+  header: {
+    padding: '18px 24px 12px',
+  },
+  title: [
+    theme.fonts.xLarge,
+    {
+      margin: 0,
+      fontWeight: FontWeights.semilight,
+    },
+  ],
+  inner: {
+    height: '100%',
+    padding: '0 24px 20px',
+  },
+  actions: {
+    position: 'relative',
+    marginTop: 20,
+    width: '100%',
+    whiteSpace: 'nowrap',
+  },
+  subtext: [
+    theme.fonts.small,
+    {
+      margin: 0,
+      fontWeight: FontWeights.semilight,
+    },
+  ],
+  link: [
+    theme.fonts.medium,
+    {
+      color: theme.palette.neutralPrimary,
+    },
+  ],
+});
 
-export class CalloutBasicExample extends React.Component<any, ICalloutBaiscExampleState> {
-  private _menuButtonElement: HTMLElement;
+const labelId: string = getId('callout-label');
+const descriptionId: string = getId('callout-description');
 
-  public constructor() {
-    super();
+export const CalloutBasicExample: React.FunctionComponent = () => {
+  const [isCalloutVisible, { toggle: toggleIsCalloutVisible }] = useBoolean(false);
 
-    this._onShowMenuClicked = this._onShowMenuClicked.bind(this);
-    this._onCalloutDismiss = this._onCalloutDismiss.bind(this);
-
-    this.state = {
-      isCalloutVisible: false
-    };
-  }
-
-  public render() {
-    let { isCalloutVisible } = this.state;
-
-    return (
-      <div className='ms-CalloutExample'>
-        <div className='ms-CalloutBasicExample-buttonArea' ref={ (menuButton) => this._menuButtonElement = menuButton }>
-          <DefaultButton
-            onClick={ this._onShowMenuClicked }
-            text={ isCalloutVisible ? 'Hide callout' : 'Show callout' }
-          />
-        </div>
-        { isCalloutVisible && (
-          <Callout
-            className='ms-CalloutExample-callout'
-            ariaLabelledBy={ 'callout-label-1' }
-            ariaDescribedBy={ 'callout-description-1' }
-            role={ 'alertdialog' }
-            gapSpace={ 0 }
-            targetElement={ this._menuButtonElement }
-            onDismiss={ this._onCalloutDismiss }
-            setInitialFocus={ true }
-          >
-            <div className='ms-CalloutExample-header'>
-              <p className='ms-CalloutExample-title' id={ 'callout-label-1' }>
-                All of your favorite people
-              </p>
-            </div>
-            <div className='ms-CalloutExample-inner'>
-              <div className='ms-CalloutExample-content'>
-                <p className='ms-CalloutExample-subText' id={ 'callout-description-1' }>
-                  Message body is optional. If help documentation is available, consider adding a link to learn more at the bottom.
-                </p>
-              </div>
-              <div className='ms-CalloutExample-actions'>
-                <Link className='ms-CalloutExample-link' href='http://microsoft.com'>Go to microsoft</Link>
-              </div>
-            </div>
-          </Callout>
-        ) }
+  return (
+    <>
+      <div className={styles.buttonArea}>
+        <DefaultButton onClick={toggleIsCalloutVisible} text={isCalloutVisible ? 'Hide Callout' : 'Show Callout'} />
       </div>
-    );
-  }
-
-  private _onShowMenuClicked() {
-    this.setState({
-      isCalloutVisible: !this.state.isCalloutVisible
-    });
-  }
-
-  private _onCalloutDismiss() {
-    this.setState({
-      isCalloutVisible: false
-    });
-  }
-}
+      {isCalloutVisible && (
+        <Callout
+          className={styles.callout}
+          ariaLabelledBy={labelId}
+          ariaDescribedBy={descriptionId}
+          role="alertdialog"
+          gapSpace={0}
+          target={`.${styles.buttonArea}`}
+          onDismiss={toggleIsCalloutVisible}
+          setInitialFocus
+        >
+          <div className={styles.header}>
+            <Text className={styles.title} id={labelId}>
+              All of your favorite people
+            </Text>
+          </div>
+          <div className={styles.inner}>
+            <Text className={styles.subtext} id={descriptionId}>
+              Message body is optional. If help documentation is available, consider adding a link to learn more at the
+              bottom.
+            </Text>
+            <div className={styles.actions}>
+              <Link className={styles.link} href="http://microsoft.com" target="_blank">
+                Go to microsoft
+              </Link>
+            </div>
+          </div>
+        </Callout>
+      )}
+    </>
+  );
+};

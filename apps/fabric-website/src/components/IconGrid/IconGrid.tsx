@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
+import { Icon, SearchBox } from 'office-ui-fabric-react';
 import * as stylesImport from './IconGrid.module.scss';
 const styles: any = stylesImport;
 
@@ -7,7 +7,12 @@ export interface IIconGridProps {
   /**
    * An array of icons.
    */
-  icons: any[];
+  icons: { name: string }[];
+
+  /**
+   * If we should render using `Icon` from Fabric
+   */
+  useFabricIcons?: boolean;
 }
 
 export interface IIconGridState {
@@ -18,39 +23,69 @@ export interface IIconGridState {
 }
 
 export class IconGrid extends React.Component<IIconGridProps, IIconGridState> {
+  private _iconRefs: { [iconName: string]: React.RefObject<HTMLElement> };
+
   constructor(props: IIconGridProps) {
     super(props);
 
     this.state = {
-      searchQuery: ''
+      searchQuery: '',
     };
+
+    this._iconRefs = {};
+    for (const icon of props.icons) {
+      this._iconRefs[icon.name] = React.createRef();
+    }
   }
 
-  public render() {
-    let { icons } = this.props;
+  public render(): JSX.Element {
     let { searchQuery } = this.state;
+
+    const icons = this._getItems();
 
     return (
       <div>
-        <SearchBox labelText='Search icons' value={ searchQuery } onChange={ this._onSearchQueryChanged.bind(this) } className={ styles.searchBox } />
-        <ul className={ styles.grid }>
-          { icons
-            .filter(icon => icon.name.toLowerCase().indexOf(searchQuery.toLowerCase()) !== -1)
-            .map((icon, iconIndex) => (
-              <li key={ iconIndex } aria-label={ icon.name + ' icon' }>
-                <i className={ `ms-Icon ms-Icon--${icon.name}` } title={ `${icon.name}` } aria-hidden='true'></i>
-                <span>{ icon.name }</span>
-              </li>
-            ))
-          }
-        </ul>
+        <SearchBox
+          placeholder="Search icons"
+          value={searchQuery}
+          onChange={this._onSearchQueryChanged}
+          className={styles.searchBox}
+        />
+        <ul className={styles.grid}>{icons.map(this._renderIcon)}</ul>
       </div>
     );
   }
 
-  private _onSearchQueryChanged(newValue) {
+  private _getItems = (): { name: string }[] => {
+    const { icons } = this.props;
+    const { searchQuery } = this.state;
+
+    return icons.filter(icon => icon && icon.name && icon.name.toLowerCase().indexOf(searchQuery.toLowerCase()) !== -1);
+  };
+
+  private _renderIcon = (icon: { name: string }, index?: number): JSX.Element => {
+    const { useFabricIcons } = this.props;
+    let iconClassName = `ms-Icon ms-Icon--${icon.name}`;
+    const iconRef = this._iconRefs[icon.name];
+    if (iconRef.current && iconRef.current.offsetWidth > 80) {
+      iconClassName += ' hoverIcon';
+    }
+
+    return (
+      <li key={icon.name + index} aria-label={icon.name + ' icon'}>
+        {useFabricIcons ? (
+          <Icon iconName={icon.name} />
+        ) : (
+          <i ref={iconRef} className={iconClassName} title={icon.name} aria-hidden="true" />
+        )}
+        <span>{icon.name}</span>
+      </li>
+    );
+  };
+
+  private _onSearchQueryChanged = (ev, newValue: string): void => {
     this.setState({
-      'searchQuery': newValue
+      searchQuery: newValue,
     });
-  }
+  };
 }

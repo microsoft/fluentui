@@ -1,46 +1,59 @@
 import * as React from 'react';
-import { SpinButton, ISpinButtonState, ISpinButtonProps } from 'office-ui-fabric-react/lib/SpinButton';
+import { SpinButton } from 'office-ui-fabric-react/lib/SpinButton';
 
-export class SpinButtonStatefulExample extends React.Component<any, any> {
-  public render() {
-    let suffix = ' cm';
+const hasSuffix = (value: string, unitSuffix: string): Boolean => {
+  const subString = value.substr(value.length - unitSuffix.length);
+  return subString === unitSuffix;
+};
 
-    return (
-      <div style={ { width: '203px' } }>
-        <SpinButton
-          label='SpinButton with custom implementation:'
-          value={ '7' + suffix }
-          onValidate={ (value: string) => {
-            value = this.removeSuffix(value, suffix);
-            if (isNaN(+value)) {
-              return '0' + suffix;
-            }
+const removeSuffix = (value: string, unitSuffix: string): string => {
+  if (!hasSuffix(value, unitSuffix)) {
+    return value;
+  }
+  return value.substr(0, value.length - suffix.length);
+};
 
-            return String(value) + suffix;
-          } }
-          onIncrement={ (value: string) => {
-            value = this.removeSuffix(value, suffix);
-            return String(+value + 2) + suffix;
-          } }
-          onDecrement={ (value: string) => {
-            value = this.removeSuffix(value, suffix);
-            return String(+value - 2) + suffix;
-          } }
-        />
-      </div>
-    );
+const suffix = ' cm';
+
+const onSpinButtonIncrement = (value: string) => {
+  value = removeSuffix(value, suffix);
+  if (Number(value) + 2 > 100) {
+    return String(+value) + suffix;
+  } else {
+    return String(+value + 2) + suffix;
+  }
+};
+
+const onSpinButtonDecrement = (value: string) => {
+  value = removeSuffix(value, suffix);
+  if (Number(value) - 2 < 0) {
+    return String(+value) + suffix;
+  } else {
+    return String(+value - 2) + suffix;
+  }
+};
+
+const onSpinButtonValidate = (value: string) => {
+  value = removeSuffix(value, suffix);
+  if (Number(value) > 100 || Number(value) < 0 || value.trim().length === 0 || isNaN(+value)) {
+    return '0' + suffix;
   }
 
-  private hasSuffix(string: string, suffix: string): Boolean {
-    let subString = string.substr(string.length - suffix.length);
-    return subString === suffix;
-  }
+  return String(value) + suffix;
+};
 
-  private removeSuffix(string: string, suffix: string): string {
-    if (!this.hasSuffix(string, suffix)) {
-      return string;
-    }
-
-    return string.substr(0, string.length - suffix.length);
-  }
-}
+export const SpinButtonStatefulExample: React.FC = () => (
+  <div style={{ width: '400px' }}>
+    <SpinButton
+      label={'SpinButton with custom implementation:'}
+      min={0}
+      max={100}
+      value={'7' + suffix}
+      onValidate={onSpinButtonValidate}
+      onIncrement={onSpinButtonIncrement}
+      onDecrement={onSpinButtonDecrement}
+      incrementButtonAriaLabel={'Increase value by 2'}
+      decrementButtonAriaLabel={'Decrease value by 2'}
+    />
+  </div>
+);

@@ -1,2 +1,3 @@
 export * from './Slider';
-export * from './Slider.Props';
+export * from './Slider.base';
+export * from './Slider.types';

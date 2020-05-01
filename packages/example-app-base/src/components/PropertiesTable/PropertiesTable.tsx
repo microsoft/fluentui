@@ -1,153 +1,171 @@
 import * as React from 'react';
-import { assign } from 'office-ui-fabric-react/lib/Utilities';
 import { DetailsList, DetailsListLayoutMode, IColumn, IGroup } from 'office-ui-fabric-react/lib/DetailsList';
 import { SelectionMode } from 'office-ui-fabric-react/lib/Selection';
-import './PropertiesTable.scss';
-import {
-  IInterfaceProperty,
-  IEnumProperty,
-  InterfacePropertyType
-} from '../../utilities/parser/index';
-import { FontClassNames } from '@uifabric/styling/lib/index';
+import { ITheme } from 'office-ui-fabric-react/lib/Styling';
+import { styled, classNamesFunction, IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
+import { IInterfaceProperty, IEnumProperty, InterfacePropertyType } from '../../utilities/parser/index';
+import { IPropertiesTableSetStyleProps, IPropertiesTableSetStyles } from './PropertiesTableSet.types';
+import { getStyles } from './PropertiesTableSet.styles';
 
 export interface IPropertiesTableProps {
   title?: string;
   properties: IInterfaceProperty[] | IEnumProperty[];
   renderAsEnum?: boolean;
   key?: string;
+  /** Theme provided by higher-order component. */
+  theme?: ITheme;
+  /** Optional override styles */
+  styles?: IStyleFunctionOrObject<IPropertiesTableSetStyleProps, IPropertiesTableSetStyles>;
 }
 
-const DEFAULT_COLUMNS: IColumn[] = [
-  {
-    key: 'name',
-    name: 'Name',
-    fieldName: 'name',
-    minWidth: 150,
-    maxWidth: 250,
-    isCollapsable: false,
-    isRowHeader: true,
-    isResizable: true
-  },
-  {
-    key: 'type',
-    name: 'Type',
-    fieldName: 'type',
+const getClassNames = classNamesFunction<IPropertiesTableSetStyleProps, IPropertiesTableSetStyles>();
+
+const renderCell = (text: string) => {
+  // When the text is passed to this function, it has had newline characters removed,
+  // so this regex will match backtick sequences that span multiple lines.
+  const regex = /`.*?`/g;
+  let regexResult: RegExpExecArray | null;
+  const codeBlocks: { index: number; text: string }[] = [];
+  while ((regexResult = regex.exec(text))) {
+    codeBlocks.push({
+      index: regexResult.index,
+      text: regexResult[0],
+    });
+  }
+
+  if (codeBlocks.length === 0) {
+    return <span>{text}</span>;
+  }
+
+  const eltChildren: JSX.Element[] = [];
+
+  let codeIndex = 0;
+  let textIndex = 0;
+  while (textIndex < text.length && codeIndex < codeBlocks.length) {
+    const codeBlock = codeBlocks[codeIndex];
+    if (textIndex < codeBlock.index) {
+      const str = text.substring(textIndex, codeBlock.index);
+      eltChildren.push(<span key={textIndex}>{str}</span>);
+      textIndex += str.length;
+    } else {
+      eltChildren.push(<code key={textIndex}>{codeBlock.text.substring(1, codeBlock.text.length - 1)}</code>);
+      codeIndex++;
+      textIndex += codeBlock.text.length;
+    }
+  }
+  if (textIndex < text.length) {
+    eltChildren.push(<span key={textIndex}>{text.substring(textIndex, text.length)}</span>);
+  }
+
+  return <span>{eltChildren}</span>;
+};
+
+type PropertyName = keyof IInterfaceProperty | keyof IEnumProperty;
+
+const createRenderCell = (propertyName: PropertyName) => {
+  // tslint:disable-next-line:no-any
+  return (item: IInterfaceProperty | IEnumProperty) => renderCell((item as any)[propertyName]);
+};
+
+const getColumns = (columns: Array<Partial<IColumn> & { key: PropertyName; name: string }>): IColumn[] => {
+  return columns.map(column => ({
+    fieldName: column.key,
     minWidth: 130,
     maxWidth: 150,
-    isCollapsable: false,
-    isResizable: true
-  },
-  {
-    key: 'defaultValue',
-    name: 'Default value',
-    fieldName: 'defaultValue',
-    minWidth: 130,
-    maxWidth: 150,
-    isCollapsable: false,
-    isResizable: true
-  }, {
-    key: 'description',
-    name: 'Description',
-    fieldName: 'description',
-    minWidth: 300,
-    maxWidth: 400,
-    isCollapsable: false,
+    isCollapsible: false,
     isResizable: true,
-    isMultiline: true
-  }
-];
+    isMultiline: !column.isRowHeader,
+    onRender: createRenderCell(column.key),
+    ...column,
+  }));
+};
 
-const ENUM_COLUMNS: IColumn[] = [
-  {
-    key: 'name',
-    name: 'Name',
-    fieldName: 'name',
-    minWidth: 150,
-    maxWidth: 250,
-    isCollapsable: false,
-    isRowHeader: true,
-    isResizable: true
-  },
-  {
-    key: 'description',
-    name: 'Description',
-    fieldName: 'description',
-    minWidth: 300,
-    maxWidth: 400,
-    isCollapsable: false,
-    isResizable: true
-  }
-];
+const DEFAULT_COLUMNS: IColumn[] = getColumns([
+  { key: 'name', name: 'Name', minWidth: 150, maxWidth: 250, isRowHeader: true },
+  { key: 'type', name: 'Type' },
+  { key: 'defaultValue', name: 'Default value' },
+  { key: 'description', name: 'Description', minWidth: 300, maxWidth: 400 },
+]);
 
-export class PropertiesTable extends React.Component<IPropertiesTableProps, any> {
-  public static defaultProps = {
-    title: 'Properties'
+const ENUM_COLUMNS: IColumn[] = getColumns([
+  { key: 'name', name: 'Name', minWidth: 150, maxWidth: 250, isRowHeader: true },
+  { key: 'description', name: 'Description', minWidth: 300, maxWidth: 400 },
+]);
+
+class PropertiesTableBase extends React.PureComponent<IPropertiesTableProps> {
+  public static defaultProps: Partial<IPropertiesTableProps> = {
+    title: 'Properties',
   };
+
+  private _properties: IInterfaceProperty[] | IEnumProperty[];
+  private _groups: IGroup[] | undefined;
 
   constructor(props: IPropertiesTableProps) {
     super(props);
 
-    let properties = (props.properties as any[])
-      .sort((a, b) => (
-        a.interfacePropertyType < b.interfacePropertyType ? -1 :
-          a.interfacePropertyType > b.interfacePropertyType ? 1 :
-            a.name < b.name ? -1 :
-              a.name > b.name ? 1 :
-                0
-      ))
-      .map((prop, index) => assign({}, prop, { key: index }));
+    this._properties = (props.properties as IInterfaceProperty[])
+      .sort((a: IInterfaceProperty, b: IInterfaceProperty) =>
+        a.interfacePropertyType < b.interfacePropertyType
+          ? -1
+          : a.interfacePropertyType > b.interfacePropertyType
+          ? 1
+          : a.name < b.name
+          ? -1
+          : a.name > b.name
+          ? 1
+          : 0,
+      )
+      .map((prop: IInterfaceProperty | IEnumProperty, index: number) => ({ ...prop, key: index }));
 
-    let groups = null;
-
-    if (!props.renderAsEnum) {
-      groups = this._getGroups(properties);
-    }
-
-    this.state = {
-      properties,
-      groups,
-      isEnum: !!props.renderAsEnum
-    };
+    this._groups = !props.renderAsEnum ? this._getGroups() : undefined;
   }
 
-  public render() {
-    let { title } = this.props;
-    let { properties, isEnum, groups } = this.state;
+  public render(): JSX.Element | null {
+    const { title, renderAsEnum, styles, theme } = this.props;
+
+    if (this._properties.length === 0) {
+      return null;
+    }
+
+    const classNames = getClassNames(styles, { theme });
 
     return (
-      <div className='PropertiesTable'>
-        <h2 className={ FontClassNames.xLarge }>{ title }</h2>
-        { (properties && properties.length) ? (
-          <DetailsList
-            selectionMode={ SelectionMode.none }
-            layoutMode={ DetailsListLayoutMode.justified }
-            items={ properties }
-            groups={ groups }
-            columns={ isEnum ? ENUM_COLUMNS : DEFAULT_COLUMNS }
-          />
-        ) : (
-            <div className='PropertiesTable-noProperties'>This component is missing properties. Please provide properties or remove the table from the example.</div>
-          ) }
+      <div className={classNames.tableRoot}>
+        <h2 className={classNames.tableHeader}>{title}</h2>
+        <DetailsList
+          selectionMode={SelectionMode.none}
+          layoutMode={DetailsListLayoutMode.justified}
+          items={this._properties}
+          groups={this._groups}
+          columns={renderAsEnum ? ENUM_COLUMNS : DEFAULT_COLUMNS}
+          styles={classNames.subComponentStyles.list}
+          onShouldVirtualize={this._onShouldVirtualize}
+        />
       </div>
     );
   }
 
-  private _getGroups(props: IInterfaceProperty[]) {
-    let groups: IGroup[] = [];
+  private _onShouldVirtualize = (): boolean => {
+    return false;
+  };
+
+  private _getGroups(): IGroup[] {
+    const groups: IGroup[] = [];
     let index = 0;
 
-    index = this._tryAddGroup(props, InterfacePropertyType.required, 'Required members', index, groups);
-    index = this._tryAddGroup(props, InterfacePropertyType.optional, 'Optional members', index, groups);
-    index = this._tryAddGroup(props, InterfacePropertyType.deprecated, 'Deprecated members', index, groups);
+    index = this._tryAddGroup(InterfacePropertyType.required, 'Required members', index, groups);
+    index = this._tryAddGroup(InterfacePropertyType.optional, 'Optional members', index, groups);
+    index = this._tryAddGroup(InterfacePropertyType.deprecated, 'Deprecated members', index, groups);
 
     return groups;
   }
 
-  private _tryAddGroup(props, typeToCompare: InterfacePropertyType, name: string, index: number, allGroups): number {
-    let group: IGroup;
+  private _tryAddGroup(typeToCompare: InterfacePropertyType, name: string, index: number, allGroups: IGroup[]): number {
+    const props = this._properties as IInterfaceProperty[];
+    let group: IGroup | undefined = undefined;
 
     while (index < props.length) {
-      let prop = props[index];
+      const prop = props[index];
 
       if (prop.interfacePropertyType !== typeToCompare) {
         break;
@@ -158,7 +176,7 @@ export class PropertiesTable extends React.Component<IPropertiesTableProps, any>
           key: name,
           name,
           startIndex: index,
-          count: 0
+          count: 0,
         };
         allGroups.push(group);
       }
@@ -169,3 +187,11 @@ export class PropertiesTable extends React.Component<IPropertiesTableProps, any>
     return index;
   }
 }
+
+export const PropertiesTable: React.FunctionComponent<IPropertiesTableProps> = styled<
+  IPropertiesTableProps,
+  IPropertiesTableSetStyleProps,
+  IPropertiesTableSetStyles
+>(PropertiesTableBase, getStyles, undefined, {
+  scope: 'PropertiesTable',
+});

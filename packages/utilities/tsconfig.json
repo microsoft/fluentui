@@ -1,27 +1,23 @@
 {
   "compilerOptions": {
     "target": "es5",
+    "outDir": "lib",
     "module": "commonjs",
-    "lib": [
-      "es2017",
-      "dom"
-    ],
+    "lib": ["es5", "es2015.promise", "dom"],
     "jsx": "react",
     "declaration": true,
     "sourceMap": true,
     "experimentalDecorators": true,
     "importHelpers": true,
     "noImplicitAny": true,
+    "noUnusedLocals": true,
+    "strictNullChecks": true,
+    "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
-    "types": [
-      "chai",
-      "mocha"
-    ]
+    "preserveConstEnums": true,
+    "skipLibCheck": true,
+    "typeRoots": ["../../node_modules/@types", "../../typings"],
+    "types": ["jest", "custom-global", "node"]
   },
-  "exclude": [
-    "node_modules",
-    "dist",
-    "lib",
-    "lib-amd"
-  ]
+  "include": ["src"]
 }

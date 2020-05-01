@@ -1,8 +1,5 @@
 {
-  "headers": [
-    "Breakpoint",
-    "Range"
-  ],
+  "headers": ["Breakpoint", "Range"],
   "data": [
     [
       {

@@ -1,2 +1,2 @@
 export * from './List';
-export * from './List.Props';
+export * from './List.types';

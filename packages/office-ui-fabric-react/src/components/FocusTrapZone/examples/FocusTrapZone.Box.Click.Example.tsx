@@ -1,104 +1,39 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
-
-import * as ReactDOM from 'react-dom';
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { FocusTrapZone } from 'office-ui-fabric-react/lib/FocusTrapZone';
 import { Link } from 'office-ui-fabric-react/lib/Link';
-import { TextField } from 'office-ui-fabric-react/lib/TextField';
+import { TextField, ITextFieldStyles } from 'office-ui-fabric-react/lib/TextField';
 import { Toggle, IToggle } from 'office-ui-fabric-react/lib/Toggle';
-import './FocusTrapZone.Box.Example.scss';
+import { Stack, IStackStyles } from 'office-ui-fabric-react/lib/Stack';
+import { memoizeFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { useBoolean } from '@uifabric/react-hooks';
 
-export interface IBoxNoClickExampleExampleState {
-  isToggled: boolean;
-}
+const getStackStyles = memoizeFunction(
+  (useTrapZone: boolean): Partial<IStackStyles> => ({
+    root: { border: `2px dashed ${useTrapZone ? '#ababab' : 'transparent'}`, padding: 10 },
+  }),
+);
+const textFieldStyles: Partial<ITextFieldStyles> = { root: { width: 300 } };
+const stackTokens = { childrenGap: 15 };
 
-export default class BoxNoClickExample extends React.Component<React.HTMLAttributes<HTMLDivElement>, IBoxNoClickExampleExampleState> {
-  private _toggle: IToggle;
-
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      isToggled: false,
-    };
-  }
-
-  public render() {
-    let { isToggled } = this.state;
-
-    return (
-      <div>
-        <DefaultButton
-          description='Focuses inside the FocusTrapZone'
-          onClick={ this._onButtonClickHandler.bind(this) }
-          text='Go to Trap Zone'
-        />
-
-        { (() => {
-          if (isToggled) {
-            return (
-              <FocusTrapZone isClickableOutsideFocusTrap={ true } forceFocusInsideTrap={ false }>
-                { this._internalContents() }
-              </FocusTrapZone>
-            );
-          } else {
-            return (
-              <div>
-                { this._internalContents() }
-              </div>
-            );
-          }
-        })() }
-      </div>
-    );
-  }
-
-  private _internalContents() {
-    let { isToggled } = this.state;
-
-    return (
-      <div className='ms-FocusTrapZoneBoxExample'>
-        <TextField label='Default TextField' placeholder='Input inside Focus Trap Zone' className='' />
-        <Link href='' className='' >Hyperlink inside FocusTrapZone</Link><br /><br />
+export const FocusTrapZoneBoxClickExample: React.FunctionComponent = () => {
+  const [useTrapZone, { toggle: toggleUseTrapZone }] = useBoolean(false);
+  const toggle = React.useRef<IToggle>(null);
+  return (
+    <FocusTrapZone disabled={!useTrapZone} isClickableOutsideFocusTrap forceFocusInsideTrap={false}>
+      <Stack horizontalAlign="start" tokens={stackTokens} styles={getStackStyles(useTrapZone)}>
         <Toggle
-          componentRef={ t => this._toggle = t }
-          checked={ isToggled }
-          onChanged={ this._onFocusTrapZoneToggleChanged.bind(this) }
-          label='Focus Trap Zone'
-          onText='On'
-          offText='Off' />
-        { (() => {
-          if (isToggled) {
-            return (
-              <DefaultButton
-                description='Exit Focus Trap Zone'
-                onClick={ this._onExitButtonClickHandler.bind(this) }
-                text='Exit Focus Trap Zone'
-              />
-            );
-          }
-        })() }
-      </div>
-    );
-  }
-
-  private _onButtonClickHandler() {
-    this.setState({
-      isToggled: true
-    });
-  }
-
-  private _onExitButtonClickHandler() {
-    this.setState({
-      isToggled: false
-    });
-  }
-
-  private _onFocusTrapZoneToggleChanged(isToggled: boolean) {
-    this.setState({
-      isToggled: isToggled
-    }, () => this._toggle.focus());
-  }
-}
+          label="Use trap zone"
+          componentRef={toggle}
+          checked={useTrapZone}
+          onChange={toggleUseTrapZone}
+          onText="On (toggle to exit)"
+          offText="Off"
+        />
+        <TextField label="Input inside trap zone" styles={textFieldStyles} />
+        <Link href="https://bing.com" target="_blank">
+          Hyperlink inside trap zone
+        </Link>
+      </Stack>
+    </FocusTrapZone>
+  );
+};

@@ -1,2 +1,2 @@
 export * from './Calendar';
-export * from './Calendar.Props';
+export * from './Calendar.types';

@@ -1,80 +1,35 @@
-import * as React from 'react'; // tslint:disable-line:no-unused-variable
-import * as PropTypes from 'prop-types';
-import './Layer.Example.scss';
-import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
-import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
+import * as React from 'react';
+import { AnimationClassNames, mergeStyles, getTheme } from 'office-ui-fabric-react/lib/Styling';
 import { Layer } from 'office-ui-fabric-react/lib/Layer';
-import { AnimationClassNames } from '../../../Styling';
+import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
+import { useBoolean } from '@uifabric/react-hooks';
 
-export class LayerContentExample extends BaseComponent<any, any> {
-  public static contextTypes = {
-    message: PropTypes.string
-  };
+export const LayerBasicExample: React.FunctionComponent = () => {
+  const [showLayer, { toggle: toggleShowLayer }] = useBoolean(false);
 
-  public context: {
-    message: string;
-  };
+  const content = <div className={contentClass}>Hello world</div>;
 
-  constructor() {
-    super();
-    this.state = {
-      time: new Date().toLocaleTimeString()
-    };
-  }
+  return (
+    <div>
+      <Toggle
+        label="Wrap the content box below in a Layer"
+        inlineLabel
+        checked={showLayer}
+        onChange={toggleShowLayer}
+      />
 
-  public componentDidMount() {
-    this._async.setInterval(() => this.setState({ time: new Date().toLocaleTimeString() }), 1000);
-  }
+      {showLayer ? <Layer>{content}</Layer> : content}
+    </div>
+  );
+};
 
-  public render() {
-    return (
-      <div className={ 'LayerExample-content ' + AnimationClassNames.scaleUpIn100 }>
-        <div className='LayerExample-textContent'>{ this.context.message }</div>
-        <div>{ this.state.time }</div>
-      </div>
-
-    );
-  }
-}
-export class LayerBasicExample extends BaseComponent<any, any> {
-
-  public static childContextTypes = {
-    message: PropTypes.string
-  };
-
-  constructor() {
-    super();
-    this.state = {
-      showLayer: false
-    };
-  }
-
-  public getChildContext() {
-    return {
-      'message': 'Hello world.'
-    };
-  }
-
-  public render() {
-    let { showLayer } = this.state;
-
-    return (
-      <div>
-
-        <Checkbox
-          label='Wrap the content box belowed in a Layer'
-          checked={ showLayer }
-          onChange={ (ev, checked) => this.setState({ showLayer: checked }) } />
-
-        { showLayer ? (
-          <Layer>
-            <LayerContentExample />
-          </Layer>
-        ) : (
-            <LayerContentExample />
-          ) }
-
-      </div>
-    );
-  }
-}
+const theme = getTheme();
+const contentClass = mergeStyles([
+  {
+    backgroundColor: theme.palette.themePrimary,
+    color: theme.palette.white,
+    lineHeight: '50px',
+    padding: '0 20px',
+  },
+  AnimationClassNames.scaleUpIn100,
+]);

@@ -1,25 +1,60 @@
-/* tslint:disable */
 import * as React from 'react';
-/* tslint:enable */
-import { css } from '../../../Utilities';
-import { Icon } from '../../../Icon';
-import { IPickerItemProps } from '../PickerItem.Props';
-import { ITag } from './TagPicker';
-import * as stylesImport from './TagItem.scss';
-const styles: any = stylesImport;
 
-export const TagItem = (props: IPickerItemProps<ITag>) => (
-  <div
-    className={ css('ms-TagItem',
-      styles.root,
-      { 'is-selected': props.selected },
-      props.selected && styles.isSelected) }
-    key={ props.index }
-    data-selection-index={ props.index }
-    data-is-focusable={ true }>
-    <span className={ css('ms-TagItem-text', styles.tagItemText) }>{ props.children }</span>
-    <span className={ css('ms-TagItem-close', styles.tagItemClose) } onClick={ props.onRemoveItem }>
-      <Icon iconName='cancel' />
-    </span>
-  </div>
-);
+import { styled, classNamesFunction } from '../../../Utilities';
+import { IconButton } from '../../../Button';
+
+import { ITagItemProps, ITagItemStyleProps, ITagItemStyles } from './TagPicker.types';
+import { getStyles } from './TagItem.styles';
+
+const getClassNames = classNamesFunction<ITagItemStyleProps, ITagItemStyles>();
+
+/**
+ * {@docCategory TagPicker}
+ */
+export const TagItemBase = (props: ITagItemProps) => {
+  const {
+    theme,
+    styles,
+    selected,
+    disabled,
+    enableTagFocusInDisabledPicker,
+    children,
+    className,
+    index,
+    onRemoveItem,
+    removeButtonAriaLabel,
+    title = typeof props.children === 'string' ? props.children : props.item.name,
+  } = props;
+
+  const classNames = getClassNames(styles, {
+    theme: theme!,
+    className,
+    selected,
+    disabled,
+  });
+
+  return (
+    <div
+      className={classNames.root}
+      role={'listitem'}
+      key={index}
+      data-selection-index={index}
+      data-is-focusable={(enableTagFocusInDisabledPicker || !disabled) && true}
+    >
+      <span className={classNames.text} aria-label={title} title={title}>
+        {children}
+      </span>
+      <IconButton
+        onClick={onRemoveItem}
+        disabled={disabled}
+        iconProps={{ iconName: 'Cancel', styles: { root: { fontSize: '12px' } } }}
+        className={classNames.close}
+        ariaLabel={removeButtonAriaLabel}
+      />
+    </div>
+  );
+};
+
+export const TagItem = styled<ITagItemProps, ITagItemStyleProps, ITagItemStyles>(TagItemBase, getStyles, undefined, {
+  scope: 'TagItem',
+});

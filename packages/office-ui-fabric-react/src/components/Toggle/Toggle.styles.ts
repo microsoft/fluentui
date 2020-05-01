@@ -1,120 +1,236 @@
-import { IToggleStyles } from './Toggle.Props';
-import {
-  ITheme,
-  mergeStyleSets,
-  getFocusStyle
-} from '../../Styling';
-import { memoizeFunction } from '../../Utilities';
+import { HighContrastSelector, getFocusStyle, FontWeights } from '../../Styling';
+import { IToggleStyleProps, IToggleStyles } from './Toggle.types';
 
-export const getStyles = memoizeFunction((
-  theme: ITheme,
-  customStyles?: IToggleStyles
-): IToggleStyles => {
-  const { semanticColors } = theme;
+const DEFAULT_PILL_WIDTH = 40;
+const DEFAULT_PILL_HEIGHT = 20;
+const DEFAULT_THUMB_SIZE = 12;
+
+export const getStyles = (props: IToggleStyleProps): IToggleStyles => {
+  const { theme, className, disabled, checked, inlineLabel, onOffMissing } = props;
+  const { semanticColors, palette } = theme;
+
+  // Tokens
   const pillUncheckedBackground = semanticColors.bodyBackground;
   const pillCheckedBackground = semanticColors.inputBackgroundChecked;
-  const pillCheckedHoveredBackground = semanticColors.inputBackgroundCheckedHovered;
-  const pillCheckedDisabledBackground = semanticColors.disabledText;
-  const thumbBackground = semanticColors.inputBorderHovered;
+  // TODO: after updating the semanticColors slots mapping this needs to be semanticColors.inputBackgroundCheckedHovered
+  const pillCheckedHoveredBackground = palette.themeDark;
+  const thumbUncheckedHoveredBackground = palette.neutralDark;
+  const pillCheckedDisabledBackground = semanticColors.disabledBodySubtext;
+  const thumbBackground = semanticColors.smallInputBorder;
   const thumbCheckedBackground = semanticColors.inputForegroundChecked;
-  const thumbDisabledBackground = semanticColors.disabledText;
+  const thumbDisabledBackground = semanticColors.disabledBodySubtext;
   const thumbCheckedDisabledBackground = semanticColors.disabledBackground;
-  const pillBorderColor = semanticColors.inputBorder;
+  const pillBorderColor = semanticColors.smallInputBorder;
   const pillBorderHoveredColor = semanticColors.inputBorderHovered;
-  const pillBorderDisabledColor = semanticColors.disabledText;
-  const toggleFocusBorderColor = semanticColors.focusBorder;
+  const pillBorderDisabledColor = semanticColors.disabledBodySubtext;
+  const textDisabledColor = semanticColors.disabledText;
 
-  const styles: IToggleStyles = {
-    root: {
-      marginBottom: '8px'
-    },
+  return {
+    root: [
+      'ms-Toggle',
+      checked && 'is-checked',
+      !disabled && 'is-enabled',
+      disabled && 'is-disabled',
+      theme.fonts.medium,
+      {
+        marginBottom: '8px',
+      },
+      inlineLabel && {
+        display: 'flex',
+        alignItems: 'center',
+      },
+      className,
+    ],
+
+    label: [
+      'ms-Toggle-label',
+      disabled && {
+        color: textDisabledColor,
+        selectors: {
+          [HighContrastSelector]: {
+            color: 'GrayText',
+          },
+        },
+      },
+      inlineLabel &&
+        !onOffMissing && {
+          marginRight: 16,
+        },
+      onOffMissing &&
+        inlineLabel && {
+          order: 1,
+          marginLeft: 16,
+        },
+      inlineLabel && { wordBreak: 'break-all' },
+    ],
 
     container: [
+      'ms-Toggle-innerContainer',
       {
         display: 'inline-flex',
         position: 'relative',
-      }
+      },
     ],
 
     pill: [
-      getFocusStyle(theme, '-1px'),
+      'ms-Toggle-background',
+      getFocusStyle(theme, { inset: -3 }),
       {
         fontSize: '20px',
-        lineHeight: '1em',
         boxSizing: 'border-box',
-        position: 'relative',
-        width: '2.2em',
-        height: '1em',
-        borderRadius: '1em',
+        width: DEFAULT_PILL_WIDTH,
+        height: DEFAULT_PILL_HEIGHT,
+        borderRadius: DEFAULT_PILL_HEIGHT / 2,
         transition: 'all 0.1s ease',
-        borderWidth: '1px',
-        borderStyle: 'solid',
+        border: `1px solid ${pillBorderColor}`,
         background: pillUncheckedBackground,
-        borderColor: pillBorderColor,
         cursor: 'pointer',
-      }
+        display: 'flex',
+        alignItems: 'center',
+        padding: '0 3px',
+      },
+      !disabled && [
+        !checked && {
+          selectors: {
+            ':hover': [
+              {
+                borderColor: pillBorderHoveredColor,
+              },
+            ],
+            ':hover .ms-Toggle-thumb': [
+              {
+                backgroundColor: thumbUncheckedHoveredBackground,
+                selectors: {
+                  [HighContrastSelector]: {
+                    borderColor: 'Highlight',
+                  },
+                },
+              },
+            ],
+          },
+        },
+        checked && [
+          {
+            background: pillCheckedBackground,
+            borderColor: 'transparent',
+            justifyContent: 'flex-end',
+          },
+          {
+            selectors: {
+              ':hover': [
+                {
+                  backgroundColor: pillCheckedHoveredBackground,
+                  borderColor: 'transparent',
+                  selectors: {
+                    [HighContrastSelector]: {
+                      backgroundColor: 'Highlight',
+                    },
+                  },
+                },
+              ],
+              [HighContrastSelector]: {
+                backgroundColor: 'WindowText',
+              },
+            },
+          },
+        ],
+      ],
+      disabled && [
+        {
+          cursor: 'default',
+        },
+        !checked && [
+          {
+            borderColor: pillBorderDisabledColor,
+          },
+        ],
+        checked && [
+          {
+            backgroundColor: pillCheckedDisabledBackground,
+            borderColor: 'transparent',
+            justifyContent: 'flex-end',
+          },
+        ],
+      ],
+      !disabled && {
+        selectors: {
+          '&:hover': {
+            selectors: {
+              [HighContrastSelector]: {
+                borderColor: 'Highlight',
+              },
+            },
+          },
+        },
+      },
     ],
 
-    pillHovered: {
-      borderColor: pillBorderHoveredColor
-    },
+    thumb: [
+      'ms-Toggle-thumb',
+      {
+        display: 'block',
+        width: DEFAULT_THUMB_SIZE,
+        height: DEFAULT_THUMB_SIZE,
+        borderRadius: '50%',
+        transition: 'all 0.1s ease',
+        backgroundColor: thumbBackground,
+        /* Border is added to handle high contrast mode for Firefox */
+        borderColor: 'transparent',
+        borderWidth: '.28em',
+        borderStyle: 'solid',
+        boxSizing: 'border-box',
+      },
+      !disabled &&
+        checked && [
+          {
+            backgroundColor: thumbCheckedBackground,
+            selectors: {
+              [HighContrastSelector]: {
+                backgroundColor: 'Window',
+                borderColor: 'Window',
+              },
+            },
+          },
+        ],
+      disabled && [
+        !checked && [
+          {
+            backgroundColor: thumbDisabledBackground,
+          },
+        ],
+        checked && [
+          {
+            backgroundColor: thumbCheckedDisabledBackground,
+          },
+        ],
+      ],
+    ],
 
-    pillChecked: {
-      background: pillCheckedBackground,
-      borderColor: 'transparent',
-    },
-
-    pillCheckedHovered: {
-      backgroundColor: pillCheckedHoveredBackground,
-      borderColor: 'transparent'
-    },
-
-    pillDisabled: {
-      borderColor: pillBorderDisabledColor
-    },
-
-    pillCheckedDisabled: {
-      backgroundColor: pillCheckedDisabledBackground,
-      borderColor: 'transparent'
-    },
-
-    thumb: {
-      width: '.5em',
-      height: '.5em',
-      borderRadius: '.5em',
-      position: 'absolute',
-      top: '.2em',
-      transition: 'all 0.1s ease',
-      backgroundColor: thumbBackground,
-      left: '.2em'
-    },
-
-    thumbChecked: {
-      backgroundColor: thumbCheckedBackground,
-      left: '1.4em'
-    },
-
-    thumbDisabled: {
-      backgroundColor: thumbDisabledBackground,
-      left: '.2em',
-    },
-
-    thumbCheckedDisabled: {
-      backgroundColor: thumbCheckedDisabledBackground,
-      left: '1.4em'
-    },
-
-    text: {
-      // Workaround; until Label is converted and we can pass in custom styles, we need to make this
-      // more specific. Once Label is converted, we should be able to just pull in the customized styling.
-      '.ms-Toggle-stateText': {
-        padding: '0',
-        margin: '0 10px',
-        userSelect: 'none'
-      }
-    }
-
+    text: [
+      'ms-Toggle-stateText',
+      {
+        selectors: {
+          // Workaround: make rules more specific than Label rules.
+          '&&': {
+            padding: '0',
+            margin: '0 8px',
+            userSelect: 'none',
+            fontWeight: FontWeights.regular,
+          },
+        },
+      },
+      disabled && {
+        selectors: {
+          '&&': {
+            color: textDisabledColor,
+            selectors: {
+              [HighContrastSelector]: {
+                color: 'GrayText',
+              },
+            },
+          },
+        },
+      },
+    ],
   };
-
-  return mergeStyleSets(styles, customStyles);
-});
+};

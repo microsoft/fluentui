@@ -1,105 +1,84 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 
-import * as ReactDOM from 'react-dom';
-import * as ReactTestUtils from 'react-addons-test-utils';
-
-let { expect } = chai;
-
+// import * as ReactDOM from 'react-dom';
+import * as renderer from 'react-test-renderer';
+import { mount, ReactWrapper } from 'enzyme';
 import { Rating } from './Rating';
 
 describe('Rating', () => {
-  it('Can change rating.', () => {
-    let exception;
-    let threwException = false;
-    let rating;
-    try {
-      rating = ReactTestUtils.renderIntoDocument<Rating>(
-        <Rating
-          rating={ 2 }
-          />
-      );
-    } catch (e) {
-      exception = e;
-      threwException = true;
-    }
-    expect(threwException).to.be.false;
-
-    let renderedDOM = ReactDOM.findDOMNode(rating as React.ReactInstance);
-
-    let ratingInputs = renderedDOM.querySelectorAll('.ms-Rating-input');
-
-    const checkState = (ratingToCheck: number, state: boolean) => {
-      expect((ratingInputs[ratingToCheck - 1] as HTMLInputElement).checked).to.be.eq(
-        state,
-        `Rating ${ratingToCheck} should be ${!state && 'selected' || ''} selected`);
-    };
-
-    checkState(1, false);
-    checkState(2, true);
-    checkState(3, false);
-    checkState(4, false);
-    checkState(5, false);
-
-    ReactTestUtils.Simulate.change(ratingInputs[0]);
-
-    checkState(1, true);
-    checkState(2, false);
-    checkState(3, false);
-    checkState(4, false);
-    checkState(5, false);
+  it('renders correctly.', () => {
+    const component = renderer.create(<Rating />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
   });
 
-  it('Clamps input rating to allowed range.', () => {
-    let exception;
-    let threwException = false;
-    let rating;
-    try {
-      rating = ReactTestUtils.renderIntoDocument<Rating>(
-        <Rating
-          rating={ 10 }
-          />
-      );
-    } catch (e) {
-      exception = e;
-      threwException = true;
-    }
-    expect(threwException).to.be.false;
+  it('can change rating.', () => {
+    const rating = mount(<Rating />);
 
-    let renderedDOM = ReactDOM.findDOMNode(rating as React.ReactInstance);
+    _checkState(rating, 1, '100%');
+    _checkState(rating, 2, '0%');
+    _checkState(rating, 3, '0%');
+    _checkState(rating, 4, '0%');
+    _checkState(rating, 5, '0%');
 
-    let ratingInputs = renderedDOM.querySelectorAll('.ms-Rating-input');
+    rating
+      .find('.ms-Rating-button')
+      .at(1)
+      .simulate('focus');
 
-    expect((ratingInputs[0] as HTMLInputElement).checked).to.be.eq(false);
-    expect((ratingInputs[1] as HTMLInputElement).checked).to.be.eq(false);
-    expect((ratingInputs[2] as HTMLInputElement).checked).to.be.eq(false);
-    expect((ratingInputs[3] as HTMLInputElement).checked).to.be.eq(false);
-    expect((ratingInputs[4] as HTMLInputElement).checked).to.be.eq(true);
+    _checkState(rating, 1, '100%');
+    _checkState(rating, 2, '100%');
+    _checkState(rating, 3, '0%');
+    _checkState(rating, 4, '0%');
+    _checkState(rating, 5, '0%');
   });
 
-  it('When rating is disabled cannot change rating', () => {
-    let exception;
-    let threwException = false;
-    let choiceGroup;
-    try {
-      choiceGroup = ReactTestUtils.renderIntoDocument<Rating>(
-        <Rating
-          disabled={ true }
-          />
-      );
-    } catch (e) {
-      exception = e;
-      threwException = true;
-    }
-    expect(threwException).to.be.false;
+  it('clamps input rating to allowed range.', () => {
+    const rating = mount(<Rating rating={10} />);
 
-    let renderedDOM = ReactDOM.findDOMNode(choiceGroup as React.ReactInstance);
-    let choiceOptions = renderedDOM.querySelectorAll('.ms-Rating-input');
+    expect(rating.find('.ms-Rating-button').length).toEqual(5);
 
-    for (let i = 0; i < 5; ++i) {
-      expect((choiceOptions[i] as HTMLInputElement).disabled).to.be.eq(true, `Rating ${i + 1} is not disabled`);
-    }
+    _checkState(rating, 1, '100%');
+    _checkState(rating, 2, '100%');
+    _checkState(rating, 3, '100%');
+    _checkState(rating, 4, '100%');
+    _checkState(rating, 5, '100%');
   });
 
+  it('displays half star when 2.5 value is passed.', () => {
+    const rating = mount(<Rating rating={2.5} />);
+
+    _checkState(rating, 1, '100%');
+    _checkState(rating, 2, '100%');
+    _checkState(rating, 3, '50%');
+    _checkState(rating, 4, '0%');
+    _checkState(rating, 5, '0%');
+  });
+
+  it('can not change when disabled.', () => {
+    const rating = mount(<Rating disabled={true} />);
+    const ratingButtons = rating.find('.ms-Rating-button');
+
+    for (let i = 0; i < 5; i++) {
+      expect(ratingButtons.at(i).prop('disabled')).toEqual(true);
+    }
+  });
 });
+
+it('behaves correctly when controlled with allowZeroStars enabled', () => {
+  const rating = mount(<Rating rating={3} allowZeroStars />);
+  rating.setProps({ rating: 0 });
+
+  _checkState(rating, 1, '0%');
+  _checkState(rating, 2, '0%');
+  _checkState(rating, 3, '0%');
+  _checkState(rating, 4, '0%');
+  _checkState(rating, 5, '0%');
+});
+
+function _checkState(rating: ReactWrapper, ratingToCheck: number, state: string) {
+  const ratingFrontStars = rating.find('.ms-RatingStar-front').hostNodes();
+  const width = ratingFrontStars.at(ratingToCheck - 1).props().style!.width;
+
+  expect(width).toEqual(state);
+}

@@ -1,0 +1,413 @@
+{
+  "fontName": "fabric-icons-12",
+  "fontFamilyName": "FabricMDL2Icons-12",
+  "excludeGlyphs": false,
+  "excludeThirdPartyIcons": true,
+  "chunkSubsets": true,
+  "hashFontFileName": true,
+  "subsetChunkSettings": {
+    "maxSubsetSize": 100
+  },
+  "glyphs": [
+    {
+      "name": "FinancialSolid",
+      "unicode": "F346"
+    },
+    {
+      "name": "FinancialMirroredSolid",
+      "unicode": "F347"
+    },
+    {
+      "name": "HeadsetSolid",
+      "unicode": "F348"
+    },
+    {
+      "name": "PermissionsSolid",
+      "unicode": "F349"
+    },
+    {
+      "name": "ParkingSolid",
+      "unicode": "F34A"
+    },
+    {
+      "name": "ParkingMirroredSolid",
+      "unicode": "F34B"
+    },
+    {
+      "name": "DiamondSolid",
+      "unicode": "F34C"
+    },
+    {
+      "name": "AsteriskSolid",
+      "unicode": "F34D"
+    },
+    {
+      "name": "OfflineStorageSolid",
+      "unicode": "F34E"
+    },
+    {
+      "name": "BankSolid",
+      "unicode": "F34F"
+    },
+    {
+      "name": "DecisionSolid",
+      "unicode": "F350"
+    },
+    {
+      "name": "Parachute",
+      "unicode": "F351"
+    },
+    {
+      "name": "ParachuteSolid",
+      "unicode": "F352"
+    },
+    {
+      "name": "FiltersSolid",
+      "unicode": "F353"
+    },
+    {
+      "name": "ColorSolid",
+      "unicode": "F354"
+    },
+    {
+      "name": "ReviewSolid",
+      "unicode": "F355"
+    },
+    {
+      "name": "ReviewRequestSolid",
+      "unicode": "F356"
+    },
+    {
+      "name": "ReviewRequestMirroredSolid",
+      "unicode": "F357"
+    },
+    {
+      "name": "ReviewResponseSolid",
+      "unicode": "F358"
+    },
+    {
+      "name": "FeedbackRequestSolid",
+      "unicode": "F359"
+    },
+    {
+      "name": "FeedbackRequestMirroredSolid",
+      "unicode": "F35A"
+    },
+    {
+      "name": "FeedbackResponseSolid",
+      "unicode": "F35B"
+    },
+    {
+      "name": "WorkItemBar",
+      "unicode": "F35C"
+    },
+    {
+      "name": "WorkItemBarSolid",
+      "unicode": "F35D"
+    },
+    {
+      "name": "Separator",
+      "unicode": "F35E"
+    },
+    {
+      "name": "NavigateExternalInline",
+      "unicode": "F35F"
+    },
+    {
+      "name": "PlanView",
+      "unicode": "F360"
+    },
+    {
+      "name": "TimelineMatrixView",
+      "unicode": "F361"
+    },
+    {
+      "name": "EngineeringGroup",
+      "unicode": "F362"
+    },
+    {
+      "name": "ProjectCollection",
+      "unicode": "F363"
+    },
+    {
+      "name": "CaretBottomRightCenter8",
+      "unicode": "F364"
+    },
+    {
+      "name": "CaretBottomLeftCenter8",
+      "unicode": "F365"
+    },
+    {
+      "name": "CaretTopRightCenter8",
+      "unicode": "F366"
+    },
+    {
+      "name": "CaretTopLeftCenter8",
+      "unicode": "F367"
+    },
+    {
+      "name": "DonutChart",
+      "unicode": "F368"
+    },
+    {
+      "name": "ChevronUnfold10",
+      "unicode": "F369"
+    },
+    {
+      "name": "ChevronFold10",
+      "unicode": "F36A"
+    },
+    {
+      "name": "DoubleChevronDown8",
+      "unicode": "F36B"
+    },
+    {
+      "name": "DoubleChevronUp8",
+      "unicode": "F36C"
+    },
+    {
+      "name": "DoubleChevronLeft8",
+      "unicode": "F36D"
+    },
+    {
+      "name": "DoubleChevronRight8",
+      "unicode": "F36E"
+    },
+    {
+      "name": "ChevronDownEnd6",
+      "unicode": "F36F"
+    },
+    {
+      "name": "ChevronUpEnd6",
+      "unicode": "F370"
+    },
+    {
+      "name": "ChevronLeftEnd6",
+      "unicode": "F371"
+    },
+    {
+      "name": "ChevronRightEnd6",
+      "unicode": "F372"
+    },
+    {
+      "name": "ContextMenu",
+      "unicode": "F37C"
+    },
+    {
+      "name": "AzureAPIManagement",
+      "unicode": "F37F"
+    },
+    {
+      "name": "AzureServiceEndpoint",
+      "unicode": "F380"
+    },
+    {
+      "name": "VSTSLogo",
+      "unicode": "F381"
+    },
+    {
+      "name": "VSTSAltLogo1",
+      "unicode": "F382"
+    },
+    {
+      "name": "VSTSAltLogo2",
+      "unicode": "F383"
+    },
+    {
+      "name": "FileTypeSolution",
+      "unicode": "F387"
+    },
+    {
+      "name": "WordLogoInverse16",
+      "unicode": "F390"
+    },
+    {
+      "name": "WordLogo16",
+      "unicode": "F391"
+    },
+    {
+      "name": "WordLogoFill16",
+      "unicode": "F392"
+    },
+    {
+      "name": "PowerPointLogoInverse16",
+      "unicode": "F393"
+    },
+    {
+      "name": "PowerPointLogo16",
+      "unicode": "F394"
+    },
+    {
+      "name": "PowerPointLogoFill16",
+      "unicode": "F395"
+    },
+    {
+      "name": "ExcelLogoInverse16",
+      "unicode": "F396"
+    },
+    {
+      "name": "ExcelLogo16",
+      "unicode": "F397"
+    },
+    {
+      "name": "ExcelLogoFill16",
+      "unicode": "F398"
+    },
+    {
+      "name": "OneNoteLogoInverse16",
+      "unicode": "F399"
+    },
+    {
+      "name": "OneNoteLogo16",
+      "unicode": "F39A"
+    },
+    {
+      "name": "OneNoteLogoFill16",
+      "unicode": "F39B"
+    },
+    {
+      "name": "OutlookLogoInverse16",
+      "unicode": "F39C"
+    },
+    {
+      "name": "OutlookLogo16",
+      "unicode": "F39D"
+    },
+    {
+      "name": "OutlookLogoFill16",
+      "unicode": "F39E"
+    },
+    {
+      "name": "PublisherLogoInverse16",
+      "unicode": "F39F"
+    },
+    {
+      "name": "PublisherLogo16",
+      "unicode": "F3A0"
+    },
+    {
+      "name": "PublisherLogoFill16",
+      "unicode": "F3A1"
+    },
+    {
+      "name": "VisioLogoInverse16",
+      "unicode": "F3A2"
+    },
+    {
+      "name": "VisioLogo16",
+      "unicode": "F3A3"
+    },
+    {
+      "name": "VisioLogoFill16",
+      "unicode": "F3A4"
+    },
+    {
+      "name": "TestBeaker",
+      "unicode": "F3A5"
+    },
+    {
+      "name": "TestBeakerSolid",
+      "unicode": "F3A6"
+    },
+    {
+      "name": "TestExploreSolid",
+      "unicode": "F3A7"
+    },
+    {
+      "name": "TestAutoSolid",
+      "unicode": "F3A8"
+    },
+    {
+      "name": "TestUserSolid",
+      "unicode": "F3A9"
+    },
+    {
+      "name": "TestImpactSolid",
+      "unicode": "F3AA"
+    },
+    {
+      "name": "TestPlan",
+      "unicode": "F3AB"
+    },
+    {
+      "name": "TestStep",
+      "unicode": "F3AC"
+    },
+    {
+      "name": "TestParameter",
+      "unicode": "F3AD"
+    },
+    {
+      "name": "TestSuite",
+      "unicode": "F3AE"
+    },
+    {
+      "name": "TestCase",
+      "unicode": "F3AF"
+    },
+    {
+      "name": "Sprint",
+      "unicode": "F3B0"
+    },
+    {
+      "name": "SignOut",
+      "unicode": "F3B1"
+    },
+    {
+      "name": "TriggerApproval",
+      "unicode": "F3B2"
+    },
+    {
+      "name": "Rocket",
+      "unicode": "F3B3"
+    },
+    {
+      "name": "AzureKeyVault",
+      "unicode": "F3B4"
+    },
+    {
+      "name": "Onboarding",
+      "unicode": "F3BA"
+    },
+    {
+      "name": "Transition",
+      "unicode": "F3BC"
+    },
+    {
+      "name": "LikeSolid",
+      "unicode": "F3BF"
+    },
+    {
+      "name": "DislikeSolid",
+      "unicode": "F3C0"
+    },
+    {
+      "name": "CRMCustomerInsightsApp",
+      "unicode": "F3C8"
+    },
+    {
+      "name": "EditCreate",
+      "unicode": "F3C9"
+    },
+    {
+      "name": "PlayReverseResume",
+      "unicode": "F3E4"
+    },
+    {
+      "name": "PlayReverse",
+      "unicode": "F3E5"
+    },
+    {
+      "name": "SearchData",
+      "unicode": "F3F1"
+    },
+    {
+      "name": "UnSetColor",
+      "unicode": "F3F9"
+    },
+    {
+      "name": "DeclineCall",
+      "unicode": "F405"
+    }
+  ]
+}

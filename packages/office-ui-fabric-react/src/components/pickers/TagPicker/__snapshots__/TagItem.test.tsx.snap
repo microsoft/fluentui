@@ -1,0 +1,623 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TagItem accepts title override 1`] = `
+<div
+  className=
+      ms-TagItem
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        background: #f3f2f1;
+        border-radius: 2px;
+        box-sizing: content-box;
+        color: #323130;
+        cursor: default;
+        display: flex;
+        flex-shrink: 1;
+        flex-wrap: nowrap;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        height: 26px;
+        line-height: 26px;
+        margin-bottom: 2px;
+        margin-left: 2px;
+        margin-right: 2px;
+        margin-top: 2px;
+        max-width: 300px;
+        min-width: 0px;
+        outline: transparent;
+        position: relative;
+        user-select: none;
+      }
+      &::-moz-focus-inner {
+        border: 0;
+      }
+      .ms-Fabric--isFocusVisible &:focus:after {
+        border: 1px solid #ffffff;
+        bottom: 1px;
+        content: "";
+        left: 1px;
+        outline: 1px solid #605e5c;
+        position: absolute;
+        right: 1px;
+        top: 1px;
+        z-index: 1;
+      }
+      &:hover {
+        background: #edebe9;
+        color: #201f1e;
+      }
+      &:hover .ms-TagItem-close {
+        color: #323130;
+      }
+      @media screen and (-ms-high-contrast: active){& {
+        border: 1px solid WindowText;
+      }
+  data-is-focusable={true}
+  data-selection-index={0}
+  role="listitem"
+>
+  <span
+    aria-label="Red color"
+    className=
+        ms-TagItem-text
+        {
+          margin-bottom: 0;
+          margin-left: 8px;
+          margin-right: 8px;
+          margin-top: 0;
+          min-width: 30px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+    title="Red color"
+  >
+    Red
+  </span>
+  <button
+    className=
+        ms-Button
+        ms-Button--icon
+        ms-TagItem-close
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          background-color: transparent;
+          border-radius: 0 2px 2px 0;
+          border: none;
+          box-sizing: border-box;
+          color: #605e5c;
+          cursor: pointer;
+          display: inline-block;
+          flex: 0 0 auto;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          height: 100%;
+          outline: transparent;
+          padding-bottom: 0;
+          padding-left: 4px;
+          padding-right: 4px;
+          padding-top: 0;
+          position: relative;
+          text-align: center;
+          text-decoration: none;
+          user-select: none;
+          width: 30px;
+        }
+        &::-moz-focus-inner {
+          border: 0;
+        }
+        .ms-Fabric--isFocusVisible &:focus:after {
+          border: 1px solid transparent;
+          bottom: 2px;
+          content: "";
+          left: 2px;
+          outline: 1px solid #605e5c;
+          position: absolute;
+          right: 2px;
+          top: 2px;
+          z-index: 1;
+        }
+        @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+          border: none;
+          bottom: -2px;
+          left: -2px;
+          outline-color: ButtonText;
+          right: -2px;
+          top: -2px;
+        }
+        &:active > * {
+          left: 0px;
+          position: relative;
+          top: 0px;
+        }
+        &:hover {
+          background-color: #f3f2f1;
+          background: #e1dfdd;
+          color: #323130;
+        }
+        @media screen and (-ms-high-contrast: active){&:hover {
+          border-color: Highlight;
+          color: Highlight;
+        }
+        &:active {
+          background-color: #005a9e;
+          color: #ffffff;
+        }
+    data-is-focusable={true}
+    onClick={[Function]}
+    onKeyDown={[Function]}
+    onKeyPress={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseUp={[Function]}
+    type="button"
+  >
+    <span
+      className=
+          ms-Button-flexContainer
+          {
+            align-items: center;
+            display: flex;
+            flex-wrap: nowrap;
+            height: 100%;
+            justify-content: center;
+          }
+      data-automationid="splitbuttonprimary"
+    >
+      <i
+        aria-hidden={true}
+        className=
+            ms-Button-icon
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              display: inline-block;
+              flex-shrink: 0;
+              font-family: "FabricMDL2Icons";
+              font-size: 12px;
+              font-style: normal;
+              font-weight: normal;
+              height: 16px;
+              line-height: 16px;
+              margin-bottom: 0;
+              margin-left: 4px;
+              margin-right: 4px;
+              margin-top: 0;
+              speak: none;
+              text-align: center;
+            }
+        data-icon-name="Cancel"
+      >
+        
+      </i>
+    </span>
+  </button>
+</div>
+`;
+
+exports[`TagItem defaults title to item name for non string children 1`] = `
+<div
+  className=
+      ms-TagItem
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        background: #f3f2f1;
+        border-radius: 2px;
+        box-sizing: content-box;
+        color: #323130;
+        cursor: default;
+        display: flex;
+        flex-shrink: 1;
+        flex-wrap: nowrap;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        height: 26px;
+        line-height: 26px;
+        margin-bottom: 2px;
+        margin-left: 2px;
+        margin-right: 2px;
+        margin-top: 2px;
+        max-width: 300px;
+        min-width: 0px;
+        outline: transparent;
+        position: relative;
+        user-select: none;
+      }
+      &::-moz-focus-inner {
+        border: 0;
+      }
+      .ms-Fabric--isFocusVisible &:focus:after {
+        border: 1px solid #ffffff;
+        bottom: 1px;
+        content: "";
+        left: 1px;
+        outline: 1px solid #605e5c;
+        position: absolute;
+        right: 1px;
+        top: 1px;
+        z-index: 1;
+      }
+      &:hover {
+        background: #edebe9;
+        color: #201f1e;
+      }
+      &:hover .ms-TagItem-close {
+        color: #323130;
+      }
+      @media screen and (-ms-high-contrast: active){& {
+        border: 1px solid WindowText;
+      }
+  data-is-focusable={true}
+  data-selection-index={0}
+  role="listitem"
+>
+  <span
+    aria-label="Red"
+    className=
+        ms-TagItem-text
+        {
+          margin-bottom: 0;
+          margin-left: 8px;
+          margin-right: 8px;
+          margin-top: 0;
+          min-width: 30px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+    title="Red"
+  >
+    <i
+      aria-hidden={true}
+      className=
+          ms-Icon
+          {
+            display: inline-block;
+          }
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            font-family: "FabricMDL2Icons-15";
+            font-style: normal;
+            font-weight: normal;
+            speak: none;
+          }
+      data-icon-name="SquareShapeSolid"
+      role="presentation"
+      style={
+        Object {
+          "color": "red",
+          "fontFamily": "\\"FabricMDL2Icons-15\\"",
+        }
+      }
+    >
+      
+    </i>
+  </span>
+  <button
+    className=
+        ms-Button
+        ms-Button--icon
+        ms-TagItem-close
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          background-color: transparent;
+          border-radius: 0 2px 2px 0;
+          border: none;
+          box-sizing: border-box;
+          color: #605e5c;
+          cursor: pointer;
+          display: inline-block;
+          flex: 0 0 auto;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          height: 100%;
+          outline: transparent;
+          padding-bottom: 0;
+          padding-left: 4px;
+          padding-right: 4px;
+          padding-top: 0;
+          position: relative;
+          text-align: center;
+          text-decoration: none;
+          user-select: none;
+          width: 30px;
+        }
+        &::-moz-focus-inner {
+          border: 0;
+        }
+        .ms-Fabric--isFocusVisible &:focus:after {
+          border: 1px solid transparent;
+          bottom: 2px;
+          content: "";
+          left: 2px;
+          outline: 1px solid #605e5c;
+          position: absolute;
+          right: 2px;
+          top: 2px;
+          z-index: 1;
+        }
+        @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+          border: none;
+          bottom: -2px;
+          left: -2px;
+          outline-color: ButtonText;
+          right: -2px;
+          top: -2px;
+        }
+        &:active > * {
+          left: 0px;
+          position: relative;
+          top: 0px;
+        }
+        &:hover {
+          background-color: #f3f2f1;
+          background: #e1dfdd;
+          color: #323130;
+        }
+        @media screen and (-ms-high-contrast: active){&:hover {
+          border-color: Highlight;
+          color: Highlight;
+        }
+        &:active {
+          background-color: #005a9e;
+          color: #ffffff;
+        }
+    data-is-focusable={true}
+    onClick={[Function]}
+    onKeyDown={[Function]}
+    onKeyPress={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseUp={[Function]}
+    type="button"
+  >
+    <span
+      className=
+          ms-Button-flexContainer
+          {
+            align-items: center;
+            display: flex;
+            flex-wrap: nowrap;
+            height: 100%;
+            justify-content: center;
+          }
+      data-automationid="splitbuttonprimary"
+    >
+      <i
+        aria-hidden={true}
+        className=
+            ms-Button-icon
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              display: inline-block;
+              flex-shrink: 0;
+              font-family: "FabricMDL2Icons";
+              font-size: 12px;
+              font-style: normal;
+              font-weight: normal;
+              height: 16px;
+              line-height: 16px;
+              margin-bottom: 0;
+              margin-left: 4px;
+              margin-right: 4px;
+              margin-top: 0;
+              speak: none;
+              text-align: center;
+            }
+        data-icon-name="Cancel"
+      >
+        
+      </i>
+    </span>
+  </button>
+</div>
+`;
+
+exports[`TagItem renders correctly 1`] = `
+<div
+  className=
+      ms-TagItem
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        background: #f3f2f1;
+        border-radius: 2px;
+        box-sizing: content-box;
+        color: #323130;
+        cursor: default;
+        display: flex;
+        flex-shrink: 1;
+        flex-wrap: nowrap;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        height: 26px;
+        line-height: 26px;
+        margin-bottom: 2px;
+        margin-left: 2px;
+        margin-right: 2px;
+        margin-top: 2px;
+        max-width: 300px;
+        min-width: 0px;
+        outline: transparent;
+        position: relative;
+        user-select: none;
+      }
+      &::-moz-focus-inner {
+        border: 0;
+      }
+      .ms-Fabric--isFocusVisible &:focus:after {
+        border: 1px solid #ffffff;
+        bottom: 1px;
+        content: "";
+        left: 1px;
+        outline: 1px solid #605e5c;
+        position: absolute;
+        right: 1px;
+        top: 1px;
+        z-index: 1;
+      }
+      &:hover {
+        background: #edebe9;
+        color: #201f1e;
+      }
+      &:hover .ms-TagItem-close {
+        color: #323130;
+      }
+      @media screen and (-ms-high-contrast: active){& {
+        border: 1px solid WindowText;
+      }
+  data-is-focusable={true}
+  data-selection-index={0}
+  role="listitem"
+>
+  <span
+    aria-label="Red color"
+    className=
+        ms-TagItem-text
+        {
+          margin-bottom: 0;
+          margin-left: 8px;
+          margin-right: 8px;
+          margin-top: 0;
+          min-width: 30px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+    title="Red color"
+  >
+    Red color
+  </span>
+  <button
+    className=
+        ms-Button
+        ms-Button--icon
+        ms-TagItem-close
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          background-color: transparent;
+          border-radius: 0 2px 2px 0;
+          border: none;
+          box-sizing: border-box;
+          color: #605e5c;
+          cursor: pointer;
+          display: inline-block;
+          flex: 0 0 auto;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          height: 100%;
+          outline: transparent;
+          padding-bottom: 0;
+          padding-left: 4px;
+          padding-right: 4px;
+          padding-top: 0;
+          position: relative;
+          text-align: center;
+          text-decoration: none;
+          user-select: none;
+          width: 30px;
+        }
+        &::-moz-focus-inner {
+          border: 0;
+        }
+        .ms-Fabric--isFocusVisible &:focus:after {
+          border: 1px solid transparent;
+          bottom: 2px;
+          content: "";
+          left: 2px;
+          outline: 1px solid #605e5c;
+          position: absolute;
+          right: 2px;
+          top: 2px;
+          z-index: 1;
+        }
+        @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+          border: none;
+          bottom: -2px;
+          left: -2px;
+          outline-color: ButtonText;
+          right: -2px;
+          top: -2px;
+        }
+        &:active > * {
+          left: 0px;
+          position: relative;
+          top: 0px;
+        }
+        &:hover {
+          background-color: #f3f2f1;
+          background: #e1dfdd;
+          color: #323130;
+        }
+        @media screen and (-ms-high-contrast: active){&:hover {
+          border-color: Highlight;
+          color: Highlight;
+        }
+        &:active {
+          background-color: #005a9e;
+          color: #ffffff;
+        }
+    data-is-focusable={true}
+    onClick={[Function]}
+    onKeyDown={[Function]}
+    onKeyPress={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseUp={[Function]}
+    type="button"
+  >
+    <span
+      className=
+          ms-Button-flexContainer
+          {
+            align-items: center;
+            display: flex;
+            flex-wrap: nowrap;
+            height: 100%;
+            justify-content: center;
+          }
+      data-automationid="splitbuttonprimary"
+    >
+      <i
+        aria-hidden={true}
+        className=
+            ms-Button-icon
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              display: inline-block;
+              flex-shrink: 0;
+              font-family: "FabricMDL2Icons";
+              font-size: 12px;
+              font-style: normal;
+              font-weight: normal;
+              height: 16px;
+              line-height: 16px;
+              margin-bottom: 0;
+              margin-left: 4px;
+              margin-right: 4px;
+              margin-top: 0;
+              speak: none;
+              text-align: center;
+            }
+        data-icon-name="Cancel"
+      >
+        
+      </i>
+    </span>
+  </button>
+</div>
+`;

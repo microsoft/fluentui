@@ -1,26 +1,18 @@
 import * as React from 'react';
-import { PrimaryButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
-import { Label } from 'office-ui-fabric-react/lib/Label';
+import { PrimaryButton } from 'office-ui-fabric-react';
 
-export class ButtonScreenReaderExample extends React.Component<IButtonProps, {}> {
-  public constructor() {
-    super();
-  }
-
-  public render() {
-    let { disabled, checked } = this.props;
-
-    return (
-      <div className='ms-BasicButtonsExample'>
-        <Label>Button with aria description for screen reader</Label>
-        <PrimaryButton
-          data-automation-id='test'
-          disabled={ disabled }
-          checked={ checked }
-          ariaDescription='This is aria description used for screen reader.'>
-          Aria Description
-        </PrimaryButton>
-      </div>
-    );
-  }
+export interface IButtonExampleProps {
+  // These are set based on the toggles shown above the examples (not needed in real code)
+  disabled?: boolean;
+  checked?: boolean;
 }
+
+export const ButtonScreenReaderExample: React.FunctionComponent<IButtonExampleProps> = props => {
+  const { disabled, checked } = props;
+
+  return (
+    <PrimaryButton ariaDescription="Detailed description used for screen reader." disabled={disabled} checked={checked}>
+      Button with Aria Description
+    </PrimaryButton>
+  );
+};

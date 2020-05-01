@@ -1,0 +1,5 @@
+{
+  "copyTo": {
+    "dist": ["./index.html"]
+  }
+}

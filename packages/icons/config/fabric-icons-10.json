@@ -1,0 +1,413 @@
+{
+  "fontName": "fabric-icons-10",
+  "fontFamilyName": "FabricMDL2Icons-10",
+  "excludeGlyphs": false,
+  "excludeThirdPartyIcons": true,
+  "chunkSubsets": true,
+  "hashFontFileName": true,
+  "subsetChunkSettings": {
+    "maxSubsetSize": 100
+  },
+  "glyphs": [
+    {
+      "name": "ViewListGroup",
+      "unicode": "F248"
+    },
+    {
+      "name": "ViewListTree",
+      "unicode": "F249"
+    },
+    {
+      "name": "TriggerAuto",
+      "unicode": "F24A"
+    },
+    {
+      "name": "TriggerUser",
+      "unicode": "F24B"
+    },
+    {
+      "name": "PivotChart",
+      "unicode": "F24C"
+    },
+    {
+      "name": "StackedBarChart",
+      "unicode": "F24D"
+    },
+    {
+      "name": "StackedLineChart",
+      "unicode": "F24E"
+    },
+    {
+      "name": "BuildQueue",
+      "unicode": "F24F"
+    },
+    {
+      "name": "BuildQueueNew",
+      "unicode": "F250"
+    },
+    {
+      "name": "UserFollowed",
+      "unicode": "F25C"
+    },
+    {
+      "name": "ContactLink",
+      "unicode": "F25F"
+    },
+    {
+      "name": "Stack",
+      "unicode": "F26F"
+    },
+    {
+      "name": "Bullseye",
+      "unicode": "F272"
+    },
+    {
+      "name": "VennDiagram",
+      "unicode": "F273"
+    },
+    {
+      "name": "FiveTileGrid",
+      "unicode": "F274"
+    },
+    {
+      "name": "FocalPoint",
+      "unicode": "F277"
+    },
+    {
+      "name": "Insert",
+      "unicode": "F278"
+    },
+    {
+      "name": "RingerRemove",
+      "unicode": "F279"
+    },
+    {
+      "name": "TeamsLogoInverse",
+      "unicode": "F27A"
+    },
+    {
+      "name": "TeamsLogo",
+      "unicode": "F27B"
+    },
+    {
+      "name": "TeamsLogoFill",
+      "unicode": "F27C"
+    },
+    {
+      "name": "SkypeForBusinessLogoFill",
+      "unicode": "F27D"
+    },
+    {
+      "name": "SharepointLogo",
+      "unicode": "F27E"
+    },
+    {
+      "name": "SharepointLogoFill",
+      "unicode": "F27F"
+    },
+    {
+      "name": "DelveLogo",
+      "unicode": "F280"
+    },
+    {
+      "name": "DelveLogoFill",
+      "unicode": "F281"
+    },
+    {
+      "name": "OfficeVideoLogo",
+      "unicode": "F282"
+    },
+    {
+      "name": "OfficeVideoLogoFill",
+      "unicode": "F283"
+    },
+    {
+      "name": "ExchangeLogo",
+      "unicode": "F284"
+    },
+    {
+      "name": "ExchangeLogoFill",
+      "unicode": "F285"
+    },
+    {
+      "name": "Signin",
+      "unicode": "F286"
+    },
+    {
+      "name": "DocumentApproval",
+      "unicode": "F28B"
+    },
+    {
+      "name": "CloneToDesktop",
+      "unicode": "F28C"
+    },
+    {
+      "name": "InstallToDrive",
+      "unicode": "F28D"
+    },
+    {
+      "name": "Blur",
+      "unicode": "F28E"
+    },
+    {
+      "name": "Build",
+      "unicode": "F28F"
+    },
+    {
+      "name": "ProcessMetaTask",
+      "unicode": "F290"
+    },
+    {
+      "name": "BranchFork2",
+      "unicode": "F291"
+    },
+    {
+      "name": "BranchLocked",
+      "unicode": "F292"
+    },
+    {
+      "name": "BranchCommit",
+      "unicode": "F293"
+    },
+    {
+      "name": "BranchCompare",
+      "unicode": "F294"
+    },
+    {
+      "name": "BranchMerge",
+      "unicode": "F295"
+    },
+    {
+      "name": "BranchPullRequest",
+      "unicode": "F296"
+    },
+    {
+      "name": "BranchSearch",
+      "unicode": "F297"
+    },
+    {
+      "name": "BranchShelveset",
+      "unicode": "F298"
+    },
+    {
+      "name": "RawSource",
+      "unicode": "F299"
+    },
+    {
+      "name": "MergeDuplicate",
+      "unicode": "F29A"
+    },
+    {
+      "name": "RowsGroup",
+      "unicode": "F29B"
+    },
+    {
+      "name": "RowsChild",
+      "unicode": "F29C"
+    },
+    {
+      "name": "Deploy",
+      "unicode": "F29D"
+    },
+    {
+      "name": "Redeploy",
+      "unicode": "F29E"
+    },
+    {
+      "name": "ServerEnviroment",
+      "unicode": "F29F"
+    },
+    {
+      "name": "VisioDiagram",
+      "unicode": "F2A0"
+    },
+    {
+      "name": "HighlightMappedShapes",
+      "unicode": "F2A1"
+    },
+    {
+      "name": "TextCallout",
+      "unicode": "F2A2"
+    },
+    {
+      "name": "IconSetsFlag",
+      "unicode": "F2A4"
+    },
+    {
+      "name": "VisioLogo",
+      "unicode": "F2A7"
+    },
+    {
+      "name": "VisioLogoFill",
+      "unicode": "F2A8"
+    },
+    {
+      "name": "VisioDocument",
+      "unicode": "F2A9"
+    },
+    {
+      "name": "TimelineProgress",
+      "unicode": "F2AA"
+    },
+    {
+      "name": "TimelineDelivery",
+      "unicode": "F2AB"
+    },
+    {
+      "name": "Backlog",
+      "unicode": "F2AC"
+    },
+    {
+      "name": "TeamFavorite",
+      "unicode": "F2AD"
+    },
+    {
+      "name": "TaskGroup",
+      "unicode": "F2AE"
+    },
+    {
+      "name": "TaskGroupMirrored",
+      "unicode": "F2AF"
+    },
+    {
+      "name": "ScopeTemplate",
+      "unicode": "F2B0"
+    },
+    {
+      "name": "AssessmentGroupTemplate",
+      "unicode": "F2B1"
+    },
+    {
+      "name": "NewTeamProject",
+      "unicode": "F2B2"
+    },
+    {
+      "name": "CommentAdd",
+      "unicode": "F2B3"
+    },
+    {
+      "name": "CommentNext",
+      "unicode": "F2B4"
+    },
+    {
+      "name": "CommentPrevious",
+      "unicode": "F2B5"
+    },
+    {
+      "name": "ShopServer",
+      "unicode": "F2B6"
+    },
+    {
+      "name": "LocaleLanguage",
+      "unicode": "F2B7"
+    },
+    {
+      "name": "QueryList",
+      "unicode": "F2B8"
+    },
+    {
+      "name": "UserSync",
+      "unicode": "F2B9"
+    },
+    {
+      "name": "UserPause",
+      "unicode": "F2BA"
+    },
+    {
+      "name": "StreamingOff",
+      "unicode": "F2BB"
+    },
+    {
+      "name": "ArrowTallUpLeft",
+      "unicode": "F2BD"
+    },
+    {
+      "name": "ArrowTallUpRight",
+      "unicode": "F2BE"
+    },
+    {
+      "name": "ArrowTallDownLeft",
+      "unicode": "F2BF"
+    },
+    {
+      "name": "ArrowTallDownRight",
+      "unicode": "F2C0"
+    },
+    {
+      "name": "FieldEmpty",
+      "unicode": "F2C1"
+    },
+    {
+      "name": "FieldFilled",
+      "unicode": "F2C2"
+    },
+    {
+      "name": "FieldChanged",
+      "unicode": "F2C3"
+    },
+    {
+      "name": "FieldNotChanged",
+      "unicode": "F2C4"
+    },
+    {
+      "name": "RingerOff",
+      "unicode": "F2C5"
+    },
+    {
+      "name": "PlayResume",
+      "unicode": "F2C6"
+    },
+    {
+      "name": "BulletedList2",
+      "unicode": "F2C7"
+    },
+    {
+      "name": "BulletedList2Mirrored",
+      "unicode": "F2C8"
+    },
+    {
+      "name": "ImageCrosshair",
+      "unicode": "F2C9"
+    },
+    {
+      "name": "GitGraph",
+      "unicode": "F2CA"
+    },
+    {
+      "name": "Repo",
+      "unicode": "F2CB"
+    },
+    {
+      "name": "RepoSolid",
+      "unicode": "F2CC"
+    },
+    {
+      "name": "FolderQuery",
+      "unicode": "F2CD"
+    },
+    {
+      "name": "FolderList",
+      "unicode": "F2CE"
+    },
+    {
+      "name": "FolderListMirrored",
+      "unicode": "F2CF"
+    },
+    {
+      "name": "LocationOutline",
+      "unicode": "F2D0"
+    },
+    {
+      "name": "POISolid",
+      "unicode": "F2D1"
+    },
+    {
+      "name": "CalculatorNotEqualTo",
+      "unicode": "F2D2"
+    },
+    {
+      "name": "BoxSubtractSolid",
+      "unicode": "F2D3"
+    }
+  ]
+}

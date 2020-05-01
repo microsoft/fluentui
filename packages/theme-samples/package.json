@@ -1,0 +1,34 @@
+{
+  "name": "@uifabric/theme-samples",
+  "version": "7.0.66",
+  "description": "Sample themes for use with Fabric components.",
+  "main": "lib-commonjs/index.js",
+  "module": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "sideEffects": [
+    "lib/version.js"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/fluentui"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "just-scripts build",
+    "bundle": "just-scripts bundle",
+    "lint": "just-scripts lint",
+    "just": "just-scripts",
+    "code-style": "just-scripts code-style",
+    "clean": "just-scripts clean"
+  },
+  "devDependencies": {
+    "@uifabric/build": "^7.0.0",
+    "@uifabric/tslint-rules": "^7.2.0"
+  },
+  "dependencies": {
+    "@uifabric/set-version": "^7.0.11",
+    "@uifabric/variants": "^7.1.56",
+    "office-ui-fabric-react": "^7.110.1",
+    "tslib": "^1.10.0"
+  }
+}

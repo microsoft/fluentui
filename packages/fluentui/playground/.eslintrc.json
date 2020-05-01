@@ -1,0 +1,3 @@
+{
+  "extends": ["../../../scripts/eslint/index"]
+}

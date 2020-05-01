@@ -1,9 +1,8 @@
-# [Office UI Fabric React - utilities](http://dev.office.com/fabric)
+# @uifabric/utilities
 
-##### The React-based front-end framework for building experiences for Office and Office 365.
+**Utilities for [Fluent UI React](https://developer.microsoft.com/en-us/fluentui)**
+([formerly Office UI Fabric React](https://developer.microsoft.com/en-us/office/blogs/ui-fabric-is-evolving-into-fluent-ui/))
 
-Fabric React is a responsive, mobile-first collection of robust components designed to make it quick and simple for you to create web experiences using the Office Design Language.
+This package includes a number of basic utility functions required by most Fluent UI React components.
 
-The `utilities` package includes a number of basic utility functions required by most Fabric components.
-
-See [Office UI Fabric React](http://github.com/OfficeDev/office-ui-fabric-react) for more details on the project and packages within.
+See [GitHub](https://github.com/microsoft/fluentui) for more details on the Fluent UI React project and packages within.

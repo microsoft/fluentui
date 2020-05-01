@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`createRefFromReact transforms createRef 1`] = `
+"import { fooBarBaz, IThing } from 'office-ui-fabric-react';
+import { createRef } from 'react';
+import * as React from 'react';
+
+class Foo {
+  private _r = createRef<IButton>();
+
+  constructor(props: {}) {
+    super(props);
+    this.state = {};
+  }
+}
+"
+`;

@@ -1,29 +1,26 @@
 import * as React from 'react';
-import {
-  CompoundButton,
-  IButtonProps
-} from 'office-ui-fabric-react/lib/Button';
-import { Label } from 'office-ui-fabric-react/lib/Label';
+import { CompoundButton, Stack, IStackTokens } from 'office-ui-fabric-react';
 
-export class ButtonCompoundExample extends React.Component<IButtonProps, {}> {
-  public constructor() {
-    super();
-  }
-
-  public render() {
-    let { disabled, checked } = this.props;
-
-    return (
-      <div className='ms-BasicButtonsExample'>
-        <Label>Compound button</Label>
-        <CompoundButton
-          description='You can create a new account here.'
-          disabled={ disabled }
-          checked={ checked }
-        >
-          Create account
-        </CompoundButton>
-      </div>
-    );
-  }
+export interface IButtonExampleProps {
+  // These are set based on the toggles shown above the examples (not needed in real code)
+  disabled?: boolean;
+  checked?: boolean;
 }
+
+// Example formatting
+const stackTokens: IStackTokens = { childrenGap: 40 };
+
+export const ButtonCompoundExample: React.FunctionComponent<IButtonExampleProps> = props => {
+  const { disabled, checked } = props;
+
+  return (
+    <Stack horizontal tokens={stackTokens}>
+      <CompoundButton secondaryText="This is the secondary text." disabled={disabled} checked={checked}>
+        Standard
+      </CompoundButton>
+      <CompoundButton primary secondaryText="This is the secondary text." disabled={disabled} checked={checked}>
+        Primary
+      </CompoundButton>
+    </Stack>
+  );
+};

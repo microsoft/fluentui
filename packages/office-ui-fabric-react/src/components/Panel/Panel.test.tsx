@@ -1,46 +1,159 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
-
-import * as ReactDOM from 'react-dom';
-
-let { expect } = chai;
+import * as renderer from 'react-test-renderer';
+import { mount } from 'enzyme';
 
 import { Panel } from './Panel';
-
+import { PanelBase } from './Panel.base';
+import { IPanel } from './Panel.types';
 let div: HTMLElement;
 
+const ReactDOM = require('react-dom');
+
 describe('Panel', () => {
-  beforeEach(() => {
-    div = document.createElement('div');
-  });
-
   afterEach(() => {
-    ReactDOM.unmountComponentAtNode(div);
+    jest.useRealTimers();
   });
 
-  it('fires the correct events when closing', (done) => {
-    let dismissedCalled = false;
-    let dismissCalled = false;
-    let panel: Panel = ReactDOM.render(
+  it('renders Panel correctly', () => {
+    // Mock createPortal to capture its component hierarchy in snapshot output.
+    const originalCreatePortal = ReactDOM.createPortal;
+    ReactDOM.createPortal = jest.fn(element => {
+      return element;
+    });
+
+    const component = renderer.create(
       <Panel
-        isOpen={ true }
-        onDismiss={ () => { dismissCalled = true; } }
-        onDismissed={ () => dismissedCalled = true } />,
-      div) as any;
+        isOpen={true}
+        headerText="Test Panel"
+        headerTextProps={{
+          className: 'panel_class',
+          'aria-level': 3,
+        }}
+      >
+        <span>Content goes here</span>
+      </Panel>,
+    );
 
-    panel.dismiss();
+    expect(component.toJSON()).toMatchSnapshot();
 
-    expect(dismissCalled).equals(true, 'onDismiss was not called');
-    expect(dismissedCalled).equals(false, 'onDismissed was called prematurely');
+    ReactDOM.createPortal = originalCreatePortal;
+  });
 
-    setTimeout(() => {
-      try {
-        expect(dismissedCalled).equals(true, 'onDismissed not called');
-        done();
-      } catch (e) {
-        done(e);
-      }
-    }, 250);
+  describe('open', () => {
+    beforeEach(() => {
+      div = document.createElement('div');
+    });
+
+    afterEach(() => {
+      ReactDOM.unmountComponentAtNode(div);
+    });
+
+    it('fires the correct events on imperative scenarios', () => {
+      let openedCalled = false;
+      let openCalled = false;
+      let dismissedCalled = false;
+      let dismissCalled = false;
+      let dismissCount = 0;
+
+      const setOpenTrue = (): void => {
+        openCalled = true;
+      };
+      const setOpenedTrue = (): void => {
+        openedCalled = true;
+      };
+      const setDismissTrue = (): void => {
+        dismissCalled = true;
+        dismissCount++;
+      };
+      const setDismissedTrue = (): void => {
+        dismissedCalled = true;
+      };
+      jest.useFakeTimers();
+
+      const panel: PanelBase = ReactDOM.render(
+        <PanelBase
+          onOpen={setOpenTrue}
+          onOpened={setOpenedTrue}
+          onDismiss={setDismissTrue}
+          onDismissed={setDismissedTrue}
+        />,
+        div,
+      ) as any;
+
+      panel.open();
+
+      expect(openCalled).toEqual(true);
+      expect(openedCalled).toEqual(false);
+
+      jest.runOnlyPendingTimers();
+
+      expect(openedCalled).toEqual(true);
+
+      expect(dismissCalled).toEqual(false);
+      expect(dismissedCalled).toEqual(false);
+
+      panel.dismiss();
+
+      expect(dismissCalled).toEqual(true);
+      expect(dismissedCalled).toEqual(false);
+
+      // Dismiss should only be called once per dismiss.
+      expect(dismissCount).toEqual(1);
+
+      jest.runOnlyPendingTimers();
+
+      expect(dismissedCalled).toEqual(true);
+    });
+
+    it('fires the correct events on non-imperative scenarios', () => {
+      const panel = React.createRef<IPanel>();
+
+      const onOpen = jest.fn();
+      const onOpened = jest.fn();
+      const onDismiss = jest.fn();
+      const onDismissed = jest.fn();
+      jest.useFakeTimers();
+
+      const wrapper = mount(
+        <Panel
+          isOpen={false}
+          onOpen={onOpen}
+          onOpened={onOpened}
+          onDismiss={onDismiss}
+          onDismissed={onDismissed}
+          componentRef={panel}
+        />,
+      );
+
+      expect(onOpen).toHaveBeenCalledTimes(0);
+
+      wrapper.setProps({ isOpen: true });
+
+      expect(onOpen).toHaveBeenCalledTimes(1);
+      expect(onOpened).toHaveBeenCalledTimes(0);
+
+      jest.runOnlyPendingTimers();
+
+      expect(onOpened).toHaveBeenCalledTimes(1);
+      expect(onDismiss).toHaveBeenCalledTimes(0);
+
+      wrapper.setProps({ isOpen: false });
+
+      expect(onDismissed).toHaveBeenCalledTimes(0);
+
+      jest.runOnlyPendingTimers();
+
+      expect(onDismissed).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  describe('onClose', () => {
+    beforeEach(() => {
+      div = document.createElement('div');
+    });
+
+    afterEach(() => {
+      ReactDOM.unmountComponentAtNode(div);
+    });
   });
 });

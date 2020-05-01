@@ -1,45 +1,90 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
-import { css } from '../../Utilities';
+import {
+  IDetailsRowCheckProps,
+  IDetailsCheckboxProps,
+  IDetailsRowCheckStyleProps,
+  IDetailsRowCheckStyles,
+} from './DetailsRowCheck.types';
+import { css, styled, classNamesFunction } from '../../Utilities';
 import { Check } from '../../Check';
-import * as styles from './DetailsRowCheck.scss';
+import { getStyles } from './DetailsRowCheck.styles';
+import { composeRenderFunction } from '@uifabric/utilities';
+import { ITheme } from '../../Styling';
 
-export interface IDetailsRowCheckProps extends React.HTMLAttributes<HTMLElement> {
-  selected?: boolean;
-  /**
-   * Deprecated at v.65.1 and will be removed by v 1.0. Use 'selected' instead.
-   * @deprecated
-   */
-  isSelected?: boolean;
-  anySelected: boolean;
-  canSelect: boolean;
-}
+const getClassNames = classNamesFunction<IDetailsRowCheckStyleProps, IDetailsRowCheckStyles>();
 
-export const DetailsRowCheck = (props: IDetailsRowCheckProps) => {
+const DetailsRowCheckBase: React.FunctionComponent<IDetailsRowCheckProps> = props => {
   const {
-    canSelect,
-    isSelected,
-    anySelected,
-    selected,
+    isVisible = false,
+    canSelect = false,
+    anySelected = false,
+    selected = false,
+    isHeader = false,
+    className,
+    checkClassName,
+    styles,
+    theme,
+    compact,
+    onRenderDetailsCheckbox,
+    useFastIcons = true, // must be removed from buttonProps
     ...buttonProps
   } = props;
+  const defaultCheckboxRender = useFastIcons ? _fastDefaultCheckboxRender : _defaultCheckboxRender;
 
-  let isPressed = props.isSelected || props.selected;
+  const onRenderCheckbox = onRenderDetailsCheckbox
+    ? composeRenderFunction(onRenderDetailsCheckbox, defaultCheckboxRender)
+    : defaultCheckboxRender;
 
-  return (
-    <button
-      { ...buttonProps }
-      role='checkbox'
-      className={ css('ms-DetailsRow-check', styles.check, {
-        [styles.isDisabled]: !props.canSelect,
-        'ms-DetailsRow-check--isDisabled': !props.canSelect
-      }) }
-      aria-checked={ isPressed }
-      data-selection-toggle={ true }
-      data-automationid='DetailsRowCheck'
+  const classNames = getClassNames(styles, {
+    theme: theme!,
+    canSelect,
+    selected,
+    anySelected,
+    className,
+    isHeader,
+    isVisible,
+    compact,
+  });
+
+  const detailsCheckboxProps: IDetailsCheckboxProps = {
+    checked: selected,
+    theme,
+  };
+
+  return canSelect ? (
+    <div
+      {...buttonProps}
+      role="checkbox"
+      // tslint:disable-next-line:deprecation
+      className={css(classNames.root, classNames.check)}
+      aria-checked={selected}
+      data-selection-toggle={true}
+      data-automationid="DetailsRowCheck"
     >
-      <Check checked={ isPressed } />
-    </button>
+      {onRenderCheckbox(detailsCheckboxProps)}
+    </div>
+  ) : (
+    // tslint:disable-next-line:deprecation
+    <div {...buttonProps} className={css(classNames.root, classNames.check)} />
   );
 };
+
+const FastCheck = React.memo((props: { theme?: ITheme; checked?: boolean; className?: string }) => {
+  return <Check theme={props.theme} checked={props.checked} className={props.className} useFastIcons />;
+});
+
+function _defaultCheckboxRender(checkboxProps: IDetailsCheckboxProps) {
+  return <Check checked={checkboxProps.checked} />;
+}
+
+function _fastDefaultCheckboxRender(checkboxProps: IDetailsCheckboxProps) {
+  return <FastCheck theme={checkboxProps.theme} checked={checkboxProps.checked} />;
+}
+
+export const DetailsRowCheck = styled<IDetailsRowCheckProps, IDetailsRowCheckStyleProps, IDetailsRowCheckStyles>(
+  DetailsRowCheckBase,
+  getStyles,
+  undefined,
+  { scope: 'DetailsRowCheck' },
+  true,
+);

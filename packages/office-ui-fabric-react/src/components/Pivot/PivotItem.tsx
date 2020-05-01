@@ -1,19 +1,20 @@
 import * as React from 'react';
-import {
-  BaseComponent,
-  getNativeProps,
-  divProperties
-} from '../../Utilities';
-import { IPivotItemProps } from './PivotItem.Props';
+import { getNativeProps, divProperties, initializeComponentRef, warnDeprecations } from '../../Utilities';
+import { IPivotItemProps } from './PivotItem.types';
 
-export class PivotItem extends BaseComponent<IPivotItemProps, {}> {
+const COMPONENT_NAME = 'PivotItem';
 
-  public render() {
-    return (
-      <div
-        { ...getNativeProps(this.props, divProperties) }>
-        { this.props.children }
-      </div>
-    );
+export class PivotItem extends React.Component<IPivotItemProps, {}> {
+  constructor(props: IPivotItemProps) {
+    super(props);
+
+    initializeComponentRef(this);
+    warnDeprecations(COMPONENT_NAME, props, {
+      linkText: 'headerText',
+    });
+  }
+
+  public render(): JSX.Element {
+    return <div {...getNativeProps(this.props, divProperties)}>{this.props.children}</div>;
   }
 }

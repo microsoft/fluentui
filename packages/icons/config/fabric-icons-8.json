@@ -1,0 +1,413 @@
+{
+  "fontName": "fabric-icons-8",
+  "fontFamilyName": "FabricMDL2Icons-8",
+  "excludeGlyphs": false,
+  "excludeThirdPartyIcons": true,
+  "chunkSubsets": true,
+  "hashFontFileName": true,
+  "subsetChunkSettings": {
+    "maxSubsetSize": 100
+  },
+  "glyphs": [
+    {
+      "name": "CollapseMenu",
+      "unicode": "EF66"
+    },
+    {
+      "name": "ExpandMenu",
+      "unicode": "EF67"
+    },
+    {
+      "name": "Boards",
+      "unicode": "EF68"
+    },
+    {
+      "name": "SunAdd",
+      "unicode": "EF69"
+    },
+    {
+      "name": "SunQuestionMark",
+      "unicode": "EF6A"
+    },
+    {
+      "name": "LandscapeOrientation",
+      "unicode": "EF6B"
+    },
+    {
+      "name": "DocumentSearch",
+      "unicode": "EF6C"
+    },
+    {
+      "name": "PublicCalendar",
+      "unicode": "EF6D"
+    },
+    {
+      "name": "PublicContactCard",
+      "unicode": "EF6E"
+    },
+    {
+      "name": "PublicEmail",
+      "unicode": "EF6F"
+    },
+    {
+      "name": "PublicFolder",
+      "unicode": "EF70"
+    },
+    {
+      "name": "WordDocument",
+      "unicode": "EF71"
+    },
+    {
+      "name": "PowerPointDocument",
+      "unicode": "EF72"
+    },
+    {
+      "name": "ExcelDocument",
+      "unicode": "EF73"
+    },
+    {
+      "name": "GroupedList",
+      "unicode": "EF74"
+    },
+    {
+      "name": "ClassroomLogo",
+      "unicode": "EF75"
+    },
+    {
+      "name": "Sections",
+      "unicode": "EF76"
+    },
+    {
+      "name": "EditPhoto",
+      "unicode": "EF77"
+    },
+    {
+      "name": "Starburst",
+      "unicode": "EF78"
+    },
+    {
+      "name": "ShareiOS",
+      "unicode": "EF79"
+    },
+    {
+      "name": "AirTickets",
+      "unicode": "EF7A"
+    },
+    {
+      "name": "PencilReply",
+      "unicode": "EF7B"
+    },
+    {
+      "name": "Tiles2",
+      "unicode": "EF7C"
+    },
+    {
+      "name": "SkypeCircleCheck",
+      "unicode": "EF7D"
+    },
+    {
+      "name": "SkypeCircleClock",
+      "unicode": "EF7E"
+    },
+    {
+      "name": "SkypeCircleMinus",
+      "unicode": "EF7F"
+    },
+    {
+      "name": "SkypeMessage",
+      "unicode": "EF83"
+    },
+    {
+      "name": "ClosedCaption",
+      "unicode": "EF84"
+    },
+    {
+      "name": "ATPLogo",
+      "unicode": "EF85"
+    },
+    {
+      "name": "OfficeFormsLogoInverse",
+      "unicode": "EF86"
+    },
+    {
+      "name": "RecycleBin",
+      "unicode": "EF87"
+    },
+    {
+      "name": "EmptyRecycleBin",
+      "unicode": "EF88"
+    },
+    {
+      "name": "Hide2",
+      "unicode": "EF89"
+    },
+    {
+      "name": "Breadcrumb",
+      "unicode": "EF8C"
+    },
+    {
+      "name": "BirthdayCake",
+      "unicode": "EF8D"
+    },
+    {
+      "name": "TimeEntry",
+      "unicode": "EF95"
+    },
+    {
+      "name": "CRMProcesses",
+      "unicode": "EFB1"
+    },
+    {
+      "name": "PageEdit",
+      "unicode": "EFB6"
+    },
+    {
+      "name": "PageArrowRight",
+      "unicode": "EFB8"
+    },
+    {
+      "name": "PageRemove",
+      "unicode": "EFBA"
+    },
+    {
+      "name": "Database",
+      "unicode": "EFC7"
+    },
+    {
+      "name": "DataManagementSettings",
+      "unicode": "EFC8"
+    },
+    {
+      "name": "CRMServices",
+      "unicode": "EFD2"
+    },
+    {
+      "name": "EditContact",
+      "unicode": "EFD3"
+    },
+    {
+      "name": "ConnectContacts",
+      "unicode": "EFD4"
+    },
+    {
+      "name": "AppIconDefaultAdd",
+      "unicode": "EFDA"
+    },
+    {
+      "name": "AppIconDefaultList",
+      "unicode": "EFDE"
+    },
+    {
+      "name": "ActivateOrders",
+      "unicode": "EFE0"
+    },
+    {
+      "name": "DeactivateOrders",
+      "unicode": "EFE1"
+    },
+    {
+      "name": "ProductCatalog",
+      "unicode": "EFE8"
+    },
+    {
+      "name": "ScatterChart",
+      "unicode": "EFEB"
+    },
+    {
+      "name": "AccountActivity",
+      "unicode": "EFF4"
+    },
+    {
+      "name": "DocumentManagement",
+      "unicode": "EFFC"
+    },
+    {
+      "name": "CRMReport",
+      "unicode": "EFFE"
+    },
+    {
+      "name": "KnowledgeArticle",
+      "unicode": "F000"
+    },
+    {
+      "name": "Relationship",
+      "unicode": "F003"
+    },
+    {
+      "name": "HomeVerify",
+      "unicode": "F00E"
+    },
+    {
+      "name": "ZipFolder",
+      "unicode": "F012"
+    },
+    {
+      "name": "SurveyQuestions",
+      "unicode": "F01B"
+    },
+    {
+      "name": "TextDocument",
+      "unicode": "F029"
+    },
+    {
+      "name": "TextDocumentShared",
+      "unicode": "F02B"
+    },
+    {
+      "name": "PageCheckedOut",
+      "unicode": "F02C"
+    },
+    {
+      "name": "PageShared",
+      "unicode": "F02D"
+    },
+    {
+      "name": "SaveAndClose",
+      "unicode": "F038"
+    },
+    {
+      "name": "Script",
+      "unicode": "F03A"
+    },
+    {
+      "name": "Archive",
+      "unicode": "F03F"
+    },
+    {
+      "name": "ActivityFeed",
+      "unicode": "F056"
+    },
+    {
+      "name": "Compare",
+      "unicode": "F057"
+    },
+    {
+      "name": "EventDate",
+      "unicode": "F059"
+    },
+    {
+      "name": "ArrowUpRight",
+      "unicode": "F069"
+    },
+    {
+      "name": "CaretRight",
+      "unicode": "F06B"
+    },
+    {
+      "name": "SetAction",
+      "unicode": "F071"
+    },
+    {
+      "name": "ChatBot",
+      "unicode": "F08B"
+    },
+    {
+      "name": "CaretSolidLeft",
+      "unicode": "F08D"
+    },
+    {
+      "name": "CaretSolidDown",
+      "unicode": "F08E"
+    },
+    {
+      "name": "CaretSolidRight",
+      "unicode": "F08F"
+    },
+    {
+      "name": "CaretSolidUp",
+      "unicode": "F090"
+    },
+    {
+      "name": "PowerAppsLogo",
+      "unicode": "F091"
+    },
+    {
+      "name": "PowerApps2Logo",
+      "unicode": "F092"
+    },
+    {
+      "name": "SearchIssue",
+      "unicode": "F09A"
+    },
+    {
+      "name": "SearchIssueMirrored",
+      "unicode": "F09B"
+    },
+    {
+      "name": "FabricAssetLibrary",
+      "unicode": "F09C"
+    },
+    {
+      "name": "FabricDataConnectionLibrary",
+      "unicode": "F09D"
+    },
+    {
+      "name": "FabricDocLibrary",
+      "unicode": "F09E"
+    },
+    {
+      "name": "FabricFormLibrary",
+      "unicode": "F09F"
+    },
+    {
+      "name": "FabricFormLibraryMirrored",
+      "unicode": "F0A0"
+    },
+    {
+      "name": "FabricReportLibrary",
+      "unicode": "F0A1"
+    },
+    {
+      "name": "FabricReportLibraryMirrored",
+      "unicode": "F0A2"
+    },
+    {
+      "name": "FabricPublicFolder",
+      "unicode": "F0A3"
+    },
+    {
+      "name": "FabricFolderSearch",
+      "unicode": "F0A4"
+    },
+    {
+      "name": "FabricMovetoFolder",
+      "unicode": "F0A5"
+    },
+    {
+      "name": "FabricUnsyncFolder",
+      "unicode": "F0A6"
+    },
+    {
+      "name": "FabricSyncFolder",
+      "unicode": "F0A7"
+    },
+    {
+      "name": "FabricOpenFolderHorizontal",
+      "unicode": "F0A8"
+    },
+    {
+      "name": "FabricFolder",
+      "unicode": "F0A9"
+    },
+    {
+      "name": "FabricFolderFill",
+      "unicode": "F0AA"
+    },
+    {
+      "name": "FabricNewFolder",
+      "unicode": "F0AB"
+    },
+    {
+      "name": "FabricPictureLibrary",
+      "unicode": "F0AC"
+    },
+    {
+      "name": "PhotoVideoMedia",
+      "unicode": "F0B1"
+    },
+    {
+      "name": "AddFavorite",
+      "unicode": "F0C8"
+    }
+  ]
+}

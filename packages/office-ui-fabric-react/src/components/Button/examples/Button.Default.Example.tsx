@@ -1,23 +1,26 @@
 import * as React from 'react';
-import { DefaultButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton, PrimaryButton, Stack, IStackTokens } from 'office-ui-fabric-react';
 
-export class ButtonDefaultExample extends React.Component<IButtonProps, {}> {
-  public render() {
-    let { disabled, checked } = this.props;
+export interface IButtonExampleProps {
+  // These are set based on the toggles shown above the examples (not needed in real code)
+  disabled?: boolean;
+  checked?: boolean;
+}
 
-    return (
-      <div className='ms-BasicButtonsExample'>
-        <div>
-          <DefaultButton
-            data-automation-id='test'
-            disabled={ disabled }
-            checked={ checked }
-            iconProps={ { iconName: 'Add' } }
-            description='I am a description'
-            text='Create account'
-          />
-        </div>
-      </div>
-    );
-  }
+// Example formatting
+const stackTokens: IStackTokens = { childrenGap: 40 };
+
+export const ButtonDefaultExample: React.FunctionComponent<IButtonExampleProps> = props => {
+  const { disabled, checked } = props;
+
+  return (
+    <Stack horizontal tokens={stackTokens}>
+      <DefaultButton text="Standard" onClick={_alertClicked} allowDisabledFocus disabled={disabled} checked={checked} />
+      <PrimaryButton text="Primary" onClick={_alertClicked} allowDisabledFocus disabled={disabled} checked={checked} />
+    </Stack>
+  );
+};
+
+function _alertClicked(): void {
+  alert('Clicked');
 }

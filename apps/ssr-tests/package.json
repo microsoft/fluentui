@@ -1,38 +1,35 @@
 {
   "name": "ssr-tests",
-  "version": "1.0.2",
-  "description": "Reusable React components for building experiences for Office 365.",
+  "version": "7.0.0",
+  "description": "Server-side rendering tests for office-ui-fabric-react.",
   "private": true,
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/OfficeDev/office-ui-fabric-react"
-  },
   "scripts": {
-    "_webpack": "node ./node_modules/webpack/bin/webpack --config webpack.config.js",
-    "_mocha": "node ./node_modules/mocha/bin/_mocha dist/ssr-tests.js",
-    "_test": "npm run _webpack && npm run _mocha",
-    "build": "npm run _test",
-    "clean": ""
+    "build": "just-scripts build",
+    "bundle": "just-scripts bundle",
+    "test": "just-scripts test",
+    "code-style": "node -v",
+    "clean": "",
+    "just": "just-scripts"
   },
   "license": "MIT",
   "devDependencies": {
-    "@microsoft/load-themed-styles": "^1.2.2",
-    "@types/chai": "^3.4.35",
-    "@types/enzyme": "^2.7.5",
-    "@types/es6-promise": "^0.0.32",
-    "@types/mocha": "^2.2.39",
-    "@types/webpack-env": "^1.13.0",
-    "mocha": "~3.3.0",
-    "office-ui-fabric-react": ">=4.5.0 <5.0.0",
+    "@microsoft/load-themed-styles": "^1.10.26",
+    "@types/es6-promise": "0.0.32",
+    "@types/mocha": "2.2.39",
+    "@types/webpack-env": "1.15.1",
+    "@uifabric/build": "^7.0.0",
+    "@uifabric/fabric-website-resources": "^7.6.51",
+    "just-scripts-utils": "^0.8.3",
+    "mocha": "^3.3.0",
+    "office-ui-fabric-react": "^7.110.1",
     "raw-loader": "^0.5.1",
-    "react": "^15.4.2",
-    "react-addons-test-utils": "^15.4.2",
-    "react-dom": "^15.4.2",
-    "webpack": "^2.4.1",
-    "webpack-node-externals": "^1.5.4"
+    "react": "16.8.6",
+    "react-app-polyfill": "~1.0.1",
+    "react-dom": "16.8.6",
+    "webpack": "4.35.0"
   },
   "dependencies": {
     "es6-promise": "^4.1.0",
-    "tslib": "^1.6.0"
+    "tslib": "^1.10.0"
   }
 }

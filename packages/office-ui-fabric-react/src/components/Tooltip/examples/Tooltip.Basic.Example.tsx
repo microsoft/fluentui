@@ -1,21 +1,30 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
-import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import {
-  TooltipHost
-} from 'office-ui-fabric-react/lib/Tooltip';
+import { TooltipHost, ITooltipHostStyles } from 'office-ui-fabric-react/lib/Tooltip';
+import { useId } from '@uifabric/react-hooks';
 
-export class TooltipBasicExample extends BaseComponent<any, any> {
+const calloutProps = { gapSpace: 0 };
+// The TooltipHost root uses display: inline by default.
+// If that's causing sizing issues or tooltip positioning issues, try overriding to inline-block.
+const hostStyles: Partial<ITooltipHostStyles> = { root: { display: 'inline-block' } };
 
-  public render() {
-    return (
-      <div>
-        <TooltipHost content='This is the tooltip' id='myID' calloutProps={ { gapSpace: 0 } }>
-          <DefaultButton aria-describedby='myID'>Hover Over Me</DefaultButton>
-        </TooltipHost>
-      </div>
-    );
-  }
-}
+export const TooltipBasicExample: React.FunctionComponent = () => {
+  // Use useId() to ensure that the ID is unique on the page.
+  // (It's also okay to use a plain string and manually ensure uniqueness.)
+  const tooltipId = useId('tooltip');
+
+  return (
+    <div>
+      <TooltipHost
+        content="This is the tooltip content"
+        // This id is used on the tooltip itself, not the host
+        // (so an element with this id only exists when the tooltip is shown)
+        id={tooltipId}
+        calloutProps={calloutProps}
+        styles={hostStyles}
+      >
+        <DefaultButton aria-describedby={tooltipId}>Hover over me</DefaultButton>
+      </TooltipHost>
+    </div>
+  );
+};

@@ -1,0 +1,413 @@
+{
+  "fontName": "fabric-icons-4",
+  "fontFamilyName": "FabricMDL2Icons-4",
+  "excludeGlyphs": false,
+  "excludeThirdPartyIcons": true,
+  "chunkSubsets": true,
+  "hashFontFileName": true,
+  "subsetChunkSettings": {
+    "maxSubsetSize": 100
+  },
+  "glyphs": [
+    {
+      "name": "HelpMirrored",
+      "unicode": "EA51"
+    },
+    {
+      "name": "ImportMirrored",
+      "unicode": "EA52"
+    },
+    {
+      "name": "ImportAllMirrored",
+      "unicode": "EA53"
+    },
+    {
+      "name": "ListMirrored",
+      "unicode": "EA55"
+    },
+    {
+      "name": "MailForwardMirrored",
+      "unicode": "EA56"
+    },
+    {
+      "name": "MailReplyMirrored",
+      "unicode": "EA57"
+    },
+    {
+      "name": "MailReplyAllMirrored",
+      "unicode": "EA58"
+    },
+    {
+      "name": "MiniContractMirrored",
+      "unicode": "EA59"
+    },
+    {
+      "name": "MiniExpandMirrored",
+      "unicode": "EA5A"
+    },
+    {
+      "name": "OpenPaneMirrored",
+      "unicode": "EA5B"
+    },
+    {
+      "name": "ParkingLocationMirrored",
+      "unicode": "EA5E"
+    },
+    {
+      "name": "SendMirrored",
+      "unicode": "EA63"
+    },
+    {
+      "name": "ShowResultsMirrored",
+      "unicode": "EA65"
+    },
+    {
+      "name": "ThumbnailViewMirrored",
+      "unicode": "EA67"
+    },
+    {
+      "name": "Media",
+      "unicode": "EA69"
+    },
+    {
+      "name": "Devices3",
+      "unicode": "EA6C"
+    },
+    {
+      "name": "Focus",
+      "unicode": "EA6F"
+    },
+    {
+      "name": "VideoLightOff",
+      "unicode": "EA74"
+    },
+    {
+      "name": "Lightbulb",
+      "unicode": "EA80"
+    },
+    {
+      "name": "StatusTriangle",
+      "unicode": "EA82"
+    },
+    {
+      "name": "VolumeDisabled",
+      "unicode": "EA85"
+    },
+    {
+      "name": "Puzzle",
+      "unicode": "EA86"
+    },
+    {
+      "name": "EmojiNeutral",
+      "unicode": "EA87"
+    },
+    {
+      "name": "EmojiDisappointed",
+      "unicode": "EA88"
+    },
+    {
+      "name": "HomeSolid",
+      "unicode": "EA8A"
+    },
+    {
+      "name": "Ringer",
+      "unicode": "EA8F"
+    },
+    {
+      "name": "PDF",
+      "unicode": "EA90"
+    },
+    {
+      "name": "HeartBroken",
+      "unicode": "EA92"
+    },
+    {
+      "name": "StoreLogo16",
+      "unicode": "EA96"
+    },
+    {
+      "name": "MultiSelectMirrored",
+      "unicode": "EA98"
+    },
+    {
+      "name": "Broom",
+      "unicode": "EA99"
+    },
+    {
+      "name": "AddToShoppingList",
+      "unicode": "EA9A"
+    },
+    {
+      "name": "Cocktails",
+      "unicode": "EA9D"
+    },
+    {
+      "name": "Wines",
+      "unicode": "EABF"
+    },
+    {
+      "name": "Articles",
+      "unicode": "EAC1"
+    },
+    {
+      "name": "Cycling",
+      "unicode": "EAC7"
+    },
+    {
+      "name": "DietPlanNotebook",
+      "unicode": "EAC8"
+    },
+    {
+      "name": "Pill",
+      "unicode": "EACB"
+    },
+    {
+      "name": "ExerciseTracker",
+      "unicode": "EACC"
+    },
+    {
+      "name": "HandsFree",
+      "unicode": "EAD0"
+    },
+    {
+      "name": "Medical",
+      "unicode": "EAD4"
+    },
+    {
+      "name": "Running",
+      "unicode": "EADA"
+    },
+    {
+      "name": "Weights",
+      "unicode": "EADB"
+    },
+    {
+      "name": "Trackers",
+      "unicode": "EADF"
+    },
+    {
+      "name": "AddNotes",
+      "unicode": "EAE3"
+    },
+    {
+      "name": "AllCurrency",
+      "unicode": "EAE4"
+    },
+    {
+      "name": "BarChart4",
+      "unicode": "EAE7"
+    },
+    {
+      "name": "CirclePlus",
+      "unicode": "EAEE"
+    },
+    {
+      "name": "Coffee",
+      "unicode": "EAEF"
+    },
+    {
+      "name": "Cotton",
+      "unicode": "EAF3"
+    },
+    {
+      "name": "Market",
+      "unicode": "EAFC"
+    },
+    {
+      "name": "Money",
+      "unicode": "EAFD"
+    },
+    {
+      "name": "PieDouble",
+      "unicode": "EB04"
+    },
+    {
+      "name": "PieSingle",
+      "unicode": "EB05"
+    },
+    {
+      "name": "RemoveFilter",
+      "unicode": "EB08"
+    },
+    {
+      "name": "Savings",
+      "unicode": "EB0B"
+    },
+    {
+      "name": "Sell",
+      "unicode": "EB0C"
+    },
+    {
+      "name": "StockDown",
+      "unicode": "EB0F"
+    },
+    {
+      "name": "StockUp",
+      "unicode": "EB11"
+    },
+    {
+      "name": "Lamp",
+      "unicode": "EB19"
+    },
+    {
+      "name": "Source",
+      "unicode": "EB1B"
+    },
+    {
+      "name": "MSNVideos",
+      "unicode": "EB1C"
+    },
+    {
+      "name": "Cricket",
+      "unicode": "EB1E"
+    },
+    {
+      "name": "Golf",
+      "unicode": "EB1F"
+    },
+    {
+      "name": "Baseball",
+      "unicode": "EB20"
+    },
+    {
+      "name": "Soccer",
+      "unicode": "EB21"
+    },
+    {
+      "name": "MoreSports",
+      "unicode": "EB22"
+    },
+    {
+      "name": "AutoRacing",
+      "unicode": "EB24"
+    },
+    {
+      "name": "CollegeHoops",
+      "unicode": "EB25"
+    },
+    {
+      "name": "CollegeFootball",
+      "unicode": "EB26"
+    },
+    {
+      "name": "ProFootball",
+      "unicode": "EB27"
+    },
+    {
+      "name": "ProHockey",
+      "unicode": "EB28"
+    },
+    {
+      "name": "Rugby",
+      "unicode": "EB2D"
+    },
+    {
+      "name": "SubstitutionsIn",
+      "unicode": "EB31"
+    },
+    {
+      "name": "Tennis",
+      "unicode": "EB33"
+    },
+    {
+      "name": "Arrivals",
+      "unicode": "EB34"
+    },
+    {
+      "name": "Design",
+      "unicode": "EB3C"
+    },
+    {
+      "name": "Website",
+      "unicode": "EB41"
+    },
+    {
+      "name": "Drop",
+      "unicode": "EB42"
+    },
+    {
+      "name": "HistoricalWeather",
+      "unicode": "EB43"
+    },
+    {
+      "name": "SkiResorts",
+      "unicode": "EB45"
+    },
+    {
+      "name": "Snowflake",
+      "unicode": "EB46"
+    },
+    {
+      "name": "BusSolid",
+      "unicode": "EB47"
+    },
+    {
+      "name": "FerrySolid",
+      "unicode": "EB48"
+    },
+    {
+      "name": "AirplaneSolid",
+      "unicode": "EB4C"
+    },
+    {
+      "name": "TrainSolid",
+      "unicode": "EB4D"
+    },
+    {
+      "name": "Ticket",
+      "unicode": "EB54"
+    },
+    {
+      "name": "WifiWarning4",
+      "unicode": "EB63"
+    },
+    {
+      "name": "Devices4",
+      "unicode": "EB66"
+    },
+    {
+      "name": "AzureLogo",
+      "unicode": "EB6A"
+    },
+    {
+      "name": "BingLogo",
+      "unicode": "EB6B"
+    },
+    {
+      "name": "MSNLogo",
+      "unicode": "EB6C"
+    },
+    {
+      "name": "OutlookLogoInverse",
+      "unicode": "EB6D"
+    },
+    {
+      "name": "OfficeLogo",
+      "unicode": "EB6E"
+    },
+    {
+      "name": "SkypeLogo",
+      "unicode": "EB6F"
+    },
+    {
+      "name": "Door",
+      "unicode": "EB75"
+    },
+    {
+      "name": "EditMirrored",
+      "unicode": "EB7E"
+    },
+    {
+      "name": "GiftCard",
+      "unicode": "EB8E"
+    },
+    {
+      "name": "DoubleBookmark",
+      "unicode": "EB8F"
+    },
+    {
+      "name": "StatusErrorFull",
+      "unicode": "EB90"
+    }
+  ]
+}

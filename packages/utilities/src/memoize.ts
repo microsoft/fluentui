@@ -1,37 +1,68 @@
+import { Stylesheet } from '@uifabric/merge-styles';
+
+const stylesheet = Stylesheet.getInstance();
+
+if (stylesheet && stylesheet.onReset) {
+  Stylesheet.getInstance().onReset(resetMemoizations);
+}
+
+// tslint:disable:no-any
 declare class WeakMap {
   public get(key: any): any;
   public set(key: any, value: any): void;
   public has(key: any): boolean;
 }
 
+let _resetCounter = 0;
 const _emptyObject = { empty: true };
 const _dictionary: any = {};
-let _weakMap = (typeof WeakMap === 'undefined') ? null : WeakMap;
+let _weakMap = typeof WeakMap === 'undefined' ? null : WeakMap;
 
 interface IMemoizeNode {
-  map: WeakMap;
+  map: WeakMap | null;
   value?: any;
 }
 
-/** Test utility for providing a custom weakmap. */
+/**
+ *  Test utility for providing a custom weakmap.
+ *
+ * @internal
+ * */
 export function setMemoizeWeakMap(weakMap: any): void {
   _weakMap = weakMap;
 }
 
+/**
+ * Reset memoizations.
+ */
+export function resetMemoizations(): void {
+  _resetCounter++;
+}
+
+/**
+ * Memoize decorator to be used on class methods. WARNING: the `this` reference
+ * will be inaccessible within a memoized method, given that a cached method's `this`
+ * would not be instance-specific.
+ *
+ * @public
+ */
 export function memoize<T extends Function>(
   target: any,
   key: string,
-  descriptor: TypedPropertyDescriptor<T>) {
-
+  descriptor: TypedPropertyDescriptor<T>,
+): {
+  configurable: boolean;
+  get(): T;
+} {
   // We bind to "null" to prevent people from inadvertently pulling values from "this",
   // rather than passing them in as input values which can be memoized.
-  let fn = memoizeFunction(descriptor.value.bind(null));
+  let fn = memoizeFunction(descriptor.value && descriptor.value.bind(null));
 
   return {
     configurable: true,
-    get() {
+    get(): T {
       return fn;
-    }
+    },
   };
 }
 
@@ -46,30 +77,40 @@ export function memoize<T extends Function>(
  * unintendedly called with unique objects. Without a reset, the cache could grow infinitely, so we safeguard
  * by resetting. To override this behavior, pass a value of 0 to the maxCacheSize parameter.
  *
+ * @public
  * @param cb - The function to memoize.
  * @param maxCacheSize - Max results to cache. If the cache exceeds this value, it will reset on the next call.
+ * @param ignoreNullOrUndefinedResult - Flag to decide whether to cache callback result if it is undefined/null.
+ * If the flag is set to true, the callback result is recomputed every time till the callback result is
+ * not undefined/null for the first time, and then the non-undefined/null version gets cached.
  * @returns A memoized version of the function.
  */
 export function memoizeFunction<T extends (...args: any[]) => RET_TYPE, RET_TYPE>(
   cb: T,
-  maxCacheSize: number = 100
+  maxCacheSize: number = 100,
+  ignoreNullOrUndefinedResult: boolean = false,
 ): T {
-
-  let rootNode: any;
-  let cacheSize = 0;
-
   // Avoid breaking scenarios which don't have weak map.
   if (!_weakMap) {
     return cb;
   }
 
+  let rootNode: any;
+  let cacheSize = 0;
+  let localResetCounter = _resetCounter;
+
   // tslint:disable-next-line:no-function-expression
   return function memoizedFunction(...args: any[]): RET_TYPE {
     let currentNode: any = rootNode;
 
-    if (rootNode === undefined || (maxCacheSize > 0 && cacheSize > maxCacheSize)) {
+    if (
+      rootNode === undefined ||
+      localResetCounter !== _resetCounter ||
+      (maxCacheSize > 0 && cacheSize > maxCacheSize)
+    ) {
       rootNode = _createNode();
       cacheSize = 0;
+      localResetCounter = _resetCounter;
     }
 
     currentNode = rootNode;
@@ -90,14 +131,61 @@ export function memoizeFunction<T extends (...args: any[]) => RET_TYPE, RET_TYPE
       cacheSize++;
     }
 
+    if (ignoreNullOrUndefinedResult && (currentNode.value === null || currentNode.value === undefined)) {
+      currentNode.value = cb(...args);
+    }
+
     return currentNode.value;
   } as any;
 }
 
-function _normalizeArg(val: any) {
+/**
+ * Creates a memoizer for a single-value function, backed by a WeakMap.
+ * With a WeakMap, the memoized values are only kept as long as the source objects,
+ * ensuring that there is no memory leak.
+ *
+ * This function assumes that the input values passed to the wrapped function will be
+ * `function` or `object` types. To memoize functions which accept other inputs, use
+ * `memoizeFunction`, which memoizes against arbitrary inputs using a lookup cache.
+ *
+ * @public
+ */
+export function createMemoizer<F extends (input: any) => any>(getValue: F): F {
+  if (!_weakMap) {
+    // Without a `WeakMap` implementation, memoization is not possible.
+    return getValue;
+  }
+
+  const cache = new _weakMap();
+
+  function memoizedGetValue(input: any): any {
+    if (!input || (typeof input !== 'function' && typeof input !== 'object')) {
+      // A WeakMap can only be used to test against reference values, i.e. 'function' and 'object'.
+      // All other inputs cannot be memoized against in this manner.
+      return getValue(input);
+    }
+
+    if (cache.has(input)) {
+      // tslint:disable-next-line:no-non-null-assertion
+      return cache.get(input)!;
+    }
+
+    const value = getValue(input);
+
+    cache.set(input, value);
+
+    return value;
+  }
+
+  return memoizedGetValue as F;
+}
+
+function _normalizeArg(val: null | undefined): { empty: boolean } | any;
+function _normalizeArg(val: object): any;
+function _normalizeArg(val: any): any {
   if (!val) {
     return _emptyObject;
-  } else if (typeof val === 'object') {
+  } else if (typeof val === 'object' || typeof val === 'function') {
     return val;
   } else if (!_dictionary[val]) {
     _dictionary[val] = { val };
@@ -108,6 +196,6 @@ function _normalizeArg(val: any) {
 
 function _createNode(): IMemoizeNode {
   return {
-    map: new _weakMap()
+    map: _weakMap ? new _weakMap() : null,
   };
 }

@@ -1,6 +1,5 @@
-import { IAnimationStyles } from '../interfaces/index';
-import { IRawStyle } from '../interfaces/index';
-import { keyframes } from '../glamorExports';
+import { IAnimationStyles, IAnimationVariables } from '../interfaces/index';
+import { IRawStyle, keyframes } from '@uifabric/merge-styles';
 
 /* Register the keyframes */
 
@@ -13,12 +12,12 @@ const DURATION_4 = '0.467s';
 
 const FADE_IN: string = keyframes({
   from: { opacity: 0 },
-  to: { opacity: 1 }
+  to: { opacity: 1 },
 });
 
 const FADE_OUT: string = keyframes({
   from: { opacity: 1 },
-  to: { opacity: 0 }
+  to: { opacity: 0, visibility: 'hidden' },
 });
 
 const SLIDE_RIGHT_IN10: string = _createSlideInX(-10);
@@ -49,33 +48,45 @@ const SLIDE_DOWN_OUT20: string = _createSlideOutY(20);
 
 const SCALE_UP100: string = keyframes({
   from: { transform: 'scale3d(.98,.98,1)' },
-  to: { transform: 'scale3d(1,1,1)' }
+  to: { transform: 'scale3d(1,1,1)' },
 });
 
 const SCALE_DOWN98: string = keyframes({
   from: { transform: 'scale3d(1,1,1)' },
-  'top': { transform: 'scale3d(.98,.98,1)' },
+  to: { transform: 'scale3d(.98,.98,1)' },
 });
 
 const SCALE_DOWN100: string = keyframes({
   from: { transform: 'scale3d(1.03,1.03,1)' },
-  to: { transform: 'scale3d(1,1,1)' }
+  to: { transform: 'scale3d(1,1,1)' },
 });
 
 const SCALE_UP103: string = keyframes({
   from: { transform: 'scale3d(1,1,1)' },
-  to: { transform: 'scale3d(1.03,1.03,1)' }
+  to: { transform: 'scale3d(1.03,1.03,1)' },
 });
 
 const ROTATE90: string = keyframes({
   from: { transform: 'rotateZ(0deg)' },
-  to: { transform: 'rotateZ(90deg)' }
+  to: { transform: 'rotateZ(90deg)' },
 });
 
 const ROTATE_N90: string = keyframes({
   from: { transform: 'rotateZ(0deg)' },
-  to: { transform: 'rotateZ(-90deg)' }
+  to: { transform: 'rotateZ(-90deg)' },
 });
+
+/**
+ * Exporting raw duraction values and easing functions to be used in custom animations
+ */
+export const AnimationVariables: IAnimationVariables = {
+  easeFunction1: EASING_FUNCTION_1,
+  easeFunction2: EASING_FUNCTION_2,
+  durationValue1: DURATION_1,
+  durationValue2: DURATION_2,
+  durationValue3: DURATION_3,
+  durationValue4: DURATION_4,
+};
 
 /**
  * All Fabric standard animations, exposed as json objects referencing predefined
@@ -122,8 +133,9 @@ export const AnimationStyles: IAnimationStyles = {
   fadeOut200: _createAnimation(FADE_OUT, DURATION_2, EASING_FUNCTION_2),
   fadeOut400: _createAnimation(FADE_OUT, DURATION_3, EASING_FUNCTION_2),
   fadeOut500: _createAnimation(FADE_OUT, DURATION_4, EASING_FUNCTION_2),
+
   rotate90deg: _createAnimation(ROTATE90, '0.1s', EASING_FUNCTION_2),
-  rotateN90deg: _createAnimation(ROTATE_N90, '0.1s', EASING_FUNCTION_2)
+  rotateN90deg: _createAnimation(ROTATE_N90, '0.1s', EASING_FUNCTION_2),
 
   // expandCollapse 100/200/400, delay 100/200
 };
@@ -131,40 +143,40 @@ export const AnimationStyles: IAnimationStyles = {
 function _createAnimation(
   animationName: string,
   animationDuration: string,
-  animationTimingFunction: string
+  animationTimingFunction: string,
 ): IRawStyle {
   return {
     animationName,
     animationDuration,
     animationTimingFunction,
-    animationFillMode: 'both'
+    animationFillMode: 'both',
   };
 }
 
 function _createSlideInX(fromX: number): string {
   return keyframes({
     from: { transform: `translate3d(${fromX}px,0,0)` },
-    to: { transform: `translate3d(0,0,0)` }
+    to: { transform: `translate3d(0,0,0)` },
   });
 }
 
 function _createSlideInY(fromY: number): string {
   return keyframes({
     from: { transform: `translate3d(0,${fromY}px,0)` },
-    to: { transform: `translate3d(0,0,0)` }
+    to: { transform: `translate3d(0,0,0)` },
   });
 }
 
 function _createSlideOutX(toX: number): string {
   return keyframes({
     from: { transform: `translate3d(0,0,0)` },
-    to: { transform: `translate3d(${toX}px,0,0)` }
+    to: { transform: `translate3d(${toX}px,0,0)` },
   });
 }
 
 function _createSlideOutY(toY: number): string {
   return keyframes({
     from: { transform: `translate3d(0,0,0)` },
-    to: { transform: `translate3d(0,${toY}px,0)` }
+    to: { transform: `translate3d(0,${toY}px,0)` },
   });
 }

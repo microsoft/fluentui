@@ -17,7 +17,7 @@ export interface IInterfaceProperty {
 export enum InterfacePropertyType {
   required = 0,
   optional = 1,
-  deprecated = 2
+  deprecated = 2,
 }
 
 export interface IEnumProperty {
@@ -27,5 +27,7 @@ export interface IEnumProperty {
 
 export enum PropertyType {
   enum = 0,
-  interface = 1
+  interface = 1,
+  class = 2,
+  typeAlias = 3,
 }
