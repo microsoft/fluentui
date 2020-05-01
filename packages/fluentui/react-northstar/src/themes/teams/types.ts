@@ -7,10 +7,10 @@ import {
   StrictColorSchemeMapping,
   PrimitiveColors,
 } from '../types';
-
 import { AccordionContentStylesProps } from '../../components/Accordion/AccordionContent';
-import { AccordionProps } from '../../components/Accordion/Accordion';
+import { AccordionStylesProps } from '../../components/Accordion/Accordion';
 import { AccordionTitleStylesProps } from '../../components/Accordion/AccordionTitle';
+import { CarouselNavigationItemStylesProps } from '../../components/Carousel/CarouselNavigationItem';
 import { AlertStylesProps } from '../../components/Alert/Alert';
 import { AnimationProps } from '../../components/Animation/Animation';
 import { AttachmentProps } from '../../components/Attachment/Attachment';
@@ -85,9 +85,10 @@ import { CardBodyStylesProps } from '../../components/Card/CardBody';
 import { CardFooterStylesProps } from '../../components/Card/CardFooter';
 import { SvgIconStylesProps } from '../../components/SvgIcon/SvgIcon';
 import { SplitButtonStylesProps } from '../../components/SplitButton/SplitButton';
+import { CarouselItemStylesProps } from '../../components/Carousel/CarouselItem';
 
 export type TeamsThemeStylesProps = {
-  Accordion: AccordionProps;
+  Accordion: AccordionStylesProps;
   AccordionContent: AccordionContentStylesProps;
   AccordionTitle: AccordionTitleStylesProps;
   Alert: AlertStylesProps;
@@ -102,6 +103,7 @@ export type TeamsThemeStylesProps = {
   Box: BoxStylesProps;
   ButtonContent: ButtonContentStylesProps;
   ButtonGroup: ButtonGroupProps;
+  CarouselItem: CarouselItemStylesProps;
   Chat: ChatStylesProps;
   ChatItem: ChatItemStylesProps;
   ChatMessage: ChatMessageStylesProps;
@@ -165,6 +167,7 @@ export type TeamsThemeStylesProps = {
   CardHeader: CardHeaderStylesProps;
   CardBody: CardBodyStylesProps;
   CardFooter: CardFooterStylesProps;
+  CarouselNavigationItem: CarouselNavigationItemStylesProps;
 };
 
 export type TeamsContextualColors = {

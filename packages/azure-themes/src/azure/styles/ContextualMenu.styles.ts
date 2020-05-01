@@ -32,11 +32,11 @@ export const ContextualMenuStyles = (props: IContextualMenuStyleProps): Partial<
         return {
           root: [
             {
-              fontSize: FontSizes.size12,
+              fontSize: FontSizes.size13,
             },
           ],
           splitPrimary: {
-            fontSize: FontSizes.size12,
+            fontSize: FontSizes.size13,
           },
           divider: {
             backgroundColor: semanticColors.inputBorder,

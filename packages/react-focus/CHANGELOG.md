@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-focus
 
-This log was last generated on Tue, 28 Apr 2020 12:34:09 GMT and should not be manually modified.
+This log was last generated on Fri, 01 May 2020 00:19:21 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.8.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.8.0)
+
+Fri, 01 May 2020 00:19:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v7.7.0..@fluentui/react-focus_v7.8.0)
+
+### Minor changes
+
+- FocusZone: Using v0 prop names for props where names differed and deprecating old ones. ([PR #12484](https://github.com/microsoft/fluentui/pull/12484) by humbertomakotomorimoto@gmail.com)
 
 ## [7.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.7.0)
 
