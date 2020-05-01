@@ -4,6 +4,8 @@
 
 ```ts
 
+import { IButtonProps } from 'office-ui-fabric-react/lib/components/Button/Button.types';
+import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import { IComponentAs } from 'office-ui-fabric-react/lib/Utilities';
 import { IIconProps } from 'office-ui-fabric-react/lib/Icon';
 import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
@@ -12,6 +14,7 @@ import { IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 import { ITheme } from 'office-ui-fabric-react/lib/Styling';
+import { Position } from 'office-ui-fabric-react/lib/utilities/positioning';
 import * as React from 'react';
 
 // @public (undocumented)
@@ -19,6 +22,9 @@ export const Checkbox: React.FunctionComponent<ICheckboxProps>;
 
 // @public (undocumented)
 export const CheckboxBase: React.ForwardRefExoticComponent<ICheckboxProps & React.RefAttributes<HTMLDivElement>>;
+
+// @public (undocumented)
+export type DefaultProps = Required<Pick<ISpinButtonProps, 'step' | 'min' | 'max' | 'disabled' | 'labelPosition' | 'label' | 'incrementButtonIcon' | 'decrementButtonIcon'>>;
 
 // @public (undocumented)
 export const Fabric: React.FunctionComponent<IFabricProps>;
@@ -201,6 +207,87 @@ export enum ImageLoadState {
 }
 
 // @public (undocumented)
+export interface ISpinButton {
+    focus: () => void;
+    value?: string;
+}
+
+// @public (undocumented)
+export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement> {
+    ariaDescribedBy?: string;
+    ariaLabel?: string;
+    ariaPositionInSet?: number;
+    ariaSetSize?: number;
+    ariaValueNow?: number;
+    // (undocumented)
+    ariaValueText?: string;
+    className?: string;
+    componentRef?: IRefObject<ISpinButton>;
+    decrementButtonAriaLabel?: string;
+    decrementButtonIcon?: IIconProps;
+    defaultValue?: string;
+    disabled?: boolean;
+    downArrowButtonStyles?: Partial<IButtonStyles>;
+    // Warning: (ae-forgotten-export) The symbol "ISpinButtonClassNames" needs to be exported by the entry point index.d.ts
+    getClassNames?: (theme: ITheme, disabled: boolean, isFocused: boolean, keyboardSpinDirection: KeyboardSpinDirection, labelPosition?: Position, className?: string) => ISpinButtonClassNames;
+    iconButtonProps?: IButtonProps;
+    iconProps?: IIconProps;
+    incrementButtonAriaLabel?: string;
+    incrementButtonIcon?: IIconProps;
+    inputProps?: React.InputHTMLAttributes<HTMLElement | HTMLInputElement>;
+    keytipProps?: IKeytipProps;
+    label?: string;
+    // (undocumented)
+    labelPosition?: Position;
+    max?: number;
+    min?: number;
+    onBlur?: React.FocusEventHandler<HTMLInputElement>;
+    onDecrement?: (value: string) => string | void;
+    onFocus?: React.FocusEventHandler<HTMLInputElement>;
+    onIncrement?: (value: string) => string | void;
+    onValidate?: (value: string, event?: React.SyntheticEvent<HTMLElement>) => string | void;
+    precision?: number;
+    step?: number;
+    styles?: Partial<ISpinButtonStyles>;
+    theme?: ITheme;
+    title?: string;
+    upArrowButtonStyles?: Partial<IButtonStyles>;
+    value?: string;
+}
+
+// @public (undocumented)
+export interface ISpinButtonState {
+    isFocused: boolean;
+    keyboardSpinDirection: KeyboardSpinDirection;
+    value: string;
+}
+
+// @public (undocumented)
+export interface ISpinButtonStyles {
+    arrowButtonsContainer: IStyle;
+    arrowButtonsContainerDisabled: IStyle;
+    icon: IStyle;
+    iconDisabled: IStyle;
+    input: IStyle;
+    inputDisabled: IStyle;
+    inputTextSelected: IStyle;
+    label: IStyle;
+    // @deprecated
+    labelDisabled: IStyle;
+    labelWrapper: IStyle;
+    labelWrapperBottom: IStyle;
+    labelWrapperEnd: IStyle;
+    labelWrapperStart: IStyle;
+    labelWrapperTop: IStyle;
+    root: IStyle;
+    spinButtonWrapper: IStyle;
+    spinButtonWrapperDisabled: IStyle;
+    spinButtonWrapperFocused: IStyle;
+    spinButtonWrapperHovered: IStyle;
+    spinButtonWrapperTopBottom: IStyle;
+}
+
+// @public (undocumented)
 export interface IToggle {
     // (undocumented)
     focus: () => void;
@@ -256,6 +343,31 @@ export interface IToggleStyles {
     text: IStyle;
     thumb: IStyle;
 }
+
+// @public (undocumented)
+export enum KeyboardSpinDirection {
+    // (undocumented)
+    down = -1,
+    // (undocumented)
+    notSpinning = 0,
+    // (undocumented)
+    up = 1
+}
+
+// @public (undocumented)
+export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonState> implements ISpinButton {
+    constructor(props: ISpinButtonProps);
+    // (undocumented)
+    componentWillUnmount(): void;
+    // (undocumented)
+    static defaultProps: DefaultProps;
+    // (undocumented)
+    focus(): void;
+    // (undocumented)
+    render(): JSX.Element;
+    UNSAFE_componentWillReceiveProps(newProps: ISpinButtonProps): void;
+    readonly value: string | undefined;
+    }
 
 // @public (undocumented)
 export const Toggle: React.FunctionComponent<IToggleProps>;
@@ -335,7 +447,6 @@ export * from "office-ui-fabric-react/lib/Separator";
 export * from "office-ui-fabric-react/lib/Shimmer";
 export * from "office-ui-fabric-react/lib/ShimmeredDetailsList";
 export * from "office-ui-fabric-react/lib/Slider";
-export * from "office-ui-fabric-react/lib/SpinButton";
 export * from "office-ui-fabric-react/lib/Spinner";
 export * from "office-ui-fabric-react/lib/Stack";
 export * from "office-ui-fabric-react/lib/Sticky";
