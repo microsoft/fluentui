@@ -15,10 +15,11 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
       boxShadow: Depths.depth8,
       selectors: {
         ['.ms-Callout-main']: {
+          // dropdown container
           backgroundColor: semanticColors.inputBackground,
           borderColor: semanticColors.inputBorder,
           borderStyle: StyleConstants.borderSolid,
-          borderWidth: StyleConstants.borderWidth,
+          borderWidth: '0',
         },
       },
     },
@@ -27,30 +28,35 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
       height: StyleConstants.inputControlHeightInner,
       lineHeight: StyleConstants.inputControlHeight,
     },
-    caretDown: {
-      color: semanticColors.inputText,
-    },
+    caretDown: [
+      {
+        color: semanticColors.inputText,
+      },
+      disabled && {
+        color: semanticColors.disabledBodyText,
+      },
+    ],
     dropdown: [
       {
-        fontSize: FontSizes.size12,
+        fontSize: FontSizes.size13,
         height: StyleConstants.inputControlHeight,
         color: semanticColors.inputText,
+
         selectors: {
+          ':focus::after, :focus': {
+            borderColor: semanticColors.primaryButtonBackground,
+          },
           ['.ms-Dropdown-titleIsPlaceHolder']: {
             color: semanticColors.inputPlaceholderText,
-            fontStyle: 'italic',
           },
           ['&:hover .ms-Dropdown-titleIsPlaceHolder']: {
             color: semanticColors.inputPlaceholderText,
-            fontStyle: 'italic',
+            borderColor: semanticColors.inputBorderHovered,
           },
         },
       },
       disabled && {
-        backgroundColor: semanticColors.disabledBackground,
-        borderColor: semanticColors.inputBorder,
-        borderStyle: 'solid',
-        borderWidth: '1px',
+        borderWidth: '0px',
       },
       !disabled && {
         selectors: {
@@ -79,13 +85,13 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
     title: [
       {
         height: StyleConstants.inputControlHeight,
-        lineHeight: StyleConstants.inputControlHeight,
+        lineHeight: '21px',
         borderColor: semanticColors.inputBorder,
         selectors: {
           span: {
-            lineHeight: StyleConstants.inputControlHeightInner,
+            lineHeight: StyleConstants.inputControlHeight,
             position: 'absolute',
-            top: '1px',
+            top: '10px',
           },
         },
       },
@@ -107,7 +113,7 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
     },
     dropdownItem: {
       color: semanticColors.bodyText,
-      fontSize: FontSizes.size12,
+      fontSize: FontSizes.size13,
       selectors: {
         // active: Mouse down on the item, then drag outside.
         '&:hover, &:active, &:hover:focus': {
@@ -119,13 +125,12 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
     },
     dropdownItemDisabled: {
       color: semanticColors.disabledBodyText,
-      fontSize: FontSizes.size12,
+      fontSize: FontSizes.size13,
     },
     dropdownItemSelected: {
-      fontSize: FontSizes.size12,
+      fontSize: FontSizes.size13,
       backgroundColor: semanticColors.listItemBackgroundChecked,
       color: semanticColors.bodyText,
-      fontWeight: 'bold',
       selectors: {
         '&:hover, &:focus, &:active, &:hover:focus': {
           backgroundColor: semanticColors.listItemBackgroundChecked,
@@ -135,11 +140,12 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
       },
     },
     dropdownItemHeader: {
-      color: semanticColors.focusBorder,
+      color: semanticColors.primaryButtonBackground,
+      fontWeight: '400',
     },
     errorMessage: {
       color: semanticColors.errorText,
-      fontSize: FontSizes.size12,
+      fontSize: FontSizes.size13,
     },
   };
 };
