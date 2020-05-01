@@ -42,7 +42,6 @@ import {
 } from '@fluentui/react-bindings';
 import CarouselReducer, {
   CarouselInitialState,
-  CarouselActionsType,
   UpdatePreActiveIndex,
   UpdateItemIds,
   UpdateAriaLiveOn,
