@@ -20,6 +20,21 @@ export interface IToggleState {
 const getClassNames = classNamesFunction<IToggleStyleProps, IToggleStyles>();
 const COMPONENT_NAME = 'Toggle';
 
+const useComponentRef = (props: IToggleProps, nextProps: Readonly<IToggleProps>, prevState: Readonly<IToggleState>) => {
+  React.useImperativeHandle(
+    props.componentRef,
+    () => ({
+      focus: () => {
+        inputElementRef.current?.focus();
+      },
+      hasFocus: () => {
+        return hasFocus;
+      },
+    }),
+    [nextProps, prevState],
+  );
+};
+
 export const ToggleBase: React.FunctionComponent = (props: IToggleProps) => {
   const [checked, setChecked] = React.useState(!!(props.checked || props.defaultChecked));
   const toggleButton = React.useRef<HTMLButtonElement>(null);
