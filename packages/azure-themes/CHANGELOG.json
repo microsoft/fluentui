@@ -2,6 +2,21 @@
   "name": "@uifabric/azure-themes",
   "entries": [
     {
+      "date": "Fri, 01 May 2020 12:28:41 GMT",
+      "tag": "@uifabric/azure-themes_v7.1.0",
+      "version": "7.1.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Azure-theme component style updates per Azure portal design team",
+            "author": "jagaheri@microsoft.com",
+            "commit": "fbcfa2856add63c1d241db6cb56e43ecf85ce229",
+            "package": "@uifabric/azure-themes"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 16 Apr 2020 04:01:45 GMT",
       "tag": "@uifabric/azure-themes_v7.0.59",
       "version": "7.0.59",
