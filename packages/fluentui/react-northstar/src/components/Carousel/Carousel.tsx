@@ -62,7 +62,7 @@ export interface CarouselProps extends UIComponentProps, ChildrenComponentProps 
    * Accessibility behavior if overridden by the user.
    * @available menuAsToolbarBehavior, tabListBehavior, tabBehavior
    */
-  accessibility?: Accessibility;
+  accessibility?: Accessibility<CarouselBehaviorProps>;
 
   /** Index of the currently active item. */
   activeIndex?: number | string;
