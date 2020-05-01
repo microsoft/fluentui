@@ -262,7 +262,7 @@ export const Carousel: React.FC<WithAsProp<CarouselProps>> &
       activeIndex = 0;
     }
 
-    dispatch(UpdatePreActiveIndex(prevActiveIndex));
+    dispatch(UpdatePreActiveIndex(activeIndex));
     setActiveIndexState(activeIndex);
 
     _.invoke(props, 'onActiveIndexChange', e, props);
