@@ -1,8 +1,17 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Mon, 20 Apr 2020 15:55:12 GMT and should not be manually modified.
+This log was last generated on Wed, 29 Apr 2020 12:34:58 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.12.46](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.12.46)
+
+Wed, 29 Apr 2020 12:34:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.12.39..@uifabric/example-app-base_v7.12.46)
+
+### Patches
+
+- update MessageBar colors ([PR #12821](https://github.com/microsoft/fluentui/pull/12821) by chrismo@microsoft.com)
 
 ## [7.12.39](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.12.39)
 

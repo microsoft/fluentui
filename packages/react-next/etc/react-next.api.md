@@ -4,8 +4,190 @@
 
 ```ts
 
+import { IIconProps } from 'office-ui-fabric-react/lib/Icon';
+import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
+import { IRefObject } from 'office-ui-fabric-react/lib/Utilities';
+import { IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { IStyle } from 'office-ui-fabric-react/lib/Styling';
+import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
+import { ITheme } from 'office-ui-fabric-react/lib/Styling';
+import * as React from 'react';
 
-export * from "office-ui-fabric-react";
+// @public (undocumented)
+export const Checkbox: React.FunctionComponent<ICheckboxProps>;
+
+// @public (undocumented)
+export const CheckboxBase: React.ForwardRefExoticComponent<ICheckboxProps & React.RefAttributes<HTMLDivElement>>;
+
+// @public (undocumented)
+export const Fabric: React.FunctionComponent<IFabricProps>;
+
+// @public (undocumented)
+export const FabricBase: React.ForwardRefExoticComponent<IFabricProps & React.RefAttributes<HTMLDivElement>>;
+
+// @public
+export interface ICheckbox {
+    checked: boolean;
+    focus: () => void;
+    indeterminate: boolean;
+}
+
+// @public
+export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement | HTMLInputElement> {
+    ariaDescribedBy?: string;
+    ariaLabel?: string;
+    ariaLabelledBy?: string;
+    ariaPositionInSet?: number;
+    ariaSetSize?: number;
+    boxSide?: 'start' | 'end';
+    checked?: boolean;
+    checkmarkIconProps?: IIconProps;
+    className?: string;
+    componentRef?: IRefObject<ICheckbox>;
+    defaultChecked?: boolean;
+    defaultIndeterminate?: boolean;
+    disabled?: boolean;
+    indeterminate?: boolean;
+    inputProps?: React.ButtonHTMLAttributes<HTMLElement | HTMLButtonElement>;
+    keytipProps?: IKeytipProps;
+    label?: string;
+    onChange?: (ev?: React.FormEvent<HTMLElement | HTMLInputElement>, checked?: boolean) => void;
+    onRenderLabel?: IRenderFunction<ICheckboxProps>;
+    styles?: IStyleFunctionOrObject<ICheckboxStyleProps, ICheckboxStyles>;
+    theme?: ITheme;
+}
+
+// @public (undocumented)
+export interface ICheckboxStyleProps {
+    // (undocumented)
+    checked?: boolean;
+    // (undocumented)
+    className?: string;
+    // (undocumented)
+    disabled?: boolean;
+    // (undocumented)
+    indeterminate?: boolean;
+    // (undocumented)
+    isUsingCustomLabelRender: boolean;
+    // (undocumented)
+    reversed?: boolean;
+    // (undocumented)
+    theme: ITheme;
+}
+
+// @public (undocumented)
+export interface ICheckboxStyles {
+    checkbox?: IStyle;
+    checkmark?: IStyle;
+    input?: IStyle;
+    label?: IStyle;
+    root?: IStyle;
+    text?: IStyle;
+}
+
+// @public (undocumented)
+export interface IFabricProps extends React.HTMLAttributes<HTMLDivElement> {
+    applyTheme?: boolean;
+    applyThemeToBody?: boolean;
+    as?: React.ElementType;
+    // (undocumented)
+    componentRef?: IRefObject<{}>;
+    dir?: 'rtl' | 'ltr' | 'auto';
+    styles?: IStyleFunctionOrObject<IFabricStyleProps, IFabricStyles>;
+    theme?: ITheme;
+}
+
+// @public (undocumented)
+export interface IFabricStyleProps extends IFabricProps {
+    // (undocumented)
+    theme: ITheme;
+}
+
+// @public (undocumented)
+export interface IFabricStyles {
+    // (undocumented)
+    bodyThemed: IStyle;
+    // (undocumented)
+    root: IStyle;
+}
+
+
+export * from "office-ui-fabric-react/lib/ActivityItem";
+export * from "office-ui-fabric-react/lib/Announced";
+export * from "office-ui-fabric-react/lib/Autofill";
+export * from "office-ui-fabric-react/lib/Breadcrumb";
+export * from "office-ui-fabric-react/lib/Button";
+export * from "office-ui-fabric-react/lib/Calendar";
+export * from "office-ui-fabric-react/lib/Callout";
+export * from "office-ui-fabric-react/lib/Check";
+export * from "office-ui-fabric-react/lib/ChoiceGroup";
+export * from "office-ui-fabric-react/lib/Coachmark";
+export * from "office-ui-fabric-react/lib/Color";
+export * from "office-ui-fabric-react/lib/ColorPicker";
+export * from "office-ui-fabric-react/lib/ComboBox";
+export * from "office-ui-fabric-react/lib/CommandBar";
+export * from "office-ui-fabric-react/lib/ContextualMenu";
+export * from "office-ui-fabric-react/lib/DatePicker";
+export * from "office-ui-fabric-react/lib/DetailsList";
+export * from "office-ui-fabric-react/lib/Dialog";
+export * from "office-ui-fabric-react/lib/Divider";
+export * from "office-ui-fabric-react/lib/DocumentCard";
+export * from "office-ui-fabric-react/lib/Dropdown";
+export * from "office-ui-fabric-react/lib/ExtendedPicker";
+export * from "office-ui-fabric-react/lib/Facepile";
+export * from "office-ui-fabric-react/lib/FloatingPicker";
+export * from "office-ui-fabric-react/lib/FocusTrapZone";
+export * from "office-ui-fabric-react/lib/FocusZone";
+export * from "office-ui-fabric-react/lib/Grid";
+export * from "office-ui-fabric-react/lib/GroupedList";
+export * from "office-ui-fabric-react/lib/HoverCard";
+export * from "office-ui-fabric-react/lib/Icon";
+export * from "office-ui-fabric-react/lib/Icons";
+export * from "office-ui-fabric-react/lib/Image";
+export * from "office-ui-fabric-react/lib/Keytip";
+export * from "office-ui-fabric-react/lib/KeytipData";
+export * from "office-ui-fabric-react/lib/KeytipLayer";
+export * from "office-ui-fabric-react/lib/Label";
+export * from "office-ui-fabric-react/lib/Layer";
+export * from "office-ui-fabric-react/lib/Link";
+export * from "office-ui-fabric-react/lib/List";
+export * from "office-ui-fabric-react/lib/MarqueeSelection";
+export * from "office-ui-fabric-react/lib/MessageBar";
+export * from "office-ui-fabric-react/lib/Modal";
+export * from "office-ui-fabric-react/lib/Nav";
+export * from "office-ui-fabric-react/lib/OverflowSet";
+export * from "office-ui-fabric-react/lib/Overlay";
+export * from "office-ui-fabric-react/lib/Panel";
+export * from "office-ui-fabric-react/lib/Persona";
+export * from "office-ui-fabric-react/lib/Pickers";
+export * from "office-ui-fabric-react/lib/Pivot";
+export * from "office-ui-fabric-react/lib/Popup";
+export * from "office-ui-fabric-react/lib/PositioningContainer";
+export * from "office-ui-fabric-react/lib/ProgressIndicator";
+export * from "office-ui-fabric-react/lib/Rating";
+export * from "office-ui-fabric-react/lib/ResizeGroup";
+export * from "office-ui-fabric-react/lib/ScrollablePane";
+export * from "office-ui-fabric-react/lib/SearchBox";
+export * from "office-ui-fabric-react/lib/SelectableOption";
+export * from "office-ui-fabric-react/lib/SelectedItemsList";
+export * from "office-ui-fabric-react/lib/Selection";
+export * from "office-ui-fabric-react/lib/Separator";
+export * from "office-ui-fabric-react/lib/Shimmer";
+export * from "office-ui-fabric-react/lib/ShimmeredDetailsList";
+export * from "office-ui-fabric-react/lib/Slider";
+export * from "office-ui-fabric-react/lib/SpinButton";
+export * from "office-ui-fabric-react/lib/Spinner";
+export * from "office-ui-fabric-react/lib/Stack";
+export * from "office-ui-fabric-react/lib/Sticky";
+export * from "office-ui-fabric-react/lib/Styling";
+export * from "office-ui-fabric-react/lib/SwatchColorPicker";
+export * from "office-ui-fabric-react/lib/TeachingBubble";
+export * from "office-ui-fabric-react/lib/Text";
+export * from "office-ui-fabric-react/lib/TextField";
+export * from "office-ui-fabric-react/lib/ThemeGenerator";
+export * from "office-ui-fabric-react/lib/Toggle";
+export * from "office-ui-fabric-react/lib/Tooltip";
+export * from "office-ui-fabric-react/lib/Utilities";
 
 // (No @packageDocumentation comment for this package)
 

@@ -1,5 +1,14 @@
 import * as React from 'react';
-import { DefaultButton, Callout, Link, getTheme, FontWeights, mergeStyleSets, getId } from 'office-ui-fabric-react';
+import {
+  DefaultButton,
+  Callout,
+  Link,
+  getTheme,
+  FontWeights,
+  mergeStyleSets,
+  getId,
+  Text,
+} from 'office-ui-fabric-react';
 import { useBoolean } from '@uifabric/react-hooks';
 
 const theme = getTheme();
@@ -73,15 +82,15 @@ export const CalloutBasicExample: React.FunctionComponent = () => {
           setInitialFocus
         >
           <div className={styles.header}>
-            <p className={styles.title} id={labelId}>
+            <Text className={styles.title} id={labelId}>
               All of your favorite people
-            </p>
+            </Text>
           </div>
           <div className={styles.inner}>
-            <p className={styles.subtext} id={descriptionId}>
+            <Text className={styles.subtext} id={descriptionId}>
               Message body is optional. If help documentation is available, consider adding a link to learn more at the
               bottom.
-            </p>
+            </Text>
             <div className={styles.actions}>
               <Link className={styles.link} href="http://microsoft.com" target="_blank">
                 Go to microsoft

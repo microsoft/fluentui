@@ -339,7 +339,7 @@ export class Parser {
 
       const jsDocComment = this.findDocComment(prop);
 
-      let defaultValue = null;
+      let defaultValue: any = null;
 
       if (defaultProps[propName] !== undefined) {
         defaultValue = { value: defaultProps[propName] };
