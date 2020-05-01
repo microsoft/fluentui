@@ -4,7 +4,7 @@ For pauses between 2 seconds and 400 milliseconds, adding animations may actuall
 
 Use a standalone spinner when you need a progress indicator on an existing surface (such as a view that's already displayed but no content is shown yet, or when the user pulls-to-refresh, revealing the empty space above the scrolling list).
 
-For actions that happen "between views", you can use the progress indicator that lives in its own overlay, the `MSHUD`.
+For actions that happen "between views", you can use the progress indicator that lives in its own overlay, the `HUD`.
 
 <DisplayToggle onText="Dark" offText="Light" label="Theme Switcher">
 

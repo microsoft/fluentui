@@ -1,4 +1,4 @@
-`MSPillButtonBar` is a horizontal scrollable list of pill-shaped text buttons in which only one button can be selected at a given time.
+`PillButtonBar` is a horizontal scrollable list of pill-shaped text buttons in which only one button can be selected at a given time.
 
 <!-- prettier-ignore-start -->
 <DisplayToggle onText="Dark" offText="Light" label="Theme Switcher">
