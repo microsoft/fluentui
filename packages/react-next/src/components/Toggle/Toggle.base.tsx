@@ -20,6 +20,154 @@ export interface IToggleState {
 const getClassNames = classNamesFunction<IToggleStyleProps, IToggleStyles>();
 const COMPONENT_NAME = 'Toggle';
 
+export const ToggleBase: React.FunctionComponent = (props: IToggleProps) => {
+  const [checked, setChecked] = React.useState(!!(props.checked || props.defaultChecked));
+  const toggleButton = React.useRef<HTMLButtonElement>(null);
+  const id = props.id || getId('Toggle');
+
+  // public static getDerivedStateFromProps(
+  //   nextProps: Readonly<IToggleProps>,
+  //   prevState: Readonly<IToggleState>,
+  // ): Partial<IToggleState> | null {
+  //   if (nextProps.checked === undefined) {
+  //     return null;
+  //   }
+  //   return {
+  //     checked: !!nextProps.checked,
+  //   };
+  // }
+
+  const {
+    as: RootType = 'div',
+    className,
+    theme,
+    disabled,
+    keytipProps,
+    label,
+    ariaLabel,
+    // tslint:disable:deprecation
+    onAriaLabel,
+    offAriaLabel,
+    // tslint:enable:deprecation
+    offText,
+    onText,
+    styles,
+    inlineLabel,
+  } = props;
+  const stateText = checked ? onText : offText;
+  const badAriaLabel = checked ? onAriaLabel : offAriaLabel;
+  const toggleNativeProps = getNativeProps(props, inputProperties, ['defaultChecked']);
+  const classNames = getClassNames(styles!, {
+    theme: theme!,
+    className,
+    disabled,
+    checked,
+    inlineLabel,
+    onOffMissing: !onText && !offText,
+  });
+
+  const labelId = `${id}-label`;
+  const stateTextId = `${id}-stateText`;
+
+  // The following properties take priority for what Narrator should read:
+  // 1. ariaLabel
+  // 2. onAriaLabel (if checked) or offAriaLabel (if not checked)
+  // 3. label
+  // 4. onText (if checked) or offText (if not checked)
+  let labelledById: string | undefined = undefined;
+  if (!ariaLabel && !badAriaLabel) {
+    if (label) {
+      labelledById = labelId;
+    } else if (stateText) {
+      labelledById = stateTextId;
+    }
+  }
+
+  const ariaRole = props.role ? props.role : 'switch';
+
+  warnDeprecations(COMPONENT_NAME, props, {
+    onAriaLabel: 'ariaLabel',
+    offAriaLabel: undefined,
+    onChanged: 'onChange',
+  });
+
+  const focus = () => {
+    if (toggleButton.current) {
+      toggleButton.current.focus();
+    }
+  };
+
+  const onClick = (ev: React.MouseEvent<HTMLElement>) => {
+    // tslint:disable-next-line:deprecation
+    const { checked: checkedProp, onChange, onChanged } = props;
+    if (!disabled) {
+      // Only update the state if the user hasn't provided it.
+      if (checkedProp === undefined) {
+        setChecked(!checked);
+      }
+      if (onChange) {
+        onChange(ev, !checked);
+      }
+      if (onChanged) {
+        onChanged(!checked);
+      }
+      if (onClick) {
+        onClick(ev);
+      }
+    }
+  };
+
+  const noop = (): void => {
+    /* no-op */
+  };
+
+  return (
+    <RootType className={classNames.root} hidden={(toggleNativeProps as any).hidden}>
+      {label && (
+        <Label htmlFor={id} className={classNames.label} id={labelId}>
+          {label}
+        </Label>
+      )}
+
+      <div className={classNames.container}>
+        <KeytipData
+          keytipProps={keytipProps}
+          ariaDescribedBy={(toggleNativeProps as any)['aria-describedby']}
+          disabled={disabled}
+        >
+          {(keytipAttributes: any): JSX.Element => (
+            <button
+              {...toggleNativeProps}
+              {...keytipAttributes}
+              className={classNames.pill}
+              disabled={disabled}
+              id={id}
+              type="button"
+              role={ariaRole}
+              ref={toggleButton}
+              aria-disabled={disabled}
+              aria-checked={checked}
+              aria-label={ariaLabel ? ariaLabel : badAriaLabel}
+              data-is-focusable
+              onChange={noop}
+              onClick={onClick}
+              aria-labelledby={labelledById}
+            >
+              <span className={classNames.thumb} />
+            </button>
+          )}
+        </KeytipData>
+        {stateText && (
+          <Label htmlFor={id} className={classNames.text} id={stateTextId}>
+            {stateText}
+          </Label>
+        )}
+      </div>
+      <FocusRects />
+    </RootType>
+  );
+};
+
 export class ToggleBase extends React.Component<IToggleProps, IToggleState> implements IToggle {
   private _id: string;
   private _toggleButton = React.createRef<HTMLButtonElement>();
