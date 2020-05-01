@@ -1399,11 +1399,11 @@ describe('FocusZone', () => {
   });
 
   it('skips subzone elements until manually entered', () => {
-    const isInnerZoneKeystroke = (e: React.KeyboardEvent<HTMLElement>): boolean => getCode(e) === EnterKey;
+    const shouldEnterInnerZone = (e: React.KeyboardEvent<HTMLElement>): boolean => getCode(e) === EnterKey;
 
     const component = ReactTestUtils.renderIntoDocument(
       <div {...{ onFocusCapture: _onFocus }}>
-        <FocusZone direction={FocusZoneDirection.horizontal} isInnerZoneKeystroke={isInnerZoneKeystroke}>
+        <FocusZone direction={FocusZoneDirection.horizontal} shouldEnterInnerZone={shouldEnterInnerZone}>
           <button className="a">a</button>
           <div className="b" data-is-focusable={true} data-is-sub-focuszone={true}>
             <button className="bsub">bsub</button>
@@ -1481,11 +1481,11 @@ describe('FocusZone', () => {
   });
 
   it('skips child focusZone elements until manually entered', () => {
-    const isInnerZoneKeystroke = (e: React.KeyboardEvent<HTMLElement>): boolean => getCode(e) === EnterKey;
+    const shouldEnterInnerZone = (e: React.KeyboardEvent<HTMLElement>): boolean => getCode(e) === EnterKey;
 
     const component = ReactTestUtils.renderIntoDocument(
       <div {...{ onFocusCapture: _onFocus }}>
-        <FocusZone direction={FocusZoneDirection.horizontal} isInnerZoneKeystroke={isInnerZoneKeystroke}>
+        <FocusZone direction={FocusZoneDirection.horizontal} shouldEnterInnerZone={shouldEnterInnerZone}>
           <button className="a">a</button>
           <FocusZone direction={FocusZoneDirection.horizontal} className="b" data-is-focusable={true}>
             <button className="bsub">bsub</button>
@@ -1631,11 +1631,11 @@ describe('FocusZone', () => {
   });
 
   it('Focus is not affected by readOnly inputs with values', () => {
-    const isInnerZoneKeystroke = (e: React.KeyboardEvent<HTMLElement>): boolean => getCode(e) === EnterKey;
+    const shouldEnterInnerZone = (e: React.KeyboardEvent<HTMLElement>): boolean => getCode(e) === EnterKey;
 
     const component = ReactTestUtils.renderIntoDocument(
       <div {...{ onFocusCapture: _onFocus }}>
-        <FocusZone isInnerZoneKeystroke={isInnerZoneKeystroke}>
+        <FocusZone shouldEnterInnerZone={shouldEnterInnerZone}>
           <input className="a" />
           <input readOnly defaultValue="foo" className="b" />
           <input className="c" />
