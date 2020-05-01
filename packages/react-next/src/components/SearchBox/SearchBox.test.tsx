@@ -165,4 +165,17 @@ describe('SearchBox', () => {
     wrapper.setProps({ value: null as any });
     expect(wrapper.find('input').prop('value')).toBe('');
   });
+
+  it('handles rendering 0', () => {
+    // tslint:disable-next-line:no-any
+    wrapper = mount(<SearchBox value={0 as any} />);
+    // this is not allowed per typings, but users might do it anyway
+    // tslint:disable-next-line:no-any
+    expect(
+      wrapper
+        .find('input')
+        .getDOMNode()
+        .getAttribute('value'),
+    ).toBe('0');
+  });
 });
