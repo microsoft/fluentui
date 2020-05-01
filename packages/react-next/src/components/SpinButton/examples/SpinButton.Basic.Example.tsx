@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { SpinButton } from 'office-ui-fabric-react/lib/SpinButton';
+import { SpinButton } from '../SpinButton';
 import { Stack, IStackTokens } from 'office-ui-fabric-react/lib/Stack';
 
 const StackTokens: Partial<IStackTokens> = { childrenGap: 10 };
