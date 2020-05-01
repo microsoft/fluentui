@@ -393,6 +393,11 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
   protected resetFocus(index?: number) {
     const { items } = this.state;
 
+    // Only reset focus if the browser loses it somehow or if focus is on a suggestion item
+    if (document.activeElement && !document.activeElement.classList.contains('ms-Suggestions-itemButton')) {
+      return;
+    }
+
     if (items.length && index! >= 0) {
       const newEl: HTMLElement | null =
         this.root.current &&
