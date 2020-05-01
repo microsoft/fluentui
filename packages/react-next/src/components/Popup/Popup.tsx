@@ -21,7 +21,7 @@ function useScrollbarAsync(props: IPopupProps, root: React.RefObject<HTMLDivElem
       }
 
       let needsVerticalScrollBar = false;
-      if (this._root && this._root.current && root.current?.firstElementChild) {
+      if (root && root.current && root.current?.firstElementChild) {
         // ClientHeight returns the client height of an element rounded to an
         // integer. On some browsers at different zoom levels this rounding
         // can generate different results for the root container and child even
@@ -49,26 +49,26 @@ function useScrollbarAsync(props: IPopupProps, root: React.RefObject<HTMLDivElem
 }
 
 function useRestoreFocus(props: IPopupProps, root: React.RefObject<HTMLDivElement | undefined>) {
-  const _originalFocusedElement = React.useRef<HTMLElement>();
-  const _containsFocus = React.useRef(false);
+  const originalFocusedElement = React.useRef<HTMLElement>();
+  const containsFocus = React.useRef(false);
 
   React.useLayoutEffect(() => {
-    _originalFocusedElement.current = getDocument()!.activeElement as HTMLElement;
+    originalFocusedElement.current = getDocument()!.activeElement as HTMLElement;
 
     return () => {
       props.onRestoreFocus?.({
-        originalElement: _originalFocusedElement.current,
-        containsFocus: _containsFocus.current,
+        originalElement: originalFocusedElement.current,
+        containsFocus: containsFocus.current,
       });
 
       // De-reference DOM Node to avoid retainment via transpiled closure of _onKeyDown
-      _originalFocusedElement.current = undefined;
+      originalFocusedElement.current = undefined;
     };
   }, []);
 
   React.useEffect(() => {
     if (doesElementContainFocus(root.current!)) {
-      _containsFocus.current = true;
+      containsFocus.current = true;
     }
   }, []);
 
@@ -76,7 +76,7 @@ function useRestoreFocus(props: IPopupProps, root: React.RefObject<HTMLDivElemen
     root,
     'focus',
     React.useCallback((): void => {
-      _containsFocus.current = true;
+      containsFocus.current = true;
     }, []),
     true,
   );
@@ -94,7 +94,7 @@ function useRestoreFocus(props: IPopupProps, root: React.RefObject<HTMLDivElemen
        * keyboard event occured and focus didn't change
        */
       if (root.current && ev.relatedTarget && !root.current.contains(ev.relatedTarget as HTMLElement)) {
-        _containsFocus.current = false;
+        containsFocus.current = false;
       }
     }, []),
     true,
@@ -109,15 +109,15 @@ export const Popup = React.forwardRef(function(props: IPopupProps, forwardedRef:
   // Default props
   props = { shouldRestoreFocus: true, ...props };
 
-  const _root = React.useRef<HTMLDivElement>();
-  const _mergedRootRef = useMergedRefs(_root, forwardedRef) as React.Ref<HTMLDivElement>;
+  const root = React.useRef<HTMLDivElement>();
+  const mergedRootRef = useMergedRefs(root, forwardedRef) as React.Ref<HTMLDivElement>;
 
-  useRestoreFocus(props, _root);
+  useRestoreFocus(props, root);
 
   const { role, className, ariaLabel, ariaLabelledBy, ariaDescribedBy, style, children } = props;
-  const needsVerticalScrollBar = useScrollbarAsync(props, _root);
+  const needsVerticalScrollBar = useScrollbarAsync(props, root);
 
-  const _onKeyDown = React.useCallback(
+  const onKeyDown = React.useCallback(
     (ev: React.KeyboardEvent<HTMLElement> | KeyboardEvent): void => {
       // tslint:disable-next-line: deprecation
       switch (ev.which) {
@@ -135,18 +135,18 @@ export const Popup = React.forwardRef(function(props: IPopupProps, forwardedRef:
     [props.onDismiss],
   );
 
-  useOnEvent(getWindow(_root.current), 'keydown', _onKeyDown as (ev: Event) => void);
+  useOnEvent(getWindow(root.current), 'keydown', onKeyDown as (ev: Event) => void);
 
   return (
     <div
-      ref={_mergedRootRef}
+      ref={mergedRootRef}
       {...getNativeProps(props, divProperties)}
       className={className}
       role={role}
       aria-label={ariaLabel}
       aria-labelledby={ariaLabelledBy}
       aria-describedby={ariaDescribedBy}
-      onKeyDown={_onKeyDown}
+      onKeyDown={onKeyDown}
       style={{ overflowY: needsVerticalScrollBar ? 'scroll' : undefined, outline: 'none', ...style }}
     >
       {children}
