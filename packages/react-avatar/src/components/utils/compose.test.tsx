@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { compose } from './compose';
 import { mount } from 'enzyme';
-import { StylesheetProvider } from '../utils/StylesheetProvider';
+import { StylesheetProvider } from '@fluentui/react-stylesheets';
 
 describe('compose', () => {
   it('registers stylesheets in the correct order', () => {
@@ -18,12 +18,12 @@ describe('compose', () => {
 
     let registeredSheets: string[] = [];
 
-    const register = (stylesheets: string[]) => {
+    const renderStyles = (stylesheets: string[]) => {
       registeredSheets = [...registeredSheets, ...stylesheets];
     };
 
     mount(
-      <StylesheetProvider register={register}>
+      <StylesheetProvider renderStyles={renderStyles}>
         <SomeComponent />
       </StylesheetProvider>,
     );

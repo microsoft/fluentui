@@ -12,6 +12,7 @@ import {
   FontWeights,
   Link,
   getId,
+  Text,
 } from 'office-ui-fabric-react';
 import { useBoolean } from '@uifabric/react-hooks';
 
@@ -57,7 +58,6 @@ const styles = mergeStyleSets({
     padding: '18px 24px 12px',
   },
   title: [
-    theme.fonts.xLarge,
     {
       margin: 0,
       fontWeight: FontWeights.semilight,
@@ -68,7 +68,6 @@ const styles = mergeStyleSets({
     padding: '0 24px 20px',
   },
   subtext: [
-    theme.fonts.small,
     {
       margin: 0,
       fontWeight: FontWeights.semilight,
@@ -97,7 +96,6 @@ export const CalloutDirectionalExample: React.FunctionComponent = () => {
   const [gapSpace, setGapSpace] = React.useState();
   const [beakWidth, setBeakWidth] = React.useState();
   const [directionalHint, setDirectionalHint] = React.useState<DirectionalHint>(DirectionalHint.bottomLeftEdge);
-
   const onDirectionalChanged = (event: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void => {
     setDirectionalHint(option.key as DirectionalHint);
   };
@@ -151,15 +149,15 @@ export const CalloutDirectionalExample: React.FunctionComponent = () => {
           setInitialFocus
         >
           <div className={styles.header}>
-            <p className={styles.title} id={labelId}>
+            <Text className={styles.title} id={labelId}>
               All of your favorite people
-            </p>
+            </Text>
           </div>
           <div className={styles.inner}>
-            <p className={styles.subtext} id={descriptionId}>
+            <Text className={styles.subtext} id={descriptionId}>
               Message body is optional. If help documentation is available, consider adding a link to learn more at the
               bottom.
-            </p>
+            </Text>
             <div className={styles.actions}>
               <Link className={styles.link} href="http://microsoft.com" target="_blank">
                 Go to Microsoft

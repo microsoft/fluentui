@@ -4,7 +4,7 @@ import { isConformant, handlesAccessibility } from 'test/specs/commonTests';
 import { mountWithProviderAndGetComponent } from 'test/utils';
 
 describe('Embed', () => {
-  isConformant(Embed, { autoControlledProps: ['active'] });
+  isConformant(Embed, { constructorName: 'Embed', autoControlledProps: ['active'] });
 
   describe('accessibility', () => {
     handlesAccessibility(Embed, { defaultRootRole: 'presentation' });
