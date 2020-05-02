@@ -5,10 +5,12 @@
   "author": "Oleksandr Fediashov <a@fedyashov.com>",
   "bugs": "https://github.com/microsoft/fluentui/issues",
   "dependencies": {
-    "@fluentui/docs-components": "^0.48.0"
+    "@fluentui/docs-components": "^0.48.0",
+    "lodash": "^4.17.15"
   },
   "devDependencies": {
-    "@fluentui/react-northstar": "^0.48.0"
+    "@fluentui/react-northstar": "^0.48.0",
+    "react": "16.8.6"
   },
   "files": [
     "dist"
