@@ -136,31 +136,31 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
 
     this._classNames = getClassNames
       ? getClassNames(
-        theme!,
-        className!,
-        variantClassName!,
-        iconProps && iconProps.className,
-        menuIconProps && menuIconProps.className,
-        isPrimaryButtonDisabled!,
-        checked!,
-        !menuHidden,
-        !!this.props.menuProps,
-        this.props.split,
-        !!allowDisabledFocus,
-      )
+          theme!,
+          className!,
+          variantClassName!,
+          iconProps && iconProps.className,
+          menuIconProps && menuIconProps.className,
+          isPrimaryButtonDisabled!,
+          checked!,
+          !menuHidden,
+          !!this.props.menuProps,
+          this.props.split,
+          !!allowDisabledFocus,
+        )
       : getBaseButtonClassNames(
-        theme!,
-        styles!,
-        className!,
-        variantClassName!,
-        iconProps && iconProps.className,
-        menuIconProps && menuIconProps.className,
-        isPrimaryButtonDisabled!,
-        !!this.props.menuProps,
-        checked!,
-        !menuHidden,
-        this.props.split,
-      );
+          theme!,
+          styles!,
+          className!,
+          variantClassName!,
+          iconProps && iconProps.className,
+          menuIconProps && menuIconProps.className,
+          isPrimaryButtonDisabled!,
+          !!this.props.menuProps,
+          checked!,
+          !menuHidden,
+          this.props.split,
+        );
 
     const { _ariaDescriptionId, _labelId, _descriptionId } = this;
     // Anchor tag cannot be disabled hence in disabled state rendering
@@ -345,8 +345,8 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
         {(keytipAttributes: any): JSX.Element => Button(keytipAttributes)}
       </KeytipData>
     ) : (
-        Button()
-      );
+      Button()
+    );
 
     if (menuProps && menuProps.doNotLayer) {
       return (
@@ -642,8 +642,8 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
         {(keytipAttributes: any): JSX.Element => SplitButton(keytipAttributes)}
       </KeytipData>
     ) : (
-        SplitButton()
-      );
+      SplitButton()
+    );
   }
 
   private _onSplitContainerFocusCapture = (ev: React.FocusEvent<HTMLDivElement>) => {
@@ -861,7 +861,8 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
   }
 
   private _handleTouchAndPointerEvent() {
-    // Touch and pointer events don't focus the button naturally, so adding an imperative focus call to guarantee this behavior.
+    // Touch and pointer events don't focus the button naturally,
+    // so adding an imperative focus call to guarantee this behavior.
     this.focus();
 
     // If we already have an existing timeeout from a previous touch and pointer event
