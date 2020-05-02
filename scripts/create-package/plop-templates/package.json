@@ -43,8 +43,7 @@
     "react": "{{{react}}}",
     "react-app-polyfill": "{{{reactAppPolyfill}}}",
     "react-dom": "{{{reactDom}}}",
-    "react-test-renderer": "{{{reactTestRenderer}}}",
-    "typescript-plugin-css-modules": "{{{typescriptPluginCssModules}}}"
+    "react-test-renderer": "{{{reactTestRenderer}}}"
   },
   "dependencies": {
     "@uifabric/set-version": "{{{uifabricSetVersion}}}",
