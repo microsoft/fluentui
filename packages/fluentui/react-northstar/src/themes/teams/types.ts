@@ -27,7 +27,7 @@ import { ChatItemStylesProps } from '../../components/Chat/ChatItem';
 import { ChatMessageStylesProps } from '../../components/Chat/ChatMessage';
 import { ChatStylesProps } from '../../components/Chat/Chat';
 import { CheckboxStylesProps } from '../../components/Checkbox/Checkbox';
-import { DividerProps } from '../../components/Divider/Divider';
+import { DividerStylesProps } from '../../components/Divider/Divider';
 import { DialogProps } from '../../components/Dialog/Dialog';
 import { DropdownProps } from '../../components/Dropdown/Dropdown';
 import { EmbedStylesProps } from '../../components/Embed/Embed';
@@ -108,7 +108,7 @@ export type TeamsThemeStylesProps = {
   ChatItem: ChatItemStylesProps;
   ChatMessage: ChatMessageStylesProps;
   Checkbox: CheckboxStylesProps;
-  Divider: DividerProps;
+  Divider: DividerStylesProps;
   Dialog: DialogProps;
   Dropdown: DropdownProps;
   Embed: EmbedStylesProps;
