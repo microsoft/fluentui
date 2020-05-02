@@ -29,10 +29,10 @@ export const DialogFooter: React.FC<WithAsProp<DialogFooterProps>> &
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(DialogFooter.displayName, context.telemetry);
   setStart();
-  const { children, content, className, design, styles, variables } = props;
+  const { children, content, className, design, styles, variables, accessibility } = props;
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(DialogFooter.handledProps, props);
-  const getA11yProps = useAccessibility(props.accessibility, {
+  const getA11yProps = useAccessibility<never>(accessibility, {
     debugName: DialogFooter.displayName,
     rtl: context.rtl,
   });
@@ -56,6 +56,9 @@ export const DialogFooter: React.FC<WithAsProp<DialogFooterProps>> &
 };
 
 DialogFooter.displayName = 'DialogFooter';
+DialogFooter.defaultProps = {
+  accessibility: {} as Accessibility,
+};
 DialogFooter.handledProps = Object.keys(DialogFooter.propTypes) as any;
 
 DialogFooter.propTypes = {
