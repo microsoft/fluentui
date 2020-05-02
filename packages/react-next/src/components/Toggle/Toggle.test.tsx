@@ -2,10 +2,14 @@ import * as React from 'react';
 import { mount } from 'enzyme';
 import * as renderer from 'react-test-renderer';
 import * as sinon from 'sinon';
-
+import { resetIds } from '@uifabric/utilities';
 import { Toggle } from './Toggle';
 
 describe('Toggle', () => {
+  beforeEach(() => {
+    resetIds();
+  });
+
   it('renders a label', () => {
     const component = mount(<Toggle label="Label" />);
     expect(
