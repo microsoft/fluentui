@@ -45,6 +45,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Restricted prop sets in the `Embed` component which are passed to styles functions, @assuncaocharles ([#12918](https://github.com/microsoft/fluentui/pull/12918))
 - Restricted prop sets in the `CarouselNavigationItem` component which are passed to styles functions, @assuncaocharles ([#12920](https://github.com/microsoft/fluentui/pull/12920))
 - Restricted prop sets in the `CarouselItem` component which are passed to styles functions, @assuncaocharles ([#12938](https://github.com/microsoft/fluentui/pull/12938))
+- Restricted prop sets in the `Carousel` component which are passed to styles functions, @assuncaocharles ([#12966](https://github.com/microsoft/fluentui/pull/12966))
 
 ### Fixes
 - Visually align checkbox and label elements in `Checkbox` component @silviuavram ([#12590](https://github.com/microsoft/fluentui/pull/12590))
