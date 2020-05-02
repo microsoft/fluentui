@@ -63,10 +63,8 @@ exports[`Checkbox renders checked correctly 1`] = `
         @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
           outline: 1px solid ActiveBorder;
         }
-    id="checkbox-1"
-    onBlur={[Function]}
+    id="checkbox-2"
     onChange={[Function]}
-    onFocus={[Function]}
     type="checkbox"
   />
   <label
@@ -94,7 +92,7 @@ exports[`Checkbox renders checked correctly 1`] = `
           right: 0px;
           top: 0px;
         }
-    htmlFor="checkbox-1"
+    htmlFor="checkbox-2"
   >
     <div
       className=
@@ -217,10 +215,8 @@ exports[`Checkbox renders indeterminate correctly 1`] = `
         @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
           outline: 1px solid ActiveBorder;
         }
-    id="checkbox-2"
-    onBlur={[Function]}
+    id="checkbox-3"
     onChange={[Function]}
-    onFocus={[Function]}
     type="checkbox"
   />
   <label
@@ -248,7 +244,7 @@ exports[`Checkbox renders indeterminate correctly 1`] = `
           right: 0px;
           top: 0px;
         }
-    htmlFor="checkbox-2"
+    htmlFor="checkbox-3"
   >
     <div
       className=
@@ -379,10 +375,8 @@ exports[`Checkbox renders unchecked correctly 1`] = `
         @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
           outline: 1px solid ActiveBorder;
         }
-    id="checkbox-0"
-    onBlur={[Function]}
+    id="checkbox-1"
     onChange={[Function]}
-    onFocus={[Function]}
     type="checkbox"
   />
   <label
@@ -410,7 +404,7 @@ exports[`Checkbox renders unchecked correctly 1`] = `
           right: 0px;
           top: 0px;
         }
-    htmlFor="checkbox-0"
+    htmlFor="checkbox-1"
   >
     <div
       className=
