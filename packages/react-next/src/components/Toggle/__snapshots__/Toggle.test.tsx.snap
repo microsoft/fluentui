@@ -75,7 +75,6 @@ exports[`Toggle renders hidden toggle correctly 1`] = `
       data-is-focusable={true}
       hidden={true}
       id="Toggle5"
-      onChange={[Function]}
       onClick={[Function]}
       role="switch"
       type="button"
@@ -205,7 +204,6 @@ exports[`Toggle renders toggle correctly 1`] = `
           }
       data-is-focusable={true}
       id="Toggle1"
-      onChange={[Function]}
       onClick={[Function]}
       role="switch"
       type="button"
@@ -341,7 +339,6 @@ exports[`Toggle renders toggle correctly with inline label (JSX Element) 1`] = `
           }
       data-is-focusable={true}
       id="Toggle3"
-      onChange={[Function]}
       onClick={[Function]}
       role="switch"
       type="button"
@@ -475,7 +472,6 @@ exports[`Toggle renders toggle correctly with inline label (string) 1`] = `
           }
       data-is-focusable={true}
       id="Toggle2"
-      onChange={[Function]}
       onClick={[Function]}
       role="switch"
       type="button"
@@ -608,7 +604,6 @@ exports[`Toggle renders toggle correctly with inline label and on/off text provi
           }
       data-is-focusable={true}
       id="Toggle4"
-      onChange={[Function]}
       onClick={[Function]}
       role="switch"
       type="button"

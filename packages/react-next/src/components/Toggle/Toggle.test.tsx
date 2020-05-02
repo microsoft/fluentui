@@ -145,7 +145,7 @@ describe('Toggle', () => {
     const button: any = wrapper.find('button');
     // simulate to change toggle state
     button.simulate('click');
-    expect((component as React.Component<any, any>).state.checked).toEqual(true);
+    expect(button.getDOMNode().getAttribute('aria-checked')).toEqual('true');
     expect(onSubmit.called).toEqual(false);
   });
 
