@@ -2,17 +2,19 @@ import * as customPropTypes from '@fluentui/react-proptypes';
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import * as _ from 'lodash';
-
+// @ts-ignore
+import { ThemeContext } from 'react-fela';
+import { createShorthandFactory, commonPropTypes } from '../../utils';
 import {
-  UIComponent,
-  RenderResultConfig,
-  createShorthandFactory,
-  commonPropTypes,
-  ShorthandFactory,
-} from '../../utils';
-import { ComponentEventHandler, WithAsProp, withSafeTypeForAs } from '../../types';
+  ComponentEventHandler,
+  WithAsProp,
+  withSafeTypeForAs,
+  FluentComponentStaticProps,
+  ProviderContextPrepared,
+} from '../../types';
 import { UIComponentProps } from '../../utils/commonPropInterfaces';
 import Input from '../Input/Input';
+import { useTelemetry, useStyles, useUnhandledProps } from '@fluentui/react-bindings';
 
 export interface DropdownSearchInputSlotClassNames {
   input: string;
@@ -77,74 +79,100 @@ export const dropdownSearchInputSlotClassNames: DropdownSearchInputSlotClassName
   wrapper: `${dropdownSearchInputClassName}__wrapper`,
 };
 
-class DropdownSearchInput extends UIComponent<WithAsProp<DropdownSearchInputProps>, any> {
-  static displayName = 'DropdownSearchInput';
-  static create: ShorthandFactory<DropdownSearchInputProps>;
-  static deprecated_className = dropdownSearchInputClassName;
+export type DropdownSearchInputStylesProps = Required<Pick<DropdownSearchInputProps, 'inline'>>;
 
-  static propTypes = {
-    ...commonPropTypes.createCommon({
-      accessibility: false,
-      children: false,
-      content: false,
-    }),
-    accessibilityInputProps: PropTypes.object,
-    accessibilityComboboxProps: PropTypes.object,
-    disabled: PropTypes.bool,
-    inline: PropTypes.bool,
-    inputRef: customPropTypes.ref,
-    onFocus: PropTypes.func,
-    onInputBlur: PropTypes.func,
-    onInputKeyDown: PropTypes.func,
-    onKeyUp: PropTypes.func,
-    placeholder: PropTypes.string,
+export const DropdownSearchInput: React.FC<WithAsProp<DropdownSearchInputProps>> &
+  FluentComponentStaticProps<DropdownSearchInputProps> = props => {
+  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const { setStart, setEnd } = useTelemetry(DropdownSearchInput.displayName, context.telemetry);
+  setStart();
+  const {
+    accessibilityComboboxProps,
+    accessibilityInputProps,
+    inputRef,
+    inline,
+    placeholder,
+    disabled,
+    className,
+    design,
+    styles,
+    variables,
+  } = props;
+
+  const unhandledProps = useUnhandledProps(DropdownSearchInput.handledProps, props);
+
+  const { styles: ResolvedStyles } = useStyles<DropdownSearchInputStylesProps>(DropdownSearchInput.displayName, {
+    className: dropdownSearchInputClassName,
+    mapPropsToStyles: () => ({ inline }),
+    mapPropsToInlineStyles: () => ({ className, design, styles, variables }),
+  });
+
+  const handleFocus = (e: React.SyntheticEvent) => {
+    _.invoke(props, 'onFocus', e, props);
   };
 
-  handleFocus = (e: React.SyntheticEvent) => {
-    _.invoke(this.props, 'onFocus', e, this.props);
+  const handleInputKeyDown = (e: React.SyntheticEvent) => {
+    _.invoke(props, 'onInputKeyDown', e, props);
   };
 
-  handleInputKeyDown = (e: React.SyntheticEvent) => {
-    _.invoke(this.props, 'onInputKeyDown', e, this.props);
+  const handleInputBlur = (e: React.SyntheticEvent) => {
+    _.invoke(props, 'onInputBlur', e, props);
   };
 
-  handleInputBlur = (e: React.SyntheticEvent) => {
-    _.invoke(this.props, 'onInputBlur', e, this.props);
+  const handleKeyUp = (e: React.SyntheticEvent) => {
+    _.invoke(props, 'onKeyUp', e, props);
   };
 
-  handleKeyUp = (e: React.SyntheticEvent) => {
-    _.invoke(this.props, 'onKeyUp', e, this.props);
-  };
+  const element = (
+    <Input
+      disabled={disabled}
+      inputRef={inputRef}
+      onFocus={handleFocus}
+      onKeyUp={handleKeyUp}
+      {...unhandledProps}
+      wrapper={{
+        className: dropdownSearchInputSlotClassNames.wrapper,
+        styles: ResolvedStyles.root,
+        ...accessibilityComboboxProps,
+        ...unhandledProps.wrapper,
+      }}
+      input={{
+        type: 'text',
+        className: dropdownSearchInputSlotClassNames.input,
+        styles: ResolvedStyles.input,
+        placeholder,
+        onBlur: handleInputBlur,
+        onKeyDown: handleInputKeyDown,
+        ...accessibilityInputProps,
+        ...unhandledProps.input,
+      }}
+    />
+  );
+  setEnd();
+  return element;
+};
 
-  renderComponent({ unhandledProps, styles }: RenderResultConfig<DropdownSearchInputProps>) {
-    const { accessibilityComboboxProps, accessibilityInputProps, inputRef, placeholder, disabled } = this.props;
-    return (
-      <Input
-        disabled={disabled}
-        inputRef={inputRef}
-        onFocus={this.handleFocus}
-        onKeyUp={this.handleKeyUp}
-        {...unhandledProps}
-        wrapper={{
-          className: dropdownSearchInputSlotClassNames.wrapper,
-          styles: styles.root,
-          ...accessibilityComboboxProps,
-          ...unhandledProps.wrapper,
-        }}
-        input={{
-          type: 'text',
-          className: dropdownSearchInputSlotClassNames.input,
-          styles: styles.input,
-          placeholder,
-          onBlur: this.handleInputBlur,
-          onKeyDown: this.handleInputKeyDown,
-          ...accessibilityInputProps,
-          ...unhandledProps.input,
-        }}
-      />
-    );
-  }
-}
+DropdownSearchInput.displayName = 'DropdownSearchInput';
+
+DropdownSearchInput.propTypes = {
+  ...commonPropTypes.createCommon({
+    accessibility: false,
+    children: false,
+    content: false,
+  }),
+  accessibilityInputProps: PropTypes.object,
+  accessibilityComboboxProps: PropTypes.object,
+  disabled: PropTypes.bool,
+  inline: PropTypes.bool,
+  inputRef: customPropTypes.ref,
+  onFocus: PropTypes.func,
+  onInputBlur: PropTypes.func,
+  onInputKeyDown: PropTypes.func,
+  onKeyUp: PropTypes.func,
+  placeholder: PropTypes.string,
+};
+
+DropdownSearchInput.handledProps = Object.keys(DropdownSearchInput.propTypes) as any;
 
 DropdownSearchInput.create = createShorthandFactory({ Component: DropdownSearchInput });
 
