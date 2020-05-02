@@ -1,41 +1,66 @@
 import * as React from 'react';
-
+// @ts-ignore
+import { ThemeContext } from 'react-fela';
 import {
   createShorthandFactory,
-  UIComponent,
   UIComponentProps,
   ChildrenComponentProps,
   ContentComponentProps,
   commonPropTypes,
-  ShorthandFactory,
   childrenExist,
 } from '../../utils';
 
-import { WithAsProp, withSafeTypeForAs } from '../../types';
+import { WithAsProp, withSafeTypeForAs, FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
+import { useTelemetry, getElementType, useUnhandledProps, useAccessibility, useStyles } from '@fluentui/react-bindings';
+import { Accessibility } from '@fluentui/accessibility';
 
-export interface DialogFooterProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {}
+export interface DialogFooterProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
+  /**
+   * Accessibility behavior if overridden by the user.
+   */
+  accessibility?: Accessibility<never>;
+}
 export const dialogFooterClassName = 'ui-dialog__footer';
 
-class DialogFooter extends UIComponent<WithAsProp<DialogFooterProps>> {
-  static create: ShorthandFactory<DialogFooterProps>;
+export type DialogFooterStylesProps = never;
 
-  static displayName = 'DialogFooter';
-  static deprecated_className = dialogFooterClassName;
+export const DialogFooter: React.FC<WithAsProp<DialogFooterProps>> &
+  FluentComponentStaticProps<DialogFooterProps> = props => {
+  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const { setStart, setEnd } = useTelemetry(DialogFooter.displayName, context.telemetry);
+  setStart();
+  const { children, content, className, design, styles, variables } = props;
+  const ElementType = getElementType(props);
+  const unhandledProps = useUnhandledProps(DialogFooter.handledProps, props);
+  const getA11yProps = useAccessibility(props.accessibility, {
+    debugName: DialogFooter.displayName,
+    rtl: context.rtl,
+  });
+  const { classes } = useStyles<DialogFooterStylesProps>(DialogFooter.displayName, {
+    className: dialogFooterClassName,
+    mapPropsToInlineStyles: () => ({
+      className,
+      design,
+      styles,
+      variables,
+    }),
+    rtl: context.rtl,
+  });
+  const element = (
+    <ElementType {...getA11yProps('root', { className: classes.root, ...unhandledProps })}>
+      {childrenExist(children) ? children : content}
+    </ElementType>
+  );
+  setEnd();
+  return element;
+};
 
-  static propTypes = {
-    ...commonPropTypes.createCommon(),
-  };
+DialogFooter.displayName = 'DialogFooter';
+DialogFooter.handledProps = Object.keys(DialogFooter.propTypes) as any;
 
-  renderComponent({ accessibility, ElementType, classes, unhandledProps }): React.ReactNode {
-    const { children, content } = this.props;
-
-    return (
-      <ElementType className={classes.root} {...accessibility.attributes.root} {...unhandledProps}>
-        {childrenExist(children) ? children : content}
-      </ElementType>
-    );
-  }
-}
+DialogFooter.propTypes = {
+  ...commonPropTypes.createCommon(),
+};
 
 DialogFooter.create = createShorthandFactory({ Component: DialogFooter, mappedProp: 'content' });
 
