@@ -123,7 +123,6 @@ describe('Toggle', () => {
   });
 
   it(`doesn't trigger onSubmit when placed inside a form`, () => {
-    let component: any;
     const onSubmit = sinon.spy();
 
     const wrapper = mount(
@@ -137,7 +136,6 @@ describe('Toggle', () => {
       >
         <Toggle
           // tslint:disable-next-line:jsx-no-lambda
-          componentRef={ref => (component = ref)}
           label="Label"
         />
       </form>,

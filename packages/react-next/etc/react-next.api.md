@@ -4,11 +4,8 @@
 
 ```ts
 
-<<<<<<< HEAD
-=======
 import { IButtonProps } from 'office-ui-fabric-react/lib/components/Button/Button.types';
 import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
->>>>>>> 538a70e01f666b269dc75a3d0edbc7cd86c1d095
 import { IComponentAs } from 'office-ui-fabric-react/lib/Utilities';
 import { IIconProps } from 'office-ui-fabric-react/lib/Icon';
 import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
@@ -210,8 +207,6 @@ export enum ImageLoadState {
 }
 
 // @public (undocumented)
-<<<<<<< HEAD
-=======
 export interface ISpinButton {
     focus: () => void;
     value?: string;
@@ -293,7 +288,6 @@ export interface ISpinButtonStyles {
 }
 
 // @public (undocumented)
->>>>>>> 538a70e01f666b269dc75a3d0edbc7cd86c1d095
 export interface IToggle {
     // (undocumented)
     focus: () => void;
@@ -351,8 +345,6 @@ export interface IToggleStyles {
 }
 
 // @public (undocumented)
-<<<<<<< HEAD
-=======
 export enum KeyboardSpinDirection {
     // (undocumented)
     down = -1,
@@ -378,20 +370,10 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
     }
 
 // @public (undocumented)
->>>>>>> 538a70e01f666b269dc75a3d0edbc7cd86c1d095
 export const Toggle: React.FunctionComponent<IToggleProps>;
 
 // @public (undocumented)
-export class ToggleBase extends React.Component<IToggleProps, IToggleState> implements IToggle {
-    constructor(props: IToggleProps);
-    readonly checked: boolean;
-    // (undocumented)
-    focus(): void;
-    // (undocumented)
-    static getDerivedStateFromProps(nextProps: Readonly<IToggleProps>, prevState: Readonly<IToggleState>): Partial<IToggleState> | null;
-    // (undocumented)
-    render(): JSX.Element;
-    }
+export const ToggleBase: React.FunctionComponent;
 
 
 export * from "office-ui-fabric-react/lib/ActivityItem";
