@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { ButtonProps, ButtonOptions, ButtonSlots, ButtonSlotProps } from './Button.types';
-import { compose, ComposeStandardStatics } from '../utils/compose';
+import { ButtonProps } from './Button.types';
+import { compose } from '@fluentui/react-compose';
 import { useButton } from './useButton';
 
-export const ButtonBase = compose<ButtonProps, ButtonSlots, ButtonSlotProps, ComposeStandardStatics>(
+export const ButtonBase = compose<'button', ButtonProps, ButtonProps, {}, {}>(
   // render function
-  (props: ButtonProps, ref: React.RefObject<HTMLElement>, options: ButtonOptions) => {
-    const { slots, slotProps } = useButton(props, options);
+  (props, ref, composeOptions) => {
+    const { slots, slotProps } = useButton(props, composeOptions);
 
     return (
       <slots.root ref={ref} {...slotProps.root}>
@@ -18,16 +18,15 @@ export const ButtonBase = compose<ButtonProps, ButtonSlots, ButtonSlotProps, Com
     );
   },
   {
-    defaultProps: {
-      as: 'button',
-    },
     slots: {
       icon: 'span',
       content: 'span',
-      loader: null,
+      loader: 'span',
     },
-    statics: {
-      displayName: 'ButtonBase',
-    },
+    displayName: 'ButtonBase',
   },
 );
+
+ButtonBase.defaultProps = {
+  as: 'button',
+};

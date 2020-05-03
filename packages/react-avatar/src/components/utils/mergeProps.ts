@@ -1,13 +1,23 @@
 import * as React from 'react';
 import { getNativeProps, htmlElementProperties, imgProperties } from '@uifabric/utilities';
 import cx from 'classnames';
-import { ComposeOptions } from './compose';
-import { resolveClasses } from './resolveClasses';
+import { ComposePreparedOptions } from '@fluentui/react-compose';
 
 // tslint:disable-next-line:no-any
 type GenericDictionary = { [key: string]: any };
 
 const EmptyRender = () => null;
+
+// Picked up from @fluentui/react-northstar factories
+type HTMLTag = 'iframe' | 'img' | 'input';
+type ShorthandProp = 'children' | 'src' | 'type';
+
+// It's only necessary to map props that don't use 'children' as value ('children' is the default)
+const mappedProps: { [key in HTMLTag]: ShorthandProp } = {
+  iframe: 'src',
+  img: 'src',
+  input: 'type',
+};
 
 // tslint:disable-next-line:no-any
 const filterProps = (props: any): any => {
@@ -72,7 +82,7 @@ export interface ComponentHookResult<TState, TSlots, TSlotProps> {
 export function mergeProps<TState, TSlots, TSlotProps>(
   state: TState,
   // tslint:disable-next-line:no-any
-  options: ComposeOptions<any, any, any, any>,
+  options: ComposePreparedOptions,
   defaultSlotProps: Partial<TSlotProps & { root: TState }> = {},
 ): ComponentHookResult<TState, TSlots, TSlotProps> {
   const slots = {
@@ -105,7 +115,11 @@ export function mergeProps<TState, TSlots, TSlotProps>(
       const isLiteral = slotPropType === 'string' || slotPropType === 'number' || slotPropType === 'boolean';
 
       if (isLiteral || React.isValidElement(slotProp)) {
-        const mappedProp = slot.mappedProp || 'children';
+        const mappedProp =
+          (slot && slot.shorthandConfig && slot.shorthandConfig.mappedProp) ||
+          // @ts-ignore
+          mappedProps[slot] ||
+          'children';
 
         slotProp = { [mappedProp]: slotProp };
       }
@@ -119,6 +133,7 @@ export function mergeProps<TState, TSlots, TSlotProps>(
       }
 
       slotProps[slotName] = {
+        // ...configSlotProps[slotName],
         ...slotProps[slotName],
         ...slotProp,
       };

@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { StatusProps, StatusOptions, StatusSlots, StatusSlotProps } from './Status.types';
-import { compose, ComposeStandardStatics } from '../utils/compose';
+import { StatusProps } from './Status.types';
+import { compose } from '@fluentui/react-compose';
 import { useStatus } from './useStatus';
 
-export const StatusBase = compose<StatusProps, StatusSlots, StatusSlotProps, ComposeStandardStatics>(
+export const StatusBase = compose<'span', StatusProps, StatusProps, {}, {}>(
   // render function
-  (props: StatusProps, ref: React.RefObject<HTMLElement>, options: StatusOptions) => {
-    const { slots, slotProps } = useStatus(props, options);
+  (props, ref, composeOptions) => {
+    const { slots, slotProps } = useStatus(props, composeOptions);
 
     return (
       <slots.root ref={ref} {...slotProps.root}>
@@ -15,15 +15,18 @@ export const StatusBase = compose<StatusProps, StatusSlots, StatusSlotProps, Com
     );
   },
   {
-    defaultProps: {
-      as: 'span',
-    },
     slots: {
       icon: 'span',
     },
-    statics: {
-      displayName: 'StatusBase',
-      mappedProp: 'state',
-    },
+    displayName: 'StatusBase',
   },
 );
+
+StatusBase.defaultProps = {
+  as: 'span',
+};
+
+// @ts-ignore
+StatusBase.shorthandConfig = {
+  mappedProp: 'state',
+};

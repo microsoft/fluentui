@@ -1,7 +1,7 @@
 // import * as React from 'react';
 import { Avatar } from './Avatar';
 import { AvatarProps } from './Avatar.types';
-import { compose } from '../utils/compose';
+import { compose } from '@fluentui/react-compose';
 
 export interface PulsingAvatarProps extends AvatarProps {
   /**
@@ -14,6 +14,7 @@ export interface PulsingAvatarProps extends AvatarProps {
 // 1. Adjust the props typings to include the new modifier.
 // 2. Provide additional class mappings.
 // 3. Define the stylesheet.
+// @ts-ignore TODO: fix me :(
 export const PulsingAvatar = compose<PulsingAvatarProps>(Avatar, {
   classes: {
     pulsing: 'ms-Avatar--pulsing',
