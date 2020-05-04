@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { ComponentWithAs, ComposedComponent, ComposeOptions, Input, InputComposeComponent } from './types';
 import { mergeComposeOptions, wasComposedPreviously } from './utils';
-import { useStylesheet } from './StylesheetProvider';
+import { useStylesheet } from '@fluentui/react-stylesheets';
 
 function compose<T extends React.ElementType, InputProps, InputStylesProps, ParentProps, ParentStylesProps>(
   input: Input<T, InputProps>,
@@ -15,11 +15,9 @@ function compose<T extends React.ElementType, InputProps, InputStylesProps, Pare
   );
 
   const Component = (React.forwardRef<T, InputProps & ParentProps & { as?: React.ElementType }>((props, ref) => {
-    // Register styles as needed.
-    const { register, hasRegistered } = useStylesheet();
-
-    if (inputOptions.stylesheet && !hasRegistered(inputOptions.stylesheet)) {
-      register(composeOptions.stylesheets || []);
+    // Register styles as needed. Compose options won't mutate, so conditionalizing the hook is ok.
+    if (composeOptions.stylesheets && composeOptions.stylesheets.length) {
+      useStylesheet(composeOptions.stylesheets);
     }
 
     return composeOptions.render(props, ref as React.Ref<'div'>, composeOptions);
