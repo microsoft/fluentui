@@ -473,18 +473,18 @@ describe('getBoundingRectangle', () => {
     });
 
     it('Gets correct bounds in horizontal fold dual screen scenarios when Points are passed as targets', () => {
-      const targetWithinLeftScreen = {
+      const targetWithinLeftScreen: Point = {
         left: 150,
         top: 150,
-      } as Point;
+      };
       expect(getBoundsFromTargetWindow(targetWithinLeftScreen, leftRightDualScreenTargetWindow)).toStrictEqual(
         validateBoundsLeftScreen,
       );
 
-      const targetWithinRightScreen = {
+      const targetWithinRightScreen: Point = {
         left: 1000,
         top: 1000,
-      } as Point;
+      };
       expect(getBoundsFromTargetWindow(targetWithinRightScreen, leftRightDualScreenTargetWindow)).toStrictEqual(
         validateBoundsRightScreen,
       );
@@ -641,18 +641,18 @@ describe('getBoundingRectangle', () => {
     });
 
     it('Gets correct bounds in vertical fold dual screen scenarios when Points are passed as targets', () => {
-      const targetWithinTopScreen = {
+      const targetWithinTopScreen: Point = {
         left: 150,
         top: 150,
-      } as Point;
+      };
       expect(getBoundsFromTargetWindow(targetWithinTopScreen, topBottomDualScreenTargetWindow)).toStrictEqual(
         validateBoundsTopScreen,
       );
 
-      const targetWithinBottomScreen = {
+      const targetWithinBottomScreen: Point = {
         left: 1000,
         top: 1000,
-      } as Point;
+      };
       expect(getBoundsFromTargetWindow(targetWithinBottomScreen, topBottomDualScreenTargetWindow)).toStrictEqual(
         validateBoundsBottomScreen,
       );
