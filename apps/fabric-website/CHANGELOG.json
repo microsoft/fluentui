@@ -2,6 +2,27 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Mon, 04 May 2020 12:33:29 GMT",
+      "tag": "@uifabric/fabric-website_v7.10.39",
+      "version": "7.10.39",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updated office brand icons",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "07b02c8ee75dd5ca4e47f06f724fe51f21769cac",
+            "package": "@uifabric/fabric-website"
+          },
+          {
+            "comment": "Website: Updated Forms icon text",
+            "author": "micahgodbolt@gmail.com",
+            "commit": "d40f4629b7bde5795090e84eed6896190dab3f4e",
+            "package": "@uifabric/fabric-website"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 29 Apr 2020 12:34:58 GMT",
       "tag": "@uifabric/fabric-website_v7.10.35",
       "version": "7.10.35",

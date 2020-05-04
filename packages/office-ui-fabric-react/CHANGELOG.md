@@ -1,8 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 01 May 2020 12:28:41 GMT and should not be manually modified.
+This log was last generated on Mon, 04 May 2020 12:33:29 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.110.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.110.2)
+
+Mon, 04 May 2020 12:33:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.110.1..office-ui-fabric-react_v7.110.2)
+
+### Patches
+
+- Prettier Fix in Callout test. ([PR #12615](https://github.com/microsoft/fluentui/pull/12615) by humbertomakotomorimoto@gmail.com)
 
 ## [7.110.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.110.1)
 

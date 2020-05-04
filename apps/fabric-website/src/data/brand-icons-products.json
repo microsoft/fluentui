@@ -10,7 +10,7 @@
   { "icon": "office", "name": "Office" },
   { "icon": "access", "name": "Access" },
   { "icon": "delve", "name": "Delve" },
-  { "icon": "forms", "name": "Forms" },
+  { "icon": "forms", "name": "Microsoft Forms" },
   { "icon": "project", "name": "Project" },
   { "icon": "sway", "name": "Sway" },
   { "icon": "visio", "name": "Visio" }

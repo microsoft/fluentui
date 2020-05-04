@@ -11,7 +11,6 @@ const Types = () => (
     />
     <ComponentExample
       title="Text editor toolbar"
-      toolbarAriaLabel="Example Text editor"
       description="A Toolbar use case for a text editor."
       examplePath="components/Toolbar/Types/ToolbarExampleEditor"
     />

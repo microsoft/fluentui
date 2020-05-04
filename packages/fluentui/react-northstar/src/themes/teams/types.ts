@@ -30,6 +30,7 @@ import { CheckboxStylesProps } from '../../components/Checkbox/Checkbox';
 import { DividerProps } from '../../components/Divider/Divider';
 import { DialogProps } from '../../components/Dialog/Dialog';
 import { DropdownProps } from '../../components/Dropdown/Dropdown';
+import { DropdownSearchInputStylesProps } from '../../components/Dropdown/DropdownSearchInput';
 import { EmbedStylesProps } from '../../components/Embed/Embed';
 import { FlexItemStylesProps } from '../../components/Flex/FlexItem';
 import { FlexStylesProps } from '../../components/Flex/Flex';
@@ -85,6 +86,7 @@ import { CardBodyStylesProps } from '../../components/Card/CardBody';
 import { CardFooterStylesProps } from '../../components/Card/CardFooter';
 import { SvgIconStylesProps } from '../../components/SvgIcon/SvgIcon';
 import { SplitButtonStylesProps } from '../../components/SplitButton/SplitButton';
+import { CarouselNavigationStylesProps } from '../../components/Carousel/CarouselNavigation';
 import { CarouselItemStylesProps } from '../../components/Carousel/CarouselItem';
 
 export type TeamsThemeStylesProps = {
@@ -107,10 +109,12 @@ export type TeamsThemeStylesProps = {
   Chat: ChatStylesProps;
   ChatItem: ChatItemStylesProps;
   ChatMessage: ChatMessageStylesProps;
+  CarouselNavigation: CarouselNavigationStylesProps;
   Checkbox: CheckboxStylesProps;
   Divider: DividerProps;
   Dialog: DialogProps;
   Dropdown: DropdownProps;
+  DropdownSearchInput: DropdownSearchInputStylesProps;
   Embed: EmbedStylesProps;
   Flex: FlexStylesProps;
   FlexItem: FlexItemStylesProps;
