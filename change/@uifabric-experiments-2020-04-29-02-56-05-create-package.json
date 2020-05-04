@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Remove unused typescript-plugin-css-modules dep",
-  "packageName": "@uifabric/experiments",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-04-29T09:55:58.658Z"
-}

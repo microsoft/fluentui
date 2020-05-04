@@ -1,9 +1,0 @@
-{
-  "type": "minor",
-  "comment": "FocusZone: Bringing preventFocusRestoration functionality to v7.",
-  "packageName": "@fluentui/react-focus",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "commit": "611776f861f886408fa0a40ff0c724d7206b405a",
-  "dependentChangeType": "patch",
-  "date": "2020-04-08T22:14:58.456Z"
-}

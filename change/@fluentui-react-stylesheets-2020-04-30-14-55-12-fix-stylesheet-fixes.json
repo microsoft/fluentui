@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Stylesheets now render immediately. This prevents scenarios where we have rendered DOM without styles.",
-  "packageName": "@fluentui/react-stylesheets",
-  "email": "dzearing@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-04-30T21:55:12.024Z"
-}
