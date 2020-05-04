@@ -70,7 +70,7 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
     onFocus: PropTypes.func,
     preventDefaultWhenHandled: PropTypes.bool,
     isRtl: PropTypes.bool,
-    restoreFocusFromRoot: PropTypes.bool,
+    preventFocusRestoration: PropTypes.bool,
   };
 
   static defaultProps: FocusZoneProps = {
@@ -180,7 +180,7 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
       this._lastIndexPath &&
       (doc.activeElement === doc.body ||
         doc.activeElement === null ||
-        (this.props.restoreFocusFromRoot && doc.activeElement === this._root.current))
+        (!this.props.preventFocusRestoration && doc.activeElement === this._root.current))
     ) {
       // The element has been removed after the render, attempt to restore focus.
       const elementToFocus = getFocusableByIndexPath(this._root.current as HTMLElement, this._lastIndexPath);

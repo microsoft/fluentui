@@ -1,8 +1,17 @@
 # Change Log - @uifabric/azure-themes
 
-This log was last generated on Thu, 16 Apr 2020 04:01:45 GMT and should not be manually modified.
+This log was last generated on Fri, 01 May 2020 12:28:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.1.0](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.1.0)
+
+Fri, 01 May 2020 12:28:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.0.59..@uifabric/azure-themes_v7.1.0)
+
+### Minor changes
+
+- Azure-theme component style updates per Azure portal design team ([PR #12537](https://github.com/microsoft/fluentui/pull/12537) by jagaheri@microsoft.com)
 
 ## [7.0.59](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.0.59)
 

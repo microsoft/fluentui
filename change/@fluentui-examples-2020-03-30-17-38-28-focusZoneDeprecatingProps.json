@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Updating FocusZone examples to use non-deprecated prop names.",
-  "packageName": "@fluentui/examples",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "commit": "98f000c1d3faa4bf9fa0906d98ef43f42c1f78c5",
-  "dependentChangeType": "patch",
-  "date": "2020-03-31T00:38:08.516Z"
-}
