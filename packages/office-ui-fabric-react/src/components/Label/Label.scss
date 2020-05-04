@@ -1,0 +1,34 @@
+@import '../../common/themeCssVariables';
+
+:root {
+  --labelFontWeight: 600;
+  --labelColor: #323130;
+  --labelDisabledColor: #a19f9d;
+  --labelRequiredStarColor: #a4262c;
+}
+
+.root {
+  font-family: var(--fontsMediumFontFamily);
+  font-size: var(--fontsMediumFontSize);
+  font-weight: var(--labelFontWeight);
+  color: var(--labelColor);
+  box-sizing: border-box;
+  box-shadow: none;
+  margin: 0;
+  display: block;
+  padding: 5px 0;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+
+  &.rootDisabled {
+    color: var(--labelDisabledColor);
+  }
+
+  &.rootRequired {
+    &::after {
+      content: ' *';
+      color: var(--labelRequiredStarColor);
+      padding-right: 12;
+    }
+  }
+}

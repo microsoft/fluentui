@@ -1,0 +1,231 @@
+@import '../../common/themeCssVariables';
+@import '../../common/highContrast';
+
+:root {
+  --checkboxSize: 20px;
+  --checkboxTransitionDuration: 200ms;
+  --checkboxTransitionTiming: cubic-bezier(0.4, 0, 0.23, 1);
+}
+
+.root {
+  position: relative;
+  display: flex;
+
+  &:hover {
+    .checkbox:not(.disabled) {
+      border-color: var(--semanticColorsInputBorderHovered);
+
+      @include high-contrast {
+        border-color: Highlight;
+      }
+    }
+
+    .checkmark:not(.disabled) {
+      color: var(--paletteNeutralSecondary);
+      opacity: 1;
+
+      &.checked {
+        color: var(--semanticColorsInputForegroundChecked);
+      }
+
+      @include high-contrast {
+        border-color: Highlight;
+      }
+    }
+
+    .text:not(.disabled) {
+      color: var(--semanticColorsInputTextHovered);
+    }
+  }
+
+  &:focus:not(.disabled) {
+    .checkbox {
+      border-color: var(--semanticColorsInputBorderHovered);
+
+      @include high-contrast {
+        border-color: Highlight;
+      }
+    }
+
+    .text {
+      color: var(--semanticColorsInputTextHovered);
+    }
+  }
+
+  &.checked:not(.indeterminate) {
+    @include high-contrast {
+      &:hover .checkbox {
+        background: Window;
+        border-color: Highlight;
+      }
+
+      &:focus .checkbox,
+      &:focus:hover .checkbox {
+        background: Highlight;
+      }
+
+      &:focus:hover .checkmark {
+        color: Window;
+      }
+
+      &:hover .checkmark {
+        color: Highlight;
+      }
+    }
+  }
+}
+
+.input {
+  position: absolute;
+  background: none;
+  opacity: 0;
+}
+
+:global(.ms-Fabric--isFocusVisible) {
+  .input:focus + .label:before {
+    outline: 1px solid var(--paletteNeutralSecondary);
+    outline-offset: 2px;
+
+    @include high-contrast {
+      outline: 1px solid ActiveBorder;
+    }
+  }
+}
+
+.label {
+  @include fonts-medium;
+
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  user-select: none;
+  text-align: left;
+
+  &:before {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    content: '';
+    pointer-events: none;
+  }
+
+  &.isUsingCustomLabelRender {
+    align-items: 'center';
+  }
+
+  &.disabled {
+    cursor: default;
+  }
+
+  &.reversed {
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+  }
+}
+
+.checkbox {
+  position: relative;
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  height: var(--checkboxSize);
+  width: var(--checkboxSize);
+  border: 1px solid var(--paletteNeutralPrimary);
+  border-radius: var(--effectsRoundedCorner2);
+  box-sizing: border-box;
+  transition-property: background, border, border-color;
+  transition-duration: var(--checkboxTransitionDuration);
+  transition-timing-function: var(--checkboxTransitionTiming);
+  margin-right: 4px;
+  /* in case the icon is bigger than the box */
+  overflow: hidden;
+
+  &.indeterminate {
+    &::after {
+      content: '';
+      border-radius: var(--effectsRoundedCorner2);
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      top: 4px;
+      left: 4px;
+      box-sizing: border-box;
+      border-width: 5px;
+      border-style: solid;
+      border-color: var(--semanticColorsInputBackgroundChecked);
+      transition-property: background, border, border-color;
+      transition-duration: var(--checkboxTransitionDuration);
+      transition-timing-function: var(--checkboxTransitionTiming);
+    }
+
+    &.disabled::after {
+      border-color: var(--semanticColorsDisabledBodySubtext);
+    }
+  }
+
+  &.reversed {
+    margin-left: 4px;
+    margin-right: 0;
+  }
+
+  &.checked:not(.disabled):not(.indeterminate) {
+    background: var(--semanticColorsInputBackgroundChecked);
+    border-color: var(--semanticColorsInputBackgroundChecked);
+
+    @include high-contrast {
+      background: Highlight;
+      border-color: Highlight;
+    }
+  }
+
+  &.disabled {
+    border-color: var(--semanticColorsDisabledBodySubtext);
+    @include high-contrast {
+      border-color: InactiveBorder;
+    }
+  }
+
+  &.checked.disabled {
+    background: var(--semanticColorsDisabledBodySubtext);
+  }
+}
+
+.checkmark {
+  color: var(--semanticColorsInputForegroundChecked);
+  opacity: 0;
+
+  @include high-contrast {
+    color: Window;
+    -ms-high-contrast-adjust: none;
+  }
+
+  &.disabled {
+    @include high-contrast {
+      color: InactiveBorder;
+    }
+  }
+
+  &.checked {
+    opacity: 1;
+  }
+}
+
+.text {
+  color: var(--semanticColorsBodyText);
+  font-size: var(--fontsMediumFontSize);
+  line-height: 20px;
+  margin-left: 4px;
+
+  &.disabled {
+    color: var(--semanticColorsDisabledText);
+  }
+
+  &.reversed {
+    margin-right: 4px;
+    margin-left: 0;
+  }
+}
