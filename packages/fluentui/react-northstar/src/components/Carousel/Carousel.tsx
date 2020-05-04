@@ -236,28 +236,28 @@ export const Carousel: React.FC<WithAsProp<CarouselProps>> &
 
   const setActiveIndex = (e: React.SyntheticEvent, index: number, focusItem: boolean): void => {
     const lastItemIndex = items.length - 1;
-    let activeIndex = index;
+    let nextActiveIndex = index;
 
     if (index < 0) {
       if (!circular) {
         return;
       }
-      activeIndex = lastItemIndex;
+      nextActiveIndex = lastItemIndex;
     }
 
     if (index > lastItemIndex) {
       if (!circular) {
         return;
       }
-      activeIndex = 0;
+      nextActiveIndex = 0;
     }
 
-    actions.updateActiveIndex(activeIndex, lastItemIndex);
+    actions.updateActiveIndex(nextActiveIndex, lastItemIndex);
 
     _.invoke(props, 'onActiveIndexChange', e, props);
 
     if (focusItem) {
-      focusItemAtIndex(activeIndex);
+      focusItemAtIndex(nextActiveIndex);
     }
   };
 
