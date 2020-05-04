@@ -20,7 +20,7 @@ export interface IOverflowSet {
 
   /**
    * Sets focus to a specific child element within the zone. This can be used in conjunction with
-   * onBeforeFocus to created delayed focus scenarios (like animate the scroll position to the correct
+   * shouldReceiveFocus to created delayed focus scenarios (like animate the scroll position to the correct
    * location and then focus.)
    * @param childElement - The child element within the zone to focus.
    * @returns True if focus could be set to an active element, false if no operation was taken.

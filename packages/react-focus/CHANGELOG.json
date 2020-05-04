@@ -2,6 +2,21 @@
   "name": "@fluentui/react-focus",
   "entries": [
     {
+      "date": "Fri, 01 May 2020 00:19:21 GMT",
+      "tag": "@fluentui/react-focus_v7.8.0",
+      "version": "7.8.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "FocusZone: Using v0 prop names for props where names differed and deprecating old ones.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "91115267502dc233cd9d513133d52344cef2e1f8",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 28 Apr 2020 12:34:09 GMT",
       "tag": "@fluentui/react-focus_v7.7.0",
       "version": "7.7.0",
