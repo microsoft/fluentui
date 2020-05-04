@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Facepile, OverflowButtonType } from 'office-ui-fabric-react/lib/Facepile';
 import { facepilePersonas } from '@uifabric/example-data';
+// import { IFacepilePersona } from '../Facepile.types';
 
 const overflowButtonProps = {
   ariaLabel: 'More users',
@@ -9,6 +10,8 @@ const overflowButtonProps = {
 
 export const FacepileAddFaceExample: React.FunctionComponent = () => {
   const [numberOfFaces, setNumberOfFaces] = React.useState(0);
+
+  const personas = React.useMemo(() => facepilePersonas.slice(0, numberOfFaces), [numberOfFaces]);
 
   const addButtonProps = React.useMemo(
     () => ({
@@ -20,7 +23,7 @@ export const FacepileAddFaceExample: React.FunctionComponent = () => {
 
   return (
     <Facepile
-      personas={facepilePersonas.slice(0, numberOfFaces)}
+      personas={personas}
       maxDisplayablePersonas={5}
       overflowButtonProps={overflowButtonProps}
       overflowButtonType={OverflowButtonType.descriptive}

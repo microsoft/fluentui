@@ -53,6 +53,9 @@ export const FacepileBasicExample: React.FunctionComponent = () => {
   const [numberOfFaces, setNumberOfFaces] = React.useState(3);
   const [personaSize, setPersonaSize] = React.useState(PersonaSize.size32);
 
+  const personas = React.useMemo(() => facepilePersonas.slice(0, numberOfFaces), [numberOfFaces]);
+  const overflowPersonas = React.useMemo(() => facepilePersonas.slice(numberOfFaces), [numberOfFaces]);
+
   const getPersonaProps = React.useCallback(
     (persona: IFacepilePersona) => ({
       imageShouldFadeIn: imagesFadeIn,
@@ -73,8 +76,8 @@ export const FacepileBasicExample: React.FunctionComponent = () => {
     <div className={styles.container}>
       <Facepile
         personaSize={personaSize}
-        personas={facepilePersonas.slice(0, numberOfFaces)}
-        overflowPersonas={facepilePersonas.slice(numberOfFaces)}
+        personas={personas}
+        overflowPersonas={overflowPersonas}
         getPersonaProps={getPersonaProps}
         ariaDescription="To move through the items use left and right arrow keys."
         ariaLabel="Example list of Facepile personas"

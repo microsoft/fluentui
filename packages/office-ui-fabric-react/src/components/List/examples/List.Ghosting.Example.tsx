@@ -4,6 +4,7 @@ import { List } from 'office-ui-fabric-react/lib/List';
 import { Image, ImageFit } from 'office-ui-fabric-react/lib/Image';
 import { ITheme, mergeStyleSets, getTheme, getFocusStyle } from 'office-ui-fabric-react/lib/Styling';
 import { createListItems, IExampleItem } from '@uifabric/example-data';
+import { useConst } from '@uifabric/react-hooks';
 
 const theme: ITheme = getTheme();
 const { palette, semanticColors, fonts } = theme;
@@ -74,7 +75,7 @@ const onRenderCell = (item: IExampleItem, index: number, isScrolling: boolean): 
 };
 
 export const ListGhostingExample: React.FunctionComponent = () => {
-  const [items] = React.useState(() => createListItems(5000));
+  const items = useConst(() => createListItems(5000));
 
   return (
     <FocusZone direction={FocusZoneDirection.vertical}>

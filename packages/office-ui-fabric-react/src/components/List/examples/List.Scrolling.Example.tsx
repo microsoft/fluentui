@@ -6,6 +6,7 @@ import { List, ScrollToMode, IList } from 'office-ui-fabric-react/lib/List';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { createListItems, IExampleItem } from '@uifabric/example-data';
 import { mergeStyleSets, getTheme, normalize } from 'office-ui-fabric-react/lib/Styling';
+import { useConst } from '@uifabric/react-hooks';
 
 const evenItemHeight = 25;
 const oddItemHeight = 50;
@@ -60,7 +61,7 @@ const onRenderCell = (item: IExampleItem, index: number): JSX.Element => {
 };
 
 export const ListScrollingExample: React.FunctionComponent = () => {
-  const [items] = React.useState(() => createListItems(5000));
+  const items = useConst(() => createListItems(5000));
   const [selectedIndex, setSelectedIndex] = React.useState(0);
   const [scrollToMode, setScrollToMode] = React.useState<ScrollToMode>(ScrollToMode.auto);
   const listRef: React.RefObject<IList> = React.useRef(null);
@@ -136,7 +137,7 @@ export const ListScrollingExample: React.FunctionComponent = () => {
         Scroll item index:
         <TextField value={selectedIndex.toString(10)} onChange={onChangeText} />
       </div>
-      <div className={styles.container} data-is-scrollable={true}>
+      <div className={styles.container} data-is-scrollable>
         <List componentRef={listRef} items={items} getPageHeight={getPageHeight} onRenderCell={onRenderCell} />
       </div>
     </FocusZone>

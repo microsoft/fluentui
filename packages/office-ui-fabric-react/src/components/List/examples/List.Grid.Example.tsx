@@ -4,6 +4,7 @@ import { List } from 'office-ui-fabric-react/lib/List';
 import { IRectangle } from 'office-ui-fabric-react/lib/Utilities';
 import { ITheme, getTheme, mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 import { createListItems, IExampleItem } from '@uifabric/example-data';
+import { useConst } from '@uifabric/react-hooks';
 
 let columnCount: number;
 let columnWidth: number;
@@ -97,7 +98,7 @@ const getPageHeight = (): number => {
 };
 
 export const ListGridExample: React.FunctionComponent = () => {
-  const [items] = React.useState(() => createListItems(5000));
+  const items = useConst(() => createListItems(5000));
 
   return (
     <FocusZone>
