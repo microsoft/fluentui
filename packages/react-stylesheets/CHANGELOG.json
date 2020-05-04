@@ -2,6 +2,21 @@
   "name": "@fluentui/react-stylesheets",
   "entries": [
     {
+      "date": "Mon, 04 May 2020 12:33:29 GMT",
+      "tag": "@fluentui/react-stylesheets_v0.1.0",
+      "version": "0.1.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Stylesheets now render immediately. This prevents scenarios where we have rendered DOM without styles.",
+            "author": "dzearing@microsoft.com",
+            "commit": "4fa20a22f1cfe0700690cc971973e0cc8b12534b",
+            "package": "@fluentui/react-stylesheets"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 29 Apr 2020 12:34:58 GMT",
       "tag": "@fluentui/react-stylesheets_v0.0.2",
       "version": "0.0.2",

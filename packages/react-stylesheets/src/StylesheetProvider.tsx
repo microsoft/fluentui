@@ -20,11 +20,6 @@ export const StylesheetProvider = (props: React.PropsWithChildren<StylesheetProv
     [context],
   );
 
-  React.useLayoutEffect(() => {
-    mergedContext.renderStyles(mergedContext.enqueuedSheets, mergedContext);
-    mergedContext.enqueuedSheets.splice(0);
-  }, [mergedContext]);
-
   return <StylesheetContext.Provider value={mergedContext}>{props.children}</StylesheetContext.Provider>;
 };
 
