@@ -21,7 +21,6 @@ import {
   addWeeks,
   compareDates,
   getDateRangeArray,
-  isInDateRangeArray,
   getWeekNumbersInMonth,
 } from 'office-ui-fabric-react/lib/utilities/dateMath/DateMath';
 import { ICalendarDayGridProps, ICalendarDayGridStyleProps, ICalendarDayGridStyles } from './CalendarDayGrid.types';
