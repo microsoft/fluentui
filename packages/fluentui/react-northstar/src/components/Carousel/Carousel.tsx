@@ -161,8 +161,13 @@ export const Carousel: React.FC<WithAsProp<CarouselProps>> &
   const ElementType = getElementType(props);
 
   const { state, actions } = useStateManager<CarouselState, CarouselActions>(createCarouselManager, {
-    mapPropsToInitialState: () => ({ activeIndex: defaultActiveIndex }),
-    mapPropsToState: () => ({ activeIndex: props.activeIndex }),
+    mapPropsToInitialState: () => ({
+      activeIndex: defaultActiveIndex,
+    }),
+    mapPropsToState: () => ({
+      activeIndex: props.activeIndex,
+      itemIds: items?.map((item, index) => getOrGenerateIdFromShorthand('carousel-item-', item, state?.itemIds[index])),
+    }),
   });
 
   const { prevActiveIndex, ariaLiveOn, itemIds, shouldFocusContainer, isFromKeyboard, activeIndex } = state;
@@ -226,9 +231,6 @@ export const Carousel: React.FC<WithAsProp<CarouselProps>> &
   }, 400);
 
   React.useEffect(() => {
-    actions.updateItemIds(
-      items?.map((item, index) => getOrGenerateIdFromShorthand('carousel-item-', item, itemIds[index])),
-    );
     return () => {
       focusItemAtIndex.cancel();
     };
@@ -457,6 +459,7 @@ export const Carousel: React.FC<WithAsProp<CarouselProps>> &
         children
       ) : (
         <>
+          {console.log(itemIds)}
           {renderContent()}
           {renderPaddles()}
           {renderNavigation()}
