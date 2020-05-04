@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Toggle } from '../Toggle';
+import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 import { Stack, IStackTokens } from 'office-ui-fabric-react/lib/Stack';
 
 const stackTokens: IStackTokens = { childrenGap: 10 };
