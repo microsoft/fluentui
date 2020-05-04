@@ -52,7 +52,7 @@ export interface TextAreaProps extends UIComponentProps, ChildrenComponentProps 
   fluid?: boolean;
 }
 
-export type TextAreStylesProps = Required<Pick<TextAreaProps, 'inverted' | 'resize' | 'fluid' | 'disabled'>>;
+export type TextAreaStylesProps = Required<Pick<TextAreaProps, 'inverted' | 'resize' | 'fluid' | 'disabled'>>;
 
 export const textAreaClassName = 'ui-textarea';
 
@@ -80,7 +80,7 @@ export const TextArea: React.FC<WithAsProp<TextAreaProps>> & FluentComponentStat
     rtl: context.rtl,
   });
 
-  const { classes } = useStyles<TextAreStylesProps>(TextArea.displayName, {
+  const { classes } = useStyles<TextAreaStylesProps>(TextArea.displayName, {
     className: textAreaClassName,
     mapPropsToStyles: () => ({
       inverted,

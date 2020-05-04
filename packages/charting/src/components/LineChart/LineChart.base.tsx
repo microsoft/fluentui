@@ -15,7 +15,7 @@ import {
   ILineChartPoints,
 } from './LineChart.types';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
-import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react';
+import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { EventsAnnotation } from './eventAnnotation/EventAnnotation';
 
 const getClassNames = classNamesFunction<ILineChartStyleProps, ILineChartStyles>();
