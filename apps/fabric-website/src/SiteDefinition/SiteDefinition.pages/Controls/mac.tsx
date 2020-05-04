@@ -52,6 +52,13 @@ export const controlsPagesMac: INavPage[] = [
     isCategory: true,
     pages: [
       {
+        title: 'Avatar',
+        url: '#/controls/mac/avatar',
+        component: () => <LoadingComponent title="Avatar" />,
+        getComponent: cb =>
+          require.ensure([], require => cb(require<any>('../../../pages/Controls/AvatarPage/AvatarPage').AvatarPage)),
+      },
+      {
         title: 'Persona',
         url: '#/controls/mac/persona',
         component: () => <LoadingComponent title="Persona" />,
