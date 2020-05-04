@@ -101,7 +101,7 @@ export const DropdownSearchInput: React.FC<WithAsProp<DropdownSearchInputProps>>
 
   const unhandledProps = useUnhandledProps(DropdownSearchInput.handledProps, props);
 
-  const { styles: ResolvedStyles } = useStyles<DropdownSearchInputStylesProps>(DropdownSearchInput.displayName, {
+  const { styles: resolvedStyles } = useStyles<DropdownSearchInputStylesProps>(DropdownSearchInput.displayName, {
     className: dropdownSearchInputClassName,
     mapPropsToStyles: () => ({ inline }),
     mapPropsToInlineStyles: () => ({ className, design, styles, variables }),
@@ -132,14 +132,14 @@ export const DropdownSearchInput: React.FC<WithAsProp<DropdownSearchInputProps>>
       {...unhandledProps}
       wrapper={{
         className: dropdownSearchInputSlotClassNames.wrapper,
-        styles: ResolvedStyles.root,
+        styles: resolvedStyles.root,
         ...accessibilityComboboxProps,
         ...unhandledProps.wrapper,
       }}
       input={{
         type: 'text',
         className: dropdownSearchInputSlotClassNames.input,
-        styles: ResolvedStyles.input,
+        styles: resolvedStyles.input,
         placeholder,
         onBlur: handleInputBlur,
         onKeyDown: handleInputKeyDown,
