@@ -5,7 +5,7 @@ const config: ScreenerTestsConfig = {
   steps: [
     builder =>
       builder
-        .click(`.${toolbarItemClassName}:nth-child(3)`)
+        .click(`.${toolbarItemClassName}:nth-child(1)`)
         .snapshot('Shows menu')
         .click(`.${toolbarMenuItemClassName}:nth-child(1)`)
         .snapshot('Shows popup'),
