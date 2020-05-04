@@ -34,20 +34,13 @@ import CarouselNavigationItem, { CarouselNavigationItemProps } from './CarouselN
 import CarouselPaddle, { CarouselPaddleProps } from './CarouselPaddle';
 import {
   getElementType,
-  useAutoControlled,
   useAccessibility,
   useStyles,
   useTelemetry,
   useUnhandledProps,
+  useStateManager,
 } from '@fluentui/react-bindings';
-import CarouselReducer, {
-  CarouselInitialState,
-  UpdatePreActiveIndex,
-  UpdateItemIds,
-  UpdateAriaLiveOn,
-  UpdateShouldFocusContainer,
-  UpdateIsFromKeyboard,
-} from './util';
+import { createCarouselManager, CarouselState, CarouselActions } from '@fluentui/state';
 
 export interface CarouselSlotClassNames {
   itemsContainer: string;
@@ -163,19 +156,17 @@ export const Carousel: React.FC<WithAsProp<CarouselProps>> &
     design,
     styles,
     variables,
+    defaultActiveIndex,
   } = props;
 
   const ElementType = getElementType(props);
-  const [activeIndex, setActiveIndexState] = useAutoControlled({
-    defaultValue: props.defaultActiveIndex,
-    value: props.activeIndex,
-    initialValue: 0,
+
+  const { state, actions } = useStateManager<CarouselState, CarouselActions>(createCarouselManager, {
+    mapPropsToInitialState: () => ({ activeIndex: defaultActiveIndex }),
+    mapPropsToState: () => ({ activeIndex: props.activeIndex }),
   });
 
-  const [{ prevActiveIndex, ariaLiveOn, itemIds, shouldFocusContainer, isFromKeyboard }, dispatch] = React.useReducer(
-    CarouselReducer,
-    CarouselInitialState,
-  );
+  const { prevActiveIndex, ariaLiveOn, itemIds, shouldFocusContainer, isFromKeyboard, activeIndex } = state;
 
   const itemRefs = React.useMemo<React.RefObject<HTMLElement>[]>(
     () => Array.from({ length: items?.length }, () => React.createRef()),
@@ -236,8 +227,8 @@ export const Carousel: React.FC<WithAsProp<CarouselProps>> &
   }, 400);
 
   React.useEffect(() => {
-    dispatch(
-      UpdateItemIds(items?.map((item, index) => getOrGenerateIdFromShorthand('carousel-item-', item, itemIds[index]))),
+    actions.UpdateItemIds(
+      items?.map((item, index) => getOrGenerateIdFromShorthand('carousel-item-', item, itemIds[index])),
     );
     return () => {
       focusItemAtIndex.cancel();
@@ -262,8 +253,8 @@ export const Carousel: React.FC<WithAsProp<CarouselProps>> &
       activeIndex = 0;
     }
 
-    dispatch(UpdatePreActiveIndex(activeIndex));
-    setActiveIndexState(activeIndex);
+    actions.UpdatePreActiveIndex(activeIndex);
+    actions.UpdateActiveIndex(activeIndex);
 
     _.invoke(props, 'onActiveIndexChange', e, props);
 
@@ -274,13 +265,13 @@ export const Carousel: React.FC<WithAsProp<CarouselProps>> &
 
   const overrideItemProps = predefinedProps => ({
     onFocus: (e, itemProps) => {
-      dispatch(UpdateShouldFocusContainer(e.currentTarget === e.target));
-      dispatch(UpdateIsFromKeyboard(isEventFromKeyboard()));
+      actions.UpdateShouldFocusContainer(e.currentTarget === e.target);
+      actions.UpdateIsFromKeyboard(isEventFromKeyboard());
       _.invoke(predefinedProps, 'onFocus', e, itemProps);
     },
     onBlur: (e, itemProps) => {
-      dispatch(UpdateShouldFocusContainer(e.currentTarget.contains(e.relatedTarget)));
-      dispatch(UpdateIsFromKeyboard(false));
+      actions.UpdateShouldFocusContainer(e.currentTarget.contains(e.relatedTarget));
+      actions.UpdateIsFromKeyboard(false);
       _.invoke(predefinedProps, 'onBlur', e, itemProps);
     },
   });
@@ -385,12 +376,12 @@ export const Carousel: React.FC<WithAsProp<CarouselProps>> &
     },
     onBlur: (e: React.FocusEvent, paddleProps: CarouselPaddleProps) => {
       if (e.relatedTarget !== paddleNextRef.current) {
-        dispatch(UpdateAriaLiveOn(false));
+        actions.UpdateAriaLiveOn(false);
       }
     },
     onFocus: (e: React.SyntheticEvent, paddleProps: CarouselPaddleProps) => {
       _.invoke(predefinedProps, 'onFocus', e, paddleProps);
-      dispatch(UpdateAriaLiveOn(true));
+      actions.UpdateAriaLiveOn(true);
     },
   });
 
