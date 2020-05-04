@@ -30,6 +30,7 @@ import { CheckboxStylesProps } from '../../components/Checkbox/Checkbox';
 import { DividerProps } from '../../components/Divider/Divider';
 import { DialogProps } from '../../components/Dialog/Dialog';
 import { DropdownProps } from '../../components/Dropdown/Dropdown';
+import { DropdownSearchInputStylesProps } from '../../components/Dropdown/DropdownSearchInput';
 import { EmbedStylesProps } from '../../components/Embed/Embed';
 import { FlexItemStylesProps } from '../../components/Flex/FlexItem';
 import { FlexStylesProps } from '../../components/Flex/Flex';
@@ -113,6 +114,7 @@ export type TeamsThemeStylesProps = {
   Divider: DividerProps;
   Dialog: DialogProps;
   Dropdown: DropdownProps;
+  DropdownSearchInput: DropdownSearchInputStylesProps;
   Embed: EmbedStylesProps;
   Flex: FlexStylesProps;
   FlexItem: FlexItemStylesProps;
