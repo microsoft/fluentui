@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-focus
 
-This log was last generated on Fri, 01 May 2020 00:19:21 GMT and should not be manually modified.
+This log was last generated on Mon, 04 May 2020 12:33:29 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.9.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.9.0)
+
+Mon, 04 May 2020 12:33:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v7.8.0..@fluentui/react-focus_v7.9.0)
+
+### Minor changes
+
+- FocusZone: Bringing preventFocusRestoration functionality to v7. ([PR #12615](https://github.com/microsoft/fluentui/pull/12615) by humbertomakotomorimoto@gmail.com)
 
 ## [7.8.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.8.0)
 
