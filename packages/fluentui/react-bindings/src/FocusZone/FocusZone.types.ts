@@ -22,7 +22,7 @@ export interface IFocusZone {
 
   /**
    * Sets focus to a specific child element within the zone. This can be used in conjunction with
-   * onBeforeFocus to created delayed focus scenarios (like animate the scroll position to the correct
+   * shouldReceiveFocus to create delayed focus scenarios (like animate the scroll position to the correct
    * location and then focus.)
    * @param element - The child element within the zone to focus.
    * @returns True if focus could be set to an active element, false if no operation was taken.
@@ -136,7 +136,7 @@ export interface FocusZoneProps extends FocusZoneProperties, React.HTMLAttribute
   shouldInputLoseFocusOnArrowKey?: (inputElement: HTMLInputElement) => boolean;
 
   /**
-   * If true, focus event propagation will be stopped.
+   * Whether the FocusZone should allow focus events to propagate past the FocusZone.
    */
   stopFocusPropagation?: boolean;
 
@@ -152,7 +152,9 @@ export interface FocusZoneProps extends FocusZoneProperties, React.HTMLAttribute
   preventDefaultWhenHandled?: boolean;
 
   /**
-   * If focus is on root element after componentDidUpdate, will attempt to restore the focus to inner element
+   * If true, prevents the FocusZone from attempting to restore the focus to the inner element when the focus is on the
+   * root element after componentDidUpdate.
+   * @defaultvalue false
    */
-  restoreFocusFromRoot?: boolean;
+  preventFocusRestoration?: boolean;
 }
