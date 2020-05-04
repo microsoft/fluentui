@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Toggle } from '../Toggle';
+import { Toggle } from '@fluentui/react-next';
 import { Stack, IStackTokens } from 'office-ui-fabric-react/lib/Stack';
 
 const stackTokens: IStackTokens = { childrenGap: 10 };
