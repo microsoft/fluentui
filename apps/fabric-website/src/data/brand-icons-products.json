@@ -6,11 +6,11 @@
   { "icon": "powerpoint", "name": "PowerPoint" },
   { "icon": "onenote", "name": "OneNote" },
   { "icon": "sharepoint", "name": "SharePoint" },
-  { "icon": "teams", "name": "Teams" },
+  { "icon": "teams", "name": "Microsoft Teams" },
   { "icon": "office", "name": "Office" },
   { "icon": "access", "name": "Access" },
   { "icon": "delve", "name": "Delve" },
-  { "icon": "infopath", "name": "InfoPath" },
+  { "icon": "forms", "name": "Microsoft Forms" },
   { "icon": "project", "name": "Project" },
   { "icon": "sway", "name": "Sway" },
   { "icon": "visio", "name": "Visio" }
