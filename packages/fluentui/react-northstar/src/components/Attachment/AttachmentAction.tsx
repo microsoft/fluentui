@@ -5,9 +5,23 @@ import { createShorthandFactory, ShorthandFactory } from '../../utils';
 import Button, { ButtonProps, ButtonStylesProps } from '../Button/Button';
 
 interface AttachmentActionOwnProps {}
-export interface AttachmentActionProps extends AttachmentActionOwnProps, ButtonProps {}
+export interface AttachmentActionProps extends AttachmentActionOwnProps, ButtonProps {
+  text?: never;
+  iconOnly?: never;
+  circular?: never;
+  size?: never;
+  fluid?: never;
+  inverted?: never;
+}
 
-export type AttachmentActionStylesProps = never;
+export type AttachmentActionStylesProps = ButtonStylesProps & {
+  text?: never;
+  iconOnly?: never;
+  circular?: never;
+  size?: never;
+  fluid?: never;
+  inverted?: never;
+};
 export const attachmentActionClassName = 'ui-attachment__action';
 
 /**
@@ -28,10 +42,16 @@ const AttachmentAction = compose<
 AttachmentAction.defaultProps = {
   accessibility: buttonBehavior,
   as: 'button',
-  iconOnly: true,
-  text: true,
 };
-AttachmentAction.propTypes = Button.propTypes;
+AttachmentAction.propTypes = {
+  ...Button.propTypes,
+  text: undefined,
+  iconOnly: undefined,
+  circular: undefined,
+  size: undefined,
+  fluid: undefined,
+  inverted: undefined,
+};
 
 AttachmentAction.create = createShorthandFactory({ Component: AttachmentAction, mappedProp: 'content' });
 
