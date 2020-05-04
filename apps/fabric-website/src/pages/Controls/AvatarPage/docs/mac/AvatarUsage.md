@@ -6,7 +6,7 @@ To determine initials for an avatar, the code initially tries to extract two-let
 
 ```Swift
 // Without an image
-AvatarView(avatarSize: size, contactName: "Annie Lindqvist", contactEmail: "Annie.Lindqvist@example.com", contactImage: nil)
+AvatarView(avatarSize: size, contactName: "Amanda Brady", contactEmail: "Amanda.Brady@example.com", contactImage: nil)
 ```
 
 <img className="off" src="https://static2.sharepointonline.com/files/fabric-cdn-prod_20200504.001/fabric-website/images/controls/macos/Persona/avatar_initials_light.png?text=LightMode" />
@@ -16,7 +16,7 @@ AvatarView(avatarSize: size, contactName: "Annie Lindqvist", contactEmail: "Anni
 
 ```Swift
 // With an image
-AvatarView(avatarSize: size, contactName: "Annie Lindqvist", contactEmail: "Annie.Lindqvist@example.com", contactImage: NSImage(named: "annie"))
+AvatarView(avatarSize: size, contactName: "Amanda Brady", contactEmail: "Amanda.Brady@example.com", contactImage: NSImage(named: "Amanda"))
 ```
 
 <img className="off" src="https://static2.sharepointonline.com/files/fabric-cdn-prod_20200504.001/fabric-website/images/controls/macos/Persona/avatar_profilepicture_light.png?text=LightMode" />
