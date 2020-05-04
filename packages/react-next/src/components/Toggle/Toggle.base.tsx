@@ -1,5 +1,12 @@
 import * as React from 'react';
-import { classNamesFunction, inputProperties, getNativeProps, warnDeprecations, FocusRects } from '../../Utilities';
+import {
+  classNamesFunction,
+  inputProperties,
+  getNativeProps,
+  warnDeprecations,
+  warnMutuallyExclusive,
+  FocusRects,
+} from '../../Utilities';
 import { IToggleProps, IToggle, IToggleStyleProps, IToggleStyles } from './Toggle.types';
 import { Label } from '../../Label';
 import { KeytipData } from '../../KeytipData';
@@ -90,6 +97,9 @@ export const ToggleBase: React.FunctionComponent = React.forwardRef(
       offAriaLabel: undefined,
       onChanged: 'onChange',
     });
+    warnMutuallyExclusive(COMPONENT_NAME, props, {
+      checked: 'defaultChecked',
+    });
     const onClick = (ev: React.MouseEvent<HTMLElement>) => {
       if (!disabled) {
         setChecked(!checked);
@@ -144,4 +154,4 @@ export const ToggleBase: React.FunctionComponent = React.forwardRef(
     );
   },
 );
-ToggleBase.displayName = 'ToggleBase';
+ToggleBase.displayName = COMPONENT_NAME;
