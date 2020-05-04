@@ -49,8 +49,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
             ),
           },
       );
-
-    sections.push(_otherControlsRequestSections(platform));
+    _otherControlsRequestSections(platform) && sections.push(_otherControlsRequestSections(platform));
     return sections;
   }
 }
@@ -78,6 +77,7 @@ function _otherControlsRequestSections(platform: Platforms): IPageSectionProps<P
         content: require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/ControlsPage/docs/mac/ControlsRequest.md') as string,
       };
   }
+  return undefined;
 }
 
 export const ControlsPage: React.FunctionComponent<IPageProps<Platforms>> = (props: IPageProps<Platforms>) => (
