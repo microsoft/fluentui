@@ -85,6 +85,8 @@ import {
   cardFocusableBehavior,
   cardChildrenFocusableBehavior,
   cardsContainerBehavior,
+  selectableCardsContainerBehavior,
+  cardSelectableBehavior,
   videoBehavior,
   buttonGroupBehavior,
 } from '@fluentui/accessibility';
@@ -177,6 +179,8 @@ testHelper.addBehavior('cardBehavior', cardBehavior);
 testHelper.addBehavior('cardFocusableBehavior', cardFocusableBehavior);
 testHelper.addBehavior('cardChildrenFocusableBehavior', cardChildrenFocusableBehavior);
 testHelper.addBehavior('cardsContainerBehavior', cardsContainerBehavior);
+testHelper.addBehavior('selectableCardsContainerBehavior', selectableCardsContainerBehavior);
+testHelper.addBehavior('cardSelectableBehavior', cardSelectableBehavior);
 testHelper.addBehavior('videoBehavior', videoBehavior);
 
 testHelper.run(behaviorMenuItems);

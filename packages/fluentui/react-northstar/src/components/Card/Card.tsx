@@ -141,6 +141,10 @@ const Card: React.FC<WithAsProp<CardProps>> &
         cardRef.current.focus();
       },
     },
+    mapPropsToBehavior: () => ({
+      selected,
+      disabled,
+    }),
     rtl: context.rtl,
   });
 
@@ -186,6 +190,7 @@ const Card: React.FC<WithAsProp<CardProps>> &
             className: classes.root,
             onClick: handleClick,
             selected,
+            disabled,
             ...unhandledProps,
           })}
         >

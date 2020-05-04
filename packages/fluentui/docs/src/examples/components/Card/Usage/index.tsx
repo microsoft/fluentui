@@ -42,7 +42,7 @@ const Usage = () => (
     />
     <ComponentExample
       title="Selectable cards in a navigable grid"
-      description="Example of selectable cards in a grid with keyboard navigation"
+      description="Example of selectable cards with no interactive children in a grid with keyboard navigation"
       examplePath="components/Card/Usage/CardExampleSelectableGrid"
     />
   </ExampleSection>

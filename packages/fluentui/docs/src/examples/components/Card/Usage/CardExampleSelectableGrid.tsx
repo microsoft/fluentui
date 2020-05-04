@@ -3,9 +3,9 @@ import {
   Image,
   Text,
   Card,
-  cardFocusableBehavior,
+  cardSelectableBehavior,
   Grid,
-  cardsContainerBehavior,
+  selectableCardsContainerBehavior,
   Checkbox,
   Button,
 } from '@fluentui/react-northstar';
@@ -21,11 +21,12 @@ type SelectableCardProps = {
 const SelectableCard: React.FC<SelectableCardProps> = ({ index, selected, handleClick }) => {
   return (
     <Card
-      accessibility={cardFocusableBehavior}
+      accessibility={cardSelectableBehavior}
       aria-roledescription="user card"
       onClick={() => {
         handleClick(!selected, index);
       }}
+      selected={selected}
     >
       <Card.TopControls>
         <Checkbox
@@ -106,7 +107,7 @@ const CardExampleSelectableGrid = () => {
           dispatch({ type: 'TOGGLE_ALL', selected: false });
         }}
       />
-      <Grid accessibility={cardsContainerBehavior} columns="3">
+      <Grid accessibility={selectableCardsContainerBehavior} columns="3">
         {cards.map(card => {
           return (
             <SelectableCard
