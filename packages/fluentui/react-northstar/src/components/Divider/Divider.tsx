@@ -25,7 +25,7 @@ export interface DividerProps
   /**
    * Accessibility behavior if overridden by the user.
    */
-  accessibility?: Accessibility;
+  accessibility?: Accessibility<never>;
 
   /** A divider can be fitted, without any space above or below it. */
   fitted?: boolean;
@@ -42,7 +42,6 @@ export interface DividerProps
 
 export type DividerStylesProps = Required<
   Pick<DividerProps, 'color' | 'fitted' | 'size' | 'important' | 'vertical'> & {
-    hasChildren: boolean;
     hasContent: boolean;
   }
 >;
@@ -69,15 +68,14 @@ export const Divider: React.FC<WithAsProp<DividerProps>> & FluentComponentStatic
   } = props;
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Divider.handledProps, props);
-  const getA11yProps = useAccessibility(accessibility, {
+  const getA11yProps = useAccessibility<never>(accessibility, {
     debugName: Divider.displayName,
     rtl: context.rtl,
   });
   const { classes } = useStyles<DividerStylesProps>(Divider.displayName, {
     className: dividerClassName,
     mapPropsToStyles: () => ({
-      hasChildren: childrenExist(children),
-      hasContent: !!content,
+      hasContent: childrenExist(children) || !!content,
       color,
       fitted,
       size,
