@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "Fixing errors when building @fluentui/docs.",
+  "packageName": "@uifabric/utilities",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "commit": "3e5705264a6ec6950fe48c99bf7a4de9100630bf",
+  "dependentChangeType": "patch",
+  "date": "2020-03-27T00:48:05.674Z"
+}

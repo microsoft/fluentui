@@ -1,0 +1,3 @@
+- Don't use a Checkbox as an on/off control. Instead use a toggle switch.
+- Don’t use a Checkbox when the user can choose only one option from the group, use radio buttons instead.
+- Don't put two groups of Checkboxes next to each other. Separate the two groups with labels.
