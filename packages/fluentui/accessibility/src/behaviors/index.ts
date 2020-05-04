@@ -6,6 +6,8 @@ export * from './Attachment/attachmentBehavior';
 export { default as attachmentBehavior } from './Attachment/attachmentBehavior';
 export { default as buttonBehavior } from './Button/buttonBehavior';
 export * from './Button/buttonBehavior';
+export { default as buttonGroupBehavior } from './Button/buttonGroupBehavior';
+export * from './Button/buttonGroupBehavior';
 export { default as toggleButtonBehavior } from './Button/toggleButtonBehavior';
 export * from './Image/imageBehavior';
 export { default as imageBehavior } from './Image/imageBehavior';
@@ -98,6 +100,7 @@ export { default as treeItemAsListItemBehavior } from './Tree/treeItemAsListItem
 export { default as treeTitleAsListItemTitleBehavior } from './Tree/treeTitleAsListItemTitleBehavior';
 export { default as carouselBehavior } from './Carousel/carouselBehavior';
 export { default as carouselItemBehavior } from './Carousel/carouselItemBehavior';
+export * from './Carousel/carouselItemBehavior';
 export { default as tableBehavior } from './Table/tableBehavior';
 export * from './Table/tableBehavior';
 export { default as tableRowBehavior } from './Table/tableRowBehavior';
