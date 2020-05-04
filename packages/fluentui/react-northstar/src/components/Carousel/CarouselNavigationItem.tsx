@@ -8,16 +8,23 @@ import {
   childrenExist,
   createShorthandFactory,
   UIComponentProps,
-  ChildrenComponentProps,
   commonPropTypes,
   rtlTextContainer,
-  ShorthandFactory,
   ContentComponentProps,
-  applyAccessibilityKeyHandlers,
-  UIComponent,
+  ChildrenComponentProps,
 } from '../../utils';
-import { withSafeTypeForAs, WithAsProp, ShorthandValue, ComponentEventHandler } from '../../types';
+// @ts-ignore
+import { ThemeContext } from 'react-fela';
+import {
+  withSafeTypeForAs,
+  WithAsProp,
+  ShorthandValue,
+  ComponentEventHandler,
+  FluentComponentStaticProps,
+  ProviderContextPrepared,
+} from '../../types';
 import Box, { BoxProps } from '../Box/Box';
+import { useTelemetry, getElementType, useUnhandledProps, useAccessibility, useStyles } from '@fluentui/react-bindings';
 
 export interface CarouselNavigationItemSlotClassNames {
   indicator: string;
@@ -25,6 +32,11 @@ export interface CarouselNavigationItemSlotClassNames {
 }
 
 export interface CarouselNavigationItemProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
+  /**
+   * Accessibility behavior if overridden by the user.
+   */
+  accessibility?: Accessibility;
+
   /** A menu item can be active. */
   active?: boolean;
 
@@ -57,92 +69,142 @@ export interface CarouselNavigationItemProps extends UIComponentProps, ChildrenC
   thumbnails?: boolean;
 }
 
+export type CarouselNavigationItemStylesProps = Required<
+  Pick<CarouselNavigationItemProps, 'thumbnails' | 'vertical' | 'active' | 'iconOnly' | 'primary'>
+> & {
+  hasContent: boolean;
+  hasIndicator: boolean;
+};
+
 export const carouselNavigationItemClassName = 'ui-carousel__navigationitem';
 export const carouselNavigationItemSlotClassNames: CarouselNavigationItemSlotClassNames = {
   indicator: `${carouselNavigationItemClassName}__indicator`,
   content: `${carouselNavigationItemClassName}__content`,
 };
 
-class CarouselNavigationItem extends UIComponent<WithAsProp<CarouselNavigationItemProps>> {
-  static displayName = 'CarouselNavigationItem';
+export const CarouselNavigationItem: React.FC<WithAsProp<CarouselNavigationItemProps>> &
+  FluentComponentStaticProps<CarouselNavigationItemProps> = props => {
+  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const { setStart, setEnd } = useTelemetry(CarouselNavigationItem.displayName, context.telemetry);
+  setStart();
 
-  static deprecated_className = carouselNavigationItemClassName;
+  const {
+    children,
+    thumbnails,
+    vertical,
+    active,
+    content,
+    iconOnly,
+    primary,
+    indicator,
+    className,
+    design,
+    styles,
+    variables,
+  } = props;
+  const ElementType = getElementType(props);
+  const unhandledProps = useUnhandledProps(CarouselNavigationItem.handledProps, props);
 
-  static create: ShorthandFactory<CarouselNavigationItemProps>;
+  const getA11yProps = useAccessibility(props.accessibility, {
+    debugName: CarouselNavigationItem.displayName,
+    actionHandlers: {
+      performClick: event => !event.defaultPrevented && handleClick(event),
+    },
+  });
 
-  static propTypes = {
-    ...commonPropTypes.createCommon(),
-    active: PropTypes.bool,
-    indicator: customPropTypes.shorthandAllowingChildren,
-    iconOnly: PropTypes.bool,
-    index: PropTypes.number,
-    onClick: PropTypes.func,
-    primary: customPropTypes.every([customPropTypes.disallow(['secondary']), PropTypes.bool]),
-    secondary: customPropTypes.every([customPropTypes.disallow(['primary']), PropTypes.bool]),
-    vertical: PropTypes.bool,
-    thumbnails: PropTypes.bool,
-  };
-
-  static defaultProps = {
-    accessibility: tabBehavior as Accessibility,
-    as: 'li',
-    indicator: {},
-  };
-
-  renderContent({ content, indicator, styles }) {
+  const { classes, styles: resolvedStyles } = useStyles<CarouselNavigationItemStylesProps>(
+    CarouselNavigationItem.displayName,
+    {
+      className: carouselNavigationItemClassName,
+      mapPropsToStyles: () => ({
+        thumbnails,
+        vertical,
+        active,
+        hasContent: !!content,
+        iconOnly,
+        primary,
+        hasIndicator: !!indicator,
+      }),
+      mapPropsToInlineStyles: () => ({
+        className,
+        design,
+        styles,
+        variables,
+      }),
+      rtl: context.rtl,
+    },
+  );
+  const renderContent = () => {
     return content
       ? Box.create(content, {
           defaultProps: () => ({
             as: 'span',
             className: carouselNavigationItemSlotClassNames.content,
-            styles: styles.content,
+            styles: resolvedStyles.content,
           }),
         })
       : Box.create(indicator, {
           defaultProps: () => ({
             className: carouselNavigationItemSlotClassNames.indicator,
-            styles: styles.indicator,
+            styles: resolvedStyles.indicator,
           }),
         });
-  }
-
-  renderComponent({ ElementType, classes, accessibility, styles, variables, unhandledProps }) {
-    const { children, content, indicator } = this.props;
-
-    return childrenExist(children) ? (
-      children
-    ) : (
-      <ElementType
-        className={classes.root}
-        onBlur={this.handleBlur}
-        onFocus={this.handleFocus}
-        onClick={this.handleClick}
-        {...accessibility.attributes.root}
-        {...rtlTextContainer.getAttributes({ forElements: [children] })}
-        {...applyAccessibilityKeyHandlers(accessibility.keyHandlers.root, unhandledProps)}
-        {...unhandledProps}
-      >
-        {this.renderContent({ content, indicator, styles })}
-      </ElementType>
-    );
-  }
-
-  handleClick = (e: Event | React.SyntheticEvent) => {
-    _.invoke(this.props, 'onClick', e, this.props);
   };
 
-  handleBlur = (e: React.SyntheticEvent) => {
-    _.invoke(this.props, 'onBlur', e, this.props);
+  const handleClick = (e: Event | React.SyntheticEvent) => {
+    _.invoke(props, 'onClick', e, props);
   };
 
-  handleFocus = (e: React.SyntheticEvent) => {
-    _.invoke(this.props, 'onFocus', e, this.props);
+  const handleBlur = (e: React.SyntheticEvent) => {
+    _.invoke(props, 'onBlur', e, props);
   };
 
-  actionHandlers = {
-    performClick: event => !event.defaultPrevented && this.handleClick(event),
+  const handleFocus = (e: React.SyntheticEvent) => {
+    _.invoke(props, 'onFocus', e, props);
   };
-}
+
+  const element = (
+    <ElementType
+      {...getA11yProps('root', {
+        className: classes.root,
+        onBlur: handleBlur,
+        onFocus: handleFocus,
+        onClick: handleClick,
+        ...unhandledProps,
+      })}
+      {...rtlTextContainer.getAttributes({ forElements: [children] })}
+    >
+      {childrenExist(children) ? children : renderContent()}
+    </ElementType>
+  );
+
+  setEnd();
+
+  return element;
+};
+
+CarouselNavigationItem.displayName = 'CarouselNavigationItem';
+
+CarouselNavigationItem.propTypes = {
+  ...commonPropTypes.createCommon(),
+  active: PropTypes.bool,
+  indicator: customPropTypes.shorthandAllowingChildren,
+  iconOnly: PropTypes.bool,
+  index: PropTypes.number,
+  onClick: PropTypes.func,
+  primary: customPropTypes.every([customPropTypes.disallow(['secondary']), PropTypes.bool]),
+  secondary: customPropTypes.every([customPropTypes.disallow(['primary']), PropTypes.bool]),
+  vertical: PropTypes.bool,
+  thumbnails: PropTypes.bool,
+};
+
+CarouselNavigationItem.handledProps = Object.keys(CarouselNavigationItem.propTypes) as any;
+
+CarouselNavigationItem.defaultProps = {
+  accessibility: tabBehavior as Accessibility,
+  as: 'li',
+  indicator: {},
+};
 
 CarouselNavigationItem.create = createShorthandFactory({
   Component: CarouselNavigationItem,

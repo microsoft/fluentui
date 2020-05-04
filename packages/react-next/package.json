@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-next",
-  "version": "8.0.0-alpha.5",
+  "version": "8.0.0-alpha.9",
   "beachball": {
     "disallowedChangeTypes": [
       "patch",
@@ -44,7 +44,7 @@
   },
   "dependencies": {
     "@uifabric/set-version": "^7.0.11",
-    "office-ui-fabric-react": "^7.109.0",
+    "office-ui-fabric-react": "^7.110.2",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

@@ -1,10 +1,13 @@
-import { CarouselNavigationProps } from '../../../../components/Carousel/CarouselNavigation';
+import { CarouselNavigationStylesProps } from '../../../../components/Carousel/CarouselNavigation';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { CarouselNavigationVariables } from './carouselNavigationVariables';
 import { pxToRem } from '../../../../utils';
 import { getColorScheme } from '../../colors';
 
-const carouselNavigationStyles: ComponentSlotStylesPrepared<CarouselNavigationProps, CarouselNavigationVariables> = {
+const carouselNavigationStyles: ComponentSlotStylesPrepared<
+  CarouselNavigationStylesProps,
+  CarouselNavigationVariables
+> = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => {
     const { iconOnly, primary, vertical, thumbnails } = p;
     const colors = getColorScheme(v.colorScheme, null, primary);

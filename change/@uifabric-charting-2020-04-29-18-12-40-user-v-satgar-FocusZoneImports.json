@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Charting: Change FocusZone imports to @fluentui/react-focus from office-ui-fabric-react/lib/FocusZone",
-  "packageName": "@uifabric/charting",
-  "email": "v-satgar@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-04-29T12:42:40.645Z"
-}

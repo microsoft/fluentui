@@ -1,9 +1,9 @@
 import { pxToRem } from '../../../../utils';
-import { CarouselProps, CarouselState } from '../../../../components/Carousel/Carousel';
+import { CarouselItemStylesProps } from '../../../../components/Carousel/CarouselItem';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { CarouselVariables } from './carouselVariables';
 
-const carouselItemStyles: ComponentSlotStylesPrepared<CarouselProps & CarouselState, CarouselVariables> = {
+const carouselItemStyles: ComponentSlotStylesPrepared<CarouselItemStylesProps, CarouselVariables> = {
   root: ({ variables: v }): ICSSInJSStyle => ({
     width: pxToRem(v.width),
     ':focus': {
