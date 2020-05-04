@@ -2,12 +2,11 @@ import createManager from '../createManager';
 import { Manager, ManagerConfig } from '../types';
 
 export type CarouselActions = {
-  UpdatePreActiveIndex: (prevActiveIndex: number) => void;
-  UpdateActiveIndex: (activeIndex: number | string) => void;
-  UpdateAriaLiveOn: (ariaLiveOn: boolean) => void;
-  UpdateItemIds: (itemIds: string[]) => void;
-  UpdateShouldFocusContainer: (shouldFocusContainer: boolean) => void;
-  UpdateIsFromKeyboard: (isFromKeyboard: boolean) => void;
+  updateActiveIndex: (activeIndex: number | string, prevActiveIndex: number) => void;
+  updateAriaLiveOn: (ariaLiveOn: boolean) => void;
+  updateItemIds: (itemIds: string[]) => void;
+  updateShouldFocusContainer: (shouldFocusContainer: boolean) => void;
+  updateIsFromKeyboard: (isFromKeyboard: boolean) => void;
 };
 
 export type CarouselState = {
@@ -36,12 +35,11 @@ export const createCarouselManager = (
       ...config.state,
     },
     actions: {
-      UpdatePreActiveIndex: prevActiveIndex => () => ({ prevActiveIndex }),
-      UpdateActiveIndex: activeIndex => () => ({ activeIndex }),
-      UpdateAriaLiveOn: ariaLiveOn => () => ({ ariaLiveOn }),
-      UpdateItemIds: itemIds => () => ({ itemIds }),
-      UpdateShouldFocusContainer: shouldFocusContainer => () => ({ shouldFocusContainer }),
-      UpdateIsFromKeyboard: isFromKeyboard => () => ({ isFromKeyboard }),
+      updateActiveIndex: (activeIndex, prevActiveIndex) => () => ({ activeIndex, prevActiveIndex }),
+      updateAriaLiveOn: ariaLiveOn => () => ({ ariaLiveOn }),
+      updateItemIds: itemIds => () => ({ itemIds }),
+      updateShouldFocusContainer: shouldFocusContainer => () => ({ shouldFocusContainer }),
+      updateIsFromKeyboard: isFromKeyboard => () => ({ isFromKeyboard }),
       ...config.actions,
     },
   });

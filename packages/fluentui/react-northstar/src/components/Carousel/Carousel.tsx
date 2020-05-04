@@ -226,7 +226,7 @@ export const Carousel: React.FC<WithAsProp<CarouselProps>> &
   }, 400);
 
   React.useEffect(() => {
-    actions.UpdateItemIds(
+    actions.updateItemIds(
       items?.map((item, index) => getOrGenerateIdFromShorthand('carousel-item-', item, itemIds[index])),
     );
     return () => {
@@ -252,8 +252,7 @@ export const Carousel: React.FC<WithAsProp<CarouselProps>> &
       activeIndex = 0;
     }
 
-    actions.UpdatePreActiveIndex(activeIndex);
-    actions.UpdateActiveIndex(activeIndex);
+    actions.updateActiveIndex(activeIndex, lastItemIndex);
 
     _.invoke(props, 'onActiveIndexChange', e, props);
 
@@ -264,13 +263,13 @@ export const Carousel: React.FC<WithAsProp<CarouselProps>> &
 
   const overrideItemProps = predefinedProps => ({
     onFocus: (e, itemProps) => {
-      actions.UpdateShouldFocusContainer(e.currentTarget === e.target);
-      actions.UpdateIsFromKeyboard(isEventFromKeyboard());
+      actions.updateShouldFocusContainer(e.currentTarget === e.target);
+      actions.updateIsFromKeyboard(isEventFromKeyboard());
       _.invoke(predefinedProps, 'onFocus', e, itemProps);
     },
     onBlur: (e, itemProps) => {
-      actions.UpdateShouldFocusContainer(e.currentTarget.contains(e.relatedTarget));
-      actions.UpdateIsFromKeyboard(false);
+      actions.updateShouldFocusContainer(e.currentTarget.contains(e.relatedTarget));
+      actions.updateIsFromKeyboard(false);
       _.invoke(predefinedProps, 'onBlur', e, itemProps);
     },
   });
@@ -324,7 +323,7 @@ export const Carousel: React.FC<WithAsProp<CarouselProps>> &
                       defaultProps: () => ({
                         active,
                         id: itemIds[index],
-                        navigation: !!props.navigation,
+                        navigation: !!navigation,
                         ...(getItemPositionText && {
                           itemPositionText: getItemPositionText(index, items.length),
                         }),
@@ -342,14 +341,14 @@ export const Carousel: React.FC<WithAsProp<CarouselProps>> &
 
   const handleNextPaddleFocus = () => {
     // if 'next' paddle will disappear, will focus 'previous' one.
-    if (!props.navigation && activeIndex >= props.items.length - 2 && !props.circular) {
+    if (!navigation && activeIndex >= props.items.length - 2 && !circular) {
       paddlePreviousRef.current.focus();
     }
   };
 
   const handlePreviousPaddleFocus = () => {
     // if 'previous' paddle will disappear, will focus 'next' one.
-    if (!props.navigation && activeIndex <= 1 && !props.circular) {
+    if (!navigation && activeIndex <= 1 && !circular) {
       paddleNextRef.current.focus();
     }
   };
@@ -375,12 +374,12 @@ export const Carousel: React.FC<WithAsProp<CarouselProps>> &
     },
     onBlur: (e: React.FocusEvent, paddleProps: CarouselPaddleProps) => {
       if (e.relatedTarget !== paddleNextRef.current) {
-        actions.UpdateAriaLiveOn(false);
+        actions.updateAriaLiveOn(false);
       }
     },
     onFocus: (e: React.SyntheticEvent, paddleProps: CarouselPaddleProps) => {
       _.invoke(predefinedProps, 'onFocus', e, paddleProps);
-      actions.UpdateAriaLiveOn(true);
+      actions.updateAriaLiveOn(true);
     },
   });
 
