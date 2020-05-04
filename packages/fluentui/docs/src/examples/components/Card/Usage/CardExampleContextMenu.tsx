@@ -1,12 +1,9 @@
 import { Card, cardFocusableBehavior, Image, MenuButton, Text } from '@fluentui/react-northstar';
 import * as React from 'react';
 
-const CardExampleContextMenu = () => {
-  const menuItems = ['Call', 'Chat', 'Favourite'];
-
-  return (
+const CardExampleContextMenu = () => (
     <MenuButton
-      menu={menuItems}
+      menu={['Call', 'Chat', 'Favourite']}
       contextMenu
       trigger={
         <Card accessibility={cardFocusableBehavior} aria-roledescription="user card">
