@@ -8,4 +8,4 @@ Documentation for the controls is a work in progress. Some controls can be found
 
 ### More information
 
-Setup instructions and more information can be found in [the library's readme](https://github.com/microsoft/fluentui-apple/blob/master/ios/README.md).
+Setup instructions and more information can be found in [the library's readme](https://github.com/microsoft/fluentui-apple/blob/master/README.md).
