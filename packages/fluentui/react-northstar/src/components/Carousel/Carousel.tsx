@@ -459,7 +459,6 @@ export const Carousel: React.FC<WithAsProp<CarouselProps>> &
         children
       ) : (
         <>
-          {console.log(itemIds)}
           {renderContent()}
           {renderPaddles()}
           {renderNavigation()}
