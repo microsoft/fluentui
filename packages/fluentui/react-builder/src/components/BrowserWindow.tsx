@@ -93,12 +93,14 @@ const BrowserWindow: React.FC<{
   children: React.ReactNode | React.ReactNodeArray;
   showNavBar: boolean;
   style?: React.CSSProperties;
-}> = ({ children, style, showNavBar, ...rest }) => (
+  headerItems?: React.ReactNode | React.ReactNodeArray;
+}> = ({ children, style, showNavBar, headerItems, ...rest }) => (
   <div {...rest} style={{ ...styles.root, ...style }}>
     <div style={styles.header}>
       <div style={styles.close} />
       <div style={styles.minimize} />
       <div style={styles.maximize} />
+      {headerItems}
     </div>
     {showNavBar && (
       <div style={styles.navBar}>

@@ -1,4 +1,9 @@
 import * as React from 'react';
+import { Text, Button } from '@fluentui/react-northstar';
+import { EventListener } from '@fluentui/react-component-event-listener';
+import { CodeSnippet } from '@fluentui/docs-components';
+import renderElementToJSX from '@fluentui/docs/src/components/ExampleSnippet/renderElementToJSX';
+import { Ref } from '@fluentui/react-component-ref';
 
 import componentInfoContext from '@fluentui/docs/src/utils/componentInfoContext';
 import { ComponentInfo } from '@fluentui/docs/src/types';
@@ -20,14 +25,17 @@ import {
   resolveDraggingElement,
   resolveDrop,
 } from '../config';
-import { readTreeFromStore, removeTreeFromStore, writeTreeToStore } from '../utils/treeStore';
+import {
+  readTreeFromStore,
+  readTreeFromURL,
+  removeTreeFromStore,
+  writeTreeToStore,
+  writeTreeToURL,
+} from '../utils/treeStore';
 
 import { DesignerMode, JSONTreeElement } from './types';
-import { EventListener } from '@fluentui/react-component-event-listener';
-import { CodeSnippet } from '@fluentui/docs-components';
-import renderElementToJSX from '@fluentui/docs/src/components/ExampleSnippet/renderElementToJSX';
-import { Ref } from '@fluentui/react-component-ref';
 import { ComponentTree } from './ComponentTree';
+import { GetShareableLink } from './GetShareableLink';
 
 const HEADER_HEIGHT = '3rem';
 
@@ -36,11 +44,13 @@ const getUUID = () =>
     .toString(36)
     .slice(2);
 
+export type JSONTreeOrigin = 'store' | 'url';
 export type DesignerState = {
   draggingElement: JSONTreeElement;
   isExpanding: boolean;
   isSelecting: boolean;
   jsonTree: JSONTreeElement;
+  jsonTreeOrigin: JSONTreeOrigin;
   mode: DesignerMode;
   selectedComponentInfo: ComponentInfo;
   selectedJSONTreeElement: any;
@@ -58,13 +68,19 @@ class Designer extends React.Component<any, DesignerState> {
   constructor(props) {
     super(props);
 
-    const jsonTree = readTreeFromStore();
+    let jsonTreeOrigin: JSONTreeOrigin = 'url';
+    let jsonTree = readTreeFromURL(window.location.href);
+    if (!jsonTree) {
+      jsonTree = readTreeFromStore() || this.getDefaultJSONTree();
+      jsonTreeOrigin = 'store';
+    }
 
     this.state = {
       draggingElement: null,
       isSelecting: true,
       isExpanding: true,
-      jsonTree: jsonTree || this.getDefaultJSONTree(),
+      jsonTree,
+      jsonTreeOrigin,
       mode: 'build',
       selectedComponentInfo: null,
       selectedJSONTreeElement: null,
@@ -115,7 +131,9 @@ class Designer extends React.Component<any, DesignerState> {
   getDefaultJSONTree = (): JSONTreeElement => ({ uuid: 'builder-root', type: 'div' });
 
   componentDidUpdate(prevProps: Readonly<any>, prevState: Readonly<DesignerState>, snapshot?: any): void {
-    writeTreeToStore(this.state.jsonTree);
+    if (this.state.jsonTreeOrigin === 'store') {
+      writeTreeToStore(this.state.jsonTree);
+    }
   }
 
   handleReset = () => {
@@ -318,12 +336,24 @@ class Designer extends React.Component<any, DesignerState> {
     });
   };
 
+  getShareableLink = () => {
+    return writeTreeToURL(this.state.jsonTree, window.location.href);
+  };
+
+  switchToStore = () => {
+    this.setState({
+      jsonTree: readTreeFromStore() || this.getDefaultJSONTree(),
+      jsonTreeOrigin: 'store',
+    });
+  };
+
   render() {
     const {
       draggingElement,
       isExpanding,
       isSelecting,
       jsonTree,
+      jsonTreeOrigin,
       mode,
       selectedComponentInfo,
       selectedJSONTreeElement,
@@ -437,6 +467,19 @@ class Designer extends React.Component<any, DesignerState> {
             >
               <BrowserWindow
                 showNavBar={false}
+                headerItems={[
+                  <div style={{ display: 'flex', alignItems: 'baseline', marginLeft: 'auto' }}>
+                    {jsonTreeOrigin === 'url' && (
+                      <>
+                        <Text error>You are working from a shared URL, no changes are saved!</Text>
+                        <Button text styles={{ paddingLeft: '.25em', minWidth: 0 }} onClick={this.switchToStore}>
+                          View local
+                        </Button>
+                      </>
+                    )}
+                    {jsonTreeOrigin === 'store' && <GetShareableLink getShareableLink={this.getShareableLink} />}
+                  </div>,
+                ]}
                 style={{
                   flex: 1,
                   margin: '1rem',

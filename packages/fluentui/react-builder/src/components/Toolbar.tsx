@@ -79,7 +79,7 @@ const Toolbar = ({
       icon={<OpenOutsideIcon />}
       content="Popout"
       onClick={() => {
-        window.open('/builder/maximize', '_blank', 'noopener noreferrer');
+        window.open(`/builder/maximize${window.location.hash}`, '_blank', 'noopener noreferrer');
       }}
     />
     <div style={{ display: 'flex', alignItems: 'center', marginLeft: 'auto' }}>
