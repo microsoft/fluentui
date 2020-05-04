@@ -4,7 +4,8 @@
 
 ```ts
 
-import { IButtonProps } from 'office-ui-fabric-react/lib/components/Button/Button.types';
+import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
+import { IButtonProps as IButtonProps_2 } from 'office-ui-fabric-react/lib/components/Button/Button.types';
 import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import { IComponentAs } from 'office-ui-fabric-react/lib/Utilities';
 import { IIconProps } from 'office-ui-fabric-react/lib/Icon';
@@ -207,6 +208,77 @@ export enum ImageLoadState {
 }
 
 // @public (undocumented)
+export interface ISearchBox {
+    focus(): void;
+    hasFocus(): boolean;
+}
+
+// @public (undocumented)
+export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElement> {
+    ariaLabel?: string;
+    className?: string;
+    clearButtonProps?: IButtonProps;
+    componentRef?: IRefObject<ISearchBox>;
+    // @deprecated
+    defaultValue?: string;
+    disableAnimation?: boolean;
+    iconProps?: Pick<IIconProps, Exclude<keyof IIconProps, 'className'>>;
+    // @deprecated
+    labelText?: string;
+    onChange?: (event?: React.ChangeEvent<HTMLInputElement>, newValue?: string) => void;
+    // @deprecated
+    onChanged?: (newValue: any) => void;
+    onClear?: (ev?: any) => void;
+    onEscape?: (ev?: any) => void;
+    onSearch?: (newValue: any) => void;
+    placeholder?: string;
+    styles?: IStyleFunctionOrObject<ISearchBoxStyleProps, ISearchBoxStyles>;
+    theme?: ITheme;
+    underlined?: boolean;
+    value?: string;
+}
+
+// @public (undocumented)
+export interface ISearchBoxState {
+    // (undocumented)
+    hasFocus?: boolean;
+    // (undocumented)
+    value?: string;
+}
+
+// @public (undocumented)
+export interface ISearchBoxStyleProps {
+    // (undocumented)
+    className?: string;
+    // (undocumented)
+    disableAnimation?: boolean;
+    // (undocumented)
+    disabled?: boolean;
+    // (undocumented)
+    hasFocus?: boolean;
+    // (undocumented)
+    hasInput?: boolean;
+    // (undocumented)
+    theme: ITheme;
+    // (undocumented)
+    underlined?: boolean;
+}
+
+// @public (undocumented)
+export interface ISearchBoxStyles {
+    // (undocumented)
+    clearButton?: IStyle;
+    // (undocumented)
+    field?: IStyle;
+    // (undocumented)
+    icon?: IStyle;
+    // (undocumented)
+    iconContainer?: IStyle;
+    // (undocumented)
+    root?: IStyle;
+}
+
+// @public (undocumented)
 export interface ISpinButton {
     focus: () => void;
     value?: string;
@@ -230,7 +302,7 @@ export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement> {
     downArrowButtonStyles?: Partial<IButtonStyles>;
     // Warning: (ae-forgotten-export) The symbol "ISpinButtonClassNames" needs to be exported by the entry point index.d.ts
     getClassNames?: (theme: ITheme, disabled: boolean, isFocused: boolean, keyboardSpinDirection: KeyboardSpinDirection, labelPosition?: Position, className?: string) => ISpinButtonClassNames;
-    iconButtonProps?: IButtonProps;
+    iconButtonProps?: IButtonProps_2;
     iconProps?: IIconProps;
     incrementButtonAriaLabel?: string;
     incrementButtonIcon?: IIconProps;
@@ -355,6 +427,22 @@ export enum KeyboardSpinDirection {
 }
 
 // @public (undocumented)
+export const SearchBox: React.FunctionComponent<ISearchBoxProps>;
+
+// @public (undocumented)
+export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxState> {
+    constructor(props: ISearchBoxProps);
+    // (undocumented)
+    static defaultProps: Pick<ISearchBoxProps, 'disableAnimation' | 'clearButtonProps'>;
+    focus(): void;
+    hasFocus(): boolean;
+    // (undocumented)
+    render(): JSX.Element;
+    // (undocumented)
+    UNSAFE_componentWillReceiveProps(newProps: ISearchBoxProps): void;
+}
+
+// @public (undocumented)
 export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonState> implements ISpinButton {
     constructor(props: ISpinButtonProps);
     // (undocumented)
@@ -439,7 +527,6 @@ export * from "office-ui-fabric-react/lib/ProgressIndicator";
 export * from "office-ui-fabric-react/lib/Rating";
 export * from "office-ui-fabric-react/lib/ResizeGroup";
 export * from "office-ui-fabric-react/lib/ScrollablePane";
-export * from "office-ui-fabric-react/lib/SearchBox";
 export * from "office-ui-fabric-react/lib/SelectableOption";
 export * from "office-ui-fabric-react/lib/SelectedItemsList";
 export * from "office-ui-fabric-react/lib/Selection";
