@@ -1,0 +1,9 @@
+{
+  "type": "minor",
+  "comment": "FocusZone: Adding pagingSupportDisabled prop to provide a way to opt out of paging support via the Page Up and Page Down keys.",
+  "packageName": "@fluentui/react-focus",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "commit": "b8b623f687d59d047fb2c8ce315110af2272a6f3",
+  "dependentChangeType": "patch",
+  "date": "2020-03-27T00:16:28.079Z"
+}
