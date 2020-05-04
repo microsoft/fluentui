@@ -33,7 +33,7 @@ const dividerStyles: ComponentSlotStylesPrepared<DividerStylesProps, DividerVari
         fontWeight: variables.importantFontWeight,
       }),
       ...(vertical && { height: '100%' }),
-      ...(hasChildren || hasContent
+      ...(hasContent
         ? {
             textAlign: 'center',
             fontSize: pxToRem(12 + size),
