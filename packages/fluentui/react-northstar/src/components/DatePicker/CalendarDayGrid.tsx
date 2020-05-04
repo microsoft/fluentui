@@ -9,8 +9,7 @@ import {
   DateRangeType,
   DayOfWeek,
   DayPickerStrings,
-} from '@uifabric/utilities';
-// @ts-ignore
+} from '@uifabric/date-time';
 import { UIComponentProps, commonPropTypes, createShorthandFactory } from '../../utils';
 import { WithAsProp, withSafeTypeForAs, FluentComponentStaticProps } from '../../types';
 import Box from '../Box/Box';

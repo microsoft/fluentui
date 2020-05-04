@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { CalendarDayGrid } from '@fluentui/react-northstar';
-import { DateRangeType, DayOfWeek, DayPickerStrings } from '@uifabric/utilities';
+import { DateRangeType, DayOfWeek, DayPickerStrings } from '@uifabric/date-time';
 
 const CalendarDayGridExample = () => (
   <CalendarDayGrid

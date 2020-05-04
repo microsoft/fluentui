@@ -15,7 +15,7 @@
     "@fluentui/react-icons-northstar": "^0.48.0",
     "@fluentui/react-proptypes": "^0.48.0",
     "@fluentui/styles": "^0.48.0",
-    "@uifabric/utilities": "^7.15.11",
+    "@uifabric/date-time": "^7.8.70",
     "@popperjs/core": "^2.1.1",
     "classnames": "^2.2.6",
     "downshift": "5.0.5",
