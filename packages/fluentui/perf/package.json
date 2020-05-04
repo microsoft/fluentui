@@ -3,7 +3,7 @@
   "version": "0.48.0",
   "private": true,
   "license": "MIT",
-  "devDependencies": {
+  "dependencies": {
     "@babel/polyfill": "^7.7.0",
     "@fluentui/docs": "^0.48.0",
     "@fluentui/react-northstar": "^0.48.0",

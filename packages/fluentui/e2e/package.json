@@ -3,7 +3,7 @@
   "version": "0.48.0",
   "private": true,
   "license": "MIT",
-  "devDependencies": {
+  "dependencies": {
     "@fluentui/accessibility": "^0.48.0",
     "@fluentui/react-icons-northstar": "^0.48.0",
     "@fluentui/react-northstar": "^0.48.0",
@@ -13,6 +13,7 @@
     "@types/react-dom": "16.8.4",
     "@types/react-router-dom": "^4.3.4",
     "@uifabric/build": "^7.0.0",
+    "lerna-alias": "^3.0.3-0",
     "lodash": "^4.17.15",
     "puppeteer": "^1.13.0",
     "react": "16.8.6",

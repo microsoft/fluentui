@@ -24,6 +24,7 @@
     "keyboard-key": "1.0.1",
     "lodash": "^4.17.15",
     "moment": "^2.18.1",
+    "prop-types": "^15.7.2",
     "qs": "^6.8.0",
     "react": "16.8.6",
     "react-ace": "^5.1.2",
@@ -53,7 +54,6 @@
     "@types/react-virtualized": "^9.21.8",
     "@types/webpack-env": "1.15.1",
     "@uifabric/build": "^7.0.0",
-    "anchor-js": "3.2.1",
     "gulp": "^4.0.2"
   },
   "publishConfig": {
