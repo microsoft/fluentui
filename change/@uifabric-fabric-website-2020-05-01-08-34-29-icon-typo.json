@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Website: Updated Forms icon text",
-  "packageName": "@uifabric/fabric-website",
-  "email": "micahgodbolt@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-05-01T15:34:29.858Z"
-}
