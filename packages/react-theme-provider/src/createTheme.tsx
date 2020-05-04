@@ -1,4 +1,4 @@
-import { Theme, ThemePrepared } from './Theme';
+import { Theme, ThemePrepared } from './types';
 import { merge } from '@uifabric/utilities';
 
 /**

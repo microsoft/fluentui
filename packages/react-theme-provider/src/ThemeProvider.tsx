@@ -4,7 +4,7 @@ import { useStylesheet } from '@fluentui/react-stylesheets';
 import * as classes from './ThemeProvider.scss';
 import { variablesToStyleObject } from './variablesToStyleObject';
 import { ThemeContext } from './ThemeContext';
-import { Theme, ThemePrepared } from './Theme';
+import { Theme, ThemePrepared } from './types';
 import { createTheme } from './createTheme';
 import { useTheme } from './useTheme';
 
