@@ -20,7 +20,6 @@ import {
 import {
   WithAsProp,
   withSafeTypeForAs,
-  DebounceResultFn,
   ShorthandCollection,
   ShorthandValue,
   ComponentEventHandler,
