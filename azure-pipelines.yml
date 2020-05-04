@@ -145,6 +145,8 @@ jobs:
 
   - job: Deploy
     dependsOn: Build
+    variables:
+      PR_DEPLOY: 1
     steps:
       - template: azure-pipelines.cache.yml
 
