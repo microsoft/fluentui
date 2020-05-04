@@ -8,6 +8,7 @@ import {
 } from 'office-ui-fabric-react/lib/FloatingPicker';
 import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
 import { people } from '@uifabric/example-data';
+import { useConst } from '@uifabric/react-hooks';
 
 const suggestionsStore = new SuggestionsStore<IPersonaProps>();
 const searchBoxWrapperStyling = { width: 208 };
@@ -58,18 +59,20 @@ export const FloatingPeoplePickerTypesExample: React.FunctionComponent = () => {
     }
   };
 
-  const suggestionProps: IBaseFloatingPickerSuggestionProps = {
-    footerItemsProps: [
-      {
-        renderItem: () => {
-          return <>Showing {picker.current ? picker.current.suggestions.length : 0} results</>;
+  const suggestionProps: IBaseFloatingPickerSuggestionProps = useConst(() => {
+    return {
+      footerItemsProps: [
+        {
+          renderItem: () => {
+            return <>Showing {picker.current ? picker.current.suggestions.length : 0} results</>;
+          },
+          shouldShow: () => {
+            return !!picker.current && picker.current.suggestions.length > 0;
+          },
         },
-        shouldShow: () => {
-          return !!picker.current && picker.current.suggestions.length > 0;
-        },
-      },
-    ],
-  };
+      ],
+    };
+  });
 
   const onFilterChanged = (filterText: string, currentPersonas?: IPersonaProps[]): IPersonaProps[] => {
     if (filterText) {

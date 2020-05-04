@@ -2,18 +2,15 @@ import * as React from 'react';
 import { CommandBarButton } from 'office-ui-fabric-react/lib/Button';
 import { ResizeGroup } from 'office-ui-fabric-react/lib/ResizeGroup';
 import { OverflowSet, IOverflowSetStyles } from 'office-ui-fabric-react/lib/OverflowSet';
-import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { mergeStyleSets } from 'office-ui-fabric-react';
 import { useBoolean } from '@uifabric/react-hooks';
+import { Toggle } from '../../Toggle';
 
 const styles = mergeStyleSets({
   root: {
     display: 'block',
-  },
-  resizeIsShort: {
-    width: '400px',
   },
   settingsGroup: {
     paddingTop: '20px',
@@ -133,7 +130,7 @@ export const ResizeGroupOverflowSetExample: React.FunctionComponent = () => {
 
   return (
     // tslint:disable-next-line:no-constant-condition
-    <div className={false ? styles.resizeIsShort : 'notResized'}>
+    <div>
       <ResizeGroup
         role="tabpanel"
         aria-label="Resize Group with an Overflow Set"
@@ -143,9 +140,9 @@ export const ResizeGroupOverflowSetExample: React.FunctionComponent = () => {
         onRenderData={onRenderData}
       />
       <div className={styles.settingsGroup}>
-        <Checkbox label="Enable caching" onChange={toggleCachingEnabled} checked={cachingEnabled} />
-        <Checkbox label="Set onGrowData" onChange={toggleOnGrowDataEnabled} checked={onGrowDataEnabled} />
-        <Checkbox label="Buttons checked" onChange={toggleButtonsChecked} checked={buttonsChecked} />
+        <Toggle label="Enable caching" onChange={toggleCachingEnabled} checked={cachingEnabled} />
+        <Toggle label="Enable onGrowData" onChange={toggleOnGrowDataEnabled} checked={onGrowDataEnabled} />
+        <Toggle label="Buttons checked" onChange={toggleButtonsChecked} checked={buttonsChecked} />
         <div className={styles.itemCountDropdown}>
           <Dropdown
             label="Number of items to render"
