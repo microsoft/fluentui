@@ -398,7 +398,7 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
 
     const renderItems = (items: TreeItemProps[], level = 1, parent?: string): React.ReactElement[] => {
       return items.reduce((renderedItems: React.ReactElement[], item: TreeItemProps, index: number) => {
-        const { id } = item;
+        const { id = _.uniqueId() } = item;
         const isSubtree = hasSubtree(item);
         const isSubtreeExpanded = isSubtree && this.isActiveItem(id);
         const isSelectedItem = this.isSelectedItem(item);
@@ -415,6 +415,7 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
             selected: isSelectedItem,
             selectable,
             renderItemTitle,
+            id,
             key: id,
             parent,
             level,
