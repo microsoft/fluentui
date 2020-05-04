@@ -295,6 +295,69 @@ export interface ISearchBoxStyles {
 }
 
 // @public (undocumented)
+export interface ISlider {
+    // (undocumented)
+    focus: () => void;
+    // (undocumented)
+    value: number | undefined;
+}
+
+// @public (undocumented)
+export interface ISliderProps extends React.ClassAttributes<SliderBase> {
+    ariaLabel?: string;
+    ariaValueText?: (value: number) => string;
+    buttonProps?: React.HTMLAttributes<HTMLButtonElement>;
+    className?: string;
+    componentRef?: IRefObject<ISlider>;
+    defaultValue?: number;
+    disabled?: boolean;
+    label?: string;
+    max?: number;
+    min?: number;
+    onChange?: (value: number) => void;
+    onChanged?: (event: MouseEvent | TouchEvent | KeyboardEvent, value: number) => void;
+    originFromZero?: boolean;
+    showValue?: boolean;
+    snapToStep?: boolean;
+    step?: number;
+    styles?: IStyleFunctionOrObject<ISliderStyleProps, ISliderStyles>;
+    theme?: ITheme;
+    value?: number;
+    valueFormat?: (value: number) => string;
+    vertical?: boolean;
+}
+
+// @public (undocumented)
+export interface ISliderState {
+    // (undocumented)
+    renderedValue?: number;
+    // (undocumented)
+    value?: number;
+}
+
+// @public (undocumented)
+export type ISliderStyleProps = Required<Pick<ISliderProps, 'theme'>> & Pick<ISliderProps, 'className' | 'disabled' | 'vertical'> & {
+    showTransitions?: boolean;
+    showValue?: boolean;
+    titleLabelClassName?: string;
+};
+
+// @public (undocumented)
+export interface ISliderStyles {
+    activeSection: IStyle;
+    container: IStyle;
+    inactiveSection: IStyle;
+    line: IStyle;
+    lineContainer: IStyle;
+    root: IStyle;
+    slideBox: IStyle;
+    thumb: IStyle;
+    titleLabel: IStyle;
+    valueLabel: IStyle;
+    zeroTick: IStyle;
+}
+
+// @public (undocumented)
 export interface ISpinButton {
     focus: () => void;
     value?: string;
@@ -442,6 +505,9 @@ export enum KeyboardSpinDirection {
     up = 1
 }
 
+// @public (undocumented)
+export const ONKEYDOWN_TIMEOUT_DURATION = 1000;
+
 // @public
 export const Popup: React.ForwardRefExoticComponent<IPopupProps & React.RefAttributes<HTMLDivElement>>;
 
@@ -459,6 +525,24 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
     render(): JSX.Element;
     // (undocumented)
     UNSAFE_componentWillReceiveProps(newProps: ISearchBoxProps): void;
+}
+
+// @public (undocumented)
+export const Slider: React.FunctionComponent<ISliderProps>;
+
+// @public (undocumented)
+export class SliderBase extends React.Component<ISliderProps, ISliderState> implements ISlider {
+    constructor(props: ISliderProps);
+    // (undocumented)
+    componentWillUnmount(): void;
+    // (undocumented)
+    static defaultProps: ISliderProps;
+    // (undocumented)
+    focus(): void;
+    // (undocumented)
+    render(): React.ReactElement<{}>;
+    // (undocumented)
+    readonly value: number | undefined;
 }
 
 // @public (undocumented)
@@ -551,7 +635,6 @@ export * from "office-ui-fabric-react/lib/Selection";
 export * from "office-ui-fabric-react/lib/Separator";
 export * from "office-ui-fabric-react/lib/Shimmer";
 export * from "office-ui-fabric-react/lib/ShimmeredDetailsList";
-export * from "office-ui-fabric-react/lib/Slider";
 export * from "office-ui-fabric-react/lib/Spinner";
 export * from "office-ui-fabric-react/lib/Stack";
 export * from "office-ui-fabric-react/lib/Sticky";
