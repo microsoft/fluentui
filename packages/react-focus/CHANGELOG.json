@@ -2,6 +2,97 @@
   "name": "@fluentui/react-focus",
   "entries": [
     {
+      "date": "Mon, 04 May 2020 12:33:29 GMT",
+      "tag": "@fluentui/react-focus_v7.9.0",
+      "version": "7.9.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "FocusZone: Bringing preventFocusRestoration functionality to v7.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "ce067e65e8fee3fb56fcea401b920237e7879ff0",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 01 May 2020 00:19:21 GMT",
+      "tag": "@fluentui/react-focus_v7.8.0",
+      "version": "7.8.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "FocusZone: Using v0 prop names for props where names differed and deprecating old ones.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "91115267502dc233cd9d513133d52344cef2e1f8",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 28 Apr 2020 12:34:09 GMT",
+      "tag": "@fluentui/react-focus_v7.7.0",
+      "version": "7.7.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Updating IPoint, x and y references to Point, left and top respectively.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "beb8886ffcbccd2bbef9c4e7a8afd742497289a5",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 27 Apr 2020 12:33:11 GMT",
+      "tag": "@fluentui/react-focus_v7.6.0",
+      "version": "7.6.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "FocusZone: Adding check to see if element has editable content in Home and End keystroke scenarios.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "bac880223a3c116f74707efcedc8552c472760cd",
+            "package": "@fluentui/react-focus"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "FocusZone: Bringing shouldResetActiveElementWhenTabFromZone to v7.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "27b38b5587696508bbb09969da7de886db947d39",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 23 Apr 2020 12:32:40 GMT",
+      "tag": "@fluentui/react-focus_v7.5.0",
+      "version": "7.5.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "FocusZone: Adding preventDefaultWhenHandled to v7 version.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "2859bacd22e5a42dd4ba9128c4f61b792234c8f9",
+            "package": "@fluentui/react-focus"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "FocusZone: Updating comment for preventDefaultWhenHandled prop.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "a7de477cfecd904300a45c78cfad3f3a456de035",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 16 Apr 2020 12:37:31 GMT",
       "tag": "@fluentui/react-focus_v7.4.0",
       "version": "7.4.0",

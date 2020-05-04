@@ -22,7 +22,7 @@ export interface IFocusZone {
 
   /**
    * Sets focus to a specific child element within the zone. This can be used in conjunction with
-   * onBeforeFocus to created delayed focus scenarios (like animate the scroll position to the correct
+   * shouldReceiveFocus to create delayed focus scenarios (like animate the scroll position to the correct
    * location and then focus.)
    * @param element - The child element within the zone to focus.
    * @returns True if focus could be set to an active element, false if no operation was taken.
@@ -136,7 +136,20 @@ export interface FocusZoneProps extends FocusZoneProperties, React.HTMLAttribute
   shouldInputLoseFocusOnArrowKey?: (inputElement: HTMLInputElement) => boolean;
 
   /**
-   * If true, focus event propagation will be stopped.
+   * Determines whether to disable the paging support for Page Up and Page Down keyboard scenarios.
+   * @defaultvalue false
+   */
+  pagingSupportDisabled?: boolean;
+
+  /**
+   * Determines whether to check for data-no-horizontal-wrap or data-no-vertical-wrap attributes
+   * when determining how to move focus
+   * @defaultvalue false
+   */
+  checkForNoWrap?: boolean;
+
+  /**
+   * Whether the FocusZone should allow focus events to propagate past the FocusZone.
    */
   stopFocusPropagation?: boolean;
 
@@ -147,12 +160,14 @@ export interface FocusZoneProps extends FocusZoneProperties, React.HTMLAttribute
   onFocus?: (event: React.FocusEvent<HTMLElement | FocusZone>) => void;
 
   /**
-   * If true, FocusZone prevents default behavior.
+   * If true, FocusZone prevents the default behavior of Keyboard events when changing focus between elements.
    */
   preventDefaultWhenHandled?: boolean;
 
   /**
-   * If focus is on root element after componentDidUpdate, will attempt to restore the focus to inner element
+   * If true, prevents the FocusZone from attempting to restore the focus to the inner element when the focus is on the
+   * root element after componentDidUpdate.
+   * @defaultvalue false
    */
-  restoreFocusFromRoot?: boolean;
+  preventFocusRestoration?: boolean;
 }

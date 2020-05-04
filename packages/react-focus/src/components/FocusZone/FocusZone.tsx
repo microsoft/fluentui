@@ -22,7 +22,7 @@ import {
   shouldWrapFocus,
   warnDeprecations,
   portalContainsElement,
-  IPoint,
+  Point,
   getWindow,
   findScrollableParent,
 } from '@uifabric/utilities';
@@ -71,6 +71,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
   public static defaultProps: IFocusZoneProps = {
     isCircularNavigation: false,
     direction: FocusZoneDirection.bidirectional,
+    preventDefaultWhenHandled: true,
   };
 
   private _root: React.RefObject<HTMLElement> = React.createRef();
@@ -92,7 +93,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
 
   /** The child element with tabindex=0. */
   private _defaultFocusElement: HTMLElement | null;
-  private _focusAlignment: IPoint;
+  private _focusAlignment: Point;
   private _isInnerZone: boolean;
   private _parkedTabIndex: string | null | undefined;
 
@@ -124,8 +125,8 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     this._id = getId('FocusZone');
 
     this._focusAlignment = {
-      x: 0,
-      y: 0,
+      left: 0,
+      top: 0,
     };
 
     this._processingTabKey = false;
@@ -177,7 +178,9 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     if (
       doc &&
       this._lastIndexPath &&
-      (doc.activeElement === doc.body || doc.activeElement === root || doc.activeElement === null)
+      (doc.activeElement === doc.body ||
+        doc.activeElement === null ||
+        (!this.props.preventFocusRestoration && doc.activeElement === root))
     ) {
       // The element has been removed after the render, attempt to restore focus.
       const elementToFocus = getFocusableByIndexPath(root as HTMLElement, this._lastIndexPath);
@@ -215,11 +218,11 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
   }
 
   public render(): React.ReactNode {
-    // tslint:disable:deprecation
-    const { rootProps, ariaDescribedBy, ariaLabelledBy, className } = this.props;
+    // tslint:disable-next-line:deprecation
+    const { as: tag, elementType, rootProps, ariaDescribedBy, ariaLabelledBy, className } = this.props;
     const divProps = getNativeProps(this.props, htmlElementProperties);
 
-    const Tag = this.props.as || this.props.elementType || 'div';
+    const Tag = tag || elementType || 'div';
 
     // Note, right before rendering/reconciling proceeds, we need to record if focus
     // was in the zone before the update. This helper will track this and, if focus
@@ -310,15 +313,16 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
 
   /**
    * Sets focus to a specific child element within the zone. This can be used in conjunction with
-   * onBeforeFocus to created delayed focus scenarios (like animate the scroll position to the correct
+   * shouldReceiveFocus to create delayed focus scenarios (like animate the scroll position to the correct
    * location and then focus.)
    * @param element - The child element within the zone to focus.
    * @returns True if focus could be set to an active element, false if no operation was taken.
    */
   public focusElement(element: HTMLElement): boolean {
-    const { onBeforeFocus } = this.props;
+    // tslint:disable-next-line:deprecation
+    const { onBeforeFocus, shouldReceiveFocus } = this.props;
 
-    if (onBeforeFocus && !onBeforeFocus(element)) {
+    if ((shouldReceiveFocus && !shouldReceiveFocus(element)) || (onBeforeFocus && !onBeforeFocus(element))) {
       return false;
     }
 
@@ -340,7 +344,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
    * rather than a center based on the last horizontal motion.
    * @param point - the new reference point.
    */
-  public setFocusAlignment(point: IPoint): void {
+  public setFocusAlignment(point: Point): void {
     this._focusAlignment = point;
   }
 
@@ -365,11 +369,21 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
       return;
     }
 
-    const { onActiveElementChanged, doNotAllowFocusEventToPropagate, onFocusNotification } = this.props;
+    const {
+      onActiveElementChanged,
+      // tslint:disable-next-line:deprecation
+      doNotAllowFocusEventToPropagate,
+      stopFocusPropagation,
+      // tslint:disable-next-line:deprecation
+      onFocusNotification,
+      onFocus,
+    } = this.props;
     const isImmediateDescendant = this._isImmediateDescendantOfZone(ev.target as HTMLElement);
     let newActiveElement: HTMLElement | undefined;
 
-    if (onFocusNotification) {
+    if (onFocus) {
+      onFocus(ev);
+    } else if (onFocusNotification) {
       onFocusNotification();
     }
 
@@ -407,7 +421,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
       onActiveElementChanged(this._activeElement as HTMLElement, ev);
     }
 
-    if (doNotAllowFocusEventToPropagate) {
+    if (stopFocusPropagation || doNotAllowFocusEventToPropagate) {
       ev.stopPropagation();
     }
   };
@@ -449,6 +463,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
    * Handle global tab presses so that we can patch tabindexes on the fly.
    */
   private _onKeyDownCapture = (ev: KeyboardEvent): void => {
+    // tslint:disable-next-line:deprecation
     if (ev.which === KeyCodes.tab) {
       _outerZones.forEach((zone: FocusZone) => zone._updateTabIndexes());
     }
@@ -510,6 +525,10 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     }
   }
 
+  private _preventDefaultWhenHandled(ev: React.KeyboardEvent<HTMLElement>): void {
+    this.props.preventDefaultWhenHandled && ev.preventDefault();
+  }
+
   /**
    * Handle the keystrokes.
    */
@@ -519,7 +538,8 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
       return;
     }
 
-    const { direction, disabled, isInnerZoneKeystroke } = this.props;
+    // tslint:disable-next-line:deprecation
+    const { direction, disabled, isInnerZoneKeystroke, pagingSupportDisabled, shouldEnterInnerZone } = this.props;
 
     if (disabled) {
       return;
@@ -541,8 +561,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     }
 
     if (
-      isInnerZoneKeystroke &&
-      isInnerZoneKeystroke(ev) &&
+      ((shouldEnterInnerZone && shouldEnterInnerZone(ev)) || (isInnerZoneKeystroke && isInnerZoneKeystroke(ev))) &&
       this._isImmediateDescendantOfZone(ev.target as HTMLElement)
     ) {
       // Try to focus
@@ -578,41 +597,54 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
           return;
 
         case KeyCodes.left:
-          if (direction !== FocusZoneDirection.vertical && this._moveFocusLeft()) {
-            break;
+          if (direction !== FocusZoneDirection.vertical) {
+            this._preventDefaultWhenHandled(ev);
+            if (this._moveFocusLeft()) {
+              break;
+            }
           }
           return;
 
         case KeyCodes.right:
-          if (direction !== FocusZoneDirection.vertical && this._moveFocusRight()) {
-            break;
+          if (direction !== FocusZoneDirection.vertical) {
+            this._preventDefaultWhenHandled(ev);
+            if (this._moveFocusRight()) {
+              break;
+            }
           }
           return;
 
         case KeyCodes.up:
-          if (direction !== FocusZoneDirection.horizontal && this._moveFocusUp()) {
-            break;
+          if (direction !== FocusZoneDirection.horizontal) {
+            this._preventDefaultWhenHandled(ev);
+            if (this._moveFocusUp()) {
+              break;
+            }
           }
           return;
 
         case KeyCodes.down:
-          if (direction !== FocusZoneDirection.horizontal && this._moveFocusDown()) {
-            break;
+          if (direction !== FocusZoneDirection.horizontal) {
+            this._preventDefaultWhenHandled(ev);
+            if (this._moveFocusDown()) {
+              break;
+            }
           }
           return;
         case KeyCodes.pageDown:
-          if (this._moveFocusPaging(true)) {
+          if (this._moveFocusPaging(true) && !pagingSupportDisabled) {
             break;
           }
           return;
         case KeyCodes.pageUp:
-          if (this._moveFocusPaging(false)) {
+          if (this._moveFocusPaging(false) && !pagingSupportDisabled) {
             break;
           }
           return;
 
         case KeyCodes.tab:
           if (
+            // tslint:disable-next-line:deprecation
             this.props.allowTabKey ||
             this.props.handleTabKey === FocusZoneTabbableElements.all ||
             (this.props.handleTabKey === FocusZoneTabbableElements.inputOnly &&
@@ -632,14 +664,17 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
             this._processingTabKey = false;
             if (focusChanged) {
               break;
+            } else if (this.props.shouldResetActiveElementWhenTabFromZone) {
+              this._activeElement = null;
             }
           }
           return;
 
         case KeyCodes.home:
           if (
-            this._isElementInput(ev.target as HTMLElement) &&
-            !this._shouldInputLoseFocus(ev.target as HTMLInputElement, false)
+            this._isContentEditableElement(ev.target as HTMLElement) ||
+            (this._isElementInput(ev.target as HTMLElement) &&
+              !this._shouldInputLoseFocus(ev.target as HTMLInputElement, false))
           ) {
             return false;
           }
@@ -655,8 +690,9 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
 
         case KeyCodes.end:
           if (
-            this._isElementInput(ev.target as HTMLElement) &&
-            !this._shouldInputLoseFocus(ev.target as HTMLInputElement, true)
+            this._isContentEditableElement(ev.target as HTMLElement) ||
+            (this._isElementInput(ev.target as HTMLElement) &&
+              !this._shouldInputLoseFocus(ev.target as HTMLInputElement, true))
           ) {
             return false;
           }
@@ -831,7 +867,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
 
   private _moveFocusDown(): boolean {
     let targetTop = -1;
-    const leftAlignment = this._focusAlignment.x;
+    const leftAlignment = this._focusAlignment.left || 0;
 
     if (
       this._moveFocus(true, (activeRect: ClientRect, targetRect: ClientRect) => {
@@ -872,7 +908,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
 
   private _moveFocusUp(): boolean {
     let targetTop = -1;
-    const leftAlignment = this._focusAlignment.x;
+    const leftAlignment = this._focusAlignment.left || 0;
 
     if (
       this._moveFocus(false, (activeRect: ClientRect, targetRect: ClientRect) => {
@@ -936,10 +972,8 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
             this.props.direction !== FocusZoneDirection.vertical
           ) {
             distance = activeRect.right - targetRect.right;
-          } else {
-            if (!shouldWrap) {
-              distance = LARGE_NEGATIVE_DISTANCE_FROM_CENTER;
-            }
+          } else if (!shouldWrap) {
+            distance = LARGE_NEGATIVE_DISTANCE_FROM_CENTER;
           }
 
           return distance;
@@ -1002,7 +1036,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     activeRect: ClientRect,
     targetRect: ClientRect,
   ): number => {
-    const leftAlignment = this._focusAlignment.x;
+    const leftAlignment = this._focusAlignment.left || 0;
     // ClientRect values can be floats that differ by very small fractions of a decimal.
     // If the difference between top and bottom are within a pixel then we should treat
     // them as equivalent by using Math.floor. For instance 5.2222 and 5.222221 should be equivalent,
@@ -1019,18 +1053,15 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
         return 0;
       }
       return Math.abs(targetRect.left + targetRect.width / 2 - leftAlignment);
-    } else {
-      if (!this._shouldWrapFocus(this._activeElement as HTMLElement, NO_VERTICAL_WRAP)) {
-        return LARGE_NEGATIVE_DISTANCE_FROM_CENTER;
-      }
-      return LARGE_DISTANCE_FROM_CENTER;
     }
+
+    if (!this._shouldWrapFocus(this._activeElement as HTMLElement, NO_VERTICAL_WRAP)) {
+      return LARGE_NEGATIVE_DISTANCE_FROM_CENTER;
+    }
+    return LARGE_DISTANCE_FROM_CENTER;
   };
 
   private _moveFocusPaging(isForward: boolean, useDefaultWrap: boolean = true): boolean {
-    if (useDefaultWrap === void 0) {
-      useDefaultWrap = true;
-    }
     let element = this._activeElement;
     if (!element || !this._root.current) {
       return false;
@@ -1078,11 +1109,9 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
             targetBottom = targetRectBottom;
             candidateDistance = elementDistance;
             candidateElement = element;
-          } else {
-            if (candidateDistance === -1 || elementDistance <= candidateDistance) {
-              candidateDistance = elementDistance;
-              candidateElement = element;
-            }
+          } else if (candidateDistance === -1 || elementDistance <= candidateDistance) {
+            candidateDistance = elementDistance;
+            candidateElement = element;
           }
         }
       }
@@ -1123,18 +1152,15 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
       const top = rect.top + rect.height / 2;
 
       if (!this._focusAlignment) {
-        this._focusAlignment = {
-          x: left,
-          y: top,
-        };
+        this._focusAlignment = { left, top };
       }
 
       if (isHorizontal) {
-        this._focusAlignment.x = left;
+        this._focusAlignment.left = left;
       }
 
       if (isVertical) {
-        this._focusAlignment.y = top;
+        this._focusAlignment.top = top;
       }
     }
   }
@@ -1217,6 +1243,10 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
 
       this._updateTabIndexes(child);
     }
+  }
+
+  private _isContentEditableElement(element: HTMLElement): boolean {
+    return element && element.getAttribute('contenteditable') === 'true';
   }
 
   private _isElementInput(element: HTMLElement): boolean {

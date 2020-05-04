@@ -62,6 +62,7 @@ const getItems = (wrapper: ReactWrapper): CommonWrapper =>
 
 const checkOpenTitles = (wrapper: ReactWrapper, expected: string[]): void => {
   const titles = getTitles(wrapper);
+
   expect(titles.length).toEqual(expected.length);
 
   expected.forEach((expectedTitle, index) => {
@@ -113,7 +114,7 @@ describe('Tree', () => {
     it('should contain index of item open by ArrowRight', () => {
       const wrapper = mountWithProvider(<Tree items={items} />);
 
-      getTitles(wrapper)
+      getItems(wrapper)
         .at(0) // title 1
         .simulate('keydown', { keyCode: keyboardKey.ArrowRight });
       checkOpenTitles(wrapper, ['1', '11', '12', '2', '3']);

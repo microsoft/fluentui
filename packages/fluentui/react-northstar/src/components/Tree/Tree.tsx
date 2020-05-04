@@ -133,8 +133,8 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
 
   static autoControlledProps = ['activeItemIds', 'selectedItemIds'];
 
-  static Item = TreeItem;
-  static Title = TreeTitle;
+  static Item: typeof TreeItem = TreeItem;
+  static Title: typeof TreeTitle = TreeTitle;
 
   static getAutoControlledStateFromProps(nextProps: TreeProps, prevState: TreeState) {
     const { items, selectable } = nextProps;
@@ -213,7 +213,7 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
     });
   };
 
-  processItemsForSelection = (e: React.SyntheticEvent, treeItemProps: TreeItemProps) => {
+  processItemsForSelection = (e: React.SyntheticEvent, treeItemProps: TreeItemProps, executeSelection: boolean) => {
     let { selectedItemIds } = this.state;
     const { id, selectableParent, items, expanded } = treeItemProps;
     const treeItemHasSubtree = hasSubtree(treeItemProps);
@@ -225,7 +225,7 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
     }
 
     // if the target is equal to currentTarget it means treeItem should be collapsed, not procced with selection
-    if (isExpandedSelectableParent && e.target === e.currentTarget) {
+    if (treeItemHasSubtree && e.target === e.currentTarget && !executeSelection) {
       return;
     }
 
@@ -233,20 +233,25 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
     // not parent itself, therefore not procced with selection
 
     if (isExpandedSelectableParent) {
-      const selectItems = items => {
-        items.forEach(item => {
-          const selectble = item.hasOwnProperty('selectable') ? item.selectable : treeItemProps.selectable;
-
-          if (selectedItemIds.indexOf(item.id) === -1) {
-            if (item.items) {
-              selectItems(item.items);
-            } else if (selectble) {
-              selectedItemIds.push(item.id);
+      if (this.isAllGroupChecked(items)) {
+        const selectedItems = this.getAllSelectableChildrenId(items);
+        selectedItemIds = selectedItemIds.filter(id => selectedItems.indexOf(id) === -1);
+      } else {
+        const selectItems = items => {
+          items.forEach(item => {
+            const selectble = item.hasOwnProperty('selectable') ? item.selectable : treeItemProps.selectable;
+            if (selectedItemIds.indexOf(item.id) === -1) {
+              if (item.items) {
+                selectItems(item.items);
+              } else if (selectble) {
+                selectedItemIds.push(item.id);
+              }
             }
-          }
-        });
-      };
-      selectItems(items);
+          });
+        };
+        selectItems(items);
+      }
+
       this.setSelectedItemIds(e, selectedItemIds);
       return;
     }
@@ -261,22 +266,23 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
     this.setSelectedItemIds(e, selectedItemIds);
   };
 
-  onTitleClick = (e: React.SyntheticEvent, treeItemProps: TreeItemProps) => {
+  onTitleClick = (e: React.SyntheticEvent, treeItemProps: TreeItemProps, executeSelection: boolean = false) => {
+    const treeItemHasSubtree = hasSubtree(treeItemProps);
+
     if (!treeItemProps) {
       return;
     }
+
     if (treeItemProps.selectable) {
-      this.processItemsForSelection(e, treeItemProps);
-      // do not continue with collapsing if the parent is selectable and selection on parent was executed
-      if (treeItemProps.selectableParent && treeItemProps.expanded && e.target !== e.currentTarget) {
-        return;
-      }
+      this.processItemsForSelection(e, treeItemProps, executeSelection);
     }
 
-    if (!hasSubtree(treeItemProps)) {
-      return;
+    if (treeItemHasSubtree && !executeSelection && e.target === e.currentTarget) {
+      this.expandItems(e, treeItemProps);
     }
+  };
 
+  expandItems(e: React.SyntheticEvent, treeItemProps: TreeItemProps) {
     let { activeItemIds } = this.state;
     const { id } = treeItemProps;
     const { exclusive, items } = this.props;
@@ -303,7 +309,7 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
     }
 
     this.setActiveItemIds(e, activeItemIds);
-  };
+  }
 
   onFocusFirstChild = (itemId: string) => {
     const currentElement = this.itemsRef.get(itemId);

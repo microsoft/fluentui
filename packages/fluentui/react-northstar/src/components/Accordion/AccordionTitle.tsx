@@ -1,4 +1,4 @@
-import { accordionTitleBehavior, indicatorBehavior } from '@fluentui/accessibility';
+import { accordionTitleBehavior, Accessibility, AccordionTitleBehaviorProps } from '@fluentui/accessibility';
 import { Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
@@ -8,18 +8,24 @@ import * as React from 'react';
 import {
   childrenExist,
   createShorthandFactory,
-  UIComponent,
   UIComponentProps,
   ContentComponentProps,
   ChildrenComponentProps,
   commonPropTypes,
   rtlTextContainer,
-  applyAccessibilityKeyHandlers,
-  ShorthandFactory,
-  ShorthandConfig,
 } from '../../utils';
-import { WithAsProp, ComponentEventHandler, ShorthandValue, withSafeTypeForAs } from '../../types';
+import {
+  WithAsProp,
+  ComponentEventHandler,
+  ShorthandValue,
+  withSafeTypeForAs,
+  FluentComponentStaticProps,
+  ProviderContextPrepared,
+} from '../../types';
 import Box, { BoxProps } from '../Box/Box';
+import { getElementType, useTelemetry, useUnhandledProps, useAccessibility, useStyles } from '@fluentui/react-bindings';
+// @ts-ignore
+import { ThemeContext } from 'react-fela';
 
 export interface AccordionTitleSlotClassNames {
   contentWrapper: string;
@@ -29,6 +35,11 @@ export interface AccordionTitleProps
   extends UIComponentProps,
     ContentComponentProps<ShorthandValue<BoxProps>>,
     ChildrenComponentProps {
+  /**
+   * Accessibility behavior if overridden by the user.
+   */
+  accessibility?: Accessibility<AccordionTitleBehaviorProps>;
+
   /** Id of the content it owns. */
   accordionContentId?: string;
 
@@ -74,114 +85,166 @@ export const accordionTitleSlotClassNames: AccordionTitleSlotClassNames = {
   contentWrapper: `${accordionTitleClassName}__content-wrapper`,
 };
 
-class AccordionTitle extends UIComponent<WithAsProp<AccordionTitleProps>, any> {
-  static displayName = 'AccordionTitle';
+export type AccordionTitleStylesProps = Required<Pick<AccordionTitleProps, 'disabled' | 'active'>> & {
+  content: boolean;
+};
 
-  static create: ShorthandFactory<AccordionTitleProps>;
-  static shorthandConfig: ShorthandConfig<AccordionTitleProps> = {
-    mappedProp: 'content',
-  };
+export const AccordionTitle: React.FC<WithAsProp<AccordionTitleProps>> &
+  FluentComponentStaticProps<AccordionTitleProps> = props => {
+  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const { setStart, setEnd } = useTelemetry(AccordionTitle.displayName, context.telemetry);
+  setStart();
+  const {
+    contentRef,
+    children,
+    content,
+    indicator,
+    contentWrapper,
+    disabled,
+    accessibility,
+    canBeCollapsed,
+    as,
+    active,
+    accordionContentId,
+    className,
+    design,
+    styles,
+    variables,
+  } = props;
+  const ElementType = getElementType(props);
+  const unhandledProps = useUnhandledProps(AccordionTitle.handledProps, props);
 
-  static deprecated_className = accordionTitleClassName;
-
-  static propTypes = {
-    ...commonPropTypes.createCommon({ content: 'shorthand' }),
-    accordionContentId: PropTypes.string,
-    active: PropTypes.bool,
-    contentRef: customPropTypes.ref,
-    contentWrapper: customPropTypes.wrapperShorthand,
-    canBeCollapsed: PropTypes.bool,
-    disabled: PropTypes.bool,
-    index: PropTypes.number,
-    onClick: PropTypes.func,
-    indicator: customPropTypes.shorthandAllowingChildren,
-  };
-
-  static defaultProps = {
-    accessibility: accordionTitleBehavior,
-    as: 'dt',
-    contentRef: _.noop,
-    indicator: {},
-    contentWrapper: {},
-  };
-
-  actionHandlers = {
-    performClick: e => {
-      e.preventDefault();
-      this.handleClick(e);
+  const getA11yProps = useAccessibility<AccordionTitleBehaviorProps>(accessibility, {
+    debugName: AccordionTitle.displayName,
+    actionHandlers: {
+      performClick: e => {
+        e.preventDefault();
+        e.stopPropagation();
+        handleClick(e);
+      },
     },
-  };
+    mapPropsToBehavior: () => ({
+      hasContent: !!content,
+      canBeCollapsed,
+      as,
+      active,
+      disabled,
+      accordionContentId,
+    }),
+    rtl: context.rtl,
+  });
 
-  handleClick = (e: React.SyntheticEvent) => {
-    if (!this.props.disabled) {
-      _.invoke(this.props, 'onClick', e, this.props);
+  const { classes, styles: resolvedStyles } = useStyles<AccordionTitleStylesProps>(AccordionTitle.displayName, {
+    className: accordionTitleClassName,
+    mapPropsToStyles: () => ({
+      disabled,
+      content: !!content,
+      active,
+    }),
+    mapPropsToInlineStyles: () => ({
+      className,
+      design,
+      styles,
+      variables,
+    }),
+    rtl: context.rtl,
+  });
+
+  const handleClick = (e: React.SyntheticEvent) => {
+    if (!disabled) {
+      _.invoke(props, 'onClick', e, props);
     }
   };
 
-  handleFocus = (e: React.SyntheticEvent) => {
+  const handleFocus = (e: React.SyntheticEvent) => {
     e.stopPropagation();
-    _.invoke(this.props, 'onFocus', e, this.props);
+    _.invoke(props, 'onFocus', e, props);
   };
 
-  handleWrapperOverrides = predefinedProps => ({
+  const handleWrapperOverrides = predefinedProps => ({
     onFocus: (e: React.FocusEvent) => {
-      this.handleFocus(e);
-      _.invoke(predefinedProps, 'onFocus', e, this.props);
+      handleFocus(e);
+      _.invoke(predefinedProps, 'onFocus', e, props);
     },
     onClick: (e: React.MouseEvent) => {
-      this.handleClick(e);
-      _.invoke(predefinedProps, 'onClick', e, this.props);
+      handleClick(e);
+      _.invoke(predefinedProps, 'onClick', e, props);
     },
   });
 
-  renderComponent({ ElementType, classes, unhandledProps, styles, accessibility }) {
-    const { contentRef, children, content, indicator, contentWrapper } = this.props;
-
-    const contentWrapperElement = (
-      <Ref innerRef={contentRef}>
-        {Box.create(contentWrapper, {
-          defaultProps: () => ({
+  const contentWrapperElement = (
+    <Ref innerRef={contentRef}>
+      {Box.create(contentWrapper, {
+        defaultProps: () =>
+          getA11yProps('content', {
             className: accordionTitleSlotClassNames.contentWrapper,
-            styles: styles.contentWrapper,
-            ...accessibility.attributes.content,
-            ...applyAccessibilityKeyHandlers(accessibility.keyHandlers.content, unhandledProps),
+            styles: resolvedStyles.contentWrapper,
           }),
-          overrideProps: predefinedProps => ({
-            children: (
-              <>
-                {Box.create(indicator, {
-                  defaultProps: () => ({
-                    styles: styles.indicator,
-                    accessibility: indicatorBehavior,
+        overrideProps: predefinedProps => ({
+          children: (
+            <>
+              {Box.create(indicator, {
+                defaultProps: () =>
+                  getA11yProps('indicator', {
+                    styles: resolvedStyles.indicator,
                   }),
-                })}
-                {Box.create(content, {
-                  defaultProps: () => ({
-                    as: 'span',
-                    styles: styles.content,
-                  }),
-                })}
-              </>
-            ),
-            ...this.handleWrapperOverrides(predefinedProps),
-          }),
-        })}
-      </Ref>
-    );
+              })}
+              {Box.create(content, {
+                defaultProps: () => ({
+                  styles: resolvedStyles.content,
+                }),
+              })}
+            </>
+          ),
+          ...handleWrapperOverrides(predefinedProps),
+        }),
+      })}
+    </Ref>
+  );
 
-    return (
-      <ElementType
-        className={classes.root}
-        {...rtlTextContainer.getAttributes({ forElements: [children] })}
-        {...accessibility.attributes.root}
-        {...unhandledProps}
-        {...applyAccessibilityKeyHandlers(accessibility.keyHandlers.root, unhandledProps)}
-      >
-        {childrenExist(children) ? children : contentWrapperElement}
-      </ElementType>
-    );
-  }
-}
+  const element = (
+    <ElementType
+      {...rtlTextContainer.getAttributes({ forElements: [children] })}
+      {...getA11yProps('root', {
+        className: classes.root,
+        ...unhandledProps,
+      })}
+    >
+      {childrenExist(children) ? children : contentWrapperElement}
+    </ElementType>
+  );
+  setEnd();
+  return element;
+};
+
+AccordionTitle.displayName = 'AccordionTitle';
+
+AccordionTitle.shorthandConfig = {
+  mappedProp: 'content',
+};
+
+AccordionTitle.propTypes = {
+  ...commonPropTypes.createCommon({ content: 'shorthand' }),
+  accordionContentId: PropTypes.string,
+  active: PropTypes.bool,
+  contentRef: customPropTypes.ref,
+  contentWrapper: customPropTypes.wrapperShorthand,
+  canBeCollapsed: PropTypes.bool,
+  disabled: PropTypes.bool,
+  index: PropTypes.number,
+  onClick: PropTypes.func,
+  indicator: customPropTypes.shorthandAllowingChildren,
+};
+
+AccordionTitle.handledProps = Object.keys(AccordionTitle.propTypes) as any;
+
+AccordionTitle.defaultProps = {
+  accessibility: accordionTitleBehavior,
+  as: 'dt',
+  contentRef: _.noop,
+  indicator: {},
+  contentWrapper: {},
+};
 
 AccordionTitle.create = createShorthandFactory({ Component: AccordionTitle, mappedProp: 'content' });
 

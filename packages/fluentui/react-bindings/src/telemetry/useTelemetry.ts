@@ -1,5 +1,4 @@
 import { Telemetry, UseTelemetryResult } from './types';
-import useComposeOptions from '../compose/useComposeOptions';
 
 export const getTelemetry = (displayName: string, telemetry: Telemetry | undefined): UseTelemetryResult => {
   let start: number = -1;
@@ -33,10 +32,7 @@ export const getTelemetry = (displayName: string, telemetry: Telemetry | undefin
 };
 
 const useTelemetry = (displayName: string, telemetry: Telemetry | undefined): UseTelemetryResult => {
-  const composeOptions = useComposeOptions();
-  const telemetryName = composeOptions?.displayNames[composeOptions?.displayNames.length - 1] || displayName;
-
-  return getTelemetry(telemetryName, telemetry);
+  return getTelemetry(displayName, telemetry);
 };
 
 export default useTelemetry;

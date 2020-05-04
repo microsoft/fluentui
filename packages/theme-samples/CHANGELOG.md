@@ -1,8 +1,26 @@
 # Change Log - @uifabric/theme-samples
 
-This log was last generated on Thu, 16 Apr 2020 04:01:45 GMT and should not be manually modified.
+This log was last generated on Thu, 30 Apr 2020 12:31:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.0.64](https://github.com/microsoft/fluentui/tree/@uifabric/theme-samples_v7.0.64)
+
+Thu, 30 Apr 2020 12:31:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/theme-samples_v7.0.60..@uifabric/theme-samples_v7.0.64)
+
+### Patches
+
+- Dark Theme: Fixes for People picker, Persona, DatePicker. ([PR #12423](https://github.com/microsoft/fluentui/pull/12423) by marygans@microsoft.com)
+
+## [7.0.60](https://github.com/microsoft/fluentui/tree/@uifabric/theme-samples_v7.0.60)
+
+Fri, 24 Apr 2020 12:39:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/theme-samples_v7.0.52..@uifabric/theme-samples_v7.0.60)
+
+### Patches
+
+- set isInverted for dark sample theme ([PR #12819](https://github.com/microsoft/fluentui/pull/12819) by chrismo@microsoft.com)
 
 ## [7.0.52](https://github.com/microsoft/fluentui/tree/@uifabric/theme-samples_v7.0.52)
 
