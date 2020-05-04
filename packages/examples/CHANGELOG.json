@@ -2,6 +2,21 @@
   "name": "@fluentui/examples",
   "entries": [
     {
+      "date": "Fri, 01 May 2020 00:19:21 GMT",
+      "tag": "@fluentui/examples_v0.1.46",
+      "version": "0.1.46",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating FocusZone examples to use non-deprecated prop names.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "91115267502dc233cd9d513133d52344cef2e1f8",
+            "package": "@fluentui/examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 16 Apr 2020 04:01:45 GMT",
       "tag": "@fluentui/examples_v0.1.32",
       "version": "0.1.32",
