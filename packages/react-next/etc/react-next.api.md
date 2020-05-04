@@ -4,24 +4,88 @@
 
 ```ts
 
+import { IBaseProps } from 'office-ui-fabric-react/lib/Utilities';
 import { IButtonProps } from 'office-ui-fabric-react/lib/components/Button/Button.types';
 import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
+import { ICalloutContentStyleProps } from 'office-ui-fabric-react/lib/Callout';
+import { ICalloutProps } from 'office-ui-fabric-react/lib/Callout';
 import { IComponentAs } from 'office-ui-fabric-react/lib/Utilities';
+import { IFocusZoneProps } from 'office-ui-fabric-react/lib/FocusZone';
 import { IIconProps } from 'office-ui-fabric-react/lib/Icon';
+import { IIconProps as IIconProps_2 } from 'office-ui-fabric-react/lib/components/Icon/Icon.types';
 import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
+import { IRectangle } from 'office-ui-fabric-react/lib/Utilities';
 import { IRefObject } from 'office-ui-fabric-react/lib/Utilities';
 import { IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 import { ITheme } from 'office-ui-fabric-react/lib/Styling';
+import { IVerticalDividerClassNames } from 'office-ui-fabric-react/lib/components/Divider/VerticalDivider.types';
+import { IWithResponsiveModeState } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode';
 import { Position } from 'office-ui-fabric-react/lib/utilities/positioning';
 import * as React from 'react';
+import { Target } from 'office-ui-fabric-react/lib/Callout';
+
+// @public
+export function canAnyMenuItemsCheck(items: IContextualMenuItem[]): boolean;
 
 // @public (undocumented)
 export const Checkbox: React.FunctionComponent<ICheckboxProps>;
 
 // @public (undocumented)
 export const CheckboxBase: React.ForwardRefExoticComponent<ICheckboxProps & React.RefAttributes<HTMLDivElement>>;
+
+// @public
+export const ContextualMenu: React.FunctionComponent<IContextualMenuProps>;
+
+// @public (undocumented)
+export class ContextualMenuBase extends React.Component<IContextualMenuProps, IContextualMenuState> {
+    constructor(props: IContextualMenuProps);
+    // (undocumented)
+    componentDidMount(): void;
+    // (undocumented)
+    componentWillUnmount(): void;
+    // (undocumented)
+    static defaultProps: IContextualMenuProps;
+    // (undocumented)
+    dismiss: (ev?: any, dismissAll?: boolean | undefined) => void;
+    // (undocumented)
+    render(): JSX.Element | null;
+    // (undocumented)
+    shouldComponentUpdate(newProps: IContextualMenuProps, newState: IContextualMenuState): boolean;
+    // (undocumented)
+    UNSAFE_componentWillMount(): void;
+    // (undocumented)
+    UNSAFE_componentWillUpdate(newProps: IContextualMenuProps): void;
+    }
+
+// @public
+export const ContextualMenuItem: React.FunctionComponent<IContextualMenuItemProps>;
+
+// @public (undocumented)
+export class ContextualMenuItemBase extends React.Component<IContextualMenuItemProps, {}> {
+    constructor(props: IContextualMenuItemProps);
+    // (undocumented)
+    dismissMenu: (dismissAll?: boolean | undefined) => void;
+    // (undocumented)
+    dismissSubMenu: () => void;
+    // (undocumented)
+    openSubMenu: () => void;
+    // (undocumented)
+    render(): JSX.Element;
+}
+
+// @public (undocumented)
+export enum ContextualMenuItemType {
+    // (undocumented)
+    Divider = 1,
+    // (undocumented)
+    Header = 2,
+    // (undocumented)
+    Normal = 0,
+    // (undocumented)
+    Section = 3
+}
 
 // @public (undocumented)
 export type DefaultProps = Required<Pick<ISpinButtonProps, 'step' | 'min' | 'max' | 'disabled' | 'labelPosition' | 'label' | 'incrementButtonIcon' | 'decrementButtonIcon'>>;
@@ -31,6 +95,9 @@ export const Fabric: React.FunctionComponent<IFabricProps>;
 
 // @public (undocumented)
 export const FabricBase: React.ForwardRefExoticComponent<IFabricProps & React.RefAttributes<HTMLDivElement>>;
+
+// @public (undocumented)
+export function getSubmenuItems(item: IContextualMenuItem): IContextualMenuItem[] | undefined;
 
 // @public
 export interface ICheckbox {
@@ -90,6 +157,247 @@ export interface ICheckboxStyles {
     label?: IStyle;
     root?: IStyle;
     text?: IStyle;
+}
+
+// @public (undocumented)
+export interface IContextualMenu {
+}
+
+// @public (undocumented)
+export interface IContextualMenuItem {
+    [propertyName: string]: any;
+    ariaLabel?: string;
+    canCheck?: boolean;
+    checked?: boolean;
+    className?: string;
+    componentRef?: IRefObject<IContextualMenuRenderItem>;
+    customOnRenderListLength?: number;
+    data?: any;
+    disabled?: boolean;
+    // Warning: (ae-forgotten-export) The symbol "IMenuItemClassNames" needs to be exported by the entry point index.d.ts
+    //
+    // @deprecated
+    getItemClassNames?: (theme: ITheme, disabled: boolean, expanded: boolean, checked: boolean, isAnchorLink: boolean, knownIcon: boolean, itemClassName?: string, dividerClassName?: string, iconClassName?: string, subMenuClassName?: string, primaryDisabled?: boolean) => IMenuItemClassNames;
+    getSplitButtonVerticalDividerClassNames?: (theme: ITheme) => IVerticalDividerClassNames;
+    href?: string;
+    iconProps?: IIconProps_2;
+    // @deprecated
+    inactive?: boolean;
+    itemProps?: Partial<IContextualMenuItemProps>;
+    // (undocumented)
+    itemType?: ContextualMenuItemType;
+    key: string;
+    keytipProps?: IKeytipProps;
+    // @deprecated
+    name?: string;
+    onClick?: (ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>, item?: IContextualMenuItem) => boolean | void;
+    onMouseDown?: (item: IContextualMenuItem, event: React.MouseEvent<HTMLElement>) => void;
+    onRender?: (item: any, dismissMenu: (ev?: any, dismissAll?: boolean) => void) => React.ReactNode;
+    onRenderIcon?: IRenderFunction<IContextualMenuItemProps>;
+    primaryDisabled?: boolean;
+    rel?: string;
+    role?: string;
+    secondaryText?: string;
+    sectionProps?: IContextualMenuSection;
+    // @deprecated (undocumented)
+    shortCut?: string;
+    split?: boolean;
+    // @deprecated
+    style?: React.CSSProperties;
+    submenuIconProps?: IIconProps_2;
+    subMenuProps?: IContextualMenuProps;
+    target?: string;
+    text?: string;
+    title?: string;
+}
+
+// @public (undocumented)
+export interface IContextualMenuItemProps extends React.HTMLAttributes<IContextualMenuItemProps> {
+    className?: string;
+    classNames: IMenuItemClassNames;
+    componentRef?: IRefObject<IContextualMenuRenderItem>;
+    dismissMenu?: (ev?: any, dismissAll?: boolean) => void;
+    dismissSubMenu?: () => void;
+    getSubmenuTarget?: () => HTMLElement | undefined;
+    hasIcons: boolean | undefined;
+    index: number;
+    item: IContextualMenuItem;
+    onCheckmarkClick?: (item: IContextualMenuItem, ev: React.MouseEvent<HTMLElement>) => void;
+    openSubMenu?: (item: any, target: HTMLElement) => void;
+    styles?: IStyleFunctionOrObject<IContextualMenuItemStyleProps, IContextualMenuItemStyles>;
+    theme?: ITheme;
+}
+
+// @public (undocumented)
+export interface IContextualMenuItemRenderProps extends IContextualMenuItem {
+    // (undocumented)
+    focusableElementIndex: number;
+    // (undocumented)
+    hasCheckmarks: boolean;
+    // (undocumented)
+    hasIcons: boolean;
+    // (undocumented)
+    index: number;
+    // (undocumented)
+    totalItemCount: number;
+}
+
+// @public (undocumented)
+export interface IContextualMenuItemStyleProps {
+    checked: boolean;
+    className?: string;
+    disabled: boolean;
+    dividerClassName?: string;
+    expanded: boolean;
+    iconClassName?: string;
+    isAnchorLink: boolean;
+    itemClassName?: string;
+    knownIcon: boolean;
+    primaryDisabled?: boolean;
+    subMenuClassName?: string;
+    theme: ITheme;
+}
+
+// @public (undocumented)
+export interface IContextualMenuItemStyles extends IButtonStyles {
+    anchorLink: IStyle;
+    checkmarkIcon: IStyle;
+    divider: IStyle;
+    icon: IStyle;
+    iconColor: IStyle;
+    item: IStyle;
+    label: IStyle;
+    linkContent: IStyle;
+    linkContentMenu: IStyle;
+    root: IStyle;
+    secondaryText: IStyle;
+    splitContainer: IStyle;
+    splitMenu: IStyle;
+    splitPrimary: IStyle;
+    subMenuIcon: IStyle;
+}
+
+// @public (undocumented)
+export interface IContextualMenuListProps {
+    // (undocumented)
+    defaultMenuItemRenderer: (item: IContextualMenuItemRenderProps) => React.ReactNode;
+    // (undocumented)
+    hasCheckmarks: boolean;
+    // (undocumented)
+    hasIcons: boolean;
+    // (undocumented)
+    items: IContextualMenuItem[];
+    // (undocumented)
+    totalItemCount: number;
+}
+
+// @public (undocumented)
+export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWithResponsiveModeState {
+    alignTargetEdge?: boolean;
+    ariaLabel?: string;
+    beakWidth?: number;
+    bounds?: IRectangle | ((target?: Target, targetWindow?: Window) => IRectangle | undefined);
+    calloutProps?: ICalloutProps;
+    className?: string;
+    componentRef?: IRefObject<IContextualMenu>;
+    contextualMenuItemAs?: React.ComponentClass<IContextualMenuItemProps> | React.FunctionComponent<IContextualMenuItemProps>;
+    coverTarget?: boolean;
+    delayUpdateFocusOnHover?: boolean;
+    // Warning: (ae-forgotten-export) The symbol "DirectionalHint" needs to be exported by the entry point index.d.ts
+    directionalHint?: DirectionalHint;
+    directionalHintFixed?: boolean;
+    directionalHintForRTL?: DirectionalHint;
+    doNotLayer?: boolean;
+    focusZoneProps?: IFocusZoneProps;
+    gapSpace?: number;
+    // Warning: (ae-forgotten-export) The symbol "IContextualMenuClassNames" needs to be exported by the entry point index.d.ts
+    //
+    // @deprecated
+    getMenuClassNames?: (theme: ITheme, className?: string) => IContextualMenuClassNames;
+    hidden?: boolean;
+    id?: string;
+    isBeakVisible?: boolean;
+    isSubMenu?: boolean;
+    items: IContextualMenuItem[];
+    labelElementId?: string;
+    onDismiss?: (ev?: React.MouseEvent | React.KeyboardEvent, dismissAll?: boolean) => void;
+    onItemClick?: (ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>, item?: IContextualMenuItem) => boolean | void;
+    onMenuDismissed?: (contextualMenu?: IContextualMenuProps) => void;
+    onMenuOpened?: (contextualMenu?: IContextualMenuProps) => void;
+    onRenderMenuList?: IRenderFunction<IContextualMenuListProps>;
+    onRenderSubMenu?: IRenderFunction<IContextualMenuProps>;
+    shouldFocusOnContainer?: boolean;
+    shouldFocusOnMount?: boolean;
+    shouldUpdateWhenHidden?: boolean;
+    styles?: IStyleFunctionOrObject<IContextualMenuStyleProps, IContextualMenuStyles>;
+    subMenuHoverDelay?: number;
+    target?: Target;
+    theme?: ITheme;
+    title?: string;
+    useTargetAsMinWidth?: boolean;
+    useTargetWidth?: boolean;
+}
+
+// @public (undocumented)
+export interface IContextualMenuRenderItem {
+    dismissMenu: (dismissAll?: boolean) => void;
+    dismissSubMenu: () => void;
+    openSubMenu: () => void;
+}
+
+// @public (undocumented)
+export interface IContextualMenuSection extends React.ClassAttributes<any> {
+    bottomDivider?: boolean;
+    items: IContextualMenuItem[];
+    title?: string;
+    topDivider?: boolean;
+}
+
+// @public (undocumented)
+export interface IContextualMenuState {
+    // (undocumented)
+    contextualMenuItems?: IContextualMenuItem[];
+    // (undocumented)
+    contextualMenuTarget?: Element;
+    // (undocumented)
+    dismissedMenuItemKey?: string;
+    expandedByMouseClick?: boolean;
+    // (undocumented)
+    expandedMenuItemKey?: string;
+    // (undocumented)
+    positions?: any;
+    // (undocumented)
+    slideDirectionalClassName?: string;
+    // (undocumented)
+    submenuDirection?: DirectionalHint;
+    // (undocumented)
+    subMenuId?: string;
+    // (undocumented)
+    submenuTarget?: Element;
+}
+
+// @public (undocumented)
+export interface IContextualMenuStyleProps {
+    // (undocumented)
+    className?: string;
+    // (undocumented)
+    theme: ITheme;
+}
+
+// @public (undocumented)
+export interface IContextualMenuStyles {
+    container: IStyle;
+    header: IStyle;
+    list: IStyle;
+    root: IStyle;
+    subComponentStyles: IContextualMenuSubComponentStyles;
+    title: IStyle;
+}
+
+// @public (undocumented)
+export interface IContextualMenuSubComponentStyles {
+    callout: IStyleFunctionOrObject<ICalloutContentStyleProps, any>;
+    menuItem: IStyleFunctionOrObject<IContextualMenuItemStyleProps, any>;
 }
 
 // @public (undocumented)
@@ -204,6 +512,17 @@ export enum ImageLoadState {
     errorLoaded = 3,
     loaded = 1,
     notLoaded = 0
+}
+
+// @public (undocumented)
+export interface IMenuItemStyles extends IButtonStyles {
+    anchorLink: IStyle;
+    checkmarkIcon: IStyle;
+    divider: IStyle;
+    iconColor: IStyle;
+    item: IStyle;
+    linkContent: IStyle;
+    subMenuIcon: IStyle;
 }
 
 // @public (undocumented)
@@ -399,7 +718,6 @@ export * from "office-ui-fabric-react/lib/Color";
 export * from "office-ui-fabric-react/lib/ColorPicker";
 export * from "office-ui-fabric-react/lib/ComboBox";
 export * from "office-ui-fabric-react/lib/CommandBar";
-export * from "office-ui-fabric-react/lib/ContextualMenu";
 export * from "office-ui-fabric-react/lib/DatePicker";
 export * from "office-ui-fabric-react/lib/DetailsList";
 export * from "office-ui-fabric-react/lib/Dialog";
