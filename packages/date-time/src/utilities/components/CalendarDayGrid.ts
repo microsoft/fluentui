@@ -5,7 +5,7 @@ import {
   getDateRangeArray,
   isInDateRangeArray,
 } from 'office-ui-fabric-react/lib/utilities/dateMath/DateMath';
-import { DayOfWeek, DateRangeType } from 'office-ui-fabric-react/lib/utilities/dateMath/DateValues';
+import { DayOfWeek, DateRangeType } from 'office-ui-fabric-react/lib/utilities/dateValues/DateValues';
 import { find } from '@uifabric/utilities';
 import { ICalendarStrings } from './Calendar';
 
