@@ -4,7 +4,7 @@ import felaPluginEmbedded from 'fela-plugin-embedded';
 import felaPluginFallbackValue from 'fela-plugin-fallback-value';
 import felaPluginPlaceholderPrefixer from 'fela-plugin-placeholder-prefixer';
 import felaPluginRtl from 'fela-plugin-rtl';
-
+import felaPluginprefixer from 'fela-plugin-prefixer';
 import felaDisableAnimationsPlugin from './felaDisableAnimationsPlugin';
 import felaExpandCssShorthandsPlugin from './felaExpandCssShorthandsPlugin';
 import felaFocusVisibleEnhancer from './felaFocusVisibleEnhancer';
@@ -63,6 +63,7 @@ const rendererConfig = {
     }),
 
     felaPluginPlaceholderPrefixer(),
+    felaPluginprefixer(),
     felaInvokeKeyframesPlugin(),
     felaPluginEmbedded(),
 
