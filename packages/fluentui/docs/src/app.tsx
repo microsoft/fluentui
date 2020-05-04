@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { hot } from 'react-hot-loader/root';
 import { Provider, Debug, themes } from '@fluentui/react-northstar';
 
 import { mergeThemes } from '@fluentui/styles';
@@ -45,4 +46,4 @@ class App extends React.Component<any, ThemeContextData> {
   }
 }
 
-export default App;
+export default hot(App);

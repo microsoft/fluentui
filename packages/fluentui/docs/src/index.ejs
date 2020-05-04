@@ -42,11 +42,11 @@
   <!-- Use unminified React when not in production so we get errors and warnings -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prop-types/<%= htmlWebpackPlugin.options.versions.propTypes %>/prop-types<%= __PROD__ ? '.min' : '' %>.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/react/<%= htmlWebpackPlugin.options.versions.react %>/umd/react<%= __PROD__ ? '.production.min' : '.development' %>.js"></script>
-  <%if (__HOT__) {%>
+  <%if (__PROD__) {%>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/<%= htmlWebpackPlugin.options.versions.reactDOM %>/umd/react-dom.production.min.js"></script>
+  <% } else{ %>
     <script src="https://cdn.jsdelivr.net/npm/@hot-loader/react-dom@<%= htmlWebpackPlugin.options.versions.reactDOM %>/umd/react-dom.development.js"></script>
-  <% } else { %>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/<%= htmlWebpackPlugin.options.versions.reactDOM %>/umd/react-dom<%= __PROD__ ? '.production.min' : '.development' %>.js"></script>
-  <%}%>
+    <%}%>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/<%= htmlWebpackPlugin.options.versions.reactDOM %>/umd/react-dom-server.browser<%= __PROD__ ? '.production.min' : '.development' %>.js"></script>
 
   <script src="https://cdn.jsdelivr.net/npm/@babel/standalone@<%= htmlWebpackPlugin.options.versions.babelStandalone %>/babel.min.js"></script>

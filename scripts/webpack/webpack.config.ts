@@ -1,6 +1,7 @@
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import { webpack as lernaAliases } from 'lerna-alias';
+import _ from 'lodash';
 import webpack from 'webpack';
 import TerserPlugin from 'terser-webpack-plugin';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
@@ -9,14 +10,14 @@ import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import config from '../config';
 
 const { paths } = config;
-const { __DEV__, __PROD__, __HOT__ } = config.compiler_globals;
+const { __DEV__, __PROD__ } = config.compiler_globals;
 
 const webpackConfig: webpack.Configuration = {
   name: 'client',
   target: 'web',
   mode: config.compiler_mode,
   entry: {
-    app: __HOT__ ? paths.docsSrc('index') : paths.docsSrc('index-static'),
+    app: paths.docsSrc('index'),
   },
   output: {
     // https://webpack.js.org/guides/build-performance/#avoid-production-specific-tooling
@@ -56,7 +57,7 @@ const webpackConfig: webpack.Configuration = {
         options: {
           cacheCompression: false,
           cacheDirectory: __DEV__,
-          plugins: [__HOT__ && 'react-hot-loader/babel'].filter(Boolean),
+          plugins: [__DEV__ && 'react-hot-loader/babel'].filter(Boolean),
         },
       },
       {
@@ -137,32 +138,33 @@ const webpackConfig: webpack.Configuration = {
 // ------------------------------------
 // Environment Configuration
 // ------------------------------------
-if (__HOT__) {
+if (__DEV__) {
   const webpackHotPath = `${config.compiler_public_path}__webpack_hmr`;
-  const webpackHotMiddlewareEntry = `webpack-hot-middleware/client?${Object.entries({
-    path: webpackHotPath, // The path which the middleware is serving the event stream on
-    timeout: 2000, // The time to wait after a disconnection before attempting to reconnect
-    overlay: true, // Set to false to disable the DOM-based client-side overlay.
-    reload: true, // Set to true to auto-reload the page when webpack gets stuck.
-    noInfo: false, // Set to true to disable informational console logging.
-    quiet: false, // Set to true to disable all console logging.
-  })
-    .map(([val, key]) => `&${key}=${val}`)
-    .join('')}`;
+  const webpackHotMiddlewareEntry = `webpack-hot-middleware/client?${_.map(
+    {
+      path: webpackHotPath, // The path which the middleware is serving the event stream on
+      timeout: 2000, // The time to wait after a disconnection before attempting to reconnect
+      overlay: true, // Set to false to disable the DOM-based client-side overlay.
+      reload: true, // Set to true to auto-reload the page when webpack gets stuck.
+      noInfo: false, // Set to true to disable informational console logging.
+      quiet: false, // Set to true to disable all console logging.
+    },
+    (val, key) => `&${key}=${val}`,
+  ).join('')}`;
   const entry = webpackConfig.entry as webpack.Entry;
-  entry.app = [webpackHotMiddlewareEntry].concat(entry.app);
+  entry.app = [webpackHotMiddlewareEntry].concat((entry as webpack.Entry).app);
 
-  webpackConfig.plugins!.push(new webpack.HotModuleReplacementPlugin(), new webpack.NoEmitOnErrorsPlugin());
+  webpackConfig.plugins.push(new webpack.HotModuleReplacementPlugin(), new webpack.NoEmitOnErrorsPlugin());
 }
 
 if (__PROD__) {
-  webpackConfig.plugins!.push(
+  webpackConfig.plugins.push(
     new webpack.LoaderOptionsPlugin({
       minimize: true,
     }),
   );
 
-  webpackConfig.optimization!.minimizer = [
+  webpackConfig.optimization.minimizer = [
     new TerserPlugin({
       terserOptions: {
         output: {
@@ -174,7 +176,7 @@ if (__PROD__) {
 }
 
 if (process.env.ANALYZE) {
-  webpackConfig.plugins!.push(new BundleAnalyzerPlugin());
+  webpackConfig.plugins.push(new BundleAnalyzerPlugin());
 }
 
 export default webpackConfig;
