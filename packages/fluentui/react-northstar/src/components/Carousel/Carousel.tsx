@@ -231,7 +231,7 @@ export const Carousel: React.FC<WithAsProp<CarouselProps>> &
   const paddleNextRef = React.createRef<HTMLElement>();
   const paddlePreviousRef = React.createRef<HTMLElement>();
 
-  const focusItemAtIndex: DebounceResultFn<(index: number) => void> = _.debounce((index: number) => {
+  const focusItemAtIndex = _.debounce((index: number) => {
     itemRefs[index].current?.focus();
   }, 400);
 
