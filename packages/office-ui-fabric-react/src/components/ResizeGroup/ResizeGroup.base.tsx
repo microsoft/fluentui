@@ -357,6 +357,7 @@ function useResizingBehavior(props: IResizeGroupProps, rootRef: React.RefObject<
     }
   });
 
+  // Reset state when new data is provided
   React.useEffect(() => {
     setDataToMeasure(props.data);
     setResizeDirection('grow');
