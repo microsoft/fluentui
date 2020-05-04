@@ -208,6 +208,22 @@ export enum ImageLoadState {
 }
 
 // @public (undocumented)
+export interface IPopupProps extends React.HTMLAttributes<HTMLDivElement> {
+    ariaDescribedBy?: string;
+    ariaLabel?: string;
+    ariaLabelledBy?: string;
+    className?: string;
+    onDismiss?: (ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement> | KeyboardEvent) => any;
+    onRestoreFocus?: (options: {
+        originalElement?: HTMLElement | Window;
+        containsFocus: boolean;
+    }) => void;
+    role?: string;
+    // @deprecated
+    shouldRestoreFocus?: boolean;
+}
+
+// @public (undocumented)
 export interface ISearchBox {
     focus(): void;
     hasFocus(): boolean;
@@ -426,6 +442,9 @@ export enum KeyboardSpinDirection {
     up = 1
 }
 
+// @public
+export const Popup: React.ForwardRefExoticComponent<IPopupProps & React.RefAttributes<HTMLDivElement>>;
+
 // @public (undocumented)
 export const SearchBox: React.FunctionComponent<ISearchBoxProps>;
 
@@ -521,7 +540,6 @@ export * from "office-ui-fabric-react/lib/Panel";
 export * from "office-ui-fabric-react/lib/Persona";
 export * from "office-ui-fabric-react/lib/Pickers";
 export * from "office-ui-fabric-react/lib/Pivot";
-export * from "office-ui-fabric-react/lib/Popup";
 export * from "office-ui-fabric-react/lib/PositioningContainer";
 export * from "office-ui-fabric-react/lib/ProgressIndicator";
 export * from "office-ui-fabric-react/lib/Rating";
