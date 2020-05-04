@@ -369,9 +369,7 @@ function useResizingBehavior(props: IResizeGroupProps, rootRef: React.RefObject<
       if (measureContainer && rootRef.current) {
         const boundingRect = rootRef.current.getBoundingClientRect();
         containerDimension =
-          props.direction && props.direction === ResizeGroupDirection.vertical
-            ? boundingRect.height
-            : boundingRect.width;
+          props.direction === ResizeGroupDirection.vertical ? boundingRect.height : boundingRect.width;
       }
       const nextState = nextResizeGroupStateProvider.getNextState(
         props,
@@ -381,7 +379,7 @@ function useResizingBehavior(props: IResizeGroupProps, rootRef: React.RefObject<
           if (!refToMeasure.current) {
             return 0;
           }
-          return props.direction && props.direction === ResizeGroupDirection.vertical
+          return props.direction === ResizeGroupDirection.vertical
             ? refToMeasure.current.scrollHeight
             : refToMeasure.current.scrollWidth;
         },
