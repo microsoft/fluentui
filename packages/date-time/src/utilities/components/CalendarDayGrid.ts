@@ -1,6 +1,12 @@
-import { compareDates, compareDatePart, addDays, getDateRangeArray, isInDateRangeArray } from '../dateMath/DateMath';
-import { DayOfWeek, DateRangeType } from '../dateValues/DateValues';
-import { find } from '../../array';
+import {
+  compareDates,
+  compareDatePart,
+  addDays,
+  getDateRangeArray,
+  isInDateRangeArray,
+} from 'office-ui-fabric-react/lib/utilities/dateMath/DateMath';
+import { DayOfWeek, DateRangeType } from 'office-ui-fabric-react/lib/utilities/dateMath/DateValues';
+import { find } from '@uifabric/utilities';
 import { ICalendarStrings } from './Calendar';
 
 export const DAYS_IN_WEEK = 7;
