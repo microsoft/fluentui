@@ -1,12 +1,12 @@
 import * as React from 'react';
 import cx from 'classnames';
 import { useStylesheet } from '@fluentui/react-stylesheets';
-import * as classes from './ThemeProvider.scss';
 import { variablesToStyleObject } from './variablesToStyleObject';
 import { ThemeContext } from './ThemeContext';
 import { Theme, ThemePrepared } from './types';
 import { createTheme } from './createTheme';
 import { useTheme } from './useTheme';
+import * as classes from './ThemeProvider.scss';
 
 export type ThemeColorSet =
   | Partial<{
@@ -31,7 +31,7 @@ export interface ThemeProviderProps extends React.AllHTMLAttributes<{}> {
   theme?: Theme;
 }
 
-export const ThemeProvider = React.forwardRef<HTMLDivElement>(
+export const ThemeProvider = React.forwardRef<HTMLDivElement, ThemeProviderProps>(
   (
     { theme, className, style, ...rest }: React.PropsWithChildren<ThemeProviderProps>,
     ref: React.Ref<HTMLDivElement>,

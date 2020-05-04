@@ -48,7 +48,7 @@
     "typescript-plugin-css-modules": "^2.2.0"
   },
   "dependencies": {
-    "@fluentui/stylesheets": "^0.0.1",
+    "@fluentui/react-stylesheets": "^0.1.0",
     "@uifabric/set-version": "^7.0.11",
     "@uifabric/utilities": "^7.16.0",
     "classnames": "^2.2.6",

@@ -19,8 +19,7 @@
     "typeRoots": ["../../node_modules/@types", "../../typings"],
     "types": ["jest", "webpack-env", "custom-global"],
     "paths": {
-      "@fluentui/react-theme-provider/lib/*": ["./src/*"],
-      "@fluentui/react-theme-provider": ["./src"]
+      "@uifabric/*": "../*"
     }
   },
   "include": ["src"]

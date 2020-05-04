@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ThemeProvider renders a div 1`] = `
+<div
+  className=""
+  style={Object {}}
+>
+  Hello
+</div>
+`;
+
+exports[`ThemeProvider renders a div with styling 1`] = `
+<div
+  className=""
+  style={Object {}}
+>
+  Hello
+</div>
+`;
+
+exports[`ThemeProvider renders nested themes 1`] = `
+<div
+  className=""
+  style={Object {}}
+>
+  <div>
+    Light theme
+  </div>
+  <div
+    className=""
+    style={Object {}}
+  >
+    <div>
+      Dark theme
+    </div>
+  </div>
+</div>
+`;
