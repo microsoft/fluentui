@@ -191,7 +191,11 @@ export const Accordion: React.FC<WithAsProp<AccordionProps>> &
     true,
   );
 
-  let itemRefs = [];
+  const itemRefs = React.useMemo<React.RefObject<HTMLElement>[]>(
+    () => Array.from({ length: panels?.length }, () => React.createRef()),
+    [panels?.length],
+  );
+
   const defaultAccordionTitleId = React.useMemo(() => _.uniqueId('accordion-title-'), []);
   const defaultAccordionContentId = React.useMemo(() => _.uniqueId('accordion-content-'), []);
 
@@ -247,17 +251,14 @@ export const Accordion: React.FC<WithAsProp<AccordionProps>> &
 
   const renderPanels = () => {
     const children: any[] = [];
-
-    itemRefs = [];
     focusHandler.syncFocusedIndex(focusedIndex);
     _.each(panels, (panel, index) => {
       const { content, title } = panel;
       const active = isIndexActive(+index);
       const canBeCollapsed = isIndexActionable(+index);
-      const contentRef = React.createRef<HTMLElement>();
       const titleId = title['id'] || `${defaultAccordionTitleId}${index}`;
       const contentId = content['id'] || `${defaultAccordionContentId}${index}`;
-      itemRefs[index] = contentRef;
+      const contentRef = itemRefs[index];
 
       children.push(
         createShorthand(AccordionTitle, title, {
