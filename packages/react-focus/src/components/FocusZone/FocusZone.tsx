@@ -178,7 +178,9 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     if (
       doc &&
       this._lastIndexPath &&
-      (doc.activeElement === doc.body || doc.activeElement === root || doc.activeElement === null)
+      (doc.activeElement === doc.body ||
+        doc.activeElement === null ||
+        (!this.props.preventFocusRestoration && doc.activeElement === root))
     ) {
       // The element has been removed after the render, attempt to restore focus.
       const elementToFocus = getFocusableByIndexPath(root as HTMLElement, this._lastIndexPath);
@@ -537,7 +539,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     }
 
     // tslint:disable-next-line:deprecation
-    const { direction, disabled, isInnerZoneKeystroke, shouldEnterInnerZone } = this.props;
+    const { direction, disabled, isInnerZoneKeystroke, pagingSupportDisabled, shouldEnterInnerZone } = this.props;
 
     if (disabled) {
       return;
@@ -630,12 +632,12 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
           }
           return;
         case KeyCodes.pageDown:
-          if (this._moveFocusPaging(true)) {
+          if (this._moveFocusPaging(true) && !pagingSupportDisabled) {
             break;
           }
           return;
         case KeyCodes.pageUp:
-          if (this._moveFocusPaging(false)) {
+          if (this._moveFocusPaging(false) && !pagingSupportDisabled) {
             break;
           }
           return;
@@ -970,10 +972,8 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
             this.props.direction !== FocusZoneDirection.vertical
           ) {
             distance = activeRect.right - targetRect.right;
-          } else {
-            if (!shouldWrap) {
-              distance = LARGE_NEGATIVE_DISTANCE_FROM_CENTER;
-            }
+          } else if (!shouldWrap) {
+            distance = LARGE_NEGATIVE_DISTANCE_FROM_CENTER;
           }
 
           return distance;
@@ -1053,18 +1053,15 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
         return 0;
       }
       return Math.abs(targetRect.left + targetRect.width / 2 - leftAlignment);
-    } else {
-      if (!this._shouldWrapFocus(this._activeElement as HTMLElement, NO_VERTICAL_WRAP)) {
-        return LARGE_NEGATIVE_DISTANCE_FROM_CENTER;
-      }
-      return LARGE_DISTANCE_FROM_CENTER;
     }
+
+    if (!this._shouldWrapFocus(this._activeElement as HTMLElement, NO_VERTICAL_WRAP)) {
+      return LARGE_NEGATIVE_DISTANCE_FROM_CENTER;
+    }
+    return LARGE_DISTANCE_FROM_CENTER;
   };
 
   private _moveFocusPaging(isForward: boolean, useDefaultWrap: boolean = true): boolean {
-    if (useDefaultWrap === void 0) {
-      useDefaultWrap = true;
-    }
     let element = this._activeElement;
     if (!element || !this._root.current) {
       return false;
@@ -1112,11 +1109,9 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
             targetBottom = targetRectBottom;
             candidateDistance = elementDistance;
             candidateElement = element;
-          } else {
-            if (candidateDistance === -1 || elementDistance <= candidateDistance) {
-              candidateDistance = elementDistance;
-              candidateElement = element;
-            }
+          } else if (candidateDistance === -1 || elementDistance <= candidateDistance) {
+            candidateDistance = elementDistance;
+            candidateElement = element;
           }
         }
       }

@@ -35,19 +35,18 @@
     "@types/react-dom": "{{{typesReactDom}}}",
     "@types/react-test-renderer": "{{{typesReactTestRenderer}}}",
     "@types/webpack-env": "{{{typesWebpackEnv}}}",
-    "@uifabric/build": "{{{uifabricBuild}}}",
-    "@uifabric/tslint-rules": "{{{uifabricTslintRules}}}",
+    "@uifabric/build": "7.0.0",
+    "@uifabric/tslint-rules": "7.2.0",
     "enzyme": "{{{enzyme}}}",
     "enzyme-adapter-react-16": "{{{enzymeAdapterReact16}}}",
     "es6-weak-map": "{{{es6WeakMap}}}",
     "react": "{{{react}}}",
     "react-app-polyfill": "{{{reactAppPolyfill}}}",
     "react-dom": "{{{reactDom}}}",
-    "react-test-renderer": "{{{reactTestRenderer}}}",
-    "typescript-plugin-css-modules": "{{{typescriptPluginCssModules}}}"
+    "react-test-renderer": "{{{reactTestRenderer}}}"
   },
   "dependencies": {
-    "@uifabric/set-version": "{{{uifabricSetVersion}}}",
+    "@uifabric/set-version": "7.0.11",
     "tslib": "{{{tslib}}}"
   },
   "peerDependencies": {
