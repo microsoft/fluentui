@@ -46,7 +46,9 @@ export const ToggleBase: React.FunctionComponent = React.forwardRef(
       keytipProps,
       label,
       ariaLabel,
+      /* tslint:disable-next-line:deprecation */
       onAriaLabel,
+      /* tslint:disable-next-line:deprecation */
       offAriaLabel,
       offText,
       onText,
