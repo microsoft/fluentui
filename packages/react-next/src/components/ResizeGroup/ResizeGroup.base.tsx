@@ -308,22 +308,11 @@ const hiddenDivStyles: React.CSSProperties = { position: 'fixed', visibility: 'h
 const hiddenParentStyles: React.CSSProperties = { position: 'relative' };
 const COMPONENT_NAME = 'ResizeGroup';
 
-function useResizingBehavior(props: IResizeGroupProps, rootRef: React.RefObject<HTMLDivElement | null>) {
-  const nextResizeGroupStateProvider = useConst(getNextResizeGroupStateProvider);
-
-  // A div that can be used for the initial measurement so that we can avoid mounting a second instance
-  // of the component being measured for the initial render.
-  const initialHiddenDiv = React.useRef<HTMLDivElement | null>(null);
-  // A hidden div that is used for mounting a new instance of the component for measurement in a hidden
-  // div without unmounting the currently visible content.
-  const updateHiddenDiv = React.useRef<HTMLDivElement | null>(null);
-
-  // Tracks if any content has been rendered to the user. This enables us to do some performance optimizations
-  // for the initial render.
-  const hasRenderedContent = React.useRef(false);
-
-  const async: Async = useAsync();
-
+function useResizeState(
+  props: IResizeGroupProps,
+  nextResizeGroupStateProvider: ReturnType<typeof getNextResizeGroupStateProvider>,
+  rootRef: React.RefObject<HTMLDivElement | null>,
+) {
   const initialStateData = useConst(() => nextResizeGroupStateProvider.getInitialResizeGroupState(props.data));
   /**
    * Final data used to render proper sized component
@@ -350,13 +339,6 @@ function useResizingBehavior(props: IResizeGroupProps, rootRef: React.RefObject<
    */
   const [resizeDirection, setResizeDirection] = React.useState(initialStateData.resizeDirection);
 
-  React.useEffect(() => {
-    if (renderedData) {
-      hasRenderedContent.current = true;
-      props.dataDidRender?.(renderedData);
-    }
-  });
-
   // Reset state when new data is provided
   React.useEffect(() => {
     setDataToMeasure(props.data);
@@ -364,17 +346,65 @@ function useResizingBehavior(props: IResizeGroupProps, rootRef: React.RefObject<
     setMeasureContainer(true);
   }, [props.data]);
 
+  // Because it's possible that we may force more than one rerender per animation frame, we
+  // want to make sure that the RAF request is using the most recent data.
+  const stateRef = React.useRef<IResizeGroupState>(initialStateData);
+  stateRef.current = { renderedData, dataToMeasure, measureContainer, resizeDirection };
+
+  function updateResizeState(nextState?: IResizeGroupState) {
+    if (nextState) {
+      setRenderedData(nextState.renderedData);
+      setDataToMeasure(nextState.dataToMeasure);
+      setMeasureContainer(nextState.measureContainer);
+      setResizeDirection(nextState.resizeDirection);
+    }
+  }
+
+  function remeasure(): void {
+    if (rootRef.current) {
+      setMeasureContainer(true);
+    }
+  }
+
+  return [stateRef, updateResizeState, remeasure] as const;
+}
+
+function useResizingBehavior(props: IResizeGroupProps, rootRef: React.RefObject<HTMLDivElement | null>) {
+  const nextResizeGroupStateProvider = useConst(getNextResizeGroupStateProvider);
+
+  // A div that can be used for the initial measurement so that we can avoid mounting a second instance
+  // of the component being measured for the initial render.
+  const initialHiddenDiv = React.useRef<HTMLDivElement | null>(null);
+  // A hidden div that is used for mounting a new instance of the component for measurement in a hidden
+  // div without unmounting the currently visible content.
+  const updateHiddenDiv = React.useRef<HTMLDivElement | null>(null);
+
+  // Tracks if any content has been rendered to the user. This enables us to do some performance optimizations
+  // for the initial render.
+  const hasRenderedContent = React.useRef(false);
+
+  const async: Async = useAsync();
+
+  const [stateRef, updateResizeState, remeasure] = useResizeState(props, nextResizeGroupStateProvider, rootRef);
+
+  React.useEffect(() => {
+    if (stateRef.current.renderedData) {
+      hasRenderedContent.current = true;
+      props.dataDidRender?.(stateRef.current.renderedData);
+    }
+  });
+
   React.useEffect((): void => {
     async.requestAnimationFrame(() => {
       let containerDimension = undefined;
-      if (measureContainer && rootRef.current) {
+      if (stateRef.current.measureContainer && rootRef.current) {
         const boundingRect = rootRef.current.getBoundingClientRect();
         containerDimension =
           props.direction === ResizeGroupDirection.vertical ? boundingRect.height : boundingRect.width;
       }
       const nextState = nextResizeGroupStateProvider.getNextState(
         props,
-        { renderedData, dataToMeasure, measureContainer, resizeDirection },
+        stateRef.current,
         () => {
           const refToMeasure = !hasRenderedContent.current ? initialHiddenDiv : updateHiddenDiv;
           if (!refToMeasure.current) {
@@ -387,30 +417,21 @@ function useResizingBehavior(props: IResizeGroupProps, rootRef: React.RefObject<
         containerDimension,
       );
 
-      if (nextState) {
-        setRenderedData(nextState.renderedData);
-        setDataToMeasure(nextState.dataToMeasure);
-        setMeasureContainer(nextState.measureContainer);
-        setResizeDirection(nextState.resizeDirection);
-      }
+      updateResizeState(nextState);
     });
   });
 
-  const remeasure = (): void => {
-    if (rootRef.current) {
-      setMeasureContainer(true);
-    }
-  };
-
   useOnEvent(window, 'resize', async.debounce(remeasure, RESIZE_DELAY, { leading: true }));
 
-  const dataNeedsMeasuring = nextResizeGroupStateProvider.shouldRenderDataForMeasurement(dataToMeasure);
+  const dataNeedsMeasuring = nextResizeGroupStateProvider.shouldRenderDataForMeasurement(
+    stateRef.current.dataToMeasure,
+  );
 
   const isInitialMeasure = !hasRenderedContent.current && dataNeedsMeasuring;
 
   return [
-    dataToMeasure,
-    renderedData,
+    stateRef.current.dataToMeasure,
+    stateRef.current.renderedData,
     remeasure,
     initialHiddenDiv,
     updateHiddenDiv,
