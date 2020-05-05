@@ -76,9 +76,9 @@ common/_themeOverrides.scss @phkuo
 common/_common.scss @phkuo
 
 ## Components
-packages/office-ui-fabric-react/src/components/ActivityItem/ @jdhuntington
+packages/office-ui-fabric-react/src/components/ActivityItem/ @xugao
 packages/office-ui-fabric-react/src/components/Announced/ @natalieethell
-packages/office-ui-fabric-react/src/components/Breadcrumb/ @jdhuntington
+packages/office-ui-fabric-react/src/components/Breadcrumb/ @xugao
 packages/office-ui-fabric-react/src/components/Button/ @khmakoto
 packages/office-ui-fabric-react/src/components/Calendar/ @lorejoh
 packages/office-ui-fabric-react/src/components/Callout/ @joschect
@@ -113,7 +113,7 @@ packages/office-ui-fabric-react/src/components/List/ @KevinTCoughlin
 packages/office-ui-fabric-react/src/components/MarqueeSelection/ @dzearing
 packages/office-ui-fabric-react/src/components/MessageBar/ @ecraig12345
 packages/office-ui-fabric-react/src/components/Modal/ @joschect
-packages/office-ui-fabric-react/src/components/Nav/ @jdhuntington
+packages/office-ui-fabric-react/src/components/Nav/ @ecraig12345
 packages/office-ui-fabric-react/src/components/OverflowSet/ @micahgodbolt
 packages/office-ui-fabric-react/src/components/Overlay/ @aneeshack4
 packages/office-ui-fabric-react/src/components/Pagination/ @caradong
@@ -122,7 +122,7 @@ packages/office-ui-fabric-react/src/components/Persona/ @markionium @mtennoe
 packages/office-ui-fabric-react/src/components/PersonaCoin/ @mtennoe @markionium
 packages/office-ui-fabric-react/src/components/Persona/PersonaConsts.tsx @mtennoe
 packages/office-ui-fabric-react/src/components/pickers/  @joschect
-packages/office-ui-fabric-react/src/components/Pivot/ @jdhuntington
+packages/office-ui-fabric-react/src/components/Pivot/ @behowell
 packages/office-ui-fabric-react/src/components/Popup/ @joschect
 packages/office-ui-fabric-react/src/components/ProgressIndicator/ @aneeshack4
 packages/office-ui-fabric-react/src/components/Rating/ @jdhuntington
