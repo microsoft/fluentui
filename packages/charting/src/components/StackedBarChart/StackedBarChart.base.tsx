@@ -242,6 +242,11 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
         prevPosition += value;
       }
       value = (pointData / total) * 100;
+      if (value < 1) {
+        value = 1;
+      } else if (value > 99) {
+        value = 99;
+      }
       startingPoint.push(prevPosition);
       const styles = this.props.styles;
       let shouldHighlight = true;

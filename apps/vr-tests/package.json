@@ -15,10 +15,10 @@
   },
   "dependencies": {
     "@uifabric/example-data": "^7.0.12",
-    "@uifabric/experiments": "^7.23.17",
+    "@uifabric/experiments": "^7.23.18",
     "@uifabric/react-cards": "^0.109.69",
     "@uifabric/set-version": "^7.0.11",
-    "office-ui-fabric-react": "^7.110.1",
+    "office-ui-fabric-react": "^7.110.2",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",

@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "add fill currentColor",
-  "packageName": "@fluentui/react-icons",
-  "email": "mnajdova@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-04-30T16:28:56.259Z"
-}
