@@ -15,7 +15,6 @@ import {
   applyAccessibilityKeyHandlers,
   childrenExist,
   ChildrenComponentProps,
-  getOrGenerateIdFromShorthand,
   AutoControlledComponent,
   isFromKeyboard,
 } from '../../utils';
