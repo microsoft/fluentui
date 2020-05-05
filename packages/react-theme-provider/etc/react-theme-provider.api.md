@@ -29,8 +29,11 @@ export interface ThemePrepared {
 
 // Warning: (ae-forgotten-export) The symbol "ThemeProviderProps" needs to be exported by the entry point index.d.ts
 //
-// @public (undocumented)
+// @public
 export const ThemeProvider: React.ForwardRefExoticComponent<ThemeProviderProps & React.RefAttributes<HTMLDivElement>>;
+
+// @public (undocumented)
+export const useTheme: () => {};
 
 
 // Warnings were encountered during analysis:
