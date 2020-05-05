@@ -157,8 +157,23 @@ export const getPointerStyles = (options: GetPointerStylesOptions): ICSSInJSStyl
       }),
     },
 
-    // :before & :after are used to draw CSS triangles, not valid for SVG
     ...(svg && {
+      // svg uses different model, height should not be included
+      ...(placement === 'bottom' && {
+        top: `calc(${padding} + (${borderSize} * 2))`,
+      }),
+      ...(placement === 'top' && {
+        bottom: `calc(${padding} + ${borderSize})`,
+      }),
+
+      ...(placement === 'left' && {
+        right: `calc(${padding} + ${borderSize})`,
+      }),
+      ...(placement === 'right' && {
+        left: `calc(${padding} + ${borderSize})`,
+      }),
+
+      // :before & :after are used to draw CSS triangles, not valid for SVG
       '::before': {
         content: '" "',
         backgroundImage: svg,
