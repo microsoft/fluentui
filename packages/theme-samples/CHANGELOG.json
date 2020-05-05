@@ -2,6 +2,21 @@
   "name": "@uifabric/theme-samples",
   "entries": [
     {
+      "date": "Tue, 05 May 2020 12:34:22 GMT",
+      "tag": "@uifabric/theme-samples_v7.0.67",
+      "version": "7.0.67",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adds disabled color to DatePicker",
+            "author": "email not defined",
+            "commit": "a52922b26eeae69cb0acbfbba2c9d209b3c3aa71",
+            "package": "@uifabric/theme-samples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 30 Apr 2020 12:31:44 GMT",
       "tag": "@uifabric/theme-samples_v7.0.64",
       "version": "7.0.64",

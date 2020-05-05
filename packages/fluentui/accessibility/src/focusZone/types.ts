@@ -90,6 +90,12 @@ export interface FocusZoneProperties {
   shouldInputLoseFocusOnArrowKey?: (inputElement: HTMLInputElement) => boolean;
 
   /**
+   * Determines whether to disable the paging support for Page Up and Page Down keyboard scenarios.
+   * @defaultvalue false
+   */
+  pagingSupportDisabled?: boolean;
+
+  /**
    * If true, focus event propagation will be stopped.
    */
   stopFocusPropagation?: boolean;
