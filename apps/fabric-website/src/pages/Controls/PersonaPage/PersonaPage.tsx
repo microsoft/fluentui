@@ -4,6 +4,7 @@ import { ControlsAreaPage, IControlsPageProps } from '../ControlsAreaPage';
 import { PersonaPageProps } from './PersonaPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
 import { ImplementationSection } from '@uifabric/example-app-base/lib/index2';
+import { ApiKind } from 'office-ui-fabric-react/lib/common/DocPage.types';
 
 const baseUrl = 'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Controls/PersonaPage/';
 
@@ -61,7 +62,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
               jsonDocs={{
                 tables: [
                   {
-                    kind: 'interface',
+                    kind: 'interface' as ApiKind,
                     name: 'IPersonaCoinProps',
                     description: '\n',
                     members: [
@@ -120,7 +121,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                     ],
                   },
                   {
-                    kind: 'enum',
+                    kind: 'enum' as ApiKind,
                     name: 'PersonaPresence',
                     description: '\n',
                     members: [],

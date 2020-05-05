@@ -5,6 +5,7 @@ import { ButtonPageProps } from './ButtonPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
 import { IPageSectionProps } from '@uifabric/example-app-base/lib/index2';
 import { ImplementationSection } from '@uifabric/example-app-base/lib/index2';
+import { ApiKind } from 'office-ui-fabric-react/lib/common/DocPage.types';
 
 const toggleStyles: Partial<IToggleStyles> = {
   root: { margin: '10px 0' },
@@ -96,7 +97,7 @@ export class ButtonPage extends React.Component<
                 jsonDocs={{
                   tables: [
                     {
-                      kind: 'interface',
+                      kind: 'interface' as ApiKind,
                       name: 'IButtonProps',
                       description: '\n',
                       members: [
@@ -144,7 +145,7 @@ export class ButtonPage extends React.Component<
                       ],
                     },
                     {
-                      kind: 'interface',
+                      kind: 'interface' as ApiKind,
                       name: 'IButtonTokens',
                       description: '\n',
                       extendsTokens: [
@@ -271,7 +272,7 @@ export class ButtonPage extends React.Component<
                 jsonDocs={{
                   tables: [
                     {
-                      kind: 'interface',
+                      kind: 'interface' as ApiKind,
                       name: 'IButtonProps',
                       description: '\n',
                       members: [
@@ -319,7 +320,7 @@ export class ButtonPage extends React.Component<
                       ],
                     },
                     {
-                      kind: 'interface',
+                      kind: 'interface' as ApiKind,
                       name: 'IButtonTokens',
                       description: '\n',
                       extendsTokens: [

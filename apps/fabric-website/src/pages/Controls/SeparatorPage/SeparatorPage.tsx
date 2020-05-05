@@ -4,6 +4,7 @@ import { SeparatorPageProps } from './SeparatorPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
 import { IPageSectionProps } from '@uifabric/example-app-base/lib/index2';
 import { ImplementationSection } from '@uifabric/example-app-base/lib/index2';
+import { ApiKind } from 'office-ui-fabric-react/lib/common/DocPage.types';
 
 const baseUrl =
   'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Controls/SeparatorPage/';
@@ -50,7 +51,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
               jsonDocs={{
                 tables: [
                   {
-                    kind: 'interface',
+                    kind: 'interface' as ApiKind,
                     name: 'ISeparatorPropTokens ',
                     description: '\n',
                     members: [
@@ -69,7 +70,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                     ],
                   },
                   {
-                    kind: 'interface',
+                    kind: 'interface' as ApiKind,
                     name: 'ISeparatorTokens ',
                     description: '\n',
                     members: [
