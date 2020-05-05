@@ -632,12 +632,12 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
           }
           return;
         case KeyCodes.pageDown:
-          if (this._moveFocusPaging(true) && !pagingSupportDisabled) {
+          if (!pagingSupportDisabled && this._moveFocusPaging(true)) {
             break;
           }
           return;
         case KeyCodes.pageUp:
-          if (this._moveFocusPaging(false) && !pagingSupportDisabled) {
+          if (!pagingSupportDisabled && this._moveFocusPaging(false)) {
             break;
           }
           return;

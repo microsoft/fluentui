@@ -81,6 +81,8 @@ const useAccessibility = <Props>(behavior: Accessibility<Props>, options: UseAcc
       }
 
       return React.createElement(FocusZone, {
+        // maintain behavior of focus zone in v7 behaviors
+        preventFocusRestoration: true,
         ...definition.focusZone.props,
         ...child.props,
         as: child.type,

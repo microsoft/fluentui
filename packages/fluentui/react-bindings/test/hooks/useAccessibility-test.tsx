@@ -322,6 +322,18 @@ describe('useAccessibility', () => {
       );
     });
 
+    it('applies default props for focuszonr', () => {
+      expect(
+        shallow(<FocusZoneComponent />)
+          .find('FocusZone')
+          .props(),
+      ).toEqual(
+        expect.objectContaining({
+          preventFocusRestoration: true,
+        }),
+      );
+    });
+
     it('passes "rtl" value', () => {
       expect(
         shallow(<FocusZoneComponent />)
