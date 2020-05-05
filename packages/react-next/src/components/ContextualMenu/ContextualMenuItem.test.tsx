@@ -1,4 +1,4 @@
-jest.mock('../../utilities/contextualMenu');
+jest.mock('office-ui-fabric-react/lib/utilities/contextualMenu');
 
 import * as React from 'react';
 import { shallow, ShallowWrapper } from 'enzyme';
