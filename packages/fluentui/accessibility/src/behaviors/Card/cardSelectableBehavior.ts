@@ -7,7 +7,7 @@ import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
  * @description
  * Behavior for a selectable card component
  * @specification
- * Adds role='option'.
+ * Adds role='group'.
  * Adds attribute 'aria-disabled=true' based on the property 'disabled'.
  * Adds attribute 'aria-selected=true' based on the property 'selected'.
  * Adds attribute 'tabIndex=0' to 'root' slot.
@@ -17,7 +17,7 @@ import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
 const cardSelectableBehavior: Accessibility<CardBehaviorProps> = props => ({
   attributes: {
     root: {
-      role: 'option',
+      role: 'group',
       tabIndex: 0,
       [IS_FOCUSABLE_ATTRIBUTE]: true,
       'aria-disabled': props.disabled,

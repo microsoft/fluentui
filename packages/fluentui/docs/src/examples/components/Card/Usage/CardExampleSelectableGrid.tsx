@@ -5,9 +5,10 @@ import {
   Card,
   cardSelectableBehavior,
   Grid,
-  selectableCardsContainerBehavior,
+  cardsContainerBehavior,
   Checkbox,
   Button,
+  screenReaderContainerStyles,
 } from '@fluentui/react-northstar';
 import * as React from 'react';
 import * as _ from 'lodash';
@@ -18,7 +19,7 @@ type SelectableCardProps = {
   handleClick?: Function;
 };
 
-const SelectableCard: React.FC<SelectableCardProps> = ({ index, selected, handleClick }) => {
+const SelectableCard: React.FC<SelectableCardProps> = ({ index, selected, handleClick, ...unhadledProps }) => {
   return (
     <Card
       accessibility={cardSelectableBehavior}
@@ -27,6 +28,7 @@ const SelectableCard: React.FC<SelectableCardProps> = ({ index, selected, handle
         handleClick(!selected, index);
       }}
       selected={selected}
+      {...unhadledProps}
     >
       <Card.TopControls>
         <Checkbox
@@ -78,6 +80,13 @@ const selectableCardsGridStateReducer: React.Reducer<SelectableCardsGridState, S
 };
 
 const CardExampleSelectableGrid = () => {
+  // Custom label setup
+  const selectedMessageId = 'selectedMessageId';
+  const notSelectedMessageId = 'notSelectedMessageId';
+  const selectedMessage = 'selected';
+  const notSelectedMessage = 'not selected';
+
+  // Component setup
   const cardsNumber = 12;
   const cards = Array(cardsNumber)
     .fill(undefined)
@@ -95,6 +104,12 @@ const CardExampleSelectableGrid = () => {
 
   return (
     <>
+      <div id={selectedMessageId} style={screenReaderContainerStyles}>
+        {selectedMessage}
+      </div>
+      <div id={notSelectedMessageId} style={screenReaderContainerStyles}>
+        {notSelectedMessage}
+      </div>
       <Button
         content="Select all"
         onClick={() => {
@@ -107,13 +122,14 @@ const CardExampleSelectableGrid = () => {
           dispatch({ type: 'TOGGLE_ALL', selected: false });
         }}
       />
-      <Grid accessibility={selectableCardsContainerBehavior} columns="3">
+      <Grid accessibility={cardsContainerBehavior} columns="3">
         {cards.map(card => {
           return (
             <SelectableCard
               key={card.key}
               index={card.key}
               aria-label={`${card.key} of ${cardsNumber}`}
+              aria-describedby={state.cards[card.key] ? selectedMessageId : notSelectedMessageId}
               handleClick={handleClick}
               selected={state.cards[card.key]}
             />
