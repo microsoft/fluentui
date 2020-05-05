@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Styling tsconfing: adding noImplicitAnies and noUnusedLocals.",
+  "comment": "Styling tsconfig: adding noImplicitAny and noUnusedLocals.",
   "packageName": "@uifabric/styling",
   "email": "dzearing@microsoft.com",
   "dependentChangeType": "patch",
