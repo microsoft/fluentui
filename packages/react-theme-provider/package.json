@@ -30,7 +30,6 @@
     "@types/classnames": "2.2.10",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
-    "@types/es6-promise": "0.0.32",
     "@types/jest": "~24.9.0",
     "@types/react": "16.8.25",
     "@types/react-dom": "16.8.4",
@@ -42,15 +41,13 @@
     "enzyme-adapter-react-16": "^1.15.0",
     "es6-weak-map": "^2.0.2",
     "react": "16.8.6",
-    "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",
-    "react-test-renderer": "^16.3.0",
-    "typescript-plugin-css-modules": "^2.2.0"
+    "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-stylesheets": "^0.1.0",
+    "@fluentui/react-stylesheets": "^0.1.1",
     "@uifabric/set-version": "^7.0.11",
-    "@uifabric/utilities": "^7.16.0",
+    "@uifabric/utilities": "^7.16.1",
     "classnames": "^2.2.6",
     "tslib": "^1.10.0"
   },

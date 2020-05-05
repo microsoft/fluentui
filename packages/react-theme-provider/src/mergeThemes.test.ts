@@ -1,8 +1,8 @@
-import { createTheme } from './createTheme';
+import { mergeThemes } from './mergeThemes';
 
-describe('createTheme', () => {
+describe('mergeThemes', () => {
   it('fills in blanks', () => {
-    expect(createTheme({})).toEqual({
+    expect(mergeThemes({})).toEqual({
       stylesheets: [],
       tokens: {},
     });
@@ -10,7 +10,7 @@ describe('createTheme', () => {
 
   it('can merge 2 themes', () => {
     expect(
-      createTheme(
+      mergeThemes(
         {
           tokens: {
             body: {
@@ -33,7 +33,7 @@ describe('createTheme', () => {
   });
 
   it('can merge stylesheets', () => {
-    expect(createTheme({ stylesheets: ['a', 'b'] }, { stylesheets: ['c', 'd'] })).toEqual({
+    expect(mergeThemes({ stylesheets: ['a', 'b'] }, { stylesheets: ['c', 'd'] })).toEqual({
       stylesheets: ['a', 'b', 'c', 'd'],
       tokens: {},
     });

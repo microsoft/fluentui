@@ -9,7 +9,6 @@ export const tokensToStyleObject = (
     [key: string]: string | number | undefined;
   } = {},
 ) => {
-  console.log('tokens', tokens, prefix, style);
   for (const name in tokens) {
     if (tokens.hasOwnProperty(name)) {
       const varName = prefix ? `${prefix}${name === 'default' ? '' : '-' + name}` : `--${name}`;

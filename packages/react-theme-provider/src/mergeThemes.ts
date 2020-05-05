@@ -5,7 +5,7 @@ import { createDefaultTheme } from './createDefaultTheme';
 /**
  * Merges all themes on top of a blank initial theme and ensures the theme is fully qualified.
  */
-export const createTheme = (...themes: (undefined | Theme | ThemePrepared)[]): ThemePrepared => {
+export const mergeThemes = (...themes: (undefined | Theme | ThemePrepared)[]): ThemePrepared => {
   const partialTheme = merge<Theme>(createDefaultTheme(), ...themes);
 
   // Correctly merge stylesheets array

@@ -2,19 +2,17 @@
 
 **React theming component and hook for [Fluent UI React](https://developer.microsoft.com/en-us/fluentui)**
 
-# Installation
+## Installation
 
 ```bash
 yarn add @fluentui/react-theme-provider
 ```
 
-# Example usage
+## Example usage
 
 First, ensure you use an existing theme, or create your own. Example:
 
 ```js
-/**
- * Note: Themes are partial by default. They will become fully qualified
 export const theme: Theme = {
   /* Provide any stylesheets which should come along with the theme */
   stylesheets: [
@@ -24,13 +22,9 @@ export const theme: Theme = {
 
   /* Provide standard fluent tokens here. */
   tokens: {
-
     body: {
-      fill: {}
-    },
-
-    site: {
-
+      fill: '#fafafa',
+      text: '#333'
     }
   }
 };
@@ -49,17 +43,9 @@ export const App = () => (
 );
 ```
 
-## Applying the theme to the body element
-
-By default, the `ThemeProvider` will render a `div` element, applying the correct localized styling to that element which follows the site tokens. You can also apply these rules to the `body` element as well using the `applyToBody` prop:
-
-```tsx
-<ThemeProvider theme={theme} applyToBody>
-  ...
-</ThemeProvider>
-```
-
 ## `ThemeProvider` api
+
+The `ThemeProvider` component takes all default `div` html attributes, in addition to the following:
 
 | Prop name | Description       |
 | --------- | ----------------- |

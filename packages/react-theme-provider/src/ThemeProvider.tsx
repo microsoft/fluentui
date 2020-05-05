@@ -4,7 +4,7 @@ import { useStylesheet } from '@fluentui/react-stylesheets';
 import { tokensToStyleObject } from './tokensToStyleObject';
 import { ThemeContext } from './ThemeContext';
 import { Theme, ThemePrepared } from './types';
-import { createTheme } from './createTheme';
+import { mergeThemes } from './mergeThemes';
 import { useTheme } from './useTheme';
 import * as classes from './ThemeProvider.scss';
 
@@ -27,7 +27,7 @@ export const ThemeProvider = React.forwardRef<HTMLDivElement, ThemeProviderProps
     const parentTheme = useTheme();
 
     // Merge the theme only when parent theme or props theme mutates.
-    const fullTheme = React.useMemo<ThemePrepared>(() => createTheme(parentTheme, theme), [parentTheme, theme]);
+    const fullTheme = React.useMemo<ThemePrepared>(() => mergeThemes(parentTheme, theme), [parentTheme, theme]);
 
     // Generate the inline style object only when merged theme mutates.
     const inlineStyle = React.useMemo<React.CSSProperties>(
@@ -35,17 +35,17 @@ export const ThemeProvider = React.forwardRef<HTMLDivElement, ThemeProviderProps
       [fullTheme, style],
     );
 
-    console.log(theme, fullTheme.tokens, inlineStyle);
-
     // Register stylesheets as needed.
     useStylesheet(fullTheme.stylesheets);
 
     // Provide the theme in case it's required through context.
+    // tslint:disable:jsx-ban-props
     return (
       <ThemeContext.Provider value={fullTheme}>
         <div {...rest} ref={ref} className={cx(className, classes.root)} style={inlineStyle} />
       </ThemeContext.Provider>
     );
+    // tslint:enable:jsx-ban-props
   },
 );
 
