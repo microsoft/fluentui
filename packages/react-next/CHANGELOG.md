@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-next
 
-This log was last generated on Mon, 04 May 2020 12:33:29 GMT and should not be manually modified.
+This log was last generated on Tue, 05 May 2020 12:34:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-alpha.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.10)
+
+Tue, 05 May 2020 12:34:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.9..@fluentui/react-next_v8.0.0-alpha.10)
+
+### Changes
+
+- Adding SearchBox to React-Next for future update to Function Component ([PR #12909](https://github.com/microsoft/fluentui/pull/12909) by czearing@outlook.com)
+- Migrate Popup to a function component ([PR #12926](https://github.com/microsoft/fluentui/pull/12926) by miclo@microsoft.com)
+- Copying Slider to react-next, in preparation for converting to function component ([PR #12972](https://github.com/microsoft/fluentui/pull/12972) by czearing@outlook.com)
+- Updating Checkbox tests to use resetIds for more reliable snapshots. ([PR #12974](https://github.com/microsoft/fluentui/pull/12974) by czearing@outlook.com)
 
 ## [8.0.0-alpha.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.9)
 

@@ -2,6 +2,39 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Tue, 05 May 2020 12:34:22 GMT",
+      "tag": "office-ui-fabric-react_v7.110.3",
+      "version": "7.110.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding missing changes due to move from IPoint to Point.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "5b4b9b5feeac6f08f14125be35d7af1ffb7039cf",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Add logic to cap the number we show in the facepile descrtiptive overflow at 99 to prevent text overflow",
+            "author": "tabrumle@microsoft.com",
+            "commit": "058709f923b04aca1beae41ea3551111615de0ae",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Prettier fix in Callout test.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "6c055de8e22610b9f96d29e0667f019d669b7df1",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "MarqueeSelection: Fixing drag and drop functionality.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "c3c62b68529bf5e2ac49a245845bdf6e9471c6d8",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 04 May 2020 12:33:29 GMT",
       "tag": "office-ui-fabric-react_v7.110.2",
       "version": "7.110.2",
