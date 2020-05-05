@@ -6,7 +6,6 @@ import { getIsChecked, isItemDisabled, hasSubmenu, getMenuItemAriaRole } from '.
 import { ContextualMenuItem } from '../ContextualMenuItem';
 import { IKeytipDataProps } from '../../KeytipData/KeytipData.types';
 import { IKeytipProps } from '../../Keytip/Keytip.types';
-import { itemButton } from '../../pickers/Suggestions/Suggestions.scss';
 
 export class ContextualMenuButton extends ContextualMenuItemWrapper {
   private _btn = React.createRef<HTMLButtonElement>();
