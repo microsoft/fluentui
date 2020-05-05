@@ -34,6 +34,22 @@ export const Fabric: React.FunctionComponent<IFabricProps>;
 export const FabricBase: React.ForwardRefExoticComponent<IFabricProps & React.RefAttributes<HTMLDivElement>>;
 
 // @public
+export const getMeasurementCache: () => {
+    getCachedMeasurement: (data: any) => number | undefined;
+    addMeasurementToCache: (data: any, measurement: number) => void;
+};
+
+// @public
+export const getNextResizeGroupStateProvider: (measurementCache?: {
+    getCachedMeasurement: (data: any) => number | undefined;
+    addMeasurementToCache: (data: any, measurement: number) => void;
+}) => {
+    getNextState: (props: IResizeGroupProps, currentState: IResizeGroupState, getElementToMeasureDimension: () => number, newContainerDimension?: number | undefined) => IResizeGroupState | undefined;
+    shouldRenderDataForMeasurement: (dataToMeasure: any) => boolean;
+    getInitialResizeGroupState: (data: any) => IResizeGroupState;
+};
+
+// @public
 export interface ICheckbox {
     checked: boolean;
     focus: () => void;
@@ -221,6 +237,45 @@ export interface IPopupProps extends React.HTMLAttributes<HTMLDivElement> {
     role?: string;
     // @deprecated
     shouldRestoreFocus?: boolean;
+}
+
+// @public (undocumented)
+export interface IResizeGroup {
+    remeasure(): void;
+}
+
+// @public (undocumented)
+export interface IResizeGroupProps extends React.HTMLAttributes<ResizeGroupBase | HTMLElement> {
+    className?: string;
+    componentRef?: IRefObject<IResizeGroup>;
+    data: any;
+    dataDidRender?: (renderedData: any) => void;
+    direction?: ResizeGroupDirection;
+    onGrowData?: (prevData: any) => any;
+    onReduceData: (prevData: any) => any;
+    onRenderData: (data: any) => JSX.Element;
+    // @deprecated
+    styles?: IStyleFunctionOrObject<IResizeGroupStyleProps, IResizeGroupStyles>;
+    theme?: ITheme;
+}
+
+// @public (undocumented)
+export interface IResizeGroupState {
+    dataToMeasure?: any;
+    measureContainer?: boolean;
+    renderedData?: any;
+    resizeDirection?: 'grow' | 'shrink';
+}
+
+// @public (undocumented)
+export interface IResizeGroupStyleProps {
+    className?: string;
+    theme: ITheme;
+}
+
+// @public (undocumented)
+export interface IResizeGroupStyles {
+    root: IStyle;
 }
 
 // @public (undocumented)
@@ -506,10 +561,43 @@ export enum KeyboardSpinDirection {
 }
 
 // @public (undocumented)
+export const MeasuredContext: React.Context<{
+    isMeasured: boolean;
+}>;
+
+// @public (undocumented)
 export const ONKEYDOWN_TIMEOUT_DURATION = 1000;
 
 // @public
 export const Popup: React.ForwardRefExoticComponent<IPopupProps & React.RefAttributes<HTMLDivElement>>;
+
+// @public (undocumented)
+export const ResizeGroup: typeof ResizeGroupBase;
+
+// @public (undocumented)
+export class ResizeGroupBase extends React.Component<IResizeGroupProps, IResizeGroupState> {
+    constructor(props: IResizeGroupProps);
+    // (undocumented)
+    componentDidMount(): void;
+    // (undocumented)
+    componentDidUpdate(prevProps: IResizeGroupProps): void;
+    // (undocumented)
+    componentWillUnmount(): void;
+    // (undocumented)
+    remeasure(): void;
+    // (undocumented)
+    render(): JSX.Element;
+    // (undocumented)
+    UNSAFE_componentWillReceiveProps(nextProps: IResizeGroupProps): void;
+    }
+
+// @public (undocumented)
+export enum ResizeGroupDirection {
+    // (undocumented)
+    horizontal = 0,
+    // (undocumented)
+    vertical = 1
+}
 
 // @public (undocumented)
 export const SearchBox: React.FunctionComponent<ISearchBoxProps>;
@@ -618,7 +706,6 @@ export * from "office-ui-fabric-react/lib/Pivot";
 export * from "office-ui-fabric-react/lib/PositioningContainer";
 export * from "office-ui-fabric-react/lib/ProgressIndicator";
 export * from "office-ui-fabric-react/lib/Rating";
-export * from "office-ui-fabric-react/lib/ResizeGroup";
 export * from "office-ui-fabric-react/lib/ScrollablePane";
 export * from "office-ui-fabric-react/lib/SelectableOption";
 export * from "office-ui-fabric-react/lib/SelectedItemsList";
