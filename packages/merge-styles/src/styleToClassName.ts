@@ -241,7 +241,7 @@ export function styleToRegistration(options: IStyleOptions, ...args: IStyle[]): 
   return undefined;
 }
 
-export function applyRegistration(registration: IRegistration): void {
+export function applyRegistration(registration: IRegistration, selectorRepeatCount: number = 1): void {
   const stylesheet = Stylesheet.getInstance();
   const { className, key, args, rulesToInsert } = registration;
 
@@ -255,12 +255,25 @@ export function applyRegistration(registration: IRegistration): void {
         selector = selector.replace(/&/g, '.' + registration.className);
 
         // Insert. Note if a media query, we must close the query with a final bracket.
-        const processedRule = `${selector}{${rules}}${selector.indexOf('@') === 0 ? '}' : ''}`;
-
+        const processedRule = `${repeatString(selector, selectorRepeatCount)}{${rules}}${
+          selector.indexOf('@') === 0 ? '}' : ''
+        }`;
         stylesheet.insertRule(processedRule);
       }
     }
     stylesheet.cacheClassName(className!, key!, args!, rulesToInsert);
+  }
+}
+
+function repeatString(target: string, times: number): string {
+  if (times < 0) {
+    return '';
+  }
+
+  if (times === 1) {
+    return target;
+  } else {
+    return target + repeatString(target, times - 1);
   }
 }
 

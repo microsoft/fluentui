@@ -99,13 +99,14 @@ export function classNamesFunction<TStyleProps extends {}, TStyleSet extends ISt
       if (styleFunctionOrObject === undefined) {
         (current as any)[RetVal] = {} as IProcessedStyleSet<TStyleSet>;
       } else {
+        const selectorRepeatCount = options.useStaticStyles ? 10 : undefined;
         (current as any)[RetVal] = mergeCssSets(
           [
             (typeof styleFunctionOrObject === 'function'
               ? styleFunctionOrObject(styleProps)
               : styleFunctionOrObject) as IStyleSet<TStyleSet>,
           ],
-          { rtl: !!rtl },
+          { rtl: !!rtl, selectorRepeatCount },
         );
       }
 
