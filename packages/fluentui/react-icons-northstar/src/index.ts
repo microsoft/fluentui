@@ -191,7 +191,7 @@ export { default as TabsIcon } from './components/TabsIcon';
 export { default as TagIcon } from './components/TagIcon';
 export { default as TeamCreateIcon } from './components/TeamCreateIcon';
 export { default as TeamsIcon } from './components/TeamsIcon';
-export { default as TenantIcon } from './components/TenantIcon';
+export { default as TenantWorkIcon } from './components/TenantIcon';
 export { default as TenantPersonalIcon } from './components/TenantPersonalIcon';
 export { default as ThumbtackIcon } from './components/ThumbtackIcon';
 export { default as ThumbtackSlashIcon } from './components/ThumbtackSlashIcon';
