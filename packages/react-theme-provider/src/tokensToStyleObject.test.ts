@@ -1,9 +1,9 @@
-import { variablesToStyleObject } from './variablesToStyleObject';
+import { tokensToStyleObject } from './tokensToStyleObject';
 
-describe('variablesToStyleObject', () => {
-  it('can convert flat variables', () => {
+describe('tokensToStyleObject', () => {
+  it('can convert flat tokens', () => {
     expect(
-      variablesToStyleObject({
+      tokensToStyleObject({
         body: 'red',
       }),
     ).toEqual({
@@ -11,9 +11,9 @@ describe('variablesToStyleObject', () => {
     });
   });
 
-  it('can convert nested variables', () => {
+  it('can convert nested tokens', () => {
     expect(
-      variablesToStyleObject({
+      tokensToStyleObject({
         body: {
           fill: 'red',
           text: 'blue',
@@ -27,7 +27,7 @@ describe('variablesToStyleObject', () => {
 
   it('can start with a prefix', () => {
     expect(
-      variablesToStyleObject(
+      tokensToStyleObject(
         {
           body: {
             fill: 'red',

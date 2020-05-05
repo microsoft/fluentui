@@ -1,7 +1,7 @@
 import * as React from 'react';
 import cx from 'classnames';
 import { useStylesheet } from '@fluentui/react-stylesheets';
-import { variablesToStyleObject } from './variablesToStyleObject';
+import { tokensToStyleObject } from './tokensToStyleObject';
 import { ThemeContext } from './ThemeContext';
 import { Theme, ThemePrepared } from './types';
 import { createTheme } from './createTheme';
@@ -33,15 +33,22 @@ export interface ThemeProviderProps extends React.AllHTMLAttributes<{}> {
 
 export const ThemeProvider = React.forwardRef<HTMLDivElement, ThemeProviderProps>(
   (
-    { theme, className, style, ...rest }: React.PropsWithChildren<ThemeProviderProps>,
+    { theme, style, className, ...rest }: React.PropsWithChildren<ThemeProviderProps>,
     ref: React.Ref<HTMLDivElement>,
   ) => {
+    // Pull contextual theme.
     const parentTheme = useTheme();
+
+    // Merge the theme only when parent theme or props theme mutates.
     const fullTheme = React.useMemo<ThemePrepared>(() => createTheme(parentTheme, theme), [parentTheme, theme]);
+
+    // Generate the inline style object only when merged theme mutates.
     const inlineStyle = React.useMemo<React.CSSProperties>(
-      () => variablesToStyleObject(fullTheme.tokens.site, undefined, { ...style }),
-      [theme, style],
+      () => tokensToStyleObject(fullTheme.tokens, undefined, { ...style }),
+      [fullTheme, style],
     );
+
+    console.log(theme, fullTheme.tokens, inlineStyle);
 
     // Register stylesheets as needed.
     useStylesheet(fullTheme.stylesheets);
@@ -54,3 +61,5 @@ export const ThemeProvider = React.forwardRef<HTMLDivElement, ThemeProviderProps
     );
   },
 );
+
+ThemeProvider.displayName = 'ThemeProvider';

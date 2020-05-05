@@ -8,7 +8,7 @@ describe('createTheme', () => {
     });
   });
 
-  it(' can merge 2 themes', () => {
+  it('can merge 2 themes', () => {
     expect(
       createTheme(
         {
@@ -29,6 +29,13 @@ describe('createTheme', () => {
           text: 'white',
         },
       },
+    });
+  });
+
+  it('can merge stylesheets', () => {
+    expect(createTheme({ stylesheets: ['a', 'b'] }, { stylesheets: ['c', 'd'] })).toEqual({
+      stylesheets: ['a', 'b', 'c', 'd'],
+      tokens: {},
     });
   });
 });

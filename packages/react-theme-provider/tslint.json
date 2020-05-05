@@ -2,6 +2,7 @@
   "extends": ["@uifabric/tslint-rules"],
   "rules": {
     "interface-name": false,
-    "jsx-ban-props": false
+    "jsx-ban-props": false,
+    "jsx-no-lambda": false
   }
 }
