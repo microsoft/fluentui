@@ -3,7 +3,7 @@ import * as renderer from 'react-test-renderer';
 import { mount, ReactWrapper } from 'enzyme';
 
 import { Checkbox } from './Checkbox';
-import { IRefObject, resetIds } from '../..//Utilities';
+import { IRefObject, resetIds } from '../../Utilities';
 import { ICheckbox } from './Checkbox.types';
 
 let checkbox: ICheckbox | undefined;
