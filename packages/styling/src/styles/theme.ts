@@ -5,6 +5,7 @@ import { DefaultPalette } from './DefaultPalette';
 import { DefaultSpacing } from './DefaultSpacing';
 import { loadTheme as legacyLoadTheme } from '@microsoft/load-themed-styles';
 import { DefaultEffects } from './DefaultEffects';
+import { IRawStyle } from '@uifabric/merge-styles';
 
 let _theme: ITheme = createTheme({
   palette: DefaultPalette,
@@ -94,20 +95,20 @@ export function loadTheme(theme: IPartialTheme, depComments: boolean = false): I
  * @param theme - The theme object
  */
 function _loadFonts(theme: ITheme): { [name: string]: string } {
-  const lines = {};
+  const lines: { [key: string]: string } = {};
 
   for (const fontName of Object.keys(theme.fonts)) {
-    const font = theme.fonts[fontName as keyof IFontStyles];
+    const font: IRawStyle = theme.fonts[fontName as keyof IFontStyles];
+
     for (const propName of Object.keys(font)) {
-      const name = fontName + propName.charAt(0).toUpperCase() + propName.slice(1);
-      // tslint:disable-next-line:no-any
-      let value = (font as any)[propName];
+      const name: string = fontName + propName.charAt(0).toUpperCase() + propName.slice(1);
+      let value = font[propName as keyof IRawStyle] as string;
+
       if (propName === 'fontSize' && typeof value === 'number') {
         // if it's a number, convert it to px by default like our theming system does
         value = value + 'px';
       }
-      // tslint:disable-next-line:no-any
-      (lines as any)[name] = value;
+      lines[name] = value;
     }
   }
   return lines;
