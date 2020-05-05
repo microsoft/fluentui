@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Add new helper React hooks `useAsync` and `useOnEvent` for using APIs that require cleanup on unmount",
-  "packageName": "@uifabric/react-hooks",
-  "email": "miclo@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-04-28T23:25:39.209Z"
-}

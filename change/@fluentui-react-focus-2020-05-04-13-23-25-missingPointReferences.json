@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Adding missing changes due to move from IPoint to Point.",
-  "packageName": "@fluentui/react-focus",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-05-04T20:23:25.581Z"
-}

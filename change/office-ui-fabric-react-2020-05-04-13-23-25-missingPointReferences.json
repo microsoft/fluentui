@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Adding missing changes due to move from IPoint to Point.",
-  "packageName": "office-ui-fabric-react",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-05-04T20:23:20.200Z"
-}
