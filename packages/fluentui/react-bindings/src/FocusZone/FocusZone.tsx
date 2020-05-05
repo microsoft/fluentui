@@ -71,6 +71,7 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
     preventDefaultWhenHandled: PropTypes.bool,
     isRtl: PropTypes.bool,
     preventFocusRestoration: PropTypes.bool,
+    pagingSupportDisabled: PropTypes.bool,
   };
 
   static defaultProps: FocusZoneProps = {
