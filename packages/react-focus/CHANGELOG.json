@@ -2,6 +2,29 @@
   "name": "@fluentui/react-focus",
   "entries": [
     {
+      "date": "Tue, 05 May 2020 12:34:22 GMT",
+      "tag": "@fluentui/react-focus_v7.10.0",
+      "version": "7.10.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "FocusZone: Adding pagingSupportDisabled prop to provide a way to opt out of paging support via the Page Up and Page Down keys.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "6c055de8e22610b9f96d29e0667f019d669b7df1",
+            "package": "@fluentui/react-focus"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Adding missing changes due to move from IPoint to Point.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "5b4b9b5feeac6f08f14125be35d7af1ffb7039cf",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 04 May 2020 12:33:29 GMT",
       "tag": "@fluentui/react-focus_v7.9.0",
       "version": "7.9.0",
