@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/ResizeGroup';
+export * from './components/ResizeGroup';
