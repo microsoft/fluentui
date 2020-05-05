@@ -13,7 +13,6 @@ interface IPhoto extends IObjectWithKey {
 
 const PHOTOS: IPhoto[] = createArray(250, (index: number) => {
   const randomWidth = 50 + Math.floor(Math.random() * 150);
-
   return {
     key: index,
     url: `http://placehold.it/${randomWidth}x100`,
@@ -64,13 +63,13 @@ export const MarqueeSelectionBasicExample: React.FunctionComponent = () => {
   const [isMarqueeEnabled, { toggle: toggleIsMarqueeEnabled }] = useBoolean(true);
   const forceUpdate = useForceUpdate();
 
-  const selection = useConst(() => {
-    const newSelection = new Selection<IPhoto>({
-      items: PHOTOS,
-      onSelectionChanged: forceUpdate,
-    });
-    return newSelection;
-  });
+  const selection = useConst(
+    () =>
+      new Selection<IPhoto>({
+        items: PHOTOS,
+        onSelectionChanged: forceUpdate,
+      }),
+  );
 
   return (
     <MarqueeSelection selection={selection} isEnabled={isMarqueeEnabled}>
