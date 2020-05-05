@@ -97,11 +97,11 @@ function _loadFonts(theme: ITheme): { [name: string]: string } {
   const lines = {};
 
   for (const fontName of Object.keys(theme.fonts)) {
-    // tslint:disable-next-line:no-any
-    const font = (theme.fonts as any)[fontName];
+    const font = theme.fonts[fontName as keyof IFontStyles];
     for (const propName of Object.keys(font)) {
       const name = fontName + propName.charAt(0).toUpperCase() + propName.slice(1);
-      let value = font[propName];
+      // tslint:disable-next-line:no-any
+      let value = (font as any)[propName];
       if (propName === 'fontSize' && typeof value === 'number') {
         // if it's a number, convert it to px by default like our theming system does
         value = value + 'px';
