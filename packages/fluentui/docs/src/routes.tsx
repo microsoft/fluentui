@@ -54,81 +54,75 @@ import TablePrototype from './prototypes/table';
 import VirtualizedTablePrototype from './prototypes/VirtualizedTable';
 import { PerfDataProvider } from './components/ComponentDoc/PerfChart';
 
-// Remove trailing slash
-const base = __BASENAME__.slice(-1);
-
 const Routes = () => (
-  <BrowserRouter basename={base || '/'}>
+  // Remove trailing slash
+  <BrowserRouter basename={__BASENAME__ === '/' ? __BASENAME__ : __BASENAME__.slice(0, -1)}>
     <Switch>
-      <Route exact path={`${base}/maximize/:exampleName/:rtl?`} component={ExternalExampleLayout} />
+      <Route exact path="/maximize/:exampleName/:rtl?" component={ExternalExampleLayout} />
       <DocsLayout>
         <PerfDataProvider>
           <Switch>
-            <Route exact path={`${base}/`} component={Introduction} />
-            <Route exact path={`${base}/components/:name/:tab`} component={DocsRoot} sidebar />
+            <Route exact path="/" component={Introduction} />
+            <Route exact path="/components/:name/:tab" component={DocsRoot} sidebar />
             <Route
               exact
-              path={`${base}/components/:name`}
+              path="/components/:name"
               render={routeProps => <Redirect to={`${routeProps.location.pathname}/definition`} />}
             />
-            <Route exact path={`${base}/behaviors/:name`} component={DocsBehaviorRoot} sidebar />
-            <Route exact path={`${base}/quick-start`} component={QuickStart} />
-            <Route exact path={`${base}/prototype-chat-pane`} component={ChatPanePrototype} />
-            <Route exact path={`${base}/prototype-chat-messages`} component={ChatMessagesPrototype} />
-            <Route exact path={`${base}/prototype-custom-scrollbar`} component={CustomScrollbarPrototype} />
-            <Route exact path={`${base}/prototype-custom-toolbar`} component={CustomToolbarPrototype} />
-            <Route exact path={`${base}/prototype-async-shorthand`} component={AsyncShorthandPrototype} />
-            <Route exact path={`${base}/prototype-employee-card`} component={EmployeeCardPrototype} />
-            <Route exact path={`${base}/prototype-meeting-options`} component={MeetingOptionsPrototype} />
-            <Route exact path={`${base}/prototype-participants-list`} component={ParticipantsListPrototype} />
-            <Route exact path={`${base}/prototype-search-page`} component={SearchPagePrototype} />
-            <Route exact path={`${base}/prototype-mentions`} component={MentionsPrototype} />
-            <Route exact path={`${base}/prototype-dropdowns`} component={DropdownsPrototype} />
-            <Route exact path={`${base}/prototype-popups`} component={PopupsPrototype} />
-            <Route exact path={`${base}/prototype-alerts`} component={AlertsPrototype} />
-            <Route exact path={`${base}/prototype-editor-toolbar`} component={EditorToolbarPrototype} />
-            <Route exact path={`${base}/prototype-hexagonal-avatar`} component={HexagonalAvatarPrototype} />
-            <Route exact path={`${base}/prototype-table`} component={TablePrototype} />
-            <Route
-              exact
-              path={`${base}/prototype-nested-popups-and-dialogs`}
-              component={NestedPopupsAndDialogsPrototype}
-            />
-            <Route exact path={`${base}/virtualized-tree`} component={VirtualizedTreePrototype} />
-            <Route exact path={`${base}/virtualized-table`} component={VirtualizedTablePrototype} />
-            <Route exact path={`${base}/prototype-copy-to-clipboard`} component={CopyToClipboardPrototype} />
-            <Route exact path={`${base}/faq`} component={FAQ} />
-            <Route exact path={`${base}/accessibility`} component={Accessibility} />
-            <Route exact path={`${base}/accessibility-behaviors`} component={AccessibilityBehaviors} />
-            <Route exact path={`${base}/focus-zone`} component={FocusZone} />
-            <Route exact path={`${base}/focus-trap-zone`} component={FocusTrapZone} />
-            <Route exact path={`${base}/auto-focus-zone`} component={AutoFocusZone} />
-            <Route exact path={`${base}/theming`} component={Theming} />
-            <Route exact path={`${base}/theming-examples`} component={ThemingExamples} />
-            <Route exact path={`${base}/layout`}>
+            <Route exact path="/behaviors/:name" component={DocsBehaviorRoot} sidebar />
+            <Route exact path="/quick-start" component={QuickStart} />
+            <Route exact path="/prototype-chat-pane" component={ChatPanePrototype} />
+            <Route exact path="/prototype-chat-messages" component={ChatMessagesPrototype} />
+            <Route exact path="/prototype-custom-scrollbar" component={CustomScrollbarPrototype} />
+            <Route exact path="/prototype-custom-toolbar" component={CustomToolbarPrototype} />
+            <Route exact path="/prototype-async-shorthand" component={AsyncShorthandPrototype} />
+            <Route exact path="/prototype-employee-card" component={EmployeeCardPrototype} />
+            <Route exact path="/prototype-meeting-options" component={MeetingOptionsPrototype} />
+            <Route exact path="/prototype-participants-list" component={ParticipantsListPrototype} />
+            <Route exact path="/prototype-search-page" component={SearchPagePrototype} />
+            <Route exact path="/prototype-mentions" component={MentionsPrototype} />
+            <Route exact path="/prototype-dropdowns" component={DropdownsPrototype} />
+            <Route exact path="/prototype-popups" component={PopupsPrototype} />
+            <Route exact path="/prototype-alerts" component={AlertsPrototype} />
+            <Route exact path="/prototype-editor-toolbar" component={EditorToolbarPrototype} />
+            <Route exact path="/prototype-hexagonal-avatar" component={HexagonalAvatarPrototype} />
+            <Route exact path="/prototype-table" component={TablePrototype} />
+            <Route exact path="/prototype-nested-popups-and-dialogs" component={NestedPopupsAndDialogsPrototype} />
+            <Route exact path="/virtualized-tree" component={VirtualizedTreePrototype} />
+            <Route exact path="/virtualized-table" component={VirtualizedTablePrototype} />
+            <Route exact path="/prototype-copy-to-clipboard" component={CopyToClipboardPrototype} />
+            <Route exact path="/faq" component={FAQ} />
+            <Route exact path="/accessibility" component={Accessibility} />
+            <Route exact path="/accessibility-behaviors" component={AccessibilityBehaviors} />
+            <Route exact path="/focus-zone" component={FocusZone} />
+            <Route exact path="/focus-trap-zone" component={FocusTrapZone} />
+            <Route exact path="/auto-focus-zone" component={AutoFocusZone} />
+            <Route exact path="/theming" component={Theming} />
+            <Route exact path="/theming-examples" component={ThemingExamples} />
+            <Route exact path="/layout">
               <MarkdownPage page={Layout} />
             </Route>
-            <Route exact path={`${base}/shorthand-props`}>
+            <Route exact path="/shorthand-props">
               <MarkdownPage page={ShorthandProps} />
             </Route>
-            <Route exact path={`${base}/icon-viewer`} component={IconViewer} />
-            <Route exact path={`${base}/component-architecture`}>
+            <Route exact path="/icon-viewer" component={IconViewer} />
+            <Route exact path="/component-architecture">
               <MarkdownPage page={ComponentArchitecture} />
             </Route>
-            <Route exact path={`${base}/theming-specification`}>
+            <Route exact path="/theming-specification">
               <MarkdownPage page={ThemingSpecification} />
             </Route>
-            <Route exact path={`${base}/integrate-custom-components`} component={IntegrateCustomComponents} />
-            <Route exact path={`${base}/performance`} component={Performance} />
-            <Route exact path={`${base}/composition`}>
+            <Route exact path="/integrate-custom-components" component={IntegrateCustomComponents} />
+            <Route exact path="/performance" component={Performance} />
+            <Route exact path="/composition">
               <MarkdownPage page={Composition} />
             </Route>
-            <Route exact path={`${base}/colors`} component={Colors} />
-            <Route exact path={`${base}/color-palette`} component={ColorPalette} />
-            <Route exact path={`${base}/color-palette-category`} component={CategoryColorPalette} />
-            <Route exact path={`${base}/color-schemes`} component={ColorSchemes} />
-            <Route exact path={`${base}/color-schemes-category`} component={CategoryColorSchemes} />
-            <Route exact path={`${base}/*`} component={PageNotFound} />
+            <Route exact path="/colors" component={Colors} />
+            <Route exact path="/color-palette" component={ColorPalette} />
+            <Route exact path="/color-palette-category" component={CategoryColorPalette} />
+            <Route exact path="/color-schemes" component={ColorSchemes} />
+            <Route exact path="/color-schemes-category" component={CategoryColorSchemes} />
+            <Route exact path="/*" component={PageNotFound} />
           </Switch>
         </PerfDataProvider>
       </DocsLayout>
