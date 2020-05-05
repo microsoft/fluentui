@@ -15,7 +15,6 @@ import {
   childrenExist,
   ChildrenComponentProps,
   isFromKeyboard as isEventFromKeyboard,
-  getOrGenerateIdFromShorthand,
 } from '../../utils';
 import {
   WithAsProp,
