@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Migrate ResizeGroup to function component",
+  "packageName": "@fluentui/react-next",
+  "email": "miclo@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-05-05T20:24:09.609Z"
+}
