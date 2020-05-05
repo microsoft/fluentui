@@ -166,7 +166,6 @@ export const Carousel: React.FC<WithAsProp<CarouselProps>> &
     }),
     mapPropsToState: () => ({
       activeIndex: props.activeIndex,
-      itemIds: items?.map((item, index) => getOrGenerateIdFromShorthand('carousel-item-', item, state?.itemIds[index])),
     }),
   });
 
@@ -176,6 +175,13 @@ export const Carousel: React.FC<WithAsProp<CarouselProps>> &
     () => Array.from({ length: items?.length }, () => React.createRef()),
     [items?.length],
   );
+
+  // @TODO: Move the id generation to CarouselItem
+  React.useEffect(() => {
+    actions.updateItemIds(
+      items?.map((item, index) => getOrGenerateIdFromShorthand('carousel-item-', item, state.itemIds[index])),
+    );
+  }, [items?.length]);
 
   const unhandledProps = useUnhandledProps(Carousel.handledProps, props);
   const getA11yProps = useAccessibility<CarouselBehaviorProps>(accessibility, {
