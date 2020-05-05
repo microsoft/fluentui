@@ -1,5 +1,5 @@
 import './version';
 
-export { ThemeProvider } from './ThemeProvider';
-export { Theme, ThemePrepared } from './types';
+export { ThemeProvider, ThemeProviderProps } from './ThemeProvider';
 export { useTheme } from './useTheme';
+export * from './types';

@@ -8,25 +8,6 @@ import { createTheme } from './createTheme';
 import { useTheme } from './useTheme';
 import * as classes from './ThemeProvider.scss';
 
-export type ThemeColorSet =
-  | Partial<{
-      default: string;
-      hover: string;
-      active: string;
-      disabled: string;
-    }>
-  | string;
-
-export type ThemePlateSet = Partial<{
-  fill: ThemeColorSet;
-  text: ThemeColorSet;
-  subText: ThemeColorSet;
-  link: ThemeColorSet;
-  divider: ThemeColorSet;
-}>;
-
-export type TokenSetType = string | { [key: string]: TokenSetType | undefined };
-
 export interface ThemeProviderProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * The theme provided by the user.

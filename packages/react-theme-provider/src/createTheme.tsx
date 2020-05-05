@@ -1,13 +1,6 @@
 import { Theme, ThemePrepared } from './types';
 import { merge } from '@uifabric/utilities';
-
-/**
- * Creates a blank initial theme
- */
-const createDefaultTheme = () => ({
-  stylesheets: [],
-  tokens: {},
-});
+import { createDefaultTheme } from './createDefaultTheme';
 
 /**
  * Merges all themes on top of a blank initial theme and ensures the theme is fully qualified.

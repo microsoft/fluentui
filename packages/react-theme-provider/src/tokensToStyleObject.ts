@@ -1,5 +1,5 @@
-import { TokenSetType } from './ThemeProvider';
-// tslint:disable-next-line:no-any
+import { TokenSetType } from './types';
+
 export const tokensToStyleObject = (
   tokens: {
     [key: string]: TokenSetType;
@@ -14,6 +14,7 @@ export const tokensToStyleObject = (
     if (tokens.hasOwnProperty(name)) {
       const varName = prefix ? `${prefix}${name === 'default' ? '' : '-' + name}` : `--${name}`;
       const varValue = tokens[name];
+
       if (varValue && typeof varValue === 'object') {
         // tslint:disable-next-line:no-any
         tokensToStyleObject(varValue as any, varName, style);
@@ -22,5 +23,6 @@ export const tokensToStyleObject = (
       }
     }
   }
+
   return style;
 };

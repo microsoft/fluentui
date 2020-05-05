@@ -6,40 +6,60 @@
 
 import * as React from 'react';
 
-// Warning: (ae-forgotten-export) The symbol "RecursivePartial" needs to be exported by the entry point index.d.ts
-//
-// @public (undocumented)
+// @public
+export type RecursivePartial<T> = {
+    [P in keyof T]?: T[P] extends (infer U)[] ? RecursivePartial<U>[] : T[P] extends object ? RecursivePartial<T[P]> : T[P];
+};
+
+// @public
 export interface Theme extends RecursivePartial<ThemePrepared> {
 }
 
-// @public (undocumented)
+// @public
+export type ThemePlateSet = Partial<{
+    fill: ThemeStateSet;
+    text: ThemeStateSet;
+    subText: ThemeStateSet;
+    link: ThemeStateSet;
+    divider: ThemeStateSet;
+    [key: string]: ThemeStateSet;
+}>;
+
+// @public
 export interface ThemePrepared {
     // (undocumented)
     stylesheets: string[];
     // (undocumented)
     tokens: {
-        site: {
-            body: ThemePlateSet;
-            accent: ThemePlateSet;
-            neutral: ThemePlateSet;
-        };
+        body: ThemePlateSet;
         [key: string]: TokenSetType;
     };
 }
 
-// Warning: (ae-forgotten-export) The symbol "ThemeProviderProps" needs to be exported by the entry point index.d.ts
-//
 // @public
 export const ThemeProvider: React.ForwardRefExoticComponent<ThemeProviderProps & React.RefAttributes<HTMLDivElement>>;
 
 // @public (undocumented)
-export const useTheme: () => {};
+export interface ThemeProviderProps extends React.HTMLAttributes<HTMLDivElement> {
+    theme?: Theme;
+}
 
+// @public
+export type ThemeStateSet = Partial<{
+    default: string;
+    hover: string;
+    active: string;
+    disabled: string;
+}> | string;
 
-// Warnings were encountered during analysis:
-//
-// lib/types.d.ts:5:13 - (ae-forgotten-export) The symbol "ThemePlateSet" needs to be exported by the entry point index.d.ts
-// lib/types.d.ts:9:9 - (ae-forgotten-export) The symbol "TokenSetType" needs to be exported by the entry point index.d.ts
+// @public (undocumented)
+export type TokenSetType = string | {
+    [key: string]: TokenSetType | undefined;
+};
+
+// @public (undocumented)
+export const useTheme: () => ThemePrepared;
+
 
 // (No @packageDocumentation comment for this package)
 
