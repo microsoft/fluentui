@@ -3,7 +3,7 @@ import * as renderer from 'react-test-renderer';
 import { mount, ReactWrapper } from 'enzyme';
 
 import { Checkbox } from './Checkbox';
-import { IRefObject } from 'office-ui-fabric-react/lib/Utilities';
+import { IRefObject, resetIds } from '../..//Utilities';
 import { ICheckbox } from './Checkbox.types';
 
 let checkbox: ICheckbox | undefined;
@@ -26,6 +26,10 @@ const IndeterminateControlledCheckbox: React.FunctionComponent = () => {
 describe('Checkbox', () => {
   let renderedComponent: renderer.ReactTestRenderer | undefined;
   let component: ReactWrapper | undefined;
+
+  beforeEach(() => {
+    resetIds();
+  });
 
   afterEach(() => {
     checkbox = undefined;

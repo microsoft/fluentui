@@ -564,16 +564,7 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
 export const Toggle: React.FunctionComponent<IToggleProps>;
 
 // @public (undocumented)
-export class ToggleBase extends React.Component<IToggleProps, IToggleState> implements IToggle {
-    constructor(props: IToggleProps);
-    readonly checked: boolean;
-    // (undocumented)
-    focus(): void;
-    // (undocumented)
-    static getDerivedStateFromProps(nextProps: Readonly<IToggleProps>, prevState: Readonly<IToggleState>): Partial<IToggleState> | null;
-    // (undocumented)
-    render(): JSX.Element;
-    }
+export const ToggleBase: React.FunctionComponent;
 
 
 export * from "office-ui-fabric-react/lib/ActivityItem";
