@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import { carouselItemBehavior, CarouselItemBehaviorProps, Accessibility } from '@fluentui/accessibility';
-
+import * as _ from 'lodash';
 import {
   commonPropTypes,
   UIComponentProps,
@@ -37,6 +37,9 @@ export interface CarouselItemProps extends UIComponentProps, ChildrenComponentPr
 
   /** Whether or not navigation exists in carousel. */
   navigation?: boolean;
+
+  /** Item can have an ID */
+  id?: string;
 }
 
 export type CarouselItemStylesProps = never;
@@ -81,6 +84,8 @@ export const CarouselItem: React.FC<WithAsProp<CarouselItemProps>> &
     }),
   });
 
+  const id = React.useMemo(() => id || _.uniqueId('carousel-item-'), [props.id]);
+
   const { classes } = useStyles<CarouselItemStylesProps>(CarouselItem.displayName, {
     className: carouselItemClassName,
     mapPropsToInlineStyles: () => ({
@@ -96,6 +101,7 @@ export const CarouselItem: React.FC<WithAsProp<CarouselItemProps>> &
     <ElementType
       {...getA11yProps('root', {
         className: classes.root,
+        id,
         ...unhandledProps,
       })}
     >
