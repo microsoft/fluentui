@@ -113,6 +113,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Added icons: `TranscriptIcon`, `ShareLocation12pxIcon`, `FluentFileGenericIcon`, `FluentFileHtmlIcon`, `FluentFilePdfIcon`, `FluentFilePictureIcon`, `FluentFileTextIcon`, `PopupIcon`, `ShareGenericIcon`, `ComposeIcon`. Modified: `ShareLocationIcon` @TanelVari ([#12872](https://github.com/microsoft/fluentui/pull/12872))
 >>>>>>> Changelog update
 - Added icons: `TranscriptIcon`, `ShareLocation12pxIcon`, `FluentFileGenericIcon`, `FluentFileHtmlIcon`, `FluentFilePdfIcon`, `FluentFilePictureIcon`, `FluentFileTextIcon`, `PopupIcon`, `ShareGenericIcon`, `ComposeIcon`, `SpotlightStopIcon`. Modified: `ShareLocationIcon`, `SpotlightIcon` @TanelVari ([#12872](https://github.com/microsoft/fluentui/pull/12872))
+- Added icons: `TranscriptIcon`, `ShareLocation12pxIcon`, `FluentFileGenericIcon`, `FluentFileHtmlIcon`, `FluentFilePdfIcon`, `FluentFilePictureIcon`, `FluentFileTextIcon`, `PopupIcon`, `ShareGenericIcon`, `ComposeIcon`, `SpotlightStopIcon`, `TenantIcon`, `TenantPersonalIcon`, `WorkOrSchoolIcon`. Modified: `ShareLocationIcon`, `SpotlightIcon`, `Survey20pxIcon` @TanelVari ([#12872](https://github.com/microsoft/fluentui/pull/12872))
 
 ### Performance
 - Replace `fela-plugin-prexifer` with `stylis` @layershifter ([#12289](https://github.com/microsoft/fluentui/pull/12289))
