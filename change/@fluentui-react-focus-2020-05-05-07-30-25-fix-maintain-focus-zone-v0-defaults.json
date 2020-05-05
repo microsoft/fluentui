@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Fix pagingSupportDisabled handling in FocusZone",
+  "packageName": "@fluentui/react-focus",
+  "email": "jukapsia@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-05-05T05:30:25.811Z"
+}

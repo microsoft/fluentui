@@ -27,14 +27,16 @@ export interface IRefArrayData {
   refElement?: SVGGElement;
 }
 export interface IVerticalStackedBarChartState {
-  isCalloutVisible: boolean;
-  isLegendSelected: boolean;
-  isLegendHovered: boolean;
+  color: string;
+  dataForHoverCard: number;
   selectedLegendTitle: string;
   // tslint:disable-next-line:no-any
   refSelected: any;
-  dataForHoverCard: number;
-  color: string;
+  isCalloutVisible: boolean;
+  isLegendSelected: boolean;
+  isLegendHovered: boolean;
+  xCalloutValue?: string;
+  yCalloutValue?: string;
 }
 
 export class VerticalStackedBarChartBase extends React.Component<
@@ -60,6 +62,8 @@ export class VerticalStackedBarChartBase extends React.Component<
       refSelected: null,
       dataForHoverCard: 0,
       color: '',
+      xCalloutValue: '',
+      yCalloutValue: '',
     };
     this._onLegendLeave = this._onLegendLeave.bind(this);
     this._onBarLeave = this._onBarLeave.bind(this);
@@ -108,8 +112,12 @@ export class VerticalStackedBarChartBase extends React.Component<
             directionalHint={DirectionalHint.topRightEdge}
           >
             <div className={this._classNames.hoverCardRoot}>
-              <div className={this._classNames.hoverCardTextStyles}>{this.state.selectedLegendTitle}</div>
-              <div className={this._classNames.hoverCardDataStyles}>{this.state.dataForHoverCard}</div>
+              <div className={this._classNames.hoverCardTextStyles}>
+                {this.state.xCalloutValue ? this.state.xCalloutValue : this.state.selectedLegendTitle}
+              </div>
+              <div className={this._classNames.hoverCardDataStyles}>
+                {this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard}
+              </div>
             </div>
           </Callout>
         ) : null}
@@ -275,6 +283,8 @@ export class VerticalStackedBarChartBase extends React.Component<
     customMessage: string,
     pointData: number,
     color: string,
+    xAxisCalloutData: string,
+    yAxisCalloutData: string,
     mouseEvent: React.MouseEvent<SVGPathElement>,
   ): void {
     mouseEvent.persist();
@@ -288,11 +298,20 @@ export class VerticalStackedBarChartBase extends React.Component<
         selectedLegendTitle: customMessage,
         dataForHoverCard: pointData,
         color: color,
+        xCalloutValue: xAxisCalloutData,
+        yCalloutValue: yAxisCalloutData,
       });
     }
   }
 
-  private _onBarFocus(legendText: string, pointData: number, color: string, refArrayIndexNumber: number): void {
+  private _onBarFocus(
+    legendText: string,
+    pointData: number,
+    color: string,
+    refArrayIndexNumber: number,
+    xAxisCalloutData: string,
+    yAxisCalloutData: string,
+  ): void {
     if (
       this.state.isLegendSelected === false ||
       (this.state.isLegendSelected && this.state.selectedLegendTitle === legendText)
@@ -305,6 +324,8 @@ export class VerticalStackedBarChartBase extends React.Component<
             selectedLegendTitle: legendText,
             dataForHoverCard: pointData,
             color: color,
+            xCalloutValue: xAxisCalloutData,
+            yCalloutValue: yAxisCalloutData,
           });
         }
       });
@@ -371,10 +392,32 @@ export class VerticalStackedBarChartBase extends React.Component<
           }}
           data-is-focusable={true}
           focusable={'true'}
-          onMouseOver={this._onBarHover.bind(this, point.legend, point.data, color)}
-          onMouseMove={this._onBarHover.bind(this, point.legend, point.data, color)}
+          onMouseOver={this._onBarHover.bind(
+            this,
+            point.legend,
+            point.data,
+            color,
+            point.xAxisCalloutData!,
+            point.yAxisCalloutData!,
+          )}
+          onMouseMove={this._onBarHover.bind(
+            this,
+            point.legend,
+            point.data,
+            color,
+            point.xAxisCalloutData!,
+            point.yAxisCalloutData!,
+          )}
           onMouseLeave={this._onBarLeave}
-          onFocus={this._onBarFocus.bind(this, point.legend, point.data, color, refArrayIndexNumber)}
+          onFocus={this._onBarFocus.bind(
+            this,
+            point.legend,
+            point.data,
+            color,
+            refArrayIndexNumber,
+            point.xAxisCalloutData!,
+            point.yAxisCalloutData!,
+          )}
           onBlur={this._onBarLeave}
           onClick={this._redirectToUrl.bind(this, href)}
         />
