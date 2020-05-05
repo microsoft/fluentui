@@ -114,12 +114,12 @@ export interface IGroupedVerticalBarChartStyleProps {
   /**
    * Width of the chart.
    */
-  width: number;
+  width?: number;
 
   /**
    * Height of the chart.
    */
-  height: number;
+  height?: number;
 
   /**
    * Additional CSS class(es) to apply to the StackedBarChart.
