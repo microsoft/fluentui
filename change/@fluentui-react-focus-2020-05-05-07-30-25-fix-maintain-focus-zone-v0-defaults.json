@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix default behavior of FocusZone in v0",
+  "comment": "Fix pagingSupportDisabled handling in FocusZone",
   "packageName": "@fluentui/react-focus",
   "email": "jukapsia@microsoft.com",
   "dependentChangeType": "patch",
