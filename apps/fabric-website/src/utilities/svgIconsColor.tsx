@@ -74,6 +74,50 @@ export const AndroidLogoColor = (props?: ISVGIconProps) => {
   );
 };
 
+export const CrossPlatformLogoColor = (props?: ISVGIconProps) => {
+  props = props || {};
+  const { className = styles.icon, iconColor, iconWidth, iconHeight, iconSize } = props;
+  return (
+    <svg
+      className={css(className)}
+      style={{ stroke: iconColor, width: iconWidth || iconSize, height: iconHeight || iconSize }}
+      fill="none"
+      viewBox="0 0 66 68"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d="M25 57H49" stroke="white" stroke-width="2" stroke-miterlimit="10" />
+      <path d="M33 49V57" stroke="white" stroke-width="2" stroke-miterlimit="10" />
+      <path d="M1 25V1H65V49H25" stroke="url(#paint0_linear)" stroke-width="2" stroke-linecap="square" />
+      <path d="M1 25V1H65V49H25" stroke="url(#paint1_linear)" stroke-width="2" stroke-linecap="square" />
+      <path d="M1 25V1H65V49H25" stroke="url(#paint2_linear)" stroke-width="2" stroke-linecap="square" />
+      <path d="M1 25V1H65V49H25" stroke="url(#paint3_linear)" stroke-width="2" stroke-linecap="square" />
+      <path d="M25 25H1V65H25V25Z" stroke="white" stroke-width="2" stroke-miterlimit="10" />
+      <path d="M9 29H17" stroke="white" stroke-width="2" stroke-miterlimit="10" />
+      <path d="M10 56L56 10" stroke="white" stroke-width="2" stroke-linecap="square" />
+      <path d="M9 49V57H17" stroke="white" stroke-width="2" stroke-miterlimit="10" />
+      <path d="M57 17V9H49" stroke="white" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square" />
+      <defs>
+        <linearGradient id="paint0_linear" x1="1" y1="1" x2="33" y2="25" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#4FE5FF" />
+          <stop offset="1" stop-color="#4FE5FF" stop-opacity="0" />
+        </linearGradient>
+        <linearGradient id="paint1_linear" x1="65" y1="1" x2="33" y2="25" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#69E56E" />
+          <stop offset="1" stop-color="#69E56E" stop-opacity="0" />
+        </linearGradient>
+        <linearGradient id="paint2_linear" x1="65" y1="49" x2="33" y2="25" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#CF8FFF" />
+          <stop offset="1" stop-color="#CF8FFF" stop-opacity="0" />
+        </linearGradient>
+        <linearGradient id="paint3_linear" x1="0.999999" y1="49" x2="33" y2="25" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#0078D4" />
+          <stop offset="1" stop-color="#0078D4" stop-opacity="0" />
+        </linearGradient>
+      </defs>
+    </svg>
+  );
+};
+
 export const WindowsLogoColor = (props?: ISVGIconProps) => {
   props = props || {};
   const { className = styles.icon, iconColor, iconWidth, iconHeight, iconSize } = props;

@@ -206,3 +206,41 @@ export const WebLogo = (props?: ISVGIconProps) => {
     </svg>
   );
 };
+
+export const CrossPlatformLogo = (props?: ISVGIconProps) => {
+  props = props || {};
+  const { className = styles.icon, iconColor, iconWidth, iconHeight, iconSize } = props;
+  return (
+    <svg
+      className={css(className)}
+      style={{ stroke: iconColor, width: iconWidth || iconSize, height: iconHeight || iconSize }}
+      viewBox="0 0 66 66"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d="M25 57H49" stroke="white" stroke-width="2" stroke-miterlimit="10" />
+      <path d="M33 49V57" stroke="white" stroke-width="2" stroke-miterlimit="10" />
+      <path d="M1 25V1H65V49H25" stroke="url(#paint0_angular)" stroke-width="2" stroke-linecap="square" />
+      <path d="M25 25H1V65H25V25Z" stroke="white" stroke-width="2" stroke-miterlimit="10" />
+      <path d="M9 29H17" stroke="white" stroke-width="2" stroke-miterlimit="10" />
+      <path d="M9 57L57 9" stroke="white" stroke-width="2" stroke-linecap="square" />
+      <path d="M9 49V57H17" stroke="white" stroke-width="2" stroke-miterlimit="10" />
+      <path d="M57 17V9H49" stroke="white" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square" />
+      <defs>
+        <radialGradient
+          id="paint0_angular"
+          cx="0"
+          cy="0"
+          r="1"
+          gradientUnits="userSpaceOnUse"
+          gradientTransform="translate(33 25) scale(32 24)"
+        >
+          <stop offset="0.125191" stop-color="#CF8FFF" />
+          <stop offset="0.375179" stop-color="#0078D4" />
+          <stop offset="0.62518" stop-color="#4FE5FF" />
+          <stop offset="0.874595" stop-color="#69E56E" />
+        </radialGradient>
+      </defs>
+    </svg>
+  );
+};

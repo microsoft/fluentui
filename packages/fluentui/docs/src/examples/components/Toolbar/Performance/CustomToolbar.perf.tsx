@@ -505,7 +505,7 @@ const CustomToolbar: React.FunctionComponent<CustomToolbarProps> = props => {
       : null,
   }));
 
-  return <Toolbar variables={{ isCt: true }} items={items} />;
+  return <Toolbar aria-label="Performance custom" variables={{ isCt: true }} items={items} />;
 };
 
 const CustomToolbarPrototype = () => {

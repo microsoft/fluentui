@@ -1,4 +1,4 @@
-Use `MSLabel` to standardize text across your app.
+Use `Label` to standardize text across your app.
 
 <DisplayToggle onText="Dark" offText="Light" label="Theme Switcher">
 

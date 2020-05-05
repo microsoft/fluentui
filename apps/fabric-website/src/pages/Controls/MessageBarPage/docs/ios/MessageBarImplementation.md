@@ -1,11 +1,11 @@
 ### Control name
 
-`MSNotificationView`
+`NotificationView` in Swift, `MSFNotificationView` in Objective-C
 
 ### Source code
 
-[MSNotificationView](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI/Notification/MSNotificationView.swift)
+[NotificationView](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI/Notification/NotificationView.swift)
 
 ### Sample code
 
-[MSNotificationView demo](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI.Demo/FluentUI.Demo/Demos/MSNotificationViewDemoController.swift)
+[NotificationView demo](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI.Demo/FluentUI.Demo/Demos/NotificationViewDemoController.swift)

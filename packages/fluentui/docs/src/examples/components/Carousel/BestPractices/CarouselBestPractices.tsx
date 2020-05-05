@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Text, Box } from '@fluentui/react-northstar';
 import { link } from '../../../../utils/helpers';
 
-import ComponentBestPractices from 'docs/src/components/ComponentBestPractices';
+import ComponentBestPractices from '../../../../components/ComponentBestPractices';
 
 const doList = [
   <Text>
@@ -15,6 +15,7 @@ const doList = [
   <Box>
     If carousel contains `navigation`:
     <ul>
+      <li> provide label to each carousel item using `aria-label` attribute</li>
       <li> provide label to `navigation` slot and to navigation item using `aria-label` attribute</li>
       <li> add `aria-controls` attribute to navigation item referencing to `carouselItem` id </li>
     </ul>

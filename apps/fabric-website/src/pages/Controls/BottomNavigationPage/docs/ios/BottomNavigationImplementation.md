@@ -1,15 +1,15 @@
 ### Control name
 
-`MSTabBarView`
+`TabBarView` in Swift, `MSFTabBarView` in Objective-C
 
-`MSTabBarItem`
+`TabBarItem` in Swift, `MSFTabBarItem` in Objective-C
 
 ### Source code
 
-[MSTabBarView](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI/Tab%20Bar/MSTabBarView.swift)
+[TabBarView](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI/Tab%20Bar/TabBarView.swift)
 
-[MSTabBarItem](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI/Tab%20Bar/MSTabBarItem.swift)
+[TabBarItem](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI/Tab%20Bar/TabBarItem.swift)
 
 ### Sample code
 
-[MSTabBarView demo](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI.Demo/FluentUI.Demo/Demos/MSTabBarViewDemoController.swift)
+[TabBarView demo](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI.Demo/FluentUI.Demo/Demos/TabBarViewDemoController.swift)
