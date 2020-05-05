@@ -89,12 +89,13 @@ describe('Tree', () => {
       // expand tree
       getTitles(wrapper)
         .at(0)
-        .simulate('click'),
-        expect(
-          getItems(wrapper)
-            .at(1)
-            .prop('id'),
-        ).toBeDefined();
+        .simulate('click');
+
+      expect(
+        getItems(wrapper)
+          .at(1)
+          .prop('id'),
+      ).toBeDefined();
     });
   });
 
