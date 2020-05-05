@@ -11,65 +11,82 @@
   position: relative;
   display: flex;
 
-  &:hover {
-    .checkbox:not(.disabled) {
-      border-color: var(--semanticColorsInputBorderHovered);
+  &:not(.disabled) {
+    &:not(.checked) {
+      &:hover {
+        .checkbox {
+          border-color: var(--semanticColorsInputBorderHovered);
+
+          @include high-contrast {
+            border-color: Highlight;
+          }
+        }
+      }
+
+      &:focus {
+        .checkbox {
+          border-color: var(--semanticColorsInputBorderHovered);
+        }
+      }
+
+      &:hover {
+        .checkmark {
+          color: var(--paletteNeutralSecondary);
+          opacity: 1;
+
+          @include high-contrast {
+            border-color: Highlight;
+          }
+        }
+      }
+    }
+
+    &.checked:not(.indeterminate) {
+      &:hover,
+      &:focus {
+        .checkbox {
+          background: var(--semanticColorsInputBackgroundCheckedHovered);
+          border-color: var(--semanticColorsInputBackgroundCheckedHovered);
+        }
+      }
 
       @include high-contrast {
-        border-color: Highlight;
+        &:hover .checkbox {
+          background: Window;
+          border-color: Highlight;
+        }
+
+        &:focus .checkbox,
+        &:focus:hover .checkbox {
+          background: Highlight;
+        }
+
+        &:focus:hover .checkmark {
+          color: Window;
+        }
+
+        &:hover .checkmark {
+          color: Highlight;
+        }
       }
     }
 
-    .checkmark:not(.disabled) {
-      color: var(--paletteNeutralSecondary);
-      opacity: 1;
+    &.indeterminate {
+      &:hover {
+        .checkbox,
+        .checkbox:after {
+          border-color: var(--semanticColorsInputBackgroundCheckedHovered);
+        }
 
-      &.checked {
-        color: var(--semanticColorsInputForegroundChecked);
+        .checkmark {
+          opacity: 0;
+        }
       }
 
-      @include high-contrast {
-        border-color: Highlight;
-      }
-    }
-
-    .text:not(.disabled) {
-      color: var(--semanticColorsInputTextHovered);
-    }
-  }
-
-  &:focus:not(.disabled) {
-    .checkbox {
-      border-color: var(--semanticColorsInputBorderHovered);
-
-      @include high-contrast {
-        border-color: Highlight;
-      }
-    }
-
-    .text {
-      color: var(--semanticColorsInputTextHovered);
-    }
-  }
-
-  &.checked:not(.indeterminate) {
-    @include high-contrast {
-      &:hover .checkbox {
-        background: Window;
-        border-color: Highlight;
-      }
-
-      &:focus .checkbox,
-      &:focus:hover .checkbox {
-        background: Highlight;
-      }
-
-      &:focus:hover .checkmark {
-        color: Window;
-      }
-
-      &:hover .checkmark {
-        color: Highlight;
+      &:focus {
+        .checkbox {
+          border-color: var(--semanticColorsInputBackgroundCheckedHovered);
+        }
       }
     }
   }
@@ -96,7 +113,7 @@
   @include fonts-medium;
 
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   cursor: pointer;
   position: relative;
   user-select: none;
@@ -113,7 +130,7 @@
   }
 
   &.isUsingCustomLabelRender {
-    align-items: 'center';
+    align-items: center;
   }
 
   &.disabled {
@@ -140,11 +157,12 @@
   transition-property: background, border, border-color;
   transition-duration: var(--checkboxTransitionDuration);
   transition-timing-function: var(--checkboxTransitionTiming);
-  margin-right: 4px;
   /* in case the icon is bigger than the box */
   overflow: hidden;
 
   &.indeterminate {
+    border-color: var(--semanticColorsInputBackgroundChecked);
+
     &::after {
       content: '';
       border-radius: var(--effectsRoundedCorner2);
@@ -167,9 +185,12 @@
     }
   }
 
+  &:not(.reversed) {
+    margin-right: 4px;
+  }
+
   &.reversed {
     margin-left: 4px;
-    margin-right: 0;
   }
 
   &.checked:not(.disabled):not(.indeterminate) {
@@ -218,14 +239,15 @@
   color: var(--semanticColorsBodyText);
   font-size: var(--fontsMediumFontSize);
   line-height: 20px;
-  margin-left: 4px;
 
   &.disabled {
     color: var(--semanticColorsDisabledText);
   }
 
+  &:not(.reversed) {
+    margin-left: 4px;
+  }
   &.reversed {
     margin-right: 4px;
-    margin-left: 0;
   }
 }
