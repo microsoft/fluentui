@@ -84,7 +84,7 @@ export const CarouselItem: React.FC<WithAsProp<CarouselItemProps>> &
     }),
   });
 
-  const id = React.useMemo(() => id || _.uniqueId('carousel-item-'), [props.id]);
+  const id = React.useMemo(() => props.id || _.uniqueId('carousel-item-'), [props.id]);
 
   const { classes } = useStyles<CarouselItemStylesProps>(CarouselItem.displayName, {
     className: carouselItemClassName,

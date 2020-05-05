@@ -114,7 +114,6 @@ export interface CarouselState {
   activeIndex: number;
   prevActiveIndex: number;
   ariaLiveOn: boolean;
-  itemIds: string[];
   shouldFocusContainer: boolean;
   isFromKeyboard: boolean;
 }
@@ -170,15 +169,10 @@ class Carousel extends AutoControlledComponent<WithAsProp<CarouselProps>, Carous
 
   static getAutoControlledStateFromProps(props: CarouselProps, state: CarouselState) {
     const { items } = props;
-    const { itemIds } = state;
 
     if (!items) {
       return null;
     }
-
-    return {
-      itemIds: items.map((item, index) => getOrGenerateIdFromShorthand('carousel-item-', item, itemIds[index])),
-    };
   }
 
   componentWillUnmount() {
@@ -211,7 +205,6 @@ class Carousel extends AutoControlledComponent<WithAsProp<CarouselProps>, Carous
       activeIndex: 0,
       prevActiveIndex: -1,
       ariaLiveOn: false,
-      itemIds: [] as string[],
       shouldFocusContainer: false,
       isFromKeyboard: false,
     };
@@ -274,7 +267,7 @@ class Carousel extends AutoControlledComponent<WithAsProp<CarouselProps>, Carous
 
   renderContent = (accessibility, classes, unhandledProps) => {
     const { getItemPositionText, items, circular } = this.props;
-    const { activeIndex, itemIds, prevActiveIndex } = this.state;
+    const { activeIndex, prevActiveIndex } = this.state;
 
     this.itemRefs = [];
 
@@ -322,7 +315,6 @@ class Carousel extends AutoControlledComponent<WithAsProp<CarouselProps>, Carous
                     {CarouselItem.create(item, {
                       defaultProps: () => ({
                         active,
-                        id: itemIds[index],
                         navigation: !!this.props.navigation,
                         ...(getItemPositionText && {
                           itemPositionText: getItemPositionText(index, items.length),
