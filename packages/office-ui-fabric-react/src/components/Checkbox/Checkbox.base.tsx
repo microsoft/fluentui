@@ -17,9 +17,7 @@ export interface ICheckboxState {
   isIndeterminate?: boolean;
 }
 
-const getClassNames = classNamesFunction<ICheckboxStyleProps, ICheckboxStyles>({
-  useStaticStyles: true,
-});
+const getClassNames = classNamesFunction<ICheckboxStyleProps, ICheckboxStyles>();
 
 export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState> implements ICheckbox {
   public static defaultProps: ICheckboxProps = {

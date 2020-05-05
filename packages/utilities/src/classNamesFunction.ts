@@ -4,6 +4,8 @@ import { getRTL } from './rtl';
 import { getWindow } from './dom';
 
 const MAX_CACHE_COUNT = 50;
+const DEFAULT_SELECTOR_REPEAT_COUNT = 10; // repeat selector to increase specificity of the rules
+
 let _memoizedClassNames = 0;
 
 const stylesheet = Stylesheet.getInstance();
@@ -99,14 +101,13 @@ export function classNamesFunction<TStyleProps extends {}, TStyleSet extends ISt
       if (styleFunctionOrObject === undefined) {
         (current as any)[RetVal] = {} as IProcessedStyleSet<TStyleSet>;
       } else {
-        const selectorRepeatCount = options.useStaticStyles ? 10 : undefined;
         (current as any)[RetVal] = mergeCssSets(
           [
             (typeof styleFunctionOrObject === 'function'
               ? styleFunctionOrObject(styleProps)
               : styleFunctionOrObject) as IStyleSet<TStyleSet>,
           ],
-          { rtl: !!rtl, selectorRepeatCount },
+          { rtl: !!rtl, selectorRepeatCount: options.useStaticStyles ? DEFAULT_SELECTOR_REPEAT_COUNT : undefined },
         );
       }
 
