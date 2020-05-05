@@ -200,6 +200,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
       backgroundColor,
       calloutMaxHeight,
       onScroll,
+      // tslint:disable-next-line: deprecation
       shouldRestoreFocus = true,
     } = this.props;
     target = this._getTarget();
@@ -250,6 +251,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
           <Popup
             {...getNativeProps(this.props, ARIA_ROLE_ATTRIBUTES)}
             ariaLabel={ariaLabel}
+            onRestoreFocus={this.props.onRestoreFocus}
             ariaDescribedBy={ariaDescribedBy}
             ariaLabelledBy={ariaLabelledBy}
             className={this._classNames.calloutMain}

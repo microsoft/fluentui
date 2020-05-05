@@ -8,8 +8,15 @@ export const DefaultButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
 
   return {
     root: {
-      fontSize: FontSizes.size12,
-      border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonText}`,
+      fontSize: FontSizes.size13,
+      border: `${StyleConstants.borderWidth} solid ${semanticColors.inputBorder}`,
+      color: semanticColors.buttonText,
+      selectors: {
+        // standard button
+        '&.is-expanded': {
+          color: semanticColors.buttonText,
+        },
+      },
     },
     rootDisabled: {
       backgroundColor: semanticColors.buttonBackgroundDisabled,
@@ -17,34 +24,42 @@ export const DefaultButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
       border: `0px`,
     },
     rootHovered: {
-      border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonTextHovered}`,
+      border: `${StyleConstants.borderWidth} solid ${semanticColors.inputBorderHovered}`,
+      backgroundColor: semanticColors.buttonBackgroundHovered,
+      color: semanticColors.buttonTextHovered,
     },
     rootPressed: {
-      border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonTextPressed}`,
+      backgroundColor: semanticColors.buttonBackgroundPressed,
+      border: `${StyleConstants.borderWidth} solid ${semanticColors.inputBorder}`,
+      color: semanticColors.buttonTextHovered,
     },
     rootChecked: {
-      border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonTextPressed}`,
+      backgroundColor: semanticColors.buttonBackgroundPressed,
+      border: `${StyleConstants.borderWidth} solid ${semanticColors.inputBorder}`,
+      color: semanticColors.buttonTextHovered,
     },
     rootCheckedHovered: {
+      border: `${StyleConstants.borderWidth} solid ${semanticColors.inputBorderHovered}`,
       backgroundColor: semanticColors.buttonBackgroundHovered,
       color: semanticColors.buttonTextHovered,
     },
     rootCheckedPressed: {
-      border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonTextPressed}`,
-      color: semanticColors.buttonTextPressed,
+      backgroundColor: semanticColors.buttonBackgroundPressed,
+      border: `${StyleConstants.borderWidth} solid ${semanticColors.inputBorder}`,
+      color: semanticColors.buttonTextHovered,
     },
     splitButtonContainer: {
       selectors: {
         // standard button
         '.ms-Button--default': {
-          border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonText}`,
-          borderRight: 'none',
+          border: `${StyleConstants.borderWidth} solid ${semanticColors.inputBorder}`,
+          borderRight: '0 !important',
         },
         // standard button dropdown
         '.ms-Button--default + .ms-Button': {
           backgroundColor: semanticColors.buttonBackground,
           color: semanticColors.buttonText,
-          border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonText}`,
+          border: `${StyleConstants.borderWidth} solid ${semanticColors.inputBorder}`,
           borderLeft: 'none',
           selectors: {
             '.ms-Button-menuIcon': {
@@ -54,7 +69,7 @@ export const DefaultButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
         },
         // standard button divider
         '.ms-Button--default + .ms-Button + span': {
-          backgroundColor: semanticColors.buttonText,
+          backgroundColor: semanticColors.buttonTextHovered,
         },
         // primary button
         '.ms-Button--primary': {
@@ -123,14 +138,14 @@ export const DefaultButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
         // secondary button hover
         '.ms-Button--default:not(.is-disabled)': {
           backgroundColor: semanticColors.buttonBackgroundHovered,
-          border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonTextHovered}`,
+          border: `${StyleConstants.borderWidth} solid ${semanticColors.inputBorderHovered}`,
           borderRight: 'none',
           color: semanticColors.buttonTextHovered,
         },
         // secondary button dropdown hover
         '.ms-Button--default + .ms-Button': {
           backgroundColor: semanticColors.buttonBackgroundHovered,
-          border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonTextHovered}`,
+          border: `${StyleConstants.borderWidth} solid ${semanticColors.inputBorderHovered}`,
           borderLeft: 'none',
           selectors: {
             ':hover': {
@@ -190,14 +205,14 @@ export const DefaultButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
         // secondary button checked
         '.ms-Button--default:not(.is-disabled)': {
           backgroundColor: semanticColors.buttonBackgroundPressed,
-          border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonTextPressed}`,
+          border: `${StyleConstants.borderWidth} solid ${semanticColors.inputBorderHovered}`,
           borderRight: 'none',
           color: semanticColors.buttonTextPressed,
         },
         // secondary button dropdown checked
         '.ms-Button--default + .ms-Button': {
           backgroundColor: semanticColors.buttonBackgroundPressed,
-          border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonTextPressed}`,
+          border: `${StyleConstants.borderWidth} solid ${semanticColors.inputBorderHovered}`,
           color: semanticColors.buttonTextPressed,
           selectors: {
             '.ms-Button-menuIcon': {
@@ -240,7 +255,7 @@ export const DefaultButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
         // secondary button checked hovered
         '.ms-Button--default:not(.is-disabled)': {
           backgroundColor: semanticColors.buttonBackgroundHovered,
-          border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonTextHovered}`,
+          border: `${StyleConstants.borderWidth} solid ${semanticColors.inputBorderHovered}`,
           borderRight: 'none',
           color: semanticColors.buttonTextHovered,
         },
@@ -248,7 +263,7 @@ export const DefaultButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
         '.ms-Button--default + .ms-Button': {
           backgroundColor: semanticColors.buttonBackgroundHovered,
           color: semanticColors.buttonTextHovered,
-          border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonTextHovered}`,
+          border: `${StyleConstants.borderWidth} solid ${semanticColors.inputBorderHovered}`,
           borderLeft: 'none',
           selectors: {
             '.ms-Button-menuIcon': {

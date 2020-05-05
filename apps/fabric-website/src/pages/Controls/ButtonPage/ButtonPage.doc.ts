@@ -35,5 +35,11 @@ export const ButtonPageProps = (disabled: boolean, checked: boolean): TPlatformP
       related,
       componentUrl,
     },
+    cross: {
+      overview: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/ButtonPage/docs/cross/ButtonOverview.md') as string,
+      usage: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/ButtonPage/docs/cross/ButtonUsage.md') as string,
+      related,
+      componentUrl,
+    },
   };
 };

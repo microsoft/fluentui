@@ -6,6 +6,7 @@ import {
   controlsPagesAndroid,
   controlsPagesMac,
   controlsPagesWindows,
+  controlsPagesCrossPlatform,
 } from './index';
 
 export const ControlsPages: INavPage = {
@@ -24,5 +25,6 @@ export const ControlsPages: INavPage = {
     android: controlsPagesAndroid,
     mac: controlsPagesMac,
     windows: controlsPagesWindows,
+    cross: controlsPagesCrossPlatform,
   },
 };

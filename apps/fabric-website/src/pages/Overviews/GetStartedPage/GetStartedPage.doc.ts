@@ -24,4 +24,8 @@ export const GetStartedPageProps: TFabricPlatformPageProps = {
     overview: require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/GetStartedPage/docs/windows/GetStartedOverview.md') as string,
     componentUrl,
   },
+  cross: {
+    overview: require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/GetStartedPage/docs/cross/GetStartedOverview.md') as string,
+    componentUrl,
+  },
 };

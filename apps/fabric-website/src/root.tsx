@@ -5,7 +5,7 @@ import * as platformPickerStyles from '@uifabric/example-app-base/lib/components
 import { SiteDefinition } from './SiteDefinition/index';
 import { HomePage } from './pages/HomePage/HomePage';
 import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
-import { AndroidLogo, AppleLogo, WebLogo, MacLogo, WindowsLogo } from './utilities/index';
+import { AndroidLogo, AppleLogo, WebLogo, MacLogo, WindowsLogo, CrossPlatformLogo } from './utilities/index';
 
 // TODO: handle redirects
 
@@ -28,6 +28,9 @@ registerIcons({
       className: platformPickerStyles.icon,
     }),
     'WinLogo-platformPicker': WindowsLogo({
+      className: platformPickerStyles.icon,
+    }),
+    'CrossPlatformLogo-platformPicker': CrossPlatformLogo({
       className: platformPickerStyles.icon,
     }),
   },

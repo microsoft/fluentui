@@ -1,11 +1,11 @@
 ### Control name
 
-`MSTooltip`
+`Tooltip` in Swift, `MSFTooltip` in Objective-C
 
 ### Source code
 
-[MSTooltip](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI/Tooltip/MSTooltip.swift)
+[Tooltip](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI/Tooltip/Tooltip.swift)
 
 ### Sample code
 
-[MSTooltip demo](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI.Demo/FluentUI.Demo/Demos/MSTooltipDemoController.swift)
+[Tooltip demo](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI.Demo/FluentUI.Demo/Demos/TooltipDemoController.swift)

@@ -1,4 +1,4 @@
-Fluent UI macOS is an [open-source](https://github.com/microsoft/fluentui-apple) native library that provides the Fluent UI experience for the macOS platform. It contains information about colors and typography, as well as custom controls and customizations for platform controls, all from the official Fluent design language used in Microsoft 365 products.
+Fluent UI macOS is an [open-source](https://github.com/microsoft/fluentui-apple) native library that provides the Fluent UI experience for the macOS platform. It contains custom controls and customizations for platform controls, all from the official Fluent design language used in Microsoft 365 products.
 
 ### Controls
 
@@ -8,4 +8,4 @@ Documentation for the controls is a work in progress. Some controls can be found
 
 ### Start developing
 
-Setup instructions and more information can be found in [the library's readme](https://github.com/microsoft/fluentui-apple/blob/master/macos/README.md).
+Setup instructions and more information can be found in [the library's readme](https://github.com/microsoft/fluentui-apple/blob/master/README.md).

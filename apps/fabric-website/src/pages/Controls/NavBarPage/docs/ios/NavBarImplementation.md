@@ -1,15 +1,15 @@
 ### Control name
 
-`MSNavigationController`
+`NavigationController` in Swift, `MSFNavigationController` in Objective-C
 
-`MSSearchBar`
+`SearchBar` in Swift, `MSFSearchBar` in Objective-C
 
 ### Source code
 
-[MSNavigationController](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI/Navigation/MSNavigationController.swift)
+[NavigationController](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI/Navigation/NavigationController.swift)
 
-[MSSearchBar](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI/Controls/MSSearchBar.swift)
+[SearchBar](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI/Controls/SearchBar.swift)
 
 ### Sample code
 
-[MSNavigationController demo](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI.Demo/FluentUI.Demo/Demos/MSNavigationControllerDemoController.swift)
+[NavigationController demo](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI.Demo/FluentUI.Demo/Demos/NavigationControllerDemoController.swift)
