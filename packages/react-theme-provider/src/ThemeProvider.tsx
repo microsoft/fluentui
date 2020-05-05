@@ -27,10 +27,16 @@ export type ThemePlateSet = Partial<{
 
 export type TokenSetType = string | { [key: string]: TokenSetType | undefined };
 
-export interface ThemeProviderProps extends React.AllHTMLAttributes<{}> {
+export interface ThemeProviderProps extends React.HTMLAttributes<HTMLDivElement> {
+  /**
+   * The theme provided by the user.
+   */
   theme?: Theme;
 }
 
+/**
+ * ThemeProvider, used for providing css variables and registering stylesheets.
+ */
 export const ThemeProvider = React.forwardRef<HTMLDivElement, ThemeProviderProps>(
   (
     { theme, style, className, ...rest }: React.PropsWithChildren<ThemeProviderProps>,
