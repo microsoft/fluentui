@@ -4894,11 +4894,6 @@ amdefine@>=0.0.4:
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
   integrity sha1-SlKCrBZHKek2Gbz9OtFR+BfOkfU=
 
-anchor-js@3.2.1:
-  version "3.2.1"
-  resolved "https://registry.yarnpkg.com/anchor-js/-/anchor-js-3.2.1.tgz#8996d42920a39c6daede25a86607059b45d96921"
-  integrity sha1-iZbUKSCjnG2u3iWoZgcFm0XZaSE=
-
 anchor-markdown-header@^0.5.5:
   version "0.5.7"
   resolved "https://registry.yarnpkg.com/anchor-markdown-header/-/anchor-markdown-header-0.5.7.tgz#045063d76e6a1f9cd327a57a0126aa0fdec371a7"
