@@ -39,6 +39,9 @@ export interface IClassNamesFunctionOptions {
    */
   cacheSize?: number;
 
+  /**
+   * Set to true if component base styles are implemented in scss instead of css-in-js.
+   */
   useStaticStyles?: boolean;
 }
 
