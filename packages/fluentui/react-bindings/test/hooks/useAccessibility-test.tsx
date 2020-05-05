@@ -322,7 +322,7 @@ describe('useAccessibility', () => {
       );
     });
 
-    it('applies default props for focuszonr', () => {
+    it('applies default props for FocusZone', () => {
       expect(
         shallow(<FocusZoneComponent />)
           .find('FocusZone')

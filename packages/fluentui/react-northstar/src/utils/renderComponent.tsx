@@ -106,8 +106,6 @@ const renderComponent = <P extends {}>(
 
     resolvedConfig.ElementType = FocusZone as any;
     resolvedConfig.unhandledProps = {
-      // maintain behavior of focus zone in v7 behaviors
-      preventFocusRestoration: true,
       ...resolvedConfig.unhandledProps,
       ...accessibility.focusZone.props,
     };
