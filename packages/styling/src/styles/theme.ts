@@ -19,13 +19,11 @@ let _onThemeChangeCallbacks: Array<(theme: ITheme) => void> = [];
 export const ThemeSettingName = 'theme';
 
 if (!Customizations.getSettings([ThemeSettingName]).theme) {
-  const win = getWindow();
+  const win: any = getWindow(); // tslint:disable-line:no-any
 
-  // tslint:disable:no-string-literal no-any
-  if (win && (win as any)['FabricConfig'] && (win as any)['FabricConfig'].theme) {
-    _theme = createTheme((win as any)['FabricConfig'].theme);
+  if (win?.FabricConfig?.theme) {
+    _theme = createTheme(win.FabricConfig.theme);
   }
-  // tslint:enable:no-string-literal no-any
 
   // Set the default theme.
   Customizations.applySettings({ [ThemeSettingName]: _theme });
@@ -135,22 +133,14 @@ export function createTheme(theme: IPartialTheme, depComments: boolean = false):
   let defaultFontStyles: IFontStyles = { ...DefaultFontStyles };
 
   if (theme.defaultFontStyle) {
-    for (const fontStyle of Object.keys(defaultFontStyles)) {
-      // tslint:disable-next-line:no-any
-      (defaultFontStyles as any)[fontStyle] = merge({}, (defaultFontStyles as any)[fontStyle], theme.defaultFontStyle);
+    for (const fontStyle of Object.keys(defaultFontStyles) as (keyof IFontStyles)[]) {
+      defaultFontStyles[fontStyle] = merge({}, defaultFontStyles[fontStyle], theme.defaultFontStyle);
     }
   }
 
   if (theme.fonts) {
-    for (const fontStyle of Object.keys(theme.fonts)) {
-      // tslint:disable-next-line:no-any
-      (defaultFontStyles as any)[fontStyle] = merge(
-        {},
-        // tslint:disable-next-line:no-any
-        (defaultFontStyles as any)[fontStyle],
-        // tslint:disable-next-line:no-any
-        (theme.fonts as any)[fontStyle],
-      );
+    for (const fontStyle of Object.keys(theme.fonts) as (keyof IFontStyles)[]) {
+      defaultFontStyles[fontStyle] = merge({}, defaultFontStyles[fontStyle], theme.fonts[fontStyle]);
     }
   }
 
