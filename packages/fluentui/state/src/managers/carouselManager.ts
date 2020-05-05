@@ -1,6 +1,5 @@
 import createManager from '../createManager';
 import { Manager, ManagerConfig } from '../types';
-import { ShorthandCollection, CarouselItemProps, getOrGenerateIdFromShorthand } from '@fluentui/react-northstar';
 
 export type CarouselActions = {
   updateActiveIndex: (activeIndex: number | string, prevActiveIndex: number) => void;
@@ -17,7 +16,6 @@ export type CarouselState = {
   itemIds: string[];
   shouldFocusContainer: boolean;
   isFromKeyboard: boolean;
-  items?: ShorthandCollection<CarouselItemProps>;
 };
 
 export type CarouselManager = Manager<CarouselState, CarouselActions>;
@@ -37,13 +35,7 @@ export const createCarouselManager = (
       ...config.state,
     },
     actions: {
-      updateActiveIndex: (activeIndex, prevActiveIndex) => () => ({
-        activeIndex,
-        prevActiveIndex,
-        itemIds: config.state.items?.map((item, index) =>
-          getOrGenerateIdFromShorthand('carousel-item-', item, config.state.itemIds[index]),
-        ),
-      }),
+      updateActiveIndex: (activeIndex, prevActiveIndex) => () => ({ activeIndex, prevActiveIndex }),
       updateAriaLiveOn: ariaLiveOn => () => ({ ariaLiveOn }),
       updateItemIds: itemIds => () => ({ itemIds }),
       updateShouldFocusContainer: shouldFocusContainer => () => ({ shouldFocusContainer }),

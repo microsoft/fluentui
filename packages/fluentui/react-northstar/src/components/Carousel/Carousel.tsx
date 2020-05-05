@@ -163,15 +163,13 @@ export const Carousel: React.FC<WithAsProp<CarouselProps>> &
   const { state, actions } = useStateManager<CarouselState, CarouselActions>(createCarouselManager, {
     mapPropsToInitialState: () => ({
       activeIndex: defaultActiveIndex,
-      items,
-      itemIds: items?.map(item => getOrGenerateIdFromShorthand('carousel-item-', item)),
     }),
     mapPropsToState: () => ({
       activeIndex: props.activeIndex,
     }),
   });
 
-  const { prevActiveIndex, ariaLiveOn, itemIds, shouldFocusContainer, isFromKeyboard, activeIndex } = state;
+  const { prevActiveIndex, ariaLiveOn, shouldFocusContainer, isFromKeyboard, activeIndex } = state;
 
   const itemRefs = React.useMemo<React.RefObject<HTMLElement>[]>(
     () => Array.from({ length: items?.length }, () => React.createRef()),
@@ -325,7 +323,6 @@ export const Carousel: React.FC<WithAsProp<CarouselProps>> &
                     {CarouselItem.create(item, {
                       defaultProps: () => ({
                         active,
-                        id: itemIds[index],
                         navigation: !!navigation,
                         ...(getItemPositionText && {
                           itemPositionText: getItemPositionText(index, items.length),
