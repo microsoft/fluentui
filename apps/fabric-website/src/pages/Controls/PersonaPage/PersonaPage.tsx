@@ -60,11 +60,13 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
           content: (
             <ImplementationSection
               jsonDocs={{
+                name: '',
                 tables: [
                   {
                     kind: 'interface' as ApiKind,
                     name: 'IPersonaCoinProps',
                     description: '\n',
+                    extendsTokens: [],
                     members: [
                       {
                         name: 'imageUrl',
@@ -73,9 +75,10 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                             text: 'string',
                           },
                         ],
-                        kind: 'property',
+                        kind: 'property' as 'property',
                         description:
                           'Url to the image to use, should be a square aspect ratio and big enough to fit in the image area.\n',
+                        deprecated: false,
                       },
                       {
                         name: 'imageDescription',
@@ -84,8 +87,9 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                             text: 'string',
                           },
                         ],
-                        kind: 'property',
+                        kind: 'property' as 'property',
                         description: 'Alt text for the image to use. Defaults to an empty string.\n',
+                        deprecated: false,
                       },
                       {
                         name: 'initials',
@@ -94,8 +98,9 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                             text: 'string',
                           },
                         ],
-                        kind: 'property',
+                        kind: 'property' as 'property',
                         description: "The user's initials to display in the image area when there is no image. \n",
+                        deprecated: false,
                       },
                       {
                         name: 'isOutOfOffice',
@@ -104,9 +109,10 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                             text: 'boolean',
                           },
                         ],
-                        kind: 'property',
+                        kind: 'property' as 'property',
                         description:
                           'This flag can be used to signal the persona is out of office. This will change the way the presence icon looks for statuses that support dual-presence. \n',
+                        deprecated: false,
                       },
                       {
                         name: 'presence',
@@ -115,8 +121,9 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                             text: 'PersonaPresence',
                           },
                         ],
-                        kind: 'property',
+                        kind: 'property' as 'property',
                         description: 'Presence of the person to display - will not display presence if undefined. \n',
+                        deprecated: false,
                       },
                     ],
                   },
@@ -124,6 +131,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                     kind: 'enum' as ApiKind,
                     name: 'PersonaPresence',
                     description: '\n',
+                    extendsTokens: [],
                     members: [],
                   },
                 ],

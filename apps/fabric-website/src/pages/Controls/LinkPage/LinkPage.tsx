@@ -29,11 +29,13 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
           content: (
             <ImplementationSection
               jsonDocs={{
+                name: '',
                 tables: [
                   {
                     kind: 'interface' as ApiKind,
                     name: 'ILinkProps',
                     description: '\n',
+                    extendsTokens: [],
                     members: [
                       {
                         name: 'componentRef',
@@ -42,9 +44,10 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                             text: 'React.RefObject<IFocusable>',
                           },
                         ],
-                        kind: 'property',
+                        kind: 'property' as 'property',
                         description:
                           'A RefObject to access the IButton interface. Use this to access the public methods and properties of the component.\n',
+                        deprecated: false,
                       },
                       {
                         name: 'content',
@@ -53,8 +56,9 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                             text: 'string',
                           },
                         ],
-                        kind: 'property',
+                        kind: 'property' as 'property',
                         description: 'The visible text of the link that the user sees.\n',
+                        deprecated: false,
                       },
                       {
                         name: 'url',
@@ -63,9 +67,10 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                             text: 'string',
                           },
                         ],
-                        kind: 'property',
+                        kind: 'property' as 'property',
                         description:
                           'The URL that is opened when the link is clicked.  This value supersedes the onPress callback when both are present.\n',
+                        deprecated: false,
                       },
                     ],
                   },

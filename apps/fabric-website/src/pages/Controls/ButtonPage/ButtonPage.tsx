@@ -5,7 +5,7 @@ import { ButtonPageProps } from './ButtonPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
 import { IPageSectionProps } from '@uifabric/example-app-base/lib/index2';
 import { ImplementationSection } from '@uifabric/example-app-base/lib/index2';
-import { ApiKind } from 'office-ui-fabric-react/lib/common/DocPage.types';
+import { ApiKind, ILinkToken } from 'office-ui-fabric-react/lib/common/DocPage.types';
 
 const toggleStyles: Partial<IToggleStyles> = {
   root: { margin: '10px 0' },
@@ -95,11 +95,13 @@ export class ButtonPage extends React.Component<
             content: (
               <ImplementationSection
                 jsonDocs={{
+                  name: '',
                   tables: [
                     {
                       kind: 'interface' as ApiKind,
                       name: 'IButtonProps',
                       description: '\n',
+                      extendsTokens: [],
                       members: [
                         {
                           name: 'componentRef',
@@ -108,9 +110,10 @@ export class ButtonPage extends React.Component<
                               text: 'React.RefObject<IFocusable>',
                             },
                           ],
-                          kind: 'property',
+                          kind: 'property' as 'property',
                           description:
                             'A RefObject to access the IButton interface. Use this to access the public methods and properties of the component.\n',
+                          deprecated: false,
                         },
                         {
                           name: 'content',
@@ -119,8 +122,9 @@ export class ButtonPage extends React.Component<
                               text: 'string',
                             },
                           ],
-                          kind: 'property',
+                          kind: 'property' as 'property',
                           description: 'Text to show on the Button\n',
+                          deprecated: false,
                         },
                         {
                           name: 'icon',
@@ -129,8 +133,9 @@ export class ButtonPage extends React.Component<
                               text: 'string',
                             },
                           ],
-                          kind: 'property',
+                          kind: 'property' as 'property',
                           description: 'Source URL or name of the icon to show on the Button\n',
+                          deprecated: false,
                         },
                         {
                           name: 'onClick',
@@ -139,8 +144,9 @@ export class ButtonPage extends React.Component<
                               text: 'void',
                             },
                           ],
-                          kind: 'property',
+                          kind: 'property' as 'property',
                           description: 'A callback to call on button click event\n',
+                          deprecated: false,
                         },
                       ],
                     },
@@ -170,8 +176,9 @@ export class ButtonPage extends React.Component<
                               text: 'number | string',
                             },
                           ],
-                          kind: 'property',
+                          kind: 'property' as 'property',
                           description: 'The amount of padding between the border and the contents\n',
+                          deprecated: false,
                         },
                         {
                           name: 'contentPaddingFocused',
@@ -180,9 +187,10 @@ export class ButtonPage extends React.Component<
                               text: 'number | string',
                             },
                           ],
-                          kind: 'property',
+                          kind: 'property' as 'property',
                           description:
                             'The amount of padding between the border and the contents when the Button has focus\n',
+                          deprecated: false,
                         },
                         {
                           name: 'iconColor',
@@ -191,8 +199,9 @@ export class ButtonPage extends React.Component<
                               text: 'string',
                             },
                           ],
-                          kind: 'property',
+                          kind: 'property' as 'property',
                           description: 'The icon color\n',
+                          deprecated: false,
                         },
                         {
                           name: 'iconColorHovered',
@@ -201,8 +210,9 @@ export class ButtonPage extends React.Component<
                               text: 'string',
                             },
                           ],
-                          kind: 'property',
+                          kind: 'property' as 'property',
                           description: 'The icon color when hovering over the Button.\n',
+                          deprecated: false,
                         },
                         {
                           name: 'iconColorPressed',
@@ -211,8 +221,9 @@ export class ButtonPage extends React.Component<
                               text: 'string',
                             },
                           ],
-                          kind: 'property',
+                          kind: 'property' as 'property',
                           description: 'The icon color when the Button is being pressed\n',
+                          deprecated: false,
                         },
                         {
                           name: 'iconSize',
@@ -221,8 +232,9 @@ export class ButtonPage extends React.Component<
                               text: 'number | string',
                             },
                           ],
-                          kind: 'property',
+                          kind: 'property' as 'property',
                           description: 'The size of the icon\n',
+                          deprecated: false,
                         },
                         {
                           name: 'iconWeight',
@@ -231,8 +243,9 @@ export class ButtonPage extends React.Component<
                               text: 'number',
                             },
                           ],
-                          kind: 'property',
+                          kind: 'property' as 'property',
                           description: 'The weight of the lines used when drawing the icon\n',
+                          deprecated: false,
                         },
                         {
                           name: 'content',
@@ -241,8 +254,9 @@ export class ButtonPage extends React.Component<
                               text: 'string',
                             },
                           ],
-                          kind: 'property',
+                          kind: 'property' as 'property',
                           description: 'Text to show on the Button\n',
+                          deprecated: false,
                         },
                         {
                           name: 'icon',
@@ -251,8 +265,9 @@ export class ButtonPage extends React.Component<
                               text: 'string',
                             },
                           ],
-                          kind: 'property',
+                          kind: 'property' as 'property',
                           description: 'Source URL or name of the icon to show on the Button\n',
+                          deprecated: false,
                         },
                       ],
                     },
@@ -270,11 +285,13 @@ export class ButtonPage extends React.Component<
             content: (
               <ImplementationSection
                 jsonDocs={{
+                  name: '',
                   tables: [
                     {
                       kind: 'interface' as ApiKind,
                       name: 'IButtonProps',
                       description: '\n',
+                      extendsTokens: [],
                       members: [
                         {
                           name: 'componentRef',
@@ -283,9 +300,10 @@ export class ButtonPage extends React.Component<
                               text: 'React.RefObject<IFocusable>',
                             },
                           ],
-                          kind: 'property',
+                          kind: 'property' as 'property',
                           description:
                             'A RefObject to access the IButton interface. Use this to access the public methods and properties of the component.\n',
+                          deprecated: false,
                         },
                         {
                           name: 'content',
@@ -294,8 +312,9 @@ export class ButtonPage extends React.Component<
                               text: 'string',
                             },
                           ],
-                          kind: 'property',
+                          kind: 'property' as 'property',
                           description: 'Text to show on the Button\n',
+                          deprecated: false,
                         },
                         {
                           name: 'icon',
@@ -304,8 +323,9 @@ export class ButtonPage extends React.Component<
                               text: 'string',
                             },
                           ],
-                          kind: 'property',
+                          kind: 'property' as 'property',
                           description: 'Source URL or name of the icon to show on the Button\n',
+                          deprecated: false,
                         },
                         {
                           name: 'onClick',
@@ -314,8 +334,9 @@ export class ButtonPage extends React.Component<
                               text: 'void',
                             },
                           ],
-                          kind: 'property',
+                          kind: 'property' as 'property',
                           description: 'A callback to call on button click event\n',
+                          deprecated: false,
                         },
                       ],
                     },
@@ -345,8 +366,9 @@ export class ButtonPage extends React.Component<
                               text: 'number | string',
                             },
                           ],
-                          kind: 'property',
+                          kind: 'property' as 'property',
                           description: 'The amount of padding between the border and the contents\n',
+                          deprecated: false,
                         },
                         {
                           name: 'contentPaddingFocused',
@@ -355,9 +377,10 @@ export class ButtonPage extends React.Component<
                               text: 'number | string',
                             },
                           ],
-                          kind: 'property',
+                          kind: 'property' as 'property',
                           description:
                             'The amount of padding between the border and the contents when the Button has focus\n',
+                          deprecated: false,
                         },
                         {
                           name: 'iconColor',
@@ -366,8 +389,9 @@ export class ButtonPage extends React.Component<
                               text: 'string',
                             },
                           ],
-                          kind: 'property',
+                          kind: 'property' as 'property',
                           description: 'The icon color\n',
+                          deprecated: false,
                         },
                         {
                           name: 'iconColorHovered',
@@ -376,8 +400,9 @@ export class ButtonPage extends React.Component<
                               text: 'string',
                             },
                           ],
-                          kind: 'property',
+                          kind: 'property' as 'property',
                           description: 'The icon color when hovering over the Button.\n',
+                          deprecated: false,
                         },
                         {
                           name: 'iconColorPressed',
@@ -386,8 +411,9 @@ export class ButtonPage extends React.Component<
                               text: 'string',
                             },
                           ],
-                          kind: 'property',
+                          kind: 'property' as 'property',
                           description: 'The icon color when the Button is being pressed\n',
+                          deprecated: false,
                         },
                         {
                           name: 'iconSize',
@@ -396,8 +422,9 @@ export class ButtonPage extends React.Component<
                               text: 'number | string',
                             },
                           ],
-                          kind: 'property',
+                          kind: 'property' as 'property',
                           description: 'The size of the icon\n',
+                          deprecated: false,
                         },
                         {
                           name: 'iconWeight',
@@ -406,8 +433,9 @@ export class ButtonPage extends React.Component<
                               text: 'number',
                             },
                           ],
-                          kind: 'property',
+                          kind: 'property' as 'property',
                           description: 'The weight of the lines used when drawing the icon\n',
+                          deprecated: false,
                         },
                         {
                           name: 'content',
@@ -416,8 +444,9 @@ export class ButtonPage extends React.Component<
                               text: 'string',
                             },
                           ],
-                          kind: 'property',
+                          kind: 'property' as 'property',
                           description: 'Text to show on the Button\n',
+                          deprecated: false,
                         },
                         {
                           name: 'icon',
@@ -426,8 +455,9 @@ export class ButtonPage extends React.Component<
                               text: 'string',
                             },
                           ],
-                          kind: 'property',
+                          kind: 'property' as 'property',
                           description: 'Source URL or name of the icon to show on the Button\n',
+                          deprecated: false,
                         },
                       ],
                     },

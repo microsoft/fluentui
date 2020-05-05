@@ -49,11 +49,13 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
           content: (
             <ImplementationSection
               jsonDocs={{
+                name: '',
                 tables: [
                   {
                     kind: 'interface' as ApiKind,
                     name: 'ISeparatorPropTokens ',
                     description: '\n',
+                    extendsTokens: [],
                     members: [
                       {
                         name: 'vertical',
@@ -62,10 +64,11 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                             text: 'boolean',
                           },
                         ],
-                        kind: 'property',
+                        kind: 'property' as 'property',
                         defaultValue: 'false',
                         description:
                           "Specifies whether the separator is vertical or horizontal. If true, then it's vertical.\n",
+                        deprecated: false,
                       },
                     ],
                   },
@@ -73,6 +76,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                     kind: 'interface' as ApiKind,
                     name: 'ISeparatorTokens ',
                     description: '\n',
+                    extendsTokens: [],
                     members: [
                       {
                         name: 'separatorWidth',
@@ -81,10 +85,11 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                             text: 'number',
                           },
                         ],
-                        kind: 'property',
+                        kind: 'property' as 'property',
                         defaultValue: '1',
                         description:
                           'Specifies the width of the separator. This will be interpreted as DIPs on Windows and Android, but as points on Mac and iOS.\n',
+                        deprecated: false,
                       },
                     ],
                   },
