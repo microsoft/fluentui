@@ -84,7 +84,7 @@ function _getFontBaseUrl(): string {
   let win = getWindow();
 
   // tslint:disable-next-line:no-string-literal no-any
-  let fabricConfig: IFabricConfig = win ? win['FabricConfig'] : undefined;
+  let fabricConfig: IFabricConfig = win ? (win as any).FabricConfig : undefined;
 
   return fabricConfig && fabricConfig.fontBaseUrl !== undefined ? fabricConfig.fontBaseUrl : DefaultBaseUrl;
 }

@@ -97,7 +97,8 @@ function _loadFonts(theme: ITheme): { [name: string]: string } {
   const lines = {};
 
   for (const fontName of Object.keys(theme.fonts)) {
-    const font = theme.fonts[fontName];
+    // tslint:disable-next-line:no-any
+    const font = (theme.fonts as any)[fontName];
     for (const propName of Object.keys(font)) {
       const name = fontName + propName.charAt(0).toUpperCase() + propName.slice(1);
       let value = font[propName];
@@ -105,7 +106,8 @@ function _loadFonts(theme: ITheme): { [name: string]: string } {
         // if it's a number, convert it to px by default like our theming system does
         value = value + 'px';
       }
-      lines[name] = value;
+      // tslint:disable-next-line:no-any
+      (lines as any)[name] = value;
     }
   }
   return lines;
@@ -133,13 +135,21 @@ export function createTheme(theme: IPartialTheme, depComments: boolean = false):
 
   if (theme.defaultFontStyle) {
     for (const fontStyle of Object.keys(defaultFontStyles)) {
-      defaultFontStyles[fontStyle] = merge({}, defaultFontStyles[fontStyle], theme.defaultFontStyle);
+      // tslint:disable-next-line:no-any
+      (defaultFontStyles as any)[fontStyle] = merge({}, (defaultFontStyles as any)[fontStyle], theme.defaultFontStyle);
     }
   }
 
   if (theme.fonts) {
     for (const fontStyle of Object.keys(theme.fonts)) {
-      defaultFontStyles[fontStyle] = merge({}, defaultFontStyles[fontStyle], theme.fonts[fontStyle]);
+      // tslint:disable-next-line:no-any
+      (defaultFontStyles as any)[fontStyle] = merge(
+        {},
+        // tslint:disable-next-line:no-any
+        (defaultFontStyles as any)[fontStyle],
+        // tslint:disable-next-line:no-any
+        (theme.fonts as any)[fontStyle],
+      );
     }
   }
 
@@ -161,22 +171,6 @@ export function createTheme(theme: IPartialTheme, depComments: boolean = false):
       ...theme.effects,
     },
   };
-}
-
-/**
- * Helper to pull a given property name from a given set of sources, in order, if available.
- * Otherwise returns the property name.
- */
-function _expandFrom<TRetVal, TMapType>(propertyName: string | TRetVal | undefined, ...maps: TMapType[]): TRetVal {
-  if (propertyName) {
-    for (const map of maps) {
-      if (map[propertyName as string]) {
-        return map[propertyName as string];
-      }
-    }
-  }
-
-  return propertyName as TRetVal;
 }
 
 // Generates all the semantic slot colors based on the Fabric palette.

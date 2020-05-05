@@ -15,7 +15,8 @@ const _getGlobalClassNames = memoizeFunction(
     if (disableGlobalClassNames) {
       // disable global classnames
       return Object.keys(classNames).reduce((acc: {}, className: string) => {
-        acc[className] = styleSheet.getClassName(classNames[className]);
+        // tslint:disable-next-line:no-any
+        (acc as any)[className] = styleSheet.getClassName((classNames as any)[className]);
         return acc;
       }, {});
     }

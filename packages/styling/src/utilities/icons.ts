@@ -214,7 +214,8 @@ export function setIconOptions(options: Partial<IIconOptions>): void {
 }
 
 let _missingIcons: string[] = [];
-let _missingIconsTimer: number | undefined = undefined;
+// tslint:disable-next-line:no-any
+let _missingIconsTimer: any = undefined;
 
 function _warnDuplicateIcon(iconName: string): void {
   const options = _iconSettings.__options;

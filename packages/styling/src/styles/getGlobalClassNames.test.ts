@@ -19,7 +19,10 @@ describe('getGlobalClassNames', () => {
   });
 
   describe('calls are memoized', () => {
-    let theme, globalClassnames;
+    // tslint:disable-next-line:no-any
+    let theme: any;
+    // tslint:disable-next-line:no-any
+    let globalClassnames: any;
     beforeAll(() => {
       theme = createTheme({ disableGlobalClassNames: true });
       globalClassnames = { root: 'ms-Memoized' };

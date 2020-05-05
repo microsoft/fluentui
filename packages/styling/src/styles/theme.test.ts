@@ -1,5 +1,4 @@
 import { registerOnThemeChangeCallback, removeOnThemeChangeCallback, loadTheme, getTheme } from './theme';
-import { IPartialTheme } from '../interfaces/index';
 import { IRawStyle } from '@uifabric/merge-styles';
 import { DefaultFontStyles } from './DefaultFontStyles';
 
