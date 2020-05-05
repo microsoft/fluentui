@@ -37,14 +37,6 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
           content: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/TextPage/docs/android/TextImplementation.md') as string,
         },
       ];
-    case 'mac':
-      return [
-        {
-          sectionName: 'Implementation',
-          editUrl: baseUrl + 'docs/mac/TextImplementation.md',
-          content: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/TextPage/docs/mac/TextImplementation.md') as string,
-        },
-      ];
     case 'windows':
       return [
         {

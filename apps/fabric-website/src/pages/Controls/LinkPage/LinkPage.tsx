@@ -80,20 +80,5 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
           ),
         },
       ];
-
-    case 'mac':
-      return [
-        {
-          sectionName: 'Implementation',
-          editUrl: baseUrl + 'docs/mac/LinkImplementation.md',
-          content: (
-            <Markdown>
-              {
-                require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/LinkPage/docs/mac/LinkImplementation.md') as string
-              }
-            </Markdown>
-          ),
-        },
-      ];
   }
 }

@@ -140,20 +140,5 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
           ),
         },
       ];
-
-    case 'mac':
-      return [
-        {
-          sectionName: 'Implementation',
-          editUrl: baseUrl + 'docs/mac/PersonaImplementation.md',
-          content: (
-            <Markdown>
-              {
-                require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/PersonaPage/docs/mac/PersonaImplementation.md') as string
-              }
-            </Markdown>
-          ),
-        },
-      ];
   }
 }

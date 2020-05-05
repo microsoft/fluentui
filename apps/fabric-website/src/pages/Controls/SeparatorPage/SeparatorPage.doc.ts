@@ -26,10 +26,4 @@ export const SeparatorPageProps: TFabricPlatformPageProps = {
     related,
     componentUrl,
   },
-  mac: {
-    overview: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/SeparatorPage/docs/mac/SeparatorOverview.md') as string,
-    usage: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/SeparatorPage/docs/mac/SeparatorUsage.md') as string,
-    related,
-    componentUrl,
-  },
 };
