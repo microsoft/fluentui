@@ -121,6 +121,7 @@ CarouselItem.displayName = 'CarouselItem';
 
 CarouselItem.propTypes = {
   ...commonPropTypes.createCommon(),
+  id: PropTypes.string,
   active: PropTypes.bool,
   navigation: PropTypes.bool,
   itemPositionText: PropTypes.string,
