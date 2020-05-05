@@ -2,8 +2,8 @@ import { ICSSInJSStyle } from '@fluentui/styles';
 import * as PopperJs from '@popperjs/core';
 
 type GetContainerStylesOptions = {
+  padding: string;
   placement: PopperJs.BasePlacement;
-  margin: string;
 };
 
 type GetPointerStylesOptions = {
@@ -12,6 +12,7 @@ type GetPointerStylesOptions = {
   borderSize: string;
 
   gap: string;
+  padding: string;
   height: string;
   width: string;
 
@@ -21,26 +22,26 @@ type GetPointerStylesOptions = {
 };
 
 export const getContainerStyles = (options: GetContainerStylesOptions): ICSSInJSStyle => {
-  const { placement, margin } = options;
+  const { padding, placement } = options;
 
   return {
     ...(placement === 'bottom' && {
-      paddingTop: margin,
+      paddingTop: padding,
     }),
     ...(placement === 'top' && {
-      paddingBottom: margin,
+      paddingBottom: padding,
     }),
     ...(placement === 'left' && {
-      paddingRight: margin,
+      paddingRight: padding,
     }),
     ...(placement === 'right' && {
-      paddingLeft: margin,
+      paddingLeft: padding,
     }),
   };
 };
 
 export const getPointerStyles = (options: GetPointerStylesOptions): ICSSInJSStyle => {
-  const { backgroundColor, borderColor, borderSize, gap, height, placement, rtl, svg, width } = options;
+  const { backgroundColor, borderColor, borderSize, gap, height, padding, placement, rtl, svg, width } = options;
 
   return {
     display: 'block',
@@ -63,17 +64,17 @@ export const getPointerStyles = (options: GetPointerStylesOptions): ICSSInJSStyl
     }),
 
     ...(placement === 'bottom' && {
-      top: `calc(${height} + (${borderSize} * 2))`,
+      top: `calc(${padding} - ${height} + (${borderSize} * 2))`,
     }),
     ...(placement === 'top' && {
-      bottom: `calc(${height} + ${borderSize})`,
+      bottom: `calc(${padding} - ${height} + ${borderSize})`,
     }),
 
     ...(placement === 'left' && {
-      right: `calc(${height} + ${borderSize})`,
+      right: `calc(${padding} - ${height} + ${borderSize})`,
     }),
     ...(placement === 'right' && {
-      left: `calc(${height} + ${borderSize})`,
+      left: `calc(${padding} - ${height} + ${borderSize})`,
     }),
 
     '::before': {
