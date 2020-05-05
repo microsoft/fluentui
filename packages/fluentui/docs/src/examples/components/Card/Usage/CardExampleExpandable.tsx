@@ -70,6 +70,7 @@ const CardExampleExpandableAnimation = () => {
       <Provider theme={{ animations: { expand, shrink, rest } }}>
         <Card
           aria-roledescription="user card"
+          aria-expanded={animationName === 'expand'}
           accessibility={cardFocusableBehavior}
           onFocus={expandCard}
           onMouseEnter={expandCard}
@@ -185,6 +186,7 @@ const CardExampleExpandableStyles = () => {
       <Provider theme={customTheme}>
         <Card
           aria-roledescription="user card"
+          aria-expanded={expandCard}
           accessibility={cardFocusableBehavior}
           onFocus={expandCardHandler}
           onMouseEnter={expandCardHandler}
