@@ -13,7 +13,7 @@ const getItemPositionContainer = (wrapper: ReactWrapper): CommonWrapper =>
   findIntrinsicElement(wrapper, `.${carouselItemSlotClassNames.itemPositionText}`);
 
 describe('CarouselItem', () => {
-  isConformant(CarouselItem);
+  isConformant(CarouselItem, { constructorName: 'CarouselItem' });
 
   it('itemPositionText is added inside the item along with the content', () => {
     const wrapper = renderCarouselItem({ itemPositionText: 'test-position' });

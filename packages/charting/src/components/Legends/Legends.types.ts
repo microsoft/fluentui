@@ -2,7 +2,7 @@ import { ITheme, IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 import { IHoverCardStyleProps, IHoverCardStyles } from 'office-ui-fabric-react/lib/HoverCard';
 import { IOverflowSetProps } from 'office-ui-fabric-react/lib/OverflowSet';
-import { IFocusZoneProps } from 'office-ui-fabric-react/lib/FocusZone';
+import { IFocusZoneProps } from '@fluentui/react-focus';
 
 export interface ILegendOverflowData {
   primary: ILegend[];
