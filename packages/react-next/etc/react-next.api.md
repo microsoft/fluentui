@@ -515,17 +515,7 @@ export const Popup: React.ForwardRefExoticComponent<IPopupProps & React.RefAttri
 export const SearchBox: React.FunctionComponent<ISearchBoxProps>;
 
 // @public (undocumented)
-export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxState> {
-    constructor(props: ISearchBoxProps);
-    // (undocumented)
-    static defaultProps: Pick<ISearchBoxProps, 'disableAnimation' | 'clearButtonProps'>;
-    focus(): void;
-    hasFocus(): boolean;
-    // (undocumented)
-    render(): JSX.Element;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(newProps: ISearchBoxProps): void;
-}
+export const SearchBoxBase: React.FunctionComponent;
 
 // @public (undocumented)
 export const Slider: React.FunctionComponent<ISliderProps>;

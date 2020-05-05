@@ -4,6 +4,7 @@ import { warnDeprecations, KeyCodes, classNamesFunction, getNativeProps, inputPr
 import { useBoolean, useControllableValue, useId } from '@uifabric/react-hooks';
 import { IconButton } from '../../Button';
 import { Icon } from '../../Icon';
+import { SearchBox } from 'office-ui-fabric-react';
 
 export interface ISearchBoxState {
   value?: string;
@@ -31,10 +32,12 @@ const useComponentRef = (
     [inputElementRef, hasFocus],
   );
 };
+const iconButtonStyles = { root: { height: 'auto' }, icon: { fontSize: '12px' } };
+const iconButtonProps = { iconName: 'Clear' };
 
 export const SearchBoxBase: React.FunctionComponent = (props: ISearchBoxProps) => {
   const [hasFocus, { toggle: toggleHasFocus }] = useBoolean(false);
-  // tslint:disable-next-line:prefer-const
+  // tslint:disable-next-line:prefer-const deprecation
   let [value, setValue] = useControllableValue(props.value, props.defaultValue, props.onChange);
   const rootElementRef = React.useRef<HTMLDivElement>(null);
   const inputElementRef = React.useRef<HTMLInputElement>(null);
@@ -52,6 +55,7 @@ export const SearchBoxBase: React.FunctionComponent = (props: ISearchBoxProps) =
     disabled,
     underlined,
     styles,
+    /* tslint:disable-next-line:deprecation */
     labelText,
     theme,
     clearButtonProps = { ariaLabel: 'Clear text' },
@@ -179,8 +183,8 @@ export const SearchBoxBase: React.FunctionComponent = (props: ISearchBoxProps) =
         <div className={classNames.clearButton}>
           <IconButton
             onBlur={onBlur}
-            styles={{ root: { height: 'auto' }, icon: { fontSize: '12px' } }}
-            iconProps={{ iconName: 'Clear' }}
+            styles={iconButtonStyles}
+            iconProps={iconButtonProps}
             {...clearButtonProps}
             onClick={onClearClick}
           />
@@ -189,3 +193,4 @@ export const SearchBoxBase: React.FunctionComponent = (props: ISearchBoxProps) =
     </div>
   );
 };
+SearchBox.displayName = COMPONENT_NAME;
