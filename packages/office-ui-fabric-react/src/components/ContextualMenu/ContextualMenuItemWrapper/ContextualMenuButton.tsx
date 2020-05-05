@@ -70,8 +70,8 @@ export class ContextualMenuButton extends ContextualMenuItemWrapper {
       'aria-posinset': focusableElementIndex + 1,
       'aria-setsize': totalItemCount,
       'aria-disabled': isItemDisabled(item),
-      'aria-checked': itemRole == 'menuitemcheckbox' && canCheck ? !!isChecked : undefined,
-      'aria-selected': itemRole == 'menuitem' && canCheck ? !!isChecked : undefined,
+      'aria-checked': itemRole === 'menuitemcheckbox' && canCheck ? !!isChecked : undefined,
+      'aria-selected': itemRole === 'menuitem' && canCheck ? !!isChecked : undefined,
       role: itemRole,
       // tslint:disable-next-line:deprecation
       style: item.style,
