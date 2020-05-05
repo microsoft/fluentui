@@ -4,7 +4,6 @@ import { warnDeprecations, KeyCodes, classNamesFunction, getNativeProps, inputPr
 import { useBoolean, useControllableValue, useId } from '@uifabric/react-hooks';
 import { IconButton } from '../../Button';
 import { Icon } from '../../Icon';
-import { SearchBox } from 'office-ui-fabric-react';
 
 export interface ISearchBoxState {
   value?: string;
@@ -193,4 +192,4 @@ export const SearchBoxBase: React.FunctionComponent = (props: ISearchBoxProps) =
     </div>
   );
 };
-SearchBox.displayName = COMPONENT_NAME;
+SearchBoxBase.displayName = COMPONENT_NAME;

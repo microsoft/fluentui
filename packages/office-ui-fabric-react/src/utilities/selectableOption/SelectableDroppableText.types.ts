@@ -40,6 +40,9 @@ export interface ISelectableDroppableTextProps<TComponent, TListenerElement>
 
   /**
    * The key(s) that will be initially used to set a selected item.
+   *
+   * Mutually exclusive with `selectedKey`.
+   * For Dropdown in multi-select mode, use `defaultSelectedKeys` instead.
    */
   defaultSelectedKey?: string | number | string[] | number[] | null;
 
@@ -47,6 +50,9 @@ export interface ISelectableDroppableTextProps<TComponent, TListenerElement>
    * The key(s) of the selected item. If you provide this, you must maintain selection
    * state by observing onChange events and passing a new value in when changed.
    * Note that passing in `null` will cause selection to be reset.
+   *
+   * Mutually exclusive with `defaultSelectedKey`.
+   * For Dropdown in multi-select mode, use `selectedKeys` instead.
    */
   selectedKey?: string | number | string[] | number[] | null;
 
