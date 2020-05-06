@@ -2,7 +2,7 @@ import createManager from '../createManager';
 import { Manager, ManagerConfig } from '../types';
 
 export type CarouselActions = {
-  setIndexes: (activeIndex: number | string, prevActiveIndex: number) => void;
+  setIndexes: (activeIndex: number, prevActiveIndex: number) => void;
   setAriaLiveOn: (ariaLiveOn: boolean) => void;
   setShouldFocusContainer: (shouldFocusContainer: boolean) => void;
   setIsFromKeyboard: (isFromKeyboard: boolean) => void;
