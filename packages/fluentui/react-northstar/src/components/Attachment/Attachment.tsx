@@ -9,6 +9,7 @@ import {
   useUnhandledProps,
 } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
+import { mergeComponentVariables } from '@fluentui/styles';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
@@ -29,7 +30,6 @@ import AttachmentBody, { AttachmentBodyProps } from './AttachmentBody';
 import AttachmentDescription, { AttachmentDescriptionProps } from './AttachmentDescription';
 import AttachmentHeader, { AttachmentHeaderProps } from './AttachmentHeader';
 import AttachmentIcon, { AttachmentIconProps } from './AttachmentIcon';
-import Provider from '../Provider/Provider';
 
 export interface AttachmentProps extends UIComponentProps, ChildrenComponentProps {
   /** Accessibility behavior if overridden by the user. */
@@ -141,45 +141,46 @@ const Attachment = compose<'div', AttachmentProps, AttachmentStylesProps, {}, {}
     };
 
     const element = (
-      <Provider
-        as={React.Fragment}
-        theme={{
-          componentVariables: {
-            [composeOptions.displayName]: variables,
-            [(composeOptions.slots.action as any).displayName]: variables,
-            [(composeOptions.slots.header as any).displayName]: variables,
-            [(composeOptions.slots.description as any).displayName]: variables,
-            [(composeOptions.slots.body as any).displayName]: variables,
-            [(composeOptions.slots.icon as any).displayName]: variables,
-          },
-        }}
-      >
-        <ElementType
-          {...getA11Props('root', { className: classes.root, onClick: handleClick, ref, ...unhandledProps })}
-        >
-          {createShorthand(composeOptions.slots.icon, icon, { defaultProps: () => slotProps.icon || {} })}
+      <ElementType {...getA11Props('root', { className: classes.root, onClick: handleClick, ref, ...unhandledProps })}>
+        {createShorthand(composeOptions.slots.icon, icon, {
+          defaultProps: () => slotProps.icon || {},
+          overrideProps: predefinedProps => ({
+            variables: mergeComponentVariables(variables, predefinedProps.variables),
+          }),
+        })}
 
-          {(header || description) &&
-            createShorthand(composeOptions.slots.body, body, {
-              defaultProps: () => slotProps.body || {},
-              overrideProps: {
-                content: (
-                  <>
-                    {createShorthand(composeOptions.slots.header, header, {
-                      defaultProps: () => slotProps.header || {},
-                    })}
-                    {createShorthand(composeOptions.slots.description, description, {
-                      defaultProps: () => slotProps.description || {},
-                    })}
-                  </>
-                ),
-              },
-            })}
+        {(header || description) &&
+          createShorthand(composeOptions.slots.body, body, {
+            defaultProps: () => slotProps.body || {},
+            overrideProps: predefinedProps => ({
+              content: (
+                <>
+                  {createShorthand(composeOptions.slots.header, header, {
+                    defaultProps: () => slotProps.header || {},
+                    overrideProps: predefinedProps => ({
+                      variables: mergeComponentVariables(variables, predefinedProps.variables),
+                    }),
+                  })}
+                  {createShorthand(composeOptions.slots.description, description, {
+                    defaultProps: () => slotProps.description || {},
+                    overrideProps: predefinedProps => ({
+                      variables: mergeComponentVariables(variables, predefinedProps.variables),
+                    }),
+                  })}
+                </>
+              ),
+              variables: mergeComponentVariables(variables, predefinedProps.variables),
+            }),
+          })}
 
-          {createShorthand(composeOptions.slots.action, action, { defaultProps: () => slotProps.action || {} })}
-          {!_.isNil(progress) && <div className="ui-attachment__progress" style={{ width: `${progress}%` }} />}
-        </ElementType>
-      </Provider>
+        {createShorthand(composeOptions.slots.action, action, {
+          defaultProps: () => slotProps.action || {},
+          overrideProps: predefinedProps => ({
+            variables: mergeComponentVariables(variables, predefinedProps.variables),
+          }),
+        })}
+        {!_.isNil(progress) && <div className="ui-attachment__progress" style={{ width: `${progress}%` }} />}
+      </ElementType>
     );
     setEnd();
 
