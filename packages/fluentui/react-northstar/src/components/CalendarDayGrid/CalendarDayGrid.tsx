@@ -1,22 +1,13 @@
 import { gridBehavior } from '@fluentui/accessibility';
 import * as React from 'react';
-import {
-  ICalendarDayGridProps,
-  IDayInfo,
-  getWeeks,
-  findIndex,
-  DAYS_IN_WEEK,
-  DateRangeType,
-  DayOfWeek,
-  DayPickerStrings,
-} from '@uifabric/date-time';
+import { ICalendarDayGridCommonProps, IDayInfo, getWeeks, findIndex, DAYS_IN_WEEK } from '@uifabric/utilities';
 import { UIComponentProps, commonPropTypes, createShorthandFactory } from '../../utils';
 import { WithAsProp, withSafeTypeForAs, FluentComponentStaticProps } from '../../types';
 import Box from '../Box/Box';
 
 import Grid from '../Grid/Grid';
 
-export interface CalendarDayGridProps extends UIComponentProps, ICalendarDayGridProps {}
+export interface CalendarDayGridProps extends UIComponentProps, ICalendarDayGridCommonProps {}
 
 export const CalendarDayGrid: React.FC<WithAsProp<CalendarDayGridProps>> &
   FluentComponentStaticProps<CalendarDayGridProps> = props => {
@@ -58,13 +49,10 @@ export const CalendarDayGrid: React.FC<WithAsProp<CalendarDayGridProps>> &
 };
 
 CalendarDayGrid.defaultProps = {
-  firstDayOfWeek: DayOfWeek.Sunday,
-  dateRangeType: DateRangeType.Day,
-  today: new Date(),
-  selectedDate: new Date(),
-  navigatedDate: new Date(),
-  strings: DayPickerStrings,
-  workWeekDays: [DayOfWeek.Monday, DayOfWeek.Tuesday, DayOfWeek.Wednesday, DayOfWeek.Thursday, DayOfWeek.Friday],
+  // firstDayOfWeek: DayOfWeek.Sunday,
+  // dateRangeType: DateRangeType.Day,
+  // strings: DayPickerStrings,
+  // workWeekDays: [DayOfWeek.Monday, DayOfWeek.Tuesday, DayOfWeek.Wednesday, DayOfWeek.Thursday, DayOfWeek.Friday],
 };
 
 CalendarDayGrid.propTypes = {

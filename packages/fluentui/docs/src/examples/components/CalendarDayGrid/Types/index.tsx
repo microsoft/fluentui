@@ -7,7 +7,7 @@ const Types = () => (
     <ComponentExample
       title="Default"
       description="A default CalendarDayGrid."
-      examplePath="components/DatePicker/Types/CalendarDayGridExample"
+      examplePath="components/CalendarDayGrid/Types/CalendarDayGridExample"
     />
   </ExampleSection>
 );

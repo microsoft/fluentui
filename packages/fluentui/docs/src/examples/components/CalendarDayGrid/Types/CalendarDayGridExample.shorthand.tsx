@@ -1,14 +1,16 @@
 import * as React from 'react';
 import { CalendarDayGrid } from '@fluentui/react-northstar';
-import { DateRangeType, DayOfWeek, DayPickerStrings } from '@uifabric/date-time';
+import { DateRangeType, DayOfWeek, DayPickerStrings } from '@uifabric/utilities';
+
+const today = new Date();
 
 const CalendarDayGridExample = () => (
   <CalendarDayGrid
     firstDayOfWeek={DayOfWeek.Sunday}
     dateRangeType={DateRangeType.Day}
-    today={new Date()}
-    selectedDate={new Date()}
-    navigatedDate={new Date()}
+    today={today}
+    selectedDate={today}
+    navigatedDate={today}
     strings={DayPickerStrings}
     workWeekDays={[DayOfWeek.Monday, DayOfWeek.Tuesday, DayOfWeek.Wednesday, DayOfWeek.Thursday, DayOfWeek.Friday]}
   />
