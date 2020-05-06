@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "react-theme-provider: Adding a universal ThemeProvider package which will provide universal css variable based themeing to converged components.",
-  "packageName": "@fluentui/react",
-  "email": "dzearing@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-05-05T16:14:40.721Z"
-}
