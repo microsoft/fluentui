@@ -147,7 +147,7 @@ const Attachment = compose<'div', AttachmentProps, AttachmentStylesProps, {}, {}
     const element = (
       <ElementType {...getA11Props('root', { className: classes.root, onClick: handleClick, ref, ...unhandledProps })}>
         {createShorthand(composeOptions.slots.icon, icon, {
-          defaultProps: () => slotProps.icon || {},
+          defaultProps: () => slotProps.icon,
           overrideProps: predefinedProps => ({
             variables: mergeShorthandVariables(variables, predefinedProps.variables),
           }),
@@ -155,18 +155,18 @@ const Attachment = compose<'div', AttachmentProps, AttachmentStylesProps, {}, {}
 
         {(header || description) &&
           createShorthand(composeOptions.slots.body, body, {
-            defaultProps: () => slotProps.body || {},
+            defaultProps: () => slotProps.body,
             overrideProps: predefinedProps => ({
               content: (
                 <>
                   {createShorthand(composeOptions.slots.header, header, {
-                    defaultProps: () => slotProps.header || {},
+                    defaultProps: () => slotProps.header,
                     overrideProps: predefinedProps => ({
                       variables: mergeShorthandVariables(variables, predefinedProps.variables),
                     }),
                   })}
                   {createShorthand(composeOptions.slots.description, description, {
-                    defaultProps: () => slotProps.description || {},
+                    defaultProps: () => slotProps.description,
                     overrideProps: predefinedProps => ({
                       variables: mergeShorthandVariables(variables, predefinedProps.variables),
                     }),
@@ -178,7 +178,7 @@ const Attachment = compose<'div', AttachmentProps, AttachmentStylesProps, {}, {}
           })}
 
         {createShorthand(composeOptions.slots.action, action, {
-          defaultProps: () => slotProps.action || {},
+          defaultProps: () => slotProps.action,
           overrideProps: predefinedProps => ({
             variables: mergeShorthandVariables(variables, predefinedProps.variables),
           }),
