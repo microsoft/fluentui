@@ -64,8 +64,6 @@ const attachmentActionStyles: ComponentSlotStylesPrepared<AttachmentActionStyles
       minWidth: v.actionHeight,
       ':hover': {
         ...getIconFillOrOutlineStyles({ outline: false }),
-        color: v.actionHoverColor,
-        background: v.actionHoverBackgroundColor,
       },
     };
   },

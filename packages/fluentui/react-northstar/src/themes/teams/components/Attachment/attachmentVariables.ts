@@ -35,8 +35,6 @@ export type AttachmentVariables = {
   actionColor: string;
   actionPrimaryColor: string;
   actionColorDisabled: string;
-  actionHoverColor: string;
-  actionHoverBackgroundColor: string;
   actionIconSize: string;
   actionLoaderBorderSize: string;
   actionLoaderSize: string;
@@ -80,8 +78,6 @@ export default (siteVariables: any): AttachmentVariables => ({
   actionColor: siteVariables.colors.grey[750],
   actionPrimaryColor: siteVariables.colorScheme.brand.foreground,
   actionColorDisabled: siteVariables.colorScheme.brand.foregroundDisabled1,
-  actionHoverColor: siteVariables.colorScheme.brand.foregroundHover,
-  actionHoverBackgroundColor: siteVariables.colorScheme.default.backgroundHover2,
   actionIconSize: pxToRem(16),
   actionLoaderBorderSize: pxToRem(2),
   actionLoaderSize: pxToRem(20),
