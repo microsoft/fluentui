@@ -135,6 +135,15 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
         display: 'flex',
         wordBreak: 'break-word',
         selectors: {
+          // In high contrast mode, Links within MessageBars must revert to the default color
+          // defined by the high contrast settings rather than following the theme colors.
+          '& .ms-Link': {
+            selectors: {
+              [HighContrastSelector]: {
+                MsHighContrastAdjust: 'auto',
+              },
+            },
+          },
           [HighContrastSelector]: {
             background: highContrastBackgroundColor[messageBarType],
             border: '1px solid WindowText',
