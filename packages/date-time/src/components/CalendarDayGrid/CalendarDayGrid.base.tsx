@@ -9,6 +9,11 @@ import {
   classNamesFunction,
   findIndex,
   initializeComponentRef,
+  getIsRestrictedDate,
+  findAvailableDate,
+  getDayInfosInRangeOfDay,
+  getBoundedDateRange,
+  getWeeks,
 } from '@uifabric/utilities';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 import {
@@ -18,13 +23,6 @@ import {
   getDateRangeArray,
   getWeekNumbersInMonth,
 } from 'office-ui-fabric-react/lib/utilities/dateMath/DateMath';
-import {
-  getIsRestrictedDate,
-  findAvailableDate,
-  getDayInfosInRangeOfDay,
-  getBoundedDateRange,
-  getWeeks,
-} from '../../utilities/components/CalendarDayGrid';
 import { ICalendarDayGridProps, ICalendarDayGridStyleProps, ICalendarDayGridStyles } from './CalendarDayGrid.types';
 import { IProcessedStyleSet } from '@uifabric/styling';
 import { DateRangeType } from '../Calendar/Calendar.types';

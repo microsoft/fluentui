@@ -1,29 +1,9 @@
-import {
-  compareDates,
-  compareDatePart,
-  addDays,
-  getDateRangeArray,
-  isInDateRangeArray,
-} from 'office-ui-fabric-react/lib/utilities/dateMath/DateMath';
-import { DayOfWeek, DateRangeType } from 'office-ui-fabric-react/lib/utilities/dateValues/DateValues';
-import { find } from '@uifabric/utilities';
-import { ICalendarDayGridProps } from '../../components/CalendarDayGrid/CalendarDayGrid.types';
-import { ICalendarDayGridState } from '../../components/CalendarDayGrid/CalendarDayGrid.base';
+import { compareDates, compareDatePart, addDays, getDateRangeArray, isInDateRangeArray } from '../dateMath/DateMath';
+import { DayOfWeek, DateRangeType } from '../dateValues/DateValues';
+import { find } from '../../';
+import { IDayInfo, ICalendarDayGridStateAndProps } from './CalendarDayGrid.types';
 
 export const DAYS_IN_WEEK = 7;
-
-export interface IDayInfo {
-  key: string;
-  date: string;
-  originalDate: Date;
-  isInMonth: boolean;
-  isToday: boolean;
-  isSelected: boolean;
-  isInBounds: boolean;
-  onSelected: () => void;
-}
-
-export interface ICalendarDayGridStateAndProps extends ICalendarDayGridProps, ICalendarDayGridState {}
 
 export function getIsRestrictedDate(props: ICalendarDayGridStateAndProps, date: Date): boolean {
   const { restrictedDates, minDate, maxDate } = props;
