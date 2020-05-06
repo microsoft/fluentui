@@ -1,12 +1,32 @@
 /**
  * A set of states for each color plate to use.
+ *
+ * Note:
+ *
+ * State names here align to a consistent naming convention:
+ *
+ * The component is _____
+ *
+ * Bad: "hover", Good: "hovered"
+ *
+ * Additional considerations:
+ *
+ * The term "active" in css means that the keyboard or mouse button
+ * which activates the component is pressed down. It is however ambiguous
+ * with a focused state, as the HTML object model refers to the focused
+ * element as the "activeElement". To resolve ambiguity and to be more
+ * compatible with other platforms reusing token names, we'll will snap
+ * to "pressed".
  */
 export type ThemeStateSet =
   | Partial<{
       default: string;
-      hover: string;
-      active: string;
+      hovered: string;
+      pressed: string;
       disabled: string;
+      checked: string;
+      checkedHovered: string;
+      checkedPressed: string;
     }>
   | string;
 
@@ -39,7 +59,7 @@ export type RecursivePartial<T> = {
 };
 
 /**
- * A basic prepared (fully qualitied) theme object.
+ * A prepared (fully expanded) theme object.
  */
 export interface ThemePrepared {
   tokens: {

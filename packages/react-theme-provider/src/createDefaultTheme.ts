@@ -1,7 +1,7 @@
 import { ThemePrepared } from './types';
 
 /**
- * Creates a blank initial theme
+ * Creates a blank initial theme.
  */
 export const createDefaultTheme = (): ThemePrepared => ({
   stylesheets: [],

@@ -47,9 +47,12 @@ export interface ThemeProviderProps extends React.HTMLAttributes<HTMLDivElement>
 // @public
 export type ThemeStateSet = Partial<{
     default: string;
-    hover: string;
-    active: string;
+    hovered: string;
+    pressed: string;
     disabled: string;
+    checked: string;
+    checkedHovered: string;
+    checkedPressed: string;
 }> | string;
 
 // @public
