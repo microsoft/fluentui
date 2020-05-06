@@ -214,7 +214,7 @@ export interface IRegistration {
 }
 
 export function styleToRegistration(options: IStyleOptions, ...args: IStyle[]): IRegistration | undefined {
-  if (args.length > 1 && (args[1] as IStyleBaseArray).length === 0) {
+  if (args.length > 1 && (args[1] as IStyleBaseArray)?.length === 0) {
     return undefined;
   }
 
