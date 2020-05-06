@@ -133,3 +133,4 @@ export { default as selectableCardsContainerBehavior } from './Card/selectableCa
 export { default as cardSelectableBehavior } from './Card/cardSelectableBehavior';
 export { default as videoBehavior } from './Video/videoBehavior';
 export * from './Video/videoBehavior';
+export { default as hiddenComponentBehavior } from './Common/hiddenComponentBehavior';

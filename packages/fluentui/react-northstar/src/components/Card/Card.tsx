@@ -135,6 +135,8 @@ const Card: React.FC<WithAsProp<CardProps>> &
     debugName: Card.displayName,
     actionHandlers: {
       performClick: e => {
+        // prevent Spacebar from scrolling
+        e.preventDefault();
         handleClick(e);
       },
       focusCard: e => {

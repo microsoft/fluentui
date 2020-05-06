@@ -9,6 +9,7 @@ import {
   Checkbox,
   Button,
   screenReaderContainerStyles,
+  hiddenComponentBehavior,
 } from '@fluentui/react-northstar';
 import * as React from 'react';
 import * as _ from 'lodash';
@@ -24,41 +25,39 @@ const SelectableCard: React.FC<SelectableCardProps> = ({ index, selected, handle
   const selectedMessage = 'selected';
   const notSelectedMessage = 'not selected';
   return (
-    <>
-      <div id={selectedMessageId} style={screenReaderContainerStyles} aria-live="polite">
-        {selected ? selectedMessage : notSelectedMessage}
-      </div>
-      <Card
-        accessibility={cardSelectableBehavior}
-        aria-labelledby={`title${index} ${selectedMessageId}`}
-        aria-roledescription="user card"
-        onClick={() => {
-          handleClick(!selected, index);
-        }}
-        selected={selected}
-        {...unhadledProps}
-      >
-        <Card.TopControls>
-          <Checkbox
-            aria-label={`User #${index} checkbox`}
-            checked={selected}
-            data-is-focusable="false"
-            onClick={(event, props) => {
-              event.preventDefault();
-              handleClick(props.checked, index);
-            }}
-          />
-        </Card.TopControls>
-        <Card.Header>
-          <Text content={`User #${index}`} weight="bold" id={`title${index}`} />
-        </Card.Header>
-        <Card.Body>
-          <Flex column gap="gap.small">
-            <Image src="public/images/wireframe/square-image.png" />
-          </Flex>
-        </Card.Body>
-      </Card>
-    </>
+    <Card
+      accessibility={cardSelectableBehavior}
+      aria-labelledby={`title${index} ${selectedMessageId}`}
+      aria-roledescription="user card"
+      onClick={() => {
+        handleClick(!selected, index);
+      }}
+      selected={selected}
+      {...unhadledProps}
+    >
+      <Card.TopControls>
+        <Checkbox
+          accessibility={hiddenComponentBehavior}
+          aria-label={`User #${index} checkbox`}
+          checked={selected}
+          onClick={(event, props) => {
+            event.preventDefault();
+            handleClick(props.checked, index);
+          }}
+        />
+        <div id={selectedMessageId} style={screenReaderContainerStyles} aria-live="polite">
+          {selected ? selectedMessage : notSelectedMessage}
+        </div>
+      </Card.TopControls>
+      <Card.Header>
+        <Text content={`User #${index}`} weight="bold" id={`title${index}`} />
+      </Card.Header>
+      <Card.Body>
+        <Flex column gap="gap.small">
+          <Image src="public/images/wireframe/square-image.png" />
+        </Flex>
+      </Card.Body>
+    </Card>
   );
 };
 
