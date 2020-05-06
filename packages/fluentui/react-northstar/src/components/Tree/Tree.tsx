@@ -48,7 +48,7 @@ export interface TreeProps extends UIComponentProps, ChildrenComponentProps {
   exclusive?: boolean;
 
   /** Shorthand array of props for Tree. */
-  items?: ShorthandCollection<TreeItemProps>;
+  items?: TreeItemProps[];
 
   /**
    * A custom render function for the title slot.
@@ -398,7 +398,7 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
 
     const renderItems = (items: TreeItemProps[], level = 1, parent?: string): React.ReactElement[] => {
       return items.reduce((renderedItems: React.ReactElement[], item: TreeItemProps, index: number) => {
-        const id = typeof item === 'string' ? _.uniqueId(item) : item.id;
+        const id = item.id;
         const isSubtree = hasSubtree(item);
         const isSubtreeExpanded = isSubtree && this.isActiveItem(id);
         const isSelectedItem = this.isSelectedItem(item);
