@@ -1,5 +1,4 @@
 import {
-  Animation,
   Avatar,
   Box,
   BoxProps,
@@ -16,104 +15,7 @@ import {
 } from '@fluentui/react-northstar';
 import * as React from 'react';
 
-const expand = {
-  keyframe: {
-    from: {
-      'max-height': '20px',
-    },
-    to: {
-      'max-height': '500px',
-    },
-  },
-  duration: '1s',
-};
-
-const rest = {
-  keyframe: {
-    from: {
-      'max-height': '20px',
-    },
-    to: {
-      'max-height': '20px',
-    },
-  },
-  duration: '0s',
-};
-
-const shrink = {
-  keyframe: {
-    from: {
-      'max-height': '500px',
-    },
-    to: {
-      'max-height': '20px',
-    },
-  },
-  duration: '.5s',
-};
-
-const CardExampleExpandableAnimation = () => {
-  const [animationName, setAnimationName] = React.useState('rest');
-  const [animationDirection, setAnimationDirection] = React.useState('normal');
-  const expandCard = () => {
-    setAnimationName('expand');
-    setAnimationDirection('normal');
-  };
-
-  const shrinkCard = () => {
-    setAnimationName('shrink');
-    setAnimationDirection('normal');
-  };
-
-  return (
-    <>
-      <Provider theme={{ animations: { expand, shrink, rest } }}>
-        <Card
-          aria-roledescription="user card"
-          aria-expanded={animationName === 'expand'}
-          accessibility={cardFocusableBehavior}
-          onFocus={expandCard}
-          onMouseEnter={expandCard}
-          onMouseLeave={shrinkCard}
-          onBlur={shrinkCard}
-        >
-          <Card.Header>
-            <Flex gap="gap.small">
-              <Avatar
-                image="public/images/avatar/small/matt.jpg"
-                label="Copy bandwidth"
-                name="Evie yundt"
-                status="unknown"
-              />
-              <Flex column>
-                <Text content="Using Animation component" weight="bold" />
-                <Text content="Secondary line" size="small" />
-              </Flex>
-            </Flex>
-          </Card.Header>
-          <Card.Body>
-            <Flex column gap="gap.small">
-              <Image src="public/images/wireframe/square-image.png" />
-              <Animation
-                name={animationName}
-                timingFunction="ease-in"
-                fillMode="forwards"
-                direction={animationDirection}
-              >
-                <Box styles={{ overflow: 'hidden' }}>
-                  <Text content="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum." />
-                </Box>
-              </Animation>
-            </Flex>
-          </Card.Body>
-        </Card>
-      </Provider>
-    </>
-  );
-};
-
 // Compose custom styled Box
-
 type ExpandableBoxProps = {
   expand?: boolean;
 };
@@ -171,7 +73,7 @@ const customTheme: ThemeInput<ComponentStylesProps> = {
   componentVariables,
 };
 
-const CardExampleExpandableStyles = () => {
+const CardExampleExpandable = () => {
   const [expandCard, setExpandCard] = React.useState(false);
   const expandCardHandler = () => {
     setExpandCard(true);
@@ -220,12 +122,5 @@ const CardExampleExpandableStyles = () => {
     </>
   );
 };
-
-const CardExampleExpandable = () => (
-  <>
-    <CardExampleExpandableAnimation />
-    <CardExampleExpandableStyles />
-  </>
-);
 
 export default CardExampleExpandable;
