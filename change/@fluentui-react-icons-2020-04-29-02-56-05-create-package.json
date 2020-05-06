@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Remove typescript-plugin-css-modules dep",
-  "packageName": "@fluentui/react-icons",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-04-29T09:56:05.537Z"
-}

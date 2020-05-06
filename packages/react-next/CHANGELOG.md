@@ -1,8 +1,41 @@
 # Change Log - @fluentui/react-next
 
-This log was last generated on Fri, 01 May 2020 00:19:21 GMT and should not be manually modified.
+This log was last generated on Wed, 06 May 2020 12:32:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-alpha.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.11)
+
+Wed, 06 May 2020 12:32:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.10..@fluentui/react-next_v8.0.0-alpha.11)
+
+### Changes
+
+- Updating example imports and moving pivot in React-Next ([PR #13010](https://github.com/microsoft/fluentui/pull/13010) by czearing@outlook.com)
+- Copy ResizeGroup code to react-next ([PR #13006](https://github.com/microsoft/fluentui/pull/13006) by miclo@microsoft.com)
+
+## [8.0.0-alpha.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.10)
+
+Tue, 05 May 2020 12:34:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.9..@fluentui/react-next_v8.0.0-alpha.10)
+
+### Changes
+
+- Adding SearchBox to React-Next for future update to Function Component ([PR #12909](https://github.com/microsoft/fluentui/pull/12909) by czearing@outlook.com)
+- Migrate Popup to a function component ([PR #12926](https://github.com/microsoft/fluentui/pull/12926) by miclo@microsoft.com)
+- Copying Slider to react-next, in preparation for converting to function component ([PR #12972](https://github.com/microsoft/fluentui/pull/12972) by czearing@outlook.com)
+- Updating Checkbox tests to use resetIds for more reliable snapshots. ([PR #12974](https://github.com/microsoft/fluentui/pull/12974) by czearing@outlook.com)
+
+## [8.0.0-alpha.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.9)
+
+Mon, 04 May 2020 12:33:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.7..@fluentui/react-next_v8.0.0-alpha.9)
+
+### Changes
+
+- Migrate Image to function component ([PR #12908](https://github.com/microsoft/fluentui/pull/12908) by miclo@microsoft.com)
+- Copying SpinButton to react-next, in preparation for converting to function component ([PR #12955](https://github.com/microsoft/fluentui/pull/12955) by czearing@outlook.com)
+- Copying Toggle to react-next, in preparation for converting to function component ([PR #12969](https://github.com/microsoft/fluentui/pull/12969) by czearing@outlook.com)
 
 ## [8.0.0-alpha.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.7)
 

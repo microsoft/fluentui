@@ -84,6 +84,7 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
     onFocus?: (event: React.FocusEvent<HTMLElement | FocusZone>) => void;
     // @deprecated
     onFocusNotification?: () => void;
+    pagingSupportDisabled?: boolean;
     preventDefaultWhenHandled?: boolean;
     preventFocusRestoration?: boolean;
     // @deprecated

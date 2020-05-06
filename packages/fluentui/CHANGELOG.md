@@ -42,15 +42,23 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Restricted prop sets in the `AccordionTitle` component which are passed to styles functions, @assuncaocharles ([#12874](https://github.com/microsoft/fluentui/pull/12874))
 - Restricted prop sets in the `ButtonGroup` component which are passed to styles functions, @assuncaocharles ([#12866](https://github.com/microsoft/fluentui/pull/12866))
 - Restricted prop sets in the `AccordionContent` component which are passed to styles functions, @assuncaocharles ([#12875](https://github.com/microsoft/fluentui/pull/12875))
+- Restricted prop sets in the `CarouselNavigation` component which are passed to styles functions, @assuncaocharles ([#12937](https://github.com/microsoft/fluentui/pull/12937))
 - Restricted prop sets in the `Embed` component which are passed to styles functions, @assuncaocharles ([#12918](https://github.com/microsoft/fluentui/pull/12918))
 - Restricted prop sets in the `CarouselNavigationItem` component which are passed to styles functions, @assuncaocharles ([#12920](https://github.com/microsoft/fluentui/pull/12920))
+- Restricted prop sets in the `DropdownSearchInput` component which are passed to styles functions, @assuncaocharles ([#12978](https://github.com/microsoft/fluentui/pull/12978))
+- Restricted prop sets in the `DialogFooter` component which are passed to styles functions, @assuncaocharles ([#12979](https://github.com/microsoft/fluentui/pull/12979))
 - Restricted prop sets in the `CarouselItem` component which are passed to styles functions, @assuncaocharles ([#12938](https://github.com/microsoft/fluentui/pull/12938))
+- Restricted prop sets in the `Carousel` component which are passed to styles functions, @assuncaocharles ([#12966](https://github.com/microsoft/fluentui/pull/12966))
+- Restricted prop sets in the `Divider` component which are passed to styles functions, @assuncaocharles ([#12977](https://github.com/microsoft/fluentui/pull/12977))
+- Restricted prop sets in the `Toolbar` component which are passed to styles functions @layershifter ([#13024](https://github.com/microsoft/fluentui/pull/13024))
 
 ### Fixes
 - Visually align checkbox and label elements in `Checkbox` component @silviuavram ([#12590](https://github.com/microsoft/fluentui/pull/12590))
 - Fix `Ref` to react on props changes when `forwardRef` is used @mnajdova ([#12817](https://github.com/microsoft/fluentui/pull/12817))
 - Fix `AccordionTitle` to be rendered as `div` by default @pompomon ([#12840](https://github.com/microsoft/fluentui/pull/12840))
+- Fix `Accordion` to avoid recreating refs every render @assuncaocharles ([#12944](https://github.com/microsoft/fluentui/pull/12944))
 - Fix `ButtonGroup` accessibility adding `aria-role="group"` @assuncaocharles ([#12916](https://github.com/microsoft/fluentui/pull/12916))
+- Converge FocusZone functionality, maintain existing behavior @jurokapsiar ([#12997](https://github.com/microsoft/fluentui/pull/12997))
 
 ### Features
 - Add `body` slot to `Attachment` component @layershifter ([#12674](https://github.com/microsoft/fluentui/pull/12674))
@@ -81,6 +89,12 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Prevent value clear on same item selection in `Dropdown` @silviuavram ([#12784](https://github.com/microsoft/fluentui/pull/12784))
 - Make the `clearIndicator` tabbable in a non-search `Dropdown` @silviuavram ([#12684](https://github.com/microsoft/fluentui/pull/12684))
 - Check for `getItemPositionText` in `Carousel` before rendering the pagination text @silviuavram ([#12791](https://github.com/microsoft/fluentui/pull/12791))
+
+### Documentation
+- `Toolbar` accessibility polish, labelling toolbars @kolaps33 ([#12884](https://github.com/microsoft/fluentui/pull/12884))
+- `Carousel` accessibility polish, labelling items in example @kolaps33 ([#12903](https://github.com/microsoft/fluentui/pull/12903))
+- `Dropdown` - prototype - improvement to highlight first item when open @kolaps33 ([#12856](https://github.com/microsoft/fluentui/pull/12856))
+- Add contextMenu example for `Card` component @pompomon ([#12879](https://github.com/microsoft/fluentui/pull/12879))
 
 <!--------------------------------[ v0.48.0 ]------------------------------- -->
 ## [v0.48.0](https://github.com/OfficeDev/office-ui-fabric-react/tree/fluentui_v0.48.0) (2020-04-15)

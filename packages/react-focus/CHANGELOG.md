@@ -1,8 +1,39 @@
 # Change Log - @fluentui/react-focus
 
-This log was last generated on Fri, 01 May 2020 00:19:21 GMT and should not be manually modified.
+This log was last generated on Wed, 06 May 2020 12:32:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.10.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.10.1)
+
+Wed, 06 May 2020 12:32:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v7.10.0..@fluentui/react-focus_v7.10.1)
+
+### Patches
+
+- Fix pagingSupportDisabled handling in FocusZone ([PR #12997](https://github.com/microsoft/fluentui/pull/12997) by jukapsia@microsoft.com)
+
+## [7.10.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.10.0)
+
+Tue, 05 May 2020 12:34:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v7.9.0..@fluentui/react-focus_v7.10.0)
+
+### Minor changes
+
+- FocusZone: Adding pagingSupportDisabled prop to provide a way to opt out of paging support via the Page Up and Page Down keys. ([PR #12448](https://github.com/microsoft/fluentui/pull/12448) by humbertomakotomorimoto@gmail.com)
+
+### Patches
+
+- Adding missing changes due to move from IPoint to Point. ([PR #12993](https://github.com/microsoft/fluentui/pull/12993) by humbertomakotomorimoto@gmail.com)
+
+## [7.9.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.9.0)
+
+Mon, 04 May 2020 12:33:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v7.8.0..@fluentui/react-focus_v7.9.0)
+
+### Minor changes
+
+- FocusZone: Bringing preventFocusRestoration functionality to v7. ([PR #12615](https://github.com/microsoft/fluentui/pull/12615) by humbertomakotomorimoto@gmail.com)
 
 ## [7.8.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.8.0)
 

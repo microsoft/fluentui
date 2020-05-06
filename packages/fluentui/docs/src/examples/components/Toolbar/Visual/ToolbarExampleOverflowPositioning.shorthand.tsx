@@ -102,6 +102,7 @@ const EditorToolbar: React.FC = () => {
   return (
     <Flex>
       <Toolbar
+        aria-label="visual test only with editor toolbar"
         styles={{ minWidth: 0, flexGrow: 1 }} // necessary for Toolbar with overflow inside a flex container
         items={_.map(combinedItems, 'toolbarItem')}
         overflow

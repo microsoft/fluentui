@@ -2,10 +2,14 @@ import * as React from 'react';
 import { mount } from 'enzyme';
 import * as renderer from 'react-test-renderer';
 import * as sinon from 'sinon';
-
+import { resetIds } from '@uifabric/utilities';
 import { Toggle } from './Toggle';
 
 describe('Toggle', () => {
+  beforeEach(() => {
+    resetIds();
+  });
+
   it('renders a label', () => {
     const component = mount(<Toggle label="Label" />);
     expect(
@@ -123,7 +127,6 @@ describe('Toggle', () => {
   });
 
   it(`doesn't trigger onSubmit when placed inside a form`, () => {
-    let component: any;
     const onSubmit = sinon.spy();
 
     const wrapper = mount(
@@ -137,7 +140,6 @@ describe('Toggle', () => {
       >
         <Toggle
           // tslint:disable-next-line:jsx-no-lambda
-          componentRef={ref => (component = ref)}
           label="Label"
         />
       </form>,
@@ -145,7 +147,7 @@ describe('Toggle', () => {
     const button: any = wrapper.find('button');
     // simulate to change toggle state
     button.simulate('click');
-    expect((component as React.Component<any, any>).state.checked).toEqual(true);
+    expect(button.getDOMNode().getAttribute('aria-checked')).toEqual('true');
     expect(onSubmit.called).toEqual(false);
   });
 
