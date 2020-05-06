@@ -25,6 +25,7 @@ import {
   withSafeTypeForAs,
   ShorthandCollection,
   ComponentEventHandler,
+  PropsShorthandCollection,
 } from '../../types';
 import { hasSubtree, removeItemAtIndex, getSiblings, TreeContext, TreeRenderContextValue } from './utils';
 
@@ -48,7 +49,7 @@ export interface TreeProps extends UIComponentProps, ChildrenComponentProps {
   exclusive?: boolean;
 
   /** Shorthand array of props for Tree. */
-  items?: TreeItemProps[];
+  items?: PropsShorthandCollection<TreeItemProps>;
 
   /**
    * A custom render function for the title slot.
