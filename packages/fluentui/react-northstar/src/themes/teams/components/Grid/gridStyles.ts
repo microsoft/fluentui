@@ -1,7 +1,6 @@
 import { GridVariables } from './gridVariables';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { GridProps } from '../../../../components/Grid/Grid';
-import { prefix } from 'inline-style-prefixer';
 
 const getCSSTemplateValue = (template: string | number): string => {
   const templateAsNumber = Number(template);
@@ -13,24 +12,26 @@ const gridStyles: ComponentSlotStylesPrepared<GridProps, GridVariables> = {
   root: ({ props, variables: { height, width, defaultColumnCount, gridGap, padding } }): ICSSInJSStyle => {
     const { rows, columns = !props.rows && defaultColumnCount } = props;
 
-    return prefix({
+    return {
       height,
       width,
       padding,
       gridGap,
-      display: 'grid',
+      display: ['grid', '-ms-grid'],
       justifyContent: 'space-evenly',
 
       ...(rows && !columns && { gridAutoFlow: 'column' }),
       ...(rows && {
         gridTemplateRows: getCSSTemplateValue(rows),
+        msGridRows: getCSSTemplateValue(rows),
       }),
       ...(columns && {
         gridTemplateColumns: getCSSTemplateValue(columns),
+        msGridColumns: getCSSTemplateValue(columns),
       }),
 
       '& > *': { outlineOffset: '-3px' },
-    });
+    };
   },
 };
 
