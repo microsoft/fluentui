@@ -15,8 +15,7 @@ export const tokensToStyleObject = (
       const varValue = tokens[name];
 
       if (varValue && typeof varValue === 'object') {
-        // tslint:disable-next-line:no-any
-        tokensToStyleObject(varValue as any, varName, style);
+        tokensToStyleObject(varValue as { [key: string]: TokenSetType }, varName, style);
       } else {
         style[varName] = varValue;
       }
