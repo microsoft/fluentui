@@ -223,12 +223,17 @@ export function mergeCssSets(
       const styles: IStyle = (concatenatedStyleSet as any)[styleSetArea];
 
       const { classes, objects } = extractStyleParts(styles);
-      const registration = styleToRegistration(options || {}, { displayName: styleSetArea }, objects);
 
-      registrations.push(registration);
+      if (objects && objects.length === 0) {
+        classNameSet[styleSetArea] = classes.join(' ');
+      } else {
+        const registration = styleToRegistration(options || {}, { displayName: styleSetArea }, objects);
 
-      if (registration) {
-        classNameSet[styleSetArea] = classes.concat([registration.className]).join(' ');
+        registrations.push(registration);
+
+        if (registration) {
+          classNameSet[styleSetArea] = classes.concat([registration.className]).join(' ');
+        }
       }
     }
   }
