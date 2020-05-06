@@ -1,25 +1,23 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
-    "outDir": "lib",
     "target": "es5",
+    "outDir": "lib",
     "module": "commonjs",
+    "lib": ["es5", "dom"],
     "jsx": "react",
     "declaration": true,
     "sourceMap": true,
     "experimentalDecorators": true,
     "importHelpers": true,
-    "moduleResolution": "node",
-    "noImplicitAny": false,
+    "noImplicitAny": true,
+    "noUnusedLocals": true,
     "strictNullChecks": true,
     "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node",
     "preserveConstEnums": true,
-    "lib": ["es5", "dom"],
     "typeRoots": ["../../node_modules/@types", "../../typings"],
-    "types": ["jest", "webpack-env", "custom-global"],
-    "paths": {
-      "@uifabric/styling": ["./src"]
-    }
+    "types": ["jest", "custom-global"]
   },
   "include": ["src"]
 }

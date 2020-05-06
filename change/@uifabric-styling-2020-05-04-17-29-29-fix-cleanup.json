@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Styling tsconfig: adding noImplicitAny and noUnusedLocals.",
+  "packageName": "@uifabric/styling",
+  "email": "dzearing@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-05-05T00:29:29.477Z"
+}
