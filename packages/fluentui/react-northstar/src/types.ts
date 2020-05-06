@@ -68,9 +68,11 @@ export type ShorthandValue<P extends Props> =
 
 export type ShorthandCollection<P, K = never> = ShorthandValue<P & { kind?: K }>[];
 
-export type PropsShorthandValue<P extends Props> = Props<P> & { children?: P['children'] | ShorthandRenderFunction<P> };
+export type ObjectShorthandValue<P extends Props> = Props<P> & {
+  children?: P['children'] | ShorthandRenderFunction<P>;
+};
 
-export type PropsShorthandCollection<P, K = never> = PropsShorthandValue<P & { kind?: K }>[];
+export type ObjectShorthandCollection<P, K = never> = ObjectShorthandValue<P & { kind?: K }>[];
 
 // ========================================================
 // Types for As prop support
