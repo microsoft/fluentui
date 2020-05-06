@@ -103,6 +103,13 @@ export interface IGroupedVerticalBarChartProps {
    * color of the datapoint legend
    */
   legendColor?: string;
+
+  /**
+   * Do not show tooltips in chart
+   *
+   * @default false
+   */
+  hideTooltip?: boolean;
 }
 
 export interface IGroupedVerticalBarChartStyleProps {

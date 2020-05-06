@@ -103,7 +103,7 @@ export class VerticalStackedBarChartBase extends React.Component<
           </svg>
         </FocusZone>
         {<div className={this._classNames.legendContainer}>{legends}</div>}
-        {isCalloutVisible ? (
+        {!this.props.hideTooltip && isCalloutVisible ? (
           <Callout
             gapSpace={10}
             isBeakVisible={false}
