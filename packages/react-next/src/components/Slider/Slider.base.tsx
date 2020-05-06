@@ -188,6 +188,8 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
     }
   }
 
+  // This should be the only place where value is gotten from.
+  // It ensures that the component behaves consistently whether controlled or uncontrolled.
   public get value(): number | undefined {
     const { value = this.state.value } = this.props;
     if (this.props.min === undefined || this.props.max === undefined || value === undefined) {
@@ -297,6 +299,8 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
 
   private _updateValue(value: number, renderedValue: number): void {
     const { step, snapToStep } = this.props;
+
+    // TODO this should be memoized based on step since it will only change when step changes
     let numDec = 0;
     if (isFinite(step!)) {
       while (Math.round(step! * Math.pow(10, numDec)) / Math.pow(10, numDec) !== step!) {
