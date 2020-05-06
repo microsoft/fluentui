@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Addressing commonjs imports.",
+  "packageName": "@uifabric/merge-styles",
+  "email": "dzearing@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-05-06T21:46:02.098Z"
+}
