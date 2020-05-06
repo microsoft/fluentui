@@ -57,23 +57,12 @@ const getNavigationNavigationWrapper = (wrapper: ReactWrapper): CommonWrapper =>
   findIntrinsicElement(wrapper, `.${carouselNavigationClassName}`);
 const getNavigationNavigationItemAtIndexWrapper = (wrapper: ReactWrapper, index: number): CommonWrapper =>
   findIntrinsicElement(wrapper, `.${carouselNavigationItemClassName}`).at(index);
-const getItemAtIndexWrapper = (wrapper: ReactWrapper, index: number): CommonWrapper =>
-  findIntrinsicElement(wrapper, `.${carouselItemClassName}`).at(index);
 const getButtonWrapper = (wrapper: ReactWrapper): CommonWrapper => findIntrinsicElement(wrapper, `#${buttonName}`);
 
 jest.useFakeTimers();
 
 describe('Carousel', () => {
   isConformant(Carousel, { constructorName: 'Carousel', autoControlledProps: ['activeIndex'] });
-
-  it('id for items is generated if not passed as prop', () => {
-    const wrapper = renderCarousel();
-    expect(
-      getItemAtIndexWrapper(wrapper, 0)
-        .getDOMNode()
-        .getAttribute('id'),
-    ).toMatch(/carousel-item-(\d)+/);
-  });
 
   describe('activeIndex', () => {
     it('should increase at paddle next press', () => {
