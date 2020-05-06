@@ -177,6 +177,18 @@ function getKeyForRules(options: IStyleOptions, rules: IRuleSet): string | undef
   return hasProps ? serialized.join('') : undefined;
 }
 
+function repeatString(target: string, count: number): string {
+  if (count <= 0) {
+    return '';
+  }
+
+  if (count === 1) {
+    return target;
+  } else {
+    return target + repeatString(target, count - 1);
+  }
+}
+
 export function serializeRuleEntries(options: IStyleOptions, ruleEntries: { [key: string]: string | number }): string {
   if (!ruleEntries) {
     return '';
@@ -262,18 +274,6 @@ export function applyRegistration(registration: IRegistration, selectorRepeatCou
       }
     }
     stylesheet.cacheClassName(className!, key!, args!, rulesToInsert);
-  }
-}
-
-function repeatString(target: string, times: number): string {
-  if (times < 0) {
-    return '';
-  }
-
-  if (times === 1) {
-    return target;
-  } else {
-    return target + repeatString(target, times - 1);
   }
 }
 

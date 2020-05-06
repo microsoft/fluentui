@@ -62,7 +62,7 @@ export * from './safeSetTimeout';
 export * from './scroll';
 export * from './selection/index';
 export * from './string';
-export { ICustomizableProps, IPropsWithStyles, styled } from './styled';
+export * from './styled';
 export * from './warn';
 export * from './ie11Detector';
 export { IStyleFunctionOrObject, Omit } from '@uifabric/merge-styles';
