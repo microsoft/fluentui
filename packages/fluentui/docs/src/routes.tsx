@@ -55,7 +55,8 @@ import VirtualizedTablePrototype from './prototypes/VirtualizedTable';
 import { PerfDataProvider } from './components/ComponentDoc/PerfChart';
 
 const Routes = () => (
-  <BrowserRouter basename={__BASENAME__}>
+  // Remove trailing slash
+  <BrowserRouter basename={__BASENAME__ === '/' ? __BASENAME__ : __BASENAME__.slice(0, -1)}>
     <Switch>
       <Route exact path="/maximize/:exampleName/:rtl?" component={ExternalExampleLayout} />
       <DocsLayout>
