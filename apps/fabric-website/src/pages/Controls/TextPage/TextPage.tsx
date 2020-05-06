@@ -2,7 +2,8 @@ import * as React from 'react';
 import { ControlsAreaPage, IControlsPageProps } from '../ControlsAreaPage';
 import { TextPageProps } from './TextPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
-import { IPageSectionProps } from '@uifabric/example-app-base/lib/index2';
+import { IPageSectionProps, ImplementationSection } from '@uifabric/example-app-base/lib/index2';
+import { ApiKind } from 'office-ui-fabric-react/lib/common/DocPage.types';
 
 const baseUrl = 'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Controls/TextPage/';
 
@@ -42,7 +43,79 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
         {
           sectionName: 'Implementation',
           editUrl: baseUrl + 'docs/cross/TextImplementation.md',
-          content: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/TextPage/docs/cross/TextImplementation.md') as string,
+          content: (
+            <ImplementationSection
+              jsonDocs={{
+                name: '',
+                tables: [
+                  {
+                    kind: 'interface' as ApiKind,
+                    name: 'ITextProps',
+                    description: '\n',
+                    extendsTokens: [],
+                    members: [
+                      {
+                        name: 'variant',
+                        typeTokens: [
+                          {
+                            text: 'keyof ITypography[variants]',
+                          },
+                        ],
+                        kind: 'property' as 'property',
+                        description: 'Optional font style for Text.\n',
+                        deprecated: false,
+                      },
+                      {
+                        name: 'fontFamily',
+                        typeTokens: [
+                          {
+                            text: 'string',
+                          },
+                        ],
+                        kind: 'property' as 'property',
+                        description: 'Font family of the Text.\n',
+                        deprecated: false,
+                      },
+                      {
+                        name: 'fontSize',
+                        typeTokens: [
+                          {
+                            text: 'integer',
+                          },
+                        ],
+                        kind: 'property' as 'property',
+                        description: 'Font size of the Text.\n',
+                        deprecated: false,
+                      },
+                      {
+                        name: 'fontWeight',
+                        typeTokens: [
+                          {
+                            text: 'keyof IFontWeights | FontWeightValue',
+                          },
+                        ],
+                        kind: 'property' as 'property',
+                        description: 'Font weight of the Text.\n',
+                        deprecated: false,
+                      },
+                      {
+                        name: 'disabled',
+                        typeTokens: [
+                          {
+                            text: 'boolean',
+                          },
+                        ],
+                        kind: 'property' as 'property',
+                        defaultValue: 'false',
+                        description: 'Sets disabled style to the Text.\n',
+                        deprecated: false,
+                      },
+                    ],
+                  },
+                ],
+              }}
+            />
+          ),
         },
       ];
   }
