@@ -2,6 +2,21 @@
   "name": "@fluentui/react-focus",
   "entries": [
     {
+      "date": "Wed, 06 May 2020 12:32:22 GMT",
+      "tag": "@fluentui/react-focus_v7.10.1",
+      "version": "7.10.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix pagingSupportDisabled handling in FocusZone",
+            "author": "jukapsia@microsoft.com",
+            "commit": "5628dcfce4afc45bd66137522fa9b0fc3f27f53e",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 05 May 2020 12:34:22 GMT",
       "tag": "@fluentui/react-focus_v7.10.0",
       "version": "7.10.0",

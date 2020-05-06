@@ -28,11 +28,11 @@
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.10.26",
-    "@uifabric/icons": "^7.3.34",
+    "@uifabric/icons": "^7.3.35",
     "@uifabric/merge-styles": "^7.11.2",
     "@uifabric/set-version": "^7.0.11",
     "es6-promise": "^4.1.0",
-    "office-ui-fabric-react": "^7.110.3",
+    "office-ui-fabric-react": "^7.110.4",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",

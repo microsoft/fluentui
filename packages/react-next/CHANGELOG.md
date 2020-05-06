@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-next
 
-This log was last generated on Tue, 05 May 2020 12:34:22 GMT and should not be manually modified.
+This log was last generated on Wed, 06 May 2020 12:32:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-alpha.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.11)
+
+Wed, 06 May 2020 12:32:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.10..@fluentui/react-next_v8.0.0-alpha.11)
+
+### Changes
+
+- Updating example imports and moving pivot in React-Next ([PR #13010](https://github.com/microsoft/fluentui/pull/13010) by czearing@outlook.com)
+- Copy ResizeGroup code to react-next ([PR #13006](https://github.com/microsoft/fluentui/pull/13006) by miclo@microsoft.com)
 
 ## [8.0.0-alpha.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.10)
 

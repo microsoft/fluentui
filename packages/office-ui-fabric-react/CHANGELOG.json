@@ -2,6 +2,27 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 06 May 2020 12:32:22 GMT",
+      "tag": "office-ui-fabric-react_v7.110.4",
+      "version": "7.110.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Dropdown: improve multi-select selected keys warnings",
+            "author": "elcraig@microsoft.com",
+            "commit": "2450069c19144b826392a5f9f5a2df3078647a2e",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "ColorPicker: removing unneeded array spread.",
+            "author": "dzearing@microsoft.com",
+            "commit": "ca1c8da58be3b2a3dd4443d2c5cfc32b044c5015",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 05 May 2020 12:34:22 GMT",
       "tag": "office-ui-fabric-react_v7.110.3",
       "version": "7.110.3",
