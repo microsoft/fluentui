@@ -34,6 +34,22 @@ export const Fabric: React.FunctionComponent<IFabricProps>;
 export const FabricBase: React.ForwardRefExoticComponent<IFabricProps & React.RefAttributes<HTMLDivElement>>;
 
 // @public
+export const getMeasurementCache: () => {
+    getCachedMeasurement: (data: any) => number | undefined;
+    addMeasurementToCache: (data: any, measurement: number) => void;
+};
+
+// @public
+export const getNextResizeGroupStateProvider: (measurementCache?: {
+    getCachedMeasurement: (data: any) => number | undefined;
+    addMeasurementToCache: (data: any, measurement: number) => void;
+}) => {
+    getNextState: (props: IResizeGroupProps, currentState: IResizeGroupState, getElementToMeasureDimension: () => number, newContainerDimension?: number | undefined) => IResizeGroupState | undefined;
+    shouldRenderDataForMeasurement: (dataToMeasure: any) => boolean;
+    getInitialResizeGroupState: (data: any) => IResizeGroupState;
+};
+
+// @public
 export interface ICheckbox {
     checked: boolean;
     focus: () => void;
@@ -208,6 +224,80 @@ export enum ImageLoadState {
 }
 
 // @public (undocumented)
+export interface IPivot {
+    focus(): void;
+}
+
+// @public (undocumented)
+export interface IPivotItemProps extends React.HTMLAttributes<HTMLDivElement> {
+    ariaLabel?: string;
+    componentRef?: IRefObject<{}>;
+    headerButtonProps?: {
+        [key: string]: string | number | boolean;
+    };
+    headerText?: string;
+    itemCount?: number | string;
+    itemIcon?: string;
+    itemKey?: string;
+    keytipProps?: IKeytipProps;
+    // @deprecated
+    linkText?: string;
+    onRenderItemLink?: IRenderFunction<IPivotItemProps>;
+}
+
+// @public (undocumented)
+export interface IPivotProps extends React.ClassAttributes<PivotBase>, React.HTMLAttributes<HTMLDivElement> {
+    className?: string;
+    componentRef?: IRefObject<IPivot>;
+    defaultSelectedIndex?: number;
+    defaultSelectedKey?: string;
+    getTabId?: (itemKey: string, index: number) => string;
+    headersOnly?: boolean;
+    // @deprecated
+    initialSelectedIndex?: number;
+    // @deprecated
+    initialSelectedKey?: string;
+    linkFormat?: PivotLinkFormat;
+    linkSize?: PivotLinkSize;
+    onLinkClick?: (item?: PivotItem, ev?: React.MouseEvent<HTMLElement>) => void;
+    selectedKey?: string | null;
+    styles?: IStyleFunctionOrObject<IPivotStyleProps, IPivotStyles>;
+    theme?: ITheme;
+}
+
+// @public (undocumented)
+export interface IPivotState {
+    // (undocumented)
+    selectedKey: string | undefined;
+}
+
+// @public (undocumented)
+export type IPivotStyleProps = Required<Pick<IPivotProps, 'theme'>> & Pick<IPivotProps, 'className'> & {
+    rootIsLarge?: boolean;
+    rootIsTabs?: boolean;
+    linkIsSelected?: boolean;
+};
+
+// @public (undocumented)
+export interface IPivotStyles {
+    // (undocumented)
+    count: IStyle;
+    // (undocumented)
+    icon: IStyle;
+    // (undocumented)
+    itemContainer?: IStyle;
+    // (undocumented)
+    link: IStyle;
+    // (undocumented)
+    linkContent: IStyle;
+    // (undocumented)
+    linkIsSelected: IStyle;
+    root: IStyle;
+    // (undocumented)
+    text: IStyle;
+}
+
+// @public (undocumented)
 export interface IPopupProps extends React.HTMLAttributes<HTMLDivElement> {
     ariaDescribedBy?: string;
     ariaLabel?: string;
@@ -221,6 +311,45 @@ export interface IPopupProps extends React.HTMLAttributes<HTMLDivElement> {
     role?: string;
     // @deprecated
     shouldRestoreFocus?: boolean;
+}
+
+// @public (undocumented)
+export interface IResizeGroup {
+    remeasure(): void;
+}
+
+// @public (undocumented)
+export interface IResizeGroupProps extends React.HTMLAttributes<ResizeGroupBase | HTMLElement> {
+    className?: string;
+    componentRef?: IRefObject<IResizeGroup>;
+    data: any;
+    dataDidRender?: (renderedData: any) => void;
+    direction?: ResizeGroupDirection;
+    onGrowData?: (prevData: any) => any;
+    onReduceData: (prevData: any) => any;
+    onRenderData: (data: any) => JSX.Element;
+    // @deprecated
+    styles?: IStyleFunctionOrObject<IResizeGroupStyleProps, IResizeGroupStyles>;
+    theme?: ITheme;
+}
+
+// @public (undocumented)
+export interface IResizeGroupState {
+    dataToMeasure?: any;
+    measureContainer?: boolean;
+    renderedData?: any;
+    resizeDirection?: 'grow' | 'shrink';
+}
+
+// @public (undocumented)
+export interface IResizeGroupStyleProps {
+    className?: string;
+    theme: ITheme;
+}
+
+// @public (undocumented)
+export interface IResizeGroupStyles {
+    root: IStyle;
 }
 
 // @public (undocumented)
@@ -506,10 +635,73 @@ export enum KeyboardSpinDirection {
 }
 
 // @public (undocumented)
+export const MeasuredContext: React.Context<{
+    isMeasured: boolean;
+}>;
+
+// @public (undocumented)
 export const ONKEYDOWN_TIMEOUT_DURATION = 1000;
 
 // @public
+export const Pivot: React.FunctionComponent<IPivotProps>;
+
+// @public
+export class PivotBase extends React.Component<IPivotProps, IPivotState> {
+    constructor(props: IPivotProps);
+    focus(): void;
+    // (undocumented)
+    render(): JSX.Element;
+    }
+
+// @public (undocumented)
+export class PivotItem extends React.Component<IPivotItemProps, {}> {
+    constructor(props: IPivotItemProps);
+    // (undocumented)
+    render(): JSX.Element;
+}
+
+// @public (undocumented)
+export enum PivotLinkFormat {
+    links = 0,
+    tabs = 1
+}
+
+// @public (undocumented)
+export enum PivotLinkSize {
+    large = 1,
+    normal = 0
+}
+
+// @public
 export const Popup: React.ForwardRefExoticComponent<IPopupProps & React.RefAttributes<HTMLDivElement>>;
+
+// @public (undocumented)
+export const ResizeGroup: typeof ResizeGroupBase;
+
+// @public (undocumented)
+export class ResizeGroupBase extends React.Component<IResizeGroupProps, IResizeGroupState> {
+    constructor(props: IResizeGroupProps);
+    // (undocumented)
+    componentDidMount(): void;
+    // (undocumented)
+    componentDidUpdate(prevProps: IResizeGroupProps): void;
+    // (undocumented)
+    componentWillUnmount(): void;
+    // (undocumented)
+    remeasure(): void;
+    // (undocumented)
+    render(): JSX.Element;
+    // (undocumented)
+    UNSAFE_componentWillReceiveProps(nextProps: IResizeGroupProps): void;
+    }
+
+// @public (undocumented)
+export enum ResizeGroupDirection {
+    // (undocumented)
+    horizontal = 0,
+    // (undocumented)
+    vertical = 1
+}
 
 // @public (undocumented)
 export const SearchBox: React.FunctionComponent<ISearchBoxProps>;
@@ -604,11 +796,9 @@ export * from "office-ui-fabric-react/lib/Overlay";
 export * from "office-ui-fabric-react/lib/Panel";
 export * from "office-ui-fabric-react/lib/Persona";
 export * from "office-ui-fabric-react/lib/Pickers";
-export * from "office-ui-fabric-react/lib/Pivot";
 export * from "office-ui-fabric-react/lib/PositioningContainer";
 export * from "office-ui-fabric-react/lib/ProgressIndicator";
 export * from "office-ui-fabric-react/lib/Rating";
-export * from "office-ui-fabric-react/lib/ResizeGroup";
 export * from "office-ui-fabric-react/lib/ScrollablePane";
 export * from "office-ui-fabric-react/lib/SelectableOption";
 export * from "office-ui-fabric-react/lib/SelectedItemsList";

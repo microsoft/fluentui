@@ -84,6 +84,13 @@ export interface IVerticalBarChartProps {
    * @defaultvalue false
    */
   hideLegend?: boolean;
+
+  /**
+   * Do not show tooltips in chart
+   *
+   * @default false
+   */
+  hideTooltip?: boolean;
 }
 
 export interface IVerticalBarChartStyleProps {

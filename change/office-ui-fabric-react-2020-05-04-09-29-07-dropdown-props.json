@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Dropdown: improve multi-select selected keys warnings",
-  "packageName": "office-ui-fabric-react",
-  "email": "elcraig@microsoft.com",
-  "commit": "e2a3e7d84a0297e4e1e36088ed8c5f17ee960d0b",
-  "dependentChangeType": "patch",
-  "date": "2020-05-04T16:29:07.433Z"
-}

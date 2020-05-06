@@ -2,6 +2,21 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Wed, 06 May 2020 12:32:22 GMT",
+      "tag": "@uifabric/charting_v2.2.6",
+      "version": "2.2.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "callout prop added to charts",
+            "author": "v-jasha@microsoft.com",
+            "commit": "e05367268a90387161969e76e6edfdef83a8b987",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 05 May 2020 12:34:22 GMT",
       "tag": "@uifabric/charting_v2.2.5",
       "version": "2.2.5",

@@ -1,8 +1,17 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Tue, 05 May 2020 12:34:22 GMT and should not be manually modified.
+This log was last generated on Wed, 06 May 2020 12:32:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.2.6](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.2.6)
+
+Wed, 06 May 2020 12:32:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.2.5..@uifabric/charting_v2.2.6)
+
+### Patches
+
+- callout prop added to charts ([PR #12936](https://github.com/microsoft/fluentui/pull/12936) by v-jasha@microsoft.com)
 
 ## [2.2.5](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.2.5)
 
