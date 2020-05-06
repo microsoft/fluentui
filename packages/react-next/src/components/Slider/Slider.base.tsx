@@ -294,6 +294,7 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
     }
     return currentPosition;
   }
+
   private _updateValue(value: number, renderedValue: number): void {
     const { step, snapToStep } = this.props;
     let numDec = 0;
@@ -305,7 +306,7 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
 
     // Make sure value has correct number of decimal places based on number of decimals in step
     const roundedValue = parseFloat(value.toFixed(numDec));
-    const valueChanged = roundedValue !== this.state.value;
+    const valueChanged = roundedValue !== this.value;
 
     if (snapToStep) {
       renderedValue = roundedValue;
@@ -318,7 +319,7 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
       },
       () => {
         if (valueChanged && this.props.onChange) {
-          this.props.onChange(this.state.value as number);
+          this.props.onChange(roundedValue);
         }
       },
     );
@@ -331,7 +332,7 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
     });
 
     if (this.props.onChanged) {
-      this.props.onChanged(event, this.state.value as number);
+      this.props.onChanged(event, this.value as number);
     }
 
     this._disposeListeners();
@@ -343,7 +344,7 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
   };
 
   private _onKeyDown = (event: KeyboardEvent): void => {
-    let value: number | undefined = this.state.value;
+    let value: number | undefined = this.value;
     const { max, min, step } = this.props;
 
     let diff: number | undefined = 0;
@@ -394,7 +395,7 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
   private _setOnKeyDownTimer = (event: KeyboardEvent): void => {
     this._onKeyDownTimer = this._async.setTimeout(() => {
       if (this.props.onChanged) {
-        this.props.onChanged(event, this.state.value as number);
+        this.props.onChanged(event, this.value as number);
       }
     }, ONKEYDOWN_TIMEOUT_DURATION);
   };
