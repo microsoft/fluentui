@@ -2,8 +2,6 @@ Fluent UI React Native Text has default styling based on the Fluent UI Design La
 
 If you need to customize the fontFamily, fontSize, or fontWeight of your Text, you can do this by using the compose pattern. For more information on the compose pattern, please see our [compose documentation](https://github.com/microsoft/fluentui-react-native/blob/master/packages/framework/foundation-compose/README.md).
 
-- TODO: Add Text image
-
 #### Example usage (from [TextTest.tsx](https://github.com/microsoft/fluentui-react-native/tree/master/apps/fluent-tester/src/RNTester/TestComponents/Text))
 
 ```

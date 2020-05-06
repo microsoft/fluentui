@@ -1,5 +1,3 @@
-- TODO: Add Separator image
-
 #### Example usage (from [SeparatorTest.tsx](https://github.com/microsoft/fluentui-react-native/blob/master/apps/fluent-tester/src/RNTester/TestComponents/Separator/SeparatorTest.tsx))
 
 ```

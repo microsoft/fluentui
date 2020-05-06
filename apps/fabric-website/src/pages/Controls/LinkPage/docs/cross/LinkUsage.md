@@ -1,7 +1,5 @@
 Fluent UI React Native Link has default styling based on the Fluent Design Language. To customize the Link's visuals, you should use the "compose" pattern to customize the tokens. For more information on the compose pattern, please see our [compose documentation](https://github.com/microsoft/fluentui-react-native/blob/master/packages/framework/foundation-compose/README.md).
 
-- TODO: Add Link image
-
 #### Example usage (from [LinkTest.tsx](https://github.com/microsoft/fluentui-react-native/blob/master/apps/fluent-tester/src/RNTester/TestComponents/Link/LinkTest.tsx))
 
 ```

@@ -1,5 +1,3 @@
-- TODO: Add PersonaCoin image
-
 #### Example usage (from [PersonaCoinTest.tsx](https://github.com/microsoft/fluentui-react-native/tree/master/apps/fluent-tester/src/RNTester/TestComponents/PersonaCoin))
 
 ```
