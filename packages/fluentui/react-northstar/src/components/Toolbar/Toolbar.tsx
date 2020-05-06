@@ -485,25 +485,29 @@ const Toolbar: React.FC<WithAsProp<ToolbarProps>> &
   const element = overflow ? (
     <>
       <Ref innerRef={containerRef}>
-        <ElementType {...getA11Props('root', { className: classes.root, ...unhandledProps })}>
-          <div className={classes.overflowContainer} ref={overflowContainerRef}>
-            <ToolbarVariablesProvider value={variables}>
-              {childrenExist(children) ? children : renderItems(getVisibleItems())}
-              {renderOverflowItem(overflowItem)}
-            </ToolbarVariablesProvider>
-          </div>
-          <div className={classes.offsetMeasure} ref={offsetMeasureRef} />
-        </ElementType>
+        {getA11Props.unstable_wrapWithFocusZone(
+          <ElementType {...getA11Props('root', { className: classes.root, ...unhandledProps })}>
+            <div className={classes.overflowContainer} ref={overflowContainerRef}>
+              <ToolbarVariablesProvider value={variables}>
+                {childrenExist(children) ? children : renderItems(getVisibleItems())}
+                {renderOverflowItem(overflowItem)}
+              </ToolbarVariablesProvider>
+            </div>
+            <div className={classes.offsetMeasure} ref={offsetMeasureRef} />
+          </ElementType>,
+        )}
       </Ref>
       <EventListener listener={handleWindowResize} target={context.target.defaultView} type="resize" />
     </>
   ) : (
     <Ref innerRef={containerRef}>
-      <ElementType {...getA11Props('root', { className: classes.root, ...unhandledProps })}>
-        <ToolbarVariablesProvider value={variables}>
-          {childrenExist(children) ? children : renderItems(items)}
-        </ToolbarVariablesProvider>
-      </ElementType>
+      {getA11Props.unstable_wrapWithFocusZone(
+        <ElementType {...getA11Props('root', { className: classes.root, ...unhandledProps })}>
+          <ToolbarVariablesProvider value={variables}>
+            {childrenExist(children) ? children : renderItems(items)}
+          </ToolbarVariablesProvider>
+        </ElementType>,
+      )}
     </Ref>
   );
   setEnd();
