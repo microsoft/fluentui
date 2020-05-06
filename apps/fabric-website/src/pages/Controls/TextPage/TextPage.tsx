@@ -37,12 +37,12 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
           content: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/TextPage/docs/android/TextImplementation.md') as string,
         },
       ];
-    case 'windows':
+    case 'cross':
       return [
         {
           sectionName: 'Implementation',
-          editUrl: baseUrl + 'docs/windows/TextImplementation.md',
-          content: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/TextPage/docs/windows/TextImplementation.md') as string,
+          editUrl: baseUrl + 'docs/cross/TextImplementation.md',
+          content: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/TextPage/docs/cross/TextImplementation.md') as string,
         },
       ];
   }

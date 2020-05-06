@@ -10,11 +10,11 @@ export const LinkPageProps: TFabricPlatformPageProps = {
     ...(ExternalProps as any),
     related,
   },
-  windows: {
+  cross: {
     title: 'Link',
     fileNamePrefix: 'Link',
-    overview: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/LinkPage/docs/windows/LinkOverview.md') as string,
-    usage: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/LinkPage/docs/windows/LinkUsage.md') as string,
+    overview: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/LinkPage/docs/cross/LinkOverview.md') as string,
+    usage: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/LinkPage/docs/cross/LinkUsage.md') as string,
     related,
     componentUrl,
   },

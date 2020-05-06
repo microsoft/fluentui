@@ -20,9 +20,9 @@ export const TextPageProps: TFabricPlatformPageProps = {
     related,
     componentUrl,
   },
-  windows: {
-    overview: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/TextPage/docs/windows/TextOverview.md') as string,
-    usage: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/TextPage/docs/windows/TextUsage.md') as string,
+  cross: {
+    overview: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/TextPage/docs/cross/TextOverview.md') as string,
+    usage: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/TextPage/docs/cross/TextUsage.md') as string,
     related,
     componentUrl,
   },

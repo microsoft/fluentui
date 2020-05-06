@@ -41,11 +41,11 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
         },
       ];
 
-    case 'windows':
+    case 'cross':
       return [
         {
           sectionName: 'Implementation',
-          editUrl: baseUrl + 'docs/windows/SeparatorImplementation.md',
+          editUrl: baseUrl + 'docs/cross/SeparatorImplementation.md',
           content: (
             <ImplementationSection
               jsonDocs={{

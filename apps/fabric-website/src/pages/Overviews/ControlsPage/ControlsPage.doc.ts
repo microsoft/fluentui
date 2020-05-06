@@ -24,4 +24,8 @@ export const ControlsPageProps: TFabricPlatformPageProps = {
     overview: require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/ControlsPage/docs/windows/ControlsOverview.md') as string,
     componentUrl,
   },
+  cross: {
+    overview: require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/ControlsPage/docs/cross/ControlsOverview.md') as string,
+    componentUrl,
+  },
 };

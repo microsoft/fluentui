@@ -21,11 +21,11 @@ export const LinkPage: React.FunctionComponent<IControlsPageProps> = props => {
 
 function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
   switch (platform) {
-    case 'windows':
+    case 'cross':
       return [
         {
           sectionName: 'Implementation',
-          editUrl: baseUrl + 'docs/windows/LinkImplementation.md',
+          editUrl: baseUrl + 'docs/cross/LinkImplementation.md',
           content: (
             <ImplementationSection
               jsonDocs={{
