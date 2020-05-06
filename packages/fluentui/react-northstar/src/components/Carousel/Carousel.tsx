@@ -154,14 +154,13 @@ export const Carousel: React.FC<WithAsProp<CarouselProps>> &
     design,
     styles,
     variables,
-    defaultActiveIndex,
   } = props;
 
   const ElementType = getElementType(props);
 
   const { state, actions } = useStateManager<CarouselState, CarouselActions>(createCarouselManager, {
     mapPropsToInitialState: () => ({
-      activeIndex: defaultActiveIndex,
+      activeIndex: props.defaultActiveIndex,
     }),
     mapPropsToState: () => ({
       activeIndex: props.activeIndex,
