@@ -299,11 +299,11 @@ describe('Provider', () => {
         </Provider>,
       );
 
-      expect(document.querySelector(`.${className}`)).toBeInstanceOf(Element);
+      expect(document.querySelector(`.${className}`)).toBeInTheDocument();
 
       // element should be removed on unmount
       wrapper.unmount();
-      expect(document.querySelector(`.${className}`)).toBeNull();
+      expect(document.querySelector(`.${className}`)).not.toBeInTheDocument();
     });
 
     it('reacts on "className" update and keeps node in HTML tree', () => {
@@ -316,15 +316,15 @@ describe('Provider', () => {
         </Provider>,
       );
 
-      expect(document.querySelector(`.${className}`)).toBeInstanceOf(Element);
-      expect(document.querySelector(`.${className} #sample`)).toBeInstanceOf(Element);
+      expect(document.querySelector(`.${className}`)).toBeInTheDocument();
+      expect(document.querySelector(`.${className} #sample`)).toBeInTheDocument();
 
       const newClassName = faker.lorem.word();
       wrapper.setProps({ className: newClassName });
 
-      expect(document.querySelector(`.${className}`)).toBeNull();
-      expect(document.querySelector(`.${newClassName}`)).toBeInstanceOf(Element);
-      expect(document.querySelector(`.${newClassName} #sample`)).toBeInstanceOf(Element);
+      expect(document.querySelector(`.${className}`)).not.toBeInTheDocument();
+      expect(document.querySelector(`.${newClassName}`)).toBeInTheDocument();
+      expect(document.querySelector(`.${newClassName} #sample`)).toBeInTheDocument();
     });
   });
 });
