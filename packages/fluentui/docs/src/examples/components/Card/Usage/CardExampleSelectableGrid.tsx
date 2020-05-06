@@ -20,36 +20,45 @@ type SelectableCardProps = {
 };
 
 const SelectableCard: React.FC<SelectableCardProps> = ({ index, selected, handleClick, ...unhadledProps }) => {
+  const selectedMessageId = `selectedMessageId${index}`;
+  const selectedMessage = 'selected';
+  const notSelectedMessage = 'not selected';
   return (
-    <Card
-      accessibility={cardSelectableBehavior}
-      aria-roledescription="user card"
-      onClick={() => {
-        handleClick(!selected, index);
-      }}
-      selected={selected}
-      {...unhadledProps}
-    >
-      <Card.TopControls>
-        <Checkbox
-          aria-label={`User #${index} checkbox`}
-          checked={selected}
-          data-is-focusable="false"
-          onClick={(event, props) => {
-            event.preventDefault();
-            handleClick(props.checked, index);
-          }}
-        />
-      </Card.TopControls>
-      <Card.Header>
-        <Text content={`User #${index}`} weight="bold" />
-      </Card.Header>
-      <Card.Body>
-        <Flex column gap="gap.small">
-          <Image src="public/images/wireframe/square-image.png" />
-        </Flex>
-      </Card.Body>
-    </Card>
+    <>
+      <div id={selectedMessageId} style={screenReaderContainerStyles} aria-live="polite">
+        {selected ? selectedMessage : notSelectedMessage}
+      </div>
+      <Card
+        accessibility={cardSelectableBehavior}
+        aria-labelledby={`title${index} ${selectedMessageId}`}
+        aria-roledescription="user card"
+        onClick={() => {
+          handleClick(!selected, index);
+        }}
+        selected={selected}
+        {...unhadledProps}
+      >
+        <Card.TopControls>
+          <Checkbox
+            aria-label={`User #${index} checkbox`}
+            checked={selected}
+            data-is-focusable="false"
+            onClick={(event, props) => {
+              event.preventDefault();
+              handleClick(props.checked, index);
+            }}
+          />
+        </Card.TopControls>
+        <Card.Header>
+          <Text content={`User #${index}`} weight="bold" id={`title${index}`} />
+        </Card.Header>
+        <Card.Body>
+          <Flex column gap="gap.small">
+            <Image src="public/images/wireframe/square-image.png" />
+          </Flex>
+        </Card.Body>
+      </Card>
+    </>
   );
 };
 
@@ -80,12 +89,6 @@ const selectableCardsGridStateReducer: React.Reducer<SelectableCardsGridState, S
 };
 
 const CardExampleSelectableGrid = () => {
-  // Custom label setup
-  const selectedMessageId = 'selectedMessageId';
-  const notSelectedMessageId = 'notSelectedMessageId';
-  const selectedMessage = 'selected';
-  const notSelectedMessage = 'not selected';
-
   // Component setup
   const cardsNumber = 12;
   const cards = Array(cardsNumber)
@@ -104,12 +107,6 @@ const CardExampleSelectableGrid = () => {
 
   return (
     <>
-      <div id={selectedMessageId} style={screenReaderContainerStyles}>
-        {selectedMessage}
-      </div>
-      <div id={notSelectedMessageId} style={screenReaderContainerStyles}>
-        {notSelectedMessage}
-      </div>
       <Button
         content="Select all"
         onClick={() => {
@@ -129,7 +126,6 @@ const CardExampleSelectableGrid = () => {
               key={card.key}
               index={card.key}
               aria-label={`${card.key} of ${cardsNumber}`}
-              aria-describedby={state.cards[card.key] ? selectedMessageId : notSelectedMessageId}
               handleClick={handleClick}
               selected={state.cards[card.key]}
             />
