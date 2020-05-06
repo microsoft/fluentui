@@ -3,7 +3,7 @@ import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
 import { compose, ComponentWithAs } from '@fluentui/react-bindings';
 
-import { commonPropTypes, createShorthandFactory, ShorthandFactory } from '../../utils';
+import { commonPropTypes, ShorthandConfig } from '../../utils';
 import Button, { ButtonProps, ButtonStylesProps } from '../Button/Button';
 
 interface AttachmentActionOwnProps {}
@@ -39,7 +39,7 @@ const AttachmentAction = compose<
   className: attachmentActionClassName,
   displayName: 'AttachmentAction',
   overrideStyles: true,
-}) as ComponentWithAs<'button', AttachmentActionProps> & { create: ShorthandFactory<any> };
+}) as ComponentWithAs<'button', AttachmentActionProps> & { shorthandConfig: ShorthandConfig<AttachmentActionProps> };
 
 AttachmentAction.defaultProps = {
   accessibility: buttonBehavior,
@@ -60,6 +60,8 @@ AttachmentAction.propTypes = {
   secondary: customPropTypes.every([customPropTypes.disallow(['primary']), PropTypes.bool]),
 };
 
-AttachmentAction.create = createShorthandFactory({ Component: AttachmentAction, mappedProp: 'content' });
+AttachmentAction.shorthandConfig = {
+  mappedProp: 'content',
+};
 
 export default AttachmentAction;
