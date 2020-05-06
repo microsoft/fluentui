@@ -252,7 +252,7 @@ export const Carousel: React.FC<WithAsProp<CarouselProps>> &
       nextActiveIndex = 0;
     }
 
-    actions.updateActiveIndex(nextActiveIndex, lastItemIndex);
+    actions.setIndexes(nextActiveIndex, lastItemIndex);
 
     _.invoke(props, 'onActiveIndexChange', e, props);
 
@@ -263,13 +263,13 @@ export const Carousel: React.FC<WithAsProp<CarouselProps>> &
 
   const overrideItemProps = predefinedProps => ({
     onFocus: (e, itemProps) => {
-      actions.updateShouldFocusContainer(e.currentTarget === e.target);
-      actions.updateIsFromKeyboard(isEventFromKeyboard());
+      actions.setShouldFocusContainer(e.currentTarget === e.target);
+      actions.setIsFromKeyboard(isEventFromKeyboard());
       _.invoke(predefinedProps, 'onFocus', e, itemProps);
     },
     onBlur: (e, itemProps) => {
-      actions.updateShouldFocusContainer(e.currentTarget.contains(e.relatedTarget));
-      actions.updateIsFromKeyboard(false);
+      actions.setShouldFocusContainer(e.currentTarget.contains(e.relatedTarget));
+      actions.setIsFromKeyboard(false);
       _.invoke(predefinedProps, 'onBlur', e, itemProps);
     },
   });
@@ -373,12 +373,12 @@ export const Carousel: React.FC<WithAsProp<CarouselProps>> &
     },
     onBlur: (e: React.FocusEvent, paddleProps: CarouselPaddleProps) => {
       if (e.relatedTarget !== paddleNextRef.current) {
-        actions.updateAriaLiveOn(false);
+        actions.setAriaLiveOn(false);
       }
     },
     onFocus: (e: React.SyntheticEvent, paddleProps: CarouselPaddleProps) => {
       _.invoke(predefinedProps, 'onFocus', e, paddleProps);
-      actions.updateAriaLiveOn(true);
+      actions.setAriaLiveOn(true);
     },
   });
 
