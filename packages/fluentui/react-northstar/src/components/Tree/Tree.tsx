@@ -120,7 +120,7 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
     defaultSelectedItemIds: customPropTypes.collectionShorthand,
     exclusive: PropTypes.bool,
     selectable: PropTypes.bool,
-    items: customPropTypes.collectionShorthand,
+    items: customPropTypes.collectionObjectShorthand,
     onActiveItemIdsChange: PropTypes.func,
     onSelectedItemIdsChange: PropTypes.func,
     renderItemTitle: PropTypes.func,
