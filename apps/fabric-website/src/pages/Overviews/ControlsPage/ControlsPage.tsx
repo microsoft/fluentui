@@ -50,7 +50,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
           },
       );
 
-    sections.push(_otherControlsRequestSections(platform));
+    _otherControlsRequestSections(platform) !== undefined && sections.push(_otherControlsRequestSections(platform));
     return sections;
   }
 }
