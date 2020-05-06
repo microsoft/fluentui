@@ -10,7 +10,7 @@ module.exports.postprocessCommonjsTask = function() {
         const arg = node.arguments[0];
         if (ts.isStringLiteral(arg)) {
           if (belongsToFabric(arg.text) && arg.text.includes('/lib/')) {
-            modder.replace(arg, `"${arg.text.replace('/lib/', '/lib-commonjs/')}"`);
+            return modder.replace(arg, `"${arg.text.replace('/lib/', '/lib-commonjs/')}"`);
           }
         }
       }
