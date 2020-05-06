@@ -1,4 +1,4 @@
-# @uifabric/merge-styles
+# . @uifabric/merge-styles
 
 The `merge-styles` library provides utilities for loading styles through javascript. It is designed to make it simple to style components through javascript. It generates css classes, rather than using inline styling, to ensure we can use css features like pseudo selectors (:hover) and parent/child selectors (media queries).
 

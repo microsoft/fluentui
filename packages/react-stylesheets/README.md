@@ -1,4 +1,4 @@
-# @fluentui/react-stylesheets
+# . @fluentui/react-stylesheets
 
 A library for contextually rendering css stylesheets to a particular target as components are used.
 

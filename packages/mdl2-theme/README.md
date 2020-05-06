@@ -1,4 +1,4 @@
-# @uifabric/mdl2-theme
+# . @uifabric/mdl2-theme
 
 **MDL2 Theme package for [Fluent UI React](https://developer.microsoft.com/en-us/fluentui)**
 ([formerly Office UI Fabric React](https://developer.microsoft.com/en-us/office/blogs/ui-fabric-is-evolving-into-fluent-ui/))

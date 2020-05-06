@@ -1,4 +1,4 @@
-# @uifabric/monaco-editor
+# . @uifabric/monaco-editor
 
 Version of [`monaco-editor`](https://www.npmjs.com/package/monaco-editor) with the CSS files transformed to JS which can be loaded onto the page using `@microsoft/load-themed-styles`, plus some Webpack configuration helpers.
 

@@ -1,4 +1,4 @@
-# @fluentui/keyboard-key
+# . @fluentui/keyboard-key
 
 A simple utility for determining the `KeyboardEvent.key` property from a keyboard event.
 

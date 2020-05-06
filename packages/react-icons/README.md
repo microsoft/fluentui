@@ -1,4 +1,4 @@
-# @fluentui/react-icons
+# . @fluentui/react-icons
 
 **Icon components for [Fluent UI React](https://developer.microsoft.com/en-us/fluentui)**
 

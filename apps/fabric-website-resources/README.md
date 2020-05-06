@@ -1,4 +1,4 @@
-# @uifabric/fabric-website-resources
+# . @uifabric/fabric-website-resources
 
 **Local demo app for @fluentui/react controls**
 

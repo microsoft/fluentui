@@ -1,4 +1,4 @@
-# @uifabric/jest-serializer-merge-styles
+# . @uifabric/jest-serializer-merge-styles
 
 Provides a Jest serializer for `@uifabric/merge-styles` which expands class names into css rules.
 

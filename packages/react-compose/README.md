@@ -1,4 +1,4 @@
-# @fluentui/react-compose
+# . @fluentui/react-compose
 
 **Composition functionality for [Fluent UI](https://aka.ms/fluent-ui/)**
 

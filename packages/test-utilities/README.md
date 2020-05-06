@@ -1,4 +1,4 @@
-# @uifabric/test-utilities
+# . @uifabric/test-utilities
 
 Provides a set of common test utilities for testing code within the Fluent UI React repo.
 

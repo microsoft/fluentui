@@ -1,4 +1,4 @@
-# @uifabric/tsx-editor
+# . @uifabric/tsx-editor
 
 Monaco-based TypeScript+React live code editor with full typing support. It was primarily written for component examples on the [Fluent UI React website](https://developer.microsoft.com/en-us/fluentui#/controls/web) ([formerly Office UI Fabric React](https://developer.microsoft.com/en-us/office/blogs/ui-fabric-is-evolving-into-fluent-ui/)), but it can be configured to work with other libraries too.
 

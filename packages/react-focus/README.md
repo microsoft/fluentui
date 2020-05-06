@@ -1,4 +1,4 @@
-# @fluentui/react-focus
+# . @fluentui/react-focus
 
 **Focus management components for [Fluent UI React](https://dev.microsoft.com/fabric)**
 
