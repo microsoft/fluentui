@@ -140,12 +140,16 @@ const Attachment = compose<'div', AttachmentProps, AttachmentStylesProps, {}, {}
       _.invoke(props, 'onClick', e, props);
     };
 
+    const mergeShorthandVariables = (variables, shorthandVariables) => {
+      return (variables || shorthandVariables) && mergeComponentVariables(variables, shorthandVariables);
+    };
+
     const element = (
       <ElementType {...getA11Props('root', { className: classes.root, onClick: handleClick, ref, ...unhandledProps })}>
         {createShorthand(composeOptions.slots.icon, icon, {
           defaultProps: () => slotProps.icon || {},
           overrideProps: predefinedProps => ({
-            variables: mergeComponentVariables(variables, predefinedProps.variables),
+            variables: mergeShorthandVariables(variables, predefinedProps.variables),
           }),
         })}
 
@@ -158,25 +162,25 @@ const Attachment = compose<'div', AttachmentProps, AttachmentStylesProps, {}, {}
                   {createShorthand(composeOptions.slots.header, header, {
                     defaultProps: () => slotProps.header || {},
                     overrideProps: predefinedProps => ({
-                      variables: mergeComponentVariables(variables, predefinedProps.variables),
+                      variables: mergeShorthandVariables(variables, predefinedProps.variables),
                     }),
                   })}
                   {createShorthand(composeOptions.slots.description, description, {
                     defaultProps: () => slotProps.description || {},
                     overrideProps: predefinedProps => ({
-                      variables: mergeComponentVariables(variables, predefinedProps.variables),
+                      variables: mergeShorthandVariables(variables, predefinedProps.variables),
                     }),
                   })}
                 </>
               ),
-              variables: mergeComponentVariables(variables, predefinedProps.variables),
+              variables: mergeShorthandVariables(variables, predefinedProps.variables),
             }),
           })}
 
         {createShorthand(composeOptions.slots.action, action, {
           defaultProps: () => slotProps.action || {},
           overrideProps: predefinedProps => ({
-            variables: mergeComponentVariables(variables, predefinedProps.variables),
+            variables: mergeShorthandVariables(variables, predefinedProps.variables),
           }),
         })}
         {!_.isNil(progress) && <div className="ui-attachment__progress" style={{ width: `${progress}%` }} />}
