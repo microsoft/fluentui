@@ -16,7 +16,7 @@ export interface IGroupHeaderProps extends IGroupDividerProps {
   /** Native props for the GroupHeader expand and collapse button */
   expandButtonProps?: React.HTMLAttributes<HTMLButtonElement>;
 
-  /** Defines the expand icon for group headers. If not set, the default icon will be used */
+  /** Defines the name of a custom icon to be used for group headers. If not set, the default icon will be used */
   expandButtonIcon?: string;
 
   /** Native props for the GroupHeader select all button */
