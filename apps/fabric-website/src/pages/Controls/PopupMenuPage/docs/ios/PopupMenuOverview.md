@@ -6,7 +6,7 @@ PopupMenus provide a set of commands or options inside of a drawer. Two types of
 ### Top down
 
 <img className="off" src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/ios/updated/img_drawer_02_topsheet_light.png?text=LightMode" />
-<img className="on" src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/ios/updated/img_drawer_02_topsheet.png.png?text=DarkMode" />
+<img className="on" src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/ios/updated/img_drawer_02_topsheet.png?text=DarkMode" />
 
 ### Bottom up
 
