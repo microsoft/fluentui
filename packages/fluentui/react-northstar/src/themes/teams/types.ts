@@ -66,8 +66,8 @@ import { ToolbarMenuItemStylesProps } from '../../components/Toolbar/ToolbarMenu
 import { ToolbarMenuDividerStylesProps } from '../../components/Toolbar/ToolbarMenuDivider';
 import { ToolbarMenuRadioGroupStylesProps } from '../../components/Toolbar/ToolbarMenuRadioGroup';
 import { ToolbarMenuStylesProps } from '../../components/Toolbar/ToolbarMenu';
-import { ToolbarProps } from '../../components/Toolbar/Toolbar';
-import { ToolbarRadioGroupProps } from '../../components/Toolbar/ToolbarRadioGroup';
+import { ToolbarStylesProps } from '../../components/Toolbar/Toolbar';
+import { ToolbarRadioGroupStylesProps } from '../../components/Toolbar/ToolbarRadioGroup';
 import { TooltipContentStylesProps } from '../../components/Tooltip/TooltipContent';
 import { HierarchicalTreeItemProps } from '../../components/HierarchicalTree/HierarchicalTreeItem';
 import { HierarchicalTreeProps } from '../../components/HierarchicalTree/HierarchicalTree';
@@ -146,11 +146,11 @@ export type TeamsThemeStylesProps = {
   Slider: SliderStylesProps;
   SplitButton: SplitButtonStylesProps;
   Status: StatusStylesProps;
-  Toolbar: ToolbarProps;
+  Toolbar: ToolbarStylesProps;
   ToolbarCustomItem: ToolbarCustomItemStylesProps;
   ToolbarItem: ToolbarItemStylesProps;
   ToolbarDivider: ToolbarDividerStylesProps;
-  ToolbarRadioGroup: ToolbarRadioGroupProps;
+  ToolbarRadioGroup: ToolbarRadioGroupStylesProps;
   ToolbarMenu: ToolbarMenuStylesProps;
   ToolbarMenuItem: ToolbarMenuItemStylesProps;
   ToolbarMenuDivider: ToolbarMenuDividerStylesProps;
