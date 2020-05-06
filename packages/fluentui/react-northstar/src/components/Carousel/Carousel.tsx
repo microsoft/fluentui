@@ -489,7 +489,7 @@ Carousel.propTypes = {
 };
 
 Carousel.defaultProps = {
-  accessibility: carouselBehavior as Accessibility,
+  accessibility: carouselBehavior,
   paddlePrevious: {},
   paddleNext: {},
 };
