@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Pivot, PivotItem, PivotLinkFormat, PivotLinkSize } from 'office-ui-fabric-react/lib/Pivot';
-import { Label } from 'office-ui-fabric-react/lib/Label';
+import { Pivot, PivotItem, PivotLinkFormat, PivotLinkSize } from '@fluentui/react-next/lib/Pivot';
+import { Label } from '@fluentui/react-next/lib/Label';
 
 export const PivotTabsLargeExample = () => (
   <div>

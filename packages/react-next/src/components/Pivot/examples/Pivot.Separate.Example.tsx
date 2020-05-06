@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { Pivot, PivotItem } from 'office-ui-fabric-react/lib/Pivot';
+import { Pivot, PivotItem } from '@fluentui/react-next/lib/Pivot';
 
-// tslint:disable:jsx-ban-props
 const getTabId = (itemKey: string) => {
   return `ShapeColorPivot_${itemKey}`;
 };
@@ -29,7 +28,7 @@ export const PivotSeparateExample = () => {
         aria-label="Separately Rendered Content Pivot Example"
         selectedKey={selectedKey}
         onLinkClick={handleLinkClick}
-        headersOnly
+        headersOnly={true}
         getTabId={getTabId}
       >
         <PivotItem headerText="Rectangle red" itemKey="rectangleRed" />

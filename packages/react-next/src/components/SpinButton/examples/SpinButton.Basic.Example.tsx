@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { SpinButton } from 'office-ui-fabric-react/lib/SpinButton';
-import { Stack, IStackTokens } from 'office-ui-fabric-react/lib/Stack';
+import { SpinButton } from '@fluentui/react-next/lib/SpinButton';
+import { Stack, IStackTokens } from '@fluentui/react-next/lib/Stack';
 
 const StackTokens: Partial<IStackTokens> = { childrenGap: 10 };
 const StackStyles = { root: { width: 400 } };

@@ -1,5 +1,6 @@
 pr:
   - master
+  - website-content
 
 trigger:
   - master
@@ -145,6 +146,8 @@ jobs:
 
   - job: Deploy
     dependsOn: Build
+    variables:
+      PR_DEPLOY: 1
     steps:
       - template: azure-pipelines.cache.yml
 
@@ -156,6 +159,7 @@ jobs:
       - template: azure-pipelines.tools.yml
 
       - script: |
+          NODE_ENV=production yarn build:fluentui:docs
           yarn bundle
         displayName: bundle
 

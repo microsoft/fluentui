@@ -1,8 +1,30 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 04 May 2020 12:33:29 GMT and should not be manually modified.
+This log was last generated on Wed, 06 May 2020 12:32:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.110.4](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.110.4)
+
+Wed, 06 May 2020 12:32:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.110.3..office-ui-fabric-react_v7.110.4)
+
+### Patches
+
+- Dropdown: improve multi-select selected keys warnings ([PR #12989](https://github.com/microsoft/fluentui/pull/12989) by elcraig@microsoft.com)
+- ColorPicker: removing unneeded array spread. ([PR #12994](https://github.com/microsoft/fluentui/pull/12994) by dzearing@microsoft.com)
+
+## [7.110.3](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.110.3)
+
+Tue, 05 May 2020 12:34:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.110.2..office-ui-fabric-react_v7.110.3)
+
+### Patches
+
+- Adding missing changes due to move from IPoint to Point. ([PR #12993](https://github.com/microsoft/fluentui/pull/12993) by humbertomakotomorimoto@gmail.com)
+- Add logic to cap the number we show in the facepile descrtiptive overflow at 99 to prevent text overflow ([PR #12902](https://github.com/microsoft/fluentui/pull/12902) by tabrumle@microsoft.com)
+- Prettier fix in Callout test. ([PR #12448](https://github.com/microsoft/fluentui/pull/12448) by humbertomakotomorimoto@gmail.com)
+- MarqueeSelection: Fixing drag and drop functionality. ([PR #12991](https://github.com/microsoft/fluentui/pull/12991) by humbertomakotomorimoto@gmail.com)
 
 ## [7.110.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.110.2)
 

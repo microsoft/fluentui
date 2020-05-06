@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Label } from 'office-ui-fabric-react/lib/Label';
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { Pivot, PivotItem } from 'office-ui-fabric-react/lib/Pivot';
+import { Label } from '@fluentui/react-next/lib/Label';
+import { DefaultButton } from '@fluentui/react-next/lib/Button';
+import { Pivot, PivotItem } from '@fluentui/react-next/lib/Pivot';
 
 export const PivotOverrideExample = () => {
   const [selectedKey, setSelectedKey] = React.useState(0);
