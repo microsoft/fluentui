@@ -1,7 +1,9 @@
 import { buttonBehavior } from '@fluentui/accessibility';
+import * as customPropTypes from '@fluentui/react-proptypes';
+import * as PropTypes from 'prop-types';
 import { compose, ComponentWithAs } from '@fluentui/react-bindings';
 
-import { createShorthandFactory, ShorthandFactory } from '../../utils';
+import { commonPropTypes, createShorthandFactory, ShorthandFactory } from '../../utils';
 import Button, { ButtonProps, ButtonStylesProps } from '../Button/Button';
 
 interface AttachmentActionOwnProps {}
@@ -44,13 +46,18 @@ AttachmentAction.defaultProps = {
   as: 'button',
 };
 AttachmentAction.propTypes = {
-  ...Button.propTypes,
-  text: undefined,
-  iconOnly: undefined,
-  circular: undefined,
-  size: undefined,
-  fluid: undefined,
-  inverted: undefined,
+  ...commonPropTypes.createCommon({
+    content: 'shorthand',
+  }),
+  disabled: PropTypes.bool,
+  icon: customPropTypes.shorthandAllowingChildren,
+  iconPosition: PropTypes.oneOf(['before', 'after']),
+  loader: customPropTypes.itemShorthandWithoutJSX,
+  loading: PropTypes.bool,
+  onClick: PropTypes.func,
+  onFocus: PropTypes.func,
+  primary: customPropTypes.every([customPropTypes.disallow(['secondary']), PropTypes.bool]),
+  secondary: customPropTypes.every([customPropTypes.disallow(['primary']), PropTypes.bool]),
 };
 
 AttachmentAction.create = createShorthandFactory({ Component: AttachmentAction, mappedProp: 'content' });
