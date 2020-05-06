@@ -225,6 +225,9 @@ export enum DayOfWeek {
 }
 
 // @public (undocumented)
+export const DayPickerStrings: ICalendarStrings;
+
+// @public (undocumented)
 export const DAYS_IN_WEEK = 7;
 
 // Warning: (ae-incompatible-release-tags) The symbol "DelayedRender" is marked as @public, but its signature references "IDelayedRenderState" which is marked as @internal
@@ -532,6 +535,7 @@ export interface ICalendarDayGridCommonProps {
     navigatedDate: Date;
     restrictedDates?: Date[];
     selectedDate: Date;
+    strings: ICalendarStrings;
     today?: Date;
     weeksToShow?: number;
     workWeekDays?: DayOfWeek[];

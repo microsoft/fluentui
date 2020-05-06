@@ -1,4 +1,5 @@
 import { DayOfWeek, DateRangeType } from '../dateValues/DateValues';
+import { ICalendarStrings } from './Calendar.types';
 
 export interface ICalendarDayGridStateAndProps extends ICalendarDayGridCommonProps, ICalendarDayGridCommonState {}
 
@@ -87,4 +88,9 @@ export interface ICalendarDayGridCommonProps {
    * @defaultvalue [Monday,Tuesday,Wednesday,Thursday,Friday]
    */
   workWeekDays?: DayOfWeek[];
+
+  /**
+   * Localized strings to use in the Calendar
+   */
+  strings: ICalendarStrings;
 }

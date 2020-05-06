@@ -71,6 +71,7 @@ export * from './date-time/components/CalendarDayGrid.types';
 export * from './date-time/dateMath/DateMath';
 export * from './date-time/dateValues/DateValues';
 export * from './date-time/dateValues/TimeConstants';
+export * from './date-time/components/defaults';
 export { IStyleFunctionOrObject, Omit } from '@uifabric/merge-styles';
 export { setFocusVisibility, IsFocusVisibleClassName } from './setFocusVisibility';
 export { setSSR } from './dom/setSSR';
