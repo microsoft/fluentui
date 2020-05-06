@@ -18,14 +18,14 @@ export const controlsPagesCrossPlatform: INavPage[] = [
     pages: [
       {
         title: 'Button',
-        url: '#/controls/cross/button',
+        url: '#/controls/crossplatform/button',
         component: () => <LoadingComponent title="Button" />,
         getComponent: cb =>
           require.ensure([], require => cb(require<any>('../../../pages/Controls/ButtonPage/ButtonPage').ButtonPage)),
       },
       {
         title: 'Link',
-        url: '#/controls/cross/link',
+        url: '#/controls/crossplatform/link',
         component: () => <LoadingComponent title="Link" />,
         getComponent: cb =>
           require.ensure([], require => cb(require<any>('../../../pages/Controls/LinkPage/LinkPage').LinkPage)),
@@ -38,7 +38,7 @@ export const controlsPagesCrossPlatform: INavPage[] = [
     pages: [
       {
         title: 'Persona',
-        url: '#/controls/cross/persona',
+        url: '#/controls/crossplatform/persona',
         component: () => <LoadingComponent title="Persona" />,
         getComponent: cb =>
           require.ensure([], require =>
@@ -53,14 +53,14 @@ export const controlsPagesCrossPlatform: INavPage[] = [
     pages: [
       {
         title: 'Text',
-        url: '#/controls/cross/text',
+        url: '#/controls/crossplatform/text',
         component: () => <LoadingComponent title="Text" />,
         getComponent: cb =>
           require.ensure([], require => cb(require<any>('../../../pages/Controls/TextPage/TextPage').TextPage)),
       },
       {
         title: 'Separator',
-        url: '#/controls/cross/separator',
+        url: '#/controls/crossplatform/separator',
         component: () => <LoadingComponent title="Separator" />,
         getComponent: cb =>
           require.ensure([], require =>
