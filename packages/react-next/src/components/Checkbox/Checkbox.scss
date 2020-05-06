@@ -2,11 +2,9 @@
 @import '../../common/highContrast';
 @import '../../common/focusBorder';
 
-:root {
-  --checkboxSize: 20px;
-  --checkboxTransitionDuration: 200ms;
-  --checkboxTransitionTiming: cubic-bezier(0.4, 0, 0.23, 1);
-}
+$checkboxSize: 20px;
+$checkboxTransitionDuration: 200ms;
+$checkboxTransitionTiming: cubic-bezier(0.4, 0, 0.23, 1);
 
 .root {
   position: relative;
@@ -16,7 +14,7 @@
     &:not(.checked) {
       &:hover {
         .checkbox {
-          border-color: var(--semanticColorsInputBorderHovered);
+          border-color: var($semanticColorsInputBorderHovered);
 
           @include high-contrast {
             border-color: Highlight;
@@ -26,13 +24,13 @@
 
       &:focus {
         .checkbox {
-          border-color: var(--semanticColorsInputBorderHovered);
+          border-color: var($semanticColorsInputBorderHovered);
         }
       }
 
       &:hover {
         .checkmark {
-          color: var(--paletteNeutralSecondary);
+          color: var($paletteNeutralSecondary);
           opacity: 1;
 
           @include high-contrast {
@@ -46,8 +44,8 @@
       &:hover,
       &:focus {
         .checkbox {
-          background: var(--semanticColorsInputBackgroundCheckedHovered);
-          border-color: var(--semanticColorsInputBackgroundCheckedHovered);
+          background: var($semanticColorsInputBackgroundCheckedHovered);
+          border-color: var($semanticColorsInputBackgroundCheckedHovered);
         }
       }
 
@@ -76,7 +74,7 @@
       &:hover {
         .checkbox,
         .checkbox:after {
-          border-color: var(--semanticColorsInputBackgroundCheckedHovered);
+          border-color: var($semanticColorsInputBackgroundCheckedHovered);
         }
 
         .checkmark {
@@ -86,7 +84,7 @@
 
       &:focus {
         .checkbox {
-          border-color: var(--semanticColorsInputBackgroundCheckedHovered);
+          border-color: var($semanticColorsInputBackgroundCheckedHovered);
         }
       }
     }
@@ -100,7 +98,7 @@
 
   @include focus(true) {
     + .label:before {
-      outline: 1px solid var(--paletteNeutralSecondary);
+      outline: 1px solid var($paletteNeutralSecondary);
       outline-offset: 2px;
 
       @include high-contrast {
@@ -149,24 +147,24 @@
   flex-shrink: 0;
   align-items: center;
   justify-content: center;
-  height: var(--checkboxSize);
-  width: var(--checkboxSize);
-  border: 1px solid var(--paletteNeutralPrimary);
-  border-radius: var(--effectsRoundedCorner2);
+  height: $checkboxSize;
+  width: $checkboxSize;
+  border: 1px solid var($paletteNeutralPrimary);
+  border-radius: var($effectsRoundedCorner2);
   box-sizing: border-box;
   transition-property: background, border, border-color;
-  transition-duration: var(--checkboxTransitionDuration);
-  transition-timing-function: var(--checkboxTransitionTiming);
+  transition-duration: $checkboxTransitionDuration;
+  transition-timing-function: $checkboxTransitionTiming;
 
   /* in case the icon is bigger than the box */
   overflow: hidden;
 
   &.indeterminate {
-    border-color: var(--semanticColorsInputBackgroundChecked);
+    border-color: var($semanticColorsInputBackgroundChecked);
 
     &::after {
       content: '';
-      border-radius: var(--effectsRoundedCorner2);
+      border-radius: var($effectsRoundedCorner2);
       position: absolute;
       width: 10px;
       height: 10px;
@@ -175,14 +173,14 @@
       box-sizing: border-box;
       border-width: 5px;
       border-style: solid;
-      border-color: var(--semanticColorsInputBackgroundChecked);
+      border-color: var($semanticColorsInputBackgroundChecked);
       transition-property: background, border, border-color;
-      transition-duration: var(--checkboxTransitionDuration);
-      transition-timing-function: var(--checkboxTransitionTiming);
+      transition-duration: $checkboxTransitionDuration;
+      transition-timing-function: $checkboxTransitionTiming;
     }
 
     &.disabled::after {
-      border-color: var(--semanticColorsDisabledBodySubtext);
+      border-color: var($semanticColorsDisabledBodySubtext);
     }
   }
 
@@ -198,8 +196,8 @@
   }
 
   &.checked:not(.disabled):not(.indeterminate) {
-    background: var(--semanticColorsInputBackgroundChecked);
-    border-color: var(--semanticColorsInputBackgroundChecked);
+    background: var($semanticColorsInputBackgroundChecked);
+    border-color: var($semanticColorsInputBackgroundChecked);
 
     @include high-contrast {
       background: Highlight;
@@ -208,19 +206,19 @@
   }
 
   &.disabled {
-    border-color: var(--semanticColorsDisabledBodySubtext);
+    border-color: var($semanticColorsDisabledBodySubtext);
     @include high-contrast {
       border-color: InactiveBorder;
     }
   }
 
   &.checked.disabled {
-    background: var(--semanticColorsDisabledBodySubtext);
+    background: var($semanticColorsDisabledBodySubtext);
   }
 }
 
 .checkmark {
-  color: var(--semanticColorsInputForegroundChecked);
+  color: var($semanticColorsInputForegroundChecked);
   opacity: 0;
 
   @include high-contrast {
@@ -240,8 +238,8 @@
 }
 
 .text {
-  color: var(--semanticColorsBodyText);
-  font-size: var(--fontsMediumFontSize);
+  color: var($semanticColorsBodyText);
+  font-size: var($fontsMediumFontSize);
   line-height: 20px;
 
   &.reversed {
@@ -252,7 +250,7 @@
   }
 
   &.disabled {
-    color: var(--semanticColorsDisabledText);
+    color: var($semanticColorsDisabledText);
 
     @include high-contrast {
       // backwards compat for the color of the text when the checkbox was rendered
