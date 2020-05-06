@@ -122,7 +122,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
             </svg>
           </div>
         </FocusZone>
-        {this.state.showHover ? (
+        {!this.props.hideTooltip && this.state.showHover ? (
           <Callout
             target={this._currentHoverElement}
             coverTarget={true}

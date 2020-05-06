@@ -175,7 +175,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
         <div ref={(e: HTMLDivElement) => (this.legendContainer = e)} className={this._classNames.legendContainer}>
           {legends}
         </div>
-        {this.state.isCalloutVisible ? (
+        {!this.props.hideTooltip && this.state.isCalloutVisible ? (
           <Callout
             target={this.state.refSelected}
             gapSpace={10}

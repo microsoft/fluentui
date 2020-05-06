@@ -63,7 +63,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
   }
 
   public render(): JSX.Element {
-    const { barHeight, data, theme, hideRatio, hideLegend, styles, href, hideDenominator } = this.props;
+    const { barHeight, data, theme, hideRatio, hideLegend, styles, href, hideDenominator, hideTooltip } = this.props;
     this._adjustProps();
     const { palette } = theme!;
     const legends = this._getLegendData(data!, hideRatio!, palette);
@@ -88,7 +88,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
       <div className={this._classNames.root}>
         {bars}
         {!hideLegend && <div className={this._classNames.legendContainer}>{legends}</div>}
-        {isCalloutVisible ? (
+        {!hideTooltip && isCalloutVisible ? (
           <Callout
             gapSpace={10}
             isBeakVisible={false}
