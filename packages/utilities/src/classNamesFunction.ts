@@ -2,6 +2,7 @@ import { mergeCssSets, IStyleSet, IProcessedStyleSet, Stylesheet } from '@uifabr
 import { IStyleFunctionOrObject } from '@uifabric/merge-styles';
 import { getRTL } from './rtl';
 import { getWindow } from './dom';
+import { StyleFunction } from './styled';
 
 const MAX_CACHE_COUNT = 50;
 const DEFAULT_SELECTOR_REPEAT_COUNT = 10; // repeat selector to increase specificity of the rules
@@ -82,10 +83,15 @@ export function classNamesFunction<TStyleProps extends {}, TStyleSet extends ISt
 
     const disableCaching = options.disableCaching;
 
-    if (options.useStaticStyles && (styleFunctionOrObject as any).__noStyleOverride__) {
-      const results =
-        typeof styleFunctionOrObject === 'function' ? styleFunctionOrObject(styleProps) : styleFunctionOrObject;
-      return results as IProcessedStyleSet<TStyleSet>;
+    // If useStaticStyles is true, styleFunctionOrObject returns key to classname mappings.
+    // If there is also no style overrides, we can skip merge styles completely and
+    // simply return the result from the style funcion
+    if (
+      options.useStaticStyles &&
+      typeof styleFunctionOrObject === 'function' &&
+      (styleFunctionOrObject as StyleFunction<TStyleProps, TStyleSet>).__noStyleOverride__
+    ) {
+      return styleFunctionOrObject(styleProps) as IProcessedStyleSet<TStyleSet>;
     }
 
     // On reset of our stylesheet, reset memoized cache.
@@ -156,7 +162,7 @@ function _traverseEdge(current: Map<any, any>, value: any): Map<any, any> {
 
 function _traverseMap(current: Map<any, any>, inputs: any[] | Object): Map<any, any> {
   if (typeof inputs === 'function') {
-    const cachedInputsFromStyled = (inputs as any).__cachedInputs__;
+    const cachedInputsFromStyled = (inputs as StyleFunction<any, any>).__cachedInputs__;
     if (cachedInputsFromStyled) {
       // The styled helper will generate the styles function and will attach the cached
       // inputs (consisting of the default styles, customzied styles, and user provided styles.)
