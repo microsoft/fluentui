@@ -30,10 +30,16 @@ const images = [
 const GridExample = () => (
   <div>
     Grid with specified number or rows:
-    <Grid rows="2" content={images} />
+    <Grid rows={2} content={images} />
     <br />
     Grid with explicitly specified rows:
-    <Grid rows="2fr repeat(2, 1fr)" content={images} />
+    <Grid
+      styles={{
+        gridTemplateRows: '2fr repeat(2, 1fr)',
+        msGridTemplateRows: '2fr (1fr)[2]',
+      }}
+      content={images}
+    />
   </div>
 );
 
