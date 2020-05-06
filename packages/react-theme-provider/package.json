@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/react-theme-provider",
   "version": "0.1.0",
-  "description": "Fluent UI Theme Provider component/hook/utilities for building web experiences.",
+  "description": "Fluent UI React theme provider component, hook, and theme related utilities.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
