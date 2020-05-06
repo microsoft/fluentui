@@ -1,8 +1,17 @@
 # Change Log - @uifabric/file-type-icons
 
-This log was last generated on Thu, 16 Apr 2020 04:01:45 GMT and should not be manually modified.
+This log was last generated on Wed, 06 May 2020 12:32:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.2.39](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.2.39)
+
+Wed, 06 May 2020 12:32:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.2.30..@uifabric/file-type-icons_v7.2.39)
+
+### Patches
+
+- Using a fresh version string to bust the CDN cache. I tested v1 and it brings back all the right icons. ([PR #13008](https://github.com/microsoft/fluentui/pull/13008) by caperez@microsoft.com)
 
 ## [7.2.30](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.2.30)
 

@@ -2,6 +2,21 @@
   "name": "@uifabric/file-type-icons",
   "entries": [
     {
+      "date": "Wed, 06 May 2020 12:32:22 GMT",
+      "tag": "@uifabric/file-type-icons_v7.2.39",
+      "version": "7.2.39",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Using a fresh version string to bust the CDN cache. I tested v1 and it brings back all the right icons.",
+            "author": "caperez@microsoft.com",
+            "commit": "8c8c394e5097b81602df3d40c6fc19cf387fc451",
+            "package": "@uifabric/file-type-icons"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 16 Apr 2020 04:01:45 GMT",
       "tag": "@uifabric/file-type-icons_v7.2.30",
       "version": "7.2.30",

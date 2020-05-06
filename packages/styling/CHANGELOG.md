@@ -1,8 +1,17 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Wed, 29 Apr 2020 12:34:58 GMT and should not be manually modified.
+This log was last generated on Wed, 06 May 2020 12:32:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.12.2](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.12.2)
+
+Wed, 06 May 2020 12:32:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/styling_v7.12.0..@uifabric/styling_v7.12.2)
+
+### Patches
+
+- Styling tsconfig: adding noImplicitAny and noUnusedLocals. ([PR #12994](https://github.com/microsoft/fluentui/pull/12994) by dzearing@microsoft.com)
 
 ## [7.12.0](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.12.0)
 
