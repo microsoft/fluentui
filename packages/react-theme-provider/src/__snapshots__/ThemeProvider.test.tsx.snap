@@ -3,7 +3,15 @@
 exports[`ThemeProvider renders a div 1`] = `
 <div
   className=""
-  style={Object {}}
+  style={
+    Object {
+      "--body-divider": "#eee",
+      "--body-fill": "white",
+      "--body-link": "blue",
+      "--body-subText": "#333",
+      "--body-text": "black",
+    }
+  }
 >
   Hello
 </div>
@@ -12,7 +20,15 @@ exports[`ThemeProvider renders a div 1`] = `
 exports[`ThemeProvider renders a div with styling 1`] = `
 <div
   className=""
-  style={Object {}}
+  style={
+    Object {
+      "--body-divider": "#eee",
+      "--body-fill": "white",
+      "--body-link": "blue",
+      "--body-subText": "#333",
+      "--body-text": "black",
+    }
+  }
 >
   Hello
 </div>
@@ -21,14 +37,30 @@ exports[`ThemeProvider renders a div with styling 1`] = `
 exports[`ThemeProvider renders nested themes 1`] = `
 <div
   className=""
-  style={Object {}}
+  style={
+    Object {
+      "--body-divider": "#eee",
+      "--body-fill": "white",
+      "--body-link": "blue",
+      "--body-subText": "#333",
+      "--body-text": "black",
+    }
+  }
 >
   <div>
     Light theme
   </div>
   <div
     className=""
-    style={Object {}}
+    style={
+      Object {
+        "--body-divider": "#eee",
+        "--body-fill": "black",
+        "--body-link": "blue",
+        "--body-subText": "#333",
+        "--body-text": "white",
+      }
+    }
   >
     <div>
       Dark theme

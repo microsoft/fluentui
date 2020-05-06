@@ -4,8 +4,9 @@ import * as renderer from 'react-test-renderer';
 import { Theme } from './types';
 import { useTheme } from './useTheme';
 import { mount } from 'enzyme';
+import { mergeThemes } from './mergeThemes';
 
-const lightTheme: Theme = {
+const lightTheme: Theme = mergeThemes({
   stylesheets: [],
   tokens: {
     body: {
@@ -13,17 +14,16 @@ const lightTheme: Theme = {
       text: 'black',
     },
   },
-};
+});
 
-const darkTheme: Theme = {
-  stylesheets: [],
+const darkTheme: Theme = mergeThemes({
   tokens: {
     body: {
       fill: 'black',
       text: 'white',
     },
   },
-};
+});
 
 describe('ThemeProvider', () => {
   it('renders a div', () => {
