@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "improve and add tests",
+  "comment": "Slider: Add some tests, fix minor bug for controlled component",
   "packageName": "@fluentui/react-next",
   "email": "joschect@microsoft.com",
   "dependentChangeType": "patch",
