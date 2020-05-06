@@ -8,6 +8,9 @@ import { mergeThemes } from './mergeThemes';
 import { useTheme } from './useTheme';
 import * as classes from './ThemeProvider.scss';
 
+/**
+ * Props for the ThemeProvider component.
+ */
 export interface ThemeProviderProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * The theme provided by the user.

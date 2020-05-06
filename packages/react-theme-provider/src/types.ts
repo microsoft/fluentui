@@ -22,6 +22,9 @@ export type ThemePlateSet = Partial<{
   [key: string]: ThemeStateSet;
 }>;
 
+/**
+ * A token set can provide a single string or object, mapping additional sub-parts of a token set.
+ */
 export type TokenSetType = string | { [key: string]: TokenSetType | undefined };
 
 /**

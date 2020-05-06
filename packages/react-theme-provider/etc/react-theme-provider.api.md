@@ -39,7 +39,7 @@ export interface ThemePrepared {
 // @public
 export const ThemeProvider: React.ForwardRefExoticComponent<ThemeProviderProps & React.RefAttributes<HTMLDivElement>>;
 
-// @public (undocumented)
+// @public
 export interface ThemeProviderProps extends React.HTMLAttributes<HTMLDivElement> {
     theme?: Theme;
 }
@@ -52,12 +52,12 @@ export type ThemeStateSet = Partial<{
     disabled: string;
 }> | string;
 
-// @public (undocumented)
+// @public
 export type TokenSetType = string | {
     [key: string]: TokenSetType | undefined;
 };
 
-// @public (undocumented)
+// @public
 export const useTheme: () => ThemePrepared;
 
 
