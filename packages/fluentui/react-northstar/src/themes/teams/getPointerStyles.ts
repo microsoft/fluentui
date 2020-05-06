@@ -158,21 +158,6 @@ export const getPointerStyles = (options: GetPointerStylesOptions): ICSSInJSStyl
     },
 
     ...(svg && {
-      // svg uses different model, height should not be included
-      ...(placement === 'bottom' && {
-        top: `calc(${padding} + (${borderSize} * 2))`,
-      }),
-      ...(placement === 'top' && {
-        bottom: `calc(${padding} + ${borderSize})`,
-      }),
-
-      ...(placement === 'left' && {
-        right: `calc(${padding} + ${borderSize})`,
-      }),
-      ...(placement === 'right' && {
-        left: `calc(${padding} + ${borderSize})`,
-      }),
-
       // :before & :after are used to draw CSS triangles, not valid for SVG
       '::before': {
         content: '" "',
@@ -187,7 +172,7 @@ export const getPointerStyles = (options: GetPointerStylesOptions): ICSSInJSStyl
           width: height,
 
           left: gap,
-          bottom: `calc(${width} + ${borderSize})`,
+          bottom: `calc(${width} - ${height} + ${borderSize})`,
           transform: `rotate(${rtl ? -90 : 90}deg)`,
         }),
         ...(placement === 'top' && {
@@ -195,21 +180,21 @@ export const getPointerStyles = (options: GetPointerStylesOptions): ICSSInJSStyl
           width: height,
 
           left: gap,
-          bottom: `calc(${gap} - ${borderSize})`,
+          bottom: `calc(${gap} + ${height} - ${borderSize})`,
           transform: `rotate(${rtl ? 90 : -90}deg)`,
         }),
         ...(placement === 'left' && {
           height: width,
           width: height,
 
-          left: height,
+          left: 0,
           transform: `rotate(${rtl ? 0 : 180}deg)`,
         }),
         ...(placement === 'right' && {
           height: width,
           width: height,
 
-          right: height,
+          right: 0,
           transform: `rotate(${rtl ? 180 : 0}deg)`,
         }),
       },
