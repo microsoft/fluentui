@@ -6,9 +6,9 @@
 
 Fluent UI React ([formerly Office UI Fabric React](https://developer.microsoft.com/en-us/office/blogs/ui-fabric-is-evolving-into-fluent-ui/)) is a collection of robust React-based components designed to make it simple for you to create consistent web experiences using the Fluent Design Language.
 
-For information about available controls, see the [Fluent UI website](https://developer.microsoft.com/en-us/fluentui).
+For information about available controls, visit the [Fluent UI website](https://developer.microsoft.com/en-us/fluentui).
 
-To get started using or contributing to Fluent UI React, see the [full readme](https://github.com/microsoft/fluentui/blob/master/README.md).
+To get started using or contributing to Fluent UI React, visit the [full readme](https://github.com/microsoft/fluentui/blob/master/README.md).
 
 ## Moving to `@fluentui/react`
 
