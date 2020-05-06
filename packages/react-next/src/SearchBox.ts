@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/SearchBox';
+export * from './components/SearchBox/index';

@@ -2,6 +2,74 @@
   "name": "@fluentui/react-focus",
   "entries": [
     {
+      "date": "Tue, 05 May 2020 12:34:22 GMT",
+      "tag": "@fluentui/react-focus_v7.10.0",
+      "version": "7.10.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "FocusZone: Adding pagingSupportDisabled prop to provide a way to opt out of paging support via the Page Up and Page Down keys.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "6c055de8e22610b9f96d29e0667f019d669b7df1",
+            "package": "@fluentui/react-focus"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Adding missing changes due to move from IPoint to Point.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "5b4b9b5feeac6f08f14125be35d7af1ffb7039cf",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 04 May 2020 12:33:29 GMT",
+      "tag": "@fluentui/react-focus_v7.9.0",
+      "version": "7.9.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "FocusZone: Bringing preventFocusRestoration functionality to v7.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "ce067e65e8fee3fb56fcea401b920237e7879ff0",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 01 May 2020 00:19:21 GMT",
+      "tag": "@fluentui/react-focus_v7.8.0",
+      "version": "7.8.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "FocusZone: Using v0 prop names for props where names differed and deprecating old ones.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "91115267502dc233cd9d513133d52344cef2e1f8",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 28 Apr 2020 12:34:09 GMT",
+      "tag": "@fluentui/react-focus_v7.7.0",
+      "version": "7.7.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Updating IPoint, x and y references to Point, left and top respectively.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "beb8886ffcbccd2bbef9c4e7a8afd742497289a5",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 27 Apr 2020 12:33:11 GMT",
       "tag": "@fluentui/react-focus_v7.6.0",
       "version": "7.6.0",

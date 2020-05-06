@@ -530,6 +530,14 @@ definitions.push({
 });
 
 definitions.push({
+  regexp: /Does not handle PageDown and PageUp/g,
+  testMethod: (parameters: TestMethod) => {
+    const actualFocusZoneHorizontal = parameters.behavior({}).focusZone;
+    expect(actualFocusZoneHorizontal.props.pagingSupportDisabled).toBeTruthy();
+  },
+});
+
+definitions.push({
   regexp: /Focus is moved within the focusable children of the component using TAB key/g,
   testMethod: (parameters: TestMethod) => {
     const actualFocusZoneHorizontal = parameters.behavior({}).focusZone;

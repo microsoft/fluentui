@@ -12,7 +12,7 @@ const ICON_SIZES: number[] = [16, 20, 24, 32, 40, 48, 64, 96];
 // (though most users will see them within a week). To force immediate refresh, append a
 // unique string to the end of the URL. The CDN uses the URL as the cache key, so passing a
 // new URL will cause the CDN to create a new cache key.
-const REFRESH_STRING = '?v6';
+const REFRESH_STRING = '?v1';
 
 export function initializeFileTypeIcons(baseUrl: string = DEFAULT_BASE_URL, options?: Partial<IIconOptions>): void {
   ICON_SIZES.forEach((size: number) => {

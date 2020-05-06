@@ -23,7 +23,7 @@ export interface IFocusZone {
 
   /**
    * Sets focus to a specific child element within the zone. This can be used in conjunction with
-   * onBeforeFocus to created delayed focus scenarios (like animate the scroll position to the correct
+   * shouldReceiveFocus to create delayed focus scenarios (like animate the scroll position to the correct
    * location and then focus.)
    * @param element - The child element within the zone to focus.
    * @returns True if focus could be set to an active element, false if no operation was taken.
@@ -99,8 +99,15 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
    * If provided, this callback will be executed on keypresses to determine if the user
    * intends to navigate into the inner zone. Returning true will ask the first inner zone to
    * set focus.
+   * @deprecated Use `shouldEnterInnerZone` instead.
    */
   isInnerZoneKeystroke?: (ev: React.KeyboardEvent<HTMLElement>) => boolean;
+
+  /**
+   * Callback function that will be executed on keypresses to determine if the user intends to navigate into
+   * the inner (nested) zone. Returning true will ask the first inner zone to set focus.
+   */
+  shouldEnterInnerZone?: (ev: React.KeyboardEvent<HTMLElement>) => boolean;
 
   /**
    * Sets the aria-labelledby attribute.
@@ -130,8 +137,16 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
    * Callback method for determining if focus should indeed be set on the given element.
    * @param element - The child element within the zone to focus.
    * @returns True if focus should be set to the given element, false to avoid setting focus.
+   * @deprecated Use `shouldReceiveFocus` instead.
    */
   onBeforeFocus?: (childElement?: HTMLElement) => boolean;
+
+  /**
+   * Callback method for determining if focus should indeed be set on the given element.
+   * @param element - The child element within the zone to focus.
+   * @returns True if focus should be set to the given element, false to avoid setting focus.
+   */
+  shouldReceiveFocus?: (childElement?: HTMLElement) => boolean;
 
   /** Allows focus to park on root when focus is in the `FocusZone` at render time. */
   allowFocusRoot?: boolean;
@@ -166,27 +181,53 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
   shouldInputLoseFocusOnArrowKey?: (inputElement: HTMLInputElement) => boolean;
 
   /**
-   * Whether the to check for data-no-horizontal-wrap or data-no-vertical-wrap attributes
+   * Determines whether to disable the paging support for Page Up and Page Down keyboard scenarios.
+   * @defaultvalue false
+   */
+  pagingSupportDisabled?: boolean;
+
+  /**
+   * Determines whether to check for data-no-horizontal-wrap or data-no-vertical-wrap attributes
    * when determining how to move focus
    * @defaultvalue false
    */
   checkForNoWrap?: boolean;
 
   /**
-   * Whether the FocusZone should allow focus events to propagate past the FocusZone
+   * Whether the FocusZone should allow focus events to propagate past the FocusZone.
+   * @deprecated Use `stopFocusPropagation` instead.
    */
   doNotAllowFocusEventToPropagate?: boolean;
 
   /**
+   * Whether the FocusZone should allow focus events to propagate past the FocusZone.
+   */
+  stopFocusPropagation?: boolean;
+
+  /**
    * Callback to notify creators that focus has been set on the FocusZone
+   * @deprecated Use `onFocus` instead.
    */
   onFocusNotification?: () => void;
+
+  /**
+   * Callback called when "focus" event triggered in FocusZone.
+   * @param event - React's original FocusEvent.
+   */
+  onFocus?: (event: React.FocusEvent<HTMLElement | FocusZone>) => void;
 
   /**
    * If true, FocusZone prevents the default behavior of Keyboard events when changing focus between elements.
    * @defaultvalue true
    */
   preventDefaultWhenHandled?: boolean;
+
+  /**
+   * If true, prevents the FocusZone from attempting to restore the focus to the inner element when the focus is on the
+   * root element after componentDidUpdate.
+   * @defaultvalue false
+   */
+  preventFocusRestoration?: boolean;
 }
 /**
  * {@docCategory FocusZone}

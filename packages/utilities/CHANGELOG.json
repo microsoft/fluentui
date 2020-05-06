@@ -2,6 +2,36 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "date": "Tue, 05 May 2020 12:34:22 GMT",
+      "tag": "@uifabric/utilities_v7.16.1",
+      "version": "7.16.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixing errors when building @fluentui/docs.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "6c055de8e22610b9f96d29e0667f019d669b7df1",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 28 Apr 2020 12:34:09 GMT",
+      "tag": "@uifabric/utilities_v7.16.0",
+      "version": "7.16.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Point: Renaming IPoint to point, x to left and y to top and deprecating old names.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "beb8886ffcbccd2bbef9c4e7a8afd742497289a5",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 21 Apr 2020 12:34:50 GMT",
       "tag": "@uifabric/utilities_v7.15.11",
       "version": "7.15.11",

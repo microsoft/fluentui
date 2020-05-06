@@ -2,6 +2,36 @@
   "name": "@uifabric/react-hooks",
   "entries": [
     {
+      "date": "Tue, 05 May 2020 12:34:22 GMT",
+      "tag": "@uifabric/react-hooks_v7.3.0",
+      "version": "7.3.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add new helper React hooks `useAsync` and `useOnEvent` for using APIs that require cleanup on unmount",
+            "author": "miclo@microsoft.com",
+            "commit": "b8868db4f1a39eaaf978a2353006fb98291c7d59",
+            "package": "@uifabric/react-hooks"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 30 Apr 2020 12:31:44 GMT",
+      "tag": "@uifabric/react-hooks_v7.2.2",
+      "version": "7.2.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Change useBoolean to preserve toggle callback identity",
+            "author": "elcraig@microsoft.com",
+            "commit": "bf3b0019b8d95f9ba1e1f7c346f4c57f9a173938",
+            "package": "@uifabric/react-hooks"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 22 Apr 2020 12:33:04 GMT",
       "tag": "@uifabric/react-hooks_v7.2.0",
       "version": "7.2.0",
