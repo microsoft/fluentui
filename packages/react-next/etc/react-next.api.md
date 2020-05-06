@@ -645,36 +645,6 @@ export const ONKEYDOWN_TIMEOUT_DURATION = 1000;
 // @public
 export const Pivot: React.FunctionComponent<IPivotProps>;
 
-// @public
-export class PivotBase extends React.Component<IPivotProps, IPivotState> {
-    constructor(props: IPivotProps);
-    focus(): void;
-    // (undocumented)
-    render(): JSX.Element;
-    }
-
-// @public (undocumented)
-export class PivotItem extends React.Component<IPivotItemProps, {}> {
-    constructor(props: IPivotItemProps);
-    // (undocumented)
-    render(): JSX.Element;
-}
-
-// @public (undocumented)
-export enum PivotLinkFormat {
-    links = 0,
-    tabs = 1
-}
-
-// @public (undocumented)
-export enum PivotLinkSize {
-    large = 1,
-    normal = 0
-}
-
-// @public
-export const Pivot: React.FunctionComponent<IPivotProps>;
-
 // @public (undocumented)
 export const PivotBase: React.FunctionComponent<IPivotProps>;
 
