@@ -20,6 +20,7 @@ import {
   ContentComponentProps,
   commonPropTypes,
   childrenExist,
+  createShorthand,
 } from '../../utils';
 import {
   ComponentEventHandler,
@@ -282,7 +283,7 @@ const ToolbarItem: React.FC<WithAsProp<ToolbarItemProps>> & FluentComponentStati
           >
             <Popper align="start" position="above" targetRef={itemRef} {...getPopperPropsFromShorthand(menu)}>
               <ToolbarVariablesProvider value={mergedVariables}>
-                {ToolbarMenu.create(menu, {
+                {createShorthand(ToolbarMenu, menu, {
                   overrideProps: handleMenuOverrides(getRefs),
                 })}
               </ToolbarVariablesProvider>

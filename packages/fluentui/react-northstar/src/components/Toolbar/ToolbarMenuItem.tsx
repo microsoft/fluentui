@@ -34,6 +34,7 @@ import {
   createShorthandFactory,
   childrenExist,
   doesNodeContainClick,
+  createShorthand,
 } from '../../utils';
 import {
   ComponentEventHandler,
@@ -400,7 +401,7 @@ const ToolbarMenuItem: React.FC<WithAsProp<ToolbarMenuItemProps>> &
                 {...getPopperPropsFromShorthand(menu)}
               >
                 <ToolbarVariablesProvider value={mergedVariables}>
-                  {ToolbarMenu.create(menu, {
+                  {createShorthand(ToolbarMenu, menu, {
                     defaultProps: () => ({
                       className: toolbarMenuItemSlotClassNames.submenu,
                       styles: resolvedStyles.menu,
