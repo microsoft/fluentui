@@ -15,6 +15,7 @@ import * as React from 'react';
 import { ThemeContext } from 'react-fela';
 
 import {
+  createShorthand,
   ChildrenComponentProps,
   ContentComponentProps,
   createShorthandFactory,
@@ -123,7 +124,7 @@ const ToolbarRadioGroup: React.FC<WithAsProp<ToolbarRadioGroupProps>> &
       itemRefs[index] = ref;
 
       if (kind === 'divider') {
-        return ToolbarDivider.create(item);
+        return createShorthand(ToolbarDivider, item);
       }
 
       const toolbarItem = ToolbarItem.create(item, {

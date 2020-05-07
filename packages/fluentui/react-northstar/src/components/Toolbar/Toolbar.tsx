@@ -33,6 +33,7 @@ import {
   withSafeTypeForAs,
 } from '../../types';
 import {
+  createShorthand,
   childrenExist,
   createShorthandFactory,
   UIComponentProps,
@@ -437,7 +438,7 @@ const Toolbar: React.FC<WithAsProp<ToolbarProps>> &
 
       switch (kind) {
         case 'divider':
-          return ToolbarDivider.create(item);
+          return createShorthand(ToolbarDivider, item);
         case 'group':
           return ToolbarRadioGroup.create(item);
         case 'toggle':
@@ -445,7 +446,7 @@ const Toolbar: React.FC<WithAsProp<ToolbarProps>> &
             defaultProps: () => ({ accessibility: toggleButtonBehavior }),
           });
         case 'custom':
-          return ToolbarCustomItem.create(item);
+          return createShorthand(ToolbarCustomItem, item);
         default:
           return ToolbarItem.create(item);
       }
