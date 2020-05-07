@@ -253,7 +253,13 @@ export function styleToRegistration(options: IStyleOptions, ...args: IStyle[]): 
   return undefined;
 }
 
-export function applyRegistration(registration: IRegistration, selectorRepeatCount: number = 1): void {
+/**
+ * Insert style to stylesheet.
+ * @param registration Style registration.
+ * @param specificityMultiplier Number of times classname selector is repeated in the css rule.
+ * This is to increase css specificity in case it's needed. Default to 1.
+ */
+export function applyRegistration(registration: IRegistration, specificityMultiplier: number = 1): void {
   const stylesheet = Stylesheet.getInstance();
   const { className, key, args, rulesToInsert } = registration;
 
@@ -263,13 +269,10 @@ export function applyRegistration(registration: IRegistration, selectorRepeatCou
       const rules = rulesToInsert[i + 1];
       if (rules) {
         let selector = rulesToInsert[i];
-
-        selector = selector.replace(/&/g, '.' + registration.className);
+        selector = selector.replace(/&/g, repeatString(`.${registration.className}`, specificityMultiplier));
 
         // Insert. Note if a media query, we must close the query with a final bracket.
-        const processedRule = `${repeatString(selector, selectorRepeatCount)}{${rules}}${
-          selector.indexOf('@') === 0 ? '}' : ''
-        }`;
+        const processedRule = `${selector}{${rules}}${selector.indexOf('@') === 0 ? '}' : ''}`;
         stylesheet.insertRule(processedRule);
       }
     }
@@ -280,7 +283,7 @@ export function applyRegistration(registration: IRegistration, selectorRepeatCou
 export function styleToClassName(options: IStyleOptions, ...args: IStyle[]): string {
   const registration = styleToRegistration(options, ...args);
   if (registration) {
-    applyRegistration(registration);
+    applyRegistration(registration, options.specificityMultiplier);
 
     return registration.className;
   }

@@ -5,7 +5,7 @@ import { getWindow } from './dom';
 import { StyleFunction } from './styled';
 
 const MAX_CACHE_COUNT = 50;
-const DEFAULT_SELECTOR_REPEAT_COUNT = 10; // repeat selector to increase specificity of the rules
+const DEFAULT_SPECIFICITY_MULTIPLIER = 5;
 
 let _memoizedClassNames = 0;
 
@@ -83,7 +83,7 @@ export function classNamesFunction<TStyleProps extends {}, TStyleSet extends ISt
 
     const disableCaching = options.disableCaching;
 
-    // If useStaticStyles is true, styleFunctionOrObject returns key to classname mappings.
+    // If useStaticStyles is true, styleFunctionOrObject returns slot to classname mappings.
     // If there is also no style overrides, we can skip merge styles completely and
     // simply return the result from the style funcion
     if (
@@ -116,7 +116,7 @@ export function classNamesFunction<TStyleProps extends {}, TStyleSet extends ISt
               ? styleFunctionOrObject(styleProps)
               : styleFunctionOrObject) as IStyleSet<TStyleSet>,
           ],
-          { rtl: !!rtl, selectorRepeatCount: options.useStaticStyles ? DEFAULT_SELECTOR_REPEAT_COUNT : undefined },
+          { rtl: !!rtl, specificityMultiplier: options.useStaticStyles ? DEFAULT_SPECIFICITY_MULTIPLIER : undefined },
         );
       }
 

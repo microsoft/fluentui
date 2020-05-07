@@ -239,7 +239,7 @@ export function mergeCssSets(
 
   for (const registration of registrations) {
     if (registration) {
-      applyRegistration(registration, options?.selectorRepeatCount);
+      applyRegistration(registration, options?.specificityMultiplier);
     }
   }
 
