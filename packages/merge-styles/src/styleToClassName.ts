@@ -1,4 +1,4 @@
-import { IRawStyle, IStyle, IStyleBaseArray } from './IStyle';
+import { IRawStyle, IStyle } from './IStyle';
 
 import { Stylesheet } from './Stylesheet';
 import { kebabRules } from './transforms/kebabRules';
@@ -214,10 +214,6 @@ export interface IRegistration {
 }
 
 export function styleToRegistration(options: IStyleOptions, ...args: IStyle[]): IRegistration | undefined {
-  if (args.length > 1 && (args[1] as IStyleBaseArray)?.length === 0) {
-    return undefined;
-  }
-
   const rules: IRuleSet = extractRules(args);
   const key = getKeyForRules(options, rules);
 

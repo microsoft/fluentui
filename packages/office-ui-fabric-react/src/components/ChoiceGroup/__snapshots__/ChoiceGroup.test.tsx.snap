@@ -2,9 +2,7 @@
 
 exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
 <div
-  className=
-      testClassName
-
+  className="testClassName"
 >
   <div
     className=
@@ -20,9 +18,7 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
     role="radiogroup"
   >
     <div
-      className=
-          ms-ChoiceFieldGroup-flexContainer
-
+      className="ms-ChoiceFieldGroup-flexContainer"
     >
       <div
         className=
@@ -48,9 +44,7 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
             }
       >
         <div
-          className=
-              ms-ChoiceField-wrapper
-
+          className="ms-ChoiceField-wrapper"
         >
           <input
             autoFocus={true}
@@ -187,9 +181,7 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
             }
       >
         <div
-          className=
-              ms-ChoiceField-wrapper
-
+          className="ms-ChoiceField-wrapper"
         >
           <input
             checked={false}
@@ -324,9 +316,7 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
             }
       >
         <div
-          className=
-              ms-ChoiceField-wrapper
-
+          className="ms-ChoiceField-wrapper"
         >
           <input
             checked={false}
@@ -444,9 +434,7 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
 
 exports[`ChoiceGroup renders ChoiceGroup with label correctly 1`] = `
 <div
-  className=
-      testClassName
-
+  className="testClassName"
 >
   <div
     aria-labelledby="ChoiceGroup0-label"
@@ -496,9 +484,7 @@ exports[`ChoiceGroup renders ChoiceGroup with label correctly 1`] = `
       test label
     </label>
     <div
-      className=
-          ms-ChoiceFieldGroup-flexContainer
-
+      className="ms-ChoiceFieldGroup-flexContainer"
     >
       <div
         className=
@@ -524,9 +510,7 @@ exports[`ChoiceGroup renders ChoiceGroup with label correctly 1`] = `
             }
       >
         <div
-          className=
-              ms-ChoiceField-wrapper
-
+          className="ms-ChoiceField-wrapper"
         >
           <input
             autoFocus={true}
@@ -663,9 +647,7 @@ exports[`ChoiceGroup renders ChoiceGroup with label correctly 1`] = `
             }
       >
         <div
-          className=
-              ms-ChoiceField-wrapper
-
+          className="ms-ChoiceField-wrapper"
         >
           <input
             checked={false}
@@ -800,9 +782,7 @@ exports[`ChoiceGroup renders ChoiceGroup with label correctly 1`] = `
             }
       >
         <div
-          className=
-              ms-ChoiceField-wrapper
-
+          className="ms-ChoiceField-wrapper"
         >
           <input
             checked={false}
