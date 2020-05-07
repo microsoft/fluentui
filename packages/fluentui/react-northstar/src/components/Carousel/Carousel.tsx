@@ -235,6 +235,7 @@ export const Carousel: React.FC<WithAsProp<CarouselProps>> &
 
   const setActiveIndex = (e: React.SyntheticEvent, index: number, focusItem: boolean): void => {
     const lastItemIndex = items.length - 1;
+    const lastActiveIndex = state.activeIndex;
     let nextActiveIndex = index;
 
     if (index < 0) {
@@ -251,7 +252,7 @@ export const Carousel: React.FC<WithAsProp<CarouselProps>> &
       nextActiveIndex = 0;
     }
 
-    actions.setIndexes(nextActiveIndex, lastItemIndex);
+    actions.setIndexes(nextActiveIndex, lastActiveIndex);
 
     _.invoke(props, 'onActiveIndexChange', e, props);
 
@@ -306,15 +307,11 @@ export const Carousel: React.FC<WithAsProp<CarouselProps>> &
                   unmountOnExit
                   visible={active}
                   name={
-                    initialMounting
+                    initialMounting || !active
                       ? ''
-                      : active
-                      ? slideToNext
-                        ? 'carousel-slide-to-next-enter'
-                        : 'carousel-slide-to-previous-enter'
                       : slideToNext
-                      ? 'carousel-slide-to-next-exit'
-                      : 'carousel-slide-to-previous-exit'
+                      ? 'carousel-slide-to-next-enter'
+                      : 'carousel-slide-to-previous-enter'
                   }
                 >
                   <Ref innerRef={itemRef}>
