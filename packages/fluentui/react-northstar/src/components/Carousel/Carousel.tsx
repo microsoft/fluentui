@@ -309,13 +309,9 @@ export const Carousel: React.FC<WithAsProp<CarouselProps>> &
                   name={
                     initialMounting || !active
                       ? ''
-                      : active
-                      ? slideToNext
-                        ? 'carousel-slide-to-next-enter'
-                        : 'carousel-slide-to-previous-enter'
                       : slideToNext
-                      ? 'carousel-slide-to-next-exit'
-                      : 'carousel-slide-to-previous-exit'
+                      ? 'carousel-slide-to-next-enter'
+                      : 'carousel-slide-to-previous-enter'
                   }
                 >
                   <Ref innerRef={itemRef}>
