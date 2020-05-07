@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Addressing commonjs imports.",
-  "packageName": "@uifabric/tsx-editor",
-  "email": "dzearing@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-05-06T21:46:12.564Z"
-}

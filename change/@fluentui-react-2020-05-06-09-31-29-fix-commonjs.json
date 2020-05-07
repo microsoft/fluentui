@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "CommonJS paths were pointing to esm paths, now should correctly point to the rigth path.",
-  "packageName": "@fluentui/react",
-  "email": "dzearing@hotmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-05-06T16:31:29.893Z"
-}
