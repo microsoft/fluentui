@@ -190,7 +190,6 @@ describe('Slider', () => {
 
     expect(slider.current?.value).toEqual(9);
 
-    // onChanged should only be called after a delay
     expect(onChange).toHaveBeenCalledTimes(5);
   });
 
@@ -212,6 +211,7 @@ describe('Slider', () => {
     sliderSlideBox.simulate('keydown', { which: KeyCodes.down });
 
     expect(slider.current?.value).toEqual(9);
+
     // onChanged should only be called after a delay
     expect(onChanged).toHaveBeenCalledTimes(0);
 
@@ -233,7 +233,6 @@ describe('Slider', () => {
 
     expect(slider.current?.value).toEqual(3);
 
-    // onChanged should only be called after a delay
     expect(onChange).toHaveBeenCalledTimes(1);
   });
 
@@ -281,6 +280,7 @@ describe('Slider', () => {
     sliderSlideBox.simulate('keydown', { which: KeyCodes.up });
     expect(slider.current?.value).toEqual(7);
   });
+
   it('correctly changes value with decimal steps', () => {
     const slider = React.createRef<ISlider>();
     const onChange = jest.fn();
