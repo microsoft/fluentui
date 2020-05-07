@@ -38,6 +38,15 @@ const dialogContentProps = {
 export const DialogBlockingExample: React.FunctionComponent = () => {
   const [hideDialog, { toggle: toggleHideDialog }] = useBoolean(true);
   const [isDraggable, { toggle: toggleIsDraggable }] = useBoolean(false);
+  const modalProps = React.useMemo(
+    () => ({
+      isBlocking: true,
+      styles: modalPropsStyles,
+      dragOptions: isDraggable ? dragOptions : undefined,
+    }),
+    [isDraggable],
+  );
+
   return (
     <>
       <Checkbox label="Is draggable" onChange={toggleIsDraggable} checked={isDraggable} />
@@ -46,11 +55,7 @@ export const DialogBlockingExample: React.FunctionComponent = () => {
         hidden={hideDialog}
         onDismiss={toggleHideDialog}
         dialogContentProps={dialogContentProps}
-        modalProps={{
-          isBlocking: true,
-          styles: modalPropsStyles,
-          dragOptions: isDraggable ? dragOptions : undefined,
-        }}
+        modalProps={modalProps}
       >
         <SpinButton
           defaultValue="0"

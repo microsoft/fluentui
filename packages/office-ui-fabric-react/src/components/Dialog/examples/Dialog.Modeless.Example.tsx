@@ -20,6 +20,14 @@ const dialogContentProps = {
 export const DialogModelessExample: React.FunctionComponent = () => {
   const [hideDialog, { toggle: toggleHideDialog }] = useBoolean(true);
   const [isDraggable, { toggle: toggleIsDraggable }] = useBoolean(false);
+  const modalProps = React.useMemo(
+    () => ({
+      styles: modalPropsStyles,
+      isModeless: true,
+      dragOptions: isDraggable ? dragOptions : undefined,
+    }),
+    [isDraggable],
+  );
   return (
     <>
       <input type="text" placeholder="Focus Me While Open" />
@@ -32,11 +40,7 @@ export const DialogModelessExample: React.FunctionComponent = () => {
         hidden={hideDialog}
         onDismiss={toggleHideDialog}
         dialogContentProps={dialogContentProps}
-        modalProps={{
-          styles: modalPropsStyles,
-          isModeless: true,
-          dragOptions: isDraggable ? dragOptions : undefined,
-        }}
+        modalProps={modalProps}
       >
         <DialogFooter>
           <PrimaryButton onClick={toggleHideDialog} text="Send" />

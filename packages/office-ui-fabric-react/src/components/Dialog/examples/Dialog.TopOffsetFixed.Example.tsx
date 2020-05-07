@@ -16,36 +16,36 @@ export const DialogTopOffsetFixedExample: React.FunctionComponent = () => {
     setOptionSelected(option.key);
   };
 
+  const options = React.useMemo(
+    () => [
+      {
+        key: 'A',
+        iconProps: { iconName: 'CalendarDay' },
+        text: 'Day',
+        checked: optionSelected === 'A',
+      },
+      {
+        key: 'B',
+        iconProps: { iconName: 'CalendarWeek' },
+        text: 'Week',
+        checked: optionSelected === 'B',
+      },
+      {
+        key: 'C',
+        iconProps: { iconName: 'Calendar' },
+        text: 'Month',
+        checked: optionSelected === 'C',
+      },
+    ],
+    [optionSelected],
+  );
+
   return (
     <>
       <DefaultButton secondaryText="Opens the Sample Dialog" onClick={toggleHideDialog} text="Open Dialog" />
 
       <Dialog hidden={hideDialog} onDismiss={toggleHideDialog} modalProps={modelProps}>
-        <ChoiceGroup
-          label="Pick one icon"
-          options={[
-            {
-              key: 'A',
-              iconProps: { iconName: 'CalendarDay' },
-              text: 'Day',
-              checked: optionSelected === 'A',
-            },
-            {
-              key: 'B',
-              iconProps: { iconName: 'CalendarWeek' },
-              text: 'Week',
-              checked: optionSelected === 'B',
-            },
-            {
-              key: 'C',
-              iconProps: { iconName: 'Calendar' },
-              text: 'Month',
-              checked: optionSelected === 'C',
-            },
-          ]}
-          onChange={onChange}
-          required
-        />
+        <ChoiceGroup label="Pick one icon" options={options} onChange={onChange} required />
         {optionSelected === 'A' && (
           <div>
             <h1>Description</h1>

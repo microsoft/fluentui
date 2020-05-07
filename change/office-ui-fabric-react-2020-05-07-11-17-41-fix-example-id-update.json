@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Updating examples to use UseId and converting Dialog examples to function components",
+  "comment": "Updating examples to use useId instead of getId and converting Dialog examples to function components.",
   "packageName": "office-ui-fabric-react",
   "email": "czearing@outlook.com",
   "dependentChangeType": "patch",

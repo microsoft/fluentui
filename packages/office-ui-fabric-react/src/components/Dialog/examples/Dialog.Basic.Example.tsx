@@ -6,6 +6,12 @@ import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { ContextualMenu } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { useId, useBoolean } from '@uifabric/react-hooks';
 
+const dialogStyles = { main: { maxWidth: 450 } };
+const dragOptions = {
+  moveMenuItemText: 'Move',
+  closeMenuItemText: 'Close',
+  menu: ContextualMenu,
+};
 const screenReaderOnly = mergeStyles(hiddenContentStyle);
 const dialogContentProps = {
   type: DialogType.normal,
@@ -19,11 +25,18 @@ export const DialogBasicExample: React.FunctionComponent = () => {
   const [isDraggable, { toggle: toggleIsDraggable }] = useBoolean(false);
   const labelId: string = useId('dialogLabel');
   const subTextId: string = useId('subTextLabel');
-  const dragOptions = {
-    moveMenuItemText: 'Move',
-    closeMenuItemText: 'Close',
-    menu: ContextualMenu,
-  };
+
+  const modalProps = React.useMemo(
+    () => ({
+      titleAriaId: labelId,
+      subtitleAriaId: subTextId,
+      isBlocking: false,
+      styles: dialogStyles,
+      dragOptions: isDraggable ? dragOptions : undefined,
+    }),
+    [isDraggable],
+  );
+
   return (
     <>
       <Checkbox label="Is draggable" onChange={toggleIsDraggable} checked={isDraggable} />
@@ -39,13 +52,7 @@ export const DialogBasicExample: React.FunctionComponent = () => {
         hidden={hideDialog}
         onDismiss={toggleHideDialog}
         dialogContentProps={dialogContentProps}
-        modalProps={{
-          titleAriaId: labelId,
-          subtitleAriaId: subTextId,
-          isBlocking: false,
-          styles: { main: { maxWidth: 450 } },
-          dragOptions: isDraggable ? dragOptions : undefined,
-        }}
+        modalProps={modalProps}
       >
         <DialogFooter>
           <PrimaryButton onClick={toggleHideDialog} text="Send" />
