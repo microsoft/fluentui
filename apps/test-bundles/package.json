@@ -34,7 +34,7 @@
     "@uifabric/set-version": "^7.0.11",
     "@uifabric/styling": "^7.12.3",
     "office-ui-fabric-react": "^7.110.5",
-    "@fluentui/react-next": "^8.0.0-alpha.12",
+    "@fluentui/react-next": "^8.0.0-alpha.13",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",
