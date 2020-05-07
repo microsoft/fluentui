@@ -35,6 +35,9 @@ export interface ToolbarDividerProps extends UIComponentProps, ChildrenComponent
 export type ToolbarDividerStylesProps = never;
 export const toolbarDividerClassName = 'ui-toolbar__divider';
 
+/**
+ * A ToolbarDivider is a non-actionable element that visually segments Toolbar items.
+ */
 const ToolbarDivider = compose<'div', ToolbarDividerProps, ToolbarDividerStylesProps, {}, {}>(
   (props, ref, composeOptions) => {
     const context: ProviderContextPrepared = React.useContext(ThemeContext);
@@ -57,6 +60,8 @@ const ToolbarDivider = compose<'div', ToolbarDividerProps, ToolbarDividerStylesP
         variables: mergeComponentVariables(parentVariables, variables),
       }),
       rtl: context.rtl,
+      composeOptions,
+      unstable_props: props,
     });
 
     const ElementType = getElementType(props);
@@ -82,4 +87,5 @@ ToolbarDivider.create = createShorthandFactory({ Component: ToolbarDivider, mapp
 ToolbarDivider.shorthandConfig = {
   mappedProp: 'content',
 };
+
 export default ToolbarDivider;
