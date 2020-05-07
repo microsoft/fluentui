@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-next
 
-This log was last generated on Wed, 06 May 2020 12:32:22 GMT and should not be manually modified.
+This log was last generated on Thu, 07 May 2020 12:34:38 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-alpha.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.13)
+
+Thu, 07 May 2020 12:34:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.11..@fluentui/react-next_v8.0.0-alpha.13)
+
+### Changes
+
+- Slider: Add some tests, fix minor bug for controlled component ([PR #13032](https://github.com/microsoft/fluentui/pull/13032) by joschect@microsoft.com)
 
 ## [8.0.0-alpha.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.11)
 
