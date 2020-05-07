@@ -1,1 +1,0 @@
-macOS Persona usage

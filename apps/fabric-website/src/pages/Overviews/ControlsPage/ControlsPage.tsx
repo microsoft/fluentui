@@ -77,8 +77,11 @@ function _otherControlsRequestSections(platform: Platforms): IPageSectionProps<P
         sectionName: 'Need a control Fluent UI macOS doesn’t have?',
         content: require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/ControlsPage/docs/mac/ControlsRequest.md') as string,
       };
-
-      return undefined;
+    case 'cross':
+      return {
+        sectionName: 'Need a control Fluent UI React Native doesn’t have?',
+        content: require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/ControlsPage/docs/cross/ControlsRequest.md') as string,
+      };
   }
 }
 
