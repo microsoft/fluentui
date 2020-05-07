@@ -2,10 +2,13 @@ import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import AceEditor, { AceEditorProps } from 'react-ace';
+// These are from react-ace and we don't want to depend on brace separately
+/* eslint-disable import/no-extraneous-dependencies */
 import * as ace from 'brace';
 import 'brace/ext/language_tools';
 import 'brace/mode/jsx';
 import 'brace/theme/tomorrow_night_eighties';
+/* eslint-enable import/no-extraneous-dependencies */
 
 const parentComponents = [];
 
