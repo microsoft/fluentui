@@ -254,7 +254,7 @@ export const Menu: React.FC<WithAsProp<MenuProps>> &
     });
   };
 
-  const element = (
+  const element = getA11yProps.unstable_wrapWithFocusZone(
     <ElementType
       {...getA11yProps('root', {
         className: classes.root,
@@ -263,7 +263,7 @@ export const Menu: React.FC<WithAsProp<MenuProps>> &
       {...rtlTextContainer.getAttributes({ forElements: [children] })}
     >
       {childrenExist(children) ? children : renderItems()}
-    </ElementType>
+    </ElementType>,
   );
   setEnd();
   return element;
