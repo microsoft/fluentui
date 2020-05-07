@@ -1,3 +1,5 @@
+// This is a type-only import and this package depends on @types/react
+// eslint-disable-next-line import/no-extraneous-dependencies
 import * as React from 'react';
 
 export type FocusZoneDefinition = {

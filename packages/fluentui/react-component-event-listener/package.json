@@ -13,6 +13,7 @@
     "@types/simulant": "^0.2.0",
     "@uifabric/build": "^7.0.0",
     "lerna-alias": "^3.0.3-0",
+    "react": "16.8.6",
     "simulant": "^0.2.2"
   },
   "files": [

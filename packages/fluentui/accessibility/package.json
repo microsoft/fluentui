@@ -10,8 +10,10 @@
     "lodash": "^4.17.15"
   },
   "devDependencies": {
+    "@types/gulp": "^4.0.6",
     "@types/react": "16.8.25",
     "@uifabric/build": "^7.0.0",
+    "gulp": "^4.0.2",
     "lerna-alias": "^3.0.3-0"
   },
   "files": [

@@ -48,6 +48,13 @@ export interface IStackedBarChartProps {
   hideNumberDisplay?: boolean;
 
   /**
+   * Do not show tooltips in chart
+   *
+   * @default false
+   */
+  hideTooltip?: boolean;
+
+  /**
    * Additional CSS class(es) to apply to the StackedBarChart.
    */
   className?: string;
