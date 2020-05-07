@@ -188,8 +188,10 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
     }
   }
 
-  // This should be the only place where value is gotten from.
-  // It ensures that the component behaves consistently whether controlled or uncontrolled.
+  /**
+   * This should be the only place where value is gotten from.
+   * It ensures that the component behaves consistently whether controlled or uncontrolled.
+   */
   public get value(): number | undefined {
     const { value = this.state.value } = this.props;
     if (this.props.min === undefined || this.props.max === undefined || value === undefined) {
