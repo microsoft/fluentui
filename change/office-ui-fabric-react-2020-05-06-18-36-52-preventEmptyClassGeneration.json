@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "update snapshot from merge-styles update that remove empty classname",
-  "packageName": "office-ui-fabric-react",
-  "email": "pingj@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-05-07T01:36:52.175Z"
-}
