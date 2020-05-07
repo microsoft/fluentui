@@ -66,6 +66,7 @@ export const DialogBlockingExample: React.FunctionComponent = () => {
           iconProps={iconProps}
           // tslint:disable-next-line:jsx-no-lambda
           onFocus={() => console.log('onFocus called')}
+          // tslint:disable-next-line:jsx-no-lambda
           onBlur={() => console.log('onBlur called')}
           incrementButtonAriaLabel={'Increase value by 1'}
           decrementButtonAriaLabel={'Decrease value by 1'}
