@@ -34,6 +34,7 @@ import {
 } from '../../types';
 import {
   childrenExist,
+  createShorthand,
   createShorthandFactory,
   UIComponentProps,
   ContentComponentProps,
@@ -439,7 +440,7 @@ const Toolbar: React.FC<WithAsProp<ToolbarProps>> &
         case 'divider':
           return ToolbarDivider.create(item);
         case 'group':
-          return ToolbarRadioGroup.create(item);
+          return createShorthand(ToolbarRadioGroup, item);
         case 'toggle':
           return ToolbarItem.create(item, {
             defaultProps: () => ({ accessibility: toggleButtonBehavior }),

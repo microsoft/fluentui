@@ -14,6 +14,7 @@ import * as React from 'react';
 import { ThemeContext } from 'react-fela';
 
 import {
+  createShorthand,
   createShorthandFactory,
   commonPropTypes,
   childrenExist,
@@ -129,7 +130,7 @@ const ToolbarMenu: React.FC<WithAsProp<ToolbarMenuProps>> & FluentComponentStati
           return ToolbarMenuDivider.create(item);
 
         case 'group':
-          return ToolbarMenuRadioGroup.create(item, { overrideProps: handleRadioGroupOverrides });
+          return createShorthand(ToolbarMenuRadioGroup, item, { overrideProps: handleRadioGroupOverrides });
 
         case 'toggle':
           return ToolbarMenuItem.create(item, {
