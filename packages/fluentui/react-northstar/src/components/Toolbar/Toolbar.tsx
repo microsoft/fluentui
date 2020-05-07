@@ -75,7 +75,14 @@ export interface ToolbarProps
   accessibility?: Accessibility<ToolbarBehaviorProps>;
 
   /** Shorthand array of props for Toolbar. */
-  items?: ShorthandCollection<ToolbarItemProps, ToolbarItemShorthandKinds>;
+  items?: ShorthandCollection<
+    ToolbarItemProps,
+    ToolbarItemShorthandKinds,
+    {
+      item: ToolbarItemProps;
+      divider: ToolbarDividerProps;
+    }
+  >;
 
   /**
    *  Automatically move overflow items to overflow menu.
