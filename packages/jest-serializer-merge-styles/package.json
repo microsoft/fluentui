@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/jest-serializer-merge-styles",
-  "version": "7.0.20",
+  "version": "7.0.21",
   "description": "Jest serializer for merge-styles.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -37,6 +37,6 @@
   },
   "dependencies": {
     "@uifabric/set-version": "^7.0.11",
-    "@uifabric/merge-styles": "^7.11.2"
+    "@uifabric/merge-styles": "^7.11.3"
   }
 }

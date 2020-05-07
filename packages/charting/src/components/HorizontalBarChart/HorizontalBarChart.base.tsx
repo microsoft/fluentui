@@ -108,7 +108,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
             </div>
           );
         })}
-        {this.state.isCalloutVisible ? (
+        {!this.props.hideTooltip && this.state.isCalloutVisible ? (
           <Callout
             target={this.state.refSelected}
             coverTarget={true}

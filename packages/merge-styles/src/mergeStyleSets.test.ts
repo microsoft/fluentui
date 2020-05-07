@@ -1,5 +1,5 @@
 import { mergeStyleSets } from './mergeStyleSets';
-import { Stylesheet, InjectionMode } from './Stylesheet';
+import { Stylesheet, InjectionMode, IStyleSheetConfig } from './Stylesheet';
 import { IStyleSet } from './IStyleSet';
 import { IStyleFunctionOrObject } from './IStyleFunction';
 import { IStyle } from './IStyle';
@@ -147,6 +147,21 @@ describe('mergeStyleSets', () => {
 
     expect(styleSet2).toEqual({ root: 'ms-Foo ms-Bar root-1', subComponentStyles: {} });
     expect(_stylesheet.getRules()).toEqual('.root-0{background:red;}' + '.root-1{background:green;}');
+  });
+
+  it('can merge correctly when class names are provided by application', () => {
+    _stylesheet.setConfig({ namespace: 'ns' });
+    _stylesheet.getClassNameCache()['ltr&displayNametestdisplayblock'] = 'test-0';
+
+    const styles = mergeStyleSets({ test: ['test-0'] });
+    const styles2 = mergeStyleSets({ test: { display: 'block' } });
+    const styles3 = mergeStyleSets({ root: [{ background: 'red' }, 'test-0'] });
+
+    expect(styles.test).toBe('test-0');
+    expect(styles2.test).toBe('test-0');
+    expect(styles3.root).toBe('test-0 ns-root-0');
+
+    _stylesheet.setConfig({ namespace: undefined });
   });
 
   describe('typings tests', () => {

@@ -224,6 +224,80 @@ export enum ImageLoadState {
 }
 
 // @public (undocumented)
+export interface IPivot {
+    focus(): void;
+}
+
+// @public (undocumented)
+export interface IPivotItemProps extends React.HTMLAttributes<HTMLDivElement> {
+    ariaLabel?: string;
+    componentRef?: IRefObject<{}>;
+    headerButtonProps?: {
+        [key: string]: string | number | boolean;
+    };
+    headerText?: string;
+    itemCount?: number | string;
+    itemIcon?: string;
+    itemKey?: string;
+    keytipProps?: IKeytipProps;
+    // @deprecated
+    linkText?: string;
+    onRenderItemLink?: IRenderFunction<IPivotItemProps>;
+}
+
+// @public (undocumented)
+export interface IPivotProps extends React.ClassAttributes<PivotBase>, React.HTMLAttributes<HTMLDivElement> {
+    className?: string;
+    componentRef?: IRefObject<IPivot>;
+    defaultSelectedIndex?: number;
+    defaultSelectedKey?: string;
+    getTabId?: (itemKey: string, index: number) => string;
+    headersOnly?: boolean;
+    // @deprecated
+    initialSelectedIndex?: number;
+    // @deprecated
+    initialSelectedKey?: string;
+    linkFormat?: PivotLinkFormat;
+    linkSize?: PivotLinkSize;
+    onLinkClick?: (item?: PivotItem, ev?: React.MouseEvent<HTMLElement>) => void;
+    selectedKey?: string | null;
+    styles?: IStyleFunctionOrObject<IPivotStyleProps, IPivotStyles>;
+    theme?: ITheme;
+}
+
+// @public (undocumented)
+export interface IPivotState {
+    // (undocumented)
+    selectedKey: string | undefined;
+}
+
+// @public (undocumented)
+export type IPivotStyleProps = Required<Pick<IPivotProps, 'theme'>> & Pick<IPivotProps, 'className'> & {
+    rootIsLarge?: boolean;
+    rootIsTabs?: boolean;
+    linkIsSelected?: boolean;
+};
+
+// @public (undocumented)
+export interface IPivotStyles {
+    // (undocumented)
+    count: IStyle;
+    // (undocumented)
+    icon: IStyle;
+    // (undocumented)
+    itemContainer?: IStyle;
+    // (undocumented)
+    link: IStyle;
+    // (undocumented)
+    linkContent: IStyle;
+    // (undocumented)
+    linkIsSelected: IStyle;
+    root: IStyle;
+    // (undocumented)
+    text: IStyle;
+}
+
+// @public (undocumented)
 export interface IPopupProps extends React.HTMLAttributes<HTMLDivElement> {
     ariaDescribedBy?: string;
     ariaLabel?: string;
@@ -569,6 +643,36 @@ export const MeasuredContext: React.Context<{
 export const ONKEYDOWN_TIMEOUT_DURATION = 1000;
 
 // @public
+export const Pivot: React.FunctionComponent<IPivotProps>;
+
+// @public
+export class PivotBase extends React.Component<IPivotProps, IPivotState> {
+    constructor(props: IPivotProps);
+    focus(): void;
+    // (undocumented)
+    render(): JSX.Element;
+    }
+
+// @public (undocumented)
+export class PivotItem extends React.Component<IPivotItemProps, {}> {
+    constructor(props: IPivotItemProps);
+    // (undocumented)
+    render(): JSX.Element;
+}
+
+// @public (undocumented)
+export enum PivotLinkFormat {
+    links = 0,
+    tabs = 1
+}
+
+// @public (undocumented)
+export enum PivotLinkSize {
+    large = 1,
+    normal = 0
+}
+
+// @public
 export const Popup: React.ForwardRefExoticComponent<IPopupProps & React.RefAttributes<HTMLDivElement>>;
 
 // @public (undocumented)
@@ -629,7 +733,6 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
     focus(): void;
     // (undocumented)
     render(): React.ReactElement<{}>;
-    // (undocumented)
     readonly value: number | undefined;
 }
 
@@ -702,7 +805,6 @@ export * from "office-ui-fabric-react/lib/Overlay";
 export * from "office-ui-fabric-react/lib/Panel";
 export * from "office-ui-fabric-react/lib/Persona";
 export * from "office-ui-fabric-react/lib/Pickers";
-export * from "office-ui-fabric-react/lib/Pivot";
 export * from "office-ui-fabric-react/lib/PositioningContainer";
 export * from "office-ui-fabric-react/lib/ProgressIndicator";
 export * from "office-ui-fabric-react/lib/Rating";
