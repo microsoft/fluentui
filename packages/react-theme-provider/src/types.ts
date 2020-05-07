@@ -15,7 +15,7 @@
  * which activates the component is pressed down. It is however ambiguous
  * with a focused state, as the HTML object model refers to the focused
  * element as the "activeElement". To resolve ambiguity and to be more
- * compatible with other platforms reusing token names, we'll will snap
+ * compatible with other platforms reusing token names, we have decided to snap
  * to "pressed".
  */
 export type ThemeStateSet =
