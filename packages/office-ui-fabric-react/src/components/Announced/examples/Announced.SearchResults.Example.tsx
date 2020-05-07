@@ -10,7 +10,7 @@ const inputProps = {
 };
 const pickerSuggestionsProps = {
   suggestionsHeaderText: 'Suggested tags',
-  noResultsFoundText: 'No Color Tags Found',
+  noResultsFoundText: 'No color tags found',
 };
 const _testTags: ITag[] = [
   'black',
