@@ -57,6 +57,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix `Accordion` to avoid recreating refs every render @assuncaocharles ([#12944](https://github.com/microsoft/fluentui/pull/12944))
 - Fix `ButtonGroup` accessibility adding `aria-role="group"` @assuncaocharles ([#12916](https://github.com/microsoft/fluentui/pull/12916))
 - Converge FocusZone functionality, maintain existing behavior @jurokapsiar ([#12997](https://github.com/microsoft/fluentui/pull/12997))
+- Limit `Tree` items to not accept string and create `ObjectShorthandValue` @assuncaocharles ([#13016](https://github.com/microsoft/fluentui/pull/13016))
 
 ### Features
 - Add `body` slot to `Attachment` component @layershifter ([#12674](https://github.com/microsoft/fluentui/pull/12674))
