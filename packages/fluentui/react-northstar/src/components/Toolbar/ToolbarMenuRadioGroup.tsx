@@ -5,7 +5,14 @@ import {
   ToolbarMenuRadioGroupBehaviorProps,
 } from '@fluentui/accessibility';
 import { mergeComponentVariables } from '@fluentui/styles';
-import { getElementType, useUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import {
+  compose,
+  getElementType,
+  useUnhandledProps,
+  useAccessibility,
+  useStyles,
+  useTelemetry,
+} from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
@@ -14,21 +21,13 @@ import * as React from 'react';
 import { ThemeContext } from 'react-fela';
 
 import {
+  createShorthand,
   ChildrenComponentProps,
   ContentComponentProps,
-  createShorthandFactory,
   UIComponentProps,
   commonPropTypes,
 } from '../../utils';
-import {
-  ComponentEventHandler,
-  FluentComponentStaticProps,
-  ProviderContextPrepared,
-  ShorthandCollection,
-  ShorthandValue,
-  WithAsProp,
-  withSafeTypeForAs,
-} from '../../types';
+import { ComponentEventHandler, ProviderContextPrepared, ShorthandCollection, ShorthandValue } from '../../types';
 import ToolbarMenuItem, { ToolbarMenuItemProps } from './ToolbarMenuItem';
 import Box, { BoxProps } from '../Box/Box';
 import { ToolbarVariablesContext, ToolbarVariablesProvider } from './toolbarVariablesContext';
@@ -68,85 +67,103 @@ export const toolbarMenuRadioGroupSlotClassNames: ToolbarMenuRadioGroupSlotClass
   wrapper: `${toolbarMenuRadioGroupClassName}__wrapper`,
 };
 
-const ToolbarMenuRadioGroup: React.FC<WithAsProp<ToolbarMenuRadioGroupProps>> &
-  FluentComponentStaticProps<ToolbarMenuRadioGroupProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
-  const { setStart, setEnd } = useTelemetry(ToolbarMenuRadioGroup.displayName, context.telemetry);
-  setStart();
+/**
+ * A ToolbarMenuRadioGroup renders ToolbarMenuItem as a group of mutually exclusive options.
+ */
+const ToolbarMenuRadioGroup = compose<'ul', ToolbarMenuRadioGroupProps, ToolbarMenuRadioGroupStylesProps, {}, {}>(
+  (props, ref, composeOptions) => {
+    const context: ProviderContextPrepared = React.useContext(ThemeContext);
+    const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
+    setStart();
 
-  const { accessibility, activeIndex, className, design, items, styles, variables, wrapper } = props;
+    const { accessibility, activeIndex, className, design, items, styles, variables, wrapper } = props;
 
-  const parentVariables = React.useContext(ToolbarVariablesContext);
-  const mergedVariables = mergeComponentVariables(parentVariables, variables);
+    const parentVariables = React.useContext(ToolbarVariablesContext);
+    const mergedVariables = mergeComponentVariables(parentVariables, variables);
 
-  const getA11yProps = useAccessibility(accessibility, {
-    debugName: ToolbarMenuRadioGroup.displayName,
-    rtl: context.rtl,
-  });
-  const { classes, styles: resolvedStyles } = useStyles<ToolbarMenuRadioGroupStylesProps>(
-    ToolbarMenuRadioGroup.displayName,
-    {
-      className: toolbarMenuRadioGroupClassName,
-      mapPropsToInlineStyles: () => ({
-        className,
-        design,
-        styles,
-        variables: mergedVariables,
-      }),
+    const getA11yProps = useAccessibility(accessibility, {
+      debugName: composeOptions.displayName,
       rtl: context.rtl,
-    },
-  );
+    });
+    const { classes, styles: resolvedStyles } = useStyles<ToolbarMenuRadioGroupStylesProps>(
+      composeOptions.displayName,
+      {
+        className: composeOptions.className,
+        mapPropsToInlineStyles: () => ({
+          className,
+          design,
+          styles,
+          variables: mergedVariables,
+        }),
+        rtl: context.rtl,
+      },
+    );
 
-  const handleItemOverrides = (predefinedProps: ToolbarMenuItemProps): ToolbarMenuItemProps => ({
-    onClick: (e, itemProps) => {
-      _.invoke(predefinedProps, 'onClick', e, itemProps);
-      _.invoke(props, 'onItemClick', e, itemProps);
-    },
-    wrapper: null,
-  });
+    const handleItemOverrides = (predefinedProps: ToolbarMenuItemProps): ToolbarMenuItemProps => ({
+      onClick: (e, itemProps) => {
+        _.invoke(predefinedProps, 'onClick', e, itemProps);
+        _.invoke(props, 'onItemClick', e, itemProps);
+      },
+      wrapper: null,
+    });
 
-  const ElementType = getElementType(props);
-  const unhandledProps = useUnhandledProps(ToolbarMenuRadioGroup.handledProps, props);
+    const ElementType = getElementType(props);
+    const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
 
-  const content = (
-    <ElementType {...getA11yProps('root', { ...unhandledProps, className: classes.root })}>
-      <ToolbarVariablesProvider value={mergedVariables}>
-        {_.map(items, (item, index) =>
-          ToolbarMenuItem.create(item, {
-            defaultProps: () => ({
-              accessibility: toolbarMenuItemRadioBehavior,
-              as: 'li',
-              active: activeIndex === index,
-              index,
+    const content = (
+      <ElementType {...getA11yProps('root', { ...unhandledProps, className: classes.root, ref })}>
+        <ToolbarVariablesProvider value={mergedVariables}>
+          {_.map(items, (item, index) =>
+            createShorthand(ToolbarMenuItem, item, {
+              defaultProps: () => ({
+                accessibility: toolbarMenuItemRadioBehavior,
+                as: 'li',
+                active: activeIndex === index,
+                index,
+              }),
+              overrideProps: handleItemOverrides,
             }),
-            overrideProps: handleItemOverrides,
-          }),
-        )}
-      </ToolbarVariablesProvider>
-    </ElementType>
-  );
-  const element = Box.create(wrapper, {
-    defaultProps: () =>
-      getA11yProps('wrapper', {
-        as: 'li',
-        className: toolbarMenuRadioGroupSlotClassNames.wrapper,
-        styles: resolvedStyles.wrapper,
-      }),
-    overrideProps: {
-      children: content,
-    },
-  });
-  setEnd();
+          )}
+        </ToolbarVariablesProvider>
+      </ElementType>
+    );
+    const element = Box.create(wrapper, {
+      defaultProps: () =>
+        getA11yProps('wrapper', {
+          as: 'li',
+          className: toolbarMenuRadioGroupSlotClassNames.wrapper,
+          styles: resolvedStyles.wrapper,
+        }),
+      overrideProps: {
+        children: content,
+      },
+    });
+    setEnd();
 
-  return element;
-};
+    return element;
+  },
+  {
+    className: toolbarMenuRadioGroupClassName,
+    displayName: 'ToolbarMenuRadioGroup',
 
-ToolbarMenuRadioGroup.displayName = 'ToolbarMenuRadioGroup';
-ToolbarMenuRadioGroup.defaultProps = {
-  as: 'ul',
-  accessibility: toolbarMenuRadioGroupBehavior,
-  wrapper: {},
-};
+    handledProps: [
+      'accessibility',
+      'as',
+      'children',
+      'className',
+      'content',
+      'design',
+      'styles',
+      'variables',
+
+      'activeIndex',
+      'items',
+      'onItemClick',
+      'wrapper',
+    ],
+  },
+);
+
 ToolbarMenuRadioGroup.propTypes = {
   ...commonPropTypes.createCommon(),
   activeIndex: PropTypes.number,
@@ -154,13 +171,10 @@ ToolbarMenuRadioGroup.propTypes = {
   onItemClick: PropTypes.func,
   wrapper: customPropTypes.itemShorthand,
 };
-ToolbarMenuRadioGroup.handledProps = Object.keys(ToolbarMenuRadioGroup.propTypes) as any;
+ToolbarMenuRadioGroup.defaultProps = {
+  as: 'ul',
+  accessibility: toolbarMenuRadioGroupBehavior,
+  wrapper: {},
+};
 
-ToolbarMenuRadioGroup.create = createShorthandFactory({
-  Component: ToolbarMenuRadioGroup,
-});
-
-/**
- * A ToolbarMenuRadioGroup renders ToolbarMenuItem as a group of mutually exclusive options.
- */
-export default withSafeTypeForAs<typeof ToolbarMenuRadioGroup, ToolbarMenuRadioGroupProps, 'ul'>(ToolbarMenuRadioGroup);
+export default ToolbarMenuRadioGroup;
