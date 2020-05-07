@@ -42,7 +42,7 @@ import {
   ColorComponentProps,
 } from '../../utils';
 import ToolbarCustomItem from './ToolbarCustomItem';
-import ToolbarDivider from './ToolbarDivider';
+import ToolbarDivider, { ToolbarDividerProps } from './ToolbarDivider';
 import ToolbarItem, { ToolbarItemProps } from './ToolbarItem';
 import ToolbarMenu from './ToolbarMenu';
 import ToolbarMenuDivider from './ToolbarMenuDivider';
@@ -69,7 +69,14 @@ export interface ToolbarProps
   accessibility?: Accessibility<ToolbarBehaviorProps>;
 
   /** Shorthand array of props for Toolbar. */
-  items?: ShorthandCollection<ToolbarItemProps, ToolbarItemShorthandKinds>;
+  items?: ShorthandCollection<
+    ToolbarItemProps,
+    ToolbarItemShorthandKinds,
+    {
+      item: ToolbarItemProps;
+      divider: ToolbarDividerProps;
+    }
+  >;
 
   /**
    *  Automatically move overflow items to overflow menu.

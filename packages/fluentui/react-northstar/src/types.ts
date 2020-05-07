@@ -65,7 +65,7 @@ type ReactNode = React.ReactChild | React.ReactNodeArray | React.ReactPortal | b
 export type ShorthandValue<P extends Props> =
   | ReactNode
   | (Props<P> & { children?: P['children'] | ShorthandRenderFunction<P> });
-export type ShorthandCollection<P, K = never> = ShorthandValue<P & { kind?: K }>[];
+export type ShorthandCollection<P, K = never, I = Record<keyof K, unknown>> = ShorthandValue<P & { kind?: K } & I>[];
 
 // ========================================================
 // Types for As prop support
