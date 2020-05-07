@@ -5,11 +5,7 @@ import { ContextualMenu } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { SpinButton } from 'office-ui-fabric-react/lib/SpinButton';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { ComboBox, IComboBoxOption, SelectableOptionMenuItemType } from 'office-ui-fabric-react/lib/index';
-
-export interface IDialogBlockingExampleState {
-  hideDialog: boolean;
-  isDraggable: boolean;
-}
+import { useBoolean } from '@uifabric/react-hooks';
 
 const INITIAL_OPTIONS: IComboBoxOption[] = [
   { key: 'Header1', text: 'First heading', itemType: SelectableOptionMenuItemType.Header },
@@ -26,74 +22,60 @@ const INITIAL_OPTIONS: IComboBoxOption[] = [
   { key: 'I', text: 'Option I' },
   { key: 'J', text: 'Option J' },
 ];
+const dragOptions = {
+  moveMenuItemText: 'Move',
+  closeMenuItemText: 'Close',
+  menu: ContextualMenu,
+};
+const iconProps = { iconName: 'IncreaseIndentLegacy' };
+const dialogContentProps = {
+  type: DialogType.normal,
+  title: 'Missing Subject',
+  subText: 'Do you want to send this message without a subject?',
+};
 
-export class DialogBlockingExample extends React.Component<{}, IDialogBlockingExampleState> {
-  public state: IDialogBlockingExampleState = { hideDialog: true, isDraggable: false };
-
-  private _dragOptions = {
-    moveMenuItemText: 'Move',
-    closeMenuItemText: 'Close',
-    menu: ContextualMenu,
-  };
-
-  public render() {
-    const { hideDialog, isDraggable } = this.state;
-    return (
-      <div>
-        <Checkbox label="Is draggable" onChange={this._toggleDraggable} checked={isDraggable} />
-        <DefaultButton secondaryText="Opens the Sample Dialog" onClick={this._showDialog} text="Open Dialog" />
-        <Dialog
-          hidden={hideDialog}
-          onDismiss={this._closeDialog}
-          dialogContentProps={{
-            type: DialogType.normal,
-            title: 'Missing Subject',
-            subText: 'Do you want to send this message without a subject?',
-          }}
-          modalProps={{
-            isBlocking: true,
-            styles: { main: { maxWidth: 450 } },
-            dragOptions: isDraggable ? this._dragOptions : undefined,
-          }}
-        >
-          <SpinButton
-            defaultValue="0"
-            label={'Number of subjects to add:'}
-            min={0}
-            max={100}
-            step={1}
-            iconProps={{ iconName: 'IncreaseIndentLegacy' }}
-            // tslint:disable:jsx-no-lambda
-            onFocus={() => console.log('onFocus called')}
-            onBlur={() => console.log('onBlur called')}
-            incrementButtonAriaLabel={'Increase value by 1'}
-            decrementButtonAriaLabel={'Decrease value by 1'}
-          />
-          <ComboBox
-            label="Sample subject lines you could add instead"
-            placeholder="Select or type an option"
-            allowFreeform
-            autoComplete="on"
-            options={INITIAL_OPTIONS}
-          />
-          <DialogFooter>
-            <PrimaryButton onClick={this._closeDialog} text="Send" />
-            <DefaultButton onClick={this._closeDialog} text="Don't send" />
-          </DialogFooter>
-        </Dialog>
-      </div>
-    );
-  }
-
-  private _showDialog = (): void => {
-    this.setState({ hideDialog: false });
-  };
-
-  private _closeDialog = (): void => {
-    this.setState({ hideDialog: true });
-  };
-
-  private _toggleDraggable = (): void => {
-    this.setState({ isDraggable: !this.state.isDraggable });
-  };
-}
+export const DialogBlockingExample: React.FunctionComponent = () => {
+  const [hideDialog, { toggle: toggleHideDialog }] = useBoolean(true);
+  const [isDraggable, { toggle: toggleIsDraggable }] = useBoolean(false);
+  return (
+    <div>
+      <Checkbox label="Is draggable" onChange={toggleIsDraggable} checked={isDraggable} />
+      <DefaultButton secondaryText="Opens the Sample Dialog" onClick={toggleHideDialog} text="Open Dialog" />
+      <Dialog
+        hidden={hideDialog}
+        onDismiss={toggleHideDialog}
+        dialogContentProps={dialogContentProps}
+        modalProps={{
+          isBlocking: true,
+          styles: { main: { maxWidth: 450 } },
+          dragOptions: isDraggable ? dragOptions : undefined,
+        }}
+      >
+        <SpinButton
+          defaultValue="0"
+          label={'Number of subjects to add:'}
+          min={0}
+          max={100}
+          step={1}
+          iconProps={iconProps}
+          // tslint:disable:jsx-no-lambda
+          onFocus={() => console.log('onFocus called')}
+          onBlur={() => console.log('onBlur called')}
+          incrementButtonAriaLabel={'Increase value by 1'}
+          decrementButtonAriaLabel={'Decrease value by 1'}
+        />
+        <ComboBox
+          label="Sample subject lines you could add instead"
+          placeholder="Select or type an option"
+          allowFreeform
+          autoComplete="on"
+          options={INITIAL_OPTIONS}
+        />
+        <DialogFooter>
+          <PrimaryButton onClick={toggleHideDialog} text="Send" />
+          <DefaultButton onClick={toggleHideDialog} text="Don't send" />
+        </DialogFooter>
+      </Dialog>
+    </div>
+  );
+};
