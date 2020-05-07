@@ -389,8 +389,14 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 &:hover .ms-Checkbox-text {
                   color: #201f1e;
                 }
+                @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+                  color: WindowText;
+                }
                 &:focus .ms-Checkbox-text {
                   color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+                  color: WindowText;
                 }
           >
             <input
@@ -464,6 +470,12 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                       width: 20px;
                     }
+                    @media screen and (-ms-high-contrast: active){& {
+                      border-color: WindowText;
+                    }
+                    @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                      forced-color-adjust: none;
+                    }
               >
                 <i
                   aria-hidden={true}
@@ -499,6 +511,12 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       line-height: 20px;
                       margin-left: 4px;
                     }
+                    @media screen and (-ms-high-contrast: active){& {
+                      color: WindowText;
+                    }
+                    @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                      forced-color-adjust: none;
+                    }
               >
                 Shadow around items
               </span>
@@ -532,8 +550,14 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 &:hover .ms-Checkbox-text {
                   color: #201f1e;
                 }
+                @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+                  color: WindowText;
+                }
                 &:focus .ms-Checkbox-text {
                   color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+                  color: WindowText;
                 }
           >
             <input
@@ -607,6 +631,12 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                       width: 20px;
                     }
+                    @media screen and (-ms-high-contrast: active){& {
+                      border-color: WindowText;
+                    }
+                    @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                      forced-color-adjust: none;
+                    }
               >
                 <i
                   aria-hidden={true}
@@ -642,6 +672,12 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       line-height: 20px;
                       margin-left: 4px;
                     }
+                    @media screen and (-ms-high-contrast: active){& {
+                      color: WindowText;
+                    }
+                    @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                      forced-color-adjust: none;
+                    }
               >
                 Prevent item overflow
               </span>
@@ -675,8 +711,14 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 &:hover .ms-Checkbox-text {
                   color: #201f1e;
                 }
+                @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+                  color: WindowText;
+                }
                 &:focus .ms-Checkbox-text {
                   color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+                  color: WindowText;
                 }
           >
             <input
@@ -750,6 +792,12 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                       width: 20px;
                     }
+                    @media screen and (-ms-high-contrast: active){& {
+                      border-color: WindowText;
+                    }
+                    @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                      forced-color-adjust: none;
+                    }
               >
                 <i
                   aria-hidden={true}
@@ -785,6 +833,12 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       line-height: 20px;
                       margin-left: 4px;
                     }
+                    @media screen and (-ms-high-contrast: active){& {
+                      color: WindowText;
+                    }
+                    @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                      forced-color-adjust: none;
+                    }
               >
                 Shrink items
               </span>
@@ -817,8 +871,14 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 &:hover .ms-Checkbox-text {
                   color: #201f1e;
                 }
+                @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+                  color: WindowText;
+                }
                 &:focus .ms-Checkbox-text {
                   color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+                  color: WindowText;
                 }
           >
             <input
@@ -892,6 +952,12 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                       width: 20px;
                     }
+                    @media screen and (-ms-high-contrast: active){& {
+                      border-color: WindowText;
+                    }
+                    @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                      forced-color-adjust: none;
+                    }
               >
                 <i
                   aria-hidden={true}
@@ -926,6 +992,12 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       font-size: 14px;
                       line-height: 20px;
                       margin-left: 4px;
+                    }
+                    @media screen and (-ms-high-contrast: active){& {
+                      color: WindowText;
+                    }
+                    @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                      forced-color-adjust: none;
                     }
               >
                 Wrap items
@@ -1208,10 +1280,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 background: #005a9e;
                 border-color: #005a9e;
               }
-              & .ms-Checkbox-checkbox {
-                background: #0078d4;
-                border-color: #0078d4;
-              }
               @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
                 background: Window;
                 border-color: Highlight;
@@ -1231,8 +1299,14 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
               &:hover .ms-Checkbox-text {
                 color: #201f1e;
               }
+              @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+                color: WindowText;
+              }
               &:focus .ms-Checkbox-text {
                 color: #201f1e;
+              }
+              @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+                color: WindowText;
               }
         >
           <input
@@ -1312,6 +1386,9 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     background: Highlight;
                     border-color: Highlight;
                   }
+                  @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                    forced-color-adjust: none;
+                  }
             >
               <i
                 aria-hidden={true}
@@ -1346,6 +1423,12 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     font-size: 14px;
                     line-height: 20px;
                     margin-left: 4px;
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    color: WindowText;
+                  }
+                  @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                    forced-color-adjust: none;
                   }
             >
               Automatic height (based on items)
@@ -2186,8 +2269,14 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   &:hover .ms-Checkbox-text {
                     color: #201f1e;
                   }
+                  @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+                    color: WindowText;
+                  }
                   &:focus .ms-Checkbox-text {
                     color: #201f1e;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+                    color: WindowText;
                   }
             >
               <input
@@ -2261,6 +2350,12 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                         transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                         width: 20px;
                       }
+                      @media screen and (-ms-high-contrast: active){& {
+                        border-color: WindowText;
+                      }
+                      @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                        forced-color-adjust: none;
+                      }
                 >
                   <i
                     aria-hidden={true}
@@ -2295,6 +2390,12 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                         font-size: 14px;
                         line-height: 20px;
                         margin-left: 4px;
+                      }
+                      @media screen and (-ms-high-contrast: active){& {
+                        color: WindowText;
+                      }
+                      @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                        forced-color-adjust: none;
                       }
                 >
                   Hide empty children
