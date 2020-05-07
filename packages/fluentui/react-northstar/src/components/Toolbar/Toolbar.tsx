@@ -433,9 +433,7 @@ const Toolbar: React.FC<WithAsProp<ToolbarProps>> &
 
   const renderItems = (items: ShorthandCollection<ToolbarItemProps, ToolbarItemShorthandKinds>) =>
     _.map(items, (item: ShorthandValue<ToolbarItemProps & { kind?: ToolbarItemShorthandKinds }>) => {
-      console.log(item);
       const kind = _.get(item, 'kind', 'item');
-      console.log(kind);
 
       switch (kind) {
         case 'divider':
