@@ -45,7 +45,7 @@ const SelectableCard: React.FC<SelectableCardProps> = ({ index, selected, handle
             handleClick(props.checked, index);
           }}
         />
-        <div id={selectedMessageId} style={screenReaderContainerStyles} aria-live="polite">
+        <div id={selectedMessageId} style={screenReaderContainerStyles} aria-live="polite" role="presentation">
           {selected ? selectedMessage : notSelectedMessage}
         </div>
       </Card.TopControls>
