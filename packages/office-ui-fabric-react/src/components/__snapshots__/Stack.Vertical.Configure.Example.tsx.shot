@@ -1711,9 +1711,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 }
           >
             <div
-              className=
-                  ms-Dropdown-container
-
+              className="ms-Dropdown-container"
             >
               <label
                 className=
@@ -1938,9 +1936,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 }
           >
             <div
-              className=
-                  ms-Dropdown-container
-
+              className="ms-Dropdown-container"
             >
               <label
                 className=
@@ -2344,9 +2340,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   }
             >
               <div
-                className=
-                    ms-TextField-wrapper
-
+                className="ms-TextField-wrapper"
               >
                 <label
                   className=
