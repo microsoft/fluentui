@@ -10,7 +10,6 @@
       "@uifabric/utilities": ["packages/utilities/src"],
       "src/*": ["packages/fluentui/react-northstar/src/*"],
       "test/*": ["packages/fluentui/react-northstar/test/*"],
-      "@uifabric/date-time": ["packages/date-time/src"],
       "office-ui-fabric-react/lib/*": ["/packages/office-ui-fabric-react/src"]
     },
     "typeRoots": ["../../../typings", "../../../node_modules/@types"],
