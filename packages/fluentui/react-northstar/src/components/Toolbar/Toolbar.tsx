@@ -41,17 +41,23 @@ import {
   commonPropTypes,
   ColorComponentProps,
 } from '../../utils';
-import ToolbarCustomItem from './ToolbarCustomItem';
+import ToolbarCustomItem, { ToolbarCustomItemProps } from './ToolbarCustomItem';
 import ToolbarDivider, { ToolbarDividerProps } from './ToolbarDivider';
 import ToolbarItem, { ToolbarItemProps } from './ToolbarItem';
 import ToolbarMenu from './ToolbarMenu';
 import ToolbarMenuDivider from './ToolbarMenuDivider';
 import ToolbarMenuItem, { ToolbarMenuItemProps } from './ToolbarMenuItem';
-import ToolbarMenuRadioGroup from './ToolbarMenuRadioGroup';
+import ToolbarMenuRadioGroup, { ToolbarMenuRadioGroupProps } from './ToolbarMenuRadioGroup';
 import ToolbarRadioGroup from './ToolbarRadioGroup';
 import { ToolbarVariablesProvider } from './toolbarVariablesContext';
 
-export type ToolbarItemShorthandKinds = 'divider' | 'item' | 'group' | 'toggle' | 'custom';
+export type ToolbarItemShorthandKinds = {
+  item: ToolbarItemProps;
+  divider: ToolbarDividerProps;
+  group: ToolbarMenuRadioGroupProps;
+  toggle: ToolbarItemProps;
+  custom: ToolbarCustomItemProps;
+};
 
 type PositionOffset = {
   vertical: number;
@@ -69,14 +75,7 @@ export interface ToolbarProps
   accessibility?: Accessibility<ToolbarBehaviorProps>;
 
   /** Shorthand array of props for Toolbar. */
-  items?: ShorthandCollection<
-    ToolbarItemProps,
-    ToolbarItemShorthandKinds,
-    {
-      item: ToolbarItemProps;
-      divider: ToolbarDividerProps;
-    }
-  >;
+  items?: ShorthandCollection<ToolbarItemProps, ToolbarItemShorthandKinds>;
 
   /**
    *  Automatically move overflow items to overflow menu.
@@ -412,7 +411,6 @@ const Toolbar: React.FC<WithAsProp<ToolbarProps>> &
   };
 
   const collectOverflowItems = () => {
-    // console.log('getOverflowItems()', items.slice(lastVisibleItemIndex.current + 1))
     return getOverflowItems
       ? getOverflowItems(lastVisibleItemIndex.current + 1)
       : items.slice(lastVisibleItemIndex.current + 1);
@@ -435,7 +433,9 @@ const Toolbar: React.FC<WithAsProp<ToolbarProps>> &
 
   const renderItems = (items: ShorthandCollection<ToolbarItemProps, ToolbarItemShorthandKinds>) =>
     _.map(items, (item: ShorthandValue<ToolbarItemProps & { kind?: ToolbarItemShorthandKinds }>) => {
+      console.log(item);
       const kind = _.get(item, 'kind', 'item');
+      console.log(kind);
 
       switch (kind) {
         case 'divider':
