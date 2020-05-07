@@ -2,7 +2,9 @@
 
 exports[`Component Examples renders Dropdown.Controlled.Example.tsx correctly 1`] = `
 <div
-  className="ms-Dropdown-container"
+  className=
+      ms-Dropdown-container
+
 >
   <label
     className=

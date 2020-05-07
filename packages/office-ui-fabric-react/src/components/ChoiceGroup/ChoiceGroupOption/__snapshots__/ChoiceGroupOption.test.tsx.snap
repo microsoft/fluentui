@@ -26,7 +26,9 @@ exports[`ChoiceGroupOption custom renders correctly 1`] = `
         }
   >
     <div
-      className="ms-ChoiceField-wrapper"
+      className=
+          ms-ChoiceField-wrapper
+
     >
       <input
         className=
@@ -153,7 +155,9 @@ exports[`ChoiceGroupOption custom renders correctly 1`] = `
         }
   >
     <div
-      className="ms-ChoiceField-wrapper"
+      className=
+          ms-ChoiceField-wrapper
+
     >
       <input
         className=
@@ -282,7 +286,9 @@ exports[`ChoiceGroupOption custom renders correctly 1`] = `
         }
   >
     <div
-      className="ms-ChoiceField-wrapper"
+      className=
+          ms-ChoiceField-wrapper
+
     >
       <input
         className=
@@ -420,7 +426,9 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         }
   >
     <div
-      className="ms-ChoiceField-wrapper"
+      className=
+          ms-ChoiceField-wrapper
+
     >
       <input
         className=
@@ -854,7 +862,9 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         }
   >
     <div
-      className="ms-ChoiceField-wrapper"
+      className=
+          ms-ChoiceField-wrapper
+
     >
       <input
         className=
@@ -964,7 +974,9 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         }
   >
     <div
-      className="ms-ChoiceField-wrapper"
+      className=
+          ms-ChoiceField-wrapper
+
     >
       <input
         checked={true}
@@ -1091,7 +1103,9 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         }
   >
     <div
-      className="ms-ChoiceField-wrapper"
+      className=
+          ms-ChoiceField-wrapper
+
     >
       <input
         className=
@@ -1518,7 +1532,9 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         }
   >
     <div
-      className="ms-ChoiceField-wrapper"
+      className=
+          ms-ChoiceField-wrapper
+
     >
       <input
         checked={true}
@@ -1739,7 +1755,9 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         }
   >
     <div
-      className="ms-ChoiceField-wrapper"
+      className=
+          ms-ChoiceField-wrapper
+
     >
       <input
         className=

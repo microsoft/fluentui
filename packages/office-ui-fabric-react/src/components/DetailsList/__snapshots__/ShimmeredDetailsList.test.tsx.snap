@@ -42,7 +42,9 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
       role="grid"
     >
       <div
-        className="ms-DetailsList-headerWrapper"
+        className=
+            ms-DetailsList-headerWrapper
+
         onKeyDown={[Function]}
         role="presentation"
       >
@@ -140,7 +142,9 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
             role="columnheader"
           >
             <span
-              className="ms-DetailsHeader-checkTooltip"
+              className=
+                  ms-DetailsHeader-checkTooltip
+
             >
               <div
                 aria-checked={false}
@@ -335,7 +339,9 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
         </div>
       </div>
       <div
-        className="ms-DetailsList-contentWrapper"
+        className=
+            ms-DetailsList-contentWrapper
+
         onKeyDown={[Function]}
         role="presentation"
       >

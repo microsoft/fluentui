@@ -2,7 +2,9 @@
 
 exports[`Component Examples renders ChoiceGroup.Icon.Example.tsx correctly 1`] = `
 <div
-  className=""
+  className=
+
+
 >
   <div
     aria-labelledby="ChoiceGroup0-label"
@@ -85,7 +87,9 @@ exports[`Component Examples renders ChoiceGroup.Icon.Example.tsx correctly 1`] =
             }
       >
         <div
-          className="ms-ChoiceField-wrapper"
+          className=
+              ms-ChoiceField-wrapper
+
         >
           <input
             checked={true}
@@ -310,7 +314,9 @@ exports[`Component Examples renders ChoiceGroup.Icon.Example.tsx correctly 1`] =
             }
       >
         <div
-          className="ms-ChoiceField-wrapper"
+          className=
+              ms-ChoiceField-wrapper
+
         >
           <input
             checked={false}
@@ -517,7 +523,9 @@ exports[`Component Examples renders ChoiceGroup.Icon.Example.tsx correctly 1`] =
             }
       >
         <div
-          className="ms-ChoiceField-wrapper"
+          className=
+              ms-ChoiceField-wrapper
+
         >
           <input
             checked={false}

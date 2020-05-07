@@ -23,7 +23,9 @@ exports[`Component Examples renders Dropdown.Custom.Example.tsx correctly 1`] = 
       }
 >
   <div
-    className="ms-Dropdown-container"
+    className=
+        ms-Dropdown-container
+
   >
     <label
       className=
@@ -257,7 +259,9 @@ exports[`Component Examples renders Dropdown.Custom.Example.tsx correctly 1`] = 
     </div>
   </div>
   <div
-    className="ms-Dropdown-container"
+    className=
+        ms-Dropdown-container
+
   >
     <div
       className=

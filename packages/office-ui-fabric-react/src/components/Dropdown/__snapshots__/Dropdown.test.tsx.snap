@@ -2,7 +2,9 @@
 
 exports[`Dropdown multi-select Renders multiselect Dropdown correctly 1`] = `
 <div
-  className="ms-Dropdown-container"
+  className=
+      ms-Dropdown-container
+
 >
   <div
     aria-expanded="false"
@@ -179,7 +181,9 @@ exports[`Dropdown multi-select Renders multiselect Dropdown correctly 1`] = `
 
 exports[`Dropdown single-select Renders single-select Dropdown correctly 1`] = `
 <div
-  className="ms-Dropdown-container"
+  className=
+      ms-Dropdown-container
+
 >
   <div
     aria-expanded="false"

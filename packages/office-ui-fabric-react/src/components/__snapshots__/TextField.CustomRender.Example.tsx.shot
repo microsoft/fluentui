@@ -46,7 +46,9 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
         }
   >
     <div
-      className="ms-TextField-wrapper"
+      className=
+          ms-TextField-wrapper
+
     >
       <div
         className=
@@ -360,7 +362,9 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
         }
   >
     <div
-      className="ms-TextField-wrapper"
+      className=
+          ms-TextField-wrapper
+
     >
       <div
         className=
@@ -571,7 +575,9 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
         }
   >
     <div
-      className="ms-TextField-wrapper"
+      className=
+          ms-TextField-wrapper
+
     >
       <label
         className=

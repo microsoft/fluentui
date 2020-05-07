@@ -156,7 +156,9 @@ exports[`Component Examples renders TagPicker.Basic.Example.tsx correctly 1`] = 
   </div>
   Filter items in suggestions: This picker will filter added items from the search suggestions.
   <div
-    className="ms-BasePicker"
+    className=
+        ms-BasePicker
+
     onBlur={[Function]}
     onKeyDown={[Function]}
   >
@@ -256,7 +258,9 @@ exports[`Component Examples renders TagPicker.Basic.Example.tsx correctly 1`] = 
   <br />
   Filter items on selected: This picker will show already-added suggestions but will not add duplicate tags.
   <div
-    className="ms-BasePicker"
+    className=
+        ms-BasePicker
+
     onBlur={[Function]}
     onKeyDown={[Function]}
   >

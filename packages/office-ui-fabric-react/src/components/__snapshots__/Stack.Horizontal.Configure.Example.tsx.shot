@@ -3005,7 +3005,9 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
           }
     >
       <div
-        className="ms-Dropdown-container"
+        className=
+            ms-Dropdown-container
+
       >
         <label
           className=
@@ -3229,7 +3231,9 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
           }
     >
       <div
-        className="ms-Dropdown-container"
+        className=
+            ms-Dropdown-container
+
       >
         <label
           className=
@@ -3632,7 +3636,9 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
             }
       >
         <div
-          className="ms-TextField-wrapper"
+          className=
+              ms-TextField-wrapper
+
         >
           <label
             className=

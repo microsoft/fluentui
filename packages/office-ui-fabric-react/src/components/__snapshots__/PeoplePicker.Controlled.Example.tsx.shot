@@ -4,7 +4,10 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
 <div>
   <div>
     <div
-      className="ms-BasePicker ms-PeoplePicker"
+      className=
+          ms-BasePicker
+          ms-PeoplePicker
+
       onBlur={[Function]}
       onKeyDown={[Function]}
     >

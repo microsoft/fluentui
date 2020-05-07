@@ -59,7 +59,9 @@ exports[`Component Examples renders DatePicker.Input.Example.tsx correctly 1`] =
             }
       >
         <div
-          className="ms-TextField-wrapper"
+          className=
+              ms-TextField-wrapper
+
         >
           <label
             className=

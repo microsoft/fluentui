@@ -2,7 +2,9 @@
 
 exports[`Component Examples renders ChoiceGroup.Controlled.Example.tsx correctly 1`] = `
 <div
-  className=""
+  className=
+
+
 >
   <div
     aria-labelledby="ChoiceGroup0-label"
@@ -47,7 +49,9 @@ exports[`Component Examples renders ChoiceGroup.Controlled.Example.tsx correctly
       Pick one
     </label>
     <div
-      className="ms-ChoiceFieldGroup-flexContainer"
+      className=
+          ms-ChoiceFieldGroup-flexContainer
+
     >
       <div
         className=
@@ -73,7 +77,9 @@ exports[`Component Examples renders ChoiceGroup.Controlled.Example.tsx correctly
             }
       >
         <div
-          className="ms-ChoiceField-wrapper"
+          className=
+              ms-ChoiceField-wrapper
+
         >
           <input
             checked={false}
@@ -207,7 +213,9 @@ exports[`Component Examples renders ChoiceGroup.Controlled.Example.tsx correctly
             }
       >
         <div
-          className="ms-ChoiceField-wrapper"
+          className=
+              ms-ChoiceField-wrapper
+
         >
           <input
             checked={true}
@@ -341,7 +349,9 @@ exports[`Component Examples renders ChoiceGroup.Controlled.Example.tsx correctly
             }
       >
         <div
-          className="ms-ChoiceField-wrapper"
+          className=
+              ms-ChoiceField-wrapper
+
         >
           <input
             checked={false}
@@ -456,7 +466,9 @@ exports[`Component Examples renders ChoiceGroup.Controlled.Example.tsx correctly
             }
       >
         <div
-          className="ms-ChoiceField-wrapper"
+          className=
+              ms-ChoiceField-wrapper
+
         >
           <input
             checked={false}

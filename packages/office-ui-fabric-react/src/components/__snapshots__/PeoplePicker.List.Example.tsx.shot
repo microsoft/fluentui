@@ -6,7 +6,10 @@ exports[`Component Examples renders PeoplePicker.List.Example.tsx correctly 1`] 
     onBlur={[Function]}
   >
     <div
-      className="ms-BasePicker ms-PeoplePicker"
+      className=
+          ms-BasePicker
+          ms-PeoplePicker
+
       onKeyDown={[Function]}
     >
       <div

@@ -1229,7 +1229,10 @@ exports[`TeachingBubble renders TeachingBubbleContent with image correctly 1`] =
   tabIndex={-1}
 >
   <div
-    className="ms-TeachingBubble-header ms-TeachingBubble-image"
+    className=
+        ms-TeachingBubble-header
+        ms-TeachingBubble-image
+
   >
     <div
       className=

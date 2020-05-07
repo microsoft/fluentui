@@ -28,7 +28,10 @@ exports[`Nav renders Nav correctly 1`] = `
     role="navigation"
   >
     <div
-      className="ms-Nav-group is-expanded"
+      className=
+          ms-Nav-group
+          is-expanded
+
     >
       <div
         className=

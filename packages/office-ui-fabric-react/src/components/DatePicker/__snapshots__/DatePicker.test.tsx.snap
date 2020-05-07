@@ -54,7 +54,9 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
           }
     >
       <div
-        className="ms-TextField-wrapper"
+        className=
+            ms-TextField-wrapper
+
       >
         <div
           className=

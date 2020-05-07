@@ -322,7 +322,9 @@ exports[`ColorPicker renders correctly 1`] = `
             Blue
           </td>
           <td
-            className=""
+            className=
+
+
           >
             Alpha
           </td>
@@ -369,7 +371,9 @@ exports[`ColorPicker renders correctly 1`] = `
                   }
             >
               <div
-                className="ms-TextField-wrapper"
+                className=
+                    ms-TextField-wrapper
+
               >
                 <div
                   className=
@@ -525,7 +529,9 @@ exports[`ColorPicker renders correctly 1`] = `
                   }
             >
               <div
-                className="ms-TextField-wrapper"
+                className=
+                    ms-TextField-wrapper
+
               >
                 <div
                   className=
@@ -681,7 +687,9 @@ exports[`ColorPicker renders correctly 1`] = `
                   }
             >
               <div
-                className="ms-TextField-wrapper"
+                className=
+                    ms-TextField-wrapper
+
               >
                 <div
                   className=
@@ -837,7 +845,9 @@ exports[`ColorPicker renders correctly 1`] = `
                   }
             >
               <div
-                className="ms-TextField-wrapper"
+                className=
+                    ms-TextField-wrapper
+
               >
                 <div
                   className=
@@ -993,7 +1003,9 @@ exports[`ColorPicker renders correctly 1`] = `
                   }
             >
               <div
-                className="ms-TextField-wrapper"
+                className=
+                    ms-TextField-wrapper
+
               >
                 <div
                   className=
@@ -1466,7 +1478,9 @@ exports[`ColorPicker renders correctly with preview 1`] = `
             Blue
           </td>
           <td
-            className=""
+            className=
+
+
           >
             Alpha
           </td>
@@ -1513,7 +1527,9 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                   }
             >
               <div
-                className="ms-TextField-wrapper"
+                className=
+                    ms-TextField-wrapper
+
               >
                 <div
                   className=
@@ -1669,7 +1685,9 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                   }
             >
               <div
-                className="ms-TextField-wrapper"
+                className=
+                    ms-TextField-wrapper
+
               >
                 <div
                   className=
@@ -1825,7 +1843,9 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                   }
             >
               <div
-                className="ms-TextField-wrapper"
+                className=
+                    ms-TextField-wrapper
+
               >
                 <div
                   className=
@@ -1981,7 +2001,9 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                   }
             >
               <div
-                className="ms-TextField-wrapper"
+                className=
+                    ms-TextField-wrapper
+
               >
                 <div
                   className=
@@ -2137,7 +2159,9 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                   }
             >
               <div
-                className="ms-TextField-wrapper"
+                className=
+                    ms-TextField-wrapper
+
               >
                 <div
                   className=
@@ -2634,7 +2658,9 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                   }
             >
               <div
-                className="ms-TextField-wrapper"
+                className=
+                    ms-TextField-wrapper
+
               >
                 <div
                   className=
@@ -2790,7 +2816,9 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                   }
             >
               <div
-                className="ms-TextField-wrapper"
+                className=
+                    ms-TextField-wrapper
+
               >
                 <div
                   className=
@@ -2946,7 +2974,9 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                   }
             >
               <div
-                className="ms-TextField-wrapper"
+                className=
+                    ms-TextField-wrapper
+
               >
                 <div
                   className=
@@ -3102,7 +3132,9 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                   }
             >
               <div
-                className="ms-TextField-wrapper"
+                className=
+                    ms-TextField-wrapper
+
               >
                 <div
                   className=
@@ -3258,7 +3290,9 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                   }
             >
               <div
-                className="ms-TextField-wrapper"
+                className=
+                    ms-TextField-wrapper
+
               >
                 <div
                   className=

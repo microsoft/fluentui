@@ -37,7 +37,9 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
         }
   >
     <div
-      className=""
+      className=
+
+
     >
       <div
         aria-labelledby="ChoiceGroup0-label"
@@ -83,7 +85,9 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
           Select a MessageBar Example Below. To test in narrator, show one message at a time.
         </label>
         <div
-          className="ms-ChoiceFieldGroup-flexContainer"
+          className=
+              ms-ChoiceFieldGroup-flexContainer
+
         >
           <div
             className=
@@ -109,7 +113,9 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 }
           >
             <div
-              className="ms-ChoiceField-wrapper"
+              className=
+                  ms-ChoiceField-wrapper
+
             >
               <input
                 checked={false}
@@ -243,7 +249,9 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 }
           >
             <div
-              className="ms-ChoiceField-wrapper"
+              className=
+                  ms-ChoiceField-wrapper
+
             >
               <input
                 checked={false}
@@ -377,7 +385,9 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 }
           >
             <div
-              className="ms-ChoiceField-wrapper"
+              className=
+                  ms-ChoiceField-wrapper
+
             >
               <input
                 checked={false}
@@ -511,7 +521,9 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 }
           >
             <div
-              className="ms-ChoiceField-wrapper"
+              className=
+                  ms-ChoiceField-wrapper
+
             >
               <input
                 checked={false}
@@ -645,7 +657,9 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 }
           >
             <div
-              className="ms-ChoiceField-wrapper"
+              className=
+                  ms-ChoiceField-wrapper
+
             >
               <input
                 checked={false}
@@ -779,7 +793,9 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 }
           >
             <div
-              className="ms-ChoiceField-wrapper"
+              className=
+                  ms-ChoiceField-wrapper
+
             >
               <input
                 checked={false}
@@ -913,7 +929,9 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 }
           >
             <div
-              className="ms-ChoiceField-wrapper"
+              className=
+                  ms-ChoiceField-wrapper
+
             >
               <input
                 checked={false}
@@ -1047,7 +1065,9 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 }
           >
             <div
-              className="ms-ChoiceField-wrapper"
+              className=
+                  ms-ChoiceField-wrapper
+
             >
               <input
                 checked={false}

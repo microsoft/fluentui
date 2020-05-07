@@ -41,7 +41,9 @@ exports[`DetailsRow renders details list row correctly 1`] = `
       role="grid"
     >
       <div
-        className="ms-DetailsList-headerWrapper"
+        className=
+            ms-DetailsList-headerWrapper
+
         onKeyDown={[Function]}
         role="presentation"
       >
@@ -139,7 +141,9 @@ exports[`DetailsRow renders details list row correctly 1`] = `
             role="columnheader"
           >
             <span
-              className="ms-DetailsHeader-checkTooltip"
+              className=
+                  ms-DetailsHeader-checkTooltip
+
             >
               <div
                 aria-checked={false}
@@ -736,7 +740,9 @@ exports[`DetailsRow renders details list row correctly 1`] = `
         </div>
       </div>
       <div
-        className="ms-DetailsList-contentWrapper"
+        className=
+            ms-DetailsList-contentWrapper
+
         onKeyDown={[Function]}
         role="presentation"
       >
@@ -884,7 +890,9 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
       role="grid"
     >
       <div
-        className="ms-DetailsList-headerWrapper"
+        className=
+            ms-DetailsList-headerWrapper
+
         onKeyDown={[Function]}
         role="presentation"
       >
@@ -982,7 +990,9 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
             role="columnheader"
           >
             <span
-              className="ms-DetailsHeader-checkTooltip"
+              className=
+                  ms-DetailsHeader-checkTooltip
+
             >
               <div
                 aria-checked={false}
@@ -1579,7 +1589,9 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
         </div>
       </div>
       <div
-        className="ms-DetailsList-contentWrapper"
+        className=
+            ms-DetailsList-contentWrapper
+
         onKeyDown={[Function]}
         role="presentation"
       >
@@ -1822,6 +1834,7 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
       className=
           ms-DetailsRow-check
           ms-Check-checkHost
+
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
@@ -2237,7 +2250,9 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
       role="grid"
     >
       <div
-        className="ms-DetailsList-headerWrapper"
+        className=
+            ms-DetailsList-headerWrapper
+
         onKeyDown={[Function]}
         role="presentation"
       >
@@ -2335,7 +2350,9 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
             role="columnheader"
           >
             <span
-              className="ms-DetailsHeader-checkTooltip"
+              className=
+                  ms-DetailsHeader-checkTooltip
+
             >
               <div
                 aria-checked={false}
@@ -2932,7 +2949,9 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
         </div>
       </div>
       <div
-        className="ms-DetailsList-contentWrapper"
+        className=
+            ms-DetailsList-contentWrapper
+
         onKeyDown={[Function]}
         role="presentation"
       >
@@ -3080,7 +3099,9 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
       role="grid"
     >
       <div
-        className="ms-DetailsList-headerWrapper"
+        className=
+            ms-DetailsList-headerWrapper
+
         onKeyDown={[Function]}
         role="presentation"
       >
@@ -3178,7 +3199,9 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
             role="columnheader"
           >
             <span
-              className="ms-DetailsHeader-checkTooltip"
+              className=
+                  ms-DetailsHeader-checkTooltip
+
             >
               <div
                 aria-checked={false}
@@ -3775,7 +3798,9 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
         </div>
       </div>
       <div
-        className="ms-DetailsList-contentWrapper"
+        className=
+            ms-DetailsList-contentWrapper
+
         onKeyDown={[Function]}
         role="presentation"
       >

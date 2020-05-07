@@ -2,7 +2,9 @@
 
 exports[`TagPicker renders correctly 1`] = `
 <div
-  className="ms-BasePicker"
+  className=
+      ms-BasePicker
+
   onBlur={[Function]}
   onKeyDown={[Function]}
 >
@@ -310,7 +312,9 @@ exports[`TagPicker renders correctly 1`] = `
 
 exports[`TagPicker renders picker with selected item correctly 1`] = `
 <div
-  className="ms-BasePicker"
+  className=
+      ms-BasePicker
+
   onBlur={[Function]}
   onKeyDown={[Function]}
 >
