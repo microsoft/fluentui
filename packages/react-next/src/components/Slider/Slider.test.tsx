@@ -23,7 +23,7 @@ describe('Slider', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('calls onChange when slider changes', () => {
+  it('calls onChange when slider value changes', () => {
     const onChange = jest.fn();
     wrapper = mount(<Slider onChange={onChange} defaultValue={5} />);
 
