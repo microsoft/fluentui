@@ -66,7 +66,7 @@ export type ShorthandValue<P extends Props> =
   | ReactNode
   | (Props<P> & { children?: P['children'] | ShorthandRenderFunction<P> });
 export type ShorthandCollection<P, K = never, I = { [Key in keyof K]?: unknown }> = ShorthandValue<
-  P & { kind?: K } & { [Key in keyof I]: unknown }
+  P & { kind?: K } & { [Key in keyof I]?: unknown }
 >[];
 
 // ========================================================
