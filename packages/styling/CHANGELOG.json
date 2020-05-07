@@ -2,6 +2,36 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "date": "Thu, 07 May 2020 01:06:55 GMT",
+      "tag": "@uifabric/styling_v7.12.3",
+      "version": "7.12.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Addressing commonjs imports.",
+            "author": "dzearing@microsoft.com",
+            "commit": "f4a995d4166c7812976b13c6638fb1ae32a8667d",
+            "package": "@uifabric/styling"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 06 May 2020 12:32:22 GMT",
+      "tag": "@uifabric/styling_v7.12.2",
+      "version": "7.12.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Styling tsconfig: adding noImplicitAny and noUnusedLocals.",
+            "author": "dzearing@microsoft.com",
+            "commit": "ca1c8da58be3b2a3dd4443d2c5cfc32b044c5015",
+            "package": "@uifabric/styling"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 29 Apr 2020 12:34:58 GMT",
       "tag": "@uifabric/styling_v7.12.0",
       "version": "7.12.0",

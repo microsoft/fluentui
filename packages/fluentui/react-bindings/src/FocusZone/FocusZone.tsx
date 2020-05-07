@@ -71,6 +71,7 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
     preventDefaultWhenHandled: PropTypes.bool,
     isRtl: PropTypes.bool,
     preventFocusRestoration: PropTypes.bool,
+    pagingSupportDisabled: PropTypes.bool,
   };
 
   static defaultProps: FocusZoneProps = {
@@ -612,13 +613,13 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
           return undefined;
 
         case keyboardKey.PageDown:
-          if (this.moveFocusPaging(true) && !pagingSupportDisabled) {
+          if (!pagingSupportDisabled && this.moveFocusPaging(true)) {
             break;
           }
           return undefined;
 
         case keyboardKey.PageUp:
-          if (this.moveFocusPaging(false) && !pagingSupportDisabled) {
+          if (!pagingSupportDisabled && this.moveFocusPaging(false)) {
             break;
           }
           return undefined;

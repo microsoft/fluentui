@@ -24,9 +24,7 @@ exports[`MaskedTextField renders correctly 1`] = `
       }
 >
   <div
-    className=
-        ms-TextField-wrapper
-
+    className="ms-TextField-wrapper"
   >
     <label
       className=

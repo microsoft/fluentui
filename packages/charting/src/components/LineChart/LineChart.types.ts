@@ -107,6 +107,13 @@ export interface ILineChartProps {
   hideLegend?: boolean;
 
   /**
+   * Do not show tooltips in chart
+   *
+   * @default false
+   */
+  hideTooltip?: boolean;
+
+  /**
    * Show event annotation
    */
   eventAnnotationProps?: IEventsAnnotationProps;

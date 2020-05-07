@@ -4,9 +4,8 @@ import * as React from 'react';
 
 import { Accessibility, VideoBehaviorProps, videoBehavior } from '@fluentui/accessibility';
 import { createShorthandFactory, UIComponentProps, commonPropTypes } from '../../utils';
-import { WithAsProp, withSafeTypeForAs, FluentComponentStaticProps } from '../../types';
+import { WithAsProp, withSafeTypeForAs, FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
 import { getElementType, useStyles, useUnhandledProps, useTelemetry, useAccessibility } from '@fluentui/react-bindings';
-import { ProviderContextPrepared } from '@fluentui/react-northstar';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 
