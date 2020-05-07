@@ -142,9 +142,7 @@ exports[`Component Examples renders Label.Basic.Example.tsx correctly 1`] = `
         }
   >
     <div
-      className=
-          ms-TextField-wrapper
-
+      className="ms-TextField-wrapper"
     >
       <div
         className=

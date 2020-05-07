@@ -61,7 +61,15 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
   direction?: FocusZoneDirection;
 
   /**
-   * Optionally provide a selector for identifying the intial active element.
+   * Optionally defines the initial tabbable element inside the FocusZone.
+   * If a string is passed then it is treated as a selector for identifying the initial tabbable element.
+   * If a function is passed then it uses the root element as a parameter to return the initial tabbable element.
+   */
+  defaultTabbableElement?: string | ((root: HTMLElement) => HTMLElement);
+
+  /**
+   * Optionally provide a selector for identifying the initial active element.
+   * @deprecated Use `defaultTabbableElement` instead.
    */
   defaultActiveElement?: string;
 
@@ -166,6 +174,13 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
    * and have to hit escape or some other key.
    */
   handleTabKey?: FocusZoneTabbableElements;
+
+  /**
+   * If true and FocusZone's root element (container) receives focus, the focus will land either on the
+   * defaultTabbableElement (if set) or on the first tabbable element of this FocusZone.
+   * Usually a case for nested focus zones, when the nested focus zone's container is a focusable element.
+   */
+  shouldFocusInnerElementWhenReceivedFocus?: boolean;
 
   /**
    * If true and TAB key is not handled by FocusZone, resets current active element to null value.

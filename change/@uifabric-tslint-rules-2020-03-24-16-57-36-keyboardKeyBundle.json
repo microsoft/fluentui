@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "Creating custom lint rule to enforce use of keyboard-key library instead of deprecated keyboard event props.",
+  "packageName": "@uifabric/tslint-rules",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "commit": "dc16f1e0de9a3d11da02adba06992c551e2751ba",
+  "dependentChangeType": "patch",
+  "date": "2020-03-24T23:57:30.227Z"
+}
