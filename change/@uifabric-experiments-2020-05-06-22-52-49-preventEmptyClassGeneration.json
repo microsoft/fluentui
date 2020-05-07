@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "update snapshots for merge-styles change to not generate class with no styles",
+  "packageName": "@uifabric/experiments",
+  "email": "pingj@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-05-07T05:52:30.422Z"
+}

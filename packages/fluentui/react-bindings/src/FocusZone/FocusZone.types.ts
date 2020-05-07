@@ -138,6 +138,19 @@ export interface FocusZoneProps extends FocusZoneProperties, React.HTMLAttribute
   shouldInputLoseFocusOnArrowKey?: (inputElement: HTMLInputElement) => boolean;
 
   /**
+   * Determines whether to disable the paging support for Page Up and Page Down keyboard scenarios.
+   * @defaultvalue false
+   */
+  pagingSupportDisabled?: boolean;
+
+  /**
+   * Determines whether to check for data-no-horizontal-wrap or data-no-vertical-wrap attributes
+   * when determining how to move focus
+   * @defaultvalue false
+   */
+  checkForNoWrap?: boolean;
+
+  /**
    * Whether the FocusZone should allow focus events to propagate past the FocusZone.
    */
   stopFocusPropagation?: boolean;
@@ -154,7 +167,9 @@ export interface FocusZoneProps extends FocusZoneProperties, React.HTMLAttribute
   preventDefaultWhenHandled?: boolean;
 
   /**
-   * If focus is on root element after componentDidUpdate, will attempt to restore the focus to inner element
+   * If true, prevents the FocusZone from attempting to restore the focus to the inner element when the focus is on the
+   * root element after componentDidUpdate.
+   * @defaultvalue false
    */
-  restoreFocusFromRoot?: boolean;
+  preventFocusRestoration?: boolean;
 }

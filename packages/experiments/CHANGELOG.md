@@ -1,8 +1,26 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Wed, 22 Apr 2020 12:33:04 GMT and should not be manually modified.
+This log was last generated on Thu, 07 May 2020 01:06:55 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.23.21](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.23.21)
+
+Thu, 07 May 2020 01:06:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.23.18..@uifabric/experiments_v7.23.21)
+
+### Patches
+
+- Addressing commonjs imports. ([PR #13031](https://github.com/microsoft/fluentui/pull/13031) by dzearing@microsoft.com)
+
+## [7.23.18](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.23.18)
+
+Mon, 04 May 2020 12:33:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.23.9..@uifabric/experiments_v7.23.18)
+
+### Patches
+
+- Remove unused typescript-plugin-css-modules dep ([PR #12915](https://github.com/microsoft/fluentui/pull/12915) by elcraig@microsoft.com)
 
 ## [7.23.9](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.23.9)
 

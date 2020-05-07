@@ -1,3 +1,5 @@
+// This is a type-only import and this package depends on @types/react
+// eslint-disable-next-line import/no-extraneous-dependencies
 import * as React from 'react';
 
 export type FocusZoneDefinition = {
@@ -92,6 +94,12 @@ export interface FocusZoneProperties {
   shouldInputLoseFocusOnArrowKey?: (inputElement: HTMLInputElement) => boolean;
 
   /**
+   * Determines whether to disable the paging support for Page Up and Page Down keyboard scenarios.
+   * @defaultvalue false
+   */
+  pagingSupportDisabled?: boolean;
+
+  /**
    * If true, focus event propagation will be stopped.
    */
   stopFocusPropagation?: boolean;
@@ -102,9 +110,11 @@ export interface FocusZoneProperties {
   preventDefaultWhenHandled?: boolean;
 
   /**
-   * If focus is on root element after componentDidUpdate, will attempt to restore the focus to inner element
+   * If true, prevents the FocusZone from attempting to restore the focus to the inner element when the focus is on the
+   * root element after componentDidUpdate.
+   * @defaultvalue false
    */
-  restoreFocusFromRoot?: boolean;
+  preventFocusRestoration?: boolean;
 }
 
 export enum FocusZoneTabbableElements {

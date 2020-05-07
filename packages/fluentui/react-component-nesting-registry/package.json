@@ -11,7 +11,8 @@
   "devDependencies": {
     "@types/react": "16.8.25",
     "@uifabric/build": "^7.0.0",
-    "lerna-alias": "^3.0.3-0"
+    "lerna-alias": "^3.0.3-0",
+    "react": "16.8.6"
   },
   "files": [
     "dist"

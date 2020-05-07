@@ -196,7 +196,13 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
   shouldInputLoseFocusOnArrowKey?: (inputElement: HTMLInputElement) => boolean;
 
   /**
-   * Whether the to check for data-no-horizontal-wrap or data-no-vertical-wrap attributes
+   * Determines whether to disable the paging support for Page Up and Page Down keyboard scenarios.
+   * @defaultvalue false
+   */
+  pagingSupportDisabled?: boolean;
+
+  /**
+   * Determines whether to check for data-no-horizontal-wrap or data-no-vertical-wrap attributes
    * when determining how to move focus
    * @defaultvalue false
    */
@@ -230,6 +236,13 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
    * @defaultvalue true
    */
   preventDefaultWhenHandled?: boolean;
+
+  /**
+   * If true, prevents the FocusZone from attempting to restore the focus to the inner element when the focus is on the
+   * root element after componentDidUpdate.
+   * @defaultvalue false
+   */
+  preventFocusRestoration?: boolean;
 }
 /**
  * {@docCategory FocusZone}

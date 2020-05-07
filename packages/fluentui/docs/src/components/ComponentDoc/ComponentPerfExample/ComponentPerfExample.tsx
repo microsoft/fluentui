@@ -66,7 +66,7 @@ const ComponentPerfExample: React.FC<ComponentPerfExampleProps> = props => {
                 },
                 content: {
                   key: 'c',
-                  content: <ComponentExample {..._.omit(props, 'title', 'description')} />, // FIXME: defer rendering until opened
+                  content: <ComponentExample titleForAriaLabel={title} {..._.omit(props, 'title', 'description')} />, // FIXME: defer rendering until opened
                 },
               },
             ] as any[]
