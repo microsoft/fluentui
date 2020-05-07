@@ -1,4 +1,4 @@
-import { IStyle } from '../MergeStyles';
+import { IRawStyle } from '../MergeStyles';
 
 export const HighContrastSelector = '@media screen and (-ms-high-contrast: active)';
 export const HighContrastSelectorWhite = '@media screen and (-ms-high-contrast: black-on-white)';
@@ -27,7 +27,7 @@ export function getScreenSelector(min: number, max: number): string {
 /**
  * The style which turns off high contrast adjustment in (only) Edge Chromium browser.
  */
-export function getEdgeChromiumNoHighContrastAdjustSelector(): { [EdgeChromiumHighContrastSelector]: IStyle } {
+export function getEdgeChromiumNoHighContrastAdjustSelector(): { [EdgeChromiumHighContrastSelector]: IRawStyle } {
   return {
     [EdgeChromiumHighContrastSelector]: {
       forcedColorAdjust: 'none',
