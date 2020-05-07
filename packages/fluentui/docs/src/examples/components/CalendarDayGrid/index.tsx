@@ -2,10 +2,10 @@ import * as React from 'react';
 
 import Types from './Types';
 
-const DatePickerExamples = () => (
+const CalendarDayGridExamples = () => (
   <>
     <Types />
   </>
 );
 
-export default DatePickerExamples;
+export default CalendarDayGridExamples;

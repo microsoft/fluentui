@@ -48,12 +48,7 @@ export const CalendarDayGrid: React.FC<WithAsProp<CalendarDayGridProps>> &
   return element;
 };
 
-CalendarDayGrid.defaultProps = {
-  // firstDayOfWeek: DayOfWeek.Sunday,
-  // dateRangeType: DateRangeType.Day,
-  // strings: DayPickerStrings,
-  // workWeekDays: [DayOfWeek.Monday, DayOfWeek.Tuesday, DayOfWeek.Wednesday, DayOfWeek.Thursday, DayOfWeek.Friday],
-};
+CalendarDayGrid.defaultProps = {};
 
 CalendarDayGrid.propTypes = {
   ...commonPropTypes.createCommon({ content: 'shorthand' }),
