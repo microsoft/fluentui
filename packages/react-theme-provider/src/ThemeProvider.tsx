@@ -13,7 +13,7 @@ import * as classes from './ThemeProvider.scss';
  */
 export interface ThemeProviderProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
-   * The theme provided by the user.
+   * Defines the theme provided by the user.
    */
   theme?: Theme;
 }
