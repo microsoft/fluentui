@@ -26,23 +26,23 @@ const COMPONENT_NAME = 'SliderBase';
 export const ONKEYDOWN_TIMEOUT_DURATION = 1000;
 
 export const SliderBase: React.FunctionComponent = (props: ISliderProps) => {
-  const initialValue =
-    props.value !== undefined ? props.value : props.defaultValue !== undefined ? props.defaultValue : props.min;
-  const [value, setValue] = React.useState(initialValue);
-  const [renderedValue, setRenderedValue] = React.useState(undefined);
   let disposables: (() => void)[] = [];
   const sliderLine = React.useRef<HTMLDivElement>(null);
-  const thumb = React.useRef<HTMLSpanElement>(null);
+  const thumb = React.createRef<HTMLSpanElement>();
   const onKeyDownTimer = -1;
-  const id: string = useId('Slider');
+  const id = useId('Slider');
+  const [value, setValue] = React.useState(
+    props.value !== undefined ? props.value : props.defaultValue !== undefined ? props.defaultValue : props.min,
+  );
+
   const {
     step = 1,
     ariaLabel,
     className,
     disabled = false,
     label,
-    max = 0,
-    min = 10,
+    max = 10,
+    min = 0,
     showValue = true,
     buttonProps = {},
     vertical = false,
@@ -51,29 +51,42 @@ export const SliderBase: React.FunctionComponent = (props: ISliderProps) => {
     theme,
     originFromZero = false,
   } = props;
-  const thumbOffsetPercent: number = min === max ? 0 : ((renderedValue! - min!) / (max! - min!)) * 100;
+  const thumbOffsetPercent: number = min === max ? 0 : ((value! - min!) / (max! - min!)) * 100;
   const zeroOffsetPercent: number = min! >= 0 ? 0 : (-min! / (max! - min!)) * 100;
   const lengthString = vertical ? 'height' : 'width';
   const classNames = getClassNames(styles, {
     className,
     disabled,
     vertical,
-    showTransitions: renderedValue === value,
+    showTransitions: true,
     showValue,
     theme: theme!,
   });
-
   const divButtonProps = buttonProps
     ? getNativeProps<React.HTMLAttributes<HTMLDivElement>>(buttonProps, divProperties)
     : undefined;
+
   warnMutuallyExclusive(COMPONENT_NAME, props, {
     value: 'defaultValue',
   });
 
-  const getAriaValueText = (valueProp: number | undefined): string | undefined => {
+  // const focus = (): void => {
+  //   if (thumb.current) {
+  //     thumb.current.focus();
+  //   }
+  // }
+
+  // private get renderedValue(): number | undefined {
+  //   // renderedValue is expected to be defined while user is interacting with control, otherwise `undefined`.
+  //   // Fall back to `value`.
+  //   const { renderedValue = this.value } = this.state;
+  //   return renderedValue;
+  // }
+
+  const getAriaValueText = (valueProps: number | undefined): string | undefined => {
     const { ariaValueText } = props;
-    if (valueProp !== undefined) {
-      return ariaValueText ? ariaValueText(valueProp) : valueProp.toString();
+    if (valueProps !== undefined) {
+      return ariaValueText ? ariaValueText(valueProps) : valueProps.toString();
     }
     return undefined;
   };
@@ -100,6 +113,18 @@ export const SliderBase: React.FunctionComponent = (props: ISliderProps) => {
     onMouseMoveOrTouchMove(event, true);
   };
 
+  const onMouseUpOrTouchEnd = (event: MouseEvent | TouchEvent): void => {
+    if (props.onChanged) {
+      props.onChanged(event, value as number);
+    }
+    disposeListeners();
+  };
+
+  const disposeListeners = (): void => {
+    disposables.forEach(dispose => dispose());
+    disposables = [];
+  };
+
   const onMouseMoveOrTouchMove = (event: MouseEvent | TouchEvent, suppressEventCancelation?: boolean): void => {
     if (!sliderLine.current) {
       return;
@@ -110,7 +135,6 @@ export const SliderBase: React.FunctionComponent = (props: ISliderProps) => {
     const stepLength: number = sliderLength / steps;
     let currentSteps: number | undefined;
     let distance: number | undefined;
-
     if (!props.vertical) {
       const left: number | undefined = getPosition(event, props.vertical);
       distance = getRTL(props.theme) ? sliderPositionRect.right - left! : left! - sliderPositionRect.left;
@@ -120,19 +144,18 @@ export const SliderBase: React.FunctionComponent = (props: ISliderProps) => {
       distance = sliderPositionRect.bottom - bottom!;
       currentSteps = distance / stepLength;
     }
-    let currentValue: number | undefined;
-    let currentRenderedValue: number | undefined;
-
+    let newCurrentValue: number | undefined;
+    let newRenderedValue: number | undefined;
     // The value shouldn't be bigger than max or be smaller than min.
     if (currentSteps! > Math.floor(steps)) {
-      currentRenderedValue = currentValue = max as number;
+      newRenderedValue = newCurrentValue = max as number;
     } else if (currentSteps! < 0) {
-      currentRenderedValue = currentValue = min as number;
+      newRenderedValue = newCurrentValue = min as number;
     } else {
-      currentRenderedValue = min! + step! * currentSteps!;
-      currentValue = min! + step! * Math.round(currentSteps!);
+      newRenderedValue = min! + step! * currentSteps!;
+      newCurrentValue = min! + step! * Math.round(currentSteps!);
     }
-    updateValue(currentValue, currentRenderedValue);
+    updateValue(newCurrentValue, newRenderedValue);
     if (!suppressEventCancelation) {
       event.preventDefault();
       event.stopPropagation();
@@ -176,22 +199,8 @@ export const SliderBase: React.FunctionComponent = (props: ISliderProps) => {
     }
   };
 
-  const onMouseUpOrTouchEnd = (event: MouseEvent | TouchEvent): void => {
-    // Disable renderedValue override.
-    setRenderedValue(undefined);
-    if (props.onChanged) {
-      props.onChanged(event, value as number);
-    }
-    disposeListeners();
-  };
-
-  const disposeListeners = (): void => {
-    disposables.forEach(dispose => dispose());
-    disposables = [];
-  };
-
   const onKeyDown = (event: KeyboardEvent): void => {
-    let currentValue: number | undefined = value;
+    let newCurrentValue: number | undefined = value;
     let diff: number | undefined = 0;
     // tslint:disable-next-line:deprecation
     switch (event.which) {
@@ -208,15 +217,17 @@ export const SliderBase: React.FunctionComponent = (props: ISliderProps) => {
         setOnKeyDownTimer(event);
         break;
       case KeyCodes.home:
-        currentValue = min;
+        newCurrentValue = min;
         break;
+
       case KeyCodes.end:
-        currentValue = max;
+        newCurrentValue = max;
         break;
+
       default:
         return;
     }
-    const newValue: number = Math.min(max as number, Math.max(min as number, value! + diff!));
+    const newValue: number = Math.min(max as number, Math.max(min as number, newCurrentValue! + diff!));
     updateValue(newValue, newValue);
     event.preventDefault();
     event.stopPropagation();
@@ -227,11 +238,12 @@ export const SliderBase: React.FunctionComponent = (props: ISliderProps) => {
   };
 
   const setOnKeyDownTimer = (event: KeyboardEvent): void => {
-    // onKeyDownTimer = async.setTimeout(() => {
-    //   if (props.onChanged) {
-    //     props.onChanged(event, value as number);
-    //   }
-    // }, ONKEYDOWN_TIMEOUT_DURATION);
+    //   this._onKeyDownTimer = this._async.setTimeout(() => {
+    //     if (this.props.onChanged) {
+    //       this.props.onChanged(event, this.state.value as number);
+    //     }
+    //   }, ONKEYDOWN_TIMEOUT_DURATION);
+    // };
   };
 
   const onMouseDownProp: {} = disabled ? {} : { onMouseDown: onMouseDownOrTouchStart };
