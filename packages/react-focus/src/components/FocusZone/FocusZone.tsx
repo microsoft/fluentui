@@ -332,7 +332,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     }
 
     if (element) {
-      // when we Set focus to a specific child, we should recalculate the alignment depend on its position
+      // when we Set focus to a specific child, we should recalculate the alignment depend on its position
       this._setActiveElement(element);
       if (this._activeElement) {
         this._activeElement.focus();
@@ -491,7 +491,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
    * Handle global tab presses so that we can patch tabindexes on the fly.
    */
   private _onKeyDownCapture = (ev: KeyboardEvent): void => {
-    // tslint:disable-next-line:deprecation
+    // tslint:disable-next-line:deprecation deprecated-keyboard-event-props
     if (ev.which === KeyCodes.tab) {
       _outerZones.forEach((zone: FocusZone) => zone._updateTabIndexes());
     }
@@ -617,6 +617,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     } else if (ev.altKey) {
       return;
     } else {
+      // tslint:disable-next-line:deprecated-keyboard-event-props
       switch (ev.which) {
         case KeyCodes.space:
           if (this._tryInvokeClickForFocusable(ev.target as HTMLElement)) {
