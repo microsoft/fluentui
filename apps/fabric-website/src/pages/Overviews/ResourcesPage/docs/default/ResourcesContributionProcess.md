@@ -10,7 +10,7 @@ Reference these step-by-step processes for contributing to Fluent UI.
 
 ### Cross-platform
 
-[Give feedback on a control by filing an issue on GitHub](https://github.com/microsoft/fluentui-react-native)
+[Give feedback on a control by filing an issue on GitHub](https://github.com/microsoft/fluentui-react-native/issues)
 
 ### iOS and macOS
 
