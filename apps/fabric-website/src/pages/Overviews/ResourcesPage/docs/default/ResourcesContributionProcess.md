@@ -1,6 +1,6 @@
 Reference these step-by-step processes for contributing to Fluent UI.
 
-### React
+### Web
 
 <ul class="md-list--flex">
   <li class="mdut--full">[Implement a Fluent UI React control](https://github.com/microsoft/fluentui/wiki/New-Components)</li>
@@ -8,9 +8,9 @@ Reference these step-by-step processes for contributing to Fluent UI.
   <li class="mdut--full">[View current GitHub issues for all Fluent UI React controls](https://github.com/microsoft/fluentui/issues)</li>
 </ul>
 
-### React Native
+### Cross-platform
 
-[Give feedback on a control by filing an issue on GitHub](https://github.com/microsoft/fluentui-react-native)
+[Give feedback on a control by filing an issue on GitHub](https://github.com/microsoft/fluentui-react-native/issues)
 
 ### iOS and macOS
 
@@ -18,4 +18,4 @@ Reference these step-by-step processes for contributing to Fluent UI.
 
 ### Android
 
-[Give feedback on a control by filing an issue on GitHub](https://github.com/OfficeDev/ui-fabric-android/issues)
+[Give feedback on a control by filing an issue on GitHub](https://github.com/microsoft/fluentui-android/issues)
