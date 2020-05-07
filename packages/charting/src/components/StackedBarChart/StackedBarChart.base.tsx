@@ -72,6 +72,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
       href,
       ignoreFixStyle,
       hideDenominator,
+      hideTooltip,
     } = this.props;
     const { palette } = theme!;
     const barHeight = ignoreFixStyle || data!.chartData!.length > 2 ? this.props.barHeight : 8;
@@ -152,7 +153,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
           <div>
             <svg className={this._classNames.chart}>
               <g>{bars[0]}</g>
-              {isCalloutVisible ? (
+              {!hideTooltip && isCalloutVisible ? (
                 <Callout
                   gapSpace={10}
                   isBeakVisible={false}

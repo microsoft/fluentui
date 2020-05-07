@@ -1,13 +1,9 @@
 import * as path from 'path';
 import * as fs from 'fs';
 
-import * as readPackageJson from 'read-package-json';
 import { getPackageName, getPackageVersion } from './packageNameUtils';
 import { isIgnored } from '../approvedPackages';
-
-type PackageJson = {
-  dependencies?: string[];
-};
+import { PackageJson } from '../../../monorepo';
 
 type Constraints = { [PackageId: string]: string[] };
 
@@ -39,29 +35,18 @@ const findPackageJsonOf = (dependencyPackageId: string, packagePath: string): st
   return findPackageJsonOf(dependencyPackageId, parentPackageDirectoryPath);
 };
 
-const parsePackageJson = (packageJsonPath: string): Promise<PackageJson> => {
-  return new Promise((resolve, reject) => {
-    readPackageJson(packageJsonPath, (error, data) => {
-      if (error) {
-        reject(new Error(`There was an error reading the ${packageJsonPath} file.`));
-      }
+const parsePackageJson = (packageJsonPath: string): string[] => {
+  try {
+    const packageJson: PackageJson = require(packageJsonPath);
+    const dependencies = { ...packageJson.peerDependencies, ...packageJson.dependencies };
 
-      if (!data) {
-        reject(new Error(`There is no package.json file found at ${packageJsonPath}.`));
-      }
-
-      const dependencies = { ...data.peerDependencies, ...data.dependencies };
-
-      const normalizedDependencies = Object.keys(dependencies).map(packageName => {
-        const versionConstraint = dependencies[packageName];
-        return `${packageName}@${versionConstraint}`;
-      });
-
-      resolve({
-        dependencies: normalizedDependencies,
-      });
+    return Object.keys(dependencies).map(packageName => {
+      const versionConstraint = dependencies[packageName];
+      return `${packageName}@${versionConstraint}`;
     });
-  });
+  } catch (err) {
+    throw new Error(`There was an error reading the ${packageJsonPath} file: ${err.stack}`);
+  }
 };
 
 export const getDependenciesVersionConstraints = async (
@@ -70,7 +55,7 @@ export const getDependenciesVersionConstraints = async (
   dependencyChain: string[],
 ): Promise<Constraints> => {
   let detectedConstraints: Constraints = {};
-  const dependenciesWithConstraints = (await parsePackageJson(packageJsonPath)).dependencies || [];
+  const dependenciesWithConstraints = parsePackageJson(packageJsonPath);
 
   const pendingTasks = dependenciesWithConstraints.map(async dependencyPackageId => {
     if (isIgnored(dependencyPackageId)) {
@@ -98,7 +83,7 @@ export const getDependenciesVersionConstraints = async (
   return detectedConstraints;
 };
 
-export const normalizedVersionConstraints = (constraints: Constraints): { [PackageName: string]: string[] } => {
+export const normalizedVersionConstraints = (constraints: Constraints): { [packageName: string]: string[] } => {
   return Object.keys(constraints)
     .sort()
     .reduce((acc, currentPackageId) => {
@@ -111,7 +96,7 @@ export const normalizedVersionConstraints = (constraints: Constraints): { [Packa
 
       acc[packageName].push(packageVersionConstraint);
       return acc;
-    }, {});
+    }, {} as { [packageName: string]: string[] });
 };
 
 export default async (packageJsonPath: string) => {

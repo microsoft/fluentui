@@ -733,7 +733,6 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
     focus(): void;
     // (undocumented)
     render(): React.ReactElement<{}>;
-    // (undocumented)
     readonly value: number | undefined;
 }
 

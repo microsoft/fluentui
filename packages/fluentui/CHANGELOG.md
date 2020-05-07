@@ -97,6 +97,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - `Carousel` accessibility polish, labelling items in example @kolaps33 ([#12903](https://github.com/microsoft/fluentui/pull/12903))
 - `Dropdown` - prototype - improvement to highlight first item when open @kolaps33 ([#12856](https://github.com/microsoft/fluentui/pull/12856))
 - Add contextMenu example for `Card` component @pompomon ([#12879](https://github.com/microsoft/fluentui/pull/12879))
+- Add expandable example for `Card` component @pompomon ([#13000](https://github.com/microsoft/fluentui/pull/13000))
 
 <!--------------------------------[ v0.48.0 ]------------------------------- -->
 ## [v0.48.0](https://github.com/OfficeDev/office-ui-fabric-react/tree/fluentui_v0.48.0) (2020-04-15)

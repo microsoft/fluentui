@@ -2,6 +2,21 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 07 May 2020 01:06:55 GMT",
+      "tag": "office-ui-fabric-react_v7.110.5",
+      "version": "7.110.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "CommonJS paths were pointing to esm paths, now should correctly point to the right path.",
+            "author": "dzearing@hotmail.com",
+            "commit": "4c9cac6b9eedd1b5a76c4f95f9a109fde1dc3aba",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 06 May 2020 12:32:22 GMT",
       "tag": "office-ui-fabric-react_v7.110.4",
       "version": "7.110.4",

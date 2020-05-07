@@ -29,7 +29,12 @@ export class StackedBarChartBasicExample extends React.Component<{}, {}> {
       <>
         <StackedBarChart data={data0} href={'https://developer.microsoft.com/en-us/'} ignoreFixStyle={false} />
         <br />
-        <StackedBarChart data={data1} href={'https://developer.microsoft.com/en-us/'} ignoreFixStyle={true} />
+        <StackedBarChart
+          data={data1}
+          href={'https://developer.microsoft.com/en-us/'}
+          ignoreFixStyle={true}
+          hideTooltip={true}
+        />
       </>
     );
   }

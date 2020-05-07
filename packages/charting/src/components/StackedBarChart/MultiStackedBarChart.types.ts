@@ -44,6 +44,13 @@ export interface IMultiStackedBarChartProps {
   hideLegend?: boolean;
 
   /**
+   * Do not show tooltips in chart
+   *
+   * @default false
+   */
+  hideTooltip?: boolean;
+
+  /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
   styles?: IStyleFunctionOrObject<IMultiStackedBarChartStyleProps, IMultiStackedBarChartStyles>;

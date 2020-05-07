@@ -33,7 +33,7 @@ const getAddedLinesFromChangelog = async (danger: DangerDSLType): Promise<{ cont
   return danger.git.structuredDiffForFile(CHANGELOG_FILE).then(changelogDiff => {
     if (changelogDiff) {
       return changelogDiff.chunks.reduce((acc, chunk) => {
-        const filteredLines = chunk.changes.filter(change => change.type === 'add');
+        const filteredLines = chunk.changes.filter((change: any) => change.type === 'add');
         return acc.concat(filteredLines);
       }, []);
     }
