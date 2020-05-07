@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Component Examples renders Dialog.Basic.Example.tsx correctly 1`] = `
-<div>
+Array [
   <div
     className=
         ms-Checkbox
@@ -143,7 +143,7 @@ exports[`Component Examples renders Dialog.Basic.Example.tsx correctly 1`] = `
         Is draggable
       </span>
     </label>
-  </div>
+  </div>,
   <button
     className=
         ms-Button
@@ -259,7 +259,7 @@ exports[`Component Examples renders Dialog.Basic.Example.tsx correctly 1`] = `
         </span>
       </span>
     </span>
-  </button>
+  </button>,
   <label
     className=
 
@@ -281,7 +281,7 @@ exports[`Component Examples renders Dialog.Basic.Example.tsx correctly 1`] = `
     id="dialogLabel0"
   >
     My sample Label
-  </label>
+  </label>,
   <label
     className=
 
@@ -303,6 +303,6 @@ exports[`Component Examples renders Dialog.Basic.Example.tsx correctly 1`] = `
     id="subTextLabel1"
   >
     My Sample description
-  </label>
-</div>
+  </label>,
+]
 `;

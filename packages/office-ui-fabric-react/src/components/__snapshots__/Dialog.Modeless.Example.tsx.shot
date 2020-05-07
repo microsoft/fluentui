@@ -1,11 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Component Examples renders Dialog.Modeless.Example.tsx correctly 1`] = `
-<div>
+Array [
   <input
     placeholder="Focus Me While Open"
     type="text"
-  />
+  />,
   <div>
     <div
       className=
@@ -383,6 +383,6 @@ exports[`Component Examples renders Dialog.Modeless.Example.tsx correctly 1`] = 
         </span>
       </span>
     </button>
-  </div>
-</div>
+  </div>,
+]
 `;

@@ -35,7 +35,7 @@ export const DialogLargeHeaderExample: React.FunctionComponent = () => {
   const [hideDialog, { toggle: toggleHideDialog }] = useBoolean(true);
 
   return (
-    <div>
+    <>
       <DefaultButton secondaryText="Opens the Sample Dialog" onClick={toggleHideDialog} text="Open Dialog" />
       <Dialog
         hidden={hideDialog}
@@ -49,6 +49,6 @@ export const DialogLargeHeaderExample: React.FunctionComponent = () => {
           <DefaultButton onClick={toggleHideDialog} text="Cancel" />
         </DialogFooter>
       </Dialog>
-    </div>
+    </>
   );
 };

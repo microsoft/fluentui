@@ -17,7 +17,7 @@ export const DialogTopOffsetFixedExample: React.FunctionComponent = () => {
   };
 
   return (
-    <div>
+    <>
       <DefaultButton secondaryText="Opens the Sample Dialog" onClick={toggleHideDialog} text="Open Dialog" />
 
       <Dialog hidden={hideDialog} onDismiss={toggleHideDialog} modalProps={modelProps}>
@@ -80,6 +80,6 @@ export const DialogTopOffsetFixedExample: React.FunctionComponent = () => {
           <DefaultButton onClick={toggleHideDialog} text="Cancel" />
         </DialogFooter>
       </Dialog>
-    </div>
+    </>
   );
 };

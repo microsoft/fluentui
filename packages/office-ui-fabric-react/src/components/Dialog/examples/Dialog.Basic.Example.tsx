@@ -25,7 +25,7 @@ export const DialogBasicExample: React.FunctionComponent = () => {
     menu: ContextualMenu,
   };
   return (
-    <div>
+    <>
       <Checkbox label="Is draggable" onChange={toggleIsDraggable} checked={isDraggable} />
       <DefaultButton secondaryText="Opens the Sample Dialog" onClick={toggleHideDialog} text="Open Dialog" />
       <label id={labelId} className={screenReaderOnly}>
@@ -52,6 +52,6 @@ export const DialogBasicExample: React.FunctionComponent = () => {
           <DefaultButton onClick={toggleHideDialog} text="Don't send" />
         </DialogFooter>
       </Dialog>
-    </div>
+    </>
   );
 };

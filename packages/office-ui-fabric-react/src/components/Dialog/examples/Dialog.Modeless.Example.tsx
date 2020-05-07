@@ -5,6 +5,7 @@ import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { ContextualMenu } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { useBoolean } from '@uifabric/react-hooks';
 
+const modalPropsStyles = { main: { maxWidth: 450 } };
 const dragOptions = {
   moveMenuItemText: 'Move',
   closeMenuItemText: 'Close',
@@ -32,7 +33,7 @@ export const DialogModelessExample: React.FunctionComponent = () => {
         onDismiss={toggleHideDialog}
         dialogContentProps={dialogContentProps}
         modalProps={{
-          styles: { main: { maxWidth: 450 } },
+          styles: modalPropsStyles,
           isModeless: true,
           dragOptions: isDraggable ? dragOptions : undefined,
         }}

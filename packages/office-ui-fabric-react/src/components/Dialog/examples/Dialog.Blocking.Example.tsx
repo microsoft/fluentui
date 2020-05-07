@@ -7,7 +7,7 @@ import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { ComboBox, IComboBoxOption, SelectableOptionMenuItemType } from 'office-ui-fabric-react/lib/index';
 import { useBoolean } from '@uifabric/react-hooks';
 
-const INITIAL_OPTIONS: IComboBoxOption[] = [
+const options: IComboBoxOption[] = [
   { key: 'Header1', text: 'First heading', itemType: SelectableOptionMenuItemType.Header },
   { key: 'A', text: 'Option A' },
   { key: 'B', text: 'Option B' },
@@ -27,6 +27,7 @@ const dragOptions = {
   closeMenuItemText: 'Close',
   menu: ContextualMenu,
 };
+const modalPropsStyles = { main: { maxWidth: 450 } };
 const iconProps = { iconName: 'IncreaseIndentLegacy' };
 const dialogContentProps = {
   type: DialogType.normal,
@@ -38,7 +39,7 @@ export const DialogBlockingExample: React.FunctionComponent = () => {
   const [hideDialog, { toggle: toggleHideDialog }] = useBoolean(true);
   const [isDraggable, { toggle: toggleIsDraggable }] = useBoolean(false);
   return (
-    <div>
+    <>
       <Checkbox label="Is draggable" onChange={toggleIsDraggable} checked={isDraggable} />
       <DefaultButton secondaryText="Opens the Sample Dialog" onClick={toggleHideDialog} text="Open Dialog" />
       <Dialog
@@ -47,7 +48,7 @@ export const DialogBlockingExample: React.FunctionComponent = () => {
         dialogContentProps={dialogContentProps}
         modalProps={{
           isBlocking: true,
-          styles: { main: { maxWidth: 450 } },
+          styles: modalPropsStyles,
           dragOptions: isDraggable ? dragOptions : undefined,
         }}
       >
@@ -69,13 +70,13 @@ export const DialogBlockingExample: React.FunctionComponent = () => {
           placeholder="Select or type an option"
           allowFreeform
           autoComplete="on"
-          options={INITIAL_OPTIONS}
+          options={options}
         />
         <DialogFooter>
           <PrimaryButton onClick={toggleHideDialog} text="Send" />
           <DefaultButton onClick={toggleHideDialog} text="Don't send" />
         </DialogFooter>
       </Dialog>
-    </div>
+    </>
   );
 };
