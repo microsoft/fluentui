@@ -4,7 +4,7 @@ Fluent UI macOS is an [open-source](https://github.com/microsoft/fluentui-apple)
 
 Fluent UI macOS includes an expanding library of controls written in Swift and supporting Objective-C. These controls implement the Fluent Design language and provide consistency across Microsoft experiences.
 
-Documentation for the controls is a work in progress. Some controls can be found in the <a href="#/controls/mac" target="_blank">Controls section</a> of this site, and the full list can be viewed in [this source folder](https://github.com/microsoft/fluentui-apple/tree/master/macos/FluentUI).
+Documentation for the controls is a work in progress. Some controls can be found in the <a href="#/controls/mac">Controls section</a> of this site, and the full list can be viewed in [this source folder](https://github.com/microsoft/fluentui-apple/tree/master/macos/FluentUI).
 
 ### Start developing
 
