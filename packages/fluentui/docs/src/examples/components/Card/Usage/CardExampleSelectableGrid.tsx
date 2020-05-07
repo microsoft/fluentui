@@ -3,7 +3,7 @@ import {
   Image,
   Text,
   Card,
-  cardSelectableBehavior,
+  cardFocusableBehavior,
   Grid,
   cardsContainerBehavior,
   Checkbox,
@@ -26,7 +26,7 @@ const SelectableCard: React.FC<SelectableCardProps> = ({ index, selected, handle
   const notSelectedMessage = 'not selected';
   return (
     <Card
-      accessibility={cardSelectableBehavior}
+      accessibility={cardFocusableBehavior}
       aria-labelledby={`title${index} ${selectedMessageId}`}
       aria-roledescription="user card"
       onClick={() => {
