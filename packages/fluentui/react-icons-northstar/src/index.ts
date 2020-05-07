@@ -60,6 +60,7 @@ export { default as CustomerHubIcon } from './components/CustomerHubIcon';
 export { default as DownloadIcon } from './components/DownloadIcon';
 export { default as EditIcon } from './components/EditIcon';
 export { default as EmailIcon } from './components/EmailIcon';
+export { default as EmailWithDotIcon } from './components/EmailWithDotIcon';
 export { default as EmojiIcon } from './components/EmojiIcon';
 export { default as ErrorIcon } from './components/ErrorIcon';
 export { default as ExcelColorIcon } from './components/ExcelColorIcon';
