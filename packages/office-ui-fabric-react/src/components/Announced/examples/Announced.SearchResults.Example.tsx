@@ -9,7 +9,7 @@ const inputProps = {
   'aria-label': 'Tag Picker',
 };
 const pickerSuggestionsProps = {
-  suggestionsHeaderText: 'Suggested Tags',
+  suggestionsHeaderText: 'Suggested tags',
   noResultsFoundText: 'No Color Tags Found',
 };
 const _testTags: ITag[] = [
