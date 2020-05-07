@@ -1,20 +1,7 @@
 import * as React from 'react';
-import {
-  getCode,
-  ArrowDownKey,
-  ArrowLeftKey,
-  ArrowRightKey,
-  ArrowUpKey,
-  EndKey,
-  EnterKey,
-  HomeKey,
-  PageDownKey,
-  PageUpKey,
-  SpacebarKey,
-  TabKey,
-} from '@fluentui/keyboard-key';
 import { FocusZoneDirection, FocusZoneTabbableElements, IFocusZone, IFocusZoneProps } from './FocusZone.types';
 import {
+  KeyCodes,
   css,
   elementContains,
   getDocument,
@@ -191,7 +178,9 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     if (
       doc &&
       this._lastIndexPath &&
-      (doc.activeElement === doc.body || doc.activeElement === root || doc.activeElement === null)
+      (doc.activeElement === doc.body ||
+        doc.activeElement === null ||
+        (!this.props.preventFocusRestoration && doc.activeElement === root))
     ) {
       // The element has been removed after the render, attempt to restore focus.
       const elementToFocus = getFocusableByIndexPath(root as HTMLElement, this._lastIndexPath);
@@ -338,7 +327,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     }
 
     if (element) {
-      // when we Set focus to a specific child, we should recalculate the alignment depend on its position
+      // when we Set focus to a specific child, we should recalculate the alignment depend on its position
       this._setActiveElement(element);
       if (this._activeElement) {
         this._activeElement.focus();
@@ -474,7 +463,8 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
    * Handle global tab presses so that we can patch tabindexes on the fly.
    */
   private _onKeyDownCapture = (ev: KeyboardEvent): void => {
-    if (getCode(ev) === TabKey) {
+    // tslint:disable-next-line:deprecation deprecated-keyboard-event-props
+    if (ev.which === KeyCodes.tab) {
       _outerZones.forEach((zone: FocusZone) => zone._updateTabIndexes());
     }
   };
@@ -549,7 +539,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     }
 
     // tslint:disable-next-line:deprecation
-    const { direction, disabled, isInnerZoneKeystroke, shouldEnterInnerZone } = this.props;
+    const { direction, disabled, isInnerZoneKeystroke, pagingSupportDisabled, shouldEnterInnerZone } = this.props;
 
     if (disabled) {
       return;
@@ -599,14 +589,15 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     } else if (ev.altKey) {
       return;
     } else {
-      switch (getCode(ev)) {
-        case SpacebarKey:
+      // tslint:disable-next-line:deprecated-keyboard-event-props
+      switch (ev.which) {
+        case KeyCodes.space:
           if (this._tryInvokeClickForFocusable(ev.target as HTMLElement)) {
             break;
           }
           return;
 
-        case ArrowLeftKey:
+        case KeyCodes.left:
           if (direction !== FocusZoneDirection.vertical) {
             this._preventDefaultWhenHandled(ev);
             if (this._moveFocusLeft()) {
@@ -615,7 +606,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
           }
           return;
 
-        case ArrowRightKey:
+        case KeyCodes.right:
           if (direction !== FocusZoneDirection.vertical) {
             this._preventDefaultWhenHandled(ev);
             if (this._moveFocusRight()) {
@@ -624,7 +615,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
           }
           return;
 
-        case ArrowUpKey:
+        case KeyCodes.up:
           if (direction !== FocusZoneDirection.horizontal) {
             this._preventDefaultWhenHandled(ev);
             if (this._moveFocusUp()) {
@@ -633,7 +624,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
           }
           return;
 
-        case ArrowDownKey:
+        case KeyCodes.down:
           if (direction !== FocusZoneDirection.horizontal) {
             this._preventDefaultWhenHandled(ev);
             if (this._moveFocusDown()) {
@@ -641,18 +632,18 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
             }
           }
           return;
-        case PageDownKey:
-          if (this._moveFocusPaging(true)) {
+        case KeyCodes.pageDown:
+          if (!pagingSupportDisabled && this._moveFocusPaging(true)) {
             break;
           }
           return;
-        case PageUpKey:
-          if (this._moveFocusPaging(false)) {
+        case KeyCodes.pageUp:
+          if (!pagingSupportDisabled && this._moveFocusPaging(false)) {
             break;
           }
           return;
 
-        case TabKey:
+        case KeyCodes.tab:
           if (
             // tslint:disable-next-line:deprecation
             this.props.allowTabKey ||
@@ -680,7 +671,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
           }
           return;
 
-        case HomeKey:
+        case KeyCodes.home:
           if (
             this._isContentEditableElement(ev.target as HTMLElement) ||
             (this._isElementInput(ev.target as HTMLElement) &&
@@ -698,7 +689,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
           }
           return;
 
-        case EndKey:
+        case KeyCodes.end:
           if (
             this._isContentEditableElement(ev.target as HTMLElement) ||
             (this._isElementInput(ev.target as HTMLElement) &&
@@ -716,7 +707,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
           }
           return;
 
-        case EnterKey:
+        case KeyCodes.enter:
           if (this._tryInvokeClickForFocusable(ev.target as HTMLElement)) {
             break;
           }
@@ -877,7 +868,8 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
 
   private _moveFocusDown(): boolean {
     let targetTop = -1;
-    const leftAlignment = this._focusAlignment.left || 0;
+    // tslint:disable-next-line:deprecation
+    const leftAlignment = this._focusAlignment.left || this._focusAlignment.x || 0;
 
     if (
       this._moveFocus(true, (activeRect: ClientRect, targetRect: ClientRect) => {
@@ -918,7 +910,8 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
 
   private _moveFocusUp(): boolean {
     let targetTop = -1;
-    const leftAlignment = this._focusAlignment.left || 0;
+    // tslint:disable-next-line:deprecation
+    const leftAlignment = this._focusAlignment.left || this._focusAlignment.x || 0;
 
     if (
       this._moveFocus(false, (activeRect: ClientRect, targetRect: ClientRect) => {
@@ -982,10 +975,8 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
             this.props.direction !== FocusZoneDirection.vertical
           ) {
             distance = activeRect.right - targetRect.right;
-          } else {
-            if (!shouldWrap) {
-              distance = LARGE_NEGATIVE_DISTANCE_FROM_CENTER;
-            }
+          } else if (!shouldWrap) {
+            distance = LARGE_NEGATIVE_DISTANCE_FROM_CENTER;
           }
 
           return distance;
@@ -1048,7 +1039,8 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     activeRect: ClientRect,
     targetRect: ClientRect,
   ): number => {
-    const leftAlignment = this._focusAlignment.left || 0;
+    // tslint:disable-next-line:deprecation
+    const leftAlignment = this._focusAlignment.left || this._focusAlignment.x || 0;
     // ClientRect values can be floats that differ by very small fractions of a decimal.
     // If the difference between top and bottom are within a pixel then we should treat
     // them as equivalent by using Math.floor. For instance 5.2222 and 5.222221 should be equivalent,
@@ -1065,18 +1057,15 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
         return 0;
       }
       return Math.abs(targetRect.left + targetRect.width / 2 - leftAlignment);
-    } else {
-      if (!this._shouldWrapFocus(this._activeElement as HTMLElement, NO_VERTICAL_WRAP)) {
-        return LARGE_NEGATIVE_DISTANCE_FROM_CENTER;
-      }
-      return LARGE_DISTANCE_FROM_CENTER;
     }
+
+    if (!this._shouldWrapFocus(this._activeElement as HTMLElement, NO_VERTICAL_WRAP)) {
+      return LARGE_NEGATIVE_DISTANCE_FROM_CENTER;
+    }
+    return LARGE_DISTANCE_FROM_CENTER;
   };
 
   private _moveFocusPaging(isForward: boolean, useDefaultWrap: boolean = true): boolean {
-    if (useDefaultWrap === void 0) {
-      useDefaultWrap = true;
-    }
     let element = this._activeElement;
     if (!element || !this._root.current) {
       return false;
@@ -1124,11 +1113,9 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
             targetBottom = targetRectBottom;
             candidateDistance = elementDistance;
             candidateElement = element;
-          } else {
-            if (candidateDistance === -1 || elementDistance <= candidateDistance) {
-              candidateDistance = elementDistance;
-              candidateElement = element;
-            }
+          } else if (candidateDistance === -1 || elementDistance <= candidateDistance) {
+            candidateDistance = elementDistance;
+            candidateElement = element;
           }
         }
       }

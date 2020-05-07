@@ -2,6 +2,36 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Thu, 07 May 2020 01:06:55 GMT",
+      "tag": "@uifabric/experiments_v7.23.21",
+      "version": "7.23.21",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Addressing commonjs imports.",
+            "author": "dzearing@microsoft.com",
+            "commit": "f4a995d4166c7812976b13c6638fb1ae32a8667d",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 04 May 2020 12:33:29 GMT",
+      "tag": "@uifabric/experiments_v7.23.18",
+      "version": "7.23.18",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove unused typescript-plugin-css-modules dep",
+            "author": "elcraig@microsoft.com",
+            "commit": "4039ef722c1c3ee5bf14eed0a49477eaf773cd08",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 22 Apr 2020 12:33:04 GMT",
       "tag": "@uifabric/experiments_v7.23.9",
       "version": "7.23.9",

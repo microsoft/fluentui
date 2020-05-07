@@ -1,0 +1,6 @@
+- Don't leave the SearchBox blank because it's too ambiguous.
+- Don't have lengthy and unclear hint text. It should be used to clarify and set expectations.
+- Don't provide inaccurate matches or bad predictions, as it will make search seem unreliable and will result in user frustration.
+- Don’t provide too much information or metadata in the suggestions list; it’s intended to be lightweight.
+- Don't build a custom search control based on the default text box or any other control.
+- Don't use SearchBox if you cannot reliably provide accurate results.

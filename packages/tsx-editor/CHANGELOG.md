@@ -1,8 +1,17 @@
 # Change Log - @uifabric/tsx-editor
 
-This log was last generated on Tue, 21 Apr 2020 12:34:50 GMT and should not be manually modified.
+This log was last generated on Thu, 07 May 2020 01:06:55 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.11.67](https://github.com/microsoft/fluentui/tree/@uifabric/tsx-editor_v0.11.67)
+
+Thu, 07 May 2020 01:06:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/tsx-editor_v0.11.55..@uifabric/tsx-editor_v0.11.67)
+
+### Patches
+
+- Addressing commonjs imports. ([PR #13031](https://github.com/microsoft/fluentui/pull/13031) by dzearing@microsoft.com)
 
 ## [0.11.55](https://github.com/microsoft/fluentui/tree/@uifabric/tsx-editor_v0.11.55)
 

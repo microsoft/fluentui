@@ -2,6 +2,134 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 07 May 2020 01:06:55 GMT",
+      "tag": "office-ui-fabric-react_v7.110.5",
+      "version": "7.110.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "CommonJS paths were pointing to esm paths, now should correctly point to the right path.",
+            "author": "dzearing@hotmail.com",
+            "commit": "4c9cac6b9eedd1b5a76c4f95f9a109fde1dc3aba",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 06 May 2020 12:32:22 GMT",
+      "tag": "office-ui-fabric-react_v7.110.4",
+      "version": "7.110.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Dropdown: improve multi-select selected keys warnings",
+            "author": "elcraig@microsoft.com",
+            "commit": "2450069c19144b826392a5f9f5a2df3078647a2e",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "ColorPicker: removing unneeded array spread.",
+            "author": "dzearing@microsoft.com",
+            "commit": "ca1c8da58be3b2a3dd4443d2c5cfc32b044c5015",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 05 May 2020 12:34:22 GMT",
+      "tag": "office-ui-fabric-react_v7.110.3",
+      "version": "7.110.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding missing changes due to move from IPoint to Point.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "5b4b9b5feeac6f08f14125be35d7af1ffb7039cf",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Add logic to cap the number we show in the facepile descrtiptive overflow at 99 to prevent text overflow",
+            "author": "tabrumle@microsoft.com",
+            "commit": "058709f923b04aca1beae41ea3551111615de0ae",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Prettier fix in Callout test.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "6c055de8e22610b9f96d29e0667f019d669b7df1",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "MarqueeSelection: Fixing drag and drop functionality.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "c3c62b68529bf5e2ac49a245845bdf6e9471c6d8",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 04 May 2020 12:33:29 GMT",
+      "tag": "office-ui-fabric-react_v7.110.2",
+      "version": "7.110.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Prettier Fix in Callout test.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "ce067e65e8fee3fb56fcea401b920237e7879ff0",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Clean up prettier changes",
+            "author": "miclo@microsoft.com",
+            "commit": "9e53b82fcc814a0ec53e34a77ed25bcebb256d19",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Updating snapshot.",
+            "author": "dzearing@microsoft.com",
+            "commit": "d2965c140976180661acb4271ee74ddc820f71d7",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 01 May 2020 12:28:41 GMT",
+      "tag": "office-ui-fabric-react_v7.110.1",
+      "version": "7.110.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Theming: fix SASS slot autogenerator and run it",
+            "author": "phkuo@microsoft.com",
+            "commit": "2408412993a71f675b82905a3012135202470306",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 01 May 2020 00:19:21 GMT",
+      "tag": "office-ui-fabric-react_v7.110.0",
+      "version": "7.110.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Updating usage of FocusZone to use non-deprecated prop names.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "91115267502dc233cd9d513133d52344cef2e1f8",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 30 Apr 2020 12:31:44 GMT",
       "tag": "office-ui-fabric-react_v7.109.1",
       "version": "7.109.1",
