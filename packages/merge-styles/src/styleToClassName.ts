@@ -1,4 +1,4 @@
-import { IRawStyle, IStyle, IStyleBaseArray } from './IStyle';
+import { IRawStyle, IStyle } from './IStyle';
 
 import { Stylesheet } from './Stylesheet';
 import { kebabRules } from './transforms/kebabRules';
