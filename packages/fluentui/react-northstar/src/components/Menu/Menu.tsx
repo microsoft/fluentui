@@ -172,7 +172,7 @@ export const Menu: React.FC<WithAsProp<MenuProps>> &
   const [activeIndex, setIndex] = useAutoControlled({
     defaultValue: props.defaultActiveIndex,
     value: props.activeIndex,
-    initialValue: props.activeIndex || 0,
+    initialValue: undefined,
   });
 
   const setActiveIndex = (e: React.SyntheticEvent, activeIndex: number) => {
