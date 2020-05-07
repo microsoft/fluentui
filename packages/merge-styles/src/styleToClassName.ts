@@ -184,9 +184,9 @@ function repeatString(target: string, count: number): string {
 
   if (count === 1) {
     return target;
-  } else {
-    return target + repeatString(target, count - 1);
   }
+
+  return target + repeatString(target, count - 1);
 }
 
 export function serializeRuleEntries(options: IStyleOptions, ruleEntries: { [key: string]: string | number }): string {

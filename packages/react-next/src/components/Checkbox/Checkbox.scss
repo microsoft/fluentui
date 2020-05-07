@@ -156,6 +156,11 @@ $checkboxTransitionTiming: cubic-bezier(0.4, 0, 0.23, 1);
   transition-duration: $checkboxTransitionDuration;
   transition-timing-function: $checkboxTransitionTiming;
 
+  @include high-contrast-edge-chromium-no-adjust;
+  @include high-contrast {
+    border-color: 'WindowText';
+  }
+
   /* in case the icon is bigger than the box */
   overflow: hidden;
 
@@ -208,7 +213,7 @@ $checkboxTransitionTiming: cubic-bezier(0.4, 0, 0.23, 1);
   &.disabled {
     border-color: var($semanticColorsDisabledBodySubtext);
     @include high-contrast {
-      border-color: InactiveBorder;
+      border-color: GrayText;
     }
   }
 
@@ -232,7 +237,7 @@ $checkboxTransitionTiming: cubic-bezier(0.4, 0, 0.23, 1);
 
   &.disabled {
     @include high-contrast {
-      color: InactiveBorder;
+      color: GrayText;
     }
   }
 }
@@ -242,20 +247,21 @@ $checkboxTransitionTiming: cubic-bezier(0.4, 0, 0.23, 1);
   font-size: var($fontsMediumFontSize);
   line-height: 20px;
 
+  @include high-contrast-edge-chromium-no-adjust;
+  @include high-contrast {
+    color: Window;
+  }
+
+  &.disabled {
+    @include high-contrast {
+      color: GrayText;
+    }
+  }
+
   &.reversed {
     margin-right: 4px;
   }
   &:not(.reversed) {
     margin-left: 4px;
-  }
-
-  &.disabled {
-    color: var($semanticColorsDisabledText);
-
-    @include high-contrast {
-      // backwards compat for the color of the text when the checkbox was rendered
-      // using a Button.
-      color: InactiveBorder;
-    }
   }
 }
