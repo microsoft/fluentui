@@ -327,7 +327,7 @@ export const MenuItem: React.FC<WithAsProp<MenuItemProps>> & FluentComponentStat
     return !!(menu && menuOpen);
   };
 
-  const closeAllMenus = (e: Event) => {
+  const closeAllMenus = (e: React.SyntheticEvent) => {
     if (!isSubmenuOpen()) {
       return;
     }
@@ -344,7 +344,7 @@ export const MenuItem: React.FC<WithAsProp<MenuItemProps>> & FluentComponentStat
     }
   };
 
-  const closeMenu = (e: Event, forceTriggerFocus?: boolean) => {
+  const closeMenu = (e: React.SyntheticEvent, forceTriggerFocus?: boolean) => {
     if (!isSubmenuOpen()) {
       return;
     }
@@ -361,7 +361,7 @@ export const MenuItem: React.FC<WithAsProp<MenuItemProps>> & FluentComponentStat
     }
   };
 
-  const openMenu = (e: Event) => {
+  const openMenu = (e: React.SyntheticEvent) => {
     if (menu && !menuOpen) {
       trySetMenuOpen(true, e);
       _.invoke(props, 'onActiveChanged', e, { ...props, active: true });
