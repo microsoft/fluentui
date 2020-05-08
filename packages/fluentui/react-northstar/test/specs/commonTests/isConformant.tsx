@@ -120,7 +120,7 @@ export default function isConformant(
   // This is pretty ugly because:
   // - jest doesn't support custom error messages
   // - jest will run all test
-  const infoJSONPath = `docs/src/componentInfo/${constructorName}.info.json`;
+  const infoJSONPath = `@fluentui/docs/src/componentInfo/${constructorName}.info.json`;
 
   let info;
 
@@ -298,7 +298,7 @@ export default function isConformant(
       expect(handledProps).toContain('variables');
     });
 
-    test('handledProps includes all handled props', () => {
+    test('handledProps includes props defined in autoControlledProps, defaultProps or propTypes', () => {
       const computedProps = _.union(
         Component.autoControlledProps,
         _.keys(Component.defaultProps),
@@ -307,17 +307,18 @@ export default function isConformant(
       const expectedProps = _.uniq(computedProps).sort();
 
       const message =
-        'Not all handled props were defined in static handledProps. Add all props defined in' +
-        ' static autoControlledProps, static defaultProps and static propTypes must be defined' +
-        ' in static handledProps.';
+        'Not all handled props were defined correctly. All props defined in handled props, must be defined' +
+        'either in static autoControlledProps, static defaultProps or static propTypes.';
 
       expect({
         message,
         handledProps: handledProps.sort(),
-      }).toEqual({
-        message,
-        handledProps: expectedProps,
-      });
+      }).toEqual(
+        expect.objectContaining({
+          message,
+          handledProps: expect.arrayContaining(expectedProps),
+        }),
+      );
     });
 
     const isClassComponent = !!Component.prototype?.isReactComponent;

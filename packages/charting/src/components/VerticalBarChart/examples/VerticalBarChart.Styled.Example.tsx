@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { VerticalBarChart, IVerticalBarChartProps } from '@uifabric/charting/lib/VerticalBarChart';
+import { VerticalBarChart, IVerticalBarChartProps } from '@uifabric/charting';
 import { DefaultPalette, DefaultFontStyles } from 'office-ui-fabric-react/lib/Styling';
 
 export class VerticalBarChartStyledExample extends React.Component<IVerticalBarChartProps, {}> {

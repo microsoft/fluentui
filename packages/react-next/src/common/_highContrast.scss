@@ -1,0 +1,17 @@
+@mixin high-contrast {
+  @media screen and (-ms-high-contrast: active) {
+    @content;
+  }
+}
+
+@mixin high-contrast-black-on-white {
+  @media screen and (-ms-high-contrast: black-on-white) {
+   @content;
+  }
+}
+
+@mixin high-contrast-white-on-black {
+  @media screen and (-ms-high-contrast: white-on-black) {
+   @content;
+  }
+}

@@ -1,4 +1,4 @@
-import { TextAreStylesProps } from './../../components/TextArea/TextArea';
+import { TextAreaStylesProps } from './../../components/TextArea/TextArea';
 import {
   ColorScheme,
   ColorSchemeMapping,
@@ -7,10 +7,10 @@ import {
   StrictColorSchemeMapping,
   PrimitiveColors,
 } from '../types';
-
-import { AccordionContentProps } from '../../components/Accordion/AccordionContent';
-import { AccordionProps } from '../../components/Accordion/Accordion';
-import { AccordionTitleProps } from '../../components/Accordion/AccordionTitle';
+import { AccordionContentStylesProps } from '../../components/Accordion/AccordionContent';
+import { AccordionStylesProps } from '../../components/Accordion/Accordion';
+import { AccordionTitleStylesProps } from '../../components/Accordion/AccordionTitle';
+import { CarouselNavigationItemStylesProps } from '../../components/Carousel/CarouselNavigationItem';
 import { AlertStylesProps } from '../../components/Alert/Alert';
 import { AnimationProps } from '../../components/Animation/Animation';
 import { AttachmentProps } from '../../components/Attachment/Attachment';
@@ -27,10 +27,11 @@ import { ChatItemStylesProps } from '../../components/Chat/ChatItem';
 import { ChatMessageStylesProps } from '../../components/Chat/ChatMessage';
 import { ChatStylesProps } from '../../components/Chat/Chat';
 import { CheckboxStylesProps } from '../../components/Checkbox/Checkbox';
-import { DividerProps } from '../../components/Divider/Divider';
+import { DividerStylesProps } from '../../components/Divider/Divider';
 import { DialogProps } from '../../components/Dialog/Dialog';
 import { DropdownProps } from '../../components/Dropdown/Dropdown';
-import { EmbedProps } from '../../components/Embed/Embed';
+import { DropdownSearchInputStylesProps } from '../../components/Dropdown/DropdownSearchInput';
+import { EmbedStylesProps } from '../../components/Embed/Embed';
 import { FlexItemStylesProps } from '../../components/Flex/FlexItem';
 import { FlexStylesProps } from '../../components/Flex/Flex';
 import { FormFieldProps } from '../../components/Form/FormField';
@@ -65,8 +66,8 @@ import { ToolbarMenuItemStylesProps } from '../../components/Toolbar/ToolbarMenu
 import { ToolbarMenuDividerStylesProps } from '../../components/Toolbar/ToolbarMenuDivider';
 import { ToolbarMenuRadioGroupStylesProps } from '../../components/Toolbar/ToolbarMenuRadioGroup';
 import { ToolbarMenuStylesProps } from '../../components/Toolbar/ToolbarMenu';
-import { ToolbarProps } from '../../components/Toolbar/Toolbar';
-import { ToolbarRadioGroupProps } from '../../components/Toolbar/ToolbarRadioGroup';
+import { ToolbarStylesProps } from '../../components/Toolbar/Toolbar';
+import { ToolbarRadioGroupStylesProps } from '../../components/Toolbar/ToolbarRadioGroup';
 import { TooltipContentStylesProps } from '../../components/Tooltip/TooltipContent';
 import { HierarchicalTreeItemProps } from '../../components/HierarchicalTree/HierarchicalTreeItem';
 import { HierarchicalTreeProps } from '../../components/HierarchicalTree/HierarchicalTree';
@@ -85,11 +86,14 @@ import { CardBodyStylesProps } from '../../components/Card/CardBody';
 import { CardFooterStylesProps } from '../../components/Card/CardFooter';
 import { SvgIconStylesProps } from '../../components/SvgIcon/SvgIcon';
 import { SplitButtonStylesProps } from '../../components/SplitButton/SplitButton';
+import { CarouselNavigationStylesProps } from '../../components/Carousel/CarouselNavigation';
+import { CarouselItemStylesProps } from '../../components/Carousel/CarouselItem';
+import { CarouselStylesProps } from '../../components/Carousel/Carousel';
 
 export type TeamsThemeStylesProps = {
-  Accordion: AccordionProps;
-  AccordionTitle: AccordionTitleProps;
-  AccordionContent: AccordionContentProps;
+  Accordion: AccordionStylesProps;
+  AccordionContent: AccordionContentStylesProps;
+  AccordionTitle: AccordionTitleStylesProps;
   Alert: AlertStylesProps;
   Animation: AnimationProps;
   Attachment: AttachmentProps;
@@ -102,14 +106,18 @@ export type TeamsThemeStylesProps = {
   Box: BoxStylesProps;
   ButtonContent: ButtonContentStylesProps;
   ButtonGroup: ButtonGroupProps;
+  Carousel: CarouselStylesProps;
+  CarouselItem: CarouselItemStylesProps;
   Chat: ChatStylesProps;
   ChatItem: ChatItemStylesProps;
   ChatMessage: ChatMessageStylesProps;
+  CarouselNavigation: CarouselNavigationStylesProps;
   Checkbox: CheckboxStylesProps;
-  Divider: DividerProps;
+  Divider: DividerStylesProps;
   Dialog: DialogProps;
   Dropdown: DropdownProps;
-  Embed: EmbedProps;
+  DropdownSearchInput: DropdownSearchInputStylesProps;
+  Embed: EmbedStylesProps;
   Flex: FlexStylesProps;
   FlexItem: FlexItemStylesProps;
   Form: FormProps;
@@ -138,18 +146,18 @@ export type TeamsThemeStylesProps = {
   Slider: SliderStylesProps;
   SplitButton: SplitButtonStylesProps;
   Status: StatusStylesProps;
-  Toolbar: ToolbarProps;
+  Toolbar: ToolbarStylesProps;
   ToolbarCustomItem: ToolbarCustomItemStylesProps;
   ToolbarItem: ToolbarItemStylesProps;
   ToolbarDivider: ToolbarDividerStylesProps;
-  ToolbarRadioGroup: ToolbarRadioGroupProps;
+  ToolbarRadioGroup: ToolbarRadioGroupStylesProps;
   ToolbarMenu: ToolbarMenuStylesProps;
   ToolbarMenuItem: ToolbarMenuItemStylesProps;
   ToolbarMenuDivider: ToolbarMenuDividerStylesProps;
   ToolbarMenuRadioGroup: ToolbarMenuRadioGroupStylesProps;
   TooltipContent: TooltipContentStylesProps;
   Text: TextStylesProps;
-  TextAre: TextAreStylesProps;
+  TextArea: TextAreaStylesProps;
   TreeItem: TreeItemStylesProps;
   TreeTitle: TreeTitleStylesProps;
   HierarchicalTree: HierarchicalTreeProps;
@@ -165,6 +173,7 @@ export type TeamsThemeStylesProps = {
   CardHeader: CardHeaderStylesProps;
   CardBody: CardBodyStylesProps;
   CardFooter: CardFooterStylesProps;
+  CarouselNavigationItem: CarouselNavigationItemStylesProps;
 };
 
 export type TeamsContextualColors = {

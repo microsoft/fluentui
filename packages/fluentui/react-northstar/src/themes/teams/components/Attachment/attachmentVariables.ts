@@ -29,6 +29,18 @@ export type AttachmentVariables = {
   descriptionFontSize: string;
   descriptionFontWeight: number;
   descriptionLineHeight: number;
+
+  actionHeight: string;
+  actionMaxWidth: string;
+  actionColor: string;
+  actionPrimaryColor: string;
+  actionColorDisabled: string;
+  actionIconSize: string;
+  actionLoaderBorderSize: string;
+  actionLoaderSize: string;
+  actionLoaderSvgHeight: string;
+  actionLoaderSvgAnimationHeight: string;
+  actionFocusBorderRadius: string;
 };
 
 export default (siteVariables: any): AttachmentVariables => ({
@@ -59,4 +71,17 @@ export default (siteVariables: any): AttachmentVariables => ({
   descriptionFontSize: siteVariables.fontSizes.small,
   descriptionFontWeight: siteVariables.fontWeightRegular,
   descriptionLineHeight: siteVariables.lineHeightDefault,
+
+  // action variables
+  actionHeight: pxToRem(32),
+  actionMaxWidth: pxToRem(280),
+  actionColor: siteVariables.colors.grey[750],
+  actionPrimaryColor: siteVariables.colorScheme.brand.foreground,
+  actionColorDisabled: siteVariables.colorScheme.brand.foregroundDisabled1,
+  actionIconSize: pxToRem(16),
+  actionLoaderBorderSize: pxToRem(2),
+  actionLoaderSize: pxToRem(20),
+  actionLoaderSvgHeight: pxToRem(1220),
+  actionLoaderSvgAnimationHeight: pxToRem(-1200),
+  actionFocusBorderRadius: pxToRem(3),
 });

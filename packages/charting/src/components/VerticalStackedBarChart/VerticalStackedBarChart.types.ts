@@ -74,6 +74,13 @@ export interface IVerticalStackedBarChartProps {
    * focus zone props in hover card for legends
    */
   focusZonePropsForLegendsInHoverCard?: IFocusZoneProps;
+
+  /**
+   * Do not show tooltips in chart
+   *
+   * @default false
+   */
+  hideTooltip?: boolean;
 }
 
 export interface IVerticalStackedBarChartStyleProps {

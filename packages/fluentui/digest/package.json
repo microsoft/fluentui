@@ -23,6 +23,7 @@
     "webpack": "4.35.0"
   },
   "devDependencies": {
+    "@types/node": "^10.3.2",
     "@types/webpack": "4.4.0"
   },
   "publishConfig": {

@@ -6,7 +6,7 @@ import { IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { mergeStyleSets } from 'office-ui-fabric-react';
 import { useBoolean } from '@uifabric/react-hooks';
-import { Toggle } from '../../Toggle';
+import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 
 const styles = mergeStyleSets({
   root: {

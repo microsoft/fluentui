@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-compose
 
-This log was last generated on Thu, 23 Apr 2020 12:32:40 GMT and should not be manually modified.
+This log was last generated on Thu, 07 May 2020 01:06:55 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.2.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.2.11)
+
+Thu, 07 May 2020 01:06:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v0.2.10..@fluentui/react-compose_v0.2.11)
+
+### Patches
+
+- Addressing commonjs imports. ([PR #13031](https://github.com/microsoft/fluentui/pull/13031) by dzearing@microsoft.com)
+
+## [0.2.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.2.10)
+
+Tue, 28 Apr 2020 12:34:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v0.2.9..@fluentui/react-compose_v0.2.10)
+
+### Patches
+
+- added slots and slotProps ([PR #12858](https://github.com/microsoft/fluentui/pull/12858) by mnajdova@gmail.com)
 
 ## [0.2.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.2.9)
 
