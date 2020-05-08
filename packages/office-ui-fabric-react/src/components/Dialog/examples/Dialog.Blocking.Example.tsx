@@ -3,7 +3,7 @@ import { Dialog, DialogType, DialogFooter } from 'office-ui-fabric-react/lib/Dia
 import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { ContextualMenu } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { SpinButton } from 'office-ui-fabric-react/lib/SpinButton';
-import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
+import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 import { ComboBox, IComboBoxOption, SelectableOptionMenuItemType } from 'office-ui-fabric-react/lib/index';
 import { useBoolean } from '@uifabric/react-hooks';
 
@@ -34,6 +34,11 @@ const dialogContentProps = {
   title: 'Missing Subject',
   subText: 'Do you want to send this message without a subject?',
 };
+const log = (text: string): (() => void) => {
+  return (): void => {
+    console.log(text);
+  };
+};
 
 export const DialogBlockingExample: React.FunctionComponent = () => {
   const [hideDialog, { toggle: toggleHideDialog }] = useBoolean(true);
@@ -49,7 +54,7 @@ export const DialogBlockingExample: React.FunctionComponent = () => {
 
   return (
     <>
-      <Checkbox label="Is draggable" onChange={toggleIsDraggable} checked={isDraggable} />
+      <Toggle label="Is draggable" onChange={toggleIsDraggable} checked={isDraggable} />
       <DefaultButton secondaryText="Opens the Sample Dialog" onClick={toggleHideDialog} text="Open Dialog" />
       <Dialog
         hidden={hideDialog}
@@ -64,10 +69,8 @@ export const DialogBlockingExample: React.FunctionComponent = () => {
           max={100}
           step={1}
           iconProps={iconProps}
-          // tslint:disable-next-line:jsx-no-lambda
-          onFocus={() => console.log('onFocus called')}
-          // tslint:disable-next-line:jsx-no-lambda
-          onBlur={() => console.log('onBlur called')}
+          onFocus={log('onFocus called')}
+          onBlur={log('onBlur called')}
           incrementButtonAriaLabel={'Increase value by 1'}
           decrementButtonAriaLabel={'Decrease value by 1'}
         />

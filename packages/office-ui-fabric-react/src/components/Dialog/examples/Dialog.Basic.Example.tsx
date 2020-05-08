@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Dialog, DialogType, DialogFooter } from 'office-ui-fabric-react/lib/Dialog';
 import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { hiddenContentStyle, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
-import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
+import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 import { ContextualMenu } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { useId, useBoolean } from '@uifabric/react-hooks';
 
@@ -39,13 +39,13 @@ export const DialogBasicExample: React.FunctionComponent = () => {
 
   return (
     <>
-      <Checkbox label="Is draggable" onChange={toggleIsDraggable} checked={isDraggable} />
+      <Toggle label="Is draggable" onChange={toggleIsDraggable} checked={isDraggable} />
       <DefaultButton secondaryText="Opens the Sample Dialog" onClick={toggleHideDialog} text="Open Dialog" />
       <label id={labelId} className={screenReaderOnly}>
-        My sample Label
+        My sample label
       </label>
       <label id={subTextId} className={screenReaderOnly}>
-        My Sample description
+        My sample description
       </label>
 
       <Dialog

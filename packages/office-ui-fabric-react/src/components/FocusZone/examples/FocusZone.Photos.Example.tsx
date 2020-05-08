@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 import { Image } from 'office-ui-fabric-react/lib/Image';
-import { useConst, useId } from '@uifabric/react-hooks';
+import { getId } from 'office-ui-fabric-react/lib/Utilities';
+import { useConst } from '@uifabric/react-hooks';
 import { mergeStyleSets, getTheme } from 'office-ui-fabric-react/lib/Styling';
 
 const theme = getTheme();
@@ -52,7 +53,7 @@ const getItems = (): IPhoto[] => {
     const randomWidth = 50 + Math.floor(Math.random() * 150);
 
     items.push({
-      id: useId('photo'),
+      id: getId('photo'),
       url: `http://placehold.it/${randomWidth}x100`,
       width: randomWidth,
       height: 100,

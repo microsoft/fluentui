@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Dialog, DialogType, DialogFooter } from 'office-ui-fabric-react/lib/Dialog';
 import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
+import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 import { ContextualMenu } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { useBoolean } from '@uifabric/react-hooks';
 
@@ -32,7 +32,7 @@ export const DialogModelessExample: React.FunctionComponent = () => {
     <>
       <input type="text" placeholder="Focus Me While Open" />
       <div>
-        <Checkbox label="Is draggable" onChange={toggleIsDraggable} checked={isDraggable} disabled={!hideDialog} />
+        <Toggle label="Is draggable" onChange={toggleIsDraggable} checked={isDraggable} disabled={!hideDialog} />
         <DefaultButton secondaryText="Opens the Sample Dialog" onClick={toggleHideDialog} text="Open Dialog" />
         <DefaultButton secondaryText="Closes the Sample Dialog" onClick={toggleHideDialog} text="Close Dialog" />
       </div>
