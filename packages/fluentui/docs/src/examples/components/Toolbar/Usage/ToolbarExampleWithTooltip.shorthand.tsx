@@ -13,7 +13,7 @@ import { BoldIcon, CodeSnippetIcon, ItalicIcon, MoreIcon, QuoteIcon } from '@flu
 
 type IntermediateToolbarItem = (ToolbarItemProps | ToolbarMenuItemProps | ToolbarDividerProps) & {
   key: string;
-  kind?: ToolbarItemShorthandKinds;
+  kind?: keyof ToolbarItemShorthandKinds;
   tooltip?: string;
 };
 
@@ -29,7 +29,7 @@ const ToolbarExampleShorthand = () => {
   const intermediateItems: IntermediateToolbarItem[] = [
     {
       key: 'bold',
-      kind: 'toggle' as ToolbarItemShorthandKinds,
+      kind: 'toggle',
       active: isBold,
       tooltip: 'Bold',
       icon: <BoldIcon {...{ outline: true }} />,
@@ -37,13 +37,13 @@ const ToolbarExampleShorthand = () => {
     },
     {
       key: 'italic',
-      kind: 'toggle' as ToolbarItemShorthandKinds,
+      kind: 'toggle',
       active: isItalic,
       tooltip: 'Italic',
       icon: <ItalicIcon {...{ outline: true }} />,
       onClick: () => setItalic(!isItalic),
     },
-    { key: 'divider1', kind: 'divider' as ToolbarItemShorthandKinds },
+    { key: 'divider1', kind: 'divider' },
     {
       key: 'more',
       icon: <MoreIcon {...{ outline: true }} />,
@@ -73,7 +73,7 @@ const ToolbarExampleShorthand = () => {
         ...item,
         // rendering Tooltip for the Toolbar Item
         children: item.tooltip
-          ? (ToolbarItem, props: IntermediateToolbarItem) => {
+          ? (ToolbarItem, props: any) => {
               const { tooltip, key, ...rest } = props;
               // Adding tooltipAsLabelBehavior as the ToolbarItems contains only icon
               return (

@@ -2,7 +2,6 @@ import { StylesContextInputValue, StylesContextValue, Telemetry } from '@fluentu
 import * as React from 'react';
 
 import { ShorthandConfig, ShorthandFactory } from './utils/factories';
-import { UIComponentProps } from '.';
 
 // Temporary workaround for @lodash dependency
 
@@ -66,7 +65,7 @@ type ReactNode = React.ReactChild | React.ReactNodeArray | React.ReactPortal | b
 export type ShorthandValue<P extends Props> = ReactNode | ObjectShorthandValue<P>;
 
 export type ShorthandCollection<P, K = never> = ShorthandValue<
-  P & { kind?: keyof K } & K[keyof K] extends keyof UIComponentProps ? {} : Partial<K[keyof K]>
+  P & { kind?: keyof K } & Partial<{ [Key in keyof K[keyof K]]?: K[keyof K][Key] }>
 >[];
 
 export type ObjectShorthandValue<P extends Props> = Props<P> & {

@@ -20,10 +20,13 @@ import {
 
 import MenuItem, { MenuItemProps } from './MenuItem';
 import { WithAsProp, ShorthandCollection, ShorthandValue, withSafeTypeForAs, ComponentEventHandler } from '../../types';
-import MenuDivider from './MenuDivider';
+import MenuDivider, { MenuDividerProps } from './MenuDivider';
 import { BoxProps } from '../Box/Box';
 
-export type MenuShorthandKinds = 'divider' | 'item';
+export type MenuShorthandKinds = {
+  divider: MenuDividerProps;
+  item: MenuItemProps;
+};
 
 export interface MenuProps extends UIComponentProps, ChildrenComponentProps {
   /**
@@ -45,7 +48,7 @@ export interface MenuProps extends UIComponentProps, ChildrenComponentProps {
   iconOnly?: boolean;
 
   /** Shorthand array of props for Menu. */
-  items?: ShorthandCollection<MenuItemProps, MenuShorthandKinds>;
+  items?: ShorthandCollection<MenuItemProps, MenuShorthandKinds> | ShorthandCollection<MenuItemProps>;
 
   /**
    * Called when a panel title is clicked.

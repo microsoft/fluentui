@@ -337,13 +337,15 @@ interface CustomToolbarProps {
 
 type CustomToolbarLayout = (
   props: CustomToolbarProps,
-) => ShorthandCollection<ToolbarItemProps | ToolbarCustomItemProps, ToolbarItemShorthandKinds>;
+) =>
+  | ShorthandCollection<ToolbarItemProps | ToolbarCustomItemProps, ToolbarItemShorthandKinds>
+  | ShorthandCollection<ToolbarItemProps | ToolbarCustomItemProps>;
 
 const commonLayout: CustomToolbarLayout = props =>
   [
     props.isRecording && {
       key: 'recording',
-      kind: 'custom' as ToolbarItemShorthandKinds,
+      kind: 'custom',
       focusable: true,
       content: <Status state="error" title="Recording" variables={{ isRecordingIndicator: true }} />,
       variables: { isCtItemPrimary: true, isCtItemIndicator: true },
@@ -351,13 +353,13 @@ const commonLayout: CustomToolbarLayout = props =>
 
     {
       key: 'timer-custom',
-      kind: 'custom' as ToolbarItemShorthandKinds,
+      kind: 'custom',
       focusable: true,
       content: <Text>10:45</Text>,
       variables: { isCtItemPrimary: true, isCtItemIndicator: true },
     },
 
-    { key: 'timer-divider', kind: 'divider' as ToolbarItemShorthandKinds },
+    { key: 'timer-divider', kind: 'divider' },
 
     {
       tooltip: props.cameraActive ? tooltips.videoOn : tooltips.videoOff,
@@ -487,7 +489,7 @@ const layouts: Record<CustomToolbarProps['layout'], CustomToolbarLayout> = {
 const CustomToolbar: React.FunctionComponent<CustomToolbarProps> = props => {
   const { layout = 'standard' } = props;
 
-  const items = layouts[layout](props).map((item: ToolbarItemProps) => ({
+  const items = (layouts[layout](props) as ShorthandCollection<ToolbarItemProps>).map((item: ToolbarItemProps) => ({
     ...item,
     children: (item as any).tooltip
       ? (ToolbarItem, props) => {

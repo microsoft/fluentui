@@ -432,7 +432,7 @@ const Toolbar: React.FC<WithAsProp<ToolbarProps>> &
   }, 16);
 
   const renderItems = (items: ShorthandCollection<ToolbarItemProps, ToolbarItemShorthandKinds>) =>
-    _.map(items, (item: ShorthandValue<ToolbarItemProps & { kind?: ToolbarItemShorthandKinds }>) => {
+    _.map(items, (item: ShorthandValue<ToolbarItemProps & { kind?: keyof ToolbarItemShorthandKinds }>) => {
       const kind = _.get(item, 'kind', 'item');
 
       switch (kind) {
