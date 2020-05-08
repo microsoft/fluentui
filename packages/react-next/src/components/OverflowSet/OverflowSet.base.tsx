@@ -26,7 +26,6 @@ const useKeytips = (persistedKeytips: { [uniqueID: string]: IKeytipProps }, keyt
   React.useEffect(() => {
     Object.keys(persistedKeytips).forEach((key: string) => {
       const keytip = persistedKeytips[key];
-
       // The "any" cast is required as a workaround due to colliding types.
       const uniqueID = keytipManager.register(keytip as any, true);
       // Update map
@@ -46,24 +45,20 @@ const useKeytips = (persistedKeytips: { [uniqueID: string]: IKeytipProps }, keyt
 
 const useComponentRef = (
   props: IOverflowSetProps,
-  focusSucceeded: boolean | undefined,
+  focusZone: React.RefObject<IFocusZone>,
   divContainer: React.RefObject<HTMLDivElement>,
-  forceIntoFirstElement?: boolean,
-  focusZone: { current: { focus: (arg0: boolean | undefined) => boolean | undefined } },
+  childElement?: HTMLElement,
 ) => {
   React.useImperativeHandle(
     props.componentRef,
     () => ({
-      get checked() {
-        return !!forceIntoFirstElement;
-      },
       focus() {
         if (props.doNotContainWithinFocusZone) {
           if (divContainer.current) {
-            focusSucceeded = focusFirstChild(divContainer.current);
+            focusFirstChild(divContainer.current);
           }
         } else if (focusZone.current) {
-          focusSucceeded = focusZone.current.focus(forceIntoFirstElement);
+          focusZone.current.focusElement(childElement);
         }
       },
     }),
@@ -194,6 +189,13 @@ export const OverflowSetBase: React.FunctionComponent<IOverflowSetProps> = (prop
     }
     return undefined;
   };
+
+  // /**
+  //  * Sets focus to a specific child element within the OverflowSet.
+  //  * @param childElement - The child element within the zone to focus.
+  //  * @returns True if focus could be set to an active element, false if no operation was taken.
+  //  */
+  useComponentRef(props, focusZone, divContainer, childElement);
 
   return (
     <Tag
