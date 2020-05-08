@@ -1,7 +1,13 @@
 import * as React from 'react';
 import { FocusZone, FocusZoneDirection, IFocusZone } from '@fluentui/react-focus';
 import { IKeytipProps } from '../../Keytip';
-import { classNamesFunction, divProperties, getNativeProps, warnMutuallyExclusive } from '../../Utilities';
+import {
+  classNamesFunction,
+  divProperties,
+  getNativeProps,
+  warnMutuallyExclusive,
+  focusFirstChild,
+} from '../../Utilities';
 import { IProcessedStyleSet } from '../../Styling';
 import { KeytipManager } from 'office-ui-fabric-react/lib/utilities/keytips/KeytipManager';
 import {
@@ -37,6 +43,44 @@ const useKeytips = (persistedKeytips: { [uniqueID: string]: IKeytipProps }, keyt
     };
   }, [persistedKeytips, keytipManager]);
 };
+
+const useComponentRef = (
+  props: IOverflowSetProps,
+  focusSucceeded: boolean | undefined,
+  divContainer: React.RefObject<HTMLDivElement>,
+  forceIntoFirstElement?: boolean,
+  focusZone: { current: { focus: (arg0: boolean | undefined) => boolean | undefined } },
+) => {
+  React.useImperativeHandle(
+    props.componentRef,
+    () => ({
+      get checked() {
+        return !!forceIntoFirstElement;
+      },
+      focus() {
+        if (props.doNotContainWithinFocusZone) {
+          if (divContainer.current) {
+            focusSucceeded = focusFirstChild(divContainer.current);
+          }
+        } else if (focusZone.current) {
+          focusSucceeded = focusZone.current.focus(forceIntoFirstElement);
+        }
+      },
+    }),
+    [],
+  );
+};
+
+// let focusSucceeded = false;
+// // tslint:disable-next-line:deprecation
+// if (this.props.doNotContainWithinFocusZone) {
+//   if (this._divContainer.current) {
+//     focusSucceeded = focusFirstChild(this._divContainer.current);
+//   }
+// } else if (this._focusZone.current) {
+//   focusSucceeded = this._focusZone.current.focus(forceIntoFirstElement);
+// }
+// return focusSucceeded;
 
 export const OverflowSetBase: React.FunctionComponent<IOverflowSetProps> = (props: IOverflowSetProps) => {
   const focusZone = React.useRef<IFocusZone>(null);
