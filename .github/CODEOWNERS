@@ -80,6 +80,7 @@ packages/office-ui-fabric-react/src/components/ActivityItem/ @xugao
 packages/office-ui-fabric-react/src/components/Announced/ @natalieethell
 packages/office-ui-fabric-react/src/components/Breadcrumb/ @xugao
 packages/office-ui-fabric-react/src/components/Button/ @khmakoto
+packages/react-next/src/components/Button/ @khmakoto
 packages/office-ui-fabric-react/src/components/Calendar/ @lorejoh
 packages/office-ui-fabric-react/src/components/Callout/ @joschect
 packages/office-ui-fabric-react/src/components/react-cards/Card/  @khmakoto
@@ -112,6 +113,7 @@ packages/react-next/src/components/Image/ @dzearing
 packages/office-ui-fabric-react/src/components/Label/ @khmakoto
 packages/office-ui-fabric-react/src/components/Layer/  @ThomasMichon
 packages/office-ui-fabric-react/src/components/Link/ @khmakoto
+packages/react-next/src/components/Link/ @khmakoto
 packages/office-ui-fabric-react/src/components/List/ @KevinTCoughlin
 packages/office-ui-fabric-react/src/components/MarqueeSelection/ @dzearing
 packages/office-ui-fabric-react/src/components/MessageBar/ @ecraig12345
