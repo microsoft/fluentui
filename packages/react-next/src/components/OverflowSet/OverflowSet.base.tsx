@@ -15,6 +15,7 @@ import {
   IOverflowSetProps,
   IOverflowSetStyles,
   IOverflowSetStyleProps,
+  IOverflowSet,
 } from './OverflowSet.types';
 
 const getClassNames = classNamesFunction<IOverflowSetStyleProps, IOverflowSetStyles>();
@@ -51,15 +52,34 @@ const useComponentRef = (
 ) => {
   React.useImperativeHandle(
     props.componentRef,
-    () => ({
-      focus() {
+    (): IOverflowSet => ({
+      focus: (forceIntoFirstElement?: boolean): boolean => {
+        let focusSucceeded = false;
         if (props.doNotContainWithinFocusZone) {
           if (divContainer.current) {
-            focusFirstChild(divContainer.current);
+            focusSucceeded = focusFirstChild(divContainer.current);
           }
         } else if (focusZone.current) {
-          focusZone.current.focusElement(childElement);
+          focusSucceeded = focusZone.current.focusElement(childElement);
         }
+        return focusSucceeded;
+      },
+      focusElement: (hildElement?: HTMLElement) => {
+        let focusSucceeded = false;
+
+        if (!childElement) {
+          return false;
+        }
+        // tslint:disable-next-line:deprecation
+        if (this.props.doNotContainWithinFocusZone) {
+          if (this._divContainer.current && elementContains(this._divContainer.current, childElement)) {
+            childElement.focus();
+            focusSucceeded = document.activeElement === childElement;
+          }
+        } else if (this._focusZone.current) {
+          focusSucceeded = this._focusZone.current.focusElement(childElement);
+        }
+        return focusSucceeded;
       },
     }),
     [],
