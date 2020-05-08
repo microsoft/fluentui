@@ -1,3 +1,4 @@
+export * from './a11yModalize';
 export * from './Async';
 export * from './AutoScroll';
 export * from './BaseComponent';
