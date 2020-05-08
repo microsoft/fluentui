@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Adding disabledFeatures switches",
+  "packageName": "@uifabric/utilities",
+  "email": "phkuo@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-05-08T02:07:17.879Z"
+}
