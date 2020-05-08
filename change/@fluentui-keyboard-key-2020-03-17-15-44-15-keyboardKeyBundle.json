@@ -1,9 +1,0 @@
-{
-  "type": "minor",
-  "comment": "keyboard-key: Reducing bundle size.",
-  "packageName": "@fluentui/keyboard-key",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "commit": "90824c77454347b6ee90de51173de02fa47f54a1",
-  "dependentChangeType": "patch",
-  "date": "2020-03-17T22:44:15.486Z"
-}

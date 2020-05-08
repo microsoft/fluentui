@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "FocusZone: Converging defaultTabbableElement/defaultActiveElement and bringing shouldFocusInnerElementWhenReceivedFocus to v7.",
-  "packageName": "@fluentui/react-focus",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-04-24T00:45:32.585Z"
-}
