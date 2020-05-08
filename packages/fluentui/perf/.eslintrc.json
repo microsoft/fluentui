@@ -1,5 +1,5 @@
 {
-  "extends": ["../../../scripts/eslint/index"],
+  "extends": ["../../../scripts/eslint/v0"],
   "rules": {
     "no-console": "off"
   },

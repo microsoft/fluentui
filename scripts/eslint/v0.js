@@ -13,6 +13,8 @@ module.exports = {
     browser: true,
     'jest/globals': true,
   },
+  // matched relative to cwd
+  ignorePatterns: ['coverage', 'dist', 'etc', 'lib', 'lib-commonjs', 'node_modules', 'temp'],
   rules: {
     'react-hooks/exhaustive-deps': 'error',
     'react-hooks/rules-of-hooks': 'error',
