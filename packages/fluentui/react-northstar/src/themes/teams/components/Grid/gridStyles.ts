@@ -2,10 +2,8 @@ import { GridVariables } from './gridVariables';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { GridProps } from '../../../../components/Grid/Grid';
 
-const getCSSTemplateValue = (template: string | number): string => {
-  const templateAsNumber = Number(template);
-
-  return !isNaN(templateAsNumber) && templateAsNumber > 0 ? `repeat(${template}, 1fr)` : String(template);
+const getCSSTemplateValue = (template: number, gap: string = ''): string => {
+  return Array.from({ length: template }, () => '1fr').join(` ${gap} `);
 };
 
 const gridStyles: ComponentSlotStylesPrepared<GridProps, GridVariables> = {
@@ -22,11 +20,11 @@ const gridStyles: ComponentSlotStylesPrepared<GridProps, GridVariables> = {
 
       ...(rows && !columns && { gridAutoFlow: 'column' }),
       ...(rows && {
-        gridTemplateRows: getCSSTemplateValue(rows),
+        gridTemplateRows: getCSSTemplateValue(rows, gridGap),
         msGridRows: getCSSTemplateValue(rows),
       }),
       ...(columns && {
-        gridTemplateColumns: getCSSTemplateValue(columns),
+        gridTemplateColumns: getCSSTemplateValue(columns, gridGap),
         msGridColumns: getCSSTemplateValue(columns),
       }),
 
