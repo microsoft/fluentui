@@ -1,8 +1,17 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Thu, 07 May 2020 01:06:55 GMT and should not be manually modified.
+This log was last generated on Fri, 08 May 2020 12:35:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.23.22](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.23.22)
+
+Fri, 08 May 2020 12:35:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.23.21..@uifabric/experiments_v7.23.22)
+
+### Patches
+
+- update snapshots for merge-styles change to not generate class with no styles ([PR #13029](https://github.com/microsoft/fluentui/pull/13029) by pingj@microsoft.com)
 
 ## [7.23.21](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.23.21)
 
