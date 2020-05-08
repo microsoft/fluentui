@@ -1,5 +1,4 @@
 import * as React from 'react';
-
 import { FocusZone, FocusZoneDirection, IFocusZone } from '@fluentui/react-focus';
 import { IKeytipProps } from '../../Keytip';
 import {
@@ -12,7 +11,7 @@ import {
   warnMutuallyExclusive,
 } from '../../Utilities';
 import { IProcessedStyleSet } from '../../Styling';
-import { KeytipManager } from '../../utilities/keytips/KeytipManager';
+import { KeytipManager } from 'office-ui-fabric-react/lib/utilities/keytips/KeytipManager';
 import {
   IOverflowSet,
   IOverflowSetItemProps,
