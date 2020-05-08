@@ -1,5 +1,5 @@
 import felaExpandCssShorthandsPlugin from 'src/utils/felaExpandCssShorthandsPlugin';
-import { ICSSInJSStyle } from '@fluentui/styles/src';
+import { ICSSInJSStyle } from '@fluentui/styles';
 
 const expandCssShorthands = felaExpandCssShorthandsPlugin();
 
