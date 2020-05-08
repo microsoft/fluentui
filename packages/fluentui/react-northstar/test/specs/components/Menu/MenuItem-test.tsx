@@ -47,7 +47,6 @@ describe('MenuItem', () => {
     const menuItem = mountWithProviderAndGetComponent(MenuItem, <MenuItem>Home</MenuItem>)
       .find('.ui-menu__item__wrapper')
       .hostNodes();
-
     expect(menuItem.is('li')).toBe(true);
     expect(menuItem.childAt(0).exists()).toBe(false);
     expect(menuItem.text()).toBe('Home');

@@ -383,9 +383,7 @@ export const MenuItem: React.FC<WithAsProp<MenuItemProps>> & FluentComponentStat
     });
   };
 
-  const menuItemInner = childrenExist(children) ? (
-    children
-  ) : (
+  const menuItemInner = (
     <Ref innerRef={itemRef}>
       <ElementType
         {...getA11yProps('root', {
@@ -458,7 +456,7 @@ export const MenuItem: React.FC<WithAsProp<MenuItemProps>> & FluentComponentStat
       overrideProps: () => ({
         children: (
           <>
-            {menuItemInner}
+            {childrenExist(children) ? children : menuItemInner}
             {maybeSubmenu}
           </>
         ),
