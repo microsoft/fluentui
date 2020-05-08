@@ -35,6 +35,7 @@ $checkboxTransitionTiming: cubic-bezier(0.4, 0, 0.23, 1);
 
           @include high-contrast {
             border-color: Highlight;
+            color: Highlight;
           }
         }
       }
@@ -75,6 +76,10 @@ $checkboxTransitionTiming: cubic-bezier(0.4, 0, 0.23, 1);
         .checkbox,
         .checkbox:after {
           border-color: var($semanticColorsInputBackgroundCheckedHovered);
+
+          @include high-contrast {
+            border-color: WindowText;
+          }
         }
 
         .checkmark {
@@ -167,6 +172,10 @@ $checkboxTransitionTiming: cubic-bezier(0.4, 0, 0.23, 1);
   &.indeterminate {
     border-color: var($semanticColorsInputBackgroundChecked);
 
+    @include high-contrast {
+      border-color: WindowText;
+    }
+
     &::after {
       content: '';
       border-radius: var($effectsRoundedCorner2);
@@ -182,6 +191,10 @@ $checkboxTransitionTiming: cubic-bezier(0.4, 0, 0.23, 1);
       transition-property: background, border, border-color;
       transition-duration: $checkboxTransitionDuration;
       transition-timing-function: $checkboxTransitionTiming;
+
+      @include high-contrast {
+        border-color: WindowText;
+      }
     }
 
     &.disabled::after {
@@ -212,6 +225,7 @@ $checkboxTransitionTiming: cubic-bezier(0.4, 0, 0.23, 1);
 
   &.disabled {
     border-color: var($semanticColorsDisabledBodySubtext);
+
     @include high-contrast {
       border-color: GrayText;
     }
@@ -219,6 +233,9 @@ $checkboxTransitionTiming: cubic-bezier(0.4, 0, 0.23, 1);
 
   &.checked.disabled {
     background: var($semanticColorsDisabledBodySubtext);
+    @include high-contrast {
+      background: Window;
+    }
   }
 }
 
