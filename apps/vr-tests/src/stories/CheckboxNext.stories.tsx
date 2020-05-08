@@ -5,7 +5,7 @@ import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
 import { Checkbox, Persona, PersonaSize } from '@fluentui/react-next';
 
-storiesOf('Checkbox VNext', module)
+storiesOf('Checkbox Next', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story =>
     // prettier-ignore
@@ -52,7 +52,7 @@ storiesOf('Checkbox VNext', module)
     />
   ));
 
-storiesOf('Checkbox Indeterminate', module)
+storiesOf('Checkbox Next Indeterminate', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story =>
     // prettier-ignore
