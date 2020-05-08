@@ -35,6 +35,7 @@ const GridExample = () => (
     Grid with explicitly specified rows:
     <Grid
       styles={{
+        gridAutoFlow: 'column',
         gridTemplateRows: '2fr repeat(2, 1fr)',
         msGridRows: '2fr (1fr)[2]',
       }}

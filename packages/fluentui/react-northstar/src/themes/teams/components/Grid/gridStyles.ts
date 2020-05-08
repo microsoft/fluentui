@@ -21,11 +21,11 @@ const gridStyles: ComponentSlotStylesPrepared<GridProps, GridVariables> = {
       ...(rows && !columns && { gridAutoFlow: 'column' }),
       ...(rows && {
         gridTemplateRows: getCSSTemplateValue(rows),
-        msGridRows: getCSSTemplateValue(rows),
+        msGridRows: getCSSTemplateValue(rows, gridGap),
       }),
       ...(columns && {
-        gridTemplateColumns: getCSSTemplateValue(columns, gridGap),
-        msGridColumns: getCSSTemplateValue(columns),
+        gridTemplateColumns: getCSSTemplateValue(columns),
+        msGridColumns: getCSSTemplateValue(columns, gridGap),
       }),
 
       '& > *': { outlineOffset: '-3px' },
