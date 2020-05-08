@@ -4,8 +4,6 @@ import { Customizer } from './Customizer';
 import { Customizations } from './Customizations';
 import { safeMount } from '@uifabric/test-utilities';
 
-// tslint:disable:typedef
-
 @customizable('Foo', ['field'])
 class Foo extends React.Component<{ field?: string }, {}> {
   public render(): JSX.Element {
