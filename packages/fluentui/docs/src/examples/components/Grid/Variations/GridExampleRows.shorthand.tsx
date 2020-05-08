@@ -39,6 +39,9 @@ const GridExample = () => (
         gridTemplateRows: '2fr repeat(2, 1fr)',
         msGridRows: '2fr (1fr)[2]',
       }}
+      variables={{
+        defaultColumnCount: undefined,
+      }}
       content={images}
     />
   </div>
