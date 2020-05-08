@@ -257,6 +257,7 @@ export const MenuItem: React.FC<WithAsProp<MenuItemProps>> & FluentComponentStat
       menu,
       inSubmenu,
       isFromKeyboard,
+      hasContent: !!content,
     }),
     mapPropsToInlineStyles: () => ({
       className,
