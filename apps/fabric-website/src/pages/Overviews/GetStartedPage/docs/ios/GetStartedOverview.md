@@ -1,4 +1,4 @@
-Fluent UI Apple is an open-source, native library used by Microsoft 365 apps. We offer customizations and custom controls that deliver unique Fluent experiences to customers using iOS devices.
+Fluent UI Apple is an [open-source](https://github.com/microsoft/fluentui-apple), native library used by Microsoft 365 apps. We offer customizations and custom controls that deliver unique Fluent experiences to customers using iOS devices.
 
 ### Controls
 
