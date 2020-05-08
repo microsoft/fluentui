@@ -16,10 +16,12 @@ export interface FocusZoneProperties {
   direction?: FocusZoneDirection;
 
   /**
-   * Function which uses root element as parameter to return the intial tabbable element.
+   * Optionally defines the initial tabbable element inside the FocusZone.
+   * If a string is passed then it is treated as a selector for identifying the initial tabbable element.
+   * If a function is passed then it uses the root element as a parameter to return the initial tabbable element.
    * For example, when there is a chat with a bottom-up approach, it is expected that the last chat message is tabbable (active), not the first default one.
    */
-  defaultTabbableElement?: (root: HTMLElement) => HTMLElement;
+  defaultTabbableElement?: string | ((root: HTMLElement) => HTMLElement);
 
   /**
    * If a default tabbable element should be force focused on FocusZone mount.

@@ -2,6 +2,27 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "date": "Fri, 08 May 2020 12:35:40 GMT",
+      "tag": "@uifabric/merge-styles_v7.11.4",
+      "version": "7.11.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "add forcedColorAdjust",
+            "author": "xgao@microsoft.com",
+            "commit": "70e25f50621034c277df23f832ed1b13e1a824c8",
+            "package": "@uifabric/merge-styles"
+          },
+          {
+            "comment": "Prevent classname with empty style generation",
+            "author": "pingj@microsoft.com",
+            "commit": "a5b44ed833a4614d1333fa161ffd8fd467d33446",
+            "package": "@uifabric/merge-styles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 07 May 2020 01:06:55 GMT",
       "tag": "@uifabric/merge-styles_v7.11.3",
       "version": "7.11.3",
