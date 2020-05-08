@@ -447,6 +447,7 @@ export type IClassNames<T> = {
 export interface IClassNamesFunctionOptions {
     cacheSize?: number;
     disableCaching?: boolean;
+    useStaticStyles?: boolean;
 }
 
 // @public
@@ -1158,6 +1159,12 @@ export function shouldWrapFocus(element: HTMLElement, noWrapDataAttribute: 'data
 
 // @public
 export function styled<TComponentProps extends IPropsWithStyles<TStyleProps, TStyleSet>, TStyleProps, TStyleSet extends IStyleSet<TStyleSet>>(Component: React.ComponentClass<TComponentProps> | React.FunctionComponent<TComponentProps>, baseStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>, getProps?: (props: TComponentProps) => Partial<TComponentProps>, customizable?: ICustomizableProps, pure?: boolean): React.FunctionComponent<TComponentProps>;
+
+// @public (undocumented)
+export type StyleFunction<TStyleProps, TStyleSet> = IStyleFunctionOrObject<TStyleProps, TStyleSet> & {
+    __cachedInputs__: (IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined)[];
+    __noStyleOverride__: boolean;
+};
 
 // @public
 export const tableProperties: string[];

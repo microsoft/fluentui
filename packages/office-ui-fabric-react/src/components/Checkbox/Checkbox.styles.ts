@@ -195,7 +195,6 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
         cursor: disabled ? 'default' : 'pointer',
         position: 'relative',
         userSelect: 'none',
-        textAlign: 'left',
       },
       reversed && {
         flexDirection: 'row-reverse',
