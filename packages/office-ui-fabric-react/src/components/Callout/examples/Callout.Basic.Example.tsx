@@ -1,15 +1,6 @@
 import * as React from 'react';
-import {
-  DefaultButton,
-  Callout,
-  Link,
-  getTheme,
-  FontWeights,
-  mergeStyleSets,
-  getId,
-  Text,
-} from 'office-ui-fabric-react';
-import { useBoolean } from '@uifabric/react-hooks';
+import { DefaultButton, Callout, Link, getTheme, FontWeights, mergeStyleSets, Text } from 'office-ui-fabric-react';
+import { useBoolean, useId } from '@uifabric/react-hooks';
 
 const theme = getTheme();
 const styles = mergeStyleSets({
@@ -59,12 +50,11 @@ const styles = mergeStyleSets({
   ],
 });
 
-const labelId: string = getId('callout-label');
-const descriptionId: string = getId('callout-description');
-
 export const CalloutBasicExample: React.FunctionComponent = () => {
   const [isCalloutVisible, { toggle: toggleIsCalloutVisible }] = useBoolean(false);
 
+  const labelId: string = useId('callout-label');
+  const descriptionId: string = useId('callout-description');
   return (
     <>
       <div className={styles.buttonArea}>
