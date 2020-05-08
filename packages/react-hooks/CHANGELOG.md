@@ -1,8 +1,26 @@
 # Change Log - @uifabric/react-hooks
 
-This log was last generated on Thu, 30 Apr 2020 12:31:44 GMT and should not be manually modified.
+This log was last generated on Thu, 07 May 2020 01:06:55 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.3.1](https://github.com/microsoft/fluentui/tree/@uifabric/react-hooks_v7.3.1)
+
+Thu, 07 May 2020 01:06:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/react-hooks_v7.3.0..@uifabric/react-hooks_v7.3.1)
+
+### Patches
+
+- Addressing commonjs imports. ([PR #13031](https://github.com/microsoft/fluentui/pull/13031) by dzearing@microsoft.com)
+
+## [7.3.0](https://github.com/microsoft/fluentui/tree/@uifabric/react-hooks_v7.3.0)
+
+Tue, 05 May 2020 12:34:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/react-hooks_v7.2.2..@uifabric/react-hooks_v7.3.0)
+
+### Minor changes
+
+- Add new helper React hooks `useAsync` and `useOnEvent` for using APIs that require cleanup on unmount ([PR #12926](https://github.com/microsoft/fluentui/pull/12926) by miclo@microsoft.com)
 
 ## [7.2.2](https://github.com/microsoft/fluentui/tree/@uifabric/react-hooks_v7.2.2)
 

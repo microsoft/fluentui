@@ -34,11 +34,6 @@ const DayPickerStrings = {
   closeButtonAriaLabel: 'Close',
 };
 
-export interface ICalendarButtonExampleState {
-  showCalendar: boolean;
-  selectedDate: Date | null;
-}
-
 export interface ICalendarButtonExampleProps {
   isDayPickerVisible?: boolean;
   isMonthPickerVisible?: boolean;
@@ -90,7 +85,7 @@ export const CalendarButtonExample: React.FunctionComponent<ICalendarButtonExamp
           onDismiss={toggleShowCalendar}
           setInitialFocus
         >
-          <FocusTrapZone firstFocusableSelector="ms-DatePicker-day--today" isClickableOutsideFocusTrap={true}>
+          <FocusTrapZone firstFocusableSelector="ms-DatePicker-day--today" isClickableOutsideFocusTrap>
             <Calendar
               onSelectDate={onSelectDate}
               onDismiss={toggleShowCalendar}

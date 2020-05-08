@@ -4,9 +4,11 @@
 
 ```ts
 
-import { IButtonProps } from 'office-ui-fabric-react/lib/components/Button/Button.types';
+import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
+import { IButtonProps as IButtonProps_2 } from 'office-ui-fabric-react/lib/components/Button/Button.types';
 import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import { IComponentAs } from 'office-ui-fabric-react/lib/Utilities';
+import { IFocusZoneProps } from '@fluentui/react-focus';
 import { IIconProps } from 'office-ui-fabric-react/lib/Icon';
 import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
 import { IRefObject } from 'office-ui-fabric-react/lib/Utilities';
@@ -31,6 +33,22 @@ export const Fabric: React.FunctionComponent<IFabricProps>;
 
 // @public (undocumented)
 export const FabricBase: React.ForwardRefExoticComponent<IFabricProps & React.RefAttributes<HTMLDivElement>>;
+
+// @public
+export const getMeasurementCache: () => {
+    getCachedMeasurement: (data: any) => number | undefined;
+    addMeasurementToCache: (data: any, measurement: number) => void;
+};
+
+// @public
+export const getNextResizeGroupStateProvider: (measurementCache?: {
+    getCachedMeasurement: (data: any) => number | undefined;
+    addMeasurementToCache: (data: any, measurement: number) => void;
+}) => {
+    getNextState: (props: IResizeGroupProps, currentState: IResizeGroupState, getElementToMeasureDimension: () => number, newContainerDimension?: number | undefined) => IResizeGroupState | undefined;
+    shouldRenderDataForMeasurement: (dataToMeasure: any) => boolean;
+    getInitialResizeGroupState: (data: any) => IResizeGroupState;
+};
 
 // @public
 export interface ICheckbox {
@@ -293,7 +311,7 @@ export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement> {
     downArrowButtonStyles?: Partial<IButtonStyles>;
     // Warning: (ae-forgotten-export) The symbol "ISpinButtonClassNames" needs to be exported by the entry point index.d.ts
     getClassNames?: (theme: ITheme, disabled: boolean, isFocused: boolean, keyboardSpinDirection: KeyboardSpinDirection, labelPosition?: Position, className?: string) => ISpinButtonClassNames;
-    iconButtonProps?: IButtonProps;
+    iconButtonProps?: IButtonProps_2;
     iconProps?: IIconProps;
     incrementButtonAriaLabel?: string;
     incrementButtonIcon?: IIconProps;
@@ -443,6 +461,113 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
     constructor(props: ISpinButtonProps);
     // (undocumented)
     componentWillUnmount(): void;
+    focus(forceIntoFirstElement?: boolean): boolean;
+    focusElement(childElement?: HTMLElement): boolean;
+    // (undocumented)
+    render(): JSX.Element;
+    // (undocumented)
+    UNSAFE_componentWillUpdate(): void;
+}
+
+// @public
+export const Pivot: React.FunctionComponent<IPivotProps>;
+
+// @public
+export class PivotBase extends React.Component<IPivotProps, IPivotState> {
+    constructor(props: IPivotProps);
+    focus(): void;
+    // (undocumented)
+    render(): JSX.Element;
+    }
+
+// @public (undocumented)
+export class PivotItem extends React.Component<IPivotItemProps, {}> {
+    constructor(props: IPivotItemProps);
+    // (undocumented)
+    render(): JSX.Element;
+}
+
+// @public (undocumented)
+export enum PivotLinkFormat {
+    links = 0,
+    tabs = 1
+}
+
+// @public (undocumented)
+export enum PivotLinkSize {
+    large = 1,
+    normal = 0
+}
+
+// @public
+export const Popup: React.ForwardRefExoticComponent<IPopupProps & React.RefAttributes<HTMLDivElement>>;
+
+// @public (undocumented)
+export const ResizeGroup: typeof ResizeGroupBase;
+
+// @public (undocumented)
+export class ResizeGroupBase extends React.Component<IResizeGroupProps, IResizeGroupState> {
+    constructor(props: IResizeGroupProps);
+    // (undocumented)
+    componentDidMount(): void;
+    // (undocumented)
+    componentDidUpdate(prevProps: IResizeGroupProps): void;
+    // (undocumented)
+    componentWillUnmount(): void;
+    // (undocumented)
+    remeasure(): void;
+    // (undocumented)
+    render(): JSX.Element;
+    // (undocumented)
+    UNSAFE_componentWillReceiveProps(nextProps: IResizeGroupProps): void;
+    }
+
+// @public (undocumented)
+export enum ResizeGroupDirection {
+    // (undocumented)
+    horizontal = 0,
+    // (undocumented)
+    vertical = 1
+}
+
+// @public (undocumented)
+export const SearchBox: React.FunctionComponent<ISearchBoxProps>;
+
+// @public (undocumented)
+export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxState> {
+    constructor(props: ISearchBoxProps);
+    // (undocumented)
+    static defaultProps: Pick<ISearchBoxProps, 'disableAnimation' | 'clearButtonProps'>;
+    focus(): void;
+    hasFocus(): boolean;
+    // (undocumented)
+    render(): JSX.Element;
+    // (undocumented)
+    UNSAFE_componentWillReceiveProps(newProps: ISearchBoxProps): void;
+}
+
+// @public (undocumented)
+export const Slider: React.FunctionComponent<ISliderProps>;
+
+// @public (undocumented)
+export class SliderBase extends React.Component<ISliderProps, ISliderState> implements ISlider {
+    constructor(props: ISliderProps);
+    // (undocumented)
+    componentWillUnmount(): void;
+    // (undocumented)
+    static defaultProps: ISliderProps;
+    // (undocumented)
+    focus(): void;
+    // (undocumented)
+    render(): React.ReactElement<{}>;
+    readonly value: number | undefined;
+}
+
+// @public (undocumented)
+export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonState> implements ISpinButton {
+    constructor(props: ISpinButtonProps);
+    // (undocumented)
+    componentWillUnmount(): void;
     // (undocumented)
     static defaultProps: DefaultProps;
     // (undocumented)
@@ -457,16 +582,7 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
 export const Toggle: React.FunctionComponent<IToggleProps>;
 
 // @public (undocumented)
-export class ToggleBase extends React.Component<IToggleProps, IToggleState> implements IToggle {
-    constructor(props: IToggleProps);
-    readonly checked: boolean;
-    // (undocumented)
-    focus(): void;
-    // (undocumented)
-    static getDerivedStateFromProps(nextProps: Readonly<IToggleProps>, prevState: Readonly<IToggleState>): Partial<IToggleState> | null;
-    // (undocumented)
-    render(): JSX.Element;
-    }
+export const ToggleBase: React.FunctionComponent;
 
 
 export * from "office-ui-fabric-react/lib/ActivityItem";
@@ -511,19 +627,14 @@ export * from "office-ui-fabric-react/lib/MarqueeSelection";
 export * from "office-ui-fabric-react/lib/MessageBar";
 export * from "office-ui-fabric-react/lib/Modal";
 export * from "office-ui-fabric-react/lib/Nav";
-export * from "office-ui-fabric-react/lib/OverflowSet";
 export * from "office-ui-fabric-react/lib/Overlay";
 export * from "office-ui-fabric-react/lib/Panel";
 export * from "office-ui-fabric-react/lib/Persona";
 export * from "office-ui-fabric-react/lib/Pickers";
-export * from "office-ui-fabric-react/lib/Pivot";
-export * from "office-ui-fabric-react/lib/Popup";
 export * from "office-ui-fabric-react/lib/PositioningContainer";
 export * from "office-ui-fabric-react/lib/ProgressIndicator";
 export * from "office-ui-fabric-react/lib/Rating";
-export * from "office-ui-fabric-react/lib/ResizeGroup";
 export * from "office-ui-fabric-react/lib/ScrollablePane";
-export * from "office-ui-fabric-react/lib/SearchBox";
 export * from "office-ui-fabric-react/lib/SelectableOption";
 export * from "office-ui-fabric-react/lib/SelectedItemsList";
 export * from "office-ui-fabric-react/lib/Selection";

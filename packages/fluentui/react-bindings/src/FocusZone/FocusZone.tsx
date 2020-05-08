@@ -71,6 +71,7 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
     preventDefaultWhenHandled: PropTypes.bool,
     isRtl: PropTypes.bool,
     preventFocusRestoration: PropTypes.bool,
+    pagingSupportDisabled: PropTypes.bool,
   };
 
   static defaultProps: FocusZoneProps = {
@@ -163,6 +164,10 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
 
     // Assign initial tab indexes so that we can set initial focus as appropriate.
     this.updateTabIndexes();
+
+    if (this.props.defaultTabbableElement && typeof this.props.defaultTabbableElement === 'string') {
+      this._activeElement = this.getDocument().querySelector(this.props.defaultTabbableElement) as HTMLElement;
+    }
 
     if (this.props.shouldFocusOnMount) {
       this.focus();
@@ -389,7 +394,7 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
       defaultTabbableElement,
     } = this.props;
 
-    let newActiveElement: HTMLElement | undefined;
+    let newActiveElement: HTMLElement | null | undefined;
     const isImmediateDescendant = this.isImmediateDescendantOfZone(ev.target as HTMLElement);
 
     if (isImmediateDescendant) {
@@ -408,7 +413,10 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
 
     // If an inner focusable element should be focused when FocusZone container receives focus
     if (shouldFocusInnerElementWhenReceivedFocus && ev.target === this._root.current) {
-      const maybeElementToFocus = defaultTabbableElement && defaultTabbableElement(this._root.current);
+      const maybeElementToFocus =
+        defaultTabbableElement &&
+        typeof defaultTabbableElement === 'function' &&
+        defaultTabbableElement(this._root.current);
 
       // try to focus defaultTabbable element
       if (maybeElementToFocus && isElementTabbable(maybeElementToFocus)) {
@@ -419,7 +427,7 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
         this.focus(true);
         if (this._activeElement) {
           // set to null as new active element was handled in method above
-          // @ts-ignore
+
           newActiveElement = null;
         }
       }
@@ -612,13 +620,13 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
           return undefined;
 
         case keyboardKey.PageDown:
-          if (this.moveFocusPaging(true) && !pagingSupportDisabled) {
+          if (!pagingSupportDisabled && this.moveFocusPaging(true)) {
             break;
           }
           return undefined;
 
         case keyboardKey.PageUp:
-          if (this.moveFocusPaging(false) && !pagingSupportDisabled) {
+          if (!pagingSupportDisabled && this.moveFocusPaging(false)) {
             break;
           }
           return undefined;
@@ -1142,9 +1150,12 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
   updateTabIndexes(onElement?: HTMLElement) {
     let element = onElement;
 
-    if (!this._activeElement && this.props.defaultTabbableElement) {
-      // @ts-ignore
-      this._activeElement = this.props.defaultTabbableElement(this._root.current);
+    if (
+      !this._activeElement &&
+      this.props.defaultTabbableElement &&
+      typeof this.props.defaultTabbableElement === 'function'
+    ) {
+      this._activeElement = this.props.defaultTabbableElement(this._root.current as HTMLElement);
     }
 
     if (!element && this._root.current) {
@@ -1263,5 +1274,9 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
     noWrapDataAttribute: 'data-no-vertical-wrap' | 'data-no-horizontal-wrap',
   ): boolean {
     return !!this.props.checkForNoWrap ? shouldWrapFocus(element, noWrapDataAttribute) : true;
+  }
+
+  getDocument(): Document {
+    return getDocument(this._root.current)!;
   }
 }
