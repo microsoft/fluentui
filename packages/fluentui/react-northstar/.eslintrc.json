@@ -1,5 +1,6 @@
 {
   "extends": ["../../../scripts/eslint/v0"],
+  "ignorePatterns": ["src/themes/teams/components/Icon/svg/ProcessedIcons"],
   "overrides": [
     {
       "files": "**/icons/*.tsx",
