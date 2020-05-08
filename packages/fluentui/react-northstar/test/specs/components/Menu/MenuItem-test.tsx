@@ -14,6 +14,7 @@ import Menu from 'src/components/Menu/Menu';
 
 describe('MenuItem', () => {
   isConformant(MenuItem, {
+    constructorName: 'MenuItem',
     eventTargets: {
       onClick: '.ui-menu__item__wrapper',
     },
