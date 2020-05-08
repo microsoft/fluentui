@@ -1,18 +1,11 @@
 import { pxToRem } from '../../../../utils';
 import { StrictColorScheme, ItemType } from '../../../types';
 import { MenuVariables, menuColorAreas } from './menuVariables';
-import {
-  MenuItemProps,
-  MenuItemState,
-  menuItemClassName,
-  menuItemSlotClassNames,
-} from '../../../../components/Menu/MenuItem';
+import { MenuItemStylesProps, menuItemClassName, menuItemSlotClassNames } from '../../../../components/Menu/MenuItem';
 import { getColorScheme } from '../../colors';
 import getIconFillOrOutlineStyles from '../../getIconFillOrOutlineStyles';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import submenuIndicatorUrl from './submenuIndicatorUrl';
-
-type MenuItemPropsAndState = MenuItemProps & MenuItemState;
 
 export const verticalPillsBottomMargin = pxToRem(5);
 export const horizontalPillsRightMargin = pxToRem(8);
@@ -29,7 +22,7 @@ const getFocusedStyles = ({
   variables: v,
   colors,
 }: {
-  props: MenuItemPropsAndState;
+  props: MenuItemStylesProps;
   variables: MenuVariables;
   colors: StrictColorScheme<ItemType<typeof menuColorAreas>>;
 }): ICSSInJSStyle => {
@@ -70,7 +63,7 @@ const pointingBeak = ({
   variables: v,
   colors,
 }: {
-  props: MenuItemProps;
+  props: MenuItemStylesProps;
   variables: MenuVariables;
   colors: StrictColorScheme<ItemType<typeof menuColorAreas>>;
 }): ICSSInJSStyle => {
@@ -116,7 +109,7 @@ const pointingBeak = ({
   };
 };
 
-const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVariables> = {
+const menuItemStyles: ComponentSlotStylesPrepared<MenuItemStylesProps, MenuVariables> = {
   wrapper: ({ props, variables: v }): ICSSInJSStyle => {
     const {
       active,
@@ -436,7 +429,7 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
       },
     },
 
-    ...(!!p.content && {
+    ...(!!p.hasContent && {
       marginRight: pxToRem(10),
     }),
     ...(!p.iconOnly && {

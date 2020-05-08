@@ -47,7 +47,7 @@ import { LayoutProps } from '../../components/Layout/Layout';
 import { ListStylesProps } from '../../components/List/List';
 import { ListItemStylesProps } from '../../components/List/ListItem';
 import { LoaderProps } from '../../components/Loader/Loader';
-import { MenuItemProps } from '../../components/Menu/MenuItem';
+import { MenuItemStylesProps } from '../../components/Menu/MenuItem';
 import { MenuProps } from '../../components/Menu/Menu';
 import { PopupContentStylesProps } from '../../components/Popup/PopupContent';
 import { PortalProps } from '../../components/Portal/Portal';
@@ -135,7 +135,7 @@ export type TeamsThemeStylesProps = {
   ListItem: ListItemStylesProps;
   Loader: LoaderProps;
   Menu: MenuProps;
-  MenuItem: MenuItemProps;
+  MenuItem: MenuItemStylesProps;
   Portal: PortalProps;
   PopupContent: PopupContentStylesProps;
   RadioGroup: RadioGroupProps;

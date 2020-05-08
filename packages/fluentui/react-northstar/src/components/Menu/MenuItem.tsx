@@ -1,4 +1,10 @@
-import { Accessibility, menuItemBehavior, submenuBehavior, indicatorBehavior } from '@fluentui/accessibility';
+import {
+  Accessibility,
+  menuItemBehavior,
+  submenuBehavior,
+  indicatorBehavior,
+  MenuItemBehaviorProps,
+} from '@fluentui/accessibility';
 import { focusAsync } from '@fluentui/react-bindings';
 import { EventListener } from '@fluentui/react-component-event-listener';
 import { Ref } from '@fluentui/react-component-ref';
@@ -7,7 +13,6 @@ import * as _ from 'lodash';
 import cx from 'classnames';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-
 import {
   AutoControlledComponent,
   childrenExist,
@@ -37,7 +42,7 @@ export interface MenuItemProps extends UIComponentProps, ChildrenComponentProps,
    * Accessibility behavior if overridden by the user.
    * @available menuItemAsToolbarButtonBehavior, tabBehavior
    */
-  accessibility?: Accessibility;
+  accessibility?: Accessibility<MenuItemBehaviorProps>;
 
   /** A menu item can be active. */
   active?: boolean;
@@ -133,6 +138,24 @@ export interface MenuItemProps extends UIComponentProps, ChildrenComponentProps,
    */
   onMenuOpenChange?: ComponentEventHandler<MenuItemProps>;
 }
+
+export type MenuItemStylesProps = Required<
+  Pick<
+    MenuItemProps,
+    | 'primary'
+    | 'underlined'
+    | 'active'
+    | 'vertical'
+    | 'pointing'
+    | 'secondary'
+    | 'disabled'
+    | 'iconOnly'
+    | 'pills'
+    | 'icon'
+    | 'menu'
+    | 'inSubmenu'
+  >
+> & { isFromKeyboard: boolean; hasContent: boolean };
 
 export interface MenuItemState {
   isFromKeyboard: boolean;
