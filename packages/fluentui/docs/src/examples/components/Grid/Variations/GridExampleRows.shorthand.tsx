@@ -36,7 +36,7 @@ const GridExample = () => (
     <Grid
       styles={{
         gridTemplateRows: '2fr repeat(2, 1fr)',
-        msGridTemplateRows: '2fr (1fr)[2]',
+        msGridRows: '2fr (1fr)[2]',
       }}
       content={images}
     />

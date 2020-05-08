@@ -205,7 +205,14 @@ class ComponentDoc extends React.Component<ComponentDocProps, ComponentDocState>
                 key={info.displayName}
                 style={{ marginTop: '1rem' }}
               />
-              <Grid columns="auto 300px" styles={{ justifyContent: 'normal', justifyItems: 'stretch' }}>
+              <Grid
+                styles={{
+                  gridTemplateColumns: 'auto 300px',
+                  msGridColumns: `auto 300px`,
+                  justifyContent: 'normal',
+                  justifyItems: 'stretch',
+                }}
+              >
                 <div>
                   <ComponentBestPractices displayName={info.displayName} />
                   <ExampleContext.Provider

@@ -34,11 +34,11 @@ const GridExample = () => (
     <br />
     Grid with explicitly specified columns:
     <Grid
-      content={images}
       styles={{
         gridTemplateColumns: 'repeat(3, 1fr) 2fr 2fr 110px 14rem 50px 20%',
-        msGridTemplateColumns: '(1fr)[3] 2fr 2fr 110px 14rem 50px 20%',
+        msGridColumns: '(1fr)[3] 2fr 2fr 110px 14rem 50px 20%',
       }}
+      content={images}
     />
   </div>
 );

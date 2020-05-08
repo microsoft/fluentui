@@ -36,7 +36,7 @@ const GridExample = () => (
     <Grid
       styles={{
         gridTemplateColumns: 'repeat(3, 1fr) 2fr 2fr 110px 14rem 50px 20%',
-        msGridTemplateColumns: '(1fr)[3] 2fr 2fr 110px 14rem 50px 20%',
+        msGridColumns: '(1fr)[3] 2fr 2fr 110px 14rem 50px 20%',
       }}
     >
       {images}

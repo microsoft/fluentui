@@ -20,7 +20,7 @@ const gridStyles: ComponentSlotStylesPrepared<GridProps, GridVariables> = {
 
       ...(rows && !columns && { gridAutoFlow: 'column' }),
       ...(rows && {
-        gridTemplateRows: getCSSTemplateValue(rows, gridGap),
+        gridTemplateRows: getCSSTemplateValue(rows),
         msGridRows: getCSSTemplateValue(rows),
       }),
       ...(columns && {
