@@ -81,10 +81,8 @@ MenuDivider.displayName = 'MenuDivider';
 
 MenuDivider.defaultProps = {
   as: 'li',
-  accessibility: menuDividerBehavior as Accessibility,
+  accessibility: menuDividerBehavior,
 };
-
-MenuDivider.handledProps = Object.keys(MenuDivider.propTypes) as any;
 
 MenuDivider.propTypes = {
   ...commonPropTypes.createCommon(),
@@ -93,6 +91,8 @@ MenuDivider.propTypes = {
   vertical: PropTypes.bool,
   inSubmenu: PropTypes.bool,
 };
+
+MenuDivider.handledProps = Object.keys(MenuDivider.propTypes) as any;
 
 MenuDivider.create = createShorthandFactory({ Component: MenuDivider, mappedProp: 'content' });
 
