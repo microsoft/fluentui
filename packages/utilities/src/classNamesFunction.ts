@@ -76,16 +76,9 @@ export function classNamesFunction<TStyleProps extends {}, TStyleSet extends ISt
     styleFunctionOrObject: IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined,
     styleProps: TStyleProps = {} as TStyleProps,
   ): IProcessedStyleSet<TStyleSet> => {
-    getClassNamesCount++;
-    let current: Map<any, any> = map;
-    const { theme } = styleProps as any;
-    const rtl = theme && theme.rtl !== undefined ? theme.rtl : getRTL();
-
-    const disableCaching = options.disableCaching;
-
     // If useStaticStyles is true, styleFunctionOrObject returns slot to classname mappings.
     // If there is also no style overrides, we can skip merge styles completely and
-    // simply return the result from the style funcion
+    // simply return the result from the style funcion.
     if (
       options.useStaticStyles &&
       typeof styleFunctionOrObject === 'function' &&
@@ -93,6 +86,13 @@ export function classNamesFunction<TStyleProps extends {}, TStyleSet extends ISt
     ) {
       return styleFunctionOrObject(styleProps) as IProcessedStyleSet<TStyleSet>;
     }
+
+    getClassNamesCount++;
+    let current: Map<any, any> = map;
+    const { theme } = styleProps as any;
+    const rtl = theme && theme.rtl !== undefined ? theme.rtl : getRTL();
+
+    const disableCaching = options.disableCaching;
 
     // On reset of our stylesheet, reset memoized cache.
     if (currentMemoizedClassNames !== _memoizedClassNames) {
