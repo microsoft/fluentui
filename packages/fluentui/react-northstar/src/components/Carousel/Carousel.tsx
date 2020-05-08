@@ -56,7 +56,7 @@ export interface CarouselProps extends UIComponentProps, ChildrenComponentProps 
   accessibility?: Accessibility<CarouselBehaviorProps>;
 
   /** Index of the currently active item. */
-  activeIndex?: number | string;
+  activeIndex?: number;
 
   /**
    * Sets the aria-roledescription attribute.
@@ -72,7 +72,7 @@ export interface CarouselProps extends UIComponentProps, ChildrenComponentProps 
   circular?: boolean;
 
   /** Initial activeIndex value. */
-  defaultActiveIndex?: number | string;
+  defaultActiveIndex?: number;
 
   /**
    * Message generator for item position in the carousel. Used to generate the
@@ -237,6 +237,7 @@ export const Carousel: React.FC<WithAsProp<CarouselProps>> &
     const lastItemIndex = items.length - 1;
     const lastActiveIndex = state.activeIndex;
     let nextActiveIndex = index;
+    const lastActiveIndex = state.activeIndex;
 
     if (index < 0) {
       if (!circular) {
@@ -469,11 +470,11 @@ Carousel.propTypes = {
   ...commonPropTypes.createCommon({
     content: false,
   }),
-  activeIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  activeIndex: PropTypes.number,
   ariaRoleDescription: PropTypes.string,
   ariaLabel: PropTypes.string,
   circular: PropTypes.bool,
-  defaultActiveIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  defaultActiveIndex: PropTypes.number,
   getItemPositionText: PropTypes.func,
   items: customPropTypes.collectionShorthand,
   navigation: PropTypes.oneOfType([customPropTypes.collectionShorthand, customPropTypes.itemShorthand]),

@@ -6,8 +6,6 @@ module.exports.postprocessCommonjsTask = function() {
 
   mod('lib-commonjs/**/*.{ts,js}').asTypescript((node, modder) => {
     if (ts.isCallExpression(node)) {
-      console.log(node.expression.getText());
-
       if (node.expression.getText() === 'require' && node.arguments.length === 1) {
         const arg = node.arguments[0];
         if (ts.isStringLiteral(arg)) {

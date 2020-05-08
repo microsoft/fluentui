@@ -63,9 +63,7 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
         role="grid"
       >
         <div
-          className=
-              ms-DetailsList-headerWrapper
-
+          className="ms-DetailsList-headerWrapper"
           onKeyDown={[Function]}
           role="presentation"
         >
@@ -163,9 +161,7 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
               role="columnheader"
             >
               <span
-                className=
-                    ms-DetailsHeader-checkTooltip
-
+                className="ms-DetailsHeader-checkTooltip"
               >
                 <div
                   aria-checked={false}
@@ -765,9 +761,7 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
           </div>
         </div>
         <div
-          className=
-              ms-DetailsList-contentWrapper
-
+          className="ms-DetailsList-contentWrapper"
           onKeyDown={[Function]}
           role="presentation"
         >
@@ -958,7 +952,6 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                             className=
                                 ms-DetailsRow-check
                                 ms-Check-checkHost
-
                                 {
                                   -moz-osx-font-smoothing: grayscale;
                                   -webkit-font-smoothing: antialiased;
@@ -1420,7 +1413,6 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                             className=
                                 ms-DetailsRow-check
                                 ms-Check-checkHost
-
                                 {
                                   -moz-osx-font-smoothing: grayscale;
                                   -webkit-font-smoothing: antialiased;
@@ -1882,7 +1874,6 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                             className=
                                 ms-DetailsRow-check
                                 ms-Check-checkHost
-
                                 {
                                   -moz-osx-font-smoothing: grayscale;
                                   -webkit-font-smoothing: antialiased;
@@ -2344,7 +2335,6 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                             className=
                                 ms-DetailsRow-check
                                 ms-Check-checkHost
-
                                 {
                                   -moz-osx-font-smoothing: grayscale;
                                   -webkit-font-smoothing: antialiased;
@@ -2806,7 +2796,6 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                             className=
                                 ms-DetailsRow-check
                                 ms-Check-checkHost
-
                                 {
                                   -moz-osx-font-smoothing: grayscale;
                                   -webkit-font-smoothing: antialiased;
@@ -3268,7 +3257,6 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                             className=
                                 ms-DetailsRow-check
                                 ms-Check-checkHost
-
                                 {
                                   -moz-osx-font-smoothing: grayscale;
                                   -webkit-font-smoothing: antialiased;
@@ -3730,7 +3718,6 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                             className=
                                 ms-DetailsRow-check
                                 ms-Check-checkHost
-
                                 {
                                   -moz-osx-font-smoothing: grayscale;
                                   -webkit-font-smoothing: antialiased;
@@ -4192,7 +4179,6 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                             className=
                                 ms-DetailsRow-check
                                 ms-Check-checkHost
-
                                 {
                                   -moz-osx-font-smoothing: grayscale;
                                   -webkit-font-smoothing: antialiased;
@@ -4654,7 +4640,6 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                             className=
                                 ms-DetailsRow-check
                                 ms-Check-checkHost
-
                                 {
                                   -moz-osx-font-smoothing: grayscale;
                                   -webkit-font-smoothing: antialiased;
@@ -5116,7 +5101,6 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                             className=
                                 ms-DetailsRow-check
                                 ms-Check-checkHost
-
                                 {
                                   -moz-osx-font-smoothing: grayscale;
                                   -webkit-font-smoothing: antialiased;

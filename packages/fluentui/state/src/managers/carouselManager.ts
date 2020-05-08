@@ -9,8 +9,8 @@ export type CarouselActions = {
 };
 
 export type CarouselState = {
-  activeIndex: number | string;
-  prevActiveIndex: number | string;
+  activeIndex: number;
+  prevActiveIndex: number;
   ariaLiveOn: boolean;
   shouldFocusContainer: boolean;
   isFromKeyboard: boolean;
