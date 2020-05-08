@@ -135,12 +135,11 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
         display: 'flex',
         wordBreak: 'break-word',
         selectors: {
-          // In high contrast mode, Links within MessageBars must revert to the default color
-          // defined by the high contrast settings rather than following the theme colors.
-          '& .ms-Link': {
+          '.ms-Link': {
+            color: semanticColors.messageLink,
             selectors: {
-              [HighContrastSelector]: {
-                MsHighContrastAdjust: 'auto',
+              ':hover': {
+                color: semanticColors.messageLinkHovered,
               },
             },
           },
@@ -148,6 +147,14 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
             background: highContrastBackgroundColor[messageBarType],
             border: '1px solid WindowText',
             color: 'WindowText',
+            // will uncomment or remove depending on how the styling override in Link works
+            // selectors: {
+            //   '.ms-Link, .ms-Link:hover': {
+            //     // In high contrast mode, Links within MessageBars must revert to the default color
+            //     // defined by the high contrast settings rather than following the theme colors.
+            //     MsHighContrastAdjust: 'auto',
+            //   },
+            // },
           },
         },
       },
