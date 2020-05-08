@@ -235,7 +235,6 @@ export const Carousel: React.FC<WithAsProp<CarouselProps>> &
 
   const setActiveIndex = (e: React.SyntheticEvent, index: number, focusItem: boolean): void => {
     const lastItemIndex = items.length - 1;
-    const lastActiveIndex = state.activeIndex;
     let nextActiveIndex = index;
     const lastActiveIndex = state.activeIndex;
 
