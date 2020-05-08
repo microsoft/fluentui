@@ -383,7 +383,7 @@ const Popup: React.FC<PopupProps> &
 
   const renderPopperChildren = ({ placement, scheduleUpdate }: PopperChildrenProps) => {
     const content = renderContent ? renderContent(scheduleUpdate) : props.content;
-    const popupContent = Popup.Content.create(content || {}, {
+    const popupContent = Popup.Content.create(content, {
       defaultProps: () =>
         getA11yProps('popup', {
           ...getContentProps(),
@@ -595,6 +595,7 @@ Popup.defaultProps = {
   on: 'click',
   mouseLeaveDelay: 500,
   tabbableTrigger: true,
+  content: {},
 };
 Popup.handledProps = Object.keys(Popup.propTypes) as any;
 
