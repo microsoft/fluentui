@@ -78,6 +78,14 @@ export const SliderBase = (props: ISliderProps) => {
     showValue,
     theme: theme!,
   });
+  const inactiveSectionStyles = { [lengthString]: Math.min(thumbOffsetPercent, zeroOffsetPercent) + '%' };
+  const activeSectionStyles = { [lengthString]: Math.abs(zeroOffsetPercent - thumbOffsetPercent) + '%' };
+  const inactiveSectionFromZeroStyles = {
+    [lengthString]: Math.min(100 - thumbOffsetPercent, 100 - zeroOffsetPercent) + '%',
+  };
+  const activeSectionOffsetStyles = { [lengthString]: thumbOffsetPercent + '%' };
+  const inactiveSectionOffsetStyles = { [lengthString]: 100 - thumbOffsetPercent + '%' };
+
   const divButtonProps = buttonProps
     ? getNativeProps<React.HTMLAttributes<HTMLDivElement>>(buttonProps, divProperties)
     : undefined;
@@ -295,26 +303,23 @@ export const SliderBase = (props: ISliderProps) => {
               <>
                 <span
                   className={css(classNames.lineContainer, classNames.inactiveSection)}
-                  style={{ [lengthString]: Math.min(thumbOffsetPercent, zeroOffsetPercent) + '%' }}
+                  style={inactiveSectionStyles}
                 />
-                <span
-                  className={css(classNames.lineContainer, classNames.activeSection)}
-                  style={{ [lengthString]: Math.abs(zeroOffsetPercent - thumbOffsetPercent) + '%' }}
-                />
+                <span className={css(classNames.lineContainer, classNames.activeSection)} style={activeSectionStyles} />
                 <span
                   className={css(classNames.lineContainer, classNames.inactiveSection)}
-                  style={{ [lengthString]: Math.min(100 - thumbOffsetPercent, 100 - zeroOffsetPercent) + '%' }}
+                  style={inactiveSectionFromZeroStyles}
                 />
               </>
             ) : (
               <>
                 <span
                   className={css(classNames.lineContainer, classNames.activeSection)}
-                  style={{ [lengthString]: thumbOffsetPercent + '%' }}
+                  style={activeSectionOffsetStyles}
                 />
                 <span
                   className={css(classNames.lineContainer, classNames.inactiveSection)}
-                  style={{ [lengthString]: 100 - thumbOffsetPercent + '%' }}
+                  style={inactiveSectionOffsetStyles}
                 />
               </>
             )}
