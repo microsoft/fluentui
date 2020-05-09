@@ -225,6 +225,249 @@ export enum ImageLoadState {
 }
 
 // @public (undocumented)
+export interface IOverflowSet {
+    focus(forceIntoFirstElement?: boolean): boolean;
+    focusElement(childElement?: HTMLElement): boolean;
+}
+
+// @public (undocumented)
+export interface IOverflowSetItemProps {
+    [propertyName: string]: any;
+    key: string;
+    keytipProps?: IKeytipProps;
+}
+
+// @public (undocumented)
+export interface IOverflowSetProps extends React.ClassAttributes<OverflowSetBase> {
+    className?: string;
+    componentRef?: IRefObject<IOverflowSet>;
+    // @deprecated
+    doNotContainWithinFocusZone?: boolean;
+    // @deprecated
+    focusZoneProps?: IFocusZoneProps;
+    items?: IOverflowSetItemProps[];
+    itemSubMenuProvider?: (item: IOverflowSetItemProps) => any[] | undefined;
+    keytipSequences?: string[];
+    onRenderItem: (item: IOverflowSetItemProps) => any;
+    onRenderOverflowButton: IRenderFunction<any[]>;
+    overflowItems?: IOverflowSetItemProps[];
+    overflowSide?: 'start' | 'end';
+    role?: string;
+    styles?: IStyleFunctionOrObject<IOverflowSetProps, IOverflowSetStyles>;
+    vertical?: boolean;
+}
+
+// @public
+export type IOverflowSetStyleProps = Pick<IOverflowSetProps, 'vertical' | 'className'>;
+
+// @public (undocumented)
+export interface IOverflowSetStyles {
+    item?: IStyle;
+    overflowButton?: IStyle;
+    root?: IStyle;
+}
+
+// @public (undocumented)
+export interface IPivot {
+    focus(): void;
+}
+
+// @public (undocumented)
+export interface IPivotItemProps extends React.HTMLAttributes<HTMLDivElement> {
+    ariaLabel?: string;
+    componentRef?: IRefObject<{}>;
+    headerButtonProps?: {
+        [key: string]: string | number | boolean;
+    };
+    headerText?: string;
+    itemCount?: number | string;
+    itemIcon?: string;
+    itemKey?: string;
+    keytipProps?: IKeytipProps;
+    // @deprecated
+    linkText?: string;
+    onRenderItemLink?: IRenderFunction<IPivotItemProps>;
+}
+
+// @public (undocumented)
+export interface IPivotProps extends React.ClassAttributes<PivotBase>, React.HTMLAttributes<HTMLDivElement> {
+    className?: string;
+    componentRef?: IRefObject<IPivot>;
+    defaultSelectedIndex?: number;
+    defaultSelectedKey?: string;
+    getTabId?: (itemKey: string, index: number) => string;
+    headersOnly?: boolean;
+    // @deprecated
+    initialSelectedIndex?: number;
+    // @deprecated
+    initialSelectedKey?: string;
+    linkFormat?: PivotLinkFormat;
+    linkSize?: PivotLinkSize;
+    onLinkClick?: (item?: PivotItem, ev?: React.MouseEvent<HTMLElement>) => void;
+    selectedKey?: string | null;
+    styles?: IStyleFunctionOrObject<IPivotStyleProps, IPivotStyles>;
+    theme?: ITheme;
+}
+
+// @public (undocumented)
+export interface IPivotState {
+    // (undocumented)
+    selectedKey: string | undefined;
+}
+
+// @public (undocumented)
+export type IPivotStyleProps = Required<Pick<IPivotProps, 'theme'>> & Pick<IPivotProps, 'className'> & {
+    rootIsLarge?: boolean;
+    rootIsTabs?: boolean;
+    linkIsSelected?: boolean;
+};
+
+// @public (undocumented)
+export interface IPivotStyles {
+    // (undocumented)
+    count: IStyle;
+    // (undocumented)
+    icon: IStyle;
+    // (undocumented)
+    itemContainer?: IStyle;
+    // (undocumented)
+    link: IStyle;
+    // (undocumented)
+    linkContent: IStyle;
+    // (undocumented)
+    linkIsSelected: IStyle;
+    root: IStyle;
+    // (undocumented)
+    text: IStyle;
+}
+
+// @public (undocumented)
+export interface IPopupProps extends React.HTMLAttributes<HTMLDivElement> {
+    ariaDescribedBy?: string;
+    ariaLabel?: string;
+    ariaLabelledBy?: string;
+    className?: string;
+    onDismiss?: (ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement> | KeyboardEvent) => any;
+    onRestoreFocus?: (options: {
+        originalElement?: HTMLElement | Window;
+        containsFocus: boolean;
+    }) => void;
+    role?: string;
+    // @deprecated
+    shouldRestoreFocus?: boolean;
+}
+
+// @public (undocumented)
+export interface IResizeGroup {
+    remeasure(): void;
+}
+
+// @public (undocumented)
+export interface IResizeGroupProps extends React.HTMLAttributes<ResizeGroupBase | HTMLElement> {
+    className?: string;
+    componentRef?: IRefObject<IResizeGroup>;
+    data: any;
+    dataDidRender?: (renderedData: any) => void;
+    direction?: ResizeGroupDirection;
+    onGrowData?: (prevData: any) => any;
+    onReduceData: (prevData: any) => any;
+    onRenderData: (data: any) => JSX.Element;
+    // @deprecated
+    styles?: IStyleFunctionOrObject<IResizeGroupStyleProps, IResizeGroupStyles>;
+    theme?: ITheme;
+}
+
+// @public (undocumented)
+export interface IResizeGroupState {
+    dataToMeasure?: any;
+    measureContainer?: boolean;
+    renderedData?: any;
+    resizeDirection?: 'grow' | 'shrink';
+}
+
+// @public (undocumented)
+export interface IResizeGroupStyleProps {
+    className?: string;
+    theme: ITheme;
+}
+
+// @public (undocumented)
+export interface IResizeGroupStyles {
+    root: IStyle;
+}
+
+// @public (undocumented)
+export interface ISearchBox {
+    focus(): void;
+    hasFocus(): boolean;
+}
+
+// @public (undocumented)
+export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElement> {
+    ariaLabel?: string;
+    className?: string;
+    clearButtonProps?: IButtonProps;
+    componentRef?: IRefObject<ISearchBox>;
+    // @deprecated
+    defaultValue?: string;
+    disableAnimation?: boolean;
+    iconProps?: Pick<IIconProps, Exclude<keyof IIconProps, 'className'>>;
+    // @deprecated
+    labelText?: string;
+    onChange?: (event?: React.ChangeEvent<HTMLInputElement>, newValue?: string) => void;
+    // @deprecated
+    onChanged?: (newValue: any) => void;
+    onClear?: (ev?: any) => void;
+    onEscape?: (ev?: any) => void;
+    onSearch?: (newValue: any) => void;
+    placeholder?: string;
+    styles?: IStyleFunctionOrObject<ISearchBoxStyleProps, ISearchBoxStyles>;
+    theme?: ITheme;
+    underlined?: boolean;
+    value?: string;
+}
+
+// @public (undocumented)
+export interface ISearchBoxState {
+    // (undocumented)
+    hasFocus?: boolean;
+    // (undocumented)
+    value?: string;
+}
+
+// @public (undocumented)
+export interface ISearchBoxStyleProps {
+    // (undocumented)
+    className?: string;
+    // (undocumented)
+    disableAnimation?: boolean;
+    // (undocumented)
+    disabled?: boolean;
+    // (undocumented)
+    hasFocus?: boolean;
+    // (undocumented)
+    hasInput?: boolean;
+    // (undocumented)
+    theme: ITheme;
+    // (undocumented)
+    underlined?: boolean;
+}
+
+// @public (undocumented)
+export interface ISearchBoxStyles {
+    // (undocumented)
+    clearButton?: IStyle;
+    // (undocumented)
+    field?: IStyle;
+    // (undocumented)
+    icon?: IStyle;
+    // (undocumented)
+    iconContainer?: IStyle;
+    // (undocumented)
+    root?: IStyle;
+}
+
+// @public (undocumented)
 export interface ISlider {
     // (undocumented)
     focus: () => void;
@@ -233,7 +476,7 @@ export interface ISlider {
 }
 
 // @public (undocumented)
-export interface ISliderProps extends React.ClassAttributes<SliderBase> {
+export interface ISliderProps extends React.ClassAttributes<HTMLElement> {
     ariaLabel?: string;
     ariaValueText?: (value: number) => string;
     buttonProps?: React.HTMLAttributes<HTMLButtonElement>;
@@ -255,14 +498,6 @@ export interface ISliderProps extends React.ClassAttributes<SliderBase> {
     value?: number;
     valueFormat?: (value: number) => string;
     vertical?: boolean;
-}
-
-// @public (undocumented)
-export interface ISliderState {
-    // (undocumented)
-    renderedValue?: number;
-    // (undocumented)
-    value?: number;
 }
 
 // @public (undocumented)
@@ -436,29 +671,23 @@ export enum KeyboardSpinDirection {
 }
 
 // @public (undocumented)
+export const MeasuredContext: React.Context<{
+    isMeasured: boolean;
+}>;
+
+// @public (undocumented)
 export const ONKEYDOWN_TIMEOUT_DURATION = 1000;
 
 // @public (undocumented)
-export const Slider: React.FunctionComponent<ISliderProps>;
+export const OverflowSet: React.FunctionComponent<IOverflowSetProps>;
 
 // @public (undocumented)
-export class SliderBase extends React.Component<ISliderProps, ISliderState> implements ISlider {
-    constructor(props: ISliderProps);
+export class OverflowSetBase extends React.Component<IOverflowSetProps, {}> implements IOverflowSet {
+    constructor(props: IOverflowSetProps);
     // (undocumented)
-    componentWillUnmount(): void;
+    componentDidMount(): void;
     // (undocumented)
-    static defaultProps: ISliderProps;
-    // (undocumented)
-    focus(): void;
-    // (undocumented)
-    render(): React.ReactElement<{}>;
-    // (undocumented)
-    readonly value: number | undefined;
-}
-
-// @public (undocumented)
-export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonState> implements ISpinButton {
-    constructor(props: ISpinButtonProps);
+    componentDidUpdate(): void;
     // (undocumented)
     componentWillUnmount(): void;
     focus(forceIntoFirstElement?: boolean): boolean;
@@ -550,18 +779,7 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
 export const Slider: React.FunctionComponent<ISliderProps>;
 
 // @public (undocumented)
-export class SliderBase extends React.Component<ISliderProps, ISliderState> implements ISlider {
-    constructor(props: ISliderProps);
-    // (undocumented)
-    componentWillUnmount(): void;
-    // (undocumented)
-    static defaultProps: ISliderProps;
-    // (undocumented)
-    focus(): void;
-    // (undocumented)
-    render(): React.ReactElement<{}>;
-    readonly value: number | undefined;
-}
+export const SliderBase: React.ForwardRefExoticComponent<Pick<ISliderProps, "max" | "disabled" | "label" | "vertical" | "key" | "step" | "theme" | "styles" | "className" | "defaultValue" | "onChange" | "componentRef" | "min" | "value" | "ariaLabel" | "onChanged" | "showValue" | "ariaValueText" | "snapToStep" | "buttonProps" | "valueFormat" | "originFromZero"> & React.RefAttributes<HTMLDivElement>>;
 
 // @public (undocumented)
 export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonState> implements ISpinButton {
