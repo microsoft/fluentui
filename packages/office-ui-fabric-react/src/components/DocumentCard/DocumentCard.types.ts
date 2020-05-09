@@ -40,6 +40,11 @@ export interface IDocumentCardProps extends IBaseProps<IDocumentCard>, React.HTM
   onClickHref?: string;
 
   /**
+   * A boolean which indicates whether the link has to be opened in a new tab.
+   */
+  openLinkInNewTab?: boolean;
+
+  /**
    * Aria role assigned to the documentCard (Eg. button, link).
    * Use this to override the default assignment.
    * @defaultvalue When `onClick` is provided, default role will be 'button'.
