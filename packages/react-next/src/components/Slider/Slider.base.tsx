@@ -1,25 +1,9 @@
 import * as React from 'react';
-import {
-  KeyCodes,
-  css,
-  getId,
-  getRTL,
-  getRTLSafeKeyCode,
-  warnMutuallyExclusive,
-  initializeComponentRef,
-  Async,
-  on,
-  FocusRects,
-} from '../../Utilities';
-import { ISliderProps, ISlider, ISliderStyleProps, ISliderStyles } from './Slider.types';
+import { KeyCodes, css, getRTL, getRTLSafeKeyCode, warnMutuallyExclusive, on, FocusRects } from '../../Utilities';
+import { ISliderProps, ISliderStyleProps, ISliderStyles } from './Slider.types';
 import { classNamesFunction, getNativeProps, divProperties } from '../../Utilities';
 import { Label } from '../../Label';
-import { useId, useControllableValue, useMergedRefs } from '@uifabric/react-hooks';
-
-export interface ISliderState {
-  value?: number;
-  renderedValue?: number;
-}
+import { useId, useBoolean } from '@uifabric/react-hooks';
 
 const getClassNames = classNamesFunction<ISliderStyleProps, ISliderStyles>();
 const COMPONENT_NAME = 'SliderBase';
@@ -30,7 +14,7 @@ const useComponentRef = (props: ISliderProps, thumb: React.RefObject<HTMLSpanEle
     props.componentRef,
     () => ({
       get value() {
-        return !!value;
+        return value;
       },
       focus() {
         if (thumb.current) {
@@ -42,11 +26,11 @@ const useComponentRef = (props: ISliderProps, thumb: React.RefObject<HTMLSpanEle
   );
 };
 
-export const SliderBase = (props: ISliderProps) => {
+export const SliderBase = React.forwardRef((props: ISliderProps, ref: React.Ref<HTMLDivElement>) => {
   let disposables: (() => void)[] = [];
   const sliderLine = React.useRef<HTMLDivElement>(null);
-  const thumb = React.createRef<HTMLSpanElement>();
-  const onKeyDownTimer = -1;
+  const thumb = React.useRef<HTMLSpanElement>(null);
+  const [useShowTransitions, { toggle: toggleUseShowTransitions }] = useBoolean(true);
   const id = useId('Slider');
   const {
     step = 1,
@@ -74,7 +58,7 @@ export const SliderBase = (props: ISliderProps) => {
     className,
     disabled,
     vertical,
-    showTransitions: true,
+    showTransitions: useShowTransitions,
     showValue,
     theme: theme!,
   });
@@ -121,6 +105,7 @@ export const SliderBase = (props: ISliderProps) => {
         on(window, 'touchend', onMouseUpOrTouchEnd, true),
       );
     }
+    toggleUseShowTransitions();
     onMouseMoveOrTouchMove(event, true);
   };
 
@@ -128,6 +113,7 @@ export const SliderBase = (props: ISliderProps) => {
     if (props.onChanged) {
       props.onChanged(event, value as number);
     }
+    toggleUseShowTransitions();
     disposeListeners();
   };
 
@@ -210,6 +196,23 @@ export const SliderBase = (props: ISliderProps) => {
     }
   };
 
+  const [timerId, setTimerId] = React.useState(0);
+
+  const clearOnKeyDownTimer = (): void => {
+    clearTimeout(timerId);
+  };
+
+  const setOnKeyDownTimer = (event: KeyboardEvent) => {
+    clearOnKeyDownTimer();
+    setTimerId(
+      setTimeout(() => {
+        if (props.onChanged) {
+          props.onChanged(event, value as number);
+        }
+      }, ONKEYDOWN_TIMEOUT_DURATION) as any,
+    );
+  };
+
   const onKeyDown = (event: KeyboardEvent): void => {
     let newCurrentValue: number | undefined = value;
     let diff: number | undefined = 0;
@@ -230,11 +233,9 @@ export const SliderBase = (props: ISliderProps) => {
       case KeyCodes.home:
         newCurrentValue = min;
         break;
-
       case KeyCodes.end:
         newCurrentValue = max;
         break;
-
       default:
         return;
     }
@@ -244,26 +245,13 @@ export const SliderBase = (props: ISliderProps) => {
     event.stopPropagation();
   };
 
-  const clearOnKeyDownTimer = (): void => {
-    // this._async.clearTimeout(this._onKeyDownTimer);
-  };
-
-  const setOnKeyDownTimer = (event: KeyboardEvent): void => {
-    //   this._onKeyDownTimer = this._async.setTimeout(() => {
-    //     if (this.props.onChanged) {
-    //       this.props.onChanged(event, this.state.value as number);
-    //     }
-    //   }, ONKEYDOWN_TIMEOUT_DURATION);
-    // };
-  };
-
   const onMouseDownProp: {} = disabled ? {} : { onMouseDown: onMouseDownOrTouchStart };
   const onTouchStartProp: {} = disabled ? {} : { onTouchStart: onMouseDownOrTouchStart };
   const onKeyDownProp: {} = disabled ? {} : { onKeyDown: onKeyDown };
   useComponentRef(props, thumb, value);
 
   return (
-    <div className={classNames.root}>
+    <div className={classNames.root} ref={ref}>
       {label && (
         <Label className={classNames.titleLabel} {...(ariaLabel ? {} : { htmlFor: id })} disabled={disabled}>
           {label}
@@ -334,4 +322,5 @@ export const SliderBase = (props: ISliderProps) => {
       <FocusRects />
     </div>
   ) as React.ReactElement<{}>;
-};
+});
+SliderBase.displayName = COMPONENT_NAME;
