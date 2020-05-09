@@ -3,12 +3,11 @@ import { ReactWrapper, mount } from 'enzyme';
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import * as sinon from 'sinon';
-
 import { CommandBarButton } from '../../Button';
 import { IKeytipProps } from '../../Keytip';
 import { KeytipLayer, KeytipLayerBase } from '../../KeytipLayer';
 import { arraysEqual, find } from '../../Utilities';
-import { IUniqueKeytip, KeytipManager, ktpTargetFromId } from 'office-ui-fabric-react/src/utilities/keytips/index';
+import { IUniqueKeytip, KeytipManager, ktpTargetFromId } from 'office-ui-fabric-react/lib/utilities/keytips/index';
 import { OverflowSet } from './OverflowSet';
 import { IOverflowSetItemProps } from './OverflowSet.types';
 

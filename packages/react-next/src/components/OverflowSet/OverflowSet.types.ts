@@ -1,10 +1,8 @@
 import * as React from 'react';
-
 import { IFocusZoneProps } from '@fluentui/react-focus';
 import { IKeytipProps } from '../../Keytip';
 import { IStyle } from '../../Styling';
 import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
-import { OverflowSetBase } from './OverflowSet.base';
 
 /**
  * {@docCategory OverflowSet}
@@ -31,7 +29,7 @@ export interface IOverflowSet {
 /**
  * {@docCategory OverflowSet}
  */
-export interface IOverflowSetProps extends React.ClassAttributes<OverflowSetBase> {
+export interface IOverflowSetProps extends React.ClassAttributes<HTMLElement> {
   /**
    * Gets the component ref.
    */

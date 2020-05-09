@@ -4,6 +4,7 @@ import { IKeytipProps } from '../../Keytip';
 import {
   classNamesFunction,
   divProperties,
+  elementContains,
   getNativeProps,
   warnMutuallyExclusive,
   focusFirstChild,
@@ -43,41 +44,39 @@ const useKeytips = (persistedKeytips: { [uniqueID: string]: IKeytipProps }, keyt
     };
   }, [persistedKeytips, keytipManager]);
 };
-
 const useComponentRef = (
   props: IOverflowSetProps,
   focusZone: React.RefObject<IFocusZone>,
   divContainer: React.RefObject<HTMLDivElement>,
-  childElement?: HTMLElement,
 ) => {
   React.useImperativeHandle(
     props.componentRef,
     (): IOverflowSet => ({
       focus: (forceIntoFirstElement?: boolean): boolean => {
         let focusSucceeded = false;
+        // tslint:disable-next-line:deprecation
         if (props.doNotContainWithinFocusZone) {
           if (divContainer.current) {
             focusSucceeded = focusFirstChild(divContainer.current);
           }
         } else if (focusZone.current) {
-          focusSucceeded = focusZone.current.focusElement(childElement);
+          focusSucceeded = focusZone.current.focus(forceIntoFirstElement);
         }
         return focusSucceeded;
       },
-      focusElement: (hildElement?: HTMLElement) => {
+      focusElement: (childElement?: HTMLElement) => {
         let focusSucceeded = false;
-
         if (!childElement) {
           return false;
         }
         // tslint:disable-next-line:deprecation
-        if (this.props.doNotContainWithinFocusZone) {
-          if (this._divContainer.current && elementContains(this._divContainer.current, childElement)) {
+        if (props.doNotContainWithinFocusZone) {
+          if (divContainer.current && elementContains(divContainer.current, childElement)) {
             childElement.focus();
             focusSucceeded = document.activeElement === childElement;
           }
-        } else if (this._focusZone.current) {
-          focusSucceeded = this._focusZone.current.focusElement(childElement);
+        } else if (focusZone.current) {
+          focusSucceeded = focusZone.current.focusElement(childElement);
         }
         return focusSucceeded;
       },
@@ -85,17 +84,6 @@ const useComponentRef = (
     [],
   );
 };
-
-// let focusSucceeded = false;
-// // tslint:disable-next-line:deprecation
-// if (this.props.doNotContainWithinFocusZone) {
-//   if (this._divContainer.current) {
-//     focusSucceeded = focusFirstChild(this._divContainer.current);
-//   }
-// } else if (this._focusZone.current) {
-//   focusSucceeded = this._focusZone.current.focus(forceIntoFirstElement);
-// }
-// return focusSucceeded;
 
 export const OverflowSetBase: React.FunctionComponent<IOverflowSetProps> = (props: IOverflowSetProps) => {
   const focusZone = React.useRef<IFocusZone>(null);
@@ -145,7 +133,6 @@ export const OverflowSetBase: React.FunctionComponent<IOverflowSetProps> = (prop
     };
     const overflowKeytipSequences = props.keytipSequences;
     let newOverflowItems: any[] = [];
-
     if (overflowKeytipSequences) {
       itemsProp.forEach(overflowItem => {
         const keytip = (overflowItem as IOverflowSetItemProps).keytipProps;
@@ -189,10 +176,8 @@ export const OverflowSetBase: React.FunctionComponent<IOverflowSetProps> = (prop
     } else {
       newOverflowItems = itemsProp;
     }
-
     // Set up the keytip effect here, after persistedKeytips
     useKeytips(persistedKeytips, keytipManager);
-
     return <div {...wrapperDivProps}>{props.onRenderOverflowButton(newOverflowItems)}</div>;
   };
 
@@ -210,12 +195,7 @@ export const OverflowSetBase: React.FunctionComponent<IOverflowSetProps> = (prop
     return undefined;
   };
 
-  // /**
-  //  * Sets focus to a specific child element within the OverflowSet.
-  //  * @param childElement - The child element within the zone to focus.
-  //  * @returns True if focus could be set to an active element, false if no operation was taken.
-  //  */
-  useComponentRef(props, focusZone, divContainer, childElement);
+  useComponentRef(props, focusZone, divContainer);
 
   return (
     <Tag
@@ -225,15 +205,14 @@ export const OverflowSetBase: React.FunctionComponent<IOverflowSetProps> = (prop
       className={classNames.root}
     >
       {overflowSide === 'start' && showOverflow && onRenderOverflowButtonWrapper(overflowItems!)}
-
       {items &&
         items.map((item, i) => (
           <div key={item.key} className={classNames.item}>
             {props.onRenderItem(item)}
           </div>
         ))}
-
       {overflowSide === 'end' && showOverflow && onRenderOverflowButtonWrapper(overflowItems!)}
     </Tag>
   );
 };
+OverflowSetBase.displayName = COMPONENT_NAME;
