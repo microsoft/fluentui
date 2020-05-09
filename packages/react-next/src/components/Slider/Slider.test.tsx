@@ -27,7 +27,6 @@ describe('Slider', () => {
 
   it('can slide to default min/max and execute onChange', () => {
     let changedValue;
-
     const onChange = (val: any) => {
       changedValue = val;
     };
@@ -46,7 +45,6 @@ describe('Slider', () => {
         width: 100,
         height: 40,
       } as DOMRect);
-
     sliderThumb.simulate('mousedown', {
       type: 'mousedown',
       clientX: 100,

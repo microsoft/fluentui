@@ -177,7 +177,7 @@ export const SliderBase = React.forwardRef((props: ISliderProps, ref: React.Ref<
   };
 
   const updateValue = (valueProp: number, renderedValueProp: number): void => {
-    const { snapToStep } = props;
+    const snapToStep = props;
     let numDec = 0;
     if (isFinite(step!)) {
       while (Math.round(step! * Math.pow(10, numDec)) / Math.pow(10, numDec) !== step!) {
@@ -187,12 +187,13 @@ export const SliderBase = React.forwardRef((props: ISliderProps, ref: React.Ref<
     // Make sure value has correct number of decimal places based on number of decimals in step
     const roundedValue = parseFloat(valueProp.toFixed(numDec));
     const valueChanged = roundedValue !== value;
+
     if (snapToStep) {
       renderedValueProp = roundedValue;
     }
     setValue(roundedValue);
     if (valueChanged && props.onChange) {
-      props.onChange(value as number);
+      props.onChange(roundedValue);
     }
   };
 
