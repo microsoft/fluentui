@@ -40,7 +40,7 @@ export interface SegmentProps
   /** A segment can have its colors inverted for contrast. */
   inverted?: boolean;
 
-  rtlAttributes: typeof rtlTextContainer.getAttributes;
+  rtlAttributes?: typeof rtlTextContainer.getAttributes;
 }
 
 export type SegmentStylesProps = Required<Pick<SegmentProps, 'color' | 'inverted' | 'disabled'>>;
