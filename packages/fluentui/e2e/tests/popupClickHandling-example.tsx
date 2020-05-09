@@ -15,16 +15,18 @@ const PopupClickHandlingExample = () => {
         <Button id={selectors.triggerButtonId} content="Open Popup" icon="expand" onClick={() => setShow(true)} />
       }
       content={
-        !!show && (
-          <Button
-            id={selectors.popupContentButtonId}
-            content="click me"
-            onClick={e => {
-              e.preventDefault();
-              setShow(!show);
-            }}
-          />
-        )
+        <div>
+          {show && (
+            <Button
+              id={selectors.popupContentButtonId}
+              content="click me"
+              onClick={e => {
+                e.preventDefault();
+                setShow(!show);
+              }}
+            />
+          )}
+        </div>
       }
     />
   );
