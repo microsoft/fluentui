@@ -436,7 +436,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     font-size: 14px;
                     font-weight: 400;
                     position: relative;
-                    text-align: left;
                     user-select: none;
                   }
                   &::before {
@@ -597,7 +596,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     font-size: 14px;
                     font-weight: 400;
                     position: relative;
-                    text-align: left;
                     user-select: none;
                   }
                   &::before {
@@ -758,7 +756,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     font-size: 14px;
                     font-weight: 400;
                     position: relative;
-                    text-align: left;
                     user-select: none;
                   }
                   &::before {
@@ -918,7 +915,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     font-size: 14px;
                     font-weight: 400;
                     position: relative;
-                    text-align: left;
                     user-select: none;
                   }
                   &::before {
@@ -1346,7 +1342,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   font-size: 14px;
                   font-weight: 400;
                   position: relative;
-                  text-align: left;
                   user-select: none;
                 }
                 &::before {
@@ -2316,7 +2311,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       font-size: 14px;
                       font-weight: 400;
                       position: relative;
-                      text-align: left;
                       user-select: none;
                     }
                     &::before {

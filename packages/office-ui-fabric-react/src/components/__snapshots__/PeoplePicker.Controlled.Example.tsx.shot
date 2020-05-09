@@ -2126,7 +2126,6 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
             font-size: 14px;
             font-weight: 400;
             position: relative;
-            text-align: left;
             user-select: none;
           }
           &::before {
@@ -2287,7 +2286,6 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
             font-size: 14px;
             font-weight: 400;
             position: relative;
-            text-align: left;
             user-select: none;
           }
           &::before {
