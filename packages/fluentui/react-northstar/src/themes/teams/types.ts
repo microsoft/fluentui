@@ -54,7 +54,7 @@ import { PortalProps } from '../../components/Portal/Portal';
 import { RadioGroupItemProps } from '../../components/RadioGroup/RadioGroupItem';
 import { RadioGroupProps } from '../../components/RadioGroup/RadioGroup';
 import { ReactionGroupProps } from '../../components/Reaction/ReactionGroup';
-import { ReactionProps } from '../../components/Reaction/Reaction';
+import { ReactionStylesProps } from '../../components/Reaction/Reaction';
 import { SegmentProps } from '../../components/Segment/Segment';
 import { SliderStylesProps } from '../../components/Slider/Slider';
 import { StatusStylesProps } from '../../components/Status/Status';
@@ -140,7 +140,7 @@ export type TeamsThemeStylesProps = {
   PopupContent: PopupContentStylesProps;
   RadioGroup: RadioGroupProps;
   RadioGroupItem: RadioGroupItemProps;
-  Reaction: ReactionProps;
+  Reaction: ReactionStylesProps;
   ReactionGroup: ReactionGroupProps;
   Segment: SegmentProps;
   Slider: SliderStylesProps;
