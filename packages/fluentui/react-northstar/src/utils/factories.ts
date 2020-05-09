@@ -113,7 +113,7 @@ export function createShorthandInternal<P>({
 
   // short circuit noop values
   const valIsNoop = _.isNil(value) || typeof value === 'boolean';
-  if (valIsNoop && !options.render) return React.createElement(() => null);
+  if (valIsNoop && !options.render) return null;
 
   const valIsPrimitive = typeof value === 'string' || typeof value === 'number';
   const valIsPropsObject = _.isPlainObject(value);

@@ -407,7 +407,7 @@ const Popup: React.FC<PopupProps> &
                 nestingRef.current = domElement;
               }}
             >
-              {popupContent}
+              <>{popupContent}</>
             </Ref>
 
             <EventListener listener={handleDocumentClick(getRefs)} target={context.target} type="click" capture />
