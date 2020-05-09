@@ -4,4 +4,9 @@ For pauses between 2 seconds and 400 milliseconds, adding animations may actuall
 
 Use a standalone spinner when you need a progress indicator on an existing surface (such as a view that's already displayed but no content is shown yet, or when the user pulls-to-refresh, revealing the empty space above the scrolling list).
 
-<img src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/android/progress/circular-progress.png" alt="Example of a Spinner on Android" style="width: 50%;" />
+<DisplayToggle onText="Dark" offText="Light" label="Theme Switcher">
+### Spinner
+
+<img className="off" src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/android/updated/img_spinner_01_light.png?text=LightMode" />
+<img className="on" src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/android/updated/img_spinner_01_dark.png?text=DarkMode" />
+</DisplayToggle>
