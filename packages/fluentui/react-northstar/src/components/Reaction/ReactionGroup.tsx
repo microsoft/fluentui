@@ -20,7 +20,7 @@ import {
   createShorthandFactory,
 } from '../../utils';
 import { Accessibility } from '@fluentui/accessibility';
-import Reaction, { ReactionProps, reactionClassName } from './Reaction';
+import Reaction, { ReactionProps } from './Reaction';
 import { getElementType, useUnhandledProps, useAccessibility, useTelemetry, useStyles } from '@fluentui/react-bindings';
 
 export interface ReactionGroupProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
@@ -52,7 +52,7 @@ const ReactionGroup: React.FC<WithAsProp<ReactionGroupProps>> &
   });
 
   const { classes, styles: resolvedStyles } = useStyles<ReactionGroupStylesProps>(ReactionGroup.displayName, {
-    className: reactionClassName,
+    className: reactionGroupClassName,
     mapPropsToInlineStyles: () => ({
       className,
       design,
