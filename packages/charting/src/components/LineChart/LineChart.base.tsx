@@ -186,7 +186,7 @@ export class LineChartBase extends React.Component<
         <div ref={(e: HTMLDivElement) => (this.legendContainer = e)} className={this._classNames.legendContainer}>
           {!hideLegend && legendBars}
         </div>
-        {this.state.isCalloutVisible ? (
+        {!this.props.hideTooltip && this.state.isCalloutVisible ? (
           <Callout
             target={this.state.refSelected}
             isBeakVisible={false}

@@ -4,7 +4,7 @@ Fluent UI React Native is an [open-source](https://github.com/microsoft/fluentui
 
 Fluent UI React Native includes an expanding library of controls written in JavaScript. These controls implement the Fluent Design language and provide consistency across Microsoft experiences.
 
-Documentation for the controls is a work in progress. Some controls can be found in the <a href="#/controls/crossplatform" target="_blank">Controls section</a> of the site.
+Documentation for the controls is a work in progress. Some controls can be found in the <a href="#/controls/crossplatform">Controls section</a> of the site.
 
 ### Start developing
 

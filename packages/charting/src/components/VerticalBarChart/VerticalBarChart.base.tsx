@@ -29,6 +29,8 @@ export interface IVerticalBarChartState {
   refSelected: any;
   dataForHoverCard: number;
   color: string;
+  xCalloutValue?: string;
+  yCalloutValue?: string;
 }
 
 export interface IRefArrayData {
@@ -56,6 +58,8 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       refSelected: null,
       dataForHoverCard: 0,
       color: '',
+      xCalloutValue: '',
+      yCalloutValue: '',
     };
     this._refArray = [];
     this._adjustProps();
@@ -83,7 +87,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
           </svg>
         </FocusZone>
         {!hideLegend && <div className={this._classNames.legendContainer}>{legends}</div>}
-        {isCalloutVisible ? (
+        {!this.props.hideTooltip && isCalloutVisible ? (
           <Callout
             gapSpace={10}
             isBeakVisible={false}
@@ -92,8 +96,12 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
             directionalHint={DirectionalHint.topRightEdge}
           >
             <div className={this._classNames.hoverCardRoot}>
-              <div className={this._classNames.hoverCardTextStyles}>{this.state.selectedLegendTitle}</div>
-              <div className={this._classNames.hoverCardDataStyles}>{this.state.dataForHoverCard}</div>
+              <div className={this._classNames.hoverCardTextStyles}>
+                {this.state.xCalloutValue ? this.state.xCalloutValue : this.state.selectedLegendTitle}
+              </div>
+              <div className={this._classNames.hoverCardDataStyles}>
+                {this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard}
+              </div>
             </div>
           </Callout>
         ) : null}
@@ -105,6 +113,8 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     customMessage: string,
     pointData: number,
     color: string,
+    xAxisCalloutData: string,
+    yAxisCalloutData: string,
     mouseEvent: React.MouseEvent<SVGPathElement>,
   ): void {
     mouseEvent.persist();
@@ -114,6 +124,8 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       dataForHoverCard: pointData,
       selectedLegendTitle: customMessage,
       color: color,
+      xCalloutValue: xAxisCalloutData,
+      yCalloutValue: yAxisCalloutData,
     });
   }
 
@@ -307,9 +319,24 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
           ref={(e: SVGRectElement) => {
             this._refCallback(e, point.legend!, refArrayIndexNumber);
           }}
-          onMouseOver={this._onBarHover.bind(this, point.legend, point.y, point.color)}
+          onMouseOver={this._onBarHover.bind(
+            this,
+            point.legend,
+            point.y,
+            point.color,
+            point.xAxisCalloutData!,
+            point.yAxisCalloutData!,
+          )}
           onMouseLeave={this._onBarLeave}
-          onFocus={this._onBarFocus.bind(this, point.legend, point.y, point.color, refArrayIndexNumber)}
+          onFocus={this._onBarFocus.bind(
+            this,
+            point.legend,
+            point.y,
+            point.color,
+            refArrayIndexNumber,
+            point.xAxisCalloutData!,
+            point.yAxisCalloutData!,
+          )}
           onBlur={this._onBarLeave}
           fill={point.color ? point.color : colorScale(point.y)}
         />
@@ -319,7 +346,14 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     return bars;
   }
 
-  private _onBarFocus = (legendText: string, pointData: number, color: string, refArrayIndexNumber: number): void => {
+  private _onBarFocus = (
+    legendText: string,
+    pointData: number,
+    color: string,
+    refArrayIndexNumber: number,
+    xAxisCalloutData: string,
+    yAxisCalloutData: string,
+  ): void => {
     if (
       this.state.isLegendSelected === false ||
       (this.state.isLegendSelected && this.state.selectedLegendTitle === legendText)
@@ -332,6 +366,8 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
             selectedLegendTitle: legendText,
             dataForHoverCard: pointData,
             color: color,
+            xCalloutValue: xAxisCalloutData,
+            yCalloutValue: yAxisCalloutData,
           });
         }
       });

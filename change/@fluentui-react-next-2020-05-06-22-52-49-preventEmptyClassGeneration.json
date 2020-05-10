@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "update snapshots for merge-styles change to not generate class with no styles",
+  "packageName": "@fluentui/react-next",
+  "email": "pingj@microsoft.com",
+  "dependentChangeType": "none",
+  "date": "2020-05-07T05:52:49.208Z"
+}

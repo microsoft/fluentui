@@ -13,6 +13,8 @@
     "@fluentui/react-northstar": "^0.48.0"
   },
   "devDependencies": {
+    "@types/react": "16.8.25",
+    "@types/react-dom": "16.8.4",
     "babel-loader": "^8.0.6",
     "copy-webpack-plugin": "^4.5.2",
     "express": "^4.15.4",
