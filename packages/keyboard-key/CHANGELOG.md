@@ -1,6 +1,17 @@
 # Change Log - @fluentui/keyboard-key
 
-This log was last generated on Wed, 25 Mar 2020 12:30:04 GMT and should not be manually modified.
+This log was last generated on Thu, 07 May 2020 01:06:55 GMT and should not be manually modified.
+
+<!-- Start content -->
+
+## [0.1.7](https://github.com/microsoft/fluentui/tree/@fluentui/keyboard-key_v0.1.7)
+
+Thu, 07 May 2020 01:06:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/keyboard-key_v0.1.4..@fluentui/keyboard-key_v0.1.7)
+
+### Patches
+
+- Addressing commonjs imports. ([PR #13031](https://github.com/microsoft/fluentui/pull/13031) by dzearing@microsoft.com)
 
 ## 0.1.4
 Wed, 25 Mar 2020 12:30:04 GMT

@@ -14,10 +14,10 @@ const _getGlobalClassNames = memoizeFunction(
 
     if (disableGlobalClassNames) {
       // disable global classnames
-      return Object.keys(classNames).reduce((acc: {}, className: string) => {
+      return (Object.keys(classNames) as (keyof T)[]).reduce((acc, className) => {
         acc[className] = styleSheet.getClassName(classNames[className]);
         return acc;
-      }, {});
+      }, {} as Partial<GlobalClassNames<T>>);
     }
 
     // use global classnames

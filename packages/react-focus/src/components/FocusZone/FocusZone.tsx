@@ -632,12 +632,12 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
           }
           return;
         case KeyCodes.pageDown:
-          if (this._moveFocusPaging(true) && !pagingSupportDisabled) {
+          if (!pagingSupportDisabled && this._moveFocusPaging(true)) {
             break;
           }
           return;
         case KeyCodes.pageUp:
-          if (this._moveFocusPaging(false) && !pagingSupportDisabled) {
+          if (!pagingSupportDisabled && this._moveFocusPaging(false)) {
             break;
           }
           return;
@@ -867,7 +867,8 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
 
   private _moveFocusDown(): boolean {
     let targetTop = -1;
-    const leftAlignment = this._focusAlignment.left || 0;
+    // tslint:disable-next-line:deprecation
+    const leftAlignment = this._focusAlignment.left || this._focusAlignment.x || 0;
 
     if (
       this._moveFocus(true, (activeRect: ClientRect, targetRect: ClientRect) => {
@@ -908,7 +909,8 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
 
   private _moveFocusUp(): boolean {
     let targetTop = -1;
-    const leftAlignment = this._focusAlignment.left || 0;
+    // tslint:disable-next-line:deprecation
+    const leftAlignment = this._focusAlignment.left || this._focusAlignment.x || 0;
 
     if (
       this._moveFocus(false, (activeRect: ClientRect, targetRect: ClientRect) => {
@@ -1036,7 +1038,8 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     activeRect: ClientRect,
     targetRect: ClientRect,
   ): number => {
-    const leftAlignment = this._focusAlignment.left || 0;
+    // tslint:disable-next-line:deprecation
+    const leftAlignment = this._focusAlignment.left || this._focusAlignment.x || 0;
     // ClientRect values can be floats that differ by very small fractions of a decimal.
     // If the difference between top and bottom are within a pixel then we should treat
     // them as equivalent by using Math.floor. For instance 5.2222 and 5.222221 should be equivalent,

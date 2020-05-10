@@ -1,8 +1,26 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Fri, 17 Apr 2020 12:34:08 GMT and should not be manually modified.
+This log was last generated on Thu, 07 May 2020 01:06:55 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.11.3](https://github.com/microsoft/fluentui/tree/@uifabric/merge-styles_v7.11.3)
+
+Thu, 07 May 2020 01:06:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/merge-styles_v7.11.2..@uifabric/merge-styles_v7.11.3)
+
+### Patches
+
+- Addressing commonjs imports. ([PR #13031](https://github.com/microsoft/fluentui/pull/13031) by dzearing@microsoft.com)
+
+## [7.11.2](https://github.com/microsoft/fluentui/tree/@uifabric/merge-styles_v7.11.2)
+
+Tue, 05 May 2020 12:34:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/merge-styles_v7.11.0..@uifabric/merge-styles_v7.11.2)
+
+### Patches
+
+- Fixing errors when building @fluentui/docs. ([PR #12448](https://github.com/microsoft/fluentui/pull/12448) by humbertomakotomorimoto@gmail.com)
 
 ## [7.11.0](https://github.com/microsoft/fluentui/tree/@uifabric/merge-styles_v7.11.0)
 

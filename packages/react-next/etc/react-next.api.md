@@ -4,7 +4,8 @@
 
 ```ts
 
-import { IButtonProps } from 'office-ui-fabric-react/lib/components/Button/Button.types';
+import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
+import { IButtonProps as IButtonProps_2 } from 'office-ui-fabric-react/lib/components/Button/Button.types';
 import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import { IComponentAs } from 'office-ui-fabric-react/lib/Utilities';
 import { IIconProps } from 'office-ui-fabric-react/lib/Icon';
@@ -31,6 +32,22 @@ export const Fabric: React.FunctionComponent<IFabricProps>;
 
 // @public (undocumented)
 export const FabricBase: React.ForwardRefExoticComponent<IFabricProps & React.RefAttributes<HTMLDivElement>>;
+
+// @public
+export const getMeasurementCache: () => {
+    getCachedMeasurement: (data: any) => number | undefined;
+    addMeasurementToCache: (data: any, measurement: number) => void;
+};
+
+// @public
+export const getNextResizeGroupStateProvider: (measurementCache?: {
+    getCachedMeasurement: (data: any) => number | undefined;
+    addMeasurementToCache: (data: any, measurement: number) => void;
+}) => {
+    getNextState: (props: IResizeGroupProps, currentState: IResizeGroupState, getElementToMeasureDimension: () => number, newContainerDimension?: number | undefined) => IResizeGroupState | undefined;
+    shouldRenderDataForMeasurement: (dataToMeasure: any) => boolean;
+    getInitialResizeGroupState: (data: any) => IResizeGroupState;
+};
 
 // @public
 export interface ICheckbox {
@@ -207,6 +224,269 @@ export enum ImageLoadState {
 }
 
 // @public (undocumented)
+export interface IPivot {
+    focus(): void;
+}
+
+// @public (undocumented)
+export interface IPivotItemProps extends React.HTMLAttributes<HTMLDivElement> {
+    ariaLabel?: string;
+    componentRef?: IRefObject<{}>;
+    headerButtonProps?: {
+        [key: string]: string | number | boolean;
+    };
+    headerText?: string;
+    itemCount?: number | string;
+    itemIcon?: string;
+    itemKey?: string;
+    keytipProps?: IKeytipProps;
+    // @deprecated
+    linkText?: string;
+    onRenderItemLink?: IRenderFunction<IPivotItemProps>;
+}
+
+// @public (undocumented)
+export interface IPivotProps extends React.ClassAttributes<PivotBase>, React.HTMLAttributes<HTMLDivElement> {
+    className?: string;
+    componentRef?: IRefObject<IPivot>;
+    defaultSelectedIndex?: number;
+    defaultSelectedKey?: string;
+    getTabId?: (itemKey: string, index: number) => string;
+    headersOnly?: boolean;
+    // @deprecated
+    initialSelectedIndex?: number;
+    // @deprecated
+    initialSelectedKey?: string;
+    linkFormat?: PivotLinkFormat;
+    linkSize?: PivotLinkSize;
+    onLinkClick?: (item?: PivotItem, ev?: React.MouseEvent<HTMLElement>) => void;
+    selectedKey?: string | null;
+    styles?: IStyleFunctionOrObject<IPivotStyleProps, IPivotStyles>;
+    theme?: ITheme;
+}
+
+// @public (undocumented)
+export interface IPivotState {
+    // (undocumented)
+    selectedKey: string | undefined;
+}
+
+// @public (undocumented)
+export type IPivotStyleProps = Required<Pick<IPivotProps, 'theme'>> & Pick<IPivotProps, 'className'> & {
+    rootIsLarge?: boolean;
+    rootIsTabs?: boolean;
+    linkIsSelected?: boolean;
+};
+
+// @public (undocumented)
+export interface IPivotStyles {
+    // (undocumented)
+    count: IStyle;
+    // (undocumented)
+    icon: IStyle;
+    // (undocumented)
+    itemContainer?: IStyle;
+    // (undocumented)
+    link: IStyle;
+    // (undocumented)
+    linkContent: IStyle;
+    // (undocumented)
+    linkIsSelected: IStyle;
+    root: IStyle;
+    // (undocumented)
+    text: IStyle;
+}
+
+// @public (undocumented)
+export interface IPopupProps extends React.HTMLAttributes<HTMLDivElement> {
+    ariaDescribedBy?: string;
+    ariaLabel?: string;
+    ariaLabelledBy?: string;
+    className?: string;
+    onDismiss?: (ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement> | KeyboardEvent) => any;
+    onRestoreFocus?: (options: {
+        originalElement?: HTMLElement | Window;
+        containsFocus: boolean;
+    }) => void;
+    role?: string;
+    // @deprecated
+    shouldRestoreFocus?: boolean;
+}
+
+// @public (undocumented)
+export interface IResizeGroup {
+    remeasure(): void;
+}
+
+// @public (undocumented)
+export interface IResizeGroupProps extends React.HTMLAttributes<ResizeGroupBase | HTMLElement> {
+    className?: string;
+    componentRef?: IRefObject<IResizeGroup>;
+    data: any;
+    dataDidRender?: (renderedData: any) => void;
+    direction?: ResizeGroupDirection;
+    onGrowData?: (prevData: any) => any;
+    onReduceData: (prevData: any) => any;
+    onRenderData: (data: any) => JSX.Element;
+    // @deprecated
+    styles?: IStyleFunctionOrObject<IResizeGroupStyleProps, IResizeGroupStyles>;
+    theme?: ITheme;
+}
+
+// @public (undocumented)
+export interface IResizeGroupState {
+    dataToMeasure?: any;
+    measureContainer?: boolean;
+    renderedData?: any;
+    resizeDirection?: 'grow' | 'shrink';
+}
+
+// @public (undocumented)
+export interface IResizeGroupStyleProps {
+    className?: string;
+    theme: ITheme;
+}
+
+// @public (undocumented)
+export interface IResizeGroupStyles {
+    root: IStyle;
+}
+
+// @public (undocumented)
+export interface ISearchBox {
+    focus(): void;
+    hasFocus(): boolean;
+}
+
+// @public (undocumented)
+export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElement> {
+    ariaLabel?: string;
+    className?: string;
+    clearButtonProps?: IButtonProps;
+    componentRef?: IRefObject<ISearchBox>;
+    // @deprecated
+    defaultValue?: string;
+    disableAnimation?: boolean;
+    iconProps?: Pick<IIconProps, Exclude<keyof IIconProps, 'className'>>;
+    // @deprecated
+    labelText?: string;
+    onChange?: (event?: React.ChangeEvent<HTMLInputElement>, newValue?: string) => void;
+    // @deprecated
+    onChanged?: (newValue: any) => void;
+    onClear?: (ev?: any) => void;
+    onEscape?: (ev?: any) => void;
+    onSearch?: (newValue: any) => void;
+    placeholder?: string;
+    styles?: IStyleFunctionOrObject<ISearchBoxStyleProps, ISearchBoxStyles>;
+    theme?: ITheme;
+    underlined?: boolean;
+    value?: string;
+}
+
+// @public (undocumented)
+export interface ISearchBoxState {
+    // (undocumented)
+    hasFocus?: boolean;
+    // (undocumented)
+    value?: string;
+}
+
+// @public (undocumented)
+export interface ISearchBoxStyleProps {
+    // (undocumented)
+    className?: string;
+    // (undocumented)
+    disableAnimation?: boolean;
+    // (undocumented)
+    disabled?: boolean;
+    // (undocumented)
+    hasFocus?: boolean;
+    // (undocumented)
+    hasInput?: boolean;
+    // (undocumented)
+    theme: ITheme;
+    // (undocumented)
+    underlined?: boolean;
+}
+
+// @public (undocumented)
+export interface ISearchBoxStyles {
+    // (undocumented)
+    clearButton?: IStyle;
+    // (undocumented)
+    field?: IStyle;
+    // (undocumented)
+    icon?: IStyle;
+    // (undocumented)
+    iconContainer?: IStyle;
+    // (undocumented)
+    root?: IStyle;
+}
+
+// @public (undocumented)
+export interface ISlider {
+    // (undocumented)
+    focus: () => void;
+    // (undocumented)
+    value: number | undefined;
+}
+
+// @public (undocumented)
+export interface ISliderProps extends React.ClassAttributes<SliderBase> {
+    ariaLabel?: string;
+    ariaValueText?: (value: number) => string;
+    buttonProps?: React.HTMLAttributes<HTMLButtonElement>;
+    className?: string;
+    componentRef?: IRefObject<ISlider>;
+    defaultValue?: number;
+    disabled?: boolean;
+    label?: string;
+    max?: number;
+    min?: number;
+    onChange?: (value: number) => void;
+    onChanged?: (event: MouseEvent | TouchEvent | KeyboardEvent, value: number) => void;
+    originFromZero?: boolean;
+    showValue?: boolean;
+    snapToStep?: boolean;
+    step?: number;
+    styles?: IStyleFunctionOrObject<ISliderStyleProps, ISliderStyles>;
+    theme?: ITheme;
+    value?: number;
+    valueFormat?: (value: number) => string;
+    vertical?: boolean;
+}
+
+// @public (undocumented)
+export interface ISliderState {
+    // (undocumented)
+    renderedValue?: number;
+    // (undocumented)
+    value?: number;
+}
+
+// @public (undocumented)
+export type ISliderStyleProps = Required<Pick<ISliderProps, 'theme'>> & Pick<ISliderProps, 'className' | 'disabled' | 'vertical'> & {
+    showTransitions?: boolean;
+    showValue?: boolean;
+    titleLabelClassName?: string;
+};
+
+// @public (undocumented)
+export interface ISliderStyles {
+    activeSection: IStyle;
+    container: IStyle;
+    inactiveSection: IStyle;
+    line: IStyle;
+    lineContainer: IStyle;
+    root: IStyle;
+    slideBox: IStyle;
+    thumb: IStyle;
+    titleLabel: IStyle;
+    valueLabel: IStyle;
+    zeroTick: IStyle;
+}
+
+// @public (undocumented)
 export interface ISpinButton {
     focus: () => void;
     value?: string;
@@ -230,7 +510,7 @@ export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement> {
     downArrowButtonStyles?: Partial<IButtonStyles>;
     // Warning: (ae-forgotten-export) The symbol "ISpinButtonClassNames" needs to be exported by the entry point index.d.ts
     getClassNames?: (theme: ITheme, disabled: boolean, isFocused: boolean, keyboardSpinDirection: KeyboardSpinDirection, labelPosition?: Position, className?: string) => ISpinButtonClassNames;
-    iconButtonProps?: IButtonProps;
+    iconButtonProps?: IButtonProps_2;
     iconProps?: IIconProps;
     incrementButtonAriaLabel?: string;
     incrementButtonIcon?: IIconProps;
@@ -355,6 +635,108 @@ export enum KeyboardSpinDirection {
 }
 
 // @public (undocumented)
+export const MeasuredContext: React.Context<{
+    isMeasured: boolean;
+}>;
+
+// @public (undocumented)
+export const ONKEYDOWN_TIMEOUT_DURATION = 1000;
+
+// @public
+export const Pivot: React.FunctionComponent<IPivotProps>;
+
+// @public
+export class PivotBase extends React.Component<IPivotProps, IPivotState> {
+    constructor(props: IPivotProps);
+    focus(): void;
+    // (undocumented)
+    render(): JSX.Element;
+    }
+
+// @public (undocumented)
+export class PivotItem extends React.Component<IPivotItemProps, {}> {
+    constructor(props: IPivotItemProps);
+    // (undocumented)
+    render(): JSX.Element;
+}
+
+// @public (undocumented)
+export enum PivotLinkFormat {
+    links = 0,
+    tabs = 1
+}
+
+// @public (undocumented)
+export enum PivotLinkSize {
+    large = 1,
+    normal = 0
+}
+
+// @public
+export const Popup: React.ForwardRefExoticComponent<IPopupProps & React.RefAttributes<HTMLDivElement>>;
+
+// @public (undocumented)
+export const ResizeGroup: typeof ResizeGroupBase;
+
+// @public (undocumented)
+export class ResizeGroupBase extends React.Component<IResizeGroupProps, IResizeGroupState> {
+    constructor(props: IResizeGroupProps);
+    // (undocumented)
+    componentDidMount(): void;
+    // (undocumented)
+    componentDidUpdate(prevProps: IResizeGroupProps): void;
+    // (undocumented)
+    componentWillUnmount(): void;
+    // (undocumented)
+    remeasure(): void;
+    // (undocumented)
+    render(): JSX.Element;
+    // (undocumented)
+    UNSAFE_componentWillReceiveProps(nextProps: IResizeGroupProps): void;
+    }
+
+// @public (undocumented)
+export enum ResizeGroupDirection {
+    // (undocumented)
+    horizontal = 0,
+    // (undocumented)
+    vertical = 1
+}
+
+// @public (undocumented)
+export const SearchBox: React.FunctionComponent<ISearchBoxProps>;
+
+// @public (undocumented)
+export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxState> {
+    constructor(props: ISearchBoxProps);
+    // (undocumented)
+    static defaultProps: Pick<ISearchBoxProps, 'disableAnimation' | 'clearButtonProps'>;
+    focus(): void;
+    hasFocus(): boolean;
+    // (undocumented)
+    render(): JSX.Element;
+    // (undocumented)
+    UNSAFE_componentWillReceiveProps(newProps: ISearchBoxProps): void;
+}
+
+// @public (undocumented)
+export const Slider: React.FunctionComponent<ISliderProps>;
+
+// @public (undocumented)
+export class SliderBase extends React.Component<ISliderProps, ISliderState> implements ISlider {
+    constructor(props: ISliderProps);
+    // (undocumented)
+    componentWillUnmount(): void;
+    // (undocumented)
+    static defaultProps: ISliderProps;
+    // (undocumented)
+    focus(): void;
+    // (undocumented)
+    render(): React.ReactElement<{}>;
+    readonly value: number | undefined;
+}
+
+// @public (undocumented)
 export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonState> implements ISpinButton {
     constructor(props: ISpinButtonProps);
     // (undocumented)
@@ -373,16 +755,7 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
 export const Toggle: React.FunctionComponent<IToggleProps>;
 
 // @public (undocumented)
-export class ToggleBase extends React.Component<IToggleProps, IToggleState> implements IToggle {
-    constructor(props: IToggleProps);
-    readonly checked: boolean;
-    // (undocumented)
-    focus(): void;
-    // (undocumented)
-    static getDerivedStateFromProps(nextProps: Readonly<IToggleProps>, prevState: Readonly<IToggleState>): Partial<IToggleState> | null;
-    // (undocumented)
-    render(): JSX.Element;
-    }
+export const ToggleBase: React.FunctionComponent;
 
 
 export * from "office-ui-fabric-react/lib/ActivityItem";
@@ -432,21 +805,16 @@ export * from "office-ui-fabric-react/lib/Overlay";
 export * from "office-ui-fabric-react/lib/Panel";
 export * from "office-ui-fabric-react/lib/Persona";
 export * from "office-ui-fabric-react/lib/Pickers";
-export * from "office-ui-fabric-react/lib/Pivot";
-export * from "office-ui-fabric-react/lib/Popup";
 export * from "office-ui-fabric-react/lib/PositioningContainer";
 export * from "office-ui-fabric-react/lib/ProgressIndicator";
 export * from "office-ui-fabric-react/lib/Rating";
-export * from "office-ui-fabric-react/lib/ResizeGroup";
 export * from "office-ui-fabric-react/lib/ScrollablePane";
-export * from "office-ui-fabric-react/lib/SearchBox";
 export * from "office-ui-fabric-react/lib/SelectableOption";
 export * from "office-ui-fabric-react/lib/SelectedItemsList";
 export * from "office-ui-fabric-react/lib/Selection";
 export * from "office-ui-fabric-react/lib/Separator";
 export * from "office-ui-fabric-react/lib/Shimmer";
 export * from "office-ui-fabric-react/lib/ShimmeredDetailsList";
-export * from "office-ui-fabric-react/lib/Slider";
 export * from "office-ui-fabric-react/lib/Spinner";
 export * from "office-ui-fabric-react/lib/Stack";
 export * from "office-ui-fabric-react/lib/Sticky";

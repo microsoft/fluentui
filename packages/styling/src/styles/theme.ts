@@ -5,6 +5,7 @@ import { DefaultPalette } from './DefaultPalette';
 import { DefaultSpacing } from './DefaultSpacing';
 import { loadTheme as legacyLoadTheme } from '@microsoft/load-themed-styles';
 import { DefaultEffects } from './DefaultEffects';
+import { IRawStyle } from '@uifabric/merge-styles';
 
 let _theme: ITheme = createTheme({
   palette: DefaultPalette,
@@ -18,13 +19,11 @@ let _onThemeChangeCallbacks: Array<(theme: ITheme) => void> = [];
 export const ThemeSettingName = 'theme';
 
 if (!Customizations.getSettings([ThemeSettingName]).theme) {
-  const win = getWindow();
+  const win: any = getWindow(); // tslint:disable-line:no-any
 
-  // tslint:disable:no-string-literal no-any
-  if (win && (win as any)['FabricConfig'] && (win as any)['FabricConfig'].theme) {
-    _theme = createTheme((win as any)['FabricConfig'].theme);
+  if (win?.FabricConfig?.theme) {
+    _theme = createTheme(win.FabricConfig.theme);
   }
-  // tslint:enable:no-string-literal no-any
 
   // Set the default theme.
   Customizations.applySettings({ [ThemeSettingName]: _theme });
@@ -94,13 +93,15 @@ export function loadTheme(theme: IPartialTheme, depComments: boolean = false): I
  * @param theme - The theme object
  */
 function _loadFonts(theme: ITheme): { [name: string]: string } {
-  const lines = {};
+  const lines: { [key: string]: string } = {};
 
   for (const fontName of Object.keys(theme.fonts)) {
-    const font = theme.fonts[fontName];
+    const font: IRawStyle = theme.fonts[fontName as keyof IFontStyles];
+
     for (const propName of Object.keys(font)) {
-      const name = fontName + propName.charAt(0).toUpperCase() + propName.slice(1);
-      let value = font[propName];
+      const name: string = fontName + propName.charAt(0).toUpperCase() + propName.slice(1);
+      let value = font[propName as keyof IRawStyle] as string;
+
       if (propName === 'fontSize' && typeof value === 'number') {
         // if it's a number, convert it to px by default like our theming system does
         value = value + 'px';
@@ -132,13 +133,13 @@ export function createTheme(theme: IPartialTheme, depComments: boolean = false):
   let defaultFontStyles: IFontStyles = { ...DefaultFontStyles };
 
   if (theme.defaultFontStyle) {
-    for (const fontStyle of Object.keys(defaultFontStyles)) {
+    for (const fontStyle of Object.keys(defaultFontStyles) as (keyof IFontStyles)[]) {
       defaultFontStyles[fontStyle] = merge({}, defaultFontStyles[fontStyle], theme.defaultFontStyle);
     }
   }
 
   if (theme.fonts) {
-    for (const fontStyle of Object.keys(theme.fonts)) {
+    for (const fontStyle of Object.keys(theme.fonts) as (keyof IFontStyles)[]) {
       defaultFontStyles[fontStyle] = merge({}, defaultFontStyles[fontStyle], theme.fonts[fontStyle]);
     }
   }
@@ -161,22 +162,6 @@ export function createTheme(theme: IPartialTheme, depComments: boolean = false):
       ...theme.effects,
     },
   };
-}
-
-/**
- * Helper to pull a given property name from a given set of sources, in order, if available.
- * Otherwise returns the property name.
- */
-function _expandFrom<TRetVal, TMapType>(propertyName: string | TRetVal | undefined, ...maps: TMapType[]): TRetVal {
-  if (propertyName) {
-    for (const map of maps) {
-      if (map[propertyName as string]) {
-        return map[propertyName as string];
-      }
-    }
-  }
-
-  return propertyName as TRetVal;
 }
 
 // Generates all the semantic slot colors based on the Fabric palette.

@@ -1,5 +1,7 @@
 import { Provider, themes, pxToRem, createTheme } from '@fluentui/react-northstar';
+// This is loaded from a CDN, so it's not in dependencies.
 // @ts-ignore
+// eslint-disable-next-line import/no-extraneous-dependencies
 import AnchorJS from 'anchor-js';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
