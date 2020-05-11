@@ -344,7 +344,7 @@ export const MenuItem: React.FC<WithAsProp<MenuItemProps>> & FluentComponentStat
     }
   };
 
-  const closeMenu = (e: React.SyntheticEvent, forceTriggerFocus?: boolean) => {
+  const closeMenu = (e: React.MouseEvent, forceTriggerFocus?: boolean) => {
     if (!isSubmenuOpen()) {
       return;
     }
