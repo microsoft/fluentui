@@ -4,9 +4,7 @@ import {
   Button,
   Text,
   Toolbar,
-  ShorthandCollection,
   Status,
-  ToolbarItemShorthandKinds,
   ShorthandValue,
   ComponentStyleFunctionParam,
   ThemeInput,
@@ -335,27 +333,25 @@ interface CustomToolbarProps {
   onEndCallClick?: () => void;
 }
 
-type CustomToolbarLayout = (
-  props: CustomToolbarProps,
-) => ShorthandCollection<ToolbarItemProps, ToolbarItemShorthandKinds['item']>;
+type CustomToolbarLayout = (props: CustomToolbarProps) => ToolbarProps['items'];
 
 const commonLayout: CustomToolbarLayout = props =>
   [
     props.isRecording && {
       key: 'recording',
-      kind: 'custom',
+      kind: 'custom' as const,
       focusable: true,
       content: <Status state="error" title="Recording" variables={{ isRecordingIndicator: true }} />,
       variables: { isCtItemPrimary: true, isCtItemIndicator: true },
     },
     {
       key: 'timer-custom',
-      kind: 'custom',
+      kind: 'custom' as const,
       focusable: true,
       content: <Text>10:45</Text>,
       variables: { isCtItemPrimary: true, isCtItemIndicator: true },
     },
-    { key: 'timer-divider', kind: 'divider' },
+    { key: 'timer-divider', kind: 'divider' as const },
     {
       tooltip: props.cameraActive ? tooltips.videoOn : tooltips.videoOff,
       active: props.cameraActive,
