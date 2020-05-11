@@ -12,7 +12,7 @@ exports[`Link renders Link correctly 1`] = `
 
 exports[`Link renders Link with "as=div" a div element 1`] = `
 <div
-  className="customClassName ms-Link is-button"
+  className="customClassName ms-Link"
   onClick={[Function]}
 >
   I'm a div
@@ -31,7 +31,7 @@ exports[`Link renders Link with a custom class name 1`] = `
 
 exports[`Link renders Link with no href as a button 1`] = `
 <button
-  className="ms-Link is-button"
+  className="ms-Link"
   onClick={[Function]}
   type="button"
 >
@@ -52,7 +52,7 @@ exports[`Link renders disabled Link correctly 1`] = `
 exports[`Link renders disabled Link with no href as a button correctly 1`] = `
 <button
   aria-disabled={true}
-  className="ms-Link is-button is-disabled"
+  className="ms-Link is-disabled"
   disabled={true}
   onClick={[Function]}
   type="button"
@@ -64,7 +64,7 @@ exports[`Link renders disabled Link with no href as a button correctly 1`] = `
 exports[`Link supports non button/anchor html attributes when "as=" is used 1`] = `
 <blockquote
   cite="hi"
-  className="customClassName ms-Link is-button"
+  className="customClassName ms-Link"
   onClick={[Function]}
 >
   I'm a blockquote
