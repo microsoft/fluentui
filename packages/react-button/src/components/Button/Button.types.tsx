@@ -65,7 +65,7 @@ export interface ButtonProps extends ComponentProps, React.HTMLAttributes<HTMLBu
   /** A button can be sized. */
   size?: SizeValue;
 
-  // Deprecate or rename?
+  // TODO: Deprecate or rename to textOnly for alignment with iconOnly?
   /** A button can be formatted to show only text in order to indicate a less-pronounced action. */
   // text?: boolean;
 }

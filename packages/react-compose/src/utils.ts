@@ -35,7 +35,7 @@ export const defaultComposeOptions: ComposePreparedOptions = {
   resolveSlotProps: () => ({}),
 };
 
-const mergeClasses = (classes1: ClassDictionary, classes2: ClassDictionary) => {
+const mergeClasses = (classes1: ClassDictionary | undefined, classes2: ClassDictionary | undefined) => {
   const result = { ...classes1 };
 
   if (classes2) {
@@ -50,7 +50,6 @@ export function mergeComposeOptions(
   inputOptions: ComposeOptions,
   parentOptions: ComposePreparedOptions = defaultComposeOptions,
 ): ComposePreparedOptions {
-  //
   const mapPropsToSlotPropsChain = inputOptions.mapPropsToSlotProps
     ? [...parentOptions.mapPropsToSlotPropsChain, inputOptions.mapPropsToSlotProps]
     : parentOptions.mapPropsToSlotPropsChain;
