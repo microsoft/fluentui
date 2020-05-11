@@ -1277,9 +1277,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
               }
         >
           <span
-            className=
-                ms-Pivot-icon
-
+            className="ms-Pivot-icon"
           >
             <i
               aria-hidden={true}

@@ -2,6 +2,29 @@
   "name": "@fluentui/react-focus",
   "entries": [
     {
+      "date": "Fri, 08 May 2020 12:35:40 GMT",
+      "tag": "@fluentui/react-focus_v7.11.0",
+      "version": "7.11.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "FocusZone: Converging defaultTabbableElement/defaultActiveElement and bringing shouldFocusInnerElementWhenReceivedFocus to v7.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "edc643b525f1ee1607cdcaca0f91ff4b6c4ef877",
+            "package": "@fluentui/react-focus"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Adding keyboard-key to FocusZone.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "ce5c014aa4c23951afe4d1ca5e45ddb711e2f0fc",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 07 May 2020 01:06:55 GMT",
       "tag": "@fluentui/react-focus_v7.10.2",
       "version": "7.10.2",

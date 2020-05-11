@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-focus
 
-This log was last generated on Thu, 07 May 2020 01:06:55 GMT and should not be manually modified.
+This log was last generated on Fri, 08 May 2020 12:35:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.11.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.11.0)
+
+Fri, 08 May 2020 12:35:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v7.10.2..@fluentui/react-focus_v7.11.0)
+
+### Minor changes
+
+- FocusZone: Converging defaultTabbableElement/defaultActiveElement and bringing shouldFocusInnerElementWhenReceivedFocus to v7. ([PR #12853](https://github.com/microsoft/fluentui/pull/12853) by Humberto.Morimoto@microsoft.com)
+
+### Patches
+
+- Adding keyboard-key to FocusZone. ([PR #12339](https://github.com/microsoft/fluentui/pull/12339) by humbertomakotomorimoto@gmail.com)
 
 ## [7.10.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.10.2)
 

@@ -30,7 +30,7 @@ storiesOf('Checkbox', module)
     <Checkbox label="Controlled Indeterminate disabled checkbox" disabled indeterminate />
   ))
   .addStory('Uncontrolled Indeterminate', () => (
-    <Checkbox label="Uncontrolled Indeterminate disabled checkbox" defaultIndeterminate />
+    <Checkbox label="Uncontrolled Indeterminate checkbox" defaultIndeterminate />
   ))
   .addStory('Uncontrolled Indeterminate disabled', () => (
     <Checkbox label="Uncontrolled Indeterminate disabled checkbox" disabled defaultIndeterminate />
