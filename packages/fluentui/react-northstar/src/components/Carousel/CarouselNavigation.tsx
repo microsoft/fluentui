@@ -140,7 +140,7 @@ export const CarouselNavigation: React.FC<WithAsProp<CarouselNavigationProps>> &
     );
   };
 
-  const element = (
+  const element = getA11yProps.unstable_wrapWithFocusZone(
     <ElementType
       {...getA11yProps('root', {
         className: classes.root,
@@ -149,7 +149,7 @@ export const CarouselNavigation: React.FC<WithAsProp<CarouselNavigationProps>> &
       {...rtlTextContainer.getAttributes({ forElements: [children] })}
     >
       {childrenExist(children) ? children : renderItems()}
-    </ElementType>
+    </ElementType>,
   );
 
   setEnd();
