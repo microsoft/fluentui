@@ -97,10 +97,11 @@
   color: var(--button-icon, var(--button-text));
   display: inline-block;
   width: var(--button-iconSize);
-  height: var(--button-iconSize);
+  height: var(--b utton-iconSize);
 }
 
 .loader {
+  /* TODO: styling once we have a sample. */
 }
 
 /* selectors */
@@ -143,8 +144,8 @@
   content: '';
   box-sizing: border-box;
   border-radius: var(--button-borderRadius);
-  box-shadow: 0 0 0 1px var(--button-focusInner) inset;
-  border: 2px solid var(--button-focus);
+  box-shadow: 0 0 0 var(--button-focusInnerWidth, 1px) var(--button-focusInner, var(--accent-text)) inset;
+  border: var(--button-focusWidth, 2px) solid var(--button-focus, var(--accent-fill));
 }
 
 /* modifiers */
@@ -163,14 +164,12 @@
 
 .iconOnly {
   width: var(--button-height);
-  padding: 0;
+  --button-padding: 0;
 }
 
 .circular {
   --button-borderRadius: 50000px;
   --button-minWidth: var(--button-height);
-
-  padding: 0;
 }
 
 .fluid {
