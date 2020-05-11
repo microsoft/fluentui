@@ -301,7 +301,7 @@ export const MenuItem: React.FC<WithAsProp<MenuItemProps>> & FluentComponentStat
     }
   };
 
-  const handleClick = (e: Event | React.SyntheticEvent) => {
+  const handleClick = (e: React.KeyboardEvent | React.MouseEvent) => {
     if (disabled) {
       e.preventDefault();
       return;
