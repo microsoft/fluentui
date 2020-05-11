@@ -66,9 +66,9 @@ export const MenuDivider: React.FC<WithAsProp<MenuDividerProps>> &
     <ElementType
       {...getA11yProps('root', {
         className: classes.root,
+        ...rtlTextContainer.getAttributes({ forElements: [children, content] }),
         ...unhandledProps,
       })}
-      {...rtlTextContainer.getAttributes({ forElements: [children, content] })}
     >
       {childrenExist(children) ? children : content}
     </ElementType>
