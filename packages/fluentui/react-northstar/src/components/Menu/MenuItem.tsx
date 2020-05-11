@@ -361,7 +361,7 @@ export const MenuItem: React.FC<WithAsProp<MenuItemProps>> & FluentComponentStat
     }
   };
 
-  const openMenu = (e: React.SyntheticEvent) => {
+  const openMenu = (e: React.MouseEvent) => {
     if (menu && !menuOpen) {
       trySetMenuOpen(true, e);
       _.invoke(props, 'onActiveChanged', e, { ...props, active: true });
