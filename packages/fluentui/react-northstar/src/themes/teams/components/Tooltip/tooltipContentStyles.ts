@@ -17,7 +17,7 @@ const tooltipContentStyles: ComponentSlotStylesPrepared<TooltipContentStylesProp
 
       ...getContainerStyles({
         placement: p.basePlacement,
-        margin: v.pointerMargin,
+        padding: v.pointerMargin,
       }),
     }),
 
@@ -36,6 +36,7 @@ const tooltipContentStyles: ComponentSlotStylesPrepared<TooltipContentStylesProp
       borderSize: v.borderSize,
       borderColor: 'transparent',
       gap: v.pointerGap,
+      padding: v.pointerMargin,
       height: v.pointerHeight,
       width: v.pointerWidth,
 
