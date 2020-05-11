@@ -144,7 +144,6 @@ const Card: React.FC<WithAsProp<CardProps>> &
       },
     },
     mapPropsToBehavior: () => ({
-      selected,
       disabled,
     }),
     rtl: context.rtl,
