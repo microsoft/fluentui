@@ -76,16 +76,16 @@ const Segment: React.FC<WithAsProp<SegmentProps>> & FluentComponentStaticProps<S
     rtl: context.rtl,
   });
 
-  const element = (
+  const element = getA11yProps.unstable_wrapWithFocusZone(
     <ElementType
       {...getA11yProps('root', {
         className: classes.root,
+        ...rtlTextContainer.getAttributes({ forElements: [children] }),
         ...unhandledProps,
       })}
-      {...rtlTextContainer.getAttributes({ forElements: [children] })}
     >
       {childrenExist(children) ? children : Box.create(content)}
-    </ElementType>
+    </ElementType>,
   );
 
   setEnd();
