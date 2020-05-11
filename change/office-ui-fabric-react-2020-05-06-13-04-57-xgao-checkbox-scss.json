@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Checkbox: remove unneeded text-align css on label",
-  "packageName": "office-ui-fabric-react",
-  "email": "xgao@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-05-06T20:04:57.426Z"
-}
