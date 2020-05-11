@@ -104,14 +104,14 @@ export class DocumentCardBase extends React.Component<IDocumentCardProps, any> i
   };
 
   private _onAction = (ev: React.SyntheticEvent<HTMLElement>): void => {
-    const { onClick, onClickHref, openLinkInNewTab } = this.props;
+    const { onClick, onClickHref, onClickTarget } = this.props;
 
     if (onClick) {
       onClick(ev);
     } else if (!onClick && onClickHref) {
       // If no onClick Function was provided and we do have an onClickHref, redirect to the onClickHref
-      if (openLinkInNewTab) {
-        window.open(onClickHref, '_blank');
+      if (onClickTarget) {
+        window.open(onClickHref, onClickTarget, 'noreferrer noopener nofollow');
       } else {
         window.location.href = onClickHref;
       }
