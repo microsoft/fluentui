@@ -33,8 +33,8 @@ const menuItemBehavior: Accessibility<MenuItemBehaviorProps> = props => ({
     root: {
       role: 'menuitem',
       tabIndex: 0,
-      'aria-expanded': props.menu ? props.menuOpen || false : undefined,
-      'aria-haspopup': props.menu ? 'true' : undefined,
+      'aria-expanded': props.hasMenu ? props.menuOpen || false : undefined,
+      'aria-haspopup': props.hasMenu ? 'true' : undefined,
       'aria-label': props['aria-label'],
       'aria-labelledby': props['aria-labelledby'],
       'aria-describedby': props['aria-describedby'],
@@ -73,7 +73,7 @@ export default menuItemBehavior;
 
 export type MenuItemBehaviorProps = {
   /** Indicated if menu item has submenu. */
-  menu?: boolean | object;
+  hasMenu?: boolean | object;
   /** Defines if submenu is opened. */
   menuOpen?: boolean;
   /** If a menu item can is currently unable to be interacted with. */
