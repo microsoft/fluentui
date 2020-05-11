@@ -5,11 +5,11 @@ import {
   Text,
   Toolbar,
   ToolbarItemProps,
-  ToolbarCustomItemProps,
   ShorthandCollection,
   Status,
   ToolbarItemShorthandKinds,
   ShorthandValue,
+  ToolbarProps,
 } from '@fluentui/react-northstar';
 import {
   CallControlCloseTrayIcon,
@@ -68,9 +68,7 @@ export interface CustomToolbarProps {
 
 type CustomToolbarLayout = (
   props: CustomToolbarProps,
-) =>
-  | ShorthandCollection<ToolbarItemProps | ToolbarCustomItemProps, ToolbarItemShorthandKinds>
-  | ShorthandCollection<ToolbarItemProps | ToolbarCustomItemProps>;
+) => ShorthandCollection<ToolbarItemProps, ToolbarItemShorthandKinds['item']>;
 
 const commonLayout: CustomToolbarLayout = props =>
   [
@@ -81,7 +79,6 @@ const commonLayout: CustomToolbarLayout = props =>
       content: <Status state="error" title="Recording" variables={{ isRecordingIndicator: true }} />,
       variables: { isCtItemPrimary: true, isCtItemIndicator: true },
     },
-
     {
       key: 'timer-custom',
       kind: 'custom',
@@ -89,9 +86,7 @@ const commonLayout: CustomToolbarLayout = props =>
       content: <Text>10:45</Text>,
       variables: { isCtItemPrimary: true, isCtItemIndicator: true },
     },
-
     { key: 'timer-divider', kind: 'divider' },
-
     {
       title: props.cameraActive ? tooltips.videoOn : tooltips.videoOff,
       active: props.cameraActive,
@@ -100,7 +95,6 @@ const commonLayout: CustomToolbarLayout = props =>
       onClick: () => _.invoke(props, 'onCameraChange', !props.cameraActive),
       variables: { isCtItemPrimary: true },
     },
-
     {
       title: props.micActive ? tooltips.micOn : tooltips.micOff,
       active: props.micActive,
@@ -109,7 +103,6 @@ const commonLayout: CustomToolbarLayout = props =>
       onClick: () => _.invoke(props, 'onMicChange', !props.micActive),
       variables: { isCtItemPrimary: true },
     },
-
     {
       title: props.screenShareActive ? tooltips.shareStop : tooltips.share,
       active: props.screenShareActive,
@@ -122,7 +115,6 @@ const commonLayout: CustomToolbarLayout = props =>
       onClick: () => _.invoke(props, 'onScreenShareChange', !props.screenShareActive),
       variables: { isCtItemPrimary: true },
     },
-
     {
       title: tooltips.moreActions,
       key: 'more',

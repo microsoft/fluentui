@@ -48,7 +48,7 @@ export interface MenuProps extends UIComponentProps, ChildrenComponentProps {
   iconOnly?: boolean;
 
   /** Shorthand array of props for Menu. */
-  items?: ShorthandCollection<MenuItemProps, MenuShorthandKinds> | ShorthandCollection<MenuItemProps>;
+  items?: ShorthandCollection<MenuItemProps, MenuShorthandKinds>;
 
   /**
    * Called when a panel title is clicked.
