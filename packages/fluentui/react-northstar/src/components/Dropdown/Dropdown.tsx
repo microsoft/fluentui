@@ -1099,6 +1099,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
     const { disabled } = this.props;
 
     const handleInputKeyDown = (e: React.SyntheticEvent, searchInputProps: DropdownSearchInputProps) => {
+      e.stopPropagation();
       if (!disabled) {
         switch (keyboardKey.getCode(e)) {
           case keyboardKey.Tab:
