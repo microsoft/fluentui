@@ -8,6 +8,7 @@ import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import { IButtonProps as IButtonProps_2 } from 'office-ui-fabric-react/lib/components/Button/Button.types';
 import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import { IComponentAs } from 'office-ui-fabric-react/lib/Utilities';
+import { IFocusZoneProps } from '@fluentui/react-focus';
 import { IIconProps } from 'office-ui-fabric-react/lib/Icon';
 import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
 import { IRefObject } from 'office-ui-fabric-react/lib/Utilities';
@@ -221,6 +222,49 @@ export enum ImageLoadState {
     errorLoaded = 3,
     loaded = 1,
     notLoaded = 0
+}
+
+// @public (undocumented)
+export interface IOverflowSet {
+    focus(forceIntoFirstElement?: boolean): boolean;
+    focusElement(childElement?: HTMLElement): boolean;
+}
+
+// @public (undocumented)
+export interface IOverflowSetItemProps {
+    [propertyName: string]: any;
+    key: string;
+    keytipProps?: IKeytipProps;
+}
+
+// @public (undocumented)
+export interface IOverflowSetProps extends React.ClassAttributes<OverflowSetBase> {
+    className?: string;
+    componentRef?: IRefObject<IOverflowSet>;
+    // @deprecated
+    doNotContainWithinFocusZone?: boolean;
+    // @deprecated
+    focusZoneProps?: IFocusZoneProps;
+    items?: IOverflowSetItemProps[];
+    itemSubMenuProvider?: (item: IOverflowSetItemProps) => any[] | undefined;
+    keytipSequences?: string[];
+    onRenderItem: (item: IOverflowSetItemProps) => any;
+    onRenderOverflowButton: IRenderFunction<any[]>;
+    overflowItems?: IOverflowSetItemProps[];
+    overflowSide?: 'start' | 'end';
+    role?: string;
+    styles?: IStyleFunctionOrObject<IOverflowSetProps, IOverflowSetStyles>;
+    vertical?: boolean;
+}
+
+// @public
+export type IOverflowSetStyleProps = Pick<IOverflowSetProps, 'vertical' | 'className'>;
+
+// @public (undocumented)
+export interface IOverflowSetStyles {
+    item?: IStyle;
+    overflowButton?: IStyle;
+    root?: IStyle;
 }
 
 // @public (undocumented)
@@ -642,6 +686,26 @@ export const MeasuredContext: React.Context<{
 // @public (undocumented)
 export const ONKEYDOWN_TIMEOUT_DURATION = 1000;
 
+// @public (undocumented)
+export const OverflowSet: React.FunctionComponent<IOverflowSetProps>;
+
+// @public (undocumented)
+export class OverflowSetBase extends React.Component<IOverflowSetProps, {}> implements IOverflowSet {
+    constructor(props: IOverflowSetProps);
+    // (undocumented)
+    componentDidMount(): void;
+    // (undocumented)
+    componentDidUpdate(): void;
+    // (undocumented)
+    componentWillUnmount(): void;
+    focus(forceIntoFirstElement?: boolean): boolean;
+    focusElement(childElement?: HTMLElement): boolean;
+    // (undocumented)
+    render(): JSX.Element;
+    // (undocumented)
+    UNSAFE_componentWillUpdate(): void;
+}
+
 // @public
 export const Pivot: React.FunctionComponent<IPivotProps>;
 
@@ -800,7 +864,6 @@ export * from "office-ui-fabric-react/lib/MarqueeSelection";
 export * from "office-ui-fabric-react/lib/MessageBar";
 export * from "office-ui-fabric-react/lib/Modal";
 export * from "office-ui-fabric-react/lib/Nav";
-export * from "office-ui-fabric-react/lib/OverflowSet";
 export * from "office-ui-fabric-react/lib/Overlay";
 export * from "office-ui-fabric-react/lib/Panel";
 export * from "office-ui-fabric-react/lib/Persona";

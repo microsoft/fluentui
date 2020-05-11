@@ -1,15 +1,15 @@
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { MenuDividerProps } from '../../../../components/Menu/MenuDivider';
+import { MenuDividerStylesProps } from '../../../../components/Menu/MenuDivider';
 import { MenuVariables } from './menuVariables';
 import { getColorScheme } from '../../colors';
 
-const menuDividerStyles: ComponentSlotStylesPrepared<MenuDividerProps, MenuVariables> = {
+const menuDividerStyles: ComponentSlotStylesPrepared<MenuDividerStylesProps, MenuVariables> = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => {
     const colors = getColorScheme(v.colorScheme, null, p.primary);
     const borderColor = p.primary ? v.primaryBorderColor : v.borderColor || colors.border;
     const borderType = p.vertical ? 'borderTop' : 'borderLeft';
 
-    return p.content
+    return p.hasContent
       ? {
           display: 'flex',
           justifyContent: 'center',

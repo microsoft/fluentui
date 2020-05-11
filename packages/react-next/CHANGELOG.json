@@ -2,6 +2,50 @@
   "name": "@fluentui/react-next",
   "entries": [
     {
+      "date": "Mon, 11 May 2020 12:36:34 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.15",
+      "version": "8.0.0-alpha.15",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Checkbox: convert base styles to scss",
+            "author": "xgao@microsoft.com",
+            "commit": "1619b355712d83844b4b63283e9370b5ff6a17f5",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 08 May 2020 12:35:40 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.14",
+      "version": "8.0.0-alpha.14",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Checkbox: fix high contrast styles in Edge Chromium",
+            "author": "xgao@microsoft.com",
+            "commit": "70e25f50621034c277df23f832ed1b13e1a824c8",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Copying OverflowSet to react-next, in preparation for converting to function component",
+            "author": "czearing@outlook.com",
+            "commit": "18d5f02c104db78a7e6f0bfe4b3ab9cc9c672bd0",
+            "package": "@fluentui/react-next"
+          }
+        ],
+        "none": [
+          {
+            "comment": "update snapshots for merge-styles change to not generate class with no styles",
+            "author": "pingj@microsoft.com",
+            "commit": "a5b44ed833a4614d1333fa161ffd8fd467d33446",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 07 May 2020 12:34:38 GMT",
       "tag": "@fluentui/react-next_v8.0.0-alpha.13",
       "version": "8.0.0-alpha.13",
