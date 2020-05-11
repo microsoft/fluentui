@@ -15,3 +15,12 @@
    @content;
   }
 }
+
+/**
+ * The style which turns off high contrast adjustment in (only) Edge Chromium browser.
+ */
+@mixin high-contrast-edge-chromium-no-adjust {
+  @media screen and (-ms-high-contrast: active) and (forced-colors: active) {
+    forced-color-adjust: none;
+  }
+}

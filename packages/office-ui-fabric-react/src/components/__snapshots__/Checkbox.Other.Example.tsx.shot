@@ -105,7 +105,6 @@ exports[`Component Examples renders Checkbox.Other.Example.tsx correctly 1`] = `
             font-size: 14px;
             font-weight: 400;
             position: relative;
-            text-align: left;
             user-select: none;
           }
           &::before {
@@ -271,7 +270,6 @@ exports[`Component Examples renders Checkbox.Other.Example.tsx correctly 1`] = `
             font-weight: 400;
             justify-content: flex-end;
             position: relative;
-            text-align: left;
             user-select: none;
           }
           &::before {
@@ -431,7 +429,6 @@ exports[`Component Examples renders Checkbox.Other.Example.tsx correctly 1`] = `
             font-size: 14px;
             font-weight: 400;
             position: relative;
-            text-align: left;
             user-select: none;
           }
           &::before {
@@ -591,7 +588,6 @@ exports[`Component Examples renders Checkbox.Other.Example.tsx correctly 1`] = `
             font-size: 14px;
             font-weight: 400;
             position: relative;
-            text-align: left;
             user-select: none;
           }
           &::before {
