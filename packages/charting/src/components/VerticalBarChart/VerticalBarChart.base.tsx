@@ -87,7 +87,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
           </svg>
         </FocusZone>
         {!hideLegend && <div className={this._classNames.legendContainer}>{legends}</div>}
-        {isCalloutVisible ? (
+        {!this.props.hideTooltip && isCalloutVisible ? (
           <Callout
             gapSpace={10}
             isBeakVisible={false}

@@ -188,6 +188,10 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
     }
   }
 
+  /**
+   * This should be the only place where value is gotten from.
+   * It ensures that the component behaves consistently whether controlled or uncontrolled.
+   */
   public get value(): number | undefined {
     const { value = this.state.value } = this.props;
     if (this.props.min === undefined || this.props.max === undefined || value === undefined) {
@@ -294,8 +298,11 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
     }
     return currentPosition;
   }
+
   private _updateValue(value: number, renderedValue: number): void {
     const { step, snapToStep } = this.props;
+
+    // TODO this should be memoized based on step since it will only change when step changes
     let numDec = 0;
     if (isFinite(step!)) {
       while (Math.round(step! * Math.pow(10, numDec)) / Math.pow(10, numDec) !== step!) {
@@ -305,7 +312,7 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
 
     // Make sure value has correct number of decimal places based on number of decimals in step
     const roundedValue = parseFloat(value.toFixed(numDec));
-    const valueChanged = roundedValue !== this.state.value;
+    const valueChanged = roundedValue !== this.value;
 
     if (snapToStep) {
       renderedValue = roundedValue;
@@ -318,7 +325,7 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
       },
       () => {
         if (valueChanged && this.props.onChange) {
-          this.props.onChange(this.state.value as number);
+          this.props.onChange(roundedValue);
         }
       },
     );
@@ -331,7 +338,7 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
     });
 
     if (this.props.onChanged) {
-      this.props.onChanged(event, this.state.value as number);
+      this.props.onChanged(event, this.value as number);
     }
 
     this._disposeListeners();
@@ -343,7 +350,7 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
   };
 
   private _onKeyDown = (event: KeyboardEvent): void => {
-    let value: number | undefined = this.state.value;
+    let value: number | undefined = this.value;
     const { max, min, step } = this.props;
 
     let diff: number | undefined = 0;
@@ -394,7 +401,7 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
   private _setOnKeyDownTimer = (event: KeyboardEvent): void => {
     this._onKeyDownTimer = this._async.setTimeout(() => {
       if (this.props.onChanged) {
-        this.props.onChanged(event, this.state.value as number);
+        this.props.onChanged(event, this.value as number);
       }
     }, ONKEYDOWN_TIMEOUT_DURATION);
   };

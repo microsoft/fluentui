@@ -150,7 +150,7 @@ export function createShorthandInternal<P>({
   // ----------------------------------------
   // Build up props
   // ----------------------------------------
-  const defaultProps = options.defaultProps ? options.defaultProps() : ({} as Props<P>);
+  const defaultProps = options.defaultProps ? options.defaultProps() || ({} as Props<P>) : ({} as Props<P>);
 
   // User's props
   const usersProps =

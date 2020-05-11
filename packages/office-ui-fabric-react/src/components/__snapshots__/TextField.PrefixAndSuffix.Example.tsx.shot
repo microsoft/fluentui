@@ -66,9 +66,7 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
           }
     >
       <div
-        className=
-            ms-TextField-wrapper
-
+        className="ms-TextField-wrapper"
       >
         <label
           className=
@@ -263,9 +261,7 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
           }
     >
       <div
-        className=
-            ms-TextField-wrapper
-
+        className="ms-TextField-wrapper"
       >
         <label
           className=
@@ -484,9 +480,7 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
           }
     >
       <div
-        className=
-            ms-TextField-wrapper
-
+        className="ms-TextField-wrapper"
       >
         <label
           className=
@@ -680,9 +674,7 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
           }
     >
       <div
-        className=
-            ms-TextField-wrapper
-
+        className="ms-TextField-wrapper"
       >
         <label
           className=
