@@ -20,7 +20,9 @@
     "types": ["jest", "webpack-env", "custom-global"],
     "paths": {
       "@fluentui/react/lib/*": ["./src/*"],
-      "@fluentui/react": ["./src"]
+      "@fluentui/react": ["./src"],
+      "office-ui-fabric-react/lib/*": ["./src/*"],
+      "office-ui-fabric-react": ["./src"]
     }
   },
   "include": ["src"]

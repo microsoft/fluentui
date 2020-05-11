@@ -1,8 +1,17 @@
 # Change Log - @fluentui/keyboard-key
 
-This log was last generated on Thu, 07 May 2020 01:06:55 GMT and should not be manually modified.
+This log was last generated on Fri, 08 May 2020 12:35:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/keyboard-key_v0.2.0)
+
+Fri, 08 May 2020 12:35:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/keyboard-key_v0.1.7..@fluentui/keyboard-key_v0.2.0)
+
+### Minor changes
+
+- keyboard-key: Reducing bundle size. ([PR #12339](https://github.com/microsoft/fluentui/pull/12339) by humbertomakotomorimoto@gmail.com)
 
 ## [0.1.7](https://github.com/microsoft/fluentui/tree/@fluentui/keyboard-key_v0.1.7)
 
