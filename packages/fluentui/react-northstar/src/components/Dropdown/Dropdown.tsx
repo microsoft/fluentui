@@ -1121,6 +1121,8 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
             e.stopPropagation();
             this.tryRemoveItemFromValue();
             break;
+          case keyboardKey.Escape:
+            e.stopPropagation();
           default:
             break;
         }
