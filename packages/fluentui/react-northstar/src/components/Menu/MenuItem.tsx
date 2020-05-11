@@ -317,7 +317,7 @@ export const MenuItem: React.FC<WithAsProp<MenuItemProps>> & FluentComponentStat
     _.invoke(props, 'onBlur', e, props);
   };
 
-  const handleFocus = (e: React.SyntheticEvent) => {
+  const handleFocus = (e: React.FocusEvent) => {
     setIsFromKeyboard(isEventFromKeyboard());
 
     _.invoke(props, 'onFocus', e, props);
