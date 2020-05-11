@@ -271,7 +271,7 @@ export const MenuItem: React.FC<WithAsProp<MenuItemProps>> & FluentComponentStat
   const menuRef = React.createRef<HTMLElement>();
   const itemRef = React.createRef<HTMLElement>();
 
-  const handleWrapperBlur = e => {
+  const handleWrapperBlur = (e: React.FocusEvent) => {
     if (!props.inSubmenu && !e.currentTarget.contains(e.relatedTarget)) {
       trySetMenuOpen(false, e);
     }
