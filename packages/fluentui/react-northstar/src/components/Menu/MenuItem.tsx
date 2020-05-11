@@ -370,7 +370,7 @@ export const MenuItem: React.FC<WithAsProp<MenuItemProps>> & FluentComponentStat
     }
   };
 
-  const trySetMenuOpen = (newValue: boolean, e: Event | React.SyntheticEvent, onStateChanged?: any) => {
+  const trySetMenuOpen = (newValue: boolean, e: MouseEvent | React.FocusEvent | React.Keyboard | React.MouseEvent, onStateChanged?: any) => {
     setMenuOpen(newValue);
     // The reason why post-effect is not passed as callback to trySetState method
     // is that in 'controlled' mode the post-effect is applied before final re-rendering
