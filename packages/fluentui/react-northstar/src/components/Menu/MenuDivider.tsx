@@ -40,7 +40,7 @@ export const MenuDivider: React.FC<WithAsProp<MenuDividerProps>> &
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(MenuDivider.handledProps, props);
 
-  const getA11yProps = useAccessibility<never>(props.accessibility, {
+  const getA11yProps = useAccessibility(props.accessibility, {
     debugName: MenuDivider.displayName,
     rtl: context.rtl,
   });
