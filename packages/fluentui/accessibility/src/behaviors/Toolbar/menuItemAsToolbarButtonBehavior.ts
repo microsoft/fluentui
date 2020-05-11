@@ -31,7 +31,7 @@ const menuItemAsToolbarButtonBehavior: Accessibility<MenuItemBehaviorProps> = pr
     root: {
       role: 'button',
       tabIndex: 0,
-      'aria-haspopup': props.menu ? 'true' : undefined,
+      'aria-haspopup': props.hasMenu ? 'true' : undefined,
       'aria-disabled': props['disabled'],
       'aria-label': props['aria-label'],
       'aria-labelledby': props['aria-labelledby'],
@@ -53,7 +53,7 @@ const menuItemAsToolbarButtonBehavior: Accessibility<MenuItemBehaviorProps> = pr
       },
       doNotNavigateNextParentItem: {
         keyCombinations:
-          props.menu && props.menuOpen
+          props.hasMenu && props.menuOpen
             ? [{ keyCode: keyboardKey.ArrowLeft }, { keyCode: keyboardKey.ArrowRight }]
             : null,
       },
