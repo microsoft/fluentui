@@ -1,37 +1,26 @@
+/**
+ * TODO: Once theming is updated, consider removing all of this.
+ *
+ * Note: All :root rules must be literals, OR references to variables
+ * defined as literals in the same scope. If you refer to variables,
+ * they will be resolved on the :root element only; not at usage time.
+ * That means if you you fallback hover text to rested text, it won't
+ * change if the user overrides rested text.
+**/
 :root {
   /* sizing */
   --button-padding: 0 20px;
   --button-height: 32px;
   --button-minWidth: 96px;
   --button-maxWidth: 280px;
-  // THIS DOESNT WORK !
-  // --button-borderRadius: var(--site-borderRadius);
+
+  --button-borderRadius: 3px;
   --button-contentGap: 10px;
   --button-iconSize: 16px;
-
-  /* fonts */
-  --button-fontFamily: var(--site-fontFamily);
-  --button-fontSize: var(--site-fontSize);
-  --button-fontWeight: var(--site-fontWeight);
-
-  /* colors */
-  --button-fill: var(--site-color-fill);
-  --button-fill-hover: rgb(237, 235, 233);
-  --button-fill-focus: var(--site-color-fill);
-  --button-fill-active: rgb(225, 223, 221);
-  --button-fill-disabled: rgb(237, 235, 233);
-
-  --button-text: var(--site-text);
-  --button-text-hover: var(--site-text);
-  --button-text-focus: var(--site-text);
-  --button-text-active: var(--site-text);
-  --button-text-disabled: rgb(200, 198, 196);
 
   /* borders, focus and shadow */
   --button-borderRadius: 2px;
   --button-borderWidth: 1px;
-  --button-borderColor: rgb(225, 223, 221);
-  --button-borderColor-disabled: transparent;
   --button-boxShadow: 0px 0.2rem 0.4rem -0.075rem rgba(0, 0, 0, 0.1);
   --button-boxShadow-disabled: none;
 
@@ -39,14 +28,37 @@
   --button-transform-active: scale(0.95);
   --button-transition: transform 0.1s linear;
 
-  /* These should come from the provider */
-  // --site-accent-fill: rgb(98, 100, 167);
-  // --site-accent-fill-hover: rgb(88, 90, 150);
-  // --site-accent-fill-active: rgb(70, 71, 117);
-  // --site-accent-text: white;
-  // --site-accent-text-hover: white;
-  // --site-accent-text-active: white;
-  // --button-fontWeight: 600;
+  /* TODO: Remove. Fonts should only be defined in the theme. */
+  --button-fontFamily: 'Segoe UI', 'Helvetica Neue', 'Apple Color Emoji', 'Segoe UI Emoji', Helvetica, Arial, sans-serif;
+  --button-fontSize: 14px;
+  --button-fontWeight: 600;
+
+  /* TODO: Remove. Colors should only be defined in the theme. */
+  --button-fill: white;
+  --button-fill-hover: rgb(237, 235, 233);
+  --button-fill-focus: var(--button-fill);
+  --button-fill-active: rgb(225, 223, 221);
+  --button-fill-disabled: var(--button-fill-hover);
+  --button-text: rgb(37, 36, 35);
+  --button-text-hover: var(--button-text);
+  --button-text-focus: var(--button-text);
+  --button-text-active: var(--button-text);
+  --button-text-disabled: rgb(200, 198, 196);
+  --button-borderColor: rgb(225, 223, 221);
+  --button-borderColor-disabled: transparent;
+
+  /* TODO: Remove. Accent should only be defined in the theme. */
+  --accent-fill: rgb(98, 100, 167);
+  --accent-fill-hover: rgb(88, 90, 150);
+  --accent-fill-focus: var(--accent-fill);
+  --accent-fill-active: rgb(70, 71, 117);
+  --accent-fill-disabled: var(--accent-hover);
+  --accent-text: white;
+  --accent-text-hover: var(--accent-text);
+  --accent-text-focus: var(--accent-text);
+  --accent-text-active: var(--accent-text);
+  --accent-text-disabled: rgb(200, 198, 196);
+  --accent-borderColor: transparent;
 }
 
 /* slots */
@@ -134,18 +146,19 @@
   box-shadow: 0 0 0 1px var(--button-focusInner) inset;
   border: 2px solid var(--button-focus);
 }
+
 /* modifiers */
 
 .primary {
-  --button-fill: var(--site-accent-fill);
-  --button-fill-hover: var(--site-accent-fill-hover);
-  --button-fill-active: var(--site-accent-fill-active);
+  --button-fill: var(--accent-fill);
+  --button-fill-hover: var(--accent-fill-hover);
+  --button-fill-active: var(--accent-fill-active);
 
-  --button-text: var(--site-accent-text);
-  --button-text-hover: var(--site-accent-text-hover);
-  --button-text-active: var(--site-accent-text-active);
+  --button-text: var(--accent-text);
+  --button-text-hover: var(--accent-text-hover);
+  --button-text-active: var(--accent-text-active);
 
-  --button-borderColor: transparent;
+  --button-borderColor: var(--accent-borderColor);
 }
 
 .iconOnly {
@@ -155,10 +168,14 @@
 
 .circular {
   --button-borderRadius: 50000px;
+  --button-minWidth: var(--button-height);
 
-  border-radius: 10000px;
   padding: 0;
-  width: var(--button-height);
+}
+
+.fluid {
+  width: 100%;
+  max-width: 100%;
 }
 
 .disabled {
@@ -171,4 +188,23 @@
   .icon {
     color: var(--button-icon-disabled, var(--button-text-disabled));
   }
+}
+
+.size_smallest {
+  --button-height: var(--button-size-smallest, 16px);
+}
+.size_smaller {
+  --button-height: var(--button-size-smaller, 20px);
+}
+.size_small {
+  --button-height: var(--button-size-small, 24px);
+}
+.size_large {
+  --button-height: var(--button-size-large, 40px);
+}
+.size_larger {
+  --button-height: var(--button-size-larger, 48px);
+}
+.size_largest {
+  --button-height: var(--button-size-largest, 64px);
 }
