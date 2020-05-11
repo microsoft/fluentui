@@ -272,7 +272,7 @@ export const MenuItem: React.FC<WithAsProp<MenuItemProps>> & FluentComponentStat
   const itemRef = React.createRef<HTMLElement>();
 
   const handleWrapperBlur = (e: React.FocusEvent) => {
-    if (!props.inSubmenu && !e.currentTarget.contains(e.relatedTarget)) {
+    if (!props.inSubmenu && !e.currentTarget.contains(e.relatedTarget as Node)) {
       trySetMenuOpen(false, e);
     }
   };
@@ -287,9 +287,9 @@ export const MenuItem: React.FC<WithAsProp<MenuItemProps>> & FluentComponentStat
     }
   };
 
-  const performClick = (e: React.MouseEvent) => {
+  const performClick = (e: React.MouseEvent | React.KeyboardEvent) => {
     if (menu) {
-      if (doesNodeContainClick(menuRef.current, e, context.target)) {
+      if (doesNodeContainClick(menuRef.current, (e as unknown) as MouseEvent, context.target)) {
         // submenu was clicked => close it and propagate
         trySetMenuOpen(false, e, () => focusAsync(itemRef.current));
       } else {
@@ -301,7 +301,7 @@ export const MenuItem: React.FC<WithAsProp<MenuItemProps>> & FluentComponentStat
     }
   };
 
-  const handleClick = (e: React.KeyboardEvent | React.MouseEvent) => {
+  const handleClick = (e: React.MouseEvent | React.KeyboardEvent) => {
     if (disabled) {
       e.preventDefault();
       return;
@@ -327,7 +327,7 @@ export const MenuItem: React.FC<WithAsProp<MenuItemProps>> & FluentComponentStat
     return !!(menu && menuOpen);
   };
 
-  const closeAllMenus = (e: React.MouseEvent) => {
+  const closeAllMenus = (e: React.MouseEvent | React.KeyboardEvent) => {
     if (!isSubmenuOpen()) {
       return;
     }
@@ -344,7 +344,7 @@ export const MenuItem: React.FC<WithAsProp<MenuItemProps>> & FluentComponentStat
     }
   };
 
-  const closeMenu = (e: React.MouseEvent, forceTriggerFocus?: boolean) => {
+  const closeMenu = (e: React.MouseEvent | React.KeyboardEvent, forceTriggerFocus?: boolean) => {
     if (!isSubmenuOpen()) {
       return;
     }
@@ -361,7 +361,7 @@ export const MenuItem: React.FC<WithAsProp<MenuItemProps>> & FluentComponentStat
     }
   };
 
-  const openMenu = (e: React.MouseEvent) => {
+  const openMenu = (e: React.MouseEvent | React.KeyboardEvent) => {
     if (menu && !menuOpen) {
       trySetMenuOpen(true, e);
       _.invoke(props, 'onActiveChanged', e, { ...props, active: true });
@@ -370,7 +370,11 @@ export const MenuItem: React.FC<WithAsProp<MenuItemProps>> & FluentComponentStat
     }
   };
 
-  const trySetMenuOpen = (newValue: boolean, e: MouseEvent | React.FocusEvent | React.Keyboard | React.MouseEvent, onStateChanged?: any) => {
+  const trySetMenuOpen = (
+    newValue: boolean,
+    e: MouseEvent | React.FocusEvent | React.KeyboardEvent | React.MouseEvent,
+    onStateChanged?: any,
+  ) => {
     setMenuOpen(newValue);
     // The reason why post-effect is not passed as callback to trySetState method
     // is that in 'controlled' mode the post-effect is applied before final re-rendering
