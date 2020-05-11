@@ -337,9 +337,7 @@ interface CustomToolbarProps {
 
 type CustomToolbarLayout = (
   props: CustomToolbarProps,
-) =>
-  | ShorthandCollection<ToolbarItemProps | ToolbarCustomItemProps, ToolbarItemShorthandKinds>
-  | ShorthandCollection<ToolbarItemProps | ToolbarCustomItemProps>;
+) => ToolbarProps['items']
 
 const commonLayout: CustomToolbarLayout = props =>
   [
