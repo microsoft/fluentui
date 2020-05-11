@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Thu, 16 Apr 2020 04:01:45 GMT and should not be manually modified.
+This log was last generated on Thu, 07 May 2020 01:06:55 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.110.5](https://github.com/microsoft/fluentui/tree/@fluentui/react_v7.110.5)
+
+Thu, 07 May 2020 01:06:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v7.106.2..@fluentui/react_v7.110.5)
+
+### Patches
+
+- CommonJS paths were pointing to esm paths, now should correctly point to the rigth path. ([PR #13026](https://github.com/microsoft/fluentui/pull/13026) by dzearing@hotmail.com)
 
 ## [7.106.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v7.106.2)
 

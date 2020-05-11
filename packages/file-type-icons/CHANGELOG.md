@@ -1,8 +1,17 @@
 # Change Log - @uifabric/file-type-icons
 
-This log was last generated on Wed, 06 May 2020 12:32:22 GMT and should not be manually modified.
+This log was last generated on Thu, 07 May 2020 01:06:55 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.2.40](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.2.40)
+
+Thu, 07 May 2020 01:06:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.2.39..@uifabric/file-type-icons_v7.2.40)
+
+### Patches
+
+- Addressing commonjs imports. ([PR #13031](https://github.com/microsoft/fluentui/pull/13031) by dzearing@microsoft.com)
 
 ## [7.2.39](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.2.39)
 

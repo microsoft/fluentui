@@ -60,9 +60,7 @@ exports[`Panel renders Panel correctly 1`] = `
     <div
       aria-labelledby="Panel0-headerText"
       aria-modal="true"
-      className=
-
-
+      className=""
       onKeyDown={[Function]}
       role="dialog"
       style={

@@ -6,7 +6,9 @@ import { KeytipData } from '../../KeytipData';
 import { useId, useControllableValue, useMergedRefs } from '@uifabric/react-hooks';
 import { useFocusRects } from 'office-ui-fabric-react';
 
-const getClassNames = classNamesFunction<ICheckboxStyleProps, ICheckboxStyles>();
+const getClassNames = classNamesFunction<ICheckboxStyleProps, ICheckboxStyles>({
+  useStaticStyles: true,
+});
 
 export const CheckboxBase = React.forwardRef((props: ICheckboxProps, forwardedRef: React.Ref<HTMLDivElement>) => {
   const {
