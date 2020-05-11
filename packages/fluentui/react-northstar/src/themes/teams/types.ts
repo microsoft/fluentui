@@ -49,6 +49,7 @@ import { ListItemStylesProps } from '../../components/List/ListItem';
 import { LoaderProps } from '../../components/Loader/Loader';
 import { MenuItemProps } from '../../components/Menu/MenuItem';
 import { MenuProps } from '../../components/Menu/Menu';
+import { MenuDividerStylesProps } from '../../components/Menu/MenuDivider';
 import { PopupContentStylesProps } from '../../components/Popup/PopupContent';
 import { PortalProps } from '../../components/Portal/Portal';
 import { RadioGroupItemProps } from '../../components/RadioGroup/RadioGroupItem';
@@ -66,8 +67,8 @@ import { ToolbarMenuItemStylesProps } from '../../components/Toolbar/ToolbarMenu
 import { ToolbarMenuDividerStylesProps } from '../../components/Toolbar/ToolbarMenuDivider';
 import { ToolbarMenuRadioGroupStylesProps } from '../../components/Toolbar/ToolbarMenuRadioGroup';
 import { ToolbarMenuStylesProps } from '../../components/Toolbar/ToolbarMenu';
-import { ToolbarProps } from '../../components/Toolbar/Toolbar';
-import { ToolbarRadioGroupProps } from '../../components/Toolbar/ToolbarRadioGroup';
+import { ToolbarStylesProps } from '../../components/Toolbar/Toolbar';
+import { ToolbarRadioGroupStylesProps } from '../../components/Toolbar/ToolbarRadioGroup';
 import { TooltipContentStylesProps } from '../../components/Tooltip/TooltipContent';
 import { HierarchicalTreeItemProps } from '../../components/HierarchicalTree/HierarchicalTreeItem';
 import { HierarchicalTreeProps } from '../../components/HierarchicalTree/HierarchicalTree';
@@ -88,6 +89,7 @@ import { SvgIconStylesProps } from '../../components/SvgIcon/SvgIcon';
 import { SplitButtonStylesProps } from '../../components/SplitButton/SplitButton';
 import { CarouselNavigationStylesProps } from '../../components/Carousel/CarouselNavigation';
 import { CarouselItemStylesProps } from '../../components/Carousel/CarouselItem';
+import { CarouselStylesProps } from '../../components/Carousel/Carousel';
 
 export type TeamsThemeStylesProps = {
   Accordion: AccordionStylesProps;
@@ -105,6 +107,7 @@ export type TeamsThemeStylesProps = {
   Box: BoxStylesProps;
   ButtonContent: ButtonContentStylesProps;
   ButtonGroup: ButtonGroupProps;
+  Carousel: CarouselStylesProps;
   CarouselItem: CarouselItemStylesProps;
   Chat: ChatStylesProps;
   ChatItem: ChatItemStylesProps;
@@ -133,6 +136,7 @@ export type TeamsThemeStylesProps = {
   ListItem: ListItemStylesProps;
   Loader: LoaderProps;
   Menu: MenuProps;
+  MenuDivider: MenuDividerStylesProps;
   MenuItem: MenuItemProps;
   Portal: PortalProps;
   PopupContent: PopupContentStylesProps;
@@ -144,11 +148,11 @@ export type TeamsThemeStylesProps = {
   Slider: SliderStylesProps;
   SplitButton: SplitButtonStylesProps;
   Status: StatusStylesProps;
-  Toolbar: ToolbarProps;
+  Toolbar: ToolbarStylesProps;
   ToolbarCustomItem: ToolbarCustomItemStylesProps;
   ToolbarItem: ToolbarItemStylesProps;
   ToolbarDivider: ToolbarDividerStylesProps;
-  ToolbarRadioGroup: ToolbarRadioGroupProps;
+  ToolbarRadioGroup: ToolbarRadioGroupStylesProps;
   ToolbarMenu: ToolbarMenuStylesProps;
   ToolbarMenuItem: ToolbarMenuItemStylesProps;
   ToolbarMenuDivider: ToolbarMenuDividerStylesProps;

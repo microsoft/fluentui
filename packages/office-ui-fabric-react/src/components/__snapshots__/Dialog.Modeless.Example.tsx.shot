@@ -34,8 +34,14 @@ exports[`Component Examples renders Dialog.Modeless.Example.tsx correctly 1`] = 
           &:hover .ms-Checkbox-text {
             color: #201f1e;
           }
+          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+            color: WindowText;
+          }
           &:focus .ms-Checkbox-text {
             color: #201f1e;
+          }
+          @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+            color: WindowText;
           }
     >
       <input
@@ -77,7 +83,6 @@ exports[`Component Examples renders Dialog.Modeless.Example.tsx correctly 1`] = 
               font-size: 14px;
               font-weight: 400;
               position: relative;
-              text-align: left;
               user-select: none;
             }
             &::before {
@@ -110,6 +115,12 @@ exports[`Component Examples renders Dialog.Modeless.Example.tsx correctly 1`] = 
                 transition-property: background, border, border-color;
                 transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                 width: 20px;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: WindowText;
+              }
+              @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                forced-color-adjust: none;
               }
         >
           <i
@@ -145,6 +156,12 @@ exports[`Component Examples renders Dialog.Modeless.Example.tsx correctly 1`] = 
                 font-size: 14px;
                 line-height: 20px;
                 margin-left: 4px;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                color: WindowText;
+              }
+              @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                forced-color-adjust: none;
               }
         >
           Is draggable

@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Stacked Bar Chart: Rounded value to 1 if less than 1%  to appear in the chart",
-  "packageName": "@uifabric/charting",
-  "email": "v-satgar@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-04-30T08:09:50.311Z"
-}

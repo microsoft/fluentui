@@ -35,6 +35,11 @@ const Usage = () => (
       description="Example of cards in a grid with keyboard navigation for cards and inside cards"
       examplePath="components/Card/Usage/CardExampleFocusableChildrenGrid"
     />
+    <ComponentExample
+      title="Expandable card"
+      description="Example of expandable card"
+      examplePath="components/Card/Usage/CardExampleExpandable"
+    />
   </ExampleSection>
 );
 
