@@ -277,7 +277,7 @@ export const MenuItem: React.FC<WithAsProp<MenuItemProps>> & FluentComponentStat
     }
   };
 
-  const outsideClickHandler = e => {
+  const outsideClickHandler = (e: MouseEvent) => {
     if (!isSubmenuOpen()) return;
     if (
       !doesNodeContainClick(itemRef.current, e, context.target) &&
