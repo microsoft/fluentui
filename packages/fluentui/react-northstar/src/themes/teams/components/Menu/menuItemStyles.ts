@@ -429,7 +429,7 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemStylesProps, MenuVaria
       },
     },
 
-    ...(!!p.hasContent && {
+    ...(p.hasContent && {
       marginRight: pxToRem(10),
     }),
     ...(!p.iconOnly && {
