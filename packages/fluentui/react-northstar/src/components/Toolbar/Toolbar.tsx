@@ -50,6 +50,7 @@ import ToolbarMenuItem, { ToolbarMenuItemProps } from './ToolbarMenuItem';
 import ToolbarMenuRadioGroup, { ToolbarMenuRadioGroupProps } from './ToolbarMenuRadioGroup';
 import ToolbarRadioGroup from './ToolbarRadioGroup';
 import { ToolbarVariablesProvider } from './toolbarVariablesContext';
+import { MenuItemProps } from '../Menu/MenuItem';
 
 export type ToolbarItemShorthandKinds = {
   item: ToolbarItemProps;
@@ -431,8 +432,8 @@ const Toolbar: React.FC<WithAsProp<ToolbarProps>> &
     }
   }, 16);
 
-  const renderItems = (items: ShorthandCollection<ToolbarItemProps, ToolbarItemShorthandKinds>) =>
-    _.map(items, (item: ShorthandValue<ToolbarItemProps & { kind?: keyof ToolbarItemShorthandKinds }>) => {
+  const renderItems = (items: ToolbarProps['items']) =>
+    _.map(items, item => {
       const kind = _.get(item, 'kind', 'item');
 
       switch (kind) {
@@ -459,7 +460,10 @@ const Toolbar: React.FC<WithAsProp<ToolbarProps>> &
             icon: <MoreIcon outline />,
           }),
           overrideProps: {
-            menu: { items: overflowOpen ? collectOverflowItems() : [], popper: { positionFixed: true } },
+            menu: {
+              items: overflowOpen ? (collectOverflowItems() as MenuItemProps[]) : [],
+              popper: { positionFixed: true },
+            },
             menuOpen: overflowOpen,
             onMenuOpenChange: (e, { menuOpen }) => {
               _.invoke(props, 'onOverflowOpenChange', e, { ...props, overflowOpen: menuOpen });
