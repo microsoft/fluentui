@@ -32,8 +32,10 @@
     "react": "16.8.6"
   },
   "dependencies": {
+    "@types/classnames": "^2.2.9",
     "@uifabric/set-version": "^7.0.11",
-    "tslib": "^1.10.0"
+    "tslib": "^1.10.0",
+    "classnames": "^2.2.6"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <17.0.0",
