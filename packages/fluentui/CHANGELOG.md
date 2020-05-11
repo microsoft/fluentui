@@ -17,6 +17,9 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+## BREAKING CHANGES
+- Restricted prop sets in the `MenuDivider` component which are passed to styles functions @assuncaocharles ([#13069](https://github.com/microsoft/fluentui/pull/13069))
+
 ### Fixes
 
 - Fix `splitButtonBehavior` to exclude `toggleButton` from focus zone @silviuavram ([#13043](https://github.com/microsoft/fluentui/pull/13043))
