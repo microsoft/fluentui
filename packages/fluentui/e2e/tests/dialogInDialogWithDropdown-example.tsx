@@ -1,0 +1,61 @@
+import * as React from 'react';
+import { Button, Dialog, Dropdown } from '@fluentui/react-northstar';
+
+export const selectors = {
+  outerClose: 'outer-close',
+  outerHeader: 'outer-header',
+  outerTrigger: 'outer-trigger',
+  outerOverlay: 'outer-overlay',
+
+  innerClose: 'inner-close',
+  innerHeader: 'inner-header',
+  innerTrigger: 'inner-trigger',
+  innerOverlay: 'inner-overlay',
+
+  dropdown: 'dropdown-id',
+};
+
+const inputItems = [
+  'Bruce Wayne',
+  'Natasha Romanoff',
+  'Steven Strange',
+  'Alfred Pennyworth',
+  `Scarlett O'Hara`,
+  'Imperator Furiosa',
+  'Bruce Banner',
+  'Peter Parker',
+  'Selina Kyle',
+];
+
+const DropdownExampleSearch = () => (
+  <Dropdown
+    search
+    items={inputItems}
+    id={selectors.dropdown}
+    placeholder="Start typing a name"
+    noResultsMessage="We couldn't find any matches."
+    getA11ySelectionMessage={{
+      onAdd: item => `${item} has been selected.`,
+    }}
+  />
+);
+
+const DialogInPopupExample = () => (
+  <Dialog
+    cancelButton={{ content: 'Close', id: selectors.outerClose }}
+    content={
+      <Dialog
+        cancelButton={{ content: 'Close', id: selectors.innerClose }}
+        header={{ content: 'An inner', id: selectors.innerHeader }}
+        overlay={{ id: selectors.innerOverlay }}
+        content={<DropdownExampleSearch />}
+        trigger={<Button id={selectors.innerTrigger} content="Open a dialog" />}
+      />
+    }
+    header={{ content: 'An outer', id: selectors.outerHeader }}
+    overlay={{ id: selectors.outerOverlay }}
+    trigger={<Button id={selectors.outerTrigger} content="Open a dialog" />}
+  />
+);
+
+export default DialogInPopupExample;
