@@ -55,11 +55,14 @@ export const useSelectedItems = <T extends {}>(
   };
 
   const removeItems = (itemsToRemove: any[]): void => {
-    const currentitems: T[] = [...items];
-    const updatedItems: T[] = currentitems.filter(item => itemsToRemove.indexOf(item) === -1);
-
-    setSelectedItems(updatedItems);
-    selection.setItems(updatedItems);
+    const currentItems: T[] = [...items];
+    const updatedItems: T[] = currentItems;
+    itemsToRemove.forEach(item => {
+      const index: number = currentItems.indexOf(item);
+      updatedItems.splice(index, 1);
+      setSelectedItems(updatedItems);
+      selection.setItems(updatedItems);
+    });
   };
 
   const removeSelectedItems = (): void => {
