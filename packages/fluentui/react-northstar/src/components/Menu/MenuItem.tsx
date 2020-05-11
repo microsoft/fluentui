@@ -327,7 +327,7 @@ export const MenuItem: React.FC<WithAsProp<MenuItemProps>> & FluentComponentStat
     return !!(menu && menuOpen);
   };
 
-  const closeAllMenus = (e: React.SyntheticEvent) => {
+  const closeAllMenus = (e: React.MouseEvent) => {
     if (!isSubmenuOpen()) {
       return;
     }
