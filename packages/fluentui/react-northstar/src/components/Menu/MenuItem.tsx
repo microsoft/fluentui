@@ -287,7 +287,7 @@ export const MenuItem: React.FC<WithAsProp<MenuItemProps>> & FluentComponentStat
     }
   };
 
-  const performClick = e => {
+  const performClick = (e: React.MouseEvent) => {
     if (menu) {
       if (doesNodeContainClick(menuRef.current, e, context.target)) {
         // submenu was clicked => close it and propagate
