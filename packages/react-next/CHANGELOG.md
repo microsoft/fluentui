@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-next
 
-This log was last generated on Fri, 08 May 2020 12:35:40 GMT and should not be manually modified.
+This log was last generated on Mon, 11 May 2020 12:36:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-alpha.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.15)
+
+Mon, 11 May 2020 12:36:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.14..@fluentui/react-next_v8.0.0-alpha.15)
+
+### Changes
+
+- Checkbox: convert base styles to scss ([PR #13014](https://github.com/microsoft/fluentui/pull/13014) by xgao@microsoft.com)
 
 ## [8.0.0-alpha.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.14)
 
