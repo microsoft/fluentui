@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Link } from 'office-ui-fabric-react/lib/Link';
+import { Link } from '@fluentui/react-next/lib/Link';
 
 export const LinkBasicExample: React.FunctionComponent = () => {
   return (
