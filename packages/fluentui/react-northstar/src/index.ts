@@ -263,6 +263,8 @@ export * from './components/Card/CardFooter';
 export { default as CardFooter } from './components/Card/CardFooter';
 export * from './components/Card/CardColumn';
 export { default as CardColumn } from './components/Card/CardColumn';
+export * from './components/Card/CardExpandableBox';
+export { default as CardExpandableBox } from './components/Card/CardExpandableBox';
 //
 // Utilities
 //
