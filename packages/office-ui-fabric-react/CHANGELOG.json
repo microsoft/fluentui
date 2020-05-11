@@ -2,6 +2,27 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Mon, 11 May 2020 12:36:34 GMT",
+      "tag": "office-ui-fabric-react_v7.111.1",
+      "version": "7.111.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Checkbox: remove unneeded text-align css on label",
+            "author": "xgao@microsoft.com",
+            "commit": "1619b355712d83844b4b63283e9370b5ff6a17f5",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Shimmer: fix high contrast in new edge",
+            "author": "xgao@microsoft.com",
+            "commit": "30930030f46240cc305d9cd687370382eef7d0b0",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 08 May 2020 12:35:40 GMT",
       "tag": "office-ui-fabric-react_v7.111.0",
       "version": "7.111.0",
