@@ -16,7 +16,7 @@ const getStaticStylesMemoized = memoizeFunction(
 
     const propControlledClasses = [isButton && classes.button, isDisabled && classes.disabled];
 
-    const rootStaticClasses = [isButton && 'is-button', isDisabled && 'is-disabled'];
+    const rootStaticClasses = [isDisabled && 'is-disabled'];
 
     return {
       root: css(className, classes.root, globalClassNames.root, ...rootStaticClasses, ...propControlledClasses),
