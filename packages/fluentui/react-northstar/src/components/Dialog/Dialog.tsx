@@ -229,7 +229,8 @@ class Dialog extends AutoControlledComponent<WithAsProp<DialogProps>, DialogStat
     // and ESC is pressed, the opened Dialog should get closed and the trigger should get focus
     const lastOverlayRef = getRefs().pop();
     const isLastOpenedDialog: boolean = lastOverlayRef && lastOverlayRef.current === this.overlayRef.current;
-    if (keyboardKey.getCode(e) === keyboardKey.Escape && isLastOpenedDialog && this.overlayRef.current === e.target) {
+    const targetIsBody = (e.target as HTMLElement).nodeName === 'BODY';
+    if (targetIsBody && keyboardKey.getCode(e) === keyboardKey.Escape && isLastOpenedDialog) {
       this.handleDialogCancel(e);
       _.invoke(this.triggerRef, 'current.focus');
     }

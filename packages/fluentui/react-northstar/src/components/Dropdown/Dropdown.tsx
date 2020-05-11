@@ -1099,23 +1099,26 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
     const { disabled } = this.props;
 
     const handleInputKeyDown = (e: React.SyntheticEvent, searchInputProps: DropdownSearchInputProps) => {
-      e.stopPropagation();
       if (!disabled) {
         switch (keyboardKey.getCode(e)) {
           case keyboardKey.Tab:
+            e.stopPropagation();
             this.handleTabSelection(e, highlightedIndex, selectItemAtIndex, toggleMenu);
             break;
           case keyboardKey.ArrowLeft:
+            e.stopPropagation();
             if (!rtl) {
               this.trySetLastSelectedItemAsActive();
             }
             break;
           case keyboardKey.ArrowRight:
+            e.stopPropagation();
             if (rtl) {
               this.trySetLastSelectedItemAsActive();
             }
             break;
           case keyboardKey.Backspace:
+            e.stopPropagation();
             this.tryRemoveItemFromValue();
             break;
           default:
