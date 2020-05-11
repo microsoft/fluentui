@@ -3,9 +3,9 @@ import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
-import { Checkbox, Persona, PersonaSize } from 'office-ui-fabric-react';
+import { Checkbox, Persona, PersonaSize } from '@fluentui/react-next';
 
-storiesOf('Checkbox', module)
+storiesOf('Checkbox Next', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story =>
     // prettier-ignore
@@ -52,7 +52,7 @@ storiesOf('Checkbox', module)
     />
   ));
 
-storiesOf('Checkbox Indeterminate', module)
+storiesOf('Checkbox Next Indeterminate', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story =>
     // prettier-ignore

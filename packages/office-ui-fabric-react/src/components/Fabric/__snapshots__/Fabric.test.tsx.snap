@@ -124,7 +124,6 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
               font-size: 14px;
               font-weight: 400;
               position: relative;
-              text-align: left;
               user-select: none;
             }
             &::before {
@@ -306,7 +305,6 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 position: relative;
-                text-align: right;
                 user-select: none;
               }
               &::before {
@@ -488,7 +486,6 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                   font-size: 14px;
                   font-weight: 400;
                   position: relative;
-                  text-align: left;
                   user-select: none;
                 }
                 &::before {
@@ -673,7 +670,6 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
               font-size: 14px;
               font-weight: 400;
               position: relative;
-              text-align: right;
               user-select: none;
             }
             &::before {
@@ -855,7 +851,6 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 position: relative;
-                text-align: left;
                 user-select: none;
               }
               &::before {
@@ -1037,7 +1032,6 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                   font-size: 14px;
                   font-weight: 400;
                   position: relative;
-                  text-align: right;
                   user-select: none;
                 }
                 &::before {
@@ -1227,7 +1221,6 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
               font-size: 14px;
               font-weight: 400;
               position: relative;
-              text-align: left;
               user-select: none;
             }
             &::before {
@@ -1409,7 +1402,6 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                 font-size: 14px;
                 font-weight: 400;
                 position: relative;
-                text-align: right;
                 user-select: none;
               }
               &::before {
@@ -1591,7 +1583,6 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                   font-size: 14px;
                   font-weight: 400;
                   position: relative;
-                  text-align: left;
                   user-select: none;
                 }
                 &::before {
@@ -1776,7 +1767,6 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
               font-size: 14px;
               font-weight: 400;
               position: relative;
-              text-align: right;
               user-select: none;
             }
             &::before {
@@ -1958,7 +1948,6 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                 font-size: 14px;
                 font-weight: 400;
                 position: relative;
-                text-align: left;
                 user-select: none;
               }
               &::before {
@@ -2140,7 +2129,6 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                   font-size: 14px;
                   font-weight: 400;
                   position: relative;
-                  text-align: right;
                   user-select: none;
                 }
                 &::before {
@@ -2330,7 +2318,6 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
               font-size: 14px;
               font-weight: 400;
               position: relative;
-              text-align: left;
               user-select: none;
             }
             &::before {
@@ -2512,7 +2499,6 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                 font-size: 14px;
                 font-weight: 400;
                 position: relative;
-                text-align: right;
                 user-select: none;
               }
               &::before {
@@ -2694,7 +2680,6 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                   font-size: 14px;
                   font-weight: 400;
                   position: relative;
-                  text-align: left;
                   user-select: none;
                 }
                 &::before {
@@ -2879,7 +2864,6 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
               font-size: 14px;
               font-weight: 400;
               position: relative;
-              text-align: right;
               user-select: none;
             }
             &::before {
@@ -3061,7 +3045,6 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                 font-size: 14px;
                 font-weight: 400;
                 position: relative;
-                text-align: left;
                 user-select: none;
               }
               &::before {
@@ -3243,7 +3226,6 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                   font-size: 14px;
                   font-weight: 400;
                   position: relative;
-                  text-align: right;
                   user-select: none;
                 }
                 &::before {
