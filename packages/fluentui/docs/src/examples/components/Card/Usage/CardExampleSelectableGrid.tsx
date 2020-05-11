@@ -26,8 +26,9 @@ const SelectableCard: React.FC<SelectableCardProps> = ({ index, selected, handle
   const notSelectedMessage = 'not selected';
   return (
     <Card
+      id={`card${index}`}
       accessibility={cardFocusableBehavior}
-      aria-labelledby={`title${index} ${selectedMessageId}`}
+      aria-labelledby={`title${index} card${index} ${selectedMessageId}`}
       aria-roledescription="user card"
       onClick={() => {
         handleClick(!selected, index);
