@@ -17,6 +17,9 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+### Fixes
+- `CarouselNavigation` enable back focus zone in carousel navigation @kolaps33 ([#13086](https://github.com/microsoft/fluentui/pull/13086))
+
 <!--------------------------------[ v0.49.0 ]------------------------------- -->
 ## [v0.49.0](https://github.com/OfficeDev/office-ui-fabric-react/tree/fluentui_v0.49.0) (2020-05-10)
 [Compare changes](https://github.com/OfficeDev/office-ui-fabric-react/compare/@fluentui/react-northstar_v0.48.0..@fluentui/react-northstar_v0.49.0)
