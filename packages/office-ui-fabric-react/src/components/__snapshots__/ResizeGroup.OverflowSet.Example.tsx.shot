@@ -3669,7 +3669,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               font-size: 14px;
               font-weight: 400;
               position: relative;
-              text-align: left;
               user-select: none;
             }
             &::before {
@@ -3829,7 +3828,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               font-size: 14px;
               font-weight: 400;
               position: relative;
-              text-align: left;
               user-select: none;
             }
             &::before {
@@ -3989,7 +3987,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               font-size: 14px;
               font-weight: 400;
               position: relative;
-              text-align: left;
               user-select: none;
             }
             &::before {

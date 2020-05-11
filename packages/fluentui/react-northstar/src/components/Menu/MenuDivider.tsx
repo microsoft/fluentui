@@ -1,23 +1,23 @@
 import { Accessibility, menuDividerBehavior } from '@fluentui/accessibility';
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
-
 import {
   createShorthandFactory,
-  UIComponent,
   UIComponentProps,
   commonPropTypes,
   childrenExist,
   ChildrenComponentProps,
   ContentComponentProps,
   rtlTextContainer,
-  ShorthandFactory,
 } from '../../utils';
-import { WithAsProp, withSafeTypeForAs } from '../../types';
+import { WithAsProp, withSafeTypeForAs, FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
+import { useTelemetry, getElementType, useUnhandledProps, useAccessibility, useStyles } from '@fluentui/react-bindings';
+// @ts-ignore
+import { ThemeContext } from 'react-fela';
 
 export interface MenuDividerProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
   /** Accessibility behavior if overridden by the user. */
-  accessibility?: Accessibility;
+  accessibility?: Accessibility<never>;
 
   vertical?: boolean;
   primary?: boolean;
@@ -27,41 +27,72 @@ export interface MenuDividerProps extends UIComponentProps, ChildrenComponentPro
 
 export const menuDividerClassName = 'ui-menu__divider';
 
-class MenuDivider extends UIComponent<WithAsProp<MenuDividerProps>> {
-  static displayName = 'MenuDivider';
+export type MenuDividerStylesProps = Required<Pick<MenuDividerProps, 'vertical' | 'inSubmenu' | 'primary'>> & {
+  hasContent: boolean;
+};
 
-  static create: ShorthandFactory<MenuDividerProps>;
+export const MenuDivider: React.FC<WithAsProp<MenuDividerProps>> &
+  FluentComponentStaticProps<MenuDividerProps> = props => {
+  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const { setStart, setEnd } = useTelemetry(MenuDivider.displayName, context.telemetry);
+  setStart();
+  const { children, content, vertical, inSubmenu, primary, className, design, styles, variables } = props;
+  const ElementType = getElementType(props);
+  const unhandledProps = useUnhandledProps(MenuDivider.handledProps, props);
 
-  static deprecated_className = menuDividerClassName;
+  const getA11yProps = useAccessibility(props.accessibility, {
+    debugName: MenuDivider.displayName,
+    rtl: context.rtl,
+  });
 
-  static defaultProps = {
-    as: 'li',
-    accessibility: menuDividerBehavior as Accessibility,
-  };
+  const { classes } = useStyles<MenuDividerStylesProps>(MenuDivider.displayName, {
+    className: menuDividerClassName,
+    mapPropsToStyles: () => ({
+      hasContent: !!content,
+      vertical,
+      inSubmenu,
+      primary,
+    }),
+    mapPropsToInlineStyles: () => ({
+      className,
+      design,
+      styles,
+      variables,
+    }),
+    rtl: context.rtl,
+  });
 
-  static propTypes = {
-    ...commonPropTypes.createCommon(),
-    primary: PropTypes.bool,
-    secondary: PropTypes.bool,
-    vertical: PropTypes.bool,
-    inSubmenu: PropTypes.bool,
-  };
+  const element = (
+    <ElementType
+      {...getA11yProps('root', {
+        className: classes.root,
+        ...rtlTextContainer.getAttributes({ forElements: [children, content] }),
+        ...unhandledProps,
+      })}
+    >
+      {childrenExist(children) ? children : content}
+    </ElementType>
+  );
+  setEnd();
+  return element;
+};
 
-  renderComponent({ ElementType, classes, unhandledProps, accessibility }) {
-    const { children, content } = this.props;
+MenuDivider.displayName = 'MenuDivider';
 
-    return (
-      <ElementType
-        {...accessibility.attributes.root}
-        {...rtlTextContainer.getAttributes({ forElements: [children, content] })}
-        {...unhandledProps}
-        className={classes.root}
-      >
-        {childrenExist(children) ? children : content}
-      </ElementType>
-    );
-  }
-}
+MenuDivider.defaultProps = {
+  as: 'li',
+  accessibility: menuDividerBehavior,
+};
+
+MenuDivider.propTypes = {
+  ...commonPropTypes.createCommon(),
+  primary: PropTypes.bool,
+  secondary: PropTypes.bool,
+  vertical: PropTypes.bool,
+  inSubmenu: PropTypes.bool,
+};
+
+MenuDivider.handledProps = Object.keys(MenuDivider.propTypes) as any;
 
 MenuDivider.create = createShorthandFactory({ Component: MenuDivider, mappedProp: 'content' });
 
