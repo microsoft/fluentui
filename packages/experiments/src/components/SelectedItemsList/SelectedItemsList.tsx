@@ -14,7 +14,12 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
   }, [props.selectedItems]);
 
   const removeItems = (itemsToRemove: TItem[]): void => {
-    updateItems(items.filter(item => itemsToRemove.indexOf(item) === -1));
+    const updatedItems: TItem[] = [...items];
+    itemsToRemove.forEach(item => {
+      const index: number = updatedItems.indexOf(item);
+      updatedItems.splice(index, 1);
+    });
+    updateItems(updatedItems);
     props.onItemsRemoved ? props.onItemsRemoved(itemsToRemove) : null;
   };
 
