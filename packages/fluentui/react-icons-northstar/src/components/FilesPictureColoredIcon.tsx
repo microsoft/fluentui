@@ -1,7 +1,7 @@
 import * as React from 'react';
 import createSvgIcon from '../utils/createSvgIcon';
 
-const FluentFilePictureIcon = createSvgIcon({
+const FilesPictureColoredIcon = createSvgIcon({
   svg: ({ classes }) => (
     <svg role="presentation" focusable="false" viewBox="0 0 32 32" className={classes.svg}>
       <path
@@ -22,7 +22,7 @@ const FluentFilePictureIcon = createSvgIcon({
       />
     </svg>
   ),
-  displayName: 'FluentFilePictureIcon',
+  displayName: 'FilesPictureColoredIcon',
 });
 
-export default FluentFilePictureIcon;
+export default FilesPictureColoredIcon;
