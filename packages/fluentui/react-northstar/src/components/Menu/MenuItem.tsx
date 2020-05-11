@@ -234,7 +234,7 @@ export const MenuItem: React.FC<WithAsProp<MenuItemProps>> & FluentComponentStat
     },
     mapPropsToBehavior: () => ({
       menuOpen,
-      menu: !!menu,
+      hasMenu: !!menu,
       disabled,
       vertical,
     }),
