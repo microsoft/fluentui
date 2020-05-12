@@ -18,7 +18,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ## [Unreleased]
 ## BREAKING CHANGES
 - Restricted prop sets in the `MenuDivider` component which are passed to styles functions @assuncaocharles ([#13069](https://github.com/microsoft/fluentui/pull/13069))
-- Stop propagadion in `Dropdown` for `keypress` of `ArrowRight`, `ArrowLeft`, `Esc` and `Backspace` ([#13088](https://github.com/microsoft/fluentui/pull/13088))
+- Stop propagadion in `Dropdown` for `keypress` of `ArrowRight`, `ArrowLeft`, `Esc` and `Backspace` @assuncaocharles ([#13088](https://github.com/microsoft/fluentui/pull/13088))
 - Restricted prop sets in the `Menu` component which are passed to styles functions @assuncaocharles ([#13040](https://github.com/microsoft/fluentui/pull/13040))
 
 
