@@ -8,4 +8,4 @@ Documentation for the controls is a work in progress. Some controls can be found
 
 ### Start developing
 
-Setup instructions and more information can be found in the [Fluent UI React Native readme](https://github.com/microsoft/fluentui-react-native/blob/master/README.md).
+Setup instructions and more information can be found in the [Fluent UI React Native readme](https://github.com/microsoft/fluentui-react-native#fluentui-react-native).

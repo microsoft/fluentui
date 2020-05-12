@@ -2,21 +2,30 @@ Fluent UI React Native Text has default styling based on the Fluent UI Design La
 
 If you need to customize the fontFamily, fontSize, or fontWeight of your Text, you can do this by using the compose pattern. For more information on the compose pattern, please see our [compose documentation](https://github.com/microsoft/fluentui-react-native/blob/master/packages/framework/foundation-compose/README.md).
 
+### Text example
+
+On Windows, Text uses the Segoe UI font family.
+<img src="https://static2.sharepointonline.com/files/fabric-cdn-prod_20200511.001/fabric-website/images/controls/cross/Text/Text_quickbrownfox_windows.PNG"/>
+
+On macOS, Text uses the San Francisco font family.
+<img src="https://static2.sharepointonline.com/files/fabric-cdn-prod_20200511.001/fabric-website/images/controls/cross/Text/Text_quickbrownfox_macos.PNG"/>
+
+### Text ramp example
+
+You can specify the `variant` prop to apply font styles to Text. Examples of `variant` values are shown below.
+<img src="https://static2.sharepointonline.com/files/fabric-cdn-prod_20200511.001/fabric-website/images/controls/cross/Text/FURN_windows_text_ramp.PNG"/>
+
 #### Example usage (from [TextTest.tsx](https://github.com/microsoft/fluentui-react-native/tree/master/apps/fluent-tester/src/RNTester/TestComponents/Text))
 
 ```
-import * as React from 'react';
-import { View } from 'react-native';
-import { Separator } from '@fluentui-react-native/separator';
-import { StandardUsage } from './StandardUsage';
-import { CustomizeUsage } from './CustomizeUsage';
-import { styles } from './styles';
-import { Text } from '@fluentui-react-native/text';
+import React from "react";
+import { View } from "react-native";
+import { Text } from "@fluentui/react-native";
 
 const RedCaptionBold = Text.customize({ tokens: { variant: 'captionStandard', fontWeight: 'semiBold', color: '#ff0000' } });
 const ArialBlack = Text.customize({ tokens: { variant: 'heroLargeStandard', fontFamily: 'Arial Black' } });
 
-export const TextTest: React.FunctionComponent<{}> = () => {
+const App = () => {
   return (
     <View>
       <Text>Normal Text</Text>
@@ -27,5 +36,7 @@ export const TextTest: React.FunctionComponent<{}> = () => {
     </View>
   );
 };
+
+export default App;
 
 ```
