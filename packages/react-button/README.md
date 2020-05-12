@@ -8,4 +8,8 @@ To import React Button components:
 
 ```js
 import { ComponentName } from '@fluentui/react-button';
+
+const App = () => {
+  return <Button content="hello, world!" />;
+};
 ```
