@@ -25,6 +25,32 @@ describe('Slider', () => {
     expect(tree).toMatchSnapshot();
   });
 
+  it('calls onChange when slider value changes', () => {
+    const onChange = jest.fn();
+    wrapper = mount(<Slider onChange={onChange} defaultValue={5} />);
+
+    const sliderLine = wrapper.find('.ms-Slider-line');
+    const sliderThumb = wrapper.find('.ms-Slider-slideBox');
+
+    sliderLine.getDOMNode().getBoundingClientRect = () =>
+      ({
+        left: 0,
+        top: 0,
+        right: 100,
+        bottom: 40,
+        width: 100,
+        height: 40,
+      } as DOMRect);
+
+    sliderThumb.simulate('mousedown', {
+      type: 'mousedown',
+      clientX: 0,
+      clientY: 0,
+    });
+    // Default min is 0.
+    expect(onChange.mock.calls.length).toEqual(1);
+  });
+
   it('can slide to default min/max and execute onChange', () => {
     let changedValue;
     const onChange = (val: any) => {

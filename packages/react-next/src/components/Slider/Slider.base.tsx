@@ -3,7 +3,7 @@ import { KeyCodes, css, getRTL, getRTLSafeKeyCode, warnMutuallyExclusive, on, Fo
 import { ISliderProps, ISliderStyleProps, ISliderStyles } from './Slider.types';
 import { classNamesFunction, getNativeProps, divProperties } from '../../Utilities';
 import { Label } from '../../Label';
-import { useId, useBoolean } from '@uifabric/react-hooks';
+import { useId, useBoolean, useControllableValue } from '@uifabric/react-hooks';
 
 const getClassNames = classNamesFunction<ISliderStyleProps, ISliderStyles>();
 const COMPONENT_NAME = 'SliderBase';
@@ -48,9 +48,16 @@ export const SliderBase = React.forwardRef((props: ISliderProps, ref: React.Ref<
     theme,
     originFromZero = false,
   } = props;
-  const [value, setValue] = React.useState(
-    props.value !== undefined ? props.value : props.defaultValue !== undefined ? props.defaultValue : min,
+
+  const [unclampedValue, setValue] = useControllableValue(
+    props.value,
+    props.defaultValue,
+    (ev: React.FormEvent<HTMLElement>, v: ISliderProps['value']) => props.onChange && props.onChange(v!),
   );
+
+  // Ensure that value is always a number and is clamped by min/max.
+  const value = Math.max(min, Math.min(max, unclampedValue || 0));
+
   const thumbOffsetPercent: number = min === max ? 0 : ((value! - min!) / (max! - min!)) * 100;
   const zeroOffsetPercent: number = min! >= 0 ? 0 : (-min! / (max! - min!)) * 100;
   const lengthString = vertical ? 'height' : 'width';
@@ -69,7 +76,6 @@ export const SliderBase = React.forwardRef((props: ISliderProps, ref: React.Ref<
   };
   const activeSectionOffsetStyles = { [lengthString]: thumbOffsetPercent + '%' };
   const inactiveSectionOffsetStyles = { [lengthString]: 100 - thumbOffsetPercent + '%' };
-
   const divButtonProps = buttonProps
     ? getNativeProps<React.HTMLAttributes<HTMLDivElement>>(buttonProps, divProperties)
     : undefined;
@@ -186,15 +192,11 @@ export const SliderBase = React.forwardRef((props: ISliderProps, ref: React.Ref<
     }
     // Make sure value has correct number of decimal places based on number of decimals in step
     const roundedValue = parseFloat(valueProp.toFixed(numDec));
-    const valueChanged = roundedValue !== value;
 
     if (snapToStep) {
       renderedValueProp = roundedValue;
     }
     setValue(roundedValue);
-    if (valueChanged && props.onChange) {
-      props.onChange(roundedValue);
-    }
   };
 
   const [timerId, setTimerId] = React.useState(0);
@@ -249,6 +251,7 @@ export const SliderBase = React.forwardRef((props: ISliderProps, ref: React.Ref<
   const onMouseDownProp: {} = disabled ? {} : { onMouseDown: onMouseDownOrTouchStart };
   const onTouchStartProp: {} = disabled ? {} : { onTouchStart: onMouseDownOrTouchStart };
   const onKeyDownProp: {} = disabled ? {} : { onKeyDown: onKeyDown };
+
   useComponentRef(props, thumb, value);
 
   return (
