@@ -144,6 +144,7 @@ export type TeamsThemeStylesProps = {
   RadioGroupItem: RadioGroupItemProps;
   Reaction: ReactionProps;
   ReactionGroup: ReactionGroupStylesProps;
+  Segment: SegmentStylesProps;
   Slider: SliderStylesProps;
   SplitButton: SplitButtonStylesProps;
   Status: StatusStylesProps;
