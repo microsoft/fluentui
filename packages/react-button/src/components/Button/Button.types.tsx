@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ComponentProps, ShorthandValue, ComposeOptions, ComposeStandardStatics } from '../../temp/tempTypes';
+import { ComponentProps, ShorthandValue, ComposeOptions, ComposeStandardStatics } from '../../utils/tempTypes';
 
 export type SizeValue = 'smallest' | 'smaller' | 'small' | 'medium' | 'large' | 'larger' | 'largest';
 

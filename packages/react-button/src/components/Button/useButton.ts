@@ -1,5 +1,5 @@
 import { ButtonProps, ButtonSlots, ButtonSlotProps } from './Button.types';
-import { mergeProps } from '../../temp/mergeProps';
+import { mergeProps } from '../../utils/mergeProps';
 import { ComposePreparedOptions } from '@fluentui/react-compose';
 
 /**
