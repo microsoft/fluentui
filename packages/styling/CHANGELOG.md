@@ -1,8 +1,17 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Thu, 07 May 2020 01:06:55 GMT and should not be manually modified.
+This log was last generated on Fri, 08 May 2020 12:35:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.12.4](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.12.4)
+
+Fri, 08 May 2020 12:35:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/styling_v7.12.3..@uifabric/styling_v7.12.4)
+
+### Patches
+
+- Add selector to turn off high contrast adjustment in (only) Edge Chromium browser ([PR #13035](https://github.com/microsoft/fluentui/pull/13035) by xgao@microsoft.com)
 
 ## [7.12.3](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.12.3)
 
