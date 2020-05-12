@@ -291,7 +291,7 @@ Menu.propTypes = {
 
 Menu.defaultProps = {
   as: 'ul',
-  accessibility: menuBehavior as Accessibility,
+  accessibility: menuBehavior,
 };
 
 Menu.handledProps = Object.keys(Menu.propTypes) as any;
