@@ -283,7 +283,7 @@ Menu.propTypes = {
   onItemClick: PropTypes.func,
   onActiveIndexChange: PropTypes.func,
   pills: PropTypes.bool,
-  pointing: PropTypes.oneOfType([PropTypes.bool, PropTypes.oneOf(['start', 'end'])]),
+  pointing: PropTypes.oneOfType([PropTypes.bool, PropTypes.oneOf<'start' | 'end'>(['start', 'end'])]),
   primary: customPropTypes.every([customPropTypes.disallow(['secondary']), PropTypes.bool]),
   secondary: customPropTypes.every([customPropTypes.disallow(['primary']), PropTypes.bool]),
   underlined: PropTypes.bool,
