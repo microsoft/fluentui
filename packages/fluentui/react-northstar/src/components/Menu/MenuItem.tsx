@@ -17,7 +17,7 @@ import {
   ComponentWithAs,
 } from '@fluentui/react-bindings';
 import { EventListener } from '@fluentui/react-component-event-listener';
-import { Ref } from '@fluentui/react-component-ref';
+import { Ref, handleRef } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import cx from 'classnames';
@@ -391,7 +391,13 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
     };
 
     const menuItemInner = (
-      <Ref innerRef={itemRef}>
+      <Ref
+        innerRef={node => {
+          // @ts-ignore
+          itemRef.current = node;
+          handleRef(ref, node as any /* TODO: fix refs in compose */);
+        }}
+      >
         <ElementType
           {...getA11yProps('root', {
             className: classes.root,
