@@ -824,7 +824,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
       };
     }
 
-    if ((items && items.length === 0) || items.length === value.length) {
+    if (items && (items.length === 0 || items.length === value.length)) {
       return {
         children: () =>
           DropdownItem.create(noResultsMessage, {
