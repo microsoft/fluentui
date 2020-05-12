@@ -56,7 +56,6 @@ import { RadioGroupItemProps } from '../../components/RadioGroup/RadioGroupItem'
 import { RadioGroupProps } from '../../components/RadioGroup/RadioGroup';
 import { ReactionStylesProps } from '../../components/Reaction/Reaction';
 import { ReactionGroupStylesProps } from '../../components/Reaction/ReactionGroup';
-import { ReactionProps } from '../../components/Reaction/Reaction';
 import { SegmentStylesProps } from '../../components/Segment/Segment';
 import { SliderStylesProps } from '../../components/Slider/Slider';
 import { StatusStylesProps } from '../../components/Status/Status';
