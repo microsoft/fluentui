@@ -73,6 +73,7 @@ export class MessageBarBase extends React.Component<IMessageBarProps, IMessageBa
           className={this._classNames.dismissal}
           onClick={onDismiss}
           iconProps={dismissIconProps ? dismissIconProps : { iconName: 'Clear' }}
+          title={this.props.dismissButtonAriaLabel}
           ariaLabel={this.props.dismissButtonAriaLabel}
         />
       );
