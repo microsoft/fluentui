@@ -810,6 +810,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
 
   renderItemsListFooter(styles: ComponentSlotStylesInput) {
     const { loading, loadingMessage, noResultsMessage, items } = this.props;
+    const { value } = this.state;
 
     if (loading) {
       return {
@@ -823,7 +824,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
       };
     }
 
-    if (items && items.length === 0) {
+    if ((items && items.length === 0) || items.length === value.length) {
       return {
         children: () =>
           DropdownItem.create(noResultsMessage, {
