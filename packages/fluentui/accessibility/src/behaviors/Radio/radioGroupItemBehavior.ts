@@ -31,12 +31,6 @@ const radioGroupItemBehavior: Accessibility<RadioGroupItemBehaviorProps> = props
       },
     },
   },
-
-  focusZone: {
-    props: {
-      shouldEnterInnerZone: event => keyboardKey.getCode(event) === keyboardKey.Tab,
-    },
-  },
 });
 
 export default radioGroupItemBehavior;
