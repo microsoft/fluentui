@@ -179,7 +179,6 @@ exports[`Component Examples renders PeoplePicker.List.Example.tsx correctly 1`] 
             font-size: 14px;
             font-weight: 400;
             position: relative;
-            text-align: left;
             user-select: none;
           }
           &::before {
@@ -340,7 +339,6 @@ exports[`Component Examples renders PeoplePicker.List.Example.tsx correctly 1`] 
             font-size: 14px;
             font-weight: 400;
             position: relative;
-            text-align: left;
             user-select: none;
           }
           &::before {

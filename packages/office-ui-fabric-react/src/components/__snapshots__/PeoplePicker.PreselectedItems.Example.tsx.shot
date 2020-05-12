@@ -1538,7 +1538,6 @@ exports[`Component Examples renders PeoplePicker.PreselectedItems.Example.tsx co
             font-size: 14px;
             font-weight: 400;
             position: relative;
-            text-align: left;
             user-select: none;
           }
           &::before {
@@ -1699,7 +1698,6 @@ exports[`Component Examples renders PeoplePicker.PreselectedItems.Example.tsx co
             font-size: 14px;
             font-weight: 400;
             position: relative;
-            text-align: left;
             user-select: none;
           }
           &::before {

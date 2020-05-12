@@ -84,7 +84,6 @@ exports[`Checkbox renders checked correctly 1`] = `
           font-size: 14px;
           font-weight: 400;
           position: relative;
-          text-align: left;
           user-select: none;
         }
         &::before {
@@ -256,7 +255,6 @@ exports[`Checkbox renders indeterminate correctly 1`] = `
           font-size: 14px;
           font-weight: 400;
           position: relative;
-          text-align: left;
           user-select: none;
         }
         &::before {
@@ -439,7 +437,6 @@ exports[`Checkbox renders unchecked correctly 1`] = `
           font-size: 14px;
           font-weight: 400;
           position: relative;
-          text-align: left;
           user-select: none;
         }
         &::before {

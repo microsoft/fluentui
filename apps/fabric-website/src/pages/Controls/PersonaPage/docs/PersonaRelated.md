@@ -2,4 +2,4 @@
 - [iOS Persona](#/controls/ios/persona)
 - [Android Persona](#/controls/android/persona)
 - [macOS Avatar](#/controls/mac/avatar)
-- [Cross-platform Persona](#/controls/cross/persona)
+- [Cross-platform Persona](#/controls/crossplatform/persona)

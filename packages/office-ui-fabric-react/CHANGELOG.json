@@ -2,6 +2,68 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Mon, 11 May 2020 12:36:34 GMT",
+      "tag": "office-ui-fabric-react_v7.111.1",
+      "version": "7.111.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Checkbox: remove unneeded text-align css on label",
+            "author": "xgao@microsoft.com",
+            "commit": "1619b355712d83844b4b63283e9370b5ff6a17f5",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Shimmer: fix high contrast in new edge",
+            "author": "xgao@microsoft.com",
+            "commit": "30930030f46240cc305d9cd687370382eef7d0b0",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 08 May 2020 12:35:40 GMT",
+      "tag": "office-ui-fabric-react_v7.111.0",
+      "version": "7.111.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "update snapshots for merge-styles change to not generate class with no styles",
+            "author": "pingj@microsoft.com",
+            "commit": "a5b44ed833a4614d1333fa161ffd8fd467d33446",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Prettier fix on Callout test.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "ce5c014aa4c23951afe4d1ca5e45ddb711e2f0fc",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Checkbox: fix high contrast styles in Edge Chromium",
+            "author": "xgao@microsoft.com",
+            "commit": "70e25f50621034c277df23f832ed1b13e1a824c8",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Cleaning up callout, announced, and calendar examples",
+            "author": "czearing@outlook.com",
+            "commit": "4edeebf540258904d66d51ae5b267f5cdd5c70e2",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Add custom expand icon support to Group Header",
+            "author": "bcoard@microsoft.com",
+            "commit": "af07c5e1e3f12290d54ecaa140edacc3b145b72e",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 07 May 2020 01:06:55 GMT",
       "tag": "office-ui-fabric-react_v7.110.5",
       "version": "7.110.5",
