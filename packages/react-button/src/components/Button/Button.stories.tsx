@@ -49,11 +49,5 @@ export const ButtonCss = () => (
       <ButtonVariants size="larger" />
       <ButtonVariants size="largest" />
     </div>
-    {/*
-    <h3>A button can be formatted to show only text in order to indicate a less-pronounced action.</h3>
-    <div>
-      <ButtonVariants text />
-    </div>
-    */}
   </>
 );
