@@ -7,6 +7,7 @@ export * from './utils/iconClassNames';
 // Icon components
 export { default as AcceptIcon } from './components/AcceptIcon';
 export { default as AddIcon } from './components/AddIcon';
+export { default as ApprovalsAppbarIcon } from './components/ApprovalsAppbarIcon';
 export { default as ArrowDownIcon } from './components/ArrowDownIcon';
 export { default as ArrowLeftIcon } from './components/ArrowLeftIcon';
 export { default as ArrowRightIcon } from './components/ArrowRightIcon';
@@ -180,7 +181,6 @@ export { default as SpotlightStopIcon } from './components/SpotlightStopIcon';
 export { default as StarIcon } from './components/StarIcon';
 export { default as StickerIcon } from './components/StickerIcon';
 export { default as StrikeIcon } from './components/StrikeIcon';
-export { default as SurveyAppbarIcon } from './components/SurveyAppbarIcon';
 export { default as SurveyIcon } from './components/SurveyIcon';
 export { default as SwitchCameraIcon } from './components/SwitchCameraIcon';
 export { default as SyncIcon } from './components/SyncIcon';

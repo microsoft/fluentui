@@ -3,7 +3,7 @@ import cx from 'classnames';
 import createSvgIcon from '../utils/createSvgIcon';
 import { iconClassNames } from '../utils/iconClassNames';
 
-const SurveyAppbarIcon = createSvgIcon({
+const ApprovalsAppbarIcon = createSvgIcon({
   svg: ({ classes }) => (
     <svg className={classes.svg} viewBox="8 8 16 16" role="presentation" focusable="false">
       <g className={cx(iconClassNames.outline, classes.outlinePart)}>
@@ -16,7 +16,7 @@ const SurveyAppbarIcon = createSvgIcon({
       </g>
     </svg>
   ),
-  displayName: 'SurveyAppbarIcon',
+  displayName: 'ApprovalsAppbarIcon',
 });
 
-export default SurveyAppbarIcon;
+export default ApprovalsAppbarIcon;
