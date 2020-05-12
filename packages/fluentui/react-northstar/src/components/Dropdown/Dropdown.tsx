@@ -810,7 +810,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
 
   renderItemsListFooter(styles: ComponentSlotStylesInput) {
     const { loading, loadingMessage, noResultsMessage, items } = this.props;
-    const { value } = this.state;
+    const { filteredItems } = this.state;
 
     if (loading) {
       return {
