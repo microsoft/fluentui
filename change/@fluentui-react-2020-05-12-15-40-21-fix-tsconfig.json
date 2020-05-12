@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Resolving tsconfig paths which were not correctly configured, causing re-exports to fail.",
+  "packageName": "@fluentui/react",
+  "email": "dzearing@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-05-12T22:40:21.318Z"
+}
