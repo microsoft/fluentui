@@ -39,12 +39,12 @@ class Grid extends UIComponent<WithAsProp<GridProps>> {
     ...commonPropTypes.createCommon({
       content: false,
     }),
-    columns: PropTypes.oneOfType([PropTypes.number]),
+    columns: PropTypes.number,
     content: customPropTypes.every([
       customPropTypes.disallow(['children']),
       PropTypes.oneOfType([PropTypes.arrayOf(customPropTypes.nodeContent), customPropTypes.nodeContent]),
     ]),
-    rows: PropTypes.oneOfType([PropTypes.number]),
+    rows: PropTypes.number,
   };
 
   static defaultProps: WithAsProp<GridProps> = {
