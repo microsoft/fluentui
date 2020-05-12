@@ -39,7 +39,6 @@ export interface SegmentProps
 
   /** A segment can have its colors inverted for contrast. */
   inverted?: boolean;
-
 }
 
 export type SegmentStylesProps = Required<Pick<SegmentProps, 'color' | 'inverted' | 'disabled'>>;
@@ -102,10 +101,6 @@ Segment.propTypes = {
   inverted: PropTypes.bool,
 };
 Segment.handledProps = Object.keys(Segment.propTypes) as any;
-
-Segment.defaultProps = {
-  as: 'div',
-};
 
 Segment.create = createShorthandFactory({
   Component: Segment,
