@@ -180,7 +180,7 @@ export const Menu: React.FC<WithAsProp<MenuProps>> &
     setIndex(activeIndex);
   };
 
-  const handleItemOverrides = variables => predefinedProps => ({
+  const handleItemOverrides = predefinedProps => ({
     onClick: (e, itemProps) => {
       const { index } = itemProps;
 
@@ -201,16 +201,13 @@ export const Menu: React.FC<WithAsProp<MenuProps>> &
     variables: mergeComponentVariables(variables, predefinedProps.variables),
   });
 
-  const handleDividerOverrides = variables => predefinedProps => ({
+  const handleDividerOverrides = predefinedProps => ({
     variables: mergeComponentVariables(variables, predefinedProps.variables),
   });
 
   const renderItems = () => {
     const itemsCount = _.filter(items, item => getKindProp(item, 'item') !== 'divider').length;
     let itemPosition = 0;
-
-    const overrideItemProps = handleItemOverrides(variables);
-    const overrideDividerProps = handleDividerOverrides(variables);
 
     return _.map(items, (item, index) => {
       const active = (typeof activeIndex === 'string' ? parseInt(activeIndex, 10) : activeIndex) === index;
@@ -226,7 +223,7 @@ export const Menu: React.FC<WithAsProp<MenuProps>> &
               styles: resolvedStyles.divider,
               inSubmenu: submenu,
             }),
-          overrideProps: overrideDividerProps,
+          overrideProps: handleDividerOverrides,
         });
       }
 
@@ -249,7 +246,7 @@ export const Menu: React.FC<WithAsProp<MenuProps>> &
             inSubmenu: submenu,
             indicator,
           }),
-        overrideProps: overrideItemProps,
+        overrideProps: handleItemOverrides,
       });
     });
   };
@@ -258,9 +255,9 @@ export const Menu: React.FC<WithAsProp<MenuProps>> &
     <ElementType
       {...getA11yProps('root', {
         className: classes.root,
+        ...rtlTextContainer.getAttributes({ forElements: [children] }),
         ...unhandledProps,
       })}
-      {...rtlTextContainer.getAttributes({ forElements: [children] })}
     >
       {childrenExist(children) ? children : renderItems()}
     </ElementType>,
