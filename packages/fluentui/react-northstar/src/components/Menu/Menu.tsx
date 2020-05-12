@@ -283,7 +283,7 @@ Menu.propTypes = {
   onItemClick: PropTypes.func,
   onActiveIndexChange: PropTypes.func,
   pills: PropTypes.bool,
-  pointing: PropTypes.oneOf([true, false, 'start', 'end']),
+  pointing: PropTypes.oneOfType([PropTypes.bool, PropTypes.oneOf(['start', 'end'])]),
   primary: customPropTypes.every([customPropTypes.disallow(['secondary']), PropTypes.bool]),
   secondary: customPropTypes.every([customPropTypes.disallow(['primary']), PropTypes.bool]),
   underlined: PropTypes.bool,
@@ -300,7 +300,6 @@ Menu.defaultProps = {
 Menu.handledProps = Object.keys(Menu.propTypes) as any;
 
 Menu.Item = MenuItem;
-
 Menu.Divider = MenuDivider;
 
 Menu.create = createShorthandFactory({ Component: Menu, mappedArrayProp: 'items' });
