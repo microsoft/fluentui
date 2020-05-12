@@ -2,4 +2,5 @@ import { DropdownVariables } from '../../../teams/components/Dropdown/dropdownVa
 
 export default (siteVars: any): Partial<DropdownVariables> => ({
   loadingMessageBackgroundColor: siteVars.colors.dark,
+  noResultsMessageBackgroundColor: siteVars.colors.dark,
 });
