@@ -36,7 +36,7 @@ export interface ButtonProps extends ComponentProps, React.HTMLAttributes<HTMLBu
   /** An icon button can format its Icon to appear before or after its content */
   iconPosition?: 'before' | 'after';
 
-  /** A button that inherits its background and has a subtle appearance */
+  /** A button that inherits its background and has a subtle appearance. */
   inverted?: boolean;
 
   /** A button can show a loading indicator. */
