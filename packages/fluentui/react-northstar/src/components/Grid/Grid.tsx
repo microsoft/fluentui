@@ -44,7 +44,7 @@ class Grid extends UIComponent<WithAsProp<GridProps>> {
       customPropTypes.disallow(['children']),
       PropTypes.oneOfType([PropTypes.arrayOf(customPropTypes.nodeContent), customPropTypes.nodeContent]),
     ]),
-    rows: PropTypes.oneOfType([PropTypes.number]),
+    rows: PropTypes.number,
   };
 
   static defaultProps: WithAsProp<GridProps> = {
