@@ -16,11 +16,12 @@ import * as _ from 'lodash';
 
 type SelectableCardProps = {
   index?: number;
+  title?: string;
   selected?: boolean;
   handleClick?: Function;
 };
 
-const SelectableCard: React.FC<SelectableCardProps> = ({ index, selected, handleClick, ...unhadledProps }) => {
+const SelectableCard: React.FC<SelectableCardProps> = ({ title, index, selected, handleClick, ...unhadledProps }) => {
   const selectedMessageId = `selectedMessageId${index}`;
   const selectedMessage = 'selected';
   const notSelectedMessage = 'not selected';
@@ -28,7 +29,7 @@ const SelectableCard: React.FC<SelectableCardProps> = ({ index, selected, handle
     <Card
       id={`card${index}`}
       accessibility={cardFocusableBehavior}
-      aria-labelledby={`title${index} card${index} ${selectedMessageId}`}
+      aria-labelledby={`card${index} ${selectedMessageId}`}
       aria-roledescription="user card"
       onClick={() => {
         handleClick(!selected, index);
@@ -36,10 +37,12 @@ const SelectableCard: React.FC<SelectableCardProps> = ({ index, selected, handle
       selected={selected}
       {...unhadledProps}
     >
+      <Card.Header>
+        <Text content={title} weight="bold" />
+      </Card.Header>
       <Card.TopControls>
         <Checkbox
           accessibility={hiddenComponentBehavior}
-          aria-label={`User #${index} checkbox`}
           checked={selected}
           onClick={(event, props) => {
             event.preventDefault();
@@ -50,9 +53,7 @@ const SelectableCard: React.FC<SelectableCardProps> = ({ index, selected, handle
           {selected ? selectedMessage : notSelectedMessage}
         </div>
       </Card.TopControls>
-      <Card.Header>
-        <Text content={`User #${index}`} weight="bold" id={`title${index}`} />
-      </Card.Header>
+
       <Card.Body>
         <Flex column gap="gap.small">
           <Image src="public/images/wireframe/square-image.png" />
@@ -93,10 +94,10 @@ const CardExampleSelectableGrid = () => {
   const cardsNumber = 12;
   const cards = Array(cardsNumber)
     .fill(undefined)
-    .map((item, index) => ({ key: index + 1, title: `Card ${index + 1}` }));
+    .map((item, index) => ({ index: index + 1, title: `User ${index + 1}` }));
   const initialState: SelectableCardsGridState = {
     cards: cards.reduce((cards, card) => {
-      cards[card.key] = false;
+      cards[card.index] = false;
       return cards;
     }, {}),
   };
@@ -123,11 +124,12 @@ const CardExampleSelectableGrid = () => {
         {cards.map(card => {
           return (
             <SelectableCard
-              key={card.key}
-              index={card.key}
-              aria-label={`${card.key} of ${cardsNumber}`}
+              key={card.index}
+              index={card.index}
+              title={card.title}
+              aria-label={`${card.title} ${card.index} of ${cardsNumber}`}
               handleClick={handleClick}
-              selected={state.cards[card.key]}
+              selected={state.cards[card.index]}
             />
           );
         })}
