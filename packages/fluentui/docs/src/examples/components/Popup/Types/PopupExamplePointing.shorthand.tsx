@@ -104,7 +104,7 @@ const PopupExamplePointing = () => (
   <Grid
     styles={{
       gridTemplateColumns: 'repeat(3, 30px)',
-      msGridColumns: '(30px)[3]',
+      msGridColumns: '30px 80px 30px 80px 30px',
     }}
     variables={{ padding: '30px', gridGap: '80px' }}
   >
