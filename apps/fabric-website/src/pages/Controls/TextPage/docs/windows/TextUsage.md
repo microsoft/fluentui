@@ -1,1 +1,0 @@
-Windows Text usage

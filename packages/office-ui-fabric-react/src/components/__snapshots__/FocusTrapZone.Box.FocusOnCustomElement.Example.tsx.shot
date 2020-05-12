@@ -421,9 +421,7 @@ exports[`Component Examples renders FocusTrapZone.Box.FocusOnCustomElement.Examp
             }
       >
         <div
-          className=
-              ms-TextField-wrapper
-
+          className="ms-TextField-wrapper"
         >
           <label
             className=

@@ -1,15 +1,13 @@
-Windows!
+Looking to build a Fluent experience on Windows? There are a few technologies you could use, depending on your needs.
 
-<DisplayToggle onText="Dark" offText="Light" label="Theme Switcher">
+### WinUI 3
 
-## Stuff 1
+WinUI is a user interface layer that contains native controls and styles for building Windows apps. It embodies Fluent Design, giving each Windows app the polished feel that customers expect.
 
-<img className="off" src="https://via.placeholder.com/150/000000/ccc?text=LightMode" />
-<img className="on" src="https://via.placeholder.com/150/ccc/000000?text=DarkMode" />
+To build Fluent experiences on Windows using native frameworks, see [WinUI documentation](https://microsoft.github.io/microsoft-ui-xaml/).
 
-## Stuff 2
+### Fluent UI React Native
 
-<img className="off" src="https://via.placeholder.com/300/000000/ccc?text=LightMode" />
-<img className="on" src="https://via.placeholder.com/300/ccc/000000?text=DarkMode" />
+Fluent UI React Native is an [open-source](https://github.com/microsoft/fluentui-react-native) library built with JavaScript and [React Native components](https://microsoft.github.io/react-native-windows/). Use it to create Fluent experiences that work across Windows and across other platforms. It contains information about colors and typography, as well as custom controls and customizations.
 
-</DisplayToggle>
+To build Fluent experiences on Windows using cross-platform frameworks, see [Cross-platform Get started page](#/get-started/crossplatform).

@@ -7,7 +7,14 @@ import * as keyboardKey from 'keyboard-key';
 import * as ReactDOM from 'react-dom';
 import * as PropTypes from 'prop-types';
 
-import { elementContains, getDocument, getParent, getWindow } from '@uifabric/utilities';
+import {
+  elementContains,
+  findScrollableParent,
+  getDocument,
+  getParent,
+  getWindow,
+  shouldWrapFocus,
+} from '@uifabric/utilities';
 
 import getElementType from '../utils/getElementType';
 import getUnhandledProps from '../utils/getUnhandledProps';
@@ -24,7 +31,10 @@ import {
 } from './focusUtilities';
 
 const TABINDEX = 'tabindex';
+const NO_VERTICAL_WRAP = 'data-no-vertical-wrap';
+const NO_HORIZONTAL_WRAP = 'data-no-horizontal-wrap';
 const LARGE_DISTANCE_FROM_CENTER = 999999999;
+const LARGE_NEGATIVE_DISTANCE_FROM_CENTER = -999999999;
 
 const _allInstances: {
   [key: string]: FocusZone;
@@ -60,7 +70,8 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
     onFocus: PropTypes.func,
     preventDefaultWhenHandled: PropTypes.bool,
     isRtl: PropTypes.bool,
-    restoreFocusFromRoot: PropTypes.bool,
+    preventFocusRestoration: PropTypes.bool,
+    pagingSupportDisabled: PropTypes.bool,
   };
 
   static defaultProps: FocusZoneProps = {
@@ -154,6 +165,10 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
     // Assign initial tab indexes so that we can set initial focus as appropriate.
     this.updateTabIndexes();
 
+    if (this.props.defaultTabbableElement && typeof this.props.defaultTabbableElement === 'string') {
+      this._activeElement = this.getDocument().querySelector(this.props.defaultTabbableElement) as HTMLElement;
+    }
+
     if (this.props.shouldFocusOnMount) {
       this.focus();
     }
@@ -170,7 +185,7 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
       this._lastIndexPath &&
       (doc.activeElement === doc.body ||
         doc.activeElement === null ||
-        (this.props.restoreFocusFromRoot && doc.activeElement === this._root.current))
+        (!this.props.preventFocusRestoration && doc.activeElement === this._root.current))
     ) {
       // The element has been removed after the render, attempt to restore focus.
       const elementToFocus = getFocusableByIndexPath(this._root.current as HTMLElement, this._lastIndexPath);
@@ -379,7 +394,7 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
       defaultTabbableElement,
     } = this.props;
 
-    let newActiveElement: HTMLElement | undefined;
+    let newActiveElement: HTMLElement | null | undefined;
     const isImmediateDescendant = this.isImmediateDescendantOfZone(ev.target as HTMLElement);
 
     if (isImmediateDescendant) {
@@ -398,7 +413,10 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
 
     // If an inner focusable element should be focused when FocusZone container receives focus
     if (shouldFocusInnerElementWhenReceivedFocus && ev.target === this._root.current) {
-      const maybeElementToFocus = defaultTabbableElement && defaultTabbableElement(this._root.current);
+      const maybeElementToFocus =
+        defaultTabbableElement &&
+        typeof defaultTabbableElement === 'function' &&
+        defaultTabbableElement(this._root.current);
 
       // try to focus defaultTabbable element
       if (maybeElementToFocus && isElementTabbable(maybeElementToFocus)) {
@@ -409,7 +427,7 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
         this.focus(true);
         if (this._activeElement) {
           // set to null as new active element was handled in method above
-          // @ts-ignore
+
           newActiveElement = null;
         }
       }
@@ -503,7 +521,7 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
    * Handle the keystrokes.
    */
   _onKeyDown = (ev: React.KeyboardEvent<HTMLElement>): boolean | undefined => {
-    const { direction, disabled, shouldEnterInnerZone } = this.props;
+    const { direction, disabled, shouldEnterInnerZone, pagingSupportDisabled } = this.props;
 
     if (disabled) {
       return undefined;
@@ -601,6 +619,18 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
           }
           return undefined;
 
+        case keyboardKey.PageDown:
+          if (!pagingSupportDisabled && this.moveFocusPaging(true)) {
+            break;
+          }
+          return undefined;
+
+        case keyboardKey.PageUp:
+          if (!pagingSupportDisabled && this.moveFocusPaging(false)) {
+            break;
+          }
+          return undefined;
+
         case keyboardKey.Tab:
           if (
             this.props.handleTabKey === FocusZoneTabbableElements.all ||
@@ -609,7 +639,10 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
           ) {
             let focusChanged = false;
             this._processingTabKey = true;
-            if (direction === FocusZoneDirection.vertical) {
+            if (
+              direction === FocusZoneDirection.vertical ||
+              !this.shouldWrapFocus(this._activeElement as HTMLElement, NO_HORIZONTAL_WRAP)
+            ) {
               focusChanged = ev.shiftKey ? this.moveFocusUp() : this.moveFocusDown();
             } else {
               const tabWithDirection = this.props.isRtl ? !ev.shiftKey : ev.shiftKey;
@@ -812,6 +845,10 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
         const activeRectBottom = Math.floor(activeRect.bottom);
 
         if (targetRectTop < activeRectBottom) {
+          if (!this.shouldWrapFocus(this._activeElement as HTMLElement, NO_VERTICAL_WRAP)) {
+            return LARGE_NEGATIVE_DISTANCE_FROM_CENTER;
+          }
+
           return LARGE_DISTANCE_FROM_CENTER;
         }
 
@@ -850,6 +887,9 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
         const activeRectTop = Math.floor(activeRect.top);
 
         if (targetRectBottom > activeRectTop) {
+          if (!this.shouldWrapFocus(this._activeElement as HTMLElement, NO_VERTICAL_WRAP)) {
+            return LARGE_NEGATIVE_DISTANCE_FROM_CENTER;
+          }
           return LARGE_DISTANCE_FROM_CENTER;
         }
 
@@ -873,6 +913,7 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
   }
 
   moveFocusLeft(): boolean {
+    const shouldWrap = this.shouldWrapFocus(this._activeElement as HTMLElement, NO_HORIZONTAL_WRAP);
     if (
       this.moveFocus(
         // @ts-ignore
@@ -897,12 +938,14 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
             this.props.direction !== FocusZoneDirection.vertical
           ) {
             distance = activeRect.right - targetRect.right;
+          } else if (!shouldWrap) {
+            distance = LARGE_NEGATIVE_DISTANCE_FROM_CENTER;
           }
 
           return distance;
         },
         undefined /* ev */,
-        true,
+        shouldWrap,
       )
     ) {
       this.setFocusAlignment(this._activeElement as HTMLElement, true, false);
@@ -913,6 +956,7 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
   }
 
   moveFocusRight(): boolean {
+    const shouldWrap = this.shouldWrapFocus(this._activeElement as HTMLElement, NO_HORIZONTAL_WRAP);
     if (
       this.moveFocus(
         !this.props.isRtl,
@@ -936,12 +980,14 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
             this.props.direction !== FocusZoneDirection.vertical
           ) {
             distance = targetRect.left - activeRect.left;
+          } else if (!shouldWrap) {
+            distance = LARGE_NEGATIVE_DISTANCE_FROM_CENTER;
           }
 
           return distance;
         },
         undefined /* ev */,
-        true,
+        shouldWrap,
       )
     ) {
       this.setFocusAlignment(this._activeElement as HTMLElement, true, false);
@@ -949,6 +995,113 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
     }
 
     return false;
+  }
+
+  getHorizontalDistanceFromCenter = (isForward: boolean, activeRect: ClientRect, targetRect: ClientRect): number => {
+    const leftAlignment = this._focusAlignment.left;
+    // ClientRect values can be floats that differ by very small fractions of a decimal.
+    // If the difference between top and bottom are within a pixel then we should treat
+    // them as equivalent by using Math.floor. For instance 5.2222 and 5.222221 should be equivalent,
+    // but without Math.Floor they will be handled incorrectly.
+    const targetRectTop = Math.floor(targetRect.top);
+    const activeRectBottom = Math.floor(activeRect.bottom);
+    const targetRectBottom = Math.floor(targetRect.bottom);
+    const activeRectTop = Math.floor(activeRect.top);
+    const isValidCandidateOnpagingDown = isForward && targetRectTop > activeRectBottom;
+    const isValidCandidateOnpagingUp = !isForward && targetRectBottom < activeRectTop;
+
+    if (isValidCandidateOnpagingDown || isValidCandidateOnpagingUp) {
+      if (leftAlignment >= targetRect.left && leftAlignment <= targetRect.left + targetRect.width) {
+        return 0;
+      }
+      return Math.abs(targetRect.left + targetRect.width / 2 - leftAlignment);
+    }
+
+    if (!this.shouldWrapFocus(this._activeElement as HTMLElement, NO_VERTICAL_WRAP)) {
+      return LARGE_NEGATIVE_DISTANCE_FROM_CENTER;
+    }
+    return LARGE_DISTANCE_FROM_CENTER;
+  };
+
+  moveFocusPaging(isForward: boolean, useDefaultWrap: boolean = true): boolean {
+    let element = this._activeElement;
+    if (!element || !this._root.current) {
+      return false;
+    }
+    if (this.isElementInput(element)) {
+      if (!this.shouldInputLoseFocus(element as HTMLInputElement, isForward)) {
+        return false;
+      }
+    }
+    const scrollableParent = findScrollableParent(element);
+    if (!scrollableParent) {
+      return false;
+    }
+    let candidateDistance = -1;
+    let candidateElement = undefined;
+    let targetTop = -1;
+    let targetBottom = -1;
+    const pagesize = scrollableParent.clientHeight;
+    const activeRect = element.getBoundingClientRect();
+    do {
+      element = isForward
+        ? getNextElement(this._root.current, element)
+        : getPreviousElement(this._root.current, element);
+      if (element) {
+        const targetRect = element.getBoundingClientRect();
+        const targetRectTop = Math.floor(targetRect.top);
+        const activeRectBottom = Math.floor(activeRect.bottom);
+        const targetRectBottom = Math.floor(targetRect.bottom);
+        const activeRectTop = Math.floor(activeRect.top);
+        const elementDistance = this.getHorizontalDistanceFromCenter(isForward, activeRect, targetRect);
+        const isElementPassedPageSizeOnPagingDown = isForward && targetRectTop > activeRectBottom + pagesize;
+        const isElementPassedPageSizeOnPagingUp = !isForward && targetRectBottom < activeRectTop - pagesize;
+
+        if (isElementPassedPageSizeOnPagingDown || isElementPassedPageSizeOnPagingUp) {
+          break;
+        }
+        if (elementDistance > -1) {
+          // for paging down
+          if (isForward && targetRectTop > targetTop) {
+            targetTop = targetRectTop;
+            candidateDistance = elementDistance;
+            candidateElement = element;
+          } else if (!isForward && targetRectBottom < targetBottom) {
+            // for paging up
+            targetBottom = targetRectBottom;
+            candidateDistance = elementDistance;
+            candidateElement = element;
+          } else if (candidateDistance === -1 || elementDistance <= candidateDistance) {
+            candidateDistance = elementDistance;
+            candidateElement = element;
+          }
+        }
+      }
+    } while (element);
+
+    let changedFocus = false;
+    // Focus the closest candidate
+    if (candidateElement && candidateElement !== this._activeElement) {
+      changedFocus = true;
+      this.focusElement(candidateElement);
+      this.setFocusAlignment(candidateElement as HTMLElement, false, true);
+    } else if (this.props.isCircularNavigation && useDefaultWrap) {
+      if (isForward) {
+        return this.focusElement(
+          getNextElement(this._root.current, this._root.current.firstElementChild as HTMLElement, true) as HTMLElement,
+        );
+      }
+      return this.focusElement(
+        getPreviousElement(
+          this._root.current,
+          this._root.current.lastElementChild as HTMLElement,
+          true,
+          true,
+          true,
+        ) as HTMLElement,
+      );
+    }
+    return changedFocus;
   }
 
   setFocusAlignment(element: HTMLElement, isHorizontal?: boolean, isVertical?: boolean) {
@@ -997,9 +1150,12 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
   updateTabIndexes(onElement?: HTMLElement) {
     let element = onElement;
 
-    if (!this._activeElement && this.props.defaultTabbableElement) {
-      // @ts-ignore
-      this._activeElement = this.props.defaultTabbableElement(this._root.current);
+    if (
+      !this._activeElement &&
+      this.props.defaultTabbableElement &&
+      typeof this.props.defaultTabbableElement === 'function'
+    ) {
+      this._activeElement = this.props.defaultTabbableElement(this._root.current as HTMLElement);
     }
 
     if (!element && this._root.current) {
@@ -1111,5 +1267,16 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
     }
 
     return true;
+  }
+
+  shouldWrapFocus(
+    element: HTMLElement,
+    noWrapDataAttribute: 'data-no-vertical-wrap' | 'data-no-horizontal-wrap',
+  ): boolean {
+    return !!this.props.checkForNoWrap ? shouldWrapFocus(element, noWrapDataAttribute) : true;
+  }
+
+  getDocument(): Document {
+    return getDocument(this._root.current)!;
   }
 }

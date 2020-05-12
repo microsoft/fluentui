@@ -1,72 +1,72 @@
-```Swift
-// Default configuration with date and time text field
-DatePickerController(date: nil,
-                     calendar: nil,
-                     style: .dateTime)
-```
+The DatePicker uses the provided [`Calendar`](https://developer.apple.com/documentation/foundation/calendar) instance as a data source. If no calendar is provided, it uses [`Calendar.current`](https://developer.apple.com/documentation/foundation/calendar/2293438-current), which is the system calendar.
 
-Todo: add image here
+<DisplayToggle onText="Dark" offText="Light" label="Theme Switcher">
 
-<!-- ![DatePickerDefaultDateTime.png](.attachments/DatePickerDefaultDateTime.png) -->
+### Default configuration
 
 ```Swift
 // Default configuration with date-only text field
-DatePickerController(date: nil,
-                     calendar: nil,
-                     style: .date)
+DatePickerController(date: nil, calendar: nil, style: .date)
 ```
 
-Todo: add image here
+<img className="off" src="https://static2.sharepointonline.com/files/fabric-cdn-prod_20200504.001/fabric-website/images/controls/macos/DateTimePicker/datepicker_currentdate_light.png?text=LightMode" />
+<img className="on" src="https://static2.sharepointonline.com/files/fabric-cdn-prod_20200504.001/fabric-website/images/controls/macos/DateTimePicker/datepicker_currentdate_dark.png?text=DarkMode" />
 
-<!-- ![DatePickerDefaultDateOnly.png](.attachments/DatePickerDefaultDateOnly.png) -->
+### DatePicker with time text field
+
+```Swift
+// Default configuration with date and time text field
+DatePickerController(date: nil, calendar: nil, style: .dateTime)
+```
+
+<img className="off" src="https://static2.sharepointonline.com/files/fabric-cdn-prod_20200504.001/fabric-website/images/controls/macos/DateTimePicker/datepicker_currentdate_time_light.png?text=LightMode" />
+<img className="on" src="https://static2.sharepointonline.com/files/fabric-cdn-prod_20200504.001/fabric-website/images/controls/macos/DateTimePicker/datepicker_currentdate_time_dark.png?text=DarkMode" />
+
+### Custom initial date
 
 ```Swift
 // Custom initial date
-let date = Calendar.current.date(from: DateComponents(year: 1984, month: 5, day: 11))
-DatePickerController(date: date,
-                     calendar: nil,
-                     style: .date)
+let date = Calendar.current.date(from: DateComponents(year: 2019, month: 1, day: 1))
+DatePickerController(date: date, calendar: nil, style: .date)
 ```
 
-Todo: add image here
+<img className="off" src="https://static2.sharepointonline.com/files/fabric-cdn-prod_20200504.001/fabric-website/images/controls/macos/DateTimePicker/datepicker_specificdate_light.png?text=LightMode" />
+<img className="on" src="https://static2.sharepointonline.com/files/fabric-cdn-prod_20200504.001/fabric-website/images/controls/macos/DateTimePicker/datepicker_specificdate_dark.png?text=DarkMode" />
 
-<!-- ![DatePickerCustomDate.png](.attachments/DatePickerCustomDate.png) -->
+### Custom calendar
 
 ```Swift
 // Custom calendar
 var calendar = Calendar(identifier: .islamic)
 calendar.locale = Locale(identifier: "ar")
-DatePickerController(date: nil,
-                     calendar: calendar,
-                     style: .date)
+DatePickerController(date: nil, calendar: calendar, style: .date)
 ```
 
-Todo: add image here
+<img className="off" src="https://static2.sharepointonline.com/files/fabric-cdn-prod_20200504.001/fabric-website/images/controls/macos/DateTimePicker/datepicker_ar_currentdate_light.png?text=LightMode" />
+<img className="on" src="https://static2.sharepointonline.com/files/fabric-cdn-prod_20200504.001/fabric-website/images/controls/macos/DateTimePicker/datepicker_ar_currentdate_dark.png?text=DarkMode" />
 
-<!-- ![DatePickerIslamicCalendar.png](.attachments/DatePickerIslamicCalendar.png) -->
+### Secondary calendar
 
 ```Swift
 // Secondary Calendar
 var calendar = Calendar.init(identifier: .chinese)
 calendar.locale = Locale(identifier: "zh")
-let controller = DatePickerController(date: nil,
-                                      calendar: nil,
-                                      style: .dateTime)
+let controller = DatePickerController(date: nil, calendar: nil, style: .date)
 controller.secondaryCalendar = calendar
 ```
 
-Todo: add image here
+<img className="off" src="https://static2.sharepointonline.com/files/fabric-cdn-prod_20200504.001/fabric-website/images/controls/macos/DateTimePicker/datepicker_secondary_light.png?text=LightMode" />
+<img className="on" src="https://static2.sharepointonline.com/files/fabric-cdn-prod_20200504.001/fabric-website/images/controls/macos/DateTimePicker/datepicker_secondary_dark.png?text=DarkMode" />
 
-<!-- ![DatePickerSecondaryCalendar.png](.attachments/DatePickerSecondaryCalendar.png) -->
+### No text field
 
 ```Swift
 // No text field
-let controller = DatePickerController(date: nil,
-                                      calendar: nil,
-                                      style: .dateTime)
+let controller = DatePickerController(date: nil, calendar: nil, style: .date)
 controller.hasTextField = false
 ```
 
-Todo: add image here
+<img className="off" src="https://static2.sharepointonline.com/files/fabric-cdn-prod_20200504.001/fabric-website/images/controls/macos/DateTimePicker/datepicker_notextpicker_light.png?text=LightMode" />
+<img className="on" src="https://static2.sharepointonline.com/files/fabric-cdn-prod_20200504.001/fabric-website/images/controls/macos/DateTimePicker/datepicker_notextpicker_dark.png?text=DarkMode" />
 
-<!-- ![DatePickerNoTextField.png](.attachments/DatePickerNoTextField.png) -->
+</DisplayToggle>

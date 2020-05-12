@@ -4,7 +4,7 @@
 $icon-size: 16px;
 
 .platformPicker {
-  padding-bottom: 16px;
+  padding-bottom: 24px;
 }
 
 .platformPickerList {
@@ -22,11 +22,15 @@ $icon-size: 16px;
 .button {
   width: 100%;
   min-width: 100%;
-  height: 30px;
+  height: 40px;
   padding: 8px;
   border: 1px solid $ms-color-neutralQuaternary;
   font-size: $ms-font-size-s;
   @include focus-border(-1px);
+
+  :global(.ms-Button-label) {
+    line-height: 1.25;
+  }
 
   &:not([disabled]) {
     color: $ms-color-neutralSecondary;

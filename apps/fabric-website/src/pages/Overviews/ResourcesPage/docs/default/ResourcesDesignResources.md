@@ -47,6 +47,8 @@ The Add-ins design toolkit provides layouts for interface elements and commonly 
 <ul class="md-list--flex">
   <li class="mdut--half">[iOS Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines/ios/overview/themes/)</li>
   <li class="mdut--half">[Guidelines for iOS app icons](https://developer.apple.com/design/human-interface-guidelines/ios/icons-and-images/app-icon/)</li>
+  <li class="mdut--half">[macOS Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines/macos/overview/themes/)</li>
+  <li class="mdut--half">[Guidelines for macOS app icons](https://developer.apple.com/design/human-interface-guidelines/macos/icons-and-images/app-icon/)</li>
   <li class="mdut--half">[Android Human Interface Guidelines](https://developer.android.com/design/)</li>
   <li class="mdut--half">[Guidelines for Android app icons](https://developer.android.com/guide/practices/ui_guidelines/icon_design)</li>
 </ul>
