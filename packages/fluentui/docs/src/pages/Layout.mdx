@@ -49,7 +49,7 @@ You can learn more in [Flex component docs](/components/flex).
 <ExampleSnippet>
   <Grid styles={{
     gridTemplateColumns: "repeat(4, 1fr)",
-    msGridColumns: "repeat(4, 1fr)",
+    msGridColumns: "(1fr)[4]",
     GridTemplateRows: "50px 150px 50px",
     msGridRows: "50px 150px 50px",
   }} >
@@ -62,7 +62,7 @@ You can learn more in [Flex component docs](/components/flex).
 <ExampleSnippet>
   <Grid styles={{
     gridTemplateColumns: "repeat(2, 1fr)",
-    msGridColumns: "repeat(2, 1fr)",
+    msGridColumns: "(1fr)[2]",
   }} >
     <Segment color="brand" content="Header" inverted styles={{ gridColumn: '1/3', gridRow: 1 }} />
     <Segment color="red" content="Menu" inverted styles={{ gridColumn: '3', gridRow: '1/3' }} />

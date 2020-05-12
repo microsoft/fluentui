@@ -6,7 +6,7 @@ const SvgIconExampleColor = () => (
   <Grid
     styles={{
       gridTemplateColumns: 'repeat(4, auto)',
-      msGridColumns: 'repeat(4, auto)',
+      msGridColumns: '(1fr)[4]',
       alignItems: 'center',
     }}
     variables={{
