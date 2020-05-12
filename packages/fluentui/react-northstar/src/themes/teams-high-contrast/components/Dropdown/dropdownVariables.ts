@@ -10,4 +10,5 @@ export default (siteVars): Partial<DropdownVariables> => ({
   listBorderWidth: pxToRem(1),
   listItemSelectedColor: siteVars.accessibleCyan,
   selectedItemBorder: `${pxToRem(1)} solid ${siteVars.colors.white}`,
+  loadingMessageBackgroundColor: siteVars.accessibleDark,
 });

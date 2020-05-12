@@ -24,3 +24,4 @@ export { default as Alert } from './components/Alert/alertVariables';
 export { default as AlertDismissAction } from './components/Alert/alertDismissActionVariables';
 export { default as Provider } from './components/Provider/providerVariables';
 export { default as Label } from './components/Label/labelVariables';
+export { default as Dropdown } from './components/Dropdown/dropdownVariables';
