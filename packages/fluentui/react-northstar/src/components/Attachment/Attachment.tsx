@@ -147,7 +147,7 @@ const Attachment = compose<'div', AttachmentProps, AttachmentStylesProps, {}, {}
       _.invoke(props, 'onClick', e, props);
     };
 
-    const element = (
+    const element = getA11Props.unstable_wrapWithFocusZone(
       <ElementType {...getA11Props('root', { className: classes.root, onClick: handleClick, ref, ...unhandledProps })}>
         {createShorthand(composeOptions.slots.icon, icon, {
           defaultProps: () => slotProps.icon,
@@ -187,7 +187,7 @@ const Attachment = compose<'div', AttachmentProps, AttachmentStylesProps, {}, {}
           }),
         })}
         {!_.isNil(progress) && <div className="ui-attachment__progress" style={{ width: `${progress}%` }} />}
-      </ElementType>
+      </ElementType>,
     );
     setEnd();
 
