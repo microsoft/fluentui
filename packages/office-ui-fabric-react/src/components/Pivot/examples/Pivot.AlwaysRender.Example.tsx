@@ -13,21 +13,21 @@ const ExpensiveToMount: React.FC = () => {
 };
 
 export const PivotRenderActiveOnlyExample: React.FC = () => {
-  const [activeOnly, setActiveOnly] = React.useState(true);
+  const [alwaysRender, setAlwaysRender] = React.useState(false);
 
   const toggleActiveOnly = () => {
-    setActiveOnly(!activeOnly);
+    setAlwaysRender(!alwaysRender);
   };
 
   return (
     <div>
-      <Toggle label="Render active only" inlineLabel checked={activeOnly} onChange={toggleActiveOnly} />
-      <Pivot aria-label="Separately Rendered Content Pivot Example" renderActiveOnly={activeOnly}>
-        <PivotItem headerText="Expensive component #1">
+      <Toggle label="Always render children" inlineLabel checked={alwaysRender} onChange={toggleActiveOnly} />
+      <Pivot aria-label="Separately Rendered Content Pivot Example">
+        <PivotItem headerText="Expensive component #1" alwaysRender={alwaysRender}>
           <ExpensiveToMount />
           Component #1
         </PivotItem>
-        <PivotItem headerText="Expensive component #2">
+        <PivotItem headerText="Expensive component #2" alwaysRender={alwaysRender}>
           <ExpensiveToMount />
           Component #2
         </PivotItem>

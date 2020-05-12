@@ -100,16 +100,16 @@ export class PivotBase extends React.Component<IPivotProps, IPivotState> {
     const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties);
 
     this._classNames = this._getClassNames(this.props);
-    const { renderActiveOnly } = this.props;
 
     return (
       <div role="toolbar" {...divProps}>
         {this._renderPivotLinks(linkCollection, selectedKey)}
-        {renderActiveOnly !== false
-          ? selectedKey && this._renderPivotItem(linkCollection, selectedKey)
-          : linkCollection.links.map(link =>
+        {selectedKey &&
+          linkCollection.links.map(
+            link =>
+              (link.alwaysRender === true || selectedKey === link.itemKey) &&
               this._renderPivotItem(linkCollection, link.itemKey, selectedKey === link.itemKey),
-            )}
+          )}
       </div>
     );
   }
@@ -229,6 +229,7 @@ export class PivotBase extends React.Component<IPivotProps, IPivotState> {
       <div
         role="tabpanel"
         hidden={!isActive}
+        key={itemKey}
         aria-hidden={!isActive}
         aria-labelledby={selectedTabId}
         className={this._classNames.itemContainer}
