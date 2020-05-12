@@ -10,6 +10,7 @@ import {
   AutoControlledComponent,
   childrenExist,
   createShorthandFactory,
+  createShorthand,
   UIComponentProps,
   ChildrenComponentProps,
   commonPropTypes,
@@ -208,7 +209,7 @@ class Menu extends AutoControlledComponent<WithAsProp<MenuProps>, MenuState> {
 
       itemPosition++;
 
-      return MenuItem.create(item, {
+      return createShorthand(MenuItem, item, {
         defaultProps: () => ({
           iconOnly,
           pills,
