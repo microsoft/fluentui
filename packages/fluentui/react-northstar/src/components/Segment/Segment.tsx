@@ -100,7 +100,6 @@ Segment.propTypes = {
   }),
   disabled: PropTypes.bool,
   inverted: PropTypes.bool,
-  rtlAttributes: PropTypes.func,
 };
 Segment.handledProps = Object.keys(Segment.propTypes) as any;
 
