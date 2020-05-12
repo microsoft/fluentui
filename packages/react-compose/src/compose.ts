@@ -15,7 +15,13 @@ function compose<ElementType extends React.ElementType, InputProps, InputStylesP
 
   const Component = (React.forwardRef<ElementType, InputProps & ParentProps & { as?: React.ElementType }>(
     (props, ref) => {
-      return composeOptions.render(props, (ref as unknown) as React.Ref<HTMLDivElement>, composeOptions);
+      return composeOptions.render(props, (ref as unknown) as React.Ref<HTMLDivElement>, {
+        ...composeOptions,
+        slots: {
+          ...composeOptions.slots,
+          __self: Component,
+        },
+      });
     },
   ) as unknown) as ComponentWithAs<ElementType, InputProps & ParentProps>;
 

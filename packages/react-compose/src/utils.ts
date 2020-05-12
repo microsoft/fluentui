@@ -30,7 +30,7 @@ export const defaultComposeOptions: ComposePreparedOptions = {
 
   handledProps: [] as never[],
   overrideStyles: false,
-  slots: {},
+  slots: { __self: () => null },
   mapPropsToSlotPropsChain: [],
   resolveSlotProps: () => ({}),
 };
