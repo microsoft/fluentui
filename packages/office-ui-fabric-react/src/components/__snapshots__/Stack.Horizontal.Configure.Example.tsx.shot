@@ -435,7 +435,6 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     font-size: 14px;
                     font-weight: 400;
                     position: relative;
-                    text-align: left;
                     user-select: none;
                   }
                   &::before {
@@ -595,7 +594,6 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     font-size: 14px;
                     font-weight: 400;
                     position: relative;
-                    text-align: left;
                     user-select: none;
                   }
                   &::before {
@@ -815,7 +813,6 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     font-size: 14px;
                     font-weight: 400;
                     position: relative;
-                    text-align: left;
                     user-select: none;
                   }
                   &::before {
@@ -975,7 +972,6 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     font-size: 14px;
                     font-weight: 400;
                     position: relative;
-                    text-align: left;
                     user-select: none;
                   }
                   &::before {
@@ -3598,7 +3594,6 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                 font-size: 14px;
                 font-weight: 400;
                 position: relative;
-                text-align: left;
                 user-select: none;
               }
               &::before {

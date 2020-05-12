@@ -2,6 +2,21 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "date": "Fri, 08 May 2020 12:35:40 GMT",
+      "tag": "@uifabric/styling_v7.12.4",
+      "version": "7.12.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add selector to turn off high contrast adjustment in (only) Edge Chromium browser",
+            "author": "xgao@microsoft.com",
+            "commit": "70e25f50621034c277df23f832ed1b13e1a824c8",
+            "package": "@uifabric/styling"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 07 May 2020 01:06:55 GMT",
       "tag": "@uifabric/styling_v7.12.3",
       "version": "7.12.3",
