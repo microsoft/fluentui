@@ -18,7 +18,6 @@ import {
   warnMutuallyExclusive,
 } from '../../Utilities';
 import { ITextField, ITextFieldProps, ITextFieldStyleProps, ITextFieldStyles } from './TextField.types';
-import { useId, useBoolean } from '@uifabric/react-hooks';
 
 const getClassNames = classNamesFunction<ITextFieldStyleProps, ITextFieldStyles>();
 
@@ -49,32 +48,6 @@ export interface ITextFieldSnapshot {
 const DEFAULT_STATE_VALUE = '';
 const COMPONENT_NAME = 'TextField';
 
-// export const TextFieldBase: React.FunctionComponent = (props: ITextFieldProps) => {
-//   const textElement = React.useRef<HTMLTextAreaElement | HTMLInputElement>(null);
-//   const fallbackId = useId(COMPONENT_NAME);
-//   const descriptionId = useId(COMPONENT_NAME + 'Description');
-//   const labelId = useId(COMPONENT_NAME + 'Label');
-//   const delayedValidate: (value: string | undefined) => void;
-//   let { defaultValue = DEFAULT_STATE_VALUE } = props;
-//   if (typeof defaultValue === 'number') {
-//     // This isn't allowed per the props, but happens anyway.
-//     defaultValue = String(defaultValue);
-//   }
-//   const [uncontrolledValue, setUncontrolledValue] = React.useState(isControlled ? undefined : defaultValue)
-//   const [isFocused] = useBoolean(false)
-//   const [errorMessage, setErrorMessage] = React.useState(''),
-
-//   if (process.env.NODE_ENV !== 'production') {
-//     warnMutuallyExclusive(COMPONENT_NAME, props, {
-//       errorMessage: 'onGetErrorMessage',
-//     });
-//   }
-//   warnControlledUsage();
-
-//   return (
-
-//   )
-// }
 export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldState, ITextFieldSnapshot>
   implements ITextField {
   public static defaultProps: ITextFieldProps = {
