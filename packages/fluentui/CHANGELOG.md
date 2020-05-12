@@ -22,6 +22,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Restricted prop sets in the `ReactionGroup` component which are passed to styles functions, @assuncaocharles ([#13080](https://github.com/microsoft/fluentui/pull/13080))
 - Stop propagadion in `Dropdown` for `keypress` of `ArrowRight`, `ArrowLeft`, `Esc` and `Backspace` @assuncaocharles ([#13088](https://github.com/microsoft/fluentui/pull/13088))
 - Restricted prop sets in the `Menu` component which are passed to styles functions @assuncaocharles ([#13040](https://github.com/microsoft/fluentui/pull/13040))
+- Renamed `Survey20pxIcon` to `SurveyAppbarIcon` @TanelVari ([#12872](https://github.com/microsoft/fluentui/pull/12872))
 
 ### Fixes
 - Fix `splitButtonBehavior` to exclude `toggleButton` from focus zone @silviuavram ([#13043](https://github.com/microsoft/fluentui/pull/13043))
@@ -31,7 +32,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Wrapped `Alert`, `Attachment`, `Box` and `ListItem` FC with `unstable_wrapWithFocusZone` @assuncaocharles ([#13093](https://github.com/microsoft/fluentui/pull/13093))
 
 ### Features
-- Added icons: `TranscriptIcon`, `ShareLocation12pxIcon`, `FluentFileGenericIcon`, `FluentFileHtmlIcon`, `FluentFilePdfIcon`, `FluentFilePictureIcon`, `FluentFileTextIcon`. Modified: `ShareLocationIcon` @TanelVari ([#12872](https://github.com/microsoft/fluentui/pull/12872))
+- Added icons: `TranscriptIcon`, `FilesGenericColoredIcon`, `FilesHtmlColoredIcon`, `FilesPdfColoredIcon`, `FilesPictureColoredIcon`, `FilesTextColoredIcon`, `PopupIcon`, `ShareGenericIcon`, `ComposeIcon`, `SpotlightStopIcon`, `TenantWorkIcon`, `TenantPersonalIcon`, `WorkOrSchoolIcon`, `EmailWithDotIcon`. Modified: `ShareLocationIcon`, `SpotlightIcon`. @TanelVari ([#12872](https://github.com/microsoft/fluentui/pull/12872))
 
 <!--------------------------------[ v0.49.0 ]------------------------------- -->
 ## [v0.49.0](https://github.com/OfficeDev/office-ui-fabric-react/tree/fluentui_v0.49.0) (2020-05-10)
@@ -73,7 +74,6 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Restricted prop sets in the `Toolbar` component which are passed to styles functions @layershifter ([#13024](https://github.com/microsoft/fluentui/pull/13024))
 - Change `AttachmentAction` to override `Button` styles and restricted props set @mnajdova ([#12913](https://github.com/microsoft/fluentui/pull/12913))
 - Limit props `activeIndex` and `defaultActiveIndex` in `Carousel` to be only numbers @assuncaocharles ([#13048](https://github.com/microsoft/fluentui/pull/13048))
-- Renamed `Survey20pxIcon` to `SurveyAppbarIcon` @TanelVari ([#12872](https://github.com/microsoft/fluentui/pull/12872))
 
 ### Fixes
 - Visually align checkbox and label elements in `Checkbox` component @silviuavram ([#12590](https://github.com/microsoft/fluentui/pull/12590))
@@ -104,21 +104,9 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Converted Box, Button* and Attachment* components to use compose @layershifter @mnajdova ([#12745](https://github.com/microsoft/fluentui/pull/12745))
 - Respect `childBehaviors` for slots in `useAccessibility` hook @pompomon ([#12835](https://github.com/microsoft/fluentui/pull/12835))
 - Add `cardsContainerBehavior` for `Card`s in `Grid` navigation @mpompomon ([#12800](https://github.com/microsoft/fluentui/pull/12800))
-<<<<<<< HEAD
 - Add `slots` and `mapPropsToSlotProps` in compose and added example usage in the `Button` component @mnajdova ([#12858](https://github.com/microsoft/fluentui/pull/12858))
 - Add slots support in `Attachment` @mnajdova ([#12913](https://github.com/microsoft/fluentui/pull/12913))
 - Use `compose()` in `ToolbarDivider` @mnajdova ([#13045](https://github.com/microsoft/fluentui/pull/13045))
-=======
-- Added `slots` and `mapPropsToSlotProps` in compose and added example usage in the `Button` component @mnajdova ([#12858](https://github.com/microsoft/fluentui/pull/12858))
-- Added icons: `TranscriptIcon`, `ShareLocation12pxIcon`, `FluentFileGenericIcon`, `FluentFileHtmlIcon`, `FluentFilePdfIcon`, `FluentFilePictureIcon`, `FluentFileTextIcon`. Modified: `ShareLocationIcon` @TanelVari ([#12872](https://github.com/microsoft/fluentui/pull/12872))
-- Added icons: `TranscriptIcon`, `ShareLocation12pxIcon`, `FluentFileGenericIcon`, `FluentFileHtmlIcon`, `FluentFilePdfIcon`, `FluentFilePictureIcon`, `FluentFileTextIcon`, `PopupIcon`, `ShareGenericIcon`, `ComposeIcon`. Modified: `ShareLocationIcon` @TanelVari ([#12872](https://github.com/microsoft/fluentui/pull/12872))
->>>>>>> Changelog update
-- Added icons: `TranscriptIcon`, `ShareLocation12pxIcon`, `FluentFileGenericIcon`, `FluentFileHtmlIcon`, `FluentFilePdfIcon`, `FluentFilePictureIcon`, `FluentFileTextIcon`, `PopupIcon`, `ShareGenericIcon`, `ComposeIcon`, `SpotlightStopIcon`. Modified: `ShareLocationIcon`, `SpotlightIcon` @TanelVari ([#12872](https://github.com/microsoft/fluentui/pull/12872))
-- Added icons: `TranscriptIcon`, `ShareLocation12pxIcon`, `FluentFileGenericIcon`, `FluentFileHtmlIcon`, `FluentFilePdfIcon`, `FluentFilePictureIcon`, `FluentFileTextIcon`, `PopupIcon`, `ShareGenericIcon`, `ComposeIcon`, `SpotlightStopIcon`, `TenantIcon`, `TenantPersonalIcon`, `WorkOrSchoolIcon`. Modified: `ShareLocationIcon`, `SpotlightIcon`, `Survey20pxIcon` @TanelVari ([#12872](https://github.com/microsoft/fluentui/pull/12872))
-- Added icons: `TranscriptIcon`, `ShareLocation12pxIcon`, `FluentFileGenericIcon`, `FluentFileHtmlIcon`, `FluentFilePdfIcon`, `FluentFilePictureIcon`, `FluentFileTextIcon`, `PopupIcon`, `ShareGenericIcon`, `ComposeIcon`, `SpotlightStopIcon`, `TenantIcon`, `TenantPersonalIcon`, `WorkOrSchoolIcon`, `EmailWithDotIcon`. Modified: `ShareLocationIcon`, `SpotlightIcon`, `Survey20pxIcon` @TanelVari ([#12872](https://github.com/microsoft/fluentui/pull/12872))
-- Added icons: `TranscriptIcon`, `ShareLocation12pxIcon`, `FilesGenericColoredIcon`, `FilesHtmlColoredIcon`, `FilesPdfColoredIcon`, `FilesPictureColoredIcon`, `FilesTextColoredIcon`, `PopupIcon`, `ShareGenericIcon`, `ComposeIcon`, `SpotlightStopIcon`, `TenantIcon`, `TenantPersonalIcon`, `WorkOrSchoolIcon`, `EmailWithDotIcon`. Modified: `ShareLocationIcon`, `SpotlightIcon`, `Survey20pxIcon` @TanelVari ([#12872](https://github.com/microsoft/fluentui/pull/12872))
-- Added icons: `TranscriptIcon`, `FilesGenericColoredIcon`, `FilesHtmlColoredIcon`, `FilesPdfColoredIcon`, `FilesPictureColoredIcon`, `FilesTextColoredIcon`, `PopupIcon`, `ShareGenericIcon`, `ComposeIcon`, `SpotlightStopIcon`, `TenantIcon`, `TenantPersonalIcon`, `WorkOrSchoolIcon`, `EmailWithDotIcon`. Modified: `ShareLocationIcon`, `SpotlightIcon`, `Survey20pxIcon` @TanelVari ([#12872](https://github.com/microsoft/fluentui/pull/12872))
-- Added icons: `TranscriptIcon`, `FilesGenericColoredIcon`, `FilesHtmlColoredIcon`, `FilesPdfColoredIcon`, `FilesPictureColoredIcon`, `FilesTextColoredIcon`, `PopupIcon`, `ShareGenericIcon`, `ComposeIcon`, `SpotlightStopIcon`, `TenantWorkIcon`, `TenantPersonalIcon`, `WorkOrSchoolIcon`, `EmailWithDotIcon`. Modified: `ShareLocationIcon`, `SpotlightIcon`. @TanelVari ([#12872](https://github.com/microsoft/fluentui/pull/12872))
 
 ### Performance
 - Replace `fela-plugin-prexifer` with `stylis` @layershifter ([#12289](https://github.com/microsoft/fluentui/pull/12289))
