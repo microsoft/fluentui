@@ -5,8 +5,8 @@ import { ArrowUpIcon } from '@fluentui/react-icons-northstar';
 const PopupExampleOffset = () => (
   <Grid
     styles={{
-      gridTemplateColumns: '1, 80px',
-      msGridColumns: '1, 80px',
+      gridTemplateColumns: '1fr 80px',
+      msGridColumns: '1fr 80px',
     }}
     variables={{ padding: '30px' }}
   >

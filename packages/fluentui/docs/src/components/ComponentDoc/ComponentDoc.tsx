@@ -210,6 +210,7 @@ class ComponentDoc extends React.Component<ComponentDocProps, ComponentDocState>
                   gridTemplateColumns: 'auto 300px',
                   msGridColumns: `auto 300px`,
                   justifyContent: 'normal',
+                  msFlexPack: 'normal',
                   justifyItems: 'stretch',
                 }}
               >
