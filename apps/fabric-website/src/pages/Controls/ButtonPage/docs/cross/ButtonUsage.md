@@ -14,7 +14,7 @@ Fluent UI React Native Buttons have default styling based on the Fluent UI Desig
 
 <img src="https://static2.sharepointonline.com/files/fabric-cdn-prod_20200511.001/fabric-website/images/controls/cross/Button/Default_button_macos.png"/>
 
-#### Default Button (macOS)
+#### Primary Button (macOS)
 
 <img src="https://static2.sharepointonline.com/files/fabric-cdn-prod_20200511.001/fabric-website/images/controls/cross/Button/Primary_button_macos.png"/>
 
