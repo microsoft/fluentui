@@ -10,4 +10,9 @@
 
 <img className="off" src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/android/updated/img_popupmenu_02_small_light.png?text=LightMode" />
 <img className="on" src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/android/updated/img_popupmenu_02_small_dark.png?text=DarkMode" />
+
+### Popup Menu with Check Boxes
+
+<img className="off" src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/android/updated/img_popupmenu_02_checkbox_light.png?text=LightMode" />
+<img className="on" src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/android/updated/img_popupmenu_02_checkbox_dark.png?text=DarkMode" />
 </DisplayToggle>

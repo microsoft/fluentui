@@ -7,7 +7,17 @@ These pickers let users quickly choose a date or time through a familiar popup a
 
 ### Date Picker
 
-<img className="off" src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/android/updated/img_datepicker_01_light.png?text=LightMode"/>
-<img className="on" src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/android/updated/img_datepicker_01_dark.png?text=DarkMode"/>
+<img className="off" src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/android/updated/img_dateandtime_01_datepicker_light.png?text=LightMode"/>
+<img className="on" src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/android/updated/img_dateandtime_01_datepicker_dark.png?text=DarkMode"/>
+
+### Time Picker
+
+<img className="off" src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/android/updated/img_dateandtime_03_timepicker_light.png?text=LightMode"/>
+<img className="on" src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/android/updated/img_dateandtime_03_timepicker_dark.png?text=DarkMode"/>
+
+### Range Picker for Dates
+
+<img className="off" src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/android/updated/img_dateandtime_02_rangepicker_light.png?text=LightMode"/>
+<img className="on" src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/android/updated/img_dateandtime_02_rangepicker_dark.png?text=DarkMode"/>
 <!-- prettier-ignore-end -->
 </DisplayToggle>
