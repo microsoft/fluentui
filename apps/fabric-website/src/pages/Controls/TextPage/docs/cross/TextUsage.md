@@ -1,4 +1,4 @@
-Fluent UI React Native Text has default styling based on the Fluent UI Design Language and typeramp. The font styles and typeramp are designed to look natural by default on each platform. To use predeined sizes that are aligned to the typeramp, you can specify the fontVariant prop to apply font styles to Text. This fontVariant pulls from the Fluent UI React Native theme loaded on the page. For more information on the Fluent UI typeramp, please see our typeramp documentation.
+Fluent UI React Native Text has default styling based on the Fluent UI Design Language and typeramp. The font styles and typeramp are designed to look natural by default on each platform. To use predefined sizes that are aligned to the typeramp, you can specify the variant prop to apply font styles to Text. This variant pulls from the Fluent UI React Native theme loaded on the page. For more information on the Fluent UI typeramp, please see our typeramp documentation.
 
 If you need to customize the fontFamily, fontSize, or fontWeight of your Text, you can do this by using the compose pattern. For more information on the compose pattern, please see our [compose documentation](https://github.com/microsoft/fluentui-react-native/blob/master/packages/framework/foundation-compose/README.md).
 
@@ -22,7 +22,7 @@ import React from "react";
 import { View } from "react-native";
 import { Text } from "@fluentui/react-native";
 
-const RedCaptionBold = Text.customize({ tokens: { variant: 'captionStandard', fontWeight: 'semiBold', color: '#ff0000' } });
+const RedCaptionSemiBold = Text.customize({ tokens: { variant: 'captionStandard', fontWeight: 'semiBold', color: '#ff0000' } });
 const ArialBlack = Text.customize({ tokens: { variant: 'heroLargeStandard', fontFamily: 'Arial Black' } });
 
 const App = () => {
@@ -31,7 +31,7 @@ const App = () => {
       <Text>Normal Text</Text>
       <Text variant="captionStandard">CaptionStandard</Text>
       <Text variant="secondaryStandard">SecondaryStandard</Text>
-      <RedCaptionBold>RedCaptionBold</RedCaptionBold>
+      <RedCaptionSemiBold>RedCaptionSemiBold</RedCaptionSemiBold>
       <ArialBlack>Arial Black</ArialBlack>
     </View>
   );
