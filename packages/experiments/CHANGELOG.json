@@ -2,6 +2,34 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Wed, 25 Mar 2020 12:19:53 GMT",
+      "tag": "@uifabric/experiments_v6.84.0",
+      "version": "6.84.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "updated all the usage of filetype icons that is utilizing the \"brand-icons\" folder (which is not recommended, fileicons should be pulled from the item-types folder set)",
+            "author": "caperez@microsoft.com",
+            "commit": "2de78f8df3e966432fcc39d3209573536801bc4e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 21 Feb 2020 12:19:15 GMT",
+      "tag": "@uifabric/experiments_v6.83.4",
+      "version": "6.83.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating snapshots.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "01167a8a185c67c11c236ac71d44f4d30e42ff15"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 12 Dec 2019 12:21:54 GMT",
       "tag": "@uifabric/experiments_v6.83.3",
       "version": "6.83.3",

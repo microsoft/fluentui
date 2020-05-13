@@ -136,6 +136,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
       'js',
       'json',
       'jsp',
+      'jsproj',
       'jsx',
       'l',
       'less',
@@ -326,6 +327,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   onetoc: {
     extensions: ['ms-one-stub', 'onetoc', 'onetoc2', 'onepkg'] // this icon represents a complete, logical notebook.
   },
+  pbiapp: {},
   pdf: {
     extensions: ['pdf']
   },
@@ -335,6 +337,8 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
       'bmp',
       'cr2',
       'crw',
+      'dcm',
+      'dcm30',
       'dcr',
       'dds',
       'dib',

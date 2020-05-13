@@ -32,7 +32,7 @@ export class ChicletBasicExample extends React.Component<{}, IChicletBasicExampl
         <Chiclet
           url={textFieldValue}
           title={'WordTest with a really long title that will wrap around to the second line but not the third line'}
-          image="https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/svg/docx_48x1.svg"
+          image="https://static2.sharepointonline.com/files/fabric/assets/item-types/48/docx.svg"
           itemType="docx"
           size={ChicletSize.medium}
         />

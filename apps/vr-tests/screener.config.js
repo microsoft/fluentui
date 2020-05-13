@@ -27,7 +27,7 @@ const baseBranch = process.env.SYSTEM_PULLREQUEST_TARGETBRANCH
   : '6.0';
 
 module.exports = {
-  projectRepo: 'OfficeDev/office-ui-fabric-react',
+  projectRepo: 'microsoft/fluentui',
   storybookConfigDir: '.storybook',
   apiKey: process.env.SCREENER_API_KEY,
   resolution: '1024x768',

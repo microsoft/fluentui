@@ -47,7 +47,7 @@
     "es6-weak-map": "^2.0.2",
     "highlight.js": "^9.12.0",
     "office-ui-fabric-core": "^9.0.0",
-    "office-ui-fabric-react": "^6.211.1",
+    "office-ui-fabric-react": "^6.213.0",
     "react": "~16.6.3",
     "react-dom": "~16.6.3",
     "react-highlight": "0.10.0",
@@ -67,7 +67,7 @@
     "@uifabric/set-version": "^1.1.3",
     "@uifabric/styling": "^6.50.7",
     "@uifabric/theme-samples": "^0.1.10",
-    "@uifabric/utilities": "^6.45.1",
+    "@uifabric/utilities": "^6.45.2",
     "@uifabric/variants": "^6.15.2",
     "prop-types": "^15.5.10",
     "tslib": "^1.7.1"

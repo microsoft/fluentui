@@ -51,8 +51,8 @@ steps:
   # - task: GithubPRComment@0
   #   displayName: 'Post Perf Results to Github Pull Request'
   #   inputs:
-  #     githubOwner: OfficeDev
-  #     githubRepo: 'office-ui-fabric-react'
+  #     githubOwner: microsoft
+  #     githubRepo: 'fluentui'
   #     blobFilePath: '$(Build.SourcesDirectory)/$(PerfCommentFilePath)'
   #     status: '$(PerfCommentStatus)'
   #     uniqueId: 'perfComment9423'
@@ -60,8 +60,8 @@ steps:
   - task: GithubPRStatus@0
     displayName: 'Update Github Pull Request Status'
     inputs:
-      githubOwner: OfficeDev
-      githubRepo: 'office-ui-fabric-react'
+      githubOwner: microsoft
+      githubRepo: 'fluentui'
       githubContext: 'Pull Request Deployed Site'
       githubDescription: 'Click "Details" to go to the Deployed Site'
       githubTargetLink: 'http://fabricweb.z5.web.core.windows.net/pr-deploy-site/$(Build.SourceBranch)/'
@@ -77,7 +77,7 @@ steps:
     displayName: publish sarif a11y reports
 
   - script: |
-      git config --global user.email "fabrictactical@microsoft.com"
+      git config --global user.email "fluentui-internal@microsoft.com"
       git config --global user.name "Fabric Tactical"
       npm run vrtest
     displayName: run VR Test

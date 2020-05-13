@@ -68,7 +68,7 @@ export class ChicletXsmallFooterExample extends React.Component<{}, IChicletXsma
         <Chiclet
           url={TEST_URL}
           title="Quarterly Results"
-          image="https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/svg/docx_48x1.svg"
+          image="https://static2.sharepointonline.com/files/fabric/assets/item-types/48/docx.svg"
           size={ChicletSize.xSmall}
           footer={footer}
         />

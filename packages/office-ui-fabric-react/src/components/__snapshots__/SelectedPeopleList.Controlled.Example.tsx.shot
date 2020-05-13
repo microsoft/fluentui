@@ -442,6 +442,7 @@ exports[`Component Examples renders SelectedPeopleList.Controlled.Example.tsx co
                           }
                       onBlurCapture={[Function]}
                       onFocusCapture={[Function]}
+                      onKeyDown={[Function]}
                       onMouseEnter={[Function]}
                       onMouseLeave={[Function]}
                     >

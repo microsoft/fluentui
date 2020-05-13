@@ -906,6 +906,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                     }
                 onBlurCapture={[Function]}
                 onFocusCapture={[Function]}
+                onKeyDown={[Function]}
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
               >
@@ -1373,6 +1374,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                     }
                 onBlurCapture={[Function]}
                 onFocusCapture={[Function]}
+                onKeyDown={[Function]}
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
               >
@@ -1524,6 +1526,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                     }
                 onBlurCapture={[Function]}
                 onFocusCapture={[Function]}
+                onKeyDown={[Function]}
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
               >

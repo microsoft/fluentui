@@ -17,10 +17,8 @@ module.exports = resources.createServeConfig({
 
   devServer: devServerConfig,
 
-  externals: {
-    react: 'React',
-    'react-dom': 'ReactDOM'
-  },
+  // The website config intentionally doesn't have React as an external because we bundle it
+  // to ensure we get a consistent version.
 
   resolve: {
     alias: {

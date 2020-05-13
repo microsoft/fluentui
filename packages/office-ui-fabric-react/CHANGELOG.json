@@ -2,6 +2,109 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 25 Mar 2020 12:19:53 GMT",
+      "tag": "office-ui-fabric-react_v6.213.0",
+      "version": "6.213.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "updated all the usage of filetype icons that is utilizing the \"brand-icons\" folder (which is not recommended, fileicons should be pulled from the item-types folder set)",
+            "author": "caperez@microsoft.com",
+            "commit": "2de78f8df3e966432fcc39d3209573536801bc4e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 12 Mar 2020 12:18:32 GMT",
+      "tag": "office-ui-fabric-react_v6.212.0",
+      "version": "6.212.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "withResponsiveMode: Add initializeResponsiveMode perf optimization to avoid unnecessary render",
+            "author": "KevinTCoughlin@users.noreply.github.com",
+            "commit": "e3c270fdb5a20549d0868c82df9d442c998f71db"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 06 Mar 2020 12:19:58 GMT",
+      "tag": "office-ui-fabric-react_v6.211.6",
+      "version": "6.211.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "MarqueeSelection: deleting html element references on unmount.",
+            "author": "xgao@microsoft.com",
+            "commit": "c895cd96849c18694135f5c7ee708fa6492a3e54"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 21 Feb 2020 12:19:15 GMT",
+      "tag": "office-ui-fabric-react_v6.211.5",
+      "version": "6.211.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Tooltip: Enable dismissing the Tooltip via pressing ESC key.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "163eff20c5426ab4999ad92eb833d6ecd7e65372"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Sat, 15 Feb 2020 05:32:42 GMT",
+      "tag": "office-ui-fabric-react_v6.211.4",
+      "version": "6.211.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "List: clearing scrollElement on unmount to avoid retaining an edge to a dom element and leaking.",
+            "author": "dzearing@microsoft.com",
+            "commit": "8a1f887f42f85fcbdbea98970b8751411b79954a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 07 Feb 2020 12:20:01 GMT",
+      "tag": "office-ui-fabric-react_v6.211.3",
+      "version": "6.211.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "MaskedTextField: Fixing focus capture on input in re-renders on IE11 and Edge.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "df03e220e37a8189bdf5391c381b031411b8c8fa"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 27 Jan 2020 00:02:37 GMT",
+      "tag": "office-ui-fabric-react_v6.211.2",
+      "version": "6.211.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "FocusZone: remove keydown listener correctly to avoid a leak with inner zones.",
+            "author": "dzearing@microsoft.com",
+            "commit": "37992c637e8071f70a85d23aee51da9f7cbbdf46"
+          },
+          {
+            "comment": "Button: Adding aria label to examples with SplitButtons.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "87aa8e47ffafffb34804389946283ee10f00495a"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 06 Jan 2020 12:22:35 GMT",
       "tag": "office-ui-fabric-react_v6.211.1",
       "version": "6.211.1",

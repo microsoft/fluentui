@@ -947,6 +947,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
           }
       onBlurCapture={[Function]}
       onFocusCapture={[Function]}
+      onKeyDown={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
     >

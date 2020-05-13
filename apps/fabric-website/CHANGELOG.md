@@ -1,7 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Wed, 04 Sep 2019 12:24:13 GMT and should not be manually modified.
+This log was last generated on Wed, 01 Apr 2020 22:52:26 GMT and should not be manually modified.
 
+## 6.19.8
+Wed, 01 Apr 2020 22:52:26 GMT
+
+### Patches
+
+- Have the website bundle React (elcraig@microsoft.com)
 ## 6.19.7
 Wed, 04 Sep 2019 12:24:13 GMT
 

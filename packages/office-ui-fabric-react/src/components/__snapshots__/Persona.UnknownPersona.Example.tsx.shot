@@ -140,6 +140,7 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
               }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
@@ -167,6 +168,7 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
               }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
@@ -339,6 +341,7 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
               }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
@@ -366,6 +369,7 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
               }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
@@ -394,6 +398,7 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
               }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >

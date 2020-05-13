@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "date": "Thu, 20 Feb 2020 12:18:55 GMT",
+      "tag": "@uifabric/utilities_v6.45.2",
+      "version": "6.45.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix memory leak caused by closure in scroll util",
+            "author": "xgao@microsoft.com",
+            "commit": "a47fd3ff5f3cd37c6af72b27142ee6279e429760"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 21 Nov 2019 12:23:13 GMT",
       "tag": "@uifabric/utilities_v6.45.1",
       "version": "6.45.1",

@@ -183,7 +183,7 @@ storiesOf('Tile', module)
         itemActivity={<SignalField before={<SharedSignal />}>{'Test Activity'}</SignalField>}
         foreground={
           <img
-            src={`https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/svg/docx_48x1.svg`}
+            src={`https://static2.sharepointonline.com/files/fabric/assets/item-types/48/docx.svg`}
             style={{
               display: 'block',
               width: '64px',

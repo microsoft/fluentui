@@ -1,7 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Thu, 21 Nov 2019 12:23:13 GMT and should not be manually modified.
+This log was last generated on Thu, 20 Feb 2020 12:18:55 GMT and should not be manually modified.
 
+## 6.45.2
+Thu, 20 Feb 2020 12:18:55 GMT
+
+### Patches
+
+- fix memory leak caused by closure in scroll util (xgao@microsoft.com)
 ## 6.45.1
 Thu, 21 Nov 2019 12:23:13 GMT
 

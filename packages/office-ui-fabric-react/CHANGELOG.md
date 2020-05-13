@@ -1,7 +1,50 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 06 Jan 2020 12:22:35 GMT and should not be manually modified.
+This log was last generated on Wed, 25 Mar 2020 12:19:53 GMT and should not be manually modified.
 
+## 6.213.0
+Wed, 25 Mar 2020 12:19:53 GMT
+
+### Minor changes
+
+- updated all the usage of filetype icons that is utilizing the "brand-icons" folder (which is not recommended, fileicons should be pulled from the item-types folder set) (caperez@microsoft.com)
+## 6.212.0
+Thu, 12 Mar 2020 12:18:32 GMT
+
+### Minor changes
+
+- withResponsiveMode: Add initializeResponsiveMode perf optimization to avoid unnecessary render (KevinTCoughlin@users.noreply.github.com)
+## 6.211.6
+Fri, 06 Mar 2020 12:19:58 GMT
+
+### Patches
+
+- MarqueeSelection: deleting html element references on unmount. (xgao@microsoft.com)
+## 6.211.5
+Fri, 21 Feb 2020 12:19:15 GMT
+
+### Patches
+
+- Tooltip: Enable dismissing the Tooltip via pressing ESC key. (Humberto.Morimoto@microsoft.com)
+## 6.211.4
+Sat, 15 Feb 2020 05:32:42 GMT
+
+### Patches
+
+- List: clearing scrollElement on unmount to avoid retaining an edge to a dom element and leaking. (dzearing@microsoft.com)
+## 6.211.3
+Fri, 07 Feb 2020 12:20:01 GMT
+
+### Patches
+
+- MaskedTextField: Fixing focus capture on input in re-renders on IE11 and Edge. (Humberto.Morimoto@microsoft.com)
+## 6.211.2
+Mon, 27 Jan 2020 00:02:37 GMT
+
+### Patches
+
+- FocusZone: remove keydown listener correctly to avoid a leak with inner zones. (dzearing@microsoft.com)
+- Button: Adding aria label to examples with SplitButtons. (Humberto.Morimoto@microsoft.com)
 ## 6.211.1
 Mon, 06 Jan 2020 12:22:35 GMT
 

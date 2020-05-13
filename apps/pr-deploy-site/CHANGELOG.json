@@ -1,0 +1,33 @@
+{
+  "name": "@uifabric/pr-deploy-site",
+  "entries": [
+    {
+      "date": "Wed, 25 Mar 2020 12:19:53 GMT",
+      "tag": "@uifabric/pr-deploy-site_v0.1.0",
+      "version": "0.1.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "updated all the usage of filetype icons that is utilizing the \"brand-icons\" folder (which is not recommended, fileicons should be pulled from the item-types folder set)",
+            "author": "caperez@microsoft.com",
+            "commit": "2de78f8df3e966432fcc39d3209573536801bc4e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 23 Mar 2020 12:20:43 GMT",
+      "tag": "@uifabric/pr-deploy-site_v0.0.2",
+      "version": "0.0.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update repo path",
+            "author": "elcraig@microsoft.com",
+            "commit": "e3e0e7ce2554a1ad7f605cf01ff348ac0d2c4310"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,7 +1,13 @@
 # Change Log - @uifabric/file-type-icons
 
-This log was last generated on Thu, 12 Dec 2019 12:21:54 GMT and should not be manually modified.
+This log was last generated on Wed, 25 Mar 2020 12:19:53 GMT and should not be manually modified.
 
+## 6.9.0
+Wed, 25 Mar 2020 12:19:53 GMT
+
+### Minor changes
+
+- updated all the usage of filetype icons that is utilizing the "brand-icons" folder (which is not recommended, fileicons should be pulled from the item-types folder set) (caperez@microsoft.com)
 ## 6.8.1
 Thu, 12 Dec 2019 12:21:54 GMT
 
