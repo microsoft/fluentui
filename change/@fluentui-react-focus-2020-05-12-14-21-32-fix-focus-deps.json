@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Adding `@fluentui/keyboard-key` as a dependency.",
+  "packageName": "@fluentui/react-focus",
+  "email": "dzearing@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-05-12T21:21:32.375Z"
+}

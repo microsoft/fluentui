@@ -1,8 +1,36 @@
 # Change Log - @fluentui/react-next
 
-This log was last generated on Thu, 07 May 2020 12:34:38 GMT and should not be manually modified.
+This log was last generated on Tue, 12 May 2020 23:23:51 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-alpha.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.17)
+
+Tue, 12 May 2020 23:23:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.15..@fluentui/react-next_v8.0.0-alpha.17)
+
+### Changes
+
+- Copying Link to react-next, in preparation for converting to function component. ([PR #13095](https://github.com/microsoft/fluentui/pull/13095) by czearing@outlook.com)
+
+## [8.0.0-alpha.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.15)
+
+Mon, 11 May 2020 12:36:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.14..@fluentui/react-next_v8.0.0-alpha.15)
+
+### Changes
+
+- Checkbox: convert base styles to scss ([PR #13014](https://github.com/microsoft/fluentui/pull/13014) by xgao@microsoft.com)
+
+## [8.0.0-alpha.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.14)
+
+Fri, 08 May 2020 12:35:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.13..@fluentui/react-next_v8.0.0-alpha.14)
+
+### Changes
+
+- Checkbox: fix high contrast styles in Edge Chromium ([PR #13035](https://github.com/microsoft/fluentui/pull/13035) by xgao@microsoft.com)
+- Copying OverflowSet to react-next, in preparation for converting to function component ([PR #13059](https://github.com/microsoft/fluentui/pull/13059) by czearing@outlook.com)
 
 ## [8.0.0-alpha.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.13)
 
