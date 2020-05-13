@@ -24,7 +24,7 @@ import {
   warnDeprecations,
   portalContainsElement,
   IPoint,
-  findScrollableParent,
+  findScrollableParent
 } from '../../Utilities';
 import { mergeStyles } from '@uifabric/merge-styles';
 
@@ -48,9 +48,9 @@ function getRootClass(): string {
       {
         selectors: {
           ':focus': {
-            outline: 'none',
-          },
-        },
+            outline: 'none'
+          }
+        }
       },
       focusZoneClass
     );
@@ -70,7 +70,7 @@ const ALLOW_VIRTUAL_ELEMENTS = false;
 export class FocusZone extends React.Component<IFocusZoneProps> implements IFocusZone {
   public static defaultProps: IFocusZoneProps = {
     isCircularNavigation: false,
-    direction: FocusZoneDirection.bidirectional,
+    direction: FocusZoneDirection.bidirectional
   };
 
   private _disposables: Function[] = [];
@@ -116,7 +116,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
         allowTabKey: 'handleTabKey',
         elementType: 'as',
         ariaDescribedBy: 'aria-describedby',
-        ariaLabelledBy: 'aria-labelledby',
+        ariaLabelledBy: 'aria-labelledby'
       });
     }
 
@@ -124,7 +124,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
 
     this._focusAlignment = {
       x: 0,
-      y: 0,
+      y: 0
     };
 
     this._processingTabKey = false;
@@ -1040,7 +1040,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
       if (!this._focusAlignment) {
         this._focusAlignment = {
           x: left,
-          y: top,
+          y: top
         };
       }
 
