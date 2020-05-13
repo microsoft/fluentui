@@ -14,6 +14,7 @@ export const UnifiedPeoplePicker = (props: IUnifiedPeoplePickerProps): JSX.Eleme
 
   // }, [props.floatingSuggestionProps.suggestions]);
 
+  console.log('something');
   const renderSelectedItems = (selectedPeopleListProps: ISelectedPeopleListProps<IPersonaProps>): JSX.Element => {
     return <SelectedPeopleList {...selectedPeopleListProps} ref={null} />;
   };

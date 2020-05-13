@@ -14,12 +14,7 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
   }, [props.selectedItems]);
 
   const removeItems = (itemsToRemove: TItem[]): void => {
-    const updatedItems: TItem[] = [...items];
-    itemsToRemove.forEach(item => {
-      const index: number = updatedItems.indexOf(item);
-      updatedItems.splice(index, 1);
-    });
-    updateItems(updatedItems);
+    updateItems(items.filter(item => itemsToRemove.indexOf(item) === -1));
     props.onItemsRemoved ? props.onItemsRemoved(itemsToRemove) : null;
   };
 
@@ -52,7 +47,7 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
           <SelectedItem
             item={item}
             index={index}
-            key={item.key !== undefined ? item.key : index}
+            key={item.key !== undefined ? item.key + '_' + index : index}
             selected={props.focusedItemIndices?.includes(index)}
             removeButtonAriaLabel={props.removeButtonAriaLabel}
             onRemoveItem={onRemoveItemCallbacks[index]}
