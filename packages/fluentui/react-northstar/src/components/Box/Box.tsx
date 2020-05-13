@@ -46,7 +46,7 @@ const Box: React.FC<WithAsProp<BoxProps>> & FluentComponentStaticProps<BoxProps>
   const unhandledProps = getUnhandledProps(Box.handledProps, props);
   const ElementType = getElementType(props);
 
-  const result = (
+  const result = getA11Props.unstable_wrapWithFocusZone(
     <ElementType
       {...getA11Props('root', {
         ...rtlTextContainer.getAttributes({ forElements: [children, content] }),
@@ -55,7 +55,7 @@ const Box: React.FC<WithAsProp<BoxProps>> & FluentComponentStaticProps<BoxProps>
       })}
     >
       {childrenExist(children) ? children : content}
-    </ElementType>
+    </ElementType>,
   );
 
   setEnd();
