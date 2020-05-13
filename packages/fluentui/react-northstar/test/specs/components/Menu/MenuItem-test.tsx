@@ -1,18 +1,29 @@
 import { Accessibility, menuItemAsToolbarButtonBehavior, tabBehavior } from '@fluentui/accessibility';
 import * as React from 'react';
 
-import { isConformant, handlesAccessibility, getRenderedAttribute } from 'test/specs/commonTests';
+import {
+  isConformant,
+  handlesAccessibility,
+  getRenderedAttribute,
+  implementsShorthandProp,
+} from 'test/specs/commonTests';
 import { mountWithProviderAndGetComponent } from 'test/utils';
 import MenuItem from 'src/components/Menu/MenuItem';
 import Box from 'src/components/Box/Box';
+import Menu from 'src/components/Menu/Menu';
 
 describe('MenuItem', () => {
   isConformant(MenuItem, {
+    constructorName: 'MenuItem',
     eventTargets: {
       onClick: '.ui-menu__item__wrapper',
     },
     wrapperComponent: Box,
     autoControlledProps: ['menuOpen'],
+  });
+  implementsShorthandProp(MenuItem)('menu', Menu, {
+    implementsPopper: true,
+    requiredProps: { active: true, menuOpen: true },
   });
 
   it('content renders as `li > a`', () => {
@@ -36,7 +47,6 @@ describe('MenuItem', () => {
     const menuItem = mountWithProviderAndGetComponent(MenuItem, <MenuItem>Home</MenuItem>)
       .find('.ui-menu__item__wrapper')
       .hostNodes();
-
     expect(menuItem.is('li')).toBe(true);
     expect(menuItem.childAt(0).exists()).toBe(false);
     expect(menuItem.text()).toBe('Home');

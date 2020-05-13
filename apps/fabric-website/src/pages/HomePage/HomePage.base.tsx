@@ -32,11 +32,10 @@ registerIcons({
   },
 });
 
-const fabricUsageIconBaseUrl =
-  'https://static2.sharepointonline.com/files/fabric/assets/brand-icons/product-fluent/svg/';
+const fabricUsageIconBaseUrl = 'https://static2.sharepointonline.com/files/fabric/assets/brand-icons/product/svg/';
 
 /**
- * List of App/Brand icon names that use UI Fabric.
+ * List of App/Brand icon names that use Fluent UI.
  */
 const fabricUsageIcons = [
   { src: fabricUsageIconBaseUrl + 'outlook_48x1.svg', title: 'Outlook' },
@@ -53,7 +52,7 @@ const CURRENT_VERSION = '7';
 const VERSIONS = ['7', '6', '5'];
 const fabricVersionOptions: IContextualMenuItem[] = VERSIONS.map(version => ({
   key: version,
-  text: 'Fabric ' + version,
+  text: `${Number(version) >= 7 ? 'Fluent UI React' : 'Fabric React'} ${version}`,
   checked: version === CURRENT_VERSION,
 }));
 
@@ -126,7 +125,7 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
           </div>
           <div className={this._classNames.oneFourth}>
             <p>
-              Together, we’ve created UI Fabric, a collection of UX frameworks you can use to build Fluent experiences
+              Together, we’ve created Fluent UI, a collection of UX frameworks you can use to build Fluent experiences
               that fit seamlessly into a broad range of Microsoft products.
             </p>
             <p>Connect with the cross-platform styles, controls and resources you need to do amazing things.</p>
@@ -190,7 +189,7 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
                   },
                 }}
               >
-                Fabric React {reactPackageData.version}
+                Fluent UI React {reactPackageData.version}
               </ActionButton>
             </Stack>
             <ul className={classNames.cardList}>
@@ -281,9 +280,10 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
       <section className={this._classNames.usageSection}>
         <div className={this._classNames.sectionContent}>
           <div className={this._classNames.oneFourth}>
-            <h2 className={this._classNames.usageTitle}>Who at Microsoft uses Fabric?</h2>
+            <h2 className={this._classNames.usageTitle}>Who at Microsoft uses Fluent UI?</h2>
             <p>
-              From Word, PowerPoint and Excel to PowerBI, many teams in Microsoft utilize the functionality of Fabric.
+              From Word, PowerPoint and Excel to PowerBI, many teams in Microsoft utilize the functionality of Fluent
+              UI.
             </p>
           </div>
           <div className={this._classNames.oneFourth} />

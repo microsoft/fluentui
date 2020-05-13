@@ -12,6 +12,9 @@ const resolvePath = (packageName, entryFileName = 'index.js') =>
 // Create entries for all top level fabric imports.
 const Entries = _buildEntries('office-ui-fabric-react');
 
+// Create entries for all top level fabric imports.
+_buildEntries('@fluentui/react-next', Entries);
+
 // Add entry for keyboard-key package.
 Entries['keyboard-key'] = resolvePath('@fluentui/keyboard-key');
 
@@ -63,8 +66,7 @@ module.exports = Object.keys(Entries).map(
 /**
  * Build webpack entries based on top level imports available in a package.
  */
-function _buildEntries(packageName) {
-  const entries = {};
+function _buildEntries(packageName, entries = {}) {
   let packagePath = '';
 
   try {
@@ -85,7 +87,7 @@ function _buildEntries(packageName) {
       // Replace commonjs paths with lib paths.
       const entryPath = path.join(packagePath, itemName);
 
-      entries[`${packageName}-${entryName}`] = entryPath;
+      entries[`${packageName.replace('@', '').replace('/', '-')}-${entryName}`] = entryPath;
     }
   });
 

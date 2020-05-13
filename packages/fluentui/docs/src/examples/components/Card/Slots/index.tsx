@@ -10,7 +10,11 @@ const Slots = () => (
       description="A card can contain a header slot."
       examplePath="components/Card/Slots/CardExampleHeader"
     />
-    <ComponentExample title="Body" description="A card can contain a body slot." examplePath="components/Card/Slots/CardExampleBody" />
+    <ComponentExample
+      title="Body"
+      description="A card can contain a body slot."
+      examplePath="components/Card/Slots/CardExampleBody"
+    />
     <ComponentExample
       title="Footer"
       description="A card can contain a footer slot."

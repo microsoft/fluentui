@@ -2,9 +2,7 @@
 
 exports[`PeoplePicker renders correctly 1`] = `
 <div
-  className=
-      ms-BasePicker
-
+  className="ms-BasePicker"
   onBlur={[Function]}
   onKeyDown={[Function]}
 >
@@ -103,9 +101,7 @@ exports[`PeoplePicker renders correctly 1`] = `
 
 exports[`PeoplePicker renders correctly with preselected items 1`] = `
 <div
-  className=
-      ms-BasePicker
-
+  className="ms-BasePicker"
   onBlur={[Function]}
   onKeyDown={[Function]}
 >

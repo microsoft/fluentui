@@ -42,9 +42,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
       role="grid"
     >
       <div
-        className=
-            ms-DetailsList-headerWrapper
-
+        className="ms-DetailsList-headerWrapper"
         onKeyDown={[Function]}
         role="presentation"
       >
@@ -142,9 +140,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
             role="columnheader"
           >
             <span
-              className=
-                  ms-DetailsHeader-checkTooltip
-
+              className="ms-DetailsHeader-checkTooltip"
             >
               <div
                 aria-checked={false}
@@ -339,9 +335,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
         </div>
       </div>
       <div
-        className=
-            ms-DetailsList-contentWrapper
-
+        className="ms-DetailsList-contentWrapper"
         onKeyDown={[Function]}
         role="presentation"
       >
@@ -441,6 +435,9 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                                       transparent 100%)
                                                     0 0 / 90% 100%
                                                     no-repeat;
+                            }
+                            @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                              forced-color-adjust: none;
                             }
                         style={
                           Object {
@@ -626,6 +623,9 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                                     0 0 / 90% 100%
                                                     no-repeat;
                             }
+                            @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                              forced-color-adjust: none;
+                            }
                         style={
                           Object {
                             "width": "100%",
@@ -809,6 +809,9 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                                       transparent 100%)
                                                     0 0 / 90% 100%
                                                     no-repeat;
+                            }
+                            @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                              forced-color-adjust: none;
                             }
                         style={
                           Object {
@@ -994,6 +997,9 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                                     0 0 / 90% 100%
                                                     no-repeat;
                             }
+                            @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                              forced-color-adjust: none;
+                            }
                         style={
                           Object {
                             "width": "100%",
@@ -1177,6 +1183,9 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                                       transparent 100%)
                                                     0 0 / 90% 100%
                                                     no-repeat;
+                            }
+                            @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                              forced-color-adjust: none;
                             }
                         style={
                           Object {
@@ -1362,6 +1371,9 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                                     0 0 / 90% 100%
                                                     no-repeat;
                             }
+                            @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                              forced-color-adjust: none;
+                            }
                         style={
                           Object {
                             "width": "100%",
@@ -1545,6 +1557,9 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                                       transparent 100%)
                                                     0 0 / 90% 100%
                                                     no-repeat;
+                            }
+                            @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                              forced-color-adjust: none;
                             }
                         style={
                           Object {
@@ -1730,6 +1745,9 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                                     0 0 / 90% 100%
                                                     no-repeat;
                             }
+                            @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                              forced-color-adjust: none;
+                            }
                         style={
                           Object {
                             "width": "100%",
@@ -1914,6 +1932,9 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                                     0 0 / 90% 100%
                                                     no-repeat;
                             }
+                            @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                              forced-color-adjust: none;
+                            }
                         style={
                           Object {
                             "width": "100%",
@@ -2097,6 +2118,9 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                                       transparent 100%)
                                                     0 0 / 90% 100%
                                                     no-repeat;
+                            }
+                            @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                              forced-color-adjust: none;
                             }
                         style={
                           Object {

@@ -1,9 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly 1`] = `
-<div
-  className="docs-DatePickerExample"
->
+<div>
   <div
     className=
         ms-DatePicker
@@ -58,9 +56,7 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
             }
       >
         <div
-          className=
-              ms-TextField-wrapper
-
+          className="ms-TextField-wrapper"
         >
           <div
             className=
@@ -360,7 +356,7 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
         aria-atomic={true}
         aria-invalid={false}
         aria-live="polite"
-        aria-posinset={2}
+        aria-posinset={1}
         aria-selected={true}
         aria-setsize={7}
         className=
@@ -393,7 +389,7 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
         id="Dropdown5-option"
         role="option"
       >
-        Monday
+        Sunday
       </span>
       <span
         className=

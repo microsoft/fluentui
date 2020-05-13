@@ -1,9 +1,10 @@
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import { Icon, HierarchicalTree } from '@fluentui/react-northstar';
+import { HierarchicalTree } from '@fluentui/react-northstar';
 
 import { examplePathToHash } from '../../../utils';
+import { ArrowDownIcon } from '@fluentui/react-icons-northstar';
 
 export default class ComponentSidebarSection extends React.PureComponent<any, any> {
   static propTypes = {
@@ -99,7 +100,7 @@ export default class ComponentSidebarSection extends React.PureComponent<any, an
         onClick={this.handleTitleClick}
       >
         <span>{content}</span>
-        {hasSubtree && <Icon name="arrow-down" />}
+        {hasSubtree && <ArrowDownIcon />}
       </Component>
     );
 

@@ -221,7 +221,7 @@ exports[`Component Examples renders FocusTrapZone.Box.FocusOnCustomElement.Examp
             text-overflow: ellipsis;
           }
           & > *:not(:first-child) {
-            margin-top: 15px;
+            margin-top: 8px;
           }
           & > *:not(.ms-StackItem) {
             flex-shrink: 1;
@@ -421,9 +421,7 @@ exports[`Component Examples renders FocusTrapZone.Box.FocusOnCustomElement.Examp
             }
       >
         <div
-          className=
-              ms-TextField-wrapper
-
+          className="ms-TextField-wrapper"
         >
           <label
             className=

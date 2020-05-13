@@ -1,11 +1,9 @@
 import { pxToRem } from '../../../../utils';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { MenuProps, MenuState } from '../../../../components/Menu/Menu';
+import { MenuStylesProps } from '../../../../components/Menu/Menu';
 import { MenuVariables } from './menuVariables';
 import { verticalPillsBottomMargin, horizontalPillsRightMargin, verticalPointingBottomMargin } from './menuItemStyles';
 import { getColorScheme } from '../../colors';
-
-type MenuPropsAndState = MenuProps & MenuState;
 
 export default {
   root: ({ props: p, variables: v }): ICSSInJSStyle => {
@@ -58,4 +56,4 @@ export default {
         : { margin: `0 ${horizontalPillsRightMargin} 0 0` }),
     }),
   }),
-} as ComponentSlotStylesPrepared<MenuPropsAndState, MenuVariables>;
+} as ComponentSlotStylesPrepared<MenuStylesProps, MenuVariables>;

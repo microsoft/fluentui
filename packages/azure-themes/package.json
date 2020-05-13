@@ -1,7 +1,7 @@
 {
   "name": "@uifabric/azure-themes",
-  "version": "7.0.49",
-  "description": "Azure themes for Office UI Components",
+  "version": "7.1.8",
+  "description": "Azure themes for Fluent UI React",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -24,12 +24,12 @@
   },
   "devDependencies": {
     "@uifabric/build": "^7.0.0",
-    "@uifabric/tslint-rules": "^7.1.1"
+    "@uifabric/tslint-rules": "^7.2.1"
   },
   "dependencies": {
-    "@uifabric/merge-styles": "^7.8.9",
-    "@uifabric/set-version": "^7.0.8",
-    "office-ui-fabric-react": "^7.105.2",
+    "@uifabric/merge-styles": "^7.12.0",
+    "@uifabric/set-version": "^7.0.12",
+    "office-ui-fabric-react": "^7.113.1",
     "tslib": "^1.10.0"
   }
 }

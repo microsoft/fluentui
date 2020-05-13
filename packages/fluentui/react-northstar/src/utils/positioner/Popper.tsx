@@ -1,13 +1,14 @@
 import { useIsomorphicLayoutEffect } from '@fluentui/react-bindings';
 import { Ref, isRefObject } from '@fluentui/react-component-ref';
+import * as PopperJs from '@popperjs/core';
 import * as _ from 'lodash';
-import PopperJS, * as _PopperJS from 'popper.js';
 import * as React from 'react';
 
 import isBrowser from '../isBrowser';
+import getBoundary from './getBoundary';
 import getScrollParent from './getScrollParent';
 import { getPlacement, applyRtlToOffset } from './positioningHelper';
-import { PopperProps } from './types';
+import { PopperModifiers, PopperProps } from './types';
 
 /**
  * Memoize a result using deep equality. This hook has two advantages over
@@ -28,35 +29,6 @@ function useDeepMemo<TKey, TValue>(memoFn: () => TValue, key: TKey): TValue {
   return ref.current.value;
 }
 
-// `popper.js` has a UMD build without `.default`, it breaks CJS builds:
-// https://github.com/rollup/rollup/issues/1267#issuecomment-446681320
-const createPopper = (
-  reference: Element | _PopperJS.ReferenceObject,
-  popper: HTMLElement,
-  options?: PopperJS.PopperOptions,
-): PopperJS => {
-  const instance = new ((_PopperJS as any).default || _PopperJS)(reference, popper, {
-    ...options,
-    eventsEnabled: false,
-  });
-
-  const originalUpdate = instance.update;
-  instance.update = () => {
-    // Fix Popper.js initial positioning display issue
-    // https://github.com/popperjs/popper.js/issues/457#issuecomment-367692177
-    popper.style.left = '0';
-    popper.style.top = '0';
-
-    originalUpdate();
-  };
-
-  const actualWindow = popper.ownerDocument.defaultView;
-  instance.scheduleUpdate = () => actualWindow.requestAnimationFrame(instance.update);
-  instance.enableEventListeners();
-
-  return instance;
-};
-
 /**
  * Popper relies on the 3rd party library [Popper.js](https://github.com/FezVrasta/popper.js) for positioning.
  */
@@ -65,8 +37,10 @@ const Popper: React.FunctionComponent<PopperProps> = props => {
     align,
     children,
     enabled,
+    flipBoundary,
     modifiers: userModifiers,
     offset,
+    overflowBoundary,
     pointerTargetRef,
     position,
     positionFixed,
@@ -78,140 +52,131 @@ const Popper: React.FunctionComponent<PopperProps> = props => {
 
   const proposedPlacement = getPlacement({ align, position, rtl });
 
-  const popperRef = React.useRef<PopperJS>();
+  const popperRef = React.useRef<PopperJs.Instance>();
   const contentRef = React.useRef<HTMLElement>(null);
 
-  const latestPlacement = React.useRef<PopperJS.Placement>(proposedPlacement);
-  const [computedPlacement, setComputedPlacement] = React.useState<PopperJS.Placement>(proposedPlacement);
+  const latestPlacement = React.useRef<PopperJs.Placement>(proposedPlacement);
+  const [computedPlacement, setComputedPlacement] = React.useState<PopperJs.Placement>(proposedPlacement);
 
-  const hasDocument = isBrowser();
-  const hasScrollableElement = React.useMemo(() => {
-    if (hasDocument) {
-      const scrollParentElement = getScrollParent(contentRef.current);
-
-      return scrollParentElement !== scrollParentElement.ownerDocument.body;
-    }
-
-    return false;
-  }, [contentRef, hasDocument]);
-  // Is a broken dependency and can cause potential bugs, we should rethink this as all other refs
-  // in this component.
-
-  const computedModifiers: PopperJS.Modifiers = useDeepMemo(
-    () =>
-      _.merge(
-        /**
-         * This prevents blurrines in chrome, when the coordinates are odd numbers alternative
-         * would be to use `fn` and manipulate the computed style or ask popper to fix it but
-         * since there is presumably only handful of poppers displayed on the page, the
-         * performance impact should be minimal.
-         */
-        { computeStyle: { gpuAcceleration: false } },
-
-        { flip: { padding: 0, flipVariationsByContent: true } },
-        { preventOverflow: { padding: 0 } },
-
-        offset && {
-          offset: { offset: rtl ? applyRtlToOffset(offset, position) : offset },
-          keepTogether: { enabled: false },
-        },
-
-        /**
-         * When the popper box is placed in the context of a scrollable element, we need to set
-         * preventOverflow.escapeWithReference to true and flip.boundariesElement to 'scrollParent'
-         * (default is 'viewport') so that the popper box will stick with the targetRef when we
-         * scroll targetRef out of the viewport.
-         */
-        hasScrollableElement && {
-          preventOverflow: { escapeWithReference: true },
-          flip: { boundariesElement: 'scrollParent' },
-        },
-
-        userModifiers,
-
-        /**
-         * unstable_pinned disables the flip modifier by setting flip.enabled to false; this
-         * disables automatic repositioning of the popper box; it will always be placed according to
-         * the values of `align` and `position` props, regardless of the size of the component, the
-         * reference element or the viewport.
-         */
-        unstable_pinned && { flip: { enabled: false } },
-      ),
-    [hasScrollableElement, position, offset, rtl, unstable_pinned, userModifiers],
+  const computedModifiers = useDeepMemo<any, PopperModifiers>(
+    () => [
+      offset && {
+        name: 'offset',
+        options: { offset: rtl ? applyRtlToOffset(offset) : offset },
+      },
+      ...userModifiers,
+    ],
+    [offset, flipBoundary, overflowBoundary, userModifiers],
   );
 
-  const scheduleUpdate = React.useCallback(() => {
-    if (popperRef.current) {
-      popperRef.current.scheduleUpdate();
-    }
-  }, []);
-
-  const destroyInstance = React.useCallback(() => {
-    if (popperRef.current) {
-      popperRef.current.destroy();
-      if (popperRef.current.popper) {
-        // Popper keeps a reference to the DOM node, which needs to be cleaned up
-        // temporarily fix it here until fixed properly in popper
-        popperRef.current.popper = null;
-      }
-      popperRef.current = null;
-    }
-  }, []);
-
   const createInstance = React.useCallback(() => {
-    destroyInstance();
-
-    const reference =
+    const reference: Element | PopperJs.VirtualElement =
       targetRef && isRefObject(targetRef)
         ? (targetRef as React.RefObject<Element>).current
-        : (targetRef as _PopperJS.ReferenceObject);
+        : (targetRef as PopperJs.VirtualElement);
 
     if (!enabled || !reference || !contentRef.current) {
       return;
     }
 
-    const hasPointer = !!(pointerTargetRef && pointerTargetRef.current);
-    const handleUpdate = (data: PopperJS.Data) => {
+    const handleUpdate = ({ state }: { state: Partial<PopperJs.State> }) => {
       // PopperJS performs computations that might update the computed placement: auto positioning, flipping the
       // placement in case the popper box should be rendered at the edge of the viewport and does not fit
-      if (data.placement !== latestPlacement.current) {
-        latestPlacement.current = data.placement;
-        setComputedPlacement(data.placement);
+      if (state.placement !== latestPlacement.current) {
+        latestPlacement.current = state.placement;
+        setComputedPlacement(state.placement);
       }
     };
 
-    const options: PopperJS.PopperOptions = {
+    const hasDocument = isBrowser();
+    const scrollParentElement: Node | null = hasDocument ? getScrollParent(contentRef.current) : null;
+
+    const hasScrollableElement = scrollParentElement
+      ? scrollParentElement !== scrollParentElement.ownerDocument.body
+      : false;
+    const hasPointer = !!(pointerTargetRef && pointerTargetRef.current);
+
+    const modifiers: PopperModifiers = [
+      { name: 'flip', options: { flipVariations: true } },
+
+      /**
+       * unstable_pinned disables the flip modifier by setting flip.enabled to false; this
+       * disables automatic repositioning of the popper box; it will always be placed according to
+       * the values of `align` and `position` props, regardless of the size of the component, the
+       * reference element or the viewport.
+       */
+      unstable_pinned && { name: 'flip', enabled: false },
+
+      /**
+       * When the popper box is placed in the context of a scrollable element, we need to set
+       * preventOverflow.escapeWithReference to true and flip.boundariesElement to 'scrollParent'
+       * (default is 'viewport') so that the popper box will stick with the targetRef when we
+       * scroll targetRef out of the viewport.
+       */
+      hasScrollableElement && { name: 'flip', options: { boundary: 'clippingParents' } },
+      hasScrollableElement && { name: 'preventOverflow', options: { boundary: 'clippingParents' } },
+    ];
+
+    const options: PopperJs.Options = {
       placement: proposedPlacement,
-      positionFixed,
-      modifiers: {
+      strategy: positionFixed ? 'fixed' : 'absolute',
+      modifiers: [
+        ...(modifiers as PopperJs.Options['modifiers']),
+
         ...computedModifiers,
 
         /**
          * This modifier is necessary in order to render the pointer. Refs are resolved in effects, so it can't be
          * placed under computed modifiers. Deep merge is not required as this modifier has only these properties.
-         * `arrow` modifier also requires `keepTogether`.
          */
-        keepTogether: { enabled: hasPointer },
-        arrow: {
+        {
+          name: 'arrow',
           enabled: hasPointer,
-          element: pointerTargetRef && pointerTargetRef.current,
+          options: {
+            element: pointerTargetRef && pointerTargetRef.current,
+          },
         },
-      },
-      onCreate: handleUpdate,
-      onUpdate: handleUpdate,
+
+        flipBoundary && {
+          name: 'flip',
+          options: {
+            altBoundary: true,
+            boundary: getBoundary(contentRef.current, flipBoundary),
+          },
+        },
+        overflowBoundary && {
+          name: 'preventOverflow',
+          options: {
+            altBoundary: true,
+            boundary: getBoundary(contentRef.current, overflowBoundary),
+          },
+        },
+
+        {
+          name: 'onUpdate',
+          enabled: true,
+          phase: 'afterWrite' as PopperJs.ModifierPhases,
+          fn: handleUpdate,
+        },
+      ].filter(Boolean),
+      onFirstUpdate: state => handleUpdate({ state }),
     };
 
-    popperRef.current = createPopper(reference, contentRef.current, options);
-  }, [
-    // TODO review dependencies for popperHasScrollableParent
-    enabled,
-    computedModifiers,
-    pointerTargetRef,
-    positionFixed,
-    proposedPlacement,
-    targetRef,
-    unstable_pinned,
-  ]);
+    popperRef.current = PopperJs.createPopper(reference, contentRef.current, options);
+  }, [contentRef, computedModifiers, enabled, pointerTargetRef, positionFixed, proposedPlacement, targetRef]);
+
+  const destroyInstance = React.useCallback(() => {
+    if (popperRef.current) {
+      popperRef.current.destroy();
+      popperRef.current = null;
+    }
+  }, []);
+
+  const scheduleUpdate = React.useCallback(() => {
+    if (popperRef.current) {
+      popperRef.current.update();
+    }
+  }, []);
 
   useIsomorphicLayoutEffect(() => {
     createInstance();
@@ -230,6 +195,7 @@ const Popper: React.FunctionComponent<PopperProps> = props => {
 
 Popper.defaultProps = {
   enabled: true,
+  modifiers: [],
   positionFixed: false,
   positioningDependencies: [],
 };

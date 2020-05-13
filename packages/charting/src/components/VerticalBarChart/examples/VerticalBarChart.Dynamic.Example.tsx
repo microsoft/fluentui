@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { VerticalBarChart, IVerticalBarChartProps } from '@uifabric/charting/lib/VerticalBarChart';
-import { IDataPoint } from '@uifabric/charting/lib/types/IDataPoint';
+import { VerticalBarChart, IVerticalBarChartProps, IDataPoint } from '@uifabric/charting';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 

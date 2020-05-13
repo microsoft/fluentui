@@ -1,69 +1,204 @@
 import { ICSSInJSStyle } from '@fluentui/styles';
-import Popper from 'popper.js';
+import * as PopperJs from '@popperjs/core';
 
-import { PopperChildrenProps } from '../../utils/positioner';
-
-const rtlMapping = {
-  left: 'right',
-  right: 'left',
+type GetContainerStylesOptions = {
+  padding: string;
+  placement: PopperJs.BasePlacement;
 };
 
-const getPointerStyles = (
-  pointerOffset: string,
-  pointerGap: string,
-  pointerMargin: string,
-  rtl: boolean,
-  popperPlacement?: PopperChildrenProps['placement'],
-  isSvg?: boolean,
-) => {
-  const placementValue = (popperPlacement || '').split('-', 1).pop();
-  const placement = (rtl && rtlMapping[placementValue]) || placementValue;
+type GetPointerStylesOptions = {
+  backgroundColor: string;
+  borderColor: string;
+  borderSize: string;
 
-  const rootStyles: Record<Popper.Position, ICSSInJSStyle> = {
-    top: {
-      marginBottom: pointerMargin,
-    },
-    right: {
-      marginLeft: pointerMargin,
-    },
-    bottom: {
-      marginTop: pointerMargin,
-    },
-    left: {
-      marginRight: pointerMargin,
-    },
-  };
-  const pointerStyles: Record<Popper.Position, ICSSInJSStyle> = {
-    top: {
-      bottom: `-${pointerOffset}`,
-      marginLeft: pointerGap,
-      marginRight: pointerGap,
-      transform: isSvg ? `rotate(${rtl ? 90 : -90}deg)` : 'rotate(45deg)',
-    },
-    right: {
-      left: `-${pointerOffset}`,
-      marginBottom: pointerGap,
-      marginTop: pointerGap,
-      transform: isSvg ? `rotate(${rtl ? 180 : 0}deg)` : 'rotate(135deg)',
-    },
-    bottom: {
-      top: `-${pointerOffset}`,
-      marginLeft: pointerGap,
-      marginRight: pointerGap,
-      transform: isSvg ? `rotate(${rtl ? -90 : 90}deg)` : 'rotate(-135deg)',
-    },
-    left: {
-      right: `-${pointerOffset}`,
-      marginBottom: pointerGap,
-      marginTop: pointerGap,
-      transform: isSvg ? `rotate(${rtl ? 0 : 180}deg)` : 'rotate(-45deg)',
-    },
-  };
+  gap: string;
+  padding: string;
+  height: string;
+  width: string;
+
+  placement: PopperJs.BasePlacement;
+  rtl: boolean;
+  svg?: string;
+};
+
+export const getContainerStyles = (options: GetContainerStylesOptions): ICSSInJSStyle => {
+  const { padding, placement } = options;
 
   return {
-    root: rootStyles[placement],
-    pointer: pointerStyles[placement],
+    ...(placement === 'bottom' && {
+      paddingTop: padding,
+    }),
+    ...(placement === 'top' && {
+      paddingBottom: padding,
+    }),
+    ...(placement === 'left' && {
+      paddingRight: padding,
+    }),
+    ...(placement === 'right' && {
+      paddingLeft: padding,
+    }),
   };
 };
 
-export default getPointerStyles;
+export const getPointerStyles = (options: GetPointerStylesOptions): ICSSInJSStyle => {
+  const { backgroundColor, borderColor, borderSize, gap, height, padding, placement, rtl, svg, width } = options;
+
+  return {
+    display: 'block',
+    position: 'absolute',
+    zIndex: 1,
+
+    ...((placement === 'bottom' || placement === 'top') && {
+      paddingLeft: gap,
+      paddingRight: gap,
+
+      height,
+      width: `calc(${width} + (${gap} * 2))`,
+    }),
+    ...((placement === 'left' || placement === 'right') && {
+      paddingBottom: gap,
+      paddingTop: gap,
+
+      height: `calc(${width} + (${gap} * 2))`,
+      width: height,
+    }),
+
+    ...(placement === 'bottom' && {
+      top: `calc(${padding} - ${height} + (${borderSize} * 2))`,
+    }),
+    ...(placement === 'top' && {
+      bottom: `calc(${padding} - ${height} + ${borderSize})`,
+    }),
+
+    ...(placement === 'left' && {
+      right: `calc(${padding} - ${height} + ${borderSize})`,
+    }),
+    ...(placement === 'right' && {
+      left: `calc(${padding} - ${height} + ${borderSize})`,
+    }),
+
+    '::before': {
+      content: '" "',
+      display: 'block',
+      height,
+      position: 'relative',
+      transformOrigin: 'center top',
+
+      borderBottomColor: 'transparent',
+      borderLeftColor: 'transparent',
+      borderRightColor: 'transparent',
+      borderTopColor: 'transparent',
+      borderStyle: 'solid',
+
+      left: 0,
+      top: 0,
+
+      ...(placement === 'bottom' && {
+        borderBottomColor: backgroundColor,
+        borderWidth: `0 ${height} ${height}`,
+      }),
+      ...(placement === 'top' && {
+        borderTopColor: backgroundColor,
+        borderWidth: `${height} ${height} 0`,
+
+        top: `calc(${borderSize} * -1)`,
+      }),
+      ...(placement === 'left' && {
+        borderLeftColor: backgroundColor,
+        borderWidth: `${height} 0 ${height} ${height}`,
+      }),
+      ...(placement === 'right' && {
+        borderRightColor: backgroundColor,
+        borderWidth: `${height} ${height} ${height} 0`,
+      }),
+    },
+
+    '::after': {
+      content: '" "',
+      display: 'block',
+      height,
+      position: 'relative',
+      transformOrigin: 'center top',
+      zIndex: -1,
+
+      borderBottomColor: 'transparent',
+      borderLeftColor: 'transparent',
+      borderRightColor: 'transparent',
+      borderTopColor: 'transparent',
+      borderStyle: 'solid',
+
+      ...(placement === 'bottom' && {
+        borderBottomColor: borderColor,
+        borderWidth: `0 ${height} ${height}`,
+
+        left: 0,
+        bottom: `calc(${height} + 1px)`,
+      }),
+      ...(placement === 'top' && {
+        borderTopColor: borderColor,
+        borderWidth: `${height} ${height} 0`,
+
+        left: 0,
+        bottom: height,
+      }),
+      ...(placement === 'left' && {
+        borderLeftColor: borderColor,
+        borderWidth: `${height} 0 ${height} ${height}`,
+
+        left: borderSize,
+        bottom: width,
+      }),
+      ...(placement === 'right' && {
+        borderRightColor: borderColor,
+        borderWidth: `${height} ${height} ${height} 0`,
+
+        right: borderSize,
+        bottom: width,
+      }),
+    },
+
+    ...(svg && {
+      // :before & :after are used to draw CSS triangles, not valid for SVG
+      '::before': {
+        content: '" "',
+        backgroundImage: svg,
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center',
+        display: 'block',
+        position: 'relative',
+
+        ...(placement === 'bottom' && {
+          height: `calc(${width} + (${gap} * 2))`,
+          width: height,
+
+          left: gap,
+          bottom: `calc(${width} - ${height} + ${borderSize})`,
+          transform: `rotate(${rtl ? -90 : 90}deg)`,
+        }),
+        ...(placement === 'top' && {
+          height: `calc(${width} + (${gap} * 2))`,
+          width: height,
+
+          left: gap,
+          bottom: `calc(${gap} + ${height} - ${borderSize})`,
+          transform: `rotate(${rtl ? 90 : -90}deg)`,
+        }),
+        ...(placement === 'left' && {
+          height: width,
+          width: height,
+
+          left: 0,
+          transform: `rotate(${rtl ? 0 : 180}deg)`,
+        }),
+        ...(placement === 'right' && {
+          height: width,
+          width: height,
+
+          right: 0,
+          transform: `rotate(${rtl ? 180 : 0}deg)`,
+        }),
+      },
+      '::after': undefined,
+    }),
+  };
+};

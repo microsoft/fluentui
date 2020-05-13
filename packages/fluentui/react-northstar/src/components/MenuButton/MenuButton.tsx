@@ -93,6 +93,11 @@ export interface MenuButtonState {
   triggerId: string;
 }
 
+export const menuButtonClassName = 'ui-menubutton';
+export const menuButtonSlotClassNames: MenuButtonSlotClassNames = {
+  menu: `${menuButtonClassName}__menu`,
+};
+
 /**
  * A MenuButton displays a menu connected to trigger element.
  * @accessibility
@@ -100,13 +105,9 @@ export interface MenuButtonState {
 export default class MenuButton extends AutoControlledComponent<MenuButtonProps, MenuButtonState> {
   static displayName = 'MenuButton';
 
-  static className = 'ui-menubutton';
+  static deprecated_className = menuButtonClassName;
 
   static create: ShorthandFactory<MenuButtonProps>;
-
-  static slotClassNames: MenuButtonSlotClassNames = {
-    menu: `${MenuButton.className}__menu`,
-  };
 
   static propTypes = {
     ...commonPropTypes.createCommon({
@@ -117,16 +118,30 @@ export default class MenuButton extends AutoControlledComponent<MenuButtonProps,
     defaultOpen: PropTypes.bool,
     mountNode: customPropTypes.domNode,
     mouseLeaveDelay: PropTypes.number,
-    offset: PropTypes.string,
+    offset: PropTypes.oneOfType([
+      PropTypes.func,
+      PropTypes.arrayOf(PropTypes.number) as PropTypes.Requireable<[number, number]>,
+    ]),
     on: PropTypes.oneOfType([
       PropTypes.oneOf(['hover', 'click', 'focus', 'context']),
       PropTypes.arrayOf(PropTypes.oneOf(['click', 'focus', 'context'])),
       PropTypes.arrayOf(PropTypes.oneOf(['hover', 'focus', 'context'])),
     ]),
+    flipBoundary: PropTypes.oneOfType([
+      PropTypes.object as PropTypes.Requireable<HTMLElement>,
+      PropTypes.arrayOf(PropTypes.object) as PropTypes.Requireable<HTMLElement[]>,
+      PropTypes.oneOf<'clippingParents' | 'window' | 'scrollParent'>(['clippingParents', 'window', 'scrollParent']),
+    ]),
+    overflowBoundary: PropTypes.oneOfType([
+      PropTypes.object as PropTypes.Requireable<HTMLElement>,
+      PropTypes.arrayOf(PropTypes.object) as PropTypes.Requireable<HTMLElement[]>,
+      PropTypes.oneOf<'clippingParents' | 'window' | 'scrollParent'>(['clippingParents', 'window', 'scrollParent']),
+    ]),
     open: PropTypes.bool,
     onMenuItemClick: PropTypes.func,
     onOpenChange: PropTypes.func,
     position: PropTypes.oneOf(POSITIONS),
+    positionFixed: PropTypes.bool,
     target: PropTypes.any,
     trigger: customPropTypes.every([customPropTypes.disallow(['children']), PropTypes.any]),
     tabbableTrigger: PropTypes.bool,
@@ -203,14 +218,17 @@ export default class MenuButton extends AutoControlledComponent<MenuButtonProps,
       align,
       className,
       defaultOpen,
+      flipBoundary,
       mountNode,
       mouseLeaveDelay,
       offset,
       on,
       onOpenChange,
       open,
+      overflowBoundary,
       pointing,
       position,
+      positionFixed,
       tabbableTrigger,
       styles: stylesProp,
       target,
@@ -226,12 +244,15 @@ export default class MenuButton extends AutoControlledComponent<MenuButtonProps,
       defaultOpen,
       mountNode,
       mouseLeaveDelay,
+      flipBoundary,
       offset,
       on,
       onOpenChange,
       open,
+      overflowBoundary,
       pointing,
       position,
+      positionFixed,
       tabbableTrigger,
       styles: stylesProp,
       target,
@@ -244,6 +265,7 @@ export default class MenuButton extends AutoControlledComponent<MenuButtonProps,
       defaultProps: () => ({
         ...accessibility.attributes.menu,
         vertical: true,
+        className: menuButtonSlotClassNames.menu,
       }),
       overrideProps: this.handleMenuOverrides,
     });

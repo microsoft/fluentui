@@ -1,8 +1,8 @@
 import { TextAreaVariables } from './textAreaVariables';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { TextAreaProps } from '../../../../components/TextArea/TextArea';
+import { TextAreaStylesProps } from '../../../../components/TextArea/TextArea';
 
-const textAreaStyles: ComponentSlotStylesPrepared<TextAreaProps, TextAreaVariables> = {
+const textAreaStyles: ComponentSlotStylesPrepared<TextAreaStylesProps, TextAreaVariables> = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => ({
     margin: v.margin,
     height: v.height,

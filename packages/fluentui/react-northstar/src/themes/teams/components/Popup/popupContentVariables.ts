@@ -13,8 +13,8 @@ export interface PopupContentVariables {
 
   pointerMargin: string;
   pointerGap: string;
-  pointerOffset: string;
-  pointerSize: string;
+  pointerHeight: string;
+  pointerWidth: string;
 
   zIndex: number;
 }
@@ -31,10 +31,10 @@ export default (siteVars: any): PopupContentVariables => {
 
     padding: `${pxToRem(10)} ${pxToRem(14)}`,
 
-    pointerOffset: pxToRem(5),
     pointerGap: pxToRem(5),
     pointerMargin: pxToRem(10),
-    pointerSize: pxToRem(10),
+    pointerHeight: pxToRem(7),
+    pointerWidth: pxToRem(14),
 
     zIndex: siteVars.zIndexes.overlay,
   };

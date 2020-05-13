@@ -16,7 +16,6 @@ import { IFocusZoneProps } from '@fluentui/react-focus';
 import { IFontStyles } from '@uifabric/styling';
 import { IHTMLSlot } from '@uifabric/foundation';
 import { IObjectWithKey } from '@uifabric/utilities';
-import { IPoint } from '@uifabric/utilities';
 import { IProcessedStyleSet } from '@uifabric/styling';
 import { IRawStyle } from '@uifabric/styling';
 import { IRectangle } from '@uifabric/utilities';
@@ -35,6 +34,7 @@ import { IStyleSet } from '@uifabric/styling';
 import { ITheme } from '@uifabric/styling';
 import { KeyCodes } from '@uifabric/utilities';
 import { Omit } from '@uifabric/utilities';
+import { Point } from '@uifabric/utilities';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import { Selection } from '@uifabric/utilities';
@@ -305,8 +305,6 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
     // (undocumented)
     protected input: React.RefObject<IAutofill>;
     // (undocumented)
-    protected _isFocusZoneInnerKeystroke: (ev: React.KeyboardEvent<HTMLElement>) => boolean;
-    // (undocumented)
     readonly items: T[];
     // (undocumented)
     protected onBackspace(ev: React.KeyboardEvent<HTMLElement>): void;
@@ -357,6 +355,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
     protected root: React.RefObject<HTMLDivElement>;
     // (undocumented)
     protected selection: Selection;
+    // (undocumented)
+    protected _shouldFocusZoneEnterInnerZone: (ev: React.KeyboardEvent<HTMLElement>) => boolean;
     // (undocumented)
     protected suggestionElement: React.RefObject<ISuggestions<T>>;
     // @deprecated (undocumented)
@@ -2104,12 +2104,17 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
     onDismiss?: (ev?: any) => void;
     onLayerMounted?: () => void;
     onPositioned?: (positions?: ICalloutPositionedInfo) => void;
+    onRestoreFocus?: (options: {
+        originalElement?: HTMLElement | Window;
+        containsFocus: boolean;
+    }) => void;
     onScroll?: () => void;
     preventDismissOnLostFocus?: boolean;
     preventDismissOnResize?: boolean;
     preventDismissOnScroll?: boolean;
     role?: string;
     setInitialFocus?: boolean;
+    // @deprecated
     shouldRestoreFocus?: boolean;
     shouldUpdateWhenHidden?: boolean;
     style?: React.CSSProperties;
@@ -2455,6 +2460,7 @@ export type ICoachmarkTypes = ICoachmarkProps;
 export interface IColor extends IRGB, IHSV {
     hex: string;
     str: string;
+    t?: number;
 }
 
 // @public (undocumented)
@@ -2524,7 +2530,9 @@ export interface IColorPickerGridCellStyles {
 export interface IColorPickerProps {
     // @deprecated
     alphaLabel?: string;
+    // @deprecated
     alphaSliderHidden?: boolean;
+    alphaType?: 'alpha' | 'transparency' | 'none';
     // @deprecated
     blueLabel?: string;
     className?: string;
@@ -2545,11 +2553,9 @@ export interface IColorPickerProps {
 
 // @public (undocumented)
 export interface IColorPickerState {
-    // (undocumented)
     color: IColor;
-    // (undocumented)
     editingColor?: {
-        component: keyof IRGBHex;
+        component: ColorComponent;
         value: string;
     };
 }
@@ -2569,13 +2575,12 @@ export interface IColorPickerStrings {
     svAriaDescription?: string;
     svAriaLabel?: string;
     svAriaValueFormat?: string;
+    transparency?: string;
+    transparencyAriaLabel?: string;
 }
 
 // @public (undocumented)
-export interface IColorPickerStyleProps {
-    className?: string;
-    theme: ITheme;
-}
+export type IColorPickerStyleProps = Required<Pick<IColorPickerProps, 'theme'>> & Pick<IColorPickerProps, 'className' | 'alphaType'>;
 
 // @public (undocumented)
 export interface IColorPickerStyles {
@@ -2588,6 +2593,7 @@ export interface IColorPickerStyles {
     panel?: IStyle;
     root?: IStyle;
     table?: IStyle;
+    tableAlphaCell?: IStyle;
     tableHeader?: IStyle;
     tableHexCell?: IStyle;
 }
@@ -2637,8 +2643,11 @@ export interface IColorSliderProps {
     ariaLabel?: string;
     className?: string;
     componentRef?: IRefObject<IColorSlider>;
+    // @deprecated
     isAlpha?: boolean;
+    // @deprecated
     maxValue?: number;
+    // @deprecated
     minValue?: number;
     onChange?: (event: React.MouseEvent | React.KeyboardEvent, newValue?: number) => void;
     overlayColor?: string;
@@ -2648,11 +2657,14 @@ export interface IColorSliderProps {
     theme?: ITheme;
     // @deprecated
     thumbColor?: string;
+    type?: 'hue' | 'alpha' | 'transparency';
     value?: number;
 }
 
 // @public (undocumented)
-export type IColorSliderStyleProps = Required<Pick<IColorSliderProps, 'theme'>> & Pick<IColorSliderProps, 'className' | 'isAlpha'>;
+export type IColorSliderStyleProps = Required<Pick<IColorSliderProps, 'theme'>> & Pick<IColorSliderProps, 'className' | 'type'> & {
+    isAlpha?: boolean;
+};
 
 // @public (undocumented)
 export interface IColorSliderStyles {
@@ -4288,6 +4300,7 @@ export interface IDragDropEvents {
     onDragEnd?: (item?: any, event?: DragEvent) => void;
     onDragEnter?: (item?: any, event?: DragEvent) => string;
     onDragLeave?: (item?: any, event?: DragEvent) => void;
+    onDragOver?: (item?: any, event?: DragEvent) => void;
     onDragStart?: (item?: any, itemIndex?: number, selectedItems?: any[], event?: MouseEvent) => void;
     onDrop?: (item?: any, event?: DragEvent) => void;
 }
@@ -4413,6 +4426,7 @@ export interface IDropdownStyles {
     dropdownOptionText: IStyle;
     errorMessage: IStyle;
     label: IStyle;
+    // @deprecated
     panel: IStyle;
     root: IStyle;
     subComponentStyles: IDropdownSubComponentStyles;
@@ -4904,6 +4918,7 @@ export interface IGroupFooterStyles {
 export interface IGroupHeaderProps extends IGroupDividerProps {
     ariaPosInSet?: number;
     ariaSetSize?: number;
+    expandButtonIcon?: string;
     expandButtonProps?: React.HTMLAttributes<HTMLButtonElement>;
     groupedListId?: string;
     selectAllButtonProps?: React.HTMLAttributes<HTMLButtonElement>;
@@ -5222,7 +5237,7 @@ export interface IKeytipProps {
     hasDynamicChildren?: boolean;
     hasMenu?: boolean;
     keySequences: string[];
-    offset?: IPoint;
+    offset?: Point;
     onExecute?: (executeTarget: HTMLElement | null, target: HTMLElement | null) => void;
     onReturn?: (executeTarget: HTMLElement | null, target: HTMLElement | null) => void;
     overflowSetSequence?: string[];
@@ -5400,6 +5415,22 @@ export interface IList {
     scrollToIndex: (index: number, measureItem?: (itemIndex: number) => number, scrollToMode?: ScrollToMode) => void;
 }
 
+// @public
+export interface IListOnRenderRootProps<T> {
+    divProps: React.HTMLAttributes<HTMLDivElement>;
+    pages: IPage<T>[];
+    rootRef: React.Ref<HTMLDivElement>;
+    surfaceElement: JSX.Element | null;
+}
+
+// @public
+export interface IListOnRenderSurfaceProps<T> {
+    divProps: React.HTMLAttributes<HTMLDivElement>;
+    pageElements: JSX.Element[];
+    pages: IPage<T>[];
+    surfaceRef: React.Ref<HTMLDivElement>;
+}
+
 // @public (undocumented)
 export interface IListProps<T = any> extends React.HTMLAttributes<List<T> | HTMLDivElement> {
     className?: string;
@@ -5415,7 +5446,9 @@ export interface IListProps<T = any> extends React.HTMLAttributes<List<T> | HTML
     onPageRemoved?: (page: IPage<T>) => void;
     onPagesUpdated?: (pages: IPage<T>[]) => void;
     onRenderCell?: (item?: T, index?: number, isScrolling?: boolean) => React.ReactNode;
-    onRenderPage?: (pageProps: IPageProps<T>, defaultRender?: IRenderFunction<IPageProps<T>>) => React.ReactNode;
+    onRenderPage?: IRenderFunction<IPageProps<T>>;
+    onRenderRoot?: IRenderFunction<IListOnRenderRootProps<T>>;
+    onRenderSurface?: IRenderFunction<IListOnRenderSurfaceProps<T>>;
     onShouldVirtualize?: (props: IListProps<T>) => boolean;
     renderCount?: number;
     renderedWindowsAhead?: number;
@@ -5964,7 +5997,8 @@ export interface IPanelStyleProps {
 
 // @public (undocumented)
 export interface IPanelStyles {
-    closeButton: IStyle;
+    // @deprecated
+    closeButton?: IStyle;
     commands: IStyle;
     content: IStyle;
     contentInner: IStyle;
@@ -5978,6 +6012,12 @@ export interface IPanelStyles {
     overlay: IStyle;
     root: IStyle;
     scrollableContent: IStyle;
+    subComponentStyles: IPanelSubComponentStyles;
+}
+
+// @public (undocumented)
+export interface IPanelSubComponentStyles {
+    closeButton: Partial<IButtonStyles>;
 }
 
 // @public (undocumented)
@@ -6320,7 +6360,12 @@ export interface IPopupProps extends React.HTMLAttributes<Popup> {
     ariaLabelledBy?: string;
     className?: string;
     onDismiss?: (ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => any;
+    onRestoreFocus?: (options: {
+        originalElement?: HTMLElement | Window;
+        containsFocus: boolean;
+    }) => void;
     role?: string;
+    // @deprecated
     shouldRestoreFocus?: boolean;
 }
 
@@ -6360,9 +6405,9 @@ export interface IPositioningContainerProps extends IBaseProps<IPositioningConta
     preventDismissOnScroll?: boolean;
     role?: string;
     setInitialFocus?: boolean;
-    target?: HTMLElement | string | MouseEvent | IPoint | null;
+    target?: HTMLElement | string | MouseEvent | Point | null;
     // @deprecated
-    targetPoint?: IPoint;
+    targetPoint?: Point;
     // @deprecated
     useTargetPoint?: boolean;
 }
@@ -7577,6 +7622,7 @@ export interface ITeachingBubbleProps extends React.ClassAttributes<TeachingBubb
     ariaLabelledBy?: string;
     calloutProps?: ICalloutProps;
     componentRef?: IRefObject<ITeachingBubble>;
+    focusTrapZoneProps?: IFocusTrapZoneProps;
     footerContent?: string | JSX.Element;
     hasCloseButton?: boolean;
     // @deprecated (undocumented)
@@ -8105,7 +8151,7 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
         [key: string]: React.ReactInstance;
     };
     // (undocumented)
-    render(): JSX.Element;
+    render(): JSX.Element | null;
     scrollToIndex(index: number, measureItem?: (itemIndex: number) => number, scrollToMode?: ScrollToMode): void;
     // (undocumented)
     shouldComponentUpdate(newProps: IListProps<T>, newState: IListState<T>): boolean;
@@ -8217,8 +8263,6 @@ export enum MessageBarType {
     blocked = 2,
     error = 1,
     info = 0,
-    // @deprecated
-    remove = 90000,
     severeWarning = 3,
     success = 4,
     warning = 5
@@ -9376,7 +9420,7 @@ export class TagPickerBase extends BasePicker<ITag, ITagPickerProps> {
 }
 
 // @public (undocumented)
-export type Target = Element | string | MouseEvent | IPoint | null | React.RefObject<Element>;
+export type Target = Element | string | MouseEvent | Point | null | React.RefObject<Element>;
 
 // @public (undocumented)
 export const TeachingBubble: React.FunctionComponent<ITeachingBubbleProps>;
@@ -9557,6 +9601,9 @@ export function updateRGB(color: IColor, component: keyof IRGB, value: number): 
 export function updateSV(color: IColor, s: number, v: number): IColor;
 
 // @public
+export function updateT(color: IColor, t: number): IColor;
+
+// @public
 export enum ValidationState {
     invalid = 2,
     valid = 0,
@@ -9590,7 +9637,7 @@ export * from "@uifabric/utilities";
 
 // Warnings were encountered during analysis:
 //
-// lib/components/ColorPicker/ColorPicker.base.d.ts:8:9 - (ae-forgotten-export) The symbol "IRGBHex" needs to be exported by the entry point index.d.ts
+// lib/components/ColorPicker/ColorPicker.base.d.ts:11:9 - (ae-forgotten-export) The symbol "ColorComponent" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 

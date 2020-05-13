@@ -3,11 +3,17 @@ import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
 
 import Popup, { PopupEvents } from 'src/components/Popup/Popup';
+import { popupContentClassName } from 'src/components/Popup/PopupContent';
 import { domEvent, EmptyThemeProvider, mountWithProvider } from '../../../utils';
 import * as keyboardKey from 'keyboard-key';
 import { ReactWrapper } from 'enzyme';
+import implementsPopperProps from 'test/specs/commonTests/implementsPopperProps';
 
 describe('Popup', () => {
+  implementsPopperProps(Popup, {
+    requiredProps: { open: true },
+  });
+
   const triggerId = 'triggerElement';
   const contentId = 'contentId';
 
@@ -209,7 +215,7 @@ describe('Popup', () => {
       mountWithProvider(<Popup trigger={<button />} content="Content" open />);
       const contentElement = document.body.firstElementChild;
 
-      expect(contentElement.classList.contains(Popup.Content.className)).toEqual(true);
+      expect(contentElement.classList.contains(popupContentClassName)).toEqual(true);
     });
 
     test('renders the content next to the trigger element if the inline prop is provided', () => {
@@ -221,7 +227,7 @@ describe('Popup', () => {
       });
       const contentElement = document.querySelector(`#${triggerId}`).nextSibling as HTMLDivElement;
 
-      expect(contentElement.classList.contains(Popup.Content.className)).toEqual(true);
+      expect(contentElement.classList.contains(popupContentClassName)).toEqual(true);
 
       wrapper.unmount();
       document.body.removeChild(attachTo);

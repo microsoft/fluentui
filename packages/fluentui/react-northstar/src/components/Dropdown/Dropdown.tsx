@@ -19,7 +19,7 @@ import { ComponentSlotStylesInput, ComponentVariablesInput } from '@fluentui/sty
 import Downshift, {
   DownshiftState,
   StateChangeOptions,
-  A11yStatusMessageOptions as DownshiftA11yStatusMessageOptions,
+  A11yStatusMessageOptions,
   GetMenuPropsOptions,
   GetPropsCommonOptions,
   GetInputPropsOptions,
@@ -32,6 +32,7 @@ import {
   commonPropTypes,
   UIComponentProps,
   isFromKeyboard,
+  createShorthand,
 } from '../../utils';
 import List, { ListProps } from '../List/List';
 import DropdownItem, { DropdownItemProps } from './DropdownItem';
@@ -41,8 +42,16 @@ import Button, { ButtonProps } from '../Button/Button';
 import { screenReaderContainerStyles } from '../../utils/accessibility/Styles/accessibilityStyles';
 import Box, { BoxProps } from '../Box/Box';
 import Portal from '../Portal/Portal';
-import { ALIGNMENTS, POSITIONS, Popper, PositioningProps } from '../../utils/positioner';
-import ListItem, { ListItemProps } from '../List/ListItem';
+import {
+  ALIGNMENTS,
+  POSITIONS,
+  Popper,
+  PositioningProps,
+  PopperShorthandProps,
+  getPopperPropsFromShorthand,
+} from '../../utils/positioner';
+
+export interface DownshiftA11yStatusMessageOptions<Item> extends Required<A11yStatusMessageOptions<Item>> {}
 
 export interface DropdownSlotClassNames {
   clearIndicator: string;
@@ -122,6 +131,9 @@ export interface DropdownProps extends UIComponentProps<DropdownProps, DropdownS
   /** A dropdown can be formatted to appear inline next to other elements. */
   inline?: boolean;
 
+  /** A dropdown can have inverted colors. */
+  inverted?: boolean;
+
   /** Array of props for generating list options (Dropdown.Item[]) and selected item labels (Dropdown.SelectedItem[]), if it's a multiple selection. */
   items?: ShorthandCollection<DropdownItemProps>;
 
@@ -136,14 +148,17 @@ export interface DropdownProps extends UIComponentProps<DropdownProps, DropdownS
   /** Used when comparing two items in multiple selection. Default comparison is by the header prop. */
   itemToValue?: (item: ShorthandValue<DropdownItemProps>) => any;
 
+  /** A message to be displayed in the list header. */
+  headerMessage?: ShorthandValue<DropdownItemProps>;
+
   /** A slot for dropdown list. */
-  list?: ShorthandValue<ListProps>;
+  list?: ShorthandValue<ListProps & { popper?: PopperShorthandProps }>;
 
   /** A dropdown can show that it is currently loading data. */
   loading?: boolean;
 
   /** A message to be displayed in the list when the dropdown is loading. */
-  loadingMessage?: ShorthandValue<ListItemProps>;
+  loadingMessage?: ShorthandValue<DropdownItemProps>;
 
   /** When selecting an element with Tab, focus stays on the dropdown by default. If true, the focus will jump to next/previous element in DOM. Only available to multiple selection dropdowns. */
   moveFocusOnTab?: boolean;
@@ -152,7 +167,7 @@ export interface DropdownProps extends UIComponentProps<DropdownProps, DropdownS
   multiple?: boolean;
 
   /** A message to be displayed in the list when the dropdown has no items. */
-  noResultsMessage?: ShorthandValue<ListItemProps>;
+  noResultsMessage?: ShorthandValue<DropdownItemProps>;
 
   /**
    * Called when the dropdown's selected items index change.
@@ -249,6 +264,19 @@ export interface DropdownState {
   isFromKeyboard: boolean;
 }
 
+export const dropdownClassName = 'ui-dropdown';
+export const dropdownSlotClassNames: DropdownSlotClassNames = {
+  clearIndicator: `${dropdownClassName}__clear-indicator`,
+  container: `${dropdownClassName}__container`,
+  toggleIndicator: `${dropdownClassName}__toggle-indicator`,
+  item: `${dropdownClassName}__item`,
+  itemsList: `${dropdownClassName}__items-list`,
+  searchInput: `${dropdownClassName}__searchinput`,
+  selectedItem: `${dropdownClassName}__selecteditem`,
+  selectedItems: `${dropdownClassName}__selected-items`,
+  triggerButton: `${dropdownClassName}__trigger-button`,
+};
+
 class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, DropdownState> {
   buttonRef = React.createRef<HTMLElement>();
   inputRef = React.createRef<HTMLInputElement>();
@@ -258,12 +286,10 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
 
   static displayName = 'Dropdown';
 
-  static className = 'ui-dropdown';
+  static deprecated_className = dropdownClassName;
 
   static a11yStatusCleanupTime = 500;
   static charKeyPressedCleanupTime = 500;
-
-  static slotClassNames: DropdownSlotClassNames;
 
   static propTypes = {
     ...commonPropTypes.createCommon({
@@ -289,16 +315,21 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
     highlightFirstItemOnOpen: PropTypes.bool,
     highlightedIndex: PropTypes.number,
     inline: PropTypes.bool,
+    inverted: PropTypes.bool,
     items: customPropTypes.collectionShorthand,
     itemToString: PropTypes.func,
     itemToValue: PropTypes.func,
+    headerMessage: customPropTypes.itemShorthand,
     list: customPropTypes.itemShorthand,
     loading: PropTypes.bool,
     loadingMessage: customPropTypes.itemShorthand,
     moveFocusOnTab: PropTypes.bool,
     multiple: PropTypes.bool,
     noResultsMessage: customPropTypes.itemShorthand,
-    offset: PropTypes.string,
+    offset: PropTypes.oneOfType([
+      PropTypes.func,
+      PropTypes.arrayOf(PropTypes.number) as PropTypes.Requireable<[number, number]>,
+    ]),
     onOpenChange: PropTypes.func,
     onSearchQueryChange: PropTypes.func,
     onChange: PropTypes.func,
@@ -434,12 +465,11 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
       <ElementType className={classes.root} onChange={this.handleChange} {...unhandledProps}>
         <Downshift
           isOpen={open}
-          onChange={this.handleSelectedChange}
-          onInputValueChange={this.handleSearchQueryChange}
           inputValue={search ? searchQuery : null}
-          stateReducer={this.handleDownshiftStateChanges}
+          stateReducer={this.downshiftStateReducer}
           itemToString={itemToString}
-          selectedItem={null}
+          // downshift does not work with arrays as selectedItem.
+          selectedItem={multiple || !value.length ? null : value[0]}
           getA11yStatusMessage={getA11yStatusMessage}
           highlightedIndex={highlightedIndex}
           onStateChange={this.handleStateChange}
@@ -467,12 +497,12 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
               <Ref innerRef={innerRef}>
                 <div
                   ref={this.containerRef}
-                  className={cx(Dropdown.slotClassNames.container, classes.container)}
+                  className={cx(dropdownSlotClassNames.container, classes.container)}
                   onClick={search && !open ? this.handleContainerClick : undefined}
                 >
                   <div
                     ref={this.selectedItemsRef}
-                    className={cx(Dropdown.slotClassNames.selectedItems, classes.selectedItems)}
+                    className={cx(dropdownSlotClassNames.selectedItems, classes.selectedItems)}
                   >
                     {multiple && this.renderSelectedItems(variables, rtl)}
                     {search
@@ -490,9 +520,10 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
                   {showClearIndicator
                     ? Box.create(clearIndicator, {
                         defaultProps: () => ({
-                          className: Dropdown.slotClassNames.clearIndicator,
+                          className: dropdownSlotClassNames.clearIndicator,
                           styles: styles.clearIndicator,
                           accessibility: indicatorBehavior,
+                          ...(!search && { tabIndex: 0, role: 'button' }),
                         }),
                         overrideProps: (predefinedProps: BoxProps) => ({
                           onClick: (e: React.SyntheticEvent<HTMLElement>) => {
@@ -503,7 +534,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
                       })
                     : Box.create(toggleIndicator, {
                         defaultProps: () => ({
-                          className: Dropdown.slotClassNames.toggleIndicator,
+                          className: dropdownSlotClassNames.toggleIndicator,
                           styles: styles.toggleIndicator,
                           accessibility: indicatorBehavior,
                         }),
@@ -568,9 +599,9 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
 
     return (
       <Ref innerRef={this.buttonRef}>
-        {Button.create(triggerButton, {
+        {createShorthand(Button, triggerButton, {
           defaultProps: () => ({
-            className: Dropdown.slotClassNames.triggerButton,
+            className: dropdownSlotClassNames.triggerButton,
             content,
             disabled,
             id: triggerButtonId,
@@ -623,7 +654,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
 
     return DropdownSearchInput.create(searchInput || {}, {
       defaultProps: () => ({
-        className: Dropdown.slotClassNames.searchInput,
+        className: dropdownSlotClassNames.searchInput,
         placeholder: noPlaceholder ? '' : placeholder,
         inline,
         variables,
@@ -689,10 +720,11 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
           targetRef={this.containerRef}
           unstable_pinned={unstable_pinned}
           positioningDependencies={[items.length]}
+          {...getPopperPropsFromShorthand(list)}
         >
           {List.create(list, {
             defaultProps: () => ({
-              className: Dropdown.slotClassNames.itemsList,
+              className: dropdownSlotClassNames.itemsList,
               ...accessibilityMenuProps,
               styles: styles.list,
               items,
@@ -722,8 +754,10 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
     getItemProps: (options: GetItemPropsOptions<ShorthandValue<DropdownItemProps>>) => any,
     highlightedIndex: number,
   ) {
-    const { loading, loadingMessage, noResultsMessage, renderItem, checkable, checkableIndicator } = this.props;
+    const { renderItem, checkable, checkableIndicator } = this.props;
     const { filteredItems, value } = this.state;
+    const footerItem = this.renderItemsListFooter(styles);
+    const headerItem = this.renderItemsListHeader(styles);
 
     const items = _.map(filteredItems, (item, index) => ({
       children: () => {
@@ -731,7 +765,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
 
         return DropdownItem.create(item, {
           defaultProps: () => ({
-            className: Dropdown.slotClassNames.item,
+            className: dropdownSlotClassNames.item,
             active: highlightedIndex === index,
             selected,
             checkable,
@@ -749,28 +783,60 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
       },
     }));
 
-    return [
-      ...items,
-      loading && {
+    if (footerItem) {
+      items.push(footerItem);
+    }
+
+    return headerItem ? [headerItem, ...items] : items;
+  }
+
+  renderItemsListHeader(styles: ComponentSlotStylesInput) {
+    const { headerMessage } = this.props;
+
+    if (headerMessage) {
+      return {
         children: () =>
-          ListItem.create(loadingMessage, {
+          DropdownItem.create(headerMessage, {
+            defaultProps: () => ({
+              key: 'items-list-footer-message',
+              styles: styles.headerMessage,
+            }),
+          }),
+      };
+    }
+
+    return null;
+  }
+
+  renderItemsListFooter(styles: ComponentSlotStylesInput) {
+    const { loading, loadingMessage, noResultsMessage } = this.props;
+    const { filteredItems } = this.state;
+
+    if (loading) {
+      return {
+        children: () =>
+          DropdownItem.create(loadingMessage, {
             defaultProps: () => ({
               key: 'loading-message',
               styles: styles.loadingMessage,
             }),
           }),
-      },
-      !loading &&
-        items.length === 0 && {
-          children: () =>
-            ListItem.create(noResultsMessage, {
-              defaultProps: () => ({
-                key: 'no-results-message',
-                styles: styles.noResultsMessage,
-              }),
+      };
+    }
+
+    if (filteredItems && filteredItems.length === 0) {
+      return {
+        children: () =>
+          DropdownItem.create(noResultsMessage, {
+            defaultProps: () => ({
+              key: 'no-results-message',
+              styles: styles.noResultsMessage,
             }),
-        },
-    ];
+          }),
+      };
+    }
+
+    return null;
   }
 
   renderSelectedItems(variables, rtl: boolean) {
@@ -785,7 +851,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
       // (!) an item matches DropdownItemProps
       DropdownSelectedItem.create(item, {
         defaultProps: () => ({
-          className: Dropdown.slotClassNames.selectedItem,
+          className: dropdownSlotClassNames.selectedItem,
           active: this.isSelectedItemActive(index),
           variables,
           ...(typeof item === 'object' &&
@@ -799,15 +865,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
     );
   }
 
-  handleSearchQueryChange = (searchQuery: string) => {
-    this.setStateAndInvokeHandler(['onSearchQueryChange', 'onHighlightedIndexChange'], null, {
-      searchQuery,
-      highlightedIndex: this.props.highlightFirstItemOnOpen ? 0 : null,
-      open: searchQuery === '' ? false : this.state.open,
-    });
-  };
-
-  handleDownshiftStateChanges = (
+  downshiftStateReducer = (
     state: DownshiftState<ShorthandValue<DropdownItemProps>>,
     changes: StateChangeOptions<ShorthandValue<DropdownItemProps>>,
   ) => {
@@ -826,31 +884,154 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
   };
 
   handleStateChange = (changes: StateChangeOptions<ShorthandValue<DropdownItemProps>>) => {
-    if (changes.isOpen !== undefined && changes.isOpen !== this.state.open) {
-      const newState = { open: changes.isOpen, highlightedIndex: this.state.highlightedIndex };
+    const { search, multiple, highlightFirstItemOnOpen, items, getA11ySelectionMessage } = this.props;
+    const { value, open } = this.state;
+    const { type } = changes;
+    const newState = {} as DropdownState;
 
-      if (changes.isOpen) {
-        const highlightedIndexOnArrowKeyOpen = this.getHighlightedIndexOnArrowKeyOpen(changes);
-        if (_.isNumber(highlightedIndexOnArrowKeyOpen)) {
-          newState.highlightedIndex = highlightedIndexOnArrowKeyOpen;
+    switch (type) {
+      case Downshift.stateChangeTypes.changeInput: {
+        const shouldValueChange = changes.inputValue === '' && !multiple && value.length > 0;
+        newState.searchQuery = changes.inputValue;
+        newState.highlightedIndex = highlightFirstItemOnOpen ? 0 : null;
+
+        if (shouldValueChange) {
+          newState.value = [];
         }
-        if (!this.props.search) {
-          this.listRef.current.focus();
+
+        if (open) {
+          // we clear value when in single selection user cleared the query.
+          const shouldMenuClose = changes.inputValue === '' || changes.selectedItem !== undefined;
+
+          if (shouldMenuClose) {
+            newState.open = false;
+          }
+        } else {
+          newState.open = true;
         }
-      } else {
-        newState.highlightedIndex = null;
+
+        break;
       }
+      case Downshift.stateChangeTypes.keyDownEnter:
+      case Downshift.stateChangeTypes.clickItem:
+        const shouldAddHighlightedIndex = !multiple && items && items.length > 0;
+        const isSameItemSelected = changes.selectedItem === undefined;
+        const newValue = isSameItemSelected ? value[0] : changes.selectedItem;
 
-      this.setStateAndInvokeHandler(['onOpenChange'], null, newState);
+        newState.searchQuery = this.getSelectedItemAsString(newValue);
+        newState.open = false;
+        newState.highlightedIndex = shouldAddHighlightedIndex ? items.indexOf(newValue) : null;
+
+        if (!isSameItemSelected) {
+          newState.value = multiple ? [...value, changes.selectedItem] : [changes.selectedItem];
+
+          if (getA11ySelectionMessage && getA11ySelectionMessage.onAdd) {
+            this.setA11ySelectionMessage(getA11ySelectionMessage.onAdd(newValue));
+          }
+        }
+
+        if (multiple) {
+          setTimeout(() => (this.selectedItemsRef.current.scrollTop = this.selectedItemsRef.current.scrollHeight), 0);
+        }
+
+        this.tryFocusTriggerButton();
+
+        break;
+      case Downshift.stateChangeTypes.keyDownEscape:
+        if (search) {
+          newState.searchQuery = '';
+
+          if (!multiple) {
+            newState.value = [];
+          }
+        }
+        newState.open = false;
+        newState.highlightedIndex = highlightFirstItemOnOpen ? 0 : null;
+        break;
+      case Downshift.stateChangeTypes.keyDownArrowDown:
+      case Downshift.stateChangeTypes.keyDownArrowUp:
+        if (changes.isOpen !== undefined) {
+          newState.open = changes.isOpen;
+          newState.highlightedIndex = changes.highlightedIndex;
+
+          if (changes.isOpen) {
+            const highlightedIndexOnArrowKeyOpen = this.getHighlightedIndexOnArrowKeyOpen(changes);
+
+            if (_.isNumber(highlightedIndexOnArrowKeyOpen)) {
+              newState.highlightedIndex = highlightedIndexOnArrowKeyOpen;
+            }
+
+            if (!search) {
+              this.listRef.current.focus();
+            }
+          } else {
+            newState.highlightedIndex = null;
+          }
+        }
+      case Downshift.stateChangeTypes['keyDownHome']:
+      case Downshift.stateChangeTypes['keyDownEnd']:
+        if (open && _.isNumber(changes.highlightedIndex)) {
+          newState.highlightedIndex = changes.highlightedIndex;
+          newState.itemIsFromKeyboard = true;
+        }
+
+        break;
+      case Downshift.stateChangeTypes.mouseUp:
+        if (open) {
+          newState.open = false;
+          newState.highlightedIndex = null;
+        }
+
+        break;
+      case Downshift.stateChangeTypes.clickButton:
+      case Downshift.stateChangeTypes.keyDownSpaceButton:
+        newState.open = changes.isOpen;
+
+        if (changes.isOpen) {
+          const highlightedIndexOnArrowKeyOpen = this.getHighlightedIndexOnArrowKeyOpen(changes);
+
+          if (_.isNumber(highlightedIndexOnArrowKeyOpen)) {
+            newState.highlightedIndex = highlightedIndexOnArrowKeyOpen;
+          }
+
+          if (!search) {
+            this.listRef.current.focus();
+          }
+        } else {
+          newState.highlightedIndex = null;
+        }
+        break;
+      case Downshift.stateChangeTypes.itemMouseEnter:
+        newState.highlightedIndex = changes.highlightedIndex;
+        newState.itemIsFromKeyboard = false;
+        break;
+      case Downshift.stateChangeTypes.unknown:
+        if (changes.selectedItem) {
+          newState.value = multiple ? [...value, changes.selectedItem] : [changes.selectedItem];
+          newState.searchQuery = multiple ? '' : changes.inputValue;
+          newState.open = false;
+          newState.highlightedIndex = changes.highlightedIndex;
+
+          this.tryFocusTriggerButton();
+        } else {
+          newState.open = changes.isOpen;
+        }
+      default:
+        break;
     }
 
-    if (this.state.open && _.isNumber(changes.highlightedIndex)) {
-      const itemIsFromKeyboard = changes.type !== Downshift.stateChangeTypes.itemMouseEnter;
-      this.setStateAndInvokeHandler(['onHighlightedIndexChange'], null, {
-        itemIsFromKeyboard,
-        highlightedIndex: changes.highlightedIndex,
-      });
+    if (_.isEmpty(newState)) {
+      return;
     }
+
+    const handlers: (keyof DropdownProps)[] = [
+      newState.value !== undefined && 'onChange',
+      newState.highlightedIndex !== undefined && 'onHighlightedIndexChange',
+      newState.open !== undefined && 'onOpenChange',
+      newState.searchQuery !== undefined && 'onSearchQueryChange',
+    ].filter(Boolean) as (keyof DropdownProps)[];
+
+    this.setStateAndInvokeHandler(handlers, null, newState);
   };
 
   isSelectedItemActive = (index: number): boolean => {
@@ -867,6 +1048,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
       ...getItemProps({
         item,
         index,
+        disabled: item['disabled'],
         onClick: e => {
           e.stopPropagation();
           e.nativeEvent.stopImmediatePropagation();
@@ -921,21 +1103,27 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
       if (!disabled) {
         switch (keyboardKey.getCode(e)) {
           case keyboardKey.Tab:
+            e.stopPropagation();
             this.handleTabSelection(e, highlightedIndex, selectItemAtIndex, toggleMenu);
             break;
           case keyboardKey.ArrowLeft:
+            e.stopPropagation();
             if (!rtl) {
               this.trySetLastSelectedItemAsActive();
             }
             break;
           case keyboardKey.ArrowRight:
+            e.stopPropagation();
             if (rtl) {
               this.trySetLastSelectedItemAsActive();
             }
             break;
           case keyboardKey.Backspace:
+            e.stopPropagation();
             this.tryRemoveItemFromValue();
             break;
+          case keyboardKey.Escape:
+            e.stopPropagation();
           default:
             break;
         }
@@ -959,6 +1147,11 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
           },
           onKeyDown: e => {
             handleInputKeyDown(e, predefinedProps);
+          },
+          onChange: e => {
+            // we prevent the onChange input event to bubble up to our Dropdown handler,
+            // since in Dropdown it gets handled as onSearchQueryChange.
+            e.stopPropagation();
           },
         }),
       },
@@ -990,10 +1183,14 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
     selectItemAtIndex: (highlightedIndex: number) => void,
     toggleMenu: () => void,
   ): void => {
-    if (this.state.open) {
-      if (!_.isNil(highlightedIndex) && this.state.filteredItems.length) {
+    const { open, filteredItems } = this.state;
+    const { moveFocusOnTab, multiple, items } = this.props;
+
+    if (open) {
+      if (!_.isNil(highlightedIndex) && filteredItems.length && !items[highlightedIndex]['disabled']) {
         selectItemAtIndex(highlightedIndex);
-        if (!this.props.moveFocusOnTab && this.props.multiple) {
+
+        if (multiple && !moveFocusOnTab) {
           e.preventDefault();
         }
       } else {
@@ -1103,32 +1300,6 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
         accessibilityInputPropsKeyDown(e);
         return;
     }
-  };
-
-  handleSelectedChange = (item: ShorthandValue<DropdownItemProps>) => {
-    const { items, multiple, getA11ySelectionMessage } = this.props;
-    const { value } = this.state;
-
-    this.setStateAndInvokeHandler(['onChange'], null, {
-      searchQuery: this.getSelectedItemAsString(item),
-      value: multiple ? [...value, item] : [item],
-    });
-
-    if (!multiple && items) {
-      this.setStateAndInvokeHandler(['onHighlightedIndexChange'], null, {
-        highlightedIndex: items.indexOf(item),
-      });
-    }
-
-    if (getA11ySelectionMessage && getA11ySelectionMessage.onAdd) {
-      this.setA11ySelectionMessage(getA11ySelectionMessage.onAdd(item));
-    }
-
-    if (multiple) {
-      setTimeout(() => (this.selectedItemsRef.current.scrollTop = this.selectedItemsRef.current.scrollHeight), 0);
-    }
-
-    this.tryFocusTriggerButton();
   };
 
   handleSelectedItemKeyDown(
@@ -1296,10 +1467,10 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
    * and for multiple selection we return empty string, the values are rendered by renderSelectedItems
    */
   getSelectedItemAsString = (value: ShorthandValue<DropdownItemProps>): string => {
-    const { itemToString, multiple, placeholder } = this.props;
+    const { itemToString, multiple, placeholder, search } = this.props;
 
     if (!value) {
-      return placeholder;
+      return search ? '' : placeholder;
     }
 
     if (multiple) {
@@ -1370,18 +1541,6 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
     this.setState({ startingString: '' });
   }, Dropdown.charKeyPressedCleanupTime);
 }
-
-Dropdown.slotClassNames = {
-  clearIndicator: `${Dropdown.className}__clear-indicator`,
-  container: `${Dropdown.className}__container`,
-  toggleIndicator: `${Dropdown.className}__toggle-indicator`,
-  item: `${Dropdown.className}__item`,
-  itemsList: `${Dropdown.className}__items-list`,
-  searchInput: `${Dropdown.className}__searchinput`,
-  selectedItem: `${Dropdown.className}__selecteditem`,
-  selectedItems: `${Dropdown.className}__selected-items`,
-  triggerButton: `${Dropdown.className}__trigger-button`,
-};
 
 /**
  * A Dropdown allows user to select one or more values from a list of options.

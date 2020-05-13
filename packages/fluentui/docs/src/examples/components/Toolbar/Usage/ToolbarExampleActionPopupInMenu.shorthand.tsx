@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Toolbar, Button, Form } from '@fluentui/react-northstar';
+import { MoreIcon, ItalicIcon, UnderlineIcon } from '@fluentui/react-icons-northstar';
 
 const CustomPopup = ({ onConfirm }) => {
   return (
@@ -33,7 +34,20 @@ const ToolbarExampleActionPopupInMenu = () => {
       aria-label="Popup with an action in menu"
       items={[
         {
-          icon: 'more',
+          key: 'underline',
+          content: 'underline',
+          icon: <UnderlineIcon />,
+          title: 'Underline',
+        },
+        {
+          key: 'italic',
+          content: 'italic',
+          icon: <ItalicIcon />,
+          title: 'Italic',
+        },
+        {
+          icon: <MoreIcon />,
+          key: 'more',
           active: menuOpen,
           title: 'More',
           menu: [

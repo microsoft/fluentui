@@ -530,6 +530,14 @@ definitions.push({
 });
 
 definitions.push({
+  regexp: /Does not handle PageDown and PageUp/g,
+  testMethod: (parameters: TestMethod) => {
+    const actualFocusZoneHorizontal = parameters.behavior({}).focusZone;
+    expect(actualFocusZoneHorizontal.props.pagingSupportDisabled).toBeTruthy();
+  },
+});
+
+definitions.push({
   regexp: /Focus is moved within the focusable children of the component using TAB key/g,
   testMethod: (parameters: TestMethod) => {
     const actualFocusZoneHorizontal = parameters.behavior({}).focusZone;
@@ -666,7 +674,7 @@ definitions.push({
   regexp: /Triggers '(\w+)' action with '(\w+)' on '([\w-]+)', when has a closed subtree\./g,
   testMethod: (parameters: TestMethod) => {
     const [action, key, elementToPerformAction] = [...parameters.props];
-    const propertyClosedSubtree = { open: false, expanded: false, hasSubtree: false };
+    const propertyClosedSubtree = { open: false, expanded: false, hasSubtree: true };
     const expectedKeyNumberVertical = parameters.behavior(propertyClosedSubtree).keyActions[elementToPerformAction][
       action
     ].keyCombinations[0].keyCode;

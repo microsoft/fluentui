@@ -10,11 +10,8 @@ import {
   ScreenWidthMinXXLarge,
   ScreenWidthMinUhfMobile,
   IStyle,
+  IconFontSizes,
 } from '../../Styling';
-
-// TODO -Issue #5689: Comment in once Button is converted to mergeStyles
-// import { IStyleFunctionOrObject } from '../../Utilities';
-// import { IButtonStyles, IButtonStyleProps } from '../../Button';
 
 const GlobalClassNames = {
   root: 'ms-Panel',
@@ -157,22 +154,6 @@ const sharedPaddingStyles = {
   paddingRight: '24px',
 };
 
-// // TODO -Issue #5689: Comment in once Button is converted to mergeStyles
-// function getIconButtonStyles(props: IPanelStyleProps): IStyleFunctionOrObject<IButtonStyleProps, IButtonStyles> {
-//   const { theme } = props;
-//   return () => ({
-//     root: {
-//       height: 'auto',
-//       width: '44px',
-//       color: theme.palette.neutralSecondary,
-//       fontSize: IconFontSizes.large
-//     },
-//     rootHovered: {
-//       color: theme.palette.neutralPrimary
-//     }
-//   });
-// }
-
 export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
   const {
     className,
@@ -286,19 +267,10 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
       classNames.navigation,
       {
         display: 'flex',
-        justifyContent: 'space-between',
+        justifyContent: 'flex-end',
       },
       hasCustomNavigation && {
         height: commandBarHeight,
-      },
-    ],
-    closeButton: [
-      classNames.closeButton,
-      {
-        marginRight: 14,
-      },
-      hasCustomNavigation && {
-        marginRight: 0,
       },
     ],
     contentInner: [
@@ -314,8 +286,12 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
       classNames.header,
       sharedPaddingStyles,
       {
-        flexShrink: 1,
+        alignSelf: 'flex-start',
       },
+      hasCloseButton &&
+        !hasCustomNavigation && {
+          flexGrow: 1,
+        },
       hasCustomNavigation && {
         // Ensure that title doesn't shrink if screen is too small
         flexShrink: 0,
@@ -371,8 +347,25 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
         paddingTop: 16,
       },
     ],
-    // subComponentStyles: {
-    //   iconButton: getIconButtonStyles(props)
-    // }
+    subComponentStyles: {
+      closeButton: {
+        root: [
+          classNames.closeButton,
+          {
+            marginRight: 14,
+            color: theme.palette.neutralSecondary,
+            fontSize: IconFontSizes.large,
+          },
+          hasCustomNavigation && {
+            marginRight: 0,
+            height: 'auto',
+            width: '44px',
+          },
+        ],
+        rootHovered: {
+          color: theme.palette.neutralPrimary,
+        },
+      },
+    },
   };
 };

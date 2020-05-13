@@ -4,8 +4,8 @@ import * as keyboardKey from 'keyboard-key';
 import { isConformant } from 'test/specs/commonTests';
 import { mountWithProvider } from 'test/utils';
 import HierarchicalTree from 'src/components/HierarchicalTree/HierarchicalTree';
-import HierarchicalTreeTitle from 'src/components/HierarchicalTree/HierarchicalTreeTitle';
-import HierarchicalTreeItem from 'src/components/HierarchicalTree/HierarchicalTreeItem';
+import { hierarchicalTreeTitleClassName } from 'src/components/HierarchicalTree/HierarchicalTreeTitle';
+import { hierarchicalTreeItemClassName } from 'src/components/HierarchicalTree/HierarchicalTreeItem';
 import { ReactWrapper, CommonWrapper } from 'enzyme';
 
 const items = [
@@ -56,9 +56,9 @@ const items = [
 ];
 
 const getTitles = (wrapper: ReactWrapper): CommonWrapper =>
-  wrapper.find(`.${HierarchicalTreeTitle.className}`).filterWhere(n => typeof n.type() === 'string');
+  wrapper.find(`.${hierarchicalTreeTitleClassName}`).filterWhere(n => typeof n.type() === 'string');
 const getItems = (wrapper: ReactWrapper): CommonWrapper =>
-  wrapper.find(`.${HierarchicalTreeItem.className}`).filterWhere(n => typeof n.type() === 'string');
+  wrapper.find(`.${hierarchicalTreeItemClassName}`).filterWhere(n => typeof n.type() === 'string');
 
 const checkOpenTitles = (wrapper: ReactWrapper, expected: string[]): void => {
   const titles = getTitles(wrapper);

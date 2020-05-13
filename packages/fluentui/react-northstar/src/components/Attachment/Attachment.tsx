@@ -1,42 +1,60 @@
-import { Accessibility, attachmentBehavior } from '@fluentui/accessibility';
+import { Accessibility, attachmentBehavior, AttachmentBehaviorProps } from '@fluentui/accessibility';
+import {
+  ComponentWithAs,
+  compose,
+  getElementType,
+  useAccessibility,
+  useStyles,
+  useTelemetry,
+  useUnhandledProps,
+} from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
+import { mergeComponentVariables } from '@fluentui/styles';
+import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import * as _ from 'lodash';
-import { WithAsProp, ShorthandValue, ComponentEventHandler, withSafeTypeForAs } from '../../types';
+// @ts-ignore
+import { ThemeContext } from 'react-fela';
+
+import { ComponentEventHandler, ProviderContextPrepared, ShorthandValue } from '../../types';
 import {
-  UIComponent,
   createShorthandFactory,
   commonPropTypes,
-  applyAccessibilityKeyHandlers,
+  UIComponentProps,
+  ChildrenComponentProps,
+  createShorthand,
   ShorthandFactory,
 } from '../../utils';
-import Icon, { IconProps } from '../Icon/Icon';
-import Button, { ButtonProps } from '../Button/Button';
-import Text, { TextProps } from '../Text/Text';
-import { UIComponentProps, ChildrenComponentProps } from '../../utils/commonPropInterfaces';
+import AttachmentAction, { AttachmentActionProps } from './AttachmentAction';
+import AttachmentBody, { AttachmentBodyProps } from './AttachmentBody';
+import AttachmentDescription, { AttachmentDescriptionProps } from './AttachmentDescription';
+import AttachmentHeader, { AttachmentHeaderProps } from './AttachmentHeader';
+import AttachmentIcon, { AttachmentIconProps } from './AttachmentIcon';
 
 export interface AttachmentProps extends UIComponentProps, ChildrenComponentProps {
   /** Accessibility behavior if overridden by the user. */
-  accessibility?: Accessibility;
+  accessibility?: Accessibility<AttachmentBehaviorProps>;
 
   /** Button shorthand for the action slot. */
-  action?: ShorthandValue<ButtonProps>;
+  action?: ShorthandValue<AttachmentActionProps>;
 
   /** An Attachment can be styled to indicate possible user interaction. */
   actionable?: boolean;
 
+  /** Contains a header and a description for an Attachment. */
+  body?: ShorthandValue<AttachmentBodyProps>;
+
   /** A string describing the attachment. */
-  description?: ShorthandValue<TextProps>;
+  description?: ShorthandValue<AttachmentDescriptionProps>;
 
   /** An attachment can show that it cannot be interacted with. */
   disabled?: boolean;
 
   /** The name of the attachment. */
-  header?: ShorthandValue<TextProps>;
+  header?: ShorthandValue<AttachmentHeaderProps>;
 
   /** Shorthand for the icon. */
-  icon?: ShorthandValue<IconProps>;
+  icon?: ShorthandValue<AttachmentIconProps>;
 
   /** Value indicating percent complete. */
   progress?: string | number;
@@ -49,104 +67,196 @@ export interface AttachmentProps extends UIComponentProps, ChildrenComponentProp
   onClick?: ComponentEventHandler<AttachmentProps>;
 }
 
-export interface AttachmentSlotClassNames {
-  action: string;
-}
+export type AttachmentStylesProps = Required<Pick<AttachmentProps, 'actionable' | 'disabled'>>;
+export const attachmentClassName = 'ui-attachment';
 
-class Attachment extends UIComponent<WithAsProp<AttachmentProps>> {
-  static create: ShorthandFactory<AttachmentProps>;
-
-  static className = 'ui-attachment';
-
-  static displayName = 'Attachment';
-
-  static slotClassNames: AttachmentSlotClassNames;
-
-  static propTypes = {
-    ...commonPropTypes.createCommon({
-      content: false,
-    }),
-    action: customPropTypes.itemShorthand,
-    actionable: PropTypes.bool,
-    description: customPropTypes.itemShorthand,
-    header: customPropTypes.itemShorthand,
-    icon: customPropTypes.itemShorthandWithoutJSX,
-    progress: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  };
-
-  static defaultProps = {
-    accessibility: attachmentBehavior as Accessibility,
-  };
-
-  renderComponent({ ElementType, classes, unhandledProps, styles, variables, accessibility }) {
-    const { header, description, icon, action, progress } = this.props;
-
-    return (
-      <ElementType
-        className={classes.root}
-        onClick={this.handleClick}
-        {...accessibility.attributes.root}
-        {...unhandledProps}
-        {...applyAccessibilityKeyHandlers(accessibility.keyHandlers.root, unhandledProps)}
-      >
-        {icon &&
-          Icon.create(icon, {
-            defaultProps: () => ({ size: 'larger', styles: styles.icon }),
-          })}
-        {(header || description) && (
-          <div className={classes.content}>
-            {Text.create(header, {
-              defaultProps: () => ({ styles: styles.header }),
-            })}
-
-            {Text.create(description, {
-              defaultProps: () => ({ styles: styles.description }),
-            })}
-          </div>
-        )}
-        {action &&
-          Button.create(action, {
-            defaultProps: () => ({
-              iconOnly: true,
-              text: true,
-              styles: styles.action,
-              className: Attachment.slotClassNames.action,
-            }),
-          })}
-        {!_.isNil(progress) && <div className={classes.progress} />}
-      </ElementType>
-    );
-  }
-
-  actionHandlers = {
-    performClick: event => this.performClick(event),
-  };
-
-  performClick = e => {
-    if (e.currentTarget === e.target) {
-      e.stopPropagation();
-      this.handleClick(e);
-    }
-  };
-
-  handleClick = (e: React.SyntheticEvent) => {
-    const { disabled } = this.props;
-
-    if (disabled) {
-      e.preventDefault();
-      return;
-    }
-
-    _.invoke(this.props, 'onClick', e, this.props);
-  };
-}
-
-Attachment.create = createShorthandFactory({ Component: Attachment, mappedProp: 'header' });
-Attachment.slotClassNames = {
-  action: `${Attachment.className}__action`,
+// mergeComponentVariables is always creating a function even if the arguments are undefined
+// we have this temporary fix in place to avoid creating empty function because it is breaking caching
+// we should either fix mergeComponentVariables, or handle this in a more generic way
+const mergeShorthandVariables = (variables, shorthandVariables) => {
+  return (variables || shorthandVariables) && mergeComponentVariables(variables, shorthandVariables);
 };
 
 /**
  * An Attachment represents a file or media attachment, which may contain some metadata or actions.
  */
-export default withSafeTypeForAs<typeof Attachment, AttachmentProps>(Attachment);
+const Attachment = compose<'div', AttachmentProps, AttachmentStylesProps, {}, {}>(
+  (props, ref, composeOptions) => {
+    const context: ProviderContextPrepared = React.useContext(ThemeContext);
+    const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
+    setStart();
+
+    const {
+      accessibility,
+      action,
+      actionable,
+      body,
+      className,
+      description,
+      design,
+      disabled,
+      header,
+      icon,
+      onClick,
+      progress,
+      styles,
+      variables,
+    } = props;
+
+    const getA11Props = useAccessibility(accessibility, {
+      debugName: composeOptions.displayName,
+      actionHandlers: {
+        performClick: e => {
+          if (e.currentTarget === e.target) {
+            e.stopPropagation();
+            handleClick(e);
+          }
+        },
+      },
+      rtl: context.rtl,
+    });
+
+    const { classes } = useStyles<AttachmentStylesProps>(composeOptions.displayName, {
+      className: attachmentClassName,
+      mapPropsToStyles: () => ({
+        actionable: actionable || !!onClick,
+        disabled,
+      }),
+      mapPropsToInlineStyles: () => ({
+        className,
+        design,
+        styles,
+        variables,
+      }),
+      rtl: context.rtl,
+      composeOptions,
+      unstable_props: props,
+    });
+
+    const slotProps = composeOptions.resolveSlotProps<AttachmentProps>(props);
+
+    const ElementType = getElementType(props);
+    const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
+
+    const handleClick = (e: React.KeyboardEvent | React.MouseEvent) => {
+      if (disabled) {
+        e.preventDefault();
+        return;
+      }
+
+      _.invoke(props, 'onClick', e, props);
+    };
+
+    const element = getA11Props.unstable_wrapWithFocusZone(
+      <ElementType {...getA11Props('root', { className: classes.root, onClick: handleClick, ref, ...unhandledProps })}>
+        {createShorthand(composeOptions.slots.icon, icon, {
+          defaultProps: () => slotProps.icon,
+          overrideProps: predefinedProps => ({
+            variables: mergeShorthandVariables(variables, predefinedProps.variables),
+          }),
+        })}
+
+        {(header || description) &&
+          createShorthand(composeOptions.slots.body, body, {
+            defaultProps: () => slotProps.body,
+            overrideProps: predefinedProps => ({
+              content: (
+                <>
+                  {createShorthand(composeOptions.slots.header, header, {
+                    defaultProps: () => slotProps.header,
+                    overrideProps: predefinedProps => ({
+                      variables: mergeShorthandVariables(variables, predefinedProps.variables),
+                    }),
+                  })}
+                  {createShorthand(composeOptions.slots.description, description, {
+                    defaultProps: () => slotProps.description,
+                    overrideProps: predefinedProps => ({
+                      variables: mergeShorthandVariables(variables, predefinedProps.variables),
+                    }),
+                  })}
+                </>
+              ),
+              variables: mergeShorthandVariables(variables, predefinedProps.variables),
+            }),
+          })}
+
+        {createShorthand(composeOptions.slots.action, action, {
+          defaultProps: () => slotProps.action,
+          overrideProps: predefinedProps => ({
+            variables: mergeShorthandVariables(variables, predefinedProps.variables),
+          }),
+        })}
+        {!_.isNil(progress) && <div className="ui-attachment__progress" style={{ width: `${progress}%` }} />}
+      </ElementType>,
+    );
+    setEnd();
+
+    return element;
+  },
+  {
+    className: attachmentClassName,
+    displayName: 'Attachment',
+    slots: {
+      action: AttachmentAction,
+      body: AttachmentBody,
+      description: AttachmentDescription,
+      header: AttachmentHeader,
+      icon: AttachmentIcon,
+    },
+    handledProps: [
+      'accessibility',
+      'action',
+      'actionable',
+      'as',
+      'body',
+      'children',
+      'className',
+      'description',
+      'design',
+      'header',
+      'icon',
+      'onClick',
+      'progress',
+      'styles',
+      'variables',
+    ],
+  },
+) as ComponentWithAs<'div', AttachmentProps> & {
+  create: ShorthandFactory<AttachmentProps>;
+  Action: typeof AttachmentAction;
+  Body: typeof AttachmentBody;
+  Description: typeof AttachmentDescription;
+  Header: typeof AttachmentHeader;
+  Icon: typeof AttachmentIcon;
+};
+
+Attachment.create = createShorthandFactory({ Component: Attachment, mappedProp: 'header' });
+
+Attachment.propTypes = {
+  ...commonPropTypes.createCommon({
+    content: false,
+  }),
+  action: customPropTypes.itemShorthand,
+  actionable: PropTypes.bool,
+  body: customPropTypes.itemShorthand,
+  description: customPropTypes.itemShorthand,
+  header: customPropTypes.itemShorthand,
+  icon: customPropTypes.shorthandAllowingChildren,
+  onClick: PropTypes.func,
+  progress: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+};
+Attachment.defaultProps = {
+  accessibility: attachmentBehavior,
+  body: {},
+};
+
+Attachment.Action = AttachmentAction;
+Attachment.Body = AttachmentBody;
+Attachment.Description = AttachmentDescription;
+Attachment.Header = AttachmentHeader;
+Attachment.Icon = AttachmentIcon;
+
+/**
+ * An Attachment represents a file or media attachment, which may contain some metadata or actions.
+ */
+export default Attachment;

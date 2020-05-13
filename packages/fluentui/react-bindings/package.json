@@ -1,23 +1,33 @@
 {
   "name": "@fluentui/react-bindings",
   "description": "A set of components and hooks to build components libraries and UI kits.",
-  "version": "0.47.0",
+  "version": "0.49.0",
   "author": "Oleksandr Fediashov <a@fedyashov.com>",
   "bugs": "https://github.com/microsoft/fluentui/issues",
   "dependencies": {
     "@babel/runtime": "^7.7.6",
-    "@fluentui/accessibility": "^0.47.0",
-    "@fluentui/state": "^0.47.0",
-    "@fluentui/styles": "^0.47.0",
+    "@fluentui/accessibility": "^0.49.0",
+    "@fluentui/react-component-event-listener": "^0.49.0",
+    "@fluentui/react-component-ref": "^0.49.0",
+    "@fluentui/react-compose": "^0.2.12",
+    "@fluentui/state": "^0.49.0",
+    "@fluentui/styles": "^0.49.0",
+    "@uifabric/utilities": "^7.16.4",
     "classnames": "^2.2.6",
     "fela": "^10.6.1",
-    "lodash": "^4.17.15"
+    "keyboard-key": "1.0.1",
+    "lodash": "^4.17.15",
+    "prop-types": "^15.7.2",
+    "react-fela": "^10.6.1"
   },
   "devDependencies": {
     "@types/classnames": "^2.2.9",
-    "@types/react": "16.8.11",
+    "@types/react": "16.8.25",
+    "@types/react-dom": "16.8.4",
     "@uifabric/build": "^7.0.0",
-    "lerna-alias": "^3.0.3-0"
+    "lerna-alias": "^3.0.3-0",
+    "react": "16.8.6",
+    "react-dom": "16.8.6"
   },
   "files": [
     "dist"
@@ -38,10 +48,8 @@
   "scripts": {
     "build": "gulp bundle:package:no-umd",
     "clean": "gulp bundle:package:clean",
-    "lint": "yarn lint:eslint && yarn lint:old",
-    "lint:eslint": "eslint --ext .js,.ts,.tsx .",
-    "lint:fix": "yarn lint:eslint --fix && yarn lint:old --fix",
-    "lint:old": "tslint -t stylish -p .",
+    "lint": "eslint --ext .js,.ts,.tsx .",
+    "lint:fix": "yarn lint --fix",
     "test": "gulp test",
     "test:watch": "gulp test:watch"
   },

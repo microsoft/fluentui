@@ -1,6 +1,12 @@
 import { IShimmerStyleProps, IShimmerStyles } from './Shimmer.types';
-import { keyframes, getGlobalClassNames, hiddenContentStyle, HighContrastSelector } from '../../Styling';
-import { getRTL } from '../../Utilities';
+import {
+  keyframes,
+  getGlobalClassNames,
+  hiddenContentStyle,
+  HighContrastSelector,
+  getEdgeChromiumNoHighContrastAdjustSelector,
+} from '../../Styling';
+import { getRTL, memoizeFunction } from '../../Utilities';
 
 const GlobalClassNames = {
   root: 'ms-Shimmer-container',
@@ -11,23 +17,27 @@ const GlobalClassNames = {
 
 const BACKGROUND_OFF_SCREEN_POSITION = '100%';
 
-const shimmerAnimation: string = keyframes({
-  '0%': {
-    transform: `translateX(-${BACKGROUND_OFF_SCREEN_POSITION})`,
-  },
-  '100%': {
-    transform: `translateX(${BACKGROUND_OFF_SCREEN_POSITION})`,
-  },
-});
+const shimmerAnimation = memoizeFunction(() =>
+  keyframes({
+    '0%': {
+      transform: `translateX(-${BACKGROUND_OFF_SCREEN_POSITION})`,
+    },
+    '100%': {
+      transform: `translateX(${BACKGROUND_OFF_SCREEN_POSITION})`,
+    },
+  }),
+);
 
-const shimmerAnimationRTL: string = keyframes({
-  '100%': {
-    transform: `translateX(-${BACKGROUND_OFF_SCREEN_POSITION})`,
-  },
-  '0%': {
-    transform: `translateX(${BACKGROUND_OFF_SCREEN_POSITION})`,
-  },
-});
+const shimmerAnimationRTL = memoizeFunction(() =>
+  keyframes({
+    '100%': {
+      transform: `translateX(-${BACKGROUND_OFF_SCREEN_POSITION})`,
+    },
+    '0%': {
+      transform: `translateX(${BACKGROUND_OFF_SCREEN_POSITION})`,
+    },
+  }),
+);
 
 export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
   const { isDataLoaded, className, theme, transitionAnimationInterval, shimmerColor, shimmerWaveColor } = props;
@@ -69,6 +79,7 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
                         0 0 / 90% 100%
                         no-repeat`,
           },
+          ...getEdgeChromiumNoHighContrastAdjustSelector(),
         },
       },
       isDataLoaded && {
@@ -101,7 +112,7 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
         animationTimingFunction: 'ease-in-out',
         animationDirection: 'normal',
         animationIterationCount: 'infinite',
-        animationName: isRTL ? shimmerAnimationRTL : shimmerAnimation,
+        animationName: isRTL ? shimmerAnimationRTL() : shimmerAnimation(),
       },
     ],
     dataWrapper: [

@@ -1,7 +1,82 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Mon, 23 Mar 2020 12:28:29 GMT and should not be manually modified.
+This log was last generated on Fri, 08 May 2020 12:35:40 GMT and should not be manually modified.
 
+<!-- Start content -->
+
+## [7.23.22](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.23.22)
+
+Fri, 08 May 2020 12:35:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.23.21..@uifabric/experiments_v7.23.22)
+
+### Patches
+
+- update snapshots for merge-styles change to not generate class with no styles ([PR #13029](https://github.com/microsoft/fluentui/pull/13029) by pingj@microsoft.com)
+
+## [7.23.21](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.23.21)
+
+Thu, 07 May 2020 01:06:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.23.18..@uifabric/experiments_v7.23.21)
+
+### Patches
+
+- Addressing commonjs imports. ([PR #13031](https://github.com/microsoft/fluentui/pull/13031) by dzearing@microsoft.com)
+
+## [7.23.18](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.23.18)
+
+Mon, 04 May 2020 12:33:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.23.9..@uifabric/experiments_v7.23.18)
+
+### Patches
+
+- Remove unused typescript-plugin-css-modules dep ([PR #12915](https://github.com/microsoft/fluentui/pull/12915) by elcraig@microsoft.com)
+
+## [7.23.9](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.23.9)
+
+Wed, 22 Apr 2020 12:33:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.23.2..@uifabric/experiments_v7.23.9)
+
+### Patches
+
+- Fix incorrect aria-colindex values in TilesList ([PR #12801](https://github.com/microsoft/fluentui/pull/12801) by tmichon@microsoft.com)
+
+## [7.23.2](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.23.2)
+
+Thu, 16 Apr 2020 04:01:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.23.0..@uifabric/experiments_v7.23.2)
+
+### Patches
+
+- Readme: Remove graduation details; Fabric=>Fluent wording updates ([PR #12508](https://github.com/microsoft/fluentui/pull/12508) by elcraig@microsoft.com)
+- removing more references to wrong filetype icons from a deprecated folder ([PR #12422](https://github.com/microsoft/fluentui/pull/12422) by caperez@microsoft.com)
+
+## 7.23.0
+Thu, 09 Apr 2020 12:24:31 GMT
+
+### Minor changes
+
+- Support TilesList overrides for altering list semantics for grid accessibility (tmichon@microsoft.com)
+### Patches
+
+- Update experiments testing instructions (elcraig@microsoft.com)
+## 7.22.16
+Wed, 08 Apr 2020 12:28:27 GMT
+
+### Patches
+
+- fix: fix typings for asAsync & internal usages of React.Children.map (olfedias@microsoft.com)
+## 7.22.12
+Thu, 02 Apr 2020 12:30:40 GMT
+
+### Patches
+
+- Adding build tool dependency for type safety of scss modules. (dzearing@microsoft.com)
+## 7.22.8
+Wed, 25 Mar 2020 12:30:04 GMT
+
+### Patches
+
+- Changing references of Fabric to Fluent (mgodbolt@microsoft.com)
 ## 7.22.7
 Mon, 23 Mar 2020 12:28:29 GMT
 
@@ -2608,4 +2683,3 @@ Wed, 16 Aug 2017 10:11:43 GMT
 Tue, 15 Aug 2017 10:19:22 GMT
 
 *Initial release*
-

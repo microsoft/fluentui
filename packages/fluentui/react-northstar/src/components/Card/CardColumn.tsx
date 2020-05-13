@@ -14,6 +14,7 @@ export interface CardColumnProps extends UIComponentProps, ChildrenComponentProp
 }
 
 export type CardColumnStylesProps = never;
+export const cardColumnClassName = 'ui-card__column';
 
 const CardColumn: React.FC<WithAsProp<CardColumnProps>> & FluentComponentStaticProps<CardColumnProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
@@ -29,7 +30,7 @@ const CardColumn: React.FC<WithAsProp<CardColumnProps>> & FluentComponentStaticP
   });
 
   const { classes } = useStyles<CardColumnStylesProps>(CardColumn.displayName, {
-    className: CardColumn.className,
+    className: cardColumnClassName,
     mapPropsToInlineStyles: () => ({
       className,
       design,
@@ -54,7 +55,6 @@ const CardColumn: React.FC<WithAsProp<CardColumnProps>> & FluentComponentStaticP
 };
 
 CardColumn.displayName = 'CardColumn';
-CardColumn.className = 'ui-card__column';
 
 CardColumn.propTypes = {
   ...commonPropTypes.createCommon(),

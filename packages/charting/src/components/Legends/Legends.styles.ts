@@ -46,7 +46,7 @@ export const getStyles = (props: ILegendStyleProps): ILegendsStyles => {
       backgroundColor: props.colorOnSelectedState,
       marginRight: '8px',
       border: '1px solid',
-      borderColor: props.borderColor ? props.borderColor : palette.black,
+      borderColor: props.borderColor ? props.borderColor : theme?.semanticColors.buttonBorder,
       opacity: props.colorOnSelectedState === palette.white ? '0.6' : '',
     },
     triangle: {
@@ -62,7 +62,7 @@ export const getStyles = (props: ILegendStyleProps): ILegendsStyles => {
       ...fonts.small,
       lineHeight: '16px',
       marginRight: '16px',
-      color: palette.black,
+      color: theme?.semanticColors.bodyText,
       opacity: props.colorOnSelectedState === palette.white ? '0.6' : '',
     },
     hoverChange: {
@@ -75,7 +75,7 @@ export const getStyles = (props: ILegendStyleProps): ILegendsStyles => {
     },
     overflowIndicationTextStyle: {
       cursor: 'pointer',
-      color: palette.themePrimary,
+      color: theme?.semanticColors.bodyText,
       ...fonts.small,
       lineHeight: '14px',
     },

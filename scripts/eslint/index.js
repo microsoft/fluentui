@@ -9,7 +9,7 @@ module.exports = {
   rules: {
     // False positive on arg types:
     // https://github.com/typescript-eslint/typescript-eslint/issues/46
-    '@typescript-eslint/no-unused-vars': ['error', { args: 'none' }],
+    '@typescript-eslint/no-unused-vars': ['error', { args: 'none', ignoreRestSiblings: true }],
 
     'import/no-unresolved': 'off',
     'react/jsx-filename-extension': ['error', { extensions: ['.js', '.tsx'] }],
@@ -31,7 +31,10 @@ module.exports = {
     'import/first': 'off',
     'import/order': 'off',
     'import/no-dynamic-require': 'off',
-    'import/no-extraneous-dependencies': 'off',
+    'import/no-extraneous-dependencies': [
+      'error',
+      { devDependencies: ['**/*-test.ts*', '**/*.test.ts*', '*.config.js', 'gulpfile.ts', 'just.config.ts'] },
+    ],
     'import/no-named-default': 'off',
     'import/no-useless-path-segments': 'off',
     'import/prefer-default-export': 'off',

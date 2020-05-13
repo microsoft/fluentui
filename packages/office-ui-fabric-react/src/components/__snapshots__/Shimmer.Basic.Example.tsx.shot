@@ -31,7 +31,6 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
         margin-right: 0;
         margin-top: 10px;
       }
-  dir="ltr"
 >
   Basic Shimmer with no elements provided. It defaults to a line of 16px height.
   <div
@@ -69,6 +68,9 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
                                     transparent 100%)
                                   0 0 / 90% 100%
                                   no-repeat;
+          }
+          @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+            forced-color-adjust: none;
           }
       style={
         Object {
@@ -255,6 +257,9 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
                                   0 0 / 90% 100%
                                   no-repeat;
           }
+          @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+            forced-color-adjust: none;
+          }
       style={
         Object {
           "width": "75%",
@@ -439,6 +444,9 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
                                     transparent 100%)
                                   0 0 / 90% 100%
                                   no-repeat;
+          }
+          @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+            forced-color-adjust: none;
           }
       style={
         Object {
@@ -625,6 +633,9 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
                                     transparent 100%)
                                   0 0 / 90% 100%
                                   no-repeat;
+          }
+          @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+            forced-color-adjust: none;
           }
       style={
         Object {
@@ -883,6 +894,9 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
                                     transparent 100%)
                                   0 0 / 90% 100%
                                   no-repeat;
+          }
+          @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+            forced-color-adjust: none;
           }
       style={
         Object {
@@ -1519,6 +1533,9 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
                                     transparent 100%)
                                   0 0 / 90% 100%
                                   no-repeat;
+          }
+          @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+            forced-color-adjust: none;
           }
       style={
         Object {
@@ -2156,6 +2173,9 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
                                     transparent 100%)
                                   0 0 / 90% 100%
                                   no-repeat;
+          }
+          @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+            forced-color-adjust: none;
           }
       style={
         Object {

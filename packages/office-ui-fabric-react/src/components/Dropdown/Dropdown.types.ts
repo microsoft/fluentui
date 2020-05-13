@@ -102,6 +102,7 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown,
    * Keys of the selected items. If you provide this, you must maintain selection
    * state by observing onChange events and passing a new value in when changed.
    * Passing null in will clear the selection.
+   * Mutually exclusive with `defaultSelectedKeys`.
    */
   selectedKeys?: string[] | number[] | null;
 
@@ -257,7 +258,7 @@ export interface IDropdownStyles {
 
   /**
    * Refers to the panel that hosts the Dropdown options in small viewports.
-   * Note: This will be deprecated when Panel supports JS Styling.
+   * @deprecated Use `subComponentStyles.panel` instead.
    */
   panel: IStyle;
 

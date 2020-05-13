@@ -2,6 +2,84 @@
   "name": "@uifabric/react-cards",
   "entries": [
     {
+      "date": "Thu, 07 May 2020 01:06:55 GMT",
+      "tag": "@uifabric/react-cards_v0.109.72",
+      "version": "0.109.72",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Addressing commonjs imports.",
+            "author": "dzearing@microsoft.com",
+            "commit": "f4a995d4166c7812976b13c6638fb1ae32a8667d",
+            "package": "@uifabric/react-cards"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Apr 2020 04:01:45 GMT",
+      "tag": "@uifabric/react-cards_v0.109.54",
+      "version": "0.109.54",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Readme: Remove graduation details; Fabric=>Fluent wording updates",
+            "author": "elcraig@microsoft.com",
+            "commit": "9e3c7c7d4b92e132820cdbcd61a667829c712ecb",
+            "package": "@uifabric/react-cards"
+          },
+          {
+            "comment": "Card: Removing unwanted outline when Cards are clicked.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "ad8326f205013584301337084e15067937f49b7e",
+            "package": "@uifabric/react-cards"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 Apr 2020 12:24:31 GMT",
+      "tag": "@uifabric/react-cards_v0.109.53",
+      "version": "0.109.53",
+      "comments": {
+        "none": [
+          {
+            "comment": "chore: bump @types/react",
+            "author": "olfedias@microsoft.com",
+            "commit": "1c25191a3a6a1b6e8a0aca3c7cf7f3a629171738"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 08 Apr 2020 12:28:27 GMT",
+      "tag": "@uifabric/react-cards_v0.109.53",
+      "version": "0.109.53",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix: fix typings for asAsync & internal usages of React.Children.map",
+            "author": "olfedias@microsoft.com",
+            "commit": "5d5891f4757c292ad5a59a7522a00437ae7ac248"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 25 Mar 2020 12:30:04 GMT",
+      "tag": "@uifabric/react-cards_v0.109.45",
+      "version": "0.109.45",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Changing references of Fabric to Fluent",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "3ec9a0efa90dc462104e717dc0f9c41e1b4fcd60"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 23 Mar 2020 12:28:29 GMT",
       "tag": "@uifabric/react-cards_v0.109.44",
       "version": "0.109.44",

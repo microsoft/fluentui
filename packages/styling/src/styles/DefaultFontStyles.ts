@@ -47,6 +47,7 @@ function _registerFontFaceSet(
     FontWeights.semibold,
     localFontName && localFontName + ' SemiBold',
   );
+  _registerFontFace(fontFamily, urlBase + '-bold', FontWeights.bold, localFontName && localFontName + ' Bold');
 }
 
 export function registerDefaultFontFaces(baseUrl: string): void {
@@ -80,12 +81,10 @@ export function registerDefaultFontFaces(baseUrl: string): void {
  * Reads the fontBaseUrl from window.FabricConfig.fontBaseUrl or falls back to a default.
  */
 function _getFontBaseUrl(): string {
-  let win = getWindow();
+  // tslint:disable-next-line:no-any
+  const fabricConfig: IFabricConfig | undefined = (getWindow() as any)?.FabricConfig;
 
-  // tslint:disable-next-line:no-string-literal no-any
-  let fabricConfig: IFabricConfig = win ? win['FabricConfig'] : undefined;
-
-  return fabricConfig && fabricConfig.fontBaseUrl !== undefined ? fabricConfig.fontBaseUrl : DefaultBaseUrl;
+  return fabricConfig?.fontBaseUrl ?? DefaultBaseUrl;
 }
 
 /**

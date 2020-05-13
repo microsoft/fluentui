@@ -1,9 +1,9 @@
 import { pxToRem } from '../../../../utils';
-import { CarouselProps, CarouselState } from '../../../../components/Carousel/Carousel';
+import { CarouselStylesProps } from '../../../../components/Carousel/Carousel';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { CarouselVariables } from './carouselVariables';
 
-const carouselStyles: ComponentSlotStylesPrepared<CarouselProps & CarouselState, CarouselVariables> = {
+const carouselStyles: ComponentSlotStylesPrepared<CarouselStylesProps, CarouselVariables> = {
   root: (): ICSSInJSStyle => ({
     display: 'inline-block',
   }),
@@ -12,7 +12,6 @@ const carouselStyles: ComponentSlotStylesPrepared<CarouselProps & CarouselState,
     width: pxToRem(v.width),
     overflowX: 'hidden',
     border: '1px solid transparent',
-
     ...(p.shouldFocusContainer &&
       p.isFromKeyboard && {
         border: `1px solid ${v.focusOuterBorderColor}`,
@@ -25,21 +24,6 @@ const carouselStyles: ComponentSlotStylesPrepared<CarouselProps & CarouselState,
     display: 'flex',
     listStyle: 'none',
     willChange: 'transform',
-  }),
-  paddleNext: ({ props: p, variables: v }): ICSSInJSStyle => ({
-    height: pxToRem(v.paddleNextSize),
-    top: pxToRem(-v.height / 2 - v.paddleNextSize / 2),
-    left: pxToRem(v.width - 2 * v.paddleNextSize),
-    ...(p.items !== undefined && {
-      visibility: !p.circular && p.activeIndex === p.items.length - 1 ? 'hidden' : 'visible',
-    }),
-  }),
-  paddlePrevious: ({ props: p, variables: v }): ICSSInJSStyle => ({
-    height: pxToRem(v.paddlePreviousSize),
-    top: pxToRem(-v.height / 2 - v.paddlePreviousSize / 2),
-    ...(p.items !== undefined && {
-      visibility: !p.circular && p.activeIndex === 0 ? 'hidden' : 'visible',
-    }),
   }),
 };
 

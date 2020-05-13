@@ -6,6 +6,6 @@ import Button from 'src/components/Button/Button';
 const buttonGroupImplementsCollectionShorthandProp = implementsCollectionShorthandProp(ButtonGroup);
 
 describe('ButtonGroup', () => {
-  isConformant(ButtonGroup);
+  isConformant(ButtonGroup, { constructorName: 'ButtonGroup' });
   buttonGroupImplementsCollectionShorthandProp('buttons', Button);
 });

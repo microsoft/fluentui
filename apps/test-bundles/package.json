@@ -21,19 +21,20 @@
     "start": "just-scripts dev"
   },
   "devDependencies": {
-    "@types/react": "16.8.11",
+    "@types/react": "16.8.25",
     "@types/react-dom": "16.8.4",
     "@types/webpack-env": "1.15.1",
-    "@uifabric/tslint-rules": "^7.1.1",
+    "@uifabric/tslint-rules": "^7.2.1",
     "@uifabric/build": "^7.0.0",
     "parallel-webpack": "^2.4.0"
   },
   "dependencies": {
-    "@uifabric/experiments": "^7.22.7",
-    "@fluentui/keyboard-key": "^0.1.3",
-    "@uifabric/set-version": "^7.0.8",
-    "@uifabric/styling": "^7.10.22",
-    "office-ui-fabric-react": "^7.105.2",
+    "@uifabric/experiments": "^7.23.26",
+    "@fluentui/keyboard-key": "^0.2.0",
+    "@uifabric/set-version": "^7.0.12",
+    "@uifabric/styling": "^7.12.5",
+    "office-ui-fabric-react": "^7.113.1",
+    "@fluentui/react-next": "^8.0.0-alpha.18",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",

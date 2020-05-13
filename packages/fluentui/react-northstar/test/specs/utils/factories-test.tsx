@@ -2,7 +2,7 @@ import { callable } from '@fluentui/styles';
 import * as React from 'react';
 import * as _ from 'lodash';
 import { shallow } from 'enzyme';
-import { createShorthand, createShorthandFactory } from 'src/utils';
+import { createShorthandInternal as createShorthand, createShorthandFactory } from 'src/utils';
 import { Props, ShorthandValue, ObjectOf, ShorthandRenderFunction } from 'src/types';
 import { consoleUtil } from 'test/utils';
 
@@ -10,14 +10,14 @@ import { consoleUtil } from 'test/utils';
 // Utils
 // ----------------------------------------
 
-type ShorthandConfig = {
-  Component?: React.ReactType;
+type GetShorthandConfig = {
+  Component?: React.ElementType;
   defaultProps?: () => Props;
   mappedProp?: string;
   mappedArrayProp?: string;
   overrideProps?: (Props & ((props: Props) => Props)) | Props;
   generateKey?: boolean;
-  valueOrRenderCallback?: ShorthandValue<Props>;
+  value?: ShorthandValue<Props>;
   render?: ShorthandRenderFunction<any>;
 };
 
@@ -31,14 +31,14 @@ const getShorthand = ({
   mappedArrayProp = '',
   overrideProps,
   generateKey,
-  valueOrRenderCallback,
+  value,
   render,
-}: ShorthandConfig) =>
+}: GetShorthandConfig) =>
   createShorthand({
     Component,
     mappedProp,
     mappedArrayProp,
-    valueOrRenderCallback,
+    value,
     options: {
       defaultProps,
       overrideProps,
@@ -50,48 +50,46 @@ const getShorthand = ({
 const isValuePrimitive = (value: ShorthandValue<Props>) =>
   typeof value === 'string' || typeof value === 'number' || React.isValidElement(value);
 
-const testCreateShorthand = (shorthandArgs: ShorthandConfig, expectedResult: ObjectOf<any>) =>
+const testCreateShorthand = (shorthandArgs: GetShorthandConfig, expectedResult: ObjectOf<any>) =>
   expect(shallow(getShorthand(shorthandArgs)).props()).toEqual(expectedResult);
 
 // ----------------------------------------
 // Common tests
 // ----------------------------------------
 
-const itReturnsNull = valueOrRenderCallback => {
+const itReturnsNull = value => {
   test('returns null', () => {
     consoleUtil.disableOnce();
-    expect(getShorthand({ valueOrRenderCallback })).toBe(null);
+    expect(getShorthand({ value })).toBe(null);
   });
 };
 
-const itReturnsNullGivenDefaultProps = valueOrRenderCallback => {
+const itReturnsNullGivenDefaultProps = value => {
   test('returns null given defaultProps object', () => {
     consoleUtil.disableOnce();
-    expect(getShorthand({ valueOrRenderCallback, defaultProps: () => ({ 'data-foo': 'foo' }) })).toBe(null);
+    expect(getShorthand({ value, defaultProps: () => ({ 'data-foo': 'foo' }) })).toBe(null);
   });
 };
 
-const itReturnsAValidElement = valueOrRenderCallback => {
+const itReturnsAValidElement = value => {
   test('returns a valid element', () => {
-    expect(React.isValidElement(getShorthand({ valueOrRenderCallback }))).toBe(true);
+    expect(React.isValidElement(getShorthand({ value }))).toBe(true);
   });
 };
 
-const itAppliesDefaultProps = (valueOrRenderCallback: ShorthandValue<Props>) => {
+const itAppliesDefaultProps = (value: ShorthandValue<Props>) => {
   test('applies defaultProps', () => {
     const defaultPropsValue = { some: 'defaults' };
-    const expectedResult = isValuePrimitive(valueOrRenderCallback)
-      ? { ...defaultPropsValue, children: valueOrRenderCallback }
-      : defaultPropsValue;
+    const expectedResult = isValuePrimitive(value) ? { ...defaultPropsValue, children: value } : defaultPropsValue;
 
-    testCreateShorthand({ valueOrRenderCallback, defaultProps: () => defaultPropsValue }, expectedResult);
+    testCreateShorthand({ value, defaultProps: () => defaultPropsValue }, expectedResult);
   });
 };
 
-const itDoesNotIncludePropsFromMappedProp = valueOrRenderCallback => {
+const itDoesNotIncludePropsFromMappedProp = value => {
   test('does not include props from mappedProp', () => {
     const mappedProp = 'data-foo';
-    const wrapper = shallow(getShorthand({ valueOrRenderCallback, mappedProp }));
+    const wrapper = shallow(getShorthand({ value, mappedProp }));
 
     expect(wrapper.prop(mappedProp)).not.toBeDefined();
   });
@@ -100,14 +98,14 @@ const itDoesNotIncludePropsFromMappedProp = valueOrRenderCallback => {
 const itMergesClassNames = (
   classNameSource: string,
   extraClassName: string,
-  shorthandConfig: { valueOrRenderCallback?: ShorthandValue<Props>; mappedProp?: string },
+  shorthandConfig: { value?: ShorthandValue<Props>; mappedProp?: string },
 ) => {
   test(`merges defaultProps className and ${classNameSource} className`, () => {
     const defaultProps = () => ({ className: 'default' });
     const overrideProps = { className: 'override' };
 
     let expectedClassNames = 'default override';
-    if (!isValuePrimitive(shorthandConfig.valueOrRenderCallback)) {
+    if (!isValuePrimitive(shorthandConfig.value)) {
       expectedClassNames += ` ${extraClassName}`;
     }
 
@@ -117,7 +115,7 @@ const itMergesClassNames = (
   });
 };
 
-const itAppliesProps = (propsSource: string, expectedProps: Props, shorthandConfig: ShorthandConfig) => {
+const itAppliesProps = (propsSource: string, expectedProps: Props, shorthandConfig: GetShorthandConfig) => {
   test(`applies props from the ${propsSource} props`, () => {
     testCreateShorthand(shorthandConfig, expectedProps);
   });
@@ -158,6 +156,14 @@ describe('factories', () => {
       const goodUsage = () =>
         // @ts-ignore
         createShorthandFactory({ Component: () => <div />, mappedProp: 'children' });
+
+      expect(goodUsage).not.toThrowError();
+    });
+
+    test('does not throw if passed a forwardRef Component', () => {
+      const goodUsage = () =>
+        // @ts-ignore
+        createShorthandFactory({ Component: React.forwardRef(() => null), mappedProp: 'children' });
 
       expect(goodUsage).not.toThrowError();
     });
@@ -214,76 +220,6 @@ describe('factories', () => {
       });
     });
 
-    describe('render callback', () => {
-      test('returns the same React element as if shorthand value would be passed directly', () => {
-        const createShorthandElement = valueOrRenderCallback =>
-          getShorthand({
-            valueOrRenderCallback,
-            Component: 'div',
-            defaultProps: () => ({
-              baz: 'original',
-            }),
-            overrideProps: {
-              baz: 'overriden',
-            },
-          });
-
-        const shorthandValue = { dataFoo: 'bar' };
-
-        // render callback is deprecated an throws deprecation warnings
-        consoleUtil.disableOnce();
-
-        const elementFromShorthandValue = createShorthandElement(shorthandValue);
-        const elementFromRenderCallback = createShorthandElement(render => render(shorthandValue));
-
-        expect(elementFromShorthandValue.type).toEqual(elementFromRenderCallback.type);
-        expect(elementFromShorthandValue.props).toEqual(elementFromRenderCallback.props);
-      });
-
-      describe('custom tree renderer', () => {
-        test('passes evaluated Component type as the first argument', () => {
-          // render callback is deprecated an throws deprecation warnings
-          consoleUtil.disableOnce();
-
-          getShorthand({
-            valueOrRenderCallback: render =>
-              render({}, (Component, props) => {
-                expect(Component).toBe('span');
-              }),
-            Component: 'span',
-          });
-        });
-
-        test('passes evaluated props as the second argument', () => {
-          const shorthandProps = { bar: 'foo' };
-
-          // render callback is deprecated an throws deprecation warnings
-          consoleUtil.disableOnce();
-
-          getShorthand({
-            valueOrRenderCallback: render =>
-              render(shorthandProps, (Component, props) => {
-                expect(props.bar).toBe(shorthandProps.bar);
-              }),
-          });
-        });
-
-        test('overrides render prop from shorthand options', () => {
-          const CustomComponent = 'overriden-div' as any;
-
-          // render callback is deprecated an throws deprecation warnings
-          consoleUtil.disableOnce();
-
-          const shorthandElement = getShorthand({
-            valueOrRenderCallback: render => render({}, (Component, props) => <CustomComponent />),
-            render: (Component, props) => <div>Default</div>,
-          });
-
-          expect(shorthandElement.type).toBe(CustomComponent);
-        });
-      });
-    });
-
     describe('styles', () => {
       test('deep merges styles prop onto defaultProps styles', () => {
         expect.assertions(1);
@@ -302,13 +238,15 @@ describe('factories', () => {
         consoleUtil.disableOnce();
 
         getShorthand({
-          valueOrRenderCallback: render =>
-            render(props, (Component, props) => {
+          value: {
+            ...props,
+            children: (Component, props) => {
               expect(callable(props.styles)()).toMatchObject({
                 color: 'black',
                 ':hover': { color: 'blue' },
               });
-            }),
+            },
+          },
           Component: 'p',
           defaultProps,
         });
@@ -340,8 +278,9 @@ describe('factories', () => {
         consoleUtil.disableOnce();
 
         getShorthand({
-          valueOrRenderCallback: render =>
-            render(props, (Component, props) => {
+          value: {
+            ...props,
+            children: (Component, props) => {
               expect(callable(props.styles)()).toMatchObject({
                 position: 'keep',
                 color: 'black',
@@ -350,7 +289,8 @@ describe('factories', () => {
                   color: 'blue',
                 },
               });
-            }),
+            },
+          },
           Component: 'p',
           overrideProps,
         });
@@ -373,13 +313,15 @@ describe('factories', () => {
         consoleUtil.disableOnce();
 
         getShorthand({
-          valueOrRenderCallback: render =>
-            render(props, (Component, props) => {
+          value: {
+            ...props,
+            children: (Component, props) => {
               expect(callable(props.styles)()).toMatchObject({
                 color: 'black',
                 ':hover': { color: 'blue' },
               });
-            }),
+            },
+          },
           Component: 'p',
           defaultProps,
         });
@@ -411,8 +353,9 @@ describe('factories', () => {
         consoleUtil.disableOnce();
 
         getShorthand({
-          valueOrRenderCallback: render =>
-            render(props, (Component, props) => {
+          value: {
+            ...props,
+            children: (Component, props) => {
               expect(callable(props.styles)()).toMatchObject({
                 position: 'keep',
                 color: 'black',
@@ -421,7 +364,8 @@ describe('factories', () => {
                   color: 'blue',
                 },
               });
-            }),
+            },
+          },
           Component: 'p',
           overrideProps,
         });
@@ -432,9 +376,13 @@ describe('factories', () => {
       test('can be an object', () => {
         const defaultPropsValue = { 'data-some': 'defaults' };
         testCreateShorthand(
-          { defaultProps: () => defaultPropsValue, valueOrRenderCallback: 'foo' },
+          { defaultProps: () => defaultPropsValue, value: 'foo' },
           { ...defaultPropsValue, children: 'foo' },
         );
+      });
+
+      test('returns empty object if the result of the function is undefined', () => {
+        testCreateShorthand({ defaultProps: () => undefined, value: 'foo' }, { children: 'foo' });
       });
     });
 
@@ -445,68 +393,67 @@ describe('factories', () => {
       });
 
       test('is not consumed', () => {
-        expect(getShorthand({ valueOrRenderCallback: { key: 123 } }).props).toHaveProperty('key');
+        expect(getShorthand({ value: { key: 123 } }).props).toHaveProperty('key');
       });
 
       describe('on an element', () => {
         test('works with a string', () => {
-          expect(getShorthand({ valueOrRenderCallback: <div key="foo" /> })).toHaveProperty('key', 'foo');
+          expect(getShorthand({ value: <div key="foo" /> })).toHaveProperty('key', 'foo');
         });
 
         test('works with a number', () => {
-          expect(getShorthand({ valueOrRenderCallback: <div key={123} /> })).toHaveProperty('key', '123');
+          expect(getShorthand({ value: <div key={123} /> })).toHaveProperty('key', '123');
         });
 
         test('works with falsy values', () => {
-          const elementWithoutKey = getShorthand({ valueOrRenderCallback: <p /> });
+          const elementWithoutKey = getShorthand({ value: <p /> });
           expect(elementWithoutKey).toHaveProperty('key', null);
           expect(elementWithoutKey.props.children.key).toBe(null);
 
-          const elementWithNullKey = getShorthand({ valueOrRenderCallback: <p key={null} /> });
+          const elementWithNullKey = getShorthand({ value: <p key={null} /> });
           expect(elementWithNullKey).toHaveProperty('key', 'null');
           expect(elementWithoutKey.props.children.key).toBe(null);
 
-          expect(getShorthand({ valueOrRenderCallback: <div key={0} /> })).toHaveProperty('key', '0');
-
-          expect(getShorthand({ valueOrRenderCallback: <div key="" /> })).toHaveProperty('key', '');
+          expect(getShorthand({ value: <div key={0} /> })).toHaveProperty('key', '0');
+          expect(getShorthand({ value: <div key="" /> })).toHaveProperty('key', '');
         });
       });
 
       describe('on an object', () => {
         test('works with a string', () => {
-          expect(getShorthand({ valueOrRenderCallback: { key: 'foo' } })).toHaveProperty('key', 'foo');
+          expect(getShorthand({ value: { key: 'foo' } })).toHaveProperty('key', 'foo');
         });
 
         test('works with a number', () => {
-          expect(getShorthand({ valueOrRenderCallback: { key: 123 } })).toHaveProperty('key', '123');
+          expect(getShorthand({ value: { key: 123 } })).toHaveProperty('key', '123');
         });
 
         test('works with falsy values', () => {
-          expect(getShorthand({ valueOrRenderCallback: { key: null } })).toHaveProperty('key', 'null');
+          expect(getShorthand({ value: { key: null } })).toHaveProperty('key', 'null');
 
-          expect(getShorthand({ valueOrRenderCallback: { key: 0 } })).toHaveProperty('key', '0');
+          expect(getShorthand({ value: { key: 0 } })).toHaveProperty('key', '0');
 
-          expect(getShorthand({ valueOrRenderCallback: { key: '' } })).toHaveProperty('key', '');
+          expect(getShorthand({ value: { key: '' } })).toHaveProperty('key', '');
         });
       });
 
       describe('when value is a string', () => {
         test('is generated from the value', () => {
-          expect(getShorthand({ valueOrRenderCallback: 'foo' })).toHaveProperty('key', 'foo');
+          expect(getShorthand({ value: 'foo' })).toHaveProperty('key', 'foo');
         });
 
         test('is not generated if generateKey is false', () => {
-          expect(getShorthand({ valueOrRenderCallback: 'foo', generateKey: false })).toHaveProperty('key', null);
+          expect(getShorthand({ value: 'foo', generateKey: false })).toHaveProperty('key', null);
         });
       });
 
       describe('when value is a number', () => {
         test('is generated from the value', () => {
-          expect(getShorthand({ valueOrRenderCallback: 123 })).toHaveProperty('key', '123');
+          expect(getShorthand({ value: 123 })).toHaveProperty('key', '123');
         });
 
         test('is not generated if generateKey is false', () => {
-          expect(getShorthand({ valueOrRenderCallback: 123, generateKey: false })).toHaveProperty('key', null);
+          expect(getShorthand({ value: 123, generateKey: false })).toHaveProperty('key', null);
         });
       });
     });
@@ -517,16 +464,13 @@ describe('factories', () => {
       test('can be an object', () => {
         const overrideProps = { 'data-some': 'overrides' };
 
-        testCreateShorthand(
-          { overrideProps, valueOrRenderCallback: testValue },
-          { ...overrideProps, children: testValue },
-        );
+        testCreateShorthand({ overrideProps, value: testValue }, { ...overrideProps, children: testValue });
       });
 
       test('can be a function that returns defaultProps', () => {
         const overrideProps = () => ({ 'data-some': 'overrides', children: testValue });
 
-        testCreateShorthand({ overrideProps, valueOrRenderCallback: testValue }, overrideProps());
+        testCreateShorthand({ overrideProps, value: testValue }, overrideProps());
       });
 
       test("is called with the user's element's and default props", () => {
@@ -537,7 +481,7 @@ describe('factories', () => {
           getShorthand({
             defaultProps: () => defaultPropsValue,
             overrideProps,
-            valueOrRenderCallback: <div />,
+            value: <div />,
           }),
         );
         expect(overrideProps).toHaveBeenCalledWith(defaultPropsValue);
@@ -552,7 +496,7 @@ describe('factories', () => {
           getShorthand({
             defaultProps: () => defaultPropsValue,
             overrideProps,
-            valueOrRenderCallback: userProps,
+            value: userProps,
           }),
         );
         expect(overrideProps).toHaveBeenCalledWith({ ...defaultPropsValue, ...userProps });
@@ -583,7 +527,7 @@ describe('factories', () => {
       itReturnsAValidElement(<div />);
       itAppliesDefaultProps(<div />);
       itMergesClassNames('mappedProp', 'mapped', {
-        valueOrRenderCallback: <div />,
+        value: <div />,
         mappedProp: 'className',
       });
 
@@ -591,7 +535,7 @@ describe('factories', () => {
         'mappedProp',
         { 'data-prop': <div /> },
         {
-          valueOrRenderCallback: <div />,
+          value: <div />,
           mappedProp: 'data-prop',
         },
       );
@@ -600,7 +544,7 @@ describe('factories', () => {
         () => ({ some: 'defaults', overridden: null }),
         { some: 'defaults', overridden: <div /> },
         {
-          valueOrRenderCallback: <div />,
+          value: <div />,
           mappedProp: 'overridden',
         },
       );
@@ -610,7 +554,7 @@ describe('factories', () => {
       itReturnsAValidElement('foo');
       itAppliesDefaultProps('foo');
       itMergesClassNames('mappedProp', 'mapped', {
-        valueOrRenderCallback: 'foo',
+        value: 'foo',
         mappedProp: 'className',
       });
 
@@ -618,7 +562,7 @@ describe('factories', () => {
         'mappedProp',
         { 'data-prop': 'foo' },
         {
-          valueOrRenderCallback: 'foo',
+          value: 'foo',
           mappedProp: 'data-prop',
         },
       );
@@ -628,7 +572,7 @@ describe('factories', () => {
         () => ({ some: 'defaults', overridden: 'false' }),
         { some: 'defaults', overridden: 'true' },
         {
-          valueOrRenderCallback: 'true',
+          value: 'true',
           mappedProp: 'overridden',
         },
       );
@@ -643,7 +587,7 @@ describe('factories', () => {
           describe(`'${as}' as 'as' prop to defaultProps`, () => {
             test(`overrides ${mappedProp} and ${testMsg}`, () => {
               testCreateShorthand(
-                { mappedProp, valueOrRenderCallback: value, defaultProps: () => ({ as }) },
+                { mappedProp, value, defaultProps: () => ({ as }) },
                 { as, [mappedProps[as]]: value },
               );
             });
@@ -651,10 +595,7 @@ describe('factories', () => {
 
           describe(`'${as}' as 'as' prop to overrideProps`, () => {
             test(`overrides ${mappedProp} and ${testMsg}`, () => {
-              testCreateShorthand(
-                { mappedProp, valueOrRenderCallback: value, overrideProps: { as } },
-                { as, [mappedProps[as]]: value },
-              );
+              testCreateShorthand({ mappedProp, value, overrideProps: { as } }, { as, [mappedProps[as]]: value });
             });
           });
 
@@ -663,7 +604,7 @@ describe('factories', () => {
               testCreateShorthand(
                 {
                   mappedProp,
-                  valueOrRenderCallback: value,
+                  value,
                   defaultProps: () => ({ as: 'overriden' }),
                   overrideProps: { as },
                 },
@@ -682,7 +623,7 @@ describe('factories', () => {
             testCreateShorthand(
               {
                 mappedProp,
-                valueOrRenderCallback: value,
+                value,
                 defaultProps: () => ({ as: 'unsupported' }),
               },
               { as: 'unsupported', [mappedProp]: value },
@@ -693,7 +634,7 @@ describe('factories', () => {
         describe(`and an unsupported tag as 'as' prop to overrideProps`, () => {
           test(testMsg, () => {
             testCreateShorthand(
-              { mappedProp, valueOrRenderCallback: value, overrideProps: { as: 'unsupported' } },
+              { mappedProp, value, overrideProps: { as: 'unsupported' } },
               { as: 'unsupported', [mappedProp]: value },
             );
           });
@@ -704,7 +645,7 @@ describe('factories', () => {
             testCreateShorthand(
               {
                 mappedProp,
-                valueOrRenderCallback: value,
+                value,
                 defaultProps: () => ({ as: 'div' }),
                 overrideProps: { as: 'unsupported' },
               },
@@ -720,7 +661,7 @@ describe('factories', () => {
         describe(`and an unsupported tag as 'as' prop to defaultProps`, () => {
           test(testMsg, () => {
             testCreateShorthand(
-              { valueOrRenderCallback: value, defaultProps: () => ({ as: 'unsupported' }) },
+              { value, defaultProps: () => ({ as: 'unsupported' }) },
               { as: 'unsupported', children: value },
             );
           });
@@ -729,7 +670,7 @@ describe('factories', () => {
         describe(`and an unsupported tag as 'as' prop to overrideProps`, () => {
           test(testMsg, () => {
             testCreateShorthand(
-              { valueOrRenderCallback: value, overrideProps: { as: 'unsupported' } },
+              { value, overrideProps: { as: 'unsupported' } },
               { as: 'unsupported', children: value },
             );
           });
@@ -739,7 +680,7 @@ describe('factories', () => {
           test(testMsg, () => {
             testCreateShorthand(
               {
-                valueOrRenderCallback: value,
+                value,
                 defaultProps: () => ({ as: 'div' }),
                 overrideProps: { as: 'unsupported' },
               },
@@ -755,20 +696,18 @@ describe('factories', () => {
       itAppliesDefaultProps({});
       itDoesNotIncludePropsFromMappedProp({});
       itMergesClassNames('props object', 'user', {
-        valueOrRenderCallback: { className: 'user' },
+        value: { className: 'user' },
       });
 
       itOverridesDefaultProps(
         'props object',
         () => ({ some: 'defaults', overridden: false }),
         { some: 'defaults', overridden: true },
-        {
-          valueOrRenderCallback: { overridden: true },
-        },
+        { value: { overridden: true } },
       );
 
       itOverridesDefaultPropsWithFalseyProps('props object', {
-        valueOrRenderCallback: { undef: undefined, nil: null, zero: 0, empty: '' },
+        value: { undef: undefined, nil: null, zero: 0, empty: '' },
       });
     });
 
@@ -784,7 +723,7 @@ describe('factories', () => {
             testCreateShorthand(
               {
                 mappedArrayProp,
-                valueOrRenderCallback: value,
+                value,
                 defaultProps: () => ({ as: 'unsupported' }),
               },
               { as: 'unsupported', [mappedArrayProp]: value },
@@ -800,9 +739,7 @@ describe('factories', () => {
         const userProps = { style: { bottom: 5 } };
         const overrideProps = { style: { right: 5 } };
 
-        expect(
-          shallow(getShorthand({ defaultProps, overrideProps, valueOrRenderCallback: userProps })).prop('style'),
-        ).toEqual({
+        expect(shallow(getShorthand({ defaultProps, overrideProps, value: userProps })).prop('style')).toEqual({
           left: 5,
           bottom: 5,
           right: 5,
@@ -813,7 +750,7 @@ describe('factories', () => {
         const defaultProps = () => ({ style: { left: 10, bottom: 5 } });
         const userProps = { style: { bottom: 10 } };
 
-        expect(shallow(getShorthand({ defaultProps, valueOrRenderCallback: userProps })).prop('style')).toEqual({
+        expect(shallow(getShorthand({ defaultProps, value: userProps })).prop('style')).toEqual({
           left: 10,
           bottom: 10,
         });
@@ -823,7 +760,7 @@ describe('factories', () => {
         const userProps = { style: { bottom: 10, right: 5 } };
         const overrideProps = { style: { right: 10 } };
 
-        expect(shallow(getShorthand({ overrideProps, valueOrRenderCallback: userProps })).prop('style')).toEqual({
+        expect(shallow(getShorthand({ overrideProps, value: userProps })).prop('style')).toEqual({
           bottom: 10,
           right: 10,
         });
@@ -833,9 +770,7 @@ describe('factories', () => {
         const defaultProps = () => ({ style: { left: 10, bottom: 5 } });
         const overrideProps = { style: { bottom: 10 } };
 
-        expect(
-          shallow(getShorthand({ defaultProps, overrideProps, valueOrRenderCallback: 'foo' })).prop('style'),
-        ).toEqual({
+        expect(shallow(getShorthand({ defaultProps, overrideProps, value: 'foo' })).prop('style')).toEqual({
           left: 10,
           bottom: 10,
         });

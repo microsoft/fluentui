@@ -1,8 +1,8 @@
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as React from 'react';
-
+// @ts-ignore
+import { ThemeContext } from 'react-fela';
 import {
-  UIComponent,
   childrenExist,
   UIComponentProps,
   ChildrenComponentProps,
@@ -10,14 +10,19 @@ import {
   rtlTextContainer,
   createShorthandFactory,
   ContentComponentProps,
-  ShorthandFactory,
 } from '../../utils';
 import { Accessibility } from '@fluentui/accessibility';
 
-import { WithAsProp, ShorthandValue, withSafeTypeForAs } from '../../types';
-import Icon, { IconProps } from '../Icon/Icon';
+import {
+  WithAsProp,
+  ShorthandValue,
+  withSafeTypeForAs,
+  FluentComponentStaticProps,
+  ProviderContextPrepared,
+} from '../../types';
 import Box, { BoxProps } from '../Box/Box';
 import ReactionGroup from './ReactionGroup';
+import { useTelemetry, getElementType, useUnhandledProps, useAccessibility, useStyles } from '@fluentui/react-bindings';
 
 export interface ReactionSlotClassNames {
   icon: string;
@@ -31,72 +36,105 @@ export interface ReactionProps
   /**
    * Accessibility behavior if overridden by the user.
    */
-  accessibility?: Accessibility;
+  accessibility?: Accessibility<never>;
 
   /** A reaction can have icon for the indicator of the reaction. */
-  icon?: ShorthandValue<IconProps>;
+  icon?: ShorthandValue<BoxProps>;
 }
 
-class Reaction extends UIComponent<WithAsProp<ReactionProps>> {
-  static create: ShorthandFactory<ReactionProps>;
+export type ReactionStylesProps = {
+  hasContent: boolean;
+};
 
-  static className = 'ui-reaction';
+export const reactionClassName = 'ui-reaction';
+export const reactionSlotClassNames: ReactionSlotClassNames = {
+  icon: `${reactionClassName}__icon`,
+  content: `${reactionClassName}__content`,
+};
 
-  static slotClassNames: ReactionSlotClassNames;
+const Reaction: React.FC<WithAsProp<ReactionProps>> &
+  FluentComponentStaticProps<ReactionProps> & {
+    Group: typeof ReactionGroup;
+  } = props => {
+  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const { setStart, setEnd } = useTelemetry(Reaction.displayName, context.telemetry);
+  setStart();
+  const { children, icon, content, className, design, styles, variables } = props;
+  const ElementType = getElementType(props);
+  const unhandledProps = useUnhandledProps(Reaction.handledProps, props);
 
-  static displayName = 'Reaction';
+  const getA11yProps = useAccessibility<never>(props.accessibility, {
+    debugName: Reaction.displayName,
+    rtl: context.rtl,
+  });
 
-  static propTypes = {
-    ...commonPropTypes.createCommon({
-      content: 'shorthand',
+  const { classes, styles: resolvedStyles } = useStyles<ReactionStylesProps>(Reaction.displayName, {
+    className: reactionClassName,
+    mapPropsToStyles: () => ({
+      hasContent: !!content,
     }),
-    icon: customPropTypes.itemShorthandWithoutJSX,
-  };
+    mapPropsToInlineStyles: () => ({
+      className,
+      design,
+      styles,
+      variables,
+    }),
+    rtl: context.rtl,
+  });
 
-  static defaultProps = {
-    as: 'span',
-  };
-
-  static Group = ReactionGroup;
-
-  renderComponent({ accessibility, ElementType, classes, styles, unhandledProps }) {
-    const { children, icon, content } = this.props;
-
-    return (
-      <ElementType
-        {...rtlTextContainer.getAttributes({ forElements: [children] })}
-        {...accessibility.attributes.root}
-        {...unhandledProps}
-        className={classes.root}
-      >
-        {childrenExist(children) ? (
-          children
-        ) : (
-          <>
-            {Icon.create(icon, {
-              defaultProps: () => ({
-                className: Reaction.slotClassNames.icon,
-                styles: styles.icon,
+  const element = (
+    <ElementType
+      {...getA11yProps('root', {
+        className: classes.root,
+        ...unhandledProps,
+      })}
+      {...rtlTextContainer.getAttributes({ forElements: [children] })}
+    >
+      {childrenExist(children) ? (
+        children
+      ) : (
+        <>
+          {Box.create(icon, {
+            defaultProps: () =>
+              getA11yProps('icon', {
+                className: reactionSlotClassNames.icon,
+                styles: resolvedStyles.icon,
               }),
-            })}
-            {Box.create(content, {
-              defaultProps: () => ({
-                className: Reaction.slotClassNames.content,
-                styles: styles.content,
+          })}
+          {Box.create(content, {
+            defaultProps: () =>
+              getA11yProps('content', {
+                className: reactionSlotClassNames.content,
+                styles: resolvedStyles.content,
               }),
-            })}
-          </>
-        )}
-      </ElementType>
-    );
-  }
-}
+          })}
+        </>
+      )}
+    </ElementType>
+  );
+
+  setEnd();
+  return element;
+};
+
+Reaction.displayName = 'Reaction';
+
+Reaction.propTypes = {
+  ...commonPropTypes.createCommon({
+    content: 'shorthand',
+  }),
+  icon: customPropTypes.shorthandAllowingChildren,
+};
+
+Reaction.defaultProps = {
+  as: 'span',
+};
+
+Reaction.handledProps = Object.keys(Reaction.propTypes) as any;
+
+Reaction.Group = ReactionGroup;
 
 Reaction.create = createShorthandFactory({ Component: Reaction, mappedProp: 'content' });
-Reaction.slotClassNames = {
-  icon: `${Reaction.className}__icon`,
-  content: `${Reaction.className}__content`,
-};
 
 /**
  * A Reaction indicates user's emotion or perception.
