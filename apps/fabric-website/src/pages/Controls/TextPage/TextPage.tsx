@@ -173,7 +173,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                           },
                         ],
                         kind: 'property' as 'property',
-                        description: 'Used for caption text.',
+                        description: 'Used for caption text.\n',
                         deprecated: false,
                       },
                       {
@@ -228,7 +228,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                           },
                         ],
                         kind: 'property' as 'property',
-                        description: 'Used for subheading text.\n',
+                        description: 'Used for subheader text.\n',
                         deprecated: false,
                       },
                       {
@@ -324,7 +324,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                           },
                         ],
                         kind: 'property' as 'property',
-                        description: 'Used for caption text.',
+                        description: 'Used for caption text.\n',
                         deprecated: false,
                       },
                       {
@@ -357,7 +357,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                           },
                         ],
                         kind: 'property' as 'property',
-                        description: 'Used for subheading text.\n',
+                        description: 'Used for subheader text.\n',
                         deprecated: false,
                       },
                       {
