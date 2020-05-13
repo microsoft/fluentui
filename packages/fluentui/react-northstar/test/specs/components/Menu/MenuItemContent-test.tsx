@@ -4,6 +4,5 @@ import MenuItemContent from 'src/components/Menu/MenuItemContent';
 describe('MenuItemContent', () => {
   isConformant(MenuItemContent, {
     constructorName: 'MenuItemContent',
-    hasAccessibilityProp: false,
   });
 });
