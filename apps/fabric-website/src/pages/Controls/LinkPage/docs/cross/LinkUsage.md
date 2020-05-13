@@ -6,7 +6,7 @@ Fluent UI React Native Link has default styling based on the Fluent Design Langu
 
 #### Example usage (from [LinkTest.tsx](https://github.com/microsoft/fluentui-react-native/blob/master/apps/fluent-tester/src/RNTester/TestComponents/Link/LinkTest.tsx))
 
-```
+```jsx
 import * as React from 'react';
 import { Alert } from 'react-native';
 import { Link } from '@fluentui/react-native';
@@ -17,15 +17,15 @@ const App = () => {
     Alert.alert('Alert.', 'You have been alerted.');
   };
 
-const styles = StyleSheet.create({
-  linkTestStyle: {
-    borderWidth: 1,
-    borderColor: '#bdbdbd',
-    paddingVertical: 8,
-    paddingHorizontal: 12,
-    margin: 8
-  },
-});
+  const styles = StyleSheet.create({
+    linkTestStyle: {
+      borderWidth: 1,
+      borderColor: '#bdbdbd',
+      paddingVertical: 8,
+      paddingHorizontal: 12,
+      margin: 8,
+    },
+  });
 
   return (
     <View style={styles.linkTestStyle}>
