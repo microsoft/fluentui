@@ -8,6 +8,7 @@ import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import { IButtonProps as IButtonProps_2 } from 'office-ui-fabric-react/lib/components/Button/Button.types';
 import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import { IComponentAs } from 'office-ui-fabric-react/lib/Utilities';
+import { ICustomizerProps } from 'office-ui-fabric-react/lib/Utilities';
 import { IFocusZoneProps } from '@fluentui/react-focus';
 import { IIconProps } from 'office-ui-fabric-react/lib/Icon';
 import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
@@ -19,12 +20,16 @@ import { IStyleSet } from 'office-ui-fabric-react/lib/Styling';
 import { ITheme } from 'office-ui-fabric-react/lib/Styling';
 import { Position } from 'office-ui-fabric-react/lib/utilities/positioning';
 import * as React from 'react';
+import { ThemeProviderProps } from '@fluentui/react-theme-provider';
 
 // @public (undocumented)
 export const Checkbox: React.FunctionComponent<ICheckboxProps>;
 
 // @public (undocumented)
 export const CheckboxBase: React.ForwardRefExoticComponent<ICheckboxProps & React.RefAttributes<HTMLDivElement>>;
+
+// @public
+export const Customizer: React.FunctionComponent<ICustomizerProps>;
 
 // @public (undocumented)
 export const DEFAULT_MASK_CHAR = "_";
@@ -113,6 +118,8 @@ export interface ICheckboxStyles {
     root?: IStyle;
     text?: IStyle;
 }
+
+export { ICustomizerProps }
 
 // @public (undocumented)
 export interface IFabricProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -1046,6 +1053,13 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
     setSelectionStart(value: number): void;
     readonly value: string | undefined;
     }
+
+// @public
+export const ThemeProvider: React.FunctionComponent<ThemeProviderProps & {
+    ref?: React.Ref<HTMLDivElement>;
+}>;
+
+export { ThemeProviderProps }
 
 // @public (undocumented)
 export const Toggle: React.FunctionComponent<IToggleProps>;

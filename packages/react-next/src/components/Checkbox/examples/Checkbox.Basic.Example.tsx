@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Checkbox } from '@fluentui/react-next/lib/Checkbox';
 import { Stack } from '@fluentui/react-next/lib/Stack';
+import { ThemeProvider } from '@fluentui/react-next/lib/Styling';
 
 // Used to add spacing between example checkboxes
 const stackTokens = { childrenGap: 10 };
@@ -8,15 +9,17 @@ const stackTokens = { childrenGap: 10 };
 export const CheckboxBasicExample: React.FunctionComponent = () => {
   // These checkboxes are uncontrolled because they don't set the `checked` prop.
   return (
-    <Stack tokens={stackTokens}>
-      <Checkbox label="Unchecked checkbox (uncontrolled)" onChange={_onChange} />
+    <ThemeProvider>
+      <Stack tokens={stackTokens}>
+        <Checkbox label="Unchecked checkbox (uncontrolled)" onChange={_onChange} />
 
-      <Checkbox label="Checked checkbox (uncontrolled)" defaultChecked onChange={_onChange} />
+        <Checkbox label="Checked checkbox (uncontrolled)" defaultChecked onChange={_onChange} />
 
-      <Checkbox label="Disabled checkbox" disabled />
+        <Checkbox label="Disabled checkbox" disabled />
 
-      <Checkbox label="Disabled checked checkbox" disabled defaultChecked />
-    </Stack>
+        <Checkbox label="Disabled checked checkbox" disabled defaultChecked />
+      </Stack>
+    </ThemeProvider>
   );
 };
 

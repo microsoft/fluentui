@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Checkbox } from '@fluentui/react-next/lib/Checkbox';
 import { Stack } from '@fluentui/react-next/lib/Stack';
+import { ThemeProvider } from '@fluentui/react-next/lib/Styling';
 
 // Used to add spacing between example checkboxes
 const stackTokens = { childrenGap: 10 };
@@ -23,23 +24,25 @@ export const CheckboxIndeterminateExample: React.FunctionComponent = () => {
   );
 
   return (
-    <Stack tokens={stackTokens}>
-      <Checkbox label="Indeterminate checkbox (uncontrolled)" defaultIndeterminate />
+    <ThemeProvider>
+      <Stack tokens={stackTokens}>
+        <Checkbox label="Indeterminate checkbox (uncontrolled)" defaultIndeterminate />
 
-      <Checkbox
-        label="Indeterminate checkbox which defaults to true when clicked (uncontrolled)"
-        defaultIndeterminate
-        defaultChecked={true}
-      />
+        <Checkbox
+          label="Indeterminate checkbox which defaults to true when clicked (uncontrolled)"
+          defaultIndeterminate
+          defaultChecked={true}
+        />
 
-      <Checkbox label="Disabled indeterminate checkbox" disabled defaultIndeterminate />
+        <Checkbox label="Disabled indeterminate checkbox" disabled defaultIndeterminate />
 
-      <Checkbox
-        label="Indeterminate checkbox (controlled)"
-        indeterminate={isIndeterminate}
-        checked={isChecked}
-        onChange={onChange}
-      />
-    </Stack>
+        <Checkbox
+          label="Indeterminate checkbox (controlled)"
+          indeterminate={isIndeterminate}
+          checked={isChecked}
+          onChange={onChange}
+        />
+      </Stack>
+    </ThemeProvider>
   );
 };
