@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Tue, 12 May 2020 23:23:51 GMT",
+      "tag": "@fluentui/react_v7.113.0",
+      "version": "7.113.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Resolving tsconfig paths which were not correctly configured, causing re-exports to fail.",
+            "author": "dzearing@microsoft.com",
+            "commit": "34ad6f157872f1cb89dfd68aa276e09680bb6dbb",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 11 May 2020 12:36:34 GMT",
       "tag": "@fluentui/react_v7.111.1",
       "version": "7.111.1",
