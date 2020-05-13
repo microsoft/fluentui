@@ -129,7 +129,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                         ],
                         kind: 'property' as 'property',
                         description:
-                          'Font size of the Text. Can either use an integer, or use a predefined font size from IFontSizes.\n',
+                          'Font size of the Text in typographic points. Can either use a number, or use a predefined font size from IFontSizes.\n',
                         deprecated: false,
                       },
                       {
@@ -141,7 +141,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                         ],
                         kind: 'property' as 'property',
                         description:
-                          'Font weight of the Text. Can either use a value between 100-900, or a predefined font weight from IFontWeights.\n',
+                          'Font weight of the Text. Can use a value between "100" and "900", or a predefined font weight from IFontWeights.\n',
                         deprecated: false,
                       },
                       {
