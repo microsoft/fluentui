@@ -12,12 +12,12 @@ const dropdownSelectedItemStyles: ComponentSlotStylesPrepared<DropdownSelectedIt
     }),
     ':focus': {
       color: v.selectedItemColorFocus,
-      backgroundColor: v.selectedItemBackgroundColorFocus,
+      backgroundColor: v.selectedItemBackgroundColorHover,
       outline: '0',
     },
     ':hover': {
       color: v.selectedItemColorFocus,
-      backgroundColor: v.selectedItemBackgroundColorFocus,
+      backgroundColor: v.selectedItemBackgroundColorHover,
     },
   }),
   icon: ({ variables: v }) => ({
