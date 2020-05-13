@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {
-  ICustomizerProps,
   Customizations,
   CustomizerContext,
   mergeCustomizations,
@@ -9,7 +8,11 @@ import {
 import { ThemeProvider } from '@fluentui/react-theme-provider';
 import { convertLegacyTheme } from '../Styling/convertLegacyTheme';
 
-export { ICustomizerProps } from 'office-ui-fabric-react/lib/Utilities';
+import { ICustomizerProps as LegacyCustomizerProps } from 'office-ui-fabric-react/lib/Utilities';
+
+export interface ICustomizerProps extends LegacyCustomizerProps {
+  disableThemeProvider?: boolean;
+}
 
 /**
  * Replacement for Customizer from utilities package. It also provides the theme context.
@@ -26,7 +29,7 @@ export const Customizer: React.FunctionComponent<ICustomizerProps> = props => {
     return () => Customizations.unobserve(forceUpdate);
   }, []);
 
-  const { contextTransform } = props;
+  const { contextTransform, children, disableThemeProvider } = props;
   return (
     <CustomizerContext.Consumer>
       {(parentContext: ICustomizerContext) => {
@@ -36,13 +39,15 @@ export const Customizer: React.FunctionComponent<ICustomizerProps> = props => {
           newContext = contextTransform(newContext);
         }
 
-        return (
-          <CustomizerContext.Provider value={newContext}>
-            <ThemeProvider theme={convertLegacyTheme(newContext.customizations.settings.theme)}>
-              {props.children}
-            </ThemeProvider>
-          </CustomizerContext.Provider>
+        const content = disableThemeProvider ? (
+          children
+        ) : (
+          <ThemeProvider theme={convertLegacyTheme(newContext.customizations.settings.theme)}>
+            {props.children}
+          </ThemeProvider>
         );
+
+        return <CustomizerContext.Provider value={newContext}>{content}</CustomizerContext.Provider>;
       }}
     </CustomizerContext.Consumer>
   );

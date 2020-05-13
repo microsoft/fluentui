@@ -8,7 +8,7 @@ import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import { IButtonProps as IButtonProps_2 } from 'office-ui-fabric-react/lib/components/Button/Button.types';
 import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import { IComponentAs } from 'office-ui-fabric-react/lib/Utilities';
-import { ICustomizerProps } from 'office-ui-fabric-react/lib/Utilities';
+import { ICustomizerProps as ICustomizerProps_2 } from 'office-ui-fabric-react/lib/Utilities';
 import { IFocusZoneProps } from '@fluentui/react-focus';
 import { IIconProps } from 'office-ui-fabric-react/lib/Icon';
 import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
@@ -119,7 +119,11 @@ export interface ICheckboxStyles {
     text?: IStyle;
 }
 
-export { ICustomizerProps }
+// @public (undocumented)
+export interface ICustomizerProps extends ICustomizerProps_2 {
+    // (undocumented)
+    disableThemeProvider?: boolean;
+}
 
 // @public (undocumented)
 export interface IFabricProps extends React.HTMLAttributes<HTMLDivElement> {

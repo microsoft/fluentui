@@ -6,13 +6,14 @@ import {
   getDocument,
   memoizeFunction,
   getRTL,
+  Customizer,
+  useFocusRects,
 } from '../../Utilities';
 import { getStyles } from './Fabric.styles';
 import { IFabricProps, IFabricStyleProps, IFabricStyles } from './Fabric.types';
 import { IProcessedStyleSet } from '@uifabric/merge-styles';
 import { ITheme, createTheme } from '../../Styling';
 import { useMergedRefs } from '@uifabric/react-hooks';
-import { useFocusRects, Customizer as LegacyCustomizer } from '@uifabric/utilities';
 
 const getClassNames = classNamesFunction<IFabricStyleProps, IFabricStyles>();
 const getFabricTheme = memoizeFunction((theme?: ITheme, isRTL?: boolean) => createTheme({ ...theme, rtl: isRTL }));
@@ -64,9 +65,11 @@ function useRenderedContent(
 
   // Create the contextual theme if component direction does not match parent direction.
   if (needsTheme) {
-    // Using legacy customizer because theme doesn't need to be re-provided by ThemeProvider if dir has changed.
+    // Disabling ThemeProvider here because theme doesn't need to be re-provided by ThemeProvider if dir has changed.
     renderedContent = (
-      <LegacyCustomizer settings={{ theme: getFabricTheme(theme, dir === 'rtl') }}>{renderedContent}</LegacyCustomizer>
+      <Customizer disableThemeProvider settings={{ theme: getFabricTheme(theme, dir === 'rtl') }}>
+        {renderedContent}
+      </Customizer>
     );
   }
 

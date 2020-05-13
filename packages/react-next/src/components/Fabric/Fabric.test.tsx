@@ -1,7 +1,6 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import { createTheme, Checkbox, Fabric } from '@fluentui/react-next';
-import { Customizer } from 'office-ui-fabric-react/lib/Utilities';
+import { Customizer, createTheme, Checkbox, Fabric } from '@fluentui/react-next';
 import { mount } from 'enzyme';
 
 const rtlTheme = createTheme({ rtl: true });
@@ -50,9 +49,17 @@ describe('Fabric', () => {
     // Render with no theme context
     const component = renderer.create(content);
     // Render in RTL context
-    const rtlComponent = renderer.create(<Customizer settings={{ theme: rtlTheme }}>{content}</Customizer>);
+    const rtlComponent = renderer.create(
+      <Customizer disableThemeProvider settings={{ theme: rtlTheme }}>
+        {content}
+      </Customizer>,
+    );
     // Render in LTR Context
-    const ltrComponent = renderer.create(<Customizer settings={{ theme: ltrTheme }}>{content}</Customizer>);
+    const ltrComponent = renderer.create(
+      <Customizer disableThemeProvider settings={{ theme: ltrTheme }}>
+        {content}
+      </Customizer>,
+    );
 
     const tree = component.toJSON();
     const rtlTree = rtlComponent.toJSON();
