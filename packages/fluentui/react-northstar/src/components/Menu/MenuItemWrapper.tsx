@@ -3,7 +3,7 @@ import * as PropTypes from 'prop-types';
 
 import { commonPropTypes, ShorthandConfig } from '../../utils';
 import Box, { BoxProps } from '../Box/Box';
-import * as customPropTypes from '../../../../react-proptypes/dist/es';
+import * as customPropTypes from '@fluentui/react-proptypes';
 
 interface MenuItemWrapperOwnProps {
   /** A menu item wrapper can be active. */
