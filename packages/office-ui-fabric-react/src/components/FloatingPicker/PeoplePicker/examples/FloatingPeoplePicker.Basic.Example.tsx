@@ -10,18 +10,21 @@ import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
 import { people } from '@uifabric/example-data';
 import { useConst } from '@uifabric/react-hooks';
 
-const suggestionsStore = new SuggestionsStore<IPersonaProps>();
+const suggestionsStore = useConst(() => new SuggestionsStore<IPersonaProps>());
 const searchBoxWrapperStyling = { width: 208 };
 
 const getTextFromItem = (persona: IPersonaProps): string => {
   return persona.text || '';
 };
+
 const listContainsPersona = (persona: IPersonaProps, personas?: IPersonaProps[]): boolean => {
   return !!personas && personas.some((item: IPersonaProps) => item.text === persona.text);
 };
+
 const validateInput = (input: string): boolean => {
   return input.indexOf('@') !== -1;
 };
+
 const startsWith = (text: string, filterText: string): boolean => {
   return text.toLowerCase().indexOf(filterText.toLowerCase()) === 0;
 };
