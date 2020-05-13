@@ -74,6 +74,18 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                           'The URL that is opened when the link is clicked.  This value supersedes the onPress callback when both are present.\n',
                         deprecated: false,
                       },
+                      {
+                        name: 'onPress',
+                        typeTokens: [
+                          {
+                            text: '() => void',
+                          },
+                        ],
+                        kind: 'property' as 'property',
+                        description:
+                          'The callback that is executed when the link is clicked.  Supersedes the url property when both are present.\n',
+                        deprecated: false,
+                      },
                     ],
                   },
                 ],

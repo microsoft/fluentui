@@ -13,10 +13,25 @@ import { View, StyleSheet } from 'react-native';
 const BlueSeparator = Separator.customize({ tokens: { color: 'blue' } });
 const RedSeparator = Separator.customize({ tokens: { color: 'red' } });
 
+const styles = StyleSheet.create({
+  viewStyle: {
+    borderWidth: 1,
+    borderColor: '#bdbdbd',
+    paddingVertical: 8,
+    paddingHorizontal: 12,
+    margin: 8
+  },
+  separatedViewStyle: {
+    height: 200,
+    flexDirection: 'row',
+    justifyContent: 'space-evenly'
+  }
+});
+
 const App = () => {
   return (
-    <View style={styles.stackStyle} gap={5}>
-      <View gap={4} style={styles.separatorStackStyle}>
+    <View style={styles.viewStyle} gap={5}>
+      <View gap={4} style={styles.separatedViewStyle}>
         <Button content="Button4" />
         <BlueSeparator vertical />
         <Button content="Button5" />
@@ -30,21 +45,6 @@ const App = () => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  stackStyle: {
-    borderWidth: 1,
-    borderColor: '#bdbdbd',
-    paddingVertical: 8,
-    paddingHorizontal: 12,
-    margin: 8
-  },
-  separatorStackStyle: {
-    height: 200,
-    flexDirection: 'row',
-    justifyContent: 'space-evenly'
-  }
-});
 
 export default App;
 ```

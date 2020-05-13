@@ -145,7 +145,7 @@ export class ButtonPage extends React.Component<
                           name: 'onClick',
                           typeTokens: [
                             {
-                              text: 'void',
+                              text: '() => void',
                             },
                           ],
                           kind: 'property' as 'property',
