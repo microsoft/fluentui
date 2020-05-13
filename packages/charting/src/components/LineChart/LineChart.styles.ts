@@ -19,10 +19,12 @@ export const getStyles = (props: ILineChartStyleProps): ILineChartStyles => {
       selectors: {
         text: {
           ...fonts.tiny,
+          stroke: theme.semanticColors.bodyText,
           opacity: 0.6,
         },
         line: {
           opacity: 0.1,
+          stroke: theme.semanticColors.bodyText,
           width: '1px',
         },
         path: {
@@ -34,12 +36,14 @@ export const getStyles = (props: ILineChartStyleProps): ILineChartStyles => {
       selectors: {
         text: {
           opacity: 0.6,
+          stroke: theme.semanticColors.bodyText,
         },
         path: {
           display: 'none',
         },
         line: {
           opacity: 0.1,
+          stroke: theme.semanticColors.bodyText,
         },
       },
     },
