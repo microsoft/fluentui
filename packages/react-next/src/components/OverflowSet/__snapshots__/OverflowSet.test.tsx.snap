@@ -35,7 +35,7 @@ exports[`OverflowSet snapshot tests snapshot with classname 1`] = `
         flex-wrap: nowrap;
         position: relative;
       }
-  data-focuszone-id="FocusZone1"
+  data-focuszone-id="FocusZone0"
   onFocus={[Function]}
   onKeyDown={[Function]}
   onMouseDownCapture={[Function]}
@@ -58,7 +58,7 @@ exports[`OverflowSet snapshot tests snapshot with classname and vertical layout 
         flex-wrap: nowrap;
         position: relative;
       }
-  data-focuszone-id="FocusZone2"
+  data-focuszone-id="FocusZone0"
   onFocus={[Function]}
   onKeyDown={[Function]}
   onMouseDownCapture={[Function]}
