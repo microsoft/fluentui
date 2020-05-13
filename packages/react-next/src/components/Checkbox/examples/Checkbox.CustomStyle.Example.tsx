@@ -3,7 +3,7 @@ import { DefaultButton } from '@fluentui/react-next/lib/Button';
 import { Checkbox } from '@fluentui/react-next/lib/Checkbox';
 import { Stack } from '@fluentui/react-next/lib/Stack';
 import { Customizer } from '@fluentui/react-next/lib/Utilities';
-import { loadTheme, ThemeProvider, FontWeights, FontSizes, IPartialTheme } from '@fluentui/react-next/lib/Styling';
+import { ThemeProvider, loadTheme, FontWeights, FontSizes, IPartialTheme } from '@fluentui/react-next/lib/Styling';
 
 // Used to add spacing between example checkboxes
 const stackTokens = { childrenGap: 10 };

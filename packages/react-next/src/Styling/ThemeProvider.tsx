@@ -5,10 +5,6 @@ import { convertLegacyTheme } from './convertLegacyTheme';
 
 export { ThemeProviderProps } from '@fluentui/react-theme-provider';
 
-function getGlobalCustomizationSettings(): ISettings {
-  return Customizations.getSettings(['theme'], undefined);
-}
-
 /**
  * A wrapper of ThemeProvider from react-theme-provider package.
  * It also updates the theme when Customizations changes, which ensures backward compatibility with legacy ways of
@@ -32,3 +28,7 @@ export const ThemeProvider: React.FunctionComponent<ThemeProviderProps & {
 
   return <ReactThemeProvider {...props} theme={convertLegacyTheme(customizationSettings.theme)} />;
 };
+
+function getGlobalCustomizationSettings(): ISettings {
+  return Customizations.getSettings(['theme'], undefined);
+}

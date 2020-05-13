@@ -7,7 +7,7 @@ import {
   ICustomizerContext,
 } from 'office-ui-fabric-react/lib/Utilities';
 import { ThemeProvider } from '@fluentui/react-theme-provider';
-import { convertLegacyTheme } from './convertLegacyTheme';
+import { convertLegacyTheme } from '../Styling/convertLegacyTheme';
 
 export { ICustomizerProps } from 'office-ui-fabric-react/lib/Utilities';
 
