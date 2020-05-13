@@ -42,7 +42,7 @@ const ToolbarExamplePopupInMenu = () => {
           {
             id: selectors.dummyButtonId,
             key: 'italic',
-            kind: 'toggle',
+            kind: 'toggle' as const,
             icon: <ItalicIcon {...{ outline: true }} />,
           },
         ]}
