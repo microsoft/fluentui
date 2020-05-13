@@ -295,6 +295,14 @@ export const FocusZoneUtilities = {
   focusAsync,
 };
 
+//
+// classnames
+//
+export * from './classnames/Dropdown/dropdownClassNames';
+export * from './classnames/Dropdown/dropdownItemClassNames';
+export * from './classnames/Dropdown/dropdownSearchInputClassNames';
+export * from './classnames/Dropdown/dropdownSelectedItemClassNames';
+
 export * from '@fluentui/accessibility';
 export * from '@fluentui/react-component-ref';
 export * from '@fluentui/react-bindings';

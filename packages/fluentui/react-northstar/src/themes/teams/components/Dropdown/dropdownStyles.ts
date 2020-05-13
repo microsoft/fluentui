@@ -1,5 +1,6 @@
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { dropdownSlotClassNames, DropdownProps, DropdownState } from '../../../../components/Dropdown/Dropdown';
+import { DropdownProps, DropdownState } from '../../../../components/Dropdown/Dropdown';
+import { dropdownSlotClassNames } from '../../../../classnames/Dropdown/dropdownClassNames';
 import { DropdownVariables } from './dropdownVariables';
 import { pxToRem } from '../../../../utils';
 import getBorderFocusStyles from '../../getBorderFocusStyles';

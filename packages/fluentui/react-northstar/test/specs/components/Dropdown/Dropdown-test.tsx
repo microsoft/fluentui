@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { renderDropdown, items, getItemIdRegexByIndex } from './test-utils';
 import Dropdown from 'src/components/Dropdown/Dropdown';
-import { dropdownSelectedItemSlotClassNames } from 'src/components/Dropdown/DropdownSelectedItem';
+import { dropdownSelectedItemSlotClassNames } from 'src/classnames/Dropdown/dropdownSelectedItemClassNames';
 import { implementsShorthandProp, isConformant } from 'test/specs/commonTests';
 import { findIntrinsicElement } from 'test/utils';
 import { DropdownItemProps } from 'src/components/Dropdown/DropdownItem';

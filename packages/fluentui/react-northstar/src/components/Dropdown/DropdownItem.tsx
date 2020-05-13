@@ -8,6 +8,7 @@ import { ThemeContext } from 'react-fela';
 import { getElementType, useUnhandledProps, useStyles, useTelemetry } from '@fluentui/react-bindings';
 import cx from 'classnames';
 
+import { dropdownItemClassName, dropdownItemSlotClassNames } from '../../classnames/Dropdown/dropdownItemClassNames';
 import { createShorthandFactory, commonPropTypes } from '../../utils';
 import {
   ShorthandValue,
@@ -20,14 +21,6 @@ import {
 import { UIComponentProps } from '../../utils/commonPropInterfaces';
 import Image, { ImageProps } from '../Image/Image';
 import Box, { BoxProps } from '../Box/Box';
-
-export interface DropdownItemSlotClassNames {
-  content: string;
-  header: string;
-  image: string;
-  checkableIndicator: string;
-  main: string;
-}
 
 export interface DropdownItemProps extends UIComponentProps<DropdownItemProps> {
   /** A dropdown item can be active. */
@@ -68,15 +61,6 @@ export interface DropdownItemProps extends UIComponentProps<DropdownItemProps> {
   /** A dropdown item can be selected if single selection Dropdown is used. */
   selected?: boolean;
 }
-
-export const dropdownItemClassName = 'ui-dropdown__item';
-export const dropdownItemSlotClassNames: DropdownItemSlotClassNames = {
-  main: `${dropdownItemClassName}__main`,
-  content: `${dropdownItemClassName}__content`,
-  header: `${dropdownItemClassName}__header`,
-  image: `${dropdownItemClassName}__image`,
-  checkableIndicator: `${dropdownItemClassName}__checkable-indicator`,
-};
 
 const DropdownItem: React.FC<WithAsProp<DropdownItemProps> & { index: number }> &
   FluentComponentStaticProps<DropdownItemProps> = props => {

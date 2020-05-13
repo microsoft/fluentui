@@ -4,6 +4,10 @@ import * as PropTypes from 'prop-types';
 import * as _ from 'lodash';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
+import {
+  dropdownSearchInputClassName,
+  dropdownSearchInputSlotClassNames,
+} from '../../classnames/Dropdown/dropdownSearchInputClassNames';
 import { createShorthandFactory, commonPropTypes } from '../../utils';
 import {
   ComponentEventHandler,
@@ -15,11 +19,6 @@ import {
 import { UIComponentProps } from '../../utils/commonPropInterfaces';
 import Input from '../Input/Input';
 import { useTelemetry, useStyles, useUnhandledProps } from '@fluentui/react-bindings';
-
-export interface DropdownSearchInputSlotClassNames {
-  input: string;
-  wrapper: string;
-}
 
 export interface DropdownSearchInputProps extends UIComponentProps<DropdownSearchInputProps> {
   /** Accessibility props for combobox slot. */
@@ -72,12 +71,6 @@ export interface DropdownSearchInputProps extends UIComponentProps<DropdownSearc
   /** A placeholder message. */
   placeholder?: string;
 }
-
-export const dropdownSearchInputClassName = 'ui-dropdown__searchinput';
-export const dropdownSearchInputSlotClassNames: DropdownSearchInputSlotClassNames = {
-  input: `${dropdownSearchInputClassName}__input`,
-  wrapper: `${dropdownSearchInputClassName}__wrapper`,
-};
 
 export type DropdownSearchInputStylesProps = Required<Pick<DropdownSearchInputProps, 'inline'>>;
 

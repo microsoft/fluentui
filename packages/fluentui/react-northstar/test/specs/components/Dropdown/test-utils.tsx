@@ -1,8 +1,9 @@
 import * as React from 'react';
 import * as _ from 'lodash';
 
-import Dropdown, { DropdownProps, dropdownSlotClassNames } from 'src/components/Dropdown/Dropdown';
-import { dropdownSearchInputSlotClassNames } from 'src/components/Dropdown/DropdownSearchInput';
+import Dropdown, { DropdownProps } from 'src/components/Dropdown/Dropdown';
+import { dropdownSlotClassNames } from 'src/classnames/Dropdown/dropdownClassNames';
+import { dropdownSearchInputSlotClassNames } from 'src/classnames/Dropdown/dropdownSearchInputClassNames';
 import { findIntrinsicElement, mountWithProvider } from 'test/utils';
 
 const items = ['item0', 'item1', 'item2', 'item3', 'item4', 'item5'];

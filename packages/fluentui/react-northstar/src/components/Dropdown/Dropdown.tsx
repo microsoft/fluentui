@@ -7,6 +7,8 @@ import * as _ from 'lodash';
 import cx from 'classnames';
 import * as keyboardKey from 'keyboard-key';
 
+import { dropdownClassName, dropdownSlotClassNames } from '../../classnames/Dropdown/dropdownClassNames';
+
 import {
   DebounceResultFn,
   ShorthandRenderFunction,
@@ -52,18 +54,6 @@ import {
 } from '../../utils/positioner';
 
 export interface DownshiftA11yStatusMessageOptions<Item> extends Required<A11yStatusMessageOptions<Item>> {}
-
-export interface DropdownSlotClassNames {
-  clearIndicator: string;
-  container: string;
-  toggleIndicator: string;
-  item: string;
-  itemsList: string;
-  searchInput: string;
-  selectedItem: string;
-  selectedItems: string;
-  triggerButton: string;
-}
 
 export interface DropdownProps extends UIComponentProps<DropdownProps, DropdownState>, PositioningProps {
   /** The index of the currently selected item, if the dropdown supports multiple selection. */
@@ -263,19 +253,6 @@ export interface DropdownState {
   itemIsFromKeyboard: boolean;
   isFromKeyboard: boolean;
 }
-
-export const dropdownClassName = 'ui-dropdown';
-export const dropdownSlotClassNames: DropdownSlotClassNames = {
-  clearIndicator: `${dropdownClassName}__clear-indicator`,
-  container: `${dropdownClassName}__container`,
-  toggleIndicator: `${dropdownClassName}__toggle-indicator`,
-  item: `${dropdownClassName}__item`,
-  itemsList: `${dropdownClassName}__items-list`,
-  searchInput: `${dropdownClassName}__searchinput`,
-  selectedItem: `${dropdownClassName}__selecteditem`,
-  selectedItems: `${dropdownClassName}__selected-items`,
-  triggerButton: `${dropdownClassName}__trigger-button`,
-};
 
 class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, DropdownState> {
   buttonRef = React.createRef<HTMLElement>();

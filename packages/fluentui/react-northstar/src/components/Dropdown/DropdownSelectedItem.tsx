@@ -7,6 +7,10 @@ import { CloseIcon } from '@fluentui/react-icons-northstar';
 
 import keyboardKey from 'keyboard-key';
 import {
+  dropdownSelectedItemClassName,
+  dropdownSelectedItemSlotClassNames,
+} from '../../classnames/Dropdown/dropdownSelectedItemClassNames';
+import {
   ComponentEventHandler,
   ShorthandValue,
   WithAsProp,
@@ -24,12 +28,6 @@ import {
 import Image, { ImageProps } from '../Image/Image';
 import Label from '../Label/Label';
 import Box, { BoxProps } from '../Box/Box';
-
-export interface DropdownSelectedItemSlotClassNames {
-  header: string;
-  icon: string;
-  image: string;
-}
 
 export interface DropdownSelectedItemProps extends UIComponentProps<DropdownSelectedItemProps> {
   /** A selected item can be active. */
@@ -68,13 +66,6 @@ export interface DropdownSelectedItemProps extends UIComponentProps<DropdownSele
    */
   onRemove?: ComponentEventHandler<DropdownSelectedItemProps>;
 }
-
-export const dropdownSelectedItemClassName = 'ui-dropdown__selecteditem';
-export const dropdownSelectedItemSlotClassNames: DropdownSelectedItemSlotClassNames = {
-  header: `${dropdownSelectedItemClassName}__header`,
-  icon: `${dropdownSelectedItemClassName}__icon`,
-  image: `${dropdownSelectedItemClassName}__image`,
-};
 
 class DropdownSelectedItem extends UIComponent<WithAsProp<DropdownSelectedItemProps>, any> {
   itemRef = React.createRef<HTMLElement>();

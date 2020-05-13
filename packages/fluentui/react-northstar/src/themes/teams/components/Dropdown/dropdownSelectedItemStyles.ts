@@ -1,7 +1,5 @@
-import {
-  DropdownSelectedItemProps,
-  dropdownSelectedItemSlotClassNames,
-} from '../../../../components/Dropdown/DropdownSelectedItem';
+import { DropdownSelectedItemProps } from '../../../../components/Dropdown/DropdownSelectedItem';
+import { dropdownSelectedItemSlotClassNames } from '../../../../classnames/Dropdown/dropdownSelectedItemClassNames';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { DropdownVariables } from './dropdownVariables';
 import getIconFillOrOutlineStyles from '../../getIconFillOrOutlineStyles';
