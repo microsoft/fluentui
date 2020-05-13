@@ -1,9 +1,9 @@
 import { compose, ComponentWithAs } from '@fluentui/react-bindings';
+import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
 
 import { commonPropTypes, ShorthandConfig } from '../../utils';
 import Box, { BoxProps } from '../Box/Box';
-import * as customPropTypes from '@fluentui/react-proptypes';
 
 interface MenuItemWrapperOwnProps {
   /** A menu item wrapper can be active. */
