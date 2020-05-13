@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "PivotItem: Expanding types of headerButtonProps to include IButtonProps.",
+  "packageName": "@fluentui/react-next",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-05-13T00:39:32.179Z"
+}
