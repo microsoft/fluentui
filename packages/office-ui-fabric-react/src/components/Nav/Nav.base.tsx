@@ -311,8 +311,13 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
     // if caller passes in selectedKey, use it as first choice or
     // if current state.selectedKey (from addressbar) is match to the link or
     // check if URL is matching location.href (if link.url exists)
-    if (this.props.selectedKey !== undefined) {
-      return link.key === this.props.selectedKey;
+    if ('selectedKey' in this.props) {
+      if (this.props.selectedKey !== undefined) {
+        return link.key === this.props.selectedKey;
+      } else {
+        // Allow an explicitly specified "undefined" value for selectedKey to mean that nothing is selected
+        return false;
+      }
     } else if (this.state.selectedKey !== undefined) {
       return link.key === this.state.selectedKey;
     } else if (typeof getWindow() === 'undefined' || !link.url) {
