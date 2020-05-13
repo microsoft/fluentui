@@ -20,6 +20,7 @@ export { default as MenuDivider } from './components/Menu/menuDividerVariables';
 export { default as MenuItem } from './components/Menu/menuItemVariables';
 export { default as MenuItemIcon } from './components/Menu/menuItemIconVariables';
 export { default as MenuItemContent } from './components/Menu/menuItemContentVariables';
+export { default as MenuItemIndicator } from './components/Menu/menuItemContentVariables';
 export { default as RadioGroupItem } from './components/RadioGroup/radioGroupItemVariables';
 export { default as Segment } from './components/Segment/segmentVariables';
 export { default as Text } from './components/Text/textVariables';
