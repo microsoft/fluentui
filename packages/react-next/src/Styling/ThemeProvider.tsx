@@ -11,7 +11,7 @@ function getGlobalCustomizationSettings(): ISettings {
 
 /**
  * A wrapper of ThemeProvider from react-theme-provider package.
- * It also updates the theme when Customizations changes, which ensures backward compatability with legacy ways of
+ * It also updates the theme when Customizations changes, which ensures backward compatibility with legacy ways of
  * providing theme (e.g. loadTheme, Customizations.applySettings).
  */
 export const ThemeProvider: React.FunctionComponent<ThemeProviderProps & {
@@ -20,8 +20,8 @@ export const ThemeProvider: React.FunctionComponent<ThemeProviderProps & {
   const [customizationSettings, setCustomizationSettings] = React.useState(getGlobalCustomizationSettings());
 
   const onCustomizationChange = React.useCallback(() => {
-    const gloabelSettings = getGlobalCustomizationSettings();
-    setCustomizationSettings(gloabelSettings);
+    const globalSettings = getGlobalCustomizationSettings();
+    setCustomizationSettings(globalSettings);
   }, []);
 
   React.useEffect(() => {

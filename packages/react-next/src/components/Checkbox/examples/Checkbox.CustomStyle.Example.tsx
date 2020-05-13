@@ -10,7 +10,7 @@ const stackTokens = { childrenGap: 10 };
 
 const customizedTheme: IPartialTheme = { fonts: { medium: { fontWeight: FontWeights.bold } } };
 
-// TODO (xgao): Remove. This example is temporary for testing backward compatability.
+// TODO (xgao): Remove. This example is temporary for testing backward compatibility.
 export const CheckboxCustomStyleExample: React.FunctionComponent = () => {
   const loadCustomizedTheme = () => loadTheme({ fonts: { medium: { fontSize: FontSizes.xLarge } } });
 
