@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-next
 
-This log was last generated on Mon, 11 May 2020 12:36:34 GMT and should not be manually modified.
+This log was last generated on Tue, 12 May 2020 23:23:51 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-alpha.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.17)
+
+Tue, 12 May 2020 23:23:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.15..@fluentui/react-next_v8.0.0-alpha.17)
+
+### Changes
+
+- Copying Link to react-next, in preparation for converting to function component. ([PR #13095](https://github.com/microsoft/fluentui/pull/13095) by czearing@outlook.com)
 
 ## [8.0.0-alpha.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.15)
 

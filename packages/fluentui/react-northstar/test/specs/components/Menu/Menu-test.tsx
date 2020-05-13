@@ -12,7 +12,7 @@ import * as keyboardKey from 'keyboard-key';
 const menuImplementsCollectionShorthandProp = implementsCollectionShorthandProp(Menu);
 
 describe('Menu', () => {
-  isConformant(Menu, { autoControlledProps: ['activeIndex'] });
+  isConformant(Menu, { constructorName: 'Menu', autoControlledProps: ['activeIndex'] });
   menuImplementsCollectionShorthandProp('items', MenuItem);
 
   const getItems = () => [
