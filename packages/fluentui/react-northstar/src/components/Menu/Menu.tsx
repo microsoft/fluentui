@@ -137,11 +137,9 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
       pills,
       pointing,
       primary,
-      secondary,
       underlined,
       vertical,
       submenu,
-      indicator,
       children,
       variables,
       styles,
@@ -151,6 +149,7 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
     } = props;
     const ElementType = getElementType(props);
     const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
+    const slotProps = composeOptions.resolveSlotProps<MenuProps>(props);
 
     const getA11yProps = useAccessibility<MenuBehaviorProps>(props.accessibility, {
       debugName: composeOptions.displayName,
@@ -228,14 +227,11 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
         const kind = getKindProp(item, 'item');
 
         if (kind === 'divider') {
-          return MenuDivider.create(item, {
+          return createShorthand(composeOptions.slots.divider, item, {
             defaultProps: () =>
               getA11yProps('divider', {
-                primary,
-                secondary,
-                vertical,
-                styles: resolvedStyles.divider,
-                inSubmenu: submenu,
+                ...slotProps.divider,
+                styles: resolvedStyles.divider, // TODO: move these to menuDividerStyles
               }),
             overrideProps: handleDividerOverrides,
           });
@@ -243,22 +239,15 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
 
         itemPosition++;
 
-        return createShorthand(MenuItem, item, {
+        return createShorthand(composeOptions.slots.item, item, {
           defaultProps: () =>
             getA11yProps('item', {
-              iconOnly,
-              pills,
-              pointing,
-              primary,
-              secondary,
-              underlined,
-              vertical,
+              ...slotProps.item,
+              __parentComponent: composeOptions.slots.__self,
+              active,
               index,
               itemPosition,
               itemsCount,
-              active,
-              inSubmenu: submenu,
-              indicator,
             }),
           overrideProps: handleItemOverrides,
         });
@@ -285,6 +274,31 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
   {
     className: menuClassName,
     displayName: 'Menu',
+
+    slots: {
+      item: MenuItem,
+      divider: MenuDivider,
+    },
+
+    mapPropsToSlotProps: props => ({
+      item: {
+        iconOnly: props.iconOnly,
+        pills: props.pills,
+        pointing: props.pointing,
+        primary: props.primary,
+        secondary: props.secondary,
+        underlined: props.underlined,
+        vertical: props.vertical,
+        inSubmenu: props.submenu,
+        indicator: props.indicator,
+      },
+      divider: {
+        primary: props.primary,
+        secondary: props.secondary,
+        vertical: props.vertical,
+        inSubmenu: props.submenu,
+      },
+    }),
 
     handledProps: [
       'accessibility',

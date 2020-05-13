@@ -144,6 +144,8 @@ export interface MenuItemProps
    * @param data - All props and proposed value.
    */
   onMenuOpenChange?: ComponentEventHandler<MenuItemProps>;
+
+  __parentComponent?: React.ElementType;
 }
 
 export type MenuItemStylesProps = Required<
@@ -424,7 +426,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
               targetRef={itemRef}
               {...getPopperPropsFromShorthand(menu)}
             >
-              {Menu.create(menu, {
+              {createShorthand(props.__parentComponent || Menu, menu, {
                 defaultProps: () => ({
                   accessibility: submenuBehavior,
                   className: menuItemSlotClassNames.submenu,
@@ -541,6 +543,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
       'onMenuOpenChange',
       'styles',
       'variables',
+      '__parentComponent',
     ],
   },
 ) as ComponentWithAs<'a', MenuItemProps> & {
@@ -575,6 +578,7 @@ MenuItem.propTypes = {
   inSubmenu: PropTypes.bool,
   indicator: customPropTypes.shorthandAllowingChildren,
   onMenuOpenChange: PropTypes.func,
+  __parentComponent: PropTypes.elementType,
 };
 
 MenuItem.defaultProps = {
