@@ -35,7 +35,7 @@ import {
   FluentComponentStaticProps,
   ProviderContextPrepared,
 } from '../../types';
-import MenuDivider from './MenuDivider';
+import MenuDivider, { MenuDividerProps } from './MenuDivider';
 import { BoxProps } from '../Box/Box';
 
 export type MenuShorthandKinds = {
