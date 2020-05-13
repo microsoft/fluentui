@@ -409,7 +409,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                           },
                         ],
                         kind: 'property' as 'property',
-                        description: 'Used for regular text.',
+                        description: 'Used for regular text.\n',
                         deprecated: false,
                       },
                       {
