@@ -199,7 +199,7 @@ const ListItem: React.FC<WithAsProp<ListItemProps> & { index: number }> &
     }),
   });
 
-  const element = (
+  const element = getA11Props.unstable_wrapWithFocusZone(
     <ElementType
       {...getA11Props('root', {
         className: classes.root,
@@ -225,7 +225,7 @@ const ListItem: React.FC<WithAsProp<ListItemProps> & { index: number }> &
       </div>
 
       {endMediaElement}
-    </ElementType>
+    </ElementType>,
   );
 
   setEnd();
