@@ -1,6 +1,6 @@
 {
   "type": "none",
-  "comment": "unit tests fixes",
+  "comment": "Stabilize unit tests by calling `resetIds` for each test file and fix Fabric tests to use correct import path.",
   "packageName": "@fluentui/react-next",
   "email": "xgao@microsoft.com",
   "dependentChangeType": "none",
