@@ -257,7 +257,7 @@ exports[`SearchBox renders SearchBox without animation correctly 1`] = `
         &::-ms-clear {
           display: none;
         }
-    id="SearchBox0"
+    id="SearchBox5"
     onBlur={[Function]}
     onChange={[Function]}
     onInput={[Function]}
