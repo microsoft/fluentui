@@ -2,6 +2,51 @@
   "name": "@uifabric/theme-samples",
   "entries": [
     {
+      "date": "Thu, 07 May 2020 01:06:55 GMT",
+      "tag": "@uifabric/theme-samples_v7.0.69",
+      "version": "7.0.69",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Addressing commonjs imports.",
+            "author": "dzearing@microsoft.com",
+            "commit": "f4a995d4166c7812976b13c6638fb1ae32a8667d",
+            "package": "@uifabric/theme-samples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 05 May 2020 12:34:22 GMT",
+      "tag": "@uifabric/theme-samples_v7.0.67",
+      "version": "7.0.67",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adds disabled color to DatePicker",
+            "author": "email not defined",
+            "commit": "a52922b26eeae69cb0acbfbba2c9d209b3c3aa71",
+            "package": "@uifabric/theme-samples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 30 Apr 2020 12:31:44 GMT",
+      "tag": "@uifabric/theme-samples_v7.0.64",
+      "version": "7.0.64",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Dark Theme: Fixes for People picker, Persona, DatePicker.",
+            "author": "marygans@microsoft.com",
+            "commit": "f1430da8bd519a67c1f6b23626dd7c0f85648214",
+            "package": "@uifabric/theme-samples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 24 Apr 2020 12:39:25 GMT",
       "tag": "@uifabric/theme-samples_v7.0.60",
       "version": "7.0.60",

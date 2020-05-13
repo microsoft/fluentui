@@ -1,0 +1,20 @@
+{
+  "name": "@fluentui/react-theme-provider",
+  "entries": [
+    {
+      "date": "Mon, 11 May 2020 12:36:34 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.1.1",
+      "version": "0.1.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Initial publishing of the Fluent UI theme provider package.",
+            "author": "dzearing@microsoft.com",
+            "commit": "156c760b3320f32bae20f4955f97269536d10372",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    }
+  ]
+}

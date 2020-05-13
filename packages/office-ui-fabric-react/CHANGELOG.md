@@ -1,8 +1,110 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 29 Apr 2020 12:34:58 GMT and should not be manually modified.
+This log was last generated on Tue, 12 May 2020 12:41:21 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.112.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.112.0)
+
+Tue, 12 May 2020 12:41:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.111.1..office-ui-fabric-react_v7.112.0)
+
+### Minor changes
+
+- Adding onDragOver method to IDragDropEvents ([PR #12859](https://github.com/microsoft/fluentui/pull/12859) by pawsing@microsoft.com)
+
+## [7.111.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.111.1)
+
+Mon, 11 May 2020 12:36:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.111.0..office-ui-fabric-react_v7.111.1)
+
+### Patches
+
+- Checkbox: remove unneeded text-align css on label ([PR #13014](https://github.com/microsoft/fluentui/pull/13014) by xgao@microsoft.com)
+- Shimmer: fix high contrast in new edge ([PR #13073](https://github.com/microsoft/fluentui/pull/13073) by xgao@microsoft.com)
+
+## [7.111.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.111.0)
+
+Fri, 08 May 2020 12:35:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.110.5..office-ui-fabric-react_v7.111.0)
+
+### Minor changes
+
+- Add custom expand icon support to Group Header ([PR #13011](https://github.com/microsoft/fluentui/pull/13011) by bcoard@microsoft.com)
+
+### Patches
+
+- update snapshots for merge-styles change to not generate class with no styles ([PR #13029](https://github.com/microsoft/fluentui/pull/13029) by pingj@microsoft.com)
+- Prettier fix on Callout test. ([PR #12339](https://github.com/microsoft/fluentui/pull/12339) by humbertomakotomorimoto@gmail.com)
+- Checkbox: fix high contrast styles in Edge Chromium ([PR #13035](https://github.com/microsoft/fluentui/pull/13035) by xgao@microsoft.com)
+- Cleaning up callout, announced, and calendar examples ([PR #13053](https://github.com/microsoft/fluentui/pull/13053) by czearing@outlook.com)
+
+## [7.110.5](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.110.5)
+
+Thu, 07 May 2020 01:06:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.110.4..office-ui-fabric-react_v7.110.5)
+
+### Patches
+
+- CommonJS paths were pointing to esm paths, now should correctly point to the right path. ([PR #13026](https://github.com/microsoft/fluentui/pull/13026) by dzearing@hotmail.com)
+
+## [7.110.4](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.110.4)
+
+Wed, 06 May 2020 12:32:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.110.3..office-ui-fabric-react_v7.110.4)
+
+### Patches
+
+- Dropdown: improve multi-select selected keys warnings ([PR #12989](https://github.com/microsoft/fluentui/pull/12989) by elcraig@microsoft.com)
+- ColorPicker: removing unneeded array spread. ([PR #12994](https://github.com/microsoft/fluentui/pull/12994) by dzearing@microsoft.com)
+
+## [7.110.3](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.110.3)
+
+Tue, 05 May 2020 12:34:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.110.2..office-ui-fabric-react_v7.110.3)
+
+### Patches
+
+- Adding missing changes due to move from IPoint to Point. ([PR #12993](https://github.com/microsoft/fluentui/pull/12993) by humbertomakotomorimoto@gmail.com)
+- Add logic to cap the number we show in the facepile descrtiptive overflow at 99 to prevent text overflow ([PR #12902](https://github.com/microsoft/fluentui/pull/12902) by tabrumle@microsoft.com)
+- Prettier fix in Callout test. ([PR #12448](https://github.com/microsoft/fluentui/pull/12448) by humbertomakotomorimoto@gmail.com)
+- MarqueeSelection: Fixing drag and drop functionality. ([PR #12991](https://github.com/microsoft/fluentui/pull/12991) by humbertomakotomorimoto@gmail.com)
+
+## [7.110.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.110.2)
+
+Mon, 04 May 2020 12:33:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.110.1..office-ui-fabric-react_v7.110.2)
+
+### Patches
+
+- Prettier Fix in Callout test. ([PR #12615](https://github.com/microsoft/fluentui/pull/12615) by humbertomakotomorimoto@gmail.com)
+
+## [7.110.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.110.1)
+
+Fri, 01 May 2020 12:28:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.110.0..office-ui-fabric-react_v7.110.1)
+
+### Patches
+
+- Theming: fix SASS slot autogenerator and run it ([PR #12949](https://github.com/microsoft/fluentui/pull/12949) by phkuo@microsoft.com)
+
+## [7.110.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.110.0)
+
+Fri, 01 May 2020 00:19:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.109.1..office-ui-fabric-react_v7.110.0)
+
+### Minor changes
+
+- Updating usage of FocusZone to use non-deprecated prop names. ([PR #12484](https://github.com/microsoft/fluentui/pull/12484) by humbertomakotomorimoto@gmail.com)
+
+## [7.109.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.109.1)
+
+Thu, 30 Apr 2020 12:31:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.109.0..office-ui-fabric-react_v7.109.1)
+
+### Patches
+
+- Example: update Callout example to use Text component ([PR #12423](https://github.com/microsoft/fluentui/pull/12423) by marygans@microsoft.com)
 
 ## [7.109.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.109.0)
 

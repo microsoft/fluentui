@@ -8,14 +8,14 @@ export const CommandBarButtonStyles = (theme: ITheme): Partial<IButtonStyles> =>
 
   return {
     icon: {
-      color: semanticColors.focusBorder,
+      color: semanticColors.primaryButtonBackground,
     },
     menuIcon: {
       color: semanticColors.bodyText,
     },
     root: {
       ...getFocusStyle(theme, { inset: 2 }),
-      fontSize: FontSizes.size12,
+      fontSize: FontSizes.size13,
       backgroundColor: semanticColors.bodyBackground,
       color: semanticColors.bodyText,
     },

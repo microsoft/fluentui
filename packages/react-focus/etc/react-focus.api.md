@@ -67,24 +67,37 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
     checkForNoWrap?: boolean;
     className?: string;
     componentRef?: IRefObject<IFocusZone>;
+    // @deprecated
     defaultActiveElement?: string;
+    defaultTabbableElement?: string | ((root: HTMLElement) => HTMLElement);
     direction?: FocusZoneDirection;
     disabled?: boolean;
+    // @deprecated
     doNotAllowFocusEventToPropagate?: boolean;
     // @deprecated
     elementType?: any;
     handleTabKey?: FocusZoneTabbableElements;
     isCircularNavigation?: boolean;
+    // @deprecated
     isInnerZoneKeystroke?: (ev: React.KeyboardEvent<HTMLElement>) => boolean;
     onActiveElementChanged?: (element?: HTMLElement, ev?: React.FocusEvent<HTMLElement>) => void;
+    // @deprecated
     onBeforeFocus?: (childElement?: HTMLElement) => boolean;
+    onFocus?: (event: React.FocusEvent<HTMLElement | FocusZone>) => void;
+    // @deprecated
     onFocusNotification?: () => void;
+    pagingSupportDisabled?: boolean;
     preventDefaultWhenHandled?: boolean;
+    preventFocusRestoration?: boolean;
     // @deprecated
     rootProps?: React.HTMLAttributes<HTMLDivElement>;
+    shouldEnterInnerZone?: (ev: React.KeyboardEvent<HTMLElement>) => boolean;
+    shouldFocusInnerElementWhenReceivedFocus?: boolean;
     shouldFocusOnMount?: boolean;
     shouldInputLoseFocusOnArrowKey?: (inputElement: HTMLInputElement) => boolean;
+    shouldReceiveFocus?: (childElement?: HTMLElement) => boolean;
     shouldResetActiveElementWhenTabFromZone?: boolean;
+    stopFocusPropagation?: boolean;
 }
 
 

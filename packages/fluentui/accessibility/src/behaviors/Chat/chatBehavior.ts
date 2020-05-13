@@ -15,6 +15,7 @@ const CHAT_FOCUSZONE_ATTRIBUTE = 'chat-focuszone';
  * Focus is set initially on the specified default tabbable element.
  * Focused active element of the component is reset when TAB from the component.
  * Focus can be moved inside a child component with embeded inner FocusZone by pressing a specified key.
+ * Does not handle PageDown and PageUp.
  */
 const ChatBehavior: Accessibility<ChatBehaviorProps> = () => ({
   attributes: {
@@ -27,6 +28,7 @@ const ChatBehavior: Accessibility<ChatBehaviorProps> = () => ({
       shouldResetActiveElementWhenTabFromZone: true,
       defaultTabbableElement: getLastTabbableElement, // select last chat message by default
       [CHAT_FOCUSZONE_ATTRIBUTE]: '', // allows querying the default active element
+      pagingSupportDisabled: true,
     },
   },
 });

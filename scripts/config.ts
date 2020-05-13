@@ -9,7 +9,10 @@ const env = process.env.NODE_ENV || 'development';
 const __DEV__ = env === 'development';
 const __PERF__ = !!process.env.PERF;
 const __PROD__ = env === 'production';
-const __BASENAME__ = '/';
+let __BASENAME__ = process.env.PR_DEPLOY
+  ? // This needs a trailing slash or images won't work
+    `/pr-deploy-site/${process.env.BUILD_SOURCEBRANCH}/react-northstar/`
+  : '/';
 
 const __SKIP_ERRORS__ = !!process.env.SKIP_ERRORS;
 

@@ -35,7 +35,7 @@ const menuBehavior: Accessibility<MenuBehaviorProps> = props => ({
 
 export default menuBehavior;
 
-type MenuBehaviorProps = {
+export type MenuBehaviorProps = {
   /** Indicates if menu has its items displayed vertically. */
   vertical?: boolean;
 };

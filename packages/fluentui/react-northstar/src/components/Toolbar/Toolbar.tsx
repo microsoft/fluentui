@@ -1,26 +1,46 @@
-import { Accessibility, toolbarBehavior, toggleButtonBehavior, IS_FOCUSABLE_ATTRIBUTE } from '@fluentui/accessibility';
-import * as React from 'react';
-import * as _ from 'lodash';
-import * as customPropTypes from '@fluentui/react-proptypes';
-import * as PropTypes from 'prop-types';
-import { Ref } from '@fluentui/react-component-ref';
+import {
+  Accessibility,
+  toolbarBehavior,
+  ToolbarBehaviorProps,
+  toggleButtonBehavior,
+  IS_FOCUSABLE_ATTRIBUTE,
+} from '@fluentui/accessibility';
+import {
+  getElementType,
+  getFirstFocusable,
+  useAccessibility,
+  useStyles,
+  useTelemetry,
+  useUnhandledProps,
+} from '@fluentui/react-bindings';
 import { EventListener } from '@fluentui/react-component-event-listener';
-import { getFirstFocusable } from '@fluentui/react-bindings';
+import { Ref } from '@fluentui/react-component-ref';
+import { MoreIcon } from '@fluentui/react-icons-northstar';
+import * as customPropTypes from '@fluentui/react-proptypes';
+import * as _ from 'lodash';
+import * as PropTypes from 'prop-types';
+import * as React from 'react';
+// @ts-ignore
+import { ThemeContext } from 'react-fela';
 
+import {
+  ComponentEventHandler,
+  FluentComponentStaticProps,
+  ProviderContextPrepared,
+  ShorthandCollection,
+  ShorthandValue,
+  WithAsProp,
+  withSafeTypeForAs,
+} from '../../types';
 import {
   childrenExist,
   createShorthandFactory,
-  UIComponent,
   UIComponentProps,
   ContentComponentProps,
   ChildrenComponentProps,
   commonPropTypes,
   ColorComponentProps,
-  ShorthandFactory,
 } from '../../utils';
-
-import { ComponentEventHandler, ShorthandCollection, ShorthandValue, WithAsProp, withSafeTypeForAs } from '../../types';
-
 import ToolbarCustomItem from './ToolbarCustomItem';
 import ToolbarDivider from './ToolbarDivider';
 import ToolbarItem, { ToolbarItemProps } from './ToolbarItem';
@@ -30,7 +50,6 @@ import ToolbarMenuItem, { ToolbarMenuItemProps } from './ToolbarMenuItem';
 import ToolbarMenuRadioGroup from './ToolbarMenuRadioGroup';
 import ToolbarRadioGroup from './ToolbarRadioGroup';
 import { ToolbarVariablesProvider } from './toolbarVariablesContext';
-import { MoreIcon } from '@fluentui/react-icons-northstar';
 
 export type ToolbarItemShorthandKinds = 'divider' | 'item' | 'group' | 'toggle' | 'custom';
 
@@ -47,7 +66,7 @@ export interface ToolbarProps
     ChildrenComponentProps,
     ColorComponentProps {
   /** Accessibility behavior if overridden by the user. */
-  accessibility?: Accessibility;
+  accessibility?: Accessibility<ToolbarBehaviorProps>;
 
   /** Shorthand array of props for Toolbar. */
   items?: ShorthandCollection<ToolbarItemProps, ToolbarItemShorthandKinds>;
@@ -89,83 +108,76 @@ export interface ToolbarProps
   getOverflowItems?: (startIndex: number) => ShorthandCollection<ToolbarMenuItemProps, ToolbarItemShorthandKinds>; // FIXME: use correct kind
 }
 
+export type ToolbarStylesProps = never;
+
 export const toolbarClassName = 'ui-toolbar';
 
-class Toolbar extends UIComponent<WithAsProp<ToolbarProps>> {
-  static create: ShorthandFactory<ToolbarProps>;
+const Toolbar: React.FC<WithAsProp<ToolbarProps>> &
+  FluentComponentStaticProps<ToolbarProps> & {
+    CustomItem: typeof ToolbarCustomItem;
+    Divider: typeof ToolbarDivider;
+    Item: typeof ToolbarItem;
+    Menu: typeof ToolbarMenu;
+    MenuDivider: typeof ToolbarMenuDivider;
+    MenuItem: typeof ToolbarMenuItem;
+    MenuRadioGroup: typeof ToolbarMenuRadioGroup;
+    RadioGroup: typeof ToolbarRadioGroup;
+  } = props => {
+  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const { setStart, setEnd } = useTelemetry(Toolbar.displayName, context.telemetry);
+  setStart();
 
-  static deprecated_className = toolbarClassName;
+  const {
+    accessibility,
+    className,
+    children,
+    design,
+    getOverflowItems,
+    items,
+    overflow,
+    overflowItem,
+    overflowOpen,
+    styles,
+    variables,
+  } = props;
 
-  static displayName = 'Toolbar';
-
-  static propTypes = {
-    ...commonPropTypes.createCommon(),
-    items: customPropTypes.collectionShorthandWithKindProp(['divider', 'item', 'group', 'toggle', 'custom']),
-    overflow: PropTypes.bool,
-    overflowOpen: PropTypes.bool,
-    overflowItem: customPropTypes.shorthandAllowingChildren,
-    onOverflow: PropTypes.func,
-    onOverflowOpenChange: PropTypes.func,
-    getOverflowItems: PropTypes.func,
-  };
-
-  static defaultProps = {
-    accessibility: toolbarBehavior,
-    items: [],
-    overflowItem: {},
-  };
-
-  static CustomItem = ToolbarCustomItem;
-  static Divider = ToolbarDivider;
-  static Item = ToolbarItem;
-  static Menu = ToolbarMenu;
-  static MenuDivider = ToolbarMenuDivider;
-  static MenuItem = ToolbarMenuItem;
-  static MenuRadioGroup = ToolbarMenuRadioGroup;
-  static RadioGroup = ToolbarRadioGroup;
-
-  overflowContainerRef = React.createRef<HTMLDivElement>();
-  overflowItemRef = React.createRef<HTMLElement>();
-  offsetMeasureRef = React.createRef<HTMLDivElement>();
-  containerRef = React.createRef<HTMLElement>();
+  const overflowContainerRef = React.useRef<HTMLDivElement>();
+  const overflowItemRef = React.useRef<HTMLElement>();
+  const offsetMeasureRef = React.useRef<HTMLDivElement>();
+  const containerRef = React.useRef<HTMLElement>();
 
   // index of the last visible item in Toolbar, the rest goes to overflow menu
-  lastVisibleItemIndex: number;
+  const lastVisibleItemIndex = React.useRef<number>();
+  const animationFrameId = React.useRef<number>();
 
-  animationFrameId: number;
-  rtl: boolean;
+  const getA11Props = useAccessibility(accessibility, {
+    debugName: Toolbar.displayName,
+    rtl: context.rtl,
+  });
+  const { classes } = useStyles<ToolbarStylesProps>(Toolbar.displayName, {
+    className: toolbarClassName,
+    mapPropsToInlineStyles: () => ({
+      className,
+      design,
+      styles,
+      variables,
+    }),
+    rtl: context.rtl,
+  });
 
-  renderItems(items: ShorthandCollection<ToolbarItemProps, ToolbarItemShorthandKinds>) {
-    return _.map(items, (item: ShorthandValue<ToolbarItemProps & { kind?: ToolbarItemShorthandKinds }>) => {
-      const kind = _.get(item, 'kind', 'item');
+  const ElementType = getElementType(props);
+  const unhandledProps = useUnhandledProps(Toolbar.handledProps, props);
 
-      switch (kind) {
-        case 'divider':
-          return ToolbarDivider.create(item);
-        case 'group':
-          return ToolbarRadioGroup.create(item);
-        case 'toggle':
-          return ToolbarItem.create(item, {
-            defaultProps: () => ({ accessibility: toggleButtonBehavior }),
-          });
-        case 'custom':
-          return ToolbarCustomItem.create(item);
-        default:
-          return ToolbarItem.create(item);
-      }
-    });
-  }
-
-  hide(el: HTMLElement) {
+  const hide = (el: HTMLElement) => {
     if (el.style.visibility === 'hidden') {
       return;
     }
 
-    if (this.context.target.activeElement === el || el.contains(this.context.target.activeElement)) {
-      if (this.containerRef.current) {
+    if (context.target.activeElement === el || el.contains(context.target.activeElement)) {
+      if (containerRef.current) {
         const firstFocusableItem = getFirstFocusable(
-          this.containerRef.current,
-          this.containerRef.current.firstElementChild as HTMLElement,
+          containerRef.current,
+          containerRef.current.firstElementChild as HTMLElement,
         );
 
         if (firstFocusableItem) {
@@ -180,9 +192,9 @@ class Toolbar extends UIComponent<WithAsProp<ToolbarProps>> {
       el.setAttribute(WAS_FOCUSABLE_ATTRIBUTE, wasFocusable);
     }
     el.setAttribute(IS_FOCUSABLE_ATTRIBUTE, 'false');
-  }
+  };
 
-  show(el: HTMLElement) {
+  const show = (el: HTMLElement) => {
     if (el.style.visibility !== 'hidden') {
       return false;
     }
@@ -197,29 +209,29 @@ class Toolbar extends UIComponent<WithAsProp<ToolbarProps>> {
     }
 
     return true;
-  }
+  };
 
   /**
    * Checks if `item` overflows a `container`.
    * TODO: check and fix all margin combination
    */
-  isItemOverflowing(itemBoundingRect: ClientRect, containerBoundingRect: ClientRect) {
+  const isItemOverflowing = (itemBoundingRect: ClientRect, containerBoundingRect: ClientRect) => {
     return itemBoundingRect.right > containerBoundingRect.right || itemBoundingRect.left < containerBoundingRect.left;
-  }
+  };
 
   /**
    * Checks if `item` would collide with eventual position of `overflowItem`.
    */
-  wouldItemCollide(
+  const wouldItemCollide = (
     $item: Element,
     itemBoundingRect: ClientRect,
     overflowItemBoundingRect: ClientRect,
     containerBoundingRect: ClientRect,
-  ) {
-    const actualWindow: Window = this.context.target.defaultView;
+  ) => {
+    const actualWindow: Window = context.target.defaultView;
     let wouldCollide;
 
-    if (this.rtl) {
+    if (context.rtl) {
       const itemLeftMargin = parseFloat(actualWindow.getComputedStyle($item).marginLeft) || 0;
       wouldCollide =
         itemBoundingRect.left - overflowItemBoundingRect.width - itemLeftMargin < containerBoundingRect.left;
@@ -248,23 +260,23 @@ class Toolbar extends UIComponent<WithAsProp<ToolbarProps>> {
     }
 
     return wouldCollide;
-  }
+  };
 
   /**
    * Positions overflowItem next to lastVisible item
    * TODO: consider overflowItem margin
    */
-  setOverflowPosition(
+  const setOverflowPosition = (
     $overflowItem: HTMLElement,
     $lastVisibleItem: HTMLElement | undefined,
     lastVisibleItemRect: ClientRect | undefined,
     containerBoundingRect: ClientRect,
     absolutePositioningOffset: PositionOffset,
-  ) {
-    const actualWindow: Window = this.context.target.defaultView;
+  ) => {
+    const actualWindow: Window = context.target.defaultView;
 
     if ($lastVisibleItem) {
-      if (this.rtl) {
+      if (context.rtl) {
         const lastVisibleItemMarginLeft = parseFloat(actualWindow.getComputedStyle($lastVisibleItem).marginLeft) || 0;
 
         $overflowItem.style.right = `${containerBoundingRect.right -
@@ -281,25 +293,25 @@ class Toolbar extends UIComponent<WithAsProp<ToolbarProps>> {
       }
     } else {
       // there is no last visible item -> position the overflow as the first item
-      this.lastVisibleItemIndex = -1;
-      if (this.rtl) {
+      lastVisibleItemIndex.current = -1;
+      if (context.rtl) {
         $overflowItem.style.right = `${absolutePositioningOffset.horizontal}px`;
       } else {
         $overflowItem.style.left = `${absolutePositioningOffset.horizontal}px`;
       }
     }
-  }
+  };
 
-  hideOverflowItems = () => {
-    const $overflowContainer = this.overflowContainerRef.current;
-    const $overflowItem = this.overflowItemRef.current;
-    const $offsetMeasure = this.offsetMeasureRef.current;
+  const hideOverflowItems = () => {
+    const $overflowContainer = overflowContainerRef.current;
+    const $overflowItem = overflowItemRef.current;
+    const $offsetMeasure = offsetMeasureRef.current;
     if (!$overflowContainer || !$overflowItem || !$offsetMeasure) {
       return;
     }
 
     // workaround: when resizing window with popup opened the container contents scroll for some reason
-    if (this.rtl) {
+    if (context.rtl) {
       $overflowContainer.scrollTo(Number.MAX_SAFE_INTEGER, 0);
     } else {
       $overflowContainer.scrollTo(0, 0);
@@ -319,7 +331,7 @@ class Toolbar extends UIComponent<WithAsProp<ToolbarProps>> {
     // By measuring position of an offsetMeasure element absolutely positioned to 0,0.
     // TODO: replace by getComputedStyle('padding')
     const absolutePositioningOffset: PositionOffset = {
-      horizontal: this.rtl
+      horizontal: context.rtl
         ? offsetMeasureBoundingRect.right - overflowContainerBoundingRect.right
         : overflowContainerBoundingRect.left - offsetMeasureBoundingRect.left,
       vertical: overflowContainerBoundingRect.top - offsetMeasureBoundingRect.top,
@@ -338,7 +350,7 @@ class Toolbar extends UIComponent<WithAsProp<ToolbarProps>> {
       const itemBoundingRect = $item.getBoundingClientRect();
 
       // if the item is out of the crop rectangle, hide it
-      if (this.isItemOverflowing(itemBoundingRect, overflowContainerBoundingRect)) {
+      if (isItemOverflowing(itemBoundingRect, overflowContainerBoundingRect)) {
         isOverflowing = true;
         // console.log('Overflow', i, {
         //   item: [itemBoundingRect.left, itemBoundingRect.right],
@@ -349,7 +361,7 @@ class Toolbar extends UIComponent<WithAsProp<ToolbarProps>> {
         //   ],
         //   container: $overflowContainer,
         // })
-        this.hide($item);
+        hide($item);
         return true;
       }
 
@@ -357,9 +369,9 @@ class Toolbar extends UIComponent<WithAsProp<ToolbarProps>> {
       if (
         isOverflowing &&
         !$lastVisibleItem &&
-        this.wouldItemCollide($item, itemBoundingRect, overflowItemBoundingRect, overflowContainerBoundingRect)
+        wouldItemCollide($item, itemBoundingRect, overflowItemBoundingRect, overflowContainerBoundingRect)
       ) {
-        this.hide($item);
+        hide($item);
         return true;
       }
 
@@ -367,141 +379,169 @@ class Toolbar extends UIComponent<WithAsProp<ToolbarProps>> {
       if (!$lastVisibleItem) {
         $lastVisibleItem = $item;
         lastVisibleItemRect = itemBoundingRect;
-        this.lastVisibleItemIndex = i;
+        lastVisibleItemIndex.current = i;
       }
 
-      return this.show($item); // exit the loop when first visible item is found
+      return show($item); // exit the loop when first visible item is found
     });
 
     // if there is an overflow,  position and show overflow item, otherwise hide it
-    if (isOverflowing || this.props.overflowOpen) {
+    if (isOverflowing || overflowOpen) {
       $overflowItem.style.position = 'absolute';
-      this.setOverflowPosition(
+      setOverflowPosition(
         $overflowItem,
         $lastVisibleItem,
         lastVisibleItemRect,
         overflowContainerBoundingRect,
         absolutePositioningOffset,
       );
-      this.show($overflowItem);
+      show($overflowItem);
     } else {
-      this.lastVisibleItemIndex = this.props.items.length - 1;
-      this.hide($overflowItem);
+      lastVisibleItemIndex.current = items.length - 1;
+      hide($overflowItem);
     }
 
-    _.invoke(this.props, 'onOverflow', this.lastVisibleItemIndex + 1);
+    _.invoke(props, 'onOverflow', lastVisibleItemIndex.current + 1);
   };
 
-  getOverflowItems = () => {
-    // console.log('getOverflowItems()', this.props.items.slice(this.lastVisibleItemIndex + 1))
-    return this.props.getOverflowItems
-      ? this.props.getOverflowItems(this.lastVisibleItemIndex + 1)
-      : this.props.items.slice(this.lastVisibleItemIndex + 1);
+  const collectOverflowItems = () => {
+    // console.log('getOverflowItems()', items.slice(lastVisibleItemIndex.current + 1))
+    return getOverflowItems
+      ? getOverflowItems(lastVisibleItemIndex.current + 1)
+      : items.slice(lastVisibleItemIndex.current + 1);
   };
 
-  getVisibleItems = () => {
-    // console.log('allItems()', this.props.items)
-    const end = this.props.overflowOpen ? this.lastVisibleItemIndex + 1 : this.props.items.length;
-    // console.log('getVisibleItems()', this.props.items.slice(0, end))
-    return this.props.items.slice(0, end);
+  const getVisibleItems = () => {
+    // console.log('allItems()', items)
+    const end = overflowOpen ? lastVisibleItemIndex.current + 1 : items.length;
+    // console.log('getVisibleItems()', items.slice(0, end))
+    return items.slice(0, end);
   };
 
-  componentDidMount() {
-    this.afterComponentRendered();
-  }
+  const handleWindowResize = _.debounce((e: UIEvent) => {
+    hideOverflowItems();
 
-  componentDidUpdate() {
-    this.afterComponentRendered();
-  }
-
-  componentWillUnmount() {
-    if (this.animationFrameId !== undefined) {
-      this.context.target.defaultView.cancelAnimationFrame(this.animationFrameId);
-      this.animationFrameId = undefined;
-    }
-  }
-
-  afterComponentRendered() {
-    const actualWindow: Window = this.context.target.defaultView;
-
-    if (this.animationFrameId !== undefined) {
-      actualWindow.cancelAnimationFrame(this.animationFrameId);
-    }
-
-    // Heads up! There are cases (like opening a portal and rendering the Toolbar there immediately) when rAF is necessary
-    this.animationFrameId = actualWindow.requestAnimationFrame(() => {
-      this.hideOverflowItems();
-    });
-  }
-
-  handleWindowResize = _.debounce((e: UIEvent) => {
-    this.hideOverflowItems();
-
-    if (this.props.overflowOpen) {
-      _.invoke(this.props, 'onOverflowOpenChange', e, {
-        ...this.props,
-        overflowOpen: false,
-      });
+    if (overflowOpen) {
+      _.invoke(props, 'onOverflowOpenChange', e, { ...props, overflowOpen: false });
     }
   }, 16);
 
-  renderOverflowItem(overflowItem) {
+  const renderItems = (items: ShorthandCollection<ToolbarItemProps, ToolbarItemShorthandKinds>) =>
+    _.map(items, (item: ShorthandValue<ToolbarItemProps & { kind?: ToolbarItemShorthandKinds }>) => {
+      const kind = _.get(item, 'kind', 'item');
+
+      switch (kind) {
+        case 'divider':
+          return ToolbarDivider.create(item);
+        case 'group':
+          return ToolbarRadioGroup.create(item);
+        case 'toggle':
+          return ToolbarItem.create(item, {
+            defaultProps: () => ({ accessibility: toggleButtonBehavior }),
+          });
+        case 'custom':
+          return ToolbarCustomItem.create(item);
+        default:
+          return ToolbarItem.create(item);
+      }
+    });
+
+  const renderOverflowItem = overflowItem => {
     return (
-      <Ref innerRef={this.overflowItemRef}>
+      <Ref innerRef={overflowItemRef}>
         {ToolbarItem.create(overflowItem, {
           defaultProps: () => ({
-            // TODO: ups
-            icon: <MoreIcon {...{ outline: true }} />,
+            icon: <MoreIcon outline />,
           }),
           overrideProps: {
-            menu: { items: this.props.overflowOpen ? this.getOverflowItems() : [], popper: { positionFixed: true } },
-            menuOpen: this.props.overflowOpen,
+            menu: { items: overflowOpen ? collectOverflowItems() : [], popper: { positionFixed: true } },
+            menuOpen: overflowOpen,
             onMenuOpenChange: (e, { menuOpen }) => {
-              _.invoke(this.props, 'onOverflowOpenChange', e, {
-                ...this.props,
-                overflowOpen: menuOpen,
-              });
+              _.invoke(props, 'onOverflowOpenChange', e, { ...props, overflowOpen: menuOpen });
             },
           },
         })}
       </Ref>
     );
-  }
+  };
 
-  renderComponent({ accessibility, ElementType, classes, styles, unhandledProps, rtl }): React.ReactNode {
-    this.rtl = rtl;
-    const { children, items, overflow, overflowItem, variables } = this.props;
+  React.useEffect(() => {
+    const actualWindow: Window = context.target.defaultView;
 
-    if (!overflow) {
-      return (
-        <Ref innerRef={this.containerRef}>
-          <ElementType className={classes.root} {...accessibility.attributes.root} {...unhandledProps}>
-            <ToolbarVariablesProvider value={variables}>
-              {childrenExist(children) ? children : this.renderItems(items)}
-            </ToolbarVariablesProvider>
-          </ElementType>
-        </Ref>
-      );
-    }
+    actualWindow.cancelAnimationFrame(animationFrameId.current);
+    // Heads up! There are cases (like opening a portal and rendering the Toolbar there immediately) when rAF is necessary
+    animationFrameId.current = actualWindow.requestAnimationFrame(() => {
+      hideOverflowItems();
+    });
 
-    return (
-      <>
-        <Ref innerRef={this.containerRef}>
-          <ElementType className={classes.root} {...accessibility.attributes.root} {...unhandledProps}>
-            <div className={classes.overflowContainer} ref={this.overflowContainerRef}>
+    return () => {
+      if (animationFrameId.current !== undefined) {
+        context.target.defaultView.cancelAnimationFrame(animationFrameId.current);
+        animationFrameId.current = undefined;
+      }
+    };
+  });
+
+  const element = overflow ? (
+    <>
+      <Ref innerRef={containerRef}>
+        {getA11Props.unstable_wrapWithFocusZone(
+          <ElementType {...getA11Props('root', { className: classes.root, ...unhandledProps })}>
+            <div className={classes.overflowContainer} ref={overflowContainerRef}>
               <ToolbarVariablesProvider value={variables}>
-                {childrenExist(children) ? children : this.renderItems(this.getVisibleItems())}
-                {this.renderOverflowItem(overflowItem)}
+                {childrenExist(children) ? children : renderItems(getVisibleItems())}
+                {renderOverflowItem(overflowItem)}
               </ToolbarVariablesProvider>
             </div>
-            <div className={classes.offsetMeasure} ref={this.offsetMeasureRef} />
-          </ElementType>
-        </Ref>
-        <EventListener listener={this.handleWindowResize} target={this.context.target.defaultView} type="resize" />
-      </>
-    );
-  }
-}
+            <div className={classes.offsetMeasure} ref={offsetMeasureRef} />
+          </ElementType>,
+        )}
+      </Ref>
+      <EventListener listener={handleWindowResize} target={context.target.defaultView} type="resize" />
+    </>
+  ) : (
+    <Ref innerRef={containerRef}>
+      {getA11Props.unstable_wrapWithFocusZone(
+        <ElementType {...getA11Props('root', { className: classes.root, ...unhandledProps })}>
+          <ToolbarVariablesProvider value={variables}>
+            {childrenExist(children) ? children : renderItems(items)}
+          </ToolbarVariablesProvider>
+        </ElementType>,
+      )}
+    </Ref>
+  );
+  setEnd();
+
+  return element;
+};
+
+Toolbar.displayName = 'Toolbar';
+
+Toolbar.propTypes = {
+  ...commonPropTypes.createCommon(),
+  items: customPropTypes.collectionShorthandWithKindProp(['divider', 'item', 'group', 'toggle', 'custom']),
+  overflow: PropTypes.bool,
+  overflowOpen: PropTypes.bool,
+  overflowItem: customPropTypes.shorthandAllowingChildren,
+  onOverflow: PropTypes.func,
+  onOverflowOpenChange: PropTypes.func,
+  getOverflowItems: PropTypes.func,
+};
+Toolbar.defaultProps = {
+  accessibility: toolbarBehavior,
+  items: [],
+  overflowItem: {},
+};
+Toolbar.handledProps = Object.keys(Toolbar.propTypes) as any;
+
+Toolbar.CustomItem = ToolbarCustomItem;
+Toolbar.Divider = ToolbarDivider;
+Toolbar.Item = ToolbarItem;
+Toolbar.Menu = ToolbarMenu;
+Toolbar.MenuDivider = ToolbarMenuDivider;
+Toolbar.MenuItem = ToolbarMenuItem;
+Toolbar.MenuRadioGroup = ToolbarMenuRadioGroup;
+Toolbar.RadioGroup = ToolbarRadioGroup;
 
 Toolbar.create = createShorthandFactory({ Component: Toolbar, mappedProp: 'content' });
 

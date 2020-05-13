@@ -125,6 +125,7 @@ const TreeItem: React.FC<WithAsProp<TreeItemProps>> & FluentComponentStaticProps
     selected,
     selectable,
     indeterminate,
+    id,
   } = props;
 
   const hasSubtreeItem = hasSubtree(props);
@@ -231,6 +232,7 @@ const TreeItem: React.FC<WithAsProp<TreeItemProps>> & FluentComponentStaticProps
     <ElementType
       {...getA11Props('root', {
         className: classes.root,
+        id,
         selected,
         ...rtlTextContainer.getAttributes({ forElements: [children] }),
         ...unhandledProps,

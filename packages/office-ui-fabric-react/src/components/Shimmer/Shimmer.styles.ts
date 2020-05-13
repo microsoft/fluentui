@@ -1,5 +1,11 @@
 import { IShimmerStyleProps, IShimmerStyles } from './Shimmer.types';
-import { keyframes, getGlobalClassNames, hiddenContentStyle, HighContrastSelector } from '../../Styling';
+import {
+  keyframes,
+  getGlobalClassNames,
+  hiddenContentStyle,
+  HighContrastSelector,
+  getEdgeChromiumNoHighContrastAdjustSelector,
+} from '../../Styling';
 import { getRTL, memoizeFunction } from '../../Utilities';
 
 const GlobalClassNames = {
@@ -73,6 +79,7 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
                         0 0 / 90% 100%
                         no-repeat`,
           },
+          ...getEdgeChromiumNoHighContrastAdjustSelector(),
         },
       },
       isDataLoaded && {
