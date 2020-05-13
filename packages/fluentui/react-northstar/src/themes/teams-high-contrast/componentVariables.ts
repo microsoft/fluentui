@@ -16,6 +16,7 @@ export { default as Header } from './components/Header/headerVariables';
 export { default as Input } from './components/Input/inputVariables';
 export { default as ListItem } from './components/List/listItemVariables';
 export { default as Menu } from './components/Menu/menuVariables';
+export { default as MenuDivider } from './components/Menu/menuDividerVariables';
 export { default as MenuItem } from './components/Menu/menuItemVariables';
 export { default as RadioGroupItem } from './components/RadioGroup/radioGroupItemVariables';
 export { default as Segment } from './components/Segment/segmentVariables';
