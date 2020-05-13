@@ -53,7 +53,7 @@ packages/file-type-icons/  @KatherineThayerMicrosoft @jahnp @bigbadcapers
 packages/foundation/ @JasonGore
 # packages/icons/
 # packages/jest-serializer-merge-styles/
-packages/lists/ @dzearing @KevinTCoughlin @aditima
+packages/lists/ @dzearing @aditima
 # packages/merge-styles/
 packages/migration/ @ecraig12345 @kenotron
 # packages/prettier-rules/
@@ -83,7 +83,7 @@ Button/ @khmakoto
 Calendar/ @lorejoh
 Callout/ @joschect
 react-cards/Card/ @khmakoto
-Check/ @KevinTCoughlin
+Check/ @dzearing @xugao
 Checkbox/ @khmakoto @xugao
 ChoiceGroup/ @ecraig12345
 Coachmark/ @leddie24
@@ -93,7 +93,7 @@ ComboBox/ @joschect
 CommandBar/ @micahgodbolt @joschect
 ContextualMenu/ @joschect
 DatePicker/ @lorejoh
-DetailsList/ @KevinTCoughlin
+DetailsList/ @dzearing
 Dialog/ @joschect
 DocumentCard/ @yiminwu
 Dropdown/ @joschect
@@ -102,14 +102,14 @@ Facepile/ @markionium @mtennoe
 FolderCover/ @ThomasMichon @bigbadcapers
 FocusTrapZone/ @khmakoto
 FocusZone/ @khmakoto
-GroupedList/ @aditima @KevinTCoughlin
+GroupedList/ @aditima @dzearing
 HoverCard/ @atneik @Jahnp @Vitalius1
 Icon/ @dzearing @ecraig12345
 Image/ @dzearing
 Label/ @khmakoto
 Layer/ @ThomasMichon
 Link/ @khmakoto
-List/ @KevinTCoughlin
+List/ @dzearing
 MarqueeSelection/ @dzearing
 MessageBar/ @ecraig12345
 Modal/ @joschect
@@ -162,7 +162,7 @@ ChoiceGroup/docs/ @ecraig12345
 CommandBar/docs/ @micahgodbolt @joschect
 ContextualMenu/docs/ @joschect
 DatePicker/docs/ @lorejoh
-DetailsList/docs/ @KevinTCoughlin
+DetailsList/docs/ @dzearing
 # Dialog/docs/
 DocumentCard/docs/ @yiminwu
 # Dropdown/docs/
@@ -170,14 +170,14 @@ DocumentCard/docs/ @yiminwu
 # Facepile/docs/
 # FocusTrapZone/docs/
 # FocusZone/docs/
-GroupedList/docs/ @aditima @KevinTCoughlin
+GroupedList/docs/ @aditima @dzearing
 HoverCard/docs/ @atneik @Jahnp @Vitalius1
 # Icon/docs/
 # Image/docs/
 # Label/docs/
 Layer/docs/ @ThomasMichon
 Link/docs/ @khmakoto
-List/docs/ @KevinTCoughlin
+List/docs/ @dzearing
 # MarqueeSelection/docs/
 # MessageBar/docs/
 # Modal/docs/
