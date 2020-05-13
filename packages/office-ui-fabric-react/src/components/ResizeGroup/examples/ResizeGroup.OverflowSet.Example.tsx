@@ -129,7 +129,6 @@ export const ResizeGroupOverflowSetExample: React.FunctionComponent = () => {
   };
 
   return (
-    // tslint:disable-next-line:no-constant-condition
     <div>
       <ResizeGroup
         role="tabpanel"
