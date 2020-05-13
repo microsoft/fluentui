@@ -17,16 +17,8 @@ const App = () => {
     Alert.alert('Alert.', 'You have been alerted.');
   };
 
-  return (
-    <View style={styles.stackStyle}>
-      <Link url="https://www.bing.com/" content="Click to navigate." />
-      <Link onPress={doPress} content="Click to alert." />
-    </View>
-  );
-};
-
 const styles = StyleSheet.create({
-  stackStyle: {
+  linkTestStyle: {
     borderWidth: 1,
     borderColor: '#bdbdbd',
     paddingVertical: 8,
@@ -35,6 +27,13 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App;
+  return (
+    <View style={styles.linkTestStyle}>
+      <Link url="https://www.bing.com/" content="Click to navigate." />
+      <Link onPress={doPress} content="Click to alert." />
+    </View>
+  );
+};
 
+export default App;
 ```
