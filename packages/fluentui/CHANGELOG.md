@@ -24,6 +24,8 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Restricted prop sets in the `ReactionGroup` component which are passed to styles functions, @assuncaocharles ([#13080](https://github.com/microsoft/fluentui/pull/13080))
 - Stop propagadion in `Dropdown` for `keypress` of `ArrowRight`, `ArrowLeft`, `Esc` and `Backspace` @assuncaocharles ([#13088](https://github.com/microsoft/fluentui/pull/13088))
 - Restricted prop sets in the `Menu` component which are passed to styles functions @assuncaocharles ([#13040](https://github.com/microsoft/fluentui/pull/13040))
+- Restricted set in `MenuItem` component which are passed to styles functions @mnajdova ([#13117](https://github.com/microsoft/fluentui/pull/13117))
+- `menuItemSlotClassNames.indicator` and `menuItemSlotClassNames.wrapper` were removed, `menuItemIndicatorClassName` and `menuItemWrapperClassName` should be used instead @mnajdova ([#13117](https://github.com/microsoft/fluentui/pull/13117))
 
 ### Fixes
 - Fix `splitButtonBehavior` to exclude `toggleButton` from focus zone @silviuavram ([#13043](https://github.com/microsoft/fluentui/pull/13043))
@@ -33,7 +35,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Wrapped `Alert`, `Attachment`, `Box` and `ListItem` FC with `unstable_wrapWithFocusZone` @assuncaocharles ([#13093](https://github.com/microsoft/fluentui/pull/13093))
 
 ### Features
-- Use `compose()` in `MenuItem` @mnajdova ([#13117](https://github.com/microsoft/fluentui/pull/13117))
+- Use `compose()` in `MenuItem` and added dedicated slot's components `MenuItemIcon`, `MenuItemContent`, `MenuItemIndicator` and `MenuItemWrapper` @mnajdova ([#13117](https://github.com/microsoft/fluentui/pull/13117))
 
 <!--------------------------------[ v0.49.0 ]------------------------------- -->
 ## [v0.49.0](https://github.com/OfficeDev/office-ui-fabric-react/tree/fluentui_v0.49.0) (2020-05-10)
