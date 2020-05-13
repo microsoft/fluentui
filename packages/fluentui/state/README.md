@@ -46,4 +46,4 @@ const manager = createInputManager({ state: { value: 'Hello world!' } });
 
 # Usage with React
 
-We provide React bindings under [`@fluentui/react-bindings`](https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/fluentui/react-bindings).
+We provide React bindings under [`@fluentui/react-bindings`](https://github.com/microsoft/fluentui/tree/master/packages/fluentui/react-bindings).

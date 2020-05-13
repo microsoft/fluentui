@@ -199,10 +199,10 @@ function createScenarioTable(stories, testResults: ExtendedCookResults, showAll:
   // <tr>
   //   <th>Scenario</th>
   //   <th>
-  //     <a href="https://github.com/OfficeDev/office-ui-fabric-react/wiki/Perf-Testing#why-are-results-listed-in-ticks-instead-of-time-units">Master Ticks</a>
+  //     <a href="https://github.com/microsoft/fluentui/wiki/Perf-Testing#why-are-results-listed-in-ticks-instead-of-time-units">Master Ticks</a>
   //   </th>
   //   <th>
-  //     <a href="https://github.com/OfficeDev/office-ui-fabric-react/wiki/Perf-Testing#why-are-results-listed-in-ticks-instead-of-time-units">PR Ticks</a>
+  //     <a href="https://github.com/microsoft/fluentui/wiki/Perf-Testing#why-are-results-listed-in-ticks-instead-of-time-units">PR Ticks</a>
   //   </th>
   //   <th>Status</th>
   // </tr>`.concat(
@@ -231,7 +231,7 @@ function createScenarioTable(stories, testResults: ExtendedCookResults, showAll:
     <th>TPI</th>
     <th>Iterations</th>
     <th>
-      <a href="https://github.com/OfficeDev/office-ui-fabric-react/wiki/Perf-Testing#why-are-results-listed-in-ticks-instead-of-time-units">PR Ticks</a>
+      <a href="https://github.com/microsoft/fluentui/wiki/Perf-Testing#why-are-results-listed-in-ticks-instead-of-time-units">PR Ticks</a>
     </th>
   </tr>`.concat(
     resultsToDisplay

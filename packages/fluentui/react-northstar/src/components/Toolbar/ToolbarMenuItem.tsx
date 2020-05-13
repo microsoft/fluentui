@@ -18,7 +18,7 @@ import {
   useStyles,
   useAutoControlled,
   getElementType,
-  getUnhandledProps,
+  useUnhandledProps,
   useAccessibility,
 } from '@fluentui/react-bindings';
 import { mergeComponentVariables } from '@fluentui/styles';
@@ -45,10 +45,9 @@ import {
   FluentComponentStaticProps,
   ProviderContextPrepared,
 } from '../../types';
-import { Popper } from '../../utils/positioner';
+import { getPopperPropsFromShorthand, Popper, PopperShorthandProps } from '../../utils/positioner';
 
 import Box, { BoxProps } from '../Box/Box';
-import Icon, { IconProps } from '../Icon/Icon';
 import Popup, { PopupProps } from '../Popup/Popup';
 import ToolbarMenu, { ToolbarMenuProps, ToolbarMenuItemShorthandKinds } from './ToolbarMenu';
 import { ToolbarVariablesContext, ToolbarVariablesProvider } from './toolbarVariablesContext';
@@ -69,7 +68,7 @@ export interface ToolbarMenuItemProps extends UIComponentProps, ChildrenComponen
   disabled?: boolean;
 
   /** Name or shorthand for Toolbar Item Icon */
-  icon?: ShorthandValue<IconProps>;
+  icon?: ShorthandValue<BoxProps>;
 
   /** ToolbarMenuItem index inside ToolbarMenu. */
   index?: number;
@@ -81,7 +80,9 @@ export interface ToolbarMenuItemProps extends UIComponentProps, ChildrenComponen
   inSubmenu?: boolean;
 
   /** Shorthand for the submenu. */
-  menu?: ShorthandValue<ToolbarMenuProps> | ShorthandCollection<ToolbarMenuItemProps, ToolbarMenuItemShorthandKinds>;
+  menu?:
+    | ShorthandValue<ToolbarMenuProps & { popper?: PopperShorthandProps }>
+    | ShorthandCollection<ToolbarMenuItemProps, ToolbarMenuItemShorthandKinds>;
 
   /** Indicates if the menu inside the item is open. */
   menuOpen?: boolean;
@@ -116,7 +117,7 @@ export interface ToolbarMenuItemProps extends UIComponentProps, ChildrenComponen
   wrapper?: ShorthandValue<BoxProps>;
 }
 
-export type ToolbarMenuItemStylesProps = Pick<ToolbarMenuItemProps, 'disabled'>;
+export type ToolbarMenuItemStylesProps = Pick<ToolbarMenuItemProps, 'disabled'> & { hasContent: boolean };
 
 export interface ToolbarMenuItemSlotClassNames {
   activeIndicator: string;
@@ -125,10 +126,16 @@ export interface ToolbarMenuItemSlotClassNames {
   submenuIndicator: string;
 }
 
+export const toolbarMenuItemClassName = 'ui-toolbar__menuitem';
+export const toolbarMenuItemSlotClassNames: ToolbarMenuItemSlotClassNames = {
+  activeIndicator: `${toolbarMenuItemClassName}__activeIndicator`,
+  wrapper: `${toolbarMenuItemClassName}__wrapper`,
+  submenu: `${toolbarMenuItemClassName}__submenu`,
+  submenuIndicator: `${toolbarMenuItemClassName}__submenuIndicator`,
+};
+
 const ToolbarMenuItem: React.FC<WithAsProp<ToolbarMenuItemProps>> &
-  FluentComponentStaticProps<ToolbarMenuItemProps> & {
-    slotClassNames: ToolbarMenuItemSlotClassNames;
-  } = props => {
+  FluentComponentStaticProps<ToolbarMenuItemProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(ToolbarMenuItem.displayName, context.telemetry);
   setStart();
@@ -164,12 +171,13 @@ const ToolbarMenuItem: React.FC<WithAsProp<ToolbarMenuItemProps>> &
   const mergedVariables = mergeComponentVariables(parentVariables, variables);
 
   const ElementType = getElementType(props);
-  const unhandledProps = getUnhandledProps(ToolbarMenuItem.handledProps, props);
+  const unhandledProps = useUnhandledProps(ToolbarMenuItem.handledProps, props);
 
   const getA11yProps = useAccessibility(props.accessibility, {
     debugName: ToolbarMenuItem.displayName,
     mapPropsToBehavior: () => ({
       menu,
+      active,
       menuOpen,
       disabled,
       'aria-label': props['aria-label'],
@@ -194,9 +202,10 @@ const ToolbarMenuItem: React.FC<WithAsProp<ToolbarMenuItemProps>> &
   });
 
   const { classes, styles: resolvedStyles } = useStyles<ToolbarMenuItemStylesProps>(ToolbarMenuItem.displayName, {
-    className: ToolbarMenuItem.className,
+    className: toolbarMenuItemClassName,
     mapPropsToStyles: () => ({
       disabled,
+      hasContent: !!content,
     }),
     mapPropsToInlineStyles: () => ({
       className,
@@ -322,15 +331,17 @@ const ToolbarMenuItem: React.FC<WithAsProp<ToolbarMenuItemProps>> &
         children
       ) : (
         <>
-          {Icon.create(icon, {
-            defaultProps: () => ({ xSpacing: !!content ? 'after' : 'none' }),
+          {Box.create(icon, {
+            defaultProps: () => ({
+              styles: resolvedStyles.icon,
+            }),
           })}
           {content}
           {active &&
             Box.create(activeIndicator, {
               defaultProps: () => ({
                 as: 'span',
-                className: ToolbarMenuItem.slotClassNames.activeIndicator,
+                className: toolbarMenuItemSlotClassNames.activeIndicator,
                 styles: resolvedStyles.activeIndicator,
                 accessibility: indicatorBehavior,
               }),
@@ -339,7 +350,7 @@ const ToolbarMenuItem: React.FC<WithAsProp<ToolbarMenuItemProps>> &
             Box.create(submenuIndicator, {
               defaultProps: () => ({
                 as: 'span',
-                className: ToolbarMenuItem.slotClassNames.submenuIndicator,
+                className: toolbarMenuItemSlotClassNames.submenuIndicator,
                 styles: resolvedStyles.submenuIndicator,
                 accessibility: indicatorBehavior,
               }),
@@ -382,11 +393,16 @@ const ToolbarMenuItem: React.FC<WithAsProp<ToolbarMenuItemProps>> &
                 menuRef.current = node;
               }}
             >
-              <Popper align="top" position={context.rtl ? 'before' : 'after'} targetRef={itemRef}>
+              <Popper
+                align="top"
+                position={context.rtl ? 'before' : 'after'}
+                targetRef={itemRef}
+                {...getPopperPropsFromShorthand(menu)}
+              >
                 <ToolbarVariablesProvider value={mergedVariables}>
                   {ToolbarMenu.create(menu, {
                     defaultProps: () => ({
-                      className: ToolbarMenuItem.slotClassNames.submenu,
+                      className: toolbarMenuItemSlotClassNames.submenu,
                       styles: resolvedStyles.menu,
                       submenu: true,
                       submenuIndicator,
@@ -410,7 +426,7 @@ const ToolbarMenuItem: React.FC<WithAsProp<ToolbarMenuItemProps>> &
   const wrapperElement = Box.create(wrapper, {
     defaultProps: () =>
       getA11yProps('wrapper', {
-        className: cx(ToolbarMenuItem.slotClassNames.wrapper, classes.wrapper),
+        className: cx(toolbarMenuItemSlotClassNames.wrapper, classes.wrapper),
       }),
     overrideProps: () => ({
       children: (
@@ -428,22 +444,13 @@ const ToolbarMenuItem: React.FC<WithAsProp<ToolbarMenuItemProps>> &
 
 ToolbarMenuItem.displayName = 'ToolbarMenuItem';
 
-ToolbarMenuItem.className = 'ui-toolbar__menuitem';
-
-ToolbarMenuItem.slotClassNames = {
-  activeIndicator: `${ToolbarMenuItem.className}__activeIndicator`,
-  wrapper: `${ToolbarMenuItem.className}__wrapper`,
-  submenu: `${ToolbarMenuItem.className}__submenu`,
-  submenuIndicator: `${ToolbarMenuItem.className}__submenuIndicator`,
-};
-
 ToolbarMenuItem.propTypes = {
   ...commonPropTypes.createCommon(),
   active: PropTypes.bool,
   activeIndicator: customPropTypes.shorthandAllowingChildren,
   defaultMenuOpen: PropTypes.bool,
   disabled: PropTypes.bool,
-  icon: customPropTypes.itemShorthand,
+  icon: customPropTypes.shorthandAllowingChildren,
   index: PropTypes.number,
   submenuIndicator: customPropTypes.shorthandAllowingChildren,
   inSubmenu: PropTypes.bool,

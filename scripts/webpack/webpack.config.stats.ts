@@ -3,6 +3,9 @@ import fs from 'fs';
 import path from 'path';
 import webpack from 'webpack';
 import config from '../config';
+import glob from 'glob';
+import * as _ from 'lodash';
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const { paths } = config;
 
@@ -31,7 +34,7 @@ const makeConfig = (srcPath: string, name: string): webpack.Configuration => ({
   mode: 'production',
   name: 'client',
   target: 'web',
-  entry: paths.packageDist('react-northstar', path.join('es', srcPath)),
+  entry: srcPath,
   output: {
     filename: `${name}.js`,
     path: paths.base('stats'),
@@ -55,6 +58,9 @@ const makeConfig = (srcPath: string, name: string): webpack.Configuration => ({
     react: 'react',
     'react-dom': 'reactDOM',
   },
+  optimization: {
+    concatenateModules: false,
+  },
   plugins: [
     new CleanWebpackPlugin([paths.base('stats')], {
       root: paths.base(),
@@ -62,6 +68,11 @@ const makeConfig = (srcPath: string, name: string): webpack.Configuration => ({
     }),
     new IgnoreNotFoundExportPlugin(),
     new webpack.DefinePlugin(config.compiler_globals),
+    // new BundleAnalyzerPlugin({
+    //   reportFilename: `${name}.html`,
+    //   analyzerMode: 'static',
+    //   openAnalyzer: false,
+    // }),
   ],
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.json'],
@@ -71,21 +82,29 @@ const makeConfig = (srcPath: string, name: string): webpack.Configuration => ({
   },
 });
 
+const toEsDistPath = srcPath => {
+  return paths.packageDist('react-northstar', path.join('es', srcPath));
+};
+
 export default [
+  ...glob
+    .sync(paths.packageSrc('docs', 'examples/components/**/*.bsize.tsx'))
+    .map(examplePath => makeConfig(examplePath, _.camelCase(path.basename(examplePath)))),
+
   // entire package
-  makeConfig('index', 'bundle-react'),
+  makeConfig(toEsDistPath('index'), 'bundle-react'),
 
   // utils (core)
-  makeConfig('utils/index', 'bundle-utils'),
+  makeConfig(toEsDistPath('utils/index'), 'bundle-utils'),
 
   // individual components
   ...fs
     .readdirSync(paths.packageSrc('react-northstar', 'components'))
-    .map(dir => makeConfig(`components/${dir}/${dir}`, `component-${dir}`)),
+    .map(dir => makeConfig(toEsDistPath(`components/${dir}/${dir}`), `component-${dir}`)),
 
   // individual themes
   ...fs
     .readdirSync(paths.packageSrc('react-northstar', 'themes'))
     .filter(dir => !/.*\.\w+$/.test(dir))
-    .map(dir => makeConfig(`themes/${dir}`, `theme-${dir}`)),
+    .map(dir => makeConfig(toEsDistPath(`themes/${dir}`), `theme-${dir}`)),
 ];

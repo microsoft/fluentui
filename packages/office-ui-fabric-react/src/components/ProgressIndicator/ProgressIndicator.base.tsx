@@ -14,7 +14,7 @@ const ZERO_THRESHOLD = 0.01;
 
 /**
  * ProgressIndicator with no default styles.
- * [Use the `styles` API to add your own styles.](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Styling)
+ * [Use the `styles` API to add your own styles.](https://github.com/microsoft/fluentui/wiki/Styling)
  */
 export class ProgressIndicatorBase extends React.Component<IProgressIndicatorProps, {}> {
   public static defaultProps = {

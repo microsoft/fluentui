@@ -71,7 +71,7 @@ const excludedExampleFiles: string[] = [
   'ExampleHelper.tsx', // Helper file with no actual component
   'GroupedList.Basic.Example.tsx',
   'GroupedList.Custom.Example.tsx',
-  'HoverCard.InstantDismiss.Example.tsx', // https://github.com/OfficeDev/office-ui-fabric-react/issues/6681
+  'HoverCard.InstantDismiss.Example.tsx', // https://github.com/microsoft/fluentui/issues/6681
   'List.Basic.Example.tsx',
   'List.Ghosting.Example.tsx',
   'List.Grid.Example.tsx',
@@ -86,6 +86,12 @@ const excludedExampleFileRegexes: RegExp[] = [
   // Snapshots of these examples are worthless since the component isn't open by default
   /^Panel\./,
 ];
+
+function setCacheFullWarning(enabled: boolean) {
+  (window as any).FabricConfig = {
+    enableClassNameCacheFullWarning: enabled,
+  };
+}
 
 declare const global: any;
 
@@ -148,6 +154,10 @@ describe('Component Examples', () => {
     jest.spyOn(Math, 'random').mockImplementation(() => {
       return 0;
     });
+
+    // Enable cache full warning. If warning occurs, the test will fail.
+    // This helps us catch mutating styles which cause cache to always miss.
+    setCacheFullWarning(true);
   });
 
   afterAll(() => {
@@ -177,6 +187,8 @@ describe('Component Examples', () => {
         globalSnapshotState.added += snapshotState.added;
       }
     });
+
+    setCacheFullWarning(false);
   });
 
   for (const examplePath of examplePaths) {

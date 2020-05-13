@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/mdl2-theme",
-  "version": "0.1.42",
+  "version": "0.1.76",
   "description": "MDL2 theming for use with Fabric components.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -10,7 +10,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/OfficeDev/office-ui-fabric-react"
+    "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
   "scripts": {
@@ -23,13 +23,13 @@
   },
   "devDependencies": {
     "@uifabric/build": "^7.0.0",
-    "@uifabric/tslint-rules": "^7.1.0"
+    "@uifabric/tslint-rules": "^7.2.1"
   },
   "dependencies": {
-    "@uifabric/set-version": "^7.0.7",
-    "@uifabric/styling": "^7.10.21",
-    "@uifabric/variants": "^7.1.32",
-    "office-ui-fabric-react": "^7.105.1",
+    "@uifabric/set-version": "^7.0.12",
+    "@uifabric/styling": "^7.12.5",
+    "@uifabric/variants": "^7.1.64",
+    "office-ui-fabric-react": "^7.113.1",
     "tslib": "^1.10.0"
   }
 }

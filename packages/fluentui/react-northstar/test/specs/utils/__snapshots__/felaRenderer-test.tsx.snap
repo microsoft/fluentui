@@ -7,15 +7,15 @@ exports[`felaRenderer CSS fallback values are rendered 1`] = `
 }
 
 
-<div className=ui-box a />;
+<div className=ui-box a data-uses-unhanded-props=true />;
 "
 `;
 
 exports[`felaRenderer animations are not applied if animations are disabled 1`] = `
 "
 
-<div className=ui-provider dir=ltr>
-  <div className=ui-box ui-animation />
+<div className=ui-provider dir=ltr data-uses-unhanded-props=true>
+  <div className=ui-box ui-animation data-uses-unhanded-props=true />
 </div>;
 "
 `;
@@ -58,12 +58,13 @@ exports[`felaRenderer array returned by keyframe results in CSS fallback values 
   }
 }
 .a {
+  -webkit-animation-name: k1;
   animation-name: k1;
 }
 
 
-<div className=ui-provider dir=ltr>
-  <div className=ui-box ui-animation a />
+<div className=ui-provider dir=ltr data-uses-unhanded-props=true>
+  <div className=ui-box ui-animation a data-uses-unhanded-props=true />
 </div>;
 "
 `;
@@ -74,7 +75,7 @@ exports[`felaRenderer basic styles are rendered 1`] = `
 }
 
 
-<div className=ui-box a />;
+<div className=ui-box a data-uses-unhanded-props=true />;
 "
 `;
 
@@ -104,27 +105,29 @@ exports[`felaRenderer keyframe colors are rendered 1`] = `
   }
 }
 .a {
+  -webkit-animation-name: k1;
   animation-name: k1;
 }
 .b {
+  -webkit-animation-duration: 5s;
   animation-duration: 5s;
 }
 
 
-<div className=ui-provider dir=ltr>
-  <div className=ui-box ui-animation a b />
+<div className=ui-provider dir=ltr data-uses-unhanded-props=true>
+  <div className=ui-box ui-animation a b data-uses-unhanded-props=true />
 </div>;
 "
 `;
 
 exports[`felaRenderer marginLeft is rendered into marginLeft due to RTL with \`noFlip\` 1`] = `
 ".a {
-  margin-left: 10px; /* @noflip */
+  margin-left: 10px;
 }
 
 
-<div className=ui-provider dir=rtl>
-  <span className=ui-text a dir=auto>
+<div className=ui-provider dir=rtl data-uses-unhanded-props=true>
+  <span className=ui-text a dir=auto data-uses-unhanded-props=true>
     Hello
   </span>
 </div>;
@@ -137,8 +140,8 @@ exports[`felaRenderer marginLeft is rendered into marginRight due to RTL 1`] = `
 }
 
 
-<div className=ui-provider dir=rtl>
-  <span className=ui-text a dir=auto>
+<div className=ui-provider dir=rtl data-uses-unhanded-props=true>
+  <span className=ui-text a dir=auto data-uses-unhanded-props=true>
     Hello
   </span>
 </div>;
@@ -147,71 +150,53 @@ exports[`felaRenderer marginLeft is rendered into marginRight due to RTL 1`] = `
 
 exports[`felaRenderer prefixes required styles 1`] = `
 ".a {
-  background: -webkit-linear-gradient(#e66465, #9198e5);
-  background: -moz-linear-gradient(#e66465, #9198e5);
-  background: linear-gradient(#e66465, #9198e5);
-}
-.b {
-  background-clip: -webkit-text;
-  background-clip: text;
-}
-.c {
-  background-image: -webkit-cross-fade(75% url(\\"foo.png\\"), url(\\"bar.png\\"));
-  background-image: cross-fade(75% url(\\"foo.png\\"), url(\\"bar.png\\"));
-}
-.d {
   cursor: -webkit-zoom-in;
   cursor: -moz-zoom-in;
   cursor: zoom-in;
 }
-.e {
+.b {
   display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
   display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
 }
-.f {
+.c {
   -webkit-filter: blur(5px);
   filter: blur(5px);
 }
-.g {
+.d {
   height: -webkit-min-content;
   height: -moz-min-content;
   height: min-content;
 }
-.h {
-  margin-block-end: 20px;
-  -webkit-margin-after: 20px;
-}
-.i {
+.e {
   position: -webkit-sticky;
   position: sticky;
 }
-.j {
-  transition: width 2s, height 2s, background-color 2s, transform 2s;
+.f {
+  -webkit-transition: width 2s, height 2s, background-color 2s,
+    -webkit-transform 2s;
   -webkit-transition: width 2s, height 2s, background-color 2s, transform 2s;
-  -moz-transition: width 2s, height 2s, background-color 2s, transform 2s;
+  transition: width 2s, height 2s, background-color 2s, transform 2s;
 }
-.k:hover {
+.g:hover {
   background-image: -webkit-image-set(\\"cat.png\\" 1x, \\"cat-2x.png\\" 2x);
   background-image: image-set(\\"cat.png\\" 1x, \\"cat-2x.png\\" 2x);
 }
-.l:hover {
+.h:hover {
   display: -webkit-inline-box;
-  display: -moz-inline-box;
-  display: -ms-inline-flexbox;
   display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
   display: inline-flex;
 }
-.m:hover {
+.i:hover {
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
 }
 
 
-<div className=ui-box a b c d e f g h i j k l m />;
+<div className=ui-box a b c d e f g h i data-uses-unhanded-props=true />;
 "
 `;
 
@@ -242,6 +227,6 @@ exports[`felaRenderer styles are expanded to longhand values 1`] = `
 }
 
 
-<div className=ui-box a b c d e f g h />;
+<div className=ui-box a b c d e f g h data-uses-unhanded-props=true />;
 "
 `;

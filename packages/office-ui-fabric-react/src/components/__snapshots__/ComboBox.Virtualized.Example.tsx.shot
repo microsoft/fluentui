@@ -22,7 +22,6 @@ exports[`Component Examples renders ComboBox.Virtualized.Example.tsx correctly 1
       & textarea {
         font-family: inherit;
       }
-  dir="ltr"
 >
   <div
     className="ms-ComboBox-container "

@@ -4,8 +4,7 @@ import { ControlsAreaPage, IControlsPageProps } from '../ControlsAreaPage';
 import { ChipPageProps } from './ChipPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
 
-const baseUrl =
-  'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/apps/fabric-website/src/pages/Controls/ChipPage/';
+const baseUrl = 'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Controls/ChipPage/';
 
 export const ChipPage: React.FunctionComponent<IControlsPageProps> = props => {
   const { platform } = props;

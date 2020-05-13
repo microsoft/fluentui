@@ -4,8 +4,7 @@ import { TextPageProps } from './TextPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
 import { IPageSectionProps } from '@uifabric/example-app-base/lib/index2';
 
-const baseUrl =
-  'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/apps/fabric-website/src/pages/Controls/TextPage/';
+const baseUrl = 'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Controls/TextPage/';
 
 export const TextPage: React.FunctionComponent<IControlsPageProps> = props => {
   const { platform } = props;

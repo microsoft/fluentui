@@ -5,7 +5,7 @@ import { DatePickerPageProps } from './DatePickerPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
 
 const baseUrl =
-  'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/apps/fabric-website/src/pages/Controls/DatePickerPage/';
+  'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Controls/DatePickerPage/';
 
 export const DatePickerPage: React.FunctionComponent<IControlsPageProps> = props => {
   const { platform } = props;

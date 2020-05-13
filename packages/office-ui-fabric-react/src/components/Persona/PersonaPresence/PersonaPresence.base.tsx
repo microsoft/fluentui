@@ -15,11 +15,15 @@ const coinSizePresenceScaleFactor = 3;
 const presenceMaxSize = 40;
 const presenceFontMaxSize = 20;
 
-const getClassNames = classNamesFunction<IPersonaPresenceStyleProps, IPersonaPresenceStyles>();
+const getClassNames = classNamesFunction<IPersonaPresenceStyleProps, IPersonaPresenceStyles>({
+  // There can be many PersonaPresence rendered with different sizes.
+  // Therefore setting a larger cache size.
+  cacheSize: 100,
+});
 
 /**
  * PersonaPresence with no default styles.
- * [Use the `getStyles` API to add your own styles.](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Styling)
+ * [Use the `getStyles` API to add your own styles.](https://github.com/microsoft/fluentui/wiki/Styling)
  */
 export class PersonaPresenceBase extends React.Component<IPersonaPresenceProps, {}> {
   constructor(props: IPersonaPresenceProps) {

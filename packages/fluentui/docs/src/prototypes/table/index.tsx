@@ -1,10 +1,13 @@
 import { gridCellMultipleFocusableBehavior, gridCellWithFocusableElementBehavior } from '@fluentui/accessibility';
-import { Avatar, Button, Checkbox, Dropdown, Flex, Icon, Menu, MenuButton, Text } from '@fluentui/react-northstar';
+import { Avatar, Button, Checkbox, Dropdown, Flex, Menu, MenuButton, Text, Table } from '@fluentui/react-northstar';
 import * as React from 'react';
 import chatProtoStyle from '.././chatPane/chatProtoStyle';
 import { ComponentPrototype, PrototypeSection } from '../Prototypes';
 import AdvancedTable, { stringCellComparator } from './AdvancedTable';
 import InteractiveTable from './InteractiveTable';
+import ResponsiveTableContainer from './ResponsiveTableContainer';
+import { MoreIcon, BookmarkIcon } from '@fluentui/react-icons-northstar';
+import SelectableTable from './SelectableTable';
 
 function handleRowClick(index) {
   alert(`OnClick on the row ${index} executed.`);
@@ -96,7 +99,7 @@ const rowsMembers = [
 
 const menuButton = (
   <MenuButton
-    trigger={<Button tabIndex={-1} icon="more" circular text iconOnly title="More options" />}
+    trigger={<Button tabIndex={-1} icon={<MoreIcon />} circular text iconOnly title="More options" />}
     menu={[
       '1',
       '2',
@@ -150,11 +153,35 @@ const rowsChannels = [
         key: '3',
       },
       { content: 'Some description', key: '5' },
-      { content: <Icon name="bookmark" title="Random icon" />, key: '6' },
+      { content: <BookmarkIcon title="Random icon" />, key: '6' },
       { content: 'yesterday', key: '7' },
       moreOptionButton,
     ],
   },
+];
+
+const columnsPerson = {
+  items: ['id', 'Name', 'Age', 'Picture'],
+};
+
+const rowsPerson = [
+  ['1', 'Roman van', '30 years', 'None'],
+  ['2', 'Alex', '1 year', 'None'],
+  ['3', 'Ali', '30000000000000 years', 'None'],
+];
+
+const responsiveColumnsConfig = [
+  { priority: 4, minWidth: 200 },
+  { priority: 3, minWidth: 360 },
+  { priority: 2, minWidth: 300 },
+  { priority: 1, minWidth: 200 },
+];
+
+const responsiveColumnsConfigPriorityOrder = [
+  { priority: 3, minWidth: 200 },
+  { priority: 2, minWidth: 360 },
+  { priority: 1, minWidth: 300 },
+  { priority: 4, minWidth: 200 },
 ];
 
 export default () => (
@@ -168,6 +195,25 @@ export default () => (
     </ComponentPrototype>
     <ComponentPrototype title="Table example 3" description="Table with popover and context menu ">
       <InteractiveTable />
+    </ComponentPrototype>
+    <ComponentPrototype
+      title="Responsive Table"
+      description="Responsive table hiding columns based in the priority passed to the Resposive Container as columns configurarion. The container can also receive a Breakpoint input with an array of number representing the breakpoints"
+    >
+      <ResponsiveTableContainer columns={responsiveColumnsConfig}>
+        <Table rows={rowsPerson} header={columnsPerson} arial-label="Persons" />
+      </ResponsiveTableContainer>
+    </ComponentPrototype>
+    <ComponentPrototype
+      title="Responsive Table"
+      description="Responsive table hiding middle columns keeping the first and the last"
+    >
+      <ResponsiveTableContainer columns={responsiveColumnsConfigPriorityOrder}>
+        <Table rows={rowsPerson} header={columnsPerson} arial-label="Persons" />
+      </ResponsiveTableContainer>
+    </ComponentPrototype>
+    <ComponentPrototype title="Selectable table" description="Table with rows that can be selected">
+      <SelectableTable />
     </ComponentPrototype>
   </PrototypeSection>
 );

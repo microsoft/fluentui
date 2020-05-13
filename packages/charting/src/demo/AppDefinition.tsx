@@ -2,7 +2,7 @@
 import { IAppDefinition } from '@uifabric/example-app-base';
 
 export const AppDefinition: IAppDefinition = {
-  appTitle: 'UI Fabric - Charting',
+  appTitle: 'Fluent UI React - Charting',
 
   testPages: [],
   examplePages: [
@@ -60,11 +60,11 @@ export const AppDefinition: IAppDefinition = {
     },
     {
       name: 'Fabric',
-      url: 'https://dev.microsoft.com/fabric',
+      url: 'https://developer.microsoft.com/en-us/fluentui',
     },
     {
       name: 'GitHub',
-      url: 'https://github.com/OfficeDev/office-ui-fabric-react',
+      url: 'https://github.com/microsoft/fluentui',
     },
   ],
 };

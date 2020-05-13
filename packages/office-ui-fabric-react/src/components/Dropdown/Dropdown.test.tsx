@@ -737,7 +737,7 @@ describe('Dropdown', () => {
   });
 
   describe('with simulated async loaded options', () => {
-    /** See https://github.com/OfficeDev/office-ui-fabric-react/issues/7315 */
+    /** See https://github.com/microsoft/fluentui/issues/7315 */
     class DropdownWithChangingProps extends React.Component<{ multi: boolean }, { options?: IDropdownOption[] }> {
       public state = {
         options: undefined,

@@ -5,19 +5,24 @@ import {
   menuAsToolbarBehavior,
   ChatMessageBehaviorProps,
 } from '@fluentui/accessibility';
-import { getElementType, getUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import { getElementType, useUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
 import { useContextSelector } from '@fluentui/react-context-selector';
 import { Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import cx from 'classnames';
 import * as _ from 'lodash';
-import PopperJs from 'popper.js';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 
-import { Popper } from '../../utils/positioner';
+import {
+  getScrollParent,
+  Popper,
+  PopperShorthandProps,
+  getPopperPropsFromShorthand,
+  PopperModifiers,
+} from '../../utils/positioner';
 import {
   childrenExist,
   createShorthandFactory,
@@ -62,7 +67,7 @@ export interface ChatMessageProps
   accessibility?: Accessibility<ChatMessageBehaviorProps>;
 
   /** Menu with actions of the message. */
-  actionMenu?: ShorthandValue<MenuProps> | ShorthandCollection<MenuItemProps>;
+  actionMenu?: ShorthandValue<MenuProps & { popper?: PopperShorthandProps }> | ShorthandCollection<MenuItemProps>;
 
   /** Controls messages's relation to other chat messages. Is automatically set by the ChatItem. */
   attached?: boolean | 'top' | 'bottom';
@@ -122,10 +127,17 @@ export type ChatMessageStylesProps = Pick<ChatMessageProps, 'attached' | 'badgeP
   hasReactionGroup: boolean;
 };
 
-const ChatMessage: React.FC<WithAsProp<ChatMessageProps>> &
-  FluentComponentStaticProps<ChatMessageProps> & {
-    slotClassNames: ChatMessageSlotClassNames;
-  } = props => {
+export const chatMessageClassName = 'ui-chat__message';
+export const chatMessageSlotClassNames: ChatMessageSlotClassNames = {
+  actionMenu: `${chatMessageClassName}__actions`,
+  author: `${chatMessageClassName}__author`,
+  timestamp: `${chatMessageClassName}__timestamp`,
+  badge: `${chatMessageClassName}__badge`,
+  content: `${chatMessageClassName}__content`,
+  reactionGroup: `${chatMessageClassName}__reactions`,
+};
+
+const ChatMessage: React.FC<WithAsProp<ChatMessageProps>> & FluentComponentStaticProps<ChatMessageProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(ChatMessage.displayName, context.telemetry);
   setStart();
@@ -155,7 +167,6 @@ const ChatMessage: React.FC<WithAsProp<ChatMessageProps>> &
   const [focused, setFocused] = React.useState<boolean>(false);
   const [messageNode, setMessageNode] = React.useState<HTMLElement | null>(null);
 
-  const menuRef = React.useRef<HTMLElement>();
   const updateActionsMenuPosition = React.useRef<(() => void) | null>(null);
 
   const getA11Props = useAccessibility(accessibility, {
@@ -178,7 +189,7 @@ const ChatMessage: React.FC<WithAsProp<ChatMessageProps>> &
     },
   });
   const { classes, styles: resolvedStyles } = useStyles<ChatMessageStylesProps>(ChatMessage.displayName, {
-    className: ChatMessage.className,
+    className: chatMessageClassName,
     mapPropsToStyles: () => ({
       attached,
       badgePosition,
@@ -222,7 +233,7 @@ const ChatMessage: React.FC<WithAsProp<ChatMessageProps>> &
       defaultProps: () => ({
         [IS_FOCUSABLE_ATTRIBUTE]: true,
         accessibility: menuAsToolbarBehavior,
-        className: ChatMessage.slotClassNames.actionMenu,
+        className: chatMessageSlotClassNames.actionMenu,
         styles: resolvedStyles.actionMenu,
       }),
     });
@@ -231,40 +242,30 @@ const ChatMessage: React.FC<WithAsProp<ChatMessageProps>> &
       return actionMenuElement;
     }
 
-    const messageRect: DOMRect | undefined = positionActionMenu && messageNode?.getBoundingClientRect();
-    const overflowPadding: PopperJs.Padding = { top: Math.round(messageRect?.height || 0) };
+    const modifiers: PopperModifiers | undefined = positionActionMenu && [
+      // https://popper.js.org/docs/v2/modifiers/flip/
+      // Forces to flip only in "top-*" positions
+      { name: 'flip', options: { fallbackPlacements: ['top'] } },
+      overflow && {
+        name: 'preventOverflow',
+        options: { boundary: getScrollParent(messageNode) },
+      },
+    ];
 
     return (
       <Popper
         enabled={positionActionMenu}
         align="end"
-        modifiers={
-          positionActionMenu && {
-            // https://popper.js.org/popper-documentation.html#modifiers..flip.behavior
-            // Forces to flip only in "top-*" positions
-            flip: { behavior: ['top'] },
-            preventOverflow: {
-              escapeWithReference: false,
-              // https://popper.js.org/popper-documentation.html#modifiers..preventOverflow.priority
-              // Forces to stop prevent overflow on bottom and bottom
-              priority: ['left', 'right'],
-
-              // Is required to properly position action items
-              ...(overflow && {
-                boundariesElement: 'scrollParent',
-                padding: overflowPadding,
-              }),
-            },
-          }
-        }
+        modifiers={modifiers}
         position="above"
         positionFixed={overflow}
         targetRef={messageNode}
+        {...getPopperPropsFromShorthand(actionMenu)}
       >
         {({ scheduleUpdate }) => {
           updateActionsMenuPosition.current = scheduleUpdate;
 
-          return <Ref innerRef={menuRef}>{actionMenuElement}</Ref>;
+          return actionMenuElement;
         }}
       </Popper>
     );
@@ -274,18 +275,18 @@ const ChatMessage: React.FC<WithAsProp<ChatMessageProps>> &
   const rootClasses = childrenPropExists ? cx(classes.root, classes.content) : classes.root;
 
   const ElementType = getElementType(props);
-  const unhandledProps = getUnhandledProps(ChatMessage.handledProps, props);
+  const unhandledProps = useUnhandledProps(ChatMessage.handledProps, props);
 
   const badgeElement = Label.create(badge, {
     defaultProps: () => ({
-      className: ChatMessage.slotClassNames.badge,
+      className: chatMessageSlotClassNames.badge,
       styles: resolvedStyles.badge,
     }),
   });
 
   const reactionGroupElement = Reaction.Group.create(reactionGroup, {
     defaultProps: () => ({
-      className: ChatMessage.slotClassNames.reactionGroup,
+      className: chatMessageSlotClassNames.reactionGroup,
       styles: resolvedStyles.reactionGroup,
     }),
   });
@@ -296,7 +297,7 @@ const ChatMessage: React.FC<WithAsProp<ChatMessageProps>> &
     defaultProps: () => ({
       size: 'small',
       styles: resolvedStyles.author,
-      className: ChatMessage.slotClassNames.author,
+      className: chatMessageSlotClassNames.author,
     }),
   });
 
@@ -305,13 +306,13 @@ const ChatMessage: React.FC<WithAsProp<ChatMessageProps>> &
       size: 'small',
       styles: resolvedStyles.timestamp,
       timestamp: true,
-      className: ChatMessage.slotClassNames.timestamp,
+      className: chatMessageSlotClassNames.timestamp,
     }),
   });
 
   const messageContent = Box.create(content, {
     defaultProps: () => ({
-      className: ChatMessage.slotClassNames.content,
+      className: chatMessageSlotClassNames.content,
       styles: resolvedStyles.content,
     }),
   });
@@ -352,7 +353,6 @@ const ChatMessage: React.FC<WithAsProp<ChatMessageProps>> &
   return element;
 };
 
-ChatMessage.className = 'ui-chat__message';
 ChatMessage.displayName = 'ChatMessage';
 
 ChatMessage.defaultProps = {
@@ -363,7 +363,7 @@ ChatMessage.defaultProps = {
 };
 ChatMessage.propTypes = {
   ...commonPropTypes.createCommon({ content: 'shorthand' }),
-  actionMenu: customPropTypes.itemShorthand,
+  actionMenu: PropTypes.oneOfType([customPropTypes.itemShorthand, customPropTypes.collectionShorthand]),
   attached: PropTypes.oneOfType([PropTypes.bool, PropTypes.oneOf<'top' | 'bottom'>(['top', 'bottom'])]),
   author: customPropTypes.itemShorthand,
   badge: customPropTypes.itemShorthand,
@@ -381,14 +381,6 @@ ChatMessage.propTypes = {
 ChatMessage.handledProps = Object.keys(ChatMessage.propTypes) as any;
 
 ChatMessage.create = createShorthandFactory({ Component: ChatMessage, mappedProp: 'content' });
-ChatMessage.slotClassNames = {
-  actionMenu: `${ChatMessage.className}__actions`,
-  author: `${ChatMessage.className}__author`,
-  timestamp: `${ChatMessage.className}__timestamp`,
-  badge: `${ChatMessage.className}__badge`,
-  content: `${ChatMessage.className}__content`,
-  reactionGroup: `${ChatMessage.className}__reactions`,
-};
 
 /**
  * A ChatMessage represents a single message in chat.

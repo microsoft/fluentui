@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { classNamesFunction, getId } from 'office-ui-fabric-react/lib/Utilities';
 import { IDonutChartProps, IDonutChartStyleProps, IDonutChartStyles } from './DonutChart.types';
 import { Pie } from './Pie/Pie';
 import { ILegend, Legends } from '../Legends/index';
@@ -7,7 +7,7 @@ import * as scale from 'd3-scale';
 import { IProcessedStyleSet, IPalette } from 'office-ui-fabric-react/lib/Styling';
 import { IChartDataPoint, IChartProps } from './index';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
-import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
+import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 
 const getClassNames = classNamesFunction<IDonutChartStyleProps, IDonutChartStyles>();
 
@@ -20,6 +20,8 @@ interface IDonutChartState {
   activeLegend?: string;
   color?: string | undefined;
   isLegendSelected?: boolean;
+  xCalloutValue?: string;
+  yCalloutValue?: string;
 }
 
 export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChartState> {
@@ -32,6 +34,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
   private _uniqText: string;
   // tslint:disable:no-any
   private _currentHoverElement: any;
+  private _calloutId: string;
 
   public static getDerivedStateFromProps(
     nextProps: Readonly<IDonutChartProps>,
@@ -55,10 +58,13 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
       activeLegend: '',
       color: '',
       isLegendSelected: false,
+      xCalloutValue: '',
+      yCalloutValue: '',
     };
     this._hoverCallback = this._hoverCallback.bind(this);
     this._focusCallback = this._focusCallback.bind(this);
     this._hoverLeave = this._hoverLeave.bind(this);
+    this._calloutId = getId('callout');
     this._uniqText =
       '_Pie_' +
       Math.random()
@@ -76,10 +82,10 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     });
   }
   public render(): JSX.Element {
-    const { data, href } = this.props;
+    const { data, href, hideLegend = false } = this.props;
     const { _width, _height } = this.state;
 
-    const { theme, className, styles, innerRadius } = this.props;
+    const { theme, className, styles, innerRadius, valueInsideDonut } = this.props;
     const { palette } = theme!;
     this._classNames = getClassNames(styles!, {
       theme: theme!,
@@ -110,27 +116,34 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
                 onBlurCallback={this._onBlur}
                 activeArc={this.state.activeLegend}
                 href={href}
+                calloutId={this._calloutId}
+                valueInsideDonut={valueInsideDonut}
               />
             </svg>
           </div>
         </FocusZone>
-        {this.state.showHover ? (
+        {!this.props.hideTooltip && this.state.showHover ? (
           <Callout
             target={this._currentHoverElement}
             coverTarget={true}
             isBeakVisible={false}
             directionalHint={DirectionalHint.bottomRightEdge}
-            gapSpace={5}
+            gapSpace={10}
+            id={this._calloutId}
             onDismiss={this._closeCallout}
             preventDismissOnLostFocus={true}
           >
             <div className={this._classNames.hoverCardRoot}>
-              <div className={this._classNames.hoverCardTextStyles}>{this.state.legend}</div>
-              <div className={this._classNames.hoverCardDataStyles}>{this.state.value}</div>
+              <div className={this._classNames.hoverCardTextStyles}>
+                {this.state.xCalloutValue ? this.state.xCalloutValue : this.state.legend}
+              </div>
+              <div className={this._classNames.hoverCardDataStyles}>
+                {this.state.yCalloutValue ? this.state.yCalloutValue : this.state.value}
+              </div>
             </div>
           </Callout>
         ) : null}
-        <div className={this._classNames.legendContainer}>{legendBars}</div>
+        <div className={this._classNames.legendContainer}>{!hideLegend && legendBars}</div>
       </div>
     );
   }
@@ -198,6 +211,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
         centerLegends
         overflowProps={this.props.legendsOverflowProps}
         focusZonePropsInHoverCard={this.props.focusZonePropsForLegendsInHoverCard}
+        overflowText={this.props.legendsOverflowText}
       />
     );
     return legends;
@@ -210,6 +224,8 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
       value: data.data!.toString(),
       legend: data.legend,
       color: data.color!,
+      xCalloutValue: data.xAxisCalloutData!,
+      yCalloutValue: data.yAxisCalloutData!,
     });
   };
 
@@ -220,6 +236,8 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
       value: data.data!.toString(),
       legend: data.legend,
       color: data.color!,
+      xCalloutValue: data.xAxisCalloutData!,
+      yCalloutValue: data.yAxisCalloutData!,
     });
   };
   private _onBlur = (): void => {

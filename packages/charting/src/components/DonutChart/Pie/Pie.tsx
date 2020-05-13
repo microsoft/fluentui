@@ -36,6 +36,8 @@ export class Pie extends React.Component<IPieProps, {}> {
         uniqText={this.props.uniqText}
         activeArc={this.props.activeArc}
         href={href}
+        calloutId={this.props.calloutId}
+        valueInsideDonut={this.props.valueInsideDonut}
       />
     );
   };

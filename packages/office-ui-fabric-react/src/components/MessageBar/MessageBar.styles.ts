@@ -1,6 +1,5 @@
 import {
   IStyle,
-  IPalette,
   ISemanticColors,
   HighContrastSelector,
   ScreenWidthMaxSmall,
@@ -34,67 +33,44 @@ const GlobalClassNames = {
   actionsSingleline: 'ms-MessageBar-actionsSingleLine',
 };
 
-// Returns the background color of the MessageBar root element based on the type of MessageBar.
-const getRootBackground = (
-  messageBarType: MessageBarType | undefined,
-  palette: IPalette,
-  semanticColors: ISemanticColors,
-): string => {
-  switch (messageBarType) {
-    case MessageBarType.error:
-    case MessageBarType.blocked:
-      return semanticColors.errorBackground;
-    case MessageBarType.severeWarning:
-      return semanticColors.blockingBackground;
-    case MessageBarType.success:
-      return semanticColors.successBackground;
-    case MessageBarType.warning:
-      return semanticColors.warningBackground;
-  }
-  return palette.neutralLighter;
+const backgroundColor: { [key: string]: keyof ISemanticColors } = {
+  [MessageBarType.error]: 'errorBackground',
+  [MessageBarType.blocked]: 'errorBackground',
+  [MessageBarType.success]: 'successBackground',
+  [MessageBarType.warning]: 'warningBackground',
+  [MessageBarType.severeWarning]: 'severeWarningBackground',
+  [MessageBarType.info]: 'infoBackground',
 };
 
-/**
- * Returns the high contrast mode background color of the MessageBar root element based on the type of MessageBar.
- * The fact that the styles don't vary based on the theme is intentional since the objective is to show the message bar
- * type, and theme variations would not be appreciated in High Contrast either way.
- */
-const getHighContrastRootBackground = (messageBarType: MessageBarType | undefined): string => {
-  switch (messageBarType) {
-    case MessageBarType.error:
-    case MessageBarType.blocked:
-    case MessageBarType.severeWarning:
-      return 'rgba(255, 0, 0, 0.3)';
-    case MessageBarType.success:
-      return 'rgba(48, 241, 73, 0.3)';
-    case MessageBarType.warning:
-      return 'rgba(255, 254, 57, 0.3)';
-  }
-  return 'Window';
+const highContrastBackgroundColor: { [key: string]: string } = {
+  [MessageBarType.error]: 'rgba(255, 0, 0, 0.3)',
+  [MessageBarType.blocked]: 'rgba(255, 0, 0, 0.3)',
+  [MessageBarType.success]: 'rgba(48, 241, 73, 0.3)',
+  [MessageBarType.warning]: 'rgba(255, 254, 57, 0.3)',
+  [MessageBarType.severeWarning]: 'rgba(255, 0, 0, 0.3)',
+  [MessageBarType.info]: 'Window',
 };
 
-// Returns the icon color based on the type of MessageBar.
-const getIconColor = (
-  messageBarType: MessageBarType | undefined,
-  palette: IPalette,
-  semanticColors: ISemanticColors,
-): string => {
-  switch (messageBarType) {
-    case MessageBarType.error:
-    case MessageBarType.blocked:
-    case MessageBarType.severeWarning:
-      return semanticColors.errorText;
-    case MessageBarType.success:
-      return palette.green;
-    case MessageBarType.warning:
-      return semanticColors.warningText;
-  }
-  return palette.neutralSecondary;
+const iconColor: { [key: string]: keyof ISemanticColors } = {
+  [MessageBarType.error]: 'errorIcon',
+  [MessageBarType.blocked]: 'errorIcon',
+  [MessageBarType.success]: 'successIcon',
+  [MessageBarType.warning]: 'warningIcon',
+  [MessageBarType.severeWarning]: 'severeWarningIcon',
+  [MessageBarType.info]: 'infoIcon',
 };
 
 export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
-  const { theme, className, messageBarType, onDismiss, truncated, isMultiline, expandSingleLine } = props;
-  const { semanticColors, palette, fonts } = theme;
+  const {
+    theme,
+    className,
+    onDismiss,
+    truncated,
+    isMultiline,
+    expandSingleLine,
+    messageBarType = MessageBarType.info,
+  } = props;
+  const { semanticColors, fonts } = theme;
 
   const SmallScreenSelector = getScreenSelector(0, ScreenWidthMaxSmall);
 
@@ -104,7 +80,7 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
     fontSize: IconFontSizes.xSmall,
     height: 10,
     lineHeight: '10px',
-    color: palette.neutralPrimary,
+    color: semanticColors.messageText,
     selectors: {
       [HighContrastSelector]: {
         MsHighContrastAdjust: 'none',
@@ -142,7 +118,7 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
   return {
     root: [
       classNames.root,
-      theme.fonts.medium,
+      fonts.medium,
       messageBarType === MessageBarType.error && classNames.error,
       messageBarType === MessageBarType.blocked && classNames.blocked,
       messageBarType === MessageBarType.severeWarning && classNames.severeWarning,
@@ -152,24 +128,15 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
       !isMultiline && onDismiss && classNames.dismissalSingleLine,
       !isMultiline && truncated && classNames.expandingSingleLine,
       {
-        background: getRootBackground(messageBarType, palette, semanticColors),
-        color: palette.neutralPrimary,
+        background: semanticColors[backgroundColor[messageBarType]],
+        color: semanticColors.messageText,
         minHeight: 32,
         width: '100%',
         display: 'flex',
         wordBreak: 'break-word',
         selectors: {
-          '& .ms-Link': {
-            color: palette.themeDark,
-            ...fonts.small,
-            selectors: {
-              [HighContrastSelector]: {
-                MsHighContrastAdjust: 'auto',
-              },
-            },
-          },
           [HighContrastSelector]: {
-            background: getHighContrastRootBackground(messageBarType),
+            background: highContrastBackgroundColor[messageBarType],
             border: '1px solid WindowText',
             color: 'WindowText',
           },
@@ -200,7 +167,7 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
       },
     ],
     icon: {
-      color: getIconColor(messageBarType, palette, semanticColors),
+      color: semanticColors[iconColor[messageBarType]],
       selectors: {
         [HighContrastSelector]: {
           MsHighContrastAdjust: 'none',
@@ -259,8 +226,8 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
         whiteSpace: 'pre-wrap',
       },
     ],
-    dismissSingleLine: [classNames.dismissSingleLine],
-    expandSingleLine: [classNames.expandSingleLine],
+    dismissSingleLine: classNames.dismissSingleLine,
+    expandSingleLine: classNames.expandSingleLine,
     dismissal: [classNames.dismissal, dismissalAndExpandStyle],
     expand: [classNames.expand, dismissalAndExpandStyle],
     actions: [

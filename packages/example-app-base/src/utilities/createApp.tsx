@@ -107,11 +107,11 @@ function _getDefinition(groups: ExampleGroup[]): IAppDefinition {
       },
       {
         name: 'Fabric',
-        url: 'https://dev.microsoft.com/fabric',
+        url: 'https://developer.microsoft.com/en-us/fluentui',
       },
       {
         name: 'GitHub',
-        url: 'https://github.com/OfficeDev/office-ui-fabric-react',
+        url: 'https://github.com/microsoft/fluentui',
       },
     ],
   };

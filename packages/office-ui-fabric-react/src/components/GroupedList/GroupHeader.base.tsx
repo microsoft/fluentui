@@ -66,6 +66,7 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
       onRenderGroupHeaderCheckbox,
       isCollapsedGroupSelectVisible = true,
       expandButtonProps,
+      expandButtonIcon,
       selectAllButtonProps,
       theme,
       styles,
@@ -146,7 +147,7 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
           >
             <Icon
               className={this._classNames.expandIsCollapsed}
-              iconName={isRTL ? 'ChevronLeftMed' : 'ChevronRightMed'}
+              iconName={expandButtonIcon || (isRTL ? 'ChevronLeftMed' : 'ChevronRightMed')}
             />
           </button>
 

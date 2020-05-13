@@ -24,14 +24,10 @@ import {
   WithAsProp,
   withSafeTypeForAs,
   ShorthandCollection,
-  ShorthandValue,
   ComponentEventHandler,
+  ObjectShorthandCollection,
 } from '../../types';
 import { hasSubtree, removeItemAtIndex, getSiblings, TreeContext, TreeRenderContextValue } from './utils';
-
-export interface TreeSlotClassNames {
-  item: string;
-}
 
 export interface TreeProps extends UIComponentProps, ChildrenComponentProps {
   /** Accessibility behavior if overridden by the user. */
@@ -40,14 +36,20 @@ export interface TreeProps extends UIComponentProps, ChildrenComponentProps {
   /** Ids of expanded items. */
   activeItemIds?: string[];
 
+  /** Ids of selected items. */
+  selectedItemIds?: string[];
+
   /** Initial activeItemIds value. */
   defaultActiveItemIds?: string[];
+
+  /** Initial selectedItemIds value. */
+  defaultSelectedItemIds?: string[];
 
   /** Only allow one subtree to be expanded at a time. */
   exclusive?: boolean;
 
   /** Shorthand array of props for Tree. */
-  items?: ShorthandCollection<TreeItemProps>;
+  items?: ObjectShorthandCollection<TreeItemProps>;
 
   /**
    * A custom render function for the title slot.
@@ -66,6 +68,13 @@ export interface TreeProps extends UIComponentProps, ChildrenComponentProps {
   onActiveItemIdsChange?: ComponentEventHandler<TreeProps>;
 
   /**
+   * Called when tree item selection state is changed.
+   * @param event - React's original SyntheticEvent.
+   * @param data - All props, with `selectedItemIds` reflecting the new state.
+   */
+  onSelectedItemIdsChange?: ComponentEventHandler<TreeProps>;
+
+  /**
    * Callback that provides rendered tree items to be used by react-virtualized for instance.
    * Acts as a render prop, with the rendered tree items being the re-used logic.
    *
@@ -73,6 +82,9 @@ export interface TreeProps extends UIComponentProps, ChildrenComponentProps {
    * @returns The render prop result.
    */
   renderedItems?: (renderedItems: React.ReactElement[]) => React.ReactNode;
+
+  /** Whether or not tree items are selectable. */
+  selectable?: boolean;
 }
 
 export interface TreeItemForRenderProps {
@@ -86,28 +98,31 @@ export interface TreeItemForRenderProps {
 
 export interface TreeState {
   activeItemIds: string[];
+  selectedItemIds: string[];
 }
+
+export const treeClassName = 'ui-tree';
 
 class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
   static create: ShorthandFactory<TreeProps>;
 
   static displayName = 'Tree';
 
-  static className = 'ui-tree';
-
-  static slotClassNames: TreeSlotClassNames = {
-    item: `${Tree.className}__item`,
-  };
+  static deprecated_className = treeClassName;
 
   static propTypes = {
     ...commonPropTypes.createCommon({
       content: false,
     }),
     activeItemIds: customPropTypes.collectionShorthand,
+    selectedItemIds: customPropTypes.collectionShorthand,
     defaultActiveItemIds: customPropTypes.collectionShorthand,
+    defaultSelectedItemIds: customPropTypes.collectionShorthand,
     exclusive: PropTypes.bool,
-    items: customPropTypes.collectionShorthand,
+    selectable: PropTypes.bool,
+    items: customPropTypes.collectionObjectShorthand,
     onActiveItemIdsChange: PropTypes.func,
+    onSelectedItemIdsChange: PropTypes.func,
     renderItemTitle: PropTypes.func,
     renderedItems: PropTypes.func,
   };
@@ -117,14 +132,33 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
     accessibility: treeBehavior as Accessibility,
   };
 
-  static autoControlledProps = ['activeItemIds'];
+  static autoControlledProps = ['activeItemIds', 'selectedItemIds'];
 
-  static Item = TreeItem;
-  static Title = TreeTitle;
+  static Item: typeof TreeItem = TreeItem;
+  static Title: typeof TreeTitle = TreeTitle;
 
   static getAutoControlledStateFromProps(nextProps: TreeProps, prevState: TreeState) {
-    const { items } = nextProps;
-    let { activeItemIds } = nextProps;
+    const { items, selectable } = nextProps;
+    let { activeItemIds, selectedItemIds } = nextProps;
+
+    if (selectable && items && !selectedItemIds) {
+      if (!selectedItemIds && items) {
+        selectedItemIds = prevState.selectedItemIds;
+
+        const iterateItems = (items, selectedItems = selectedItemIds) => {
+          _.forEach(items, item => {
+            if (item['selected'] && selectedItemIds.indexOf(item['id']) === -1) {
+              selectedItems.push(item['id']);
+            }
+            if (item['items']) {
+              return iterateItems(item['items']);
+            }
+          });
+        };
+
+        iterateItems(items);
+      }
+    }
 
     if (!activeItemIds && items) {
       activeItemIds = prevState.activeItemIds;
@@ -151,11 +185,12 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
 
     return {
       activeItemIds,
+      selectedItemIds,
     };
   }
 
   getInitialAutoControlledState() {
-    return { activeItemIds: [] };
+    return { activeItemIds: [], selectedItemIds: [] };
   }
 
   treeRef = React.createRef<HTMLElement>();
@@ -171,11 +206,84 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
     parentRef.current.focus();
   };
 
-  onTitleClick = (e: React.SyntheticEvent, treeItemProps: TreeItemProps) => {
-    if (!hasSubtree(treeItemProps)) {
+  setSelectedItemIds = (e: React.SyntheticEvent, selectedItemIds: string[]) => {
+    _.invoke(this.props, 'onSelectedItemIdsChange', e, { ...this.props, selectedItemIds });
+
+    this.setState({
+      selectedItemIds,
+    });
+  };
+
+  processItemsForSelection = (e: React.SyntheticEvent, treeItemProps: TreeItemProps, executeSelection: boolean) => {
+    let { selectedItemIds } = this.state;
+    const { id, selectableParent, items, expanded } = treeItemProps;
+    const treeItemHasSubtree = hasSubtree(treeItemProps);
+    const isExpandedSelectableParent = treeItemHasSubtree && selectableParent && expanded;
+
+    // parent must be selectable and expanded in order to procced with selection, otherwise return
+    if (treeItemHasSubtree && !(selectableParent && expanded)) {
       return;
     }
 
+    // if the target is equal to currentTarget it means treeItem should be collapsed, not procced with selection
+    if (treeItemHasSubtree && e.target === e.currentTarget && !executeSelection) {
+      return;
+    }
+
+    // push all tree items under particular parent into selection array
+    // not parent itself, therefore not procced with selection
+
+    if (isExpandedSelectableParent) {
+      if (this.isAllGroupChecked(items)) {
+        const selectedItems = this.getAllSelectableChildrenId(items);
+        selectedItemIds = selectedItemIds.filter(id => selectedItems.indexOf(id) === -1);
+      } else {
+        const selectItems = items => {
+          items.forEach(item => {
+            const selectble = item.hasOwnProperty('selectable') ? item.selectable : treeItemProps.selectable;
+            if (selectedItemIds.indexOf(item.id) === -1) {
+              if (item.items) {
+                selectItems(item.items);
+              } else if (selectble) {
+                selectedItemIds.push(item.id);
+              }
+            }
+          });
+        };
+        selectItems(items);
+      }
+
+      this.setSelectedItemIds(e, selectedItemIds);
+      return;
+    }
+
+    // push/remove single tree item into selection array
+    if (selectedItemIds.indexOf(id) === -1) {
+      selectedItemIds.push(id);
+    } else {
+      selectedItemIds = selectedItemIds.filter(itemID => itemID !== id);
+    }
+
+    this.setSelectedItemIds(e, selectedItemIds);
+  };
+
+  onTitleClick = (e: React.SyntheticEvent, treeItemProps: TreeItemProps, executeSelection: boolean = false) => {
+    const treeItemHasSubtree = hasSubtree(treeItemProps);
+
+    if (!treeItemProps) {
+      return;
+    }
+
+    if (treeItemProps.selectable) {
+      this.processItemsForSelection(e, treeItemProps, executeSelection);
+    }
+
+    if (treeItemHasSubtree && !executeSelection && e.target === e.currentTarget) {
+      this.expandItems(e, treeItemProps);
+    }
+  };
+
+  expandItems(e: React.SyntheticEvent, treeItemProps: TreeItemProps) {
     let { activeItemIds } = this.state;
     const { id } = treeItemProps;
     const { exclusive, items } = this.props;
@@ -202,7 +310,7 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
     }
 
     this.setActiveItemIds(e, activeItemIds);
-  };
+  }
 
   onFocusFirstChild = (itemId: string) => {
     const currentElement = this.itemsRef.get(itemId);
@@ -251,6 +359,32 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
     });
   };
 
+  getAllSelectableChildrenId = items => {
+    return items.reduce((acc, item) => {
+      if (item.items) {
+        return [...acc, ...this.getAllSelectableChildrenId(item.items)];
+      }
+      return item.hasOwnProperty('selectable') && !item.selectable ? acc : [...acc, item.id];
+    }, []);
+  };
+
+  isIndeterminate = (item: TreeItemProps) => {
+    if (!item.selectableParent || !item.items) {
+      return false;
+    }
+
+    const { items } = item;
+
+    const selectableItemIds = this.getAllSelectableChildrenId(items);
+
+    return !this.isAllGroupChecked(items) && selectableItemIds.some(id => this.state.selectedItemIds.indexOf(id) > -1);
+  };
+
+  isAllGroupChecked = (items: ShorthandCollection<TreeItemProps, never>) => {
+    const selectableItemIds = this.getAllSelectableChildrenId(items);
+    return selectableItemIds.every(id => this.state.selectedItemIds.indexOf(id) > -1);
+  };
+
   contextValue: TreeRenderContextValue = {
     onFocusParent: this.onFocusParent,
     onSiblingsExpand: this.onSiblingsExpand,
@@ -259,48 +393,49 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
   };
 
   renderContent(accessibility: ReactAccessibilityBehavior): React.ReactElement[] {
-    const { items, renderItemTitle } = this.props;
+    const { items, renderItemTitle, selectable } = this.props;
 
     if (!items) return null;
 
-    const renderItems = (
-      items: ShorthandCollection<TreeItemProps>,
-      level = 1,
-      parent?: string,
-    ): React.ReactElement[] => {
-      return items.reduce((renderedItems: React.ReactElement[], item: ShorthandValue<TreeItemProps>, index: number) => {
-        const itemId = item['id'];
+    const renderItems = (items: TreeItemProps[], level = 1, parent?: string): React.ReactElement[] => {
+      return items.reduce((renderedItems: React.ReactElement[], item: TreeItemProps, index: number) => {
+        const id = item.id;
         const isSubtree = hasSubtree(item);
-        const isSubtreeExpanded = isSubtree && this.isActiveItem(itemId);
+        const isSubtreeExpanded = isSubtree && this.isActiveItem(id);
+        const isSelectedItem = this.isSelectedItem(item);
+        const indeterminate = this.isIndeterminate(item);
 
-        if (!this.itemsRef.has(itemId)) {
-          this.itemsRef.set(itemId, React.createRef<HTMLElement>());
+        if (!this.itemsRef.has(id)) {
+          this.itemsRef.set(id, React.createRef<HTMLElement>());
         }
 
         const renderedItem = TreeItem.create(item, {
           defaultProps: () => ({
             accessibility: accessibility.childBehaviors ? accessibility.childBehaviors.item : undefined,
-            className: Tree.slotClassNames.item,
             expanded: isSubtreeExpanded,
+            selected: isSelectedItem,
+            selectable,
             renderItemTitle,
-            key: item['id'],
+            id,
+            key: id,
             parent,
             level,
             index: index + 1, // Used for aria-posinset and it's 1-based.
-            contentRef: this.itemsRef.get(itemId),
+            contentRef: this.itemsRef.get(id),
             treeSize: items.length,
+            indeterminate,
           }),
         });
 
         return [
           ...renderedItems,
           renderedItem,
-          ...(isSubtreeExpanded ? renderItems(item['items'], level + 1, itemId) : ([] as any)),
+          ...(isSubtreeExpanded ? renderItems(item.items as TreeItemProps[], level + 1, id) : ([] as any)),
         ];
       }, []);
     };
 
-    return renderItems(items);
+    return renderItems(items as TreeItemProps[]);
   }
 
   renderComponent({ ElementType, classes, accessibility, unhandledProps }) {
@@ -330,6 +465,16 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
   isActiveItem = (id: string): boolean => {
     const { activeItemIds } = this.state;
     return activeItemIds.indexOf(id) > -1;
+  };
+
+  isSelectedItem = (item: TreeItemProps): boolean => {
+    const { selectedItemIds } = this.state;
+
+    if (item.selectableParent && item.items) {
+      return this.isAllGroupChecked(item.items);
+    }
+
+    return selectedItemIds && selectedItemIds.indexOf(item.id) > -1;
   };
 }
 

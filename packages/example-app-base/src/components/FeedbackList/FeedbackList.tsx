@@ -39,7 +39,7 @@ export class FeedbackListBase extends React.Component<IFeedbackListProps, IFeedb
   public async componentDidMount(): Promise<void> {
     this._isMounted = true;
     const githubUrl =
-      'https://api.github.com/search/issues?q=type:issue%20repo:OfficeDev/office-ui-fabric-react%20label:%22Component:%20' +
+      'https://api.github.com/search/issues?q=type:issue%20repo:microsoft/fluentui%20label:%22Component:%20' +
       this.props.title;
 
     const openIssuesURL = githubUrl + '%22%20is:open';
@@ -67,7 +67,7 @@ export class FeedbackListBase extends React.Component<IFeedbackListProps, IFeedb
       <div className={classNames.root}>
         <div>
           <PrimaryButton
-            href="https://github.com/OfficeDev/office-ui-fabric-react/issues/new/choose"
+            href="https://github.com/microsoft/fluentui/issues/new/choose"
             target="_blank"
             className={classNames.button}
           >
@@ -105,7 +105,7 @@ export class FeedbackListBase extends React.Component<IFeedbackListProps, IFeedb
     const { items = [] } = JSON.parse(responseText);
 
     // Intentionally render the first 30 issues until pagination support is added for
-    // https://github.com/OfficeDev/office-ui-fabric-react/issues/8284
+    // https://github.com/microsoft/fluentui/issues/8284
     return items.map((item: { created_at: string; title: string; number: number }) => {
       const dateCreated = new Date(item.created_at);
       const openedOn = relativeDates(dateCreated, new Date());
@@ -123,11 +123,11 @@ export class FeedbackListBase extends React.Component<IFeedbackListProps, IFeedb
     return (
       <div className={classNames.itemCell} data-is-focusable={true}>
         <div className={classNames.itemName}>
-          <Link href={'https://github.com/OfficeDev/office-ui-fabric-react/issues/' + item.issueNum} target="_blank">
+          <Link href={'https://github.com/microsoft/fluentui/issues/' + item.issueNum} target="_blank">
             <Label className={classNames.itemLabel}>{item.issueTitle}</Label>
           </Link>
           <Label className={classNames.timeStamp}>
-            <Link href={'https://github.com/OfficeDev/office-ui-fabric-react/issues/' + item.issueNum} target="_blank">
+            <Link href={'https://github.com/microsoft/fluentui/issues/' + item.issueNum} target="_blank">
               {'#' + item.issueNum}
             </Link>
             {' opened ' + item.issueCreated}

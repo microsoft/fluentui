@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { Avatar, Chat, ChatItemProps, Divider, ShorthandCollection } from '@fluentui/react-northstar';
+import { AcceptIcon } from '@fluentui/react-icons-northstar';
 
 const janeAvatar = {
   image: 'public/images/avatar/small/ade.jpg',
-  status: { color: 'green', icon: 'icon-checkmark' },
+  status: { color: 'green', icon: <AcceptIcon /> },
 };
 
 const items: ShorthandCollection<ChatItemProps> = [

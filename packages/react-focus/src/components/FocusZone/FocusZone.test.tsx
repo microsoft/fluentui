@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as renderer from 'react-test-renderer';
 import * as ReactTestUtils from 'react-dom/test-utils';
+import { getCode, EnterKey } from '@fluentui/keyboard-key';
 import { setRTL, KeyCodes } from '@uifabric/utilities';
 import { FocusZone } from './FocusZone';
 import { FocusZoneDirection, FocusZoneTabbableElements, IFocusZone } from './FocusZone.types';
@@ -1398,11 +1399,11 @@ describe('FocusZone', () => {
   });
 
   it('skips subzone elements until manually entered', () => {
-    const isInnerZoneKeystroke = (e: React.KeyboardEvent<HTMLElement>): boolean => e.which === KeyCodes.enter;
+    const shouldEnterInnerZone = (e: React.KeyboardEvent<HTMLElement>): boolean => getCode(e) === EnterKey;
 
     const component = ReactTestUtils.renderIntoDocument(
       <div {...{ onFocusCapture: _onFocus }}>
-        <FocusZone direction={FocusZoneDirection.horizontal} isInnerZoneKeystroke={isInnerZoneKeystroke}>
+        <FocusZone direction={FocusZoneDirection.horizontal} shouldEnterInnerZone={shouldEnterInnerZone}>
           <button className="a">a</button>
           <div className="b" data-is-focusable={true} data-is-sub-focuszone={true}>
             <button className="bsub">bsub</button>
@@ -1480,11 +1481,11 @@ describe('FocusZone', () => {
   });
 
   it('skips child focusZone elements until manually entered', () => {
-    const isInnerZoneKeystroke = (e: React.KeyboardEvent<HTMLElement>): boolean => e.which === KeyCodes.enter;
+    const shouldEnterInnerZone = (e: React.KeyboardEvent<HTMLElement>): boolean => getCode(e) === EnterKey;
 
     const component = ReactTestUtils.renderIntoDocument(
       <div {...{ onFocusCapture: _onFocus }}>
-        <FocusZone direction={FocusZoneDirection.horizontal} isInnerZoneKeystroke={isInnerZoneKeystroke}>
+        <FocusZone direction={FocusZoneDirection.horizontal} shouldEnterInnerZone={shouldEnterInnerZone}>
           <button className="a">a</button>
           <FocusZone direction={FocusZoneDirection.horizontal} className="b" data-is-focusable={true}>
             <button className="bsub">bsub</button>
@@ -1630,11 +1631,11 @@ describe('FocusZone', () => {
   });
 
   it('Focus is not affected by readOnly inputs with values', () => {
-    const isInnerZoneKeystroke = (e: React.KeyboardEvent<HTMLElement>): boolean => e.which === KeyCodes.enter;
+    const shouldEnterInnerZone = (e: React.KeyboardEvent<HTMLElement>): boolean => getCode(e) === EnterKey;
 
     const component = ReactTestUtils.renderIntoDocument(
       <div {...{ onFocusCapture: _onFocus }}>
-        <FocusZone isInnerZoneKeystroke={isInnerZoneKeystroke}>
+        <FocusZone shouldEnterInnerZone={shouldEnterInnerZone}>
           <input className="a" />
           <input readOnly defaultValue="foo" className="b" />
           <input className="c" />
@@ -2126,5 +2127,71 @@ describe('FocusZone', () => {
 
     // FocusZone stops propagation of our tab when we enable tab handling
     expect(tabDownListener.mock.calls.length).toBe(0);
+  });
+
+  it('Focuses the last element in the FocusZone when the imperative focusLast method is used', () => {
+    const focusZoneRef = React.createRef<IFocusZone>();
+    const component = ReactTestUtils.renderIntoDocument(
+      <div {...{ onFocusCapture: _onFocus }}>
+        <FocusZone
+          componentRef={focusZoneRef}
+          direction={FocusZoneDirection.domOrder}
+          handleTabKey={FocusZoneTabbableElements.all}
+        >
+          <button className="a">a</button>
+          <button className="b">b</button>
+          <button className="c">c</button>
+        </FocusZone>
+      </div>,
+    );
+
+    const focusZone = ReactDOM.findDOMNode((component as unknown) as React.ReactInstance)!.firstChild as Element;
+
+    const buttonA = focusZone.querySelector('.a') as HTMLElement;
+    const buttonB = focusZone.querySelector('.b') as HTMLElement;
+    const buttonC = focusZone.querySelector('.c') as HTMLElement;
+
+    setupElement(buttonA, {
+      clientRect: {
+        top: 0,
+        bottom: 20,
+        left: 0,
+        right: 20,
+      },
+    });
+
+    setupElement(buttonB, {
+      clientRect: {
+        top: 0,
+        bottom: 20,
+        left: 20,
+        right: 40,
+      },
+    });
+
+    setupElement(buttonC, {
+      clientRect: {
+        top: 0,
+        bottom: 20,
+        left: 40,
+        right: 60,
+      },
+    });
+
+    // ButtonA should be focussed.
+    ReactTestUtils.Simulate.focus(buttonA);
+    expect(lastFocusedElement).toBe(buttonA);
+
+    expect(buttonA.tabIndex).toBe(0);
+    expect(buttonB.tabIndex).toBe(-1);
+    expect(buttonC.tabIndex).toBe(-1);
+
+    // ButtonC should be focused
+    expect(focusZoneRef).not.toBeUndefined();
+    focusZoneRef.current!.focusLast();
+
+    expect(buttonA.tabIndex).toBe(-1);
+    expect(buttonB.tabIndex).toBe(-1);
+    expect(buttonC.tabIndex).toBe(0);
   });
 });

@@ -103,7 +103,10 @@ const webpackConfig: webpack.Configuration = {
       contextRegExp: /moment$/,
     }),
     __DEV__ &&
+      // Disable ProgressPlugin in CI and multi-project build because the outdated lines can't be deleted and
+      // spam the log (note that build:docs is the resolved command used by lerna run build --stream)
       !process.env.TF_BUILD &&
+      !process.argv.includes('build:docs') &&
       new webpack.ProgressPlugin({
         entries: true,
         modules: true,
@@ -115,7 +118,6 @@ const webpackConfig: webpack.Configuration = {
     alias: {
       ...lernaAliases(),
       src: paths.packageSrc('react-northstar'),
-      docs: paths.docs(),
     },
   },
   optimization: {

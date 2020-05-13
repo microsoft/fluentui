@@ -17,7 +17,7 @@ export const DialogPageProps: IDocPageProps = {
   title: 'Dialog',
   componentName: 'Dialog',
   componentUrl:
-    'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Dialog',
+    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/Dialog',
   examples: [
     {
       title: 'Default Dialog',

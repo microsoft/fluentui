@@ -19,7 +19,7 @@ export const TooltipPageProps: IDocPageProps = {
   title: 'Tooltip',
   componentName: 'Tooltip',
   componentUrl:
-    'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Tooltip',
+    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/Tooltip',
   examples: [
     {
       title: 'Default Tooltip',

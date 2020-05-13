@@ -10,6 +10,7 @@ export type LabelColorSchemeMapping = TeamsSchemeMappingWithAreas<ItemType<typeo
 export interface LabelVariables {
   colorScheme: LabelColorSchemeMapping;
   circularRadius: string;
+  iconSize: string;
   padding: string;
   startPaddingLeft: string;
   endPaddingRight: string;
@@ -33,6 +34,7 @@ export default (siteVars: SiteVariablesPrepared): LabelVariables => {
   return {
     colorScheme: pickValuesFromColorScheme(colorScheme, labelColorAreas),
     circularRadius: pxToRem(9999),
+    iconSize: pxToRem(16),
     padding: `0 ${pxToRem(4)} 0 ${pxToRem(4)}`,
     startPaddingLeft: '0px',
     endPaddingRight: '0px',

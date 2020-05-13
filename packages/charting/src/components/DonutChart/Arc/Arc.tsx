@@ -26,7 +26,7 @@ export class Arc extends React.Component<IArcProps, IArcState> {
   }
 
   public render(): JSX.Element {
-    const { color, arc, href } = this.props;
+    const { color, arc, href, valueInsideDonut } = this.props;
     const getClassNames = classNamesFunction<IArcProps, IArcStyles>();
     const classNames = getClassNames(getStyles, { color, href });
     const id = this.props.uniqText! + this.props.data!.data.legend!.replace(/\s+/, '') + this.props.data!.data.data;
@@ -46,7 +46,11 @@ export class Arc extends React.Component<IArcProps, IArcState> {
           onBlur={this._onBlur}
           opacity={opacity}
           onClick={this._redirectToUrl.bind(this, href)}
+          aria-labelledby={this.props.calloutId}
         />
+        <text textAnchor={'middle'} className={classNames.insideDonutString} y={5}>
+          {valueInsideDonut}
+        </text>
       </g>
     );
   }

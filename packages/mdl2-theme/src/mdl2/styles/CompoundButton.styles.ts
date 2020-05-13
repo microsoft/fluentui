@@ -1,5 +1,6 @@
 import { getFocusStyle } from 'office-ui-fabric-react/lib/Styling';
 import { IButtonStyles, IButtonProps } from 'office-ui-fabric-react/lib/Button';
+import { IsFocusVisibleClassName } from 'office-ui-fabric-react/lib/Utilities';
 
 export const CompoundButtonStyles = (props: IButtonProps): Partial<IButtonStyles> => {
   const { theme } = props;
@@ -21,6 +22,15 @@ export const CompoundButtonStyles = (props: IButtonProps): Partial<IButtonStyles
           backgroundColor: palette.themePrimary,
           borderColor: palette.themePrimary,
           ...getFocusStyle(theme, { inset: -1, borderColor: palette.white }),
+          selectors: {
+            [`.${IsFocusVisibleClassName} &:focus`]: {
+              selectors: {
+                ':after': {
+                  outlineColor: palette.neutralSecondary,
+                },
+              },
+            },
+          },
         },
         '&.ms-Button--compound': {
           ...getFocusStyle(theme, { inset: -1, borderColor: palette.white }),

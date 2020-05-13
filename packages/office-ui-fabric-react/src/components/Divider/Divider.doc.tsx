@@ -12,7 +12,7 @@ export const DividerPageProps: IDocPageProps = {
   title: 'Divider',
   componentName: 'Divider',
   componentUrl:
-    'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Divider',
+    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/Divider',
   examples: [
     {
       title: 'Vertical Divider',

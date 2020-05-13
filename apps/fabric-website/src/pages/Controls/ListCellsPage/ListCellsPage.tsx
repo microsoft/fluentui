@@ -5,7 +5,7 @@ import { ListCellsPageProps } from './ListCellsPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
 
 const baseUrl =
-  'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/apps/fabric-website/src/pages/Controls/ListCellsPage/';
+  'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Controls/ListCellsPage/';
 
 export const ListCellsPage: React.FunctionComponent<IControlsPageProps> = props => {
   const { platform } = props;

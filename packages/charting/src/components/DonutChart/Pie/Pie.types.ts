@@ -53,9 +53,19 @@ export interface IPieProps {
   activeArc?: string;
 
   /**
+   * string for callout id
+   */
+  calloutId?: string;
+
+  /**
    * internal prop for href
    */
   href?: string;
+
+  /**
+   * props for inside donut value
+   */
+  valueInsideDonut?: string | number;
 }
 
 export interface IPieStyles {

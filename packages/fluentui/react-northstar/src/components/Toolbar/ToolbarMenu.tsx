@@ -4,7 +4,7 @@ import {
   toolbarMenuItemCheckboxBehavior,
   ToolbarMenuBehaviorProps,
 } from '@fluentui/accessibility';
-import { getElementType, getUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import { getElementType, useUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import { mergeComponentVariables } from '@fluentui/styles';
 import * as _ from 'lodash';
@@ -65,6 +65,7 @@ export interface ToolbarMenuProps extends UIComponentProps, ChildrenComponentPro
 }
 
 export type ToolbarMenuStylesProps = never;
+export const toolbarMenuClassName = 'ui-toolbar__menu';
 
 const ToolbarMenu: React.FC<WithAsProp<ToolbarMenuProps>> & FluentComponentStaticProps = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
@@ -86,7 +87,7 @@ const ToolbarMenu: React.FC<WithAsProp<ToolbarMenuProps>> & FluentComponentStati
     rtl: context.rtl,
   });
   const { classes } = useStyles<ToolbarMenuStylesProps>(ToolbarMenu.displayName, {
-    className: ToolbarMenu.className,
+    className: toolbarMenuClassName,
     mapPropsToInlineStyles: () => ({
       className,
       design,
@@ -143,7 +144,7 @@ const ToolbarMenu: React.FC<WithAsProp<ToolbarMenuProps>> & FluentComponentStati
   };
 
   const ElementType = getElementType(props);
-  const unhandledProps = getUnhandledProps(ToolbarMenu.handledProps, props);
+  const unhandledProps = useUnhandledProps(ToolbarMenu.handledProps, props);
 
   const element = getA11yProps.unstable_wrapWithFocusZone(
     <ElementType
@@ -162,7 +163,6 @@ const ToolbarMenu: React.FC<WithAsProp<ToolbarMenuProps>> & FluentComponentStati
   return element;
 };
 
-ToolbarMenu.className = 'ui-toolbar__menu';
 ToolbarMenu.displayName = 'ToolbarMenu';
 
 ToolbarMenu.propTypes = {

@@ -27,8 +27,8 @@ export default () => (
     <p>
       Fluent UI leverages Focus Trap Zone component which is based on the{' '}
       {link(
-        'Focus Trap Zone from Office UI Fabric.',
-        'https://developer.microsoft.com/en-us/fabric#/components/focustrapzone',
+        'Focus Trap Zone from Fluent UI React.',
+        'https://developer.microsoft.com/en-us/fluentui#/controls/web/focustrapzone',
       )}
     </p>
     <Header as="h2">Usage</Header>
@@ -45,7 +45,7 @@ export default () => (
       {code('FocusTrapZone')}'s props which can be applied to {code('trapFocus')} prop (
       {link(
         'lookup for API on GitHub',
-        'https://github.com/OfficeDev/office-ui-fabric-react/blob/master/packages/fluentui/react-bindings/src/FocusZone/FocusTrapZone.types.tsx',
+        'https://github.com/microsoft/fluentui/blob/master/packages/fluentui/react-bindings/src/FocusZone/FocusTrapZone.types.tsx',
       )}
       ):
     </p>
@@ -83,7 +83,7 @@ export default () => (
       {code('FocusTrapZone')} code on{' '}
       {link(
         'GitHub.',
-        'https://github.com/OfficeDev/office-ui-fabric-react/blob/master/packages/fluentui/react-bindings/src/FocusZone/FocusTrapZone.tsx',
+        'https://github.com/microsoft/fluentui/blob/master/packages/fluentui/react-bindings/src/FocusZone/FocusTrapZone.tsx',
       )}
     </p>
   </DocPage>

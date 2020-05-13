@@ -14,7 +14,7 @@ import { MotionPageProps } from './MotionPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
 
 const baseUrl =
-  'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/apps/fabric-website/src/pages/Styles/MotionPage/docs';
+  'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Styles/MotionPage/docs';
 
 const PatternTable = ({ rows }) => (
   <Table

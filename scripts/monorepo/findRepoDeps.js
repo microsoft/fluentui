@@ -12,7 +12,7 @@ function getDeps(packageJson) {
 
 /**
  * Find all the dependencies (and their dependencies) within the repo for a specific package (in the CWD when this was called)
- * @returns {{ packagePath: string; packageJson: any }[]}
+ * @returns {Map<string, Set<string>>}
  */
 function findRepoDeps() {
   const packageInfo = getAllPackageInfo();

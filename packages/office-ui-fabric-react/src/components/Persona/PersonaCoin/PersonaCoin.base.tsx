@@ -22,7 +22,11 @@ import {
 import { getPersonaInitialsColor } from '../PersonaInitialsColor';
 import { sizeToPixels } from '../PersonaConsts';
 
-const getClassNames = classNamesFunction<IPersonaCoinStyleProps, IPersonaCoinStyles>();
+const getClassNames = classNamesFunction<IPersonaCoinStyleProps, IPersonaCoinStyles>({
+  // There can be many PersonaCoin rendered with different sizes.
+  // Therefore setting a larger cache size.
+  cacheSize: 100,
+});
 
 export interface IPersonaState {
   isImageLoaded?: boolean;
@@ -31,7 +35,7 @@ export interface IPersonaState {
 
 /**
  * PersonaCoin with no default styles.
- * [Use the `getStyles` API to add your own styles.](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Styling)
+ * [Use the `getStyles` API to add your own styles.](https://github.com/microsoft/fluentui/wiki/Styling)
  */
 export class PersonaCoinBase extends React.Component<IPersonaCoinProps, IPersonaState> {
   public static defaultProps: IPersonaCoinProps = {

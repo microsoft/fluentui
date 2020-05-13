@@ -1,7 +1,7 @@
 import { StylesContextInputValue, StylesContextValue, Telemetry } from '@fluentui/react-bindings';
 import * as React from 'react';
 
-import { ShorthandFactory } from './utils/factories';
+import { ShorthandConfig, ShorthandFactory } from './utils/factories';
 
 // Temporary workaround for @lodash dependency
 
@@ -25,9 +25,9 @@ export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 // ========================================================
 
 export type FluentComponentStaticProps<P = {}> = {
-  className: string;
   handledProps: (keyof P)[];
   create: ShorthandFactory<P>;
+  shorthandConfig?: ShorthandConfig<P>;
 };
 
 // ========================================================
@@ -57,24 +57,20 @@ export type PropsOf<T> = T extends React.Component<infer TProps>
 // Shorthand Factories
 // ========================================================
 
-export type ShorthandRenderFunction<P> = (Component: React.ReactType, props: P) => React.ReactElement<any>;
-
-export type ShorthandRenderer<P> = (
-  value: ShorthandValue<P>,
-  renderTree?: ShorthandRenderFunction<P>,
-) => React.ReactElement<any>;
-
-export type ShorthandRenderCallback<P> = (render: ShorthandRenderer<P>) => React.ReactElement<any>;
+export type ShorthandRenderFunction<P> = (Component: React.ElementType<P>, props: P) => React.ReactNode;
 
 // The ReactFragment here is replaced from the original typings with ReactNodeArray because of incorrect inheriting of the type when it is defined as {}
 type ReactNode = React.ReactChild | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined;
 
-export type ShorthandRenderProp<P> = (Component: React.ElementType, props: P) => React.ReactNode;
+export type ShorthandValue<P extends Props> = ReactNode | ObjectShorthandValue<P>;
 
-export type ShorthandValue<P extends Props> =
-  | ReactNode
-  | (Props<P> & { children?: P['children'] | ShorthandRenderProp<P> });
 export type ShorthandCollection<P, K = never> = ShorthandValue<P & { kind?: K }>[];
+
+export type ObjectShorthandValue<P extends Props> = Props<P> & {
+  children?: P['children'] | ShorthandRenderFunction<P>;
+};
+
+export type ObjectShorthandCollection<P, K = never> = ObjectShorthandValue<P & { kind?: K }>[];
 
 // ========================================================
 // Types for As prop support
@@ -151,13 +147,11 @@ export const UNSAFE_typed = <TComponentType>(componentType: TComponentType) => {
 // ========================================================
 
 export interface ProviderContextInput extends StylesContextInputValue {
-  rtl?: boolean;
   target?: Document;
   telemetry?: Telemetry;
 }
 
 export interface ProviderContextPrepared extends StylesContextValue {
-  rtl: boolean;
   // `target` can be undefined for SSR
   target: Document | undefined;
   telemetry: Telemetry | undefined;

@@ -17,7 +17,7 @@ const getClassNames = classNamesFunction<IFacepileStyleProps, IFacepileStyles>()
 
 /**
  * FacePile with no default styles.
- * [Use the `styles` API to add your own styles.](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Component-Styling)
+ * [Use the `styles` API to add your own styles.](https://github.com/microsoft/fluentui/wiki/Component-Styling)
  */
 export class FacepileBase extends React.Component<IFacepileProps, {}> {
   public static defaultProps: IFacepileProps = {
@@ -295,7 +295,11 @@ export class FacepileBase extends React.Component<IFacepileProps, {}> {
     const { _classNames } = this;
 
     return (): JSX.Element => {
-      return <span className={_classNames.overflowInitialsIcon}>{'+' + numPersonasNotPictured}</span>;
+      return (
+        <span className={_classNames.overflowInitialsIcon}>
+          {numPersonasNotPictured < 100 ? '+' + numPersonasNotPictured : '99+'}
+        </span>
+      );
     };
   }
 }

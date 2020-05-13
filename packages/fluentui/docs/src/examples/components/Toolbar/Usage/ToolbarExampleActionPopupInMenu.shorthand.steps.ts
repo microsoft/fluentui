@@ -1,13 +1,13 @@
-import { ToolbarItem, ToolbarMenuItem } from '@fluentui/react-northstar';
+import { toolbarMenuItemClassName, toolbarItemSlotClassNames } from '@fluentui/react-northstar';
 
 const config: ScreenerTestsConfig = {
   themes: ['teams', 'teamsDark', 'teamsHighContrast'],
   steps: [
     builder =>
       builder
-        .click(`.${ToolbarItem.className}:nth-child(1)`)
+        .click(`.${toolbarItemSlotClassNames.wrapper} button`)
         .snapshot('Shows menu')
-        .click(`.${ToolbarMenuItem.className}:nth-child(1)`)
+        .click(`.${toolbarMenuItemClassName}:nth-child(1)`)
         .snapshot('Shows popup'),
   ],
 };

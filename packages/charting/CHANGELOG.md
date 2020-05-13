@@ -1,7 +1,129 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Thu, 19 Mar 2020 12:29:37 GMT and should not be manually modified.
+This log was last generated on Thu, 07 May 2020 01:06:55 GMT and should not be manually modified.
 
+<!-- Start content -->
+
+## [2.2.7](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.2.7)
+
+Thu, 07 May 2020 01:06:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.2.6..@uifabric/charting_v2.2.7)
+
+### Patches
+
+- Addressing commonjs imports. ([PR #13031](https://github.com/microsoft/fluentui/pull/13031) by dzearing@microsoft.com)
+- Charting package: Expose prop for hide tooltips in charts ([PR #13023](https://github.com/microsoft/fluentui/pull/13023) by v-satgar@microsoft.com)
+
+## [2.2.6](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.2.6)
+
+Wed, 06 May 2020 12:32:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.2.5..@uifabric/charting_v2.2.6)
+
+### Patches
+
+- callout prop added to charts ([PR #12936](https://github.com/microsoft/fluentui/pull/12936) by v-jasha@microsoft.com)
+
+## [2.2.5](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.2.5)
+
+Tue, 05 May 2020 12:34:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.2.1..@uifabric/charting_v2.2.5)
+
+### Patches
+
+- Stacked Bar Chart: Rounded value to 1 if less than 1%  to appear in the chart ([PR #12939](https://github.com/microsoft/fluentui/pull/12939) by v-satgar@microsoft.com)
+
+## [2.2.1](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.2.1)
+
+Thu, 30 Apr 2020 12:31:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.2.0..@uifabric/charting_v2.2.1)
+
+### Patches
+
+- addding dismiss delay to overcome instant closing on blur ([PR #12911](https://github.com/microsoft/fluentui/pull/12911) by v-sivsar@microsoft.com)
+- Charting: Change FocusZone imports to @fluentui/react-focus from office-ui-fabric-react/lib/FocusZone ([PR #12917](https://github.com/microsoft/fluentui/pull/12917) by v-satgar@microsoft.com)
+
+## [2.2.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.2.0)
+
+Wed, 29 Apr 2020 12:34:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.1.0..@uifabric/charting_v2.2.0)
+
+### Minor changes
+
+- Add EventAnnotation feature for linechart. ([PR #12681](https://github.com/microsoft/fluentui/pull/12681) by Qian.Zheqi@microsoft.com)
+
+## [2.1.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.1.0)
+
+Thu, 23 Apr 2020 12:32:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.0.4..@uifabric/charting_v2.1.0)
+
+### Minor changes
+
+- adding new prop hideLegend in donut chart and line chart which decides to show or hide legends ([PR #12469](https://github.com/microsoft/fluentui/pull/12469) by v-sivsar@microsoft.com)
+- adding onclick to the line in the line chart ([PR #12548](https://github.com/microsoft/fluentui/pull/12548) by v-sivsar@microsoft.com)
+
+## [2.0.4](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.0.4)
+
+Wed, 22 Apr 2020 12:33:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.0.0..@uifabric/charting_v2.0.4)
+
+### Patches
+
+- Fix issue line chart 'Tool tip' is displayed top of the page throgh accessibility ([PR #12761](https://github.com/microsoft/fluentui/pull/12761) by v-satgar@microsoft.com)
+
+## [2.0.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.0.0)
+
+Fri, 17 Apr 2020 12:34:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v1.4.0..@uifabric/charting_v2.0.0)
+
+### Major changes
+
+- Grouped verical bar chart ([PR #12687](https://github.com/microsoft/fluentui/pull/12687) by v-jasha@microsoft.com)
+
+## [1.4.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v1.4.0)
+
+Thu, 16 Apr 2020 04:01:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v1.1.4..@uifabric/charting_v1.4.0)
+
+### Minor changes
+
+- Provide customization for line chart tooltip and Y Axis label ([PR #12622](https://github.com/microsoft/fluentui/pull/12622) by v-satgar@microsoft.com)
+- Add Callout and Legends for vertical bar chart ([PR #12623](https://github.com/microsoft/fluentui/pull/12623) by v-satgar@microsoft.com)
+
+### Patches
+
+- Readme: Fabric=>Fluent wording updates ([PR #12508](https://github.com/microsoft/fluentui/pull/12508) by elcraig@microsoft.com)
+
+## 1.1.0
+Thu, 02 Apr 2020 12:30:40 GMT
+
+### Minor changes
+
+- DonutChart: Add prop to allow string inside Donut. (v-satgar@microsoft.com)
+- providing Ymin and Ymax as props to the user (v-sivsar@microsoft.com)
+## 1.0.0
+Wed, 25 Mar 2020 12:30:04 GMT
+
+### Major
+
+- Vertical stacked bar chart added to charting package (v-jasha@microsoft.com)
+### Patches
+
+- Changing references of Fabric to Fluent (mgodbolt@microsoft.com)
+## 0.143.0
+Tue, 24 Mar 2020 12:26:03 GMT
+
+### Minor changes
+
+- expose prop for overflow items text in legends (v-satgar@microsoft.com)
+## 0.142.0
+Mon, 23 Mar 2020 12:28:29 GMT
+
+### Minor changes
+
+- Add support for screen reader when hover on donnut chart (v-satgar@microsoft.com)
+### Patches
+
+- Replace OfficeDev/office-ui-fabric-react with microsoft/fluentui (elcraig@microsoft.com)
 ## 0.141.6
 Thu, 19 Mar 2020 12:29:37 GMT
 
@@ -1380,4 +1502,3 @@ Wed, 16 Aug 2017 10:11:43 GMT
 Tue, 15 Aug 2017 10:19:22 GMT
 
 *Initial release*
-

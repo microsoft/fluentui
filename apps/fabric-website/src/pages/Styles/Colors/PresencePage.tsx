@@ -4,8 +4,7 @@ import { IStylesPageProps, StylesAreaPage } from '../StylesAreaPage';
 import { ColorsPresencePageProps } from './PresencePage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
 
-const baseUrl =
-  'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/apps/fabric-website/src/pages/Styles/Colors/docs';
+const baseUrl = 'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Styles/Colors/docs';
 
 export const ColorsPresencePage: React.FunctionComponent<IStylesPageProps> = props => {
   const { platform } = props;

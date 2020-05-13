@@ -20,7 +20,7 @@ export interface CreateComponentConfig<P> {
 }
 
 export type CreateComponentReturnType<P> = React.FunctionComponent<P> & {
-  className: string;
+  deprecated_className: string;
   create: ShorthandFactory<P>;
 };
 
@@ -61,7 +61,7 @@ const createComponentInternal = <P extends ObjectOf<any> = any>({
     );
   };
 
-  FluentComponent.className = className;
+  FluentComponent.deprecated_className = className;
 
   FluentComponent.create = createShorthandFactory({
     Component: mergedDefaultProps.as,

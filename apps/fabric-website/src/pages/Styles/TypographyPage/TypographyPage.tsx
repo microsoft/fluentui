@@ -16,7 +16,7 @@ const typeSizes = require('office-ui-fabric-core/src/data/type-sizes.json');
 const typeWeights = require('office-ui-fabric-core/src/data/type-weights.json');
 
 const baseUrl =
-  'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/apps/fabric-website/src/pages/Styles/TypographyPage/docs';
+  'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Styles/TypographyPage/docs';
 
 export const TypographyPage: React.FunctionComponent<IStylesPageProps> = props => {
   const { platform } = props;

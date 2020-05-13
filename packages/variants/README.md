@@ -1,14 +1,17 @@
-# [variants](https://dev.microsoft.com/fabric)
+# @uifabric/variants
 
-Variants are [themes](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Theming) generated from an existing theme, as opposed to [from raw colors](https://developer.microsoft.com/en-us/fabric#/styles/themegenerator). A variant will share the same colors as the original theme it was generated from, but will use those colors differently. For example, the background color and text color might be swapped. Variants can be used to highlight or de-emphasize portions of the page.
+**Theme variant generator for [Fluent UI React](https://developer.microsoft.com/en-us/fluentui)**
+([formerly Office UI Fabric React](https://developer.microsoft.com/en-us/office/blogs/ui-fabric-is-evolving-into-fluent-ui/))
+
+Variants are [themes](https://github.com/microsoft/fluentui/wiki/Theming) generated from an existing theme, as opposed to [from raw colors](https://developer.microsoft.com/en-us/fluentui#/styles/themegenerator). A variant will share the same colors as the original theme it was generated from, but will use those colors differently. For example, the background color and text color might be swapped. Variants can be used to highlight or de-emphasize portions of the page.
 
 Example of normal, soft, and strong variants:
 
-![example of variants](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/packages/variants/example.png)
+![example of variants](https://github.com/microsoft/fluentui/blob/master/packages/variants/example.png)
 
-This project provides helper functions to create variants of a given theme, which can be used with the [Customizer](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/packages/utilities/src/Customizer.tsx) component to theme a specific portion of the page. Each function takes in an [IPartialTheme](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/packages/styling/src/interfaces/ITheme.ts) and returns an [ITheme](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/packages/styling/src/interfaces/ITheme.ts).
+This project provides helper functions to create variants of a given theme, which can be used with the [Customizer](https://github.com/microsoft/fluentui/blob/master/packages/utilities/src/Customizer.tsx) component to theme a specific portion of the page. Each function takes in an [IPartialTheme](https://github.com/microsoft/fluentui/blob/master/packages/styling/src/interfaces/ITheme.ts) and returns an [ITheme](https://github.com/microsoft/fluentui/blob/master/packages/styling/src/interfaces/ITheme.ts).
 
-The following example uses [getTheme()](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/packages/styling/src/styles/theme.ts) to grab the current global theme, then creates a strong variant of the that theme, and applies that strong variant to the components wrapped by Customizer.
+The following example uses [getTheme()](https://github.com/microsoft/fluentui/blob/master/packages/styling/src/styles/theme.ts) to grab the current global theme, then creates a strong variant of the that theme, and applies that strong variant to the components wrapped by Customizer.
 
 ```
 <Customizer settings={ { theme: getStrongVariant(getTheme()) } }>

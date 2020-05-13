@@ -5,8 +5,7 @@ import { ColorsPersonasPageProps } from './PersonasPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
 import { getColorsImplementation } from './getColorsImplementation';
 
-const baseUrl =
-  'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/apps/fabric-website/src/pages/Styles/Colors/docs';
+const baseUrl = 'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Styles/Colors/docs';
 const personaColors = require<IColorSwatch[]>('@uifabric/fabric-website/lib/data/colors-personas.json');
 const personaGroupColors = require<IColorSwatch[]>('@uifabric/fabric-website/lib/data/colors-persona-groups.json');
 

@@ -3,7 +3,7 @@ import { TeachingBubblePageProps as ExternalProps } from 'office-ui-fabric-react
 
 const related = require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/TeachingBubblePage/docs/TeachingBubbleRelated.md') as string;
 // const componentUrl =
-//   'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/apps/fabric-website/src/pages/Controls/TeachingBubblePage';
+//   'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Controls/TeachingBubblePage';
 
 export const TeachingBubblePageProps: TFabricPlatformPageProps = {
   web: {

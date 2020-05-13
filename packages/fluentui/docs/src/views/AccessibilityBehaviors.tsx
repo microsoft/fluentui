@@ -221,7 +221,7 @@ export default () => (
       All Fluent UI behaviors implementations can be found on the{' '}
       {link(
         'GitHub',
-        'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/fluentui/accessibility/src/behaviors',
+        'https://github.com/microsoft/fluentui/tree/master/packages/fluentui/accessibility/src/behaviors',
       )}
       .
     </p>

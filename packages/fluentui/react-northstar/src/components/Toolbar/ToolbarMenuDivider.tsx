@@ -1,5 +1,5 @@
 import { Accessibility } from '@fluentui/accessibility';
-import { getElementType, getUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import { getElementType, useUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
 import { mergeComponentVariables } from '@fluentui/styles';
 import * as React from 'react';
 // @ts-ignore
@@ -23,6 +23,7 @@ export interface ToolbarMenuDividerProps extends UIComponentProps, ChildrenCompo
 }
 
 export type ToolbarMenuDividerStylesProps = never;
+export const toolbarMenuDividerClassName = 'ui-toolbar__menudivider';
 
 const ToolbarMenuDivider: React.FC<WithAsProp<ToolbarMenuDividerProps>> &
   FluentComponentStaticProps<ToolbarMenuDividerProps> = props => {
@@ -38,7 +39,7 @@ const ToolbarMenuDivider: React.FC<WithAsProp<ToolbarMenuDividerProps>> &
     rtl: context.rtl,
   });
   const { classes } = useStyles<ToolbarMenuDividerStylesProps>(ToolbarMenuDivider.displayName, {
-    className: ToolbarMenuDivider.className,
+    className: toolbarMenuDividerClassName,
     mapPropsToInlineStyles: () => ({
       className,
       design,
@@ -49,7 +50,7 @@ const ToolbarMenuDivider: React.FC<WithAsProp<ToolbarMenuDividerProps>> &
   });
 
   const ElementType = getElementType(props);
-  const unhandledProps = getUnhandledProps(ToolbarMenuDivider.handledProps, props);
+  const unhandledProps = useUnhandledProps(ToolbarMenuDivider.handledProps, props);
 
   const element = <ElementType {...getA11yProps('root', { ...unhandledProps, className: classes.root })} />;
   setEnd();
@@ -57,7 +58,6 @@ const ToolbarMenuDivider: React.FC<WithAsProp<ToolbarMenuDividerProps>> &
   return element;
 };
 
-ToolbarMenuDivider.className = 'ui-toolbar__menudivider';
 ToolbarMenuDivider.displayName = 'ToolbarMenuDivider';
 
 ToolbarMenuDivider.propTypes = commonPropTypes.createCommon();

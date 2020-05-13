@@ -89,7 +89,7 @@ const GlobalClassNames = {
  * It should be cleaned up in 7.0.
  *
  * TODO: Audit perf. impact of and potentially remove memoizeFunction.
- * https://github.com/OfficeDev/office-ui-fabric-react/issues/5534
+ * https://github.com/microsoft/fluentui/issues/5534
  */
 export const getItemClassNames = memoizeFunction(
   (

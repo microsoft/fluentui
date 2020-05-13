@@ -3,9 +3,9 @@ import {
   ComponentSlotStylesInput,
   ComponentSlotStyle,
   createComponent,
-  Icon,
   ICSSInJSStyle,
 } from '@fluentui/react-northstar';
+import { AcceptIcon, ClipboardCopiedToIcon } from '@fluentui/react-icons-northstar';
 import * as Color from 'color';
 import * as _ from 'lodash';
 import * as React from 'react';
@@ -99,7 +99,7 @@ const ColorBox = createComponent<ColorBoxProps>({
             {(active, onClick) => (
               <div className={classes.value}>
                 <span onClick={onClick}>
-                  {value && <Icon name={active ? 'checkmark' : 'copy outline'} size="small" />}
+                  {value && active ? <AcceptIcon size="small" /> : <ClipboardCopiedToIcon size="small" />}
                   {value || 'Not defined'}
                 </span>
               </div>

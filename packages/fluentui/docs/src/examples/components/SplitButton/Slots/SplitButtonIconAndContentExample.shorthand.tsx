@@ -1,27 +1,28 @@
 import * as React from 'react';
 import { SplitButton } from '@fluentui/react-northstar';
+import { FilesGifIcon, FilesIllustratorIcon, FilesPdfIcon, FilesPhotoshopIcon } from '@fluentui/react-icons-northstar';
 
 const items = [
   {
     key: 'pdf',
     content: 'Export to PDF',
-    icon: 'files-pdf',
+    icon: <FilesPdfIcon />,
   },
   {
     key: 'pds',
     content: 'Export to PDS',
-    icon: 'files-photoshop',
+    icon: <FilesPhotoshopIcon />,
   },
   {
     key: 'gif',
     content: 'Export as GIF',
-    icon: 'files-gif',
+    icon: <FilesGifIcon />,
     disabled: true,
   },
   {
     key: 'eps',
     content: 'Export to EPS',
-    icon: 'files-illustrator',
+    icon: <FilesIllustratorIcon />,
   },
 ];
 

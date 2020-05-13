@@ -43,7 +43,7 @@ const SandboxApp: React.FunctionComponent = props => {
               our docs
             </Text>{' '}
             and{' '}
-            <Text as="a" href="https://github.com/OfficeDev/office-ui-fabric-react">
+            <Text as="a" href="https://github.com/microsoft/fluentui">
               GitHub
             </Text>
             .

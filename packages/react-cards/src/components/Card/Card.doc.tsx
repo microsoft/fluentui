@@ -13,8 +13,7 @@ const CardConfigureExampleCode = require('!raw-loader!@uifabric/react-cards/src/
 export const CardPageProps: IDocPageProps = {
   title: 'Card',
   componentName: 'Card',
-  componentUrl:
-    'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/react-cards/src/components/Card',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-cards/src/components/Card',
   examples: [
     {
       title: 'Vertical Card',

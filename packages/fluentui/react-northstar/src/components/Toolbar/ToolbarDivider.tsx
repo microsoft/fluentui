@@ -1,17 +1,27 @@
 import { Accessibility } from '@fluentui/accessibility';
-import { getElementType, getUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import {
+  getElementType,
+  useUnhandledProps,
+  useAccessibility,
+  useStyles,
+  useTelemetry,
+  compose,
+  ComponentWithAs,
+} from '@fluentui/react-bindings';
 import { mergeComponentVariables } from '@fluentui/styles';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 
 import * as React from 'react';
-import { FluentComponentStaticProps, ProviderContextPrepared, WithAsProp, withSafeTypeForAs } from '../../types';
+import { ProviderContextPrepared } from '../../types';
 import {
   ChildrenComponentProps,
   ContentComponentProps,
   createShorthandFactory,
   UIComponentProps,
   commonPropTypes,
+  ShorthandFactory,
+  ShorthandConfig,
 } from '../../utils';
 import { ToolbarVariablesContext } from './toolbarVariablesContext';
 
@@ -23,49 +33,59 @@ export interface ToolbarDividerProps extends UIComponentProps, ChildrenComponent
 }
 
 export type ToolbarDividerStylesProps = never;
-
-const ToolbarDivider: React.FC<WithAsProp<ToolbarDividerProps>> &
-  FluentComponentStaticProps<ToolbarDividerProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
-  const { setStart, setEnd } = useTelemetry(ToolbarDivider.displayName, context.telemetry);
-  setStart();
-
-  const { accessibility, className, design, styles, variables } = props;
-  const parentVariables = React.useContext(ToolbarVariablesContext);
-
-  const getA11yProps = useAccessibility(accessibility, {
-    debugName: ToolbarDivider.displayName,
-    rtl: context.rtl,
-  });
-  const { classes } = useStyles<ToolbarDividerStylesProps>(ToolbarDivider.displayName, {
-    className: ToolbarDivider.className,
-    mapPropsToInlineStyles: () => ({
-      className,
-      design,
-      styles,
-      variables: mergeComponentVariables(parentVariables, variables),
-    }),
-    rtl: context.rtl,
-  });
-
-  const ElementType = getElementType(props);
-  const unhandledProps = getUnhandledProps(ToolbarDivider.handledProps, props);
-
-  const element = <ElementType {...getA11yProps('root', { ...unhandledProps, className: classes.root })} />;
-  setEnd();
-
-  return element;
-};
-
-ToolbarDivider.className = 'ui-toolbar__divider';
-ToolbarDivider.displayName = 'ToolbarDivider';
-
-ToolbarDivider.propTypes = commonPropTypes.createCommon();
-ToolbarDivider.handledProps = Object.keys(ToolbarDivider.propTypes) as any;
-
-ToolbarDivider.create = createShorthandFactory({ Component: ToolbarDivider, mappedProp: 'content' });
+export const toolbarDividerClassName = 'ui-toolbar__divider';
 
 /**
  * A ToolbarDivider is a non-actionable element that visually segments Toolbar items.
  */
-export default withSafeTypeForAs<typeof ToolbarDivider, ToolbarDividerProps>(ToolbarDivider);
+const ToolbarDivider = compose<'div', ToolbarDividerProps, ToolbarDividerStylesProps, {}, {}>(
+  (props, ref, composeOptions) => {
+    const context: ProviderContextPrepared = React.useContext(ThemeContext);
+    const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
+    setStart();
+
+    const { accessibility, className, design, styles, variables } = props;
+    const parentVariables = React.useContext(ToolbarVariablesContext);
+
+    const getA11yProps = useAccessibility(accessibility, {
+      debugName: composeOptions.displayName,
+      rtl: context.rtl,
+    });
+    const { classes } = useStyles<ToolbarDividerStylesProps>(composeOptions.displayName, {
+      className: composeOptions.className,
+      mapPropsToInlineStyles: () => ({
+        className,
+        design,
+        styles,
+        variables: mergeComponentVariables(parentVariables, variables),
+      }),
+      rtl: context.rtl,
+      composeOptions,
+      unstable_props: props,
+    });
+
+    const ElementType = getElementType(props);
+    const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
+
+    const element = <ElementType {...getA11yProps('root', { ref, ...unhandledProps, className: classes.root })} />;
+    setEnd();
+
+    return element;
+  },
+  {
+    displayName: 'ToolbarDivider',
+    className: toolbarDividerClassName,
+    handledProps: ['accessibility', 'as', 'children', 'className', 'content', 'styles', 'variables', 'design'],
+  },
+) as ComponentWithAs<'div', ToolbarDividerProps> & {
+  create: ShorthandFactory<ToolbarDividerProps>;
+  shorthandConfig: ShorthandConfig<ToolbarDividerProps>;
+};
+ToolbarDivider.propTypes = commonPropTypes.createCommon();
+
+ToolbarDivider.create = createShorthandFactory({ Component: ToolbarDivider, mappedProp: 'content' });
+ToolbarDivider.shorthandConfig = {
+  mappedProp: 'content',
+};
+
+export default ToolbarDivider;

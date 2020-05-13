@@ -1,7 +1,7 @@
 {
   "name": "@uifabric/variants",
-  "version": "7.1.32",
-  "description": "Office UI Fabric subtheme generator.",
+  "version": "7.1.64",
+  "description": "Fluent UI React subtheme generator.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "sideEffects": [
@@ -10,7 +10,7 @@
   "typings": "lib/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/OfficeDev/office-ui-fabric-react"
+    "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
   "scripts": {
@@ -24,11 +24,11 @@
   },
   "devDependencies": {
     "@uifabric/build": "^7.0.0",
-    "@uifabric/tslint-rules": "^7.1.0"
+    "@uifabric/tslint-rules": "^7.2.1"
   },
   "dependencies": {
-    "@uifabric/set-version": "^7.0.7",
-    "office-ui-fabric-react": "^7.105.1",
+    "@uifabric/set-version": "^7.0.12",
+    "office-ui-fabric-react": "^7.113.1",
     "tslib": "^1.10.0"
   }
 }

@@ -10,7 +10,7 @@ import { Platforms } from '../../../interfaces/Platforms';
 
 // If you'll have multiple custom sections, define the base url on the remote host
 const baseUrl =
-  'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/apps/fabric-website/src/pages/PageTemplates/TemplatePage/';
+  'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/PageTemplates/TemplatePage/';
 
 // You can add additional page props by extending `IPageProps`.
 export interface ITemplatePageProps extends IPageProps<Platforms> {}
@@ -96,7 +96,7 @@ function _otherSections(platform: Platforms): IPageSectionProps[] {
             </div>
           ),
 
-          // Optionally wrap the section with a className. Use the `css` utility from Fabric to concatenate
+          // Optionally wrap the section with a className. Use the `css` utility from Fluent UI to concatenate
           // classNames that may be falsey.
           className: css(styles.customSection, 'customGlobalClassName', platform === 'web' && 'falseyGlobalClassName'),
         },

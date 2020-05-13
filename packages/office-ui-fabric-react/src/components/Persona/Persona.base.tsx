@@ -15,7 +15,7 @@ const getClassNames = classNamesFunction<IPersonaStyleProps, IPersonaStyles>();
 
 /**
  * Persona with no default styles.
- * [Use the `styles` API to add your own styles.](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Styling)
+ * [Use the `styles` API to add your own styles.](https://github.com/microsoft/fluentui/wiki/Styling)
  */
 export class PersonaBase extends React.Component<IPersonaProps, {}> {
   public static defaultProps: IPersonaProps = {

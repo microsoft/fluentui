@@ -30,7 +30,7 @@ const embedBehavior: Accessibility<EmbedBehaviorProps> = props => ({
 
 export default embedBehavior;
 
-type EmbedBehaviorProps = {
+export type EmbedBehaviorProps = {
   /** Corresponds to HTML title attribute. */
   title?: string;
   /** Alternative text. */

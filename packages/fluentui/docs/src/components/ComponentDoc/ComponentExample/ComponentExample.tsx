@@ -5,6 +5,7 @@ import {
   constants,
   Flex,
   ICSSInJSStyle,
+  Image,
   Menu,
   Provider,
   Segment,
@@ -26,6 +27,8 @@ import ComponentExampleTitle from './ComponentExampleTitle';
 import ComponentSourceManager, { ComponentSourceManagerRenderProps } from '../ComponentSourceManager';
 import VariableResolver from '../../VariableResolver/VariableResolver';
 import ComponentExampleVariables from './ComponentExampleVariables';
+// TODO: find replacement
+import { ReplyIcon, AcceptIcon, EditIcon } from '@fluentui/react-icons-northstar';
 
 const ERROR_COLOR = '#D34';
 
@@ -35,10 +38,11 @@ export interface ComponentExampleProps
     ExampleContextValue {
   error: Error | null;
   onError: (error: Error | null) => void;
-  title: React.ReactNode;
+  title: string;
+  titleForAriaLabel?: string;
   description?: React.ReactNode;
   examplePath: string;
-  toolbarAriaLabel?: string;
+  resetTheme?: boolean;
 }
 
 interface ComponentExampleState {
@@ -314,7 +318,7 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
 
     const menuItems = [
       {
-        icon: canCodeBeFormatted ? 'magic' : 'check', // (error && 'bug') || (canCodeBeFormatted ? 'magic' : 'check')
+        icon: canCodeBeFormatted ? <EditIcon /> : <AcceptIcon />,
         // active: !!error,
         content: 'Prettier',
         key: 'prettier',
@@ -322,8 +326,8 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
         disabled: !canCodeBeFormatted,
       },
       {
-        icon: 'refresh',
         content: 'Reset',
+        icon: <ReplyIcon />,
         key: 'reset',
         onClick: this.resetSourceCode,
         disabled: !wasCodeChanged,
@@ -333,14 +337,14 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
         children: (Component, props) => (
           <CopyToClipboard key="copy" value={currentCode}>
             {(active, onClick) => (
-              <Component {...props} active={active} icon={active ? 'check' : 'copy'} onClick={onClick} />
+              <Component {...props} active={active} icon={active && <AcceptIcon />} onClick={onClick} />
             )}
           </CopyToClipboard>
         ),
       },
       {
         disabled: currentCodeLanguage !== 'ts',
-        icon: 'github',
+        icon: <Image src="public/images/github.png" width="16px" height="16px" />,
         content: 'Edit',
         href: ghEditHref,
         rel: 'noopener noreferrer',
@@ -419,8 +423,9 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
       defaultExport,
       onError,
       title,
+      titleForAriaLabel,
       wasCodeChanged,
-      toolbarAriaLabel,
+      resetTheme,
     } = this.props;
     const {
       anchorName,
@@ -459,7 +464,7 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
                 <ComponentExampleTitle description={description} title={title} />
 
                 <ComponentControls
-                  toolbarAriaLabel={toolbarAriaLabel}
+                  titleForAriaLabel={title || titleForAriaLabel}
                   anchorName={anchorName}
                   exampleCode={currentCode}
                   exampleLanguage={currentCodeLanguage}
@@ -487,6 +492,7 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
                   enableSanitizeCssPlugin: true /* Force always for website to avoid issues with live editor */,
                 }}
                 theme={newTheme}
+                overwrite={resetTheme}
                 rtl={showRtl}
               >
                 <VariableResolver onResolve={this.handleVariableResolve}>

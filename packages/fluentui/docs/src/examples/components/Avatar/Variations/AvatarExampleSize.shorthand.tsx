@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { Avatar, Grid, SizeValue } from '@fluentui/react-northstar';
+import { AcceptIcon, UserFriendsIcon } from '@fluentui/react-icons-northstar';
 
 const statusProps = {
-  icon: 'icon-checkmark',
+  icon: <AcceptIcon />,
   color: 'green',
   title: 'Available',
 };
@@ -18,6 +19,8 @@ const AvatarExampleSizeShorthand = () => (
           <Avatar size={size} name="John Doe" status={statusProps} />
           &emsp;
           <Avatar size={size} image="public/images/avatar/small/matt.jpg" />
+          &emsp;
+          <Avatar size={size} icon={<UserFriendsIcon />} />
           &emsp;
           <Avatar size={size} image="public/images/avatar/small/matt.jpg" square />
         </div>

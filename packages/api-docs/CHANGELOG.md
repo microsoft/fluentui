@@ -1,7 +1,39 @@
 # Change Log - @uifabric/api-docs
 
-This log was last generated on Tue, 25 Feb 2020 12:25:39 GMT and should not be manually modified.
+This log was last generated on Thu, 07 May 2020 01:06:55 GMT and should not be manually modified.
 
+<!-- Start content -->
+
+## [7.2.68](https://github.com/microsoft/fluentui/tree/@uifabric/api-docs_v7.2.68)
+
+Thu, 07 May 2020 01:06:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/api-docs_v7.2.50..@uifabric/api-docs_v7.2.68)
+
+### Patches
+
+- Addressing commonjs imports. ([PR #13031](https://github.com/microsoft/fluentui/pull/13031) by dzearing@microsoft.com)
+
+## [7.2.50](https://github.com/microsoft/fluentui/tree/@uifabric/api-docs_v7.2.50)
+
+Thu, 16 Apr 2020 04:01:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/api-docs_v7.2.40..@uifabric/api-docs_v7.2.50)
+
+### Patches
+
+- Readme: Fabric=>Fluent wording updates ([PR #12508](https://github.com/microsoft/fluentui/pull/12508) by elcraig@microsoft.com)
+
+## 7.2.40
+Wed, 25 Mar 2020 12:30:04 GMT
+
+### Patches
+
+- Changing references of Fabric to Fluent (mgodbolt@microsoft.com)
+## 7.2.39
+Mon, 23 Mar 2020 12:28:29 GMT
+
+### Patches
+
+- Replace OfficeDev/office-ui-fabric-react with microsoft/fluentui (elcraig@microsoft.com)
 ## 7.2.22
 Tue, 25 Feb 2020 12:25:39 GMT
 
@@ -122,4 +154,3 @@ Sat, 04 May 2019 00:01:53 GMT
 ### Patches
 
 - Updates for new website
-

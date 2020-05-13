@@ -22,7 +22,7 @@ To stabilize the numbers, the example is rendered 50 times and median value is u
 
 1. With each GIT commit, build pipeline is executed in CircleCI. As part of the build, we run the performance tests for all performance examples.
 2. Performance results are then stored to an external storage.
-3. In Fluent UI docsite running locally (not currently available in public docsite, https://microsoft.github.io/fluent-ui-react/) for each measured component a performance chart is displayed, showing measures from the last 50 test runs.
+3. In Fluent UI docsite running locally (not currently available in public docsite) for each measured component a performance chart is displayed, showing measures from the last 50 test runs.
 
 The following picture shows a chart for `Chat` component:
 ![Chart example](perf_chart.png)
@@ -54,7 +54,7 @@ Bundle size numbers are stored at the same infrastructure used for storing perfo
 - explore possible ways to make the measurements more stable
 - add perf examples (charts) for more components and more variants
 - add perf examples for compound examples (whole app page example built with multiple Fluent UI components)
-- make perf charts available in public docsite (https://microsoft.github.io/fluent-ui-react/)
+- make perf charts available in public docsite (https://aka.ms/fluent-ui)
 - make bundle size charts available in docsite
 
 ## FAQ

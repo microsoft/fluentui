@@ -4,8 +4,7 @@ import { ControlsAreaPage, IControlsPageProps } from '../ControlsAreaPage';
 import { NavBarPageProps } from './NavBarPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
 
-const baseUrl =
-  'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/apps/fabric-website/src/pages/Controls/NavBarPage/';
+const baseUrl = 'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Controls/NavBarPage/';
 
 export const NavBarPage: React.FunctionComponent<IControlsPageProps> = props => {
   const { platform } = props;

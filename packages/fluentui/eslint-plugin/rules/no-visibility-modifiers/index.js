@@ -3,8 +3,7 @@ const isTypeScriptFile = require('../../utils/isTypeScriptFile');
 const { AST_NODE_TYPES, ESLintUtils } = require('@typescript-eslint/experimental-utils');
 
 const createRule = ESLintUtils.RuleCreator(
-  name =>
-    `https://github.com/OfficeDev/office-ui-fabric-react/blob/master/packages/fluentui/eslint-plugin/rules/${name}/index.js`,
+  name => `https://github.com/microsoft/fluentui/blob/master/packages/fluentui/eslint-plugin/rules/${name}/index.js`,
 );
 
 module.exports = createRule({
@@ -12,12 +11,12 @@ module.exports = createRule({
   meta: {
     type: 'problem',
     docs: {
-      description: 'Require omit modifiers on class properties and methods',
+      description: 'Require omitting visibility modifiers on class properties and methods',
       category: 'Best Practices',
       recommended: 'error',
     },
     messages: {
-      presentModifier: 'Present accessibility modifier on {{type}} {{name}}.',
+      presentModifier: 'Visibility modifier present on {{type}} {{name}}.',
     },
     schema: [],
   },

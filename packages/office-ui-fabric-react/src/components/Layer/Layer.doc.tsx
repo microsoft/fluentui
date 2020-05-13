@@ -15,7 +15,7 @@ export const LayerPageProps: IDocPageProps = {
   title: 'Layer',
   componentName: 'Layer',
   componentUrl:
-    'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Layer',
+    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/Layer',
   examples: [
     {
       title: 'Basic layered content',

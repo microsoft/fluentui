@@ -4,7 +4,7 @@ import {
   toolbarRadioGroupItemBehavior,
   ToolbarRadioGroupBehaviorProps,
 } from '@fluentui/accessibility';
-import { getElementType, getUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import { getElementType, useUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
 import { Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import { mergeComponentVariables } from '@fluentui/styles';
@@ -49,6 +49,7 @@ export interface ToolbarRadioGroupProps extends UIComponentProps, ChildrenCompon
 }
 
 export type ToolbarRadioGroupStylesProps = never;
+export const toolbarRadioGroupClassName = 'ui-toolbars'; // FIXME: required by getComponentInfo/isConformant. But this is group inside a toolbar not a group of toolbars
 
 const ToolbarRadioGroup: React.FC<WithAsProp<ToolbarRadioGroupProps>> &
   FluentComponentStaticProps<ToolbarRadioGroupProps> = props => {
@@ -71,7 +72,7 @@ const ToolbarRadioGroup: React.FC<WithAsProp<ToolbarRadioGroupProps>> &
     rtl: context.rtl,
   });
   const { classes } = useStyles<ToolbarRadioGroupStylesProps>(ToolbarRadioGroup.displayName, {
-    className: ToolbarRadioGroup.className,
+    className: toolbarRadioGroupClassName,
     mapPropsToInlineStyles: () => ({ className, design, styles, variables: mergedVariables }),
     rtl: context.rtl,
   });
@@ -138,7 +139,7 @@ const ToolbarRadioGroup: React.FC<WithAsProp<ToolbarRadioGroupProps>> &
   };
 
   const ElementType = getElementType(props);
-  const unhandledProps = getUnhandledProps(ToolbarRadioGroup.handledProps, props);
+  const unhandledProps = useUnhandledProps(ToolbarRadioGroup.handledProps, props);
 
   const element = (
     <ElementType
@@ -158,7 +159,6 @@ const ToolbarRadioGroup: React.FC<WithAsProp<ToolbarRadioGroupProps>> &
 };
 
 ToolbarRadioGroup.displayName = 'ToolbarRadioGroup';
-ToolbarRadioGroup.className = 'ui-toolbars'; // FIXME: required by getComponentInfo/isConformant. But this is group inside a toolbar not a group of toolbars
 
 ToolbarRadioGroup.propTypes = {
   ...commonPropTypes.createCommon(),

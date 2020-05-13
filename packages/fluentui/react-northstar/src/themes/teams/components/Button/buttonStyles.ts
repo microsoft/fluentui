@@ -2,7 +2,7 @@ import * as _ from 'lodash';
 import { unstable_createAnimationStyles as createAnimationStyles } from '@fluentui/react-bindings';
 import { pxToRem } from '../../../../utils';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import Loader from '../../../../components/Loader/Loader';
+import { loaderSlotClassNames } from '../../../../components/Loader/Loader';
 import { ButtonStylesProps } from '../../../../components/Button/Button';
 import { ButtonVariables } from './buttonVariables';
 import getBorderFocusStyles from '../../getBorderFocusStyles';
@@ -220,21 +220,34 @@ const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, ButtonVariabl
     };
   },
 
-  icon: ({ props: p }) => ({
+  icon: ({ props: p, variables: v }) => ({
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: v.iconSize,
+    height: v.iconSize,
+
     // when loading, hide the icon
     ...(p.loading && {
       margin: 0,
       opacity: 0,
       width: 0,
     }),
+
+    ...(p.hasContent && {
+      margin: `0 ${pxToRem(10)} 0 0`,
+      ...(p.iconPosition === 'after' && {
+        margin: `0 0 0 ${pxToRem(10)}`,
+      }),
+    }),
   }),
 
   loader: ({ props: p, variables: v }): ICSSInJSStyle => ({
-    [`& .${Loader.slotClassNames.indicator}`]: {
+    [`& .${loaderSlotClassNames.indicator}`]: {
       width: p.size === 'small' ? v.sizeSmallLoaderSize : v.loaderSize,
       height: p.size === 'small' ? v.sizeSmallLoaderSize : v.loaderSize,
     },
-    [`& .${Loader.slotClassNames.svg}`]: {
+    [`& .${loaderSlotClassNames.svg}`]: {
       ':before': {
         animationName: {
           to: {

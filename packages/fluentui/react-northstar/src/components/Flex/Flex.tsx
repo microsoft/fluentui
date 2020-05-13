@@ -1,4 +1,4 @@
-import { getElementType, getUnhandledProps, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import { getElementType, useUnhandledProps, useStyles, useTelemetry } from '@fluentui/react-bindings';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
@@ -45,9 +45,9 @@ export type FlexStylesProps = Pick<
   FlexProps,
   'column' | 'debug' | 'fill' | 'gap' | 'hAlign' | 'inline' | 'padding' | 'space' | 'vAlign' | 'wrap'
 >;
+export const flexClassName = 'ui-flex';
 
 const Flex: React.FC<WithAsProp<FlexProps>> & {
-  className: string;
   handledProps: (keyof FlexProps)[];
   Item: typeof FlexItem;
 } = props => {
@@ -74,7 +74,7 @@ const Flex: React.FC<WithAsProp<FlexProps>> & {
   } = props;
 
   const { classes } = useStyles<FlexStylesProps>(Flex.displayName, {
-    className: Flex.className,
+    className: flexClassName,
     mapPropsToStyles: () => ({
       column,
       debug,
@@ -97,7 +97,7 @@ const Flex: React.FC<WithAsProp<FlexProps>> & {
   });
 
   const ElementType = getElementType(props);
-  const unhandledProps = getUnhandledProps(Flex.handledProps, props);
+  const unhandledProps = useUnhandledProps(Flex.handledProps, props);
 
   const content = React.Children.map(children, child => {
     const isFlexItemElement: boolean = _.get(child, 'type.__isFlexItem');
@@ -118,7 +118,6 @@ const Flex: React.FC<WithAsProp<FlexProps>> & {
   return element;
 };
 
-Flex.className = 'ui-flex';
 Flex.displayName = 'Flex';
 
 Flex.propTypes = {

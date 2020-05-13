@@ -23,7 +23,7 @@ export const PersonaPageProps: IDocPageProps = {
   title: 'Persona',
   componentName: 'Persona',
   componentUrl:
-    'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Persona',
+    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/Persona',
   examples: [
     {
       title: 'Persona in various sizes',

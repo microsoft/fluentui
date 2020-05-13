@@ -41,9 +41,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
       role="grid"
     >
       <div
-        className=
-            ms-DetailsList-headerWrapper
-
+        className="ms-DetailsList-headerWrapper"
         onKeyDown={[Function]}
         role="presentation"
       >
@@ -141,9 +139,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
             role="columnheader"
           >
             <span
-              className=
-                  ms-DetailsHeader-checkTooltip
-
+              className="ms-DetailsHeader-checkTooltip"
             >
               <div
                 aria-checked={false}
@@ -441,6 +437,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                   }
             >
               <span
+                aria-describedby="header0-thumbnail-tooltip"
                 aria-haspopup={false}
                 aria-labelledby="header0-thumbnail-name"
                 className=
@@ -496,12 +493,32 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
               </span>
             </span>
           </div>
+          <label
+            className=
+
+                {
+                  border: 0px;
+                  height: 1px;
+                  margin-bottom: -1px;
+                  margin-left: -1px;
+                  margin-right: -1px;
+                  margin-top: -1px;
+                  overflow: hidden;
+                  padding-bottom: 0px;
+                  padding-left: 0px;
+                  padding-right: 0px;
+                  padding-top: 0px;
+                  position: absolute;
+                  width: 1px;
+                }
+            id="header0-thumbnail-tooltip"
+          >
+            Thumbnail
+          </label>
         </div>
       </div>
       <div
-        className=
-            ms-DetailsList-contentWrapper
-
+        className="ms-DetailsList-contentWrapper"
         onKeyDown={[Function]}
         role="presentation"
       >
@@ -692,7 +709,6 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
-
                               {
                                 -moz-osx-font-smoothing: grayscale;
                                 -webkit-font-smoothing: antialiased;
@@ -1138,7 +1154,6 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
-
                               {
                                 -moz-osx-font-smoothing: grayscale;
                                 -webkit-font-smoothing: antialiased;
@@ -1584,7 +1599,6 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
-
                               {
                                 -moz-osx-font-smoothing: grayscale;
                                 -webkit-font-smoothing: antialiased;
@@ -2030,7 +2044,6 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
-
                               {
                                 -moz-osx-font-smoothing: grayscale;
                                 -webkit-font-smoothing: antialiased;
@@ -2476,7 +2489,6 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
-
                               {
                                 -moz-osx-font-smoothing: grayscale;
                                 -webkit-font-smoothing: antialiased;
@@ -2922,7 +2934,6 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
-
                               {
                                 -moz-osx-font-smoothing: grayscale;
                                 -webkit-font-smoothing: antialiased;
@@ -3368,7 +3379,6 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
-
                               {
                                 -moz-osx-font-smoothing: grayscale;
                                 -webkit-font-smoothing: antialiased;
@@ -3814,7 +3824,6 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
-
                               {
                                 -moz-osx-font-smoothing: grayscale;
                                 -webkit-font-smoothing: antialiased;
@@ -4260,7 +4269,6 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
-
                               {
                                 -moz-osx-font-smoothing: grayscale;
                                 -webkit-font-smoothing: antialiased;
@@ -4706,7 +4714,6 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
-
                               {
                                 -moz-osx-font-smoothing: grayscale;
                                 -webkit-font-smoothing: antialiased;

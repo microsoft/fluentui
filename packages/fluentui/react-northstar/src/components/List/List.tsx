@@ -1,7 +1,7 @@
 import { Accessibility, listBehavior, ListBehaviorProps } from '@fluentui/accessibility';
 import {
   getElementType,
-  getUnhandledProps,
+  useUnhandledProps,
   useAccessibility,
   useAutoControlled,
   useStyles,
@@ -77,6 +77,7 @@ export interface ListProps extends UIComponentProps, ChildrenComponentProps {
 }
 
 export type ListStylesProps = Pick<ListProps, 'debug' | 'horizontal'> & { isListTag: boolean };
+export const listClassName = 'ui-list';
 
 const List: React.FC<WithAsProp<ListProps>> &
   FluentComponentStaticProps<ListProps> & {
@@ -119,7 +120,7 @@ const List: React.FC<WithAsProp<ListProps>> &
     rtl: context.rtl,
   });
   const { classes } = useStyles<ListStylesProps>(List.displayName, {
-    className: List.className,
+    className: listClassName,
     mapPropsToStyles: () => ({ isListTag: as === 'ol' || as === 'ul', debug, horizontal }),
     mapPropsToInlineStyles: () => ({ className, design, styles, variables }),
     rtl: context.rtl,
@@ -129,7 +130,7 @@ const List: React.FC<WithAsProp<ListProps>> &
   latestProps.current = props;
 
   const ElementType = getElementType(props);
-  const unhandledProps = getUnhandledProps(List.handledProps, props);
+  const unhandledProps = useUnhandledProps(List.handledProps, props);
 
   const hasContent = childrenExist(children) || (items && items.length > 0);
   const onItemClick = React.useCallback(
@@ -175,7 +176,6 @@ const List: React.FC<WithAsProp<ListProps>> &
   return element;
 };
 
-List.className = 'ui-list';
 List.displayName = 'List';
 
 List.defaultProps = {

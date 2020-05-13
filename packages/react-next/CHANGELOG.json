@@ -1,0 +1,196 @@
+{
+  "name": "@fluentui/react-next",
+  "entries": [
+    {
+      "date": "Tue, 12 May 2020 23:23:51 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.17",
+      "version": "8.0.0-alpha.17",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Copying Link to react-next, in preparation for converting to function component.",
+            "author": "czearing@outlook.com",
+            "commit": "1a403c2580dbe199e167f04f428acad0af4028e8",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 11 May 2020 12:36:34 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.15",
+      "version": "8.0.0-alpha.15",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Checkbox: convert base styles to scss",
+            "author": "xgao@microsoft.com",
+            "commit": "1619b355712d83844b4b63283e9370b5ff6a17f5",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 08 May 2020 12:35:40 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.14",
+      "version": "8.0.0-alpha.14",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Checkbox: fix high contrast styles in Edge Chromium",
+            "author": "xgao@microsoft.com",
+            "commit": "70e25f50621034c277df23f832ed1b13e1a824c8",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Copying OverflowSet to react-next, in preparation for converting to function component",
+            "author": "czearing@outlook.com",
+            "commit": "18d5f02c104db78a7e6f0bfe4b3ab9cc9c672bd0",
+            "package": "@fluentui/react-next"
+          }
+        ],
+        "none": [
+          {
+            "comment": "update snapshots for merge-styles change to not generate class with no styles",
+            "author": "pingj@microsoft.com",
+            "commit": "a5b44ed833a4614d1333fa161ffd8fd467d33446",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 07 May 2020 12:34:38 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.13",
+      "version": "8.0.0-alpha.13",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Slider: Add some tests, fix minor bug for controlled component",
+            "author": "joschect@microsoft.com",
+            "commit": "31404935a5e8287ea7e5fdb491c1deb96338b710",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 06 May 2020 12:32:22 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.11",
+      "version": "8.0.0-alpha.11",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Updating example imports and moving pivot in React-Next",
+            "author": "czearing@outlook.com",
+            "commit": "2ca126ca4e6f32e64b5a339b0828179e0f267c7f",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Copy ResizeGroup code to react-next",
+            "author": "miclo@microsoft.com",
+            "commit": "131abb3b89867e7e8e5c38fd5fe04049c7f69288",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 05 May 2020 12:34:22 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.10",
+      "version": "8.0.0-alpha.10",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Adding SearchBox to React-Next for future update to Function Component",
+            "author": "czearing@outlook.com",
+            "commit": "922cd9ba68de1780122dbef4ae523b15e54ea8c4",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Migrate Popup to a function component",
+            "author": "miclo@microsoft.com",
+            "commit": "b8868db4f1a39eaaf978a2353006fb98291c7d59",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Copying Slider to react-next, in preparation for converting to function component",
+            "author": "czearing@outlook.com",
+            "commit": "30f850b0195b6ca6d45d15f7549b4e545299c341",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Updating Checkbox tests to use resetIds for more reliable snapshots.",
+            "author": "czearing@outlook.com",
+            "commit": "f38654caef2c5f4825dd1f50dc2abe6a35a822e6",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 04 May 2020 12:33:29 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.9",
+      "version": "8.0.0-alpha.9",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Migrate Image to function component",
+            "author": "miclo@microsoft.com",
+            "commit": "9e53b82fcc814a0ec53e34a77ed25bcebb256d19",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Copying SpinButton to react-next, in preparation for converting to function component",
+            "author": "czearing@outlook.com",
+            "commit": "c369780b48c8f1479d91a35f5dbea69ea84dd830",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Copying Toggle to react-next, in preparation for converting to function component",
+            "author": "czearing@outlook.com",
+            "commit": "538a70e01f666b269dc75a3d0edbc7cd86c1d095",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 01 May 2020 00:19:21 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.7",
+      "version": "8.0.0-alpha.7",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Migrate Checkbox to functional component",
+            "author": "miclo@microsoft.com",
+            "commit": "24f53d16c79a7659f75ed835bf056da9ca2be076",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Migrate Fabric component to funtional component",
+            "author": "miclo@microsoft.com",
+            "commit": "8caa94d30aaec06bc511b61344265de066815667",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 22 Apr 2020 12:33:04 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.0",
+      "version": "8.0.0-alpha.0",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Adding react-next package to stage Fluent UI v8 changes.",
+            "author": "dzearing@microsoft.com",
+            "commit": "394367a5aec7b7efb0bbe68a74e5dc54241b7e69",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    }
+  ]
+}

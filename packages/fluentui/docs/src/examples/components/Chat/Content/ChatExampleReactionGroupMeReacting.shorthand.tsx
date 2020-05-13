@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { Avatar, Chat, ChatItemProps, ReactionProps, ShorthandCollection } from '@fluentui/react-northstar';
+import { EmojiIcon, LikeIcon } from '@fluentui/react-icons-northstar';
 
 const reactions: ShorthandCollection<ReactionProps> = [
-  { icon: 'like', content: '1K', key: 'likes', variables: { meReacting: true }, as: 'button' },
-  { icon: 'emoji', content: 2, key: 'smiles', as: 'button' },
+  { icon: <LikeIcon />, content: '1K', key: 'likes', variables: { meReacting: true }, as: 'button' },
+  { icon: <EmojiIcon />, content: 2, key: 'smiles', as: 'button' },
 ];
 
 const items: ShorthandCollection<ChatItemProps> = [

@@ -72,6 +72,7 @@ export interface StylesContextPerformance {
 export type StylesContextPerformanceInput = Partial<StylesContextPerformance>;
 
 export type StylesContextInputValue<R = Renderer> = {
+  rtl?: boolean;
   disableAnimations?: boolean;
   performance?: StylesContextPerformanceInput;
   renderer?: R;
@@ -79,6 +80,7 @@ export type StylesContextInputValue<R = Renderer> = {
 };
 
 export type StylesContextValue<R = Renderer> = {
+  rtl: boolean;
   disableAnimations: boolean;
   performance: StylesContextPerformance;
   renderer: R;

@@ -11,7 +11,7 @@ export const PickersPageProps: IDocPageProps = {
   title: 'Pickers',
   componentName: 'Pickers',
   componentUrl:
-    'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Pickers',
+    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/Pickers',
   examples: [
     {
       title: 'Tag Picker',

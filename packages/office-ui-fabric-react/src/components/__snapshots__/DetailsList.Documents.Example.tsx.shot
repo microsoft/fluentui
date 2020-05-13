@@ -21,7 +21,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
       & textarea {
         font-family: inherit;
       }
-  dir="ltr"
 >
   <div
     className=
@@ -403,9 +402,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
           }
     >
       <div
-        className=
-            ms-TextField-wrapper
-
+        className="ms-TextField-wrapper"
       >
         <label
           className=
@@ -550,9 +547,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
     </div>
     <div
       aria-live="polite"
-      className=
-
-
+      className=""
       role="status"
     />
   </div>
@@ -567,9 +562,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
   </div>
   <div
     aria-live="polite"
-    className=
-
-
+    className=""
     role="status"
   />
   <div
@@ -612,9 +605,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
         role="grid"
       >
         <div
-          className=
-              ms-DetailsList-headerWrapper
-
+          className="ms-DetailsList-headerWrapper"
           onKeyDown={[Function]}
           role="presentation"
         >
@@ -1324,9 +1315,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
           </div>
         </div>
         <div
-          className=
-              ms-DetailsList-contentWrapper
-
+          className="ms-DetailsList-contentWrapper"
           onKeyDown={[Function]}
           role="presentation"
         >
@@ -1543,7 +1532,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                     max-width: 16px;
                                     vertical-align: middle;
                                   }
-                              src="https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/svg/accdb_16x1.svg"
+                              src="https://static2.sharepointonline.com/files/fabric/assets/item-types/16/accdb.svg"
                             />
                           </div>
                           <div
@@ -1862,7 +1851,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                     max-width: 16px;
                                     vertical-align: middle;
                                   }
-                              src="https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/svg/accdb_16x1.svg"
+                              src="https://static2.sharepointonline.com/files/fabric/assets/item-types/16/accdb.svg"
                             />
                           </div>
                           <div
@@ -2181,7 +2170,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                     max-width: 16px;
                                     vertical-align: middle;
                                   }
-                              src="https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/svg/accdb_16x1.svg"
+                              src="https://static2.sharepointonline.com/files/fabric/assets/item-types/16/accdb.svg"
                             />
                           </div>
                           <div
@@ -2500,7 +2489,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                     max-width: 16px;
                                     vertical-align: middle;
                                   }
-                              src="https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/svg/accdb_16x1.svg"
+                              src="https://static2.sharepointonline.com/files/fabric/assets/item-types/16/accdb.svg"
                             />
                           </div>
                           <div
@@ -2819,7 +2808,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                     max-width: 16px;
                                     vertical-align: middle;
                                   }
-                              src="https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/svg/accdb_16x1.svg"
+                              src="https://static2.sharepointonline.com/files/fabric/assets/item-types/16/accdb.svg"
                             />
                           </div>
                           <div
@@ -3138,7 +3127,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                     max-width: 16px;
                                     vertical-align: middle;
                                   }
-                              src="https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/svg/accdb_16x1.svg"
+                              src="https://static2.sharepointonline.com/files/fabric/assets/item-types/16/accdb.svg"
                             />
                           </div>
                           <div
@@ -3457,7 +3446,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                     max-width: 16px;
                                     vertical-align: middle;
                                   }
-                              src="https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/svg/accdb_16x1.svg"
+                              src="https://static2.sharepointonline.com/files/fabric/assets/item-types/16/accdb.svg"
                             />
                           </div>
                           <div
@@ -3776,7 +3765,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                     max-width: 16px;
                                     vertical-align: middle;
                                   }
-                              src="https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/svg/accdb_16x1.svg"
+                              src="https://static2.sharepointonline.com/files/fabric/assets/item-types/16/accdb.svg"
                             />
                           </div>
                           <div
@@ -4095,7 +4084,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                     max-width: 16px;
                                     vertical-align: middle;
                                   }
-                              src="https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/svg/accdb_16x1.svg"
+                              src="https://static2.sharepointonline.com/files/fabric/assets/item-types/16/accdb.svg"
                             />
                           </div>
                           <div
@@ -4414,7 +4403,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                     max-width: 16px;
                                     vertical-align: middle;
                                   }
-                              src="https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/svg/accdb_16x1.svg"
+                              src="https://static2.sharepointonline.com/files/fabric/assets/item-types/16/accdb.svg"
                             />
                           </div>
                           <div

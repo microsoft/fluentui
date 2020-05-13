@@ -310,7 +310,7 @@ export interface IButtonProps
    *
    * @deprecated There is known bug in Edge when this prop is true where scrollbars
    * overlap with the content when a menu is first rendered hidden.
-   * See: https://github.com/OfficeDev/office-ui-fabric-react/issues/9034
+   * See: https://github.com/microsoft/fluentui/issues/9034
    * Please do not start using this. If you are already using this,
    * please make sure that you are doing so only in non-Edge browsers
    */

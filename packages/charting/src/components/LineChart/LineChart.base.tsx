@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { max as d3Max } from 'd3-array';
+import { max as d3Max, min as d3Min } from 'd3-array';
 import { axisLeft as d3AxisLeft, axisBottom as d3AxisBottom } from 'd3-axis';
 import { scaleLinear as d3ScaleLinear, scaleTime as d3ScaleTime } from 'd3-scale';
 import { select as d3Select } from 'd3-selection';
 import * as d3TimeFormat from 'd3-time-format';
 import { ILegend, Legends } from '../Legends/index';
-import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { classNamesFunction, getId } from 'office-ui-fabric-react/lib/Utilities';
 import { IProcessedStyleSet, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 import {
   ILineChartProps,
@@ -15,9 +15,15 @@ import {
   ILineChartPoints,
 } from './LineChart.types';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
-import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react';
+import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
+import { EventsAnnotation } from './eventAnnotation/EventAnnotation';
 
 const getClassNames = classNamesFunction<ILineChartStyleProps, ILineChartStyles>();
+
+export interface IRefArrayData {
+  index?: string;
+  refElement?: SVGGElement;
+}
 
 export class LineChartBase extends React.Component<
   ILineChartProps,
@@ -30,6 +36,7 @@ export class LineChartBase extends React.Component<
     YValueHover: { legend?: string; y?: number; color?: string }[];
     hoverYValue: string | number | null;
     hoverXValue: string | number | null;
+    refArray: IRefArrayData[];
     activeLegend: string;
     lineColor: string;
     // tslint:disable-next-line:no-any
@@ -45,7 +52,6 @@ export class LineChartBase extends React.Component<
   private _reqID: number;
   private xAxisElement: SVGElement | null;
   private yAxisElement: SVGElement | null;
-  private currentRef = React.createRef<SVGLineElement>();
   // tslint:disable-next-line:no-any
   private _xAxisScale: any = '';
   // tslint:disable-next-line:no-any
@@ -53,9 +59,11 @@ export class LineChartBase extends React.Component<
   private _uniqLineText: string;
   private chartContainer: HTMLDivElement;
   private legendContainer: HTMLDivElement;
+  private _calloutId: string;
   // These margins are necessary for d3Scales to appear without cutting off
   private margins = { top: 20, right: 20, bottom: 35, left: 40 };
   private minLegendContainerHeight: number = 32;
+  private eventLabelHeight: number = 36;
   constructor(props: ILineChartProps) {
     super(props);
     this.state = {
@@ -65,6 +73,7 @@ export class LineChartBase extends React.Component<
       containerWidth: 0,
       isCalloutVisible: false,
       hoverYValue: '',
+      refArray: [],
       hoverXValue: '',
       activeLegend: '',
       YValueHover: [],
@@ -75,12 +84,16 @@ export class LineChartBase extends React.Component<
     };
     this._points = this.props.data.lineChartData ? this.props.data.lineChartData : [];
     this._calloutPoints = this.CalloutData(this._points) ? this.CalloutData(this._points) : [];
+    this._calloutId = getId('callout');
     this._uniqLineText =
       '_line_' +
       Math.random()
         .toString(36)
         .substring(7);
     this._fitParentContainer = this._fitParentContainer.bind(this);
+    props.eventAnnotationProps &&
+      props.eventAnnotationProps.labelHeight &&
+      (this.eventLabelHeight = props.eventAnnotationProps.labelHeight);
   }
 
   public componentDidMount(): void {
@@ -93,7 +106,16 @@ export class LineChartBase extends React.Component<
   }
 
   public render(): JSX.Element {
-    const { theme, className, styles, tickValues, tickFormat } = this.props;
+    const {
+      theme,
+      className,
+      styles,
+      tickValues,
+      tickFormat,
+      yAxisTickFormat,
+      hideLegend = false,
+      eventAnnotationProps,
+    } = this.props;
     this._points = this.props.data.lineChartData ? this.props.data.lineChartData : [];
     if (this.props.parentRef) {
       this._fitParentContainer();
@@ -113,7 +135,7 @@ export class LineChartBase extends React.Component<
     if (dataPresent) {
       dataType ? this._createDateXAxis(tickValues, tickFormat) : this._createNumericXAxis();
       const strokeWidth = this.props.strokeWidth ? this.props.strokeWidth : 4;
-      this._createYAxis();
+      this._createYAxis(yAxisTickFormat);
       lines = this._createLines(strokeWidth);
     }
     const legendBars = this._createLegends(this._points!);
@@ -151,27 +173,48 @@ export class LineChartBase extends React.Component<
               className={this._classNames.yAxis}
             />
             <g>{lines}</g>
+            {eventAnnotationProps && (
+              <EventsAnnotation
+                {...eventAnnotationProps}
+                scale={this._xAxisScale}
+                chartYTop={this.margins.top + this.eventLabelHeight}
+                chartYBottom={svgDimensions.height - 35}
+              />
+            )}
           </svg>
         </FocusZone>
         <div ref={(e: HTMLDivElement) => (this.legendContainer = e)} className={this._classNames.legendContainer}>
-          {legendBars}
+          {!hideLegend && legendBars}
         </div>
-        {this.state.isCalloutVisible ? (
+        {!this.props.hideTooltip && this.state.isCalloutVisible ? (
           <Callout
             target={this.state.refSelected}
             isBeakVisible={false}
             gapSpace={10}
             directionalHint={DirectionalHint.topAutoEdge}
-            id={'callout'}
+            id={this._calloutId}
           >
             <div className={this._classNames.calloutContentRoot} role={'presentation'}>
               <span className={this._classNames.calloutContentX}>{this.state.hoverXValue}</span>
               {this.state.YValueHover &&
-                this.state.YValueHover.map((xValue: { legend?: string; y?: number; color?: string }, index: number) => (
-                  <span key={index} className={mergeStyles(this._classNames.calloutContentY, { color: xValue.color })}>
-                    <span>{xValue.legend}</span> <span>{xValue.y}</span>
-                  </span>
-                ))}
+                this.state.YValueHover.map(
+                  (
+                    xValue: {
+                      legend?: string;
+                      y?: number;
+                      color?: string;
+                      yAxisCalloutData?: string;
+                    },
+                    index: number,
+                  ) => (
+                    <span
+                      key={index}
+                      className={mergeStyles(this._classNames.calloutContentY, { color: xValue.color })}
+                    >
+                      <span>{xValue.yAxisCalloutData ? xValue.yAxisCalloutData : `${xValue.legend} ${xValue.y}`}</span>
+                    </span>
+                  ),
+                )}
             </div>
           </Callout>
         ) : null}
@@ -180,7 +223,13 @@ export class LineChartBase extends React.Component<
   }
 
   private CalloutData = (values: ILineChartPoints[]) => {
-    let combinedResult: { legend: string; y: number; x: number | Date | string; color: string }[] = [];
+    let combinedResult: {
+      legend: string;
+      y: number;
+      x: number | Date | string;
+      color: string;
+      yAxisCalloutData?: string;
+    }[] = [];
 
     values.forEach((element: { data: ILineChartDataPoint[]; legend: string; color: string }) => {
       const elements = element.data.map((ele: ILineChartDataPoint) => {
@@ -191,17 +240,27 @@ export class LineChartBase extends React.Component<
 
     const result: { x: number | Date | string; values: { legend: string; y: number }[] }[] = [];
     combinedResult.forEach(
-      (e1: { legend: string; y: number; x: number | Date | string; color: string }, index: number) => {
+      (
+        e1: { legend: string; y: number; x: number | Date | string; color: string; yAxisCalloutData: string },
+        index: number,
+      ) => {
         e1.x = e1.x instanceof Date ? e1.x.toLocaleDateString() : e1.x;
-        const filteredValues = [{ legend: e1.legend, y: e1.y, color: e1.color }];
+        const filteredValues = [{ legend: e1.legend, y: e1.y, color: e1.color, yAxisCalloutData: e1.yAxisCalloutData }];
         combinedResult
           .slice(index + 1)
-          .forEach((e2: { legend: string; y: number; x: number | Date | string; color: string }) => {
-            e2.x = e2.x instanceof Date ? e2.x.toLocaleDateString() : e2.x;
-            if (e1.x === e2.x) {
-              filteredValues.push({ legend: e2.legend, y: e2.y, color: e2.color });
-            }
-          });
+          .forEach(
+            (e2: { legend: string; y: number; x: number | Date | string; color: string; yAxisCalloutData: string }) => {
+              e2.x = e2.x instanceof Date ? e2.x.toLocaleDateString() : e2.x;
+              if (e1.x === e2.x) {
+                filteredValues.push({
+                  legend: e2.legend,
+                  y: e2.y,
+                  color: e2.color,
+                  yAxisCalloutData: e2.yAxisCalloutData,
+                });
+              }
+            },
+          );
         result.push({ x: e1.x, values: filteredValues });
       },
     );
@@ -226,11 +285,12 @@ export class LineChartBase extends React.Component<
 
   private _fitParentContainer(): void {
     const { containerWidth, containerHeight } = this.state;
+    const { hideLegend = false } = this.props;
 
     this._reqID = requestAnimationFrame(() => {
       const legendContainerComputedStyles = getComputedStyle(this.legendContainer);
       const legendContainerHeight =
-        (this.legendContainer.getBoundingClientRect().height || this.minLegendContainerHeight) +
+        (this.legendContainer.getBoundingClientRect().height || (!hideLegend ? this.minLegendContainerHeight : 0)) +
         parseFloat(legendContainerComputedStyles.marginTop || '0') +
         parseFloat(legendContainerComputedStyles.marginBottom || '0');
 
@@ -283,6 +343,7 @@ export class LineChartBase extends React.Component<
         enabledWrapLines={this.props.enabledLegendsWrapLines}
         overflowProps={this.props.legendsOverflowProps}
         focusZonePropsInHoverCard={this.props.focusZonePropsForLegendsInHoverCard}
+        overflowText={this.props.legendsOverflowText}
       />
     );
     return legends;
@@ -311,9 +372,9 @@ export class LineChartBase extends React.Component<
     }
   }
 
-  private _prepareDatapoints(maxVal: number, splitInto: number): number[] {
-    const val = Math.ceil(maxVal / splitInto);
-    const dataPointsArray: number[] = [0, val];
+  private _prepareDatapoints(maxVal: number, minVal: number, splitInto: number): number[] {
+    const val = Math.ceil((maxVal - minVal) / splitInto);
+    const dataPointsArray: number[] = [minVal, minVal + val];
     while (dataPointsArray[dataPointsArray.length - 1] < maxVal) {
       dataPointsArray.push(dataPointsArray[dataPointsArray.length - 1] + val);
     }
@@ -353,19 +414,30 @@ export class LineChartBase extends React.Component<
     }
   };
 
-  private _createYAxis = () => {
+  // tslint:disable-next-line: no-any
+  private _createYAxis = (yAxisTickFormat: any) => {
+    const { yMaxValue = 0, yMinValue = 0 } = this.props;
     const yMax = d3Max(this._points, (point: ILineChartPoints) => {
       return d3Max(point.data, (item: ILineChartDataPoint) => item.y);
     })!;
-    const domainValues = this._prepareDatapoints(yMax, 4);
+    const yMin = d3Min(this._points, (point: ILineChartPoints) => {
+      return d3Min(point.data, (item: ILineChartDataPoint) => item.y);
+    })!;
+    const finalYmax = yMax > yMaxValue ? yMax : yMaxValue;
+    const finalYmin = yMin < yMinValue ? 0 : yMinValue;
+    const domainValues = this._prepareDatapoints(finalYmax, finalYmin, 4);
     const yAxisScale = d3ScaleLinear()
-      .domain([0, domainValues[domainValues.length - 1]])
-      .range([this.state.containerHeight - this.margins.bottom, this.margins.top]);
+      .domain([finalYmin, domainValues[domainValues.length - 1]])
+      .range([
+        this.state.containerHeight - this.margins.bottom,
+        this.margins.top + (this.props.eventAnnotationProps ? this.eventLabelHeight : 0),
+      ]);
     this._yAxisScale = yAxisScale;
     const yAxis = d3AxisLeft(yAxisScale)
       .tickSize(-(this.state.containerWidth - this.margins.left - this.margins.right))
       .tickPadding(12)
-      .tickValues(domainValues);
+      .tickValues(domainValues)
+      .tickFormat(yAxisTickFormat);
     this.yAxisElement
       ? d3Select(this.yAxisElement)
           .call(yAxis)
@@ -398,6 +470,7 @@ export class LineChartBase extends React.Component<
         const keyVal = this._uniqLineText + i + '_' + j;
         const x1 = this._points[i].data[j - 1].x;
         const y1 = this._points[i].data[j - 1].y;
+        const xAxisCalloutData = this._points[i].data[j - 1].xAxisCalloutData;
         if (this.state.activeLegend === legendVal || this.state.activeLegend === '') {
           lines.push(
             <line
@@ -408,17 +481,20 @@ export class LineChartBase extends React.Component<
               x2={this._xAxisScale(this._points[i].data[j].x)}
               y2={this._yAxisScale(this._points[i].data[j].y)}
               strokeWidth={strokeWidth}
-              ref={this.currentRef}
+              ref={(e: SVGLineElement | null) => {
+                this._refCallback(e!, keyVal);
+              }}
               stroke={lineColor}
               strokeLinecap={'round'}
-              onMouseOver={this._handleHover.bind(this, x1, y1, lineColor)}
-              onMouseMove={this._handleHover.bind(this, x1, y1, lineColor)}
+              onMouseOver={this._handleHover.bind(this, x1, y1, lineColor, xAxisCalloutData)}
+              onMouseMove={this._handleHover.bind(this, x1, y1, lineColor, xAxisCalloutData)}
               onMouseOut={this._handleMouseOut}
               opacity={1}
               data-is-focusable={i === 0 ? true : false}
-              onFocus={this._handleHover.bind(this, x1, y1, lineColor)}
+              onFocus={this._handleFocus.bind(this, keyVal, x1, y1, lineColor, xAxisCalloutData)}
               onBlur={this._handleMouseOut}
-              aria-labelledby={'callout'}
+              aria-labelledby={this._calloutId}
+              onClick={this._onLineClick.bind(this, this._points[i].onLineClick)}
             />,
           );
         } else {
@@ -442,10 +518,38 @@ export class LineChartBase extends React.Component<
     return lines;
   }
 
+  private _refCallback(element: SVGGElement, legendTitle: string): void {
+    this.state.refArray.push({ index: legendTitle, refElement: element });
+  }
+
+  private _handleFocus = (
+    keyVal: string,
+    x: number | Date,
+    y: number | string,
+    lineColor: string,
+    xAxisCalloutData: string,
+  ) => {
+    const formattedData = x instanceof Date ? x.toLocaleDateString() : x;
+    const found = this._calloutPoints.find((element: { x: string | number }) => element.x === formattedData);
+    this.state.refArray.map((obj: IRefArrayData) => {
+      if (obj.index === keyVal) {
+        this.setState({
+          isCalloutVisible: true,
+          refSelected: obj.refElement,
+          hoverXValue: xAxisCalloutData ? xAxisCalloutData : '' + formattedData,
+          hoverYValue: y,
+          YValueHover: found.values,
+          lineColor: lineColor,
+        });
+      }
+    });
+  };
+
   private _handleHover = (
     x: number | Date,
     y: number | string,
     lineColor: string,
+    xAxisCalloutData: string,
     mouseEvent: React.MouseEvent<SVGPathElement>,
   ) => {
     mouseEvent.persist();
@@ -455,11 +559,17 @@ export class LineChartBase extends React.Component<
     this.setState({
       isCalloutVisible: true,
       refSelected: mouseEvent,
-      hoverXValue: '' + formattedData,
+      hoverXValue: xAxisCalloutData ? xAxisCalloutData : '' + formattedData,
       hoverYValue: y,
       YValueHover: found.values,
       lineColor: lineColor,
     });
+  };
+
+  private _onLineClick = (func: () => void) => {
+    if (!!func) {
+      func();
+    }
   };
 
   private _handleMouseOut = () => {

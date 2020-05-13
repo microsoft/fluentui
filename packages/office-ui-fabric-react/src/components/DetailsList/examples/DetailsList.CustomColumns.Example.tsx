@@ -85,6 +85,7 @@ function _buildColumns(items: IExampleItem[]): IColumn[] {
   // Special case one column's definition.
   thumbnailColumn.name = '';
   thumbnailColumn.maxWidth = 50;
+  thumbnailColumn.ariaLabel = 'Thumbnail';
 
   return columns;
 }

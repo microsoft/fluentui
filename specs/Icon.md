@@ -169,7 +169,16 @@ The following section documents the DOM structure for the component from differe
 
 ```html
 <i aria-label="icon: home" class="anticon anticon-home">
-  <svg viewBox="64 64 896 896" focusable="false" class="" data-icon="home" width="1em" height="1em" fill="currentColor" aria-hidden="true">
+  <svg
+    viewBox="64 64 896 896"
+    focusable="false"
+    class=""
+    data-icon="home"
+    width="1em"
+    height="1em"
+    fill="currentColor"
+    aria-hidden="true"
+  >
     <path
       d="M946.5 505L560.1 118.8l-25.9-25.9a31.5 31.5 0 0 0-44.4 0L77.5 505a63.9 63.9 0 0 0-18.8 46c.4 35.2 29.7 63.3 64.9 63.3h42.5V940h691.8V614.3h43.4c17.1 0 33.2-6.7 45.3-18.8a63.6 63.6 0 0 0 18.7-45.3c0-17-6.7-33.1-18.8-45.2zM568 868H456V664h112v204zm217.9-325.7V868H632V640c0-22.1-17.9-40-40-40H432c-22.1 0-40 17.9-40 40v228H238.1V542.3h-96l370-369.7 23.1 23.1L882 542.3h-96.1z"
     ></path>
@@ -460,11 +469,11 @@ render () {
 
 Fabric uses global registration for its icons which needs a call to an initialization function to be used. Below are wiki and code references into this process:
 
-- [Wiki page](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Using-icons)
+- [Wiki page](https://github.com/microsoft/fluentui/wiki/Using-icons)
 - [Icon font generation tool](https://uifabricicons.azurewebsites.net)
-- [Main `initializeIcons` function](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/packages/icons/src/index.ts)
-- [Icon registration utilities](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/packages/styling/src/utilities/icons.ts)
-- [Icon component](https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Icon)
+- [Main `initializeIcons` function](https://github.com/microsoft/fluentui/blob/master/packages/icons/src/index.ts)
+- [Icon registration utilities](https://github.com/microsoft/fluentui/blob/master/packages/styling/src/utilities/icons.ts)
+- [Icon component](https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/Icon)
 
 #### Stardust
 

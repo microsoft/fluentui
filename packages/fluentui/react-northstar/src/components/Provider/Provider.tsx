@@ -2,7 +2,7 @@ import { IStyle } from 'fela';
 import * as _ from 'lodash';
 import {
   getElementType,
-  getUnhandledProps,
+  useUnhandledProps,
   Renderer,
   StylesContextPerformanceInput,
   Telemetry,
@@ -86,18 +86,19 @@ const renderStaticStyles = (renderer: Renderer, theme: ThemeInput, siteVariables
   });
 };
 
+export const providerClassName = 'ui-provider';
+
 /**
  * The Provider passes the CSS-in-JS renderer, theme styles and other settings to Fluent UI components.
  */
 const Provider: React.FC<WithAsProp<ProviderProps>> & {
-  className: string;
   Consumer: typeof ProviderConsumer;
   handledProps: (keyof ProviderProps)[];
 } = props => {
   const { children, className, design, overwrite, styles, variables, telemetryRef } = props;
 
   const ElementType = getElementType(props);
-  const unhandledProps = getUnhandledProps(Provider.handledProps, props);
+  const unhandledProps = useUnhandledProps(Provider.handledProps, props);
 
   const telemetry = React.useMemo<Telemetry | undefined>(() => {
     if (!telemetryRef) {
@@ -132,7 +133,7 @@ const Provider: React.FC<WithAsProp<ProviderProps>> & {
   }
 
   const { classes } = unstable_getStyles({
-    className: Provider.className,
+    className: providerClassName,
     displayNames: [Provider.displayName],
     props: {
       className,
@@ -196,7 +197,6 @@ const Provider: React.FC<WithAsProp<ProviderProps>> & {
   );
 };
 
-Provider.className = 'ui-provider';
 Provider.displayName = 'Provider';
 
 Provider.defaultProps = {

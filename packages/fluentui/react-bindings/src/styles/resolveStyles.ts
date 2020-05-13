@@ -11,7 +11,7 @@ import {
   ThemePrepared,
   withDebugId,
 } from '@fluentui/styles';
-import { ComponentSlotClasses, RendererParam, ResolveStylesOptions } from '@fluentui/react-bindings';
+import { ComponentSlotClasses, RendererParam, ResolveStylesOptions } from './types';
 import * as _ from 'lodash';
 
 export type ResolveStylesResult = {
@@ -93,7 +93,13 @@ const resolveStyles = (
   if (displayNames.length === 1) {
     mergedStyles = theme.componentStyles[displayNames[0]] || { root: () => ({}) };
   } else {
-    mergedStyles = mergeComponentStyles(...displayNames.map(displayName => theme.componentStyles[displayName]));
+    const styles = displayNames.map(displayName => theme.componentStyles[displayName]).filter(Boolean);
+
+    if (styles.length > 0) {
+      mergedStyles = mergeComponentStyles(...styles);
+    } else {
+      mergedStyles = { root: () => ({}) };
+    }
   }
 
   if (!noInlineStylesOverrides) {
@@ -211,7 +217,8 @@ const resolveStyles = (
       get(): string {
         if (cacheEnabled && theme) {
           const classesThemeCache = classesCache.get(theme) || {};
-          if (classesThemeCache[slotCacheKey]) {
+
+          if (classesThemeCache[slotCacheKey] || classesThemeCache[slotCacheKey] === '') {
             return slotName === 'root'
               ? cx(componentClassName, classesThemeCache[slotCacheKey], className)
               : classesThemeCache[slotCacheKey];

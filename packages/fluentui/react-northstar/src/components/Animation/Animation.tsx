@@ -1,6 +1,6 @@
 import {
   ComponentAnimationProp,
-  getUnhandledProps,
+  useUnhandledProps,
   unstable_createAnimationStyles as createAnimationStyles,
   unstable_calculateAnimationTimeout as calculateAnimationTimeout,
   unstable_getStyles as getStyles,
@@ -140,11 +140,12 @@ export interface AnimationProps
   onExited?: ComponentEventHandler<AnimationProps>;
 }
 
+export const animationClassName = 'ui-animation';
+
 /**
  * An Animation provides animation effects to rendered elements.
  */
 const Animation: React.FC<AnimationProps> & {
-  className: string;
   handledProps: (keyof AnimationProps)[];
 } = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
@@ -190,7 +191,7 @@ const Animation: React.FC<AnimationProps> & {
     };
 
     return getStyles({
-      className: Animation.className,
+      className: animationClassName,
       displayNames: [Animation.displayName],
       props: {
         className,
@@ -231,7 +232,7 @@ const Animation: React.FC<AnimationProps> & {
   const { animationDuration, animationDelay } = animationStyles.root;
   const timeoutResult = timeout || calculateAnimationTimeout(animationDuration, animationDelay) || 0;
 
-  const unhandledProps = getUnhandledProps(Animation.handledProps, props);
+  const unhandledProps = useUnhandledProps(Animation.handledProps, props);
 
   const isChildrenFunction = typeof children === 'function';
   const child = childrenExist(children) && !isChildrenFunction && (React.Children.only(children) as React.ReactElement);
@@ -260,7 +261,6 @@ const Animation: React.FC<AnimationProps> & {
   return element;
 };
 
-Animation.className = 'ui-animation';
 Animation.displayName = 'Animation';
 
 Animation.propTypes = {

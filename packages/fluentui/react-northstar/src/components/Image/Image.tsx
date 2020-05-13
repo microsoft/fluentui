@@ -1,5 +1,5 @@
 import { Accessibility, AccessibilityAttributes, imageBehavior, ImageBehaviorProps } from '@fluentui/accessibility';
-import { getElementType, getUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import { getElementType, useUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 // @ts-ignore
@@ -31,6 +31,7 @@ export interface ImageProps extends UIComponentProps, ImageBehaviorProps {
 }
 
 export type ImageStylesProps = Pick<ImageProps, 'avatar' | 'circular' | 'fluid'>;
+export const imageClassName = 'ui-image';
 
 const Image: React.FC<WithAsProp<ImageProps>> & FluentComponentStaticProps<ImageProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
@@ -59,7 +60,7 @@ const Image: React.FC<WithAsProp<ImageProps>> & FluentComponentStaticProps<Image
     rtl: context.rtl,
   });
   const { classes } = useStyles<ImageStylesProps>(Image.displayName, {
-    className: Image.className,
+    className: imageClassName,
     mapPropsToStyles: () => ({
       avatar,
       circular,
@@ -75,7 +76,7 @@ const Image: React.FC<WithAsProp<ImageProps>> & FluentComponentStaticProps<Image
   });
 
   const ElementType = getElementType(props);
-  const unhandledProps = getUnhandledProps(Image.handledProps, props);
+  const unhandledProps = useUnhandledProps(Image.handledProps, props);
 
   const result = <ElementType {...getA11Props('root', { className: classes.root, ...unhandledProps })} />;
 
@@ -84,7 +85,6 @@ const Image: React.FC<WithAsProp<ImageProps>> & FluentComponentStaticProps<Image
   return result;
 };
 
-Image.className = 'ui-image';
 Image.displayName = 'Image';
 Image.defaultProps = {
   as: 'img',

@@ -1,5 +1,5 @@
 import { Accessibility, chatBehavior, ChatBehaviorProps } from '@fluentui/accessibility';
-import { getElementType, getUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import { getElementType, useUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
@@ -38,10 +38,13 @@ export interface ChatProps extends UIComponentProps, ChildrenComponentProps {
 }
 
 export type ChatStylesProps = {};
+export const chatClassName = 'ui-chat';
+export const chatSlotClassNames: ChatSlotClassNames = {
+  item: `${chatClassName}__item`,
+};
 
 const Chat: React.FC<WithAsProp<ChatProps>> &
   FluentComponentStaticProps<ChatProps> & {
-    slotClassNames: ChatSlotClassNames;
     Item: typeof ChatItem;
     Message: typeof ChatMessage;
   } = props => {
@@ -56,7 +59,7 @@ const Chat: React.FC<WithAsProp<ChatProps>> &
     rtl: context.rtl,
   });
   const { classes } = useStyles<ChatStylesProps>(Chat.displayName, {
-    className: Chat.className,
+    className: chatClassName,
     mapPropsToInlineStyles: () => ({
       className,
       design,
@@ -67,7 +70,7 @@ const Chat: React.FC<WithAsProp<ChatProps>> &
   });
 
   const ElementType = getElementType(props);
-  const unhandledProps = getUnhandledProps(Chat.handledProps, props);
+  const unhandledProps = useUnhandledProps(Chat.handledProps, props);
 
   const element = getA11Props.unstable_wrapWithFocusZone(
     <ElementType
@@ -81,7 +84,7 @@ const Chat: React.FC<WithAsProp<ChatProps>> &
         ? children
         : _.map(items, item =>
             ChatItem.create(item, {
-              defaultProps: () => ({ className: Chat.slotClassNames.item }),
+              defaultProps: () => ({ className: chatSlotClassNames.item }),
             }),
           )}
     </ElementType>,
@@ -91,12 +94,7 @@ const Chat: React.FC<WithAsProp<ChatProps>> &
   return element;
 };
 
-Chat.className = 'ui-chat';
 Chat.displayName = 'Chat';
-
-Chat.slotClassNames = {
-  item: `${Chat.className}__item`,
-};
 
 Chat.defaultProps = {
   accessibility: chatBehavior,

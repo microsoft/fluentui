@@ -25,7 +25,7 @@ export const TextFieldPageProps: IDocPageProps = {
   title: 'TextField',
   componentName: 'TextField',
   componentUrl:
-    'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/TextField',
+    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/TextField',
   examples: [
     {
       title: 'Basic TextFields',

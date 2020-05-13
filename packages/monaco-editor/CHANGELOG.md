@@ -1,7 +1,39 @@
 # Change Log - @uifabric/monaco-editor
 
-This log was last generated on Fri, 17 Jan 2020 02:32:17 GMT and should not be manually modified.
+This log was last generated on Thu, 07 May 2020 01:06:55 GMT and should not be manually modified.
 
+<!-- Start content -->
+
+## [0.5.8](https://github.com/microsoft/fluentui/tree/@uifabric/monaco-editor_v0.5.8)
+
+Thu, 07 May 2020 01:06:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/monaco-editor_v0.5.7..@uifabric/monaco-editor_v0.5.8)
+
+### Patches
+
+- Addressing commonjs imports. ([PR #13031](https://github.com/microsoft/fluentui/pull/13031) by dzearing@microsoft.com)
+
+## [0.5.7](https://github.com/microsoft/fluentui/tree/@uifabric/monaco-editor_v0.5.7)
+
+Thu, 16 Apr 2020 04:01:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/monaco-editor_v0.5.5..@uifabric/monaco-editor_v0.5.7)
+
+### Patches
+
+- Readme: Fabric=>Fluent wording updates ([PR #12508](https://github.com/microsoft/fluentui/pull/12508) by elcraig@microsoft.com)
+
+## 0.5.5
+Wed, 25 Mar 2020 12:30:04 GMT
+
+### Patches
+
+- update Fabric to Fluent strings (micahgodbolt@gmail.com)
+## 0.5.4
+Mon, 23 Mar 2020 12:28:29 GMT
+
+### Patches
+
+- Replace OfficeDev/office-ui-fabric-react with microsoft/fluentui (elcraig@microsoft.com)
 ## 0.5.2
 Fri, 17 Jan 2020 02:32:17 GMT
 

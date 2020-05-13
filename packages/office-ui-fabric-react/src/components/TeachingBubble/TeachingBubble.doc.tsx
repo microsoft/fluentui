@@ -20,7 +20,7 @@ export const TeachingBubblePageProps: IDocPageProps = {
   title: 'TeachingBubble',
   componentName: 'TeachingBubble',
   componentUrl:
-    'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/TeachingBubble',
+    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/TeachingBubble',
   examples: [
     {
       title: 'TeachingBubble Basic',

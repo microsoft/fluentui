@@ -1,7 +1,7 @@
 import { Accessibility, sliderBehavior, SliderBehaviorProps } from '@fluentui/accessibility';
 import {
   getElementType,
-  getUnhandledProps,
+  useUnhandledProps,
   useAccessibility,
   useStateManager,
   useStyles,
@@ -116,9 +116,16 @@ export interface SliderProps
 }
 
 export type SliderStylesProps = Pick<SliderProps, 'fluid' | 'disabled' | 'vertical'>;
+export const sliderClassName = 'ui-slider';
+export const sliderSlotClassNames: SliderSlotClassNames = {
+  input: `${sliderClassName}__input`,
+  inputWrapper: `${sliderClassName}__input-wrapper`,
+  rail: `${sliderClassName}__rail`,
+  thumb: `${sliderClassName}__thumb`,
+  track: `${sliderClassName}__track`,
+};
 
-const Slider: React.FC<WithAsProp<SliderProps>> &
-  FluentComponentStaticProps & { slotClassNames: SliderSlotClassNames } = props => {
+const Slider: React.FC<WithAsProp<SliderProps>> & FluentComponentStaticProps = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(Slider.displayName, context.telemetry);
   setStart();
@@ -170,7 +177,7 @@ const Slider: React.FC<WithAsProp<SliderProps>> &
     }),
   });
   const { classes, styles: resolvedStyles } = useStyles<SliderStylesProps>(Slider.displayName, {
-    className: Slider.className,
+    className: sliderClassName,
     mapPropsToStyles: () => ({
       fluid,
       vertical,
@@ -198,7 +205,7 @@ const Slider: React.FC<WithAsProp<SliderProps>> &
   });
 
   const ElementType = getElementType(props);
-  const unhandledProps = getUnhandledProps(Slider.handledProps, props);
+  const unhandledProps = useUnhandledProps(Slider.handledProps, props);
   const [htmlInputProps, restProps] = partitionHTMLProps(unhandledProps);
   const type = 'range';
 
@@ -209,7 +216,7 @@ const Slider: React.FC<WithAsProp<SliderProps>> &
       getA11Props('input', {
         ...htmlInputProps,
         as: 'input',
-        className: Slider.slotClassNames.input,
+        className: sliderSlotClassNames.input,
         fluid,
         min: numericMin,
         max: numericMax,
@@ -226,12 +233,12 @@ const Slider: React.FC<WithAsProp<SliderProps>> &
     <ElementType {...getA11Props('root', { className: classes.root, ...restProps })}>
       <div
         {...getA11Props('inputWrapper', {
-          className: cx(Slider.slotClassNames.inputWrapper, classes.inputWrapper),
+          className: cx(sliderSlotClassNames.inputWrapper, classes.inputWrapper),
         })}
       >
-        <span {...getA11Props('rail', { className: cx(Slider.slotClassNames.rail, classes.rail) })} />
+        <span {...getA11Props('rail', { className: cx(sliderSlotClassNames.rail, classes.rail) })} />
         <span
-          {...getA11Props('track', { className: cx(Slider.slotClassNames.track, classes.track) })}
+          {...getA11Props('track', { className: cx(sliderSlotClassNames.track, classes.track) })}
           style={{ width: valueAsPercentage }}
         />
         <Ref
@@ -244,7 +251,7 @@ const Slider: React.FC<WithAsProp<SliderProps>> &
         </Ref>
         {/* the thumb slot needs to appear after the input slot */}
         <span
-          {...getA11Props('thumb', { className: cx(Slider.slotClassNames.thumb, classes.thumb) })}
+          {...getA11Props('thumb', { className: cx(sliderSlotClassNames.thumb, classes.thumb) })}
           style={{ [context.rtl ? 'right' : 'left']: valueAsPercentage }}
         />
       </div>
@@ -255,16 +262,7 @@ const Slider: React.FC<WithAsProp<SliderProps>> &
   return element;
 };
 
-Slider.className = 'ui-slider';
 Slider.displayName = 'Slider';
-
-Slider.slotClassNames = {
-  input: `${Slider.className}__input`,
-  inputWrapper: `${Slider.className}__input-wrapper`,
-  rail: `${Slider.className}__rail`,
-  thumb: `${Slider.className}__thumb`,
-  track: `${Slider.className}__track`,
-};
 
 Slider.defaultProps = {
   accessibility: sliderBehavior,

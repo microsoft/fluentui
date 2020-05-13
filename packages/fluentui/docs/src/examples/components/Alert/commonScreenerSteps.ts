@@ -1,7 +1,7 @@
-import { Alert } from '@fluentui/react-northstar';
+import { alertDismissActionClassName } from '@fluentui/react-northstar';
 
 const selectors = {
-  dismissAction: `.${Alert.slotClassNames.dismissAction}`,
+  dismissAction: `.${alertDismissActionClassName}`,
 };
 
 const focusDismissAction: ScreenerStep = (builder, keys) => builder.keys('body', keys.tab);

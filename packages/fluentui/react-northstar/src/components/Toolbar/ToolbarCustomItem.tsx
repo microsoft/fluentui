@@ -1,5 +1,5 @@
 import { Accessibility, IS_FOCUSABLE_ATTRIBUTE } from '@fluentui/accessibility';
-import { getElementType, getUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import { getElementType, useUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
 import { mergeComponentVariables } from '@fluentui/styles';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
@@ -55,6 +55,7 @@ export interface ToolbarCustomItemProps extends UIComponentProps, ChildrenCompon
 }
 
 export type ToolbarCustomItemStylesProps = Required<Pick<ToolbarCustomItemProps, 'fitted'>>;
+export const toolbarCustomItemClassName = 'ui-toolbar__customitem';
 
 const ToolbarCustomItem: React.FC<WithAsProp<ToolbarCustomItemProps>> & FluentComponentStaticProps = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
@@ -69,7 +70,7 @@ const ToolbarCustomItem: React.FC<WithAsProp<ToolbarCustomItemProps>> & FluentCo
     rtl: context.rtl,
   });
   const { classes } = useStyles<ToolbarCustomItemStylesProps>(ToolbarCustomItem.displayName, {
-    className: ToolbarCustomItem.className,
+    className: toolbarCustomItemClassName,
     mapPropsToStyles: () => ({ fitted }),
     mapPropsToInlineStyles: () => ({
       className,
@@ -81,7 +82,7 @@ const ToolbarCustomItem: React.FC<WithAsProp<ToolbarCustomItemProps>> & FluentCo
   });
 
   const ElementType = getElementType(props);
-  const unhandledProps = getUnhandledProps(ToolbarCustomItem.handledProps, props);
+  const unhandledProps = useUnhandledProps(ToolbarCustomItem.handledProps, props);
 
   const handleBlur = (e: React.SyntheticEvent) => {
     if (focusable) {
@@ -113,7 +114,6 @@ const ToolbarCustomItem: React.FC<WithAsProp<ToolbarCustomItemProps>> & FluentCo
   return element;
 };
 
-ToolbarCustomItem.className = 'ui-toolbar__customitem';
 ToolbarCustomItem.displayName = 'ToolbarCustomItem';
 
 ToolbarCustomItem.propTypes = {

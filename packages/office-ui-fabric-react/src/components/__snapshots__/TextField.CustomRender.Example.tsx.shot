@@ -17,7 +17,7 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
         text-overflow: ellipsis;
       }
       & > *:not(:first-child) {
-        margin-top: 20px;
+        margin-top: 4px;
       }
       & > *:not(.ms-StackItem) {
         flex-shrink: 1;
@@ -46,9 +46,7 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
         }
   >
     <div
-      className=
-          ms-TextField-wrapper
-
+      className="ms-TextField-wrapper"
     >
       <div
         className=
@@ -60,20 +58,21 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
               flex-direction: row;
               flex-wrap: nowrap;
               height: auto;
+              max-width: 300px;
               width: auto;
             }
             & > * {
               text-overflow: ellipsis;
             }
             & > *:not(:first-child) {
-              margin-left: 0px;
+              margin-left: 4px;
             }
             & > *:not(.ms-StackItem) {
               flex-shrink: 1;
             }
       >
         <span
-          id="label2"
+          id="label0"
         >
           Custom label rendering
         </span>
@@ -148,7 +147,7 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
                 color: #005a9e;
               }
           data-is-focusable={true}
-          id="iconButton1"
+          id="iconButton5"
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
@@ -242,9 +241,9 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
             }
       >
         <input
-          aria-describedby="TextFieldDescription4"
+          aria-describedby="TextFieldDescription2"
           aria-invalid={false}
-          aria-labelledby="label2"
+          aria-labelledby="label0"
           className=
               ms-TextField-field
               {
@@ -312,7 +311,7 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
                 font-weight: 400;
                 opacity: 1;
               }
-          id="TextField3"
+          id="TextField1"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -323,7 +322,7 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
       </div>
     </div>
     <span
-      id="TextFieldDescription4"
+      id="TextFieldDescription2"
     >
       <span
         className=
@@ -361,9 +360,7 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
         }
   >
     <div
-      className=
-          ms-TextField-wrapper
-
+      className="ms-TextField-wrapper"
     >
       <div
         className=
@@ -375,13 +372,14 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
               flex-direction: row;
               flex-wrap: nowrap;
               height: auto;
+              max-width: 300px;
               width: auto;
             }
             & > * {
               text-overflow: ellipsis;
             }
             & > *:not(:first-child) {
-              margin-left: 6px;
+              margin-left: 4px;
             }
             & > *:not(.ms-StackItem) {
               flex-shrink: 1;
@@ -573,9 +571,7 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
         }
   >
     <div
-      className=
-          ms-TextField-wrapper
-
+      className="ms-TextField-wrapper"
     >
       <label
         className=
