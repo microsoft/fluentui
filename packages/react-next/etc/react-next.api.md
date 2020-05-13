@@ -12,6 +12,7 @@ import { ICalloutContentStyleProps } from 'office-ui-fabric-react/lib/Callout';
 import { ICalloutProps } from 'office-ui-fabric-react/lib/Callout';
 import { IComponentAs } from 'office-ui-fabric-react/lib/Utilities';
 import { IFocusZoneProps } from 'office-ui-fabric-react/lib/FocusZone';
+import { IFocusZoneProps as IFocusZoneProps_2 } from '@fluentui/react-focus';
 import { IIconProps } from 'office-ui-fabric-react/lib/Icon';
 import { IIconProps as IIconProps_2 } from 'office-ui-fabric-react/lib/components/Icon/Icon.types';
 import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
@@ -96,6 +97,22 @@ export const Fabric: React.FunctionComponent<IFabricProps>;
 
 // @public (undocumented)
 export const FabricBase: React.ForwardRefExoticComponent<IFabricProps & React.RefAttributes<HTMLDivElement>>;
+
+// @public
+export const getMeasurementCache: () => {
+    getCachedMeasurement: (data: any) => number | undefined;
+    addMeasurementToCache: (data: any, measurement: number) => void;
+};
+
+// @public
+export const getNextResizeGroupStateProvider: (measurementCache?: {
+    getCachedMeasurement: (data: any) => number | undefined;
+    addMeasurementToCache: (data: any, measurement: number) => void;
+}) => {
+    getNextState: (props: IResizeGroupProps, currentState: IResizeGroupState, getElementToMeasureDimension: () => number, newContainerDimension?: number | undefined) => IResizeGroupState | undefined;
+    shouldRenderDataForMeasurement: (dataToMeasure: any) => boolean;
+    getInitialResizeGroupState: (data: any) => IResizeGroupState;
+};
 
 // @public (undocumented)
 export function getSubmenuItems(item: IContextualMenuItem): IContextualMenuItem[] | undefined;
@@ -485,6 +502,79 @@ export interface IImageStyles {
 }
 
 // @public (undocumented)
+export interface ILink {
+    focus(): void;
+}
+
+// @public (undocumented)
+export interface ILinkHTMLAttributes<T> extends React.HTMLAttributes<T> {
+    // (undocumented)
+    [index: string]: any;
+    // (undocumented)
+    autoFocus?: boolean;
+    // (undocumented)
+    disabled?: boolean;
+    // (undocumented)
+    download?: any;
+    // (undocumented)
+    form?: string;
+    // (undocumented)
+    formAction?: string;
+    // (undocumented)
+    formEncType?: string;
+    // (undocumented)
+    formMethod?: string;
+    // (undocumented)
+    formNoValidate?: boolean;
+    // (undocumented)
+    formTarget?: string;
+    // (undocumented)
+    href?: string;
+    // (undocumented)
+    hrefLang?: string;
+    // (undocumented)
+    media?: string;
+    // (undocumented)
+    name?: string;
+    // (undocumented)
+    rel?: string;
+    // (undocumented)
+    target?: string;
+    // (undocumented)
+    type?: string;
+    // (undocumented)
+    value?: string | string[] | number;
+}
+
+// @public (undocumented)
+export interface ILinkProps extends ILinkHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement | LinkBase> {
+    as?: string | React.ComponentClass | React.FunctionComponent;
+    componentRef?: IRefObject<ILink>;
+    disabled?: boolean;
+    keytipProps?: IKeytipProps;
+    styles?: IStyleFunctionOrObject<ILinkStyleProps, ILinkStyles>;
+    theme?: ITheme;
+}
+
+// @public (undocumented)
+export interface ILinkStyleProps {
+    // (undocumented)
+    className?: string;
+    // (undocumented)
+    isButton?: boolean;
+    // (undocumented)
+    isDisabled?: boolean;
+    // (undocumented)
+    theme: ITheme;
+}
+
+// @public (undocumented)
+export interface ILinkStyles {
+    // (undocumented)
+    root: IStyle;
+}
+
+// @public (undocumented)
 export const Image: React.FunctionComponent<IImageProps>;
 
 // @public (undocumented)
@@ -527,6 +617,123 @@ export interface IMenuItemStyles extends IButtonStyles {
 }
 
 // @public (undocumented)
+export interface IOverflowSet {
+    focus(forceIntoFirstElement?: boolean): boolean;
+    focusElement(childElement?: HTMLElement): boolean;
+}
+
+// @public (undocumented)
+export interface IOverflowSetItemProps {
+    [propertyName: string]: any;
+    key: string;
+    keytipProps?: IKeytipProps;
+}
+
+// @public (undocumented)
+export interface IOverflowSetProps extends React.ClassAttributes<OverflowSetBase> {
+    className?: string;
+    componentRef?: IRefObject<IOverflowSet>;
+    // @deprecated
+    doNotContainWithinFocusZone?: boolean;
+    // @deprecated
+    focusZoneProps?: IFocusZoneProps_2;
+    items?: IOverflowSetItemProps[];
+    itemSubMenuProvider?: (item: IOverflowSetItemProps) => any[] | undefined;
+    keytipSequences?: string[];
+    onRenderItem: (item: IOverflowSetItemProps) => any;
+    onRenderOverflowButton: IRenderFunction<any[]>;
+    overflowItems?: IOverflowSetItemProps[];
+    overflowSide?: 'start' | 'end';
+    role?: string;
+    styles?: IStyleFunctionOrObject<IOverflowSetProps, IOverflowSetStyles>;
+    vertical?: boolean;
+}
+
+// @public
+export type IOverflowSetStyleProps = Pick<IOverflowSetProps, 'vertical' | 'className'>;
+
+// @public (undocumented)
+export interface IOverflowSetStyles {
+    item?: IStyle;
+    overflowButton?: IStyle;
+    root?: IStyle;
+}
+
+// @public (undocumented)
+export interface IPivot {
+    focus(): void;
+}
+
+// @public (undocumented)
+export interface IPivotItemProps extends React.HTMLAttributes<HTMLDivElement> {
+    ariaLabel?: string;
+    componentRef?: IRefObject<{}>;
+    headerButtonProps?: {
+        [key: string]: string | number | boolean;
+    };
+    headerText?: string;
+    itemCount?: number | string;
+    itemIcon?: string;
+    itemKey?: string;
+    keytipProps?: IKeytipProps;
+    // @deprecated
+    linkText?: string;
+    onRenderItemLink?: IRenderFunction<IPivotItemProps>;
+}
+
+// @public (undocumented)
+export interface IPivotProps extends React.ClassAttributes<PivotBase>, React.HTMLAttributes<HTMLDivElement> {
+    className?: string;
+    componentRef?: IRefObject<IPivot>;
+    defaultSelectedIndex?: number;
+    defaultSelectedKey?: string;
+    getTabId?: (itemKey: string, index: number) => string;
+    headersOnly?: boolean;
+    // @deprecated
+    initialSelectedIndex?: number;
+    // @deprecated
+    initialSelectedKey?: string;
+    linkFormat?: PivotLinkFormat;
+    linkSize?: PivotLinkSize;
+    onLinkClick?: (item?: PivotItem, ev?: React.MouseEvent<HTMLElement>) => void;
+    selectedKey?: string | null;
+    styles?: IStyleFunctionOrObject<IPivotStyleProps, IPivotStyles>;
+    theme?: ITheme;
+}
+
+// @public (undocumented)
+export interface IPivotState {
+    // (undocumented)
+    selectedKey: string | undefined;
+}
+
+// @public (undocumented)
+export type IPivotStyleProps = Required<Pick<IPivotProps, 'theme'>> & Pick<IPivotProps, 'className'> & {
+    rootIsLarge?: boolean;
+    rootIsTabs?: boolean;
+    linkIsSelected?: boolean;
+};
+
+// @public (undocumented)
+export interface IPivotStyles {
+    // (undocumented)
+    count: IStyle;
+    // (undocumented)
+    icon: IStyle;
+    // (undocumented)
+    itemContainer?: IStyle;
+    // (undocumented)
+    link: IStyle;
+    // (undocumented)
+    linkContent: IStyle;
+    // (undocumented)
+    linkIsSelected: IStyle;
+    root: IStyle;
+    // (undocumented)
+    text: IStyle;
+}
+
+// @public (undocumented)
 export interface IPopupProps extends React.HTMLAttributes<HTMLDivElement> {
     ariaDescribedBy?: string;
     ariaLabel?: string;
@@ -540,6 +747,45 @@ export interface IPopupProps extends React.HTMLAttributes<HTMLDivElement> {
     role?: string;
     // @deprecated
     shouldRestoreFocus?: boolean;
+}
+
+// @public (undocumented)
+export interface IResizeGroup {
+    remeasure(): void;
+}
+
+// @public (undocumented)
+export interface IResizeGroupProps extends React.HTMLAttributes<ResizeGroupBase | HTMLElement> {
+    className?: string;
+    componentRef?: IRefObject<IResizeGroup>;
+    data: any;
+    dataDidRender?: (renderedData: any) => void;
+    direction?: ResizeGroupDirection;
+    onGrowData?: (prevData: any) => any;
+    onReduceData: (prevData: any) => any;
+    onRenderData: (data: any) => JSX.Element;
+    // @deprecated
+    styles?: IStyleFunctionOrObject<IResizeGroupStyleProps, IResizeGroupStyles>;
+    theme?: ITheme;
+}
+
+// @public (undocumented)
+export interface IResizeGroupState {
+    dataToMeasure?: any;
+    measureContainer?: boolean;
+    renderedData?: any;
+    resizeDirection?: 'grow' | 'shrink';
+}
+
+// @public (undocumented)
+export interface IResizeGroupStyleProps {
+    className?: string;
+    theme: ITheme;
+}
+
+// @public (undocumented)
+export interface IResizeGroupStyles {
+    root: IStyle;
 }
 
 // @public (undocumented)
@@ -825,10 +1071,105 @@ export enum KeyboardSpinDirection {
 }
 
 // @public (undocumented)
+export const Link: React.FunctionComponent<ILinkProps>;
+
+// @public (undocumented)
+export class LinkBase extends React.Component<ILinkProps, {}> implements ILink {
+    constructor(props: ILinkProps);
+    // (undocumented)
+    focus(): void;
+    // (undocumented)
+    render(): JSX.Element;
+}
+
+// @public (undocumented)
+export const MeasuredContext: React.Context<{
+    isMeasured: boolean;
+}>;
+
+// @public (undocumented)
 export const ONKEYDOWN_TIMEOUT_DURATION = 1000;
+
+// @public (undocumented)
+export const OverflowSet: React.FunctionComponent<IOverflowSetProps>;
+
+// @public (undocumented)
+export class OverflowSetBase extends React.Component<IOverflowSetProps, {}> implements IOverflowSet {
+    constructor(props: IOverflowSetProps);
+    // (undocumented)
+    componentDidMount(): void;
+    // (undocumented)
+    componentDidUpdate(): void;
+    // (undocumented)
+    componentWillUnmount(): void;
+    focus(forceIntoFirstElement?: boolean): boolean;
+    focusElement(childElement?: HTMLElement): boolean;
+    // (undocumented)
+    render(): JSX.Element;
+    // (undocumented)
+    UNSAFE_componentWillUpdate(): void;
+}
+
+// @public
+export const Pivot: React.FunctionComponent<IPivotProps>;
+
+// @public
+export class PivotBase extends React.Component<IPivotProps, IPivotState> {
+    constructor(props: IPivotProps);
+    focus(): void;
+    // (undocumented)
+    render(): JSX.Element;
+    }
+
+// @public (undocumented)
+export class PivotItem extends React.Component<IPivotItemProps, {}> {
+    constructor(props: IPivotItemProps);
+    // (undocumented)
+    render(): JSX.Element;
+}
+
+// @public (undocumented)
+export enum PivotLinkFormat {
+    links = 0,
+    tabs = 1
+}
+
+// @public (undocumented)
+export enum PivotLinkSize {
+    large = 1,
+    normal = 0
+}
 
 // @public
 export const Popup: React.ForwardRefExoticComponent<IPopupProps & React.RefAttributes<HTMLDivElement>>;
+
+// @public (undocumented)
+export const ResizeGroup: typeof ResizeGroupBase;
+
+// @public (undocumented)
+export class ResizeGroupBase extends React.Component<IResizeGroupProps, IResizeGroupState> {
+    constructor(props: IResizeGroupProps);
+    // (undocumented)
+    componentDidMount(): void;
+    // (undocumented)
+    componentDidUpdate(prevProps: IResizeGroupProps): void;
+    // (undocumented)
+    componentWillUnmount(): void;
+    // (undocumented)
+    remeasure(): void;
+    // (undocumented)
+    render(): JSX.Element;
+    // (undocumented)
+    UNSAFE_componentWillReceiveProps(nextProps: IResizeGroupProps): void;
+    }
+
+// @public (undocumented)
+export enum ResizeGroupDirection {
+    // (undocumented)
+    horizontal = 0,
+    // (undocumented)
+    vertical = 1
+}
 
 // @public (undocumented)
 export const SearchBox: React.FunctionComponent<ISearchBoxProps>;
@@ -860,7 +1201,6 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
     focus(): void;
     // (undocumented)
     render(): React.ReactElement<{}>;
-    // (undocumented)
     readonly value: number | undefined;
 }
 
@@ -921,22 +1261,18 @@ export * from "office-ui-fabric-react/lib/KeytipData";
 export * from "office-ui-fabric-react/lib/KeytipLayer";
 export * from "office-ui-fabric-react/lib/Label";
 export * from "office-ui-fabric-react/lib/Layer";
-export * from "office-ui-fabric-react/lib/Link";
 export * from "office-ui-fabric-react/lib/List";
 export * from "office-ui-fabric-react/lib/MarqueeSelection";
 export * from "office-ui-fabric-react/lib/MessageBar";
 export * from "office-ui-fabric-react/lib/Modal";
 export * from "office-ui-fabric-react/lib/Nav";
-export * from "office-ui-fabric-react/lib/OverflowSet";
 export * from "office-ui-fabric-react/lib/Overlay";
 export * from "office-ui-fabric-react/lib/Panel";
 export * from "office-ui-fabric-react/lib/Persona";
 export * from "office-ui-fabric-react/lib/Pickers";
-export * from "office-ui-fabric-react/lib/Pivot";
 export * from "office-ui-fabric-react/lib/PositioningContainer";
 export * from "office-ui-fabric-react/lib/ProgressIndicator";
 export * from "office-ui-fabric-react/lib/Rating";
-export * from "office-ui-fabric-react/lib/ResizeGroup";
 export * from "office-ui-fabric-react/lib/ScrollablePane";
 export * from "office-ui-fabric-react/lib/SelectableOption";
 export * from "office-ui-fabric-react/lib/SelectedItemsList";

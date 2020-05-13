@@ -133,8 +133,6 @@ function createMessageContentWithAttachments(content: string, messageId: string)
 
   const action = {
     'aria-label': 'More attachment options',
-    iconOnly: true,
-    circular: true,
     icon: <MoreIcon />,
     onClick: e => e.stopPropagation(),
     onKeyDown: stopPropagationOnKeys([keyboardKey.Enter, keyboardKey.Spacebar]),

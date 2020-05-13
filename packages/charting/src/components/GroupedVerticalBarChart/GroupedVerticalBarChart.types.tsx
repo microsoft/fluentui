@@ -103,6 +103,13 @@ export interface IGroupedVerticalBarChartProps {
    * color of the datapoint legend
    */
   legendColor?: string;
+
+  /**
+   * Do not show tooltips in chart
+   *
+   * @default false
+   */
+  hideTooltip?: boolean;
 }
 
 export interface IGroupedVerticalBarChartStyleProps {
@@ -114,12 +121,12 @@ export interface IGroupedVerticalBarChartStyleProps {
   /**
    * Width of the chart.
    */
-  width: number;
+  width?: number;
 
   /**
    * Height of the chart.
    */
-  height: number;
+  height?: number;
 
   /**
    * Additional CSS class(es) to apply to the StackedBarChart.

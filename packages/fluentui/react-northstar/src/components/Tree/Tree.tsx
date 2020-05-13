@@ -25,6 +25,7 @@ import {
   withSafeTypeForAs,
   ShorthandCollection,
   ComponentEventHandler,
+  ObjectShorthandCollection,
 } from '../../types';
 import { hasSubtree, removeItemAtIndex, getSiblings, TreeContext, TreeRenderContextValue } from './utils';
 
@@ -48,7 +49,7 @@ export interface TreeProps extends UIComponentProps, ChildrenComponentProps {
   exclusive?: boolean;
 
   /** Shorthand array of props for Tree. */
-  items?: ShorthandCollection<TreeItemProps>;
+  items?: ObjectShorthandCollection<TreeItemProps>;
 
   /**
    * A custom render function for the title slot.
@@ -119,7 +120,7 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
     defaultSelectedItemIds: customPropTypes.collectionShorthand,
     exclusive: PropTypes.bool,
     selectable: PropTypes.bool,
-    items: customPropTypes.collectionShorthand,
+    items: customPropTypes.collectionObjectShorthand,
     onActiveItemIdsChange: PropTypes.func,
     onSelectedItemIdsChange: PropTypes.func,
     renderItemTitle: PropTypes.func,
@@ -398,7 +399,7 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
 
     const renderItems = (items: TreeItemProps[], level = 1, parent?: string): React.ReactElement[] => {
       return items.reduce((renderedItems: React.ReactElement[], item: TreeItemProps, index: number) => {
-        const id = typeof item === 'string' ? _.uniqueId(item) : item.id;
+        const id = item.id;
         const isSubtree = hasSubtree(item);
         const isSubtreeExpanded = isSubtree && this.isActiveItem(id);
         const isSelectedItem = this.isSelectedItem(item);

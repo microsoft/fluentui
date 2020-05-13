@@ -402,9 +402,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
           }
     >
       <div
-        className=
-            ms-TextField-wrapper
-
+        className="ms-TextField-wrapper"
       >
         <label
           className=
@@ -549,9 +547,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
     </div>
     <div
       aria-live="polite"
-      className=
-
-
+      className=""
       role="status"
     />
   </div>
@@ -566,9 +562,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
   </div>
   <div
     aria-live="polite"
-    className=
-
-
+    className=""
     role="status"
   />
   <div
@@ -611,9 +605,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
         role="grid"
       >
         <div
-          className=
-              ms-DetailsList-headerWrapper
-
+          className="ms-DetailsList-headerWrapper"
           onKeyDown={[Function]}
           role="presentation"
         >
@@ -1323,9 +1315,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
           </div>
         </div>
         <div
-          className=
-              ms-DetailsList-contentWrapper
-
+          className="ms-DetailsList-contentWrapper"
           onKeyDown={[Function]}
           role="presentation"
         >

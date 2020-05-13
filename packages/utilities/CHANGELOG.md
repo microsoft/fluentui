@@ -1,8 +1,26 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Tue, 05 May 2020 12:34:22 GMT and should not be manually modified.
+This log was last generated on Mon, 11 May 2020 12:36:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.16.4](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.16.4)
+
+Mon, 11 May 2020 12:36:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.16.2..@uifabric/utilities_v7.16.4)
+
+### Patches
+
+- Update styled and classNamesFunction to support scss base styles ([PR #13014](https://github.com/microsoft/fluentui/pull/13014) by xgao@microsoft.com)
+
+## [7.16.2](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.16.2)
+
+Thu, 07 May 2020 01:06:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.16.1..@uifabric/utilities_v7.16.2)
+
+### Patches
+
+- Addressing commonjs imports. ([PR #13031](https://github.com/microsoft/fluentui/pull/13031) by dzearing@microsoft.com)
 
 ## [7.16.1](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.16.1)
 

@@ -2,9 +2,7 @@
 
 exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`] = `
 <div
-  className=
-
-
+  className=""
 >
   <div
     aria-labelledby="ChoiceGroup0-label"
@@ -49,9 +47,7 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
       Pick one
     </label>
     <div
-      className=
-          ms-ChoiceFieldGroup-flexContainer
-
+      className="ms-ChoiceFieldGroup-flexContainer"
     >
       <div
         className=
@@ -77,9 +73,7 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
             }
       >
         <div
-          className=
-              ms-ChoiceField-wrapper
-
+          className="ms-ChoiceField-wrapper"
         >
           <input
             aria-label="Mark displayed items as read after - Press tab for further action"
@@ -394,9 +388,7 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
             }
       >
         <div
-          className=
-              ms-ChoiceField-wrapper
-
+          className="ms-ChoiceField-wrapper"
         >
           <input
             checked={true}
@@ -530,9 +522,7 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
             }
       >
         <div
-          className=
-              ms-ChoiceField-wrapper
-
+          className="ms-ChoiceField-wrapper"
         >
           <input
             checked={false}
@@ -647,9 +637,7 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
             }
       >
         <div
-          className=
-              ms-ChoiceField-wrapper
-
+          className="ms-ChoiceField-wrapper"
         >
           <input
             checked={false}
