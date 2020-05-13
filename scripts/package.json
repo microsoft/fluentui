@@ -120,7 +120,6 @@
     "postcss": "^7.0.30",
     "postcss-loader": "^3.0.0",
     "postcss-modules": "^2.0.0",
-    "postcss-rtl": "^1.7.3",
     "prettier": "~1.19.1",
     "progress": "^2.0.3",
     "prompts": "^2.3.0",
