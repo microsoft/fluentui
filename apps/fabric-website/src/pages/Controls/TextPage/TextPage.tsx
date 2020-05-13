@@ -105,7 +105,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                           },
                         ],
                         kind: 'property' as 'property',
-                        description: 'Foreground color of Text.\n',
+                        description: 'Background color of Text.\n',
                         deprecated: false,
                       },
                       {
