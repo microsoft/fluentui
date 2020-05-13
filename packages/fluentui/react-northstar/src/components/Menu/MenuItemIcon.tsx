@@ -15,7 +15,7 @@ interface MenuItemIconOwnProps {
 export interface MenuItemIconProps extends BoxProps, MenuItemIconOwnProps {}
 export type MenuItemIconStylesProps = Pick<MenuItemIconProps, 'hasContent' | 'iconOnly'>;
 
-export const menuItemIconClassName = 'ui-menu__item__icon';
+export const menuItemIconClassName = 'ui-menu__itemicon';
 
 /**
  * A MenuItemIcon allows a user to have a dedicated component that can be targeted from the theme.

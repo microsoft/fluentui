@@ -27,6 +27,8 @@ import {
 } from '../../utils';
 
 import MenuItem, { MenuItemProps } from './MenuItem';
+import MenuItemIcon from './MenuItemIcon';
+import MenuItemContent from './MenuItemContent';
 import {
   WithAsProp,
   ShorthandCollection,
@@ -298,6 +300,8 @@ Menu.defaultProps = {
 Menu.handledProps = Object.keys(Menu.propTypes) as any;
 
 Menu.Item = MenuItem;
+Menu.ItemIcon = MenuItemIcon;
+Menu.ItemContent = MenuItemContent;
 Menu.Divider = MenuDivider;
 
 Menu.create = createShorthandFactory({ Component: Menu, mappedArrayProp: 'items' });

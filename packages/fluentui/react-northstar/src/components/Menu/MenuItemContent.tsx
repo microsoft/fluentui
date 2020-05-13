@@ -21,7 +21,7 @@ interface MenuItemContentOwnProps {
 export interface MenuItemContentProps extends BoxProps, MenuItemContentOwnProps {}
 export type MenuItemContentStylesProps = Pick<MenuItemContentProps, 'hasMenu' | 'hasIcon' | 'vertical' | 'inSubmenu'>;
 
-export const menuItemContentClassName = 'ui-menu__item__content';
+export const menuItemContentClassName = 'ui-menu__itemcontent';
 
 /**
  * A MenuItemContent allows a user to have a dedicated component that can be targeted from the theme.
