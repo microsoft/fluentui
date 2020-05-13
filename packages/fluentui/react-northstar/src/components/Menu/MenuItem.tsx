@@ -47,7 +47,10 @@ export interface MenuItemSlotClassNames {
   indicator: string;
 }
 
-export interface MenuItemProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
+export interface MenuItemProps
+  extends UIComponentProps,
+    ChildrenComponentProps,
+    ContentComponentProps<ShorthandValue<BoxProps>> {
   /**
    * Accessibility behavior if overridden by the user.
    * @available menuItemAsToolbarButtonBehavior, tabBehavior
@@ -502,6 +505,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
       'as',
       'children',
       'className',
+      'content',
       'design',
       'active',
       'disabled',
@@ -536,7 +540,9 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
 };
 
 MenuItem.propTypes = {
-  ...commonPropTypes.createCommon(),
+  ...commonPropTypes.createCommon({
+    content: 'shorthand',
+  }),
   active: PropTypes.bool,
   disabled: PropTypes.bool,
   icon: customPropTypes.shorthandAllowingChildren,
