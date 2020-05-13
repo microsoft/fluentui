@@ -10,7 +10,6 @@ import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
 import { people } from '@uifabric/example-data';
 import { useConst } from '@uifabric/react-hooks';
 
-const suggestionsStore = useConst(() => new SuggestionsStore<IPersonaProps>());
 const searchBoxWrapperStyling = { width: 208 };
 
 const getTextFromItem = (persona: IPersonaProps): string => {
@@ -31,6 +30,7 @@ const startsWith = (text: string, filterText: string): boolean => {
 
 export const FloatingPeoplePickerTypesExample: React.FunctionComponent = () => {
   const inputElementRef = React.useRef<HTMLInputElement>(null);
+  const suggestionsStore = useConst(() => new SuggestionsStore<IPersonaProps>());
   const [peopleList, setPeopleList] = React.useState(people);
   const [searchValue, setSearchValue] = React.useState('');
   const picker = React.useRef<IBaseFloatingPicker>(null);
