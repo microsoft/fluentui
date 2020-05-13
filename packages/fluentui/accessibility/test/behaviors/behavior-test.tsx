@@ -88,6 +88,7 @@ import {
   videoBehavior,
   buttonGroupBehavior,
   hiddenComponentBehavior,
+  cardSelectableBehavior,
 } from '@fluentui/accessibility';
 import { TestHelper } from './testHelper';
 import definitions from './testDefinitions';
@@ -180,5 +181,6 @@ testHelper.addBehavior('cardChildrenFocusableBehavior', cardChildrenFocusableBeh
 testHelper.addBehavior('cardsContainerBehavior', cardsContainerBehavior);
 testHelper.addBehavior('videoBehavior', videoBehavior);
 testHelper.addBehavior('hiddenComponentBehavior', hiddenComponentBehavior);
+testHelper.addBehavior('cardSelectableBehavior', cardSelectableBehavior);
 
 testHelper.run(behaviorMenuItems);
