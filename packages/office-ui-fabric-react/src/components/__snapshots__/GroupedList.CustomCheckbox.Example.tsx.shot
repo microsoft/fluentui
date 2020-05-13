@@ -581,7 +581,6 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 className=
                                     ms-DetailsRow-check
                                     ms-Check-checkHost
-
                                     {
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
@@ -1108,7 +1107,6 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 className=
                                     ms-DetailsRow-check
                                     ms-Check-checkHost
-
                                     {
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
@@ -1635,7 +1633,6 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 className=
                                     ms-DetailsRow-check
                                     ms-Check-checkHost
-
                                     {
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
@@ -2554,7 +2551,6 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 className=
                                     ms-DetailsRow-check
                                     ms-Check-checkHost
-
                                     {
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
@@ -3081,7 +3077,6 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 className=
                                     ms-DetailsRow-check
                                     ms-Check-checkHost
-
                                     {
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
@@ -3608,7 +3603,6 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 className=
                                     ms-DetailsRow-check
                                     ms-Check-checkHost
-
                                     {
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
@@ -4527,7 +4521,6 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 className=
                                     ms-DetailsRow-check
                                     ms-Check-checkHost
-
                                     {
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
@@ -5054,7 +5047,6 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 className=
                                     ms-DetailsRow-check
                                     ms-Check-checkHost
-
                                     {
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
@@ -5581,7 +5573,6 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 className=
                                     ms-DetailsRow-check
                                     ms-Check-checkHost
-
                                     {
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
