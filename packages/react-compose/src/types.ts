@@ -78,7 +78,7 @@ export type ComposePreparedOptions<Props = {}> = {
   handledProps: (keyof Props)[];
   overrideStyles: boolean;
 
-  slots: Record<string, React.ElementType>;
+  slots: Record<string, React.ElementType> & { __self: React.ElementType };
   mapPropsToSlotPropsChain: ((props: Extendable<Props>) => Record<string, object>)[];
 
   resolveSlotProps: <P>(props: P) => Record<string, object>;

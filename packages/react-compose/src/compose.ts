@@ -14,7 +14,13 @@ function compose<T extends React.ElementType, InputProps, InputStylesProps, Pare
   );
 
   const Component = (React.forwardRef<T, InputProps & ParentProps & { as?: React.ElementType }>((props, ref) => {
-    return composeOptions.render(props, ref as React.Ref<'div'>, composeOptions);
+    return composeOptions.render(props, ref as React.Ref<'div'>, {
+      ...composeOptions,
+      slots: {
+        ...composeOptions.slots,
+        __self: Component,
+      },
+    });
   }) as unknown) as ComponentWithAs<T, InputProps & ParentProps>;
 
   Component.displayName = composeOptions.displayName;
