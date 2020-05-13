@@ -440,7 +440,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                           },
                         ],
                         kind: 'property' as 'property',
-                        description: 'Used for primary text in a theme.',
+                        description: 'Used for primary text in a theme.\n',
                         deprecated: false,
                       },
                       {
