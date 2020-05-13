@@ -243,7 +243,7 @@ export interface ILinkHTMLAttributes<T> extends React.HTMLAttributes<T> {
 }
 
 // @public (undocumented)
-export interface ILinkProps extends ILinkHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement | LinkBase> {
+export interface ILinkProps extends ILinkHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement> {
     as?: string | React.ComponentClass | React.FunctionComponent;
     componentRef?: IRefObject<ILink>;
     disabled?: boolean;
@@ -855,13 +855,7 @@ export enum KeyboardSpinDirection {
 export const Link: React.FunctionComponent<ILinkProps>;
 
 // @public (undocumented)
-export class LinkBase extends React.Component<ILinkProps, {}> implements ILink {
-    constructor(props: ILinkProps);
-    // (undocumented)
-    focus(): void;
-    // (undocumented)
-    render(): JSX.Element;
-}
+export const LinkBase: React.FunctionComponent;
 
 // @public (undocumented)
 export class MaskedTextField extends React.Component<ITextFieldProps, IMaskedTextFieldState> implements ITextField {
