@@ -6,13 +6,13 @@ const items = [
   { key: 'editorials', content: 'Editorials' },
   {
     key: 'divider-1',
-    kind: 'divider',
+    kind: 'divider' as const,
     content: '▸',
   },
   { key: 'review', content: 'Reviews' },
   {
     key: 'divider-2',
-    kind: 'divider',
+    kind: 'divider' as const,
     content: <TriangleEndIcon />,
   },
   { key: 'events', content: 'Upcoming Events' },
