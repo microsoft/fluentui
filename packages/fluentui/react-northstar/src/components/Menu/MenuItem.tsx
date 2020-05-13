@@ -37,6 +37,7 @@ import {
 import Menu, { MenuProps, MenuShorthandKinds } from './Menu';
 import Box, { BoxProps } from '../Box/Box';
 import MenuItemIcon, { MenuItemIconProps } from './MenuItemIcon';
+import MenuItemContent, { MenuItemContentProps } from './MenuItemContent';
 import { ComponentEventHandler, ShorthandValue, ShorthandCollection, ProviderContextPrepared } from '../../types';
 import { Popper, PopperShorthandProps, getPopperPropsFromShorthand } from '../../utils/positioner';
 // @ts-ignore
@@ -51,7 +52,7 @@ export interface MenuItemSlotClassNames {
 export interface MenuItemProps
   extends UIComponentProps,
     ChildrenComponentProps,
-    ContentComponentProps<ShorthandValue<BoxProps>> {
+    ContentComponentProps<ShorthandValue<MenuItemContentProps>> {
   /**
    * Accessibility behavior if overridden by the user.
    * @available menuItemAsToolbarButtonBehavior, tabBehavior
@@ -165,11 +166,9 @@ export type MenuItemStylesProps = Required<
     | 'disabled'
     | 'iconOnly'
     | 'pills'
-    | 'icon'
-    | 'menu'
     | 'inSubmenu'
   >
-> & { isFromKeyboard: boolean; hasContent: boolean };
+> & { isFromKeyboard: boolean };
 
 export const menuItemClassName = 'ui-menu__item';
 export const menuItemSlotClassNames: MenuItemSlotClassNames = {
@@ -258,11 +257,8 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
         disabled,
         iconOnly,
         pills,
-        icon,
-        menu,
         inSubmenu,
         isFromKeyboard,
-        hasContent: !!content,
       }),
       mapPropsToInlineStyles: () => ({
         className,
@@ -415,8 +411,8 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
           {createShorthand(composeOptions.slots.icon, icon, {
             defaultProps: () => getA11yProps('icon', slotProps.icon),
           })}
-          {Box.create(content, {
-            defaultProps: () => getA11yProps('content', { as: 'span', styles: resolvedStyles.content }),
+          {createShorthand(composeOptions.slots.content, content, {
+            defaultProps: () => getA11yProps('content', slotProps.content),
           })}
           {menu &&
             Box.create(indicator, {
@@ -493,7 +489,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
     slots: {
       icon: MenuItemIcon,
       indicator: Box,
-      content: Box,
+      content: MenuItemContent,
       wrapper: Box,
     },
 
@@ -501,6 +497,12 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
       icon: {
         hasContent: !!props.content,
         iconOnly: props.iconOnly,
+      },
+      content: {
+        hasIcon: !!props.icon,
+        hasMenu: !!props.menu,
+        inSubmenu: props.inSubmenu,
+        vertical: props.vertical,
       },
     }),
 

@@ -396,23 +396,6 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemStylesProps, MenuVaria
     };
   },
 
-  content: ({ props: p }): ICSSInJSStyle => {
-    const widthAdjust = (p.icon ? 26 : 0) + (p.menu ? 16 : 0);
-    return {
-      whiteSpace: 'normal',
-      lineHeight: 1.5,
-      marginTop: pxToRem(-4),
-      marginBottom: pxToRem(-4),
-      display: 'inline-block',
-      ...((p.inSubmenu || p.vertical) && {
-        width: 'max-content',
-        minWidth: pxToRem(46 - widthAdjust),
-        maxWidth: pxToRem(262 - widthAdjust),
-        marginRight: pxToRem(16),
-      }),
-    };
-  },
-
   menu: ({ variables: v }) => ({ zIndex: v.menuZIndex }),
 
   indicator: ({ props: p, variables: v, rtl }) => {
