@@ -20,6 +20,7 @@ export { default as HierarchicalTreeTitle } from './components/HierarchicalTree/
 export { default as Menu } from './components/Menu/menuVariables';
 export { default as MenuDivider } from './components/Menu/menuDividerVariables';
 export { default as MenuItem } from './components/Menu/menuItemVariables';
+export { default as MenuItemIcon } from './components/Menu/menuItemIconVariables';
 export { default as SvgIcon } from './components/SvgIcon/svgIconVariables';
 export { default as Reaction } from './components/Reaction/reactionVariables';
 export { default as Alert } from './components/Alert/alertVariables';

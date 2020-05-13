@@ -413,33 +413,6 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemStylesProps, MenuVaria
     };
   },
 
-  icon: ({ props: p, variables: v }): ICSSInJSStyle => ({
-    display: 'inline-flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: v.iconSize,
-    height: v.iconSize,
-
-    '& > :first-child': {
-      height: '100%',
-      width: '100%',
-      '& svg': {
-        height: '100%',
-        width: '100%',
-      },
-    },
-
-    ...(p.hasContent && {
-      marginRight: pxToRem(10),
-    }),
-    ...(!p.iconOnly && {
-      // reduce margins so text has the dominant influence on the vertical height
-      marginTop: 0,
-      marginBottom: pxToRem(-8),
-      verticalAlign: 'top',
-    }),
-  }),
-
   menu: ({ variables: v }) => ({ zIndex: v.menuZIndex }),
 
   indicator: ({ props: p, variables: v, rtl }) => {

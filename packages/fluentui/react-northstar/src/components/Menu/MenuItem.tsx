@@ -36,6 +36,7 @@ import {
 } from '../../utils';
 import Menu, { MenuProps, MenuShorthandKinds } from './Menu';
 import Box, { BoxProps } from '../Box/Box';
+import MenuItemIcon, { MenuItemIconProps } from './MenuItemIcon';
 import { ComponentEventHandler, ShorthandValue, ShorthandCollection, ProviderContextPrepared } from '../../types';
 import { Popper, PopperShorthandProps, getPopperPropsFromShorthand } from '../../utils/positioner';
 // @ts-ignore
@@ -64,7 +65,7 @@ export interface MenuItemProps
   disabled?: boolean;
 
   /** Name or shorthand for Menu Item Icon */
-  icon?: ShorthandValue<BoxProps>;
+  icon?: ShorthandValue<MenuItemIconProps>;
 
   /** A menu may have just icons. */
   iconOnly?: boolean;
@@ -411,12 +412,8 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
           })}
           {...(!wrapper && { onClick: handleClick })}
         >
-          {Box.create(icon, {
-            defaultProps: () =>
-              getA11yProps('icon', {
-                styles: resolvedStyles.icon,
-                as: 'span',
-              }),
+          {createShorthand(composeOptions.slots.icon, icon, {
+            defaultProps: () => getA11yProps('icon', slotProps.icon),
           })}
           {Box.create(content, {
             defaultProps: () => getA11yProps('content', { as: 'span', styles: resolvedStyles.content }),
@@ -494,11 +491,18 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
     className: menuItemClassName,
 
     slots: {
-      icon: Box,
+      icon: MenuItemIcon,
       indicator: Box,
       content: Box,
       wrapper: Box,
     },
+
+    mapPropsToSlotProps: props => ({
+      icon: {
+        hasContent: !!props.content,
+        iconOnly: props.iconOnly,
+      },
+    }),
 
     handledProps: [
       'accessibility',
