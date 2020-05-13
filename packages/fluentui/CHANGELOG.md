@@ -18,12 +18,20 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ## [Unreleased]
 ## BREAKING CHANGES
 - Restricted prop sets in the `MenuDivider` component which are passed to styles functions @assuncaocharles ([#13069](https://github.com/microsoft/fluentui/pull/13069))
+- Restricted prop sets in the `Segment` component which are passed to styles functions @assuncaocharles ([#13079](https://github.com/microsoft/fluentui/pull/13079))
+- Restricted prop sets in the `Reaction` component which are passed to styles functions @assuncaocharles ([#13081](https://github.com/microsoft/fluentui/pull/13081))
+- Restricted prop sets in the `ReactionGroup` component which are passed to styles functions, @assuncaocharles ([#13080](https://github.com/microsoft/fluentui/pull/13080))
+- Stop propagadion in `Dropdown` for `keypress` of `ArrowRight`, `ArrowLeft`, `Esc` and `Backspace` @assuncaocharles ([#13088](https://github.com/microsoft/fluentui/pull/13088))
+- Restricted prop sets in the `Menu` component which are passed to styles functions @assuncaocharles ([#13040](https://github.com/microsoft/fluentui/pull/13040))
+
 
 ### Fixes
 
 - Fix `splitButtonBehavior` to exclude `toggleButton` from focus zone @silviuavram ([#13043](https://github.com/microsoft/fluentui/pull/13043))
 - Fix offset computations in `Popup` to properly position pointer @layershifter ([#13002](https://github.com/microsoft/fluentui/pull/13002))
 - Enable back focus zone in `CarouselNavigation` @kolaps33 ([#13086](https://github.com/microsoft/fluentui/pull/13086))
+- Update examples to focus on internal input when Tab is pressed in `RadioGroupItem` @assuncaocharles ([#13110](https://github.com/microsoft/fluentui/pull/13110))
+- Wrapped `Alert`, `Attachment`, `Box` and `ListItem` FC with `unstable_wrapWithFocusZone` @assuncaocharles ([#13093](https://github.com/microsoft/fluentui/pull/13093))
 
 <!--------------------------------[ v0.49.0 ]------------------------------- -->
 ## [v0.49.0](https://github.com/OfficeDev/office-ui-fabric-react/tree/fluentui_v0.49.0) (2020-05-10)

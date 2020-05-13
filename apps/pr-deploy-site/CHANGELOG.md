@@ -1,8 +1,35 @@
 # Change Log - @uifabric/pr-deploy-site
 
-This log was last generated on Mon, 11 May 2020 12:36:34 GMT and should not be manually modified.
+This log was last generated on Wed, 13 May 2020 12:33:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.0.45](https://github.com/microsoft/fluentui/tree/@uifabric/pr-deploy-site_v7.0.45)
+
+Wed, 13 May 2020 12:33:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/pr-deploy-site_v7.0.45..@uifabric/pr-deploy-site_v7.0.45)
+
+### Patches
+
+- removing more references to wrong filetype icons from a deprecated folder ([PR #12422](https://github.com/microsoft/fluentui/pull/12422) by caperez@microsoft.com)
+
+## [7.0.45](https://github.com/microsoft/fluentui/tree/@uifabric/pr-deploy-site_v7.0.45)
+
+Tue, 12 May 2020 23:23:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/pr-deploy-site_v7.0.45..@uifabric/pr-deploy-site_v7.0.45)
+
+### Patches
+
+- removing more references to wrong filetype icons from a deprecated folder ([PR #12422](https://github.com/microsoft/fluentui/pull/12422) by caperez@microsoft.com)
+
+## [7.0.45](https://github.com/microsoft/fluentui/tree/@uifabric/pr-deploy-site_v7.0.45)
+
+Tue, 12 May 2020 12:41:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/pr-deploy-site_v7.0.45..@uifabric/pr-deploy-site_v7.0.45)
+
+### Patches
+
+- removing more references to wrong filetype icons from a deprecated folder ([PR #12422](https://github.com/microsoft/fluentui/pull/12422) by caperez@microsoft.com)
 
 ## [7.0.45](https://github.com/microsoft/fluentui/tree/@uifabric/pr-deploy-site_v7.0.45)
 

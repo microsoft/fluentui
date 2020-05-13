@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Thu, 07 May 2020 01:06:55 GMT and should not be manually modified.
+This log was last generated on Tue, 12 May 2020 23:23:51 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.113.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v7.113.0)
+
+Tue, 12 May 2020 23:23:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v7.111.1..@fluentui/react_v7.113.0)
+
+### Minor changes
+
+- Resolving tsconfig paths which were not correctly configured, causing re-exports to fail. ([PR #13127](https://github.com/microsoft/fluentui/pull/13127) by dzearing@microsoft.com)
 
 ## [7.110.5](https://github.com/microsoft/fluentui/tree/@fluentui/react_v7.110.5)
 
