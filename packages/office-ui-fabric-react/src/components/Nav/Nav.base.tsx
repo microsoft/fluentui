@@ -26,7 +26,7 @@ const getClassNames = classNamesFunction<INavStyleProps, INavStyles>();
 export interface INavState {
   isGroupCollapsed: { [key: string]: boolean };
   isLinkExpandStateChanged?: boolean;
-  selectedKey?: string;
+  selectedKey?: string | null;
 }
 
 export class NavBase extends React.Component<INavProps, INavState> implements INav {
@@ -65,8 +65,9 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
     );
   }
 
-  public get selectedKey(): string | undefined {
-    return this.state.selectedKey;
+  public get selectedKey(): string | null | undefined {
+    const { selectedKey = this.state.selectedKey } = this.props;
+    return selectedKey;
   }
 
   /**
@@ -308,18 +309,8 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
   }
 
   private _isLinkSelected(link: INavLink): boolean {
-    // if caller passes in selectedKey, use it as first choice or
-    // if current state.selectedKey (from addressbar) is match to the link or
-    // check if URL is matching location.href (if link.url exists)
-    if ('selectedKey' in this.props) {
-      if (this.props.selectedKey !== undefined) {
-        return link.key === this.props.selectedKey;
-      } else {
-        // Allow an explicitly specified "undefined" value for selectedKey to mean that nothing is selected
-        return false;
-      }
-    } else if (this.state.selectedKey !== undefined) {
-      return link.key === this.state.selectedKey;
+    if (this.selectedKey !== undefined) {
+      return link.key === this.selectedKey;
     } else if (typeof getWindow() === 'undefined' || !link.url) {
       // resolve is not supported for ssr
       return false;

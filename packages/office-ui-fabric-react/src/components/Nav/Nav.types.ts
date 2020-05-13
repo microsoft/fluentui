@@ -14,7 +14,7 @@ export interface INav {
    * that in order for Nav to properly understand which key is selected all NavItems in
    * all groups of the Nav must have populated key properties.
    */
-  selectedKey: string | undefined;
+  selectedKey: string | null | undefined;
   /**
    * Sets focus to the first tabbable item in the zone.
    * @param forceIntoFirstElement - If true, focus will be forced into the first element, even
@@ -96,7 +96,7 @@ export interface INavProps {
   /**
    * (Optional) The key of the nav item selected by caller.
    */
-  selectedKey?: string;
+  selectedKey?: string | null;
 
   /**
    * (Optional) The nav container aria label.

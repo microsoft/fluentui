@@ -5687,7 +5687,7 @@ export interface IModalStyles {
 // @public (undocumented)
 export interface INav {
     focus(forceIntoFirstElement?: boolean): boolean;
-    selectedKey: string | undefined;
+    selectedKey: string | null | undefined;
 }
 
 // @public (undocumented)
@@ -5748,7 +5748,7 @@ export interface INavProps {
     onRenderLink?: IRenderFunction<INavLink>;
     // @deprecated
     selectedAriaLabel?: string;
-    selectedKey?: string;
+    selectedKey?: string | null;
     styles?: IStyleFunctionOrObject<INavStyleProps, INavStyles>;
     theme?: ITheme;
 }
@@ -5762,7 +5762,7 @@ export interface INavState {
     // (undocumented)
     isLinkExpandStateChanged?: boolean;
     // (undocumented)
-    selectedKey?: string;
+    selectedKey?: string | null;
 }
 
 // @public (undocumented)
@@ -8308,7 +8308,7 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
     // (undocumented)
     render(): JSX.Element | null;
     // (undocumented)
-    readonly selectedKey: string | undefined;
+    readonly selectedKey: string | null | undefined;
     }
 
 // @public (undocumented)
