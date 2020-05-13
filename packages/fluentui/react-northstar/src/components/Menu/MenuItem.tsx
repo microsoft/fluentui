@@ -1,10 +1,4 @@
-import {
-  Accessibility,
-  menuItemBehavior,
-  submenuBehavior,
-  indicatorBehavior,
-  MenuItemBehaviorProps,
-} from '@fluentui/accessibility';
+import { Accessibility, menuItemBehavior, submenuBehavior, MenuItemBehaviorProps } from '@fluentui/accessibility';
 import {
   compose,
   focusAsync,
@@ -38,6 +32,7 @@ import Menu, { MenuProps, MenuShorthandKinds } from './Menu';
 import Box, { BoxProps } from '../Box/Box';
 import MenuItemIcon, { MenuItemIconProps } from './MenuItemIcon';
 import MenuItemContent, { MenuItemContentProps } from './MenuItemContent';
+import MenuItemIndicator, { MenuItemIndicatorProps } from './MenuItemIndicator';
 import { ComponentEventHandler, ShorthandValue, ShorthandCollection, ProviderContextPrepared } from '../../types';
 import { Popper, PopperShorthandProps, getPopperPropsFromShorthand } from '../../utils/positioner';
 // @ts-ignore
@@ -144,7 +139,7 @@ export interface MenuItemProps
   inSubmenu?: boolean;
 
   /** Shorthand for the submenu indicator. */
-  indicator?: ShorthandValue<BoxProps>;
+  indicator?: ShorthandValue<MenuItemIndicatorProps>;
 
   /**
    * Event for request to change 'open' value.
@@ -415,14 +410,8 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
             defaultProps: () => getA11yProps('content', slotProps.content),
           })}
           {menu &&
-            Box.create(indicator, {
-              defaultProps: () =>
-                getA11yProps('indicator', {
-                  as: 'span',
-                  className: menuItemSlotClassNames.indicator,
-                  styles: resolvedStyles.indicator,
-                  accessibility: indicatorBehavior,
-                }),
+            createShorthand(composeOptions.slots.indicator, indicator, {
+              defaultProps: () => getA11yProps('indicator', slotProps.indicator),
             })}
         </ElementType>
       </Ref>
@@ -488,7 +477,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
 
     slots: {
       icon: MenuItemIcon,
-      indicator: Box,
+      indicator: MenuItemIndicator,
       content: MenuItemContent,
       wrapper: Box,
     },
@@ -503,6 +492,14 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
         hasMenu: !!props.menu,
         inSubmenu: props.inSubmenu,
         vertical: props.vertical,
+      },
+      indicator: {
+        iconOnly: props.iconOnly,
+        vertical: props.vertical,
+        inSubmenu: props.inSubmenu,
+        active: props.active,
+        primary: props.primary,
+        underlined: props.underlined,
       },
     }),
 

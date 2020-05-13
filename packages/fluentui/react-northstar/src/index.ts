@@ -145,6 +145,8 @@ export * from './components/Menu/MenuItemIcon';
 export { default as MenuItemIcon } from './components/Menu/MenuItemIcon';
 export * from './components/Menu/MenuItemContent';
 export { default as MenuItemContent } from './components/Menu/MenuItemContent';
+export * from './components/Menu/MenuItemIndicator';
+export { default as MenuItemIndicator } from './components/Menu/MenuItemIndicator';
 export * from './components/Menu/MenuDivider';
 export { default as MenuDivider } from './components/Menu/MenuDivider';
 
