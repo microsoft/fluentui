@@ -183,7 +183,7 @@ packages/office-ui-fabric-react/src/components/DocumentCard/docs/ @yiminwu
 # packages/office-ui-fabric-react/src/components/Facepile/docs/
 # packages/office-ui-fabric-react/src/components/FocusTrapZone/docs/
 # packages/office-ui-fabric-react/src/components/FocusZone/docs/
-packages/office-ui-fabric-react/src/components/GroupedList/docs/  @aditima
+packages/office-ui-fabric-react/src/components/GroupedList/docs/  @aditima @dzearing
 packages/office-ui-fabric-react/src/components/HoverCard/docs/   @atneik @Jahnp @Vitalius1
 # packages/office-ui-fabric-react/src/components/Icon/docs/
 # packages/office-ui-fabric-react/src/components/Image/docs/
