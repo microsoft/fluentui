@@ -37,7 +37,7 @@ const dropdownOptions = [
 
 const checkboxStyles: Partial<ICheckboxStyles> = { root: { margin: '10px 0' } };
 
-const personaPresence = (personaName: string): PersonaPresence => {
+const getPersonaPresence = (personaName: string): PersonaPresence => {
   const presences = [
     PersonaPresence.away,
     PersonaPresence.busy,
@@ -59,7 +59,7 @@ export const FacepileBasicExample: React.FunctionComponent = () => {
   const getPersonaProps = React.useCallback(
     (persona: IFacepilePersona) => ({
       imageShouldFadeIn: imagesFadeIn,
-      presence: personaPresence(persona.personaName!),
+      presence: getPersonaPresence(persona.personaName!),
     }),
     [imagesFadeIn],
   );
