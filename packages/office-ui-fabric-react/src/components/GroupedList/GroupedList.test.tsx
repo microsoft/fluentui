@@ -8,8 +8,8 @@ import { IColumn } from '../DetailsList/DetailsList.types';
 import { List } from '../List/List';
 import { GroupShowAll } from './GroupShowAll';
 import { Link } from '../Link/Link';
-import { GroupHeader } from '.';
-import { getTheme } from '../..';
+import { GroupHeader } from './GroupHeader';
+import { getTheme } from '../../Styling';
 
 describe('GroupedList', () => {
   it("sets inner List page key to IGroup's key attribute for uniqueness", () => {
@@ -285,9 +285,9 @@ describe('GroupedList', () => {
           key: 'group0',
           name: 'group 0',
           startIndex: 0,
-          level: 0
+          level: 0,
         }}
-      />
+      />,
     );
 
     expect(onRenderCheckboxMock).toHaveBeenCalledTimes(1);
