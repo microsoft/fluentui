@@ -29,7 +29,7 @@ const ToolbarExampleShorthand = () => {
   const intermediateItems: IntermediateToolbarItem[] = [
     {
       key: 'bold',
-      kind: 'toggle',
+      kind: 'toggle' as const,
       active: isBold,
       tooltip: 'Bold',
       icon: <BoldIcon {...{ outline: true }} />,
@@ -37,13 +37,13 @@ const ToolbarExampleShorthand = () => {
     },
     {
       key: 'italic',
-      kind: 'toggle',
+      kind: 'toggle' as const,
       active: isItalic,
       tooltip: 'Italic',
       icon: <ItalicIcon {...{ outline: true }} />,
       onClick: () => setItalic(!isItalic),
     },
-    { key: 'divider1', kind: 'divider' },
+    { key: 'divider1', kind: 'divider' as const },
     {
       key: 'more',
       icon: <MoreIcon {...{ outline: true }} />,
@@ -69,24 +69,26 @@ const ToolbarExampleShorthand = () => {
   return (
     <Toolbar
       aria-label="With tooltips"
-      items={intermediateItems.map(item => ({
-        ...item,
-        // rendering Tooltip for the Toolbar Item
-        children: item.tooltip
-          ? (ToolbarItem, props: any) => {
-              const { tooltip, key, ...rest } = props;
-              // Adding tooltipAsLabelBehavior as the ToolbarItems contains only icon
-              return (
-                <Tooltip
-                  key={key}
-                  trigger={<ToolbarItem {...rest} />}
-                  accessibility={tooltipAsLabelBehavior}
-                  content={tooltip}
-                />
-              );
-            }
-          : undefined,
-      }))}
+      items={intermediateItems.map(
+        (item): ToolbarItemProps => ({
+          ...item,
+          // rendering Tooltip for the Toolbar Item
+          children: item.tooltip
+            ? (ToolbarItem, props) => {
+                const { tooltip, key, ...rest } = props;
+                // Adding tooltipAsLabelBehavior as the ToolbarItems contains only icon
+                return (
+                  <Tooltip
+                    key={key}
+                    trigger={<ToolbarItem {...rest} />}
+                    accessibility={tooltipAsLabelBehavior}
+                    content={tooltip}
+                  />
+                );
+              }
+            : undefined,
+        }),
+      )}
     />
   );
 };
