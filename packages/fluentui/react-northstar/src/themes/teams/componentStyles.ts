@@ -73,6 +73,7 @@ export { default as MenuItem } from './components/Menu/menuItemStyles';
 export { default as MenuItemIcon } from './components/Menu/menuItemIconStyles';
 export { default as MenuItemContent } from './components/Menu/menuItemContentStyles';
 export { default as MenuItemIndicator } from './components/Menu/menuItemIndicatorStyles';
+export { default as MenuItemWrapper } from './components/Menu/menuItemWrapperStyles';
 export { default as MenuDivider } from './components/Menu/menuDividerStyles';
 
 export { default as MenuButton } from './components/MenuButton/menuButtonStyles';

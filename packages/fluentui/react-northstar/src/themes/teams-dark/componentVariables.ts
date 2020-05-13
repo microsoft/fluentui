@@ -23,6 +23,7 @@ export { default as MenuItem } from './components/Menu/menuItemVariables';
 export { default as MenuItemIcon } from './components/Menu/menuItemIconVariables';
 export { default as MenuItemContent } from './components/Menu/menuItemContentVariables';
 export { default as MenuItemIndicator } from './components/Menu/menuItemIndicatorVariables';
+export { default as MenuItemWrapper } from './components/Menu/menuItemWrapperVariables';
 export { default as SvgIcon } from './components/SvgIcon/svgIconVariables';
 export { default as Reaction } from './components/Reaction/reactionVariables';
 export { default as Alert } from './components/Alert/alertVariables';

@@ -1,12 +1,10 @@
 import { pxToRem } from '../../../../utils';
 import { StrictColorScheme, ItemType } from '../../../types';
 import { MenuVariables, menuColorAreas } from './menuVariables';
-import { MenuItemStylesProps, menuItemClassName } from '../../../../components/Menu/MenuItem';
-import { menuItemIndicatorClassName } from '../../../../components/Menu/MenuItemIndicator';
+import { MenuItemStylesProps } from '../../../../components/Menu/MenuItem';
 import { getColorScheme } from '../../colors';
 import getIconFillOrOutlineStyles from '../../getIconFillOrOutlineStyles';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import submenuIndicatorUrl from './submenuIndicatorUrl';
 
 export const verticalPillsBottomMargin = pxToRem(5);
 export const horizontalPillsRightMargin = pxToRem(8);
@@ -18,12 +16,12 @@ export const underlinedItem = (color: string): ICSSInJSStyle => ({
   transition: 'color .1s ease',
 });
 
-const getFocusedStyles = ({
+export const getFocusedStyles = ({
   props,
   variables: v,
   colors,
 }: {
-  props: MenuItemStylesProps;
+  props: Pick<MenuItemStylesProps, 'primary' | 'underlined' | 'active' | 'vertical'>;
   variables: MenuVariables;
   colors: StrictColorScheme<ItemType<typeof menuColorAreas>>;
 }): ICSSInJSStyle => {
@@ -59,12 +57,12 @@ const getFocusedStyles = ({
   };
 };
 
-const pointingBeak = ({
+export const pointingBeak = ({
   props,
   variables: v,
   colors,
 }: {
-  props: MenuItemStylesProps;
+  props: Pick<MenuItemStylesProps, 'pointing' | 'primary'>;
   variables: MenuVariables;
   colors: StrictColorScheme<ItemType<typeof menuColorAreas>>;
 }): ICSSInJSStyle => {
@@ -111,188 +109,6 @@ const pointingBeak = ({
 };
 
 const menuItemStyles: ComponentSlotStylesPrepared<MenuItemStylesProps, MenuVariables> = {
-  wrapper: ({ props, variables: v }): ICSSInJSStyle => {
-    const {
-      active,
-      disabled,
-      iconOnly,
-      isFromKeyboard,
-      pills,
-      pointing,
-      secondary,
-      underlined,
-      vertical,
-      primary,
-    } = props;
-    const colors = getColorScheme(v.colorScheme, null, primary);
-
-    return {
-      color: 'inherit',
-      lineHeight: 1,
-      position: 'relative',
-      verticalAlign: 'middle',
-      display: 'block',
-
-      ...(secondary && {
-        background: 'salmon',
-      }),
-
-      ...(vertical && {
-        border: `solid ${v.verticalItemBorderWidth} ${v.verticalItemBorderColor}`,
-      }),
-
-      ...(pills && {
-        ...(vertical
-          ? { margin: `0 0 ${verticalPillsBottomMargin} 0` }
-          : { margin: `0 ${horizontalPillsRightMargin} 0 0` }),
-        borderRadius: pxToRem(5),
-      }),
-
-      ...(underlined && {
-        display: 'flex',
-        alignItems: 'center',
-        height: pxToRem(29),
-        lineHeight: v.lineHeightBase,
-        padding: `0 ${pxToRem(4)}`,
-        margin: `0 ${pxToRem(4)} 0 0`,
-        ':nth-child(n+2)': {
-          marginLeft: `${pxToRem(4)}`,
-        },
-        boxShadow: 'none',
-      }),
-
-      // item separator
-      ...(!vertical &&
-        !pills &&
-        !underlined &&
-        !iconOnly && {
-          boxShadow: `-1px 0 0 0 ${primary ? v.primaryBorderColor : v.borderColor || colors.border} inset`,
-        }),
-
-      // active styles
-      ...(active && {
-        color: v.wrapperColorActive,
-
-        ...(!underlined && {
-          background: v.backgroundColorActive || colors.backgroundActive,
-
-          ...(iconOnly && { background: v.activeIconOnlyWrapperBackgroundColor }),
-          ...(!iconOnly &&
-            primary && {
-              color: colors.foregroundActive,
-            }),
-        }),
-
-        ...(underlined && {
-          color: v.activeUnderlinedWrapperColor,
-        }),
-
-        ...(pointing &&
-          vertical && {
-            '::before': {
-              content: `''`,
-              position: 'absolute',
-              width: pxToRem(3),
-              height: `calc(100% + ${pxToRem(4)})`,
-              top: pxToRem(-2),
-              backgroundColor: v.pointingIndicatorBackgroundColor,
-
-              ...(isFromKeyboard && { display: 'none' }),
-              ...(pointing === 'end' ? { right: pxToRem(-2) } : { left: pxToRem(-2) }),
-            },
-          }),
-
-        ...(pointing &&
-          !vertical && {
-            ...pointingBeak({ props, variables: v, colors }),
-          }),
-      }),
-
-      ...(isFromKeyboard && {
-        color: v.wrapperColorFocus,
-
-        ...(!underlined && {
-          background: v.wrapperBackgroundColorFocus,
-          ...(primary && {
-            background: v.primaryWrapperBackgroundColorFocus,
-            color: v.primaryWrapperColorFocus,
-          }),
-        }),
-        ...(!iconOnly && getFocusedStyles({ props, variables: v, colors })),
-        ...(iconOnly && {
-          background: v.iconOnlyWrapperBackgroundColorFocus,
-          color: v.iconOnlyColorActive,
-        }),
-      }),
-
-      // hover styles
-      ':hover': {
-        color: v.wrapperColorHover,
-        background: v.backgroundColorHover || colors.backgroundHover,
-
-        ...(active && {
-          background: v.activeWrapperBackgroundColorHover,
-        }),
-
-        ...(vertical && {
-          color: v.wrapperColorHover,
-          background: v.backgroundColorHover || colors.backgroundHover,
-        }),
-
-        ...(primary && {
-          color: v.primaryWrapperColorHover,
-        }),
-
-        ...(underlined && {
-          color: v.underlinedWrapperColorHover,
-          background: v.underlinedWrapperBackgroundHover,
-        }),
-
-        ...(iconOnly && {
-          background: v.iconOnlyBackgroundColorHover,
-          color: v.iconOnlyColorHover,
-        }),
-
-        [`&>.${menuItemClassName}>.${menuItemIndicatorClassName}`]: {
-          backgroundImage: submenuIndicatorUrl(v.indicatorColorHover, vertical),
-
-          ...(primary && {
-            backgroundImage: submenuIndicatorUrl(v.primaryIndicatorColorHover, vertical),
-          }),
-        },
-      },
-
-      ...(iconOnly && {
-        display: 'flex',
-      }),
-
-      ':first-child': {
-        ...(!pills &&
-          !iconOnly &&
-          !(pointing && vertical) &&
-          !underlined && {
-            ...(vertical && {
-              '::before': {
-                display: 'none',
-              },
-            }),
-            ...(!vertical && {
-              borderBottomLeftRadius: pxToRem(3),
-              borderTopLeftRadius: pxToRem(3),
-            }),
-          }),
-      },
-
-      ...(disabled && {
-        color: v.colorDisabled || colors.foregroundDisabled,
-        cursor: 'default',
-        ':hover': {
-          // empty - overwrite all existing hover styles
-        },
-      }),
-    };
-  },
-
   root: ({ props: p, variables: v }): ICSSInJSStyle => {
     const { active, iconOnly, isFromKeyboard, pointing, primary, underlined, vertical, disabled } = p;
 

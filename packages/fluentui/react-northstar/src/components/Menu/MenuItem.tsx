@@ -14,7 +14,6 @@ import { EventListener } from '@fluentui/react-component-event-listener';
 import { Ref, handleRef } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
-import cx from 'classnames';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import {
@@ -29,19 +28,17 @@ import {
   ShorthandConfig,
 } from '../../utils';
 import Menu, { MenuProps, MenuShorthandKinds } from './Menu';
-import Box, { BoxProps } from '../Box/Box';
 import MenuItemIcon, { MenuItemIconProps } from './MenuItemIcon';
 import MenuItemContent, { MenuItemContentProps } from './MenuItemContent';
 import MenuItemIndicator, { MenuItemIndicatorProps } from './MenuItemIndicator';
+import MenuItemWrapper, { MenuItemWrapperProps } from './MenuItemWrapper';
 import { ComponentEventHandler, ShorthandValue, ShorthandCollection, ProviderContextPrepared } from '../../types';
 import { Popper, PopperShorthandProps, getPopperPropsFromShorthand } from '../../utils/positioner';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 
 export interface MenuItemSlotClassNames {
-  wrapper: string;
   submenu: string;
-  indicator: string;
 }
 
 export interface MenuItemProps
@@ -119,7 +116,7 @@ export interface MenuItemProps
   vertical?: boolean;
 
   /** Shorthand for the wrapper component. */
-  wrapper?: ShorthandValue<BoxProps>;
+  wrapper?: ShorthandValue<MenuItemWrapperProps>;
 
   /** Shorthand for the submenu. */
   menu?:
@@ -168,8 +165,6 @@ export type MenuItemStylesProps = Required<
 export const menuItemClassName = 'ui-menu__item';
 export const menuItemSlotClassNames: MenuItemSlotClassNames = {
   submenu: `${menuItemClassName}__submenu`,
-  wrapper: `${menuItemClassName}__wrapper`,
-  indicator: `${menuItemClassName}__indicator`,
 };
 
 /**
@@ -216,7 +211,9 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
     const ElementType = getElementType(props);
     const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
 
-    const slotProps = composeOptions.resolveSlotProps<MenuItemProps>(props);
+    const slotProps = composeOptions.resolveSlotProps<MenuItemProps & { isFromKeyboard?: boolean; menuOpen?: boolean }>(
+      { ...props, isFromKeyboard, menuOpen },
+    );
 
     const getA11yProps = useAccessibility<MenuItemBehaviorProps>(accessibility, {
       debugName: composeOptions.displayName,
@@ -447,11 +444,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
 
     if (wrapper) {
       const wrapperElement = createShorthand(composeOptions.slots.wrapper, wrapper, {
-        defaultProps: () =>
-          getA11yProps('wrapper', {
-            className: cx(menuItemSlotClassNames.wrapper, classes.wrapper),
-            ...slotProps.wrapper,
-          }),
+        defaultProps: () => getA11yProps('wrapper', slotProps.wrapper),
         overrideProps: () => ({
           children: (
             <>
@@ -479,7 +472,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
       icon: MenuItemIcon,
       indicator: MenuItemIndicator,
       content: MenuItemContent,
-      wrapper: Box,
+      wrapper: MenuItemWrapper,
     },
 
     mapPropsToSlotProps: props => ({
@@ -500,6 +493,18 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
         active: props.active,
         primary: props.primary,
         underlined: props.underlined,
+      },
+      wrapper: {
+        active: props.active,
+        disabled: props.disabled,
+        iconOnly: props.iconOnly,
+        isFromKeyboard: props.isFromKeyboard,
+        pills: props.pills,
+        pointing: props.pointing,
+        secondary: props.secondary,
+        underlined: props.underlined,
+        vertical: props.vertical,
+        primary: props.primary,
       },
     }),
 
@@ -575,7 +580,7 @@ MenuItem.propTypes = {
 MenuItem.defaultProps = {
   as: 'a',
   accessibility: menuItemBehavior as Accessibility,
-  wrapper: { as: 'li' },
+  wrapper: {},
   indicator: {},
 };
 

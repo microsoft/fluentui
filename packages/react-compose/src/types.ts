@@ -1,5 +1,13 @@
 import * as React from 'react';
 
+// ========================================================
+// Utility types
+// ========================================================
+
+type Extendable<T, V = any> = T & {
+  [key: string]: V;
+};
+
 //
 // "as" type safety
 //
@@ -56,7 +64,7 @@ export type ComposeOptions<InputProps = {}, InputStylesProps = {}, ParentStylesP
 
   slots?: Record<string, React.ElementType>;
 
-  mapPropsToSlotProps?: (props: InputProps) => Record<string, object>;
+  mapPropsToSlotProps?: (props: Extendable<InputProps>) => Record<string, object>;
 };
 
 export type ComposePreparedOptions<Props = {}> = {
@@ -71,7 +79,7 @@ export type ComposePreparedOptions<Props = {}> = {
   overrideStyles: boolean;
 
   slots: Record<string, React.ElementType>;
-  mapPropsToSlotPropsChain: ((props: Props) => Record<string, object>)[];
+  mapPropsToSlotPropsChain: ((props: Extendable<Props>) => Record<string, object>)[];
 
   resolveSlotProps: <P>(props: P) => Record<string, object>;
 };
