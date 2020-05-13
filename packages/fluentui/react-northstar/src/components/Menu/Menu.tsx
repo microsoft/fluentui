@@ -18,19 +18,7 @@ import * as React from 'react';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 
-import {
-  ShorthandCollection,
-  ShorthandValue,
-  ComponentEventHandler,
-  ProviderContextPrepared,
-  WithAsProp,
-  ShorthandCollection,
-  ShorthandValue,
-  withSafeTypeForAs,
-  ComponentEventHandler,
-  FluentComponentStaticProps,
-  ProviderContextPrepared,
-} from '../../types';
+import { ShorthandCollection, ShorthandValue, ComponentEventHandler, ProviderContextPrepared } from '../../types';
 import {
   childrenExist,
   createShorthandFactory,
@@ -47,7 +35,7 @@ import {
 import MenuItem, { MenuItemProps } from './MenuItem';
 import MenuItemIcon from './MenuItemIcon';
 import MenuItemContent from './MenuItemContent';
-import MenuItemIndicator from './MenuItemIndicator';
+import MenuItemIndicator, { MenuItemIndicatorProps } from './MenuItemIndicator';
 import MenuItemWrapper from './MenuItemWrapper';
 
 import MenuDivider from './MenuDivider';
@@ -116,7 +104,7 @@ export interface MenuProps extends UIComponentProps, ChildrenComponentProps {
   submenu?: boolean;
 
   /** Shorthand for the submenu indicator. */
-  indicator?: ShorthandValue<BoxProps>;
+  indicator?: ShorthandValue<MenuItemIndicatorProps>;
 }
 
 export const menuClassName = 'ui-menu';
