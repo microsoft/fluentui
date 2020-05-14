@@ -6,9 +6,6 @@ import { ITheme, getTheme, mergeStyleSets } from 'office-ui-fabric-react/lib/Sty
 import { createListItems, IExampleItem } from '@uifabric/example-data';
 import { useConst } from '@uifabric/react-hooks';
 
-let columnCount: number;
-let columnWidth: number;
-let rowHeight: number;
 const theme: ITheme = getTheme();
 const { palette, fonts } = theme;
 const ROWS_PER_PAGE = 3;
@@ -67,39 +64,50 @@ const classNames = mergeStyleSets({
   },
 });
 
-const onRenderCell = (item: IExampleItem, index: number | undefined): JSX.Element => (
-  <div
-    className={classNames.listGridExampleTile}
-    data-is-focusable
-    style={{
-      width: 100 / columnCount + '%',
-    }}
-  >
-    <div className={classNames.listGridExampleSizer}>
-      <div className={classNames.listGridExamplePadder}>
-        <img src={item.thumbnail} className={classNames.listGridExampleImage} />
-        <span className={classNames.listGridExampleLabel}>{`item ${index}`}</span>
-      </div>
-    </div>
-  </div>
-);
-
-const getItemCountForPage = (itemIndex: number, surfaceRect: IRectangle): number => {
-  if (itemIndex === 0) {
-    columnCount = Math.ceil(surfaceRect.width / MAX_ROW_HEIGHT);
-    columnWidth = Math.floor(surfaceRect.width / columnCount);
-    rowHeight = columnWidth;
-  }
-  return columnCount * ROWS_PER_PAGE;
-};
-
-const getPageHeight = (): number => {
-  return rowHeight * ROWS_PER_PAGE;
-};
-
 export const ListGridExample: React.FunctionComponent = () => {
-  const items = useConst(() => createListItems(5000));
+  let columnCount: number = 0;
+  let columnWidth: number = 0;
+  let rowHeight: number = 0;
 
+  const getItemCountForPage = React.useCallback(
+    (itemIndex: number, surfaceRect: IRectangle) => {
+      if (itemIndex === 0) {
+        columnCount = Math.ceil(surfaceRect.width / MAX_ROW_HEIGHT);
+        columnWidth = Math.floor(surfaceRect.width / columnCount);
+        rowHeight = columnWidth;
+      }
+      return columnCount * ROWS_PER_PAGE;
+    },
+    [columnCount, columnWidth, columnCount],
+  );
+
+  const onRenderCell = React.useCallback(
+    (item: IExampleItem, index: number | undefined) => {
+      return (
+        <div
+          className={classNames.listGridExampleTile}
+          data-is-focusable
+          style={{
+            width: 100 / columnCount + '%',
+          }}
+        >
+          <div className={classNames.listGridExampleSizer}>
+            <div className={classNames.listGridExamplePadder}>
+              <img src={item.thumbnail} className={classNames.listGridExampleImage} />
+              <span className={classNames.listGridExampleLabel}>{`item ${index}`}</span>
+            </div>
+          </div>
+        </div>
+      );
+    },
+    [columnCount],
+  );
+
+  const getPageHeight = (): number => {
+    return rowHeight * ROWS_PER_PAGE;
+  };
+
+  const items = useConst(() => createListItems(5000));
   return (
     <FocusZone>
       <List

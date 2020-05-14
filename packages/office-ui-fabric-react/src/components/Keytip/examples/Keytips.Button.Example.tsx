@@ -2,13 +2,14 @@ import * as React from 'react';
 import { DefaultButton, CompoundButton, IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import { keytipMap } from 'office-ui-fabric-react/lib/components/Keytip/examples/KeytipSetup';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
+import { IContextualMenuProps } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { IStackTokens, Stack } from 'office-ui-fabric-react/lib/Stack';
 import { useBoolean } from '@uifabric/react-hooks';
 
 const stackTokens: IStackTokens = { childrenGap: 20 };
 const marginBottom = { root: { marginBottom: 28 } };
 const splitButtonStyles: Partial<IButtonStyles> = { splitButtonContainer: { height: 32 } };
-const splitButtonProps = {
+const splitButtonProps: IContextualMenuProps = {
   items: [
     {
       key: 'splitButtonMenuButton1',
@@ -22,7 +23,7 @@ const splitButtonProps = {
     },
   ],
 };
-const buttonProps = {
+const buttonProps: IContextualMenuProps = {
   items: [
     {
       key: 'buttonMenuItem1',
