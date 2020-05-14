@@ -52,24 +52,24 @@ const attachmentStyles: ComponentSlotStylesPrepared<AttachmentStylesProps, Attac
           color: v.focusColor,
 
           [`& .${attachmentActionClassName}`]: {
-            color: v.siblingsFocusColor,
+            color: v.focusColor,
           },
 
           [`& .${svgIconClassName}`]: {
-            color: v.siblingsFocusColor,
+            color: v.focusColor,
           },
         },
 
         ':hover': {
-          background: v.backgroundColorHover,
+          backgroundColor: v.backgroundColorHover,
           color: v.textColorHover,
 
           [`& .${attachmentActionClassName}`]: {
-            color: v.siblingsHoverColor,
+            color: v.textColorHover,
           },
 
           [`& .${svgIconClassName}`]: {
-            color: v.siblingsHoverColor,
+            color: v.textColorHover,
           },
         },
       }),
