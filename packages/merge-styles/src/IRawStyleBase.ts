@@ -975,6 +975,12 @@ export interface IRawStyleBase extends IRawFontStyle {
   flowFrom?: ICSSRule | string;
 
   /**
+   * The property which allows authors to opt particular elements out of forced colors mode,
+   * restoring full control over the colors to CSS. Currently it's only supported in Edge Chromium.
+   */
+  forcedColorAdjust?: 'auto' | 'none';
+
+  /**
    * Lays out one or more grid items bound by 4 grid lines. Shorthand for setting
    * grid-column-start, grid-column-end, grid-row-start, and grid-row-end in a single
    * declaration.

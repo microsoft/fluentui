@@ -4300,6 +4300,7 @@ export interface IDragDropEvents {
     onDragEnd?: (item?: any, event?: DragEvent) => void;
     onDragEnter?: (item?: any, event?: DragEvent) => string;
     onDragLeave?: (item?: any, event?: DragEvent) => void;
+    onDragOver?: (item?: any, event?: DragEvent) => void;
     onDragStart?: (item?: any, itemIndex?: number, selectedItems?: any[], event?: MouseEvent) => void;
     onDrop?: (item?: any, event?: DragEvent) => void;
 }
@@ -4917,6 +4918,7 @@ export interface IGroupFooterStyles {
 export interface IGroupHeaderProps extends IGroupDividerProps {
     ariaPosInSet?: number;
     ariaSetSize?: number;
+    expandButtonIcon?: string;
     expandButtonProps?: React.HTMLAttributes<HTMLButtonElement>;
     groupedListId?: string;
     selectAllButtonProps?: React.HTMLAttributes<HTMLButtonElement>;

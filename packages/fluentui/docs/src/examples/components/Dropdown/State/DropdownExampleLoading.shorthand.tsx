@@ -15,6 +15,21 @@ const DropdownExampleLoading = () => {
       search
       items={inputItems}
       placeholder="Start typing a name"
+      getA11yStatusMessage={({ resultCount, previousResultCount }) => {
+        if (loading) {
+          return 'loading results';
+        }
+
+        if (!resultCount) {
+          return 'No results are available.';
+        }
+        if (resultCount !== previousResultCount) {
+          return `${resultCount} result${
+            resultCount === 1 ? ' is' : 's are'
+          } available, use up and down arrow keys to navigate. Press Enter key to select.`;
+        }
+        return '';
+      }}
     />
   );
 };

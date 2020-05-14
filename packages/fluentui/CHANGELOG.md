@@ -16,6 +16,28 @@
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+## BREAKING CHANGES
+- Restricted prop sets in the `MenuDivider` component which are passed to styles functions @assuncaocharles ([#13069](https://github.com/microsoft/fluentui/pull/13069))
+- Restricted prop sets in the `Segment` component which are passed to styles functions @assuncaocharles ([#13079](https://github.com/microsoft/fluentui/pull/13079))
+- Restricted prop sets in the `Reaction` component which are passed to styles functions @assuncaocharles ([#13081](https://github.com/microsoft/fluentui/pull/13081))
+- Restricted prop sets in the `ReactionGroup` component which are passed to styles functions, @assuncaocharles ([#13080](https://github.com/microsoft/fluentui/pull/13080))
+- Stop propagadion in `Dropdown` for `keypress` of `ArrowRight`, `ArrowLeft`, `Esc` and `Backspace` @assuncaocharles ([#13088](https://github.com/microsoft/fluentui/pull/13088))
+- Restricted prop sets in the `Menu` component which are passed to styles functions @assuncaocharles ([#13040](https://github.com/microsoft/fluentui/pull/13040))
+- Renamed `Survey20pxIcon` to `ApprovalsAppbarIcon` @TanelVari ([#12872](https://github.com/microsoft/fluentui/pull/12872))
+
+### Fixes
+- Fix `splitButtonBehavior` to exclude `toggleButton` from focus zone @silviuavram ([#13043](https://github.com/microsoft/fluentui/pull/13043))
+- Fix offset computations in `Popup` to properly position pointer @layershifter ([#13002](https://github.com/microsoft/fluentui/pull/13002))
+- Enable back focus zone in `CarouselNavigation` @kolaps33 ([#13086](https://github.com/microsoft/fluentui/pull/13086))
+- Update examples to focus on internal input when Tab is pressed in `RadioGroupItem` @assuncaocharles ([#13110](https://github.com/microsoft/fluentui/pull/13110))
+- Wrapped `Alert`, `Attachment`, `Box` and `ListItem` FC with `unstable_wrapWithFocusZone` @assuncaocharles ([#13093](https://github.com/microsoft/fluentui/pull/13093))
+
+### Features
+- Added icons: `TranscriptIcon`, `FilesGenericColoredIcon`, `FilesHtmlColoredIcon`, `FilesPdfColoredIcon`, `FilesPictureColoredIcon`, `FilesTextColoredIcon`, `PopupIcon`, `ShareGenericIcon`, `ComposeIcon`, `SpotlightStopIcon`, `TenantWorkIcon`, `TenantPersonalIcon`, `WorkOrSchoolIcon`, `EmailWithDotIcon`. Modified: `ShareLocationIcon`, `SpotlightIcon`. @TanelVari ([#12872](https://github.com/microsoft/fluentui/pull/12872))
+
+<!--------------------------------[ v0.49.0 ]------------------------------- -->
+## [v0.49.0](https://github.com/OfficeDev/office-ui-fabric-react/tree/fluentui_v0.49.0) (2020-05-10)
+[Compare changes](https://github.com/OfficeDev/office-ui-fabric-react/compare/@fluentui/react-northstar_v0.48.0..@fluentui/react-northstar_v0.49.0)
 
 ### BREAKING CHANGES
 - `Attachment.slotClassNames` were removed @layershifter ([#12674](https://github.com/microsoft/fluentui/pull/12674))
@@ -51,6 +73,8 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Restricted prop sets in the `Carousel` component which are passed to styles functions, @assuncaocharles ([#12966](https://github.com/microsoft/fluentui/pull/12966))
 - Restricted prop sets in the `Divider` component which are passed to styles functions, @assuncaocharles ([#12977](https://github.com/microsoft/fluentui/pull/12977))
 - Restricted prop sets in the `Toolbar` component which are passed to styles functions @layershifter ([#13024](https://github.com/microsoft/fluentui/pull/13024))
+- Change `AttachmentAction` to override `Button` styles and restricted props set @mnajdova ([#12913](https://github.com/microsoft/fluentui/pull/12913))
+- Limit props `activeIndex` and `defaultActiveIndex` in `Carousel` to be only numbers @assuncaocharles ([#13048](https://github.com/microsoft/fluentui/pull/13048))
 
 ### Fixes
 - Visually align checkbox and label elements in `Checkbox` component @silviuavram ([#12590](https://github.com/microsoft/fluentui/pull/12590))
@@ -59,6 +83,8 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix `Accordion` to avoid recreating refs every render @assuncaocharles ([#12944](https://github.com/microsoft/fluentui/pull/12944))
 - Fix `ButtonGroup` accessibility adding `aria-role="group"` @assuncaocharles ([#12916](https://github.com/microsoft/fluentui/pull/12916))
 - Converge FocusZone functionality, maintain existing behavior @jurokapsiar ([#12997](https://github.com/microsoft/fluentui/pull/12997))
+- Limit `Tree` items to not accept string and create `ObjectShorthandValue` @assuncaocharles ([#13016](https://github.com/microsoft/fluentui/pull/13016))
+- Attach an element to `document.body` in `Provider` during render @layershifter ([#13001](https://github.com/microsoft/fluentui/pull/13001))
 
 ### Features
 - Add `body` slot to `Attachment` component @layershifter ([#12674](https://github.com/microsoft/fluentui/pull/12674))
@@ -79,7 +105,9 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Converted Box, Button* and Attachment* components to use compose @layershifter @mnajdova ([#12745](https://github.com/microsoft/fluentui/pull/12745))
 - Respect `childBehaviors` for slots in `useAccessibility` hook @pompomon ([#12835](https://github.com/microsoft/fluentui/pull/12835))
 - Add `cardsContainerBehavior` for `Card`s in `Grid` navigation @mpompomon ([#12800](https://github.com/microsoft/fluentui/pull/12800))
-- Added `slots` and `mapPropsToSlotProps` in compose and added example usage in the `Button` component @mnajdova ([#12858](https://github.com/microsoft/fluentui/pull/12858))
+- Add `slots` and `mapPropsToSlotProps` in compose and added example usage in the `Button` component @mnajdova ([#12858](https://github.com/microsoft/fluentui/pull/12858))
+- Add slots support in `Attachment` @mnajdova ([#12913](https://github.com/microsoft/fluentui/pull/12913))
+- Use `compose()` in `ToolbarDivider` @mnajdova ([#13045](https://github.com/microsoft/fluentui/pull/13045))
 
 ### Performance
 - Replace `fela-plugin-prexifer` with `stylis` @layershifter ([#12289](https://github.com/microsoft/fluentui/pull/12289))

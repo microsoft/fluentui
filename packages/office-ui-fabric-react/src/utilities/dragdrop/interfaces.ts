@@ -65,6 +65,10 @@ export interface IDragDropEvents {
    */
   onDragEnd?: (item?: any, event?: DragEvent) => void;
   /**
+   * On drag over event callback.
+   */
+  onDragOver?: (item?: any, event?: DragEvent) => void;
+  /**
    * Whether the whole group is draggable. This applies after canDrag returns true for the group.
    */
   canDragGroups?: boolean;

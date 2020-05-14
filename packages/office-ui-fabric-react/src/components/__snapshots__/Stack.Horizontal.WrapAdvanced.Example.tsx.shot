@@ -635,9 +635,7 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
           }
     >
       <div
-        className=
-            ms-Dropdown-container
-
+        className="ms-Dropdown-container"
       >
         <label
           className=
@@ -862,9 +860,7 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
           }
     >
       <div
-        className=
-            ms-Dropdown-container
-
+        className="ms-Dropdown-container"
       >
         <label
           className=
@@ -1089,9 +1085,7 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
           }
     >
       <div
-        className=
-            ms-Dropdown-container
-
+        className="ms-Dropdown-container"
       >
         <label
           className=

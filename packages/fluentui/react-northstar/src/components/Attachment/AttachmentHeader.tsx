@@ -1,6 +1,6 @@
 import { compose, ComponentWithAs } from '@fluentui/react-bindings';
 
-import { commonPropTypes, createShorthandFactory, ShorthandFactory } from '../../utils';
+import { commonPropTypes, ShorthandConfig } from '../../utils';
 import Box, { BoxProps, BoxStylesProps } from '../Box/Box';
 
 interface AttachmentHeaderOwnProps {}
@@ -24,14 +24,15 @@ const AttachmentHeader = compose<
 
   overrideStyles: true,
 }) as ComponentWithAs<'span', AttachmentHeaderProps> & {
-  create?: ShorthandFactory<AttachmentHeaderProps>;
+  shorthandConfig: ShorthandConfig<AttachmentHeaderProps>;
 };
 
 AttachmentHeader.defaultProps = {
   as: 'span',
 };
 AttachmentHeader.propTypes = commonPropTypes.createCommon();
-
-AttachmentHeader.create = createShorthandFactory({ Component: AttachmentHeader, mappedProp: 'content' });
+AttachmentHeader.shorthandConfig = {
+  mappedProp: 'content',
+};
 
 export default AttachmentHeader;

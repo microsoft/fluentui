@@ -408,6 +408,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
       updateDropState: this._updateDroppingState,
       onDrop: dragDropEvents!.onDrop,
       onDragEnd: dragDropEvents!.onDragEnd,
+      onDragOver: dragDropEvents!.onDragOver,
     };
 
     return options;

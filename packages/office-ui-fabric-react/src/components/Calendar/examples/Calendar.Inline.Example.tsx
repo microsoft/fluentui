@@ -3,6 +3,25 @@ import { Calendar, DayOfWeek, DateRangeType } from 'office-ui-fabric-react/lib/C
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { addDays, getDateRangeArray } from 'office-ui-fabric-react/lib/utilities/dateMath/DateMath';
 
+export interface ICalendarInlineExampleProps {
+  isMonthPickerVisible?: boolean;
+  dateRangeType: DateRangeType;
+  autoNavigateOnSelection: boolean;
+  showGoToToday: boolean;
+  showNavigateButtons?: boolean;
+  highlightCurrentMonth?: boolean;
+  highlightSelectedMonth?: boolean;
+  isDayPickerVisible?: boolean;
+  showMonthPickerAsOverlay?: boolean;
+  showWeekNumbers?: boolean;
+  minDate?: Date;
+  maxDate?: Date;
+  restrictedDates?: Date[];
+  showSixWeeksByDefault?: boolean;
+  workWeekDays?: DayOfWeek[];
+  firstDayOfWeek?: DayOfWeek;
+}
+
 const dayPickerStrings = {
   months: [
     'January',
@@ -31,39 +50,12 @@ const dayPickerStrings = {
   nextYearRangeAriaLabel: 'Next year range',
   closeButtonAriaLabel: 'Close',
 };
-
-export interface ICalendarInlineExampleProps {
-  isMonthPickerVisible?: boolean;
-  dateRangeType: DateRangeType;
-  autoNavigateOnSelection: boolean;
-  showGoToToday: boolean;
-  showNavigateButtons?: boolean;
-  highlightCurrentMonth?: boolean;
-  highlightSelectedMonth?: boolean;
-  isDayPickerVisible?: boolean;
-  showMonthPickerAsOverlay?: boolean;
-  showWeekNumbers?: boolean;
-  minDate?: Date;
-  maxDate?: Date;
-  restrictedDates?: Date[];
-  showSixWeeksByDefault?: boolean;
-  workWeekDays?: DayOfWeek[];
-  firstDayOfWeek?: DayOfWeek;
-}
-
-export interface ICalendarInlineExampleState {
-  selectedDate?: Date | null;
-  selectedDateRange?: Date[] | null;
-}
-
 const divStyle: React.CSSProperties = {
   height: 'auto',
 };
-
 const buttonStyle: React.CSSProperties = {
   margin: '17px 10px 0 0',
 };
-
 let dateRangeString: string | null = null;
 
 export const CalendarInlineExample: React.FunctionComponent<ICalendarInlineExampleProps> = (

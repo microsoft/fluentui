@@ -1,8 +1,17 @@
 # Change Log - @uifabric/react-hooks
 
-This log was last generated on Tue, 05 May 2020 12:34:22 GMT and should not be manually modified.
+This log was last generated on Thu, 07 May 2020 01:06:55 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.3.1](https://github.com/microsoft/fluentui/tree/@uifabric/react-hooks_v7.3.1)
+
+Thu, 07 May 2020 01:06:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/react-hooks_v7.3.0..@uifabric/react-hooks_v7.3.1)
+
+### Patches
+
+- Addressing commonjs imports. ([PR #13031](https://github.com/microsoft/fluentui/pull/13031) by dzearing@microsoft.com)
 
 ## [7.3.0](https://github.com/microsoft/fluentui/tree/@uifabric/react-hooks_v7.3.0)
 
