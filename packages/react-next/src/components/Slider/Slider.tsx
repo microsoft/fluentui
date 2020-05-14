@@ -36,9 +36,9 @@ const getStaticStylesMemoized = memoizeFunction(
     const globalClassNames = getGlobalClassNames(GlobalClassNames, theme);
 
     const propControlledClasses = [
-      disabled && classes.disabled,
+      disabled ? classes.disabled : classes.enabled,
       vertical && classes.vertical,
-      disabled ? globalClassNames.disabled : classes.enabled,
+      disabled ? globalClassNames.disabled : globalClassNames.enabled,
       vertical ? globalClassNames.column : globalClassNames.row,
       showTransition && classes.showTransitions,
       showValue && globalClassNames.showValue,

@@ -3,12 +3,21 @@
 @import '../../common/focusBorder';
 
 /**
-   Tokens:
-   *   The word "active" in the token refers to the selected section of the slider
-   *   The word "inactive" in the token refers to the unselected section of the slider
-   */
+  * Tokens:
+  * The word "active" in the token refers to the selected section of the slider
+  * The word "inactive" in the token refers to the unselected section of the slider
+  */
 
 @mixin activeSectionHoverStyles() {
+  .activeSection {
+    background-color: var($semanticColorsInputBackgroundChecked);
+    @include high-contrast {
+      background-color: Highlight;
+    }
+  }
+}
+
+@mixin activeSectionActiveStyles {
   .activeSection {
     background-color: var($semanticColorsInputBackgroundCheckedHovered);
     @include high-contrast {
@@ -17,7 +26,8 @@
   }
 }
 
-@mixin inactiveSectionStyles {
+// Styles for when the slider is hovered or active
+@mixin inactiveSectionActiveStyles {
   .inactiveSection {
     background-color: var($semanticColorsInputPlaceholderBackgroundChecked);
     @include high-contrast {
@@ -26,15 +36,8 @@
   }
 }
 
-@mixin activeSectionActiveStyles {
-  .activeSection {
-    background-color: var($semanticColorsInputBackgroundChecked);
-    @include high-contrast {
-      background-color: Highlight;
-    }
-  }
-}
-@mixin activeThumbStyles {
+// Styles for when the slider is hovered or active
+@mixin thumbActiveStyles {
   .thumb {
     border: 2px solid var($semanticColorsInputBackgroundCheckedHovered);
     @include high-contrast {
@@ -79,7 +82,6 @@
 }
 
 .slideBox {
-  //getFocusStyle(theme);
   background: transparent;
   border: none;
   flex-grow: 1;
@@ -89,19 +91,20 @@
   height: 28px;
   width: auto;
   padding: 0 8px; // Make room for thumb at ends of line
+  @include focus-border();
 
   .enabled & {
     &:active {
       @include activeSectionActiveStyles();
-      @include inactiveSectionStyles();
-      @include activeThumbStyles();
+      @include inactiveSectionActiveStyles();
+      @include thumbActiveStyles();
       @include slideBoxctiveZeroTickStyles();
     }
 
     &:hover {
       @include activeSectionHoverStyles();
-      @include inactiveSectionStyles();
-      @include activeThumbStyles();
+      @include inactiveSectionActiveStyles();
+      @include thumbActiveStyles();
       @include slideBoxctiveZeroTickStyles();
     }
   }
@@ -124,28 +127,36 @@
   height: 16px;
   position: absolute;
   top: -6px;
+  transform: translateX(-50%);
 
-  //transform: getRTL(theme) ? translateX(50%) : translateX(-50%);
+  // TODO either remove or implement for RTL transform: translateX(50%);
+
   .vertical & {
     left: -6px;
     margin: 0 auto;
     transform: translateY(8px);
   }
-  // TODO
-  // showTransitions && {
-  //   transition: `left ${AnimationVariables.durationValue3} ${AnimationVariables.easeFunction1}`;
-  // };
+
   .disabled & {
     border-color: var($semanticColorsDisabledBorder);
     @include high-contrast {
       bordercolor: GrayText;
     }
   }
+
+  /**
+   * TODO Implement animations
+   * showTransitions && {
+   * transition: `left ${AnimationVariables.durationValue3} ${AnimationVariables.easeFunction1}`;
+   * };
+   */
 }
+
 .line {
   display: flex;
   position: relative;
   width: 100%;
+
   .vertical & {
     height: 100%;
     width: 4px;
@@ -159,6 +170,7 @@
   box-sizing: border-box;
   height: 4px;
   width: 100%;
+
   .vertical & {
     width: 4px;
     height: 100%;
@@ -172,11 +184,6 @@
     backgroundcolor: WindowText;
   }
 
-  .showTransitions & {
-    transition: 3 3 3;
-    // transition: `width ${nimationVariables.durationValue3} ${AnimationVariables.easeFunction1}`;
-  }
-
   .disabled & {
     background: var($semanticColorsDisabledText);
     @include high-contrast {
@@ -184,6 +191,14 @@
       bordercolor: GrayText;
     }
   }
+
+  .showTransitions & {
+    transition: 3 3 3;
+  }
+  /**
+   * TODO Implement animations
+   * transition: `width ${nimationVariables.durationValue3} ${AnimationVariables.easeFunction1}`;
+   */
 }
 
 .inactiveSection {
@@ -192,17 +207,20 @@
     border: 1px solid WindowText;
   }
 
-  .showTransitions & {
-    transition: 3 3 3;
-    //transition: `width ${nimationVariables.durationValue3} ${AnimationVariables.easeFunction1}`;
-  }
-
   .disabled & {
     background: var($semanticColorsDisabledBackground);
     @include high-contrast {
       bordercolor: GrayText;
     }
   }
+
+  .showTransitions & {
+    transition: 3 3 3;
+  }
+  /**
+    * @TODO Implement Correct animation styles
+    * transition: `width ${nimationVariables.durationValue3} ${AnimationVariables.easeFunction1}`;
+    */
 }
 
 .zeroTick {
@@ -226,8 +244,8 @@
   .vertical & {
     width: 16px;
     height: 1px;
-    transform: 3 3 3;
-    //transform: getRTL(theme) ? translateX(6px) : 'translateX(-6px)';
+    transform: translateX(-6px);
+    // todo either remove or implement for rtl translateX(6px)
   }
 }
 
@@ -238,6 +256,7 @@
   margin: 0 8px;
   white-space: nowrap;
   width: 40px;
+
   .vertical & {
     margin: 0 auto;
     white-space: nowrap;
