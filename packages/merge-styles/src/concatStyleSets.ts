@@ -15,7 +15,7 @@ export function concatStyleSets<TStyleSet extends IStyleSet<TStyleSet>>(
  * @param styleSet1 - The first style set to be concatenated.
  * @param styleSet2 - The second style set to be concatenated.
  */
-export function concatStyleSets<TStyleSet1 extends IStyleSet<any>, TStyleSet2 extends IStyleSet<any>>(
+export function concatStyleSets<TStyleSet1 extends IStyleSet, TStyleSet2 extends IStyleSet>(
   styleSet1: TStyleSet1 | false | null | undefined,
   styleSet2: TStyleSet2 | false | null | undefined,
 ): IConcatenatedStyleSet<TStyleSet1 & TStyleSet2>;
@@ -27,9 +27,9 @@ export function concatStyleSets<TStyleSet1 extends IStyleSet<any>, TStyleSet2 ex
  * @param styleSet3 - The third style set to be concatenated.
  */
 export function concatStyleSets<
-  TStyleSet1 extends IStyleSet<any>,
-  TStyleSet2 extends IStyleSet<any>,
-  TStyleSet3 extends IStyleSet<any>
+  TStyleSet1 extends IStyleSet,
+  TStyleSet2 extends IStyleSet,
+  TStyleSet3 extends IStyleSet
 >(
   styleSet1: TStyleSet1 | false | null | undefined,
   styleSet2: TStyleSet2 | false | null | undefined,
@@ -44,10 +44,10 @@ export function concatStyleSets<
  * @param styleSet4 - The fourth style set to be concatenated.
  */
 export function concatStyleSets<
-  TStyleSet1 extends IStyleSet<any>,
-  TStyleSet2 extends IStyleSet<any>,
-  TStyleSet3 extends IStyleSet<any>,
-  TStyleSet4 extends IStyleSet<any>
+  TStyleSet1 extends IStyleSet,
+  TStyleSet2 extends IStyleSet,
+  TStyleSet3 extends IStyleSet,
+  TStyleSet4 extends IStyleSet
 >(
   styleSet1: TStyleSet1 | false | null | undefined,
   styleSet2: TStyleSet2 | false | null | undefined,
@@ -64,11 +64,11 @@ export function concatStyleSets<
  * @param styleSet5 - The fifth set to be concatenated.
  */
 export function concatStyleSets<
-  TStyleSet1 extends IStyleSet<any>,
-  TStyleSet2 extends IStyleSet<any>,
-  TStyleSet3 extends IStyleSet<any>,
-  TStyleSet4 extends IStyleSet<any>,
-  TStyleSet5 extends IStyleSet<any>
+  TStyleSet1 extends IStyleSet,
+  TStyleSet2 extends IStyleSet,
+  TStyleSet3 extends IStyleSet,
+  TStyleSet4 extends IStyleSet,
+  TStyleSet5 extends IStyleSet
 >(
   styleSet1: TStyleSet1 | false | null | undefined,
   styleSet2: TStyleSet2 | false | null | undefined,
@@ -87,12 +87,12 @@ export function concatStyleSets<
  * @param styleSet6 - The sixth set to be concatenated.
  */
 export function concatStyleSets<
-  TStyleSet1 extends IStyleSet<any>,
-  TStyleSet2 extends IStyleSet<any>,
-  TStyleSet3 extends IStyleSet<any>,
-  TStyleSet4 extends IStyleSet<any>,
-  TStyleSet5 extends IStyleSet<any>,
-  TStyleSet6 extends IStyleSet<any>
+  TStyleSet1 extends IStyleSet,
+  TStyleSet2 extends IStyleSet,
+  TStyleSet3 extends IStyleSet,
+  TStyleSet4 extends IStyleSet,
+  TStyleSet5 extends IStyleSet,
+  TStyleSet6 extends IStyleSet
 >(
   styleSet1: TStyleSet1 | false | null | undefined,
   styleSet2: TStyleSet2 | false | null | undefined,
@@ -106,18 +106,14 @@ export function concatStyleSets<
  * Combine a set of styles together (but does not register css classes).
  * @param styleSets - One or more stylesets to be merged (each param can also be falsy).
  */
-export function concatStyleSets(
-  ...styleSets: (IStyleSet<any> | false | null | undefined)[]
-): IConcatenatedStyleSet<any>;
+export function concatStyleSets(...styleSets: (IStyleSet | false | null | undefined)[]): IConcatenatedStyleSet<any>;
 
 /**
  * Combine a set of styles together (but does not register css classes).
  * @param styleSets - One or more stylesets to be merged (each param can also be falsy).
  */
-export function concatStyleSets(
-  ...styleSets: (IStyleSet<any> | false | null | undefined)[]
-): IConcatenatedStyleSet<any> {
-  if (styleSets && styleSets.length === 1 && styleSets[0] && !(styleSets[0] as IStyleSet<any>).subComponentStyles) {
+export function concatStyleSets(...styleSets: (IStyleSet | false | null | undefined)[]): IConcatenatedStyleSet<any> {
+  if (styleSets && styleSets.length === 1 && styleSets[0] && !(styleSets[0] as IStyleSet).subComponentStyles) {
     return styleSets[0] as IConcatenatedStyleSet<any>;
   }
 
