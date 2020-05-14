@@ -54,12 +54,66 @@ const cardStyles: ComponentSlotStylesPrepared<CardStylesProps, CardVariables> = 
         },
       }),
 
+      ...(p.elevated && {
+        boxShadow: v.elevatedBoxShadow,
+        ':hover': {
+          boxShadow: v.elevatedBoxShadowHover,
+        },
+
+        ...(p.actionable && {
+          ':focus-visible': {
+            boxShadow: v.elevatedBoxShadowFocus,
+          },
+          ':active': {
+            boxShadow: v.elevatedBoxShadowPressed,
+          },
+        }),
+      }),
+
+      ...(p.inverted && {
+        backgroundColor: v.invertedBackgroundColor,
+        ':hover': {
+          backgroundColor: v.invertedBackgroundColorHover,
+        },
+
+        ...(p.actionable && {
+          ':focus-visible': {
+            backgroundColor: v.invertedBackgroundColorFocus,
+          },
+          ':active': {
+            backgroundColor: v.invertedBackgroundColorPressed,
+          },
+        }),
+      }),
+
+      ...(p.quiet && {
+        backgroundColor: v.quietBackgroundColor,
+        ':hover': {
+          backgroundColor: v.quietBackgroundColorHover,
+        },
+
+        ...(p.actionable && {
+          ':focus-visible': {
+            backgroundColor: v.quietBackgroundColorFocus,
+          },
+          ':active': {
+            backgroundColor: v.quietBackgroundColorPressed,
+          },
+        }),
+      }),
+
       ...(p.disabled && {
         cursor: 'not-allowed',
         color: v.colorDisabled,
         backgroundColor: v.backgroundColorDisabled,
         borderColor: v.borderColorDisabled,
         boxShadow: v.boxShadowDisabled,
+        ...(p.inverted && {
+          backgroundColor: v.invertedBackgroundColorDisabled,
+        }),
+        ...(p.quiet && {
+          backgroundColor: v.quietBackgroundColorDisabled,
+        }),
         ':hover': {
           boxShadow: v.boxShadowDisabled,
         },

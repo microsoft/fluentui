@@ -6,6 +6,16 @@ export interface CardVariables {
   backgroundColorFocus: string;
   backgroundColorHover: string;
   backgroundColorPressed: string;
+  quietBackgroundColor: string;
+  quietBackgroundColorDisabled: string;
+  quietBackgroundColorFocus: string;
+  quietBackgroundColorHover: string;
+  quietBackgroundColorPressed: string;
+  invertedBackgroundColor: string;
+  invertedBackgroundColorDisabled: string;
+  invertedBackgroundColorFocus: string;
+  invertedBackgroundColorHover: string;
+  invertedBackgroundColorPressed: string;
   borderStyle: string;
   borderColor: string;
   borderColorDisabled: string;
@@ -18,6 +28,11 @@ export interface CardVariables {
   boxShadowFocus: string;
   boxShadowPressed: string;
   boxShadowDisabled: string;
+  elevatedBoxShadow: string;
+  elevatedBoxShadowHover: string;
+  elevatedBoxShadowFocus: string;
+  elevatedBoxShadowPressed: string;
+  elevatedBoxShadowDisabled: string;
   margin: string;
   padding: string;
   colorDisabled: string;
@@ -51,23 +66,38 @@ export interface CardVariables {
 
 export default (siteVars): CardVariables => {
   return {
-    backgroundColor: siteVars.colorScheme.default.background,
-    backgroundColorDisabled: siteVars.colorScheme.default.backgroundDisabled,
-    backgroundColorFocus: siteVars.colorScheme.default.backgroundFocus,
-    backgroundColorHover: siteVars.colorScheme.default.backgroundHover,
+    backgroundColor: siteVars.colorScheme.default.background1,
+    backgroundColorDisabled: siteVars.colorScheme.default.backgroundDisabled1,
+    backgroundColorFocus: siteVars.colorScheme.default.backgroundFocus1,
+    backgroundColorHover: siteVars.colorScheme.default.backgroundHover1,
     backgroundColorPressed: siteVars.colorScheme.default.backgroundPressed,
+    quietBackgroundColor: 'none',
+    quietBackgroundColorDisabled: siteVars.colorScheme.default.backgroundDisabled,
+    quietBackgroundColorFocus: 'none',
+    quietBackgroundColorHover: siteVars.colorScheme.default.backgroundHover,
+    quietBackgroundColorPressed: siteVars.colorScheme.default.backgroundPressed,
+    invertedBackgroundColor: siteVars.colorScheme.default.background3,
+    invertedBackgroundColorDisabled: siteVars.colorScheme.default.backgroundDisabled3,
+    invertedBackgroundColorFocus: siteVars.colorScheme.default.background3,
+    invertedBackgroundColorHover: siteVars.colorScheme.default.backgroundHover3,
+    invertedBackgroundColorPressed: siteVars.colorScheme.default.backgroundPressed,
     borderStyle: 'solid',
-    borderColor: siteVars.colorScheme.default.border,
-    borderColorDisabled: siteVars.colorScheme.default.borderDisabled,
-    borderColorHover: siteVars.colorScheme.default.borderHover,
-    borderColorPressed: siteVars.colorScheme.default.borderPressed,
+    borderColor: 'transparent',
+    borderColorDisabled: 'transparent',
+    borderColorHover: 'transparent',
+    borderColorPressed: 'transparent',
     borderWidth: siteVars.borderWidth,
     borderRadius: pxToRem(3),
     boxShadow: 'none',
     boxShadowDisabled: 'none',
-    boxShadowHover: siteVars.shadowLevel3,
-    boxShadowFocus: siteVars.shadowLevel2,
-    boxShadowPressed: siteVars.shadowLevel1,
+    boxShadowHover: 'none',
+    boxShadowFocus: 'none',
+    boxShadowPressed: 'none',
+    elevatedBoxShadow: siteVars.shadowLevel1,
+    elevatedBoxShadowDisabled: siteVars.shadowLevel1,
+    elevatedBoxShadowHover: siteVars.shadowLevel3,
+    elevatedBoxShadowFocus: siteVars.shadowLevel1,
+    elevatedBoxShadowPressed: siteVars.shadowLevel1,
     padding: pxToRem(16),
     margin: pxToRem(0),
     colorDisabled: siteVars.colorScheme.default.foregroundDisabled,
