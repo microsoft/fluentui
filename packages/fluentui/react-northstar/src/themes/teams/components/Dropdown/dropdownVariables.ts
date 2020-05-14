@@ -110,9 +110,9 @@ export default (siteVars): DropdownVariables => ({
 
   // these should only apply when there is content in the image/media slot:
   listItemHeaderFontSize: siteVars.fontSizes.medium,
-  listItemHeaderColor: siteVars.colors.grey[1000],
+  listItemHeaderColor: siteVars.colorScheme.default.foreground1,
   listItemContentFontSize: siteVars.fontSizes.small,
-  listItemContentColor: siteVars.colors.grey[450],
+  listItemContentColor: siteVars.colorScheme.default.foreground2,
   headerMessageBackgroundColor: siteVars.colors.white,
   noResultsMessageBackgroundColor: 'transparent',
   loadingMessageBackgroundColor: 'transparent',
