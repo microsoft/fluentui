@@ -6,7 +6,7 @@ import { FabricDecoratorTall } from '../utilities';
 import { Slider } from '@fluentui/react-next';
 
 // tslint:disable:jsx-ban-props
-storiesOf('Slider', module)
+storiesOf('SliderNext', module)
   .addDecorator(FabricDecoratorTall)
   .addDecorator(story => (
     <Screener
