@@ -7,7 +7,7 @@ These are not production-ready components and **should never be used in product*
 To import React Button components:
 
 ```js
-import { ComponentName } from '@fluentui/react-button';
+import { Button } from '@fluentui/react-button';
 
 const App = () => {
   return <Button content="hello, world!" />;
