@@ -22,4 +22,6 @@ export * from './Stylesheet';
 
 export { setRTL } from './StyleOptionsState';
 
+export { ObjectOnly } from './ObjectOnly';
+
 import './version';

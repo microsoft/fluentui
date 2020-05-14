@@ -4,8 +4,6 @@
 
 ```ts
 
-// Warning: (ae-forgotten-export) The symbol "ObjectOnly" needs to be exported by the entry point index.d.ts
-//
 // @public
 export function concatStyleSets<TStyleSet>(styleSet: TStyleSet | false | null | undefined): IConcatenatedStyleSet<ObjectOnly<TStyleSet>>;
 
@@ -464,6 +462,9 @@ export function mergeStyleSets<TStyleSet1, TStyleSet2, TStyleSet3, TStyleSet4>(s
 
 // @public
 export function mergeStyleSets(...styleSets: Array<IStyleSet | undefined | false | null>): IProcessedStyleSet<any>;
+
+// @public (undocumented)
+export type ObjectOnly<TArg> = TArg extends {} ? TArg : {};
 
 // Warning: (ae-forgotten-export) The symbol "Diff" needs to be exported by the entry point index.d.ts
 //
