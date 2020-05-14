@@ -56,8 +56,7 @@
 }
 
 .root {
-  //theme.fonts.medium;
-  font-size: var($fontsMediumFontSize);
+  @include fonts-medium;
   user-select: none;
 
   &.vertical {
