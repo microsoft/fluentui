@@ -1,8 +1,48 @@
 # Change Log - @fluentui/react-focus
 
-This log was last generated on Tue, 05 May 2020 12:34:22 GMT and should not be manually modified.
+This log was last generated on Wed, 13 May 2020 12:33:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.11.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.11.2)
+
+Wed, 13 May 2020 12:33:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v7.11.0..@fluentui/react-focus_v7.11.2)
+
+### Patches
+
+- Adding `@fluentui/keyboard-key` as a dependency. ([PR #13123](https://github.com/microsoft/fluentui/pull/13123) by dzearing@microsoft.com)
+
+## [7.11.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.11.0)
+
+Fri, 08 May 2020 12:35:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v7.10.2..@fluentui/react-focus_v7.11.0)
+
+### Minor changes
+
+- FocusZone: Converging defaultTabbableElement/defaultActiveElement and bringing shouldFocusInnerElementWhenReceivedFocus to v7. ([PR #12853](https://github.com/microsoft/fluentui/pull/12853) by Humberto.Morimoto@microsoft.com)
+
+### Patches
+
+- Adding keyboard-key to FocusZone. ([PR #12339](https://github.com/microsoft/fluentui/pull/12339) by humbertomakotomorimoto@gmail.com)
+
+## [7.10.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.10.2)
+
+Thu, 07 May 2020 01:06:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v7.10.1..@fluentui/react-focus_v7.10.2)
+
+### Patches
+
+- Addressing commonjs imports. ([PR #13031](https://github.com/microsoft/fluentui/pull/13031) by dzearing@microsoft.com)
+
+## [7.10.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.10.1)
+
+Wed, 06 May 2020 12:32:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v7.10.0..@fluentui/react-focus_v7.10.1)
+
+### Patches
+
+- Fix pagingSupportDisabled handling in FocusZone ([PR #12997](https://github.com/microsoft/fluentui/pull/12997) by jukapsia@microsoft.com)
 
 ## [7.10.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.10.0)
 

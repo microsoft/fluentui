@@ -1,5 +1,3 @@
-import { IRawStyle } from '@uifabric/merge-styles';
-
 /**
  * Experimental interface for decorative styling in a theme.
  * {@docCategory IEffects}

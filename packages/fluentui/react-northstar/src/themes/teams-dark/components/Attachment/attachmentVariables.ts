@@ -8,4 +8,6 @@ export default (siteVariables: any): Partial<AttachmentVariables> => ({
   backgroundColorHover: siteVariables.colors.grey[500],
   borderColor: siteVariables.colors.onyx[700],
   boxShadow: siteVariables.shadowLevel1,
+
+  actionColor: siteVariables.colors.white,
 });

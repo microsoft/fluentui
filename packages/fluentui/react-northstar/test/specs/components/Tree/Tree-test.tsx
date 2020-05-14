@@ -73,32 +73,6 @@ const checkOpenTitles = (wrapper: ReactWrapper, expected: string[]): void => {
 describe('Tree', () => {
   isConformant(Tree, { autoControlledProps: ['activeItemIds'] });
 
-  describe('treeTitleIds', () => {
-    it('should add id for string items', () => {
-      const wrapper = mountWithProvider(
-        <Tree
-          items={[
-            {
-              id: '1',
-              title: '1',
-              items: ['item-1', 'item-2'],
-            },
-          ]}
-        />,
-      );
-      // expand tree
-      getTitles(wrapper)
-        .at(0)
-        .simulate('click');
-
-      expect(
-        getItems(wrapper)
-          .at(1)
-          .prop('id'),
-      ).toBeDefined();
-    });
-  });
-
   describe('activeItemIds', () => {
     it('should contain index of item open at click', () => {
       const wrapper = mountWithProvider(<Tree items={items} />);

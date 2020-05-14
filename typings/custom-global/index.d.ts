@@ -1,5 +1,13 @@
 /// <reference types="webpack-env" />
 
+/**
+ * Generic typings for sass files.
+ */
+declare module '*.scss' {
+  const styles: { [className: string]: string };
+  export default styles;
+}
+
 // These declarations are meant to represent the parts of Map/WeakMap/Set that exist in IE 11.
 // Therefore, some functionality (such as constructor parameters) is intentionally missing.
 
