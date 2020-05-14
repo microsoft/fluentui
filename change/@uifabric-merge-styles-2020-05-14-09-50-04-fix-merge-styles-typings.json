@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Relaxing the input arguments in merge-styles to keep things building with typescript 3.9.",
+  "packageName": "@uifabric/merge-styles",
+  "email": "dzearing@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-05-14T16:50:04.656Z"
+}
