@@ -37,7 +37,7 @@ describe('concatStyleSets', () => {
   it('can ignore falsey values in typings', () => {
     const result = concatStyleSets({ a: { background: 'red ' } }, null);
 
-    expect(result.a).toEqual({ background: 'red' });
+    expect(result.a).toEqual({ a: { background: 'red' } });
   });
 
   it('can concat mixed style sets with style functions on both ends', () => {
