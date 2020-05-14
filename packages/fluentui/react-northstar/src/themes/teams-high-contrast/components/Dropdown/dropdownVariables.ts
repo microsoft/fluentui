@@ -26,6 +26,7 @@ export default (siteVars): Partial<DropdownVariables> => ({
   listItemSelectedColor: siteVars.accessibleCyan,
   selectedItemBackgroundColor: siteVars.colors.black,
   selectedItemColorFocus: siteVars.colors.black,
+  selectedItemBackgroundColorFocus: siteVars.accessibleCyan,
   triggerButtonColorFocusActive: siteVars.colors.white,
   triggerButtonColorHover: siteVars.colors.white,
   // disabled state
