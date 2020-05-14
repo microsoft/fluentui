@@ -44,6 +44,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Update `padding` and `margin` styles for `Card` @pompomon ([#13158](https://github.com/microsoft/fluentui/pull/13158))
 - Add `expandabble` prop and styles for `Card` @pompomon ([#13092](https://github.com/microsoft/fluentui/pull/13092))
 - Use `compose()` in `MenuItem` and added dedicated slot's components `MenuItemIcon`, `MenuItemContent`, `MenuItemIndicator` and `MenuItemWrapper` @mnajdova ([#13117](https://github.com/microsoft/fluentui/pull/13117))
+- Add `elevated`, `inverted` and `quiet` props and styles for the `Card` @pompomon ([#13163](https://github.com/microsoft/fluentui/pull/13163))
 
 <!--------------------------------[ v0.49.0 ]------------------------------- -->
 ## [v0.49.0](https://github.com/OfficeDev/office-ui-fabric-react/tree/fluentui_v0.49.0) (2020-05-10)
