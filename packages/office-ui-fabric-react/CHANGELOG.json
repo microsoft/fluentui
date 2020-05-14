@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 14 May 2020 12:19:48 GMT",
+      "tag": "office-ui-fabric-react_v6.214.0",
+      "version": "6.214.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "FocusZone:add page down/up feature",
+            "author": "nasabek@microsoft.com",
+            "commit": "584355c35881f70b8992e1ad453425f36c6c5232"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 25 Mar 2020 12:19:53 GMT",
       "tag": "office-ui-fabric-react_v6.213.0",
       "version": "6.213.0",

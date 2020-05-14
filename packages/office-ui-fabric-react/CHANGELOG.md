@@ -1,7 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 25 Mar 2020 12:19:53 GMT and should not be manually modified.
+This log was last generated on Thu, 14 May 2020 12:19:48 GMT and should not be manually modified.
 
+## 6.214.0
+Thu, 14 May 2020 12:19:48 GMT
+
+### Minor changes
+
+- FocusZone:add page down/up feature (nasabek@microsoft.com)
 ## 6.213.0
 Wed, 25 Mar 2020 12:19:53 GMT
 
