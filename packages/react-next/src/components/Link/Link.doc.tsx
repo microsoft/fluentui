@@ -3,7 +3,7 @@ import { LinkBasicExample } from './examples/Link.Basic.Example';
 
 import { IDocPageProps } from '../../common/DocPage.types';
 
-const LinkBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Link/examples/Link.Basic.Example.tsx') as string;
+const LinkBasicExampleCode = require('!raw-loader!@fluentui/react-next/src/components/Link/examples/Link.Basic.Example.tsx') as string;
 
 export const LinkPageProps: IDocPageProps = {
   title: 'Link',
@@ -46,10 +46,10 @@ export const LinkPageProps: IDocPageProps = {
       },
     },
   ],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Link/docs/LinkOverview.md'),
+  overview: require<string>('!raw-loader!@fluentui/react-next/src/components/Link/docs/LinkOverview.md'),
   bestPractices: '',
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Link/docs/LinkDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Link/docs/LinkDonts.md'),
+  dos: require<string>('!raw-loader!@fluentui/react-next/src/components/Link/docs/LinkDos.md'),
+  donts: require<string>('!raw-loader!@fluentui/react-next/src/components/Link/docs/LinkDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
   allowNativeProps: true,

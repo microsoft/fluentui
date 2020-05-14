@@ -1,3 +1,8 @@
 Use these typography styles to standardize text across your app.
 
-<img src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/android/utilities/demo-typography.png" alt="Example of Typography on Android" style="width: 50%;" />
+<DisplayToggle onText="Dark" offText="Light" label="Theme Switcher">
+
+<img className="off" src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/android/updated/img_text_01_light.png?text=LightMode" />
+<img className="on" src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/android/updated/img_text_01_dark.png?text=DarkMode" />
+
+</DisplayToggle>

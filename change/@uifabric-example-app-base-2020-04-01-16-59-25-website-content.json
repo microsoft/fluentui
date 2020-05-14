@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "cleaned up platform switcher, made room for windows button",
+  "packageName": "@uifabric/example-app-base",
+  "email": "mgodbolt@microsoft.com",
+  "commit": "c731813535eef429a6bbd2879aa4e290fab005e4",
+  "dependentChangeType": "patch",
+  "date": "2020-04-01T23:59:25.070Z"
+}

@@ -1,8 +1,39 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 08 May 2020 12:35:40 GMT and should not be manually modified.
+This log was last generated on Thu, 14 May 2020 12:34:32 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.113.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.113.2)
+
+Thu, 14 May 2020 12:34:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.112.0..office-ui-fabric-react_v7.113.2)
+
+### Patches
+
+- fix accessibility issue ([PR #12952](https://github.com/microsoft/fluentui/pull/12952) by xiameng@microsoft.com)
+- updating DocumentCard and GroupedList to FC ([PR #12851](https://github.com/microsoft/fluentui/pull/12851) by czearing@outlook.com)
+- Update Picker.CustomResult.Example.tsx ([PR #12795](https://github.com/microsoft/fluentui/pull/12795) by patrick@nubo.eu)
+- Updating examples to use `useId` instead of `getId` and converting `Dialog` examples to function components. ([PR #13054](https://github.com/microsoft/fluentui/pull/13054) by czearing@outlook.com)
+
+## [7.112.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.112.0)
+
+Tue, 12 May 2020 12:41:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.111.1..office-ui-fabric-react_v7.112.0)
+
+### Minor changes
+
+- Adding onDragOver method to IDragDropEvents ([PR #12859](https://github.com/microsoft/fluentui/pull/12859) by pawsing@microsoft.com)
+
+## [7.111.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.111.1)
+
+Mon, 11 May 2020 12:36:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.111.0..office-ui-fabric-react_v7.111.1)
+
+### Patches
+
+- Checkbox: remove unneeded text-align css on label ([PR #13014](https://github.com/microsoft/fluentui/pull/13014) by xgao@microsoft.com)
+- Shimmer: fix high contrast in new edge ([PR #13073](https://github.com/microsoft/fluentui/pull/13073) by xgao@microsoft.com)
 
 ## [7.111.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.111.0)
 

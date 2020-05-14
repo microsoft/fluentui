@@ -1,11 +1,11 @@
 ### Control name
 
-`MSDrawerController`
+`DrawerController` in Swift, `MSFDrawerController` in Objective-C
 
 ### Source code
 
-[MSDrawerController](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric/Drawer/MSDrawerController.swift)
+[DrawerController](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI/Drawer/DrawerController.swift)
 
 ### Sample code
 
-[MSDrawerController demo](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric.Demo/OfficeUIFabric.Demo/Demos/MSDrawerDemoController.swift)
+[DrawerController demo](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI.Demo/FluentUI.Demo/Demos/DrawerDemoController.swift)

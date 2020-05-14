@@ -10,7 +10,7 @@
       "stopOnEntry": false,
       "args": ["-i", "--watch"],
       "runtimeExecutable": null,
-      "runtimeArgs": ["--nolazy", "--debug"],
+      "runtimeArgs": ["--nolazy", "--inspect"],
       "env": {
         "NODE_ENV": "development"
       },
