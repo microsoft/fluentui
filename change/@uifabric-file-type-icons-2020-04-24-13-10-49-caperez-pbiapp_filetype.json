@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "adding 'pbiapp' entry in file type icon mapping file",
+  "packageName": "@uifabric/file-type-icons",
+  "email": "caperez@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-04-24T20:10:49.834Z"
+}
