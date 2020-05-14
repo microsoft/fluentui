@@ -2,61 +2,14 @@
 @import '../../common/highContrast';
 @import '../../common/focusBorder';
 
-// const pressedctiveSectionColor = semanticColors.inputBackgroundCheckedHovered;
-// const hovectiveSectionColor = semanticColors.inputBackgroundChecked;
-// const hoveredPressedinactiveSectionColor = $semanticColorsInputPlaceholderBackgroundChecked;
-
-// $semanticColorsSmallInputBorder
-// const restctiveSectionColor = semanticColors.smallInputBorder;
-// $semanticColorsDisabledBorder
-// const restInactiveSectionColor = semanticColors.disabledBorder;
-
-// const disabledctiveSectionColor = semanticColors.disabledText;
-// const disabledInactiveSectionColor = semanticColors.disabledBackground;
-
-// // const thumbBackgroundColor = $semanticColorsInputBackground;
-// // const thumbBorderColor = $semanticColorsSmallInputBorder;
-// const thumbDisabledBorderColor = $semanticColorsDisabledBorder;
 /**
-const GlobalClassNames = {
-  root: 'ms-Slider';
-  enabled: 'ms-Slider-enabled';
-  disabled: 'ms-Slider-disabled';
-  row: 'ms-Slider-row';
-  column: 'ms-Slider-column';
-  container: 'ms-Slider-container';
-  slideBox: 'ms-Slider-slideBox';
-  line: 'ms-Slider-line';
-  thumb: 'ms-Slider-thumb';
-  activeSection: 'ms-Slider-active';
-  inactiveSection: 'ms-Slider-inactive';
-  valueLabel: 'ms-Slider-value';
-  showValue: 'ms-Slider-showValue';
-  showTransitions: 'ms-Slider-showTransitions';
-  zeroTick: 'ms-Slider-zeroTick';
-};
-
-export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
-  const { className; titleLabelClassName; theme; vertical; disabled; showTransitions; showValue } = props;
-  const { semanticColors } = theme;
-  const classNames = getGlobalClassNames(GlobalClassNames; theme);
-
    Tokens:
    *   The word "active" in the token refers to the selected section of the slider
    *   The word "inactive" in the token refers to the unselected section of the slider
    */
 
-// const slideBoxctiveSectionStyles = !disabled && {
-//   backgroundColor: $semanticColorsInputBackgroundCheckedHovered;
-//   selectors: {
-//     [HighContrastSelector]: {
-//       backgroundColor: 'Highlight';
-//     };
-//   };
-// };
-
-@mixin slideBoxActiveSectionsStyles() {
-  &:not(.disabled) {
+@mixin activeSectionHoverStyles() {
+  .activeSection {
     background-color: var($semanticColorsInputBackgroundCheckedHovered);
     @include high-contrast {
       background-color: Highlight;
@@ -64,17 +17,8 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
   }
 }
 
-// const slideBoxInactiveSectionStyles = !disabled && {
-//   backgroundColor: $semanticColorsInputPlaceholderBackgroundChecked;
-//   selectors: {
-//     [HighContrastSelector]: {
-//       borderColor: 'Highlight';
-//     };
-//   };
-// };
-
-@mixin slideBoxInactiveSectionStyles {
-  &:not(.disabled) {
+@mixin inactiveSectionStyles {
+  .inactiveSection {
     background-color: var($semanticColorsInputPlaceholderBackgroundChecked);
     @include high-contrast {
       border-color: Highlight;
@@ -82,35 +26,16 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
   }
 }
 
-/**
-  const slideHoverSectionStyles = !disabled && {
-    backgroundColor:  $semanticColorsInputBackgroundChecked;
-    selectors: {
-      [HighContrastSelector]: {
-        backgroundColor: 'Highlight';
-      };
-    };
-  };
-  */
-
-@mixin slideHoverSectionStyles {
-  &:not(.disabled) {
+@mixin activeSectionActiveStyles {
+  .activeSection {
     background-color: var($semanticColorsInputBackgroundChecked);
     @include high-contrast {
       background-color: Highlight;
     }
   }
 }
-// const slideBoxctiveThumbStyles = !disabled && {
-//   border: 2px solid $semanticColorsInputBackgroundCheckedHovered;
-//   selectors: {
-//     [HighContrastSelector]: {
-//       borderColor: 'Highlight';
-//     };
-//   };
-// };
-@mixin slideBoxctiveThumbStyles {
-  &:not(.disabled) {
+@mixin activeThumbStyles {
+  .thumb {
     border: 2px solid var($semanticColorsInputBackgroundCheckedHovered);
     @include high-contrast {
       bordercolor: Highlight;
@@ -118,19 +43,8 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
   }
 }
 
-/**
-  const slideBoxctiveZeroTickStyles = !props.disabled && {
-    backgroundColor: semanticColors.inputPlaceholderBackgroundChecked;
-    selectors: {
-      [HighContrastSelector]: {
-        backgroundColor: 'Highlight';
-      };
-    };
-  };
-  */
-
-.slideBoxctiveZeroTickStyles {
-  &:not(.disabled) {
+@mixin slideBoxctiveZeroTickStyles {
+  .zeroTick {
     background-color: var($semanticColorsInputPlaceholderBackgroundChecked);
     @include high-contrast {
       background-color: Highlight;
@@ -143,22 +57,20 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
   font-size: var($fontsMediumFontSize);
   user-select: none;
 
-  // vertical && {
-  //   marginRight: 8;
-  // };
-
   &.vertical {
     margin-right: 8;
   }
 }
+
 .titleLabel {
   padding: 0;
 }
+
 .container {
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
-  &.vertical {
+  .vertical & {
     flex-direction: column;
     height: 100%;
     text-align: center;
@@ -174,25 +86,26 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
   line-height: 28px;
   display: flex;
   align-items: center;
-
-  :active {
-    @include slideBoxActiveSectionsStyles();
-  }
-
-  :hover {
-    @include slideHoverSectionStyles();
-  }
-  //   [`:hover .${classNames.activeSection}`]: slideHoverSectionStyles;
-  //   [`:active .${classNames.inactiveSection}`]: slideBoxInactiveSectionStyles;
-  //   [`:hover .${classNames.inactiveSection}`]: slideBoxInactiveSectionStyles;
-  //   [`:active .${classNames.thumb}`]: slideBoxctiveThumbStyles;
-  //   [`:hover .${classNames.thumb}`]: slideBoxctiveThumbStyles;
-  //   [`:active .${classNames.zeroTick}`]: slideBoxctiveZeroTickStyles;
-  //   [`:hover .${classNames.zeroTick}`]: slideBoxctiveZeroTickStyles;
   height: 28px;
   width: auto;
   padding: 0 8px; // Make room for thumb at ends of line
-  &.vertical {
+
+  .enabled & {
+    &:active {
+      @include activeSectionActiveStyles();
+      @include inactiveSectionStyles();
+      @include activeThumbStyles();
+      @include slideBoxctiveZeroTickStyles();
+    }
+
+    &:hover {
+      @include activeSectionHoverStyles();
+      @include inactiveSectionStyles();
+      @include activeThumbStyles();
+      @include slideBoxctiveZeroTickStyles();
+    }
+  }
+  .vertical & {
     height: 100%;
     width: 28px;
     padding: 8px 0; // Make room for thumb at bottom of line
@@ -200,7 +113,6 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
 }
 
 .thumb {
-  // classNames.thumb;
   border-width: 2px;
   border-style: solid;
   border-color: var($semanticColorsSmallInputBorder);
@@ -214,7 +126,7 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
   top: -6px;
 
   //transform: getRTL(theme) ? translateX(50%) : translateX(-50%);
-  &.vertical {
+  .vertical & {
     left: -6px;
     margin: 0 auto;
     transform: translateY(8px);
@@ -223,7 +135,7 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
   // showTransitions && {
   //   transition: `left ${AnimationVariables.durationValue3} ${AnimationVariables.easeFunction1}`;
   // };
-  &.disabled {
+  .disabled & {
     border-color: var($semanticColorsDisabledBorder);
     @include high-contrast {
       bordercolor: GrayText;
@@ -231,11 +143,10 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
   }
 }
 .line {
-  //classNames.line;
   display: flex;
   position: relative;
   width: 100%;
-  &.vertical {
+  .vertical & {
     height: 100%;
     width: 4px;
     margin: 0 auto;
@@ -248,26 +159,25 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
   box-sizing: border-box;
   height: 4px;
   width: 100%;
-  &.vertical {
+  .vertical & {
     width: 4px;
     height: 100%;
   }
 }
 
 .activeSection {
-  // classNames.activeSection;
   background: var($semanticColorsSmallInputBorder);
 
   @include high-contrast {
     backgroundcolor: WindowText;
   }
 
-  &.showTransitions {
+  .showTransitions & {
     transition: 3 3 3;
     // transition: `width ${nimationVariables.durationValue3} ${AnimationVariables.easeFunction1}`;
   }
 
-  &.disabled {
+  .disabled & {
     background: var($semanticColorsDisabledText);
     @include high-contrast {
       backgroundcolor: GrayText;
@@ -277,18 +187,17 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
 }
 
 .inactiveSection {
-  //classNames.inactiveSection;
   background: var($semanticColorsDisabledBorder);
   @include high-contrast {
     border: 1px solid WindowText;
   }
 
-  &.showTransitions {
+  .showTransitions & {
     transition: 3 3 3;
     //transition: `width ${nimationVariables.durationValue3} ${AnimationVariables.easeFunction1}`;
   }
 
-  &.disabled {
+  .disabled & {
     background: var($semanticColorsDisabledBackground);
     @include high-contrast {
       bordercolor: GrayText;
@@ -297,7 +206,6 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
 }
 
 .zeroTick {
-  //classNames.zeroTick;
   position: absolute;
   background: var($semanticColorsDisabledBorder);
   width: 1px;
@@ -308,14 +216,14 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
     backgroundcolor: WindowText;
   }
 
-  &.disabled {
+  .disabled & {
     background: var($semanticColorsDisabledBackground);
     @include high-contrast {
       backgroundcolor: GrayText;
     }
   }
 
-  &.vertical {
+  .vertical & {
     width: 16px;
     height: 1px;
     transform: 3 3 3;
@@ -324,14 +232,13 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
 }
 
 .valueLabel {
-  //classNames.valueLabel;
   flex-shrink: 1;
   width: 30px;
   line-height: 1px; // using a string here meaning its relative to the size of the font
   margin: 0 8px;
   white-space: nowrap;
   width: 40px;
-  &.vertical {
+  .vertical & {
     margin: 0 auto;
     white-space: nowrap;
     width: 40px;

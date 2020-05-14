@@ -38,7 +38,7 @@ const getStaticStylesMemoized = memoizeFunction(
     const propControlledClasses = [
       disabled && classes.disabled,
       vertical && classes.vertical,
-      disabled ? globalClassNames.disabled : globalClassNames.enabled,
+      disabled ? globalClassNames.disabled : classes.enabled,
       vertical ? globalClassNames.column : globalClassNames.row,
       showTransition && classes.showTransitions,
       showValue && globalClassNames.showValue,
@@ -53,17 +53,17 @@ const getStaticStylesMemoized = memoizeFunction(
 
     return {
       root: css(className, classes.root, globalClassNames.root, ...propControlledClasses),
-      container: css(classes.container, globalClassNames.container, ...propControlledClasses),
-      slideBox: css(classes.slideBox, globalClassNames.slideBox, ...propControlledClasses),
-      line: css(classes.line, globalClassNames.line, ...propControlledClasses),
-      thumb: css(classes.thumb, globalClassNames.thumb, ...propControlledClasses),
-      activeSection: css(classes.activeSection, globalClassNames.activeSection, ...propControlledClasses),
-      inactiveSection: css(classes.inactiveSection, globalClassNames.inactiveSection, ...propControlledClasses),
-      lineContainer: css(classes.lineContainer, ...propControlledClasses),
-      valueLabel: css(classes.valueLabel, globalClassNames.valueLabel, ...propControlledClasses),
-      titleLabel: css(classes.titleLabel, titleLabelClassName, ...propControlledClasses),
-      showTransitions: css(classes.showTransitions, globalClassNames.showTransitions, ...propControlledClasses),
-      zeroTick: css(classes.zeroTick, globalClassNames.zeroTick, ...propControlledClasses),
+      container: css(classes.container, globalClassNames.container),
+      slideBox: css(classes.slideBox, globalClassNames.slideBox),
+      line: css(classes.line, globalClassNames.line),
+      thumb: css(classes.thumb, globalClassNames.thumb),
+      activeSection: css(classes.activeSection, globalClassNames.activeSection),
+      inactiveSection: css(classes.inactiveSection, globalClassNames.inactiveSection),
+      lineContainer: css(classes.lineContainer),
+      valueLabel: css(classes.valueLabel, globalClassNames.valueLabel),
+      titleLabel: css(classes.titleLabel, titleLabelClassName),
+      showTransitions: css(classes.showTransitions, globalClassNames.showTransitions),
+      zeroTick: css(classes.zeroTick, globalClassNames.zeroTick),
     };
   },
 );
