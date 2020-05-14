@@ -14,7 +14,7 @@ import { applyRegistration, styleToRegistration } from './styleToClassName';
  *
  * @param styleSet - The first style set to be merged and reigstered.
  */
-export function mergeStyleSets<TStyleSet extends IStyleSet<TStyleSet>>(
+export function mergeStyleSets<TStyleSet extends IStyleSet>(
   styleSet: TStyleSet | false | null | undefined,
 ): IProcessedStyleSet<TStyleSet>;
 
@@ -27,7 +27,7 @@ export function mergeStyleSets<TStyleSet extends IStyleSet<TStyleSet>>(
  * @param styleSet1 - The first style set to be merged.
  * @param styleSet2 - The second style set to be merged.
  */
-export function mergeStyleSets<TStyleSet1 extends IStyleSet<TStyleSet1>, TStyleSet2 extends IStyleSet<TStyleSet2>>(
+export function mergeStyleSets<TStyleSet1 extends IStyleSet, TStyleSet2 extends IStyleSet>(
   styleSet1: TStyleSet1 | false | null | undefined,
   styleSet2: TStyleSet2 | false | null | undefined,
 ): IProcessedStyleSet<TStyleSet1 & TStyleSet2>;
@@ -43,9 +43,9 @@ export function mergeStyleSets<TStyleSet1 extends IStyleSet<TStyleSet1>, TStyleS
  * @param styleSet3 - The third style set to be merged.
  */
 export function mergeStyleSets<
-  TStyleSet1 extends IStyleSet<TStyleSet1>,
-  TStyleSet2 extends IStyleSet<TStyleSet2>,
-  TStyleSet3 extends IStyleSet<TStyleSet3>
+  TStyleSet1 extends IStyleSet,
+  TStyleSet2 extends IStyleSet,
+  TStyleSet3 extends IStyleSet
 >(
   styleSet1: TStyleSet1 | false | null | undefined,
   styleSet2: TStyleSet2 | false | null | undefined,
@@ -64,10 +64,10 @@ export function mergeStyleSets<
  * @param styleSet4 - The fourth style set to be merged.
  */
 export function mergeStyleSets<
-  TStyleSet1 extends IStyleSet<TStyleSet1>,
-  TStyleSet2 extends IStyleSet<TStyleSet2>,
-  TStyleSet3 extends IStyleSet<TStyleSet3>,
-  TStyleSet4 extends IStyleSet<TStyleSet4>
+  TStyleSet1 extends IStyleSet,
+  TStyleSet2 extends IStyleSet,
+  TStyleSet3 extends IStyleSet,
+  TStyleSet4 extends IStyleSet
 >(
   styleSet1: TStyleSet1 | false | null | undefined,
   styleSet2: TStyleSet2 | false | null | undefined,
@@ -83,7 +83,7 @@ export function mergeStyleSets<
  *
  * @param styleSets - One or more style sets to be merged.
  */
-export function mergeStyleSets(...styleSets: Array<IStyleSet<any> | undefined | false | null>): IProcessedStyleSet<any>;
+export function mergeStyleSets(...styleSets: Array<IStyleSet | undefined | false | null>): IProcessedStyleSet<any>;
 
 /**
  * Takes in one or more style set objects, each consisting of a set of areas,
@@ -93,9 +93,7 @@ export function mergeStyleSets(...styleSets: Array<IStyleSet<any> | undefined | 
  *
  * @param styleSets - One or more style sets to be merged.
  */
-export function mergeStyleSets(
-  ...styleSets: Array<IStyleSet<any> | undefined | false | null>
-): IProcessedStyleSet<any> {
+export function mergeStyleSets(...styleSets: Array<IStyleSet | undefined | false | null>): IProcessedStyleSet<any> {
   return mergeCssSets(styleSets as any, getStyleOptions());
 }
 
@@ -108,7 +106,7 @@ export function mergeStyleSets(
  * @param styleSets - One or more style sets to be merged.
  * @param options - (optional) Options to use when creating rules.
  */
-export function mergeCssSets<TStyleSet extends IStyleSet<TStyleSet>>(
+export function mergeCssSets<TStyleSet extends IStyleSet>(
   styleSets: [TStyleSet | false | null | undefined],
   options?: IStyleOptions,
 ): IProcessedStyleSet<TStyleSet>;
@@ -122,7 +120,7 @@ export function mergeCssSets<TStyleSet extends IStyleSet<TStyleSet>>(
  * @param styleSets - One or more style sets to be merged.
  * @param options - (optional) Options to use when creating rules.
  */
-export function mergeCssSets<TStyleSet1 extends IStyleSet<TStyleSet1>, TStyleSet2 extends IStyleSet<TStyleSet2>>(
+export function mergeCssSets<TStyleSet1 extends IStyleSet, TStyleSet2 extends IStyleSet>(
   styleSets: [TStyleSet1 | false | null | undefined, TStyleSet2 | false | null | undefined],
   options?: IStyleOptions,
 ): IProcessedStyleSet<TStyleSet1 & TStyleSet2>;
@@ -136,11 +134,7 @@ export function mergeCssSets<TStyleSet1 extends IStyleSet<TStyleSet1>, TStyleSet
  * @param styleSets - One or more style sets to be merged.
  * @param options - (optional) Options to use when creating rules.
  */
-export function mergeCssSets<
-  TStyleSet1 extends IStyleSet<TStyleSet1>,
-  TStyleSet2 extends IStyleSet<TStyleSet2>,
-  TStyleSet3 extends IStyleSet<TStyleSet3>
->(
+export function mergeCssSets<TStyleSet1 extends IStyleSet, TStyleSet2 extends IStyleSet, TStyleSet3 extends IStyleSet>(
   styleSets: [
     TStyleSet1 | false | null | undefined,
     TStyleSet2 | false | null | undefined,
@@ -159,10 +153,10 @@ export function mergeCssSets<
  * @param options - (optional) Options to use when creating rules.
  */
 export function mergeCssSets<
-  TStyleSet1 extends IStyleSet<TStyleSet1>,
-  TStyleSet2 extends IStyleSet<TStyleSet2>,
-  TStyleSet3 extends IStyleSet<TStyleSet3>,
-  TStyleSet4 extends IStyleSet<TStyleSet4>
+  TStyleSet1 extends IStyleSet,
+  TStyleSet2 extends IStyleSet,
+  TStyleSet3 extends IStyleSet,
+  TStyleSet4 extends IStyleSet
 >(
   styleSets: [
     TStyleSet1 | false | null | undefined,
@@ -182,7 +176,7 @@ export function mergeCssSets<
  * @param styleSets - One or more style sets to be merged.
  * @param options - (optional) Options to use when creating rules.
  */
-export function mergeCssSets<TStyleSet extends IStyleSet<TStyleSet>>(
+export function mergeCssSets<TStyleSet extends IStyleSet>(
   styleSet: [TStyleSet | false | null | undefined],
   options?: IStyleOptions,
 ): IProcessedStyleSet<TStyleSet>;
@@ -197,7 +191,7 @@ export function mergeCssSets<TStyleSet extends IStyleSet<TStyleSet>>(
  * @param options - (optional) Options to use when creating rules.
  */
 export function mergeCssSets(
-  styleSets: Array<IStyleSet<any> | undefined | false | null>,
+  styleSets: Array<IStyleSet | undefined | false | null>,
   options?: IStyleOptions,
 ): IProcessedStyleSet<any> {
   // tslint:disable-next-line:no-any
