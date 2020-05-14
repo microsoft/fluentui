@@ -46,7 +46,7 @@
   }
 }
 
-@mixin slideBoxctiveZeroTickStyles {
+@mixin slideBoxActiveZeroTickStyles {
   .zeroTick {
     background-color: var($semanticColorsInputPlaceholderBackgroundChecked);
     @include high-contrast {
