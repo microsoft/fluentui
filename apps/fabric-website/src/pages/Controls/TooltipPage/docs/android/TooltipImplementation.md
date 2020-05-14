@@ -4,8 +4,8 @@
 
 ### Source code
 
-[Tooltip](https://github.com/OfficeDev/ui-fabric-android/blob/master/OfficeUIFabric/src/main/java/com/microsoft/officeuifabric/tooltip/Tooltip.kt)
+[Tooltip](https://github.com/microsoft/fluentui-android/blob/master/FluentUI/src/main/java/com/microsoft/fluentui/tooltip/Tooltip.kt)
 
 ### Sample code
 
-[Tooltip demo activity](https://github.com/OfficeDev/ui-fabric-android/blob/master/OfficeUIFabric.Demo/src/main/java/com/microsoft/officeuifabricdemo/demos/TooltipActivity.kt)
+[Tooltip demo activity](https://github.com/microsoft/fluentui-android/blob/master/FluentUI.Demo/src/main/java/com/microsoft/fluentuidemo/demos/TooltipActivity.kt)

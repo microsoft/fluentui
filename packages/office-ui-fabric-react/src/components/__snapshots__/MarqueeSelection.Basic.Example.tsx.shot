@@ -30,10 +30,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           background: #005a9e;
           border-color: #005a9e;
         }
-        & .ms-Checkbox-checkbox {
-          background: #0078d4;
-          border-color: #0078d4;
-        }
         @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
           background: Window;
           border-color: Highlight;
@@ -53,8 +49,14 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
         &:hover .ms-Checkbox-text {
           color: #201f1e;
         }
+        @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+          color: WindowText;
+        }
         &:focus .ms-Checkbox-text {
           color: #201f1e;
+        }
+        @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+          color: WindowText;
         }
   >
     <input
@@ -94,7 +96,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
             font-size: 14px;
             font-weight: 400;
             position: relative;
-            text-align: left;
             user-select: none;
           }
           &::before {
@@ -134,6 +135,9 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
               background: Highlight;
               border-color: Highlight;
             }
+            @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+              forced-color-adjust: none;
+            }
       >
         <i
           aria-hidden={true}
@@ -168,6 +172,12 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
               font-size: 14px;
               line-height: 20px;
               margin-left: 4px;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              color: WindowText;
+            }
+            @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+              forced-color-adjust: none;
             }
       >
         Is marquee enabled

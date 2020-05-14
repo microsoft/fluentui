@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Example: update Callout example to use Text component",
-  "packageName": "office-ui-fabric-react",
-  "email": "marygans@microsoft.com",
-  "commit": "a71bcc0a5b48da9393f75f6fe1ddb706f4d0a40d",
-  "dependentChangeType": "patch",
-  "date": "2020-03-25T23:45:18.549Z"
-}

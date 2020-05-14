@@ -1,11 +1,15 @@
 ### Control name
 
-`MSNavigationController`
+`NavigationController` in Swift, `MSFNavigationController` in Objective-C
+
+`SearchBar` in Swift, `MSFSearchBar` in Objective-C
 
 ### Source code
 
-[MSNavigationController](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric/Navigation/MSNavigationController.swift)
+[NavigationController](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI/Navigation/NavigationController.swift)
+
+[SearchBar](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI/Controls/SearchBar.swift)
 
 ### Sample code
 
-[MSNavigationController demo](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric.Demo/OfficeUIFabric.Demo/Demos/MSNavigationControllerDemoController.swift)
+[NavigationController demo](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI.Demo/FluentUI.Demo/Demos/NavigationControllerDemoController.swift)

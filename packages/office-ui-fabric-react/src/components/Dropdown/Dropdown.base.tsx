@@ -17,6 +17,7 @@ import {
   isMac,
   mergeAriaAttributeValues,
   safeRequestAnimationFrame,
+  warn,
   warnDeprecations,
   warnMutuallyExclusive,
 } from '../../Utilities';
@@ -92,6 +93,8 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
 
     initializeComponentRef(this);
 
+    const { multiSelect, selectedKey, selectedKeys, defaultSelectedKey, defaultSelectedKeys, options } = props;
+
     if (process.env.NODE_ENV !== 'production') {
       warnDeprecations('Dropdown', props, {
         isDisabled: 'disabled',
@@ -104,9 +107,27 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
         defaultSelectedKey: 'selectedKey',
         defaultSelectedKeys: 'selectedKeys',
         selectedKeys: 'selectedKey',
-        multiSelect: 'defaultSelectedKey',
-        selectedKey: 'multiSelect',
       });
+
+      if (multiSelect) {
+        const warnMultiSelect = (prop: keyof IDropdownProps) =>
+          warn(`Dropdown property '${prop}' cannot be used when 'multiSelect' is true. Use '${prop}s' instead.`);
+        if (selectedKey !== undefined) {
+          warnMultiSelect('selectedKey');
+        }
+        if (defaultSelectedKey !== undefined) {
+          warnMultiSelect('defaultSelectedKey');
+        }
+      } else {
+        const warnNotMultiSelect = (prop: keyof IDropdownProps) =>
+          warn(`Dropdown property '${prop}s' cannot be used when 'multiSelect' is false/unset. Use '${prop}' instead.`);
+        if (selectedKeys !== undefined) {
+          warnNotMultiSelect('selectedKey');
+        }
+        if (defaultSelectedKeys !== undefined) {
+          warnNotMultiSelect('defaultSelectedKey');
+        }
+      }
     }
 
     this._id = props.id || getId('Dropdown');
@@ -117,15 +138,19 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
 
     let selectedIndices: number[];
 
-    if (this.props.multiSelect) {
-      const selectedKeys = props.defaultSelectedKeys !== undefined ? props.defaultSelectedKeys : props.selectedKeys;
-      selectedIndices = this._getSelectedIndexes(props.options, selectedKeys);
+    if (multiSelect) {
+      selectedIndices = this._getSelectedIndexes(
+        options,
+        defaultSelectedKeys !== undefined ? defaultSelectedKeys : selectedKeys,
+      );
     } else {
-      const selectedKey = props.defaultSelectedKey !== undefined ? props.defaultSelectedKey : props.selectedKey;
-      selectedIndices = this._getSelectedIndexes(props.options, selectedKey!);
+      selectedIndices = this._getSelectedIndexes(
+        options,
+        (defaultSelectedKey !== undefined ? defaultSelectedKey : selectedKey)!,
+      );
     }
 
-    this._sizePosCache.updateOptions(props.options);
+    this._sizePosCache.updateOptions(options);
 
     this.state = {
       isOpen: false,

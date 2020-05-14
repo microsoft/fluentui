@@ -20,4 +20,10 @@ export const SeparatorPageProps: TFabricPlatformPageProps = {
     related,
     componentUrl,
   },
+  cross: {
+    overview: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/SeparatorPage/docs/cross/SeparatorOverview.md') as string,
+    usage: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/SeparatorPage/docs/cross/SeparatorUsage.md') as string,
+    related,
+    componentUrl,
+  },
 };

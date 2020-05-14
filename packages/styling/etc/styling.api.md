@@ -62,6 +62,9 @@ export const DefaultFontStyles: IFontStyles;
 // @public (undocumented)
 export const DefaultPalette: IPalette;
 
+// @public (undocumented)
+export const EdgeChromiumHighContrastSelector = "@media screen and (-ms-high-contrast: active) and (forced-colors: active)";
+
 // @public
 export function focusClear(): IRawStyle;
 
@@ -117,6 +120,11 @@ export namespace FontWeights {
     const // (undocumented)
     bold: IFontWeight;
 }
+
+// @public
+export function getEdgeChromiumNoHighContrastAdjustSelector(): {
+    [EdgeChromiumHighContrastSelector]: IRawStyle;
+};
 
 // @public
 export function getFadedOverflowStyle(theme: ITheme, color?: keyof ISemanticColors | keyof IPalette, direction?: 'horizontal' | 'vertical', width?: string | number, height?: string | number): IRawStyle;

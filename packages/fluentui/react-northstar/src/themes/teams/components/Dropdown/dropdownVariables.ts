@@ -129,6 +129,6 @@ export default (siteVars): DropdownVariables => ({
   listItemContentFontSize: siteVars.fontSizes.small,
   listItemContentColor: siteVars.colorScheme.default.foreground2,
   headerMessageBackgroundColor: siteVars.colors.white,
-  noResultsMessageBackgroundColor: siteVars.colors.white,
-  loadingMessageBackgroundColor: siteVars.colors.white,
+  noResultsMessageBackgroundColor: 'transparent',
+  loadingMessageBackgroundColor: 'transparent',
 });

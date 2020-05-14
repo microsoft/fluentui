@@ -1,8 +1,56 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Wed, 29 Apr 2020 12:34:58 GMT and should not be manually modified.
+This log was last generated on Thu, 14 May 2020 12:34:32 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.2.13](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.2.13)
+
+Thu, 14 May 2020 12:34:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.2.7..@uifabric/charting_v2.2.13)
+
+### Patches
+
+- Fix issue in stacked bar chart for Rounded value to 1 if less than 1% to appear in the chart ([PR #13141](https://github.com/microsoft/fluentui/pull/13141) by v-satgar@microsoft.com)
+- Charting : Add theme support for xaxis and yaxis for line chart and change office-ui-fabric-react from dependencies to peerDependencies ([PR #13140](https://github.com/microsoft/fluentui/pull/13140) by v-satgar@microsoft.com)
+
+## [2.2.7](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.2.7)
+
+Thu, 07 May 2020 01:06:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.2.6..@uifabric/charting_v2.2.7)
+
+### Patches
+
+- Addressing commonjs imports. ([PR #13031](https://github.com/microsoft/fluentui/pull/13031) by dzearing@microsoft.com)
+- Charting package: Expose prop for hide tooltips in charts ([PR #13023](https://github.com/microsoft/fluentui/pull/13023) by v-satgar@microsoft.com)
+
+## [2.2.6](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.2.6)
+
+Wed, 06 May 2020 12:32:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.2.5..@uifabric/charting_v2.2.6)
+
+### Patches
+
+- callout prop added to charts ([PR #12936](https://github.com/microsoft/fluentui/pull/12936) by v-jasha@microsoft.com)
+
+## [2.2.5](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.2.5)
+
+Tue, 05 May 2020 12:34:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.2.1..@uifabric/charting_v2.2.5)
+
+### Patches
+
+- Stacked Bar Chart: Rounded value to 1 if less than 1%  to appear in the chart ([PR #12939](https://github.com/microsoft/fluentui/pull/12939) by v-satgar@microsoft.com)
+
+## [2.2.1](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.2.1)
+
+Thu, 30 Apr 2020 12:31:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.2.0..@uifabric/charting_v2.2.1)
+
+### Patches
+
+- addding dismiss delay to overcome instant closing on blur ([PR #12911](https://github.com/microsoft/fluentui/pull/12911) by v-sivsar@microsoft.com)
+- Charting: Change FocusZone imports to @fluentui/react-focus from office-ui-fabric-react/lib/FocusZone ([PR #12917](https://github.com/microsoft/fluentui/pull/12917) by v-satgar@microsoft.com)
 
 ## [2.2.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.2.0)
 

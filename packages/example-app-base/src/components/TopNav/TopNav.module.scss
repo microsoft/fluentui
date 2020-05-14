@@ -27,10 +27,6 @@ $linkPadding: 16px;
   display: flex;
 }
 
-.homeLinkSection {
-  width: $Nav-width-sm;
-}
-
 .links {
   display: flex;
   flex-direction: row;
@@ -150,9 +146,5 @@ $linkPadding: 16px;
 @media screen and (min-width: $uhf-screen-min-lg) {
   .topNav {
     max-width: $App-maximumWidth-lg;
-  }
-
-  .homeLinkSection {
-    width: $Nav-width-lg;
   }
 }

@@ -32,12 +32,6 @@ module.exports = function bundleSizeCollect() {
   }
 
   function getComponentName(fileName) {
-    // Special case the component names for the oufr tests.
-    if (fileName.startsWith('office-ui-fabric-react-')) {
-      return fileName.match('office-ui-fabric-react-(.*).min.js')[1];
-    }
-
-    // Assume all other tests use the basename.
     return path.basename(fileName, '.min.js');
   }
 };
