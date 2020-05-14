@@ -159,7 +159,14 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
           }}
           data-is-focusable={true}
           focusable={'true'}
-          onFocus={this._onBarFocus.bind(this, point.legend!, pointData, color)}
+          onFocus={this._onBarFocus.bind(
+            this,
+            point.legend!,
+            pointData,
+            color,
+            point.xAxisCalloutData!,
+            point.yAxisCalloutData!,
+          )}
           onBlur={this._onBarLeave}
           aria-labelledby={this._calloutId}
           onMouseOver={
@@ -359,6 +366,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
   };
 
   private _onClick(customMessage: string): void {
+    console.log('customMessage', customMessage);
     if (this.state.isLegendSelected) {
       if (this.state.selectedLegendTitle === customMessage) {
         this.setState({
@@ -396,7 +404,8 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     yAxisCalloutData: string,
     mouseEvent: React.MouseEvent<SVGPathElement>,
   ): void {
-    mouseEvent.persist();
+    // mouseEvent.persist();
+    // console.log('called');
     if (
       this.state.isLegendSelected === false ||
       (this.state.isLegendSelected && this.state.selectedLegendTitle === customMessage)
