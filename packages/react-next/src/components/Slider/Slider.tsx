@@ -42,7 +42,7 @@ const getStaticStylesMemoized = memoizeFunction(
       vertical ? globalClassNames.column : globalClassNames.row,
     ];
 
-    const slideBoxPropClasss = [showTransition && classes.showTransitions, showValue && globalClassNames.showValue];
+    const slideBoxPropClasses = [showTransition && classes.showTransitions, showValue && globalClassNames.showValue];
 
     return {
       root: css(className, classes.root, globalClassNames.root, ...rootPropClasses),
