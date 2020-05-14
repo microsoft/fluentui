@@ -72,7 +72,7 @@
           "constraints": [
             {
               "xpath": "number(@aria-setsize) = @aria-setsize",
-              "description": "aria-setsize attribute value cannot be empty"
+              "description": "aria-setsize attribute value should be a number"
             }
           ]
         }
@@ -86,7 +86,7 @@
           "constraints": [
             {
               "xpath": "number(@aria-posinset) = @aria-posinset",
-              "description": "aria-posinset attribute value cannot be empty"
+              "description": "aria-posinset attribute value should be a number"
             }
           ]
         }
@@ -100,7 +100,7 @@
           "constraints": [
             {
               "xpath": "number(@aria-level) = @aria-level",
-              "description": "aria-level attribute value cannot be empty"
+              "description": "aria-level attribute value should be a number"
             }
           ]
         }
