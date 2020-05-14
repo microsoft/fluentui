@@ -35,26 +35,19 @@ const getStaticStylesMemoized = memoizeFunction(
   ) => {
     const globalClassNames = getGlobalClassNames(GlobalClassNames, theme);
 
-    const propControlledClasses = [
+    const rootPropClasses = [
       disabled ? classes.disabled : classes.enabled,
       vertical && classes.vertical,
       disabled ? globalClassNames.disabled : globalClassNames.enabled,
       vertical ? globalClassNames.column : globalClassNames.row,
-      showTransition && classes.showTransitions,
-      showValue && globalClassNames.showValue,
     ];
 
-    // const rootStaticClasses = [
-    //   reversed && 'reversed',
-    //   checked && 'is-checked',
-    //   !disabled && 'is-enabled',
-    //   disabled && 'is-disabled',
-    // ];
+    const slideBoxPropClasss = [showTransition && classes.showTransitions, showValue && globalClassNames.showValue];
 
     return {
-      root: css(className, classes.root, globalClassNames.root, ...propControlledClasses),
+      root: css(className, classes.root, globalClassNames.root, ...rootPropClasses),
       container: css(classes.container, globalClassNames.container),
-      slideBox: css(classes.slideBox, globalClassNames.slideBox),
+      slideBox: css(classes.slideBox, globalClassNames.slideBox, ...slideBoxPropClasss),
       line: css(classes.line, globalClassNames.line),
       thumb: css(classes.thumb, globalClassNames.thumb),
       activeSection: css(classes.activeSection, globalClassNames.activeSection),
