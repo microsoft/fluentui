@@ -81,6 +81,7 @@
 }
 
 .slideBox {
+  @include focus-border();
   background: transparent;
   border: none;
   flex-grow: 1;
@@ -90,7 +91,6 @@
   height: 28px;
   width: auto;
   padding: 0 8px; // Make room for thumb at ends of line
-  @include focus-border();
 
   .enabled & {
     &:active {
