@@ -7124,8 +7124,6 @@ export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement> {
     keytipProps?: IKeytipProps;
     label?: string;
     // Warning: (ae-forgotten-export) The symbol "Position" needs to be exported by the entry point index.d.ts
-    //
-    // (undocumented)
     labelPosition?: Position;
     max?: number;
     min?: number;

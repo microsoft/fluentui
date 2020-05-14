@@ -634,7 +634,6 @@ export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement> {
     inputProps?: React.InputHTMLAttributes<HTMLElement | HTMLInputElement>;
     keytipProps?: IKeytipProps;
     label?: string;
-    // (undocumented)
     labelPosition?: Position;
     max?: number;
     min?: number;
