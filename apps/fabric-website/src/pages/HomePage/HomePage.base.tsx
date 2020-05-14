@@ -17,7 +17,14 @@ import {
 } from 'office-ui-fabric-react';
 import { trackEvent, EventNames, getSiteArea, MarkdownHeader } from '@uifabric/example-app-base/lib/index2';
 import { platforms } from '../../SiteDefinition/SiteDefinition.platforms';
-import { AndroidLogo, AppleLogo, WebLogo } from '../../utilities/index';
+import {
+  AndroidLogoColor,
+  AppleLogoColor,
+  WebLogoColor,
+  WindowsLogoColor,
+  MacLogoColor,
+  CrossPlatformLogoColor,
+} from '../../utilities/index';
 import { IHomePageProps, IHomePageStyles, IHomePageStyleProps } from './HomePage.types';
 import { monoFont } from './HomePage.styles';
 const reactPackageData = require<any>('office-ui-fabric-react/package.json');
@@ -26,9 +33,12 @@ const getClassNames = classNamesFunction<IHomePageStyleProps, IHomePageStyles>()
 
 registerIcons({
   icons: {
-    'AndroidLogo-homePage': AndroidLogo({ iconColor: 'black', iconSize: 64 }),
-    'AppleLogo-homePage': AppleLogo({ iconColor: 'black', iconSize: 64 }),
-    'WebLogo-homePage': WebLogo({ iconColor: 'black', iconSize: 64 }),
+    'AndroidLogo-homePage': AndroidLogoColor({ iconSize: 64 }),
+    'AppleLogo-homePage': AppleLogoColor({ iconSize: 64 }),
+    'WebLogo-homePage': WebLogoColor({ iconSize: 64 }),
+    'WindowsLogo-homePage': WindowsLogoColor({ iconSize: 64 }),
+    'MacLogo-homePage': MacLogoColor({ iconSize: 64 }),
+    'CrossPlatformLogo-homePage': CrossPlatformLogoColor({ iconSize: 64 }),
   },
 });
 
@@ -121,15 +131,34 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
       <section className={this._classNames.heroSection}>
         <div className={this._classNames.sectionContent}>
           <div className={this._classNames.oneHalf}>
-            <h2 className={this._classNames.heroTitle}>Create amazing experiences</h2>
+            <h2 className={this._classNames.heroTitle}>
+              Fluent{' '}
+              <svg width="128" height="92" viewBox="0 0 128 92" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <text x="0" y="90" fill="url(#paint0_linear)">
+                  UI
+                </text>
+                <defs>
+                  <linearGradient
+                    id="paint0_linear"
+                    x1="-10"
+                    y1="-43"
+                    x2="129.319"
+                    y2="-32.448"
+                    gradientUnits="userSpaceOnUse"
+                  >
+                    <stop stop-color="#4FE5FF" />
+                    <stop offset="1" stop-color="#69E56E" />
+                  </linearGradient>
+                </defs>
+              </svg>
+            </h2>
           </div>
-          <div className={this._classNames.oneFourth}>
+          <div className={this._classNames.oneFourth} style={{ flexBasis: '31%' }}>
             <p>
-              Together, we’ve created Fluent UI, a collection of UX frameworks you can use to build Fluent experiences
-              that fit seamlessly into a broad range of Microsoft products.
+              A collection of UX frameworks for creating beautiful, cross-platform apps that share code, design, and
+              interaction behavior.
             </p>
-            <p>Connect with the cross-platform styles, controls and resources you need to do amazing things.</p>
-            <p>{this._renderLink('#/get-started', 'Get started', { isCTA: true, dark: false })}</p>
+            <p>Build for one platform or for all. Everything you need is here.</p>
           </div>
         </div>
       </section>
@@ -153,69 +182,118 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
       isInverted: true,
     });
 
-    const versionSwitcherColor: IRawStyle = { color: theme.palette.black };
-    const versionSwitcherActiveColor: IRawStyle = { color: theme.palette.neutralPrimary };
+    const versionSwitcherColor: IRawStyle = { color: theme.palette.white };
+    const versionSwitcherActiveColor: IRawStyle = { color: theme.palette.white };
+
+    const TitleStack = props => (
+      <Stack style={{ marginBottom: 8 }} horizontal verticalAlign="center" tokens={{ childrenGap: 16 }} {...props} />
+    );
 
     return (
       <div className={classNames.platformCardsSection}>
         <div className={classNames.inner}>
-          <div className={classNames.card} style={{ background: platforms.web.color }}>
-            <Icon iconName="WebLogo-homePage" className={classNames.cardIcon} />
-            <Stack horizontal verticalAlign="baseline" horizontalAlign="space-between">
+          <div className={classNames.card} style={{}}>
+            <TitleStack>
+              <Icon iconName="WebLogo-homePage" className={classNames.cardIcon} />
               <MarkdownHeader as="h3" className={classNames.cardTitle}>
                 Web
               </MarkdownHeader>
-              <ActionButton
-                allowDisabledFocus={true}
-                className={classNames.versionSwitcher}
-                styles={{
-                  root: versionSwitcherColor,
-                  flexContainer: { fontFamily: monoFont },
-                  menuIcon: versionSwitcherColor,
-                  rootHovered: versionSwitcherActiveColor,
-                  rootPressed: versionSwitcherActiveColor,
-                  rootExpanded: versionSwitcherActiveColor,
-                }}
-                menuProps={{
-                  gapSpace: 3,
-                  beakWidth: 8,
-                  isBeakVisible: true,
-                  shouldFocusOnMount: true,
-                  items: fabricVersionOptions,
-                  directionalHint: DirectionalHint.bottomCenter,
-                  onItemClick: this._onVersionMenuClick,
-                  styles: {
-                    root: { minWidth: 100 },
-                  },
-                }}
-              >
-                Fluent UI React {reactPackageData.version}
-              </ActionButton>
-            </Stack>
+            </TitleStack>
             <ul className={classNames.cardList}>
               <li className={classNames.cardListItem}>{this._renderLink('#/styles/web', 'Styles')}</li>
               <li className={classNames.cardListItem}>{this._renderLink('#/controls/web', 'Controls')}</li>
               <li className={classNames.cardListItem}>{this._renderLink('#/get-started/web', 'Get started')}</li>
+              <li>
+                <ActionButton
+                  allowDisabledFocus={true}
+                  className={classNames.versionSwitcher}
+                  styles={{
+                    root: { ...versionSwitcherColor, padding: '12px 0' },
+                    flexContainer: { fontFamily: monoFont },
+                    menuIcon: versionSwitcherColor,
+                    rootHovered: { ...versionSwitcherActiveColor, borderBottom: '1px solid white' },
+                    rootPressed: versionSwitcherActiveColor,
+                    rootExpanded: versionSwitcherActiveColor,
+                  }}
+                  menuProps={{
+                    gapSpace: 3,
+                    beakWidth: 8,
+                    isBeakVisible: true,
+                    shouldFocusOnMount: true,
+                    items: fabricVersionOptions,
+                    directionalHint: DirectionalHint.bottomCenter,
+                    onItemClick: this._onVersionMenuClick,
+                    styles: {
+                      root: { minWidth: 100 },
+                    },
+                  }}
+                >
+                  Fluent UI React {reactPackageData.version}
+                </ActionButton>
+              </li>
             </ul>
           </div>
-          <div className={classNames.card} style={{ background: platforms.ios.color }}>
-            <Icon iconName="AppleLogo-homePage" className={classNames.cardIcon} />
-            <MarkdownHeader as="h3" className={classNames.cardTitle}>
-              iOS
-            </MarkdownHeader>
+          <div className={classNames.card} style={{}}>
+            <TitleStack>
+              <Icon iconName="WindowsLogo-homePage" className={classNames.cardIcon} />
+              <MarkdownHeader as="h3" className={classNames.cardTitle}>
+                Windows
+              </MarkdownHeader>
+            </TitleStack>
+            <ul className={classNames.cardList}>
+              <li className={classNames.cardListItem}>{this._renderLink('#/controls/windows', 'Controls')}</li>
+              <li className={classNames.cardListItem}>{this._renderLink('#/get-started/windows', 'Get started')}</li>
+            </ul>
+          </div>
+          <div className={classNames.card} style={{}}>
+            <TitleStack>
+              <Icon iconName="AppleLogo-homePage" className={classNames.cardIcon} />
+              <MarkdownHeader as="h3" className={classNames.cardTitle}>
+                iOS
+              </MarkdownHeader>
+            </TitleStack>
             <ul className={classNames.cardList}>
               <li className={classNames.cardListItem}>{this._renderLink('#/controls/ios', 'Controls')}</li>
               <li className={classNames.cardListItem}>{this._renderLink('#/get-started/ios', 'Get started')}</li>
             </ul>
           </div>
-          <div className={classNames.card} style={{ background: platforms.android.color }}>
-            <Icon iconName="AndroidLogo-homePage" className={classNames.cardIcon} />
-            <MarkdownHeader as="h3" className={classNames.cardTitle}>
-              Android
-            </MarkdownHeader>
+          <div className={classNames.card} style={{}}>
+            <TitleStack>
+              <Icon iconName="AndroidLogo-homePage" className={classNames.cardIcon} />
+              <MarkdownHeader as="h3" className={classNames.cardTitle}>
+                Android
+              </MarkdownHeader>
+            </TitleStack>
             <ul className={classNames.cardList}>
               <li className={classNames.cardListItem}>{this._renderLink('#/controls/android', 'Controls')}</li>
               <li className={classNames.cardListItem}>{this._renderLink('#/get-started/android', 'Get started')}</li>
+            </ul>
+          </div>
+
+          <div className={classNames.card} style={{}}>
+            <TitleStack>
+              <Icon iconName="MacLogo-homePage" className={classNames.cardIcon} />
+              <MarkdownHeader as="h3" className={classNames.cardTitle}>
+                macOS
+              </MarkdownHeader>
+            </TitleStack>
+            <ul className={classNames.cardList}>
+              <li className={classNames.cardListItem}>{this._renderLink('#/controls/mac', 'Controls')}</li>
+              <li className={classNames.cardListItem}>{this._renderLink('#/get-started/mac', 'Get started')}</li>
+            </ul>
+          </div>
+          <div className={classNames.card} style={{}}>
+            <TitleStack>
+              <Icon iconName="CrossPlatformLogo-homePage" className={classNames.cardIcon} />
+              <MarkdownHeader as="h3" className={classNames.cardTitle}>
+                Cross-platform
+              </MarkdownHeader>
+            </TitleStack>
+            <ul className={classNames.cardList}>
+              <li className={classNames.cardListItem}>{this._renderLink('#/controls/crossplatform', 'Controls')}</li>
+              <li className={classNames.cardListItem}>
+                {this._renderLink('#/get-started/crossplatform', 'Get started')}
+              </li>
             </ul>
           </div>
         </div>
@@ -238,12 +316,12 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
       <section className={classNames.platformsSection}>
         <div className={classNames.sectionContent}>
           <div className={classNames.oneHalf}>
-            <h2 className={classNames.platformsTitle}>Build across platforms</h2>
+            <h2 className={classNames.platformsTitle}>Powering Microsoft 365 apps</h2>
           </div>
-          <div className={classNames.oneFourth}>
+          <div className={classNames.oneThird}>
             <p>
-              We're broadening our guidance to include more platforms and create an open source system, making it
-              possible for us all to evolve together.
+              Build your own apps using the same open source components we do—with accessibility, internationalization,
+              and performance included.
             </p>
           </div>
         </div>
@@ -264,11 +342,12 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
             />
           </div>
           <div className={this._classNames.oneFourth}>
-            <h2 className={this._classNames.resourcesTitle}>Discover resources</h2>
+            <h2 className={this._classNames.resourcesTitle}>Discover more</h2>
             <p>
-              Find design, inclusive and developer onboarding resources, and learn about how to become a contributor.
+              From tutorials to a fun collection of API references, find what you need to design and develop your own
+              Fluent experience.
             </p>
-            <p>{this._renderLink('#/resources', 'See resources', { dark: false })}</p>
+            <p>{this._renderLink('#/resources', 'Browse resources', { dark: false })}</p>
           </div>
         </div>
       </section>
@@ -278,19 +357,17 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
   private _renderUsageSection = (): JSX.Element => {
     return (
       <section className={this._classNames.usageSection}>
-        <div className={this._classNames.sectionContent}>
-          <div className={this._classNames.oneFourth}>
-            <h2 className={this._classNames.usageTitle}>Who at Microsoft uses Fluent UI?</h2>
-            <p>
-              From Word, PowerPoint and Excel to PowerBI, many teams in Microsoft utilize the functionality of Fluent
-              UI.
-            </p>
+        <div className={this._classNames.sectionContent} style={{ justifyContent: 'space-between' }}>
+          <div className={this._classNames.oneFourth} style={{ flexBasis: '33%' }}>
+            <h2 className={this._classNames.usageTitle}>
+              Who at Microsoft <br /> uses Fluent UI?
+            </h2>
+            <p>From Word and Excel to PowerBI and Teams, many Microsoft apps utilize Fluent UI functionality.</p>
           </div>
-          <div className={this._classNames.oneFourth} />
-          <figure className={this._classNames.oneHalf}>
+          <figure style={{ alignSelf: 'flex-end' }} className={this._classNames.oneHalf}>
             <ul className={this._classNames.usageIconList}>{this._renderUsageIconList()}</ul>
             <figcaption>
-              <strong>+ many additional Microsoft sites and products</strong>
+              <strong>+ many more apps and services</strong>
             </figcaption>
           </figure>
         </div>
