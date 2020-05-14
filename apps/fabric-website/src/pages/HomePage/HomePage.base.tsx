@@ -320,8 +320,8 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
           </div>
           <div className={classNames.oneThird}>
             <p>
-              Build your own apps using the same open source components we do—with accessibility, globalization, and
-              performance included.
+              Build your own apps using the same open source components we do—with accessibility, internationalization,
+              and performance included.
             </p>
           </div>
         </div>
