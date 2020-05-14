@@ -366,7 +366,6 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
   };
 
   private _onClick(customMessage: string): void {
-    console.log('customMessage', customMessage);
     if (this.state.isLegendSelected) {
       if (this.state.selectedLegendTitle === customMessage) {
         this.setState({
@@ -404,8 +403,8 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     yAxisCalloutData: string,
     mouseEvent: React.MouseEvent<SVGPathElement>,
   ): void {
-    // mouseEvent.persist();
-    // console.log('called');
+    mouseEvent.persist();
+
     if (
       this.state.isLegendSelected === false ||
       (this.state.isLegendSelected && this.state.selectedLegendTitle === customMessage)
