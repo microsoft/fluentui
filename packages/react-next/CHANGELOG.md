@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-next
 
-This log was last generated on Tue, 12 May 2020 23:23:51 GMT and should not be manually modified.
+This log was last generated on Thu, 14 May 2020 12:34:32 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-alpha.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.19)
+
+Thu, 14 May 2020 12:34:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.17..@fluentui/react-next_v8.0.0-alpha.19)
+
+### Changes
+
+- Slider: Copying into react-next and converting it to be a function component. ([PR #12972](https://github.com/microsoft/fluentui/pull/12972) by czearing@outlook.com)
+- Copying TextField to react-next, in preparation for converting to function component. ([PR #13099](https://github.com/microsoft/fluentui/pull/13099) by czearing@outlook.com)
+- Link: Copying Link to react-next and converting it to be a function component. ([PR #13097](https://github.com/microsoft/fluentui/pull/13097) by czearing@outlook.com)
 
 ## [8.0.0-alpha.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.17)
 

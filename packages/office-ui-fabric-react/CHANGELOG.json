@@ -2,6 +2,47 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 14 May 2020 12:34:32 GMT",
+      "tag": "office-ui-fabric-react_v7.113.2",
+      "version": "7.113.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix accessibility issue",
+            "author": "xiameng@microsoft.com",
+            "commit": "831a4d70a27d4a4d2125998b1f01793846b91dbd",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "updating DocumentCard and GroupedList to FC",
+            "author": "czearing@outlook.com",
+            "commit": "c92489b9d599ada9e2b7e3cbd888868ff50f390a",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Update Picker.CustomResult.Example.tsx",
+            "author": "patrick@nubo.eu",
+            "commit": "d62d928938243cf193158300dd6dfad032087472",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Updating examples to use `useId` instead of `getId` and converting `Dialog` examples to function components.",
+            "author": "czearing@outlook.com",
+            "commit": "c76ac73627c32efd10498faae8ab976e6c5adbc1",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Nav: fix Basic Example type error",
+            "author": "zhmushan@qq.com",
+            "commit": "69de6a1faae65fb197aea9c3b74e6689dadb29f2",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 12 May 2020 12:41:21 GMT",
       "tag": "office-ui-fabric-react_v7.112.0",
       "version": "7.112.0",

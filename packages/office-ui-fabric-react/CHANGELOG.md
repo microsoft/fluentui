@@ -1,8 +1,20 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 12 May 2020 12:41:21 GMT and should not be manually modified.
+This log was last generated on Thu, 14 May 2020 12:34:32 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.113.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.113.2)
+
+Thu, 14 May 2020 12:34:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.112.0..office-ui-fabric-react_v7.113.2)
+
+### Patches
+
+- fix accessibility issue ([PR #12952](https://github.com/microsoft/fluentui/pull/12952) by xiameng@microsoft.com)
+- updating DocumentCard and GroupedList to FC ([PR #12851](https://github.com/microsoft/fluentui/pull/12851) by czearing@outlook.com)
+- Update Picker.CustomResult.Example.tsx ([PR #12795](https://github.com/microsoft/fluentui/pull/12795) by patrick@nubo.eu)
+- Updating examples to use `useId` instead of `getId` and converting `Dialog` examples to function components. ([PR #13054](https://github.com/microsoft/fluentui/pull/13054) by czearing@outlook.com)
 
 ## [7.112.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.112.0)
 
