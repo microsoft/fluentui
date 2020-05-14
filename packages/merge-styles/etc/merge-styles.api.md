@@ -8,22 +8,22 @@
 export function concatStyleSets<TStyleSet extends IStyleSet<TStyleSet>>(styleSet: TStyleSet | false | null | undefined): IConcatenatedStyleSet<TStyleSet>;
 
 // @public
-export function concatStyleSets<TStyleSet1 extends IStyleSet<any>, TStyleSet2 extends IStyleSet<any>>(styleSet1: TStyleSet1 | false | null | undefined, styleSet2: TStyleSet2 | false | null | undefined): IConcatenatedStyleSet<TStyleSet1 & TStyleSet2>;
+export function concatStyleSets<TStyleSet1 extends IStyleSet, TStyleSet2 extends IStyleSet>(styleSet1: TStyleSet1 | false | null | undefined, styleSet2: TStyleSet2 | false | null | undefined): IConcatenatedStyleSet<TStyleSet1 & TStyleSet2>;
 
 // @public
-export function concatStyleSets<TStyleSet1 extends IStyleSet<any>, TStyleSet2 extends IStyleSet<any>, TStyleSet3 extends IStyleSet<any>>(styleSet1: TStyleSet1 | false | null | undefined, styleSet2: TStyleSet2 | false | null | undefined, styleSet3: TStyleSet3 | false | null | undefined): IConcatenatedStyleSet<TStyleSet1 & TStyleSet2 & TStyleSet3>;
+export function concatStyleSets<TStyleSet1 extends IStyleSet, TStyleSet2 extends IStyleSet, TStyleSet3 extends IStyleSet>(styleSet1: TStyleSet1 | false | null | undefined, styleSet2: TStyleSet2 | false | null | undefined, styleSet3: TStyleSet3 | false | null | undefined): IConcatenatedStyleSet<TStyleSet1 & TStyleSet2 & TStyleSet3>;
 
 // @public
-export function concatStyleSets<TStyleSet1 extends IStyleSet<any>, TStyleSet2 extends IStyleSet<any>, TStyleSet3 extends IStyleSet<any>, TStyleSet4 extends IStyleSet<any>>(styleSet1: TStyleSet1 | false | null | undefined, styleSet2: TStyleSet2 | false | null | undefined, styleSet3: TStyleSet3 | false | null | undefined, styleSet4: TStyleSet4 | false | null | undefined): IConcatenatedStyleSet<any>;
+export function concatStyleSets<TStyleSet1 extends IStyleSet, TStyleSet2 extends IStyleSet, TStyleSet3 extends IStyleSet, TStyleSet4 extends IStyleSet>(styleSet1: TStyleSet1 | false | null | undefined, styleSet2: TStyleSet2 | false | null | undefined, styleSet3: TStyleSet3 | false | null | undefined, styleSet4: TStyleSet4 | false | null | undefined): IConcatenatedStyleSet<TStyleSet1 & TStyleSet2 & TStyleSet3 & TStyleSet4>;
 
 // @public
-export function concatStyleSets<TStyleSet1 extends IStyleSet<any>, TStyleSet2 extends IStyleSet<any>, TStyleSet3 extends IStyleSet<any>, TStyleSet4 extends IStyleSet<any>, TStyleSet5 extends IStyleSet<any>>(styleSet1: TStyleSet1 | false | null | undefined, styleSet2: TStyleSet2 | false | null | undefined, styleSet3: TStyleSet3 | false | null | undefined, styleSet4: TStyleSet4 | false | null | undefined, styleSet5: TStyleSet5 | false | null | undefined): IConcatenatedStyleSet<TStyleSet1 & TStyleSet2 & TStyleSet3 & TStyleSet4 & TStyleSet5>;
+export function concatStyleSets<TStyleSet1 extends IStyleSet, TStyleSet2 extends IStyleSet, TStyleSet3 extends IStyleSet, TStyleSet4 extends IStyleSet, TStyleSet5 extends IStyleSet>(styleSet1: TStyleSet1 | false | null | undefined, styleSet2: TStyleSet2 | false | null | undefined, styleSet3: TStyleSet3 | false | null | undefined, styleSet4: TStyleSet4 | false | null | undefined, styleSet5: TStyleSet5 | false | null | undefined): IConcatenatedStyleSet<TStyleSet1 & TStyleSet2 & TStyleSet3 & TStyleSet4 & TStyleSet5>;
 
 // @public
-export function concatStyleSets<TStyleSet1 extends IStyleSet<any>, TStyleSet2 extends IStyleSet<any>, TStyleSet3 extends IStyleSet<any>, TStyleSet4 extends IStyleSet<any>, TStyleSet5 extends IStyleSet<any>, TStyleSet6 extends IStyleSet<any>>(styleSet1: TStyleSet1 | false | null | undefined, styleSet2: TStyleSet2 | false | null | undefined, styleSet3: TStyleSet3 | false | null | undefined, styleSet4: TStyleSet4 | false | null | undefined, styleSet5: TStyleSet5 | false | null | undefined, styleSet6: TStyleSet6 | false | null | undefined): IConcatenatedStyleSet<TStyleSet1 & TStyleSet2 & TStyleSet3 & TStyleSet4 & TStyleSet5 & TStyleSet6>;
+export function concatStyleSets<TStyleSet1 extends IStyleSet, TStyleSet2 extends IStyleSet, TStyleSet3 extends IStyleSet, TStyleSet4 extends IStyleSet, TStyleSet5 extends IStyleSet, TStyleSet6 extends IStyleSet>(styleSet1: TStyleSet1 | false | null | undefined, styleSet2: TStyleSet2 | false | null | undefined, styleSet3: TStyleSet3 | false | null | undefined, styleSet4: TStyleSet4 | false | null | undefined, styleSet5: TStyleSet5 | false | null | undefined, styleSet6: TStyleSet6 | false | null | undefined): IConcatenatedStyleSet<TStyleSet1 & TStyleSet2 & TStyleSet3 & TStyleSet4 & TStyleSet5 & TStyleSet6>;
 
 // @public
-export function concatStyleSets(...styleSets: (IStyleSet<any> | false | null | undefined)[]): IConcatenatedStyleSet<any>;
+export function concatStyleSets(...styleSets: (IStyleSet | false | null | undefined)[]): IConcatenatedStyleSet<any>;
 
 // @public
 export function concatStyleSetsWithProps<TStyleProps, TStyleSet extends IStyleSet<TStyleSet>>(styleProps: TStyleProps, ...allStyles: (IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined)[]): Partial<TStyleSet>;

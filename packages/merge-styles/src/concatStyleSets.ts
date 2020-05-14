@@ -53,7 +53,7 @@ export function concatStyleSets<
   styleSet2: TStyleSet2 | false | null | undefined,
   styleSet3: TStyleSet3 | false | null | undefined,
   styleSet4: TStyleSet4 | false | null | undefined,
-): IConcatenatedStyleSet<any>;
+): IConcatenatedStyleSet<TStyleSet1 & TStyleSet2 & TStyleSet3 & TStyleSet4>;
 
 /**
  * Combine a set of styles together (but does not register css classes).
