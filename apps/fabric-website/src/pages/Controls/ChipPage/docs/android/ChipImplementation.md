@@ -4,8 +4,8 @@
 
 ### Source code
 
-[PersonaChipView](https://github.com/OfficeDev/ui-fabric-android/blob/master/OfficeUIFabric/src/main/java/com/microsoft/officeuifabric/persona/PersonaChipView.kt)
+[PersonaChipView](https://github.com/microsoft/fluentui-android/blob/master/FluentUI/src/main/java/com/microsoft/fluentui/persona/PersonaChipView.kt)
 
 ### Sample code
 
-[PersonaChipView demo activity](https://github.com/OfficeDev/ui-fabric-android/blob/master/OfficeUIFabric.Demo/src/main/java/com/microsoft/officeuifabricdemo/demos/PersonaChipViewActivity.kt)
+[PersonaChipView demo activity](https://github.com/microsoft/fluentui-android/blob/master/FluentUI.Demo/src/main/java/com/microsoft/fluentuidemo/demos/PersonaChipViewActivity.kt)

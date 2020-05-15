@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { SliderBase } from './Slider.base';
 import { IStyle, ITheme } from '../../Styling';
 import { IStyleFunctionOrObject, IRefObject } from '../../Utilities';
 
@@ -15,7 +14,7 @@ export interface ISlider {
 /**
  * {@docCategory Slider}
  */
-export interface ISliderProps extends React.ClassAttributes<SliderBase> {
+export interface ISliderProps extends React.ClassAttributes<HTMLElement> {
   /**
    * Optional callback to access the ISlider interface. Use this instead of ref for accessing
    * the public methods and properties of the component.

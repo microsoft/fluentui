@@ -1,13 +1,21 @@
-import { Accessibility, menuBehavior } from '@fluentui/accessibility';
-import { ReactAccessibilityBehavior } from '@fluentui/react-bindings';
+import { Accessibility, menuBehavior, MenuBehaviorProps } from '@fluentui/accessibility';
+import {
+  useAccessibility,
+  getElementType,
+  useStyles,
+  useTelemetry,
+  useUnhandledProps,
+  useAutoControlled,
+} from '@fluentui/react-bindings';
+// @ts-ignore
+import { ThemeContext } from 'react-fela';
 import * as customPropTypes from '@fluentui/react-proptypes';
-import { ComponentVariablesObject, ComponentSlotStylesPrepared, mergeComponentVariables } from '@fluentui/styles';
+import { mergeComponentVariables } from '@fluentui/styles';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
 import {
-  AutoControlledComponent,
   childrenExist,
   createShorthandFactory,
   UIComponentProps,
@@ -15,11 +23,18 @@ import {
   commonPropTypes,
   getKindProp,
   rtlTextContainer,
-  ShorthandFactory,
 } from '../../utils';
 
 import MenuItem, { MenuItemProps } from './MenuItem';
-import { WithAsProp, ShorthandCollection, ShorthandValue, withSafeTypeForAs, ComponentEventHandler } from '../../types';
+import {
+  WithAsProp,
+  ShorthandCollection,
+  ShorthandValue,
+  withSafeTypeForAs,
+  ComponentEventHandler,
+  FluentComponentStaticProps,
+  ProviderContextPrepared,
+} from '../../types';
 import MenuDivider from './MenuDivider';
 import { BoxProps } from '../Box/Box';
 
@@ -30,7 +45,7 @@ export interface MenuProps extends UIComponentProps, ChildrenComponentProps {
    * Accessibility behavior if overridden by the user.
    * @available menuAsToolbarBehavior, tabListBehavior, tabBehavior
    */
-  accessibility?: Accessibility;
+  accessibility?: Accessibility<MenuBehaviorProps>;
 
   /** Index of the currently active item. */
   activeIndex?: number | string;
@@ -90,103 +105,109 @@ export interface MenuProps extends UIComponentProps, ChildrenComponentProps {
   indicator?: ShorthandValue<BoxProps>;
 }
 
-export interface MenuState {
-  activeIndex?: number | string;
-}
-
 export const menuClassName = 'ui-menu';
 
-class Menu extends AutoControlledComponent<WithAsProp<MenuProps>, MenuState> {
-  static displayName = 'Menu';
+export type MenuStylesProps = Required<
+  Pick<MenuProps, 'iconOnly' | 'fluid' | 'pointing' | 'pills' | 'primary' | 'underlined' | 'vertical' | 'submenu'>
+>;
 
-  static deprecated_className = menuClassName;
+export const Menu: React.FC<WithAsProp<MenuProps>> &
+  FluentComponentStaticProps<MenuProps> & {
+    Item: typeof MenuItem;
+    Divider: typeof MenuDivider;
+  } = props => {
+  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const { setStart, setEnd } = useTelemetry(Menu.displayName, context.telemetry);
+  setStart();
+  const {
+    iconOnly,
+    items,
+    pills,
+    pointing,
+    primary,
+    secondary,
+    underlined,
+    vertical,
+    submenu,
+    indicator,
+    children,
+    variables,
+    styles,
+    fluid,
+    className,
+    design,
+  } = props;
+  const ElementType = getElementType(props);
+  const unhandledProps = useUnhandledProps(Menu.handledProps, props);
 
-  static create: ShorthandFactory<MenuProps>;
-
-  static propTypes = {
-    ...commonPropTypes.createCommon({
-      content: false,
+  const getA11yProps = useAccessibility<MenuBehaviorProps>(props.accessibility, {
+    debugName: Menu.displayName,
+    mapPropsToBehavior: () => ({
+      vertical,
     }),
-    activeIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-    defaultActiveIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-    fluid: PropTypes.bool,
-    iconOnly: PropTypes.bool,
-    items: customPropTypes.collectionShorthandWithKindProp(['divider', 'item']),
-    onItemClick: PropTypes.func,
-    onActiveIndexChange: PropTypes.func,
-    pills: PropTypes.bool,
-    pointing: PropTypes.oneOfType([PropTypes.bool, PropTypes.oneOf(['start', 'end'])]),
-    primary: customPropTypes.every([customPropTypes.disallow(['secondary']), PropTypes.bool]),
-    secondary: customPropTypes.every([customPropTypes.disallow(['primary']), PropTypes.bool]),
-    underlined: PropTypes.bool,
-    vertical: PropTypes.bool,
-    submenu: PropTypes.bool,
-    indicator: customPropTypes.shorthandAllowingChildren,
+    rtl: context.rtl,
+  });
+
+  const { classes, styles: resolvedStyles } = useStyles<MenuStylesProps>(Menu.displayName, {
+    className: menuClassName,
+    mapPropsToStyles: () => ({
+      iconOnly,
+      fluid,
+      pointing,
+      pills,
+      primary,
+      underlined,
+      vertical,
+      submenu,
+    }),
+    mapPropsToInlineStyles: () => ({
+      className,
+      design,
+      styles,
+      variables,
+    }),
+    rtl: context.rtl,
+  });
+
+  const [activeIndex, setIndex] = useAutoControlled({
+    defaultValue: props.defaultActiveIndex,
+    value: props.activeIndex,
+    initialValue: undefined,
+  });
+
+  const setActiveIndex = (e: React.SyntheticEvent, activeIndex: number) => {
+    _.invoke(props, 'onActiveIndexChange', e, { ...props, activeIndex });
+    setIndex(activeIndex);
   };
 
-  static defaultProps = {
-    as: 'ul',
-    accessibility: menuBehavior as Accessibility,
-  };
-
-  static autoControlledProps = ['activeIndex'];
-
-  static Item = MenuItem;
-  static Divider = MenuDivider;
-
-  setActiveIndex = (e: React.SyntheticEvent, activeIndex: number) => {
-    _.invoke(this.props, 'onActiveIndexChange', e, { ...this.props, activeIndex });
-    this.setState({ activeIndex });
-  };
-
-  handleItemOverrides = variables => predefinedProps => ({
+  const handleItemOverrides = predefinedProps => ({
     onClick: (e, itemProps) => {
       const { index } = itemProps;
 
-      this.setActiveIndex(e, index);
+      setActiveIndex(e, index);
 
-      _.invoke(this.props, 'onItemClick', e, itemProps);
+      _.invoke(props, 'onItemClick', e, itemProps);
       _.invoke(predefinedProps, 'onClick', e, itemProps);
     },
     onActiveChanged: (e, props) => {
       const { index, active } = props;
       if (active) {
-        this.setActiveIndex(e, index);
-      } else if (this.state.activeIndex === index) {
-        this.setActiveIndex(e, null);
+        setActiveIndex(e, index);
+      } else if (activeIndex === index) {
+        setActiveIndex(e, null);
       }
       _.invoke(predefinedProps, 'onActiveChanged', e, props);
     },
     variables: mergeComponentVariables(variables, predefinedProps.variables),
   });
 
-  handleDividerOverrides = variables => predefinedProps => ({
+  const handleDividerOverrides = predefinedProps => ({
     variables: mergeComponentVariables(variables, predefinedProps.variables),
   });
 
-  renderItems = (
-    styles: ComponentSlotStylesPrepared,
-    variables: ComponentVariablesObject,
-    accessibility: ReactAccessibilityBehavior,
-  ) => {
-    const {
-      iconOnly,
-      items,
-      pills,
-      pointing,
-      primary,
-      secondary,
-      underlined,
-      vertical,
-      submenu,
-      indicator,
-    } = this.props;
-    const { activeIndex } = this.state;
+  const renderItems = () => {
     const itemsCount = _.filter(items, item => getKindProp(item, 'item') !== 'divider').length;
     let itemPosition = 0;
-
-    const overrideItemProps = this.handleItemOverrides(variables);
-    const overrideDividerProps = this.handleDividerOverrides(variables);
 
     return _.map(items, (item, index) => {
       const active = (typeof activeIndex === 'string' ? parseInt(activeIndex, 10) : activeIndex) === index;
@@ -194,56 +215,89 @@ class Menu extends AutoControlledComponent<WithAsProp<MenuProps>, MenuState> {
 
       if (kind === 'divider') {
         return MenuDivider.create(item, {
-          defaultProps: () => ({
-            primary,
-            secondary,
-            vertical,
-            styles: styles.divider,
-            inSubmenu: submenu,
-            accessibility: accessibility.childBehaviors ? accessibility.childBehaviors.divider : undefined,
-          }),
-          overrideProps: overrideDividerProps,
+          defaultProps: () =>
+            getA11yProps('divider', {
+              primary,
+              secondary,
+              vertical,
+              styles: resolvedStyles.divider,
+              inSubmenu: submenu,
+            }),
+          overrideProps: handleDividerOverrides,
         });
       }
 
       itemPosition++;
 
       return MenuItem.create(item, {
-        defaultProps: () => ({
-          iconOnly,
-          pills,
-          pointing,
-          primary,
-          secondary,
-          underlined,
-          vertical,
-          index,
-          itemPosition,
-          itemsCount,
-          active,
-          inSubmenu: submenu,
-          indicator,
-          accessibility: accessibility.childBehaviors ? accessibility.childBehaviors.item : undefined,
-        }),
-        overrideProps: overrideItemProps,
+        defaultProps: () =>
+          getA11yProps('item', {
+            iconOnly,
+            pills,
+            pointing,
+            primary,
+            secondary,
+            underlined,
+            vertical,
+            index,
+            itemPosition,
+            itemsCount,
+            active,
+            inSubmenu: submenu,
+            indicator,
+          }),
+        overrideProps: handleItemOverrides,
       });
     });
   };
 
-  renderComponent({ ElementType, classes, accessibility, styles, variables, unhandledProps }) {
-    const { children } = this.props;
-    return (
-      <ElementType
-        {...accessibility.attributes.root}
-        {...rtlTextContainer.getAttributes({ forElements: [children] })}
-        {...unhandledProps}
-        className={classes.root}
-      >
-        {childrenExist(children) ? children : this.renderItems(styles, variables, accessibility)}
-      </ElementType>
-    );
-  }
-}
+  const element = getA11yProps.unstable_wrapWithFocusZone(
+    <ElementType
+      {...getA11yProps('root', {
+        className: classes.root,
+        ...rtlTextContainer.getAttributes({ forElements: [children] }),
+        ...unhandledProps,
+      })}
+    >
+      {childrenExist(children) ? children : renderItems()}
+    </ElementType>,
+  );
+  setEnd();
+  return element;
+};
+
+Menu.displayName = 'Menu';
+
+Menu.propTypes = {
+  ...commonPropTypes.createCommon({
+    content: false,
+  }),
+  activeIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  defaultActiveIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  fluid: PropTypes.bool,
+  iconOnly: PropTypes.bool,
+  items: customPropTypes.collectionShorthandWithKindProp(['divider', 'item']),
+  onItemClick: PropTypes.func,
+  onActiveIndexChange: PropTypes.func,
+  pills: PropTypes.bool,
+  pointing: PropTypes.oneOfType([PropTypes.bool, PropTypes.oneOf<'start' | 'end'>(['start', 'end'])]),
+  primary: customPropTypes.every([customPropTypes.disallow(['secondary']), PropTypes.bool]),
+  secondary: customPropTypes.every([customPropTypes.disallow(['primary']), PropTypes.bool]),
+  underlined: PropTypes.bool,
+  vertical: PropTypes.bool,
+  submenu: PropTypes.bool,
+  indicator: customPropTypes.shorthandAllowingChildren,
+};
+
+Menu.defaultProps = {
+  as: 'ul',
+  accessibility: menuBehavior,
+};
+
+Menu.handledProps = Object.keys(Menu.propTypes) as any;
+
+Menu.Item = MenuItem;
+Menu.Divider = MenuDivider;
 
 Menu.create = createShorthandFactory({ Component: Menu, mappedArrayProp: 'items' });
 

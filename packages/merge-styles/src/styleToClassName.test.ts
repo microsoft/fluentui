@@ -1,5 +1,6 @@
 import { InjectionMode, Stylesheet } from './Stylesheet';
 import { styleToClassName } from './styleToClassName';
+import { IStyleOptions } from './IStyleOptions';
 
 const _stylesheet: Stylesheet = Stylesheet.getInstance();
 
@@ -402,5 +403,74 @@ describe('styleToClassName', () => {
     );
 
     expect(_stylesheet.getRules()).toEqual('.css-0{background:red;}');
+  });
+});
+
+describe('styleToClassName with specificityMultiplier', () => {
+  const options: IStyleOptions = { specificityMultiplier: 2 };
+  beforeEach(() => {
+    _stylesheet.reset();
+  });
+
+  it('can repeat classname', () => {
+    const className = styleToClassName(options, { background: 'red' });
+
+    expect(className).toEqual('css-0');
+    expect(_stylesheet.getRules()).toEqual('.css-0.css-0{background:red;}');
+  });
+
+  it('can repeat classname when have child selectors', () => {
+    styleToClassName(options, {
+      selectors: {
+        '.foo': { background: 'red' },
+      },
+    });
+
+    expect(_stylesheet.getRules()).toEqual('.css-0.css-0 .foo{background:red;}');
+  });
+
+  it('can repeat classname when have child selectors with comma', () => {
+    styleToClassName(options, {
+      selectors: {
+        '.foo, .bar': { background: 'red' },
+      },
+    });
+
+    expect(_stylesheet.getRules()).toEqual('.css-0.css-0 .foo{background:red;}.css-0.css-0 .bar{background:red;}');
+  });
+
+  it('can repeat classname when have child selectors with comma with pseudo selectors', () => {
+    styleToClassName(options, {
+      selectors: {
+        ':hover, :active': { background: 'red' },
+      },
+    });
+
+    expect(_stylesheet.getRules()).toEqual('.css-0.css-0:hover{background:red;}.css-0.css-0:active{background:red;}');
+  });
+
+  it('can repeat classname when have child selectors with comma with @media query', () => {
+    styleToClassName(options, {
+      selectors: {
+        '@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none)': {
+          background: 'red',
+        },
+      },
+    });
+
+    expect(_stylesheet.getRules()).toEqual(
+      '@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){.css-0.css-0{background:red;}}',
+    );
+  });
+
+  it('do not repeat classname when have global selector', () => {
+    const className = styleToClassName(options, {
+      selectors: {
+        ':global(.class1)': { background: 'red' },
+      },
+    });
+
+    expect(className).toEqual('css-0');
+    expect(_stylesheet.getRules()).toEqual('.class1{background:red;}');
   });
 });
