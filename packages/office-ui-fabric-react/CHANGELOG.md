@@ -1,8 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 15 May 2020 05:52:46 GMT and should not be manually modified.
+This log was last generated on Fri, 15 May 2020 12:42:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.114.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.114.1)
+
+Fri, 15 May 2020 12:42:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.114.0..office-ui-fabric-react_v7.114.1)
+
+### Patches
+
+- Updating List, Keytips, and Facepile examples to use function components ([PR #12829](https://github.com/microsoft/fluentui/pull/12829) by czearing@outlook.com)
+- updating Shimmer, Slider, SelectedPeopleList, MarqueeSelection, and SwatchColorPicker examples to FC ([PR #12849](https://github.com/microsoft/fluentui/pull/12849) by czearing@outlook.com)
 
 ## [7.114.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.114.0)
 

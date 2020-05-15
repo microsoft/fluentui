@@ -1,8 +1,17 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Thu, 14 May 2020 12:34:32 GMT and should not be manually modified.
+This log was last generated on Fri, 15 May 2020 12:42:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.17.2](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.17.2)
+
+Fri, 15 May 2020 12:42:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.17.0..@uifabric/utilities_v7.17.2)
+
+### Patches
+
+- Selection added `items` to prop constructor options ([PR #12849](https://github.com/microsoft/fluentui/pull/12849) by czearing@outlook.com)
 
 ## [7.17.0](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.17.0)
 
