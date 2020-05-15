@@ -68,6 +68,7 @@ export * from './Chat/chatMessageBehavior';
 export { default as gridBehavior } from './Grid/gridBehavior';
 export { default as gridHorizontalBehavior } from './Grid/gridHorizontalBehavior';
 export { default as hierarchicalTreeBehavior } from './HierarchicalTree/hierarchicalTreeBehavior';
+export * from './HierarchicalTree/hierarchicalTreeBehavior';
 export { default as hierarchicalTreeItemBehavior } from './HierarchicalTree/hierarchicalTreeItemBehavior';
 export { default as hierarchicalTreeTitleBehavior } from './HierarchicalTree/hierarchicalTreeTitleBehavior';
 export { default as hierarchicalSubtreeBehavior } from './HierarchicalTree/hierarchicalSubtreeBehavior';
