@@ -5,13 +5,11 @@ import * as React from 'react';
 import * as _ from 'lodash';
 
 import {
-  UIComponent,
   childrenExist,
   UIComponentProps,
   ChildrenComponentProps,
   commonPropTypes,
   rtlTextContainer,
-  ShorthandFactory,
   createShorthandFactory,
 } from '../../utils';
 import {
