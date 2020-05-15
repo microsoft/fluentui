@@ -2,6 +2,21 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 15 May 2020 05:52:46 GMT",
+      "tag": "office-ui-fabric-react_v7.114.0",
+      "version": "7.114.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "PivotItem: Expanding types of headerButtonProps to include IButtonProps.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "5c27d9de67e00e87ffb99e5b5c119087660a72cc",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 15 May 2020 00:07:39 GMT",
       "tag": "office-ui-fabric-react_v7.113.3",
       "version": "7.113.3",

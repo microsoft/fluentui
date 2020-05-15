@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-next
 
-This log was last generated on Thu, 14 May 2020 12:34:32 GMT and should not be manually modified.
+This log was last generated on Fri, 15 May 2020 05:52:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-alpha.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.21)
+
+Fri, 15 May 2020 05:52:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.19..@fluentui/react-next_v8.0.0-alpha.21)
+
+### Changes
+
+- PivotItem: Expanding types of headerButtonProps to include IButtonProps. ([PR #13128](https://github.com/microsoft/fluentui/pull/13128) by humbertomakotomorimoto@gmail.com)
 
 ## [8.0.0-alpha.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.19)
 
