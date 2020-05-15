@@ -2,6 +2,36 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Fri, 15 May 2020 05:52:46 GMT",
+      "tag": "@uifabric/fabric-website_v7.10.50",
+      "version": "7.10.50",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fixed visited styles in website",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "2c54d7d2f5d6dc07d2bc01e6d9f22a34a556310a",
+            "package": "@uifabric/fabric-website"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 15 May 2020 00:07:39 GMT",
+      "tag": "@uifabric/fabric-website_v7.10.49",
+      "version": "7.10.49",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding new website content",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "7a613256ef792c037702a47fa07713cecacbc755",
+            "package": "@uifabric/fabric-website"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 04 May 2020 12:33:29 GMT",
       "tag": "@uifabric/fabric-website_v7.10.39",
       "version": "7.10.39",

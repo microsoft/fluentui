@@ -74,7 +74,7 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
           }
       style={
         Object {
-          "width": 350,
+          "width": "350",
         }
       }
     >
@@ -545,7 +545,7 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
           }
       style={
         Object {
-          "width": 550,
+          "width": "550",
         }
       }
     >

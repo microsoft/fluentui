@@ -1,8 +1,17 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 08 May 2020 12:35:40 GMT and should not be manually modified.
+This log was last generated on Fri, 15 May 2020 05:52:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.24.0](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.24.0)
+
+Fri, 15 May 2020 05:52:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.23.22..@uifabric/experiments_v7.24.0)
+
+### Minor changes
+
+- fixing removing of duplicate entries at once ([PR #13102](https://github.com/microsoft/fluentui/pull/13102) by nebhatna@microsoft.com)
 
 ## [7.23.22](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.23.22)
 

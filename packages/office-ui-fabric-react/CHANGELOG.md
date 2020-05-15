@@ -1,8 +1,37 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 14 May 2020 12:34:32 GMT and should not be manually modified.
+This log was last generated on Fri, 15 May 2020 12:42:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.114.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.114.1)
+
+Fri, 15 May 2020 12:42:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.114.0..office-ui-fabric-react_v7.114.1)
+
+### Patches
+
+- Updating List, Keytips, and Facepile examples to use function components ([PR #12829](https://github.com/microsoft/fluentui/pull/12829) by czearing@outlook.com)
+- updating Shimmer, Slider, SelectedPeopleList, MarqueeSelection, and SwatchColorPicker examples to FC ([PR #12849](https://github.com/microsoft/fluentui/pull/12849) by czearing@outlook.com)
+
+## [7.114.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.114.0)
+
+Fri, 15 May 2020 05:52:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.113.3..office-ui-fabric-react_v7.114.0)
+
+### Minor changes
+
+- PivotItem: Expanding types of headerButtonProps to include IButtonProps. ([PR #13128](https://github.com/microsoft/fluentui/pull/13128) by humbertomakotomorimoto@gmail.com)
+
+## [7.113.3](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.113.3)
+
+Fri, 15 May 2020 00:07:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.113.2..office-ui-fabric-react_v7.113.3)
+
+### Patches
+
+- Support custom checkbox for <GroupHeader>: added onRenderGroupHeaderCheckbox property ([PR #12105](https://github.com/microsoft/fluentui/pull/12105) by sebastian.mattar@gmail.com)
+- Updating examples for ProgressIndicator, FloatingPeoplePicker and ResizeGroupOverflowSetExample to use FC ([PR #12890](https://github.com/microsoft/fluentui/pull/12890) by czearing@outlook.com)
 
 ## [7.113.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.113.2)
 
