@@ -1,8 +1,7 @@
 import * as React from 'react';
 import * as ReactIs from 'react-is';
-import cx from 'classnames';
-
-import { ComposedComponent, ComposeOptions, ComposePreparedOptions, Input, ClassDictionary } from './types';
+import { ComposedComponent, ComposeOptions, ComposePreparedOptions, Input } from './types';
+import { mergeClasses } from './mergeClasses';
 
 /**
  * Given input/parent options, which are both assumed to be defined and populated with
@@ -33,16 +32,6 @@ export const defaultComposeOptions: ComposePreparedOptions = {
   slots: {},
   mapPropsToSlotPropsChain: [],
   resolveSlotProps: () => ({}),
-};
-
-const mergeClasses = (classes1: ClassDictionary | undefined, classes2: ClassDictionary | undefined) => {
-  const result = { ...classes1 };
-
-  if (classes2) {
-    Object.keys(classes2).forEach(name => (result[name] = cx(result[name], classes2[name])));
-  }
-  console.log(result);
-  return result;
 };
 
 export function mergeComposeOptions(
