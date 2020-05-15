@@ -1,11 +1,11 @@
 ### Control name
 
-`MSLabel`
+`Label` in Swift, `MSFLabel` in Objective-C
 
 ### Source code
 
-[MSLabel](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric/Controls/MSLabel.swift)
+[Label](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI/Controls/Label.swift)
 
 ### Sample code
 
-[MSLabel demo](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric.Demo/OfficeUIFabric.Demo/Demos/MSLabelDemoController.swift)
+[Label demo](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI.Demo/FluentUI.Demo/Demos/LabelDemoController.swift)
