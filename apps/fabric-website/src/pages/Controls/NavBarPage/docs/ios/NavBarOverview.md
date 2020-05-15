@@ -1,11 +1,17 @@
 This navigation controller provides supports the Large Title presentation and an accessory view that appears below the title.
 
 <!-- prettier-ignore-start -->
-| Large Title, primary style, accessory view | Large Title, primary style, no accessory view | Large Title, primary style, collapsed |
-| --- | --- | --- |
-| <img src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/ios/navigation-bar/large-title-primary-accessory.png" alt="Example of Navigation Controller" style="width: 100%;" /> | <img src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/ios/navigation-bar/large-title-primary-no-accessory.png" alt="Example of Navigation Controller" style="width: 100%;" /> | <img src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/ios/navigation-bar/large-title-primary-collapsed.png" alt="Example of Navigation Controller" style="width: 100%;" /> |
+<DisplayToggle onText="Dark" offText="Light" label="Theme Switcher">
 
-| Large Title, system style, accessory view | Regular Title, primary style, accessory view |
-| --- | --- |
-| <img src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/ios/navigation-bar/large-title-system-accessory.png" alt="Example of Navigation Controller" style="width: 66%;" /> | <img src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/ios/navigation-bar/regular-title-primary-accessory.png" alt="Example of Navigation Controller" style="width: 66%;" /> |
+### Portrait
+
+<img className="off" src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/ios/updated/img_navigation_01_iphoneportrait_light.png?text=LightMode" />
+<img className="on" src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/ios/updated/img_navigation_01_iphoneportrait_dark.png?text=DarkMode" />
+
+### Landscape
+
+<img className="off" src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/ios/updated/img_navigation_01_iphonelandscape_light.png?text=LightMode" />
+<img className="on" src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/ios/updated/img_navigation_01_iphonelandscape_dark.png?text=DarkMode" />
+
+</DisplayToggle>
 <!-- prettier-ignore-end -->

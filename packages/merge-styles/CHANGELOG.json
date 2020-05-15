@@ -2,6 +2,21 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "date": "Fri, 15 May 2020 00:07:39 GMT",
+      "tag": "@uifabric/merge-styles_v7.13.0",
+      "version": "7.13.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Relaxing the input arguments in merge-styles to keep things building with typescript 3.9.",
+            "author": "dzearing@microsoft.com",
+            "commit": "f74c4188938a23df4b6edbf60f3bc89d15885142",
+            "package": "@uifabric/merge-styles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 11 May 2020 12:36:34 GMT",
       "tag": "@uifabric/merge-styles_v7.12.0",
       "version": "7.12.0",

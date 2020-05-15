@@ -1,8 +1,17 @@
 # Change Log - @uifabric/fabric-website-resources
 
-This log was last generated on Thu, 07 May 2020 01:06:55 GMT and should not be manually modified.
+This log was last generated on Fri, 15 May 2020 00:07:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.6.61](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website-resources_v7.6.61)
+
+Fri, 15 May 2020 00:07:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website-resources_v7.6.54..@uifabric/fabric-website-resources_v7.6.61)
+
+### Patches
+
+- Removing jest config from website resources. Adjusting typings. ([PR #13165](https://github.com/microsoft/fluentui/pull/13165) by dzearing@microsoft.com)
 
 ## [7.6.54](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website-resources_v7.6.54)
 
