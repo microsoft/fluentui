@@ -29,7 +29,7 @@ export interface FormProps extends UIComponentProps, ChildrenComponentProps {
   /**
    * Accessibility behavior if overridden by the user.
    */
-  accessibility?: Accessibility;
+  accessibility?: Accessibility<never>;
 
   /** The HTML form action. */
   action?: string;
