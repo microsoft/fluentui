@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "Adding disabledFeatures switches",
+  "comment": "Adding enabledFeatures switches",
   "packageName": "@uifabric/utilities",
   "email": "phkuo@microsoft.com",
   "dependentChangeType": "patch",
