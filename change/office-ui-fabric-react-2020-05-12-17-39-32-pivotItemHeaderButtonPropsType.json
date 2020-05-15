@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "PivotItem: Expanding types of headerButtonProps to include IButtonProps.",
+  "packageName": "office-ui-fabric-react",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-05-13T00:39:26.435Z"
+}
