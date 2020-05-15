@@ -1,7 +1,10 @@
 import * as React from 'react';
+import { ComposeOptions, ComposeStandardStatics } from '@fluentui/react-compose';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import { IKeytipProps } from '../../Keytip';
+
+// tslint:disable:interface-name
 
 /**
  * {@docCategory Link}
@@ -45,7 +48,7 @@ export interface ILinkHTMLAttributes<T> extends React.HTMLAttributes<T> {
 /**
  * {@docCategory Link}
  */
-export interface ILinkProps extends ILinkHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement> {
+export interface LinkProps extends ILinkHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement> {
   /**
    * Optional callback to access the ILink interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -94,3 +97,17 @@ export interface ILinkStyleProps {
 export interface ILinkStyles {
   root: IStyle;
 }
+
+/**
+ * {@docCategory Link}
+ */
+export interface LinkSlots {}
+
+/**
+ * {@docCategory Link}
+ */
+export type LinkSlotProps = {
+  [key in keyof LinkSlots]: LinkProps[key];
+};
+
+export interface LinkOptions extends ComposeOptions<LinkProps, LinkSlots, LinkSlotProps, ComposeStandardStatics> {}

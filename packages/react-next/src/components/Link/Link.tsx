@@ -1,14 +1,10 @@
-import * as React from 'react';
-import { styled } from '../../Utilities';
-import { LinkBase } from './Link.base';
-import { ILinkProps, ILinkStyleProps, ILinkStyles } from './Link.types';
-import { getStyles } from './Link.styles';
+import { compose } from '@fluentui/react-compose';
+import { LinkBase } from './LinkBase';
+import * as classes from './Link.scss';
+import { LinkProps } from './Link.types';
 
-export const Link: React.FunctionComponent<ILinkProps> = styled<ILinkProps, ILinkStyleProps, ILinkStyles>(
-  LinkBase,
-  getStyles,
-  undefined,
-  {
-    scope: 'Link',
-  },
-);
+export const Link = compose<'a', {}, {}, LinkProps, LinkProps>(LinkBase, {
+  classes,
+  slots: {},
+  displayName: 'Link',
+});
