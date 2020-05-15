@@ -27,6 +27,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Restricted prop sets in the `Form` component which are passed to styles functions, @assuncaocharles ([#13180](https://github.com/microsoft/fluentui/pull/13180))
 - Restricted prop sets in the `FormField` component which are passed to styles functions, @assuncaocharles ([#13181](https://github.com/microsoft/fluentui/pull/13181))
 - Restricted prop sets in the `DropdownSelectedItem` component which are passed to styles functions, @assuncaocharles ([#13179](https://github.com/microsoft/fluentui/pull/13179))
+- Restricted prop sets in the `HierarchicalTreeItem` component which are passed to styles functions, @assuncaocharles ([#13184](https://github.com/microsoft/fluentui/pull/13184))
 
 ### Fixes
 - Fix `splitButtonBehavior` to exclude `toggleButton` from focus zone @silviuavram ([#13043](https://github.com/microsoft/fluentui/pull/13043))
