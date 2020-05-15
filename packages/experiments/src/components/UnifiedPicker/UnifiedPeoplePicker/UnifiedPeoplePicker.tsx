@@ -22,7 +22,7 @@ export const UnifiedPeoplePicker = (props: IUnifiedPeoplePickerProps): JSX.Eleme
       <UnifiedPicker
         {...props}
         onRenderSelectedItems={renderSelectedItems}
-        onRederFloatingSuggestions={FloatingPeopleSuggestions}
+        onRenderFloatingSuggestions={FloatingPeopleSuggestions}
       />
     </>
   );

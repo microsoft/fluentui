@@ -2,6 +2,21 @@
   "name": "@fluentui/react-compose",
   "entries": [
     {
+      "date": "Fri, 15 May 2020 00:07:39 GMT",
+      "tag": "@fluentui/react-compose_v0.3.0",
+      "version": "0.3.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding `classes` option to compose options.",
+            "author": "dzearing@microsoft.com",
+            "commit": "a067dbc077218d7da056293120e8a98a3807e72f",
+            "package": "@fluentui/react-compose"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 07 May 2020 01:06:55 GMT",
       "tag": "@fluentui/react-compose_v0.2.11",
       "version": "0.2.11",

@@ -4915,14 +4915,24 @@ export interface IGroupFooterStyles {
 }
 
 // @public (undocumented)
+export interface IGroupHeaderCheckboxProps {
+    // (undocumented)
+    checked: boolean;
+    // (undocumented)
+    theme?: ITheme;
+}
+
+// @public (undocumented)
 export interface IGroupHeaderProps extends IGroupDividerProps {
     ariaPosInSet?: number;
     ariaSetSize?: number;
     expandButtonIcon?: string;
     expandButtonProps?: React.HTMLAttributes<HTMLButtonElement>;
     groupedListId?: string;
+    onRenderGroupHeaderCheckbox?: IRenderFunction<IGroupHeaderCheckboxProps>;
     selectAllButtonProps?: React.HTMLAttributes<HTMLButtonElement>;
     styles?: IStyleFunctionOrObject<IGroupHeaderStyleProps, IGroupHeaderStyles>;
+    useFastIcons?: boolean;
 }
 
 // @public (undocumented)

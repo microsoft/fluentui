@@ -1,8 +1,17 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Mon, 11 May 2020 12:36:34 GMT and should not be manually modified.
+This log was last generated on Fri, 15 May 2020 00:07:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.13.0](https://github.com/microsoft/fluentui/tree/@uifabric/merge-styles_v7.13.0)
+
+Fri, 15 May 2020 00:07:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/merge-styles_v7.12.0..@uifabric/merge-styles_v7.13.0)
+
+### Minor changes
+
+- Relaxing the input arguments in merge-styles to keep things building with typescript 3.9. ([PR #13165](https://github.com/microsoft/fluentui/pull/13165) by dzearing@microsoft.com)
 
 ## [7.12.0](https://github.com/microsoft/fluentui/tree/@uifabric/merge-styles_v7.12.0)
 
