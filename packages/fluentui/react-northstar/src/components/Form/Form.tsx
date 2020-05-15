@@ -71,7 +71,7 @@ const Form: React.FC<WithAsProp<FormProps>> &
     rtl: context.rtl,
   });
 
-  const getA11yProps = useAccessibility(accessibility, {
+  const getA11yProps = useAccessibility<never>(accessibility, {
     debugName: Form.displayName,
     rtl: context.rtl,
   });
