@@ -65,21 +65,16 @@ const classNames = mergeStyleSets({
 });
 
 export const ListGridExample: React.FunctionComponent = () => {
-  let columnCount: number = 0;
-  let columnWidth: number = 0;
-  let rowHeight: number = 0;
+  const columnCount = React.useRef(0);
+  const rowHeight = React.useRef(0);
 
-  const getItemCountForPage = React.useCallback(
-    (itemIndex: number, surfaceRect: IRectangle) => {
-      if (itemIndex === 0) {
-        columnCount = Math.ceil(surfaceRect.width / MAX_ROW_HEIGHT);
-        columnWidth = Math.floor(surfaceRect.width / columnCount);
-        rowHeight = columnWidth;
-      }
-      return columnCount * ROWS_PER_PAGE;
-    },
-    [columnCount, columnWidth, columnCount],
-  );
+  const getItemCountForPage = React.useCallback((itemIndex: number, surfaceRect: IRectangle) => {
+    if (itemIndex === 0) {
+      columnCount.current = Math.ceil(surfaceRect.width / MAX_ROW_HEIGHT);
+      rowHeight.current = Math.floor(surfaceRect.width / columnCount.current);
+    }
+    return columnCount.current * ROWS_PER_PAGE;
+  }, []);
 
   const onRenderCell = React.useCallback(
     (item: IExampleItem, index: number | undefined) => {
@@ -88,7 +83,7 @@ export const ListGridExample: React.FunctionComponent = () => {
           className={classNames.listGridExampleTile}
           data-is-focusable
           style={{
-            width: 100 / columnCount + '%',
+            width: 100 / columnCount.current + '%',
           }}
         >
           <div className={classNames.listGridExampleSizer}>
@@ -100,11 +95,11 @@ export const ListGridExample: React.FunctionComponent = () => {
         </div>
       );
     },
-    [columnCount],
+    [columnCount.current],
   );
 
   const getPageHeight = (): number => {
-    return rowHeight * ROWS_PER_PAGE;
+    return rowHeight.current * ROWS_PER_PAGE;
   };
 
   const items = useConst(() => createListItems(5000));
