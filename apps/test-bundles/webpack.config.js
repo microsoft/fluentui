@@ -10,13 +10,10 @@ const resolvePath = (packageName, entryFileName = 'index.js') =>
   path.join(path.dirname(require.resolve(packageName)).replace('lib-commonjs', 'lib'), entryFileName);
 
 // Create entries for all top level fabric imports.
-const Entries = _buildEntries('office-ui-fabric-react');
-
-// Create entries for all top level fabric imports.
-_buildEntries('@fluentui/react-next', Entries);
+const Entries = _buildEntries('@fluentui/react-next');
 
 // Add entry for keyboard-key package.
-Entries['keyboard-key'] = resolvePath('@fluentui/keyboard-key');
+// Entries['keyboard-key'] = resolvePath('@fluentui/keyboard-key');
 
 // Note: The experimental button bundle evaluation seems to be slowing down PRs
 // significantly. Commenting out for now.
@@ -84,6 +81,9 @@ function _buildEntries(packageName, entries = {}) {
     if (isJavascriptFile && isAllowedFile) {
       const entryName = itemName.replace(/.js$/, '');
 
+      if (entryName !== 'OverflowSet') {
+        return;
+      }
       // Replace commonjs paths with lib paths.
       const entryPath = path.join(packagePath, itemName);
 
