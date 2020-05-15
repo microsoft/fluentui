@@ -123,9 +123,9 @@ const DropdownSelectedItem: React.FC<WithAsProp<DropdownSelectedItemProps>> &
     onKeyDown: (e: React.SyntheticEvent, iconProps: BoxProps) => {
       e.stopPropagation();
       if (keyboardKey.getCode(e) === keyboardKey.Enter) {
-        _.invoke(iconProps, 'onRemove', e, iconProps);
+        _.invoke(props, 'onRemove', e, iconProps);
       }
-      _.invoke(predefinedProps, 'onKeyDown', e, iconProps);
+      _.invoke(props, 'onKeyDown', e, iconProps);
     },
   });
 
