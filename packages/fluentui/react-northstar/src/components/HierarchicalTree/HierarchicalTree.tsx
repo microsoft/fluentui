@@ -84,7 +84,7 @@ const HierarchicalTree: React.FC<WithAsProp<HierarchicalTreeProps>> &
   const { children, className, design, styles, variables, items, renderItemTitle, exclusive } = props;
 
   const [activeIndex, setActiveIndex] = useAutoControlled({
-    defaultValue: props.activeIndex,
+    defaultValue: props.defaultActiveIndex,
     value: props.activeIndex,
     initialValue: exclusive ? -1 : [],
   });
