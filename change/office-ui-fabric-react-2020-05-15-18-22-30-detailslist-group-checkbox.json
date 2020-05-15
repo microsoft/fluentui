@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Support custom GroupHeader checkbox for DetailsList",
+  "packageName": "office-ui-fabric-react",
+  "email": "me@breeswish.org",
+  "dependentChangeType": "patch",
+  "date": "2020-05-15T10:22:30.276Z"
+}
