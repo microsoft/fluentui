@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "Add pivot renderActive prop to controll re-rendering of pivot items",
+  "comment": "Pivot: Adding `alwaysRender` prop to `PivotItem` to allow for persistent `PivotItems` to control the amount of re-renders that happen.",
   "packageName": "office-ui-fabric-react",
   "email": "herincon@microsoft.com",
   "dependentChangeType": "patch",

@@ -357,6 +357,7 @@ export interface IPivot {
 
 // @public (undocumented)
 export interface IPivotItemProps extends React.HTMLAttributes<HTMLDivElement> {
+    alwaysRender?: boolean;
     ariaLabel?: string;
     componentRef?: IRefObject<{}>;
     headerButtonProps?: IButtonProps & {

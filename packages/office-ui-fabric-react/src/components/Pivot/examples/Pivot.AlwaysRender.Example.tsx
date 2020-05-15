@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Pivot, PivotItem } from 'office-ui-fabric-react/lib/Pivot';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
+import { useBoolean } from '@uifabric/react-hooks';
 
 const ExpensiveToMount: React.FC = () => {
   const [mounted, setMounted] = React.useState(false);
@@ -13,11 +14,7 @@ const ExpensiveToMount: React.FC = () => {
 };
 
 export const PivotRenderActiveOnlyExample: React.FC = () => {
-  const [alwaysRender, setAlwaysRender] = React.useState(false);
-
-  const toggleActiveOnly = () => {
-    setAlwaysRender(!alwaysRender);
-  };
+  const [alwaysRender, { toggle: toggleActiveOnly }] = useBoolean(false);
 
   return (
     <div>

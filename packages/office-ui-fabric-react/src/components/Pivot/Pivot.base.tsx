@@ -216,7 +216,7 @@ export class PivotBase extends React.Component<IPivotProps, IPivotState> {
   private _renderPivotItem(
     linkCollection: PivotLinkCollection,
     itemKey: string | undefined,
-    isActive = true,
+    isActive: boolean,
   ): JSX.Element | null {
     if (this.props.headersOnly || !itemKey) {
       return null;
