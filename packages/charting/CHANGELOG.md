@@ -1,8 +1,17 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Thu, 14 May 2020 12:34:32 GMT and should not be manually modified.
+This log was last generated on Fri, 15 May 2020 00:07:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.2.14](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.2.14)
+
+Fri, 15 May 2020 00:07:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.2.13..@uifabric/charting_v2.2.14)
+
+### Patches
+
+- MultiStackedBarChart: Fix breaking chart when focus on bars through keyboard ([PR #13156](https://github.com/microsoft/fluentui/pull/13156) by v-satgar@microsoft.com)
 
 ## [2.2.13](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.2.13)
 
