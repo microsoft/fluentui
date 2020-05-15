@@ -1,6 +1,12 @@
 import * as React from 'react';
-import { DetailsList, IColumn, IGroup, IGroupHeaderCheckboxProps, Toggle } from 'office-ui-fabric-react';
-import { IDetailsListCheckboxProps } from '../DetailsList.types';
+import {
+  DetailsList,
+  IColumn,
+  IDetailsListCheckboxProps,
+  IGroup,
+  IGroupHeaderCheckboxProps,
+  Toggle,
+} from 'office-ui-fabric-react';
 
 export interface IDetailsListCustomCheckboxExampleItem {
   key: string;

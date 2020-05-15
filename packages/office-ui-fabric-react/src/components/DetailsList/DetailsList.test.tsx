@@ -517,6 +517,12 @@ describe('DetailsList', () => {
       },
       {
         groupProps: {
+          onRenderFooter: () => null,
+          onRenderHeader: undefined,
+        },
+      },
+      {
+        groupProps: {
           onRenderHeader: (props, defaultRender) => defaultRender!(props),
         },
       },
