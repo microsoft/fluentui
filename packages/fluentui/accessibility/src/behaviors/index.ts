@@ -34,6 +34,7 @@ export { default as selectableListItemBehavior } from './List/selectableListItem
 
 export { default as loaderBehavior } from './Loader/loaderBehavior';
 export { default as inputBehavior } from './Input/inputBehavior';
+export * from './Input/inputBehavior';
 export { default as iconBehavior } from './Icon/iconBehavior';
 export * from './Icon/iconBehavior';
 export { default as indicatorBehavior } from './Box/indicatorBehavior';
