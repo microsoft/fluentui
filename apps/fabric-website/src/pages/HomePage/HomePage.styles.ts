@@ -42,7 +42,7 @@ export const monoFont =
   '"DejaVu Sans Mono","Bitstream Vera Sans Mono","Liberation Mono","Nimbus Mono L",Monaco,"Courier New",Courier,' +
   'monospace';
 
-const allLinkStatesSelector = '&:hover, &:active, &:active:hover, &:link';
+const allLinkStatesSelector = '&:hover, &:active, &:active:hover, &:link, &:visited';
 
 export const getStyles = (props: IHomePageStyleProps): IHomePageStyles => {
   const { theme, className, isMountedOffset, isInverted, beforeColor, afterColor } = props;
