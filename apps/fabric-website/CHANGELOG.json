@@ -2,6 +2,72 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Fri, 15 May 2020 05:52:46 GMT",
+      "tag": "@uifabric/fabric-website_v7.10.50",
+      "version": "7.10.50",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fixed visited styles in website",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "2c54d7d2f5d6dc07d2bc01e6d9f22a34a556310a",
+            "package": "@uifabric/fabric-website"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 15 May 2020 00:07:39 GMT",
+      "tag": "@uifabric/fabric-website_v7.10.49",
+      "version": "7.10.49",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding new website content",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "7a613256ef792c037702a47fa07713cecacbc755",
+            "package": "@uifabric/fabric-website"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 04 May 2020 12:33:29 GMT",
+      "tag": "@uifabric/fabric-website_v7.10.39",
+      "version": "7.10.39",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updated office brand icons",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "07b02c8ee75dd5ca4e47f06f724fe51f21769cac",
+            "package": "@uifabric/fabric-website"
+          },
+          {
+            "comment": "Website: Updated Forms icon text",
+            "author": "micahgodbolt@gmail.com",
+            "commit": "d40f4629b7bde5795090e84eed6896190dab3f4e",
+            "package": "@uifabric/fabric-website"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 29 Apr 2020 12:34:58 GMT",
+      "tag": "@uifabric/fabric-website_v7.10.35",
+      "version": "7.10.35",
+      "comments": {
+        "patch": [
+          {
+            "comment": "update MessageBar colors",
+            "author": "chrismo@microsoft.com",
+            "commit": "6c2672609b55e65efb5b35484727ac33bfe93694",
+            "package": "@uifabric/fabric-website"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 21 Apr 2020 12:34:50 GMT",
       "tag": "@uifabric/fabric-website_v7.10.29",
       "version": "7.10.29",

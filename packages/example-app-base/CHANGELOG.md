@@ -1,8 +1,35 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Mon, 20 Apr 2020 15:55:12 GMT and should not be manually modified.
+This log was last generated on Fri, 15 May 2020 00:07:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.12.59](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.12.59)
+
+Fri, 15 May 2020 00:07:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.12.52..@uifabric/example-app-base_v7.12.59)
+
+### Patches
+
+- cleaned up platform switcher, made room for windows button ([PR #12482](https://github.com/microsoft/fluentui/pull/12482) by mgodbolt@microsoft.com)
+
+## [7.12.52](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.12.52)
+
+Thu, 07 May 2020 01:06:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.12.46..@uifabric/example-app-base_v7.12.52)
+
+### Patches
+
+- Addressing commonjs imports. ([PR #13031](https://github.com/microsoft/fluentui/pull/13031) by dzearing@microsoft.com)
+
+## [7.12.46](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.12.46)
+
+Wed, 29 Apr 2020 12:34:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.12.39..@uifabric/example-app-base_v7.12.46)
+
+### Patches
+
+- update MessageBar colors ([PR #12821](https://github.com/microsoft/fluentui/pull/12821) by chrismo@microsoft.com)
 
 ## [7.12.39](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.12.39)
 

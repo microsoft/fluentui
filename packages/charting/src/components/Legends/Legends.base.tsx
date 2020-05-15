@@ -6,7 +6,7 @@ import { classNamesFunction, find } from 'office-ui-fabric-react/lib/Utilities';
 import { ResizeGroup } from 'office-ui-fabric-react/lib/ResizeGroup';
 import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
 import { OverflowSet, IOverflowSetItemProps } from 'office-ui-fabric-react/lib/OverflowSet';
-import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
+import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import {
   ILegend,
   ILegendsProps,
@@ -238,6 +238,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
         trapFocus={true}
         onCardVisible={this._hoverCardVisible}
         styles={classNames.subComponentStyles.hoverCardStyles}
+        cardDismissDelay={300}
       >
         <div className={classNames.overflowIndicationTextStyle}>
           {items.length} {overflowString}

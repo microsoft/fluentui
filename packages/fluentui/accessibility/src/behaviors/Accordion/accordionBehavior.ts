@@ -33,4 +33,6 @@ const accordionBehavior: Accessibility = () => ({
   },
 });
 
+export type AccordionBehaviorProps = never;
+
 export default accordionBehavior;

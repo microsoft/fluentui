@@ -1,8 +1,45 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Tue, 21 Apr 2020 12:34:50 GMT and should not be manually modified.
+This log was last generated on Fri, 15 May 2020 05:52:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.10.50](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.10.50)
+
+Fri, 15 May 2020 05:52:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.10.49..@uifabric/fabric-website_v7.10.50)
+
+### Patches
+
+- fixed visited styles in website ([PR #13172](https://github.com/microsoft/fluentui/pull/13172) by mgodbolt@microsoft.com)
+
+## [7.10.49](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.10.49)
+
+Fri, 15 May 2020 00:07:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.10.39..@uifabric/fabric-website_v7.10.49)
+
+### Patches
+
+- Adding new website content ([PR #12482](https://github.com/microsoft/fluentui/pull/12482) by mgodbolt@microsoft.com)
+
+## [7.10.39](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.10.39)
+
+Mon, 04 May 2020 12:33:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.10.35..@uifabric/fabric-website_v7.10.39)
+
+### Patches
+
+- Updated office brand icons ([PR #12958](https://github.com/microsoft/fluentui/pull/12958) by mgodbolt@microsoft.com)
+- Website: Updated Forms icon text ([PR #12962](https://github.com/microsoft/fluentui/pull/12962) by micahgodbolt@gmail.com)
+
+## [7.10.35](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.10.35)
+
+Wed, 29 Apr 2020 12:34:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.10.29..@uifabric/fabric-website_v7.10.35)
+
+### Patches
+
+- update MessageBar colors ([PR #12821](https://github.com/microsoft/fluentui/pull/12821) by chrismo@microsoft.com)
 
 ## [7.10.29](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.10.29)
 

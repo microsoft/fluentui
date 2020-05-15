@@ -305,8 +305,6 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
     // (undocumented)
     protected input: React.RefObject<IAutofill>;
     // (undocumented)
-    protected _isFocusZoneInnerKeystroke: (ev: React.KeyboardEvent<HTMLElement>) => boolean;
-    // (undocumented)
     readonly items: T[];
     // (undocumented)
     protected onBackspace(ev: React.KeyboardEvent<HTMLElement>): void;
@@ -357,6 +355,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
     protected root: React.RefObject<HTMLDivElement>;
     // (undocumented)
     protected selection: Selection;
+    // (undocumented)
+    protected _shouldFocusZoneEnterInnerZone: (ev: React.KeyboardEvent<HTMLElement>) => boolean;
     // (undocumented)
     protected suggestionElement: React.RefObject<ISuggestions<T>>;
     // @deprecated (undocumented)
@@ -4300,6 +4300,7 @@ export interface IDragDropEvents {
     onDragEnd?: (item?: any, event?: DragEvent) => void;
     onDragEnter?: (item?: any, event?: DragEvent) => string;
     onDragLeave?: (item?: any, event?: DragEvent) => void;
+    onDragOver?: (item?: any, event?: DragEvent) => void;
     onDragStart?: (item?: any, itemIndex?: number, selectedItems?: any[], event?: MouseEvent) => void;
     onDrop?: (item?: any, event?: DragEvent) => void;
 }
@@ -4914,13 +4915,24 @@ export interface IGroupFooterStyles {
 }
 
 // @public (undocumented)
+export interface IGroupHeaderCheckboxProps {
+    // (undocumented)
+    checked: boolean;
+    // (undocumented)
+    theme?: ITheme;
+}
+
+// @public (undocumented)
 export interface IGroupHeaderProps extends IGroupDividerProps {
     ariaPosInSet?: number;
     ariaSetSize?: number;
+    expandButtonIcon?: string;
     expandButtonProps?: React.HTMLAttributes<HTMLButtonElement>;
     groupedListId?: string;
+    onRenderGroupHeaderCheckbox?: IRenderFunction<IGroupHeaderCheckboxProps>;
     selectAllButtonProps?: React.HTMLAttributes<HTMLButtonElement>;
     styles?: IStyleFunctionOrObject<IGroupHeaderStyleProps, IGroupHeaderStyles>;
+    useFastIcons?: boolean;
 }
 
 // @public (undocumented)
@@ -6269,7 +6281,7 @@ export interface IPivot {
 export interface IPivotItemProps extends React.HTMLAttributes<HTMLDivElement> {
     ariaLabel?: string;
     componentRef?: IRefObject<{}>;
-    headerButtonProps?: {
+    headerButtonProps?: IButtonProps & {
         [key: string]: string | number | boolean;
     };
     headerText?: string;
@@ -8261,8 +8273,6 @@ export enum MessageBarType {
     blocked = 2,
     error = 1,
     info = 0,
-    // @deprecated
-    remove = 90000,
     severeWarning = 3,
     success = 4,
     warning = 5

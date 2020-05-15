@@ -7,7 +7,7 @@ import * as scale from 'd3-scale';
 import { IProcessedStyleSet, IPalette } from 'office-ui-fabric-react/lib/Styling';
 import { IChartDataPoint, IChartProps } from './index';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
-import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
+import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 
 const getClassNames = classNamesFunction<IDonutChartStyleProps, IDonutChartStyles>();
 
@@ -20,6 +20,8 @@ interface IDonutChartState {
   activeLegend?: string;
   color?: string | undefined;
   isLegendSelected?: boolean;
+  xCalloutValue?: string;
+  yCalloutValue?: string;
 }
 
 export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChartState> {
@@ -56,6 +58,8 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
       activeLegend: '',
       color: '',
       isLegendSelected: false,
+      xCalloutValue: '',
+      yCalloutValue: '',
     };
     this._hoverCallback = this._hoverCallback.bind(this);
     this._focusCallback = this._focusCallback.bind(this);
@@ -118,7 +122,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
             </svg>
           </div>
         </FocusZone>
-        {this.state.showHover ? (
+        {!this.props.hideTooltip && this.state.showHover ? (
           <Callout
             target={this._currentHoverElement}
             coverTarget={true}
@@ -130,8 +134,12 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
             preventDismissOnLostFocus={true}
           >
             <div className={this._classNames.hoverCardRoot}>
-              <div className={this._classNames.hoverCardTextStyles}>{this.state.legend}</div>
-              <div className={this._classNames.hoverCardDataStyles}>{this.state.value}</div>
+              <div className={this._classNames.hoverCardTextStyles}>
+                {this.state.xCalloutValue ? this.state.xCalloutValue : this.state.legend}
+              </div>
+              <div className={this._classNames.hoverCardDataStyles}>
+                {this.state.yCalloutValue ? this.state.yCalloutValue : this.state.value}
+              </div>
             </div>
           </Callout>
         ) : null}
@@ -216,6 +224,8 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
       value: data.data!.toString(),
       legend: data.legend,
       color: data.color!,
+      xCalloutValue: data.xAxisCalloutData!,
+      yCalloutValue: data.yAxisCalloutData!,
     });
   };
 
@@ -226,6 +236,8 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
       value: data.data!.toString(),
       legend: data.legend,
       color: data.color!,
+      xCalloutValue: data.xAxisCalloutData!,
+      yCalloutValue: data.yAxisCalloutData!,
     });
   };
   private _onBlur = (): void => {

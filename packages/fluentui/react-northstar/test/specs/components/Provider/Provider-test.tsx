@@ -1,10 +1,12 @@
 import { ThemeInput } from '@fluentui/styles';
 import { mount } from 'enzyme';
-import { createRenderer } from 'src/utils/felaRenderer';
+import * as faker from 'faker';
 import * as React from 'react';
 
 import Provider from 'src/components/Provider/Provider';
 import ProviderConsumer from 'src/components/Provider/ProviderConsumer';
+import { createRenderer } from 'src/utils/felaRenderer';
+import PortalInner from 'src/components/Portal/PortalInner';
 
 const createDocumentMock = (): Document => {
   const externalDocument = document.implementation.createDocument('http://www.w3.org/1999/xhtml', 'html', null);
@@ -285,6 +287,44 @@ describe('Provider', () => {
 
       // mousedown + touchstart + touchend + keyup + keydown
       expect(removeEventListener).toHaveBeenCalledTimes(5);
+    });
+  });
+
+  describe('document.body', () => {
+    it('adds an element to document.body', () => {
+      const className = faker.lorem.word();
+      const wrapper = mount(
+        <Provider className={className}>
+          <div />
+        </Provider>,
+      );
+
+      expect(document.querySelector(`.${className}`)).toBeInTheDocument();
+
+      // element should be removed on unmount
+      wrapper.unmount();
+      expect(document.querySelector(`.${className}`)).not.toBeInTheDocument();
+    });
+
+    it('reacts on "className" update and keeps node in HTML tree', () => {
+      const className = faker.lorem.word();
+      const wrapper = mount(
+        <Provider className={className}>
+          <PortalInner>
+            <div id="sample" />
+          </PortalInner>
+        </Provider>,
+      );
+
+      expect(document.querySelector(`.${className}`)).toBeInTheDocument();
+      expect(document.querySelector(`.${className} #sample`)).toBeInTheDocument();
+
+      const newClassName = faker.lorem.word();
+      wrapper.setProps({ className: newClassName });
+
+      expect(document.querySelector(`.${className}`)).not.toBeInTheDocument();
+      expect(document.querySelector(`.${newClassName}`)).toBeInTheDocument();
+      expect(document.querySelector(`.${newClassName} #sample`)).toBeInTheDocument();
     });
   });
 });

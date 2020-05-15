@@ -330,6 +330,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   onetoc: {
     extensions: ['ms-one-stub', 'onetoc', 'onetoc2', 'onepkg'], // this icon represents a complete, logical notebook.
   },
+  pbiapp: {},
   pdf: {
     extensions: ['pdf'],
   },

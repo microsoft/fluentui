@@ -33,7 +33,7 @@ type ComponentControlsProps = {
   showRtl: boolean;
   showVariables: boolean;
   showTransparent: boolean;
-  toolbarAriaLabel?: string;
+  titleForAriaLabel?: string;
 };
 
 const ComponentControls: React.FC<ComponentControlsProps> = props => {
@@ -51,7 +51,7 @@ const ComponentControls: React.FC<ComponentControlsProps> = props => {
     onShowRtl,
     onShowTransparent,
     onShowVariables,
-    toolbarAriaLabel,
+    titleForAriaLabel,
     ...rest
   } = props;
 
@@ -78,7 +78,7 @@ const ComponentControls: React.FC<ComponentControlsProps> = props => {
             {...rest}
             iconOnly
             accessibility={menuAsToolbarBehavior}
-            aria-label={toolbarAriaLabel || null}
+            aria-label={`Actions for ${titleForAriaLabel || 'untitled'} example`}
             items={[
               {
                 icon: <CodeSnippetIcon style={{ width: '20px', height: '20px' }} />,

@@ -84,7 +84,7 @@ steps:
     displayName: 'Publish Change Requests and Bump Versions'
 
   - script: |
-      yarn ts-node --dir scripts updateReleaseNotes/index.ts --token=$(githubPAT) --apply --debug
+      node -r ./scripts/ts-node-register ./scripts/updateReleaseNotes/index.ts --token=$(githubPAT) --apply --debug
     displayName: 'Update github release notes'
 
   - script: |

@@ -1,7 +1,7 @@
 import { ITheme, IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 import { IOverflowSetProps } from 'office-ui-fabric-react/lib/OverflowSet';
-import { IFocusZoneProps } from 'office-ui-fabric-react/lib/FocusZone';
+import { IFocusZoneProps } from '@fluentui/react-focus';
 
 export interface IStackedBarChart {}
 import { IChartProps, IChartDataPoint } from './index';
@@ -46,6 +46,13 @@ export interface IStackedBarChartProps {
    * @default false
    */
   hideNumberDisplay?: boolean;
+
+  /**
+   * Do not show tooltips in chart
+   *
+   * @default false
+   */
+  hideTooltip?: boolean;
 
   /**
    * Additional CSS class(es) to apply to the StackedBarChart.

@@ -238,7 +238,7 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
             </thead>
             <tbody>
               <tr>
-                {...colorComponents.map((comp: ColorComponent) => {
+                {colorComponents.map((comp: ColorComponent) => {
                   if ((comp === 'a' || comp === 't') && alphaSliderHidden) {
                     return null;
                   }

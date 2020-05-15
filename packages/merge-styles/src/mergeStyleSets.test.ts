@@ -1,5 +1,5 @@
 import { mergeStyleSets } from './mergeStyleSets';
-import { Stylesheet, InjectionMode } from './Stylesheet';
+import { Stylesheet, InjectionMode, IStyleSheetConfig } from './Stylesheet';
 import { IStyleSet } from './IStyleSet';
 import { IStyleFunctionOrObject } from './IStyleFunction';
 import { IStyle } from './IStyle';
@@ -149,6 +149,21 @@ describe('mergeStyleSets', () => {
     expect(_stylesheet.getRules()).toEqual('.root-0{background:red;}' + '.root-1{background:green;}');
   });
 
+  it('can merge correctly when class names are provided by application', () => {
+    _stylesheet.setConfig({ namespace: 'ns' });
+    _stylesheet.getClassNameCache()['ltr&displayNametestdisplayblock'] = 'test-0';
+
+    const styles = mergeStyleSets({ test: ['test-0'] });
+    const styles2 = mergeStyleSets({ test: { display: 'block' } });
+    const styles3 = mergeStyleSets({ root: [{ background: 'red' }, 'test-0'] });
+
+    expect(styles.test).toBe('test-0');
+    expect(styles2.test).toBe('test-0');
+    expect(styles3.root).toBe('test-0 ns-root-0');
+
+    _stylesheet.setConfig({ namespace: undefined });
+  });
+
   describe('typings tests', () => {
     interface ISubComponentStyles extends IStyleSet<ISubComponentStyles> {
       root: IStyle;
@@ -185,12 +200,12 @@ describe('mergeStyleSets', () => {
       return;
     };
 
-    const getStyles = (): IStyles => ({
+    const getStyles = () => ({
       root: {
         background: 'red',
       },
       subComponentStyles: {
-        button: () => ({
+        button: (props: { isCollapsed: boolean }) => ({
           root: {
             background: 'green',
           },
@@ -199,7 +214,7 @@ describe('mergeStyleSets', () => {
     });
 
     it('IStyleSet/IProcessedStyleSet should work with standard sub components', () => {
-      const classNames = mergeStyleSets<IStyles>(getStyles());
+      const classNames = mergeStyleSets(getStyles());
 
       SubComponent({ styles: classNames.subComponentStyles.button });
 
@@ -208,7 +223,7 @@ describe('mergeStyleSets', () => {
     });
 
     it('IStyleSet/IProcessedStyleSet should work with legacy sub components that only take IStyleFunctions', () => {
-      const classNames = mergeStyleSets<IStyles>(getStyles());
+      const classNames = mergeStyleSets(getStyles());
 
       LegacySubComponent({ styles: classNames.subComponentStyles.button({ isCollapsed: false }) });
 
@@ -217,7 +232,7 @@ describe('mergeStyleSets', () => {
     });
 
     describe('IStylesWithStyleObjectAsSubCommponent', () => {
-      const getStyles2 = (): IStylesWithStyleObjectAsSubCommponent => ({
+      const getStyles2 = () => ({
         root: {
           background: 'red',
         },
@@ -231,7 +246,7 @@ describe('mergeStyleSets', () => {
       });
 
       it('IStyleSet/IProcessedStyleSet should work with standard sub components', () => {
-        const classNames = mergeStyleSets<IStyles>(getStyles2());
+        const classNames = mergeStyleSets(getStyles2());
 
         // this test primarily
         SubComponent({ styles: classNames.subComponentStyles.button });
