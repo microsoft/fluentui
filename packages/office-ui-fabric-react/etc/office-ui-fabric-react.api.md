@@ -3346,15 +3346,19 @@ export interface IDetailsFooterProps extends IDetailsFooterBaseProps {
 }
 
 // @public (undocumented)
-export interface IDetailsGroupDividerProps extends IGroupDividerProps, IDetailsItemProps {
+export interface IDetailsGroupFooterProps extends IGroupFooterProps, IDetailsItemProps {
+}
+
+// @public (undocumented)
+export interface IDetailsGroupHeaderProps extends IGroupHeaderProps, IDetailsItemProps {
 }
 
 // @public (undocumented)
 export interface IDetailsGroupRenderProps extends IGroupRenderProps {
     // (undocumented)
-    onRenderFooter?: IRenderFunction<IDetailsGroupDividerProps>;
+    onRenderFooter?: IRenderFunction<IDetailsGroupFooterProps>;
     // (undocumented)
-    onRenderHeader?: IRenderFunction<IDetailsGroupDividerProps>;
+    onRenderHeader?: IRenderFunction<IDetailsGroupHeaderProps>;
 }
 
 // @public (undocumented)
@@ -3533,6 +3537,7 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
     onRenderCheckbox?: IRenderFunction<IDetailsListCheckboxProps>;
     onRenderDetailsFooter?: IRenderFunction<IDetailsFooterProps>;
     onRenderDetailsHeader?: IRenderFunction<IDetailsHeaderProps>;
+    onRenderGroupHeaderCheckbox?: IRenderFunction<IGroupHeaderCheckboxProps>;
     onRenderItemColumn?: (item?: any, index?: number, column?: IColumn) => React.ReactNode;
     onRenderMissingItem?: (index?: number, rowProps?: IDetailsRowProps) => React.ReactNode;
     onRenderRow?: IRenderFunction<IDetailsRowProps>;

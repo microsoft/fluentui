@@ -3,7 +3,14 @@ import { DetailsListBase } from './DetailsList.base';
 import { ISelection, SelectionMode, ISelectionZoneProps } from '../../utilities/selection/index';
 import { IRefObject, IBaseProps, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { IDragDropEvents, IDragDropContext, IDragDropHelper, IDragDropOptions } from './../../utilities/dragdrop/index';
-import { IGroup, IGroupRenderProps, IGroupDividerProps, IGroupedListProps } from '../GroupedList/index';
+import {
+  IGroup,
+  IGroupRenderProps,
+  IGroupedListProps,
+  IGroupHeaderCheckboxProps,
+  IGroupHeaderProps,
+  IGroupFooterProps,
+} from '../GroupedList/index';
 import { IDetailsRowProps, IDetailsRowBaseProps } from '../DetailsList/DetailsRow';
 import { IDetailsHeaderProps, IDetailsHeaderBaseProps } from './DetailsHeader';
 import { IDetailsFooterProps, IDetailsFooterBaseProps } from './DetailsFooter.types';
@@ -219,9 +226,14 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
   onRenderDetailsFooter?: IRenderFunction<IDetailsFooterProps>;
 
   /**
-   * If provided, can be used to render a custom checkbox
+   * If provided, can be used to render a custom checkbox.
    */
   onRenderCheckbox?: IRenderFunction<IDetailsListCheckboxProps>;
+
+  /**
+   * If provided, can be used to render a custom checkbox in the group headers.
+   */
+  onRenderGroupHeaderCheckbox?: IRenderFunction<IGroupHeaderCheckboxProps>;
 
   /** Viewport, provided by the withViewport decorator. */
   viewport?: IViewport;
@@ -720,13 +732,18 @@ export interface IDetailsListStyles {
  * {@docCategory DetailsList}
  */
 export interface IDetailsGroupRenderProps extends IGroupRenderProps {
-  onRenderFooter?: IRenderFunction<IDetailsGroupDividerProps>;
-  onRenderHeader?: IRenderFunction<IDetailsGroupDividerProps>;
+  onRenderFooter?: IRenderFunction<IDetailsGroupFooterProps>;
+  onRenderHeader?: IRenderFunction<IDetailsGroupHeaderProps>;
 }
 
 /**
  * {@docCategory DetailsList}
  */
-export interface IDetailsGroupDividerProps extends IGroupDividerProps, IDetailsItemProps {}
+export interface IDetailsGroupHeaderProps extends IGroupHeaderProps, IDetailsItemProps {}
+
+/**
+ * {@docCategory DetailsList}
+ */
+export interface IDetailsGroupFooterProps extends IGroupFooterProps, IDetailsItemProps {}
 
 export interface IDetailsListCheckboxProps extends IDetailsCheckboxProps {}

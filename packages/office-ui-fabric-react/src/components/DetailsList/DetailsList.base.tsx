@@ -39,7 +39,7 @@ import { IFocusZone, FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { IObjectWithKey, ISelection, Selection, SelectionMode, SelectionZone } from '../../utilities/selection/index';
 
 import { DragDropHelper } from '../../utilities/dragdrop/DragDropHelper';
-import { IGroupedList, GroupedList, IGroupDividerProps, IGroupRenderProps } from '../../GroupedList';
+import { IGroupedList, GroupedList, IGroupRenderProps, IGroupFooterProps, IGroupHeaderProps } from '../../GroupedList';
 import { List, IListProps, ScrollToMode } from '../../List';
 import { withViewport } from '../../utilities/decorators/withViewport';
 import { GetGroupCount } from '../../utilities/groupedList/GroupedListUtility';
@@ -399,7 +399,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
       <GroupedList
         componentRef={this._groupedList}
         groups={groups}
-        groupProps={groupProps ? this._getGroupProps(groupProps) : undefined}
+        groupProps={groupProps ? this._getGroupProps(groupProps) : this._getDefaultGroupProps()}
         items={items}
         onRenderCell={this._onRenderCell}
         selection={selection}
@@ -1078,11 +1078,20 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
     }
   }
 
+  private _getDefaultGroupProps(): IGroupRenderProps {
+    const { onRenderGroupHeaderCheckbox } = this.props;
+    return {
+      onRenderHeader: (props: IGroupHeaderProps, defaultRender?: IRenderFunction<IGroupHeaderProps>) => {
+        return defaultRender!({
+          ...props,
+          onRenderGroupHeaderCheckbox,
+        });
+      },
+    };
+  }
+
   private _getGroupProps(detailsGroupProps: IDetailsGroupRenderProps): IGroupRenderProps {
-    const {
-      onRenderFooter: onRenderDetailsGroupFooter,
-      onRenderHeader: onRenderDetailsGroupHeader,
-    } = detailsGroupProps;
+    const { onRenderFooter, onRenderHeader, ...restDetailsGroupProps } = detailsGroupProps;
     const { adjustedColumns: columns } = this.state;
     const {
       selectionMode = this._selection.mode,
@@ -1090,51 +1099,58 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
       cellStyleProps = DEFAULT_CELL_STYLE_PROPS,
       checkboxVisibility,
       indentWidth,
+      onRenderGroupHeaderCheckbox,
     } = this.props;
     const groupNestingDepth = this._getGroupNestingDepth();
 
-    const onRenderFooter = onRenderDetailsGroupFooter
-      ? (props: IGroupDividerProps, defaultRender?: IRenderFunction<IGroupDividerProps>) => {
-          return onRenderDetailsGroupFooter(
-            {
-              ...props,
-              columns: columns,
-              groupNestingDepth: groupNestingDepth,
-              indentWidth,
-              selection: this._selection,
-              selectionMode: selectionMode,
-              viewport: viewport,
-              checkboxVisibility,
-              cellStyleProps,
-            },
-            defaultRender,
-          );
-        }
-      : undefined;
-
-    const onRenderHeader = onRenderDetailsGroupHeader
-      ? (props: IGroupDividerProps, defaultRender?: IRenderFunction<IGroupDividerProps>) => {
-          return onRenderDetailsGroupHeader(
-            {
-              ...props,
-              columns: columns,
-              groupNestingDepth: groupNestingDepth,
-              indentWidth,
-              selection: this._selection,
-              selectionMode: selectionMode,
-              viewport: viewport,
-              checkboxVisibility,
-              cellStyleProps,
-            },
-            defaultRender,
-          );
-        }
-      : undefined;
+    const overrideGroupProps: IGroupRenderProps = restDetailsGroupProps;
+    if (onRenderFooter) {
+      overrideGroupProps.onRenderFooter = (
+        props: IGroupFooterProps,
+        defaultRender?: IRenderFunction<IGroupFooterProps>,
+      ) => {
+        return onRenderFooter(
+          {
+            ...props,
+            columns,
+            groupNestingDepth,
+            indentWidth,
+            selection: this._selection,
+            selectionMode,
+            viewport,
+            checkboxVisibility,
+            cellStyleProps,
+          },
+          defaultRender,
+        );
+      };
+    }
+    if (onRenderHeader) {
+      overrideGroupProps.onRenderHeader = (
+        props: IGroupHeaderProps,
+        defaultRender?: IRenderFunction<IGroupHeaderProps>,
+      ) => {
+        return onRenderHeader(
+          {
+            ...props,
+            columns,
+            groupNestingDepth,
+            indentWidth,
+            selection: this._selection,
+            selectionMode,
+            viewport,
+            checkboxVisibility,
+            cellStyleProps,
+            onRenderGroupHeaderCheckbox,
+          },
+          defaultRender,
+        );
+      };
+    }
 
     return {
-      ...detailsGroupProps,
-      onRenderFooter,
-      onRenderHeader,
+      ...this._getDefaultGroupProps(),
+      ...overrideGroupProps,
     };
   }
 

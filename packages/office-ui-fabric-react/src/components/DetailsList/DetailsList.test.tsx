@@ -6,7 +6,13 @@ import { mount } from 'enzyme';
 import { DetailsList } from './DetailsList';
 import { DetailsListBase } from './DetailsList.base';
 
-import { IDetailsList, IColumn, DetailsListLayoutMode, CheckboxVisibility } from './DetailsList.types';
+import {
+  IDetailsList,
+  IDetailsGroupRenderProps,
+  IColumn,
+  DetailsListLayoutMode,
+  CheckboxVisibility,
+} from './DetailsList.types';
 import { IDetailsColumnProps } from 'office-ui-fabric-react/lib/components/DetailsList/DetailsColumn';
 import { IDetailsHeaderProps, DetailsHeader } from './DetailsHeader';
 import { EventGroup, IRenderFunction } from '../../Utilities';
@@ -478,6 +484,106 @@ describe('DetailsList', () => {
 
     expect(onRenderCheckboxMock).toHaveBeenCalledTimes(6);
     expect(onRenderCheckboxMock.mock.calls[5][0]).toEqual({ checked: true, theme });
+  });
+
+  it('invokes optional onRenderGroupHeaderCheckbox callback when provided', () => {
+    const selection = new Selection();
+    const theme = getTheme();
+    const groups = [
+      {
+        key: 'group0',
+        name: 'Group 0',
+        startIndex: 0,
+        count: 2,
+      },
+      {
+        key: 'group1',
+        name: 'Group 1',
+        startIndex: 2,
+        count: 3,
+      },
+    ];
+
+    // There can be many possibilities of forms that a groupProps is given. DetailsList should call customized
+    // checkbox render in all following forms.
+    const possibleGroupPropsList: { groupProps?: IDetailsGroupRenderProps }[] = [
+      {},
+      { groupProps: {} },
+      { groupProps: undefined },
+      {
+        groupProps: {
+          onRenderFooter: () => null,
+        },
+      },
+      {
+        groupProps: {
+          onRenderHeader: (props, defaultRender) => defaultRender!(props),
+        },
+      },
+    ];
+    possibleGroupPropsList.forEach(possibleGroupProps => {
+      {
+        const onRenderGroupHeaderCheckbox = jest.fn();
+        mount(
+          <DetailsList
+            items={mockData(5)}
+            skipViewportMeasures={true}
+            // tslint:disable-next-line:jsx-no-lambda
+            onShouldVirtualize={() => false}
+            onRenderGroupHeaderCheckbox={onRenderGroupHeaderCheckbox}
+            checkboxVisibility={CheckboxVisibility.always}
+            selectionMode={SelectionMode.multiple}
+            selection={selection}
+            {...possibleGroupProps}
+            groups={groups}
+          />,
+        );
+        expect(onRenderGroupHeaderCheckbox).toHaveBeenCalledTimes(2);
+        expect(onRenderGroupHeaderCheckbox.mock.calls[1][0]).toEqual({ checked: false, theme });
+      }
+      {
+        // If there are no groups, onRenderGroupHeader should not be called
+        const onRenderGroupHeaderCheckbox = jest.fn();
+        mount(
+          <DetailsList
+            items={mockData(5)}
+            skipViewportMeasures={true}
+            // tslint:disable-next-line:jsx-no-lambda
+            onShouldVirtualize={() => false}
+            onRenderGroupHeaderCheckbox={onRenderGroupHeaderCheckbox}
+            checkboxVisibility={CheckboxVisibility.always}
+            selectionMode={SelectionMode.multiple}
+            selection={selection}
+            {...possibleGroupProps}
+          />,
+        );
+        expect(onRenderGroupHeaderCheckbox).toHaveBeenCalledTimes(0);
+      }
+    });
+
+    {
+      // When onRenderHeader is overridden by a customized render without respecting the passed in props,
+      // onRenderGroupHeaderCheckbox should not be called.
+      const groupProps: IDetailsGroupRenderProps = {
+        onRenderHeader: (props, defaultRender) => null,
+      };
+      const onRenderGroupHeaderCheckbox = jest.fn();
+      mount(
+        <DetailsList
+          items={mockData(5)}
+          skipViewportMeasures={true}
+          // tslint:disable-next-line:jsx-no-lambda
+          onShouldVirtualize={() => false}
+          onRenderGroupHeaderCheckbox={onRenderGroupHeaderCheckbox}
+          checkboxVisibility={CheckboxVisibility.always}
+          selectionMode={SelectionMode.multiple}
+          selection={selection}
+          groupProps={groupProps}
+          groups={groups}
+        />,
+      );
+      expect(onRenderGroupHeaderCheckbox).toHaveBeenCalledTimes(0);
+    }
   });
 
   it('initializes the selection mode object with the selectionMode prop', () => {

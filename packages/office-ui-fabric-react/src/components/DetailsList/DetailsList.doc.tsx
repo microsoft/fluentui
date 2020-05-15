@@ -20,6 +20,12 @@ const DetailsListCustomRowsExampleCode = require('!raw-loader!office-ui-fabric-r
 import { DetailsListCustomGroupHeadersExample } from './examples/DetailsList.CustomGroupHeaders.Example';
 const DetailsListCustomGroupHeadersExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.CustomGroupHeaders.Example.tsx') as string;
 
+import { DetailsListCustomFooterExample } from './examples/DetailsList.CustomFooter.Example';
+const DetailsListCustomFooterExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.CustomFooter.Example.tsx') as string;
+
+import { DetailsListCustomCheckboxExample } from './examples/DetailsList.CustomCheckbox.Example';
+const DetailsListCustomCheckboxExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.CustomCheckbox.Example.tsx') as string;
+
 import { DetailsListAdvancedExample } from './examples/DetailsList.Advanced.Example';
 const DetailsListAdvancedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.Advanced.Example.tsx') as string;
 
@@ -40,9 +46,6 @@ const DetailsListNavigatingFocusExampleCode = require('!raw-loader!office-ui-fab
 
 import { ShimmerApplicationExample as DetailsListShimmerExample } from '../Shimmer/examples/Shimmer.Application.Example';
 const DetailsListShimmerExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Shimmer/examples/Shimmer.Application.Example.tsx') as string;
-
-import { DetailsListCustomFooterExample } from './examples/DetailsList.CustomFooter.Example';
-const DetailsListCustomFooterExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.CustomFooter.Example.tsx') as string;
 
 export const DetailsListPageProps: IDocPageProps = {
   title: 'DetailsList',
@@ -125,6 +128,18 @@ export const DetailsListCustomGroupHeadersPageProps: IDocPageProps = generatePro
   view: <DetailsListCustomGroupHeadersExample />,
 });
 
+export const DetailsListCustomFooterPageProps: IDocPageProps = generateProps({
+  title: 'Rendering custom DetailsList footer',
+  code: DetailsListCustomFooterExampleCode,
+  view: <DetailsListCustomFooterExample />,
+});
+
+export const DetailsListCustomCheckboxPageProps: IDocPageProps = generateProps({
+  title: 'Rendering custom DetailsList checkbox',
+  code: DetailsListCustomCheckboxExampleCode,
+  view: <DetailsListCustomCheckboxExample />,
+});
+
 export const DetailsListAdvancedPageProps: IDocPageProps = generateProps({
   title: 'Advanced DetailsList of 5000 items with variable row heights',
   code: DetailsListAdvancedExampleCode,
@@ -147,10 +162,4 @@ export const DetailsListShimmerPageProps: IDocPageProps = generateProps({
   title: 'Shimmered DetailsList - usually shown while retrieving data',
   code: DetailsListShimmerExampleCode,
   view: <DetailsListShimmerExample />,
-});
-
-export const DetailsListCustomFooterPageProps: IDocPageProps = generateProps({
-  title: 'Rendering custom DetailsList footer',
-  code: DetailsListCustomFooterExampleCode,
-  view: <DetailsListCustomFooterExample />,
 });
