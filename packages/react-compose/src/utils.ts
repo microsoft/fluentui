@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as ReactIs from 'react-is';
+
 import { ComposedComponent, ComposeOptions, ComposePreparedOptions, Input } from './types';
 import { mergeClasses } from './mergeClasses';
 
