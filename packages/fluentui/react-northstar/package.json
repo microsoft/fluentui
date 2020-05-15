@@ -19,6 +19,7 @@
     "@fluentui/styles": "^0.49.0",
     "@popperjs/core": "^2.1.1",
     "classnames": "^2.2.6",
+    "compute-scroll-into-view": "^1.0.13",
     "downshift": "5.0.5",
     "fela": "^10.6.1",
     "fela-plugin-embedded": "^10.6.1",
