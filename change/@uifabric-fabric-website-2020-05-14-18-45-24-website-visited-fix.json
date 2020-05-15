@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "fixed visited styles in website",
+  "packageName": "@uifabric/fabric-website",
+  "email": "mgodbolt@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-05-15T01:45:24.904Z"
+}
