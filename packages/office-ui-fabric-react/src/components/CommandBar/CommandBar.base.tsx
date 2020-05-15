@@ -100,7 +100,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
       <FocusZone
         className={css(this._classNames.root)}
         direction={FocusZoneDirection.horizontal}
-        role={'menubar'}
+        role={this.props.role || 'menubar'}
         aria-label={this.props.ariaLabel}
       >
         {/*Primary Items*/}

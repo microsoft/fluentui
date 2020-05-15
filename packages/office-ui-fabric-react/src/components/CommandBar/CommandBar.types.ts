@@ -119,6 +119,11 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
    * Theme provided by HOC.
    */
   theme?: ITheme;
+
+  /**
+   * Aria role assigned to the CommandBar. Default role is 'menubar'.
+   */
+  role?: string;
 }
 
 /**

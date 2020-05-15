@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "CommandBar: Add optional aria role prop",
+  "packageName": "office-ui-fabric-react",
+  "email": "erabelle@microsoft.com",
+  "commit": "e788a5dfe348f03d21a453d789bd811f25e740ca",
+  "date": "2020-05-15T23:48:05.673Z"
+}
