@@ -25,8 +25,8 @@ function _initializeIcons(baseUrl: string, size: number, options?: Partial<IIcon
   const fileTypeIcons: { [key: string]: JSX.Element } = {};
 
   iconTypes.forEach((type: string) => {
-    fileTypeIcons[type + size + PNG_SUFFIX] = <img src={baseUrl + size + '/' + type + '.png' + REFRESH_STRING} />;
-    fileTypeIcons[type + size + SVG_SUFFIX] = <img src={baseUrl + size + '/' + type + '.svg' + REFRESH_STRING} />;
+    fileTypeIcons[type + size + PNG_SUFFIX] = <img src={baseUrl + size + '/' + type + '.png' + REFRESH_STRING} alt="" />;
+    fileTypeIcons[type + size + SVG_SUFFIX] = <img src={baseUrl + size + '/' + type + '.svg' + REFRESH_STRING} alt="" />;
 
     // For high resolution screens, register additional versions
     // Apply height=100% and width=100% to force image to fit into containing element
