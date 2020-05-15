@@ -36,7 +36,7 @@ export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * Initial value of the control. Updates to this prop will not be respected.
    *
-   * Use this if you intend for the SpinButton to be an uncontrolled component.
+   * Use this if you intend for the SpinButton to be an uncontrolled component which maintains its own value.
    * Mutually exclusive with `value`.
    * @defaultvalue 0
    */
@@ -157,7 +157,7 @@ export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement> {
   styles?: Partial<ISpinButtonStyles>;
 
   /**
-   * Custom function for providing the classNames for the SpinButton. Can be used to provide
+   * Custom function for providing the classNames for the control. Can be used to provide
    * all styles for the component instead of applying them on top of the default styles.
    */
   getClassNames?: (
@@ -191,12 +191,12 @@ export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement> {
   theme?: ITheme;
 
   /**
-   * Accessibile label text for the increment button (for screen reader users).
+   * Accessible label text for the increment button (for screen reader users).
    */
   incrementButtonAriaLabel?: string;
 
   /**
-   * Accessibile label text for the decrement button (for screen reader users).
+   * Accessible label text for the decrement button (for screen reader users).
    */
   decrementButtonAriaLabel?: string;
 
@@ -220,18 +220,18 @@ export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement> {
 
   /**
    * Sets the control's aria-valuenow. This is the numeric form of `value`.
-   * Providing this only makes sense when using the SpinButton as a controlled component.
+   * Providing this only makes sense when using as a controlled component.
    */
   ariaValueNow?: number;
 
   /*
    * Sets the control's aria-valuetext.
-   * Providing this only makes sense when using the SpinButton as a controlled component.
+   * Providing this only makes sense when using as a controlled component.
    */
   ariaValueText?: string;
 
   /**
-   * Keytip for this SpinButton
+   * Keytip for the control.
    */
   keytipProps?: IKeytipProps;
 

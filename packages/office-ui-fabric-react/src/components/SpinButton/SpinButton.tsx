@@ -219,7 +219,13 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
                     ? Number(value)
                     : undefined
                 }
-                aria-valuetext={ariaValueText || (!value || isNaN(Number(value)) ? value : undefined)}
+                aria-valuetext={
+                  typeof ariaValueText === 'string'
+                    ? ariaValueText
+                    : !value || isNaN(Number(value)) // Number('') is 0 which may not be desirable
+                    ? value
+                    : undefined
+                }
                 aria-valuemin={min}
                 aria-valuemax={max}
                 aria-describedby={mergeAriaAttributeValues(ariaDescribedBy, keytipAttributes['aria-describedby'])}

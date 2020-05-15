@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "Copy OUFR SpinButton changes",
+  "comment": "SpinButton: allow empty string as value, clean up docs and tests",
   "packageName": "@fluentui/react-next",
   "email": "elcraig@microsoft.com",
   "dependentChangeType": "patch",
