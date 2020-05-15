@@ -1,11 +1,5 @@
 import { IStyleSet } from './IStyleSet';
-
-/**
- * Deep partial
- */
-export type DeepPartial<T> = {
-  [P in keyof T]?: T[P] extends (infer U)[] ? DeepPartial<U>[] : T[P] extends object ? DeepPartial<T[P]> : T[P];
-};
+import { DeepPartial } from './DeepPartial';
 
 /**
  * A style function takes in styleprops and returns a partial styleset.

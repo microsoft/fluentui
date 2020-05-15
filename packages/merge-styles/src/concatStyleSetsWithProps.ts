@@ -1,6 +1,7 @@
 import { concatStyleSets } from './concatStyleSets';
 import { IStyleSet } from './IStyleSet';
-import { IStyleFunctionOrObject, DeepPartial } from './IStyleFunction';
+import { IStyleFunctionOrObject } from './IStyleFunction';
+import { DeepPartial } from './DeepPartial';
 
 /**
  * Concatenates style sets into one, but resolves functional sets using the given props.
