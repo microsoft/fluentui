@@ -2,7 +2,6 @@ import * as React from 'react';
 import { Checkbox, ICheckboxProps } from '@fluentui/react-next/lib/Checkbox';
 import { Link } from '@fluentui/react-next/lib/Link';
 import { Stack } from '@fluentui/react-next/lib/Stack';
-import { ThemeProvider } from '@fluentui/react-next/lib/Styling';
 
 // Optional extra props to pass through to the input element
 const inputProps: ICheckboxProps['inputProps'] = {
@@ -20,17 +19,15 @@ export const CheckboxOtherExample: React.FunctionComponent = () => {
   }, []);
 
   return (
-    <ThemeProvider>
-      <Stack tokens={stackTokens}>
-        <Checkbox label="Controlled checkbox" checked={isChecked} onChange={onChange} />
+    <Stack tokens={stackTokens}>
+      <Checkbox label="Controlled checkbox" checked={isChecked} onChange={onChange} />
 
-        <Checkbox label='Checkbox rendered with boxSide "end"' boxSide="end" />
+      <Checkbox label='Checkbox rendered with boxSide "end"' boxSide="end" />
 
-        <Checkbox label="Checkbox with extra props for the input" inputProps={inputProps} />
+      <Checkbox label="Checkbox with extra props for the input" inputProps={inputProps} />
 
-        <Checkbox label="Checkbox with link inside the label" onRenderLabel={_renderLabelWithLink} />
-      </Stack>
-    </ThemeProvider>
+      <Checkbox label="Checkbox with link inside the label" onRenderLabel={_renderLabelWithLink} />
+    </Stack>
   );
 };
 
