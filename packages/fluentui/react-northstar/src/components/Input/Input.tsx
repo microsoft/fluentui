@@ -227,6 +227,7 @@ const Input: React.FC<WithAsProp<InputProps>> & FluentComponentStaticProps<Input
             <Ref
               innerRef={(inputElement: HTMLElement) => {
                 handleRef(inputRef, inputElement);
+                handleRef(props.inputRef, inputElement);
               }}
             >
               {Box.create(input || type, {
