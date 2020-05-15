@@ -35,7 +35,7 @@ import { DropdownSelectedItemStylesProps } from '../../components/Dropdown/Dropd
 import { EmbedStylesProps } from '../../components/Embed/Embed';
 import { FlexItemStylesProps } from '../../components/Flex/FlexItem';
 import { FlexStylesProps } from '../../components/Flex/Flex';
-import { FormFieldProps } from '../../components/Form/FormField';
+import { FormFieldStylesProps } from '../../components/Form/FormField';
 import { FormProps } from '../../components/Form/Form';
 import { GridProps } from '../../components/Grid/Grid';
 import { HeaderDescriptionProps } from '../../components/Header/HeaderDescription';
@@ -124,7 +124,7 @@ export type TeamsThemeStylesProps = {
   Flex: FlexStylesProps;
   FlexItem: FlexItemStylesProps;
   Form: FormProps;
-  FormField: FormFieldProps;
+  FormField: FormFieldStylesProps;
   Grid: GridProps;
   Header: HeaderProps;
   HeaderDescription: HeaderDescriptionProps;

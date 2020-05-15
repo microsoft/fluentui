@@ -1,8 +1,8 @@
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { FormFieldProps } from '../../../../components/Form/FormField';
+import { FormFieldStylesProps } from '../../../../components/Form/FormField';
 import { pxToRem } from '../../../../utils';
 
-const formFieldStyles: ComponentSlotStylesPrepared<FormFieldProps> = {
+const formFieldStyles: ComponentSlotStylesPrepared<FormFieldStylesProps> = {
   root: ({ props, variables }): ICSSInJSStyle => ({}),
   label: ({ props }): ICSSInJSStyle => {
     const { type, inline, required } = props;
