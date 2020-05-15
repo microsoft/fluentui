@@ -3,13 +3,13 @@
 @import '../../common/focusBorder';
 
 .root {
-  @include fonts-medium;
-
   color: var($semanticColorsLink);
   font-size: inherit;
   font-weight: inherit;
   outline: none;
   text-decoration: none;
+
+  @include fonts-medium;
 
   @include focus(true) {
     box-shadow: 0 0 0 1px var($semanticColorsFocusBorder) inset;
