@@ -7,6 +7,7 @@ export { ThemeProviderProps } from '@fluentui/react-theme-provider';
 
 /**
  * A wrapper of ThemeProvider from react-theme-provider package.
+ *
  * It also updates the theme when Customizations changes, which ensures backward compatibility with legacy ways of
  * providing theme (e.g. loadTheme, Customizations.applySettings).
  */
@@ -26,7 +27,10 @@ export const ThemeProvider: React.FunctionComponent<ThemeProviderProps & {
     return () => Customizations.unobserve(onCustomizationChange);
   }, []);
 
-  return <ReactThemeProvider {...props} theme={convertLegacyTheme(customizationSettings.theme)} />;
+  const legacyTheme = customizationSettings.theme;
+  const theme = props.theme || convertLegacyTheme(legacyTheme);
+
+  return <ReactThemeProvider {...props} theme={theme} />;
 };
 
 function getGlobalCustomizationSettings(): ISettings {
