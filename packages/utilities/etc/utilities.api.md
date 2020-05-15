@@ -4,10 +4,12 @@
 
 ```ts
 
+import { IPartialTheme } from '@uifabric/styling/lib/interfaces/ITheme';
 import { IProcessedStyleSet } from '@uifabric/merge-styles';
 import { IStyleFunction } from '@uifabric/merge-styles';
 import { IStyleFunctionOrObject } from '@uifabric/merge-styles';
 import { IStyleSet } from '@uifabric/merge-styles';
+import { IStyleSheetConfig } from '@uifabric/merge-styles';
 import { Omit } from '@uifabric/merge-styles';
 import * as React from 'react';
 
@@ -571,6 +573,16 @@ export interface IEventRecordsByName {
 }
 
 // @public
+export interface IFabricConfig {
+    enabledFeatures?: {
+        [guid: string]: boolean;
+    };
+    fontBaseUrl?: string;
+    mergeStyles?: IStyleSheetConfig;
+    theme?: IPartialTheme;
+}
+
+// @public
 export interface IFitContentToBoundsOptions {
     boundsSize: ISize;
     contentSize: ISize;
@@ -778,6 +790,9 @@ export type ISettingsFunction = (settings: ISettings) => ISettings;
 export type ISettingsMap<T> = {
     [P in keyof T]?: string;
 };
+
+// @public
+export function isFeatureEnabled(guid: string, owner: string, date: string): boolean;
 
 // @public (undocumented)
 export const IsFocusVisibleClassName = "ms-Fabric--isFocusVisible";
