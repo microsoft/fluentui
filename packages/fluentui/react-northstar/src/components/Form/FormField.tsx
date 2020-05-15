@@ -123,7 +123,6 @@ const FormField: React.FC<WithAsProp<FormFieldProps>> & FluentComponentStaticPro
   });
 
   const shouldControlAppearFirst = () => {
-    const { type } = props;
     return type && (type === 'checkbox' || type === 'radio');
   };
 
