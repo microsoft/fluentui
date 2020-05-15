@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useForceUpdate } from '@uifabric/react-hooks';
 import { ThemeProvider } from '@fluentui/react-theme-provider';
 import {
   Customizations,
@@ -13,7 +14,8 @@ import { ICustomizerProps } from '../Utilities';
  * Replacement for Customizer from utilities package. It also provides the theme context.
  *
  * TODO (xgao): deprecate this before shipping react-next.
- * Customizer should be replaceable by ThemeProvider and compose.
+ * Global theme should be provided using `ThemeProvider`.
+ * Scoped style override for a particular component should be done using `compose`.
  */
 export const Customizer: React.FunctionComponent<ICustomizerProps> = props => {
   const forceUpdate = useForceUpdate();
@@ -47,8 +49,3 @@ export const Customizer: React.FunctionComponent<ICustomizerProps> = props => {
     </CustomizerContext.Consumer>
   );
 };
-
-function useForceUpdate(): () => void {
-  const [, setValue] = React.useState(0);
-  return () => setValue(value => ++value);
-}
