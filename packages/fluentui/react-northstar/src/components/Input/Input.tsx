@@ -131,7 +131,7 @@ const Input: React.FC<WithAsProp<InputProps>> & FluentComponentStaticProps<Input
   const [htmlInputProps, restProps] = partitionHTMLProps(unhandledProps);
   const [value, setValue] = useAutoControlled({
     defaultValue: props.defaultValue,
-    value: props.value,
+    value: props.value as string,
     initialValue: '',
   });
   const [hasValue, setHasValue] = React.useState<boolean>(!!value && (value as string)?.length !== 0);
