@@ -478,9 +478,9 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
               const { children } = menu;
               let nodeToScroll = node;
               /**
-               * If it's loading downshift doesn't take the last node with loadingMessage in consideration to scrolld
-               * so we need to check if the current is the antepenultimate and is so scroll the loading into view,
-               * same for headerMessage
+               * If it's loading downshift doesn't take the last node with loadingMessage
+               * in consideration to scrolld so we need to check if the current is the
+               * antepenultimate and is so scroll the loading into view, same for headerMessage
                */
               if (loading && children[children.length - 2] === node) {
                 nodeToScroll = children[children.length - 1] as HTMLElement;
