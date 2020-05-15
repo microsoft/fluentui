@@ -359,7 +359,7 @@ export interface IPivot {
 export interface IPivotItemProps extends React.HTMLAttributes<HTMLDivElement> {
     ariaLabel?: string;
     componentRef?: IRefObject<{}>;
-    headerButtonProps?: {
+    headerButtonProps?: IButtonProps & {
         [key: string]: string | number | boolean;
     };
     headerText?: string;
