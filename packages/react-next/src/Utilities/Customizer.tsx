@@ -36,13 +36,13 @@ export const Customizer: React.FunctionComponent<ICustomizerProps> = props => {
           newContext = contextTransform(newContext);
         }
 
-        const content = disableThemeProvider ? (
-          children
-        ) : (
-          <ThemeProvider theme={convertLegacyTheme(newContext.customizations.settings.theme)}>
-            {props.children}
-          </ThemeProvider>
-        );
+        const globalTheme = newContext.customizations.settings.theme;
+        const content =
+          globalTheme && !disableThemeProvider ? (
+            <ThemeProvider theme={convertLegacyTheme(globalTheme)}>{props.children}</ThemeProvider>
+          ) : (
+            children
+          );
 
         return <CustomizerContext.Provider value={newContext}>{content}</CustomizerContext.Provider>;
       }}
