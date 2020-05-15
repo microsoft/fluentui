@@ -1,18 +1,13 @@
 import * as React from 'react';
+import { ThemeProvider } from '@fluentui/react-theme-provider';
 import {
   Customizations,
   CustomizerContext,
   mergeCustomizations,
   ICustomizerContext,
 } from 'office-ui-fabric-react/lib/Utilities';
-import { ThemeProvider } from '@fluentui/react-theme-provider';
 import { convertLegacyTheme } from '../Styling/convertLegacyTheme';
-
-import { ICustomizerProps as LegacyCustomizerProps } from 'office-ui-fabric-react/lib/Utilities';
-
-export interface ICustomizerProps extends LegacyCustomizerProps {
-  disableThemeProvider?: boolean;
-}
+import { ICustomizerProps } from '../Utilities';
 
 /**
  * Replacement for Customizer from utilities package. It also provides the theme context.
