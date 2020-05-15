@@ -1,13 +1,13 @@
 {
   "name": "@fluentui/react-builder",
   "description": "A drag and drop UI builder.",
-  "version": "0.48.0",
+  "version": "0.49.0",
   "author": "Levi Thomason <me@levithomason.com>",
   "bugs": "https://github.com/microsoft/fluentui/issues",
   "dependencies": {
     "@babel/runtime": "^7.7.6",
-    "@fluentui/react-component-event-listener": "^0.48.0",
-    "@fluentui/react-northstar": "^0.48.0",
+    "@fluentui/react-component-event-listener": "^0.49.0",
+    "@fluentui/react-northstar": "^0.49.0",
     "lz-string": "^1.4.4",
     "react-frame-component": "^4.1.1",
     "react-is": "^16.6.3"
