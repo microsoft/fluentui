@@ -25,6 +25,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Restricted prop sets in the `Menu` component which are passed to styles functions @assuncaocharles ([#13040](https://github.com/microsoft/fluentui/pull/13040))
 - Renamed `Survey20pxIcon` to `ApprovalsAppbarIcon` @TanelVari ([#12872](https://github.com/microsoft/fluentui/pull/12872))
 - Restricted prop sets in the `Form` component which are passed to styles functions, @assuncaocharles ([#13180](https://github.com/microsoft/fluentui/pull/13180))
+- Restricted prop sets in the `FormField` component which are passed to styles functions, @assuncaocharles ([#13181](https://github.com/microsoft/fluentui/pull/13181))
 - Restricted prop sets in the `DropdownSelectedItem` component which are passed to styles functions, @assuncaocharles ([#13179](https://github.com/microsoft/fluentui/pull/13179))
 
 ### Fixes

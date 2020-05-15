@@ -64,6 +64,48 @@
         }
       ]
     },
+    "$setsize": {
+      "name": "setsize",
+      "attributes": [
+        {
+          "name": "aria-setsize",
+          "constraints": [
+            {
+              "xpath": "number(@aria-setsize) = @aria-setsize",
+              "description": "aria-setsize attribute value should be a number"
+            }
+          ]
+        }
+      ]
+    },
+    "$posinset": {
+      "name": "posinset",
+      "attributes": [
+        {
+          "name": "aria-posinset",
+          "constraints": [
+            {
+              "xpath": "number(@aria-posinset) = @aria-posinset",
+              "description": "aria-posinset attribute value should be a number"
+            }
+          ]
+        }
+      ]
+    },
+    "$level": {
+      "name": "level",
+      "attributes": [
+        {
+          "name": "aria-level",
+          "constraints": [
+            {
+              "xpath": "number(@aria-level) = @aria-level",
+              "description": "aria-level attribute value should be a number"
+            }
+          ]
+        }
+      ]
+    },
     "$describedBy": {
       "name": "describedBy",
       "attributes": [
@@ -190,6 +232,24 @@
             {
               "parameter": false,
               "attribute": [false, "false"]
+            }
+          ]
+        }
+      ]
+    },
+    "$isSelected": {
+      "name": "isSelected",
+      "attributes": [
+        {
+          "name": "aria-selected",
+          "value": [
+            {
+              "parameter": true,
+              "attribute": "true"
+            },
+            {
+              "parameter": true,
+              "attribute": "false"
             }
           ]
         }
@@ -333,6 +393,107 @@
             {
               "name": "aria-level",
               "value": "1"
+            }
+          ]
+        }
+      }
+    },
+    "TreeItem": {
+      "constraints": [
+        {
+          "ref": "$atomic"
+        }
+      ],
+      "parameters": [
+        {
+          "ref": "$title",
+          "optional": true
+        },
+        {
+          "rel": "@tabbable"
+        },
+        {
+          "ref": "$isExpanded"
+        },
+        {
+          "ref": "$isSelected",
+          "optional": true
+        },
+        {
+          "ref": "$setsize"
+        },
+        {
+          "ref": "$posinset"
+        },
+        {
+          "ref": "$level"
+        }
+      ],
+      "tags": {
+        "<div>, <span>, <a>": {
+          "parameters": {
+            "@tabbable": {
+              "ref": "$tabbable",
+              "optional": true
+            }
+          },
+          "attributes": [
+            {
+              "name": "role",
+              "value": "treeitem",
+              "overridable": "role"
+            },
+            {
+              "ref": "$tabindex"
+            }
+          ]
+        }
+      }
+    },
+    "TreeTitle": {
+      "constraints": [
+        {
+          "ref": "$atomic"
+        }
+      ],
+      "parameters": [
+        {
+          "ref": "$title",
+          "optional": true
+        },
+        {
+          "rel": "@tabbable"
+        },
+        {
+          "ref": "$isSelected",
+          "optional": true
+        },
+        {
+          "ref": "$setsize"
+        },
+        {
+          "ref": "$posinset"
+        },
+        {
+          "ref": "$level"
+        }
+      ],
+      "tags": {
+        "<div>, <span>, <a>": {
+          "parameters": {
+            "@tabbable": {
+              "ref": "$tabbable",
+              "optional": true
+            }
+          },
+          "attributes": [
+            {
+              "name": "role",
+              "value": "treeitem",
+              "overridable": "role"
+            },
+            {
+              "ref": "$tabindex"
             }
           ]
         }
