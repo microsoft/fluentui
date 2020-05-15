@@ -31,6 +31,7 @@ import { DividerStylesProps } from '../../components/Divider/Divider';
 import { DialogProps } from '../../components/Dialog/Dialog';
 import { DropdownProps } from '../../components/Dropdown/Dropdown';
 import { DropdownSearchInputStylesProps } from '../../components/Dropdown/DropdownSearchInput';
+import { DropdownSelectedItemStylesProps } from '../../components/Dropdown/DropdownSelectedItem';
 import { EmbedStylesProps } from '../../components/Embed/Embed';
 import { FlexItemStylesProps } from '../../components/Flex/FlexItem';
 import { FlexStylesProps } from '../../components/Flex/Flex';
@@ -118,6 +119,7 @@ export type TeamsThemeStylesProps = {
   Dialog: DialogProps;
   Dropdown: DropdownProps;
   DropdownSearchInput: DropdownSearchInputStylesProps;
+  DropdownSelectedItem: DropdownSelectedItemStylesProps;
   Embed: EmbedStylesProps;
   Flex: FlexStylesProps;
   FlexItem: FlexItemStylesProps;
