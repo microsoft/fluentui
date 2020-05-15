@@ -484,7 +484,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
                */
               if (loading && children[children.length - 2] === node) {
                 nodeToScroll = children[children.length - 1] as HTMLElement;
-              } else if (children[1] && headerMessage) {
+              } else if (headerMessage && children[1] === node) {
                 nodeToScroll = children[0] as HTMLElement;
               }
 
