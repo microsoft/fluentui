@@ -1,12 +1,19 @@
 import { IStyleSet } from './IStyleSet';
 
 /**
+ * Deep partial
+ */
+export type DeepPartial<T> = {
+  [P in keyof T]?: T[P] extends (infer U)[] ? DeepPartial<U>[] : T[P] extends object ? DeepPartial<T[P]> : T[P];
+};
+
+/**
  * A style function takes in styleprops and returns a partial styleset.
  * {@docCategory IStyleFunction}
  */
 export type IStyleFunction<TStylesProps, TStyleSet extends IStyleSet<TStyleSet>> = (
   props: TStylesProps,
-) => Partial<TStyleSet>;
+) => DeepPartial<TStyleSet>;
 
 /**
  * Represents either a style function that takes in style props and returns a partial styleset,
@@ -15,4 +22,4 @@ export type IStyleFunction<TStylesProps, TStyleSet extends IStyleSet<TStyleSet>>
  */
 export type IStyleFunctionOrObject<TStylesProps, TStyleSet extends IStyleSet<TStyleSet>> =
   | IStyleFunction<TStylesProps, TStyleSet>
-  | Partial<TStyleSet>;
+  | DeepPartial<TStyleSet>;

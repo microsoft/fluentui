@@ -1,6 +1,6 @@
 export { IRawStyle, IStyle, IStyleBase, IStyleBaseArray } from './IStyle';
 
-export { IStyleFunction, IStyleFunctionOrObject } from './IStyleFunction';
+export { DeepPartial, IStyleFunction, IStyleFunctionOrObject } from './IStyleFunction';
 
 export { IConcatenatedStyleSet, IProcessedStyleSet, IStyleSet, Omit } from './IStyleSet';
 
