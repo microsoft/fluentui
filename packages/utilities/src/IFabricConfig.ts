@@ -23,10 +23,10 @@ export interface IFabricConfig {
   theme?: IPartialTheme;
 
   /**
-   * A list of GUIDs used to disable specific portions of code.
-   * A feature is disabled if the GUID associated with it is in the list and is set to "true".
+   * A list of GUIDs used to enable new features.
+   * A feature is enabled if the GUID associated with it is in the list and is set to "true".
    * All letters in GUIDs must be uppercase letters.
-   * See further documentation at https://github.com/microsoft/fluentui/wiki/disabledFeatures-Switches
+   * See further documentation at https://github.com/microsoft/fluentui/wiki/enabledFeatures-Switches
    */
-  disabledFeatures?: { [guid: string]: boolean };
+  enabledFeatures?: { [guid: string]: boolean };
 }

@@ -35,7 +35,7 @@ export * from './customizations/CustomizerContext';
 export * from './customizations/customizable';
 export * from './customizations/mergeCustomizations';
 export * from './customizations/mergeSettings';
-export * from './disabledFeatures';
+export * from './enabledFeatures';
 export * from './dom';
 export * from './extendComponent';
 export * from './focus';
