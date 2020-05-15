@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Prettier fix on Callout test.",
-  "packageName": "office-ui-fabric-react",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-04-29T21:25:07.618Z"
-}

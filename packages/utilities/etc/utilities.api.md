@@ -4,12 +4,10 @@
 
 ```ts
 
-import { IPartialTheme } from '@uifabric/styling/lib/interfaces/ITheme';
 import { IProcessedStyleSet } from '@uifabric/merge-styles';
 import { IStyleFunction } from '@uifabric/merge-styles';
 import { IStyleFunctionOrObject } from '@uifabric/merge-styles';
 import { IStyleSet } from '@uifabric/merge-styles';
-import { IStyleSheetConfig } from '@uifabric/merge-styles';
 import { Omit } from '@uifabric/merge-styles';
 import * as React from 'react';
 
@@ -348,6 +346,9 @@ export function getParent(child: HTMLElement, allowVirtualParents?: boolean): HT
 export function getPreviousElement(rootElement: HTMLElement, currentElement: HTMLElement | null, checkNode?: boolean, suppressParentTraversal?: boolean, traverseChildren?: boolean, includeElementsInFocusZones?: boolean, allowFocusRoot?: boolean, tabbable?: boolean): HTMLElement | null;
 
 // @public
+export function getPropsWithDefaults<TProps extends {}>(defaultProps: Partial<TProps>, propsWithoutDefaults: TProps): TProps;
+
+// @public
 export function getRect(element: HTMLElement | Window | null): IRectangle | undefined;
 
 // @public
@@ -449,6 +450,7 @@ export type IClassNames<T> = {
 export interface IClassNamesFunctionOptions {
     cacheSize?: number;
     disableCaching?: boolean;
+    useStaticStyles?: boolean;
 }
 
 // @public
@@ -566,16 +568,6 @@ export interface IEventRecordList {
 export interface IEventRecordsByName {
     // (undocumented)
     [eventName: string]: IEventRecordList;
-}
-
-// @public
-export interface IFabricConfig {
-    disabledFeatures?: {
-        [guid: string]: boolean;
-    };
-    fontBaseUrl?: string;
-    mergeStyles?: IStyleSheetConfig;
-    theme?: IPartialTheme;
 }
 
 // @public
@@ -744,6 +736,8 @@ export interface ISelectionOptions<TItem = IObjectWithKey> {
     canSelectItem?: (item: TItem, index?: number) => boolean;
     getKey?: (item: TItem, index?: number) => string | number;
     // (undocumented)
+    items?: TItem[];
+    // (undocumented)
     onSelectionChanged?: () => void;
     // (undocumented)
     selectionMode?: SelectionMode;
@@ -784,9 +778,6 @@ export type ISettingsFunction = (settings: ISettings) => ISettings;
 export type ISettingsMap<T> = {
     [P in keyof T]?: string;
 };
-
-// @public
-export function isFeatureDisabled(guid: string, owner: string, date: string): boolean;
 
 // @public (undocumented)
 export const IsFocusVisibleClassName = "ms-Fabric--isFocusVisible";
@@ -1173,6 +1164,12 @@ export function shouldWrapFocus(element: HTMLElement, noWrapDataAttribute: 'data
 
 // @public
 export function styled<TComponentProps extends IPropsWithStyles<TStyleProps, TStyleSet>, TStyleProps, TStyleSet extends IStyleSet<TStyleSet>>(Component: React.ComponentClass<TComponentProps> | React.FunctionComponent<TComponentProps>, baseStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>, getProps?: (props: TComponentProps) => Partial<TComponentProps>, customizable?: ICustomizableProps, pure?: boolean): React.FunctionComponent<TComponentProps>;
+
+// @public (undocumented)
+export type StyleFunction<TStyleProps, TStyleSet> = IStyleFunctionOrObject<TStyleProps, TStyleSet> & {
+    __cachedInputs__: (IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined)[];
+    __noStyleOverride__: boolean;
+};
 
 // @public
 export const tableProperties: string[];

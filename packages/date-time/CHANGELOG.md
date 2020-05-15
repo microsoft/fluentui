@@ -1,8 +1,17 @@
 # Change Log - @uifabric/date-time
 
-This log was last generated on Thu, 07 May 2020 01:06:55 GMT and should not be manually modified.
+This log was last generated on Fri, 08 May 2020 12:35:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.8.74](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.8.74)
+
+Fri, 08 May 2020 12:35:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.8.73..@uifabric/date-time_v7.8.74)
+
+### Patches
+
+- update snapshots for merge-styles change to not generate class with no styles ([PR #13029](https://github.com/microsoft/fluentui/pull/13029) by pingj@microsoft.com)
 
 ## [7.8.73](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.8.73)
 

@@ -96,7 +96,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
             font-size: 14px;
             font-weight: 400;
             position: relative;
-            text-align: left;
             user-select: none;
           }
           &::before {
@@ -228,7 +227,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={0}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -260,7 +258,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={1}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -292,7 +289,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={2}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -324,7 +320,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={3}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -356,7 +351,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={4}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -388,7 +382,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={5}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -420,7 +413,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={6}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -452,7 +444,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={7}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -484,7 +475,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={8}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -516,7 +506,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={9}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -548,7 +537,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={10}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -580,7 +568,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={11}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -612,7 +599,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={12}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -644,7 +630,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={13}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -676,7 +661,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={14}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -708,7 +692,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={15}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -740,7 +723,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={16}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -772,7 +754,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={17}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -804,7 +785,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={18}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -836,7 +816,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={19}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -868,7 +847,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={20}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -900,7 +878,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={21}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -932,7 +909,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={22}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -964,7 +940,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={23}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -996,7 +971,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={24}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -1028,7 +1002,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={25}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -1060,7 +1033,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={26}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -1092,7 +1064,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={27}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -1124,7 +1095,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={28}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -1156,7 +1126,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={29}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -1188,7 +1157,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={30}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -1220,7 +1188,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={31}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -1252,7 +1219,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={32}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -1284,7 +1250,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={33}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -1316,7 +1281,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={34}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -1348,7 +1312,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={35}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -1380,7 +1343,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={36}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -1412,7 +1374,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={37}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -1444,7 +1405,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={38}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -1476,7 +1436,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={39}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -1508,7 +1467,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={40}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -1540,7 +1498,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={41}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -1572,7 +1529,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={42}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -1604,7 +1560,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={43}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -1636,7 +1591,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={44}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -1668,7 +1622,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={45}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -1700,7 +1653,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={46}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -1732,7 +1684,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={47}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -1764,7 +1715,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={48}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -1796,7 +1746,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={49}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -1828,7 +1777,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={50}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -1860,7 +1808,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={51}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -1892,7 +1839,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={52}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -1924,7 +1870,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={53}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -1956,7 +1901,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={54}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -1988,7 +1932,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={55}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -2020,7 +1963,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={56}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -2052,7 +1994,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={57}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -2084,7 +2025,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={58}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -2116,7 +2056,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={59}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -2148,7 +2087,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={60}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -2180,7 +2118,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={61}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -2212,7 +2149,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={62}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -2244,7 +2180,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={63}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -2276,7 +2211,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={64}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -2308,7 +2242,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={65}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -2340,7 +2273,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={66}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -2372,7 +2304,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={67}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -2404,7 +2335,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={68}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -2436,7 +2366,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={69}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -2468,7 +2397,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={70}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -2500,7 +2428,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={71}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -2532,7 +2459,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={72}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -2564,7 +2490,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={73}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -2596,7 +2521,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={74}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -2628,7 +2552,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={75}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -2660,7 +2583,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={76}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -2692,7 +2614,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={77}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -2724,7 +2645,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={78}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -2756,7 +2676,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={79}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -2788,7 +2707,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={80}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -2820,7 +2738,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={81}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -2852,7 +2769,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={82}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -2884,7 +2800,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={83}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -2916,7 +2831,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={84}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -2948,7 +2862,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={85}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -2980,7 +2893,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={86}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -3012,7 +2924,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={87}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -3044,7 +2955,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={88}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -3076,7 +2986,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={89}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -3108,7 +3017,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={90}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -3140,7 +3048,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={91}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -3172,7 +3079,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={92}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -3204,7 +3110,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={93}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -3236,7 +3141,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={94}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -3268,7 +3172,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={95}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -3300,7 +3203,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={96}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -3332,7 +3234,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={97}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -3364,7 +3265,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={98}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -3396,7 +3296,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={99}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -3428,7 +3327,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={100}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -3460,7 +3358,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={101}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -3492,7 +3389,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={102}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -3524,7 +3420,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={103}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -3556,7 +3451,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={104}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -3588,7 +3482,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={105}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -3620,7 +3513,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={106}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -3652,7 +3544,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={107}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -3684,7 +3575,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={108}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -3716,7 +3606,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={109}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -3748,7 +3637,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={110}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -3780,7 +3668,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={111}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -3812,7 +3699,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={112}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -3844,7 +3730,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={113}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -3876,7 +3761,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={114}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -3908,7 +3792,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={115}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -3940,7 +3823,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={116}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -3972,7 +3854,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={117}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -4004,7 +3885,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={118}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -4036,7 +3916,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={119}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -4068,7 +3947,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={120}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -4100,7 +3978,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={121}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -4132,7 +4009,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={122}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -4164,7 +4040,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={123}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -4196,7 +4071,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={124}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -4228,7 +4102,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={125}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -4260,7 +4133,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={126}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -4292,7 +4164,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={127}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -4324,7 +4195,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={128}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -4356,7 +4226,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={129}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -4388,7 +4257,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={130}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -4420,7 +4288,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={131}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -4452,7 +4319,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={132}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -4484,7 +4350,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={133}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -4516,7 +4381,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={134}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -4548,7 +4412,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={135}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -4580,7 +4443,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={136}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -4612,7 +4474,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={137}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -4644,7 +4505,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={138}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -4676,7 +4536,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={139}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -4708,7 +4567,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={140}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -4740,7 +4598,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={141}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -4772,7 +4629,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={142}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -4804,7 +4660,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={143}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -4836,7 +4691,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={144}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -4868,7 +4722,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={145}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -4900,7 +4753,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={146}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -4932,7 +4784,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={147}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -4964,7 +4815,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={148}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -4996,7 +4846,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={149}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -5028,7 +4877,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={150}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -5060,7 +4908,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={151}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -5092,7 +4939,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={152}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -5124,7 +4970,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={153}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -5156,7 +5001,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={154}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -5188,7 +5032,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={155}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -5220,7 +5063,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={156}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -5252,7 +5094,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={157}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -5284,7 +5125,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={158}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -5316,7 +5156,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={159}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -5348,7 +5187,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={160}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -5380,7 +5218,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={161}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -5412,7 +5249,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={162}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -5444,7 +5280,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={163}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -5476,7 +5311,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={164}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -5508,7 +5342,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={165}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -5540,7 +5373,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={166}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -5572,7 +5404,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={167}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -5604,7 +5435,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={168}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -5636,7 +5466,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={169}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -5668,7 +5497,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={170}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -5700,7 +5528,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={171}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -5732,7 +5559,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={172}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -5764,7 +5590,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={173}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -5796,7 +5621,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={174}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -5828,7 +5652,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={175}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -5860,7 +5683,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={176}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -5892,7 +5714,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={177}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -5924,7 +5745,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={178}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -5956,7 +5776,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={179}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -5988,7 +5807,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={180}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -6020,7 +5838,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={181}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -6052,7 +5869,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={182}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -6084,7 +5900,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={183}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -6116,7 +5931,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={184}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -6148,7 +5962,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={185}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -6180,7 +5993,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={186}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -6212,7 +6024,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={187}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -6244,7 +6055,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={188}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -6276,7 +6086,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={189}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -6308,7 +6117,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={190}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -6340,7 +6148,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={191}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -6372,7 +6179,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={192}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -6404,7 +6210,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={193}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -6436,7 +6241,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={194}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -6468,7 +6272,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={195}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -6500,7 +6303,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={196}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -6532,7 +6334,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={197}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -6564,7 +6365,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={198}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -6596,7 +6396,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={199}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -6628,7 +6427,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={200}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -6660,7 +6458,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={201}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -6692,7 +6489,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={202}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -6724,7 +6520,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={203}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -6756,7 +6551,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={204}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -6788,7 +6582,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={205}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -6820,7 +6613,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={206}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -6852,7 +6644,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={207}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -6884,7 +6675,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={208}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -6916,7 +6706,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={209}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -6948,7 +6737,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={210}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -6980,7 +6768,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={211}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -7012,7 +6799,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={212}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -7044,7 +6830,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={213}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -7076,7 +6861,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={214}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -7108,7 +6892,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={215}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -7140,7 +6923,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={216}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -7172,7 +6954,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={217}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -7204,7 +6985,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={218}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -7236,7 +7016,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={219}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -7268,7 +7047,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={220}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -7300,7 +7078,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={221}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -7332,7 +7109,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={222}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -7364,7 +7140,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={223}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -7396,7 +7171,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={224}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -7428,7 +7202,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={225}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -7460,7 +7233,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={226}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -7492,7 +7264,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={227}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -7524,7 +7295,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={228}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -7556,7 +7326,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={229}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -7588,7 +7357,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={230}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -7620,7 +7388,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={231}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -7652,7 +7419,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={232}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -7684,7 +7450,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={233}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -7716,7 +7481,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={234}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -7748,7 +7512,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={235}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -7780,7 +7543,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={236}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -7812,7 +7574,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={237}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -7844,7 +7605,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={238}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -7876,7 +7636,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={239}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -7908,7 +7667,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={240}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -7940,7 +7698,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={241}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -7972,7 +7729,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={242}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -8004,7 +7760,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={243}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -8036,7 +7791,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={244}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -8068,7 +7822,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={245}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -8100,7 +7853,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={246}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -8132,7 +7884,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={247}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -8164,7 +7915,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={248}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
@@ -8196,7 +7946,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
       data-is-focusable={true}
       data-selection-index={249}
-      onClick={[Function]}
       style={
         Object {
           "height": 100,
