@@ -1,12 +1,14 @@
 import * as React from 'react';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import { mount } from 'enzyme';
-import { ThemeProvider } from './ThemeProvider';
 import { Theme, useTheme, mergeThemes } from '@fluentui/react-theme-provider';
 import { Customizations } from '../Utilities';
+import { FontWeights } from '../Styling';
+import { convertLegacyTheme } from './convertLegacyTheme';
+import { ThemeProvider } from './ThemeProvider';
 
 describe('ThemeProvider', () => {
-  const legacyTheme = { fonts: { medium: { fontWeight: 800 } } };
+  const legacyTheme = { fonts: { medium: { fontWeight: FontWeights.bold } } };
 
   const lightTheme: Theme = mergeThemes({
     stylesheets: [],
@@ -53,7 +55,7 @@ describe('ThemeProvider', () => {
       </ThemeProvider>,
     );
 
-    expect(resolvedTheme).toEqual(mergeThemes({ tokens: legacyTheme }));
+    expect(resolvedTheme).toEqual(mergeThemes(convertLegacyTheme(legacyTheme)));
   });
 
   it('provide theme from theme prop if passed', () => {

@@ -8,12 +8,14 @@ import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import { IButtonProps as IButtonProps_2 } from 'office-ui-fabric-react/lib/components/Button/Button.types';
 import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import { IComponentAs } from 'office-ui-fabric-react/lib/Utilities';
-import { ICustomizerProps as ICustomizerProps_2 } from 'office-ui-fabric-react/lib/Utilities';
+import { ICustomizerContext } from 'office-ui-fabric-react/lib/Utilities';
 import { IFocusZoneProps } from '@fluentui/react-focus';
 import { IIconProps } from 'office-ui-fabric-react/lib/Icon';
 import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
 import { IRefObject } from 'office-ui-fabric-react/lib/Utilities';
 import { IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { ISettings } from 'office-ui-fabric-react/lib/Utilities';
+import { ISettingsFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 import { IStyleSet } from 'office-ui-fabric-react/lib/Styling';
@@ -120,9 +122,11 @@ export interface ICheckboxStyles {
 }
 
 // @public (undocumented)
-export interface ICustomizerProps extends ICustomizerProps_2 {
-    // (undocumented)
+export interface ICustomizerProps {
+    contextTransform?: (context: Readonly<ICustomizerContext>) => ICustomizerContext;
     disableThemeProvider?: boolean;
+    scopedSettings?: ISettings | ISettingsFunction;
+    settings?: ISettings | ISettingsFunction;
 }
 
 // @public (undocumented)
