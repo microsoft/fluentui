@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { classNamesFunction } from '../../Utilities';
-import { ILink, ILinkProps, ILinkStyleProps, ILinkStyles } from './Link.types';
+import { ILink, LinkProps, ILinkStyleProps, ILinkStyles } from './Link.types';
 import { KeytipData } from '../../KeytipData';
 
 const getClassNames = classNamesFunction<ILinkStyleProps, ILinkStyles>();
 
-const useComponentRef = (props: ILinkProps, link: React.RefObject<ILink>) => {
+const useComponentRef = (props: LinkProps, link: React.RefObject<ILink>) => {
   React.useImperativeHandle(
     props.componentRef,
     () => ({
@@ -21,8 +21,8 @@ const useComponentRef = (props: ILinkProps, link: React.RefObject<ILink>) => {
 
 const adjustPropsForRootType = (
   RootTypeProp: string | React.ComponentClass | React.FunctionComponent,
-  adjustPropsForRootTypeProps: ILinkProps & { getStyles?: any },
-): Partial<ILinkProps> => {
+  adjustPropsForRootTypeProps: LinkProps & { getStyles?: any },
+): Partial<LinkProps> => {
   // Deconstruct the props so we remove props like `as`, `theme` and `styles`
   // as those will always be removed. We also take some props that are optional
   // based on the RootType.
@@ -63,7 +63,7 @@ const adjustPropsForRootType = (
   return { target, href, disabled, ...restProps };
 };
 
-export const LinkBase: React.FunctionComponent = (props: ILinkProps) => {
+export const LinkBase: React.FunctionComponent = (props: LinkProps) => {
   const link = React.useRef<HTMLAnchorElement | HTMLButtonElement | null>(null);
   const ariaDescribedBy = (props as { 'aria-describedby': string })['aria-describedby'];
   const { disabled, children, className, href, theme, styles, keytipProps } = props;

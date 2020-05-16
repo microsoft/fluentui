@@ -7,13 +7,11 @@ export const LinkBase = compose<'a', LinkProps, LinkProps, {}, {}>(
   (props, ref, composeOptions) => {
     const { slots, slotProps } = useLink(props, composeOptions);
 
-    return <slots.root ref={ref} {...slotProps.root}></slots.root>;
+    return <slots.root ref={ref} {...slotProps.root} />;
   },
   {
     slots: {},
   },
 );
 
-LinkBase.defaultProps = {
-  as: 'a',
-};
+LinkBase.defaultProps = {};

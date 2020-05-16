@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ComposeOptions, ComposeStandardStatics } from '@fluentui/react-compose';
+import { ComponentProps, ComposeOptions, ComposeStandardStatics } from '../../utils/tempTypes';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import { IKeytipProps } from '../../Keytip';
@@ -17,7 +17,7 @@ export interface ILink {
 /**
  * {@docCategory Link}
  */
-export interface ILinkHTMLAttributes<T> extends React.HTMLAttributes<T> {
+export interface ILinkHTMLAttributes<T> extends ComponentProps, React.HTMLAttributes<T> {
   // Shared
   type?: string;
 
@@ -69,11 +69,6 @@ export interface LinkProps extends ILinkHTMLAttributes<HTMLAnchorElement | HTMLB
    * Theme (provided through customization.)
    */
   theme?: ITheme;
-
-  /**
-   * A component that should be used as the root element of the link returned from the Link component.
-   */
-  as?: string | React.ComponentClass | React.FunctionComponent;
 
   /**
    * Optional keytip for this Link
