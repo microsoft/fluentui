@@ -29,7 +29,7 @@ export class FloatingSuggestionPage extends React.Component<IComponentDemoPagePr
         dos={
           <div>
             <ul>
-              <li>Use them to display a list of people suggetions</li>
+              <li>Use them to display a list of people suggestions</li>
             </ul>
           </div>
         }

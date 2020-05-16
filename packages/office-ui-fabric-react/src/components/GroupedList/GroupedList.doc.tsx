@@ -23,13 +23,13 @@ export const GroupedListPageProps: IDocPageProps = {
     {
       title: 'GroupedList example with custom header and footer',
       code: GroupedListCustomExampleCode,
-      view: <GroupedListCustomExample />
+      view: <GroupedListCustomExample />,
     },
     {
       title: 'GroupedList example with custom checkbox',
       code: GroupedListCustomCheckboxExampleCode,
-      view: <GroupedListCustomCheckboxExample />
-    }
+      view: <GroupedListCustomCheckboxExample />,
+    },
   ],
   overview: require<
     string

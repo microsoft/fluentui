@@ -1,8 +1,17 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Fri, 15 May 2020 00:07:39 GMT and should not be manually modified.
+This log was last generated on Fri, 15 May 2020 20:33:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.14.0](https://github.com/microsoft/fluentui/tree/@uifabric/merge-styles_v7.14.0)
+
+Fri, 15 May 2020 20:33:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/merge-styles_v7.13.0..@uifabric/merge-styles_v7.14.0)
+
+### Minor changes
+
+- Addressing another typing issue found by TS 3.9.2 which is now catching scenarios which were shallow partials but should have been deep partials. ([PR #13185](https://github.com/microsoft/fluentui/pull/13185) by dzearing@microsoft.com)
 
 ## [7.13.0](https://github.com/microsoft/fluentui/tree/@uifabric/merge-styles_v7.13.0)
 
