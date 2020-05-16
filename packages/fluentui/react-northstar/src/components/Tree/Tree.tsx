@@ -148,6 +148,21 @@ const Tree: React.FC<WithAsProp<TreeProps>> &
       },
       acc,
     );
+
+  const iterateItems = (items, acc = []) =>
+    _.reduce(
+      items,
+      (acc, item) => {
+        if (item['selected'] && selectedItemIds.indexOf(item['id']) === -1) {
+          acc.push(item['id']);
+        }
+        if (item['items']) {
+          return iterateItems(item['items']);
+        }
+      },
+      acc,
+    );
+
   const [activeItemIds, setActiveItemIdsState] = useAutoControlled({
     defaultValue: props.defaultActiveItemIds,
     value: props.activeItemIds,
@@ -157,7 +172,7 @@ const Tree: React.FC<WithAsProp<TreeProps>> &
   const [selectedItemIds, setSelectedItemIdsState] = useAutoControlled({
     defaultValue: props.selectedItemIds,
     value: props.selectedItemIds,
-    initialValue: [],
+    initialValue: iterateItems(items) || [],
   });
 
   const getA11yProps = useAccessibility<TreeBehaviorProps>(props.accessibility, {
@@ -175,28 +190,6 @@ const Tree: React.FC<WithAsProp<TreeProps>> &
     }),
     rtl: context.rtl,
   });
-
-  React.useEffect(() => {
-    if (selectable && items && !selectedItemIds) {
-      if (!selectedItemIds && items) {
-        const iterateItems = (items, selectedItems = selectedItemIds) => {
-          _.forEach(items, item => {
-            if (item['selected'] && selectedItemIds.indexOf(item['id']) === -1) {
-              selectedItems.push(item['id']);
-            }
-            if (item['items']) {
-              return iterateItems(item['items']);
-            }
-          });
-        };
-
-        iterateItems(items);
-      }
-    }
-
-    if (!activeItemIds.length && items) {
-    }
-  }, []);
 
   const treeRef = React.createRef<HTMLElement>();
   const itemsRef = new Map<string, React.RefObject<HTMLElement>>();
@@ -217,6 +210,12 @@ const Tree: React.FC<WithAsProp<TreeProps>> &
     setSelectedItemIdsState(selectedItemIds);
   };
 
+  const setActiveItemIds = (e: React.SyntheticEvent, activeItemIds: string[]) => {
+    _.invoke(props, 'onActiveItemIdsChange', e, { ...props, activeItemIds });
+
+    setActiveItemIdsState(activeItemIds);
+  };
+
   const processItemsForSelection = (
     e: React.SyntheticEvent,
     treeItemProps: TreeItemProps,
@@ -225,6 +224,7 @@ const Tree: React.FC<WithAsProp<TreeProps>> &
     const { id, selectableParent, items, expanded } = treeItemProps;
     const treeItemHasSubtree = hasSubtree(treeItemProps);
     const isExpandedSelectableParent = treeItemHasSubtree && selectableParent && expanded;
+    let nextSelectedItemIds = selectedItemIds;
 
     // parent must be selectable and expanded in order to procced with selection, otherwise return
     if (treeItemHasSubtree && !(selectableParent && expanded)) {
@@ -242,7 +242,7 @@ const Tree: React.FC<WithAsProp<TreeProps>> &
     if (isExpandedSelectableParent) {
       if (isAllGroupChecked(items)) {
         const selectedItems = getAllSelectableChildrenId(items);
-        setSelectedItemIdsState(selectedItemIds.filter(id => selectedItems.indexOf(id) === -1));
+        nextSelectedItemIds = selectedItemIds.filter(id => selectedItems.indexOf(id) === -1);
       } else {
         const selectItems = items => {
           items.forEach(item => {
@@ -251,26 +251,23 @@ const Tree: React.FC<WithAsProp<TreeProps>> &
               if (item.items) {
                 selectItems(item.items);
               } else if (selectble) {
-                selectedItemIds.push(item.id);
+                nextSelectedItemIds.push(item.id);
               }
             }
           });
         };
         selectItems(items);
       }
-
-      setSelectedItemIds(e, selectedItemIds);
-      return;
     }
 
     // push/remove single tree item into selection array
     if (selectedItemIds.indexOf(id) === -1) {
-      selectedItemIds.push(id);
+      nextSelectedItemIds = [...selectedItemIds, id];
     } else {
-      setSelectedItemIdsState(selectedItemIds.filter(itemID => itemID !== id));
+      nextSelectedItemIds = nextSelectedItemIds.filter(itemID => itemID !== id);
     }
 
-    setSelectedItemIds(e, selectedItemIds);
+    setSelectedItemIds(e, nextSelectedItemIds);
   };
 
   const onTitleClick = (e: React.SyntheticEvent, treeItemProps: TreeItemProps, executeSelection: boolean = false) => {
@@ -359,12 +356,6 @@ const Tree: React.FC<WithAsProp<TreeProps>> &
     }
 
     setActiveItemIds(e, nextActiveItemsIds);
-  };
-
-  const setActiveItemIds = (e: React.SyntheticEvent, activeItemIds: string[]) => {
-    _.invoke(props, 'onActiveItemIdsChange', e, { ...props, activeItemIds });
-
-    setActiveItemIdsState(activeItemIds);
   };
 
   const getAllSelectableChildrenId = items => {
