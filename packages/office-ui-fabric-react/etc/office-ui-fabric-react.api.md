@@ -5754,7 +5754,7 @@ export interface INavProps {
     linkAs?: IComponentAs<INavButtonProps>;
     onLinkClick?: (ev?: React.MouseEvent<HTMLElement>, item?: INavLink) => void;
     onLinkExpandClick?: (ev?: React.MouseEvent<HTMLElement>, item?: INavLink) => void;
-    onRenderGroupHeader?: IRenderFunction<INavLinkGroup>;
+    onRenderGroupHeader?: IRenderFunction<IRenderGroupHeaderProps>;
     onRenderLink?: IRenderFunction<INavLink>;
     // @deprecated
     selectedAriaLabel?: string;
@@ -6540,6 +6540,11 @@ export interface IRatingStyles {
     rootIsLarge: IStyle;
     // (undocumented)
     rootIsSmall: IStyle;
+}
+
+// @public (undocumented)
+export interface IRenderGroupHeaderProps extends INavLinkGroup {
+    isExpanded?: boolean;
 }
 
 // @public (undocumented)
