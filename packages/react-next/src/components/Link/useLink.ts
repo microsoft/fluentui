@@ -12,6 +12,7 @@ export const useLink = (props: LinkProps, options: ComposePreparedOptions) => {
     ...props,
     as: as ? as : href ? 'a' : 'button',
     href: disabled ? undefined : href,
+    'aria-disabled': disabled,
   };
   return mergeProps<LinkProps, LinkSlots, LinkSlotProps>(handledProps, options);
 };
