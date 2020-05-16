@@ -132,6 +132,7 @@ const Tree: React.FC<WithAsProp<TreeProps>> &
 
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Tree.handledProps, props);
+
   const expandedItemsGenerator = (items, acc = []) =>
     _.reduce(
       items,
@@ -153,12 +154,14 @@ const Tree: React.FC<WithAsProp<TreeProps>> &
     _.reduce(
       items,
       (acc, item) => {
-        if (item['selected'] && selectedItemIds.indexOf(item['id']) === -1) {
+        if (item['selected'] && acc.indexOf(item['id']) === -1) {
           acc.push(item['id']);
         }
         if (item['items']) {
           return iterateItems(item['items']);
         }
+
+        return acc;
       },
       acc,
     );
@@ -170,11 +173,12 @@ const Tree: React.FC<WithAsProp<TreeProps>> &
   });
 
   const [selectedItemIds, setSelectedItemIdsState] = useAutoControlled({
-    defaultValue: props.selectedItemIds,
+    defaultValue: props.defaultSelectedItemIds,
     value: props.selectedItemIds,
-    initialValue: iterateItems(items) || [],
+    initialValue: iterateItems(items),
   });
 
+  console.log(selectedItemIds);
   const getA11yProps = useAccessibility<TreeBehaviorProps>(props.accessibility, {
     debugName: Tree.displayName,
     rtl: context.rtl,
