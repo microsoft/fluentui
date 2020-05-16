@@ -1,4 +1,4 @@
-import { Accessibility, treeBehavior } from '@fluentui/accessibility';
+import { Accessibility, treeBehavior, TreeBehaviorProps } from '@fluentui/accessibility';
 import {
   getNextElement,
   useAutoControlled,
@@ -39,7 +39,7 @@ import { ThemeContext } from 'react-fela';
 
 export interface TreeProps extends UIComponentProps, ChildrenComponentProps {
   /** Accessibility behavior if overridden by the user. */
-  accessibility?: Accessibility;
+  accessibility?: Accessibility<TreeBehaviorProps>;
 
   /** Ids of expanded items. */
   activeItemIds?: string[];
@@ -104,11 +104,6 @@ export interface TreeItemForRenderProps {
   siblings: ShorthandCollection<TreeItemProps>;
 }
 
-export interface TreeState {
-  activeItemIds: string[];
-  selectedItemIds: string[];
-}
-
 export const treeClassName = 'ui-tree';
 
 export type TreeStylesProps = never;
@@ -137,11 +132,26 @@ const Tree: React.FC<WithAsProp<TreeProps>> &
 
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Tree.handledProps, props);
+  const expandedItemsGenerator = (items, acc = []) =>
+    _.reduce(
+      items,
+      (acc, item) => {
+        if (item['expanded'] && acc.indexOf(item['id']) === -1) {
+          acc.push(item['id']);
+        }
 
+        if (item['items']) {
+          return expandedItemsGenerator(item['items'], acc);
+        }
+
+        return acc;
+      },
+      acc,
+    );
   const [activeItemIds, setActiveItemIdsState] = useAutoControlled({
     defaultValue: props.defaultActiveItemIds,
     value: props.activeItemIds,
-    initialValue: [],
+    initialValue: expandedItemsGenerator(items),
   });
 
   const [selectedItemIds, setSelectedItemIdsState] = useAutoControlled({
@@ -150,7 +160,7 @@ const Tree: React.FC<WithAsProp<TreeProps>> &
     initialValue: [],
   });
 
-  const getA11yProps = useAccessibility(props.accessibility, {
+  const getA11yProps = useAccessibility<TreeBehaviorProps>(props.accessibility, {
     debugName: Tree.displayName,
     rtl: context.rtl,
   });
@@ -184,27 +194,9 @@ const Tree: React.FC<WithAsProp<TreeProps>> &
       }
     }
 
-    if (!activeItemIds && items) {
-      const expandedItemsGenerator = (items, acc = activeItemIds) =>
-        _.reduce(
-          items,
-          (acc, item) => {
-            if (item['expanded'] && acc.indexOf(item['id']) === -1) {
-              acc.push(item['id']);
-            }
-
-            if (item['items']) {
-              return expandedItemsGenerator(item['items'], acc);
-            }
-
-            return acc;
-          },
-          acc,
-        );
-
-      expandedItemsGenerator(items);
+    if (!activeItemIds.length && items) {
     }
-  });
+  }, []);
 
   const treeRef = React.createRef<HTMLElement>();
   const itemsRef = new Map<string, React.RefObject<HTMLElement>>();
@@ -348,21 +340,25 @@ const Tree: React.FC<WithAsProp<TreeProps>> &
     }
 
     const { id } = treeItemProps;
-    const nextActiveItems = activeItemIds;
 
     const siblings = getSiblings(items, id);
 
+    const nextActiveItemsIds = [...activeItemIds];
+    if (activeItemIds.indexOf(id) === -1) {
+      nextActiveItemsIds.push(id);
+    }
+
     siblings.forEach(sibling => {
       if (hasSubtree(sibling) && !isActiveItem(sibling['id'])) {
-        nextActiveItems.push(sibling['id']);
+        nextActiveItemsIds.push(sibling['id']);
       }
     });
 
     if (hasSubtree(treeItemProps) && !isActiveItem(id)) {
-      nextActiveItems.push(id);
+      nextActiveItemsIds.push(id);
     }
 
-    setActiveItemIds(e, nextActiveItems);
+    setActiveItemIds(e, nextActiveItemsIds);
   };
 
   const setActiveItemIds = (e: React.SyntheticEvent, activeItemIds: string[]) => {
