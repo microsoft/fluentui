@@ -211,6 +211,10 @@ const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, ButtonVariabl
           ...getIconFillOrOutlineStyles({ outline: false }),
           color: v.textColorIconOnlyHover,
           background: v.backgroundColorIconOnlyHover,
+          ...(p.inverted && {
+            color: siteVariables.colorScheme.silver.foregroundHover,
+            backgroundColor: siteVariables.colorScheme.silver.backgroundHover,
+          }),
         },
 
         ...(p.size === 'small' && {
