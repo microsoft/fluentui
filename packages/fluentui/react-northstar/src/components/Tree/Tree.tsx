@@ -178,7 +178,6 @@ const Tree: React.FC<WithAsProp<TreeProps>> &
     initialValue: iterateItems(items),
   });
 
-  console.log(selectedItemIds);
   const getA11yProps = useAccessibility<TreeBehaviorProps>(props.accessibility, {
     debugName: Tree.displayName,
     rtl: context.rtl,
@@ -262,6 +261,8 @@ const Tree: React.FC<WithAsProp<TreeProps>> &
         };
         selectItems(items);
       }
+      setSelectedItemIds(e, [...nextSelectedItemIds]);
+      return;
     }
 
     // push/remove single tree item into selection array
