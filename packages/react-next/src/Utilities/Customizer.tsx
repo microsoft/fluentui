@@ -11,11 +11,10 @@ import { convertLegacyTheme } from '../Styling/convertLegacyTheme';
 import { ICustomizerProps } from '../Utilities';
 
 /**
- * Replacement for Customizer from utilities package. It also provides the theme context.
+ * Replacement for Customizer from utilities package. When theme is defined in settings,
+ * theme gets provided by ThemeProvider.
  *
- * TODO (xgao): deprecate this before shipping react-next.
- * Global theme should be provided using `ThemeProvider`.
- * Scoped style override for a particular component should be done using `compose`.
+ * TODO (xgao): deprecate settings prop.
  */
 export const Customizer: React.FunctionComponent<ICustomizerProps> = props => {
   const forceUpdate = useForceUpdate();
