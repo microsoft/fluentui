@@ -303,26 +303,27 @@ const Tree: React.FC<WithAsProp<TreeProps>> &
     const siblings = getSiblings(items, id);
 
     const activeItemIdIndex = activeItemIds.indexOf(id);
+    let nextActiveItemsIds = activeItemIds;
 
     if (activeItemIdIndex > -1) {
-      setActiveItemIdsState(activeItemIds.filter(itemId => itemId !== id));
-      return;
+      nextActiveItemsIds = removeItemAtIndex(activeItemIds, activeItemIdIndex);
+    } else {
+      if (exclusive) {
+        siblings.some(sibling => {
+          const activeSiblingIdIndex = activeItemIds.indexOf(sibling['id']);
+          if (activeSiblingIdIndex > -1) {
+            nextActiveItemsIds = removeItemAtIndex(activeItemIds, activeSiblingIdIndex);
+
+            return true;
+          }
+          return false;
+        });
+      }
+
+      nextActiveItemsIds = [...nextActiveItemsIds, id];
     }
-    if (exclusive) {
-      siblings.some(sibling => {
-        const activeSiblingIdIndex = activeItemIds.indexOf(sibling['id']);
-        if (activeSiblingIdIndex > -1) {
-          setActiveItemIdsState(removeItemAtIndex(activeItemIds, activeSiblingIdIndex));
 
-          return true;
-        }
-        return false;
-      });
-    }
-
-    setActiveItemIdsState([...activeItemIds, id]);
-
-    setActiveItemIds(e, [...activeItemIds, id]);
+    setActiveItemIds(e, nextActiveItemsIds);
   };
 
   const onFocusFirstChild = (itemId: string) => {
@@ -347,20 +348,21 @@ const Tree: React.FC<WithAsProp<TreeProps>> &
     }
 
     const { id } = treeItemProps;
+    const nextActiveItems = activeItemIds;
 
     const siblings = getSiblings(items, id);
 
     siblings.forEach(sibling => {
       if (hasSubtree(sibling) && !isActiveItem(sibling['id'])) {
-        activeItemIds.push(sibling['id']);
+        nextActiveItems.push(sibling['id']);
       }
     });
 
     if (hasSubtree(treeItemProps) && !isActiveItem(id)) {
-      activeItemIds.push(id);
+      nextActiveItems.push(id);
     }
 
-    setActiveItemIds(e, activeItemIds);
+    setActiveItemIds(e, nextActiveItems);
   };
 
   const setActiveItemIds = (e: React.SyntheticEvent, activeItemIds: string[]) => {
@@ -440,6 +442,7 @@ const Tree: React.FC<WithAsProp<TreeProps>> &
               contentRef: itemsRef.get(id),
               treeSize: items.length,
               indeterminate,
+              onSiblingsExpand,
             }),
         });
 
@@ -459,20 +462,22 @@ const Tree: React.FC<WithAsProp<TreeProps>> &
     return activeItemIds.indexOf(id) > -1;
   };
 
-  const element = getA11yProps.unstable_wrapWithFocusZone(
+  const element = (
     <TreeContext.Provider value={contextValue}>
       <Ref innerRef={treeRef}>
-        <ElementType
-          {...getA11yProps('root', {
-            className: classes.root,
-            ...rtlTextContainer.getAttributes({ forElements: [children] }),
-            ...unhandledProps,
-          })}
-        >
-          {childrenExist(children) ? children : renderedItems ? renderedItems(renderContent()) : renderContent()}
-        </ElementType>
+        {getA11yProps.unstable_wrapWithFocusZone(
+          <ElementType
+            {...getA11yProps('root', {
+              className: classes.root,
+              ...rtlTextContainer.getAttributes({ forElements: [children] }),
+              ...unhandledProps,
+            })}
+          >
+            {childrenExist(children) ? children : renderedItems ? renderedItems(renderContent()) : renderContent()}
+          </ElementType>,
+        )}
       </Ref>
-    </TreeContext.Provider>,
+    </TreeContext.Provider>
   );
   setEnd();
   return element;
@@ -501,19 +506,11 @@ Tree.Item = TreeItem;
 Tree.Title = TreeTitle;
 
 Tree.defaultProps = {
-  as: 'div',
-  accessibility: treeBehavior as Accessibility,
+  accessibility: treeBehavior,
 };
 
-// Tree.getAutoControlledStateFromProps(nextProps: TreeProps, prevState: TreeState) {
-
-//   return {
-//     activeItemIds,
-//     selectedItemIds,
-//   };
-// }
-
 Tree.handledProps = Object.keys(Tree.propTypes) as any;
+
 Tree.create = createShorthandFactory({
   Component: Tree,
   mappedArrayProp: 'items',

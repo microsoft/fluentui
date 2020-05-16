@@ -26,12 +26,6 @@ const treeBehavior: Accessibility<TreeBehaviorProps> = props => {
         expandSiblings: {
           keyCombinations: [{ keyCode: keyboardKey['*'] }],
         },
-        moveNext: {
-          keyCombinations: [{ keyCode: keyboardKey.ArrowDown }],
-        },
-        movePrevious: {
-          keyCombinations: [{ keyCode: keyboardKey.ArrowUp }],
-        },
       },
     },
     focusZone: {

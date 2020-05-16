@@ -3,6 +3,7 @@ import { Accessibility, AriaRole } from '../../types';
 
 import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
 import treeTitleBehavior from './treeTitleBehavior';
+import { FocusZoneDirection } from '../..';
 
 /**
  * @description
@@ -75,6 +76,11 @@ const treeItemBehavior: Accessibility<TreeItemBehaviorProps> = props => {
             keyCombinations: [{ keyCode: keyboardKey.Spacebar }],
           },
         }),
+      },
+    },
+    focusZone: {
+      props: {
+        direction: FocusZoneDirection.vertical,
       },
     },
     childBehaviors: {
