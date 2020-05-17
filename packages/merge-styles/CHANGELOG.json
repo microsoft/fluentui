@@ -2,6 +2,21 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "date": "Fri, 15 May 2020 20:33:16 GMT",
+      "tag": "@uifabric/merge-styles_v7.14.0",
+      "version": "7.14.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Addressing another typing issue found by TS 3.9.2 which is now catching scenarios which were shallow partials but should have been deep partials.",
+            "author": "dzearing@microsoft.com",
+            "commit": "3d95eeb9eeff0e8dba5e0c4dee322bbdfaac1e68",
+            "package": "@uifabric/merge-styles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 15 May 2020 00:07:39 GMT",
       "tag": "@uifabric/merge-styles_v7.13.0",
       "version": "7.13.0",

@@ -5759,7 +5759,7 @@ export interface INavProps {
     linkAs?: IComponentAs<INavButtonProps>;
     onLinkClick?: (ev?: React.MouseEvent<HTMLElement>, item?: INavLink) => void;
     onLinkExpandClick?: (ev?: React.MouseEvent<HTMLElement>, item?: INavLink) => void;
-    onRenderGroupHeader?: IRenderFunction<INavLinkGroup>;
+    onRenderGroupHeader?: IRenderFunction<IRenderGroupHeaderProps>;
     onRenderLink?: IRenderFunction<INavLink>;
     // @deprecated
     selectedAriaLabel?: string;
@@ -6548,6 +6548,11 @@ export interface IRatingStyles {
 }
 
 // @public (undocumented)
+export interface IRenderGroupHeaderProps extends INavLinkGroup {
+    isExpanded?: boolean;
+}
+
+// @public (undocumented)
 export interface IResizeGroup {
     remeasure(): void;
 }
@@ -7139,8 +7144,6 @@ export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement> {
     keytipProps?: IKeytipProps;
     label?: string;
     // Warning: (ae-forgotten-export) The symbol "Position" needs to be exported by the entry point index.d.ts
-    //
-    // (undocumented)
     labelPosition?: Position;
     max?: number;
     min?: number;

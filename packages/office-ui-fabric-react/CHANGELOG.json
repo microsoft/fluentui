@@ -2,6 +2,42 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 15 May 2020 12:42:20 GMT",
+      "tag": "office-ui-fabric-react_v7.114.1",
+      "version": "7.114.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating List, Keytips, and Facepile examples to use function components",
+            "author": "czearing@outlook.com",
+            "commit": "2d214a34c5d859212222443f30d35805efa0d24d",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "updating Shimmer, Slider, SelectedPeopleList, MarqueeSelection, and SwatchColorPicker examples to FC",
+            "author": "czearing@outlook.com",
+            "commit": "bb98a4971572bd9383d900cccb37650752329c8f",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 15 May 2020 05:52:46 GMT",
+      "tag": "office-ui-fabric-react_v7.114.0",
+      "version": "7.114.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "PivotItem: Expanding types of headerButtonProps to include IButtonProps.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "5c27d9de67e00e87ffb99e5b5c119087660a72cc",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 15 May 2020 00:07:39 GMT",
       "tag": "office-ui-fabric-react_v7.113.3",
       "version": "7.113.3",
