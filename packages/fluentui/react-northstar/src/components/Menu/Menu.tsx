@@ -108,7 +108,10 @@ export interface MenuProps extends UIComponentProps, ChildrenComponentProps {
 export const menuClassName = 'ui-menu';
 
 export type MenuStylesProps = Required<
-  Pick<MenuProps, 'iconOnly' | 'fluid' | 'pointing' | 'pills' | 'primary' | 'underlined' | 'vertical' | 'submenu'>
+  Pick<
+    MenuProps,
+    'iconOnly' | 'fluid' | 'pointing' | 'pills' | 'primary' | 'underlined' | 'vertical' | 'submenu' | 'secondary'
+  >
 >;
 
 /**
@@ -144,6 +147,7 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
       fluid,
       className,
       design,
+      secondary,
     } = props;
 
     const ElementType = getElementType(props);
