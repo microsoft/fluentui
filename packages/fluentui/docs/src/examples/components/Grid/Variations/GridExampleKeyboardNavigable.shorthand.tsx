@@ -51,19 +51,19 @@ const GridExample = () => (
       item to make grid items focusable and navigable. Use <Label>gridBehavior</Label> to provide arrow key navigation
       in 4 directions.
     </Text>
-    <Grid accessibility={gridBehavior} columns="7" content={renderImages()} />
+    <Grid accessibility={gridBehavior} columns={7} content={renderImages()} />
     <br />
     <Text size="medium">
-      Grid with buttons images, which are natively focusable elements. <b>No need</b> to add{' '}
+      Grid with buttons images, which are natively focusable elements. <b>No need</b> to add
       <Label>data-is-focusable=true</Label>
     </Text>
-    <Grid accessibility={gridBehavior} columns="7" content={renderImageButtons()} />
+    <Grid accessibility={gridBehavior} columns={7} content={renderImageButtons()} />
     <br />
     <Text size="medium">
       Grid with buttons images, which are natively focusable elements. Use <Label>gridHorizontalBehavior</Label> to
       provide horizontal navigation within Grid with 4 arrow keys.
     </Text>
-    <Grid accessibility={gridHorizontalBehavior} columns="7" content={renderImageButtons()} />
+    <Grid accessibility={gridHorizontalBehavior} columns={7} content={renderImageButtons()} />
   </div>
 );
 
