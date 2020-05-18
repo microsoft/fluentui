@@ -162,6 +162,8 @@ export type MenuItemStylesProps = Required<
   >
 > & { isFromKeyboard: boolean };
 
+export type MenuItemState = { isFromKeyboard: boolean; menuOpen: boolean };
+
 export const menuItemClassName = 'ui-menu__item';
 export const menuItemSlotClassNames: MenuItemSlotClassNames = {
   submenu: `${menuItemClassName}__submenu`,
@@ -211,9 +213,11 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
     const ElementType = getElementType(props);
     const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
 
-    const slotProps = composeOptions.resolveSlotProps<MenuItemProps & { isFromKeyboard?: boolean; menuOpen?: boolean }>(
-      { ...props, isFromKeyboard, menuOpen },
-    );
+    const slotProps = composeOptions.resolveSlotProps<MenuItemProps & MenuItemState>({
+      ...props,
+      isFromKeyboard,
+      menuOpen,
+    });
 
     const getA11yProps = useAccessibility<MenuItemBehaviorProps>(accessibility, {
       debugName: composeOptions.displayName,
@@ -475,7 +479,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
       wrapper: MenuItemWrapper,
     },
 
-    mapPropsToSlotProps: props => ({
+    mapPropsToSlotProps: (props: MenuItemProps & MenuItemState) => ({
       icon: {
         hasContent: !!props.content,
         iconOnly: props.iconOnly,
