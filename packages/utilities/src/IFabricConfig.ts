@@ -23,10 +23,10 @@ export interface IFabricConfig {
   theme?: IPartialTheme;
 
   /**
-   * A list of GUIDs used to enable new features.
-   * A feature is enabled if the GUID associated with it is in the list and is set to "true".
-   * All letters in GUIDs must be uppercase letters.
+   * A list of features to enable.
+   * A feature is enabled if the name associated with it is in the list and is set to "true".
+   * `name`s MUST be globally unique.
    * See further documentation at https://github.com/microsoft/fluentui/wiki/enabledFeatures-Switches
    */
-  enabledFeatures?: { [guid: string]: boolean };
+  enabledFeatures?: { [name: string]: boolean };
 }

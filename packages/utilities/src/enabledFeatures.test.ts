@@ -19,7 +19,7 @@ describe('isFeatureEnabled', () => {
     if (isFeatureEnabled('936DA01F-9ABD-4D9D-80C7-02AF85C822A8', 'me', '1/2/3')) {
       b = 0;
     }
-    if (isFeatureEnabled('non-existentGuid', 'me', '1/2/3')) {
+    if (isFeatureEnabled('non-existentName', 'me', '1/2/3')) {
       c = 0;
     }
 
@@ -43,7 +43,7 @@ describe('isFeatureEnabled', () => {
     }
 
     try {
-      if (isFeatureEnabled('f9168c5e-ceb2-4faa-b6bf-329bf39fa1e4', 'me', '')) {
+      if (isFeatureEnabled('936DA01F-9ABD-4D9D-80C7-02AF85C822A8', 'me', '')) {
         a = 4;
       }
       a = 5;
