@@ -1,4 +1,8 @@
-import { Accessibility, hierarchicalTreeBehavior, TreeBehaviorBehaviorProps } from '@fluentui/accessibility';
+import {
+  Accessibility,
+  hierarchicalTreeBehavior,
+  HierarchicalTreeBehaviorBehaviorProps,
+} from '@fluentui/accessibility';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
@@ -39,7 +43,7 @@ export interface HierarchicalTreeProps extends UIComponentProps, ChildrenCompone
   activeIndex?: number[] | number;
 
   /** Accessibility behavior if overridden by the user. */
-  accessibility?: Accessibility<TreeBehaviorBehaviorProps>;
+  accessibility?: Accessibility<HierarchicalTreeBehaviorBehaviorProps>;
 
   /** Initial activeIndex value. */
   defaultActiveIndex?: number[] | number;
@@ -92,7 +96,7 @@ const HierarchicalTree: React.FC<WithAsProp<HierarchicalTreeProps>> &
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(HierarchicalTree.handledProps, props);
 
-  const getA11yProps = useAccessibility<TreeBehaviorBehaviorProps>(props.accessibility, {
+  const getA11yProps = useAccessibility<HierarchicalTreeBehaviorBehaviorProps>(props.accessibility, {
     debugName: HierarchicalTree.displayName,
     actionHandlers: {
       expandSiblings: e => {
