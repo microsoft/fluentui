@@ -30,12 +30,7 @@ export const CheckboxBase: React.ForwardRefExoticComponent<ICheckboxProps & Reac
 export const ColorPickerGridCell: React.FunctionComponent<IColorPickerGridCellProps>;
 
 // @public (undocumented)
-export class ColorPickerGridCellBase extends React.PureComponent<IColorPickerGridCellProps, {}> {
-    // (undocumented)
-    static defaultProps: Partial<IColorPickerGridCellProps>;
-    // (undocumented)
-    render(): JSX.Element;
-}
+export const ColorPickerGridCellBase: (props: IColorPickerGridCellProps) => JSX.Element;
 
 // @public (undocumented)
 export const DEFAULT_MASK_CHAR = "_";
@@ -1140,17 +1135,10 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
 export const SwatchColorPicker: React.FunctionComponent<ISwatchColorPickerProps>;
 
 // @public (undocumented)
-export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerProps, ISwatchColorPickerState> {
-    constructor(props: ISwatchColorPickerProps);
-    // (undocumented)
-    componentWillUnmount(): void;
-    // (undocumented)
-    static defaultProps: ISwatchColorPickerProps;
-    // (undocumented)
-    render(): JSX.Element | null;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(newProps: ISwatchColorPickerProps): void;
-}
+export const SwatchColorPickerBase: {
+    (props: ISwatchColorPickerProps): JSX.Element | null;
+    displayName: string;
+};
 
 // @public (undocumented)
 export const TextField: React.FunctionComponent<ITextFieldProps>;
