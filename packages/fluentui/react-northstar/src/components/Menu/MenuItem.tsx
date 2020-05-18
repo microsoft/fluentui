@@ -267,8 +267,8 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
       unstable_props: { ...props, menuOpen, isFromKeyboard },
     });
 
-    const menuRef = React.createRef<HTMLElement>();
-    const itemRef = React.createRef<HTMLElement>();
+    const menuRef = React.useRef<HTMLElement>();
+    const itemRef = React.useRef<HTMLElement>();
 
     const handleWrapperBlur = (e: React.FocusEvent) => {
       if (!props.inSubmenu && !e.currentTarget.contains(e.relatedTarget as Node)) {
@@ -389,8 +389,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
     const menuItemInner = (
       <Ref
         innerRef={node => {
-          // @ts-ignore
-          itemRef.current = node as HTMLElement;
+          itemRef.current = node;
           handleRef(ref, node as any /* TODO: fix refs in compose */);
         }}
       >
