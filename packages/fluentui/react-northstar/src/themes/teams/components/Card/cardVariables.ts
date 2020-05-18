@@ -43,6 +43,10 @@ export interface CardVariables {
   sizeLargePadding: string;
   fluidHeight: string;
   fluidWidth: string;
+  expandableBoxStartMaxHeight: string;
+  expandableBoxEndMaxHeight: string;
+  expandableBoxShrinkTransition: string;
+  expandableBoxExpandTransition: string;
 }
 
 export default (siteVars): CardVariables => {
@@ -90,5 +94,9 @@ export default (siteVars): CardVariables => {
     sizeLargePadding: pxToRem(16),
     fluidWidth: '100%',
     fluidHeight: '100%',
+    expandableBoxStartMaxHeight: pxToRem(20),
+    expandableBoxEndMaxHeight: pxToRem(500),
+    expandableBoxShrinkTransition: 'max-height 0.5s ease-in',
+    expandableBoxExpandTransition: 'max-height 1s ease-in',
   };
 };

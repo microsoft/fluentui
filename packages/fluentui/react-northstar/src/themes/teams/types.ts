@@ -86,6 +86,7 @@ import { CardTopControlsStylesProps } from '../../components/Card/CardTopControl
 import { CardHeaderStylesProps } from '../../components/Card/CardHeader';
 import { CardBodyStylesProps } from '../../components/Card/CardBody';
 import { CardFooterStylesProps } from '../../components/Card/CardFooter';
+import { CardExpandableBoxStylesProps } from '../../components/Card/CardExpandableBox';
 import { SvgIconStylesProps } from '../../components/SvgIcon/SvgIcon';
 import { SplitButtonStylesProps } from '../../components/SplitButton/SplitButton';
 import { CarouselNavigationStylesProps } from '../../components/Carousel/CarouselNavigation';
@@ -177,6 +178,7 @@ export type TeamsThemeStylesProps = {
   CardHeader: CardHeaderStylesProps;
   CardBody: CardBodyStylesProps;
   CardFooter: CardFooterStylesProps;
+  CardExpandableBox: CardExpandableBoxStylesProps;
   CarouselNavigationItem: CarouselNavigationItemStylesProps;
 };
 
