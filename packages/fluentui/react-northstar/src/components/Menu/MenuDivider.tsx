@@ -39,7 +39,7 @@ export interface MenuDividerProps extends UIComponentProps, ChildrenComponentPro
 }
 
 export type MenuDividerStylesProps = Required<
-  Pick<MenuDividerProps, 'vertical' | 'inSubmenu' | 'pills' | 'primary' | 'pointing'>
+  Pick<MenuDividerProps, 'vertical' | 'inSubmenu' | 'pills' | 'primary' | 'pointing' | 'secondary'>
 > & {
   hasContent: boolean;
 };
@@ -66,6 +66,7 @@ const MenuDivider = compose<'li', MenuDividerProps, MenuDividerStylesProps, {}, 
       className,
       design,
       styles,
+      secondary,
       variables,
     } = props;
 
@@ -84,6 +85,7 @@ const MenuDivider = compose<'li', MenuDividerProps, MenuDividerStylesProps, {}, 
         vertical,
         inSubmenu,
         primary,
+        secondary,
       }),
       mapPropsToInlineStyles: () => ({
         className,
