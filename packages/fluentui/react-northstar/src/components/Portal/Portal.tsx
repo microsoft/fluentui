@@ -92,7 +92,7 @@ const Portal: React.FC<WithAsProp<PortalProps>> & FluentComponentStaticProps<Por
   setStart();
   const { children, content, trapFocus, trigger, triggerAccessibility } = props;
   const portalRef = React.useRef<HTMLElement>();
-  const triggerNode = React.useRef<HTMLElement>();
+  const triggerRef = React.useRef<HTMLElement>();
 
   const [open, setOpen] = useAutoControlled({
     defaultValue: props.defaultOpen,
