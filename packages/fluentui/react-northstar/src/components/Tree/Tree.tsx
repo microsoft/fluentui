@@ -346,7 +346,7 @@ const Tree: React.FC<WithAsProp<TreeProps>> &
     const siblings = getSiblings(items, id);
 
     const nextActiveItemsIds = [...activeItemIds];
-    if (activeItemIds.indexOf(id) === -1) {
+    if (!isActiveItem(id)) {
       nextActiveItemsIds.push(id);
     }
 
