@@ -21,6 +21,7 @@ import { IRefObject } from 'office-ui-fabric-react/lib/Utilities';
 import { IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
+import { IStyleSet } from 'office-ui-fabric-react/lib/Styling';
 import { ITheme } from 'office-ui-fabric-react/lib/Styling';
 import { IVerticalDividerClassNames } from 'office-ui-fabric-react/lib/components/Divider/VerticalDivider.types';
 import { IWithResponsiveModeState } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode';
@@ -88,6 +89,9 @@ export enum ContextualMenuItemType {
     // (undocumented)
     Section = 3
 }
+
+// @public (undocumented)
+export const DEFAULT_MASK_CHAR = "_";
 
 // @public (undocumented)
 export type DefaultProps = Required<Pick<ISpinButtonProps, 'step' | 'min' | 'max' | 'disabled' | 'labelPosition' | 'label' | 'incrementButtonIcon' | 'decrementButtonIcon'>>;
@@ -547,7 +551,7 @@ export interface ILinkHTMLAttributes<T> extends React.HTMLAttributes<T> {
 }
 
 // @public (undocumented)
-export interface ILinkProps extends ILinkHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement | LinkBase> {
+export interface ILinkProps extends ILinkHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement> {
     as?: string | React.ComponentClass | React.FunctionComponent;
     componentRef?: IRefObject<ILink>;
     disabled?: boolean;
@@ -603,6 +607,12 @@ export enum ImageLoadState {
     errorLoaded = 3,
     loaded = 1,
     notLoaded = 0
+}
+
+// @public
+export interface IMaskedTextFieldState {
+    displayValue: string;
+    maskCursorPosition?: number;
 }
 
 // @public (undocumented)
@@ -668,7 +678,7 @@ export interface IPivot {
 export interface IPivotItemProps extends React.HTMLAttributes<HTMLDivElement> {
     ariaLabel?: string;
     componentRef?: IRefObject<{}>;
-    headerButtonProps?: {
+    headerButtonProps?: IButtonProps & {
         [key: string]: string | number | boolean;
     };
     headerText?: string;
@@ -868,7 +878,7 @@ export interface ISlider {
 }
 
 // @public (undocumented)
-export interface ISliderProps extends React.ClassAttributes<SliderBase> {
+export interface ISliderProps extends React.ClassAttributes<HTMLElement> {
     ariaLabel?: string;
     ariaValueText?: (value: number) => string;
     buttonProps?: React.HTMLAttributes<HTMLButtonElement>;
@@ -890,14 +900,6 @@ export interface ISliderProps extends React.ClassAttributes<SliderBase> {
     value?: number;
     valueFormat?: (value: number) => string;
     vertical?: boolean;
-}
-
-// @public (undocumented)
-export interface ISliderState {
-    // (undocumented)
-    renderedValue?: number;
-    // (undocumented)
-    value?: number;
 }
 
 // @public (undocumented)
@@ -953,7 +955,6 @@ export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement> {
     inputProps?: React.InputHTMLAttributes<HTMLElement | HTMLInputElement>;
     keytipProps?: IKeytipProps;
     label?: string;
-    // (undocumented)
     labelPosition?: Position;
     max?: number;
     min?: number;
@@ -1001,6 +1002,104 @@ export interface ISpinButtonStyles {
     spinButtonWrapperFocused: IStyle;
     spinButtonWrapperHovered: IStyle;
     spinButtonWrapperTopBottom: IStyle;
+}
+
+// @public (undocumented)
+export interface ITextField {
+    blur: () => void;
+    focus: () => void;
+    select: () => void;
+    selectionEnd: number | null;
+    selectionStart: number | null;
+    setSelectionEnd: (value: number) => void;
+    setSelectionRange: (start: number, end: number) => void;
+    setSelectionStart: (value: number) => void;
+    value: string | undefined;
+}
+
+// @public
+export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElement | HTMLTextAreaElement> {
+    ariaLabel?: string;
+    autoAdjustHeight?: boolean;
+    autoComplete?: string;
+    borderless?: boolean;
+    className?: string;
+    componentRef?: IRefObject<ITextField>;
+    defaultValue?: string;
+    deferredValidationTime?: number;
+    description?: string;
+    disabled?: boolean;
+    errorMessage?: string | JSX.Element;
+    iconProps?: IIconProps;
+    inputClassName?: string;
+    label?: string;
+    mask?: string;
+    maskChar?: string;
+    maskFormat?: {
+        [key: string]: RegExp;
+    };
+    multiline?: boolean;
+    onChange?: (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string) => void;
+    onGetErrorMessage?: (value: string) => string | JSX.Element | PromiseLike<string | JSX.Element> | undefined;
+    onNotifyValidationResult?: (errorMessage: string | JSX.Element, value: string | undefined) => void;
+    onRenderDescription?: IRenderFunction<ITextFieldProps>;
+    onRenderLabel?: IRenderFunction<ITextFieldProps>;
+    onRenderPrefix?: IRenderFunction<ITextFieldProps>;
+    onRenderSuffix?: IRenderFunction<ITextFieldProps>;
+    prefix?: string;
+    readOnly?: boolean;
+    resizable?: boolean;
+    styles?: IStyleFunctionOrObject<ITextFieldStyleProps, ITextFieldStyles>;
+    suffix?: string;
+    theme?: ITheme;
+    underlined?: boolean;
+    validateOnFocusIn?: boolean;
+    validateOnFocusOut?: boolean;
+    validateOnLoad?: boolean;
+    value?: string;
+}
+
+// Warning: (ae-internal-missing-underscore) The name "ITextFieldSnapshot" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export interface ITextFieldSnapshot {
+    selection?: [number | null, number | null];
+}
+
+// Warning: (ae-internal-missing-underscore) The name "ITextFieldState" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export interface ITextFieldState {
+    errorMessage: string | JSX.Element;
+    isFocused?: boolean;
+    uncontrolledValue: string | undefined;
+}
+
+// @public (undocumented)
+export type ITextFieldStyleProps = Required<Pick<ITextFieldProps, 'theme'>> & Pick<ITextFieldProps, 'className' | 'disabled' | 'inputClassName' | 'required' | 'multiline' | 'borderless' | 'resizable' | 'underlined' | 'autoAdjustHeight'> & {
+    hasErrorMessage?: boolean;
+    hasIcon?: boolean;
+    hasLabel?: boolean;
+    focused?: boolean;
+};
+
+// @public (undocumented)
+export interface ITextFieldStyles extends IStyleSet<ITextFieldStyles> {
+    description: IStyle;
+    errorMessage: IStyle;
+    field: IStyle;
+    fieldGroup: IStyle;
+    icon: IStyle;
+    prefix: IStyle;
+    root: IStyle;
+    subComponentStyles: ITextFieldSubComponentStyles;
+    suffix: IStyle;
+    wrapper: IStyle;
+}
+
+// @public (undocumented)
+export interface ITextFieldSubComponentStyles {
+    label: IStyleFunctionOrObject<any, any>;
 }
 
 // @public (undocumented)
@@ -1074,12 +1173,39 @@ export enum KeyboardSpinDirection {
 export const Link: React.FunctionComponent<ILinkProps>;
 
 // @public (undocumented)
-export class LinkBase extends React.Component<ILinkProps, {}> implements ILink {
-    constructor(props: ILinkProps);
+export const LinkBase: React.FunctionComponent;
+
+// @public (undocumented)
+export class MaskedTextField extends React.Component<ITextFieldProps, IMaskedTextFieldState> implements ITextField {
+    constructor(props: ITextFieldProps);
+    // (undocumented)
+    blur(): void;
+    // (undocumented)
+    componentDidUpdate(): void;
+    // (undocumented)
+    static defaultProps: ITextFieldProps;
     // (undocumented)
     focus(): void;
     // (undocumented)
     render(): JSX.Element;
+    // (undocumented)
+    select(): void;
+    // (undocumented)
+    readonly selectionEnd: number | null;
+    // (undocumented)
+    readonly selectionStart: number | null;
+    // (undocumented)
+    setSelectionEnd(value: number): void;
+    // (undocumented)
+    setSelectionRange(start: number, end: number): void;
+    // (undocumented)
+    setSelectionStart(value: number): void;
+    // (undocumented)
+    setValue(newValue: string): void;
+    // (undocumented)
+    UNSAFE_componentWillReceiveProps(newProps: ITextFieldProps): void;
+    // (undocumented)
+    readonly value: string | undefined;
 }
 
 // @public (undocumented)
@@ -1191,18 +1317,7 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
 export const Slider: React.FunctionComponent<ISliderProps>;
 
 // @public (undocumented)
-export class SliderBase extends React.Component<ISliderProps, ISliderState> implements ISlider {
-    constructor(props: ISliderProps);
-    // (undocumented)
-    componentWillUnmount(): void;
-    // (undocumented)
-    static defaultProps: ISliderProps;
-    // (undocumented)
-    focus(): void;
-    // (undocumented)
-    render(): React.ReactElement<{}>;
-    readonly value: number | undefined;
-}
+export const SliderBase: React.ForwardRefExoticComponent<Pick<ISliderProps, "max" | "disabled" | "label" | "vertical" | "key" | "step" | "theme" | "styles" | "className" | "defaultValue" | "onChange" | "componentRef" | "min" | "value" | "ariaLabel" | "onChanged" | "showValue" | "ariaValueText" | "snapToStep" | "buttonProps" | "valueFormat" | "originFromZero"> & React.RefAttributes<HTMLDivElement>>;
 
 // @public (undocumented)
 export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonState> implements ISpinButton {
@@ -1216,6 +1331,38 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
     // (undocumented)
     render(): JSX.Element;
     UNSAFE_componentWillReceiveProps(newProps: ISpinButtonProps): void;
+    readonly value: string | undefined;
+    }
+
+// @public (undocumented)
+export const TextField: React.FunctionComponent<ITextFieldProps>;
+
+// Warning: (ae-incompatible-release-tags) The symbol "TextFieldBase" is marked as @public, but its signature references "ITextFieldState" which is marked as @internal
+// Warning: (ae-incompatible-release-tags) The symbol "TextFieldBase" is marked as @public, but its signature references "ITextFieldSnapshot" which is marked as @internal
+//
+// @public (undocumented)
+export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldState, ITextFieldSnapshot> implements ITextField {
+    constructor(props: ITextFieldProps);
+    blur(): void;
+    // (undocumented)
+    componentDidMount(): void;
+    // (undocumented)
+    componentDidUpdate(prevProps: ITextFieldProps, prevState: ITextFieldState, snapshot: ITextFieldSnapshot): void;
+    // (undocumented)
+    componentWillUnmount(): void;
+    // (undocumented)
+    static defaultProps: ITextFieldProps;
+    focus(): void;
+    // (undocumented)
+    getSnapshotBeforeUpdate(prevProps: ITextFieldProps, prevState: ITextFieldState): ITextFieldSnapshot | null;
+    // (undocumented)
+    render(): JSX.Element;
+    select(): void;
+    readonly selectionEnd: number | null;
+    readonly selectionStart: number | null;
+    setSelectionEnd(value: number): void;
+    setSelectionRange(start: number, end: number): void;
+    setSelectionStart(value: number): void;
     readonly value: string | undefined;
     }
 
@@ -1287,7 +1434,6 @@ export * from "office-ui-fabric-react/lib/Styling";
 export * from "office-ui-fabric-react/lib/SwatchColorPicker";
 export * from "office-ui-fabric-react/lib/TeachingBubble";
 export * from "office-ui-fabric-react/lib/Text";
-export * from "office-ui-fabric-react/lib/TextField";
 export * from "office-ui-fabric-react/lib/ThemeGenerator";
 export * from "office-ui-fabric-react/lib/Tooltip";
 export * from "office-ui-fabric-react/lib/Utilities";
