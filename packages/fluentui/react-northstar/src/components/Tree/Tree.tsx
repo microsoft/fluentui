@@ -346,9 +346,6 @@ const Tree: React.FC<WithAsProp<TreeProps>> &
     const siblings = getSiblings(items, id);
 
     const nextActiveItemsIds = [...activeItemIds];
-    if (!isActiveItem(id)) {
-      nextActiveItemsIds.push(id);
-    }
 
     siblings.forEach(sibling => {
       if (hasSubtree(sibling) && !isActiveItem(sibling['id'])) {
