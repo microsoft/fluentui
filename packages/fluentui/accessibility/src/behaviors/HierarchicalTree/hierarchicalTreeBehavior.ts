@@ -32,6 +32,6 @@ const hierarchicalTreeBehavior: Accessibility<TreeBehaviorBehaviorProps> = props
   };
 };
 
-export type TreeBehaviorBehaviorProps = {} & Pick<AccessibilityAttributes, 'aria-labelledby'>;
+export type HierarchicalTreeBehaviorBehaviorProps = {} & Pick<AccessibilityAttributes, 'aria-labelledby'>;
 
 export default hierarchicalTreeBehavior;
