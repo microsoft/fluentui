@@ -47,7 +47,7 @@ const cardStyles: ComponentSlotStylesPrepared<CardStylesProps, CardVariables> = 
         ':focus-visible': {
           backgroundColor: v.backgroundColorFocus,
           boxShadow: v.boxShadowFocus,
-          ...borderFocusStyles['focus-visible'],
+          ...borderFocusStyles[':focus-visible'],
         },
         ':active': {
           backgroundColor: v.backgroundColorPressed,
@@ -65,7 +65,7 @@ const cardStyles: ComponentSlotStylesPrepared<CardStylesProps, CardVariables> = 
         ...(p.actionable && {
           ':focus-visible': {
             boxShadow: v.elevatedBoxShadowFocus,
-            ...borderFocusStyles['focus-visible'],
+            ...borderFocusStyles[':focus-visible'],
           },
           ':active': {
             boxShadow: v.elevatedBoxShadowPressed,
@@ -82,7 +82,7 @@ const cardStyles: ComponentSlotStylesPrepared<CardStylesProps, CardVariables> = 
         ...(p.actionable && {
           ':focus-visible': {
             backgroundColor: v.invertedBackgroundColorFocus,
-            ...borderFocusStyles['focus-visible'],
+            ...borderFocusStyles[':focus-visible'],
           },
           ':active': {
             backgroundColor: v.invertedBackgroundColorPressed,
@@ -99,7 +99,7 @@ const cardStyles: ComponentSlotStylesPrepared<CardStylesProps, CardVariables> = 
         ...(p.actionable && {
           ':focus-visible': {
             backgroundColor: v.quietBackgroundColorFocus,
-            ...borderFocusStyles['focus-visible'],
+            ...borderFocusStyles[':focus-visible'],
           },
           ':active': {
             backgroundColor: v.quietBackgroundColorPressed,
@@ -124,7 +124,7 @@ const cardStyles: ComponentSlotStylesPrepared<CardStylesProps, CardVariables> = 
         },
         ':focus-visible': {
           boxShadow: v.boxShadowDisabled,
-          ...borderFocusStyles['focus-visible'],
+          ...borderFocusStyles[':focus-visible'],
         },
         ':active': {
           boxShadow: v.boxShadowDisabled,
