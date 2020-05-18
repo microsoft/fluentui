@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { IFocusZoneProps } from '../../FocusZone';
-import { IIconProps } from 'office-ui-fabric-react/lib/components/Icon/Icon.types';
+import { IIconProps } from 'office-ui-fabric-react/lib/Icon';
 import { ICalloutProps, ICalloutContentStyleProps, Target } from '../../Callout';
 import { ITheme, IStyle } from '../../Styling';
 import { IButtonStyles } from '../../Button';

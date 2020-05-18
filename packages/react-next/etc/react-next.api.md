@@ -6,15 +6,12 @@
 
 import { IBaseProps } from 'office-ui-fabric-react/lib/Utilities';
 import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
-import { IButtonProps as IButtonProps_2 } from 'office-ui-fabric-react/lib/components/Button/Button.types';
 import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import { ICalloutContentStyleProps } from 'office-ui-fabric-react/lib/Callout';
 import { ICalloutProps } from 'office-ui-fabric-react/lib/Callout';
 import { IComponentAs } from 'office-ui-fabric-react/lib/Utilities';
-import { IFocusZoneProps } from 'office-ui-fabric-react/lib/FocusZone';
-import { IFocusZoneProps as IFocusZoneProps_2 } from '@fluentui/react-focus';
+import { IFocusZoneProps } from '@fluentui/react-focus';
 import { IIconProps } from 'office-ui-fabric-react/lib/Icon';
-import { IIconProps as IIconProps_2 } from 'office-ui-fabric-react/lib/components/Icon/Icon.types';
 import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
 import { IRectangle } from 'office-ui-fabric-react/lib/Utilities';
 import { IRefObject } from 'office-ui-fabric-react/lib/Utilities';
@@ -202,7 +199,7 @@ export interface IContextualMenuItem {
     getItemClassNames?: (theme: ITheme, disabled: boolean, expanded: boolean, checked: boolean, isAnchorLink: boolean, knownIcon: boolean, itemClassName?: string, dividerClassName?: string, iconClassName?: string, subMenuClassName?: string, primaryDisabled?: boolean) => IMenuItemClassNames;
     getSplitButtonVerticalDividerClassNames?: (theme: ITheme) => IVerticalDividerClassNames;
     href?: string;
-    iconProps?: IIconProps_2;
+    iconProps?: IIconProps;
     // @deprecated
     inactive?: boolean;
     itemProps?: Partial<IContextualMenuItemProps>;
@@ -226,7 +223,7 @@ export interface IContextualMenuItem {
     split?: boolean;
     // @deprecated
     style?: React.CSSProperties;
-    submenuIconProps?: IIconProps_2;
+    submenuIconProps?: IIconProps;
     subMenuProps?: IContextualMenuProps;
     target?: string;
     text?: string;
@@ -646,7 +643,7 @@ export interface IOverflowSetProps extends React.ClassAttributes<OverflowSetBase
     // @deprecated
     doNotContainWithinFocusZone?: boolean;
     // @deprecated
-    focusZoneProps?: IFocusZoneProps_2;
+    focusZoneProps?: IFocusZoneProps;
     items?: IOverflowSetItemProps[];
     itemSubMenuProvider?: (item: IOverflowSetItemProps) => any[] | undefined;
     keytipSequences?: string[];
@@ -948,7 +945,7 @@ export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement> {
     downArrowButtonStyles?: Partial<IButtonStyles>;
     // Warning: (ae-forgotten-export) The symbol "ISpinButtonClassNames" needs to be exported by the entry point index.d.ts
     getClassNames?: (theme: ITheme, disabled: boolean, isFocused: boolean, keyboardSpinDirection: KeyboardSpinDirection, labelPosition?: Position, className?: string) => ISpinButtonClassNames;
-    iconButtonProps?: IButtonProps_2;
+    iconButtonProps?: IButtonProps;
     iconProps?: IIconProps;
     incrementButtonAriaLabel?: string;
     incrementButtonIcon?: IIconProps;
@@ -1373,6 +1370,7 @@ export const Toggle: React.FunctionComponent<IToggleProps>;
 export const ToggleBase: React.FunctionComponent;
 
 
+export * from "@fluentui/react-focus";
 export * from "office-ui-fabric-react/lib/ActivityItem";
 export * from "office-ui-fabric-react/lib/Announced";
 export * from "office-ui-fabric-react/lib/Autofill";
@@ -1397,7 +1395,6 @@ export * from "office-ui-fabric-react/lib/ExtendedPicker";
 export * from "office-ui-fabric-react/lib/Facepile";
 export * from "office-ui-fabric-react/lib/FloatingPicker";
 export * from "office-ui-fabric-react/lib/FocusTrapZone";
-export * from "office-ui-fabric-react/lib/FocusZone";
 export * from "office-ui-fabric-react/lib/Grid";
 export * from "office-ui-fabric-react/lib/GroupedList";
 export * from "office-ui-fabric-react/lib/HoverCard";

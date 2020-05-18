@@ -7,7 +7,7 @@ import { KeyboardSpinDirection } from './SpinButton';
 import { IButtonStyles } from '../../Button';
 import { IKeytipProps } from '../../Keytip';
 import { IRefObject } from '../../Utilities';
-import { IButtonProps } from 'office-ui-fabric-react/lib/components/Button/Button.types';
+import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
 
 /**
  * {@docCategory SpinButton}
