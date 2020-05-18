@@ -49,5 +49,20 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
           ),
         },
       ];
+
+    case 'mac':
+      return [
+        {
+          sectionName: 'Implementation',
+          editUrl: baseUrl + 'docs/mac/DatePickerImplementation.md',
+          content: (
+            <Markdown>
+              {
+                require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/DatePickerPage/docs/mac/DatePickerImplementation.md') as string
+              }
+            </Markdown>
+          ),
+        },
+      ];
   }
 }

@@ -2,6 +2,104 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 15 May 2020 12:42:20 GMT",
+      "tag": "office-ui-fabric-react_v7.114.1",
+      "version": "7.114.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating List, Keytips, and Facepile examples to use function components",
+            "author": "czearing@outlook.com",
+            "commit": "2d214a34c5d859212222443f30d35805efa0d24d",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "updating Shimmer, Slider, SelectedPeopleList, MarqueeSelection, and SwatchColorPicker examples to FC",
+            "author": "czearing@outlook.com",
+            "commit": "bb98a4971572bd9383d900cccb37650752329c8f",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 15 May 2020 05:52:46 GMT",
+      "tag": "office-ui-fabric-react_v7.114.0",
+      "version": "7.114.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "PivotItem: Expanding types of headerButtonProps to include IButtonProps.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "5c27d9de67e00e87ffb99e5b5c119087660a72cc",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 15 May 2020 00:07:39 GMT",
+      "tag": "office-ui-fabric-react_v7.113.3",
+      "version": "7.113.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Support custom checkbox for <GroupHeader>: added onRenderGroupHeaderCheckbox property",
+            "author": "sebastian.mattar@gmail.com",
+            "commit": "4eccfac9b625baf24c9f8a2d4a2af6a57e3663b7",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Updating examples for ProgressIndicator, FloatingPeoplePicker and ResizeGroupOverflowSetExample to use FC",
+            "author": "czearing@outlook.com",
+            "commit": "6df0523da70ae3141b18964a6ffe6199658e4c87",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 14 May 2020 12:34:32 GMT",
+      "tag": "office-ui-fabric-react_v7.113.2",
+      "version": "7.113.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix accessibility issue",
+            "author": "xiameng@microsoft.com",
+            "commit": "831a4d70a27d4a4d2125998b1f01793846b91dbd",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "updating DocumentCard and GroupedList to FC",
+            "author": "czearing@outlook.com",
+            "commit": "c92489b9d599ada9e2b7e3cbd888868ff50f390a",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Update Picker.CustomResult.Example.tsx",
+            "author": "patrick@nubo.eu",
+            "commit": "d62d928938243cf193158300dd6dfad032087472",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Updating examples to use `useId` instead of `getId` and converting `Dialog` examples to function components.",
+            "author": "czearing@outlook.com",
+            "commit": "c76ac73627c32efd10498faae8ab976e6c5adbc1",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Nav: fix Basic Example type error",
+            "author": "zhmushan@qq.com",
+            "commit": "69de6a1faae65fb197aea9c3b74e6689dadb29f2",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 12 May 2020 12:41:21 GMT",
       "tag": "office-ui-fabric-react_v7.112.0",
       "version": "7.112.0",
