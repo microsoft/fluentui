@@ -35,7 +35,7 @@ import MenuItem, { MenuItemProps } from './MenuItem';
 import MenuDivider from './MenuDivider';
 import MenuItemIcon from './MenuItemIcon';
 import MenuItemContent from './MenuItemContent';
-import MenuItemIndicator, { MenuItemIndicator } from './MenuItemIndicator';
+import MenuItemIndicator, { MenuItemIndicatorProps } from './MenuItemIndicator';
 import MenuItemWrapper from './MenuItemWrapper';
 
 export type MenuShorthandKinds = 'divider' | 'item';
@@ -102,7 +102,7 @@ export interface MenuProps extends UIComponentProps, ChildrenComponentProps {
   submenu?: boolean;
 
   /** Shorthand for the submenu indicator. */
-  indicator?: ShorthandValue<MenuItemIndicator>;
+  indicator?: ShorthandValue<MenuItemIndicatorProps>;
 }
 
 export const menuClassName = 'ui-menu';
