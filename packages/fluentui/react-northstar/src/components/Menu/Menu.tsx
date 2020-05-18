@@ -18,6 +18,7 @@ import * as React from 'react';
 import {
   childrenExist,
   createShorthandFactory,
+  createShorthand,
   UIComponentProps,
   ChildrenComponentProps,
   commonPropTypes,
@@ -26,6 +27,10 @@ import {
 } from '../../utils';
 
 import MenuItem, { MenuItemProps } from './MenuItem';
+import MenuItemIcon from './MenuItemIcon';
+import MenuItemContent from './MenuItemContent';
+import MenuItemIndicator from './MenuItemIndicator';
+import MenuItemWrapper from './MenuItemWrapper';
 import {
   WithAsProp,
   ShorthandCollection,
@@ -114,6 +119,10 @@ export type MenuStylesProps = Required<
 export const Menu: React.FC<WithAsProp<MenuProps>> &
   FluentComponentStaticProps<MenuProps> & {
     Item: typeof MenuItem;
+    ItemContent: typeof MenuItemContent;
+    ItemIcon: typeof MenuItemIcon;
+    ItemIndicator: typeof MenuItemIndicator;
+    ItemWrapper: typeof MenuItemWrapper;
     Divider: typeof MenuDivider;
   } = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
@@ -229,7 +238,7 @@ export const Menu: React.FC<WithAsProp<MenuProps>> &
 
       itemPosition++;
 
-      return MenuItem.create(item, {
+      return createShorthand(MenuItem, item, {
         defaultProps: () =>
           getA11yProps('item', {
             iconOnly,
@@ -297,6 +306,10 @@ Menu.defaultProps = {
 Menu.handledProps = Object.keys(Menu.propTypes) as any;
 
 Menu.Item = MenuItem;
+Menu.ItemIcon = MenuItemIcon;
+Menu.ItemContent = MenuItemContent;
+Menu.ItemWrapper = MenuItemWrapper;
+Menu.ItemIndicator = MenuItemIndicator;
 Menu.Divider = MenuDivider;
 
 Menu.create = createShorthandFactory({ Component: Menu, mappedArrayProp: 'items' });

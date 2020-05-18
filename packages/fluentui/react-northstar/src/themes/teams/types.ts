@@ -35,8 +35,8 @@ import { DropdownSelectedItemStylesProps } from '../../components/Dropdown/Dropd
 import { EmbedStylesProps } from '../../components/Embed/Embed';
 import { FlexItemStylesProps } from '../../components/Flex/FlexItem';
 import { FlexStylesProps } from '../../components/Flex/Flex';
+import { FormStylesProps } from '../../components/Form/Form';
 import { FormFieldStylesProps } from '../../components/Form/FormField';
-import { FormProps } from '../../components/Form/Form';
 import { GridProps } from '../../components/Grid/Grid';
 import { HeaderDescriptionProps } from '../../components/Header/HeaderDescription';
 import { HeaderProps } from '../../components/Header/Header';
@@ -49,6 +49,10 @@ import { ListStylesProps } from '../../components/List/List';
 import { ListItemStylesProps } from '../../components/List/ListItem';
 import { LoaderProps } from '../../components/Loader/Loader';
 import { MenuItemStylesProps } from '../../components/Menu/MenuItem';
+import { MenuItemIconStylesProps } from '../../components/Menu/MenuItemIcon';
+import { MenuItemIndicatorStylesProps } from '../../components/Menu/MenuItemIndicator';
+import { MenuItemContentStylesProps } from '../../components/Menu/MenuItemContent';
+import { MenuItemWrapperStylesProps } from '../../components/Menu/MenuItemWrapper';
 import { MenuStylesProps } from '../../components/Menu/Menu';
 import { MenuDividerStylesProps } from '../../components/Menu/MenuDivider';
 import { PopupContentStylesProps } from '../../components/Popup/PopupContent';
@@ -86,6 +90,7 @@ import { CardTopControlsStylesProps } from '../../components/Card/CardTopControl
 import { CardHeaderStylesProps } from '../../components/Card/CardHeader';
 import { CardBodyStylesProps } from '../../components/Card/CardBody';
 import { CardFooterStylesProps } from '../../components/Card/CardFooter';
+import { CardExpandableBoxStylesProps } from '../../components/Card/CardExpandableBox';
 import { SvgIconStylesProps } from '../../components/SvgIcon/SvgIcon';
 import { SplitButtonStylesProps } from '../../components/SplitButton/SplitButton';
 import { CarouselNavigationStylesProps } from '../../components/Carousel/CarouselNavigation';
@@ -123,7 +128,7 @@ export type TeamsThemeStylesProps = {
   Embed: EmbedStylesProps;
   Flex: FlexStylesProps;
   FlexItem: FlexItemStylesProps;
-  Form: FormProps;
+  Form: FormStylesProps;
   FormField: FormFieldStylesProps;
   Grid: GridProps;
   Header: HeaderProps;
@@ -139,6 +144,10 @@ export type TeamsThemeStylesProps = {
   Loader: LoaderProps;
   Menu: MenuStylesProps;
   MenuItem: MenuItemStylesProps;
+  MenuItemIcon: MenuItemIconStylesProps;
+  MenuItemIndicator: MenuItemIndicatorStylesProps;
+  MenuItemContent: MenuItemContentStylesProps;
+  MenuItemWrapper: MenuItemWrapperStylesProps;
   MenuDivider: MenuDividerStylesProps;
   Portal: PortalProps;
   PopupContent: PopupContentStylesProps;
@@ -177,6 +186,7 @@ export type TeamsThemeStylesProps = {
   CardHeader: CardHeaderStylesProps;
   CardBody: CardBodyStylesProps;
   CardFooter: CardFooterStylesProps;
+  CardExpandableBox: CardExpandableBoxStylesProps;
   CarouselNavigationItem: CarouselNavigationItemStylesProps;
 };
 
