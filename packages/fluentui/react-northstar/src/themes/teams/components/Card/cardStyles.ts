@@ -1,6 +1,7 @@
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { CardVariables } from './cardVariables';
 import { CardStylesProps } from '../../../../components/Card/Card';
+import { cardExpandableBoxClassName } from '../../../../components/Card/CardExpandableBox';
 import getBorderFocusStyles from '../../getBorderFocusStyles';
 
 const cardStyles: ComponentSlotStylesPrepared<CardStylesProps, CardVariables> = {
@@ -17,6 +18,7 @@ const cardStyles: ComponentSlotStylesPrepared<CardStylesProps, CardVariables> = 
       flexDirection: 'column',
       position: 'relative',
       padding: v.padding,
+      margin: v.margin,
       width: v.width,
       height: v.height,
       backgroundColor: v.backgroundColor,
@@ -66,6 +68,22 @@ const cardStyles: ComponentSlotStylesPrepared<CardStylesProps, CardVariables> = 
         },
         ':active': {
           boxShadow: v.boxShadowDisabled,
+        },
+      }),
+
+      ...(p.expandable && {
+        [`& .${cardExpandableBoxClassName}`]: {
+          maxHeight: v.expandableBoxStartMaxHeight,
+          transition: v.expandableBoxExpandTransition,
+          overflow: 'hidden',
+        },
+        [`&:hover .${cardExpandableBoxClassName}`]: {
+          maxHeight: v.expandableBoxEndMaxHeight,
+          transition: v.expandableBoxExpandTransition,
+        },
+        [`&:focus .${cardExpandableBoxClassName}`]: {
+          maxHeight: v.expandableBoxEndMaxHeight,
+          transition: v.expandableBoxExpandTransition,
         },
       }),
 

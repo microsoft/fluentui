@@ -4,8 +4,8 @@
 
 ### Source code
 
-[AvatarView](https://github.com/OfficeDev/ui-fabric-android/blob/master/OfficeUIFabric/src/main/java/com/microsoft/officeuifabric/persona/AvatarView.kt)
+[AvatarView](https://github.com/microsoft/fluentui-android/blob/master/FluentUI/src/main/java/com/microsoft/fluentui/persona/AvatarView.kt)
 
 ### Sample code
 
-[AvatarView demo activity](https://github.com/OfficeDev/ui-fabric-android/blob/master/OfficeUIFabric.Demo/src/main/java/com/microsoft/officeuifabricdemo/demos/AvatarViewActivity.kt)
+[AvatarView demo activity](https://github.com/microsoft/fluentui-android/blob/master/FluentUI.Demo/src/main/java/com/microsoft/fluentuidemo/demos/AvatarViewActivity.kt)

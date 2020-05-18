@@ -1,11 +1,11 @@
 ### Control name
 
-`MSAvatarView`
+`AvatarView` in Swift, `MSFAvatarView` in Objective-C
 
 ### Source code
 
-[MSAvatarView](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric/People%20Picker/MSAvatarView.swift)
+[AvatarView](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI/People%20Picker/AvatarView.swift)
 
 ### Sample code
 
-[MSAvatarView demo](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric.Demo/OfficeUIFabric.Demo/Demos/MSAvatarViewDemoController.swift)
+[AvatarView demo](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI.Demo/FluentUI.Demo/Demos/AvatarViewDemoController.swift)

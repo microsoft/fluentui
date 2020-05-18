@@ -16,18 +16,17 @@ import {
   WithAsProp,
   ComponentKeyboardEventHandler,
   withSafeTypeForAs,
+  FluentComponentStaticProps,
+  ProviderContextPrepared,
 } from '../../types';
 import { UIComponentProps } from '../../utils/commonPropInterfaces';
-import {
-  createShorthandFactory,
-  UIComponent,
-  RenderResultConfig,
-  commonPropTypes,
-  ShorthandFactory,
-} from '../../utils';
+import { createShorthandFactory, commonPropTypes } from '../../utils';
 import Image, { ImageProps } from '../Image/Image';
 import Label from '../Label/Label';
 import Box, { BoxProps } from '../Box/Box';
+import { useUnhandledProps, useStyles, useTelemetry } from '@fluentui/react-bindings';
+// @ts-ignore
+import { ThemeContext } from 'react-fela';
 
 export interface DropdownSelectedItemProps extends UIComponentProps<DropdownSelectedItemProps> {
   /** A selected item can be active. */
@@ -67,118 +66,140 @@ export interface DropdownSelectedItemProps extends UIComponentProps<DropdownSele
   onRemove?: ComponentEventHandler<DropdownSelectedItemProps>;
 }
 
-class DropdownSelectedItem extends UIComponent<WithAsProp<DropdownSelectedItemProps>, any> {
-  itemRef = React.createRef<HTMLElement>();
+export type DropdownSelectedItemStylesProps = never;
 
-  static displayName = 'DropdownSelectedItem';
-  static create: ShorthandFactory<DropdownSelectedItemProps>;
-  static deprecated_className = dropdownSelectedItemClassName;
-
-  static propTypes = {
-    ...commonPropTypes.createCommon({
-      accessibility: false,
-      children: false,
-    }),
-    active: PropTypes.bool,
-    header: customPropTypes.itemShorthand,
-    icon: customPropTypes.shorthandAllowingChildren,
-    image: customPropTypes.itemShorthandWithoutJSX,
-    onClick: PropTypes.func,
-    onKeyDown: PropTypes.func,
-    onRemove: PropTypes.func,
-  };
-
-  static defaultProps = {
-    // TODO: fix me
-    icon: <CloseIcon />,
-  };
-
-  componentDidUpdate(prevProps: DropdownSelectedItemProps) {
-    if (!prevProps.active && this.props.active) {
-      this.itemRef.current.focus();
+const DropdownSelectedItem: React.FC<WithAsProp<DropdownSelectedItemProps>> &
+  FluentComponentStaticProps<DropdownSelectedItemProps> = props => {
+  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const { setStart, setEnd } = useTelemetry(DropdownSelectedItem.displayName, context.telemetry);
+  setStart();
+  const { active, header, icon, image, className, design, styles, variables } = props;
+  const itemRef = React.createRef<HTMLElement>();
+  const unhandledProps = useUnhandledProps(DropdownSelectedItem.handledProps, props);
+  React.useEffect(() => {
+    if (active) {
+      itemRef.current.focus();
     }
-  }
+  }, [active]);
 
-  handleClick = (e: React.SyntheticEvent) => {
-    _.invoke(this.props, 'onClick', e, this.props);
+  const { classes, styles: resolvedStyles } = useStyles<DropdownSelectedItemStylesProps>(
+    DropdownSelectedItem.displayName,
+    {
+      className: dropdownSelectedItemClassName,
+      mapPropsToInlineStyles: () => ({
+        className,
+        design,
+        styles,
+        variables,
+      }),
+      rtl: context.rtl,
+    },
+  );
+
+  const handleClick = (e: React.SyntheticEvent) => {
+    _.invoke(props, 'onClick', e, props);
   };
 
-  handleKeyDown = (e: React.SyntheticEvent) => {
-    _.invoke(this.props, 'onKeyDown', e, this.props);
+  const handleKeyDown = (e: React.SyntheticEvent) => {
+    _.invoke(props, 'onKeyDown', e, props);
   };
 
-  handleIconOverrides = props => (predefinedProps: BoxProps) => ({
-    ...props,
+  const handleIconOverrides = iconProps => (predefinedProps: BoxProps) => ({
+    ...iconProps,
     onClick: (e: React.SyntheticEvent, iconProps: BoxProps) => {
       e.stopPropagation();
-      _.invoke(this.props, 'onRemove', e, this.props);
-      _.invoke(predefinedProps, 'onClick', e, iconProps);
+      _.invoke(props, 'onRemove', e, iconProps);
+      _.invoke(props, 'onClick', e, iconProps);
     },
     onKeyDown: (e: React.SyntheticEvent, iconProps: BoxProps) => {
       e.stopPropagation();
       if (keyboardKey.getCode(e) === keyboardKey.Enter) {
-        _.invoke(this.props, 'onRemove', e, this.props);
+        _.invoke(props, 'onRemove', e, iconProps);
       }
-      _.invoke(predefinedProps, 'onKeyDown', e, iconProps);
+      _.invoke(props, 'onKeyDown', e, iconProps);
     },
   });
 
-  renderComponent({ unhandledProps, classes, styles }: RenderResultConfig<DropdownSelectedItemProps>) {
-    const { active, header, icon, image } = this.props;
+  const contentElement = Box.create(header, {
+    defaultProps: () => ({
+      as: 'span',
+      className: dropdownSelectedItemSlotClassNames.header,
+      styles: resolvedStyles.header,
+    }),
+  });
 
-    const contentElement = Box.create(header, {
-      defaultProps: () => ({
-        as: 'span',
-        className: dropdownSelectedItemSlotClassNames.header,
-        styles: styles.header,
-      }),
-    });
-    const iconProps = _.isNil(icon)
-      ? icon
-      : {
-          name: null,
-          children: (ComponentType, props) =>
-            Box.create(icon, {
-              defaultProps: () => ({
-                'aria-label': `Remove ${header} from selection.`, // TODO: Extract this in a behaviour.
-                className: dropdownSelectedItemSlotClassNames.icon,
-                styles: styles.icon,
-              }),
-              overrideProps: this.handleIconOverrides(props),
+  const iconProps = _.isNil(icon)
+    ? icon
+    : {
+        name: null,
+        children: (ComponentType, props) =>
+          Box.create(icon, {
+            defaultProps: () => ({
+              'aria-label': `Remove ${header} from selection.`, // TODO: Extract this in a behaviour.
+              className: dropdownSelectedItemSlotClassNames.icon,
+              styles: resolvedStyles.icon,
             }),
-        };
-    const imageProps = _.isNil(image)
-      ? image
-      : {
-          children: (ComponentType, props) =>
-            Image.create(image, {
-              defaultProps: () => ({
-                avatar: true,
-                className: dropdownSelectedItemSlotClassNames.image,
-                styles: styles.image,
-              }),
-              overrideProps: props,
-            }),
-        };
+            overrideProps: handleIconOverrides(props),
+          }),
+      };
 
-    return (
-      <Ref innerRef={this.itemRef}>
-        <Label
-          className={classes.root}
-          tabIndex={active ? 0 : -1}
-          styles={styles.root}
-          circular
-          onClick={this.handleClick}
-          onKeyDown={this.handleKeyDown}
-          content={contentElement}
-          icon={iconProps}
-          image={imageProps}
-          {...unhandledProps}
-        />
-      </Ref>
-    );
-  }
-}
+  const imageProps = _.isNil(image)
+    ? image
+    : {
+        children: (ComponentType, props) =>
+          Image.create(image, {
+            defaultProps: () => ({
+              avatar: true,
+              className: dropdownSelectedItemSlotClassNames.image,
+              styles: resolvedStyles.image,
+            }),
+            overrideProps: props,
+          }),
+      };
+
+  const element = (
+    <Ref innerRef={itemRef}>
+      <Label
+        className={classes.root}
+        tabIndex={active ? 0 : -1}
+        styles={resolvedStyles.root}
+        circular
+        onClick={handleClick}
+        onKeyDown={handleKeyDown}
+        content={contentElement}
+        icon={iconProps}
+        image={imageProps}
+        {...unhandledProps}
+      />
+    </Ref>
+  );
+
+  setEnd();
+  return element;
+};
+
+DropdownSelectedItem.displayName = 'DropdownSelectedItem';
+
+DropdownSelectedItem.propTypes = {
+  ...commonPropTypes.createCommon({
+    accessibility: false,
+    children: false,
+  }),
+  active: PropTypes.bool,
+  header: customPropTypes.itemShorthand,
+  icon: customPropTypes.shorthandAllowingChildren,
+  image: customPropTypes.itemShorthandWithoutJSX,
+  onClick: PropTypes.func,
+  onKeyDown: PropTypes.func,
+  onRemove: PropTypes.func,
+};
+
+DropdownSelectedItem.handledProps = Object.keys(DropdownSelectedItem.propTypes) as any;
+
+DropdownSelectedItem.defaultProps = {
+  // TODO: fix me
+  icon: <CloseIcon />,
+};
 
 DropdownSelectedItem.create = createShorthandFactory({
   Component: DropdownSelectedItem,

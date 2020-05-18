@@ -1,8 +1,26 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Mon, 04 May 2020 12:33:29 GMT and should not be manually modified.
+This log was last generated on Fri, 15 May 2020 05:52:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.10.50](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.10.50)
+
+Fri, 15 May 2020 05:52:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.10.49..@uifabric/fabric-website_v7.10.50)
+
+### Patches
+
+- fixed visited styles in website ([PR #13172](https://github.com/microsoft/fluentui/pull/13172) by mgodbolt@microsoft.com)
+
+## [7.10.49](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.10.49)
+
+Fri, 15 May 2020 00:07:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.10.39..@uifabric/fabric-website_v7.10.49)
+
+### Patches
+
+- Adding new website content ([PR #12482](https://github.com/microsoft/fluentui/pull/12482) by mgodbolt@microsoft.com)
 
 ## [7.10.39](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.10.39)
 
