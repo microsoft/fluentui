@@ -142,6 +142,6 @@ TextField/ @ecraig12345
 Theme/ @dzearing
 Tile/ @ThomasMichon
 TileList/ @ThomasMichon
-office-ui-fabric-react/src/components/Toggle/ @phkuo @xugao
+office-ui-fabric-react/src/components/Toggle/ @xugao
 experiments/src/components/Toggle/ @khmakoto
 Tooltip/ @micahgodbolt
