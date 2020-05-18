@@ -43,6 +43,7 @@ const items = [
     content: 'Editorials',
     icon: <BookmarkIcon />,
     menu: ['One', 'Two', 'Three'],
+    // TODO: remove once compose is implemented for the hierarchical structure
     children: (C, p) => <MenuItemBlue {...p} />,
   },
   { key: 'review', content: 'Reviews' },
