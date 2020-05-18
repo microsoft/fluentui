@@ -72,6 +72,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     isCircularNavigation: false,
     direction: FocusZoneDirection.bidirectional,
     preventDefaultWhenHandled: true,
+    shouldRaiseClicks: true,
   };
 
   private _root: React.RefObject<HTMLElement> = React.createRef();
@@ -754,7 +755,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
    * Walk up the dom try to find a focusable element.
    */
   private _tryInvokeClickForFocusable(target: HTMLElement): boolean {
-    if (target === this._root.current) {
+    if (target === this._root.current || !this.props.shouldRaiseClicks) {
       return false;
     }
 

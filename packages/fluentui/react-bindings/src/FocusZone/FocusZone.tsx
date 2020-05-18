@@ -63,6 +63,7 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
     defaultTabbableElement: PropTypes.func,
     shouldFocusOnMount: PropTypes.bool,
     shouldResetActiveElementWhenTabFromZone: PropTypes.bool,
+    shouldRaiseClicks: PropTypes.bool,
     shouldFocusInnerElementWhenReceivedFocus: PropTypes.bool,
     disabled: PropTypes.bool,
     as: PropTypes.elementType as PropTypes.Requireable<React.ElementType>,
@@ -85,6 +86,7 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
     direction: FocusZoneDirection.bidirectional,
     as: 'div',
     preventDefaultWhenHandled: true,
+    shouldRaiseClicks: false,
   };
 
   static displayName = 'FocusZone';
@@ -723,7 +725,7 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
   tryInvokeClickForFocusable(targetElement: HTMLElement): boolean {
     let target = targetElement;
 
-    if (target === this._root.current) {
+    if (target === this._root.current || !this.props.shouldRaiseClicks) {
       return false;
     }
 
