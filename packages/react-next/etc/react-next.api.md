@@ -4,13 +4,23 @@
 
 ```ts
 
+import { Autofill } from 'office-ui-fabric-react/lib/Autofill';
+import { BaseFloatingPicker } from 'office-ui-fabric-react/lib/FloatingPicker';
+import { BaseSelectedItemsList } from 'office-ui-fabric-react/lib/SelectedItemsList';
+import { IBaseFloatingPickerProps } from 'office-ui-fabric-react/lib/FloatingPicker';
+import { IBaseSelectedItemsListProps } from 'office-ui-fabric-react/lib/SelectedItemsList';
 import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import { IButtonProps as IButtonProps_2 } from 'office-ui-fabric-react/lib/components/Button/Button.types';
 import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import { IComponentAs } from 'office-ui-fabric-react/lib/Utilities';
-import { IFocusZoneProps } from '@fluentui/react-focus';
+import { IExtendedPersonaProps } from 'office-ui-fabric-react/lib/SelectedItemsList';
+import { IFocusZoneProps } from 'office-ui-fabric-react/lib/FocusZone';
+import { IFocusZoneProps as IFocusZoneProps_2 } from '@fluentui/react-focus';
 import { IIconProps } from 'office-ui-fabric-react/lib/Icon';
+import { IInputProps } from 'office-ui-fabric-react/lib/Pickers';
 import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
+import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
+import { IPickerItemProps } from 'office-ui-fabric-react/lib/Pickers';
 import { IRefObject } from 'office-ui-fabric-react/lib/Utilities';
 import { IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { IStyle } from 'office-ui-fabric-react/lib/Styling';
@@ -19,6 +29,70 @@ import { IStyleSet } from 'office-ui-fabric-react/lib/Styling';
 import { ITheme } from 'office-ui-fabric-react/lib/Styling';
 import { Position } from 'office-ui-fabric-react/lib/utilities/positioning';
 import * as React from 'react';
+import { Selection } from 'office-ui-fabric-react/lib/Selection';
+
+// @public (undocumented)
+export class BaseExtendedPeoplePicker extends BaseExtendedPicker<IPersonaProps, IExtendedPeoplePickerProps> {
+}
+
+// @public (undocumented)
+export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extends React.Component<P, IBaseExtendedPickerState<T>> implements IBaseExtendedPicker<T> {
+    constructor(basePickerProps: P);
+    // (undocumented)
+    protected canAddItems(): boolean;
+    // (undocumented)
+    clearInput(): void;
+    // (undocumented)
+    componentDidMount(): void;
+    // (undocumented)
+    floatingPicker: React.RefObject<BaseFloatingPicker<T, IBaseFloatingPickerProps<T>>>;
+    // (undocumented)
+    protected floatingPickerProps: IBaseFloatingPickerProps<T>;
+    // (undocumented)
+    focus(): void;
+    // (undocumented)
+    readonly highlightedItems: T[];
+    // (undocumented)
+    protected input: React.RefObject<Autofill>;
+    // (undocumented)
+    readonly inputElement: HTMLInputElement | null;
+    // (undocumented)
+    readonly items: any;
+    // (undocumented)
+    protected onBackspace: (ev: React.KeyboardEvent<HTMLElement>) => void;
+    // (undocumented)
+    protected onCopy: (ev: React.ClipboardEvent<HTMLElement>) => void;
+    // (undocumented)
+    protected onInputChange: (value: string, composing?: boolean | undefined) => void;
+    // (undocumented)
+    protected onInputClick: (ev: React.MouseEvent<HTMLInputElement | Autofill, MouseEvent>) => void;
+    // (undocumented)
+    protected onInputFocus: (ev: React.FocusEvent<HTMLInputElement | Autofill>) => void;
+    // (undocumented)
+    protected onPaste: (ev: React.ClipboardEvent<HTMLInputElement | Autofill>) => void;
+    // (undocumented)
+    protected _onSelectedItemsChanged: () => void;
+    // (undocumented)
+    protected onSelectionChange: () => void;
+    // (undocumented)
+    protected _onSuggestionSelected: (item: T) => void;
+    // (undocumented)
+    render(): JSX.Element;
+    // (undocumented)
+    protected renderFloatingPicker(): JSX.Element;
+    // (undocumented)
+    protected renderSelectedItemsList(): JSX.Element;
+    // (undocumented)
+    protected root: React.RefObject<HTMLDivElement>;
+    // (undocumented)
+    selectedItemsList: React.RefObject<BaseSelectedItemsList<T, IBaseSelectedItemsListProps<T>>>;
+    // (undocumented)
+    protected selectedItemsListProps: IBaseSelectedItemsListProps<T>;
+    // (undocumented)
+    protected selection: Selection;
+    // (undocumented)
+    UNSAFE_componentWillReceiveProps(newProps: P): void;
+}
 
 // @public (undocumented)
 export const Checkbox: React.FunctionComponent<ICheckboxProps>;
@@ -31,6 +105,10 @@ export const DEFAULT_MASK_CHAR = "_";
 
 // @public (undocumented)
 export type DefaultProps = Required<Pick<ISpinButtonProps, 'step' | 'min' | 'max' | 'disabled' | 'labelPosition' | 'label' | 'incrementButtonIcon' | 'decrementButtonIcon'>>;
+
+// @public (undocumented)
+export class ExtendedPeoplePicker extends BaseExtendedPeoplePicker {
+}
 
 // @public (undocumented)
 export const Fabric: React.FunctionComponent<IFabricProps>;
@@ -53,6 +131,49 @@ export const getNextResizeGroupStateProvider: (measurementCache?: {
     shouldRenderDataForMeasurement: (dataToMeasure: any) => boolean;
     getInitialResizeGroupState: (data: any) => IResizeGroupState;
 };
+
+// @public (undocumented)
+export interface IBaseExtendedPicker<T> {
+    focus: () => void;
+    forceResolve?: () => void;
+    items: T[] | undefined;
+}
+
+// @public (undocumented)
+export interface IBaseExtendedPickerProps<T> {
+    className?: string;
+    componentRef?: IRefObject<IBaseExtendedPicker<T>>;
+    currentRenderedQueryString?: string;
+    defaultSelectedItems?: T[];
+    disabled?: boolean;
+    floatingPickerProps: IBaseFloatingPickerProps<T>;
+    focusZoneProps?: IFocusZoneProps;
+    headerComponent?: JSX.Element;
+    inputProps?: IInputProps;
+    itemLimit?: number;
+    onBlur?: React.FocusEventHandler<HTMLInputElement | Autofill>;
+    onChange?: (items?: T[]) => void;
+    onFocus?: React.FocusEventHandler<HTMLInputElement | Autofill>;
+    onItemAdded?: (addedItem: T) => void;
+    onItemSelected?: (selectedItem?: T) => T | PromiseLike<T>;
+    onItemsRemoved?: (removedItems: T[]) => void;
+    onPaste?: (pastedText: string) => T[];
+    onRenderFloatingPicker: React.ComponentType<IBaseFloatingPickerProps<T>>;
+    onRenderSelectedItems: React.ComponentType<IBaseSelectedItemsListProps<T>>;
+    selectedItems?: T[];
+    selectedItemsListProps: IBaseSelectedItemsListProps<T>;
+    suggestionItems?: T[];
+}
+
+// @public (undocumented)
+export interface IBaseExtendedPickerState<T> {
+    // (undocumented)
+    queryString: string | null;
+    // (undocumented)
+    selectedItems: T[] | null;
+    // (undocumented)
+    suggestionItems: T[] | null;
+}
 
 // @public
 export interface ICheckbox {
@@ -112,6 +233,10 @@ export interface ICheckboxStyles {
     label?: IStyle;
     root?: IStyle;
     text?: IStyle;
+}
+
+// @public (undocumented)
+export interface IExtendedPeoplePickerProps extends IBaseExtendedPickerProps<IPersonaProps> {
 }
 
 // @public (undocumented)
@@ -327,7 +452,7 @@ export interface IOverflowSetProps extends React.ClassAttributes<OverflowSetBase
     // @deprecated
     doNotContainWithinFocusZone?: boolean;
     // @deprecated
-    focusZoneProps?: IFocusZoneProps;
+    focusZoneProps?: IFocusZoneProps_2;
     items?: IOverflowSetItemProps[];
     itemSubMenuProvider?: (item: IOverflowSetItemProps) => any[] | undefined;
     keytipSequences?: string[];
@@ -348,6 +473,10 @@ export interface IOverflowSetStyles {
     item?: IStyle;
     overflowButton?: IStyle;
     root?: IStyle;
+}
+
+// @public (undocumented)
+export interface IPeoplePickerItemProps extends IPickerItemProps<IExtendedPersonaProps> {
 }
 
 // @public (undocumented)
@@ -1075,7 +1204,6 @@ export * from "office-ui-fabric-react/lib/Dialog";
 export * from "office-ui-fabric-react/lib/Divider";
 export * from "office-ui-fabric-react/lib/DocumentCard";
 export * from "office-ui-fabric-react/lib/Dropdown";
-export * from "office-ui-fabric-react/lib/ExtendedPicker";
 export * from "office-ui-fabric-react/lib/Facepile";
 export * from "office-ui-fabric-react/lib/FloatingPicker";
 export * from "office-ui-fabric-react/lib/FocusTrapZone";
