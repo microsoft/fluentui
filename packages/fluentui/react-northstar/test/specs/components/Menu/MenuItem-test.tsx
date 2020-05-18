@@ -11,12 +11,13 @@ import { mountWithProviderAndGetComponent } from 'test/utils';
 import MenuItem from 'src/components/Menu/MenuItem';
 import Box from 'src/components/Box/Box';
 import Menu from 'src/components/Menu/Menu';
+import { menuItemWrapperClassName } from 'src/components/Menu/MenuItemWrapper';
 
 describe('MenuItem', () => {
   isConformant(MenuItem, {
     constructorName: 'MenuItem',
     eventTargets: {
-      onClick: '.ui-menu__item__wrapper',
+      onClick: `.${menuItemWrapperClassName}`,
     },
     wrapperComponent: Box,
     autoControlledProps: ['menuOpen'],
@@ -28,7 +29,7 @@ describe('MenuItem', () => {
 
   it('content renders as `li > a`', () => {
     const menuItem = mountWithProviderAndGetComponent(MenuItem, <MenuItem content="Home" />)
-      .find('.ui-menu__item__wrapper')
+      .find(`.${menuItemWrapperClassName}`)
       .hostNodes();
 
     expect(menuItem.is('li')).toBe(true);
@@ -45,7 +46,7 @@ describe('MenuItem', () => {
 
   it('children render directly inside `li`', () => {
     const menuItem = mountWithProviderAndGetComponent(MenuItem, <MenuItem>Home</MenuItem>)
-      .find('.ui-menu__item__wrapper')
+      .find(`.${menuItemWrapperClassName}`)
       .hostNodes();
     expect(menuItem.is('li')).toBe(true);
     expect(menuItem.childAt(0).exists()).toBe(false);
