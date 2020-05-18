@@ -96,7 +96,6 @@ const HierarchicalTree: React.FC<WithAsProp<HierarchicalTreeProps>> &
     debugName: HierarchicalTree.displayName,
     actionHandlers: {
       expandSiblings: e => {
-        const { items, exclusive } = props;
         e.preventDefault();
         e.stopPropagation();
 
