@@ -48,18 +48,18 @@ export const menuDividerClassName = 'ui-menu__divider';
 const MenuDivider = compose<'li', MenuDividerProps, MenuDividerStylesProps, {}, {}>(
   (props, ref, composeOptions) => {
     const context: ProviderContextPrepared = React.useContext(ThemeContext);
-    const { setStart, setEnd } = useTelemetry(MenuDivider.displayName, context.telemetry);
+    const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
     setStart();
 
     const { children, content, vertical, inSubmenu, primary, className, design, styles, variables } = props;
 
     const getA11yProps = useAccessibility(props.accessibility, {
-      debugName: MenuDivider.displayName,
+      debugName: composeOptions.displayName,
       rtl: context.rtl,
     });
 
-    const { classes } = useStyles<MenuDividerStylesProps>(MenuDivider.displayName, {
-      className: menuDividerClassName,
+    const { classes } = useStyles<MenuDividerStylesProps>(composeOptions.displayName, {
+      className: composeOptions.className,
       composeOptions,
       mapPropsToStyles: () => ({
         hasContent: !!content,
