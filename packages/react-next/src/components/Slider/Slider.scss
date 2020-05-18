@@ -68,14 +68,14 @@
       @include activeSectionActiveStyles();
       @include inactiveSectionActiveStyles();
       @include thumbActiveStyles();
-      @include slideBoxctiveZeroTickStyles();
+      @include slideBoxActiveZeroTickStyles();
     }
 
     &:hover {
       @include activeSectionHoverStyles();
       @include inactiveSectionActiveStyles();
       @include thumbActiveStyles();
-      @include slideBoxctiveZeroTickStyles();
+      @include slideBoxActiveZeroTickStyles();
     }
   }
 }
@@ -88,7 +88,7 @@
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
-  .vertical & {
+  &.vertical {
     flex-direction: column;
     height: 100%;
     text-align: center;
@@ -108,7 +108,7 @@
   width: auto;
   padding: 0 8px; // Make room for thumb at ends of line
 
-  .vertical & {
+  &.vertical {
     height: 100%;
     width: 28px;
     padding: 8px 0; // Make room for thumb at bottom of line
@@ -131,13 +131,13 @@
 
   // TODO either remove or implement for RTL transform: translateX(50%);
 
-  .vertical & {
+  &.vertical {
     left: -6px;
     margin: 0 auto;
     transform: translateY(8px);
   }
 
-  .disabled & {
+  &.disabled {
     border-color: var($semanticColorsDisabledBorder);
     @include high-contrast {
       bordercolor: GrayText;
@@ -157,7 +157,7 @@
   position: relative;
   width: 100%;
 
-  .vertical & {
+  &.vertical {
     height: 100%;
     width: 4px;
     margin: 0 auto;
@@ -171,7 +171,7 @@
   height: 4px;
   width: 100%;
 
-  .vertical & {
+  &.vertical {
     width: 4px;
     height: 100%;
   }
@@ -184,7 +184,7 @@
     backgroundcolor: WindowText;
   }
 
-  .disabled & {
+  &.disabled {
     background: var($semanticColorsDisabledText);
     @include high-contrast {
       backgroundcolor: GrayText;
@@ -192,7 +192,7 @@
     }
   }
 
-  .showTransitions & {
+  &.showTransitions {
     transition: 3 3 3;
   }
   /**
@@ -207,14 +207,14 @@
     border: 1px solid WindowText;
   }
 
-  .disabled & {
+  &.disabled {
     background: var($semanticColorsDisabledBackground);
     @include high-contrast {
       bordercolor: GrayText;
     }
   }
 
-  .showTransitions & {
+  &.showTransitions {
     transition: 3 3 3;
   }
   /**
@@ -234,14 +234,14 @@
     backgroundcolor: WindowText;
   }
 
-  .disabled & {
+  &.disabled {
     background: var($semanticColorsDisabledBackground);
     @include high-contrast {
       backgroundcolor: GrayText;
     }
   }
 
-  .vertical & {
+  &.vertical {
     width: 16px;
     height: 1px;
     transform: translateX(-6px);
@@ -257,7 +257,7 @@
   white-space: nowrap;
   width: 40px;
 
-  .vertical & {
+  &.vertical {
     margin: 0 auto;
     white-space: nowrap;
     width: 40px;
