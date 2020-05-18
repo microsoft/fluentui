@@ -286,7 +286,6 @@ Input.defaultProps = {
   type: 'text',
   wrapper: {},
   iconPosition: 'end',
-  // value: '',
 };
 
 Input.handledProps = Object.keys(Input.propTypes) as any;
