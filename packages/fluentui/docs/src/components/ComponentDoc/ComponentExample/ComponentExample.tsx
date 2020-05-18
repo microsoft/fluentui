@@ -224,7 +224,7 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
     return this.kebabExamplePath;
   };
 
-  getSourceFileName = () => {
+  getSourceFileNameHint = () => {
     return `Source code: ${this.props.examplePath.split('/').pop()}.tsx`;
   };
 
@@ -465,7 +465,11 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
 
             <Segment styles={{ padding: 0, borderBottom: '1px solid #ddd' }}>
               <Flex space="between" style={{ padding: '10px 20px' }}>
-                <ComponentExampleTitle description={description} title={title} sourceName={this.getSourceFileName()} />
+                <ComponentExampleTitle
+                  description={description}
+                  title={title}
+                  sourceHint={this.getSourceFileNameHint()}
+                />
 
                 <ComponentControls
                   titleForAriaLabel={title || titleForAriaLabel}

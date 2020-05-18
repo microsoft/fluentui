@@ -8,16 +8,16 @@ const titleStyle = {
 interface ComponentExampleTitleProps {
   description?: React.ReactNode;
   title: React.ReactNode;
-  sourceName?: string;
+  sourceHint?: string;
 }
 
 export default class ComponentExampleTitle extends React.PureComponent<ComponentExampleTitleProps> {
   render() {
-    const { description, title, sourceName } = this.props;
+    const { description, title, sourceHint } = this.props;
     return (
       <div>
         {title && <Header as="h3" className="no-anchor" content={title} styles={titleStyle} />}
-        {sourceName && <Text style={screenReaderContainerStyles} content={sourceName} />}
+        {sourceHint && <Text style={screenReaderContainerStyles} content={sourceHint} />}
         <Text content={description} />
       </div>
     );
