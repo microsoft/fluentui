@@ -205,8 +205,6 @@ const Input: React.FC<WithAsProp<InputProps>> & FluentComponentStaticProps<Input
   };
 
   const computeIcon = (): ShorthandValue<BoxProps> => {
-    const { clearable, icon } = props;
-
     if (clearable && (value as string)?.length !== 0) {
       return {};
     }
