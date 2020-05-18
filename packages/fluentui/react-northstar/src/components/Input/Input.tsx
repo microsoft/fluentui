@@ -186,7 +186,7 @@ const Input: React.FC<WithAsProp<InputProps>> & FluentComponentStaticProps<Input
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (props.disabled) {
+    if (disabled) {
       return;
     }
 
