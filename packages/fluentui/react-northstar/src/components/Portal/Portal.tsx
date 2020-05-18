@@ -141,10 +141,6 @@ const Portal: React.FC<WithAsProp<PortalProps>> & FluentComponentStaticProps<Por
     _.invoke(props, 'onUnmount', props);
   };
 
-  const handlePortalRef = (node: HTMLElement) => {
-    portalNode = node;
-  };
-
   const handleTriggerRef = (node: HTMLElement) => {
     triggerNode = node;
     handleRef(props.triggerRef, triggerNode);
