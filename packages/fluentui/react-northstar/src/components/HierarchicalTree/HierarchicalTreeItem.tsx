@@ -145,7 +145,7 @@ const HierarchicalTreeItem: React.FC<WithAsProp<HierarchicalTreeItemProps>> &
   });
 
   const itemRef = React.createRef<HTMLElement>();
-  const treeRef = React.createRef<HTMLElement>();
+  const treeRef = React.useRef<HTMLElement>();
 
   const { classes } = useStyles<HierarchicalTreeItemStyles>(HierarchicalTreeItem.displayName, {
     className: hierarchicalTreeItemClassName,
