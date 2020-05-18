@@ -224,6 +224,10 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
     return this.kebabExamplePath;
   };
 
+  getSourceFileName = () => {
+    return `Source code: ${this.props.examplePath.split('/').pop()}.tsx`;
+  };
+
   handleCodeApiChange = apiType => () => {
     this.props.handleCodeAPIChange(apiType);
   };
@@ -461,7 +465,7 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
 
             <Segment styles={{ padding: 0, borderBottom: '1px solid #ddd' }}>
               <Flex space="between" style={{ padding: '10px 20px' }}>
-                <ComponentExampleTitle description={description} title={title} />
+                <ComponentExampleTitle description={description} title={title} sourceName={this.getSourceFileName()} />
 
                 <ComponentControls
                   titleForAriaLabel={title || titleForAriaLabel}
