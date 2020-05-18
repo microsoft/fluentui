@@ -160,7 +160,7 @@ const Input: React.FC<WithAsProp<InputProps>> & FluentComponentStaticProps<Input
   const getA11yProps = useAccessibility<InputBehaviorProps>(props.accessibility, {
     debugName: Input.displayName,
     actionHandlers: {
-      clear: (e) => {
+      clear: e => {
         if (clearable && value !== '') {
           e.stopPropagation();
           e.nativeEvent && e.nativeEvent.stopPropagation();
@@ -177,7 +177,7 @@ const Input: React.FC<WithAsProp<InputProps>> & FluentComponentStaticProps<Input
   const handleIconOverrides = predefinedProps => ({
     onClick: (e: React.SyntheticEvent) => {
       if (!disabled) {
-        handleOnClear(e);
+        handleOnClear(e as React.MouseEvent);
         inputRef.current.focus();
       }
 
@@ -252,7 +252,7 @@ const Input: React.FC<WithAsProp<InputProps>> & FluentComponentStaticProps<Input
         ...restProps,
       }),
     overrideProps: {
-      as: (wrapper && (wrapper as BoxProps).as) || ElementType,
+      as: (wrapper && (wrapper as any).as) || ElementType,
     },
   });
   setEnd();
