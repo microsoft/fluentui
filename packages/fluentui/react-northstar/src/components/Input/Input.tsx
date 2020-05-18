@@ -197,7 +197,7 @@ const Input: React.FC<WithAsProp<InputProps>> & FluentComponentStaticProps<Input
     setValue(newValue);
   };
 
-  const handleOnClear = (e: React.SyntheticEvent) => {
+  const handleOnClear = (e: React.MouseEvent | React.KeyboardEvent) => {
     if (clearable) {
       _.invoke(props, 'onChange', e, { ...props, value: '' });
       setValue('');
