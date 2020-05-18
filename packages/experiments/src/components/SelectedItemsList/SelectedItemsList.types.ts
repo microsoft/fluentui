@@ -84,7 +84,7 @@ export interface ISelectedItemsListProps<T> extends React.ClassAttributes<any> {
   removeButtonAriaLabel?: string;
 
   /**
-   * A callback when and item or items are removed
+   * A callback when an item or items are removed
    */
   onItemsRemoved?: (removedItems: T[]) => void;
 

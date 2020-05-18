@@ -98,7 +98,6 @@ export const UnifiedPeoplePickerExample = (): JSX.Element => {
   };
 
   const _onInputChange = (filterText: string): void => {
-    console.log(people[40]);
     const allPeople = people;
     const suggestions = allPeople.filter((item: IPersonaProps) => _startsWith(item.text || '', filterText));
     const suggestionList = suggestions.map(item => {
