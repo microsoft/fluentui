@@ -9,7 +9,7 @@ import hierarchicalSubtreeBehavior from './hierarchicalSubtreeBehavior';
  * Provides arrow key navigation in vertical direction.
  * Triggers 'expandSiblings' action with '*' on 'root'.
  */
-const hierarchicalTreeBehavior: Accessibility<TreeBehaviorBehaviorProps> = props => {
+const hierarchicalTreeBehavior: Accessibility<HierarchicalTreeBehaviorBehaviorProps> = props => {
   const subtreeBehaviorData = hierarchicalSubtreeBehavior({});
   return {
     attributes: {
