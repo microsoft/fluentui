@@ -243,9 +243,9 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
         prevPosition += value;
       }
       value = (pointData / total) * 100;
-      if (value < 1) {
+      if (value < 1 && value !== 0) {
         value = 1;
-      } else if (value > 99) {
+      } else if (value > 99 && value !== 100) {
         value = 99;
       }
       startingPoint.push(prevPosition);

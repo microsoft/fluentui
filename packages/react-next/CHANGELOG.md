@@ -1,8 +1,46 @@
 # Change Log - @fluentui/react-next
 
-This log was last generated on Mon, 11 May 2020 12:36:34 GMT and should not be manually modified.
+This log was last generated on Fri, 15 May 2020 12:42:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-alpha.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.22)
+
+Fri, 15 May 2020 12:42:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.21..@fluentui/react-next_v8.0.0-alpha.22)
+
+### Changes
+
+- Link: Moving component to react-next and converting styles to use scss. ([PR #13094](https://github.com/microsoft/fluentui/pull/13094) by humbertomakotomorimoto@gmail.com)
+
+## [8.0.0-alpha.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.21)
+
+Fri, 15 May 2020 05:52:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.19..@fluentui/react-next_v8.0.0-alpha.21)
+
+### Changes
+
+- PivotItem: Expanding types of headerButtonProps to include IButtonProps. ([PR #13128](https://github.com/microsoft/fluentui/pull/13128) by humbertomakotomorimoto@gmail.com)
+
+## [8.0.0-alpha.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.19)
+
+Thu, 14 May 2020 12:34:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.17..@fluentui/react-next_v8.0.0-alpha.19)
+
+### Changes
+
+- Slider: Copying into react-next and converting it to be a function component. ([PR #12972](https://github.com/microsoft/fluentui/pull/12972) by czearing@outlook.com)
+- Copying TextField to react-next, in preparation for converting to function component. ([PR #13099](https://github.com/microsoft/fluentui/pull/13099) by czearing@outlook.com)
+- Link: Copying Link to react-next and converting it to be a function component. ([PR #13097](https://github.com/microsoft/fluentui/pull/13097) by czearing@outlook.com)
+
+## [8.0.0-alpha.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.17)
+
+Tue, 12 May 2020 23:23:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.15..@fluentui/react-next_v8.0.0-alpha.17)
+
+### Changes
+
+- Copying Link to react-next, in preparation for converting to function component. ([PR #13095](https://github.com/microsoft/fluentui/pull/13095) by czearing@outlook.com)
 
 ## [8.0.0-alpha.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.15)
 

@@ -6,7 +6,7 @@ import { IFocusZoneProps, IInputProps, Autofill } from 'office-ui-fabric-react';
 
 export interface IUnifiedPickerProps<T> {
   /**
-   * Ref of teh component
+   * Ref of the component
    */
   componentRef?: IRefObject<any>;
 
@@ -30,7 +30,7 @@ export interface IUnifiedPickerProps<T> {
    * Component to render floating suggestions
    * floatingSuggestionProps will be passed as props to this component
    */
-  onRederFloatingSuggestions: (props: IBaseFloatingSuggestionsProps<T>) => JSX.Element;
+  onRenderFloatingSuggestions: (props: IBaseFloatingSuggestionsProps<T>) => JSX.Element;
 
   /**
    * Props to pass to floating suggestions component

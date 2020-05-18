@@ -25,11 +25,11 @@ Array [
     <b>
       a. 
     </b>
-    When using 
+    When using
     <b>
       shimmerElements
     </b>
-     prop to build the placeholder you can pass all 3 possible colors to 
+     prop to build the placeholder you can pass all 3 possible colors to
     <b>
       shimmerColors
     </b>
@@ -773,7 +773,7 @@ Array [
             }
         style={
           Object {
-            "width": 300,
+            "width": "300",
           }
         }
       >
@@ -1218,7 +1218,7 @@ Array [
             }
         style={
           Object {
-            "width": 300,
+            "width": "300",
           }
         }
       >

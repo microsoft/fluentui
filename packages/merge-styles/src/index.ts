@@ -2,6 +2,8 @@ export { IRawStyle, IStyle, IStyleBase, IStyleBaseArray } from './IStyle';
 
 export { IStyleFunction, IStyleFunctionOrObject } from './IStyleFunction';
 
+export { DeepPartial } from './DeepPartial';
+
 export { IConcatenatedStyleSet, IProcessedStyleSet, IStyleSet, Omit } from './IStyleSet';
 
 export { ICSSRule, IFontFace, IFontWeight, IRawFontStyle, IRawStyleBase } from './IRawStyleBase';
@@ -21,5 +23,7 @@ export { keyframes } from './keyframes';
 export * from './Stylesheet';
 
 export { setRTL } from './StyleOptionsState';
+
+export { ObjectOnly } from './ObjectOnly';
 
 import './version';

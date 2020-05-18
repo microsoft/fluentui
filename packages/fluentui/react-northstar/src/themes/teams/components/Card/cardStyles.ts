@@ -17,6 +17,7 @@ const cardStyles: ComponentSlotStylesPrepared<CardStylesProps, CardVariables> = 
       flexDirection: 'column',
       position: 'relative',
       padding: v.padding,
+      margin: v.margin,
       width: v.width,
       height: v.height,
       backgroundColor: v.backgroundColor,

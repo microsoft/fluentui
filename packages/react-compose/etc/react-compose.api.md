@@ -7,6 +7,11 @@
 import * as React from 'react';
 
 // @public (undocumented)
+export type ClassDictionary = {
+    [key: string]: string;
+};
+
+// @public (undocumented)
 export interface ComponentWithAs<E extends React.ElementType = 'div', P = {}> extends React.FunctionComponent {
     // (undocumented)
     <EE extends React.ElementType = E>(props: Omit<PropsOfElement<EE>, 'as' | keyof P> & {
@@ -35,6 +40,7 @@ export type ComposedComponent<P = {}> = React.FunctionComponent<P> & {
 // @public (undocumented)
 export type ComposeOptions<InputProps = {}, InputStylesProps = {}, ParentStylesProps = {}> = {
     className?: string;
+    classes?: ClassDictionary;
     displayName?: string;
     mapPropsToStylesProps?: (props: ParentStylesProps & InputProps) => InputStylesProps;
     handledProps?: (keyof InputProps | 'as')[];
@@ -46,6 +52,7 @@ export type ComposeOptions<InputProps = {}, InputStylesProps = {}, ParentStylesP
 // @public (undocumented)
 export type ComposePreparedOptions<Props = {}> = {
     className: string;
+    classes: ClassDictionary;
     displayName: string;
     displayNames: string[];
     mapPropsToStylesPropsChain: ((props: object) => object)[];

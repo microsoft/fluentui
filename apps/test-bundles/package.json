@@ -29,12 +29,12 @@
     "parallel-webpack": "^2.4.0"
   },
   "dependencies": {
-    "@uifabric/experiments": "^7.23.24",
+    "@uifabric/experiments": "^7.24.2",
     "@fluentui/keyboard-key": "^0.2.0",
     "@uifabric/set-version": "^7.0.12",
-    "@uifabric/styling": "^7.12.5",
-    "office-ui-fabric-react": "^7.112.0",
-    "@fluentui/react-next": "^8.0.0-alpha.16",
+    "@uifabric/styling": "^7.12.9",
+    "office-ui-fabric-react": "^7.114.2",
+    "@fluentui/react-next": "^8.0.0-alpha.23",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",
