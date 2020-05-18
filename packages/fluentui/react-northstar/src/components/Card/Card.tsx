@@ -60,11 +60,29 @@ export interface CardProps extends UIComponentProps {
 
   /** A card can be hiding part of the content and expand on hover/focus. */
   expandable?: boolean;
+
+  /** A card can have elevation styles. */
+  elevated?: boolean;
+
+  /** A card can have inverted background styles. */
+  inverted?: boolean;
+
+  /** A card can have quiet styles. */
+  quiet?: boolean;
 }
 
 export type CardStylesProps = Pick<
   CardProps,
-  'compact' | 'horizontal' | 'centered' | 'size' | 'fluid' | 'disabled' | 'expandable'
+  | 'compact'
+  | 'horizontal'
+  | 'centered'
+  | 'size'
+  | 'fluid'
+  | 'disabled'
+  | 'expandable'
+  | 'elevated'
+  | 'inverted'
+  | 'quiet'
 > & {
   actionable: boolean;
 };
@@ -100,6 +118,9 @@ const Card: React.FC<WithAsProp<CardProps>> &
     onClick,
     disabled,
     expandable,
+    elevated,
+    inverted,
+    quiet,
   } = props;
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Card.handledProps, props);
@@ -127,6 +148,9 @@ const Card: React.FC<WithAsProp<CardProps>> &
       actionable: !!onClick,
       disabled,
       expandable,
+      elevated,
+      inverted,
+      quiet,
     }),
     mapPropsToInlineStyles: () => ({
       className,
@@ -177,6 +201,9 @@ Card.propTypes = {
   fluid: PropTypes.bool,
   expandable: PropTypes.bool,
   disabled: PropTypes.bool,
+  elevated: PropTypes.bool,
+  quiet: PropTypes.bool,
+  inverted: PropTypes.bool,
 };
 
 Card.defaultProps = {
