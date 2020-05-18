@@ -18,10 +18,10 @@ type SelectableCardProps = {
   index?: number;
   title?: string;
   selected?: boolean;
-  handleClick?: Function;
+  onClick?: Function;
 };
 
-const SelectableCard: React.FC<SelectableCardProps> = ({ title, index, selected, handleClick, ...unhadledProps }) => {
+const SelectableCard: React.FC<SelectableCardProps> = ({ title, index, selected, onClick, ...unhadledProps }) => {
   const selectedMessageId = `selectedMessageId${index}`;
   const selectedMessage = 'selected';
   const notSelectedMessage = 'not selected';
@@ -32,7 +32,7 @@ const SelectableCard: React.FC<SelectableCardProps> = ({ title, index, selected,
       aria-labelledby={`card${index} ${selectedMessageId}`}
       aria-roledescription="user card"
       onClick={() => {
-        handleClick(!selected, index);
+        onClick(!selected, index);
       }}
       selected={selected}
       {...unhadledProps}
@@ -46,7 +46,7 @@ const SelectableCard: React.FC<SelectableCardProps> = ({ title, index, selected,
           checked={selected}
           onClick={(event, props) => {
             event.preventDefault();
-            handleClick(props.checked, index);
+            onClick(props.checked, index);
           }}
         />
         <div id={selectedMessageId} style={screenReaderContainerStyles} aria-live="polite" role="presentation">
@@ -102,9 +102,6 @@ const CardExampleSelectableGrid = () => {
     }, {}),
   };
   const [state, dispatch] = React.useReducer(selectableCardsGridStateReducer, initialState);
-  const handleClick = (isSelected, index) => {
-    dispatch({ type: 'TOGGLE_ITEM', selected: isSelected, itemKey: index });
-  };
 
   return (
     <>
@@ -128,7 +125,9 @@ const CardExampleSelectableGrid = () => {
               index={card.index}
               title={card.title}
               aria-label={`${card.title} ${card.index} of ${cardsNumber}`}
-              onClick={handleClick}
+              onClick={(isSelected, index) => {
+                dispatch({ type: 'TOGGLE_ITEM', selected: isSelected, itemKey: index });
+              }}
               selected={state.cards[card.index]}
             />
           );

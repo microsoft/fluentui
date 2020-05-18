@@ -188,8 +188,6 @@ const Card: React.FC<WithAsProp<CardProps>> &
           {...getA11yProps('root', {
             className: classes.root,
             onClick: handleClick,
-            selected,
-            disabled,
             ...unhandledProps,
           })}
         >

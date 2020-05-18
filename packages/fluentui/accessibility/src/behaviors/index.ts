@@ -129,6 +129,7 @@ export * from './Card/cardBehavior';
 export { default as cardFocusableBehavior } from './Card/cardFocusableBehavior';
 export { default as cardChildrenFocusableBehavior } from './Card/cardChildrenFocusableBehavior';
 export { default as cardsContainerBehavior } from './Card/cardsContainerBehavior';
+export * from './Card/cardsContainerBehavior';
 export { default as videoBehavior } from './Video/videoBehavior';
 export * from './Video/videoBehavior';
 export { default as hiddenComponentBehavior } from './Common/hiddenComponentBehavior';
