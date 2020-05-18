@@ -154,9 +154,9 @@ const Portal: React.FC<WithAsProp<PortalProps>> & FluentComponentStaticProps<Por
 
   const handleDocumentClick = (e: MouseEvent) => {
     if (
-      !portalNode || // no portal
-      doesNodeContainClick(triggerNode, e, context.target) || // event happened in trigger (delegate to trigger handlers)
-      doesNodeContainClick(portalNode, e, context.target) // event happened in the portal
+      !portalRef || // no portal
+      doesNodeContainClick(triggerRef.current, e, context.target) || // event happened in trigger (delegate to trigger handlers)
+      doesNodeContainClick(portalRef.current, e, context.target) // event happened in the portal
     ) {
       return; // ignore the click
     }
