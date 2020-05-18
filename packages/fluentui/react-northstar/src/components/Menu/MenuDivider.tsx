@@ -1,6 +1,18 @@
-import { Accessibility, menuDividerBehavior } from '@fluentui/accessibility';
-import * as React from 'react';
+import { Accessibility, menuDividerBehavior, MenuDividerBehaviorProps } from '@fluentui/accessibility';
+import {
+  compose,
+  ComponentWithAs,
+  getElementType,
+  useAccessibility,
+  useTelemetry,
+  useStyles,
+  useUnhandledProps,
+} from '@fluentui/react-bindings';
 import * as PropTypes from 'prop-types';
+import * as React from 'react';
+// @ts-ignore
+import { ThemeContext } from 'react-fela';
+
 import {
   createShorthandFactory,
   UIComponentProps,
@@ -9,75 +21,125 @@ import {
   ChildrenComponentProps,
   ContentComponentProps,
   rtlTextContainer,
+  ShorthandFactory,
+  ShorthandConfig,
 } from '../../utils';
-import { WithAsProp, withSafeTypeForAs, FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
-import { useTelemetry, getElementType, useUnhandledProps, useAccessibility, useStyles } from '@fluentui/react-bindings';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
+import { ProviderContextPrepared } from '../../types';
 
 export interface MenuDividerProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
   /** Accessibility behavior if overridden by the user. */
-  accessibility?: Accessibility<never>;
+  accessibility?: Accessibility<MenuDividerBehaviorProps>;
 
-  vertical?: boolean;
-  primary?: boolean;
-  secondary?: boolean;
   inSubmenu?: boolean;
+  secondary?: boolean;
+  pills?: boolean;
+  pointing?: boolean;
+  primary?: boolean;
+  vertical?: boolean;
 }
 
-export const menuDividerClassName = 'ui-menu__divider';
-
-export type MenuDividerStylesProps = Required<Pick<MenuDividerProps, 'vertical' | 'inSubmenu' | 'primary'>> & {
+export type MenuDividerStylesProps = Required<
+  Pick<MenuDividerProps, 'vertical' | 'inSubmenu' | 'pills' | 'primary' | 'pointing' | 'secondary'>
+> & {
   hasContent: boolean;
 };
 
-export const MenuDivider: React.FC<WithAsProp<MenuDividerProps>> &
-  FluentComponentStaticProps<MenuDividerProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
-  const { setStart, setEnd } = useTelemetry(MenuDivider.displayName, context.telemetry);
-  setStart();
-  const { children, content, vertical, inSubmenu, primary, className, design, styles, variables } = props;
-  const ElementType = getElementType(props);
-  const unhandledProps = useUnhandledProps(MenuDivider.handledProps, props);
+export const menuDividerClassName = 'ui-menu__divider';
 
-  const getA11yProps = useAccessibility(props.accessibility, {
-    debugName: MenuDivider.displayName,
-    rtl: context.rtl,
-  });
+/**
+ * A MenuDivider is non-actionable element that visually segments items of Menu.
+ */
+const MenuDivider = compose<'li', MenuDividerProps, MenuDividerStylesProps, {}, {}>(
+  (props, ref, composeOptions) => {
+    const context: ProviderContextPrepared = React.useContext(ThemeContext);
+    const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
+    setStart();
 
-  const { classes } = useStyles<MenuDividerStylesProps>(MenuDivider.displayName, {
-    className: menuDividerClassName,
-    mapPropsToStyles: () => ({
-      hasContent: !!content,
+    const {
+      children,
+      content,
       vertical,
       inSubmenu,
+      pills,
+      pointing,
       primary,
-    }),
-    mapPropsToInlineStyles: () => ({
       className,
       design,
       styles,
+      secondary,
       variables,
-    }),
-    rtl: context.rtl,
-  });
+    } = props;
 
-  const element = (
-    <ElementType
-      {...getA11yProps('root', {
-        className: classes.root,
-        ...rtlTextContainer.getAttributes({ forElements: [children, content] }),
-        ...unhandledProps,
-      })}
-    >
-      {childrenExist(children) ? children : content}
-    </ElementType>
-  );
-  setEnd();
-  return element;
+    const getA11yProps = useAccessibility(props.accessibility, {
+      debugName: composeOptions.displayName,
+      rtl: context.rtl,
+    });
+
+    const { classes } = useStyles<MenuDividerStylesProps>(composeOptions.displayName, {
+      className: composeOptions.className,
+      composeOptions,
+      mapPropsToStyles: () => ({
+        hasContent: !!content,
+        pills,
+        pointing,
+        vertical,
+        inSubmenu,
+        primary,
+        secondary,
+      }),
+      mapPropsToInlineStyles: () => ({
+        className,
+        design,
+        styles,
+        variables,
+      }),
+      rtl: context.rtl,
+      unstable_props: props,
+    });
+
+    const ElementType = getElementType(props);
+    const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
+
+    const element = (
+      <ElementType
+        {...getA11yProps('root', {
+          className: classes.root,
+          ...rtlTextContainer.getAttributes({ forElements: [children, content] }),
+          ...unhandledProps,
+          ref,
+        })}
+      >
+        {childrenExist(children) ? children : content}
+      </ElementType>
+    );
+    setEnd();
+
+    return element;
+  },
+  {
+    className: menuDividerClassName,
+    displayName: 'MenuDivider',
+
+    handledProps: [
+      'accessibility',
+      'as',
+      'children',
+      'className',
+      'content',
+      'design',
+      'styles',
+      'variables',
+
+      'inSubmenu',
+      'primary',
+      'secondary',
+      'vertical',
+    ],
+  },
+) as ComponentWithAs<'li', MenuDividerProps> & {
+  create: ShorthandFactory<MenuDividerProps>;
+  shorthandConfig: ShorthandConfig<MenuDividerProps>;
 };
-
-MenuDivider.displayName = 'MenuDivider';
 
 MenuDivider.defaultProps = {
   as: 'li',
@@ -92,12 +154,7 @@ MenuDivider.propTypes = {
   inSubmenu: PropTypes.bool,
 };
 
-MenuDivider.handledProps = Object.keys(MenuDivider.propTypes) as any;
-
 MenuDivider.create = createShorthandFactory({ Component: MenuDivider, mappedProp: 'content' });
 MenuDivider.shorthandConfig = { mappedProp: 'content' };
 
-/**
- * A MenuDivider is non-actionable element that visually segments items of Menu.
- */
-export default withSafeTypeForAs<typeof MenuDivider, MenuDividerProps, 'li'>(MenuDivider);
+export default MenuDivider;

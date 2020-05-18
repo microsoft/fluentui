@@ -31,9 +31,12 @@ import {
   ShorthandFactory,
   ShorthandConfig,
 } from '../../utils';
-import { BoxProps } from '../Box/Box';
 import MenuItem, { MenuItemProps } from './MenuItem';
 import MenuDivider from './MenuDivider';
+import MenuItemIcon from './MenuItemIcon';
+import MenuItemContent from './MenuItemContent';
+import MenuItemIndicator, { MenuItemIndicator } from './MenuItemIndicator';
+import MenuItemWrapper from './MenuItemWrapper';
 
 export type MenuShorthandKinds = 'divider' | 'item';
 
@@ -99,7 +102,7 @@ export interface MenuProps extends UIComponentProps, ChildrenComponentProps {
   submenu?: boolean;
 
   /** Shorthand for the submenu indicator. */
-  indicator?: ShorthandValue<BoxProps>;
+  indicator?: ShorthandValue<MenuItemIndicator>;
 }
 
 export const menuClassName = 'ui-menu';
@@ -166,6 +169,7 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
         primary,
         underlined,
         vertical,
+        secondary,
         submenu,
       }),
       mapPropsToInlineStyles: () => ({
@@ -277,6 +281,8 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
     mapPropsToSlotProps: props => ({
       divider: {
         inSubmenu: props.submenu,
+        pills: props.pills,
+        pointing: props.pointing,
         primary: props.primary,
         secondary: props.secondary,
         vertical: props.vertical,
@@ -325,6 +331,10 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
   shorthandConfig: ShorthandConfig<MenuProps>;
 
   Item: typeof MenuItem;
+  ItemContent: typeof MenuItemContent;
+  ItemIcon: typeof MenuItemIcon;
+  ItemIndicator: typeof MenuItemIndicator;
+  ItemWrapper: typeof MenuItemWrapper;
   Divider: typeof MenuDivider;
 };
 
@@ -354,6 +364,10 @@ Menu.defaultProps = {
 };
 
 Menu.Item = MenuItem;
+Menu.ItemIcon = MenuItemIcon;
+Menu.ItemContent = MenuItemContent;
+Menu.ItemWrapper = MenuItemWrapper;
+Menu.ItemIndicator = MenuItemIndicator;
 Menu.Divider = MenuDivider;
 
 Menu.create = createShorthandFactory({ Component: Menu, mappedArrayProp: 'items' });

@@ -2,6 +2,21 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "date": "Mon, 18 May 2020 16:49:49 GMT",
+      "tag": "@uifabric/example-app-base_v7.12.64",
+      "version": "7.12.64",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix demo app",
+            "author": "elcraig@microsoft.com",
+            "commit": "04b0e8f91c9e4079f60bbe3a6c88524a98f852b9",
+            "package": "@uifabric/example-app-base"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 15 May 2020 00:07:39 GMT",
       "tag": "@uifabric/example-app-base_v7.12.59",
       "version": "7.12.59",
