@@ -9,9 +9,8 @@ import {
 } from 'test/specs/commonTests';
 import { mountWithProviderAndGetComponent } from 'test/utils';
 import MenuItem from 'src/components/Menu/MenuItem';
-import Box from 'src/components/Box/Box';
 import Menu from 'src/components/Menu/Menu';
-import { menuItemWrapperClassName } from 'src/components/Menu/MenuItemWrapper';
+import MenuItemWrapper, { menuItemWrapperClassName } from 'src/components/Menu/MenuItemWrapper';
 
 describe('MenuItem', () => {
   isConformant(MenuItem, {
@@ -19,7 +18,7 @@ describe('MenuItem', () => {
     eventTargets: {
       onClick: `.${menuItemWrapperClassName}`,
     },
-    wrapperComponent: Box,
+    wrapperComponent: MenuItemWrapper,
     autoControlledProps: ['menuOpen'],
   });
   implementsShorthandProp(MenuItem)('menu', Menu, {
