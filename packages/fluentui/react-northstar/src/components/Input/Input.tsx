@@ -160,7 +160,7 @@ const Input: React.FC<WithAsProp<InputProps>> & FluentComponentStaticProps<Input
   const getA11yProps = useAccessibility<InputBehaviorProps>(props.accessibility, {
     debugName: Input.displayName,
     actionHandlers: {
-      clear: (e: React.KeyboardEvent) => {
+      clear: (e) => {
         if (props.clearable && value !== '') {
           e.stopPropagation();
           e.nativeEvent && e.nativeEvent.stopPropagation();
