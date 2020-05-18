@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "SpinButton: allow empty string as value, clean up docs and tests",
-  "packageName": "@fluentui/react-next",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-05-14T21:06:04.361Z"
-}
