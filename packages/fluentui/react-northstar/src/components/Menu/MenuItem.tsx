@@ -517,6 +517,7 @@ MenuItem.defaultProps = {
 };
 
 MenuItem.create = createShorthandFactory({ Component: MenuItem, mappedProp: 'content' });
+MenuItem.shorthandConfig = { mappedProp: 'content' };
 
 /**
  * A MenuItem is an actionable item within a Menu.

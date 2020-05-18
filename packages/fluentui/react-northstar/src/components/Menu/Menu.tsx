@@ -275,7 +275,7 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
       item: MenuItem,
     },
     mapPropsToSlotProps: props => ({
-      item: {
+      divider: {
         inSubmenu: props.submenu,
         primary: props.primary,
         secondary: props.secondary,

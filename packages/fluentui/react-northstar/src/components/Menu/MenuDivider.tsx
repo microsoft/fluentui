@@ -95,6 +95,7 @@ MenuDivider.propTypes = {
 MenuDivider.handledProps = Object.keys(MenuDivider.propTypes) as any;
 
 MenuDivider.create = createShorthandFactory({ Component: MenuDivider, mappedProp: 'content' });
+MenuDivider.shorthandConfig = { mappedProp: 'content' };
 
 /**
  * A MenuDivider is non-actionable element that visually segments items of Menu.
