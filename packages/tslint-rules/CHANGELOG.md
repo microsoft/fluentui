@@ -1,8 +1,17 @@
 # Change Log - @uifabric/tslint-rules
 
-This log was last generated on Tue, 21 Apr 2020 12:34:50 GMT and should not be manually modified.
+This log was last generated on Fri, 08 May 2020 12:35:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.2.1](https://github.com/microsoft/fluentui/tree/@uifabric/tslint-rules_v7.2.1)
+
+Fri, 08 May 2020 12:35:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/tslint-rules_v7.2.0..@uifabric/tslint-rules_v7.2.1)
+
+### Patches
+
+- Creating custom lint rule to enforce use of keyboard-key library instead of deprecated keyboard event props. ([PR #12339](https://github.com/microsoft/fluentui/pull/12339) by humbertomakotomorimoto@gmail.com)
 
 ## [7.2.0](https://github.com/microsoft/fluentui/tree/@uifabric/tslint-rules_v7.2.0)
 

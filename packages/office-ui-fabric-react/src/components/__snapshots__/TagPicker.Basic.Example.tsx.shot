@@ -86,7 +86,6 @@ exports[`Component Examples renders TagPicker.Basic.Example.tsx correctly 1`] = 
             font-size: 14px;
             font-weight: 400;
             position: relative;
-            text-align: left;
             user-select: none;
           }
           &::before {

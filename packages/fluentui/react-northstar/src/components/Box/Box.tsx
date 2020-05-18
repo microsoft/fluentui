@@ -64,7 +64,7 @@ const Box = compose<'div', BoxProps, BoxStylesProps, {}, {}>(
     const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
     const ElementType = getElementType(props);
 
-    const result = (
+    const result = getA11yProps.unstable_wrapWithFocusZone(
       <ElementType
         {...getA11yProps('root', {
           ...rtlTextContainer.getAttributes({ forElements: [children, content] }),
@@ -74,7 +74,7 @@ const Box = compose<'div', BoxProps, BoxStylesProps, {}, {}>(
         })}
       >
         {childrenExist(children) ? children : content}
-      </ElementType>
+      </ElementType>,
     );
 
     setEnd();
