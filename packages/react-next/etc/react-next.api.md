@@ -4,6 +4,7 @@
 
 ```ts
 
+import { IBaseProps } from 'office-ui-fabric-react/lib/Utilities';
 import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import { IButtonProps as IButtonProps_2 } from 'office-ui-fabric-react/lib/components/Button/Button.types';
 import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
@@ -21,10 +22,43 @@ import { Position } from 'office-ui-fabric-react/lib/utilities/positioning';
 import * as React from 'react';
 
 // @public (undocumented)
+export const Calendar: React.MemoExoticComponent<React.ForwardRefExoticComponent<ICalendarProps & React.RefAttributes<HTMLDivElement>>>;
+
+// @public (undocumented)
 export const Checkbox: React.FunctionComponent<ICheckboxProps>;
 
 // @public (undocumented)
 export const CheckboxBase: React.ForwardRefExoticComponent<ICheckboxProps & React.RefAttributes<HTMLDivElement>>;
+
+// @public
+export enum DateRangeType {
+    // (undocumented)
+    Day = 0,
+    // (undocumented)
+    Month = 2,
+    // (undocumented)
+    Week = 1,
+    // (undocumented)
+    WorkWeek = 3
+}
+
+// @public
+export enum DayOfWeek {
+    // (undocumented)
+    Friday = 5,
+    // (undocumented)
+    Monday = 1,
+    // (undocumented)
+    Saturday = 6,
+    // (undocumented)
+    Sunday = 0,
+    // (undocumented)
+    Thursday = 4,
+    // (undocumented)
+    Tuesday = 2,
+    // (undocumented)
+    Wednesday = 3
+}
 
 // @public (undocumented)
 export const DEFAULT_MASK_CHAR = "_";
@@ -37,6 +71,16 @@ export const Fabric: React.FunctionComponent<IFabricProps>;
 
 // @public (undocumented)
 export const FabricBase: React.ForwardRefExoticComponent<IFabricProps & React.RefAttributes<HTMLDivElement>>;
+
+// @public
+export enum FirstWeekOfYear {
+    // (undocumented)
+    FirstDay = 0,
+    // (undocumented)
+    FirstFourDayWeek = 2,
+    // (undocumented)
+    FirstFullWeek = 1
+}
 
 // @public
 export const getMeasurementCache: () => {
@@ -53,6 +97,87 @@ export const getNextResizeGroupStateProvider: (measurementCache?: {
     shouldRenderDataForMeasurement: (dataToMeasure: any) => boolean;
     getInitialResizeGroupState: (data: any) => IResizeGroupState;
 };
+
+// @public (undocumented)
+export interface ICalendar {
+    focus: () => void;
+}
+
+// @public (undocumented)
+export interface ICalendarFormatDateCallbacks {
+    formatDay: (date: Date) => string;
+    formatMonthDayYear: (date: Date, strings?: ICalendarStrings) => string;
+    formatMonthYear: (date: Date, strings?: ICalendarStrings) => string;
+    formatYear: (date: Date) => string;
+}
+
+// @public (undocumented)
+export interface ICalendarIconStrings {
+    closeIcon?: string;
+    leftNavigation?: string;
+    rightNavigation?: string;
+}
+
+// @public (undocumented)
+export interface ICalendarProps extends IBaseProps<ICalendar>, React.HTMLAttributes<HTMLElement> {
+    allFocusable?: boolean;
+    autoNavigateOnSelection?: boolean;
+    className?: string;
+    componentRef?: IRefObject<ICalendar>;
+    dateRangeType?: DateRangeType;
+    dateTimeFormatter?: ICalendarFormatDateCallbacks;
+    firstDayOfWeek?: DayOfWeek;
+    firstWeekOfYear?: FirstWeekOfYear;
+    highlightCurrentMonth?: boolean;
+    highlightSelectedMonth?: boolean;
+    isDayPickerVisible?: boolean;
+    isMonthPickerVisible?: boolean;
+    maxDate?: Date;
+    minDate?: Date;
+    navigationIcons?: ICalendarIconStrings;
+    onDismiss?: () => void;
+    onSelectDate?: (date: Date, selectedDateRangeArray?: Date[]) => void;
+    restrictedDates?: Date[];
+    selectDateOnClick?: boolean;
+    // @deprecated
+    shouldFocusOnMount?: boolean;
+    showCloseButton?: boolean;
+    showGoToToday?: boolean;
+    showMonthPickerAsOverlay?: boolean;
+    showSixWeeksByDefault?: boolean;
+    showWeekNumbers?: boolean;
+    strings: ICalendarStrings | null;
+    today?: Date;
+    value?: Date;
+    workWeekDays?: DayOfWeek[];
+    yearPickerHidden?: boolean;
+}
+
+// @public (undocumented)
+export interface ICalendarState {
+    isDayPickerVisible?: boolean;
+    isMonthPickerVisible?: boolean;
+    navigatedDayDate?: Date;
+    navigatedMonthDate?: Date;
+    selectedDate?: Date;
+}
+
+// @public (undocumented)
+export interface ICalendarStrings {
+    closeButtonAriaLabel?: string;
+    days: string[];
+    goToToday: string;
+    months: string[];
+    nextMonthAriaLabel?: string;
+    nextYearAriaLabel?: string;
+    nextYearRangeAriaLabel?: string;
+    prevMonthAriaLabel?: string;
+    prevYearAriaLabel?: string;
+    prevYearRangeAriaLabel?: string;
+    shortDays: string[];
+    shortMonths: string[];
+    weekNumberFormatString?: string;
+}
 
 // @public
 export interface ICheckbox {
@@ -1059,7 +1184,6 @@ export * from "office-ui-fabric-react/lib/Announced";
 export * from "office-ui-fabric-react/lib/Autofill";
 export * from "office-ui-fabric-react/lib/Breadcrumb";
 export * from "office-ui-fabric-react/lib/Button";
-export * from "office-ui-fabric-react/lib/Calendar";
 export * from "office-ui-fabric-react/lib/Callout";
 export * from "office-ui-fabric-react/lib/Check";
 export * from "office-ui-fabric-react/lib/ChoiceGroup";
@@ -1069,7 +1193,6 @@ export * from "office-ui-fabric-react/lib/ColorPicker";
 export * from "office-ui-fabric-react/lib/ComboBox";
 export * from "office-ui-fabric-react/lib/CommandBar";
 export * from "office-ui-fabric-react/lib/ContextualMenu";
-export * from "office-ui-fabric-react/lib/DatePicker";
 export * from "office-ui-fabric-react/lib/DetailsList";
 export * from "office-ui-fabric-react/lib/Dialog";
 export * from "office-ui-fabric-react/lib/Divider";
@@ -1119,6 +1242,9 @@ export * from "office-ui-fabric-react/lib/Text";
 export * from "office-ui-fabric-react/lib/ThemeGenerator";
 export * from "office-ui-fabric-react/lib/Tooltip";
 export * from "office-ui-fabric-react/lib/Utilities";
+export * from "office-ui-fabric-react/lib/components/DatePicker/DatePicker";
+export * from "office-ui-fabric-react/lib/components/DatePicker/DatePicker.base";
+export * from "office-ui-fabric-react/lib/components/DatePicker/DatePicker.types";
 
 // (No @packageDocumentation comment for this package)
 
