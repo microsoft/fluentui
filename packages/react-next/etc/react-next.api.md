@@ -849,7 +849,7 @@ export enum KeyboardSpinDirection {
 export const Link: import("@fluentui/react-compose").ComponentWithAs<"a", LinkProps>;
 
 // @public (undocumented)
-export const LinkBase: React.FunctionComponent;
+export const LinkBase: import("@fluentui/react-compose").ComponentWithAs<"a", LinkProps>;
 
 // Warning: (ae-forgotten-export) The symbol "ComposeOptions" needs to be exported by the entry point index.d.ts
 // Warning: (ae-forgotten-export) The symbol "ComposeStandardStatics" needs to be exported by the entry point index.d.ts

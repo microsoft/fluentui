@@ -1,3 +1,3 @@
 export * from './Link';
-export * from './Link.base';
+export * from './LinkBase';
 export * from './Link.types';
