@@ -252,7 +252,7 @@ const Input: React.FC<WithAsProp<InputProps>> & FluentComponentStaticProps<Input
         ...restProps,
       }),
     overrideProps: {
-      as: (wrapper && (wrapper as any).as) || ElementType,
+      as: (wrapper && (wrapper as BoxProps).as) || ElementType,
     },
   });
   setEnd();
