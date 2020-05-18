@@ -136,10 +136,6 @@ const Input: React.FC<WithAsProp<InputProps>> & FluentComponentStaticProps<Input
   });
   const [hasValue, setHasValue] = React.useState<boolean>(!!value && (value as string)?.length !== 0);
 
-  React.useEffect(() => {
-    setHasValue(!!value && (value as string)?.length !== 0);
-  }, [value]);
-
   const { styles: resolvedStyles } = useStyles<InputStylesProps>(Input.displayName, {
     className: inputClassName,
     mapPropsToStyles: () => ({
