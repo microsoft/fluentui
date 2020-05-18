@@ -2,6 +2,21 @@
   "name": "@fluentui/examples",
   "entries": [
     {
+      "date": "Fri, 15 May 2020 05:52:46 GMT",
+      "tag": "@fluentui/examples_v0.1.59",
+      "version": "0.1.59",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating build dependencies.",
+            "author": "dzearing@microsoft.com",
+            "commit": "291a31d412dc4871b9f9446915e7d2a64bc46ab5",
+            "package": "@fluentui/examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 14 May 2020 12:34:32 GMT",
       "tag": "@fluentui/examples_v0.1.57",
       "version": "0.1.57",

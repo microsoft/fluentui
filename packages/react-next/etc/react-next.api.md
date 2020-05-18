@@ -428,7 +428,7 @@ export interface IPivot {
 export interface IPivotItemProps extends React.HTMLAttributes<HTMLDivElement> {
     ariaLabel?: string;
     componentRef?: IRefObject<{}>;
-    headerButtonProps?: {
+    headerButtonProps?: IButtonProps & {
         [key: string]: string | number | boolean;
     };
     headerText?: string;
@@ -705,7 +705,6 @@ export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement> {
     inputProps?: React.InputHTMLAttributes<HTMLElement | HTMLInputElement>;
     keytipProps?: IKeytipProps;
     label?: string;
-    // (undocumented)
     labelPosition?: Position;
     max?: number;
     min?: number;

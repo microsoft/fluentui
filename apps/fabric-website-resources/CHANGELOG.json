@@ -2,6 +2,21 @@
   "name": "@uifabric/fabric-website-resources",
   "entries": [
     {
+      "date": "Fri, 15 May 2020 05:52:46 GMT",
+      "tag": "@uifabric/fabric-website-resources_v7.6.62",
+      "version": "7.6.62",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating build tool dependenencies.",
+            "author": "dzearing@microsoft.com",
+            "commit": "291a31d412dc4871b9f9446915e7d2a64bc46ab5",
+            "package": "@uifabric/fabric-website-resources"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 15 May 2020 00:07:39 GMT",
       "tag": "@uifabric/fabric-website-resources_v7.6.61",
       "version": "7.6.61",

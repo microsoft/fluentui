@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Updating build dependencies.",
-  "packageName": "@fluentui/examples",
-  "email": "dzearing@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-05-14T22:47:20.826Z"
-}

@@ -2,6 +2,21 @@
   "name": "@fluentui/react-compose",
   "entries": [
     {
+      "date": "Fri, 15 May 2020 12:42:20 GMT",
+      "tag": "@fluentui/react-compose_v0.4.0",
+      "version": "0.4.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding classes resolution to compose.",
+            "author": "dzearing@microsoft.com",
+            "commit": "342ef515550dc4067c2b451dd4ae8f2a7bb9d608",
+            "package": "@fluentui/react-compose"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 15 May 2020 00:07:39 GMT",
       "tag": "@fluentui/react-compose_v0.3.0",
       "version": "0.3.0",
