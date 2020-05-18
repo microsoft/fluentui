@@ -11,7 +11,7 @@ import implementsPopperProps from 'test/specs/commonTests/implementsPopperProps'
 
 describe('Popup', () => {
   implementsPopperProps(Popup, {
-    requiredProps: { open: true },
+    requiredProps: { open: true, content: 'Popup' },
   });
 
   const triggerId = 'triggerElement';
