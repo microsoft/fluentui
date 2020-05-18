@@ -91,7 +91,7 @@ const Portal: React.FC<WithAsProp<PortalProps>> & FluentComponentStaticProps<Por
   const { setStart, setEnd } = useTelemetry(Portal.displayName, context.telemetry);
   setStart();
   const { children, content, trapFocus, trigger, triggerAccessibility } = props;
-  const portalNode = React.useRef<HTMLElement>();
+  const portalRef = React.useRef<HTMLElement>();
   const triggerNode = React.useRef<HTMLElement>();
 
   const [open, setOpen] = useAutoControlled({
