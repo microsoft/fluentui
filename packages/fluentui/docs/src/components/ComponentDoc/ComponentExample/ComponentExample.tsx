@@ -225,7 +225,7 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
   };
 
   getSourceFileNameHint = () => {
-    return `Source code: ${this.props.examplePath.split('/').pop()}.tsx`;
+    return `Source code: ${this.props.examplePath.split('/').pop()}`;
   };
 
   handleCodeApiChange = apiType => () => {
