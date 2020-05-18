@@ -143,7 +143,7 @@ const Portal: React.FC<WithAsProp<PortalProps>> & FluentComponentStaticProps<Por
 
   const handleTriggerRef = (node: HTMLElement) => {
     triggerRef.current = node;
-    handleRef(props.triggerRef, triggerNode);
+    handleRef(props.triggerRef, node);
   };
 
   const handleTriggerClick = (e: React.MouseEvent, ...unhandledProps) => {
