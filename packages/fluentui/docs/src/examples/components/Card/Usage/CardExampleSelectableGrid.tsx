@@ -63,29 +63,23 @@ const SelectableCard: React.FC<SelectableCardProps> = ({ title, index, selected,
   );
 };
 
-interface SelectableCardsGridAction {
-  type: 'TOGGLE_ITEM' | 'TOGGLE_ALL';
-  selected: boolean;
-  itemKey?: string;
-}
+type SelectableCardsGridActions =
+  | { type: 'TOGGLE_ITEM'; selected: boolean; index: string }
+  | { type: 'TOGGLE_ALL'; selected: boolean };
 
-interface SelectableCardsGridState {
-  cards: Record<string, boolean>;
-}
+type SelectableCardsGridState = Record<string, boolean>;
 
-const selectableCardsGridStateReducer: React.Reducer<SelectableCardsGridState, SelectableCardsGridAction> = (
+const selectableCardsGridStateReducer: React.Reducer<SelectableCardsGridState, SelectableCardsGridActions> = (
   state,
   action,
 ) => {
   switch (action.type) {
     case 'TOGGLE_ITEM': {
-      return { cards: { ...state.cards, [action.itemKey]: action.selected } };
+      return { ...state, [action.index]: action.selected };
     }
     case 'TOGGLE_ALL': {
-      return { cards: _.mapValues(state.cards, () => action.selected) };
+      return _.mapValues(state, () => action.selected);
     }
-    default:
-      throw new Error(`Action ${action.type} is not supported`);
   }
 };
 
@@ -96,7 +90,7 @@ const CardExampleSelectableGrid = () => {
     .fill(undefined)
     .map((item, index) => ({ index: index + 1, title: `User ${index + 1}` }));
   const initialState: SelectableCardsGridState = {
-    cards: cards.reduce((cards, card) => {
+    ...cards.reduce((cards, card) => {
       cards[card.index] = false;
       return cards;
     }, {}),
@@ -126,9 +120,9 @@ const CardExampleSelectableGrid = () => {
               title={card.title}
               aria-label={`${card.title} ${card.index} of ${cardsNumber}`}
               onClick={(isSelected, index) => {
-                dispatch({ type: 'TOGGLE_ITEM', selected: isSelected, itemKey: index });
+                dispatch({ type: 'TOGGLE_ITEM', selected: isSelected, index: index });
               }}
-              selected={state.cards[card.index]}
+              selected={state[card.index]}
             />
           );
         })}
