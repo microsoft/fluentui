@@ -17,8 +17,8 @@ export default class ComponentExampleTitle extends React.PureComponent<Component
     return (
       <div>
         {title && <Header as="h3" className="no-anchor" content={title} styles={titleStyle} />}
-        <Text content={description} />
         {sourceName && <Text style={screenReaderContainerStyles} content={sourceName} />}
+        <Text content={description} />
       </div>
     );
   }
