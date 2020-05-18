@@ -30,13 +30,17 @@ export interface MenuDividerProps extends UIComponentProps, ChildrenComponentPro
   /** Accessibility behavior if overridden by the user. */
   accessibility?: Accessibility<MenuDividerBehaviorProps>;
 
-  vertical?: boolean;
-  primary?: boolean;
-  secondary?: boolean;
   inSubmenu?: boolean;
+  secondary?: boolean;
+  pills?: boolean;
+  pointing?: boolean;
+  primary?: boolean;
+  vertical?: boolean;
 }
 
-export type MenuDividerStylesProps = Required<Pick<MenuDividerProps, 'vertical' | 'inSubmenu' | 'primary'>> & {
+export type MenuDividerStylesProps = Required<
+  Pick<MenuDividerProps, 'vertical' | 'inSubmenu' | 'pills' | 'primary' | 'pointing'>
+> & {
   hasContent: boolean;
 };
 
@@ -51,7 +55,19 @@ const MenuDivider = compose<'li', MenuDividerProps, MenuDividerStylesProps, {}, 
     const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
     setStart();
 
-    const { children, content, vertical, inSubmenu, primary, className, design, styles, variables } = props;
+    const {
+      children,
+      content,
+      vertical,
+      inSubmenu,
+      pills,
+      pointing,
+      primary,
+      className,
+      design,
+      styles,
+      variables,
+    } = props;
 
     const getA11yProps = useAccessibility(props.accessibility, {
       debugName: composeOptions.displayName,
@@ -63,6 +79,8 @@ const MenuDivider = compose<'li', MenuDividerProps, MenuDividerStylesProps, {}, 
       composeOptions,
       mapPropsToStyles: () => ({
         hasContent: !!content,
+        pills,
+        pointing,
         vertical,
         inSubmenu,
         primary,

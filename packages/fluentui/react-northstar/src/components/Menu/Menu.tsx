@@ -157,7 +157,7 @@ export const Menu: React.FC<WithAsProp<MenuProps>> &
     rtl: context.rtl,
   });
 
-  const { classes, styles: resolvedStyles } = useStyles<MenuStylesProps>(Menu.displayName, {
+  const { classes } = useStyles<MenuStylesProps>(Menu.displayName, {
     className: menuClassName,
     mapPropsToStyles: () => ({
       iconOnly,
@@ -226,10 +226,11 @@ export const Menu: React.FC<WithAsProp<MenuProps>> &
         return MenuDivider.create(item, {
           defaultProps: () =>
             getA11yProps('divider', {
+              pills,
+              pointing,
               primary,
               secondary,
               vertical,
-              styles: resolvedStyles.divider,
               inSubmenu: submenu,
             }),
           overrideProps: handleDividerOverrides,
