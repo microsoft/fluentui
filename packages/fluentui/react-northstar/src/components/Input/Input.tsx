@@ -161,7 +161,7 @@ const Input: React.FC<WithAsProp<InputProps>> & FluentComponentStaticProps<Input
     debugName: Input.displayName,
     actionHandlers: {
       clear: (e) => {
-        if (props.clearable && value !== '') {
+        if (clearable && value !== '') {
           e.stopPropagation();
           e.nativeEvent && e.nativeEvent.stopPropagation();
           handleOnClear(e);
