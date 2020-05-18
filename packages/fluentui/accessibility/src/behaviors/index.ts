@@ -11,10 +11,12 @@ export * from './Button/buttonGroupBehavior';
 export { default as toggleButtonBehavior } from './Button/toggleButtonBehavior';
 export * from './Image/imageBehavior';
 export { default as imageBehavior } from './Image/imageBehavior';
-export { default as menuBehavior } from './Menu/menuBehavior';
+
 export * from './Menu/menuBehavior';
-export { default as menuItemBehavior } from './Menu/menuItemBehavior';
+export { default as menuBehavior } from './Menu/menuBehavior';
 export * from './Menu/menuItemBehavior';
+export { default as menuItemBehavior } from './Menu/menuItemBehavior';
+export * from './Menu/menuDividerBehavior';
 export { default as menuDividerBehavior } from './Menu/menuDividerBehavior';
 export { default as submenuBehavior } from './Menu/submenuBehavior';
 
