@@ -389,8 +389,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
     const menuItemInner = (
       <Ref
         innerRef={node => {
-          // @ts-ignore
-          itemRef.current = node;
+          itemRef.current = node as HTMLElement;
           handleRef(ref, node as any /* TODO: fix refs in compose */);
         }}
       >
