@@ -132,15 +132,15 @@ $checkboxTransitionTiming: cubic-bezier(0.4, 0, 0.23, 1);
     pointer-events: none;
   }
 
-  &.isUsingCustomLabelRender {
+  .isUsingCustomLabelRender & {
     align-items: center;
   }
 
-  &.disabled {
+  .disabled & {
     cursor: default;
   }
 
-  &.reversed {
+  .reversed & {
     flex-direction: row-reverse;
     justify-content: flex-end;
   }
@@ -169,7 +169,7 @@ $checkboxTransitionTiming: cubic-bezier(0.4, 0, 0.23, 1);
   /* in case the icon is bigger than the box */
   overflow: hidden;
 
-  &.indeterminate {
+  .indeterminate & {
     border-color: var($semanticColorsInputBackgroundChecked);
 
     @include high-contrast {
@@ -197,8 +197,10 @@ $checkboxTransitionTiming: cubic-bezier(0.4, 0, 0.23, 1);
       }
     }
 
-    &.disabled::after {
-      border-color: var($semanticColorsDisabledBodySubtext);
+    .disabled & {
+      &::after {
+        border-color: var($semanticColorsDisabledBodySubtext);
+      }
     }
   }
 
@@ -206,14 +208,14 @@ $checkboxTransitionTiming: cubic-bezier(0.4, 0, 0.23, 1);
   // is used, there will be only a 4px margin from checkbox to label. The label by default would have
   // another 4px margin for a total of 8px margin between checkbox and label. We don't combine the two
   // (and move it into the text) to not incur a breaking change for everyone using custom render atm.
-  &.reversed {
+  .reversed & {
     margin-left: 4px;
   }
-  &:not(.reversed) {
+  :not(.reversed) & {
     margin-right: 4px;
   }
 
-  &.checked:not(.disabled):not(.indeterminate) {
+  .checked:not(.disabled):not(.indeterminate) & {
     background: var($semanticColorsInputBackgroundChecked);
     border-color: var($semanticColorsInputBackgroundChecked);
 
@@ -223,7 +225,7 @@ $checkboxTransitionTiming: cubic-bezier(0.4, 0, 0.23, 1);
     }
   }
 
-  &.disabled {
+  .disabled & {
     border-color: var($semanticColorsDisabledBodySubtext);
 
     @include high-contrast {
@@ -231,7 +233,7 @@ $checkboxTransitionTiming: cubic-bezier(0.4, 0, 0.23, 1);
     }
   }
 
-  &.checked.disabled {
+  .checked.disabled & {
     background: var($semanticColorsDisabledBodySubtext);
     @include high-contrast {
       background: Window;
@@ -248,11 +250,11 @@ $checkboxTransitionTiming: cubic-bezier(0.4, 0, 0.23, 1);
     -ms-high-contrast-adjust: none;
   }
 
-  &.checked {
+  .checked & {
     opacity: 1;
   }
 
-  &.disabled {
+  .disabled & {
     @include high-contrast {
       color: GrayText;
     }
@@ -269,7 +271,7 @@ $checkboxTransitionTiming: cubic-bezier(0.4, 0, 0.23, 1);
     color: WindowText;
   }
 
-  &.disabled {
+  .disabled & {
     color: var($semanticColorsDisabledText);
 
     @include high-contrast {
@@ -277,10 +279,10 @@ $checkboxTransitionTiming: cubic-bezier(0.4, 0, 0.23, 1);
     }
   }
 
-  &.reversed {
+  .reversed & {
     margin-right: 4px;
   }
-  &:not(.reversed) {
+  :not(.reversed) & {
     margin-left: 4px;
   }
 }

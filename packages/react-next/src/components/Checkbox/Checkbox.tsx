@@ -42,11 +42,11 @@ const getStaticStylesMemoized = memoizeFunction(
 
     return {
       root: css(className, classes.root, globalClassNames.root, ...rootStaticClasses, ...propControlledClasses),
-      label: css(classes.label, globalClassNames.label, ...propControlledClasses),
-      checkbox: css(classes.checkbox, globalClassNames.checkbox, ...propControlledClasses),
-      checkmark: css(classes.checkmark, globalClassNames.checkmark, ...propControlledClasses),
-      text: css(classes.text, globalClassNames.text, ...propControlledClasses),
-      input: css(classes.input, ...propControlledClasses),
+      label: css(classes.label, globalClassNames.label),
+      checkbox: css(classes.checkbox, globalClassNames.checkbox),
+      checkmark: css(classes.checkmark, globalClassNames.checkmark),
+      text: css(classes.text, globalClassNames.text),
+      input: css(classes.input),
     };
   },
 );
