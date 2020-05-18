@@ -147,8 +147,6 @@ const Portal: React.FC<WithAsProp<PortalProps>> & FluentComponentStaticProps<Por
   };
 
   const handleTriggerClick = (e: React.MouseEvent, ...unhandledProps) => {
-    const { trigger } = props;
-
     _.invoke(props, 'onTriggerClick', e); // Call handler from parent component
     _.invoke(trigger, 'props.onClick', e, ...unhandledProps); // Call original event handler
     setOpen(isOpen => !isOpen);
