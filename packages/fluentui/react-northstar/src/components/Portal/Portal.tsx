@@ -105,7 +105,7 @@ const Portal: React.FC<WithAsProp<PortalProps>> & FluentComponentStaticProps<Por
     const focusTrapZoneProps = (_.keys(trapFocus).length && trapFocus) || {};
     return (
       open && (
-        <Ref innerRef={handlePortalRef}>
+        <Ref innerRef={portalRef}>
           <PortalInner
             onMount={handleMount}
             onUnmount={handleUnmount}
