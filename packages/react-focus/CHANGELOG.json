@@ -2,6 +2,21 @@
   "name": "@fluentui/react-focus",
   "entries": [
     {
+      "date": "Fri, 15 May 2020 05:52:46 GMT",
+      "tag": "@fluentui/react-focus_v7.11.5",
+      "version": "7.11.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating build tool dependencies.",
+            "author": "dzearing@microsoft.com",
+            "commit": "291a31d412dc4871b9f9446915e7d2a64bc46ab5",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 13 May 2020 12:33:48 GMT",
       "tag": "@fluentui/react-focus_v7.11.2",
       "version": "7.11.2",

@@ -21,6 +21,7 @@ import CardFooter from './CardFooter';
 import CardHeader from './CardHeader';
 import CardPreview from './CardPreview';
 import CardTopControls from './CardTopControls';
+import CardExpandableBox from './CardExpandableBox';
 
 export interface CardProps extends UIComponentProps {
   /**
@@ -56,9 +57,15 @@ export interface CardProps extends UIComponentProps {
 
   /** A card can show that it cannot be interacted with. */
   disabled?: boolean;
+
+  /** A card can be hiding part of the content and expand on hover/focus. */
+  expandable?: boolean;
 }
 
-export type CardStylesProps = Pick<CardProps, 'compact' | 'horizontal' | 'centered' | 'size' | 'fluid' | 'disabled'> & {
+export type CardStylesProps = Pick<
+  CardProps,
+  'compact' | 'horizontal' | 'centered' | 'size' | 'fluid' | 'disabled' | 'expandable'
+> & {
   actionable: boolean;
 };
 
@@ -72,6 +79,7 @@ const Card: React.FC<WithAsProp<CardProps>> &
     Preview: typeof CardPreview;
     TopControls: typeof CardPreview;
     Column: typeof CardColumn;
+    ExpandableBox: typeof CardExpandableBox;
   } = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(Card.displayName, context.telemetry);
@@ -91,6 +99,7 @@ const Card: React.FC<WithAsProp<CardProps>> &
     fluid,
     onClick,
     disabled,
+    expandable,
   } = props;
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Card.handledProps, props);
@@ -117,6 +126,7 @@ const Card: React.FC<WithAsProp<CardProps>> &
       fluid,
       actionable: !!onClick,
       disabled,
+      expandable,
     }),
     mapPropsToInlineStyles: () => ({
       className,
@@ -165,6 +175,8 @@ Card.propTypes = {
   centered: PropTypes.bool,
   size: CustomPropTypes.size,
   fluid: PropTypes.bool,
+  expandable: PropTypes.bool,
+  disabled: PropTypes.bool,
 };
 
 Card.defaultProps = {
@@ -179,6 +191,7 @@ Card.Footer = CardFooter;
 Card.Preview = CardPreview;
 Card.TopControls = CardTopControls;
 Card.Column = CardColumn;
+Card.ExpandableBox = CardExpandableBox;
 
 Card.create = createShorthandFactory({ Component: Card });
 
