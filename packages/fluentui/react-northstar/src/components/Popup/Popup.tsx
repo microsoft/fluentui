@@ -407,7 +407,7 @@ const Popup: React.FC<PopupProps> &
                 nestingRef.current = domElement;
               }}
             >
-              <>{popupContent}</>
+              {popupContent}
             </Ref>
 
             <EventListener listener={handleDocumentClick(getRefs)} target={context.target} type="click" capture />
@@ -509,8 +509,8 @@ const Popup: React.FC<PopupProps> &
 
   const triggerNode: React.ReactNode | null = childrenExist(children) ? children : trigger;
   const triggerProps = getTriggerProps(triggerNode);
-
-  const contentElement = open && (
+  const hasContent = !(_.isNil(props.content) || _.isBoolean(props.content));
+  const contentElement = hasContent && open && (
     <Popper
       pointerTargetRef={pointerTargetRef}
       align={align}
