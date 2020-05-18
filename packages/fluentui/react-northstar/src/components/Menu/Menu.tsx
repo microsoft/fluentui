@@ -21,6 +21,7 @@ import { ThemeContext } from 'react-fela';
 import { ShorthandCollection, ShorthandValue, ComponentEventHandler, ProviderContextPrepared } from '../../types';
 import {
   childrenExist,
+  createShorthand,
   createShorthandFactory,
   UIComponentProps,
   ChildrenComponentProps,
@@ -131,11 +132,9 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
       pills,
       pointing,
       primary,
-      secondary,
       underlined,
       vertical,
       submenu,
-      indicator,
       children,
       variables,
       styles,
@@ -143,7 +142,9 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
       className,
       design,
     } = props;
+
     const ElementType = getElementType(props);
+    const slotProps = composeOptions.resolveSlotProps<MenuProps>(props);
     const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
 
     const getA11yProps = useAccessibility<MenuBehaviorProps>(props.accessibility, {
@@ -222,14 +223,11 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
         const kind = getKindProp(item, 'item');
 
         if (kind === 'divider') {
-          return MenuDivider.create(item, {
+          return createShorthand(composeOptions.slots.divider, item, {
             defaultProps: () =>
               getA11yProps('divider', {
-                primary,
-                secondary,
-                vertical,
                 styles: resolvedStyles.divider,
-                inSubmenu: submenu,
+                ...slotProps.divider,
               }),
             overrideProps: handleDividerOverrides,
           });
@@ -237,22 +235,14 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
 
         itemPosition++;
 
-        return MenuItem.create(item, {
+        return createShorthand(composeOptions.slots.item, item, {
           defaultProps: () =>
             getA11yProps('item', {
-              iconOnly,
-              pills,
-              pointing,
-              primary,
-              secondary,
-              underlined,
-              vertical,
               index,
               itemPosition,
               itemsCount,
               active,
-              inSubmenu: submenu,
-              indicator,
+              ...slotProps.item,
             }),
           overrideProps: handleItemOverrides,
         });
@@ -279,6 +269,30 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
   {
     className: menuClassName,
     displayName: 'Menu',
+
+    slots: {
+      divider: MenuDivider,
+      item: MenuItem,
+    },
+    mapPropsToSlotProps: props => ({
+      item: {
+        inSubmenu: props.submenu,
+        primary: props.primary,
+        secondary: props.secondary,
+        vertical: props.vertical,
+      },
+      item: {
+        iconOnly: props.iconOnly,
+        indicator: props.indicator,
+        inSubmenu: props.submenu,
+        pills: props.pills,
+        pointing: props.pointing,
+        primary: props.primary,
+        secondary: props.secondary,
+        vertical: props.vertical,
+        underlined: props.underlined,
+      },
+    }),
 
     handledProps: [
       'accessibility',
