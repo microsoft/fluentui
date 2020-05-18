@@ -5,7 +5,7 @@ const CardExampleSelected = () => {
   return (
     <Card selected aria-roledescription="selected card">
       <Card.Header>
-        <Text content={`Selected card`} weight="bold" />
+        <Text content="Selected card" weight="bold" />
       </Card.Header>
       <Card.Body>
         <Flex column gap="gap.small">

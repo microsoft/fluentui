@@ -5,7 +5,7 @@ import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
 
 /**
  * @description
- * Behavior for a focusable card component
+ * Behavior for a selectable card component
  * @specification
  * Adds role='group'.
  * Adds attribute 'aria-disabled=true' based on the property 'disabled'.

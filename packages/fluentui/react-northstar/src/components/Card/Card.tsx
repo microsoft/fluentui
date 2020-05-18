@@ -70,9 +70,7 @@ export interface CardProps extends UIComponentProps {
   /** A card can have quiet styles. */
   quiet?: boolean;
 
-  /**
-   * A card can show that it is currently selected or not.
-   */
+  /** A card can show that it is currently selected or not. */
   selected?: boolean;
 }
 

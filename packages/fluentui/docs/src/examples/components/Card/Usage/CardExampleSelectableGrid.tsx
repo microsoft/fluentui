@@ -128,7 +128,7 @@ const CardExampleSelectableGrid = () => {
               index={card.index}
               title={card.title}
               aria-label={`${card.title} ${card.index} of ${cardsNumber}`}
-              handleClick={handleClick}
+              onClick={handleClick}
               selected={state.cards[card.index]}
             />
           );
