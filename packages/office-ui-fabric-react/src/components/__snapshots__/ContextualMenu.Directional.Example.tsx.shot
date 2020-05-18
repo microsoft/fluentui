@@ -85,7 +85,6 @@ exports[`Component Examples renders ContextualMenu.Directional.Example.tsx corre
               font-size: 14px;
               font-weight: 400;
               position: relative;
-              text-align: left;
               user-select: none;
             }
             &::before {

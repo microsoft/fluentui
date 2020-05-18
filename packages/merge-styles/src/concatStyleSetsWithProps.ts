@@ -1,6 +1,7 @@
 import { concatStyleSets } from './concatStyleSets';
 import { IStyleSet } from './IStyleSet';
 import { IStyleFunctionOrObject } from './IStyleFunction';
+import { DeepPartial } from './DeepPartial';
 
 /**
  * Concatenates style sets into one, but resolves functional sets using the given props.
@@ -10,15 +11,15 @@ import { IStyleFunctionOrObject } from './IStyleFunction';
 export function concatStyleSetsWithProps<TStyleProps, TStyleSet extends IStyleSet<TStyleSet>>(
   styleProps: TStyleProps,
   ...allStyles: (IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined)[]
-): Partial<TStyleSet> {
-  const result: Partial<TStyleSet>[] = [];
+): DeepPartial<TStyleSet> {
+  const result: DeepPartial<TStyleSet>[] = [];
   for (const styles of allStyles) {
     if (styles) {
       result.push(typeof styles === 'function' ? styles(styleProps) : styles);
     }
   }
   if (result.length === 1) {
-    return result[0] as Partial<TStyleSet>;
+    return result[0] as DeepPartial<TStyleSet>;
   } else if (result.length) {
     // cliffkoh: I cannot figure out how to avoid the cast to any here.
     // It is something to do with the use of Omit in IStyleSet.
@@ -27,5 +28,6 @@ export function concatStyleSetsWithProps<TStyleProps, TStyleSet extends IStyleSe
     // tslint:disable-next-line:no-any
     return concatStyleSets(...(result as any)) as any;
   }
+
   return {};
 }

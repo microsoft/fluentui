@@ -1,0 +1,20 @@
+{
+  "name": "@fluentui/react-button",
+  "entries": [
+    {
+      "date": "Fri, 15 May 2020 12:42:20 GMT",
+      "tag": "@fluentui/react-button_v0.1.1",
+      "version": "0.1.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Initial package scaffold.",
+            "author": "dzearing@microsoft.com",
+            "commit": "342ef515550dc4067c2b451dd4ae8f2a7bb9d608",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    }
+  ]
+}
