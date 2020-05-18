@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Initial package scaffold.",
-  "packageName": "@fluentui/react-button",
-  "email": "dzearing@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-05-12T03:18:00.608Z"
-}

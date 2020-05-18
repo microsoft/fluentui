@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-compose
 
-This log was last generated on Fri, 15 May 2020 00:07:39 GMT and should not be manually modified.
+This log was last generated on Fri, 15 May 2020 12:42:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.4.0)
+
+Fri, 15 May 2020 12:42:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v0.3.0..@fluentui/react-compose_v0.4.0)
+
+### Minor changes
+
+- Adding classes resolution to compose. ([PR #13096](https://github.com/microsoft/fluentui/pull/13096) by dzearing@microsoft.com)
 
 ## [0.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.3.0)
 

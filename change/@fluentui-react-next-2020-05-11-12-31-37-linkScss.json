@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Link: Moving component to react-next and converting styles to use scss.",
-  "packageName": "@fluentui/react-next",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-05-11T19:31:37.711Z"
-}
