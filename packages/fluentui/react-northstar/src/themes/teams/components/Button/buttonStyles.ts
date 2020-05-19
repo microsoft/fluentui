@@ -207,15 +207,13 @@ const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, ButtonVariabl
         minWidth: v.height,
         padding: 0,
 
-        ':hover': {
-          ...getIconFillOrOutlineStyles({ outline: false }),
-          color: v.textColorIconOnlyHover,
-          background: v.backgroundColorIconOnlyHover,
-          ...(p.inverted && {
-            color: siteVariables.colorScheme.silver.foregroundHover,
-            backgroundColor: siteVariables.colorScheme.silver.backgroundHover,
-          }),
-        },
+        ...(!p.inverted && {
+          ':hover': {
+            ...getIconFillOrOutlineStyles({ outline: false }),
+            color: v.textColorIconOnlyHover,
+            background: v.backgroundColorIconOnlyHover,
+          },
+        }),
 
         ...(p.size === 'small' && {
           minWidth: v.sizeSmallHeight,
