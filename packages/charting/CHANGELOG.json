@@ -2,6 +2,42 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Fri, 15 May 2020 00:07:39 GMT",
+      "tag": "@uifabric/charting_v2.2.14",
+      "version": "2.2.14",
+      "comments": {
+        "patch": [
+          {
+            "comment": "MultiStackedBarChart: Fix breaking chart when focus on bars through keyboard",
+            "author": "v-satgar@microsoft.com",
+            "commit": "992643b4836517e93b01a367b945e2b9f74e09cc",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 14 May 2020 12:34:32 GMT",
+      "tag": "@uifabric/charting_v2.2.13",
+      "version": "2.2.13",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix issue in stacked bar chart for Rounded value to 1 if less than 1% to appear in the chart",
+            "author": "v-satgar@microsoft.com",
+            "commit": "ce4e45eed9061074360fa1990fe6ffe33fa4cba9",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "Charting : Add theme support for xaxis and yaxis for line chart and change office-ui-fabric-react from dependencies to peerDependencies",
+            "author": "v-satgar@microsoft.com",
+            "commit": "a5008fb3888b73441d952b32f3cceecff8e04d8b",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 07 May 2020 01:06:55 GMT",
       "tag": "@uifabric/charting_v2.2.7",
       "version": "2.2.7",

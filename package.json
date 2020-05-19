@@ -102,7 +102,7 @@
   },
   "resolutions": {
     "webpack": "^4.35.0",
-    "autoprefixer": "7.2.6",
+    "autoprefixer": "9.7.6",
     "copy-to-clipboard": "3.2.0"
   }
 }

@@ -5,6 +5,16 @@ import { IIconProps } from '../Icon/Icon.types';
 import { IButtonProps } from '../Button/Button.types';
 
 /**
+ * {@doccategory Nav}
+ */
+export interface IRenderGroupHeaderProps extends INavLinkGroup {
+  /**
+   * Whether or not the group is presently expanded.
+   */
+  isExpanded?: boolean;
+}
+
+/**
  * {@docCategory Nav}
  */
 export interface INav {
@@ -59,7 +69,7 @@ export interface INavProps {
    * Used to customize how content inside the group header is rendered
    * @defaultvalue Default group header rendering
    */
-  onRenderGroupHeader?: IRenderFunction<INavLinkGroup>;
+  onRenderGroupHeader?: IRenderFunction<IRenderGroupHeaderProps>;
 
   /**
    * Render a custom link in place of the normal one.

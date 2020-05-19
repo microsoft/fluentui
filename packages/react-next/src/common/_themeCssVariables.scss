@@ -458,7 +458,7 @@ $fontsMegaFontWeight: --fontsMegaFontWeight;
 @mixin fonts-medium {
   font-family: var($fontsMediumFontFamily);
   font-size: var($fontsMediumFontSize);
-  font-weight: var(--fontsMediumFontWeight);
+  font-weight: var($fontsMediumFontWeight);
   -webkit-font-smoothing: var($fontsMediumWebkitFontSmoothing);
   -moz-osx-font-smoothing: var($fontsMediumMozOsxFontSmoothing);
 }

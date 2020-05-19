@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/styling",
-  "version": "7.12.5",
+  "version": "7.12.9",
   "description": "Styling helpers for Fluent UI React.",
   "repository": {
     "type": "git",
@@ -33,9 +33,9 @@
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.10.26",
-    "@uifabric/merge-styles": "^7.12.0",
+    "@uifabric/merge-styles": "^7.14.0",
     "@uifabric/set-version": "^7.0.12",
-    "@uifabric/utilities": "^7.16.4",
+    "@uifabric/utilities": "^7.17.3",
     "tslib": "^1.10.0"
   }
 }

@@ -99,7 +99,7 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
 
     const sections = [
       { title: 'Overview' },
-      !!(props.bestPractices || (props.dos && props.donts)) && { title: 'Best Practices' },
+      !!(props.bestPractices || (props.dos && props.donts)) && { title: 'Best practices' },
       props.exampleCards && { title: 'Variants' },
       props.propertiesTables && { title: 'Implementation' },
       props.isFeedbackVisible && { title: 'Feedback' },
@@ -183,7 +183,7 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
       <div id="BestPractices" className={classNames.bestPracticesSection}>
         {bestPractices &&
           this._getSection({
-            title: 'Best Practices',
+            title: 'Best practices',
             section: bestPractices,
             editUrl: practicesUrl,
             wrapperClass: classNames.usageSection,
