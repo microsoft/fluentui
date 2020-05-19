@@ -847,7 +847,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
       return null;
     }
 
-    return value.map((item: ShorthandValue<DropdownItemProps>, index) =>
+    return value.map((item: DropdownItemProps, index) =>
       // (!) an item matches DropdownItemProps
       DropdownSelectedItem.create(item, {
         defaultProps: () => ({
@@ -1100,7 +1100,6 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
     const { disabled } = this.props;
 
     const handleInputKeyDown = (e: React.SyntheticEvent, searchInputProps: DropdownSearchInputProps) => {
-      e.stopPropagation();
       if (!disabled) {
         switch (keyboardKey.getCode(e)) {
           case keyboardKey.Tab:
