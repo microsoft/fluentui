@@ -44,7 +44,7 @@ export const Video: React.FC<WithAsProp<VideoProps>> & FluentComponentStaticProp
   setStart();
   const { controls, autoPlay, loop, poster, src, muted, variables, className, design, styles } = props;
   const ElementType = getElementType(props);
-  const videoRef = React.createRef<HTMLVideoElement>();
+  const videoRef = React.createRef<HTMLVideoElement>(); // TODO
   const unhandledProps = useUnhandledProps(Video.handledProps, props);
   const getA11yProps = useAccessibility(props.accessibility, {
     debugName: Video.displayName,

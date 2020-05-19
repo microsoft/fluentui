@@ -83,7 +83,7 @@ const DropdownSelectedItem: React.FC<WithAsProp<DropdownSelectedItemProps>> &
   const { setStart, setEnd } = useTelemetry(DropdownSelectedItem.displayName, context.telemetry);
   setStart();
   const { active, header, icon, image, className, design, styles, variables } = props;
-  const itemRef = React.createRef<HTMLElement>();
+  const itemRef = React.createRef<HTMLElement>(); // TODO
   const unhandledProps = useUnhandledProps(DropdownSelectedItem.handledProps, props);
   React.useEffect(() => {
     if (active) {
