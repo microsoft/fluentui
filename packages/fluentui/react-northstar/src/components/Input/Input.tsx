@@ -125,7 +125,7 @@ const Input: React.FC<WithAsProp<InputProps>> & FluentComponentStaticProps<Input
     styles,
     variables,
   } = props;
-  const inputRef = React.useRef<HTMLElement>();
+  const inputRef = React.useRef<HTMLInputElement>();
 
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Input.handledProps, props);
