@@ -1,8 +1,7 @@
 import { ICheckboxProps, ICheckboxStyleProps, ICheckboxStyles } from './Checkbox.types';
-import { memoizeFunction, css } from '../../Utilities';
+import { memoizeFunction, css, useClasses } from '../../Utilities';
 import { ITheme, getGlobalClassNames } from '../../Styling';
 import * as classes from './Checkbox.scss';
-import { useClasses } from './useClasses';
 
 export function useCheckboxClasses(props: ICheckboxProps): { [key in keyof ICheckboxStyles]: string } {
   return useClasses<ICheckboxProps['styles'], ICheckboxStyleProps, ICheckboxStyles>({

@@ -1,6 +1,8 @@
 import * as React from 'react';
-import { CustomizerContext, Customizations, IStyleFunctionOrObject, classNamesFunction } from '../../Utilities';
-import { concatStyleSetsWithProps, IStyleSet } from '../../Styling';
+import { IStyleSet, IStyleFunctionOrObject, concatStyleSetsWithProps } from '@uifabric/merge-styles';
+import { CustomizerContext } from './customizations/CustomizerContext';
+import { Customizations } from './customizations/Customizations';
+import { classNamesFunction } from './classNamesFunction';
 
 const StylesCustomizationField = ['theme', 'styles'];
 

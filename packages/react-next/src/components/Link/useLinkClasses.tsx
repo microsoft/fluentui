@@ -1,7 +1,6 @@
-import { memoizeFunction, css } from '../../Utilities';
+import { memoizeFunction, css, useClasses } from '../../Utilities';
 import { getGlobalClassNames, ITheme } from '../../Styling';
 import { ILinkProps, ILinkStyleProps, ILinkStyles } from '../../Link';
-import { useClasses } from '../Checkbox/useClasses';
 import * as classes from './Link.scss';
 
 export function useLinkClasses(props: ILinkProps): { [key in keyof ILinkStyles]: string } {
