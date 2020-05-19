@@ -2,11 +2,14 @@
 
 exports[`Slider renders correctly 1`] = `
 <div
-  className="ms-Slider ms-Slider-enabled ms-Slider-row"
+  className="ms-Slider ms-Slider-enabled ms-Slider-row ms-Slider-showValue"
 >
   <label
     className=
         ms-Label
+        ms-Slider-enabled
+        ms-Slider-row
+        ms-Slider-showValue
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
@@ -33,7 +36,7 @@ exports[`Slider renders correctly 1`] = `
     I am a slider
   </label>
   <div
-    className="ms-Slider-container"
+    className="ms-Slider-container ms-Slider-enabled ms-Slider-row ms-Slider-showValue"
   >
     <div
       aria-disabled={false}
@@ -42,7 +45,7 @@ exports[`Slider renders correctly 1`] = `
       aria-valuemin={0}
       aria-valuenow={0}
       aria-valuetext="0"
-      className="ms-Slider-slideBox ms-Slider-showValue"
+      className="ms-Slider-slideBox ms-Slider-enabled ms-Slider-row ms-Slider-showValue"
       data-is-focusable={true}
       id="Slider0"
       onKeyDown={[Function]}
@@ -52,10 +55,10 @@ exports[`Slider renders correctly 1`] = `
       tabIndex={0}
     >
       <div
-        className="ms-Slider-line"
+        className="ms-Slider-line ms-Slider-enabled ms-Slider-row ms-Slider-showValue"
       >
         <span
-          className="ms-Slider-thumb"
+          className="ms-Slider-thumb ms-Slider-enabled ms-Slider-row ms-Slider-showValue"
           style={
             Object {
               "left": "0%",
@@ -63,7 +66,7 @@ exports[`Slider renders correctly 1`] = `
           }
         />
         <span
-          className="ms-Slider-active"
+          className="ms-Slider-enabled ms-Slider-row ms-Slider-showValue ms-Slider-active ms-Slider-enabled ms-Slider-row ms-Slider-showValue"
           style={
             Object {
               "width": "0%",
@@ -71,7 +74,7 @@ exports[`Slider renders correctly 1`] = `
           }
         />
         <span
-          className="ms-Slider-inactive"
+          className="ms-Slider-enabled ms-Slider-row ms-Slider-showValue ms-Slider-inactive ms-Slider-enabled ms-Slider-row ms-Slider-showValue"
           style={
             Object {
               "width": "100%",
@@ -84,6 +87,9 @@ exports[`Slider renders correctly 1`] = `
       className=
           ms-Label
           ms-Slider-value
+          ms-Slider-enabled
+          ms-Slider-row
+          ms-Slider-showValue
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
