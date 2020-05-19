@@ -273,6 +273,10 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
       primary,
       underlined,
       iconOnly,
+      vertical,
+      secondary,
+      pills,
+      inSubmenu: props.submenu,
     };
 
     const element = getA11yProps.unstable_wrapWithFocusZone(
