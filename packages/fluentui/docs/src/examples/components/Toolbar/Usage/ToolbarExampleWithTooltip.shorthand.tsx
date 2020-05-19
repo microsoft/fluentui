@@ -32,7 +32,7 @@ const ToolbarExampleShorthand = () => {
       kind: 'toggle' as const,
       active: isBold,
       tooltip: 'Bold',
-      icon: <BoldIcon {...{ outline: true }} />,
+      icon: <BoldIcon outline />,
       onClick: () => setBold(!isBold),
     },
     {
@@ -40,13 +40,13 @@ const ToolbarExampleShorthand = () => {
       kind: 'toggle' as const,
       active: isItalic,
       tooltip: 'Italic',
-      icon: <ItalicIcon {...{ outline: true }} />,
+      icon: <ItalicIcon outline />,
       onClick: () => setItalic(!isItalic),
     },
     { key: 'divider1', kind: 'divider' as const },
     {
       key: 'more',
-      icon: <MoreIcon {...{ outline: true }} />,
+      icon: <MoreIcon outline />,
       active: moreMenuOpen,
       tooltip: 'More options',
       menu: [
