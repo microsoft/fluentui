@@ -1,27 +1,20 @@
 import * as React from 'react';
-import { classNamesFunction, mergeAriaAttributeValues, warnMutuallyExclusive } from '../../Utilities';
+import { mergeAriaAttributeValues, warnMutuallyExclusive } from '../../Utilities';
 import { Icon } from '../../Icon';
-import { ICheckboxProps, ICheckboxStyleProps, ICheckboxStyles } from './Checkbox.types';
+import { ICheckboxProps, ICheckboxStyles } from './Checkbox.types';
 import { KeytipData } from '../../KeytipData';
 import { useId, useControllableValue, useMergedRefs } from '@uifabric/react-hooks';
 import { useFocusRects } from 'office-ui-fabric-react';
-
-const getClassNames = classNamesFunction<ICheckboxStyleProps, ICheckboxStyles>({
-  useStaticStyles: true,
-});
+import { useCheckboxClasses } from './useCheckboxClasses';
 
 export const CheckboxBase = React.forwardRef((props: ICheckboxProps, forwardedRef: React.Ref<HTMLDivElement>) => {
   const {
-    className,
     disabled,
     inputProps,
     name,
-    boxSide = 'start',
-    theme,
     ariaLabel,
     ariaLabelledBy,
     ariaDescribedBy,
-    styles,
     checkmarkIconProps,
     ariaPositionInSet,
     ariaSetSize,
@@ -42,14 +35,12 @@ export const CheckboxBase = React.forwardRef((props: ICheckboxProps, forwardedRe
   useComponentRef(props, isChecked, isIndeterminate, checkBox);
 
   const id = useId('checkbox-', props.id);
-  const classNames: { [key in keyof ICheckboxStyles]: string } = getClassNames(styles!, {
-    theme: theme!,
-    className,
-    disabled,
+
+  // TODO: this should be called during `compose`
+  const classNames: { [key in keyof ICheckboxStyles]: string } = useCheckboxClasses({
+    ...props,
     indeterminate: isIndeterminate,
     checked: isChecked,
-    reversed: boxSide !== 'start',
-    isUsingCustomLabelRender: !!props.onRenderLabel,
   });
 
   const onRenderLabel = (): JSX.Element | null => {
@@ -111,6 +102,9 @@ export const CheckboxBase = React.forwardRef((props: ICheckboxProps, forwardedRe
 });
 
 CheckboxBase.displayName = 'CheckboxBase';
+CheckboxBase.defaultProps = {
+  boxSide: 'start',
+};
 
 function useDebugWarning(props: ICheckboxProps) {
   if (process.env.NODE_ENV !== 'production') {

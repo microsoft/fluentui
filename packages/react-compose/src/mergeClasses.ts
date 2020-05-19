@@ -2,20 +2,21 @@ import cx from 'classnames';
 import { ClassDictionary } from './types';
 
 export const mergeClasses = (...classesList: (ClassDictionary | undefined)[]): ClassDictionary => {
-  const result: { [key: string]: string | string[] } = {};
+  const temp: { [key: string]: (string | undefined)[] } = {};
 
   for (const classes of classesList) {
     if (classes) {
       Object.keys(classes).forEach((key: string) => {
-        result[key] = result[key] || [];
-        (result[key] as string[]).push(classes[key]);
+        temp[key] = temp[key] || [];
+        temp[key].push(classes[key]);
       });
     }
   }
 
+  const result: ClassDictionary = {};
   Object.keys(result!).forEach((key: string) => {
-    result[key] = cx(...(result[key] as string[]));
+    result[key] = cx(...(temp[key] as string[]));
   });
 
-  return result as ClassDictionary;
+  return result;
 };
