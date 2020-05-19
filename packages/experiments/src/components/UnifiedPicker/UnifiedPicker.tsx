@@ -156,7 +156,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   const _renderSelectedItemsList = (): JSX.Element => {
     return onRenderSelectedItems({
       ...selectedItemsListProps,
-      selectedItems: selectedItems,
+      selectedItems: selectedItemsListProps.selectedItems,
       focusedItemIndices: focusedItemIndices,
       onItemsRemoved: _onRemoveSelectedItems,
     });

@@ -58,9 +58,7 @@ export const UnifiedPeoplePickerExample = (): JSX.Element => {
     ..._suggestions,
   ]);
 
-  const [peopleSelectedItems, setPeopleSelectedItems] = React.useState<IFloatingSuggestionItemProps<IPersonaProps>[]>(
-    [],
-  );
+  const [peopleSelectedItems, setPeopleSelectedItems] = React.useState<IPersonaProps[]>([]);
 
   const _onSuggestionSelected = (
     ev: React.MouseEvent<HTMLElement, MouseEvent>,
@@ -108,17 +106,18 @@ export const UnifiedPeoplePickerExample = (): JSX.Element => {
     // and update the selectedItemsList to rerender everthing.
     let finalList: IPersonaProps[] = [];
     if (pastedValue != null) {
-      finalList = pastedValue.split(',').map(val => {
+      pastedValue.split(',').map(val => {
         if (val) {
-          peopleSuggestions.forEach(suggestionItem => {
+          peopleSuggestions.map(suggestionItem => {
             if (suggestionItem.item.text === val) {
-              return suggestionItem;
+              finalList.push(suggestionItem.item);
             }
           });
         }
       });
     }
-    setPeopleSelectedItems(peopleSelectedItems.concat(finalList));
+    finalList = finalList.concat(selectedItemsList);
+    setPeopleSelectedItems(finalList);
   };
 
   const _onItemsRemoved = (itemsToRemove: IPersonaProps[]): void => {
