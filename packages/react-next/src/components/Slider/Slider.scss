@@ -195,9 +195,6 @@
     }
   }
 
-  &.showTransitions {
-    transition: 3 3 3;
-  }
   /**
    * TODO Implement animations
    * transition: `width ${nimationVariables.durationValue3} ${AnimationVariables.easeFunction1}`;
@@ -217,9 +214,6 @@
     }
   }
 
-  &.showTransitions {
-    transition: 3 3 3;
-  }
   /**
     * @TODO Implement Correct animation styles
     * transition: `width ${nimationVariables.durationValue3} ${AnimationVariables.easeFunction1}`;
