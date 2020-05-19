@@ -154,7 +154,7 @@ packages/office-ui-fabric-react/src/components/TextField/ @ecraig12345
 packages/office-ui-fabric-react/src/components/Theme/ @dzearing
 packages/office-ui-fabric-react/src/components/Tile/ @ThomasMichon
 packages/office-ui-fabric-react/src/components/TileList/ @ThomasMichon
-packages/office-ui-fabric-react/src/components/Toggle/ @phkuo @xugao
-packages/react-next/src/components/Toggle/ @phkuo @xugao
+packages/office-ui-fabric-react/src/components/Toggle/ @xugao
+packages/react-next/src/components/Toggle/ @xugao
 packages/office-ui-fabric-react/src/components/Tooltip/ @micahgodbolt
 packages/experiments/src/components/Toggle/ @khmakoto

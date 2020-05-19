@@ -29,6 +29,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Restricted prop sets in the `FormField` component which are passed to styles functions, @assuncaocharles ([#13181](https://github.com/microsoft/fluentui/pull/13181))
 - Restricted prop sets in the `DropdownSelectedItem` component which are passed to styles functions, @assuncaocharles ([#13179](https://github.com/microsoft/fluentui/pull/13179))
 - Restricted prop sets in the `Input` component which are passed to styles functions, @assuncaocharles ([#13189](https://github.com/microsoft/fluentui/pull/13189))
+- Restricted prop sets in the `HierarchicalTree` component which are passed to styles functions, @assuncaocharles ([#13182](https://github.com/microsoft/fluentui/pull/13182))
 - Restricted prop sets in the `Portal` component which are passed to styles functions, @assuncaocharles ([#13186](https://github.com/microsoft/fluentui/pull/13186))
 - Restricted prop sets in the `HierarchicalTreeItem` component which are passed to styles functions, @assuncaocharles ([#13184](https://github.com/microsoft/fluentui/pull/13184))
 - Restricted set in `MenuItem` component which are passed to styles functions @mnajdova ([#13117](https://github.com/microsoft/fluentui/pull/13117))
@@ -48,7 +49,9 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Update `padding` and `margin` styles for `Card` @pompomon ([#13158](https://github.com/microsoft/fluentui/pull/13158))
 - Add `expandabble` prop and styles for `Card` @pompomon ([#13092](https://github.com/microsoft/fluentui/pull/13092))
 - Use `compose()` in `MenuItem` and added dedicated slot's components `MenuItemIcon`, `MenuItemContent`, `MenuItemIndicator` and `MenuItemWrapper` @mnajdova ([#13117](https://github.com/microsoft/fluentui/pull/13117))
+- Add `elevated`, `inverted` and `quiet` props and styles for the `Card` @pompomon ([#13163](https://github.com/microsoft/fluentui/pull/13163))
 - Use `compose()` in `MenuDivider` @layershifter ([#13207](https://github.com/microsoft/fluentui/pull/13207))
+- Add `selected` prop and styles for `Card` @pompomon ([#12921](https://github.com/microsoft/fluentui/pull/12921))
 
 <!--------------------------------[ v0.49.0 ]------------------------------- -->
 ## [v0.49.0](https://github.com/OfficeDev/office-ui-fabric-react/tree/fluentui_v0.49.0) (2020-05-10)
