@@ -25,6 +25,9 @@ import {
   ShorthandConfig,
 } from '../../utils';
 import { ProviderContextPrepared } from '../../types';
+import { useContextSelectors } from '@fluentui/react-context-selector';
+import { MenuContextSubscribedValue, MenuContext } from './menuContext';
+import { mergeComponentVariables } from '@fluentui/styles';
 
 export interface MenuDividerProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
   /** Accessibility behavior if overridden by the user. */
@@ -33,7 +36,7 @@ export interface MenuDividerProps extends UIComponentProps, ChildrenComponentPro
   inSubmenu?: boolean;
   secondary?: boolean;
   pills?: boolean;
-  pointing?: boolean;
+  pointing?: boolean | 'start' | 'end';
   primary?: boolean;
   vertical?: boolean;
 }
@@ -55,14 +58,30 @@ const MenuDivider = compose<'li', MenuDividerProps, MenuDividerStylesProps, {}, 
     const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
     setStart();
 
+    const parentProps: MenuContextSubscribedValue = useContextSelectors(MenuContext, {
+      active: v => false,
+      activeIndex: v => v.activeIndex,
+      onItemClick: v => v.onItemClick,
+      variables: v => v.variables,
+      pointing: v => v.pointing,
+      primary: v => v.primary,
+      underlined: v => v.underlined,
+      iconOnly: v => v.iconOnly,
+      vertical: v => v.vertical,
+      inSubmenu: v => v.inSubmenu,
+      pills: v => v.pills,
+      secondary: v => v.secondary,
+      accessibility: v => v.accessibility,
+    });
+
     const {
       children,
       content,
-      vertical,
-      inSubmenu,
-      pills,
-      pointing,
-      primary,
+      vertical = parentProps.vertical,
+      inSubmenu = parentProps.inSubmenu,
+      pills = parentProps.pills,
+      pointing = parentProps.pointing,
+      primary = parentProps.primary,
       className,
       design,
       styles,
@@ -91,7 +110,7 @@ const MenuDivider = compose<'li', MenuDividerProps, MenuDividerStylesProps, {}, 
         className,
         design,
         styles,
-        variables,
+        variables: mergeComponentVariables(variables, parentProps.variables),
       }),
       rtl: context.rtl,
       unstable_props: props,
