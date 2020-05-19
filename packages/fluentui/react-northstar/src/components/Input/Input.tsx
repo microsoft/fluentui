@@ -175,7 +175,7 @@ const Input: React.FC<WithAsProp<InputProps>> & FluentComponentStaticProps<Input
   });
 
   const handleIconOverrides = predefinedProps => ({
-    onClick: (e: React.SyntheticEvent) => {
+    onClick: (e: React.MouseEvent) => {
       if (!disabled) {
         handleOnClear(e);
         inputRef.current.focus();
