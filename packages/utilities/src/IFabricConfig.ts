@@ -1,5 +1,5 @@
 import { IStyleSheetConfig } from '@uifabric/merge-styles';
-import { IPartialTheme } from '@uifabric/styling/lib/interfaces/ITheme';
+import { IPartialTheme } from '@uifabric/styling';
 
 /**
  * The interface of window.FabricConfig, which can be burned on the page before script loading to preemptively

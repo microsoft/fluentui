@@ -15,7 +15,7 @@ export function isFeatureEnabled(name: string, owner: string, date: string) {
 
   const fabricConfig: IFabricConfig = (getWindow() as any)?.FabricConfig; // tslint:disable-line:no-any
   if (fabricConfig?.enabledFeatures) {
-    return fabricConfig.enabledFeatures[guid.toUpperCase()];
+    return fabricConfig.enabledFeatures[name.toUpperCase()];
   }
   return false;
 }
