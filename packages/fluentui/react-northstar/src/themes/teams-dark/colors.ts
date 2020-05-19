@@ -141,6 +141,7 @@ export const colorScheme: ColorSchemeMapping = {
 
     backgroundDisabled1: colors.grey[550],
     backgroundDisabled: colors.grey[550],
+    backgroundDisabled2: colors.grey[650],
 
     borderDisabled: colors.grey[550],
   }),

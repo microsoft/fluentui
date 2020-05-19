@@ -1,24 +1,25 @@
 import { IStyleSet, IConcatenatedStyleSet } from './IStyleSet';
 import { IStyleBase, IStyle } from './IStyle';
 import { IStyleFunctionOrObject } from './IStyleFunction';
+import { ObjectOnly } from './ObjectOnly';
 
 /**
  * Combine a set of styles together (but does not register css classes).
  * @param styleSet - The first style set to be concatenated.
  */
-export function concatStyleSets<TStyleSet extends IStyleSet<TStyleSet>>(
+export function concatStyleSets<TStyleSet>(
   styleSet: TStyleSet | false | null | undefined,
-): IConcatenatedStyleSet<TStyleSet>;
+): IConcatenatedStyleSet<ObjectOnly<TStyleSet>>;
 
 /**
  * Combine a set of styles together (but does not register css classes).
  * @param styleSet1 - The first style set to be concatenated.
  * @param styleSet2 - The second style set to be concatenated.
  */
-export function concatStyleSets<TStyleSet1 extends IStyleSet<TStyleSet1>, TStyleSet2 extends IStyleSet<TStyleSet2>>(
+export function concatStyleSets<TStyleSet1, TStyleSet2>(
   styleSet1: TStyleSet1 | false | null | undefined,
   styleSet2: TStyleSet2 | false | null | undefined,
-): IConcatenatedStyleSet<TStyleSet1 & TStyleSet2>;
+): IConcatenatedStyleSet<ObjectOnly<TStyleSet1> & ObjectOnly<TStyleSet2>>;
 
 /**
  * Combine a set of styles together (but does not register css classes).
@@ -26,15 +27,11 @@ export function concatStyleSets<TStyleSet1 extends IStyleSet<TStyleSet1>, TStyle
  * @param styleSet2 - The second style set to be concatenated.
  * @param styleSet3 - The third style set to be concatenated.
  */
-export function concatStyleSets<
-  TStyleSet1 extends IStyleSet<TStyleSet1>,
-  TStyleSet2 extends IStyleSet<TStyleSet2>,
-  TStyleSet3 extends IStyleSet<TStyleSet3>
->(
+export function concatStyleSets<TStyleSet1, TStyleSet2, TStyleSet3>(
   styleSet1: TStyleSet1 | false | null | undefined,
   styleSet2: TStyleSet2 | false | null | undefined,
   styleSet3: TStyleSet3 | false | null | undefined,
-): IConcatenatedStyleSet<TStyleSet1 & TStyleSet2 & TStyleSet3>;
+): IConcatenatedStyleSet<ObjectOnly<TStyleSet1> & ObjectOnly<TStyleSet2> & ObjectOnly<TStyleSet3>>;
 
 /**
  * Combine a set of styles together (but does not register css classes).
@@ -43,36 +40,14 @@ export function concatStyleSets<
  * @param styleSet3 - The third style set to be concatenated.
  * @param styleSet4 - The fourth style set to be concatenated.
  */
-export function concatStyleSets<
-  TStyleSet1 extends IStyleSet<TStyleSet1>,
-  TStyleSet2 extends IStyleSet<TStyleSet2>,
-  TStyleSet3 extends IStyleSet<TStyleSet3>,
-  TStyleSet4 extends IStyleSet<TStyleSet4>
->(
-  styleSet1: TStyleSet1 | false | null | undefined,
-  styleSet2: TStyleSet2 | false | null | undefined,
-  styleSet3: TStyleSet3 | false | null | undefined,
-  styleSet4: TStyleSet3 | false | null | undefined,
-): IConcatenatedStyleSet<TStyleSet1 & TStyleSet2 & TStyleSet3 & TStyleSet4>;
-
-/**
- * Combine a set of styles together (but does not register css classes).
- * @param styleSet1 - The first style set to be concatenated.
- * @param styleSet2 - The second style set to be concatenated.
- * @param styleSet3 - The third style set to be concatenated.
- * @param styleSet4 - The fourth style set to be concatenated.
- */
-export function concatStyleSets<
-  TStyleSet1 extends IStyleSet<TStyleSet1>,
-  TStyleSet2 extends IStyleSet<TStyleSet2>,
-  TStyleSet3 extends IStyleSet<TStyleSet3>,
-  TStyleSet4 extends IStyleSet<TStyleSet4>
->(
+export function concatStyleSets<TStyleSet1, TStyleSet2, TStyleSet3, TStyleSet4>(
   styleSet1: TStyleSet1 | false | null | undefined,
   styleSet2: TStyleSet2 | false | null | undefined,
   styleSet3: TStyleSet3 | false | null | undefined,
   styleSet4: TStyleSet4 | false | null | undefined,
-): IConcatenatedStyleSet<TStyleSet1 & TStyleSet2 & TStyleSet3 & TStyleSet4>;
+): IConcatenatedStyleSet<
+  ObjectOnly<TStyleSet1> & ObjectOnly<TStyleSet2> & ObjectOnly<TStyleSet3> & ObjectOnly<TStyleSet4>
+>;
 
 /**
  * Combine a set of styles together (but does not register css classes).
@@ -82,19 +57,19 @@ export function concatStyleSets<
  * @param styleSet4 - The fourth style set to be concatenated.
  * @param styleSet5 - The fifth set to be concatenated.
  */
-export function concatStyleSets<
-  TStyleSet1 extends IStyleSet<TStyleSet1>,
-  TStyleSet2 extends IStyleSet<TStyleSet2>,
-  TStyleSet3 extends IStyleSet<TStyleSet3>,
-  TStyleSet4 extends IStyleSet<TStyleSet4>,
-  TStyleSet5 extends IStyleSet<TStyleSet5>
->(
+export function concatStyleSets<TStyleSet1, TStyleSet2, TStyleSet3, TStyleSet4, TStyleSet5>(
   styleSet1: TStyleSet1 | false | null | undefined,
   styleSet2: TStyleSet2 | false | null | undefined,
   styleSet3: TStyleSet3 | false | null | undefined,
   styleSet4: TStyleSet4 | false | null | undefined,
   styleSet5: TStyleSet5 | false | null | undefined,
-): IConcatenatedStyleSet<TStyleSet1 & TStyleSet2 & TStyleSet3 & TStyleSet4 & TStyleSet5>;
+): IConcatenatedStyleSet<
+  ObjectOnly<TStyleSet1> &
+    ObjectOnly<TStyleSet2> &
+    ObjectOnly<TStyleSet3> &
+    ObjectOnly<TStyleSet4> &
+    ObjectOnly<TStyleSet5>
+>;
 
 /**
  * Combine a set of styles together (but does not register css classes).
@@ -105,38 +80,34 @@ export function concatStyleSets<
  * @param styleSet5 - The fifth set to be concatenated.
  * @param styleSet6 - The sixth set to be concatenated.
  */
-export function concatStyleSets<
-  TStyleSet1 extends IStyleSet<TStyleSet1>,
-  TStyleSet2 extends IStyleSet<TStyleSet2>,
-  TStyleSet3 extends IStyleSet<TStyleSet3>,
-  TStyleSet4 extends IStyleSet<TStyleSet4>,
-  TStyleSet5 extends IStyleSet<TStyleSet5>,
-  TStyleSet6 extends IStyleSet<TStyleSet6>
->(
+export function concatStyleSets<TStyleSet1, TStyleSet2, TStyleSet3, TStyleSet4, TStyleSet5, TStyleSet6>(
   styleSet1: TStyleSet1 | false | null | undefined,
   styleSet2: TStyleSet2 | false | null | undefined,
   styleSet3: TStyleSet3 | false | null | undefined,
   styleSet4: TStyleSet4 | false | null | undefined,
   styleSet5: TStyleSet5 | false | null | undefined,
   styleSet6: TStyleSet6 | false | null | undefined,
-): IConcatenatedStyleSet<TStyleSet1 & TStyleSet2 & TStyleSet3 & TStyleSet4 & TStyleSet5 & TStyleSet6>;
+): IConcatenatedStyleSet<
+  ObjectOnly<TStyleSet1> &
+    ObjectOnly<TStyleSet2> &
+    ObjectOnly<TStyleSet3> &
+    ObjectOnly<TStyleSet4> &
+    ObjectOnly<TStyleSet5> &
+    ObjectOnly<TStyleSet6>
+>;
 
 /**
  * Combine a set of styles together (but does not register css classes).
  * @param styleSets - One or more stylesets to be merged (each param can also be falsy).
  */
-export function concatStyleSets(
-  ...styleSets: (IStyleSet<any> | false | null | undefined)[]
-): IConcatenatedStyleSet<any>;
+export function concatStyleSets(...styleSets: (IStyleSet | false | null | undefined)[]): IConcatenatedStyleSet<any>;
 
 /**
  * Combine a set of styles together (but does not register css classes).
  * @param styleSets - One or more stylesets to be merged (each param can also be falsy).
  */
-export function concatStyleSets(
-  ...styleSets: (IStyleSet<any> | false | null | undefined)[]
-): IConcatenatedStyleSet<any> {
-  if (styleSets && styleSets.length === 1 && styleSets[0] && !(styleSets[0] as IStyleSet<any>).subComponentStyles) {
+export function concatStyleSets(...styleSets: (IStyleSet | false | null | undefined)[]): IConcatenatedStyleSet<any> {
+  if (styleSets && styleSets.length === 1 && styleSets[0] && !(styleSets[0] as IStyleSet).subComponentStyles) {
     return styleSets[0] as IConcatenatedStyleSet<any>;
   }
 

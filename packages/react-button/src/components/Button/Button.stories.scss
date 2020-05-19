@@ -1,0 +1,16 @@
+.hStack {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  > *:not(:first-child) {
+    margin-left: var(--gap, 8px);
+  }
+}
+
+.vStack {
+  display: flex;
+  flex-direction: column;
+  > *:not(:first-child) {
+    margin-top: var(--gap, 8px);
+  }
+}

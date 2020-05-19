@@ -121,3 +121,4 @@ export { default as CardBody } from './components/Card/cardBodyVariables';
 export { default as CardFooter } from './components/Card/cardFooterVariables';
 export { default as CardPreview } from './components/Card/cardPreviewVariables';
 export { default as CardTopControls } from './components/Card/cardTopControlsVariables';
+export { default as CardExpandableBox } from './components/Card/cardExpandableBoxVariables';

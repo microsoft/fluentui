@@ -31,11 +31,12 @@ import { DividerStylesProps } from '../../components/Divider/Divider';
 import { DialogProps } from '../../components/Dialog/Dialog';
 import { DropdownProps } from '../../components/Dropdown/Dropdown';
 import { DropdownSearchInputStylesProps } from '../../components/Dropdown/DropdownSearchInput';
+import { DropdownSelectedItemStylesProps } from '../../components/Dropdown/DropdownSelectedItem';
 import { EmbedStylesProps } from '../../components/Embed/Embed';
 import { FlexItemStylesProps } from '../../components/Flex/FlexItem';
 import { FlexStylesProps } from '../../components/Flex/Flex';
-import { FormFieldProps } from '../../components/Form/FormField';
-import { FormProps } from '../../components/Form/Form';
+import { FormStylesProps } from '../../components/Form/Form';
+import { FormFieldStylesProps } from '../../components/Form/FormField';
 import { GridProps } from '../../components/Grid/Grid';
 import { HeaderDescriptionProps } from '../../components/Header/HeaderDescription';
 import { HeaderProps } from '../../components/Header/Header';
@@ -89,6 +90,7 @@ import { CardTopControlsStylesProps } from '../../components/Card/CardTopControl
 import { CardHeaderStylesProps } from '../../components/Card/CardHeader';
 import { CardBodyStylesProps } from '../../components/Card/CardBody';
 import { CardFooterStylesProps } from '../../components/Card/CardFooter';
+import { CardExpandableBoxStylesProps } from '../../components/Card/CardExpandableBox';
 import { SvgIconStylesProps } from '../../components/SvgIcon/SvgIcon';
 import { SplitButtonStylesProps } from '../../components/SplitButton/SplitButton';
 import { CarouselNavigationStylesProps } from '../../components/Carousel/CarouselNavigation';
@@ -122,11 +124,12 @@ export type TeamsThemeStylesProps = {
   Dialog: DialogProps;
   Dropdown: DropdownProps;
   DropdownSearchInput: DropdownSearchInputStylesProps;
+  DropdownSelectedItem: DropdownSelectedItemStylesProps;
   Embed: EmbedStylesProps;
   Flex: FlexStylesProps;
   FlexItem: FlexItemStylesProps;
-  Form: FormProps;
-  FormField: FormFieldProps;
+  Form: FormStylesProps;
+  FormField: FormFieldStylesProps;
   Grid: GridProps;
   Header: HeaderProps;
   HeaderDescription: HeaderDescriptionProps;
@@ -183,6 +186,7 @@ export type TeamsThemeStylesProps = {
   CardHeader: CardHeaderStylesProps;
   CardBody: CardBodyStylesProps;
   CardFooter: CardFooterStylesProps;
+  CardExpandableBox: CardExpandableBoxStylesProps;
   CarouselNavigationItem: CarouselNavigationItemStylesProps;
 };
 

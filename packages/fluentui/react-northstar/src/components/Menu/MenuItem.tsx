@@ -164,6 +164,8 @@ export type MenuItemStylesProps = Required<
   >
 > & { isFromKeyboard: boolean };
 
+export type MenuItemState = { isFromKeyboard: boolean; menuOpen: boolean };
+
 export const menuItemClassName = 'ui-menu__item';
 export const menuItemSlotClassNames: MenuItemSlotClassNames = {
   submenu: `${menuItemClassName}__submenu`,
@@ -213,9 +215,11 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
     const ElementType = getElementType(props);
     const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
 
-    const slotProps = composeOptions.resolveSlotProps<MenuItemProps & { isFromKeyboard?: boolean; menuOpen?: boolean }>(
-      { ...props, isFromKeyboard, menuOpen },
-    );
+    const slotProps = composeOptions.resolveSlotProps<MenuItemProps & MenuItemState>({
+      ...props,
+      isFromKeyboard,
+      menuOpen,
+    });
 
     const getA11yProps = useAccessibility<MenuItemBehaviorProps>(accessibility, {
       debugName: composeOptions.displayName,
@@ -265,8 +269,8 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
       unstable_props: { ...props, menuOpen, isFromKeyboard },
     });
 
-    const menuRef = React.createRef<HTMLElement>();
-    const itemRef = React.createRef<HTMLElement>();
+    const menuRef = React.useRef<HTMLElement>();
+    const itemRef = React.useRef<HTMLElement>();
 
     const handleWrapperBlur = (e: React.FocusEvent) => {
       if (!props.inSubmenu && !e.currentTarget.contains(e.relatedTarget as Node)) {
@@ -387,7 +391,6 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
     const menuItemInner = (
       <Ref
         innerRef={node => {
-          // @ts-ignore
           itemRef.current = node;
           handleRef(ref, node as any /* TODO: fix refs in compose */);
         }}
@@ -477,7 +480,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
       wrapper: MenuItemWrapper,
     },
 
-    mapPropsToSlotProps: props => ({
+    mapPropsToSlotProps: (props: MenuItemProps & MenuItemState) => ({
       icon: {
         hasContent: !!props.content,
         iconOnly: props.iconOnly,
@@ -578,7 +581,7 @@ MenuItem.propTypes = {
   inSubmenu: PropTypes.bool,
   indicator: customPropTypes.shorthandAllowingChildren,
   onMenuOpenChange: PropTypes.func,
-  __parentComponent: PropTypes.elementType,
+  __parentComponent: PropTypes.elementType, // TODO: check type
 };
 
 MenuItem.defaultProps = {

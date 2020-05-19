@@ -658,7 +658,7 @@ definitions.push({
     const propertyOpenedSubtree = {
       open: true,
       expanded: true,
-      items: [{ a: 1 }],
+      hasItems: true,
       siblings: [],
       hasSubtree: true,
     };
