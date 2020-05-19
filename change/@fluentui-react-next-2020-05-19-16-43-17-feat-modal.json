@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Copying Modal to react-next, in preparation for converting to function component.",
+  "packageName": "@fluentui/react-next",
+  "email": "czearing@outlook.com",
+  "dependentChangeType": "patch",
+  "date": "2020-05-19T23:43:17.956Z"
+}
