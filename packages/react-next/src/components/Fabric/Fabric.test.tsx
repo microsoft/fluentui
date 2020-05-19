@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import { Customizer, createTheme, Fabric, Checkbox } from 'office-ui-fabric-react';
+import { Customizer, createTheme, Checkbox, Fabric } from '@fluentui/react-next';
 import { mount } from 'enzyme';
 
 const rtlTheme = createTheme({ rtl: true });
