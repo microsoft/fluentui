@@ -2,6 +2,27 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Tue, 19 May 2020 12:34:06 GMT",
+      "tag": "@uifabric/fabric-website_v7.10.55",
+      "version": "7.10.55",
+      "comments": {
+        "patch": [
+          {
+            "comment": "grammer fix on iOS get started change",
+            "author": "hyshin@microsoft.com",
+            "commit": "434f841fbb7d79337bb277180cfe4fc17b26e089",
+            "package": "@uifabric/fabric-website"
+          },
+          {
+            "comment": "added blurb on the Cross platform Getting Started page that FURN controls only support Windows and Mac atm",
+            "author": "ejlayne@microsoft.com",
+            "commit": "b9df2288e3eaf78388223692f573306f49c47040",
+            "package": "@uifabric/fabric-website"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 18 May 2020 12:54:52 GMT",
       "tag": "@uifabric/fabric-website_v7.10.53",
       "version": "7.10.53",

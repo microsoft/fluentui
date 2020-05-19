@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-compose
 
-This log was last generated on Fri, 15 May 2020 12:42:20 GMT and should not be manually modified.
+This log was last generated on Tue, 19 May 2020 12:34:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.4.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.4.1)
+
+Tue, 19 May 2020 12:34:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v0.4.0..@fluentui/react-compose_v0.4.1)
+
+### Patches
+
+- fix(compose): fix type for `React.Ref` generic ([PR #13209](https://github.com/microsoft/fluentui/pull/13209) by olfedias@microsoft.com)
 
 ## [0.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.4.0)
 

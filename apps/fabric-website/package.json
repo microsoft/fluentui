@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/fabric-website",
-  "version": "7.10.54",
+  "version": "7.10.55",
   "description": "The official website for the Fluent UI project.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
