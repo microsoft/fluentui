@@ -7,6 +7,11 @@
 import * as React from 'react';
 
 // @public (undocumented)
+export type ClassDictionary = {
+    [key: string]: string;
+};
+
+// @public (undocumented)
 export interface ComponentWithAs<E extends React.ElementType = 'div', P = {}> extends React.FunctionComponent {
     // (undocumented)
     <EE extends React.ElementType = E>(props: Omit<PropsOfElement<EE>, 'as' | keyof P> & {
@@ -25,7 +30,7 @@ export interface ComponentWithAs<E extends React.ElementType = 'div', P = {}> ex
 }
 
 // @public (undocumented)
-export function compose<T extends React.ElementType, InputProps, InputStylesProps, ParentProps, ParentStylesProps>(input: Input<T, InputProps>, inputOptions?: ComposeOptions<InputProps, InputStylesProps, ParentStylesProps>): ComponentWithAs<T, InputProps & ParentProps>;
+export function compose<ElementType extends React.ElementType, InputProps, InputStylesProps, ParentProps, ParentStylesProps>(input: Input<ElementType, InputProps>, inputOptions?: ComposeOptions<InputProps, InputStylesProps, ParentStylesProps>): ComponentWithAs<ElementType, InputProps & ParentProps>;
 
 // @public (undocumented)
 export type ComposedComponent<P = {}> = React.FunctionComponent<P> & {
@@ -35,6 +40,7 @@ export type ComposedComponent<P = {}> = React.FunctionComponent<P> & {
 // @public (undocumented)
 export type ComposeOptions<InputProps = {}, InputStylesProps = {}, ParentStylesProps = {}> = {
     className?: string;
+    classes?: ClassDictionary;
     displayName?: string;
     mapPropsToStylesProps?: (props: ParentStylesProps & InputProps) => InputStylesProps;
     handledProps?: (keyof InputProps | 'as')[];
@@ -46,6 +52,7 @@ export type ComposeOptions<InputProps = {}, InputStylesProps = {}, ParentStylesP
 // @public (undocumented)
 export type ComposePreparedOptions<Props = {}> = {
     className: string;
+    classes: ClassDictionary;
     displayName: string;
     displayNames: string[];
     mapPropsToStylesPropsChain: ((props: object) => object)[];
@@ -58,7 +65,7 @@ export type ComposePreparedOptions<Props = {}> = {
 };
 
 // @public (undocumented)
-export type ComposeRenderFunction<T extends React.ElementType = 'div', P = {}> = (props: P, ref: React.Ref<T>, composeOptions: ComposePreparedOptions) => React.ReactElement | null;
+export type ComposeRenderFunction<T extends React.ElementType = 'div', P = {}> = (props: P, ref: React.Ref<T extends keyof HTMLElementTagNameMap ? HTMLElementTagNameMap[T] : T>, composeOptions: ComposePreparedOptions) => React.ReactElement | null;
 
 // @public (undocumented)
 export type Input<T extends React.ElementType = 'div', P = {}> = InputComposeComponent<P> | ComposeRenderFunction<T, P & {

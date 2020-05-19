@@ -14,21 +14,18 @@ export const PortalBoxContext = React.createContext<HTMLDivElement>(null);
 const usePortalBox = (options: UsePortalBoxOptions): HTMLDivElement => {
   const { className, rtl, target } = options;
 
-  const element: HTMLDivElement | null = React.useMemo(() => (isBrowser() ? target.createElement('div') : null), [
-    target,
-  ]);
+  const element: HTMLDivElement | null = React.useMemo(() => {
+    const newElement = isBrowser() ? target.createElement('div') : null;
 
-  useIsomorphicLayoutEffect(() => {
-    if (element) {
-      target.body.appendChild(element);
+    // Element should be attached to DOM during render to make elements that will be rendered
+    // inside accessible in effects of child components
+    if (newElement) {
+      target.body.appendChild(newElement);
     }
 
-    return () => {
-      if (element) {
-        target.body.removeChild(element);
-      }
-    };
-  }, []);
+    return newElement;
+  }, [target]);
+
   useIsomorphicLayoutEffect(() => {
     if (element) {
       element.setAttribute('class', className);
@@ -39,7 +36,16 @@ const usePortalBox = (options: UsePortalBoxOptions): HTMLDivElement => {
         element.removeAttribute('dir');
       }
     }
-  }, [className, rtl]);
+  }, [className, element, rtl]);
+
+  // This effect should always last as it removes element from HTML tree
+  useIsomorphicLayoutEffect(() => {
+    return () => {
+      if (element) {
+        target.body.removeChild(element);
+      }
+    };
+  }, [element, target]);
 
   return element;
 };
