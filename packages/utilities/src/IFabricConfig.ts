@@ -1,5 +1,4 @@
 import { IStyleSheetConfig } from '@uifabric/merge-styles';
-import { IPartialTheme } from '@uifabric/styling';
 
 /**
  * The interface of window.FabricConfig, which can be burned on the page before script loading to preemptively
@@ -16,11 +15,6 @@ export interface IFabricConfig {
    * The mergeStyles stylesheet config.
    */
   mergeStyles?: IStyleSheetConfig;
-
-  /**
-   * The default theme to use if no theme is specifically loaded.
-   */
-  theme?: IPartialTheme;
 
   /**
    * A list of features to enable.
