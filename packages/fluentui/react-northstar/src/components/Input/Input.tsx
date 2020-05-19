@@ -128,6 +128,7 @@ const Input: React.FC<WithAsProp<InputProps>> & FluentComponentStaticProps<Input
   const inputRef = React.useRef<HTMLElement>();
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Input.handledProps, props);
+
   const [htmlInputProps, restProps] = partitionHTMLProps(unhandledProps);
   const [value, setValue] = useAutoControlled({
     defaultValue: props.defaultValue,
