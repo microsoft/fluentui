@@ -21,19 +21,89 @@ const cardStyles: ComponentSlotStylesPrepared<CardStylesProps, CardVariables> = 
       margin: v.margin,
       width: v.width,
       height: v.height,
-      backgroundColor: v.backgroundColor,
-      boxShadow: v.boxShadow,
-      ':hover': {
-        backgroundColor: v.backgroundColorHover,
-        borderColor: v.borderColorHover,
-        boxShadow: v.boxShadowHover,
-      },
-      ...borderFocusStyles,
-
       borderWidth: v.borderWidth,
       borderStyle: v.borderStyle,
       borderColor: v.borderColor,
       borderRadius: v.borderRadius,
+      backgroundColor: v.backgroundColor,
+      ...(p.quiet && {
+        backgroundColor: v.quietBackgroundColor,
+      }),
+
+      ...(p.inverted && {
+        backgroundColor: v.invertedBackgroundColor,
+      }),
+
+      ...(p.selected && {
+        backgroundColor: v.selectedBackgroundColor,
+      }),
+
+      boxShadow: v.boxShadow,
+
+      ...(p.elevated && {
+        boxShadow: v.elevatedBoxShadow,
+      }),
+
+      ':hover': {
+        backgroundColor: v.backgroundColorHover,
+        ...(p.quiet && {
+          backgroundColor: v.quietBackgroundColorHover,
+        }),
+        ...(p.inverted && {
+          backgroundColor: v.invertedBackgroundColorHover,
+        }),
+        ...(p.selected && {
+          backgroundColor: v.selectedBackgroundColorHover,
+        }),
+
+        borderColor: v.borderColorHover,
+        boxShadow: v.boxShadowHover,
+        ...(p.elevated && {
+          boxShadow: v.elevatedBoxShadowHover,
+        }),
+      },
+      ...borderFocusStyles,
+
+      ...(p.actionable && {
+        cursor: 'pointer',
+        ':focus-visible': {
+          backgroundColor: v.backgroundColorFocus,
+          ...(p.quiet && {
+            backgroundColor: v.quietBackgroundColorFocus,
+          }),
+          ...(p.inverted && {
+            backgroundColor: v.invertedBackgroundColorFocus,
+          }),
+          ...(p.selected && {
+            backgroundColor: v.selectedBackgroundColorFocus,
+          }),
+
+          boxShadow: v.boxShadowFocus,
+          ...(p.elevated && {
+            boxShadow: v.elevatedBoxShadowFocus,
+          }),
+
+          ...borderFocusStyles[':focus-visible'],
+        },
+        ':active': {
+          backgroundColor: v.backgroundColorPressed,
+          ...(p.quiet && {
+            backgroundColor: v.quietBackgroundColorPressed,
+          }),
+          ...(p.inverted && {
+            backgroundColor: v.invertedBackgroundColorPressed,
+          }),
+          ...(p.selected && {
+            backgroundColor: v.selectedBackgroundColorPressed,
+          }),
+
+          borderColor: v.borderColorPressed,
+          boxShadow: v.boxShadowPressed,
+          ...(p.elevated && {
+            boxShadow: v.elevatedBoxShadowPressed,
+          }),
+        },
+      }),
 
       ...(p.size === 'small' && { width: v.sizeSmallWidth, height: v.sizeSmallHeight, padding: v.sizeSmallPadding }),
       ...(p.size === 'large' && { width: v.sizeLargeWidth, height: v.sizeLargeHeight, padding: v.sizeLargePadding }),
@@ -41,76 +111,6 @@ const cardStyles: ComponentSlotStylesPrepared<CardStylesProps, CardVariables> = 
       ...(p.horizontal && { flexDirection: 'row' }),
       ...(p.compact && { padding: v.compactPadding }),
       ...(p.centered && { alignItems: 'center' }),
-
-      ...(p.actionable && {
-        cursor: 'pointer',
-        ':focus-visible': {
-          backgroundColor: v.backgroundColorFocus,
-          boxShadow: v.boxShadowFocus,
-          ...borderFocusStyles[':focus-visible'],
-        },
-        ':active': {
-          backgroundColor: v.backgroundColorPressed,
-          borderColor: v.borderColorPressed,
-          boxShadow: v.boxShadowPressed,
-        },
-      }),
-      ...(p.selected && {
-        backgroundColor: v.selectedBackgroundColor,
-        borderColor: v.selectedBorderColor,
-        boxShadow: v.selectedBoxShadow,
-      }),
-
-      ...(p.elevated && {
-        boxShadow: v.elevatedBoxShadow,
-        ':hover': {
-          boxShadow: v.elevatedBoxShadowHover,
-        },
-
-        ...(p.actionable && {
-          ':focus-visible': {
-            boxShadow: v.elevatedBoxShadowFocus,
-            ...borderFocusStyles[':focus-visible'],
-          },
-          ':active': {
-            boxShadow: v.elevatedBoxShadowPressed,
-          },
-        }),
-      }),
-
-      ...(p.inverted && {
-        backgroundColor: v.invertedBackgroundColor,
-        ':hover': {
-          backgroundColor: v.invertedBackgroundColorHover,
-        },
-
-        ...(p.actionable && {
-          ':focus-visible': {
-            backgroundColor: v.invertedBackgroundColorFocus,
-            ...borderFocusStyles[':focus-visible'],
-          },
-          ':active': {
-            backgroundColor: v.invertedBackgroundColorPressed,
-          },
-        }),
-      }),
-
-      ...(p.quiet && {
-        backgroundColor: v.quietBackgroundColor,
-        ':hover': {
-          backgroundColor: v.quietBackgroundColorHover,
-        },
-
-        ...(p.actionable && {
-          ':focus-visible': {
-            backgroundColor: v.quietBackgroundColorFocus,
-            ...borderFocusStyles[':focus-visible'],
-          },
-          ':active': {
-            backgroundColor: v.quietBackgroundColorPressed,
-          },
-        }),
-      }),
 
       ...(p.disabled && {
         cursor: 'not-allowed',
@@ -123,6 +123,9 @@ const cardStyles: ComponentSlotStylesPrepared<CardStylesProps, CardVariables> = 
         }),
         ...(p.quiet && {
           backgroundColor: v.quietBackgroundColorDisabled,
+        }),
+        ...(p.selected && {
+          backgroundColor: v.selectedBackgroundColorDisabled,
         }),
         ':hover': {
           boxShadow: v.boxShadowDisabled,
