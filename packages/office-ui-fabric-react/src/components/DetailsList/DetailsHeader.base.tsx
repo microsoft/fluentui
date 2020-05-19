@@ -220,6 +220,7 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
         data-automationid="DetailsHeader"
         style={{ minWidth: rowWidth }}
         direction={FocusZoneDirection.horizontal}
+        preventDefaultWhenHandled={false}
       >
         {showCheckbox
           ? [

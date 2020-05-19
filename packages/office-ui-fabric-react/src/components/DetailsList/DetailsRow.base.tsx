@@ -283,6 +283,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
         style={{ minWidth: rowWidth }}
         aria-selected={ariaSelected}
         allowFocusRoot={true}
+        preventDefaultWhenHandled={false}
       >
         {showCheckbox && (
           <div role="gridcell" aria-colindex={1} data-selection-toggle={true} className={this._classNames.checkCell}>

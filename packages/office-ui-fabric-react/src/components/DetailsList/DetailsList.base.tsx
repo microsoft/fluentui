@@ -491,6 +491,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
               shouldEnterInnerZone={this.isRightArrow}
               onActiveElementChanged={this._onActiveRowChanged}
               onBlur={this._onBlur}
+              preventDefaultWhenHandled={false}
             >
               {!this.props.disableSelectionZone ? (
                 <SelectionZone
