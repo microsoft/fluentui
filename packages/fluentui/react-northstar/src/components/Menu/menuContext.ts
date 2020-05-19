@@ -9,12 +9,13 @@ export type MenuContextValue = {
   pointing: boolean | 'start' | 'end';
   primary: boolean;
   underlined: boolean;
+  iconOnly: boolean;
   onItemClick?: (e: React.KeyboardEvent | React.MouseEvent, itemIndex: MenuItemProps) => void;
 };
 
 export type MenuContextSubscribedValue = Pick<
   MenuContextValue,
-  'activeIndex' | 'variables' | 'onItemClick' | 'primary' | 'pointing' | 'underlined'
+  'activeIndex' | 'variables' | 'onItemClick' | 'primary' | 'pointing' | 'underlined' | 'iconOnly'
 > & {
   active: boolean;
 };
@@ -25,6 +26,7 @@ export const MenuContext = createContext<MenuContextValue>({
   pointing: false,
   primary: false,
   underlined: false,
+  iconOnly: false,
 });
 
 export const MenuContextProvider = MenuContext.Provider;

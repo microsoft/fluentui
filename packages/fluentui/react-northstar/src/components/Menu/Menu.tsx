@@ -272,6 +272,7 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
       pointing,
       primary,
       underlined,
+      iconOnly,
     };
 
     const element = getA11yProps.unstable_wrapWithFocusZone(
