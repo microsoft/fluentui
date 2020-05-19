@@ -220,8 +220,8 @@ export const Carousel: React.FC<WithAsProp<CarouselProps>> &
     rtl: context.rtl,
   });
 
-  const paddleNextRef = React.createRef<HTMLElement>(); // TODO
-  const paddlePreviousRef = React.createRef<HTMLElement>(); // TODO
+  const paddleNextRef = React.useRef<HTMLElement>();
+  const paddlePreviousRef = React.useRef<HTMLElement>();
 
   const focusItemAtIndex = _.debounce((index: number) => {
     itemRefs[index].current?.focus();
