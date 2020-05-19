@@ -65,7 +65,6 @@ const BaseComponent: React.FC<BaseComponentProps> = compose<
     });
     const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
 
-    // @ts-ignore
     return <button className={classes.root} onClick={() => setOpen(!open)} {...unhandledProps} ref={ref} />;
   },
   {
@@ -131,7 +130,6 @@ const BaseComponentWithSlots: React.FC<BaseComponentProps> = compose<
     const slotProps = composeOptions.resolveSlotProps(props);
 
     return (
-      // @ts-ignore
       <button className={classes.root} {...unhandledProps} ref={ref}>
         <Start className={classes.root} id="start" {...slotProps.start} />
         <Main className={classes.root} id="main" {...slotProps.main} />
