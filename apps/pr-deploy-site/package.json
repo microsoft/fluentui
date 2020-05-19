@@ -16,7 +16,7 @@
     "@uifabric/charting": "^2.2.19",
     "@uifabric/date-time": "^7.8.85",
     "@uifabric/experiments": "^7.24.4",
-    "@uifabric/fabric-website": "^7.10.54",
+    "@uifabric/fabric-website": "^7.10.55",
     "@uifabric/fabric-website-resources": "^7.6.66",
     "office-ui-fabric-react": "^7.115.0",
     "perf-test": "^7.0.0",
