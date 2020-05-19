@@ -736,6 +736,8 @@ export interface ISelectionOptions<TItem = IObjectWithKey> {
     canSelectItem?: (item: TItem, index?: number) => boolean;
     getKey?: (item: TItem, index?: number) => string | number;
     // (undocumented)
+    items?: TItem[];
+    // (undocumented)
     onSelectionChanged?: () => void;
     // (undocumented)
     selectionMode?: SelectionMode;

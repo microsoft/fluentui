@@ -1,8 +1,17 @@
 # Change Log - @uifabric/file-type-icons
 
-This log was last generated on Thu, 07 May 2020 01:06:55 GMT and should not be manually modified.
+This log was last generated on Fri, 15 May 2020 00:07:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.2.44](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.2.44)
+
+Fri, 15 May 2020 00:07:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.2.40..@uifabric/file-type-icons_v7.2.44)
+
+### Patches
+
+- adding 'pbiapp' entry in file type icon mapping file ([PR #12865](https://github.com/microsoft/fluentui/pull/12865) by caperez@microsoft.com)
 
 ## [7.2.40](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.2.40)
 

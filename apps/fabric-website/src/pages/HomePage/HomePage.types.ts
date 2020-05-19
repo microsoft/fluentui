@@ -32,6 +32,7 @@ export interface IHomePageStyles {
   usageIcon: IStyle;
   sectionContent: IStyle;
   oneHalf: IStyle;
+  oneThird: IStyle;
   oneFourth: IStyle;
   inner: IStyle;
   card: IStyle;

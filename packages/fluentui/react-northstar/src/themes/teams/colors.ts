@@ -278,6 +278,7 @@ export const colorScheme: ColorSchemeMapping<ColorScheme, TeamsColorNames> = {
 
     backgroundDisabled1: colors.grey[150],
     backgroundDisabled: colors.grey[150],
+    backgroundDisabled2: colors.grey[50],
 
     borderDisabled: colors.grey[150],
   }),

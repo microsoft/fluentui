@@ -41,12 +41,13 @@ export type Input<T extends React.ElementType = 'div', P = {}> =
 
 export type ComposeRenderFunction<T extends React.ElementType = 'div', P = {}> = (
   props: P,
-  ref: React.Ref<T>,
+  ref: React.Ref<T extends keyof HTMLElementTagNameMap ? HTMLElementTagNameMap[T] : T>,
   composeOptions: ComposePreparedOptions,
 ) => React.ReactElement | null;
 
 export type ComposeOptions<InputProps = {}, InputStylesProps = {}, ParentStylesProps = {}> = {
   className?: string;
+  classes?: ClassDictionary;
   displayName?: string;
 
   mapPropsToStylesProps?: (props: ParentStylesProps & InputProps) => InputStylesProps;
@@ -59,8 +60,13 @@ export type ComposeOptions<InputProps = {}, InputStylesProps = {}, ParentStylesP
   mapPropsToSlotProps?: (props: InputProps) => Record<string, object>;
 };
 
+export type ClassDictionary = {
+  [key: string]: string;
+};
+
 export type ComposePreparedOptions<Props = {}> = {
   className: string;
+  classes: ClassDictionary;
   displayName: string;
   displayNames: string[];
 
