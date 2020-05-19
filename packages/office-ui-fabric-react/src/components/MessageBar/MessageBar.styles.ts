@@ -93,8 +93,8 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
     getFocusStyle(theme, {
       inset: 1,
       highContrastStyle: {
-        outlineOffset: '-4px',
-        outlineColor: 'Window',
+        outlineOffset: '-6px',
+        outline: '1px solid Highlight',
       },
       borderColor: 'transparent',
     }),
@@ -144,17 +144,10 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
             },
           },
           [HighContrastSelector]: {
+            MsHighContrastAdjust: 'none',
             background: highContrastBackgroundColor[messageBarType],
             border: '1px solid WindowText',
             color: 'WindowText',
-            // will uncomment or remove depending on how the styling override in Link works
-            // selectors: {
-            //   '.ms-Link, .ms-Link:hover': {
-            //     // In high contrast mode, Links within MessageBars must revert to the default color
-            //     // defined by the high contrast settings rather than following the theme colors.
-            //     MsHighContrastAdjust: 'auto',
-            //   },
-            // },
           },
         },
       },
@@ -224,6 +217,8 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
         whiteSpace: 'pre-wrap',
       },
       !isMultiline && {
+        // In high contrast this causes the top and bottom of links' focus outline to be clipped
+        // (not sure of a good way around that while still maintaining text clipping)
         overflow: 'hidden',
         textOverflow: 'ellipsis',
         whiteSpace: 'nowrap',
