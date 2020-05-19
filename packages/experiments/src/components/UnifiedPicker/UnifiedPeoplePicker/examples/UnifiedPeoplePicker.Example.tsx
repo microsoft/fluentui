@@ -103,21 +103,20 @@ export const UnifiedPeoplePickerExample = (): JSX.Element => {
 
   const _onPaste = (pastedValue: string, selectedItemsList: IPersonaProps[]): void => {
     // Find the suggestion corresponding to the specific text name
-    // and update the selectedItemsList to rerender everthing.
+    // and update the selectedItemsList to re-render everthing.
     let finalList: IPersonaProps[] = [];
     if (pastedValue != null) {
-      pastedValue.split(',').map(val => {
-        if (val) {
+      pastedValue.split(',').map(textValue => {
+        if (textValue) {
           peopleSuggestions.map(suggestionItem => {
-            if (suggestionItem.item.text === val) {
+            if (suggestionItem.item.text === textValue) {
               finalList.push(suggestionItem.item);
             }
           });
         }
       });
     }
-    finalList = finalList.concat(selectedItemsList);
-    setPeopleSelectedItems(finalList);
+    setPeopleSelectedItems(selectedItemsList.concat(finalList));
   };
 
   const _onItemsRemoved = (itemsToRemove: IPersonaProps[]): void => {
