@@ -36,6 +36,9 @@ import { ComponentEventHandler, ShorthandValue, ShorthandCollection, ProviderCon
 import { Popper, PopperShorthandProps, getPopperPropsFromShorthand } from '../../utils/positioner';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
+import { MenuContextSubscribedValue, MenuContext } from './menuContext';
+import { useContextSelectors } from '@fluentui/react-context-selector';
+import { mergeComponentVariables } from '@fluentui/styles';
 
 export interface MenuItemSlotClassNames {
   submenu: string;
@@ -178,6 +181,13 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
     const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
     setStart();
 
+    const parentProps: MenuContextSubscribedValue = useContextSelectors(MenuContext, {
+      active: v => v.activeIndex === props.index,
+      activeIndex: v => v.activeIndex,
+      onItemClick: v => v.onItemClick,
+      variables: v => v.variables,
+    });
+
     const {
       children,
       content,
@@ -186,7 +196,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
       menu,
       primary,
       secondary,
-      active,
+      active = parentProps.active,
       vertical,
       indicator,
       disabled,
@@ -215,6 +225,8 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
 
     const slotProps = composeOptions.resolveSlotProps<MenuItemProps & MenuItemState>({
       ...props,
+      active,
+      variables: mergeComponentVariables(variables, parentProps.variables),
       isFromKeyboard,
       menuOpen,
     });
@@ -260,7 +272,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
         className,
         design,
         styles,
-        variables,
+        variables: mergeComponentVariables(parentProps.variables, variables),
       }),
       rtl: context.rtl,
       composeOptions,
@@ -307,6 +319,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
       }
 
       performClick(e);
+      parentProps.onItemClick(e, props);
       _.invoke(props, 'onClick', e, props);
     };
 
@@ -403,16 +416,22 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
           })}
           {...(!wrapper && { onClick: handleClick })}
         >
-          {createShorthand(composeOptions.slots.icon, icon, {
-            defaultProps: () => getA11yProps('icon', slotProps.icon),
-          })}
-          {createShorthand(composeOptions.slots.content, content, {
-            defaultProps: () => getA11yProps('content', slotProps.content),
-          })}
-          {menu &&
-            createShorthand(composeOptions.slots.indicator, indicator, {
-              defaultProps: () => getA11yProps('indicator', slotProps.indicator),
-            })}
+          {childrenExist(children) ? (
+            children
+          ) : (
+            <>
+              {createShorthand(composeOptions.slots.icon, icon, {
+                defaultProps: () => getA11yProps('icon', slotProps.icon),
+              })}
+              {createShorthand(composeOptions.slots.content, content, {
+                defaultProps: () => getA11yProps('content', slotProps.content),
+              })}
+              {menu &&
+                createShorthand(composeOptions.slots.indicator, indicator, {
+                  defaultProps: () => getA11yProps('indicator', slotProps.indicator),
+                })}
+            </>
+          )}
         </ElementType>
       </Ref>
     );
@@ -451,7 +470,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
         overrideProps: () => ({
           children: (
             <>
-              {childrenExist(children) ? children : menuItemInner}
+              {menuItemInner}
               {maybeSubmenu}
             </>
           ),

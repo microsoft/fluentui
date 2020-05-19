@@ -37,6 +37,7 @@ import MenuItemIcon from './MenuItemIcon';
 import MenuItemContent from './MenuItemContent';
 import MenuItemIndicator, { MenuItemIndicatorProps } from './MenuItemIndicator';
 import MenuItemWrapper from './MenuItemWrapper';
+import { MenuContextProvider, MenuContextValue } from './menuContext';
 
 export type MenuShorthandKinds = 'divider' | 'item';
 
@@ -197,13 +198,20 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
       setIndex(activeIndex);
     };
 
-    const handleItemOverrides = predefinedProps => ({
-      onClick: (e, itemProps) => {
+    const handleClick = React.useCallback(
+      (e, itemProps) => {
         const { index } = itemProps;
 
         setActiveIndex(e, index);
 
         _.invoke(props, 'onItemClick', e, itemProps);
+      },
+      [props, setActiveIndex],
+    );
+
+    const handleItemOverrides = predefinedProps => ({
+      onClick: (e, itemProps) => {
+        handleClick(e, itemProps);
         _.invoke(predefinedProps, 'onClick', e, itemProps);
       },
       onActiveChanged: (e, props) => {
@@ -257,6 +265,12 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
       });
     };
 
+    const childProps: MenuContextValue = {
+      activeIndex: +activeIndex,
+      onItemClick: handleClick,
+      variables,
+    };
+
     const element = getA11yProps.unstable_wrapWithFocusZone(
       <ElementType
         {...getA11yProps('root', {
@@ -265,7 +279,9 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
           ...unhandledProps,
         })}
       >
-        {childrenExist(children) ? children : renderItems()}
+        <MenuContextProvider value={childProps}>
+          {childrenExist(children) ? children : renderItems()}
+        </MenuContextProvider>
       </ElementType>,
     );
     const wrappedElement = ref ? <Ref innerRef={ref as any /* TODO: fix refs in compose() */}>{element}</Ref> : element;
