@@ -55,7 +55,9 @@ export default (siteVariables: any): ListItemVariables => {
     // Selectable
     selectableFocusHoverColor: siteVariables.colorScheme.default.foregroundHover,
     selectableFocusHoverBackgroundColor: siteVariables.colorScheme.default.backgroundHover,
-    selectedColor: siteVariables.colorScheme.default.foreground,
-    selectedBackgroundColor: siteVariables.colorScheme.default.backgroundActive,
+
+    // Selected
+    selectedColor: siteVariables.colorScheme.default.foregroundPressed,
+    selectedBackgroundColor: siteVariables.colorScheme.default.backgroundActive1,
   };
 };
