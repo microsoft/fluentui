@@ -197,7 +197,7 @@ const Tree: React.FC<WithAsProp<TreeProps>> &
   const treeRef = React.useRef<HTMLElement>();
   const itemsRef = new Map<string, React.RefObject<HTMLElement>>();
 
-  const onFocusParent = (parent: string) => {
+  const onFocusParent = React.useCallback((parent: string) => {
     const parentRef = itemsRef.get(parent);
 
     if (!parentRef || !parentRef.current) {
@@ -205,7 +205,7 @@ const Tree: React.FC<WithAsProp<TreeProps>> &
     }
 
     parentRef.current.focus();
-  };
+  }, []);
 
   const setSelectedItemIds = (e: React.SyntheticEvent, selectedItemIds: string[]) => {
     _.invoke(props, 'onSelectedItemIdsChange', e, { ...props, selectedItemIds });
@@ -275,21 +275,24 @@ const Tree: React.FC<WithAsProp<TreeProps>> &
     setSelectedItemIds(e, nextSelectedItemIds);
   };
 
-  const onTitleClick = (e: React.SyntheticEvent, treeItemProps: TreeItemProps, executeSelection: boolean = false) => {
-    const treeItemHasSubtree = hasSubtree(treeItemProps);
+  const onTitleClick = React.useCallback(
+    (e: React.SyntheticEvent, treeItemProps: TreeItemProps, executeSelection: boolean = false) => {
+      const treeItemHasSubtree = hasSubtree(treeItemProps);
 
-    if (!treeItemProps) {
-      return;
-    }
+      if (!treeItemProps) {
+        return;
+      }
 
-    if (treeItemProps.selectable) {
-      processItemsForSelection(e, treeItemProps, executeSelection);
-    }
+      if (treeItemProps.selectable) {
+        processItemsForSelection(e, treeItemProps, executeSelection);
+      }
 
-    if (treeItemHasSubtree && !executeSelection && e.target === e.currentTarget) {
-      expandItems(e, treeItemProps);
-    }
-  };
+      if (treeItemHasSubtree && !executeSelection && e.target === e.currentTarget) {
+        expandItems(e, treeItemProps);
+      }
+    },
+    [],
+  );
 
   const expandItems = (e: React.SyntheticEvent, treeItemProps: TreeItemProps) => {
     const { id } = treeItemProps;
@@ -320,7 +323,7 @@ const Tree: React.FC<WithAsProp<TreeProps>> &
     setActiveItemIds(e, nextActiveItemsIds);
   };
 
-  const onFocusFirstChild = (itemId: string) => {
+  const onFocusFirstChild = React.useCallback((itemId: string) => {
     const currentElement = itemsRef.get(itemId);
 
     if (!currentElement || !currentElement.current) {
@@ -334,9 +337,9 @@ const Tree: React.FC<WithAsProp<TreeProps>> &
     }
 
     elementToBeFocused.focus();
-  };
+  }, []);
 
-  const onSiblingsExpand = (e: React.SyntheticEvent, treeItemProps: TreeItemProps) => {
+  const onSiblingsExpand = React.useCallback((e: React.SyntheticEvent, treeItemProps: TreeItemProps) => {
     if (exclusive) {
       return;
     }
@@ -358,7 +361,7 @@ const Tree: React.FC<WithAsProp<TreeProps>> &
     }
 
     setActiveItemIds(e, nextActiveItemsIds);
-  };
+  }, []);
 
   const getAllSelectableChildrenId = items => {
     return items.reduce((acc, item) => {
@@ -394,12 +397,15 @@ const Tree: React.FC<WithAsProp<TreeProps>> &
     return selectedItemIds && selectedItemIds.indexOf(item.id) > -1;
   };
 
-  const contextValue: TreeRenderContextValue = {
-    onFocusParent,
-    onSiblingsExpand,
-    onFocusFirstChild,
-    onTitleClick,
-  };
+  const contextValue: TreeRenderContextValue = React.useMemo(
+    () => ({
+      onFocusParent,
+      onSiblingsExpand,
+      onFocusFirstChild,
+      onTitleClick,
+    }),
+    [onFocusParent, onSiblingsExpand, onFocusFirstChild, onTitleClick],
+  );
 
   const renderContent = (): React.ReactElement[] => {
     if (!items) return null;
