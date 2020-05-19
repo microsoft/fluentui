@@ -126,10 +126,13 @@
   width: 16px;
   height: 16px;
   position: absolute;
-  top: -6px;
   transform: translateX(-50%);
 
   // TODO either remove or implement for RTL transform: translateX(50%);
+
+  &:not(.vertical) {
+    top: -6px;
+  }
 
   &.vertical {
     left: -6px;
