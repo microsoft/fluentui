@@ -46,7 +46,7 @@ import ToolbarDivider, { ToolbarDividerProps } from './ToolbarDivider';
 import ToolbarItem, { ToolbarItemProps } from './ToolbarItem';
 import ToolbarMenu from './ToolbarMenu';
 import ToolbarMenuDivider from './ToolbarMenuDivider';
-import ToolbarMenuItem from './ToolbarMenuItem';
+import ToolbarMenuItem, { ToolbarMenuItemProps } from './ToolbarMenuItem';
 import ToolbarMenuRadioGroup, { ToolbarMenuRadioGroupProps } from './ToolbarMenuRadioGroup';
 import ToolbarRadioGroup from './ToolbarRadioGroup';
 import { ToolbarVariablesProvider } from './toolbarVariablesContext';
@@ -111,7 +111,7 @@ export interface ToolbarProps
    * Called when overflow menu is rendered opened.
    * @param startIndex - Index of the first item to be displayed in the overflow menu (the first item which does not fit the toolbar).
    */
-  getOverflowItems?: (startIndex: number) => ToolbarItemProps['items'];
+  getOverflowItems?: (startIndex: number) => ToolbarItemProps['menu'];
 }
 
 export type ToolbarStylesProps = never;
@@ -410,7 +410,7 @@ const Toolbar: React.FC<WithAsProp<ToolbarProps>> &
     _.invoke(props, 'onOverflow', lastVisibleItemIndex.current + 1);
   };
 
-  const collectOverflowItems = (): ToolbarItemProps['items'] => {
+  const collectOverflowItems = (): ToolbarItemProps['menu'] => {
     return getOverflowItems
       ? getOverflowItems(lastVisibleItemIndex.current + 1)
       : items.slice(lastVisibleItemIndex.current + 1);
@@ -460,7 +460,9 @@ const Toolbar: React.FC<WithAsProp<ToolbarProps>> &
           }),
           overrideProps: {
             menu: {
-              items: overflowOpen ? collectOverflowItems() : [],
+              items: overflowOpen
+                ? (collectOverflowItems() as ShorthandCollection<ToolbarMenuItemProps, ToolbarItemShorthandKinds>)
+                : [],
               popper: { positionFixed: true },
             },
             menuOpen: overflowOpen,
