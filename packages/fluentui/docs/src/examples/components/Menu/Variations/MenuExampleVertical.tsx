@@ -21,19 +21,11 @@ const MenuExampleVertical = () => (
       index={3}
       icon={<CalendarIcon {...{}} />}
       content="View full calendar with content so long that it wraps"
-      menu={
-        <Menu>
-          <Menu.Item index={0}>
-            <Menu.ItemContent>item1</Menu.ItemContent>
-          </Menu.Item>
-          <Menu.Item index={1}>
-            <Menu.ItemContent>item2</Menu.ItemContent>
-          </Menu.Item>
-          <Menu.Item index={2}>
-            <Menu.ItemContent>item3</Menu.ItemContent>
-          </Menu.Item>
-        </Menu>
-      }
+      menu={[
+        <Menu.ItemContent key="item1">item1</Menu.ItemContent>,
+        <Menu.ItemContent key="item2">item2</Menu.ItemContent>,
+        <Menu.ItemContent key="item3">item3</Menu.ItemContent>,
+      ]}
     />
   </Menu>
 );
