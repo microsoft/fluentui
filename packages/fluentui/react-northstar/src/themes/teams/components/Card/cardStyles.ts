@@ -1,6 +1,7 @@
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { CardVariables } from './cardVariables';
 import { CardStylesProps } from '../../../../components/Card/Card';
+import { cardExpandableBoxClassName } from '../../../../components/Card/CardExpandableBox';
 import getBorderFocusStyles from '../../getBorderFocusStyles';
 
 const cardStyles: ComponentSlotStylesPrepared<CardStylesProps, CardVariables> = {
@@ -17,6 +18,7 @@ const cardStyles: ComponentSlotStylesPrepared<CardStylesProps, CardVariables> = 
       flexDirection: 'column',
       position: 'relative',
       padding: v.padding,
+      margin: v.margin,
       width: v.width,
       height: v.height,
       backgroundColor: v.backgroundColor,
@@ -26,6 +28,7 @@ const cardStyles: ComponentSlotStylesPrepared<CardStylesProps, CardVariables> = 
         borderColor: v.borderColorHover,
         boxShadow: v.boxShadowHover,
       },
+      ...borderFocusStyles,
 
       borderWidth: v.borderWidth,
       borderStyle: v.borderStyle,
@@ -44,6 +47,7 @@ const cardStyles: ComponentSlotStylesPrepared<CardStylesProps, CardVariables> = 
         ':focus-visible': {
           backgroundColor: v.backgroundColorFocus,
           boxShadow: v.boxShadowFocus,
+          ...borderFocusStyles[':focus-visible'],
         },
         ':active': {
           backgroundColor: v.backgroundColorPressed,
@@ -52,24 +56,96 @@ const cardStyles: ComponentSlotStylesPrepared<CardStylesProps, CardVariables> = 
         },
       }),
 
+      ...(p.elevated && {
+        boxShadow: v.elevatedBoxShadow,
+        ':hover': {
+          boxShadow: v.elevatedBoxShadowHover,
+        },
+
+        ...(p.actionable && {
+          ':focus-visible': {
+            boxShadow: v.elevatedBoxShadowFocus,
+            ...borderFocusStyles[':focus-visible'],
+          },
+          ':active': {
+            boxShadow: v.elevatedBoxShadowPressed,
+          },
+        }),
+      }),
+
+      ...(p.inverted && {
+        backgroundColor: v.invertedBackgroundColor,
+        ':hover': {
+          backgroundColor: v.invertedBackgroundColorHover,
+        },
+
+        ...(p.actionable && {
+          ':focus-visible': {
+            backgroundColor: v.invertedBackgroundColorFocus,
+            ...borderFocusStyles[':focus-visible'],
+          },
+          ':active': {
+            backgroundColor: v.invertedBackgroundColorPressed,
+          },
+        }),
+      }),
+
+      ...(p.quiet && {
+        backgroundColor: v.quietBackgroundColor,
+        ':hover': {
+          backgroundColor: v.quietBackgroundColorHover,
+        },
+
+        ...(p.actionable && {
+          ':focus-visible': {
+            backgroundColor: v.quietBackgroundColorFocus,
+            ...borderFocusStyles[':focus-visible'],
+          },
+          ':active': {
+            backgroundColor: v.quietBackgroundColorPressed,
+          },
+        }),
+      }),
+
       ...(p.disabled && {
         cursor: 'not-allowed',
         color: v.colorDisabled,
         backgroundColor: v.backgroundColorDisabled,
         borderColor: v.borderColorDisabled,
         boxShadow: v.boxShadowDisabled,
+        ...(p.inverted && {
+          backgroundColor: v.invertedBackgroundColorDisabled,
+        }),
+        ...(p.quiet && {
+          backgroundColor: v.quietBackgroundColorDisabled,
+        }),
         ':hover': {
           boxShadow: v.boxShadowDisabled,
         },
         ':focus-visible': {
           boxShadow: v.boxShadowDisabled,
+          ...borderFocusStyles[':focus-visible'],
         },
         ':active': {
           boxShadow: v.boxShadowDisabled,
         },
       }),
 
-      ...borderFocusStyles,
+      ...(p.expandable && {
+        [`& .${cardExpandableBoxClassName}`]: {
+          maxHeight: v.expandableBoxStartMaxHeight,
+          transition: v.expandableBoxExpandTransition,
+          overflow: 'hidden',
+        },
+        [`&:hover .${cardExpandableBoxClassName}`]: {
+          maxHeight: v.expandableBoxEndMaxHeight,
+          transition: v.expandableBoxExpandTransition,
+        },
+        [`&:focus .${cardExpandableBoxClassName}`]: {
+          maxHeight: v.expandableBoxEndMaxHeight,
+          transition: v.expandableBoxExpandTransition,
+        },
+      }),
     };
   },
 };
