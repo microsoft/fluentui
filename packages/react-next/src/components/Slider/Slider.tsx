@@ -40,7 +40,6 @@ const getStaticStylesMemoized = memoizeFunction(
       vertical && classes.vertical,
       disabled ? globalClassNames.disabled : globalClassNames.enabled,
       vertical ? globalClassNames.column : globalClassNames.row,
-      showTransition && classes.showTransitions,
       showValue && globalClassNames.showValue,
     ];
 
@@ -55,7 +54,7 @@ const getStaticStylesMemoized = memoizeFunction(
       lineContainer: css(classes.lineContainer, ...propClasses),
       valueLabel: css(classes.valueLabel, globalClassNames.valueLabel, ...propClasses),
       titleLabel: css(classes.titleLabel, titleLabelClassName, ...propClasses),
-      showTransitions: css(classes.showTransitions, globalClassNames.showTransitions, ...propClasses),
+      showTransitions: css(globalClassNames.showTransitions, ...propClasses),
       zeroTick: css(classes.zeroTick, globalClassNames.zeroTick, ...propClasses),
     };
   },
