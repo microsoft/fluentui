@@ -18,10 +18,10 @@ type SelectableCardProps = {
   index?: number;
   title?: string;
   selected?: boolean;
-  onClick?: Function;
+  onClick?: (e: React.SyntheticEvent) => void;
 };
 
-const SelectableCard: React.FC<SelectableCardProps> = ({ title, index, selected, onClick, ...unhadledProps }) => {
+const SelectableCard: React.FC<SelectableCardProps> = ({ title, index, selected, onClick, ...rest }) => {
   const selectedMessageId = `selectedMessageId${index}`;
   const selectedMessage = 'selected';
   const notSelectedMessage = 'not selected';
@@ -31,24 +31,15 @@ const SelectableCard: React.FC<SelectableCardProps> = ({ title, index, selected,
       accessibility={cardSelectableBehavior}
       aria-labelledby={`card${index} ${selectedMessageId}`}
       aria-roledescription="user card"
-      onClick={() => {
-        onClick(!selected, index);
-      }}
+      onClick={onClick}
       selected={selected}
-      {...unhadledProps}
+      {...rest}
     >
       <Card.Header>
         <Text content={title} weight="bold" />
       </Card.Header>
       <Card.TopControls>
-        <Checkbox
-          accessibility={hiddenComponentBehavior}
-          checked={selected}
-          onClick={(event, props) => {
-            event.preventDefault();
-            onClick(props.checked, index);
-          }}
-        />
+        <Checkbox accessibility={hiddenComponentBehavior} checked={selected} onClick={onClick} />
         <div id={selectedMessageId} style={screenReaderContainerStyles} aria-live="polite" role="presentation">
           {selected ? selectedMessage : notSelectedMessage}
         </div>
@@ -92,8 +83,7 @@ const CardExampleSelectableGrid = () => {
   const initialState: SelectableCardsGridState = cards.reduce((cards, card) => {
     cards[card.index] = false;
     return cards;
-  }, {}),
-  };
+  }, {});
   const [state, dispatch] = React.useReducer(selectableCardsGridStateReducer, initialState);
 
   return (
@@ -110,7 +100,7 @@ const CardExampleSelectableGrid = () => {
           dispatch({ type: 'TOGGLE_ALL', selected: false });
         }}
       />
-      <Grid accessibility={cardsContainerBehavior} columns="3">
+      <Grid accessibility={cardsContainerBehavior} columns={3}>
         {cards.map(card => {
           return (
             <SelectableCard
@@ -118,8 +108,8 @@ const CardExampleSelectableGrid = () => {
               index={card.index}
               title={card.title}
               aria-label={`${card.title} ${card.index} of ${cardsNumber}`}
-              onClick={(isSelected, index) => {
-                dispatch({ type: 'TOGGLE_ITEM', selected: isSelected, index: index });
+              onClick={() => {
+                dispatch({ type: 'TOGGLE_ITEM', selected: !state[card.index], index: `${card.index}` });
               }}
               selected={state[card.index]}
             />
