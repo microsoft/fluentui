@@ -396,7 +396,10 @@ const toJSONTreeElement = input => {
   if (isElement(input)) {
     return {
       $$typeof: 'Symbol(react.element)',
-      type: ((input as React.ReactElement).type as any).displayName,
+      type:
+        typeof (input as React.ReactElement).type === 'string'
+          ? (input as React.ReactElement).type
+          : ((input as React.ReactElement).type as any).displayName,
       props: toJSONTreeElement(input.props),
     };
   }

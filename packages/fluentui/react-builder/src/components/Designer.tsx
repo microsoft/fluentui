@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Text, Button } from '@fluentui/react-northstar';
 import { EventListener } from '@fluentui/react-component-event-listener';
-import { CodeSnippet } from '@fluentui/docs-components';
 import renderElementToJSX from '@fluentui/docs/src/components/ExampleSnippet/renderElementToJSX';
 import { Ref } from '@fluentui/react-component-ref';
+import { Editor } from '@fluentui/docs-components';
 
 import componentInfoContext from '@fluentui/docs/src/utils/componentInfoContext';
 import { ComponentInfo } from '@fluentui/docs/src/types';
@@ -36,6 +36,8 @@ import {
 import { DesignerMode, JSONTreeElement } from './types';
 import { ComponentTree } from './ComponentTree';
 import { GetShareableLink } from './GetShareableLink';
+import { codeToTree } from '../utils/codeToTree';
+import ErrorBoundary from './ErrorBoundary';
 
 const HEADER_HEIGHT = '3rem';
 
@@ -55,6 +57,8 @@ export type DesignerState = {
   selectedComponentInfo: ComponentInfo;
   selectedJSONTreeElement: any;
   showCode: boolean;
+  code: string | null; // only valid if showCode is set to true
+  codeError: string | null;
   showJSONTree: boolean;
 };
 
@@ -85,6 +89,8 @@ class Designer extends React.Component<any, DesignerState> {
       selectedComponentInfo: null,
       selectedJSONTreeElement: null,
       showCode: false,
+      code: null,
+      codeError: null,
       showJSONTree: false,
     };
   }
@@ -139,11 +145,12 @@ class Designer extends React.Component<any, DesignerState> {
   handleReset = () => {
     if (confirm('Lose your changes?')) {
       removeTreeFromStore();
-
-      this.setState({
-        jsonTree: this.getDefaultJSONTree(),
+      const defaultJsonTree = this.getDefaultJSONTree();
+      this.setState(({ showCode }) => ({
+        jsonTree: defaultJsonTree,
+        code: showCode ? renderElementToJSX(renderJSONTreeToJSXElement(defaultJsonTree)) : null,
         selectedComponentInfo: null,
-      });
+      }));
     }
   };
 
@@ -152,7 +159,14 @@ class Designer extends React.Component<any, DesignerState> {
   };
 
   handleShowCodeChange = showCode => {
-    this.setState({ showCode });
+    this.setState(({ jsonTree }) => {
+      try {
+        return { showCode, code: showCode ? renderElementToJSX(renderJSONTreeToJSXElement(jsonTree)) : null };
+      } catch (e) {
+        console.error('Failed to convert tree to code.', e.toString());
+        return null;
+      }
+    });
   };
 
   handleShowJSONTreeChange = showJSONTree => {
@@ -183,7 +197,7 @@ class Designer extends React.Component<any, DesignerState> {
   };
 
   handleCanvasMouseUp = () => {
-    this.setState(({ draggingElement, jsonTree }) => {
+    this.setState(({ draggingElement, jsonTree, showCode }) => {
       console.log('Designer:handleCanvasMouseUp', {
         dropChild: draggingElement,
         dropParent: this.dropParent,
@@ -206,6 +220,7 @@ class Designer extends React.Component<any, DesignerState> {
       return {
         draggingElement: null,
         jsonTree,
+        code: showCode ? renderElementToJSX(renderJSONTreeToJSXElement(jsonTree)) : null,
         ...(addedComponent && {
           selectedJSONTreeElement: addedComponent,
           selectedComponentInfo: componentInfoContext.byDisplayName[addedComponent.displayName],
@@ -265,8 +280,8 @@ class Designer extends React.Component<any, DesignerState> {
 
   handlePropChange = ({ jsonTreeElement, name, value }) => {
     console.log('Designer:handlePropChange', jsonTreeElement, name, value);
-    this.setState(state => {
-      const element = jsonTreeFindElement(state.jsonTree, jsonTreeElement.uuid);
+    this.setState(({ showCode, jsonTree }) => {
+      const element = jsonTreeFindElement(jsonTree, jsonTreeElement.uuid);
 
       console.log('...BEFORE PROP CHANGE', element);
       if (!element.props) {
@@ -275,7 +290,11 @@ class Designer extends React.Component<any, DesignerState> {
       element.props[name] = value;
       console.log('...AFTER PROP CHANGE', element);
 
-      return { selectedJSONTreeElement: element };
+      return {
+        jsonTree,
+        code: showCode ? renderElementToJSX(renderJSONTreeToJSXElement(jsonTree)) : null,
+        selectedJSONTreeElement: element,
+      };
     });
   };
 
@@ -297,11 +316,12 @@ class Designer extends React.Component<any, DesignerState> {
   handleMoveComponent = (e: MouseEvent) => {
     console.log('Designer:handleMoveComponent', this.state.selectedJSONTreeElement);
 
-    this.setState(({ jsonTree, selectedJSONTreeElement }) => {
+    this.setState(({ showCode, jsonTree, selectedJSONTreeElement }) => {
       jsonTreeDeleteElement(jsonTree, selectedJSONTreeElement.uuid);
       this.draggingPosition = { x: e.clientX, y: e.clientY };
       return {
         jsonTree,
+        code: showCode ? renderElementToJSX(renderJSONTreeToJSXElement(jsonTree)) : null,
         draggingElement: jsonTreeCloneElement(jsonTree, selectedJSONTreeElement),
       };
     });
@@ -309,13 +329,14 @@ class Designer extends React.Component<any, DesignerState> {
 
   handleDeleteComponent = () => {
     console.log('Designer:handleDeleteComponent', this.state.selectedJSONTreeElement);
-    this.setState(state => {
+    this.setState(({ jsonTree, showCode }) => {
       if (!this.state.selectedJSONTreeElement.uuid) {
         return null;
       }
-      const modifiedTree = jsonTreeDeleteElement(state.jsonTree, this.state.selectedJSONTreeElement.uuid);
+      const modifiedTree = jsonTreeDeleteElement(jsonTree, this.state.selectedJSONTreeElement.uuid);
       return {
         jsonTree: modifiedTree,
+        code: showCode ? renderElementToJSX(renderJSONTreeToJSXElement(modifiedTree)) : null,
         selectedJSONTreeElement: null,
         selectedComponentInfo: null,
       };
@@ -336,15 +357,37 @@ class Designer extends React.Component<any, DesignerState> {
     });
   };
 
+  handleSourceCodeChange = code => {
+    try {
+      const modifiedTree = codeToTree(code);
+      this.setState({
+        jsonTree: modifiedTree,
+        code,
+        codeError: null,
+        selectedJSONTreeElement: null,
+        selectedComponentInfo: null,
+      });
+    } catch (e) {
+      this.setState({
+        code,
+        codeError: e.message,
+        selectedJSONTreeElement: null,
+        selectedComponentInfo: null,
+      });
+    }
+  };
+
   getShareableLink = () => {
     return writeTreeToURL(this.state.jsonTree, window.location.href);
   };
 
   switchToStore = () => {
-    this.setState({
-      jsonTree: readTreeFromStore() || this.getDefaultJSONTree(),
+    const jsonTree = readTreeFromStore() || this.getDefaultJSONTree();
+    this.setState(({ showCode }) => ({
+      jsonTree,
+      code: showCode ? renderElementToJSX(renderJSONTreeToJSXElement(jsonTree)) : null,
       jsonTreeOrigin: 'store',
-    });
+    }));
   };
 
   render() {
@@ -358,6 +401,8 @@ class Designer extends React.Component<any, DesignerState> {
       selectedComponentInfo,
       selectedJSONTreeElement,
       showCode,
+      code,
+      codeError,
       showJSONTree,
     } = this.state;
 
@@ -487,33 +532,51 @@ class Designer extends React.Component<any, DesignerState> {
                   transition: 'box-shadow 0.5s',
                 }}
               >
-                <Canvas
-                  draggingElement={draggingElement}
-                  isExpanding={isExpanding}
-                  isSelecting={isSelecting || !!draggingElement}
-                  onMouseMove={this.handleDrag}
-                  onMouseUp={this.handleCanvasMouseUp}
-                  onSelectComponent={this.handleSelectComponent}
-                  onSelectorHover={this.handleSelectorHover}
-                  onDropPositionChange={this.handleDropPositionChange}
-                  jsonTree={jsonTree}
-                  selectedComponent={selectedComponent}
-                  onCloneComponent={this.handleCloneComponent}
-                  onMoveComponent={this.handleMoveComponent}
-                  onDeleteComponent={this.handleDeleteComponent}
-                  onGoToParentComponent={this.handleGoToParentComponent}
-                />
+                <ErrorBoundary code={code}>
+                  <Canvas
+                    draggingElement={draggingElement}
+                    isExpanding={isExpanding}
+                    isSelecting={isSelecting || !!draggingElement}
+                    onMouseMove={this.handleDrag}
+                    onMouseUp={this.handleCanvasMouseUp}
+                    onSelectComponent={this.handleSelectComponent}
+                    onSelectorHover={this.handleSelectorHover}
+                    onDropPositionChange={this.handleDropPositionChange}
+                    jsonTree={jsonTree}
+                    selectedComponent={selectedComponent}
+                    onCloneComponent={this.handleCloneComponent}
+                    onMoveComponent={this.handleMoveComponent}
+                    onDeleteComponent={this.handleDeleteComponent}
+                    onGoToParentComponent={this.handleGoToParentComponent}
+                  />
+                </ErrorBoundary>
               </BrowserWindow>
 
               {(showCode || showJSONTree) && (
                 <div style={{ flex: '0 0 auto', maxHeight: '35vh', overflow: 'auto' }}>
                   {showCode && (
-                    <CodeSnippet
-                      fitted
-                      mode="jsx"
-                      label="Copy"
-                      value={renderElementToJSX(renderJSONTreeToJSXElement(jsonTree))}
-                    />
+                    <div>
+                      <Editor mode="jsx" height="auto" value={code} onChange={this.handleSourceCodeChange} />
+                      {codeError && (
+                        <pre
+                          style={{
+                            position: 'sticky',
+                            bottom: 0,
+                            padding: '1em',
+                            // don't block viewport
+                            maxHeight: '50vh',
+                            overflowY: 'auto',
+                            color: '#fff',
+                            background: 'red',
+                            whiteSpace: 'pre-wrap',
+                            // above code editor text :/
+                            zIndex: 4,
+                          }}
+                        >
+                          {codeError}
+                        </pre>
+                      )}
+                    </div>
                   )}
                   {showJSONTree && (
                     <div style={{ flex: 1, padding: '1rem', color: '#543', background: '#ddd' }}>
