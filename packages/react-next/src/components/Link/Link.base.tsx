@@ -1,9 +1,7 @@
 import * as React from 'react';
-import { classNamesFunction } from '../../Utilities';
-import { ILink, ILinkProps, ILinkStyleProps, ILinkStyles } from './Link.types';
+import { ILink, ILinkProps } from './Link.types';
 import { KeytipData } from '../../KeytipData';
-
-const getClassNames = classNamesFunction<ILinkStyleProps, ILinkStyles>();
+import { useLinkClasses } from './useLinkClasses';
 
 const useComponentRef = (props: ILinkProps, link: React.RefObject<ILink>) => {
   React.useImperativeHandle(
@@ -66,13 +64,10 @@ const adjustPropsForRootType = (
 export const LinkBase: React.FunctionComponent = (props: ILinkProps) => {
   const link = React.useRef<HTMLAnchorElement | HTMLButtonElement | null>(null);
   const ariaDescribedBy = (props as { 'aria-describedby': string })['aria-describedby'];
-  const { disabled, children, className, href, theme, styles, keytipProps } = props;
-  const classNames = getClassNames(styles!, {
-    className,
-    isButton: !href,
-    isDisabled: disabled,
-    theme: theme!,
-  });
+  const { disabled, children, keytipProps } = props;
+
+  // TODO: this should be called during `compose`
+  const classNames = useLinkClasses(props);
 
   const getRootType = (): string | React.ComponentClass | React.FunctionComponent => {
     if (props.as) {
