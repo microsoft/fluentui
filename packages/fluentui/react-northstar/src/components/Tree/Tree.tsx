@@ -108,6 +108,39 @@ export const treeClassName = 'ui-tree';
 
 export type TreeStylesProps = never;
 
+const expandedItemsGenerator = (items, acc = []) =>
+  _.reduce(
+    items,
+    (acc, item) => {
+      if (item['expanded'] && acc.indexOf(item['id']) === -1) {
+        acc.push(item['id']);
+      }
+
+      if (item['items']) {
+        return expandedItemsGenerator(item['items'], acc);
+      }
+
+      return acc;
+    },
+    acc,
+  );
+
+const iterateItems = (items, acc = []) =>
+  _.reduce(
+    items,
+    (acc, item) => {
+      if (item['selected'] && acc.indexOf(item['id']) === -1) {
+        acc.push(item['id']);
+      }
+      if (item['items']) {
+        return iterateItems(item['items']);
+      }
+
+      return acc;
+    },
+    acc,
+  );
+
 const Tree: React.FC<WithAsProp<TreeProps>> &
   FluentComponentStaticProps<TreeProps> & {
     Item: typeof TreeItem;
@@ -132,39 +165,6 @@ const Tree: React.FC<WithAsProp<TreeProps>> &
 
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Tree.handledProps, props);
-
-  const expandedItemsGenerator = (items, acc = []) =>
-    _.reduce(
-      items,
-      (acc, item) => {
-        if (item['expanded'] && acc.indexOf(item['id']) === -1) {
-          acc.push(item['id']);
-        }
-
-        if (item['items']) {
-          return expandedItemsGenerator(item['items'], acc);
-        }
-
-        return acc;
-      },
-      acc,
-    );
-
-  const iterateItems = (items, acc = []) =>
-    _.reduce(
-      items,
-      (acc, item) => {
-        if (item['selected'] && acc.indexOf(item['id']) === -1) {
-          acc.push(item['id']);
-        }
-        if (item['items']) {
-          return iterateItems(item['items']);
-        }
-
-        return acc;
-      },
-      acc,
-    );
 
   const [activeItemIds, setActiveItemIdsState] = useAutoControlled({
     defaultValue: props.defaultActiveItemIds,
