@@ -5,7 +5,7 @@ import { CircleIcon } from '@fluentui/react-icons-northstar';
 const MenuExampleWithSubMenu = () => (
   <Menu defaultActiveIndex={0}>
     <Menu.Item
-      index={1}
+      index={0}
       menu={[
         { key: '1', content: 'item1' },
         {
@@ -29,7 +29,7 @@ const MenuExampleWithSubMenu = () => (
     />
 
     <Menu.Item
-      index={2}
+      index={1}
       menu={[
         { key: '1', content: 'item1' },
         {
@@ -51,11 +51,10 @@ const MenuExampleWithSubMenu = () => (
           ],
         },
       ]}
-    >
-      <Menu.ItemContent>Reviews</Menu.ItemContent>
-    </Menu.Item>
+      content="Reviews"
+    />
 
-    <Menu.Item index={3}>
+    <Menu.Item index={2}>
       <Menu.ItemContent>Upcoming Events</Menu.ItemContent>
     </Menu.Item>
   </Menu>
