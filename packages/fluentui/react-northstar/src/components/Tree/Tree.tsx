@@ -291,7 +291,7 @@ const Tree: React.FC<WithAsProp<TreeProps>> &
         expandItems(e, treeItemProps);
       }
     },
-    [],
+    [activeItemIds],
   );
 
   const expandItems = (e: React.SyntheticEvent, treeItemProps: TreeItemProps) => {
