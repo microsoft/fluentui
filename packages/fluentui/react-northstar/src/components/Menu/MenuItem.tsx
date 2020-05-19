@@ -1,11 +1,6 @@
+import { Accessibility, menuItemBehavior, submenuBehavior, MenuItemBehaviorProps } from '@fluentui/accessibility';
 import {
-  Accessibility,
-  menuItemBehavior,
-  submenuBehavior,
-  indicatorBehavior,
-  MenuItemBehaviorProps,
-} from '@fluentui/accessibility';
-import {
+  compose,
   focusAsync,
   useTelemetry,
   useAutoControlled,
@@ -13,46 +8,43 @@ import {
   useUnhandledProps,
   useAccessibility,
   useStyles,
+  ComponentWithAs,
 } from '@fluentui/react-bindings';
 import { EventListener } from '@fluentui/react-component-event-listener';
-import { Ref } from '@fluentui/react-component-ref';
+import { Ref, handleRef } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
-import cx from 'classnames';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import {
   childrenExist,
-  createShorthandFactory,
+  createShorthand,
   doesNodeContainClick,
   UIComponentProps,
   ChildrenComponentProps,
   ContentComponentProps,
   commonPropTypes,
   isFromKeyboard as isEventFromKeyboard,
+  ShorthandConfig,
 } from '../../utils';
 import Menu, { MenuProps, MenuShorthandKinds } from './Menu';
-import Box, { BoxProps } from '../Box/Box';
-import {
-  ComponentEventHandler,
-  WithAsProp,
-  ShorthandValue,
-  ShorthandCollection,
-  withSafeTypeForAs,
-  FluentComponentStaticProps,
-  ProviderContextPrepared,
-} from '../../types';
+import MenuItemIcon, { MenuItemIconProps } from './MenuItemIcon';
+import MenuItemContent, { MenuItemContentProps } from './MenuItemContent';
+import MenuItemIndicator, { MenuItemIndicatorProps } from './MenuItemIndicator';
+import MenuItemWrapper, { MenuItemWrapperProps } from './MenuItemWrapper';
+import { ComponentEventHandler, ShorthandValue, ShorthandCollection, ProviderContextPrepared } from '../../types';
 import { Popper, PopperShorthandProps, getPopperPropsFromShorthand } from '../../utils/positioner';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 
 export interface MenuItemSlotClassNames {
-  wrapper: string;
   submenu: string;
-  indicator: string;
 }
 
-export interface MenuItemProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
+export interface MenuItemProps
+  extends UIComponentProps,
+    ChildrenComponentProps,
+    ContentComponentProps<ShorthandValue<MenuItemContentProps>> {
   /**
    * Accessibility behavior if overridden by the user.
    * @available menuItemAsToolbarButtonBehavior, tabBehavior
@@ -66,7 +58,7 @@ export interface MenuItemProps extends UIComponentProps, ChildrenComponentProps,
   disabled?: boolean;
 
   /** Name or shorthand for Menu Item Icon */
-  icon?: ShorthandValue<BoxProps>;
+  icon?: ShorthandValue<MenuItemIconProps>;
 
   /** A menu may have just icons. */
   iconOnly?: boolean;
@@ -124,7 +116,7 @@ export interface MenuItemProps extends UIComponentProps, ChildrenComponentProps,
   vertical?: boolean;
 
   /** Shorthand for the wrapper component. */
-  wrapper?: ShorthandValue<BoxProps>;
+  wrapper?: ShorthandValue<MenuItemWrapperProps>;
 
   /** Shorthand for the submenu. */
   menu?:
@@ -144,7 +136,7 @@ export interface MenuItemProps extends UIComponentProps, ChildrenComponentProps,
   inSubmenu?: boolean;
 
   /** Shorthand for the submenu indicator. */
-  indicator?: ShorthandValue<BoxProps>;
+  indicator?: ShorthandValue<MenuItemIndicatorProps>;
 
   /**
    * Event for request to change 'open' value.
@@ -166,321 +158,402 @@ export type MenuItemStylesProps = Required<
     | 'disabled'
     | 'iconOnly'
     | 'pills'
-    | 'icon'
-    | 'menu'
     | 'inSubmenu'
   >
-> & { isFromKeyboard: boolean; hasContent: boolean };
+> & { isFromKeyboard: boolean };
+
+export type MenuItemState = { isFromKeyboard: boolean; menuOpen: boolean };
 
 export const menuItemClassName = 'ui-menu__item';
 export const menuItemSlotClassNames: MenuItemSlotClassNames = {
   submenu: `${menuItemClassName}__submenu`,
-  wrapper: `${menuItemClassName}__wrapper`,
-  indicator: `${menuItemClassName}__indicator`,
 };
 
-export const MenuItem: React.FC<WithAsProp<MenuItemProps>> & FluentComponentStaticProps<MenuItemProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
-  const { setStart, setEnd } = useTelemetry(MenuItem.displayName, context.telemetry);
-  setStart();
+/**
+ * A MenuItem is an actionable item within a Menu.
+ */
+export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>(
+  (props, ref, composeOptions) => {
+    const context: ProviderContextPrepared = React.useContext(ThemeContext);
+    const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
+    setStart();
 
-  const {
-    children,
-    content,
-    icon,
-    wrapper,
-    menu,
-    primary,
-    secondary,
-    active,
-    vertical,
-    indicator,
-    disabled,
-    accessibility,
-    underlined,
-    iconOnly,
-    inSubmenu,
-    pills,
-    pointing,
-    className,
-    design,
-    styles,
-    variables,
-  } = props;
-
-  const [menuOpen, setMenuOpen] = useAutoControlled({
-    defaultValue: props.defaultMenuOpen,
-    value: props.menuOpen,
-    initialValue: false,
-  });
-
-  const [isFromKeyboard, setIsFromKeyboard] = React.useState(false);
-
-  const ElementType = getElementType(props);
-  const unhandledProps = useUnhandledProps(MenuItem.handledProps, props);
-
-  const getA11yProps = useAccessibility<MenuItemBehaviorProps>(accessibility, {
-    debugName: MenuItem.displayName,
-    actionHandlers: {
-      performClick: event => !event.defaultPrevented && handleClick(event),
-      openMenu: event => openMenu(event),
-      closeAllMenusAndFocusNextParentItem: event => closeAllMenus(event),
-      closeMenu: event => closeMenu(event),
-      closeMenuAndFocusTrigger: event => closeMenu(event, true),
-      doNotNavigateNextParentItem: event => {
-        event.stopPropagation();
-      },
-      closeAllMenus: event => closeAllMenus(event),
-    },
-    mapPropsToBehavior: () => ({
-      menuOpen,
-      hasMenu: !!menu,
-      disabled,
-      vertical,
-    }),
-    rtl: context.rtl,
-  });
-
-  const { classes, styles: resolvedStyles } = useStyles<MenuItemStylesProps>(MenuItem.displayName, {
-    className: menuItemClassName,
-    mapPropsToStyles: () => ({
+    const {
+      children,
+      content,
+      icon,
+      wrapper,
+      menu,
       primary,
-      underlined,
+      secondary,
       active,
       vertical,
-      pointing,
-      secondary,
+      indicator,
       disabled,
+      accessibility,
+      underlined,
       iconOnly,
-      pills,
-      icon,
-      menu,
       inSubmenu,
-      isFromKeyboard,
-      hasContent: !!content,
-    }),
-    mapPropsToInlineStyles: () => ({
+      pills,
+      pointing,
       className,
       design,
       styles,
       variables,
-    }),
-    rtl: context.rtl,
-  });
+    } = props;
 
-  const menuRef = React.createRef<HTMLElement>();
-  const itemRef = React.createRef<HTMLElement>();
+    const [menuOpen, setMenuOpen] = useAutoControlled({
+      defaultValue: props.defaultMenuOpen,
+      value: props.menuOpen,
+      initialValue: false,
+    });
 
-  const handleWrapperBlur = (e: React.FocusEvent) => {
-    if (!props.inSubmenu && !e.currentTarget.contains(e.relatedTarget as Node)) {
-      trySetMenuOpen(false, e);
-    }
-  };
+    const [isFromKeyboard, setIsFromKeyboard] = React.useState(false);
 
-  const outsideClickHandler = (e: MouseEvent) => {
-    if (!isSubmenuOpen()) return;
-    if (
-      !doesNodeContainClick(itemRef.current, e, context.target) &&
-      !doesNodeContainClick(menuRef.current, e, context.target)
-    ) {
-      trySetMenuOpen(false, e);
-    }
-  };
+    const ElementType = getElementType(props);
+    const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
 
-  const performClick = (e: React.MouseEvent | React.KeyboardEvent) => {
-    if (menu) {
-      if (doesNodeContainClick(menuRef.current, (e as unknown) as MouseEvent, context.target)) {
-        // submenu was clicked => close it and propagate
-        trySetMenuOpen(false, e, () => focusAsync(itemRef.current));
-      } else {
-        // the menuItem element was clicked => toggle the open/close and stop propagation
-        trySetMenuOpen(active ? !menuOpen : true, e);
+    const slotProps = composeOptions.resolveSlotProps<MenuItemProps & MenuItemState>({
+      ...props,
+      isFromKeyboard,
+      menuOpen,
+    });
+
+    const getA11yProps = useAccessibility<MenuItemBehaviorProps>(accessibility, {
+      debugName: composeOptions.displayName,
+      actionHandlers: {
+        performClick: event => !event.defaultPrevented && handleClick(event),
+        openMenu: event => openMenu(event),
+        closeAllMenusAndFocusNextParentItem: event => closeAllMenus(event),
+        closeMenu: event => closeMenu(event),
+        closeMenuAndFocusTrigger: event => closeMenu(event, true),
+        doNotNavigateNextParentItem: event => {
+          event.stopPropagation();
+        },
+        closeAllMenus: event => closeAllMenus(event),
+      },
+      mapPropsToBehavior: () => ({
+        menuOpen,
+        hasMenu: !!menu,
+        disabled,
+        vertical,
+      }),
+      rtl: context.rtl,
+    });
+
+    const { classes, styles: resolvedStyles } = useStyles<MenuItemStylesProps>(MenuItem.displayName, {
+      className: composeOptions.className,
+      mapPropsToStyles: () => ({
+        primary,
+        underlined,
+        active,
+        vertical,
+        pointing,
+        secondary,
+        disabled,
+        iconOnly,
+        pills,
+        inSubmenu,
+        isFromKeyboard,
+      }),
+      mapPropsToInlineStyles: () => ({
+        className,
+        design,
+        styles,
+        variables,
+      }),
+      rtl: context.rtl,
+      composeOptions,
+      unstable_props: { ...props, menuOpen, isFromKeyboard },
+    });
+
+    const menuRef = React.useRef<HTMLElement>();
+    const itemRef = React.useRef<HTMLElement>();
+
+    const handleWrapperBlur = (e: React.FocusEvent) => {
+      if (!props.inSubmenu && !e.currentTarget.contains(e.relatedTarget as Node)) {
+        trySetMenuOpen(false, e);
+      }
+    };
+
+    const outsideClickHandler = (e: MouseEvent) => {
+      if (!isSubmenuOpen()) return;
+      if (
+        !doesNodeContainClick(itemRef.current, e, context.target) &&
+        !doesNodeContainClick(menuRef.current, e, context.target)
+      ) {
+        trySetMenuOpen(false, e);
+      }
+    };
+
+    const performClick = (e: React.MouseEvent | React.KeyboardEvent) => {
+      if (menu) {
+        if (doesNodeContainClick(menuRef.current, (e as unknown) as MouseEvent, context.target)) {
+          // submenu was clicked => close it and propagate
+          trySetMenuOpen(false, e, () => focusAsync(itemRef.current));
+        } else {
+          // the menuItem element was clicked => toggle the open/close and stop propagation
+          trySetMenuOpen(active ? !menuOpen : true, e);
+          e.stopPropagation();
+          e.preventDefault();
+        }
+      }
+    };
+
+    const handleClick = (e: React.MouseEvent | React.KeyboardEvent) => {
+      if (disabled) {
+        e.preventDefault();
+        return;
+      }
+
+      performClick(e);
+      _.invoke(props, 'onClick', e, props);
+    };
+
+    const handleBlur = (e: React.FocusEvent) => {
+      setIsFromKeyboard(false);
+
+      _.invoke(props, 'onBlur', e, props);
+    };
+
+    const handleFocus = (e: React.FocusEvent) => {
+      setIsFromKeyboard(isEventFromKeyboard());
+
+      _.invoke(props, 'onFocus', e, props);
+    };
+
+    const isSubmenuOpen = (): boolean => {
+      return !!(menu && menuOpen);
+    };
+
+    const closeAllMenus = (e: React.MouseEvent | React.KeyboardEvent) => {
+      if (!isSubmenuOpen()) {
+        return;
+      }
+
+      trySetMenuOpen(false, e, () => {
+        if (!inSubmenu) {
+          focusAsync(itemRef.current);
+        }
+      });
+
+      // avoid spacebar scrolling the page
+      if (!inSubmenu) {
+        e.preventDefault();
+      }
+    };
+
+    const closeMenu = (e: React.MouseEvent | React.KeyboardEvent, forceTriggerFocus?: boolean) => {
+      if (!isSubmenuOpen()) {
+        return;
+      }
+
+      const shouldStopPropagation = inSubmenu || props.vertical;
+      trySetMenuOpen(false, e, () => {
+        if (forceTriggerFocus || shouldStopPropagation) {
+          focusAsync(itemRef.current);
+        }
+      });
+
+      if (forceTriggerFocus || shouldStopPropagation) {
+        e.stopPropagation();
+      }
+    };
+
+    const openMenu = (e: React.MouseEvent | React.KeyboardEvent) => {
+      if (menu && !menuOpen) {
+        trySetMenuOpen(true, e);
+        _.invoke(props, 'onActiveChanged', e, { ...props, active: true });
         e.stopPropagation();
         e.preventDefault();
       }
-    }
-  };
+    };
 
-  const handleClick = (e: React.MouseEvent | React.KeyboardEvent) => {
-    if (disabled) {
-      e.preventDefault();
-      return;
-    }
+    const trySetMenuOpen = (
+      newValue: boolean,
+      e: MouseEvent | React.FocusEvent | React.KeyboardEvent | React.MouseEvent,
+      onStateChanged?: any,
+    ) => {
+      setMenuOpen(newValue);
+      // The reason why post-effect is not passed as callback to trySetState method
+      // is that in 'controlled' mode the post-effect is applied before final re-rendering
+      // which cause a broken behavior: for e.g. when it is needed to focus submenu trigger on ESC.
+      // TODO: all DOM post-effects should be applied at componentDidMount & componentDidUpdated stages.
+      onStateChanged && onStateChanged();
+      _.invoke(props, 'onMenuOpenChange', e, {
+        ...props,
+        menuOpen: newValue,
+      });
+    };
 
-    performClick(e);
-    _.invoke(props, 'onClick', e, props);
-  };
-
-  const handleBlur = (e: React.FocusEvent) => {
-    setIsFromKeyboard(false);
-
-    _.invoke(props, 'onBlur', e, props);
-  };
-
-  const handleFocus = (e: React.FocusEvent) => {
-    setIsFromKeyboard(isEventFromKeyboard());
-
-    _.invoke(props, 'onFocus', e, props);
-  };
-
-  const isSubmenuOpen = (): boolean => {
-    return !!(menu && menuOpen);
-  };
-
-  const closeAllMenus = (e: React.MouseEvent | React.KeyboardEvent) => {
-    if (!isSubmenuOpen()) {
-      return;
-    }
-
-    trySetMenuOpen(false, e, () => {
-      if (!inSubmenu) {
-        focusAsync(itemRef.current);
-      }
-    });
-
-    // avoid spacebar scrolling the page
-    if (!inSubmenu) {
-      e.preventDefault();
-    }
-  };
-
-  const closeMenu = (e: React.MouseEvent | React.KeyboardEvent, forceTriggerFocus?: boolean) => {
-    if (!isSubmenuOpen()) {
-      return;
-    }
-
-    const shouldStopPropagation = inSubmenu || props.vertical;
-    trySetMenuOpen(false, e, () => {
-      if (forceTriggerFocus || shouldStopPropagation) {
-        focusAsync(itemRef.current);
-      }
-    });
-
-    if (forceTriggerFocus || shouldStopPropagation) {
-      e.stopPropagation();
-    }
-  };
-
-  const openMenu = (e: React.MouseEvent | React.KeyboardEvent) => {
-    if (menu && !menuOpen) {
-      trySetMenuOpen(true, e);
-      _.invoke(props, 'onActiveChanged', e, { ...props, active: true });
-      e.stopPropagation();
-      e.preventDefault();
-    }
-  };
-
-  const trySetMenuOpen = (
-    newValue: boolean,
-    e: MouseEvent | React.FocusEvent | React.KeyboardEvent | React.MouseEvent,
-    onStateChanged?: any,
-  ) => {
-    setMenuOpen(newValue);
-    // The reason why post-effect is not passed as callback to trySetState method
-    // is that in 'controlled' mode the post-effect is applied before final re-rendering
-    // which cause a broken behavior: for e.g. when it is needed to focus submenu trigger on ESC.
-    // TODO: all DOM post-effects should be applied at componentDidMount & componentDidUpdated stages.
-    onStateChanged && onStateChanged();
-    _.invoke(props, 'onMenuOpenChange', e, {
-      ...props,
-      menuOpen: newValue,
-    });
-  };
-
-  const menuItemInner = (
-    <Ref innerRef={itemRef}>
-      <ElementType
-        {...getA11yProps('root', {
-          className: classes.root,
-          disabled,
-          onBlur: handleBlur,
-          onFocus: handleFocus,
-          ...unhandledProps,
-        })}
-        {...(!wrapper && { onClick: handleClick })}
+    const menuItemInner = (
+      <Ref
+        innerRef={node => {
+          itemRef.current = node;
+          handleRef(ref, node as any /* TODO: fix refs in compose */);
+        }}
       >
-        {Box.create(icon, {
-          defaultProps: () =>
-            getA11yProps('icon', {
-              styles: resolvedStyles.icon,
-              as: 'span',
-            }),
-        })}
-        {Box.create(content, {
-          defaultProps: () => getA11yProps('content', { as: 'span', styles: resolvedStyles.content }),
-        })}
-        {menu &&
-          Box.create(indicator, {
-            defaultProps: () =>
-              getA11yProps('indicator', {
-                as: 'span',
-                className: menuItemSlotClassNames.indicator,
-                styles: resolvedStyles.indicator,
-                accessibility: indicatorBehavior,
-              }),
+        <ElementType
+          {...getA11yProps('root', {
+            className: classes.root,
+            disabled,
+            onBlur: handleBlur,
+            onFocus: handleFocus,
+            ...unhandledProps,
           })}
-      </ElementType>
-    </Ref>
-  );
-
-  const maybeSubmenu =
-    menu && active && menuOpen ? (
-      <>
-        <Ref innerRef={menuRef}>
-          <Popper
-            align={vertical ? 'top' : context.rtl ? 'end' : 'start'}
-            position={vertical ? (context.rtl ? 'before' : 'after') : 'below'}
-            targetRef={itemRef}
-            {...getPopperPropsFromShorthand(menu)}
-          >
-            {Menu.create(menu, {
-              defaultProps: () => ({
-                accessibility: submenuBehavior,
-                className: menuItemSlotClassNames.submenu,
-                vertical: true,
-                primary,
-                secondary,
-                styles: resolvedStyles.menu,
-                submenu: true,
-                indicator,
-              }),
+          {...(!wrapper && { onClick: handleClick })}
+        >
+          {createShorthand(composeOptions.slots.icon, icon, {
+            defaultProps: () => getA11yProps('icon', slotProps.icon),
+          })}
+          {createShorthand(composeOptions.slots.content, content, {
+            defaultProps: () => getA11yProps('content', slotProps.content),
+          })}
+          {menu &&
+            createShorthand(composeOptions.slots.indicator, indicator, {
+              defaultProps: () => getA11yProps('indicator', slotProps.indicator),
             })}
-          </Popper>
-        </Ref>
-        <EventListener listener={outsideClickHandler} target={context.target} type="click" />
-      </>
-    ) : null;
+        </ElementType>
+      </Ref>
+    );
 
-  if (wrapper) {
-    const wrapperElement = Box.create(wrapper, {
-      defaultProps: () =>
-        getA11yProps('wrapper', {
-          className: cx(menuItemSlotClassNames.wrapper, classes.wrapper),
+    const maybeSubmenu =
+      menu && active && menuOpen ? (
+        <>
+          <Ref innerRef={menuRef}>
+            <Popper
+              align={vertical ? 'top' : context.rtl ? 'end' : 'start'}
+              position={vertical ? (context.rtl ? 'before' : 'after') : 'below'}
+              targetRef={itemRef}
+              {...getPopperPropsFromShorthand(menu)}
+            >
+              {Menu.create(menu, {
+                defaultProps: () => ({
+                  accessibility: submenuBehavior,
+                  className: menuItemSlotClassNames.submenu,
+                  vertical: true,
+                  primary,
+                  secondary,
+                  styles: resolvedStyles.menu,
+                  submenu: true,
+                  indicator,
+                }),
+              })}
+            </Popper>
+          </Ref>
+          <EventListener listener={outsideClickHandler} target={context.target} type="click" />
+        </>
+      ) : null;
+
+    if (wrapper) {
+      const wrapperElement = createShorthand(composeOptions.slots.wrapper, wrapper, {
+        defaultProps: () => getA11yProps('wrapper', slotProps.wrapper),
+        overrideProps: () => ({
+          children: (
+            <>
+              {childrenExist(children) ? children : menuItemInner}
+              {maybeSubmenu}
+            </>
+          ),
+          onClick: handleClick,
+          onBlur: handleWrapperBlur,
         }),
-      overrideProps: () => ({
-        children: (
-          <>
-            {childrenExist(children) ? children : menuItemInner}
-            {maybeSubmenu}
-          </>
-        ),
-        onClick: handleClick,
-        onBlur: handleWrapperBlur,
-      }),
-    });
+      });
+
+      setEnd();
+      return wrapperElement;
+    }
 
     setEnd();
-    return wrapperElement;
-  }
+    return menuItemInner;
+  },
+  {
+    displayName: 'MenuItem',
+    className: menuItemClassName,
 
-  setEnd();
-  return menuItemInner;
+    slots: {
+      icon: MenuItemIcon,
+      indicator: MenuItemIndicator,
+      content: MenuItemContent,
+      wrapper: MenuItemWrapper,
+    },
+
+    mapPropsToSlotProps: (props: MenuItemProps & MenuItemState) => ({
+      icon: {
+        hasContent: !!props.content,
+        iconOnly: props.iconOnly,
+      },
+      content: {
+        hasIcon: !!props.icon,
+        hasMenu: !!props.menu,
+        inSubmenu: props.inSubmenu,
+        vertical: props.vertical,
+      },
+      indicator: {
+        iconOnly: props.iconOnly,
+        vertical: props.vertical,
+        inSubmenu: props.inSubmenu,
+        active: props.active,
+        primary: props.primary,
+        underlined: props.underlined,
+      },
+      wrapper: {
+        active: props.active,
+        disabled: props.disabled,
+        iconOnly: props.iconOnly,
+        isFromKeyboard: props.isFromKeyboard,
+        pills: props.pills,
+        pointing: props.pointing,
+        secondary: props.secondary,
+        underlined: props.underlined,
+        vertical: props.vertical,
+        primary: props.primary,
+      },
+    }),
+
+    handledProps: [
+      'accessibility',
+      'as',
+      'children',
+      'className',
+      'content',
+      'design',
+      'active',
+      'disabled',
+      'icon',
+      'iconOnly',
+      'index',
+      'itemPosition',
+      'itemsCount',
+      'onClick',
+      'onFocus',
+      'onBlur',
+      'pills',
+      'pointing',
+      'primary',
+      'secondary',
+      'underlined',
+      'vertical',
+      'wrapper',
+      'menu',
+      'menuOpen',
+      'defaultMenuOpen',
+      'onActiveChanged',
+      'inSubmenu',
+      'indicator',
+      'onMenuOpenChange',
+      'styles',
+      'variables',
+    ],
+  },
+) as ComponentWithAs<'a', MenuItemProps> & {
+  shorthandConfig: ShorthandConfig<MenuItemProps>;
 };
 
-MenuItem.displayName = 'MenuItem';
-
 MenuItem.propTypes = {
-  ...commonPropTypes.createCommon(),
+  ...commonPropTypes.createCommon({
+    content: 'shorthand',
+  }),
   active: PropTypes.bool,
   disabled: PropTypes.bool,
   icon: customPropTypes.shorthandAllowingChildren,
@@ -507,18 +580,15 @@ MenuItem.propTypes = {
   onMenuOpenChange: PropTypes.func,
 };
 
-MenuItem.handledProps = Object.keys(MenuItem.propTypes) as any;
-
 MenuItem.defaultProps = {
   as: 'a',
   accessibility: menuItemBehavior as Accessibility,
-  wrapper: { as: 'li' },
+  wrapper: {},
   indicator: {},
 };
 
-MenuItem.create = createShorthandFactory({ Component: MenuItem, mappedProp: 'content' });
+MenuItem.shorthandConfig = {
+  mappedProp: 'content',
+};
 
-/**
- * A MenuItem is an actionable item within a Menu.
- */
-export default withSafeTypeForAs<typeof MenuItem, MenuItemProps, 'a'>(MenuItem);
+export default MenuItem;

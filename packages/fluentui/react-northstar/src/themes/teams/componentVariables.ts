@@ -62,6 +62,10 @@ export { default as ListItem } from './components/List/listItemVariables';
 
 export { default as Menu } from './components/Menu/menuVariables';
 export { default as MenuItem } from './components/Menu/menuItemVariables';
+export { default as MenuItemIcon } from './components/Menu/menuItemIconVariables';
+export { default as MenuItemContent } from './components/Menu/menuItemContentVariables';
+export { default as MenuItemIndicator } from './components/Menu/menuItemContentVariables';
+export { default as MenuItemWrapper } from './components/Menu/menuItemWrapperVariables';
 export { default as MenuDivider } from './components/Menu/menuDividerVariables';
 
 export { default as PopupContent } from './components/Popup/popupContentVariables';
@@ -117,3 +121,4 @@ export { default as CardBody } from './components/Card/cardBodyVariables';
 export { default as CardFooter } from './components/Card/cardFooterVariables';
 export { default as CardPreview } from './components/Card/cardPreviewVariables';
 export { default as CardTopControls } from './components/Card/cardTopControlsVariables';
+export { default as CardExpandableBox } from './components/Card/cardExpandableBoxVariables';
