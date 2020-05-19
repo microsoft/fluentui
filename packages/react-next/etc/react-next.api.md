@@ -8,15 +8,19 @@ import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import { IButtonProps as IButtonProps_2 } from 'office-ui-fabric-react/lib/components/Button/Button.types';
 import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import { IComponentAs } from 'office-ui-fabric-react/lib/Utilities';
+import { IContextualMenuProps } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { IFocusZoneProps } from '@fluentui/react-focus';
 import { IIconProps } from 'office-ui-fabric-react/lib/Icon';
 import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
+import { ILayerProps } from 'office-ui-fabric-react/lib/Layer';
+import { IOverlayProps } from 'office-ui-fabric-react/lib/Overlay';
 import { IRefObject } from 'office-ui-fabric-react/lib/Utilities';
 import { IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 import { IStyleSet } from 'office-ui-fabric-react/lib/Styling';
 import { ITheme } from 'office-ui-fabric-react/lib/Styling';
+import { IWithResponsiveModeState } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode';
 import { Position } from 'office-ui-fabric-react/lib/utilities/positioning';
 import * as React from 'react';
 
@@ -53,6 +57,16 @@ export const getNextResizeGroupStateProvider: (measurementCache?: {
     shouldRenderDataForMeasurement: (dataToMeasure: any) => boolean;
     getInitialResizeGroupState: (data: any) => IResizeGroupState;
 };
+
+// @public (undocumented)
+export interface IAccessiblePopupProps {
+    closeButtonAriaLabel?: string;
+    elementToFocusOnDismiss?: HTMLElement;
+    firstFocusableSelector?: string | (() => string);
+    forceFocusInsideTrap?: boolean;
+    ignoreExternalFocusing?: boolean;
+    isClickableOutsideFocusTrap?: boolean;
+}
 
 // @public
 export interface ICheckbox {
@@ -112,6 +126,39 @@ export interface ICheckboxStyles {
     label?: IStyle;
     root?: IStyle;
     text?: IStyle;
+}
+
+// @public (undocumented)
+export interface IDialogState {
+    // (undocumented)
+    hasBeenOpened?: boolean;
+    // (undocumented)
+    id?: string;
+    // (undocumented)
+    isInKeyboardMoveMode?: boolean;
+    // (undocumented)
+    isModalMenuOpen?: boolean;
+    // (undocumented)
+    isOpen?: boolean;
+    // (undocumented)
+    isVisible?: boolean;
+    // (undocumented)
+    isVisibleClose?: boolean;
+    // (undocumented)
+    modalRectangleTop?: number;
+    // (undocumented)
+    x: number;
+    // (undocumented)
+    y: number;
+}
+
+// @public (undocumented)
+export interface IDragOptions {
+    closeMenuItemText: string;
+    dragHandleSelector?: string;
+    keyboardMoveIconProps?: IIconProps;
+    menu: React.FunctionComponent<IContextualMenuProps>;
+    moveMenuItemText: string;
 }
 
 // @public (undocumented)
@@ -305,6 +352,62 @@ export enum ImageLoadState {
 export interface IMaskedTextFieldState {
     displayValue: string;
     maskCursorPosition?: number;
+}
+
+// @public (undocumented)
+export interface IModal {
+    focus: () => void;
+}
+
+// @public (undocumented)
+export interface IModalProps extends React.ClassAttributes<ModalBase>, IWithResponsiveModeState, IAccessiblePopupProps {
+    allowTouchBodyScroll?: boolean;
+    className?: string;
+    componentRef?: IRefObject<IModal>;
+    containerClassName?: string;
+    dragOptions?: IDragOptions;
+    isBlocking?: boolean;
+    isDarkOverlay?: boolean;
+    isModeless?: boolean;
+    isOpen?: boolean;
+    layerProps?: ILayerProps;
+    onDismiss?: (ev?: React.MouseEvent<HTMLButtonElement>) => any;
+    onDismissed?: () => any;
+    // @deprecated
+    onLayerDidMount?: () => void;
+    overlay?: IOverlayProps;
+    scrollableContentClassName?: string;
+    styles?: IStyleFunctionOrObject<IModalStyleProps, IModalStyles>;
+    subtitleAriaId?: string;
+    theme?: ITheme;
+    titleAriaId?: string;
+    topOffsetFixed?: boolean;
+}
+
+// @public (undocumented)
+export type IModalStyleProps = Required<Pick<IModalProps, 'theme'>> & Pick<IModalProps, 'className' | 'containerClassName' | 'scrollableContentClassName' | 'topOffsetFixed' | 'isModeless'> & {
+    isOpen?: boolean;
+    isVisible?: boolean;
+    hasBeenOpened?: boolean;
+    modalRectangleTop?: number;
+    layerClassName?: string;
+    isDefaultDragHandle?: boolean;
+};
+
+// @public (undocumented)
+export interface IModalStyles {
+    // (undocumented)
+    keyboardMoveIcon: IStyle;
+    // (undocumented)
+    keyboardMoveIconContainer: IStyle;
+    // (undocumented)
+    layer: IStyle;
+    // (undocumented)
+    main: IStyle;
+    // (undocumented)
+    root: IStyle;
+    // (undocumented)
+    scrollableContent: IStyle;
 }
 
 // @public (undocumented)
@@ -895,6 +998,28 @@ export const MeasuredContext: React.Context<{
 }>;
 
 // @public (undocumented)
+export const Modal: React.FunctionComponent<IModalProps>;
+
+// @public (undocumented)
+export class ModalBase extends React.Component<IModalProps, IDialogState> implements IModal {
+    constructor(props: IModalProps);
+    // (undocumented)
+    componentDidMount(): void;
+    // (undocumented)
+    componentDidUpdate(prevProps: IModalProps, prevState: IDialogState): void;
+    // (undocumented)
+    componentWillUnmount(): void;
+    // (undocumented)
+    static defaultProps: IModalProps;
+    // (undocumented)
+    focus(): void;
+    // (undocumented)
+    render(): JSX.Element | null;
+    // (undocumented)
+    UNSAFE_componentWillReceiveProps(newProps: IModalProps): void;
+}
+
+// @public (undocumented)
 export const ONKEYDOWN_TIMEOUT_DURATION = 1000;
 
 // @public (undocumented)
@@ -1093,7 +1218,6 @@ export * from "office-ui-fabric-react/lib/Layer";
 export * from "office-ui-fabric-react/lib/List";
 export * from "office-ui-fabric-react/lib/MarqueeSelection";
 export * from "office-ui-fabric-react/lib/MessageBar";
-export * from "office-ui-fabric-react/lib/Modal";
 export * from "office-ui-fabric-react/lib/Nav";
 export * from "office-ui-fabric-react/lib/Overlay";
 export * from "office-ui-fabric-react/lib/Panel";
