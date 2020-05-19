@@ -188,6 +188,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
       variables: v => v.variables,
       pointing: v => v.pointing,
       primary: v => v.primary,
+      underlined: v => v.underlined,
     });
 
     const {
@@ -203,7 +204,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
       indicator,
       disabled,
       accessibility,
-      underlined,
+      underlined = parentProps.underlined,
       iconOnly,
       inSubmenu,
       pills,
@@ -230,6 +231,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
       active,
       pointing,
       primary,
+      underlined,
       variables: mergeComponentVariables(variables, parentProps.variables),
       isFromKeyboard,
       menuOpen,
