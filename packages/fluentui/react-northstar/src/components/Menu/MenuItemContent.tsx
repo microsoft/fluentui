@@ -1,7 +1,7 @@
 import { compose, ComponentWithAs } from '@fluentui/react-bindings';
+import { ShorthandConfig } from '@fluentui/react-compose';
 import * as PropTypes from 'prop-types';
-
-import { commonPropTypes, ShorthandConfig } from '../../utils';
+import { commonPropTypes } from '../../utils';
 import Box, { BoxProps } from '../Box/Box';
 
 interface MenuItemContentOwnProps {

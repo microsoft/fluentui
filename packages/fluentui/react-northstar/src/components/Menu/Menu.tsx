@@ -17,7 +17,7 @@ import * as PropTypes from 'prop-types';
 import * as React from 'react';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
-
+import { ShorthandConfig } from '@fluentui/react-compose';
 import { ShorthandCollection, ShorthandValue, ComponentEventHandler, ProviderContextPrepared } from '../../types';
 import {
   childrenExist,
@@ -29,7 +29,6 @@ import {
   getKindProp,
   rtlTextContainer,
   ShorthandFactory,
-  ShorthandConfig,
 } from '../../utils';
 import MenuItem, { MenuItemProps } from './MenuItem';
 import MenuDivider from './MenuDivider';
@@ -330,6 +329,9 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
       'submenu',
       'indicator',
     ],
+    shorthandConfig: {
+      mappedArrayProp: 'items',
+    },
   },
 ) as ComponentWithAs<'ul', MenuProps> & {
   create: ShorthandFactory<MenuProps>;
@@ -376,6 +378,5 @@ Menu.ItemIndicator = MenuItemIndicator;
 Menu.Divider = MenuDivider;
 
 Menu.create = createShorthandFactory({ Component: Menu, mappedArrayProp: 'items' });
-Menu.shorthandConfig = { mappedArrayProp: 'items' };
 
 export default Menu;

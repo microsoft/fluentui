@@ -51,18 +51,16 @@ const items = [
     key: 'editorials',
     content: 'Editorials',
     icon: <BookmarkIcon />,
-    menu: {
-      // TODO: check why mappedArrayProp is not working
-      items: [
-        {
-          key: 'One',
-          content: 'One',
-          menu: { items: [{ content: 'Four' }, { content: 'Five' }] },
-        },
-        { content: 'Two' },
-        { content: 'Three' }, // TODO: please copy the shorthandConfig
-      ],
-    },
+    menuOpen: true,
+    menu: [
+      {
+        key: 'One',
+        content: 'One',
+        menu: ['Four', { content: 'Five' }],
+      },
+      'Two',
+      'Three',
+    ],
   },
   { key: 'review', content: 'Reviews' },
   { key: 'events', content: 'Upcoming Events' },

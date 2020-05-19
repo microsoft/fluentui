@@ -14,7 +14,7 @@ import * as PropTypes from 'prop-types';
 import * as React from 'react';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
-
+import { ShorthandConfig } from '@fluentui/react-compose';
 import {
   childrenExist,
   createShorthandFactory,
@@ -25,7 +25,6 @@ import {
   rtlTextContainer,
   SizeValue,
   ShorthandFactory,
-  ShorthandConfig,
   createShorthand,
 } from '../../utils';
 import Box, { BoxProps } from '../Box/Box';

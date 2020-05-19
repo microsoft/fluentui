@@ -13,6 +13,7 @@ import {
 import { EventListener } from '@fluentui/react-component-event-listener';
 import { Ref, handleRef } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
+import { ShorthandConfig } from '@fluentui/react-compose';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
@@ -25,7 +26,6 @@ import {
   ContentComponentProps,
   commonPropTypes,
   isFromKeyboard as isEventFromKeyboard,
-  ShorthandConfig,
 } from '../../utils';
 import Menu, { MenuProps, MenuShorthandKinds } from './Menu';
 import MenuItemIcon, { MenuItemIconProps } from './MenuItemIcon';
@@ -548,6 +548,9 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
       'variables',
       '__parentComponent',
     ],
+    shorthandConfig: {
+      mappedProp: 'content',
+    },
   },
 ) as ComponentWithAs<'a', MenuItemProps> & {
   shorthandConfig: ShorthandConfig<MenuItemProps>;
@@ -589,10 +592,6 @@ MenuItem.defaultProps = {
   accessibility: menuItemBehavior as Accessibility,
   wrapper: {},
   indicator: {},
-};
-
-MenuItem.shorthandConfig = {
-  mappedProp: 'content',
 };
 
 export default MenuItem;

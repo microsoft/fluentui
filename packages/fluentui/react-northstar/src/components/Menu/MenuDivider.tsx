@@ -8,11 +8,11 @@ import {
   useStyles,
   useUnhandledProps,
 } from '@fluentui/react-bindings';
+import { ShorthandConfig } from '@fluentui/react-compose';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
-
 import {
   createShorthandFactory,
   UIComponentProps,
@@ -22,7 +22,6 @@ import {
   ContentComponentProps,
   rtlTextContainer,
   ShorthandFactory,
-  ShorthandConfig,
 } from '../../utils';
 import { ProviderContextPrepared } from '../../types';
 

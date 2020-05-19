@@ -1,5 +1,11 @@
 import * as React from 'react';
 
+export interface ShorthandConfig<P> {
+  mappedProp?: keyof P;
+  mappedArrayProp?: keyof P;
+  allowsJSX?: boolean;
+}
+
 //
 // "as" type safety
 //
@@ -58,6 +64,8 @@ export type ComposeOptions<InputProps = {}, InputStylesProps = {}, ParentStylesP
   slots?: Record<string, React.ElementType>;
 
   mapPropsToSlotProps?: (props: InputProps) => Record<string, object>;
+
+  shorthandConfig?: ShorthandConfig<InputProps>;
 };
 
 export type ClassDictionary = {
@@ -80,4 +88,5 @@ export type ComposePreparedOptions<Props = {}> = {
   mapPropsToSlotPropsChain: ((props: Props) => Record<string, object>)[];
 
   resolveSlotProps: <P>(props: P) => Record<string, object>;
+  shorthandConfig: ShorthandConfig<Props>;
 };
