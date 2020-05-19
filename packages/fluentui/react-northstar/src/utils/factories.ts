@@ -1,12 +1,11 @@
 import { mergeStyles } from '@fluentui/styles';
-import { ComponentWithAs } from '@fluentui/react-compose';
+import { ComponentWithAs, ComposePreparedOptions } from '@fluentui/react-compose';
 import cx from 'classnames';
 import * as _ from 'lodash';
 import * as React from 'react';
 import * as ReactIs from 'react-is';
 
 import { ShorthandValue, Props, PropsOf, ShorthandRenderFunction } from '../types';
-import { ComposePreparedOptions } from '@fluentui/react-compose/dist/src';
 
 type HTMLTag = 'iframe' | 'img' | 'input';
 type ShorthandProp = 'children' | 'src' | 'type';
@@ -262,7 +261,7 @@ export function createShorthand<TElementType extends React.ElementType>(
 ): React.ReactElement;
 export function createShorthand<P>(Component, value?, options?) {
   const { mappedProp = 'children', allowsJSX = true, mappedArrayProp } =
-    (Component.fluentComposeConfig && Component.fluentComposeConfig.shorthandConfig) || {};
+    Component.fluentComposeConfig?.shorthandConfig || Component.shorthandConfig || {};
 
   return createShorthandInternal<P>({
     Component,
