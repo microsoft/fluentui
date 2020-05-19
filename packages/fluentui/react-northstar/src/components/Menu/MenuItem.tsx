@@ -581,7 +581,7 @@ MenuItem.propTypes = {
   inSubmenu: PropTypes.bool,
   indicator: customPropTypes.shorthandAllowingChildren,
   onMenuOpenChange: PropTypes.func,
-  __parentComponent: PropTypes.elementType, // TODO: check type
+  __parentComponent: PropTypes.elementType as PropTypes.Requireable<React.ElementType>,
 };
 
 MenuItem.defaultProps = {
