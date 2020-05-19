@@ -11,10 +11,12 @@ export * from './Button/buttonGroupBehavior';
 export { default as toggleButtonBehavior } from './Button/toggleButtonBehavior';
 export * from './Image/imageBehavior';
 export { default as imageBehavior } from './Image/imageBehavior';
-export { default as menuBehavior } from './Menu/menuBehavior';
+
 export * from './Menu/menuBehavior';
-export { default as menuItemBehavior } from './Menu/menuItemBehavior';
+export { default as menuBehavior } from './Menu/menuBehavior';
 export * from './Menu/menuItemBehavior';
+export { default as menuItemBehavior } from './Menu/menuItemBehavior';
+export * from './Menu/menuDividerBehavior';
 export { default as menuDividerBehavior } from './Menu/menuDividerBehavior';
 export { default as submenuBehavior } from './Menu/submenuBehavior';
 
@@ -34,6 +36,7 @@ export { default as selectableListItemBehavior } from './List/selectableListItem
 
 export { default as loaderBehavior } from './Loader/loaderBehavior';
 export { default as inputBehavior } from './Input/inputBehavior';
+export * from './Input/inputBehavior';
 export { default as iconBehavior } from './Icon/iconBehavior';
 export * from './Icon/iconBehavior';
 export { default as indicatorBehavior } from './Box/indicatorBehavior';
@@ -68,7 +71,9 @@ export * from './Chat/chatMessageBehavior';
 export { default as gridBehavior } from './Grid/gridBehavior';
 export { default as gridHorizontalBehavior } from './Grid/gridHorizontalBehavior';
 export { default as hierarchicalTreeBehavior } from './HierarchicalTree/hierarchicalTreeBehavior';
+export * from './HierarchicalTree/hierarchicalTreeBehavior';
 export { default as hierarchicalTreeItemBehavior } from './HierarchicalTree/hierarchicalTreeItemBehavior';
+export * from './HierarchicalTree/hierarchicalTreeItemBehavior';
 export { default as hierarchicalTreeTitleBehavior } from './HierarchicalTree/hierarchicalTreeTitleBehavior';
 export { default as hierarchicalSubtreeBehavior } from './HierarchicalTree/hierarchicalSubtreeBehavior';
 export { default as dialogBehavior } from './Dialog/dialogBehavior';
@@ -126,5 +131,8 @@ export * from './Card/cardBehavior';
 export { default as cardFocusableBehavior } from './Card/cardFocusableBehavior';
 export { default as cardChildrenFocusableBehavior } from './Card/cardChildrenFocusableBehavior';
 export { default as cardsContainerBehavior } from './Card/cardsContainerBehavior';
+export * from './Card/cardsContainerBehavior';
 export { default as videoBehavior } from './Video/videoBehavior';
 export * from './Video/videoBehavior';
+export { default as hiddenComponentBehavior } from './Common/hiddenComponentBehavior';
+export { default as cardSelectableBehavior } from './Card/cardSelectableBehavior';

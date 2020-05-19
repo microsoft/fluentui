@@ -41,7 +41,7 @@ export type Input<T extends React.ElementType = 'div', P = {}> =
 
 export type ComposeRenderFunction<T extends React.ElementType = 'div', P = {}> = (
   props: P,
-  ref: React.Ref<T>,
+  ref: React.Ref<T extends keyof HTMLElementTagNameMap ? HTMLElementTagNameMap[T] : T>,
   composeOptions: ComposePreparedOptions,
 ) => React.ReactElement | null;
 
