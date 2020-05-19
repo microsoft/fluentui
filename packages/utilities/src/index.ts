@@ -64,6 +64,7 @@ export * from './scroll';
 export * from './selection/index';
 export * from './string';
 export * from './styled';
+export * from './useClasses';
 export * from './warn';
 export * from './ie11Detector';
 export * from './getPropsWithDefaults';
