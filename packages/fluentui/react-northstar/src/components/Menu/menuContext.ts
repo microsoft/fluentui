@@ -2,6 +2,7 @@ import { createContext } from '@fluentui/react-context-selector';
 import { ComponentVariablesInput } from '@fluentui/styles';
 import * as React from 'react';
 import { MenuItemProps } from './MenuItem';
+import { Accessibility } from '@fluentui/accessibility';
 
 export type MenuContextValue = {
   activeIndex: number;
@@ -15,6 +16,7 @@ export type MenuContextValue = {
   pills: boolean;
   inSubmenu: boolean;
   onItemClick?: (e: React.KeyboardEvent | React.MouseEvent, itemIndex: MenuItemProps) => void;
+  accessibility: { [childBehaviorSlot: string]: Accessibility<any> };
 };
 
 export type MenuContextSubscribedValue = Pick<
@@ -30,6 +32,7 @@ export type MenuContextSubscribedValue = Pick<
   | 'inSubmenu'
   | 'pills'
   | 'secondary'
+  | 'accessibility'
 > & {
   active: boolean;
 };
@@ -45,6 +48,7 @@ export const MenuContext = createContext<MenuContextValue>({
   secondary: false,
   pills: false,
   inSubmenu: false,
+  accessibility: {},
 });
 
 export const MenuContextProvider = MenuContext.Provider;

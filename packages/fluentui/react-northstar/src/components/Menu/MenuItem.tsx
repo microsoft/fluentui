@@ -194,6 +194,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
       inSubmenu: v => v.inSubmenu,
       pills: v => v.pills,
       secondary: v => v.secondary,
+      accessibility: v => v.accessibility,
     });
 
     const {
@@ -208,7 +209,6 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
       vertical = parentProps.vertical,
       indicator,
       disabled,
-      accessibility,
       underlined = parentProps.underlined,
       iconOnly = parentProps.iconOnly,
       inSubmenu = parentProps.inSubmenu,
@@ -219,6 +219,8 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
       styles,
       variables,
     } = props;
+
+    const accessibility = parentProps.accessibility.item || props.accessibility;
 
     const [menuOpen, setMenuOpen] = useAutoControlled({
       defaultValue: props.defaultMenuOpen,
@@ -233,6 +235,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
 
     const slotProps = composeOptions.resolveSlotProps<MenuItemProps & MenuItemState>({
       ...props,
+      accessibility,
       active,
       pointing,
       primary,
@@ -451,7 +454,6 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
         </ElementType>
       </Ref>
     );
-
     const maybeSubmenu =
       menu && active && menuOpen ? (
         <>

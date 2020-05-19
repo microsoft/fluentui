@@ -149,6 +149,7 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
       className,
       design,
       secondary,
+      accessibility,
     } = props;
 
     const ElementType = getElementType(props);
@@ -277,6 +278,7 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
       secondary,
       pills,
       inSubmenu: props.submenu,
+      accessibility: accessibility(props).childBehaviors,
     };
 
     const element = getA11yProps.unstable_wrapWithFocusZone(
