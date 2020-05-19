@@ -89,11 +89,10 @@ const CardExampleSelectableGrid = () => {
   const cards = Array(cardsNumber)
     .fill(undefined)
     .map((item, index) => ({ index: index + 1, title: `User ${index + 1}` }));
-  const initialState: SelectableCardsGridState = {
-    ...cards.reduce((cards, card) => {
-      cards[card.index] = false;
-      return cards;
-    }, {}),
+  const initialState: SelectableCardsGridState = cards.reduce((cards, card) => {
+    cards[card.index] = false;
+    return cards;
+  }, {}),
   };
   const [state, dispatch] = React.useReducer(selectableCardsGridStateReducer, initialState);
 
