@@ -9,11 +9,6 @@ import {
 import { UnifiedPicker } from '../UnifiedPicker';
 
 export const UnifiedPeoplePicker = (props: IUnifiedPeoplePickerProps): JSX.Element => {
-  // update the suggestion like componentWillReceiveProps
-  // React.useEffect(() => {
-  //   console.log('Re-rendered');
-  // }, [props.floatingSuggestionProps.suggestions]);
-
   const renderSelectedItems = (selectedPeopleListProps: ISelectedPeopleListProps<IPersonaProps>): JSX.Element => {
     return <SelectedPeopleList {...selectedPeopleListProps} ref={null} />;
   };
