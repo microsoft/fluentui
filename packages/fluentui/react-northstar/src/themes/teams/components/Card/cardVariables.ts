@@ -62,6 +62,9 @@ export interface CardVariables {
   expandableBoxEndMaxHeight: string;
   expandableBoxShrinkTransition: string;
   expandableBoxExpandTransition: string;
+  selectedBackgroundColor: string;
+  selectedBorderColor: string;
+  selectedBoxShadow: string;
 }
 
 export default (siteVars): CardVariables => {
@@ -128,5 +131,8 @@ export default (siteVars): CardVariables => {
     expandableBoxEndMaxHeight: pxToRem(500),
     expandableBoxShrinkTransition: 'max-height 0.5s ease-in',
     expandableBoxExpandTransition: 'max-height 1s ease-in',
+    selectedBackgroundColor: siteVars.colorScheme.default.backgroundActive,
+    selectedBorderColor: siteVars.colorScheme.default.borderActive,
+    selectedBoxShadow: siteVars.shadowLevel4,
   };
 };
