@@ -3,7 +3,7 @@ import { Menu } from '@fluentui/react-northstar';
 import { BookmarkIcon, WordIcon, CalendarIcon } from '@fluentui/react-icons-northstar';
 
 const MenuExampleVertical = () => (
-  <Menu defaultActiveIndex={0} vertical>
+  <Menu primary defaultActiveIndex={0} vertical>
     <Menu.Item
       index={0}
       icon={
@@ -15,7 +15,7 @@ const MenuExampleVertical = () => (
       }
       content="Editorials"
     />
-    <Menu.Item index={1} icon={<WordIcon {...{}} />} content="Reviews" />
+    <Menu.Item index={1} content="Reviews" icon={<WordIcon {...{}} />} />
     <Menu.Item index={2} content="Upcoming Events" />
     <Menu.Item
       index={3}
@@ -25,7 +25,21 @@ const MenuExampleVertical = () => (
         items: [
           <Menu.ItemContent key="item1">item1</Menu.ItemContent>,
           <Menu.ItemContent key="item2">item2</Menu.ItemContent>,
-          <Menu.ItemContent key="item3">item3</Menu.ItemContent>,
+          {
+            key: 'item3',
+            content: 'item3',
+            items: [
+              <Menu.Item content="item1" key="item1" />,
+              <Menu.Item content="item2" key="item2" />,
+              <Menu.Item
+                content="item3"
+                key="item3"
+                menu={{
+                  items: [<Menu.Item content="3.1" key="3.1" />],
+                }}
+              />,
+            ],
+          },
         ],
       }}
     />
