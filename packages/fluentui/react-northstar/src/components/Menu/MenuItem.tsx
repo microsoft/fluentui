@@ -186,6 +186,8 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
       activeIndex: v => v.activeIndex,
       onItemClick: v => v.onItemClick,
       variables: v => v.variables,
+      pointing: v => v.pointing,
+      primary: v => v.primary,
     });
 
     const {
@@ -194,7 +196,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
       icon,
       wrapper,
       menu,
-      primary,
+      primary = parentProps.primary,
       secondary,
       active = parentProps.active,
       vertical,
@@ -205,7 +207,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
       iconOnly,
       inSubmenu,
       pills,
-      pointing,
+      pointing = parentProps.pointing,
       className,
       design,
       styles,
@@ -226,6 +228,8 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
     const slotProps = composeOptions.resolveSlotProps<MenuItemProps & MenuItemState>({
       ...props,
       active,
+      pointing,
+      primary,
       variables: mergeComponentVariables(variables, parentProps.variables),
       isFromKeyboard,
       menuOpen,

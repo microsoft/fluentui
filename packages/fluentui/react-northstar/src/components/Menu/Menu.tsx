@@ -269,6 +269,8 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
       activeIndex: +activeIndex,
       onItemClick: handleClick,
       variables,
+      pointing,
+      primary,
     };
 
     const element = getA11yProps.unstable_wrapWithFocusZone(

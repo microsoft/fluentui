@@ -6,17 +6,23 @@ import { MenuItemProps } from './MenuItem';
 export type MenuContextValue = {
   activeIndex: number;
   variables: ComponentVariablesInput;
-
+  pointing: boolean | 'start' | 'end';
+  primary: boolean;
   onItemClick?: (e: React.KeyboardEvent | React.MouseEvent, itemIndex: MenuItemProps) => void;
 };
 
-export type MenuContextSubscribedValue = Pick<MenuContextValue, 'activeIndex' | 'variables' | 'onItemClick'> & {
+export type MenuContextSubscribedValue = Pick<
+  MenuContextValue,
+  'activeIndex' | 'variables' | 'onItemClick' | 'primary' | 'pointing'
+> & {
   active: boolean;
 };
 
 export const MenuContext = createContext<MenuContextValue>({
   activeIndex: -1,
   variables: {},
+  pointing: false,
+  primary: false,
 });
 
 export const MenuContextProvider = MenuContext.Provider;
