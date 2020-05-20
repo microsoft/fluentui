@@ -261,7 +261,7 @@ export function createShorthand<TElementType extends React.ElementType>(
 ): React.ReactElement;
 export function createShorthand<P>(Component, value?, options?) {
   const { mappedProp = 'children', allowsJSX = true, mappedArrayProp } =
-    (Component.fluentComposeConfig && Component.fluentComposeConfig.shorthandConfig) || {};
+    Component.shorthandConfig || Component.fluentComposeConfig?.shorthandConfig) || {};
 
   return createShorthandInternal<P>({
     Component,
