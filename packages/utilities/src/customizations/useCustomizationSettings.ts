@@ -20,7 +20,7 @@ export function useCustomizationSettings(
     Customizations.observe(onCustomizationChange);
 
     return () => Customizations.unobserve(onCustomizationChange);
-  }, []);
+  }, [onCustomizationChange]);
 
   return settings;
 }
