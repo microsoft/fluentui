@@ -38,7 +38,7 @@ function compose<
   // Set the display name.
   Component.displayName = composeOptions.displayName;
 
-  // Set defaultProps (TODO: remove these.)
+  // BUG: This replaces previous default props rather than a merge. Even a shallow merge would be fine.
   if ((input as InputComposeComponent).defaultProps) {
     Component.defaultProps = (input as InputComposeComponent).defaultProps;
   }
