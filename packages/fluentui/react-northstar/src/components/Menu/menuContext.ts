@@ -41,19 +41,22 @@ export type MenuContextSubscribedValue = Partial<
   }
 >;
 
-export const MenuContext = createContext<MenuContextValue>({
-  activeIndex: -1,
-  variables: {},
-  pointing: false,
-  primary: false,
-  underlined: false,
-  iconOnly: false,
-  vertical: false,
-  secondary: false,
-  pills: false,
-  inSubmenu: false,
-  accessibility: {},
-  __parentComponent: null,
-});
+export const MenuContext = createContext<MenuContextValue>(
+  {
+    activeIndex: -1,
+    variables: {},
+    pointing: false,
+    primary: false,
+    underlined: false,
+    iconOnly: false,
+    vertical: false,
+    secondary: false,
+    pills: false,
+    inSubmenu: false,
+    accessibility: {},
+    __parentComponent: null,
+  },
+  { strict: false },
+);
 
 export const MenuContextProvider = MenuContext.Provider;

@@ -181,22 +181,23 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
     const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
     setStart();
 
-    const parentProps: MenuContextSubscribedValue = useContextSelectors(MenuContext, {
-      active: v => v.activeIndex === props.index,
-      activeIndex: v => v.activeIndex,
-      onItemClick: v => v.onItemClick,
-      variables: v => v.variables,
-      pointing: v => v.pointing,
-      primary: v => v.primary,
-      underlined: v => v.underlined,
-      iconOnly: v => v.iconOnly,
-      vertical: v => v.vertical,
-      inSubmenu: v => v.inSubmenu,
-      pills: v => v.pills,
-      secondary: v => v.secondary,
-      accessibility: v => v.accessibility,
-      __parentComponent: v => v.__parentComponent,
-    });
+    const parentProps: MenuContextSubscribedValue =
+      useContextSelectors(MenuContext, {
+        active: v => v.activeIndex === props.index,
+        activeIndex: v => v.activeIndex,
+        onItemClick: v => v.onItemClick,
+        variables: v => v.variables,
+        pointing: v => v.pointing,
+        primary: v => v.primary,
+        underlined: v => v.underlined,
+        iconOnly: v => v.iconOnly,
+        vertical: v => v.vertical,
+        inSubmenu: v => v.inSubmenu,
+        pills: v => v.pills,
+        secondary: v => v.secondary,
+        accessibility: v => v.accessibility,
+        __parentComponent: v => v.__parentComponent,
+      }) || {};
 
     const {
       children,
@@ -339,7 +340,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
       }
 
       performClick(e);
-      parentProps.onItemClick(e, props);
+      _.invoke(parentProps, 'onItemClick', e, props);
       _.invoke(props, 'onClick', e, props);
     };
 
