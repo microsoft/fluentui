@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "MessageBar: Restore style overrides for Link inside MessageBar in high contrast; use dismissButtonAriaLabel as title too",
+  "packageName": "office-ui-fabric-react",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-05-06T23:31:11.055Z"
+}
