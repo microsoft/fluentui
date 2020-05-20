@@ -845,7 +845,7 @@ export enum KeyboardSpinDirection {
 }
 
 // @public (undocumented)
-export const Link: import("@fluentui/react-compose").ComponentWithAs<"a", LinkProps>;
+export const Link: React.FunctionComponent<LinkProps>;
 
 // @public (undocumented)
 export const LinkBase: import("@fluentui/react-compose").ComponentWithAs<"a", LinkProps>;
@@ -873,6 +873,8 @@ export type LinkSlotProps = {
 
 // @public (undocumented)
 export interface LinkSlots {
+    // (undocumented)
+    keytipData: React.ElementType;
 }
 
 // @public (undocumented)

@@ -81,15 +81,6 @@ export function mergeProps<TState, TSlots, TSlotProps>(
     },
   };
 
-  console.log(
-    filterProps({
-      ...defaultSlotProps.root,
-      // tslint:disable-next-line:no-any
-      ...(options as any).defaultProps,
-      ...state,
-    }),
-  );
-
   // Distribute slot content in state to slotProps.
   Object.keys(slots).forEach(slotName => {
     // tslint:disable-next-line:no-any

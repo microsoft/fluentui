@@ -96,7 +96,9 @@ export interface ILinkStyles {
 /**
  * {@docCategory Link}
  */
-export interface LinkSlots {}
+export interface LinkSlots {
+  keytipData: React.ElementType;
+}
 
 /**
  * {@docCategory Link}

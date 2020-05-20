@@ -7,12 +7,27 @@ import { LinkProps, LinkSlots, LinkSlotProps } from './Link.types';
  * state, slots and slotProps for consumption by the component.
  */
 export const useLink = (props: LinkProps, options: ComposePreparedOptions) => {
-  const { as, disabled, href } = props;
-  const handledProps = {
+  const { 'aria-describedby': ariaDescribedBy, as, disabled, href, keytipProps, onClick } = props;
+
+  const _onClick = (ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => {
+    if (disabled) {
+      ev.preventDefault();
+    } else if (onClick) {
+      onClick(ev);
+    }
+  };
+
+  const handledProps: LinkProps = {
     ...props,
+    'aria-disabled': disabled,
     as: as ? as : href ? 'a' : 'button',
     href: disabled ? undefined : href,
-    'aria-disabled': disabled,
+    onClick: _onClick,
+    keytipData: {
+      ariaDescribedBy: ariaDescribedBy,
+      disabled,
+      keytipProps,
+    },
   };
   return mergeProps<LinkProps, LinkSlots, LinkSlotProps>(handledProps, options);
 };
