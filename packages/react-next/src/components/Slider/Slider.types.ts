@@ -10,6 +10,7 @@ export interface ISlider {
 
   focus: () => void;
 }
+export type ISliderState = any;
 
 /**
  * {@docCategory Slider}

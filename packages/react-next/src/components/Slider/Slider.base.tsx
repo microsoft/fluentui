@@ -4,6 +4,7 @@ import { ISliderProps, ISliderStyleProps, ISliderStyles } from './Slider.types';
 import { classNamesFunction, getNativeProps, divProperties } from '../../Utilities';
 import { Label } from '../../Label';
 import { useId, useBoolean, useControllableValue } from '@uifabric/react-hooks';
+import { useSlider } from './useSlider';
 
 const getClassNames = classNamesFunction<ISliderStyleProps, ISliderStyles>({
   useStaticStyles: true,
@@ -256,9 +257,10 @@ export const SliderBase = React.forwardRef((props: ISliderProps, ref: React.Ref<
   const onKeyDownProp: {} = disabled ? {} : { onKeyDown: onKeyDown };
 
   useComponentRef(props, thumb, value);
+  const slotProps = useSlider(props, ref);
 
   return (
-    <div className={classNames.root} ref={ref}>
+    <div {...slotProps.root}>
       {label && (
         <Label className={classNames.titleLabel} {...(ariaLabel ? {} : { htmlFor: id })} disabled={disabled}>
           {label}
