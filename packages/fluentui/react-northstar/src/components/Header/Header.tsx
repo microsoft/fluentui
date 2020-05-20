@@ -1,12 +1,10 @@
 import { Accessibility } from '@fluentui/accessibility';
 import * as customPropTypes from '@fluentui/react-proptypes';
-import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
 import {
   childrenExist,
   createShorthandFactory,
-  UIComponent,
   UIComponentProps,
   ChildrenComponentProps,
   ContentComponentProps,
@@ -14,11 +12,19 @@ import {
   ColorComponentProps,
   rtlTextContainer,
   AlignValue,
-  ShorthandFactory,
 } from '../../utils';
+// @ts-ignore
+import { ThemeContext } from 'react-fela';
 import HeaderDescription, { HeaderDescriptionProps } from './HeaderDescription';
 
-import { WithAsProp, ShorthandValue, withSafeTypeForAs } from '../../types';
+import {
+  WithAsProp,
+  ShorthandValue,
+  withSafeTypeForAs,
+  FluentComponentStaticProps,
+  ProviderContextPrepared,
+} from '../../types';
+import { useTelemetry, useAccessibility, getElementType, useUnhandledProps, useStyles } from '@fluentui/react-bindings';
 
 export interface HeaderProps
   extends UIComponentProps,
@@ -38,56 +44,86 @@ export interface HeaderProps
 }
 
 export const headerClassName = 'ui-header';
+export type HeaderStylesProps = Required<Pick<HeaderProps, 'align' | 'color'>> & { hasDescription: boolean };
 
-class Header extends UIComponent<WithAsProp<HeaderProps>, any> {
-  static displayName = 'Header';
+const Header: React.FC<WithAsProp<HeaderProps>> &
+  FluentComponentStaticProps<HeaderProps> & {
+    Description: typeof HeaderDescription;
+  } = props => {
+  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const { setStart, setEnd } = useTelemetry(Header.displayName, context.telemetry);
+  setStart();
+  const { children, content, variables, align, className, design, styles, description, color } = props;
+  const ElementType = getElementType(props);
+  const unhandledProps = useUnhandledProps(Header.handledProps, props);
+  const hasChildren = childrenExist(children);
+  const contentElement = childrenExist(children) ? children : content;
 
-  static deprecated_className = headerClassName;
+  const getA11yProps = useAccessibility(props.accessibility, {
+    debugName: Header.displayName,
+    rtl: context.rtl,
+  });
 
-  static create: ShorthandFactory<HeaderProps>;
+  const { classes } = useStyles<HeaderStylesProps>(Header.displayName, {
+    className: headerClassName,
+    mapPropsToStyles: () => ({
+      align,
+      hasDescription: !!description,
+      color,
+    }),
+    mapPropsToInlineStyles: () => ({
+      className,
+      design,
+      styles,
+      variables,
+    }),
+    rtl: context.rtl,
+  });
 
-  static propTypes = {
-    ...commonPropTypes.createCommon({ color: true }),
-    description: customPropTypes.itemShorthand,
-    align: customPropTypes.align,
-    rtlAttributes: PropTypes.func,
-  };
-
-  static defaultProps = {
-    as: 'h1',
-  };
-
-  static Description = HeaderDescription;
-
-  renderComponent({ accessibility, ElementType, classes, variables: v, unhandledProps }) {
-    const { children, description, content } = this.props;
-
-    const hasChildren = childrenExist(children);
-    const contentElement = childrenExist(children) ? children : content;
-
-    return (
-      <ElementType
-        {...rtlTextContainer.getAttributes({
+  const element = (
+    <ElementType
+      {...getA11yProps('root', {
+        className: classes.root,
+        ...unhandledProps,
+        ...rtlTextContainer.getAttributes({
           forElements: [children, content],
           condition: !description,
-        })}
-        {...accessibility.attributes.root}
-        {...unhandledProps}
-        className={classes.root}
-      >
-        {rtlTextContainer.createFor({ element: contentElement, condition: !!description })}
-        {!hasChildren &&
-          HeaderDescription.create(description, {
-            defaultProps: () => ({
+        }),
+      })}
+    >
+      {rtlTextContainer.createFor({ element: contentElement, condition: !!description })}
+      {!hasChildren &&
+        HeaderDescription.create(description, {
+          defaultProps: () =>
+            getA11yProps('description', {
               variables: {
-                ...(v.descriptionColor && { color: v.descriptionColor }),
+                ...(variables.descriptionColor && { color: variables.descriptionColor }),
               },
             }),
-          })}
-      </ElementType>
-    );
-  }
-}
+        })}
+    </ElementType>
+  );
+
+  setEnd();
+
+  return element;
+};
+
+Header.displayName = 'Header';
+
+Header.propTypes = {
+  ...commonPropTypes.createCommon({ color: true }),
+  description: customPropTypes.itemShorthand,
+  align: customPropTypes.align,
+};
+
+Header.defaultProps = {
+  as: 'h1',
+};
+
+Header.handledProps = Object.keys(Header.propTypes) as any;
+
+Header.Description = HeaderDescription;
 
 Header.create = createShorthandFactory({ Component: Header, mappedProp: 'content' });
 
