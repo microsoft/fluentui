@@ -70,7 +70,7 @@ export type ComposeOptions<InputProps = {}, InputStylesProps = {}, ParentStylesP
 };
 
 export type ClassDictionary = {
-  [key: string]: string | undefined;
+  [key: string]: string;
 };
 
 export type ComposePreparedOptions<Props = {}> = {
