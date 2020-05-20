@@ -6,6 +6,7 @@ import * as React from 'react';
 import * as ReactIs from 'react-is';
 
 import { ShorthandValue, Props, PropsOf, ShorthandRenderFunction } from '../types';
+import { ComposePreparedOptions } from '@fluentui/react-compose/dist/src';
 
 type HTMLTag = 'iframe' | 'img' | 'input';
 type ShorthandProp = 'children' | 'src' | 'type';
@@ -35,12 +36,6 @@ export type ShorthandFactory<P> = (
   value: ShorthandValue<P>,
   options?: CreateShorthandOptions<P>,
 ) => React.ReactElement | null | undefined;
-
-export interface ShorthandConfig<P> {
-  mappedProp?: keyof P;
-  mappedArrayProp?: keyof P;
-  allowsJSX?: boolean;
-}
 
 // ============================================================
 // Factory Creators
@@ -246,27 +241,28 @@ export function createShorthandInternal<P>({
 }
 
 export function createShorthand<TFunctionComponent extends React.FunctionComponent>(
-  Component: TFunctionComponent & { shorthandConfig?: ShorthandConfig<PropsOf<TFunctionComponent>> },
+  Component: TFunctionComponent & { fluentComposeConfig?: ComposePreparedOptions<PropsOf<TFunctionComponent>> },
   value?: ShorthandValue<PropsOf<TFunctionComponent>>,
   options?: CreateShorthandOptions<PropsOf<TFunctionComponent>>,
 ): React.ReactElement;
 export function createShorthand<TInstance extends React.Component>(
-  Component: { new (...args: any[]): TInstance } & { shorthandConfig?: ShorthandConfig<PropsOf<TInstance>> },
+  Component: { new (...args: any[]): TInstance } & { fluentComposeConfig?: ComposePreparedOptions<PropsOf<TInstance>> },
   value?: ShorthandValue<PropsOf<TInstance>>,
   options?: CreateShorthandOptions<PropsOf<TInstance>>,
 ): React.ReactElement;
 export function createShorthand<E extends React.ElementType, P>(
-  Component: ComponentWithAs<E, P> & { shorthandConfig?: ShorthandConfig<P> },
+  Component: ComponentWithAs<E, P> & { fluentComposeConfig?: ComposePreparedOptions<P> },
   value?: ShorthandValue<P>,
   options?: CreateShorthandOptions<P>,
 ): React.ReactElement;
 export function createShorthand<TElementType extends React.ElementType>(
-  Component: TElementType & { shorthandConfig?: ShorthandConfig<PropsOf<TElementType>> },
+  Component: TElementType & { fluentComposeConfig?: ComposePreparedOptions<PropsOf<TElementType>> },
   value?: ShorthandValue<PropsOf<TElementType>>,
   options?: CreateShorthandOptions<PropsOf<TElementType>>,
 ): React.ReactElement;
 export function createShorthand<P>(Component, value?, options?) {
-  const { mappedProp = 'children', allowsJSX = true, mappedArrayProp } = Component.shorthandConfig || {};
+  const { mappedProp = 'children', allowsJSX = true, mappedArrayProp } =
+    (Component.fluentComposeConfig && Component.fluentComposeConfig.shorthandConfig) || {};
 
   return createShorthandInternal<P>({
     Component,

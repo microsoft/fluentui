@@ -1,8 +1,9 @@
 import { compose, ComponentWithAs } from '@fluentui/react-bindings';
 import { indicatorBehavior } from '@fluentui/accessibility';
 import * as PropTypes from 'prop-types';
+import { ShorthandConfig } from '@fluentui/react-compose';
 
-import { commonPropTypes, ShorthandConfig } from '../../utils';
+import { commonPropTypes } from '../../utils';
 import Box, { BoxProps } from '../Box/Box';
 
 interface MenuItemIndicatorOwnProps {

@@ -11,7 +11,7 @@ import {
 import { mergeComponentVariables } from '@fluentui/styles';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
-
+import { ShorthandConfig } from '@fluentui/react-compose';
 import * as React from 'react';
 import { ProviderContextPrepared } from '../../types';
 import {
@@ -21,7 +21,6 @@ import {
   UIComponentProps,
   commonPropTypes,
   ShorthandFactory,
-  ShorthandConfig,
 } from '../../utils';
 import { ToolbarVariablesContext } from './toolbarVariablesContext';
 
