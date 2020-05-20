@@ -34,7 +34,7 @@ export interface HeaderProps
   /**
    * Accessibility behavior if overridden by the user.
    */
-  accessibility?: Accessibility;
+  accessibility?: Accessibility<never>;
 
   /** Shorthand for Header.Description. */
   description?: ShorthandValue<HeaderDescriptionProps>;
@@ -59,7 +59,7 @@ const Header: React.FC<WithAsProp<HeaderProps>> &
   const hasChildren = childrenExist(children);
   const contentElement = childrenExist(children) ? children : content;
 
-  const getA11yProps = useAccessibility(props.accessibility, {
+  const getA11yProps = useAccessibility<never>(props.accessibility, {
     debugName: Header.displayName,
     rtl: context.rtl,
   });
