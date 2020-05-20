@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ThemeProvider as ReactThemeProvider, ThemeProviderProps } from '@fluentui/react-theme-provider';
-import { useCustomizationSettings } from 'office-ui-fabric-react/lib/Utilities';
+import { useCustomizationSettings } from '../Utilities';
 import { convertLegacyTheme } from './convertLegacyTheme';
 import { ITheme } from '../Styling';
 
