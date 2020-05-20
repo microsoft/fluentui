@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Update ClassDictionary typing",
+  "packageName": "@fluentui/react-compose",
+  "email": "xgao@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-05-19T23:59:42.973Z"
+}

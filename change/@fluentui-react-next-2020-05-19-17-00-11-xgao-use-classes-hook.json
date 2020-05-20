@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Add useClasses hook and replace styled",
+  "packageName": "@fluentui/react-next",
+  "email": "xgao@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-05-20T00:00:03.593Z"
+}
