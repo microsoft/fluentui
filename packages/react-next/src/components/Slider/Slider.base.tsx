@@ -3,7 +3,7 @@ import { KeyCodes, css, getRTL, getRTLSafeKeyCode, warnMutuallyExclusive, on, Fo
 import { ISliderProps, ISliderStyleProps, ISliderStyles } from './Slider.types';
 import { classNamesFunction, getNativeProps, divProperties } from '../../Utilities';
 import { Label } from '../../Label';
-import { useId, useBoolean, useControllableValue } from '@uifabric/react-hooks';
+import { useBoolean, useControllableValue } from '@uifabric/react-hooks';
 import { useSlider } from './useSlider';
 
 const getClassNames = classNamesFunction<ISliderStyleProps, ISliderStyles>({
@@ -29,13 +29,31 @@ const useComponentRef = (props: ISliderProps, thumb: React.RefObject<HTMLSpanEle
     [value],
   );
 };
+const SliderLabel = (props: {
+  className?: string;
+  label?: string;
+  ariaLabel?: string;
+  disabled?: boolean;
+  id?: string;
+}) => {
+  const { className, label, ariaLabel, disabled, id } = props;
+
+  if (!label) {
+    return null;
+  }
+
+  return (
+    <Label className={className} {...(ariaLabel ? {} : { htmlFor: id })} disabled={disabled}>
+      {label}
+    </Label>
+  );
+};
 
 export const SliderBase = React.forwardRef((props: ISliderProps, ref: React.Ref<HTMLDivElement>) => {
   let disposables: (() => void)[] = [];
   const sliderLine = React.useRef<HTMLDivElement>(null);
   const thumb = React.useRef<HTMLSpanElement>(null);
   const [useShowTransitions, { toggle: toggleUseShowTransitions }] = useBoolean(true);
-  const id = useId('Slider');
   const {
     step = 1,
     ariaLabel,
@@ -261,14 +279,10 @@ export const SliderBase = React.forwardRef((props: ISliderProps, ref: React.Ref<
 
   return (
     <div {...slotProps.root}>
-      {label && (
-        <Label className={classNames.titleLabel} {...(ariaLabel ? {} : { htmlFor: id })} disabled={disabled}>
-          {label}
-        </Label>
-      )}
+      <SliderLabel {...slotProps.label} />
       <div className={classNames.container}>
         <div
-          id={id}
+          id={slotProps.label.id}
           aria-valuenow={value}
           aria-valuemin={min}
           aria-valuemax={max}

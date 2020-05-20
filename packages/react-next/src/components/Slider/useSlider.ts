@@ -42,6 +42,7 @@ export const useSlider: (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =>
     theme,
     originFromZero = false,
   } = props;
+  const id = useId('Slider');
   const [useShowTransitions, { toggle: toggleUseShowTransitions }] = useBoolean(true);
   const classNames = getClassNames(styles, {
     className,
@@ -56,7 +57,16 @@ export const useSlider: (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =>
     ref: ref,
   };
 
+  const labelProps = {
+    className: classNames.titleLabel,
+    label,
+    ariaLabel,
+    disabled,
+    id,
+  };
+
   return {
     root: rootProps,
+    label: labelProps,
   };
 };
