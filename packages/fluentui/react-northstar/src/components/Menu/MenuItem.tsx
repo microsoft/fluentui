@@ -390,7 +390,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
       <Ref
         innerRef={node => {
           itemRef.current = node;
-          handleRef(ref, node as any /* TODO: fix refs in compose */);
+          handleRef(ref, node);
         }}
       >
         <ElementType

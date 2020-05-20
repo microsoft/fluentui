@@ -18,7 +18,7 @@ export interface IToggleState {
 }
 
 const COMPONENT_NAME = 'Toggle';
-const getClassNames = classNamesFunction<IToggleStyleProps, IToggleStyles>();
+const getClassNames = classNamesFunction<IToggleStyleProps, IToggleStyles>({ useStaticStyles: true });
 const useComponentRef = (
   props: IToggleProps,
   isChecked: boolean | undefined,
