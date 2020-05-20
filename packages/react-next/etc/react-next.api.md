@@ -4,9 +4,16 @@
 
 ```ts
 
+import { DayOfWeek } from 'office-ui-fabric-react/lib/Calendar';
+import { FirstWeekOfYear } from 'office-ui-fabric-react/lib/utilities/dateValues/DateValues';
+import { IBaseProps } from 'office-ui-fabric-react/lib/Utilities';
 import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import { IButtonProps as IButtonProps_2 } from 'office-ui-fabric-react/lib/components/Button/Button.types';
 import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
+import { ICalendarFormatDateCallbacks } from 'office-ui-fabric-react/lib/Calendar';
+import { ICalendarProps } from 'office-ui-fabric-react/lib/Calendar';
+import { ICalendarStrings } from 'office-ui-fabric-react/lib/Calendar';
+import { ICalloutProps } from 'office-ui-fabric-react/lib/Callout';
 import { IComponentAs } from 'office-ui-fabric-react/lib/Utilities';
 import { ICustomizerContext } from 'office-ui-fabric-react/lib/Utilities';
 import { IFocusZoneProps } from '@fluentui/react-focus';
@@ -32,6 +39,26 @@ export const CheckboxBase: React.ForwardRefExoticComponent<ICheckboxProps & Reac
 
 // @public
 export const Customizer: React.FunctionComponent<ICustomizerProps>;
+
+// @public
+export const DatePicker: React.FunctionComponent<IDatePickerProps>;
+
+// @public (undocumented)
+export class DatePickerBase extends React.Component<IDatePickerProps, IDatePickerState> implements IDatePicker {
+    constructor(props: IDatePickerProps);
+    // (undocumented)
+    componentDidUpdate(prevProps: IDatePickerProps, prevState: IDatePickerState): void;
+    // (undocumented)
+    static defaultProps: IDatePickerProps;
+    // (undocumented)
+    focus(): void;
+    // (undocumented)
+    render(): JSX.Element;
+    // (undocumented)
+    reset(): void;
+    // (undocumented)
+    UNSAFE_componentWillReceiveProps(nextProps: IDatePickerProps): void;
+    }
 
 // @public (undocumented)
 export const DEFAULT_MASK_CHAR = "_";
@@ -127,6 +154,98 @@ export interface ICustomizerProps {
     disableThemeProvider?: boolean;
     scopedSettings?: ISettings | ISettingsFunction;
     settings?: ISettings | ISettingsFunction;
+}
+
+// @public (undocumented)
+export interface IDatePicker {
+    focus(): void;
+    reset(): void;
+}
+
+// @public (undocumented)
+export interface IDatePickerProps extends IBaseProps<IDatePicker>, React.HTMLAttributes<HTMLElement> {
+    allFocusable?: boolean;
+    allowTextInput?: boolean;
+    ariaLabel?: string;
+    borderless?: boolean;
+    calendarAs?: IComponentAs<ICalendarProps>;
+    calendarProps?: ICalendarProps;
+    calloutProps?: ICalloutProps;
+    className?: string;
+    componentRef?: IRefObject<IDatePicker>;
+    dateTimeFormatter?: ICalendarFormatDateCallbacks;
+    disableAutoFocus?: boolean;
+    disabled?: boolean;
+    firstDayOfWeek?: DayOfWeek;
+    firstWeekOfYear?: FirstWeekOfYear;
+    formatDate?: (date?: Date) => string;
+    highlightCurrentMonth?: boolean;
+    highlightSelectedMonth?: boolean;
+    initialPickerDate?: Date;
+    isMonthPickerVisible?: boolean;
+    isRequired?: boolean;
+    label?: string;
+    maxDate?: Date;
+    minDate?: Date;
+    onAfterMenuDismiss?: () => void;
+    onSelectDate?: (date: Date | null | undefined) => void;
+    parseDateFromString?: (dateStr: string) => Date | null;
+    pickerAriaLabel?: string;
+    placeholder?: string;
+    showCloseButton?: boolean;
+    showGoToToday?: boolean;
+    showMonthPickerAsOverlay?: boolean;
+    showWeekNumbers?: boolean;
+    strings?: IDatePickerStrings;
+    styles?: IStyleFunctionOrObject<IDatePickerStyleProps, IDatePickerStyles>;
+    tabIndex?: number;
+    textField?: ITextFieldProps;
+    theme?: ITheme;
+    today?: Date;
+    underlined?: boolean;
+    value?: Date;
+}
+
+// @public (undocumented)
+export interface IDatePickerState {
+    // (undocumented)
+    errorMessage?: string;
+    // (undocumented)
+    formattedDate?: string;
+    // (undocumented)
+    isDatePickerShown?: boolean;
+    // (undocumented)
+    selectedDate?: Date;
+}
+
+// @public (undocumented)
+export interface IDatePickerStrings extends ICalendarStrings {
+    invalidInputErrorMessage?: string;
+    isOutOfBoundsErrorMessage?: string;
+    isRequiredErrorMessage?: string;
+}
+
+// @public (undocumented)
+export interface IDatePickerStyleProps {
+    className?: string;
+    // (undocumented)
+    disabled?: boolean;
+    // (undocumented)
+    isDatePickerShown?: boolean;
+    // (undocumented)
+    label?: boolean;
+    theme: ITheme;
+}
+
+// @public (undocumented)
+export interface IDatePickerStyles {
+    // (undocumented)
+    callout: IStyle;
+    // (undocumented)
+    icon: IStyle;
+    root: IStyle;
+    // (undocumented)
+    textField: IStyle;
 }
 
 // @public (undocumented)
@@ -1091,7 +1210,6 @@ export * from "office-ui-fabric-react/lib/ColorPicker";
 export * from "office-ui-fabric-react/lib/ComboBox";
 export * from "office-ui-fabric-react/lib/CommandBar";
 export * from "office-ui-fabric-react/lib/ContextualMenu";
-export * from "office-ui-fabric-react/lib/DatePicker";
 export * from "office-ui-fabric-react/lib/DetailsList";
 export * from "office-ui-fabric-react/lib/Dialog";
 export * from "office-ui-fabric-react/lib/Divider";
