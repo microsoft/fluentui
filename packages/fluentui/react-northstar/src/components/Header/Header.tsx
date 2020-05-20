@@ -97,7 +97,7 @@ const Header: React.FC<WithAsProp<HeaderProps>> &
           defaultProps: () =>
             getA11yProps('description', {
               variables: {
-                ...(variables.descriptionColor && { color: variables.descriptionColor }),
+                ...(variables?.descriptionColor && { color: variables.descriptionColor }),
               },
             }),
         })}
