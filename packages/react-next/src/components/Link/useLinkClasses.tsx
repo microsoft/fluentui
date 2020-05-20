@@ -7,7 +7,7 @@ export function useLinkClasses(props: ILinkProps): { [key in keyof ILinkStyles]:
   return useClasses<ILinkProps['styles'], ILinkStyleProps, ILinkStyles>({
     customizationScopeName: 'Link',
     useStaticStyles: true,
-    styles: props.styles,
+    stylesProp: props.styles,
     styleProps: {
       className: props.className,
       isButton: !props.href,

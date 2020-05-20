@@ -815,7 +815,7 @@ export interface IUseClassesOptions<TStylesProp, TStyleProps, TStyleSet> {
     // (undocumented)
     styleProps: Omit<TStyleProps, 'theme'>;
     // (undocumented)
-    styles: TStylesProp;
+    stylesProp: TStylesProp;
     // (undocumented)
     useStaticStyles: boolean;
 }
