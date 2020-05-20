@@ -277,7 +277,7 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
       secondary,
       pills,
       inSubmenu: props.submenu,
-      accessibility: accessibility(props).childBehaviors,
+      accessibility: accessibility && accessibility(props).childBehaviors,
       __parentComponent: composeOptions.slots.__self,
     };
 
