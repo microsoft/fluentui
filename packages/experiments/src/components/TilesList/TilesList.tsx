@@ -244,11 +244,11 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
         style={
           item.grid.mode === TilesGridMode.fillHorizontal
             ? {
-              height: `${item.grid.minRowHeight}px`,
-            }
+                height: `${item.grid.minRowHeight}px`,
+              }
             : {
-              paddingTop: `${(100 * itemHeightOverWidth).toFixed(2)}%`,
-            }
+                paddingTop: `${(100 * itemHeightOverWidth).toFixed(2)}%`,
+              }
         }
       >
         <div role="presentation" className={css(TilesListStyles.cellContent)}>
@@ -347,7 +347,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
 
     let shimmerWrapperWidth = 0;
 
-    for (let i = 0; i < endIndex;) {
+    for (let i = 0; i < endIndex; ) {
       // For each cell at the start of a grid.
       const grid = cells[i].grid;
 
@@ -682,7 +682,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
       if (
         !isAtGridEnd &&
         currentRow.scaleFactor >
-        (grid.mode === TilesGridMode.fill || grid.mode === TilesGridMode.fillHorizontal ? grid.maxScaleFactor : 1)
+          (grid.mode === TilesGridMode.fill || grid.mode === TilesGridMode.fillHorizontal ? grid.maxScaleFactor : 1)
       ) {
         // If the last computed row is not the end of the grid, and the content cannot scale to fit the width,
         // declare these cells as 'extra' and let them be pushed into the next page.

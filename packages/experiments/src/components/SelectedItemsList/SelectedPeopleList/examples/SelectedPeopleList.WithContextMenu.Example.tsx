@@ -19,7 +19,7 @@ export interface IPeopleSelectedItemsListExampleState {
 export class SelectedPeopleListWithContextMenuExample extends React.Component<
   {},
   IPeopleSelectedItemsListExampleState
-  > {
+> {
   private _selectionList: ISelectedPeopleList;
 
   /**
