@@ -26,6 +26,7 @@ exports[`MessageBar renders MessageBar correctly 1`] = `
         color: #004578;
       }
       @media screen and (-ms-high-contrast: active){& {
+        -ms-high-contrast-adjust: none;
         background: Window;
         border: 1px solid WindowText;
         color: WindowText;
