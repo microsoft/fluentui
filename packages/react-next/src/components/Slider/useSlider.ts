@@ -259,10 +259,15 @@ export const useSlider: (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =>
     'data-is-focusable': !disabled,
   };
 
+  const containerProps = {
+    className: classNames.container,
+  };
+
   return {
     root: rootProps,
     label: labelProps,
     sliderBox: sliderBoxProps,
+    container: containerProps,
     sliderLine,
     value,
   };

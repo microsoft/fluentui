@@ -106,7 +106,7 @@ export const SliderBase = React.forwardRef((props: ISliderProps, ref: React.Ref<
   return (
     <div {...slotProps.root}>
       <SliderLabel {...slotProps.label} />
-      <div className={classNames.container}>
+      <div {...slotProps.container}>
         <div {...slotProps.sliderBox}>
           <div ref={slotProps.sliderLine} className={classNames.line}>
             {originFromZero && (
