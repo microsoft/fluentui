@@ -36,6 +36,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - `menuItemSlotClassNames.indicator` and `menuItemSlotClassNames.wrapper` were removed, `menuItemIndicatorClassName` and `menuItemWrapperClassName` should be used instead @mnajdova ([#13117](https://github.com/microsoft/fluentui/pull/13117))
 - Move `MenuItem`'s slots styles to dedicated components @mnajdova ([#13117](https://github.com/microsoft/fluentui/pull/13117))
 - Move `divider`'s slots styles to `MenuDivider` component @mnajdova @layershifter ([#13207](https://github.com/microsoft/fluentui/pull/13207))
+- Move `shorthandConfig` to `compose`'s options @mnajdova ([#13240](https://github.com/microsoft/fluentui/pull/13240))
 
 ### Fixes
 - Fix `splitButtonBehavior` to exclude `toggleButton` from focus zone @silviuavram ([#13043](https://github.com/microsoft/fluentui/pull/13043))
