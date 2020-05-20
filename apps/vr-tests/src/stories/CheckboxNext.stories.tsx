@@ -3,19 +3,21 @@ import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
-import { Checkbox, Persona, PersonaSize } from '@fluentui/react-next';
+import { Checkbox, Persona, PersonaSize, ThemeProvider } from '@fluentui/react-next';
 
 storiesOf('Checkbox Next', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story =>
     // prettier-ignore
-    <Screener
-      steps={new Screener.Steps()
-        .snapshot('default', { cropTo: '.testWrapper' })
-        .end()}
-    >
-      {story()}
-    </Screener>,
+    <ThemeProvider>
+      <Screener
+        steps={new Screener.Steps()
+          .snapshot('default', { cropTo: '.testWrapper' })
+          .end()}
+      >
+        {story()}
+      </Screener>
+    </ThemeProvider>,
   )
   .addStory('Unchecked', () => <Checkbox label="Unchecked checkbox" />, { rtl: true })
   .addStory('Checked', () => <Checkbox label="Checked checkbox" checked />)
@@ -56,17 +58,19 @@ storiesOf('Checkbox Next Indeterminate', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story =>
     // prettier-ignore
-    <Screener
-      steps={new Screener.Steps()
-        .snapshot('default', { cropTo: '.testWrapper' })
-        .hover('.ms-Checkbox')
-        .snapshot('hover', { cropTo: '.testWrapper' })
-        .click('.ms-Checkbox')
-        .snapshot('clicked', { cropTo: '.testWrapper' })
-        .end()}
-    >
-      {story()}
-    </Screener>,
+    <ThemeProvider>
+      <Screener
+        steps={new Screener.Steps()
+          .snapshot('default', { cropTo: '.testWrapper' })
+          .hover('.ms-Checkbox')
+          .snapshot('hover', { cropTo: '.testWrapper' })
+          .click('.ms-Checkbox')
+          .snapshot('clicked', { cropTo: '.testWrapper' })
+          .end()}
+      >
+        {story()}
+      </Screener>
+    </ThemeProvider>,
   )
   .addStory('Uncontrolled Indeterminate checkbox', () => (
     <Checkbox label="Uncontrolled Indeterminate checkbox" defaultIndeterminate />

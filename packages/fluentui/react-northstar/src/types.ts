@@ -1,7 +1,6 @@
-import { StylesContextInputValue, StylesContextValue, Telemetry } from '@fluentui/react-bindings';
+import { StylesContextInputValue, StylesContextValue, Telemetry, ShorthandConfig } from '@fluentui/react-bindings';
 import * as React from 'react';
-
-import { ShorthandConfig, ShorthandFactory } from './utils/factories';
+import { ShorthandFactory } from './utils/factories';
 
 // Temporary workaround for @lodash dependency
 

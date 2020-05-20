@@ -1,4 +1,3 @@
-import { unstable_createAnimationStyles as createAnimationStyles } from '@fluentui/react-bindings';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import {
   AlertDismissActionStylesProps,
@@ -9,6 +8,7 @@ import getBorderFocusStyles from '../../getBorderFocusStyles';
 import getIconFillOrOutlineStyles from '../../getIconFillOrOutlineStyles';
 import dismissIndicatorUrl from './dismissIndicatorUrl';
 import { getIntentColorsFromProps } from './alertStyles';
+import { faster } from '../../animations/durations';
 
 const getIndicatorStyles = (color: string, outline: boolean, size: string): ICSSInJSStyle => {
   return {
@@ -51,6 +51,7 @@ const alertDismissActionStyles: ComponentSlotStylesPrepared<AlertDismissActionSt
       position: 'relative',
       verticalAlign: 'middle',
       cursor: 'pointer',
+      transition: faster,
 
       ...getIconFillOrOutlineStyles({ outline: true }),
 
@@ -80,14 +81,6 @@ const alertDismissActionStyles: ComponentSlotStylesPrepared<AlertDismissActionSt
             zIndexes: { foreground: v.dismissActionHoverZIndex },
           },
         })[':focus-visible'],
-      },
-
-      ':active': {
-        ...createAnimationStyles('scaleDownSoft', theme),
-        color: v.dismissActionColorActive,
-        backgroundColor: v.dismissActionBackgroundColorActive,
-        borderColor: v.dismissActionBorderColorActive,
-        boxShadow: 'none',
       },
 
       ':focus': borderFocusStyles[':focus'],
