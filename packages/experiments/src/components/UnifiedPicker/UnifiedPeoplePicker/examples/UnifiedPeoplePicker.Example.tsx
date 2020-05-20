@@ -8,7 +8,6 @@ import { UnifiedPeoplePicker } from '@uifabric/experiments/lib/UnifiedPeoplePick
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 import { mru, people } from '@uifabric/example-data';
 import { ISelectedPeopleListProps } from '@uifabric/experiments/lib/SelectedItemsList';
-import { Selection } from 'office-ui-fabric-react/lib/Selection';
 
 const _suggestions = [
   {
