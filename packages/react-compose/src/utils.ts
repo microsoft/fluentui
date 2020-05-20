@@ -30,9 +30,10 @@ export const defaultComposeOptions: ComposePreparedOptions = {
 
   handledProps: [] as never[],
   overrideStyles: false,
-  slots: {},
+  slots: { __self: () => null },
   mapPropsToSlotPropsChain: [],
   resolveSlotProps: () => ({}),
+  shorthandConfig: {},
 };
 
 export function mergeComposeOptions(
@@ -83,6 +84,10 @@ export function mergeComposeOptions(
     },
     mapPropsToSlotPropsChain,
     resolveSlotProps,
+    shorthandConfig: {
+      ...parentOptions.shorthandConfig,
+      ...inputOptions.shorthandConfig,
+    },
   };
 }
 

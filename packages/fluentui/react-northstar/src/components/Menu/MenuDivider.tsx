@@ -7,12 +7,12 @@ import {
   useTelemetry,
   useStyles,
   useUnhandledProps,
+  ShorthandConfig,
 } from '@fluentui/react-bindings';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
-
 import {
   createShorthandFactory,
   UIComponentProps,
@@ -22,7 +22,6 @@ import {
   ContentComponentProps,
   rtlTextContainer,
   ShorthandFactory,
-  ShorthandConfig,
 } from '../../utils';
 import { ProviderContextPrepared } from '../../types';
 import { useContextSelectors } from '@fluentui/react-context-selector';

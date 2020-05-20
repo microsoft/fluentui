@@ -23,6 +23,6 @@ const inputBehavior: Accessibility<InputBehaviorProps> = props => ({
 
 export default inputBehavior;
 
-type InputBehaviorProps = {
+export type InputBehaviorProps = {
   disabled?: boolean;
 };
