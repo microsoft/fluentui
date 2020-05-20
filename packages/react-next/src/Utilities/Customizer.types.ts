@@ -16,6 +16,7 @@ export interface ICustomizerProps {
    * ```
    */
   settings?: ISettings | ISettingsFunction;
+
   /**
    * Scoped settings are settings that are scoped to a specific scope. The
    * scope is the name that is passed to the `customizable` function when the

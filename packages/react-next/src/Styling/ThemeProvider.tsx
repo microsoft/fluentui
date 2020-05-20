@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { ThemeProvider as ReactThemeProvider, ThemeProviderProps } from '@fluentui/react-theme-provider';
-import { Customizations, ISettings } from 'office-ui-fabric-react/lib/Utilities';
+import { useCustomizationSettings } from 'office-ui-fabric-react/lib/Utilities';
 import { convertLegacyTheme } from './convertLegacyTheme';
+import { ITheme } from '../Styling';
 
 export { ThemeProviderProps } from '@fluentui/react-theme-provider';
 
@@ -14,25 +15,12 @@ export { ThemeProviderProps } from '@fluentui/react-theme-provider';
 export const ThemeProvider: React.FunctionComponent<ThemeProviderProps & {
   ref?: React.Ref<HTMLDivElement>;
 }> = props => {
-  const [customizationSettings, setCustomizationSettings] = React.useState(getGlobalCustomizationSettings());
-
-  const onCustomizationChange = React.useCallback(() => {
-    const globalSettings = getGlobalCustomizationSettings();
-    setCustomizationSettings(globalSettings);
-  }, []);
-
-  React.useEffect(() => {
-    Customizations.observe(onCustomizationChange);
-
-    return () => Customizations.unobserve(onCustomizationChange);
-  }, []);
-
-  const legacyTheme = customizationSettings.theme;
-  const theme = props.theme || convertLegacyTheme(legacyTheme);
+  const legacyTheme = useThemeCustomizationSettings();
+  const theme = props.theme || (legacyTheme && convertLegacyTheme(legacyTheme));
 
   return <ReactThemeProvider {...props} theme={theme} />;
 };
 
-function getGlobalCustomizationSettings(): ISettings {
-  return Customizations.getSettings(['theme'], undefined);
+function useThemeCustomizationSettings(): ITheme {
+  return useCustomizationSettings(['theme']).theme;
 }
