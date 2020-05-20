@@ -1,5 +1,6 @@
 import * as React from 'react';
 
+// tslint:disable-next-line:interface-name
 export interface ShorthandConfig<P> {
   mappedProp?: keyof P;
   mappedArrayProp?: keyof P;
