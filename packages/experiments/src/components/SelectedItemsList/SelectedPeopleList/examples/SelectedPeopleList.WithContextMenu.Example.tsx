@@ -19,12 +19,12 @@ export interface IPeopleSelectedItemsListExampleState {
 export class SelectedPeopleListWithContextMenuExample extends React.Component<
   {},
   IPeopleSelectedItemsListExampleState
-> {
+  > {
   private _selectionList: ISelectedPeopleList;
 
   /**
    * Build a custom selected item capable of being edited with a dropdown and
-   * capable of eidting
+   * capable of editing
    */
   private SelectedItem = ItemWithContextMenu({
     menuItems: item => [
