@@ -29,37 +29,16 @@ const MenuExampleToolbarShorthand = () => (
       aria-label="More options"
       indicator={false}
       icon={<MoreIcon outline={true} />}
-      menu={[
-        {
-          key: '5',
-          content: 'item1',
-          icon: <BookmarkIcon outline />,
-        },
-        {
-          key: 'divider',
-          kind: 'divider',
-        },
-        {
-          key: '6',
-          content: 'item2',
-          icon: <MarkAsUnreadIcon outline />,
-        },
-        {
-          key: '7',
-          content: 'item3',
-          disabled: true,
-          icon: <TranslationIcon outline />,
-        },
-        {
-          key: 'divider2',
-          kind: 'divider',
-        },
-        {
-          key: '8',
-          content: 'item3',
-          icon: <TrashCanIcon outline />,
-        },
-      ]}
+      menu={
+        <>
+          <Menu.Item index={7} aria-label="item 1" content="item 1" icon={<BookmarkIcon outline />} />
+          <Menu.Divider />
+          <Menu.Item index={9} aria-label="item 2" content="item 2" icon={<MarkAsUnreadIcon outline />} />
+          <Menu.Item index={10} aria-label="item 3" content="item 3" icon={<TranslationIcon outline />} />
+          <Menu.Divider />
+          <Menu.Item index={10} aria-label="item 4" content="item 4" icon={<TrashCanIcon outline />} />
+        </>
+      }
     />
   </Menu>
 );
