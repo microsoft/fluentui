@@ -1,8 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 18 May 2020 12:54:52 GMT and should not be manually modified.
+This log was last generated on Wed, 20 May 2020 12:31:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.115.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.115.1)
+
+Wed, 20 May 2020 12:31:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.115.0..office-ui-fabric-react_v7.115.1)
+
+### Patches
+
+- update MessageBarButtonBorder color ([PR #12932](https://github.com/microsoft/fluentui/pull/12932) by chrismo@microsoft.com)
 
 ## [7.115.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.115.0)
 
