@@ -10,12 +10,15 @@ import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import { ICalloutContentStyleProps } from 'office-ui-fabric-react/lib/Callout';
 import { ICalloutProps } from 'office-ui-fabric-react/lib/Callout';
 import { IComponentAs } from 'office-ui-fabric-react/lib/Utilities';
+import { ICustomizerContext } from 'office-ui-fabric-react/lib/Utilities';
 import { IFocusZoneProps } from '@fluentui/react-focus';
 import { IIconProps } from 'office-ui-fabric-react/lib/Icon';
 import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
 import { IRectangle } from 'office-ui-fabric-react/lib/Utilities';
 import { IRefObject } from 'office-ui-fabric-react/lib/Utilities';
 import { IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { ISettings } from 'office-ui-fabric-react/lib/Utilities';
+import { ISettingsFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 import { IStyleSet } from 'office-ui-fabric-react/lib/Styling';
@@ -24,10 +27,14 @@ import { IVerticalDividerClassNames } from 'office-ui-fabric-react/lib/component
 import { IWithResponsiveModeState } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode';
 import { Position } from 'office-ui-fabric-react/lib/utilities/positioning';
 import * as React from 'react';
+<<<<<<< HEAD
 import { Target } from 'office-ui-fabric-react/lib/Callout';
 
 // @public
 export function canAnyMenuItemsCheck(items: IContextualMenuItem[]): boolean;
+=======
+import { ThemeProviderProps } from '@fluentui/react-theme-provider';
+>>>>>>> 5c42e7feda6ca3b97e19e10d7f014a17bfd8ee3e
 
 // @public (undocumented)
 export const Checkbox: React.FunctionComponent<ICheckboxProps>;
@@ -36,6 +43,7 @@ export const Checkbox: React.FunctionComponent<ICheckboxProps>;
 export const CheckboxBase: React.ForwardRefExoticComponent<ICheckboxProps & React.RefAttributes<HTMLDivElement>>;
 
 // @public
+<<<<<<< HEAD
 export const ContextualMenu: React.FunctionComponent<IContextualMenuProps>;
 
 // @public (undocumented)
@@ -86,6 +94,9 @@ export enum ContextualMenuItemType {
     // (undocumented)
     Section = 3
 }
+=======
+export const Customizer: React.FunctionComponent<ICustomizerProps>;
+>>>>>>> 5c42e7feda6ca3b97e19e10d7f014a17bfd8ee3e
 
 // @public (undocumented)
 export const DEFAULT_MASK_CHAR = "_";
@@ -179,6 +190,7 @@ export interface ICheckboxStyles {
 }
 
 // @public (undocumented)
+<<<<<<< HEAD
 export interface IContextualMenu {
 }
 
@@ -417,6 +429,13 @@ export interface IContextualMenuStyles {
 export interface IContextualMenuSubComponentStyles {
     callout: IStyleFunctionOrObject<ICalloutContentStyleProps, any>;
     menuItem: IStyleFunctionOrObject<IContextualMenuItemStyleProps, any>;
+=======
+export interface ICustomizerProps {
+    contextTransform?: (context: Readonly<ICustomizerContext>) => ICustomizerContext;
+    disableThemeProvider?: boolean;
+    scopedSettings?: ISettings | ISettingsFunction;
+    settings?: ISettings | ISettingsFunction;
+>>>>>>> 5c42e7feda6ca3b97e19e10d7f014a17bfd8ee3e
 }
 
 // @public (undocumented)
@@ -1362,6 +1381,13 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
     setSelectionStart(value: number): void;
     readonly value: string | undefined;
     }
+
+// @public
+export const ThemeProvider: React.FunctionComponent<ThemeProviderProps & {
+    ref?: React.Ref<HTMLDivElement>;
+}>;
+
+export { ThemeProviderProps }
 
 // @public (undocumented)
 export const Toggle: React.FunctionComponent<IToggleProps>;

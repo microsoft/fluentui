@@ -38,6 +38,8 @@ export const ThemeProvider = React.forwardRef<HTMLDivElement, ThemeProviderProps
       [fullTheme, style],
     );
 
+    const rootClass = cx(className, classes.root) || undefined;
+
     // Register stylesheets as needed.
     useStylesheet(fullTheme.stylesheets);
 
@@ -45,7 +47,7 @@ export const ThemeProvider = React.forwardRef<HTMLDivElement, ThemeProviderProps
     // tslint:disable:jsx-ban-props
     return (
       <ThemeContext.Provider value={fullTheme}>
-        <div {...rest} ref={ref} className={cx(className, classes.root)} style={inlineStyle} />
+        <div {...rest} ref={ref} className={rootClass} style={inlineStyle} />
       </ThemeContext.Provider>
     );
     // tslint:enable:jsx-ban-props

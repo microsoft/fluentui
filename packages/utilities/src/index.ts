@@ -32,6 +32,7 @@ export * from './customizations/Customizer';
 export * from './customizations/Customizer.types';
 export * from './customizations/CustomizerContext';
 export * from './customizations/customizable';
+export * from './customizations/useCustomizationSettings';
 export * from './customizations/mergeCustomizations';
 export * from './customizations/mergeSettings';
 export * from './dom';

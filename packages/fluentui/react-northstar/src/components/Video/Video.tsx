@@ -42,10 +42,13 @@ export const Video: React.FC<WithAsProp<VideoProps>> & FluentComponentStaticProp
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(Video.displayName, context.telemetry);
   setStart();
+
   const { controls, autoPlay, loop, poster, src, muted, variables, className, design, styles } = props;
+  const videoRef = React.useRef<HTMLVideoElement>();
+
   const ElementType = getElementType(props);
-  const videoRef = React.createRef<HTMLVideoElement>();
   const unhandledProps = useUnhandledProps(Video.handledProps, props);
+
   const getA11yProps = useAccessibility(props.accessibility, {
     debugName: Video.displayName,
   });
