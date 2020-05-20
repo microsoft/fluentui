@@ -251,7 +251,7 @@ export class Tile extends React.Component<ITileProps, ITileState> {
         data-is-sub-focuszone={true}
         data-disable-click-on-enter={true}
         data-selection-index={selectionIndex > -1 ? selectionIndex : undefined}
-        data-selection-invoke-touch={isInvokable && selectionIndex > -1 ? true : undefined}
+        data-selection-touch-invoke={isInvokable && selectionIndex > -1 ? true : undefined}
       >
         {link}
         {descriptionAriaLabel ? (
