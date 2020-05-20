@@ -233,7 +233,7 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
 
   /**
    * If true, FocusZone prevents the default behavior of Keyboard events when changing focus between elements.
-   * @defaultvalue true
+   * @defaultvalue false
    */
   preventDefaultWhenHandled?: boolean;
 
