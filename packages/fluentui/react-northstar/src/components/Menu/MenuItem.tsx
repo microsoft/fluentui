@@ -464,20 +464,18 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
               targetRef={itemRef}
               {...getPopperPropsFromShorthand(menu)}
             >
-              {React.isValidElement(menu)
-                ? (menu as JSX.Element)
-                : Menu.create(menu, {
-                    defaultProps: () => ({
-                      accessibility: submenuBehavior,
-                      className: menuItemSlotClassNames.submenu,
-                      vertical: true,
-                      primary,
-                      secondary,
-                      styles: resolvedStyles.menu,
-                      submenu: true,
-                      indicator,
-                    }),
-                  })}
+              {Menu.create(menu, {
+                defaultProps: () => ({
+                  accessibility: submenuBehavior,
+                  className: menuItemSlotClassNames.submenu,
+                  vertical: true,
+                  primary,
+                  secondary,
+                  styles: resolvedStyles.menu,
+                  submenu: true,
+                  indicator,
+                }),
+              })}
             </Popper>
           </Ref>
           <EventListener listener={outsideClickHandler} target={context.target} type="click" />
