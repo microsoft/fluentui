@@ -1,12 +1,11 @@
 import { mergeStyles } from '@fluentui/styles';
-import { ComponentWithAs } from '@fluentui/react-compose';
+import { ComponentWithAs, ComposePreparedOptions } from '@fluentui/react-compose';
 import cx from 'classnames';
 import * as _ from 'lodash';
 import * as React from 'react';
 import * as ReactIs from 'react-is';
 
 import { ShorthandValue, Props, PropsOf, ShorthandRenderFunction } from '../types';
-import { ComposePreparedOptions } from '@fluentui/react-compose/dist/src';
 
 type HTMLTag = 'iframe' | 'img' | 'input';
 type ShorthandProp = 'children' | 'src' | 'type';
