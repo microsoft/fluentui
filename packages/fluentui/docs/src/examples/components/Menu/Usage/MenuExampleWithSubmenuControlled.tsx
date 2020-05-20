@@ -18,11 +18,19 @@ class MenuWithSubmenuControlledExample extends React.Component {
             index={0}
             menuOpen={this.state.menuOpen}
             onMenuOpenChange={this.handleMenuOpenChange}
-            menu={[
-              { key: '1', content: 'item1' },
-              { key: '2', content: 'item2' },
-              { key: '3', content: 'item3' },
-            ]}
+            menu={
+              <>
+                <Menu.Item>
+                  <Menu.ItemContent>item 1</Menu.ItemContent>
+                </Menu.Item>
+                <Menu.Item>
+                  <Menu.ItemContent>item 2</Menu.ItemContent>
+                </Menu.Item>
+                <Menu.Item>
+                  <Menu.ItemContent>item 3</Menu.ItemContent>
+                </Menu.Item>
+              </>
+            }
             content="Editorials"
           />
           <Menu.Item index={1}>
