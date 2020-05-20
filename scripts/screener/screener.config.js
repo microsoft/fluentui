@@ -83,12 +83,12 @@ module.exports = {
   browsers: [
     {
       browserName: 'chrome',
-      excludeRules: /.*\.ie\.steps/,
+      excludeRules: [/.*\.ie\.steps/],
     },
     {
       browserName: 'internet explorer',
       version: '11',
-      includeRules: /.*\.ie\.steps/,
+      includeRules: [/.*\.ie\.steps/],
     },
   ],
 
