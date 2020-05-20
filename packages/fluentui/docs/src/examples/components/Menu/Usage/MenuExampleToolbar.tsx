@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Menu, menuAsToolbarBehavior, MenuItemProps, ShorthandCollection } from '@fluentui/react-northstar';
+import { Menu, menuAsToolbarBehavior } from '@fluentui/react-northstar';
 import {
   FormatIcon,
   PaperclipIcon,
