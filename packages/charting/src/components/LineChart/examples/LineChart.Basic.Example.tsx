@@ -28,6 +28,7 @@ export class LineChartBasicExample extends React.Component<{}, {}> {
             {
               x: new Date('2020-03-03T00:00:00.000Z'),
               y: 217,
+              onDataPointClick: () => console.log('click on 217'),
             },
             {
               x: new Date('2020-03-04T00:00:00.000Z'),
@@ -52,6 +53,7 @@ export class LineChartBasicExample extends React.Component<{}, {}> {
             {
               x: new Date('2020-03-09T00:00:00.000Z'),
               y: 218,
+              onDataPointClick: () => console.log('click on 218'),
             },
           ],
           color: DefaultPalette.blue,

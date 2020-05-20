@@ -470,16 +470,36 @@ export class LineChartBase extends React.Component<
         const keyVal = this._uniqLineText + i + '_' + j;
         const x1 = this._points[i].data[j - 1].x;
         const y1 = this._points[i].data[j - 1].y;
+        const x2 = this._points[i].data[j].x;
+        const y2 = this._points[i].data[j].y;
         const xAxisCalloutData = this._points[i].data[j - 1].xAxisCalloutData;
         if (this.state.activeLegend === legendVal || this.state.activeLegend === '') {
+          lines.push(
+            <circle
+              id={keyVal + 1}
+              key={keyVal + 1}
+              r={5}
+              cx={this._xAxisScale(x1)}
+              cy={this._yAxisScale(y1)}
+              data-is-focusable={i === 0 ? true : false}
+              onMouseOver={this._handleHover.bind(this, x1, y1, lineColor, xAxisCalloutData)}
+              onMouseMove={this._handleHover.bind(this, x1, y1, lineColor, xAxisCalloutData)}
+              onMouseOut={this._handleMouseOut}
+              onFocus={this._handleFocus.bind(this, keyVal, x1, y1, lineColor, xAxisCalloutData)}
+              onBlur={this._handleMouseOut}
+              onClick={this._onDataPointClick.bind(this, this._points[i].data[j - 1].onDataPointClick)}
+              opacity={1}
+              fill={lineColor}
+            />,
+          );
           lines.push(
             <line
               id={keyVal}
               key={keyVal}
               x1={this._xAxisScale(x1)}
               y1={this._yAxisScale(y1)}
-              x2={this._xAxisScale(this._points[i].data[j].x)}
-              y2={this._yAxisScale(this._points[i].data[j].y)}
+              x2={this._xAxisScale(x2)}
+              y2={this._yAxisScale(y2)}
               strokeWidth={strokeWidth}
               ref={(e: SVGLineElement | null) => {
                 this._refCallback(e!, keyVal);
@@ -497,21 +517,64 @@ export class LineChartBase extends React.Component<
               onClick={this._onLineClick.bind(this, this._points[i].onLineClick)}
             />,
           );
+          if (j + 1 === this._points[i].data.length) {
+            lines.push(
+              <circle
+                id={keyVal + 2}
+                key={keyVal + 2}
+                r={5}
+                cx={this._xAxisScale(x2)}
+                cy={this._yAxisScale(y2)}
+                data-is-focusable={i === 0 ? true : false}
+                onMouseOver={this._handleHover.bind(this, x2, y2, lineColor, xAxisCalloutData)}
+                onMouseMove={this._handleHover.bind(this, x2, y2, lineColor, xAxisCalloutData)}
+                onMouseOut={this._handleMouseOut}
+                onFocus={this._handleFocus.bind(this, keyVal, x2, y2, lineColor, xAxisCalloutData)}
+                onBlur={this._handleMouseOut}
+                onClick={this._onDataPointClick.bind(this, this._points[i].data[j].onDataPointClick)}
+                fill={lineColor}
+              />,
+            );
+          }
         } else {
+          lines.push(
+            <circle
+              id={keyVal + 1}
+              key={keyVal + 1}
+              r={5}
+              cx={this._xAxisScale(x1)}
+              cy={this._yAxisScale(y1)}
+              opacity={0.1}
+              fill={lineColor}
+            />,
+          );
           lines.push(
             <line
               id={keyVal}
               key={keyVal}
               x1={this._xAxisScale(x1)}
               y1={this._yAxisScale(y1)}
-              x2={this._xAxisScale(this._points[i].data[j].x)}
-              y2={this._yAxisScale(this._points[i].data[j].y)}
+              x2={this._xAxisScale(x2)}
+              y2={this._yAxisScale(y2)}
               strokeWidth={strokeWidth}
               stroke={lineColor}
               strokeLinecap={'round'}
               opacity={0.1}
             />,
           );
+          if (j + 1 === this._points[i].data.length) {
+            lines.push(
+              <circle
+                id={keyVal + 2}
+                key={keyVal + 2}
+                r={5}
+                cx={this._xAxisScale(x2)}
+                cy={this._yAxisScale(y2)}
+                fill={lineColor}
+                opacity={0.1}
+              />,
+            );
+          }
         }
       }
     }
@@ -567,6 +630,12 @@ export class LineChartBase extends React.Component<
   };
 
   private _onLineClick = (func: () => void) => {
+    if (!!func) {
+      func();
+    }
+  };
+
+  private _onDataPointClick = (func: () => void) => {
     if (!!func) {
       func();
     }
