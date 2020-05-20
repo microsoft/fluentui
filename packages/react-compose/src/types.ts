@@ -1,5 +1,12 @@
 import * as React from 'react';
 
+// tslint:disable-next-line:interface-name
+export interface ShorthandConfig<P> {
+  mappedProp?: keyof P;
+  mappedArrayProp?: keyof P;
+  allowsJSX?: boolean;
+}
+
 //
 // "as" type safety
 //
@@ -41,7 +48,7 @@ export type Input<T extends React.ElementType = 'div', P = {}> =
 
 export type ComposeRenderFunction<T extends React.ElementType = 'div', P = {}> = (
   props: P,
-  ref: React.Ref<T>,
+  ref: React.Ref<T extends keyof HTMLElementTagNameMap ? HTMLElementTagNameMap[T] : T>,
   composeOptions: ComposePreparedOptions,
 ) => React.ReactElement | null;
 
@@ -58,6 +65,8 @@ export type ComposeOptions<InputProps = {}, InputStylesProps = {}, ParentStylesP
   slots?: Record<string, React.ElementType>;
 
   mapPropsToSlotProps?: (props: InputProps) => Record<string, object>;
+
+  shorthandConfig?: ShorthandConfig<InputProps>;
 };
 
 export type ClassDictionary = {
@@ -76,8 +85,9 @@ export type ComposePreparedOptions<Props = {}> = {
   handledProps: (keyof Props)[];
   overrideStyles: boolean;
 
-  slots: Record<string, React.ElementType>;
+  slots: Record<string, React.ElementType> & { __self: React.ElementType };
   mapPropsToSlotPropsChain: ((props: Props) => Record<string, object>)[];
 
   resolveSlotProps: <P>(props: P) => Record<string, object>;
+  shorthandConfig: ShorthandConfig<Props>;
 };

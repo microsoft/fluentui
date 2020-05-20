@@ -5,7 +5,10 @@ import { classNamesFunction, getNativeProps, divProperties } from '../../Utiliti
 import { Label } from '../../Label';
 import { useId, useBoolean, useControllableValue } from '@uifabric/react-hooks';
 
-const getClassNames = classNamesFunction<ISliderStyleProps, ISliderStyles>();
+const getClassNames = classNamesFunction<ISliderStyleProps, ISliderStyles>({
+  useStaticStyles: true,
+});
+
 const COMPONENT_NAME = 'SliderBase';
 export const ONKEYDOWN_TIMEOUT_DURATION = 1000;
 
