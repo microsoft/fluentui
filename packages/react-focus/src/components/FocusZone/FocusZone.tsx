@@ -71,7 +71,6 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
   public static defaultProps: IFocusZoneProps = {
     isCircularNavigation: false,
     direction: FocusZoneDirection.bidirectional,
-    preventDefaultWhenHandled: true,
     shouldRaiseClicks: true,
   };
 
