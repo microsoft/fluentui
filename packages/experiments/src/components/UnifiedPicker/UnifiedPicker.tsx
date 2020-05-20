@@ -35,6 +35,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     selectPreviousSuggestion,
     selectNextSuggestion,
   } = useFloatingSuggestionItems(suggestions, selectedSuggestionIndex, isSuggestionsVisible);
+
   const { selectedItems, addItems, removeItems, removeItemAt, removeSelectedItems, unselectAll } = useSelectedItems(
     selection,
     props.selectedItemsListProps.selectedItems,
@@ -156,7 +157,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   const _renderSelectedItemsList = (): JSX.Element => {
     return onRenderSelectedItems({
       ...selectedItemsListProps,
-      selectedItems: selectedItemsListProps.selectedItems,
+      selectedItems: selectedItems,
       focusedItemIndices: focusedItemIndices,
       onItemsRemoved: _onRemoveSelectedItems,
     });
