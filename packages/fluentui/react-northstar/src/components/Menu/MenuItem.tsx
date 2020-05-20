@@ -340,7 +340,6 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
       }
 
       performClick(e);
-      _.invoke(parentProps, 'onItemClick', e, props);
       _.invoke(props, 'onClick', e, props);
     };
 
