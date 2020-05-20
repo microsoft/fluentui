@@ -34,6 +34,7 @@ const SELECTION_DISABLED_ATTRIBUTE_NAME = 'data-selection-disabled';
 const SELECTION_INDEX_ATTRIBUTE_NAME = 'data-selection-index';
 const SELECTION_TOGGLE_ATTRIBUTE_NAME = 'data-selection-toggle';
 const SELECTION_INVOKE_ATTRIBUTE_NAME = 'data-selection-invoke';
+const SELECTION_INVOKE_TOUCH_ATTRIBUTE_NAME = 'data-selection-invoke-touch';
 const SELECTALL_TOGGLE_ALL_ATTRIBUTE_NAME = 'data-selection-all-toggle';
 const SELECTION_SELECT_ATTRIBUTE_NAME = 'data-selection-select';
 
@@ -359,7 +360,10 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, ISelecti
             }
           }
           break;
-        } else if (this._hasAttribute(target, SELECTION_INVOKE_ATTRIBUTE_NAME)) {
+        } else if (
+          (this._isTouch && this._hasAttribute(target, SELECTION_INVOKE_TOUCH_ATTRIBUTE_NAME)) ||
+          this._hasAttribute(target, SELECTION_INVOKE_ATTRIBUTE_NAME)
+        ) {
           // Items should be invokable even if selection is disabled.
           this._onInvokeClick(ev, index);
           break;
