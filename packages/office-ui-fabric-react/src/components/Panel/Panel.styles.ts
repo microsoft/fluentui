@@ -202,10 +202,10 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
     ],
     hiddenPanel: [
       !isOpen &&
-        !isAnimating &&
-        isHiddenOnDismiss && {
-          visibility: 'hidden',
-        },
+      !isAnimating &&
+      isHiddenOnDismiss && {
+        visibility: 'hidden',
+      },
     ],
     main: [
       classNames.main,
@@ -259,9 +259,6 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
       {
         marginTop: 18,
       },
-      hasCustomNavigation && {
-        marginTop: 'inherit',
-      },
     ],
     navigation: [
       classNames.navigation,
@@ -271,6 +268,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
       },
       hasCustomNavigation && {
         height: commandBarHeight,
+        marginLeft: 20,
       },
     ],
     contentInner: [
@@ -289,9 +287,9 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
         alignSelf: 'flex-start',
       },
       hasCloseButton &&
-        !hasCustomNavigation && {
-          flexGrow: 1,
-        },
+      !hasCustomNavigation && {
+        flexGrow: 1,
+      },
       hasCustomNavigation && {
         // Ensure that title doesn't shrink if screen is too small
         flexShrink: 0,
