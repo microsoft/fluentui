@@ -13,9 +13,9 @@ import { mergeComposeOptions } from './mergeComposeOptions';
 function compose<
   TElementType extends React.ElementType,
   TInputProps,
-  TInputStylesProps,
-  TParentProps,
-  TParentStylesProps
+  TInputStylesProps = {},
+  TParentProps = {},
+  TParentStylesProps = {}
 >(
   input: Input<TElementType, TInputProps>,
   inputOptions: ComposeOptions<TInputProps, TInputStylesProps, TParentStylesProps> = {},
