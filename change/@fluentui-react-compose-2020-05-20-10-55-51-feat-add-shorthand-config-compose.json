@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "add shorthand config",
-  "packageName": "@fluentui/react-compose",
-  "email": "mnajdova@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-05-20T08:55:51.131Z"
-}
