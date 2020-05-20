@@ -20,7 +20,7 @@ describe('ThemeProvider', () => {
     },
   });
 
-  it('can provide the theme through context', () => {
+  it('provide the theme through context', () => {
     let resolvedTheme: Theme | undefined = undefined;
     const TestComponent = () => {
       resolvedTheme = useTheme();
@@ -37,7 +37,7 @@ describe('ThemeProvider', () => {
     expect(resolvedTheme).toEqual(lightTheme);
   });
 
-  it('can provide legacy theme from Customizations', () => {
+  it('provide legacy theme from Customizations', () => {
     ReactTestUtils.act(() => {
       Customizations.applySettings({ theme: legacyTheme });
     });

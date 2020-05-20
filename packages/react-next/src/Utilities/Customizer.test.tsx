@@ -265,7 +265,7 @@ describe('Customizer wraps ThemeProvider', () => {
     );
   });
 
-  fit('disable ThemeProvider', () => {
+  it('disable ThemeProvider', () => {
     safeMount(
       <Customizer disableThemeProvider settings={{ theme: { fonts: { medium: { fontWeight: 800 } } } }}>
         <div>Content</div>
