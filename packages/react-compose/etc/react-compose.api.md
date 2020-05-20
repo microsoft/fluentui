@@ -8,7 +8,7 @@ import * as React from 'react';
 
 // @public (undocumented)
 export type ClassDictionary = {
-    [key: string]: string | undefined;
+    [key: string]: string;
 };
 
 // @public (undocumented)
