@@ -7,7 +7,7 @@ export function useCheckboxClasses(props: ICheckboxProps): { [key in keyof IChec
   return useClasses<ICheckboxProps['styles'], ICheckboxStyleProps, ICheckboxStyles>({
     customizationScopeName: 'Checkbox',
     useStaticStyles: true,
-    styles: props.styles,
+    stylesProp: props.styles,
     styleProps: {
       className: props.className,
       disabled: props.disabled,

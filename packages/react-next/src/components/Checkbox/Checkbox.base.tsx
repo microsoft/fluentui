@@ -1,10 +1,9 @@
 import * as React from 'react';
-import { mergeAriaAttributeValues, warnMutuallyExclusive } from '../../Utilities';
+import { useId, useControllableValue, useMergedRefs } from '@uifabric/react-hooks';
+import { mergeAriaAttributeValues, warnMutuallyExclusive, useFocusRects } from '../../Utilities';
 import { Icon } from '../../Icon';
 import { ICheckboxProps, ICheckboxStyles } from './Checkbox.types';
 import { KeytipData } from '../../KeytipData';
-import { useId, useControllableValue, useMergedRefs } from '@uifabric/react-hooks';
-import { useFocusRects } from 'office-ui-fabric-react';
 import { useCheckboxClasses } from './useCheckboxClasses';
 
 export const CheckboxBase = React.forwardRef((props: ICheckboxProps, forwardedRef: React.Ref<HTMLDivElement>) => {

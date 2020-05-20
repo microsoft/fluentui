@@ -1,31 +1,32 @@
 import * as React from 'react';
 import { IStyleSet, IStyleFunctionOrObject, concatStyleSetsWithProps } from '@uifabric/merge-styles';
 import { CustomizerContext } from './customizations/CustomizerContext';
-import { Customizations } from './customizations/Customizations';
+import { useCustomizationSettings } from './customizations/useCustomizationSettings';
 import { classNamesFunction } from './classNamesFunction';
+import { StyleFunction } from './styled';
 
 const StylesCustomizationField = ['theme', 'styles'];
+
+const getClassNames = classNamesFunction();
+const getClassNamesWithStaticStyles = classNamesFunction({
+  useStaticStyles: true,
+});
 
 export interface IUseClassesOptions<TStylesProp, TStyleProps, TStyleSet> {
   customizationScopeName: string;
   useStaticStyles: boolean;
-  styles: TStylesProp;
+  stylesProp: TStylesProp;
   styleProps: Omit<TStyleProps, 'theme'>;
   baseStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>;
 }
 
-type StyleFunction<TStyleProps, TStyleSet> = IStyleFunctionOrObject<TStyleProps, TStyleSet> & {
-  /** True if no styles prop or styles from Customizer is passed to wrapped component. */
-  __noStyleOverride__: boolean;
-};
-
 export function useClasses<TStylesProp, TStyleProps extends {}, TStyleSet extends IStyleSet<TStyleSet>>(
   options: IUseClassesOptions<TStylesProp, TStyleProps, TStyleSet>,
 ): { [key in keyof TStyleSet]: string } {
-  const { customizationScopeName, useStaticStyles, baseStyles, styles, styleProps } = options;
+  const { customizationScopeName, useStaticStyles, baseStyles, stylesProp, styleProps } = options;
   const customizerContext = React.useContext(CustomizerContext);
 
-  const settings = Customizations.getSettings(
+  const settings = useCustomizationSettings(
     StylesCustomizationField,
     customizationScopeName,
     customizerContext.customizations,
@@ -34,21 +35,20 @@ export function useClasses<TStylesProp, TStyleProps extends {}, TStyleSet extend
   const { theme, styles: customizedStyles } = settings;
 
   const stylesFunction: IStyleFunctionOrObject<TStyleProps, TStyleSet> = React.useCallback(
-    p => concatStyleSetsWithProps(p, baseStyles, customizedStyles, p.styles),
-    [customizedStyles, styles],
+    props => concatStyleSetsWithProps(props, baseStyles, customizedStyles, stylesProp),
+    [baseStyles, customizedStyles, stylesProp],
   );
 
-  (stylesFunction as StyleFunction<TStyleProps, TStyleSet>).__noStyleOverride__ = !customizedStyles && !styles;
+  (stylesFunction as StyleFunction<TStyleProps, TStyleSet>).__noStyleOverride__ = !customizedStyles && !stylesProp;
+  (stylesFunction as StyleFunction<TStyleProps, TStyleSet>).__cachedInputs__ = [
+    baseStyles,
+    customizedStyles,
+    stylesProp,
+  ];
 
-  const getClassNames = React.useMemo(
-    () =>
-      classNamesFunction({
-        useStaticStyles,
-      }),
-    [useStaticStyles],
-  );
+  const getClasses = useStaticStyles ? getClassNamesWithStaticStyles : getClassNames;
 
-  const classNames = getClassNames(stylesFunction, { theme, ...styleProps }) as { [key in keyof TStyleSet]: string };
+  const classNames = getClasses(stylesFunction, { theme, ...styleProps }) as { [key in keyof TStyleSet]: string };
 
   return classNames;
 }
