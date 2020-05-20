@@ -15,6 +15,17 @@ describe('Selection', () => {
     expect(selection.count).toBe(0);
   });
 
+  it('can receive items', () => {
+    const selection = new Selection({ onSelectionChanged, items: setA });
+
+    expect(onSelectionChanged).toHaveBeenCalledTimes(0);
+
+    selection.setKeySelected('a', true, true);
+    selection.setKeySelected('a', true, true);
+    selection.setIndexSelected(0, true, true);
+    expect(onSelectionChanged).toHaveBeenCalledTimes(1);
+  });
+
   it('fires change events only when selection changes occur', () => {
     const selection = new Selection({ onSelectionChanged });
 

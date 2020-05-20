@@ -1,8 +1,8 @@
 {
   "type": "prerelease",
-  "comment": "PivotItem: Expanding types of headerButtonProps to include IButtonProps.",
+  "comment": "Toggle: Convert react-next version to use scss.",
   "packageName": "@fluentui/react-next",
   "email": "humbertomakotomorimoto@gmail.com",
   "dependentChangeType": "patch",
-  "date": "2020-05-13T00:39:32.179Z"
+  "date": "2020-05-18T21:52:18.496Z"
 }

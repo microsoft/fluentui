@@ -16,6 +16,7 @@
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
 ## BREAKING CHANGES
 - Restricted prop sets in the `MenuDivider` component which are passed to styles functions @assuncaocharles ([#13069](https://github.com/microsoft/fluentui/pull/13069))
 - Restricted prop sets in the `Segment` component which are passed to styles functions @assuncaocharles ([#13079](https://github.com/microsoft/fluentui/pull/13079))
@@ -24,6 +25,17 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Stop propagadion in `Dropdown` for `keypress` of `ArrowRight`, `ArrowLeft`, `Esc` and `Backspace` @assuncaocharles ([#13088](https://github.com/microsoft/fluentui/pull/13088))
 - Restricted prop sets in the `Menu` component which are passed to styles functions @assuncaocharles ([#13040](https://github.com/microsoft/fluentui/pull/13040))
 - Renamed `Survey20pxIcon` to `ApprovalsAppbarIcon` @TanelVari ([#12872](https://github.com/microsoft/fluentui/pull/12872))
+- Restricted prop sets in the `Form` component which are passed to styles functions, @assuncaocharles ([#13180](https://github.com/microsoft/fluentui/pull/13180))
+- Restricted prop sets in the `FormField` component which are passed to styles functions, @assuncaocharles ([#13181](https://github.com/microsoft/fluentui/pull/13181))
+- Restricted prop sets in the `DropdownSelectedItem` component which are passed to styles functions, @assuncaocharles ([#13179](https://github.com/microsoft/fluentui/pull/13179))
+- Restricted prop sets in the `Input` component which are passed to styles functions, @assuncaocharles ([#13189](https://github.com/microsoft/fluentui/pull/13189))
+- Restricted prop sets in the `HierarchicalTree` component which are passed to styles functions, @assuncaocharles ([#13182](https://github.com/microsoft/fluentui/pull/13182))
+- Restricted prop sets in the `Portal` component which are passed to styles functions, @assuncaocharles ([#13186](https://github.com/microsoft/fluentui/pull/13186))
+- Restricted prop sets in the `HierarchicalTreeItem` component which are passed to styles functions, @assuncaocharles ([#13184](https://github.com/microsoft/fluentui/pull/13184))
+- Restricted set in `MenuItem` component which are passed to styles functions @mnajdova ([#13117](https://github.com/microsoft/fluentui/pull/13117))
+- `menuItemSlotClassNames.indicator` and `menuItemSlotClassNames.wrapper` were removed, `menuItemIndicatorClassName` and `menuItemWrapperClassName` should be used instead @mnajdova ([#13117](https://github.com/microsoft/fluentui/pull/13117))
+- Move `MenuItem`'s slots styles to dedicated components @mnajdova ([#13117](https://github.com/microsoft/fluentui/pull/13117))
+- Move `divider`'s slots styles to `MenuDivider` component @mnajdova @layershifter ([#13207](https://github.com/microsoft/fluentui/pull/13207))
 
 ### Fixes
 - Fix `splitButtonBehavior` to exclude `toggleButton` from focus zone @silviuavram ([#13043](https://github.com/microsoft/fluentui/pull/13043))
@@ -31,9 +43,21 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Enable back focus zone in `CarouselNavigation` @kolaps33 ([#13086](https://github.com/microsoft/fluentui/pull/13086))
 - Update examples to focus on internal input when Tab is pressed in `RadioGroupItem` @assuncaocharles ([#13110](https://github.com/microsoft/fluentui/pull/13110))
 - Wrapped `Alert`, `Attachment`, `Box` and `ListItem` FC with `unstable_wrapWithFocusZone` @assuncaocharles ([#13093](https://github.com/microsoft/fluentui/pull/13093))
+- Fix to use `useRef()` hook in functional components @layershifter ([#13228](https://github.com/microsoft/fluentui/pull/13228))
+- Exclude useless updates, fix `fixed` positioning in `Popper` @layershifter @kolaps33 ([#13044](https://github.com/microsoft/fluentui/pull/13044))
 
 ### Features
 - Added icons: `TranscriptIcon`, `FilesGenericColoredIcon`, `FilesHtmlColoredIcon`, `FilesPdfColoredIcon`, `FilesPictureColoredIcon`, `FilesTextColoredIcon`, `PopupIcon`, `ShareGenericIcon`, `ComposeIcon`, `SpotlightStopIcon`, `TenantWorkIcon`, `TenantPersonalIcon`, `WorkOrSchoolIcon`, `EmailWithDotIcon`. Modified: `ShareLocationIcon`, `SpotlightIcon`. @TanelVari ([#12872](https://github.com/microsoft/fluentui/pull/12872))
+- Update `padding` and `margin` styles for `Card` @pompomon ([#13158](https://github.com/microsoft/fluentui/pull/13158))
+- Add `expandabble` prop and styles for `Card` @pompomon ([#13092](https://github.com/microsoft/fluentui/pull/13092))
+- Use `compose()` in `MenuItem` and added dedicated slot's components `MenuItemIcon`, `MenuItemContent`, `MenuItemIndicator` and `MenuItemWrapper` @mnajdova ([#13117](https://github.com/microsoft/fluentui/pull/13117))
+- Add `elevated`, `inverted` and `quiet` props and styles for the `Card` @pompomon ([#13163](https://github.com/microsoft/fluentui/pull/13163))
+- Use `compose()` in `MenuDivider` @layershifter ([#13207](https://github.com/microsoft/fluentui/pull/13207))
+- Add `selected` prop and styles for `Card` @pompomon ([#12921](https://github.com/microsoft/fluentui/pull/12921))
+- Update styles for `selected` `Card` @pompomon ([#13230](https://github.com/microsoft/fluentui/pull/13230))
+
+### Documentation
+- `Toolbar` recommendation using toolbar based on aria  @kolaps33 ([#13143](https://github.com/microsoft/fluentui/pull/13143))
 
 <!--------------------------------[ v0.49.0 ]------------------------------- -->
 ## [v0.49.0](https://github.com/OfficeDev/office-ui-fabric-react/tree/fluentui_v0.49.0) (2020-05-10)

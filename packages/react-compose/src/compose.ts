@@ -31,7 +31,7 @@ function compose<
   // Create the new component, passing along the options.
   const Component = (React.forwardRef<TElementType, TInputProps & TParentProps & { as?: React.ElementType }>(
     (props, ref) => {
-      return composeOptions.render(props, ref as React.Ref<'div'>, composeOptions);
+      return composeOptions.render(props, (ref as unknown) as React.Ref<HTMLDivElement>, composeOptions);
     },
   ) as unknown) as ComponentWithAs<TElementType, TInputProps & TParentProps>;
 
