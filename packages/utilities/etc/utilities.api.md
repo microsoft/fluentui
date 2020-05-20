@@ -1193,6 +1193,9 @@ export const trProperties: string[];
 export function unhoistMethods(source: any, methodNames: string[]): void;
 
 // @public
+export function useCustomizationSettings(properties: string[], scopeName?: string, localSettings?: ICustomizations): ISettings;
+
+// @public
 export function useFocusRects(rootRef?: React.RefObject<HTMLElement>): void;
 
 // @public
