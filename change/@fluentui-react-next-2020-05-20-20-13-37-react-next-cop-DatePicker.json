@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Copy DatePicker code from OUFR",
+  "packageName": "@fluentui/react-next",
+  "email": "miclo@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-05-20T20:13:37.142Z"
+}
