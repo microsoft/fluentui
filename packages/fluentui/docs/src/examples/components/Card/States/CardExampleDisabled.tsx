@@ -1,4 +1,4 @@
-import { Flex, Image, Text, Card } from '@fluentui/react-northstar';
+import { Image, Text, Card } from '@fluentui/react-northstar';
 import * as React from 'react';
 import { useBooleanKnob } from '@fluentui/docs-components';
 
@@ -16,9 +16,7 @@ const CardExampleDisabled = () => {
         <Text content={`Card was clicked ${clickCount} times.`} weight="bold" />
       </Card.Header>
       <Card.Body>
-        <Flex column gap="gap.small">
-          <Image src="public/images/wireframe/square-image.png" />
-        </Flex>
+        <Image src="public/images/wireframe/square-image.png" />
       </Card.Body>
     </Card>
   );

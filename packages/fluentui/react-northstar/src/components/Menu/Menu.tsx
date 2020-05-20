@@ -268,7 +268,7 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
         {childrenExist(children) ? children : renderItems()}
       </ElementType>,
     );
-    const wrappedElement = ref ? <Ref innerRef={ref as any /* TODO: fix refs in compose() */}>{element}</Ref> : element;
+    const wrappedElement = ref ? <Ref innerRef={ref}>{element}</Ref> : element;
 
     setEnd();
 

@@ -69,6 +69,9 @@ export interface CardProps extends UIComponentProps {
 
   /** A card can have quiet styles. */
   quiet?: boolean;
+
+  /** A card can show that it is currently selected or not. */
+  selected?: boolean;
 }
 
 export type CardStylesProps = Pick<
@@ -83,6 +86,7 @@ export type CardStylesProps = Pick<
   | 'elevated'
   | 'inverted'
   | 'quiet'
+  | 'selected'
 > & {
   actionable: boolean;
 };
@@ -121,6 +125,7 @@ const Card: React.FC<WithAsProp<CardProps>> &
     elevated,
     inverted,
     quiet,
+    selected,
   } = props;
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Card.handledProps, props);
@@ -128,12 +133,17 @@ const Card: React.FC<WithAsProp<CardProps>> &
     debugName: Card.displayName,
     actionHandlers: {
       performClick: e => {
+        // prevent Spacebar from scrolling
+        e.preventDefault();
         handleClick(e);
       },
       focusCard: e => {
         cardRef.current.focus();
       },
     },
+    mapPropsToBehavior: () => ({
+      disabled,
+    }),
     rtl: context.rtl,
   });
 
@@ -151,6 +161,7 @@ const Card: React.FC<WithAsProp<CardProps>> &
       elevated,
       inverted,
       quiet,
+      selected,
     }),
     mapPropsToInlineStyles: () => ({
       className,
@@ -204,6 +215,7 @@ Card.propTypes = {
   elevated: PropTypes.bool,
   quiet: PropTypes.bool,
   inverted: PropTypes.bool,
+  selected: PropTypes.bool,
 };
 
 Card.defaultProps = {
