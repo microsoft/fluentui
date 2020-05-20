@@ -1,8 +1,7 @@
 import { buttonBehavior } from '@fluentui/accessibility';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
-import { compose, ComponentWithAs } from '@fluentui/react-bindings';
-import { ShorthandConfig } from '@fluentui/react-compose';
+import { compose, ComponentWithAs, ShorthandConfig } from '@fluentui/react-bindings';
 import { commonPropTypes } from '../../utils';
 import Button, { ButtonProps, ButtonStylesProps } from '../Button/Button';
 

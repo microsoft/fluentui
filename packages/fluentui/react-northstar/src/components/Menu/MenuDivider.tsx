@@ -7,8 +7,8 @@ import {
   useTelemetry,
   useStyles,
   useUnhandledProps,
+  ShorthandConfig,
 } from '@fluentui/react-bindings';
-import { ShorthandConfig } from '@fluentui/react-compose';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 // @ts-ignore

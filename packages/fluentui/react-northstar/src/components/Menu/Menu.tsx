@@ -8,6 +8,7 @@ import {
   useStyles,
   useTelemetry,
   useUnhandledProps,
+  ShorthandConfig,
 } from '@fluentui/react-bindings';
 import { Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
@@ -17,7 +18,6 @@ import * as PropTypes from 'prop-types';
 import * as React from 'react';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
-import { ShorthandConfig } from '@fluentui/react-compose';
 import { ShorthandCollection, ShorthandValue, ComponentEventHandler, ProviderContextPrepared } from '../../types';
 import {
   childrenExist,

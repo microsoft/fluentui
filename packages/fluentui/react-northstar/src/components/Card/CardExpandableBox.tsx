@@ -1,4 +1,4 @@
-import { ComponentWithAs, compose, ShorthandConfig } from '@fluentui/react-compose';
+import { ComponentWithAs, compose, ShorthandConfig } from '@fluentui/react-bindings';
 import { commonPropTypes } from '../../utils';
 import Box, { BoxProps, BoxStylesProps } from '../Box/Box';
 

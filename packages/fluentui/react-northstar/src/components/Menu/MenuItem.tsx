@@ -9,11 +9,11 @@ import {
   useAccessibility,
   useStyles,
   ComponentWithAs,
+  ShorthandConfig,
 } from '@fluentui/react-bindings';
 import { EventListener } from '@fluentui/react-component-event-listener';
 import { Ref, handleRef } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
-import { ShorthandConfig } from '@fluentui/react-compose';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';

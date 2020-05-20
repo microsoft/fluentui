@@ -7,6 +7,7 @@ import {
   useStyles,
   useTelemetry,
   useUnhandledProps,
+  ShorthandConfig,
 } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
@@ -14,7 +15,6 @@ import * as PropTypes from 'prop-types';
 import * as React from 'react';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
-import { ShorthandConfig } from '@fluentui/react-compose';
 import {
   childrenExist,
   createShorthandFactory,

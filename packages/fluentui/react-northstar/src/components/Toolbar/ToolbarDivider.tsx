@@ -7,11 +7,11 @@ import {
   useTelemetry,
   compose,
   ComponentWithAs,
+  ShorthandConfig,
 } from '@fluentui/react-bindings';
 import { mergeComponentVariables } from '@fluentui/styles';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
-import { ShorthandConfig } from '@fluentui/react-compose';
 import * as React from 'react';
 import { ProviderContextPrepared } from '../../types';
 import {

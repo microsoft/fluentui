@@ -1,6 +1,6 @@
 import { Accessibility, loaderBehavior } from '@fluentui/accessibility';
 import * as customPropTypes from '@fluentui/react-proptypes';
-import { ShorthandConfig } from '@fluentui/react-compose';
+import { ShorthandConfig } from '@fluentui/react-bindings';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import {
