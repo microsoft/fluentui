@@ -278,6 +278,7 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
       pills,
       inSubmenu: props.submenu,
       accessibility: accessibility(props).childBehaviors,
+      __parentComponent: composeOptions.slots.__self,
     };
 
     const element = getA11yProps.unstable_wrapWithFocusZone(

@@ -1,7 +1,9 @@
 import * as React from 'react';
+
 import {
   Menu,
   MenuItem,
+  MenuProps,
   compose,
   Provider,
   MenuItemIcon,
@@ -9,6 +11,7 @@ import {
   MenuItemIndicator,
   MenuItemWrapper,
   BookmarkIcon,
+  MenuStylesProps,
 } from '@fluentui/react-northstar';
 
 const MenuItemWrapperDashed = compose(MenuItemWrapper, {
@@ -19,8 +22,8 @@ const MenuItemIconGreen = compose(MenuItemIcon, {
   displayName: 'MenuItemIconGreen',
 });
 
-const MenuItemContentPink = compose(MenuItemContent, {
-  displayName: 'MenuItemContentPink',
+const MenuItemContentPurple = compose(MenuItemContent, {
+  displayName: 'MenuItemContentPurple',
 });
 
 const MenuitemIndicatorSaturated = compose(MenuItemIndicator, {
@@ -29,24 +32,53 @@ const MenuitemIndicatorSaturated = compose(MenuItemIndicator, {
 
 const MenuItemBlue = compose(MenuItem, {
   displayName: 'MenuItemBlue',
+
   slots: {
     icon: MenuItemIconGreen,
-    content: MenuItemContentPink,
+
+    content: MenuItemContentPurple,
+
     indicator: MenuitemIndicatorSaturated,
+
     wrapper: MenuItemWrapperDashed,
+  },
+});
+
+const MenuCoral = compose<'ul', MenuProps, MenuStylesProps, MenuProps, MenuStylesProps>(Menu, {
+  displayName: 'MenuCoral',
+
+  slots: {
+    item: MenuItemBlue,
   },
 });
 
 const items = [
   {
     key: 'editorials',
+
     content: 'Editorials',
+
     icon: <BookmarkIcon />,
-    menu: ['One', 'Two', 'Three'],
-    // TODO: remove once compose is implemented for the hierarchical structure
-    children: (C, p) => <MenuItemBlue {...p} />,
+
+    menuOpen: true,
+
+    menu: [
+      {
+        key: 'One',
+
+        content: 'One',
+
+        menu: ['Four', { content: 'Five' }],
+      },
+
+      'Two',
+
+      'Three',
+    ],
   },
+
   { key: 'review', content: 'Reviews' },
+
   { key: 'events', content: 'Upcoming Events' },
 ];
 
@@ -57,26 +89,38 @@ const themeOverrides = {
         backgroundColor: 'lightblue',
       },
     },
+
     MenuItemIconGreen: {
       root: {
         color: 'lightgreen',
       },
     },
-    MenuItemContentPink: {
+
+    MenuItemContentPurple: {
       root: {
-        color: 'pink',
+        color: 'purple',
       },
     },
+
     MenuitemIndicatorSaturated: {
       root: {
         filter: 'saturate(8)',
+
         height: '20px',
+
         width: '20px',
       },
     },
+
     MenuItemWrapperDashed: {
       root: {
         border: '1px dashed lightgreen',
+      },
+    },
+
+    MenuCoral: {
+      root: {
+        backgroundColor: 'coral',
       },
     },
   },
@@ -84,7 +128,7 @@ const themeOverrides = {
 
 const MenuExampleCompose = () => (
   <Provider theme={themeOverrides}>
-    <Menu defaultActiveIndex={0} items={items} />
+    <MenuCoral defaultActiveIndex={0} items={items} />
   </Provider>
 );
 
