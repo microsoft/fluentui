@@ -14,7 +14,7 @@ export const mergeClasses = (...classesList: (ClassDictionary | undefined)[]): C
   }
 
   const result: ClassDictionary = {};
-  Object.keys(result!).forEach((key: string) => {
+  Object.keys(temp!).forEach((key: string) => {
     result[key] = cx(...(temp[key] as string[]));
   });
 

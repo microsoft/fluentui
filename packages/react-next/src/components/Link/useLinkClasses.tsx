@@ -5,7 +5,7 @@ import * as classes from './Link.scss';
 
 export function useLinkClasses(props: ILinkProps): { [key in keyof ILinkStyles]: string } {
   return useClasses<ILinkProps['styles'], ILinkStyleProps, ILinkStyles>({
-    customizationScopeName: 'Links',
+    customizationScopeName: 'Link',
     useStaticStyles: true,
     styles: props.styles,
     styleProps: {
