@@ -220,9 +220,8 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
       design,
       styles,
       variables,
+      accessibility = parentProps.accessibility.item,
     } = props;
-
-    const accessibility = props.accessibility || parentProps.accessibility.item || menuItemBehavior;
 
     const [menuOpen, setMenuOpen] = useAutoControlled({
       defaultValue: props.defaultMenuOpen,
@@ -623,7 +622,7 @@ MenuItem.propTypes = {
 
 MenuItem.defaultProps = {
   as: 'a',
-  accessibility: null,
+  accessibility: menuItemBehavior,
   wrapper: {},
   indicator: {},
 };
