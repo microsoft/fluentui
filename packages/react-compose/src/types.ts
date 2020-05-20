@@ -64,6 +64,11 @@ export type ClassDictionary = {
   [key: string]: string;
 };
 
+export type Dictionary = {
+  // tslint:disable-next-line: no-any
+  [key: string]: any;
+};
+
 export type ComposePreparedOptions<Props = {}> = {
   className: string;
   classes: ClassDictionary;
