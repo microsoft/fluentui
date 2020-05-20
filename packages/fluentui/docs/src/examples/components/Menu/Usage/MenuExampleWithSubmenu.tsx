@@ -6,51 +6,67 @@ const MenuExampleWithSubMenu = () => (
   <Menu defaultActiveIndex={0}>
     <Menu.Item
       index={0}
-      menu={[
-        { key: '1', content: 'item1' },
-        {
-          key: '2',
-          content: 'item2',
-          menu: [
-            { key: '1', content: 'item2.1' },
-            { key: '2', content: 'item2.2' },
-          ],
-        },
-        {
-          key: '3',
-          content: 'item3',
-          menu: [
-            { key: '1', content: 'item3.1' },
-            { key: '2', content: 'item3.2' },
-          ],
-        },
-      ]}
+      menu={
+        <>
+          <Menu.Item>
+            <Menu.ItemContent key="item1">item1</Menu.ItemContent>
+          </Menu.Item>
+          <Menu.Item
+            index={1}
+            content="item 2"
+            menu={
+              <>
+                <Menu.Item content="item 2.1" />
+                <Menu.Item content="item 2.2" />
+              </>
+            }
+          />
+          <Menu.Item
+            content="item 3"
+            index={2}
+            menu={
+              <>
+                <Menu.Item content="item 3.1" />
+                <Menu.Item content="item 3.2" />
+              </>
+            }
+          />
+        </>
+      }
       content="Editorials"
     />
 
     <Menu.Item
       index={1}
-      menu={[
-        { key: '1', content: 'item1' },
-        {
-          key: '2',
-          icon: <CircleIcon />,
-          content: 'item2 non augue tortor mollis',
-          menu: [
-            { key: '1', icon: <CircleIcon />, content: 'item2.1' },
-            { key: '2', content: 'item2.2' },
-          ],
-        },
-        {
-          key: '3',
-          icon: <CircleIcon />,
-          content: 'item3 elementum urna varius augue ultrices gravida malesuada fames',
-          menu: [
-            { key: '1', icon: <CircleIcon />, content: 'item3.1' },
-            { key: '2', content: 'item3.2' },
-          ],
-        },
-      ]}
+      menu={
+        <>
+          <Menu.Item>
+            <Menu.ItemContent key="item1">item1</Menu.ItemContent>
+          </Menu.Item>
+          <Menu.Item
+            index={1}
+            icon={<CircleIcon />}
+            content="item2 non augue tortor mollis"
+            menu={
+              <>
+                <Menu.Item icon={<CircleIcon />} content="item 2.1" />
+                <Menu.Item content="item 2.2" />
+              </>
+            }
+          />
+          <Menu.Item
+            content="item 3 elementum urna varius augue ultrices gravida malesuada fames"
+            index={2}
+            icon={<CircleIcon />}
+            menu={
+              <>
+                <Menu.Item icon={<CircleIcon />} content="item 3.1" />
+                <Menu.Item content="item 3.2" />
+              </>
+            }
+          />
+        </>
+      }
       content="Reviews"
     />
 
