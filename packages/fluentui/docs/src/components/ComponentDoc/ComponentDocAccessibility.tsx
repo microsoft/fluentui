@@ -104,22 +104,22 @@ export const ComponentDocAccessibility: React.FC<ComponentDocAccessibility> = ({
       {((behaviorName && allAvailableBehaviors.length > 0) ||
         (behaviorName && accIssues) ||
         (allAvailableBehaviors.length > 0 && accIssues)) && (
-          <ul>
-            <li>
-              Behaviors
-            <ul>
-                {behaviorName && <li>{link(`Default: ${behaviorName}`, '#default-behavior')} </li>}
-                {(info.behaviors || allAvailableBehaviors.length > 0) &&
-                  allAvailableBehaviors.map(variant => {
-                    return (
-                      <li>{link(`${behaviorVariantDisplayName(variant.name)}`, `#${_.kebabCase(variant.name)}`)}</li>
-                    );
-                  })}
-              </ul>
-            </li>
-            {accIssues && <li>{link('Known issues', `#${knownIssuesId}`)} </li>}
-          </ul>
-        )}
+        <ul>
+          <li>
+            Behaviors
+        <ul>
+              {behaviorName && <li>{link(`Default: ${behaviorName}`, '#default-behavior')} </li>}
+              {(info.behaviors || allAvailableBehaviors.length > 0) &&
+                allAvailableBehaviors.map(variant => {
+                  return (
+                    <li>{link(`${behaviorVariantDisplayName(variant.name)}`, `#${_.kebabCase(variant.name)}`)}</li>
+                  );
+                })}
+            </ul>
+          </li>
+          {accIssues && <li>{link('Known issues', `#${knownIssuesId}`)} </li>}
+        </ul>
+      )}
 
       {behaviorName && (
         <>
