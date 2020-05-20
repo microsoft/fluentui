@@ -7,6 +7,7 @@ const globalStyles: StaticStyleFunction = siteVars => ({
     fontFamily: siteVars.bodyFontFamily,
     fontSize: siteVars.bodyFontSize,
     lineHeight: siteVars.bodyLineHeight,
+    outline: 'none',
   },
   '*': {
     boxSizing: 'border-box',
