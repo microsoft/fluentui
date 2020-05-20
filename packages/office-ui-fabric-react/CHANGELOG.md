@@ -1,8 +1,72 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 12 May 2020 12:41:21 GMT and should not be manually modified.
+This log was last generated on Wed, 20 May 2020 12:31:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.115.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.115.1)
+
+Wed, 20 May 2020 12:31:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.115.0..office-ui-fabric-react_v7.115.1)
+
+### Patches
+
+- update MessageBarButtonBorder color ([PR #12932](https://github.com/microsoft/fluentui/pull/12932) by chrismo@microsoft.com)
+
+## [7.115.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.115.0)
+
+Mon, 18 May 2020 12:54:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.114.1..office-ui-fabric-react_v7.115.0)
+
+### Minor changes
+
+- Pass all relevant state to Nav group render override ([PR #12854](https://github.com/microsoft/fluentui/pull/12854) by tmichon@microsoft.com)
+
+### Patches
+
+- SpinButton: allow empty string as value, clean up docs and tests ([PR #13174](https://github.com/microsoft/fluentui/pull/13174) by elcraig@microsoft.com)
+- DetailsList: clarify IColumn.ariaLabel docs; other doc cleanup ([PR #13183](https://github.com/microsoft/fluentui/pull/13183) by elcraig@microsoft.com)
+
+## [7.114.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.114.1)
+
+Fri, 15 May 2020 12:42:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.114.0..office-ui-fabric-react_v7.114.1)
+
+### Patches
+
+- Updating List, Keytips, and Facepile examples to use function components ([PR #12829](https://github.com/microsoft/fluentui/pull/12829) by czearing@outlook.com)
+- updating Shimmer, Slider, SelectedPeopleList, MarqueeSelection, and SwatchColorPicker examples to FC ([PR #12849](https://github.com/microsoft/fluentui/pull/12849) by czearing@outlook.com)
+
+## [7.114.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.114.0)
+
+Fri, 15 May 2020 05:52:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.113.3..office-ui-fabric-react_v7.114.0)
+
+### Minor changes
+
+- PivotItem: Expanding types of headerButtonProps to include IButtonProps. ([PR #13128](https://github.com/microsoft/fluentui/pull/13128) by humbertomakotomorimoto@gmail.com)
+
+## [7.113.3](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.113.3)
+
+Fri, 15 May 2020 00:07:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.113.2..office-ui-fabric-react_v7.113.3)
+
+### Patches
+
+- Support custom checkbox for <GroupHeader>: added onRenderGroupHeaderCheckbox property ([PR #12105](https://github.com/microsoft/fluentui/pull/12105) by sebastian.mattar@gmail.com)
+- Updating examples for ProgressIndicator, FloatingPeoplePicker and ResizeGroupOverflowSetExample to use FC ([PR #12890](https://github.com/microsoft/fluentui/pull/12890) by czearing@outlook.com)
+
+## [7.113.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.113.2)
+
+Thu, 14 May 2020 12:34:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.112.0..office-ui-fabric-react_v7.113.2)
+
+### Patches
+
+- fix accessibility issue ([PR #12952](https://github.com/microsoft/fluentui/pull/12952) by xiameng@microsoft.com)
+- updating DocumentCard and GroupedList to FC ([PR #12851](https://github.com/microsoft/fluentui/pull/12851) by czearing@outlook.com)
+- Update Picker.CustomResult.Example.tsx ([PR #12795](https://github.com/microsoft/fluentui/pull/12795) by patrick@nubo.eu)
+- Updating examples to use `useId` instead of `getId` and converting `Dialog` examples to function components. ([PR #13054](https://github.com/microsoft/fluentui/pull/13054) by czearing@outlook.com)
 
 ## [7.112.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.112.0)
 

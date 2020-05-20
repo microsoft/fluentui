@@ -346,6 +346,9 @@ export function getParent(child: HTMLElement, allowVirtualParents?: boolean): HT
 export function getPreviousElement(rootElement: HTMLElement, currentElement: HTMLElement | null, checkNode?: boolean, suppressParentTraversal?: boolean, traverseChildren?: boolean, includeElementsInFocusZones?: boolean, allowFocusRoot?: boolean, tabbable?: boolean): HTMLElement | null;
 
 // @public
+export function getPropsWithDefaults<TProps extends {}>(defaultProps: Partial<TProps>, propsWithoutDefaults: TProps): TProps;
+
+// @public
 export function getRect(element: HTMLElement | Window | null): IRectangle | undefined;
 
 // @public
@@ -732,6 +735,8 @@ export interface ISelectionOptions<TItem = IObjectWithKey> {
     // (undocumented)
     canSelectItem?: (item: TItem, index?: number) => boolean;
     getKey?: (item: TItem, index?: number) => string | number;
+    // (undocumented)
+    items?: TItem[];
     // (undocumented)
     onSelectionChanged?: () => void;
     // (undocumented)

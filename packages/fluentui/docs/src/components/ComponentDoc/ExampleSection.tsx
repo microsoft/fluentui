@@ -18,7 +18,13 @@ const ExampleSection: React.FC<ExampleSectionProps> = ({ title, children }) => (
     <Header as="h2" align="center" styles={headerStyle} className="no-anchor">
       {title}
     </Header>
-    <Grid variables={{ gridGap: '2rem' }} columns="minmax(550px, 1fr)">
+    <Grid
+      variables={{ gridGap: '2rem' }}
+      styles={{
+        gridTemplateColumns: 'minmax(550px, 1fr)',
+        msGridTemplateColumns: 'minmax(550px, 1fr)',
+      }}
+    >
       {children}
     </Grid>
   </>

@@ -6,8 +6,13 @@ const States = () => (
   <ExampleSection title="States">
     <ComponentExample
       title="Disabled"
-      description="A card can show it is currently unable to be interacted with."
+      description="A card can show if it is currently unable to be interacted with."
       examplePath="components/Card/States/CardExampleDisabled"
+    />
+    <ComponentExample
+      title="Selected"
+      description="A card can show if it is currently selected."
+      examplePath="components/Card/States/CardExampleSelected"
     />
   </ExampleSection>
 );

@@ -1,0 +1,35 @@
+{
+  "name": "@fluentui/react-button",
+  "entries": [
+    {
+      "date": "Wed, 20 May 2020 12:31:10 GMT",
+      "tag": "@fluentui/react-button_v0.1.4",
+      "version": "0.1.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "feat(compose): expose __self slot",
+            "author": "olfedias@microsoft.com",
+            "commit": "30fa92e7c750651fa609aa6c924b83155bebe203",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 15 May 2020 12:42:20 GMT",
+      "tag": "@fluentui/react-button_v0.1.1",
+      "version": "0.1.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Initial package scaffold.",
+            "author": "dzearing@microsoft.com",
+            "commit": "342ef515550dc4067c2b451dd4ae8f2a7bb9d608",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    }
+  ]
+}
