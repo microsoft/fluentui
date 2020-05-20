@@ -189,6 +189,13 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
   shouldResetActiveElementWhenTabFromZone?: boolean;
 
   /**
+   * Determines whether the FocusZone will walk up the DOM trying to invoke click callbacks on focusable elements on
+   * Enter and Space keydowns to ensure accessibility for tags that don't guarantee this behavior.
+   * @defaultvalue true
+   */
+  shouldRaiseClicks?: boolean;
+
+  /**
    * A callback method to determine if the input element should lose focus on arrow keys
    *  @param inputElement - The input element which is to loose focus.
    *  @returns True if input element should loose focus or false otherwise.
