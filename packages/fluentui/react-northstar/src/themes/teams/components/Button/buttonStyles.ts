@@ -130,7 +130,6 @@ const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, ButtonVariabl
           boxShadow: v.primaryBoxShadow,
 
           ':active': {
-            // hover => active
             transition: ultraFast,
             backgroundColor: v.primaryBackgroundColorActive,
             boxShadow: 'none',
