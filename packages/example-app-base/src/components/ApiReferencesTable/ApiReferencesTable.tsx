@@ -158,8 +158,8 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
     return this._isEnum ? (
       <ApiDetailsList itemKind="enum" items={properties as IApiEnumProperty[]} tokenResolver={tokenResolver} />
     ) : (
-      <ApiDetailsList itemKind="property" items={properties as IApiInterfaceProperty[]} tokenResolver={tokenResolver} />
-    );
+        <ApiDetailsList itemKind="property" items={properties as IApiInterfaceProperty[]} tokenResolver={tokenResolver} />
+      );
   }
 
   private _renderTitle(): JSX.Element | undefined {
@@ -171,13 +171,13 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
         {title}
       </Text>
     ) : (
-      undefined
-    );
+        undefined
+      );
   }
 }
 
 /**
- * Memoized DetailsList wrapper handling scenarios specific to API reference tables.
+ * Memorized DetailsList wrapper handling scenarios specific to API reference tables.
  */
 const ApiDetailsList: React.FunctionComponent<IApiDetailsListProps> = React.memo(props => {
   // Alphabetize the items and add a key to each one.
@@ -326,7 +326,7 @@ function _referencesTableCell(
 function _renderDeprecatedMessage(deprecatedMessage?: string) {
   deprecatedMessage = (deprecatedMessage || '').trim();
   if (deprecatedMessage) {
-    // Ensure the messsage is formatted as a sentence
+    // Ensure the message is formatted as a sentence
     deprecatedMessage = deprecatedMessage[0].toUpperCase() + deprecatedMessage.slice(1);
     if (deprecatedMessage.slice(-1)[0] !== '.') {
       deprecatedMessage += '.';
