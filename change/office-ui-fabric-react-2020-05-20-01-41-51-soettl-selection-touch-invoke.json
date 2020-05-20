@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Add dedicated touch invoke functionality to SelectionZone",
+  "packageName": "office-ui-fabric-react",
+  "email": "sebastian.oettl@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-05-20T08:41:51.932Z"
+}
