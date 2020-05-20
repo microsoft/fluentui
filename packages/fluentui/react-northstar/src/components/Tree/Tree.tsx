@@ -275,24 +275,21 @@ const Tree: React.FC<WithAsProp<TreeProps>> &
     setSelectedItemIds(e, nextSelectedItemIds);
   };
 
-  const onTitleClick = React.useCallback(
-    (e: React.SyntheticEvent, treeItemProps: TreeItemProps, executeSelection: boolean = false) => {
-      const treeItemHasSubtree = hasSubtree(treeItemProps);
+  const onTitleClick = (e: React.SyntheticEvent, treeItemProps: TreeItemProps, executeSelection: boolean = false) => {
+    const treeItemHasSubtree = hasSubtree(treeItemProps);
 
-      if (!treeItemProps) {
-        return;
-      }
+    if (!treeItemProps) {
+      return;
+    }
 
-      if (treeItemProps.selectable) {
-        processItemsForSelection(e, treeItemProps, executeSelection);
-      }
+    if (treeItemProps.selectable) {
+      processItemsForSelection(e, treeItemProps, executeSelection);
+    }
 
-      if (treeItemHasSubtree && !executeSelection && e.target === e.currentTarget) {
-        expandItems(e, treeItemProps);
-      }
-    },
-    [activeItemIds],
-  );
+    if (treeItemHasSubtree && !executeSelection && e.target === e.currentTarget) {
+      expandItems(e, treeItemProps);
+    }
+  };
 
   const expandItems = (e: React.SyntheticEvent, treeItemProps: TreeItemProps) => {
     const { id } = treeItemProps;
