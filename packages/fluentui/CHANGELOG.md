@@ -37,6 +37,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Move `MenuItem`'s slots styles to dedicated components @mnajdova ([#13117](https://github.com/microsoft/fluentui/pull/13117))
 - Move `divider`'s slots styles to `MenuDivider` component @mnajdova @layershifter ([#13207](https://github.com/microsoft/fluentui/pull/13207))
 - Move `shorthandConfig` to `compose`'s options @mnajdova ([#13240](https://github.com/microsoft/fluentui/pull/13240))
+- Restricted prop sets in the `Header` component which are passed to styles functions and remove the usage of `descriptionColor` as a resolved variable, @assuncaocharles ([#13253](https://github.com/microsoft/fluentui/pull/13253))
 - Updated durations and timing functions, removed `bounce` animations and added new animations in Teams theme @mnajdova ([#13046](https://github.com/microsoft/fluentui/pull/13046))
 - Removed `dismissActionColorActive`, `dismissActionBackgroundColorActive`, `dismissActionBorderColorActive` from `Alert`'s variables in Teams theme @mnajdova ([#13046](https://github.com/microsoft/fluentui/pull/13046))
 
