@@ -11,7 +11,7 @@ const MenuExampleVertical = () => (
       }
       content="Editorials"
     />
-    <Menu.Item index={1} content="Reviews" icon={<WordIcon {...{}} />} />
+    <Menu.Item index={1} content="Reviews" icon={<WordIcon />} />
     <Menu.Item index={2} content="Upcoming Events" />
     <Menu.Item
       index={3}
