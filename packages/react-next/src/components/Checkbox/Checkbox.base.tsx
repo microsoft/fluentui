@@ -12,10 +12,10 @@ export const CheckboxBase = compose<'div', ICheckboxProps, ICheckboxProps, {}, {
   (props, forwardedRef, composeOptions) => {
     const rootRef = React.useRef<HTMLDivElement | null>(null);
     const mergedRootRefs = useMergedRefs(rootRef, forwardedRef);
+    const checkBox = React.useRef<HTMLInputElement>(null);
 
-    const { slotProps, slots } = useCheckbox(props, composeOptions);
-    const { disabled, keytipProps, label, title } = props;
-    const { checked, indeterminate, checkBox } = slotProps.input;
+    const { slotProps, slots, state } = useCheckbox(props, composeOptions);
+    const { disabled, keytipProps, title, checked, indeterminate, label } = state;
 
     useFocusRects(rootRef);
     useDebugWarning(props);
@@ -42,6 +42,7 @@ export const CheckboxBase = compose<'div', ICheckboxProps, ICheckboxProps, {}, {
           <slots.root className={classNames.root} ref={mergedRootRefs} {...slotProps.root}>
             <slots.input
               {...slotProps.input}
+              ref={checkBox}
               className={classNames.input}
               data-ktp-execute-target={keytipAttributes['data-ktp-execute-target']}
               aria-describedby={mergeAriaAttributeValues(
@@ -49,12 +50,12 @@ export const CheckboxBase = compose<'div', ICheckboxProps, ICheckboxProps, {}, {
                 keytipAttributes['aria-describedby'],
               )}
             />
-            <slots.label className={classNames.label} {...slotProps.label}>
+            <slots.labelContainer className={classNames.label} {...slotProps.labelContainer}>
               <div className={classNames.checkbox} data-ktp-target={keytipAttributes['data-ktp-target']}>
                 <slots.checkmarkIcon className={classNames.checkmark} {...slotProps.checkmarkIcon} />
               </div>
               {(props.onRenderLabel || onRenderLabel)(props, onRenderLabel)}
-            </slots.label>
+            </slots.labelContainer>
           </slots.root>
         )}
       </KeytipData>
@@ -64,7 +65,7 @@ export const CheckboxBase = compose<'div', ICheckboxProps, ICheckboxProps, {}, {
     slots: {
       input: 'input',
       checkmarkIcon: Icon,
-      label: 'label',
+      labelContainer: 'label',
     },
     displayName: 'CheckboxBase',
   },

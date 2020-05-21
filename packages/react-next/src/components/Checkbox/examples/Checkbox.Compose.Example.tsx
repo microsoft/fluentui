@@ -28,7 +28,7 @@ const CustomizedLabel: React.FunctionComponent<any> = props => {
 
 const CheckboxWithCustomizedLabel = compose<'div', ICheckboxProps, ICheckboxProps, {}, {}>(Checkbox, {
   slots: {
-    label: CustomizedLabel,
+    labelContainer: CustomizedLabel,
   },
 });
 

@@ -20,7 +20,6 @@ export const useCheckbox = (props: ICheckboxProps, options: ComposePreparedOptio
   } = props;
 
   const id = useId('checkbox-', props.id);
-  const checkBox = React.useRef<HTMLInputElement>(null);
   const [isChecked, setIsChecked] = useControllableValue(props.checked, props.defaultChecked, props.onChange);
   const [isIndeterminate, setIsIndeterminate] = useControllableValue(props.indeterminate, props.defaultIndeterminate);
 
@@ -40,12 +39,16 @@ export const useCheckbox = (props: ICheckboxProps, options: ComposePreparedOptio
   const handledProps: any = {
     as: 'div',
     title: props.title,
+    checked: isChecked,
+    indeterminate: isIndeterminate,
+    disabled,
+    label: props.label,
+    keytipProps: props.keytipProps,
     input: {
       type: 'checkbox',
       ...inputProps,
       checked: !!isChecked,
       disabled,
-      ref: checkBox,
       name,
       id,
       title,
@@ -56,13 +59,14 @@ export const useCheckbox = (props: ICheckboxProps, options: ComposePreparedOptio
       'aria-describedby': ariaDescribedBy,
       'aria-posinset': ariaPositionInSet,
       'aria-setsize': ariaSetSize,
-      'aria-checked': isIndeterminate ? 'mixed' : isChecked ? true : false,
+      'aria-checked': isIndeterminate ? 'mixed' : isChecked ? 'true' : 'false',
     },
     checkmarkIcon: {
       iconName: 'CheckMark',
       ...checkmarkIconProps,
     },
-    label: {
+    // TODO: cannot name this lot `label` as props.label exists
+    labelContainer: {
       htmlFor: id,
     },
   };
