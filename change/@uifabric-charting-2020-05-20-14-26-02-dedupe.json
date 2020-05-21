@@ -1,8 +1,0 @@
-{
-  "type": "none",
-  "comment": "Remove unnecessary devDependency",
-  "packageName": "@uifabric/charting",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none",
-  "date": "2020-05-20T21:26:00.602Z"
-}

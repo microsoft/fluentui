@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "FocusZone: Defaulting to false for the preventDefaultWhenHandled prop to maintain old behavior.",
-  "packageName": "@fluentui/react-focus",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-05-20T20:50:16.220Z"
-}
