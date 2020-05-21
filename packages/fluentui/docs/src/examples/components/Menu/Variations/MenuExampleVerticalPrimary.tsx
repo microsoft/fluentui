@@ -15,7 +15,7 @@ const MenuExampleVertical = () => (
     <Menu.Item index={2} content="Upcoming Events" />
     <Menu.Item
       index={3}
-      icon={<CalendarIcon {...{}} />}
+      icon={<CalendarIcon />}
       content="View full calendar with content so long that it wraps"
       menu={
         <>
