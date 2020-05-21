@@ -20,7 +20,7 @@ const MenuExampleVertical = () => (
       menu={
         <>
           <Menu.Item>
-            <Menu.ItemContent key="item1">item1</Menu.ItemContent>
+            <Menu.ItemContent>item1</Menu.ItemContent>
           </Menu.Item>
           <Menu.Item>
             <Menu.ItemContent>item2</Menu.ItemContent>
