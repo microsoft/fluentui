@@ -475,24 +475,6 @@ export class LineChartBase extends React.Component<
         const xAxisCalloutData = this._points[i].data[j - 1].xAxisCalloutData;
         if (this.state.activeLegend === legendVal || this.state.activeLegend === '') {
           lines.push(
-            <circle
-              id={keyVal + 1}
-              key={keyVal + 1}
-              r={5}
-              cx={this._xAxisScale(x1)}
-              cy={this._yAxisScale(y1)}
-              data-is-focusable={i === 0 ? true : false}
-              onMouseOver={this._handleHover.bind(this, x1, y1, lineColor, xAxisCalloutData)}
-              onMouseMove={this._handleHover.bind(this, x1, y1, lineColor, xAxisCalloutData)}
-              onMouseOut={this._handleMouseOut}
-              onFocus={this._handleFocus.bind(this, keyVal, x1, y1, lineColor, xAxisCalloutData)}
-              onBlur={this._handleMouseOut}
-              onClick={this._onDataPointClick.bind(this, this._points[i].data[j - 1].onDataPointClick)}
-              opacity={1}
-              fill={lineColor}
-            />,
-          );
-          lines.push(
             <line
               id={keyVal}
               key={keyVal}
@@ -514,6 +496,26 @@ export class LineChartBase extends React.Component<
               onClick={this._onLineClick.bind(this, this._points[i].onLineClick)}
             />,
           );
+          lines.push(
+            <circle
+              id={keyVal + 1}
+              key={keyVal + 1}
+              r={5}
+              cx={this._xAxisScale(x1)}
+              cy={this._yAxisScale(y1)}
+              data-is-focusable={i === 0 ? true : false}
+              onMouseOver={this._handleHover.bind(this, x1, y1, lineColor, xAxisCalloutData)}
+              onMouseMove={this._handleHover.bind(this, x1, y1, lineColor, xAxisCalloutData)}
+              onMouseOut={this._handleMouseOut}
+              onFocus={this._handleFocus.bind(this, keyVal, x1, y1, lineColor, xAxisCalloutData)}
+              onBlur={this._handleMouseOut}
+              onClick={this._onDataPointClick.bind(this, this._points[i].data[j - 1].onDataPointClick)}
+              opacity={1}
+              fill={'#fff'}
+              stroke={lineColor}
+              strokeWidth={3}
+            />,
+          );
           if (j + 1 === this._points[i].data.length) {
             lines.push(
               <circle
@@ -529,7 +531,9 @@ export class LineChartBase extends React.Component<
                 onFocus={this._handleFocus.bind(this, keyVal, x2, y2, lineColor, xAxisCalloutData)}
                 onBlur={this._handleMouseOut}
                 onClick={this._onDataPointClick.bind(this, this._points[i].data[j].onDataPointClick)}
-                fill={lineColor}
+                fill={'#fff'}
+                stroke={lineColor}
+                strokeWidth={3}
               />,
             );
           }
