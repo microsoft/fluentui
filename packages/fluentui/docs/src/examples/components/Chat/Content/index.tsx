@@ -15,6 +15,11 @@ const Content = () => (
       description="A chat message can contain group of reactions."
       examplePath="components/Chat/Content/ChatExampleReactionGroup"
     />
+    <ComponentExample
+      title="Custom Header"
+      description="A chat message can have a custom header."
+      examplePath="components/Chat/Content/ChatExampleCustomHeader"
+    />
   </ExampleSection>
 );
 

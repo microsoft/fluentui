@@ -53,6 +53,7 @@ import { ChatItemContext } from './chatItemContext';
 export interface ChatMessageSlotClassNames {
   actionMenu: string;
   author: string;
+  header: string;
   timestamp: string;
   badge: string;
   content: string;
@@ -77,6 +78,9 @@ export interface ChatMessageProps
 
   /** Indicates whether message belongs to the current user. */
   mine?: boolean;
+
+  /** A message cane have a custom header */
+  header?: ShorthandValue<BoxProps>;
 
   /** Timestamp of the message. */
   timestamp?: ShorthandValue<TextProps>;
@@ -131,6 +135,7 @@ export const chatMessageClassName = 'ui-chat__message';
 export const chatMessageSlotClassNames: ChatMessageSlotClassNames = {
   actionMenu: `${chatMessageClassName}__actions`,
   author: `${chatMessageClassName}__author`,
+  header: `${chatMessageClassName}__header`,
   timestamp: `${chatMessageClassName}__timestamp`,
   badge: `${chatMessageClassName}__badge`,
   content: `${chatMessageClassName}__content`,
@@ -161,6 +166,7 @@ const ChatMessage: React.FC<WithAsProp<ChatMessageProps>> & FluentComponentStati
     timestamp,
     styles,
     variables,
+    header,
     unstable_overflow: overflow,
   } = props;
 
@@ -317,6 +323,22 @@ const ChatMessage: React.FC<WithAsProp<ChatMessageProps>> & FluentComponentStati
     }),
   });
 
+  const headerElement = Box.create(header, {
+    defaultProps: () => ({
+      className: chatMessageSlotClassNames.header,
+      styles: resolvedStyles.header,
+    }),
+    overrideProps: () => ({
+      children: (
+        <>
+          {authorElement}
+          {timestampElement}
+          {reactionGroupPosition === 'start' && reactionGroupElement}
+        </>
+      ),
+    }),
+  });
+
   const element = (
     <Ref innerRef={setMessageNode}>
       {getA11Props.unstable_wrapWithFocusZone(
@@ -336,9 +358,7 @@ const ChatMessage: React.FC<WithAsProp<ChatMessageProps>> & FluentComponentStati
             <>
               {actionMenuElement}
               {badgePosition === 'start' && badgeElement}
-              {authorElement}
-              {timestampElement}
-              {reactionGroupPosition === 'start' && reactionGroupElement}
+              {headerElement}
               {messageContent}
               {reactionGroupPosition === 'end' && reactionGroupElement}
               {badgePosition === 'end' && badgeElement}
@@ -358,9 +378,11 @@ ChatMessage.displayName = 'ChatMessage';
 ChatMessage.defaultProps = {
   accessibility: chatMessageBehavior,
   badgePosition: 'end',
+  header: {},
   positionActionMenu: true,
   reactionGroupPosition: 'start',
 };
+
 ChatMessage.propTypes = {
   ...commonPropTypes.createCommon({ content: 'shorthand' }),
   actionMenu: PropTypes.oneOfType([customPropTypes.itemShorthand, customPropTypes.collectionShorthand]),
@@ -368,6 +390,7 @@ ChatMessage.propTypes = {
   author: customPropTypes.itemShorthand,
   badge: customPropTypes.itemShorthand,
   badgePosition: PropTypes.oneOf(['start', 'end']),
+  header: customPropTypes.itemShorthand,
   mine: PropTypes.bool,
   timestamp: customPropTypes.itemShorthand,
   onBlur: PropTypes.func,
@@ -378,6 +401,7 @@ ChatMessage.propTypes = {
   reactionGroupPosition: PropTypes.oneOf(['start', 'end']),
   unstable_overflow: PropTypes.bool,
 };
+
 ChatMessage.handledProps = Object.keys(ChatMessage.propTypes) as any;
 
 ChatMessage.create = createShorthandFactory({ Component: ChatMessage, mappedProp: 'content' });
