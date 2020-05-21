@@ -1,8 +1,35 @@
 # Change Log - @fluentui/examples
 
-This log was last generated on Fri, 01 May 2020 00:19:21 GMT and should not be manually modified.
+This log was last generated on Fri, 15 May 2020 05:52:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.1.59](https://github.com/microsoft/fluentui/tree/@fluentui/examples_v0.1.59)
+
+Fri, 15 May 2020 05:52:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/examples_v0.1.57..@fluentui/examples_v0.1.59)
+
+### Patches
+
+- Updating build dependencies. ([PR #13103](https://github.com/microsoft/fluentui/pull/13103) by dzearing@microsoft.com)
+
+## [0.1.57](https://github.com/microsoft/fluentui/tree/@fluentui/examples_v0.1.57)
+
+Thu, 14 May 2020 12:34:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/examples_v0.1.51..@fluentui/examples_v0.1.57)
+
+### Patches
+
+- Updating examples to use useId instead of getId and converting Dialog examples to function components. ([PR #13054](https://github.com/microsoft/fluentui/pull/13054) by czearing@outlook.com)
+
+## [0.1.51](https://github.com/microsoft/fluentui/tree/@fluentui/examples_v0.1.51)
+
+Thu, 07 May 2020 01:06:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/examples_v0.1.46..@fluentui/examples_v0.1.51)
+
+### Patches
+
+- Addressing commonjs imports. ([PR #13031](https://github.com/microsoft/fluentui/pull/13031) by dzearing@microsoft.com)
 
 ## [0.1.46](https://github.com/microsoft/fluentui/tree/@fluentui/examples_v0.1.46)
 

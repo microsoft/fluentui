@@ -46,9 +46,24 @@ interface IPhoto {
   height: number;
 }
 
+const getItems = (): IPhoto[] => {
+  const items: IPhoto[] = [];
+  for (let i = 0; i < MAX_COUNT; i++) {
+    const randomWidth = 50 + Math.floor(Math.random() * 150);
+    items.push({
+      id: getId('photo'),
+      url: `http://placehold.it/${randomWidth}x100`,
+      width: randomWidth,
+      height: 100,
+    });
+  }
+
+  return items;
+};
+
 export const FocusZonePhotosExample: React.FunctionComponent = () => {
   //  Initialize the items when the component is first rendered (same array will be reused)
-  const items = useConst(_getItems);
+  const items = useConst(getItems);
   return (
     <FocusZone as="ul" className={classNames.photoList}>
       {items.map((item: IPhoto, index: number) => (
@@ -58,7 +73,7 @@ export const FocusZonePhotosExample: React.FunctionComponent = () => {
           aria-posinset={index + 1}
           aria-setsize={items.length}
           aria-label="Photo"
-          data-is-focusable={true}
+          data-is-focusable
         >
           <Image
             src={item.url}
@@ -71,20 +86,3 @@ export const FocusZonePhotosExample: React.FunctionComponent = () => {
     </FocusZone>
   );
 };
-
-function _getItems(): IPhoto[] {
-  const items: IPhoto[] = [];
-
-  for (let i = 0; i < MAX_COUNT; i++) {
-    const randomWidth = 50 + Math.floor(Math.random() * 150);
-
-    items.push({
-      id: getId('photo'),
-      url: `http://placehold.it/${randomWidth}x100`,
-      width: randomWidth,
-      height: 100,
-    });
-  }
-
-  return items;
-}

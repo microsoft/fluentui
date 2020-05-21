@@ -27,11 +27,14 @@ const KnobControl: React.FunctionComponent<KnobComponentProps> = props => (
 );
 
 const KnobLabel: React.FunctionComponent<KnobComponentProps> = props => (
-  <span style={{ marginRight: 5 }}>{props.content || <code>{props.name}</code>}</span>
+  <label htmlFor={`knob_${props.name}`} style={{ marginRight: 5 }}>
+    {props.content || <code>{props.name}</code>}
+  </label>
 );
 
 const KnobBoolean: React.FunctionComponent<KnobComponentProps> = props => (
   <input
+    id={`knob_${props.name}`}
     checked={props.value}
     onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
       props.setValue(e.target.checked);
@@ -43,6 +46,7 @@ const KnobBoolean: React.FunctionComponent<KnobComponentProps> = props => (
 
 const KnobNumber: React.FunctionComponent<KnobNumberKnobComponentProps> = props => (
   <input
+    id={`knob_${props.name}`}
     onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
       let newValue = parseInt(e.target.value, 10);
       const min = parseInt(props.min, 10);
@@ -66,6 +70,7 @@ const KnobNumber: React.FunctionComponent<KnobNumberKnobComponentProps> = props 
 
 const KnobSelect: React.FunctionComponent<KnobComponentProps> = props => (
   <select
+    id={`knob_${props.name}`}
     onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
       props.setValue(e.target.value);
     }}
@@ -82,6 +87,7 @@ const KnobSelect: React.FunctionComponent<KnobComponentProps> = props => (
 
 const KnobRange: React.FunctionComponent<KnobRangeKnobComponentProps> = props => (
   <input
+    id={`knob_${props.name}`}
     type="range"
     min={props.min}
     max={props.max}
@@ -96,6 +102,7 @@ const KnobRange: React.FunctionComponent<KnobRangeKnobComponentProps> = props =>
 
 const KnobString: React.FunctionComponent<KnobComponentProps> = props => (
   <input
+    id={`knob_${props.name}`}
     onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
       props.setValue(e.target.value);
     }}

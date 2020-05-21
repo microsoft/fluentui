@@ -67,7 +67,9 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
     checkForNoWrap?: boolean;
     className?: string;
     componentRef?: IRefObject<IFocusZone>;
+    // @deprecated
     defaultActiveElement?: string;
+    defaultTabbableElement?: string | ((root: HTMLElement) => HTMLElement);
     direction?: FocusZoneDirection;
     disabled?: boolean;
     // @deprecated
@@ -90,8 +92,10 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
     // @deprecated
     rootProps?: React.HTMLAttributes<HTMLDivElement>;
     shouldEnterInnerZone?: (ev: React.KeyboardEvent<HTMLElement>) => boolean;
+    shouldFocusInnerElementWhenReceivedFocus?: boolean;
     shouldFocusOnMount?: boolean;
     shouldInputLoseFocusOnArrowKey?: (inputElement: HTMLInputElement) => boolean;
+    shouldRaiseClicks?: boolean;
     shouldReceiveFocus?: (childElement?: HTMLElement) => boolean;
     shouldResetActiveElementWhenTabFromZone?: boolean;
     stopFocusPropagation?: boolean;

@@ -2,6 +2,51 @@
   "name": "@fluentui/examples",
   "entries": [
     {
+      "date": "Fri, 15 May 2020 05:52:46 GMT",
+      "tag": "@fluentui/examples_v0.1.59",
+      "version": "0.1.59",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating build dependencies.",
+            "author": "dzearing@microsoft.com",
+            "commit": "291a31d412dc4871b9f9446915e7d2a64bc46ab5",
+            "package": "@fluentui/examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 14 May 2020 12:34:32 GMT",
+      "tag": "@fluentui/examples_v0.1.57",
+      "version": "0.1.57",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating examples to use useId instead of getId and converting Dialog examples to function components.",
+            "author": "czearing@outlook.com",
+            "commit": "c76ac73627c32efd10498faae8ab976e6c5adbc1",
+            "package": "@fluentui/examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 07 May 2020 01:06:55 GMT",
+      "tag": "@fluentui/examples_v0.1.51",
+      "version": "0.1.51",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Addressing commonjs imports.",
+            "author": "dzearing@microsoft.com",
+            "commit": "f4a995d4166c7812976b13c6638fb1ae32a8667d",
+            "package": "@fluentui/examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 01 May 2020 00:19:21 GMT",
       "tag": "@fluentui/examples_v0.1.46",
       "version": "0.1.46",

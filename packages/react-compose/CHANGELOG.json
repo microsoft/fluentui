@@ -2,6 +2,89 @@
   "name": "@fluentui/react-compose",
   "entries": [
     {
+      "date": "Wed, 20 May 2020 12:31:10 GMT",
+      "tag": "@fluentui/react-compose_v0.5.0",
+      "version": "0.5.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "feat(compose): expose __self slot",
+            "author": "olfedias@microsoft.com",
+            "commit": "30fa92e7c750651fa609aa6c924b83155bebe203",
+            "package": "@fluentui/react-compose"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "add shorthand config",
+            "author": "mnajdova@gmail.com",
+            "commit": "11cb30315dcc73926c2817e81912b99ba80f3fe5",
+            "package": "@fluentui/react-compose"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 19 May 2020 12:34:06 GMT",
+      "tag": "@fluentui/react-compose_v0.4.1",
+      "version": "0.4.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix(compose): fix type for `React.Ref` generic",
+            "author": "olfedias@microsoft.com",
+            "commit": "73e371899a30f0bd20addadc62f231b17569cb37",
+            "package": "@fluentui/react-compose"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 15 May 2020 12:42:20 GMT",
+      "tag": "@fluentui/react-compose_v0.4.0",
+      "version": "0.4.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding classes resolution to compose.",
+            "author": "dzearing@microsoft.com",
+            "commit": "342ef515550dc4067c2b451dd4ae8f2a7bb9d608",
+            "package": "@fluentui/react-compose"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 15 May 2020 00:07:39 GMT",
+      "tag": "@fluentui/react-compose_v0.3.0",
+      "version": "0.3.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding `classes` option to compose options.",
+            "author": "dzearing@microsoft.com",
+            "commit": "a067dbc077218d7da056293120e8a98a3807e72f",
+            "package": "@fluentui/react-compose"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 07 May 2020 01:06:55 GMT",
+      "tag": "@fluentui/react-compose_v0.2.11",
+      "version": "0.2.11",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Addressing commonjs imports.",
+            "author": "dzearing@microsoft.com",
+            "commit": "f4a995d4166c7812976b13c6638fb1ae32a8667d",
+            "package": "@fluentui/react-compose"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 28 Apr 2020 12:34:09 GMT",
       "tag": "@fluentui/react-compose_v0.2.10",
       "version": "0.2.10",

@@ -71,7 +71,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
   public static defaultProps: IFocusZoneProps = {
     isCircularNavigation: false,
     direction: FocusZoneDirection.bidirectional,
-    preventDefaultWhenHandled: true,
+    shouldRaiseClicks: true,
   };
 
   private _root: React.RefObject<HTMLElement> = React.createRef();
@@ -162,11 +162,16 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
       // Assign initial tab indexes so that we can set initial focus as appropriate.
       this._updateTabIndexes();
 
-      if (this.props.defaultActiveElement) {
+      if (this.props.defaultTabbableElement && typeof this.props.defaultTabbableElement === 'string') {
+        this._activeElement = this._getDocument().querySelector(this.props.defaultTabbableElement) as HTMLElement;
+        // tslint:disable-next-line:deprecation
+      } else if (this.props.defaultActiveElement) {
+        // tslint:disable-next-line:deprecation
         this._activeElement = this._getDocument().querySelector(this.props.defaultActiveElement) as HTMLElement;
-        if (this.props.shouldFocusOnMount) {
-          this.focus();
-        }
+      }
+
+      if (this.props.shouldFocusOnMount) {
+        this.focus();
       }
     }
   }
@@ -327,7 +332,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     }
 
     if (element) {
-      // when we Set focus to a specific child, we should recalculate the alignment depend on its position
+      // when we Set focus to a specific child, we should recalculate the alignment depend on its position
       this._setActiveElement(element);
       if (this._activeElement) {
         this._activeElement.focus();
@@ -377,9 +382,11 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
       // tslint:disable-next-line:deprecation
       onFocusNotification,
       onFocus,
+      shouldFocusInnerElementWhenReceivedFocus,
+      defaultTabbableElement,
     } = this.props;
     const isImmediateDescendant = this._isImmediateDescendantOfZone(ev.target as HTMLElement);
-    let newActiveElement: HTMLElement | undefined;
+    let newActiveElement: HTMLElement | null | undefined;
 
     if (onFocus) {
       onFocus(ev);
@@ -398,6 +405,27 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
           break;
         }
         parentElement = getParent(parentElement, ALLOW_VIRTUAL_ELEMENTS) as HTMLElement;
+      }
+    }
+
+    // If an inner focusable element should be focused when FocusZone container receives focus
+    if (shouldFocusInnerElementWhenReceivedFocus && ev.target === this._root.current) {
+      const maybeElementToFocus =
+        defaultTabbableElement &&
+        typeof defaultTabbableElement === 'function' &&
+        defaultTabbableElement(this._root.current);
+
+      // try to focus defaultTabbable element
+      if (maybeElementToFocus && isElementTabbable(maybeElementToFocus)) {
+        newActiveElement = maybeElementToFocus;
+        maybeElementToFocus.focus();
+      } else {
+        // force focus on first focusable element
+        this.focus(true);
+        if (this._activeElement) {
+          // set to null as new active element was handled in method above
+          newActiveElement = null;
+        }
       }
     }
 
@@ -463,7 +491,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
    * Handle global tab presses so that we can patch tabindexes on the fly.
    */
   private _onKeyDownCapture = (ev: KeyboardEvent): void => {
-    // tslint:disable-next-line:deprecation
+    // tslint:disable-next-line:deprecation deprecated-keyboard-event-props
     if (ev.which === KeyCodes.tab) {
       _outerZones.forEach((zone: FocusZone) => zone._updateTabIndexes());
     }
@@ -589,6 +617,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     } else if (ev.altKey) {
       return;
     } else {
+      // tslint:disable-next-line:deprecated-keyboard-event-props
       switch (ev.which) {
         case KeyCodes.space:
           if (this._tryInvokeClickForFocusable(ev.target as HTMLElement)) {
@@ -725,7 +754,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
    * Walk up the dom try to find a focusable element.
    */
   private _tryInvokeClickForFocusable(target: HTMLElement): boolean {
-    if (target === this._root.current) {
+    if (target === this._root.current || !this.props.shouldRaiseClicks) {
       return false;
     }
 
@@ -1187,6 +1216,14 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
   }
 
   private _updateTabIndexes(element?: HTMLElement): void {
+    if (
+      !this._activeElement &&
+      this.props.defaultTabbableElement &&
+      typeof this.props.defaultTabbableElement === 'function'
+    ) {
+      this._activeElement = this.props.defaultTabbableElement(this._root.current as HTMLElement);
+    }
+
     if (!element && this._root.current) {
       this._defaultFocusElement = null;
       element = this._root.current;

@@ -1,8 +1,57 @@
 # Change Log - @fluentui/react-compose
 
-This log was last generated on Tue, 28 Apr 2020 12:34:09 GMT and should not be manually modified.
+This log was last generated on Wed, 20 May 2020 12:31:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.5.0)
+
+Wed, 20 May 2020 12:31:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v0.4.1..@fluentui/react-compose_v0.5.0)
+
+### Minor changes
+
+- feat(compose): expose __self slot ([PR #13115](https://github.com/microsoft/fluentui/pull/13115) by olfedias@microsoft.com)
+
+### Patches
+
+- add shorthand config ([PR #13240](https://github.com/microsoft/fluentui/pull/13240) by mnajdova@gmail.com)
+
+## [0.4.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.4.1)
+
+Tue, 19 May 2020 12:34:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v0.4.0..@fluentui/react-compose_v0.4.1)
+
+### Patches
+
+- fix(compose): fix type for `React.Ref` generic ([PR #13209](https://github.com/microsoft/fluentui/pull/13209) by olfedias@microsoft.com)
+
+## [0.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.4.0)
+
+Fri, 15 May 2020 12:42:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v0.3.0..@fluentui/react-compose_v0.4.0)
+
+### Minor changes
+
+- Adding classes resolution to compose. ([PR #13096](https://github.com/microsoft/fluentui/pull/13096) by dzearing@microsoft.com)
+
+## [0.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.3.0)
+
+Fri, 15 May 2020 00:07:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v0.2.11..@fluentui/react-compose_v0.3.0)
+
+### Minor changes
+
+- Adding `classes` option to compose options. ([PR #13101](https://github.com/microsoft/fluentui/pull/13101) by dzearing@microsoft.com)
+
+## [0.2.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.2.11)
+
+Thu, 07 May 2020 01:06:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v0.2.10..@fluentui/react-compose_v0.2.11)
+
+### Patches
+
+- Addressing commonjs imports. ([PR #13031](https://github.com/microsoft/fluentui/pull/13031) by dzearing@microsoft.com)
 
 ## [0.2.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.2.10)
 

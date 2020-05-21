@@ -5,6 +5,13 @@ import { Text } from 'office-ui-fabric-react/lib/Text';
 import { IStackTokens, Stack } from 'office-ui-fabric-react/lib/Stack';
 import { useBoolean } from '@uifabric/react-hooks';
 
+const inputProps = {
+  'aria-label': 'Tag Picker',
+};
+const pickerSuggestionsProps = {
+  suggestionsHeaderText: 'Suggested tags',
+  noResultsFoundText: 'No color tags found',
+};
 const _testTags: ITag[] = [
   'black',
   'blue',
@@ -22,6 +29,7 @@ const _testTags: ITag[] = [
   'white',
   'yellow',
 ].map(item => ({ key: item, name: item }));
+
 const stackTokens: IStackTokens = { childrenGap: 10 };
 const getTextFromItem = (item: ITag): string => {
   return item.name;
@@ -74,13 +82,8 @@ export const AnnouncedSearchResultsExample: React.FunctionComponent = () => {
       <TagPicker
         onResolveSuggestions={onFilterChanged}
         getTextFromItem={getTextFromItem}
-        pickerSuggestionsProps={{
-          suggestionsHeaderText: 'Suggested Tags',
-          noResultsFoundText: 'No Color Tags Found',
-        }}
-        inputProps={{
-          'aria-label': 'Tag Picker',
-        }}
+        pickerSuggestionsProps={pickerSuggestionsProps}
+        inputProps={inputProps}
       />
     </Stack>
   );

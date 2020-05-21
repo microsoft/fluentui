@@ -13,7 +13,7 @@ import { BoldIcon, CodeSnippetIcon, ItalicIcon, MoreIcon, QuoteIcon } from '@flu
 
 type IntermediateToolbarItem = (ToolbarItemProps | ToolbarMenuItemProps | ToolbarDividerProps) & {
   key: string;
-  kind?: ToolbarItemShorthandKinds;
+  kind?: keyof ToolbarItemShorthandKinds;
   tooltip?: string;
 };
 
@@ -29,24 +29,24 @@ const ToolbarExampleShorthand = () => {
   const intermediateItems: IntermediateToolbarItem[] = [
     {
       key: 'bold',
-      kind: 'toggle' as ToolbarItemShorthandKinds,
+      kind: 'toggle' as const,
       active: isBold,
       tooltip: 'Bold',
-      icon: <BoldIcon {...{ outline: true }} />,
+      icon: <BoldIcon outline />,
       onClick: () => setBold(!isBold),
     },
     {
       key: 'italic',
-      kind: 'toggle' as ToolbarItemShorthandKinds,
+      kind: 'toggle' as const,
       active: isItalic,
       tooltip: 'Italic',
-      icon: <ItalicIcon {...{ outline: true }} />,
+      icon: <ItalicIcon outline />,
       onClick: () => setItalic(!isItalic),
     },
-    { key: 'divider1', kind: 'divider' as ToolbarItemShorthandKinds },
+    { key: 'divider1', kind: 'divider' as const },
     {
       key: 'more',
-      icon: <MoreIcon {...{ outline: true }} />,
+      icon: <MoreIcon outline />,
       active: moreMenuOpen,
       tooltip: 'More options',
       menu: [
@@ -69,24 +69,26 @@ const ToolbarExampleShorthand = () => {
   return (
     <Toolbar
       aria-label="With tooltips"
-      items={intermediateItems.map(item => ({
-        ...item,
-        // rendering Tooltip for the Toolbar Item
-        children: item.tooltip
-          ? (ToolbarItem, props: IntermediateToolbarItem) => {
-              const { tooltip, key, ...rest } = props;
-              // Adding tooltipAsLabelBehavior as the ToolbarItems contains only icon
-              return (
-                <Tooltip
-                  key={key}
-                  trigger={<ToolbarItem {...rest} />}
-                  accessibility={tooltipAsLabelBehavior}
-                  content={tooltip}
-                />
-              );
-            }
-          : undefined,
-      }))}
+      items={intermediateItems.map(
+        (item): ToolbarItemProps => ({
+          ...item,
+          // rendering Tooltip for the Toolbar Item
+          children: item.tooltip
+            ? (ToolbarItem, props) => {
+                const { tooltip, key, ...rest } = props;
+                // Adding tooltipAsLabelBehavior as the ToolbarItems contains only icon
+                return (
+                  <Tooltip
+                    key={key}
+                    trigger={<ToolbarItem {...rest} />}
+                    accessibility={tooltipAsLabelBehavior}
+                    content={tooltip}
+                  />
+                );
+              }
+            : undefined,
+        }),
+      )}
     />
   );
 };

@@ -2,7 +2,12 @@ import * as React from 'react';
 import * as ReactIs from 'react-is';
 
 import { ComposedComponent, ComposeOptions, ComposePreparedOptions, Input } from './types';
+import { mergeClasses } from './mergeClasses';
 
+/**
+ * Given input/parent options, which are both assumed to be defined and populated with
+ * displayNames array, return a string array of display names.
+ */
 function computeDisplayNames(inputOptions: ComposeOptions, parentOptions: ComposePreparedOptions): string[] {
   if (inputOptions.overrideStyles) {
     return [inputOptions.displayName].filter(Boolean) as string[];
@@ -16,6 +21,7 @@ function computeDisplayNames(inputOptions: ComposeOptions, parentOptions: Compos
 
 export const defaultComposeOptions: ComposePreparedOptions = {
   className: process.env.NODE_ENV === 'production' ? '' : 'no-classname-🙉',
+  classes: {},
   displayName: '',
   displayNames: [],
 
@@ -24,9 +30,10 @@ export const defaultComposeOptions: ComposePreparedOptions = {
 
   handledProps: [] as never[],
   overrideStyles: false,
-  slots: {},
+  slots: { __self: () => null },
   mapPropsToSlotPropsChain: [],
   resolveSlotProps: () => ({}),
+  shorthandConfig: {},
 };
 
 export function mergeComposeOptions(
@@ -42,7 +49,6 @@ export function mergeComposeOptions(
     mapPropsToSlotPropsChain.reduce<Record<string, object>>((acc, definition) => {
       const nextProps = { ...definition(props) };
       const slots: string[] = [...Object.keys(acc), ...Object.keys(nextProps)];
-
       const mergedSlotProps: Record<string, object> = {};
 
       slots.forEach(slot => {
@@ -59,6 +65,8 @@ export function mergeComposeOptions(
 
   return {
     className: inputOptions.className || parentOptions.className,
+    classes: mergeClasses(parentOptions.classes, inputOptions.classes),
+
     displayName: inputOptions.displayName || parentOptions.displayName,
     displayNames: computeDisplayNames(inputOptions, parentOptions),
 
@@ -76,6 +84,10 @@ export function mergeComposeOptions(
     },
     mapPropsToSlotPropsChain,
     resolveSlotProps,
+    shorthandConfig: {
+      ...parentOptions.shorthandConfig,
+      ...inputOptions.shorthandConfig,
+    },
   };
 }
 

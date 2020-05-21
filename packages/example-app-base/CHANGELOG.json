@@ -2,6 +2,66 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "date": "Tue, 19 May 2020 12:34:06 GMT",
+      "tag": "@uifabric/example-app-base_v7.12.64",
+      "version": "7.12.64",
+      "comments": {
+        "none": [
+          {
+            "comment": "Fix example-app-base demo app",
+            "author": "elcraig@microsoft.com",
+            "commit": "b66a3351f9b643bc4845fe012e9a3afc42b1654f",
+            "package": "@uifabric/example-app-base"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 18 May 2020 16:49:49 GMT",
+      "tag": "@uifabric/example-app-base_v7.12.64",
+      "version": "7.12.64",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix demo app",
+            "author": "elcraig@microsoft.com",
+            "commit": "04b0e8f91c9e4079f60bbe3a6c88524a98f852b9",
+            "package": "@uifabric/example-app-base"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 15 May 2020 00:07:39 GMT",
+      "tag": "@uifabric/example-app-base_v7.12.59",
+      "version": "7.12.59",
+      "comments": {
+        "patch": [
+          {
+            "comment": "cleaned up platform switcher, made room for windows button",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "7a613256ef792c037702a47fa07713cecacbc755",
+            "package": "@uifabric/example-app-base"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 07 May 2020 01:06:55 GMT",
+      "tag": "@uifabric/example-app-base_v7.12.52",
+      "version": "7.12.52",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Addressing commonjs imports.",
+            "author": "dzearing@microsoft.com",
+            "commit": "f4a995d4166c7812976b13c6638fb1ae32a8667d",
+            "package": "@uifabric/example-app-base"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 29 Apr 2020 12:34:58 GMT",
       "tag": "@uifabric/example-app-base_v7.12.46",
       "version": "7.12.46",

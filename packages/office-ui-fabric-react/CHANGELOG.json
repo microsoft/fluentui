@@ -2,6 +2,290 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 21 May 2020 12:34:43 GMT",
+      "tag": "office-ui-fabric-react_v7.115.2",
+      "version": "7.115.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "MessageBar: Restore style overrides for Link inside MessageBar in high contrast; use dismissButtonAriaLabel as title too",
+            "author": "elcraig@microsoft.com",
+            "commit": "b00701979e60e1dd5e438f579086442bc0ddfc68",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Prettier fix in Callout test.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "06d4f3a093cf6d531c8a9b40c596e4ff324b3090",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Remove unnecessary devDependency",
+            "author": "elcraig@microsoft.com",
+            "commit": "2fccd9fec686c2c79cc654e6d857bf7945b5e363",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 20 May 2020 12:31:10 GMT",
+      "tag": "office-ui-fabric-react_v7.115.1",
+      "version": "7.115.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "update MessageBarButtonBorder color",
+            "author": "chrismo@microsoft.com",
+            "commit": "99b0e0bdd1f513d9661338e3c407b895ac9802d3",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 18 May 2020 12:54:52 GMT",
+      "tag": "office-ui-fabric-react_v7.115.0",
+      "version": "7.115.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Pass all relevant state to Nav group render override",
+            "author": "tmichon@microsoft.com",
+            "commit": "96d987730064b7dbba4c785a3a1fa8c8f169958b",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "SpinButton: allow empty string as value, clean up docs and tests",
+            "author": "elcraig@microsoft.com",
+            "commit": "69ce76ebf109176438092d537f149bdaed582f3c",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "DetailsList: clarify IColumn.ariaLabel docs; other doc cleanup",
+            "author": "elcraig@microsoft.com",
+            "commit": "fc15da6464c103a8f429e11166ccc7e99880e1e8",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 15 May 2020 12:42:20 GMT",
+      "tag": "office-ui-fabric-react_v7.114.1",
+      "version": "7.114.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating List, Keytips, and Facepile examples to use function components",
+            "author": "czearing@outlook.com",
+            "commit": "2d214a34c5d859212222443f30d35805efa0d24d",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "updating Shimmer, Slider, SelectedPeopleList, MarqueeSelection, and SwatchColorPicker examples to FC",
+            "author": "czearing@outlook.com",
+            "commit": "bb98a4971572bd9383d900cccb37650752329c8f",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 15 May 2020 05:52:46 GMT",
+      "tag": "office-ui-fabric-react_v7.114.0",
+      "version": "7.114.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "PivotItem: Expanding types of headerButtonProps to include IButtonProps.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "5c27d9de67e00e87ffb99e5b5c119087660a72cc",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 15 May 2020 00:07:39 GMT",
+      "tag": "office-ui-fabric-react_v7.113.3",
+      "version": "7.113.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Support custom checkbox for <GroupHeader>: added onRenderGroupHeaderCheckbox property",
+            "author": "sebastian.mattar@gmail.com",
+            "commit": "4eccfac9b625baf24c9f8a2d4a2af6a57e3663b7",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Updating examples for ProgressIndicator, FloatingPeoplePicker and ResizeGroupOverflowSetExample to use FC",
+            "author": "czearing@outlook.com",
+            "commit": "6df0523da70ae3141b18964a6ffe6199658e4c87",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 14 May 2020 12:34:32 GMT",
+      "tag": "office-ui-fabric-react_v7.113.2",
+      "version": "7.113.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix accessibility issue",
+            "author": "xiameng@microsoft.com",
+            "commit": "831a4d70a27d4a4d2125998b1f01793846b91dbd",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "updating DocumentCard and GroupedList to FC",
+            "author": "czearing@outlook.com",
+            "commit": "c92489b9d599ada9e2b7e3cbd888868ff50f390a",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Update Picker.CustomResult.Example.tsx",
+            "author": "patrick@nubo.eu",
+            "commit": "d62d928938243cf193158300dd6dfad032087472",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Updating examples to use `useId` instead of `getId` and converting `Dialog` examples to function components.",
+            "author": "czearing@outlook.com",
+            "commit": "c76ac73627c32efd10498faae8ab976e6c5adbc1",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Nav: fix Basic Example type error",
+            "author": "zhmushan@qq.com",
+            "commit": "69de6a1faae65fb197aea9c3b74e6689dadb29f2",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 12 May 2020 12:41:21 GMT",
+      "tag": "office-ui-fabric-react_v7.112.0",
+      "version": "7.112.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding onDragOver method to IDragDropEvents",
+            "author": "pawsing@microsoft.com",
+            "commit": "a05e2dfef73b0f9dc412b75bc12dce7f9b691c64",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 11 May 2020 12:36:34 GMT",
+      "tag": "office-ui-fabric-react_v7.111.1",
+      "version": "7.111.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Checkbox: remove unneeded text-align css on label",
+            "author": "xgao@microsoft.com",
+            "commit": "1619b355712d83844b4b63283e9370b5ff6a17f5",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Shimmer: fix high contrast in new edge",
+            "author": "xgao@microsoft.com",
+            "commit": "30930030f46240cc305d9cd687370382eef7d0b0",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 08 May 2020 12:35:40 GMT",
+      "tag": "office-ui-fabric-react_v7.111.0",
+      "version": "7.111.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "update snapshots for merge-styles change to not generate class with no styles",
+            "author": "pingj@microsoft.com",
+            "commit": "a5b44ed833a4614d1333fa161ffd8fd467d33446",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Prettier fix on Callout test.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "ce5c014aa4c23951afe4d1ca5e45ddb711e2f0fc",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Checkbox: fix high contrast styles in Edge Chromium",
+            "author": "xgao@microsoft.com",
+            "commit": "70e25f50621034c277df23f832ed1b13e1a824c8",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Cleaning up callout, announced, and calendar examples",
+            "author": "czearing@outlook.com",
+            "commit": "4edeebf540258904d66d51ae5b267f5cdd5c70e2",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Add custom expand icon support to Group Header",
+            "author": "bcoard@microsoft.com",
+            "commit": "af07c5e1e3f12290d54ecaa140edacc3b145b72e",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 07 May 2020 01:06:55 GMT",
+      "tag": "office-ui-fabric-react_v7.110.5",
+      "version": "7.110.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "CommonJS paths were pointing to esm paths, now should correctly point to the right path.",
+            "author": "dzearing@hotmail.com",
+            "commit": "4c9cac6b9eedd1b5a76c4f95f9a109fde1dc3aba",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 06 May 2020 12:32:22 GMT",
+      "tag": "office-ui-fabric-react_v7.110.4",
+      "version": "7.110.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Dropdown: improve multi-select selected keys warnings",
+            "author": "elcraig@microsoft.com",
+            "commit": "2450069c19144b826392a5f9f5a2df3078647a2e",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "ColorPicker: removing unneeded array spread.",
+            "author": "dzearing@microsoft.com",
+            "commit": "ca1c8da58be3b2a3dd4443d2c5cfc32b044c5015",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 05 May 2020 12:34:22 GMT",
       "tag": "office-ui-fabric-react_v7.110.3",
       "version": "7.110.3",
