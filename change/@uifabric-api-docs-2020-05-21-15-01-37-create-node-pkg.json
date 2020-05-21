@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "Fix tsconfig and just config issues",
+  "packageName": "@uifabric/api-docs",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "none",
+  "date": "2020-05-21T22:01:36.991Z"
+}
