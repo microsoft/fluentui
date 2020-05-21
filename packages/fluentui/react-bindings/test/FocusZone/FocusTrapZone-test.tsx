@@ -2,7 +2,6 @@ import { FocusZoneDirection } from '@fluentui/accessibility';
 import { FocusTrapZone, FocusZone, FocusTrapZoneProps } from '@fluentui/react-bindings';
 import * as React from 'react';
 import * as ReactTestUtils from 'react-dom/test-utils';
-// @ts-ignore
 import { keyboardKey } from '@fluentui/keyboard-key';
 
 // rAF does not exist in node - let's mock it

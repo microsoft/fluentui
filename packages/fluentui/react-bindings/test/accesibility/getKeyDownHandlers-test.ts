@@ -1,5 +1,4 @@
 import getKeyDownHandlers from '../../src/accessibility/getKeyDownHandlers';
-// @ts-ignore
 import { keyboardKey } from '@fluentui/keyboard-key';
 import { KeyActions } from '@fluentui/accessibility';
 

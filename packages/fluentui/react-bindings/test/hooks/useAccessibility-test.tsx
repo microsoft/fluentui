@@ -1,7 +1,6 @@
 import { Accessibility } from '@fluentui/accessibility';
 import { useAccessibility } from '@fluentui/react-bindings';
 import { mount, shallow } from 'enzyme';
-// @ts-ignore
 import { keyboardKey } from '@fluentui/keyboard-key';
 import * as React from 'react';
 

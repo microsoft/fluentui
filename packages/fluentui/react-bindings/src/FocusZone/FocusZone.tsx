@@ -2,7 +2,6 @@ import { FocusZoneDirection, FocusZoneTabbableElements, IS_FOCUSABLE_ATTRIBUTE }
 import * as React from 'react';
 import cx from 'classnames';
 import * as _ from 'lodash';
-// @ts-ignore
 import { getCode, keyboardKey } from '@fluentui/keyboard-key';
 import * as ReactDOM from 'react-dom';
 import * as PropTypes from 'prop-types';

@@ -3,7 +3,6 @@ import { FocusZone } from '@fluentui/react-bindings';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
-// @ts-ignore
 import { getCode, keyboardKey } from '@fluentui/keyboard-key';
 
 describe('FocusZone', () => {
