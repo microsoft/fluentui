@@ -17,10 +17,10 @@ import {
   StatusProps,
   pxToRem,
   Provider,
-  themes,
   mergeThemes,
   Tooltip,
   tooltipAsLabelBehavior,
+  teamsDarkTheme,
 } from '@fluentui/react-northstar';
 import {
   CallControlCloseTrayIcon,
@@ -510,7 +510,7 @@ const CustomToolbar: React.FunctionComponent<CustomToolbarProps> = props => {
 
 const CustomToolbarPrototype = () => {
   let theme = {};
-  theme = mergeThemes(themes.teamsDark, darkThemeOverrides);
+  theme = mergeThemes(teamsDarkTheme, darkThemeOverrides);
 
   return (
     <Provider theme={theme}>

@@ -7,7 +7,7 @@ import {
   ToolbarItemShorthandKinds,
   ToolbarMenuItemProps,
   ToolbarMenuItemShorthandKinds,
-  themes,
+  teamsTheme,
 } from '@fluentui/react-northstar';
 import * as _ from 'lodash';
 import * as React from 'react';
@@ -149,7 +149,7 @@ const ToolbarExampleOverflowPositioningShorthand: React.FC = () => (
         dir="rtl" /* we need to force this as global Provider is already in RTL */
         styles={{ overflow: 'hidden', height: 'inherit', width: 'inherit' }}
         target={externalDocument}
-        theme={themes.teams}
+        theme={teamsTheme}
       >
         <EditorToolbar />
       </Provider>
