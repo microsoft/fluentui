@@ -158,8 +158,8 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
     return this._isEnum ? (
       <ApiDetailsList itemKind="enum" items={properties as IApiEnumProperty[]} tokenResolver={tokenResolver} />
     ) : (
-        <ApiDetailsList itemKind="property" items={properties as IApiInterfaceProperty[]} tokenResolver={tokenResolver} />
-      );
+      <ApiDetailsList itemKind="property" items={properties as IApiInterfaceProperty[]} tokenResolver={tokenResolver} />
+    );
   }
 
   private _renderTitle(): JSX.Element | undefined {
@@ -171,13 +171,13 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
         {title}
       </Text>
     ) : (
-        undefined
-      );
+      undefined
+    );
   }
 }
 
 /**
- * Memorized DetailsList wrapper handling scenarios specific to API reference tables.
+ * Memoized DetailsList wrapper handling scenarios specific to API reference tables.
  */
 const ApiDetailsList: React.FunctionComponent<IApiDetailsListProps> = React.memo(props => {
   // Alphabetize the items and add a key to each one.
