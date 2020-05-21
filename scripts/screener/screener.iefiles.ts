@@ -1,1 +1,1 @@
-export default [/GridExampleColumns/];
+export default [/AccordionExample/, /AlertExample/];
