@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Grammer improvements for do's and don'ts documentation.",
+  "comment": "Grammar improvements for do's and don'ts documentation.",
   "packageName": "@uifabric/react-cards",
   "email": "czearing@outlook.com",
   "dependentChangeType": "patch",
