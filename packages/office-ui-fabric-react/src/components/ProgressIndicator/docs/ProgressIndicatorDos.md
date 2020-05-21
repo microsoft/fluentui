@@ -1,4 +1,4 @@
-- Use a ProgressIndicator when the total units to completion is known
-- Display operation description
-- Show text above and/or below the bar
-- Combine steps of a single operation into one bar
+- Do use a ProgressIndicator when the total units to completion is known.
+- Do display operation description.
+- Do show text above and/or below the bar.
+- Do combine steps of a single operation into one bar.

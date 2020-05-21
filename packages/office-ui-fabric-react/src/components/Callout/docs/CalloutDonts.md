@@ -1,4 +1,4 @@
-- Don’t overuse Callout without putting the user in control. Too many Callouts which open automatically can be perceived as interrupting workflow and are a bad user experience.
+- Don’t overuse Callout. Too many can be seen as an interrupting workflow.
 - Don't use large, unformatted blocks of text in your Callout, they are difficult to read and overwhelming.
 - Don't put obvious tip text, or text that simply repeats what is already on the screen in your Callout.
 - Because the content inside of a Callout isn't always visible, don't put important or required information in a Callout.

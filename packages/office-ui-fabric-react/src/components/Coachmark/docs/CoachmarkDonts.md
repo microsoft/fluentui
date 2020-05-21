@@ -1,2 +1,2 @@
-- Coachmark size, color, and animation should not be altered.
-- Don't show the coachmark more than once even if the user has not completed the action.
+- Don't allow Coachmark's size, color, and animation to be altered.
+- Don't show the Coachmark more than once.

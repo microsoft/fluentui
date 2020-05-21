@@ -1,3 +1,3 @@
-- Use sentence casing, e.g. “First name”.
-- Be short and concise.
-- When adding a Label to components, use the text as a noun or short noun phrase.
+- Do use sentence casing, e.g. “First name”.
+- Do be short and concise.
+- Do use the text as a noun or short noun phrase when adding a Label to components.

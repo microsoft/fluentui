@@ -1,1 +1,1 @@
-- Don’t overuse Modals. In some cases they can be perceived as interrupting workflow, and too many can be a bad user experience.
+- Don’t overuse Modals. Too many can be seen as an interrupting workflow.

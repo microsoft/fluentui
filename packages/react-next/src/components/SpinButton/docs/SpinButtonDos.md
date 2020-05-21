@@ -1,3 +1,3 @@
-- Use a SpinButton when changing a value with precise control.
-- Use a SpinButton when values are tied to a unit.
-- Include a label indicating what value the SpinButton changes.
+- Do use a SpinButton when changing a value with precise control.
+- Do use a SpinButton when values are tied to a unit.
+- Do include a label indicating what value the SpinButton changes.

@@ -1,1 +1,1 @@
-- Do not use a SwatchColorPicker when there are a a very large number of color choices. The best component for to that is a ColorPicker.
+- Don't use SwatchColorPicker when there are a large number of color choices. The best component to do that is a ColorPicker.

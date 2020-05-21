@@ -1,4 +1,4 @@
-- Use a ProgressIndicator when the total units to completion is indeterminate
-- Use only a single word description
-- Show text to the right or left of the bar
-- Cause progress to “rewind” to show new steps
+- Don't use ProgressIndicator when the total units to completion is indeterminate.
+- Don't use only a single word description.
+- Don't show text to the right or left of the bar.
+- Don't cause progress to “rewind” to show new steps.

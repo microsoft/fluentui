@@ -1,4 +1,4 @@
-- Use the PeoplePicker to quickly search for a few people
-- Use the PeoplePicker to manage a group of people
-- Use the MemberList PeoplePicker to display selections below the input box
-- Use defaultSelectedItems when some people have already been selected
+- Do use PeoplePicker to quickly search for a few people.
+- Do use PeoplePicker to manage a group of people.
+- Do use the MemberList PeoplePicker to display selections below the input box.
+- Do use defaultSelectedItems when some people have already been selected.

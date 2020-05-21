@@ -1,3 +1,3 @@
-- Use the PeoplePicker to select something other than people
-- Use the PeoplePicker to only display people
-- Use the PeoplePicker without sufficient space
+- Don't use the PeoplePicker to select something other than people.
+- Don't use the PeoplePicker to only display people.
+- Don't use the PeoplePicker without sufficient space.
