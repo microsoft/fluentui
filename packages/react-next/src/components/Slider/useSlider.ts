@@ -13,7 +13,6 @@ const getClassNames = classNamesFunction<ISliderStyleProps, ISliderStyles>({
 export const useSlider: (props: ISliderProps, ref: React.Ref<HTMLDivElement>) => ISliderState = (props, ref) => {
   const {
     step = 1,
-    ariaLabel,
     className,
     disabled = false,
     label,
@@ -22,10 +21,12 @@ export const useSlider: (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =>
     showValue = true,
     buttonProps = {},
     vertical = false,
+    valueFormat,
     styles,
     theme,
   } = props;
 
+  const ariaLabel = props['aria-label'];
   const disposables = React.useRef<(() => void)[]>([]);
   const sliderLine = React.useRef<HTMLDivElement>(null);
 
@@ -217,11 +218,17 @@ export const useSlider: (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =>
 
   const labelProps = {
     className: classNames.titleLabel,
-    label,
-    ariaLabel,
+    children: label,
     disabled,
-    id,
+    htmlFor: ariaLabel ? undefined : id,
   };
+
+  const valueLabelProps = showValue && {
+    className: classNames.valueLabel,
+    children: valueFormat ? valueFormat(value!) : value,
+    disabled,
+  };
+
   const sliderBoxProps = {
     id,
     'aria-valuenow': value,
@@ -249,6 +256,7 @@ export const useSlider: (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =>
     label: labelProps,
     sliderBox: sliderBoxProps,
     container: containerProps,
+    valueLabel: valueLabelProps,
     classNames,
     sliderLine,
     value,

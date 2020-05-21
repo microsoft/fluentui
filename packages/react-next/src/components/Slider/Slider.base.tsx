@@ -23,37 +23,10 @@ const useComponentRef = (props: ISliderProps, thumb: React.RefObject<HTMLSpanEle
     [value],
   );
 };
-const SliderLabel = (props: {
-  className?: string;
-  label?: string;
-  ariaLabel?: string;
-  disabled?: boolean;
-  id?: string;
-}) => {
-  const { className, label, ariaLabel, disabled, id } = props;
-
-  if (!label) {
-    return null;
-  }
-
-  return (
-    <Label className={className} {...(ariaLabel ? {} : { htmlFor: id })} disabled={disabled}>
-      {label}
-    </Label>
-  );
-};
 
 export const SliderBase = React.forwardRef((props: ISliderProps, ref: React.Ref<HTMLDivElement>) => {
   const thumb = React.useRef<HTMLSpanElement>(null);
-  const {
-    disabled = false,
-    max = 10,
-    min = 0,
-    showValue = true,
-    valueFormat,
-    originFromZero = false,
-    vertical,
-  } = props;
+  const { max = 10, min = 0, originFromZero = false, vertical } = props;
   // Ensure that value is always a number and is clamped by min/max.
 
   const slotProps = useSlider(props, ref);
@@ -84,7 +57,7 @@ export const SliderBase = React.forwardRef((props: ISliderProps, ref: React.Ref<
 
   return (
     <div {...slotProps.root}>
-      <SliderLabel {...slotProps.label} />
+      {slotProps && <Label {...slotProps.label} />}
       <div {...slotProps.container}>
         <div {...slotProps.sliderBox}>
           <div ref={slotProps.sliderLine} className={classNames.line}>
@@ -123,11 +96,7 @@ export const SliderBase = React.forwardRef((props: ISliderProps, ref: React.Ref<
             )}
           </div>
         </div>
-        {showValue && (
-          <Label className={classNames.valueLabel} disabled={disabled}>
-            {valueFormat ? valueFormat(slotProps.value!) : slotProps.value}
-          </Label>
-        )}
+        {slotProps.valueLabel && <Label {...slotProps.valueLabel} />}
       </div>
       <FocusRects />
     </div>
