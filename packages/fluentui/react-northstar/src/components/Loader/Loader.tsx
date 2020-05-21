@@ -1,8 +1,8 @@
 import { Accessibility, loaderBehavior } from '@fluentui/accessibility';
 import * as customPropTypes from '@fluentui/react-proptypes';
+import { ShorthandConfig } from '@fluentui/react-bindings';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-
 import {
   UIComponent,
   createShorthandFactory,
@@ -11,7 +11,6 @@ import {
   SizeValue,
   ShorthandFactory,
   getOrGenerateIdFromShorthand,
-  ShorthandConfig,
 } from '../../utils';
 import { WithAsProp, ShorthandValue, withSafeTypeForAs } from '../../types';
 import Box, { BoxProps } from '../Box/Box';
