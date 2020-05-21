@@ -31,6 +31,7 @@ import {
   ContentComponentProps,
   commonPropTypes,
   rtlTextContainer,
+  createShorthand,
 } from '../../utils';
 import {
   WithAsProp,
@@ -49,6 +50,7 @@ import Text, { TextProps } from '../Text/Text';
 import Reaction, { ReactionProps } from '../Reaction/Reaction';
 import { ReactionGroupProps } from '../Reaction/ReactionGroup';
 import { ChatItemContext } from './chatItemContext';
+import ChatMessageHeader from './ChatMessageHeader';
 
 export interface ChatMessageSlotClassNames {
   actionMenu: string;
@@ -323,9 +325,8 @@ const ChatMessage: React.FC<WithAsProp<ChatMessageProps>> & FluentComponentStati
     }),
   });
 
-  const headerElement = Box.create(header, {
+  const headerElement = createShorthand(ChatMessageHeader, header, {
     defaultProps: () => ({
-      className: chatMessageSlotClassNames.header,
       styles: resolvedStyles.header,
     }),
     overrideProps: () => ({
