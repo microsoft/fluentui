@@ -1,4 +1,3 @@
-import { unstable_createAnimationStyles as createAnimationStyles } from '@fluentui/react-bindings';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import {
   CarouselPaddleStylesProps,
@@ -9,6 +8,7 @@ import getBorderFocusStyles from '../../getBorderFocusStyles';
 import getIconFillOrOutlineStyles from '../../getIconFillOrOutlineStyles';
 import paddleIndicatorUrl from './paddleIndicatorUrl';
 import { pxToRem } from '../../../../utils';
+import { faster, ultraFast } from '../../animations/durations';
 
 const getIndicatorStyles = (color: string, next: boolean, size: string): ICSSInJSStyle => {
   return {
@@ -54,6 +54,7 @@ const carouselPaddleStyles: ComponentSlotStylesPrepared<CarouselPaddleStylesProp
       borderStyle: 'solid',
       borderColor: v.paddleBorderColor,
       boxShadow: v.paddleBoxShadow,
+      transition: faster,
 
       ...(p.next && {
         height: pxToRem(v.paddleNextSize),
@@ -80,7 +81,7 @@ const carouselPaddleStyles: ComponentSlotStylesPrepared<CarouselPaddleStylesProp
       },
 
       ':active': {
-        ...createAnimationStyles('scaleDownSoft', theme),
+        transition: ultraFast,
         color: v.paddleColorActive,
         backgroundColor: v.paddleBackgroundColorActive,
         borderColor: v.paddleBorderColorActive,
