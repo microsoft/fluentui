@@ -41,7 +41,7 @@ import { GridProps } from '../../components/Grid/Grid';
 import { HeaderDescriptionProps } from '../../components/Header/HeaderDescription';
 import { HeaderProps } from '../../components/Header/Header';
 import { ImageStylesProps } from '../../components/Image/Image';
-import { InputProps } from '../../components/Input/Input';
+import { InputStylesProps } from '../../components/Input/Input';
 import { ItemLayoutProps } from '../../components/ItemLayout/ItemLayout';
 import { LabelStylesProps } from '../../components/Label/Label';
 import { LayoutProps } from '../../components/Layout/Layout';
@@ -135,7 +135,7 @@ export type TeamsThemeStylesProps = {
   HeaderDescription: HeaderDescriptionProps;
   SvgIcon: SvgIconStylesProps;
   Image: ImageStylesProps;
-  Input: InputProps;
+  Input: InputStylesProps;
   ItemLayout: ItemLayoutProps;
   Label: LabelStylesProps;
   Layout: LayoutProps;

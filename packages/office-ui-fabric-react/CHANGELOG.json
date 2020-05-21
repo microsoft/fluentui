@@ -2,6 +2,21 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 20 May 2020 12:31:10 GMT",
+      "tag": "office-ui-fabric-react_v7.115.1",
+      "version": "7.115.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "update MessageBarButtonBorder color",
+            "author": "chrismo@microsoft.com",
+            "commit": "99b0e0bdd1f513d9661338e3c407b895ac9802d3",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 18 May 2020 12:54:52 GMT",
       "tag": "office-ui-fabric-react_v7.115.0",
       "version": "7.115.0",

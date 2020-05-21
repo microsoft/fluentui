@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-next
 
-This log was last generated on Mon, 18 May 2020 12:54:52 GMT and should not be manually modified.
+This log was last generated on Wed, 20 May 2020 12:31:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-alpha.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.25)
+
+Wed, 20 May 2020 12:31:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.24..@fluentui/react-next_v8.0.0-alpha.25)
+
+### Changes
+
+- Slider: Convert to scss ([PR #13167](https://github.com/microsoft/fluentui/pull/13167) by joschect@microsoft.com)
+- Toggle: Convert react-next version to use scss. ([PR #13217](https://github.com/microsoft/fluentui/pull/13217) by humbertomakotomorimoto@gmail.com)
 
 ## [8.0.0-alpha.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.24)
 

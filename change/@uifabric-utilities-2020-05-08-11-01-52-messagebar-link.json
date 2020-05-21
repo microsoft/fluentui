@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "Fix customizer doc comment formatting",
+  "packageName": "@uifabric/utilities",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "none",
+  "date": "2020-05-08T18:01:52.779Z"
+}

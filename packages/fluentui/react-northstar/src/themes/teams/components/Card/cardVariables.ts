@@ -63,6 +63,10 @@ export interface CardVariables {
   expandableBoxShrinkTransition: string;
   expandableBoxExpandTransition: string;
   selectedBackgroundColor: string;
+  selectedBackgroundColorDisabled: string;
+  selectedBackgroundColorFocus: string;
+  selectedBackgroundColorHover: string;
+  selectedBackgroundColorPressed: string;
   selectedBorderColor: string;
   selectedBoxShadow: string;
 }
@@ -131,8 +135,12 @@ export default (siteVars): CardVariables => {
     expandableBoxEndMaxHeight: pxToRem(500),
     expandableBoxShrinkTransition: 'max-height 0.5s ease-in',
     expandableBoxExpandTransition: 'max-height 1s ease-in',
-    selectedBackgroundColor: siteVars.colorScheme.default.backgroundActive,
+    selectedBackgroundColor: siteVars.colorScheme.default.backgroundFocus3,
     selectedBorderColor: siteVars.colorScheme.default.borderActive,
     selectedBoxShadow: siteVars.shadowLevel4,
+    selectedBackgroundColorDisabled: siteVars.colorScheme.default.backgroundDisabled3,
+    selectedBackgroundColorFocus: siteVars.colorScheme.default.backgroundFocus3,
+    selectedBackgroundColorHover: siteVars.colorScheme.default.backgroundHover3,
+    selectedBackgroundColorPressed: siteVars.colorScheme.default.backgroundPressed3,
   };
 };

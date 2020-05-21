@@ -47,6 +47,7 @@ export type ComposeOptions<InputProps = {}, InputStylesProps = {}, ParentStylesP
     overrideStyles?: boolean;
     slots?: Record<string, React.ElementType>;
     mapPropsToSlotProps?: (props: InputProps) => Record<string, object>;
+    shorthandConfig?: ShorthandConfig<InputProps>;
 };
 
 // @public (undocumented)
@@ -59,9 +60,12 @@ export type ComposePreparedOptions<Props = {}> = {
     render: ComposeRenderFunction;
     handledProps: (keyof Props)[];
     overrideStyles: boolean;
-    slots: Record<string, React.ElementType>;
+    slots: Record<string, React.ElementType> & {
+        __self: React.ElementType;
+    };
     mapPropsToSlotPropsChain: ((props: Props) => Record<string, object>)[];
     resolveSlotProps: <P>(props: P) => Record<string, object>;
+    shorthandConfig: ShorthandConfig<Props>;
 };
 
 // @public (undocumented)
@@ -79,6 +83,16 @@ export type InputComposeComponent<P = {}> = React.FunctionComponent<P> & {
 
 // @public (undocumented)
 export type PropsOfElement<E extends keyof JSX.IntrinsicElements | React.JSXElementConstructor<any>> = JSX.LibraryManagedAttributes<E, React.ComponentPropsWithRef<E>>;
+
+// @public (undocumented)
+export interface ShorthandConfig<P> {
+    // (undocumented)
+    allowsJSX?: boolean;
+    // (undocumented)
+    mappedArrayProp?: keyof P;
+    // (undocumented)
+    mappedProp?: keyof P;
+}
 
 
 // (No @packageDocumentation comment for this package)
