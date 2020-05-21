@@ -63,7 +63,14 @@ const items: ShorthandCollection<ChatItemProps> = [
   },
   {
     gutter: <Avatar image="public/images/avatar/small/ade.jpg" />,
-    message: <Chat.Message reactionGroup={reactions} content="Hi" author="Jane Doe" timestamp="Yesterday, 10:15 PM" />,
+    message: (
+      <Chat.Message
+        reactionGroup={reactions}
+        content="Hi"
+        author="Jane John With a really long surname here"
+        timestamp="Yesterday, 10:15 PM"
+      />
+    ),
     key: 'message-3',
   },
 ];

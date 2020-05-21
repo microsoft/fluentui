@@ -113,7 +113,6 @@ const chatMessageStyles: ComponentSlotStylesPrepared<ChatMessageStylesProps, Cha
     marginRight: v.authorMarginRight,
     marginBottom: v.headerMarginBottom,
     fontWeight: v.authorFontWeight,
-    overflow: 'hidden',
   }),
 
   timestamp: ({ props: p, variables: v }) => ({
@@ -170,6 +169,8 @@ const chatMessageStyles: ComponentSlotStylesPrepared<ChatMessageStylesProps, Cha
     float: 'right',
   }),
   header: () => ({
+    display: 'flex',
+    alignItems: 'center',
     whiteSpace: 'nowrap',
   }),
 };
