@@ -1,1 +1,1 @@
-- Use an Overlay when you want the user to interact with the UI that is being covered.
+- Don't use an Overlay when you want the user to interact with the UI that is being covered.

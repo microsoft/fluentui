@@ -1,1 +1,1 @@
-- Use string refs: `ref='root'`
+- Don't use string refs: `ref='root'`

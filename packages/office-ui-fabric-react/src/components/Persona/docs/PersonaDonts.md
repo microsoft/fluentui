@@ -1,1 +1,1 @@
-- Change the values of the color swatches in high contrast mode.
+- Don't change the values of the color swatches in high contrast mode.

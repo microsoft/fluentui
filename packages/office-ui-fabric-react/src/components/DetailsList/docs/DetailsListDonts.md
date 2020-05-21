@@ -1,3 +1,3 @@
-- Use them to display commands or settings.
-- Overload the view with too many columns that require excessive horizontal scrolling.
-- Make columns so narrow that it truncates the information in typical cases.
+- Don't use them to display commands or settings.
+- Don't overload the view with too many columns that require excessive horizontal scrolling.
+- Don't make columns so narrow that it truncates the information in typical cases.

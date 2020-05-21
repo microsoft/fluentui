@@ -1,1 +1,1 @@
-- Announce overall status.
+- Do announce overall status.

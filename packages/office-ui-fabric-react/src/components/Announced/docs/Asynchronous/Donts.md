@@ -1,1 +1,1 @@
-- Announce when each individual page section has loaded, unless it has been over a specified period of time.
+- Don't announce when each individual page section has loaded, unless it has been over a specified period of time.

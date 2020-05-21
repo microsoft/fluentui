@@ -1,1 +1,1 @@
-- Announce the content of each search result.
+- Don't announce the content of each search result.

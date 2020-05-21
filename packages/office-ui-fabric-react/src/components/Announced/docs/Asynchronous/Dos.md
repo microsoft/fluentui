@@ -1,1 +1,1 @@
-- Announce progress after a specified threshold.
+- Do announce progress after a specified threshold.

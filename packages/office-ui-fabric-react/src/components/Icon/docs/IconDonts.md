@@ -1,2 +1,2 @@
-- Use Icons to show pictures.
-- Use photos or long sentences as icons.
+- Don't use Icons to show pictures.
+- Don't use photos or long sentences as icons.

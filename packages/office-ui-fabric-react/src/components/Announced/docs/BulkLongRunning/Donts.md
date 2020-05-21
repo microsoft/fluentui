@@ -1,1 +1,1 @@
-- Announce sub-operations.
+- Don't announce sub-operations.

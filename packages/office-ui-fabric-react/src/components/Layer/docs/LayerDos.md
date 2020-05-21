@@ -1,1 +1,1 @@
-- Use functional refs: `ref={ (el) => { this._root = el; }`
+- Do use functional refs: `ref={ (el) => { this._root = el; }`

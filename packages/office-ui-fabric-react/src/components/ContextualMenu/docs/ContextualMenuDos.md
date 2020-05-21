@@ -1,4 +1,4 @@
-- Use to display commands.
-- Divide groups of commands with rules.
-- Use selection checks without icons.
-- Provide submenus for sets of related commands that aren’t as critical as others.
+- Do use ContextualMenu to display commands.
+- Do divide groups of commands with rules.
+- Do use selection checks without icons.
+- Do provide submenus for sets of related commands that aren’t as critical as others.

@@ -1,1 +1,1 @@
-- Announce the number of search results found.
+- Do announce the number of search results found.

@@ -1,5 +1,5 @@
-- Sort commands in order of importance from left to right or right to left depending on the culture.
-- Organize commands into logical groupings.
-- Display no more than 5-7 commands.
-- Use overflow to house less frequently-used commands.
-- In small breakpoints, only have the most recognizable commands render as icon only.
+- Do sort commands in order of importance from left to right or right to left depending on the culture.
+- Do organize commands into logical groupings.
+- Do display no more than 5-7 commands.
+- Do use overflow to house less frequently-used commands.
+- Do in small breakpoints, only have the most recognizable commands render as icon only.

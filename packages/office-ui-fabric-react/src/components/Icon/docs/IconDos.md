@@ -1,2 +1,2 @@
-- Adjust to proper size to highlight importance but not occupying too much space.
-- Be simple and concise.
+- Do adjust to proper size to highlight importance.
+- Do be simple and concise.

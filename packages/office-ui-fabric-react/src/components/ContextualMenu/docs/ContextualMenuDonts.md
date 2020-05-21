@@ -1,4 +1,4 @@
-- Use them to display content.
-- Show commands as one large group.
-- Mix checks and icons.
-- Create submenus of submenus.
+- Don't use ContextualMenu to display content.
+- Don't show commands as one large group.
+- Don't mix checks and icons.
+- Don't create submenus of submenus.

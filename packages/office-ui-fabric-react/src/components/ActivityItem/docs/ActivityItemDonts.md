@@ -1,1 +1,1 @@
-- Use ActivityItems to render large amounts of body text; they are meant to be concise descriptions of a specific activity.
+- Don't use ActivityItems to render large amounts of body text; they are meant to be concise descriptions of a specific activity.
