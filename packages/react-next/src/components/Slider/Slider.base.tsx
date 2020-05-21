@@ -1,14 +1,8 @@
 import * as React from 'react';
-import { KeyCodes, css, getRTL, getRTLSafeKeyCode, warnMutuallyExclusive, on, FocusRects } from '../../Utilities';
-import { ISliderProps, ISliderStyleProps, ISliderStyles } from './Slider.types';
-import { classNamesFunction, getNativeProps, divProperties } from '../../Utilities';
+import { css, getRTL, warnMutuallyExclusive, FocusRects } from '../../Utilities';
+import { ISliderProps } from './Slider.types';
 import { Label } from '../../Label';
-import { useBoolean, useControllableValue } from '@uifabric/react-hooks';
 import { useSlider } from './useSlider';
-
-const getClassNames = classNamesFunction<ISliderStyleProps, ISliderStyles>({
-  useStaticStyles: true,
-});
 
 const COMPONENT_NAME = 'SliderBase';
 export const ONKEYDOWN_TIMEOUT_DURATION = 1000;
@@ -51,37 +45,22 @@ const SliderLabel = (props: {
 
 export const SliderBase = React.forwardRef((props: ISliderProps, ref: React.Ref<HTMLDivElement>) => {
   const thumb = React.useRef<HTMLSpanElement>(null);
-  const [useShowTransitions, { toggle: toggleUseShowTransitions }] = useBoolean(true);
   const {
-    step = 1,
-    ariaLabel,
-    className,
     disabled = false,
-    label,
     max = 10,
     min = 0,
     showValue = true,
-    buttonProps = {},
-    vertical = false,
     valueFormat,
-    styles,
-    theme,
     originFromZero = false,
+    vertical,
   } = props;
   // Ensure that value is always a number and is clamped by min/max.
 
   const slotProps = useSlider(props, ref);
+  const classNames = slotProps.classNames;
   const thumbOffsetPercent: number = min === max ? 0 : ((slotProps.value! - min!) / (max! - min!)) * 100;
   const zeroOffsetPercent: number = min! >= 0 ? 0 : (-min! / (max! - min!)) * 100;
   const lengthString = vertical ? 'height' : 'width';
-  const classNames = getClassNames(styles, {
-    className,
-    disabled,
-    vertical,
-    showTransitions: useShowTransitions,
-    showValue,
-    theme: theme!,
-  });
   const inactiveSectionStyles = { [lengthString]: Math.min(thumbOffsetPercent, zeroOffsetPercent) + '%' };
   const activeSectionStyles = { [lengthString]: Math.abs(zeroOffsetPercent - thumbOffsetPercent) + '%' };
   const inactiveSectionFromZeroStyles = {

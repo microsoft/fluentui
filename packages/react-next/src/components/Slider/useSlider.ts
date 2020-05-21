@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ISliderProps, ISliderStyleProps, ISliderStyles, ISliderState } from './Slider.types';
 import { useId, useBoolean, useControllableValue } from '@uifabric/react-hooks';
-import { KeyCodes, css, getRTL, getRTLSafeKeyCode, warnMutuallyExclusive, on, FocusRects } from '../../Utilities';
+import { KeyCodes, css, getRTL, getRTLSafeKeyCode, on } from '../../Utilities';
 import { classNamesFunction, getNativeProps, divProperties } from '../../Utilities';
 
 export const ONKEYDOWN_TIMEOUT_DURATION = 1000;
@@ -9,23 +9,6 @@ export const ONKEYDOWN_TIMEOUT_DURATION = 1000;
 const getClassNames = classNamesFunction<ISliderStyleProps, ISliderStyles>({
   useStaticStyles: true,
 });
-
-const useComponentRef = (props: ISliderProps, thumb: React.RefObject<HTMLSpanElement>, value: number | undefined) => {
-  React.useImperativeHandle(
-    props.componentRef,
-    () => ({
-      get value() {
-        return value;
-      },
-      focus() {
-        if (thumb.current) {
-          thumb.current.focus();
-        }
-      },
-    }),
-    [value],
-  );
-};
 
 export const useSlider: (props: ISliderProps, ref: React.Ref<HTMLDivElement>) => ISliderState = (props, ref) => {
   const {
@@ -39,10 +22,8 @@ export const useSlider: (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =>
     showValue = true,
     buttonProps = {},
     vertical = false,
-    valueFormat,
     styles,
     theme,
-    originFromZero = false,
   } = props;
 
   const disposables = React.useRef<(() => void)[]>([]);
@@ -268,6 +249,7 @@ export const useSlider: (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =>
     label: labelProps,
     sliderBox: sliderBoxProps,
     container: containerProps,
+    classNames,
     sliderLine,
     value,
   };
