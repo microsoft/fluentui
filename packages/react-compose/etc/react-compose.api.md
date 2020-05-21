@@ -30,7 +30,7 @@ export interface ComponentWithAs<E extends React.ElementType = 'div', P = {}> ex
 }
 
 // @public (undocumented)
-export function compose<ElementType extends React.ElementType, InputProps, InputStylesProps, ParentProps, ParentStylesProps>(input: Input<ElementType, InputProps>, inputOptions?: ComposeOptions<InputProps, InputStylesProps, ParentStylesProps>): ComponentWithAs<ElementType, InputProps & ParentProps>;
+export function compose<ElementType extends React.ElementType, InputProps, InputStylesProps, ParentProps, ParentStylesProps>(input: Input<ElementType, InputProps>, inputOptions?: ComposeOptions<InputProps, InputStylesProps, ParentProps, ParentStylesProps>): ComponentWithAs<ElementType, InputProps & ParentProps>;
 
 // @public (undocumented)
 export type ComposedComponent<P = {}> = React.FunctionComponent<P> & {
@@ -38,7 +38,7 @@ export type ComposedComponent<P = {}> = React.FunctionComponent<P> & {
 };
 
 // @public (undocumented)
-export type ComposeOptions<InputProps = {}, InputStylesProps = {}, ParentStylesProps = {}> = {
+export type ComposeOptions<InputProps = {}, InputStylesProps = {}, ParentProps = {}, ParentStylesProps = {}> = {
     className?: string;
     classes?: ClassDictionary;
     displayName?: string;
@@ -46,8 +46,8 @@ export type ComposeOptions<InputProps = {}, InputStylesProps = {}, ParentStylesP
     handledProps?: (keyof InputProps | 'as')[];
     overrideStyles?: boolean;
     slots?: Record<string, React.ElementType>;
-    mapPropsToSlotProps?: (props: InputProps) => Record<string, object>;
-    shorthandConfig?: ShorthandConfig<InputProps>;
+    mapPropsToSlotProps?: (props: ParentProps & InputProps) => Record<string, object>;
+    shorthandConfig?: ShorthandConfig<ParentProps & InputProps>;
 };
 
 // @public (undocumented)
