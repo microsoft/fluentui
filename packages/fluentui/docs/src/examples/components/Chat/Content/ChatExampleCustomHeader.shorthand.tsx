@@ -6,7 +6,6 @@ import {
   ShorthandCollection,
   Text,
   ReactionGroup,
-  Reaction,
 } from '@fluentui/react-northstar';
 import * as React from 'react';
 import { EmojiIcon, LikeIcon } from '@fluentui/react-icons-northstar';
