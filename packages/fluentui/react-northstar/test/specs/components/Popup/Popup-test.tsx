@@ -5,7 +5,7 @@ import * as ReactTestUtils from 'react-dom/test-utils';
 import Popup, { PopupEvents } from 'src/components/Popup/Popup';
 import { popupContentClassName } from 'src/components/Popup/PopupContent';
 import { domEvent, EmptyThemeProvider, mountWithProvider } from '../../../utils';
-import { keyboardKey } from '@fluentui/keyboard-key';
+import { keyboardKey, KeyNames } from '@fluentui/keyboard-key';
 import { ReactWrapper } from 'enzyme';
 import implementsPopperProps from 'test/specs/commonTests/implementsPopperProps';
 
@@ -21,7 +21,10 @@ describe('Popup', () => {
     return popup.find(`div#${contentId}`);
   };
 
-  type TriggerEvent = keyboardKey | { event: 'click' | 'contextmenu' };
+  type TriggerEvent = {
+    event?: 'click' | 'contextmenu' | 'keydown';
+    keyCode?: KeyNames[keyof KeyNames];
+  };
 
   type ExpectPopupToOpenAndCloseParams = {
     onProp: PopupEvents;
@@ -30,13 +33,13 @@ describe('Popup', () => {
   };
 
   const expectPopupToOpenAndClose = ({ onProp, eventToOpen, eventToClose }: ExpectPopupToOpenAndCloseParams) => {
-    const openEvent = {
+    const openEvent: TriggerEvent = {
       event: eventToOpen.event || 'keydown',
-      keyCode: eventToOpen.event ? undefined : eventToOpen,
+      keyCode: eventToOpen.event ? undefined : eventToOpen.keyCode,
     };
-    const closeEvent = {
+    const closeEvent: TriggerEvent = {
       event: eventToClose.event || 'keydown',
-      keyCode: eventToClose.event ? undefined : eventToClose,
+      keyCode: eventToClose.event ? undefined : eventToClose.keyCode,
     };
 
     const popup = mountWithProvider(
@@ -106,7 +109,7 @@ describe('Popup', () => {
       expectPopupToOpenAndClose({
         onProp: 'context',
         eventToOpen: { event: 'contextmenu' },
-        eventToClose: keyboardKey.Escape,
+        eventToClose: { keyCode: keyboardKey.Escape },
       });
     });
 
@@ -136,29 +139,29 @@ describe('Popup', () => {
     test(`toggle popup with Enter key`, () => {
       expectPopupToOpenAndClose({
         onProp: 'click',
-        eventToOpen: keyboardKey.Enter,
-        eventToClose: keyboardKey.Enter,
+        eventToOpen: { keyCode: keyboardKey.Enter },
+        eventToClose: { keyCode: keyboardKey.Enter },
       });
     });
     test(`toggle popup with Space key`, () => {
       expectPopupToOpenAndClose({
         onProp: 'click',
-        eventToOpen: keyboardKey[' '],
-        eventToClose: keyboardKey[' '],
+        eventToOpen: { keyCode: keyboardKey[' '] },
+        eventToClose: { keyCode: keyboardKey[' '] },
       });
     });
     test(`open popup with Enter key and close it with escape key`, () => {
       expectPopupToOpenAndClose({
         onProp: 'hover',
-        eventToOpen: keyboardKey.Enter,
-        eventToClose: keyboardKey.Escape,
+        eventToOpen: { keyCode: keyboardKey.Enter },
+        eventToClose: { keyCode: keyboardKey.Escape },
       });
     });
     test(`open popup with Space key and close it with escape key`, () => {
       expectPopupToOpenAndClose({
         onProp: 'hover',
-        eventToOpen: keyboardKey[' '],
-        eventToClose: keyboardKey.Escape,
+        eventToOpen: { keyCode: keyboardKey[' '] },
+        eventToClose: { keyCode: keyboardKey.Escape },
       });
     });
     test(`close previous popup with Enter key`, () => {
