@@ -1,4 +1,4 @@
-import { getNativeProps, divProperties, getNativeElementProps } from './properties';
+import { getNativeProps, divProperties } from './properties';
 import * as React from 'react';
 
 describe('getNativeProps', () => {
@@ -65,13 +65,5 @@ describe('getNativeProps', () => {
 
     expect(result.a).toBeDefined();
     expect(result.b).toBeUndefined();
-  });
-});
-
-describe('getNativeElementProps', () => {
-  it('can filter native element properties', () => {
-    expect(getNativeElementProps('div', { id: '123', checked: true })).toEqual({ id: '123' });
-    expect(getNativeElementProps('input', { id: '123', checked: true })).toEqual({ id: '123', checked: true });
-    expect(getNativeElementProps('input', { id: '123', checked: true }, ['id'])).toEqual({ checked: true });
   });
 });
