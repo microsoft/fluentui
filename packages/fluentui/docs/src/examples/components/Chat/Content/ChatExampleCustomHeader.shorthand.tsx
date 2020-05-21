@@ -26,9 +26,7 @@ const items: ShorthandCollection<ChatItemProps> = [
         content="Hello"
         header={
           <>
-            <ReactionGroup>
-              <Reaction icon={<LikeIcon />} content="1K" />
-            </ReactionGroup>
+            <ReactionGroup items={reactions} />
             <Text
               styles={{
                 marginLeft: '5px',
