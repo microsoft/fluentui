@@ -109,12 +109,6 @@ export const SliderBase = React.forwardRef((props: ISliderProps, ref: React.Ref<
       <div {...slotProps.container}>
         <div {...slotProps.sliderBox}>
           <div ref={slotProps.sliderLine} className={classNames.line}>
-            {originFromZero && (
-              <span
-                className={css(classNames.zeroTick)}
-                style={getStyleUsingOffsetPercent(vertical, zeroOffsetPercent)}
-              />
-            )}
             <span
               ref={thumb}
               className={classNames.thumb}
@@ -122,6 +116,10 @@ export const SliderBase = React.forwardRef((props: ISliderProps, ref: React.Ref<
             />
             {originFromZero ? (
               <>
+                <span
+                  className={css(classNames.zeroTick)}
+                  style={getStyleUsingOffsetPercent(vertical, zeroOffsetPercent)}
+                />
                 <span
                   className={css(classNames.lineContainer, classNames.inactiveSection)}
                   style={inactiveSectionStyles}
