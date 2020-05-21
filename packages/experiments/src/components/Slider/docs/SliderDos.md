@@ -1,4 +1,4 @@
 - Do use a Slider when you want your users to be able to set defined values (such as volume or brightness).
-- Do include a label prop indicating a title for your slider.
+- Do include a label prop indicating a title for your Slider.
 - Do use step points (or tick marks) if you don’t want the Slider to allow arbitrary values between min and max.
 - Do use a Slider when the user would benefit from instant feedback on the effect of setting changes.
