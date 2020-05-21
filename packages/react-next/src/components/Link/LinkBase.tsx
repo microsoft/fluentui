@@ -2,12 +2,12 @@ import * as React from 'react';
 import { compose } from '@fluentui/react-compose';
 import { KeytipData } from '../../KeytipData';
 import { classNamesFunction } from '../../Utilities';
-import { LinkProps, ILinkStyleProps, ILinkStyles } from './Link.types';
+import { ILinkProps, ILinkStyleProps, ILinkStyles } from './Link.types';
 import { useLink } from './useLink';
 
 const getClassNames = classNamesFunction<ILinkStyleProps, ILinkStyles>({ useStaticStyles: true });
 
-export const LinkBase = compose<'a', LinkProps, LinkProps, {}, {}>(
+export const LinkBase = compose<'a', ILinkProps, ILinkProps, {}, {}>(
   (props, ref, composeOptions) => {
     const { slots, slotProps } = useLink(props, composeOptions);
 
@@ -20,7 +20,7 @@ export const LinkBase = compose<'a', LinkProps, LinkProps, {}, {}>(
     });
 
     return (
-      <slots.keytipData>
+      <slots.keytipData {...slotProps.keytipData}>
         {(keytipAttributes: any): JSX.Element => (
           <slots.root {...keytipAttributes} ref={ref} {...slotProps.root} className={classNames.root} />
         )}

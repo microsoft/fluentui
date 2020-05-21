@@ -4,8 +4,6 @@ import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import { IKeytipProps } from '../../Keytip';
 
-// tslint:disable:interface-name
-
 /**
  * {@docCategory Link}
  */
@@ -48,7 +46,7 @@ export interface ILinkHTMLAttributes<T> extends ComponentProps, React.HTMLAttrib
 /**
  * {@docCategory Link}
  */
-export interface LinkProps extends ILinkHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement> {
+export interface ILinkProps extends ILinkHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement> {
   /**
    * Optional callback to access the ILink interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -96,7 +94,7 @@ export interface ILinkStyles {
 /**
  * {@docCategory Link}
  */
-export interface LinkSlots {
+export interface ILinkSlots {
   keytipData: React.ElementType;
 }
 
@@ -104,7 +102,10 @@ export interface LinkSlots {
  * {@docCategory Link}
  */
 export type LinkSlotProps = {
-  [key in keyof LinkSlots]: LinkProps[key];
+  [key in keyof ILinkSlots]: ILinkProps[key];
 };
 
-export interface LinkOptions extends ComposeOptions<LinkProps, LinkSlots, LinkSlotProps, ComposeStandardStatics> {}
+/**
+ * {@docCategory Link}
+ */
+export interface ILinkOptions extends ComposeOptions<ILinkProps, ILinkSlots, LinkSlotProps, ComposeStandardStatics> {}

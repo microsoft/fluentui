@@ -1,10 +1,7 @@
 import * as React from 'react';
 import { Link } from '@fluentui/react-next/lib/Link';
-import { useFocusRects } from '@fluentui/react-next/lib/Utilities';
 
 export const LinkBasicExample: React.FunctionComponent = () => {
-  useFocusRects();
-
   return (
     <div>
       <p>

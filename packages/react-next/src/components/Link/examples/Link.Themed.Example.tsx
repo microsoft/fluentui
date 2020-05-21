@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Link, ILinkStyleProps } from '@fluentui/react-next/lib/Link';
 import { Stack } from '@fluentui/react-next/lib/Stack';
-import { useFocusRects, Customizer } from '@fluentui/react-next/lib/Utilities';
+import { Customizer } from '@fluentui/react-next/lib/Utilities';
 
 const customStyles = { root: { background: 'lightblue' } };
 const themedStyles = (props: ILinkStyleProps) => ({
@@ -12,8 +12,6 @@ const themedStyles = (props: ILinkStyleProps) => ({
 const scopedSettings = { Link: { styles: customStyles } };
 
 export const LinkThemedExample: React.FunctionComponent = () => {
-  useFocusRects();
-
   return (
     <Stack>
       <Link href="http://dev.microsoft.com/fluentui#/controls/web/link" styles={customStyles}>

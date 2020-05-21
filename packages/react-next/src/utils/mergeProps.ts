@@ -8,14 +8,12 @@ import {
 } from '@uifabric/utilities';
 import { ComposePreparedOptions } from '@fluentui/react-compose';
 import { mergeClassesIntoSlotProps } from './mergeClassesIntoSlotProps';
+import { GenericDictionary } from './tempTypes';
 
 /**
  * NOTE! THIS FILE IS TEMPORARY AND SHOULD BE DELETED ONCE IT HAS MOVED TO `@fluentui/react-compose`.
  */
 // tslint:disable:interface-name
-
-// tslint:disable-next-line:no-any
-export type GenericDictionary = { [key: string]: any };
 
 const EmptyRender = () => null;
 

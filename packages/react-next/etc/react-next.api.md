@@ -4,7 +4,7 @@
 
 ```ts
 
-import * as CSS from 'csstype';
+import { ComposePreparedOptions } from '@fluentui/react-compose';
 import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import { IButtonProps as IButtonProps_2 } from 'office-ui-fabric-react/lib/components/Button/Button.types';
 import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
@@ -22,7 +22,6 @@ import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 import { IStyleSet } from 'office-ui-fabric-react/lib/Styling';
 import { ITheme } from 'office-ui-fabric-react/lib/Styling';
 import { Position } from 'office-ui-fabric-react/lib/utilities/positioning';
-import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import { ThemeProviderProps } from '@fluentui/react-theme-provider';
 
@@ -259,6 +258,28 @@ export interface ILinkHTMLAttributes<T> extends ComponentProps, React.HTMLAttrib
     type?: string;
     // (undocumented)
     value?: string | string[] | number;
+}
+
+// Warning: (ae-forgotten-export) The symbol "ComposeOptions" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ComposeStandardStatics" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export interface ILinkOptions extends ComposeOptions<ILinkProps, ILinkSlots, LinkSlotProps, ComposeStandardStatics> {
+}
+
+// @public (undocumented)
+export interface ILinkProps extends ILinkHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement> {
+    componentRef?: IRefObject<ILink>;
+    disabled?: boolean;
+    keytipProps?: IKeytipProps;
+    styles?: IStyleFunctionOrObject<ILinkStyleProps, ILinkStyles>;
+    theme?: ITheme;
+}
+
+// @public (undocumented)
+export interface ILinkSlots {
+    // (undocumented)
+    keytipData: React.ElementType;
 }
 
 // @public (undocumented)
@@ -860,37 +881,15 @@ export enum KeyboardSpinDirection {
 }
 
 // @public (undocumented)
-export const Link: React.FunctionComponent<LinkProps>;
+export const Link: React.FunctionComponent<ILinkProps>;
 
 // @public (undocumented)
-export const LinkBase: import("@fluentui/react-compose").ComponentWithAs<"a", LinkProps>;
-
-// Warning: (ae-forgotten-export) The symbol "ComposeOptions" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "ComposeStandardStatics" needs to be exported by the entry point index.d.ts
-//
-// @public (undocumented)
-export interface LinkOptions extends ComposeOptions<LinkProps, LinkSlots, LinkSlotProps, ComposeStandardStatics> {
-}
-
-// @public (undocumented)
-export interface LinkProps extends ILinkHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement> {
-    componentRef?: IRefObject<ILink>;
-    disabled?: boolean;
-    keytipProps?: IKeytipProps;
-    styles?: IStyleFunctionOrObject<ILinkStyleProps, ILinkStyles>;
-    theme?: ITheme;
-}
+export const LinkBase: import("@fluentui/react-compose").ComponentWithAs<"a", ILinkProps>;
 
 // @public (undocumented)
 export type LinkSlotProps = {
-    [key in keyof LinkSlots]: LinkProps[key];
+    [key in keyof ILinkSlots]: ILinkProps[key];
 };
-
-// @public (undocumented)
-export interface LinkSlots {
-    // (undocumented)
-    keytipData: React.ElementType;
-}
 
 // @public (undocumented)
 export class MaskedTextField extends React.Component<ITextFieldProps, IMaskedTextFieldState> implements ITextField {
@@ -1095,6 +1094,9 @@ export const Toggle: React.FunctionComponent<IToggleProps>;
 
 // @public (undocumented)
 export const ToggleBase: React.FunctionComponent;
+
+// @public
+export const useLink: (props: ILinkProps, options: ComposePreparedOptions<{}>) => import("../../utils/mergeProps").ComponentHookResult<ILinkProps, ILinkSlots, LinkSlotProps>;
 
 
 export * from "office-ui-fabric-react/lib/ActivityItem";

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { getGlobalClassNames, ITheme } from '../../Styling';
 import { css, memoizeFunction, styled } from '../../Utilities';
 import { LinkBase } from './LinkBase';
-import { LinkProps, ILinkStyleProps, ILinkStyles } from './Link.types';
+import { ILinkProps, ILinkStyleProps, ILinkStyles } from './Link.types';
 import * as classes from './Link.scss';
 
 const GlobalClassNames = {
@@ -29,7 +29,7 @@ const getStaticStyles = (props: ILinkStyleProps): Required<ILinkStyles> => {
   return getStaticStylesMemoized(theme!, className, isButton, isDisabled);
 };
 
-export const Link: React.FunctionComponent<LinkProps> = styled<LinkProps, ILinkStyleProps, ILinkStyles>(
+export const Link: React.FunctionComponent<ILinkProps> = styled<ILinkProps, ILinkStyleProps, ILinkStyles>(
   LinkBase,
   getStaticStyles,
   undefined,
