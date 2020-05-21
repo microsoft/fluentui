@@ -7,6 +7,7 @@
   "dependencies": {
     "@babel/runtime": "^7.7.6",
     "@fluentui/accessibility": "^0.49.0",
+    "@fluentui/keyboard-key": "^0.2.0",
     "@fluentui/react-component-event-listener": "^0.49.0",
     "@fluentui/react-component-ref": "^0.49.0",
     "@fluentui/react-compose": "^0.4.1",
@@ -15,7 +16,6 @@
     "@uifabric/utilities": "^7.17.3",
     "classnames": "^2.2.6",
     "fela": "^10.6.1",
-    "keyboard-key": "1.0.1",
     "lodash": "^4.17.15",
     "prop-types": "^15.7.2",
     "react-fela": "^10.6.1"

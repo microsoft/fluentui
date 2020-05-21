@@ -1,6 +1,6 @@
 import { KeyActions } from '@fluentui/accessibility';
 // @ts-ignore
-import * as keyboardKey from 'keyboard-key';
+import { keyboardKey } from '@fluentui/keyboard-key';
 import * as React from 'react';
 
 import shouldHandleOnKeys from './shouldHandleOnKeys';

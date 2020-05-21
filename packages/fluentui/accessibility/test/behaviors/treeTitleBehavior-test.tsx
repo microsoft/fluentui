@@ -1,5 +1,5 @@
 import { treeTitleBehavior } from '@fluentui/accessibility';
-import * as keyboardKey from 'keyboard-key';
+import { keyboardKey } from '@fluentui/keyboard-key';
 
 describe('TreeTitleBehavior', () => {
   describe('tabIndex', () => {

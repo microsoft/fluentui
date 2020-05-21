@@ -1,5 +1,5 @@
 import { Accessibility } from '../../types';
-import * as keyboardKey from 'keyboard-key';
+import { keyboardKey } from '@fluentui/keyboard-key';
 import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
 
 /**
@@ -27,7 +27,7 @@ const radioGroupItemBehavior: Accessibility<RadioGroupItemBehaviorProps> = props
   keyActions: {
     root: {
       performClick: {
-        keyCombinations: [{ keyCode: keyboardKey.Spacebar }],
+        keyCombinations: [{ keyCode: keyboardKey[' '] }],
       },
     },
   },
