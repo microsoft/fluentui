@@ -31,13 +31,16 @@ import {
   ShorthandFactory,
 } from '../../utils';
 import MenuItem, { MenuItemProps } from './MenuItem';
-import MenuDivider from './MenuDivider';
+import MenuDivider, { MenuDividerProps } from './MenuDivider';
 import MenuItemIcon from './MenuItemIcon';
 import MenuItemContent from './MenuItemContent';
 import MenuItemIndicator, { MenuItemIndicatorProps } from './MenuItemIndicator';
 import MenuItemWrapper from './MenuItemWrapper';
 
-export type MenuShorthandKinds = 'divider' | 'item';
+export type MenuShorthandKinds = {
+  divider: MenuDividerProps;
+  item: MenuItemProps;
+};
 
 export interface MenuProps extends UIComponentProps, ChildrenComponentProps {
   /**

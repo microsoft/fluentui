@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-next
 
-This log was last generated on Wed, 20 May 2020 12:31:10 GMT and should not be manually modified.
+This log was last generated on Thu, 21 May 2020 12:34:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-alpha.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.26)
+
+Thu, 21 May 2020 12:34:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.25..@fluentui/react-next_v8.0.0-alpha.26)
+
+### Changes
+
+- Use ThemeProvider to provide theme css variables, add ThemeProvider and Customizer replacements for V8 ([PR #13146](https://github.com/microsoft/fluentui/pull/13146) by xgao@microsoft.com)
 
 ## [8.0.0-alpha.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.25)
 

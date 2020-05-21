@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "FocusZone: Adding shouldRaiseClicks prop to allow for opt-in/opt-out way to invoke clicks on focusable elements.",
-  "packageName": "@fluentui/react-focus",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-05-18T19:40:43.245Z"
-}

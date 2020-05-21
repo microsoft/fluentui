@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-focus
 
-This log was last generated on Fri, 15 May 2020 05:52:46 GMT and should not be manually modified.
+This log was last generated on Thu, 21 May 2020 12:34:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.12.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.12.0)
+
+Thu, 21 May 2020 12:34:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v7.11.5..@fluentui/react-focus_v7.12.0)
+
+### Minor changes
+
+- FocusZone: Adding shouldRaiseClicks prop to allow for opt-in/opt-out way to invoke clicks on focusable elements. ([PR #12478](https://github.com/microsoft/fluentui/pull/12478) by humbertomakotomorimoto@gmail.com)
+
+### Patches
+
+- FocusZone: Defaulting to false for the preventDefaultWhenHandled prop to maintain old behavior. ([PR #13256](https://github.com/microsoft/fluentui/pull/13256) by humbertomakotomorimoto@gmail.com)
 
 ## [7.11.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.11.5)
 
