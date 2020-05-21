@@ -107,9 +107,9 @@ export const UnifiedPeoplePickerExample = (): JSX.Element => {
     if (pastedValue != null) {
       pastedValue.split(',').map(textValue => {
         if (textValue) {
-          peopleSuggestions.map(suggestionItem => {
-            if (suggestionItem.item.text === textValue) {
-              finalList.push(suggestionItem.item);
+          people.map(suggestionItem => {
+            if (suggestionItem.text === textValue) {
+              finalList.push(suggestionItem);
             }
           });
         }
