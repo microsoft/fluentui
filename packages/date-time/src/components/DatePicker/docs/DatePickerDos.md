@@ -1,5 +1,4 @@
 - Do use the control as a single entity.
 - Do set the default date to the current date unless a specific date is required for context (e.g. the date of the conference).
 - Do allow the DatePicker to resize relative to available screen width.
-- Do when the control is engaged, the Calendar renders as a flyout and has defined widths (300px -narrow and 440px – wide). Plan your UI implementation accordingly.
 - Do if allowing for manual entry of date, provide helper text in the appropriate format. The control renders date in a specific format.
