@@ -7,11 +7,7 @@ const MenuExampleVertical = () => (
     <Menu.Item
       index={0}
       icon={
-        <BookmarkIcon
-          {...{
-            outline: true,
-          }}
-        />
+        <BookmarkIcon outline />
       }
       content="Editorials"
     />
