@@ -1,4 +1,5 @@
 import { filteredAssign } from './object';
+import { ReactHTML } from 'react';
 
 /**
  * An array of events that are allowed on every html element type.
@@ -405,4 +406,44 @@ export function getNativeProps<T>(props: {}, allowedPropNames: string[], exclude
     {},
     props,
   ) as T;
+}
+
+const nativeElementMap: Record<string, string[]> = {
+  label: labelProperties,
+  audio: audioProperties,
+  video: videoProperties,
+  ol: olProperties,
+  li: liProperties,
+  a: anchorProperties,
+  button: buttonProperties,
+  input: inputProperties,
+  textarea: textAreaProperties,
+  select: selectProperties,
+  option: optionProperties,
+  table: tableProperties,
+  tr: trProperties,
+  th: thProperties,
+  td: tdProperties,
+  colGroup: colGroupProperties,
+  col: colProperties,
+  form: formProperties,
+  iframe: iframeProperties,
+  img: imgProperties,
+};
+
+/**
+ * Given an element tagname and user props, filters the props to only allowed props for the given
+ * element type.
+ * @param tagName - Tag name (e.g. "div")
+ * @param props - Props object
+ * @param excludedPropNames - List of props to disallow
+ */
+export function getNativeElementProps<TProps>(
+  tagName: keyof ReactHTML,
+  props: TProps,
+  excludedPropNames?: string[],
+): TProps {
+  const allowedPropNames = (tagName && nativeElementMap[tagName.toLowerCase()]) || htmlElementProperties;
+
+  return getNativeProps(props, allowedPropNames, excludedPropNames);
 }
