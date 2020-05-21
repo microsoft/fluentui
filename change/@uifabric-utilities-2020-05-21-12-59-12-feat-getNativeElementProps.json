@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Adding `getNativeElementProps` helper which takes the element tag name in + props and filters out unrecognized props.",
+  "packageName": "@uifabric/utilities",
+  "email": "dzearing@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-05-21T19:59:12.182Z"
+}
