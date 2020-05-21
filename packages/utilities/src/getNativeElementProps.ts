@@ -54,6 +54,7 @@ const nativeElementMap: Record<string, string[]> = {
  * @param props - Props object
  * @param excludedPropNames - List of props to disallow
  */
+// tslint:disable-next-line:no-any
 export function getNativeElementProps<TAttributes extends React.HTMLAttributes<any>>(
   tagName: keyof React.ReactHTML,
   props: {},
