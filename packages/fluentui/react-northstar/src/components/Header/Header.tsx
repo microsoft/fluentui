@@ -95,10 +95,7 @@ const Header: React.FC<WithAsProp<HeaderProps>> &
       {!hasChildren &&
         HeaderDescription.create(description, {
           defaultProps: () =>
-            getA11yProps('description', {
-              variables: {
-              },
-            }),
+            getA11yProps('description'),
         })}
     </ElementType>
   );
