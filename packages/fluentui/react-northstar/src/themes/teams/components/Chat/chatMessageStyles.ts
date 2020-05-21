@@ -170,7 +170,6 @@ const chatMessageStyles: ComponentSlotStylesPrepared<ChatMessageStylesProps, Cha
     float: 'right',
   }),
   header: () => ({
-    alignItems: 'center',
     whiteSpace: 'nowrap',
   }),
 };
