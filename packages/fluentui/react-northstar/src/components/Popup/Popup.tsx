@@ -11,7 +11,7 @@ import { NodeRef, Unstable_NestingAuto } from '@fluentui/react-component-nesting
 import { handleRef, Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PopperJs from '@popperjs/core';
-import { getCode, keyboardKey } from '@fluentui/keyboard-key';
+import { getCode, keyboardKey, SpacebarKey } from '@fluentui/keyboard-key';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
@@ -215,7 +215,7 @@ const Popup: React.FC<PopupProps> &
 
   const handleDocumentKeyDown = (getRefs: Function) => (e: KeyboardEvent) => {
     const keyCode = getCode(e);
-    const isMatchingKey = keyCode === keyboardKey.Enter || keyCode === keyboardKey[' '];
+    const isMatchingKey = keyCode === keyboardKey.Enter || keyCode === SpacebarKey;
 
     if (isMatchingKey && isOutsidePopupElementAndOutsideTriggerElement(getRefs(), e)) {
       trySetOpen(false, e);

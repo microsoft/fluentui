@@ -11,7 +11,7 @@ import {
 } from '@fluentui/react-northstar';
 import * as React from 'react';
 import * as _ from 'lodash';
-import { getCode, keyboardKey } from '@fluentui/keyboard-key';
+import { getCode, keyboardKey, SpacebarKey } from '@fluentui/keyboard-key';
 import { ChatData, UserStatus, MessageData, UserData, areSameDay, getFriendlyDateString } from '.';
 import {
   AcceptIcon,
@@ -135,7 +135,7 @@ function createMessageContentWithAttachments(content: string, messageId: string)
     'aria-label': 'More attachment options',
     icon: <MoreIcon />,
     onClick: e => e.stopPropagation(),
-    onKeyDown: stopPropagationOnKeys([keyboardKey.Enter, keyboardKey[' ']]),
+    onKeyDown: stopPropagationOnKeys([keyboardKey.Enter, SpacebarKey]),
     children: (Component, props) => (
       <Popup content={{ content: contextMenu }} trapFocus trigger={<Component {...props} />} />
     ),

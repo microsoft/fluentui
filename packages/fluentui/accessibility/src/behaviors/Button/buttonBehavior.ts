@@ -1,4 +1,4 @@
-import { keyboardKey } from '@fluentui/keyboard-key';
+import { keyboardKey, SpacebarKey } from '@fluentui/keyboard-key';
 import { Accessibility, AccessibilityDefinition } from '../../types';
 
 /**
@@ -25,7 +25,7 @@ const buttonBehavior: Accessibility<ButtonBehaviorProps> = props => {
         ...(props.as !== 'button' &&
           props.as !== 'a' && {
             performClick: {
-              keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey[' '] }],
+              keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: SpacebarKey }],
             },
           }),
       },

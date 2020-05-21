@@ -5,7 +5,7 @@ import * as ReactTestUtils from 'react-dom/test-utils';
 import Popup, { PopupEvents } from 'src/components/Popup/Popup';
 import { popupContentClassName } from 'src/components/Popup/PopupContent';
 import { domEvent, EmptyThemeProvider, mountWithProvider } from '../../../utils';
-import { keyboardKey, KeyNames } from '@fluentui/keyboard-key';
+import { keyboardKey, KeyNames, SpacebarKey } from '@fluentui/keyboard-key';
 import { ReactWrapper } from 'enzyme';
 import implementsPopperProps from 'test/specs/commonTests/implementsPopperProps';
 
@@ -146,8 +146,8 @@ describe('Popup', () => {
     test(`toggle popup with Space key`, () => {
       expectPopupToOpenAndClose({
         onProp: 'click',
-        eventToOpen: { keyCode: keyboardKey[' '] },
-        eventToClose: { keyCode: keyboardKey[' '] },
+        eventToOpen: { keyCode: SpacebarKey },
+        eventToClose: { keyCode: SpacebarKey },
       });
     });
     test(`open popup with Enter key and close it with escape key`, () => {
@@ -160,7 +160,7 @@ describe('Popup', () => {
     test(`open popup with Space key and close it with escape key`, () => {
       expectPopupToOpenAndClose({
         onProp: 'hover',
-        eventToOpen: { keyCode: keyboardKey[' '] },
+        eventToOpen: { keyCode: SpacebarKey },
         eventToClose: { keyCode: keyboardKey.Escape },
       });
     });

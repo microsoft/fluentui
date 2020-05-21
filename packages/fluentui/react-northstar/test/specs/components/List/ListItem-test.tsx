@@ -1,6 +1,6 @@
 import { selectableListItemBehavior } from '@fluentui/accessibility';
 import * as React from 'react';
-import { keyboardKey } from '@fluentui/keyboard-key';
+import { keyboardKey, SpacebarKey } from '@fluentui/keyboard-key';
 import { isConformant, handlesAccessibility } from 'test/specs/commonTests';
 import { mountWithProvider } from 'test/utils';
 
@@ -26,7 +26,7 @@ describe('ListItem', () => {
     const listItem = mountWithProvider(<ListItem accessibility={selectableListItemBehavior} onClick={onClick} />).find(
       'ListItem',
     );
-    listItem.simulate('keydown', { keyCode: keyboardKey[' '] });
+    listItem.simulate('keydown', { keyCode: SpacebarKey });
     expect(onClick).toHaveBeenCalledTimes(1);
   });
 });

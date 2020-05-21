@@ -2,7 +2,7 @@ import { FocusZoneDirection, FocusZoneTabbableElements, IS_FOCUSABLE_ATTRIBUTE }
 import * as React from 'react';
 import cx from 'classnames';
 import * as _ from 'lodash';
-import { getCode, keyboardKey } from '@fluentui/keyboard-key';
+import { getCode, keyboardKey, SpacebarKey } from '@fluentui/keyboard-key';
 import * as ReactDOM from 'react-dom';
 import * as PropTypes from 'prop-types';
 
@@ -575,7 +575,7 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
       return undefined;
     } else {
       switch (getCode(ev)) {
-        case keyboardKey[' ']:
+        case SpacebarKey:
           // @ts-ignore
           if (this.tryInvokeClickForFocusable(ev.target as HTMLElement)) {
             break;

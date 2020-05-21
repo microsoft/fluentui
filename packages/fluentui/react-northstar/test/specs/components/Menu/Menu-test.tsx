@@ -7,7 +7,7 @@ import implementsCollectionShorthandProp from '../../commonTests/implementsColle
 import MenuItem from 'src/components/Menu/MenuItem';
 import { menuBehavior, menuAsToolbarBehavior, tabListBehavior, tabBehavior } from '@fluentui/accessibility';
 import { ReactWrapper } from 'enzyme';
-import { keyboardKey } from '@fluentui/keyboard-key';
+import { keyboardKey, SpacebarKey } from '@fluentui/keyboard-key';
 
 const menuImplementsCollectionShorthandProp = implementsCollectionShorthandProp(Menu);
 
@@ -82,7 +82,7 @@ describe('Menu', () => {
         .at(1)
         .find('a')
         .first()
-        .simulate('keydown', { keyCode: keyboardKey[' '] });
+        .simulate('keydown', { keyCode: SpacebarKey });
 
       expect(
         menuItems
@@ -99,7 +99,7 @@ describe('Menu', () => {
         .at(0)
         .find('a')
         .first()
-        .simulate('keydown', { keyCode: keyboardKey[' '] });
+        .simulate('keydown', { keyCode: SpacebarKey });
 
       expect(
         menuItems
