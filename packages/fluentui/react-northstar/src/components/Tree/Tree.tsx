@@ -205,7 +205,7 @@ const Tree: React.FC<WithAsProp<TreeProps>> &
     }
 
     parentRef.current.focus();
-  }, []);
+  }, [parentRef, itemsRef]);
 
   const setSelectedItemIds = (e: React.SyntheticEvent, selectedItemIds: string[]) => {
     _.invoke(props, 'onSelectedItemIdsChange', e, { ...props, selectedItemIds });
