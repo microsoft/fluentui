@@ -17,7 +17,7 @@ import {
 
 const MenuExampleToolbar = () => (
   <Menu defaultActiveIndex={0} iconOnly accessibility={menuAsToolbarBehavior} aria-label="Compose Editor">
-    <Menu.Item index={0} aria-label="Format Tool" icon={<FormatIcon outline={true} />} />
+    <Menu.Item index={0} aria-label="Format Tool" icon={<FormatIcon outline />} />
     <Menu.Item index={1} aria-label="Paperclip Tool" icon={<PaperclipIcon outline={true} />} />
     <Menu.Item index={2} aria-label="Emoji Tool" disabled icon={<EmojiIcon outline={true} />} />
     <Menu.Item index={3} aria-label="Giphy tool" icon={<GiphyIcon outline={true} />} />
