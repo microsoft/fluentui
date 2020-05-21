@@ -1,5 +1,5 @@
 import { Accessibility } from '../../types';
-import { keyboardKey, SpacebarKey } from '@fluentui/keyboard-key';
+import { SpacebarKey } from '@fluentui/keyboard-key';
 import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
 
 /**
