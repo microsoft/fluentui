@@ -15,7 +15,7 @@ export type MenuContextValue = {
   secondary: boolean;
   pills: boolean;
   inSubmenu: boolean;
-  onItemClick?: (e: React.KeyboardEvent | React.MouseEvent, itemIndex: MenuItemProps) => void;
+  onItemClick?: (e: React.KeyboardEvent | React.MouseEvent, itemIndex: number) => void;
   accessibility: { [childBehaviorSlot: string]: Accessibility<any> };
   __parentComponent: React.ElementType;
 };
