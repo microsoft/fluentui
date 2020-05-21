@@ -334,7 +334,7 @@ const Tree: React.FC<WithAsProp<TreeProps>> &
     }
 
     elementToBeFocused.focus();
-  }, []);
+  }, [treeRef, itermsRef]);
 
   const onSiblingsExpand = React.useCallback((e: React.SyntheticEvent, treeItemProps: TreeItemProps) => {
     if (exclusive) {
