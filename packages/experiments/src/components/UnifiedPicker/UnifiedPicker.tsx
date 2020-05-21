@@ -36,10 +36,15 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     selectNextSuggestion,
   } = useFloatingSuggestionItems(suggestions, selectedSuggestionIndex, isSuggestionsVisible);
 
-  const { selectedItems, addItems, removeItems, removeItemAt, removeSelectedItems, unselectAll } = useSelectedItems(
-    selection,
-    props.selectedItemsListProps.selectedItems,
-  );
+  const {
+    selectedItems,
+    addItems,
+    removeItems,
+    removeItemAt,
+    removeSelectedItems,
+    unselectAll,
+    getSelectedItems,
+  } = useSelectedItems(selection, props.selectedItemsListProps.selectedItems);
 
   const _onSelectionChanged = () => {
     showPicker(false);
@@ -78,10 +83,16 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       ) {
         showPicker(false);
         ev.preventDefault();
+        if (props.selectedItemsListProps.onItemsRemoved) {
+          props.selectedItemsListProps.onItemsRemoved([selectedItems[selectedItems.length - 1]]);
+        }
         removeItemAt(selectedItems.length - 1);
       } else if (focusedItemIndices.length > 0) {
         showPicker(false);
         ev.preventDefault();
+        if (props.selectedItemsListProps.onItemsRemoved) {
+          props.selectedItemsListProps.onItemsRemoved(getSelectedItems());
+        }
         removeSelectedItems();
         input.current?.focus();
       }

@@ -21,6 +21,10 @@ export const useSelectedItems = <T extends {}>(
 ): IUseSelectedItemsResponse<T> => {
   const [items, setSelectedItems] = React.useState(selectedItems || []);
 
+  React.useEffect(() => {
+    setSelectedItems(selectedItems ? selectedItems : []);
+  }, [selectedItems]);
+
   const addItems = (itemsToAdd: T[]): void => {
     const newItems: T[] = items.concat(itemsToAdd);
     setSelectedItems(newItems);
