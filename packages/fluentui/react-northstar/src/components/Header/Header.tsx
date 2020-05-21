@@ -57,7 +57,7 @@ const Header: React.FC<WithAsProp<HeaderProps>> &
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Header.handledProps, props);
   const hasChildren = childrenExist(children);
-  const contentElement = childrenExist(children) ? children : content;
+  const contentElement = hasChildren ? children : content;
 
   const getA11yProps = useAccessibility<never>(props.accessibility, {
     debugName: Header.displayName,
