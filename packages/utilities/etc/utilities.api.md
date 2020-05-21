@@ -10,6 +10,7 @@ import { IStyleFunctionOrObject } from '@uifabric/merge-styles';
 import { IStyleSet } from '@uifabric/merge-styles';
 import { Omit } from '@uifabric/merge-styles';
 import * as React from 'react';
+import { ReactHTML } from 'react';
 
 // @public
 export function addDirectionalKeyCode(which: number): void;
@@ -332,6 +333,9 @@ export function getLastFocusable(rootElement: HTMLElement, currentElement: HTMLE
 
 // @public
 export function getLastTabbable(rootElement: HTMLElement, currentElement: HTMLElement, includeElementsInFocusZones?: boolean, checkNode?: boolean): HTMLElement | null;
+
+// @public
+export function getNativeElementProps<TProps>(tagName: keyof ReactHTML, props: TProps, excludedPropNames?: string[]): TProps;
 
 // @public
 export function getNativeProps<T>(props: {}, allowedPropNames: string[], excludedPropNames?: string[]): T;
