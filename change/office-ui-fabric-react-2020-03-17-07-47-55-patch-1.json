@@ -1,9 +1,0 @@
-{
-  "type": "none",
-  "comment": "Nav: fix Basic Example type error",
-  "packageName": "office-ui-fabric-react",
-  "email": "zhmushan@qq.com",
-  "commit": "755b666e2ecaf5aedb5e39ff84233cb7a9a11d0e",
-  "dependentChangeType": "patch",
-  "date": "2020-03-16T23:47:55.762Z"
-}

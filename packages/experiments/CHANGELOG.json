@@ -2,6 +2,36 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Thu, 21 May 2020 12:34:43 GMT",
+      "tag": "@uifabric/experiments_v7.24.6",
+      "version": "7.24.6",
+      "comments": {
+        "none": [
+          {
+            "comment": "Remove unnecessary devDependency",
+            "author": "elcraig@microsoft.com",
+            "commit": "2fccd9fec686c2c79cc654e6d857bf7945b5e363",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 15 May 2020 05:52:46 GMT",
+      "tag": "@uifabric/experiments_v7.24.0",
+      "version": "7.24.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "fixing removing of duplicate entries at once",
+            "author": "nebhatna@microsoft.com",
+            "commit": "d3753b80cae857dacaf0a42e5a5398f92d51a7cc",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 08 May 2020 12:35:40 GMT",
       "tag": "@uifabric/experiments_v7.23.22",
       "version": "7.23.22",

@@ -1,8 +1,35 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Mon, 11 May 2020 12:36:34 GMT and should not be manually modified.
+This log was last generated on Thu, 21 May 2020 12:34:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.18.0](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.18.0)
+
+Thu, 21 May 2020 12:34:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.17.2..@uifabric/utilities_v7.18.0)
+
+### Minor changes
+
+- Add useCustomizationSettings hook ([PR #13146](https://github.com/microsoft/fluentui/pull/13146) by xgao@microsoft.com)
+
+## [7.17.2](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.17.2)
+
+Fri, 15 May 2020 12:42:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.17.0..@uifabric/utilities_v7.17.2)
+
+### Patches
+
+- Selection added `items` to prop constructor options ([PR #12849](https://github.com/microsoft/fluentui/pull/12849) by czearing@outlook.com)
+
+## [7.17.0](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.17.0)
+
+Thu, 14 May 2020 12:34:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.16.4..@uifabric/utilities_v7.17.0)
+
+### Minor changes
+
+- Add utility to apply default props for function components ([PR #13152](https://github.com/microsoft/fluentui/pull/13152) by miclo@microsoft.com)
 
 ## [7.16.4](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.16.4)
 

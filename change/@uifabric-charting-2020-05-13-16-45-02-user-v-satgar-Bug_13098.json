@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Charting : Add theme support for xaxis and yaxis for line chart and change office-ui-fabric-react from dependencies to peerDependencies",
-  "packageName": "@uifabric/charting",
-  "email": "v-satgar@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-05-13T11:15:02.215Z"
-}

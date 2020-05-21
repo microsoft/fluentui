@@ -736,6 +736,8 @@ export interface ISelectionOptions<TItem = IObjectWithKey> {
     canSelectItem?: (item: TItem, index?: number) => boolean;
     getKey?: (item: TItem, index?: number) => string | number;
     // (undocumented)
+    items?: TItem[];
+    // (undocumented)
     onSelectionChanged?: () => void;
     // (undocumented)
     selectionMode?: SelectionMode;
@@ -1189,6 +1191,9 @@ export const trProperties: string[];
 
 // @public
 export function unhoistMethods(source: any, methodNames: string[]): void;
+
+// @public
+export function useCustomizationSettings(properties: string[], scopeName?: string, localSettings?: ICustomizations): ISettings;
 
 // @public
 export function useFocusRects(rootRef?: React.RefObject<HTMLElement>): void;

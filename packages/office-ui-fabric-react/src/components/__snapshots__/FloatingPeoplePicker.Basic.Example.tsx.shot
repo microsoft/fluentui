@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Component Examples renders FloatingPeoplePicker.Basic.Example.tsx correctly 1`] = `
-<div>
+Array [
   <div
     style={
       Object {
@@ -142,9 +142,9 @@ exports[`Component Examples renders FloatingPeoplePicker.Basic.Example.tsx corre
         value=""
       />
     </div>
-  </div>
+  </div>,
   <div
     className="ms-BasePicker ms-BaseFloatingPicker"
-  />
-</div>
+  />,
+]
 `;

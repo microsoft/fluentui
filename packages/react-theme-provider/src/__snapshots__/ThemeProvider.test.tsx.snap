@@ -2,7 +2,6 @@
 
 exports[`ThemeProvider renders a div 1`] = `
 <div
-  className=""
   style={
     Object {
       "--body-divider": "#eee",
@@ -19,7 +18,6 @@ exports[`ThemeProvider renders a div 1`] = `
 
 exports[`ThemeProvider renders a div with styling 1`] = `
 <div
-  className=""
   style={
     Object {
       "--body-divider": "#eee",
@@ -36,7 +34,6 @@ exports[`ThemeProvider renders a div with styling 1`] = `
 
 exports[`ThemeProvider renders nested themes 1`] = `
 <div
-  className=""
   style={
     Object {
       "--body-divider": "#eee",
@@ -51,7 +48,6 @@ exports[`ThemeProvider renders nested themes 1`] = `
     Light theme
   </div>
   <div
-    className=""
     style={
       Object {
         "--body-divider": "#eee",

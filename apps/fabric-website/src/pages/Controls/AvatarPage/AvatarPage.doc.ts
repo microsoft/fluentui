@@ -15,4 +15,10 @@ export const AvatarPageProps: TFabricPlatformPageProps = {
     related,
     componentUrl,
   },
+  mac: {
+    overview: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/AvatarPage/docs/mac/AvatarOverview.md') as string,
+    usage: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/AvatarPage/docs/mac/AvatarUsage.md') as string,
+    related,
+    componentUrl,
+  },
 };
