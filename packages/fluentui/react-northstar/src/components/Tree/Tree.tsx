@@ -358,7 +358,7 @@ const Tree: React.FC<WithAsProp<TreeProps>> &
     }
 
     setActiveItemIds(e, nextActiveItemsIds);
-  }, []);
+  }, [items, setActiveItemIds]);
 
   const getAllSelectableChildrenId = items => {
     return items.reduce((acc, item) => {
