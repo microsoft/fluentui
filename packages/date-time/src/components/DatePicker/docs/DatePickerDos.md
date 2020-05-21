@@ -1,4 +1,3 @@
 - Do use the control as a single entity.
 - Do set the default date to the current date unless a specific date is required for context (e.g. the date of the conference).
-- Do allow DatePicker to render in either wide or narrow. The control is designed to resize relative to available screen width.
-- Do make sure you have at least 300px of width for the DatePicker when it renders as a flyout.
+- Do allow the DatePicker to resize relative to available screen width.
