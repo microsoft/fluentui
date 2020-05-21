@@ -599,6 +599,9 @@ export interface ISliderProps extends React.ClassAttributes<HTMLElement> {
 }
 
 // @public (undocumented)
+export type ISliderState = any;
+
+// @public (undocumented)
 export type ISliderStyleProps = Required<Pick<ISliderProps, 'theme'>> & Pick<ISliderProps, 'className' | 'disabled' | 'vertical'> & {
     showTransitions?: boolean;
     showValue?: boolean;
