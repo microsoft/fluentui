@@ -36,6 +36,7 @@ export { default as selectableListItemBehavior } from './List/selectableListItem
 
 export { default as loaderBehavior } from './Loader/loaderBehavior';
 export { default as inputBehavior } from './Input/inputBehavior';
+export * from './Input/inputBehavior';
 export { default as iconBehavior } from './Icon/iconBehavior';
 export * from './Icon/iconBehavior';
 export { default as indicatorBehavior } from './Box/indicatorBehavior';
@@ -129,5 +130,8 @@ export * from './Card/cardBehavior';
 export { default as cardFocusableBehavior } from './Card/cardFocusableBehavior';
 export { default as cardChildrenFocusableBehavior } from './Card/cardChildrenFocusableBehavior';
 export { default as cardsContainerBehavior } from './Card/cardsContainerBehavior';
+export * from './Card/cardsContainerBehavior';
 export { default as videoBehavior } from './Video/videoBehavior';
 export * from './Video/videoBehavior';
+export { default as hiddenComponentBehavior } from './Common/hiddenComponentBehavior';
+export { default as cardSelectableBehavior } from './Card/cardSelectableBehavior';

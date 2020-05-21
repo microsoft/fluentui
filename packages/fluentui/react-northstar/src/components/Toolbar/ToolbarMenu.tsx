@@ -37,8 +37,14 @@ import ToolbarMenuDivider from './ToolbarMenuDivider';
 import ToolbarMenuItem, { ToolbarMenuItemProps } from './ToolbarMenuItem';
 import { BoxProps } from '../Box/Box';
 import { ToolbarVariablesContext, ToolbarVariablesProvider } from './toolbarVariablesContext';
+import { ToolbarDividerProps } from './ToolbarDivider';
+import { ToolbarItemProps } from './ToolbarItem';
 
-export type ToolbarMenuItemShorthandKinds = 'divider' | 'item' | 'toggle';
+export type ToolbarMenuItemShorthandKinds = {
+  divider: ToolbarDividerProps;
+  item: ToolbarItemProps;
+  toggle: ToolbarItemProps;
+};
 
 export interface ToolbarMenuProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
   /**
