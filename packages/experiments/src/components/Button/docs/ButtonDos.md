@@ -1,9 +1,9 @@
 - Do use Button labels that have a clear purpose. Labels should describe the action of the button in a single line and include a concise verb. If their is room for interpretation about what the verb operates on, a noun should also be used.
 - Do consider the effect localization will have on the button and what will happen to components around it.
-- If the button’s label content is dynamic, consider how the button will resize and what will happen to components around it.
+- Do consider how the button will resize if the button’s label content is dynamic.
 - Do use only a single line of text in the label of the button.
 - Do expose only one or two buttons to the user at a time. If you need to expose more actions to the user, consider using checkboxes or radio buttons.
 - Do show only one primary button that inherits theme color at rest state. In the event there are more than two buttons with equal priority, all buttons should have neutral backgrounds.
 - Do style "Submit", "OK", and "Apply" buttons as primary buttons. Style "Reset" or "Cancel" buttons that appear alongside one of the above, as secondary buttons.
 - Do ensure that Default buttons always perform safe operations. For example, a default button should never delete.
-- Do use task buttons to cause actions that complete a task or cause a transitional task. Don't use buttons to toggle other UI in the same context. For example, a button may be used to open an interface area but should not be used to open an additional set of components in the same interface.
+- Do use task buttons to cause actions that complete a task or cause a transitional task.
