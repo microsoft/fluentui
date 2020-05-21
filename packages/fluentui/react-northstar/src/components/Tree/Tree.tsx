@@ -197,15 +197,18 @@ const Tree: React.FC<WithAsProp<TreeProps>> &
   const treeRef = React.useRef<HTMLElement>();
   const itemsRef = new Map<string, React.RefObject<HTMLElement>>();
 
-  const onFocusParent = React.useCallback((parent: string) => {
-    const parentRef = itemsRef.get(parent);
+  const onFocusParent = React.useCallback(
+    (parent: string) => {
+      const parentRef = itemsRef.get(parent);
 
-    if (!parentRef || !parentRef.current) {
-      return;
-    }
+      if (!parentRef || !parentRef.current) {
+        return;
+      }
 
-    parentRef.current.focus();
-  }, [parentRef, itemsRef]);
+      parentRef.current.focus();
+    },
+    [itemsRef],
+  );
 
   const setSelectedItemIds = (e: React.SyntheticEvent, selectedItemIds: string[]) => {
     _.invoke(props, 'onSelectedItemIdsChange', e, { ...props, selectedItemIds });
@@ -275,22 +278,6 @@ const Tree: React.FC<WithAsProp<TreeProps>> &
     setSelectedItemIds(e, nextSelectedItemIds);
   };
 
-  const onTitleClick = (e: React.SyntheticEvent, treeItemProps: TreeItemProps, executeSelection: boolean = false) => {
-    const treeItemHasSubtree = hasSubtree(treeItemProps);
-
-    if (!treeItemProps) {
-      return;
-    }
-
-    if (treeItemProps.selectable) {
-      processItemsForSelection(e, treeItemProps, executeSelection);
-    }
-
-    if (treeItemHasSubtree && !executeSelection && e.target === e.currentTarget) {
-      expandItems(e, treeItemProps);
-    }
-  };
-
   const expandItems = (e: React.SyntheticEvent, treeItemProps: TreeItemProps) => {
     const { id } = treeItemProps;
 
@@ -320,45 +307,70 @@ const Tree: React.FC<WithAsProp<TreeProps>> &
     setActiveItemIds(e, nextActiveItemsIds);
   };
 
-  const onFocusFirstChild = React.useCallback((itemId: string) => {
-    const currentElement = itemsRef.get(itemId);
+  const onTitleClick = React.useCallback(
+    (e: React.SyntheticEvent, treeItemProps: TreeItemProps, executeSelection: boolean = false) => {
+      const treeItemHasSubtree = hasSubtree(treeItemProps);
 
-    if (!currentElement || !currentElement.current) {
-      return;
-    }
-
-    const elementToBeFocused = getNextElement(treeRef.current, currentElement.current);
-
-    if (!elementToBeFocused) {
-      return;
-    }
-
-    elementToBeFocused.focus();
-  }, [treeRef, itermsRef]);
-
-  const onSiblingsExpand = React.useCallback((e: React.SyntheticEvent, treeItemProps: TreeItemProps) => {
-    if (exclusive) {
-      return;
-    }
-
-    const { id } = treeItemProps;
-
-    const siblings = getSiblings(items, id);
-
-    const nextActiveItemsIds = [...activeItemIds];
-
-    siblings.forEach(sibling => {
-      if (hasSubtree(sibling) && !isActiveItem(sibling['id'])) {
-        nextActiveItemsIds.push(sibling['id']);
+      if (!treeItemProps) {
+        return;
       }
-    });
 
-    if (hasSubtree(treeItemProps) && !isActiveItem(id)) {
-      nextActiveItemsIds.push(id);
-    }
+      if (treeItemProps.selectable) {
+        processItemsForSelection(e, treeItemProps, executeSelection);
+      }
 
-    setActiveItemIds(e, nextActiveItemsIds);
-  }, [items, setActiveItemIds]);
+      if (treeItemHasSubtree && !executeSelection && e.target === e.currentTarget) {
+        expandItems(e, treeItemProps);
+      }
+    },
+    [hasSubtree, expandItems, processItemsForSelection],
+  );
+
+  const onFocusFirstChild = React.useCallback(
+    (itemId: string) => {
+      const currentElement = itemsRef.get(itemId);
+
+      if (!currentElement || !currentElement.current) {
+        return;
+      }
+
+      const elementToBeFocused = getNextElement(treeRef.current, currentElement.current);
+
+      if (!elementToBeFocused) {
+        return;
+      }
+
+      elementToBeFocused.focus();
+    },
+    [treeRef, itemsRef],
+  );
+
+  const onSiblingsExpand = React.useCallback(
+    (e: React.SyntheticEvent, treeItemProps: TreeItemProps) => {
+      if (exclusive) {
+        return;
+      }
+
+      const { id } = treeItemProps;
+
+      const siblings = getSiblings(items, id);
+
+      const nextActiveItemsIds = [...activeItemIds];
+
+      siblings.forEach(sibling => {
+        if (hasSubtree(sibling) && !isActiveItem(sibling['id'])) {
+          nextActiveItemsIds.push(sibling['id']);
+        }
+      });
+
+      if (hasSubtree(treeItemProps) && !isActiveItem(id)) {
+        nextActiveItemsIds.push(id);
+      }
+
+      setActiveItemIds(e, nextActiveItemsIds);
+    },
+    [items, setActiveItemIds],
+  );
 
   const getAllSelectableChildrenId = items => {
     return items.reduce((acc, item) => {
