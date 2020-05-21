@@ -39,7 +39,7 @@ import { FormStylesProps } from '../../components/Form/Form';
 import { FormFieldStylesProps } from '../../components/Form/FormField';
 import { GridProps } from '../../components/Grid/Grid';
 import { HeaderDescriptionProps } from '../../components/Header/HeaderDescription';
-import { HeaderProps } from '../../components/Header/Header';
+import { HeaderStylesProps } from '../../components/Header/Header';
 import { ImageStylesProps } from '../../components/Image/Image';
 import { InputStylesProps } from '../../components/Input/Input';
 import { ItemLayoutProps } from '../../components/ItemLayout/ItemLayout';
@@ -131,7 +131,7 @@ export type TeamsThemeStylesProps = {
   Form: FormStylesProps;
   FormField: FormFieldStylesProps;
   Grid: GridProps;
-  Header: HeaderProps;
+  Header: HeaderStylesProps;
   HeaderDescription: HeaderDescriptionProps;
   SvgIcon: SvgIconStylesProps;
   Image: ImageStylesProps;

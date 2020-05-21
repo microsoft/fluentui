@@ -2,6 +2,21 @@
   "name": "@uifabric/fabric-website-resources",
   "entries": [
     {
+      "date": "Thu, 21 May 2020 12:34:43 GMT",
+      "tag": "@uifabric/fabric-website-resources_v7.6.68",
+      "version": "7.6.68",
+      "comments": {
+        "none": [
+          {
+            "comment": "Remove unnecessary devDependency",
+            "author": "elcraig@microsoft.com",
+            "commit": "2fccd9fec686c2c79cc654e6d857bf7945b5e363",
+            "package": "@uifabric/fabric-website-resources"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 15 May 2020 05:52:46 GMT",
       "tag": "@uifabric/fabric-website-resources_v7.6.62",
       "version": "7.6.62",

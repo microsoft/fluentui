@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 
 import { Modal } from './Modal';
-import { ContextualMenu } from '@fluentui/react-next/lib/ContextualMenu';
+import { ContextualMenu } from '../../ContextualMenu';
 
 describe('Modal', () => {
   it('renders Modal correctly', () => {

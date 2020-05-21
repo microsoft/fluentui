@@ -2,6 +2,21 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Thu, 21 May 2020 12:34:43 GMT",
+      "tag": "@uifabric/fabric-website_v7.10.57",
+      "version": "7.10.57",
+      "comments": {
+        "none": [
+          {
+            "comment": "Remove unnecessary devDependency",
+            "author": "elcraig@microsoft.com",
+            "commit": "2fccd9fec686c2c79cc654e6d857bf7945b5e363",
+            "package": "@uifabric/fabric-website"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 19 May 2020 12:34:06 GMT",
       "tag": "@uifabric/fabric-website_v7.10.55",
       "version": "7.10.55",

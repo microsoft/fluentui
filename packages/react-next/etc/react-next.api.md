@@ -9,6 +9,7 @@ import { IButtonProps as IButtonProps_2 } from 'office-ui-fabric-react/lib/compo
 import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import { IComponentAs } from 'office-ui-fabric-react/lib/Utilities';
 import { IContextualMenuProps } from 'office-ui-fabric-react/lib/ContextualMenu';
+import { ICustomizerContext } from 'office-ui-fabric-react/lib/Utilities';
 import { IFocusZoneProps } from '@fluentui/react-focus';
 import { IIconProps } from 'office-ui-fabric-react/lib/Icon';
 import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
@@ -16,6 +17,8 @@ import { ILayerProps } from 'office-ui-fabric-react/lib/Layer';
 import { IOverlayProps } from 'office-ui-fabric-react/lib/Overlay';
 import { IRefObject } from 'office-ui-fabric-react/lib/Utilities';
 import { IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { ISettings } from 'office-ui-fabric-react/lib/Utilities';
+import { ISettingsFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 import { IStyleSet } from 'office-ui-fabric-react/lib/Styling';
@@ -23,12 +26,16 @@ import { ITheme } from 'office-ui-fabric-react/lib/Styling';
 import { IWithResponsiveModeState } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode';
 import { Position } from 'office-ui-fabric-react/lib/utilities/positioning';
 import * as React from 'react';
+import { ThemeProviderProps } from '@fluentui/react-theme-provider';
 
 // @public (undocumented)
 export const Checkbox: React.FunctionComponent<ICheckboxProps>;
 
 // @public (undocumented)
 export const CheckboxBase: React.ForwardRefExoticComponent<ICheckboxProps & React.RefAttributes<HTMLDivElement>>;
+
+// @public
+export const Customizer: React.FunctionComponent<ICustomizerProps>;
 
 // @public (undocumented)
 export const DEFAULT_MASK_CHAR = "_";
@@ -126,6 +133,14 @@ export interface ICheckboxStyles {
     label?: IStyle;
     root?: IStyle;
     text?: IStyle;
+}
+
+// @public (undocumented)
+export interface ICustomizerProps {
+    contextTransform?: (context: Readonly<ICustomizerContext>) => ICustomizerContext;
+    disableThemeProvider?: boolean;
+    scopedSettings?: ISettings | ISettingsFunction;
+    settings?: ISettings | ISettingsFunction;
 }
 
 // @public (undocumented)
@@ -1171,6 +1186,13 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
     setSelectionStart(value: number): void;
     readonly value: string | undefined;
     }
+
+// @public
+export const ThemeProvider: React.FunctionComponent<ThemeProviderProps & {
+    ref?: React.Ref<HTMLDivElement>;
+}>;
+
+export { ThemeProviderProps }
 
 // @public (undocumented)
 export const Toggle: React.FunctionComponent<IToggleProps>;

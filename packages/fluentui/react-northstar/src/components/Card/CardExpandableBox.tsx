@@ -1,5 +1,5 @@
-import { ComponentWithAs, compose } from '@fluentui/react-compose';
-import { commonPropTypes, ShorthandConfig } from '../../utils';
+import { ComponentWithAs, compose, ShorthandConfig } from '@fluentui/react-bindings';
+import { commonPropTypes } from '../../utils';
 import Box, { BoxProps, BoxStylesProps } from '../Box/Box';
 
 interface CardExpandableBoxOwnProps {}
