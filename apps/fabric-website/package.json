@@ -43,7 +43,6 @@
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",
-    "react-highlight": "0.10.0",
     "write-file-webpack-plugin": "^4.1.0"
   },
   "dependencies": {
