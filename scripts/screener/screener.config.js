@@ -83,7 +83,6 @@ module.exports = {
   browsers: [
     {
       browserName: 'chrome',
-      excludeRules: [/.*\.ie/],
     },
     {
       browserName: 'internet explorer',
