@@ -29,7 +29,7 @@ export type ComposeRender<TProps, TOptions> = (
 export type ClassDictionary = any;
 
 // tslint:disable-next-line:no-any
-export type GenericDictionary = { [key: string]: any };
+export type GenericDictionary = Record<string, any>;
 
 export interface ComposeOptions<TProps, TSlots, TSlotProps, TStatics> {
   render: ComposeRender<TProps, ComposeOptions<TProps, TSlots, TSlotProps, TStatics>>;
