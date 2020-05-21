@@ -543,7 +543,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
 
     if (pageSpecificationCache.byIndex[startIndex]) {
       // If the page specification has already been calculated, return it.
-      // List recalculates all pages if any input changes, so this memorization
+      // List recalculates all pages if any input changes, so this memoization
       // cuts down on calculation of individual pages without changes.
       return pageSpecificationCache.byIndex[startIndex];
     }
@@ -564,7 +564,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
     const cellSizes: IPageData<TItem>['cellSizes'] = {};
     const widths: IPageData<TItem>['pageWidths'] = {};
 
-    for (; i < endIndex;) {
+    for (; i < endIndex; ) {
       // For each cell at the start of a grid.
       const grid = cells[i].grid;
 
