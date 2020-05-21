@@ -1,5 +1,5 @@
 import { CopyToClipboard } from '@fluentui/docs-components';
-import { Menu, menuAsToolbarBehavior, Tooltip, Loader, MenuProps } from '@fluentui/react-northstar';
+import { Menu, menuAsToolbarBehavior, Tooltip, Loader, MenuProps, MenuItem } from '@fluentui/react-northstar';
 import * as _ from 'lodash';
 import * as React from 'react';
 import { NavLink } from 'react-router-dom';
@@ -79,7 +79,7 @@ const ComponentControls: React.FC<ComponentControlsProps> = props => {
             icon: <CodeSnippetIcon style={{ width: '20px', height: '20px' }} />,
             onClick: onShowCode,
             active: showCode,
-            children: (Component, props) => (
+            children: (Component: typeof MenuItem, props) => (
               <Tooltip content="Try it" key="show-code" trigger={<Component {...props} />} />
             ),
           },
@@ -88,7 +88,7 @@ const ComponentControls: React.FC<ComponentControlsProps> = props => {
             icon: <EditIcon style={{ width: '20px', height: '20px' }} />,
             onClick: onShowVariables,
             active: showVariables,
-            children: (Component, props) => (
+            children: (Component: typeof MenuItem, props) => (
               <Tooltip content="Theme it" key="show-variables" trigger={<Component {...props} />} />
             ),
           },
@@ -101,7 +101,7 @@ const ComponentControls: React.FC<ComponentControlsProps> = props => {
             icon: <CircleIcon outline style={{ width: '20px', height: '20px' }} />,
             onClick: onShowTransparent,
             active: showTransparent,
-            children: (Component, props) => (
+            children: (Component: typeof MenuItem, props) => (
               <Tooltip content="Transparent" key="show-transparent" trigger={<Component {...props} />} />
             ),
           },
@@ -109,12 +109,14 @@ const ComponentControls: React.FC<ComponentControlsProps> = props => {
             icon: <IndentIcon rotate={180} style={{ width: '20px', height: '20px' }} />,
             onClick: onShowRtl,
             active: showRtl,
-            children: (Component, props) => <Tooltip content="RTL" key="show-rtl" trigger={<Component {...props} />} />,
+            children: (Component: typeof MenuItem, props) => (
+              <Tooltip content="RTL" key="show-rtl" trigger={<Component {...props} />} />
+            ),
           },
 
           {
             icon: <OpenOutsideIcon style={{ width: '20px', height: '20px' }} />,
-            children: (Component, props) => (
+            children: (Component: typeof MenuItem, props) => (
               <Tooltip content="Popout" key="maximize" trigger={<Component {...props} />} />
             ),
             as: NavLink,
@@ -135,13 +137,13 @@ const ComponentControls: React.FC<ComponentControlsProps> = props => {
           {
             onClick: onCodeSandboxClick,
             icon: codeSandboxIcon,
-            children: (Component, props) => (
+            children: (Component: typeof MenuItem, props) => (
               <Tooltip content={codeSandboxTooltip} key="show-codesandbox" trigger={<Component {...props} />} />
             ),
           },
           {
             icon: <LinkIcon style={{ width: '20px', height: '20px' }} />,
-            children: (Component, props) => (
+            children: (Component: typeof MenuItem, props) => (
               <CopyToClipboard key="copy-link" value={anchorName}>
                 {(active, onClick) => (
                   <Tooltip

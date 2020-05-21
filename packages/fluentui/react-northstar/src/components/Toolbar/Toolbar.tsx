@@ -44,9 +44,9 @@ import {
 import ToolbarCustomItem, { ToolbarCustomItemProps } from './ToolbarCustomItem';
 import ToolbarDivider, { ToolbarDividerProps } from './ToolbarDivider';
 import ToolbarItem, { ToolbarItemProps } from './ToolbarItem';
-import ToolbarMenu from './ToolbarMenu';
+import ToolbarMenu, { ToolbarMenuProps } from './ToolbarMenu';
 import ToolbarMenuDivider from './ToolbarMenuDivider';
-import ToolbarMenuItem, { ToolbarMenuItemProps } from './ToolbarMenuItem';
+import ToolbarMenuItem from './ToolbarMenuItem';
 import ToolbarMenuRadioGroup, { ToolbarMenuRadioGroupProps } from './ToolbarMenuRadioGroup';
 import ToolbarRadioGroup from './ToolbarRadioGroup';
 import { ToolbarVariablesProvider } from './toolbarVariablesContext';
@@ -460,9 +460,7 @@ const Toolbar: React.FC<WithAsProp<ToolbarProps>> &
           }),
           overrideProps: {
             menu: {
-              items: overflowOpen
-                ? (collectOverflowItems() as ShorthandCollection<ToolbarMenuItemProps, ToolbarItemShorthandKinds>)
-                : [],
+              items: overflowOpen ? (collectOverflowItems() as ToolbarMenuProps['items']) : [],
               popper: { positionFixed: true },
             },
             menuOpen: overflowOpen,
