@@ -204,9 +204,9 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
 
         setActiveIndex(e, index);
 
-        _.invoke(props, 'onItemClick', e, itemProps);
+        _.invoke(actualProps.current, 'onItemClick', e, itemProps);
       },
-      [props, setActiveIndex],
+      [actualProps, setActiveIndex],
     );
 
     const handleItemOverrides = predefinedProps => ({
