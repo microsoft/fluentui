@@ -510,9 +510,6 @@ export class LineChartBase extends React.Component<
               onMouseMove={this._handleHover.bind(this, x1, y1, lineColor, xAxisCalloutData)}
               onMouseOut={this._handleMouseOut}
               opacity={1}
-              data-is-focusable={i === 0 ? true : false}
-              onFocus={this._handleFocus.bind(this, keyVal, x1, y1, lineColor, xAxisCalloutData)}
-              onBlur={this._handleMouseOut}
               aria-labelledby={this._calloutId}
               onClick={this._onLineClick.bind(this, this._points[i].onLineClick)}
             />,
