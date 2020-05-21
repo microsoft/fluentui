@@ -25,10 +25,10 @@ import * as React from 'react';
 import { ThemeProviderProps } from '@fluentui/react-theme-provider';
 
 // @public (undocumented)
-export const Checkbox: React.FunctionComponent<ICheckboxProps>;
+export const Checkbox: import("@fluentui/react-compose").ComponentWithAs<"div", import("./Checkbox.types").ICheckboxProps>;
 
 // @public (undocumented)
-export const CheckboxBase: React.ForwardRefExoticComponent<ICheckboxProps & React.RefAttributes<HTMLDivElement>>;
+export const CheckboxBase: import("@fluentui/react-compose").ComponentWithAs<"div", ICheckboxProps>;
 
 // @public
 export const Customizer: React.FunctionComponent<ICustomizerProps>;

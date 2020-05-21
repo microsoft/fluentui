@@ -1,106 +1,75 @@
 import * as React from 'react';
-import { useId, useControllableValue, useMergedRefs } from '@uifabric/react-hooks';
+import { compose } from '@fluentui/react-compose';
+import { useMergedRefs } from '@uifabric/react-hooks';
 import { mergeAriaAttributeValues, warnMutuallyExclusive, useFocusRects } from '../../Utilities';
 import { Icon } from '../../Icon';
 import { ICheckboxProps, ICheckboxStyles } from './Checkbox.types';
 import { KeytipData } from '../../KeytipData';
 import { useCheckboxClasses } from './useCheckboxClasses';
+import { useCheckbox } from './useCheckbox';
 
-export const CheckboxBase = React.forwardRef((props: ICheckboxProps, forwardedRef: React.Ref<HTMLDivElement>) => {
-  const {
-    disabled,
-    inputProps,
-    name,
-    ariaLabel,
-    ariaLabelledBy,
-    ariaDescribedBy,
-    checkmarkIconProps,
-    ariaPositionInSet,
-    ariaSetSize,
-    keytipProps,
-    title,
-    label,
-    onChange,
-  } = props;
+export const CheckboxBase = compose<'div', ICheckboxProps, ICheckboxProps, {}, {}>(
+  (props, forwardedRef, composeOptions) => {
+    const rootRef = React.useRef<HTMLDivElement | null>(null);
+    const mergedRootRefs = useMergedRefs(rootRef, forwardedRef);
 
-  const rootRef = React.useRef<HTMLDivElement | null>(null);
-  const mergedRootRefs = useMergedRefs(rootRef, forwardedRef);
-  const checkBox = React.useRef<HTMLInputElement>(null);
-  const [isChecked, setIsChecked] = useControllableValue(props.checked, props.defaultChecked, onChange);
-  const [isIndeterminate, setIsIndeterminate] = useControllableValue(props.indeterminate, props.defaultIndeterminate);
+    const { slotProps, slots } = useCheckbox(props, composeOptions);
+    const { disabled, keytipProps, label, title } = props;
+    const { checked, indeterminate, checkBox } = slotProps.input;
 
-  useFocusRects(rootRef);
-  useDebugWarning(props);
-  useComponentRef(props, isChecked, isIndeterminate, checkBox);
+    useFocusRects(rootRef);
+    useDebugWarning(props);
+    useComponentRef(props, checked, indeterminate, checkBox);
 
-  const id = useId('checkbox-', props.id);
+    // TODO: this should be called during `compose`
+    const classNames: { [key in keyof ICheckboxStyles]: string } = useCheckboxClasses({
+      ...props,
+      indeterminate,
+      checked,
+    });
 
-  // TODO: this should be called during `compose`
-  const classNames: { [key in keyof ICheckboxStyles]: string } = useCheckboxClasses({
-    ...props,
-    indeterminate: isIndeterminate,
-    checked: isChecked,
-  });
+    const onRenderLabel = (): JSX.Element | null => {
+      return label ? (
+        <span aria-hidden="true" className={classNames.text} title={title}>
+          {label}
+        </span>
+      ) : null;
+    };
 
-  const onRenderLabel = (): JSX.Element | null => {
-    return label ? (
-      <span aria-hidden="true" className={classNames.text} title={title}>
-        {label}
-      </span>
-    ) : null;
-  };
+    return (
+      <KeytipData keytipProps={keytipProps} disabled={disabled}>
+        {(keytipAttributes: any): JSX.Element => (
+          <slots.root className={classNames.root} ref={mergedRootRefs} {...slotProps.root}>
+            <slots.input
+              {...slotProps.input}
+              className={classNames.input}
+              data-ktp-execute-target={keytipAttributes['data-ktp-execute-target']}
+              aria-describedby={mergeAriaAttributeValues(
+                slotProps.input['aria-describedby'],
+                keytipAttributes['aria-describedby'],
+              )}
+            />
+            <slots.label className={classNames.label} {...slotProps.label}>
+              <div className={classNames.checkbox} data-ktp-target={keytipAttributes['data-ktp-target']}>
+                <slots.checkmarkIcon className={classNames.checkmark} {...slotProps.checkmarkIcon} />
+              </div>
+              {(props.onRenderLabel || onRenderLabel)(props, onRenderLabel)}
+            </slots.label>
+          </slots.root>
+        )}
+      </KeytipData>
+    );
+  },
+  {
+    slots: {
+      input: 'input',
+      checkmarkIcon: Icon,
+      label: 'label',
+    },
+    displayName: 'CheckboxBase',
+  },
+);
 
-  const _onChange = (ev: React.ChangeEvent<HTMLElement>): void => {
-    if (!isIndeterminate) {
-      setIsChecked(!isChecked, ev);
-    } else {
-      // If indeterminate, clicking the checkbox *only* removes the indeterminate state (or if
-      // controlled, lets the consumer know to change it by calling onChange). It doesn't
-      // change the checked state.
-      setIsChecked(!!isChecked, ev);
-      setIsIndeterminate(false);
-    }
-  };
-
-  return (
-    <KeytipData keytipProps={keytipProps} disabled={disabled}>
-      {(keytipAttributes: any): JSX.Element => (
-        <div className={classNames.root} title={title} ref={mergedRootRefs}>
-          <input
-            type="checkbox"
-            {...inputProps}
-            data-ktp-execute-target={keytipAttributes['data-ktp-execute-target']}
-            checked={!!isChecked}
-            disabled={disabled}
-            className={classNames.input}
-            ref={checkBox}
-            name={name}
-            id={id}
-            title={title}
-            onChange={_onChange}
-            onFocus={inputProps?.onFocus}
-            onBlur={inputProps?.onBlur}
-            aria-disabled={disabled}
-            aria-label={ariaLabel || label}
-            aria-labelledby={ariaLabelledBy}
-            aria-describedby={mergeAriaAttributeValues(ariaDescribedBy, keytipAttributes['aria-describedby'])}
-            aria-posinset={ariaPositionInSet}
-            aria-setsize={ariaSetSize}
-            aria-checked={isIndeterminate ? 'mixed' : isChecked ? 'true' : 'false'}
-          />
-          <label className={classNames.label} htmlFor={id}>
-            <div className={classNames.checkbox} data-ktp-target={keytipAttributes['data-ktp-target']}>
-              <Icon iconName="CheckMark" {...checkmarkIconProps} className={classNames.checkmark} />
-            </div>
-            {(props.onRenderLabel || onRenderLabel)(props, onRenderLabel)}
-          </label>
-        </div>
-      )}
-    </KeytipData>
-  );
-});
-
-CheckboxBase.displayName = 'CheckboxBase';
 CheckboxBase.defaultProps = {
   boxSide: 'start',
 };
