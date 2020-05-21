@@ -1,13 +1,12 @@
 import { compose, ComponentWithAs, ShorthandConfig } from '@fluentui/react-bindings';
 import { commonPropTypes } from '../../utils';
 import Box, { BoxProps, BoxStylesProps } from '../Box/Box';
-import { chatMessageClassName } from './ChatMessage';
 
 interface ChatMessageHeaderOwnProps {}
 export interface ChatMessageHeaderProps extends ChatMessageHeaderOwnProps, BoxProps {}
 
 export type ChatMessageHeaderStylesProps = never;
-export const ChatMessageHeaderClassName = `${chatMessageClassName}__header`;
+export const ChatMessageHeaderClassName = `ui-chat__message__header`;
 
 /**
  * A ChatMessageHeader provides a title for the Attachment.
