@@ -57,7 +57,7 @@ export interface ComponentHookResult<TState, TSlots, TSlotProps> {
   slotProps: Required<TSlotProps> & { root: TState };
 }
 
-export function mergeProps<TState, TSlots, TSlotProps>(
+export function mergeProps<TState, TSlots = {}, TSlotProps = {}>(
   state: TState,
   options: ComposePreparedOptions,
   defaultSlotProps: Partial<TSlotProps & { root: TState }> = {},
@@ -66,7 +66,7 @@ export function mergeProps<TState, TSlots, TSlotProps>(
     ...options.slots,
     // tslint:disable-next-line:no-any
     root: (state as any).as || ((options as any).defaultProps as any)?.as,
-  };
+  } as any;
 
   // Grab native props from defaults and state.
   const slotProps: GenericDictionary = {
