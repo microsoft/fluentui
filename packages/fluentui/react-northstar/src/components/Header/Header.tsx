@@ -94,8 +94,7 @@ const Header: React.FC<WithAsProp<HeaderProps>> &
       {rtlTextContainer.createFor({ element: contentElement, condition: !!description })}
       {!hasChildren &&
         HeaderDescription.create(description, {
-          defaultProps: () =>
-            getA11yProps('description'),
+          defaultProps: () => getA11yProps('description', {}),
         })}
     </ElementType>
   );
