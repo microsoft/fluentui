@@ -9,6 +9,7 @@ import {
   useAccessibility,
   useStyles,
   ComponentWithAs,
+  ShorthandConfig,
 } from '@fluentui/react-bindings';
 import { EventListener } from '@fluentui/react-component-event-listener';
 import { Ref, handleRef } from '@fluentui/react-component-ref';
@@ -25,7 +26,6 @@ import {
   ContentComponentProps,
   commonPropTypes,
   isFromKeyboard as isEventFromKeyboard,
-  ShorthandConfig,
 } from '../../utils';
 import Menu, { MenuProps, MenuShorthandKinds } from './Menu';
 import MenuItemIcon, { MenuItemIconProps } from './MenuItemIcon';
@@ -390,7 +390,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
       <Ref
         innerRef={node => {
           itemRef.current = node;
-          handleRef(ref, node as any /* TODO: fix refs in compose */);
+          handleRef(ref, node);
         }}
       >
         <ElementType
@@ -545,6 +545,9 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
       'styles',
       'variables',
     ],
+    shorthandConfig: {
+      mappedProp: 'content',
+    },
   },
 ) as ComponentWithAs<'a', MenuItemProps> & {
   shorthandConfig: ShorthandConfig<MenuItemProps>;
@@ -585,10 +588,6 @@ MenuItem.defaultProps = {
   accessibility: menuItemBehavior as Accessibility,
   wrapper: {},
   indicator: {},
-};
-
-MenuItem.shorthandConfig = {
-  mappedProp: 'content',
 };
 
 export default MenuItem;

@@ -19,7 +19,14 @@ exports[`MessageBar renders MessageBar correctly 1`] = `
         width: 100%;
         word-break: break-word;
       }
+      & .ms-Link {
+        color: #005A9E;
+      }
+      & .ms-Link:hover {
+        color: #004578;
+      }
       @media screen and (-ms-high-contrast: active){& {
+        -ms-high-contrast-adjust: none;
         background: Window;
         border: 1px solid WindowText;
         color: WindowText;
