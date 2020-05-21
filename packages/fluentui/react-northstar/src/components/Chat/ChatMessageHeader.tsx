@@ -26,12 +26,8 @@ const ChatMessageHeader = compose<
   shorthandConfig: ShorthandConfig<ChatMessageHeaderProps>;
 };
 
-ChatMessageHeader.defaultProps = {
-  as: 'span',
-};
+ChatMessageHeader.defaultProps = {};
 ChatMessageHeader.propTypes = commonPropTypes.createCommon();
-ChatMessageHeader.shorthandConfig = {
-  mappedProp: 'content',
-};
+ChatMessageHeader.shorthandConfig = {};
 
 export default ChatMessageHeader;
