@@ -82,9 +82,10 @@ export function mergeComposeOptions<TElementType extends React.ElementType<any> 
 
   // replace resolveSlotProps with a more general resolve, which takes in state and returns
   // { state, slots, slotProps } fo the render function to consume.
-  preparedOptions.resolve = createOptionsResolver<TElementType, TProps, TState>(
-    preparedOptions as ComposePreparedOptions<TElementType, TProps, TState>,
-  );
+  preparedOptions.resolve = createOptionsResolver<TState>(
+    (preparedOptions as unknown) as ComposePreparedOptions,
+    // tslint:disable-next-line:no-any
+  ) as any;
 
   return preparedOptions as ComposePreparedOptions<TElementType, TProps, TState>;
 }

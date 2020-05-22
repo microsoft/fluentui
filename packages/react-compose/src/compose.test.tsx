@@ -1,7 +1,6 @@
 import * as React from 'react';
 import compose from './compose';
 import { mount } from 'enzyme';
-import { ComposePreparedOptions } from './types';
 
 describe('compose', () => {
   interface ToggleProps extends React.AllHTMLAttributes<{}> {

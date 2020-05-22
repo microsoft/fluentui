@@ -84,7 +84,11 @@ export type Dictionary = {
 
 export type ComposePreparedOptions<TElementType extends React.ElementType = 'div', TProps = {}, TState = TProps> = {
   className: string;
-  classes: (undefined | ClassDictionary | ((state: TState) => ClassDictionary))[];
+  classes: (
+    | undefined
+    | ClassDictionary
+    | ((state: TState, slots: ComposePreparedOptions['slots']) => ClassDictionary)
+  )[];
   displayName: string;
   displayNames: string[];
 

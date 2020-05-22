@@ -26,7 +26,7 @@ import { ClassDictionary, Dictionary } from './types';
  * @param slots -
  */
 // tslint:disable-next-line: no-any
-export const createClassResolver = (classes: ClassDictionary, slots: { [key: string]: any }) => (state: Dictionary) => {
+export const createClassResolver = (classes: ClassDictionary) => (state: Dictionary, slots: { [key: string]: any }) => {
   // tslint:disable-next-line:no-any
   const classMap: Record<string, any> = {};
 

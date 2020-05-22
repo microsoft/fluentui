@@ -1,13 +1,18 @@
 import { createClassResolver } from './createClassResolver';
 
 describe('createClassResolver', () => {
-  const classResolver = createClassResolver(
-    { root: 'root', slot1: 'slot1', slot2: 'slot2', primary: 'primary', size_small: 'small', size_medium: 'medium' },
-    { root: null, slot1: null, slot2: null },
-  );
+  const classResolver = createClassResolver({
+    root: 'root',
+    slot1: 'slot1',
+    slot2: 'slot2',
+    primary: 'primary',
+    size_small: 'small',
+    size_medium: 'medium',
+  });
+  const slots = { root: null, slot1: null, slot2: null };
 
   it('can resolve slot classes', () => {
-    expect(classResolver({})).toEqual({
+    expect(classResolver({}, slots)).toEqual({
       root: 'root',
       slot1: 'slot1',
       slot2: 'slot2',
@@ -15,7 +20,7 @@ describe('createClassResolver', () => {
   });
 
   it('can resolve modifiers', () => {
-    expect(classResolver({ primary: true })).toEqual({
+    expect(classResolver({ primary: true }, slots)).toEqual({
       root: 'root primary',
       slot1: 'slot1',
       slot2: 'slot2',
@@ -24,7 +29,7 @@ describe('createClassResolver', () => {
 
   it('can resolve enums', () => {
     // Can resolve
-    expect(classResolver({ size: 'small' })).toEqual({
+    expect(classResolver({ size: 'small' }, slots)).toEqual({
       root: 'root small',
       slot1: 'slot1',
       slot2: 'slot2',
@@ -33,7 +38,7 @@ describe('createClassResolver', () => {
 
   it('can resolve mixed content, including a className in props', () => {
     // Can resolve
-    expect(classResolver({ className: 'foo', primary: true, size: 'medium' })).toEqual({
+    expect(classResolver({ className: 'foo', primary: true, size: 'medium' }, slots)).toEqual({
       root: 'foo root primary medium',
       slot1: 'slot1',
       slot2: 'slot2',

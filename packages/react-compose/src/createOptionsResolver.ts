@@ -9,29 +9,33 @@ export type OptionsResolverResult = {
 };
 
 // tslint:disable-next-line:no-any
-export const createOptionsResolver = (options: ComposePreparedOptions) => (stateOrProps: {}): OptionsResolverResult => {
-  const slotProps: OptionsResolverResult['slotProps'] = {};
-  const state = stateOrProps as OptionsResolverResult['state'];
-  const slots: OptionsResolverResult['slots'] = { ...options.slots };
-  const result: OptionsResolverResult = {
-    state,
-    slotProps,
-    slots,
+export const createOptionsResolver = <TState>(options: ComposePreparedOptions) => {
+  // Returning a function so that "resolve" function shows up in profiling.
+  // tslint:disable-next-line:no-function-expression
+  return function resolve(stateOrProps: TState): OptionsResolverResult {
+    const slotProps: OptionsResolverResult['slotProps'] = {};
+    const state = stateOrProps as OptionsResolverResult['state'];
+    const slots: OptionsResolverResult['slots'] = { ...options.slots };
+    const result: OptionsResolverResult = {
+      state,
+      slotProps,
+      slots,
+    };
+
+    // Resolve the "as" prop
+    if (state.as) {
+      slots.root = state.as;
+    }
+
+    // Resolve unrecognized props
+
+    // Resolve classes
+    resolveClasses(options.classes, result);
+
+    // Resolve slots and shorthand
+
+    return result;
   };
-
-  // Resolve the "as" prop
-  if (state.as) {
-    slots.root = state.as;
-  }
-
-  // Resolve unrecognized props
-
-  // Resolve classes
-  resolveClasses(options.classes, result);
-
-  // Resolve slots and shorthand
-
-  return result;
 };
 
 function addToMapArray(map: Record<string, string[]>, key: string, value: string) {
@@ -50,14 +54,14 @@ function resolveClasses(
 
   for (const classFunctionOrObject of classes) {
     const classObj: ClassDictionary | undefined =
-      typeof classFunctionOrObject === 'function' ? classFunctionOrObject(state) : classFunctionOrObject;
+      typeof classFunctionOrObject === 'function' ? classFunctionOrObject(state, slots) : classFunctionOrObject;
 
     for (const key in classObj) {
       if (classObj.hasOwnProperty(key)) {
         const className = classObj[key];
 
         if (className && slots[key]) {
-          addToMapArray(classMap, className, classObj[className]);
+          addToMapArray(classMap, key, className);
         }
       }
     }
