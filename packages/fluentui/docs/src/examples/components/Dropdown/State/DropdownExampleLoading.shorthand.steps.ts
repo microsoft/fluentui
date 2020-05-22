@@ -12,9 +12,9 @@ const config: ScreenerTestsConfig = {
       builder
         .click(selectors.triggerButton)
         .snapshot('List with loading state')
-        .hover(selectors.item(10))
-        .keys(selectors.triggerButton, keys.downArrow)
-        .snapshot('Showing loading in the bottom'),
+        .focus(selectors.item(10))
+        .keys(selectors.item(10), keys.downArrow)
+        .snapshot('Dropdown: showing loading in the bottom'),
   ],
 };
 
