@@ -108,7 +108,7 @@ export const treeClassName = 'ui-tree';
 
 export type TreeStylesProps = never;
 
-const expandedItemsGenerator = (items, acc = []) =>
+const expandedItemsGenerator = (items: TreeProps['items'] | TreeItemProps['items'], acc = []) =>
   _.reduce(
     items,
     (acc, item) => {
