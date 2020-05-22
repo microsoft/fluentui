@@ -3,21 +3,23 @@ import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecoratorTall } from '../utilities';
-import { Slider } from '@fluentui/react-next';
+import { Slider, ThemeProvider } from '@fluentui/react-next';
 
 // tslint:disable:jsx-ban-props
 storiesOf('Slider Next', module)
   .addDecorator(FabricDecoratorTall)
   .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps()
-        .snapshot('default', { cropTo: '.testWrapper' })
-        .hover('.ms-Slider-line')
-        .snapshot('hover', { cropTo: '.testWrapper' })
-        .end()}
-    >
-      {story()}
-    </Screener>
+    <ThemeProvider>
+      <Screener
+        steps={new Screener.Steps()
+          .snapshot('default', { cropTo: '.testWrapper' })
+          .hover('.ms-Slider-line')
+          .snapshot('hover', { cropTo: '.testWrapper' })
+          .end()}
+      >
+        {story()}
+      </Screener>
+    </ThemeProvider>
   ))
   .addStory(
     'Root',

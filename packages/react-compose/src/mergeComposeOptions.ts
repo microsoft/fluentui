@@ -13,13 +13,15 @@ export const defaultComposeOptions: ComposePreparedOptions = {
 
   handledProps: [] as never[],
   overrideStyles: false,
-  slots: {},
+  slots: { __self: () => null },
   mapPropsToSlotPropsChain: [],
 
-  // To be removedl
+  // To be removed, replaced with resolve
   resolveSlotProps: () => ({}),
 
   resolve: () => ({ state: {}, slots: {}, slotProps: {} }),
+
+  shorthandConfig: {},
 };
 
 // tslint:disable-next-line:no-any
@@ -59,6 +61,10 @@ export function mergeComposeOptions<TElementType extends React.ElementType<any> 
       ...inputOptions.slots,
     },
     mapPropsToSlotPropsChain,
+    shorthandConfig: {
+      ...parentOptions.shorthandConfig,
+      ...inputOptions.shorthandConfig,
+    },
   };
 
   // leave intact with no changes (remove later)

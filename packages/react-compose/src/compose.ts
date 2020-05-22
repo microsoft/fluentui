@@ -41,6 +41,13 @@ function compose<
     (props, ref) => {
       // tslint:disable-next-line:no-any
       return composeOptions.render(props, ref as any, (composeOptions as unknown) as ComposePreparedOptions);
+      // return composeOptions.render(props, (ref as unknown) as React.Ref<HTMLDivElement>, {
+      //   ...composeOptions,
+      //   slots: {
+      //     ...composeOptions.slots,
+      //     __self: Component,
+      //   },
+      // });
     },
   ) as unknown) as ComponentWithAs<TElementType, TProps & TParentProps>;
 

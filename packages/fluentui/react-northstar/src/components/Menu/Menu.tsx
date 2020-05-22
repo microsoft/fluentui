@@ -8,6 +8,7 @@ import {
   useStyles,
   useTelemetry,
   useUnhandledProps,
+  ShorthandConfig,
 } from '@fluentui/react-bindings';
 import { Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
@@ -17,7 +18,6 @@ import * as PropTypes from 'prop-types';
 import * as React from 'react';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
-
 import { ShorthandCollection, ShorthandValue, ComponentEventHandler, ProviderContextPrepared } from '../../types';
 import {
   childrenExist,
@@ -29,16 +29,18 @@ import {
   getKindProp,
   rtlTextContainer,
   ShorthandFactory,
-  ShorthandConfig,
 } from '../../utils';
 import MenuItem, { MenuItemProps } from './MenuItem';
-import MenuDivider from './MenuDivider';
+import MenuDivider, { MenuDividerProps } from './MenuDivider';
 import MenuItemIcon from './MenuItemIcon';
 import MenuItemContent from './MenuItemContent';
 import MenuItemIndicator, { MenuItemIndicatorProps } from './MenuItemIndicator';
 import MenuItemWrapper from './MenuItemWrapper';
 
-export type MenuShorthandKinds = 'divider' | 'item';
+export type MenuShorthandKinds = {
+  divider: MenuDividerProps;
+  item: MenuItemProps;
+};
 
 export interface MenuProps extends UIComponentProps, ChildrenComponentProps {
   /**
@@ -329,6 +331,9 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
       'submenu',
       'indicator',
     ],
+    shorthandConfig: {
+      mappedArrayProp: 'items',
+    },
   },
 ) as ComponentWithAs<'ul', MenuProps> & {
   create: ShorthandFactory<MenuProps>;
@@ -375,6 +380,5 @@ Menu.ItemIndicator = MenuItemIndicator;
 Menu.Divider = MenuDivider;
 
 Menu.create = createShorthandFactory({ Component: Menu, mappedArrayProp: 'items' });
-Menu.shorthandConfig = { mappedArrayProp: 'items' };
 
 export default Menu;

@@ -1,5 +1,12 @@
 import * as React from 'react';
 
+// tslint:disable-next-line:interface-name
+export interface ShorthandConfig<P> {
+  mappedProp?: keyof P;
+  mappedArrayProp?: keyof P;
+  allowsJSX?: boolean;
+}
+
 //
 // "as" type safety
 //
@@ -71,6 +78,8 @@ export type ComposeOptions<
   slots?: Record<string, React.ElementType>;
 
   mapPropsToSlotProps?: (props: TInputProps) => Record<string, object>;
+
+  shorthandConfig?: ShorthandConfig<TInputProps>;
 };
 
 export type ClassDictionary = {
@@ -98,7 +107,7 @@ export type ComposePreparedOptions<TElementType extends React.ElementType = 'div
   handledProps: (keyof TProps)[];
   overrideStyles: boolean;
 
-  slots: Record<string, React.ElementType>;
+  slots: Record<string, React.ElementType> & { __self: React.ElementType };
   mapPropsToSlotPropsChain: ((props: TProps) => Record<string, object>)[];
 
   // deprecate in favor of "resolve"
@@ -111,4 +120,6 @@ export type ComposePreparedOptions<TElementType extends React.ElementType = 'div
     slotProps: Record<string, object>;
     slots: Record<string, React.ElementType>;
   };
+
+  shorthandConfig: ShorthandConfig<TProps>;
 };

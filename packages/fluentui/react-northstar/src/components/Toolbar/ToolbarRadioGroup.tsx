@@ -29,11 +29,14 @@ import {
   WithAsProp,
   withSafeTypeForAs,
 } from '../../types';
-import ToolbarDivider from './ToolbarDivider';
+import ToolbarDivider, { ToolbarDividerProps } from './ToolbarDivider';
 import ToolbarItem, { ToolbarItemProps } from './ToolbarItem';
 import { ToolbarVariablesContext, ToolbarVariablesProvider } from './toolbarVariablesContext';
 
-export type ToolbarRadioGroupItemShorthandKinds = 'divider' | 'item';
+export type ToolbarRadioGroupItemShorthandKinds = {
+  divider: ToolbarDividerProps;
+  item: ToolbarItemProps;
+};
 
 export interface ToolbarRadioGroupProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
   /**

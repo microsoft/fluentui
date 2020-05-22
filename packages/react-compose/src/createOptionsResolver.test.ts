@@ -5,7 +5,16 @@ const nullRenderer = () => null;
 
 describe('createOptionsResolver', () => {
   const defaultResolve = createOptionsResolver(defaultComposeOptions);
-  const defaultSlots = { slots: { root: nullRenderer, foo: nullRenderer, bar: nullRenderer } };
+  const selfSlot = { __self: defaultComposeOptions.slots.__self };
+
+  const defaultSlots = {
+    slots: {
+      ...selfSlot,
+      root: nullRenderer,
+      foo: nullRenderer,
+      bar: nullRenderer,
+    },
+  };
   const defaultResolveWithSlots = createOptionsResolver({
     ...defaultComposeOptions,
     ...defaultSlots,
@@ -15,7 +24,7 @@ describe('createOptionsResolver', () => {
   it('can pass through default options', () => {
     expect(defaultResolve({})).toEqual({
       state: {},
-      slots: {},
+      slots: { ...selfSlot },
       slotProps: {},
     });
   });
@@ -26,6 +35,7 @@ describe('createOptionsResolver', () => {
     expect(defaultResolve(state)).toEqual({
       state,
       slots: {
+        ...selfSlot,
         root: 'button',
       },
       slotProps: {},
@@ -47,7 +57,7 @@ describe('createOptionsResolver', () => {
   it('can resolve classes and mix them onto the slot props', () => {
     expect(defaultResolveWithSlots({ className: 'cn' })).toEqual({
       state: { className: 'cn' },
-      slots: { root: nullRenderer, foo: nullRenderer, bar: nullRenderer },
+      slots: { ...selfSlot, root: nullRenderer, foo: nullRenderer, bar: nullRenderer },
       slotProps: {
         root: { className: 'root cn' },
         foo: { className: 'foo' },
@@ -68,7 +78,7 @@ describe('createOptionsResolver', () => {
 
     expect(resolve({})).toEqual({
       state: {},
-      slots: { root: nullRenderer, foo: nullRenderer, bar: nullRenderer },
+      slots: { ...selfSlot, root: nullRenderer, foo: nullRenderer, bar: nullRenderer },
       slotProps: {
         root: { className: 'root' },
         foo: { className: 'foo' },
@@ -83,13 +93,13 @@ describe('createOptionsResolver', () => {
 
     const resolve = createOptionsResolver({
       ...defaultComposeOptions,
-      slots: { root: nullRenderer, foo: nullRenderer, bar: nullRenderer },
+      ...defaultSlots,
       classes: [() => ({ root: 'root', foo: 'foo' }), {}, { bar: 'bar', baz: 'baz' }, state => (resultedState = state)],
     });
 
     expect(resolve(expectedState)).toEqual({
       state: {},
-      slots: { root: nullRenderer, foo: nullRenderer, bar: nullRenderer },
+      slots: { ...selfSlot, root: nullRenderer, foo: nullRenderer, bar: nullRenderer },
       slotProps: {
         root: { className: 'root' },
         foo: { className: 'foo' },
@@ -99,7 +109,7 @@ describe('createOptionsResolver', () => {
     expect(resultedState).toBe(expectedState);
   });
 
-  it('can resolve slot props', () => {
-    expect(defaultResolve);
-  });
+  // it('can resolve slot props', () => {
+  //   expect(defaultResolve);
+  // });
 });

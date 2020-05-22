@@ -51,7 +51,7 @@ const filterProps = (props: any): any => {
 
 export interface ComponentHookResult<TState, TSlots, TSlotProps> {
   state: TState;
-  slots: Required<TSlots> & { root: React.ElementType };
+  slots: Required<TSlots> & { root: React.ElementType; __self: React.ElementType };
   slotProps: Required<TSlotProps> & { root: TState };
 }
 

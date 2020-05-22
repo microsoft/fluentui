@@ -1,8 +1,17 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Fri, 15 May 2020 00:07:39 GMT and should not be manually modified.
+This log was last generated on Thu, 21 May 2020 12:34:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.2.21](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.2.21)
+
+Thu, 21 May 2020 12:34:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.2.14..@uifabric/charting_v2.2.21)
+
+### Patches
+
+- Line chart: Fix issue  If y-axis value has more digits it is getting truncated ([PR #13208](https://github.com/microsoft/fluentui/pull/13208) by v-satgar@microsoft.com)
 
 ## [2.2.14](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.2.14)
 

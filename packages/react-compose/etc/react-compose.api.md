@@ -29,72 +29,70 @@ export interface ComponentWithAs<E extends React.ElementType = 'div', P = {}> ex
     };
 }
 
-// @public
-export function compose<TElementType extends React.ElementType<TProps>, TProps = {}, TInputStylesProps = {}, TParentProps = {}, TParentStylesProps = {}, TState = TProps>(input: Input<TElementType, TProps>, inputOptions?: ComposeOptions<TProps, TInputStylesProps, TParentStylesProps>): ComponentWithAs<TElementType, TProps & TParentProps>;
+// @public (undocumented)
+export function compose<ElementType extends React.ElementType, InputProps, InputStylesProps, ParentProps, ParentStylesProps>(input: Input<ElementType, InputProps>, inputOptions?: ComposeOptions<InputProps, InputStylesProps, ParentStylesProps>): ComponentWithAs<ElementType, InputProps & ParentProps>;
 
 // @public (undocumented)
-export type ComposedComponent<TElementType extends React.ElementType<any> = 'div', TProps = {}, TState = TProps> = React.FunctionComponent<TProps> & {
-    fluentComposeConfig: ComposePreparedOptions<TElementType, TProps, TState>;
+export type ComposedComponent<P = {}> = React.FunctionComponent<P> & {
+    fluentComposeConfig: ComposePreparedOptions;
 };
 
 // @public (undocumented)
-export type ComposeOptions<TInputProps = {}, TInputStylesProps = {}, TParentStylesProps = {}, TInputState = TInputProps> = {
+export type ComposeOptions<InputProps = {}, InputStylesProps = {}, ParentStylesProps = {}> = {
     className?: string;
-    classes?: ClassDictionary | ((state: TInputState) => ClassDictionary);
+    classes?: ClassDictionary;
     displayName?: string;
-    defaultProps?: TInputProps;
-    mapPropsToStylesProps?: (props: TParentStylesProps & TInputProps) => TInputStylesProps;
-    handledProps?: (keyof TInputProps | 'as')[];
+    mapPropsToStylesProps?: (props: ParentStylesProps & InputProps) => InputStylesProps;
+    handledProps?: (keyof InputProps | 'as')[];
     overrideStyles?: boolean;
     slots?: Record<string, React.ElementType>;
-    mapPropsToSlotProps?: (props: TInputProps) => Record<string, object>;
+    mapPropsToSlotProps?: (props: InputProps) => Record<string, object>;
+    shorthandConfig?: ShorthandConfig<InputProps>;
 };
 
 // @public (undocumented)
-export type ComposePreparedOptions<TElementType extends React.ElementType = 'div', TProps = {}, TState = TProps> = {
+export type ComposePreparedOptions<Props = {}> = {
     className: string;
-    classes: (undefined | ClassDictionary | ((state: TState) => ClassDictionary))[];
+    classes: ClassDictionary;
     displayName: string;
     displayNames: string[];
     mapPropsToStylesPropsChain: ((props: object) => object)[];
-    render: ComposeRenderFunction<TElementType, TProps>;
-    handledProps: (keyof TProps)[];
+    render: ComposeRenderFunction;
+    handledProps: (keyof Props)[];
     overrideStyles: boolean;
-    slots: Record<string, React.ElementType>;
-    mapPropsToSlotPropsChain: ((props: TProps) => Record<string, object>)[];
-    resolveSlotProps: <P>(props: P) => Record<string, object>;
-    resolve: (state: TState) => {
-        state: TState;
-        slotProps: Record<string, object>;
-        slots: Record<string, React.ElementType>;
+    slots: Record<string, React.ElementType> & {
+        __self: React.ElementType;
     };
+    mapPropsToSlotPropsChain: ((props: Props) => Record<string, object>)[];
+    resolveSlotProps: <P>(props: P) => Record<string, object>;
+    shorthandConfig: ShorthandConfig<Props>;
 };
 
 // @public (undocumented)
-export type ComposeRenderFunction<TElementType extends React.ElementType = 'div', TProps = {}> = (props: TProps, ref: React.Ref<TElementType extends keyof HTMLElementTagNameMap ? HTMLElementTagNameMap[TElementType] : TElementType>, composeOptions: ComposePreparedOptions) => React.ReactElement | null;
-
-// @public
-export const createClassResolver: (classes: ClassDictionary, slots: {
-    [key: string]: any;
-}) => (state: Dictionary) => Record<string, any>;
+export type ComposeRenderFunction<T extends React.ElementType = 'div', P = {}> = (props: P, ref: React.Ref<T extends keyof HTMLElementTagNameMap ? HTMLElementTagNameMap[T] : T>, composeOptions: ComposePreparedOptions) => React.ReactElement | null;
 
 // @public (undocumented)
-export type Dictionary = {
-    [key: string]: any;
-};
-
-// @public (undocumented)
-export type Input<TElementType extends React.ElementType = 'div', TProps = {}> = InputComposeComponent<TProps> | ComposeRenderFunction<TElementType, TProps & {
+export type Input<T extends React.ElementType = 'div', P = {}> = InputComposeComponent<P> | ComposeRenderFunction<T, P & {
     as?: React.ElementType;
 }>;
 
 // @public (undocumented)
-export type InputComposeComponent<TProps = {}> = React.FunctionComponent<TProps> & {
+export type InputComposeComponent<P = {}> = React.FunctionComponent<P> & {
     fluentComposeConfig?: ComposePreparedOptions;
 };
 
 // @public (undocumented)
 export type PropsOfElement<E extends keyof JSX.IntrinsicElements | React.JSXElementConstructor<any>> = JSX.LibraryManagedAttributes<E, React.ComponentPropsWithRef<E>>;
+
+// @public (undocumented)
+export interface ShorthandConfig<P> {
+    // (undocumented)
+    allowsJSX?: boolean;
+    // (undocumented)
+    mappedArrayProp?: keyof P;
+    // (undocumented)
+    mappedProp?: keyof P;
+}
 
 
 // (No @packageDocumentation comment for this package)

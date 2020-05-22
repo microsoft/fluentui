@@ -117,7 +117,8 @@ function resolveClasses(
 
   for (const classFunctionOrObject of classes) {
     const classObj: ClassDictionary | undefined =
-      typeof classFunctionOrObject === 'function' ? classFunctionOrObject(state, slots) : classFunctionOrObject;
+      // tslint:disable-next-line:no-any
+      typeof classFunctionOrObject === 'function' ? classFunctionOrObject(state, slots as any) : classFunctionOrObject;
 
     for (const key in classObj) {
       if (classObj.hasOwnProperty(key)) {

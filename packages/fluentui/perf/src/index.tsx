@@ -1,6 +1,6 @@
 import '@babel/polyfill';
 
-import { Provider, Telemetry, themes } from '@fluentui/react-northstar';
+import { Provider, Telemetry, teamsTheme } from '@fluentui/react-northstar';
 import * as _ from 'lodash';
 import * as minimatch from 'minimatch';
 import * as React from 'react';
@@ -35,7 +35,7 @@ const renderCycle = async (
   const telemetryRef: React.Ref<Telemetry> = React.createRef();
 
   await asyncRender(
-    <Provider theme={themes.teams} telemetryRef={telemetryRef}>
+    <Provider theme={teamsTheme} telemetryRef={telemetryRef}>
       <Profiler
         id={exampleName}
         onRender={(id: string, phase: string, actualTime: number, startTime: number, commitTime: number) => {
@@ -105,7 +105,7 @@ const Control: React.FunctionComponent = () => {
     // Heads up! On first run, this Provider increases measured time due to style DOM elements being
     // rendered to the browser. Subsequent rerenders, in contrast, are not rendering these style DOM
     // elements again.
-    <Provider theme={themes.teams}>
+    <Provider theme={teamsTheme}>
       <label htmlFor="filter">
         Filter (use <code>minimatch</code>):
       </label>
