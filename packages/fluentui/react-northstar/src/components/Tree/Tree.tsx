@@ -332,7 +332,7 @@ const Tree: React.FC<WithAsProp<TreeProps>> &
 
       setActiveItemIds(e, nextActiveItemsIds);
     },
-    [stableProps, setActiveItemIds],
+    [stableProps, setActiveItemIds, activeItemIds.length],
   );
 
   const onTitleClick = React.useCallback(
@@ -351,7 +351,7 @@ const Tree: React.FC<WithAsProp<TreeProps>> &
         expandItems(e, treeItemProps);
       }
     },
-    [expandItems, processItemsForSelection],
+    [hasSubtree, expandItems, processItemsForSelection],
   );
 
   const onFocusFirstChild = React.useCallback(
