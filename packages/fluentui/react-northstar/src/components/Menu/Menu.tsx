@@ -110,11 +110,9 @@ export interface MenuProps extends UIComponentProps, ChildrenComponentProps {
 
 export const menuClassName = 'ui-menu';
 
-export type MenuStylesProps = Required<
-  Pick<
-    MenuProps,
-    'iconOnly' | 'fluid' | 'pointing' | 'pills' | 'primary' | 'underlined' | 'vertical' | 'submenu' | 'secondary'
-  >
+export type MenuStylesProps = Pick<
+  MenuProps,
+  'iconOnly' | 'fluid' | 'pointing' | 'pills' | 'primary' | 'underlined' | 'vertical' | 'submenu' | 'secondary'
 >;
 
 /**
@@ -281,7 +279,7 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
       pills,
       inSubmenu: props.submenu,
       accessibility: accessibility && accessibility(props).childBehaviors,
-      __parentComponent: composeOptions.slots.__self,
+      menuSlot: composeOptions.slots.__self,
     };
 
     const element = getA11yProps.unstable_wrapWithFocusZone(

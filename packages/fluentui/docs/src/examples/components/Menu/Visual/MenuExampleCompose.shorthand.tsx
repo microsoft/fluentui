@@ -11,6 +11,8 @@ import {
   MenuItemWrapper,
   BookmarkIcon,
   MenuStylesProps,
+  MenuItemProps,
+  MenuItemStylesProps,
 } from '@fluentui/react-northstar';
 
 const MenuItemWrapperDashed = compose(MenuItemWrapper, {
@@ -29,21 +31,55 @@ const MenuitemIndicatorSaturated = compose(MenuItemIndicator, {
   displayName: 'MenuitemIndicatorSaturated',
 });
 
-const MenuItemBlue = compose(MenuItem, {
-  displayName: 'MenuItemBlue',
-  slots: {
-    icon: MenuItemIconGreen,
-    content: MenuItemContentPurple,
-    indicator: MenuitemIndicatorSaturated,
-    wrapper: MenuItemWrapperDashed,
-  },
-});
+interface MenuItemBlueOwnProps {
+  level?: number;
+}
 
-const MenuCoral = compose<'ul', MenuProps, MenuStylesProps, MenuProps, MenuStylesProps>(Menu, {
-  displayName: 'MenuCoral',
+interface MenuItemBlueProps extends MenuItemProps, MenuItemBlueOwnProps {}
+
+const MenuItemBlue = compose<'a', MenuItemBlueProps, MenuItemStylesProps, MenuItemProps, MenuItemStylesProps>(
+  MenuItem,
+  {
+    displayName: 'MenuItemBlue',
+    slots: {
+      icon: MenuItemIconGreen,
+      content: MenuItemContentPurple,
+      indicator: MenuitemIndicatorSaturated,
+      wrapper: MenuItemWrapperDashed,
+    },
+    mapPropsToSlotProps: (props: MenuItemProps & { level?: number }) => ({
+      menu: {
+        level: props.level + 1,
+      },
+    }),
+  },
+);
+
+interface MenuColorfulOwnProps {
+  level?: number;
+}
+
+interface MenuColorfulProps extends MenuColorfulOwnProps, MenuProps {}
+
+interface MenuColorfulOwnStylesProps {
+  level?: number;
+}
+
+interface MenuColorfulStylesProps extends MenuColorfulOwnStylesProps, MenuStylesProps {}
+
+const MenuColorful = compose<'ul', MenuColorfulProps, MenuColorfulStylesProps, MenuProps, MenuStylesProps>(Menu, {
+  displayName: 'MenuColorful',
   slots: {
     item: MenuItemBlue,
   },
+  mapPropsToStylesProps: props => ({
+    level: props.level,
+  }),
+  mapPropsToSlotProps: props => ({
+    item: {
+      level: props.level || 0,
+    },
+  }),
 });
 
 const items = [
@@ -51,7 +87,7 @@ const items = [
     key: 'editorials',
     content: 'Editorials',
     icon: <BookmarkIcon />,
-    menuOpen: true,
+    defaultMenuOpen: true,
     menu: [
       {
         key: 'One',
@@ -95,17 +131,23 @@ const themeOverrides = {
         border: '1px dashed lightgreen',
       },
     },
-    MenuCoral: {
-      root: {
+    MenuColorful: {
+      root: ({ props }) => ({
         backgroundColor: 'coral',
-      },
+        ...(props.level === 1 && {
+          backgroundColor: 'teal',
+        }),
+        ...(props.level === 2 && {
+          backgroundColor: 'pink',
+        }),
+      }),
     },
   },
 };
 
 const MenuExampleCompose = () => (
   <Provider theme={themeOverrides}>
-    <MenuCoral defaultActiveIndex={0} items={items} />
+    <MenuColorful defaultActiveIndex={0} items={items} />
   </Provider>
 );
 

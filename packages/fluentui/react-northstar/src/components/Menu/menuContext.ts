@@ -16,7 +16,7 @@ export type MenuContextValue = {
   inSubmenu: boolean;
   onItemClick?: (e: React.KeyboardEvent | React.MouseEvent, itemIndex: number) => void;
   accessibility: { [childBehaviorSlot: string]: Accessibility<any> };
-  __parentComponent: React.ElementType;
+  menuSlot: React.ElementType;
 };
 
 export type MenuContextSubscribedValue = Partial<
@@ -34,7 +34,7 @@ export type MenuContextSubscribedValue = Partial<
     | 'pills'
     | 'secondary'
     | 'accessibility'
-    | '__parentComponent'
+    | 'menuSlot'
   > & {
     active?: boolean;
   }
@@ -53,7 +53,7 @@ export const MenuContext = createContext<MenuContextValue>(
     pills: false,
     inSubmenu: false,
     accessibility: {},
-    __parentComponent: null,
+    menuSlot: null,
   },
   { strict: false },
 );

@@ -196,7 +196,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
         pills: v => v.pills,
         secondary: v => v.secondary,
         accessibility: v => v.accessibility,
-        __parentComponent: v => v.__parentComponent,
+        menuSlot: v => v.menuSlot,
       }) || {};
 
     const {
@@ -464,8 +464,9 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
               targetRef={itemRef}
               {...getPopperPropsFromShorthand(menu)}
             >
-              {createShorthand(parentProps.__parentComponent || Menu, menu, {
+              {createShorthand(parentProps.menuSlot || composeOptions.slots.menu || Menu, menu, {
                 defaultProps: () => ({
+                  ...slotProps.menu,
                   accessibility: submenuBehavior,
                   className: menuItemSlotClassNames.submenu,
                   vertical: true,
