@@ -12,7 +12,7 @@ export const ChatMessageHeaderClassName = `ui-chat__message__header`;
  * A ChatMessageHeader provides a title for the Attachment.
  */
 const ChatMessageHeader = compose<
-  'span',
+  'div',
   ChatMessageHeaderOwnProps,
   ChatMessageHeaderStylesProps,
   BoxProps,
