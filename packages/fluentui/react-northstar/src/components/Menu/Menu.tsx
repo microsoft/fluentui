@@ -160,7 +160,6 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
       design,
       secondary,
       accessibility,
-      onItemClick,
     } = props;
 
     const ElementType = getElementType(props);
