@@ -11,6 +11,22 @@ export const removeItemAtIndex = (items: any[], itemIndex: number): any[] => {
   return [...items.slice(0, itemIndex), ...items.slice(itemIndex + 1)];
 };
 
+export const getAllSelectableChildrenId = (items: TreeItemProps[]): string[] => {
+  return items.reduce<string[]>((acc, item) => {
+    if (item.items) {
+      return [...acc, ...getAllSelectableChildrenId(item.items as TreeItemProps[])];
+    }
+
+    return item.hasOwnProperty('selectable') && !item.selectable ? acc : [...acc, item.id];
+  }, []);
+};
+
+export const isAllGroupChecked = (items: TreeItemProps[], selectedItemIds: string[]) => {
+  const selectableItemIds = getAllSelectableChildrenId(items);
+
+  return selectableItemIds.every(id => selectedItemIds.indexOf(id) > -1);
+};
+
 /**
  * Looks for the item inside the nested items array and returns its siblings.
  * @param {any[]} items The nested items array.

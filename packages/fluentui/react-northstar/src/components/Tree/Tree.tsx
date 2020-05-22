@@ -33,7 +33,15 @@ import {
   FluentComponentStaticProps,
   ProviderContextPrepared,
 } from '../../types';
-import { hasSubtree, removeItemAtIndex, getSiblings, TreeContext, TreeRenderContextValue } from './utils';
+import {
+  getAllSelectableChildrenId,
+  isAllGroupChecked,
+  hasSubtree,
+  removeItemAtIndex,
+  getSiblings,
+  TreeContext,
+  TreeRenderContextValue,
+} from './utils';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 
@@ -108,7 +116,17 @@ export const treeClassName = 'ui-tree';
 
 export type TreeStylesProps = never;
 
-const expandedItemsGenerator = (items, acc = []) =>
+function useStableProps<P>(props: P) {
+  const stableProps = React.useRef<P>(props);
+
+  React.useEffect(() => {
+    stableProps.current = props;
+  });
+
+  return stableProps;
+}
+
+const expandedItemsGenerator = (items: TreeProps['items'] | TreeItemProps['items'], acc = []) =>
   _.reduce(
     items,
     (acc, item) => {
@@ -125,13 +143,14 @@ const expandedItemsGenerator = (items, acc = []) =>
     acc,
   );
 
-const iterateItems = (items, acc = []) =>
-  _.reduce(
+const iterateItems = (items: TreeProps['items'] | TreeItemProps['items'], acc = []): string[] =>
+  _.reduce<TreeProps['items'] | TreeItemProps['items'], string[]>(
     items,
     (acc, item) => {
       if (item['selected'] && acc.indexOf(item['id']) === -1) {
         acc.push(item['id']);
       }
+
       if (item['items']) {
         return iterateItems(item['items']);
       }
@@ -162,23 +181,24 @@ const Tree: React.FC<WithAsProp<TreeProps>> &
     styles,
     variables,
   } = props;
+  const stableProps = useStableProps(props);
 
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Tree.handledProps, props);
 
-  const [activeItemIds, setActiveItemIdsState] = useAutoControlled({
+  const [activeItemIds, setActiveItemIdsState] = useAutoControlled<string[]>({
     defaultValue: props.defaultActiveItemIds,
     value: props.activeItemIds,
     initialValue: expandedItemsGenerator(items),
   });
 
-  const [selectedItemIds, setSelectedItemIdsState] = useAutoControlled({
+  const [selectedItemIds, setSelectedItemIdsState] = useAutoControlled<string[]>({
     defaultValue: props.defaultSelectedItemIds,
     value: props.selectedItemIds,
     initialValue: iterateItems(items),
   });
 
-  const getA11yProps = useAccessibility<TreeBehaviorProps>(props.accessibility, {
+  const getA11yProps = useAccessibility(props.accessibility, {
     debugName: Tree.displayName,
     rtl: context.rtl,
   });
@@ -195,11 +215,11 @@ const Tree: React.FC<WithAsProp<TreeProps>> &
   });
 
   const treeRef = React.useRef<HTMLElement>();
-  const itemsRef = new Map<string, React.RefObject<HTMLElement>>();
+  const itemsRef = React.useRef(new Map<string, React.RefObject<HTMLElement>>());
 
   const onFocusParent = React.useCallback(
     (parent: string) => {
-      const parentRef = itemsRef.get(parent);
+      const parentRef = itemsRef.current.get(parent);
 
       if (!parentRef || !parentRef.current) {
         return;
@@ -210,102 +230,110 @@ const Tree: React.FC<WithAsProp<TreeProps>> &
     [itemsRef],
   );
 
-  const setSelectedItemIds = (e: React.SyntheticEvent, selectedItemIds: string[]) => {
-    _.invoke(props, 'onSelectedItemIdsChange', e, { ...props, selectedItemIds });
+  const setSelectedItemIds = React.useCallback(
+    (e: React.SyntheticEvent, selectedItemIds: string[]) => {
+      _.invoke(stableProps.current, 'onSelectedItemIdsChange', e, { ...stableProps.current, selectedItemIds });
 
-    setSelectedItemIdsState(selectedItemIds);
-  };
+      setSelectedItemIdsState(selectedItemIds);
+    },
+    [stableProps, setSelectedItemIdsState],
+  );
 
-  const setActiveItemIds = (e: React.SyntheticEvent, activeItemIds: string[]) => {
-    _.invoke(props, 'onActiveItemIdsChange', e, { ...props, activeItemIds });
+  const setActiveItemIds = React.useCallback(
+    (e: React.SyntheticEvent, activeItemIds: string[]) => {
+      _.invoke(stableProps.current, 'onActiveItemIdsChange', e, { ...stableProps.current, activeItemIds });
 
-    setActiveItemIdsState(activeItemIds);
-  };
+      setActiveItemIdsState(activeItemIds);
+    },
+    [stableProps, setActiveItemIdsState],
+  );
 
-  const processItemsForSelection = (
-    e: React.SyntheticEvent,
-    treeItemProps: TreeItemProps,
-    executeSelection: boolean,
-  ) => {
-    const { id, selectableParent, items, expanded } = treeItemProps;
-    const treeItemHasSubtree = hasSubtree(treeItemProps);
-    const isExpandedSelectableParent = treeItemHasSubtree && selectableParent && expanded;
-    let nextSelectedItemIds = selectedItemIds;
+  const processItemsForSelection = React.useCallback(
+    (e: React.SyntheticEvent, treeItemProps: TreeItemProps, executeSelection: boolean) => {
+      const treeItemHasSubtree = hasSubtree(treeItemProps);
+      const isExpandedSelectableParent = treeItemHasSubtree && treeItemProps.selectableParent && treeItemProps.expanded;
 
-    // parent must be selectable and expanded in order to procced with selection, otherwise return
-    if (treeItemHasSubtree && !(selectableParent && expanded)) {
-      return;
-    }
+      let nextSelectedItemIds = selectedItemIds;
 
-    // if the target is equal to currentTarget it means treeItem should be collapsed, not procced with selection
-    if (treeItemHasSubtree && e.target === e.currentTarget && !executeSelection) {
-      return;
-    }
+      // parent must be selectable and expanded in order to procced with selection, otherwise return
+      if (treeItemHasSubtree && !(treeItemProps.selectableParent && treeItemProps.expanded)) {
+        return;
+      }
 
-    // push all tree items under particular parent into selection array
-    // not parent itself, therefore not procced with selection
+      // if the target is equal to currentTarget it means treeItem should be collapsed, not procced with selection
+      if (treeItemHasSubtree && e.target === e.currentTarget && !executeSelection) {
+        return;
+      }
 
-    if (isExpandedSelectableParent) {
-      if (isAllGroupChecked(items)) {
-        const selectedItems = getAllSelectableChildrenId(items);
-        nextSelectedItemIds = selectedItemIds.filter(id => selectedItems.indexOf(id) === -1);
-      } else {
-        const selectItems = items => {
-          items.forEach(item => {
-            const selectble = item.hasOwnProperty('selectable') ? item.selectable : treeItemProps.selectable;
-            if (selectedItemIds.indexOf(item.id) === -1) {
-              if (item.items) {
-                selectItems(item.items);
-              } else if (selectble) {
-                nextSelectedItemIds.push(item.id);
+      // push all tree items under particular parent into selection array
+      // not parent itself, therefore not procced with selection
+
+      if (isExpandedSelectableParent) {
+        if (isAllGroupChecked(treeItemProps.items as TreeItemProps[], selectedItemIds)) {
+          const selectedItems = getAllSelectableChildrenId(treeItemProps.items as TreeItemProps[]);
+          nextSelectedItemIds = selectedItemIds.filter(id => selectedItems.indexOf(id) === -1);
+        } else {
+          const selectItems = items => {
+            items.forEach(item => {
+              const selectble = item.hasOwnProperty('selectable') ? item.selectable : treeItemProps.selectable;
+              if (selectedItemIds.indexOf(item.id) === -1) {
+                if (item.items) {
+                  selectItems(item.items);
+                } else if (selectble) {
+                  nextSelectedItemIds.push(item.id);
+                }
               }
+            });
+          };
+          selectItems(treeItemProps.items);
+        }
+
+        setSelectedItemIds(e, [...nextSelectedItemIds]);
+        return;
+      }
+
+      // push/remove single tree item into selection array
+      if (selectedItemIds.indexOf(treeItemProps.id) === -1) {
+        nextSelectedItemIds = [...selectedItemIds, treeItemProps.id];
+      } else {
+        nextSelectedItemIds = nextSelectedItemIds.filter(itemID => itemID !== treeItemProps.id);
+      }
+
+      setSelectedItemIds(e, nextSelectedItemIds);
+    },
+    [setSelectedItemIds],
+  );
+
+  const expandItems = React.useCallback(
+    (e: React.SyntheticEvent, treeItemProps: TreeItemProps) => {
+      const { id } = treeItemProps;
+      const siblings = getSiblings(stableProps.current.items, id);
+
+      const activeItemIdIndex = activeItemIds.indexOf(id);
+      let nextActiveItemsIds = activeItemIds;
+
+      if (activeItemIdIndex > -1) {
+        nextActiveItemsIds = removeItemAtIndex(activeItemIds, activeItemIdIndex);
+      } else {
+        if (exclusive) {
+          siblings.some(sibling => {
+            const activeSiblingIdIndex = activeItemIds.indexOf(sibling['id']);
+            if (activeSiblingIdIndex > -1) {
+              nextActiveItemsIds = removeItemAtIndex(activeItemIds, activeSiblingIdIndex);
+
+              return true;
             }
+            return false;
           });
-        };
-        selectItems(items);
-      }
-      setSelectedItemIds(e, [...nextSelectedItemIds]);
-      return;
-    }
+        }
 
-    // push/remove single tree item into selection array
-    if (selectedItemIds.indexOf(id) === -1) {
-      nextSelectedItemIds = [...selectedItemIds, id];
-    } else {
-      nextSelectedItemIds = nextSelectedItemIds.filter(itemID => itemID !== id);
-    }
-
-    setSelectedItemIds(e, nextSelectedItemIds);
-  };
-
-  const expandItems = (e: React.SyntheticEvent, treeItemProps: TreeItemProps) => {
-    const { id } = treeItemProps;
-
-    const siblings = getSiblings(items, id);
-
-    const activeItemIdIndex = activeItemIds.indexOf(id);
-    let nextActiveItemsIds = activeItemIds;
-
-    if (activeItemIdIndex > -1) {
-      nextActiveItemsIds = removeItemAtIndex(activeItemIds, activeItemIdIndex);
-    } else {
-      if (exclusive) {
-        siblings.some(sibling => {
-          const activeSiblingIdIndex = activeItemIds.indexOf(sibling['id']);
-          if (activeSiblingIdIndex > -1) {
-            nextActiveItemsIds = removeItemAtIndex(activeItemIds, activeSiblingIdIndex);
-
-            return true;
-          }
-          return false;
-        });
+        nextActiveItemsIds = [...nextActiveItemsIds, id];
       }
 
-      nextActiveItemsIds = [...nextActiveItemsIds, id];
-    }
-
-    setActiveItemIds(e, nextActiveItemsIds);
-  };
+      setActiveItemIds(e, nextActiveItemsIds);
+    },
+    [stableProps, setActiveItemIds],
+  );
 
   const onTitleClick = React.useCallback(
     (e: React.SyntheticEvent, treeItemProps: TreeItemProps, executeSelection: boolean = false) => {
@@ -323,12 +351,12 @@ const Tree: React.FC<WithAsProp<TreeProps>> &
         expandItems(e, treeItemProps);
       }
     },
-    [hasSubtree, expandItems, processItemsForSelection],
+    [expandItems, processItemsForSelection],
   );
 
   const onFocusFirstChild = React.useCallback(
     (itemId: string) => {
-      const currentElement = itemsRef.get(itemId);
+      const currentElement = itemsRef.current.get(itemId);
 
       if (!currentElement || !currentElement.current) {
         return;
@@ -352,8 +380,7 @@ const Tree: React.FC<WithAsProp<TreeProps>> &
       }
 
       const { id } = treeItemProps;
-
-      const siblings = getSiblings(items, id);
+      const siblings = getSiblings(stableProps.current.items, id);
 
       const nextActiveItemsIds = [...activeItemIds];
 
@@ -369,38 +396,25 @@ const Tree: React.FC<WithAsProp<TreeProps>> &
 
       setActiveItemIds(e, nextActiveItemsIds);
     },
-    [items, setActiveItemIds],
+    [stableProps, setActiveItemIds],
   );
-
-  const getAllSelectableChildrenId = items => {
-    return items.reduce((acc, item) => {
-      if (item.items) {
-        return [...acc, ...getAllSelectableChildrenId(item.items)];
-      }
-      return item.hasOwnProperty('selectable') && !item.selectable ? acc : [...acc, item.id];
-    }, []);
-  };
 
   const isIndeterminate = (item: TreeItemProps) => {
     if (!item.selectableParent || !item.items) {
       return false;
     }
 
-    const { items } = item;
+    const selectableItemIds = getAllSelectableChildrenId(item.items as TreeItemProps[]);
 
-    const selectableItemIds = getAllSelectableChildrenId(items);
-
-    return !isAllGroupChecked(items) && selectableItemIds.some(id => selectedItemIds.indexOf(id) > -1);
-  };
-
-  const isAllGroupChecked = (items: ShorthandCollection<TreeItemProps, never>) => {
-    const selectableItemIds = getAllSelectableChildrenId(items);
-    return selectableItemIds.every(id => selectedItemIds.indexOf(id) > -1);
+    return (
+      !isAllGroupChecked(item.items as TreeItemProps[], selectedItemIds) &&
+      selectableItemIds.some(id => selectedItemIds.indexOf(id) > -1)
+    );
   };
 
   const isSelectedItem = (item: TreeItemProps): boolean => {
     if (item.selectableParent && item.items) {
-      return isAllGroupChecked(item.items);
+      return isAllGroupChecked(item.items as TreeItemProps[], selectedItemIds);
     }
 
     return selectedItemIds && selectedItemIds.indexOf(item.id) > -1;
@@ -427,8 +441,8 @@ const Tree: React.FC<WithAsProp<TreeProps>> &
 
         const indeterminate = isIndeterminate(item);
 
-        if (!itemsRef.has(id)) {
-          itemsRef.set(id, React.createRef<HTMLElement>());
+        if (!itemsRef.current.has(id)) {
+          itemsRef.current.set(id, React.createRef<HTMLElement>());
         }
 
         const renderedItem = TreeItem.create(item, {
@@ -443,7 +457,7 @@ const Tree: React.FC<WithAsProp<TreeProps>> &
               parent,
               level,
               index: index + 1, // Used for aria-posinset and it's 1-based.
-              contentRef: itemsRef.get(id),
+              contentRef: itemsRef.current.get(id),
               treeSize: items.length,
               indeterminate,
               onSiblingsExpand,
