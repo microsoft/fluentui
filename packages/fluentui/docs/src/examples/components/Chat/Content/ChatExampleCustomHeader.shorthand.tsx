@@ -2,15 +2,15 @@ import {
   Avatar,
   Chat,
   ChatItemProps,
-  ReactionProps,
   ShorthandCollection,
   Text,
   ReactionGroup,
+  ReactionGroupProps,
 } from '@fluentui/react-northstar';
 import * as React from 'react';
 import { EmojiIcon, LikeIcon } from '@fluentui/react-icons-northstar';
 
-const reactions: ReactionGroup['items'] = [
+const reactions: ReactionGroupProps['items'] = [
   { key: 'up', icon: <LikeIcon />, content: '1K' },
   { key: 'smile', icon: <EmojiIcon />, content: 5 },
 ];
