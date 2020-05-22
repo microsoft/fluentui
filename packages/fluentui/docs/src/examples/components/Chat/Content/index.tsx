@@ -18,7 +18,7 @@ const Content = () => (
     <ComponentExample
       title="Header"
       description="A chat message can have a custom header."
-      examplePath="components/Chat/Content/ChatExampleCustomHeader"
+      examplePath="components/Chat/Content/ChatExampleHeader"
     />
   </ExampleSection>
 );

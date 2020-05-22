@@ -75,6 +75,6 @@ const items: ShorthandCollection<ChatItemProps> = [
   },
 ];
 
-const ChatExampleCustomHeader = () => <Chat items={items} />;
+const ChatExampleHeader = () => <Chat items={items} />;
 
-export default ChatExampleCustomHeader;
+export default ChatExampleHeader;
