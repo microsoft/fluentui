@@ -70,7 +70,9 @@ const MenuDivider = compose<'li', MenuDividerProps, MenuDividerStylesProps, {}, 
       inSubmenu: v => v.inSubmenu,
       pills: v => v.pills,
       secondary: v => v.secondary,
-      accessibility: v => v.accessibility,
+      accessibilityBehaviorForDivider: v => v.accessibilityBehaviorForDivider,
+      // @TODO: remove it when fix type for useContextSelectors
+      accessibilityBehaviorForItem: v => null,
     });
 
     const {
@@ -88,7 +90,9 @@ const MenuDivider = compose<'li', MenuDividerProps, MenuDividerStylesProps, {}, 
       variables,
     } = props;
 
-    const getA11yProps = useAccessibility(props.accessibility, {
+    const accessibility = parentProps.accessibilityBehaviorForDivider || props.accessibility;
+
+    const getA11yProps = useAccessibility(accessibility, {
       debugName: composeOptions.displayName,
       rtl: context.rtl,
     });

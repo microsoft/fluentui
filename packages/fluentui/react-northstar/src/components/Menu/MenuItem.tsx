@@ -194,7 +194,9 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
       inSubmenu: v => v.inSubmenu,
       pills: v => v.pills,
       secondary: v => v.secondary,
-      accessibility: v => v.accessibility,
+      accessibilityBehaviorForItem: v => v.accessibilityBehaviorForItem,
+      // @TODO: remove it when fix type for useContextSelectors
+      accessibilityBehaviorForDivider: v => null,
     });
 
     const {
@@ -218,8 +220,9 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
       design,
       styles,
       variables,
-      accessibility = parentProps.accessibility.item,
     } = props;
+
+    const accessibility = parentProps.accessibilityBehaviorForItem || props.accessibility;
 
     const [menuOpen, setMenuOpen] = useAutoControlled({
       defaultValue: props.defaultMenuOpen,

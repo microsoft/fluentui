@@ -268,6 +268,8 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
       });
     };
 
+    const childBehaviors = accessibility && accessibility(props).childBehaviors;
+
     const childProps: MenuContextValue = {
       activeIndex: +activeIndex,
       onItemClick: handleClick,
@@ -280,7 +282,9 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
       secondary,
       pills,
       inSubmenu: props.submenu,
-      accessibility: accessibility(props).childBehaviors,
+      // @TODO: please rework me
+      accessibilityBehaviorForItem: childBehaviors?.item,
+      accessibilityBehaviorForDivider: childBehaviors?.divider,
     };
 
     const element = getA11yProps.unstable_wrapWithFocusZone(

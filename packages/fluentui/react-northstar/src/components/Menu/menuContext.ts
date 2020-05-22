@@ -15,7 +15,8 @@ export type MenuContextValue = {
   pills: boolean;
   inSubmenu: boolean;
   onItemClick?: (e: React.KeyboardEvent | React.MouseEvent, itemIndex: number) => void;
-  accessibility: { [childBehaviorSlot: string]: Accessibility<any> };
+  accessibilityBehaviorForItem: Accessibility;
+  accessibilityBehaviorForDivider: Accessibility;
 };
 
 export type MenuContextSubscribedValue = Pick<
@@ -31,7 +32,8 @@ export type MenuContextSubscribedValue = Pick<
   | 'inSubmenu'
   | 'pills'
   | 'secondary'
-  | 'accessibility'
+  | 'accessibilityBehaviorForItem'
+  | 'accessibilityBehaviorForDivider'
 > & {
   active: boolean;
 };
@@ -48,7 +50,8 @@ export const MenuContext = createContext<MenuContextValue>(
     secondary: false,
     pills: false,
     inSubmenu: false,
-    accessibility: {},
+    accessibilityBehaviorForItem: undefined,
+    accessibilityBehaviorForDivider: undefined,
   },
   { strict: false },
 );
