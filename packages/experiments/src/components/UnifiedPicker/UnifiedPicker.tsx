@@ -181,6 +181,14 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     }
     showPicker(false);
   };
+  const _onFloatingSuggestionRemoved = (ev: any, item: IFloatingSuggestionItemProps<T>) => {
+    if (props.floatingSuggestionProps.onRemoveSuggestion) {
+      props.floatingSuggestionProps.onRemoveSuggestion(ev, item);
+    }
+    removeItems([item.item]);
+    // We want to keep showing the picker to show the user that the entry has been removed from the list.
+    showPicker(true);
+  };
   const _onSuggestionSelected = (ev: any, item: IFloatingSuggestionItemProps<T>) => {
     if (props.floatingSuggestionProps.onSuggestionSelected) {
       props.floatingSuggestionProps.onSuggestionSelected(ev, item);
@@ -207,6 +215,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       onFloatingSuggestionsDismiss: _onFloatingSuggestionsDismiss,
       onSuggestionSelected: _onSuggestionSelected,
       onKeyDown: _onInputKeyDown,
+      onRemoveSuggestion: _onFloatingSuggestionRemoved,
     });
 
   return (
