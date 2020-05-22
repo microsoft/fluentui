@@ -7,7 +7,7 @@ const MenuExampleDividerHorizontal = () => (
     <Menu.Item index={0}>
       <Menu.ItemContent>Editorials</Menu.ItemContent>
     </Menu.Item>
-    <Menu.Divider>"▸"</Menu.Divider>
+    <Menu.Divider>▸</Menu.Divider>
     <Menu.Item index={1}>
       <Menu.ItemContent>Reviews</Menu.ItemContent>
     </Menu.Item>
