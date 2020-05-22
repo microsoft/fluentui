@@ -181,8 +181,9 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
     const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
     setStart();
 
-    const parentProps: MenuContextSubscribedValue =
-      useContextSelectors(MenuContext, {
+    const parentProps: Omit<MenuContextSubscribedValue, 'accessibilityBehaviorForDivider'> = useContextSelectors(
+      MenuContext,
+      {
         active: v => v.activeIndex === props.index,
         activeIndex: v => v.activeIndex,
         onItemClick: v => v.onItemClick,
@@ -195,9 +196,10 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
         inSubmenu: v => v.inSubmenu,
         pills: v => v.pills,
         secondary: v => v.secondary,
-        accessibility: v => v.accessibility,
+        accessibilityBehaviorForItem: v => v.accessibilityBehaviorForItem,
         menuSlot: v => v.menuSlot,
-      }) || {};
+      },
+    );
 
     const {
       children,
@@ -220,8 +222,9 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
       design,
       styles,
       variables,
-      accessibility = parentProps.accessibility.item,
     } = props;
+
+    const accessibility = parentProps.accessibilityBehaviorForItem || menuItemBehavior;
 
     const [menuOpen, setMenuOpen] = useAutoControlled({
       defaultValue: props.defaultMenuOpen,
@@ -236,16 +239,8 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
 
     const slotProps = composeOptions.resolveSlotProps<MenuItemProps & MenuItemState>({
       ...props,
+      ...parentProps,
       accessibility,
-      active,
-      pointing,
-      primary,
-      underlined,
-      iconOnly,
-      vertical,
-      pills,
-      inSubmenu,
-      secondary,
       variables: mergeComponentVariables(variables, parentProps.variables),
       isFromKeyboard,
       menuOpen,
@@ -623,7 +618,6 @@ MenuItem.propTypes = {
 
 MenuItem.defaultProps = {
   as: 'a',
-  accessibility: menuItemBehavior,
   wrapper: {},
   indicator: {},
 };

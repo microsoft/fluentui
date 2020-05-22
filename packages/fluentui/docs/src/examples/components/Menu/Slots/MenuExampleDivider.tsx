@@ -10,7 +10,7 @@ const MenuExampleKind = () => (
     <Menu.Item index={1}>
       <Menu.ItemContent>Reviews</Menu.ItemContent>
     </Menu.Item>
-    <Menu.Divider content="..." />
+    <Menu.Divider>...</Menu.Divider>
     <Menu.Item index={2}>
       <Menu.ItemContent>Upcoming Events</Menu.ItemContent>
     </Menu.Item>

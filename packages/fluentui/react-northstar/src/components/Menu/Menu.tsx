@@ -115,6 +115,14 @@ export type MenuStylesProps = Pick<
   'iconOnly' | 'fluid' | 'pointing' | 'pills' | 'primary' | 'underlined' | 'vertical' | 'submenu' | 'secondary'
 >;
 
+function useActualOnItemClick<P>(onItemClick: P) {
+  const actualOnItemClick = React.useRef<P>(onItemClick);
+  React.useEffect(() => {
+    actualOnItemClick.current = onItemClick;
+  });
+  return actualOnItemClick;
+}
+
 /**
  * A Menu is a component that offers a grouped list of choices to the user.
  *
@@ -164,6 +172,8 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
       rtl: context.rtl,
     });
 
+    const actualOnItemClick = useActualOnItemClick(props.onItemClick);
+
     const { classes, styles: resolvedStyles } = useStyles<MenuStylesProps>(composeOptions.displayName, {
       className: composeOptions.className,
       composeOptions,
@@ -202,12 +212,10 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
     const handleClick = React.useCallback(
       (e, itemProps) => {
         const { index } = itemProps;
-
         setActiveIndex(e, index);
-
-        _.invoke(props, 'onItemClick', e, itemProps);
+        actualOnItemClick.current && actualOnItemClick.current(e, itemProps);
       },
-      [props, setActiveIndex],
+      [actualOnItemClick, setActiveIndex],
     );
 
     const handleItemOverrides = predefinedProps => ({
@@ -266,6 +274,8 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
       });
     };
 
+    const childBehaviors = accessibility && accessibility(props).childBehaviors;
+
     const childProps: MenuContextValue = {
       activeIndex: +activeIndex,
       onItemClick: handleClick,
@@ -278,7 +288,9 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
       secondary,
       pills,
       inSubmenu: props.submenu,
-      accessibility: accessibility && accessibility(props).childBehaviors,
+      // TODO: please rework me
+      accessibilityBehaviorForItem: childBehaviors?.item,
+      accessibilityBehaviorForDivider: childBehaviors?.divider,
       menuSlot: composeOptions.slots.__self,
     };
 
@@ -339,7 +351,6 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
       'design',
       'styles',
       'variables',
-
       'activeIndex',
       'defaultActiveIndex',
       'fluid',
