@@ -199,7 +199,7 @@ const Tree: React.FC<WithAsProp<TreeProps>> &
 
   const onFocusParent = React.useCallback(
     (parent: string) => {
-      const parentRef = itemsRef.get(parent);
+      const parentRef = itemsRef.current.get(parent);
 
       if (!parentRef || !parentRef.current) {
         return;
