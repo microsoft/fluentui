@@ -125,8 +125,8 @@ const expandedItemsGenerator = (items, acc = []) =>
     acc,
   );
 
-const iterateItems = (items, acc = []) =>
-  _.reduce(
+const iterateItems = (items: TreeProps['items'] | TreeItemProps['items'], acc = []): string[] =>
+  _.reduce<TreeProps['items'] | TreeItemProps['items'], string[]>(
     items,
     (acc, item) => {
       if (item['selected'] && acc.indexOf(item['id']) === -1) {
