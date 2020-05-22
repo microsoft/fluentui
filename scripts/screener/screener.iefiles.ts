@@ -1,1 +1,1 @@
-export default [/AccordionExample/, /AlertExample/];
+export default [/usage\/.+Example\.ts/];
