@@ -1,10 +1,9 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
-    "outDir": "dist",
-    "target": "es5",
+    "outDir": "lib",
+    "target": "es6",
     "module": "commonjs",
-    "jsx": "react",
     "declaration": true,
     "sourceMap": true,
     "experimentalDecorators": true,
@@ -13,13 +12,11 @@
     "forceConsistentCasingInFileNames": true,
     "strictNullChecks": true,
     "noImplicitAny": true,
-    "noImplicitThis": true,
-    "skipLibCheck": true,
     "moduleResolution": "node",
     "preserveConstEnums": true,
-    "downlevelIteration": true,
+    "esModuleInterop": true,
     "lib": ["es2017"],
-    "types": []
+    "types": ["jest", "node"]
   },
   "include": ["src"]
 }
