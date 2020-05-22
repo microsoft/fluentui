@@ -4,7 +4,7 @@ import _ from 'lodash';
 import E2EExample from './E2EExample';
 import routes from './routes';
 import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
-import { Provider, themes, Flex, Header, List } from '@fluentui/react-northstar';
+import { Provider, Flex, Header, List, teamsTheme } from '@fluentui/react-northstar';
 
 const ContentList = () => (
   <>
@@ -22,7 +22,7 @@ const ContentList = () => (
 
 const App = () => (
   <BrowserRouter>
-    <Provider theme={themes.teams}>
+    <Provider theme={teamsTheme}>
       <Switch>
         <Route exact path="/:exampleName" component={E2EExample} />
         <Route component={ContentList} />

@@ -1,8 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 20 May 2020 12:31:10 GMT and should not be manually modified.
+This log was last generated on Thu, 21 May 2020 12:34:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.115.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.115.2)
+
+Thu, 21 May 2020 12:34:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.115.1..office-ui-fabric-react_v7.115.2)
+
+### Patches
+
+- MessageBar: Restore style overrides for Link inside MessageBar in high contrast; use dismissButtonAriaLabel as title too ([PR #13034](https://github.com/microsoft/fluentui/pull/13034) by elcraig@microsoft.com)
+- Prettier fix in Callout test. ([PR #12478](https://github.com/microsoft/fluentui/pull/12478) by humbertomakotomorimoto@gmail.com)
 
 ## [7.115.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.115.1)
 

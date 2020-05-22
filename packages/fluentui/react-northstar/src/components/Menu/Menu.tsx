@@ -31,13 +31,17 @@ import {
   ShorthandFactory,
 } from '../../utils';
 import MenuItem, { MenuItemProps } from './MenuItem';
-import MenuDivider from './MenuDivider';
+import MenuDivider, { MenuDividerProps } from './MenuDivider';
 import MenuItemIcon from './MenuItemIcon';
 import MenuItemContent from './MenuItemContent';
 import MenuItemIndicator, { MenuItemIndicatorProps } from './MenuItemIndicator';
 import MenuItemWrapper from './MenuItemWrapper';
+import { MenuContextProvider, MenuContextValue } from './menuContext';
 
-export type MenuShorthandKinds = 'divider' | 'item';
+export type MenuShorthandKinds = {
+  divider: MenuDividerProps;
+  item: MenuItemProps;
+};
 
 export interface MenuProps extends UIComponentProps, ChildrenComponentProps {
   /**
@@ -113,6 +117,14 @@ export type MenuStylesProps = Required<
   >
 >;
 
+function useActualOnItemClick<P>(onItemClick: P) {
+  const actualOnItemClick = React.useRef<P>(onItemClick);
+  React.useEffect(() => {
+    actualOnItemClick.current = onItemClick;
+  });
+  return actualOnItemClick;
+}
+
 /**
  * A Menu is a component that offers a grouped list of choices to the user.
  *
@@ -147,6 +159,7 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
       className,
       design,
       secondary,
+      accessibility,
     } = props;
 
     const ElementType = getElementType(props);
@@ -160,6 +173,8 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
       }),
       rtl: context.rtl,
     });
+
+    const actualOnItemClick = useActualOnItemClick(props.onItemClick);
 
     const { classes, styles: resolvedStyles } = useStyles<MenuStylesProps>(composeOptions.displayName, {
       className: composeOptions.className,
@@ -196,13 +211,18 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
       setIndex(activeIndex);
     };
 
+    const handleClick = React.useCallback(
+      (e, itemProps) => {
+        const { index } = itemProps;
+        setActiveIndex(e, index);
+        actualOnItemClick.current && actualOnItemClick.current(e, itemProps);
+      },
+      [actualOnItemClick, setActiveIndex],
+    );
+
     const handleItemOverrides = predefinedProps => ({
       onClick: (e, itemProps) => {
-        const { index } = itemProps;
-
-        setActiveIndex(e, index);
-
-        _.invoke(props, 'onItemClick', e, itemProps);
+        handleClick(e, itemProps);
         _.invoke(predefinedProps, 'onClick', e, itemProps);
       },
       onActiveChanged: (e, props) => {
@@ -256,6 +276,25 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
       });
     };
 
+    const childBehaviors = accessibility && accessibility(props).childBehaviors;
+
+    const childProps: MenuContextValue = {
+      activeIndex: +activeIndex,
+      onItemClick: handleClick,
+      variables,
+      pointing,
+      primary,
+      underlined,
+      iconOnly,
+      vertical,
+      secondary,
+      pills,
+      inSubmenu: props.submenu,
+      // TODO: please rework me
+      accessibilityBehaviorForItem: childBehaviors?.item,
+      accessibilityBehaviorForDivider: childBehaviors?.divider,
+    };
+
     const element = getA11yProps.unstable_wrapWithFocusZone(
       <ElementType
         {...getA11yProps('root', {
@@ -264,7 +303,9 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
           ...unhandledProps,
         })}
       >
-        {childrenExist(children) ? children : renderItems()}
+        <MenuContextProvider value={childProps}>
+          {childrenExist(children) ? children : renderItems()}
+        </MenuContextProvider>
       </ElementType>,
     );
     const wrappedElement = ref ? <Ref innerRef={ref}>{element}</Ref> : element;
@@ -311,7 +352,6 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
       'design',
       'styles',
       'variables',
-
       'activeIndex',
       'defaultActiveIndex',
       'fluid',
