@@ -117,6 +117,14 @@ export type MenuStylesProps = Required<
   >
 >;
 
+function useActualOnItemClick<P>(onItemClick: P) {
+  const actualOnItemClick = React.useRef<P>(onItemClick);
+  React.useEffect(() => {
+    actualOnItemClick.current = onItemClick;
+  });
+  return actualOnItemClick;
+}
+
 /**
  * A Menu is a component that offers a grouped list of choices to the user.
  *
@@ -167,6 +175,8 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
       rtl: context.rtl,
     });
 
+    const actualOnItemClick = useActualOnItemClick(props.onItemClick);
+
     const { classes, styles: resolvedStyles } = useStyles<MenuStylesProps>(composeOptions.displayName, {
       className: composeOptions.className,
       composeOptions,
@@ -206,9 +216,9 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
       (e, itemProps) => {
         const { index } = itemProps;
         setActiveIndex(e, index);
-        onItemClick && onItemClick(e, itemProps);
+        actualOnItemClick.current && actualOnItemClick.current(e, itemProps);
       },
-      [onItemClick, setActiveIndex],
+      [actualOnItemClick, setActiveIndex],
     );
 
     const handleItemOverrides = predefinedProps => ({
