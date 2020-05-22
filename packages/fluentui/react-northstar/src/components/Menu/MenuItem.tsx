@@ -181,23 +181,24 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
     const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
     setStart();
 
-    const parentProps: MenuContextSubscribedValue = useContextSelectors(MenuContext, {
-      active: v => v.activeIndex === props.index,
-      activeIndex: v => v.activeIndex,
-      onItemClick: v => v.onItemClick,
-      variables: v => v.variables,
-      pointing: v => v.pointing,
-      primary: v => v.primary,
-      underlined: v => v.underlined,
-      iconOnly: v => v.iconOnly,
-      vertical: v => v.vertical,
-      inSubmenu: v => v.inSubmenu,
-      pills: v => v.pills,
-      secondary: v => v.secondary,
-      accessibilityBehaviorForItem: v => v.accessibilityBehaviorForItem,
-      // @TODO: remove it when fix type for useContextSelectors
-      accessibilityBehaviorForDivider: v => null,
-    });
+    const parentProps: Omit<MenuContextSubscribedValue, 'accessibilityBehaviorForDivider'> = useContextSelectors(
+      MenuContext,
+      {
+        active: v => v.activeIndex === props.index,
+        activeIndex: v => v.activeIndex,
+        onItemClick: v => v.onItemClick,
+        variables: v => v.variables,
+        pointing: v => v.pointing,
+        primary: v => v.primary,
+        underlined: v => v.underlined,
+        iconOnly: v => v.iconOnly,
+        vertical: v => v.vertical,
+        inSubmenu: v => v.inSubmenu,
+        pills: v => v.pills,
+        secondary: v => v.secondary,
+        accessibilityBehaviorForItem: v => v.accessibilityBehaviorForItem,
+      },
+    );
 
     const {
       children,

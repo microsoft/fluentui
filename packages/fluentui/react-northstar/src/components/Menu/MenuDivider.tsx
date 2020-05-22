@@ -1,4 +1,5 @@
 import { Accessibility, menuDividerBehavior, MenuDividerBehaviorProps } from '@fluentui/accessibility';
+import { mergeComponentVariables } from '@fluentui/styles';
 import {
   compose,
   ComponentWithAs,
@@ -9,10 +10,12 @@ import {
   useUnhandledProps,
   ShorthandConfig,
 } from '@fluentui/react-bindings';
+import { useContextSelectors } from '@fluentui/react-context-selector';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
+
 import {
   createShorthandFactory,
   UIComponentProps,
@@ -24,9 +27,7 @@ import {
   ShorthandFactory,
 } from '../../utils';
 import { ProviderContextPrepared } from '../../types';
-import { useContextSelectors } from '@fluentui/react-context-selector';
 import { MenuContextSubscribedValue, MenuContext } from './menuContext';
-import { mergeComponentVariables } from '@fluentui/styles';
 
 export interface MenuDividerProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
   /** Accessibility behavior if overridden by the user. */
@@ -57,8 +58,10 @@ const MenuDivider = compose<'li', MenuDividerProps, MenuDividerStylesProps, {}, 
     const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
     setStart();
 
-    const parentProps: MenuContextSubscribedValue = useContextSelectors(MenuContext, {
-      active: v => false,
+    const parentProps: Omit<
+      MenuContextSubscribedValue,
+      'active' | 'accessibilityBehaviorForItem'
+    > = useContextSelectors(MenuContext, {
       activeIndex: v => v.activeIndex,
       onItemClick: v => v.onItemClick,
       variables: v => v.variables,
@@ -71,8 +74,6 @@ const MenuDivider = compose<'li', MenuDividerProps, MenuDividerStylesProps, {}, 
       pills: v => v.pills,
       secondary: v => v.secondary,
       accessibilityBehaviorForDivider: v => v.accessibilityBehaviorForDivider,
-      // @TODO: remove it when fix type for useContextSelectors
-      accessibilityBehaviorForItem: v => null,
     });
 
     const {
