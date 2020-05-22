@@ -166,7 +166,7 @@ const Tree: React.FC<WithAsProp<TreeProps>> &
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Tree.handledProps, props);
 
-  const [activeItemIds, setActiveItemIdsState] = useAutoControlled({
+  const [activeItemIds, setActiveItemIdsState] = useAutoControlled<string[]>({
     defaultValue: props.defaultActiveItemIds,
     value: props.activeItemIds,
     initialValue: expandedItemsGenerator(items),
