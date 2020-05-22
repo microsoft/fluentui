@@ -22,9 +22,7 @@ const ChatMessageHeader = compose<
   displayName: 'ChatMessageHeader',
 
   overrideStyles: true,
-}) as ComponentWithAs<'span', ChatMessageHeaderProps> & {
-  shorthandConfig: ShorthandConfig<ChatMessageHeaderProps>;
-};
+});
 
 ChatMessageHeader.defaultProps = {};
 ChatMessageHeader.propTypes = commonPropTypes.createCommon();
