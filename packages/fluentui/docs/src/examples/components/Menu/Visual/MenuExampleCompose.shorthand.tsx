@@ -1,5 +1,4 @@
 import * as React from 'react';
-
 import {
   Menu,
   MenuItem,
@@ -32,21 +31,16 @@ const MenuitemIndicatorSaturated = compose(MenuItemIndicator, {
 
 const MenuItemBlue = compose(MenuItem, {
   displayName: 'MenuItemBlue',
-
   slots: {
     icon: MenuItemIconGreen,
-
     content: MenuItemContentPurple,
-
     indicator: MenuitemIndicatorSaturated,
-
     wrapper: MenuItemWrapperDashed,
   },
 });
 
 const MenuCoral = compose<'ul', MenuProps, MenuStylesProps, MenuProps, MenuStylesProps>(Menu, {
   displayName: 'MenuCoral',
-
   slots: {
     item: MenuItemBlue,
   },
@@ -55,30 +49,20 @@ const MenuCoral = compose<'ul', MenuProps, MenuStylesProps, MenuProps, MenuStyle
 const items = [
   {
     key: 'editorials',
-
     content: 'Editorials',
-
     icon: <BookmarkIcon />,
-
     menuOpen: true,
-
     menu: [
       {
         key: 'One',
-
         content: 'One',
-
         menu: ['Four', { content: 'Five' }],
       },
-
       'Two',
-
       'Three',
     ],
   },
-
   { key: 'review', content: 'Reviews' },
-
   { key: 'events', content: 'Upcoming Events' },
 ];
 
@@ -89,35 +73,28 @@ const themeOverrides = {
         backgroundColor: 'lightblue',
       },
     },
-
     MenuItemIconGreen: {
       root: {
         color: 'lightgreen',
       },
     },
-
     MenuItemContentPurple: {
       root: {
         color: 'purple',
       },
     },
-
     MenuitemIndicatorSaturated: {
       root: {
         filter: 'saturate(8)',
-
         height: '20px',
-
         width: '20px',
       },
     },
-
     MenuItemWrapperDashed: {
       root: {
         border: '1px dashed lightgreen',
       },
     },
-
     MenuCoral: {
       root: {
         backgroundColor: 'coral',
