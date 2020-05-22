@@ -9,4 +9,4 @@ const MenuExampleSlot = () => (
   </Menu>
 );
 
-export default MenuExample;
+export default MenuExampleSlot;

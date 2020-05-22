@@ -43,4 +43,4 @@ const MenuExampleToolbar = () => (
   </Menu>
 );
 
-export default MenuExampleToolbarShorthand;
+export default MenuExampleToolbar;
