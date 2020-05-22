@@ -185,7 +185,6 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     if (props.floatingSuggestionProps.onRemoveSuggestion) {
       props.floatingSuggestionProps.onRemoveSuggestion(ev, item);
     }
-    removeItems([item.item]);
     // We want to keep showing the picker to show the user that the entry has been removed from the list.
     showPicker(true);
   };
