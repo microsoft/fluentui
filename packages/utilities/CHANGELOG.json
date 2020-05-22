@@ -2,6 +2,21 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "date": "Fri, 22 May 2020 12:37:35 GMT",
+      "tag": "@uifabric/utilities_v7.19.0",
+      "version": "7.19.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding `getNativeElementProps` helper which takes the element tag name in + props and filters out unrecognized props.",
+            "author": "dzearing@microsoft.com",
+            "commit": "bb3a1059eabff7a81c6666ec7319e66af5d74351",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 21 May 2020 12:34:43 GMT",
       "tag": "@uifabric/utilities_v7.18.0",
       "version": "7.18.0",
