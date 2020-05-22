@@ -23,6 +23,7 @@ export const useLink = (props: ILinkProps, options: ComposePreparedOptions) => {
     as: as ? as : href ? 'a' : 'button',
     href: disabled ? undefined : href,
     onClick: _onClick,
+    type: !as && !href ? 'button' : undefined,
     keytipData: {
       ariaDescribedBy: ariaDescribedBy,
       disabled,

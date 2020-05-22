@@ -1,11 +1,5 @@
 import * as React from 'react';
-import {
-  getNativeProps,
-  htmlElementProperties,
-  imgProperties,
-  buttonProperties,
-  anchorProperties,
-} from '@uifabric/utilities';
+import { getNativeProps, imgProperties, buttonProperties, anchorProperties } from '@uifabric/utilities';
 import { ComposePreparedOptions } from '@fluentui/react-compose';
 import { mergeClassesIntoSlotProps } from './mergeClassesIntoSlotProps';
 import { GenericDictionary } from './tempTypes';
@@ -42,7 +36,7 @@ const filterProps = (props: any): any => {
       allowedProps = imgProperties;
       break;
     default:
-      allowedProps = htmlElementProperties;
+      allowedProps = props;
   }
 
   return getNativeProps(props, allowedProps);
