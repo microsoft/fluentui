@@ -12,7 +12,7 @@ export const LinkBase = compose<'a', ILinkProps, ILinkProps, {}, {}>(
     const { slots, slotProps } = useLink(props, composeOptions);
     useComponentRef(props, ref as React.RefObject<ILink>);
 
-    const { className, disabled, href, styles, theme } = props;
+    const { 'aria-describedby': ariaDescribedBy, className, disabled, href, keytipProps, styles, theme } = props;
     const classNames = getClassNames(styles!, {
       className,
       isButton: !href,
@@ -21,17 +21,15 @@ export const LinkBase = compose<'a', ILinkProps, ILinkProps, {}, {}>(
     });
 
     return (
-      <slots.keytipData {...slotProps.keytipData}>
+      <KeytipData ariaDescribedBy={ariaDescribedBy} disabled keytipProps={keytipProps}>
         {(keytipAttributes: any): JSX.Element => (
           <slots.root {...keytipAttributes} ref={ref} {...slotProps.root} className={classNames.root} />
         )}
-      </slots.keytipData>
+      </KeytipData>
     );
   },
   {
-    slots: {
-      keytipData: KeytipData,
-    },
+    slots: {},
     displayName: 'LinkBase',
   },
 );

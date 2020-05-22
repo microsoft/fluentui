@@ -278,8 +278,6 @@ export interface ILinkProps extends ILinkHTMLAttributes<HTMLAnchorElement | HTML
 
 // @public (undocumented)
 export interface ILinkSlots {
-    // (undocumented)
-    keytipData: React.ElementType;
 }
 
 // @public (undocumented)
