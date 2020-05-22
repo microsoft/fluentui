@@ -62,9 +62,7 @@ describe('Link', () => {
 
   it('supports non button/anchor html attributes when "as=" is used', () => {
     const component = renderer.create(
-      <Link as="blockquote" cite={'hi'} className="customClassName">
-        I'm a blockquote
-      </Link>,
+      <Link as="input" type="text" value={'This is an input.'} className="customClassName" />,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
