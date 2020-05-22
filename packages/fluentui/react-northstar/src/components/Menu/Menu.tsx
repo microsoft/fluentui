@@ -117,6 +117,16 @@ export type MenuStylesProps = Required<
   >
 >;
 
+function useActualProps<P>(props: P) {
+  const actualProps = React.useRef<P>(props);
+
+  React.useEffect(() => {
+    actualProps.current = props;
+  });
+
+  return actualProps;
+}
+
 /**
  * A Menu is a component that offers a grouped list of choices to the user.
  *
@@ -157,6 +167,8 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
     const ElementType = getElementType(props);
     const slotProps = composeOptions.resolveSlotProps<MenuProps>(props);
     const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
+
+    const actualProps = useActualProps(props);
 
     const getA11yProps = useAccessibility<MenuBehaviorProps>(props.accessibility, {
       debugName: composeOptions.displayName,
@@ -207,9 +219,9 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
 
         setActiveIndex(e, index);
 
-        _.invoke(props, 'onItemClick', e, itemProps);
+        _.invoke(actualProps.current, 'onItemClick', e, itemProps);
       },
-      [props, setActiveIndex],
+      [actualProps, setActiveIndex],
     );
 
     const handleItemOverrides = predefinedProps => ({
