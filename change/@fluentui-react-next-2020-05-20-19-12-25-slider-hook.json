@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "Slider: to useSlider part 1",
+  "comment": "Slider: Move state logic to useSlider hook, part 1",
   "packageName": "@fluentui/react-next",
   "email": "joschect@microsoft.com",
   "dependentChangeType": "patch",
