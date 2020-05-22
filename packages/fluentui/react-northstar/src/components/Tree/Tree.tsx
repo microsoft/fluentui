@@ -178,7 +178,7 @@ const Tree: React.FC<WithAsProp<TreeProps>> &
     initialValue: iterateItems(items),
   });
 
-  const getA11yProps = useAccessibility<TreeBehaviorProps>(props.accessibility, {
+  const getA11yProps = useAccessibility(props.accessibility, {
     debugName: Tree.displayName,
     rtl: context.rtl,
   });
