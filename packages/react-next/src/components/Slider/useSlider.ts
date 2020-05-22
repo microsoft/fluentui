@@ -24,9 +24,9 @@ export const useSlider: (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =>
     valueFormat,
     styles,
     theme,
+    'aria-label': ariaLabel,
   } = props;
 
-  const ariaLabel = props['aria-label'];
   const disposables = React.useRef<(() => void)[]>([]);
   const sliderLine = React.useRef<HTMLDivElement>(null);
 
