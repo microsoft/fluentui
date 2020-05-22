@@ -60,7 +60,7 @@ const MenuDivider = compose<'li', MenuDividerProps, MenuDividerStylesProps, {}, 
 
     const parentProps: Omit<
       MenuContextSubscribedValue,
-      'active' | 'accessibilityBehaviorForItem'
+      'active' | 'accessibilityBehaviorForItem' | 'onItemClick'
     > = useContextSelectors(MenuContext, {
       activeIndex: v => v.activeIndex,
       onItemClick: v => v.onItemClick,

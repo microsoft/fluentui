@@ -197,6 +197,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
         pills: v => v.pills,
         secondary: v => v.secondary,
         accessibilityBehaviorForItem: v => v.accessibilityBehaviorForItem,
+        onItemClick: v => v.onItemClick,
       },
     );
 
@@ -342,9 +343,9 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
         e.preventDefault();
         return;
       }
-
       performClick(e);
       _.invoke(props, 'onClick', e, props);
+      _.invoke(parentProps, 'onItemClick', e, props);
     };
 
     const handleBlur = (e: React.FocusEvent) => {
