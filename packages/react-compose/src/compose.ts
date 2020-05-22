@@ -1,5 +1,12 @@
 import * as React from 'react';
-import { ComponentWithAs, ComposedComponent, ComposeOptions, Input, InputComposeComponent } from './types';
+import {
+  ComponentWithAs,
+  ComposedComponent,
+  ComposeOptions,
+  Input,
+  InputComposeComponent,
+  ComposePreparedOptions,
+} from './types';
 import { mergeComposeOptions } from './mergeComposeOptions';
 
 /**
@@ -11,17 +18,18 @@ import { mergeComposeOptions } from './mergeComposeOptions';
  * @param inputOptions - options for rendering the component.
  */
 function compose<
-  TElementType extends React.ElementType,
-  TInputProps,
+  TElementType extends React.ElementType<TProps>,
+  TProps = {},
   TInputStylesProps = {},
   TParentProps = {},
-  TParentStylesProps = {}
+  TParentStylesProps = {},
+  TState = TProps
 >(
-  input: Input<TElementType, TInputProps>,
-  inputOptions: ComposeOptions<TInputProps, TInputStylesProps, TParentStylesProps> = {},
+  input: Input<TElementType, TProps>,
+  inputOptions: ComposeOptions<TProps, TInputStylesProps, TParentStylesProps> = {},
 ) {
   // Merge the options as needed.
-  const composeOptions = mergeComposeOptions(
+  const composeOptions = mergeComposeOptions<TElementType, TProps, TState>(
     input as Input,
     (inputOptions as unknown) as ComposeOptions,
     // tslint:disable-next-line: no-any
@@ -29,11 +37,12 @@ function compose<
   );
 
   // Create the new component, passing along the options.
-  const Component = (React.forwardRef<TElementType, TInputProps & TParentProps & { as?: React.ElementType }>(
+  const Component = (React.forwardRef<TElementType, TProps & TParentProps & { as?: React.ElementType }>(
     (props, ref) => {
-      return composeOptions.render(props, (ref as unknown) as React.Ref<HTMLDivElement>, composeOptions);
+      // tslint:disable-next-line:no-any
+      return composeOptions.render(props, ref as any, (composeOptions as unknown) as ComposePreparedOptions);
     },
-  ) as unknown) as ComponentWithAs<TElementType, TInputProps & TParentProps>;
+  ) as unknown) as ComponentWithAs<TElementType, TProps & TParentProps>;
 
   // Set the display name.
   Component.displayName = composeOptions.displayName;
@@ -44,7 +53,7 @@ function compose<
   }
 
   // Cache the options on the component for later reference in recompose scenarios.
-  ((Component as unknown) as ComposedComponent).fluentComposeConfig = composeOptions;
+  ((Component as unknown) as ComposedComponent<TElementType, TProps, TState>).fluentComposeConfig = composeOptions;
 
   return Component;
 }
