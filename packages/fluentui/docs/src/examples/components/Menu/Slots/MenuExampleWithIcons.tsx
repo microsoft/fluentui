@@ -6,7 +6,7 @@ const MenuExampleWithIcons = () => (
   <Menu defaultActiveIndex={0}>
     <Menu.Item index={0}>
       <Menu.ItemIcon>
-        <OneDriveIcon />s
+        <OneDriveIcon />
       </Menu.ItemIcon>
     </Menu.Item>
     <Menu.Item index={1}>
