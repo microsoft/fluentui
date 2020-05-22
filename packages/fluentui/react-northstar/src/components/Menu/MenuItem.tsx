@@ -224,7 +224,10 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
       variables,
     } = props;
 
-    const accessibility = parentProps.accessibilityBehaviorForItem || menuItemBehavior;
+    const accessibility =
+      typeof props.accessibility === 'undefined'
+        ? parentProps.accessibilityBehaviorForItem || menuItemBehavior
+        : props.accessibility;
 
     const [menuOpen, setMenuOpen] = useAutoControlled({
       defaultValue: props.defaultMenuOpen,
@@ -239,7 +242,15 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
 
     const slotProps = composeOptions.resolveSlotProps<MenuItemProps & MenuItemState>({
       ...props,
-      ...parentProps,
+      active,
+      primary,
+      secondary,
+      vertical,
+      underlined,
+      iconOnly,
+      inSubmenu,
+      pills,
+      pointing,
       accessibility,
       variables: mergeComponentVariables(variables, parentProps.variables),
       isFromKeyboard,
@@ -332,9 +343,9 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
         e.preventDefault();
         return;
       }
-
       performClick(e);
       _.invoke(props, 'onClick', e, props);
+      _.invoke(parentProps, 'onItemClick', e, props);
     };
 
     const handleBlur = (e: React.FocusEvent) => {

@@ -60,7 +60,7 @@ const MenuDivider = compose<'li', MenuDividerProps, MenuDividerStylesProps, {}, 
 
     const parentProps: Omit<
       MenuContextSubscribedValue,
-      'active' | 'accessibilityBehaviorForItem' | 'menuSlot'
+      'active' | 'accessibilityBehaviorForItem' | 'onItemClick' | 'menuSlot'
     > = useContextSelectors(MenuContext, {
       activeIndex: v => v.activeIndex,
       onItemClick: v => v.onItemClick,
@@ -91,7 +91,10 @@ const MenuDivider = compose<'li', MenuDividerProps, MenuDividerStylesProps, {}, 
       variables,
     } = props;
 
-    const accessibility = parentProps.accessibilityBehaviorForDivider || menuDividerBehavior;
+    const accessibility =
+      typeof props.accessibility === 'undefined'
+        ? parentProps.accessibilityBehaviorForDivider || menuDividerBehavior
+        : props.accessibility;
 
     const getA11yProps = useAccessibility(accessibility, {
       debugName: composeOptions.displayName,
@@ -102,7 +105,7 @@ const MenuDivider = compose<'li', MenuDividerProps, MenuDividerStylesProps, {}, 
       className: composeOptions.className,
       composeOptions,
       mapPropsToStyles: () => ({
-        hasContent: !!content,
+        hasContent: !!content || !!children,
         pills,
         pointing,
         vertical,

@@ -61,7 +61,6 @@ describe('MenuItem', () => {
   describe('accessibility', () => {
     handlesAccessibility(MenuItem, { defaultRootRole: 'presentation', usesWrapperSlot: true });
     handlesAccessibility(MenuItem, { defaultRootRole: 'menuitem', partSelector: 'a' });
-
     const behaviors: { name: string; behavior: Accessibility; expectedAnchorRole: string }[] = [
       { name: 'default', behavior: undefined, expectedAnchorRole: 'menuitem' },
       {
@@ -75,9 +74,7 @@ describe('MenuItem', () => {
       test(`integration test for ${accessibility.name} behavior`, () => {
         // accessibility functionality is covered by a combination of behavior tests and `handlesAccessibility()`
         // this is just an integration smoke test
-
         const ariaLabel = 'Useful Tool Tip';
-
         const menuItemComponent = mountWithProviderAndGetComponent(
           MenuItem,
           <MenuItem disabled aria-label={ariaLabel} accessibility={accessibility.behavior} />,
@@ -85,7 +82,6 @@ describe('MenuItem', () => {
         expect(getRenderedAttribute(menuItemComponent, 'role', '')).toBe('presentation');
         expect(getRenderedAttribute(menuItemComponent, 'aria-disabled', '')).toBe(undefined);
         expect(getRenderedAttribute(menuItemComponent, 'aria-label', '')).toBe(undefined);
-
         expect(getRenderedAttribute(menuItemComponent, 'role', 'a')).toBe(accessibility.expectedAnchorRole);
         expect(getRenderedAttribute(menuItemComponent, 'aria-disabled', 'a')).toBe('true');
         expect(getRenderedAttribute(menuItemComponent, 'aria-label', 'a')).toBe(ariaLabel);
