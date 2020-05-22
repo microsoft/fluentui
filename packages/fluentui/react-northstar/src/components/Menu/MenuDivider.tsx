@@ -90,7 +90,7 @@ const MenuDivider = compose<'li', MenuDividerProps, MenuDividerStylesProps, {}, 
       variables,
     } = props;
 
-    const accessibility = parentProps.accessibilityBehaviorForDivider || props.accessibility;
+    const accessibility = parentProps.accessibilityBehaviorForDivider || menuDividerBehavior;
 
     const getA11yProps = useAccessibility(accessibility, {
       debugName: composeOptions.displayName,
@@ -165,7 +165,6 @@ const MenuDivider = compose<'li', MenuDividerProps, MenuDividerStylesProps, {}, 
 
 MenuDivider.defaultProps = {
   as: 'li',
-  accessibility: menuDividerBehavior,
 };
 
 MenuDivider.propTypes = {
