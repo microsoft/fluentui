@@ -7,8 +7,8 @@ import { SuggestionItemNormal } from './FloatingPeopleSuggestionItems/Suggestion
 
 export const FloatingPeopleSuggestions = (props: IFloatingPeopleSuggestionsProps): JSX.Element => {
   const renderSuggestionItem = React.useCallback(
-    (suggestionItemprops: IFloatingSuggestionOnRenderItemProps<IPersonaProps>): JSX.Element => {
-      return SuggestionItemNormal({ ...suggestionItemprops.item });
+    (suggestionItemProps: IFloatingSuggestionOnRenderItemProps<IPersonaProps>): JSX.Element => {
+      return SuggestionItemNormal({ ...suggestionItemProps.item });
     },
     [],
   );

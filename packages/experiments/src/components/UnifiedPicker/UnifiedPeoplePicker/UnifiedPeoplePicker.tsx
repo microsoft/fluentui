@@ -8,6 +8,7 @@ import {
 } from '../../SelectedItemsList/SelectedPeopleList/SelectedPeopleList';
 import { UnifiedPicker } from '../UnifiedPicker';
 import { IFloatingSuggestionItemProps } from '@uifabric/experiments/lib/FloatingPeopleSuggestionsComposite';
+import { IFloatingPeopleSuggestionsProps } from '@uifabric/experiments/lib/FloatingPeopleSuggestionsComposite';
 
 export const UnifiedPeoplePicker = (props: IUnifiedPeoplePickerProps): JSX.Element => {
   // update the suggestion like componentWillReceiveProps
@@ -33,15 +34,19 @@ export const UnifiedPeoplePicker = (props: IUnifiedPeoplePickerProps): JSX.Eleme
     [peopleSelectedItems],
   );
 
+  const renderFloatingPeopleSuggestions = React.useCallback(
+    (floatingPeoplePickerProps: IFloatingPeopleSuggestionsProps): JSX.Element => {
+      return <FloatingPeopleSuggestions {...floatingPeoplePickerProps} />;
+    },
+    [peopleSuggestions],
+  );
+
   return (
     <>
       <UnifiedPicker
         {...props}
         onRenderSelectedItems={renderSelectedItems}
-        onRenderFloatingSuggestions={floatingPeoplePickerProps => {
-          floatingPeoplePickerProps.suggestions = [...peopleSuggestions];
-          return FloatingPeopleSuggestions(floatingPeoplePickerProps);
-        }}
+        onRenderFloatingSuggestions={renderFloatingPeopleSuggestions}
       />
     </>
   );
