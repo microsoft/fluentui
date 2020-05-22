@@ -1,4 +1,5 @@
 import { Accessibility, menuDividerBehavior, MenuDividerBehaviorProps } from '@fluentui/accessibility';
+import { mergeComponentVariables } from '@fluentui/styles';
 import {
   compose,
   ComponentWithAs,
@@ -9,10 +10,12 @@ import {
   useUnhandledProps,
   ShorthandConfig,
 } from '@fluentui/react-bindings';
+import { useContextSelectors } from '@fluentui/react-context-selector';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
+
 import {
   createShorthandFactory,
   UIComponentProps,
@@ -24,6 +27,7 @@ import {
   ShorthandFactory,
 } from '../../utils';
 import { ProviderContextPrepared } from '../../types';
+import { MenuContextSubscribedValue, MenuContext } from './menuContext';
 
 export interface MenuDividerProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
   /** Accessibility behavior if overridden by the user. */
@@ -32,7 +36,7 @@ export interface MenuDividerProps extends UIComponentProps, ChildrenComponentPro
   inSubmenu?: boolean;
   secondary?: boolean;
   pills?: boolean;
-  pointing?: boolean;
+  pointing?: boolean | 'start' | 'end';
   primary?: boolean;
   vertical?: boolean;
 }
@@ -54,14 +58,32 @@ const MenuDivider = compose<'li', MenuDividerProps, MenuDividerStylesProps, {}, 
     const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
     setStart();
 
+    const parentProps: Omit<
+      MenuContextSubscribedValue,
+      'active' | 'accessibilityBehaviorForItem' | 'onItemClick'
+    > = useContextSelectors(MenuContext, {
+      activeIndex: v => v.activeIndex,
+      onItemClick: v => v.onItemClick,
+      variables: v => v.variables,
+      pointing: v => v.pointing,
+      primary: v => v.primary,
+      underlined: v => v.underlined,
+      iconOnly: v => v.iconOnly,
+      vertical: v => v.vertical,
+      inSubmenu: v => v.inSubmenu,
+      pills: v => v.pills,
+      secondary: v => v.secondary,
+      accessibilityBehaviorForDivider: v => v.accessibilityBehaviorForDivider,
+    });
+
     const {
       children,
       content,
-      vertical,
-      inSubmenu,
-      pills,
-      pointing,
-      primary,
+      vertical = parentProps.vertical,
+      inSubmenu = parentProps.inSubmenu,
+      pills = parentProps.pills,
+      pointing = parentProps.pointing,
+      primary = parentProps.primary,
       className,
       design,
       styles,
@@ -69,7 +91,12 @@ const MenuDivider = compose<'li', MenuDividerProps, MenuDividerStylesProps, {}, 
       variables,
     } = props;
 
-    const getA11yProps = useAccessibility(props.accessibility, {
+    const accessibility =
+      typeof props.accessibility === 'undefined'
+        ? parentProps.accessibilityBehaviorForDivider || menuDividerBehavior
+        : props.accessibility;
+
+    const getA11yProps = useAccessibility(accessibility, {
       debugName: composeOptions.displayName,
       rtl: context.rtl,
     });
@@ -78,7 +105,7 @@ const MenuDivider = compose<'li', MenuDividerProps, MenuDividerStylesProps, {}, 
       className: composeOptions.className,
       composeOptions,
       mapPropsToStyles: () => ({
-        hasContent: !!content,
+        hasContent: !!content || !!children,
         pills,
         pointing,
         vertical,
@@ -90,7 +117,7 @@ const MenuDivider = compose<'li', MenuDividerProps, MenuDividerStylesProps, {}, 
         className,
         design,
         styles,
-        variables,
+        variables: mergeComponentVariables(variables, parentProps.variables),
       }),
       rtl: context.rtl,
       unstable_props: props,
@@ -142,7 +169,6 @@ const MenuDivider = compose<'li', MenuDividerProps, MenuDividerStylesProps, {}, 
 
 MenuDivider.defaultProps = {
   as: 'li',
-  accessibility: menuDividerBehavior,
 };
 
 MenuDivider.propTypes = {
