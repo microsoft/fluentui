@@ -36,7 +36,7 @@ const filterProps = (props: any): any => {
       allowedProps = imgProperties;
       break;
     default:
-      allowedProps = props;
+      return props;
   }
 
   return getNativeProps(props, allowedProps);
