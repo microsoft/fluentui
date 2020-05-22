@@ -343,11 +343,8 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
         return;
       }
       performClick(e);
-      if (!_.isNil(props.onClick)) {
-        _.invoke(props, 'onClick', e, props);
-      } else {
-        _.invoke(parentProps, 'onItemClick', e, props);
-      }
+
+      _.invoke({ onClick: parentProps.onItemClick, ...props }, 'onClick', e, props);
     };
 
     const handleBlur = (e: React.FocusEvent) => {

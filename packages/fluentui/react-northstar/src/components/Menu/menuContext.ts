@@ -34,7 +34,6 @@ export type MenuContextSubscribedValue = Pick<
   | 'secondary'
   | 'accessibilityBehaviorForItem'
   | 'accessibilityBehaviorForDivider'
-  | 'onItemClick'
 > & {
   active: boolean;
 };
