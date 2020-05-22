@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Provider, themes } from '@fluentui/react-northstar';
+import { Provider, teamsTheme } from '@fluentui/react-northstar';
 
 const reqContexts = [
   // TODO: Relative pathing isn't the best here, but docs containing perf stories isn't a package that can be added as a dep.
@@ -11,7 +11,7 @@ const reqContexts = [
 
 // TODO: can comment this out to remove Provider. this should be made part of URL / digest bundle.
 // TODO: should this be specified by story? disabled by story? applied and not applied centrally?
-const decorator = content => <Provider theme={themes.teams}>{content}</Provider>;
+const decorator = content => <Provider theme={teamsTheme}>{content}</Provider>;
 // const decorator = content => content;
 
 // TODO: type errors in this file aren't generating build errors. scripts should be typechecked as part of digest build.
