@@ -195,7 +195,7 @@ const Tree: React.FC<WithAsProp<TreeProps>> &
   });
 
   const treeRef = React.useRef<HTMLElement>();
-  const itemsRef = new Map<string, React.RefObject<HTMLElement>>();
+  const itemsRef = React.useRef(new Map<string, React.RefObject<HTMLElement>>());
 
   const onFocusParent = React.useCallback(
     (parent: string) => {
