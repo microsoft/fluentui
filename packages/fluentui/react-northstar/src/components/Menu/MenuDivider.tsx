@@ -105,7 +105,7 @@ const MenuDivider = compose<'li', MenuDividerProps, MenuDividerStylesProps, {}, 
       className: composeOptions.className,
       composeOptions,
       mapPropsToStyles: () => ({
-        hasContent: !!content,
+        hasContent: !!content || !!children,
         pills,
         pointing,
         vertical,
