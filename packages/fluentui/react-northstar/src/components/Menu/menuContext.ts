@@ -16,29 +16,25 @@ export type MenuContextValue = {
   inSubmenu: boolean;
   onItemClick?: (e: React.KeyboardEvent | React.MouseEvent, itemIndex: number) => void;
   accessibility: { [childBehaviorSlot: string]: Accessibility<any> };
-  __parentComponent: React.ElementType;
 };
 
-export type MenuContextSubscribedValue = Partial<
-  Pick<
-    MenuContextValue,
-    | 'activeIndex'
-    | 'variables'
-    | 'onItemClick'
-    | 'primary'
-    | 'pointing'
-    | 'underlined'
-    | 'iconOnly'
-    | 'vertical'
-    | 'inSubmenu'
-    | 'pills'
-    | 'secondary'
-    | 'accessibility'
-    | '__parentComponent'
-  > & {
-    active?: boolean;
-  }
->;
+export type MenuContextSubscribedValue = Pick<
+  MenuContextValue,
+  | 'activeIndex'
+  | 'variables'
+  | 'onItemClick'
+  | 'primary'
+  | 'pointing'
+  | 'underlined'
+  | 'iconOnly'
+  | 'vertical'
+  | 'inSubmenu'
+  | 'pills'
+  | 'secondary'
+  | 'accessibility'
+> & {
+  active: boolean;
+};
 
 export const MenuContext = createContext<MenuContextValue>(
   {
@@ -53,7 +49,6 @@ export const MenuContext = createContext<MenuContextValue>(
     pills: false,
     inSubmenu: false,
     accessibility: {},
-    __parentComponent: null,
   },
   { strict: false },
 );

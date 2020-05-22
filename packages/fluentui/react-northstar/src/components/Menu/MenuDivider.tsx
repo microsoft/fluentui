@@ -71,7 +71,6 @@ const MenuDivider = compose<'li', MenuDividerProps, MenuDividerStylesProps, {}, 
       pills: v => v.pills,
       secondary: v => v.secondary,
       accessibility: v => v.accessibility,
-      __parentComponent: v => v.__parentComponent,
     });
 
     const {
