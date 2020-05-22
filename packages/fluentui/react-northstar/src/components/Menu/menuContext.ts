@@ -53,7 +53,7 @@ export const MenuContext = createContext<MenuContextValue>(
     inSubmenu: false,
     accessibilityBehaviorForItem: undefined,
     accessibilityBehaviorForDivider: undefined,
-    onItemClick: () => {},
+    onItemClick: null,
   },
   { strict: false },
 );
