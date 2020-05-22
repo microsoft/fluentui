@@ -1,2 +1,2 @@
-- Do use a list of multiple ActivityItems to indicate a history of events relating to a single file, folder, user, or other entity. Alternatively, use a single ActivityItem to indicate the most recent event on an entity.
-- Do group multiple similar events occuring near the same time into single ActivityItems.
+- Use a list of multiple ActivityItems to indicate a history of events relating to a single file, folder, user, or other entity. Alternatively, use a single ActivityItem to indicate the most recent event on an entity.
+- Group multiple similar events occuring near the same time into single ActivityItems.

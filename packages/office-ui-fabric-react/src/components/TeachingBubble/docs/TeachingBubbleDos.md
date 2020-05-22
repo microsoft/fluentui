@@ -1,5 +1,5 @@
-- Do use TeachingBubbles to draw attention to new or important features.
-- Do use TeachingBubbles for actions invoked by the system, like a new capability being available.
-- Do use TeachingBubbles in a sequence to illustrate a flow or series of features.
-- Do use TeachingBubbles for a limited time, usually while a feature is considered "new".
-- Do show one TeachingBubble at a time.
+- Use TeachingBubbles to draw attention to new or important features.
+- Use TeachingBubbles for actions invoked by the system, like a new capability being available.
+- Use TeachingBubbles in a sequence to illustrate a flow or series of features.
+- Use TeachingBubbles for a limited time, usually while a feature is considered "new".
+- Show one TeachingBubble at a time.

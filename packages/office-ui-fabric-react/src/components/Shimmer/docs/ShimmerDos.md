@@ -1,6 +1,6 @@
-- Do use Shimmer to help ease a UI transition when we know the service will potentially take a longer amount of time to retrieve the data.
-- Do provide widths for each of the Shimmer elements you used to build a skeleton layout looking as close as possible to real content it is replacing.
-- Do use `isDataLoaded` prop to trigger the transition once we have the data from the service. The Shimmer UI should Fade out while the real UI Fades In.
-- Do use Shimmer if you know the UI loading time is longer than 1 second.
-- Do provide an ETA as quickly as possible to help the user understand that the system isn’t broken if the delay is longer than 10 seconds.
-- Do provide Shimmer designs for the breakpoints that your experience is supported in.
+- Use Shimmer to help ease a UI transition when we know the service will potentially take a longer amount of time to retrieve the data.
+- Provide widths for each of the Shimmer elements you used to build a skeleton layout looking as close as possible to real content it is replacing.
+- Use `isDataLoaded` prop to trigger the transition once we have the data from the service. The Shimmer UI should Fade out while the real UI Fades In.
+- Use Shimmer if you know the UI loading time is longer than 1 second.
+- Provide an ETA as quickly as possible to help the user understand that the system isn’t broken if the delay is longer than 10 seconds.
+- Provide Shimmer designs for the breakpoints that your experience is supported in.

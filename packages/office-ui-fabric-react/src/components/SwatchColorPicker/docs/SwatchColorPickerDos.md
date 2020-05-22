@@ -1,1 +1,1 @@
-- Do use SwatchColorPicker when there are multiple finite choices that can be grouped and/or collapsed under one title.
+- Use SwatchColorPicker when there are multiple finite choices that can be grouped and/or collapsed under one title.

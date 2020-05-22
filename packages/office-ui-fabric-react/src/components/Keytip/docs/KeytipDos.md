@@ -1,1 +1,1 @@
-- Do consider that Keytip sequences can be duplicated as long as none of their siblings have the same sequence.
+- Consider that Keytip sequences can be duplicated as long as none of their siblings have the same sequence.

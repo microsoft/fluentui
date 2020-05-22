@@ -1,3 +1,3 @@
-- Do use a Dropdown when there are multiple choices that can be collapsed under one title, if thier is a long list, or when space is constrained.
-- Do use shortened statements or words.
-- Do use a Dropdown when the selected option is more important than the alternatives (in contrast to radio buttons where all the choices are visible putting more emphasis on the other options).
+- Use a Dropdown when there are multiple choices that can be collapsed under one title, if thier is a long list, or when space is constrained.
+- Use shortened statements or words.
+- Use a Dropdown when the selected option is more important than the alternatives (in contrast to radio buttons where all the choices are visible putting more emphasis on the other options).

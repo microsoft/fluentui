@@ -1,1 +1,1 @@
-- Do place Breadcrumbs at the top of a page, above a list of items, or above the main content of a page.
+- Place Breadcrumbs at the top of a page, above a list of items, or above the main content of a page.

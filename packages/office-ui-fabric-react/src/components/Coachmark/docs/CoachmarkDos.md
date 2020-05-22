@@ -1,4 +1,4 @@
-- Do use only one Coachmark + TeachingBubble combo at a time.
-- Do use Coachmarks as stand alone or sequential. Sequential Coachmarks should be used sparingly, to walk through complex multi-step interactions. It is recommended that a sequence of Coachmarks does not exceed 3 steps.
-- Do provide descriptive text in the `ariaDescribedByText` prop to let impaired users know how to open/access the Coachmark with keyboard controls.
-- Do consider adding a delay. When the Coachmark loads on-screen: the default value `delayBeforeCoachmarkAnimation` is set to 0, but you can increase this number to delay when the coachmark is displayed. Adding a delay can make the Coachmark stand out more, so consider scenario needs and page load times when adjusting this number. A delay that's 2-4 seconds is recommended if you choose to use one.
+- Use only one Coachmark + TeachingBubble combo at a time.
+- Use Coachmarks as stand alone or sequential. Sequential Coachmarks should be used sparingly, to walk through complex multi-step interactions. It is recommended that a sequence of Coachmarks does not exceed 3 steps.
+- Provide descriptive text in the `ariaDescribedByText` prop to let impaired users know how to open/access the Coachmark with keyboard controls.
+- Consider adding a delay. When the Coachmark loads on-screen: the default value `delayBeforeCoachmarkAnimation` is set to 0, but you can increase this number to delay when the coachmark is displayed. Adding a delay can make the Coachmark stand out more, so consider scenario needs and page load times when adjusting this number. A delay that's 2-4 seconds is recommended if you choose to use one.

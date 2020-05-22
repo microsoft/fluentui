@@ -1,6 +1,6 @@
-- Do use Callouts to introduce new concepts in an experience where highlighting specific pieces of the UI is necessary.
-- Do be concise with the information you provide inside of a Callout. Short sentences or sentence fragments are best.
-- Do be helpful with the tip text inside of your Callout.
-- Do limit the information inside of a Callout to supplemental information that users don't have to read.
-- Do place Callouts near the object being described, usually at the pointer's tail or head if possible.
-- Do consider placing a link when additional context - or more advanced description - is necessary.
+- Use Callouts to introduce new concepts in an experience where highlighting specific pieces of the UI is necessary.
+- Be concise with the information you provide inside of a Callout. Short sentences or sentence fragments are best.
+- Be helpful with the tip text inside of your Callout.
+- Limit the information inside of a Callout to supplemental information that users don't have to read.
+- Place Callouts near the object being described, usually at the pointer's tail or head if possible.
+- Consider placing a link when additional context - or more advanced description - is necessary.

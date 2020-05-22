@@ -1,1 +1,1 @@
-- Do announce success.
+- Announce success.

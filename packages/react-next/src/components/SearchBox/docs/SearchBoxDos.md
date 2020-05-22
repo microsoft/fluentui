@@ -1,3 +1,3 @@
-- Do use placeholder text in the SearchBox to describe what users can search for.
-- Do use "hint text" once the user has clicked into the SearchBox but hasn’t entered input yet.
-- Do use the Underlined SearchBox for CommandBars.
+- Use placeholder text in the SearchBox to describe what users can search for.
+- Use "hint text" once the user has clicked into the SearchBox but hasn’t entered input yet.
+- Use the Underlined SearchBox for CommandBars.

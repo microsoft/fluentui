@@ -1,12 +1,12 @@
-- Do use TextField to accept data input on a form or page.
-- Do use a Label for TextField that contains a helpful name.
-- Do provide concise helper text that specifies what content is expected to be entered.
-- Do provide all appropriate states for the control (static, hover, focus, engaged, unavailable, error).
-- Do provide clear designations for which fields are required vs. optional when part of a form.
-- Do provide all appropriate methods for submitting provided data (e.g. dedicated ‘Submit’ button).
-- Do provide all appropriate methods of clearing provided data (‘X’ or something similar).
-- Do allow for selection, copy and paste of field data.
-- Do format TextField relative to the expected entry (4-digit PIN, 10-digit phone number (3 separate fields), etc).
-- Do provide a mechanism for overflow or expansion of the control itself when long entries are expected.
-- Do ensure that the TextField is functional through use of mouse/keyboard or touch when available.
-- Do ensure that the TextField is accessible through screen reader and/or other accessibility tools.
+- Use TextField to accept data input on a form or page.
+- Use a Label for TextField that contains a helpful name.
+- Provide concise helper text that specifies what content is expected to be entered.
+- Provide all appropriate states for the control (static, hover, focus, engaged, unavailable, error).
+- Provide clear designations for which fields are required vs. optional when part of a form.
+- Provide all appropriate methods for submitting provided data (e.g. dedicated ‘Submit’ button).
+- Provide all appropriate methods of clearing provided data (‘X’ or something similar).
+- Allow for selection, copy and paste of field data.
+- Format TextField relative to the expected entry (4-digit PIN, 10-digit phone number (3 separate fields), etc).
+- Provide a mechanism for overflow or expansion of the control itself when long entries are expected.
+- Ensure that the TextField is functional through use of mouse/keyboard or touch when available.
+- Ensure that the TextField is accessible through screen reader and/or other accessibility tools.

@@ -1,1 +1,1 @@
-- Do make it clear which product the rating pertains to by ensuring that the layout and grouping are clear when several products are on the page.
+- Make it clear which product the rating pertains to by ensuring that the layout and grouping are clear when several products are on the page.

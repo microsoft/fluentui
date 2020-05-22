@@ -1,4 +1,4 @@
-- Do use a Spinner when a task is not immediate.
-- Do use one Spinner at a time.
-- Do use descriptive verbs under a Spinner to help the user understand what's happening. Ie: Saving, processing, updating.
-- Do use a Spinner when confirming a change has been made or a task is being processed.
+- Use a Spinner when a task is not immediate.
+- Use one Spinner at a time.
+- Use descriptive verbs under a Spinner to help the user understand what's happening. Ie: Saving, processing, updating.
+- Use a Spinner when confirming a change has been made or a task is being processed.

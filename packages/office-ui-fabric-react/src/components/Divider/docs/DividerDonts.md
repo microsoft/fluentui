@@ -1,1 +1,1 @@
-- Do not use dividers for graphic decoration.
+- Don't use dividers for graphic decoration.

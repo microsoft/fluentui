@@ -1,1 +1,1 @@
-- Do use Text to display read-only text that inherits styling from ITheme.
+- Use Text to display read-only text that inherits styling from ITheme.

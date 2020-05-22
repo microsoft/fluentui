@@ -1,3 +1,3 @@
-- Do use the control as a single entity.
-- Do set the default date to the current date unless a specific date is required for context (e.g. the date of the conference).
-- Do allow the DatePicker to resize relative to available screen width.
+- Use the control as a single entity.
+- Set the default date to the current date unless a specific date is required for context (e.g. the date of the conference).
+- Allow the DatePicker to resize relative to available screen width.

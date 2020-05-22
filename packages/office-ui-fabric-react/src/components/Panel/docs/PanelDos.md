@@ -1,4 +1,4 @@
-- Do use Panel for self-contained experiences where the user does not need to interact with the app view to complete the task.
-- Do use Panel for complex creation, edit or management experiences.
-- Do consider how Panel and its contained contents will scale across Fluent UI React’s responsive web breakpoints.
-- Do ensure that you have a minimum width of 340px.
+- Use Panel for self-contained experiences where the user does not need to interact with the app view to complete the task.
+- Use Panel for complex creation, edit or management experiences.
+- Consider how Panel and its contained contents will scale across Fluent UI React’s responsive web breakpoints.
+- Ensure that you have a minimum width of 340px.

@@ -1,3 +1,3 @@
-- Do provide descriptive values for the alt text attribute for all images.
-- Do consider context. If the image represents a function, be sure to indicate that. If it is to be consumed with other objects on the page, consider that as well.
-- Do make the description brief but accurate. Use one sentence, two at the most.
+- Provide descriptive values for the alt text attribute for all images.
+- Consider context. If the image represents a function, be sure to indicate that. If it is to be consumed with other objects on the page, consider that as well.
+- Make the description brief but accurate. Use one sentence, two at the most.

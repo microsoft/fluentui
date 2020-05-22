@@ -1,3 +1,3 @@
-- Do use Modals for actionable interactions, such as needing the user to provide information or change settings.
-- Do try to use a non-blocking Modal before resorting to a blocking Modal.
-- Do use at least one focusable element inside a Modal.
+- Use Modals for actionable interactions, such as needing the user to provide information or change settings.
+- Try to use a non-blocking Modal before resorting to a blocking Modal.
+- Use at least one focusable element inside a Modal.

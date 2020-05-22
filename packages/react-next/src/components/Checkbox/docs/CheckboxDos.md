@@ -1,1 +1,1 @@
-- Do allow users to choose any combination of options when several Checkboxes are grouped together.
+- Allow users to choose any combination of options when several Checkboxes are grouped together.

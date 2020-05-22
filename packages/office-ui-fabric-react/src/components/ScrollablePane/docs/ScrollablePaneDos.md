@@ -1,4 +1,4 @@
-- Do ensure that the parent element has an explicit height and position: relative, or has space already allocated for ScrollablePane (e.g: flexbox).
-- Do use Sticky component on block level elements.
-- Do use Sticky component ideally as section headers and/or footers.
-- Do ensure that the total height of Sticky components don't exceed the height of the ScrollablePane.
+- Ensure that the parent element has an explicit height and position: relative, or has space already allocated for ScrollablePane (e.g: flexbox).
+- Use Sticky component on block level elements.
+- Use Sticky component ideally as section headers and/or footers.
+- Ensure that the total height of Sticky components don't exceed the height of the ScrollablePane.

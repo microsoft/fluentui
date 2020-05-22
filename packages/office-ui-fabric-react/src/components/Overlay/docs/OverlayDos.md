@@ -1,2 +1,2 @@
-- Do use a dark Overlay with a first-run experience.
-- Do use a white Overlay for dialogs and panels.
+- Use a dark Overlay with a first-run experience.
+- Use a white Overlay for dialogs and panels.

@@ -1,5 +1,5 @@
-- Do use Dialogs for quick, actionable interactions, such as making a choice or needing the user to provide information.
-- Do use when possible, non-blocking Dialog before resorting to a blocking Dialog.
-- Do include information needed to help users make a decision.
-- Do reflect avaible actions for the button text. (e.g. save, delete)
-- Do validate that the user's entries are acceptable before the Dialog is closed. An inline validation error should be shown near the field they need to correct.
+- Use Dialogs for quick, actionable interactions, such as making a choice or needing the user to provide information.
+- Use when possible, non-blocking Dialog before resorting to a blocking Dialog.
+- Include information needed to help users make a decision.
+- Reflect avaible actions for the button text. (e.g. save, delete)
+- Validate that the user's entries are acceptable before the Dialog is closed. An inline validation error should be shown near the field they need to correct.
