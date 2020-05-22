@@ -19,6 +19,22 @@ const fields = [
     inline: true,
   },
   {
+    label: 'First name',
+    name: 'firstName',
+    id: 'blah',
+    key: 'first-name',
+    required: true,
+    inline: true,
+  },
+  {
+    label: 'Last name',
+    name: 'lastName',
+    id: 'blah2',
+    key: 'last-name',
+    required: true,
+    inline: true,
+  },
+  {
     label: 'I agree to the Terms and Conditions',
     control: { as: 'input' },
     type: 'checkbox',
