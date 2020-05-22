@@ -36,7 +36,7 @@ const SelectableCard: React.FC<SelectableCardProps> = ({ title, index, selected,
       {...rest}
     >
       <Card.Header>
-        <Text content={title} weight="bold" />
+        <Text content={title} weight="bold" id={`user-title-${index}`} />
       </Card.Header>
       <Card.TopControls>
         <Checkbox accessibility={hiddenComponentBehavior} checked={selected} onClick={onClick} />
