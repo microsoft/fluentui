@@ -172,7 +172,7 @@ const Tree: React.FC<WithAsProp<TreeProps>> &
     initialValue: expandedItemsGenerator(items),
   });
 
-  const [selectedItemIds, setSelectedItemIdsState] = useAutoControlled({
+  const [selectedItemIds, setSelectedItemIdsState] = useAutoControlled<string[]>({
     defaultValue: props.defaultSelectedItemIds,
     value: props.selectedItemIds,
     initialValue: iterateItems(items),
