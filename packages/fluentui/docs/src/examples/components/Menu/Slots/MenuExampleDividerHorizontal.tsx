@@ -18,4 +18,4 @@ const MenuExampleDividerHorizontal = () => (
   </Menu>
 );
 
-export default MenuExampleKind;
+export default MenuExampleDividerHorizontal;
