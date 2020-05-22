@@ -334,6 +334,9 @@ export function getLastFocusable(rootElement: HTMLElement, currentElement: HTMLE
 export function getLastTabbable(rootElement: HTMLElement, currentElement: HTMLElement, includeElementsInFocusZones?: boolean, checkNode?: boolean): HTMLElement | null;
 
 // @public
+export function getNativeElementProps<TAttributes extends React.HTMLAttributes<any>>(tagName: keyof React.ReactHTML, props: {}, excludedPropNames?: string[]): TAttributes;
+
+// @public
 export function getNativeProps<T>(props: {}, allowedPropNames: string[], excludedPropNames?: string[]): T;
 
 // @public
