@@ -9,7 +9,7 @@ const MenuExampleWithSubMenu = () => (
       menu={
         <>
           <Menu.Item>
-            <Menu.ItemContent key="item1">item1</Menu.ItemContent>
+            <Menu.ItemContent>item1</Menu.ItemContent>
           </Menu.Item>
           <Menu.Item
             index={1}
@@ -41,7 +41,7 @@ const MenuExampleWithSubMenu = () => (
       menu={
         <>
           <Menu.Item>
-            <Menu.ItemContent key="item1">item1</Menu.ItemContent>
+            <Menu.ItemContent>item1</Menu.ItemContent>
           </Menu.Item>
           <Menu.Item
             index={1}

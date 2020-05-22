@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Menu } from '@fluentui/react-northstar';
 import { TriangleEndIcon } from '@fluentui/react-icons-northstar';
 
-const MenuExampleKind = () => (
+const MenuExampleDividerHorizontal = () => (
   <Menu defaultActiveIndex={0} underlined>
     <Menu.Item index={0}>
       <Menu.ItemContent>Editorials</Menu.ItemContent>

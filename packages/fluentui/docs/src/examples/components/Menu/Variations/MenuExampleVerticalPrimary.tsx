@@ -7,27 +7,23 @@ const MenuExampleVertical = () => (
     <Menu.Item
       index={0}
       icon={
-        <BookmarkIcon
-          {...{
-            outline: true,
-          }}
-        />
+        <BookmarkIcon outline />
       }
       content="Editorials"
     />
-    <Menu.Item index={1} content="Reviews" icon={<WordIcon {...{}} />} />
+    <Menu.Item index={1} content="Reviews" icon={<WordIcon />} />
     <Menu.Item index={2} content="Upcoming Events" />
     <Menu.Item
       index={3}
-      icon={<CalendarIcon {...{}} />}
+      icon={<CalendarIcon />}
       content="View full calendar with content so long that it wraps"
       menu={
         <>
           <Menu.Item>
-            <Menu.ItemContent key="item1">item1</Menu.ItemContent>
+            <Menu.ItemContent>item1</Menu.ItemContent>
           </Menu.Item>
           <Menu.Item>
-            <Menu.ItemContent key="item2">item2</Menu.ItemContent>
+            <Menu.ItemContent>item2</Menu.ItemContent>
           </Menu.Item>
           <Menu.Item
             content="item3"
