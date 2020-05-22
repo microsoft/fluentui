@@ -50,7 +50,7 @@ import Text, { TextProps } from '../Text/Text';
 import Reaction, { ReactionProps } from '../Reaction/Reaction';
 import { ReactionGroupProps } from '../Reaction/ReactionGroup';
 import { ChatItemContext } from './chatItemContext';
-import ChatMessageHeader from './ChatMessageHeader';
+import ChatMessageHeader, { ChatMessageHeaderProps } from './ChatMessageHeader';
 
 export interface ChatMessageSlotClassNames {
   actionMenu: string;
@@ -82,7 +82,7 @@ export interface ChatMessageProps
   mine?: boolean;
 
   /** A message cane have a custom header */
-  header?: ShorthandValue<BoxProps>;
+  header?: ShorthandValue<ChatMessageHeaderProps>;
 
   /** Timestamp of the message. */
   timestamp?: ShorthandValue<TextProps>;

@@ -1,4 +1,5 @@
-import { compose, ComponentWithAs, ShorthandConfig } from '@fluentui/react-bindings';
+import { compose } from '@fluentui/react-bindings';
+
 import { commonPropTypes } from '../../utils';
 import Box, { BoxProps, BoxStylesProps } from '../Box/Box';
 
@@ -21,6 +22,7 @@ const ChatMessageHeader = compose<
   className: ChatMessageHeaderClassName,
   displayName: 'ChatMessageHeader',
 
+  shorthandConfig: { mappedProp: 'content' },
   overrideStyles: true,
 });
 
