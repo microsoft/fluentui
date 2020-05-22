@@ -52,7 +52,7 @@ export type ComposeRenderFunction<T extends React.ElementType = 'div', P = {}> =
   composeOptions: ComposePreparedOptions,
 ) => React.ReactElement | null;
 
-export type ComposeOptions<InputProps = {}, InputStylesProps = {}, ParentStylesProps = {}> = {
+export type ComposeOptions<InputProps = {}, InputStylesProps = {}, ParentProps = {}, ParentStylesProps = {}> = {
   className?: string;
   classes?: ClassDictionary;
   displayName?: string;
@@ -64,9 +64,9 @@ export type ComposeOptions<InputProps = {}, InputStylesProps = {}, ParentStylesP
 
   slots?: Record<string, React.ElementType>;
 
-  mapPropsToSlotProps?: (props: InputProps) => Record<string, object>;
+  mapPropsToSlotProps?: (props: ParentProps & InputProps) => Record<string, object>;
 
-  shorthandConfig?: ShorthandConfig<InputProps>;
+  shorthandConfig?: ShorthandConfig<ParentProps & InputProps>;
 };
 
 export type ClassDictionary = {
