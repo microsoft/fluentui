@@ -117,16 +117,6 @@ export type MenuStylesProps = Required<
   >
 >;
 
-function useActualProps<P>(props: P) {
-  const actualProps = React.useRef<P>(props);
-
-  React.useEffect(() => {
-    actualProps.current = props;
-  });
-
-  return actualProps;
-}
-
 /**
  * A Menu is a component that offers a grouped list of choices to the user.
  *
@@ -162,13 +152,12 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
       design,
       secondary,
       accessibility,
+      onItemClick,
     } = props;
 
     const ElementType = getElementType(props);
     const slotProps = composeOptions.resolveSlotProps<MenuProps>(props);
     const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
-
-    const actualProps = useActualProps(props);
 
     const getA11yProps = useAccessibility<MenuBehaviorProps>(props.accessibility, {
       debugName: composeOptions.displayName,
@@ -216,12 +205,10 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
     const handleClick = React.useCallback(
       (e, itemProps) => {
         const { index } = itemProps;
-
         setActiveIndex(e, index);
-
-        _.invoke(actualProps.current, 'onItemClick', e, itemProps);
+        onItemClick && onItemClick(e, itemProps);
       },
-      [actualProps, setActiveIndex],
+      [setActiveIndex],
     );
 
     const handleItemOverrides = predefinedProps => ({
@@ -294,7 +281,7 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
       secondary,
       pills,
       inSubmenu: props.submenu,
-      // @TODO: please rework me
+      // TODO: please rework me
       accessibilityBehaviorForItem: childBehaviors?.item,
       accessibilityBehaviorForDivider: childBehaviors?.divider,
     };
@@ -356,7 +343,6 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
       'design',
       'styles',
       'variables',
-
       'activeIndex',
       'defaultActiveIndex',
       'fluid',
