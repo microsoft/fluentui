@@ -238,16 +238,8 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
 
     const slotProps = composeOptions.resolveSlotProps<MenuItemProps & MenuItemState>({
       ...props,
+      ...parentProps,
       accessibility,
-      active,
-      pointing,
-      primary,
-      underlined,
-      iconOnly,
-      vertical,
-      pills,
-      inSubmenu,
-      secondary,
       variables: mergeComponentVariables(variables, parentProps.variables),
       isFromKeyboard,
       menuOpen,
