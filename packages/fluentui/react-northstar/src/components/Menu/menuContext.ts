@@ -1,7 +1,6 @@
 import { createContext } from '@fluentui/react-context-selector';
 import { ComponentVariablesInput } from '@fluentui/styles';
 import * as React from 'react';
-import { MenuItemProps } from './MenuItem';
 import { Accessibility } from '@fluentui/accessibility';
 
 export type MenuContextValue = {
