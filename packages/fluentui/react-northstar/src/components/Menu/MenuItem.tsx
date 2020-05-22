@@ -219,7 +219,6 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
       pointing = parentProps.pointing,
       className,
       design,
-      onClick = parentProps.onItemClick,
       styles,
       variables,
     } = props;
