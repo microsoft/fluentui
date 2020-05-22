@@ -35,7 +35,7 @@ export function modalize(target: HTMLElement): HTMLElement[] {
  * HIGHLY recommend that you `delete` the array after calling this, to free up memory and remove unnecessary pointers to
  * random elements.
  */
-export function removeModalization(affectedNodes: HTMLElement[]) {
+export function unmodalize(affectedNodes: HTMLElement[]) {
   affectedNodes.forEach(node => {
     // set instead of removing in case other components explicitly set aria-hidden and do =="true" or =="false"
     node.setAttribute('aria-hidden', 'false');
