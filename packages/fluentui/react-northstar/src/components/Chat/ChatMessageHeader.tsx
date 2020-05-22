@@ -24,7 +24,6 @@ const ChatMessageHeader = compose<
   overrideStyles: true,
 });
 
-ChatMessageHeader.defaultProps = {};
 ChatMessageHeader.propTypes = commonPropTypes.createCommon();
 ChatMessageHeader.shorthandConfig = {};
 
