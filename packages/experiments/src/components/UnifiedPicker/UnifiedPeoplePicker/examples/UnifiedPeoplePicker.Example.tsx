@@ -73,7 +73,7 @@ export const UnifiedPeoplePickerExample = (): JSX.Element => {
     suggestionToRemove: IFloatingSuggestionItemProps<IPersonaProps>,
   ) => {
     setPeopleSuggestions(suggestions => {
-      const modifiedSuggestions = suggestions.filter(item => item.id !== suggestionToRemove.id);
+      const modifiedSuggestions = suggestions.filter(suggestion => suggestion.item.key !== suggestionToRemove.item.key);
       return modifiedSuggestions;
     });
   };
