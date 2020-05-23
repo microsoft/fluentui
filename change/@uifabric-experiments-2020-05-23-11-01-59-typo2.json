@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Fixed typos",
+  "packageName": "@uifabric/experiments",
+  "email": "xia_tony@hotmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-05-23T01:01:59.535Z"
+}
