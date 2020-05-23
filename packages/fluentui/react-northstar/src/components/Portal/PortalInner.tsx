@@ -41,7 +41,7 @@ const PortalInner: React.FC<PortalInnerProps> & FluentComponentStaticProps<Porta
     _.invoke(props, 'onMount', props);
 
     return () => _.invoke(props, 'onUnmount', props);
-  });
+  }, []);
   return container && ReactDOM.createPortal(children, container);
 };
 
