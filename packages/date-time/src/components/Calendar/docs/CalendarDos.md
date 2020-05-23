@@ -1,5 +1,4 @@
 - Use the control as a single entity.
 - Set the default date to the current date unless a specific date is required for context (e.g. the date of the conference).
-- Allow Calendar to render in either wide or narrow. The control is designed to resize relative to available screen width.
 - When the control is engaged, the Calendar renders as a flyout and has defined widths (300px -narrow and 440px – wide). Plan your UI implementation accordingly.
 - If allowing for manual entry of date, provide helper text in the appropriate format. The control renders date in a specific format.
