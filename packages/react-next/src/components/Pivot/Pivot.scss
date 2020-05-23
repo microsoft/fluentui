@@ -1,0 +1,191 @@
+@import '../../common/themeCssVariables';
+@import '../../common/highContrast';
+@import '../../common/focusBorder';
+@import '../../common/common';
+
+.root {
+  @include fonts-medium;
+  @include normalize;
+
+  position: relative;
+  color: var($semanticColorsLink);
+  white-space: nowrap;
+
+  // TODO how to deal with these?
+  //   rootIsLarge && classNames.rootIsLarge,
+  //   rootIsTabs && classNames.rootIsTabs,
+  //   className,
+}
+
+@mixin linkStyles {
+  @include fonts-medium;
+  color: var($semanticColorsActionLink);
+  display: inline-block;
+  line-height: 44px;
+  height: 44px;
+  margin-right: 8px;
+  padding: 0 8px;
+  text-align: center;
+  position: relative;
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+
+  &:before {
+    background-color: transparent;
+    bottom: 0;
+    content: '';
+    height: 2px;
+    left: 8px;
+    position: absolute;
+    right: 8px;
+    transition: left 0.267s cubic-bezier(0.1, 0.25, 0.75, 0.9), right 0.267s cubic-bezier(0.1, 0.25, 0.75, 0.9); // TODO AnimationVariables
+  }
+
+  &:after {
+    color: transparent;
+    content: attr(data-content);
+    display: block;
+    font-weight: bold; // TODO FontWeights.bold?
+    height: 1px;
+    overflow: hidden;
+    visibility: hidden;
+  }
+
+  &:hover {
+    background-color: var($semanticColorsButtonBackgroundHovered);
+    color: var($semanticColorsButtonTextHovered);
+    cursor: pointer;
+  }
+
+  &:active {
+    background-color: var($semanticColorsButtonBackgroundPressed);
+    color: var($semanticColorsButtonTextHovered);
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  @include focus(true) {
+    outline: 1px solid var($semanticColorsFocusBorder);
+  }
+
+  // TODO can this use @include focus?
+  :global(.ms-Fabric--isFocusVisible) &:focus:after {
+    content: attr(data-content);
+    position: relative;
+    border: 0;
+  }
+
+  &.rootIsLarge {
+    font-size: var($fontsLargeFontSize);
+  }
+
+  &.rootIsTabs {
+    margin-right: 0;
+    height: 44px;
+    line-height: 44px;
+    background-color: var($semanticColorsButtonBackground);
+    padding: 0 10px;
+    vertical-align: top;
+
+    &:focus {
+      outline-offset: -1px;
+    }
+
+    // TODO can this use @include focus?
+    :global(.ms-Fabric--isFocusVisible) &:focus::before {
+      height: auto;
+      background: transparent;
+      transition: none;
+    }
+  }
+}
+
+.link {
+  @include linkStyles;
+
+  &.rootIsTabs {
+    &:hover,
+    &:focus {
+      color: var($semanticColorsButtonTextCheckedHovered);
+    }
+    &:active,
+    &:hover {
+      color: var($semanticColorsPrimaryButtonText);
+      background-color: var($semanticColorsPrimaryButtonBackground);
+    }
+  }
+}
+
+.linkIsSelected {
+  @include linkStyles;
+
+  font-weight: 600; // TODO FontWeights.semibold
+  &:before {
+    background-color: var($semanticColorsInputBackgroundChecked);
+    @include high-contrast {
+      background-color: Highlight;
+    }
+  }
+  &:hover::before {
+    left: 0;
+    right: 0;
+  }
+  @include high-contrast {
+    color: Highlight;
+  }
+
+  &.rootIsTabs {
+    background-color: var($semanticColorsPrimaryButtonBackground);
+    color: var($semanticColorsPrimaryButtonText);
+    font-weight: normal; // TODO FontWeights.regular?
+    &:before {
+      background-color: transparent;
+      transition: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      content: '';
+      height: auto;
+    }
+    &:hover {
+      background-color: var($semanticColorsPrimaryButtonBackgroundHovered);
+      color: var($semanticColorsPrimaryButtonText);
+    }
+    &:active {
+      background-color: var($semanticColorsPrimaryButtonBackgroundPressed);
+      color: var($semanticColorsPrimaryButtonText);
+    }
+    @include high-contrast {
+      font-weight: 600; // TODO FontWeights.semibold
+      color: HighlightText;
+      background: Highlight;
+      -ms-high-contrast-adjust: none;
+    }
+  }
+}
+
+.linkContent {
+  flex: 0 1 100%;
+  & > *:not(:first-child) {
+    margin-left: 4px;
+  }
+}
+
+.text {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.count {
+  display: inline-block;
+  vertical-align: top;
+}
+
+// .icon {
+// TODO empty??
+// }

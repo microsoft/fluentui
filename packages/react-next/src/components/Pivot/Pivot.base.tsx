@@ -17,8 +17,11 @@ import { PivotItem } from './PivotItem';
 import { PivotLinkFormat } from './Pivot.types';
 import { PivotLinkSize } from './Pivot.types';
 import { Icon } from '../../Icon';
+import { css } from 'office-ui-fabric-react';
 
-const getClassNames = classNamesFunction<IPivotStyleProps, IPivotStyles>();
+const getClassNames = classNamesFunction<IPivotStyleProps, IPivotStyles>({
+  useStaticStyles: true,
+});
 const PivotName = 'Pivot';
 
 export interface IPivotState {
@@ -173,7 +176,7 @@ export class PivotBase extends React.Component<IPivotProps, IPivotState> {
         {...headerButtonProps}
         id={tabId}
         key={itemKey}
-        className={isSelected ? this._classNames.linkIsSelected : this._classNames.link}
+        className={css(this._classNames.link, isSelected && this._classNames.linkIsSelected)}
         onClick={this._onLinkClick.bind(this, itemKey)}
         onKeyPress={this._onKeyPress.bind(this, itemKey)}
         ariaLabel={link.ariaLabel}
