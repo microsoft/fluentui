@@ -58,7 +58,6 @@ PortalInner.propTypes = {
   onUnmount: PropTypes.func,
 };
 
-PortalInner.handledProps = Object.keys(PortalInner.propTypes) as any;
 
 
 export default PortalInner;
