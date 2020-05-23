@@ -38,7 +38,7 @@ import { FlexStylesProps } from '../../components/Flex/Flex';
 import { FormStylesProps } from '../../components/Form/Form';
 import { FormFieldStylesProps } from '../../components/Form/FormField';
 import { GridProps } from '../../components/Grid/Grid';
-import { HeaderDescriptionProps } from '../../components/Header/HeaderDescription';
+import { HeaderDescriptionStylesProps } from '../../components/Header/HeaderDescription';
 import { HeaderStylesProps } from '../../components/Header/Header';
 import { ImageStylesProps } from '../../components/Image/Image';
 import { InputStylesProps } from '../../components/Input/Input';
@@ -132,7 +132,7 @@ export type TeamsThemeStylesProps = {
   FormField: FormFieldStylesProps;
   Grid: GridProps;
   Header: HeaderStylesProps;
-  HeaderDescription: HeaderDescriptionProps;
+  HeaderDescription: HeaderDescriptionStylesProps;
   SvgIcon: SvgIconStylesProps;
   Image: ImageStylesProps;
   Input: InputStylesProps;
