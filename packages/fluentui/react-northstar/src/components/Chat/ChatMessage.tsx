@@ -330,7 +330,7 @@ const ChatMessage: React.FC<WithAsProp<ChatMessageProps>> & FluentComponentStati
       styles: resolvedStyles.header,
     }),
     overrideProps: () => ({
-      children: (
+      content: (
         <>
           {authorElement}
           {timestampElement}
