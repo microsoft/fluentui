@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { findIndex, range, unionBy } from 'lodash';
 import { ScaleTime } from 'd3-scale';
 import { ILineDef, LabelLink, ILabelDef } from './LabelLink';
 import { IEventsAnnotationProps } from '../LineChart.types';
@@ -24,7 +23,7 @@ export function EventsAnnotation(props: IEventsAnnotationExtendProps) {
 
   lineDefs.sort((e1, e2) => +e1.date - +e2.date);
 
-  const lines = unionBy(lineDefs, x => x.date.toString()).map((x, i) => (
+  const lines = uniqBy(lineDefs, x => x.date.toString()).map((x, i) => (
     <line
       key={i}
       x1={x.x}
@@ -115,4 +114,37 @@ function calculateLabels(lineDefs: ILineDef[], textWidth: number, maxX: number, 
   };
 
   return calculateLabel(minX, 0);
+}
+
+// Copies of lodash functions. None of these are complex enough to justify a dep on lodash
+// (and we should never have implicit deps).
+
+function uniqBy<T>(arr: T[], iteratee: (x: T) => string): T[] {
+  const seen: string[] = [];
+  const result: T[] = [];
+  for (const x of arr) {
+    const comp = iteratee(x);
+    if (seen.indexOf(comp) === -1) {
+      result.push(x);
+      seen.push(comp);
+    }
+  }
+  return result;
+}
+
+function range(min: number, max: number): number[] {
+  const nums: number[] = [];
+  for (let i = min; i < max; i++) {
+    nums.push(i);
+  }
+  return nums;
+}
+
+function findIndex<T>(arr: T[], predicate: (x: T) => boolean, fromIndex: number): number {
+  for (let i = fromIndex; i < arr.length; i++) {
+    if (predicate(arr[i])) {
+      return i;
+    }
+  }
+  return -1;
 }

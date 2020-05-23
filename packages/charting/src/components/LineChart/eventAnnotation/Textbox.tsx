@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { select } from 'd3-selection';
-import { omit } from 'lodash';
 
 interface ITextboxProps {
   text: string;
@@ -52,5 +51,7 @@ export function Textbox(props: ITextboxProps) {
   };
   React.useEffect(wrapWords);
 
-  return <text ref={textElementRef} {...omit(props, 'lineHeight')} />;
+  const { lineHeight, ...rest } = props;
+
+  return <text ref={textElementRef} {...rest} />;
 }
