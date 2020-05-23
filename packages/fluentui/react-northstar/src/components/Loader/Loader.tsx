@@ -90,7 +90,7 @@ const Loader: React.FC<WithAsProp<LoaderProps>> &
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Loader.handledProps, props);
 
-  let delayTimer: number;
+  const delayTimer = React.useRef<number>();
   const [visible, setVisible] = React.useState(props.delay === 0);
 
   const labelId = React.useRef<string>();
