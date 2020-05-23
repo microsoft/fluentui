@@ -47,7 +47,7 @@ import { LabelStylesProps } from '../../components/Label/Label';
 import { LayoutProps } from '../../components/Layout/Layout';
 import { ListStylesProps } from '../../components/List/List';
 import { ListItemStylesProps } from '../../components/List/ListItem';
-import { LoaderProps } from '../../components/Loader/Loader';
+import { LoaderStylesProps } from '../../components/Loader/Loader';
 import { MenuItemStylesProps } from '../../components/Menu/MenuItem';
 import { MenuItemIconStylesProps } from '../../components/Menu/MenuItemIcon';
 import { MenuItemIndicatorStylesProps } from '../../components/Menu/MenuItemIndicator';
@@ -141,7 +141,7 @@ export type TeamsThemeStylesProps = {
   Layout: LayoutProps;
   List: ListStylesProps;
   ListItem: ListItemStylesProps;
-  Loader: LoaderProps;
+  Loader: LoaderStylesProps;
   Menu: MenuStylesProps;
   MenuItem: MenuItemStylesProps;
   MenuItemIcon: MenuItemIconStylesProps;
