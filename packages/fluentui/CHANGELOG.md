@@ -40,6 +40,9 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Restricted prop sets in the `Header` component which are passed to styles functions and remove the usage of `descriptionColor` as a resolved variable, @assuncaocharles ([#13253](https://github.com/microsoft/fluentui/pull/13253))
 - Updated durations and timing functions, removed `bounce` animations and added new animations in Teams theme @mnajdova ([#13046](https://github.com/microsoft/fluentui/pull/13046))
 - Removed `dismissActionColorActive`, `dismissActionBackgroundColorActive`, `dismissActionBorderColorActive` from `Alert`'s variables in Teams theme @mnajdova ([#13046](https://github.com/microsoft/fluentui/pull/13046))
+- Removed `themes` export, each theme is exported separately @layershifter ([#13268](https://github.com/microsoft/fluentui/pull/13268))
+- Restricted prop sets in the `HeaderDescription` component which are passed to styles functions, @assuncaocharles ([#13296](https://github.com/microsoft/fluentui/pull/13296))
+- Restricted prop sets in the `Loader` component which are passed to styles functions, @assuncaocharles ([#13297](https://github.com/microsoft/fluentui/pull/13297))
 
 ### Fixes
 - Fix `splitButtonBehavior` to exclude `toggleButton` from focus zone @silviuavram ([#13043](https://github.com/microsoft/fluentui/pull/13043))
@@ -49,6 +52,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Wrapped `Alert`, `Attachment`, `Box` and `ListItem` FC with `unstable_wrapWithFocusZone` @assuncaocharles ([#13093](https://github.com/microsoft/fluentui/pull/13093))
 - Fix to use `useRef()` hook in functional components @layershifter ([#13228](https://github.com/microsoft/fluentui/pull/13228))
 - Exclude useless updates, fix `fixed` positioning in `Popper` @layershifter @kolaps33 ([#13044](https://github.com/microsoft/fluentui/pull/13044))
+- Fix showing loading message in `Dropdown` when list of items has scroll @assuncaocharles ([#13175](https://github.com/microsoft/fluentui/pull/13175))
 
 ### Features
 - Added icons: `TranscriptIcon`, `FilesGenericColoredIcon`, `FilesHtmlColoredIcon`, `FilesPdfColoredIcon`, `FilesPictureColoredIcon`, `FilesTextColoredIcon`, `PopupIcon`, `ShareGenericIcon`, `ComposeIcon`, `SpotlightStopIcon`, `TenantWorkIcon`, `TenantPersonalIcon`, `WorkOrSchoolIcon`, `EmailWithDotIcon`. Modified: `ShareLocationIcon`, `SpotlightIcon`. @TanelVari ([#12872](https://github.com/microsoft/fluentui/pull/12872))

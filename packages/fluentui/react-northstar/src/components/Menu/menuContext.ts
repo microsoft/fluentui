@@ -35,7 +35,6 @@ export type MenuContextSubscribedValue = Pick<
   | 'secondary'
   | 'accessibilityBehaviorForItem'
   | 'accessibilityBehaviorForDivider'
-  | 'onItemClick'
   | 'menuSlot'
 > & {
   active: boolean;
@@ -55,7 +54,7 @@ export const MenuContext = createContext<MenuContextValue>(
     inSubmenu: false,
     accessibilityBehaviorForItem: undefined,
     accessibilityBehaviorForDivider: undefined,
-    onItemClick: () => {},
+    onItemClick: null,
     menuSlot: null,
   },
   { strict: false },

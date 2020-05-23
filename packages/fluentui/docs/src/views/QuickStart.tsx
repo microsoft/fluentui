@@ -35,7 +35,7 @@ export default () => (
         import App from './App'
 
         ReactDOM.render(
-          <Provider theme={themes.teams}>
+          <Provider theme={teamsTheme}>
             <App />
           </Provider>,
           document.getElementById('root'),
