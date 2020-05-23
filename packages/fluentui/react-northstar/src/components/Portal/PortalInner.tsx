@@ -29,7 +29,7 @@ export interface PortalInnerProps extends ChildrenComponentProps {
 /**
  * A PortalInner is a container for Portal's content.
  */
-const PortalInner: React.FC<PortalInnerProps> & FluentComponentStaticProps<PortalInnerProps> = props => {
+const PortalInner: React.FC<PortalInnerProps> = props => {
   const context = React.useContext(PortalBoxContext);
   const { children, mountNode } = props;
 
