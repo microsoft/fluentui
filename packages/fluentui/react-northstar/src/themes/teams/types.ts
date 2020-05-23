@@ -57,7 +57,7 @@ import { MenuStylesProps } from '../../components/Menu/Menu';
 import { MenuDividerStylesProps } from '../../components/Menu/MenuDivider';
 import { PopupContentStylesProps } from '../../components/Popup/PopupContent';
 import { PortalProps } from '../../components/Portal/Portal';
-import { RadioGroupItemProps } from '../../components/RadioGroup/RadioGroupItem';
+import { RadioGroupItemStylesProps } from '../../components/RadioGroup/RadioGroupItem';
 import { RadioGroupProps } from '../../components/RadioGroup/RadioGroup';
 import { ReactionStylesProps } from '../../components/Reaction/Reaction';
 import { ReactionGroupStylesProps } from '../../components/Reaction/ReactionGroup';
@@ -152,7 +152,7 @@ export type TeamsThemeStylesProps = {
   Portal: PortalProps;
   PopupContent: PopupContentStylesProps;
   RadioGroup: RadioGroupProps;
-  RadioGroupItem: RadioGroupItemProps;
+  RadioGroupItem: RadioGroupItemStylesProps;
   Reaction: ReactionStylesProps;
   ReactionGroup: ReactionGroupStylesProps;
   Segment: SegmentStylesProps;

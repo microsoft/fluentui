@@ -63,6 +63,7 @@ export { default as toolbarRadioGroupBehavior } from './Toolbar/toolbarRadioGrou
 export { default as toolbarRadioGroupItemBehavior } from './Toolbar/toolbarRadioGroupItemBehavior';
 export { default as radioGroupBehavior } from './Radio/radioGroupBehavior';
 export { default as radioGroupItemBehavior } from './Radio/radioGroupItemBehavior';
+export * from './Radio/radioGroupItemBehavior';
 export * from './Popup/popupBehavior';
 export { default as popupBehavior } from './Popup/popupBehavior';
 export { default as chatBehavior } from './Chat/chatBehavior';
