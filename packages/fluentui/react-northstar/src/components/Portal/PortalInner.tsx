@@ -60,8 +60,5 @@ PortalInner.propTypes = {
 
 PortalInner.handledProps = Object.keys(PortalInner.propTypes) as any;
 
-PortalInner.create = createShorthandFactory({
-  Component: PortalInner,
-});
 
 export default PortalInner;
