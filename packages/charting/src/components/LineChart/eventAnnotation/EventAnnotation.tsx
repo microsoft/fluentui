@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { ScaleTime } from 'd3-scale';
+import { findIndex } from 'office-ui-fabric-react/lib/Utilities';
 import { ILineDef, LabelLink, ILabelDef } from './LabelLink';
 import { IEventsAnnotationProps } from '../LineChart.types';
 
@@ -106,7 +107,10 @@ function calculateLabels(lineDefs: ILineDef[], textWidth: number, maxX: number, 
       idx = lineDefs.length;
     }
 
-    const aggregatedIdx = range(currentIdx, idx);
+    const aggregatedIdx: number[] = [];
+    for (let i = currentIdx; i < idx; i++) {
+      aggregatedIdx.push(i);
+    }
     const next = calculateLabel(bd, idx);
 
     next.unshift({ x: lineDefs[currentIdx].x, anchor, aggregatedIdx });
@@ -116,9 +120,7 @@ function calculateLabels(lineDefs: ILineDef[], textWidth: number, maxX: number, 
   return calculateLabel(minX, 0);
 }
 
-// Copies of lodash functions. None of these are complex enough to justify a dep on lodash
-// (and we should never have implicit deps).
-
+/** Get unique items of `arr`, comparing based on the result of calling `iteratee` on each item. */
 function uniqBy<T>(arr: T[], iteratee: (x: T) => string): T[] {
   const seen: string[] = [];
   const result: T[] = [];
@@ -130,21 +132,4 @@ function uniqBy<T>(arr: T[], iteratee: (x: T) => string): T[] {
     }
   }
   return result;
-}
-
-function range(min: number, max: number): number[] {
-  const nums: number[] = [];
-  for (let i = min; i < max; i++) {
-    nums.push(i);
-  }
-  return nums;
-}
-
-function findIndex<T>(arr: T[], predicate: (x: T) => boolean, fromIndex: number): number {
-  for (let i = fromIndex; i < arr.length; i++) {
-    if (predicate(arr[i])) {
-      return i;
-    }
-  }
-  return -1;
 }
