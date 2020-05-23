@@ -155,7 +155,7 @@ const Loader: React.FC<WithAsProp<LoaderProps>> &
           getA11yProps('label', {
             className: loaderSlotClassNames.label,
             styles: resolvedStyles.label,
-            id: labelId,
+            id: labelId.current,
           }),
       })}
     </ElementType>
