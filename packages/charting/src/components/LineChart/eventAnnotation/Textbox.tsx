@@ -12,8 +12,7 @@ interface ITextboxProps {
   fill?: string;
 }
 
-/* tslint:disable-next-line:function-name */
-export function Textbox(props: ITextboxProps) {
+export const Textbox: React.FunctionComponent<ITextboxProps> = props => {
   const textElementRef: React.RefObject<SVGTextElement> = React.useRef(null);
 
   const wrapWords = () => {
@@ -54,4 +53,4 @@ export function Textbox(props: ITextboxProps) {
   const { lineHeight, ...rest } = props;
 
   return <text ref={textElementRef} {...rest} />;
-}
+};

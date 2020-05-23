@@ -10,8 +10,7 @@ interface IEventsAnnotationExtendProps extends IEventsAnnotationProps {
   chartYTop: number;
 }
 
-/* tslint:disable-next-line:function-name */
-export function EventsAnnotation(props: IEventsAnnotationExtendProps) {
+export const EventsAnnotation: React.FunctionComponent<IEventsAnnotationExtendProps> = props => {
   const textWidth = props.labelWidth ? props.labelWidth : 105;
   const textY = props.chartYTop - 20;
   const lineTopY = textY + 7;
@@ -58,7 +57,7 @@ export function EventsAnnotation(props: IEventsAnnotationExtendProps) {
       {labelLinks}
     </>
   );
-}
+};
 
 function calculateLabels(lineDefs: ILineDef[], textWidth: number, maxX: number, minX: number): ILabelDef[] {
   const calculateLabel = (lastX: number, currentIdx: number): ILabelDef[] => {
