@@ -21,6 +21,7 @@ export { default as ButtonContent } from './components/Button/buttonContentStyle
 export { default as Chat } from './components/Chat/chatStyles';
 export { default as ChatItem } from './components/Chat/chatItemStyles';
 export { default as ChatMessage } from './components/Chat/chatMessageStyles';
+export { default as ChatMessageHeader } from './components/Chat/chatMessageHeaderStyles';
 
 export { default as Checkbox } from './components/Checkbox/checkboxStyles';
 
