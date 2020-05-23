@@ -123,12 +123,12 @@ const Loader: React.FC<WithAsProp<LoaderProps>> &
   React.useEffect(() => {
     if (delay > 0) {
       // @ts-ignore We have a collision between types from DOM and @types/node
-      delayTimer = setTimeout(() => {
+      delayTimer.current = setTimeout(() => {
         setVisible(true);
       }, delay);
     }
 
-    return () => clearTimeout(delayTimer);
+    return () => clearTimeout(delayTimer.current);
   }, [delay]);
 
   const svgElement = Box.create(svg, {
