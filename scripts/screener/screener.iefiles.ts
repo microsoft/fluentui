@@ -1,1 +1,3 @@
-export default ['*types/*Example.tsx', '*types/*Example.shorthand.tsx'];
+const defaultExamples = ['Alert'].map(example => `/^${example}Example.tsx$/`);
+
+export default [...defaultExamples];
