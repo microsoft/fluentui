@@ -1,1 +1,1 @@
-export default [/usage\/.+Example\.ts/];
+export default [/types\/.+Example\.tsx/];
