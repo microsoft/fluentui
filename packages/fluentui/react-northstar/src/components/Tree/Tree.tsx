@@ -236,7 +236,7 @@ const Tree: React.FC<WithAsProp<TreeProps>> &
 
       setSelectedItemIdsState(selectedItemIds);
     },
-    [stableProps, setSelectedItemIdsState],
+    [stableProps, setSelectedItemIdsState, selectedItemIds.length],
   );
 
   const setActiveItemIds = React.useCallback(
