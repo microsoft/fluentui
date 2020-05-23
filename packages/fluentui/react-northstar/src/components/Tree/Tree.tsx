@@ -351,7 +351,7 @@ const Tree: React.FC<WithAsProp<TreeProps>> &
         expandItems(e, treeItemProps);
       }
     },
-    [hasSubtree, expandItems, processItemsForSelection],
+    [expandItems, processItemsForSelection],
   );
 
   const onFocusFirstChild = React.useCallback(
