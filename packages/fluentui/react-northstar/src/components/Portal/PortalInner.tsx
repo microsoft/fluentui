@@ -5,7 +5,7 @@ import * as ReactDOM from 'react-dom';
 import { isBrowser, ChildrenComponentProps, commonPropTypes, createShorthandFactory } from '../../utils';
 import { PortalBoxContext } from '../Provider/usePortalBox';
 import * as customPropTypes from '@fluentui/react-proptypes';
-import { FluentComponentStaticProps } from 'src/types';
+import { FluentComponentStaticProps } from '../../types';
 
 export interface PortalInnerProps extends ChildrenComponentProps {
   /** Existing element the portal should be bound to. */
