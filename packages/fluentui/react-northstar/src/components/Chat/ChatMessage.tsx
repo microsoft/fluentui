@@ -326,9 +326,6 @@ const ChatMessage: React.FC<WithAsProp<ChatMessageProps>> & FluentComponentStati
   });
 
   const headerElement = createShorthand(ChatMessageHeader, header, {
-    defaultProps: () => ({
-      styles: resolvedStyles.header,
-    }),
     overrideProps: () => ({
       content: (
         <>

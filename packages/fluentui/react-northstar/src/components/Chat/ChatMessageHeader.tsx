@@ -10,7 +10,7 @@ export type ChatMessageHeaderStylesProps = never;
 export const ChatMessageHeaderClassName = `ui-chat__message__header`;
 
 /**
- * A ChatMessageHeader provides a title for the Attachment.
+ * A ChatMessageHeader provides a slot for author/date/reactions for the ChatMessage.
  */
 const ChatMessageHeader = compose<
   'div',
@@ -21,7 +21,6 @@ const ChatMessageHeader = compose<
 >(Box, {
   className: ChatMessageHeaderClassName,
   displayName: 'ChatMessageHeader',
-
   shorthandConfig: { mappedProp: 'content' },
   overrideStyles: true,
 });
