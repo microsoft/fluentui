@@ -37,7 +37,7 @@ const PortalInner: React.FC<PortalInnerProps> & FluentComponentStaticProps<Porta
   // eslint-disable-next-line
   const target: HTMLElement | null = isBrowser() ? context || document.body : null;
   const container: HTMLElement | null = mountNode || target;
-  React.useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     _.invoke(props, 'onMount', props);
 
     return () => _.invoke(props, 'onUnmount', props);
