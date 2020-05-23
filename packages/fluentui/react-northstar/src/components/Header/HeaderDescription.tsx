@@ -24,7 +24,7 @@ export interface HeaderDescriptionProps
   /**
    * Accessibility behavior if overridden by the user.
    */
-  accessibility?: Accessibility;
+  accessibility?: Accessibility<never>;
 }
 
 export const headerDescriptionClassName = 'ui-header__description';
