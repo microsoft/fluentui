@@ -108,7 +108,7 @@ const RadioGroupItem: React.FC<WithAsProp<RadioGroupItemProps>> &
   };
 
   React.useEffect(() => {
-    checked && shouldFocus && elementRef.current.focus();
+    if (checked && shouldFocus) elementRef.current.focus();
     _.invoke(props, 'onChange', undefined, { ...props, checked });
   }, [checked, shouldFocus]);
 
