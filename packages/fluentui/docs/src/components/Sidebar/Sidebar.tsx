@@ -148,21 +148,21 @@ class Sidebar extends React.Component<any, any> {
             },
           },
           {
-            key: 'composition',
-            title: {
-              as: NavLink,
-              content: 'Composition',
-              activeClassName: 'active',
-              to: '/composition',
-            },
-          },
-          {
             key: 'shorthand',
             title: {
               as: NavLink,
               content: 'Shorthand Props',
               activeClassName: 'active',
               to: '/shorthand-props',
+            },
+          },
+          {
+            key: 'composition',
+            title: {
+              as: NavLink,
+              content: 'Composition',
+              activeClassName: 'active',
+              to: '/composition',
             },
           },
           {
