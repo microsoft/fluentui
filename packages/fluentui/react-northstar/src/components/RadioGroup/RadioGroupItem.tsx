@@ -91,7 +91,7 @@ const RadioGroupItem: React.FC<WithAsProp<RadioGroupItemProps>> &
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(RadioGroupItem.displayName, context.telemetry);
   setStart();
-  const { label, indicator, disabled, vertical, className, design, styles, variables } = props;
+  const { label, indicator, disabled, vertical, className, design, styles, variables, shouldFocus } = props;
   const elementRef = React.useRef<HTMLElement>();
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(RadioGroupItem.handledProps, props);
@@ -108,9 +108,9 @@ const RadioGroupItem: React.FC<WithAsProp<RadioGroupItemProps>> &
   };
 
   React.useEffect(() => {
-    checked && props.shouldFocus && elementRef.current.focus();
+    checked && shouldFocus && elementRef.current.focus();
     _.invoke(props, 'onChange', undefined, { ...props, checked });
-  }, [checked]);
+  }, [checked, shouldFocus]);
 
   const { classes, styles: resolvedStyles } = useStyles<RadioGroupItemStylesProps>(RadioGroupItem.displayName, {
     className: radioGroupItemClassName,
