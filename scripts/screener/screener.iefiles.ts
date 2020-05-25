@@ -77,6 +77,6 @@ const specificExamples = [
   'TooltipExamplePointing',
   'TreeInitiallyOpenExample',
   'TreeMultiselectExample',
-].map(example => new RegExp(`^${example}`));
+].map(example => new RegExp(`${example}`));
 
 export default [...defaultExamples, ...specificExamples];
