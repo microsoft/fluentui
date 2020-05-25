@@ -4,8 +4,8 @@ import { ChatMessageVariables } from './chatMessageVariables';
 
 const chatMessageHeaderStyles: ComponentSlotStylesPrepared<ChatMessageHeaderStylesProps, ChatMessageVariables> = {
   root: () => ({
-    display: 'flex',
-    alignItems: 'center',
+    display: 'block',
+    width: 'max-content',
     whiteSpace: 'nowrap',
   }),
 };
