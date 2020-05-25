@@ -15,7 +15,7 @@ const reactions: ReactionGroupProps['items'] = [
   { key: 'smile', icon: <EmojiIcon />, content: 5 },
 ];
 
-const items: ShorthandCollection<ChatItemProps> = [
+const items: ChatProps['items'] = [
   {
     attached: 'top',
     contentPosition: 'end',
