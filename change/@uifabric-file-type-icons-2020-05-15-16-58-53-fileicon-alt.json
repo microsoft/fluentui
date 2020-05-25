@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Add empty alt text for filetype icon img",
-  "packageName": "@uifabric/file-type-icons",
-  "email": "erabelle@microsoft.com",
-  "commit": "cb1f4f4575834c9467223560be33adbffef1c373",
-  "date": "2020-05-15T23:58:53.763Z"
-}

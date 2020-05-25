@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Remove implicit dep on lodash and fix other imports",
-  "packageName": "@uifabric/charting",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-05-23T05:12:06.167Z"
-}

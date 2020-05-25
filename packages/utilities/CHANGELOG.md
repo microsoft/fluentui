@@ -1,8 +1,17 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Fri, 22 May 2020 12:37:35 GMT and should not be manually modified.
+This log was last generated on Mon, 25 May 2020 12:38:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.20.0](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.20.0)
+
+Mon, 25 May 2020 12:38:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.19.0..@uifabric/utilities_v7.20.0)
+
+### Minor changes
+
+- findIndex: add fromIndex parameter ([PR #13295](https://github.com/microsoft/fluentui/pull/13295) by elcraig@microsoft.com)
 
 ## [7.19.0](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.19.0)
 
