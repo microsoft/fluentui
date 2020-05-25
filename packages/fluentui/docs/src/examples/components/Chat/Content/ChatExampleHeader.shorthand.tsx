@@ -1,12 +1,4 @@
-import {
-  Avatar,
-  Chat,
-  ChatItemProps,
-  ShorthandCollection,
-  Text,
-  ReactionGroup,
-  ReactionGroupProps,
-} from '@fluentui/react-northstar';
+import { Avatar, Chat, Text, ReactionGroup, ReactionGroupProps } from '@fluentui/react-northstar';
 import * as React from 'react';
 import { EmojiIcon, LikeIcon } from '@fluentui/react-icons-northstar';
 
