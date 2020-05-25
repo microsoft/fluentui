@@ -42,16 +42,7 @@ export const MenuContext = createContext<MenuContextValue>(
     onItemClick: null,
 
     slotProps: {
-      item: {
-        pointing: false,
-        primary: false,
-        underlined: false,
-        iconOnly: false,
-        vertical: false,
-        secondary: false,
-        pills: false,
-        inSubmenu: false,
-      },
+      item: {},
       divider: {
         pointing: false,
         primary: false,
