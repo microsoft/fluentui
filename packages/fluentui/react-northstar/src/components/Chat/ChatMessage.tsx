@@ -55,7 +55,6 @@ import ChatMessageHeader, { ChatMessageHeaderProps } from './ChatMessageHeader';
 export interface ChatMessageSlotClassNames {
   actionMenu: string;
   author: string;
-  header: string;
   timestamp: string;
   badge: string;
   content: string;
@@ -137,7 +136,6 @@ export const chatMessageClassName = 'ui-chat__message';
 export const chatMessageSlotClassNames: ChatMessageSlotClassNames = {
   actionMenu: `${chatMessageClassName}__actions`,
   author: `${chatMessageClassName}__author`,
-  header: `${chatMessageClassName}__header`,
   timestamp: `${chatMessageClassName}__timestamp`,
   badge: `${chatMessageClassName}__badge`,
   content: `${chatMessageClassName}__content`,
