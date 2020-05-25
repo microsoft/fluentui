@@ -111,12 +111,12 @@ const chatMessageStyles: ComponentSlotStylesPrepared<ChatMessageStylesProps, Cha
     ...((p.mine || p.attached === 'bottom' || p.attached === true) && (screenReaderContainerStyles as ICSSInJSStyle)),
     color: v.authorColor,
     marginRight: v.authorMarginRight,
-    marginBottom: v.headerMarginBottom,
+    // marginBottom: v.headerMarginBottom,
     fontWeight: v.authorFontWeight,
   }),
 
   timestamp: ({ props: p, variables: v }) => ({
-    marginBottom: v.headerMarginBottom,
+    // marginBottom: v.headerMarginBottom,
     ...(p.mine && {
       color: v.timestampColorMine,
     }),

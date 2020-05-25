@@ -4,14 +4,15 @@ import { ChatMessageVariables } from './chatMessageVariables';
 import { screenReaderContainerStyles } from '../../../../utils/accessibility/Styles/accessibilityStyles';
 
 const chatMessageHeaderStyles: ComponentSlotStylesPrepared<ChatMessageHeaderStylesProps, ChatMessageVariables> = {
-  root: ({ props: p }) => {
+  root: ({ props: p, theme: { siteVariables } }) => {
     return {
       width: '100%',
       overflow: 'hidden',
       whiteSpace: 'nowrap',
-      display: 'center',
+      display: 'inline-flex',
       alignItems: 'center',
       justifyContent: 'space-between',
+      fontLineHeightSmall: siteVariables.lineHeightSmall,
       ...((p.attached === 'bottom' || p.attached === true) &&
         !p.hasReactionGroup &&
         (screenReaderContainerStyles as ICSSInJSStyle)),
