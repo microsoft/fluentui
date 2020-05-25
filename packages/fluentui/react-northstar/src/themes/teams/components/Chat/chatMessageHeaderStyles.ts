@@ -9,7 +9,7 @@ const chatMessageHeaderStyles: ComponentSlotStylesPrepared<ChatMessageHeaderStyl
       width: '100%',
       overflow: 'hidden',
       whiteSpace: 'nowrap',
-      display: 'inline-flex',
+      display: 'center',
       alignItems: 'center',
       justifyContent: 'space-between',
       ...((p.attached === 'bottom' || p.attached === true) &&
