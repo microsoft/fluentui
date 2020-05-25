@@ -1,4 +1,4 @@
-import { Accessibility, menuItemBehavior, submenuBehavior, MenuItemBehaviorProps } from '@fluentui/accessibility';
+import { Accessibility, submenuBehavior, MenuItemBehaviorProps } from '@fluentui/accessibility';
 import {
   compose,
   focusAsync,
@@ -36,7 +36,7 @@ import { ComponentEventHandler, ShorthandValue, ShorthandCollection, ProviderCon
 import { Popper, PopperShorthandProps, getPopperPropsFromShorthand } from '../../utils/positioner';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
-import { MenuContextSubscribedValue, MenuContext } from './menuContext';
+import { MenuContext, MenuItemSubscribedValue } from './menuContext';
 import { useContextSelectors } from '@fluentui/react-context-selector';
 import { mergeComponentVariables } from '@fluentui/styles';
 
@@ -181,53 +181,46 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
     const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
     setStart();
 
-    const parentProps: Omit<MenuContextSubscribedValue, 'accessibilityBehaviorForDivider'> = useContextSelectors(
-      MenuContext,
-      {
-        active: v => v.activeIndex === props.index,
-        activeIndex: v => v.activeIndex,
-        onItemClick: v => v.onItemClick,
-        variables: v => v.variables,
-        pointing: v => v.pointing,
-        primary: v => v.primary,
-        underlined: v => v.underlined,
-        iconOnly: v => v.iconOnly,
-        vertical: v => v.vertical,
-        inSubmenu: v => v.inSubmenu,
-        pills: v => v.pills,
-        secondary: v => v.secondary,
-        accessibilityBehaviorForItem: v => v.accessibilityBehaviorForItem,
-        menuSlot: v => v.menuSlot,
-      },
-    );
+    const parentProps = (useContextSelectors(MenuContext, {
+      active: v => v.activeIndex === props.index,
+      onItemClick: v => v.onItemClick,
+      variables: v => v.variables,
+      menuSlot: v => v.slots.menu,
+      slotProps: v => v.slotProps.item,
+      accessibility: v => v.behaviors.item,
+    }) as unknown) as MenuItemSubscribedValue;
+
+    const allProps = {
+      ...parentProps.slotProps,
+      active: parentProps.active,
+      variables: parentProps.variables,
+      accessibility: parentProps.accessibility,
+      ...props,
+    };
 
     const {
+      accessibility,
       children,
       content,
       icon,
       wrapper,
       menu,
-      primary = parentProps.primary,
-      secondary = parentProps.secondary,
-      active = parentProps.active,
-      vertical = parentProps.vertical,
+      primary,
+      secondary,
+      active,
+      vertical,
       indicator,
       disabled,
-      underlined = parentProps.underlined,
-      iconOnly = parentProps.iconOnly,
-      inSubmenu = parentProps.inSubmenu,
-      pills = parentProps.pills,
-      pointing = parentProps.pointing,
+      underlined,
+      iconOnly,
+      inSubmenu,
+      pills,
+      pointing,
       className,
       design,
       styles,
       variables,
-    } = props;
-
-    const accessibility =
-      typeof props.accessibility === 'undefined'
-        ? parentProps.accessibilityBehaviorForItem || menuItemBehavior
-        : props.accessibility;
+    } = allProps;
 
     const [menuOpen, setMenuOpen] = useAutoControlled({
       defaultValue: props.defaultMenuOpen,
@@ -241,16 +234,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
     const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
 
     const slotProps = composeOptions.resolveSlotProps<MenuItemProps & MenuItemState>({
-      ...props,
-      active,
-      primary,
-      secondary,
-      vertical,
-      underlined,
-      iconOnly,
-      inSubmenu,
-      pills,
-      pointing,
+      ...allProps,
       accessibility,
       variables: mergeComponentVariables(variables, parentProps.variables),
       isFromKeyboard,

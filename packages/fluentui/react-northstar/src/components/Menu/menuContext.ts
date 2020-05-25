@@ -6,56 +6,70 @@ import { Accessibility } from '@fluentui/accessibility';
 export type MenuContextValue = {
   activeIndex: number;
   variables: ComponentVariablesInput;
-  pointing: boolean | 'start' | 'end';
-  primary: boolean;
-  underlined: boolean;
-  iconOnly: boolean;
-  vertical: boolean;
-  secondary: boolean;
-  pills: boolean;
-  inSubmenu: boolean;
   onItemClick: (e: React.KeyboardEvent | React.MouseEvent, itemIndex: number) => void;
-  accessibilityBehaviorForItem: Accessibility;
-  accessibilityBehaviorForDivider: Accessibility;
-  menuSlot: React.ElementType;
+
+  slotProps: {
+    item: Record<string, any>;
+    divider: Record<string, any>;
+  };
+
+  behaviors: {
+    item: Accessibility;
+    divider: Accessibility;
+  };
+
+  slots: {
+    menu: React.ElementType;
+  };
 };
 
-export type MenuContextSubscribedValue = Pick<
-  MenuContextValue,
-  | 'activeIndex'
-  | 'variables'
-  | 'onItemClick'
-  | 'primary'
-  | 'pointing'
-  | 'underlined'
-  | 'iconOnly'
-  | 'vertical'
-  | 'inSubmenu'
-  | 'pills'
-  | 'secondary'
-  | 'accessibilityBehaviorForItem'
-  | 'accessibilityBehaviorForDivider'
-  | 'menuSlot'
-> & {
+export type MenuItemSubscribedValue = Pick<MenuContextValue, 'variables' | 'onItemClick'> & {
+  slotProps: MenuContextValue['slotProps']['item'];
+  accessibility: MenuContextValue['behaviors']['item'];
+  menuSlot: MenuContextValue['slots']['menu'];
   active: boolean;
+};
+
+export type MenuDividerSubscribedValue = Pick<MenuContextValue, 'variables'> & {
+  slotProps: MenuContextValue['slotProps']['divider'];
+  accessibility: MenuContextValue['behaviors']['divider'];
 };
 
 export const MenuContext = createContext<MenuContextValue>(
   {
     activeIndex: -1,
     variables: {},
-    pointing: false,
-    primary: false,
-    underlined: false,
-    iconOnly: false,
-    vertical: false,
-    secondary: false,
-    pills: false,
-    inSubmenu: false,
-    accessibilityBehaviorForItem: undefined,
-    accessibilityBehaviorForDivider: undefined,
     onItemClick: null,
-    menuSlot: null,
+
+    slotProps: {
+      item: {
+        pointing: false,
+        primary: false,
+        underlined: false,
+        iconOnly: false,
+        vertical: false,
+        secondary: false,
+        pills: false,
+        inSubmenu: false,
+      },
+      divider: {
+        pointing: false,
+        primary: false,
+        underlined: false,
+        iconOnly: false,
+        vertical: false,
+        secondary: false,
+        pills: false,
+        inSubmenu: false,
+      },
+    },
+    behaviors: {
+      item: undefined,
+      divider: undefined,
+    },
+    slots: {
+      menu: null,
+    },
   },
   { strict: false },
 );

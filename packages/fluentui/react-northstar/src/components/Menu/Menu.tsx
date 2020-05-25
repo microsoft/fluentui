@@ -123,6 +123,14 @@ function useActualOnItemClick<P>(onItemClick: P) {
   return actualOnItemClick;
 }
 
+function useSlotProps<SlotProps, SlotName extends keyof SlotProps>(
+  slotName: SlotName,
+  s: SlotProps,
+): SlotProps[SlotName] {
+  const slotProps = s[slotName];
+  return React.useMemo(() => slotProps, Object.values(slotProps));
+}
+
 /**
  * A Menu is a component that offers a grouped list of choices to the user.
  *
@@ -161,7 +169,12 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
     } = props;
 
     const ElementType = getElementType(props);
-    const slotProps = composeOptions.resolveSlotProps<MenuProps>(props);
+
+    const slotProps = composeOptions.resolveSlotProps(props);
+
+    const itemProps = useSlotProps('item', slotProps);
+    const dividerProps = useSlotProps('divider', slotProps);
+
     const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
 
     const getA11yProps = useAccessibility<MenuBehaviorProps>(props.accessibility, {
@@ -174,7 +187,7 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
 
     const actualOnItemClick = useActualOnItemClick(props.onItemClick);
 
-    const { classes, styles: resolvedStyles } = useStyles<MenuStylesProps>(composeOptions.displayName, {
+    const { classes } = useStyles<MenuStylesProps>(composeOptions.displayName, {
       className: composeOptions.className,
       composeOptions,
       mapPropsToStyles: () => ({
@@ -244,16 +257,11 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
       let itemPosition = 0;
 
       return _.map(items, (item, index) => {
-        const active = (typeof activeIndex === 'string' ? parseInt(activeIndex, 10) : activeIndex) === index;
         const kind = getKindProp(item, 'item');
 
         if (kind === 'divider') {
           return createShorthand(composeOptions.slots.divider, item, {
-            defaultProps: () =>
-              getA11yProps('divider', {
-                styles: resolvedStyles.divider,
-                ...slotProps.divider,
-              }),
+            defaultProps: () => getA11yProps('divider', {}),
             overrideProps: handleDividerOverrides,
           });
         }
@@ -266,8 +274,6 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
               index,
               itemPosition,
               itemsCount,
-              active,
-              ...slotProps.item,
             }),
           overrideProps: handleItemOverrides,
         });
@@ -280,18 +286,20 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
       activeIndex: +activeIndex,
       onItemClick: handleClick,
       variables,
-      pointing,
-      primary,
-      underlined,
-      iconOnly,
-      vertical,
-      secondary,
-      pills,
-      inSubmenu: props.submenu,
-      // TODO: please rework me
-      accessibilityBehaviorForItem: childBehaviors?.item,
-      accessibilityBehaviorForDivider: childBehaviors?.divider,
-      menuSlot: composeOptions.slots.__self,
+
+      slotProps: {
+        item: itemProps,
+        divider: dividerProps,
+      },
+
+      behaviors: {
+        item: childBehaviors?.item,
+        divider: childBehaviors?.divider,
+      },
+
+      slots: {
+        menu: composeOptions.slots.__self,
+      },
     };
 
     const element = getA11yProps.unstable_wrapWithFocusZone(
