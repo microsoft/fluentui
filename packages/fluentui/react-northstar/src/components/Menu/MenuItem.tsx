@@ -457,14 +457,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
               {createShorthand(parentProps.menuSlot || composeOptions.slots.menu || Menu, menu, {
                 defaultProps: () => ({
                   ...slotProps.menu,
-                  accessibility: submenuBehavior,
-                  className: menuItemSlotClassNames.submenu,
-                  vertical: true,
-                  primary,
-                  secondary,
                   styles: resolvedStyles.menu,
-                  submenu: true,
-                  indicator,
                 }),
               })}
             </Popper>
@@ -536,6 +529,15 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
         underlined: props.underlined,
         vertical: props.vertical,
         primary: props.primary,
+      },
+      menu: {
+        accessibility: submenuBehavior,
+        className: menuItemSlotClassNames.submenu,
+        vertical: true,
+        primary: props.primary,
+        secondary: props.secondary,
+        submenu: true,
+        indicator: props.indicator,
       },
     }),
 
