@@ -43,16 +43,7 @@ export const MenuContext = createContext<MenuContextValue>(
 
     slotProps: {
       item: {},
-      divider: {
-        pointing: false,
-        primary: false,
-        underlined: false,
-        iconOnly: false,
-        vertical: false,
-        secondary: false,
-        pills: false,
-        inSubmenu: false,
-      },
+      divider: {},
     },
     behaviors: {
       item: undefined,
