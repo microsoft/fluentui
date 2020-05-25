@@ -1,4 +1,4 @@
-import { ChatMessageHeaderStylesProps } from 'src/components/Chat/ChatMessageHeader';
+import { ChatMessageHeaderStylesProps } from '../../../../components/Chat/ChatMessageHeader';
 import { ComponentSlotStylesPrepared } from '@fluentui/styles';
 import { ChatMessageVariables } from './chatMessageVariables';
 
