@@ -2,13 +2,6 @@ import * as React from 'react';
 import { Button, Text, Toolbar, SplitButton } from '@fluentui/react-northstar';
 import { BoldIcon } from '@fluentui/react-icons-northstar';
 
-// used to prevent arrow navigation while SplitButton menu is open.
-function onItemKeyDown(e) {
-  if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
-    e.stopPropagation();
-  }
-}
-
 const ToolbarSplitButton = () => (
   <>
     <SplitButton
@@ -16,12 +9,10 @@ const ToolbarSplitButton = () => (
         {
           key: 'group',
           content: 'New group message',
-          onKeyDown: onItemKeyDown,
         },
         {
           key: 'channel',
           content: 'New channel message',
-          onKeyDown: onItemKeyDown,
         },
       ]}
       button={{
