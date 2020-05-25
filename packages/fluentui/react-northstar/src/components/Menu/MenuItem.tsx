@@ -188,7 +188,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
       menuSlot: v => v.slots.menu,
       slotProps: v => v.slotProps.item,
       accessibility: v => v.behaviors.item,
-    }) as unknown) as MenuItemSubscribedValue;
+    }) as unknown) as MenuItemSubscribedValue; // TODO: we should improve typings for the useContextSelectors
 
     const allProps = {
       ...parentProps.slotProps,

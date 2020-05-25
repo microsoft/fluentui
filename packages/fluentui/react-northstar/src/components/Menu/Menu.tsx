@@ -125,10 +125,10 @@ function useActualOnItemClick<P>(onItemClick: P) {
 
 function useSlotProps<SlotProps, SlotName extends keyof SlotProps>(
   slotName: SlotName,
-  s: SlotProps,
+  slotProps: SlotProps,
 ): SlotProps[SlotName] {
-  const slotProps = s[slotName];
-  return React.useMemo(() => slotProps, Object.values(slotProps));
+  const s = slotProps[slotName];
+  return React.useMemo(() => s, Object.values(s));
 }
 
 /**

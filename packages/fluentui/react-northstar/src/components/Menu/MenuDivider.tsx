@@ -62,7 +62,7 @@ const MenuDivider = compose<'li', MenuDividerProps, MenuDividerStylesProps, {}, 
       variables: v => v.variables,
       slotProps: v => v.slotProps.divider,
       accessibility: v => v.behaviors.divider,
-    }) as unknown) as MenuDividerSubscribedValue;
+    }) as unknown) as MenuDividerSubscribedValue; // TODO: we should improve typings for the useContextSelectors
 
     const allProps = {
       ...parentProps.slotProps,
@@ -147,6 +147,7 @@ const MenuDivider = compose<'li', MenuDividerProps, MenuDividerStylesProps, {}, 
       'styles',
       'variables',
 
+      'pointing',
       'inSubmenu',
       'primary',
       'secondary',
@@ -168,6 +169,7 @@ MenuDivider.propTypes = {
   secondary: PropTypes.bool,
   vertical: PropTypes.bool,
   inSubmenu: PropTypes.bool,
+  pointing: PropTypes.oneOf(['start', 'end', true, false]),
 };
 
 MenuDivider.create = createShorthandFactory({ Component: MenuDivider, mappedProp: 'content' });
