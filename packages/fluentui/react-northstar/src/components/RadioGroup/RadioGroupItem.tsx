@@ -104,12 +104,14 @@ const RadioGroupItem: React.FC<WithAsProp<RadioGroupItemProps>> &
 
   const handleClick = (e: React.MouseEvent | React.KeyboardEvent) => {
     _.invoke(props, 'onClick', e, props);
-    setChecked(prevChecked => !prevChecked);
+    setChecked(prevChecked => {
+      _.invoke(props, 'onChange', undefined, { ...props, checked: !prevChecked });
+      return !prevChecked;
+    });
   };
 
   React.useEffect(() => {
     if (checked && shouldFocus) elementRef.current.focus();
-    _.invoke(props, 'onChange', undefined, { ...props, checked });
   }, [checked, shouldFocus]);
 
   const { classes, styles: resolvedStyles } = useStyles<RadioGroupItemStylesProps>(RadioGroupItem.displayName, {
