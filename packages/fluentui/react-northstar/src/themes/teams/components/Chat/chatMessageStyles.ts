@@ -107,8 +107,7 @@ const chatMessageStyles: ComponentSlotStylesPrepared<ChatMessageStylesProps, Cha
       opacity: 0,
     },
   }),
-  author: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => ({
-    lineHeight: siteVariables.lineHeightSmaller,
+  author: ({ props: p, variables: v }): ICSSInJSStyle => ({
     ...((p.mine || p.attached === 'bottom' || p.attached === true) && (screenReaderContainerStyles as ICSSInJSStyle)),
     color: v.authorColor,
     marginRight: v.authorMarginRight,
@@ -116,9 +115,8 @@ const chatMessageStyles: ComponentSlotStylesPrepared<ChatMessageStylesProps, Cha
     fontWeight: v.authorFontWeight,
   }),
 
-  timestamp: ({ props: p, variables: v, theme: { siteVariables } }) => ({
+  timestamp: ({ props: p, variables: v }) => ({
     // marginBottom: v.headerMarginBottom,
-    lineHeight: siteVariables.lineHeightSmaller,
     ...(p.mine && {
       color: v.timestampColorMine,
     }),
