@@ -160,9 +160,8 @@ const chatMessageStyles: ComponentSlotStylesPrepared<ChatMessageStylesProps, Cha
       },
     };
   },
-  reactionGroup: ({ props: p, variables: v, theme: { siteVariables } }) => ({
+  reactionGroup: ({ props: p, variables: v }) => ({
     marginLeft: v.reactionGroupMarginLeft,
-    lineHeight: siteVariables.lineHeightSmall,
     ...(p.hasBadge &&
       p.badgePosition === 'end' && {
         marginRight: pxToRem(2),
