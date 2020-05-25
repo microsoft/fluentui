@@ -91,6 +91,7 @@ export default [
   'scheduler@0.13.3',
   'scheduler@0.13.6',
   'stylis@3.5.4',
+  'stylis@4.0.1', // there is no approval
   'webpack@4.25.1',
 ];
 
