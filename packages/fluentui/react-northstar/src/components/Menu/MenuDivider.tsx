@@ -53,7 +53,7 @@ export const menuDividerClassName = 'ui-menu__divider';
  * A MenuDivider is non-actionable element that visually segments items of Menu.
  */
 const MenuDivider = compose<'li', MenuDividerProps, MenuDividerStylesProps, {}, {}>(
-  (props, ref, composeOptions) => {
+  (inputProps, ref, composeOptions) => {
     const context: ProviderContextPrepared = React.useContext(ThemeContext);
     const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
     setStart();
@@ -64,11 +64,11 @@ const MenuDivider = compose<'li', MenuDividerProps, MenuDividerStylesProps, {}, 
       accessibility: v => v.behaviors.divider,
     }) as unknown) as MenuDividerSubscribedValue; // TODO: we should improve typings for the useContextSelectors
 
-    const allProps = {
+    const props = {
       ...parentProps.slotProps,
       accessibility: parentProps.accessibility,
       variables: parentProps.variables,
-      ...props,
+      ...inputProps,
     };
 
     const {
@@ -85,7 +85,7 @@ const MenuDivider = compose<'li', MenuDividerProps, MenuDividerStylesProps, {}, 
       styles,
       secondary,
       variables,
-    } = allProps;
+    } = props;
 
     const getA11yProps = useAccessibility(accessibility, {
       debugName: composeOptions.displayName,
@@ -111,11 +111,11 @@ const MenuDivider = compose<'li', MenuDividerProps, MenuDividerStylesProps, {}, 
         variables: mergeComponentVariables(variables, parentProps.variables),
       }),
       rtl: context.rtl,
-      unstable_props: allProps,
+      unstable_props: props,
     });
 
-    const ElementType = getElementType(allProps);
-    const unhandledProps = useUnhandledProps(composeOptions.handledProps, allProps);
+    const ElementType = getElementType(props);
+    const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
 
     const element = (
       <ElementType

@@ -176,13 +176,13 @@ export const menuItemSlotClassNames: MenuItemSlotClassNames = {
  * A MenuItem is an actionable item within a Menu.
  */
 export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>(
-  (props, ref, composeOptions) => {
+  (inputProps, ref, composeOptions) => {
     const context: ProviderContextPrepared = React.useContext(ThemeContext);
     const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
     setStart();
 
     const parentProps = (useContextSelectors(MenuContext, {
-      active: v => v.activeIndex === props.index,
+      active: v => v.activeIndex === inputProps.index,
       onItemClick: v => v.onItemClick,
       variables: v => v.variables,
       menuSlot: v => v.slots.menu,
@@ -190,12 +190,12 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
       accessibility: v => v.behaviors.item,
     }) as unknown) as MenuItemSubscribedValue; // TODO: we should improve typings for the useContextSelectors
 
-    const allProps = {
+    const props = {
       ...parentProps.slotProps,
       active: parentProps.active,
       variables: parentProps.variables,
       accessibility: parentProps.accessibility,
-      ...props,
+      ...inputProps,
     };
 
     const {
@@ -220,21 +220,21 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
       design,
       styles,
       variables,
-    } = allProps;
+    } = props;
 
     const [menuOpen, setMenuOpen] = useAutoControlled({
-      defaultValue: allProps.defaultMenuOpen,
-      value: allProps.menuOpen,
+      defaultValue: props.defaultMenuOpen,
+      value: props.menuOpen,
       initialValue: false,
     });
 
     const [isFromKeyboard, setIsFromKeyboard] = React.useState(false);
 
-    const ElementType = getElementType(allProps);
-    const unhandledProps = useUnhandledProps(composeOptions.handledProps, allProps);
+    const ElementType = getElementType(props);
+    const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
 
     const slotProps = composeOptions.resolveSlotProps<MenuItemProps & MenuItemState>({
-      ...allProps,
+      ...props,
       accessibility,
       variables: mergeComponentVariables(variables, parentProps.variables),
       isFromKeyboard,
@@ -286,14 +286,14 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
       }),
       rtl: context.rtl,
       composeOptions,
-      unstable_props: { ...allProps, menuOpen, isFromKeyboard },
+      unstable_props: { ...props, menuOpen, isFromKeyboard },
     });
 
     const menuRef = React.useRef<HTMLElement>();
     const itemRef = React.useRef<HTMLElement>();
 
     const handleWrapperBlur = (e: React.FocusEvent) => {
-      if (!allProps.inSubmenu && !e.currentTarget.contains(e.relatedTarget as Node)) {
+      if (!props.inSubmenu && !e.currentTarget.contains(e.relatedTarget as Node)) {
         trySetMenuOpen(false, e);
       }
     };
@@ -329,19 +329,19 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
       }
       performClick(e);
 
-      _.invoke({ onClick: parentProps.onItemClick, ...allProps }, 'onClick', e, allProps);
+      _.invoke({ onClick: parentProps.onItemClick, ...props }, 'onClick', e, props);
     };
 
     const handleBlur = (e: React.FocusEvent) => {
       setIsFromKeyboard(false);
 
-      _.invoke(allProps, 'onBlur', e, allProps);
+      _.invoke(props, 'onBlur', e, props);
     };
 
     const handleFocus = (e: React.FocusEvent) => {
       setIsFromKeyboard(isEventFromKeyboard());
 
-      _.invoke(allProps, 'onFocus', e, allProps);
+      _.invoke(props, 'onFocus', e, props);
     };
 
     const isSubmenuOpen = (): boolean => {
@@ -370,7 +370,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
         return;
       }
 
-      const shouldStopPropagation = inSubmenu || allProps.vertical;
+      const shouldStopPropagation = inSubmenu || props.vertical;
       trySetMenuOpen(false, e, () => {
         if (forceTriggerFocus || shouldStopPropagation) {
           focusAsync(itemRef.current);
@@ -385,7 +385,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
     const openMenu = (e: React.MouseEvent | React.KeyboardEvent) => {
       if (menu && !menuOpen) {
         trySetMenuOpen(true, e);
-        _.invoke(allProps, 'onActiveChanged', e, { ...allProps, active: true });
+        _.invoke(props, 'onActiveChanged', e, { ...props, active: true });
         e.stopPropagation();
         e.preventDefault();
       }
@@ -402,8 +402,8 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
       // which cause a broken behavior: for e.g. when it is needed to focus submenu trigger on ESC.
       // TODO: all DOM post-effects should be applied at componentDidMount & componentDidUpdated stages.
       onStateChanged && onStateChanged();
-      _.invoke(allProps, 'onMenuOpenChange', e, {
-        ...allProps,
+      _.invoke(props, 'onMenuOpenChange', e, {
+        ...props,
         menuOpen: newValue,
       });
     };
