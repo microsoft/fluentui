@@ -1,4 +1,4 @@
-import { Accessibility, submenuBehavior, MenuItemBehaviorProps } from '@fluentui/accessibility';
+import { Accessibility, submenuBehavior, menuItemBehavior, MenuItemBehaviorProps } from '@fluentui/accessibility';
 import {
   compose,
   focusAsync,
@@ -199,7 +199,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
     };
 
     const {
-      accessibility,
+      accessibility = menuItemBehavior,
       children,
       content,
       icon,
@@ -223,15 +223,15 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
     } = allProps;
 
     const [menuOpen, setMenuOpen] = useAutoControlled({
-      defaultValue: props.defaultMenuOpen,
-      value: props.menuOpen,
+      defaultValue: allProps.defaultMenuOpen,
+      value: allProps.menuOpen,
       initialValue: false,
     });
 
     const [isFromKeyboard, setIsFromKeyboard] = React.useState(false);
 
-    const ElementType = getElementType(props);
-    const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
+    const ElementType = getElementType(allProps);
+    const unhandledProps = useUnhandledProps(composeOptions.handledProps, allProps);
 
     const slotProps = composeOptions.resolveSlotProps<MenuItemProps & MenuItemState>({
       ...allProps,
@@ -286,14 +286,14 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
       }),
       rtl: context.rtl,
       composeOptions,
-      unstable_props: { ...props, menuOpen, isFromKeyboard },
+      unstable_props: { ...allProps, menuOpen, isFromKeyboard },
     });
 
     const menuRef = React.useRef<HTMLElement>();
     const itemRef = React.useRef<HTMLElement>();
 
     const handleWrapperBlur = (e: React.FocusEvent) => {
-      if (!props.inSubmenu && !e.currentTarget.contains(e.relatedTarget as Node)) {
+      if (!allProps.inSubmenu && !e.currentTarget.contains(e.relatedTarget as Node)) {
         trySetMenuOpen(false, e);
       }
     };
@@ -329,19 +329,19 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
       }
       performClick(e);
 
-      _.invoke({ onClick: parentProps.onItemClick, ...props }, 'onClick', e, props);
+      _.invoke({ onClick: parentProps.onItemClick, ...allProps }, 'onClick', e, allProps);
     };
 
     const handleBlur = (e: React.FocusEvent) => {
       setIsFromKeyboard(false);
 
-      _.invoke(props, 'onBlur', e, props);
+      _.invoke(allProps, 'onBlur', e, allProps);
     };
 
     const handleFocus = (e: React.FocusEvent) => {
       setIsFromKeyboard(isEventFromKeyboard());
 
-      _.invoke(props, 'onFocus', e, props);
+      _.invoke(allProps, 'onFocus', e, allProps);
     };
 
     const isSubmenuOpen = (): boolean => {
@@ -370,7 +370,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
         return;
       }
 
-      const shouldStopPropagation = inSubmenu || props.vertical;
+      const shouldStopPropagation = inSubmenu || allProps.vertical;
       trySetMenuOpen(false, e, () => {
         if (forceTriggerFocus || shouldStopPropagation) {
           focusAsync(itemRef.current);
@@ -385,7 +385,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
     const openMenu = (e: React.MouseEvent | React.KeyboardEvent) => {
       if (menu && !menuOpen) {
         trySetMenuOpen(true, e);
-        _.invoke(props, 'onActiveChanged', e, { ...props, active: true });
+        _.invoke(allProps, 'onActiveChanged', e, { ...allProps, active: true });
         e.stopPropagation();
         e.preventDefault();
       }
@@ -402,8 +402,8 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
       // which cause a broken behavior: for e.g. when it is needed to focus submenu trigger on ESC.
       // TODO: all DOM post-effects should be applied at componentDidMount & componentDidUpdated stages.
       onStateChanged && onStateChanged();
-      _.invoke(props, 'onMenuOpenChange', e, {
-        ...props,
+      _.invoke(allProps, 'onMenuOpenChange', e, {
+        ...allProps,
         menuOpen: newValue,
       });
     };

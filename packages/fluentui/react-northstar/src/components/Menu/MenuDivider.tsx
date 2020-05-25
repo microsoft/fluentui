@@ -1,4 +1,4 @@
-import { Accessibility, MenuDividerBehaviorProps } from '@fluentui/accessibility';
+import { Accessibility, MenuDividerBehaviorProps, menuDividerBehavior } from '@fluentui/accessibility';
 import { mergeComponentVariables } from '@fluentui/styles';
 import {
   compose,
@@ -72,7 +72,7 @@ const MenuDivider = compose<'li', MenuDividerProps, MenuDividerStylesProps, {}, 
     };
 
     const {
-      accessibility,
+      accessibility = menuDividerBehavior,
       children,
       content,
       vertical,
@@ -111,11 +111,11 @@ const MenuDivider = compose<'li', MenuDividerProps, MenuDividerStylesProps, {}, 
         variables: mergeComponentVariables(variables, parentProps.variables),
       }),
       rtl: context.rtl,
-      unstable_props: props,
+      unstable_props: allProps,
     });
 
-    const ElementType = getElementType(props);
-    const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
+    const ElementType = getElementType(allProps);
+    const unhandledProps = useUnhandledProps(composeOptions.handledProps, allProps);
 
     const element = (
       <ElementType
