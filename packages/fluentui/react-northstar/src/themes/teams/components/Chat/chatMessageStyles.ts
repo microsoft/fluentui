@@ -107,7 +107,8 @@ const chatMessageStyles: ComponentSlotStylesPrepared<ChatMessageStylesProps, Cha
       opacity: 0,
     },
   }),
-  author: ({ props: p, variables: v }): ICSSInJSStyle => ({
+  author: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => ({
+    lineHeight: siteVariables.lineHeightSmaller,
     ...((p.mine || p.attached === 'bottom' || p.attached === true) && (screenReaderContainerStyles as ICSSInJSStyle)),
     color: v.authorColor,
     marginRight: v.authorMarginRight,
@@ -115,8 +116,9 @@ const chatMessageStyles: ComponentSlotStylesPrepared<ChatMessageStylesProps, Cha
     fontWeight: v.authorFontWeight,
   }),
 
-  timestamp: ({ props: p, variables: v }) => ({
+  timestamp: ({ props: p, variables: v, theme: { siteVariables } }) => ({
     // marginBottom: v.headerMarginBottom,
+    lineHeight: siteVariables.lineHeightSmaller,
     ...(p.mine && {
       color: v.timestampColorMine,
     }),
@@ -162,7 +164,7 @@ const chatMessageStyles: ComponentSlotStylesPrepared<ChatMessageStylesProps, Cha
   },
   reactionGroup: ({ props: p, variables: v, theme: { siteVariables } }) => ({
     marginLeft: v.reactionGroupMarginLeft,
-    lineHeight: siteVariables.lineHeightMedium,
+    lineHeight: siteVariables.lineHeightSmall,
     ...(p.hasBadge &&
       p.badgePosition === 'end' && {
         marginRight: pxToRem(2),
