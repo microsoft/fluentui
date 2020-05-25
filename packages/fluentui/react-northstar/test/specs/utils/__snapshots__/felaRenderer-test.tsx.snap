@@ -151,7 +151,6 @@ exports[`felaRenderer marginLeft is rendered into marginRight due to RTL 1`] = `
 exports[`felaRenderer prefixes required styles 1`] = `
 ".a {
   cursor: -webkit-zoom-in;
-  cursor: -moz-zoom-in;
   cursor: zoom-in;
 }
 .b {
@@ -170,13 +169,12 @@ exports[`felaRenderer prefixes required styles 1`] = `
   height: min-content;
 }
 .e {
-  position: -webkit-sticky;
+  -webkit-position: sticky;
   position: sticky;
 }
 .f {
   -webkit-transition: width 2s, height 2s, background-color 2s,
     -webkit-transform 2s;
-  -webkit-transition: width 2s, height 2s, background-color 2s, transform 2s;
   transition: width 2s, height 2s, background-color 2s, transform 2s;
 }
 .g:hover {
@@ -191,7 +189,7 @@ exports[`felaRenderer prefixes required styles 1`] = `
 }
 .i:hover {
   height: -webkit-fit-content;
-  height: -moz-fit-content;
+  height: -moz-content;
   height: fit-content;
 }
 

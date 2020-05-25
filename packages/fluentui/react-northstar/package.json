@@ -34,7 +34,7 @@
     "react-fela": "^10.6.1",
     "react-is": "^16.6.3",
     "react-transition-group": "^4.3.0",
-    "stylis": "^3.5.4"
+    "stylis": "^4.0.1"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.1.1",
