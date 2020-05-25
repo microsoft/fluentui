@@ -1,9 +1,10 @@
-import * as themes from './themes';
+//
+// Themes
+//
+export { default as teamsTheme } from './themes/teams';
+export { default as teamsDarkTheme } from './themes/teams-dark';
+export { default as teamsHighContrastTheme } from './themes/teams-high-contrast';
 
-//
-// Theme
-//
-export { themes };
 export * from './themes/types';
 export * from './themes/colorUtils';
 
@@ -141,6 +142,14 @@ export * from './components/Menu/Menu';
 export { default as Menu } from './components/Menu/Menu';
 export * from './components/Menu/MenuItem';
 export { default as MenuItem } from './components/Menu/MenuItem';
+export * from './components/Menu/MenuItemIcon';
+export { default as MenuItemIcon } from './components/Menu/MenuItemIcon';
+export * from './components/Menu/MenuItemContent';
+export { default as MenuItemContent } from './components/Menu/MenuItemContent';
+export * from './components/Menu/MenuItemIndicator';
+export { default as MenuItemIndicator } from './components/Menu/MenuItemIndicator';
+export * from './components/Menu/MenuItemWrapper';
+export { default as MenuItemWrapper } from './components/Menu/MenuItemWrapper';
 export * from './components/Menu/MenuDivider';
 export { default as MenuDivider } from './components/Menu/MenuDivider';
 
@@ -263,6 +272,8 @@ export * from './components/Card/CardFooter';
 export { default as CardFooter } from './components/Card/CardFooter';
 export * from './components/Card/CardColumn';
 export { default as CardColumn } from './components/Card/CardColumn';
+export * from './components/Card/CardExpandableBox';
+export { default as CardExpandableBox } from './components/Card/CardExpandableBox';
 //
 // Utilities
 //

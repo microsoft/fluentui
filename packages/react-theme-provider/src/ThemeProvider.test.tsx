@@ -51,7 +51,7 @@ describe('ThemeProvider', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('can provide the theme through context', () => {
+  it('provide the theme through context', () => {
     let resolvedTheme: Theme | undefined = undefined;
     const TestComponent = () => {
       resolvedTheme = useTheme();

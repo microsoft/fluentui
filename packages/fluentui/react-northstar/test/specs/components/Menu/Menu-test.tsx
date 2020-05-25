@@ -12,7 +12,7 @@ import * as keyboardKey from 'keyboard-key';
 const menuImplementsCollectionShorthandProp = implementsCollectionShorthandProp(Menu);
 
 describe('Menu', () => {
-  isConformant(Menu, { autoControlledProps: ['activeIndex'] });
+  isConformant(Menu, { constructorName: 'Menu', autoControlledProps: ['activeIndex'] });
   menuImplementsCollectionShorthandProp('items', MenuItem);
 
   const getItems = () => [
@@ -83,6 +83,17 @@ describe('Menu', () => {
         .find('a')
         .first()
         .simulate('keydown', { keyCode: keyboardKey.Spacebar });
+
+      expect(
+        menuItems
+          .at(1)
+          .at(0)
+          .find('a')
+          .first()
+          .getDOMNode()
+          .getAttribute('aria-expanded'),
+      ).toBe('true');
+
       menuItems
         .at(1)
         .at(0)
@@ -90,7 +101,15 @@ describe('Menu', () => {
         .first()
         .simulate('keydown', { keyCode: keyboardKey.Spacebar });
 
-      expect(menuItems.at(1).state('menuOpen')).toBe(false);
+      expect(
+        menuItems
+          .at(1)
+          .at(0)
+          .find('a')
+          .first()
+          .getDOMNode()
+          .getAttribute('aria-expanded'),
+      ).toBe('false');
     });
 
     describe('activeIndex', () => {

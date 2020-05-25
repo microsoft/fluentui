@@ -2,6 +2,21 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "date": "Thu, 21 May 2020 12:34:43 GMT",
+      "tag": "@uifabric/styling_v7.12.10",
+      "version": "7.12.10",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update semantic colors doc comments",
+            "author": "elcraig@microsoft.com",
+            "commit": "b00701979e60e1dd5e438f579086442bc0ddfc68",
+            "package": "@uifabric/styling"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 08 May 2020 12:35:40 GMT",
       "tag": "@uifabric/styling_v7.12.4",
       "version": "7.12.4",

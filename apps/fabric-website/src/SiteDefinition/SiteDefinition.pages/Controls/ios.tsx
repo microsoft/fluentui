@@ -90,6 +90,15 @@ export const controlsPagesIos: INavPage[] = [
           require.ensure([], require => cb(require<any>('../../../pages/Controls/NavBarPage/NavBarPage').NavBarPage)),
       },
       {
+        title: 'Pill Button Bar',
+        url: '#/controls/ios/pillbuttonbar',
+        component: () => <LoadingComponent title="Pill Button Bar" />,
+        getComponent: cb =>
+          require.ensure([], require =>
+            cb(require<any>('../../../pages/Controls/PillButtonBarPage/PillButtonBarPage').PillButtonBarPage),
+          ),
+      },
+      {
         title: 'Pivot',
         url: '#/controls/ios/pivot',
         component: () => <LoadingComponent title="Pivot" />,
@@ -112,6 +121,30 @@ export const controlsPagesIos: INavPage[] = [
         getComponent: cb =>
           require.ensure([], require =>
             cb(require<any>('../../../pages/Controls/BottomNavigationPage/BottomNavigationPage').BottomNavigationPage),
+          ),
+      },
+    ],
+  },
+  {
+    title: 'Notification & Engagement',
+    isCategory: true,
+    pages: [
+      {
+        title: 'Message Bar',
+        url: '#/controls/ios/messagebar',
+        component: () => <LoadingComponent title="Message Bar" />,
+        getComponent: cb =>
+          require.ensure([], require =>
+            cb(require<any>('../../../pages/Controls/MessageBarPage/MessageBarPage').MessageBarPage),
+          ),
+      },
+      {
+        title: 'Tooltip',
+        url: '#/controls/ios/tooltip',
+        component: () => <LoadingComponent title="Tooltip" />,
+        getComponent: cb =>
+          require.ensure([], require =>
+            cb(require<any>('../../../pages/Controls/TooltipPage/TooltipPage').TooltipPage),
           ),
       },
     ],
@@ -150,15 +183,6 @@ export const controlsPagesIos: INavPage[] = [
         component: () => <LoadingComponent title="Drawer" />,
         getComponent: cb =>
           require.ensure([], require => cb(require<any>('../../../pages/Controls/DrawerPage/DrawerPage').DrawerPage)),
-      },
-      {
-        title: 'Tooltip',
-        url: '#/controls/ios/tooltip',
-        component: () => <LoadingComponent title="Tooltip" />,
-        getComponent: cb =>
-          require.ensure([], require =>
-            cb(require<any>('../../../pages/Controls/TooltipPage/TooltipPage').TooltipPage),
-          ),
       },
     ],
   },

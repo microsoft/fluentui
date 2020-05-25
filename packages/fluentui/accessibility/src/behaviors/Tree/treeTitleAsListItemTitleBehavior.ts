@@ -9,7 +9,8 @@ import treeTitleBehavior from './treeTitleBehavior';
  */
 const treeTitleAsListItemTitleBehavior: Accessibility<TreeTitleBehavior> = props => {
   const behavior = treeTitleBehavior(props);
-  return _.merge(behavior, {
+
+  const definition = _.merge(behavior, {
     attributes: {
       root: {
         ...(!props.hasSubtree && {
@@ -18,6 +19,13 @@ const treeTitleAsListItemTitleBehavior: Accessibility<TreeTitleBehavior> = props
       },
     },
   });
+
+  if (process.env.NODE_ENV !== 'production' && props.hasSubtree) {
+    // Override the default trigger's accessibility schema class.
+    definition.attributes.root['data-aa-class'] = 'TreeTitleList';
+  }
+
+  return definition;
 };
 
 export default treeTitleAsListItemTitleBehavior;

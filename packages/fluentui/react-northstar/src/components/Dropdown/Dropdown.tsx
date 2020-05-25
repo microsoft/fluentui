@@ -6,6 +6,7 @@ import * as PropTypes from 'prop-types';
 import * as _ from 'lodash';
 import cx from 'classnames';
 import * as keyboardKey from 'keyboard-key';
+import computeScrollIntoView from 'compute-scroll-into-view';
 
 import {
   DebounceResultFn,
@@ -458,6 +459,8 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
       getA11yStatusMessage,
       itemToString,
       toggleIndicator,
+      loading,
+      headerMessage,
     } = this.props;
     const { highlightedIndex, open, searchQuery, value } = this.state;
 
@@ -470,6 +473,33 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
           itemToString={itemToString}
           // downshift does not work with arrays as selectedItem.
           selectedItem={multiple || !value.length ? null : value[0]}
+          scrollIntoView={(node: HTMLElement, menu: HTMLElement) => {
+            if (node) {
+              const { children } = menu;
+              let nodeToScroll = node;
+              /**
+               * If it's loading downshift doesn't take the last node with loadingMessage
+               * in consideration to scrolld so we need to check if the current is the
+               * antepenultimate and is so scroll the loading into view, same for headerMessage
+               */
+              if (loading && children[children.length - 2] === node) {
+                nodeToScroll = children[children.length - 1] as HTMLElement;
+              } else if (headerMessage && children[1] === node) {
+                nodeToScroll = children[0] as HTMLElement;
+              }
+
+              // Replicating same config that Downshift uses
+              const actions = computeScrollIntoView(nodeToScroll, {
+                scrollMode: 'if-needed',
+                block: 'nearest',
+                inline: 'nearest',
+              });
+              actions.forEach(({ el, top, left }) => {
+                el.scrollTop = top;
+                el.scrollLeft = left;
+              });
+            }
+          }}
           getA11yStatusMessage={getA11yStatusMessage}
           highlightedIndex={highlightedIndex}
           onStateChange={this.handleStateChange}
@@ -809,7 +839,8 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
   }
 
   renderItemsListFooter(styles: ComponentSlotStylesInput) {
-    const { loading, loadingMessage, noResultsMessage, items } = this.props;
+    const { loading, loadingMessage, noResultsMessage } = this.props;
+    const { filteredItems } = this.state;
 
     if (loading) {
       return {
@@ -823,7 +854,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
       };
     }
 
-    if (items && items.length === 0) {
+    if (filteredItems && filteredItems.length === 0) {
       return {
         children: () =>
           DropdownItem.create(noResultsMessage, {
@@ -1102,21 +1133,27 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
       if (!disabled) {
         switch (keyboardKey.getCode(e)) {
           case keyboardKey.Tab:
+            e.stopPropagation();
             this.handleTabSelection(e, highlightedIndex, selectItemAtIndex, toggleMenu);
             break;
           case keyboardKey.ArrowLeft:
+            e.stopPropagation();
             if (!rtl) {
               this.trySetLastSelectedItemAsActive();
             }
             break;
           case keyboardKey.ArrowRight:
+            e.stopPropagation();
             if (rtl) {
               this.trySetLastSelectedItemAsActive();
             }
             break;
           case keyboardKey.Backspace:
+            e.stopPropagation();
             this.tryRemoveItemFromValue();
             break;
+          case keyboardKey.Escape:
+            e.stopPropagation();
           default:
             break;
         }

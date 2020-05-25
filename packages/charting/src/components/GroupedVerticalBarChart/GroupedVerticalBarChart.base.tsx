@@ -16,11 +16,11 @@ import {
 } from './GroupedVerticalBarChart.types';
 import {
   IGroupedVerticalBarChartData,
-  IGVBarChartSeriesPoint,
   IGVDataPoint,
-  IGVSingleDataPoint,
   IGVForBarChart,
-} from '@uifabric/charting';
+  IGVSingleDataPoint,
+  IGVBarChartSeriesPoint,
+} from '../../types/index';
 
 const getClassNames = classNamesFunction<IGroupedVerticalBarChartStyleProps, IGroupedVerticalBarChartStyles>();
 type stringAxis = D3Axis<string>;
