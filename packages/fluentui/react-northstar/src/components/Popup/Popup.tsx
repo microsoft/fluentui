@@ -489,6 +489,9 @@ const Popup: React.FC<PopupProps> &
   };
 
   if (process.env.NODE_ENV !== 'production') {
+    // This is fine to violate there conditional rule as environment variables will never change during component
+    // lifecycle
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     React.useEffect(() => {
       if (inline && trapFocus) {
         // eslint-disable-next-line no-console
