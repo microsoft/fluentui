@@ -4,8 +4,14 @@ import {
   toolbarMenuItemCheckboxBehavior,
   ToolbarMenuBehaviorProps,
 } from '@fluentui/accessibility';
-import { getElementType, useUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
-import { compose } from '@fluentui/react-compose';
+import {
+  compose,
+  getElementType,
+  useUnhandledProps,
+  useAccessibility,
+  useStyles,
+  useTelemetry,
+} from '@fluentui/react-bindings';
 import { Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import { mergeComponentVariables } from '@fluentui/styles';
