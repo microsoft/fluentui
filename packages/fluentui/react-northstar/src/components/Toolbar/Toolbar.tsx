@@ -40,10 +40,12 @@ import {
   ChildrenComponentProps,
   commonPropTypes,
   ColorComponentProps,
+  createShorthand,
 } from '../../utils';
 import ToolbarCustomItem, { ToolbarCustomItemProps } from './ToolbarCustomItem';
 import ToolbarDivider, { ToolbarDividerProps } from './ToolbarDivider';
 import ToolbarItem, { ToolbarItemProps } from './ToolbarItem';
+import ToolbarItemWrapper from './ToolbarItemWrapper';
 import ToolbarMenu, { ToolbarMenuProps } from './ToolbarMenu';
 import ToolbarMenuDivider from './ToolbarMenuDivider';
 import ToolbarMenuItem from './ToolbarMenuItem';
@@ -123,6 +125,7 @@ const Toolbar: React.FC<WithAsProp<ToolbarProps>> &
     CustomItem: typeof ToolbarCustomItem;
     Divider: typeof ToolbarDivider;
     Item: typeof ToolbarItem;
+    ItemWrapper: typeof ToolbarItemWrapper;
     Menu: typeof ToolbarMenu;
     MenuDivider: typeof ToolbarMenuDivider;
     MenuItem: typeof ToolbarMenuItem;
@@ -441,20 +444,20 @@ const Toolbar: React.FC<WithAsProp<ToolbarProps>> &
         case 'group':
           return ToolbarRadioGroup.create(item);
         case 'toggle':
-          return ToolbarItem.create(item, {
+          return createShorthand(ToolbarItem, item, {
             defaultProps: () => ({ accessibility: toggleButtonBehavior }),
           });
         case 'custom':
           return ToolbarCustomItem.create(item);
         default:
-          return ToolbarItem.create(item);
+          return createShorthand(ToolbarItem, item);
       }
     });
 
   const renderOverflowItem = overflowItem => {
     return (
       <Ref innerRef={overflowItemRef}>
-        {ToolbarItem.create(overflowItem, {
+        {createShorthand(ToolbarItem, overflowItem, {
           defaultProps: () => ({
             icon: <MoreIcon outline />,
           }),
@@ -545,6 +548,7 @@ Toolbar.handledProps = Object.keys(Toolbar.propTypes) as any;
 Toolbar.CustomItem = ToolbarCustomItem;
 Toolbar.Divider = ToolbarDivider;
 Toolbar.Item = ToolbarItem;
+Toolbar.ItemWrapper = ToolbarItemWrapper;
 Toolbar.Menu = ToolbarMenu;
 Toolbar.MenuDivider = ToolbarMenuDivider;
 Toolbar.MenuItem = ToolbarMenuItem;

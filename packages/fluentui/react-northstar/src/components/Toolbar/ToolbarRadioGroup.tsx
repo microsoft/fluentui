@@ -21,6 +21,7 @@ import {
   UIComponentProps,
   childrenExist,
   commonPropTypes,
+  createShorthand,
 } from '../../utils';
 import {
   FluentComponentStaticProps,
@@ -126,7 +127,7 @@ const ToolbarRadioGroup: React.FC<WithAsProp<ToolbarRadioGroupProps>> &
         return ToolbarDivider.create(item);
       }
 
-      const toolbarItem = ToolbarItem.create(item, {
+      const toolbarItem = createShorthand(ToolbarItem, item, {
         defaultProps: () => ({
           accessibility: toolbarRadioGroupItemBehavior,
           active: activeIndex === index,
