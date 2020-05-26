@@ -3,7 +3,7 @@ import { compose } from '@fluentui/react-bindings';
 import { commonPropTypes } from '../../utils';
 import Box, { BoxProps, BoxStylesProps } from '../Box/Box';
 
-interface ToolbarMenuRadioGroupWrapperOwnProps {}
+export interface ToolbarMenuRadioGroupWrapperOwnProps {}
 export interface ToolbarMenuRadioGroupWrapperProps extends ToolbarMenuRadioGroupWrapperOwnProps, BoxProps {}
 
 export type ToolbarMenuRadioGroupWrapperStylesProps = never;
