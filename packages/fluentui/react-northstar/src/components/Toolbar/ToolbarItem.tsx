@@ -31,12 +31,12 @@ import { ComponentEventHandler, ShorthandValue, ShorthandCollection, ProviderCon
 import { getPopperPropsFromShorthand, Popper, PopperShorthandProps } from '../../utils/positioner';
 
 import ToolbarMenu, { ToolbarMenuProps } from './ToolbarMenu';
-import Box, { BoxProps } from '../Box/Box';
 import Popup, { PopupProps } from '../Popup/Popup';
 import { ToolbarMenuItemProps } from '../Toolbar/ToolbarMenuItem';
 import { ToolbarItemShorthandKinds } from './Toolbar';
 import { ToolbarVariablesContext, ToolbarVariablesProvider } from './toolbarVariablesContext';
-import ToolbarItemWrapper from './ToolbarItemWrapper';
+import ToolbarItemWrapper, { ToolbarItemWrapperProps } from './ToolbarItemWrapper';
+import ToolbarItemIcon, { ToolbarItemIconProps } from './ToolbarItemIcon';
 
 export interface ToolbarItemProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
   /** Accessibility behavior if overridden by the user. */
@@ -49,7 +49,7 @@ export interface ToolbarItemProps extends UIComponentProps, ChildrenComponentPro
   disabled?: boolean;
 
   /** Name or shorthand for Toolbar Item Icon */
-  icon?: ShorthandValue<BoxProps>;
+  icon?: ShorthandValue<ToolbarItemIconProps>;
 
   /**
    * Shorthand for the submenu.
@@ -100,7 +100,7 @@ export interface ToolbarItemProps extends UIComponentProps, ChildrenComponentPro
   popup?: Omit<PopupProps, 'trigger' | 'children'> | string;
 
   /** Shorthand for the wrapper component. The item is wrapped only if it contains a menu! */
-  wrapper?: ShorthandValue<BoxProps>;
+  wrapper?: ShorthandValue<ToolbarItemWrapperProps>;
 }
 
 export type ToolbarItemStylesProps = Required<Pick<ToolbarItemProps, 'active' | 'disabled'>>;
@@ -268,7 +268,7 @@ const ToolbarItem = compose<'button', ToolbarItemProps, ToolbarItemStylesProps, 
           onClick: handleClick,
         })}
       >
-        {childrenExist(children) ? children : Box.create(icon)}
+        {childrenExist(children) ? children : createShorthand(composeOptions.slots.icon, icon, slotProps.icon)}
       </ElementType>
     );
 
@@ -298,10 +298,8 @@ const ToolbarItem = compose<'button', ToolbarItemProps, ToolbarItemStylesProps, 
     ) : null;
 
     if (popup) {
-      const popupElement = Popup.create(popup, {
-        defaultProps: () => ({
-          trapFocus: true,
-        }),
+      const popupElement = createShorthand(composeOptions.slots.popup, popup, {
+        defaultProps: () => slotProps.popup,
         overrideProps: {
           trigger: itemElement,
           children: undefined, // force-reset `children` defined for `Popup` as it collides with the `trigger`
@@ -367,9 +365,14 @@ const ToolbarItem = compose<'button', ToolbarItemProps, ToolbarItemStylesProps, 
     displayName: 'ToolbarItem',
 
     slots: {
+      icon: ToolbarItemIcon,
       menu: ToolbarMenu,
       wrapper: ToolbarItemWrapper,
+      popup: Popup, // TODO: compose Popup to ToolbarItemPopup once it has compose functionality
     },
+    mapPropsToSlotProps: () => ({
+      popup: { trapFocus: true },
+    }),
     shorthandConfig: { mappedProp: 'content' },
     handledProps: [
       'accessibility',
