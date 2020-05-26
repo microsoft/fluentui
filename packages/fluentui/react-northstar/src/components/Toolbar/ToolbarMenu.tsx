@@ -21,7 +21,6 @@ import {
   UIComponentProps,
   ChildrenComponentProps,
   ContentComponentProps,
-  createShorthand,
 } from '../../utils';
 
 import {

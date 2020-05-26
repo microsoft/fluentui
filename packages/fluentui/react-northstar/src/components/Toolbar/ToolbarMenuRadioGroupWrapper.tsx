@@ -21,9 +21,8 @@ const ToolbarMenuRadioGroupWrapper = compose<
 >(Box, {
   className: toolbarMenuRadioGroupClassName,
   displayName: 'ToolbarMenuRadioGroupWrapper',
-  shorthandConfig: {
-    mappedProp: 'content',
-  },
+
+  shorthandConfig: { mappedProp: 'content' },
 });
 
 ToolbarMenuRadioGroupWrapper.defaultProps = {

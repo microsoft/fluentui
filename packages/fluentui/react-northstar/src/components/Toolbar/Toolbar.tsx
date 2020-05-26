@@ -49,6 +49,7 @@ import ToolbarMenu, { ToolbarMenuProps } from './ToolbarMenu';
 import ToolbarMenuDivider from './ToolbarMenuDivider';
 import ToolbarMenuItem from './ToolbarMenuItem';
 import ToolbarMenuRadioGroup, { ToolbarMenuRadioGroupProps } from './ToolbarMenuRadioGroup';
+import ToolbarMenuRadioGroupWrapper from './ToolbarMenuRadioGroupWrapper';
 import ToolbarRadioGroup from './ToolbarRadioGroup';
 import { ToolbarVariablesProvider } from './toolbarVariablesContext';
 
@@ -128,6 +129,7 @@ const Toolbar: React.FC<WithAsProp<ToolbarProps>> &
     MenuDivider: typeof ToolbarMenuDivider;
     MenuItem: typeof ToolbarMenuItem;
     MenuRadioGroup: typeof ToolbarMenuRadioGroup;
+    MenuRadioGroupWrapper: typeof ToolbarMenuRadioGroupWrapper;
     RadioGroup: typeof ToolbarRadioGroup;
   } = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
@@ -550,6 +552,7 @@ Toolbar.Menu = ToolbarMenu;
 Toolbar.MenuDivider = ToolbarMenuDivider;
 Toolbar.MenuItem = ToolbarMenuItem;
 Toolbar.MenuRadioGroup = ToolbarMenuRadioGroup;
+Toolbar.MenuRadioGroupWrapper = ToolbarMenuRadioGroupWrapper;
 Toolbar.RadioGroup = ToolbarRadioGroup;
 
 Toolbar.create = createShorthandFactory({ Component: Toolbar, mappedProp: 'content' });
