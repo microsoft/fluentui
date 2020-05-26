@@ -186,9 +186,9 @@ storiesOf('Button Next - Sizes', module)
       {story()}
     </Screener>
   ))
-  .addStory('Default', () => <Button content="Hello, world" icon="X" size="smallest" />)
-  .addStory('Default', () => <Button content="Hello, world" icon="X" size="smaller" />)
-  .addStory('Default', () => <Button content="Hello, world" icon="X" size="small" />)
-  .addStory('Default', () => <Button content="Hello, world" icon="X" size="large" />)
-  .addStory('Default', () => <Button content="Hello, world" icon="X" size="larger" />)
-  .addStory('Default', () => <Button content="Hello, world" icon="X" size="largest" />);
+  .addStory('Smallest', () => <Button content="Hello, world" icon="X" size="smallest" />)
+  .addStory('Smaller', () => <Button content="Hello, world" icon="X" size="smaller" />)
+  .addStory('Small', () => <Button content="Hello, world" icon="X" size="small" />)
+  .addStory('Large', () => <Button content="Hello, world" icon="X" size="large" />)
+  .addStory('Larger', () => <Button content="Hello, world" icon="X" size="larger" />)
+  .addStory('Largest', () => <Button content="Hello, world" icon="X" size="largest" />);
