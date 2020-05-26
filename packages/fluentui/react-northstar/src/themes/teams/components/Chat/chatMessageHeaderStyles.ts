@@ -7,9 +7,9 @@ const chatMessageHeaderStyles: ComponentSlotStylesPrepared<ChatMessageHeaderStyl
   root: ({ props: p, theme: { siteVariables } }) => {
     return {
       width: '100%',
-      // overflow: 'hidden',
+      overflow: 'auto',
       whiteSpace: 'nowrap',
-      display: 'flex',
+      display: 'inline-flex',
       alignItems: 'center',
       lineHeight: siteVariables.lineHeightSmall,
       ...(p.hasReactionGroup && { justifyContent: 'space-between', lineHeight: siteVariables.lineHeightMedium }),
