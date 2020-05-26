@@ -7,6 +7,9 @@ module.exports = {
     'jest/globals': true,
   },
   rules: {
+    'react-hooks/exhaustive-deps': 'error',
+    'react-hooks/rules-of-hooks': 'error',
+
     // False positive on arg types:
     // https://github.com/typescript-eslint/typescript-eslint/issues/46
     '@typescript-eslint/no-unused-vars': ['error', { args: 'none', ignoreRestSiblings: true }],

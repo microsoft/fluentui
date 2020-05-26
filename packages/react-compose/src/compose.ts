@@ -5,7 +5,7 @@ import { mergeComposeOptions, wasComposedPreviously } from './utils';
 
 function compose<ElementType extends React.ElementType, InputProps, InputStylesProps, ParentProps, ParentStylesProps>(
   input: Input<ElementType, InputProps>,
-  inputOptions: ComposeOptions<InputProps, InputStylesProps, ParentStylesProps> = {},
+  inputOptions: ComposeOptions<InputProps, InputStylesProps, ParentProps, ParentStylesProps> = {},
 ) {
   const composeOptions = mergeComposeOptions(
     input as Input,
