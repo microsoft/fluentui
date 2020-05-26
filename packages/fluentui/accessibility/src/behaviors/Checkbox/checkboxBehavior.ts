@@ -1,4 +1,4 @@
-import * as keyboardKey from 'keyboard-key';
+import { SpacebarKey } from '@fluentui/keyboard-key';
 import { Accessibility } from '../../types';
 import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
 
@@ -23,7 +23,7 @@ const checkboxBehavior: Accessibility<CheckboxBehaviorProps> = props => ({
   keyActions: {
     root: {
       performClick: {
-        keyCombinations: [{ keyCode: keyboardKey.Spacebar }],
+        keyCombinations: [{ keyCode: SpacebarKey }],
       },
     },
   },

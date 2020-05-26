@@ -3,8 +3,7 @@ import { FocusZone } from '@fluentui/react-bindings';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
-// @ts-ignore
-import * as keyboardKey from 'keyboard-key';
+import { getCode, keyboardKey } from '@fluentui/keyboard-key';
 
 describe('FocusZone', () => {
   let lastFocusedElement: HTMLElement | undefined;
@@ -660,8 +659,7 @@ describe('FocusZone', () => {
   });
 
   it('skips subzone elements until manually entered', () => {
-    const shouldEnterInnerZone = (e: React.KeyboardEvent<HTMLElement>): boolean =>
-      keyboardKey.getCode(e) === keyboardKey.Enter;
+    const shouldEnterInnerZone = (e: React.KeyboardEvent<HTMLElement>): boolean => getCode(e) === keyboardKey.Enter;
     const isFocusableProperty = { [IS_FOCUSABLE_ATTRIBUTE]: true };
 
     const component = ReactTestUtils.renderIntoDocument<{}, React.Component>(
@@ -744,8 +742,7 @@ describe('FocusZone', () => {
   });
 
   it('skips child focusZone elements until manually entered', () => {
-    const shouldEnterInnerZone = (e: React.KeyboardEvent<HTMLElement>): boolean =>
-      keyboardKey.getCode(e) === keyboardKey.Enter;
+    const shouldEnterInnerZone = (e: React.KeyboardEvent<HTMLElement>): boolean => getCode(e) === keyboardKey.Enter;
     const isFocusableProperty = { [IS_FOCUSABLE_ATTRIBUTE]: true };
 
     const component = ReactTestUtils.renderIntoDocument<{}, React.Component>(
@@ -1090,7 +1087,7 @@ describe('FocusZone', () => {
     ReactTestUtils.Simulate.keyDown(focusZone, { which: keyboardKey.Tab });
     expect(tabDownListener.mock.calls.length).toBe(1);
     const onKeyDownEvent = tabDownListener.mock.calls[0][0];
-    expect(keyboardKey.getCode(onKeyDownEvent)).toBe(keyboardKey.Tab);
+    expect(getCode(onKeyDownEvent)).toBe(keyboardKey.Tab);
   });
 
   it('should stay in input box with arrow keys and exit with tab', () => {
@@ -1205,8 +1202,7 @@ describe('FocusZone', () => {
   });
 
   it('should force focus to first focusable element when FocusZone container receives focus and shouldFocusInnerElementWhenReceivedFocus is set to "true"', () => {
-    const shouldEnterInnerZone = (e: React.KeyboardEvent<HTMLElement>): boolean =>
-      keyboardKey.getCode(e) === keyboardKey.Enter;
+    const shouldEnterInnerZone = (e: React.KeyboardEvent<HTMLElement>): boolean => getCode(e) === keyboardKey.Enter;
     const isFocusableProperty = { [IS_FOCUSABLE_ATTRIBUTE]: true };
 
     const component = ReactTestUtils.renderIntoDocument<{}, React.Component>(
