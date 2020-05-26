@@ -6,6 +6,10 @@ import { ITheme } from '../Styling';
 
 export { ThemeProviderProps } from '@fluentui/react-theme-provider';
 
+function useThemeCustomizationSettings(): ITheme {
+  return useCustomizationSettings(['theme']).theme;
+}
+
 /**
  * A wrapper of ThemeProvider from react-theme-provider package.
  *
@@ -15,12 +19,10 @@ export { ThemeProviderProps } from '@fluentui/react-theme-provider';
 export const ThemeProvider: React.FunctionComponent<ThemeProviderProps & {
   ref?: React.Ref<HTMLDivElement>;
 }> = props => {
+  console.log('theme', props.theme);
+  console.log('useThemeCustomizationSettings', useThemeCustomizationSettings);
   const legacyTheme = useThemeCustomizationSettings();
   const theme = props.theme || (legacyTheme && convertLegacyTheme(legacyTheme));
 
   return <ReactThemeProvider {...props} theme={theme} />;
 };
-
-function useThemeCustomizationSettings(): ITheme {
-  return useCustomizationSettings(['theme']).theme;
-}
