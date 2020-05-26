@@ -41,6 +41,7 @@ import {
   getSiblings,
   TreeContext,
   TreeRenderContextValue,
+  processItemsForSelection,
 } from './utils';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
@@ -231,76 +232,26 @@ const Tree: React.FC<WithAsProp<TreeProps>> &
   );
 
   const setSelectedItemIds = React.useCallback(
-    (e: React.SyntheticEvent, selectedItemIds: string[]) => {
-      _.invoke(stableProps.current, 'onSelectedItemIdsChange', e, { ...stableProps.current, selectedItemIds });
+    (e: React.SyntheticEvent, updateSelectedItemIds: (currSelectedItemIds: string[]) => string[]) => {
+      _.invoke(stableProps.current, 'onSelectedItemIdsChange', e, {
+        ...stableProps.current,
+        selectedItemIds: updateSelectedItemIds,
+      });
 
-      setSelectedItemIdsState(selectedItemIds);
+      setSelectedItemIdsState(updateSelectedItemIds);
     },
     [stableProps, setSelectedItemIdsState],
   );
 
   const setActiveItemIds = React.useCallback(
-    (e: React.SyntheticEvent, activeItemIds: any) => {
-      _.invoke(stableProps.current, 'onActiveItemIdsChange', e, { ...stableProps.current, activeItemIds });
-      setActiveItemIdsState(activeItemIds);
+    (e: React.SyntheticEvent, updateActiveItemIds: (activeItemIds: string[]) => string[]) => {
+      _.invoke(stableProps.current, 'onActiveItemIdsChange', e, {
+        ...stableProps.current,
+        activeItemIds: updateActiveItemIds,
+      });
+      setActiveItemIdsState(updateActiveItemIds);
     },
     [stableProps, setActiveItemIdsState],
-  );
-
-  const processItemsForSelection = React.useCallback(
-    (e: React.SyntheticEvent, treeItemProps: TreeItemProps, executeSelection: boolean) => {
-      const treeItemHasSubtree = hasSubtree(treeItemProps);
-      const isExpandedSelectableParent = treeItemHasSubtree && treeItemProps.selectableParent && treeItemProps.expanded;
-
-      let nextSelectedItemIds = selectedItemIds;
-
-      // parent must be selectable and expanded in order to procced with selection, otherwise return
-      if (treeItemHasSubtree && !(treeItemProps.selectableParent && treeItemProps.expanded)) {
-        return;
-      }
-
-      // if the target is equal to currentTarget it means treeItem should be collapsed, not procced with selection
-      if (treeItemHasSubtree && e.target === e.currentTarget && !executeSelection) {
-        return;
-      }
-
-      // push all tree items under particular parent into selection array
-      // not parent itself, therefore not procced with selection
-
-      if (isExpandedSelectableParent) {
-        if (isAllGroupChecked(treeItemProps.items as TreeItemProps[], selectedItemIds)) {
-          const selectedItems = getAllSelectableChildrenId(treeItemProps.items as TreeItemProps[]);
-          nextSelectedItemIds = selectedItemIds.filter(id => selectedItems.indexOf(id) === -1);
-        } else {
-          const selectItems = items => {
-            items.forEach(item => {
-              const selectble = item.hasOwnProperty('selectable') ? item.selectable : treeItemProps.selectable;
-              if (selectedItemIds.indexOf(item.id) === -1) {
-                if (item.items) {
-                  selectItems(item.items);
-                } else if (selectble) {
-                  nextSelectedItemIds.push(item.id);
-                }
-              }
-            });
-          };
-          selectItems(treeItemProps.items);
-        }
-
-        setSelectedItemIds(e, [...nextSelectedItemIds]);
-        return;
-      }
-
-      // push/remove single tree item into selection array
-      if (selectedItemIds.indexOf(treeItemProps.id) === -1) {
-        nextSelectedItemIds = [...selectedItemIds, treeItemProps.id];
-      } else {
-        nextSelectedItemIds = nextSelectedItemIds.filter(itemID => itemID !== treeItemProps.id);
-      }
-
-      setSelectedItemIds(e, nextSelectedItemIds);
-    },
-    [selectedItemIds, setSelectedItemIds],
   );
 
   const expandItems = React.useCallback(
@@ -340,15 +291,25 @@ const Tree: React.FC<WithAsProp<TreeProps>> &
         return;
       }
 
-      if (treeItemProps.selectable) {
-        processItemsForSelection(e, treeItemProps, executeSelection);
-      }
-
       if (treeItemHasSubtree && !executeSelection && e.target === e.currentTarget) {
         expandItems(e, treeItemProps);
       }
+
+      if (treeItemProps.selectable) {
+        // parent must be selectable and expanded in order to procced with selection, otherwise return
+        if (treeItemHasSubtree && !(treeItemProps.selectableParent && treeItemProps.expanded)) {
+          return;
+        }
+
+        // if the target is equal to currentTarget it means treeItem should be collapsed, not procced with selection
+        if (treeItemHasSubtree && e.target === e.currentTarget && !executeSelection) {
+          return;
+        }
+
+        setSelectedItemIds(e, currSelectedItemIds => processItemsForSelection(treeItemProps, currSelectedItemIds));
+      }
     },
-    [expandItems, processItemsForSelection],
+    [expandItems, setSelectedItemIds],
   );
 
   const onFocusFirstChild = React.useCallback(
