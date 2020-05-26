@@ -11,7 +11,7 @@ const chatMessageHeaderStyles: ComponentSlotStylesPrepared<ChatMessageHeaderStyl
       display: 'inline-flex',
       alignItems: 'center',
       lineHeight: siteVariables.lineHeightSmall,
-      ...(p.hasReactionGroup && { justifyContent: 'space-between', lineHeight: siteVariables.lineHeightMedium }),
+      ...(p.hasReactionGroup && { justifyContent: 'space-between' }),
       ...((p.attached === 'bottom' || p.attached === true) &&
         !p.hasReactionGroup &&
         (screenReaderContainerStyles as ICSSInJSStyle)),
