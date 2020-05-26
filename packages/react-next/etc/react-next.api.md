@@ -8,23 +8,30 @@ import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import { IButtonProps as IButtonProps_2 } from 'office-ui-fabric-react/lib/components/Button/Button.types';
 import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import { IComponentAs } from 'office-ui-fabric-react/lib/Utilities';
+import { ICustomizerContext } from 'office-ui-fabric-react/lib/Utilities';
 import { IFocusZoneProps } from '@fluentui/react-focus';
 import { IIconProps } from 'office-ui-fabric-react/lib/Icon';
 import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
 import { IRefObject } from 'office-ui-fabric-react/lib/Utilities';
 import { IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { ISettings } from 'office-ui-fabric-react/lib/Utilities';
+import { ISettingsFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 import { IStyleSet } from 'office-ui-fabric-react/lib/Styling';
 import { ITheme } from 'office-ui-fabric-react/lib/Styling';
 import { Position } from 'office-ui-fabric-react/lib/utilities/positioning';
 import * as React from 'react';
+import { ThemeProviderProps } from '@fluentui/react-theme-provider';
 
 // @public (undocumented)
 export const Checkbox: React.FunctionComponent<ICheckboxProps>;
 
 // @public (undocumented)
 export const CheckboxBase: React.ForwardRefExoticComponent<ICheckboxProps & React.RefAttributes<HTMLDivElement>>;
+
+// @public
+export const Customizer: React.FunctionComponent<ICustomizerProps>;
 
 // @public (undocumented)
 export const DEFAULT_MASK_CHAR = "_";
@@ -37,6 +44,23 @@ export const Fabric: React.FunctionComponent<IFabricProps>;
 
 // @public (undocumented)
 export const FabricBase: React.ForwardRefExoticComponent<IFabricProps & React.RefAttributes<HTMLDivElement>>;
+
+// @public (undocumented)
+export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> implements IFocusTrapZone {
+    constructor(props: IFocusTrapZoneProps);
+    // (undocumented)
+    componentDidMount(): void;
+    // (undocumented)
+    componentDidUpdate(prevProps: IFocusTrapZoneProps): void;
+    // (undocumented)
+    componentWillUnmount(): void;
+    // (undocumented)
+    focus(): void;
+    // (undocumented)
+    render(): JSX.Element;
+    // (undocumented)
+    UNSAFE_componentWillReceiveProps(nextProps: IFocusTrapZoneProps): void;
+    }
 
 // @public
 export const getMeasurementCache: () => {
@@ -115,6 +139,14 @@ export interface ICheckboxStyles {
 }
 
 // @public (undocumented)
+export interface ICustomizerProps {
+    contextTransform?: (context: Readonly<ICustomizerContext>) => ICustomizerContext;
+    disableThemeProvider?: boolean;
+    scopedSettings?: ISettings | ISettingsFunction;
+    settings?: ISettings | ISettingsFunction;
+}
+
+// @public (undocumented)
 export interface IFabricProps extends React.HTMLAttributes<HTMLDivElement> {
     applyTheme?: boolean;
     applyThemeToBody?: boolean;
@@ -138,6 +170,25 @@ export interface IFabricStyles {
     bodyThemed: IStyle;
     // (undocumented)
     root: IStyle;
+}
+
+// @public (undocumented)
+export interface IFocusTrapZone {
+    focus: () => void;
+}
+
+// @public (undocumented)
+export interface IFocusTrapZoneProps extends React.HTMLAttributes<HTMLDivElement> {
+    ariaLabelledBy?: string;
+    componentRef?: IRefObject<IFocusTrapZone>;
+    disabled?: boolean;
+    disableFirstFocus?: boolean;
+    elementToFocusOnDismiss?: HTMLElement;
+    firstFocusableSelector?: string | (() => string);
+    focusPreviouslyFocusedInnerElement?: boolean;
+    forceFocusInsideTrap?: boolean;
+    ignoreExternalFocusing?: boolean;
+    isClickableOutsideFocusTrap?: boolean;
 }
 
 // @public (undocumented)
@@ -1047,6 +1098,13 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
     readonly value: string | undefined;
     }
 
+// @public
+export const ThemeProvider: React.FunctionComponent<ThemeProviderProps & {
+    ref?: React.Ref<HTMLDivElement>;
+}>;
+
+export { ThemeProviderProps }
+
 // @public (undocumented)
 export const Toggle: React.FunctionComponent<IToggleProps>;
 
@@ -1078,7 +1136,6 @@ export * from "office-ui-fabric-react/lib/Dropdown";
 export * from "office-ui-fabric-react/lib/ExtendedPicker";
 export * from "office-ui-fabric-react/lib/Facepile";
 export * from "office-ui-fabric-react/lib/FloatingPicker";
-export * from "office-ui-fabric-react/lib/FocusTrapZone";
 export * from "office-ui-fabric-react/lib/FocusZone";
 export * from "office-ui-fabric-react/lib/Grid";
 export * from "office-ui-fabric-react/lib/GroupedList";

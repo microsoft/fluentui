@@ -195,11 +195,11 @@ export interface ISemanticColors extends ISemanticTextColors {
    */
   successIcon: string;
   /**
-   * Color of links within a Message.
+   * Color of links within a message.
    */
   messageLink: string;
   /**
-   * Color of links within a Message when hovered.
+   * Color of links within a message when hovered.
    */
   messageLinkHovered: string;
 

@@ -1,5 +1,12 @@
 import * as React from 'react';
 
+// tslint:disable-next-line:interface-name
+export interface ShorthandConfig<P> {
+  mappedProp?: keyof P;
+  mappedArrayProp?: keyof P;
+  allowsJSX?: boolean;
+}
+
 //
 // "as" type safety
 //
@@ -45,7 +52,7 @@ export type ComposeRenderFunction<T extends React.ElementType = 'div', P = {}> =
   composeOptions: ComposePreparedOptions,
 ) => React.ReactElement | null;
 
-export type ComposeOptions<InputProps = {}, InputStylesProps = {}, ParentStylesProps = {}> = {
+export type ComposeOptions<InputProps = {}, InputStylesProps = {}, ParentProps = {}, ParentStylesProps = {}> = {
   className?: string;
   classes?: ClassDictionary;
   displayName?: string;
@@ -57,7 +64,9 @@ export type ComposeOptions<InputProps = {}, InputStylesProps = {}, ParentStylesP
 
   slots?: Record<string, React.ElementType>;
 
-  mapPropsToSlotProps?: (props: InputProps) => Record<string, object>;
+  mapPropsToSlotProps?: (props: ParentProps & InputProps) => Record<string, object>;
+
+  shorthandConfig?: ShorthandConfig<ParentProps & InputProps>;
 };
 
 export type ClassDictionary = {
@@ -76,8 +85,9 @@ export type ComposePreparedOptions<Props = {}> = {
   handledProps: (keyof Props)[];
   overrideStyles: boolean;
 
-  slots: Record<string, React.ElementType>;
+  slots: Record<string, React.ElementType> & { __self: React.ElementType };
   mapPropsToSlotPropsChain: ((props: Props) => Record<string, object>)[];
 
   resolveSlotProps: <P>(props: P) => Record<string, object>;
+  shorthandConfig: ShorthandConfig<Props>;
 };

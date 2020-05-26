@@ -2,6 +2,44 @@
   "name": "@fluentui/react-compose",
   "entries": [
     {
+      "date": "Tue, 26 May 2020 12:46:29 GMT",
+      "tag": "@fluentui/react-compose_v0.5.1",
+      "version": "0.5.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix: allow ParentProps in ComposeOptions",
+            "author": "olfedias@microsoft.com",
+            "commit": "e12167bcb98945b4299d931e285381802245128b",
+            "package": "@fluentui/react-compose"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 20 May 2020 12:31:10 GMT",
+      "tag": "@fluentui/react-compose_v0.5.0",
+      "version": "0.5.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "feat(compose): expose __self slot",
+            "author": "olfedias@microsoft.com",
+            "commit": "30fa92e7c750651fa609aa6c924b83155bebe203",
+            "package": "@fluentui/react-compose"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "add shorthand config",
+            "author": "mnajdova@gmail.com",
+            "commit": "11cb30315dcc73926c2817e81912b99ba80f3fe5",
+            "package": "@fluentui/react-compose"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 19 May 2020 12:34:06 GMT",
       "tag": "@fluentui/react-compose_v0.4.1",
       "version": "0.4.1",

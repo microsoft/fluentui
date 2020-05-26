@@ -47,7 +47,7 @@ export default () => (
         import { AddIcon, EmailIcon, EmojiIcon, CloseIcon } from '@fluentui/react-icons-northstar'
 
         export default () =>
-         <Provider theme={themes.teams}>
+         <Provider theme={teamsTheme}>
             <Button content="Button" />
             <Button icon={<AddIcon />} iconOnly primary />
             <Button icon={<EmailIcon />} content="Send email" secondary />

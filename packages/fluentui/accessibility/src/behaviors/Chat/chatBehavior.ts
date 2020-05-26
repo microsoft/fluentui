@@ -1,4 +1,4 @@
-import * as keyboardKey from 'keyboard-key';
+import { getCode, keyboardKey } from '@fluentui/keyboard-key';
 
 import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
 import { Accessibility } from '../../types';
@@ -23,7 +23,7 @@ const ChatBehavior: Accessibility<ChatBehaviorProps> = () => ({
   },
   focusZone: {
     props: {
-      shouldEnterInnerZone: event => keyboardKey.getCode(event) === keyboardKey.Enter,
+      shouldEnterInnerZone: event => getCode(event) === keyboardKey.Enter,
       direction: FocusZoneDirection.vertical,
       shouldResetActiveElementWhenTabFromZone: true,
       defaultTabbableElement: getLastTabbableElement, // select last chat message by default
