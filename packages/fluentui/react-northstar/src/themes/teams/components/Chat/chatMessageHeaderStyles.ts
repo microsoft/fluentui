@@ -7,7 +7,6 @@ const chatMessageHeaderStyles: ComponentSlotStylesPrepared<ChatMessageHeaderStyl
   root: ({ props: p, theme: { siteVariables } }) => {
     return {
       width: '100%',
-      overflow: 'auto',
       whiteSpace: 'nowrap',
       display: 'inline-flex',
       alignItems: 'center',
