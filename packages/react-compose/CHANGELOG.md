@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-compose
 
-This log was last generated on Wed, 20 May 2020 12:31:10 GMT and should not be manually modified.
+This log was last generated on Tue, 26 May 2020 12:46:29 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.5.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.5.1)
+
+Tue, 26 May 2020 12:46:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v0.5.0..@fluentui/react-compose_v0.5.1)
+
+### Patches
+
+- fix: allow ParentProps in ComposeOptions ([PR #13316](https://github.com/microsoft/fluentui/pull/13316) by olfedias@microsoft.com)
 
 ## [0.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.5.0)
 

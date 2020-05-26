@@ -2,6 +2,21 @@
   "name": "@fluentui/react-compose",
   "entries": [
     {
+      "date": "Tue, 26 May 2020 12:46:29 GMT",
+      "tag": "@fluentui/react-compose_v0.5.1",
+      "version": "0.5.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix: allow ParentProps in ComposeOptions",
+            "author": "olfedias@microsoft.com",
+            "commit": "e12167bcb98945b4299d931e285381802245128b",
+            "package": "@fluentui/react-compose"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 20 May 2020 12:31:10 GMT",
       "tag": "@fluentui/react-compose_v0.5.0",
       "version": "0.5.0",

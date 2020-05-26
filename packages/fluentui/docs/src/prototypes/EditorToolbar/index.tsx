@@ -25,6 +25,8 @@ const EditorToolbarInWindowPrototype = () => {
   const [open, setOpen] = useBooleanKnob({ name: 'open' });
   const [rtl] = useBooleanKnob({ name: 'rtl' });
 
+  const handleClose = React.useCallback(() => setOpen(false), [setOpen]);
+
   return (
     <>
       <Button disabled={open} onClick={() => setOpen(true)}>
@@ -32,7 +34,7 @@ const EditorToolbarInWindowPrototype = () => {
       </Button>
 
       {open && (
-        <PortalWindow onClose={() => setOpen(false)}>
+        <PortalWindow onClose={handleClose}>
           {externalDocument => (
             <Provider
               rtl={rtl}

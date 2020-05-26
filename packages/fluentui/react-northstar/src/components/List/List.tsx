@@ -135,7 +135,7 @@ const List: React.FC<WithAsProp<ListProps>> &
   const hasContent = childrenExist(children) || (items && items.length > 0);
   const onItemClick = React.useCallback(
     (e, itemIndex) => {
-      if (selectable) {
+      if (latestProps.current.selectable) {
         setSelectedIndex(itemIndex);
         _.invoke(latestProps.current, 'onSelectedIndexChange', e, {
           ...latestProps.current,
