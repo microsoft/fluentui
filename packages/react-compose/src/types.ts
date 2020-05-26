@@ -1,11 +1,16 @@
 import * as React from 'react';
 
 // tslint:disable-next-line:interface-name
-export interface ShorthandConfig<P> {
-  mappedProp?: keyof P;
-  mappedArrayProp?: keyof P;
+export interface ShorthandConfig<TProps> {
+  mappedProp?: keyof TProps;
+  mappedArrayProp?: keyof TProps;
   allowsJSX?: boolean;
 }
+
+/**
+ * Used for shorthand prop values.
+ */
+export type ShorthandValue<TProps = {}> = string | boolean | number | null | undefined | TProps | JSX.Element;
 
 //
 // "as" type safety
@@ -17,14 +22,15 @@ export type PropsOfElement<
 > = JSX.LibraryManagedAttributes<E, React.ComponentPropsWithRef<E>>;
 
 // tslint:disable-next-line:interface-name
-export interface ComponentWithAs<E extends React.ElementType = 'div', P = {}> extends React.FunctionComponent {
-  <EE extends React.ElementType = E>(
-    props: Omit<PropsOfElement<EE>, 'as' | keyof P> & { as?: EE } & P,
+export interface ComponentWithAs<TElementType extends React.ElementType = 'div', TProps = {}>
+  extends React.FunctionComponent {
+  <TExtendedElementType extends React.ElementType = TElementType>(
+    props: Omit<PropsOfElement<TExtendedElementType>, 'as' | keyof TProps> & { as?: TExtendedElementType } & TProps,
   ): JSX.Element | null;
   displayName?: string;
 
-  defaultProps?: Partial<P & { as: E }>;
-  propTypes?: React.WeakValidationMap<P> & {
+  defaultProps?: Partial<TProps & { as: TElementType }>;
+  propTypes?: React.WeakValidationMap<TProps> & {
     // tslint:disable-next-line:no-any
     as: React.Requireable<string | ((props: any, context?: any) => any) | (new (props: any, context?: any) => any)>;
   };
@@ -64,7 +70,8 @@ export type ComposeOptions<
   TInputState = TInputProps
 > = {
   className?: string;
-  classes?: ClassDictionary | ((state: TInputState) => ClassDictionary);
+
+  classes?: ClassDictionary | ((state: Dictionary, slots: Dictionary) => ClassDictionary);
 
   displayName?: string;
 
@@ -82,22 +89,14 @@ export type ComposeOptions<
   shorthandConfig?: ShorthandConfig<TInputProps>;
 };
 
-export type ClassDictionary = {
-  [key: string]: string;
-};
+export type ClassDictionary = Record<string, string>;
 
-export type Dictionary = {
-  // tslint:disable-next-line: no-any
-  [key: string]: any;
-};
+// tslint:disable-next-line:no-any
+export type Dictionary = Record<string, any>;
 
 export type ComposePreparedOptions<TElementType extends React.ElementType = 'div', TProps = {}, TState = TProps> = {
   className: string;
-  classes: (
-    | undefined
-    | ClassDictionary
-    | ((state: TState, slots: ComposePreparedOptions['slots']) => ClassDictionary)
-  )[];
+  classes: (undefined | ClassDictionary | ((state: Dictionary, slots: Dictionary) => ClassDictionary))[];
   displayName: string;
   displayNames: string[];
 

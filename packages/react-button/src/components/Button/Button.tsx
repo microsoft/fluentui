@@ -1,12 +1,10 @@
 import { ButtonBase } from './ButtonBase';
+import { ButtonProps } from './Button.types';
 import { compose, createClassResolver } from '@fluentui/react-compose';
 import * as classes from './Button.scss';
-import { ButtonProps } from './Button.types';
 
-export const Button = compose<'button', {}, {}, ButtonProps, ButtonProps>(ButtonBase, {
+export const Button = compose<'button', ButtonProps, ButtonProps, {}, {}>(ButtonBase, {
   classes: createClassResolver(classes),
-  slots: {
-    icon: 'div',
-  },
+  slots: {},
   displayName: 'Button',
 });

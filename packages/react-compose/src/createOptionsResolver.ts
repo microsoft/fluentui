@@ -1,6 +1,6 @@
 import { ComposePreparedOptions, ClassDictionary } from './types';
 import * as React from 'react';
-// import { getNativeElementProps } from '@uifabric/utilities';
+import { getNativeElementProps } from '@uifabric/utilities';
 
 export type OptionsResolverResult = {
   // tslint:disable:no-any
@@ -35,13 +35,11 @@ export const createOptionsResolver = <TState>(options: ComposePreparedOptions) =
       slots,
     };
 
-    // Resolve the "as" prop
-    if (state.as) {
-      slots.root = state.as;
-    }
+    // Always ensure a root slot exists
+    slots.root = state.as || slots.root || 'div';
 
     // Resolve unrecognized props
-    // assignToMapObject(slotProps, 'root', getNativeElementProps(state.as, {})
+    assignToMapObject(slotProps, 'root', getNativeElementProps(state.as, state));
 
     // Resolve slotProps/slots from state
     resolveSlotProps(result);
@@ -62,10 +60,12 @@ function addToMapArray(map: Record<string, string[]>, key: string, value: string
 }
 
 function assignToMapObject(map: Record<string, {}>, key: string, value: {}) {
-  if (!map[key]) {
-    map[key] = {};
+  if (value) {
+    if (!map[key]) {
+      map[key] = {};
+    }
+    Object.assign(map[key], value);
   }
-  Object.assign(map[key], value);
 }
 
 function resolveSlotProps({ state, slots, slotProps }: OptionsResolverResult) {

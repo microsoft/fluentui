@@ -1,6 +1,8 @@
 import * as React from 'react';
 import compose from './compose';
 import { mount, shallow } from 'enzyme';
+import { ComposePreparedOptions } from './types';
+import { defaultComposeOptions } from './mergeComposeOptions';
 
 describe('compose', () => {
   interface ToggleProps extends React.AllHTMLAttributes<{}> {
@@ -70,7 +72,6 @@ describe('compose', () => {
     expect(composedWrapper.prop('data-allows-jsx')).toEqual(false);
   });
 
-  /*
   it('provides a resolve function for the component to resolve slots, slotProps, and classes', () => {
     // tslint:disable-next-line:no-any
     let lastResolveResult: Record<string, any> = {};
@@ -84,29 +85,35 @@ describe('compose', () => {
         return <slots.root ref={ref} {...slotProps.root} />;
       },
       {
-
-        classes: [state => ({ root: 'asdf', slot1: '', primary: 'primary' })]
-        classes: [state => ({ root: 'asdf' })]
+        slots: {
+          root: 'div',
+          slot1: 'div',
+        },
+        classes: () => {
+          return { root: 'root', slot1: '', primary: 'primary' };
+        },
       },
     );
 
-    }
-    let wrapper = mount(<Foo>hi</Foo>);
-    expect(wrapper.html()).toEqual('<div>hi</div>');
+    const wrapper = mount(<Foo>hi</Foo>);
+
+    expect(wrapper.html()).toEqual('<div class="root">hi</div>');
 
     expect(lastResolveResult).toEqual({
       state: {
         children: 'hi',
       },
       slots: {
+        ...defaultComposeOptions.slots,
         root: 'div',
+        slot1: 'div',
       },
       slotProps: {
         root: {
+          className: 'root',
           children: 'hi',
         },
       },
     });
   });
-  */
 });

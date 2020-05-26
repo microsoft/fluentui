@@ -7,8 +7,12 @@ export const mergeClasses = (...classesList: (ClassDictionary | undefined)[]): C
   for (const classes of classesList) {
     if (classes) {
       Object.keys(classes).forEach((key: string) => {
-        result[key] = result[key] || [];
-        (result[key] as string[]).push(classes[key]);
+        const value = classes[key];
+
+        if (value) {
+          result[key] = result[key] || [];
+          (result[key] as string[]).push(value);
+        }
       });
     }
   }

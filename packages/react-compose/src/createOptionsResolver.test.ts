@@ -24,8 +24,10 @@ describe('createOptionsResolver', () => {
   it('can pass through default options', () => {
     expect(defaultResolve({})).toEqual({
       state: {},
-      slots: { ...selfSlot },
-      slotProps: {},
+      slots: { ...selfSlot, root: 'div' },
+      slotProps: {
+        root: {},
+      },
     });
   });
 
@@ -38,26 +40,30 @@ describe('createOptionsResolver', () => {
         ...selfSlot,
         root: 'button',
       },
-      slotProps: {},
+      slotProps: {
+        root: {},
+      },
     });
   });
 
-  // it('can mix unrecognized props onto the root', () => {
-  //   expect(defaultResolve({ 'data-foo': 'foo' })).toEqual({
-  //     state: {},
-  //     slots: {},
-  //     slotProps: {
-  //       root: {
-  //         'data-foo': 'foo',
-  //       },
-  //     },
-  //   });
-  // });
+  it('can mix unrecognized props onto the root', () => {
+    expect(defaultResolve({ 'data-foo': 'foo' })).toEqual({
+      slots: { ...selfSlot, root: 'div' },
+      state: {
+        'data-foo': 'foo',
+      },
+      slotProps: {
+        root: {
+          'data-foo': 'foo',
+        },
+      },
+    });
+  });
 
   it('can resolve classes and mix them onto the slot props', () => {
     expect(defaultResolveWithSlots({ className: 'cn' })).toEqual({
+      ...defaultSlots,
       state: { className: 'cn' },
-      slots: { ...selfSlot, root: nullRenderer, foo: nullRenderer, bar: nullRenderer },
       slotProps: {
         root: { className: 'root cn' },
         foo: { className: 'foo' },
