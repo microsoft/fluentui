@@ -21,6 +21,7 @@ import {
   UIComponentProps,
   ChildrenComponentProps,
   ContentComponentProps,
+  createShorthand,
 } from '../../utils';
 
 import {
@@ -127,7 +128,7 @@ const ToolbarMenu: React.FC<WithAsProp<ToolbarMenuProps>> & FluentComponentStati
 
       switch (kind) {
         case 'divider':
-          return ToolbarMenuDivider.create(item);
+          return createShorthand(ToolbarMenuDivider, item);
 
         case 'group':
           return createShorthand(ToolbarMenuRadioGroup, item, { overrideProps: handleRadioGroupOverrides });
