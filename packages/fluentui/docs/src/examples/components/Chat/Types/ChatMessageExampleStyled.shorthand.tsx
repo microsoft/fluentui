@@ -79,6 +79,8 @@ const ChatMessageExampleStyled = () => (
           },
           reactionGroup: {
             ...slotLabelStyles('reactions', {}, { padding: '8px' }),
+            height: '100%',
+            display: 'block',
             backgroundColor: '#FFFFE0',
           },
         },
