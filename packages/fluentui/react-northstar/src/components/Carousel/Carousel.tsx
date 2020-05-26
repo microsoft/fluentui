@@ -225,9 +225,13 @@ export const Carousel: React.FC<WithAsProp<CarouselProps>> &
   const paddleNextRef = React.useRef<HTMLElement>();
   const paddlePreviousRef = React.useRef<HTMLElement>();
 
-  const focusItemAtIndex = _.debounce((index: number) => {
-    itemRefs[index].current?.focus();
-  }, 400);
+  const focusItemAtIndex = React.useMemo(
+    () =>
+      _.debounce((index: number) => {
+        itemRefs[index].current?.focus();
+      }, 400),
+    [itemRefs],
+  );
 
   React.useEffect(() => {
     return () => {
