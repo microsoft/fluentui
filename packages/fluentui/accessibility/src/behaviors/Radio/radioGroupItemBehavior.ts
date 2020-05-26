@@ -35,7 +35,7 @@ const radioGroupItemBehavior: Accessibility<RadioGroupItemBehaviorProps> = props
 
 export default radioGroupItemBehavior;
 
-type RadioGroupItemBehaviorProps = {
+export type RadioGroupItemBehaviorProps = {
   /** Indicates if radio item is selected. */
   checked?: boolean;
   /** Indicates if radio item is disabled. */

@@ -39,7 +39,7 @@ export default () => (
 
         function App() {
           return (
-            <Provider theme={themes.teams}>
+            <Provider theme={teamsTheme}>
               <h1>Fluent UI Menu with blocked rendering</h1>
               <hr />
               <Menu defaultActiveIndex={0} items={items} primary vertical />

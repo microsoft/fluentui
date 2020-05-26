@@ -329,6 +329,7 @@ describe('useAccessibility', () => {
       ).toEqual(
         expect.objectContaining({
           preventFocusRestoration: true,
+          shouldRaiseClicks: false,
         }),
       );
     });

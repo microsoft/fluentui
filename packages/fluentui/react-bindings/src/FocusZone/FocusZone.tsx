@@ -1,4 +1,9 @@
-import { FocusZoneDirection, FocusZoneTabbableElements, IS_FOCUSABLE_ATTRIBUTE } from '@fluentui/accessibility';
+import {
+  FocusZoneDirection,
+  FocusZoneTabbableElements,
+  IS_ENTER_DISABLED_ATTRIBUTE,
+  IS_FOCUSABLE_ATTRIBUTE,
+} from '@fluentui/accessibility';
 import * as React from 'react';
 import cx from 'classnames';
 import * as _ from 'lodash';
@@ -12,6 +17,7 @@ import {
   getDocument,
   getParent,
   getWindow,
+  raiseClick,
   shouldWrapFocus,
 } from '@uifabric/utilities';
 
@@ -56,6 +62,7 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
     defaultTabbableElement: PropTypes.func,
     shouldFocusOnMount: PropTypes.bool,
     shouldResetActiveElementWhenTabFromZone: PropTypes.bool,
+    shouldRaiseClicks: PropTypes.bool,
     shouldFocusInnerElementWhenReceivedFocus: PropTypes.bool,
     disabled: PropTypes.bool,
     as: PropTypes.elementType as PropTypes.Requireable<React.ElementType>,
@@ -78,6 +85,7 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
     direction: FocusZoneDirection.bidirectional,
     as: 'div',
     preventDefaultWhenHandled: true,
+    shouldRaiseClicks: false,
   };
 
   static displayName = 'FocusZone';
@@ -712,9 +720,36 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
 
   /**
    * Walk up the dom try to find a focusable element.
-   * TODO
    */
-  tryInvokeClickForFocusable(): boolean {
+  tryInvokeClickForFocusable(targetElement: HTMLElement): boolean {
+    let target = targetElement;
+
+    if (target === this._root.current || !this.props.shouldRaiseClicks) {
+      return false;
+    }
+
+    do {
+      if (
+        target.tagName === 'BUTTON' ||
+        target.tagName === 'A' ||
+        target.tagName === 'INPUT' ||
+        target.tagName === 'TEXTAREA'
+      ) {
+        return false;
+      }
+
+      if (
+        this.isImmediateDescendantOfZone(target) &&
+        target.getAttribute(IS_FOCUSABLE_ATTRIBUTE) === 'true' &&
+        target.getAttribute(IS_ENTER_DISABLED_ATTRIBUTE) !== 'true'
+      ) {
+        raiseClick(target);
+        return true;
+      }
+
+      target = getParent(target, ALLOW_VIRTUAL_ELEMENTS) as HTMLElement;
+    } while (target !== this._root.current);
+
     return false;
   }
 

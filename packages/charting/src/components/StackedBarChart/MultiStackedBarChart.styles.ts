@@ -1,5 +1,4 @@
-import { IMultiStackedBarChartStyles } from '@uifabric/charting';
-import { IMultiStackedBarChartStyleProps } from './MultiStackedBarChart.types';
+import { IMultiStackedBarChartStyleProps, IMultiStackedBarChartStyles } from './MultiStackedBarChart.types';
 
 export const getMultiStackedBarChartStyles = (props: IMultiStackedBarChartStyleProps): IMultiStackedBarChartStyles => {
   const { className, width, barHeight, legendColor, shouldHighlight, theme, href } = props;

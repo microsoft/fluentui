@@ -5,7 +5,7 @@ import { mergeComposeOptions, wasComposedPreviously } from './utils';
 
 function compose<ElementType extends React.ElementType, InputProps, InputStylesProps, ParentProps, ParentStylesProps>(
   input: Input<ElementType, InputProps>,
-  inputOptions: ComposeOptions<InputProps, InputStylesProps, ParentStylesProps> = {},
+  inputOptions: ComposeOptions<InputProps, InputStylesProps, ParentProps, ParentStylesProps> = {},
 ) {
   const composeOptions = mergeComposeOptions(
     input as Input,
@@ -15,7 +15,13 @@ function compose<ElementType extends React.ElementType, InputProps, InputStylesP
 
   const Component = (React.forwardRef<ElementType, InputProps & ParentProps & { as?: React.ElementType }>(
     (props, ref) => {
-      return composeOptions.render(props, (ref as unknown) as React.Ref<HTMLDivElement>, composeOptions);
+      return composeOptions.render(props, (ref as unknown) as React.Ref<HTMLDivElement>, {
+        ...composeOptions,
+        slots: {
+          ...composeOptions.slots,
+          __self: Component,
+        },
+      });
     },
   ) as unknown) as ComponentWithAs<ElementType, InputProps & ParentProps>;
 

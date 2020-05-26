@@ -190,6 +190,9 @@ const Popup: React.FC<PopupProps> &
       preventScroll: e => {
         e.preventDefault();
       },
+      stopPropagation: e => {
+        e.stopPropagation();
+      },
     },
     mapPropsToBehavior: () => ({
       disabled: false, // definition has this prop, but `Popup` doesn't support it

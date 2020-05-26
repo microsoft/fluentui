@@ -44,8 +44,8 @@ type EditorToolbarProps = EditorToolbarState & {
   target?: Document;
 };
 
-type ToolbarItem = ShorthandValue<ToolbarItemProps & { kind?: ToolbarItemShorthandKinds }>;
-type OverflowItem = ShorthandValue<ToolbarMenuItemProps & { kind?: ToolbarMenuItemShorthandKinds }>;
+type ToolbarItem = ShorthandValue<ToolbarItemProps & { kind?: keyof ToolbarItemShorthandKinds }>;
+type OverflowItem = ShorthandValue<ToolbarMenuItemProps & { kind?: keyof ToolbarMenuItemShorthandKinds }>;
 
 const EditorToolbar: React.FC<EditorToolbarProps> = props => {
   const overflowIndex = React.useRef<number>();

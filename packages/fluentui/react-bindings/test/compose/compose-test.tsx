@@ -65,7 +65,15 @@ const BaseComponent: React.FC<BaseComponentProps> = compose<
     });
     const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
 
-    return <button className={classes.root} onClick={() => setOpen(!open)} {...unhandledProps} ref={ref} />;
+    return (
+      <button
+        className={classes.root}
+        data-display-name={(composeOptions.slots.__self as typeof BaseComponent).displayName}
+        onClick={() => setOpen(!open)}
+        ref={ref}
+        {...unhandledProps}
+      />
+    );
   },
   {
     className: 'ui-base',
@@ -146,7 +154,7 @@ const BaseComponentWithSlots: React.FC<BaseComponentProps> = compose<
       main: 'b',
       end: 'i',
     },
-    mapPropsToSlotProps: (props: any) => ({
+    mapPropsToSlotProps: props => ({
       start: {
         'data-attr': props['data-start'],
       },
@@ -202,6 +210,12 @@ describe('useCompose', () => {
     expect(wrapper.find('#start').name()).toEqual('span');
     expect(wrapper.find('#main').name()).toEqual('b');
     expect(wrapper.find('#end').name()).toEqual('i');
+  });
+
+  it('passes component definition as "__self"', () => {
+    const wrapper = shallow(<BaseComponent />);
+
+    expect(wrapper.find('button').prop('data-display-name')).toEqual('BaseComponent');
   });
 
   it('applies mapped props to correct slots', () => {
