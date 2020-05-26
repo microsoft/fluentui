@@ -75,7 +75,7 @@ export const UnifiedPeoplePickerExample = (): JSX.Element => {
     setPeopleSuggestions(suggestions => {
       // Since key is unique, we will be filtering based on that instead of id, which does not exist for other suggestions.
       const modifiedSuggestions = suggestions.filter(
-        suggestion => suggestion.item.key !== suggestionToRemove.item?.key,
+        suggestion => suggestion.item?.key !== suggestionToRemove.item?.key,
       );
       return modifiedSuggestions;
     });
