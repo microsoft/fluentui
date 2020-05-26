@@ -44,6 +44,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Restricted prop sets in the `HeaderDescription` component which are passed to styles functions, @assuncaocharles ([#13296](https://github.com/microsoft/fluentui/pull/13296))
 - Restricted prop sets in the `Loader` component which are passed to styles functions, @assuncaocharles ([#13297](https://github.com/microsoft/fluentui/pull/13297))
 - Restricted prop sets in the `RadioGroupItem` component which are passed to styles functions, @assuncaocharles ([#13301](https://github.com/microsoft/fluentui/pull/13301))
+- `toolbarItemSlotClassNames.wrapper` was removed, `toolbarItemWrapperClassName` should be used instead @mnajdova ([#13321](https://github.com/microsoft/fluentui/pull/13321))
 
 ### Fixes
 - Fix `splitButtonBehavior` to exclude `toggleButton` from focus zone @silviuavram ([#13043](https://github.com/microsoft/fluentui/pull/13043))
@@ -68,6 +69,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Added icons: `AudioLoadingIcon`, `VideoLoadingIcon`, `TiltPanZoomIcon`, `SpeakerPersonIcon`, `GalleryNewIcon`, `GalleryNewLargeIcon`, `ContentIcon`, `AudienceIcon`, `CameraIcon`  @TanelVari ([#13221](https://github.com/microsoft/fluentui/pull/13221))
 - Add children api support for `Menu` component @assuncaocharles ([#13227](https://github.com/microsoft/fluentui/pull/13227))
 - Add `compose()` support for submenus in `MenuItem` @mnajdova ([#13300](https://github.com/microsoft/fluentui/pull/13300))
+- Use `compose()` in `ToolbarItem` @mnajdova ([#13321](https://github.com/microsoft/fluentui/pull/13321))
 
 ### Documentation
 - `Toolbar` recommendation using toolbar based on aria  @kolaps33 ([#13143](https://github.com/microsoft/fluentui/pull/13143))
