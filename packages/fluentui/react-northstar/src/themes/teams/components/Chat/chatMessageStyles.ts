@@ -111,12 +111,12 @@ const chatMessageStyles: ComponentSlotStylesPrepared<ChatMessageStylesProps, Cha
     ...((p.mine || p.attached === 'bottom' || p.attached === true) && (screenReaderContainerStyles as ICSSInJSStyle)),
     color: v.authorColor,
     marginRight: v.authorMarginRight,
-    // marginBottom: v.headerMarginBottom,
+    marginBottom: v.headerMarginBottom,
     fontWeight: v.authorFontWeight,
   }),
 
   timestamp: ({ props: p, variables: v }) => ({
-    // marginBottom: v.headerMarginBottom,
+    marginBottom: v.headerMarginBottom,
     ...(p.mine && {
       color: v.timestampColorMine,
     }),
@@ -160,8 +160,11 @@ const chatMessageStyles: ComponentSlotStylesPrepared<ChatMessageStylesProps, Cha
       },
     };
   },
-  reactionGroup: ({ props: p, variables: v }) => ({
+  reactionGroup: ({ props: p, variables: v, theme: { siteVariables } }) => ({
     marginLeft: v.reactionGroupMarginLeft,
+    display: 'flex',
+    height: pxToRem(21.5),
+    alignItems: 'flex-start',
     ...(p.hasBadge &&
       p.badgePosition === 'end' && {
         marginRight: pxToRem(2),

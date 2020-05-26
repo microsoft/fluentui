@@ -9,7 +9,7 @@ interface ChatMessageHeaderOwnProps {
 }
 export interface ChatMessageHeaderProps extends ChatMessageHeaderOwnProps, BoxProps {}
 
-export type ChatMessageHeaderStylesProps = Pick<ChatMessageHeaderOwnProps, 'hasReactionGroup' | 'attached'>;
+export type ChatMessageHeaderStylesProps = never;
 export const ChatMessageHeaderClassName = `ui-chat__message__header`;
 
 /**
@@ -25,11 +25,6 @@ const ChatMessageHeader = compose<
   className: ChatMessageHeaderClassName,
   displayName: 'ChatMessageHeader',
   shorthandConfig: { mappedProp: 'content' },
-  handledProps: ['attached', 'hasReactionGroup'],
-  mapPropsToStylesProps: ({ hasReactionGroup, attached }) => ({
-    hasReactionGroup,
-    attached,
-  }),
   overrideStyles: true,
 });
 

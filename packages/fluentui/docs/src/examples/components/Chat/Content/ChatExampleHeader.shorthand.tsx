@@ -1,4 +1,4 @@
-import { Avatar, Chat, Text, ReactionGroup, ReactionGroupProps, ChatProps } from '@fluentui/react-northstar';
+import { Avatar, Chat, Text, ReactionGroup, ReactionGroupProps, ChatProps, Flex } from '@fluentui/react-northstar';
 import * as React from 'react';
 import { EmojiIcon, LikeIcon } from '@fluentui/react-icons-northstar';
 
@@ -16,7 +16,7 @@ const items: ChatProps['items'] = [
         reactionGroup={reactions}
         content="Hello"
         header={
-          <>
+          <Flex gap="gap.small">
             <ReactionGroup items={reactions} />
             <Text
               styles={{
@@ -32,7 +32,7 @@ const items: ChatProps['items'] = [
             >
               Yesterday, 10:15 PM
             </Text>
-          </>
+          </Flex>
         }
         mine
       />

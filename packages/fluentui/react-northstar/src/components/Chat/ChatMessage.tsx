@@ -325,8 +325,6 @@ const ChatMessage: React.FC<WithAsProp<ChatMessageProps>> & FluentComponentStati
 
   const headerElement = createShorthand(ChatMessageHeader, header, {
     overrideProps: () => ({
-      attached,
-      hasReactionGroup: !!reactionGroup,
       content: (
         <>
           {authorElement}
