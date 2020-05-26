@@ -71,11 +71,11 @@ export type LayoutStylesProps = Required<
     | 'mainSize'
     | 'end'
     | 'endSize'
-    | 'start'
+    // | 'start'
     | 'startSize'
     | 'vertical'
   >
->;
+> & { hasStart: boolean };
 
 const Layout = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
@@ -124,7 +124,7 @@ const Layout = props => {
       mainSize,
       end,
       endSize,
-      start,
+      hasStart: !!start,
       startSize,
       vertical,
     }),
