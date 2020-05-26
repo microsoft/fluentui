@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/FocusTrapZone';
+export * from './components/FocusTrapZone/index';

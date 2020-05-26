@@ -264,7 +264,7 @@ export function find<T>(array: T[], cb: (item: T, index: number) => boolean): T 
 export function findElementRecursive(element: HTMLElement | null, matchFunction: (element: HTMLElement) => boolean): HTMLElement | null;
 
 // @public
-export function findIndex<T>(array: T[], cb: (item: T, index: number) => boolean): number;
+export function findIndex<T>(array: T[], cb: (item: T, index: number) => boolean, fromIndex?: number): number;
 
 // @public
 export function findScrollableParent(startingElement: HTMLElement | null): HTMLElement | null;

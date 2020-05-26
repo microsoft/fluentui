@@ -47,6 +47,7 @@
     "@types/gulp-util": "^3.0.34",
     "@types/jest": "~24.9.0",
     "@types/jest-axe": "^3.2.1",
+    "@types/jju": "^1.4.1",
     "@types/lerna-alias": "^3.0.0",
     "@types/lodash": "^4.14.149",
     "@types/node": "^10.3.2",
