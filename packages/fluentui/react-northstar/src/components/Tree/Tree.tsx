@@ -347,21 +347,22 @@ const Tree: React.FC<WithAsProp<TreeProps>> &
       const { id } = treeItemProps;
       const siblings = getSiblings(stableProps.current.items, id);
 
-      const nextActiveItemsIds = [...activeItemIds];
+      setActiveItemIds(e, currActiveItemIds => {
+        const nextActiveItemsIds = [...currActiveItemIds];
 
-      siblings.forEach(sibling => {
-        if (hasSubtree(sibling) && !isActiveItem(sibling['id'])) {
-          nextActiveItemsIds.push(sibling['id']);
+        siblings.forEach(sibling => {
+          if (hasSubtree(sibling) && !isActiveItem(sibling['id'])) {
+            nextActiveItemsIds.push(sibling['id']);
+          }
+        });
+
+        if (hasSubtree(treeItemProps) && !isActiveItem(id)) {
+          nextActiveItemsIds.push(id);
         }
+        return nextActiveItemsIds;
       });
-
-      if (hasSubtree(treeItemProps) && !isActiveItem(id)) {
-        nextActiveItemsIds.push(id);
-      }
-
-      setActiveItemIds(e, nextActiveItemsIds);
     },
-    [exclusive, stableProps, activeItemIds, isActiveItem, setActiveItemIds],
+    [exclusive, stableProps, isActiveItem, setActiveItemIds],
   );
 
   const isIndeterminate = (item: TreeItemProps) => {
