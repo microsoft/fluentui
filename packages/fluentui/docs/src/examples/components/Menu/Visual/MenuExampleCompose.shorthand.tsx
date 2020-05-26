@@ -47,7 +47,7 @@ const MenuItemBlue = compose<'a', MenuItemBlueProps, MenuItemStylesProps, MenuIt
       indicator: MenuitemIndicatorSaturated,
       wrapper: MenuItemWrapperDashed,
     },
-    mapPropsToSlotProps: (props: MenuItemProps & { level?: number }) => ({
+    mapPropsToSlotProps: props => ({
       menu: {
         level: props.level + 1,
       },
