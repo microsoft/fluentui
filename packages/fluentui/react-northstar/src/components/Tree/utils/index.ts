@@ -2,7 +2,6 @@ import * as _ from 'lodash';
 import * as React from 'react';
 import { TreeItemProps } from '../TreeItem';
 import { ShorthandValue } from '../../../types';
-import { TreeProps } from '../Tree';
 
 export const hasSubtree = (item: TreeItemProps | ShorthandValue<TreeItemProps>): boolean => {
   return !_.isNil(item['items']) && item['items'].length > 0;
@@ -56,48 +55,6 @@ export const getSiblings = (items: any[], itemId: string): any[] => {
   }
 
   return getSiblingsFn(items);
-};
-
-export const processItemsForSelection = (treeItemProps: TreeItemProps, selectedItemIds: string[]) => {
-  const treeItemHasSubtree = hasSubtree(treeItemProps);
-  const isExpandedSelectableParent = treeItemHasSubtree && treeItemProps.selectableParent && treeItemProps.expanded;
-
-  let nextSelectedItemIds = selectedItemIds;
-
-  // push all tree items under particular parent into selection array
-  // not parent itself, therefore not procced with selection
-
-  if (isExpandedSelectableParent) {
-    if (isAllGroupChecked(treeItemProps.items as TreeItemProps[], selectedItemIds)) {
-      const selectedItems = getAllSelectableChildrenId(treeItemProps.items as TreeItemProps[]);
-      nextSelectedItemIds = selectedItemIds.filter(id => selectedItems.indexOf(id) === -1);
-    } else {
-      const selectItems = items => {
-        items.forEach(item => {
-          const selectble = item.hasOwnProperty('selectable') ? item.selectable : treeItemProps.selectable;
-          if (selectedItemIds.indexOf(item.id) === -1) {
-            if (item.items) {
-              selectItems(item.items);
-            } else if (selectble) {
-              nextSelectedItemIds.push(item.id);
-            }
-          }
-        });
-      };
-      selectItems(treeItemProps.items);
-    }
-
-    return [...nextSelectedItemIds];
-  }
-
-  // push/remove single tree item into selection array
-  if (selectedItemIds.indexOf(treeItemProps.id) === -1) {
-    nextSelectedItemIds = [...selectedItemIds, treeItemProps.id];
-  } else {
-    nextSelectedItemIds = nextSelectedItemIds.filter(itemID => itemID !== treeItemProps.id);
-  }
-
-  return nextSelectedItemIds;
 };
 
 export interface TreeRenderContextValue {
