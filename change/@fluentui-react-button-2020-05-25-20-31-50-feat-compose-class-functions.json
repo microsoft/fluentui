@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Updating Button to use compose/class function.",
+  "packageName": "@fluentui/react-button",
+  "email": "dzearing@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-05-26T03:31:32.317Z"
+}
