@@ -171,6 +171,8 @@ export const Carousel: React.FC<WithAsProp<CarouselProps>> &
 
   const itemRefs = React.useMemo<React.RefObject<HTMLElement>[]>(
     () => Array.from({ length: items?.length }, () => React.createRef()),
+    // As we are using "panels.length" it's fine to have dependency on them
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [items?.length],
   );
 
@@ -231,7 +233,7 @@ export const Carousel: React.FC<WithAsProp<CarouselProps>> &
     return () => {
       focusItemAtIndex.cancel();
     };
-  }, [items]);
+  }, [focusItemAtIndex, items]);
 
   const setActiveIndex = (e: React.SyntheticEvent, index: number, focusItem: boolean): void => {
     const lastItemIndex = items.length - 1;

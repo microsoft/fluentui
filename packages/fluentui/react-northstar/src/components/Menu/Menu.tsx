@@ -115,20 +115,28 @@ export type MenuStylesProps = Pick<
   'iconOnly' | 'fluid' | 'pointing' | 'pills' | 'primary' | 'underlined' | 'vertical' | 'submenu' | 'secondary'
 >;
 
-function useActualOnItemClick<P>(onItemClick: P) {
-  const actualOnItemClick = React.useRef<P>(onItemClick);
+function useActualProps<P>(props: P) {
+  const actualProps = React.useRef<P>(props);
+
   React.useEffect(() => {
-    actualOnItemClick.current = onItemClick;
+    actualProps.current = props;
   });
-  return actualOnItemClick;
+
+  return actualProps;
 }
 
 function useSlotProps<SlotProps, SlotName extends keyof SlotProps>(
   slotName: SlotName,
-  slotProps: SlotProps,
+  slotsProps: SlotProps,
 ): SlotProps[SlotName] {
-  const s = slotProps[slotName];
-  return React.useMemo(() => s, Object.values(s));
+  const slotProps = slotsProps[slotName];
+
+  return React.useMemo(
+    () => slotProps,
+    // `slotProps` has a stable order of keys so an amount of dependencies will not change between renders
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    _.values(slotProps),
+  );
 }
 
 /**
@@ -185,7 +193,7 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
       rtl: context.rtl,
     });
 
-    const actualOnItemClick = useActualOnItemClick(props.onItemClick);
+    const actualProps = useActualProps(props);
 
     const { classes } = useStyles<MenuStylesProps>(composeOptions.displayName, {
       className: composeOptions.className,
@@ -217,21 +225,24 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
       initialValue: undefined,
     });
 
-    const setActiveIndex = (e: React.SyntheticEvent, activeIndex: number) => {
-      _.invoke(props, 'onActiveIndexChange', e, { ...props, activeIndex });
-      setIndex(activeIndex);
-    };
+    const setActiveIndex = React.useCallback(
+      (e: React.SyntheticEvent, activeIndex: number) => {
+        _.invoke(actualProps.current, 'onActiveIndexChange', e, { ...actualProps.current, activeIndex });
+        setIndex(activeIndex);
+      },
+      [actualProps, setIndex],
+    );
 
     const handleClick = React.useCallback(
       (e, itemProps) => {
         const { index } = itemProps;
         setActiveIndex(e, index);
-        actualOnItemClick.current && actualOnItemClick.current(e, itemProps);
+        _.invoke(actualProps.current, 'onItemClick', e, itemProps);
       },
-      [actualOnItemClick, setActiveIndex],
+      [actualProps, setActiveIndex],
     );
 
-    const handleItemOverrides = predefinedProps => ({
+    const handleItemOverrides = (predefinedProps: MenuItemProps): MenuItemProps => ({
       onClick: (e, itemProps) => {
         handleClick(e, itemProps);
         _.invoke(predefinedProps, 'onClick', e, itemProps);
