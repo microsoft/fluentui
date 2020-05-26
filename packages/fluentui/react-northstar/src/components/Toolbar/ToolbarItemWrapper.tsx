@@ -1,4 +1,4 @@
-import { compose, ComponentWithAs } from '@fluentui/react-bindings';
+import { compose } from '@fluentui/react-bindings';
 import { commonPropTypes } from '../../utils';
 import Box, { BoxProps } from '../Box/Box';
 
@@ -20,7 +20,7 @@ const ToolbarItemWrapper = compose<'div', ToolbarItemWrapperProps, ToolbarItemWr
   shorthandConfig: {
     mappedProp: 'content',
   },
-}) as ComponentWithAs<'div', ToolbarItemWrapperProps>;
+});
 
 ToolbarItemWrapper.propTypes = commonPropTypes.createCommon();
 

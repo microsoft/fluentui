@@ -153,7 +153,7 @@ const Toolbar: React.FC<WithAsProp<ToolbarProps>> &
   } = props;
 
   const overflowContainerRef = React.useRef<HTMLDivElement>();
-  const overflowItemRef = React.useRef<HTMLElement>();
+  const overflowItemWrapperRef = React.useRef<HTMLElement>();
   const offsetMeasureRef = React.useRef<HTMLDivElement>();
   const containerRef = React.useRef<HTMLElement>();
 
@@ -315,7 +315,7 @@ const Toolbar: React.FC<WithAsProp<ToolbarProps>> &
 
   const hideOverflowItems = () => {
     const $overflowContainer = overflowContainerRef.current;
-    const $overflowItem = overflowItemRef.current;
+    const $overflowItem = overflowItemWrapperRef.current;
     const $offsetMeasure = offsetMeasureRef.current;
     if (!$overflowContainer || !$overflowItem || !$offsetMeasure) {
       return;
@@ -456,27 +456,25 @@ const Toolbar: React.FC<WithAsProp<ToolbarProps>> &
       }
     });
 
-  const renderOverflowItem = overflowItem => {
-    return (
-      <Ref innerRef={overflowItemRef}>
-        {createShorthand(ToolbarItem, overflowItem, {
-          defaultProps: () => ({
-            icon: <MoreIcon outline />,
-          }),
-          overrideProps: {
-            menu: {
-              items: overflowOpen ? (collectOverflowItems() as ToolbarMenuProps['items']) : [],
-              popper: { positionFixed: true },
-            },
-            menuOpen: overflowOpen,
-            onMenuOpenChange: (e, { menuOpen }) => {
-              _.invoke(props, 'onOverflowOpenChange', e, { ...props, overflowOpen: menuOpen });
-            },
-          },
-        })}
-      </Ref>
-    );
-  };
+  const renderOverflowItem = overflowItem =>
+    createShorthand(ToolbarItem, overflowItem, {
+      defaultProps: () => ({
+        icon: <MoreIcon outline />,
+      }),
+      overrideProps: {
+        menu: {
+          items: overflowOpen ? (collectOverflowItems() as ToolbarMenuProps['items']) : [],
+          popper: { positionFixed: true },
+        },
+        menuOpen: overflowOpen,
+        onMenuOpenChange: (e, { menuOpen }) => {
+          _.invoke(props, 'onOverflowOpenChange', e, { ...props, overflowOpen: menuOpen });
+        },
+        wrapper: {
+          ref: overflowItemWrapperRef,
+        },
+      },
+    });
 
   React.useEffect(() => {
     const actualWindow: Window = context.target.defaultView;
