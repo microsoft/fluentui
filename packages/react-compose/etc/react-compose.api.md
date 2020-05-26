@@ -28,7 +28,7 @@ export interface ComponentWithAs<TElementType extends React.ElementType = 'div',
 }
 
 // @public
-export function compose<TElementType extends React.ElementType<TProps>, TProps = {}, TInputStylesProps = {}, TParentProps = {}, TParentStylesProps = {}, TState = TProps>(input: Input<TElementType, TProps>, inputOptions?: ComposeOptions<TProps, TInputStylesProps, TParentStylesProps>): ComponentWithAs<TElementType, TProps & TParentProps>;
+export function compose<TElementType extends React.ElementType, TProps = {}, TInputStylesProps = {}, TParentProps = {}, TParentStylesProps = {}, TState = TProps>(input: Input<TElementType, TProps>, inputOptions?: ComposeOptions<TProps, TInputStylesProps, TParentProps, TParentStylesProps>): ComponentWithAs<TElementType, TProps & TParentProps>;
 
 // @public (undocumented)
 export type ComposedComponent<TElementType extends React.ElementType<any> = 'div', TProps = {}, TState = TProps> = React.FunctionComponent<TProps> & {
@@ -36,7 +36,7 @@ export type ComposedComponent<TElementType extends React.ElementType<any> = 'div
 };
 
 // @public (undocumented)
-export type ComposeOptions<TInputProps = {}, TInputStylesProps = {}, TParentStylesProps = {}, TInputState = TInputProps> = {
+export type ComposeOptions<TInputProps = {}, TInputStylesProps = {}, TParentProps = {}, TParentStylesProps = {}, TInputState = TInputProps> = {
     className?: string;
     classes?: ClassDictionary | ((state: Dictionary, slots: Dictionary) => ClassDictionary);
     displayName?: string;
@@ -45,8 +45,8 @@ export type ComposeOptions<TInputProps = {}, TInputStylesProps = {}, TParentStyl
     handledProps?: (keyof TInputProps | 'as')[];
     overrideStyles?: boolean;
     slots?: Record<string, React.ElementType>;
-    mapPropsToSlotProps?: (props: TInputProps) => Record<string, object>;
-    shorthandConfig?: ShorthandConfig<TInputProps>;
+    mapPropsToSlotProps?: (props: TParentProps & TInputProps) => Record<string, object>;
+    shorthandConfig?: ShorthandConfig<TParentProps & TInputProps>;
 };
 
 // @public (undocumented)

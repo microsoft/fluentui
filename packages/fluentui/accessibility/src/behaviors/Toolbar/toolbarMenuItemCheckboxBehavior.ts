@@ -1,4 +1,4 @@
-import * as keyboardKey from 'keyboard-key';
+import { keyboardKey, SpacebarKey } from '@fluentui/keyboard-key';
 import { Accessibility } from '../../types';
 
 /**
@@ -23,7 +23,7 @@ const toolbarMenuItemCheckboxBehavior: Accessibility<ToolbarMenuItemCheckboxBeha
   keyActions: {
     root: {
       performClick: {
-        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }],
+        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: SpacebarKey }],
       },
     },
   },

@@ -66,6 +66,7 @@ export type ComposeRenderFunction<TElementType extends React.ElementType = 'div'
 export type ComposeOptions<
   TInputProps = {},
   TInputStylesProps = {},
+  TParentProps = {},
   TParentStylesProps = {},
   TInputState = TInputProps
 > = {
@@ -84,9 +85,9 @@ export type ComposeOptions<
 
   slots?: Record<string, React.ElementType>;
 
-  mapPropsToSlotProps?: (props: TInputProps) => Record<string, object>;
+  mapPropsToSlotProps?: (props: TParentProps & TInputProps) => Record<string, object>;
 
-  shorthandConfig?: ShorthandConfig<TInputProps>;
+  shorthandConfig?: ShorthandConfig<TParentProps & TInputProps>;
 };
 
 export type ClassDictionary = Record<string, string>;

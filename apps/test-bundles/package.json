@@ -35,7 +35,7 @@
     "@uifabric/styling": "^7.12.12",
     "office-ui-fabric-react": "^7.115.4",
     "@fluentui/react-next": "^8.0.0-alpha.28",
-    "@fluentui/react-compose": "^0.5.0",
+    "@fluentui/react-compose": "^0.5.1",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",

@@ -54,6 +54,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix to use `useRef()` hook in functional components @layershifter ([#13228](https://github.com/microsoft/fluentui/pull/13228))
 - Exclude useless updates, fix `fixed` positioning in `Popper` @layershifter @kolaps33 ([#13044](https://github.com/microsoft/fluentui/pull/13044))
 - Fix showing loading message in `Dropdown` when list of items has scroll @assuncaocharles ([#13175](https://github.com/microsoft/fluentui/pull/13175))
+- Stop propagation of left and right arrow key in `SplitButton` for the integration with toolbar @jurokapsiar ([#13311](https://github.com/microsoft/fluentui/pull/13311))
 
 ### Features
 - Added icons: `TranscriptIcon`, `FilesGenericColoredIcon`, `FilesHtmlColoredIcon`, `FilesPdfColoredIcon`, `FilesPictureColoredIcon`, `FilesTextColoredIcon`, `PopupIcon`, `ShareGenericIcon`, `ComposeIcon`, `SpotlightStopIcon`, `TenantWorkIcon`, `TenantPersonalIcon`, `WorkOrSchoolIcon`, `EmailWithDotIcon`. Modified: `ShareLocationIcon`, `SpotlightIcon`. @TanelVari ([#12872](https://github.com/microsoft/fluentui/pull/12872))
@@ -66,10 +67,13 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Update styles for `selected` `Card` @pompomon ([#13230](https://github.com/microsoft/fluentui/pull/13230))
 - Added icons: `AudioLoadingIcon`, `VideoLoadingIcon`, `TiltPanZoomIcon`, `SpeakerPersonIcon`, `GalleryNewIcon`, `GalleryNewLargeIcon`, `ContentIcon`, `AudienceIcon`, `CameraIcon`  @TanelVari ([#13221](https://github.com/microsoft/fluentui/pull/13221))
 - Add children api support for `Menu` component @assuncaocharles ([#13227](https://github.com/microsoft/fluentui/pull/13227))
+- Add `compose()` support for submenus in `MenuItem` @mnajdova ([#13300](https://github.com/microsoft/fluentui/pull/13300))
+- Use `compose()` in `ToolbarMenuDivider` @mnajdova ([#13318](https://github.com/microsoft/fluentui/pull/13318))
 
 ### Documentation
 - `Toolbar` recommendation using toolbar based on aria  @kolaps33 ([#13143](https://github.com/microsoft/fluentui/pull/13143))
 - Fix knobs labels on docsite  @pompomon ([#13248](https://github.com/microsoft/fluentui/pull/13248))
+- Add `Card` best practices  @pompomon ([#13315](https://github.com/microsoft/fluentui/pull/13315))
 
 <!--------------------------------[ v0.49.0 ]------------------------------- -->
 ## [v0.49.0](https://github.com/OfficeDev/office-ui-fabric-react/tree/fluentui_v0.49.0) (2020-05-10)

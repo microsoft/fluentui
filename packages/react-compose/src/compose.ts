@@ -18,7 +18,7 @@ import { mergeComposeOptions } from './mergeComposeOptions';
  * @param inputOptions - options for rendering the component.
  */
 function compose<
-  TElementType extends React.ElementType<TProps>,
+  TElementType extends React.ElementType,
   TProps = {},
   TInputStylesProps = {},
   TParentProps = {},
@@ -26,7 +26,7 @@ function compose<
   TState = TProps
 >(
   input: Input<TElementType, TProps>,
-  inputOptions: ComposeOptions<TProps, TInputStylesProps, TParentStylesProps> = {},
+  inputOptions: ComposeOptions<TProps, TInputStylesProps, TParentProps, TParentStylesProps> = {},
 ) {
   // Merge the options as needed.
   const composeOptions = mergeComposeOptions<TElementType, TProps, TState>(
