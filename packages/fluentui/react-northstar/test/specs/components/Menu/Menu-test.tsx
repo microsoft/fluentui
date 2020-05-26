@@ -112,30 +112,6 @@ describe('Menu', () => {
       ).toBe('false');
     });
 
-    describe('activeIndex', () => {
-      it('should not be set by default', () => {
-        const menuItems = mountWithProvider(<Menu items={getItems()} />).find('MenuItem');
-
-        expect(menuItems.everyWhere(item => !item.is('[active="true"]'))).toBe(true);
-      });
-
-      it('should be set when item is clicked', () => {
-        const wrapper = mountWithProvider(<Menu items={getItems()} />);
-        const menuItems = wrapper.find('MenuItem');
-
-        menuItems
-          .at(1)
-          .find('a')
-          .first()
-          .simulate('click');
-
-        const updatedItems = wrapper.find('MenuItem');
-
-        expect(updatedItems.at(0).props()).toHaveProperty('active', false);
-        expect(updatedItems.at(1).props()).toHaveProperty('active', true);
-      });
-    });
-
     describe('itemsCount and itemPosition', () => {
       it('should be set by default', () => {
         const menuItems = mountWithProvider(<Menu items={getItems()} />).find('MenuItem');
