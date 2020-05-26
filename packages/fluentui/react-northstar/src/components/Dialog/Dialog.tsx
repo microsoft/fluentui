@@ -7,7 +7,7 @@ import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import * as keyboardKey from 'keyboard-key';
+import { getCode, keyboardKey } from '@fluentui/keyboard-key';
 import { disableBodyScroll, enableBodyScroll } from './utils';
 
 import {
@@ -231,7 +231,7 @@ class Dialog extends AutoControlledComponent<WithAsProp<DialogProps>, DialogStat
     const isLastOpenedDialog: boolean = lastOverlayRef && lastOverlayRef.current === this.overlayRef.current;
     const targetIsBody = (e.target as HTMLElement).nodeName === 'BODY';
 
-    if (targetIsBody && keyboardKey.getCode(e) === keyboardKey.Escape && isLastOpenedDialog) {
+    if (targetIsBody && getCode(e) === keyboardKey.Escape && isLastOpenedDialog) {
       this.handleDialogCancel(e);
       _.invoke(this.triggerRef, 'current.focus');
     }

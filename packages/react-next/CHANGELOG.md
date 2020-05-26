@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-next
 
-This log was last generated on Thu, 21 May 2020 12:34:43 GMT and should not be manually modified.
+This log was last generated on Mon, 25 May 2020 12:38:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-alpha.28](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.28)
+
+Mon, 25 May 2020 12:38:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.26..@fluentui/react-next_v8.0.0-alpha.28)
+
+### Changes
+
+- Copying FocusTrapZone to react-next, in preparation for converting to function component. ([PR #13280](https://github.com/microsoft/fluentui/pull/13280) by czearing@outlook.com)
 
 ## [8.0.0-alpha.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.26)
 

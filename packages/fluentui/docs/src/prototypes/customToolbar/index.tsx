@@ -3,7 +3,7 @@ import * as React from 'react';
 import { KnobsSnippet } from '@fluentui/code-sandbox';
 import { Telemetry } from '@fluentui/react-bindings';
 import { KnobProvider, useBooleanKnob, useSelectKnob, KnobInspector } from '@fluentui/docs-components';
-import { Provider, Flex, themes, mergeThemes } from '@fluentui/react-northstar';
+import { Provider, Flex, mergeThemes, teamsDarkTheme, teamsHighContrastTheme } from '@fluentui/react-northstar';
 
 import { darkThemeOverrides } from './darkThemeOverrides';
 import { highContrastThemeOverrides } from './highContrastThemeOverrides';
@@ -55,9 +55,9 @@ const CustomToolbarPrototype: React.FunctionComponent = () => {
 
   let theme = {};
   if (themeName === 'teamsDark') {
-    theme = mergeThemes(themes.teamsDark, darkThemeOverrides);
+    theme = mergeThemes(teamsDarkTheme, darkThemeOverrides);
   } else if (themeName === 'teamsHighContrast') {
-    theme = mergeThemes(themes.teamsHighContrast, darkThemeOverrides, highContrastThemeOverrides);
+    theme = mergeThemes(teamsHighContrastTheme, darkThemeOverrides, highContrastThemeOverrides);
   }
 
   React.useEffect(() => {

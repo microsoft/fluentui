@@ -45,6 +45,23 @@ export const Fabric: React.FunctionComponent<IFabricProps>;
 // @public (undocumented)
 export const FabricBase: React.ForwardRefExoticComponent<IFabricProps & React.RefAttributes<HTMLDivElement>>;
 
+// @public (undocumented)
+export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> implements IFocusTrapZone {
+    constructor(props: IFocusTrapZoneProps);
+    // (undocumented)
+    componentDidMount(): void;
+    // (undocumented)
+    componentDidUpdate(prevProps: IFocusTrapZoneProps): void;
+    // (undocumented)
+    componentWillUnmount(): void;
+    // (undocumented)
+    focus(): void;
+    // (undocumented)
+    render(): JSX.Element;
+    // (undocumented)
+    UNSAFE_componentWillReceiveProps(nextProps: IFocusTrapZoneProps): void;
+    }
+
 // @public
 export const getMeasurementCache: () => {
     getCachedMeasurement: (data: any) => number | undefined;
@@ -153,6 +170,25 @@ export interface IFabricStyles {
     bodyThemed: IStyle;
     // (undocumented)
     root: IStyle;
+}
+
+// @public (undocumented)
+export interface IFocusTrapZone {
+    focus: () => void;
+}
+
+// @public (undocumented)
+export interface IFocusTrapZoneProps extends React.HTMLAttributes<HTMLDivElement> {
+    ariaLabelledBy?: string;
+    componentRef?: IRefObject<IFocusTrapZone>;
+    disabled?: boolean;
+    disableFirstFocus?: boolean;
+    elementToFocusOnDismiss?: HTMLElement;
+    firstFocusableSelector?: string | (() => string);
+    focusPreviouslyFocusedInnerElement?: boolean;
+    forceFocusInsideTrap?: boolean;
+    ignoreExternalFocusing?: boolean;
+    isClickableOutsideFocusTrap?: boolean;
 }
 
 // @public (undocumented)
@@ -1100,7 +1136,6 @@ export * from "office-ui-fabric-react/lib/Dropdown";
 export * from "office-ui-fabric-react/lib/ExtendedPicker";
 export * from "office-ui-fabric-react/lib/Facepile";
 export * from "office-ui-fabric-react/lib/FloatingPicker";
-export * from "office-ui-fabric-react/lib/FocusTrapZone";
 export * from "office-ui-fabric-react/lib/FocusZone";
 export * from "office-ui-fabric-react/lib/Grid";
 export * from "office-ui-fabric-react/lib/GroupedList";
