@@ -236,13 +236,12 @@ const Tree: React.FC<WithAsProp<TreeProps>> &
 
       setSelectedItemIdsState(selectedItemIds);
     },
-    [stableProps, setSelectedItemIdsState, selectedItemIds.length],
+    [stableProps, setSelectedItemIdsState],
   );
 
   const setActiveItemIds = React.useCallback(
-    (e: React.SyntheticEvent, activeItemIds: string[]) => {
+    (e: React.SyntheticEvent, activeItemIds: any) => {
       _.invoke(stableProps.current, 'onActiveItemIdsChange', e, { ...stableProps.current, activeItemIds });
-
       setActiveItemIdsState(activeItemIds);
     },
     [stableProps, setActiveItemIdsState],
@@ -301,38 +300,36 @@ const Tree: React.FC<WithAsProp<TreeProps>> &
 
       setSelectedItemIds(e, nextSelectedItemIds);
     },
-    [setSelectedItemIds],
+    [selectedItemIds, setSelectedItemIds],
   );
 
   const expandItems = React.useCallback(
     (e: React.SyntheticEvent, treeItemProps: TreeItemProps) => {
       const { id } = treeItemProps;
-      const siblings = getSiblings(stableProps.current.items, id);
 
-      const activeItemIdIndex = activeItemIds.indexOf(id);
-      let nextActiveItemsIds = activeItemIds;
-
-      if (activeItemIdIndex > -1) {
-        nextActiveItemsIds = removeItemAtIndex(activeItemIds, activeItemIdIndex);
-      } else {
-        if (exclusive) {
-          siblings.some(sibling => {
-            const activeSiblingIdIndex = activeItemIds.indexOf(sibling['id']);
-            if (activeSiblingIdIndex > -1) {
-              nextActiveItemsIds = removeItemAtIndex(activeItemIds, activeSiblingIdIndex);
-
-              return true;
-            }
-            return false;
-          });
+      setActiveItemIds(e, currActiveItemIds => {
+        const siblings = getSiblings(stableProps.current.items, id);
+        const activeItemIdIndex = currActiveItemIds.indexOf(id);
+        let nextActiveItemsIds = currActiveItemIds;
+        if (activeItemIdIndex > -1) {
+          nextActiveItemsIds = removeItemAtIndex(currActiveItemIds, activeItemIdIndex);
+        } else {
+          if (exclusive) {
+            siblings.some(sibling => {
+              const activeSiblingIdIndex = currActiveItemIds.indexOf(sibling['id']);
+              if (activeSiblingIdIndex > -1) {
+                nextActiveItemsIds = removeItemAtIndex(currActiveItemIds, activeSiblingIdIndex);
+                return true;
+              }
+              return false;
+            });
+          }
+          nextActiveItemsIds = [...nextActiveItemsIds, id];
         }
-
-        nextActiveItemsIds = [...nextActiveItemsIds, id];
-      }
-
-      setActiveItemIds(e, nextActiveItemsIds);
+        return nextActiveItemsIds;
+      });
     },
-    [stableProps, setActiveItemIds, activeItemIds.length],
+    [stableProps, setActiveItemIds, exclusive],
   );
 
   const onTitleClick = React.useCallback(
@@ -373,6 +370,13 @@ const Tree: React.FC<WithAsProp<TreeProps>> &
     [treeRef, itemsRef],
   );
 
+  const isActiveItem = React.useCallback(
+    (id: string): boolean => {
+      return activeItemIds.indexOf(id) > -1;
+    },
+    [activeItemIds],
+  );
+
   const onSiblingsExpand = React.useCallback(
     (e: React.SyntheticEvent, treeItemProps: TreeItemProps) => {
       if (exclusive) {
@@ -396,7 +400,7 @@ const Tree: React.FC<WithAsProp<TreeProps>> &
 
       setActiveItemIds(e, nextActiveItemsIds);
     },
-    [stableProps, setActiveItemIds],
+    [exclusive, stableProps, activeItemIds, isActiveItem, setActiveItemIds],
   );
 
   const isIndeterminate = (item: TreeItemProps) => {
@@ -474,10 +478,6 @@ const Tree: React.FC<WithAsProp<TreeProps>> &
     const itemsRendered = renderItems(items as TreeItemProps[]);
 
     return itemsRendered;
-  };
-
-  const isActiveItem = (id: string): boolean => {
-    return activeItemIds.indexOf(id) > -1;
   };
 
   const element = (
