@@ -12,36 +12,7 @@ const items: ChatProps['items'] = [
     attached: 'top',
     contentPosition: 'end',
     message: (
-      <Chat.Message
-        reactionGroup={reactions}
-        content="Hello"
-        header={
-          <Flex
-            gap="gap.small"
-            styles={{
-              overflow: 'unset',
-              whiteSpace: 'nowrap',
-            }}
-          >
-            <ReactionGroup items={reactions} />
-            <Text
-              styles={{
-                marginLeft: '5px',
-              }}
-            >
-              John Doe
-            </Text>
-            <Text
-              styles={{
-                marginLeft: '5px',
-              }}
-            >
-              Yesterday, 10:15 PM
-            </Text>
-          </Flex>
-        }
-        mine
-      />
+      <Chat.Message reactionGroup={reactions} content="Hello" author="John Doe" timestamp="Yesterday, 10:15 PM" mine />
     ),
     key: 'message-1',
   },
@@ -64,9 +35,31 @@ const items: ChatProps['items'] = [
     message: (
       <Chat.Message
         reactionGroup={reactions}
+        header={
+          <Flex
+            gap="gap.small"
+            styles={{
+              whiteSpace: 'nowrap',
+            }}
+          >
+            <Text
+              styles={{
+                marginLeft: '5px',
+              }}
+            >
+              Jane John With a really long surname here
+            </Text>
+            <Text
+              styles={{
+                marginLeft: '5px',
+              }}
+            >
+              Yesterday, 10:15 PM
+            </Text>
+            <ReactionGroup items={reactions} />
+          </Flex>
+        }
         content="Hi"
-        author="Jane John With a really long surname here"
-        timestamp="Yesterday, 10:15 PM"
       />
     ),
     key: 'message-3',

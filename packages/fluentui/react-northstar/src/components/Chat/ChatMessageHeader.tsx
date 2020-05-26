@@ -1,5 +1,4 @@
 import { compose } from '@fluentui/react-bindings';
-import * as PropTypes from 'prop-types';
 import { commonPropTypes } from '../../utils';
 import Box, { BoxProps, BoxStylesProps } from '../Box/Box';
 
@@ -28,10 +27,6 @@ const ChatMessageHeader = compose<
   overrideStyles: true,
 });
 
-ChatMessageHeader.propTypes = {
-  ...commonPropTypes.createCommon(),
-  hasReactionGroup: PropTypes.bool,
-  attached: PropTypes.oneOf([true, false, 'bottom', 'top']),
-};
+ChatMessageHeader.propTypes = commonPropTypes.createCommon();
 
 export default ChatMessageHeader;
