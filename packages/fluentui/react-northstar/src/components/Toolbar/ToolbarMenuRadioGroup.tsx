@@ -71,6 +71,7 @@ const ToolbarMenuRadioGroup = compose<'ul', ToolbarMenuRadioGroupProps, ToolbarM
 
     const { accessibility, activeIndex, className, design, items, styles, variables, wrapper } = props;
 
+    const slotProps = composeOptions.resolveSlotProps<ToolbarMenuRadioGroupProps>(props);
     const parentVariables = React.useContext(ToolbarVariablesContext);
     const mergedVariables = mergeComponentVariables(parentVariables, variables);
 
@@ -117,8 +118,8 @@ const ToolbarMenuRadioGroup = compose<'ul', ToolbarMenuRadioGroupProps, ToolbarM
         </ToolbarVariablesProvider>
       </ElementType>
     );
-    const element = createShorthand(ToolbarMenuRadioGroupWrapper, wrapper, {
-      defaultProps: () => getA11yProps('wrapper', {}),
+    const element = createShorthand(composeOptions.slots.wrapper, wrapper, {
+      defaultProps: () => getA11yProps('wrapper', slotProps.wrapper),
       overrideProps: {
         children: content,
       },
@@ -130,6 +131,10 @@ const ToolbarMenuRadioGroup = compose<'ul', ToolbarMenuRadioGroupProps, ToolbarM
   {
     className: toolbarMenuRadioGroupClassName,
     displayName: 'ToolbarMenuRadioGroup',
+
+    slots: {
+      wrapper: ToolbarMenuRadioGroupWrapper,
+    },
 
     handledProps: [
       'accessibility',
