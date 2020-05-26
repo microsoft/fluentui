@@ -12,11 +12,11 @@ const resolvePath = (packageName, entryFileName = 'index.js') =>
 // Create entries for all top level imports.
 const Entries = _buildEntries('office-ui-fabric-react');
 _buildEntries('@fluentui/react-button', Entries);
-_buildEntries('@fluentui/react-next', Entries);
 
 // Create entries for single top level import.
-Entries['keyboard-key'] = resolvePath('@fluentui/keyboard-key');
+Entries['react-button'] = resolvePath('@fluentui/react-button');
 Entries['react-compose'] = resolvePath('@fluentui/react-compose');
+Entries['keyboard-key'] = resolvePath('@fluentui/keyboard-key');
 
 // Note: The experimental button bundle evaluation seems to be slowing down PRs
 // significantly. Commenting out for now.
