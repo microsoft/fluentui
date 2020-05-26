@@ -81,6 +81,7 @@ const ToolbarMenuRadioGroup = compose<'ul', ToolbarMenuRadioGroupProps, ToolbarM
     });
     const { classes } = useStyles<ToolbarMenuRadioGroupStylesProps>(composeOptions.displayName, {
       className: composeOptions.className,
+      composeOptions,
       mapPropsToInlineStyles: () => ({
         className,
         design,
@@ -88,6 +89,7 @@ const ToolbarMenuRadioGroup = compose<'ul', ToolbarMenuRadioGroupProps, ToolbarM
         variables: mergedVariables,
       }),
       rtl: context.rtl,
+      unstable_props: props,
     });
 
     const handleItemOverrides = (predefinedProps: ToolbarMenuItemProps): ToolbarMenuItemProps => ({
@@ -119,7 +121,7 @@ const ToolbarMenuRadioGroup = compose<'ul', ToolbarMenuRadioGroupProps, ToolbarM
       </ElementType>
     );
     const element = createShorthand(composeOptions.slots.wrapper, wrapper, {
-      defaultProps: () => getA11yProps('wrapper', slotProps.wrapper),
+      defaultProps: () => getA11yProps('wrapper', slotProps.wrapper || {}),
       overrideProps: {
         children: content,
       },
