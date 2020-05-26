@@ -56,6 +56,12 @@ const ChatMessageExampleStyled = () => (
             position: 'absolute',
           },
         },
+        ChatMessageHeader: {
+          root: {
+            height: 'auto',
+            marginBottom: '2px',
+          },
+        },
         ChatMessage: {
           root: { ...slotLabelStyles('chat-message-root'), backgroundColor: '#87CEFA' },
           author: ({ props: { mine } }) => ({

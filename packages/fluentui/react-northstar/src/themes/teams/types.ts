@@ -96,6 +96,7 @@ import { SplitButtonStylesProps } from '../../components/SplitButton/SplitButton
 import { CarouselNavigationStylesProps } from '../../components/Carousel/CarouselNavigation';
 import { CarouselItemStylesProps } from '../../components/Carousel/CarouselItem';
 import { CarouselStylesProps } from '../../components/Carousel/Carousel';
+import { ChatMessageHeaderStylesProps } from 'src/components/Chat/ChatMessageHeader';
 
 export type TeamsThemeStylesProps = {
   Accordion: AccordionStylesProps;
@@ -118,6 +119,7 @@ export type TeamsThemeStylesProps = {
   Chat: ChatStylesProps;
   ChatItem: ChatItemStylesProps;
   ChatMessage: ChatMessageStylesProps;
+  ChatMessageHeader: ChatMessageHeaderStylesProps;
   CarouselNavigation: CarouselNavigationStylesProps;
   Checkbox: CheckboxStylesProps;
   Divider: DividerStylesProps;
