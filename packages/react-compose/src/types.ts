@@ -69,9 +69,10 @@ export type ComposeOptions<InputProps = {}, InputStylesProps = {}, ParentProps =
   shorthandConfig?: ShorthandConfig<ParentProps & InputProps>;
 };
 
-export type ClassDictionary = {
-  [key: string]: string;
-};
+// tslint:disable-next-line:no-any
+export type GenericDictionary = Record<string, any>;
+
+export type ClassDictionary = Record<string, string>;
 
 export type ComposePreparedOptions<Props = {}> = {
   className: string;
