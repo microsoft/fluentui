@@ -6,6 +6,7 @@ import {
   useStyles,
   useTelemetry,
   compose,
+  ComponentWithAs,
 } from '@fluentui/react-bindings';
 import { mergeComponentVariables } from '@fluentui/styles';
 import * as React from 'react';
@@ -70,7 +71,7 @@ const ToolbarMenuDivider = compose<'li', ToolbarMenuDividerProps, ToolbarMenuDiv
     shorthandConfig: { mappedProp: 'content' },
     handledProps: ['accessibility', 'as', 'children', 'className', 'content', 'design', 'styles', 'variables'],
   },
-);
+) as ComponentWithAs<'li', ToolbarMenuDividerProps>;
 
 ToolbarMenuDivider.propTypes = commonPropTypes.createCommon();
 ToolbarMenuDivider.defaultProps = {
