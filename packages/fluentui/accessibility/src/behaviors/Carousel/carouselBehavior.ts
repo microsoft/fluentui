@@ -1,5 +1,5 @@
 import { Accessibility } from '../../types';
-import * as keyboardKey from 'keyboard-key';
+import { keyboardKey, SpacebarKey } from '@fluentui/keyboard-key';
 
 /**
  * @description
@@ -65,12 +65,12 @@ const carouselBehavior: Accessibility<CarouselBehaviorProps> = props => ({
     },
     paddleNext: {
       showNextSlideByPaddlePress: {
-        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }],
+        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: SpacebarKey }],
       },
     },
     paddlePrevious: {
       showPreviousSlideByPaddlePress: {
-        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }],
+        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: SpacebarKey }],
       },
     },
   },

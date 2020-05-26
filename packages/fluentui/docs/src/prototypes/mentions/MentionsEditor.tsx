@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as _ from 'lodash';
-import keyboardKey from 'keyboard-key';
+import { getCode, keyboardKey } from '@fluentui/keyboard-key';
 
 import { atMentionItems, AtMentionItem } from './dataMocks';
 import { insertTextAtCursorPosition } from './utils';
@@ -106,7 +106,7 @@ const MentionsEditor: React.FunctionComponent<MentionsContainerProps & {
   };
 
   const handleInputKeyDown = (e: React.KeyboardEvent) => {
-    const keyCode = keyboardKey.getCode(e);
+    const keyCode = getCode(e);
     switch (keyCode) {
       case keyboardKey.Backspace: // 8
         if (state.searchQuery === '') {
