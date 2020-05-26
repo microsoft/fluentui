@@ -35,11 +35,11 @@ function loadStories() {
       if (typeof example === 'function') {
         story[exampleName] = () => {
           const customizationOptions = useCustomizationOptions();
-          const { customizations } = customizationOptions;
+          const { customizations, isDark } = customizationOptions;
           const themeProviderProps = {
             theme: customizations ? { tokens: customizations.settings.theme } : undefined,
             style: {
-              background: customizationOptions.isDark ? 'black' : undefined,
+              background: isDark ? 'black' : undefined,
             },
           };
 

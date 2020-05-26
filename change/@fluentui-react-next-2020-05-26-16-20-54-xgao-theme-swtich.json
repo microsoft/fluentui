@@ -1,6 +1,6 @@
 {
   "type": "none",
-  "comment": "Storybook: add theme swtiching knob",
+  "comment": "Storybook: add theme switching knob",
   "packageName": "@fluentui/react-next",
   "email": "xgao@microsoft.com",
   "dependentChangeType": "none",
