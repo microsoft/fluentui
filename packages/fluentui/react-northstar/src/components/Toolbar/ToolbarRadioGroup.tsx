@@ -84,8 +84,10 @@ const ToolbarRadioGroup = compose<'div', ToolbarRadioGroupProps, ToolbarRadioGro
     });
     const { classes } = useStyles<ToolbarRadioGroupStylesProps>(composeOptions.displayName, {
       className: composeOptions.className,
+      composeOptions,
       mapPropsToInlineStyles: () => ({ className, design, styles, variables: mergedVariables }),
       rtl: context.rtl,
+      unstable_props: props,
     });
 
     const setFocusedItem = (event: React.KeyboardEvent, direction) => {

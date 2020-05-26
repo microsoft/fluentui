@@ -7,7 +7,7 @@ export interface ToolbarMenuRadioGroupWrapperOwnProps {}
 export interface ToolbarMenuRadioGroupWrapperProps extends ToolbarMenuRadioGroupWrapperOwnProps, BoxProps {}
 
 export type ToolbarMenuRadioGroupWrapperStylesProps = never;
-export const toolbarMenuRadioGroupWrapperClassName = 'ui-toolbars__wrapper';
+export const toolbarMenuRadioGroupWrapperClassName = 'ui-toolbars'; // FIXME: required by getComponentInfo/isConformant. But this is group inside a toolbar not a group of toolbars
 
 /**
  * An ToolbarMenuRadioGroupWrapper provides a wrapping slot for in  ToolbarMenuRadioGroup.
