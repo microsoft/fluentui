@@ -6,20 +6,7 @@ const countTrue = items => items.filter(Boolean).length;
 
 const layoutStyles: ComponentSlotStylesPrepared<LayoutStylesProps> = {
   root: ({ props }): ICSSInJSStyle => {
-    const {
-      alignItems,
-      debug,
-      gap,
-      justifyItems,
-      main,
-      mainSize,
-      end,
-      endSize,
-      // rootCSS,
-      start,
-      startSize,
-      vertical,
-    } = props;
+    const { alignItems, debug, gap, justifyItems, main, mainSize, end, endSize, start, startSize, vertical } = props;
 
     return {
       ...(debug && debugRoot()),
