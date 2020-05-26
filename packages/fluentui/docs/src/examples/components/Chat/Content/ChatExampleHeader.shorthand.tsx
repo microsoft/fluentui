@@ -16,7 +16,13 @@ const items: ChatProps['items'] = [
         reactionGroup={reactions}
         content="Hello"
         header={
-          <Flex gap="gap.small">
+          <Flex
+            gap="gap.small"
+            styles={{
+              overflow: 'unset',
+              whiteSpace: 'nowrap',
+            }}
+          >
             <ReactionGroup items={reactions} />
             <Text
               styles={{
