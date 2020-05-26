@@ -4,7 +4,7 @@ import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { Button } from '@fluentui/react-button';
 
-storiesOf('Button', module)
+storiesOf('Button Next', module)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
@@ -23,7 +23,7 @@ storiesOf('Button', module)
   .addStory('Disabled', () => <Button disabled content="Hello, world" />)
   .addStory('Primary Disabled', () => <Button primary disabled content="Hello, world" />);
 
-storiesOf('Button - With icon before content', module)
+storiesOf('Button Next - With icon before content', module)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
@@ -42,7 +42,7 @@ storiesOf('Button - With icon before content', module)
   .addStory('Disabled', () => <Button disabled content="Hello, world" icon="X" />)
   .addStory('Primary Disabled', () => <Button primary disabled content="Hello, world" icon="X" />);
 
-storiesOf('Button - With icon after content', module)
+storiesOf('Button Next - With icon after content', module)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
@@ -67,7 +67,7 @@ storiesOf('Button - With icon after content', module)
     <Button primary disabled content="Hello, world" icon="X" iconPosition="after" />
   ));
 
-storiesOf('Button - Circular', module)
+storiesOf('Button Next - Circular', module)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
@@ -88,7 +88,7 @@ storiesOf('Button - Circular', module)
     <Button circular primary disabled content="Hello, world" icon="X" />
   ));
 
-storiesOf('Button - Icon only', module)
+storiesOf('Button Next - Icon only', module)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
@@ -109,7 +109,7 @@ storiesOf('Button - Icon only', module)
     <Button iconOnly primary disabled content="Hello, world" icon="X" />
   ));
 
-storiesOf('Button - Fluid', module)
+storiesOf('Button Next - Fluid', module)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
@@ -130,7 +130,7 @@ storiesOf('Button - Fluid', module)
     <Button fluid primary disabled content="Hello, world" icon="X" />
   ));
 
-storiesOf('Button - Inverted', module)
+storiesOf('Button Next - Inverted', module)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
@@ -151,7 +151,7 @@ storiesOf('Button - Inverted', module)
     <Button inverted primary disabled content="Hello, world" icon="X" />
   ));
 
-storiesOf('Button - Loading', module)
+storiesOf('Button Next - Loading', module)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
@@ -172,7 +172,7 @@ storiesOf('Button - Loading', module)
     <Button loading primary disabled content="Hello, world" icon="X" />
   ));
 
-storiesOf('Button - Sizes', module)
+storiesOf('Button Next - Sizes', module)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
