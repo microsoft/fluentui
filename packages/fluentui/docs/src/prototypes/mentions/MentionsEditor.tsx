@@ -80,7 +80,7 @@ const MentionsEditor: React.FunctionComponent<MentionsContainerProps & {
     // after the wrapped component is closed the value of the search query is inserted in the editor at cursor position
     insertTextAtCursorPosition(state.selectedItem);
     dispatch({ type: 'RESET_UPDATE_FLAG' });
-  }, [state.shouldUpdate]);
+  }, [state.selectedItem, state.shouldUpdate]);
 
   const handleEditorKeyChange = () => {
     const { anchorNode, focusOffset } = window.getSelection();
