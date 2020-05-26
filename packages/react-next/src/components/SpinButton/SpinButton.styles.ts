@@ -6,7 +6,7 @@ import {
   IconFontSizes,
   getInputFocusStyle,
 } from '../../Styling';
-import { IButtonStyles } from '../../Button';
+import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import { ISpinButtonStyles } from './SpinButton.types';
 import { memoizeFunction } from '../../Utilities';
 

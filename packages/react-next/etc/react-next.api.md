@@ -1112,11 +1112,11 @@ export const Toggle: React.FunctionComponent<IToggleProps>;
 export const ToggleBase: React.FunctionComponent;
 
 
+export * from "@fluentui/react-button";
 export * from "office-ui-fabric-react/lib/ActivityItem";
 export * from "office-ui-fabric-react/lib/Announced";
 export * from "office-ui-fabric-react/lib/Autofill";
 export * from "office-ui-fabric-react/lib/Breadcrumb";
-export * from "office-ui-fabric-react/lib/Button";
 export * from "office-ui-fabric-react/lib/Calendar";
 export * from "office-ui-fabric-react/lib/Callout";
 export * from "office-ui-fabric-react/lib/Check";

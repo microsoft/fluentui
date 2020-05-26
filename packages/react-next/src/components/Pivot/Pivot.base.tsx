@@ -9,7 +9,7 @@ import {
   warn,
   initializeComponentRef,
 } from '../../Utilities';
-import { CommandButton } from '../../Button';
+import { CommandButton } from 'office-ui-fabric-react/lib/Button';
 import { IPivotProps, IPivotStyleProps, IPivotStyles } from './Pivot.types';
 import { IPivotItemProps } from './PivotItem.types';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';

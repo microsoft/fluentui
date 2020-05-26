@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IButtonProps } from '../../Button';
+import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import { IRefObject, IRenderFunction } from '../../Utilities';
 import { IKeytipProps } from '../../Keytip';
 

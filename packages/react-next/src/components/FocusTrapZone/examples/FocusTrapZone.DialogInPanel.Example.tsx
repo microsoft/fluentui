@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { DefaultButton } from '@fluentui/react-next/lib/Button';
+import { DefaultButton, PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { Dialog, DialogType, DialogFooter } from '@fluentui/react-next/lib/Dialog';
-import { PrimaryButton } from '@fluentui/react-next/lib/Button';
 import { Panel, PanelType } from '@fluentui/react-next/lib/Panel';
 import { useBoolean } from '@uifabric/react-hooks';
 

@@ -10,7 +10,7 @@ import {
   inputProperties,
 } from '../../Utilities';
 
-import { IconButton } from '../../Button';
+import { IconButton } from 'office-ui-fabric-react/lib/Button';
 import { Icon } from '../../Icon';
 
 const getClassNames = classNamesFunction<ISearchBoxStyleProps, ISearchBoxStyles>();
