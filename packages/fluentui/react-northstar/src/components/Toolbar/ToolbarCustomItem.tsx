@@ -153,7 +153,4 @@ ToolbarCustomItem.propTypes = {
   onBlur: PropTypes.func,
 };
 
-/**
- * A ToolbarCustomItem renders Toolbar item as a non-actionable `div` with custom content inside.
- */
 export default ToolbarCustomItem;
