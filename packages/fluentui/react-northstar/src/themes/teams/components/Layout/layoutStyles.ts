@@ -6,7 +6,19 @@ const countTrue = items => items.filter(Boolean).length;
 
 const layoutStyles: ComponentSlotStylesPrepared<LayoutStylesProps> = {
   root: ({ props }): ICSSInJSStyle => {
-    const { alignItems, debug, gap, justifyItems, main, mainSize, end, endSize, hasStart, startSize, vertical } = props;
+    const {
+      alignItems,
+      debug,
+      gap,
+      justifyItems,
+      hasMain,
+      mainSize,
+      hasEnd,
+      endSize,
+      hasStart,
+      startSize,
+      vertical,
+    } = props;
 
     return {
       ...(debug && debugRoot()),
@@ -17,10 +29,10 @@ const layoutStyles: ComponentSlotStylesPrepared<LayoutStylesProps> = {
         // Heads up!
         // IE11 Doesn't support grid-gap, insert virtual columns instead
         hasStart && startSize,
-        gap && hasStart && main && gap,
-        main && mainSize,
-        gap && (hasStart || main) && end && gap,
-        end && endSize,
+        gap && hasStart && hasMain && gap,
+        hasMain && mainSize,
+        gap && (hasStart || hasMain) && hasEnd && gap,
+        hasEnd && endSize,
       ]
         .filter(Boolean)
         .join(' '),
@@ -46,20 +58,14 @@ const layoutStyles: ComponentSlotStylesPrepared<LayoutStylesProps> = {
     ...(p.debug && debugArea()),
     alignItems: 'center',
     display: ['grid', '-ms-grid'],
-    [p.vertical ? '-ms-grid-row' : '-ms-grid-column']: countTrue([p.hasStart, p.hasStart && p.gap, p.main]),
+    [p.vertical ? '-ms-grid-row' : '-ms-grid-column']: countTrue([p.hasStart, p.hasStart && p.gap, p.hasMain]),
   }),
 
   end: ({ props: p }): ICSSInJSStyle => ({
     ...(p.debug && debugArea()),
     alignItems: 'center',
     display: 'inline-flex',
-    [p.vertical ? '-ms-grid-row' : '-ms-grid-column']: countTrue([
-      p.hasStart,
-      p.hasStart && p.gap,
-      p.main,
-      p.main && p.gap,
-      p.end,
-    ]),
+    [p.vertical ? '-ms-grid-row' : '-ms-grid-column']: countTrue([p.hasStart, p.hasStart && p.gap, p.hasMain && p.gap]),
   }),
 };
 

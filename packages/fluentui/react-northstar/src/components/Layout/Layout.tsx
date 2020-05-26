@@ -61,21 +61,8 @@ export const layoutSlotClassNames: LayoutSlotClassNames = {
 };
 
 export type LayoutStylesProps = Required<
-  Pick<
-    LayoutProps,
-    | 'alignItems'
-    | 'debug'
-    | 'gap'
-    | 'justifyItems'
-    | 'main'
-    | 'mainSize'
-    | 'end'
-    | 'endSize'
-    // | 'start'
-    | 'startSize'
-    | 'vertical'
-  >
-> & { hasStart: boolean };
+  Pick<LayoutProps, 'alignItems' | 'debug' | 'gap' | 'justifyItems' | 'mainSize' | 'endSize' | 'startSize' | 'vertical'>
+> & { hasStart: boolean; hasMain: boolean; hasEnd: boolean };
 
 const Layout = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
@@ -120,9 +107,9 @@ const Layout = props => {
       debug,
       gap,
       justifyItems,
-      main,
+      hasMain: !!main,
       mainSize,
-      end,
+      hasEnd: !!end,
       endSize,
       hasStart: !!start,
       startSize,
