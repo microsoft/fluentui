@@ -7,12 +7,12 @@ const chatMessageHeaderStyles: ComponentSlotStylesPrepared<ChatMessageHeaderStyl
   root: ({ props: p, theme: { siteVariables } }) => {
     return {
       width: '100%',
-      // overflow: 'unset',
+      // overflow: 'hidden',
       whiteSpace: 'nowrap',
       display: 'flex',
       alignItems: 'center',
-
-      ...(p.hasReactionGroup && { justifyContent: 'space-between' }),
+      lineHeight: siteVariables.lineHeightSmall,
+      ...(p.hasReactionGroup && { justifyContent: 'space-between', lineHeight: siteVariables.lineHeightMedium }),
       ...((p.attached === 'bottom' || p.attached === true) &&
         !p.hasReactionGroup &&
         (screenReaderContainerStyles as ICSSInJSStyle)),
