@@ -44,8 +44,8 @@ import Popup, { PopupProps } from '../Popup/Popup';
 import ToolbarMenu, { ToolbarMenuProps, ToolbarMenuItemShorthandKinds } from './ToolbarMenu';
 import ToolbarMenuItemIcon, { ToolbarMenuItemIconProps } from './ToolbarMenuItemIcon';
 import { ToolbarVariablesContext, ToolbarVariablesProvider } from './toolbarVariablesContext';
-import ToolbarMenuItemSubmenuIndicator from 'src/components/Toolbar/ToolbarMenuItemSubmenuIndicator';
-import ToolbarMenuItemActiveIndicator from 'src/components/Toolbar/ToolbarMenuItemActiveIndicator';
+import ToolbarMenuItemSubmenuIndicator from './ToolbarMenuItemSubmenuIndicator';
+import ToolbarMenuItemActiveIndicator from './ToolbarMenuItemActiveIndicator';
 
 export interface ToolbarMenuItemProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
   /**
