@@ -63,13 +63,7 @@ export type ComposeRenderFunction<TElementType extends React.ElementType = 'div'
   composeOptions: ComposePreparedOptions,
 ) => React.ReactElement | null;
 
-export type ComposeOptions<
-  TInputProps = {},
-  TInputStylesProps = {},
-  TParentProps = {},
-  TParentStylesProps = {},
-  TInputState = TInputProps
-> = {
+export type ComposeOptions<TInputProps = {}, TInputStylesProps = {}, TParentProps = {}, TParentStylesProps = {}> = {
   className?: string;
 
   classes?: ClassDictionary | ((state: Dictionary, slots: Dictionary) => ClassDictionary);
@@ -109,9 +103,9 @@ export type ComposePreparedOptions<TElementType extends React.ElementType = 'div
 
   slots: Record<string, React.ElementType> & { __self: React.ElementType };
   mapPropsToSlotPropsChain: ((props: TProps) => Record<string, object>)[];
-
-  // deprecate in favor of "resolve"
   resolveSlotProps: <P>(props: P) => Record<string, object>;
+
+  shorthandConfig: ShorthandConfig<TProps>;
 
   resolve: (
     state: TState,
@@ -120,6 +114,4 @@ export type ComposePreparedOptions<TElementType extends React.ElementType = 'div
     slotProps: Record<string, object>;
     slots: Record<string, React.ElementType>;
   };
-
-  shorthandConfig: ShorthandConfig<TProps>;
 };

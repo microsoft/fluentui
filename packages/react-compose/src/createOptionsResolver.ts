@@ -21,6 +21,10 @@ const defaultMappedProps: Record<string, string> = {
 
 const EmptyRender = () => null;
 
+/**
+ * Creates an options resolve function which should attach to an options object
+ * for a composed component.
+ */
 // tslint:disable-next-line:no-any
 export const createOptionsResolver = <TState>(options: ComposePreparedOptions) => {
   // Returning a function so that "resolve" function shows up in profiling.
@@ -35,16 +39,16 @@ export const createOptionsResolver = <TState>(options: ComposePreparedOptions) =
       slots,
     };
 
-    // Always ensure a root slot exists
+    // Always ensure a root slot exists.
     slots.root = state.as || slots.root || 'div';
 
-    // Resolve unrecognized props
-    assignToMapObject(slotProps, 'root', getNativeElementProps(state.as, state));
+    // Mix unrecognized props onto root, excluding the handled props.
+    assignToMapObject(slotProps, 'root', getNativeElementProps(state.as, state, options.handledProps));
 
-    // Resolve slotProps/slots from state
+    // Resolve slotProps/slots from state.
     resolveSlotProps(result);
 
-    // Resolve classes
+    // Resolve classes.
     resolveClasses(options.classes, result);
 
     return result;

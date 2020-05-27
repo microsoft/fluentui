@@ -36,7 +36,7 @@ export type ComposedComponent<TElementType extends React.ElementType<any> = 'div
 };
 
 // @public (undocumented)
-export type ComposeOptions<TInputProps = {}, TInputStylesProps = {}, TParentProps = {}, TParentStylesProps = {}, TInputState = TInputProps> = {
+export type ComposeOptions<TInputProps = {}, TInputStylesProps = {}, TParentProps = {}, TParentStylesProps = {}> = {
     className?: string;
     classes?: ClassDictionary | ((state: Dictionary, slots: Dictionary) => ClassDictionary);
     displayName?: string;
@@ -64,12 +64,12 @@ export type ComposePreparedOptions<TElementType extends React.ElementType = 'div
     };
     mapPropsToSlotPropsChain: ((props: TProps) => Record<string, object>)[];
     resolveSlotProps: <P>(props: P) => Record<string, object>;
+    shorthandConfig: ShorthandConfig<TProps>;
     resolve: (state: TState) => {
         state: TState;
         slotProps: Record<string, object>;
         slots: Record<string, React.ElementType>;
     };
-    shorthandConfig: ShorthandConfig<TProps>;
 };
 
 // @public (undocumented)
