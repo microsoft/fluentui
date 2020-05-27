@@ -2,6 +2,21 @@
   "name": "@fluentui/react-compose",
   "entries": [
     {
+      "date": "Wed, 27 May 2020 12:40:00 GMT",
+      "tag": "@fluentui/react-compose_v0.6.0",
+      "version": "0.6.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding createClassResolver to help with auto resolving class names given class map and props.",
+            "author": "dzearing@microsoft.com",
+            "commit": "3d91f5bff251e25e9806e9da29def9811a997c43",
+            "package": "@fluentui/react-compose"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 26 May 2020 12:46:29 GMT",
       "tag": "@fluentui/react-compose_v0.5.1",
       "version": "0.5.1",
