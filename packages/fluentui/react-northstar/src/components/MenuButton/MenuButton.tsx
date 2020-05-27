@@ -14,7 +14,7 @@ import {
   ProviderContextPrepared,
 } from '../../types';
 
-import { createShorthandFactory } from '../../utils/factories';
+import { createShorthandFactory, createShorthand } from '../../utils/factories';
 import Popup, { PopupProps, PopupEvents, PopupEventsArray } from '../Popup/Popup';
 import Menu, { MenuProps } from '../Menu/Menu';
 import { MenuItemProps } from '../Menu/MenuItem';
@@ -30,6 +30,8 @@ import {
 } from '@fluentui/react-bindings';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
+import Button from '../Button/Button';
+import Box from '../Box/Box';
 
 export interface MenuButtonSlotClassNames {
   menu: string;
@@ -133,7 +135,6 @@ const MenuButton: React.FC<MenuButtonProps> & FluentComponentStaticProps<MenuBut
     offset,
     on,
     onOpenChange,
-
     styles,
     overflowBoundary,
     pointing,
@@ -158,6 +159,31 @@ const MenuButton: React.FC<MenuButtonProps> & FluentComponentStaticProps<MenuBut
   const triggerId = React.useRef<string>();
   triggerId.current = getOrGenerateIdFromShorthand('menubutton-trigger-', trigger, triggerId.current);
 
+  const triggerRef = React.useRef<HTMLElement>();
+  const menuRef = React.useRef<HTMLElement>();
+
+  const ElementType = getElementType(props);
+  const unhandledProps = useUnhandledProps(MenuButton.handledProps, props);
+
+  const getA11yProps = useAccessibility<MenuButtonBehaviorProps>(accessibility, {
+    debugName: MenuButton.displayName,
+    actionHandlers: {
+      closeMenu: e => closeMenu(e),
+      openAndFocusFirst: e => openAndFocus(e, 'first'),
+      openAndFocusLast: e => openAndFocus(e, 'last'),
+    },
+    mapPropsToBehavior: () => ({
+      menuId: menuId.current,
+      triggerId: triggerId.current,
+      open,
+      trigger: props.trigger,
+      contextMenu,
+      on,
+      tabbableTrigger,
+    }),
+    rtl: context.rtl,
+  });
+
   const popupProps = {
     accessibility,
     align,
@@ -181,28 +207,6 @@ const MenuButton: React.FC<MenuButtonProps> & FluentComponentStaticProps<MenuBut
     unstable_pinned,
     variables,
   };
-
-  const triggerRef = React.useRef<HTMLElement>();
-  const menuRef = React.useRef<HTMLElement>();
-
-  const ElementType = getElementType(props);
-  const unhandledProps = useUnhandledProps(MenuButton.handledProps, props);
-
-  const getA11yProps = useAccessibility<MenuButtonBehaviorProps>(accessibility, {
-    debugName: MenuButton.displayName,
-    actionHandlers: {
-      closeMenu: e => closeMenu(e),
-      openAndFocusFirst: e => openAndFocus(e, 'first'),
-      openAndFocusLast: e => openAndFocus(e, 'last'),
-    },
-    mapPropsToBehavior: () => ({
-      menuId: menuId.current,
-      triggerId: triggerId.current,
-      open,
-      contextMenu,
-    }),
-    rtl: context.rtl,
-  });
 
   const { classes, styles: resolvedStyles } = useStyles<MenuButtonStylesProps>(MenuButton.displayName, {
     className: menuButtonClassName,
@@ -250,7 +254,7 @@ const MenuButton: React.FC<MenuButtonProps> & FluentComponentStaticProps<MenuBut
   });
 
   const overrideProps: PopupProps = {
-    accessibility,
+    accessibility: getA11yProps.unstable_behaviorDefinition,
     open,
     onOpenChange: (e, { open }) => {
       handleOpenChange(e, open);
@@ -273,6 +277,7 @@ const MenuButton: React.FC<MenuButtonProps> & FluentComponentStaticProps<MenuBut
   };
 
   const popup = Popup.create(popupProps, { overrideProps });
+
   if (contextMenu) {
     setEnd();
     return popup;
