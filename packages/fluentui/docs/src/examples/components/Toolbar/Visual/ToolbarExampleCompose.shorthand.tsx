@@ -3,6 +3,14 @@ import {
   ToolbarMenuDivider,
   ToolbarRadioGroup,
   ToolbarDivider,
+  ToolbarProps,
+  ToolbarStylesProps,
+  ToolbarMenuDividerProps,
+  ToolbarMenuDividerStylesProps,
+  ToolbarRadioGroupProps,
+  ToolbarRadioGroupStylesProps,
+  ToolbarDividerProps,
+  ToolbarDividerStylesProps,
   Provider,
   compose,
   ThemeInput,
@@ -18,15 +26,18 @@ import {
   ChatIcon,
 } from '@fluentui/react-icons-northstar';
 
-const ToolbarRadioGroupRed = compose(ToolbarRadioGroup, {
-  displayName: 'ToolbarRadioGroupRed',
-});
+const ToolbarRadioGroupRed = compose<'div', {}, {}, ToolbarRadioGroupProps, ToolbarRadioGroupStylesProps>(
+  ToolbarRadioGroup,
+  {
+    displayName: 'ToolbarRadioGroupRed',
+  },
+);
 
-const ToolbarDividerGreen = compose(ToolbarDivider, {
+const ToolbarDividerGreen = compose<'div', {}, {}, ToolbarDividerProps, ToolbarDividerStylesProps>(ToolbarDivider, {
   displayName: 'ToolbarDividerGreen',
 });
 
-const ToolbarViolet = compose(Toolbar, {
+const ToolbarViolet = compose<'div', {}, {}, ToolbarProps, ToolbarStylesProps>(Toolbar, {
   displayName: 'ToolbarViolet',
   slots: {
     group: ToolbarRadioGroupRed,
@@ -34,9 +45,12 @@ const ToolbarViolet = compose(Toolbar, {
   },
 });
 
-const ToolbarMenuDividerBlue = compose(ToolbarMenuDivider, {
-  displayName: 'ToolbarMenuDividerBlue',
-});
+const ToolbarMenuDividerBlue = compose<'li', {}, {}, ToolbarMenuDividerProps, ToolbarMenuDividerStylesProps>(
+  ToolbarMenuDivider,
+  {
+    displayName: 'ToolbarMenuDividerBlue',
+  },
+);
 
 const themeOverrides: ThemeInput = {
   componentVariables: {
