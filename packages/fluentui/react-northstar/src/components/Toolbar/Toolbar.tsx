@@ -461,10 +461,8 @@ const Toolbar = compose<'div', ToolbarProps, ToolbarStylesProps, {}, {}>(
       });
 
     const renderOverflowItem = overflowItem =>
-      createShorthand(ToolbarItem, overflowItem, {
-        defaultProps: () => ({
-          icon: <MoreIcon outline />,
-        }),
+      createShorthand(composeOptions.slots.overflowItem, overflowItem, {
+        defaultProps: () => slotProps.overflowItem,
         overrideProps: {
           menu: {
             items: overflowOpen ? (collectOverflowItems() as ToolbarMenuProps['items']) : [],
@@ -549,10 +547,14 @@ const Toolbar = compose<'div', ToolbarProps, ToolbarStylesProps, {}, {}>(
       item: ToolbarItem,
       group: ToolbarRadioGroup,
       toggle: ToolbarItem,
+      overflowItem: ToolbarItem,
     },
     mapPropsToSlotProps: () => ({
       toggle: {
         accessibility: toggleButtonBehavior,
+      },
+      overflowItem: {
+        icon: <MoreIcon outline />,
       },
     }),
 

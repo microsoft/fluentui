@@ -3,6 +3,9 @@ import {
   ToolbarMenuDivider,
   ToolbarRadioGroup,
   ToolbarDivider,
+  ToolbarItem,
+  ToolbarItemWrapper,
+  ToolbarItemIcon,
   ToolbarProps,
   ToolbarStylesProps,
   ToolbarMenuDividerProps,
@@ -14,6 +17,18 @@ import {
   Provider,
   compose,
   ThemeInput,
+  ToolbarItemWrapperProps,
+  ToolbarItemWrapperStylesProps,
+  ToolbarItemIconProps,
+  ToolbarItemIconStylesProps,
+  ToolbarItemStylesProps,
+  ToolbarItemProps,
+  ToolbarMenuRadioGroupWrapper,
+  ToolbarMenuRadioGroup,
+  ToolbarMenuRadioGroupWrapperStylesProps,
+  ToolbarMenuRadioGroupWrapperProps,
+  ToolbarMenuRadioGroupStylesProps,
+  ToolbarMenuRadioGroupProps,
 } from '@fluentui/react-northstar';
 import * as React from 'react';
 import {
@@ -39,15 +54,21 @@ const ToolbarDividerGreen = compose<'div', {}, {}, ToolbarDividerProps, ToolbarD
   displayName: 'ToolbarDividerGreen',
 });
 
-const ToolbarItemWrapperBlue = compose(ToolbarItemWrapper, {
-  displayName: 'ToolbarItemWrapperBlue',
-});
+const ToolbarItemWrapperBlue = compose<'div', {}, {}, ToolbarItemWrapperProps, ToolbarItemWrapperStylesProps>(
+  ToolbarItemWrapper,
+  {
+    displayName: 'ToolbarItemWrapperBlue',
+  },
+);
 
-const ToolbarItemIconPurple = compose(ToolbarItemIcon, {
-  displayName: 'ToolbarItemIconPurple',
-});
+const ToolbarItemIconPurple = compose<'div', {}, {}, ToolbarItemIconProps, ToolbarItemIconStylesProps>(
+  ToolbarItemIcon,
+  {
+    displayName: 'ToolbarItemIconPurple',
+  },
+);
 
-const ToolbarItemGrey = compose(ToolbarItem, {
+const ToolbarItemGrey = compose<'button', {}, {}, ToolbarItemProps, ToolbarItemStylesProps>(ToolbarItem, {
   displayName: 'ToolbarItemGrey',
   slots: {
     wrapper: ToolbarItemWrapperBlue,
@@ -71,16 +92,25 @@ const ToolbarMenuDividerBlue = compose<'li', {}, {}, ToolbarMenuDividerProps, To
   },
 );
 
-const ToolbarMenuRadioGroupWrapperOrange = compose(ToolbarMenuRadioGroupWrapper, {
+const ToolbarMenuRadioGroupWrapperOrange = compose<
+  'li',
+  {},
+  {},
+  ToolbarMenuRadioGroupWrapperProps,
+  ToolbarMenuRadioGroupWrapperStylesProps
+>(ToolbarMenuRadioGroupWrapper, {
   displayName: 'ToolbarMenuRadioGroupWrapperOrange',
 });
 
-const ToolbarMenuRadioGroupViolet = compose(ToolbarMenuRadioGroup, {
-  displayName: 'ToolbarMenuRadioGroupViolet',
-  slots: {
-    wrapper: ToolbarMenuRadioGroupWrapperOrange,
+const ToolbarMenuRadioGroupViolet = compose<'ul', {}, {}, ToolbarMenuRadioGroupProps, ToolbarMenuRadioGroupStylesProps>(
+  ToolbarMenuRadioGroup,
+  {
+    displayName: 'ToolbarMenuRadioGroupViolet',
+    slots: {
+      wrapper: ToolbarMenuRadioGroupWrapperOrange,
+    },
   },
-});
+);
 
 const themeOverrides: ThemeInput = {
   componentVariables: {
