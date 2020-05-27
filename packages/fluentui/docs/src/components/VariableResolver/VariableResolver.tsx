@@ -29,7 +29,7 @@ const VariableResolver: React.FunctionComponent<VariableResolverProps> = props =
 
       onResolve(ordered);
     }
-  }, [onResolve]);
+  }, [onResolve, resolvedVariables]);
 
   useClassNamesListener(elementRef, onClassNamesChange);
 

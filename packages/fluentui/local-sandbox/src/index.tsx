@@ -1,9 +1,9 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Provider, themes, Button } from '@fluentui/react-northstar';
+import { Provider, teamsTheme, Button } from '@fluentui/react-northstar';
 
 const App = () => (
-  <Provider theme={themes.teams}>
+  <Provider theme={teamsTheme}>
     <Button>Click here</Button>
   </Provider>
 );

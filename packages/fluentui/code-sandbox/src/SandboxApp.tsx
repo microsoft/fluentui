@@ -1,5 +1,15 @@
 import { KnobInspector, KnobProvider } from '@fluentui/docs-components';
-import { Divider, Flex, Header, Provider, RadioGroup, Text, themes } from '@fluentui/react-northstar';
+import {
+  Divider,
+  Flex,
+  Header,
+  Provider,
+  RadioGroup,
+  Text,
+  teamsTheme,
+  teamsDarkTheme,
+  teamsHighContrastTheme,
+} from '@fluentui/react-northstar';
 // @ts-ignore
 import pkg from '@fluentui/react-northstar/package.json';
 import * as React from 'react';
@@ -11,19 +21,25 @@ const items = [
   {
     key: 'light',
     label: 'Teams Light',
-    value: 'teams',
+    value: 'teamsTheme',
   },
   {
     key: 'dark',
     label: 'Teams Dark',
-    value: 'teamsDark',
+    value: 'teamsDarkTheme',
   },
   {
     key: 'hc',
     label: 'Teams High Contrast',
-    value: 'teamsHighContrast',
+    value: 'teamsHighContrastTheme',
   },
 ];
+
+const themes = {
+  teamsTheme,
+  teamsDarkTheme,
+  teamsHighContrastTheme,
+};
 
 const SandboxApp: React.FunctionComponent = props => {
   const { children } = props;
