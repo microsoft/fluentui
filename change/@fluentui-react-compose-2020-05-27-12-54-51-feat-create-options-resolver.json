@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Adding `resolve` callback to compose options. This will resolve slots and slotProps for you, in addition to resolving class functions.",
+  "packageName": "@fluentui/react-compose",
+  "email": "dzearing@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-05-27T19:54:51.158Z"
+}
