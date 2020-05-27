@@ -8,7 +8,6 @@ import { UnifiedPeoplePicker } from '@uifabric/experiments/lib/UnifiedPeoplePick
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 import { mru, people } from '@uifabric/example-data';
 import { ISelectedPeopleListProps } from '@uifabric/experiments/lib/SelectedItemsList';
-import { suggestionsSpinner } from '../../../FloatingSuggestions/Suggestions/SuggestionsControl.scss';
 
 const _suggestions = [
   {
@@ -73,17 +72,10 @@ export const UnifiedPeoplePickerExample = (): JSX.Element => {
     ev: React.MouseEvent<HTMLElement, MouseEvent>,
     suggestionToRemove: IFloatingSuggestionItemProps<IPersonaProps>,
   ) => {
-    // Intentionally checking on key here instead of id, as for all the suggestions, id does not exist.
-    // Also checking the key property first before accessing it to skip static check failures.
+    // Intentionally checking on complete item object to ensure it is removed. Id cannot be used as the
+    // property is not populated for all the suggestions, and key does not exist on type checking.
     setPeopleSuggestions(suggestions => {
-      const modifiedSuggestions = suggestions.filter(
-        suggestion =>
-          suggestion.item &&
-          suggestion.item['key'] &&
-          suggestionToRemove.item &&
-          suggestionToRemove.item['key'] &&
-          suggestion.item['key'] !== suggestionToRemove.item['key'],
-      );
+      const modifiedSuggestions = suggestions.filter(suggestion => suggestion.item !== suggestionToRemove.item);
       return modifiedSuggestions;
     });
   };
