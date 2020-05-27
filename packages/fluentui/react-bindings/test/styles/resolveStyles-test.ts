@@ -322,6 +322,17 @@ describe('resolveStyles', () => {
       expect(renderStyles).toHaveBeenCalledTimes(1);
     });
 
+    test('avoids "classes" computation when enabled and there is no variables', () => {
+      const renderStyles = jest.fn().mockReturnValue('a');
+      const options = resolveStylesOptions({
+        performance: { enableBooleanVariablesCaching: true },
+      });
+
+      expect(resolveStyles(options, resolvedVariables, renderStyles)).toHaveProperty('classes.root', 'a');
+      expect(resolveStyles(options, resolvedVariables, renderStyles)).toHaveProperty('classes.root', 'a');
+      expect(renderStyles).toHaveBeenCalledTimes(1);
+    });
+
     test('forces "classes" computation when disabled', () => {
       const renderStyles = jest.fn().mockReturnValue('a');
       const options = resolveStylesOptions({
