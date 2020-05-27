@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Prevent ContextualMenu from destroying existing menu items on every repaint",
+  "packageName": "office-ui-fabric-react",
+  "email": "tmichon@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-05-27T18:01:01.147Z"
+}
