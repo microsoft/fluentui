@@ -16,15 +16,20 @@ function getExtraTscParams(args) {
 module.exports.ts = {
   commonjs: () => {
     const extraOptions = getExtraTscParams(argv());
-    return tscTask({ ...extraOptions, outDir: 'lib-commonjs', module: 'commonjs' });
+    return tscTask({
+      ...extraOptions,
+      outDir: 'lib-commonjs',
+      module: 'commonjs',
+      tsBuildInfoFile: '.commonjs.tsbuildinfo',
+    });
   },
   esm: () => {
     const extraOptions = getExtraTscParams(argv());
-    return tscTask({ ...extraOptions, outDir: 'lib', module: 'esnext' });
+    return tscTask({ ...extraOptions, outDir: 'lib', module: 'esnext', tsBuildInfoFile: '.tsbuildinfo' });
   },
   amd: () => {
     const extraOptions = getExtraTscParams(argv());
-    return tscTask({ ...extraOptions, outDir: 'lib-amd', module: 'amd' });
+    return tscTask({ ...extraOptions, outDir: 'lib-amd', module: 'amd', tsBuildInfoFile: '.amd.tsbuildinfo' });
   },
   commonjsOnly: () => {
     const extraOptions = getExtraTscParams(argv());
