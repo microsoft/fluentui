@@ -314,7 +314,7 @@ MenuButton.propTypes = {
     PropTypes.oneOf(['hover', 'click', 'focus', 'context']),
     PropTypes.arrayOf(PropTypes.oneOf(['click', 'focus', 'context'])),
     PropTypes.arrayOf(PropTypes.oneOf(['hover', 'focus', 'context'])),
-  ]),
+  ]) as any,
   flipBoundary: PropTypes.oneOfType([
     PropTypes.object as PropTypes.Requireable<HTMLElement>,
     PropTypes.arrayOf(PropTypes.object) as PropTypes.Requireable<HTMLElement[]>,
