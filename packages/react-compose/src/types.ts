@@ -60,7 +60,7 @@ export type ComposeOptions<TInputProps = {}, TInputStylesProps = {}, TParentProp
 
   displayName?: string;
 
-  mapPropsToSlotProps?: (props: TParentProps & TInputProps) => Record<string, object>;
+  mapPropsToStylesProps?: (props: TParentStylesProps & TInputProps) => TInputStylesProps;
 
   handledProps?: (keyof TInputProps | 'as')[];
 
@@ -68,7 +68,7 @@ export type ComposeOptions<TInputProps = {}, TInputStylesProps = {}, TParentProp
 
   slots?: Record<string, React.ElementType>;
 
-  mapPropsToStylesProps?: (props: TParentStylesProps & TInputProps) => TInputStylesProps;
+  mapPropsToSlotProps?: (props: TParentProps & TInputProps) => Record<string, object>;
 
   shorthandConfig?: ShorthandConfig<TParentProps & TInputProps>;
 };
@@ -92,7 +92,6 @@ export type ComposePreparedOptions<TProps = {}> = {
   displayNames: string[];
 
   mapPropsToStylesPropsChain: ((props: object) => object)[];
-
   render: ComposeRenderFunction;
 
   handledProps: (keyof TProps)[];
@@ -100,10 +99,8 @@ export type ComposePreparedOptions<TProps = {}> = {
   overrideStyles: boolean;
 
   slots: Record<string, React.ElementType> & { __self: React.ElementType };
-
   mapPropsToSlotPropsChain: ((props: TProps) => Record<string, object>)[];
 
   resolveSlotProps: (props: TProps) => Record<string, object>;
-
   shorthandConfig: ShorthandConfig<TProps>;
 };

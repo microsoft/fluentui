@@ -40,11 +40,11 @@ export type ComposeOptions<TInputProps = {}, TInputStylesProps = {}, TParentProp
     className?: string;
     classes?: ClassDictionary;
     displayName?: string;
-    mapPropsToSlotProps?: (props: TParentProps & TInputProps) => Record<string, object>;
+    mapPropsToStylesProps?: (props: TParentStylesProps & TInputProps) => TInputStylesProps;
     handledProps?: (keyof TInputProps | 'as')[];
     overrideStyles?: boolean;
     slots?: Record<string, React.ElementType>;
-    mapPropsToStylesProps?: (props: TParentStylesProps & TInputProps) => TInputStylesProps;
+    mapPropsToSlotProps?: (props: TParentProps & TInputProps) => Record<string, object>;
     shorthandConfig?: ShorthandConfig<TParentProps & TInputProps>;
 };
 
