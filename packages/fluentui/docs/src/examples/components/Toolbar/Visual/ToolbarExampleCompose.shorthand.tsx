@@ -1,4 +1,5 @@
 import {
+  Text,
   Toolbar,
   ToolbarMenuDivider,
   ToolbarRadioGroup,
@@ -30,6 +31,9 @@ import {
   ToolbarMenuItemIconProps,
   ToolbarItemStylesProps,
   ToolbarItemProps,
+  ToolbarCustomItemProps,
+  ToolbarCustomItemStylesProps,
+  ToolbarCustomItem,
   ToolbarMenuItemActiveIndicatorProps,
   ToolbarMenuItemActiveIndicatorStylesProps,
   ToolbarMenuItemSubmenuIndicatorProps,
@@ -54,6 +58,13 @@ import {
   BulletsIcon,
   ToDoListIcon,
 } from '@fluentui/react-icons-northstar';
+
+const ToolbarCustomItemOlive = compose<'div', {}, {}, ToolbarCustomItemProps, ToolbarCustomItemStylesProps>(
+  ToolbarCustomItem,
+  {
+    displayName: 'ToolbarCustomItemOlive',
+  },
+);
 
 const ToolbarRadioGroupItemRed = compose<'button', {}, {}, ToolbarItemProps, ToolbarItemStylesProps>(ToolbarItem, {
   displayName: 'ToolbarRadioGroupItemRed',
@@ -106,8 +117,9 @@ const ToolbarItemGrey = compose<'button', {}, {}, ToolbarItemProps, ToolbarItemS
 const ToolbarViolet = compose<'div', {}, {}, ToolbarProps, ToolbarStylesProps>(Toolbar, {
   displayName: 'ToolbarViolet',
   slots: {
-    group: ToolbarRadioGroupRed,
+    customItem: ToolbarCustomItemOlive,
     divider: ToolbarDividerGreen,
+    group: ToolbarRadioGroupRed,
     item: ToolbarItemGrey,
   },
 });
@@ -194,6 +206,12 @@ const themeOverrides: ThemeInput = {
     ToolbarViolet: {
       root: {
         border: '1px dashed violet',
+      },
+    },
+    ToolbarCustomItemOlive: {
+      root: {
+        color: 'olive',
+        fontStyle: 'italic',
       },
     },
     ToolbarRadioGroupRed: {
@@ -286,6 +304,11 @@ const ToolbarExampleMenuShorthand = () => {
               { key: 'divider', kind: 'divider' },
               { key: 'chat', icon: <ChatIcon /> },
             ],
+          },
+          {
+            key: 'custom',
+            kind: 'custom',
+            content: <Text content="Olive" />,
           },
           {
             icon: <MoreIcon />,
