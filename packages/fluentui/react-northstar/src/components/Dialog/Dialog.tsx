@@ -166,7 +166,7 @@ const Dialog: React.FC<WithAsProp<DialogProps>> &
   const unhandledProps = useUnhandledProps(Dialog.handledProps, props);
 
   const contentRef = React.useRef<HTMLElement>();
-  const overlayRef = React.useRef<HTMLElement>() as React.MutableRefObject<HTMLElement>;
+  const overlayRef = React.useRef<HTMLElement>() ;
   const triggerRef = React.useRef<HTMLElement>();
 
   const contentId = React.useRef<string>();
