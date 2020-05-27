@@ -299,6 +299,7 @@ const ToolbarExampleMenuShorthand = () => {
                   content: 'Play',
                   icon: <PlayIcon />,
                   active: true,
+                  // TODO: replace this with slots after compose in enabled in ToolbarMenu
                   children: (C, p) => <ToolbarMenuItemGrey {...p} />,
                 },
                 {
@@ -306,6 +307,7 @@ const ToolbarExampleMenuShorthand = () => {
                   content: 'Pause',
                   icon: <PauseIcon />,
                   menu: ['Pause 1.1'],
+                  // TODO: replace this with slots after compose in enabled in ToolbarMenu
                   children: (C, p) => <ToolbarMenuItemGrey {...p} />,
                 },
                 {
@@ -314,6 +316,7 @@ const ToolbarExampleMenuShorthand = () => {
                   // TODO: replace this with slots after compose in enabled in ToolbarMenu
                   children: (C, p) => <ToolbarMenuDividerBlue {...p} />,
                 },
+                // TODO: replace this with slots after compose in enabled in ToolbarMenu
                 { content: 'Without icon', children: (C, p) => <ToolbarMenuItemGrey {...p} /> },
                 {
                   key: 'group',
