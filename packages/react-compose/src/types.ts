@@ -56,7 +56,7 @@ export type ComposeRenderFunction<TElementType extends React.ElementType = 'div'
 export type ComposeOptions<TInputProps = {}, TInputStylesProps = {}, TParentProps = {}, TParentStylesProps = {}> = {
   className?: string;
 
-  classes?: ClassDictionary;
+  classes?: ClassDictionary | ClassFunction;
 
   displayName?: string;
 
@@ -84,9 +84,14 @@ export type GenericDictionary = Record<string, any>;
  */
 export type ClassDictionary = Record<string, string>;
 
+/**
+ * Generic class resolver function type.
+ */
+export type ClassFunction = (state: GenericDictionary, slots: GenericDictionary) => ClassDictionary;
+
 export type ComposePreparedOptions<TProps = {}, TState = TProps> = {
   className: string;
-  classes: (undefined | ClassDictionary | ((state: GenericDictionary, slots: GenericDictionary) => ClassDictionary))[];
+  classes: (undefined | ClassDictionary | ClassFunction)[];
 
   displayName: string;
   displayNames: string[];
