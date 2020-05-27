@@ -1,15 +1,76 @@
-import { Toolbar, ToolbarMenuDivider, Provider, compose, ThemeInput } from '@fluentui/react-northstar';
+import {
+  Toolbar,
+  ToolbarMenuDivider,
+  ToolbarRadioGroup,
+  ToolbarDivider,
+  ToolbarProps,
+  ToolbarStylesProps,
+  ToolbarMenuDividerProps,
+  ToolbarMenuDividerStylesProps,
+  ToolbarRadioGroupProps,
+  ToolbarRadioGroupStylesProps,
+  ToolbarDividerProps,
+  ToolbarDividerStylesProps,
+  Provider,
+  compose,
+  ThemeInput,
+} from '@fluentui/react-northstar';
 import * as React from 'react';
-import { MoreIcon, PauseIcon, PlayIcon, BoldIcon, UnderlineIcon } from '@fluentui/react-icons-northstar';
+import {
+  MoreIcon,
+  PauseIcon,
+  PlayIcon,
+  BoldIcon,
+  UnderlineIcon,
+  BookmarkIcon,
+  ChatIcon,
+} from '@fluentui/react-icons-northstar';
 
-const ToolbarMenuDividerBlue = compose(ToolbarMenuDivider, {
-  displayName: 'ToolbarMenuDividerBlue',
+const ToolbarRadioGroupRed = compose<'div', {}, {}, ToolbarRadioGroupProps, ToolbarRadioGroupStylesProps>(
+  ToolbarRadioGroup,
+  {
+    displayName: 'ToolbarRadioGroupRed',
+  },
+);
+
+const ToolbarDividerGreen = compose<'div', {}, {}, ToolbarDividerProps, ToolbarDividerStylesProps>(ToolbarDivider, {
+  displayName: 'ToolbarDividerGreen',
 });
+
+const ToolbarViolet = compose<'div', {}, {}, ToolbarProps, ToolbarStylesProps>(Toolbar, {
+  displayName: 'ToolbarViolet',
+  slots: {
+    group: ToolbarRadioGroupRed,
+    divider: ToolbarDividerGreen,
+  },
+});
+
+const ToolbarMenuDividerBlue = compose<'li', {}, {}, ToolbarMenuDividerProps, ToolbarMenuDividerStylesProps>(
+  ToolbarMenuDivider,
+  {
+    displayName: 'ToolbarMenuDividerBlue',
+  },
+);
 
 const themeOverrides: ThemeInput = {
   componentVariables: {
     ToolbarMenuDividerBlue: {
       menuDividerBorder: 'lightblue',
+    },
+    ToolbarDividerGreen: {
+      dividerBorder: 'lightgreen',
+    },
+  },
+  componentStyles: {
+    ToolbarViolet: {
+      root: {
+        border: '1px dashed violet',
+      },
+    },
+    ToolbarRadioGroupRed: {
+      root: {
+        border: '1px dashed darkred',
+      },
     },
   },
 };
@@ -17,7 +78,7 @@ const themeOverrides: ThemeInput = {
 const ToolbarExampleMenuShorthand = () => {
   return (
     <Provider theme={themeOverrides}>
-      <Toolbar
+      <ToolbarViolet
         aria-label="Toolbar can contain a menu"
         items={[
           {
@@ -31,6 +92,18 @@ const ToolbarExampleMenuShorthand = () => {
             content: 'underline',
             icon: <UnderlineIcon />,
             title: 'Underline',
+          },
+          {
+            key: 'divider',
+            kind: 'divider',
+          },
+          {
+            key: 'group',
+            kind: 'group',
+            items: [
+              { key: 'bookmark', icon: <BookmarkIcon /> },
+              { key: 'chat', icon: <ChatIcon /> },
+            ],
           },
           {
             icon: <MoreIcon />,
