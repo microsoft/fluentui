@@ -80,7 +80,7 @@ const resolveStyles = (
       if (!hasOnlyBooleanVariables) {
         noVariableOverrides = false;
       }
-    } else {
+    } else if (!_.isNil(variables)) {
       noVariableOverrides = false;
     }
   }
