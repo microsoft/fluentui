@@ -168,7 +168,6 @@ ItemLayout.propTypes = {
 };
 
 ItemLayout.defaultProps = {
-  as: 'div',
 
   renderMainArea: (props, classes) => {
     const { renderHeaderArea, renderContentArea } = props;
