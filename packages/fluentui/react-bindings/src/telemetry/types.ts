@@ -3,6 +3,8 @@ type ComponentPerfStats = {
   msTotal: number;
   msMin: number;
   msMax: number;
+  renders: number;
+  stylesCacheHit: number;
 };
 
 export type UseTelemetryResult = {

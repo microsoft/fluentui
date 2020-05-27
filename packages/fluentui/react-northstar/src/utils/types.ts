@@ -13,4 +13,7 @@ export type RendererChange = {
   pseudo: string;
   media: string;
   support: string;
+
+  // Internal stuff, describe me
+  DO_NOT_PROCESS_BY_STYLIS?: boolean;
 };

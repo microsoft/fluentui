@@ -52,6 +52,7 @@ const resolveStyles = (
     disableAnimations,
     renderer,
     performance,
+    telemetry,
   } = options;
 
   const { className, design, styles, variables, ...stylesProps } = props;
@@ -219,6 +220,11 @@ const resolveStyles = (
           const classesThemeCache = classesCache.get(theme) || {};
 
           if (classesThemeCache[slotCacheKey] || classesThemeCache[slotCacheKey] === '') {
+            if (telemetry && telemetry.performance[displayNames[0]]) {
+              // console.log(displayNames[0],telemetry.performance[displayNames[0]])
+              telemetry.performance[displayNames[0]].stylesCacheHit++;
+            }
+
             return slotName === 'root'
               ? cx(componentClassName, classesThemeCache[slotCacheKey], className)
               : classesThemeCache[slotCacheKey];

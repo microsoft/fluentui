@@ -36,18 +36,20 @@ const selectedStyle = variables => ({
 });
 
 const listItemStyles: ComponentSlotStylesPrepared<ListItemStylesProps, ListItemVariables> = {
-  root: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => {
+  root: ({ props: p, variables: v, theme: { siteVariables } }): any => {
     const borderFocusStyles = getBorderFocusStyles({
       variables: siteVariables,
     });
 
     return {
-      display: 'flex',
-      alignItems: 'center',
-      minHeight: v.minHeight,
-      padding: v.rootPadding,
+      display: { __specialFlag: true, css: 'display:flex', declaration: 'display:flex' },
+      alignItems: { __specialFlag: true, css: 'align-items:center', declaration: 'align-items:center' },
+
+      minHeight: { __specialFlag: true, css: 'min-height:' + v.minHeight, declaration: 'min-height:' + v.minHeight },
+      padding: v.rootPadding, // TODO: Hm, this thing should be expanded
+
       ...((p.selectable || p.navigable) && {
-        position: 'relative',
+        position: { __specialFlag: true, css: 'position:relative', declaration: 'position:relative' },
 
         // hide the end media by default
         [`& .${listItemSlotClassNames.endMedia}`]: { display: 'none' },
@@ -101,8 +103,8 @@ const listItemStyles: ComponentSlotStylesPrepared<ListItemStylesProps, ListItemV
     lineHeight: v.headerMediaLineHeight,
   }),
 
-  content: ({ props: p, variables: v }) => ({
-    flexGrow: 1,
+  content: ({ props: p, variables: v }): any => ({
+    flexGrow: { __specialFlag: true, css: 'flex-grow:1', declaration: 'flex-grow:1' },
     fontSize: v.contentFontSize,
     lineHeight: v.contentLineHeight,
 
@@ -117,24 +119,25 @@ const listItemStyles: ComponentSlotStylesPrepared<ListItemStylesProps, ListItemV
     lineHeight: v.contentMediaLineHeight,
   }),
 
-  endMedia: ({ props: p }) => ({
-    flexShrink: 0,
-    ...((p.selectable || p.navigable) && { display: 'none' }),
+  endMedia: ({ props: p }): any => ({
+    flexShrink: { __specialFlag: true, css: 'flex-shrink:0', declaration: 'flex-shrink:0' },
+
+    ...((p.selectable || p.navigable) && { __specialFlag: true, css: 'display:none', declaration: 'display:none' }),
   }),
 
-  headerWrapper: () => ({
-    display: 'flex',
+  headerWrapper: (): any => ({
+    display: { __specialFlag: true, css: 'display:flex', declaration: 'display:flex' },
   }),
 
-  contentWrapper: () => ({
-    display: 'flex',
+  contentWrapper: (): any => ({
+    display: { __specialFlag: true, css: 'display:flex', declaration: 'display:flex' },
   }),
 
-  main: () => ({
-    display: 'flex',
-    flexDirection: 'column',
-    flexGrow: 1,
-    minWidth: 0, // needed for the truncate styles to work
+  main: (): any => ({
+    display: { __specialFlag: true, css: 'display:flex', declaration: 'display:flex' },
+    flexDirection: { __specialFlag: true, css: 'flex-direction:column', declaration: 'flex-direction:column' },
+    flexGrow: { __specialFlag: true, css: 'flex-grow:1', declaration: 'flex-grow:1' },
+    minWidth: { __specialFlag: true, css: 'min-width:0', declaration: 'min-width:0' }, // needed for the truncate styles to work
   }),
 };
 

@@ -22,9 +22,10 @@ type RendererChange = {
  * selector. Modifies generated selectors:
  * `.a:focus-visible {}` => `html[data-whatinput="keyboard"] a:focus`.
  */
-const felaFocusVisibleEnhancer = (renderer: Renderer) => ({
-  ...renderer,
-  _emitChange: (change: RendererChange) => {
+const felaFocusVisibleEnhancer = (renderer: Renderer) => {
+  const existingEmitChange = renderer._emitChange.bind(renderer);
+
+  renderer._emitChange = (change: RendererChange) => {
     if (change.type === RULE_TYPE && change.selector.indexOf(':focus-visible') !== -1) {
       const pseudo = change.pseudo ? change.pseudo.replace(':focus-visible', ':focus') : undefined;
       const selector = `html[data-whatinput="keyboard"] ${change.selector.replace(':focus-visible', ':focus')}`;
@@ -42,13 +43,15 @@ const felaFocusVisibleEnhancer = (renderer: Renderer) => ({
       // - static rendering, it directly accesses `.cache` via `clusterCache()` and generates
       //   stylesheets from changes
       renderer.cache[declarationReference] = enhancedChange;
-      renderer._emitChange(enhancedChange);
+      existingEmitChange(enhancedChange);
 
       return;
     }
 
-    renderer._emitChange(change);
-  },
-});
+    existingEmitChange(change);
+  };
+
+  return renderer;
+};
 
 export default felaFocusVisibleEnhancer;
