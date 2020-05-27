@@ -1,6 +1,5 @@
 import { IRenderer } from 'fela';
 import { RULE_TYPE } from 'fela-utils';
-import * as _ from 'lodash';
 
 type Renderer = IRenderer & {
   cache: Record<string, RendererChange>;
