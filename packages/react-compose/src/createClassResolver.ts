@@ -18,46 +18,45 @@ export const createClassResolver = (classes: ClassDictionary) => (
   state: GenericDictionary,
   slots: GenericDictionary,
 ): ClassDictionary => {
-  // tslint:disable-next-line:no-any
-  const classMap: Record<string, any> = {};
+  const classMap: GenericDictionary = {};
+  const modifiers: string[] = [];
 
   // Add the default className to root
-  // tslint:disable-next-line: no-any
-  addClassTo(classMap, 'root', (state as any).className);
+  addClassTo(classMap, 'root', state.className);
 
   if (classes) {
     // Iterate through classes
     Object.keys(classes).forEach((key: string) => {
-      // If the class is named the same as a slot, add it to the slot.
-      // tslint:disable-next-line: no-any
-      if ((slots as any).hasOwnProperty(key)) {
-        addClassTo(classMap, key, classes[key]);
-      } else if (key.indexOf('_') >= 0) {
-        // The class is an enum value. Add if the prop exists and matches.
-        const parts = key.split('_');
-        const enumName = parts[0];
-        const enumValue = parts[1];
+      const classValue = classes[key];
 
-        // tslint:disable-next-line: no-any
-        addClassTo(classMap, 'root', (state as any)[enumName] === enumValue && classes[key]);
-      } else {
-        // tslint:disable-next-line: no-any
-        addClassTo(classMap, 'root', (state as any)[key] && classes[key]);
+      if (classValue) {
+        // If the class is named the same as a slot, add it to the slot.
+        if (slots.hasOwnProperty(key)) {
+          addClassTo(classMap, key, classValue);
+        } else if (key.indexOf('_') >= 0) {
+          // The class is an enum value. Add if the prop exists and matches.
+          const parts = key.split('_');
+          const enumName = parts[0];
+          const enumValue = parts[1];
+
+          state[enumName] === enumValue && modifiers.push(classValue);
+        } else {
+          state[key] && modifiers.push(classValue);
+        }
       }
     });
-  }
 
-  // Convert the className arrays to strings.
-  Object.keys(classMap).forEach((key: string) => (classMap[key] = classMap[key].join(' ')));
+    // Convert the className arrays to strings.
+    Object.keys(classMap).forEach((key: string) => (classMap[key] = classMap[key].concat(modifiers).join(' ')));
+  }
 
   return classMap;
 };
 
 /**
- * Helper function to update `className` arrays on slots within a dictionary.
+ * Helper function to update slot arrays within a class map.
  */
-// tslint:disable-next-line:no-any
-function addClassTo(slotProps: Record<string, any>, slotName: string, className?: string | false) {
+function addClassTo(slotProps: GenericDictionary, slotName: string, className?: string | false) {
   if (className) {
     if (!slotProps[slotName]) {
       slotProps[slotName] = [className];
