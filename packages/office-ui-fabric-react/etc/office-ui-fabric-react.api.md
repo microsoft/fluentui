@@ -9009,11 +9009,7 @@ export const ShimmerCircleBase: React.FunctionComponent<IShimmerCircleProps>;
 export const ShimmeredDetailsList: React.FunctionComponent<IShimmeredDetailsListProps>;
 
 // @public (undocumented)
-export class ShimmeredDetailsListBase extends React.Component<IShimmeredDetailsListProps, {}> {
-    constructor(props: IShimmeredDetailsListProps);
-    // (undocumented)
-    render(): JSX.Element;
-    }
+export function ShimmeredDetailsListBase(props: IShimmeredDetailsListProps): JSX.Element | null;
 
 // @public
 export enum ShimmerElementsDefaultHeights {
