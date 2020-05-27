@@ -1,5 +1,5 @@
 import { ComposePreparedOptions, GenericDictionary } from './types';
-import { getNativeElementProps } from '@uifabric/utilities';
+import { getNativeElementProps, assign } from '@uifabric/utilities';
 import { resolveClasses } from './resolveClasses';
 import { resolveSlotProps } from './resolveSlotProps';
 
@@ -62,6 +62,6 @@ function assignToMapObject(map: Record<string, {}>, key: string, value: {}) {
     if (!map[key]) {
       map[key] = {};
     }
-    Object.assign(map[key], value);
+    assign(map[key], value);
   }
 }
