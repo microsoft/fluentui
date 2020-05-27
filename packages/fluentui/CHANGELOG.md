@@ -70,6 +70,9 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add `compose()` support for submenus in `MenuItem` @mnajdova ([#13300](https://github.com/microsoft/fluentui/pull/13300))
 - Use `compose()` in `ToolbarMenuDivider` @mnajdova ([#13318](https://github.com/microsoft/fluentui/pull/13318))
 
+### Performance
+- Omit `_.findKey()` usage in `focusVisibleEnhancer()` @layershifter ([#13343](https://github.com/microsoft/fluentui/pull/13343))
+
 ### Documentation
 - `Toolbar` recommendation using toolbar based on aria  @kolaps33 ([#13143](https://github.com/microsoft/fluentui/pull/13143))
 - Fix knobs labels on docsite  @pompomon ([#13248](https://github.com/microsoft/fluentui/pull/13248))
