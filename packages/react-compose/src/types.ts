@@ -69,9 +69,16 @@ export type ComposeOptions<InputProps = {}, InputStylesProps = {}, ParentProps =
   shorthandConfig?: ShorthandConfig<ParentProps & InputProps>;
 };
 
-export type ClassDictionary = {
-  [key: string]: string;
-};
+/**
+ * Generic name to any dictionary.
+ */
+// tslint:disable-next-line:no-any
+export type GenericDictionary = Record<string, any>;
+
+/**
+ * Generic set of module to class name map.
+ */
+export type ClassDictionary = Record<string, string>;
 
 export type ComposePreparedOptions<Props = {}> = {
   className: string;

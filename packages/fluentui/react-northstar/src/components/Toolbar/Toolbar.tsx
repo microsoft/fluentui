@@ -34,6 +34,7 @@ import {
 } from '../../types';
 import {
   childrenExist,
+  createShorthand,
   createShorthandFactory,
   UIComponentProps,
   ContentComponentProps,
@@ -51,6 +52,7 @@ import ToolbarMenu, { ToolbarMenuProps } from './ToolbarMenu';
 import ToolbarMenuDivider from './ToolbarMenuDivider';
 import ToolbarMenuItem from './ToolbarMenuItem';
 import ToolbarMenuRadioGroup, { ToolbarMenuRadioGroupProps } from './ToolbarMenuRadioGroup';
+import ToolbarMenuRadioGroupWrapper from './ToolbarMenuRadioGroupWrapper';
 import ToolbarRadioGroup from './ToolbarRadioGroup';
 import { ToolbarVariablesProvider } from './toolbarVariablesContext';
 
@@ -132,6 +134,7 @@ const Toolbar: React.FC<WithAsProp<ToolbarProps>> &
     MenuDivider: typeof ToolbarMenuDivider;
     MenuItem: typeof ToolbarMenuItem;
     MenuRadioGroup: typeof ToolbarMenuRadioGroup;
+    MenuRadioGroupWrapper: typeof ToolbarMenuRadioGroupWrapper;
     RadioGroup: typeof ToolbarRadioGroup;
   } = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
@@ -444,7 +447,7 @@ const Toolbar: React.FC<WithAsProp<ToolbarProps>> &
         case 'divider':
           return ToolbarDivider.create(item);
         case 'group':
-          return ToolbarRadioGroup.create(item);
+          return createShorthand(ToolbarRadioGroup, item);
         case 'toggle':
           return createShorthand(ToolbarItem, item, {
             defaultProps: () => ({ accessibility: toggleButtonBehavior }),
@@ -554,6 +557,7 @@ Toolbar.Menu = ToolbarMenu;
 Toolbar.MenuDivider = ToolbarMenuDivider;
 Toolbar.MenuItem = ToolbarMenuItem;
 Toolbar.MenuRadioGroup = ToolbarMenuRadioGroup;
+Toolbar.MenuRadioGroupWrapper = ToolbarMenuRadioGroupWrapper;
 Toolbar.RadioGroup = ToolbarRadioGroup;
 
 Toolbar.create = createShorthandFactory({ Component: Toolbar, mappedProp: 'content' });
