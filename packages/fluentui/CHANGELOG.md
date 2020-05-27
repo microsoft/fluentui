@@ -348,6 +348,7 @@ Removed types: `TeamsSvgIconSpec`, `ThemeIconSpec`, `SvgIconSpec`, `SvgIconSpecW
 - Add support for Children API in `List` component @layershifter ([#2207](https://github.com/microsoft/fluent-ui-react/pull/2207))
 - Added virtualized table prototype using `react-virtualized` and `Table` components @pompomon ([#2339](https://github.com/microsoft/fluent-ui-react/pull/2339))
 - Adding prototype for popover in `Table` header @pompomon ([#2379](https://github.com/microsoft/fluent-ui-react/pull/2379))
+- Add cache hits to telemetry data & differentiate initial render @layershifter ([#13346](https://github.com/OfficeDev/office-ui-fabric-react/pull/13346))
 
 ### Performance
 - Add styles caching when there aren't inline overrides defined @mnajdova ([#2309](https://github.com/microsoft/fluent-ui-react/pull/2309))
