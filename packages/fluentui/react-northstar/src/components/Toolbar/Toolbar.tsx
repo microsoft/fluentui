@@ -41,7 +41,6 @@ import {
   ChildrenComponentProps,
   commonPropTypes,
   ColorComponentProps,
-  createShorthand,
 } from '../../utils';
 import ToolbarCustomItem, { ToolbarCustomItemProps } from './ToolbarCustomItem';
 import ToolbarDivider, { ToolbarDividerProps } from './ToolbarDivider';
