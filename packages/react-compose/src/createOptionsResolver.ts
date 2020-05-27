@@ -18,8 +18,6 @@ export const defaultMappedProps: Record<string, string> = {
   input: 'type',
 };
 
-export const EmptyRender = () => null;
-
 /**
  * Creates an options resolve function which should attach to an options object
  * for a composed component.

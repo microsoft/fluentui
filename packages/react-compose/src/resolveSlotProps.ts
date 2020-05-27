@@ -1,5 +1,7 @@
 import * as React from 'react';
-import { OptionsResolverResult, defaultMappedProps, EmptyRender } from './createOptionsResolver';
+import { OptionsResolverResult, defaultMappedProps } from './createOptionsResolver';
+
+export const NullRender = () => null;
 
 /**
  * Helper utility which takes in a classes array from compose options, resolves functions,
@@ -13,7 +15,7 @@ export function resolveSlotProps(result: OptionsResolverResult): OptionsResolver
     const slot = slots[slotName];
     let slotProp = state[slotName];
 
-    if (slot && slotProp !== undefined) {
+    if (slot && slotProp !== undefined && slotProp !== null) {
       const slotPropType = typeof slotProp;
       const isLiteral = slotPropType === 'string' || slotPropType === 'number' || slotPropType === 'boolean';
 
@@ -38,9 +40,10 @@ export function resolveSlotProps(result: OptionsResolverResult): OptionsResolver
         ...slotProp,
       };
     }
+
     // Ensure no slots are falsey
-    if (!slots[slotName]) {
-      slots[slotName] = EmptyRender;
+    if (!slots[slotName] || slotProp === null) {
+      slots[slotName] = NullRender;
     }
   });
 
