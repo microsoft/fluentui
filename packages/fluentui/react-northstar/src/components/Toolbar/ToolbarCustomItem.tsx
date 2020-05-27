@@ -26,7 +26,7 @@ import { ToolbarVariablesContext } from './toolbarVariablesContext';
 
 export interface ToolbarCustomItemProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
   /**
-   * 1111 Accessibility behavior if overridden by the user.
+   * Accessibility behavior if overridden by the user.
    */
   accessibility?: Accessibility<never>;
 
