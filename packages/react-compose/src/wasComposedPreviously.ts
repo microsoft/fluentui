@@ -5,8 +5,8 @@ import { ComposedComponent, Input } from './types';
  * - React.forwardRef + static fluentComposeConfig, i.e. previously composed component
  * - a function
  */
-export function wasComposedPreviously<T extends React.ElementType = 'div', P = {}>(
-  input: Input<T, P>,
-): input is ComposedComponent<P> {
-  return !!(input as ComposedComponent<P>).fluentComposeConfig;
+export function wasComposedPreviously<TElementType extends React.ElementType = 'div', TProps = {}>(
+  input: Input<TElementType, TProps>,
+): input is ComposedComponent<TProps> {
+  return !!(input as ComposedComponent<TProps>).fluentComposeConfig;
 }
