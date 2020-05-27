@@ -612,6 +612,8 @@ export interface ISlider {
 
 // @public (undocumented)
 export interface ISliderProps extends React.ClassAttributes<HTMLElement> {
+    'aria-label'?: string;
+    // @deprecated
     ariaLabel?: string;
     ariaValueText?: (value: number) => string;
     buttonProps?: React.HTMLAttributes<HTMLButtonElement>;
@@ -634,6 +636,9 @@ export interface ISliderProps extends React.ClassAttributes<HTMLElement> {
     valueFormat?: (value: number) => string;
     vertical?: boolean;
 }
+
+// @public (undocumented)
+export type ISliderState = any;
 
 // @public (undocumented)
 export type ISliderStyleProps = Required<Pick<ISliderProps, 'theme'>> & Pick<ISliderProps, 'className' | 'disabled' | 'vertical'> & {
@@ -1050,7 +1055,7 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
 export const Slider: React.FunctionComponent<ISliderProps>;
 
 // @public (undocumented)
-export const SliderBase: React.ForwardRefExoticComponent<Pick<ISliderProps, "max" | "disabled" | "label" | "vertical" | "key" | "step" | "theme" | "styles" | "className" | "defaultValue" | "onChange" | "componentRef" | "min" | "value" | "ariaLabel" | "onChanged" | "showValue" | "ariaValueText" | "snapToStep" | "buttonProps" | "valueFormat" | "originFromZero"> & React.RefAttributes<HTMLDivElement>>;
+export const SliderBase: React.ForwardRefExoticComponent<Pick<ISliderProps, "max" | "disabled" | "label" | "vertical" | "key" | "step" | "theme" | "styles" | "className" | "defaultValue" | "aria-label" | "onChange" | "componentRef" | "min" | "value" | "ariaLabel" | "onChanged" | "showValue" | "ariaValueText" | "snapToStep" | "buttonProps" | "valueFormat" | "originFromZero"> & React.RefAttributes<HTMLDivElement>>;
 
 // @public (undocumented)
 export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonState> implements ISpinButton {

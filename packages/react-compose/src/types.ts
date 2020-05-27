@@ -66,7 +66,7 @@ export type ComposeRenderFunction<TElementType extends React.ElementType = 'div'
 export type ComposeOptions<TInputProps = {}, TInputStylesProps = {}, TParentProps = {}, TParentStylesProps = {}> = {
   className?: string;
 
-  classes?: ClassDictionary | ((state: Dictionary, slots: Dictionary) => ClassDictionary);
+  classes?: ClassDictionary | ((state: GenericDictionary, slots: GenericDictionary) => ClassDictionary);
 
   displayName?: string;
 
@@ -84,14 +84,20 @@ export type ComposeOptions<TInputProps = {}, TInputStylesProps = {}, TParentProp
   shorthandConfig?: ShorthandConfig<TParentProps & TInputProps>;
 };
 
-export type ClassDictionary = Record<string, string>;
-
+/**
+ * Generic name to any dictionary.
+ */
 // tslint:disable-next-line:no-any
-export type Dictionary = Record<string, any>;
+export type GenericDictionary = Record<string, any>;
+
+/**
+ * Generic set of module to class name map.
+ */
+export type ClassDictionary = Record<string, string>;
 
 export type ComposePreparedOptions<TElementType extends React.ElementType = 'div', TProps = {}, TState = TProps> = {
   className: string;
-  classes: (undefined | ClassDictionary | ((state: Dictionary, slots: Dictionary) => ClassDictionary))[];
+  classes: (undefined | ClassDictionary | ((state: GenericDictionary, slots: GenericDictionary) => ClassDictionary))[];
   displayName: string;
   displayNames: string[];
 

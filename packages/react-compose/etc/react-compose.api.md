@@ -6,7 +6,7 @@
 
 import * as React from 'react';
 
-// @public (undocumented)
+// @public
 export type ClassDictionary = Record<string, string>;
 
 // @public (undocumented)
@@ -38,7 +38,7 @@ export type ComposedComponent<TElementType extends React.ElementType<any> = 'div
 // @public (undocumented)
 export type ComposeOptions<TInputProps = {}, TInputStylesProps = {}, TParentProps = {}, TParentStylesProps = {}> = {
     className?: string;
-    classes?: ClassDictionary | ((state: Dictionary, slots: Dictionary) => ClassDictionary);
+    classes?: ClassDictionary | ((state: GenericDictionary, slots: GenericDictionary) => ClassDictionary);
     displayName?: string;
     defaultProps?: TInputProps;
     mapPropsToStylesProps?: (props: TParentStylesProps & TInputProps) => TInputStylesProps;
@@ -52,7 +52,7 @@ export type ComposeOptions<TInputProps = {}, TInputStylesProps = {}, TParentProp
 // @public (undocumented)
 export type ComposePreparedOptions<TElementType extends React.ElementType = 'div', TProps = {}, TState = TProps> = {
     className: string;
-    classes: (undefined | ClassDictionary | ((state: Dictionary, slots: Dictionary) => ClassDictionary))[];
+    classes: (undefined | ClassDictionary | ((state: GenericDictionary, slots: GenericDictionary) => ClassDictionary))[];
     displayName: string;
     displayNames: string[];
     mapPropsToStylesPropsChain: ((props: object) => object)[];
@@ -78,8 +78,8 @@ export type ComposeRenderFunction<TElementType extends React.ElementType = 'div'
 // @public
 export const createClassResolver: (classes: Record<string, string>) => (state: Record<string, any>, slots: Record<string, any>) => Record<string, string>;
 
-// @public (undocumented)
-export type Dictionary = Record<string, any>;
+// @public
+export type GenericDictionary = Record<string, any>;
 
 // @public (undocumented)
 export type Input<TElementType extends React.ElementType = 'div', TProps = {}> = InputComposeComponent<TProps> | ComposeRenderFunction<TElementType, TProps & {
