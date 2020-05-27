@@ -84,9 +84,9 @@ export type GenericDictionary = Record<string, any>;
  */
 export type ClassDictionary = Record<string, string>;
 
-export type ComposePreparedOptions<TProps = {}> = {
+export type ComposePreparedOptions<TProps = {}, TState = TProps> = {
   className: string;
-  classes: ClassDictionary;
+  classes: (undefined | ClassDictionary | ((state: GenericDictionary, slots: GenericDictionary) => ClassDictionary))[];
 
   displayName: string;
   displayNames: string[];
@@ -103,4 +103,12 @@ export type ComposePreparedOptions<TProps = {}> = {
 
   resolveSlotProps: <TResolvedProps>(props: TResolvedProps) => Record<string, object>;
   shorthandConfig: ShorthandConfig<TProps>;
+
+  resolve: (
+    state: TState,
+  ) => {
+    state: TState;
+    slotProps: Record<string, object>;
+    slots: Record<string, React.ElementType>;
+  };
 };

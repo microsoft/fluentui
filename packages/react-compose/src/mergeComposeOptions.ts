@@ -1,10 +1,10 @@
 import { ComposeOptions, ComposePreparedOptions, Input } from './types';
-import { mergeClasses } from './mergeClasses';
 import { computeDisplayNames } from './computeDisplayNames';
+import { createOptionsResolver } from './createOptionsResolver';
 
 export const defaultComposeOptions: ComposePreparedOptions = {
   className: process.env.NODE_ENV === 'production' ? '' : 'no-classname-🙉',
-  classes: {},
+  classes: [],
   displayName: '',
   displayNames: [],
 
@@ -17,6 +17,7 @@ export const defaultComposeOptions: ComposePreparedOptions = {
   mapPropsToSlotPropsChain: [],
   resolveSlotProps: () => ({}),
   shorthandConfig: {},
+  resolve: () => ({ state: {}, slots: {}, slotProps: {} }),
 };
 
 export function mergeComposeOptions(
@@ -42,9 +43,10 @@ export function mergeComposeOptions(
       });
       return mergedSlotProps;
     }, {});
-  return {
+
+  const preparedOptions: Partial<ComposePreparedOptions> = {
     className: inputOptions.className || parentOptions.className,
-    classes: mergeClasses(parentOptions.classes, inputOptions.classes),
+    classes: [...parentOptions.classes, inputOptions.classes],
     displayName: inputOptions.displayName || parentOptions.displayName,
     displayNames: computeDisplayNames(inputOptions, parentOptions),
     mapPropsToStylesPropsChain: inputOptions.mapPropsToStylesProps
@@ -64,4 +66,8 @@ export function mergeComposeOptions(
       ...inputOptions.shorthandConfig,
     },
   };
+
+  preparedOptions.resolve = createOptionsResolver(preparedOptions as ComposePreparedOptions);
+
+  return preparedOptions as ComposePreparedOptions;
 }
