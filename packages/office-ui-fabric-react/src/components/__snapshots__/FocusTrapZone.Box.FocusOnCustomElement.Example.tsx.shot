@@ -586,6 +586,7 @@ exports[`Component Examples renders FocusTrapZone.Box.FocusOnCustomElement.Examp
               outline: 1px solid WindowText;
             }
             @media screen and (-ms-high-contrast: active){& {
+              -ms-high-contrast-adjust: auto;
               border-bottom: none;
             }
             &:active {

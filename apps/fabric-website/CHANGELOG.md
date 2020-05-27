@@ -1,8 +1,27 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Mon, 18 May 2020 12:54:52 GMT and should not be manually modified.
+This log was last generated on Fri, 22 May 2020 12:37:35 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.10.58](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.10.58)
+
+Fri, 22 May 2020 12:37:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.10.57..@uifabric/fabric-website_v7.10.58)
+
+### Patches
+
+- Update documentation for fontSize prop ([PR #13276](https://github.com/microsoft/fluentui/pull/13276) by krsiler@microsoft.com)
+
+## [7.10.55](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.10.55)
+
+Tue, 19 May 2020 12:34:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.10.53..@uifabric/fabric-website_v7.10.55)
+
+### Patches
+
+- grammer fix on iOS get started change ([PR #13211](https://github.com/microsoft/fluentui/pull/13211) by hyshin@microsoft.com)
+- added blurb on the Cross platform Getting Started page that FURN controls only support Windows and Mac atm ([PR #13215](https://github.com/microsoft/fluentui/pull/13215) by ejlayne@microsoft.com)
 
 ## [7.10.53](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.10.53)
 

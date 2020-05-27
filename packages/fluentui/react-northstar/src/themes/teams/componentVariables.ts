@@ -94,7 +94,11 @@ export { default as ToolbarDivider } from './components/Toolbar/toolbarDividerVa
 export { default as ToolbarMenu } from './components/Toolbar/toolbarMenuVariables';
 export { default as ToolbarMenuDivider } from './components/Toolbar/toolbarMenuDividerVariables';
 export { default as ToolbarMenuItem } from './components/Toolbar/toolbarMenuItemVariables';
+export { default as ToolbarMenuItemIcon } from './components/Toolbar/toolbarMenuItemIconVariables';
+export { default as ToolbarMenuItemSubmenuIndicator } from './components/Toolbar/toolbarMenuItemSubmenuIndicatorVariables';
+export { default as ToolbarMenuItemActiveIndicator } from './components/Toolbar/toolbarMenuItemActiveIndicatorVariables';
 export { default as ToolbarMenuRadioGroup } from './components/Toolbar/toolbarMenuRadioGroupVariables';
+export { default as ToolbarMenuRadioGroupWrapper } from './components/Toolbar/toolbarMenuRadioGroupWrapperVariables';
 
 export { default as TreeTitle } from './components/Tree/treeTitleVariables';
 

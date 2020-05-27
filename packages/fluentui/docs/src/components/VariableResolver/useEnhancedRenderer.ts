@@ -59,7 +59,10 @@ const useEnhancedRenderRule = (renderer: Renderer): [Renderer['renderRule'], Rea
 /** Enhances passed Fela renderer to get actual variables. */
 const useEnhancedRenderer = (originalRenderer: Renderer): [Renderer, React.RefObject<UsedVariables>] => {
   const [renderRule, variables] = useEnhancedRenderRule(originalRenderer);
-  const enhancedRenderer: Renderer = React.useMemo(() => ({ ...originalRenderer, renderRule }), [originalRenderer]);
+  const enhancedRenderer: Renderer = React.useMemo(() => ({ ...originalRenderer, renderRule }), [
+    originalRenderer,
+    renderRule,
+  ]);
 
   return [enhancedRenderer, variables];
 };

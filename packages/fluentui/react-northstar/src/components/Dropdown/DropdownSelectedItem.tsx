@@ -5,7 +5,7 @@ import * as PropTypes from 'prop-types';
 import * as _ from 'lodash';
 import { CloseIcon } from '@fluentui/react-icons-northstar';
 
-import keyboardKey from 'keyboard-key';
+import { getCode, keyboardKey } from '@fluentui/keyboard-key';
 import {
   ComponentEventHandler,
   ShorthandValue,
@@ -82,9 +82,12 @@ const DropdownSelectedItem: React.FC<WithAsProp<DropdownSelectedItemProps>> &
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(DropdownSelectedItem.displayName, context.telemetry);
   setStart();
+
   const { active, header, icon, image, className, design, styles, variables } = props;
-  const itemRef = React.createRef<HTMLElement>();
+
+  const itemRef = React.useRef<HTMLElement>();
   const unhandledProps = useUnhandledProps(DropdownSelectedItem.handledProps, props);
+
   React.useEffect(() => {
     if (active) {
       itemRef.current.focus();
@@ -120,9 +123,9 @@ const DropdownSelectedItem: React.FC<WithAsProp<DropdownSelectedItemProps>> &
       _.invoke(props, 'onRemove', e, iconProps);
       _.invoke(props, 'onClick', e, iconProps);
     },
-    onKeyDown: (e: React.SyntheticEvent, iconProps: BoxProps) => {
+    onKeyDown: (e: React.KeyboardEvent, iconProps: BoxProps) => {
       e.stopPropagation();
-      if (keyboardKey.getCode(e) === keyboardKey.Enter) {
+      if (getCode(e) === keyboardKey.Enter) {
         _.invoke(props, 'onRemove', e, iconProps);
       }
       _.invoke(props, 'onKeyDown', e, iconProps);

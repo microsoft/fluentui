@@ -1,8 +1,36 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 18 May 2020 12:54:52 GMT and should not be manually modified.
+This log was last generated on Wed, 27 May 2020 12:40:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.116.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.116.0)
+
+Wed, 27 May 2020 12:40:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.115.2..office-ui-fabric-react_v7.116.0)
+
+### Minor changes
+
+- Pivot: Adding `alwaysRender` prop to `PivotItem` to allow for persistent `PivotItems` to control the amount of re-renders that happen. ([PR #12779](https://github.com/microsoft/fluentui/pull/12779) by herincon@microsoft.com)
+
+## [7.115.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.115.2)
+
+Thu, 21 May 2020 12:34:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.115.1..office-ui-fabric-react_v7.115.2)
+
+### Patches
+
+- MessageBar: Restore style overrides for Link inside MessageBar in high contrast; use dismissButtonAriaLabel as title too ([PR #13034](https://github.com/microsoft/fluentui/pull/13034) by elcraig@microsoft.com)
+- Prettier fix in Callout test. ([PR #12478](https://github.com/microsoft/fluentui/pull/12478) by humbertomakotomorimoto@gmail.com)
+
+## [7.115.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.115.1)
+
+Wed, 20 May 2020 12:31:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.115.0..office-ui-fabric-react_v7.115.1)
+
+### Patches
+
+- update MessageBarButtonBorder color ([PR #12932](https://github.com/microsoft/fluentui/pull/12932) by chrismo@microsoft.com)
 
 ## [7.115.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.115.0)
 

@@ -1,8 +1,45 @@
 # Change Log - @fluentui/react-next
 
-This log was last generated on Mon, 18 May 2020 12:54:52 GMT and should not be manually modified.
+This log was last generated on Wed, 27 May 2020 12:40:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-alpha.29](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.29)
+
+Wed, 27 May 2020 12:40:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.28..@fluentui/react-next_v8.0.0-alpha.29)
+
+### Changes
+
+- Slider: Move state logic to useSlider hook, part 1 ([PR #13260](https://github.com/microsoft/fluentui/pull/13260) by joschect@microsoft.com)
+
+## [8.0.0-alpha.28](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.28)
+
+Mon, 25 May 2020 12:38:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.26..@fluentui/react-next_v8.0.0-alpha.28)
+
+### Changes
+
+- Copying FocusTrapZone to react-next, in preparation for converting to function component. ([PR #13280](https://github.com/microsoft/fluentui/pull/13280) by czearing@outlook.com)
+
+## [8.0.0-alpha.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.26)
+
+Thu, 21 May 2020 12:34:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.25..@fluentui/react-next_v8.0.0-alpha.26)
+
+### Changes
+
+- Use ThemeProvider to provide theme css variables, add ThemeProvider and Customizer replacements for V8 ([PR #13146](https://github.com/microsoft/fluentui/pull/13146) by xgao@microsoft.com)
+
+## [8.0.0-alpha.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.25)
+
+Wed, 20 May 2020 12:31:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.24..@fluentui/react-next_v8.0.0-alpha.25)
+
+### Changes
+
+- Slider: Convert to scss ([PR #13167](https://github.com/microsoft/fluentui/pull/13167) by joschect@microsoft.com)
+- Toggle: Convert react-next version to use scss. ([PR #13217](https://github.com/microsoft/fluentui/pull/13217) by humbertomakotomorimoto@gmail.com)
 
 ## [8.0.0-alpha.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.24)
 
