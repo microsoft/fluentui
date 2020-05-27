@@ -71,6 +71,7 @@ const ToolbarRadioGroup = compose<'div', ToolbarRadioGroupProps, ToolbarRadioGro
     const { accessibility, activeIndex, children, className, design, items, variables, styles } = props;
     const itemRefs: React.RefObject<HTMLElement>[] = [];
 
+    const slotProps = composeOptions.resolveSlotProps(props);
     const parentVariables = React.useContext(ToolbarVariablesContext);
     const mergedVariables = mergeComponentVariables(parentVariables, variables);
 
@@ -133,12 +134,14 @@ const ToolbarRadioGroup = compose<'div', ToolbarRadioGroupProps, ToolbarRadioGro
         itemRefs[index] = ref;
 
         if (kind === 'divider') {
-          return createShorthand(ToolbarDivider, item);
+          return createShorthand(composeOptions.slots.divider, item, {
+            defaultProps: () => slotProps.divider,
+          });
         }
 
-        const toolbarItem = createShorthand(ToolbarItem, item, {
+        const toolbarItem = createShorthand(composeOptions.slots.item, item, {
           defaultProps: () => ({
-            accessibility: toolbarRadioGroupItemBehavior,
+            ...slotProps.item,
             active: activeIndex === index,
           }),
         });
@@ -174,6 +177,16 @@ const ToolbarRadioGroup = compose<'div', ToolbarRadioGroupProps, ToolbarRadioGro
   {
     className: toolbarRadioGroupClassName,
     displayName: 'ToolbarRadioGroup',
+
+    slots: {
+      item: ToolbarItem,
+      divider: ToolbarDivider,
+    },
+    mapPropsToSlotProps: () => ({
+      item: {
+        accessibility: toolbarRadioGroupItemBehavior,
+      },
+    }),
 
     shorthandConfig: { mappedProp: 'content' },
     handledProps: [
