@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Implement useShallowMemo hook",
+  "packageName": "@uifabric/react-hooks",
+  "email": "tmichon@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-05-27T00:48:31.941Z"
+}
