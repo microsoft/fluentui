@@ -222,7 +222,7 @@ const MenuButton: React.FC<MenuButtonProps> & FluentComponentStaticProps<MenuBut
 
   const openAndFocus = (e: React.KeyboardEvent, which: 'first' | 'last') => {
     e.preventDefault();
-    handleOpenChange(e, true, () => focusMenuItem(menuRef.current, which));
+    handleOpenChange(e, true, () => menuRef.current && focusMenuItem(menuRef.current, which));
   };
 
   const handleOpenChange = (e: React.SyntheticEvent, open: boolean, callback?: () => void) => {
