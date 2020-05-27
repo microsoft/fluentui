@@ -44,10 +44,12 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Restricted prop sets in the `HeaderDescription` component which are passed to styles functions, @assuncaocharles ([#13296](https://github.com/microsoft/fluentui/pull/13296))
 - Restricted prop sets in the `Loader` component which are passed to styles functions, @assuncaocharles ([#13297](https://github.com/microsoft/fluentui/pull/13297))
 - Restricted prop sets in the `RadioGroupItem` component which are passed to styles functions, @assuncaocharles ([#13301](https://github.com/microsoft/fluentui/pull/13301))
+- Restricted prop sets in the `ItemLayout` component which are passed to styles functions and change `renderContentArea`, `renderHeaderArea` and `renderMainArea` definition, @assuncaocharles ([#13327](https://github.com/microsoft/fluentui/pull/13327))
 - Restricted prop sets in the `Layout` component which are passed to styles functions, @assuncaocharles ([#13324](https://github.com/microsoft/fluentui/pull/13324))
 - Restricted prop sets in the `RadioGroup` component which are passed to styles functions, @assuncaocharles ([#13338](https://github.com/microsoft/fluentui/pull/13338))
 - `toolbarMenuRadioGroupSlotClassNames` were removed, `toolbarMenuRadioGroupWrapperClassName` should be used instead @layershifter ([#13322](https://github.com/microsoft/fluentui/pull/13322))
 - `toolbarItemSlotClassNames.wrapper` was removed, `toolbarItemWrapperClassName` should be used instead @mnajdova ([#13321](https://github.com/microsoft/fluentui/pull/13321))
+- `toolbarMenuItemSlotClassNames`'s `activeIndicator` and `submenuIndicator` were removed, `toolbarMenuItemActiveIndicatorClassName` and `toolbarMenuItemSubmenuIndicatorClassName` should be used instead @mnajdova ([#13350](https://github.com/microsoft/fluentui/pull/13350))
 
 ### Fixes
 - Fix `splitButtonBehavior` to exclude `toggleButton` from focus zone @silviuavram ([#13043](https://github.com/microsoft/fluentui/pull/13043))
@@ -78,6 +80,8 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Use `compose()` in `ToolbarRadioGroup` @layershifter ([#13322](https://github.com/microsoft/fluentui/pull/13322))
 - Use `compose()` in `Toolbar` @mnajdova ([#13341](https://github.com/microsoft/fluentui/pull/13341))
 - Use `compose()` in `ToolbarItem` @mnajdova ([#13321](https://github.com/microsoft/fluentui/pull/13321))
+- Use `compose()` in `ToolbarMenuItem` @mnajdova ([#13350](https://github.com/microsoft/fluentui/pull/13350))
+- Use `compose()` in `ToolbarCustomItem` @mnajdova ([#13319](https://github.com/microsoft/fluentui/pull/13319))
 
 ### Performance
 - Omit `_.findKey()` usage in `focusVisibleEnhancer()` @layershifter ([#13343](https://github.com/microsoft/fluentui/pull/13343))

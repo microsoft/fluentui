@@ -1,4 +1,5 @@
 import {
+  Text,
   Toolbar,
   ToolbarMenuDivider,
   ToolbarRadioGroup,
@@ -6,6 +7,12 @@ import {
   ToolbarItem,
   ToolbarItemWrapper,
   ToolbarItemIcon,
+  ToolbarMenuItem,
+  ToolbarMenuItemActiveIndicator,
+  ToolbarMenuRadioGroupWrapper,
+  ToolbarMenuRadioGroup,
+  ToolbarMenuItemIcon,
+  ToolbarMenuItemSubmenuIndicator,
   ToolbarProps,
   ToolbarStylesProps,
   ToolbarMenuDividerProps,
@@ -21,14 +28,23 @@ import {
   ToolbarItemWrapperStylesProps,
   ToolbarItemIconProps,
   ToolbarItemIconStylesProps,
+  ToolbarMenuItemIconProps,
   ToolbarItemStylesProps,
   ToolbarItemProps,
-  ToolbarMenuRadioGroupWrapper,
-  ToolbarMenuRadioGroup,
+  ToolbarCustomItemProps,
+  ToolbarCustomItemStylesProps,
+  ToolbarCustomItem,
+  ToolbarMenuItemActiveIndicatorProps,
+  ToolbarMenuItemActiveIndicatorStylesProps,
+  ToolbarMenuItemSubmenuIndicatorProps,
+  ToolbarMenuItemSubmenuIndicatorStylesProps,
+  ToolbarMenuItemIconStylesProps,
   ToolbarMenuRadioGroupWrapperStylesProps,
   ToolbarMenuRadioGroupWrapperProps,
   ToolbarMenuRadioGroupStylesProps,
   ToolbarMenuRadioGroupProps,
+  ToolbarMenuItemStylesProps,
+  ToolbarMenuItemProps,
 } from '@fluentui/react-northstar';
 import * as React from 'react';
 import {
@@ -42,6 +58,13 @@ import {
   BulletsIcon,
   ToDoListIcon,
 } from '@fluentui/react-icons-northstar';
+
+const ToolbarCustomItemOlive = compose<'div', {}, {}, ToolbarCustomItemProps, ToolbarCustomItemStylesProps>(
+  ToolbarCustomItem,
+  {
+    displayName: 'ToolbarCustomItemOlive',
+  },
+);
 
 const ToolbarRadioGroupItemRed = compose<'button', {}, {}, ToolbarItemProps, ToolbarItemStylesProps>(ToolbarItem, {
   displayName: 'ToolbarRadioGroupItemRed',
@@ -94,8 +117,9 @@ const ToolbarItemGrey = compose<'button', {}, {}, ToolbarItemProps, ToolbarItemS
 const ToolbarViolet = compose<'div', {}, {}, ToolbarProps, ToolbarStylesProps>(Toolbar, {
   displayName: 'ToolbarViolet',
   slots: {
-    group: ToolbarRadioGroupRed,
+    customItem: ToolbarCustomItemOlive,
     divider: ToolbarDividerGreen,
+    group: ToolbarRadioGroupRed,
     item: ToolbarItemGrey,
   },
 });
@@ -104,6 +128,45 @@ const ToolbarMenuDividerBlue = compose<'li', {}, {}, ToolbarMenuDividerProps, To
   ToolbarMenuDivider,
   {
     displayName: 'ToolbarMenuDividerBlue',
+  },
+);
+
+const ToolbarMenuItemActiveIndicatorGreen = compose<
+  'li',
+  {},
+  {},
+  ToolbarMenuItemActiveIndicatorProps,
+  ToolbarMenuItemActiveIndicatorStylesProps
+>(ToolbarMenuItemActiveIndicator, {
+  displayName: 'ToolbarMenuItemActiveIndicatorGreen',
+});
+
+const ToolbarMenuItemSubmenuIndicatorBlue = compose<
+  'li',
+  {},
+  {},
+  ToolbarMenuItemSubmenuIndicatorProps,
+  ToolbarMenuItemSubmenuIndicatorStylesProps
+>(ToolbarMenuItemSubmenuIndicator, {
+  displayName: 'ToolbarMenuItemSubmenuIndicatorBlue',
+});
+
+const ToolbarMenuItemIconOrange = compose<'li', {}, {}, ToolbarMenuItemIconProps, ToolbarMenuItemIconStylesProps>(
+  ToolbarMenuItemIcon,
+  {
+    displayName: 'ToolbarMenuItemIconOrange',
+  },
+);
+
+const ToolbarMenuItemGrey = compose<'button', {}, {}, ToolbarMenuItemProps, ToolbarMenuItemStylesProps>(
+  ToolbarMenuItem,
+  {
+    displayName: 'ToolbarMenuItemGrey',
+    slots: {
+      icon: ToolbarMenuItemIconOrange,
+      submenuIndicator: ToolbarMenuItemSubmenuIndicatorBlue,
+      activeIndicator: ToolbarMenuItemActiveIndicatorGreen,
+    },
   },
 );
 
@@ -145,6 +208,12 @@ const themeOverrides: ThemeInput = {
         border: '1px dashed violet',
       },
     },
+    ToolbarCustomItemOlive: {
+      root: {
+        color: 'olive',
+        fontStyle: 'italic',
+      },
+    },
     ToolbarRadioGroupRed: {
       root: {
         border: '1px dashed darkred',
@@ -178,6 +247,28 @@ const themeOverrides: ThemeInput = {
     ToolbarMenuRadioGroupViolet: {
       root: {
         border: '1px solid violet',
+      },
+    },
+    ToolbarMenuItemActiveIndicatorGreen: {
+      root: {
+        border: '1px solid lightgreen',
+        width: '36px',
+      },
+    },
+    ToolbarMenuItemSubmenuIndicatorBlue: {
+      root: {
+        border: '1px solid lightblue',
+        width: '36px',
+      },
+    },
+    ToolbarMenuItemIconOrange: {
+      root: {
+        color: 'orange',
+      },
+    },
+    ToolbarMenuItemGrey: {
+      root: {
+        border: '1px dashed lightgrey',
       },
     },
   },
@@ -215,21 +306,41 @@ const ToolbarExampleMenuShorthand = () => {
             ],
           },
           {
+            key: 'custom',
+            kind: 'custom',
+            content: <Text content="Olive" />,
+          },
+          {
             icon: <MoreIcon />,
             key: 'more',
             active: true,
             title: 'More',
             menu: {
               items: [
-                { key: 'play', content: 'Play', icon: <PlayIcon /> },
-                { key: 'pause', content: 'Pause', icon: <PauseIcon /> },
+                {
+                  key: 'play',
+                  content: 'Play',
+                  icon: <PlayIcon />,
+                  active: true,
+                  // TODO: replace this with slots after compose in enabled in ToolbarMenu
+                  children: (C, p) => <ToolbarMenuItemGrey {...p} />,
+                },
+                {
+                  key: 'pause',
+                  content: 'Pause',
+                  icon: <PauseIcon />,
+                  menu: ['Pause 1.1'],
+                  // TODO: replace this with slots after compose in enabled in ToolbarMenu
+                  children: (C, p) => <ToolbarMenuItemGrey {...p} />,
+                },
                 {
                   key: 'divider',
                   kind: 'divider',
                   // TODO: replace this with slots after compose in enabled in ToolbarMenu
                   children: (C, p) => <ToolbarMenuDividerBlue {...p} />,
                 },
-                'Without icon',
+                // TODO: replace this with slots after compose in enabled in ToolbarMenu
+                { content: 'Without icon', children: (C, p) => <ToolbarMenuItemGrey {...p} /> },
                 {
                   key: 'group',
                   kind: 'group',

@@ -49,9 +49,9 @@ export type ComposeOptions<TInputProps = {}, TInputStylesProps = {}, TParentProp
 };
 
 // @public (undocumented)
-export type ComposePreparedOptions<TProps = {}> = {
+export type ComposePreparedOptions<TProps = {}, TState = TProps> = {
     className: string;
-    classes: ClassDictionary;
+    classes: (undefined | ClassDictionary | ((state: GenericDictionary, slots: GenericDictionary) => ClassDictionary))[];
     displayName: string;
     displayNames: string[];
     mapPropsToStylesPropsChain: ((props: object) => object)[];
@@ -64,6 +64,11 @@ export type ComposePreparedOptions<TProps = {}> = {
     mapPropsToSlotPropsChain: ((props: TProps) => Record<string, object>)[];
     resolveSlotProps: <TResolvedProps>(props: TResolvedProps) => Record<string, object>;
     shorthandConfig: ShorthandConfig<TProps>;
+    resolve: (state: TState) => {
+        state: TState;
+        slotProps: Record<string, object>;
+        slots: Record<string, React.ElementType>;
+    };
 };
 
 // @public (undocumented)
