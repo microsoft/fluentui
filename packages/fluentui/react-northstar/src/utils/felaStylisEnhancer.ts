@@ -22,7 +22,7 @@ const felaStylisEnhancer = (renderer: Renderer) => {
   const existingEmitChange = renderer._emitChange.bind(renderer);
 
   renderer._emitChange = (change: RendererChange) => {
-    if (change.type === RULE_TYPE && !change.DO_NOT_PROCESS_BY_STYLIS) {
+    if (change.type === RULE_TYPE) {
       const prefixed: string = stylis('', change.declaration);
 
       // Fela uses objects by references, it's safe to override properties
