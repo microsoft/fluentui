@@ -24,4 +24,60 @@ describe('resolveClasses', () => {
       slots: { root: 'div', slot1: 'div' },
     });
   });
+
+  it('can manage multiple overlapping slot classes', () => {
+    expect(
+      resolveClasses([{ root: 'foo' }, { root: 'bar' }], {
+        state: {},
+        slotProps: { root: { className: 'original' } },
+        slots: { root: 'div', slot1: 'div' },
+      }),
+    ).toEqual({
+      state: {},
+      slotProps: { root: { className: 'original foo bar' } },
+      slots: { root: 'div', slot1: 'div' },
+    });
+  });
+
+  it('can resolve functional classes', () => {
+    expect(
+      resolveClasses([state => ({ root: state.primary ? 'foo' : 'baz' }), { root: 'bar' }], {
+        state: { primary: true },
+        slotProps: { root: { className: 'original' } },
+        slots: { root: 'div', slot1: 'div' },
+      }),
+    ).toEqual({
+      state: { primary: true },
+      slotProps: { root: { className: 'original foo bar' } },
+      slots: { root: 'div', slot1: 'div' },
+    });
+  });
+
+  it('will add duplicates without filtering the classes', () => {
+    expect(
+      resolveClasses([state => ({ root: 'root' }), { root: 'root' }], {
+        state: {},
+        slotProps: { root: { className: 'root' } },
+        slots: { root: 'div', slot1: 'div' },
+      }),
+    ).toEqual({
+      state: {},
+      slotProps: { root: { className: 'root root root' } },
+      slots: { root: 'div', slot1: 'div' },
+    });
+  });
+
+  it('will ignore duplicates without filtering the classes', () => {
+    expect(
+      resolveClasses([state => ({ root: 'root' }), { root: 'root' }], {
+        state: {},
+        slotProps: { root: { className: 'root' } },
+        slots: { root: 'div', slot1: 'div' },
+      }),
+    ).toEqual({
+      state: {},
+      slotProps: { root: { className: 'root root root' } },
+      slots: { root: 'div', slot1: 'div' },
+    });
+  });
 });
