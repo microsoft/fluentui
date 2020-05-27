@@ -1,8 +1,0 @@
-{
-  "type": "none",
-  "comment": "Pivot: adding alwaysRender prop to `PivotItem` to allow for persistent `PivotItems` to control the amount of re-renders that happen",
-  "packageName": "@fluentui/react-next",
-  "email": "herincon@microsoft.com",
-  "dependentChangeType": "none",
-  "date": "2020-05-15T18:32:12.117Z"
-}
