@@ -14,7 +14,7 @@ import {
   ProviderContextPrepared,
 } from '../../types';
 
-import { createShorthandFactory, createShorthand } from '../../utils/factories';
+import { createShorthandFactory } from '../../utils/factories';
 import Popup, { PopupProps, PopupEvents, PopupEventsArray } from '../Popup/Popup';
 import Menu, { MenuProps } from '../Menu/Menu';
 import { MenuItemProps } from '../Menu/MenuItem';
@@ -30,8 +30,6 @@ import {
 } from '@fluentui/react-bindings';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
-import Button from '../Button/Button';
-import Box from '../Box/Box';
 
 export interface MenuButtonSlotClassNames {
   menu: string;
