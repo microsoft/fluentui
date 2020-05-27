@@ -6,10 +6,8 @@
 
 import * as React from 'react';
 
-// @public (undocumented)
-export type ClassDictionary = {
-    [key: string]: string;
-};
+// @public
+export type ClassDictionary = Record<string, string>;
 
 // @public (undocumented)
 export interface ComponentWithAs<E extends React.ElementType = 'div', P = {}> extends React.FunctionComponent {
@@ -70,6 +68,12 @@ export type ComposePreparedOptions<Props = {}> = {
 
 // @public (undocumented)
 export type ComposeRenderFunction<T extends React.ElementType = 'div', P = {}> = (props: P, ref: React.Ref<T extends keyof HTMLElementTagNameMap ? HTMLElementTagNameMap[T] : T>, composeOptions: ComposePreparedOptions) => React.ReactElement | null;
+
+// @public
+export const createClassResolver: (classes: Record<string, string>) => (state: Record<string, any>, slots: Record<string, any>) => Record<string, string>;
+
+// @public
+export type GenericDictionary = Record<string, any>;
 
 // @public (undocumented)
 export type Input<T extends React.ElementType = 'div', P = {}> = InputComposeComponent<P> | ComposeRenderFunction<T, P & {
