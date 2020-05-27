@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Adding createClassResolver to help with auto resolving class names given class map and props.",
+  "packageName": "@fluentui/react-compose",
+  "email": "dzearing@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-05-26T23:33:15.423Z"
+}
