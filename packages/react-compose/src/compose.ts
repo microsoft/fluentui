@@ -1,7 +1,8 @@
 import * as React from 'react';
 
 import { ComponentWithAs, ComposedComponent, ComposeOptions, Input, InputComposeComponent } from './types';
-import { mergeComposeOptions, wasComposedPreviously } from './utils';
+import { wasComposedPreviously } from './wasComposedPreviously';
+import { mergeComposeOptions } from './mergeComposeOptions';
 
 function compose<ElementType extends React.ElementType, InputProps, InputStylesProps, ParentProps, ParentStylesProps>(
   input: Input<ElementType, InputProps>,

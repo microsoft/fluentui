@@ -7,11 +7,6 @@ export interface ShorthandConfig<TProps> {
   allowsJSX?: boolean;
 }
 
-/**
- * Used for shorthand prop values.
- */
-export type ShorthandValue<TProps = {}> = string | boolean | number | null | undefined | TProps | JSX.Element;
-
 //
 // "as" type safety
 //
@@ -40,13 +35,8 @@ export interface ComponentWithAs<TElementType extends React.ElementType = 'div',
 // Compose types
 //
 
-export type ComposedComponent<
-  // tslint:disable-next-line:no-any
-  TElementType extends React.ElementType<any> = 'div',
-  TProps = {},
-  TState = TProps
-> = React.FunctionComponent<TProps> & {
-  fluentComposeConfig: ComposePreparedOptions<TElementType, TProps, TState>;
+export type ComposedComponent<TProps = {}> = React.FunctionComponent<TProps> & {
+  fluentComposeConfig: ComposePreparedOptions;
 };
 
 export type InputComposeComponent<TProps = {}> = React.FunctionComponent<TProps> & {
@@ -66,20 +56,19 @@ export type ComposeRenderFunction<TElementType extends React.ElementType = 'div'
 export type ComposeOptions<TInputProps = {}, TInputStylesProps = {}, TParentProps = {}, TParentStylesProps = {}> = {
   className?: string;
 
-  classes?: ClassDictionary | ((state: GenericDictionary, slots: GenericDictionary) => ClassDictionary);
+  classes?: ClassDictionary;
 
   displayName?: string;
 
-  defaultProps?: TInputProps;
-
-  mapPropsToStylesProps?: (props: TParentStylesProps & TInputProps) => TInputStylesProps;
+  mapPropsToSlotProps?: (props: TParentProps & TInputProps) => Record<string, object>;
 
   handledProps?: (keyof TInputProps | 'as')[];
+
   overrideStyles?: boolean;
 
   slots?: Record<string, React.ElementType>;
 
-  mapPropsToSlotProps?: (props: TParentProps & TInputProps) => Record<string, object>;
+  mapPropsToStylesProps?: (props: TParentStylesProps & TInputProps) => TInputStylesProps;
 
   shorthandConfig?: ShorthandConfig<TParentProps & TInputProps>;
 };
@@ -97,27 +86,24 @@ export type ClassDictionary = Record<string, string>;
 
 export type ComposePreparedOptions<TElementType extends React.ElementType = 'div', TProps = {}, TState = TProps> = {
   className: string;
-  classes: (undefined | ClassDictionary | ((state: GenericDictionary, slots: GenericDictionary) => ClassDictionary))[];
+  classes: ClassDictionary;
+
   displayName: string;
   displayNames: string[];
 
   mapPropsToStylesPropsChain: ((props: object) => object)[];
-  render: ComposeRenderFunction<TElementType, TProps>;
+
+  render: ComposeRenderFunction;
 
   handledProps: (keyof TProps)[];
+
   overrideStyles: boolean;
 
   slots: Record<string, React.ElementType> & { __self: React.ElementType };
+
   mapPropsToSlotPropsChain: ((props: TProps) => Record<string, object>)[];
-  resolveSlotProps: <P>(props: P) => Record<string, object>;
+
+  resolveSlotProps: <P>(props: TProps) => Record<string, object>;
 
   shorthandConfig: ShorthandConfig<TProps>;
-
-  resolve: (
-    state: TState,
-  ) => {
-    state: TState;
-    slotProps: Record<string, object>;
-    slots: Record<string, React.ElementType>;
-  };
 };
