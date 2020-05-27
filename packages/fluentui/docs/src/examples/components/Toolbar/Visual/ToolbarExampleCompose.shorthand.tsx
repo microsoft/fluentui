@@ -1,13 +1,16 @@
 import {
   Toolbar,
   ToolbarMenuDivider,
-  ToolbarDivider,
-  ToolbarItemWrapper,
-  ToolbarItem,
-  ToolbarItemIcon,
   ToolbarRadioGroup,
-  ToolbarMenuRadioGroupWrapper,
-  ToolbarMenuRadioGroup,
+  ToolbarDivider,
+  ToolbarProps,
+  ToolbarStylesProps,
+  ToolbarMenuDividerProps,
+  ToolbarMenuDividerStylesProps,
+  ToolbarRadioGroupProps,
+  ToolbarRadioGroupStylesProps,
+  ToolbarDividerProps,
+  ToolbarDividerStylesProps,
   Provider,
   compose,
   ThemeInput,
@@ -25,11 +28,14 @@ import {
   ToDoListIcon,
 } from '@fluentui/react-icons-northstar';
 
-const ToolbarMenuDividerBlue = compose(ToolbarMenuDivider, {
-  displayName: 'ToolbarMenuDividerBlue',
-});
+const ToolbarRadioGroupRed = compose<'div', {}, {}, ToolbarRadioGroupProps, ToolbarRadioGroupStylesProps>(
+  ToolbarRadioGroup,
+  {
+    displayName: 'ToolbarRadioGroupRed',
+  },
+);
 
-const ToolbarDividerGreen = compose(ToolbarDivider, {
+const ToolbarDividerGreen = compose<'div', {}, {}, ToolbarDividerProps, ToolbarDividerStylesProps>(ToolbarDivider, {
   displayName: 'ToolbarDividerGreen',
 });
 
@@ -49,9 +55,21 @@ const ToolbarItemGrey = compose(ToolbarItem, {
   },
 });
 
-const ToolbarRadioGroupRed = compose(ToolbarRadioGroup, {
-  displayName: 'ToolbarRadioGroupRed',
+const ToolbarViolet = compose<'div', {}, {}, ToolbarProps, ToolbarStylesProps>(Toolbar, {
+  displayName: 'ToolbarViolet',
+  slots: {
+    group: ToolbarRadioGroupRed,
+    divider: ToolbarDividerGreen,
+    item: ToolbarItemGrey,
+  },
 });
+
+const ToolbarMenuDividerBlue = compose<'li', {}, {}, ToolbarMenuDividerProps, ToolbarMenuDividerStylesProps>(
+  ToolbarMenuDivider,
+  {
+    displayName: 'ToolbarMenuDividerBlue',
+  },
+);
 
 const ToolbarMenuRadioGroupWrapperOrange = compose(ToolbarMenuRadioGroupWrapper, {
   displayName: 'ToolbarMenuRadioGroupWrapperOrange',
@@ -74,6 +92,16 @@ const themeOverrides: ThemeInput = {
     },
   },
   componentStyles: {
+    ToolbarViolet: {
+      root: {
+        border: '1px dashed violet',
+      },
+    },
+    ToolbarRadioGroupRed: {
+      root: {
+        border: '1px dashed darkred',
+      },
+    },
     ToolbarItemWrapperBlue: {
       root: {
         border: '1px dashed lightblue',
@@ -87,11 +115,6 @@ const themeOverrides: ThemeInput = {
     ToolbarItemGrey: {
       root: {
         background: 'lightgrey',
-      },
-    },
-    ToolbarRadioGroupRed: {
-      root: {
-        border: '1px dashed darkred',
       },
     },
     ToolbarMenuRadioGroupWrapperOrange: {
@@ -110,7 +133,7 @@ const themeOverrides: ThemeInput = {
 const ToolbarExampleMenuShorthand = () => {
   return (
     <Provider theme={themeOverrides}>
-      <Toolbar
+      <ToolbarViolet
         aria-label="Toolbar can contain a menu"
         items={[
           {
@@ -128,8 +151,6 @@ const ToolbarExampleMenuShorthand = () => {
           {
             key: 'divider',
             kind: 'divider',
-            // TODO: replace this with slots after compose in enabled in Toolbar
-            children: (C, p) => <ToolbarDividerGreen {...p} />,
           },
           {
             key: 'group',
@@ -138,8 +159,6 @@ const ToolbarExampleMenuShorthand = () => {
               { key: 'bookmark', icon: <BookmarkIcon /> },
               { key: 'chat', icon: <ChatIcon /> },
             ],
-            // TODO: replace this with slots after compose in enabled in Toolbar
-            children: (C, p) => <ToolbarRadioGroupRed {...p} />,
           },
           {
             icon: <MoreIcon />,
@@ -170,7 +189,6 @@ const ToolbarExampleMenuShorthand = () => {
               ],
             },
             menuOpen: true,
-            children: (C, p) => <ToolbarItemGrey {...p} />,
           },
         ]}
       />
