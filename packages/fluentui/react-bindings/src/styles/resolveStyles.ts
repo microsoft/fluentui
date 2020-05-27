@@ -52,9 +52,13 @@ const resolveStyles = (
     disableAnimations,
     renderer,
     performance,
+    telemetry,
   } = options;
 
   const { className, design, styles, variables, ...stylesProps } = props;
+
+  // TODO: describe me
+  const primaryDisplayName = displayNames[0];
 
   const noInlineStylesOverrides = !(design || styles);
   let noVariableOverrides = performance.enableBooleanVariablesCaching || !variables;
@@ -91,7 +95,7 @@ const resolveStyles = (
   let mergedStyles: ComponentSlotStylesPrepared;
 
   if (displayNames.length === 1) {
-    mergedStyles = theme.componentStyles[displayNames[0]] || { root: () => ({}) };
+    mergedStyles = theme.componentStyles[primaryDisplayName] || { root: () => ({}) };
   } else {
     const styles = displayNames.map(displayName => theme.componentStyles[displayName]).filter(Boolean);
 
@@ -219,6 +223,14 @@ const resolveStyles = (
           const classesThemeCache = classesCache.get(theme) || {};
 
           if (classesThemeCache[slotCacheKey] || classesThemeCache[slotCacheKey] === '') {
+            if (telemetry?.performance[primaryDisplayName]) {
+              if (slotName === 'root') {
+                telemetry.performance[primaryDisplayName].stylesRootCacheHits++;
+              } else {
+                telemetry.performance[primaryDisplayName].stylesSlotsCacheHits++;
+              }
+            }
+
             return slotName === 'root'
               ? cx(componentClassName, classesThemeCache[slotCacheKey], className)
               : classesThemeCache[slotCacheKey];
