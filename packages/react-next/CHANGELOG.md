@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-next
 
-This log was last generated on Mon, 25 May 2020 12:38:22 GMT and should not be manually modified.
+This log was last generated on Wed, 27 May 2020 12:40:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-alpha.29](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.29)
+
+Wed, 27 May 2020 12:40:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.28..@fluentui/react-next_v8.0.0-alpha.29)
+
+### Changes
+
+- Slider: Move state logic to useSlider hook, part 1 ([PR #13260](https://github.com/microsoft/fluentui/pull/13260) by joschect@microsoft.com)
 
 ## [8.0.0-alpha.28](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.28)
 
