@@ -9,6 +9,9 @@ import * as React from 'react';
 // @public
 export type ClassDictionary = Record<string, string>;
 
+// @public
+export type ClassFunction = (state: GenericDictionary, slots: GenericDictionary) => ClassDictionary;
+
 // @public (undocumented)
 export interface ComponentWithAs<TElementType extends React.ElementType = 'div', TProps = {}> extends React.FunctionComponent {
     // (undocumented)
@@ -38,7 +41,7 @@ export type ComposedComponent<TProps = {}> = React.FunctionComponent<TProps> & {
 // @public (undocumented)
 export type ComposeOptions<TInputProps = {}, TInputStylesProps = {}, TParentProps = {}, TParentStylesProps = {}> = {
     className?: string;
-    classes?: ClassDictionary;
+    classes?: ClassDictionary | ClassFunction;
     displayName?: string;
     mapPropsToStylesProps?: (props: TParentStylesProps & TInputProps) => TInputStylesProps;
     handledProps?: (keyof TInputProps | 'as')[];
@@ -51,7 +54,7 @@ export type ComposeOptions<TInputProps = {}, TInputStylesProps = {}, TParentProp
 // @public (undocumented)
 export type ComposePreparedOptions<TProps = {}, TState = TProps> = {
     className: string;
-    classes: (undefined | ClassDictionary | ((state: GenericDictionary, slots: GenericDictionary) => ClassDictionary))[];
+    classes: (undefined | ClassDictionary | ClassFunction)[];
     displayName: string;
     displayNames: string[];
     mapPropsToStylesPropsChain: ((props: object) => object)[];
