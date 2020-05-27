@@ -434,7 +434,7 @@ Dialog.propTypes = {
 };
 
 Dialog.defaultProps = {
-  accessibility: dialogBehavior as Accessibility,
+  accessibility: dialogBehavior,
   actions: {},
   backdrop: true,
   closeOnOutsideClick: true,
