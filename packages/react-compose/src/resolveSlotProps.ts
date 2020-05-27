@@ -29,13 +29,11 @@ export function resolveSlotProps(result: OptionsResolverResult): OptionsResolver
         const { children, ...restProps } = slotProp;
         slotProp.children = slotProp.children(slot, restProps);
 
-        // tslint:disable-next-line:no-any
         slots[slotName] = React.Fragment;
       }
 
-      // Assign the resolves props.
+      // Assign the slot's props.
       slotProps[slotName] = {
-        // ...configSlotProps[slotName],
         ...slotProps[slotName],
         ...slotProp,
       };
