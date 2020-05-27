@@ -43,10 +43,25 @@ import {
   ToDoListIcon,
 } from '@fluentui/react-icons-northstar';
 
+const ToolbarRadioGroupItemRed = compose<'button', {}, {}, ToolbarItemProps, ToolbarItemStylesProps>(ToolbarItem, {
+  displayName: 'ToolbarRadioGroupItemRed',
+});
+
+const ToolbarRadioGroupDividerRed = compose<'div', {}, {}, ToolbarDividerProps, ToolbarDividerStylesProps>(
+  ToolbarDivider,
+  {
+    displayName: 'ToolbarRadioGroupDividerRed',
+  },
+);
+
 const ToolbarRadioGroupRed = compose<'div', {}, {}, ToolbarRadioGroupProps, ToolbarRadioGroupStylesProps>(
   ToolbarRadioGroup,
   {
     displayName: 'ToolbarRadioGroupRed',
+    slots: {
+      item: ToolbarRadioGroupItemRed,
+      divider: ToolbarRadioGroupDividerRed,
+    },
   },
 );
 
@@ -120,6 +135,9 @@ const themeOverrides: ThemeInput = {
     ToolbarDividerGreen: {
       dividerBorder: 'lightgreen',
     },
+    ToolbarRadioGroupDividerRed: {
+      dividerBorder: 'darkred',
+    },
   },
   componentStyles: {
     ToolbarViolet: {
@@ -130,6 +148,11 @@ const themeOverrides: ThemeInput = {
     ToolbarRadioGroupRed: {
       root: {
         border: '1px dashed darkred',
+      },
+    },
+    ToolbarRadioGroupItemRed: {
+      root: {
+        color: 'darkred',
       },
     },
     ToolbarItemWrapperBlue: {
@@ -187,6 +210,7 @@ const ToolbarExampleMenuShorthand = () => {
             kind: 'group',
             items: [
               { key: 'bookmark', icon: <BookmarkIcon /> },
+              { key: 'divider', kind: 'divider' },
               { key: 'chat', icon: <ChatIcon /> },
             ],
           },
