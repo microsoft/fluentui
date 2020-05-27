@@ -71,6 +71,7 @@ export const useSlider: (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =>
     originFromZero,
     'aria-label': ariaLabel,
   } = props;
+
   const disposables = React.useRef<(() => void)[]>([]);
   const sliderLine = React.useRef<HTMLDivElement>(null);
 
@@ -92,6 +93,7 @@ export const useSlider: (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =>
     showValue,
     theme: theme!,
   });
+
   const [timerId, setTimerId] = React.useState(0);
 
   const clearOnKeyDownTimer = (): void => {
@@ -108,6 +110,7 @@ export const useSlider: (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =>
       }, ONKEYDOWN_TIMEOUT_DURATION) as any,
     );
   };
+
   const getAriaValueText = (valueProps: number | undefined): string | undefined => {
     const { ariaValueText } = props;
     if (valueProps !== undefined) {
@@ -251,6 +254,18 @@ export const useSlider: (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =>
   const onMouseDownProp: {} = disabled ? {} : { onMouseDown: onMouseDownOrTouchStart };
   const onTouchStartProp: {} = disabled ? {} : { onTouchStart: onMouseDownOrTouchStart };
   const onKeyDownProp: {} = disabled ? {} : { onKeyDown: onKeyDown };
+
+  const thumbRef = React.useRef<HTMLSpanElement>(null);
+  useComponentRef(props, thumbRef, value);
+  const getPositionStyles = getPositionStyleFn(vertical, getRTL(props.theme));
+  const getTrackStyles = getLineSectionStylesFn(vertical);
+  const originValue = originFromZero ? 0 : min;
+  const valuePercent = getPercent(value, min, max);
+  const originPercentOfLine = getPercent(originValue, min, max);
+  const activeSectionWidth = Math.abs(originPercentOfLine - valuePercent);
+  const topSectionWidth = Math.min(100 - valuePercent, 100 - originPercentOfLine);
+  const bottomSectionWidth = Math.min(valuePercent, originPercentOfLine);
+
   const rootProps = {
     className: classNames.root,
     ref: ref,
@@ -273,17 +288,6 @@ export const useSlider: (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =>
     disabled,
   };
 
-  const thumbRef = React.useRef<HTMLSpanElement>(null);
-  useComponentRef(props, thumbRef, value);
-  const getPositionStyles = getPositionStyleFn(vertical, getRTL(props.theme));
-  const getTrackStyles = getLineSectionStylesFn(vertical);
-  const originValue = originFromZero ? 0 : min;
-  const valuePercent = getPercent(value, min, max);
-  const originPercentOfLine = getPercent(originValue, min, max);
-  const activeSectionWidth = Math.abs(originPercentOfLine - valuePercent);
-  const topSectionWidth = Math.min(100 - valuePercent, 100 - originPercentOfLine);
-  const bottomSectionWidth = Math.min(valuePercent, originPercentOfLine);
-
   const thumbProps = {
     ref: thumbRef,
     className: classNames.thumb,
@@ -294,14 +298,17 @@ export const useSlider: (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =>
     className: classNames.zeroTick,
     style: getPositionStyles(originPercentOfLine),
   };
+
   const trackActiveProps = {
     className: css(classNames.lineContainer, classNames.activeSection),
     style: getTrackStyles(activeSectionWidth),
   };
+
   const trackTopInactiveProps = {
     className: css(classNames.lineContainer, classNames.inactiveSection),
     style: getTrackStyles(topSectionWidth),
   };
+
   const trackBottomInactiveProps = {
     className: css(classNames.lineContainer, classNames.inactiveSection),
     style: getTrackStyles(bottomSectionWidth),
