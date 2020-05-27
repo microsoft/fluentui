@@ -48,7 +48,7 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
 
   const SelectedItem = props.onRenderItem;
   return (
-    <>
+    <div role={'list'}>
       {SelectedItem &&
         renderedItems.map((item: TItem, index: number) => (
           <SelectedItem
@@ -63,7 +63,7 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
             onItemChange={replaceItem}
           />
         ))}
-    </>
+    </div>
   );
 };
 

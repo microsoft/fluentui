@@ -203,7 +203,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       onKeyDown={_onBackspace}
       onCopy={_onCopy}
     >
-      <FocusZone direction={FocusZoneDirection.bidirectional} {...focusZoneProps}>
+      <FocusZone direction={FocusZoneDirection.bidirectional} {...focusZoneProps} role={'list'}>
         <MarqueeSelection selection={selection} isEnabled={true}>
           <SelectionZone selection={selection} selectionMode={SelectionMode.multiple}>
             <div className={css('ms-BasePicker-text', classNames.pickerText)} role={'list'}>
