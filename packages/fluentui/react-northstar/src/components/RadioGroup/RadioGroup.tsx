@@ -219,7 +219,7 @@ RadioGroup.propTypes = {
 };
 
 RadioGroup.defaultProps = {
-  accessibility: radioGroupBehavior as Accessibility,
+  accessibility: radioGroupBehavior,
 };
 
 RadioGroup.handledProps = Object.keys(RadioGroup.propTypes) as any;
