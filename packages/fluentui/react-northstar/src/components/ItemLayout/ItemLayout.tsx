@@ -64,7 +64,7 @@ export const itemLayoutSlotClassNames: ItemLayoutSlotClassNames = {
   endMedia: `${itemLayoutClassName}__endMedia`,
 };
 
-export type ItemLayoutStylesProps = { debugLayout: boolean };
+export type ItemLayoutStylesProps = never;
 
 const ItemLayout: React.FC<WithAsProp<ItemLayoutProps>> & FluentComponentStaticProps<ItemLayoutProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
@@ -89,9 +89,6 @@ const ItemLayout: React.FC<WithAsProp<ItemLayoutProps>> & FluentComponentStaticP
 
   const { classes, styles: resolvedStyles } = useStyles<ItemLayoutStylesProps>(ItemLayout.displayName, {
     className: itemLayoutClassName,
-    mapPropsToStyles: () => ({
-      debugLayout: false,
-    }),
     mapPropsToInlineStyles: () => ({
       className,
       design,
@@ -168,7 +165,6 @@ ItemLayout.propTypes = {
 };
 
 ItemLayout.defaultProps = {
-
   renderMainArea: (props, classes) => {
     const { renderHeaderArea, renderContentArea } = props;
 
