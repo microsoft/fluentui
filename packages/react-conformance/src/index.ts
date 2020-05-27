@@ -1,2 +1,2 @@
-export { default as isConformant } from './conformance';
+export { isConformant } from './isConformant';
 export * from './types';
