@@ -79,6 +79,7 @@ export * from './HierarchicalTree/hierarchicalTreeItemBehavior';
 export { default as hierarchicalTreeTitleBehavior } from './HierarchicalTree/hierarchicalTreeTitleBehavior';
 export { default as hierarchicalSubtreeBehavior } from './HierarchicalTree/hierarchicalSubtreeBehavior';
 export { default as dialogBehavior } from './Dialog/dialogBehavior';
+export * from './Dialog/dialogBehavior';
 export { default as statusBehavior } from './Status/statusBehavior';
 export { default as embedBehavior } from './Embed/embedBehavior';
 export * from './Embed/embedBehavior';
