@@ -10,6 +10,50 @@ const getClassNames = classNamesFunction<ISliderStyleProps, ISliderStyles>({
   useStaticStyles: true,
 });
 
+type dimension = 'height' | 'width';
+type position = 'bottom' | 'left' | 'right';
+type positionOrDimension = dimension | position;
+
+const getSlotStyleFn = (sty: positionOrDimension) => {
+  return (value: number) => {
+    return {
+      [sty]: `${value}%`,
+    };
+  };
+};
+const getPositionStyleFn = (vertical: boolean = false, rtl: boolean = false) => {
+  if (vertical) {
+    return getSlotStyleFn('bottom');
+  }
+  return getSlotStyleFn(rtl ? 'right' : 'left');
+};
+
+const getPercent = (value: number, sliderMin: number, sliderMax: number) => {
+  return sliderMax === sliderMin ? 0 : ((value! - sliderMin!) / (sliderMax! - sliderMin!)) * 100;
+};
+
+const getLineSectionStylesFn = (vertical: boolean = false) => {
+  const lengthString = vertical ? 'height' : 'width';
+  return getSlotStyleFn(lengthString);
+};
+
+const useComponentRef = (props: ISliderProps, thumb: React.RefObject<HTMLSpanElement>, value: number | undefined) => {
+  React.useImperativeHandle(
+    props.componentRef,
+    () => ({
+      get value() {
+        return value;
+      },
+      focus() {
+        if (thumb.current) {
+          thumb.current.focus();
+        }
+      },
+    }),
+    [value],
+  );
+};
+
 export const useSlider: (props: ISliderProps, ref: React.Ref<HTMLDivElement>) => ISliderState = (props, ref) => {
   const {
     step = 1,
@@ -24,9 +68,9 @@ export const useSlider: (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =>
     valueFormat,
     styles,
     theme,
+    originFromZero,
     'aria-label': ariaLabel,
   } = props;
-
   const disposables = React.useRef<(() => void)[]>([]);
   const sliderLine = React.useRef<HTMLDivElement>(null);
 
@@ -229,6 +273,40 @@ export const useSlider: (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =>
     disabled,
   };
 
+  const thumbRef = React.useRef<HTMLSpanElement>(null);
+  useComponentRef(props, thumbRef, value);
+  const getPositionStyles = getPositionStyleFn(vertical, getRTL(props.theme));
+  const getTrackStyles = getLineSectionStylesFn(vertical);
+  const originValue = originFromZero ? 0 : min;
+  const valuePercent = getPercent(value, min, max);
+  const originPercentOfLine = getPercent(originValue, min, max);
+  const activeSectionWidth = Math.abs(originPercentOfLine - valuePercent);
+  const topSectionWidth = Math.min(100 - valuePercent, 100 - originPercentOfLine);
+  const bottomSectionWidth = Math.min(valuePercent, originPercentOfLine);
+
+  const thumbProps = {
+    ref: thumbRef,
+    className: classNames.thumb,
+    style: getPositionStyles(valuePercent),
+  };
+
+  const zeroTickProps = originFromZero && {
+    className: classNames.zeroTick,
+    style: getPositionStyles(originPercentOfLine),
+  };
+  const trackActiveProps = {
+    className: css(classNames.lineContainer, classNames.activeSection),
+    style: getTrackStyles(activeSectionWidth),
+  };
+  const trackTopInactiveProps = {
+    className: css(classNames.lineContainer, classNames.inactiveSection),
+    style: getTrackStyles(topSectionWidth),
+  };
+  const trackBottomInactiveProps = {
+    className: css(classNames.lineContainer, classNames.inactiveSection),
+    style: getTrackStyles(bottomSectionWidth),
+  };
+
   const sliderBoxProps = {
     id,
     'aria-valuenow': value,
@@ -250,6 +328,10 @@ export const useSlider: (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =>
   const containerProps = {
     className: classNames.container,
   };
+  const sliderLineProps = {
+    ref: sliderLine,
+    className: classNames.line,
+  };
 
   return {
     root: rootProps,
@@ -257,8 +339,11 @@ export const useSlider: (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =>
     sliderBox: sliderBoxProps,
     container: containerProps,
     valueLabel: valueLabelProps,
-    classNames,
-    sliderLine,
-    value,
+    thumb: thumbProps,
+    zeroTick: zeroTickProps,
+    activeTrack: trackActiveProps,
+    topInactiveTrack: trackTopInactiveProps,
+    bottomInactiveTrack: trackBottomInactiveProps,
+    sliderLine: sliderLineProps,
   };
 };
