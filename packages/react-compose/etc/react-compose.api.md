@@ -28,7 +28,7 @@ export interface ComponentWithAs<TElementType extends React.ElementType = 'div',
 }
 
 // @public (undocumented)
-export function compose<ElementType extends React.ElementType, InputProps, InputStylesProps, ParentProps, ParentStylesProps>(input: Input<ElementType, InputProps>, inputOptions?: ComposeOptions<InputProps, InputStylesProps, ParentProps, ParentStylesProps>): ComponentWithAs<ElementType, InputProps & ParentProps>;
+export function compose<TElementType extends React.ElementType, TInputProps, TInputStylesProps, TParentProps, TParentStylesProps>(input: Input<TElementType, TInputProps>, inputOptions?: ComposeOptions<TInputProps, TInputStylesProps, TParentProps, TParentStylesProps>): ComponentWithAs<TElementType, TInputProps & TParentProps>;
 
 // @public (undocumented)
 export type ComposedComponent<TProps = {}> = React.FunctionComponent<TProps> & {
@@ -62,7 +62,7 @@ export type ComposePreparedOptions<TProps = {}> = {
         __self: React.ElementType;
     };
     mapPropsToSlotPropsChain: ((props: TProps) => Record<string, object>)[];
-    resolveSlotProps: (props: TProps) => Record<string, object>;
+    resolveSlotProps: <TResolvedProps>(props: TResolvedProps) => Record<string, object>;
     shorthandConfig: ShorthandConfig<TProps>;
 };
 
