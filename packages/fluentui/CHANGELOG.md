@@ -79,6 +79,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Use `compose()` in `ToolbarRadioGroup` @layershifter ([#13322](https://github.com/microsoft/fluentui/pull/13322))
 - Use `compose()` in `Toolbar` @mnajdova ([#13341](https://github.com/microsoft/fluentui/pull/13341))
 - Use `compose()` in `ToolbarItem` @mnajdova ([#13321](https://github.com/microsoft/fluentui/pull/13321))
+- Use `compose()` in `ToolbarCustomItem` @mnajdova ([#13319](https://github.com/microsoft/fluentui/pull/13319))
 
 ### Performance
 - Omit `_.findKey()` usage in `focusVisibleEnhancer()` @layershifter ([#13343](https://github.com/microsoft/fluentui/pull/13343))
