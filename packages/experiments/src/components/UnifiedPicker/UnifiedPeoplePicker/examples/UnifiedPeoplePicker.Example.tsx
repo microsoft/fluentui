@@ -137,12 +137,12 @@ export const UnifiedPeoplePickerExample = (): JSX.Element => {
   } as ISelectedPeopleListProps<IPersonaProps>;
 
   return (
-    <>
+    <div role="list">
       <UnifiedPeoplePicker
         selectedItemsListProps={selectedPeopleListProps}
         floatingSuggestionProps={floatingPeoplePickerProps}
         onInputChange={_onInputChange}
       />
-    </>
+    </div>
   );
 };

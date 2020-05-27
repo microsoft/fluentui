@@ -15,15 +15,15 @@ export const UnifiedPeoplePicker = (props: IUnifiedPeoplePickerProps): JSX.Eleme
   // }, [props.floatingSuggestionProps.suggestions]);
 
   const renderSelectedItems = (selectedPeopleListProps: ISelectedPeopleListProps<IPersonaProps>): JSX.Element => {
-    return <SelectedPeopleList {...selectedPeopleListProps} ref={null} />;
+    return <SelectedPeopleList {...selectedPeopleListProps} ref={null} ariaRole="list" />;
   };
   return (
-    <>
+    <div>
       <UnifiedPicker
         {...props}
         onRenderSelectedItems={renderSelectedItems}
         onRenderFloatingSuggestions={FloatingPeopleSuggestions}
       />
-    </>
+    </div>
   );
 };

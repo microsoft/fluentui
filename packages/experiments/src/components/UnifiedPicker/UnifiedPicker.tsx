@@ -203,10 +203,10 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       onKeyDown={_onBackspace}
       onCopy={_onCopy}
     >
-      <FocusZone direction={FocusZoneDirection.bidirectional} {...focusZoneProps} role={'list'}>
+      <FocusZone direction={FocusZoneDirection.bidirectional} {...focusZoneProps}>
         <MarqueeSelection selection={selection} isEnabled={true}>
           <SelectionZone selection={selection} selectionMode={SelectionMode.multiple}>
-            <div className={css('ms-BasePicker-text', classNames.pickerText)} role={'list'}>
+            <div className={css('ms-BasePicker-text', classNames.pickerText)} role="listitem">
               {headerComponent}
               {_renderSelectedItemsList()}
               {_canAddItems() && (
@@ -218,7 +218,6 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
                   onClick={_onInputClick}
                   onInputValueChange={_onInputChange}
                   aria-activedescendant={activeDescendant}
-                  aria-owns={isExpanded ? 'suggestion-list' : undefined}
                   aria-expanded={isExpanded}
                   aria-haspopup="true"
                   role="combobox"
