@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Generic variables cleaned up, removed react-is unlisted dependency usage, no breaking changes. Also split utils.ts into separate files. Each of these functions should have some unit tests.",
+  "comment": "Typescript generic argument names cleaned up, removed react-is unlisted dependency usage, no breaking changes. Also split utils.ts into separate files. Each of these functions should have some unit tests.",
   "packageName": "@fluentui/react-compose",
   "email": "dzearing@microsoft.com",
   "dependentChangeType": "patch",
