@@ -7,7 +7,7 @@ import Provider from 'src/components/Provider/Provider';
 import Text from 'src/components/Text/Text';
 import { felaRenderer } from 'src/utils';
 
-describe('felaRenderer', () => {
+xdescribe('felaRenderer', () => {
   test('basic styles are rendered', () => {
     const snapshot = createSnapshot(
       <EmptyThemeProvider>

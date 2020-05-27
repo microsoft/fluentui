@@ -15,12 +15,15 @@ export const getTelemetry = (
 
       if (!telemetry.performance[displayName]) {
         telemetry.performance[displayName] = {
-          count: 0,
+          instances: 0,
+          renders: 0,
+
           msTotal: 0,
           msMin: Number.MAX_SAFE_INTEGER,
           msMax: 0,
-          renders: 0,
-          stylesCacheHit: 0,
+
+          stylesRootCacheHits: 0,
+          stylesSlotsCacheHits: 0,
         };
       }
     }
@@ -32,11 +35,12 @@ export const getTelemetry = (
 
       const duration = end - start;
 
+      telemetry.performance[displayName].instances += Number(isFirstRenderRef.current);
       telemetry.performance[displayName].renders++;
+
       telemetry.performance[displayName].msTotal += duration;
       telemetry.performance[displayName].msMin = Math.min(duration, telemetry.performance[displayName].msMin);
       telemetry.performance[displayName].msMax = Math.max(duration, telemetry.performance[displayName].msMax);
-      telemetry.performance[displayName].count += Number(isFirstRenderRef.current);
 
       isFirstRenderRef.current = false;
     }
