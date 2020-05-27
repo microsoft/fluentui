@@ -1,6 +1,38 @@
-import { Toolbar, ToolbarMenuDivider, Provider, compose, ThemeInput } from '@fluentui/react-northstar';
+import {
+  Toolbar,
+  ToolbarMenuDivider,
+  ToolbarRadioGroup,
+  ToolbarDivider,
+  Provider,
+  compose,
+  ThemeInput,
+} from '@fluentui/react-northstar';
 import * as React from 'react';
-import { MoreIcon, PauseIcon, PlayIcon, BoldIcon, UnderlineIcon } from '@fluentui/react-icons-northstar';
+import {
+  MoreIcon,
+  PauseIcon,
+  PlayIcon,
+  BoldIcon,
+  UnderlineIcon,
+  BookmarkIcon,
+  ChatIcon,
+} from '@fluentui/react-icons-northstar';
+
+const ToolbarRadioGroupRed = compose(ToolbarRadioGroup, {
+  displayName: 'ToolbarRadioGroupRed',
+});
+
+const ToolbarDividerGreen = compose(ToolbarDivider, {
+  displayName: 'ToolbarDividerGreen',
+});
+
+const ToolbarViolet = compose(Toolbar, {
+  displayName: 'ToolbarViolet',
+  slots: {
+    group: ToolbarRadioGroupRed,
+    divider: ToolbarDividerGreen,
+  },
+});
 
 const ToolbarMenuDividerBlue = compose(ToolbarMenuDivider, {
   displayName: 'ToolbarMenuDividerBlue',
@@ -11,13 +43,28 @@ const themeOverrides: ThemeInput = {
     ToolbarMenuDividerBlue: {
       menuDividerBorder: 'lightblue',
     },
+    ToolbarDividerGreen: {
+      dividerBorder: 'lightgreen',
+    },
+  },
+  componentStyles: {
+    ToolbarViolet: {
+      root: {
+        border: '1px dashed violet',
+      },
+    },
+    ToolbarRadioGroupRed: {
+      root: {
+        border: '1px dashed darkred',
+      },
+    },
   },
 };
 
 const ToolbarExampleMenuShorthand = () => {
   return (
     <Provider theme={themeOverrides}>
-      <Toolbar
+      <ToolbarViolet
         aria-label="Toolbar can contain a menu"
         items={[
           {
@@ -31,6 +78,18 @@ const ToolbarExampleMenuShorthand = () => {
             content: 'underline',
             icon: <UnderlineIcon />,
             title: 'Underline',
+          },
+          {
+            key: 'divider',
+            kind: 'divider',
+          },
+          {
+            key: 'group',
+            kind: 'group',
+            items: [
+              { key: 'bookmark', icon: <BookmarkIcon /> },
+              { key: 'chat', icon: <ChatIcon /> },
+            ],
           },
           {
             icon: <MoreIcon />,
