@@ -1,6 +1,7 @@
-import { Telemetry } from '@fluentui/react-bindings';
 import { DebugData, ICSSInJSStyle, PropsWithVarsAndStyles, ThemeInput, ThemePrepared } from '@fluentui/styles';
 import { IRenderer as FelaRenderer } from 'fela';
+
+import { Telemetry } from '../telemetry/types';
 
 // Notice:
 // This temporary lives here, will be remove once `animation` prop will be dropped
