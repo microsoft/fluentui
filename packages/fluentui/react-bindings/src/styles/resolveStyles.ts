@@ -57,7 +57,7 @@ const resolveStyles = (
 
   const { className, design, styles, variables, ...stylesProps } = props;
 
-  // TODO: describe me
+  // First displayName will always point to the actual displayName, it's important in `compose()` scenarios
   const primaryDisplayName = displayNames[0];
 
   const noInlineStylesOverrides = !(design || styles);
