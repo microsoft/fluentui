@@ -114,7 +114,6 @@ export interface ToolbarMenuItemProps extends UIComponentProps, ChildrenComponen
 
 export type ToolbarMenuItemStylesProps = Pick<ToolbarMenuItemProps, 'disabled'> & { hasContent: boolean };
 
-// TODO: add breaking changes
 export interface ToolbarMenuItemSlotClassNames {
   wrapper: string;
   submenu: string;
