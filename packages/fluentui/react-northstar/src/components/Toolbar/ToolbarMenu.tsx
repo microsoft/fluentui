@@ -74,7 +74,7 @@ export interface ToolbarMenuProps extends UIComponentProps, ChildrenComponentPro
 export type ToolbarMenuStylesProps = never;
 export const toolbarMenuClassName = 'ui-toolbar__menu';
 
-const ToolbarMenu: React.FC<WithAsProp<ToolbarMenuProps>> & FluentComponentStaticProps = props => {
+const ToolbarMenu: React.FC<WithAsProp<ToolbarMenuProps>> & FluentComponentStaticProps<ToolbarMenuProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(ToolbarMenu.displayName, context.telemetry);
   setStart();
@@ -187,6 +187,9 @@ ToolbarMenu.defaultProps = {
 };
 
 ToolbarMenu.create = createShorthandFactory({ Component: ToolbarMenu, mappedArrayProp: 'items' });
+ToolbarMenu.shorthandConfig = {
+  mappedArrayProp: 'items',
+};
 
 /**
  * A ToolbarMenu creates a pop-up menu attached to a ToolbarItem.
