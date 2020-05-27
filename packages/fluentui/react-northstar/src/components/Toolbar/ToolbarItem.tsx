@@ -258,18 +258,25 @@ const ToolbarItem = compose<'button', ToolbarItemProps, ToolbarItemStylesProps, 
     const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
 
     const itemElement = (
-      <ElementType
-        {...getA11yProps('root', {
-          ...unhandledProps,
-          disabled,
-          className: classes.root,
-          onBlur: handleBlur,
-          onFocus: handleFocus,
-          onClick: handleClick,
-        })}
+      <Ref
+        innerRef={node => {
+          itemRef.current = node;
+          handleRef(ref, node);
+        }}
       >
-        {childrenExist(children) ? children : createShorthand(composeOptions.slots.icon, icon, slotProps.icon)}
-      </ElementType>
+        <ElementType
+          {...getA11yProps('root', {
+            ...unhandledProps,
+            disabled,
+            className: classes.root,
+            onBlur: handleBlur,
+            onFocus: handleFocus,
+            onClick: handleClick,
+          })}
+        >
+          {childrenExist(children) ? children : createShorthand(composeOptions.slots.icon, icon, slotProps.icon)}
+        </ElementType>
+      </Ref>
     );
 
     const submenuElement = menuOpen ? (
@@ -314,21 +321,14 @@ const ToolbarItem = compose<'button', ToolbarItemProps, ToolbarItemStylesProps, 
     if (menu) {
       const contentElement = (
         <>
-          <Ref
-            innerRef={node => {
-              itemRef.current = node;
-              handleRef(ref, node);
-            }}
-          >
-            {itemElement}
-          </Ref>
+          {itemElement}
           {submenuElement}
         </>
       );
 
       if (wrapper) {
         const wrapperElement = createShorthand(composeOptions.slots.wrapper, wrapper, {
-          defaultProps: () => getA11yProps('wrapper', slotProps.wrapper),
+          defaultProps: () => getA11yProps('wrapper', slotProps.wrapper || {}),
           overrideProps: predefinedProps => ({
             children: contentElement,
             onClick: e => {
@@ -346,19 +346,9 @@ const ToolbarItem = compose<'button', ToolbarItemProps, ToolbarItemStylesProps, 
       return contentElement;
     }
 
-    const refElement = (
-      <Ref
-        innerRef={node => {
-          itemRef.current = node;
-          handleRef(ref, node);
-        }}
-      >
-        {itemElement}
-      </Ref>
-    );
     setEnd();
 
-    return refElement;
+    return itemElement;
   },
   {
     className: toolbarItemClassName,
