@@ -5,7 +5,6 @@ import { scaleBand as d3ScaleBand, scaleLinear as d3ScaleLinear, ScaleLinear as 
 import { select as d3Select } from 'd3-selection';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { IProcessedStyleSet, IPalette } from 'office-ui-fabric-react/lib/Styling';
-import { IVSChartDataPoint, IDataPoint, IVerticalStackedChartProps } from '@uifabric/charting';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { ILegend, Legends } from '../Legends/index';
@@ -15,6 +14,7 @@ import {
   IVerticalStackedBarChartStyleProps,
   IVerticalStackedBarChartStyles,
 } from './VerticalStackedBarChart.types';
+import { IVerticalStackedChartProps, IDataPoint, IVSChartDataPoint } from '../../types/index';
 
 const getClassNames = classNamesFunction<IVerticalStackedBarChartStyleProps, IVerticalStackedBarChartStyles>();
 type numericAxis = D3Axis<number | { valueOf(): number }>;

@@ -12,14 +12,14 @@ import {
   Input,
   Popup,
   Provider,
-  themes,
+  teamsTheme,
 } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 class App extends React.Component {
   render() {
     return (
-      <Provider theme={themes.teams}>
+      <Provider theme={teamsTheme}>
         <div>
           <Accordion panels={[{ title: 'Title', content: 'Content' }]} />
           <Animation name="spinner">

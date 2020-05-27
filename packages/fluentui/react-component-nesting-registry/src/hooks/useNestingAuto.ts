@@ -5,6 +5,9 @@ import useNestingChild from './useNestingChild';
 import useNestingRoot from './useNestingRoot';
 import { UseNestingHookResult } from './types';
 
+// These hooks are not used currently
+/* eslint-disable */
+
 const useNestingAuto = <T extends Node>(): UseNestingHookResult<T> => {
   const context = React.useContext(NestingContext);
 

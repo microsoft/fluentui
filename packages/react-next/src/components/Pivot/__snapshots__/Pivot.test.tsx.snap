@@ -376,7 +376,9 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
     </button>
   </div>
   <div
+    aria-hidden={false}
     aria-labelledby="Pivot0-Tab0"
+    hidden={false}
     role="tabpanel"
   >
     <div />
@@ -749,7 +751,9 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
     </button>
   </div>
   <div
+    aria-hidden={false}
     aria-labelledby="Pivot0-Tab0"
+    hidden={false}
     role="tabpanel"
   >
     <div
@@ -1313,7 +1317,9 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
     </button>
   </div>
   <div
+    aria-hidden={false}
     aria-labelledby="Pivot0-Tab0"
+    hidden={false}
     role="tabpanel"
   >
     <div />
@@ -1686,7 +1692,9 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
     </button>
   </div>
   <div
+    aria-hidden={false}
     aria-labelledby="Pivot0-Tab0"
+    hidden={false}
     role="tabpanel"
   >
     <div />
@@ -2078,7 +2086,9 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
     </button>
   </div>
   <div
+    aria-hidden={false}
     aria-labelledby="Pivot0-Tab0"
+    hidden={false}
     role="tabpanel"
   >
     <div />
@@ -2450,7 +2460,9 @@ exports[`Pivot renders link Pivot correctly 1`] = `
     </button>
   </div>
   <div
+    aria-hidden={false}
     aria-labelledby="Pivot0-Tab0"
+    hidden={false}
     role="tabpanel"
   >
     <div />
@@ -2841,7 +2853,9 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
     </button>
   </div>
   <div
+    aria-hidden={false}
     aria-labelledby="Pivot0-Tab0"
+    hidden={false}
     role="tabpanel"
   >
     <div />
@@ -3213,7 +3227,9 @@ exports[`Pivot supports JSX expressions 1`] = `
     </button>
   </div>
   <div
+    aria-hidden={false}
     aria-labelledby="Pivot0-Tab1"
+    hidden={false}
     role="tabpanel"
   >
     <div>

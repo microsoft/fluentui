@@ -2,6 +2,21 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Mon, 25 May 2020 12:38:22 GMT",
+      "tag": "@uifabric/experiments_v7.24.8",
+      "version": "7.24.8",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixed typos",
+            "author": "xia_tony@hotmail.com",
+            "commit": "1edf380e1d06a24c5f7f4dfb4f5d52e512d54315",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 21 May 2020 12:34:43 GMT",
       "tag": "@uifabric/experiments_v7.24.6",
       "version": "7.24.6",

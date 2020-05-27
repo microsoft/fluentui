@@ -35,6 +35,7 @@ export { default as selectableListBehavior } from './List/selectableListBehavior
 export { default as selectableListItemBehavior } from './List/selectableListItemBehavior';
 
 export { default as loaderBehavior } from './Loader/loaderBehavior';
+export * from './Loader/loaderBehavior';
 export { default as inputBehavior } from './Input/inputBehavior';
 export * from './Input/inputBehavior';
 export { default as iconBehavior } from './Icon/iconBehavior';
@@ -61,7 +62,9 @@ export * from './Toolbar/toolbarRadioGroupBehavior';
 export { default as toolbarRadioGroupBehavior } from './Toolbar/toolbarRadioGroupBehavior';
 export { default as toolbarRadioGroupItemBehavior } from './Toolbar/toolbarRadioGroupItemBehavior';
 export { default as radioGroupBehavior } from './Radio/radioGroupBehavior';
+export * from './Radio/radioGroupBehavior';
 export { default as radioGroupItemBehavior } from './Radio/radioGroupItemBehavior';
+export * from './Radio/radioGroupItemBehavior';
 export * from './Popup/popupBehavior';
 export { default as popupBehavior } from './Popup/popupBehavior';
 export { default as chatBehavior } from './Chat/chatBehavior';
