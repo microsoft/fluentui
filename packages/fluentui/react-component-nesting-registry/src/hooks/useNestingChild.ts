@@ -4,6 +4,9 @@ import NestingContext from '../NestingContext';
 import { NestingContextValue } from '../types';
 import { UseNestingHookResult } from './types';
 
+// These hooks are not used currently
+/* eslint-disable */
+
 const useNestingChild = <T extends Node>(): UseNestingHookResult<T> => {
   const nestingContext = React.useContext(NestingContext) as NestingContextValue;
   const childRef = React.useRef(null);

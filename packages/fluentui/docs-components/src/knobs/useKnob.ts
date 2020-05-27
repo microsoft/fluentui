@@ -14,14 +14,19 @@ const useKnob = <T, O = unknown>(
     knobContext.setKnobValue(name, newValue);
   };
 
-  React.useEffect(() => {
-    knobContext.registerKnob({
-      ...options,
-      value: initialValue,
-    });
+  React.useEffect(
+    () => {
+      knobContext.registerKnob({
+        ...options,
+        value: initialValue,
+      });
 
-    return () => knobContext.unregisterKnob(name);
-  }, [name]);
+      return () => knobContext.unregisterKnob(name);
+    },
+    // Fix dependencies if there will be any issues
+    // eslint-disable-next-line
+    [name],
+  );
 
   return [value, setValue];
 };
