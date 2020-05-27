@@ -7,6 +7,9 @@ import { UseNestingHookResult } from './types';
 
 const registrySet = new RefStack();
 
+// These hooks are not used currently
+/* eslint-disable */
+
 const useNestingRoot = <T extends Node>(): UseNestingHookResult<T> => {
   const [registry] = React.useState(registrySet);
   const parentRef = React.useRef<T>(null);

@@ -40,8 +40,6 @@ module.exports = ({ config }) => {
         options: {
           modules: true,
           importLoaders: 2,
-          localIdentName: '[name]_[local]_[hash:base64:5]',
-          minimize: false,
         },
       },
       {
