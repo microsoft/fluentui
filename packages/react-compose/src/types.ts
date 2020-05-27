@@ -84,7 +84,7 @@ export type GenericDictionary = Record<string, any>;
  */
 export type ClassDictionary = Record<string, string>;
 
-export type ComposePreparedOptions<TElementType extends React.ElementType = 'div', TProps = {}, TState = TProps> = {
+export type ComposePreparedOptions<TProps = {}> = {
   className: string;
   classes: ClassDictionary;
 
@@ -103,7 +103,7 @@ export type ComposePreparedOptions<TElementType extends React.ElementType = 'div
 
   mapPropsToSlotPropsChain: ((props: TProps) => Record<string, object>)[];
 
-  resolveSlotProps: <P>(props: TProps) => Record<string, object>;
+  resolveSlotProps: (props: TProps) => Record<string, object>;
 
   shorthandConfig: ShorthandConfig<TProps>;
 };
