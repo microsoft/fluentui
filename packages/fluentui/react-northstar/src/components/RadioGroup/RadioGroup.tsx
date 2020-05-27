@@ -219,7 +219,6 @@ RadioGroup.propTypes = {
 };
 
 RadioGroup.defaultProps = {
-  as: 'div',
   accessibility: radioGroupBehavior as Accessibility,
 };
 
