@@ -30,15 +30,15 @@ export const createOptionsResolver = <TState>(options: ComposePreparedOptions) =
   return function resolve(stateOrProps: TState): OptionsResolverResult {
     const slotProps: OptionsResolverResult['slotProps'] = {};
     const state = stateOrProps as OptionsResolverResult['state'];
-    const slots: OptionsResolverResult['slots'] = { ...options.slots };
+    const slots: OptionsResolverResult['slots'] = {
+      ...options.slots,
+      root: state.as || options.slots.root || 'div',
+    };
     const result: OptionsResolverResult = {
       state,
       slotProps,
       slots,
     };
-
-    // Always ensure a root slot exists.
-    slots.root = state.as || slots.root || 'div';
 
     // Mix unrecognized props onto root, excluding the handled props.
     assignToMapObject(

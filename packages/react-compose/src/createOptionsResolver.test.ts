@@ -114,8 +114,4 @@ describe('createOptionsResolver', () => {
     });
     expect(resultedState).toBe(expectedState);
   });
-
-  // it('can resolve slot props', () => {
-  //   expect(defaultResolve);
-  // });
 });
