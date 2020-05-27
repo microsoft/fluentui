@@ -3,6 +3,9 @@ import {
   ToolbarMenuDivider,
   ToolbarRadioGroup,
   ToolbarDivider,
+  ToolbarItem,
+  ToolbarItemWrapper,
+  ToolbarItemIcon,
   ToolbarProps,
   ToolbarStylesProps,
   ToolbarMenuDividerProps,
@@ -14,6 +17,18 @@ import {
   Provider,
   compose,
   ThemeInput,
+  ToolbarItemWrapperProps,
+  ToolbarItemWrapperStylesProps,
+  ToolbarItemIconProps,
+  ToolbarItemIconStylesProps,
+  ToolbarItemStylesProps,
+  ToolbarItemProps,
+  ToolbarMenuRadioGroupWrapper,
+  ToolbarMenuRadioGroup,
+  ToolbarMenuRadioGroupWrapperStylesProps,
+  ToolbarMenuRadioGroupWrapperProps,
+  ToolbarMenuRadioGroupStylesProps,
+  ToolbarMenuRadioGroupProps,
 } from '@fluentui/react-northstar';
 import * as React from 'react';
 import {
@@ -24,12 +39,29 @@ import {
   UnderlineIcon,
   BookmarkIcon,
   ChatIcon,
+  BulletsIcon,
+  ToDoListIcon,
 } from '@fluentui/react-icons-northstar';
+
+const ToolbarRadioGroupItemRed = compose<'button', {}, {}, ToolbarItemProps, ToolbarItemStylesProps>(ToolbarItem, {
+  displayName: 'ToolbarRadioGroupItemRed',
+});
+
+const ToolbarRadioGroupDividerRed = compose<'div', {}, {}, ToolbarDividerProps, ToolbarDividerStylesProps>(
+  ToolbarDivider,
+  {
+    displayName: 'ToolbarRadioGroupDividerRed',
+  },
+);
 
 const ToolbarRadioGroupRed = compose<'div', {}, {}, ToolbarRadioGroupProps, ToolbarRadioGroupStylesProps>(
   ToolbarRadioGroup,
   {
     displayName: 'ToolbarRadioGroupRed',
+    slots: {
+      item: ToolbarRadioGroupItemRed,
+      divider: ToolbarRadioGroupDividerRed,
+    },
   },
 );
 
@@ -37,11 +69,34 @@ const ToolbarDividerGreen = compose<'div', {}, {}, ToolbarDividerProps, ToolbarD
   displayName: 'ToolbarDividerGreen',
 });
 
+const ToolbarItemWrapperBlue = compose<'div', {}, {}, ToolbarItemWrapperProps, ToolbarItemWrapperStylesProps>(
+  ToolbarItemWrapper,
+  {
+    displayName: 'ToolbarItemWrapperBlue',
+  },
+);
+
+const ToolbarItemIconPurple = compose<'div', {}, {}, ToolbarItemIconProps, ToolbarItemIconStylesProps>(
+  ToolbarItemIcon,
+  {
+    displayName: 'ToolbarItemIconPurple',
+  },
+);
+
+const ToolbarItemGrey = compose<'button', {}, {}, ToolbarItemProps, ToolbarItemStylesProps>(ToolbarItem, {
+  displayName: 'ToolbarItemGrey',
+  slots: {
+    wrapper: ToolbarItemWrapperBlue,
+    icon: ToolbarItemIconPurple,
+  },
+});
+
 const ToolbarViolet = compose<'div', {}, {}, ToolbarProps, ToolbarStylesProps>(Toolbar, {
   displayName: 'ToolbarViolet',
   slots: {
     group: ToolbarRadioGroupRed,
     divider: ToolbarDividerGreen,
+    item: ToolbarItemGrey,
   },
 });
 
@@ -49,6 +104,26 @@ const ToolbarMenuDividerBlue = compose<'li', {}, {}, ToolbarMenuDividerProps, To
   ToolbarMenuDivider,
   {
     displayName: 'ToolbarMenuDividerBlue',
+  },
+);
+
+const ToolbarMenuRadioGroupWrapperOrange = compose<
+  'li',
+  {},
+  {},
+  ToolbarMenuRadioGroupWrapperProps,
+  ToolbarMenuRadioGroupWrapperStylesProps
+>(ToolbarMenuRadioGroupWrapper, {
+  displayName: 'ToolbarMenuRadioGroupWrapperOrange',
+});
+
+const ToolbarMenuRadioGroupViolet = compose<'ul', {}, {}, ToolbarMenuRadioGroupProps, ToolbarMenuRadioGroupStylesProps>(
+  ToolbarMenuRadioGroup,
+  {
+    displayName: 'ToolbarMenuRadioGroupViolet',
+    slots: {
+      wrapper: ToolbarMenuRadioGroupWrapperOrange,
+    },
   },
 );
 
@@ -60,6 +135,9 @@ const themeOverrides: ThemeInput = {
     ToolbarDividerGreen: {
       dividerBorder: 'lightgreen',
     },
+    ToolbarRadioGroupDividerRed: {
+      dividerBorder: 'darkred',
+    },
   },
   componentStyles: {
     ToolbarViolet: {
@@ -70,6 +148,36 @@ const themeOverrides: ThemeInput = {
     ToolbarRadioGroupRed: {
       root: {
         border: '1px dashed darkred',
+      },
+    },
+    ToolbarRadioGroupItemRed: {
+      root: {
+        color: 'darkred',
+      },
+    },
+    ToolbarItemWrapperBlue: {
+      root: {
+        border: '1px dashed lightblue',
+      },
+    },
+    ToolbarItemIconPurple: {
+      root: {
+        color: 'purple',
+      },
+    },
+    ToolbarItemGrey: {
+      root: {
+        background: 'lightgrey',
+      },
+    },
+    ToolbarMenuRadioGroupWrapperOrange: {
+      root: {
+        border: '1px dashed orange',
+      },
+    },
+    ToolbarMenuRadioGroupViolet: {
+      root: {
+        border: '1px solid violet',
       },
     },
   },
@@ -102,6 +210,7 @@ const ToolbarExampleMenuShorthand = () => {
             kind: 'group',
             items: [
               { key: 'bookmark', icon: <BookmarkIcon /> },
+              { key: 'divider', kind: 'divider' },
               { key: 'chat', icon: <ChatIcon /> },
             ],
           },
@@ -121,6 +230,16 @@ const ToolbarExampleMenuShorthand = () => {
                   children: (C, p) => <ToolbarMenuDividerBlue {...p} />,
                 },
                 'Without icon',
+                {
+                  key: 'group',
+                  kind: 'group',
+                  items: [
+                    { key: 'bullets', icon: <BulletsIcon /> },
+                    { key: 'to-do-list', icon: <ToDoListIcon /> },
+                  ],
+                  // TODO: replace this with slots after compose in enabled in ToolbarMenu
+                  children: (C, p) => <ToolbarMenuRadioGroupViolet {...p} />,
+                },
               ],
             },
             menuOpen: true,
