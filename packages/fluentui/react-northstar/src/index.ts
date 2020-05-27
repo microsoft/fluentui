@@ -203,6 +203,8 @@ export * from './components/Toolbar/ToolbarMenuDivider';
 export { default as ToolbarMenuDivider } from './components/Toolbar/ToolbarMenuDivider';
 export * from './components/Toolbar/ToolbarMenuItem';
 export { default as ToolbarMenuItem } from './components/Toolbar/ToolbarMenuItem';
+export * from './components/Toolbar/ToolbarMenuItemIcon';
+export { default as ToolbarMenuItemIcon } from './components/Toolbar/ToolbarMenuItemIcon';
 export * from './components/Toolbar/ToolbarMenuRadioGroup';
 export { default as ToolbarMenuRadioGroup } from './components/Toolbar/ToolbarMenuRadioGroup';
 export * from './components/Toolbar/ToolbarMenuRadioGroupWrapper';

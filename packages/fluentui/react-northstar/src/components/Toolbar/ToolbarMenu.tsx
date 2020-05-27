@@ -133,13 +133,13 @@ const ToolbarMenu: React.FC<WithAsProp<ToolbarMenuProps>> & FluentComponentStati
           return createShorthand(ToolbarMenuRadioGroup, item, { overrideProps: handleRadioGroupOverrides });
 
         case 'toggle':
-          return ToolbarMenuItem.create(item, {
+          return createShorthand(ToolbarMenuItem, item, {
             defaultProps: () => ({ accessibility: toolbarMenuItemCheckboxBehavior }),
             overrideProps: handleItemOverrides,
           });
 
         default:
-          return ToolbarMenuItem.create(item, {
+          return createShorthand(ToolbarMenuItem, item, {
             defaultProps: () => ({
               submenuIndicator,
               inSubmenu: submenu,
