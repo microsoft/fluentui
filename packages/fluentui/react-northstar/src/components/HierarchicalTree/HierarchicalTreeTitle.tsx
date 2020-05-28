@@ -1,10 +1,13 @@
-import { Accessibility, hierarchicalTreeTitleBehavior } from '@fluentui/accessibility';
+import {
+  Accessibility,
+  hierarchicalTreeTitleBehavior,
+  HierarchicalTreeTitleBehaviorProps,
+} from '@fluentui/accessibility';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
 import {
-  UIComponent,
   childrenExist,
   createShorthandFactory,
   commonPropTypes,
@@ -12,14 +15,21 @@ import {
   ChildrenComponentProps,
   ContentComponentProps,
   rtlTextContainer,
-  applyAccessibilityKeyHandlers,
-  ShorthandFactory,
 } from '../../utils';
-import { ComponentEventHandler, WithAsProp, withSafeTypeForAs } from '../../types';
+// @ts-ignore
+import { ThemeContext } from 'react-fela';
+import {
+  ComponentEventHandler,
+  WithAsProp,
+  withSafeTypeForAs,
+  FluentComponentStaticProps,
+  ProviderContextPrepared,
+} from '../../types';
+import { getElementType, useUnhandledProps, useTelemetry, useAccessibility, useStyles } from '@fluentui/react-bindings';
 
 export interface HierarchicalTreeTitleProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
   /** Accessibility behavior if overridden by the user. */
-  accessibility?: Accessibility;
+  accessibility?: Accessibility<HierarchicalTreeTitleBehaviorProps>;
 
   /**
    * Called on click.
@@ -38,53 +48,80 @@ export interface HierarchicalTreeTitleProps extends UIComponentProps, ChildrenCo
 
 export const hierarchicalTreeTitleClassName = 'ui-hierarchicaltree__title';
 
-class HierarchicalTreeTitle extends UIComponent<WithAsProp<HierarchicalTreeTitleProps>> {
-  static create: ShorthandFactory<HierarchicalTreeTitleProps>;
+export type HierarchicalTreeTitleStylesProps = never;
 
-  static deprecated_className = hierarchicalTreeTitleClassName;
+const HierarchicalTreeTitle: React.FC<WithAsProp<HierarchicalTreeTitleProps>> &
+  FluentComponentStaticProps<HierarchicalTreeTitleProps> = props => {
+  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const { setStart, setEnd } = useTelemetry(HierarchicalTreeTitle.displayName, context.telemetry);
+  setStart();
 
-  static displayName = 'HierarchicalTreeTitle';
+  const { children, content, open, hasSubtree, className, design, styles, variables } = props;
 
-  static propTypes = {
-    ...commonPropTypes.createCommon(),
-    onClick: PropTypes.func,
-    open: PropTypes.bool,
-    hasSubtree: PropTypes.bool,
-  };
+  const ElementType = getElementType(props);
+  const unhandledProps = useUnhandledProps(HierarchicalTreeTitle.handledProps, props);
 
-  static defaultProps = {
-    as: 'a',
-    accessibility: hierarchicalTreeTitleBehavior,
-  };
-
-  actionHandlers = {
-    performClick: e => {
-      e.preventDefault();
-      this.handleClick(e);
+  const getA11yProps = useAccessibility<HierarchicalTreeTitleBehaviorProps>(props.accessibility, {
+    debugName: HierarchicalTreeTitle.displayName,
+    actionHandlers: {
+      performClick: e => {
+        e.preventDefault();
+        handleClick(e);
+      },
     },
+    mapPropsToBehavior: () => ({
+      open,
+      hasSubtree,
+    }),
+    rtl: context.rtl,
+  });
+
+  const { classes } = useStyles<HierarchicalTreeTitleStylesProps>(HierarchicalTreeTitle.displayName, {
+    className: hierarchicalTreeTitleClassName,
+    mapPropsToInlineStyles: () => ({
+      className,
+      design,
+      styles,
+      variables,
+    }),
+    rtl: context.rtl,
+  });
+
+  const handleClick = e => {
+    _.invoke(props, 'onClick', e, props);
   };
 
-  handleClick = e => {
-    _.invoke(this.props, 'onClick', e, this.props);
-  };
+  const element = (
+    <ElementType
+      {...getA11yProps('root', {
+        className: classes.root,
+        onClick: handleClick,
+        ...unhandledProps,
+        ...rtlTextContainer.getAttributes({ forElements: [children, content] }),
+      })}
+    >
+      {childrenExist(children) ? children : content}
+    </ElementType>
+  );
+  setEnd();
+  return element;
+};
 
-  renderComponent({ ElementType, classes, accessibility, unhandledProps, styles, variables }) {
-    const { children, content } = this.props;
+HierarchicalTreeTitle.displayName = 'HierarchicalTreeTitle';
 
-    return (
-      <ElementType
-        className={classes.root}
-        onClick={this.handleClick}
-        {...accessibility.attributes.root}
-        {...rtlTextContainer.getAttributes({ forElements: [children, content] })}
-        {...unhandledProps}
-        {...applyAccessibilityKeyHandlers(accessibility.keyHandlers.root, unhandledProps)}
-      >
-        {childrenExist(children) ? children : content}
-      </ElementType>
-    );
-  }
-}
+HierarchicalTreeTitle.propTypes = {
+  ...commonPropTypes.createCommon(),
+  onClick: PropTypes.func,
+  open: PropTypes.bool,
+  hasSubtree: PropTypes.bool,
+};
+
+HierarchicalTreeTitle.defaultProps = {
+  as: 'a',
+  accessibility: hierarchicalTreeTitleBehavior,
+};
+
+HierarchicalTreeTitle.handledProps = Object.keys(HierarchicalTreeTitle.propTypes) as any;
 
 HierarchicalTreeTitle.create = createShorthandFactory({
   Component: HierarchicalTreeTitle,
