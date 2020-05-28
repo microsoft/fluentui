@@ -384,7 +384,7 @@ describe('SelectionZone - enabled touch targets', () => {
     }),
   );
 
-  it('still invokes on non-touch click', () => {
+  it('still invokes generic targets on non-touch click', () => {
     _simulateClick(_invoke0);
     expect(_onItemInvokeCalled).toEqual(1);
     expect(_lastItemInvoked.key).toEqual('a');
