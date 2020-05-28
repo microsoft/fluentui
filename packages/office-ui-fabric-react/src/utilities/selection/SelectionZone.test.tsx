@@ -390,6 +390,14 @@ describe('SelectionZone - enabled touch targets', () => {
     expect(_lastItemInvoked.key).toEqual('a');
   });
 
+  it('invokes generic targets on touch click', () => {
+    EventGroup.raise(document.body, 'touchstart', {}, true);
+
+    ReactTestUtils.Simulate.click(_invoke0);
+    expect(_onItemInvokeCalled).toEqual(1);
+    expect(_lastItemInvoked.key).toEqual('a');
+  });
+
   describe('does not invoke touch targets when not using touch', () => {
     it('when touch target wraps generic target', () => {
       ReactTestUtils.Simulate.click(_surface1);
