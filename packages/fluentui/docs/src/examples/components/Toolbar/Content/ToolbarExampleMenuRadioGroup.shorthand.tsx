@@ -4,7 +4,7 @@ import { MoreIcon, UnderlineIcon, FontColorIcon } from '@fluentui/react-icons-no
 
 const ToolbarExampleMenuRadioGroup = () => {
   const [activeIndex, setActiveIndex] = React.useState(0);
-  const [menuOpen, setMenuOpen] = React.useState();
+  const [menuOpen, setMenuOpen] = React.useState(false);
 
   return (
     <Toolbar

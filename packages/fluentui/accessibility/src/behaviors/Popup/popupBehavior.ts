@@ -1,4 +1,4 @@
-import * as keyboardKey from 'keyboard-key';
+import { keyboardKey, SpacebarKey } from '@fluentui/keyboard-key';
 import * as _ from 'lodash';
 
 import { Accessibility } from '../../types';
@@ -60,14 +60,11 @@ const popupBehavior: Accessibility<PopupBehaviorProps> = props => {
           keyCombinations: [{ keyCode: keyboardKey.Escape }],
         },
         toggle: {
-          keyCombinations: _.includes(onAsArray, 'click') && [
-            { keyCode: keyboardKey.Enter },
-            { keyCode: keyboardKey.Spacebar },
-          ],
+          keyCombinations: _.includes(onAsArray, 'click') && [{ keyCode: keyboardKey.Enter }, { keyCode: SpacebarKey }],
         },
         open: {
           keyCombinations: _.includes(onAsArray, 'hover') &&
-            !_.includes(onAsArray, 'context') && [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }],
+            !_.includes(onAsArray, 'context') && [{ keyCode: keyboardKey.Enter }, { keyCode: SpacebarKey }],
         },
       },
     },

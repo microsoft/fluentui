@@ -25,7 +25,7 @@ const ResponsiveTableContainer: React.FC<ResponsiveTableProps> = props => {
    */
   React.useLayoutEffect(() => {
     setBreakpoints(calculateBreakpoints(config, props.breakpoints || [1200, 960, 600, 280]));
-  }, []);
+  }, [config, props.breakpoints]);
 
   return (
     <div id={responsiveTableID}>

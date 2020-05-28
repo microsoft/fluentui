@@ -44,19 +44,21 @@ const resolveStyles = (
   renderStylesInput?: (styles: ICSSInJSStyle) => string,
 ): ResolveStylesResult => {
   const {
+    allDisplayNames,
     className: componentClassName,
     theme,
-    displayNames,
+    primaryDisplayName,
     props,
     rtl,
     disableAnimations,
     renderer,
     performance,
+    telemetry,
   } = options;
 
   const { className, design, styles, variables, ...stylesProps } = props;
-
   const noInlineStylesOverrides = !(design || styles);
+
   let noVariableOverrides = performance.enableBooleanVariablesCaching || !variables;
 
   /* istanbul ignore else */
@@ -80,7 +82,7 @@ const resolveStyles = (
       if (!hasOnlyBooleanVariables) {
         noVariableOverrides = false;
       }
-    } else {
+    } else if (!_.isNil(variables)) {
       noVariableOverrides = false;
     }
   }
@@ -90,10 +92,10 @@ const resolveStyles = (
   // Merge theme styles with inline overrides if any
   let mergedStyles: ComponentSlotStylesPrepared;
 
-  if (displayNames.length === 1) {
-    mergedStyles = theme.componentStyles[displayNames[0]] || { root: () => ({}) };
+  if (allDisplayNames.length === 1) {
+    mergedStyles = theme.componentStyles[allDisplayNames[0]] || { root: () => ({}) };
   } else {
-    const styles = displayNames.map(displayName => theme.componentStyles[displayName]).filter(Boolean);
+    const styles = allDisplayNames.map(displayName => theme.componentStyles[displayName]).filter(Boolean);
 
     if (styles.length > 0) {
       mergedStyles = mergeComponentStyles(...styles);
@@ -125,7 +127,7 @@ const resolveStyles = (
   const felaParam: RendererParam = {
     theme: { direction },
     disableAnimations,
-    displayName: displayNames.join(':'), // does not affect styles, only used by useEnhancedRenderer in docs
+    displayName: allDisplayNames.join(':'), // does not affect styles, only used by useEnhancedRenderer in docs
     sanitizeCss: performance.enableSanitizeCssPlugin,
   };
 
@@ -147,7 +149,9 @@ const resolveStyles = (
   const propsCacheKey = cacheEnabled ? JSON.stringify(stylesProps) : '';
   const variablesCacheKey = cacheEnabled && performance.enableBooleanVariablesCaching ? JSON.stringify(variables) : '';
   const componentCacheKey = cacheEnabled
-    ? `${displayNames.join(':')}:${propsCacheKey}:${variablesCacheKey}:${styleParam.rtl}${styleParam.disableAnimations}`
+    ? `${allDisplayNames.join(':')}:${propsCacheKey}:${variablesCacheKey}:${styleParam.rtl}${
+        styleParam.disableAnimations
+      }`
     : '';
 
   Object.keys(mergedStyles).forEach(slotName => {
@@ -219,6 +223,14 @@ const resolveStyles = (
           const classesThemeCache = classesCache.get(theme) || {};
 
           if (classesThemeCache[slotCacheKey] || classesThemeCache[slotCacheKey] === '') {
+            if (telemetry?.performance[primaryDisplayName]) {
+              if (slotName === 'root') {
+                telemetry.performance[primaryDisplayName].stylesRootCacheHits++;
+              } else {
+                telemetry.performance[primaryDisplayName].stylesSlotsCacheHits++;
+              }
+            }
+
             return slotName === 'root'
               ? cx(componentClassName, classesThemeCache[slotCacheKey], className)
               : classesThemeCache[slotCacheKey];
