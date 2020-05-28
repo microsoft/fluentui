@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "minor",
   "comment": "Add special folder icon signals for Desktop, Documents, and Pictures.",
   "packageName": "@uifabric/experiments",
   "email": "taenri@microsoft.com",
