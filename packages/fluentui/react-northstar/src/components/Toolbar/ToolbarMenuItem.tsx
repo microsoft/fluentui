@@ -46,6 +46,7 @@ import ToolbarMenuItemIcon, { ToolbarMenuItemIconProps } from './ToolbarMenuItem
 import { ToolbarVariablesContext, ToolbarVariablesProvider } from './toolbarVariablesContext';
 import ToolbarMenuItemSubmenuIndicator from './ToolbarMenuItemSubmenuIndicator';
 import ToolbarMenuItemActiveIndicator from './ToolbarMenuItemActiveIndicator';
+import { ToolbarMenuContext } from 'src/components/Toolbar/toolbarMenuContext';
 
 export interface ToolbarMenuItemProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
   /**
@@ -160,6 +161,8 @@ const ToolbarMenuItem = compose<'button', ToolbarMenuItemProps, ToolbarMenuItemS
 
     const itemRef = React.useRef<HTMLElement>();
     const menuRef = React.useRef<HTMLElement>();
+
+    const contextValue = React.useContext(ToolbarMenuContext);
 
     const parentVariables = React.useContext(ToolbarVariablesContext);
     const mergedVariables = mergeComponentVariables(parentVariables, variables);
@@ -384,7 +387,7 @@ const ToolbarMenuItem = compose<'button', ToolbarMenuItemProps, ToolbarMenuItemS
                   {...getPopperPropsFromShorthand(menu)}
                 >
                   <ToolbarVariablesProvider value={mergedVariables}>
-                    {createShorthand(composeOptions.slots.menu || ToolbarMenu, menu, {
+                    {createShorthand(composeOptions.slots.menu || contextValue.slots.menu || ToolbarMenu, menu, {
                       defaultProps: () => ({
                         className: toolbarMenuItemSlotClassNames.submenu,
                         styles: resolvedStyles.menu,

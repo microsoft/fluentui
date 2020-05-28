@@ -37,6 +37,7 @@ import { ToolbarItemShorthandKinds } from './Toolbar';
 import { ToolbarVariablesContext, ToolbarVariablesProvider } from './toolbarVariablesContext';
 import ToolbarItemWrapper, { ToolbarItemWrapperProps } from './ToolbarItemWrapper';
 import ToolbarItemIcon, { ToolbarItemIconProps } from './ToolbarItemIcon';
+import { ToolbarMenuContext } from 'src/components/Toolbar/toolbarMenuContext';
 
 export interface ToolbarItemProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
   /** Accessibility behavior if overridden by the user. */
@@ -105,10 +106,6 @@ export interface ToolbarItemProps extends UIComponentProps, ChildrenComponentPro
 
 export type ToolbarItemStylesProps = Required<Pick<ToolbarItemProps, 'active' | 'disabled'>>;
 
-export interface ToolbarItemSlotClassNames {
-  wrapper: string;
-}
-
 export const toolbarItemClassName = 'ui-toolbar__item';
 
 /**
@@ -141,6 +138,8 @@ const ToolbarItem = compose<'button', ToolbarItemProps, ToolbarItemStylesProps, 
 
     const parentVariables = React.useContext(ToolbarVariablesContext);
     const mergedVariables = mergeComponentVariables(parentVariables, variables);
+
+    const contextValue = React.useContext(ToolbarMenuContext);
 
     const getA11yProps = useAccessibility(accessibility, {
       debugName: composeOptions.displayName,
@@ -291,7 +290,7 @@ const ToolbarItem = compose<'button', ToolbarItemProps, ToolbarItemStylesProps, 
             >
               <Popper align="start" position="above" targetRef={itemRef} {...getPopperPropsFromShorthand(menu)}>
                 <ToolbarVariablesProvider value={mergedVariables}>
-                  {createShorthand(composeOptions.slots.menu, menu, {
+                  {createShorthand(composeOptions.slots.menu || contextValue.slots.menu || ToolbarMenu, menu, {
                     defaultProps: () => slotProps.menu,
                     overrideProps: handleMenuOverrides(getRefs),
                   })}
@@ -356,7 +355,6 @@ const ToolbarItem = compose<'button', ToolbarItemProps, ToolbarItemStylesProps, 
 
     slots: {
       icon: ToolbarItemIcon,
-      menu: ToolbarMenu,
       wrapper: ToolbarItemWrapper,
       popup: Popup, // TODO: compose Popup to ToolbarItemPopup once it has compose functionality
     },
