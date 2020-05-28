@@ -1,4 +1,4 @@
-import * as GitHubApi from '@octokit/rest';
+import { Octokit as GitHubApi } from '@octokit/rest';
 import { repoDetails, github } from './init';
 import { IRelease } from './types';
 

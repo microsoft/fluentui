@@ -1,5 +1,5 @@
 import { spawnSync } from 'child_process';
-import GitHubApi from '@octokit/rest';
+import { Octokit as GitHubApi } from '@octokit/rest';
 import { PackageChangelogRenderInfo, ChangelogEntry } from 'beachball';
 import { getPullRequestForCommit, fluentRepoDetails } from '../github';
 

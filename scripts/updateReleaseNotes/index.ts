@@ -4,7 +4,7 @@
  * given tag.
  */
 
-import * as GitHubApi from '@octokit/rest';
+import { Octokit as GitHubApi } from '@octokit/rest';
 import { argv, repoDetails, github } from './init';
 import { getTagToChangelogMap, getTags } from './changelogsAndTags';
 import { getReleases } from './releases';

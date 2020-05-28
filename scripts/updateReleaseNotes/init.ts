@@ -1,4 +1,4 @@
-import GitHubApi from '@octokit/rest';
+import { Octokit as GitHubApi } from '@octokit/rest';
 import * as yargs from 'yargs';
 import { fluentRepoDetails } from '../github/index';
 
