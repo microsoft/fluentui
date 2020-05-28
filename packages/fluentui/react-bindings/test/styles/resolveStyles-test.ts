@@ -46,6 +46,7 @@ const resolveStylesOptions = (options?: {
   return {
     theme,
     allDisplayNames: displayNames,
+    primaryDisplayName: displayNames[0],
     props,
     rtl,
     disableAnimations: false,
