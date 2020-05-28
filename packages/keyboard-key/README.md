@@ -47,11 +47,11 @@ document.addEventListener('keydown', event => {
 
 ### getCode()
 
-You can also get the normalized `keyCode` from an event. `keyboard-key` includes a hash of `key` names to `keyCode`s for easy comparisons:
+You can also get the normalized `keyCode` from an event. `@fluentui/keyboard-key` includes a hash of `key` names to `keyCode`s for easy comparisons:
 
 ```js
 document.addEventListener('keydown', event => {
-  const code = keyboardKey.getCode(event);
+  const code = getCode(event);
 
   switch (code) {
     case keyboardKey.Escape: // 27

@@ -2,6 +2,21 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Mon, 25 May 2020 12:38:22 GMT",
+      "tag": "@uifabric/charting_v2.2.23",
+      "version": "2.2.23",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove implicit dep on lodash and fix other imports",
+            "author": "elcraig@microsoft.com",
+            "commit": "56db85a8a435bfafe0354bf5b74eb56be92e3a35",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 21 May 2020 12:34:43 GMT",
       "tag": "@uifabric/charting_v2.2.21",
       "version": "2.2.21",

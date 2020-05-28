@@ -14,6 +14,7 @@ import * as React from 'react';
 import { ThemeContext } from 'react-fela';
 
 import {
+  createShorthand,
   createShorthandFactory,
   commonPropTypes,
   childrenExist,
@@ -73,7 +74,7 @@ export interface ToolbarMenuProps extends UIComponentProps, ChildrenComponentPro
 export type ToolbarMenuStylesProps = never;
 export const toolbarMenuClassName = 'ui-toolbar__menu';
 
-const ToolbarMenu: React.FC<WithAsProp<ToolbarMenuProps>> & FluentComponentStaticProps = props => {
+const ToolbarMenu: React.FC<WithAsProp<ToolbarMenuProps>> & FluentComponentStaticProps<ToolbarMenuProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(ToolbarMenu.displayName, context.telemetry);
   setStart();
@@ -126,19 +127,19 @@ const ToolbarMenu: React.FC<WithAsProp<ToolbarMenuProps>> & FluentComponentStati
 
       switch (kind) {
         case 'divider':
-          return ToolbarMenuDivider.create(item);
+          return createShorthand(ToolbarMenuDivider, item);
 
         case 'group':
-          return ToolbarMenuRadioGroup.create(item, { overrideProps: handleRadioGroupOverrides });
+          return createShorthand(ToolbarMenuRadioGroup, item, { overrideProps: handleRadioGroupOverrides });
 
         case 'toggle':
-          return ToolbarMenuItem.create(item, {
+          return createShorthand(ToolbarMenuItem, item, {
             defaultProps: () => ({ accessibility: toolbarMenuItemCheckboxBehavior }),
             overrideProps: handleItemOverrides,
           });
 
         default:
-          return ToolbarMenuItem.create(item, {
+          return createShorthand(ToolbarMenuItem, item, {
             defaultProps: () => ({
               submenuIndicator,
               inSubmenu: submenu,
@@ -186,6 +187,9 @@ ToolbarMenu.defaultProps = {
 };
 
 ToolbarMenu.create = createShorthandFactory({ Component: ToolbarMenu, mappedArrayProp: 'items' });
+ToolbarMenu.shorthandConfig = {
+  mappedArrayProp: 'items',
+};
 
 /**
  * A ToolbarMenu creates a pop-up menu attached to a ToolbarItem.

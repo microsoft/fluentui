@@ -36,6 +36,7 @@ import MenuItemIcon from './MenuItemIcon';
 import MenuItemContent from './MenuItemContent';
 import MenuItemIndicator, { MenuItemIndicatorProps } from './MenuItemIndicator';
 import MenuItemWrapper from './MenuItemWrapper';
+import { MenuContextProvider, MenuContextValue } from './menuContext';
 
 export type MenuShorthandKinds = {
   divider: MenuDividerProps;
@@ -109,12 +110,34 @@ export interface MenuProps extends UIComponentProps, ChildrenComponentProps {
 
 export const menuClassName = 'ui-menu';
 
-export type MenuStylesProps = Required<
-  Pick<
-    MenuProps,
-    'iconOnly' | 'fluid' | 'pointing' | 'pills' | 'primary' | 'underlined' | 'vertical' | 'submenu' | 'secondary'
-  >
+export type MenuStylesProps = Pick<
+  MenuProps,
+  'iconOnly' | 'fluid' | 'pointing' | 'pills' | 'primary' | 'underlined' | 'vertical' | 'submenu' | 'secondary'
 >;
+
+function useActualProps<P>(props: P) {
+  const actualProps = React.useRef<P>(props);
+
+  React.useEffect(() => {
+    actualProps.current = props;
+  });
+
+  return actualProps;
+}
+
+function useSlotProps<SlotProps, SlotName extends keyof SlotProps>(
+  slotName: SlotName,
+  slotsProps: SlotProps,
+): SlotProps[SlotName] {
+  const slotProps = slotsProps[slotName];
+
+  return React.useMemo(
+    () => slotProps,
+    // `slotProps` has a stable order of keys so an amount of dependencies will not change between renders
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    _.values(slotProps),
+  );
+}
 
 /**
  * A Menu is a component that offers a grouped list of choices to the user.
@@ -150,10 +173,16 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
       className,
       design,
       secondary,
+      accessibility,
     } = props;
 
     const ElementType = getElementType(props);
-    const slotProps = composeOptions.resolveSlotProps<MenuProps>(props);
+
+    const slotProps = composeOptions.resolveSlotProps(props);
+
+    const itemProps = useSlotProps('item', slotProps);
+    const dividerProps = useSlotProps('divider', slotProps);
+
     const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
 
     const getA11yProps = useAccessibility<MenuBehaviorProps>(props.accessibility, {
@@ -164,7 +193,9 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
       rtl: context.rtl,
     });
 
-    const { classes, styles: resolvedStyles } = useStyles<MenuStylesProps>(composeOptions.displayName, {
+    const actualProps = useActualProps(props);
+
+    const { classes } = useStyles<MenuStylesProps>(composeOptions.displayName, {
       className: composeOptions.className,
       composeOptions,
       mapPropsToStyles: () => ({
@@ -194,18 +225,26 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
       initialValue: undefined,
     });
 
-    const setActiveIndex = (e: React.SyntheticEvent, activeIndex: number) => {
-      _.invoke(props, 'onActiveIndexChange', e, { ...props, activeIndex });
-      setIndex(activeIndex);
-    };
+    const setActiveIndex = React.useCallback(
+      (e: React.SyntheticEvent, activeIndex: number) => {
+        _.invoke(actualProps.current, 'onActiveIndexChange', e, { ...actualProps.current, activeIndex });
+        setIndex(activeIndex);
+      },
+      [actualProps, setIndex],
+    );
 
-    const handleItemOverrides = predefinedProps => ({
-      onClick: (e, itemProps) => {
+    const handleClick = React.useCallback(
+      (e, itemProps) => {
         const { index } = itemProps;
-
         setActiveIndex(e, index);
+        _.invoke(actualProps.current, 'onItemClick', e, itemProps);
+      },
+      [actualProps, setActiveIndex],
+    );
 
-        _.invoke(props, 'onItemClick', e, itemProps);
+    const handleItemOverrides = (predefinedProps: MenuItemProps): MenuItemProps => ({
+      onClick: (e, itemProps) => {
+        handleClick(e, itemProps);
         _.invoke(predefinedProps, 'onClick', e, itemProps);
       },
       onActiveChanged: (e, props) => {
@@ -229,16 +268,11 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
       let itemPosition = 0;
 
       return _.map(items, (item, index) => {
-        const active = (typeof activeIndex === 'string' ? parseInt(activeIndex, 10) : activeIndex) === index;
         const kind = getKindProp(item, 'item');
 
         if (kind === 'divider') {
           return createShorthand(composeOptions.slots.divider, item, {
-            defaultProps: () =>
-              getA11yProps('divider', {
-                styles: resolvedStyles.divider,
-                ...slotProps.divider,
-              }),
+            defaultProps: () => getA11yProps('divider', {}),
             overrideProps: handleDividerOverrides,
           });
         }
@@ -251,12 +285,32 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
               index,
               itemPosition,
               itemsCount,
-              active,
-              ...slotProps.item,
             }),
           overrideProps: handleItemOverrides,
         });
       });
+    };
+
+    const childBehaviors = accessibility && accessibility(props).childBehaviors;
+
+    const childProps: MenuContextValue = {
+      activeIndex: +activeIndex,
+      onItemClick: handleClick,
+      variables,
+
+      slotProps: {
+        item: itemProps,
+        divider: dividerProps,
+      },
+
+      behaviors: {
+        item: childBehaviors?.item,
+        divider: childBehaviors?.divider,
+      },
+
+      slots: {
+        menu: composeOptions.slots.__self,
+      },
     };
 
     const element = getA11yProps.unstable_wrapWithFocusZone(
@@ -267,7 +321,9 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
           ...unhandledProps,
         })}
       >
-        {childrenExist(children) ? children : renderItems()}
+        <MenuContextProvider value={childProps}>
+          {childrenExist(children) ? children : renderItems()}
+        </MenuContextProvider>
       </ElementType>,
     );
     const wrappedElement = ref ? <Ref innerRef={ref}>{element}</Ref> : element;
@@ -314,7 +370,6 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
       'design',
       'styles',
       'variables',
-
       'activeIndex',
       'defaultActiveIndex',
       'fluid',
