@@ -214,17 +214,16 @@ const Dialog: React.FC<WithAsProp<DialogProps>> &
     initialValue: false,
   });
 
-  const [openedFirst, setOpenedFirst] = React.useState(props.open || props.defaultOpen);
-
   React.useEffect(() => {
-    if (openedFirst) {
-      if (open) {
-        lockBodyScroll(context.target.body);
-      } else {
-        unlockBodyScroll(context.target.body);
-      }
+    if (open) {
+      lockBodyScroll(context.target);
     }
-  }, [context.target.body, open, openedFirst]);
+    return () => {
+      if (open) {
+        unlockBodyScroll(context.target);
+      }
+    };
+  }, [context.target, open]);
 
   const handleDialogCancel = (e: Event | React.SyntheticEvent) => {
     _.invoke(props, 'onCancel', e, { ...props, open: false });
