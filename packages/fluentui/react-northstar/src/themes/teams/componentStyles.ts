@@ -108,6 +108,9 @@ export { default as ToolbarItem } from './components/Toolbar/toolbarItemStyles';
 export { default as ToolbarMenu } from './components/Toolbar/toolbarMenuStyles';
 export { default as ToolbarMenuDivider } from './components/Toolbar/toolbarMenuDividerStyles';
 export { default as ToolbarMenuItem } from './components/Toolbar/toolbarMenuItemStyles';
+export { default as ToolbarMenuItemIcon } from './components/Toolbar/toolbarMenuItemIconStyles';
+export { default as ToolbarMenuItemSubmenuIndicator } from './components/Toolbar/toolbarMenuItemSubmenuIndicatorStyles';
+export { default as ToolbarMenuItemActiveIndicator } from './components/Toolbar/toolbarMenuItemActiveIndicatorStyles';
 export { default as ToolbarMenuRadioGroup } from './components/Toolbar/toolbarMenuRadioGroupStyles';
 export { default as ToolbarMenuRadioGroupWrapper } from './components/Toolbar/toolbarMenuRadioGroupWrapperStyles';
 

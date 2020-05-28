@@ -1,11 +1,18 @@
 import * as React from 'react';
 
 import { ComponentWithAs, ComposedComponent, ComposeOptions, Input, InputComposeComponent } from './types';
-import { mergeComposeOptions, wasComposedPreviously } from './utils';
+import { wasComposedPreviously } from './wasComposedPreviously';
+import { mergeComposeOptions } from './mergeComposeOptions';
 
-function compose<ElementType extends React.ElementType, InputProps, InputStylesProps, ParentProps, ParentStylesProps>(
-  input: Input<ElementType, InputProps>,
-  inputOptions: ComposeOptions<InputProps, InputStylesProps, ParentProps, ParentStylesProps> = {},
+function compose<
+  TElementType extends React.ElementType,
+  TInputProps,
+  TInputStylesProps,
+  TParentProps,
+  TParentStylesProps
+>(
+  input: Input<TElementType, TInputProps>,
+  inputOptions: ComposeOptions<TInputProps, TInputStylesProps, TParentProps, TParentStylesProps> = {},
 ) {
   const composeOptions = mergeComposeOptions(
     input as Input,
@@ -13,7 +20,7 @@ function compose<ElementType extends React.ElementType, InputProps, InputStylesP
     wasComposedPreviously(input) ? input.fluentComposeConfig : undefined,
   );
 
-  const Component = (React.forwardRef<ElementType, InputProps & ParentProps & { as?: React.ElementType }>(
+  const Component = (React.forwardRef<TElementType, TInputProps & TParentProps & { as?: React.ElementType }>(
     (props, ref) => {
       return composeOptions.render(props, (ref as unknown) as React.Ref<HTMLDivElement>, {
         ...composeOptions,
@@ -23,7 +30,7 @@ function compose<ElementType extends React.ElementType, InputProps, InputStylesP
         },
       });
     },
-  ) as unknown) as ComponentWithAs<ElementType, InputProps & ParentProps>;
+  ) as unknown) as ComponentWithAs<TElementType, TInputProps & TParentProps>;
 
   Component.displayName = composeOptions.displayName;
 
