@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "minor",
   "comment": "Add special folder icon types for file-type-icons.",
   "packageName": "@uifabric/file-type-icons",
   "email": "taenri@microsoft.com",
