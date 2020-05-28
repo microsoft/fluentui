@@ -22,9 +22,10 @@ const getStaticStylesMemoized = memoizeFunction(
     const globalClassNames = getGlobalClassNames(GlobalClassNames, theme);
 
     const rootModifiers = [
-      linkSize === 'large' && classes.linkSize_large,
-      linkFormat === 'tabs' && classes.linkFormat_tabs,
+      linkSize === 'large' && css(classes.linkSize_large, globalClassNames.rootIsLarge),
+      linkFormat === 'tabs' && css(classes.linkFormat_tabs, globalClassNames.rootIsTabs),
     ];
+
     return {
       root: css(className, classes.root, globalClassNames.root, ...rootModifiers),
       link: css(classes.link, globalClassNames.link),
