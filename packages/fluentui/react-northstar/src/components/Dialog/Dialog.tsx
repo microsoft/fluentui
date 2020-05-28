@@ -238,7 +238,6 @@ const Dialog: React.FC<WithAsProp<DialogProps>> &
   const handleDialogOpen = (e: React.SyntheticEvent) => {
     _.invoke(props, 'onOpen', e, { ...props, open: true });
     setOpen(true);
-    setOpenedFirst(true);
   };
 
   const handleCancelButtonOverrides = (predefinedProps: ButtonProps) => ({
