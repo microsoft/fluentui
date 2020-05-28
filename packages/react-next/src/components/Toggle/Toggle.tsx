@@ -54,11 +54,12 @@ const getStaticStyles = (props: IToggleStyleProps): Required<IToggleStyles> => {
 };
 
 export const Toggle: React.FunctionComponent<IToggleProps> = styled<IToggleProps, IToggleStyleProps, IToggleStyles>(
-  compose(ToggleBase, {
+  compose<'div', {}, {}, IToggleProps, IToggleProps>(ToggleBase, {
     slots: {
       label: Label,
       stateText: Label,
     },
+    displayName: 'Toggle',
   }),
   getStaticStyles,
   undefined,

@@ -16,31 +16,6 @@ export interface IToggle {
  */
 export interface IToggleProps extends React.HTMLAttributes<HTMLElement> {
   /**
-   * Shorthand container for the pill and the thumb.
-   */
-  container?: string | boolean | number | null | undefined | {} | JSX.Element;
-
-  /**
-   * Shorthand label for the Toggle.
-   */
-  label?: string | boolean | number | null | undefined | {} | JSX.Element;
-
-  /**
-   * Shorthand pill for the Toggle.
-   */
-  pill?: string | boolean | number | null | undefined | {} | JSX.Element;
-
-  /**
-   * Shorthand text for the current checked state of the Toggle.
-   */
-  stateText?: string | boolean | number | null | undefined | {} | JSX.Element;
-
-  /**
-   * Shorthand thumb for the Toggle.
-   */
-  thumb?: string | boolean | number | null | undefined | {} | JSX.Element;
-
-  /**
    * Render the root element as another type.
    */
   as?: IComponentAs<React.HTMLAttributes<HTMLElement>>;
@@ -50,6 +25,11 @@ export interface IToggleProps extends React.HTMLAttributes<HTMLElement> {
    * the public methods and properties of the component.
    */
   componentRef?: IRefObject<IToggle>;
+
+  /**
+   * A label for the toggle.
+   */
+  label?: string | JSX.Element;
 
   /**
    * Text to display when toggle is ON.
@@ -207,13 +187,7 @@ export interface IToggleStyles {
 /**
  * {@docCategory Toggle}
  */
-export interface IToggleSlots {
-  container: React.ElementType;
-  label: React.ElementType;
-  pill: React.ElementType;
-  stateText: React.ElementType;
-  thumb: React.ElementType;
-}
+export interface IToggleSlots {}
 
 /**
  * {@docCategory Toggle}

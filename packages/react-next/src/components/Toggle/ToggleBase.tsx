@@ -1,15 +1,15 @@
 import * as React from 'react';
 import { compose } from '@fluentui/react-compose';
 import { KeytipData } from '../../KeytipData';
-import { FocusRects } from '../../Utilities';
 import { IToggleProps } from './Toggle.types';
 import { useToggle } from './useToggle';
 
 export const ToggleBase = compose<'div', IToggleProps, IToggleProps, {}, {}>(
   (props, ref, composeOptions) => {
-    const { slots, slotProps } = useToggle(props, composeOptions);
+    const { state, slots, slotProps } = useToggle(props, composeOptions);
 
-    const { 'aria-describedby': ariaDescribedBy, checked, disabled, keytipProps, label, offText, onText } = props;
+    const { checked } = state;
+    const { 'aria-describedby': ariaDescribedBy, disabled, keytipProps, label, offText, onText } = props;
 
     return (
       <slots.root ref={ref} {...slotProps.root}>
@@ -23,7 +23,6 @@ export const ToggleBase = compose<'div', IToggleProps, IToggleProps, {}, {}>(
             )}
           </KeytipData>
         </slots.container>
-        <FocusRects />
         {((checked && onText) || offText) && <slots.stateText {...slotProps.stateText} />}
       </slots.root>
     );
