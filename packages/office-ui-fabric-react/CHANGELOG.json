@@ -2,6 +2,21 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 28 May 2020 12:42:08 GMT",
+      "tag": "office-ui-fabric-react_v7.116.1",
+      "version": "7.116.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "SplitButton: Making imperative focus call on touch events.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "cc582893be5600df0d710241ca8f8ad4f59f1d39",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 27 May 2020 12:40:00 GMT",
       "tag": "office-ui-fabric-react_v7.116.0",
       "version": "7.116.0",
