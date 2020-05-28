@@ -2,6 +2,21 @@
   "name": "@fluentui/react-compose",
   "entries": [
     {
+      "date": "Thu, 28 May 2020 12:42:08 GMT",
+      "tag": "@fluentui/react-compose_v0.6.1",
+      "version": "0.6.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Typescript generic argument names cleaned up, removed react-is unlisted dependency usage, no breaking changes. Also split utils.ts into separate files. Each of these functions should have some unit tests.",
+            "author": "dzearing@microsoft.com",
+            "commit": "ec6e81163aecdb3c01687cb6e3f64d92ab43fef8",
+            "package": "@fluentui/react-compose"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 27 May 2020 12:40:00 GMT",
       "tag": "@fluentui/react-compose_v0.6.0",
       "version": "0.6.0",

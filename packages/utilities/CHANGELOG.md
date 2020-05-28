@@ -1,8 +1,17 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Wed, 27 May 2020 12:40:00 GMT and should not be manually modified.
+This log was last generated on Thu, 28 May 2020 12:42:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.20.2](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.20.2)
+
+Thu, 28 May 2020 12:42:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.20.1..@uifabric/utilities_v7.20.2)
+
+### Patches
+
+- Add autoCapitalize property ([PR #13335](https://github.com/microsoft/fluentui/pull/13335) by suprememilanfan@gmail.com)
 
 ## [7.20.1](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.20.1)
 
