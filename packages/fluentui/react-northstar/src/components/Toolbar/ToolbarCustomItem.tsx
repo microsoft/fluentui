@@ -2,12 +2,12 @@ import { Accessibility, IS_FOCUSABLE_ATTRIBUTE } from '@fluentui/accessibility';
 import {
   compose,
   getElementType,
+  mergeVariablesOverrides,
   useUnhandledProps,
   useAccessibility,
   useStyles,
   useTelemetry,
 } from '@fluentui/react-bindings';
-import { mergeComponentVariables } from '@fluentui/styles';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
@@ -81,7 +81,7 @@ const ToolbarCustomItem = compose<'div', ToolbarCustomItemProps, ToolbarCustomIt
         className,
         design,
         styles,
-        variables: mergeComponentVariables(parentVariables, variables),
+        variables: mergeVariablesOverrides(parentVariables, variables),
       }),
       rtl: context.rtl,
       unstable_props: props,

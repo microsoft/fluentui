@@ -15,6 +15,7 @@ import * as customPropTypes from '@fluentui/react-proptypes';
 import {
   compose,
   focusAsync,
+  mergeVariablesOverrides,
   useTelemetry,
   useStyles,
   useAutoControlled,
@@ -22,7 +23,6 @@ import {
   useUnhandledProps,
   useAccessibility,
 } from '@fluentui/react-bindings';
-import { mergeComponentVariables } from '@fluentui/styles';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 import { GetRefs, NodeRef, Unstable_NestingAuto } from '@fluentui/react-component-nesting-registry';
@@ -165,7 +165,7 @@ const ToolbarMenuItem = compose<'button', ToolbarMenuItemProps, ToolbarMenuItemS
     const contextValue = React.useContext(ToolbarMenuContext);
 
     const parentVariables = React.useContext(ToolbarVariablesContext);
-    const mergedVariables = mergeComponentVariables(parentVariables, variables);
+    const mergedVariables = mergeVariablesOverrides(parentVariables, variables);
 
     const ElementType = getElementType(props);
     const slotProps = composeOptions.resolveSlotProps<ToolbarMenuItemProps>(props);

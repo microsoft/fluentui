@@ -7,6 +7,7 @@ import {
 import {
   compose,
   getElementType,
+  mergeVariablesOverrides,
   useUnhandledProps,
   useAccessibility,
   useStyles,
@@ -14,7 +15,6 @@ import {
 } from '@fluentui/react-bindings';
 import { Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
-import { mergeComponentVariables } from '@fluentui/styles';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
@@ -88,7 +88,7 @@ const ToolbarMenu = compose<'ul', ToolbarMenuProps, ToolbarMenuStylesProps, {}, 
     const { accessibility, className, children, design, items, styles, variables } = props;
 
     const parentVariables = React.useContext(ToolbarVariablesContext);
-    const mergedVariables = mergeComponentVariables(parentVariables, variables);
+    const mergedVariables = mergeVariablesOverrides(parentVariables, variables);
     const slotProps = composeOptions.resolveSlotProps<ToolbarMenuProps>(props);
 
     const getA11yProps = useAccessibility(accessibility, {
