@@ -7,7 +7,6 @@
 .root {
   @include fonts-medium;
   @include normalize;
-
   position: relative;
   color: var($semanticColorsLink);
   white-space: nowrap;
@@ -64,6 +63,7 @@
   }
 
   @include focus-outline;
+
   @include focus-after {
     content: attr(data-content);
     position: relative;
@@ -72,16 +72,19 @@
 
   &.linkIsSelected {
     font-weight: $fontWeightSemibold;
+
     &:before {
       background-color: var($semanticColorsInputBackgroundChecked);
       @include high-contrast {
         background-color: Highlight;
       }
     }
+
     &:hover::before {
       left: 0;
       right: 0;
     }
+
     @include high-contrast {
       color: Highlight;
     }
@@ -110,10 +113,6 @@
     display: 'none';
   }
 }
-
-// .icon {
-// TODO empty??
-// }
 
 // modifiers
 
@@ -147,6 +146,7 @@
       &:focus {
         color: var($semanticColorsButtonTextCheckedHovered);
       }
+
       &:active,
       &:hover {
         color: var($semanticColorsPrimaryButtonText);
@@ -158,6 +158,7 @@
       background-color: var($semanticColorsPrimaryButtonBackground);
       color: var($semanticColorsPrimaryButtonText);
       font-weight: $fontWeightRegular;
+
       &:before {
         background-color: transparent;
         transition: none;
@@ -169,14 +170,17 @@
         content: '';
         height: auto;
       }
+
       &:hover {
         background-color: var($semanticColorsPrimaryButtonBackgroundHovered);
         color: var($semanticColorsPrimaryButtonText);
       }
+
       &:active {
         background-color: var($semanticColorsPrimaryButtonBackgroundPressed);
         color: var($semanticColorsPrimaryButtonText);
       }
+
       @include high-contrast {
         font-weight: $fontWeightSemibold;
         color: HighlightText;
