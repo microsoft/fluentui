@@ -301,8 +301,8 @@ export interface IPivotProps extends React.ClassAttributes<PivotBase>, React.HTM
     initialSelectedIndex?: number;
     // @deprecated
     initialSelectedKey?: string;
-    linkFormat?: PivotLinkFormat;
-    linkSize?: PivotLinkSize;
+    linkFormat?: PivotLinkFormatType;
+    linkSize?: PivotLinkSizeType;
     onLinkClick?: (item?: PivotItem, ev?: React.MouseEvent<HTMLElement>) => void;
     selectedKey?: string | null;
     styles?: IStyleFunctionOrObject<IPivotStyleProps, IPivotStyles>;
@@ -317,8 +317,8 @@ export interface IPivotState {
 
 // @public (undocumented)
 export type IPivotStyleProps = Required<Pick<IPivotProps, 'theme'>> & Pick<IPivotProps, 'className'> & {
-    rootIsLarge?: boolean;
-    rootIsTabs?: boolean;
+    linkSize?: PivotLinkSizeType;
+    linkFormat?: PivotLinkFormatType;
     linkIsSelected?: boolean;
 };
 
@@ -724,17 +724,23 @@ export class PivotItem extends React.Component<IPivotItemProps, {}> {
     render(): JSX.Element;
 }
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export enum PivotLinkFormat {
-    links = 0,
-    tabs = 1
+    links = "links",
+    tabs = "tabs"
 }
 
-// @public (undocumented)
+// @public
+export type PivotLinkFormatType = 'links' | 'tabs';
+
+// @public @deprecated (undocumented)
 export enum PivotLinkSize {
-    large = 1,
-    normal = 0
+    large = "large",
+    normal = "normal"
 }
+
+// @public
+export type PivotLinkSizeType = 'normal' | 'large';
 
 // @public
 export const Popup: React.ForwardRefExoticComponent<IPopupProps & React.RefAttributes<HTMLDivElement>>;

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { styled, memoizeFunction, css } from '../../Utilities';
-import { IPivotProps, IPivotStyleProps, IPivotStyles } from './Pivot.types';
+import { IPivotProps, IPivotStyleProps, IPivotStyles, PivotLinkSizeType, PivotLinkFormatType } from './Pivot.types';
 import { PivotBase } from './Pivot.base';
 import { getGlobalClassNames, ITheme } from '../../Styling';
 import * as classes from './Pivot.scss';
@@ -18,30 +18,30 @@ const GlobalClassNames = {
 };
 
 const getStaticStylesMemoized = memoizeFunction(
-  (theme: ITheme, className?: string, rootIsLarge?: boolean, rootIsTabs?: boolean) => {
+  (theme: ITheme, className?: string, linkSize?: PivotLinkSizeType, linkFormat?: PivotLinkFormatType) => {
     const globalClassNames = getGlobalClassNames(GlobalClassNames, theme);
 
-    const propControlledClasses = [rootIsLarge && classes.rootIsLarge, rootIsTabs && classes.rootIsTabs];
-
-    const rootStaticClasses: string[] = [];
-
+    const rootModifiers = [
+      linkSize === 'large' && classes.linkSize_large,
+      linkFormat === 'tabs' && classes.linkFormat_tabs,
+    ];
     return {
-      root: css(className, classes.root, globalClassNames.root, ...rootStaticClasses, ...propControlledClasses),
-      link: css(classes.link, globalClassNames.link, ...propControlledClasses),
-      linkContent: css(classes.linkContent, globalClassNames.linkContent, ...propControlledClasses),
-      linkIsSelected: css(classes.linkIsSelected, globalClassNames.linkIsSelected, ...propControlledClasses),
-      text: css(classes.text, globalClassNames.text, ...propControlledClasses),
-      count: css(classes.count, globalClassNames.count, ...propControlledClasses),
-      icon: css(/*TODO classes.icon,*/ globalClassNames.icon, ...propControlledClasses),
-      itemContainer: {} /*TODO ???*/,
+      root: css(className, classes.root, globalClassNames.root, ...rootModifiers),
+      link: css(classes.link, globalClassNames.link),
+      linkContent: css(classes.linkContent, globalClassNames.linkContent),
+      linkIsSelected: css(classes.linkIsSelected, globalClassNames.linkIsSelected),
+      text: css(classes.text, globalClassNames.text),
+      count: css(classes.count, globalClassNames.count),
+      icon: css(globalClassNames.icon),
+      itemContainer: css(classes.itemContainer),
     };
   },
 );
 
 const getStaticStyles = (props: IPivotStyleProps): Required<IPivotStyles> => {
-  const { className, rootIsLarge, rootIsTabs, theme } = props;
+  const { className, linkSize, linkFormat, theme } = props;
 
-  return getStaticStylesMemoized(theme!, className, rootIsLarge, rootIsTabs);
+  return getStaticStylesMemoized(theme!, className, linkSize, linkFormat);
 };
 
 /**

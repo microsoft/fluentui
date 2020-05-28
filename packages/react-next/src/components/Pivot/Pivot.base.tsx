@@ -14,8 +14,6 @@ import { IPivotProps, IPivotStyleProps, IPivotStyles } from './Pivot.types';
 import { IPivotItemProps } from './PivotItem.types';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { PivotItem } from './PivotItem';
-import { PivotLinkFormat } from './Pivot.types';
-import { PivotLinkSize } from './Pivot.types';
 import { Icon } from '../../Icon';
 import { css } from 'office-ui-fabric-react';
 
@@ -318,14 +316,12 @@ export class PivotBase extends React.Component<IPivotProps, IPivotState> {
   }
 
   private _getClassNames(props: IPivotProps): { [key in keyof IPivotStyles]: string } {
-    const { theme } = props;
-    const rootIsLarge: boolean = props.linkSize === PivotLinkSize.large;
-    const rootIsTabs: boolean = props.linkFormat === PivotLinkFormat.tabs;
+    const { theme, linkSize, linkFormat } = props;
 
     return getClassNames(props.styles!, {
       theme: theme!,
-      rootIsLarge,
-      rootIsTabs,
+      linkSize,
+      linkFormat,
     });
   }
 }

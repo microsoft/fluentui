@@ -226,6 +226,12 @@
   --fontsMegaWebkitFontSmoothing: antialiased;
   --fontsMegaFontSize: 68px;
   --fontsMegaFontWeight: 600;
+  --animationEaseFunction1: cubic-bezier(0.1, 0.9, 0.2, 1.0);
+  --animationEaseFunction2: cubic-bezier(0.1, 0.25, 0.75, 0.9);
+  --animationDuration1: 0.167s;
+  --animationDuration2: 0.267s;
+  --animationDuration3: 0.367s;
+  --animationDuration4: 0.467s;
 }
 
 // SCSS variables
@@ -454,6 +460,17 @@ $fontsMegaMozOsxFontSmoothing: --fontsMegaMozOsxFontSmoothing;
 $fontsMegaWebkitFontSmoothing: --fontsMegaWebkitFontSmoothing;
 $fontsMegaFontSize: --fontsMegaFontSize;
 $fontsMegaFontWeight: --fontsMegaFontWeight;
+$fontWeightLight: --fontWeightLight;
+$fontWeightSemilight: --fontWeightSemilight;
+$fontWeightRegular: --fontWeightRegular;
+$fontWeightSemibold: --fontWeightSemibold;
+$fontWeightBold: --fontWeightBold;
+$animationEaseFunction1: --animationEaseFunction1;
+$animationEaseFunction2: --animationEaseFunction2;
+$animationDuration1: --animationDuration1;
+$animationDuration2: --animationDuration2;
+$animationDuration3: --animationDuration3;
+$animationDuration4: --animationDuration4;
 
 @mixin fonts-medium {
   font-family: var($fontsMediumFontFamily);
