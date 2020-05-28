@@ -1,9 +1,9 @@
 import { Accessibility, MenuDividerBehaviorProps, menuDividerBehavior } from '@fluentui/accessibility';
-import { mergeComponentVariables } from '@fluentui/styles';
 import {
   compose,
   ComponentWithAs,
   getElementType,
+  mergeVariablesOverrides,
   useAccessibility,
   useTelemetry,
   useStyles,
@@ -108,7 +108,7 @@ const MenuDivider = compose<'li', MenuDividerProps, MenuDividerStylesProps, {}, 
         className,
         design,
         styles,
-        variables: mergeComponentVariables(variables, parentProps.variables),
+        variables: mergeVariablesOverrides(variables, parentProps.variables),
       }),
       rtl: context.rtl,
       unstable_props: props,
