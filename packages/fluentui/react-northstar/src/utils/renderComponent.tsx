@@ -75,9 +75,10 @@ const renderComponent = <P extends {}>(
     actionHandlers,
   );
   const { classes, variables, styles, theme } = getStyles({
+    allDisplayNames: [displayName],
     className,
     disableAnimations: context.disableAnimations || false,
-    displayNames: [displayName],
+    primaryDisplayName: displayName,
     props: stateAndProps,
     renderer: context.renderer || { renderRule: () => '' },
     rtl,
