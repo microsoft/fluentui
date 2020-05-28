@@ -1,4 +1,4 @@
-import { ComponentVariablesInput, mergeComponentVariables } from '@fluentui/styles';
+import { ComponentVariablesInput, ComponentVariablesPrepared, mergeComponentVariables } from '@fluentui/styles';
 
 /**
  mergeComponentVariables() is always creating a function even if the arguments are undefined we have this temporary
@@ -8,6 +8,6 @@ import { ComponentVariablesInput, mergeComponentVariables } from '@fluentui/styl
 export default function mergeVariablesOverrides(
   variables: ComponentVariablesInput,
   overrides: ComponentVariablesInput,
-) {
+): ComponentVariablesPrepared {
   return (variables || overrides) && mergeComponentVariables(variables, overrides);
 }
