@@ -47,6 +47,9 @@ import ToolbarMenuRadioGroup, { ToolbarMenuRadioGroupProps } from './ToolbarMenu
 import ToolbarMenuRadioGroupWrapper from './ToolbarMenuRadioGroupWrapper';
 import ToolbarRadioGroup from './ToolbarRadioGroup';
 import { ToolbarVariablesProvider } from './toolbarVariablesContext';
+import ToolbarMenuItemSubmenuIndicator from './ToolbarMenuItemSubmenuIndicator';
+import ToolbarMenuItemIcon from './ToolbarMenuItemIcon';
+import ToolbarMenuItemActiveIndicator from './ToolbarMenuItemActiveIndicator';
 
 export type ToolbarItemShorthandKinds = {
   item: ToolbarItemProps;
@@ -586,6 +589,9 @@ const Toolbar = compose<'div', ToolbarProps, ToolbarStylesProps, {}, {}>(
   Menu: typeof ToolbarMenu;
   MenuDivider: typeof ToolbarMenuDivider;
   MenuItem: typeof ToolbarMenuItem;
+  MenuItemIcon: typeof ToolbarMenuItemIcon;
+  MenuItemSubmenuIndicator: typeof ToolbarMenuItemSubmenuIndicator;
+  MenuItemActiveIndicator: typeof ToolbarMenuItemActiveIndicator;
   MenuRadioGroup: typeof ToolbarMenuRadioGroup;
   MenuRadioGroupWrapper: typeof ToolbarMenuRadioGroupWrapper;
   RadioGroup: typeof ToolbarRadioGroup;
@@ -615,6 +621,9 @@ Toolbar.ItemIcon = ToolbarItemIcon;
 Toolbar.Menu = ToolbarMenu;
 Toolbar.MenuDivider = ToolbarMenuDivider;
 Toolbar.MenuItem = ToolbarMenuItem;
+Toolbar.MenuItemIcon = ToolbarMenuItemIcon;
+Toolbar.MenuItemSubmenuIndicator = ToolbarMenuItemSubmenuIndicator;
+Toolbar.MenuItemActiveIndicator = ToolbarMenuItemActiveIndicator;
 Toolbar.MenuRadioGroup = ToolbarMenuRadioGroup;
 Toolbar.MenuRadioGroupWrapper = ToolbarMenuRadioGroupWrapper;
 Toolbar.RadioGroup = ToolbarRadioGroup;
