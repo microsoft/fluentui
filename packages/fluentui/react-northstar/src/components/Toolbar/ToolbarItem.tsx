@@ -105,10 +105,6 @@ export interface ToolbarItemProps extends UIComponentProps, ChildrenComponentPro
 
 export type ToolbarItemStylesProps = Required<Pick<ToolbarItemProps, 'active' | 'disabled'>>;
 
-export interface ToolbarItemSlotClassNames {
-  wrapper: string;
-}
-
 export const toolbarItemClassName = 'ui-toolbar__item';
 
 /**
