@@ -1,6 +1,6 @@
 import { pxToRem } from '../../../../utils';
 import { CarouselStylesProps } from '../../../../components/Carousel/Carousel';
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import { ComponentSlotStylesPrepared, ICSSInJSStyle, padding, margin } from '@fluentui/styles';
 import { CarouselVariables } from './carouselVariables';
 
 const carouselStyles: ComponentSlotStylesPrepared<CarouselStylesProps, CarouselVariables> = {
@@ -19,8 +19,8 @@ const carouselStyles: ComponentSlotStylesPrepared<CarouselStylesProps, CarouselV
       }),
   }),
   itemsContainer: (): ICSSInJSStyle => ({
-    padding: 0,
-    margin: 0,
+    ...padding('0'),
+    ...margin('0'),
     display: 'flex',
     listStyle: 'none',
     willChange: 'transform',

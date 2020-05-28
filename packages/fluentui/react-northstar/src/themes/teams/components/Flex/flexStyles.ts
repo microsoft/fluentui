@@ -1,4 +1,4 @@
-import { ComponentSlotStylesPrepared } from '@fluentui/styles';
+import { ComponentSlotStylesPrepared, padding } from '@fluentui/styles';
 import { FlexStylesProps } from '../../../../components/Flex/Flex';
 
 import { toFlexAlignment } from './utils';
@@ -27,7 +27,7 @@ const flexStyles: ComponentSlotStylesPrepared<FlexStylesProps, FlexVariables> = 
       height: '100%',
     }),
 
-    ...(p.padding && { padding: v[p.padding] }),
+    ...(p.padding && padding(v[p.padding])),
 
     ...(p.gap && {
       '> *:not(:last-child)': {

@@ -24,7 +24,7 @@ const InputExampleWrapperSlot = () => (
         tabIndex: 0,
 
         // will set custom styles for wrapper element
-        styles: { padding: '5px', backgroundColor: 'red' },
+        // styles: { padding: '5px', backgroundColor: 'red' },
       }}
     />
   </Grid>

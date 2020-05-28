@@ -1,6 +1,6 @@
 import * as _ from 'lodash';
 import { pxToRem } from '../../../../utils';
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import { ComponentSlotStylesPrepared, ICSSInJSStyle, margin, padding } from '@fluentui/styles';
 import { loaderSlotClassNames } from '../../../../components/Loader/Loader';
 import { ButtonStylesProps } from '../../../../components/Button/Button';
 import { ButtonVariables } from './buttonVariables';
@@ -32,13 +32,13 @@ const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, ButtonVariabl
       justifyContent: 'center',
       alignItems: 'center',
       position: 'relative',
-      padding: v.padding,
+      ...padding(v.padding),
       verticalAlign: 'middle',
       cursor: 'pointer',
       transition: faster,
 
       ...(p.size === 'small' && {
-        padding: v.sizeSmallPadding,
+        ...padding(v.sizeSmallPadding),
         height: v.sizeSmallHeight,
         minWidth: v.sizeSmallMinWidth,
       }),
@@ -87,7 +87,7 @@ const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, ButtonVariabl
       ...(p.circular &&
         !p.text && {
           minWidth: v.height,
-          padding: 0,
+          ...padding('0'),
           borderRadius: v.circularBorderRadius,
 
           ...(p.size === 'small' && {
@@ -100,7 +100,10 @@ const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, ButtonVariabl
         color: v.textColor,
         backgroundColor: 'transparent',
         borderColor: 'transparent',
-        padding: `0 ${pxToRem(8)}`,
+        paddingLeft: pxToRem(8),
+        paddingRight: pxToRem(8),
+        paddingTop: pxToRem(8),
+        paddingBottom: pxToRem(8),
 
         // by default icons should always be outline, but filled on hover/focus
         ...getIconFillOrOutlineStyles({ outline: true }),
@@ -206,7 +209,7 @@ const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, ButtonVariabl
 
       ...(p.iconOnly && {
         minWidth: v.height,
-        padding: 0,
+        ...padding('0'),
 
         ':hover': {
           ...getIconFillOrOutlineStyles({ outline: false }),
@@ -230,15 +233,22 @@ const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, ButtonVariabl
 
     // when loading, hide the icon
     ...(p.loading && {
-      margin: 0,
+      ...margin('0'),
       opacity: 0,
       width: 0,
     }),
 
     ...(p.hasContent && {
-      margin: `0 ${pxToRem(10)} 0 0`,
+      marginLeft: 0,
+      marginRight: pxToRem(10),
+      marginTop: 0,
+      marginBottom: 0,
+
       ...(p.iconPosition === 'after' && {
-        margin: `0 0 0 ${pxToRem(10)}`,
+        marginLeft: 0,
+        marginRight: pxToRem(10),
+        marginTop: 0,
+        marginBottom: 0,
       }),
     }),
   }),

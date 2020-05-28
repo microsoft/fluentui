@@ -10,7 +10,14 @@ const propsTargettingWrapper = {
 };
 
 // This object contains properties that will be applied to the wrapper
-const propsForWrapper = { dir: 'ltr', tabIndex: -1, styles: { padding: '5px', background: 'red' } };
+const propsForWrapper = {
+  dir: 'ltr',
+  tabIndex: -1,
+  styles: {
+    // padding: '5px',
+    background: 'red',
+  },
+};
 const propsTargettingInput = {
   dir: 'rtl',
   tabIndex: 0,

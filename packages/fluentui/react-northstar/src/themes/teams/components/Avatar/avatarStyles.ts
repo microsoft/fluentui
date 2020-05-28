@@ -1,5 +1,5 @@
 import { pxToRem, SizeValue } from '../../../../utils';
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import { ComponentSlotStylesPrepared, ICSSInJSStyle, padding } from '@fluentui/styles';
 import { AvatarStylesProps } from '../../../../components/Avatar/Avatar';
 import { AvatarVariables } from './avatarVariables';
 
@@ -86,7 +86,7 @@ const avatarStyles: ComponentSlotStylesPrepared<AvatarStylesProps, AvatarVariabl
       fontSize: pxToRem(sizeToPxValue[p.size] / 2.333),
       verticalAlign: 'top',
       textAlign: 'center',
-      padding: '0',
+      ...padding('0'),
       ...(p.square && {
         borderRadius: v.squareAvatarBorderRadius,
       }),

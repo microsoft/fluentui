@@ -1,4 +1,4 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import { ComponentSlotStylesPrepared, ICSSInJSStyle, padding } from '@fluentui/styles';
 import { ToolbarItemStylesProps } from '../../../../components/Toolbar/ToolbarItem';
 import { ToolbarVariables } from './toolbarVariables';
 import getIconFillOrOutlineStyles from '../../getIconFillOrOutlineStyles';
@@ -22,7 +22,7 @@ const toolbarItemStyles: ComponentSlotStylesPrepared<ToolbarItemStylesProps, Too
       borderRadius: v.borderRadius,
       height: v.itemHeight,
       minWidth: v.itemHeight,
-      padding: v.itemPadding,
+      ...padding(v.itemPadding),
       color: v.foreground || colors.foreground1,
       cursor: 'pointer',
 

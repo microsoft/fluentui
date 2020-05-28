@@ -1,4 +1,4 @@
-import { callable, ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import { callable, ComponentSlotStylesPrepared, ICSSInJSStyle, padding } from '@fluentui/styles';
 import { SvgIconXSpacing, SvgIconProps } from '@fluentui/react-icons-northstar';
 
 import { pxToRem, SizeValue } from '../../../../utils';
@@ -9,15 +9,10 @@ export type SvgIconStylesProps = Pick<
   'bordered' | 'circular' | 'disabled' | 'outline' | 'rotate' | 'size' | 'xSpacing'
 >;
 
-const getPaddedStyle = (): ICSSInJSStyle => ({
-  padding: pxToRem(4),
-});
-
 const getBorderedStyles = (boxShadowColor: string): ICSSInJSStyle => {
   return {
-    ...getPaddedStyle(),
-
     boxShadow: `0 0 0 .05rem ${boxShadowColor} inset`,
+    ...padding(pxToRem(4)),
   };
 };
 
@@ -54,7 +49,7 @@ const svgIconStyles: ComponentSlotStylesPrepared<SvgIconStylesProps, SvgIconVari
 
     ...getXSpacingStyles(p.xSpacing, v.horizontalSpace),
 
-    ...(p.circular && { ...getPaddedStyle(), borderRadius: '50%' }),
+    ...(p.circular && { ...padding(pxToRem(4)), borderRadius: '50%' }),
     ...(p.disabled && {
       color: v.disabledColor,
     }),

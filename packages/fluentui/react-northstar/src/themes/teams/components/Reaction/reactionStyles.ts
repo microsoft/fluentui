@@ -1,5 +1,5 @@
 import { FontWeightProperty } from 'csstype';
-import { ICSSInJSStyle, ComponentSlotStylesPrepared } from '@fluentui/styles';
+import { ICSSInJSStyle, ComponentSlotStylesPrepared, padding } from '@fluentui/styles';
 import { ReactionStylesProps, reactionSlotClassNames } from '../../../../components/Reaction/Reaction';
 import { pxToRem } from '../../../../utils';
 import { ReactionVariables } from './reactionVariables';
@@ -10,8 +10,8 @@ const reactionStyles: ComponentSlotStylesPrepared<ReactionStylesProps, ReactionV
   root: ({ props: p, variables: v }): ICSSInJSStyle => ({
     cursor: 'pointer',
     background: 'transparent',
-    border: pxToRem(0),
-    padding: pxToRem(0),
+    border: 0,
+    ...padding('0'),
     display: 'inline-flex',
     justifyContent: 'center',
     alignItems: 'center',

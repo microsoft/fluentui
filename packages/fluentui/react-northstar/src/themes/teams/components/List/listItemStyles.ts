@@ -1,6 +1,6 @@
 import { pxToRem } from '../../../../utils';
 import { screenReaderContainerStyles } from '../../../../utils/accessibility/Styles/accessibilityStyles';
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import { ComponentSlotStylesPrepared, ICSSInJSStyle, padding } from '@fluentui/styles';
 import { ListItemStylesProps, listItemSlotClassNames } from '../../../../components/List/ListItem';
 import getBorderFocusStyles from '../../getBorderFocusStyles';
 import { ListItemVariables } from './listItemVariables';
@@ -45,7 +45,7 @@ const listItemStyles: ComponentSlotStylesPrepared<ListItemStylesProps, ListItemV
       display: 'flex',
       alignItems: 'center',
       minHeight: v.minHeight,
-      padding: v.rootPadding,
+      ...padding(v.rootPadding),
       ...((p.selectable || p.navigable) && {
         position: 'relative',
 

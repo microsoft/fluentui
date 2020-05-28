@@ -370,10 +370,10 @@ describe('mergeThemes', () => {
   describe('styles', () => {
     test('merges styles object and function', () => {
       const stylesAsObject: ICSSInJSStyle = {
-        margin: '0px',
+        outline: '0px',
         color: 'override',
         ':hover': {
-          margin: '0px',
+          outline: '0px',
           color: 'override',
         },
       };
@@ -386,10 +386,10 @@ describe('mergeThemes', () => {
       });
 
       expect(mergeStyles(stylesAsObject, stylesAsFunction)()).toMatchObject({
-        margin: '0px',
+        outline: '0px',
         color: 'black',
         ':hover': {
-          margin: '0px',
+          outline: '0px',
           color: 'blue',
         },
       });

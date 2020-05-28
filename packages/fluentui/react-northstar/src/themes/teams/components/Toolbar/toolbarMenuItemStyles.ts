@@ -1,4 +1,4 @@
-import { ICSSInJSStyle, ComponentSlotStylesPrepared } from '@fluentui/styles';
+import { ICSSInJSStyle, ComponentSlotStylesPrepared, padding } from '@fluentui/styles';
 import { getColorScheme } from '../../colors';
 import getBorderFocusStyles from '../../getBorderFocusStyles';
 import { ToolbarMenuItemStylesProps } from '../../../../components/Toolbar/ToolbarMenuItem';
@@ -27,7 +27,7 @@ const toolbarMenuItemStyles: ComponentSlotStylesPrepared<ToolbarMenuItemStylesPr
       textAlign: 'left',
       width: '100%',
       maxWidth: '100%',
-      padding: v.menuItemPadding,
+      ...padding(v.menuItemPadding),
       cursor: 'pointer',
 
       ':focus': {

@@ -302,7 +302,7 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
 
     const codeEditorStyle: ICSSInJSStyle = {
       position: 'relative',
-      margin: '0 0 0 .5rem',
+      // margin: '0 0 0 .5rem',
       top: '2px',
       border: '0',
       paddingTop: '.5rem',
@@ -448,7 +448,7 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
       },
     };
     const exampleStyles = {
-      padding: '2rem',
+      // padding: '2rem',
       ...(showTransparent && {
         backgroundImage:
           'url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAKUlEQVQoU2NkYGAwZkAD////RxdiYBwKCv///4/hGUZGkNNRAeMQUAgAtxof+nLDzyUAAAAASUVORK5CYII=")',
@@ -463,7 +463,12 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
             {/* Ensure anchor links don't occlude card shadow effect */}
             <div id={anchorName} style={{ position: 'relative', bottom: '1rem' }} />
 
-            <Segment styles={{ padding: 0, borderBottom: '1px solid #ddd' }}>
+            <Segment
+              styles={{
+                // padding: 0,
+                borderBottom: '1px solid #ddd',
+              }}
+            >
               <Flex space="between" style={{ padding: '10px 20px' }}>
                 <ComponentExampleTitle
                   description={description}

@@ -1,4 +1,4 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import { ComponentSlotStylesPrepared, ICSSInJSStyle, margin, padding } from '@fluentui/styles';
 
 import { AttachmentActionStylesProps } from '../../../../components/Attachment/AttachmentAction';
 import getIconFillOrOutlineStyles from '../../getIconFillOrOutlineStyles';
@@ -30,7 +30,7 @@ const attachmentActionStyles: ComponentSlotStylesPrepared<AttachmentActionStyles
       color: v.actionColor, // textColor
       backgroundColor: 'transparent',
       borderColor: 'transparent',
-      padding: 0,
+      ...padding('0'),
 
       // by default icons should always be outline, but filled on hover/focus
       ...getIconFillOrOutlineStyles({ outline: true }),
@@ -77,15 +77,15 @@ const attachmentActionStyles: ComponentSlotStylesPrepared<AttachmentActionStyles
 
     // when loading, hide the icon
     ...(p.loading && {
-      margin: 0,
+      ...margin('0'),
       opacity: 0,
       width: 0,
     }),
 
     ...(p.hasContent && {
-      margin: `0 ${pxToRem(10)} 0 0`,
+      ...margin('0'),
       ...(p.iconPosition === 'after' && {
-        margin: `0 0 0 ${pxToRem(10)}`,
+        ...margin('0'),
       }),
     }),
   }),

@@ -1,4 +1,4 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import { ComponentSlotStylesPrepared, ICSSInJSStyle, margin } from '@fluentui/styles';
 import { CardVariables } from './cardVariables';
 import { CardHeaderStylesProps } from '../../../../components/Card/CardHeader';
 
@@ -7,8 +7,8 @@ const cardHeaderStyles: ComponentSlotStylesPrepared<CardHeaderStylesProps, CardV
     return {
       display: 'flex',
       flexDirection: 'column',
-      margin: v.headerMargin,
-      ...(p.fitted && { margin: v.fittedHeaderMargin }),
+      ...margin(v.headerMargin),
+      ...(p.fitted && margin(v.fittedHeaderMargin)),
     };
   },
 };

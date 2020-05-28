@@ -1,4 +1,4 @@
-import { ICSSInJSStyle, ComponentSlotStylesPrepared } from '@fluentui/styles';
+import { ICSSInJSStyle, ComponentSlotStylesPrepared, margin } from '@fluentui/styles';
 import { ChatVariables } from './chatVariables';
 import { ChatStylesProps } from '../../../../components/Chat/Chat';
 import { pxToRem } from '../../../../utils';
@@ -10,8 +10,11 @@ const chatStyles: ComponentSlotStylesPrepared<ChatStylesProps, ChatVariables> = 
     display: 'flex',
     flexDirection: 'column',
     listStyle: 'none',
-    padding: `0 ${pxToRem(10)} 0 ${pxToRem(10)}`,
-    margin: 0,
+    paddingLeft: `0`,
+    paddingRight: pxToRem(10),
+    paddingTop: `0`,
+    paddingBottom: pxToRem(10),
+    ...margin('0'),
   }),
 };
 

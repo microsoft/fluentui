@@ -1,5 +1,5 @@
 import { CarouselNavigationStylesProps } from '../../../../components/Carousel/CarouselNavigation';
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import { ComponentSlotStylesPrepared, ICSSInJSStyle, padding, margin } from '@fluentui/styles';
 import { CarouselNavigationVariables } from './carouselNavigationVariables';
 import { pxToRem } from '../../../../utils';
 import { getColorScheme } from '../../colors';
@@ -15,8 +15,8 @@ const carouselNavigationStyles: ComponentSlotStylesPrepared<
     return {
       display: 'flex',
       minHeight: pxToRem(24),
-      margin: 0,
-      padding: 0,
+      ...margin('0'),
+      ...padding('0'),
       color: v.color,
       backgroundColor: v.backgroundColor || 'inherit',
       listStyleType: 'none',
@@ -33,7 +33,10 @@ const carouselNavigationStyles: ComponentSlotStylesPrepared<
         flexDirection: 'column',
         backgroundColor: v.verticalBackgroundColor,
         width: 'fit-content',
-        padding: `${pxToRem(8)} 0`,
+        paddingLeft: 0,
+        paddingRight: 0,
+        paddingTop: 0,
+        paddingBottom: 0,
         ...(iconOnly && {
           display: 'inline-block',
           width: 'auto',

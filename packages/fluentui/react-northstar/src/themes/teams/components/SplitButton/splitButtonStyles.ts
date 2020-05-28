@@ -1,4 +1,4 @@
-import { ICSSInJSStyle, ComponentSlotStylesPrepared } from '@fluentui/styles';
+import { ICSSInJSStyle, ComponentSlotStylesPrepared, padding } from '@fluentui/styles';
 import getBorderFocusStyles from '../../getBorderFocusStyles';
 import { SplitButtonStylesProps } from '../../../../components/SplitButton/SplitButton';
 import { SplitButtonVariables } from './splitButtonVariables';
@@ -8,11 +8,11 @@ const splitButtonStyles: ComponentSlotStylesPrepared<SplitButtonStylesProps, Spl
     borderTopRightRadius: 0,
     borderBottomRightRadius: 0,
     borderRightWidth: 0,
-    padding: v.padding,
+    ...padding(v.padding),
 
     ...(p.size === 'small' && {
       height: v.smallDimension,
-      padding: v.smallPadding,
+      ...padding(v.smallPadding),
       minWidth: v.smallMinWidth,
       boxShadow: v.smallBoxShadow,
     }),
@@ -35,7 +35,7 @@ const splitButtonStyles: ComponentSlotStylesPrepared<SplitButtonStylesProps, Spl
     },
   }),
 
-  root: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => {
+  root: ({ props: p, variables: v }): ICSSInJSStyle => {
     const borderFocusStyles = getBorderFocusStyles({
       variables: {
         borderRadius: v.focusBorderRadius,

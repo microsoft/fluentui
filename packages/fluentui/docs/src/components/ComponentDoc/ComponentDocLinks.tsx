@@ -14,8 +14,8 @@ export default class ComponentDocLinks extends React.PureComponent<any, any> {
       <Flex
         styles={{
           boxShadow: '0 0 1em 0.5em #f7f7f7',
-          margin: '0.5em',
-          padding: '0.5em',
+          // margin: '0.5em',
+          // padding: '0.5em',
           right: '0',
           top: '0',
           display: 'flex',

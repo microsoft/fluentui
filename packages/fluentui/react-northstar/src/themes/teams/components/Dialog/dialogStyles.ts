@@ -1,5 +1,5 @@
 import { DialogProps } from '../../../../components/Dialog/Dialog';
-import { ComponentStyleFunctionParam, ICSSInJSStyle } from '@fluentui/styles';
+import { ComponentStyleFunctionParam, ICSSInJSStyle, margin, padding } from '@fluentui/styles';
 import { DialogVariables } from './dialogVariables';
 
 type DialogStyleParams = ComponentStyleFunctionParam<DialogProps, DialogVariables>;
@@ -10,7 +10,7 @@ export default {
     border: v.border,
     borderRadius: v.rootBorderRadius,
     outline: 'none',
-    padding: v.rootPadding,
+    ...padding(v.rootPadding),
     position: 'relative',
     width: v.rootWidth,
 
@@ -33,7 +33,7 @@ export default {
   }),
 
   content: ({ variables: v }: DialogStyleParams): ICSSInJSStyle => ({
-    margin: v.contentMargin,
+    ...margin(v.contentMargin),
 
     gridColumn: '1 / span 2',
     gridRow: 2,
@@ -47,7 +47,8 @@ export default {
   }),
 
   header: ({ variables: v }: DialogStyleParams): ICSSInJSStyle => ({
-    margin: v.headerMargin,
+    ...margin(v.headerMargin),
+
     gridRow: 1,
     msGridRow: 1,
     gridColumn: 1,
@@ -63,7 +64,7 @@ export default {
     gridColumn: 2,
     msGridColumn: 2,
     color: v.foregroundColor,
-    margin: v.headerActionMargin,
+    ...margin(v.headerActionMargin),
   }),
 
   overlay: ({ props: p, variables: v }: DialogStyleParams): ICSSInJSStyle => ({

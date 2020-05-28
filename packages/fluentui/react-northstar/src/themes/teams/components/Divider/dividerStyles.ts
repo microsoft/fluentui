@@ -1,4 +1,4 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import { ComponentSlotStylesPrepared, ICSSInJSStyle, padding } from '@fluentui/styles';
 import * as _ from 'lodash';
 
 import { pxToRem } from '../../../../utils';
@@ -27,7 +27,8 @@ const dividerStyles: ComponentSlotStylesPrepared<DividerStylesProps, DividerVari
       display: 'flex',
       alignItems: 'center',
       ...(!fitted && {
-        padding: vertical ? `0 ${variables.dividerPadding}` : `${variables.dividerPadding} 0`,
+        // padding: vertical ? `0 ${variables.dividerPadding}` : `${variables.dividerPadding} 0`,
+        ...padding('0'),
       }),
       ...(important && {
         fontWeight: variables.importantFontWeight,

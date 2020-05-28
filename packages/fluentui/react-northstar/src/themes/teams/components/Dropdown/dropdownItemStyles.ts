@@ -15,7 +15,10 @@ const dropdownItemStyles: ComponentSlotStylesPrepared<DropdownItemStylesProps, D
     display: 'flex',
     alignItems: 'center',
     minHeight: 0,
-    padding: `${pxToRem(4)} ${pxToRem(11)}`,
+    paddingLeft: pxToRem(4),
+    paddingRight: pxToRem(4),
+    paddingTop: pxToRem(11),
+    paddingBottom: pxToRem(11),
     whiteSpace: 'nowrap',
     border: `${v.listItemFocusBorderWidth} solid transparent`,
     backgroundColor: v.listItemBackgroundColor,
@@ -43,7 +46,10 @@ const dropdownItemStyles: ComponentSlotStylesPrepared<DropdownItemStylesProps, D
     }),
   }),
   image: (): ICSSInJSStyle => ({
-    margin: `${pxToRem(3)} ${pxToRem(12)} ${pxToRem(3)} ${pxToRem(4)}`,
+    marginLeft: pxToRem(3),
+    marginRight: pxToRem(12),
+    marginTop: pxToRem(3),
+    marginBottom: pxToRem(4),
   }),
   header: ({ props: p, variables: v }): ICSSInJSStyle => ({
     flexGrow: 1,

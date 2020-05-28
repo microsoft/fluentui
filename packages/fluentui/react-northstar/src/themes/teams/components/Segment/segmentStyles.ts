@@ -2,6 +2,7 @@ import { SegmentStylesProps } from '../../../../components/Segment/Segment';
 import { ICSSInJSStyle, ComponentSlotStylesPrepared } from '@fluentui/styles';
 import { SegmentVariables } from './segmentVariables';
 import { getColorScheme } from '../../colors';
+import { padding } from '../../../../../../styles/src';
 
 const segmentStyles: ComponentSlotStylesPrepared<SegmentStylesProps, SegmentVariables> = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => {
@@ -13,7 +14,7 @@ const segmentStyles: ComponentSlotStylesPrepared<SegmentStylesProps, SegmentVari
       borderStyle: v.borderStyle,
       borderWidth: v.borderWidth,
       boxShadow: v.boxShadow,
-      padding: v.padding,
+      ...padding(v.padding),
       color: v.color,
       backgroundColor: v.backgroundColor,
       ...(p.color && { borderColor: colors.foreground }),

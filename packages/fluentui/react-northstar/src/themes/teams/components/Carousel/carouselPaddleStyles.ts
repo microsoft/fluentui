@@ -1,4 +1,4 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import { ComponentSlotStylesPrepared, ICSSInJSStyle, padding } from '@fluentui/styles';
 import {
   CarouselPaddleStylesProps,
   carouselPaddleSlotClassNames,
@@ -49,7 +49,7 @@ const carouselPaddleStyles: ComponentSlotStylesPrepared<CarouselPaddleStylesProp
       cursor: 'pointer',
 
       outline: 0,
-      padding: 0,
+      ...padding('0'),
       borderWidth,
       borderStyle: 'solid',
       borderColor: v.paddleBorderColor,

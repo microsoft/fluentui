@@ -18,8 +18,18 @@ const menuDividerStyles: ComponentSlotStylesPrepared<MenuDividerStylesProps, Men
         }),
       ...(p.pills && {
         ...(p.vertical
-          ? { margin: `0 0 ${verticalPillsBottomMargin} 0` }
-          : { margin: `0 ${horizontalPillsRightMargin} 0 0` }),
+          ? {
+              marginRight: 0,
+              marginLeft: verticalPillsBottomMargin,
+              marginBottom: '0',
+              marginTop: '0',
+            }
+          : {
+              marginRight: '0',
+              marginLeft: '0',
+              marginBottom: horizontalPillsRightMargin,
+              marginTop: '0',
+            }),
       }),
       ...(p.hasContent
         ? {
@@ -35,7 +45,10 @@ const menuDividerStyles: ComponentSlotStylesPrepared<MenuDividerStylesProps, Men
             }),
             ...(p.vertical &&
               p.inSubmenu && {
-                margin: '8px 0',
+                marginRight: '8px',
+                marginLeft: '8px',
+                marginBottom: '0',
+                marginTop: '0',
               }),
           }),
     };

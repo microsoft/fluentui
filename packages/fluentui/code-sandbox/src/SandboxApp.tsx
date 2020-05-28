@@ -46,7 +46,13 @@ const SandboxApp: React.FunctionComponent = props => {
   const [theme, setTheme] = React.useState(items[0].value);
 
   return (
-    <Provider theme={themes[theme]} styles={{ height: '100vh', padding: '1rem' }}>
+    <Provider
+      theme={themes[theme]}
+      styles={{
+        height: '100vh',
+        // padding: '1rem',
+      }}
+    >
       {/* TODO: Load it in more React way */}
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.16.0/themes/prism-tomorrow.min.css" />
 

@@ -1,7 +1,10 @@
 import { pxToRem } from '../../../../utils';
 
 export type AttachmentVariables = {
-  padding: string;
+  paddingTop: string;
+  paddingRight: string;
+  paddingBottom: string;
+  paddingLeft: string;
   iconSpace: string;
   iconSize: string;
 
@@ -44,7 +47,11 @@ export type AttachmentVariables = {
 };
 
 export default (siteVariables: any): AttachmentVariables => ({
-  padding: `${pxToRem(7)} ${pxToRem(3)} ${pxToRem(7)} ${pxToRem(11)}`, // padding set to 1px less to account for 1px border
+  paddingTop: pxToRem(7),
+  paddingRight: pxToRem(3),
+  paddingBottom: pxToRem(7),
+  paddingLeft: pxToRem(11), // padding set to 1px less to account for 1px border
+
   iconSpace: pxToRem(12),
   iconSize: pxToRem(32),
   borderColor: siteVariables.colors.grey[200],

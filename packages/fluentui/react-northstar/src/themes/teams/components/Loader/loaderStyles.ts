@@ -1,4 +1,4 @@
-import { ComponentSlotStylesPrepared, ComponentStyleFunctionParam, ICSSInJSStyle } from '@fluentui/styles';
+import { ComponentSlotStylesPrepared, ComponentStyleFunctionParam, ICSSInJSStyle, margin } from '@fluentui/styles';
 import { FlexDirectionProperty } from 'csstype';
 import { LoaderStylesProps } from '../../../../components/Loader/Loader';
 import { LoaderVariables } from './loaderVariables';
@@ -77,7 +77,7 @@ const loaderStyles: ComponentSlotStylesPrepared<LoaderStylesProps, LoaderVariabl
     };
   },
   label: () => ({
-    margin: pxToRem(10),
+    ...margin(pxToRem(10)),
   }),
 };
 

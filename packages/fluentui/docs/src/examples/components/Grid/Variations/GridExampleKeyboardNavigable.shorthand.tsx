@@ -26,8 +26,8 @@ const imageButtonStyles = {
   minWidth: '72px',
   maxWidth: '72px',
   height: '72px',
-  padding: '0',
-  margin: '0',
+  // padding: '0',
+  // margin: '0',
 };
 
 const renderImages = () => {

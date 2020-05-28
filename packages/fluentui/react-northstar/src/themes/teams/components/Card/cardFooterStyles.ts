@@ -1,4 +1,4 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import { ComponentSlotStylesPrepared, ICSSInJSStyle, margin } from '@fluentui/styles';
 import { CardVariables } from './cardVariables';
 import { CardFooterStylesProps } from '../../../../components/Card/CardFooter';
 
@@ -7,8 +7,8 @@ const cardFooterStyles: ComponentSlotStylesPrepared<CardFooterStylesProps, CardV
     return {
       display: 'flex',
       flexDirection: 'column',
-      margin: v.footerMargin,
-      ...(p.fitted && { margin: v.fittedFooterMargin }),
+      ...margin(v.footerMargin),
+      ...(p.fitted && margin(v.fittedFooterMargin)),
     };
   },
 };

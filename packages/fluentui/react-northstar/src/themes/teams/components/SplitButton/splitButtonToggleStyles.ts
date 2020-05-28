@@ -1,4 +1,4 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import { ComponentSlotStylesPrepared, ICSSInJSStyle, padding } from '@fluentui/styles';
 import { SplitButtonToggleStylesProps } from '../../../../components/SplitButton/SplitButtonToggle';
 import { SplitButtonVariables } from './splitButtonVariables';
 import getBorderFocusStyles from '../../getBorderFocusStyles';
@@ -45,7 +45,7 @@ const splitButtonToggleStyles: ComponentSlotStylesPrepared<SplitButtonToggleStyl
       cursor: 'pointer',
 
       outline: 0,
-      padding: 0,
+      ...padding('0'),
       borderWidth,
       borderStyle: 'solid',
       borderColor: v.toggleButtonBorderColor,

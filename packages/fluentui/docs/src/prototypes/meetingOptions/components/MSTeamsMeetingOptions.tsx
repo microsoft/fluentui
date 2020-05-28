@@ -23,7 +23,14 @@ export default () => {
           <Input placeholder="People in my organization" fluid />
         </Grid>
         <TransparentDivider size={10} />
-        <Button content="Save" styles={{ float: 'right', margin: '0px' }} primary />
+        <Button
+          content="Save"
+          styles={{
+            float: 'right',
+            // margin: '0px',
+          }}
+          primary
+        />
       </div>
     </div>
   );

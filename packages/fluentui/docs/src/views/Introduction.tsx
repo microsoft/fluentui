@@ -22,7 +22,7 @@ const Introduction = () => (
         {_.capitalize(pkg.name)}
         <Header.Description
           styles={{
-            margin: 0,
+            // margin: 0,
             fontSize: '1.14285714rem',
           }}
         >

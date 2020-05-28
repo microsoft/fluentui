@@ -79,7 +79,7 @@ const ChatExampleWithControlMessages = () => {
           },
           ListItem: {
             root: {
-              padding: 0,
+              // padding: 0,
               display: 'block',
               minHeight: '25px',
             },

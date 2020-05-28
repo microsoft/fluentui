@@ -14,7 +14,10 @@ const dropdownSelectedItemStyles: ComponentSlotStylesPrepared<DropdownSelectedIt
 
     return {
       cursor: 'pointer',
-      margin: '.25rem 0 0 .4rem',
+      marginLeft: '.25rem',
+      marginTop: '0',
+      marginBottom: '0',
+      marginRight: '.4rem',
       color: v.selectedItemColor,
       position: 'relative',
       border: v.selectedItemBorder,

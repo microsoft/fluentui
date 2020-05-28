@@ -13,7 +13,13 @@ const knobComponents: Partial<KnobComponents> = {
     />
   ),
   LogInspector: props => (
-    <Segment styles={{ padding: 0 }}>
+    <Segment
+      styles={
+        {
+          // padding: 0
+        }
+      }
+    >
       <div style={{ display: 'flex', padding: 5 }}>
         <div style={{ flexGrow: 1 }}>
           <Text weight="semibold">Event log</Text>

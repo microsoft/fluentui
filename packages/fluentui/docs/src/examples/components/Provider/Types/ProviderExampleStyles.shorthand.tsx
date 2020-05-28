@@ -4,7 +4,7 @@ import { mergeThemes, Provider, teamsDarkTheme } from '@fluentui/react-northstar
 const ProviderExampleShorthand = () => (
   <Provider
     variables={{ background: 'red' }}
-    design={{ padding: '20px' }}
+    // design={{ padding: '20px' }}
     styles={{ borderBottom: '3px solid blue' }}
     theme={mergeThemes(teamsDarkTheme, {
       siteVariables: {

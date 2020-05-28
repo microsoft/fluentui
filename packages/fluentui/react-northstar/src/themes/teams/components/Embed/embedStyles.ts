@@ -1,4 +1,4 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import { ComponentSlotStylesPrepared, ICSSInJSStyle, padding } from '@fluentui/styles';
 import { pxToRem } from '../../../../utils';
 import { EmbedStylesProps, embedSlotClassNames } from '../../../../components/Embed/Embed';
 import { EmbedVariables } from './embedVariables';
@@ -43,7 +43,7 @@ export default {
     height: pxToRem(48),
     color: v.controlColor,
 
-    padding: pxToRem(4),
+    ...padding(pxToRem(4)),
     borderRadius: '50%',
 
     backgroundImage: playIndicatorUrl(v.controlColor),

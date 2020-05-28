@@ -2,7 +2,13 @@ import * as React from 'react';
 import { Box, Grid, Popup } from '@fluentui/react-northstar';
 
 const PopupExamplePointerMargin = () => (
-  <Grid columns={1} styles={{ margin: '200px', gridGap: '100px' }}>
+  <Grid
+    columns={1}
+    styles={{
+      // margin: '200px',
+      gridGap: '100px',
+    }}
+  >
     <Popup
       align="start"
       content="Sample popup"

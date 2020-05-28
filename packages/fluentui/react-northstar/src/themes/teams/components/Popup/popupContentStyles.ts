@@ -3,6 +3,7 @@ import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { PopupContentStylesProps } from '../../../../components/Popup/PopupContent';
 import { PopupContentVariables } from './popupContentVariables';
 import { getContainerStyles, getPointerStyles } from '../../getPointerStyles';
+import { padding } from '../../../../../../styles/src';
 
 const popupContentStyles: ComponentSlotStylesPrepared<PopupContentStylesProps, PopupContentVariables> = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => ({
@@ -41,7 +42,7 @@ const popupContentStyles: ComponentSlotStylesPrepared<PopupContentStylesProps, P
     border: `${v.borderSize} solid ${v.borderColor}`,
     borderRadius: v.borderRadius,
 
-    padding: v.padding,
+    ...padding(v.padding),
     transform: 'rotate(360deg)',
 
     ...(p.pointing && {

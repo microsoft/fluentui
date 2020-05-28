@@ -104,7 +104,7 @@ export default () => (
             color: 'coral',
             backgroundColor: 'charcoal',
             fontSize: '14px',
-            padding: '0 10px',
+            // padding: '0 10px',
           }}
         />
       )}

@@ -1,4 +1,4 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import { ComponentSlotStylesPrepared, ICSSInJSStyle, margin, padding } from '@fluentui/styles';
 import { CheckboxStylesProps, checkboxSlotClassNames } from '../../../../components/Checkbox/Checkbox';
 import { CheckboxVariables } from './checkboxVariables';
 import getBorderFocusStyles from '../../getBorderFocusStyles';
@@ -32,7 +32,7 @@ const checkboxStyles: ComponentSlotStylesPrepared<CheckboxStylesProps, CheckboxV
     outline: 0,
 
     color: v.textColor,
-    padding: v.rootPadding,
+    ...padding(v.rootPadding),
     verticalAlign: 'middle',
     alignItems: 'start',
 
@@ -107,8 +107,8 @@ const checkboxStyles: ComponentSlotStylesPrepared<CheckboxStylesProps, CheckboxV
     borderRadius: v.borderRadius,
     borderWidth: v.borderWidth,
     color: v.indicatorColor,
-    margin: v.margin,
-    padding: v.padding,
+    ...margin(v.margin),
+    ...padding(v.padding),
     userSelect: 'none',
 
     backgroundImage: checkboxIndicatorUrl(v.indicatorColor, v.background),
@@ -151,7 +151,7 @@ const checkboxStyles: ComponentSlotStylesPrepared<CheckboxStylesProps, CheckboxV
     borderStyle: v.borderStyle,
     borderRadius: v.toggleBorderRadius,
     borderWidth: v.borderWidth,
-    margin: v.toggleMargin,
+    ...margin(v.toggleMargin),
     userSelect: 'none',
     width: v.toggleWidth,
     height: v.toggleHeight,

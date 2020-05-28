@@ -23,7 +23,7 @@ class EmployeeCard extends React.Component<Extendable<EmployeeCardProps>, any> {
           gridTemplateColumns: '80% 20%',
           msGridColumns: '80% 20%',
           width: '320px',
-          padding: '10px 20px 10px 10px',
+          // padding: '10px 20px 10px 10px',
           background: 'white',
         }}
         {...restProps}

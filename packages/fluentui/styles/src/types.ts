@@ -40,11 +40,14 @@ export interface ICSSPseudoElementStyle extends ICSSInJSStyle {
   content?: string;
 }
 
-export type ICSSInJSStyle = Omit<CSSProperties, 'display'> & {
+export type ICSSInJSStyle = Omit<CSSProperties, 'display' | 'margin' | 'padding'> & {
   // TODO Questionable: how else would users target their own children?
   [key: string]: any;
 
   display?: CSSProperties['display'] | CSSProperties['display'][];
+
+  padding?: never;
+  margin?: never;
 
   // missing React.CSSProperties
   speak?: CSS.Globals | 'none' | 'normal' | 'spell-out';

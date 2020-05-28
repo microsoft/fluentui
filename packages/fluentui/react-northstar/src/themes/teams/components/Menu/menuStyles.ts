@@ -1,5 +1,5 @@
 import { pxToRem } from '../../../../utils';
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import { ComponentSlotStylesPrepared, ICSSInJSStyle, margin, padding } from '@fluentui/styles';
 import { MenuStylesProps } from '../../../../components/Menu/Menu';
 import { MenuVariables } from './menuVariables';
 import { getColorScheme } from '../../colors';
@@ -12,8 +12,8 @@ const menuStyles: ComponentSlotStylesPrepared<MenuStylesProps, MenuVariables> = 
     return {
       display: 'flex',
       minHeight: pxToRem(24),
-      margin: 0,
-      padding: 0,
+      ...margin('0'),
+      ...padding('0'),
       color: v.color,
       backgroundColor: v.backgroundColor || 'inherit',
       listStyleType: 'none',
@@ -21,7 +21,11 @@ const menuStyles: ComponentSlotStylesPrepared<MenuStylesProps, MenuVariables> = 
       ...(vertical && {
         flexDirection: 'column',
         backgroundColor: v.verticalBackgroundColor,
-        padding: `${pxToRem(8)} 0`,
+        paddingLeft: pxToRem(8),
+        paddingRight: pxToRem(8),
+        paddingTop: 0,
+        paddingBottom: 0,
+
         ...(submenu && {
           boxShadow: v.verticalBoxShadow,
         }),

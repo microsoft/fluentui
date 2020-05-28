@@ -5,8 +5,8 @@ import { expandProperty } from 'inline-style-expand-shorthand';
 // https://jsperf.com/array-indexof-vs-object-key-lookup2/12
 const handledCssProps: Partial<Record<keyof CSS.Properties, true>> = {
   // 'font', Oops, is not supported by inline-style-expand-shorthand
-  padding: true,
-  margin: true,
+  // padding: true,
+  // margin: true,
   border: true,
   borderWidth: true,
   borderStyle: true,

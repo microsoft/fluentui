@@ -27,7 +27,10 @@ class ChatPaneContainer extends React.PureComponent<ChatPaneContainerProps> {
             >
               Message list.
             </div>
-            <Chat items={items} styles={{ padding: '0 32px' }} />
+            <Chat
+              items={items}
+              // styles={{ padding: '0 32px' }}
+            />
           </div>
         </Scrollbars>
       )

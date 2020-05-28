@@ -1,9 +1,9 @@
-import { StaticStyleFunction } from '@fluentui/styles';
+import { margin, padding, StaticStyleFunction } from '@fluentui/styles';
 
 const globalStyles: StaticStyleFunction = siteVars => ({
   body: {
-    padding: siteVars.bodyPadding,
-    margin: siteVars.bodyMargin,
+    ...margin(siteVars.bodyMargin),
+    ...padding(siteVars.bodyPadding),
     fontFamily: siteVars.bodyFontFamily,
     fontSize: siteVars.bodyFontSize,
     lineHeight: siteVars.bodyLineHeight,

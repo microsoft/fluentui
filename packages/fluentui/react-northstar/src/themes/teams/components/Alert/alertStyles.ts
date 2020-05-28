@@ -1,4 +1,4 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle, SiteVariablesPrepared } from '@fluentui/styles';
+import { ComponentSlotStylesPrepared, ICSSInJSStyle, margin, padding, SiteVariablesPrepared } from '@fluentui/styles';
 import { AlertStylesProps } from '../../../../components/Alert/Alert';
 import { AlertVariables } from './alertVariables';
 import { AlertDismissActionStylesProps } from '../../../../components/Alert/AlertDismissAction';
@@ -74,7 +74,7 @@ const alertStyles: ComponentSlotStylesPrepared<AlertStylesProps, AlertVariables>
     borderWidth: v.borderWidth,
     borderRadius: v.borderRadius,
     minHeight: v.minHeight,
-    padding: v.padding,
+    ...padding(v.padding),
     fontWeight: v.fontWeight,
     visibility: 'visible',
 
@@ -90,7 +90,7 @@ const alertStyles: ComponentSlotStylesPrepared<AlertStylesProps, AlertVariables>
 
     ...(p.fitted && { display: 'inline-flex' }),
 
-    ...(p.dismissible && { padding: v.dismissiblePadding }),
+    ...(p.dismissible && padding(v.dismissiblePadding)),
 
     ...(!p.visible && {
       visibility: 'hidden',
@@ -98,12 +98,12 @@ const alertStyles: ComponentSlotStylesPrepared<AlertStylesProps, AlertVariables>
   }),
 
   actions: ({ variables: v }): ICSSInJSStyle => ({
-    margin: v.actionsMargin,
+    ...margin(v.actionsMargin),
   }),
 
   header: ({ variables: v }): ICSSInJSStyle => ({
     fontWeight: v.headerFontWeight,
-    margin: v.headerMargin,
+    ...margin(v.headerMargin),
   }),
 
   body: (): ICSSInJSStyle => ({
@@ -131,7 +131,7 @@ const alertStyles: ComponentSlotStylesPrepared<AlertStylesProps, AlertVariables>
       },
     },
 
-    margin: v.iconMargin,
+    ...margin(v.iconMargin),
   }),
 };
 

@@ -1,4 +1,4 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import { ComponentSlotStylesPrepared, ICSSInJSStyle, margin, padding } from '@fluentui/styles';
 import { dropdownSlotClassNames, DropdownProps, DropdownState } from '../../../../components/Dropdown/Dropdown';
 import { DropdownVariables } from './dropdownVariables';
 import { pxToRem } from '../../../../utils';
@@ -52,7 +52,7 @@ const dropdownStyles: ComponentSlotStylesPrepared<DropdownPropsAndState, Dropdow
     cursor: 'pointer',
     userSelect: 'none',
 
-    margin: 0,
+    ...margin('0'),
     position: 'absolute',
     right: pxToRem(6),
     height: '100%',
@@ -151,9 +151,9 @@ const dropdownStyles: ComponentSlotStylesPrepared<DropdownPropsAndState, Dropdow
       overflow: 'hidden',
       boxShadow: 'none',
       ...transparentColorStyleObj,
-      margin: '0',
+      ...margin('0'),
       justifyContent: 'left',
-      padding: v.comboboxPaddingButton,
+      ...padding(v.comboboxPaddingButton),
       ...(p.multiple && { minWidth: 0, flex: 1 }),
       ...transparentColorStyleObj,
       ':focus': {
@@ -204,7 +204,7 @@ const dropdownStyles: ComponentSlotStylesPrepared<DropdownPropsAndState, Dropdow
     ...(p.position === 'below' && { borderRadius: v.belowListBorderRadius }),
     ...(p.open && {
       boxShadow: v.listBoxShadow,
-      padding: v.listPadding,
+      ...padding(v.listPadding),
     }),
   }),
 
@@ -235,7 +235,7 @@ const dropdownStyles: ComponentSlotStylesPrepared<DropdownPropsAndState, Dropdow
     }),
     userSelect: 'none',
 
-    margin: 0,
+    ...margin('0'),
     position: 'absolute',
     right: pxToRem(8),
     height: '100%',

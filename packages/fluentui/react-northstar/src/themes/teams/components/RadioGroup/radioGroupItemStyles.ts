@@ -6,6 +6,7 @@ import {
 import { RadioGroupItemVariables } from './radioGroupItemVariables';
 import { pxToRem } from '../../../../utils';
 import getBorderFocusStyles from '../../getBorderFocusStyles';
+import { padding } from '../../../../../../styles/src';
 
 const restHoverFocusTextColor = textColor => ({
   color: textColor,
@@ -31,7 +32,7 @@ const radioStyles: ComponentSlotStylesPrepared<RadioGroupItemStylesProps, RadioG
     cursor: 'pointer',
     display: p.vertical ? 'flex' : 'inline-flex',
     fontSize: v.textFontSize,
-    padding: v.padding,
+    ...padding(v.padding),
 
     ':hover': {
       color: v.textColorDefaultHoverFocus,
@@ -62,7 +63,11 @@ const radioStyles: ComponentSlotStylesPrepared<RadioGroupItemStylesProps, RadioG
   }),
 
   indicator: ({ props: p, variables: v }): ICSSInJSStyle => ({
-    margin: `0 ${pxToRem(12)} 0 0`,
+    marginLeft: 0,
+    marginRight: pxToRem(12),
+    marginTop: 0,
+    marginBottom: 0,
+
     borderRadius: '50%',
     borderWidth: '1px',
     borderStyle: 'solid',

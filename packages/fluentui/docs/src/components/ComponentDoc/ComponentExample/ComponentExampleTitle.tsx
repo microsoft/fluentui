@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Header, Text, screenReaderContainerStyles } from '@fluentui/react-northstar';
 
 const titleStyle = {
-  margin: 0,
+  // margin: 0,
 };
 
 interface ComponentExampleTitleProps {
