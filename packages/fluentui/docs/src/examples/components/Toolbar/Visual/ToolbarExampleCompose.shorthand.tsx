@@ -13,6 +13,7 @@ import {
   ToolbarMenuRadioGroup,
   ToolbarMenuItemIcon,
   ToolbarMenuItemSubmenuIndicator,
+  ToolbarMenu,
   ToolbarProps,
   ToolbarStylesProps,
   ToolbarMenuDividerProps,
@@ -45,6 +46,8 @@ import {
   ToolbarMenuRadioGroupProps,
   ToolbarMenuItemStylesProps,
   ToolbarMenuItemProps,
+  ToolbarMenuProps,
+  ToolbarMenuStylesProps,
 } from '@fluentui/react-northstar';
 import * as React from 'react';
 import {
@@ -190,6 +193,15 @@ const ToolbarMenuRadioGroupViolet = compose<'ul', {}, {}, ToolbarMenuRadioGroupP
   },
 );
 
+const ToolbarMenuBlue = compose<'ul', {}, {}, ToolbarMenuProps, ToolbarMenuStylesProps>(ToolbarMenu, {
+  displayName: 'ToolbarMenuBlue',
+  slots: {
+    item: ToolbarMenuItemGrey,
+    divider: ToolbarMenuDividerBlue,
+    group: ToolbarMenuRadioGroupViolet,
+  },
+});
+
 const themeOverrides: ThemeInput = {
   componentVariables: {
     ToolbarMenuDividerBlue: {
@@ -271,6 +283,11 @@ const themeOverrides: ThemeInput = {
         border: '1px dashed lightgrey',
       },
     },
+    ToolbarMenuBlue: {
+      root: {
+        background: '#e0f8ff',
+      },
+    },
   },
 };
 
@@ -322,25 +339,18 @@ const ToolbarExampleMenuShorthand = () => {
                   content: 'Play',
                   icon: <PlayIcon />,
                   active: true,
-                  // TODO: replace this with slots after compose in enabled in ToolbarMenu
-                  children: (C, p) => <ToolbarMenuItemGrey {...p} />,
                 },
                 {
                   key: 'pause',
                   content: 'Pause',
                   icon: <PauseIcon />,
                   menu: ['Pause 1.1'],
-                  // TODO: replace this with slots after compose in enabled in ToolbarMenu
-                  children: (C, p) => <ToolbarMenuItemGrey {...p} />,
                 },
                 {
                   key: 'divider',
                   kind: 'divider',
-                  // TODO: replace this with slots after compose in enabled in ToolbarMenu
-                  children: (C, p) => <ToolbarMenuDividerBlue {...p} />,
                 },
-                // TODO: replace this with slots after compose in enabled in ToolbarMenu
-                { content: 'Without icon', children: (C, p) => <ToolbarMenuItemGrey {...p} /> },
+                { content: 'Without icon' },
                 {
                   key: 'group',
                   kind: 'group',
@@ -348,10 +358,9 @@ const ToolbarExampleMenuShorthand = () => {
                     { key: 'bullets', icon: <BulletsIcon /> },
                     { key: 'to-do-list', icon: <ToDoListIcon /> },
                   ],
-                  // TODO: replace this with slots after compose in enabled in ToolbarMenu
-                  children: (C, p) => <ToolbarMenuRadioGroupViolet {...p} />,
                 },
               ],
+              children: (C, p) => <ToolbarMenuBlue {...p} />,
             },
             menuOpen: true,
           },
