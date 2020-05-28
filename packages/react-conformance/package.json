@@ -29,7 +29,7 @@
     "@uifabric/tslint-rules": "^7.2.1",
     "enzyme": "^3.0.0",
     "enzyme-adapter-react-16": "^1.0.0",
-    "jest": "^24.0.0",
+    "jest": "~24.9.0",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6"
@@ -40,6 +40,9 @@
   "peerDependencies": {
     "@types/react": ">=16.8.0 <17.0.0",
     "@types/react-dom": ">=16.8.0 <17.0.0",
+    "enzyme": "^3.0.0",
+    "enzyme-adapter-react-16": "^1.0.0",
+    "jest": "^24.0.0",
     "react": ">=16.8.0 <17.0.0",
     "react-dom": ">=16.8.0 <17.0.0"
   }

@@ -3,7 +3,7 @@ export interface IsConformantOptions {
   tests: String[];
   requiredProps?: object;
   exportedAtTopLevel: boolean;
-  packageRoot: any;
+  // packageRoot: any;
 }
 
 export type ConformanceTest = () => void;
