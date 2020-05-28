@@ -84,6 +84,13 @@ export interface ISelectionZoneProps extends React.ClassAttributes<SelectionZone
    */
   enterModalOnTouch?: boolean;
   /**
+   * Determines whether elements with the attribute `data-selection-touch-invoke` should be used as invocation targets
+   * for an item if the user is using touch.
+   *
+   * @defaultvalue false
+   */
+  enableTouchInvocationTarget?: boolean;
+  /**
    * Determines if an item is selected on focus.
    *
    * @defaultvalue true
@@ -335,6 +342,8 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, ISelecti
   };
 
   private _onClick = (ev: React.MouseEvent<HTMLElement>): void => {
+    const { enableTouchInvocationTarget: enableItemTouchInvocationTarget = false } = this.props;
+
     this._updateModifiers(ev);
 
     let target = ev.target as HTMLElement;
@@ -361,7 +370,9 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, ISelecti
           }
           break;
         } else if (
-          (this._isTouch && this._hasAttribute(target, SELECTION_INVOKE_TOUCH_ATTRIBUTE_NAME)) ||
+          (this._isTouch &&
+            enableItemTouchInvocationTarget &&
+            this._hasAttribute(target, SELECTION_INVOKE_TOUCH_ATTRIBUTE_NAME)) ||
           this._hasAttribute(target, SELECTION_INVOKE_ATTRIBUTE_NAME)
         ) {
           // Items should be invokable even if selection is disabled.
