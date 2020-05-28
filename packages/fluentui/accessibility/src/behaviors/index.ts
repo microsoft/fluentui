@@ -78,6 +78,7 @@ export * from './HierarchicalTree/hierarchicalTreeBehavior';
 export { default as hierarchicalTreeItemBehavior } from './HierarchicalTree/hierarchicalTreeItemBehavior';
 export * from './HierarchicalTree/hierarchicalTreeItemBehavior';
 export { default as hierarchicalTreeTitleBehavior } from './HierarchicalTree/hierarchicalTreeTitleBehavior';
+export * from './HierarchicalTree/hierarchicalTreeTitleBehavior';
 export { default as hierarchicalSubtreeBehavior } from './HierarchicalTree/hierarchicalSubtreeBehavior';
 export { default as dialogBehavior } from './Dialog/dialogBehavior';
 export { default as statusBehavior } from './Status/statusBehavior';
