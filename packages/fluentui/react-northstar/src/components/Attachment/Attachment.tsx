@@ -3,13 +3,13 @@ import {
   ComponentWithAs,
   compose,
   getElementType,
+  mergeVariablesOverrides,
   useAccessibility,
   useStyles,
   useTelemetry,
   useUnhandledProps,
 } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
-import { mergeComponentVariables } from '@fluentui/styles';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
@@ -69,13 +69,6 @@ export interface AttachmentProps extends UIComponentProps, ChildrenComponentProp
 
 export type AttachmentStylesProps = Required<Pick<AttachmentProps, 'actionable' | 'disabled'>>;
 export const attachmentClassName = 'ui-attachment';
-
-// mergeComponentVariables is always creating a function even if the arguments are undefined
-// we have this temporary fix in place to avoid creating empty function because it is breaking caching
-// we should either fix mergeComponentVariables, or handle this in a more generic way
-const mergeShorthandVariables = (variables, shorthandVariables) => {
-  return (variables || shorthandVariables) && mergeComponentVariables(variables, shorthandVariables);
-};
 
 /**
  * An Attachment represents a file or media attachment, which may contain some metadata or actions.
@@ -152,7 +145,7 @@ const Attachment = compose<'div', AttachmentProps, AttachmentStylesProps, {}, {}
         {createShorthand(composeOptions.slots.icon, icon, {
           defaultProps: () => slotProps.icon,
           overrideProps: predefinedProps => ({
-            variables: mergeShorthandVariables(variables, predefinedProps.variables),
+            variables: mergeVariablesOverrides(variables, predefinedProps.variables),
           }),
         })}
 
@@ -165,25 +158,25 @@ const Attachment = compose<'div', AttachmentProps, AttachmentStylesProps, {}, {}
                   {createShorthand(composeOptions.slots.header, header, {
                     defaultProps: () => slotProps.header,
                     overrideProps: predefinedProps => ({
-                      variables: mergeShorthandVariables(variables, predefinedProps.variables),
+                      variables: mergeVariablesOverrides(variables, predefinedProps.variables),
                     }),
                   })}
                   {createShorthand(composeOptions.slots.description, description, {
                     defaultProps: () => slotProps.description,
                     overrideProps: predefinedProps => ({
-                      variables: mergeShorthandVariables(variables, predefinedProps.variables),
+                      variables: mergeVariablesOverrides(variables, predefinedProps.variables),
                     }),
                   })}
                 </>
               ),
-              variables: mergeShorthandVariables(variables, predefinedProps.variables),
+              variables: mergeVariablesOverrides(variables, predefinedProps.variables),
             }),
           })}
 
         {createShorthand(composeOptions.slots.action, action, {
           defaultProps: () => slotProps.action,
           overrideProps: predefinedProps => ({
-            variables: mergeShorthandVariables(variables, predefinedProps.variables),
+            variables: mergeVariablesOverrides(variables, predefinedProps.variables),
           }),
         })}
         {!_.isNil(progress) && <div className="ui-attachment__progress" style={{ width: `${progress}%` }} />}
