@@ -3,7 +3,13 @@ import * as React from 'react';
 
 const PopupExamplePointerOffset = () => (
   <>
-    <Grid columns={1} styles={{ gridGap: '50px', margin: '200px' }}>
+    <Grid
+      columns={1}
+      styles={{
+        gridGap: '50px',
+        // margin: '200px'
+      }}
+    >
       <Popup
         align="center"
         position="above"
@@ -36,7 +42,13 @@ const PopupExamplePointerOffset = () => (
       />
     </Grid>
     <Provider rtl>
-      <Grid columns={1} styles={{ gridGap: '50px', margin: '200px' }}>
+      <Grid
+        columns={1}
+        styles={{
+          gridGap: '50px',
+          // margin: '200px'
+        }}
+      >
         <Popup
           align="center"
           position="above"

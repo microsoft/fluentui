@@ -1,4 +1,4 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import { ComponentSlotStylesPrepared, ICSSInJSStyle, padding } from '@fluentui/styles';
 import { TooltipContentStylesProps } from '../../../../components/Tooltip/TooltipContent';
 import { TooltipContentVariables } from './tooltipContentVariables';
 import { getContainerStyles, getPointerStyles } from '../../getPointerStyles';
@@ -47,7 +47,7 @@ const tooltipContentStyles: ComponentSlotStylesPrepared<TooltipContentStylesProp
   }),
   content: ({ props: p, variables: v }): ICSSInJSStyle => ({
     display: 'block',
-    padding: v.padding,
+    ...padding(v.padding),
     textAlign: 'left',
 
     color: v.color,

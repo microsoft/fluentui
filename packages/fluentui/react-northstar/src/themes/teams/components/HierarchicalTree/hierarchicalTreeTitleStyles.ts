@@ -1,10 +1,13 @@
 import { ICSSInJSStyle } from '@fluentui/styles';
-import { pxToRem } from '../../../../utils';
 import getBorderFocusStyles from '../../getBorderFocusStyles';
 
 const hierarchicalTreeTitleStyles = {
   root: ({ variables, theme: { siteVariables } }): ICSSInJSStyle => ({
-    padding: `${pxToRem(1)} 0`,
+    listStyleType: 'none',
+    paddingLeft: 0,
+    paddingTop: '1px',
+    paddingRight: 0,
+    paddingBottom: '1px',
     cursor: 'pointer',
     color: variables.defaultColor,
     position: 'relative',

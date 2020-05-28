@@ -1,4 +1,4 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import { ComponentSlotStylesPrepared, ICSSInJSStyle, padding } from '@fluentui/styles';
 
 import { PopupContentStylesProps } from '../../../../components/Popup/PopupContent';
 import { PopupContentVariables } from './popupContentVariables';
@@ -41,7 +41,7 @@ const popupContentStyles: ComponentSlotStylesPrepared<PopupContentStylesProps, P
     border: `${v.borderSize} solid ${v.borderColor}`,
     borderRadius: v.borderRadius,
 
-    padding: v.padding,
+    ...padding(v.padding),
     transform: 'rotate(360deg)',
 
     ...(p.pointing && {

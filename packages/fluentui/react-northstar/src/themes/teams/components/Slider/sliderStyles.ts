@@ -1,7 +1,8 @@
 import * as React from 'react';
+import { ComponentSlotStylesPrepared, ICSSInJSStyle, margin, padding } from '@fluentui/styles';
+
 import { SliderVariables } from './sliderVariables';
 import { SliderStylesProps, sliderSlotClassNames } from '../../../../components/Slider/Slider';
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import getBorderFocusStyles from '../../getBorderFocusStyles';
 
 const selectors = {
@@ -54,8 +55,8 @@ const sliderStyles: ComponentSlotStylesPrepared<SliderStylesProps, SliderVariabl
       cursor: 'pointer',
       height: '100%',
       width: '100%',
-      margin: 0,
-      padding: 0,
+      ...margin('0'),
+      ...padding('0'),
       opacity: 0,
 
       [selectors.WEBKIT_THUMB]: { ...thumbStyles, '-webkit-appearance': 'none' },

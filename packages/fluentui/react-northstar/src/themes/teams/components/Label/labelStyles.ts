@@ -1,5 +1,5 @@
 import { pxToRem } from '../../../../utils';
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import { ComponentSlotStylesPrepared, ICSSInJSStyle, padding } from '@fluentui/styles';
 import { LabelStylesProps } from '../../../../components/Label/Label';
 import { LabelVariables } from './labelVariables';
 import { getColorScheme } from '../../colors';
@@ -18,7 +18,7 @@ const labelStyles: ComponentSlotStylesPrepared<LabelStylesProps, LabelVariables>
       backgroundColor: colors.foreground,
       fontSize: pxToRem(14),
       borderRadius: pxToRem(3),
-      padding: v.padding,
+      ...padding(v.padding),
       ...(p.hasImage &&
         (p.imagePosition === 'start' ? { paddingLeft: v.startPaddingLeft } : { paddingRight: v.endPaddingRight })),
       ...(p.circular && {

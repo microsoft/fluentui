@@ -15,7 +15,14 @@ class ChatPaneHeader extends React.PureComponent<ChatPaneHeaderProps> {
       <Flex column>
         <Flex.Item>{this.renderBanner()}</Flex.Item>
         {this.renderMainArea()}
-        <Divider size={2} styles={{ padding: '0 32px' }} />
+        <Divider
+          size={2}
+          styles={
+            {
+              // padding: '0 32px'
+            }
+          }
+        />
       </Flex>
     );
   }
@@ -24,7 +31,14 @@ class ChatPaneHeader extends React.PureComponent<ChatPaneHeaderProps> {
     return (
       <Segment
         content={
-          <TeamCreateIcon styles={{ margin: 'auto 8px' }} variables={siteVars => ({ color: siteVars.colors.white })} />
+          <TeamCreateIcon
+            styles={
+              {
+                // margin: 'auto 8px'
+              }
+            }
+            variables={siteVars => ({ color: siteVars.colors.white })}
+          />
         }
         styles={({ variables: v }) => ({
           backgroundColor: v.backgroundColor,
@@ -47,7 +61,7 @@ class ChatPaneHeader extends React.PureComponent<ChatPaneHeaderProps> {
         aria-labelledby="heading"
         hAlign="stretch"
         vAlign="center"
-        styles={{ height: '64px', padding: '0 32px' }}
+        // styles={{ height: '64px', padding: '0 32px' }}
       >
         <Avatar name={chat.title} />
         <div id="heading" role="heading" aria-level={2} aria-labelledby="chat-header-reader-text chat-header-title">
@@ -86,8 +100,8 @@ class ChatPaneHeader extends React.PureComponent<ChatPaneHeaderProps> {
               tabIndex={0}
               styles={{
                 fontWeight: 100,
-                margin: 'auto',
-                ...(!index && { margin: 'auto 1.6rem auto auto' }),
+                // margin: 'auto',
+                // ...(!index && { margin: 'auto 1.6rem auto auto' }),
               }}
               variables={siteVars => ({ color: siteVars.colors.grey[350] })}
             />

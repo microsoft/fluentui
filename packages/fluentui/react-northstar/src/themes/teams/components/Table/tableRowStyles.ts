@@ -1,4 +1,4 @@
-import { ComponentStyleFunctionParam, ICSSInJSStyle } from '@fluentui/styles';
+import { ComponentStyleFunctionParam, ICSSInJSStyle, padding } from '@fluentui/styles';
 import { TeamsTableVariables } from './tableVariables';
 import { TableRowStylesProps } from '../../../../components/Table/TableRow';
 import getBorderFocusStyles from '../../getBorderFocusStyles';
@@ -25,7 +25,7 @@ export default {
       borderStyle: 'solid',
       borderColor: 'transparent',
       borderBottomColor: v.rowBorderColor,
-      padding: v.rowPadding,
+      ...padding(v.rowPadding),
       position: 'relative',
       width: '100%',
       ':hover': {

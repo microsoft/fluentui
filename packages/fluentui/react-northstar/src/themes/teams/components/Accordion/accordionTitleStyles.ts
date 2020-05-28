@@ -8,7 +8,8 @@ const accordionTitleStyles: ComponentSlotStylesPrepared<AccordionTitleStylesProp
   root: ({ props: p }) => ({
     display: 'inline-block',
     verticalAlign: 'middle',
-    padding: '.5rem 0',
+    paddingTop: pxToRem(0.5),
+    paddingBottom: pxToRem(0.5),
     cursor: p.disabled ? 'default' : 'pointer',
   }),
   contentWrapper: ({ props: p }) => ({

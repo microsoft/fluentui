@@ -13,7 +13,7 @@ const gridStyles: ComponentSlotStylesPrepared<GridProps, GridVariables> = {
     return {
       height,
       width,
-      padding,
+      // padding,
       gridGap,
       display: ['grid', '-ms-grid'],
       justifyContent: 'space-evenly',

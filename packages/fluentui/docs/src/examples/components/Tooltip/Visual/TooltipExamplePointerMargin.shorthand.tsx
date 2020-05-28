@@ -2,7 +2,13 @@ import * as React from 'react';
 import { Box, Grid, Tooltip } from '@fluentui/react-northstar';
 
 const TooltipExamplePointerMargin = () => (
-  <Grid columns={1} styles={{ margin: '200px', gridGap: '100px' }}>
+  <Grid
+    columns={1}
+    styles={{
+      // margin: '200px',
+      gridGap: '100px',
+    }}
+  >
     <Tooltip
       align="start"
       content="Sample tooltip"

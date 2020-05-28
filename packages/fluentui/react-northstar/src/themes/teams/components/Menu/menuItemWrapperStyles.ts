@@ -46,8 +46,18 @@ const menuItemWrapperStyles: ComponentSlotStylesPrepared<MenuItemWrapperStylesPr
 
       ...(pills && {
         ...(vertical
-          ? { margin: `0 0 ${verticalPillsBottomMargin} 0` }
-          : { margin: `0 ${horizontalPillsRightMargin} 0 0` }),
+          ? {
+              marginLeft: 0,
+              marginRight: 0,
+              marginBottom: verticalPillsBottomMargin,
+              marginTop: 0,
+            }
+          : {
+              marginLeft: 0,
+              marginRight: 0,
+              marginBottom: horizontalPillsRightMargin,
+              marginTop: 0,
+            }),
         borderRadius: pxToRem(5),
       }),
 
@@ -56,8 +66,16 @@ const menuItemWrapperStyles: ComponentSlotStylesPrepared<MenuItemWrapperStylesPr
         alignItems: 'center',
         height: pxToRem(29),
         lineHeight: v.lineHeightBase,
-        padding: `0 ${pxToRem(4)}`,
-        margin: `0 ${pxToRem(4)} 0 0`,
+
+        paddingLeft: 0,
+        paddingRight: 0,
+        paddingBottom: pxToRem(4),
+        paddingTop: pxToRem(4),
+        marginLeft: 0,
+        marginRight: pxToRem(4),
+        marginBottom: 0,
+        marginTop: 0,
+
         ':nth-child(n+2)': {
           marginLeft: `${pxToRem(4)}`,
         },

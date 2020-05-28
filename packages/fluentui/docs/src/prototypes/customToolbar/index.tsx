@@ -102,7 +102,7 @@ const CustomToolbarPrototype: React.FunctionComponent = () => {
           <Flex
             hAlign="center"
             styles={{
-              padding: '200px 0 50px 0',
+              // padding: '200px 0 50px 0',
               backgroundColor: '#8EC5FC',
               backgroundImage: 'linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%)',
             }}

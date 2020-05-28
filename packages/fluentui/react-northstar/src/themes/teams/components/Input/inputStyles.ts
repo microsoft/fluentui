@@ -1,4 +1,4 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import { ComponentSlotStylesPrepared, ICSSInJSStyle, padding } from '@fluentui/styles';
 import { InputStylesProps } from '../../../../components/Input/Input';
 import { InputVariables } from './inputVariables';
 import { PositionProperty } from 'csstype';
@@ -31,7 +31,7 @@ const inputStyles: ComponentSlotStylesPrepared<InputStylesProps, InputVariables>
     borderWidth: v.borderWidth,
 
     outline: 'none',
-    padding: v.inputPadding,
+    ...padding(v.inputPadding),
     position: 'relative',
 
     ...(p.fluid && { width: '100%' }),
@@ -54,9 +54,10 @@ const inputStyles: ComponentSlotStylesPrepared<InputStylesProps, InputVariables>
     ':focus': {
       borderColor: v.inputFocusBorderColor,
     },
-    ...(p.clearable && { padding: v.inputPaddingWithIconAtEnd }),
+    ...(p.clearable && padding(v.inputPaddingWithIconAtEnd)),
     ...(p.hasIcon && {
-      padding: p.iconPosition === 'start' ? v.inputPaddingWithIconAtStart : v.inputPaddingWithIconAtEnd,
+      ...padding(v.inputPaddingWithIconAtEnd),
+      ...(p.iconPosition === 'start' && padding(v.inputPaddingWithIconAtStart)),
     }),
   }),
 

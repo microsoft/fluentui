@@ -1,4 +1,4 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import { ComponentSlotStylesPrepared, ICSSInJSStyle, padding } from '@fluentui/styles';
 import {
   AlertDismissActionStylesProps,
   alertDismissActionSlotClassNames,
@@ -41,7 +41,7 @@ const alertDismissActionStyles: ComponentSlotStylesPrepared<AlertDismissActionSt
       minWidth: v.dismissActionSize,
       color: v.dismissActionColor || 'currentColor',
       outline: 0,
-      padding: 0,
+      ...padding('0'),
       border: 0,
       backgroundColor: v.dismissActionBackgroundColor,
       borderRadius: v.borderRadius,

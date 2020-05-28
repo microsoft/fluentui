@@ -25,7 +25,7 @@ const PopupExampleOffset = () => (
               }}
             />
           }
-          styles={{ height: '80px', minWidth: '80px', padding: 0 }}
+          // styles={{ height: '80px', minWidth: '80px', padding: 0 }}
           title="Show popup"
         />
       }

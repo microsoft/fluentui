@@ -1,4 +1,4 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import { ComponentSlotStylesPrepared, ICSSInJSStyle, padding } from '@fluentui/styles';
 import { DropdownSearchInputStylesProps } from '../../../../components/Dropdown/DropdownSearchInput';
 import { DropdownVariables } from './dropdownVariables';
 
@@ -13,7 +13,7 @@ const dropdownSearchInputStyles: ComponentSlotStylesPrepared<DropdownSearchInput
     backgroundColor: 'transparent',
     borderWidth: 0,
     ...(p.inline && {
-      padding: 0,
+      ...padding('0'),
       lineHeight: 'initial',
     }),
   }),

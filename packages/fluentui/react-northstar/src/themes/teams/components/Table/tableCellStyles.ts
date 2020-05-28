@@ -1,4 +1,4 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import { ComponentSlotStylesPrepared, ICSSInJSStyle, padding } from '@fluentui/styles';
 import { TeamsTableVariables } from './tableVariables';
 import { TableCellStylesProps } from '../../../../components/Table/TableCell';
 import getBorderFocusStyles from '../../getBorderFocusStyles';
@@ -20,7 +20,7 @@ const tableCellStyles: ComponentSlotStylesPrepared<TableCellStylesProps, TeamsTa
       borderStyle: 'solid',
       borderColor: 'transparent',
       ...borderFocusStyles,
-      padding: v.cellPadding,
+      ...padding(v.cellPadding),
       position: 'relative',
       height: '100%',
     };
@@ -28,6 +28,7 @@ const tableCellStyles: ComponentSlotStylesPrepared<TableCellStylesProps, TeamsTa
   content: ({ props: p }): ICSSInJSStyle => {
     return {
       alignSelf: 'center',
+
       ...(p.truncateContent && {
         display: 'block',
         overflow: 'hidden',

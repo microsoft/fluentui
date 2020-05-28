@@ -1,3 +1,6 @@
+export { margin } from './expand/margin';
+export { padding } from './expand/padding';
+
 export { default as callable } from './callable';
 export { default as createTheme } from './createTheme';
 export { isEnabled as isDebugEnabled } from './debugEnabled';

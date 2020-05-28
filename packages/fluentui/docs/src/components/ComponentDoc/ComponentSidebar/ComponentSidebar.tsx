@@ -55,7 +55,12 @@ class ComponentSidebar extends React.Component<ComponentSidebarProps, any> {
 
     // TODO: use a Sticky component instead of position:fixed, when available
     return (
-      <Segment styles={{ padding: 0, position: 'fixed' }}>
+      <Segment
+        styles={{
+          // padding: 0,
+          position: 'fixed',
+        }}
+      >
         <Menu fluid vertical items={menuItems} styles={{ ...sidebarStyle }} />
       </Segment>
     );

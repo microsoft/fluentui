@@ -4,7 +4,7 @@ import { MenuVariables, menuColorAreas } from './menuVariables';
 import { MenuItemStylesProps } from '../../../../components/Menu/MenuItem';
 import { getColorScheme } from '../../colors';
 import getIconFillOrOutlineStyles from '../../getIconFillOrOutlineStyles';
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import { ComponentSlotStylesPrepared, ICSSInJSStyle, margin, padding } from '@fluentui/styles';
 
 export const verticalPillsBottomMargin = pxToRem(5);
 export const horizontalPillsRightMargin = pxToRem(8);
@@ -41,7 +41,7 @@ export const getFocusedStyles = ({
     ...(vertical && {
       border: `solid 1px ${v.borderColorFocus}`,
       outline: `solid 1px ${v.outlineColorFocus}`,
-      margin: pxToRem(1),
+      ...margin(pxToRem(1)),
       background: v.verticalBackgroundColorFocus,
       color: v.colorFocus || colors.foregroundFocus,
 
@@ -97,7 +97,12 @@ export const pointingBeak = ({
       top,
       left: '50%',
       transform: 'translateX(-50%) translateY(-50%) rotate(45deg)',
-      margin: '.5px 0 0',
+
+      marginLeft: '.5px',
+      marginRight: 0,
+      marginBottom: 0,
+      marginTop: 0,
+
       width: pxToRem(10),
       height: pxToRem(10),
       border: 'none',
@@ -129,14 +134,25 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemStylesProps, MenuVaria
         border: `${pxToRem(2)} solid transparent`,
       }),
 
-      padding: v.horizontalPadding,
-      ...(vertical && { padding: v.verticalItemPadding }),
-      ...(pointing && vertical && { padding: `${pxToRem(8)} ${pxToRem(18)}` }),
-      ...(underlined && { padding: `${pxToRem(4)} 0` }),
+      ...padding(v.horizontalPadding),
+      ...(vertical && padding(v.verticalItemPadding)),
+      ...(pointing &&
+        vertical && {
+          paddingLeft: pxToRem(8),
+          paddingRight: pxToRem(8),
+          paddingTop: pxToRem(18),
+          paddingBottom: pxToRem(18),
+        }),
+      ...(underlined && {
+        paddingLeft: pxToRem(4),
+        paddingRight: pxToRem(4),
+        paddingTop: 0,
+        paddingBottom: 0,
+      }),
 
       ...(iconOnly && {
-        margin: pxToRem(1),
-        padding: pxToRem(5), // padding works this way to get the border to only be 30x30px on focus which is the current design
+        ...margin(pxToRem(1)),
+        ...padding(pxToRem(5)), // padding works this way to get the border to only be 30x30px on focus which is the current design
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',

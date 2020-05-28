@@ -3,7 +3,7 @@ import {
   CarouselNavigationItemStylesProps,
   carouselNavigationItemSlotClassNames,
 } from '../../../../components/Carousel/CarouselNavigationItem';
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import { ComponentSlotStylesPrepared, ICSSInJSStyle, margin, padding } from '@fluentui/styles';
 import { CarouselNavigationVariables } from './carouselNavigationVariables';
 import { getColorScheme } from '../../colors';
 import getIconFillOrOutlineStyles from '../../getIconFillOrOutlineStyles';
@@ -27,15 +27,11 @@ const carouselNavigationItemStyles: ComponentSlotStylesPrepared<
         border: `${pxToRem(2)} solid transparent`,
       }),
 
-      ...(vertical
-        ? { padding: v.verticalItemPadding }
-        : {
-            padding: v.horizontalPadding,
-          }),
+      ...(vertical ? padding(v.verticalItemPadding) : padding(v.horizontalPadding)),
 
       ...(iconOnly && {
-        margin: pxToRem(1),
-        padding: pxToRem(5), // padding works this way to get the border to only be 30x30px on focus which is the current design
+        ...margin(pxToRem(1)),
+        ...padding(pxToRem(5)), // padding works this way to get the border to only be 30x30px on focus which is the current design
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',

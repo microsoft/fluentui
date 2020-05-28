@@ -1,4 +1,4 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import { ComponentSlotStylesPrepared, ICSSInJSStyle, padding } from '@fluentui/styles';
 import * as _ from 'lodash';
 import { ChatMessageStylesProps, chatMessageSlotClassNames } from '../../../../components/Chat/ChatMessage';
 import { ChatMessageVariables } from './chatMessageVariables';
@@ -147,7 +147,7 @@ const chatMessageStyles: ComponentSlotStylesPrepared<ChatMessageStylesProps, Cha
       color: v.badgeTextColor,
       boxShadow: v.badgeShadow,
       position: 'absolute',
-      padding: pxToRem(4),
+      ...padding(pxToRem(4)),
       height: 'auto',
       width: 'auto',
       borderRadius: '50%',

@@ -1,5 +1,5 @@
 import { debugRoot } from '../../../../styles/debugStyles';
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import { ComponentSlotStylesPrepared, ICSSInJSStyle, margin, padding } from '@fluentui/styles';
 import { ListStylesProps } from '../../../../components/List/List';
 
 const listStyles: ComponentSlotStylesPrepared<ListStylesProps> = {
@@ -8,8 +8,8 @@ const listStyles: ComponentSlotStylesPrepared<ListStylesProps> = {
     display: p.horizontal ? 'inline-flex' : 'block',
     ...(p.isListTag && {
       listStyle: 'none',
-      padding: 0,
-      margin: 0,
+      ...padding('0'),
+      ...margin('0'),
     }),
   }),
 };

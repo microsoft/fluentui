@@ -1,4 +1,4 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import { margin, padding, ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { getColorScheme } from '../../colors';
 import { ToolbarMenuStylesProps } from '../../../../components/Toolbar/ToolbarMenu';
 import { ToolbarVariables } from './toolbarVariables';
@@ -11,8 +11,8 @@ const toolbarMenuStyles: ComponentSlotStylesPrepared<ToolbarMenuStylesProps, Too
       display: 'flex',
       flexDirection: 'column',
       listStyleType: 'none',
-      margin: 0,
-      padding: v.menuPadding,
+      ...margin('0'),
+      ...padding(v.menuPadding),
       backgroundColor: v.menuBackground || colors.background,
       boxShadow: v.menuBoxShadow,
       borderStyle: 'solid',

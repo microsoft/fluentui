@@ -6,7 +6,7 @@ const debugStyle = ({ name, color, style }): ICSSInJSStyle => ({
   '::before': {
     content: `'${name}'`,
     position: 'absolute',
-    padding: '1px 4px 1px',
+    // padding: '1px 4px 1px',
     top: '-2px',
     left: '-2px',
     fontSize: '8px',
@@ -20,14 +20,14 @@ const debugStyle = ({ name, color, style }): ICSSInJSStyle => ({
 
 export const debugRoot = (): ICSSInJSStyle => ({
   ...debugStyle({ name: 'LAYOUT', color: 'cornflowerblue', style: 'solid' }),
-  padding: '8px',
-  margin: '2px',
+  // padding: '8px',
+  // margin: '2px',
 });
 
 export const debugArea = (): ICSSInJSStyle => ({
   ...debugStyle({ name: 'AREA', color: 'lightsalmon', style: 'dashed' }),
-  padding: '8px',
-  margin: '2px',
+  // padding: '8px',
+  // margin: '2px',
 });
 
 export const debugGap = ({ vertical }): ICSSInJSStyle => ({

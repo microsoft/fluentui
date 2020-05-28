@@ -442,7 +442,7 @@ class Sidebar extends React.Component<any, any> {
       overflowY: 'scroll',
       top: 0,
       left: 0,
-      padding: 0,
+      // padding: 0,
       height: '100%',
       zIndex: 1000,
     };
@@ -512,7 +512,14 @@ class Sidebar extends React.Component<any, any> {
     // TODO: bring back the active elements indicators
     return (
       <Segment styles={sidebarStyles}>
-        <Flex column hAlign="center" styles={{ padding: '1rem', background: 'black' }}>
+        <Flex
+          column
+          hAlign="center"
+          styles={{
+            // padding: '1rem',
+            background: 'black',
+          }}
+        >
           <Logo flavor="white" styles={logoStyles} />
           <Text
             role="heading"

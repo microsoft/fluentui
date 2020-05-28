@@ -1,4 +1,4 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import { ComponentSlotStylesPrepared, ICSSInJSStyle, padding } from '@fluentui/styles';
 import {
   RadioGroupItemStylesProps,
   radioGroupItemSlotClassNames,
@@ -31,7 +31,7 @@ const radioStyles: ComponentSlotStylesPrepared<RadioGroupItemStylesProps, RadioG
     cursor: 'pointer',
     display: p.vertical ? 'flex' : 'inline-flex',
     fontSize: v.textFontSize,
-    padding: v.padding,
+    ...padding(v.padding),
 
     ':hover': {
       color: v.textColorDefaultHoverFocus,
@@ -62,7 +62,11 @@ const radioStyles: ComponentSlotStylesPrepared<RadioGroupItemStylesProps, RadioG
   }),
 
   indicator: ({ props: p, variables: v }): ICSSInJSStyle => ({
-    margin: `0 ${pxToRem(12)} 0 0`,
+    marginLeft: 0,
+    marginRight: pxToRem(12),
+    marginTop: 0,
+    marginBottom: 0,
+
     borderRadius: '50%',
     borderWidth: '1px',
     borderStyle: 'solid',
