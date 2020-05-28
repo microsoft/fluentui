@@ -12,7 +12,7 @@ const rows = _.times(100, i => ({
 
 const TableManyItemsPerf = () => <Table header={header} rows={rows} />;
 
-TableManyItemsPerf.iterations = 200;
+TableManyItemsPerf.iterations = 20;
 TableManyItemsPerf.filename = 'TTableManyItems.perf.tsx';
 
 export default TableManyItemsPerf;
