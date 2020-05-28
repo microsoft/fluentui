@@ -1,8 +1,8 @@
 import { ITheme, IStyle } from 'office-ui-fabric-react/lib/Styling';
-import { IVerticalStackedChartProps } from '@uifabric/charting';
 import { IOverflowSetProps } from 'office-ui-fabric-react/lib/OverflowSet';
 import { IFocusZoneProps } from '@fluentui/react-focus';
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
+import { IVerticalStackedChartProps } from '../../types/index';
 
 export interface IVerticalStackedBarChartProps {
   /**
@@ -74,6 +74,13 @@ export interface IVerticalStackedBarChartProps {
    * focus zone props in hover card for legends
    */
   focusZonePropsForLegendsInHoverCard?: IFocusZoneProps;
+
+  /**
+   * Do not show tooltips in chart
+   *
+   * @default false
+   */
+  hideTooltip?: boolean;
 }
 
 export interface IVerticalStackedBarChartStyleProps {

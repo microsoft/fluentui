@@ -1,8 +1,12 @@
 import { RULE_TYPE } from 'fela-utils';
 // @ts-ignore
-import Stylis from 'stylis';
+import _Stylis from 'stylis';
 
 import { Renderer, RendererChange } from './types';
+
+// `stylis@3` is a CJS library, there are known issues with them:
+// https://github.com/rollup/rollup/issues/1267#issuecomment-446681320
+const Stylis = (_Stylis as any).default || _Stylis;
 
 // We use Stylis only for vendor prefixing, all other capabilities are disabled
 const stylis = new Stylis({
@@ -14,9 +18,10 @@ const stylis = new Stylis({
   semicolon: false,
 });
 
-const felaStylisEnhancer = (renderer: Renderer) => ({
-  ...renderer,
-  _emitChange: (change: RendererChange) => {
+const felaStylisEnhancer = (renderer: Renderer) => {
+  const existingEmitChange = renderer._emitChange.bind(renderer);
+
+  renderer._emitChange = (change: RendererChange) => {
     if (change.type === RULE_TYPE) {
       const prefixed: string = stylis('', change.declaration);
 
@@ -24,8 +29,10 @@ const felaStylisEnhancer = (renderer: Renderer) => ({
       change.declaration = prefixed.slice(1, -1);
     }
 
-    renderer._emitChange(change);
-  },
-});
+    existingEmitChange(change);
+  };
+
+  return renderer;
+};
 
 export default felaStylisEnhancer;

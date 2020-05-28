@@ -1,8 +1,44 @@
 # Change Log - @uifabric/file-type-icons
 
-This log was last generated on Thu, 16 Apr 2020 04:01:45 GMT and should not be manually modified.
+This log was last generated on Mon, 25 May 2020 12:38:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.2.49](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.2.49)
+
+Mon, 25 May 2020 12:38:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.2.44..@uifabric/file-type-icons_v7.2.49)
+
+### Patches
+
+- Add empty alt text for filetype icon img ([PR #13194](https://github.com/microsoft/fluentui/pull/13194) by erabelle@microsoft.com)
+
+## [7.2.44](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.2.44)
+
+Fri, 15 May 2020 00:07:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.2.40..@uifabric/file-type-icons_v7.2.44)
+
+### Patches
+
+- adding 'pbiapp' entry in file type icon mapping file ([PR #12865](https://github.com/microsoft/fluentui/pull/12865) by caperez@microsoft.com)
+
+## [7.2.40](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.2.40)
+
+Thu, 07 May 2020 01:06:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.2.39..@uifabric/file-type-icons_v7.2.40)
+
+### Patches
+
+- Addressing commonjs imports. ([PR #13031](https://github.com/microsoft/fluentui/pull/13031) by dzearing@microsoft.com)
+
+## [7.2.39](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.2.39)
+
+Wed, 06 May 2020 12:32:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.2.30..@uifabric/file-type-icons_v7.2.39)
+
+### Patches
+
+- Using a fresh version string to bust the CDN cache. I tested v1 and it brings back all the right icons. ([PR #13008](https://github.com/microsoft/fluentui/pull/13008) by caperez@microsoft.com)
 
 ## [7.2.30](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.2.30)
 

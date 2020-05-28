@@ -24,7 +24,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
 >
   <div
     aria-label="Document Card with document preview. Revenue stream proposal fiscal year 2016 version 2.
-          Created by Roko Kolar a few minutes ago"
+      Created by Roko Kolar a few minutes ago"
     className=
         ms-DocumentCard
         ms-DocumentCard--actionable
@@ -564,6 +564,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                     outline: none;
                   }
                   @media screen and (-ms-high-contrast: active){& {
+                    -ms-high-contrast-adjust: auto;
                     border-bottom: none;
                   }
                   &:active {
@@ -673,6 +674,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                     outline: none;
                   }
                   @media screen and (-ms-high-contrast: active){& {
+                    -ms-high-contrast-adjust: auto;
                     border-bottom: none;
                   }
                   &:active {
@@ -782,6 +784,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                     outline: none;
                   }
                   @media screen and (-ms-high-contrast: active){& {
+                    -ms-high-contrast-adjust: auto;
                     border-bottom: none;
                   }
                   &:active {

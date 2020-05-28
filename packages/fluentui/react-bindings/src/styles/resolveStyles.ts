@@ -11,7 +11,7 @@ import {
   ThemePrepared,
   withDebugId,
 } from '@fluentui/styles';
-import { ComponentSlotClasses, RendererParam, ResolveStylesOptions } from '@fluentui/react-bindings';
+import { ComponentSlotClasses, RendererParam, ResolveStylesOptions } from './types';
 import * as _ from 'lodash';
 
 export type ResolveStylesResult = {
@@ -80,7 +80,7 @@ const resolveStyles = (
       if (!hasOnlyBooleanVariables) {
         noVariableOverrides = false;
       }
-    } else {
+    } else if (!_.isNil(variables)) {
       noVariableOverrides = false;
     }
   }

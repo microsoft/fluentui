@@ -12,7 +12,7 @@ function getDeps(packageJson) {
 
 /**
  * Find all the dependencies (and their dependencies) within the repo for a specific package (in the CWD when this was called)
- * @returns {{ packagePath: string; packageJson: any }[]}
+ * @returns {Map<string, Set<string>>}
  */
 function findRepoDeps() {
   const packageInfo = getAllPackageInfo();
@@ -26,13 +26,13 @@ function findRepoDeps() {
 
     if (dep && packageInfo[dep]) {
       result.add(dep);
-    }
 
-    getDeps(dep.packageJson).forEach(child => {
-      if (!result.has(child)) {
-        packageDeps.push(child);
-      }
-    });
+      getDeps(packageInfo[dep].packageJson).forEach(child => {
+        if (child && packageInfo[child] && !result.has(child)) {
+          packageDeps.push(child);
+        }
+      });
+    }
   }
 
   return [...result].map(dep => packageInfo[dep]);

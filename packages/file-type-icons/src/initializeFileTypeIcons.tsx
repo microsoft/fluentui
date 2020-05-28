@@ -12,7 +12,7 @@ const ICON_SIZES: number[] = [16, 20, 24, 32, 40, 48, 64, 96];
 // (though most users will see them within a week). To force immediate refresh, append a
 // unique string to the end of the URL. The CDN uses the URL as the cache key, so passing a
 // new URL will cause the CDN to create a new cache key.
-const REFRESH_STRING = '?v6';
+const REFRESH_STRING = '?v1';
 
 export function initializeFileTypeIcons(baseUrl: string = DEFAULT_BASE_URL, options?: Partial<IIconOptions>): void {
   ICON_SIZES.forEach((size: number) => {
@@ -25,8 +25,9 @@ function _initializeIcons(baseUrl: string, size: number, options?: Partial<IIcon
   const fileTypeIcons: { [key: string]: JSX.Element } = {};
 
   iconTypes.forEach((type: string) => {
-    fileTypeIcons[type + size + PNG_SUFFIX] = <img src={baseUrl + size + '/' + type + '.png' + REFRESH_STRING} />;
-    fileTypeIcons[type + size + SVG_SUFFIX] = <img src={baseUrl + size + '/' + type + '.svg' + REFRESH_STRING} />;
+    const baseUrlSizeType = baseUrl + size + '/' + type;
+    fileTypeIcons[type + size + PNG_SUFFIX] = <img src={baseUrlSizeType + '.png' + REFRESH_STRING} alt="" />;
+    fileTypeIcons[type + size + SVG_SUFFIX] = <img src={baseUrlSizeType + '.svg' + REFRESH_STRING} alt="" />;
 
     // For high resolution screens, register additional versions
     // Apply height=100% and width=100% to force image to fit into containing element

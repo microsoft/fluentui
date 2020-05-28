@@ -9,7 +9,7 @@ import { DropdownItemProps } from 'src/components/Dropdown/DropdownItem';
 import { ShorthandValue } from 'src/types';
 import List from 'src/components/List/List';
 
-jest.dontMock('keyboard-key');
+jest.dontMock('@fluentui/keyboard-key');
 jest.useFakeTimers();
 
 describe('Dropdown', () => {
@@ -781,6 +781,28 @@ describe('Dropdown', () => {
           value: [items[itemToClickIndex]],
         }),
       );
+    });
+
+    it('It shows no matches message when all iems are selected', () => {
+      // it will actually be the third, since one is already removed from the list due to defaultValue.
+      const noResultsMessage = 'no items';
+
+      const { clickOnItemAtIndex, clickOnToggleIndicator, itemsListNode } = renderDropdown({
+        items: ['item0', 'item1'],
+        open: true,
+        search: true,
+        multiple: true,
+        noResultsMessage,
+      });
+
+      // Select all
+      clickOnItemAtIndex(0);
+      clickOnItemAtIndex(0);
+
+      // open
+      clickOnToggleIndicator();
+
+      expect(itemsListNode.textContent).toBe(noResultsMessage);
     });
 
     it('has onChange called with null value by hitting Escape in search input', () => {

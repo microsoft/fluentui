@@ -1,6 +1,6 @@
-import { compose, ComponentWithAs } from '@fluentui/react-bindings';
+import { compose, ComponentWithAs, ShorthandConfig } from '@fluentui/react-bindings';
 
-import { commonPropTypes, createShorthandFactory, ShorthandFactory } from '../../utils';
+import { commonPropTypes } from '../../utils';
 import Box, { BoxProps, BoxStylesProps } from '../Box/Box';
 
 interface AttachmentBodyOwnProps {}
@@ -17,11 +17,15 @@ const AttachmentBody = compose<'div', AttachmentBodyOwnProps, AttachmentBodyStyl
   {
     className: attachmentBodyClassName,
     displayName: 'AttachmentBody',
+
+    overrideStyles: true,
   },
-) as ComponentWithAs<'div', AttachmentBodyProps> & { create?: ShorthandFactory<AttachmentBodyProps> };
+) as ComponentWithAs<'div', AttachmentBodyProps> & { shorthandConfig: ShorthandConfig<AttachmentBodyProps> };
 
 AttachmentBody.propTypes = commonPropTypes.createCommon();
 
-AttachmentBody.create = createShorthandFactory({ Component: AttachmentBody, mappedProp: 'content' });
+AttachmentBody.shorthandConfig = {
+  mappedProp: 'content',
+};
 
 export default AttachmentBody;

@@ -1,13 +1,13 @@
 ### Style names
 
-`Widget.UIFabric.BottomNavigation`
+`Widget.FluentUI.BottomNavigation`
 
-`Widget.UIFabric.BottomNavigation.Unlabeled`
+`Widget.FluentUI.BottomNavigation.Unlabeled`
 
 ### Source code
 
-[BottomNavigation styles](https://github.com/OfficeDev/ui-fabric-android/blob/master/OfficeUIFabric/src/main/res/values/styles.xml)
+[BottomNavigation styles](https://github.com/microsoft/fluentui-android/blob/master/FluentUI/src/main/res/values/styles.xml)
 
 ### Sample code
 
-[BottomNavigation demo activity](https://github.com/OfficeDev/ui-fabric-android/blob/master/OfficeUIFabric.Demo/src/main/java/com/microsoft/officeuifabricdemo/demos/BottomNavigationActivity.kt)
+[BottomNavigation demo activity](https://github.com/microsoft/fluentui-android/blob/master/FluentUI.Demo/src/main/java/com/microsoft/fluentuidemo/demos/BottomNavigationActivity.kt)

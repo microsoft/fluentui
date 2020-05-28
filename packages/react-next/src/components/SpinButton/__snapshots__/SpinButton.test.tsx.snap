@@ -1,6 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+<<<<<<< HEAD
 exports[`SpinButton renders SpinButton correctly 1`] = `
+=======
+exports[`SpinButton renders correctly 1`] = `
+>>>>>>> 72cd52efc041e343538f46beb20e7ef0371d1667
 <div
   className=
 
@@ -438,7 +442,11 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
 </div>
 `;
 
+<<<<<<< HEAD
 exports[`SpinButton renders SpinButton correctly with values that the user passes in 1`] = `
+=======
+exports[`SpinButton renders correctly with user-provided values 1`] = `
+>>>>>>> 72cd52efc041e343538f46beb20e7ef0371d1667
 <div
   className=
 

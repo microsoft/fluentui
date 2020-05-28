@@ -52,7 +52,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     inputProps,
     onRenderSelectedItems,
     selectedItemsListProps,
-    onRederFloatingSuggestions,
+    onRenderFloatingSuggestions,
     floatingSuggestionProps,
     headerComponent,
     onInputChange,
@@ -185,7 +185,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     removeItems(itemsToRemove);
   };
   const _renderFloatingPicker = () =>
-    onRederFloatingSuggestions({
+    onRenderFloatingSuggestions({
       ...floatingSuggestionProps,
       targetElement: input.current?.inputElement,
       isSuggestionsVisible: isSuggestionsShown,

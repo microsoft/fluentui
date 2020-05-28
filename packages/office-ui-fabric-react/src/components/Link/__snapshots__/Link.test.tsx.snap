@@ -22,6 +22,7 @@ exports[`Link renders Link correctly 1`] = `
         outline: 1px solid WindowText;
       }
       @media screen and (-ms-high-contrast: active){& {
+        -ms-high-contrast-adjust: auto;
         border-bottom: none;
       }
       &:active {
@@ -139,6 +140,7 @@ exports[`Link renders Link with a custom class name 1`] = `
         outline: 1px solid WindowText;
       }
       @media screen and (-ms-high-contrast: active){& {
+        -ms-high-contrast-adjust: auto;
         border-bottom: none;
       }
       &:active {
@@ -258,6 +260,7 @@ exports[`Link renders disabled Link correctly 1`] = `
         outline: 1px solid WindowText;
       }
       @media screen and (-ms-high-contrast: active){& {
+        -ms-high-contrast-adjust: auto;
         border-bottom: none;
       }
       &:link {

@@ -1,9 +1,14 @@
 import * as React from 'react';
 import { classNamesFunction, find } from 'office-ui-fabric-react/lib/Utilities';
 import { IProcessedStyleSet, IPalette } from 'office-ui-fabric-react/lib/Styling';
-import { IChartProps, IHorizontalBarChartProps, IHorizontalBarChartStyles, IChartDataPoint } from './index';
+import {
+  IChartProps,
+  IHorizontalBarChartProps,
+  IHorizontalBarChartStyleProps,
+  IHorizontalBarChartStyles,
+  IChartDataPoint,
+} from './index';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
-import { IHorizontalBarChartStyleProps } from '@uifabric/charting/lib/components/HorizontalBarChart/HorizontalBarChart.types';
 
 const getClassNames = classNamesFunction<IHorizontalBarChartStyleProps, IHorizontalBarChartStyles>();
 
@@ -20,6 +25,8 @@ export interface IHorizontalBarChartState {
   hoverValue: string | number | Date | null;
   lineColor: string;
   legend: string | null;
+  xCalloutValue?: string;
+  yCalloutValue?: string;
 }
 
 export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartProps, IHorizontalBarChartState> {
@@ -37,6 +44,8 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
       refArray: [],
       refSelected: null,
       color: '',
+      xCalloutValue: '',
+      yCalloutValue: '',
     };
     this._uniqLineText =
       '_HorizontalLine_' +
@@ -92,6 +101,8 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
                       points!.chartData![0].horizontalBarChartdata!.x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','),
                       points!.chartData![0].color,
                       points!.chartData![0].legend,
+                      points!.chartData![0].xAxisCalloutData!,
+                      points!.chartData![0].yAxisCalloutData!,
                     )}
                     onMouseLeave={this._hoverOff}
                   >
@@ -102,7 +113,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
             </div>
           );
         })}
-        {this.state.isCalloutVisible ? (
+        {!this.props.hideTooltip && this.state.isCalloutVisible ? (
           <Callout
             target={this.state.refSelected}
             coverTarget={true}
@@ -111,8 +122,12 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
             directionalHint={DirectionalHint.rightTopEdge}
           >
             <div className={this._classNames.hoverCardRoot}>
-              <div className={this._classNames.hoverCardTextStyles}>{this.state.legend}</div>
-              <div className={this._classNames.hoverCardDataStyles}>{this.state.hoverValue}</div>
+              <div className={this._classNames.hoverCardTextStyles}>
+                {this.state.xCalloutValue ? this.state.xCalloutValue : this.state.legend}
+              </div>
+              <div className={this._classNames.hoverCardDataStyles}>
+                {this.state.yCalloutValue ? this.state.yCalloutValue : this.state.hoverValue}
+              </div>
             </div>
           </Callout>
         ) : null}
@@ -124,7 +139,13 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     this.state.refArray.push({ legendText: legendTitle, refElement: element });
   }
 
-  private _hoverOn(hoverValue: string | number | Date | null, lineColor: string, legend: string): void {
+  private _hoverOn(
+    hoverValue: string | number | Date | null,
+    lineColor: string,
+    legend: string,
+    xAxisCalloutData: string,
+    yAxisCalloutData: string,
+  ): void {
     if (!this.state.isCalloutVisible || this.state.legend !== legend) {
       const refArray = this.state.refArray;
       const currentHoveredElement = find(
@@ -137,6 +158,8 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
         lineColor: lineColor,
         legend: legend,
         refSelected: currentHoveredElement!.refElement,
+        xCalloutValue: xAxisCalloutData,
+        yCalloutValue: yAxisCalloutData,
       });
     }
   }

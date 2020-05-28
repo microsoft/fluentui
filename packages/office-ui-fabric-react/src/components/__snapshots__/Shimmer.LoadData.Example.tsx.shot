@@ -193,6 +193,9 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
                                   0 0 / 90% 100%
                                   no-repeat;
           }
+          @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+            forced-color-adjust: none;
+          }
       style={
         Object {
           "width": "100%",
@@ -554,9 +557,12 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
                                   0 0 / 90% 100%
                                   no-repeat;
           }
+          @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+            forced-color-adjust: none;
+          }
       style={
         Object {
-          "width": 300,
+          "width": "300",
         }
       }
     >

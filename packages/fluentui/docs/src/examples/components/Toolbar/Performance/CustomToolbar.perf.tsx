@@ -4,9 +4,7 @@ import {
   Button,
   Text,
   Toolbar,
-  ShorthandCollection,
   Status,
-  ToolbarItemShorthandKinds,
   ShorthandValue,
   ComponentStyleFunctionParam,
   ThemeInput,
@@ -17,10 +15,10 @@ import {
   StatusProps,
   pxToRem,
   Provider,
-  themes,
   mergeThemes,
   Tooltip,
   tooltipAsLabelBehavior,
+  teamsDarkTheme,
 } from '@fluentui/react-northstar';
 import {
   CallControlCloseTrayIcon,
@@ -335,30 +333,25 @@ interface CustomToolbarProps {
   onEndCallClick?: () => void;
 }
 
-type CustomToolbarLayout = (
-  props: CustomToolbarProps,
-) => ShorthandCollection<ToolbarItemProps | ToolbarCustomItemProps, ToolbarItemShorthandKinds>;
+type CustomToolbarLayout = (props: CustomToolbarProps) => ToolbarProps['items'];
 
 const commonLayout: CustomToolbarLayout = props =>
   [
     props.isRecording && {
       key: 'recording',
-      kind: 'custom' as ToolbarItemShorthandKinds,
+      kind: 'custom' as const,
       focusable: true,
       content: <Status state="error" title="Recording" variables={{ isRecordingIndicator: true }} />,
       variables: { isCtItemPrimary: true, isCtItemIndicator: true },
     },
-
     {
       key: 'timer-custom',
-      kind: 'custom' as ToolbarItemShorthandKinds,
+      kind: 'custom' as const,
       focusable: true,
       content: <Text>10:45</Text>,
       variables: { isCtItemPrimary: true, isCtItemIndicator: true },
     },
-
-    { key: 'timer-divider', kind: 'divider' as ToolbarItemShorthandKinds },
-
+    { key: 'timer-divider', kind: 'divider' as const },
     {
       tooltip: props.cameraActive ? tooltips.videoOn : tooltips.videoOff,
       active: props.cameraActive,
@@ -367,7 +360,6 @@ const commonLayout: CustomToolbarLayout = props =>
       onClick: () => _.invoke(props, 'onCameraChange', !props.cameraActive),
       variables: { isCtItemPrimary: true },
     },
-
     {
       tooltip: props.micActive ? tooltips.micOn : tooltips.micOff,
       active: props.micActive,
@@ -376,7 +368,6 @@ const commonLayout: CustomToolbarLayout = props =>
       onClick: () => _.invoke(props, 'onMicChange', !props.micActive),
       variables: { isCtItemPrimary: true },
     },
-
     {
       tooltip: props.screenShareActive ? tooltips.shareStop : tooltips.share,
       active: props.screenShareActive,
@@ -389,7 +380,6 @@ const commonLayout: CustomToolbarLayout = props =>
       onClick: () => _.invoke(props, 'onScreenShareChange', !props.screenShareActive),
       variables: { isCtItemPrimary: true },
     },
-
     {
       tooltip: tooltips.moreActions,
       key: 'more',
@@ -505,12 +495,12 @@ const CustomToolbar: React.FunctionComponent<CustomToolbarProps> = props => {
       : null,
   }));
 
-  return <Toolbar variables={{ isCt: true }} items={items} />;
+  return <Toolbar aria-label="Performance custom" variables={{ isCt: true }} items={items} />;
 };
 
 const CustomToolbarPrototype = () => {
   let theme = {};
-  theme = mergeThemes(themes.teamsDark, darkThemeOverrides);
+  theme = mergeThemes(teamsDarkTheme, darkThemeOverrides);
 
   return (
     <Provider theme={theme}>

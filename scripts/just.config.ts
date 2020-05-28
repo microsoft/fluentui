@@ -55,7 +55,7 @@ module.exports = function preset() {
   task('ts:postprocess', postprocessTask());
   task('postprocess:amd', postprocessAmdTask);
   task('postprocess:commonjs', postprocessCommonjsTask);
-  task('ts:commonjs', ts.commonjs);
+  task('ts:commonjs', series(ts.commonjs, 'postprocess:commonjs'));
   task('ts:esm', ts.esm);
   task('ts:amd', series(ts.amd, 'postprocess:amd'));
   task('tslint', tslint);
@@ -98,8 +98,8 @@ module.exports = function preset() {
   task('code-style', series('prettier', 'tslint'));
   task('update-api', series('clean', 'copy', 'sass', 'ts', 'api-extractor:update'));
 
-  task('dev:storybook', series('clean', 'copy', 'sass', 'storybook:start'));
-  task('dev', series('clean', 'copy', 'sass', 'webpack-dev-server'));
+  task('dev:storybook', series('copy', 'sass', 'storybook:start'));
+  task('dev', series('copy', 'sass', 'webpack-dev-server'));
 
   task('build:node-lib', series('clean', 'copy', 'ts:commonjs-only')).cached();
 

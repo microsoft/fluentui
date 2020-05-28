@@ -61,7 +61,7 @@ export class LineChartBase extends React.Component<
   private legendContainer: HTMLDivElement;
   private _calloutId: string;
   // These margins are necessary for d3Scales to appear without cutting off
-  private margins = { top: 20, right: 20, bottom: 35, left: 40 };
+  private margins = { top: 20, right: 20, bottom: 35, left: 65 };
   private minLegendContainerHeight: number = 32;
   private eventLabelHeight: number = 36;
   constructor(props: ILineChartProps) {
@@ -169,7 +169,7 @@ export class LineChartBase extends React.Component<
               ref={(e: SVGElement | null) => {
                 this.yAxisElement = e;
               }}
-              transform={`translate(40, 0)`}
+              transform={`translate(65, 0)`}
               className={this._classNames.yAxis}
             />
             <g>{lines}</g>
@@ -186,7 +186,7 @@ export class LineChartBase extends React.Component<
         <div ref={(e: HTMLDivElement) => (this.legendContainer = e)} className={this._classNames.legendContainer}>
           {!hideLegend && legendBars}
         </div>
-        {this.state.isCalloutVisible ? (
+        {!this.props.hideTooltip && this.state.isCalloutVisible ? (
           <Callout
             target={this.state.refSelected}
             isBeakVisible={false}
