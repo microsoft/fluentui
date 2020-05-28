@@ -30,9 +30,6 @@ export const Checkbox: React.FunctionComponent<ICheckboxProps>;
 // @public (undocumented)
 export const CheckboxBase: React.ForwardRefExoticComponent<ICheckboxProps & React.RefAttributes<HTMLDivElement>>;
 
-// @public (undocumented)
-export type DefaultProps = Required<Pick<ISpinButtonProps, 'step' | 'min' | 'max' | 'disabled' | 'labelPosition' | 'label' | 'incrementButtonIcon' | 'decrementButtonIcon'>>;
-
 // @public
 export const Customizer: React.FunctionComponent<ICustomizerProps>;
 
@@ -715,9 +712,24 @@ export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement> {
 
 // @public (undocumented)
 export interface ISpinButtonState {
-    isFocused: boolean;
-    keyboardSpinDirection: KeyboardSpinDirection;
-    value: string;
+    // (undocumented)
+    currentStepFunctionHandle: number;
+    // (undocumented)
+    initialStepDelay: number;
+    // (undocumented)
+    inputId: string;
+    // (undocumented)
+    labelId: string;
+    // (undocumented)
+    lastValidValue: string;
+    // (undocumented)
+    precision: number;
+    // (undocumented)
+    spinningByMouse: boolean;
+    // (undocumented)
+    stepDelay: number;
+    // (undocumented)
+    valueToValidate: string | undefined;
 }
 
 // @public (undocumented)
@@ -1061,19 +1073,7 @@ export const Slider: React.FunctionComponent<ISliderProps>;
 export const SliderBase: React.ForwardRefExoticComponent<Pick<ISliderProps, "max" | "disabled" | "label" | "vertical" | "key" | "step" | "theme" | "styles" | "className" | "defaultValue" | "aria-label" | "onChange" | "componentRef" | "min" | "value" | "ariaLabel" | "onChanged" | "showValue" | "ariaValueText" | "snapToStep" | "buttonProps" | "valueFormat" | "originFromZero"> & React.RefAttributes<HTMLDivElement>>;
 
 // @public (undocumented)
-export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonState> implements ISpinButton {
-    constructor(props: ISpinButtonProps);
-    // (undocumented)
-    componentWillUnmount(): void;
-    // (undocumented)
-    static defaultProps: DefaultProps;
-    // (undocumented)
-    focus(): void;
-    // (undocumented)
-    render(): JSX.Element;
-    UNSAFE_componentWillReceiveProps(newProps: ISpinButtonProps): void;
-    readonly value: string | undefined;
-    }
+export const SpinButton: (props: ISpinButtonProps) => JSX.Element;
 
 // @public (undocumented)
 export const TextField: React.FunctionComponent<ITextFieldProps>;

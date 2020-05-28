@@ -11,8 +11,8 @@ import {
   getNativeProps,
   divProperties,
 } from '../../Utilities';
-import { ISpinButton, ISpinButtonProps } from './SpinButton.types';
-import { Position, positionCallout } from 'office-ui-fabric-react/lib/utilities/positioning';
+import { ISpinButtonProps } from './SpinButton.types';
+import { Position } from 'office-ui-fabric-react/lib/utilities/positioning';
 import { getStyles, getArrowButtonStyles } from './SpinButton.styles';
 import { getClassNames } from './SpinButton.classNames';
 import { KeytipData } from '../../KeytipData';
@@ -79,7 +79,7 @@ export const SpinButton = (props: ISpinButtonProps) => {
   const [keyboardSpinDirection, setKeyboardSpinDirection] = React.useState(KeyboardSpinDirection.notSpinning);
 
   const useCalculatePrecision = (calculatePrecisionProps: ISpinButtonProps & DefaultProps) => {
-    const { precision = Math.max(calculatePrecision(props.step), 0) } = calculatePrecisionProps;
+    const { precision = Math.max(calculatePrecision(calculatePrecisionProps.step), 0) } = calculatePrecisionProps;
     return precision;
   };
 
@@ -278,16 +278,16 @@ export const SpinButton = (props: ISpinButtonProps) => {
     }
 
     if (shouldSpin) {
-      state.currentStepFunctionHandle = this._async.setTimeout(() => {
-        updateValue(shouldSpin, stepDelay, stepFunction);
-      }, stepDelay);
+      // state.currentStepFunctionHandle = this._async.setTimeout(() => {
+      //   updateValue(shouldSpin, stepDelay, stepFunction);
+      // }, stepDelay);
     }
   };
 
   // Stop spinning (clear any currently pending update and set spinning to false)
   const stop = (): void => {
     if (state.currentStepFunctionHandle >= 0) {
-      this._async.clearTimeout(state.currentStepFunctionHandle);
+      // this._async.clearTimeout(state.currentStepFunctionHandle);
       state.currentStepFunctionHandle = -1;
     }
     if (state.spinningByMouse || keyboardSpinDirection !== KeyboardSpinDirection.notSpinning) {
