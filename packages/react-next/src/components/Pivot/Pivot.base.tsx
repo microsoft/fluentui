@@ -181,6 +181,24 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef(
       });
     };
 
+    const renderPivotItem = (itemKey: string | undefined, isActive: boolean): JSX.Element | null => {
+      if (props.headersOnly || !itemKey) {
+        return null;
+      }
+      return (
+        <div
+          role="tabpanel"
+          hidden={!isActive}
+          key={itemKey}
+          aria-hidden={!isActive}
+          aria-labelledby={selectedTabId}
+          className={classNames.itemContainer}
+        >
+          {React.Children.toArray(props.children)[index]}
+        </div>
+      );
+    };
+
     let linkCollection = getLinkItems(props, pivotId);
     const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(props, divProperties);
     let index = linkCollection.keyToIndexMapping[selectedKey];
@@ -198,9 +216,12 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef(
         >
           {items}
         </FocusZone>
-        <div role="tabpanel" aria-labelledby={selectedTabId} className={classNames.itemContainer}>
-          {React.Children.toArray(props.children)[index]}
-        </div>
+        {selectedKey &&
+          linkCollection.links.map(
+            link =>
+              (link.alwaysRender === true || selectedKey === link.itemKey) &&
+              renderPivotItem(link.itemKey, selectedKey === link.itemKey),
+          )}
       </div>
     );
   },
