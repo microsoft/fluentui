@@ -2,6 +2,7 @@ import { Accessibility, toolbarItemBehavior, ToolbarItemBehaviorProps } from '@f
 import {
   compose,
   getElementType,
+  mergeVariablesOverrides,
   useUnhandledProps,
   useAccessibility,
   useStyles,
@@ -11,7 +12,6 @@ import { handleRef, Ref } from '@fluentui/react-component-ref';
 import { EventListener } from '@fluentui/react-component-event-listener';
 import { GetRefs, NodeRef, Unstable_NestingAuto } from '@fluentui/react-component-nesting-registry';
 import * as customPropTypes from '@fluentui/react-proptypes';
-import { mergeComponentVariables } from '@fluentui/styles';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
@@ -140,7 +140,7 @@ const ToolbarItem = compose<'button', ToolbarItemProps, ToolbarItemStylesProps, 
     const menuRef = React.useRef<HTMLElement>();
 
     const parentVariables = React.useContext(ToolbarVariablesContext);
-    const mergedVariables = mergeComponentVariables(parentVariables, variables);
+    const mergedVariables = mergeVariablesOverrides(parentVariables, variables);
 
     const getA11yProps = useAccessibility(accessibility, {
       debugName: composeOptions.displayName,
