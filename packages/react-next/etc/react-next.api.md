@@ -4,17 +4,12 @@
 
 ```ts
 
-<<<<<<< HEAD
-import { IButtonProps } from 'office-ui-fabric-react/lib/components/Button/Button.types';
-import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
-=======
 import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import { IButtonProps as IButtonProps_2 } from 'office-ui-fabric-react/lib/components/Button/Button.types';
 import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import { IComponentAs } from 'office-ui-fabric-react/lib/Utilities';
 import { ICustomizerContext } from 'office-ui-fabric-react/lib/Utilities';
 import { IFocusZoneProps } from '@fluentui/react-focus';
->>>>>>> 72cd52efc041e343538f46beb20e7ef0371d1667
 import { IIconProps } from 'office-ui-fabric-react/lib/Icon';
 import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
 import { IRefObject } from 'office-ui-fabric-react/lib/Utilities';
@@ -147,8 +142,6 @@ export interface ICheckboxStyles {
 }
 
 // @public (undocumented)
-<<<<<<< HEAD
-=======
 export interface ICustomizerProps {
     contextTransform?: (context: Readonly<ICustomizerContext>) => ICustomizerContext;
     disableThemeProvider?: boolean;
@@ -673,7 +666,6 @@ export interface ISliderStyles {
 }
 
 // @public (undocumented)
->>>>>>> 72cd52efc041e343538f46beb20e7ef0371d1667
 export interface ISpinButton {
     focus: () => void;
     value?: string;
@@ -697,21 +689,13 @@ export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement> {
     downArrowButtonStyles?: Partial<IButtonStyles>;
     // Warning: (ae-forgotten-export) The symbol "ISpinButtonClassNames" needs to be exported by the entry point index.d.ts
     getClassNames?: (theme: ITheme, disabled: boolean, isFocused: boolean, keyboardSpinDirection: KeyboardSpinDirection, labelPosition?: Position, className?: string) => ISpinButtonClassNames;
-<<<<<<< HEAD
-    iconButtonProps?: IButtonProps;
-=======
     iconButtonProps?: IButtonProps_2;
->>>>>>> 72cd52efc041e343538f46beb20e7ef0371d1667
     iconProps?: IIconProps;
     incrementButtonAriaLabel?: string;
     incrementButtonIcon?: IIconProps;
     inputProps?: React.InputHTMLAttributes<HTMLElement | HTMLInputElement>;
     keytipProps?: IKeytipProps;
     label?: string;
-<<<<<<< HEAD
-    // (undocumented)
-=======
->>>>>>> 72cd52efc041e343538f46beb20e7ef0371d1667
     labelPosition?: Position;
     max?: number;
     min?: number;
@@ -762,8 +746,6 @@ export interface ISpinButtonStyles {
 }
 
 // @public (undocumented)
-<<<<<<< HEAD
-=======
 export interface ITextField {
     blur: () => void;
     focus: () => void;
@@ -919,7 +901,6 @@ export interface IToggleStyles {
 }
 
 // @public (undocumented)
->>>>>>> 72cd52efc041e343538f46beb20e7ef0371d1667
 export enum KeyboardSpinDirection {
     // (undocumented)
     down = -1,
@@ -930,8 +911,6 @@ export enum KeyboardSpinDirection {
 }
 
 // @public (undocumented)
-<<<<<<< HEAD
-=======
 export const Link: React.FunctionComponent<ILinkProps>;
 
 // @public (undocumented)
@@ -1082,7 +1061,6 @@ export const Slider: React.FunctionComponent<ISliderProps>;
 export const SliderBase: React.ForwardRefExoticComponent<Pick<ISliderProps, "max" | "disabled" | "label" | "vertical" | "key" | "step" | "theme" | "styles" | "className" | "defaultValue" | "aria-label" | "onChange" | "componentRef" | "min" | "value" | "ariaLabel" | "onChanged" | "showValue" | "ariaValueText" | "snapToStep" | "buttonProps" | "valueFormat" | "originFromZero"> & React.RefAttributes<HTMLDivElement>>;
 
 // @public (undocumented)
->>>>>>> 72cd52efc041e343538f46beb20e7ef0371d1667
 export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonState> implements ISpinButton {
     constructor(props: ISpinButtonProps);
     // (undocumented)
@@ -1097,8 +1075,6 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
     readonly value: string | undefined;
     }
 
-<<<<<<< HEAD
-=======
 // @public (undocumented)
 export const TextField: React.FunctionComponent<ITextFieldProps>;
 
@@ -1144,7 +1120,6 @@ export const Toggle: React.FunctionComponent<IToggleProps>;
 // @public (undocumented)
 export const ToggleBase: React.FunctionComponent;
 
->>>>>>> 72cd52efc041e343538f46beb20e7ef0371d1667
 
 export * from "office-ui-fabric-react/lib/ActivityItem";
 export * from "office-ui-fabric-react/lib/Announced";
@@ -1200,10 +1175,6 @@ export * from "office-ui-fabric-react/lib/Selection";
 export * from "office-ui-fabric-react/lib/Separator";
 export * from "office-ui-fabric-react/lib/Shimmer";
 export * from "office-ui-fabric-react/lib/ShimmeredDetailsList";
-<<<<<<< HEAD
-export * from "office-ui-fabric-react/lib/Slider";
-=======
->>>>>>> 72cd52efc041e343538f46beb20e7ef0371d1667
 export * from "office-ui-fabric-react/lib/Spinner";
 export * from "office-ui-fabric-react/lib/Stack";
 export * from "office-ui-fabric-react/lib/Sticky";
