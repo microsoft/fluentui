@@ -993,7 +993,7 @@ export class PivotItem extends React.Component<IPivotItemProps, {}> {
 }
 
 // @public @deprecated (undocumented)
-export enum PivotLinkFormat {
+export const enum PivotLinkFormat {
     links = "links",
     tabs = "tabs"
 }
@@ -1002,7 +1002,7 @@ export enum PivotLinkFormat {
 export type PivotLinkFormatType = 'links' | 'tabs';
 
 // @public @deprecated (undocumented)
-export enum PivotLinkSize {
+export const enum PivotLinkSize {
     large = "large",
     normal = "normal"
 }

@@ -156,7 +156,7 @@ export type PivotLinkSizeType = 'normal' | 'large';
  * {@docCategory Pivot}
  * @deprecated Use strings 'links' or 'tabs' instead of this enum
  */
-export enum PivotLinkFormat {
+export const enum PivotLinkFormat {
   /**
    * Display Pivot Links as links
    */
@@ -172,7 +172,7 @@ export enum PivotLinkFormat {
  * {@docCategory Pivot}
  * @deprecated Use strings 'normal' or 'large' instead of this enum
  */
-export enum PivotLinkSize {
+export const enum PivotLinkSize {
   /**
    * Display Link using normal font size
    */
