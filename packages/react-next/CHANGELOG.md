@@ -1,8 +1,72 @@
 # Change Log - @fluentui/react-next
 
-This log was last generated on Thu, 14 May 2020 12:34:32 GMT and should not be manually modified.
+This log was last generated on Wed, 27 May 2020 12:40:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-alpha.29](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.29)
+
+Wed, 27 May 2020 12:40:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.28..@fluentui/react-next_v8.0.0-alpha.29)
+
+### Changes
+
+- Slider: Move state logic to useSlider hook, part 1 ([PR #13260](https://github.com/microsoft/fluentui/pull/13260) by joschect@microsoft.com)
+
+## [8.0.0-alpha.28](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.28)
+
+Mon, 25 May 2020 12:38:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.26..@fluentui/react-next_v8.0.0-alpha.28)
+
+### Changes
+
+- Copying FocusTrapZone to react-next, in preparation for converting to function component. ([PR #13280](https://github.com/microsoft/fluentui/pull/13280) by czearing@outlook.com)
+
+## [8.0.0-alpha.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.26)
+
+Thu, 21 May 2020 12:34:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.25..@fluentui/react-next_v8.0.0-alpha.26)
+
+### Changes
+
+- Use ThemeProvider to provide theme css variables, add ThemeProvider and Customizer replacements for V8 ([PR #13146](https://github.com/microsoft/fluentui/pull/13146) by xgao@microsoft.com)
+
+## [8.0.0-alpha.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.25)
+
+Wed, 20 May 2020 12:31:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.24..@fluentui/react-next_v8.0.0-alpha.25)
+
+### Changes
+
+- Slider: Convert to scss ([PR #13167](https://github.com/microsoft/fluentui/pull/13167) by joschect@microsoft.com)
+- Toggle: Convert react-next version to use scss. ([PR #13217](https://github.com/microsoft/fluentui/pull/13217) by humbertomakotomorimoto@gmail.com)
+
+## [8.0.0-alpha.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.24)
+
+Mon, 18 May 2020 12:54:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.22..@fluentui/react-next_v8.0.0-alpha.24)
+
+### Changes
+
+- SpinButton: allow empty string as value, clean up docs and tests ([PR #13174](https://github.com/microsoft/fluentui/pull/13174) by elcraig@microsoft.com)
+
+## [8.0.0-alpha.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.22)
+
+Fri, 15 May 2020 12:42:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.21..@fluentui/react-next_v8.0.0-alpha.22)
+
+### Changes
+
+- Link: Moving component to react-next and converting styles to use scss. ([PR #13094](https://github.com/microsoft/fluentui/pull/13094) by humbertomakotomorimoto@gmail.com)
+
+## [8.0.0-alpha.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.21)
+
+Fri, 15 May 2020 05:52:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.19..@fluentui/react-next_v8.0.0-alpha.21)
+
+### Changes
+
+- PivotItem: Expanding types of headerButtonProps to include IButtonProps. ([PR #13128](https://github.com/microsoft/fluentui/pull/13128) by humbertomakotomorimoto@gmail.com)
 
 ## [8.0.0-alpha.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.19)
 

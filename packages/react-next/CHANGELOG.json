@@ -2,6 +2,131 @@
   "name": "@fluentui/react-next",
   "entries": [
     {
+      "date": "Wed, 27 May 2020 12:40:00 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.29",
+      "version": "8.0.0-alpha.29",
+      "comments": {
+        "none": [
+          {
+            "comment": "Pivot: adding alwaysRender prop to `PivotItem` to allow for persistent `PivotItems` to control the amount of re-renders that happen",
+            "author": "herincon@microsoft.com",
+            "commit": "3312f0b6ae8a09865f9a29d0d2ad7778e1199c5f",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Storybook: add theme switching knob",
+            "author": "xgao@microsoft.com",
+            "commit": "f99b9ac8a9c4be2178964ebcfec717b07b6e7315",
+            "package": "@fluentui/react-next"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Slider: Move state logic to useSlider hook, part 1",
+            "author": "joschect@microsoft.com",
+            "commit": "0237a69b9a723f3bf25353b4960cf1d07fce37d3",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 25 May 2020 12:38:22 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.28",
+      "version": "8.0.0-alpha.28",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Copying FocusTrapZone to react-next, in preparation for converting to function component.",
+            "author": "czearing@outlook.com",
+            "commit": "80b07ce917c42061ece97c72a4e256101289fc4a",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 21 May 2020 12:34:43 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.26",
+      "version": "8.0.0-alpha.26",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Use ThemeProvider to provide theme css variables, add ThemeProvider and Customizer replacements for V8",
+            "author": "xgao@microsoft.com",
+            "commit": "ecbfff23b83b795d51d73322a4938a2f6ed682bf",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 20 May 2020 12:31:10 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.25",
+      "version": "8.0.0-alpha.25",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Slider: Convert to scss",
+            "author": "joschect@microsoft.com",
+            "commit": "da5ce696fc96cbf6b4fb545ff865c77bef818f4c",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Toggle: Convert react-next version to use scss.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "d918b2b0c7e09d82113ecd533e65b528112ddb8d",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 18 May 2020 12:54:52 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.24",
+      "version": "8.0.0-alpha.24",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "SpinButton: allow empty string as value, clean up docs and tests",
+            "author": "elcraig@microsoft.com",
+            "commit": "69ce76ebf109176438092d537f149bdaed582f3c",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 15 May 2020 12:42:20 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.22",
+      "version": "8.0.0-alpha.22",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Link: Moving component to react-next and converting styles to use scss.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "4329c6c23d61da4f357742ca879621a26564a562",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 15 May 2020 05:52:46 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.21",
+      "version": "8.0.0-alpha.21",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "PivotItem: Expanding types of headerButtonProps to include IButtonProps.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "5c27d9de67e00e87ffb99e5b5c119087660a72cc",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 14 May 2020 12:34:32 GMT",
       "tag": "@fluentui/react-next_v8.0.0-alpha.19",
       "version": "8.0.0-alpha.19",

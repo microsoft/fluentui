@@ -42,7 +42,7 @@ packages/fluentui/ @davezuko @layershifter @levithomason @miroslavstastny @mnajd
 # component-demo/
 fabric-website/ @ecraig12345 @Jahnp
 fabric-website-resources/ @ecraig12345
-perf-test/ @JasonGore
+perf-test/ @JasonGore @xugao
 # ssr-tests/
 # test-bundle-button/ @dzearing
 # todo-app/
@@ -154,7 +154,7 @@ packages/office-ui-fabric-react/src/components/TextField/ @ecraig12345
 packages/office-ui-fabric-react/src/components/Theme/ @dzearing
 packages/office-ui-fabric-react/src/components/Tile/ @ThomasMichon
 packages/office-ui-fabric-react/src/components/TileList/ @ThomasMichon
-packages/office-ui-fabric-react/src/components/Toggle/ @phkuo @xugao
-packages/react-next/src/components/Toggle/ @phkuo @xugao
+packages/office-ui-fabric-react/src/components/Toggle/ @xugao
+packages/react-next/src/components/Toggle/ @xugao
 packages/office-ui-fabric-react/src/components/Tooltip/ @micahgodbolt
 packages/experiments/src/components/Toggle/ @khmakoto

@@ -1,5 +1,5 @@
 import {
-  DropdownSelectedItemProps,
+  DropdownSelectedItemStylesProps,
   dropdownSelectedItemSlotClassNames,
 } from '../../../../components/Dropdown/DropdownSelectedItem';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
@@ -8,7 +8,7 @@ import getIconFillOrOutlineStyles from '../../getIconFillOrOutlineStyles';
 import getBorderFocusStyles from '../../getBorderFocusStyles';
 import { pxToRem } from '../../../../utils';
 
-const dropdownSelectedItemStyles: ComponentSlotStylesPrepared<DropdownSelectedItemProps, DropdownVariables> = {
+const dropdownSelectedItemStyles: ComponentSlotStylesPrepared<DropdownSelectedItemStylesProps, DropdownVariables> = {
   root: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => {
     const borderFocusStyles = getBorderFocusStyles({ variables: siteVariables });
 

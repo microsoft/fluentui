@@ -2,6 +2,59 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Mon, 25 May 2020 12:38:22 GMT",
+      "tag": "@uifabric/charting_v2.2.23",
+      "version": "2.2.23",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove implicit dep on lodash and fix other imports",
+            "author": "elcraig@microsoft.com",
+            "commit": "56db85a8a435bfafe0354bf5b74eb56be92e3a35",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 21 May 2020 12:34:43 GMT",
+      "tag": "@uifabric/charting_v2.2.21",
+      "version": "2.2.21",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Line chart: Fix issue  If y-axis value has more digits it is getting truncated",
+            "author": "v-satgar@microsoft.com",
+            "commit": "7acb1b76ccc43fff54829a9e1c5671e344dbb9d1",
+            "package": "@uifabric/charting"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Remove unnecessary devDependency",
+            "author": "elcraig@microsoft.com",
+            "commit": "2fccd9fec686c2c79cc654e6d857bf7945b5e363",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 15 May 2020 00:07:39 GMT",
+      "tag": "@uifabric/charting_v2.2.14",
+      "version": "2.2.14",
+      "comments": {
+        "patch": [
+          {
+            "comment": "MultiStackedBarChart: Fix breaking chart when focus on bars through keyboard",
+            "author": "v-satgar@microsoft.com",
+            "commit": "992643b4836517e93b01a367b945e2b9f74e09cc",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 14 May 2020 12:34:32 GMT",
       "tag": "@uifabric/charting_v2.2.13",
       "version": "2.2.13",

@@ -49,9 +49,17 @@ describe('Fabric', () => {
     // Render with no theme context
     const component = renderer.create(content);
     // Render in RTL context
-    const rtlComponent = renderer.create(<Customizer settings={{ theme: rtlTheme }}>{content}</Customizer>);
+    const rtlComponent = renderer.create(
+      <Customizer disableThemeProvider settings={{ theme: rtlTheme }}>
+        {content}
+      </Customizer>,
+    );
     // Render in LTR Context
-    const ltrComponent = renderer.create(<Customizer settings={{ theme: ltrTheme }}>{content}</Customizer>);
+    const ltrComponent = renderer.create(
+      <Customizer disableThemeProvider settings={{ theme: ltrTheme }}>
+        {content}
+      </Customizer>,
+    );
 
     const tree = component.toJSON();
     const rtlTree = rtlComponent.toJSON();
