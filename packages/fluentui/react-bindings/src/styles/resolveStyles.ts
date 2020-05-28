@@ -89,10 +89,6 @@ const resolveStyles = (
 
   const cacheEnabled = performance.enableStylesCaching && noInlineStylesOverrides && noVariableOverrides;
 
-  primaryDisplayName === 'ToolbarItemGrey' && console.log(primaryDisplayName, 'cacheEnabled', cacheEnabled);
-
-  primaryDisplayName === 'ToolbarItemGrey' &&
-    console.log(performance.enableStylesCaching, noInlineStylesOverrides, noVariableOverrides);
   // Merge theme styles with inline overrides if any
   let mergedStyles: ComponentSlotStylesPrepared;
 
