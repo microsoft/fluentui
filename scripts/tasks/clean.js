@@ -13,5 +13,7 @@ exports.clean = cleanTask(
     'lib-es2015', // Keep this in clean for actually cleaning up legacy content.
     'coverage',
     'src/**/*.scss.ts',
+    '*.tsbuildinfo',
+    '.*.tsbuildinfo', // glob excludes dotfiles by default
   ].map(p => path.join(process.cwd(), p)),
 );
