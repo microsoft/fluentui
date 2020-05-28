@@ -193,7 +193,7 @@ const Animation: React.FC<AnimationProps> & {
     return getStyles({
       allDisplayNames: [Animation.displayName],
       className: animationClassName,
-      primaryDisplayNames: Animation.displayName,
+      primaryDisplayName: Animation.displayName,
       props: {
         className,
         styles: createAnimationStyles(animation, context.theme),
