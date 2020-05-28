@@ -855,15 +855,14 @@ export interface IToggleOptions {
 // @public
 export interface IToggleProps extends React.HTMLAttributes<HTMLElement> {
     ariaLabel?: string;
-    as?: IComponentAs<React.HTMLAttributes<HTMLElement>>;
+    as?: IComponentAs<React.HTMLAttributes<HTMLElement>> | React.ElementType;
     checked?: boolean;
     componentRef?: IRefObject<IToggle>;
-    container?: string | boolean | number | null | undefined | {} | JSX.Element;
     defaultChecked?: boolean;
     disabled?: boolean;
     inlineLabel?: boolean;
     keytipProps?: IKeytipProps;
-    label?: string | boolean | number | null | undefined | {} | JSX.Element;
+    label?: string | JSX.Element;
     // @deprecated (undocumented)
     offAriaLabel?: string;
     offText?: string;
@@ -873,12 +872,9 @@ export interface IToggleProps extends React.HTMLAttributes<HTMLElement> {
     // @deprecated (undocumented)
     onChanged?: (checked: boolean) => void;
     onText?: string;
-    pill?: string | boolean | number | null | undefined | {} | JSX.Element;
     role?: 'checkbox' | 'switch' | 'menuitemcheckbox';
-    stateText?: string | boolean | number | null | undefined | {} | JSX.Element;
     styles?: IStyleFunctionOrObject<IToggleStyleProps, IToggleStyles>;
     theme?: ITheme;
-    thumb?: string | boolean | number | null | undefined | {} | JSX.Element;
 }
 
 // @public (undocumented)
@@ -888,16 +884,6 @@ export type IToggleSlotProps = {
 
 // @public (undocumented)
 export interface IToggleSlots {
-    // (undocumented)
-    container: React.ElementType;
-    // (undocumented)
-    label: React.ElementType;
-    // (undocumented)
-    pill: React.ElementType;
-    // (undocumented)
-    stateText: React.ElementType;
-    // (undocumented)
-    thumb: React.ElementType;
 }
 
 // @public
@@ -1137,6 +1123,9 @@ export const ToggleBase: import("@fluentui/react-compose").ComponentWithAs<"div"
 
 // @public (undocumented)
 export const useToggle: (props: IToggleProps, options: ComposePreparedOptions<{}>) => {
+    state: {
+        checked: boolean | undefined;
+    };
     slots: any;
     slotProps: {
         root: {
