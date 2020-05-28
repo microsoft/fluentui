@@ -1,8 +1,10 @@
 import { Accessibility } from '../../types';
-import * as keyboardKey from 'keyboard-key';
+import { SpacebarKey } from '@fluentui/keyboard-key';
 import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
 
 /**
+ * @description
+ * Provides navigation inside the inner focus zone using Tab key
  * @specification
  *  Adds role='radio'. This allows screen readers to handle the component as a radio button.
  *  Adds attribute 'aria-checked=true' based on the property 'checked'.
@@ -25,7 +27,7 @@ const radioGroupItemBehavior: Accessibility<RadioGroupItemBehaviorProps> = props
   keyActions: {
     root: {
       performClick: {
-        keyCombinations: [{ keyCode: keyboardKey.Spacebar }],
+        keyCombinations: [{ keyCode: SpacebarKey }],
       },
     },
   },
@@ -33,7 +35,7 @@ const radioGroupItemBehavior: Accessibility<RadioGroupItemBehaviorProps> = props
 
 export default radioGroupItemBehavior;
 
-type RadioGroupItemBehaviorProps = {
+export type RadioGroupItemBehaviorProps = {
   /** Indicates if radio item is selected. */
   checked?: boolean;
   /** Indicates if radio item is disabled. */

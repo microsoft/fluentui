@@ -130,7 +130,7 @@ export const getStyles: IStyleFunction<IComponentPageStyleProps, IComponentPageS
       },
       globalClassNames.overviewHeading,
     ],
-    // These are for the actual "Best Practices" heading/text (rarely shown).
+    // These are for the actual "Best practices" heading/text (rarely shown).
     // The wrapper for this section plus dos/don'ts is bestPracticesSection.
     usageSection: [
       {

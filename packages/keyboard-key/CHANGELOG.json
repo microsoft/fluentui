@@ -2,6 +2,35 @@
   "name": "@fluentui/keyboard-key",
   "entries": [
     {
+      "date": "Tue, 26 May 2020 12:46:29 GMT",
+      "tag": "@fluentui/keyboard-key_v0.2.0",
+      "version": "0.2.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "docs: update README.md to show proper usage",
+            "author": "olfedias@microsoft.com",
+            "commit": "b72ef4c92db4c3f239d2ee35dee36234a9776bf3",
+            "package": "@fluentui/keyboard-key"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 14 May 2020 12:34:32 GMT",
+      "tag": "@fluentui/keyboard-key_v0.2.0",
+      "version": "0.2.0",
+      "comments": {
+        "none": [
+          {
+            "author": "czearing@outlook.com",
+            "commit": "630f25da48bc86270288fbc5ccd4703cf6ea4d46",
+            "package": "@fluentui/keyboard-key"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 08 May 2020 12:35:40 GMT",
       "tag": "@fluentui/keyboard-key_v0.2.0",
       "version": "0.2.0",

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import keyboardKey from 'keyboard-key';
+import { keyboardKey } from '@fluentui/keyboard-key';
 import { Popup, Menu, Reaction, ReactionProps } from '@fluentui/react-northstar';
 
 const getAriaLabel = ({ content: numberOfPersons, icon: emojiType }: ReactionProps) => {

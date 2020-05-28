@@ -1,4 +1,4 @@
-import * as keyboardKey from 'keyboard-key';
+import { keyboardKey, SpacebarKey } from '@fluentui/keyboard-key';
 
 import { Accessibility } from '../../types';
 import buttonBehavior, { ButtonBehaviorProps } from '../Button/buttonBehavior';
@@ -23,7 +23,7 @@ const toolbarItemBehavior: Accessibility<ToolbarItemBehaviorProps> = props => {
   behaviorData.keyActions.wrapper = {
     ...behaviorData.keyActions.wrapper,
     performWrapperClick: {
-      keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }],
+      keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: SpacebarKey }],
     },
     closeMenuAndFocusTrigger: {
       keyCombinations:

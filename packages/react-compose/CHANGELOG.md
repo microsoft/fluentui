@@ -1,8 +1,66 @@
 # Change Log - @fluentui/react-compose
 
-This log was last generated on Thu, 07 May 2020 01:06:55 GMT and should not be manually modified.
+This log was last generated on Wed, 27 May 2020 12:40:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.6.0)
+
+Wed, 27 May 2020 12:40:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v0.5.1..@fluentui/react-compose_v0.6.0)
+
+### Minor changes
+
+- Adding createClassResolver to help with auto resolving class names given class map and props. ([PR #13330](https://github.com/microsoft/fluentui/pull/13330) by dzearing@microsoft.com)
+
+## [0.5.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.5.1)
+
+Tue, 26 May 2020 12:46:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v0.5.0..@fluentui/react-compose_v0.5.1)
+
+### Patches
+
+- fix: allow ParentProps in ComposeOptions ([PR #13316](https://github.com/microsoft/fluentui/pull/13316) by olfedias@microsoft.com)
+
+## [0.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.5.0)
+
+Wed, 20 May 2020 12:31:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v0.4.1..@fluentui/react-compose_v0.5.0)
+
+### Minor changes
+
+- feat(compose): expose __self slot ([PR #13115](https://github.com/microsoft/fluentui/pull/13115) by olfedias@microsoft.com)
+
+### Patches
+
+- add shorthand config ([PR #13240](https://github.com/microsoft/fluentui/pull/13240) by mnajdova@gmail.com)
+
+## [0.4.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.4.1)
+
+Tue, 19 May 2020 12:34:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v0.4.0..@fluentui/react-compose_v0.4.1)
+
+### Patches
+
+- fix(compose): fix type for `React.Ref` generic ([PR #13209](https://github.com/microsoft/fluentui/pull/13209) by olfedias@microsoft.com)
+
+## [0.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.4.0)
+
+Fri, 15 May 2020 12:42:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v0.3.0..@fluentui/react-compose_v0.4.0)
+
+### Minor changes
+
+- Adding classes resolution to compose. ([PR #13096](https://github.com/microsoft/fluentui/pull/13096) by dzearing@microsoft.com)
+
+## [0.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.3.0)
+
+Fri, 15 May 2020 00:07:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v0.2.11..@fluentui/react-compose_v0.3.0)
+
+### Minor changes
+
+- Adding `classes` option to compose options. ([PR #13101](https://github.com/microsoft/fluentui/pull/13101) by dzearing@microsoft.com)
 
 ## [0.2.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.2.11)
 

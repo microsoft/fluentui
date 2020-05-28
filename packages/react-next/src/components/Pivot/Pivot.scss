@@ -35,8 +35,7 @@
     left: 8px;
     position: absolute;
     right: 8px;
-    transition: left var($animationDuration2) var($animationEaseFunction2),
-      right var($animationDuration2) var($animationEaseFunction2);
+    transition: left $animationDuration2 $animationEaseFunction2, right $animationDuration2 $animationEaseFunction2;
   }
 
   &:after {
