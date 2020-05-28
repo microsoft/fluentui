@@ -28,7 +28,7 @@ const defaultPerformanceOptions: StylesContextPerformance = {
 };
 
 const resolveStylesOptions = (options?: {
-  displayNames?: ResolveStylesOptions['displayNames'];
+  displayNames?: ResolveStylesOptions['allDisplayNames'];
   componentStyles?: Record<string, ComponentSlotStylesPrepared>;
   performance?: Partial<ResolveStylesOptions['performance']>;
   props?: ResolveStylesOptions['props'];
@@ -45,7 +45,7 @@ const resolveStylesOptions = (options?: {
   };
   return {
     theme,
-    displayNames,
+    allDisplayNames: displayNames,
     props,
     rtl,
     disableAnimations: false,

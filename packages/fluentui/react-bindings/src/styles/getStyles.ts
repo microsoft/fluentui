@@ -22,7 +22,7 @@ const getStyles = (options: ResolveStylesOptions): GetStylesResult => {
   // - conditionally add sources for evaluating debug information to component
 
   const resolvedVariables = resolveVariables(
-    options.displayNames,
+    options.allDisplayNames,
     options.theme,
     options.props.variables,
     options.performance.enableVariablesCaching,
@@ -32,7 +32,7 @@ const getStyles = (options: ResolveStylesOptions): GetStylesResult => {
   // conditionally add sources for evaluating debug information to component
   if (process.env.NODE_ENV !== 'production' && isDebugEnabled) {
     options.saveDebug({
-      componentName: options.displayNames.join(':'),
+      componentName: options.allDisplayNames.join(':'),
       componentVariables: _.filter(resolvedVariables._debug, variables => !_.isEmpty(variables.resolved)),
       componentStyles: resolvedStylesDebug,
       siteVariables: _.filter(options.theme.siteVariables._debug, siteVars => {

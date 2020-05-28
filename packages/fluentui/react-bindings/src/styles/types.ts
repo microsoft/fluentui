@@ -96,7 +96,8 @@ export type ResolveStylesOptions = StylesContextValue<{
   renderRule: RendererRenderRule;
 }> & {
   className?: string;
-  displayNames: string[];
+  allDisplayNames: string[];
+  primaryDisplayName: string;
   props: PropsWithVarsAndStyles & { design?: ComponentDesignProp };
   rtl: boolean;
   telemetry?: Telemetry;

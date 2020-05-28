@@ -105,11 +105,11 @@ export interface ToolbarItemProps extends UIComponentProps, ChildrenComponentPro
 
 export type ToolbarItemStylesProps = Required<Pick<ToolbarItemProps, 'active' | 'disabled'>>;
 
-export interface ToolbarItemSlotClassNames {
-  wrapper: string;
-}
-
 export const toolbarItemClassName = 'ui-toolbar__item';
+
+const mergeShorthandVariables = (variables, shorthandVariables) => {
+  return (variables || shorthandVariables) && mergeComponentVariables(variables, shorthandVariables);
+};
 
 /**
  * A ToolbarItem renders Toolbar item as a button with an icon.
@@ -140,8 +140,8 @@ const ToolbarItem = compose<'button', ToolbarItemProps, ToolbarItemStylesProps, 
     const menuRef = React.useRef<HTMLElement>();
 
     const parentVariables = React.useContext(ToolbarVariablesContext);
-    const mergedVariables = mergeComponentVariables(parentVariables, variables);
-
+    const mergedVariables = mergeShorthandVariables(parentVariables, variables);
+    console.log(mergedVariables);
     const getA11yProps = useAccessibility(accessibility, {
       debugName: composeOptions.displayName,
       actionHandlers: {

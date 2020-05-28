@@ -44,9 +44,10 @@ const resolveStyles = (
   renderStylesInput?: (styles: ICSSInJSStyle) => string,
 ): ResolveStylesResult => {
   const {
+    allDisplayNames,
     className: componentClassName,
     theme,
-    displayNames,
+    primaryDisplayName,
     props,
     rtl,
     disableAnimations,
@@ -56,11 +57,8 @@ const resolveStyles = (
   } = options;
 
   const { className, design, styles, variables, ...stylesProps } = props;
-
-  // First displayName will always point to the actual displayName, it's important in `compose()` scenarios
-  const primaryDisplayName = displayNames[0];
-
   const noInlineStylesOverrides = !(design || styles);
+
   let noVariableOverrides = performance.enableBooleanVariablesCaching || !variables;
 
   /* istanbul ignore else */
@@ -91,13 +89,17 @@ const resolveStyles = (
 
   const cacheEnabled = performance.enableStylesCaching && noInlineStylesOverrides && noVariableOverrides;
 
+  primaryDisplayName === 'ToolbarItemGrey' && console.log(primaryDisplayName, 'cacheEnabled', cacheEnabled);
+
+  primaryDisplayName === 'ToolbarItemGrey' &&
+    console.log(performance.enableStylesCaching, noInlineStylesOverrides, noVariableOverrides);
   // Merge theme styles with inline overrides if any
   let mergedStyles: ComponentSlotStylesPrepared;
 
-  if (displayNames.length === 1) {
-    mergedStyles = theme.componentStyles[primaryDisplayName] || { root: () => ({}) };
+  if (allDisplayNames.length === 1) {
+    mergedStyles = theme.componentStyles[allDisplayNames[0]] || { root: () => ({}) };
   } else {
-    const styles = displayNames.map(displayName => theme.componentStyles[displayName]).filter(Boolean);
+    const styles = allDisplayNames.map(displayName => theme.componentStyles[displayName]).filter(Boolean);
 
     if (styles.length > 0) {
       mergedStyles = mergeComponentStyles(...styles);
@@ -129,7 +131,7 @@ const resolveStyles = (
   const felaParam: RendererParam = {
     theme: { direction },
     disableAnimations,
-    displayName: displayNames.join(':'), // does not affect styles, only used by useEnhancedRenderer in docs
+    displayName: allDisplayNames.join(':'), // does not affect styles, only used by useEnhancedRenderer in docs
     sanitizeCss: performance.enableSanitizeCssPlugin,
   };
 
@@ -151,7 +153,9 @@ const resolveStyles = (
   const propsCacheKey = cacheEnabled ? JSON.stringify(stylesProps) : '';
   const variablesCacheKey = cacheEnabled && performance.enableBooleanVariablesCaching ? JSON.stringify(variables) : '';
   const componentCacheKey = cacheEnabled
-    ? `${displayNames.join(':')}:${propsCacheKey}:${variablesCacheKey}:${styleParam.rtl}${styleParam.disableAnimations}`
+    ? `${allDisplayNames.join(':')}:${propsCacheKey}:${variablesCacheKey}:${styleParam.rtl}${
+        styleParam.disableAnimations
+      }`
     : '';
 
   Object.keys(mergedStyles).forEach(slotName => {
@@ -221,7 +225,7 @@ const resolveStyles = (
       get(): string {
         if (cacheEnabled && theme) {
           const classesThemeCache = classesCache.get(theme) || {};
-
+          primaryDisplayName === 'ToolbarItemGrey' && console.log('get', cacheEnabled, slotCacheKey, classesThemeCache);
           if (classesThemeCache[slotCacheKey] || classesThemeCache[slotCacheKey] === '') {
             if (telemetry?.performance[primaryDisplayName]) {
               if (slotName === 'root') {
