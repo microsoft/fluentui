@@ -346,12 +346,13 @@ const ToolbarExampleMenuShorthand = () => {
                   content: 'Pause',
                   icon: <PauseIcon />,
                   menu: ['Pause 1.1'],
+                  menuOpen: true,
                 },
                 {
                   key: 'divider',
                   kind: 'divider',
                 },
-                { content: 'Without icon' },
+                'Without icon',
                 {
                   key: 'group',
                   kind: 'group',
@@ -361,7 +362,6 @@ const ToolbarExampleMenuShorthand = () => {
                   ],
                 },
               ],
-              // children: (C, p) => <ToolbarMenuBlue {...p} />,
             },
             menuOpen: true,
           },
