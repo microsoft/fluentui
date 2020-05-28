@@ -11,7 +11,7 @@ import { NodeRef, Unstable_NestingAuto } from '@fluentui/react-component-nesting
 import { handleRef, Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PopperJs from '@popperjs/core';
-import * as keyboardKey from 'keyboard-key';
+import { getCode, keyboardKey, SpacebarKey } from '@fluentui/keyboard-key';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
@@ -190,6 +190,9 @@ const Popup: React.FC<PopupProps> &
       preventScroll: e => {
         e.preventDefault();
       },
+      stopPropagation: e => {
+        e.stopPropagation();
+      },
     },
     mapPropsToBehavior: () => ({
       disabled: false, // definition has this prop, but `Popup` doesn't support it
@@ -214,8 +217,8 @@ const Popup: React.FC<PopupProps> &
   };
 
   const handleDocumentKeyDown = (getRefs: Function) => (e: KeyboardEvent) => {
-    const keyCode = keyboardKey.getCode(e);
-    const isMatchingKey = keyCode === keyboardKey.Enter || keyCode === keyboardKey.Spacebar;
+    const keyCode = getCode(e);
+    const isMatchingKey = keyCode === keyboardKey.Enter || keyCode === SpacebarKey;
 
     if (isMatchingKey && isOutsidePopupElementAndOutsideTriggerElement(getRefs(), e)) {
       trySetOpen(false, e);
@@ -486,6 +489,9 @@ const Popup: React.FC<PopupProps> &
   };
 
   if (process.env.NODE_ENV !== 'production') {
+    // This is fine to violate there conditional rule as environment variables will never change during component
+    // lifecycle
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     React.useEffect(() => {
       if (inline && trapFocus) {
         // eslint-disable-next-line no-console
@@ -601,5 +607,8 @@ Popup.handledProps = Object.keys(Popup.propTypes) as any;
 Popup.Content = PopupContent;
 
 Popup.create = createShorthandFactory({ Component: Popup, mappedProp: 'content' });
+Popup.shorthandConfig = {
+  mappedProp: 'content',
+};
 
 export default Popup;

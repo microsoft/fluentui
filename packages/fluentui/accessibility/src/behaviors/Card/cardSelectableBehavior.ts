@@ -1,6 +1,6 @@
 import { Accessibility } from '../../types';
 import { CardBehaviorProps } from './cardBehavior';
-import * as keyboardKey from 'keyboard-key';
+import { SpacebarKey } from '@fluentui/keyboard-key';
 import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
 
 /**
@@ -25,7 +25,7 @@ const cardSelectableBehavior: Accessibility<CardBehaviorProps> = props => ({
   keyActions: {
     root: {
       performClick: {
-        keyCombinations: [{ keyCode: keyboardKey.Spacebar }],
+        keyCombinations: [{ keyCode: SpacebarKey }],
       },
     },
   },

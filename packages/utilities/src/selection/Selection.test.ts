@@ -1,4 +1,5 @@
 import { Selection } from './Selection';
+import { IObjectWithKey, SelectionMode } from './Selection.types';
 
 const setA = [{ key: 'a' }, { key: 'b' }, { key: 'c' }];
 const setB = [{ key: 'a' }, { key: 'd' }, { key: 'b' }];
@@ -74,9 +75,8 @@ describe('Selection', () => {
     const selection = new Selection({
       canSelectItem: () => false,
       onSelectionChanged,
+      items: setA,
     });
-
-    selection.setItems(setA);
 
     expect(selection.isAllSelected()).toEqual(false);
 
@@ -91,9 +91,9 @@ describe('Selection', () => {
     let canSelect = false;
     const selection = new Selection({
       canSelectItem: () => canSelect,
+      items: setA,
     });
 
-    selection.setItems(setA);
     expect(selection.isAllSelected()).toEqual(false);
     selection.setAllSelected(true);
     expect(selection.isAllSelected()).toEqual(false);
@@ -105,9 +105,10 @@ describe('Selection', () => {
   });
 
   it('notifies consumers when all items are selected and some are removed', () => {
-    const selection = new Selection({ onSelectionChanged });
-
-    selection.setItems(setA);
+    const selection = new Selection({
+      onSelectionChanged,
+      items: setA,
+    });
 
     selection.setAllSelected(true);
 
@@ -126,9 +127,10 @@ describe('Selection', () => {
   });
 
   it('notifies consumers when some items are selected and some are removed', () => {
-    const selection = new Selection({ onSelectionChanged });
-
-    selection.setItems(setA);
+    const selection = new Selection({
+      onSelectionChanged,
+      items: setA,
+    });
 
     selection.setIndexSelected(2, true, false);
 
@@ -149,10 +151,31 @@ describe('Selection', () => {
     const selection = new Selection<ICustomItem>({
       onSelectionChanged: onSelectionChanged,
       getKey: (item: ICustomItem) => item.id,
+      items,
     });
-    selection.setItems(items);
 
     selection.setKeySelected('a', true, true);
     expect(onSelectionChanged).toHaveBeenCalledTimes(1);
+  });
+
+  it('respects 0 as selected key', () => {
+    const items: IObjectWithKey[] = [{ key: 1 }, { key: 0 }];
+    const selection = new Selection({ items, selectionMode: SelectionMode.multiple });
+
+    expect(selection.isKeySelected('0')).toBe(false);
+
+    selection.setKeySelected('0', true, false);
+    expect(selection.getSelectedIndices()).toEqual([1]);
+    expect(selection.getSelection()).toEqual([{ key: 0 }]);
+    expect(selection.isKeySelected('0')).toBe(true);
+    expect(selection.isIndexSelected(1)).toBe(true);
+
+    selection.toggleKeySelected('0');
+    expect(selection.isKeySelected('0')).toBe(false);
+    expect(selection.getSelection()).toEqual([]);
+
+    selection.setIndexSelected(0, false, true); // hack to reset anchor
+    selection.selectToKey('0');
+    expect(selection.getSelectedIndices()).toEqual([0, 1]);
   });
 });

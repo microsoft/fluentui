@@ -46,6 +46,23 @@ export const Fabric: React.FunctionComponent<IFabricProps>;
 // @public (undocumented)
 export const FabricBase: React.ForwardRefExoticComponent<IFabricProps & React.RefAttributes<HTMLDivElement>>;
 
+// @public (undocumented)
+export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> implements IFocusTrapZone {
+    constructor(props: IFocusTrapZoneProps);
+    // (undocumented)
+    componentDidMount(): void;
+    // (undocumented)
+    componentDidUpdate(prevProps: IFocusTrapZoneProps): void;
+    // (undocumented)
+    componentWillUnmount(): void;
+    // (undocumented)
+    focus(): void;
+    // (undocumented)
+    render(): JSX.Element;
+    // (undocumented)
+    UNSAFE_componentWillReceiveProps(nextProps: IFocusTrapZoneProps): void;
+    }
+
 // @public
 export const getMeasurementCache: () => {
     getCachedMeasurement: (data: any) => number | undefined;
@@ -154,6 +171,25 @@ export interface IFabricStyles {
     bodyThemed: IStyle;
     // (undocumented)
     root: IStyle;
+}
+
+// @public (undocumented)
+export interface IFocusTrapZone {
+    focus: () => void;
+}
+
+// @public (undocumented)
+export interface IFocusTrapZoneProps extends React.HTMLAttributes<HTMLDivElement> {
+    ariaLabelledBy?: string;
+    componentRef?: IRefObject<IFocusTrapZone>;
+    disabled?: boolean;
+    disableFirstFocus?: boolean;
+    elementToFocusOnDismiss?: HTMLElement;
+    firstFocusableSelector?: string | (() => string);
+    focusPreviouslyFocusedInnerElement?: boolean;
+    forceFocusInsideTrap?: boolean;
+    ignoreExternalFocusing?: boolean;
+    isClickableOutsideFocusTrap?: boolean;
 }
 
 // @public (undocumented)
@@ -385,6 +421,7 @@ export interface IPivot {
 
 // @public (undocumented)
 export interface IPivotItemProps extends React.HTMLAttributes<HTMLDivElement> {
+    alwaysRender?: boolean;
     ariaLabel?: string;
     componentRef?: IRefObject<{}>;
     headerButtonProps?: IButtonProps & {
@@ -401,9 +438,9 @@ export interface IPivotItemProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 // @public (undocumented)
-export interface IPivotProps extends React.ClassAttributes<PivotBase>, React.HTMLAttributes<HTMLDivElement> {
+export interface IPivotProps extends React.HTMLAttributes<HTMLDivElement> {
     className?: string;
-    componentRef?: IRefObject<IPivot>;
+    componentRef?: React.RefObject<IPivot>;
     defaultSelectedIndex?: number;
     defaultSelectedKey?: string;
     getTabId?: (itemKey: string, index: number) => string;
@@ -588,6 +625,8 @@ export interface ISlider {
 
 // @public (undocumented)
 export interface ISliderProps extends React.ClassAttributes<HTMLElement> {
+    'aria-label'?: string;
+    // @deprecated
     ariaLabel?: string;
     ariaValueText?: (value: number) => string;
     buttonProps?: React.HTMLAttributes<HTMLButtonElement>;
@@ -610,6 +649,9 @@ export interface ISliderProps extends React.ClassAttributes<HTMLElement> {
     valueFormat?: (value: number) => string;
     vertical?: boolean;
 }
+
+// @public (undocumented)
+export type ISliderState = any;
 
 // @public (undocumented)
 export type ISliderStyleProps = Required<Pick<ISliderProps, 'theme'>> & Pick<ISliderProps, 'className' | 'disabled' | 'vertical'> & {
@@ -953,13 +995,8 @@ export class OverflowSetBase extends React.Component<IOverflowSetProps, {}> impl
 // @public
 export const Pivot: React.FunctionComponent<IPivotProps>;
 
-// @public
-export class PivotBase extends React.Component<IPivotProps, IPivotState> {
-    constructor(props: IPivotProps);
-    focus(): void;
-    // (undocumented)
-    render(): JSX.Element;
-    }
+// @public (undocumented)
+export const PivotBase: React.FunctionComponent<IPivotProps>;
 
 // @public (undocumented)
 export class PivotItem extends React.Component<IPivotItemProps, {}> {
@@ -1031,7 +1068,7 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
 export const Slider: React.FunctionComponent<ISliderProps>;
 
 // @public (undocumented)
-export const SliderBase: React.ForwardRefExoticComponent<Pick<ISliderProps, "max" | "disabled" | "label" | "vertical" | "key" | "step" | "theme" | "styles" | "className" | "defaultValue" | "onChange" | "componentRef" | "min" | "value" | "ariaLabel" | "onChanged" | "showValue" | "ariaValueText" | "snapToStep" | "buttonProps" | "valueFormat" | "originFromZero"> & React.RefAttributes<HTMLDivElement>>;
+export const SliderBase: React.ForwardRefExoticComponent<Pick<ISliderProps, "max" | "disabled" | "label" | "vertical" | "key" | "step" | "theme" | "styles" | "className" | "defaultValue" | "aria-label" | "onChange" | "componentRef" | "min" | "value" | "ariaLabel" | "onChanged" | "showValue" | "ariaValueText" | "snapToStep" | "buttonProps" | "valueFormat" | "originFromZero"> & React.RefAttributes<HTMLDivElement>>;
 
 // @public (undocumented)
 export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonState> implements ISpinButton {
@@ -1121,7 +1158,6 @@ export * from "office-ui-fabric-react/lib/Dropdown";
 export * from "office-ui-fabric-react/lib/ExtendedPicker";
 export * from "office-ui-fabric-react/lib/Facepile";
 export * from "office-ui-fabric-react/lib/FloatingPicker";
-export * from "office-ui-fabric-react/lib/FocusTrapZone";
 export * from "office-ui-fabric-react/lib/FocusZone";
 export * from "office-ui-fabric-react/lib/Grid";
 export * from "office-ui-fabric-react/lib/GroupedList";

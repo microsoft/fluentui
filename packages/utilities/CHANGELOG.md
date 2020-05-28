@@ -1,8 +1,35 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Fri, 22 May 2020 12:37:35 GMT and should not be manually modified.
+This log was last generated on Thu, 28 May 2020 12:42:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.20.2](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.20.2)
+
+Thu, 28 May 2020 12:42:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.20.1..@uifabric/utilities_v7.20.2)
+
+### Patches
+
+- Add autoCapitalize property ([PR #13335](https://github.com/microsoft/fluentui/pull/13335) by suprememilanfan@gmail.com)
+
+## [7.20.1](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.20.1)
+
+Wed, 27 May 2020 12:40:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.20.0..@uifabric/utilities_v7.20.1)
+
+### Patches
+
+- Selection: respect 0 as selected key ([PR #13331](https://github.com/microsoft/fluentui/pull/13331) by elcraig@microsoft.com)
+
+## [7.20.0](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.20.0)
+
+Mon, 25 May 2020 12:38:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.19.0..@uifabric/utilities_v7.20.0)
+
+### Minor changes
+
+- findIndex: add fromIndex parameter ([PR #13295](https://github.com/microsoft/fluentui/pull/13295) by elcraig@microsoft.com)
 
 ## [7.19.0](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.19.0)
 

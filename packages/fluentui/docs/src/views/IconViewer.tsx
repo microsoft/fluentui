@@ -289,7 +289,7 @@ const IconViewer = () => {
       </Flex>
       <Flex padding="padding.medium">
         <GuidesNavigationFooter
-          previous={{ name: 'Shorthand Props', url: 'shorthand-props' }}
+          previous={{ name: 'Composition', url: 'composition' }}
           next={{ name: 'Component Architecture', url: 'component-architecture' }}
         />
       </Flex>

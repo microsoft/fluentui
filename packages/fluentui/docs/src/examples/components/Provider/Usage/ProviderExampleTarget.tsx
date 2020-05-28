@@ -25,19 +25,20 @@ const PortalWindow: React.FunctionComponent<PortalWindowProps> = ({ children, on
     return () => {
       externalWindow.current.close();
     };
-  }, []);
+  }, [onClose]);
 
   return mounted && ReactDOM.createPortal(children(externalContainer.current.ownerDocument), externalContainer.current);
 };
 
 const ProviderExampleTarget = () => {
   const [open, setOpen] = React.useState(false);
+  const handleClose = React.useCallback(() => setOpen(false), []);
 
   return (
     <>
       <Button onClick={() => setOpen(true)}>Open window!</Button>
       {open && (
-        <PortalWindow onClose={() => setOpen(false)}>
+        <PortalWindow onClose={handleClose}>
           {externalDocument => (
             <Provider theme={teamsTheme} target={externalDocument}>
               <Attachment header="Document.docx" />
