@@ -4,9 +4,15 @@ import {
   toolbarMenuItemCheckboxBehavior,
   ToolbarMenuBehaviorProps,
 } from '@fluentui/accessibility';
-import { getElementType, useUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import {
+  getElementType,
+  mergeVariablesOverrides,
+  useUnhandledProps,
+  useAccessibility,
+  useStyles,
+  useTelemetry,
+} from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
-import { mergeComponentVariables } from '@fluentui/styles';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
@@ -82,7 +88,7 @@ const ToolbarMenu: React.FC<WithAsProp<ToolbarMenuProps>> & FluentComponentStati
   const { accessibility, className, children, design, items, submenu, submenuIndicator, styles, variables } = props;
 
   const parentVariables = React.useContext(ToolbarVariablesContext);
-  const mergedVariables = mergeComponentVariables(parentVariables, variables);
+  const mergedVariables = mergeVariablesOverrides(parentVariables, variables);
 
   const getA11yProps = useAccessibility(accessibility, {
     debugName: ToolbarMenu.displayName,

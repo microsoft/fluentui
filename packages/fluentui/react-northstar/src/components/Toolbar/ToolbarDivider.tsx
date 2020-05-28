@@ -1,13 +1,13 @@
 import { Accessibility } from '@fluentui/accessibility';
 import {
   getElementType,
+  mergeVariablesOverrides,
   useUnhandledProps,
   useAccessibility,
   useStyles,
   useTelemetry,
   compose,
 } from '@fluentui/react-bindings';
-import { mergeComponentVariables } from '@fluentui/styles';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 import * as React from 'react';
@@ -48,7 +48,7 @@ const ToolbarDivider = compose<'div', ToolbarDividerProps, ToolbarDividerStylesP
         className,
         design,
         styles,
-        variables: mergeComponentVariables(parentVariables, variables),
+        variables: mergeVariablesOverrides(parentVariables, variables),
       }),
       rtl: context.rtl,
       composeOptions,
