@@ -44,6 +44,12 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Restricted prop sets in the `HeaderDescription` component which are passed to styles functions, @assuncaocharles ([#13296](https://github.com/microsoft/fluentui/pull/13296))
 - Restricted prop sets in the `Loader` component which are passed to styles functions, @assuncaocharles ([#13297](https://github.com/microsoft/fluentui/pull/13297))
 - Restricted prop sets in the `RadioGroupItem` component which are passed to styles functions, @assuncaocharles ([#13301](https://github.com/microsoft/fluentui/pull/13301))
+- Restricted prop sets in the `ItemLayout` component which are passed to styles functions and change `renderContentArea`, `renderHeaderArea` and `renderMainArea` definition, @assuncaocharles ([#13327](https://github.com/microsoft/fluentui/pull/13327))
+- Restricted prop sets in the `Layout` component which are passed to styles functions, @assuncaocharles ([#13324](https://github.com/microsoft/fluentui/pull/13324))
+- Restricted prop sets in the `RadioGroup` component which are passed to styles functions, @assuncaocharles ([#13338](https://github.com/microsoft/fluentui/pull/13338))
+- `toolbarMenuRadioGroupSlotClassNames` were removed, `toolbarMenuRadioGroupWrapperClassName` should be used instead @layershifter ([#13322](https://github.com/microsoft/fluentui/pull/13322))
+- `toolbarItemSlotClassNames.wrapper` was removed, `toolbarItemWrapperClassName` should be used instead @mnajdova ([#13321](https://github.com/microsoft/fluentui/pull/13321))
+- `toolbarMenuItemSlotClassNames`'s `activeIndicator` and `submenuIndicator` were removed, `toolbarMenuItemActiveIndicatorClassName` and `toolbarMenuItemSubmenuIndicatorClassName` should be used instead @mnajdova ([#13350](https://github.com/microsoft/fluentui/pull/13350))
 
 ### Fixes
 - Fix `splitButtonBehavior` to exclude `toggleButton` from focus zone @silviuavram ([#13043](https://github.com/microsoft/fluentui/pull/13043))
@@ -51,10 +57,12 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Enable back focus zone in `CarouselNavigation` @kolaps33 ([#13086](https://github.com/microsoft/fluentui/pull/13086))
 - Update examples to focus on internal input when Tab is pressed in `RadioGroupItem` @assuncaocharles ([#13110](https://github.com/microsoft/fluentui/pull/13110))
 - Wrapped `Alert`, `Attachment`, `Box` and `ListItem` FC with `unstable_wrapWithFocusZone` @assuncaocharles ([#13093](https://github.com/microsoft/fluentui/pull/13093))
+- Update to Teams theme font stack @notandrew ([#13273](https://github.com/microsoft/fluentui/pull/13273))
 - Fix to use `useRef()` hook in functional components @layershifter ([#13228](https://github.com/microsoft/fluentui/pull/13228))
 - Exclude useless updates, fix `fixed` positioning in `Popper` @layershifter @kolaps33 ([#13044](https://github.com/microsoft/fluentui/pull/13044))
 - Fix showing loading message in `Dropdown` when list of items has scroll @assuncaocharles ([#13175](https://github.com/microsoft/fluentui/pull/13175))
 - Stop propagation of left and right arrow key in `SplitButton` for the integration with toolbar @jurokapsiar ([#13311](https://github.com/microsoft/fluentui/pull/13311))
+- Fix broken caching when `enableBooleanVariablesCaching:true` and there is no variables @layershifter ([#13345](https://github.com/microsoft/fluentui/pull/13345))
 
 ### Features
 - Added icons: `TranscriptIcon`, `FilesGenericColoredIcon`, `FilesHtmlColoredIcon`, `FilesPdfColoredIcon`, `FilesPictureColoredIcon`, `FilesTextColoredIcon`, `PopupIcon`, `ShareGenericIcon`, `ComposeIcon`, `SpotlightStopIcon`, `TenantWorkIcon`, `TenantPersonalIcon`, `WorkOrSchoolIcon`, `EmailWithDotIcon`. Modified: `ShareLocationIcon`, `SpotlightIcon`. @TanelVari ([#12872](https://github.com/microsoft/fluentui/pull/12872))
@@ -68,6 +76,16 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Added icons: `AudioLoadingIcon`, `VideoLoadingIcon`, `TiltPanZoomIcon`, `SpeakerPersonIcon`, `GalleryNewIcon`, `GalleryNewLargeIcon`, `ContentIcon`, `AudienceIcon`, `CameraIcon`  @TanelVari ([#13221](https://github.com/microsoft/fluentui/pull/13221))
 - Add children api support for `Menu` component @assuncaocharles ([#13227](https://github.com/microsoft/fluentui/pull/13227))
 - Add `compose()` support for submenus in `MenuItem` @mnajdova ([#13300](https://github.com/microsoft/fluentui/pull/13300))
+- Use `compose()` in `ToolbarMenuDivider` @mnajdova ([#13318](https://github.com/microsoft/fluentui/pull/13318))
+- Use `compose()` in `ToolbarMenuRadioGroup` and added dedicated slot's component `ToolbarMenuRadioGroupWrapper` @layershifter ([#13322](https://github.com/microsoft/fluentui/pull/13322))
+- Use `compose()` in `ToolbarRadioGroup` @layershifter ([#13322](https://github.com/microsoft/fluentui/pull/13322))
+- Use `compose()` in `Toolbar` @mnajdova ([#13341](https://github.com/microsoft/fluentui/pull/13341))
+- Use `compose()` in `ToolbarItem` @mnajdova ([#13321](https://github.com/microsoft/fluentui/pull/13321))
+- Use `compose()` in `ToolbarMenuItem` @mnajdova ([#13350](https://github.com/microsoft/fluentui/pull/13350))
+- Use `compose()` in `ToolbarCustomItem` @mnajdova ([#13319](https://github.com/microsoft/fluentui/pull/13319))
+
+### Performance
+- Omit `_.findKey()` usage in `focusVisibleEnhancer()` @layershifter ([#13343](https://github.com/microsoft/fluentui/pull/13343))
 
 ### Documentation
 - `Toolbar` recommendation using toolbar based on aria  @kolaps33 ([#13143](https://github.com/microsoft/fluentui/pull/13143))
