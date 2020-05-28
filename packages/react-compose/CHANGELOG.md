@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-compose
 
-This log was last generated on Wed, 27 May 2020 12:40:00 GMT and should not be manually modified.
+This log was last generated on Thu, 28 May 2020 12:42:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.6.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.6.1)
+
+Thu, 28 May 2020 12:42:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v0.6.0..@fluentui/react-compose_v0.6.1)
+
+### Patches
+
+- Typescript generic argument names cleaned up, removed react-is unlisted dependency usage, no breaking changes. Also split utils.ts into separate files. Each of these functions should have some unit tests. ([PR #13354](https://github.com/microsoft/fluentui/pull/13354) by dzearing@microsoft.com)
 
 ## [0.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.6.0)
 
