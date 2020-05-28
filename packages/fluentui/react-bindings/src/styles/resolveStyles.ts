@@ -221,7 +221,7 @@ const resolveStyles = (
       get(): string {
         if (cacheEnabled && theme) {
           const classesThemeCache = classesCache.get(theme) || {};
-          primaryDisplayName === 'ToolbarItemGrey' && console.log('get', cacheEnabled, slotCacheKey, classesThemeCache);
+
           if (classesThemeCache[slotCacheKey] || classesThemeCache[slotCacheKey] === '') {
             if (telemetry?.performance[primaryDisplayName]) {
               if (slotName === 'root') {
