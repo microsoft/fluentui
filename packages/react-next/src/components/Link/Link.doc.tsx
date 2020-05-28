@@ -1,11 +1,9 @@
 import * as React from 'react';
 import { LinkBasicExample } from './examples/Link.Basic.Example';
-import { LinkThemedExample } from './examples/Link.Themed.Example';
 
 import { IDocPageProps } from '../../common/DocPage.types';
 
 const LinkBasicExampleCode = require('!raw-loader!@fluentui/react-next/src/components/Link/examples/Link.Basic.Example.tsx') as string;
-const LinkThemedExampleCode = require('!raw-loader!@fluentui/react-next/src/components/Link/examples/Link.Themed.Example.tsx') as string;
 
 export const LinkPageProps: IDocPageProps = {
   title: 'Link',
@@ -16,41 +14,6 @@ export const LinkPageProps: IDocPageProps = {
       title: 'Link Basic',
       code: LinkBasicExampleCode,
       view: <LinkBasicExample />,
-      styles: ({ theme }) => {
-        // UHF overrides. :( These are here rather than in the example because they're not necessary
-        // under normal circumstances, and including them in the example makes it more confusing.
-        return {
-          root: {
-            selectors: {
-              '.ms-Link': {
-                color: theme!.palette.themePrimary,
-                margin: 0,
-                padding: 0,
-                overflow: 'inherit',
-                textOverflow: 'inherit',
-                selectors: {
-                  ':active, :hover, :active:hover': {
-                    color: theme!.palette.themeDarker,
-                  },
-                  ':focus': {
-                    color: theme!.palette.themePrimary,
-                  },
-                },
-              },
-              '.ms-Link.is-disabled': {
-                color: theme!.palette.neutralTertiary,
-                pointerEvents: 'none',
-                cursor: 'default',
-              },
-            },
-          },
-        };
-      },
-    },
-    {
-      title: 'Link Themed',
-      code: LinkThemedExampleCode,
-      view: <LinkThemedExample />,
       styles: ({ theme }) => {
         // UHF overrides. :( These are here rather than in the example because they're not necessary
         // under normal circumstances, and including them in the example makes it more confusing.
