@@ -214,7 +214,7 @@ const Dialog: React.FC<WithAsProp<DialogProps>> &
     initialValue: false,
   });
 
-  const lockBodyScroll = () => {
+  const lockBodyScroll = React.useCallback(() => {
     const openDialogs = (+context.target.body.getAttribute(dialogsCounterAttribute) || 0) + 1;
     context.target.body.setAttribute(dialogsCounterAttribute, `${openDialogs}`);
 
@@ -222,9 +222,9 @@ const Dialog: React.FC<WithAsProp<DialogProps>> &
     if (openDialogs === 1) {
       disableBodyScroll(context.target.body);
     }
-  };
+  }, [context.target.body]);
 
-  const unlockBodyScroll = () => {
+  const unlockBodyScroll = React.useCallback(() => {
     const openDialogs = (+context.target.body.getAttribute(dialogsCounterAttribute) || 0) - 1;
     context.target.body.setAttribute(dialogsCounterAttribute, `${openDialogs}`);
 
@@ -233,24 +233,34 @@ const Dialog: React.FC<WithAsProp<DialogProps>> &
       enableBodyScroll(context.target.body);
       context.target.body.removeAttribute(dialogsCounterAttribute);
     }
-  };
+  }, [context.target.body]);
+
+  const [openedFirst, setOpenedFirst] = React.useState(props.open || props.defaultOpen);
+
+  React.useEffect(() => {
+    if (openedFirst) {
+      if (open) {
+        lockBodyScroll();
+      } else {
+        unlockBodyScroll();
+      }
+    }
+  }, [lockBodyScroll, open, openedFirst, unlockBodyScroll]);
 
   const handleDialogCancel = (e: Event | React.SyntheticEvent) => {
     _.invoke(props, 'onCancel', e, { ...props, open: false });
     setOpen(false);
-    unlockBodyScroll();
   };
 
   const handleDialogConfirm = (e: React.SyntheticEvent) => {
     _.invoke(props, 'onConfirm', e, { ...props, open: false });
     setOpen(false);
-    unlockBodyScroll();
   };
 
   const handleDialogOpen = (e: React.SyntheticEvent) => {
     _.invoke(props, 'onOpen', e, { ...props, open: true });
     setOpen(true);
-    lockBodyScroll();
+    setOpenedFirst(true);
   };
 
   const handleCancelButtonOverrides = (predefinedProps: ButtonProps) => ({
