@@ -347,9 +347,9 @@ const ToolbarMenuItem = compose<'button', ToolbarMenuItemProps, ToolbarMenuItemS
     const hasChildren = childrenExist(children);
 
     if (popup && !hasChildren) {
-      const popupElement = Popup.create(popup, {
+      const popupElement = createShorthand(composeOptions.slots.popup, popup, {
         defaultProps: () => ({
-          trapFocus: true,
+          ...slotProps.popup,
           onOpenChange: e => {
             e.stopPropagation();
           },
@@ -434,7 +434,7 @@ const ToolbarMenuItem = compose<'button', ToolbarMenuItemProps, ToolbarMenuItemS
       icon: ToolbarMenuItemIcon,
       submenuIndicator: ToolbarMenuItemSubmenuIndicator,
       activeIndicator: ToolbarMenuItemActiveIndicator,
-      // menu: ToolbarMenu,
+      popup: Popup,
     },
     mapPropsToSlotProps: props => ({
       icon: {
@@ -445,6 +445,9 @@ const ToolbarMenuItem = compose<'button', ToolbarMenuItemProps, ToolbarMenuItemS
       },
       activeIndicator: {
         accessibility: indicatorBehavior,
+      },
+      popup: {
+        trapFocus: true,
       },
     }),
 

@@ -85,10 +85,11 @@ const ToolbarMenu = compose<'ul', ToolbarMenuProps, ToolbarMenuStylesProps, {}, 
     const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
     setStart();
 
-    const { accessibility, className, children, design, items, submenu, submenuIndicator, styles, variables } = props;
+    const { accessibility, className, children, design, items, styles, variables } = props;
 
     const parentVariables = React.useContext(ToolbarVariablesContext);
     const mergedVariables = mergeComponentVariables(parentVariables, variables);
+    const slotProps = composeOptions.resolveSlotProps<ToolbarMenuProps>(props);
 
     const getA11yProps = useAccessibility(accessibility, {
       debugName: composeOptions.displayName,
@@ -135,23 +136,25 @@ const ToolbarMenu = compose<'ul', ToolbarMenuProps, ToolbarMenuStylesProps, {}, 
 
         switch (kind) {
           case 'divider':
-            return createShorthand(ToolbarMenuDivider, item);
+            return createShorthand(composeOptions.slots.divider, item, {
+              defaultProps: () => slotProps.divider,
+            });
 
           case 'group':
-            return createShorthand(ToolbarMenuRadioGroup, item, { overrideProps: handleRadioGroupOverrides });
+            return createShorthand(composeOptions.slots.group, item, {
+              defaultProps: () => slotProps.group,
+              overrideProps: handleRadioGroupOverrides,
+            });
 
           case 'toggle':
-            return createShorthand(ToolbarMenuItem, item, {
-              defaultProps: () => ({ accessibility: toolbarMenuItemCheckboxBehavior }),
+            return createShorthand(composeOptions.slots.toggle, item, {
+              defaultProps: () => slotProps.toggle,
               overrideProps: handleItemOverrides,
             });
 
           default:
-            return createShorthand(ToolbarMenuItem, item, {
-              defaultProps: () => ({
-                submenuIndicator,
-                inSubmenu: submenu,
-              }),
+            return createShorthand(composeOptions.slots.item, item, {
+              defaultProps: () => slotProps.item,
               overrideProps: handleItemOverrides,
             });
         }
@@ -176,6 +179,22 @@ const ToolbarMenu = compose<'ul', ToolbarMenuProps, ToolbarMenuStylesProps, {}, 
   {
     displayName: 'ToolbarMenu',
     className: toolbarMenuClassName,
+
+    slots: {
+      item: ToolbarMenuItem,
+      divider: ToolbarMenuDivider,
+      group: ToolbarMenuRadioGroup,
+      toggle: ToolbarMenuItem,
+    },
+    mapPropsToSlotProps: props => ({
+      item: {
+        submenuIndicator: props.submenuIndicator,
+        inSubmenu: props.submenu,
+      },
+      toggle: {
+        accessibility: toolbarMenuItemCheckboxBehavior,
+      },
+    }),
 
     shorthandConfig: {
       mappedArrayProp: 'items',
