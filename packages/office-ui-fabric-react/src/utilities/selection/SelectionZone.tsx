@@ -342,7 +342,7 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, ISelecti
   };
 
   private _onClick = (ev: React.MouseEvent<HTMLElement>): void => {
-    const { enableTouchInvocationTarget: enableItemTouchInvocationTarget = false } = this.props;
+    const { enableTouchInvocationTarget = false } = this.props;
 
     this._updateModifiers(ev);
 
@@ -371,7 +371,7 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, ISelecti
           break;
         } else if (
           (this._isTouch &&
-            enableItemTouchInvocationTarget &&
+            enableTouchInvocationTarget &&
             this._hasAttribute(target, SELECTION_INVOKE_TOUCH_ATTRIBUTE_NAME)) ||
           this._hasAttribute(target, SELECTION_INVOKE_ATTRIBUTE_NAME)
         ) {
