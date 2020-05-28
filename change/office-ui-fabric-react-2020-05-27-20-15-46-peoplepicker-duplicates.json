@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Fix examples to properly remove duplicates",
+  "comment": "PeoplePicker: Fix examples to properly remove duplicates",
   "packageName": "office-ui-fabric-react",
   "email": "suprememilanfan@gmail.com",
   "dependentChangeType": "patch",
