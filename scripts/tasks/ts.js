@@ -5,7 +5,8 @@ const { tscTask, argv } = require('just-scripts');
 const libPath = path.resolve(process.cwd(), 'lib');
 const srcPath = path.resolve(process.cwd(), 'src');
 // Temporary hack: only use tsbuildinfo file for things under packages/fluentui
-const isV0 = /[\\/]packages[\\/]fluentui[\\/]/.test(process.cwd());
+const useTsBuildInfo =
+  /[\\/]packages[\\/]fluentui[\\/]/.test(process.cwd()) && path.basename(process.cwd()) !== 'perf-test';
 
 function getExtraTscParams(args) {
   return {
@@ -22,7 +23,7 @@ module.exports.ts = {
       ...extraOptions,
       outDir: 'lib-commonjs',
       module: 'commonjs',
-      ...(isV0 && { tsBuildInfoFile: '.commonjs.tsbuildinfo' }),
+      ...(useTsBuildInfo && { tsBuildInfoFile: '.commonjs.tsbuildinfo' }),
     });
   },
   esm: () => {
@@ -31,7 +32,7 @@ module.exports.ts = {
       ...extraOptions,
       outDir: 'lib',
       module: 'esnext',
-      ...(isV0 && { tsBuildInfoFile: '.tsbuildinfo' }),
+      ...(useTsBuildInfo && { tsBuildInfoFile: '.tsbuildinfo' }),
     });
   },
   amd: () => {
@@ -40,7 +41,7 @@ module.exports.ts = {
       ...extraOptions,
       outDir: 'lib-amd',
       module: 'amd',
-      ...(isV0 && { tsBuildInfoFile: '.amd.tsbuildinfo' }),
+      ...(useTsBuildInfo && { tsBuildInfoFile: '.amd.tsbuildinfo' }),
     });
   },
   commonjsOnly: () => {
