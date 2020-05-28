@@ -29,8 +29,8 @@ let _invoke4: Element;
 let _onItemInvokeCalled: number;
 let _lastItemInvoked: any;
 
-function _initializeSelection(props?: { selectionMode?: SelectionMode; enableTouchTargetInvocation?: boolean }): void {
-  const { selectionMode = SelectionMode.multiple, enableTouchTargetInvocation = false } = props || {};
+function _initializeSelection(props?: { selectionMode?: SelectionMode; enableTouchInvocationTarget?: boolean }): void {
+  const { selectionMode = SelectionMode.multiple, enableTouchInvocationTarget = false } = props || {};
 
   _selection = new Selection();
   _selection.setItems(SELECTABLE_ITEMS);
@@ -40,7 +40,7 @@ function _initializeSelection(props?: { selectionMode?: SelectionMode; enableTou
       selectionMode={selectionMode}
       disableAutoSelectOnInputElements={true}
       enterModalOnTouch={true}
-      enableTouchTargetInvocation={enableTouchTargetInvocation}
+      enableTouchInvocationTarget={enableTouchInvocationTarget}
       // tslint:disable-next-line:jsx-no-lambda
       onItemInvoked={(item: IObjectWithKey) => {
         _onItemInvokeCalled++;
@@ -380,7 +380,7 @@ describe('SelectionZone - SelectionMode.none', () => {
 describe('SelectionZone - enabled touch targets', () => {
   beforeEach(() =>
     _initializeSelection({
-      enableTouchTargetInvocation: true,
+      enableTouchInvocationTarget: true,
     }),
   );
 

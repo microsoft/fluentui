@@ -89,7 +89,7 @@ export interface ISelectionZoneProps extends React.ClassAttributes<SelectionZone
    *
    * @defaultvalue false
    */
-  enableTouchTargetInvocation?: boolean;
+  enableTouchInvocationTarget?: boolean;
   /**
    * Determines if an item is selected on focus.
    *
@@ -342,7 +342,7 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, ISelecti
   };
 
   private _onClick = (ev: React.MouseEvent<HTMLElement>): void => {
-    const { enableTouchTargetInvocation: enableItemTouchInvocationTarget = false } = this.props;
+    const { enableTouchInvocationTarget: enableItemTouchInvocationTarget = false } = this.props;
 
     this._updateModifiers(ev);
 
