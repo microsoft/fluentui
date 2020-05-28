@@ -16,7 +16,7 @@ import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import { getCode, keyboardKey } from '@fluentui/keyboard-key';
-import { disableBodyScroll, enableBodyScroll } from './utils';
+import { lockBodyScroll, unlockBodyScroll } from './utils';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 import {
@@ -122,7 +122,7 @@ export interface DialogState {
   headerId?: string;
   open?: boolean;
 }
-const dialogsCounterAttribute = 'fluent-dialogs-count';
+
 export const dialogClassName = 'ui-dialog';
 export const dialogSlotClassNames: DialogSlotClassNames = {
   header: `${dialogClassName}__header`,
@@ -166,7 +166,7 @@ const Dialog: React.FC<WithAsProp<DialogProps>> &
   const unhandledProps = useUnhandledProps(Dialog.handledProps, props);
 
   const contentRef = React.useRef<HTMLElement>();
-  const overlayRef = React.useRef<HTMLElement>() ;
+  const overlayRef = React.useRef<HTMLElement>();
   const triggerRef = React.useRef<HTMLElement>();
 
   const contentId = React.useRef<string>();
@@ -214,38 +214,17 @@ const Dialog: React.FC<WithAsProp<DialogProps>> &
     initialValue: false,
   });
 
-  const lockBodyScroll = React.useCallback(() => {
-    const openDialogs = (+context.target.body.getAttribute(dialogsCounterAttribute) || 0) + 1;
-    context.target.body.setAttribute(dialogsCounterAttribute, `${openDialogs}`);
-
-    // Avoid to block scroll in nested dialogs
-    if (openDialogs === 1) {
-      disableBodyScroll(context.target.body);
-    }
-  }, [context.target.body]);
-
-  const unlockBodyScroll = React.useCallback(() => {
-    const openDialogs = (+context.target.body.getAttribute(dialogsCounterAttribute) || 0) - 1;
-    context.target.body.setAttribute(dialogsCounterAttribute, `${openDialogs}`);
-
-    // Only enables scroll if all dialogs are closed
-    if (openDialogs === 0) {
-      enableBodyScroll(context.target.body);
-      context.target.body.removeAttribute(dialogsCounterAttribute);
-    }
-  }, [context.target.body]);
-
   const [openedFirst, setOpenedFirst] = React.useState(props.open || props.defaultOpen);
 
   React.useEffect(() => {
     if (openedFirst) {
       if (open) {
-        lockBodyScroll();
+        lockBodyScroll(context.target.body);
       } else {
-        unlockBodyScroll();
+        unlockBodyScroll(context.target.body);
       }
     }
-  }, [lockBodyScroll, open, openedFirst, unlockBodyScroll]);
+  }, [context.target.body, open, openedFirst]);
 
   const handleDialogCancel = (e: Event | React.SyntheticEvent) => {
     _.invoke(props, 'onCancel', e, { ...props, open: false });
