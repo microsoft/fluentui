@@ -53,6 +53,7 @@ const defaultContext: StylesContextValue<{ renderRule: RendererRenderRule }> = {
   },
   renderer: { renderRule: () => '' },
   theme: emptyTheme,
+  telemetry: undefined,
 };
 
 const useStyles = <StyleProps extends PrimitiveProps>(
@@ -87,6 +88,7 @@ const useStyles = <StyleProps extends PrimitiveProps>(
     saveDebug: fluentUIDebug => (debug.current = { fluentUIDebug }),
     theme: context.theme,
     performance: context.performance,
+    telemetry: context.telemetry,
   });
 
   return { classes, styles: resolvedStyles };

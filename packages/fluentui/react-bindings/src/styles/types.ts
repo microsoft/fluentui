@@ -1,6 +1,8 @@
 import { DebugData, ICSSInJSStyle, PropsWithVarsAndStyles, ThemeInput, ThemePrepared } from '@fluentui/styles';
 import { IRenderer as FelaRenderer } from 'fela';
 
+import { Telemetry } from '../telemetry/types';
+
 // Notice:
 // This temporary lives here, will be remove once `animation` prop will be dropped
 export type ComponentAnimationProp =
@@ -83,6 +85,7 @@ export type StylesContextValue<R = Renderer> = {
   performance: StylesContextPerformance;
   renderer: R;
   theme: ThemePrepared;
+  telemetry?: Telemetry;
 };
 
 export type PrimitiveProps = Record<string, boolean | number | string | undefined>;
@@ -94,5 +97,6 @@ export type ResolveStylesOptions = StylesContextValue<{
   displayNames: string[];
   props: PropsWithVarsAndStyles & { design?: ComponentDesignProp };
   rtl: boolean;
+  telemetry?: Telemetry;
   saveDebug: (debug: DebugData | null) => void;
 };

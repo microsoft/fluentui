@@ -52,11 +52,12 @@ const resolveStyles = (
     disableAnimations,
     renderer,
     performance,
+    telemetry,
   } = options;
 
   const { className, design, styles, variables, ...stylesProps } = props;
-
   const noInlineStylesOverrides = !(design || styles);
+
   let noVariableOverrides = performance.enableBooleanVariablesCaching || !variables;
 
   /* istanbul ignore else */
@@ -211,7 +212,16 @@ const resolveStyles = (
       get(): string {
         if (cacheEnabled && theme) {
           const classesThemeCache = classesCache.get(theme) || {};
-          if (classesThemeCache[slotCacheKey]) {
+
+          if (classesThemeCache[slotCacheKey] || classesThemeCache[slotCacheKey] === '') {
+            if (telemetry?.performance[displayNames[0]]) {
+              if (slotName === 'root') {
+                telemetry.performance[displayNames[0]].stylesRootCacheHits++;
+              } else {
+                telemetry.performance[displayNames[0]].stylesSlotsCacheHits++;
+              }
+            }
+
             return slotName === 'root'
               ? cx(componentClassName, classesThemeCache[slotCacheKey], className)
               : classesThemeCache[slotCacheKey];

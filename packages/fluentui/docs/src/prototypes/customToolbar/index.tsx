@@ -72,14 +72,14 @@ const CustomToolbarPrototype: React.FunctionComponent = () => {
     const totals = _.reduce(
       telemetry.performance,
       (acc, next) => {
-        acc.count += next.count;
+        acc.instances += next.instances;
         acc.msTotal += next.msTotal;
         return acc;
       },
-      { count: 0, msTotal: 0 },
+      { instances: 0, msTotal: 0 },
     );
 
-    console.log(`Rendered ${totals.count} Fluent UI components in ${totals.msTotal} ms`);
+    console.log(`Rendered ${totals.instances} Fluent UI components in ${totals.msTotal} ms`);
     console.table(telemetry.performance);
   });
 

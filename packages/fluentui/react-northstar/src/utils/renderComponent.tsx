@@ -3,11 +3,11 @@ import {
   ComponentSlotClasses,
   FocusZone,
   getElementType,
+  deprecated_getTelemetry as getTelemetry,
   getUnhandledProps,
   ReactAccessibilityBehavior,
   unstable_getAccessibility as getAccessibility,
   unstable_getStyles as getStyles,
-  useTelemetry,
 } from '@fluentui/react-bindings';
 import {
   emptyTheme,
@@ -45,6 +45,7 @@ export interface RenderConfig<P> {
   actionHandlers: AccessibilityActionHandlers;
   render: RenderComponentCallback<P>;
   saveDebug: (debug: DebugData | null) => void;
+  isFirstRenderRef: React.MutableRefObject<boolean>;
 }
 
 const renderComponent = <P extends {}>(
@@ -57,7 +58,7 @@ const renderComponent = <P extends {}>(
     logProviderMissingWarning();
   }
 
-  const { setStart, setEnd } = useTelemetry(displayName, context.telemetry);
+  const { setStart, setEnd } = getTelemetry(displayName, context.telemetry, config.isFirstRenderRef);
   const rtl = context.rtl || false;
 
   setStart();
@@ -88,6 +89,7 @@ const renderComponent = <P extends {}>(
       enableStylesCaching: false,
       enableBooleanVariablesCaching: false,
     },
+    telemetry: context.telemetry,
   });
 
   const resolvedConfig: RenderResultConfig<P> = {
