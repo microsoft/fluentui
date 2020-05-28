@@ -1,7 +1,9 @@
 import * as React from 'react';
+import { compose } from '@fluentui/react-compose';
+import { Label } from '../../Label';
 import { getGlobalClassNames, ITheme } from '../../Styling';
 import { css, memoizeFunction, styled } from '../../Utilities';
-import { ToggleBase } from './Toggle.base';
+import { ToggleBase } from './ToggleBase';
 import { IToggleProps, IToggleStyleProps, IToggleStyles } from './Toggle.types';
 import * as classes from './Toggle.scss';
 
@@ -52,7 +54,12 @@ const getStaticStyles = (props: IToggleStyleProps): Required<IToggleStyles> => {
 };
 
 export const Toggle: React.FunctionComponent<IToggleProps> = styled<IToggleProps, IToggleStyleProps, IToggleStyles>(
-  ToggleBase,
+  compose(ToggleBase, {
+    slots: {
+      label: Label,
+      stateText: Label,
+    },
+  }),
   getStaticStyles,
   undefined,
   { scope: 'Toggle' },
