@@ -25,7 +25,7 @@ const useKnob = <T, O = unknown>(
     },
     // Fix dependencies if there will be any issues
     // eslint-disable-next-line
-    [initialValue, name],
+    [name],
   );
 
   return [value, setValue];

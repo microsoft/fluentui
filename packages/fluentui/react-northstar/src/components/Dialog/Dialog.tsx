@@ -165,8 +165,8 @@ const Dialog: React.FC<WithAsProp<DialogProps>> &
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Dialog.handledProps, props);
 
-  const contentRef = React.useRef<HTMLElement>() as React.MutableRefObject<HTMLElement>;
-  const overlayRef = React.useRef<HTMLElement>() as React.MutableRefObject<HTMLElement>;
+  const contentRef = React.useRef<HTMLElement>();
+  const overlayRef = React.useRef<HTMLElement>() ;
   const triggerRef = React.useRef<HTMLElement>();
 
   const contentId = React.useRef<string>();
@@ -444,7 +444,7 @@ Dialog.propTypes = {
 };
 
 Dialog.defaultProps = {
-  accessibility: dialogBehavior as Accessibility,
+  accessibility: dialogBehavior,
   actions: {},
   backdrop: true,
   closeOnOutsideClick: true,
