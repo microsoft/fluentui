@@ -1,8 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 27 May 2020 12:40:00 GMT and should not be manually modified.
+This log was last generated on Thu, 28 May 2020 12:42:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.116.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.116.1)
+
+Thu, 28 May 2020 12:42:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.116.0..office-ui-fabric-react_v7.116.1)
+
+### Patches
+
+- SplitButton: Making imperative focus call on touch events. ([PR #13361](https://github.com/microsoft/fluentui/pull/13361) by humbertomakotomorimoto@gmail.com)
 
 ## [7.116.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.116.0)
 

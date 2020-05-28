@@ -2,6 +2,21 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "date": "Thu, 28 May 2020 12:42:08 GMT",
+      "tag": "@uifabric/utilities_v7.20.2",
+      "version": "7.20.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add autoCapitalize property",
+            "author": "suprememilanfan@gmail.com",
+            "commit": "13bd77d6062dfbf0209043275a581536aa5cad56",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 27 May 2020 12:40:00 GMT",
       "tag": "@uifabric/utilities_v7.20.1",
       "version": "7.20.1",
