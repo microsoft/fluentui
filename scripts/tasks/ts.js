@@ -5,7 +5,7 @@ const { tscTask, argv } = require('just-scripts');
 const libPath = path.resolve(process.cwd(), 'lib');
 const srcPath = path.resolve(process.cwd(), 'src');
 // Temporary hack: only use tsbuildinfo file for things under packages/fluentui
-const isV0 = /[\\/]packages[\\/]fluentui\b/.test(process.cwd());
+const isV0 = /[\\/]packages[\\/]fluentui[\\/]/.test(process.cwd());
 
 function getExtraTscParams(args) {
   return {
