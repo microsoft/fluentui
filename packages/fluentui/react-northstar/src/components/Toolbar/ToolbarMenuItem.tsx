@@ -15,6 +15,7 @@ import * as customPropTypes from '@fluentui/react-proptypes';
 import {
   compose,
   focusAsync,
+  mergeVariablesOverrides,
   useTelemetry,
   useStyles,
   useAutoControlled,
@@ -22,7 +23,6 @@ import {
   useUnhandledProps,
   useAccessibility,
 } from '@fluentui/react-bindings';
-import { mergeComponentVariables } from '@fluentui/styles';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 import { GetRefs, NodeRef, Unstable_NestingAuto } from '@fluentui/react-component-nesting-registry';
@@ -162,7 +162,7 @@ const ToolbarMenuItem = compose<'button', ToolbarMenuItemProps, ToolbarMenuItemS
     const menuRef = React.useRef<HTMLElement>();
 
     const parentVariables = React.useContext(ToolbarVariablesContext);
-    const mergedVariables = mergeComponentVariables(parentVariables, variables);
+    const mergedVariables = mergeVariablesOverrides(parentVariables, variables);
 
     const ElementType = getElementType(props);
     const slotProps = composeOptions.resolveSlotProps<ToolbarMenuItemProps>(props);
@@ -347,9 +347,9 @@ const ToolbarMenuItem = compose<'button', ToolbarMenuItemProps, ToolbarMenuItemS
     const hasChildren = childrenExist(children);
 
     if (popup && !hasChildren) {
-      const popupElement = Popup.create(popup, {
+      const popupElement = createShorthand(composeOptions.slots.popup, popup, {
         defaultProps: () => ({
-          trapFocus: true,
+          ...slotProps.popup,
           onOpenChange: e => {
             e.stopPropagation();
           },
@@ -434,7 +434,7 @@ const ToolbarMenuItem = compose<'button', ToolbarMenuItemProps, ToolbarMenuItemS
       icon: ToolbarMenuItemIcon,
       submenuIndicator: ToolbarMenuItemSubmenuIndicator,
       activeIndicator: ToolbarMenuItemActiveIndicator,
-      // menu: ToolbarMenu,
+      popup: Popup,
     },
     mapPropsToSlotProps: props => ({
       icon: {
@@ -445,6 +445,9 @@ const ToolbarMenuItem = compose<'button', ToolbarMenuItemProps, ToolbarMenuItemS
       },
       activeIndicator: {
         accessibility: indicatorBehavior,
+      },
+      popup: {
+        trapFocus: true,
       },
     }),
 
