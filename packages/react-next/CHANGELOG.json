@@ -2,6 +2,50 @@
   "name": "@fluentui/react-next",
   "entries": [
     {
+      "date": "Wed, 27 May 2020 12:40:00 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.29",
+      "version": "8.0.0-alpha.29",
+      "comments": {
+        "none": [
+          {
+            "comment": "Pivot: adding alwaysRender prop to `PivotItem` to allow for persistent `PivotItems` to control the amount of re-renders that happen",
+            "author": "herincon@microsoft.com",
+            "commit": "3312f0b6ae8a09865f9a29d0d2ad7778e1199c5f",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Storybook: add theme switching knob",
+            "author": "xgao@microsoft.com",
+            "commit": "f99b9ac8a9c4be2178964ebcfec717b07b6e7315",
+            "package": "@fluentui/react-next"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Slider: Move state logic to useSlider hook, part 1",
+            "author": "joschect@microsoft.com",
+            "commit": "0237a69b9a723f3bf25353b4960cf1d07fce37d3",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 25 May 2020 12:38:22 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.28",
+      "version": "8.0.0-alpha.28",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Copying FocusTrapZone to react-next, in preparation for converting to function component.",
+            "author": "czearing@outlook.com",
+            "commit": "80b07ce917c42061ece97c72a4e256101289fc4a",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 21 May 2020 12:34:43 GMT",
       "tag": "@fluentui/react-next_v8.0.0-alpha.26",
       "version": "8.0.0-alpha.26",

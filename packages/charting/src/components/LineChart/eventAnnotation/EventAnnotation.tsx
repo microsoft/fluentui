@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { findIndex, range, unionBy } from 'lodash';
 import { ScaleTime } from 'd3-scale';
+import { findIndex } from 'office-ui-fabric-react/lib/Utilities';
 import { ILineDef, LabelLink, ILabelDef } from './LabelLink';
 import { IEventsAnnotationProps } from '../LineChart.types';
 
@@ -10,8 +10,7 @@ interface IEventsAnnotationExtendProps extends IEventsAnnotationProps {
   chartYTop: number;
 }
 
-/* tslint:disable-next-line:function-name */
-export function EventsAnnotation(props: IEventsAnnotationExtendProps) {
+export const EventsAnnotation: React.FunctionComponent<IEventsAnnotationExtendProps> = props => {
   const textWidth = props.labelWidth ? props.labelWidth : 105;
   const textY = props.chartYTop - 20;
   const lineTopY = textY + 7;
@@ -24,7 +23,7 @@ export function EventsAnnotation(props: IEventsAnnotationExtendProps) {
 
   lineDefs.sort((e1, e2) => +e1.date - +e2.date);
 
-  const lines = unionBy(lineDefs, x => x.date.toString()).map((x, i) => (
+  const lines = uniqBy(lineDefs, x => x.date.toString()).map((x, i) => (
     <line
       key={i}
       x1={x.x}
@@ -58,7 +57,7 @@ export function EventsAnnotation(props: IEventsAnnotationExtendProps) {
       {labelLinks}
     </>
   );
-}
+};
 
 function calculateLabels(lineDefs: ILineDef[], textWidth: number, maxX: number, minX: number): ILabelDef[] {
   const calculateLabel = (lastX: number, currentIdx: number): ILabelDef[] => {
@@ -107,7 +106,10 @@ function calculateLabels(lineDefs: ILineDef[], textWidth: number, maxX: number, 
       idx = lineDefs.length;
     }
 
-    const aggregatedIdx = range(currentIdx, idx);
+    const aggregatedIdx: number[] = [];
+    for (let i = currentIdx; i < idx; i++) {
+      aggregatedIdx.push(i);
+    }
     const next = calculateLabel(bd, idx);
 
     next.unshift({ x: lineDefs[currentIdx].x, anchor, aggregatedIdx });
@@ -115,4 +117,18 @@ function calculateLabels(lineDefs: ILineDef[], textWidth: number, maxX: number, 
   };
 
   return calculateLabel(minX, 0);
+}
+
+/** Get unique items of `arr`, comparing based on the result of calling `iteratee` on each item. */
+function uniqBy<T>(arr: T[], iteratee: (x: T) => string): T[] {
+  const seen: string[] = [];
+  const result: T[] = [];
+  for (const x of arr) {
+    const comp = iteratee(x);
+    if (seen.indexOf(comp) === -1) {
+      result.push(x);
+      seen.push(comp);
+    }
+  }
+  return result;
 }

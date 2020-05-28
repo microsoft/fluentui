@@ -5,7 +5,7 @@ import * as PropTypes from 'prop-types';
 import * as _ from 'lodash';
 import { CloseIcon } from '@fluentui/react-icons-northstar';
 
-import keyboardKey from 'keyboard-key';
+import { getCode, keyboardKey } from '@fluentui/keyboard-key';
 import {
   ComponentEventHandler,
   ShorthandValue,
@@ -123,9 +123,9 @@ const DropdownSelectedItem: React.FC<WithAsProp<DropdownSelectedItemProps>> &
       _.invoke(props, 'onRemove', e, iconProps);
       _.invoke(props, 'onClick', e, iconProps);
     },
-    onKeyDown: (e: React.SyntheticEvent, iconProps: BoxProps) => {
+    onKeyDown: (e: React.KeyboardEvent, iconProps: BoxProps) => {
       e.stopPropagation();
-      if (keyboardKey.getCode(e) === keyboardKey.Enter) {
+      if (getCode(e) === keyboardKey.Enter) {
         _.invoke(props, 'onRemove', e, iconProps);
       }
       _.invoke(props, 'onKeyDown', e, iconProps);

@@ -154,7 +154,7 @@ const BaseComponentWithSlots: React.FC<BaseComponentProps> = compose<
       main: 'b',
       end: 'i',
     },
-    mapPropsToSlotProps: (props: any) => ({
+    mapPropsToSlotProps: props => ({
       start: {
         'data-attr': props['data-start'],
       },

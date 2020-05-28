@@ -364,7 +364,9 @@ exports[`Pivot renders link Pivot correctly 1`] = `
     </button>
   </div>
   <div
+    aria-hidden={false}
     aria-labelledby="Pivot0-Tab0"
+    hidden={false}
     role="tabpanel"
   >
     <div />

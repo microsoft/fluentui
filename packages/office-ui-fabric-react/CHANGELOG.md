@@ -1,8 +1,26 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 21 May 2020 12:34:43 GMT and should not be manually modified.
+This log was last generated on Thu, 28 May 2020 12:42:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.116.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.116.1)
+
+Thu, 28 May 2020 12:42:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.116.0..office-ui-fabric-react_v7.116.1)
+
+### Patches
+
+- SplitButton: Making imperative focus call on touch events. ([PR #13361](https://github.com/microsoft/fluentui/pull/13361) by humbertomakotomorimoto@gmail.com)
+
+## [7.116.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.116.0)
+
+Wed, 27 May 2020 12:40:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.115.2..office-ui-fabric-react_v7.116.0)
+
+### Minor changes
+
+- Pivot: Adding `alwaysRender` prop to `PivotItem` to allow for persistent `PivotItems` to control the amount of re-renders that happen. ([PR #12779](https://github.com/microsoft/fluentui/pull/12779) by herincon@microsoft.com)
 
 ## [7.115.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.115.2)
 
