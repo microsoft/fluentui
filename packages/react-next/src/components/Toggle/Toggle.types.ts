@@ -18,7 +18,7 @@ export interface IToggleProps extends React.HTMLAttributes<HTMLElement> {
   /**
    * Render the root element as another type.
    */
-  as?: IComponentAs<React.HTMLAttributes<HTMLElement>>;
+  as?: IComponentAs<React.HTMLAttributes<HTMLElement>> | React.ElementType;
 
   /**
    * Optional callback to access the IToggle interface. Use this instead of ref for accessing

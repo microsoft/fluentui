@@ -39,4 +39,6 @@ export const ToggleBase = compose<'div', IToggleProps, IToggleProps, {}, {}>(
   },
 );
 
-ToggleBase.defaultProps = {};
+ToggleBase.defaultProps = {
+  as: 'div',
+};
