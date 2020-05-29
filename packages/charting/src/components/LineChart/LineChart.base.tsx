@@ -230,7 +230,9 @@ export class LineChartBase extends React.Component<
                         })}
                       >
                         <div className={this._classNames.calloutlegendText}> {xValue.legend}</div>
-                        <div className={this._classNames.calloutContentY}> {xValue.y} </div>
+                        <div className={this._classNames.calloutContentY}>
+                          {xValue.yAxisCalloutData ? xValue.yAxisCalloutData : xValue.y}
+                        </div>
                       </div>
                     ),
                   )}
