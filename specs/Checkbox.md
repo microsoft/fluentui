@@ -324,7 +324,7 @@ Same behavior as above except no preview of toggled state through hover.
 
 #### `Fluent UI & Fluent UI Northstar comparison`:
 
-From accessibility point of view the main difference is in type of element used for Checkbox itself.
+From accessibility point of view the main difference is in type of element used for Checkbox itself:
 
 - Fluent UI has `<input>` element with type="checkbox"
 - Fluent UI Northstar has `<div>` element with role="checkbox"

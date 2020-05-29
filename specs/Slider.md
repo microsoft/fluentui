@@ -312,9 +312,10 @@ The same behavior as above, except that the events should concern
 
 #### `Fluent UI & Fluent UI Northstar comparison`:
 
-From accessibility point of view the main difference is in type of element used for Slider itself.
-Fluent UI has `<div>` element with role="slider"
-Fluent UI Northstar has `<input>` element
+From accessibility point of view the main difference is in type of element used for Slider itself:
+
+- Fluent UI has `<div>` element with role="slider"
+- Fluent UI Northstar has `<input>` element
 
 The difference above high probably causing different results during [screen reader verification](https://jurokapsiar.github.io/open-a11y/components/slider.research#test-runs):
 
@@ -325,7 +326,7 @@ The difference above high probably causing different results during [screen read
 #### `Accessibility variants`:
 
 - horizontal
-- vertical -`
+- vertical
 - no numeric slider
 - disabled
 
