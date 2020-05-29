@@ -1,9 +1,8 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import { ComponentSlotStylesPrepared, ICSSInJSStyle, padding } from '@fluentui/styles';
 
 import { PopupContentStylesProps } from '../../../../components/Popup/PopupContent';
 import { PopupContentVariables } from './popupContentVariables';
 import { getContainerStyles, getPointerStyles } from '../../getPointerStyles';
-import { padding } from '../../../../../../styles/src';
 
 const popupContentStyles: ComponentSlotStylesPrepared<PopupContentStylesProps, PopupContentVariables> = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => ({
