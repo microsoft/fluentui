@@ -119,7 +119,7 @@ const DropdownSelectedItem: React.FC<WithAsProp<DropdownSelectedItemProps>> &
     _.invoke(props, 'onKeyDown', e, props);
   };
 
-  const handleIconOverrides = iconProps => (predefinedProps: BoxProps) => ({
+  const handleIconOverrides = iconProps => ({
     ...iconProps,
     onClick: (e: React.SyntheticEvent, iconProps: BoxProps) => {
       e.stopPropagation();
