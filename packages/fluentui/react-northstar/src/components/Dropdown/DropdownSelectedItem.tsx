@@ -74,7 +74,7 @@ export const dropdownSelectedItemSlotClassNames: DropdownSelectedItemSlotClassNa
   image: `${dropdownSelectedItemClassName}__image`,
 };
 
-export type DropdownSelectedItemStylesProps = never;
+export type DropdownSelectedItemStylesProps = { hasImage: boolean };
 
 const DropdownSelectedItem: React.FC<WithAsProp<DropdownSelectedItemProps>> &
   FluentComponentStaticProps<DropdownSelectedItemProps> = props => {
@@ -98,6 +98,9 @@ const DropdownSelectedItem: React.FC<WithAsProp<DropdownSelectedItemProps>> &
     DropdownSelectedItem.displayName,
     {
       className: dropdownSelectedItemClassName,
+      mapPropsToStyles: () => ({
+        hasImage: !!image,
+      }),
       mapPropsToInlineStyles: () => ({
         className,
         design,

@@ -21,7 +21,7 @@ const dropdownSelectedItemStyles: ComponentSlotStylesPrepared<DropdownSelectedIt
       lineHeight: pxToRem(20),
       borderRadius: pxToRem(9999),
       fontSize: pxToRem(14),
-      paddingLeft: '0px',
+      ...(p.hasImage && { paddingLeft: '0px' }),
       cursor: 'pointer',
       margin: '.25rem 0 0 .4rem',
       color: v.selectedItemColor,
@@ -55,7 +55,7 @@ const dropdownSelectedItemStyles: ComponentSlotStylesPrepared<DropdownSelectedIt
   }),
   content: ({ props: p, variables: v }): ICSSInJSStyle => {
     return {
-      marginLeft: pxToRem(3),
+      ...(p.hasImage && { marginLeft: pxToRem(3) }),
       marginRight: pxToRem(3),
     };
   },
