@@ -862,7 +862,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
 
   private _handleTouchAndPointerEvent() {
     // If we already have an existing timeeout from a previous touch and pointer event
-    // cancel that timeout so we can set a nwe one.
+    // cancel that timeout so we can set a new one.
     if (this._lastTouchTimeoutId !== undefined) {
       this._async.clearTimeout(this._lastTouchTimeoutId);
       this._lastTouchTimeoutId = undefined;
@@ -872,6 +872,10 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
     this._lastTouchTimeoutId = this._async.setTimeout(() => {
       this._processingTouch = false;
       this._lastTouchTimeoutId = undefined;
+
+      // Touch and pointer events don't focus the button naturally,
+      // so adding an imperative focus call to guarantee this behavior.
+      this.focus();
     }, TouchIdleDelay);
   }
 

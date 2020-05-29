@@ -2,7 +2,19 @@ import { useBooleanKnob } from '@fluentui/docs-components';
 import { Dropdown } from '@fluentui/react-northstar';
 import * as React from 'react';
 
-const inputItems = ['Bruce Wayne', 'Natasha Romanoff', 'Steven Strange', 'Alfred Pennyworth'];
+const inputItems = [
+  'Bruce Wayne',
+  'Natasha Romanoff',
+  'Steven Strange',
+  'Alfred Pennyworth',
+  'Tony Stark',
+  'Thanos',
+  'Peter Parker',
+  'Steve Rogers',
+  'Black Widow',
+  'Groot',
+  'Star Lord',
+];
 
 const DropdownExampleLoading = () => {
   const [loading] = useBooleanKnob({ name: 'loading', initialValue: true });

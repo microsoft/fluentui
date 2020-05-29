@@ -1,18 +1,21 @@
-import { Accessibility, menuDividerBehavior, MenuDividerBehaviorProps } from '@fluentui/accessibility';
+import { Accessibility, MenuDividerBehaviorProps, menuDividerBehavior } from '@fluentui/accessibility';
 import {
   compose,
   ComponentWithAs,
   getElementType,
+  mergeVariablesOverrides,
   useAccessibility,
   useTelemetry,
   useStyles,
   useUnhandledProps,
   ShorthandConfig,
 } from '@fluentui/react-bindings';
+import { useContextSelectors } from '@fluentui/react-context-selector';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
+
 import {
   createShorthandFactory,
   UIComponentProps,
@@ -24,6 +27,7 @@ import {
   ShorthandFactory,
 } from '../../utils';
 import { ProviderContextPrepared } from '../../types';
+import { MenuContext, MenuDividerSubscribedValue } from './menuContext';
 
 export interface MenuDividerProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
   /** Accessibility behavior if overridden by the user. */
@@ -32,7 +36,7 @@ export interface MenuDividerProps extends UIComponentProps, ChildrenComponentPro
   inSubmenu?: boolean;
   secondary?: boolean;
   pills?: boolean;
-  pointing?: boolean;
+  pointing?: boolean | 'start' | 'end';
   primary?: boolean;
   vertical?: boolean;
 }
@@ -49,12 +53,26 @@ export const menuDividerClassName = 'ui-menu__divider';
  * A MenuDivider is non-actionable element that visually segments items of Menu.
  */
 const MenuDivider = compose<'li', MenuDividerProps, MenuDividerStylesProps, {}, {}>(
-  (props, ref, composeOptions) => {
+  (inputProps, ref, composeOptions) => {
     const context: ProviderContextPrepared = React.useContext(ThemeContext);
     const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
     setStart();
 
+    const parentProps = (useContextSelectors(MenuContext, {
+      variables: v => v.variables,
+      slotProps: v => v.slotProps.divider,
+      accessibility: v => v.behaviors.divider,
+    }) as unknown) as MenuDividerSubscribedValue; // TODO: we should improve typings for the useContextSelectors
+
+    const props = {
+      ...parentProps.slotProps,
+      accessibility: parentProps.accessibility,
+      variables: parentProps.variables,
+      ...inputProps,
+    };
+
     const {
+      accessibility = menuDividerBehavior,
       children,
       content,
       vertical,
@@ -69,7 +87,7 @@ const MenuDivider = compose<'li', MenuDividerProps, MenuDividerStylesProps, {}, 
       variables,
     } = props;
 
-    const getA11yProps = useAccessibility(props.accessibility, {
+    const getA11yProps = useAccessibility(accessibility, {
       debugName: composeOptions.displayName,
       rtl: context.rtl,
     });
@@ -78,7 +96,7 @@ const MenuDivider = compose<'li', MenuDividerProps, MenuDividerStylesProps, {}, 
       className: composeOptions.className,
       composeOptions,
       mapPropsToStyles: () => ({
-        hasContent: !!content,
+        hasContent: !!content || !!children,
         pills,
         pointing,
         vertical,
@@ -90,7 +108,7 @@ const MenuDivider = compose<'li', MenuDividerProps, MenuDividerStylesProps, {}, 
         className,
         design,
         styles,
-        variables,
+        variables: mergeVariablesOverrides(variables, parentProps.variables),
       }),
       rtl: context.rtl,
       unstable_props: props,
@@ -129,6 +147,7 @@ const MenuDivider = compose<'li', MenuDividerProps, MenuDividerStylesProps, {}, 
       'styles',
       'variables',
 
+      'pointing',
       'inSubmenu',
       'primary',
       'secondary',
@@ -142,7 +161,6 @@ const MenuDivider = compose<'li', MenuDividerProps, MenuDividerStylesProps, {}, 
 
 MenuDivider.defaultProps = {
   as: 'li',
-  accessibility: menuDividerBehavior,
 };
 
 MenuDivider.propTypes = {
@@ -151,6 +169,7 @@ MenuDivider.propTypes = {
   secondary: PropTypes.bool,
   vertical: PropTypes.bool,
   inSubmenu: PropTypes.bool,
+  pointing: PropTypes.oneOf(['start', 'end', true, false]),
 };
 
 MenuDivider.create = createShorthandFactory({ Component: MenuDivider, mappedProp: 'content' });

@@ -60,7 +60,7 @@ const getDefaultAriaDescribedBy = (props: DialogBehaviorProps) => {
 
 export default dialogBehavior;
 
-type DialogBehaviorProps = {
+export type DialogBehaviorProps = {
   headerId?: string;
   contentId?: string;
 } & PopupBehaviorProps &

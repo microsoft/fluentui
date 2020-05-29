@@ -1,8 +1,47 @@
 # Change Log - @fluentui/react-next
 
-This log was last generated on Wed, 20 May 2020 12:31:10 GMT and should not be manually modified.
+This log was last generated on Fri, 29 May 2020 12:35:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-alpha.31](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.31)
+
+Fri, 29 May 2020 12:35:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.29..@fluentui/react-next_v8.0.0-alpha.31)
+
+### Changes
+
+- Pivot: Updating component from a class component to a function component. ([PR #12906](https://github.com/microsoft/fluentui/pull/12906) by czearing@outlook.com)
+- SpinButton: Reintroduce incorrect behavior of allowing updates when value is provided to prevent breaking partners. ([PR #13367](https://github.com/microsoft/fluentui/pull/13367) by elcraig@microsoft.com)
+- Copying Dropdown to react-next, in preparation for converting to function component. ([PR #13390](https://github.com/microsoft/fluentui/pull/13390) by czearing@outlook.com)
+- NextSlider: update to use only hooks ([PR #13365](https://github.com/microsoft/fluentui/pull/13365) by joschect@microsoft.com)
+
+## [8.0.0-alpha.29](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.29)
+
+Wed, 27 May 2020 12:40:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.28..@fluentui/react-next_v8.0.0-alpha.29)
+
+### Changes
+
+- Slider: Move state logic to useSlider hook, part 1 ([PR #13260](https://github.com/microsoft/fluentui/pull/13260) by joschect@microsoft.com)
+
+## [8.0.0-alpha.28](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.28)
+
+Mon, 25 May 2020 12:38:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.26..@fluentui/react-next_v8.0.0-alpha.28)
+
+### Changes
+
+- Copying FocusTrapZone to react-next, in preparation for converting to function component. ([PR #13280](https://github.com/microsoft/fluentui/pull/13280) by czearing@outlook.com)
+
+## [8.0.0-alpha.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.26)
+
+Thu, 21 May 2020 12:34:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.25..@fluentui/react-next_v8.0.0-alpha.26)
+
+### Changes
+
+- Use ThemeProvider to provide theme css variables, add ThemeProvider and Customizer replacements for V8 ([PR #13146](https://github.com/microsoft/fluentui/pull/13146) by xgao@microsoft.com)
 
 ## [8.0.0-alpha.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.25)
 

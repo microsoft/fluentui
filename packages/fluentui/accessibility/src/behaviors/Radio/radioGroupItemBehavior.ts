@@ -1,5 +1,5 @@
 import { Accessibility } from '../../types';
-import * as keyboardKey from 'keyboard-key';
+import { SpacebarKey } from '@fluentui/keyboard-key';
 import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
 
 /**
@@ -27,7 +27,7 @@ const radioGroupItemBehavior: Accessibility<RadioGroupItemBehaviorProps> = props
   keyActions: {
     root: {
       performClick: {
-        keyCombinations: [{ keyCode: keyboardKey.Spacebar }],
+        keyCombinations: [{ keyCode: SpacebarKey }],
       },
     },
   },
@@ -35,7 +35,7 @@ const radioGroupItemBehavior: Accessibility<RadioGroupItemBehaviorProps> = props
 
 export default radioGroupItemBehavior;
 
-type RadioGroupItemBehaviorProps = {
+export type RadioGroupItemBehaviorProps = {
   /** Indicates if radio item is selected. */
   checked?: boolean;
   /** Indicates if radio item is disabled. */

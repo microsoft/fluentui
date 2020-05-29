@@ -45,6 +45,7 @@ export interface RenderConfig<P> {
   actionHandlers: AccessibilityActionHandlers;
   render: RenderComponentCallback<P>;
   saveDebug: (debug: DebugData | null) => void;
+  isFirstRenderRef: React.MutableRefObject<boolean>;
 }
 
 const renderComponent = <P extends {}>(
@@ -57,7 +58,7 @@ const renderComponent = <P extends {}>(
     logProviderMissingWarning();
   }
 
-  const { setStart, setEnd } = getTelemetry(displayName, context.telemetry);
+  const { setStart, setEnd } = getTelemetry(displayName, context.telemetry, config.isFirstRenderRef);
   const rtl = context.rtl || false;
 
   setStart();
@@ -74,9 +75,10 @@ const renderComponent = <P extends {}>(
     actionHandlers,
   );
   const { classes, variables, styles, theme } = getStyles({
+    allDisplayNames: [displayName],
     className,
     disableAnimations: context.disableAnimations || false,
-    displayNames: [displayName],
+    primaryDisplayName: displayName,
     props: stateAndProps,
     renderer: context.renderer || { renderRule: () => '' },
     rtl,
@@ -88,6 +90,7 @@ const renderComponent = <P extends {}>(
       enableStylesCaching: false,
       enableBooleanVariablesCaching: false,
     },
+    telemetry: context.telemetry,
   });
 
   const resolvedConfig: RenderResultConfig<P> = {

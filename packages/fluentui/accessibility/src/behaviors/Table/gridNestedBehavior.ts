@@ -1,5 +1,5 @@
 import { Accessibility } from '../../types';
-import * as keyboardKey from 'keyboard-key';
+import { getCode, keyboardKey } from '@fluentui/keyboard-key';
 import { FocusZoneDirection } from '../../focusZone/types';
 import gridRowBehavior from './gridRowBehavior';
 
@@ -21,7 +21,7 @@ const gridNestedBehavior: Accessibility = props => ({
   },
   focusZone: {
     props: {
-      shouldEnterInnerZone: event => keyboardKey.getCode(event) === keyboardKey.ArrowRight,
+      shouldEnterInnerZone: event => getCode(event) === keyboardKey.ArrowRight,
       direction: FocusZoneDirection.vertical,
       shouldResetActiveElementWhenTabFromZone: true,
     },

@@ -2,6 +2,21 @@
   "name": "@fluentui/react-theme-provider",
   "entries": [
     {
+      "date": "Thu, 21 May 2020 12:34:43 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.1.6",
+      "version": "0.1.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Avoid adding empty string class attribute",
+            "author": "xgao@microsoft.com",
+            "commit": "ecbfff23b83b795d51d73322a4938a2f6ed682bf",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 11 May 2020 12:36:34 GMT",
       "tag": "@fluentui/react-theme-provider_v0.1.1",
       "version": "0.1.1",
