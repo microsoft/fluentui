@@ -1466,6 +1466,7 @@ export const useToggle: (props: IToggleProps, options: ComposePreparedOptions<{}
             className: string;
         };
         stateText: {
+            children: string | undefined;
             className: string;
             htmlFor: string;
             id: string;
