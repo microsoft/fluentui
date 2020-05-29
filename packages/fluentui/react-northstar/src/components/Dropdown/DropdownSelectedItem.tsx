@@ -18,11 +18,12 @@ import {
 import { UIComponentProps } from '../../utils/commonPropInterfaces';
 import { createShorthandFactory, commonPropTypes } from '../../utils';
 import Image, { ImageProps } from '../Image/Image';
-import Label from '../Label/Label';
 import Box, { BoxProps } from '../Box/Box';
-import { useUnhandledProps, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import { useUnhandledProps, useStyles, useTelemetry, getElementType } from '@fluentui/react-bindings';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
+import { mergeStyles } from '@fluentui/styles';
+import labelStyles from 'src/themes/teams/components/Label/labelStyles';
 
 export interface DropdownSelectedItemSlotClassNames {
   header: string;
@@ -86,6 +87,7 @@ const DropdownSelectedItem: React.FC<WithAsProp<DropdownSelectedItemProps>> &
   const { active, header, icon, image, className, design, styles, variables } = props;
 
   const itemRef = React.useRef<HTMLElement>();
+  const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(DropdownSelectedItem.handledProps, props);
 
   React.useEffect(() => {
@@ -101,7 +103,7 @@ const DropdownSelectedItem: React.FC<WithAsProp<DropdownSelectedItemProps>> &
       mapPropsToInlineStyles: () => ({
         className,
         design,
-        styles,
+        styles: mergeStyles(styles, labelStyles),
         variables,
       }),
       rtl: context.rtl,
@@ -132,58 +134,62 @@ const DropdownSelectedItem: React.FC<WithAsProp<DropdownSelectedItemProps>> &
     },
   });
 
-  const contentElement = Box.create(header, {
-    defaultProps: () => ({
-      as: 'span',
-      className: dropdownSelectedItemSlotClassNames.header,
-      styles: resolvedStyles.header,
+  const contentElement = Box.create(
+    Box.create(header, {
+      defaultProps: () => ({
+        as: 'span',
+        className: dropdownSelectedItemSlotClassNames.header,
+        styles: resolvedStyles.header,
+      }),
     }),
+    {
+      defaultProps: () => ({
+        className: dropdownSelectedItemSlotClassNames.header,
+        styles: resolvedStyles.content,
+      }),
+    },
+  );
+
+  const iconElement = Box.create(icon, {
+    defaultProps: () => ({
+      'aria-label': `Remove ${header} from selection.`, // TODO: Extract this in a behaviour.
+      className: dropdownSelectedItemSlotClassNames.icon,
+      styles: resolvedStyles.icon,
+    }),
+    overrideProps: handleIconOverrides,
   });
 
-  const iconProps = _.isNil(icon)
-    ? icon
-    : {
-        name: null,
-        children: (ComponentType, props) =>
-          Box.create(icon, {
-            defaultProps: () => ({
-              'aria-label': `Remove ${header} from selection.`, // TODO: Extract this in a behaviour.
-              className: dropdownSelectedItemSlotClassNames.icon,
-              styles: resolvedStyles.icon,
-            }),
-            overrideProps: handleIconOverrides(props),
-          }),
-      };
-
-  const imageProps =
-    _.isNil(image) || image?.hasOwnProperty('children')
-      ? image
-      : {
-          children: (ComponentType, props) =>
-            Image.create(image, {
-              defaultProps: () => ({
-                avatar: true,
-                className: dropdownSelectedItemSlotClassNames.image,
-                styles: resolvedStyles.image,
-              }),
-              overrideProps: props,
-            }),
-        };
-
+  const imageElement = Box.create(
+    Image.create(image, {
+      defaultProps: () => ({
+        avatar: true,
+        className: dropdownSelectedItemSlotClassNames.image,
+        styles: resolvedStyles.image,
+      }),
+    }),
+    {
+      defaultProps: () => ({
+        className: dropdownSelectedItemSlotClassNames.image,
+        styles: resolvedStyles.media,
+      }),
+    },
+  );
+  console.log(resolvedStyles.root);
   const element = (
     <Ref innerRef={itemRef}>
-      <Label
+      <ElementType
         className={classes.root}
         tabIndex={active ? 0 : -1}
-        styles={resolvedStyles.root}
+        styles={resolvedStyles.main}
         circular
         onClick={handleClick}
         onKeyDown={handleKeyDown}
-        content={contentElement}
-        icon={iconProps}
-        image={imageProps}
         {...unhandledProps}
-      />
+      >
+        {imageElement}
+        {contentElement}
+        {iconElement}
+      </ElementType>
     </Ref>
   );
 
