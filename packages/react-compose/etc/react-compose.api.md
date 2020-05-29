@@ -47,7 +47,7 @@ export type ComposeOptions<TInputProps = {}, TInputStylesProps = {}, TParentProp
     handledProps?: (keyof TInputProps | 'as')[];
     overrideStyles?: boolean;
     slots?: Record<string, React.ElementType>;
-    mapPropsToSlotProps?: (props: TParentProps & TInputProps) => Record<string, object>;
+    slotProps?: (props: TParentProps & TInputProps) => Record<string, object>;
     shorthandConfig?: ShorthandConfig<TParentProps & TInputProps>;
 };
 
@@ -64,14 +64,9 @@ export type ComposePreparedOptions<TProps = {}, TState = TProps> = {
     slots: Record<string, React.ElementType> & {
         __self: React.ElementType;
     };
-    mapPropsToSlotPropsChain: ((props: TProps) => Record<string, object>)[];
+    slotProps: ((props: TProps) => Record<string, object>)[];
     resolveSlotProps: <TResolvedProps>(props: TResolvedProps) => Record<string, object>;
     shorthandConfig: ShorthandConfig<TProps>;
-    resolve: (state: TState) => {
-        state: TState;
-        slotProps: Record<string, object>;
-        slots: Record<string, React.ElementType>;
-    };
 };
 
 // @public (undocumented)
@@ -92,6 +87,11 @@ export type Input<TElementType extends React.ElementType = 'div', TProps = {}> =
 export type InputComposeComponent<TProps = {}> = React.FunctionComponent<TProps> & {
     fluentComposeConfig?: ComposePreparedOptions;
 };
+
+// Warning: (ae-forgotten-export) The symbol "MergePropsResult" needs to be exported by the entry point index.d.ts
+//
+// @public
+export function mergeProps<TProps, TState = TProps>(state: TState, options: ComposePreparedOptions<TProps>): MergePropsResult<TState>;
 
 // @public (undocumented)
 export type PropsOfElement<E extends keyof JSX.IntrinsicElements | React.JSXElementConstructor<any>> = JSX.LibraryManagedAttributes<E, React.ComponentPropsWithRef<E>>;

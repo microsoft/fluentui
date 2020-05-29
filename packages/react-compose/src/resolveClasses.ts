@@ -1,17 +1,18 @@
 import { ComposePreparedOptions, ClassDictionary } from './types';
-import { OptionsResolverResult } from './createOptionsResolver';
+import { MergePropsResult } from './mergeProps';
 
 /**
  * Helper utility which takes in a classes array from compose options, resolves functions,
  * merges them into a final result, and distributes classnames to slotProps within the given
  * resolver result object.
  */
-export function resolveClasses(
+export function resolveClasses<TState>(
+  result: MergePropsResult<TState>,
   classes: ComposePreparedOptions['classes'],
-  result: OptionsResolverResult,
-): OptionsResolverResult {
+): MergePropsResult<TState> {
   const { state, slots, slotProps } = result;
   const classMap: Record<string, string[]> = {};
+  const { className } = (state as unknown) as { className: string };
 
   Object.keys(result.slotProps).forEach((slotName: string) => {
     addToMapArray(classMap, slotName, result.slotProps[slotName].className);
@@ -21,19 +22,21 @@ export function resolveClasses(
     const classObj: ClassDictionary | undefined =
       // tslint:disable-next-line:no-any
       typeof classFunctionOrObject === 'function' ? classFunctionOrObject(state, slots as any) : classFunctionOrObject;
-    for (const key in classObj) {
-      if (classObj.hasOwnProperty(key)) {
-        const className = classObj[key];
-        if (className && slots[key]) {
-          addToMapArray(classMap, key, className);
+
+    if (classObj) {
+      Object.keys(classObj).forEach((key: string) => {
+        const classValue = classObj[key];
+
+        if (classValue && slots[key]) {
+          addToMapArray(classMap, key, classValue);
         }
-      }
+      });
     }
   }
 
   // If a classname has been provided by the user, add it to the root array.
-  if (state.className) {
-    addToMapArray(classMap, 'root', state.className);
+  if (className) {
+    addToMapArray(classMap, 'root', className);
   }
 
   for (const key in classMap) {

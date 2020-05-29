@@ -1,10 +1,10 @@
-import { createOptionsResolver } from './createOptionsResolver';
-import { defaultComposeOptions } from './mergeComposeOptions';
+import { mergeProps } from './mergeProps';
+import { defaultComposeOptions } from './defaultComposeOptions';
+import { ComposePreparedOptions } from './types';
 
 const nullRenderer = () => null;
 
-describe('createOptionsResolver', () => {
-  const defaultResolve = createOptionsResolver(defaultComposeOptions);
+describe('mergeProps', () => {
   const selfSlot = { __self: defaultComposeOptions.slots.__self };
 
   const defaultSlots = {
@@ -15,14 +15,14 @@ describe('createOptionsResolver', () => {
       bar: nullRenderer,
     },
   };
-  const defaultResolveWithSlots = createOptionsResolver({
+  const defaultOptionsWithSlots: ComposePreparedOptions = {
     ...defaultComposeOptions,
     ...defaultSlots,
     classes: [{ root: 'root' }, () => ({ foo: 'foo' }), { bar: 'bar', baz: 'baz' }],
-  });
+  };
 
   it('can pass through default options', () => {
-    expect(defaultResolve({})).toEqual({
+    expect(mergeProps({}, defaultComposeOptions)).toEqual({
       state: {},
       slots: { ...selfSlot, root: 'div' },
       slotProps: {
@@ -31,10 +31,41 @@ describe('createOptionsResolver', () => {
     });
   });
 
+  it('can pass through default slot props', () => {
+    expect(
+      mergeProps<{ id: string }>(
+        { id: 'abc' },
+        {
+          ...defaultComposeOptions,
+          handledProps: ['id'],
+          slotProps: [
+            state => {
+              return {
+                slot1: { id: 'not this one' },
+              };
+            },
+            state => {
+              return {
+                slot1: { id: state.id },
+              };
+            },
+          ],
+        },
+      ),
+    ).toEqual({
+      state: { id: 'abc' },
+      slots: { ...selfSlot, root: 'div' },
+      slotProps: {
+        root: {},
+        slot1: { id: 'abc' },
+      },
+    });
+  });
+
   it('can resolve "as" prop', () => {
     const state = { as: 'button' };
 
-    expect(defaultResolve(state)).toEqual({
+    expect(mergeProps(state, defaultComposeOptions)).toEqual({
       state,
       slots: {
         ...selfSlot,
@@ -47,7 +78,7 @@ describe('createOptionsResolver', () => {
   });
 
   it('can mix unrecognized props onto the root', () => {
-    expect(defaultResolve({ 'data-foo': 'foo' })).toEqual({
+    expect(mergeProps({ 'data-foo': 'foo' }, defaultComposeOptions)).toEqual({
       slots: { ...selfSlot, root: 'div' },
       state: {
         'data-foo': 'foo',
@@ -61,7 +92,7 @@ describe('createOptionsResolver', () => {
   });
 
   it('can resolve classes and mix them onto the slot props', () => {
-    expect(defaultResolveWithSlots({ className: 'cn' })).toEqual({
+    expect(mergeProps({ className: 'cn' }, defaultOptionsWithSlots)).toEqual({
       ...defaultSlots,
       state: { className: 'cn' },
       slotProps: {
@@ -73,16 +104,19 @@ describe('createOptionsResolver', () => {
   });
 
   it('can resolve 2 sets of classes', () => {
-    const resolve = createOptionsResolver({
-      ...defaultComposeOptions,
-      ...defaultSlots,
-      classes: [
-        { root: 'root', foo: 'foo' },
-        { bar: 'bar', baz: 'baz' },
-      ],
-    });
-
-    expect(resolve({})).toEqual({
+    expect(
+      mergeProps(
+        {},
+        {
+          ...defaultComposeOptions,
+          ...defaultSlots,
+          classes: [
+            { root: 'root', foo: 'foo' },
+            { bar: 'bar', baz: 'baz' },
+          ],
+        },
+      ),
+    ).toEqual({
       state: {},
       slots: { ...selfSlot, root: nullRenderer, foo: nullRenderer, bar: nullRenderer },
       slotProps: {
@@ -97,13 +131,18 @@ describe('createOptionsResolver', () => {
     let resultedState = undefined;
     const expectedState = {};
 
-    const resolve = createOptionsResolver({
-      ...defaultComposeOptions,
-      ...defaultSlots,
-      classes: [() => ({ root: 'root', foo: 'foo' }), {}, { bar: 'bar', baz: 'baz' }, state => (resultedState = state)],
-    });
-
-    expect(resolve(expectedState)).toEqual({
+    expect(
+      mergeProps(expectedState, {
+        ...defaultComposeOptions,
+        ...defaultSlots,
+        classes: [
+          () => ({ root: 'root', foo: 'foo' }),
+          {},
+          { bar: 'bar', baz: 'baz' },
+          state => (resultedState = state),
+        ],
+      }),
+    ).toEqual({
       state: {},
       slots: { ...selfSlot, root: nullRenderer, foo: nullRenderer, bar: nullRenderer },
       slotProps: {

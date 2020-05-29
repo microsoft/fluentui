@@ -3,7 +3,7 @@ import { resolveClasses } from './resolveClasses';
 describe('resolveClasses', () => {
   it('resolves className', () => {
     expect(
-      resolveClasses([], { state: { className: 'cn' }, slotProps: { root: { className: 'root' } }, slots: {} }),
+      resolveClasses({ state: { className: 'cn' }, slotProps: { root: { className: 'root' } }, slots: {} }, []),
     ).toEqual({
       state: { className: 'cn' },
       slotProps: { root: { className: 'root cn' } },
@@ -13,11 +13,14 @@ describe('resolveClasses', () => {
 
   it('can distribute classes to slotProps', () => {
     expect(
-      resolveClasses([{ root: 'root' }, { slot1: 'slot1' }, { unrecognized: 'ignored' }], {
-        state: {},
-        slotProps: { root: { className: 'original' } },
-        slots: { root: 'div', slot1: 'div' },
-      }),
+      resolveClasses(
+        {
+          state: {},
+          slotProps: { root: { className: 'original' } },
+          slots: { root: 'div', slot1: 'div' },
+        },
+        [{ root: 'root' }, { slot1: 'slot1' }, { unrecognized: 'ignored' }],
+      ),
     ).toEqual({
       state: {},
       slotProps: { root: { className: 'original root' }, slot1: { className: 'slot1' } },
@@ -27,11 +30,14 @@ describe('resolveClasses', () => {
 
   it('can manage multiple overlapping slot classes', () => {
     expect(
-      resolveClasses([{ root: 'foo' }, { root: 'bar' }], {
-        state: {},
-        slotProps: { root: { className: 'original' } },
-        slots: { root: 'div', slot1: 'div' },
-      }),
+      resolveClasses(
+        {
+          state: {},
+          slotProps: { root: { className: 'original' } },
+          slots: { root: 'div', slot1: 'div' },
+        },
+        [{ root: 'foo' }, { root: 'bar' }],
+      ),
     ).toEqual({
       state: {},
       slotProps: { root: { className: 'original foo bar' } },
@@ -41,11 +47,14 @@ describe('resolveClasses', () => {
 
   it('can resolve functional classes', () => {
     expect(
-      resolveClasses([state => ({ root: state.primary ? 'foo' : 'baz' }), { root: 'bar' }], {
-        state: { primary: true },
-        slotProps: { root: { className: 'original' } },
-        slots: { root: 'div', slot1: 'div' },
-      }),
+      resolveClasses(
+        {
+          state: { primary: true },
+          slotProps: { root: { className: 'original' } },
+          slots: { root: 'div', slot1: 'div' },
+        },
+        [state => ({ root: state.primary ? 'foo' : 'baz' }), { root: 'bar' }],
+      ),
     ).toEqual({
       state: { primary: true },
       slotProps: { root: { className: 'original foo bar' } },
@@ -55,11 +64,14 @@ describe('resolveClasses', () => {
 
   it('will add duplicates without filtering the classes', () => {
     expect(
-      resolveClasses([state => ({ root: 'root' }), { root: 'root' }], {
-        state: {},
-        slotProps: { root: { className: 'root' } },
-        slots: { root: 'div', slot1: 'div' },
-      }),
+      resolveClasses(
+        {
+          state: {},
+          slotProps: { root: { className: 'root' } },
+          slots: { root: 'div', slot1: 'div' },
+        },
+        [state => ({ root: 'root' }), { root: 'root' }],
+      ),
     ).toEqual({
       state: {},
       slotProps: { root: { className: 'root root root' } },
@@ -69,11 +81,14 @@ describe('resolveClasses', () => {
 
   it('will ignore duplicates without filtering the classes', () => {
     expect(
-      resolveClasses([state => ({ root: 'root' }), { root: 'root' }], {
-        state: {},
-        slotProps: { root: { className: 'root' } },
-        slots: { root: 'div', slot1: 'div' },
-      }),
+      resolveClasses(
+        {
+          state: {},
+          slotProps: { root: { className: 'root' } },
+          slots: { root: 'div', slot1: 'div' },
+        },
+        [state => ({ root: 'root' }), { root: 'root' }],
+      ),
     ).toEqual({
       state: {},
       slotProps: { root: { className: 'root root root' } },
