@@ -11,6 +11,7 @@ import {
 import { handleRef, Ref } from '@fluentui/react-component-ref';
 import { EventListener } from '@fluentui/react-component-event-listener';
 import { GetRefs, NodeRef, Unstable_NestingAuto } from '@fluentui/react-component-nesting-registry';
+import { useContextSelectors } from '@fluentui/react-context-selector';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
@@ -37,7 +38,7 @@ import { ToolbarItemShorthandKinds } from './Toolbar';
 import { ToolbarVariablesContext, ToolbarVariablesProvider } from './toolbarVariablesContext';
 import ToolbarItemWrapper, { ToolbarItemWrapperProps } from './ToolbarItemWrapper';
 import ToolbarItemIcon, { ToolbarItemIconProps } from './ToolbarItemIcon';
-import { ToolbarMenuContext } from 'src/components/Toolbar/toolbarMenuContext';
+import { ToolbarItemSubscribedValue, ToolbarMenuContext } from './toolbarMenuContext';
 
 export interface ToolbarItemProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
   /** Accessibility behavior if overridden by the user. */
@@ -139,7 +140,9 @@ const ToolbarItem = compose<'button', ToolbarItemProps, ToolbarItemStylesProps, 
     const parentVariables = React.useContext(ToolbarVariablesContext);
     const mergedVariables = mergeVariablesOverrides(parentVariables, variables);
 
-    const contextValue = React.useContext(ToolbarMenuContext);
+    const { menuSlot } = (useContextSelectors(ToolbarMenuContext, {
+      menuSlot: v => v.slots.menu,
+    }) as unknown) as ToolbarItemSubscribedValue; // TODO: we should improve typings for the useContextSelectors
 
     const getA11yProps = useAccessibility(accessibility, {
       debugName: composeOptions.displayName,
@@ -290,7 +293,7 @@ const ToolbarItem = compose<'button', ToolbarItemProps, ToolbarItemStylesProps, 
             >
               <Popper align="start" position="above" targetRef={itemRef} {...getPopperPropsFromShorthand(menu)}>
                 <ToolbarVariablesProvider value={mergedVariables}>
-                  {createShorthand(composeOptions.slots.menu || contextValue.slots.menu || ToolbarMenu, menu, {
+                  {createShorthand(composeOptions.slots.menu || menuSlot || ToolbarMenu, menu, {
                     defaultProps: () => slotProps.menu,
                     overrideProps: handleMenuOverrides(getRefs),
                   })}
