@@ -24,7 +24,6 @@ import { ITheme } from 'office-ui-fabric-react/lib/Styling';
 import { Position } from 'office-ui-fabric-react/lib/utilities/positioning';
 import * as React from 'react';
 import { ThemeProviderProps } from '@fluentui/react-theme-provider';
-import { useId } from '@uifabric/react-hooks';
 
 // @public (undocumented)
 export const Checkbox: React.FunctionComponent<ICheckboxProps>;
@@ -1133,8 +1132,9 @@ export const useToggle: (props: IToggleProps, options: ComposePreparedOptions<{}
             hidden: boolean;
         };
         label: {
+            children: string | JSX.Element | undefined;
             className: string;
-            htmlFor: string | typeof useId;
+            htmlFor: string;
             id: string;
         };
         container: {
@@ -1148,7 +1148,7 @@ export const useToggle: (props: IToggleProps, options: ComposePreparedOptions<{}
             className: string;
             'data-is-focusable': boolean;
             disabled: boolean | undefined;
-            id: string | typeof useId;
+            id: string;
             onClick: (ev: React.MouseEvent<HTMLElement, MouseEvent>) => void;
             ref: React.RefObject<HTMLButtonElement>;
             role: "switch" | "checkbox" | "menuitemcheckbox";
@@ -1467,7 +1467,7 @@ export const useToggle: (props: IToggleProps, options: ComposePreparedOptions<{}
         };
         stateText: {
             className: string;
-            htmlFor: string | typeof useId;
+            htmlFor: string;
             id: string;
         };
     };
