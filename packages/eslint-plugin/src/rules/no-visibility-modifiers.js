@@ -1,10 +1,18 @@
+// @ts-check
+/** @type {*} */
 const util = require('@typescript-eslint/eslint-plugin/dist/util');
-const isTypeScriptFile = require('../../utils/isTypeScriptFile');
-const { AST_NODE_TYPES, ESLintUtils } = require('@typescript-eslint/experimental-utils');
+const { AST_NODE_TYPES } = require('@typescript-eslint/experimental-utils');
+const createRule = require('../utils/createRule');
 
-const createRule = ESLintUtils.RuleCreator(
-  name => `https://github.com/microsoft/fluentui/blob/master/packages/fluentui/eslint-plugin/rules/${name}/index.js`,
-);
+// Nasty syntax required for type imports until https://github.com/microsoft/TypeScript/issues/22160 is implemented.
+// For some reason just importing TSESTree and accessing properties off that doesn't work.
+/**
+ * @typedef {import("@typescript-eslint/typescript-estree").TSESTree.ClassProperty} TSESTreeClassProperty
+ * @typedef {import("@typescript-eslint/typescript-estree").TSESTree.Identifier} TSESTreeIdentifier
+ * @typedef {import("@typescript-eslint/typescript-estree").TSESTree.MethodDefinition} TSESTreeMethodDefinition
+ * @typedef {import("@typescript-eslint/typescript-estree").TSESTree.Node} TSESTreeNode
+ * @typedef {import("@typescript-eslint/typescript-estree").TSESTree.TSParameterProperty} TSESTreeTSParameterProperty
+ */
 
 module.exports = createRule({
   name: 'no-visibility-modifiers',
@@ -13,10 +21,10 @@ module.exports = createRule({
     docs: {
       description: 'Require omitting visibility modifiers on class properties and methods',
       category: 'Best Practices',
-      recommended: 'error',
+      recommended: false,
     },
     messages: {
-      presentModifier: 'Visibility modifier present on {{type}} {{name}}.',
+      modifierPresent: 'Visibility modifier present on {{type}} {{name}}.',
     },
     schema: [],
   },
@@ -26,11 +34,14 @@ module.exports = createRule({
 
     /**
      * Generates the report for rule violations
+     * @param {string} nodeType
+     * @param {TSESTreeNode} node
+     * @param {string} nodeName
      */
-    function reportIssue(messageId, nodeType, node, nodeName) {
+    function reportIssue(nodeType, node, nodeName) {
       context.report({
         node,
-        messageId,
+        messageId: 'modifierPresent',
         data: {
           type: nodeType,
           name: nodeName,
@@ -38,9 +49,14 @@ module.exports = createRule({
       });
     }
 
+    /** @param {string} fileName */
+    function isTypeScriptFile(fileName) {
+      return /\.tsx?$/i.test(fileName || '');
+    }
+
     /**
      * Checks if a method declaration has an accessibility modifier.
-     * @param methodDefinition The node representing a MethodDefinition.
+     * @param {TSESTreeMethodDefinition} methodDefinition The node representing a MethodDefinition.
      */
     function checkMethodAccessibilityModifier(methodDefinition) {
       let nodeType = 'method definition';
@@ -50,33 +66,33 @@ module.exports = createRule({
       }
 
       if (isTypeScriptFile(context.getFilename())) {
-        const methodName = util.getNameFromClassMember(methodDefinition, sourceCode);
+        const methodName = util.getNameFromMember(methodDefinition, sourceCode);
 
-        if (!!methodDefinition.accessibility) {
-          reportIssue('presentModifier', nodeType, methodDefinition, methodName);
+        if (methodDefinition.accessibility) {
+          reportIssue(nodeType, methodDefinition, methodName);
         }
       }
     }
 
     /**
      * Checks if property has an accessibility modifier.
-     * @param classProperty The node representing a ClassProperty.
+     * @param {TSESTreeClassProperty} classProperty The node representing a ClassProperty.
      */
     function checkPropertyAccessibilityModifier(classProperty) {
       const nodeType = 'class property';
 
       if (isTypeScriptFile(context.getFilename())) {
-        const propertyName = util.getNameFromPropertyName(classProperty.key);
+        const propertyName = util.getNameFromMember(classProperty, sourceCode);
 
-        if (!!classProperty.accessibility) {
-          reportIssue('presentModifier', nodeType, classProperty, propertyName);
+        if (classProperty.accessibility) {
+          reportIssue(nodeType, classProperty, propertyName);
         }
       }
     }
 
     /**
      * Checks that the parameter property has the desired accessibility modifiers set.
-     * @param {TSESTree.TSParameterProperty} node The node representing a Parameter Property
+     * @param {TSESTreeTSParameterProperty} node The node representing a Parameter Property
      */
     function checkParameterPropertyAccessibilityModifier(node) {
       const nodeType = 'parameter property';
@@ -94,10 +110,10 @@ module.exports = createRule({
           node.parameter.type === AST_NODE_TYPES.Identifier
             ? node.parameter.name
             : // has to be an Identifier or TSC will throw an error
-              node.parameter.left.name;
+              /** @type {TSESTreeIdentifier} */ (node.parameter.left).name;
 
-        if (!!node.accessibility) {
-          reportIssue('presentModifier', nodeType, node, nodeName);
+        if (node.accessibility) {
+          reportIssue(nodeType, node, nodeName);
         }
       }
     }
