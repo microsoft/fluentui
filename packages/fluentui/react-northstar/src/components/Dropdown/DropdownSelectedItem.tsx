@@ -22,7 +22,6 @@ import Box, { BoxProps } from '../Box/Box';
 import { useUnhandledProps, useStyles, useTelemetry, getElementType } from '@fluentui/react-bindings';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
-import { mergeStyles } from '@fluentui/styles';
 
 export interface DropdownSelectedItemSlotClassNames {
   header: string;
