@@ -175,14 +175,13 @@ const DropdownSelectedItem: React.FC<WithAsProp<DropdownSelectedItemProps>> &
       }),
     },
   );
-  console.log(resolvedStyles.root);
+
   const element = (
     <Ref innerRef={itemRef}>
       <ElementType
         className={classes.root}
         tabIndex={active ? 0 : -1}
         styles={resolvedStyles.main}
-        circular
         onClick={handleClick}
         onKeyDown={handleKeyDown}
         {...unhandledProps}
