@@ -1,18 +1,15 @@
-import React from 'react';
 import { initializeIcons } from '@uifabric/icons';
 import generateStoriesFromExamples from '@uifabric/build/storybook/generateStoriesFromExamples';
 import { configure, addParameters, addDecorator } from '@storybook/react';
 import { withA11y } from '@storybook/addon-a11y';
 import { withPerformance } from 'storybook-addon-performance';
 import { withKnobs } from '@storybook/addon-knobs';
-import { useCustomizationOptions } from './knobs/theme';
-import { ThemeProvider } from '@fluentui/react-next';
-import { ThemeProviderDecorator } from './decorators/ThemeProvider';
+import { withThemeProvider } from './decorators/withThemeProvider';
 
 addDecorator(withA11y());
 addDecorator(withPerformance);
 addDecorator(withKnobs({ escapeHTML: false }));
-addDecorator(ThemeProviderDecorator);
+addDecorator(withThemeProvider);
 addParameters({
   a11y: {
     manual: true,

@@ -2,7 +2,7 @@ import React from 'react';
 import { ThemeProvider } from '@fluentui/react-next';
 import { useCustomizationOptions } from '../knobs/theme';
 
-export const ThemeProviderDecorator = storyFn => {
+export const withThemeProvider = storyFn => {
   const customizationOptions = useCustomizationOptions();
   const { customizations, isDark } = customizationOptions;
   const themeProviderProps = {
