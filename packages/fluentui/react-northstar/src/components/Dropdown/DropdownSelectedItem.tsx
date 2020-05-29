@@ -19,7 +19,7 @@ import { UIComponentProps } from '../../utils/commonPropInterfaces';
 import { createShorthandFactory, commonPropTypes } from '../../utils';
 import Image, { ImageProps } from '../Image/Image';
 import Box, { BoxProps } from '../Box/Box';
-import { useUnhandledProps, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import { useUnhandledProps, useStyles, useTelemetry, getElementType } from '@fluentui/react-bindings';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 
@@ -85,6 +85,7 @@ const DropdownSelectedItem: React.FC<WithAsProp<DropdownSelectedItemProps>> &
   const { active, header, icon, image, className, design, styles, variables } = props;
 
   const itemRef = React.useRef<HTMLElement>();
+  const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(DropdownSelectedItem.handledProps, props);
 
   React.useEffect(() => {
@@ -177,29 +178,18 @@ const DropdownSelectedItem: React.FC<WithAsProp<DropdownSelectedItemProps>> &
 
   const element = (
     <Ref innerRef={itemRef}>
-      {Box.create(
-        {},
-        {
-          defaultProps: () => ({
-            as: 'span',
-            className: classes.root,
-            tabIndex: active ? 0 : -1,
-            styles: resolvedStyles.main,
-            children: (Component, props) => (
-              <Component {...props}>
-                {imageElement}
-                {contentElement}
-                {iconElement}
-              </Component>
-            ),
-          }),
-          overrideProps: {
-            onClick: handleClick,
-            onKeyDown: handleKeyDown,
-            ...unhandledProps,
-          },
-        },
-      )}
+      <ElementType
+        className={classes.root}
+        tabIndex={active ? 0 : -1}
+        styles={resolvedStyles.main}
+        onClick={handleClick}
+        onKeyDown={handleKeyDown}
+        {...unhandledProps}
+      >
+        {imageElement}
+        {contentElement}
+        {iconElement}
+      </ElementType>
     </Ref>
   );
 
@@ -226,6 +216,7 @@ DropdownSelectedItem.propTypes = {
 DropdownSelectedItem.handledProps = Object.keys(DropdownSelectedItem.propTypes) as any;
 
 DropdownSelectedItem.defaultProps = {
+  as: 'span',
   // TODO: fix me
   icon: <CloseIcon />,
 };
