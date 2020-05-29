@@ -15,7 +15,7 @@ const getClassNames = classNamesFunction<IToggleStyleProps, IToggleStyles>({ use
 
 const COMPONENT_NAME = 'Toggle';
 
-export const useToggle = (props: IToggleProps, options: ComposePreparedOptions) => {
+export const useToggle = (props: IToggleProps, options: ComposePreparedOptions): any => {
   const {
     ariaLabel,
     checked: controlledChecked,
