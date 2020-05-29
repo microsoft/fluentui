@@ -23,7 +23,6 @@ import { useUnhandledProps, useStyles, useTelemetry, getElementType } from '@flu
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 import { mergeStyles } from '@fluentui/styles';
-import labelStyles from 'src/themes/teams/components/Label/labelStyles';
 
 export interface DropdownSelectedItemSlotClassNames {
   header: string;
@@ -103,7 +102,7 @@ const DropdownSelectedItem: React.FC<WithAsProp<DropdownSelectedItemProps>> &
       mapPropsToInlineStyles: () => ({
         className,
         design,
-        styles: mergeStyles(styles, labelStyles),
+        styles,
         variables,
       }),
       rtl: context.rtl,
