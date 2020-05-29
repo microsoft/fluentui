@@ -15,12 +15,25 @@ const getClassNames = classNamesFunction<IToggleStyleProps, IToggleStyles>({ use
 
 const COMPONENT_NAME = 'Toggle';
 
+const EmptyRender = () => null;
+
+// Picked up from @fluentui/react-northstar factories
+type HTMLTag = 'iframe' | 'img' | 'input';
+type ShorthandProp = 'children' | 'src' | 'type';
+
+// It's only necessary to map props that don't use 'children' as value ('children' is the default)
+const mappedProps: { [key in HTMLTag]: ShorthandProp } = {
+  iframe: 'src',
+  img: 'src',
+  input: 'type',
+};
+
 export const useToggle = (props: IToggleProps, options: ComposePreparedOptions) => {
   const {
     ariaLabel,
     checked: controlledChecked,
     className,
-    defaultChecked,
+    defaultChecked = false,
     disabled,
     id: toggleId,
     inlineLabel,
@@ -48,7 +61,7 @@ export const useToggle = (props: IToggleProps, options: ComposePreparedOptions) 
     onOffMissing: !onText && !offText,
   });
   const badAriaLabel = checked ? onAriaLabel : offAriaLabel;
-  const id = toggleId || useId;
+  const id = toggleId || useId();
   const labelId = `${id}-label`;
   const stateTextId = `${id}-stateText`;
   const stateText = checked ? onText : offText;
@@ -137,6 +150,49 @@ export const useToggle = (props: IToggleProps, options: ComposePreparedOptions) 
       id: stateTextId,
     },
   };
+
+  // Distribute slot content in state to slotProps.
+  Object.keys(slots).forEach(slotName => {
+    // tslint:disable-next-line:no-any
+    const slot = (slots as any)[slotName];
+    // tslint:disable-next-line:no-any
+    let slotProp = (props as any)[slotName];
+
+    if (slot && slotProp) {
+      const slotPropType = typeof slotProp;
+      const isLiteral = slotPropType === 'string' || slotPropType === 'number' || slotPropType === 'boolean';
+
+      if (isLiteral || React.isValidElement(slotProp)) {
+        const mappedProp =
+          (slot && slot.shorthandConfig && slot.shorthandConfig.mappedProp) ||
+          // @ts-ignore
+          mappedProps[slot] ||
+          'children';
+
+        slotProp = { [mappedProp]: slotProp };
+      }
+
+      // If children is a function replace the slot.
+      if (typeof slotProp.children === 'function') {
+        const { children, ...restProps } = slotProp;
+        slotProp.children = slotProp.children(slot, restProps);
+        // tslint:disable-next-line:no-any
+        (slots as any)[slotName] = React.Fragment;
+      }
+
+      (slotProps as any)[slotName] = {
+        // ...configSlotProps[slotName],
+        ...(slotProps as any)[slotName],
+        ...slotProp,
+      };
+    }
+
+    // tslint:disable-next-line:no-any
+    if (!(slots as any)[slotName]) {
+      // tslint:disable-next-line:no-any
+      (slots as any)[slotName] = EmptyRender;
+    }
+  });
 
   return { state, slots, slotProps };
 };
