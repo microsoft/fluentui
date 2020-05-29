@@ -21,7 +21,7 @@ xdescribe('felaExpandCssShorthandsPlugin', () => {
 
   test('should handle "undefined" and "null"', () => {
     const style = {
-      margin: '10px',
+      // margin: '10px',
       marginLeft: null,
       marginRight: undefined,
     };
