@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Popup, Button, buttonClassName, popupContentClassName } from '@fluentui/react-northstar';
+import { margin } from '@fluentui/styles';
 
 export const selectors = {
   popupContent: popupContentClassName,
@@ -15,7 +16,7 @@ const PopupWithoutTriggerExample = () => {
         open={open}
         content={{
           content: 'Test Content',
-          styles: { margin: '20px' }, // puppeteer performs a click on 0x0 in boxes, so button and popup content should not collide
+          styles: margin('20px'), // puppeteer performs a click on 0x0 in boxes, so button and popup content should not collide
         }}
         onOpenChange={(e, data) => {
           e.stopPropagation();
