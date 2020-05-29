@@ -155,9 +155,8 @@ const DropdownSelectedItem: React.FC<WithAsProp<DropdownSelectedItemProps>> &
           }),
       };
 
-  const imageChildren = _.get(image, 'children');
   const imageProps =
-    _.isNil(image) || imageChildren
+    _.isNil(image) || image?.hasOwnProperty('children')
       ? image
       : {
           children: (ComponentType, props) =>
