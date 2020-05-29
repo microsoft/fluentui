@@ -85,7 +85,6 @@ const DropdownSelectedItem: React.FC<WithAsProp<DropdownSelectedItemProps>> &
   const { active, header, icon, image, className, design, styles, variables } = props;
 
   const itemRef = React.useRef<HTMLElement>();
-  const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(DropdownSelectedItem.handledProps, props);
 
   React.useEffect(() => {
@@ -178,7 +177,7 @@ const DropdownSelectedItem: React.FC<WithAsProp<DropdownSelectedItemProps>> &
 
   const element = (
     <Ref innerRef={itemRef}>
-      <ElementType
+      <span
         className={classes.root}
         tabIndex={active ? 0 : -1}
         styles={resolvedStyles.main}
@@ -189,7 +188,7 @@ const DropdownSelectedItem: React.FC<WithAsProp<DropdownSelectedItemProps>> &
         {imageElement}
         {contentElement}
         {iconElement}
-      </ElementType>
+      </span>
     </Ref>
   );
 
