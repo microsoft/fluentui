@@ -16,7 +16,7 @@ import {
   ProviderContextPrepared,
 } from '../../types';
 import { UIComponentProps } from '../../utils/commonPropInterfaces';
-import { createShorthandFactory, commonPropTypes, childrenExist } from '../../utils';
+import { createShorthandFactory, commonPropTypes } from '../../utils';
 import Image, { ImageProps } from '../Image/Image';
 import Label from '../Label/Label';
 import Box, { BoxProps } from '../Box/Box';
@@ -155,8 +155,9 @@ const DropdownSelectedItem: React.FC<WithAsProp<DropdownSelectedItemProps>> &
           }),
       };
 
+  const imageChildren = _.get(image, 'children');
   const imageProps =
-    _.isNil(image) || childrenExist(image)
+    _.isNil(image) || imageChildren
       ? image
       : {
           children: (ComponentType, props) =>
