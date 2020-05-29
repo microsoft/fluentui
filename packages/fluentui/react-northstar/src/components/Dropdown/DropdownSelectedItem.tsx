@@ -16,7 +16,7 @@ import {
   ProviderContextPrepared,
 } from '../../types';
 import { UIComponentProps } from '../../utils/commonPropInterfaces';
-import { createShorthandFactory, commonPropTypes } from '../../utils';
+import { createShorthandFactory, commonPropTypes, childrenExist } from '../../utils';
 import Image, { ImageProps } from '../Image/Image';
 import Label from '../Label/Label';
 import Box, { BoxProps } from '../Box/Box';
@@ -155,19 +155,20 @@ const DropdownSelectedItem: React.FC<WithAsProp<DropdownSelectedItemProps>> &
           }),
       };
 
-  const imageProps = _.isNil(image)
-    ? image
-    : {
-        children: (ComponentType, props) =>
-          Image.create(image, {
-            defaultProps: () => ({
-              avatar: true,
-              className: dropdownSelectedItemSlotClassNames.image,
-              styles: resolvedStyles.image,
+  const imageProps =
+    _.isNil(image) || childrenExist(image)
+      ? image
+      : {
+          children: (ComponentType, props) =>
+            Image.create(image, {
+              defaultProps: () => ({
+                avatar: true,
+                className: dropdownSelectedItemSlotClassNames.image,
+                styles: resolvedStyles.image,
+              }),
+              overrideProps: props,
             }),
-            overrideProps: props,
-          }),
-      };
+        };
 
   const element = (
     <Ref innerRef={itemRef}>
