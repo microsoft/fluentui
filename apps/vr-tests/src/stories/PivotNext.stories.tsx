@@ -5,6 +5,8 @@ import { storiesOf } from '@storybook/react';
 import { FabricDecoratorTall } from '../utilities';
 import {
   Pivot,
+  PivotLinkSize,
+  PivotLinkFormat,
   PivotItem,
   IPivotItemProps,
   Label,
@@ -73,7 +75,7 @@ storiesOf('Pivot Next', module)
     </Pivot>
   ))
   .addStory('Large links', () => (
-    <Pivot aria-label="Large Link Size Pivot Example" linkSize="large">
+    <Pivot aria-label="Large Link Size Pivot Example" linkSize={PivotLinkSize.large}>
       <PivotItem headerText="My Files">
         <Label>Pivot #1</Label>
       </PivotItem>
@@ -86,7 +88,7 @@ storiesOf('Pivot Next', module)
     </Pivot>
   ))
   .addStory('Tabs', () => (
-    <Pivot aria-label="Links of Tab Style Pivot Example" linkFormat="tabs">
+    <Pivot aria-label="Links of Tab Style Pivot Example" linkFormat={PivotLinkFormat.tabs}>
       <PivotItem headerText="Foo">
         <Label>Pivot #1</Label>
       </PivotItem>
@@ -102,7 +104,11 @@ storiesOf('Pivot Next', module)
     </Pivot>
   ))
   .addStory('Large tabs', () => (
-    <Pivot aria-label="Links of Large Tabs Pivot Example" linkFormat="tabs" linkSize="large">
+    <Pivot
+      aria-label="Links of Large Tabs Pivot Example"
+      linkFormat={PivotLinkFormat.tabs}
+      linkSize={PivotLinkSize.large}
+    >
       <PivotItem headerText="Foo">
         <Label>Pivot #1</Label>
       </PivotItem>
