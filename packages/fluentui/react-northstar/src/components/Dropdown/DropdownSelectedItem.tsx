@@ -19,7 +19,7 @@ import { UIComponentProps } from '../../utils/commonPropInterfaces';
 import { createShorthandFactory, commonPropTypes } from '../../utils';
 import Image, { ImageProps } from '../Image/Image';
 import Box, { BoxProps } from '../Box/Box';
-import { useUnhandledProps, useStyles, useTelemetry, getElementType } from '@fluentui/react-bindings';
+import { useUnhandledProps, useStyles, useTelemetry } from '@fluentui/react-bindings';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 
@@ -177,18 +177,29 @@ const DropdownSelectedItem: React.FC<WithAsProp<DropdownSelectedItemProps>> &
 
   const element = (
     <Ref innerRef={itemRef}>
-      <span
-        className={classes.root}
-        tabIndex={active ? 0 : -1}
-        styles={resolvedStyles.main}
-        onClick={handleClick}
-        onKeyDown={handleKeyDown}
-        {...unhandledProps}
-      >
-        {imageElement}
-        {contentElement}
-        {iconElement}
-      </span>
+      {Box.create(
+        {},
+        {
+          defaultProps: () => ({
+            as: 'span',
+            className: classes.root,
+            tabIndex: active ? 0 : -1,
+            styles: resolvedStyles.main,
+            children: (Component, props) => (
+              <Component {...props}>
+                {imageElement}
+                {contentElement}
+                {iconElement}
+              </Component>
+            ),
+          }),
+          overrideProps: {
+            onClick: handleClick,
+            onKeyDown: handleKeyDown,
+            ...unhandledProps,
+          },
+        },
+      )}
     </Ref>
   );
 
