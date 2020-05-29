@@ -22,8 +22,8 @@ export const ToggleBase = compose<'div', IToggleProps, IToggleProps, {}, {}>(
               </slots.pill>
             )}
           </KeytipData>
+          {((checked && onText) || offText) && <slots.stateText {...slotProps.stateText} />}
         </slots.container>
-        {((checked && onText) || offText) && <slots.stateText {...slotProps.stateText} />}
       </slots.root>
     );
   },

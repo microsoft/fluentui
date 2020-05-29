@@ -133,6 +133,7 @@ export const useToggle = (props: IToggleProps, options: ComposePreparedOptions) 
       className: classNames.thumb,
     },
     stateText: {
+      children: stateText,
       className: classNames.text,
       htmlFor: id,
       id: stateTextId,
