@@ -436,7 +436,7 @@ const ToolbarMenuItem = compose<'button', ToolbarMenuItemProps, ToolbarMenuItemS
       activeIndicator: ToolbarMenuItemActiveIndicator,
       // menu: ToolbarMenu,
     },
-    mapPropsToSlotProps: props => ({
+    slotProps: props => ({
       icon: {
         hasContent: !!props.content,
       },

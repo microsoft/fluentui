@@ -182,7 +182,7 @@ const ToolbarRadioGroup = compose<'div', ToolbarRadioGroupProps, ToolbarRadioGro
       item: ToolbarItem,
       divider: ToolbarDivider,
     },
-    mapPropsToSlotProps: () => ({
+    slotProps: () => ({
       item: {
         accessibility: toolbarRadioGroupItemBehavior,
       },

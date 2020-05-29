@@ -27,18 +27,6 @@ export function mergeProps<TProps, TState = TProps>(
     slotProps: {},
   };
 
-  // const state = stateOrProps;
-  // const slotProps: MergePropsResult<TState>['slotProps'] = {};
-  // const slots: MergePropsResult['slots'] = {
-  //   ...options.slots,
-  //   root: state.as || options.slots.root || 'div',
-  // };
-  // const result: MergePropsResult = {
-  //   state,
-  //   slotProps,
-  //   slots,
-  // };
-
   // Resolve slotProps/slots from state.
   resolveSlotProps(result, options);
 
@@ -49,12 +37,3 @@ export function mergeProps<TProps, TState = TProps>(
 
   return result;
 }
-
-// function assignToMapObject(map: Record<string, {}>, key: string, value: {}) {
-//   if (value) {
-//     if (!map[key]) {
-//       map[key] = {};
-//     }
-//     assign(map[key], value);
-//   }
-// }

@@ -552,7 +552,7 @@ const Toolbar = compose<'div', ToolbarProps, ToolbarStylesProps, {}, {}>(
       toggle: ToolbarItem,
       overflowItem: ToolbarItem,
     },
-    mapPropsToSlotProps: () => ({
+    slotProps: () => ({
       toggle: {
         accessibility: toggleButtonBehavior,
       },

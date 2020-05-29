@@ -16,6 +16,7 @@ export function mergeComposeOptions(
       const nextProps = { ...definition(props) };
       const slots: string[] = [...Object.keys(acc), ...Object.keys(nextProps)];
       const mergedSlotProps: Record<string, object> = {};
+
       slots.forEach(slot => {
         if (!mergedSlotProps[slot]) {
           mergedSlotProps[slot] = {
@@ -24,6 +25,7 @@ export function mergeComposeOptions(
           };
         }
       });
+
       return mergedSlotProps;
     }, {});
 
