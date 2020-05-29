@@ -244,34 +244,36 @@ exports[`Toggle renders toggle correctly with inline label and on/off text provi
         className="ms-Toggle-thumb"
       />
     </button>
+    <label
+      className=
+          ms-Label
+          ms-Toggle-stateText
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            box-shadow: none;
+            box-sizing: border-box;
+            color: #323130;
+            display: block;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
+            overflow-wrap: break-word;
+            padding-bottom: 5px;
+            padding-left: 0;
+            padding-right: 0;
+            padding-top: 5px;
+            word-wrap: break-word;
+          }
+      htmlFor="id__0"
+      id="id__0-stateText"
+    >
+      Off
+    </label>
   </div>
-  <label
-    className=
-        ms-Label
-        ms-Toggle-stateText
-        {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
-          box-shadow: none;
-          box-sizing: border-box;
-          color: #323130;
-          display: block;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
-          font-weight: 600;
-          margin-bottom: 0px;
-          margin-left: 0px;
-          margin-right: 0px;
-          margin-top: 0px;
-          overflow-wrap: break-word;
-          padding-bottom: 5px;
-          padding-left: 0;
-          padding-right: 0;
-          padding-top: 5px;
-          word-wrap: break-word;
-        }
-    htmlFor="id__0"
-    id="id__0-stateText"
-  />
 </div>
 `;
