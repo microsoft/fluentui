@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Fix Tile border color declarations so they don't get elided",
+  "packageName": "@uifabric/experiments",
+  "email": "tmichon@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-05-28T03:59:38.456Z"
+}
