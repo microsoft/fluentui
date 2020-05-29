@@ -9,13 +9,3 @@ exports[`FloatingSuggestions renders FloatingSuggestions correctly 1`] = `
 
 />
 `;
-
-exports[`FloatingSuggestions renders FloatingSuggestions with suggestions 1`] = `
-<div
-  className=
-      ms-BasePicker
-      ms-BaseFloatingPicker
-      ms-FloatingSuggestions
-
-/>
-`;

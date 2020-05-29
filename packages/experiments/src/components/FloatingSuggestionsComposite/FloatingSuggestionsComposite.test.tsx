@@ -2,17 +2,30 @@ import * as React from 'react';
 import { create } from 'react-test-renderer';
 import { mru } from '@uifabric/example-data';
 import { BaseFloatingSuggestions } from './FloatingSuggestions';
-import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
-import { IFloatingSuggestionItem } from './FloatingSuggestionsItem/FloatingSuggestionsItem.types';
+import * as ReactDOM from 'react-dom';
+import {
+  IFloatingSuggestionItem,
+  IFloatingSuggestionOnRenderItemProps,
+} from './FloatingSuggestionsItem/FloatingSuggestionsItem.types';
+import { IBaseFloatingSuggestionsProps } from './FloatingSuggestions.types';
 
 export interface ISimple {
   key: string;
   name: string;
 }
 
+function onZeroQuerySuggestion(): ISimple[] {
+  return ['black', 'blue', 'brown', 'cyan'].map((item: string) => ({ key: item, name: item }));
+}
+
+const basicSuggestionRenderer = (props: IFloatingSuggestionOnRenderItemProps<ISimple>) => {
+  return <div key={props.key}> {props.id}</div>;
+};
+
 describe('FloatingSuggestions', () => {
   const renderNothing = () => <></>;
   const isSuggestionsVisible = false;
+
   it('renders FloatingSuggestions correctly', () => {
     const component = create(
       <BaseFloatingSuggestions
@@ -27,25 +40,37 @@ describe('FloatingSuggestions', () => {
   });
 
   it('renders FloatingSuggestions with suggestions', () => {
-    const _suggestions = [
+    const testProps = {
+      suggestions: [],
+      isSuggestionsVisible: true,
+      targetElement: null,
+    } as IBaseFloatingSuggestionsProps<ISimple>;
+
+    const _suggestions = ([
       {
-        key: '1',
-        id: '1',
-        displayText: 'Suggestion 1',
-        item: mru[0],
-        isSelected: true,
+        key: '3',
+        id: '3',
+        displayText: 'Suggestion 3',
+        item: mru[2],
+        isSelected: false,
         showRemoveButton: true,
       },
-    ] as IFloatingSuggestionItem<IPersonaProps>[];
-    const component = create(
+    ] as unknown) as IFloatingSuggestionItem<ISimple>;
+    const root = document.createElement('div');
+    const input = document.createElement('input');
+    document.body.appendChild(input);
+    document.body.appendChild(root);
+    const component = ReactDOM.render(
       <BaseFloatingSuggestions
-        onRenderNoResultFound={renderNothing}
-        isSuggestionsVisible={isSuggestionsVisible}
-        suggestions={_suggestions}
-        targetElement={null}
+        isSuggestionsVisible={true}
+        suggestions={[_suggestions]}
+        targetElement={input}
+        onRenderSuggestion={basicSuggestionRenderer}
       />,
+      root,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    console.log(component);
+
+    ReactDOM.unmountComponentAtNode(root);
   });
 });
