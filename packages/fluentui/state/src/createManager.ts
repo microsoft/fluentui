@@ -6,7 +6,7 @@ const createManager = <State, Actions extends AnyActions>(
   const { actions, debug, middleware = [], sideEffects = [], state } = config;
   const _state: State = { ...state } as State;
 
-  const getState = (): State => ({ ...state } as State);
+  const getState = (): State => ({ ..._state });
   const setState = (partial: Partial<State>): State => Object.assign(_state, partial);
 
   const manager: Manager<State, Actions> = {
