@@ -21,6 +21,7 @@ const useComponentRef = (props: ILinkProps, link: React.RefObject<ILink>) => {
 
 const adjustPropsForRootType = (
   RootTypeProp: string | React.ComponentClass | React.FunctionComponent,
+  // tslint:disable-next-line:no-any
   adjustPropsForRootTypeProps: ILinkProps & { getStyles?: any },
 ): Partial<ILinkProps> => {
   // Deconstruct the props so we remove props like `as`, `theme` and `styles`
@@ -95,6 +96,7 @@ export const LinkBase: React.FunctionComponent = (props: ILinkProps) => {
   const RootType = getRootType();
   useComponentRef(props, link);
 
+  // tslint:disable-next-line:no-any
   const keytipData = (keytipAttributes: any): JSX.Element => (
     <RootType
       {...keytipAttributes}
