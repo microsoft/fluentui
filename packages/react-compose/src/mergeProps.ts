@@ -33,7 +33,7 @@ export function mergeProps<TProps, TState = TProps>(
   // Resolve classes.
   resolveClasses(result, options.classes);
 
-  // Resolve inline styles.
+  // TODO: Resolve inline styles.
 
   return result;
 }
