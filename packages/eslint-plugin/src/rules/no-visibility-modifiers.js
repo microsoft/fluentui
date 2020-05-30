@@ -7,35 +7,37 @@ const createRule = require('../utils/createRule');
 // Nasty syntax required for type imports until https://github.com/microsoft/TypeScript/issues/22160 is implemented.
 // For some reason just importing TSESTree and accessing properties off that doesn't work.
 /**
- * @typedef {import("@typescript-eslint/typescript-estree").TSESTree.ClassProperty} TSESTreeClassProperty
- * @typedef {import("@typescript-eslint/typescript-estree").TSESTree.Identifier} TSESTreeIdentifier
- * @typedef {import("@typescript-eslint/typescript-estree").TSESTree.MethodDefinition} TSESTreeMethodDefinition
- * @typedef {import("@typescript-eslint/typescript-estree").TSESTree.Node} TSESTreeNode
- * @typedef {import("@typescript-eslint/typescript-estree").TSESTree.TSParameterProperty} TSESTreeTSParameterProperty
+ * @typedef {import("@typescript-eslint/typescript-estree").TSESTree.ClassProperty} ClassProperty
+ * @typedef {import("@typescript-eslint/typescript-estree").TSESTree.Identifier} Identifier
+ * @typedef {import("@typescript-eslint/typescript-estree").TSESTree.MethodDefinition} MethodDefinition
+ * @typedef {import("@typescript-eslint/typescript-estree").TSESTree.Node} Node
+ * @typedef {import("@typescript-eslint/typescript-estree").TSESTree.TSParameterProperty} ParameterProperty
  */
 
+/** */
 module.exports = createRule({
   name: 'no-visibility-modifiers',
   meta: {
     type: 'problem',
     docs: {
-      description: 'Require omitting visibility modifiers on class properties and methods',
+      description: 'Forbid visibility modifiers on class properties and methods.',
       category: 'Best Practices',
+      // Only used by v0. Omitting visibility modifiers is generally not recommended.
       recommended: false,
     },
     messages: {
-      modifierPresent: 'Visibility modifier present on {{type}} {{name}}.',
+      modifierPresent: 'Visibility modifier present on {{type}} {{name}}',
     },
     schema: [],
   },
   defaultOptions: [],
-  create(context) {
+  create: context => {
     const sourceCode = context.getSourceCode();
 
     /**
      * Generates the report for rule violations
      * @param {string} nodeType
-     * @param {TSESTreeNode} node
+     * @param {Node} node
      * @param {string} nodeName
      */
     function reportIssue(nodeType, node, nodeName) {
@@ -56,7 +58,7 @@ module.exports = createRule({
 
     /**
      * Checks if a method declaration has an accessibility modifier.
-     * @param {TSESTreeMethodDefinition} methodDefinition The node representing a MethodDefinition.
+     * @param {MethodDefinition} methodDefinition The node representing a MethodDefinition.
      */
     function checkMethodAccessibilityModifier(methodDefinition) {
       let nodeType = 'method definition';
@@ -76,7 +78,7 @@ module.exports = createRule({
 
     /**
      * Checks if property has an accessibility modifier.
-     * @param {TSESTreeClassProperty} classProperty The node representing a ClassProperty.
+     * @param {ClassProperty} classProperty The node representing a ClassProperty.
      */
     function checkPropertyAccessibilityModifier(classProperty) {
       const nodeType = 'class property';
@@ -92,7 +94,7 @@ module.exports = createRule({
 
     /**
      * Checks that the parameter property has the desired accessibility modifiers set.
-     * @param {TSESTreeTSParameterProperty} node The node representing a Parameter Property
+     * @param {ParameterProperty} node The node representing a Parameter Property
      */
     function checkParameterPropertyAccessibilityModifier(node) {
       const nodeType = 'parameter property';
@@ -110,7 +112,7 @@ module.exports = createRule({
           node.parameter.type === AST_NODE_TYPES.Identifier
             ? node.parameter.name
             : // has to be an Identifier or TSC will throw an error
-              /** @type {TSESTreeIdentifier} */ (node.parameter.left).name;
+              /** @type {Identifier} */ (node.parameter.left).name;
 
         if (node.accessibility) {
           reportIssue(nodeType, node, nodeName);

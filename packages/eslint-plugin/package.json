@@ -10,12 +10,9 @@
   "license": "MIT",
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^2.34.0",
-    "@typescript-eslint/experimental-utils": "^2.34.0",
-    "tslib": "^1.10.0"
+    "@typescript-eslint/experimental-utils": "^2.34.0"
   },
   "devDependencies": {
-    "@types/node": "^10.3.2",
-    "just-scripts": "0.41.0",
     "typescript": "3.7.2"
   },
   "peerDependencies": {
