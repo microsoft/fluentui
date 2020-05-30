@@ -121,7 +121,7 @@ export class CalendarBase extends React.Component<ICalendarProps, ICalendarState
     this._focusOnUpdate = false;
   }
 
-  // tslint:disable-next-line function-name
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   public UNSAFE_componentWillReceiveProps(nextProps: ICalendarProps): void {
     const { value, today = new Date() } = nextProps;
 

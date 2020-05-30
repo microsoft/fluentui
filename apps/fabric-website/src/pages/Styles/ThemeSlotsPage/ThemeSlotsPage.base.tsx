@@ -6,21 +6,20 @@ import {
   IPageSectionProps,
   MarkdownHeader,
   ColorPalette,
-  IColorSwatch,
 } from '@uifabric/example-app-base/lib/index2';
 import { Platforms } from '../../../interfaces/Platforms';
 import { getSubTitle } from '../../../utilities/index';
 import { IThemeSlotsPageProps, IThemeSlotsPageStyles, IThemeSlotsPageStyleProps } from './ThemeSlotsPage.types';
 import { ThemeSlotsPageProps } from './ThemeSlotsPage.doc';
 
+// Color palettes
+import * as themeColors from '../../../data/colors-theme-slots.json';
+import * as neutralColors from '../../../data/colors-theme-neutrals.json';
+import * as accentColors from '../../../data/colors-theme-accents.json';
+
 const getClassNames = classNamesFunction<IThemeSlotsPageStyleProps, IThemeSlotsPageStyles>();
 const baseUrl =
   'https://onedrive.visualstudio.com/Design/_git/ui-fabric-website?path=/apps/fabric-website/src/pages/Styles/';
-
-// Color palettes
-const themeColors = require<IColorSwatch[]>('@uifabric/fabric-website/lib/data/colors-theme-slots.json');
-const neutralColors = require<IColorSwatch[]>('@uifabric/fabric-website/lib/data/colors-theme-neutrals.json');
-const accentColors = require<IColorSwatch[]>('@uifabric/fabric-website/lib/data/colors-theme-accents.json');
 
 export const ThemeSlotsPageBase: React.FunctionComponent<IThemeSlotsPageProps> = props => {
   const { theme, styles, className } = props;

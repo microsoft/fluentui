@@ -69,7 +69,7 @@ export class ResizeGroupVerticalOverflowSetExample extends React.Component {
         direction={ResizeGroupDirection.vertical}
         data={dataToRender}
         onReduceData={this._onReduceData}
-        // tslint:disable-next-line:jsx-no-lambda
+        // eslint-disable-next-line react/jsx-no-bind
         onRenderData={data => {
           return (
             <OverflowSet
@@ -77,6 +77,7 @@ export class ResizeGroupVerticalOverflowSetExample extends React.Component {
               vertical={true}
               items={data.primary}
               overflowItems={data.overflow.length ? data.overflow : null}
+              // eslint-disable-next-line react/jsx-no-bind
               onRenderItem={item => {
                 return (
                   <CommandBarButton
@@ -89,6 +90,7 @@ export class ResizeGroupVerticalOverflowSetExample extends React.Component {
                   />
                 );
               }}
+              // eslint-disable-next-line react/jsx-no-bind
               onRenderOverflowButton={overflowItems => {
                 return (
                   <CommandBarButton
@@ -106,7 +108,7 @@ export class ResizeGroupVerticalOverflowSetExample extends React.Component {
     );
   }
 
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _onReduceData = (currentData: any): any => {
     if (currentData.primary.length === 0) {
       return undefined;

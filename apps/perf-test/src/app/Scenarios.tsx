@@ -36,7 +36,7 @@ const selection = new Selection();
 selection.setItems(Items);
 
 const alertClicked = (): void => {
-  alert('Clicked');
+  console.log('Clicked');
 };
 const menuProps = {
   items: [

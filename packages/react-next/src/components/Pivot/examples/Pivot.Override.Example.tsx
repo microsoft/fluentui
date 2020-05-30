@@ -21,6 +21,7 @@ export const PivotOverrideExample = () => {
           <Label>Pivot #3</Label>
         </PivotItem>
       </Pivot>
+      {/* eslint-disable-next-line react/jsx-no-bind */}
       <DefaultButton onClick={DefaultButtonOnClick}>Select next item</DefaultButton>
     </div>
   );

@@ -5,12 +5,11 @@ import { IStylesPageProps, StylesAreaPage } from '../StylesAreaPage';
 import { LocalizationPageProps } from './LocalizationPage.doc';
 import * as styles from './LocalizationPage.module.scss';
 import { Platforms } from '../../../interfaces/Platforms';
+import * as directionalIconsData from '../../../data/directional-icons.json';
+import * as localizedFontsData from '../../../data/localized-fonts.json';
 
 const baseUrl =
   'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Styles/LocalizationPage/docs';
-
-const directionalIconsData = require('../../../data/directional-icons.json');
-const localizedFontsData = require('../../../data/localized-fonts.json');
 
 export const LocalizationPage: React.FunctionComponent<IStylesPageProps> = props => {
   const { platform } = props;
@@ -46,8 +45,8 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 RTL pages:
               </p>
               <ul className={styles.directionalIcons}>
-                {directionalIconsData.map((pair, pairIndex) => (
-                  <li className={styles.directionalIconPair} key={pairIndex}>
+                {directionalIconsData.map(pair => (
+                  <li className={styles.directionalIconPair} key={pair[0]}>
                     <div className={styles.directionalIcon}>
                       <i className={'ms-Icon ms-Icon--' + pair[0]} />
                       <span>{pair[0]}</span>

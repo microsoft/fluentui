@@ -114,7 +114,6 @@ function _renderWeightsTable(weights: ITableRowProps[]) {
         },
       ]}
       rows={weights}
-      // tslint:disable-next-line jsx-no-lambda
       formatter={(column, row) => {
         const content = row[column.data];
         switch (column.title) {
@@ -169,7 +168,6 @@ function _renderSizesTable(sizes: ITableColumnProps[]) {
         },
       ]}
       rows={sizes}
-      // tslint:disable-next-line jsx-no-lambda
       formatter={(column, row) => {
         const content = row[column.data];
         switch (column.title) {

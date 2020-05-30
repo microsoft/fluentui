@@ -45,19 +45,20 @@ export interface IIconOptions {
 }
 
 export interface IIconRecords {
-  __options: IIconOptions;
-  __remapped: { [key: string]: string };
+  __options: IIconOptions; // eslint-disable-line @typescript-eslint/naming-convention
+  __remapped: { [key: string]: string }; // eslint-disable-line @typescript-eslint/naming-convention
   [key: string]: IIconRecord | {};
 }
 
 const ICON_SETTING_NAME = 'icons';
 
 const _iconSettings = GlobalSettings.getValue<IIconRecords>(ICON_SETTING_NAME, {
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   __options: {
     disableWarnings: false,
     warnOnMissingIcons: true,
   },
-  __remapped: {},
+  __remapped: {}, // eslint-disable-line @typescript-eslint/naming-convention
 });
 
 // Reset icon registration on stylesheet resets.
@@ -189,7 +190,7 @@ export function getIcon(name?: string): IIconRecord | undefined {
         }
       }
     } else {
-      // tslint:disable-next-line:deprecation
+      // eslint-disable-next-line deprecation/deprecation
       if (!options.disableWarnings && options.warnOnMissingIcons) {
         warn(
           `The icon "${name}" was used but not registered. See https://github.com/microsoft/fluentui/wiki/Using-icons for more information.`,

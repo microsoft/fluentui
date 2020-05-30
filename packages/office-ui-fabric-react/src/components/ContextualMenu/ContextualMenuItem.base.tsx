@@ -38,11 +38,11 @@ const renderCheckMarkIcon = ({ onCheckmarkClick, item, classNames }: IContextual
 };
 
 const renderItemName = ({ item, classNames }: IContextualMenuItemProps) => {
-  // tslint:disable:deprecation
+  /* eslint-disable deprecation/deprecation */
   if (item.text || item.name) {
     return <span className={classNames.label}>{item.text || item.name}</span>;
   }
-  // tslint:enable:deprecation
+  /* eslint-enable deprecation/deprecation */
   return null;
 };
 

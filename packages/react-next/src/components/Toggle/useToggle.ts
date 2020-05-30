@@ -15,7 +15,7 @@ const getClassNames = classNamesFunction<IToggleStyleProps, IToggleStyles>({ use
 
 const COMPONENT_NAME = 'Toggle';
 
-// tslint:disable-next-line:no-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const useToggle = (props: IToggleProps, options: ComposePreparedOptions): any => {
   const {
     ariaLabel,
@@ -26,10 +26,10 @@ export const useToggle = (props: IToggleProps, options: ComposePreparedOptions):
     id: toggleId,
     inlineLabel,
     label,
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     offAriaLabel,
     offText,
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     onAriaLabel,
     onChange,
     onClick: onToggleClick,
@@ -97,7 +97,6 @@ export const useToggle = (props: IToggleProps, options: ComposePreparedOptions):
 
   const slots = {
     ...options.slots,
-    // tslint:disable-next-line:no-any
     root: props.as || ((options as any).defaultProps as any)?.as,
   };
 

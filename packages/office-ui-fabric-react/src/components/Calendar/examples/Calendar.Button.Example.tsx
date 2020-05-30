@@ -50,7 +50,7 @@ export const CalendarButtonExample: React.FunctionComponent<ICalendarButtonExamp
   props: ICalendarButtonExampleProps,
 ) => {
   const [showCalendar, { toggle: toggleShowCalendar }] = useBoolean(false);
-  const [selectedDate, setSelectedDate] = React.useState();
+  const [selectedDate, setSelectedDate] = React.useState<Date>();
 
   const {
     showMonthPickerAsOverlay = false,
@@ -68,7 +68,10 @@ export const CalendarButtonExample: React.FunctionComponent<ICalendarButtonExamp
 
   return (
     <div>
-      <div ref={calendarBtn => (calendarButtonElement = calendarBtn!)}>
+      <div
+        // eslint-disable-next-line react/jsx-no-bind
+        ref={calendarBtn => (calendarButtonElement = calendarBtn!)}
+      >
         <DefaultButton
           onClick={toggleShowCalendar}
           text={!selectedDate ? buttonString : selectedDate.toLocaleDateString()}

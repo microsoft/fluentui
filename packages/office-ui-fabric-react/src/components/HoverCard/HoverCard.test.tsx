@@ -11,7 +11,7 @@ import { HoverCardBase } from './HoverCard.base';
 import { HoverCardType } from './HoverCard.types';
 import { KeyCodes } from '../../Utilities';
 
-// tslint:disable:jsx-no-lambda
+/* eslint-disable jsx-no-lambda */
 
 const expandingCardProps: IExpandingCardProps = {
   onRenderCompactCard: (item: any) => {

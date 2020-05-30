@@ -19,7 +19,7 @@ export interface IStackedBarChartState {
   isCalloutVisible: boolean;
   refArray: IRefArrayData[];
   selectedLegendTitle: string;
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   refSelected: any;
   dataForHoverCard: number;
   color: string;
@@ -261,11 +261,13 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
         <g
           key={index}
           className={this._classNames.opacityChangeOnHover}
+          // eslint-disable-next-line react/jsx-no-bind
           ref={(e: SVGGElement) => {
             this._refCallback(e, legend.title);
           }}
           data-is-focusable={true}
           focusable={'true'}
+          // eslint-disable-next-line react/jsx-no-bind
           onFocus={this._onBarFocus.bind(
             this,
             point.legend!,
@@ -276,6 +278,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
           )}
           onBlur={this._onBarLeave}
           aria-labelledby={this._calloutId}
+          // eslint-disable-next-line react/jsx-no-bind
           onMouseOver={this._onBarHover.bind(
             this,
             point.legend!,
@@ -284,6 +287,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
             point.xAxisCalloutData!,
             point.yAxisCalloutData!,
           )}
+          // eslint-disable-next-line react/jsx-no-bind
           onMouseMove={this._onBarHover.bind(
             this,
             point.legend!,
@@ -294,6 +298,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
           )}
           onMouseLeave={this._onBarLeave}
           pointerEvents="all"
+          // eslint-disable-next-line react/jsx-no-bind
           onClick={this._redirectToUrl.bind(this, href)}
         >
           <rect key={index} x={startingPoint[index] + '%'} y={0} width={value + '%'} height={barHeight} fill={color} />
@@ -332,7 +337,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
       this.state.isLegendSelected === false ||
       (this.state.isLegendSelected && this.state.selectedLegendTitle === legendText)
     ) {
-      this.state.refArray.map((obj: IRefArrayData) => {
+      this.state.refArray.forEach((obj: IRefArrayData) => {
         if (obj.legendText === legendText) {
           this.setState({
             refSelected: obj.refElement,
@@ -407,7 +412,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
       this.setState({
         isLegendHovered: false,
         selectedLegendTitle: '',
-        isLegendSelected: !!isLegendFocused ? false : this.state.isLegendSelected,
+        isLegendSelected: isLegendFocused ? false : this.state.isLegendSelected,
       });
     }
   }

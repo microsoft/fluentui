@@ -1,5 +1,5 @@
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
+/* eslint-enable no-unused-variable */
 import { ITheme, IStyle } from '../../Styling';
 import { IRefObject, IComponentAs, IStyleFunctionOrObject } from '../../Utilities';
 

@@ -9,7 +9,7 @@ import { getWindow } from './dom/getWindow';
  * callers to get called back when it mutates.
  */
 
-// tslint:disable:no-any
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 const GLOBAL_SETTINGS_PROP_NAME = '__globalSettings__';
 const CALLBACK_STATE_PROP_NAME = '__callbacks__';
@@ -24,9 +24,7 @@ let _counter = 0;
  */
 export interface IChangeDescription {
   key: string;
-  // tslint:disable-next-line:no-any
   oldValue: any;
-  // tslint:disable-next-line:no-any
   value: any;
 }
 
@@ -37,7 +35,7 @@ export interface IChangeDescription {
  * {@docCategory IChangeEventCallback}
  */
 export interface IChangeEventCallback {
-  __id__?: string;
+  __id__?: string; // eslint-disable-line @typescript-eslint/naming-convention
   (changeDescription?: IChangeDescription): void;
 }
 

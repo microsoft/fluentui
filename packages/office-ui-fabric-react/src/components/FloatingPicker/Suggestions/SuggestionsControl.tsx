@@ -12,7 +12,7 @@ import { SuggestionsCore } from './SuggestionsCore';
 import * as stylesImport from './SuggestionsControl.scss';
 import { hiddenContentStyle, mergeStyles } from '../../../Styling';
 
-// tslint:disable-next-line:no-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const styles: any = stylesImport;
 
 export enum SuggestionItemType {
@@ -85,7 +85,7 @@ export class SuggestionsControl<T> extends React.Component<ISuggestionsControlPr
     this.scrollSelected();
   }
 
-  // tslint:disable-next-line function-name
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   public UNSAFE_componentWillReceiveProps(newProps: ISuggestionsControlProps<T>): void {
     if (newProps.suggestions) {
       this.setState({ suggestions: newProps.suggestions }, () => {

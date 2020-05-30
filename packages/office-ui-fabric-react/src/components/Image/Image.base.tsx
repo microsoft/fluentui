@@ -32,7 +32,7 @@ export class ImageBase extends React.Component<IImageProps, IImageState> {
     };
   }
 
-  // tslint:disable-next-line function-name
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   public UNSAFE_componentWillReceiveProps(nextProps: IImageProps): void {
     if (nextProps.src !== this.props.src) {
       this.setState({

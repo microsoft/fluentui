@@ -25,6 +25,7 @@ import {
 } from './Breadcrumb.types';
 
 /** @deprecated Use IBreadcrumbData */
+// eslint-disable-next-line deprecation/deprecation
 export type IBreadCrumbData = IBreadcrumbData;
 
 const getClassNames = classNamesFunction<IBreadcrumbStyleProps, IBreadcrumbStyles>();
@@ -253,6 +254,7 @@ export class BreadcrumbBase extends React.Component<IBreadcrumbProps, any> {
           className={this._classNames.itemLink}
           href={item.href}
           aria-current={item.isCurrentItem ? 'page' : undefined}
+          // eslint-disable-next-line react/jsx-no-bind
           onClick={this._onBreadcrumbClicked.bind(this, item)}
         >
           <TooltipHost content={item.text} overflowMode={TooltipOverflowMode.Parent} {...this.props.tooltipHostProps}>

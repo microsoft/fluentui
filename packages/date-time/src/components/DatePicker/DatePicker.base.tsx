@@ -120,7 +120,7 @@ export class DatePickerBase extends React.Component<IDatePickerProps, IDatePicke
     this._preventFocusOpeningPicker = false;
   }
 
-  // tslint:disable-next-line function-name
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   public UNSAFE_componentWillReceiveProps(nextProps: IDatePickerProps): void {
     const { formatDate, isRequired, strings, value, minDate, maxDate } = nextProps;
 

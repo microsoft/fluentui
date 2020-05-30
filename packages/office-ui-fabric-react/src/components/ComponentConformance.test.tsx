@@ -54,6 +54,7 @@ const requiredProps: { [key: string]: any } = {
     groups: [],
   },
   HoverCard: {
+    // eslint-disable-next-line @typescript-eslint/naming-convention
     target: { __events__: {} },
   },
   List: listProps,
@@ -210,6 +211,7 @@ describe('Component File Conformance', () => {
         } else {
           component = renderer.create(<Component {...props} />, {
             createNodeMock: () => {
+              // eslint-disable-next-line @typescript-eslint/naming-convention
               return { __events__: {} };
             },
           });

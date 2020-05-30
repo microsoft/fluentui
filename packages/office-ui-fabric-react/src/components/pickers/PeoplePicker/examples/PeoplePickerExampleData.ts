@@ -1,7 +1,7 @@
 import { IPersonaProps, PersonaPresence } from 'office-ui-fabric-react/lib/Persona';
 import { TestImages } from '@uifabric/example-data';
 
-// tslint:disable:deprecation
+/* eslint-disable deprecation/deprecation */
 
 /** @deprecated Use the version from `@uifabric/example-data` instead. */
 export const people: (IPersonaProps & { key: string | number })[] = [

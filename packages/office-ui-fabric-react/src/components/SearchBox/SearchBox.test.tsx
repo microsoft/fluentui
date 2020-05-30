@@ -6,7 +6,7 @@ import { KeyCodes } from '../../Utilities';
 import { ISearchBoxProps } from './SearchBox.types';
 import { ISearchBoxState, SearchBoxBase } from './SearchBox.base';
 
-// tslint:disable:jsx-no-lambda
+/* eslint-disable jsx-no-lambda */
 
 describe('SearchBox', () => {
   let component: renderer.ReactTestRenderer | undefined;

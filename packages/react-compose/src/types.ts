@@ -1,6 +1,5 @@
 import * as React from 'react';
 
-// tslint:disable-next-line:interface-name
 export interface ShorthandConfig<TProps> {
   mappedProp?: keyof TProps;
   mappedArrayProp?: keyof TProps;
@@ -12,11 +11,10 @@ export interface ShorthandConfig<TProps> {
 //
 
 export type PropsOfElement<
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   E extends keyof JSX.IntrinsicElements | React.JSXElementConstructor<any>
 > = JSX.LibraryManagedAttributes<E, React.ComponentPropsWithRef<E>>;
 
-// tslint:disable-next-line:interface-name
 export interface ComponentWithAs<TElementType extends React.ElementType = 'div', TProps = {}>
   extends React.FunctionComponent {
   <TExtendedElementType extends React.ElementType = TElementType>(
@@ -26,7 +24,7 @@ export interface ComponentWithAs<TElementType extends React.ElementType = 'div',
 
   defaultProps?: Partial<TProps & { as: TElementType }>;
   propTypes?: React.WeakValidationMap<TProps> & {
-    // tslint:disable-next-line:no-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     as: React.Requireable<string | ((props: any, context?: any) => any) | (new (props: any, context?: any) => any)>;
   };
 }
@@ -76,7 +74,7 @@ export type ComposeOptions<TInputProps = {}, TInputStylesProps = {}, TParentProp
 /**
  * Generic name to any dictionary.
  */
-// tslint:disable-next-line:no-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type GenericDictionary = Record<string, any>;
 
 /**
@@ -106,6 +104,7 @@ export type ComposePreparedOptions<TProps = {}, TState = TProps> = {
 
   overrideStyles: boolean;
 
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   slots: Record<string, React.ElementType> & { __self: React.ElementType };
   slotProps: ((props: TProps) => Record<string, object>)[];
 

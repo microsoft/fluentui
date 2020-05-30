@@ -109,7 +109,7 @@ export class CalendarDayBase extends React.Component<ICalendarDayProps, ICalenda
             className={classNames.monthAndYear}
             onClick={this._onHeaderSelect}
             data-is-focusable={!!onHeaderSelect}
-            tabIndex={!!onHeaderSelect ? 0 : -1} // prevent focus if there's no action for the button
+            tabIndex={onHeaderSelect ? 0 : -1} // prevent focus if there's no action for the button
             onKeyDown={this._onButtonKeyDown(this._onHeaderSelect)}
             type="button"
           >

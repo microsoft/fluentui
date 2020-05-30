@@ -6,8 +6,6 @@ import { KeyCodes } from '../../Utilities';
 import { ISearchBoxProps } from './SearchBox.types';
 import { ISearchBoxState, SearchBoxBase } from './SearchBox.base';
 
-// tslint:disable:jsx-no-lambda
-
 describe('SearchBox', () => {
   let component: renderer.ReactTestRenderer | undefined;
   let wrapper: ReactWrapper<ISearchBoxProps, ISearchBoxState, SearchBoxBase> | undefined;
@@ -143,7 +141,6 @@ describe('SearchBox', () => {
 
   it('handles setting null value', () => {
     // this is not allowed per typings, but users might do it anyway
-    // tslint:disable-next-line:no-any
     wrapper = mount(<SearchBox value={null as any} />);
     expect(wrapper.find('input').prop('value')).toBe('');
   });
@@ -157,7 +154,6 @@ describe('SearchBox', () => {
   it('handles updating value to null', () => {
     wrapper = mount(<SearchBox value="test" />);
     // this is not allowed per typings, but users might do it anyway
-    // tslint:disable-next-line:no-any
     wrapper.setProps({ value: null as any });
     expect(wrapper.find('input').prop('value')).toBe('');
   });

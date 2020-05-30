@@ -171,6 +171,7 @@ export const UnifiedPeoplePickerExample = (): JSX.Element => {
       <UnifiedPeoplePicker
         selectedItemsListProps={selectedPeopleListProps}
         floatingSuggestionProps={floatingPeoplePickerProps}
+        // eslint-disable-next-line react/jsx-no-bind
         onInputChange={_onInputChange}
         onPaste={_onPaste}
       />

@@ -7,7 +7,7 @@ import { ISuggestionModel } from '../../Pickers';
 import { ISuggestionsControlProps } from './Suggestions/Suggestions.types';
 import { SuggestionsControl } from './Suggestions/SuggestionsControl';
 import { SuggestionsStore } from './Suggestions/SuggestionsStore';
-// tslint:disable-next-line:no-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const styles: any = stylesImport;
 
 export interface IBaseFloatingPickerState {
@@ -48,7 +48,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>>
     return this.state.queryString;
   }
 
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public get suggestions(): any[] {
     return this.suggestionStore.suggestions;
   }
@@ -128,7 +128,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>>
     this.isComponentMounted = false;
   }
 
-  // tslint:disable-next-line function-name
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   public UNSAFE_componentWillReceiveProps(newProps: IBaseFloatingPickerProps<T>): void {
     if (newProps.suggestionItems) {
       this.updateSuggestions(newProps.suggestionItems);
@@ -258,7 +258,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>>
     ) {
       return;
     }
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     const keyCode = ev.which;
     switch (keyCode) {
       case KeyCodes.escape:

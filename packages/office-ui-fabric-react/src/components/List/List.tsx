@@ -339,7 +339,7 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
     delete this._scrollElement;
   }
 
-  // tslint:disable-next-line function-name
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   public UNSAFE_componentWillReceiveProps(newProps: IListProps<T>): void {
     if (
       newProps.items !== this.props.items ||

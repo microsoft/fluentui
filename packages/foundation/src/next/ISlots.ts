@@ -13,5 +13,6 @@ export interface IFoundationComponent<
   TComponentSlots = {},
   TStatics = {}
 > extends React.FunctionComponent {
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   __options?: IComponentOptions<TComponentProps, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics>;
 }

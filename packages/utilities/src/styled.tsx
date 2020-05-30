@@ -24,9 +24,11 @@ const DefaultFields = ['theme', 'styles'];
 
 export type StyleFunction<TStyleProps, TStyleSet> = IStyleFunctionOrObject<TStyleProps, TStyleSet> & {
   /** Cache for all style functions. */
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   __cachedInputs__: (IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined)[];
 
   /** True if no styles prop or styles from Customizer is passed to wrapped component. */
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   __noStyleOverride__: boolean;
 };
 
@@ -68,7 +70,7 @@ export function styled<
   class Wrapped extends ParentComponent<TComponentProps, {}> {
     // Function.prototype.name is an ES6 feature, so the cast to any is required until we're
     // able to drop IE 11 support and compile with ES6 libs
-    // tslint:disable-next-line:no-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     public static displayName = `Styled${Component.displayName || (Component as any).name}`;
 
     private _inCustomizerContext = false;
@@ -103,7 +105,7 @@ export function styled<
     };
 
     private _updateStyles(customizedStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>): void {
-      // tslint:disable-next-line:no-any
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const cache = (this._styles && (this._styles as any).__cachedInputs__) || [];
       if (!this._styles || customizedStyles !== cache[1] || this.props.styles !== cache[2]) {
         // Cache the customized styles.
@@ -132,6 +134,6 @@ export function styled<
   }
 
   // This preserves backwards compatibility.
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return Wrapped as any;
 }

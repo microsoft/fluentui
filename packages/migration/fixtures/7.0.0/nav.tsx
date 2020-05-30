@@ -3,7 +3,7 @@ import { Nav, INavLink } from 'office-ui-fabric-react';
 // prettier-ignore
 import { Nav } from 'office-ui-fabric-react';
 // prettier-ignore
-// tslint:disable-next-line: quotemark
+// eslint-disable-next-line quotemark
 import { Nav } from "office-ui-fabric-react";
 // prettier-ignore
 import {

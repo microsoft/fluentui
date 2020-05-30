@@ -3,7 +3,6 @@ import {
   ICalendarYearStrings,
   ICalendarYearProps,
   ICalendarYearRange,
-  ICalendarYearRangeToString,
   ICalendarYear,
   ICalendarYearHeaderProps,
   ICalendarYearStyleProps,
@@ -236,8 +235,8 @@ class CalendarYearNavPrev extends React.Component<ICalendarYearHeaderProps, {}> 
     const prevRange = { fromYear: fromYear - CELL_COUNT, toYear: toYear - CELL_COUNT };
     const prevAriaLabel = prevRangeAriaLabel
       ? typeof prevRangeAriaLabel === 'string'
-        ? (prevRangeAriaLabel as string)
-        : (prevRangeAriaLabel as ICalendarYearRangeToString)(prevRange)
+        ? prevRangeAriaLabel
+        : prevRangeAriaLabel(prevRange)
       : undefined;
     const disabled = this.isDisabled;
 
@@ -257,7 +256,7 @@ class CalendarYearNavPrev extends React.Component<ICalendarYearHeaderProps, {}> 
     );
   }
 
-  get isDisabled(): boolean {
+  public get isDisabled(): boolean {
     const { minYear } = this.props;
     return minYear !== undefined && this.props.fromYear < minYear;
   }
@@ -290,8 +289,8 @@ class CalendarYearNavNext extends React.Component<ICalendarYearHeaderProps, {}> 
     const nextRange = { fromYear: fromYear + CELL_COUNT, toYear: toYear + CELL_COUNT };
     const nextAriaLabel = nextRangeAriaLabel
       ? typeof nextRangeAriaLabel === 'string'
-        ? (nextRangeAriaLabel as string)
-        : (nextRangeAriaLabel as ICalendarYearRangeToString)(nextRange)
+        ? nextRangeAriaLabel
+        : nextRangeAriaLabel(nextRange)
       : undefined;
     const disabled = this.isDisabled;
 
@@ -311,7 +310,7 @@ class CalendarYearNavNext extends React.Component<ICalendarYearHeaderProps, {}> 
     );
   }
 
-  get isDisabled(): boolean {
+  public get isDisabled(): boolean {
     const { maxYear } = this.props;
     return maxYear !== undefined && this.props.fromYear + CELL_COUNT > maxYear;
   }
@@ -374,8 +373,8 @@ class CalendarYearTitle extends React.Component<ICalendarYearHeaderProps, {}> {
       const headerAriaLabelFormatString = strings!.headerAriaLabelFormatString;
       const currentDateRange = rangeAriaLabel
         ? typeof rangeAriaLabel === 'string'
-          ? (rangeAriaLabel as string)
-          : (rangeAriaLabel as ICalendarYearRangeToString)(this.props)
+          ? rangeAriaLabel
+          : rangeAriaLabel(this.props)
         : undefined;
 
       const ariaLabel = headerAriaLabelFormatString

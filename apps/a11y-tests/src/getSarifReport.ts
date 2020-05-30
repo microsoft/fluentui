@@ -13,7 +13,7 @@ const disabledAxeRules = [
   'bypass',
 ];
 
-/* tslint:disable-next-line:no-any */
+/* eslint-disable-next-line @typescript-eslint/no-explicit-any */
 function renderTestHtml(element: React.ReactElement<any>): string {
   resetIds();
   const stylesheet = Stylesheet.getInstance();
@@ -30,7 +30,7 @@ function renderTestHtml(element: React.ReactElement<any>): string {
   `;
 }
 
-/* tslint:disable-next-line:no-any */
+/* eslint-disable-next-line @typescript-eslint/no-explicit-any */
 export async function getSarifReport(browser: puppeteer.Browser, element: React.ReactElement<any>): Promise<SarifLog> {
   const page = await browser.newPage();
   const testHtml = renderTestHtml(element);

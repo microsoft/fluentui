@@ -4,7 +4,7 @@
  * @public
  * {@docCategory Point}
  */
-// tslint:disable-next-line:interface-name
+// eslint-disable-next-line @typescript-eslint/interface-name-prefix
 export interface Point {
   left?: number;
   top?: number;

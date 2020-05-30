@@ -149,7 +149,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
     this._events.dispose();
   }
 
-  // tslint:disable-next-line function-name
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   public UNSAFE_componentWillReceiveProps(newProps: IDetailsRowBaseProps): void {
     this.setState({
       selectionState: this._getSelectionState(newProps),

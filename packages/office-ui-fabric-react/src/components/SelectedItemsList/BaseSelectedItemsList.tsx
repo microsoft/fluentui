@@ -5,7 +5,7 @@ import { IBaseSelectedItemsList, IBaseSelectedItemsListProps, ISelectedItemProps
 import { initializeComponentRef } from '../../Utilities';
 
 export interface IBaseSelectedItemsListState<T = any> {
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   items: T[];
 }
 
@@ -35,7 +35,7 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
   }
 
   public addItems = (items: T[]): void => {
-    // tslint:disable-next-line:no-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const processedItems: T[] | PromiseLike<T[]> = this.props.onItemSelected
       ? (this.props.onItemSelected as any)(items)
       : items;
@@ -88,11 +88,11 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
     }
   };
 
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public removeItems = (itemsToRemove: any[]): void => {
     const { items } = this.state;
     const itemsCanRemove = itemsToRemove.filter((item: any) => this._canRemoveItem(item));
-    // tslint:disable-next-line:no-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const newItems: T[] = items.filter((item: any) => itemsCanRemove.indexOf(item) === -1);
     const firstItemToRemove = itemsCanRemove[0];
     const index: number = items.indexOf(firstItemToRemove);
@@ -144,7 +144,7 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
     return this.selection.getSelection() as T[];
   }
 
-  // tslint:disable-next-line function-name
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   public UNSAFE_componentWillUpdate(newProps: P, newState: IBaseSelectedItemsListState): void {
     if (newState.items && newState.items !== this.state.items) {
       this.selection.setItems(newState.items);
@@ -155,7 +155,7 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
     this.selection.setItems(this.state.items);
   }
 
-  // tslint:disable-next-line function-name
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   public UNSAFE_componentWillReceiveProps(newProps: P): void {
     const newItems = newProps.selectedItems;
 
@@ -168,7 +168,7 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
     }
   }
 
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public render(): any {
     return this.renderItems();
   }
@@ -178,7 +178,7 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
     const onRenderItem = this.props.onRenderItem as (props: ISelectedItemProps<T>) => JSX.Element;
 
     const { items } = this.state;
-    // tslint:disable-next-line:no-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return items.map((item: any, index: number) =>
       onRenderItem({
         item,
@@ -216,7 +216,7 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
 
   protected copyItems(items: T[]): void {
     if (this.props.onCopyItems) {
-      // tslint:disable-next-line:no-any
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const copyText = (this.props.onCopyItems as any)(items);
 
       const copyInput = document.createElement('input') as HTMLInputElement;

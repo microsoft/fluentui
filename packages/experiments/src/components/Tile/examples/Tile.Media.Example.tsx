@@ -96,7 +96,6 @@ const ITEMS: { name: JSX.Element; activity: JSX.Element }[] = [
   },
 ];
 
-// tslint:disable-next-line:no-any
 const TileExampleStyles = TileExampleStylesModule as any;
 
 interface IImageTileProps {
@@ -137,7 +136,6 @@ const ImageTile: React.FunctionComponent<IImageTileProps> = (props: IImageTilePr
   return (
     <div
       className={css(TileExampleStyles.tile)}
-      // tslint:disable-next-line:jsx-ban-props
       style={{
         width: `${props.tileSize.width}px`,
         height: `${props.tileSize.height}px`,
@@ -248,6 +246,7 @@ export class TileMediaExample extends React.Component<{}, ITileMediaExampleState
           <Tile
             itemName={<SignalField before={<NewSignal />}>{ITEMS[3].name}</SignalField>}
             itemActivity={ITEMS[3].activity}
+            // eslint-disable-next-line react/forbid-component-props
             foreground={<Icon iconName="play" style={{ margin: '11px', fontSize: '40px' }} />}
             showBackgroundFrame={true}
             nameplateOnlyOnHover={this.state.nameplateOnlyOnHover}

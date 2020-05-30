@@ -30,7 +30,7 @@ import { ContextualMenuDefaultExample } from '../components/ContextMenu';
 import { DropdownBasicExample } from '../components/dropdown';
 
 const Example = () => (
-  // tslint:disable-next-line:jsx-ban-props
+  // eslint-disable-next-line react/forbid-component-props
   <Stack gap={8} horizontalAlign="center" style={{ maxWidth: 400 }}>
     <DefaultButton text="DefaultButton" />
     <PrimaryButton text="PrimaryButton" />

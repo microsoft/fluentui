@@ -76,7 +76,7 @@ export class VirtualizedList<TItem extends IObjectWithKey> extends React.Compone
     this._events.dispose();
   }
 
-  // tslint:disable-next-line function-name
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   public UNSAFE_componentWillUpdate(): void {
     for (const key of Object.keys(this._spacerElements)) {
       const ref = this._spacerElements[key];
@@ -189,7 +189,6 @@ export class VirtualizedList<TItem extends IObjectWithKey> extends React.Compone
       key = `spacer-item-${index + numberOfItems}`;
     }
 
-    // tslint:disable-next-line:jsx-ban-props
     return React.createElement(ItemTag, { ref: this._spacerRef.bind(this, key), key, style: { height: spacerHeight } });
   }
 

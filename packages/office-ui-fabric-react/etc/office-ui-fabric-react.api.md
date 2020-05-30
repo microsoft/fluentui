@@ -3566,8 +3566,6 @@ export interface IDetailsListState {
     // (undocumented)
     isCollapsed?: boolean;
     // (undocumented)
-    isDropping?: boolean;
-    // (undocumented)
     isSizing?: boolean;
     // (undocumented)
     isSomeGroupExpanded?: boolean;

@@ -144,7 +144,7 @@ class SideRailBase extends React.Component<ISideRailProps, ISideRailState> {
     return null;
   }
 
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _onJumpLinkClick = (ev?: React.MouseEvent<any>): void => {
     const target = ev && (ev.target as HTMLAnchorElement);
     if (target && target.href === location.href) {
@@ -160,7 +160,7 @@ class SideRailBase extends React.Component<ISideRailProps, ISideRailState> {
   }
 }
 
-// tslint:disable-next-line:no-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function _isElement(x: any): x is JSX.Element {
   return !!(x && (x as JSX.Element).props && (x as JSX.Element).type);
 }

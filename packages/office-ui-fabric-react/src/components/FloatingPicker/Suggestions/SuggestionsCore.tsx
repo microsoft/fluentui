@@ -3,7 +3,7 @@ import { initializeComponentRef, css } from '../../../Utilities';
 import { ISuggestionItemProps, SuggestionsItem, ISuggestionModel } from '../../../Pickers';
 import { ISuggestionsCoreProps } from './Suggestions.types';
 import * as stylesImport from './SuggestionsCore.scss';
-// tslint:disable-next-line:no-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const styles: any = stylesImport;
 
 /**
@@ -143,9 +143,7 @@ export class SuggestionsCore<T> extends React.Component<ISuggestionsCoreProps<T>
         {suggestions.map((suggestion: ISuggestionModel<T>, index: number) => (
           <div
             ref={suggestion.selected || index === this.currentIndex ? this._selectedElement : undefined}
-            // tslint:disable
             key={(suggestion.item as any)['key'] ? (suggestion.item as any)['key'] : index}
-            // tslint:enable
             id={'sug-' + index}
             role="listitem"
             aria-label={suggestion.ariaLabel}
@@ -153,7 +151,7 @@ export class SuggestionsCore<T> extends React.Component<ISuggestionsCoreProps<T>
             <TypedSuggestionsItem
               id={'sug-item' + index}
               suggestionModel={suggestion}
-              // tslint:disable-next-line:no-any
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
               RenderSuggestion={onRenderSuggestion as any}
               onClick={this._onClickTypedSuggestionsItem(suggestion.item, index)}
               className={suggestionsItemClassName}

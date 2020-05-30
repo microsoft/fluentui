@@ -75,7 +75,7 @@ export class CalendarDayGridBase extends React.Component<ICalendarDayGridProps, 
     this._onClose = this._onClose.bind(this);
   }
 
-  // tslint:disable-next-line function-name
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   public UNSAFE_componentWillReceiveProps(nextProps: ICalendarDayGridProps): void {
     const weeks = this._getWeeks(nextProps);
     let isBackwards = undefined;
@@ -266,6 +266,7 @@ export class CalendarDayGridBase extends React.Component<ICalendarDayGridProps, 
           !day.isInBounds && classNames.dayOutsideBounds,
           !day.isInMonth && classNames.dayOutsideNavigatedMonth,
         )}
+        // eslint-disable-next-line react/jsx-no-bind
         ref={(element: HTMLTableCellElement) => {
           this.props.customDayCellRef && this.props.customDayCellRef(element, day.originalDate, classNames);
           this._setDayCellRef(element, day, isNavigatedDate);
@@ -286,6 +287,7 @@ export class CalendarDayGridBase extends React.Component<ICalendarDayGridProps, 
           id={isNavigatedDate ? activeDescendantId : undefined}
           aria-selected={day.isInBounds ? day.isSelected : undefined}
           data-is-focusable={!ariaHidden && (allFocusable || (day.isInBounds ? true : undefined))}
+          // eslint-disable-next-line react/jsx-no-bind
           ref={(element: HTMLButtonElement) => this._setDayRef(element, day, isNavigatedDate)}
           disabled={!allFocusable && !day.isInBounds}
           aria-disabled={!ariaHidden && !day.isInBounds}

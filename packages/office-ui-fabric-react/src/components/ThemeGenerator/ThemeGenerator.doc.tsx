@@ -390,7 +390,7 @@ export class ThemeGeneratorPage extends React.Component<{}, IThemeGeneratorPageS
             <textarea
               readOnly={true}
               spellCheck={false}
-              value={JSON.stringify(ThemeGenerator.getThemeAsJson(abridgedTheme), void 0, 2)}
+              value={JSON.stringify(ThemeGenerator.getThemeAsJson(abridgedTheme), undefined, 2)}
             />
           </div>
           <div>

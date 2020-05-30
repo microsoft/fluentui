@@ -1,5 +1,3 @@
-// tslint:disable: no-parameter-reassignment
-
 import { IRGB } from './color.types';
 import { hsl2rgb } from './color.hsl';
 
@@ -55,7 +53,6 @@ function _numberToPaddedHex(num: number): string {
 }
 
 function _named(str: string): IRGB | undefined {
-  // TODO: fix type and remove tslint rule?
   const { COLOR_VALUES } = require('./colorValues');
   const c = (COLOR_VALUES as any)[str.toLowerCase()];
 

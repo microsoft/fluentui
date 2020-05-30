@@ -16,7 +16,7 @@ export const ToggleBase = compose<'div', IToggleProps, IToggleProps, {}, {}>(
         {label && <slots.label {...slotProps.label} />}
         <slots.container {...slotProps.container}>
           <KeytipData ariaDescribedBy={ariaDescribedBy} disabled={disabled} keytipProps={keytipProps}>
-            {// tslint:disable-next-line:no-any
+            {// eslint-disable-next-line @typescript-eslint/no-explicit-any
             (keytipAttributes: any): JSX.Element => (
               <slots.pill {...keytipAttributes} {...slotProps.pill}>
                 <slots.thumb {...slotProps.thumb} />

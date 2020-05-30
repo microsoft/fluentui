@@ -33,7 +33,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
   private _classNames: IProcessedStyleSet<IDonutChartStyles>;
   private _rootElem: HTMLElement | null;
   private _uniqText: string;
-  // tslint:disable:no-any
+  /* eslint-disable @typescript-eslint/no-explicit-any */
   private _currentHoverElement: any;
   private _calloutId: string;
 
@@ -100,10 +100,18 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     const outerRadius = radius;
     const chartData = data && data.chartData;
     return (
-      <div className={this._classNames.root} ref={(rootElem: HTMLElement | null) => (this._rootElem = rootElem)}>
+      <div
+        className={this._classNames.root}
+        // eslint-disable-next-line react/jsx-no-bind
+        ref={(rootElem: HTMLElement | null) => (this._rootElem = rootElem)}
+      >
         <FocusZone direction={FocusZoneDirection.horizontal}>
           <div>
-            <svg className={this._classNames.chart} ref={(node: SVGElement | null) => this._setViewBox(node)}>
+            <svg
+              className={this._classNames.chart}
+              // eslint-disable-next-line react/jsx-no-bind
+              ref={(node: SVGElement | null) => this._setViewBox(node)}
+            >
               <Pie
                 width={_width!}
                 height={_height!}

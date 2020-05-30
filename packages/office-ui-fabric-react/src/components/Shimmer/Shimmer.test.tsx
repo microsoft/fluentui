@@ -25,7 +25,7 @@ describe('Shimmer', () => {
   it('renders Shimmer with custom elements correctly', () => {
     const customElements: JSX.Element = (
       <div
-        // tslint:disable-next-line:jsx-ban-props
+        // eslint-disable-next-line jsx-ban-props
         style={{ display: 'flex' }}
       >
         <ShimmerElementsGroup
@@ -56,7 +56,7 @@ describe('Shimmer', () => {
       <Shimmer
         isDataLoaded={false}
         ariaLabel={'Shimmer component'}
-        // tslint:disable-next-line:jsx-no-lambda
+        // eslint-disable-next-line jsx-no-lambda
         componentRef={ref => (component = ref)}
       >
         <div>TEST DATA</div>

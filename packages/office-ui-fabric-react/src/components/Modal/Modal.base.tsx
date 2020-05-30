@@ -91,7 +91,7 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
     this._allowTouchBodyScroll = allowTouchBodyScroll;
   }
 
-  // tslint:disable-next-line function-name
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   public UNSAFE_componentWillReceiveProps(newProps: IModalProps): void {
     clearTimeout(this._onModalCloseTimer);
 
@@ -178,7 +178,7 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
       subtitleAriaId,
       theme,
       topOffsetFixed,
-      // tslint:disable-next-line:deprecation
+      // eslint-disable-next-line deprecation/deprecation
       onLayerDidMount,
       isModeless,
       dragOptions,

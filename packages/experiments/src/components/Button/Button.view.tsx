@@ -7,7 +7,7 @@ import { FontIcon } from '../../utilities/factoryComponents';
 import { IButtonComponent, IButtonViewProps } from './Button.types';
 
 export const ButtonSlots: IButtonComponent['slots'] = props => ({
-  root: !!props.href ? 'a' : 'button',
+  root: props.href ? 'a' : 'button',
   icon: FontIcon,
   content: Text,
 });
@@ -44,6 +44,7 @@ export const ButtonView: IButtonComponent['view'] = (props, slots) => {
     <slots.root
       type={htmlType}
       role="button"
+      // eslint-disable-next-line react/jsx-no-bind
       onClick={_onClick}
       {...buttonProps}
       {...keytipAttributes}
@@ -74,7 +75,7 @@ interface IButtonRootType {
 }
 
 function _deriveRootType(props: IButtonViewProps): IButtonRootType {
-  return !!props.href
+  return props.href
     ? { htmlType: 'link', propertiesType: anchorProperties }
     : { htmlType: 'button', propertiesType: buttonProperties };
 }

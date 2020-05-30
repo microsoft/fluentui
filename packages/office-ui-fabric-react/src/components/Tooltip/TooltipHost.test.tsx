@@ -9,7 +9,7 @@ import { assign } from '../../Utilities';
 import { TooltipHost } from './TooltipHost';
 import { ITooltipProps, TooltipDelay } from './Tooltip.types';
 
-// tslint:disable:jsx-no-lambda
+/* eslint-disable jsx-no-lambda */
 
 describe('TooltipHost', () => {
   it('renders correctly', () => {

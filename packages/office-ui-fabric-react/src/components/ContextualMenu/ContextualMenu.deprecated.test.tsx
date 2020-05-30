@@ -7,8 +7,6 @@ import { ContextualMenuItemType } from './ContextualMenu.types';
 import { IMenuItemClassNames, getItemClassNames } from './ContextualMenu.classNames';
 import { createTheme } from '../../Styling';
 
-// tslint:disable:deprecation
-
 let customClassNames: () => IMenuItemClassNames;
 
 describe('ContextualMenu', () => {

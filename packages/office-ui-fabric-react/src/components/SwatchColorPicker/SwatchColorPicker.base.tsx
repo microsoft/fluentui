@@ -86,7 +86,7 @@ export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerPro
     };
   }
 
-  // tslint:disable-next-line function-name
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   public UNSAFE_componentWillReceiveProps(newProps: ISwatchColorPickerProps): void {
     if (newProps.selectedId !== undefined) {
       this.setState({
@@ -107,10 +107,10 @@ export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerPro
     const {
       colorCells,
       columnCount,
-      // tslint:disable:deprecation
+      /* eslint-disable deprecation/deprecation */
       ariaPosInSet = this.props.positionInSet,
       ariaSetSize = this.props.setSize,
-      // tslint:enable:deprecation
+      /* eslint-enable deprecation/deprecation */
       shouldFocusCircularNavigate,
       className,
       doNotContainWithinFocusZone,

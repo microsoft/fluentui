@@ -100,7 +100,7 @@ export interface IPosition {
   [key: string]: number | undefined;
 }
 
-// tslint:disable-next-line:interface-name
+// eslint-disable-next-line interface-name
 export interface Point {
   left?: number;
   top?: number;

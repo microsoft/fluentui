@@ -162,7 +162,6 @@ type IIconSignalProps = ISignalProps &
 /**
  * Renders a signal as just an Icon. This is the simplest Signal case.
  */
-// tslint:disable-next-line:function-name
 function IconSignal(props: IIconSignalProps): JSX.Element {
   const { ariaLabel, className, signalClass, ...spanProps } = props;
 

@@ -44,6 +44,7 @@ let domNode: HTMLElement | undefined;
 
 const createNodeMock = (el: React.ReactElement<{}>) => {
   return {
+    // eslint-disable-next-line @typescript-eslint/naming-convention
     __events__: {},
   };
 };
@@ -546,7 +547,7 @@ describe('ComboBox', () => {
       'input',
     ) as HTMLInputElement;
     if (input === null) {
-      throw 'ComboBox input element is null';
+      throw new Error('ComboBox input element is null');
     }
 
     // Simulate typing one character into the ComboBox input
@@ -590,7 +591,6 @@ describe('ComboBox', () => {
         options={[initialOption]}
         autoComplete="on"
         allowFreeform={true}
-        // tslint:disable-next-line:jsx-no-lambda
         onChange={onChange}
       />,
     );
@@ -630,7 +630,6 @@ describe('ComboBox', () => {
         autoComplete="off"
         allowFreeform={true}
         text="hikari"
-        // tslint:disable-next-line:jsx-no-lambda
         onChange={(event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number, value?: string) => {
           updatedText = value;
         }}
@@ -653,7 +652,6 @@ describe('ComboBox', () => {
         options={DEFAULT_OPTIONS}
         autoComplete="off"
         allowFreeform={true}
-        // tslint:disable-next-line:jsx-no-lambda
         onChange={(event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number, value?: string) => {
           updatedText = value;
         }}

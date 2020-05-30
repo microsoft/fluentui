@@ -248,7 +248,7 @@ describe('MaskedTextField', () => {
     let onChangeValue;
     const component = mount(
       <MaskedTextField
-        // tslint:disable-next-line jsx-no-lambda
+        // eslint-disable-next-line jsx-no-lambda
         onChange={(ev, newValue) => (onChangeValue = newValue)}
         label="With input mask"
         mask="m\ask: (999) 999 - 9999"

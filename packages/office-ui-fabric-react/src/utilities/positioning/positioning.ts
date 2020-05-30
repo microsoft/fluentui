@@ -89,7 +89,7 @@ function _isRectangleWithinBounds(rect: Rectangle, boundingRect: Rectangle): boo
  * If there are no out of bounds edges it returns an empty array.
  */
 function _getOutOfBoundsEdges(rect: Rectangle, boundingRect: Rectangle): RectangleEdge[] {
-  const outOfBounds: RectangleEdge[] = new Array<RectangleEdge>();
+  const outOfBounds: RectangleEdge[] = [];
 
   if (rect.top < boundingRect.top) {
     outOfBounds.push(RectangleEdge.top);
@@ -649,9 +649,9 @@ function _getTargetRect(bounds: Rectangle, target: Element | MouseEvent | Point 
       // HTMLImgElements can have x and y values. The check for it being a point must go last.
     } else {
       const point: Point = target as Point;
-      // tslint:disable-next-line:deprecation
+      // eslint-disable-next-line deprecation/deprecation
       const left = point.left || point.x;
-      // tslint:disable-next-line:deprecation
+      // eslint-disable-next-line deprecation/deprecation
       const top = point.top || point.y;
       targetRectangle = new Rectangle(left, left, top, top);
     }
@@ -811,7 +811,7 @@ function _positionCard(
 }
 // END PRIVATE FUNCTIONS
 
-/* tslint:disable:variable-name */
+/* eslint-disable variable-name */
 export const __positioningTestPackage = {
   _finalizePositionData,
   _finalizeBeakPosition,
@@ -821,7 +821,7 @@ export const __positioningTestPackage = {
   _getPositionData,
   _getMaxHeightFromTargetRectangle,
 };
-/* tslint:enable:variable-name */
+/* eslint-enable variable-name */
 
 /**
  * Used to position an element relative to the given positioning props.
@@ -876,9 +876,9 @@ export function getMaxHeight(
     ? _getRectangleFromIRect(bounds)
     : new Rectangle(0, window.innerWidth - getScrollbarWidth(), 0, window.innerHeight);
 
-  // tslint:disable-next-line:deprecation
+  // eslint-disable-next-line deprecation/deprecation
   const left = pointTarget.left || pointTarget.x;
-  // tslint:disable-next-line:deprecation
+  // eslint-disable-next-line deprecation/deprecation
   const top = pointTarget.top || pointTarget.y;
 
   if (!!mouseTarget.stopPropagation) {
@@ -939,9 +939,9 @@ function _getBoundsFromTargetWindow(
   }
   // If the target is not null get x-axis and y-axis coordinates directly.
   else if (target !== null) {
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     x = (target as Point).left || (target as MouseEvent | Point).x;
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     y = (target as Point).top || (target as MouseEvent | Point).y;
   }
 

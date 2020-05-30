@@ -19,7 +19,7 @@ let _onThemeChangeCallbacks: Array<(theme: ITheme) => void> = [];
 export const ThemeSettingName = 'theme';
 
 if (!Customizations.getSettings([ThemeSettingName]).theme) {
-  const win: any = getWindow(); // tslint:disable-line:no-any
+  const win: any = getWindow(); // eslint-disable-line @typescript-eslint/no-explicit-any
 
   if (win?.FabricConfig?.theme) {
     _theme = createTheme(win.FabricConfig.theme);
@@ -300,15 +300,12 @@ function _fixDeprecatedSlots(s: ISemanticColors, depComments: boolean): ISemanti
     dep = ' /* @deprecated */';
   }
 
-  // tslint:disable-next-line:deprecation
+  /* eslint-disable deprecation/deprecation */
   s.listTextColor = s.listText + dep;
-  // tslint:disable-next-line:deprecation
   s.menuItemBackgroundChecked += dep;
-  // tslint:disable-next-line:deprecation
   s.warningHighlight += dep;
-  // tslint:disable-next-line:deprecation
   s.warningText = s.messageText + dep;
-  // tslint:disable-next-line:deprecation
   s.successText += dep;
+  /* eslint-enable deprecation/deprecation */
   return s;
 }

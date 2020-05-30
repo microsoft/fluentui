@@ -176,7 +176,7 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
     }
 
     this.setState({
-      jsonTheme: JSON.stringify(ThemeGenerator.getThemeAsJson(abridgedTheme), void 0, 2),
+      jsonTheme: JSON.stringify(ThemeGenerator.getThemeAsJson(abridgedTheme), undefined, 2),
       powershellTheme: ThemeGenerator.getThemeForPowerShell(abridgedTheme),
       themeAsCode: ThemeGenerator.getThemeAsCodeWithCreateTheme(abridgedTheme),
     });

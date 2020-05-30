@@ -2,8 +2,6 @@ import * as React from 'react';
 import { ThemeProvider } from './ThemeProvider';
 import { Theme } from './types';
 
-// tslint:disable:jsx-no-lambda
-
 const lightTheme: Theme = {
   tokens: {
     body: {

@@ -66,7 +66,7 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
     return this._list.current!.getStartItemIndexInView() || 0;
   }
 
-  // tslint:disable-next-line function-name
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   public UNSAFE_componentWillReceiveProps(newProps: IGroupedListProps): void {
     const { groups, selectionMode, compact } = this.props;
     let shouldForceUpdates = false;

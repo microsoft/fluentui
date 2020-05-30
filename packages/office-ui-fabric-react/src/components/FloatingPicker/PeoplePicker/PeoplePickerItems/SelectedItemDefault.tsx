@@ -1,12 +1,12 @@
-/* tslint:disable */
+/* eslint-disable */
 import * as React from 'react';
-/* tslint:enable */
+/* eslint-enable */
 import { css, getId } from '../../../../Utilities';
 import { Persona, PersonaSize, PersonaPresence } from '../../../../Persona';
 import { IPeoplePickerItemProps } from '../../../../ExtendedPicker';
 import { IconButton } from '../../../../Button';
 import * as stylesImport from './PickerItemsDefault.scss';
-// tslint:disable-next-line:no-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const styles: any = stylesImport;
 
 export const SelectedItemDefault: (props: IPeoplePickerItemProps) => JSX.Element = (
@@ -41,7 +41,7 @@ export const SelectedItemDefault: (props: IPeoplePickerItemProps) => JSX.Element
         <Persona
           {...item}
           presence={item.presence !== undefined ? item.presence : PersonaPresence.none}
-          size={PersonaSize.size28} // tslint:disable-line:deprecation
+          size={PersonaSize.size28} // eslint-disable-line deprecation/deprecation
         />
       </div>
       <IconButton

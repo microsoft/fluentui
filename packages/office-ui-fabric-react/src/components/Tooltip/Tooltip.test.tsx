@@ -16,7 +16,7 @@ const defaultCalloutProps: ICalloutProps = {
   doNotLayer: false,
 };
 
-// tslint:disable:jsx-no-lambda
+/* eslint-disable jsx-no-lambda */
 
 describe('Tooltip', () => {
   it('renders default Tooltip correctly', () => {

@@ -36,7 +36,7 @@ export class Popup extends React.Component<IPopupProps, IPopupState> {
     this.state = { needsVerticalScrollBar: false };
   }
 
-  // tslint:disable-next-line function-name
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   public UNSAFE_componentWillMount(): void {
     this._originalFocusedElement = getDocument()!.activeElement as HTMLElement;
   }
@@ -67,7 +67,7 @@ export class Popup extends React.Component<IPopupProps, IPopupState> {
   public componentWillUnmount(): void {
     this._disposables.forEach((dispose: () => void) => dispose());
 
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     if (this.props.shouldRestoreFocus) {
       const { onRestoreFocus = defaultFocusRestorer } = this.props;
       onRestoreFocus({ originalElement: this._originalFocusedElement, containsFocus: this._containsFocus });

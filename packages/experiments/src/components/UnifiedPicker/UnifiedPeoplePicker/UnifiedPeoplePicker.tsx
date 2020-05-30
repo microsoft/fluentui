@@ -45,6 +45,7 @@ export const UnifiedPeoplePicker = (props: IUnifiedPeoplePickerProps): JSX.Eleme
     <>
       <UnifiedPicker
         {...props}
+        // eslint-disable-next-line react/jsx-no-bind
         onRenderSelectedItems={renderSelectedItems}
         onRenderFloatingSuggestions={renderFloatingPeopleSuggestions}
       />

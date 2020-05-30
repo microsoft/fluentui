@@ -74,7 +74,7 @@ export const CheckboxBase = React.forwardRef((props: ICheckboxProps, forwardedRe
 
   return (
     <KeytipData keytipProps={keytipProps} disabled={disabled}>
-      {// tslint:disable-next-line:no-any
+      {// eslint-disable-next-line @typescript-eslint/no-explicit-any
       (keytipAttributes: any): JSX.Element => (
         <div className={classNames.root} title={title} ref={mergedRootRefs}>
           <input
@@ -88,6 +88,7 @@ export const CheckboxBase = React.forwardRef((props: ICheckboxProps, forwardedRe
             name={name}
             id={id}
             title={title}
+            // eslint-disable-next-line react/jsx-no-bind
             onChange={_onChange}
             onFocus={inputProps?.onFocus}
             onBlur={inputProps?.onBlur}
@@ -116,7 +117,6 @@ CheckboxBase.displayName = 'CheckboxBase';
 function useDebugWarning(props: ICheckboxProps) {
   if (process.env.NODE_ENV !== 'production') {
     // This is a build-time conditional that will be constant at runtime
-    // tslint:disable-next-line:react-hooks-nesting
     React.useEffect(() => {
       warnMutuallyExclusive('Checkbox', props, {
         checked: 'defaultChecked',

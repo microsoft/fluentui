@@ -7,6 +7,7 @@ createApp(
   [
     examplesOf('Example Group')
       .add('Example 1', () => (
+        // eslint-disable-next-line import/no-webpack-loader-syntax
         <Markdown>{require('!raw-loader!@uifabric/example-app-base/src/demo/demo.md') as string}</Markdown>
       ))
       .add('Example 2', () => <div>Some content for Example 2</div>)

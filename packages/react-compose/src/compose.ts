@@ -26,6 +26,7 @@ function compose<
         ...composeOptions,
         slots: {
           ...composeOptions.slots,
+          // eslint-disable-next-line @typescript-eslint/naming-convention
           __self: Component,
         },
       });

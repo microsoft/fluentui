@@ -37,7 +37,7 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
     };
   }
 
-  // tslint:disable-next-line function-name
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   public UNSAFE_componentWillReceiveProps(newProps: IGroupHeaderProps): void {
     if (newProps.group) {
       const newCollapsed = newProps.group.isCollapsed;
@@ -58,7 +58,7 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
       viewport,
       selectionMode,
       loadingText,
-      // tslint:disable-next-line:deprecation
+      // eslint-disable-next-line deprecation/deprecation
       isSelected = false,
       selected = false,
       indentWidth,

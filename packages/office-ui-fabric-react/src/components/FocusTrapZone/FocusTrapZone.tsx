@@ -36,7 +36,7 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> impl
     this._updateEventHandlers(this.props);
   }
 
-  // tslint:disable-next-line function-name
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   public UNSAFE_componentWillReceiveProps(nextProps: IFocusTrapZoneProps): void {
     const { elementToFocusOnDismiss } = nextProps;
     if (elementToFocusOnDismiss && this._previouslyFocusedElementOutsideTrapZone !== elementToFocusOnDismiss) {

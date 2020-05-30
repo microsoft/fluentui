@@ -60,11 +60,11 @@ export class TeachingBubbleBase extends React.Component<ITeachingBubbleProps, IT
   public render(): JSX.Element {
     const {
       calloutProps: setCalloutProps,
-      // tslint:disable-next-line:deprecation
+      // eslint-disable-next-line deprecation/deprecation
       targetElement,
       onDismiss,
       // Default to deprecated value if provided.
-      // tslint:disable-next-line:deprecation
+      // eslint-disable-next-line deprecation/deprecation
       hasCloseButton = this.props.hasCloseIcon,
       isWide,
       styles,

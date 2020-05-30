@@ -120,7 +120,6 @@ describe('Customizer', () => {
       <Customizer scopedSettings={{ Bar: { field: 'field' } }}>
         <Customizer
           scopedSettings={
-            // tslint:disable-next-line:jsx-no-lambda
             (scopedSettings: { Bar: { field2: string } }) => ({ Bar: { ...scopedSettings.Bar, field2: 'field2' } })
           }
         >
@@ -138,7 +137,6 @@ describe('Customizer', () => {
       <Customizer scopedSettings={{ Foo: { field: 'scopedToFoo' } }}>
         <Customizer
           scopedSettings={
-            // tslint:disable-next-line:jsx-no-lambda
             (settings: { Foo: { field: string } }) => ({ ...settings, Bar: { field: 'scopedToBar' } })
           }
         >
@@ -172,7 +170,6 @@ describe('Customizer', () => {
       <Customizer settings={{ field: 'field1' }}>
         <Customizer
           settings={
-            // tslint:disable-next-line:jsx-no-lambda
             (settings: { field: string }) => ({ field: 'field2' })
           }
         >
@@ -190,7 +187,6 @@ describe('Customizer', () => {
       <Customizer settings={{ field: 'field1' }}>
         <Customizer
           settings={
-            // tslint:disable-next-line:jsx-no-lambda
             (settings: { field: string }) => ({ field: settings.field + 'field2' })
           }
         >

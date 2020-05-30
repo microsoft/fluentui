@@ -17,7 +17,7 @@ function dehydrateSarifReport(report: SarifLog): Result[] {
 
 async function testComponent(
   browserPromise: Promise<puppeteer.Browser>,
-  /* tslint:disable-next-line:no-any */
+  /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
   component: { name: string; pageName: string; elem: React.ReactElement<any> },
 ) {
   it(`checks accessibility of ${component.name} (${component.pageName})`, async () => {

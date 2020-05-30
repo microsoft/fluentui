@@ -103,7 +103,7 @@ export const PeoplePickerControlledExample: React.FunctionComponent = () => {
           <div key={index}>
             <DefaultButton
               styles={defaultButtonStyles}
-              // tslint:disable-next-line:jsx-no-lambda
+              // eslint-disable-next-line react/jsx-no-bind
               onClick={() => setCurrentSelectedItems(currentSelectedItems.concat([item]))}
             >
               <Persona {...item} />

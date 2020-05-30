@@ -8,6 +8,7 @@ import { IProcessedStyleSet, IPalette } from 'office-ui-fabric-react/lib/Styling
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { ILegend, Legends } from '../Legends/index';
+import { ChartHoverCard } from '../../utilities/ChartHoverCard/index';
 
 import {
   IVerticalBarChartProps,
@@ -15,18 +16,17 @@ import {
   IVerticalBarChartStyles,
   IVerticalBarChartDataPoint,
 } from './VerticalBarChart.types';
-import { ChartHoverCard } from '@uifabric/charting';
 
 const getClassNames = classNamesFunction<IVerticalBarChartStyleProps, IVerticalBarChartStyles>();
-type numericAxis = D3Axis<number | { valueOf(): number }>;
-type stringAxis = D3Axis<string>;
+type NumericAxis = D3Axis<number | { valueOf(): number }>;
+type StringAxis = D3Axis<string>;
 
 export interface IVerticalBarChartState {
   isCalloutVisible: boolean;
   isLegendSelected: boolean;
   isLegendHovered: boolean;
   selectedLegendTitle: string;
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   refSelected: any;
   dataForHoverCard: number;
   color: string;
@@ -82,8 +82,16 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         {this.props.chartLabel && <p className={this._classNames.chartLabel}>{this.props.chartLabel}</p>}
         <FocusZone direction={FocusZoneDirection.horizontal}>
           <svg className={this._classNames.chart}>
-            <g ref={(node: SVGGElement | null) => this._setXAxis(node, xAxis)} className={this._classNames.xAxis} />
-            <g ref={(node: SVGGElement | null) => this._setYAxis(node, yAxis)} className={this._classNames.yAxis} />
+            <g
+              // eslint-disable-next-line react/jsx-no-bind
+              ref={(node: SVGGElement | null) => this._setXAxis(node, xAxis)}
+              className={this._classNames.xAxis}
+            />
+            <g
+              // eslint-disable-next-line react/jsx-no-bind
+              ref={(node: SVGGElement | null) => this._setYAxis(node, yAxis)}
+              className={this._classNames.yAxis}
+            />
             <g className={this._classNames.bars}>{bars}</g>
           </svg>
         </FocusZone>
@@ -130,12 +138,11 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
   }
 
   private _getLegendData(data: IVerticalBarChartDataPoint[], palette: IPalette): JSX.Element {
-    const actions: ILegend[] = [];
-    data.map((point: IVerticalBarChartDataPoint, _index: number) => {
+    const actions: ILegend[] = data.map((point: IVerticalBarChartDataPoint, _index: number) => {
       const color: string = point.color!;
       // mapping data to the format Legends component needs
 
-      const legend: ILegend = {
+      return {
         title: point.legend!,
         color: color,
         action: () => {
@@ -148,7 +155,6 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
           this._onLegendLeave(isLegendSelected);
         },
       };
-      actions.push(legend);
     });
     const legends = (
       <Legends
@@ -196,7 +202,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       this.setState({
         isLegendHovered: false,
         selectedLegendTitle: '',
-        isLegendSelected: !!isLegendFocused ? false : this.state.isLegendSelected,
+        isLegendSelected: isLegendFocused ? false : this.state.isLegendSelected,
       });
     }
   }
@@ -228,7 +234,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     });
   }
 
-  private _setXAxis(node: SVGGElement | null, xAxis: numericAxis | stringAxis): void {
+  private _setXAxis(node: SVGGElement | null, xAxis: NumericAxis | StringAxis): void {
     if (node === null) {
       return;
     }
@@ -238,7 +244,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     axisNode.selectAll('text').attr('class', this._classNames.xAxisText!);
   }
 
-  private _setYAxis(node: SVGElement | null, yAxis: numericAxis | stringAxis): void {
+  private _setYAxis(node: SVGElement | null, yAxis: NumericAxis | StringAxis): void {
     if (node === null) {
       return;
     }
@@ -248,7 +254,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     axisNode.selectAll('text').attr('class', this._classNames.yAxisText!);
   }
 
-  private _createNumericXAxis(): numericAxis {
+  private _createNumericXAxis(): NumericAxis {
     const xMax = d3Max(this._points, (point: IVerticalBarChartDataPoint) => point.x as number)!;
     const xAxisScale = d3ScaleLinear()
       .domain([0, xMax])
@@ -257,7 +263,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     return xAxis;
   }
 
-  private _createStringXAxis(): stringAxis {
+  private _createStringXAxis(): StringAxis {
     const xAxisScale = d3ScaleBand()
       .domain(this._points.map((point: IVerticalBarChartDataPoint) => point.x as string))
       .range([0, this._width]);
@@ -265,7 +271,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     return xAxis;
   }
 
-  private _createYAxis(): numericAxis {
+  private _createYAxis(): NumericAxis {
     const yMax = d3Max(this._points, (point: IVerticalBarChartDataPoint) => point.y)!;
     const yAxisScale = d3ScaleLinear()
       .domain([0, yMax])
@@ -316,9 +322,11 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
           width={this._barWidth}
           data-is-focusable={true}
           height={yBarScale(point.y)}
+          // eslint-disable-next-line react/jsx-no-bind
           ref={(e: SVGRectElement) => {
             this._refCallback(e, point.legend!, refArrayIndexNumber);
           }}
+          // eslint-disable-next-line react/jsx-no-bind
           onMouseOver={this._onBarHover.bind(
             this,
             point.legend,
@@ -329,6 +337,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
             point.yAxisCalloutData!,
           )}
           onMouseLeave={this._onBarLeave}
+          // eslint-disable-next-line react/jsx-no-bind
           onFocus={this._onBarFocus.bind(
             this,
             point.legend,
@@ -361,7 +370,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       this.state.isLegendSelected === false ||
       (this.state.isLegendSelected && this.state.selectedLegendTitle === legendText)
     ) {
-      this._refArray.map((obj: IRefArrayData, index: number) => {
+      this._refArray.forEach((obj: IRefArrayData, index: number) => {
         if (obj.legendText === legendText && refArrayIndexNumber === index) {
           this.setState({
             refSelected: obj.refElement,
@@ -398,6 +407,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
           y={this._height - yBarScale(point.y)}
           width={this._barWidth}
           height={yBarScale(point.y)}
+          // eslint-disable-next-line react/jsx-no-bind
           onMouseOver={this._onBarHover.bind(this, point.x, point.y, point.color)}
           onMouseLeave={this._onBarLeave}
           onBlur={this._onBarLeave}

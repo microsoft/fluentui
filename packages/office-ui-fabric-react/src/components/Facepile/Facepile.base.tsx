@@ -44,7 +44,7 @@ export class FacepileBase extends React.Component<IFacepileProps, {}> {
   public render(): JSX.Element {
     let { overflowButtonProps } = this.props;
     const {
-      chevronButtonProps, // tslint:disable-line:deprecation
+      chevronButtonProps, // eslint-disable-line deprecation/deprecation
       maxDisplayablePersonas,
       personas,
       overflowPersonas,
@@ -188,7 +188,7 @@ export class FacepileBase extends React.Component<IFacepileProps, {}> {
     const { _classNames } = this;
 
     return {
-      key: (!!persona.imageUrl ? 'i' : '') + index,
+      key: (persona.imageUrl ? 'i' : '') + index,
       'data-is-focusable': true,
       className: _classNames.itemButton,
       title: persona.personaName,
@@ -272,13 +272,13 @@ export class FacepileBase extends React.Component<IFacepileProps, {}> {
   }
 
   private _onPersonaMouseMove(persona: IFacepilePersona, ev?: React.MouseEvent<HTMLElement>): void {
-    if (!!persona.onMouseMove) {
+    if (persona.onMouseMove) {
       persona.onMouseMove(ev, persona);
     }
   }
 
   private _onPersonaMouseOut(persona: IFacepilePersona, ev?: React.MouseEvent<HTMLElement>): void {
-    if (!!persona.onMouseOut) {
+    if (persona.onMouseOut) {
       persona.onMouseOut(ev, persona);
     }
   }

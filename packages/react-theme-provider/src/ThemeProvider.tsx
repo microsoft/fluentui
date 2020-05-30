@@ -44,13 +44,11 @@ export const ThemeProvider = React.forwardRef<HTMLDivElement, ThemeProviderProps
     useStylesheet(fullTheme.stylesheets);
 
     // Provide the theme in case it's required through context.
-    // tslint:disable:jsx-ban-props
     return (
       <ThemeContext.Provider value={fullTheme}>
         <div {...rest} ref={ref} className={rootClass} style={inlineStyle} />
       </ThemeContext.Provider>
     );
-    // tslint:enable:jsx-ban-props
   },
 );
 

@@ -83,7 +83,7 @@ export const facepilePersonas: IFacepilePersona[] = [
     imageUrl: TestImages.personaFemale,
     imageInitials: 'VL',
     personaName: 'Valentina Lovric2',
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     initialsColor: PersonaInitialsColor.red,
   },
   {

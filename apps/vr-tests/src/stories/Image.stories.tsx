@@ -49,7 +49,7 @@ const imagePropsMaximizeFrame: IImageProps = {
 
 const border = 'solid 1px black';
 
-// tslint:disable:jsx-ban-props
+/* eslint-disable react/forbid-component-props */
 
 storiesOf('Image', module)
   .addDecorator(FabricDecorator)

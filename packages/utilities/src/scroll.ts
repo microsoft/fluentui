@@ -191,7 +191,7 @@ export function findScrollableParent(startingElement: HTMLElement | null): HTMLE
 
   // Fall back to window scroll.
   if (!el || el === doc.body) {
-    // tslint:disable-next-line:no-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     el = getWindow(startingElement) as any;
   }
 

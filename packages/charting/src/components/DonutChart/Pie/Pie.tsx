@@ -10,7 +10,7 @@ export class Pie extends React.Component<IPieProps, {}> {
     pie: shape
       .pie()
       .sort(null)
-      // tslint:disable:no-any
+      /* eslint-disable @typescript-eslint/no-explicit-any */
       .value((d: any) => {
         return d.data;
       }),
@@ -45,8 +45,8 @@ export class Pie extends React.Component<IPieProps, {}> {
   public render(): JSX.Element {
     const { pie, data, width, height, href } = this.props;
 
-    const piechart = pie(data),
-      translate = `translate(${width / 2}, ${height / 2})`;
+    const piechart = pie(data);
+    const translate = `translate(${width / 2}, ${height / 2})`;
 
     return <g transform={translate}>{piechart.map((d: IArcData, i: number) => this.arcGenerator(d, i, href))}</g>;
   }

@@ -172,7 +172,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     clearTimeout(this._scrollIdleTimeoutId);
   }
 
-  // tslint:disable-next-line function-name
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   public UNSAFE_componentWillReceiveProps(newProps: IDropdownProps): void {
     // In controlled component usage where selectedKey is provided, update the selectedIndex
     // state if the key or options change.
@@ -245,7 +245,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
       onRenderLabel = this._onRenderLabel,
     } = props;
     const { isOpen, selectedIndices, calloutRenderEdge } = this.state;
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     const onRenderPlaceholder = props.onRenderPlaceholder || props.onRenderPlaceHolder || this._onRenderPlaceholder;
 
     const selectedOptions = getAllSelectedOptions(options, selectedIndices);
@@ -282,8 +282,8 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
       required,
       disabled,
       isRenderingPlaceholder: !selectedOptions.length,
-      panelClassName: !!panelProps ? panelProps.className : undefined,
-      calloutClassName: !!calloutProps ? calloutProps.className : undefined,
+      panelClassName: panelProps ? panelProps.className : undefined,
+      calloutClassName: calloutProps ? calloutProps.className : undefined,
       calloutRenderEdge: calloutRenderEdge,
     });
 
@@ -293,7 +293,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
       <div className={this._classNames.root}>
         {onRenderLabel(this.props, this._onRenderLabel)}
         <KeytipData keytipProps={keytipProps} disabled={disabled}>
-          {// tslint:disable-next-line:no-any
+          {// eslint-disable-next-line @typescript-eslint/no-explicit-any
           (keytipAttributes: any): JSX.Element => (
             <div
               {...keytipAttributes}
@@ -421,7 +421,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     checked?: boolean,
     multiSelect?: boolean,
   ) => {
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     const { onChange, onChanged } = this.props;
     if (onChange || onChanged) {
       // for single-select, option passed in will always be selected.
@@ -435,11 +435,11 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
 
   /** Get either props.placeholder (new name) or props.placeHolder (old name) */
   private get _placeholder(): string | undefined {
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     return this.props.placeholder || this.props.placeHolder;
   }
 
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _copyArray(array: any[]): any[] {
     const newArray = [];
     for (const element of array) {
@@ -724,8 +724,11 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
         disabled={item.disabled}
         className={itemClassName}
         onClick={this._onItemClick(item)}
+        // eslint-disable-next-line react/jsx-no-bind
         onMouseEnter={this._onItemMouseEnter.bind(this, item)}
+        // eslint-disable-next-line react/jsx-no-bind
         onMouseLeave={this._onMouseItemLeave.bind(this, item)}
+        // eslint-disable-next-line react/jsx-no-bind
         onMouseMove={this._onItemMouseMove.bind(this, item)}
         role="option"
         aria-selected={isItemSelected ? 'true' : 'false'}
@@ -751,6 +754,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
         }}
         label={item.text}
         title={title}
+        // eslint-disable-next-line react/jsx-no-bind
         onRenderLabel={this._onRenderItemLabel.bind(this, item)}
         className={itemClassName}
         role="option"
@@ -831,7 +835,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     }, this._scrollIdleDelay);
   };
 
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _onItemMouseEnter(item: any, ev: React.MouseEvent<HTMLElement>): void {
     if (this._shouldIgnoreMouseEvent()) {
       return;
@@ -841,7 +845,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     targetElement.focus();
   }
 
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _onItemMouseMove(item: any, ev: React.MouseEvent<HTMLElement>): void {
     const targetElement = ev.currentTarget as HTMLElement;
     this._gotMouseMove = true;
@@ -853,7 +857,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     targetElement.focus();
   }
 
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _onMouseItemLeave = (item: any, ev: React.MouseEvent<HTMLElement>): void => {
     if (this._shouldIgnoreMouseEvent()) {
       return;
@@ -865,10 +869,10 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
      * sets the page focus but does not scroll the parent element.
      */
     if (this._host.current) {
-      // tslint:disable-next-line:no-any
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       if ((this._host.current as any).setActive) {
         try {
-          // tslint:disable-next-line:no-any
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           (this._host.current as any).setActive();
         } catch (e) {
           /* no-op */
@@ -919,11 +923,11 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
 
   private _getSelectedIndex(options: IDropdownOption[], selectedKey: string | number | null): number {
     return findIndex(options, option => {
-      // tslint:disable-next-line:triple-equals
+      // eslint-disable-next-line eqeqeq
       if (selectedKey != null) {
         return option.key === selectedKey;
       } else {
-        // tslint:disable-next-line:deprecation
+        // eslint-disable-next-line deprecation/deprecation
         return !!option.selected || !!option.isSelected;
       }
     });
@@ -1214,7 +1218,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
    */
   private _isDisabled: () => boolean | undefined = () => {
     let { disabled } = this.props;
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     const { isDisabled } = this.props;
 
     // Remove this deprecation workaround at 1.0.0
