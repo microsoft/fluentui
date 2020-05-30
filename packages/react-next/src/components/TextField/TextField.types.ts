@@ -318,6 +318,7 @@ export interface ITextFieldSubComponentStyles {
    */
   // TODO: this should be the interface once we're on TS 2.9.2 but otherwise causes errors in 2.8.4
   // label: IStyleFunctionOrObject<ILabelStyleProps, ILabelStyles>;
+  // tslint:disable-next-line:no-any
   label: IStyleFunctionOrObject<any, any>;
 }
 
