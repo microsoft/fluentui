@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { ComponentProps, ComposeOptions, ComposeStandardStatics } from '../../utils/tempTypes';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import { IKeytipProps } from '../../Keytip';
@@ -15,7 +14,9 @@ export interface ILink {
 /**
  * {@docCategory Link}
  */
-export interface ILinkHTMLAttributes<T> extends ComponentProps, React.HTMLAttributes<T> {
+export interface ILinkHTMLAttributes<T> extends React.HTMLAttributes<T> {
+  as?: React.ElementType;
+
   // Shared
   type?: string;
 
@@ -106,4 +107,4 @@ export type LinkSlotProps = {
 /**
  * {@docCategory Link}
  */
-export interface ILinkOptions extends ComposeOptions<ILinkProps, ILinkSlots, LinkSlotProps, ComposeStandardStatics> {}
+export interface ILinkOptions {}

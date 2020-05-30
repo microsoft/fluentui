@@ -254,12 +254,12 @@ export interface ILink {
     focus(): void;
 }
 
-// Warning: (ae-forgotten-export) The symbol "ComponentProps" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
-export interface ILinkHTMLAttributes<T> extends ComponentProps, React.HTMLAttributes<T> {
+export interface ILinkHTMLAttributes<T> extends React.HTMLAttributes<T> {
     // (undocumented)
     [index: string]: any;
+    // (undocumented)
+    as?: React.ElementType;
     // (undocumented)
     autoFocus?: boolean;
     // (undocumented)
@@ -296,11 +296,8 @@ export interface ILinkHTMLAttributes<T> extends ComponentProps, React.HTMLAttrib
     value?: string | string[] | number;
 }
 
-// Warning: (ae-forgotten-export) The symbol "ComposeOptions" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "ComposeStandardStatics" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
-export interface ILinkOptions extends ComposeOptions<ILinkProps, ILinkSlots, LinkSlotProps, ComposeStandardStatics> {
+export interface ILinkOptions {
 }
 
 // @public (undocumented)
@@ -1131,7 +1128,7 @@ export const Toggle: React.FunctionComponent<IToggleProps>;
 export const ToggleBase: React.FunctionComponent;
 
 // @public
-export const useLink: (props: ILinkProps, options: ComposePreparedOptions<{}>) => import("../../utils/mergeProps").ComponentHookResult<ILinkProps, ILinkSlots, LinkSlotProps>;
+export const useLink: (props: ILinkProps, options: ComposePreparedOptions<{}>) => any;
 
 
 export * from "office-ui-fabric-react/lib/ActivityItem";

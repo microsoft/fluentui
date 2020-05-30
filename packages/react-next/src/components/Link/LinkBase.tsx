@@ -12,7 +12,7 @@ export const LinkBase = compose<'a', ILinkProps, ILinkProps, {}, {}>(
 
     return (
       <KeytipData ariaDescribedBy={ariaDescribedBy} disabled={disabled} keytipProps={keytipProps}>
-        {(keytipAttributes: any): JSX.Element => <slots.root {...keytipAttributes} ref={ref} {...slotProps.root} />}
+        {(keytipAttributes: any): JSX.Element => <slots.root {...keytipAttributes} {...slotProps.root} />}
       </KeytipData>
     );
   },
