@@ -277,6 +277,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
         aria-describedby={ariaDescribedBy}
         className={this._classNames.root}
         data-selection-index={itemIndex}
+        data-selection-touch-invoke={true}
         data-item-index={itemIndex}
         aria-rowindex={itemIndex + 1}
         data-automationid="DetailsRow"

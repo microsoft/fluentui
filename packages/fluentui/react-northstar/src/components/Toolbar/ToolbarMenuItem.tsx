@@ -15,6 +15,7 @@ import * as customPropTypes from '@fluentui/react-proptypes';
 import {
   compose,
   focusAsync,
+  mergeVariablesOverrides,
   useTelemetry,
   useStyles,
   useAutoControlled,
@@ -22,10 +23,10 @@ import {
   useUnhandledProps,
   useAccessibility,
 } from '@fluentui/react-bindings';
-import { mergeComponentVariables } from '@fluentui/styles';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 import { GetRefs, NodeRef, Unstable_NestingAuto } from '@fluentui/react-component-nesting-registry';
+import { useContextSelectors } from '@fluentui/react-context-selector';
 
 import {
   createShorthand,
@@ -46,6 +47,7 @@ import ToolbarMenuItemIcon, { ToolbarMenuItemIconProps } from './ToolbarMenuItem
 import { ToolbarVariablesContext, ToolbarVariablesProvider } from './toolbarVariablesContext';
 import ToolbarMenuItemSubmenuIndicator from './ToolbarMenuItemSubmenuIndicator';
 import ToolbarMenuItemActiveIndicator from './ToolbarMenuItemActiveIndicator';
+import { ToolbarItemSubscribedValue, ToolbarMenuContext } from './toolbarMenuContext';
 
 export interface ToolbarMenuItemProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
   /**
@@ -161,8 +163,12 @@ const ToolbarMenuItem = compose<'button', ToolbarMenuItemProps, ToolbarMenuItemS
     const itemRef = React.useRef<HTMLElement>();
     const menuRef = React.useRef<HTMLElement>();
 
+    const { menuSlot } = (useContextSelectors(ToolbarMenuContext, {
+      menuSlot: v => v.slots.menu,
+    }) as unknown) as ToolbarItemSubscribedValue; // TODO: we should improve typings for the useContextSelectors
+
     const parentVariables = React.useContext(ToolbarVariablesContext);
-    const mergedVariables = mergeComponentVariables(parentVariables, variables);
+    const mergedVariables = mergeVariablesOverrides(parentVariables, variables);
 
     const ElementType = getElementType(props);
     const slotProps = composeOptions.resolveSlotProps<ToolbarMenuItemProps>(props);
@@ -347,9 +353,9 @@ const ToolbarMenuItem = compose<'button', ToolbarMenuItemProps, ToolbarMenuItemS
     const hasChildren = childrenExist(children);
 
     if (popup && !hasChildren) {
-      const popupElement = Popup.create(popup, {
+      const popupElement = createShorthand(composeOptions.slots.popup, popup, {
         defaultProps: () => ({
-          trapFocus: true,
+          ...slotProps.popup,
           onOpenChange: e => {
             e.stopPropagation();
           },
@@ -384,7 +390,7 @@ const ToolbarMenuItem = compose<'button', ToolbarMenuItemProps, ToolbarMenuItemS
                   {...getPopperPropsFromShorthand(menu)}
                 >
                   <ToolbarVariablesProvider value={mergedVariables}>
-                    {createShorthand(composeOptions.slots.menu || ToolbarMenu, menu, {
+                    {createShorthand(composeOptions.slots.menu || menuSlot || ToolbarMenu, menu, {
                       defaultProps: () => ({
                         className: toolbarMenuItemSlotClassNames.submenu,
                         styles: resolvedStyles.menu,
@@ -434,7 +440,7 @@ const ToolbarMenuItem = compose<'button', ToolbarMenuItemProps, ToolbarMenuItemS
       icon: ToolbarMenuItemIcon,
       submenuIndicator: ToolbarMenuItemSubmenuIndicator,
       activeIndicator: ToolbarMenuItemActiveIndicator,
-      // menu: ToolbarMenu,
+      popup: Popup,
     },
     slotProps: props => ({
       icon: {
@@ -445,6 +451,9 @@ const ToolbarMenuItem = compose<'button', ToolbarMenuItemProps, ToolbarMenuItemS
       },
       activeIndicator: {
         accessibility: indicatorBehavior,
+      },
+      popup: {
+        trapFocus: true,
       },
     }),
 

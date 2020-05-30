@@ -379,7 +379,7 @@ describe('SpinButton', () => {
         componentRef={ref}
         min={exampleMinValue}
         max={exampleMaxValue}
-        value="12"
+        defaultValue="12"
         // tslint:disable-next-line:jsx-no-lambda
         onValidate={(newValue: string): string | void => {
           const numberValue: number = Number(newValue);

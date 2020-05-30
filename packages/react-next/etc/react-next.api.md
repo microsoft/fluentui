@@ -4,6 +4,7 @@
 
 ```ts
 
+import { ComposePreparedOptions } from '@fluentui/react-compose';
 import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import { IButtonProps as IButtonProps_2 } from 'office-ui-fabric-react/lib/components/Button/Button.types';
 import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
@@ -425,9 +426,9 @@ export interface IPivotItemProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 // @public (undocumented)
-export interface IPivotProps extends React.ClassAttributes<PivotBase>, React.HTMLAttributes<HTMLDivElement> {
+export interface IPivotProps extends React.HTMLAttributes<HTMLDivElement> {
     className?: string;
-    componentRef?: IRefObject<IPivot>;
+    componentRef?: React.RefObject<IPivot>;
     defaultSelectedIndex?: number;
     defaultSelectedKey?: string;
     getTabId?: (itemKey: string, index: number) => string;
@@ -846,10 +847,14 @@ export interface IToggle {
     focus: () => void;
 }
 
+// @public (undocumented)
+export interface IToggleOptions {
+}
+
 // @public
 export interface IToggleProps extends React.HTMLAttributes<HTMLElement> {
     ariaLabel?: string;
-    as?: IComponentAs<React.HTMLAttributes<HTMLElement>>;
+    as?: IComponentAs<React.HTMLAttributes<HTMLElement>> | React.ElementType;
     checked?: boolean;
     componentRef?: IRefObject<IToggle>;
     defaultChecked?: boolean;
@@ -872,9 +877,12 @@ export interface IToggleProps extends React.HTMLAttributes<HTMLElement> {
 }
 
 // @public (undocumented)
-export interface IToggleState {
-    // (undocumented)
-    checked: boolean;
+export type IToggleSlotProps = {
+    [key in keyof IToggleSlots]: IToggleProps[key];
+};
+
+// @public (undocumented)
+export interface IToggleSlots {
 }
 
 // @public
@@ -977,13 +985,8 @@ export class OverflowSetBase extends React.Component<IOverflowSetProps, {}> impl
 // @public
 export const Pivot: React.FunctionComponent<IPivotProps>;
 
-// @public
-export class PivotBase extends React.Component<IPivotProps, IPivotState> {
-    constructor(props: IPivotProps);
-    focus(): void;
-    // (undocumented)
-    render(): JSX.Element;
-    }
+// @public (undocumented)
+export const PivotBase: React.FunctionComponent<IPivotProps>;
 
 // @public (undocumented)
 export class PivotItem extends React.Component<IPivotItemProps, {}> {
@@ -1115,7 +1118,10 @@ export { ThemeProviderProps }
 export const Toggle: React.FunctionComponent<IToggleProps>;
 
 // @public (undocumented)
-export const ToggleBase: React.FunctionComponent;
+export const ToggleBase: import("@fluentui/react-compose").ComponentWithAs<"div", IToggleProps>;
+
+// @public (undocumented)
+export const useToggle: (props: IToggleProps, options: ComposePreparedOptions<{}>) => any;
 
 
 export * from "office-ui-fabric-react/lib/ActivityItem";
