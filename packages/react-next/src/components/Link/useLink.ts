@@ -63,6 +63,7 @@ const useComponentRef = (props: ILinkProps, link: React.RefObject<ILink>) => {
 
 const adjustPropsForRootType = (
   RootType: string | React.ComponentClass | React.FunctionComponent,
+  // tslint:disable-next-line:no-any
   props: ILinkProps & { getStyles?: any },
 ): Partial<ILinkProps> => {
   // Deconstruct the props so we remove props like `as`, `theme` and `styles`
