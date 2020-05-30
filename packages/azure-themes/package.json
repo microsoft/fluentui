@@ -24,7 +24,9 @@
   },
   "devDependencies": {
     "@uifabric/build": "^7.0.0",
-    "@uifabric/tslint-rules": "^7.2.1"
+    "@uifabric/example-data": "^7.0.15",
+    "@uifabric/react-hooks": "^7.4.5",
+    "react": "16.8.6"
   },
   "dependencies": {
     "@uifabric/merge-styles": "^7.14.1",

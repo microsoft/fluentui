@@ -24,8 +24,7 @@
     "update-api": "just-scripts update-api"
   },
   "devDependencies": {
-    "@uifabric/build": "^7.0.0",
-    "@uifabric/tslint-rules": "^7.2.1"
+    "@uifabric/build": "^7.0.0"
   },
   "dependencies": {
     "@uifabric/set-version": "^7.0.13",

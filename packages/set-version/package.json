@@ -20,7 +20,6 @@
   },
   "devDependencies": {
     "@types/jest": "~24.9.0",
-    "@uifabric/tslint-rules": "^7.2.1",
     "@uifabric/build": "^7.0.0"
   },
   "dependencies": {

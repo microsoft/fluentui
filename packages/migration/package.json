@@ -30,12 +30,11 @@
     "@types/mock-fs": "3.6.30",
     "@types/node": "^10.3.2",
     "@types/semver": "^5.5.0",
-    "@uifabric/tslint-rules": "^7.2.1",
-    "glob": "^7.1.2",
     "mock-fs": "4.10.0",
     "@uifabric/build": "^7.0.0"
   },
   "dependencies": {
+    "glob": "^7.1.2",
     "semver": "^6.2.0",
     "tslib": "^1.10.0",
     "riceburn": "^1.3.1",

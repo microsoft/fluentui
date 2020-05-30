@@ -35,7 +35,6 @@
     "@types/react-dom": "16.8.4",
     "@types/sarif": "^2.1.1",
     "@uifabric/build": "^7.0.0",
-    "@uifabric/icons": "^7.3.49",
-    "@uifabric/tslint-rules": "^7.2.1"
+    "@uifabric/icons": "^7.3.49"
   }
 }

@@ -38,7 +38,6 @@
     "@types/webpack-env": "1.15.1",
     "@uifabric/build": "^7.0.0",
     "@uifabric/date-time": "^7.8.97",
-    "@uifabric/tslint-rules": "^7.2.1",
     "awesome-typescript-loader": "^3.2.3",
     "babel-loader": "^8.0.6",
     "css-loader": "^3.5.3",

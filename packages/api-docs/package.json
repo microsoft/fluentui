@@ -24,7 +24,6 @@
     "@uifabric/merge-styles": "^7.14.1",
     "@uifabric/react-cards": "^0.109.96",
     "@uifabric/styling": "^7.12.16",
-    "@uifabric/tslint-rules": "^7.2.1",
     "@uifabric/utilities": "^7.20.3",
     "office-ui-fabric-react": "^7.118.1"
   },
