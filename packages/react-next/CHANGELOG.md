@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-next
 
-This log was last generated on Wed, 27 May 2020 12:40:00 GMT and should not be manually modified.
+This log was last generated on Fri, 29 May 2020 12:35:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-alpha.31](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.31)
+
+Fri, 29 May 2020 12:35:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.29..@fluentui/react-next_v8.0.0-alpha.31)
+
+### Changes
+
+- Pivot: Updating component from a class component to a function component. ([PR #12906](https://github.com/microsoft/fluentui/pull/12906) by czearing@outlook.com)
+- SpinButton: Reintroduce incorrect behavior of allowing updates when value is provided to prevent breaking partners. ([PR #13367](https://github.com/microsoft/fluentui/pull/13367) by elcraig@microsoft.com)
+- Copying Dropdown to react-next, in preparation for converting to function component. ([PR #13390](https://github.com/microsoft/fluentui/pull/13390) by czearing@outlook.com)
+- NextSlider: update to use only hooks ([PR #13365](https://github.com/microsoft/fluentui/pull/13365) by joschect@microsoft.com)
 
 ## [8.0.0-alpha.29](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.29)
 

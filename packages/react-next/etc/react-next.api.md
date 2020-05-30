@@ -856,10 +856,14 @@ export interface IToggle {
     focus: () => void;
 }
 
+// @public (undocumented)
+export interface IToggleOptions {
+}
+
 // @public
 export interface IToggleProps extends React.HTMLAttributes<HTMLElement> {
     ariaLabel?: string;
-    as?: IComponentAs<React.HTMLAttributes<HTMLElement>>;
+    as?: IComponentAs<React.HTMLAttributes<HTMLElement>> | React.ElementType;
     checked?: boolean;
     componentRef?: IRefObject<IToggle>;
     defaultChecked?: boolean;
@@ -882,9 +886,12 @@ export interface IToggleProps extends React.HTMLAttributes<HTMLElement> {
 }
 
 // @public (undocumented)
-export interface IToggleState {
-    // (undocumented)
-    checked: boolean;
+export type IToggleSlotProps = {
+    [key in keyof IToggleSlots]: IToggleProps[key];
+};
+
+// @public (undocumented)
+export interface IToggleSlots {
 }
 
 // @public
@@ -1125,7 +1132,10 @@ export { ThemeProviderProps }
 export const Toggle: React.FunctionComponent<IToggleProps>;
 
 // @public (undocumented)
-export const ToggleBase: React.FunctionComponent;
+export const ToggleBase: import("@fluentui/react-compose").ComponentWithAs<"div", IToggleProps>;
+
+// @public (undocumented)
+export const useToggle: (props: IToggleProps, options: ComposePreparedOptions<{}>) => any;
 
 // @public
 export const useLink: (props: ILinkProps, options: ComposePreparedOptions<{}>) => any;
