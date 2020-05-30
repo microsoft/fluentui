@@ -5,6 +5,7 @@
 *.test.*
 *.yml
 .editorconfig
+.eslintrc*
 .gitattributes
 .gitignore
 .vscode
@@ -23,6 +24,5 @@ results
 temp
 tsconfig.json
 tsd.json
-tslint.json
 typings
 visualtests

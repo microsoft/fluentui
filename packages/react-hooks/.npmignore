@@ -4,6 +4,7 @@
 *.test.*
 *.yml
 .editorconfig
+.eslintrc*
 .gitattributes
 .gitignore
 .vscode
@@ -24,7 +25,6 @@ src/**/*
 !src/**/*.Example.tsx
 tsconfig.json
 tsd.json
-tslint.json
 typings
 fabric-test*
 visualtests
