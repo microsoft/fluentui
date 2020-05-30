@@ -21,6 +21,7 @@ export interface ILinkHTMLAttributes<T> extends React.HTMLAttributes<T> {
   type?: string;
 
   // Anchor
+  // tslint:disable-next-line:no-any
   download?: any;
   href?: string;
   hrefLang?: string;
@@ -41,6 +42,7 @@ export interface ILinkHTMLAttributes<T> extends React.HTMLAttributes<T> {
   value?: string | string[] | number;
 
   // Any other props for HTMLElements or a React component passed to as=
+  // tslint:disable-next-line:no-any
   [index: string]: any;
 }
 

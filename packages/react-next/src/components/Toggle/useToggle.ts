@@ -15,6 +15,7 @@ const getClassNames = classNamesFunction<IToggleStyleProps, IToggleStyles>({ use
 
 const COMPONENT_NAME = 'Toggle';
 
+// tslint:disable-next-line:no-any
 export const useToggle = (props: IToggleProps, options: ComposePreparedOptions): any => {
   const {
     ariaLabel,
@@ -98,7 +99,7 @@ export const useToggle = (props: IToggleProps, options: ComposePreparedOptions):
     ...options.slots,
     // tslint:disable-next-line:no-any
     root: props.as || ((options as any).defaultProps as any)?.as,
-  } as any;
+  };
 
   const slotProps = {
     root: {
