@@ -259,6 +259,8 @@ export interface ILinkHTMLAttributes<T> extends React.HTMLAttributes<T> {
     // (undocumented)
     [index: string]: any;
     // (undocumented)
+    as?: React.ElementType;
+    // (undocumented)
     autoFocus?: boolean;
     // (undocumented)
     disabled?: boolean;
@@ -295,13 +297,20 @@ export interface ILinkHTMLAttributes<T> extends React.HTMLAttributes<T> {
 }
 
 // @public (undocumented)
+export interface ILinkOptions {
+}
+
+// @public (undocumented)
 export interface ILinkProps extends ILinkHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement> {
-    as?: string | React.ComponentClass | React.FunctionComponent;
     componentRef?: IRefObject<ILink>;
     disabled?: boolean;
     keytipProps?: IKeytipProps;
     styles?: IStyleFunctionOrObject<ILinkStyleProps, ILinkStyles>;
     theme?: ITheme;
+}
+
+// @public (undocumented)
+export interface ILinkSlots {
 }
 
 // @public (undocumented)
@@ -919,7 +928,12 @@ export enum KeyboardSpinDirection {
 export const Link: React.FunctionComponent<ILinkProps>;
 
 // @public (undocumented)
-export const LinkBase: React.FunctionComponent;
+export const LinkBase: import("@fluentui/react-compose").ComponentWithAs<"a", ILinkProps>;
+
+// @public (undocumented)
+export type LinkSlotProps = {
+    [key in keyof ILinkSlots]: ILinkProps[key];
+};
 
 // @public (undocumented)
 export class MaskedTextField extends React.Component<ITextFieldProps, IMaskedTextFieldState> implements ITextField {
@@ -1119,6 +1133,9 @@ export const Toggle: React.FunctionComponent<IToggleProps>;
 
 // @public (undocumented)
 export const ToggleBase: import("@fluentui/react-compose").ComponentWithAs<"div", IToggleProps>;
+
+// @public
+export const useLink: (props: ILinkProps, options: ComposePreparedOptions<{}>) => any;
 
 // @public (undocumented)
 export const useToggle: (props: IToggleProps, options: ComposePreparedOptions<{}>) => any;

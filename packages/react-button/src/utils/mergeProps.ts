@@ -1,20 +1,19 @@
 import * as React from 'react';
 import {
+  anchorProperties,
+  buttonProperties,
   getNativeProps,
   htmlElementProperties,
   imgProperties,
-  buttonProperties,
-  anchorProperties,
+  inputProperties,
 } from '@uifabric/utilities';
 import { ComposePreparedOptions } from '@fluentui/react-compose';
 import { mergeClassesIntoSlotProps } from './mergeClassesIntoSlotProps';
+import { GenericDictionary } from './tempTypes';
 
 /**
  * NOTE! THIS FILE IS TEMPORARY AND SHOULD BE DELETED ONCE IT HAS MOVED TO `@fluentui/react-compose`.
  */
-
-// tslint:disable-next-line:no-any
-export type GenericDictionary = { [key: string]: any };
 
 const EmptyRender = () => null;
 
@@ -39,8 +38,12 @@ const filterProps = (props: any): any => {
       break;
     case 'a':
       allowedProps = anchorProperties;
+      break;
     case 'img':
       allowedProps = imgProperties;
+      break;
+    case 'input':
+      allowedProps = inputProperties;
       break;
     default:
       allowedProps = htmlElementProperties;
