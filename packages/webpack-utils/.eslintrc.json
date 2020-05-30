@@ -1,0 +1,10 @@
+{
+  "extends": ["../../scripts/eslint/v7"],
+  "root": true,
+  "rules": {
+    "deprecation/deprecation": "off",
+    "no-console": "off",
+    "prefer-arrow-callback": "off",
+    "@typescript-eslint/no-explicit-any": "off"
+  }
+}

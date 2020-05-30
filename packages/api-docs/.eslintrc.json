@@ -1,0 +1,7 @@
+{
+  "extends": ["../../scripts/eslint/v7"],
+  "root": true,
+  "rules": {
+    "no-console": "off" // build time package can use console.log
+  }
+}

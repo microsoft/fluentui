@@ -35,8 +35,7 @@
     "@types/react-dom": "",
     "@types/react-test-renderer": "",
     "@types/webpack-env": "",
-    "@uifabric/build": "7.0.0",
-    "@uifabric/tslint-rules": "7.2.1",
+    "@uifabric/build": "",
     "enzyme": "",
     "enzyme-adapter-react-16": "",
     "es6-weak-map": "",
@@ -46,7 +45,7 @@
     "react-test-renderer": ""
   },
   "dependencies": {
-    "@uifabric/set-version": "7.0.13",
+    "@uifabric/set-version": "",
     "tslib": ""
   },
   "peerDependencies": {

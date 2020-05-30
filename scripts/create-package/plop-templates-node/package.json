@@ -23,8 +23,7 @@
   "devDependencies": {
     "@types/jest": "",
     "@types/node": "",
-    "@uifabric/build": "",
-    "@uifabric/tslint-rules": ""
+    "@uifabric/build": ""
   },
   "dependencies": {
     "tslib": ""
