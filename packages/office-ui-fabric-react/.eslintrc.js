@@ -1,3 +1,4 @@
+// @ts-check
 const constants = require('@uifabric/build/eslint/constants');
 
 module.exports = {

@@ -9,7 +9,7 @@ export interface IStoryConfig {
 }
 
 declare module '@storybook/addons/dist/types' {
-  // eslint-disable-next-line @typescript-eslint/interface-name-prefix
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   interface StoryApi<StoryFnReturnType = unknown> {
     /** adds a story, but via VR Tests' addon which auto adds variants like RTL */
     addStory: this['add'];

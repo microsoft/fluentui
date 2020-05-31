@@ -1,0 +1,13 @@
+// @ts-check
+module.exports = {
+  extends: ['../../scripts/eslint/v7'],
+  root: true,
+  rules: {
+    'deprecation/deprecation': 'off',
+    '@typescript-eslint/no-explicit-any': 'off',
+    'react/forbid-component-props': 'off',
+    'react/jsx-no-bind': 'off',
+    'import/no-webpack-loader-syntax': 'off', // ok in this project
+    'prefer-const': 'off',
+  },
+};

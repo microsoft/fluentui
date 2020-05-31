@@ -1,6 +1,6 @@
 export interface IsConformantOptions {
   constructorName: string;
-  tests: String[];
+  tests: string[];
   requiredProps?: object;
   exportedAtTopLevel: boolean;
   // packageRoot: any;

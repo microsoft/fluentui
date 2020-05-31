@@ -1,5 +1,6 @@
 // @ts-check
 const path = require('path');
+const { getNamingConventionConfig } = require('./namingConvention');
 const constants = require('./constants');
 
 module.exports = {
@@ -40,7 +41,6 @@ module.exports = {
   ignorePatterns: ['coverage', 'dist', 'etc', 'lib', 'lib-amd', 'lib-commonjs', 'node_modules', 'temp', '**/*.scss.ts'],
   rules: {
     '@typescript-eslint/ban-ts-comment': 'error',
-    '@typescript-eslint/class-name-casing': 'error',
     '@typescript-eslint/explicit-member-accessibility': [
       'error',
       {
@@ -48,8 +48,6 @@ module.exports = {
         overrides: { constructors: 'off' },
       },
     ],
-    // deprecated in favor of naming-convention
-    '@typescript-eslint/interface-name-prefix': ['error', { prefixWithI: 'always' }],
     '@typescript-eslint/member-ordering': [
       'error',
       {
@@ -72,48 +70,7 @@ module.exports = {
         ],
       },
     ],
-    '@typescript-eslint/naming-convention': [
-      'error',
-      // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/naming-convention.md
-      // TODO: Restore parity with old variable-name and function-name configs (new config is too loose)
-      // Old "variable-name" config: "check-format", "allow-leading-underscore", "allow-pascal-case", "ban-keywords"
-      // Old "function-name" config:
-      //   'method-regex': '^[a-z][a-zA-Z\\d]+$',
-      //   'private-method-regex': '^_[a-z][a-zA-Z\\d]+$',
-      //   'protected-method-regex': '^_?[a-z][a-zA-Z\\d]+$',
-      //   'static-method-regex': '^[a-z][a-zA-Z\\d]+$',
-      {
-        selector: 'default',
-        format: ['camelCase', 'PascalCase', 'UPPER_CASE'],
-        leadingUnderscore: 'allow',
-        trailingUnderscore: 'allow',
-      },
-      {
-        selector: 'typeLike',
-        format: ['PascalCase'],
-        leadingUnderscore: 'forbid',
-      },
-      // TODO: memberLike includes plain object members too, which causes problems
-      // {
-      //   selector: 'memberLike',
-      //   modifiers: ['private', 'protected'],
-      //   format: ['camelCase'],
-      //   leadingUnderscore: 'allow',
-      // },
-      // {
-      //   selector: 'memberLike',
-      //   modifiers: ['public'],
-      //   format: ['camelCase'],
-      //   leadingUnderscore: 'forbid',
-      // },
-      // TODO: potentially use this instead of interface-name-prefix IF overrides are handled well
-      // (if you have to copy the entire rule config just to turn off this one part, that's not ok)
-      // {
-      //   selector: 'interface',
-      //   format: ['PascalCase'],
-      //   prefix: 'I',
-      // },
-    ],
+    '@typescript-eslint/naming-convention': getNamingConventionConfig(true /* prefixWithI */),
     '@typescript-eslint/no-empty-function': 'error',
     '@typescript-eslint/no-explicit-any': 'error', // no-any
     '@typescript-eslint/prefer-namespace-keyword': 'error',
