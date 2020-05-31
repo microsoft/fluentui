@@ -74,20 +74,24 @@
   "license": "MIT",
   "lint-staged": {
     "linters": {
-      "*.{ts,tsx}": [
-        "node ./scripts/lint-staged/prettier",
-        "node ./scripts/lint-staged/tslint",
+      "**/{src,test}/**/*.{ts,tsx}": [
+        "node ./scripts/lint-staged/eslint",
         "git add"
       ],
-      "*.{js,jsx,json,scss,css,html,htm,md,yml}": [
-        "node ./scripts/lint-staged/prettier",
-        "node ./scripts/lint-staged/auto-convert-change-files",
+      "*.{ts,tsx,js,jsx,json,scss,css,html,htm,md,yml}": [
+        "prettier --write",
+        "git add"
+      ],
+      "common/changes/*.{json}": [
+        "node ./scripts/lint-staged/auto-convert-change-files"
+      ],
+      "*.mdx": [
+        "prettier --parser mdx --write",
         "git add"
       ]
     },
     "ignore": [
       "common/scripts/*.js",
-      "packages/tslint-rules/tslint.json",
       "**/CHANGELOG.*",
       "**/*.api.md",
       "**/_*.scss"
