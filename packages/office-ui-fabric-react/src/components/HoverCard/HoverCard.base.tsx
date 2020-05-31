@@ -166,7 +166,7 @@ export class HoverCardBase extends React.Component<IHoverCardProps, IHoverCardSt
         className={this._classNames.host}
         ref={this._hoverCard}
         aria-describedby={setAriaDescribedBy && isHoverCardVisible ? hoverCardId : undefined}
-        data-is-focusable={!Boolean(this.props.target)}
+        data-is-focusable={!this.props.target}
       >
         {children}
         {isHoverCardVisible &&

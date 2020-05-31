@@ -90,6 +90,7 @@ export const CalendarButtonExample: React.FunctionComponent<ICalendarButtonExamp
         >
           <FocusTrapZone firstFocusableSelector="ms-DatePicker-day--today" isClickableOutsideFocusTrap>
             <Calendar
+              // eslint-disable-next-line react/jsx-no-bind
               onSelectDate={onSelectDate}
               onDismiss={toggleShowCalendar}
               isMonthPickerVisible={isMonthPickerVisible}

@@ -1,6 +1,4 @@
-/* eslint-disable */
 import * as React from 'react';
-/* eslint-enable */
 import { css } from '../../../../Utilities';
 import { Persona, PersonaSize, IPersonaProps, PersonaPresence } from '../../../../Persona';
 import { IBasePickerSuggestionsProps, ISuggestionItemProps } from '../../../../Pickers';

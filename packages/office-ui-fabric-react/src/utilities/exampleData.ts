@@ -1,10 +1,6 @@
-// Shared code for creating example data.
-// This file is not included in the main office-ui-fabric-react bundle.
-// If this file is moved or split, the scripts for building codepen examples will likely need to be updated.
-
 /* eslint-disable deprecation/deprecation */
 
-import { IGroup } from 'office-ui-fabric-react/lib/DetailsList';
+import { IGroup } from '../DetailsList';
 
 const LOREM_IPSUM = (
   'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut ' +

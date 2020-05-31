@@ -100,7 +100,7 @@ export interface IPosition {
   [key: string]: number | undefined;
 }
 
-// eslint-disable-next-line interface-name
+// eslint-disable-next-line @typescript-eslint/interface-name-prefix
 export interface Point {
   left?: number;
   top?: number;

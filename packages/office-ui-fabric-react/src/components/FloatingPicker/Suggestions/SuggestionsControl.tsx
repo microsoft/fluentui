@@ -12,7 +12,6 @@ import { SuggestionsCore } from './SuggestionsCore';
 import * as stylesImport from './SuggestionsControl.scss';
 import { hiddenContentStyle, mergeStyles } from '../../../Styling';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const styles: any = stylesImport;
 
 export enum SuggestionItemType {

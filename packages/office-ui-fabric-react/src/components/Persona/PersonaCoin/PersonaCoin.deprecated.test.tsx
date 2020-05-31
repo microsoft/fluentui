@@ -1,4 +1,3 @@
-/* eslint-disable-next-line no-unused-variable */
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { setWarningCallback, setRTL } from '../../../Utilities';

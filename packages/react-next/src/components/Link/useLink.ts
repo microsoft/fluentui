@@ -9,7 +9,7 @@ const getClassNames = classNamesFunction<ILinkStyleProps, ILinkStyles>({ useStat
  * The useLink hook processes the Link component props and returns
  * state, slots and slotProps for consumption by the component.
  */
-// tslint:disable-next-line:no-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const useLink = (props: ILinkProps, options: ComposePreparedOptions): any => {
   const { as, className, disabled, href, onClick, ref, styles, theme } = props;
 
@@ -63,7 +63,7 @@ const useComponentRef = (props: ILinkProps, link: React.RefObject<ILink>) => {
 
 const adjustPropsForRootType = (
   RootType: string | React.ComponentClass | React.FunctionComponent,
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   props: ILinkProps & { getStyles?: any },
 ): Partial<ILinkProps> => {
   // Deconstruct the props so we remove props like `as`, `theme` and `styles`

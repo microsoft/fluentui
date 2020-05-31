@@ -292,7 +292,7 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
   };
 
   /** isActive is true when panel is open or opening. */
-  get isActive(): boolean {
+  public get isActive(): boolean {
     return (
       this.state.visibility === PanelVisibilityState.open ||
       this.state.visibility === PanelVisibilityState.animatingOpen

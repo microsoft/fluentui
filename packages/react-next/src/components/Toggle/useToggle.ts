@@ -97,6 +97,7 @@ export const useToggle = (props: IToggleProps, options: ComposePreparedOptions):
 
   const slots = {
     ...options.slots,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     root: props.as || ((options as any).defaultProps as any)?.as,
   };
 

@@ -126,7 +126,6 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
       >
         {/*Primary Items*/}
         <OverflowSet
-          // eslint-disable-next-line deprecation/deprecation
           componentRef={this._overflowSet}
           className={css(this._classNames.primarySet)}
           doNotContainWithinFocusZone={true}

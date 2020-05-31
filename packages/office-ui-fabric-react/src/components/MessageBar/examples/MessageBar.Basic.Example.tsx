@@ -189,7 +189,7 @@ export const MessageBarBasicExample: React.FunctionComponent = () => {
   const [choice, setChoice] = React.useState<string | undefined>(undefined);
   const showAll = choice === 'all';
 
-  const resetChoice = () => setChoice(undefined);
+  const resetChoice = React.useCallback(() => setChoice(undefined), []);
 
   return (
     <Stack {...horizontalStackProps}>

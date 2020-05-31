@@ -12,7 +12,7 @@ describe('ContextMenuItemChildren', () => {
   describe('when a checkmark icon', () => {
     let onCheckmarkClick: jest.Mock;
     let menuItem: IContextualMenuItem;
-    // eslint-disable-next-line deprecation
+    // eslint-disable-next-line deprecation/deprecation
     let menuClassNames: IMenuItemClassNames;
     let wrapper: ShallowWrapper<IContextualMenuItemProps, {}>;
 
@@ -52,7 +52,7 @@ describe('ContextMenuItemChildren', () => {
   describe('when hide checkmark icon for toggle command', () => {
     let onCheckmarkClick: jest.Mock;
     let menuItem: IContextualMenuItem;
-    // eslint-disable-next-line deprecation
+    // eslint-disable-next-line deprecation/deprecation
     let menuClassNames: IMenuItemClassNames;
     let wrapper: ShallowWrapper<IContextualMenuItemProps, {}>;
 
@@ -96,7 +96,7 @@ describe('ContextMenuItemChildren', () => {
   describe('when it has icons', () => {
     describe('when it has iconProps', () => {
       let menuItem: IContextualMenuItem;
-      // eslint-disable-next-line deprecation
+      // eslint-disable-next-line deprecation/deprecation
       let menuClassNames: IMenuItemClassNames;
       let wrapper: ShallowWrapper<IContextualMenuItemProps, {}>;
 
@@ -116,7 +116,7 @@ describe('ContextMenuItemChildren', () => {
 
     describe('when it doesnt have iconProps', () => {
       let menuItem: IContextualMenuItem;
-      // eslint-disable-next-line deprecation
+      // eslint-disable-next-line deprecation/deprecation
       let menuClassNames: IMenuItemClassNames;
       let wrapper: ShallowWrapper<IContextualMenuItemProps, {}>;
 
@@ -137,7 +137,7 @@ describe('ContextMenuItemChildren', () => {
 
   describe('when it has a sub menu', () => {
     let menuItem: IContextualMenuItem;
-    // eslint-disable-next-line deprecation
+    // eslint-disable-next-line deprecation/deprecation
     let menuClassNames: IMenuItemClassNames;
     let wrapper: ShallowWrapper<IContextualMenuItemProps, {}>;
 
@@ -157,7 +157,7 @@ describe('ContextMenuItemChildren', () => {
   });
 });
 
-// eslint-disable-next-line deprecation
+// eslint-disable-next-line deprecation/deprecation
 function getMenuItemClassNames(): IMenuItemClassNames {
   return {
     item: 'item',

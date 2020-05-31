@@ -1,6 +1,4 @@
-/* eslint-disable */
 import * as React from 'react';
-/* eslint-enable */
 import { BaseSelectedItemsList } from '../BaseSelectedItemsList';
 import { IBaseSelectedItemsListProps, ISelectedItemProps } from '../BaseSelectedItemsList.types';
 import { IPersonaProps } from '../../../Persona';
@@ -54,18 +52,15 @@ export class BasePeopleSelectedItemsList extends BaseSelectedItemsList<IExtended
  * Standard People Picker.
  */
 export class SelectedPeopleList extends BasePeopleSelectedItemsList {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public static defaultProps: any = {
     onRenderItem: (props: ISelectedPeopleItemProps) => <ExtendedSelectedItem {...props} />,
   };
 
   protected renderItems = (): JSX.Element[] => {
     const { items } = this.state;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return items.map((item: IExtendedPersonaProps, index: number) => this._renderItem(item, index));
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _renderItem(item: IExtendedPersonaProps, index: number): JSX.Element {
     const { removeButtonAriaLabel } = this.props;
     const expandGroup = this.props.onExpandGroup;
@@ -119,13 +114,11 @@ export class SelectedPeopleList extends BasePeopleSelectedItemsList {
     this.forceUpdate();
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _completeEditing = (oldItem: any, newItem: any): void => {
     oldItem.isEditing = false;
     this.replaceItem(oldItem, newItem);
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _createMenuItems(item: any): IContextualMenuItem[] {
     const menuItems: IContextualMenuItem[] = [];
 

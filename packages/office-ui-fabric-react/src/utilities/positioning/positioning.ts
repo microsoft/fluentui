@@ -641,9 +641,11 @@ function _getRectangleFromIRect(rect: IRectangle): Rectangle {
 function _getTargetRect(bounds: Rectangle, target: Element | MouseEvent | Point | undefined): Rectangle {
   let targetRectangle: Rectangle;
   if (target) {
+    // eslint-disable-next-line no-extra-boolean-cast
     if (!!(target as MouseEvent).preventDefault) {
       const ev = target as MouseEvent;
       targetRectangle = new Rectangle(ev.clientX, ev.clientX, ev.clientY, ev.clientY);
+      // eslint-disable-next-line no-extra-boolean-cast
     } else if (!!(target as Element).getBoundingClientRect) {
       targetRectangle = _getRectangleFromElement(target as Element);
       // HTMLImgElements can have x and y values. The check for it being a point must go last.
@@ -811,7 +813,7 @@ function _positionCard(
 }
 // END PRIVATE FUNCTIONS
 
-/* eslint-disable variable-name */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export const __positioningTestPackage = {
   _finalizePositionData,
   _finalizeBeakPosition,
@@ -821,7 +823,6 @@ export const __positioningTestPackage = {
   _getPositionData,
   _getMaxHeightFromTargetRectangle,
 };
-/* eslint-enable variable-name */
 
 /**
  * Used to position an element relative to the given positioning props.
@@ -881,7 +882,7 @@ export function getMaxHeight(
   // eslint-disable-next-line deprecation/deprecation
   const top = pointTarget.top || pointTarget.y;
 
-  if (!!mouseTarget.stopPropagation) {
+  if (mouseTarget.stopPropagation) {
     targetRect = new Rectangle(mouseTarget.clientX, mouseTarget.clientX, mouseTarget.clientY, mouseTarget.clientY);
   } else if (left !== undefined && top !== undefined) {
     targetRect = new Rectangle(left, left, top, top);

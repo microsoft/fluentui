@@ -25,7 +25,6 @@ import {
 } from './Breadcrumb.types';
 
 /** @deprecated Use IBreadcrumbData */
-// eslint-disable-next-line deprecation/deprecation
 export type IBreadCrumbData = IBreadcrumbData;
 
 const getClassNames = classNamesFunction<IBreadcrumbStyleProps, IBreadcrumbStyles>();

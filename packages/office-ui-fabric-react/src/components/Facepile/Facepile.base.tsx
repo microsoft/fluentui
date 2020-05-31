@@ -162,6 +162,7 @@ export class FacepileBase extends React.Component<IFacepileProps, {}> {
         {...getNativeProps(persona, buttonProperties)}
         {...this._getElementProps(persona, index)}
         keytipProps={keytipProps}
+        // eslint-disable-next-line react/jsx-no-bind
         onClick={this._onPersonaClick.bind(this, persona)}
       >
         {personaControl}

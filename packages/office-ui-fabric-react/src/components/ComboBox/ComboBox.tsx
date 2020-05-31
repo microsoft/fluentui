@@ -1406,6 +1406,7 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
           checked={isChecked}
           title={title}
           disabled={item.disabled}
+          // eslint-disable-next-line react/jsx-no-bind
           onRenderLabel={onRenderCheckboxLabel}
           inputProps={{
             'aria-selected': isSelected ? 'true' : 'false',
@@ -1422,6 +1423,7 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
         isSelected={isSelected}
         isChecked={isChecked}
         text={item.text}
+        // eslint-disable-next-line react/jsx-no-bind
         render={getOptionComponent}
         data={item.data}
       />
@@ -1956,14 +1958,15 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
         this._setPendingInfoFromIndexAndDirection(index, directionToSearch);
         break;
 
+      /* eslint-disable no-fallthrough */
       case KeyCodes.space:
         // event handled in _onComboBoxKeyUp
         if (!allowFreeform && autoComplete === 'off') {
           break;
         }
 
-      // eslint-disable-next-line no-fallthrough
       default:
+        /* eslint-enable no-fallthrough */
         // are we processing a function key? if so bail out
         if (ev.which >= 112 /* F1 */ && ev.which <= 123 /* F12 */) {
           return;

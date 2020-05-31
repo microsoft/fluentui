@@ -1,6 +1,4 @@
-/* eslint-disable */
 import * as React from 'react';
-/* eslint-enable */
 import { styled, initializeComponentRef } from '../../../Utilities';
 import { BasePicker } from '../BasePicker';
 import { IBasePickerStyleProps, IBasePickerStyles } from '../BasePicker.types';

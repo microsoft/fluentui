@@ -34,10 +34,10 @@ export class PersonaBase extends React.Component<IPersonaProps, {}> {
 
   public render(): JSX.Element {
     // wrapping default render behavior based on various this.props properties
-    const _onRenderPrimaryText = this._onRenderText(this._getText()),
-      _onRenderSecondaryText = this._onRenderText(this.props.secondaryText),
-      _onRenderTertiaryText = this._onRenderText(this.props.tertiaryText),
-      _onRenderOptionalText = this._onRenderText(this.props.optionalText);
+    const _onRenderPrimaryText = this._onRenderText(this._getText());
+    const _onRenderSecondaryText = this._onRenderText(this.props.secondaryText);
+    const _onRenderTertiaryText = this._onRenderText(this.props.tertiaryText);
+    const _onRenderOptionalText = this._onRenderText(this.props.optionalText);
 
     const {
       hidePersonaDetails,

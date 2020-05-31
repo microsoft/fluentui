@@ -23,6 +23,7 @@ export class TeachingBubbleBase extends React.Component<ITeachingBubbleProps, IT
      * Remove in next release.
      * @deprecated In favor of private `_defaultCalloutProps`.
      */
+    // eslint-disable-next-line deprecation/deprecation
     calloutProps: {
       beakWidth: 16,
       gapSpace: 0,

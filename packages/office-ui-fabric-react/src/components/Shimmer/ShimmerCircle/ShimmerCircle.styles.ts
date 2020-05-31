@@ -13,7 +13,7 @@ export function getStyles(props: IShimmerCircleStyleProps): IShimmerCircleStyles
   const { semanticColors } = theme;
   const globalClassNames = getGlobalClassNames(GlobalClassNames, theme);
 
-  const borderStyles: IRawStyle = !!borderStyle ? borderStyle : {};
+  const borderStyles: IRawStyle = borderStyle || {};
 
   return {
     root: [

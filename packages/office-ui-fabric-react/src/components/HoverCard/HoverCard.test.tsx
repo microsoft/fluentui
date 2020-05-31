@@ -11,8 +11,6 @@ import { HoverCardBase } from './HoverCard.base';
 import { HoverCardType } from './HoverCard.types';
 import { KeyCodes } from '../../Utilities';
 
-/* eslint-disable jsx-no-lambda */
-
 const expandingCardProps: IExpandingCardProps = {
   onRenderCompactCard: (item: any) => {
     return <div>{item.key}</div>;
@@ -36,6 +34,7 @@ describe('HoverCard', () => {
   it('renders target wrapped by HoverCard correctly', () => {
     const createNodeMock = (el: React.ReactElement<{}>) => {
       return {
+        // eslint-disable-next-line @typescript-eslint/naming-convention
         __events__: {},
       };
     };

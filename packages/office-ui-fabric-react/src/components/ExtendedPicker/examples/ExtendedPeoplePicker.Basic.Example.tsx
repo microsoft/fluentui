@@ -212,7 +212,6 @@ export class ExtendedPeoplePickerBasicExample extends React.Component<{}, IPeopl
     const picker = this._picker.current;
     const selectedItemsList = picker && picker.selectedItemsList.current;
     if (selectedItemsList) {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       (selectedItemsList as SelectedPeopleList).replaceItem(item, this._getExpandedGroupItems(item));
     }
   };

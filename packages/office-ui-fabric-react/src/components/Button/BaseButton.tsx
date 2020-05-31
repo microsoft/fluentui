@@ -307,6 +307,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
       onRenderIcon = this._onRenderIcon,
       onRenderAriaDescription = this._onRenderAriaDescription,
       onRenderChildren = this._onRenderChildren,
+      // eslint-disable-next-line deprecation/deprecation
       onRenderMenu = this._onRenderMenu,
       onRenderMenuIcon = this._onRenderMenuIcon,
       disabled,
@@ -675,6 +676,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
       const onClick = (ev: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
         ev.stopPropagation();
       };
+      // eslint-disable-next-line react/jsx-no-bind
       return <span className={classNames.divider} aria-hidden={true} onClick={onClick} />;
     }
     return null;

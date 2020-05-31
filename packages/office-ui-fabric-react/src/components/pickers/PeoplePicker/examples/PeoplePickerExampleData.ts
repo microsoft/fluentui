@@ -1,4 +1,5 @@
 import { IPersonaProps, PersonaPresence } from 'office-ui-fabric-react/lib/Persona';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { TestImages } from '@uifabric/example-data';
 
 /* eslint-disable deprecation/deprecation */

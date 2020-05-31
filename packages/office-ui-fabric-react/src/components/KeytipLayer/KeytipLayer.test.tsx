@@ -393,7 +393,7 @@ describe('KeytipLayer', () => {
       expect(getKeytip(visibleKeytips, 'X')).toBeDefined();
     });
 
-    // eslint-disable-next-line max-line-length
+    // eslint-disable-next-line max-len
     it('keytipAdded event does not show a keytip if the current keytip is its parent when delay updating and not in keytip mode', () => {
       ktpMgr.delayUpdatingKeytipChange = true;
       ktpTree.currentKeytip = ktpTree.getNode(keytipIdB);
@@ -409,7 +409,7 @@ describe('KeytipLayer', () => {
       expect(getKeytip(visibleKeytips, 'X')).toBeUndefined();
     });
 
-    // eslint-disable-next-line max-line-length
+    // eslint-disable-next-line max-len
     it('keytipAdded event delay-shows a keytip if the current keytip is its parent when delay updating and in keytip mode', () => {
       ktpMgr.delayUpdatingKeytipChange = true;
       ktpMgr.inKeytipMode = true;

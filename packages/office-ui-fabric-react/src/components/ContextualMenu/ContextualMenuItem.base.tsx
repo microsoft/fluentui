@@ -30,6 +30,7 @@ const renderCheckMarkIcon = ({ onCheckmarkClick, item, classNames }: IContextual
       <Icon
         iconName={item.canCheck !== false && isItemChecked ? 'CheckMark' : ''}
         className={classNames.checkmarkIcon}
+        // eslint-disable-next-line react/jsx-no-bind
         onClick={onClick}
       />
     );

@@ -80,6 +80,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
         {(keytipAttributes: any): JSX.Element => (
           <div
             data-ktp-target={keytipAttributes['data-ktp-target']}
+            // eslint-disable-next-line react/jsx-no-bind
             ref={(splitButton: HTMLDivElement) => (this._splitButton = splitButton)}
             role={getMenuItemAriaRole(item)}
             aria-label={item.ariaLabel}
@@ -92,6 +93,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
             aria-posinset={focusableElementIndex + 1}
             aria-setsize={totalItemCount}
             onMouseEnter={this._onItemMouseEnterPrimary}
+            // eslint-disable-next-line react/jsx-no-bind
             onMouseLeave={
               onItemMouseLeave ? onItemMouseLeave.bind(this, { ...item, subMenuProps: null, items: null }) : undefined
             }

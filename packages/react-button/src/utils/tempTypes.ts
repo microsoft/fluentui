@@ -26,7 +26,7 @@ export type ComposeRender<TProps, TOptions> = (
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type ClassDictionary = any;
 
-// tslint:disable-next-line:no-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type GenericDictionary = Record<string, any>;
 
 export interface ComposeOptions<TProps, TSlots, TSlotProps, TStatics> {

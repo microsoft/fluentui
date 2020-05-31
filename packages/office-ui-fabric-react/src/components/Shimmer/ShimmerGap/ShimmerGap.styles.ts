@@ -12,7 +12,7 @@ export function getStyles(props: IShimmerGapStyleProps): IShimmerGapStyles {
   const { semanticColors } = theme;
   const globalClassNames = getGlobalClassNames(GlobalClassNames, theme);
 
-  const borderStyles: IRawStyle = !!borderStyle ? borderStyle : {};
+  const borderStyles: IRawStyle = borderStyle || {};
 
   return {
     root: [

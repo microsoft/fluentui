@@ -1,4 +1,3 @@
-/* eslint-disable jsx-wrap-multiline max-len */
 import * as React from 'react';
 import { FontIcon } from 'office-ui-fabric-react/lib/Icon';
 import { mergeStyles, registerIcons } from 'office-ui-fabric-react/lib/Styling';

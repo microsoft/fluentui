@@ -141,6 +141,7 @@ describe('SearchBox', () => {
 
   it('handles setting null value', () => {
     // this is not allowed per typings, but users might do it anyway
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     wrapper = mount(<SearchBox value={null as any} />);
     expect(wrapper.find('input').prop('value')).toBe('');
   });
@@ -154,6 +155,7 @@ describe('SearchBox', () => {
   it('handles updating value to null', () => {
     wrapper = mount(<SearchBox value="test" />);
     // this is not allowed per typings, but users might do it anyway
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     wrapper.setProps({ value: null as any });
     expect(wrapper.find('input').prop('value')).toBe('');
   });

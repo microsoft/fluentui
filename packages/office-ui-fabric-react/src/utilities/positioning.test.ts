@@ -268,7 +268,9 @@ describe('getBoundingRectangle', () => {
     getWindowSegments?: () => DOMRect[];
   }
 
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   const __INNER_HEIGHT = 1080;
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   const __INNER_WIDTH = 1920;
 
   it('Gets correct bounds in single screen scenarios where getWindowSegments call is not present', () => {

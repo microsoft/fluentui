@@ -179,7 +179,9 @@ export class PivotBase extends React.Component<IPivotProps, IPivotState> {
         id={tabId}
         key={itemKey}
         className={isSelected ? this._classNames.linkIsSelected : this._classNames.link}
+        // eslint-disable-next-line react/jsx-no-bind
         onClick={this._onLinkClick.bind(this, itemKey)}
+        // eslint-disable-next-line react/jsx-no-bind
         onKeyDown={this._onKeyDown.bind(this, itemKey)}
         aria-label={link.ariaLabel}
         role="tab"

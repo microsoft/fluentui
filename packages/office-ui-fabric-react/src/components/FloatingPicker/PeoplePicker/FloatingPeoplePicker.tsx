@@ -17,7 +17,6 @@ export interface IPeopleFloatingPickerProps extends IBaseFloatingPickerProps<IPe
 export class BaseFloatingPeoplePicker extends BaseFloatingPicker<IPersonaProps, IPeopleFloatingPickerProps> {}
 
 export class FloatingPeoplePicker extends BaseFloatingPeoplePicker {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public static defaultProps: any = {
     onRenderSuggestionsItem: (props: IPersonaProps, itemProps?: IBasePickerSuggestionsProps) =>
       SuggestionItemNormal({ ...props }, { ...itemProps }),
@@ -26,7 +25,6 @@ export class FloatingPeoplePicker extends BaseFloatingPeoplePicker {
 }
 
 export function createItem(name: string, isValid: boolean): ISuggestionModel<IPersonaProps> {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const personaToConvert: any = {
     key: name,
     primaryText: name,

@@ -76,6 +76,8 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
     });
 
     this.state = {
+      // TODO: investigate removing
+      // eslint-disable-next-line react/no-unused-state
       id: getId('Modal'),
       isOpen: props.isOpen,
       isVisible: props.isOpen,
@@ -398,9 +400,12 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
       const delta = this._getMoveDelta(event);
 
       switch (event.keyCode) {
+        /* eslint-disable no-fallthrough */
         case KeyCodes.escape:
           this.setState({ x: this._lastSetX, y: this._lastSetY });
         case KeyCodes.enter: {
+          // TODO: determine if fallthrough was intentional
+          /* eslint-enable no-fallthrough */
           this._lastSetX = 0;
           this._lastSetY = 0;
           this.setState({ isInKeyboardMoveMode: false });

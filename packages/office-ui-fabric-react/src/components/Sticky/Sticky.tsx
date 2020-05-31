@@ -230,8 +230,8 @@ export class Sticky extends React.Component<IStickyProps, IStickyState> {
   private _getNonStickyPlaceholderHeightAndWidth(): React.CSSProperties {
     const { isStickyTop, isStickyBottom } = this.state;
     if (isStickyTop || isStickyBottom) {
-      let height = 0,
-        width = 0;
+      let height = 0;
+      let width = 0;
       // Why is placeholder width needed?
       // ScrollablePane's content container is reponsible for providing scrollbars depending on content overflow.
       // - If the overflow is caused by content of sticky component when it is in non-sticky state, the container will

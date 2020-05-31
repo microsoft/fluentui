@@ -8,7 +8,7 @@ import { ContextualMenuAnchor } from './ContextualMenuAnchor';
 describe('ContextualMenuButton', () => {
   describe('creates a normal button', () => {
     let menuItem: IContextualMenuItem;
-    // eslint-disable-next-line deprecation
+    // eslint-disable-next-line deprecation/deprecation
     let menuClassNames: IMenuItemClassNames;
 
     beforeEach(() => {
@@ -80,7 +80,7 @@ describe('ContextualMenuButton', () => {
   });
 });
 
-// eslint-disable-next-line deprecation
+// eslint-disable-next-line deprecation/deprecation
 function getMenuItemClassNames(): IMenuItemClassNames {
   return {
     item: 'item',

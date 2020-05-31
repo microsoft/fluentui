@@ -766,6 +766,7 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
    */
   private _measurePage(page: IPage<T>): boolean {
     let hasChangedHeight = false;
+    // eslint-disable-next-line react/no-string-refs
     const pageElement = this.refs[page.key] as HTMLElement;
     const cachedHeight = this._cachedPageHeights[page.startIndex];
 

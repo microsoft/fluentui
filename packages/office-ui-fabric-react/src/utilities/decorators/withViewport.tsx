@@ -110,7 +110,7 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(
         }
       }
 
-      if (!!newSkipViewportMeasures) {
+      if (newSkipViewportMeasures) {
         this._updateViewport();
       }
     }
