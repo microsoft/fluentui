@@ -96,13 +96,16 @@ export const ButtonTokens = () => (
           fontWeight: '400',
           borderRadius: '3px',
           background: {
-            default: 'rgb(240, 193, 75) none repeat scroll 0% 0% / auto padding-box border-box',
+            default: 'linear-gradient(to bottom,#f7dfa5,#f0c14b)',
+            hovered: 'linear-gradient(to bottom,#f5d78e,#eeb933)',
+            pressed: '#f0c14b',
           },
           contentColor: {
             default: 'rgb(17, 17, 17)',
           },
           borderColor: {
             default: 'rgb(168, 135, 52) rgb(156, 126, 49) rgb(132, 106, 41)',
+            hovered: '#a88734 #9c7e31 #846a29',
           },
           padding: '0 10px',
         }}
@@ -112,10 +115,14 @@ export const ButtonTokens = () => (
       <Button
         tokens={{
           background: {
-            default: 'rgb(229, 9, 20) none repeat scroll 0% 0% / auto padding-box border-box',
+            default: 'rgb(229, 9, 20)',
+            hovered: 'rgb(255, 50, 61)',
+            pressed: 'rgb(229, 9, 20)',
           },
           contentColor: {
             default: 'rgb(255, 255, 255)',
+            hovered: 'rgb(255, 255, 255)',
+            pressed: 'rgb(255, 255, 255)',
           },
           borderColor: {
             default: 'rgb(255, 255, 255)',
