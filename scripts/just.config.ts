@@ -98,7 +98,7 @@ module.exports = function preset() {
   task('code-style', series('prettier', 'tslint'));
   task('update-api', series('clean', 'copy', 'sass', 'ts', 'api-extractor:update'));
 
-  task('dev:storybook', series('copy', 'sass', 'storybook:start'));
+  task('dev:storybook', series('storybook:start'));
   task('dev', series('copy', 'sass', 'webpack-dev-server'));
 
   task('build:node-lib', series('clean', 'copy', 'ts:commonjs-only')).cached();
