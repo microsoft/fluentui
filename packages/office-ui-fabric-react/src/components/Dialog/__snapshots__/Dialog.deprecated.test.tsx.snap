@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dialog deprecated props renders Dialog with className 1`] = `null`;
+
+exports[`Dialog deprecated props renders Dialog with containerClassName 1`] = `null`;
+
+exports[`Dialog deprecated props renders Dialog with isBlocking set to true 1`] = `null`;
+
+exports[`Dialog deprecated props renders Dialog with isDarkOverlay set to true 1`] = `null`;
