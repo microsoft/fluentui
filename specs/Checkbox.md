@@ -344,11 +344,8 @@ From accessibility point of view the main difference is in type of element used 
 
 Input slot:
 
-- should be focusable via `tabindex=0`
-- role set to `checkbox`
 - receives `aria-checked` representing checkbox state
 - receives `aria-disabled="true"` representing disabled checkbox
-- ? receives `aria-controls` representing set of checkboxes controlled by the mixed checkbox
 
 A visible label referenced by the value of `aria-labelledby` (id of element containing the label) set on the element with role `checkbox`.
 If there's additional static text representing that is descriptive, `aria-describedby` should be set to id of element containing the description.

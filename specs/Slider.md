@@ -347,10 +347,7 @@ The `thumb` slot:
 
 ### Accessibility concerns for the user
 
-User need to provide a label for the slider in order to understand context of the slider.
-The label can be set with `aria-label` or `aria-labeledby`.
-When the slider name/description is visible on the page then user should use `aria-labeledby`.
-Otherwise user uses the `aria-label`.
+[Follow generic hints.](https://hackmd.io/k2eJKI_JRs2Gew9dbrz00A?view#Component-labeling)
 
 ## Themability and customization
 
