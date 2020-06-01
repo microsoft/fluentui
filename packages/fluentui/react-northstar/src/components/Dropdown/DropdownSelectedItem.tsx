@@ -161,18 +161,20 @@ const DropdownSelectedItem: React.FC<WithAsProp<DropdownSelectedItemProps>> &
   });
 
   const mediaElement = Box.create(
-    Image.create(image, {
-      defaultProps: () => ({
-        avatar: true,
-        className: dropdownSelectedItemSlotClassNames.image,
-        styles: resolvedStyles.image,
-      }),
-    }),
+    {},
     {
       defaultProps: () => ({
         className: dropdownSelectedItemSlotClassNames.image,
-        styles: resolvedStyles.media,
       }),
+      overrideProps: {
+        children: Image.create(image, {
+          defaultProps: () => ({
+            avatar: true,
+            className: dropdownSelectedItemSlotClassNames.image,
+            styles: resolvedStyles.image,
+          }),
+        }),
+      },
     },
   );
 
@@ -186,7 +188,7 @@ const DropdownSelectedItem: React.FC<WithAsProp<DropdownSelectedItemProps>> &
         onKeyDown={handleKeyDown}
         {...unhandledProps}
       >
-        {imageElement}
+        {mediaElement}
         {contentElement}
         {iconElement}
       </ElementType>
