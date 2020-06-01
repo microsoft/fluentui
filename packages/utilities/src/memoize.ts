@@ -1,11 +1,5 @@
 import { Stylesheet } from '@uifabric/merge-styles';
 
-const stylesheet = Stylesheet.getInstance();
-
-if (stylesheet && stylesheet.onReset) {
-  Stylesheet.getInstance().onReset(resetMemoizations);
-}
-
 // tslint:disable:no-any
 declare class WeakMap {
   public get(key: any): any;
@@ -13,6 +7,7 @@ declare class WeakMap {
   public has(key: any): boolean;
 }
 
+let _hasInitializedStylesheetReset = false;
 let _resetCounter = 0;
 const _emptyObject = { empty: true };
 const _dictionary: any = {};
@@ -93,6 +88,15 @@ export function memoizeFunction<T extends (...args: any[]) => RET_TYPE, RET_TYPE
   // Avoid breaking scenarios which don't have weak map.
   if (!_weakMap) {
     return cb;
+  }
+
+  if (!_hasInitializedStylesheetReset) {
+    const stylesheet = Stylesheet.getInstance();
+
+    if (stylesheet && stylesheet.onReset) {
+      Stylesheet.getInstance().onReset(resetMemoizations);
+    }
+    _hasInitializedStylesheetReset = true;
   }
 
   let rootNode: any;
