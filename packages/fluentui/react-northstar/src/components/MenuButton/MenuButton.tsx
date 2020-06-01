@@ -198,7 +198,7 @@ const MenuButton: React.FC<MenuButtonProps> & FluentComponentStaticProps<MenuBut
     position,
     positionFixed,
     tabbableTrigger,
-    styles: stylesProp,
+    styles: props.styles,
     target,
     trigger,
     unstable_pinned,
