@@ -182,7 +182,7 @@ const MenuButton: React.FC<MenuButtonProps> & FluentComponentStaticProps<MenuBut
     rtl: context.rtl,
   });
 
-  const popupProps = {
+  const popupProps: PopupProps = {
     accessibility,
     align,
     className,
