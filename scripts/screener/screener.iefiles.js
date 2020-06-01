@@ -80,8 +80,9 @@
 // ].map(example => new RegExp(`${example}`));
 
 const glob = require('glob');
-const files = glob('**/*.steps.ts');
-const ieSteps = files.filter(file => require(file).steps.browsers?.includes('ie11'));
+const files = glob.sync(`../../**/*.steps.ts`);
+console.log(files);
+const ieSteps = files.filter(file => require(file).steps.browsers.includes('ie11'));
 const ieRegexes = ieSteps.map(file => new RegExp(file.replace(/\.steps\.ts$/, '.tsx')));
 
 export default ieRegexes;
