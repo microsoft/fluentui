@@ -83,6 +83,7 @@ declare module 'screener-runner' {
     export type ScreenerTestsConfig = {
       steps?: ScreenerStep[];
       themes?: ScreenerThemeName[];
+      browsers?: string[];
     };
   }
 }
