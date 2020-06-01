@@ -133,7 +133,6 @@ const MenuButton: React.FC<MenuButtonProps> & FluentComponentStaticProps<MenuBut
     offset,
     on,
     onOpenChange,
-    styles,
     overflowBoundary,
     pointing,
     position,
@@ -346,7 +345,6 @@ MenuButton.defaultProps = {
 };
 
 MenuButton.handledProps = Object.keys(MenuButton.propTypes) as any;
-
 
 MenuButton.create = createShorthandFactory({ Component: MenuButton, mappedProp: 'menu' });
 
