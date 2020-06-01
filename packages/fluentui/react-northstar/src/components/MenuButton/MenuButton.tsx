@@ -298,7 +298,6 @@ MenuButton.displayName = 'MenuButton';
 
 MenuButton.propTypes = {
   ...commonPropTypes.createCommon({
-    as: true,
     content: false,
   }),
   align: PropTypes.oneOf(ALIGNMENTS),
