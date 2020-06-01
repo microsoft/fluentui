@@ -1,4 +1,4 @@
-import GitHubApi from '@octokit/rest';
+import { Octokit } from '@octokit/rest';
 import * as yargs from 'yargs';
 import { fluentRepoDetails } from '../github/index';
 
@@ -48,7 +48,7 @@ export const repoDetails = {
 };
 
 // Authenticate with github and set up logging if debug arg is provided
-export const github = new GitHubApi({
+export const github = new Octokit({
   ...(argv.debug && { log: console }),
   auth: 'token ' + argv.token,
 });

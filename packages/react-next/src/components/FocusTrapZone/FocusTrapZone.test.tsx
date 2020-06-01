@@ -60,10 +60,13 @@ describe('FocusTrapZone', () => {
   // update based on focus events due to limitations of ReactDOM. Use lastFocusedElement to detect focus
   // change events.
   let lastFocusedElement: HTMLElement | undefined;
+  // tslint:disable-next-line:no-any
   let addEventListener: any;
+  // tslint:disable-next-line:no-any
   let componentEventListeners: any = {};
   const ftzClassname = 'ftzTestClassname';
 
+  // tslint:disable-next-line:no-any
   function _onFocus(ev: any): void {
     lastFocusedElement = ev.target;
   }
@@ -702,6 +705,7 @@ describe('FocusTrapZone', () => {
 
   describe('Nested FocusTrapZones Stack Behavior', () => {
     function getFocusStack(): FocusTrapZone[] {
+      // tslint:disable-next-line:no-any
       return (FocusTrapZone as any)._focusStack;
     }
 

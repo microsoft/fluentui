@@ -48,7 +48,7 @@ function generateData(count: number, cachingEnabled: boolean, checked: boolean):
 
   let result: IOverflowData = {
     primary: dataItems,
-    overflow: [] as any[],
+    overflow: [],
   };
 
   if (cachingEnabled) {
@@ -144,6 +144,7 @@ export class ResizeGroupOverflowSetExample extends React.Component<{}, IResizeGr
     );
   }
 
+  // tslint:disable-next-line:no-any
   private _onReduceData = (currentData: any): any => {
     if (currentData.primary.length === 0) {
       return undefined;
@@ -159,6 +160,7 @@ export class ResizeGroupOverflowSetExample extends React.Component<{}, IResizeGr
     return { primary, overflow, cacheKey };
   };
 
+  // tslint:disable-next-line:no-any
   private _onGrowData = (currentData: any): any => {
     if (currentData.overflow.length === 0) {
       return undefined;

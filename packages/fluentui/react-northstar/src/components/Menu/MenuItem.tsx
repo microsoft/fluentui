@@ -2,6 +2,7 @@ import { Accessibility, submenuBehavior, menuItemBehavior, MenuItemBehaviorProps
 import {
   compose,
   focusAsync,
+  mergeVariablesOverrides,
   useTelemetry,
   useAutoControlled,
   getElementType,
@@ -38,7 +39,6 @@ import { Popper, PopperShorthandProps, getPopperPropsFromShorthand } from '../..
 import { ThemeContext } from 'react-fela';
 import { MenuContext, MenuItemSubscribedValue } from './menuContext';
 import { useContextSelectors } from '@fluentui/react-context-selector';
-import { mergeComponentVariables } from '@fluentui/styles';
 
 export interface MenuItemSlotClassNames {
   submenu: string;
@@ -236,7 +236,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
     const slotProps = composeOptions.resolveSlotProps<MenuItemProps & MenuItemState>({
       ...props,
       accessibility,
-      variables: mergeComponentVariables(variables, parentProps.variables),
+      variables: mergeVariablesOverrides(variables, parentProps.variables),
       isFromKeyboard,
       menuOpen,
     });
@@ -282,7 +282,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
         className,
         design,
         styles,
-        variables: mergeComponentVariables(parentProps.variables, variables),
+        variables: mergeVariablesOverrides(parentProps.variables, variables),
       }),
       rtl: context.rtl,
       composeOptions,
@@ -499,7 +499,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
       wrapper: MenuItemWrapper,
     },
 
-    mapPropsToSlotProps: (props: MenuItemProps & MenuItemState) => ({
+    slotProps: (props: MenuItemProps & MenuItemState) => ({
       icon: {
         hasContent: !!props.content,
         iconOnly: props.iconOnly,

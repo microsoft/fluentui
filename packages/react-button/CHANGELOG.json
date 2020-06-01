@@ -2,6 +2,21 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Mon, 01 Jun 2020 12:32:45 GMT",
+      "tag": "@fluentui/react-button_v0.1.11",
+      "version": "0.1.11",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Explicitly importing react in tempTypes and fixing bug in mergeProps.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "f45840b653f743b1d9e6c7969d60265ced676212",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 20 May 2020 12:31:10 GMT",
       "tag": "@fluentui/react-button_v0.1.4",
       "version": "0.1.4",
