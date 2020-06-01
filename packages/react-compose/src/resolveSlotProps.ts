@@ -2,7 +2,7 @@ import * as React from 'react';
 import { MergePropsResult } from './mergeProps';
 import { defaultMappedProps } from './defaultMappedProps';
 import { ComposePreparedOptions } from './types';
-import { getNativeElementProps, assign } from '@uifabric/utilities';
+import { getNativeElementProps } from '@uifabric/utilities';
 
 export const NullRender = () => null;
 
@@ -25,7 +25,7 @@ export function resolveSlotProps<TProps, TState>(
     });
   });
 
-  // Mix unrecognized props onto root, appropriate, excluding the handled props.
+  //  Mix unrecognized props onto root, appropriate, excluding the handled props.
   assignToMapObject(
     slotProps,
     'root',
@@ -78,6 +78,6 @@ function assignToMapObject(map: Record<string, {}>, key: string, value: {}) {
     if (!map[key]) {
       map[key] = {};
     }
-    assign(map[key], value);
+    map[key] = { ...map[key], ...value };
   }
 }
