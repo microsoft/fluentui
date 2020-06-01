@@ -15,10 +15,13 @@ export interface ILink {
  * {@docCategory Link}
  */
 export interface ILinkHTMLAttributes<T> extends React.HTMLAttributes<T> {
+  as?: React.ElementType;
+
   // Shared
   type?: string;
 
   // Anchor
+  // tslint:disable-next-line:no-any
   download?: any;
   href?: string;
   hrefLang?: string;
@@ -39,6 +42,7 @@ export interface ILinkHTMLAttributes<T> extends React.HTMLAttributes<T> {
   value?: string | string[] | number;
 
   // Any other props for HTMLElements or a React component passed to as=
+  // tslint:disable-next-line:no-any
   [index: string]: any;
 }
 
@@ -68,11 +72,6 @@ export interface ILinkProps extends ILinkHTMLAttributes<HTMLAnchorElement | HTML
   theme?: ITheme;
 
   /**
-   * A component that should be used as the root element of the link returned from the Link component.
-   */
-  as?: string | React.ComponentClass | React.FunctionComponent;
-
-  /**
    * Optional keytip for this Link
    */
   keytipProps?: IKeytipProps;
@@ -94,3 +93,20 @@ export interface ILinkStyleProps {
 export interface ILinkStyles {
   root: IStyle;
 }
+
+/**
+ * {@docCategory Link}
+ */
+export interface ILinkSlots {}
+
+/**
+ * {@docCategory Link}
+ */
+export type LinkSlotProps = {
+  [key in keyof ILinkSlots]: ILinkProps[key];
+};
+
+/**
+ * {@docCategory Link}
+ */
+export interface ILinkOptions {}

@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Add dedicated touch invoke functionality to SelectionZone",
-  "packageName": "@uifabric/experiments",
-  "email": "sebastian.oettl@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-05-20T08:41:41.774Z"
-}
