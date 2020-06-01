@@ -1,8 +1,8 @@
-import { Accessibility } from '@fluentui/accessibility';
+import { Accessibility, FormFieldBehaviorProps, formFieldBehavior } from '@fluentui/accessibility';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-
+import { ExclamationCircleIcon } from '@fluentui/react-icons-northstar';
 import {
   childrenExist,
   createShorthandFactory,
@@ -28,7 +28,7 @@ export interface FormFieldProps extends UIComponentProps, ChildrenComponentProps
   /**
    * Accessibility behavior if overridden by the user.
    */
-  accessibility?: Accessibility<never>;
+  accessibility?: Accessibility<FormFieldBehaviorProps>;
 
   /** A control for the form field. */
   control?: ShorthandValue<BoxProps>;
@@ -53,11 +53,19 @@ export interface FormFieldProps extends UIComponentProps, ChildrenComponentProps
 
   /** The HTML input type. */
   type?: string;
+
+  errorMessage?: ShorthandValue<TextProps>;
+
+  errorIndicator?: ShorthandValue<BoxProps>;
+
+  satisfactoryIndicator?: ShorthandValue<BoxProps>;
 }
 
 export const formFieldClassName = 'ui-form__field';
 
-export type FormFieldStylesProps = Required<Pick<FormFieldProps, 'type' | 'inline' | 'required'>>;
+export type FormFieldStylesProps = Required<Pick<FormFieldProps, 'type' | 'inline' | 'required'>> & {
+  hasErrorMessage: boolean;
+};
 
 const FormField: React.FC<WithAsProp<FormFieldProps>> & FluentComponentStaticProps<FormFieldProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
@@ -78,13 +86,19 @@ const FormField: React.FC<WithAsProp<FormFieldProps>> & FluentComponentStaticPro
     styles,
     variables,
     inline,
+    errorMessage,
+    errorIndicator,
+    satisfactoryIndicator,
   } = props;
 
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(FormField.handledProps, props);
 
-  const getA11yProps = useAccessibility<never>(props.accessibility, {
+  const getA11yProps = useAccessibility<FormFieldBehaviorProps>(props.accessibility, {
     debugName: FormField.displayName,
+    mapPropsToBehavior: () => ({
+      hasErrorMessage: !!errorMessage,
+    }),
     rtl: context.rtl,
   });
 
@@ -94,6 +108,7 @@ const FormField: React.FC<WithAsProp<FormFieldProps>> & FluentComponentStaticPro
       type,
       inline,
       required,
+      hasErrorMessage: !!errorMessage,
     }),
     mapPropsToInlineStyles: () => ({
       className,
@@ -112,14 +127,31 @@ const FormField: React.FC<WithAsProp<FormFieldProps>> & FluentComponentStaticPro
     }),
   });
 
-  const messageElement = Text.create(message, {
+  const messageElement = Text.create(errorMessage || message, {
     defaultProps: () => ({
       styles: resolvedStyles.message,
     }),
   });
 
+  const iconElement = Box.create(errorIndicator || satisfactoryIndicator, {
+    defaultProps: () =>
+      getA11yProps('icon', {
+        title: name,
+        styles: resolvedStyles.icon,
+      }),
+  });
+
   const controlElement = Box.create(control || {}, {
-    defaultProps: () => ({ required, id, name, type, styles: resolvedStyles.control }),
+    defaultProps: () =>
+      getA11yProps('control', {
+        required,
+        id,
+        name,
+        type,
+        icon: !!errorMessage ? iconElement : null,
+        satisfactoryIndicator,
+        styles: resolvedStyles.control,
+      }),
   });
 
   const shouldControlAppearFirst = () => {
@@ -168,6 +200,8 @@ FormField.propTypes = {
 FormField.handledProps = Object.keys(FormField.propTypes) as any;
 
 FormField.defaultProps = {
+  accessibility: formFieldBehavior,
+  errorIndicator: <ExclamationCircleIcon />,
   as: 'div',
   control: { as: Input },
 };

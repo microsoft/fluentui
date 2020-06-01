@@ -90,6 +90,12 @@ export interface InputProps extends UIComponentProps, ChildrenComponentProps, Su
 
   /** Shorthand for the wrapper component. */
   wrapper?: ShorthandValue<BoxProps>;
+
+  /** Input can be required to be valid. */
+  required?: boolean;
+
+  /** Optional Icon to display inside the Input if required and fulfilled. */
+  satisfactoryIndicator?: ShorthandValue<BoxProps>;
 }
 
 export const inputClassName = 'ui-input';
@@ -102,6 +108,7 @@ export type InputStylesProps = Required<
   Pick<InputProps, 'fluid' | 'inverted' | 'inline' | 'disabled' | 'clearable' | 'iconPosition'> & {
     hasIcon: boolean;
     hasValue: boolean;
+    requiredAndSatisfactory: boolean;
   }
 >;
 
@@ -124,6 +131,8 @@ const Input: React.FC<WithAsProp<InputProps>> & FluentComponentStaticProps<Input
     design,
     styles,
     variables,
+    required,
+    satisfactoryIndicator,
   } = props;
   const inputRef = React.useRef<HTMLInputElement>();
 
@@ -137,6 +146,7 @@ const Input: React.FC<WithAsProp<InputProps>> & FluentComponentStaticProps<Input
     initialValue: '',
   });
   const hasValue: boolean = !!value && (value as string)?.length !== 0;
+  const requiredAndSatisfactory = required && !!satisfactoryIndicator && hasValue;
 
   const { styles: resolvedStyles } = useStyles<InputStylesProps>(Input.displayName, {
     className: inputClassName,
@@ -146,7 +156,8 @@ const Input: React.FC<WithAsProp<InputProps>> & FluentComponentStaticProps<Input
       inline,
       disabled,
       clearable,
-      hasIcon: !!icon,
+      hasIcon: !!icon || !!satisfactoryIndicator,
+      requiredAndSatisfactory,
       iconPosition,
       hasValue,
     }),
@@ -172,6 +183,7 @@ const Input: React.FC<WithAsProp<InputProps>> & FluentComponentStaticProps<Input
     },
     mapPropsToBehavior: () => ({
       disabled,
+      required,
     }),
     rtl: context.rtl,
   });
@@ -210,7 +222,9 @@ const Input: React.FC<WithAsProp<InputProps>> & FluentComponentStaticProps<Input
     if (clearable && (value as string)?.length !== 0) {
       return {};
     }
-
+    if (requiredAndSatisfactory) {
+      return satisfactoryIndicator;
+    }
     return icon || null;
   };
 
@@ -281,6 +295,7 @@ Input.propTypes = {
   type: PropTypes.string,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   wrapper: customPropTypes.wrapperShorthand,
+  required: PropTypes.bool,
 };
 
 Input.defaultProps = {

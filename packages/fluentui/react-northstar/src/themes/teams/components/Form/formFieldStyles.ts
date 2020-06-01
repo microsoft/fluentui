@@ -1,8 +1,9 @@
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { FormFieldStylesProps } from '../../../../components/Form/FormField';
 import { pxToRem } from '../../../../utils';
+import { FormFieldVariables } from './formFieldVariables';
 
-const formFieldStyles: ComponentSlotStylesPrepared<FormFieldStylesProps> = {
+const formFieldStyles: ComponentSlotStylesPrepared<FormFieldStylesProps, FormFieldVariables> = {
   root: ({ props, variables }): ICSSInJSStyle => ({}),
   label: ({ props }): ICSSInJSStyle => {
     const { type, inline, required } = props;
@@ -18,17 +19,22 @@ const formFieldStyles: ComponentSlotStylesPrepared<FormFieldStylesProps> = {
       }),
     };
   },
-  control: ({ props }): ICSSInJSStyle => {
-    const { type } = props;
+  control: ({ props, variables: v }): ICSSInJSStyle => {
+    const { type, hasErrorMessage } = props;
     return {
+      ...(hasErrorMessage && { border: `${pxToRem(1)} solid ${v.colorScheme.red.background}` }),
       ...(type &&
         (type === 'radio' || type === 'checkbox') && {
           marginRight: pxToRem(10),
         }),
     };
   },
-  message: (): ICSSInJSStyle => ({
+  message: ({ props: p, variables: v }): ICSSInJSStyle => ({
+    ...(p.hasErrorMessage && { color: v.colorScheme.red.foreground }),
     display: 'block',
+  }),
+  icon: ({ props: p, variables: v }): ICSSInJSStyle => ({
+    ...(p.hasErrorMessage && { color: v.colorScheme.red.foreground }),
   }),
 };
 

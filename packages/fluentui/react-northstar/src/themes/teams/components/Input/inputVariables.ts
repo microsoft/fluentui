@@ -19,6 +19,7 @@ export interface InputVariables {
   inputFocusBorderColor: string;
   inputFocusBorderRadius: string;
   placeholderColor: string;
+  satisfactoryColor: string;
 }
 
 export default (siteVars): InputVariables => ({
@@ -41,6 +42,7 @@ export default (siteVars): InputVariables => ({
   fontSize: siteVars.fontSizes.medium,
 
   iconColor: siteVars.colorScheme.default.foreground,
+  satisfactoryColor: siteVars.colorScheme.green.foreground,
   inputFocusBorderColor: `transparent transparent ${siteVars.colorScheme.brand.borderFocus1} transparent`,
   inputFocusBorderRadius: `${pxToRem(3)} ${pxToRem(3)} ${pxToRem(2)} ${pxToRem(2)}`,
   placeholderColor: siteVars.colorScheme.default.foreground1,

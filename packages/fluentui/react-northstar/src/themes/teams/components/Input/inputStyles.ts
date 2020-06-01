@@ -67,6 +67,9 @@ const inputStyles: ComponentSlotStylesPrepared<InputStylesProps, InputVariables>
     alignItems: 'center',
     justifyContent: 'center',
     position: v.iconPosition as PositionProperty,
+    ...(p.requiredAndSatisfactory && {
+      color: v.satisfactoryColor,
+    }),
     ...(p.disabled && {
       color: v.colorDisabled,
     }),
