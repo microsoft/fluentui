@@ -10,6 +10,7 @@ const inputBehavior: Accessibility<InputBehaviorProps> = props => ({
   attributes: {
     root: {
       'aria-disabled': props.disabled,
+      ...(props.required && { 'aria-required': true }),
     },
   },
   keyActions: {
