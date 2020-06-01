@@ -111,10 +111,9 @@ export interface IPivotProps extends React.HTMLAttributes<HTMLDivElement> {
  * {@docCategory Pivot}
  */
 export type IPivotStyleProps = Required<Pick<IPivotProps, 'theme'>> &
-  Pick<IPivotProps, 'className'> & {
-    linkSize?: PivotLinkSizeType;
-    linkFormat?: PivotLinkFormatType;
-
+  Pick<IPivotProps, 'className'> &
+  Pick<IPivotProps, 'linkSize'> &
+  Pick<IPivotProps, 'linkFormat'> & {
     /**
      * Indicates whether Pivot link is selected.
      * @deprecated Is not populated with valid value. Specify `linkIsSelected` styling instead.
