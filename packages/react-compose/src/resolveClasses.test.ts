@@ -78,21 +78,4 @@ describe('resolveClasses', () => {
       slots: { root: 'div', slot1: 'div' },
     });
   });
-
-  it('will ignore duplicates without filtering the classes', () => {
-    expect(
-      resolveClasses(
-        {
-          state: {},
-          slotProps: { root: { className: 'root' } },
-          slots: { root: 'div', slot1: 'div' },
-        },
-        [state => ({ root: 'root' }), { root: 'root' }],
-      ),
-    ).toEqual({
-      state: {},
-      slotProps: { root: { className: 'root root root' } },
-      slots: { root: 'div', slot1: 'div' },
-    });
-  });
 });
