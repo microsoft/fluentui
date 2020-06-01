@@ -9,6 +9,7 @@ import {
   UIComponentProps,
   ChildrenComponentProps,
   commonPropTypes,
+  getOrGenerateIdFromShorthand,
 } from '../../utils';
 import {
   WithAsProp,
@@ -54,10 +55,13 @@ export interface FormFieldProps extends UIComponentProps, ChildrenComponentProps
   /** The HTML input type. */
   type?: string;
 
+  /** Message to be shown when input has error */
   errorMessage?: ShorthandValue<TextProps>;
 
+  /** Indicator to be shown together with error message */
   errorIndicator?: ShorthandValue<BoxProps>;
 
+  /** Indicator to be shown when field is required and non-empty */
   satisfactoryIndicator?: ShorthandValue<BoxProps>;
 }
 
@@ -93,11 +97,14 @@ const FormField: React.FC<WithAsProp<FormFieldProps>> & FluentComponentStaticPro
 
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(FormField.handledProps, props);
+  const messageId = React.useRef<string>();
+  messageId.current = getOrGenerateIdFromShorthand('error-message-', message || errorMessage, messageId.current);
 
   const getA11yProps = useAccessibility<FormFieldBehaviorProps>(props.accessibility, {
     debugName: FormField.displayName,
     mapPropsToBehavior: () => ({
       hasErrorMessage: !!errorMessage,
+      messageId,
     }),
     rtl: context.rtl,
   });
@@ -120,17 +127,20 @@ const FormField: React.FC<WithAsProp<FormFieldProps>> & FluentComponentStaticPro
   });
 
   const labelElement = Text.create(label, {
-    defaultProps: () => ({
-      as: 'label',
-      htmlFor: id,
-      styles: resolvedStyles.label,
-    }),
+    defaultProps: () =>
+      getA11yProps('label', {
+        as: 'label',
+        htmlFor: id,
+        styles: resolvedStyles.label,
+      }),
   });
 
   const messageElement = Text.create(errorMessage || message, {
-    defaultProps: () => ({
-      styles: resolvedStyles.message,
-    }),
+    defaultProps: () =>
+      getA11yProps('message', {
+        id: messageId.current,
+        styles: resolvedStyles.message,
+      }),
   });
 
   const iconElement = Box.create(errorIndicator || satisfactoryIndicator, {
