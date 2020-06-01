@@ -66,6 +66,7 @@ export interface FormFieldProps extends UIComponentProps, ChildrenComponentProps
 }
 
 export const formFieldClassName = 'ui-form__field';
+export const formFieldMessageClassName = 'ui-form__field__message';
 
 export type FormFieldStylesProps = Required<Pick<FormFieldProps, 'type' | 'inline' | 'required'>> & {
   hasErrorMessage: boolean;
@@ -138,6 +139,7 @@ const FormField: React.FC<WithAsProp<FormFieldProps>> & FluentComponentStaticPro
   const messageElement = Text.create(errorMessage || message, {
     defaultProps: () =>
       getA11yProps('message', {
+        className: formFieldMessageClassName,
         id: messageId.current,
         styles: resolvedStyles.message,
       }),
