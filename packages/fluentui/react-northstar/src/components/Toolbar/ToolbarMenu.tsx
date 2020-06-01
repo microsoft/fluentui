@@ -186,7 +186,7 @@ const ToolbarMenu = compose<'ul', ToolbarMenuProps, ToolbarMenuStylesProps, {}, 
       group: ToolbarMenuRadioGroup,
       toggle: ToolbarMenuItem,
     },
-    mapPropsToSlotProps: props => ({
+    slotProps: props => ({
       item: {
         submenuIndicator: props.submenuIndicator,
         inSubmenu: props.submenu,
