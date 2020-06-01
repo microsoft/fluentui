@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "SpinButton: Reintroduce incorrect behavior of allowing updates when value is provided to prevent breaking partners.",
-  "packageName": "@fluentui/react-next",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-05-28T00:09:55.581Z"
-}

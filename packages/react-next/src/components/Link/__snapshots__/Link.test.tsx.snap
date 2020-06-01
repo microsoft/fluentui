@@ -62,11 +62,10 @@ exports[`Link renders disabled Link with no href as a button correctly 1`] = `
 `;
 
 exports[`Link supports non button/anchor html attributes when "as=" is used 1`] = `
-<blockquote
-  cite="hi"
+<input
   className="customClassName ms-Link"
   onClick={[Function]}
->
-  I'm a blockquote
-</blockquote>
+  type="text"
+  value="This is an input."
+/>
 `;

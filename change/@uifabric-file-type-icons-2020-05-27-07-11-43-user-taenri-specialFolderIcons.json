@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Add special folder icon types for file-type-icons.",
-  "packageName": "@uifabric/file-type-icons",
-  "email": "taenri@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-05-27T14:11:43.255Z"
-}

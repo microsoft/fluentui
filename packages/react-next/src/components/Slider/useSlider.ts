@@ -107,6 +107,7 @@ export const useSlider: (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =>
         if (props.onChanged) {
           props.onChanged(event, value as number);
         }
+        // tslint:disable-next-line:no-any
       }, ONKEYDOWN_TIMEOUT_DURATION) as any,
     );
   };

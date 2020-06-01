@@ -1,8 +1,8 @@
-import * as GitHubApi from '@octokit/rest';
+import { Octokit } from '@octokit/rest';
 import { IPullRequest, IRepoDetails } from './types';
 
 export interface IGetPullRequestFromCommitParams {
-  github: GitHubApi;
+  github: Octokit;
   repoDetails: IRepoDetails;
   /** Commit hash */
   commit: string;
@@ -53,7 +53,9 @@ export async function getPullRequestForCommit(
  * The `author.email` property is only present if `authorEmail` is provided.
  */
 export function processPullRequestApiResponse(
-  pr: GitHubApi.ReposListPullRequestsAssociatedWithCommitResponseItem | GitHubApi.PullsGetResponse,
+  pr:
+    | Octokit.ReposListPullRequestsAssociatedWithCommitResponseItem
+    | Octokit.SearchIssuesAndPullRequestsResponseItemsItem,
   authorEmail?: string,
 ): IPullRequest {
   return {
