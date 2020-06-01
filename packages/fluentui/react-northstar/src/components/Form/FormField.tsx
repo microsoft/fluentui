@@ -104,7 +104,7 @@ const FormField: React.FC<WithAsProp<FormFieldProps>> & FluentComponentStaticPro
     debugName: FormField.displayName,
     mapPropsToBehavior: () => ({
       hasErrorMessage: !!errorMessage,
-      messageId,
+      messageId: messageId.current,
     }),
     rtl: context.rtl,
   });
