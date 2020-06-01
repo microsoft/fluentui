@@ -117,16 +117,6 @@ const ToolbarItemGrey = compose<'button', {}, {}, ToolbarItemProps, ToolbarItemS
   },
 });
 
-const ToolbarViolet = compose<'div', {}, {}, ToolbarProps, ToolbarStylesProps>(Toolbar, {
-  displayName: 'ToolbarViolet',
-  slots: {
-    customItem: ToolbarCustomItemOlive,
-    divider: ToolbarDividerGreen,
-    group: ToolbarRadioGroupRed,
-    item: ToolbarItemGrey,
-  },
-});
-
 const ToolbarMenuDividerBlue = compose<'li', {}, {}, ToolbarMenuDividerProps, ToolbarMenuDividerStylesProps>(
   ToolbarMenuDivider,
   {
@@ -199,6 +189,17 @@ const ToolbarMenuBlue = compose<'ul', {}, {}, ToolbarMenuProps, ToolbarMenuStyle
     item: ToolbarMenuItemGrey,
     divider: ToolbarMenuDividerBlue,
     group: ToolbarMenuRadioGroupViolet,
+  },
+});
+
+const ToolbarViolet = compose<'div', {}, {}, ToolbarProps, ToolbarStylesProps>(Toolbar, {
+  displayName: 'ToolbarViolet',
+  slots: {
+    customItem: ToolbarCustomItemOlive,
+    divider: ToolbarDividerGreen,
+    group: ToolbarRadioGroupRed,
+    item: ToolbarItemGrey,
+    menu: ToolbarMenuBlue,
   },
 });
 
@@ -345,12 +346,13 @@ const ToolbarExampleMenuShorthand = () => {
                   content: 'Pause',
                   icon: <PauseIcon />,
                   menu: ['Pause 1.1'],
+                  menuOpen: true,
                 },
                 {
                   key: 'divider',
                   kind: 'divider',
                 },
-                { content: 'Without icon' },
+                'Without icon',
                 {
                   key: 'group',
                   kind: 'group',
@@ -360,7 +362,6 @@ const ToolbarExampleMenuShorthand = () => {
                   ],
                 },
               ],
-              children: (C, p) => <ToolbarMenuBlue {...p} />,
             },
             menuOpen: true,
           },

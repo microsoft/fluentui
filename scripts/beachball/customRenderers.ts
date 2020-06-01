@@ -1,5 +1,5 @@
 import { spawnSync } from 'child_process';
-import GitHubApi from '@octokit/rest';
+import { Octokit } from '@octokit/rest';
 import { PackageChangelogRenderInfo, ChangelogEntry } from 'beachball';
 import { getPullRequestForCommit, fluentRepoDetails } from '../github';
 
@@ -8,7 +8,7 @@ if (!githubPAT && (process.argv.includes('bump') || process.argv.includes('publi
   console.warn('\nGITHUB_PAT environment variable not found. GitHub requests may be rate-limited.\n');
 }
 
-const github = new GitHubApi({
+const github = new Octokit({
   ...fluentRepoDetails,
   ...(githubPAT && { auth: 'token ' + githubPAT }),
 });
