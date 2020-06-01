@@ -296,6 +296,7 @@ Input.propTypes = {
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   wrapper: customPropTypes.wrapperShorthand,
   required: PropTypes.bool,
+  satisfactoryIndicator: customPropTypes.shorthandAllowingChildren,
 };
 
 Input.defaultProps = {

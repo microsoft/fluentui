@@ -195,6 +195,9 @@ FormField.propTypes = {
   name: PropTypes.string,
   required: PropTypes.bool,
   type: PropTypes.string,
+  satisfactoryIndicator: customPropTypes.shorthandAllowingChildren,
+  errorIndicator: customPropTypes.shorthandAllowingChildren,
+  errorMessage: PropTypes.string,
 };
 
 FormField.handledProps = Object.keys(FormField.propTypes) as any;
