@@ -160,7 +160,7 @@ const DropdownSelectedItem: React.FC<WithAsProp<DropdownSelectedItemProps>> &
     overrideProps: handleIconOverrides,
   });
 
-  const imageElement = Box.create(
+  const mediaElement = Box.create(
     Image.create(image, {
       defaultProps: () => ({
         avatar: true,
