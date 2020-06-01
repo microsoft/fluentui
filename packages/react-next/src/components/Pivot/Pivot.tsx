@@ -21,20 +21,22 @@ const getStaticStylesMemoized = memoizeFunction(
   (theme: ITheme, className?: string, linkSize?: PivotLinkSizeType, linkFormat?: PivotLinkFormatType) => {
     const globalClassNames = getGlobalClassNames(GlobalClassNames, theme);
 
-    const rootModifiers = [
-      linkSize === 'large' && css(classes.linkSize_large, globalClassNames.rootIsLarge),
-      linkFormat === 'tabs' && css(classes.linkFormat_tabs, globalClassNames.rootIsTabs),
+    const modifierClasses = [
+      linkSize === 'large' && classes.linkSize_large,
+      linkSize === 'large' && globalClassNames.rootIsLarge,
+      linkFormat === 'tabs' && classes.linkFormat_tabs,
+      linkFormat === 'tabs' && globalClassNames.rootIsTabs,
     ];
 
     return {
-      root: css(className, classes.root, globalClassNames.root, ...rootModifiers),
-      link: css(classes.link, globalClassNames.link),
-      linkContent: css(classes.linkContent, globalClassNames.linkContent),
-      linkIsSelected: css(classes.linkIsSelected, globalClassNames.linkIsSelected),
-      text: css(classes.text, globalClassNames.text),
-      count: css(classes.count, globalClassNames.count),
-      icon: css(globalClassNames.icon),
-      itemContainer: css(classes.itemContainer),
+      root: css(className, classes.root, globalClassNames.root, ...modifierClasses),
+      link: css(classes.link, globalClassNames.link, ...modifierClasses),
+      linkContent: css(classes.linkContent, globalClassNames.linkContent, ...modifierClasses),
+      linkIsSelected: css(classes.linkIsSelected, globalClassNames.linkIsSelected, ...modifierClasses),
+      text: css(classes.text, globalClassNames.text, ...modifierClasses),
+      count: css(classes.count, globalClassNames.count, ...modifierClasses),
+      icon: css(globalClassNames.icon, ...modifierClasses),
+      itemContainer: css(classes.itemContainer, ...modifierClasses),
     };
   },
 );
