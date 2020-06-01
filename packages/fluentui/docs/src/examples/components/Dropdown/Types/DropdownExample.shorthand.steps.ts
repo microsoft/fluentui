@@ -29,6 +29,7 @@ const config: ScreenerTestsConfig = {
         .keys(selectors.triggerButton, keys.downArrow)
         .snapshot('Focuses second item'),
   ],
+  browsers: ['ie11'],
 };
 
 export default config;

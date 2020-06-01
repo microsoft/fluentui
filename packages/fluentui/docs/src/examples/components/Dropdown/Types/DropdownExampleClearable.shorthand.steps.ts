@@ -16,6 +16,7 @@ const config: ScreenerTestsConfig = {
         .click(selectors.clearIndicator)
         .snapshot('Clears the value'),
   ],
+  browsers: ['ie11'],
 };
 
 export default config;

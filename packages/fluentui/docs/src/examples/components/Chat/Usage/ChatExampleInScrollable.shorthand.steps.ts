@@ -45,6 +45,7 @@ const config: ScreenerTestsConfig = {
         .hover(selectors.item(4))
         .snapshot('Hovers fourth message'),
   ],
+  browsers: ['ie11'],
 };
 
 export default config;

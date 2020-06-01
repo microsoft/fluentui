@@ -6,6 +6,7 @@ const selectors = {
 
 const config: ScreenerTestsConfig = {
   steps: [builder => builder.click(selectors.trigger).snapshot('Opens a dropdown')],
+  browsers: ['ie11'],
 };
 
 export default config;

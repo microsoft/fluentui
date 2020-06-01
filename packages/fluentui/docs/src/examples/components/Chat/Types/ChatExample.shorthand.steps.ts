@@ -14,6 +14,7 @@ const config: ScreenerTestsConfig = {
         .keys(selectors.message, keys.downArrow)
         .snapshot('Focuses second message'),
   ],
+  browsers: ['ie11'],
 };
 
 export default config;

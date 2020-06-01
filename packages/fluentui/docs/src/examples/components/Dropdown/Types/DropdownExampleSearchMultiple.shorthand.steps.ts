@@ -21,6 +21,7 @@ const config: ScreenerTestsConfig = {
         .hover(selectors.selectedItem(1))
         .snapshot('Hovers first selected element'),
   ],
+  browsers: ['ie11'],
 };
 
 export default config;

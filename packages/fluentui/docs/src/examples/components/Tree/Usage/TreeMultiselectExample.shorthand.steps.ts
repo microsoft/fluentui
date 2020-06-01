@@ -36,6 +36,7 @@ const config: ScreenerTestsConfig = {
         .keys(selectors.treeItem(15), keys.space)
         .snapshot('toggle group selected'),
   ],
+  browsers: ['ie11'],
 };
 
 export default config;

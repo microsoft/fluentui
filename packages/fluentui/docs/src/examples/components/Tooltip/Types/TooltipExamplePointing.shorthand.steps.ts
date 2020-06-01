@@ -10,6 +10,7 @@ const config: ScreenerTestsConfig = {
         .click(`.${buttonClassName}`)
         .snapshot('No outline after click'),
   ],
+  browsers: ['ie11'],
 };
 
 export default config;

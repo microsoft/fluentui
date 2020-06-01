@@ -18,6 +18,7 @@ const config: ScreenerTestsConfig = {
         .keys(selectors.lastItem, keys.downArrow)
         .snapshot('Focuses on the first element in the submenu'),
   ],
+  browsers: ['ie11'],
 };
 
 export default config;
