@@ -1,5 +1,14 @@
 import * as React from 'react';
 import { ComponentProps, ShorthandValue, ComposeOptions, ComposeStandardStatics } from '../../utils/tempTypes';
+import { TokenSetType } from '@fluentui/react-theme-provider';
+
+export type RecursivePartial<T> = {
+  [P in keyof T]?: T[P] extends (infer U)[]
+    ? RecursivePartial<U>[]
+    : T[P] extends object
+    ? RecursivePartial<T[P]>
+    : T[P];
+};
 
 export type SizeValue = 'smallest' | 'smaller' | 'small' | 'medium' | 'large' | 'larger' | 'largest';
 
@@ -68,6 +77,8 @@ export interface ButtonProps extends ComponentProps, React.HTMLAttributes<HTMLBu
   // TODO: Deprecate or rename to textOnly for alignment with iconOnly?
   /** A button can be formatted to show only text in order to indicate a less-pronounced action. */
   // text?: boolean;
+
+  tokens?: RecursivePartial<ButtonTokens>;
 }
 
 export interface ButtonSlots {
@@ -82,3 +93,68 @@ export type ButtonSlotProps = {
 
 export interface ButtonOptions
   extends ComposeOptions<ButtonProps, ButtonSlots, ButtonSlotProps, ComposeStandardStatics> {}
+
+export interface ButtonTokens {
+  /* sizing */
+  padding: string;
+  margin: string;
+  height: string;
+  minWidth: string;
+  maxWidth: string;
+
+  contentGap: string;
+  iconSize: string;
+
+  borderRadius: string;
+  borderWidth: string;
+
+  size: {
+    smallest: string;
+    smaller: string;
+    small: string;
+    regular: string;
+    large: string;
+    larger: string;
+    largest: string;
+  };
+
+  transform: {
+    default: string;
+    hovered: string;
+    pressed: string;
+  };
+
+  transition: string;
+
+  background: TokenColorSet;
+  contentColor: TokenColorSet;
+  iconColor: TokenColorSet;
+  borderColor: TokenColorSet;
+  focusColor: TokenColorSet;
+  focusInnerColor: TokenColorSet;
+
+  accent: {
+    background: TokenColorSet;
+    contentColor: TokenColorSet;
+    iconColor: TokenColorSet;
+    borderColor: TokenColorSet;
+    focusColor: TokenColorSet;
+    focusInnerColor: TokenColorSet;
+  };
+
+  fontFamily: string;
+  fontSize: string;
+  fontWeight: string;
+}
+
+export type TokenColorSet = {
+  default: string;
+  hovered: string;
+  focused: string;
+  pressed: string;
+  checked: string;
+  checkedHovered: string;
+  checkedFocused: string;
+  checkedPressed: string;
+  disabled: string;
+};

@@ -20,7 +20,6 @@
   --button-minWidth: 96px;
   --button-maxWidth: 280px;
 
-  --button-borderRadius: 3px;
   --button-contentGap: 10px;
   --button-iconSize: 16px;
 
@@ -40,42 +39,47 @@
   --button-fontWeight: 600;
 
   /* TODO: Remove. Colors should only be defined in the theme. */
-  --button-fill: white;
-  --button-fill-hovered: rgb(237, 235, 233);
-  --button-fill-focused: var(--button-fill);
-  --button-fill-pressed: rgb(225, 223, 221);
-  --button-fill-disabled: var(--button-fill-hovered);
-  --button-text: rgb(44, 38, 33);
-  --button-text-hovered: var(--button-text);
-  --button-text-focused: var(--button-text);
-  --button-text-pressed: var(--button-text);
-  --button-text-disabled: rgb(200, 198, 196);
+  --button-background: white;
+  --button-background-hovered: rgb(237, 235, 233);
+  --button-background-focused: var(--button-background);
+  --button-background-pressed: rgb(225, 223, 221);
+  --button-background-disabled: rgb(237, 235, 233);
+  --button-contentColor: rgb(44, 38, 33);
+  --button-contentColor-hovered: var(--button-contentColor);
+  --button-contentColor-focused: var(--button-contentColor);
+  --button-contentColor-pressed: var(--button-contentColor);
+  --button-contentColor-disabled: rgb(200, 198, 196);
   --button-borderColor: rgb(225, 223, 221);
   --button-borderColor-disabled: transparent;
   --button-icon: inherit;
-  --button-icon-hovered: var(--button-icon);
-  --button-icon-pressed: var(--button-icon);
-  --button-icon-focused: var(--button-icon);
-  --button-icon-disabled: var(--button-text-disabled);
+  --button-iconColor-hovered: var(--button-icon);
+  --button-iconColor-pressed: var(--button-icon);
+  --button-iconColor-focused: var(--button-icon);
+  --button-iconColor-disabled: var(--button-contentColor-disabled);
+
+  --button-focusColor: #000;
+  --button-focusInnerColor: #fff;
 
   /* TODO: Remove. Accent should only be defined in the theme. */
   --accent-fill: rgb(98, 100, 167);
-  --accent-fill-hovered: rgb(88, 90, 150);
-  --accent-fill-focused: var(--accent-fill);
-  --accent-fill-pressed: rgb(70, 71, 117);
-  --accent-fill-disabled: var(--accent-hovered);
-  --accent-text: white;
-  --accent-text-hovered: var(--accent-text);
-  --accent-text-focused: var(--accent-text);
-  --accent-text-pressed: var(--accent-text);
-  --accent-text-disabled: rgb(200, 198, 196);
+
+  --accent-background-focused: var(--accent-fill);
+  --accent-background-hovered: rgb(88, 90, 150);
+  --accent-background-pressed: rgb(70, 71, 117);
+  --accent-background-disabled: rgb(237, 235, 233);
+
+  --accent-contentColor: white;
+  --accent-contentColor-hovered: var(--accent-contentColor);
+  --accent-contentColor-focused: var(--accent-contentColor);
+  --accent-contentColor-pressed: var(--accent-contentColor);
+  --accent-contentColor-disabled: rgb(200, 198, 196);
   --accent-borderColor: transparent;
 
   --accent-icon: inherit;
-  --accent-icon-hovered: var(--accent-icon);
-  --accent-icon-pressed: var(--accent-icon);
-  --accent-icon-focused: var(--accent-icon);
-  --accent-icon-disabled: var(--accent-text-disabled);
+  --accent-iconColor-hovered: var(--accent-icon);
+  --accent-iconColor-pressed: var(--accent-icon);
+  --accent-iconColor-focused: var(--accent-icon);
+  --accent-iconColor-disabled: var(--accent-contentColor-disabled);
 }
 
 /**
@@ -99,13 +103,15 @@
   outline: none;
   position: relative;
   user-select: none;
+  box-sizing: border-box;
 
-  background: var(--button-fill);
+  background: var(--button-background, white);
+  color: var(--button-contentColor, rgb(44, 38, 33));
+
   border-color: var(--button-borderColor);
   border-radius: var(--button-borderRadius);
   border-width: var(--button-borderWidth);
   box-shadow: var(--button-boxShadow);
-  color: var(--button-text);
   height: var(--button-height);
   padding: var(--button-padding);
   transition: var(--button-transition);
@@ -120,9 +126,12 @@
 
 .icon {
   color: var(--button-icon);
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: var(--button-iconSize);
   height: var(--button-iconSize);
+  font-size: var(--button-iconSize, inherit);
 }
 
 .loader {
@@ -135,20 +144,20 @@
   margin-left: var(--button-contentGap);
 }
 
-.root:hovered {
-  background-color: var(--button-fill-hovered, var(--button-fill));
-  color: var(--button-text-hovered, var(--button-text));
+.root:hover {
+  background: var(--button-background-hovered, var(--button-background));
+  color: var(--button-contentColor-hovered, var(--button-contentColor));
   border-color: var(--button-borderColor-hovered, var(--button-borderColor));
   box-shadow: var(--button-boxShadow-hovered, var(--button-boxShadow));
 
   .icon {
-    color: var(--button-icon-hovered, var(--button-text-hovered));
+    color: var(--button-iconColor-hovered, var(--button-contentColor-hovered));
   }
 }
 
 .root:active {
-  background-color: var(--button-fill-pressed, var(--button-fill-hovered));
-  color: var(--button-text-pressed, var(--button-text-hovered));
+  background: var(--button-background-pressed, var(--button-background-hovered));
+  color: var(--button-contentColor-pressed, var(--button-contentColor-hovered, var(--button-contentColor)));
   border-color: var(--button-borderColor-pressed, var(--button-borderColor-hovered, var(--button-borderColor)));
   box-shadow: var(--button-boxShadow-pressed, var(--button-boxShadow-hovered, var(--button-boxShadow)));
 
@@ -156,11 +165,11 @@
   transition: var(--button-transition-pressed);
 
   .icon {
-    color: var(--button-icon-pressed, var(--button-text-pressed));
+    color: var(--button-iconColor-pressed, var(--button-contentColor-pressed));
   }
 }
 
-.root:focused::after {
+.root:focus::after {
   position: absolute;
   left: -1px;
   top: -1px;
@@ -169,8 +178,8 @@
   content: '';
   box-sizing: border-box;
   border-radius: var(--button-borderRadius);
-  box-shadow: 0 0 0 var(--button-focusedInnerWidth, 1px) var(--button-focusedInner, var(--accent-text)) inset;
-  border: var(--button-focusedWidth, 2px) solid var(--button-focused, var(--accent-fill));
+  border: var(--button-focus-width, 2px) solid var(--button-focusColor);
+  box-shadow: 0 0 0 var(--button-focus-innerWidth, 1px) var(--button-focusInnerColor) inset;
 }
 
 /**
@@ -184,19 +193,20 @@
  **/
 
 .primary {
-  --button-fill: var(--accent-fill);
-  --button-fill-hovered: var(--accent-fill-hovered);
-  --button-fill-pressed: var(--accent-fill-pressed);
+  --button-background: var(--accent-fill);
+  --button-background-hovered: var(--accent-background-hovered);
+  --button-background-pressed: var(--accent-background-pressed);
 
-  --button-text: var(--accent-text);
-  --button-text-hovered: var(--accent-text-hovered);
-  --button-text-pressed: var(--accent-text-pressed);
+  --button-contentColor: var(--accent-contentColor);
+  --button-contentColor-hovered: var(--accent-contentColor-hovered);
+  --button-contentColor-pressed: var(--accent-contentColor-pressed);
+  --button-contentColor-disabled: var(--accent-contentColor-disabled);
 
   --button-borderColor: var(--accent-borderColor);
 
   --button-icon: var(--accent-icon);
-  --button-icon-hovered: var(--accent-icon-hovered);
-  --button-icon-pressed: var(--accent-icon-pressed);
+  --button-iconColor-hovered: var(--accent-iconColor-hovered);
+  --button-iconColor-pressed: var(--accent-iconColor-pressed);
 }
 
 .iconOnly {
@@ -216,13 +226,13 @@
 
 .disabled {
   pointer-events: none;
-  background-color: var(--button-fill-disabled);
-  color: var(--button-text-disabled);
+  background-color: var(--button-background-disabled);
+  color: var(--button-contentColor-disabled);
   border-color: var(--button-borderColor-disabled);
   box-shadow: var(--button-boxShadow-disabled);
 
   .icon {
-    color: var(--button-icon-disabled, var(--button-text-disabled));
+    color: var(--button-iconColor-disabled, var(--button-contentColor-disabled));
   }
 }
 
