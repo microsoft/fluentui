@@ -4,7 +4,7 @@ import { classNamesFunction, memoizeFunction } from '../../Utilities';
 import { getColorFromString } from 'office-ui-fabric-react/lib/utilities/color/getColorFromString';
 import { GridCell } from 'office-ui-fabric-react/lib/utilities/grid/GridCell';
 import { IGridCellProps } from 'office-ui-fabric-react/lib/utilities/grid/GridCell.types';
-import { getStyles as getActionButtonStyles } from 'office-ui-fabric-react/lib/components//Button/ActionButton/ActionButton.styles';
+import { getStyles as getActionButtonStyles } from 'office-ui-fabric-react/lib/components/Button/ActionButton/ActionButton.styles';
 import { IButtonClassNames } from 'office-ui-fabric-react/lib/components/Button/BaseButton.classNames';
 import {
   IColorCellProps,

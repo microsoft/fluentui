@@ -3,13 +3,13 @@ import { SwatchColorPickerBasicExample } from './examples/SwatchColorPicker.Basi
 
 import { IDocPageProps } from '../../common/DocPage.types';
 
-const SwatchColorPickerBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SwatchColorPicker/examples/SwatchColorPicker.Basic.Example.tsx') as string;
+const SwatchColorPickerBasicExampleCode = require('!raw-loader!react-next/src/components/SwatchColorPicker/examples/SwatchColorPicker.Basic.Example.tsx') as string;
 
 export const SwatchColorPickerPageProps: IDocPageProps = {
   title: 'SwatchColorPicker',
   componentName: 'SwatchColorPicker',
   componentUrl:
-    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/SwatchColorPicker',
+    'https://github.com/microsoft/fluentui/tree/master/packages/react-next/src/components/SwatchColorPicker',
   examples: [
     {
       title: 'SwatchColorPicker',
@@ -19,14 +19,10 @@ export const SwatchColorPickerPageProps: IDocPageProps = {
   ],
   overview: require<
     string
-  >('!raw-loader!office-ui-fabric-react/src/components/SwatchColorPicker/docs/SwatchColorPickerOverview.md'),
+  >('!raw-loader!react-next/src/components/SwatchColorPicker/docs/SwatchColorPickerOverview.md'),
   bestPractices: '',
-  dos: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/SwatchColorPicker/docs/SwatchColorPickerDos.md'),
-  donts: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/SwatchColorPicker/docs/SwatchColorPickerDonts.md'),
+  dos: require<string>('!raw-loader!react-next/src/components/SwatchColorPicker/docs/SwatchColorPickerDos.md'),
+  donts: require<string>('!raw-loader!react-next/src/components/SwatchColorPicker/docs/SwatchColorPickerDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };
