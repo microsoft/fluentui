@@ -1,5 +1,5 @@
 import cx from 'classnames';
-import { GenericDictionary } from './mergeProps';
+import { GenericDictionary } from './tempTypes';
 
 /**
  * NOTE! THIS FILE IS TEMPORARY AND SHOULD BE DELETED ONCE IT HAS MOVED ELSEWHERE.
