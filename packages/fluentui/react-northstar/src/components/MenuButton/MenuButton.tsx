@@ -209,7 +209,7 @@ const MenuButton: React.FC<MenuButtonProps> & FluentComponentStaticProps<MenuBut
     className: menuButtonClassName,
     mapPropsToInlineStyles: () => ({
       className,
-      styles,
+      styles: props.styles,
       variables,
     }),
     rtl: context.rtl,
