@@ -27,7 +27,7 @@ export function resolveClasses<TState>(
       Object.keys(classObj).forEach((key: string) => {
         const classValue = classObj[key];
 
-        if (classValue && slots[key]) {
+        if (slots[key]) {
           addToMapArray(classMap, key, classValue);
         }
       });
@@ -52,7 +52,7 @@ export function resolveClasses<TState>(
 /**
  * Ensures that map[key] exists, or is initialized as any array, and pushes value to it.
  */
-function addToMapArray(map: Record<string, string[]>, key: string, value: string) {
+function addToMapArray(map: Record<string, string[]>, key: string, value?: string) {
   if (value) {
     if (!map[key]) {
       map[key] = [value];
