@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Toggle: Using compose in react-next version.",
-  "packageName": "@fluentui/react-next",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-05-28T01:36:09.339Z"
-}

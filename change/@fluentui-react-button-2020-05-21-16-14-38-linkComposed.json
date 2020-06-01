@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Explicitly importing react in tempTypes and fixing bug in mergeProps.",
-  "packageName": "@fluentui/react-button",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-05-21T23:14:38.148Z"
-}

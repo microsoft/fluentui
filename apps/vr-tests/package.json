@@ -14,8 +14,8 @@
     "test": "just-scripts test"
   },
   "dependencies": {
-    "@fluentui/react-button": "^0.1.10",
-    "@fluentui/react-next": "^8.0.0-alpha.31",
+    "@fluentui/react-button": "^0.1.11",
+    "@fluentui/react-next": "^8.0.0-alpha.32",
     "@uifabric/example-data": "^7.0.14",
     "@uifabric/experiments": "^7.25.0",
     "@uifabric/react-cards": "^0.109.91",
