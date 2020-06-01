@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 import * as renderer from 'react-test-renderer';
 
 import { setWarningCallback } from '../../Utilities';
@@ -12,15 +13,23 @@ describe('Dialog deprecated props', () => {
     setWarningCallback(() => {
       /* no-op */
     });
+    (ReactDOM.createPortal as any) = jest.fn((element, node) => {
+      return element;
+    });
   });
 
   afterEach(() => {
+    (ReactDOM.createPortal as any).mockClear();
     jest.useRealTimers();
   });
 
   it('renders Dialog with className', () => {
     const component = renderer.create(
-      <DialogBase className="Dialog" dialogContentProps={{ title: 'Sample title', subText: 'Sample subtext' }} />,
+      <DialogBase
+        className="Dialog"
+        isOpen
+        dialogContentProps={{ title: 'Sample title', subText: 'Sample subtext' }}
+      />,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -30,6 +39,7 @@ describe('Dialog deprecated props', () => {
     const component = renderer.create(
       <DialogBase
         containerClassName="Container"
+        isOpen
         dialogContentProps={{ title: 'Sample title', subText: 'Sample subtext' }}
       />,
     );
@@ -39,7 +49,7 @@ describe('Dialog deprecated props', () => {
 
   it('renders Dialog with isBlocking set to true', () => {
     const component = renderer.create(
-      <DialogBase isBlocking dialogContentProps={{ title: 'Sample title', subText: 'Sample subtext' }} />,
+      <DialogBase isBlocking isOpen dialogContentProps={{ title: 'Sample title', subText: 'Sample subtext' }} />,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -47,7 +57,7 @@ describe('Dialog deprecated props', () => {
 
   it('renders Dialog with isDarkOverlay set to true', () => {
     const component = renderer.create(
-      <DialogBase isDarkOverlay dialogContentProps={{ title: 'Sample title', subText: 'Sample subtext' }} />,
+      <DialogBase isDarkOverlay isOpen dialogContentProps={{ title: 'Sample title', subText: 'Sample subtext' }} />,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
