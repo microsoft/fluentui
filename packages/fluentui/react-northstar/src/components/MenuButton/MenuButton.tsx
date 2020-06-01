@@ -230,7 +230,7 @@ const MenuButton: React.FC<MenuButtonProps> & FluentComponentStaticProps<MenuBut
     callback && callback();
   };
 
-  const handleMenuOverrides = (predefinedProps?: MenuProps) => ({
+  const handleMenuOverrides = (predefinedProps: MenuProps) => ({
     onItemClick: (e: React.SyntheticEvent, itemProps: MenuItemProps) => {
       _.invoke(predefinedProps, 'onItemClick', e, itemProps);
       _.invoke(props, 'onMenuItemClick', e, itemProps);
