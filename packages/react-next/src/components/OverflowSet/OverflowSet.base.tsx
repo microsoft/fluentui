@@ -183,58 +183,59 @@ export class OverflowSetBase extends React.Component<IOverflowSetProps, {}> impl
     });
   };
 
-  private _onRenderOverflowButtonWrapper = (items: any[]): JSX.Element => {
+  private _onRenderOverflowButtonWrapper = (items?: IOverflowSetItemProps[]): JSX.Element => {
     const wrapperDivProps: React.HTMLProps<HTMLDivElement> = {
       className: this._classNames.overflowButton,
     };
 
     const overflowKeytipSequences = this.props.keytipSequences;
-    let newOverflowItems: any[] = [];
+    let newOverflowItems: IOverflowSetItemProps[] = [];
 
     if (overflowKeytipSequences) {
-      items.forEach(overflowItem => {
-        const keytip = (overflowItem as IOverflowSetItemProps).keytipProps;
-        if (keytip) {
-          // Create persisted keytip
-          const persistedKeytip: IKeytipProps = {
-            content: keytip.content,
-            keySequences: keytip.keySequences,
-            disabled: keytip.disabled || !!(overflowItem.disabled || overflowItem.isDisabled),
-            hasDynamicChildren: keytip.hasDynamicChildren,
-            hasMenu: keytip.hasMenu,
-          };
+      items &&
+        items.forEach(overflowItem => {
+          const keytip = (overflowItem as IOverflowSetItemProps).keytipProps;
+          if (keytip) {
+            // Create persisted keytip
+            const persistedKeytip: IKeytipProps = {
+              content: keytip.content,
+              keySequences: keytip.keySequences,
+              disabled: keytip.disabled || !!(overflowItem.disabled || overflowItem.isDisabled),
+              hasDynamicChildren: keytip.hasDynamicChildren,
+              hasMenu: keytip.hasMenu,
+            };
 
-          if (keytip.hasDynamicChildren || this._getSubMenuForItem(overflowItem)) {
-            // If the keytip has a submenu or children nodes, change onExecute to persistedKeytipExecute
-            persistedKeytip.onExecute = this._keytipManager.menuExecute.bind(
-              this._keytipManager,
-              overflowKeytipSequences,
-              overflowItem.keytipProps.keySequences,
-            );
+            if (keytip.hasDynamicChildren || this._getSubMenuForItem(overflowItem)) {
+              // If the keytip has a submenu or children nodes, change onExecute to persistedKeytipExecute
+              persistedKeytip.onExecute = this._keytipManager.menuExecute.bind(
+                this._keytipManager,
+                overflowKeytipSequences,
+                overflowItem.keytipProps && overflowItem.keytipProps.keySequences,
+              );
+            } else {
+              // If the keytip doesn't have a submenu, just execute the original function
+              persistedKeytip.onExecute = keytip.onExecute;
+            }
+
+            // Add this persisted keytip to our internal list, use a temporary uniqueID (its content)
+            // uniqueID will get updated on register
+            this._persistedKeytips[persistedKeytip.content] = persistedKeytip;
+
+            // Add the overflow sequence to this item
+            const newOverflowItem = {
+              ...overflowItem,
+              keytipProps: {
+                ...keytip,
+                overflowSetSequence: overflowKeytipSequences,
+              },
+            };
+            newOverflowItems.push(newOverflowItem);
           } else {
-            // If the keytip doesn't have a submenu, just execute the original function
-            persistedKeytip.onExecute = keytip.onExecute;
+            // Nothing to change, add overflowItem to list
+            newOverflowItems.push(overflowItem);
           }
-
-          // Add this persisted keytip to our internal list, use a temporary uniqueID (its content)
-          // uniqueID will get updated on register
-          this._persistedKeytips[persistedKeytip.content] = persistedKeytip;
-
-          // Add the overflow sequence to this item
-          const newOverflowItem = {
-            ...overflowItem,
-            keytipProps: {
-              ...keytip,
-              overflowSetSequence: overflowKeytipSequences,
-            },
-          };
-          newOverflowItems.push(newOverflowItem);
-        } else {
-          // Nothing to change, add overflowItem to list
-          newOverflowItems.push(overflowItem);
-        }
-      });
-    } else {
+        });
+    } else if (items) {
       newOverflowItems = items;
     }
     return <div {...wrapperDivProps}>{this.props.onRenderOverflowButton(newOverflowItems)}</div>;
@@ -244,7 +245,8 @@ export class OverflowSetBase extends React.Component<IOverflowSetProps, {}> impl
    * Gets the subMenu for an overflow item
    * Checks if itemSubMenuProvider has been defined, if not defaults to subMenuProps
    */
-  private _getSubMenuForItem(item: any): any[] | undefined {
+  // tslint:disable-next-line:no-any
+  private _getSubMenuForItem(item: IOverflowSetItemProps): any[] | undefined {
     if (this.props.itemSubMenuProvider) {
       return this.props.itemSubMenuProvider(item);
     }

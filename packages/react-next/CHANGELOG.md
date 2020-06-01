@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-next
 
-This log was last generated on Fri, 29 May 2020 12:35:34 GMT and should not be manually modified.
+This log was last generated on Mon, 01 Jun 2020 12:32:45 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-alpha.32](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.32)
+
+Mon, 01 Jun 2020 12:32:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.31..@fluentui/react-next_v8.0.0-alpha.32)
+
+### Changes
+
+- Link: Using compose in react-next version. ([PR #13196](https://github.com/microsoft/fluentui/pull/13196) by humbertomakotomorimoto@gmail.com)
+- Toggle: Using compose in react-next version. ([PR #13369](https://github.com/microsoft/fluentui/pull/13369) by humbertomakotomorimoto@gmail.com)
+- Enabling no-any tslint rule on react-next package and disabling it on a case by case basis. ([PR #13408](https://github.com/microsoft/fluentui/pull/13408) by humbertomakotomorimoto@gmail.com)
 
 ## [8.0.0-alpha.31](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.31)
 

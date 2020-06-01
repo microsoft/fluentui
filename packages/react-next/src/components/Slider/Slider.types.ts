@@ -10,6 +10,8 @@ export interface ISlider {
 
   focus: () => void;
 }
+
+// tslint:disable-next-line:no-any
 export type ISliderState = any;
 
 /**

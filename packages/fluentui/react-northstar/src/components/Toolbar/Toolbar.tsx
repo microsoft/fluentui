@@ -558,7 +558,7 @@ const Toolbar = compose<'div', ToolbarProps, ToolbarStylesProps, {}, {}>(
       overflowItem: ToolbarItem,
       menu: ToolbarMenu,
     },
-    mapPropsToSlotProps: () => ({
+    slotProps: () => ({
       toggle: {
         accessibility: toggleButtonBehavior,
       },
