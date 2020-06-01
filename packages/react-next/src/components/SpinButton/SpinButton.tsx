@@ -16,7 +16,7 @@ import { Position } from 'office-ui-fabric-react/lib/utilities/positioning';
 import { getStyles, getArrowButtonStyles } from './SpinButton.styles';
 import { getClassNames } from './SpinButton.classNames';
 import { KeytipData } from '../../KeytipData';
-import { useBoolean } from '@uifabric/react-hooks';
+import { useBoolean, useSetTimeout } from '@uifabric/react-hooks';
 
 export enum KeyboardSpinDirection {
   down = -1,
@@ -267,6 +267,7 @@ export const SpinButton = (props: ISpinButtonProps) => {
     stepDelay: number,
     stepFunction: (value: string) => string | void,
   ): void => {
+    const safeSetTimeout = useSetTimeout();
     const newValue: string | void = stepFunction(value);
     if (newValue) {
       state.lastValidValue = newValue;
@@ -278,16 +279,16 @@ export const SpinButton = (props: ISpinButtonProps) => {
     }
 
     if (shouldSpin) {
-      // state.currentStepFunctionHandle = this._async.setTimeout(() => {
-      //   updateValue(shouldSpin, stepDelay, stepFunction);
-      // }, stepDelay);
+      safeSetTimeout(() => {
+        updateValue(shouldSpin, stepDelay, stepFunction);
+      }, stepDelay);
     }
   };
 
   // Stop spinning (clear any currently pending update and set spinning to false)
   const stop = (): void => {
     if (state.currentStepFunctionHandle >= 0) {
-      // this._async.clearTimeout(state.currentStepFunctionHandle);
+      clearTimeout(state.currentStepFunctionHandle);
       state.currentStepFunctionHandle = -1;
     }
     if (state.spinningByMouse || keyboardSpinDirection !== KeyboardSpinDirection.notSpinning) {
