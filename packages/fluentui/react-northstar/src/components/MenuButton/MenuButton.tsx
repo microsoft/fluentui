@@ -347,7 +347,6 @@ MenuButton.defaultProps = {
 
 MenuButton.handledProps = Object.keys(MenuButton.propTypes) as any;
 
-// MenuButton.autoControlledProps = ['open'];
 
 MenuButton.create = createShorthandFactory({ Component: MenuButton, mappedProp: 'menu' });
 
