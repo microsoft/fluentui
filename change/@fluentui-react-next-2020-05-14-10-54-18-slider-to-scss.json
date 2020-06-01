@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Slider: Convert to scss",
-  "packageName": "@fluentui/react-next",
-  "email": "joschect@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-05-14T17:54:18.675Z"
-}

@@ -7,7 +7,7 @@ import implementsCollectionShorthandProp from '../../commonTests/implementsColle
 import MenuItem from 'src/components/Menu/MenuItem';
 import { menuBehavior, menuAsToolbarBehavior, tabListBehavior, tabBehavior } from '@fluentui/accessibility';
 import { ReactWrapper } from 'enzyme';
-import * as keyboardKey from 'keyboard-key';
+import { SpacebarKey } from '@fluentui/keyboard-key';
 
 const menuImplementsCollectionShorthandProp = implementsCollectionShorthandProp(Menu);
 
@@ -82,7 +82,7 @@ describe('Menu', () => {
         .at(1)
         .find('a')
         .first()
-        .simulate('keydown', { keyCode: keyboardKey.Spacebar });
+        .simulate('keydown', { keyCode: SpacebarKey });
 
       expect(
         menuItems
@@ -99,7 +99,7 @@ describe('Menu', () => {
         .at(0)
         .find('a')
         .first()
-        .simulate('keydown', { keyCode: keyboardKey.Spacebar });
+        .simulate('keydown', { keyCode: SpacebarKey });
 
       expect(
         menuItems
@@ -110,30 +110,6 @@ describe('Menu', () => {
           .getDOMNode()
           .getAttribute('aria-expanded'),
       ).toBe('false');
-    });
-
-    describe('activeIndex', () => {
-      it('should not be set by default', () => {
-        const menuItems = mountWithProvider(<Menu items={getItems()} />).find('MenuItem');
-
-        expect(menuItems.everyWhere(item => !item.is('[active="true"]'))).toBe(true);
-      });
-
-      it('should be set when item is clicked', () => {
-        const wrapper = mountWithProvider(<Menu items={getItems()} />);
-        const menuItems = wrapper.find('MenuItem');
-
-        menuItems
-          .at(1)
-          .find('a')
-          .first()
-          .simulate('click');
-
-        const updatedItems = wrapper.find('MenuItem');
-
-        expect(updatedItems.at(0).props()).toHaveProperty('active', false);
-        expect(updatedItems.at(1).props()).toHaveProperty('active', true);
-      });
     });
 
     describe('itemsCount and itemPosition', () => {

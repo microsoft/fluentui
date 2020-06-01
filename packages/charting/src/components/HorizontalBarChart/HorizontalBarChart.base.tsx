@@ -1,9 +1,14 @@
 import * as React from 'react';
 import { classNamesFunction, find } from 'office-ui-fabric-react/lib/Utilities';
 import { IProcessedStyleSet, IPalette } from 'office-ui-fabric-react/lib/Styling';
-import { IChartProps, IHorizontalBarChartProps, IHorizontalBarChartStyles, IChartDataPoint } from './index';
+import {
+  IChartProps,
+  IHorizontalBarChartProps,
+  IHorizontalBarChartStyleProps,
+  IHorizontalBarChartStyles,
+  IChartDataPoint,
+} from './index';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
-import { IHorizontalBarChartStyleProps } from '@uifabric/charting';
 
 const getClassNames = classNamesFunction<IHorizontalBarChartStyleProps, IHorizontalBarChartStyles>();
 

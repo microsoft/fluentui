@@ -27,31 +27,38 @@ export class LineChartBasicExample extends React.Component<{}, {}> {
           data: [
             {
               x: new Date('2020-03-03T00:00:00.000Z'),
-              y: 217,
+              y: 217000,
+              onDataPointClick: () => alert('click on 217000'),
             },
             {
               x: new Date('2020-03-04T00:00:00.000Z'),
-              y: 248,
+              y: 248000,
+              onDataPointClick: () => alert('click on 248000'),
             },
             {
               x: new Date('2020-03-05T00:00:00.000Z'),
-              y: 252,
+              y: 252000,
+              onDataPointClick: () => alert('click on 252000'),
             },
             {
               x: new Date('2020-03-06T00:00:00.000Z'),
-              y: 274,
+              y: 274000,
+              onDataPointClick: () => alert('click on 274000'),
             },
             {
               x: new Date('2020-03-07T00:00:00.000Z'),
-              y: 260,
+              y: 260000,
+              onDataPointClick: () => alert('click on 260000'),
             },
             {
               x: new Date('2020-03-08T00:00:00.000Z'),
-              y: 300,
+              y: 300000,
+              onDataPointClick: () => alert('click on 300000'),
             },
             {
               x: new Date('2020-03-09T00:00:00.000Z'),
-              y: 218,
+              y: 218000,
+              onDataPointClick: () => alert('click on 218000'),
             },
           ],
           color: DefaultPalette.blue,
@@ -62,31 +69,31 @@ export class LineChartBasicExample extends React.Component<{}, {}> {
           data: [
             {
               x: new Date('2020-03-03T00:00:00.000Z'),
-              y: 297,
+              y: 297000,
             },
             {
               x: new Date('2020-03-04T00:00:00.000Z'),
-              y: 284,
+              y: 284000,
             },
             {
               x: new Date('2020-03-05T00:00:00.000Z'),
-              y: 282,
+              y: 282000,
             },
             {
               x: new Date('2020-03-06T00:00:00.000Z'),
-              y: 294,
+              y: 294000,
             },
             {
               x: new Date('2020-03-07T00:00:00.000Z'),
-              y: 224,
+              y: 224000,
             },
             {
               x: new Date('2020-03-08T00:00:00.000Z'),
-              y: 300,
+              y: 300000,
             },
             {
               x: new Date('2020-03-09T00:00:00.000Z'),
-              y: 298,
+              y: 298000,
             },
           ],
           color: DefaultPalette.green,

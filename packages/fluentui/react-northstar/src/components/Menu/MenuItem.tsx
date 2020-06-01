@@ -1,7 +1,8 @@
-import { Accessibility, menuItemBehavior, submenuBehavior, MenuItemBehaviorProps } from '@fluentui/accessibility';
+import { Accessibility, submenuBehavior, menuItemBehavior, MenuItemBehaviorProps } from '@fluentui/accessibility';
 import {
   compose,
   focusAsync,
+  mergeVariablesOverrides,
   useTelemetry,
   useAutoControlled,
   getElementType,
@@ -9,6 +10,7 @@ import {
   useAccessibility,
   useStyles,
   ComponentWithAs,
+  ShorthandConfig,
 } from '@fluentui/react-bindings';
 import { EventListener } from '@fluentui/react-component-event-listener';
 import { Ref, handleRef } from '@fluentui/react-component-ref';
@@ -25,7 +27,6 @@ import {
   ContentComponentProps,
   commonPropTypes,
   isFromKeyboard as isEventFromKeyboard,
-  ShorthandConfig,
 } from '../../utils';
 import Menu, { MenuProps, MenuShorthandKinds } from './Menu';
 import MenuItemIcon, { MenuItemIconProps } from './MenuItemIcon';
@@ -36,6 +37,8 @@ import { ComponentEventHandler, ShorthandValue, ShorthandCollection, ProviderCon
 import { Popper, PopperShorthandProps, getPopperPropsFromShorthand } from '../../utils/positioner';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
+import { MenuContext, MenuItemSubscribedValue } from './menuContext';
+import { useContextSelectors } from '@fluentui/react-context-selector';
 
 export interface MenuItemSlotClassNames {
   submenu: string;
@@ -173,12 +176,30 @@ export const menuItemSlotClassNames: MenuItemSlotClassNames = {
  * A MenuItem is an actionable item within a Menu.
  */
 export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>(
-  (props, ref, composeOptions) => {
+  (inputProps, ref, composeOptions) => {
     const context: ProviderContextPrepared = React.useContext(ThemeContext);
     const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
     setStart();
 
+    const parentProps = (useContextSelectors(MenuContext, {
+      active: v => v.activeIndex === inputProps.index,
+      onItemClick: v => v.onItemClick,
+      variables: v => v.variables,
+      menuSlot: v => v.slots.menu,
+      slotProps: v => v.slotProps.item,
+      accessibility: v => v.behaviors.item,
+    }) as unknown) as MenuItemSubscribedValue; // TODO: we should improve typings for the useContextSelectors
+
+    const props = {
+      ...parentProps.slotProps,
+      active: parentProps.active,
+      variables: parentProps.variables,
+      accessibility: parentProps.accessibility,
+      ...inputProps,
+    };
+
     const {
+      accessibility = menuItemBehavior,
       children,
       content,
       icon,
@@ -190,7 +211,6 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
       vertical,
       indicator,
       disabled,
-      accessibility,
       underlined,
       iconOnly,
       inSubmenu,
@@ -215,6 +235,8 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
 
     const slotProps = composeOptions.resolveSlotProps<MenuItemProps & MenuItemState>({
       ...props,
+      accessibility,
+      variables: mergeVariablesOverrides(variables, parentProps.variables),
       isFromKeyboard,
       menuOpen,
     });
@@ -260,7 +282,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
         className,
         design,
         styles,
-        variables,
+        variables: mergeVariablesOverrides(parentProps.variables, variables),
       }),
       rtl: context.rtl,
       composeOptions,
@@ -305,9 +327,9 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
         e.preventDefault();
         return;
       }
-
       performClick(e);
-      _.invoke(props, 'onClick', e, props);
+
+      _.invoke({ onClick: parentProps.onItemClick, ...props }, 'onClick', e, props);
     };
 
     const handleBlur = (e: React.FocusEvent) => {
@@ -403,20 +425,25 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
           })}
           {...(!wrapper && { onClick: handleClick })}
         >
-          {createShorthand(composeOptions.slots.icon, icon, {
-            defaultProps: () => getA11yProps('icon', slotProps.icon),
-          })}
-          {createShorthand(composeOptions.slots.content, content, {
-            defaultProps: () => getA11yProps('content', slotProps.content),
-          })}
-          {menu &&
-            createShorthand(composeOptions.slots.indicator, indicator, {
-              defaultProps: () => getA11yProps('indicator', slotProps.indicator),
-            })}
+          {childrenExist(children) ? (
+            children
+          ) : (
+            <>
+              {createShorthand(composeOptions.slots.icon, icon, {
+                defaultProps: () => getA11yProps('icon', slotProps.icon),
+              })}
+              {createShorthand(composeOptions.slots.content, content, {
+                defaultProps: () => getA11yProps('content', slotProps.content),
+              })}
+              {menu &&
+                createShorthand(composeOptions.slots.indicator, indicator, {
+                  defaultProps: () => getA11yProps('indicator', slotProps.indicator),
+                })}
+            </>
+          )}
         </ElementType>
       </Ref>
     );
-
     const maybeSubmenu =
       menu && active && menuOpen ? (
         <>
@@ -427,16 +454,10 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
               targetRef={itemRef}
               {...getPopperPropsFromShorthand(menu)}
             >
-              {Menu.create(menu, {
+              {createShorthand(parentProps.menuSlot || composeOptions.slots.menu || Menu, menu, {
                 defaultProps: () => ({
-                  accessibility: submenuBehavior,
-                  className: menuItemSlotClassNames.submenu,
-                  vertical: true,
-                  primary,
-                  secondary,
+                  ...slotProps.menu,
                   styles: resolvedStyles.menu,
-                  submenu: true,
-                  indicator,
                 }),
               })}
             </Popper>
@@ -451,7 +472,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
         overrideProps: () => ({
           children: (
             <>
-              {childrenExist(children) ? children : menuItemInner}
+              {menuItemInner}
               {maybeSubmenu}
             </>
           ),
@@ -478,7 +499,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
       wrapper: MenuItemWrapper,
     },
 
-    mapPropsToSlotProps: (props: MenuItemProps & MenuItemState) => ({
+    slotProps: (props: MenuItemProps & MenuItemState) => ({
       icon: {
         hasContent: !!props.content,
         iconOnly: props.iconOnly,
@@ -508,6 +529,15 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
         underlined: props.underlined,
         vertical: props.vertical,
         primary: props.primary,
+      },
+      menu: {
+        accessibility: submenuBehavior,
+        className: menuItemSlotClassNames.submenu,
+        vertical: true,
+        primary: props.primary,
+        secondary: props.secondary,
+        submenu: true,
+        indicator: props.indicator,
       },
     }),
 
@@ -545,6 +575,9 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
       'styles',
       'variables',
     ],
+    shorthandConfig: {
+      mappedProp: 'content',
+    },
   },
 ) as ComponentWithAs<'a', MenuItemProps> & {
   shorthandConfig: ShorthandConfig<MenuItemProps>;
@@ -582,13 +615,8 @@ MenuItem.propTypes = {
 
 MenuItem.defaultProps = {
   as: 'a',
-  accessibility: menuItemBehavior as Accessibility,
   wrapper: {},
   indicator: {},
-};
-
-MenuItem.shorthandConfig = {
-  mappedProp: 'content',
 };
 
 export default MenuItem;

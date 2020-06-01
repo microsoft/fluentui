@@ -154,7 +154,7 @@ const BaseComponentWithSlots: React.FC<BaseComponentProps> = compose<
       main: 'b',
       end: 'i',
     },
-    mapPropsToSlotProps: (props: any) => ({
+    slotProps: props => ({
       start: {
         'data-attr': props['data-start'],
       },
@@ -241,7 +241,7 @@ describe('useCompose', () => {
     >(BaseComponentWithSlots, {
       className: 'ui-composed-with-slots',
       displayName: 'ComposedComponentWithSlots',
-      mapPropsToSlotProps: props => ({
+      slotProps: props => ({
         start: { 'data-attr': false },
         main: { 'data-main-composed': props['data-main-composed'] },
       }),

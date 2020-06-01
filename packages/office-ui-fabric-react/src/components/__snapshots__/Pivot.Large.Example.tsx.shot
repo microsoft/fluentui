@@ -524,7 +524,14 @@ exports[`Component Examples renders Pivot.Large.Example.tsx correctly 1`] = `
       </button>
     </div>
     <div
+      aria-hidden={false}
       aria-labelledby="Pivot0-Tab0"
+      className=
+
+          &[hidden] {
+            display: none;
+          }
+      hidden={false}
       role="tabpanel"
     >
       <div>
