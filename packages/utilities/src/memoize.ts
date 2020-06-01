@@ -7,7 +7,7 @@ declare class WeakMap {
   public has(key: any): boolean;
 }
 
-let _hasInitializedStylesheetReset = false;
+let _initializedStylesheetResets = false;
 let _resetCounter = 0;
 const _emptyObject = { empty: true };
 const _dictionary: any = {};
@@ -90,13 +90,13 @@ export function memoizeFunction<T extends (...args: any[]) => RET_TYPE, RET_TYPE
     return cb;
   }
 
-  if (!_hasInitializedStylesheetReset) {
+  if (!_initializedStylesheetResets) {
     const stylesheet = Stylesheet.getInstance();
 
     if (stylesheet && stylesheet.onReset) {
       Stylesheet.getInstance().onReset(resetMemoizations);
     }
-    _hasInitializedStylesheetReset = true;
+    _initializedStylesheetResets = true;
   }
 
   let rootNode: any;
