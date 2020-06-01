@@ -499,7 +499,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
       wrapper: MenuItemWrapper,
     },
 
-    mapPropsToSlotProps: (props: MenuItemProps & MenuItemState) => ({
+    slotProps: (props: MenuItemProps & MenuItemState) => ({
       icon: {
         hasContent: !!props.content,
         iconOnly: props.iconOnly,

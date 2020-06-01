@@ -50,6 +50,7 @@ import { ToolbarVariablesProvider } from './toolbarVariablesContext';
 import ToolbarMenuItemSubmenuIndicator from './ToolbarMenuItemSubmenuIndicator';
 import ToolbarMenuItemIcon from './ToolbarMenuItemIcon';
 import ToolbarMenuItemActiveIndicator from './ToolbarMenuItemActiveIndicator';
+import { ToolbarMenuContextProvider } from './toolbarMenuContext';
 
 export type ToolbarItemShorthandKinds = {
   item: ToolbarItemProps;
@@ -509,10 +510,12 @@ const Toolbar = compose<'div', ToolbarProps, ToolbarStylesProps, {}, {}>(
           {getA11Props.unstable_wrapWithFocusZone(
             <ElementType {...getA11Props('root', { className: classes.root, ...unhandledProps })}>
               <div className={classes.overflowContainer} ref={overflowContainerRef}>
-                <ToolbarVariablesProvider value={variables}>
-                  {childrenExist(children) ? children : renderItems(getVisibleItems())}
-                  {renderOverflowItem(overflowItem)}
-                </ToolbarVariablesProvider>
+                <ToolbarMenuContextProvider value={{ slots: { menu: composeOptions.slots.menu } }}>
+                  <ToolbarVariablesProvider value={variables}>
+                    {childrenExist(children) ? children : renderItems(getVisibleItems())}
+                    {renderOverflowItem(overflowItem)}
+                  </ToolbarVariablesProvider>
+                </ToolbarMenuContextProvider>
               </div>
               <div className={classes.offsetMeasure} ref={offsetMeasureRef} />
             </ElementType>,
@@ -529,9 +532,11 @@ const Toolbar = compose<'div', ToolbarProps, ToolbarStylesProps, {}, {}>(
       >
         {getA11Props.unstable_wrapWithFocusZone(
           <ElementType {...getA11Props('root', { className: classes.root, ...unhandledProps })}>
-            <ToolbarVariablesProvider value={variables}>
-              {childrenExist(children) ? children : renderItems(items)}
-            </ToolbarVariablesProvider>
+            <ToolbarMenuContextProvider value={{ slots: { menu: composeOptions.slots.menu } }}>
+              <ToolbarVariablesProvider value={variables}>
+                {childrenExist(children) ? children : renderItems(items)}
+              </ToolbarVariablesProvider>
+            </ToolbarMenuContextProvider>
           </ElementType>,
         )}
       </Ref>
@@ -551,8 +556,9 @@ const Toolbar = compose<'div', ToolbarProps, ToolbarStylesProps, {}, {}>(
       group: ToolbarRadioGroup,
       toggle: ToolbarItem,
       overflowItem: ToolbarItem,
+      menu: ToolbarMenu,
     },
-    mapPropsToSlotProps: () => ({
+    slotProps: () => ({
       toggle: {
         accessibility: toggleButtonBehavior,
       },

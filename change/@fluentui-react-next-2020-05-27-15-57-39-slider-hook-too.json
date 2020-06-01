@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "NextSlider: update to use only hooks",
-  "packageName": "@fluentui/react-next",
-  "email": "joschect@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-05-27T22:57:39.370Z"
-}
