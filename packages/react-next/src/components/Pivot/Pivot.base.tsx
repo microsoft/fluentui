@@ -12,9 +12,6 @@ import { useId } from '@uifabric/react-hooks';
 const getClassNamesCall = classNamesFunction<IPivotStyleProps, IPivotStyles>({
   useStaticStyles: true,
 });
-export interface IPivotState {
-  selectedKey: string | undefined;
-}
 
 const COMPONENT_NAME = 'Pivot';
 
