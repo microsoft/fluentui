@@ -11,24 +11,6 @@ export function mergeComposeOptions(
     ? [...parentOptions.slotProps, inputOptions.slotProps]
     : parentOptions.slotProps;
 
-  const resolveSlotProps = <P = {}>(props: P) =>
-    mapPropsToSlotPropsChain.reduce<Record<string, object>>((acc, definition) => {
-      const nextProps = { ...definition(props) };
-      const slots: string[] = [...Object.keys(acc), ...Object.keys(nextProps)];
-      const mergedSlotProps: Record<string, object> = {};
-
-      slots.forEach(slot => {
-        if (!mergedSlotProps[slot]) {
-          mergedSlotProps[slot] = {
-            ...acc[slot],
-            ...nextProps[slot],
-          };
-        }
-      });
-
-      return mergedSlotProps;
-    }, {});
-
   return {
     className: inputOptions.className || parentOptions.className,
     classes: [...parentOptions.classes, inputOptions.classes],
@@ -52,8 +34,6 @@ export function mergeComposeOptions(
     },
 
     slotProps: mapPropsToSlotPropsChain,
-
-    resolveSlotProps,
 
     shorthandConfig: {
       ...parentOptions.shorthandConfig,

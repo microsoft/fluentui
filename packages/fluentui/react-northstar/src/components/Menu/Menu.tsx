@@ -1,15 +1,16 @@
 import { Accessibility, menuBehavior, MenuBehaviorProps } from '@fluentui/accessibility';
 import {
-  compose,
   ComponentWithAs,
+  ShorthandConfig,
+  compose,
   getElementType,
+  mergeProps,
   mergeVariablesOverrides,
   useAccessibility,
   useAutoControlled,
   useStyles,
   useTelemetry,
   useUnhandledProps,
-  ShorthandConfig,
 } from '@fluentui/react-bindings';
 import { Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
@@ -178,7 +179,7 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
 
     const ElementType = getElementType(props);
 
-    const slotProps = composeOptions.resolveSlotProps(props);
+    const slotProps = mergeProps(props, composeOptions);
 
     const itemProps = useSlotProps('item', slotProps);
     const dividerProps = useSlotProps('divider', slotProps);

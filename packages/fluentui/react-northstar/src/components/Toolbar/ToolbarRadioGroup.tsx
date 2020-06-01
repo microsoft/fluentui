@@ -1,17 +1,18 @@
 import {
   Accessibility,
+  ToolbarRadioGroupBehaviorProps,
   toolbarRadioGroupBehavior,
   toolbarRadioGroupItemBehavior,
-  ToolbarRadioGroupBehaviorProps,
 } from '@fluentui/accessibility';
 import {
   compose,
   getElementType,
+  mergeProps,
   mergeVariablesOverrides,
-  useUnhandledProps,
   useAccessibility,
   useStyles,
   useTelemetry,
+  useUnhandledProps,
 } from '@fluentui/react-bindings';
 import { Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
@@ -71,7 +72,7 @@ const ToolbarRadioGroup = compose<'div', ToolbarRadioGroupProps, ToolbarRadioGro
     const { accessibility, activeIndex, children, className, design, items, variables, styles } = props;
     const itemRefs: React.RefObject<HTMLElement>[] = [];
 
-    const slotProps = composeOptions.resolveSlotProps(props);
+    const slotProps = mergeProps(props, composeOptions);
     const parentVariables = React.useContext(ToolbarVariablesContext);
     const mergedVariables = mergeVariablesOverrides(parentVariables, variables);
 

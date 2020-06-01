@@ -1,7 +1,8 @@
 import {
-  compose,
   RendererRenderRule,
   StylesContextValue,
+  compose,
+  mergeProps,
   useStyles,
   useUnhandledProps,
 } from '@fluentui/react-bindings';
@@ -135,7 +136,7 @@ const BaseComponentWithSlots: React.FC<BaseComponentProps> = compose<
     const Main = composeOptions.slots.main;
     const End = composeOptions.slots.end;
 
-    const slotProps = composeOptions.resolveSlotProps(props);
+    const { slotProps } = mergeProps(props, composeOptions);
 
     return (
       <button className={classes.root} {...unhandledProps} ref={ref}>

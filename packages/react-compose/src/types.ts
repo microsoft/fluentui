@@ -106,6 +106,5 @@ export type ComposePreparedOptions<TProps = {}, TState = TProps> = {
   slots: Record<string, React.ElementType> & { __self: React.ElementType };
   slotProps: ((props: TProps) => Record<string, object>)[];
 
-  resolveSlotProps: <TResolvedProps>(props: TResolvedProps) => Record<string, object>;
   shorthandConfig: ShorthandConfig<TProps>;
 };
