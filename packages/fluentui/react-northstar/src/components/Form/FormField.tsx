@@ -149,7 +149,7 @@ const FormField: React.FC<WithAsProp<FormFieldProps>> & FluentComponentStaticPro
         name,
         type,
         icon: !!errorMessage ? iconElement : null,
-        satisfactoryIndicator,
+        ...(!!satisfactoryIndicator && { satisfactoryIndicator }),
         styles: resolvedStyles.control,
       }),
   });
