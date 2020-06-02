@@ -2,9 +2,10 @@ import * as React from 'react';
 import { MergePropsResult } from './mergeProps';
 import { defaultMappedProps } from './defaultMappedProps';
 import { ComposePreparedOptions } from './types';
-import { getNativeElementProps } from '@uifabric/utilities';
 
 export const NullRender = () => null;
+
+export const defaultHandledProps = new Set(['className', 'as']);
 
 /**
  * Helper utility which resolves the slots and slot props derived from user input.
@@ -14,6 +15,9 @@ export function resolveSlotProps<TProps, TState>(
   options: ComposePreparedOptions<TProps, TState>,
 ): MergePropsResult<TState> {
   const { state, slots, slotProps } = result;
+
+  // Ensure a root prop exists.
+  slotProps.root = slotProps.root || {};
 
   // Derive the default slot props from the config, if provided.
   options.slotProps.forEach(definition => {
@@ -25,12 +29,19 @@ export function resolveSlotProps<TProps, TState>(
     });
   });
 
-  //  Mix unrecognized props onto root, appropriate, excluding the handled props.
-  assignToMapObject(
-    slotProps,
-    'root',
-    getNativeElementProps(slots.root, state, [...(options.handledProps as string[]), 'className']),
-  );
+  //  Mix unrecognized state onto root, excluding the handled props.
+  Object.keys(state).reduce<Partial<TState>>((acc, propName: string) => {
+    if (
+      !defaultHandledProps.has(propName) &&
+      !options.slots.hasOwnProperty(propName) &&
+      propName !== 'as' &&
+      (options.handledProps as string[]).indexOf(propName) === -1
+    ) {
+      // tslint:disable-next-line:no-any
+      (acc as any)[propName] = (state as any)[propName];
+    }
+    return acc;
+  }, slotProps.root);
 
   // Iterate through slots and resolve shorthand values.
   Object.keys(slots).forEach((slotName: string) => {
@@ -71,13 +82,4 @@ export function resolveSlotProps<TProps, TState>(
   });
 
   return result;
-}
-
-function assignToMapObject(map: Record<string, {}>, key: string, value: {}) {
-  if (value) {
-    if (!map[key]) {
-      map[key] = {};
-    }
-    map[key] = { ...map[key], ...value };
-  }
 }

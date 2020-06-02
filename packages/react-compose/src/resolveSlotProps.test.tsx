@@ -22,6 +22,7 @@ describe('resolveSlotProps', () => {
     ...defaultComposeOptions,
     ...defaultSlots,
     classes: [{ root: 'root' }, () => ({ foo: 'foo' }), { bar: 'bar', baz: 'baz' }],
+    handledProps: [...Object.keys(defaultSlots)],
   };
 
   it('can expand strings, booleans, and numbers as children', () => {
