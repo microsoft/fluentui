@@ -91,7 +91,7 @@ export type InputComposeComponent<TProps = {}> = React.FunctionComponent<TProps>
 };
 
 // @public
-export function mergeProps<TProps, TState = TProps>(state: TState, options: ComposePreparedOptions<TProps>): MergePropsResult<TState>;
+export function mergeProps<TProps, TState = TProps>(state: TState, options: Omit<ComposePreparedOptions<TProps>, 'state'>): MergePropsResult<TState>;
 
 // @public (undocumented)
 export type MergePropsResult<TState extends GenericDictionary> = {
