@@ -2,6 +2,27 @@
   "name": "@fluentui/react-next",
   "entries": [
     {
+      "date": "Tue, 02 Jun 2020 12:36:30 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.33",
+      "version": "8.0.0-alpha.33",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Use static styles in Pivot",
+            "author": "behowell@microsoft.com",
+            "commit": "fcf0cd90a65e814c403de01cea4d239ff9a59177",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Updating typings from compose.",
+            "author": "dzearing@microsoft.com",
+            "commit": "d5ed2c3804a58cb774bec86160df899fd7a8cb5a",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 01 Jun 2020 12:32:45 GMT",
       "tag": "@fluentui/react-next_v8.0.0-alpha.32",
       "version": "8.0.0-alpha.32",

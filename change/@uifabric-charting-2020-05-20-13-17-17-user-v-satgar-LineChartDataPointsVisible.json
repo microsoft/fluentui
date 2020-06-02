@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "LineChart: Add datapoints for each line and accessibility for it",
-  "packageName": "@uifabric/charting",
-  "email": "v-satgar@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-05-20T07:47:17.347Z"
-}

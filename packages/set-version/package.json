@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/set-version",
-  "version": "7.0.12",
+  "version": "7.0.13",
   "description": "Non-Fabric-specific package version setter",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",

@@ -2,6 +2,33 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Tue, 02 Jun 2020 12:36:30 GMT",
+      "tag": "office-ui-fabric-react_v7.117.1",
+      "version": "7.117.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Dialog: Fixing broken deprecated props and adding snapshot tests for them.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "7a81e945c6a17ae0e8fd23a7487ac2ca5fecd539",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Remove explicit blocking of Alt key",
+            "author": "keyou@microsoft.com",
+            "commit": "f9d3cc775d4e75c54440a7f2593dd3a67792bb73",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "add aria-checked if the role is menuitemradio",
+            "author": "makopch@microsoft.com",
+            "commit": "fb12ec3aa6e73b494a9cc4f02371b4df3068929a",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 29 May 2020 12:35:34 GMT",
       "tag": "office-ui-fabric-react_v7.117.0",
       "version": "7.117.0",

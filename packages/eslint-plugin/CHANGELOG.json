@@ -1,0 +1,20 @@
+{
+  "name": "@fluentui/eslint-plugin",
+  "entries": [
+    {
+      "date": "Tue, 02 Jun 2020 12:36:30 GMT",
+      "tag": "@fluentui/eslint-plugin_v0.50.0",
+      "version": "0.50.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Move eslint-plugin package and add keyboard event props rule",
+            "author": "elcraig@microsoft.com",
+            "commit": "2cfb4d4f68ff72187620c43373033b1374fc6a78",
+            "package": "@fluentui/eslint-plugin"
+          }
+        ]
+      }
+    }
+  ]
+}
