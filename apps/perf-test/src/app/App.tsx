@@ -68,7 +68,6 @@ export const App = () => {
           ))}
         </div>
       )}
-      {/* eslint-enable react/forbid-component-props, react/jsx-no-bind */}
     </div>
   );
 };
