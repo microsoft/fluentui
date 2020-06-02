@@ -79,7 +79,6 @@ describe('Pickers', () => {
         />,
         root,
       ) as unknown) as TypedBaseFloatingPicker;
-
       input.value = 'a';
       picker.onQueryStringChanged('a');
 
