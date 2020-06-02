@@ -5,6 +5,7 @@ const constants = require('./constants');
 
 module.exports = {
   extends: [
+    // Provides both rules and some parser options and other settings
     'airbnb',
     // Extended configs are applied in order, so these configs that turn other rules off should come last
     'prettier',
@@ -242,6 +243,16 @@ module.exports = {
     // (and not covered by plugin:@typescript-eslint/eslint-recommended)
     'no-unused-vars': 'off',
     'react/jsx-filename-extension': 'off',
+
+    // permanently disable due to perf problems and limited benefit
+    // see here for perf testing (note that you must run eslint directly)
+    // https://eslint.org/docs/developer-guide/working-with-rules#per-rule-performance
+    'no-empty-character-class': 'off',
+    'react/no-unknown-property': 'off', // expensive, limited benefit with TS
+    // these ones have minor negative perf impact and are unnecessary
+    'react/default-props-match-prop-types': 'off',
+    'react/no-unused-prop-types': 'off',
+    'react/prefer-es6-class': 'off',
 
     // may cause perf problems per https://github.com/typescript-eslint/typescript-eslint/blob/master/docs/getting-started/linting/FAQ.md#eslint-plugin-import
     'import/no-cycle': 'off',
