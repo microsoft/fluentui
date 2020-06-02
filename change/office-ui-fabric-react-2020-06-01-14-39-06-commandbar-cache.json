@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "CommandBar: Fixed cacheing",
+  "comment": "CommandBar: Fixed caching to greatly improve performance for all users",
   "packageName": "office-ui-fabric-react",
   "email": "mgodbolt@microsoft.com",
   "dependentChangeType": "patch",
