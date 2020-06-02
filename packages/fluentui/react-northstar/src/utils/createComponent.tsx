@@ -37,7 +37,7 @@ const createComponent = <P extends ObjectOf<any> = any>({
     className,
     render: (config, props) => {
       const filteredConfig = _.pick(config, ['accessibility', 'classes', 'rtl', 'styles']);
-      return render(Object.assign({ config: filteredConfig }, props));
+      return render({ config: filteredConfig, ...props });
     },
     defaultProps,
     actionHandlers,
