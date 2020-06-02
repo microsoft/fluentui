@@ -51,6 +51,7 @@ Controls/web.tsx @Vitalius1 @natalieethell
 #### Packages
 packages/charting/ @Raghurk
 packages/date-time @lorejoh @evlevy
+packages/eslint-plugin/ @ecraig12345
 packages/example-app-base/ @ecraig12345
 packages/file-type-icons/  @KatherineThayerMicrosoft @jahnp @bigbadcapers
 packages/foundation/ @JasonGore
