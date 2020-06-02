@@ -1,7 +1,5 @@
 import felaInvokeKeyframesPlugin from 'src/utils/felaInvokeKeyframesPlugin';
 
-const renderInvokeKeyframes = felaInvokeKeyframesPlugin();
-
 describe('felaRenderKeyframesPlugin', () => {
   test('does not transform the animationName prop if it is already string', () => {
     const style = {
@@ -9,7 +7,7 @@ describe('felaRenderKeyframesPlugin', () => {
       animationDuration: '2s',
     };
 
-    expect(renderInvokeKeyframes(style)).toMatchObject(style);
+    expect(felaInvokeKeyframesPlugin({ ...style })).toMatchObject(style);
   });
 
   test('does not transform the animationName prop if it is already object', () => {
@@ -18,7 +16,7 @@ describe('felaRenderKeyframesPlugin', () => {
       animationDuration: '2s',
     };
 
-    expect(renderInvokeKeyframes(style)).toMatchObject(style);
+    expect(felaInvokeKeyframesPlugin({ ...style })).toMatchObject(style);
   });
 
   test('transforms the animationName prop if it contains keyframe in the definition', () => {
@@ -29,7 +27,7 @@ describe('felaRenderKeyframesPlugin', () => {
       animationDuration: '2s',
     };
 
-    expect(renderInvokeKeyframes(style)).toMatchObject({
+    expect(felaInvokeKeyframesPlugin({ ...style })).toMatchObject({
       animationName: expect.objectContaining({
         from: expect.any(Object),
         to: expect.any(Object),
@@ -47,7 +45,7 @@ describe('felaRenderKeyframesPlugin', () => {
       animationDuration: '2s',
     };
 
-    expect(renderInvokeKeyframes(style)).toMatchObject({
+    expect(felaInvokeKeyframesPlugin({ ...style })).toMatchObject({
       animationName: expect.objectContaining({
         from: { rotate: '100deg' },
         to: expect.any(Object),
@@ -61,6 +59,6 @@ describe('felaRenderKeyframesPlugin', () => {
       display: ['inline-grid', '-ms-inline-grid'],
     };
 
-    expect(renderInvokeKeyframes(style)).toMatchObject(style);
+    expect(felaInvokeKeyframesPlugin({ ...style })).toMatchObject(style);
   });
 });

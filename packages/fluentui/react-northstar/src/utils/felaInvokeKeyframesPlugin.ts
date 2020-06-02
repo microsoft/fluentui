@@ -8,32 +8,22 @@ import * as _ from 'lodash';
  * Caution! Infinite recursion is possible in case if style object has links to self in the props
  * tree.
  */
-export default () => {
-  const invokeKeyframes = (styles: Object) => {
-    return Object.keys(styles).reduce((acc, cssPropertyName) => {
-      const cssPropertyValue = styles[cssPropertyName];
-
-      if (_.isPlainObject(cssPropertyValue)) {
-        if (cssPropertyName === 'animationName') {
-          if (cssPropertyValue.keyframe) {
-            styles[cssPropertyName] = callable(cssPropertyValue.keyframe)(cssPropertyValue.params || {});
-          }
-
-          return {
-            ...acc,
-            [cssPropertyName]: styles[cssPropertyName],
-          };
+function felaInvokeKeyframesPlugin(styles: Object) {
+  for (const property in styles) {
+    if (_.isPlainObject(styles[property])) {
+      if (property === 'animationName') {
+        if (styles[property].keyframe) {
+          styles[property] = callable(styles[property].keyframe)(styles[property].params || {});
         }
 
-        return {
-          ...acc,
-          [cssPropertyName]: invokeKeyframes(cssPropertyValue),
-        };
+        continue;
       }
 
-      return { ...acc, [cssPropertyName]: styles[cssPropertyName] };
-    }, {});
-  };
+      styles[property] = felaInvokeKeyframesPlugin(styles[property]);
+    }
+  }
 
-  return invokeKeyframes;
-};
+  return styles;
+}
+
+export default felaInvokeKeyframesPlugin;

@@ -64,7 +64,7 @@ const rendererConfig = {
     }),
 
     felaPluginPlaceholderPrefixer(),
-    felaInvokeKeyframesPlugin(),
+    felaInvokeKeyframesPlugin,
     felaPluginEmbedded(),
 
     felaExpandCssShorthandsPlugin(),
