@@ -81,7 +81,10 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
       overflowItems: [...overflowItems!],
       minimumOverflowItems: [...overflowItems!].length, // for tracking
       farItems,
-      cacheKey: '',
+      cacheKey: this._computeCacheKey({
+        primaryItems: [...items],
+        overflow: overflowItems && overflowItems.length > 0,
+      }),
     };
 
     this._classNames = getClassNames(styles!, { theme: theme! });
@@ -237,18 +240,17 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
     return <OverflowButtonType {...(overflowProps as IButtonProps)} />;
   };
 
-  private _computeCacheKey(data: ICommandBarData): string {
-    const { primaryItems, farItems = [], overflowItems } = data;
+  private _computeCacheKey(data: { primaryItems?: ICommandBarItemProps[]; overflow?: boolean }): string {
+    const { primaryItems, overflow } = data;
     const returnKey = (acc: string, current: ICommandBarItemProps): string => {
       const { cacheKey = current.key } = current;
       return acc + cacheKey;
     };
 
-    const primaryKey = primaryItems.reduce(returnKey, '');
-    const farKey = farItems.reduce(returnKey, '');
-    const overflowKey = !!overflowItems.length ? 'overflow' : '';
+    const primaryKey = primaryItems && primaryItems.reduce(returnKey, '');
+    const overflowKey = overflow ? 'overflow' : '';
 
-    return [primaryKey, farKey, overflowKey].join(' ');
+    return [primaryKey, overflowKey].join('');
   }
 
   private _onReduceData = (data: ICommandBarData): ICommandBarData | undefined => {
@@ -265,7 +267,7 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
       primaryItems = shiftOnReduce ? primaryItems.slice(1) : primaryItems.slice(0, -1);
 
       const newData = { ...data, primaryItems, overflowItems };
-      cacheKey = this._computeCacheKey(newData);
+      cacheKey = this._computeCacheKey({ primaryItems, overflow: overflowItems.length > 0 });
 
       if (onDataReduced) {
         onDataReduced(movedItem);
@@ -293,7 +295,7 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
       primaryItems = shiftOnReduce ? [movedItem, ...primaryItems] : [...primaryItems, movedItem];
 
       const newData = { ...data, primaryItems, overflowItems };
-      cacheKey = this._computeCacheKey(newData);
+      cacheKey = this._computeCacheKey({ primaryItems, overflow: overflowItems.length > 0 });
 
       if (onDataGrown) {
         onDataGrown(movedItem);
