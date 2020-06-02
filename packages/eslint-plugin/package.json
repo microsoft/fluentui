@@ -9,8 +9,8 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@typescript-eslint/eslint-plugin": "^2.34.0",
-    "@typescript-eslint/experimental-utils": "^2.34.0"
+    "@typescript-eslint/eslint-plugin": "^3.0.2",
+    "@typescript-eslint/experimental-utils": "^3.0.2"
   },
   "devDependencies": {
     "typescript": "3.7.2"
