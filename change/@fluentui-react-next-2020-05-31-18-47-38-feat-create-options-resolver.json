@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Updating typings from compose.",
-  "packageName": "@fluentui/react-next",
-  "email": "dzearing@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-06-01T01:47:38.214Z"
-}
