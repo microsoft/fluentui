@@ -147,7 +147,8 @@ describe('FloatingSuggestions', () => {
     const firstElement = container?.getElementsByClassName('ms-FloatingSuggestionsList-container');
     expect(firstElement).toBeTruthy();
 
-    const allDivs = container?.querySelector('div');
+    const allDivs = container?.querySelector('FloatingSuggestionsItemId-0');
+    console.log(allDivs);
     ReactDOM.unmountComponentAtNode(root);
   });
 });
