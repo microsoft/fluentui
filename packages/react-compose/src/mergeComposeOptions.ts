@@ -33,6 +33,8 @@ export function mergeComposeOptions(
     if (inputOptions.state) {
       return inputOptions.state(props, options, parentOptions.state);
     }
+
+    return parentOptions.state(props, options);
   };
 
   return {
