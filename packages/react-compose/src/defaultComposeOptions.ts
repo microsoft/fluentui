@@ -1,5 +1,4 @@
 import { ComposePreparedOptions } from './types';
-
 export const defaultComposeOptions: ComposePreparedOptions = {
   className: process.env.NODE_ENV === 'production' ? '' : 'no-classname-🙉',
   classes: [],
@@ -7,7 +6,7 @@ export const defaultComposeOptions: ComposePreparedOptions = {
   displayNames: [],
   mapPropsToStylesPropsChain: [],
   render: () => null,
-  handledProps: new Set(),
+  handledProps: [] as never[],
   overrideStyles: false,
   slots: { __self: () => null },
   slotProps: [],

@@ -24,10 +24,7 @@ export function mergeComposeOptions(
 
     render: typeof input === 'function' ? input : parentOptions.render,
 
-    handledProps: new Set([
-      ...parentOptions.handledProps,
-      ...((inputOptions.handledProps as never[]) || ([] as never[])),
-    ]),
+    handledProps: [...parentOptions.handledProps, ...((inputOptions.handledProps as never[]) || ([] as never[]))],
 
     overrideStyles: inputOptions.overrideStyles || false,
 
