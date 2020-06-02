@@ -1,3 +1,9 @@
+//
+// This file is one-to-one copy-paste from Fela source code. It includes `_renderStyleToClassNames()` and all
+// non-exported utils.
+// A single change is only one line inside `generateDeclarationReference()`.
+//
+
 import { ICSSInJSStyle } from '@fluentui/styles';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import cssifyDeclaration from 'css-in-js-utils/lib/cssifyDeclaration';
@@ -55,11 +61,12 @@ function generateDeclarationReference(
   support: string = '',
 ): string {
   //
-  //
   // This a single perf change here, it removes `camelCaseProperty()` call
   //
-  //
+
+  // CHANGE:START
   return support + media + pseudo + property + value;
+  // CHANGE:END
 }
 
 //
