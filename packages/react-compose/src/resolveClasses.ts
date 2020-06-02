@@ -15,7 +15,7 @@ export function resolveClasses<TState>(
 
   for (const classFunctionOrObject of classes) {
     const classObj: ClassDictionary | undefined =
-      // tslint:disable-next-line:no-any
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       typeof classFunctionOrObject === 'function' ? classFunctionOrObject(state, slots as any) : classFunctionOrObject;
 
     if (classObj) {

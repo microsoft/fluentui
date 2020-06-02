@@ -21,7 +21,7 @@ export function mergeProps<TProps, TState = TProps>(
     state: state,
     slots: {
       ...options.slots,
-      // tslint:disable-next-line:no-any
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       root: (state as any).as || options.slots.root || 'div',
     },
     slotProps: {},
