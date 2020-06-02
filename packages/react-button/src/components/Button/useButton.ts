@@ -8,13 +8,10 @@ import { tokensToStyleObject } from '@fluentui/react-theme-provider';
  * @param props
  */
 export const useButton = (props: ButtonProps, options: ComposePreparedOptions) => {
-  const { tokens, ...state } = props;
-
-  // This this go into mergeProps?
-  if (tokens) {
-    // tslint:disable-next-line: no-any
-    state.style = { ...props.style, ...tokensToStyleObject(tokens as Record<string, any>, '--button') };
-  }
+  const state = {
+    ...props,
+    style: tokensToStyleObject(props, '--button')
+  };
 
   return mergeProps<ButtonProps>(props, options);
 };
