@@ -47,11 +47,11 @@ export type Input<TElementType extends React.ElementType = 'div', TProps = {}> =
   | InputComposeComponent<TProps>
   | ComposeRenderFunction<TElementType, TProps & { as?: React.ElementType }>;
 
-export type ComposeRenderFunction<TElementType extends React.ElementType = 'div', TProps = {}> = (
+export type ComposeRenderFunction<TElementType extends React.ElementType = 'div', TProps = {}, TState = TProps> = (
   props: TProps,
   ref: React.Ref<TElementType extends keyof HTMLElementTagNameMap ? HTMLElementTagNameMap[TElementType] : TElementType>,
   // tslint:disable-next-line:no-any
-  slotsAndState: any,
+  options: Omit<ComposePreparedOptions, 'state'> & MergePropsResult<TState>,
 ) => React.ReactElement | null;
 
 export type ComposeOptions<TInputProps = {}, TInputStylesProps = {}, TParentProps = {}, TParentStylesProps = {}> = {
@@ -79,6 +79,12 @@ export type ComposeOptions<TInputProps = {}, TInputStylesProps = {}, TParentProp
     parentState?: ComposePreparedOptions['state'],
   ) => // tslint:disable-next-line:no-any
   any;
+};
+
+export type MergePropsResult<TState extends GenericDictionary> = {
+  state: TState;
+  slots: GenericDictionary;
+  slotProps: GenericDictionary;
 };
 
 /**

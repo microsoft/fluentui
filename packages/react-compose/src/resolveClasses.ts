@@ -1,5 +1,4 @@
-import { ComposePreparedOptions, ClassDictionary } from './types';
-import { MergePropsResult } from './mergeProps';
+import { ComposePreparedOptions, ClassDictionary, MergePropsResult } from './types';
 
 /**
  * Helper utility which takes in a classes array from compose options, resolves functions,

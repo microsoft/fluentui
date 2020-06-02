@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { MergePropsResult } from './mergeProps';
 import { defaultMappedProps } from './defaultMappedProps';
-import { ComposePreparedOptions } from './types';
+import { ComposePreparedOptions, MergePropsResult } from './types';
 import { getNativeElementProps } from '@uifabric/utilities';
 
 export const NullRender = () => null;

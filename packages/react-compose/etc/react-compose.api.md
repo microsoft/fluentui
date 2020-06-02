@@ -72,7 +72,7 @@ export type ComposePreparedOptions<TProps = {}, TState = TProps> = {
 };
 
 // @public (undocumented)
-export type ComposeRenderFunction<TElementType extends React.ElementType = 'div', TProps = {}> = (props: TProps, ref: React.Ref<TElementType extends keyof HTMLElementTagNameMap ? HTMLElementTagNameMap[TElementType] : TElementType>, slotsAndState: any) => React.ReactElement | null;
+export type ComposeRenderFunction<TElementType extends React.ElementType = 'div', TProps = {}, TState = TProps> = (props: TProps, ref: React.Ref<TElementType extends keyof HTMLElementTagNameMap ? HTMLElementTagNameMap[TElementType] : TElementType>, options: Omit<ComposePreparedOptions, 'state'> & MergePropsResult<TState>) => React.ReactElement | null;
 
 // @public
 export const createClassResolver: (classes: Record<string, string>) => (state: Record<string, any>, slots: Record<string, any>) => Record<string, string>;
@@ -90,10 +90,15 @@ export type InputComposeComponent<TProps = {}> = React.FunctionComponent<TProps>
     fluentComposeConfig?: ComposePreparedOptions;
 };
 
-// Warning: (ae-forgotten-export) The symbol "MergePropsResult" needs to be exported by the entry point index.d.ts
-//
 // @public
 export function mergeProps<TProps, TState = TProps>(state: TState, options: ComposePreparedOptions<TProps>): MergePropsResult<TState>;
+
+// @public (undocumented)
+export type MergePropsResult<TState extends GenericDictionary> = {
+    state: TState;
+    slots: GenericDictionary;
+    slotProps: GenericDictionary;
+};
 
 // @public (undocumented)
 export type PropsOfElement<E extends keyof JSX.IntrinsicElements | React.JSXElementConstructor<any>> = JSX.LibraryManagedAttributes<E, React.ComponentPropsWithRef<E>>;

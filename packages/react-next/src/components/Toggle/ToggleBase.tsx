@@ -5,9 +5,8 @@ import { IToggleProps } from './Toggle.types';
 import { useToggle } from './useToggle';
 
 export const ToggleBase = compose<'div', IToggleProps, IToggleProps, {}, {}>(
-  (props, ref, composeOptions) => {
-    const { state, slots, slotProps } = useToggle(props, composeOptions);
-
+  (props, ref, slotsAndState) => {
+    const { state, slots, slotProps } = slotsAndState;
     const { checked } = state;
     const { 'aria-describedby': ariaDescribedBy, disabled, keytipProps, label, offText, onText } = props;
 
@@ -29,6 +28,7 @@ export const ToggleBase = compose<'div', IToggleProps, IToggleProps, {}, {}>(
     );
   },
   {
+    displayName: 'ToggleBase',
     slots: {
       label: 'span',
       container: 'div',
@@ -36,7 +36,7 @@ export const ToggleBase = compose<'div', IToggleProps, IToggleProps, {}, {}>(
       thumb: 'span',
       stateText: 'span',
     },
-    displayName: 'ToggleBase',
+    state: useToggle,
   },
 );
 

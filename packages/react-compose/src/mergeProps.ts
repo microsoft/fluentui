@@ -1,12 +1,6 @@
-import { ComposePreparedOptions, GenericDictionary } from './types';
+import { ComposePreparedOptions, MergePropsResult } from './types';
 import { resolveClasses } from './resolveClasses';
 import { resolveSlotProps } from './resolveSlotProps';
-
-export type MergePropsResult<TState extends GenericDictionary> = {
-  state: TState;
-  slots: GenericDictionary;
-  slotProps: GenericDictionary;
-};
 
 /**
  * Merge props takes in state and compose options, and resolves slots and slotProps.
