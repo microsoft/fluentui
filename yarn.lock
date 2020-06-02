@@ -9410,6 +9410,17 @@ fela-dom@^10.6.1:
     fast-loops "^1.0.1"
     fela-utils "^10.6.1"
 
+fela-monolithic@^10.6.1:
+  version "10.6.1"
+  resolved "https://registry.yarnpkg.com/fela-monolithic/-/fela-monolithic-10.6.1.tgz#a701e8c026d316bda479facd57e463532e77c051"
+  integrity sha512-JnS//cB3pNNIlSzgTsobNAKSaKG13lYwW9hwboI0x2lMCS/75muYejWb00qtLe/NWladpk720ihoCqAKMoNMVw==
+  dependencies:
+    css-in-js-utils "^3.0.0"
+    fast-loops "^1.0.0"
+    fela-utils "^10.6.1"
+    isobject "^3.0.1"
+    string-hash "^1.1.3"
+
 fela-plugin-custom-property@^10.6.1:
   version "10.8.2"
   resolved "https://registry.yarnpkg.com/fela-plugin-custom-property/-/fela-plugin-custom-property-10.8.2.tgz#41847826be4bf4495eee5072df16228f5f8827a8"
@@ -18564,7 +18575,7 @@ resolve@1.x, resolve@^1.1.6, resolve@^1.10.0, resolve@^1.3.2, resolve@^1.7.1, re
   dependencies:
     path-parse "^1.0.6"
 
-resolve@^1.1.7, resolve@^1.13.1, resolve@^1.4.0, resolve@^1.15.1:
+resolve@^1.1.7, resolve@^1.13.1, resolve@^1.15.1, resolve@^1.4.0:
   version "1.15.1"
   resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.15.1.tgz#27bdcdeffeaf2d6244b95bb0f9f4b4653451f3e8"
   integrity sha512-84oo6ZTtoTUpjgNEr5SJyzQhzL72gaRodsSfyxC/AXRvwu0Yse9H8eF9IpGo7b8YetZhlI6v7ZQ6bKBFV/6S7w==
@@ -19730,7 +19741,7 @@ string-argv@^0.0.2:
   resolved "https://registry.yarnpkg.com/string-argv/-/string-argv-0.0.2.tgz#dac30408690c21f3c3630a3ff3a05877bdcbd736"
   integrity sha1-2sMECGkMIfPDYwo/86BYd73L1zY=
 
-string-hash@^1.1.1:
+string-hash@^1.1.1, string-hash@^1.1.3:
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/string-hash/-/string-hash-1.1.3.tgz#e8aafc0ac1855b4666929ed7dd1275df5d6c811b"
   integrity sha1-6Kr8CsGFW0Zmkp7X3RJ1311sgRs=

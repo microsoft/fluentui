@@ -4,12 +4,11 @@ import felaPluginEmbedded from 'fela-plugin-embedded';
 import felaPluginFallbackValue from 'fela-plugin-fallback-value';
 import felaPluginPlaceholderPrefixer from 'fela-plugin-placeholder-prefixer';
 import felaPluginRtl from 'fela-plugin-rtl';
+import monolithic from 'fela-monolithic';
 
 import felaDisableAnimationsPlugin from './felaDisableAnimationsPlugin';
-import felaExpandCssShorthandsPlugin from './felaExpandCssShorthandsPlugin';
 import felaFocusVisibleEnhancer from './felaFocusVisibleEnhancer';
 import felaInvokeKeyframesPlugin from './felaInvokeKeyframesPlugin';
-import felaPerformanceEnhancer from './felaPerformanceEnhancer';
 import felaSanitizeCss from './felaSanitizeCssPlugin';
 import felaStylisEnhancer from './felaStylisEnhancer';
 
@@ -53,7 +52,7 @@ const filterClassName = (className: string): boolean =>
 const rendererConfig = {
   devMode: felaDevMode,
   filterClassName,
-  enhancers: [felaPerformanceEnhancer, felaFocusVisibleEnhancer, felaStylisEnhancer],
+  enhancers: [monolithic(), felaFocusVisibleEnhancer, felaStylisEnhancer],
   plugins: [
     felaDisableAnimationsPlugin(),
 
@@ -66,8 +65,6 @@ const rendererConfig = {
     felaPluginPlaceholderPrefixer(),
     felaInvokeKeyframesPlugin(),
     felaPluginEmbedded(),
-
-    felaExpandCssShorthandsPlugin(),
 
     // Heads up!
     // This is required after fela-plugin-prefixer to resolve the array of fallback values prefixer produces.
