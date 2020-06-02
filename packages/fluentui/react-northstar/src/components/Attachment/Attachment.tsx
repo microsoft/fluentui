@@ -2,6 +2,7 @@ import { Accessibility, attachmentBehavior, AttachmentBehaviorProps } from '@flu
 import {
   ComponentWithAs,
   compose,
+  mergeProps,
   getElementType,
   mergeVariablesOverrides,
   useAccessibility,
@@ -126,8 +127,7 @@ const Attachment = compose<'div', AttachmentProps, AttachmentStylesProps, {}, {}
       unstable_props: props,
     });
 
-    const slotProps = composeOptions.resolveSlotProps<AttachmentProps>(props);
-
+    const { slotProps } = mergeProps<AttachmentProps>(props, composeOptions);
     const ElementType = getElementType(props);
     const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
 

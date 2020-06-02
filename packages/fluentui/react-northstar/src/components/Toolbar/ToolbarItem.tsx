@@ -3,6 +3,7 @@ import {
   compose,
   getElementType,
   mergeVariablesOverrides,
+  mergeProps,
   useUnhandledProps,
   useAccessibility,
   useStyles,
@@ -256,7 +257,7 @@ const ToolbarItem = compose<'button', ToolbarItemProps, ToolbarItemStylesProps, 
     });
 
     const ElementType = getElementType(props);
-    const slotProps = composeOptions.resolveSlotProps<ToolbarItemProps>(props);
+    const { slotProps } = mergeProps<ToolbarItemProps>(props, composeOptions);
     const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
 
     const itemElement = (

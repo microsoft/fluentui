@@ -10,6 +10,7 @@ import {
   compose,
   getElementType,
   getFirstFocusable,
+  mergeProps,
   useAccessibility,
   useStyles,
   useTelemetry,
@@ -174,7 +175,7 @@ const Toolbar = compose<'div', ToolbarProps, ToolbarStylesProps, {}, {}>(
     });
 
     const ElementType = getElementType(props);
-    const slotProps = composeOptions.resolveSlotProps<ToolbarProps>(props);
+    const { slotProps } = mergeProps<ToolbarProps>(props, composeOptions);
     const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
 
     const hide = (el: HTMLElement) => {

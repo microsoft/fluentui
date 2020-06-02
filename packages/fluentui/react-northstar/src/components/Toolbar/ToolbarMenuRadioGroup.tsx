@@ -6,6 +6,7 @@ import {
 } from '@fluentui/accessibility';
 import {
   compose,
+  mergeProps,
   mergeVariablesOverrides,
   getElementType,
   useUnhandledProps,
@@ -71,7 +72,7 @@ const ToolbarMenuRadioGroup = compose<'ul', ToolbarMenuRadioGroupProps, ToolbarM
 
     const { accessibility, activeIndex, className, design, items, styles, variables, wrapper } = props;
 
-    const slotProps = composeOptions.resolveSlotProps<ToolbarMenuRadioGroupProps>(props);
+    const { slotProps } = mergeProps<ToolbarMenuRadioGroupProps>(props, composeOptions);
     const parentVariables = React.useContext(ToolbarVariablesContext);
     const mergedVariables = mergeVariablesOverrides(parentVariables, variables);
 

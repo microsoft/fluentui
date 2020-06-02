@@ -7,6 +7,7 @@ import {
 import {
   compose,
   getElementType,
+  mergeProps,
   mergeVariablesOverrides,
   useUnhandledProps,
   useAccessibility,
@@ -89,7 +90,7 @@ const ToolbarMenu = compose<'ul', ToolbarMenuProps, ToolbarMenuStylesProps, {}, 
 
     const parentVariables = React.useContext(ToolbarVariablesContext);
     const mergedVariables = mergeVariablesOverrides(parentVariables, variables);
-    const slotProps = composeOptions.resolveSlotProps<ToolbarMenuProps>(props);
+    const { slotProps } = mergeProps<ToolbarMenuProps>(props, composeOptions);
 
     const getA11yProps = useAccessibility(accessibility, {
       debugName: composeOptions.displayName,

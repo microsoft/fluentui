@@ -72,7 +72,7 @@ const ToolbarRadioGroup = compose<'div', ToolbarRadioGroupProps, ToolbarRadioGro
     const { accessibility, activeIndex, children, className, design, items, variables, styles } = props;
     const itemRefs: React.RefObject<HTMLElement>[] = [];
 
-    const slotProps = mergeProps(props, composeOptions);
+    const { slotProps } = mergeProps<ToolbarRadioGroupProps>(props, composeOptions);
     const parentVariables = React.useContext(ToolbarVariablesContext);
     const mergedVariables = mergeVariablesOverrides(parentVariables, variables);
 

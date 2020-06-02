@@ -179,7 +179,7 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
 
     const ElementType = getElementType(props);
 
-    const slotProps = mergeProps(props, composeOptions);
+    const { slotProps } = mergeProps<MenuProps>(props, composeOptions);
 
     const itemProps = useSlotProps('item', slotProps);
     const dividerProps = useSlotProps('divider', slotProps);

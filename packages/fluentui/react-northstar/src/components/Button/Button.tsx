@@ -3,6 +3,7 @@ import {
   compose,
   ComponentWithAs,
   getElementType,
+  mergeProps,
   useAccessibility,
   useStyles,
   useTelemetry,
@@ -184,8 +185,7 @@ const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
       unstable_props: props,
     });
 
-    const slotProps = composeOptions.resolveSlotProps<ButtonProps>(props);
-
+    const { slotProps } = mergeProps<ButtonProps>(props, composeOptions);
     const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
     const ElementType = getElementType(props);
 

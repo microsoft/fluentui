@@ -3,6 +3,7 @@ import {
   compose,
   focusAsync,
   mergeVariablesOverrides,
+  mergeProps,
   useTelemetry,
   useAutoControlled,
   getElementType,
@@ -233,13 +234,16 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
     const ElementType = getElementType(props);
     const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
 
-    const slotProps = composeOptions.resolveSlotProps<MenuItemProps & MenuItemState>({
-      ...props,
-      accessibility,
-      variables: mergeVariablesOverrides(variables, parentProps.variables),
-      isFromKeyboard,
-      menuOpen,
-    });
+    const { slotProps } = mergeProps<MenuItemProps & MenuItemState>(
+      {
+        ...props,
+        accessibility,
+        variables: mergeVariablesOverrides(variables, parentProps.variables),
+        isFromKeyboard,
+        menuOpen,
+      },
+      composeOptions,
+    );
 
     const getA11yProps = useAccessibility<MenuItemBehaviorProps>(accessibility, {
       debugName: composeOptions.displayName,

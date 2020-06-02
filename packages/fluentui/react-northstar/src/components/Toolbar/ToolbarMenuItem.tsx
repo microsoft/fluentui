@@ -15,6 +15,7 @@ import * as customPropTypes from '@fluentui/react-proptypes';
 import {
   compose,
   focusAsync,
+  mergeProps,
   mergeVariablesOverrides,
   useTelemetry,
   useStyles,
@@ -171,7 +172,7 @@ const ToolbarMenuItem = compose<'button', ToolbarMenuItemProps, ToolbarMenuItemS
     const mergedVariables = mergeVariablesOverrides(parentVariables, variables);
 
     const ElementType = getElementType(props);
-    const slotProps = composeOptions.resolveSlotProps<ToolbarMenuItemProps>(props);
+    const { slotProps } = mergeProps<ToolbarMenuItemProps>(props, composeOptions);
     const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
 
     const getA11yProps = useAccessibility(props.accessibility, {
