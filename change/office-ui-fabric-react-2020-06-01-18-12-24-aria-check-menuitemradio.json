@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "add aria-checked if the role is menuitemradio",
-  "packageName": "office-ui-fabric-react",
-  "email": "makopch@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-06-02T01:12:24.505Z"
-}
