@@ -25,6 +25,11 @@ export interface ICheckbox {
  */
 export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement | HTMLInputElement> {
   /**
+   * Render the root element as another type.
+   */
+  as?: React.ElementType;
+
+  /**
    * Optional callback to access the ICheckbox interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
@@ -108,6 +113,8 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
+   *
+   * @deprecated This no longer works. TODO: fix use cases with tokens prop.
    */
   styles?: IStyleFunctionOrObject<ICheckboxStyleProps, ICheckboxStyles>;
 
@@ -192,3 +199,31 @@ export interface ICheckboxStyles {
    */
   text?: IStyle;
 }
+
+/**
+ * {@docCategory Checkbox}
+ */
+export interface ICheckboxState extends ICheckboxProps {
+  reversed: boolean;
+  isUsingCustomLabelRender: boolean;
+}
+
+/**
+ * {@docCategory Checkbox}
+ */
+export interface ICheckboxSlots {
+  root: React.ElementType;
+  input: React.ElementType;
+  container: React.ElementType;
+  checkbox: React.ElementType;
+  checkmark: React.ElementType;
+  text: React.ElementType;
+}
+
+/**
+ * {@docCategory Checkbox}
+ */
+export type ICheckboxSlotProps = {
+  // tslint:disable-next-line:no-any
+  [key in keyof ICheckboxSlots]: any;
+};

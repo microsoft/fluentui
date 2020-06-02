@@ -102,7 +102,7 @@ $checkboxTransitionTiming: cubic-bezier(0.4, 0, 0.23, 1);
   opacity: 0;
 
   @include focus(true) {
-    + .label:before {
+    + .container:before {
       outline: 1px solid var($paletteNeutralSecondary);
       outline-offset: 2px;
 
@@ -113,7 +113,7 @@ $checkboxTransitionTiming: cubic-bezier(0.4, 0, 0.23, 1);
   }
 }
 
-.label {
+.container {
   @include fonts-medium;
 
   display: flex;
