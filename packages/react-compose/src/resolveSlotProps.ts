@@ -2,7 +2,7 @@ import * as React from 'react';
 import { MergePropsResult } from './mergeProps';
 import { defaultMappedProps } from './defaultMappedProps';
 import { ComposePreparedOptions } from './types';
-import { getNativeElementProps } from './utils/getNativeElementPropsProps';
+import { getNativeElementProps } from './tempUtils/getNativeElementProps';
 
 export const NullRender = () => null;
 
