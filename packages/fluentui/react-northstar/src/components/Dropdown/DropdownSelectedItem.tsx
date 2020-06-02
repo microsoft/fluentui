@@ -100,7 +100,7 @@ const DropdownSelectedItem: React.FC<WithAsProp<DropdownSelectedItemProps>> &
   const getA11yProps = useAccessibility<DropdownSelectedItemBehaviorProps>(props.accessibility, {
     debugName: DropdownSelectedItem.displayName,
     mapPropsToBehavior: () => ({
-      header,
+      header: header as string,
       active,
     }),
     rtl: context.rtl,
