@@ -144,7 +144,7 @@ describe('Toggle', () => {
         />
       </form>,
     );
-    const button: any = wrapper.find('button');
+    const button = wrapper.find('button');
     // simulate to change toggle state
     button.simulate('click');
     expect(button.getDOMNode().getAttribute('aria-checked')).toEqual('true');

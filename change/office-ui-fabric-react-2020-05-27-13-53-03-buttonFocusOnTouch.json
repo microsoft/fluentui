@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "SplitButton: Making imperative focus call on touch events.",
-  "packageName": "office-ui-fabric-react",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-05-27T20:53:03.371Z"
-}

@@ -53,7 +53,7 @@ const dropdownSelectedItemStyles: ComponentSlotStylesPrepared<DropdownSelectedIt
     height: pxToRem(20),
     width: pxToRem(20),
   }),
-  content: ({ props: p, variables: v }): ICSSInJSStyle => {
+  header: ({ props: p, variables: v }): ICSSInJSStyle => {
     return {
       ...(p.hasImage && { marginLeft: pxToRem(3) }),
       marginRight: pxToRem(3),

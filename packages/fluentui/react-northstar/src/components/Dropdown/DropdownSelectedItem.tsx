@@ -153,21 +153,14 @@ const DropdownSelectedItem: React.FC<WithAsProp<DropdownSelectedItemProps>> &
     },
   });
 
-  const contentElement = Box.create(
-    Box.create(header, {
-      defaultProps: () => ({
+  const headerElement = Box.create(header, {
+    defaultProps: () =>
+      getA11yProps('header', {
         as: 'span',
         className: dropdownSelectedItemSlotClassNames.header,
         styles: resolvedStyles.header,
       }),
-    }),
-    {
-      defaultProps: () => ({
-        className: dropdownSelectedItemSlotClassNames.header,
-        styles: resolvedStyles.content,
-      }),
-    },
-  );
+  });
 
   const iconElement = Box.create(icon, {
     defaultProps: () =>
@@ -178,35 +171,27 @@ const DropdownSelectedItem: React.FC<WithAsProp<DropdownSelectedItemProps>> &
     overrideProps: handleIconOverrides,
   });
 
-  const imageElement = Box.create(
-    Image.create(image, {
-      defaultProps: () => ({
+  const imageElement = Image.create(image, {
+    defaultProps: () =>
+      getA11yProps('image', {
         avatar: true,
         className: dropdownSelectedItemSlotClassNames.image,
         styles: resolvedStyles.image,
       }),
-    }),
-    {
-      defaultProps: () => ({
-        className: dropdownSelectedItemSlotClassNames.image,
-        styles: resolvedStyles.media,
-      }),
-    },
-  );
+  });
 
   const element = (
     <Ref innerRef={itemRef}>
       <ElementType
         {...getA11yProps('root', {
           className: classes.root,
-          styles: resolvedStyles.main,
           onClick: handleClick,
           onKeyDown: handleKeyDown,
           ...unhandledProps,
         })}
       >
         {imageElement}
-        {contentElement}
+        {headerElement}
         {iconElement}
       </ElementType>
     </Ref>
@@ -236,7 +221,6 @@ DropdownSelectedItem.handledProps = Object.keys(DropdownSelectedItem.propTypes) 
 DropdownSelectedItem.defaultProps = {
   accessibility: dropdownSelectedItemBehavior,
   as: 'span',
-  // TODO: fix me
   icon: <CloseIcon />,
 };
 

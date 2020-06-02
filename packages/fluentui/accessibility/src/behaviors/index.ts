@@ -101,9 +101,11 @@ export { default as tooltipAsLabelBehavior } from './Tooltip/tooltipAsLabelBehav
 export { default as sliderBehavior } from './Slider/sliderBehavior';
 export * from './Slider/sliderBehavior';
 export { default as menuButtonBehavior } from './MenuButton/menuButtonBehavior';
+export * from './MenuButton/menuButtonBehavior';
 export { default as splitButtonBehavior } from './SplitButton/splitButtonBehavior';
 export * from './SplitButton/splitButtonBehavior';
 export { default as treeBehavior } from './Tree/treeBehavior';
+export * from './Tree/treeBehavior';
 export * from './Tree/treeItemBehavior';
 export { default as treeItemBehavior } from './Tree/treeItemBehavior';
 export * from './Tree/treeTitleBehavior';

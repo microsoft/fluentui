@@ -114,12 +114,12 @@ export class DialogBase extends React.Component<IDialogProps, {}> {
     }
 
     const mergedModalProps = {
+      ...DefaultModalProps,
       className,
       containerClassName,
       isBlocking,
       isDarkOverlay,
       onDismissed,
-      ...DefaultModalProps,
       ...modalProps,
       layerProps: mergedLayerProps,
       dragOptions,

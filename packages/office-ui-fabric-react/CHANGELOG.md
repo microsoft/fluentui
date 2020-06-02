@@ -1,8 +1,31 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 27 May 2020 12:40:00 GMT and should not be manually modified.
+This log was last generated on Fri, 29 May 2020 12:35:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.117.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.117.0)
+
+Fri, 29 May 2020 12:35:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.116.1..office-ui-fabric-react_v7.117.0)
+
+### Minor changes
+
+- Add dedicated touch invoke functionality to SelectionZone ([PR #13241](https://github.com/microsoft/fluentui/pull/13241) by sebastian.oettl@microsoft.com)
+
+### Patches
+
+- SpinButton: Reintroduce incorrect behavior of allowing updates when value is provided to prevent breaking partners. ([PR #13367](https://github.com/microsoft/fluentui/pull/13367) by elcraig@microsoft.com)
+- Changing storybook add-on panel position to default to be at the bottom of the page. ([PR #12906](https://github.com/microsoft/fluentui/pull/12906) by czearing@outlook.com)
+
+## [7.116.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.116.1)
+
+Thu, 28 May 2020 12:42:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.116.0..office-ui-fabric-react_v7.116.1)
+
+### Patches
+
+- SplitButton: Making imperative focus call on touch events. ([PR #13361](https://github.com/microsoft/fluentui/pull/13361) by humbertomakotomorimoto@gmail.com)
 
 ## [7.116.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.116.0)
 
