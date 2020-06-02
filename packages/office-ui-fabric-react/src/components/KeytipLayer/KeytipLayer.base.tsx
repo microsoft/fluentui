@@ -393,10 +393,6 @@ export class KeytipLayerBase extends React.Component<IKeytipLayerProps, IKeytipL
     // See: https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/which
     let key = ev.key;
     switch (key) {
-      case 'Alt':
-        // ALT puts focus in the browser bar, so it should not be used as a key for keytips.
-        // It can be used as a modifier
-        break;
       case 'Tab':
       case 'Enter':
       case 'Spacebar':

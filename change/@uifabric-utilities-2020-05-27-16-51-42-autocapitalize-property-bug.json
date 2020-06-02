@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Add autoCapitalize property",
-  "packageName": "@uifabric/utilities",
-  "email": "suprememilanfan@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-05-27T20:51:42.371Z"
-}

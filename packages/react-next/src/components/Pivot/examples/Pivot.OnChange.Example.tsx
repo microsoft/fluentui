@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Pivot, IPivotItemProps, PivotItem, PivotLinkFormat, PivotLinkSize } from '@fluentui/react-next/lib/Pivot';
+import { Pivot, IPivotItemProps, PivotItem } from '@fluentui/react-next/lib/Pivot';
 import { Label } from '@fluentui/react-next/lib/Label';
 
 export const PivotOnChangeExample = () => {
@@ -8,12 +8,7 @@ export const PivotOnChangeExample = () => {
   return (
     <div>
       <Label>Last onLinkClick from: {lastHeader?.props.headerText}</Label>
-      <Pivot
-        aria-label="OnChange Pivot Example"
-        linkSize={PivotLinkSize.large}
-        linkFormat={PivotLinkFormat.tabs}
-        onLinkClick={setLastHeader}
-      >
+      <Pivot aria-label="OnChange Pivot Example" linkSize="large" linkFormat="tabs" onLinkClick={setLastHeader}>
         <PivotItem headerText="Foo">
           <Label>Pivot #1</Label>
         </PivotItem>

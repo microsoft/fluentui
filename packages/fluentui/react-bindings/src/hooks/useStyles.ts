@@ -77,6 +77,7 @@ const defaultContext: StylesContextValue<{ renderRule: RendererRenderRule }> = {
   },
   renderer: { renderRule: () => '' },
   theme: emptyTheme,
+  telemetry: undefined,
 };
 
 const useStyles = <StyleProps extends PrimitiveProps>(
@@ -107,8 +108,9 @@ const useStyles = <StyleProps extends PrimitiveProps>(
   const debug = React.useRef<{ fluentUIDebug: DebugData | null }>({ fluentUIDebug: null });
   const { classes, styles: resolvedStyles } = getStyles({
     // Input values
+    allDisplayNames: composeOptions?.displayNames || [displayName],
     className: composeOptions?.className || className,
-    displayNames: composeOptions?.displayNames || [displayName],
+    primaryDisplayName: composeOptions?.displayName || displayName,
     props: {
       ...componentStylesProps,
       ...mapPropsToInlineStyles(),
@@ -122,6 +124,7 @@ const useStyles = <StyleProps extends PrimitiveProps>(
     saveDebug: fluentUIDebug => (debug.current = { fluentUIDebug }),
     theme: context.theme,
     performance: context.performance,
+    telemetry: context.telemetry,
   });
 
   return { classes, styles: resolvedStyles };

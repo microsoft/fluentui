@@ -38,7 +38,9 @@ module.exports = ({ config }) => {
       {
         loader: 'css-loader', // translates CSS into CommonJS
         options: {
-          modules: true,
+          modules: {
+            localIdentName: '[name]_[local]_[hash:base64:5]',
+          },
           importLoaders: 2,
         },
       },
