@@ -13,4 +13,6 @@ export type RendererChange = {
   pseudo: string;
   media: string;
   support: string;
+
+  SKIP_IN_EMIT_CHANGE?: boolean;
 };
