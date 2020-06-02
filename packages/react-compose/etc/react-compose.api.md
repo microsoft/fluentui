@@ -59,7 +59,7 @@ export type ComposePreparedOptions<TProps = {}, TState = TProps> = {
     displayNames: string[];
     mapPropsToStylesPropsChain: ((props: object) => object)[];
     render: ComposeRenderFunction;
-    handledProps: (keyof TProps)[];
+    handledProps: Set<keyof TProps>;
     overrideStyles: boolean;
     slots: Record<string, React.ElementType> & {
         __self: React.ElementType;

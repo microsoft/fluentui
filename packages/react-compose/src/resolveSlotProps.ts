@@ -2,7 +2,7 @@ import * as React from 'react';
 import { MergePropsResult } from './mergeProps';
 import { defaultMappedProps } from './defaultMappedProps';
 import { ComposePreparedOptions } from './types';
-import { getNativeElementProps } from '@uifabric/utilities';
+import { getNativeElementProps } from './temp/getNativeElementProps';
 
 export const NullRender = () => null;
 
@@ -26,11 +26,7 @@ export function resolveSlotProps<TProps, TState>(
   });
 
   //  Mix unrecognized props onto root, appropriate, excluding the handled props.
-  assignToMapObject(
-    slotProps,
-    'root',
-    getNativeElementProps(slots.root, state, [...(options.handledProps as string[]), 'className']),
-  );
+  assignToMapObject(slotProps, 'root', getNativeElementProps(slots.root, state, options.handledProps as Set<string>));
 
   // Iterate through slots and resolve shorthand values.
   Object.keys(slots).forEach((slotName: string) => {

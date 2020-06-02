@@ -37,7 +37,7 @@ describe('mergeProps', () => {
         { id: 'abc' },
         {
           ...defaultComposeOptions,
-          handledProps: ['id'],
+          handledProps: new Set(['id']),
           slotProps: [
             state => {
               return {
