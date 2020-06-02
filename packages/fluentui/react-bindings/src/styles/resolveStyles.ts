@@ -245,7 +245,7 @@ const resolveStyles = (
 
         // this resolves the getter magic
         const styleObj = resolvedStyles[slotName];
-        console.log('eee', slotName, JSON.stringify(styleObj, null, 2));
+
         if (renderStyles && styleObj) {
           classes[lazyEvaluationKey] = renderStyles(styleObj);
 

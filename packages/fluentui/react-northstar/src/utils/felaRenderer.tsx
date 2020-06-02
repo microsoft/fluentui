@@ -6,7 +6,7 @@ import felaPluginPlaceholderPrefixer from 'fela-plugin-placeholder-prefixer';
 import felaPluginRtl from 'fela-plugin-rtl';
 
 import felaDisableAnimationsPlugin from './felaDisableAnimationsPlugin';
-import felaExpandCssShorthandsPlugin from './felaExpandCssShorthandsPlugin';
+// import felaExpandCssShorthandsPlugin from './felaExpandCssShorthandsPlugin';
 import felaFocusVisibleEnhancer from './felaFocusVisibleEnhancer';
 import felaInvokeKeyframesPlugin from './felaInvokeKeyframesPlugin';
 import felaPerformanceEnhancer from './felaPerformanceEnhancer';
@@ -67,7 +67,7 @@ const rendererConfig = {
     felaInvokeKeyframesPlugin(),
     felaPluginEmbedded(),
 
-    felaExpandCssShorthandsPlugin(),
+    // felaExpandCssShorthandsPlugin(),
 
     // Heads up!
     // This is required after fela-plugin-prefixer to resolve the array of fallback values prefixer produces.
