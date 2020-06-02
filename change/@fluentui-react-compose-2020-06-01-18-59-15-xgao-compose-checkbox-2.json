@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "support classes list in createClassResolver",
+  "packageName": "@fluentui/react-compose",
+  "email": "xgao@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-06-02T01:58:55.533Z"
+}

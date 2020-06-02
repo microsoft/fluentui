@@ -24,12 +24,13 @@ import { ITheme } from 'office-ui-fabric-react/lib/Styling';
 import { Position } from 'office-ui-fabric-react/lib/utilities/positioning';
 import * as React from 'react';
 import { ThemeProviderProps } from '@fluentui/react-theme-provider';
+import { useTheme } from '@fluentui/react-theme-provider';
 
 // @public (undocumented)
-export const Checkbox: React.FunctionComponent<ICheckboxProps>;
+export const Checkbox: import("@fluentui/react-compose").ComponentWithAs<import("react").ElementType<any>, {}>;
 
 // @public (undocumented)
-export const CheckboxBase: React.ForwardRefExoticComponent<ICheckboxProps & React.RefAttributes<HTMLDivElement>>;
+export const CheckboxBase: import("@fluentui/react-compose").ComponentWithAs<"div", ICheckboxProps>;
 
 // @public
 export const Customizer: React.FunctionComponent<ICustomizerProps>;
@@ -93,6 +94,7 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
     ariaLabelledBy?: string;
     ariaPositionInSet?: number;
     ariaSetSize?: number;
+    as?: React.ElementType;
     boxSide?: 'start' | 'end';
     checked?: boolean;
     checkmarkIconProps?: IIconProps;
@@ -107,8 +109,38 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
     label?: string;
     onChange?: (ev?: React.FormEvent<HTMLElement | HTMLInputElement>, checked?: boolean) => void;
     onRenderLabel?: IRenderFunction<ICheckboxProps>;
+    // @deprecated
     styles?: IStyleFunctionOrObject<ICheckboxStyleProps, ICheckboxStyles>;
     theme?: ITheme;
+}
+
+// @public (undocumented)
+export type ICheckboxSlotProps = {
+    [key in keyof ICheckboxSlots]: any;
+};
+
+// @public (undocumented)
+export interface ICheckboxSlots {
+    // (undocumented)
+    checkbox: React.ElementType;
+    // (undocumented)
+    checkmark: React.ElementType;
+    // (undocumented)
+    container: React.ElementType;
+    // (undocumented)
+    input: React.ElementType;
+    // (undocumented)
+    root: React.ElementType;
+    // (undocumented)
+    text: React.ElementType;
+}
+
+// @public (undocumented)
+export interface ICheckboxState extends ICheckboxProps {
+    // (undocumented)
+    isUsingCustomLabelRender: boolean;
+    // (undocumented)
+    reversed: boolean;
 }
 
 // @public (undocumented)
@@ -1115,6 +1147,8 @@ export const ToggleBase: import("@fluentui/react-compose").ComponentWithAs<"div"
 
 // @public
 export const useLink: (props: ILinkProps, options: ComposePreparedOptions<{}, {}>) => any;
+
+export { useTheme }
 
 // @public (undocumented)
 export const useToggle: (props: IToggleProps, options: ComposePreparedOptions<{}, {}>) => any;
