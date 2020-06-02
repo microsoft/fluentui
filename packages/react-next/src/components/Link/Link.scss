@@ -22,6 +22,7 @@
 
   @include high-contrast {
     border-bottom: none;
+    -ms-high-contrast-adjust: auto;
   }
 
   &.button {

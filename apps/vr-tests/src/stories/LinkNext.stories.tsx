@@ -3,7 +3,15 @@ import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
-import { Link, ThemeProvider } from '@fluentui/react-next';
+import { Customizer, Link, ILinkStyleProps, ThemeProvider } from '@fluentui/react-next';
+
+const customStyles = { root: { background: 'lightblue' } };
+const themedStyles = (props: ILinkStyleProps) => ({
+  root: {
+    background: props.theme.palette.greenLight,
+  },
+});
+const scopedSettings = { Link: { styles: customStyles } };
 
 storiesOf('Link Next', module)
   .addDecorator(FabricDecorator)
@@ -54,4 +62,19 @@ storiesOf('Link Next', module)
     <Link disabled styles={{ root: { fontSize: '14px' } }}>
       I'm rendered as a button because I have no href and am disabled
     </Link>
+  ))
+  .addStory('Link styled via styles prop', () => (
+    <Link href="#" styles={customStyles}>
+      Link styled via styles prop
+    </Link>
+  ))
+  .addStory('Link styled via styles prop with theme value', () => (
+    <Link href="#" styles={themedStyles}>
+      Link styled via styles prop with theme value
+    </Link>
+  ))
+  .addStory("Link styled via Customizer's scoped settings", () => (
+    <Customizer scopedSettings={scopedSettings}>
+      <Link href="#">Link styled via Customizer's scoped settings</Link>
+    </Customizer>
   ));

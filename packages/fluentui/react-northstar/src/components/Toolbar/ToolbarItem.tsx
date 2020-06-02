@@ -361,9 +361,11 @@ const ToolbarItem = compose<'button', ToolbarItemProps, ToolbarItemStylesProps, 
       wrapper: ToolbarItemWrapper,
       popup: Popup, // TODO: compose Popup to ToolbarItemPopup once it has compose functionality
     },
-    mapPropsToSlotProps: () => ({
+
+    slotProps: () => ({
       popup: { trapFocus: true },
     }),
+
     shorthandConfig: { mappedProp: 'content' },
     handledProps: [
       'accessibility',

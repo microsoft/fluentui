@@ -34,6 +34,7 @@ describe('createClassResolver', () => {
       slot2: 'slot2 primary',
     });
   });
+
   it('can resolve enums', () => {
     // Can resolve
     expect(classResolver({ size: 'small' }, slots)).toEqual({

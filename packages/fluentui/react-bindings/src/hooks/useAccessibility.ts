@@ -18,6 +18,7 @@ type UseAccessibilityResult = (<SlotProps extends Record<string, any> & UserProp
   slotProps: SlotProps,
 ) => MergedProps<SlotProps>) & {
   unstable_wrapWithFocusZone: (children: React.ReactElement) => React.ReactElement;
+  unstable_behaviorDefinition: () => ReactAccessibilityBehavior;
 };
 
 type UserProps = {
@@ -90,6 +91,8 @@ const useAccessibility = <Props>(behavior: Accessibility<Props>, options: UseAcc
 
     return element;
   };
+
+  getA11yProps.unstable_behaviorDefinition = () => definition;
 
   return getA11yProps;
 };

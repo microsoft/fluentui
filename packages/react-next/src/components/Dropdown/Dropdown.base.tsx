@@ -1,5 +1,3 @@
-declare function setTimeout(callback: (...args: any[]) => void, ms: number, ...args: any[]): number;
-
 import * as React from 'react';
 import {
   IStyleFunctionOrObject,
@@ -65,7 +63,7 @@ export interface IDropdownState {
 @withResponsiveMode
 export class DropdownBase extends React.Component<IDropdownInternalProps, IDropdownState> implements IDropdown {
   public static defaultProps = {
-    options: [] as any[],
+    options: [] as IDropdownOption[],
   };
 
   private _host = React.createRef<HTMLDivElement>();
@@ -295,7 +293,8 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
       <div className={this._classNames.root}>
         {onRenderLabel(this.props, this._onRenderLabel)}
         <KeytipData keytipProps={keytipProps} disabled={disabled}>
-          {(keytipAttributes: any): JSX.Element => (
+          {// tslint:disable-next-line:no-any
+          (keytipAttributes: any): JSX.Element => (
             <div
               {...keytipAttributes}
               data-is-focusable={!disabled}
@@ -440,6 +439,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     return this.props.placeholder || this.props.placeHolder;
   }
 
+  // tslint:disable-next-line:no-any
   private _copyArray(array: any[]): any[] {
     const newArray = [];
     for (const element of array) {
@@ -826,11 +826,12 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
       this._isScrollIdle = false;
     }
 
-    this._scrollIdleTimeoutId = setTimeout(() => {
+    this._scrollIdleTimeoutId = window.setTimeout(() => {
       this._isScrollIdle = true;
     }, this._scrollIdleDelay);
   };
 
+  // tslint:disable-next-line:no-any
   private _onItemMouseEnter(item: any, ev: React.MouseEvent<HTMLElement>): void {
     if (this._shouldIgnoreMouseEvent()) {
       return;
@@ -840,6 +841,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     targetElement.focus();
   }
 
+  // tslint:disable-next-line:no-any
   private _onItemMouseMove(item: any, ev: React.MouseEvent<HTMLElement>): void {
     const targetElement = ev.currentTarget as HTMLElement;
     this._gotMouseMove = true;
@@ -851,6 +853,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     targetElement.focus();
   }
 
+  // tslint:disable-next-line:no-any
   private _onMouseItemLeave = (item: any, ev: React.MouseEvent<HTMLElement>): void => {
     if (this._shouldIgnoreMouseEvent()) {
       return;
@@ -862,8 +865,10 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
      * sets the page focus but does not scroll the parent element.
      */
     if (this._host.current) {
+      // tslint:disable-next-line:no-any
       if ((this._host.current as any).setActive) {
         try {
+          // tslint:disable-next-line:no-any
           (this._host.current as any).setActive();
         } catch (e) {
           /* no-op */
