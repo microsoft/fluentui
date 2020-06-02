@@ -10,8 +10,8 @@ import { tokensToStyleObject } from '@fluentui/react-theme-provider';
 export const useButton = (props: ButtonProps, options: ComposePreparedOptions) => {
   const state = {
     ...props,
-    style: tokensToStyleObject(props, '--button')
+    style: tokensToStyleObject(props.tokens, '--button'),
   };
 
-  return mergeProps<ButtonProps>(props, options);
+  return mergeProps<ButtonProps>(state, options);
 };

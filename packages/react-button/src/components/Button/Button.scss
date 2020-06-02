@@ -1,3 +1,5 @@
+$defaultPrimaryBackground: rgb(98, 100, 167);
+
 /**
  * TODO: Once theming is updated, consider removing all of this.
  *
@@ -61,9 +63,7 @@
   --button-focusInnerColor: #fff;
 
   /* TODO: Remove. Accent should only be defined in the theme. */
-  --accent-fill: rgb(98, 100, 167);
-
-  --accent-background-focused: var(--accent-fill);
+  --accent-background-focused: var(--accent-background, $defaultPrimaryBackground);
   --accent-background-hovered: rgb(88, 90, 150);
   --accent-background-pressed: rgb(70, 71, 117);
   --accent-background-disabled: rgb(237, 235, 233);
@@ -127,13 +127,13 @@
   * 3. Avoid defining styles directly.
  **/
   &.primary {
-    --button-fill: var(--accent-fill);
-    --button-fill-hovered: var(--accent-fill-hovered);
-    --button-fill-pressed: var(--accent-fill-pressed);
+    --button-background: var(--accent-background);
+    --button-background-hovered: var(--accent-background-hovered);
+    --button-background-pressed: var(--accent-background-pressed);
 
-    --button-text: var(--accent-text);
-    --button-text-hovered: var(--accent-text-hovered);
-    --button-text-pressed: var(--accent-text-pressed);
+    --button-contentColor: var(--accent-contentColor);
+    --button-contentColor-hovered: var(--accent-contentColor-hovered);
+    --button-contentColor-pressed: var(--accent-contentColor-pressed);
 
     --button-borderColor: var(--accent-borderColor);
 
@@ -182,13 +182,13 @@
 
   &.disabled {
     pointer-events: none;
-    background-color: var(--button-fill-disabled);
-    color: var(--button-text-disabled);
+    background-color: var(--button-background-disabled);
+    color: var(--button-contentColor-disabled);
     border-color: var(--button-borderColor-disabled);
     box-shadow: var(--button-boxShadow-disabled);
 
     &.icon {
-      color: var(--button-icon-disabled, var(--button-text-disabled));
+      color: var(--button-icon-disabled, var(--button-contentColor-disabled));
     }
   }
 }

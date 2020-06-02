@@ -57,7 +57,7 @@ export const ButtonCss = () => (
 
 export const ButtonTokens = () => (
   <>
-    <h3>A button can be colored using inline tokens.</h3>
+    <h3>zA button can be colored using inline tokens.</h3>
     <div className={classes.vStack}>
       <Button
         icon="O"
