@@ -135,21 +135,13 @@ const DropdownSelectedItem: React.FC<WithAsProp<DropdownSelectedItemProps>> &
     },
   });
 
-  const contentElement = Box.create(
-    Box.create(header, {
-      defaultProps: () => ({
-        as: 'span',
-        className: dropdownSelectedItemSlotClassNames.header,
-        styles: resolvedStyles.header,
-      }),
+  const headerElement = Box.create(header, {
+    defaultProps: () => ({
+      as: 'span',
+      className: dropdownSelectedItemSlotClassNames.header,
+      styles: resolvedStyles.header,
     }),
-    {
-      defaultProps: () => ({
-        className: dropdownSelectedItemSlotClassNames.header,
-        styles: resolvedStyles.content,
-      }),
-    },
-  );
+  });
 
   const iconElement = Box.create(icon, {
     defaultProps: () => ({
@@ -160,36 +152,25 @@ const DropdownSelectedItem: React.FC<WithAsProp<DropdownSelectedItemProps>> &
     overrideProps: handleIconOverrides,
   });
 
-  const mediaElement = Box.create(
-    {},
-    {
-      defaultProps: () => ({
-        className: dropdownSelectedItemSlotClassNames.image,
-      }),
-      overrideProps: {
-        children: Image.create(image, {
-          defaultProps: () => ({
-            avatar: true,
-            className: dropdownSelectedItemSlotClassNames.image,
-            styles: resolvedStyles.image,
-          }),
-        }),
-      },
-    },
-  );
+  const imageElement = Image.create(image, {
+    defaultProps: () => ({
+      avatar: true,
+      className: dropdownSelectedItemSlotClassNames.image,
+      styles: resolvedStyles.image,
+    }),
+  });
 
   const element = (
     <Ref innerRef={itemRef}>
       <ElementType
         className={classes.root}
         tabIndex={active ? 0 : -1}
-        styles={resolvedStyles.main}
         onClick={handleClick}
         onKeyDown={handleKeyDown}
         {...unhandledProps}
       >
-        {mediaElement}
-        {contentElement}
+        {imageElement}
+        {headerElement}
         {iconElement}
       </ElementType>
     </Ref>
