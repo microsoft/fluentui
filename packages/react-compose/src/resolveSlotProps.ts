@@ -35,6 +35,7 @@ export function resolveSlotProps<TProps, TState>(
       !defaultHandledProps.has(propName) &&
       !options.slots.hasOwnProperty(propName) &&
       propName !== 'as' &&
+      propName !== 'children' &&
       (options.handledProps as string[]).indexOf(propName) === -1
     ) {
       // tslint:disable-next-line:no-any
