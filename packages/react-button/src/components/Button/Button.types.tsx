@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { ComponentProps, ShorthandValue, ComposeOptions, ComposeStandardStatics } from '../../utils/tempTypes';
-import { TokenSetType } from '@fluentui/react-theme-provider';
+import { ComponentProps, ShorthandValue, ComposeStandardStatics } from '../../utils/tempTypes';
+import { ComposeOptions } from '@fluentui/react-compose';
 
 export type RecursivePartial<T> = {
   [P in keyof T]?: T[P] extends (infer U)[]

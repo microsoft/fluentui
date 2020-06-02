@@ -84,14 +84,14 @@ export interface IPivotProps extends React.HTMLAttributes<HTMLDivElement> {
   onLinkClick?: (item?: PivotItem, ev?: React.MouseEvent<HTMLElement>) => void;
 
   /**
-   * PivotLinkSize to use (normal, large)
+   * Link size (normal, large)
    */
-  linkSize?: PivotLinkSize;
+  linkSize?: PivotLinkSizeType;
 
   /**
-   * PivotLinkFormat to use (links, tabs)
+   * Link format (links, tabs)
    */
-  linkFormat?: PivotLinkFormat;
+  linkFormat?: PivotLinkFormatType;
 
   /**
    * Whether to skip rendering the tabpanel with the content of the selected tab.
@@ -111,11 +111,9 @@ export interface IPivotProps extends React.HTMLAttributes<HTMLDivElement> {
  * {@docCategory Pivot}
  */
 export type IPivotStyleProps = Required<Pick<IPivotProps, 'theme'>> &
-  Pick<IPivotProps, 'className'> & {
-    /** Indicates whether Pivot has large format. */
-    rootIsLarge?: boolean;
-    /** Indicates whether Pivot has tabbed format. */
-    rootIsTabs?: boolean;
+  Pick<IPivotProps, 'className'> &
+  Pick<IPivotProps, 'linkSize'> &
+  Pick<IPivotProps, 'linkFormat'> & {
     /**
      * Indicates whether Pivot link is selected.
      * @deprecated Is not populated with valid value. Specify `linkIsSelected` styling instead.
@@ -142,30 +140,44 @@ export interface IPivotStyles {
 
 /**
  * {@docCategory Pivot}
+ * Display mode for the pivot links/tabs
  */
-export enum PivotLinkFormat {
+export type PivotLinkFormatType = 'links' | 'tabs';
+
+/**
+ * {@docCategory Pivot}
+ * Size of the pivot links/tabs
+ */
+export type PivotLinkSizeType = 'normal' | 'large';
+
+/**
+ * {@docCategory Pivot}
+ * @deprecated Use strings 'links' or 'tabs' instead of this enum
+ */
+export const enum PivotLinkFormat {
   /**
    * Display Pivot Links as links
    */
-  links = 0,
+  links = 'links',
 
   /**
    * Display Pivot Links as Tabs
    */
-  tabs = 1,
+  tabs = 'tabs',
 }
 
 /**
  * {@docCategory Pivot}
+ * @deprecated Use strings 'normal' or 'large' instead of this enum
  */
-export enum PivotLinkSize {
+export const enum PivotLinkSize {
   /**
    * Display Link using normal font size
    */
-  normal = 0,
+  normal = 'normal',
 
   /**
    * Display links using large font size
    */
-  large = 1,
+  large = 'large',
 }

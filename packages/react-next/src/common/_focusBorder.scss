@@ -23,6 +23,18 @@
   }
 }
 
+@mixin focus-before {
+  :global(.ms-Fabric--isFocusVisible) &:focus::before {
+    @content;
+  }
+}
+
+@mixin focus-after {
+  :global(.ms-Fabric--isFocusVisible) &:focus::after {
+    @content;
+  }
+}
+
 @mixin focus-border($padding: 0, $color: $focusBorderColor, $thickness: 1px, $onFocus: true, $position: relative) {
   @include focus-clear();
 
@@ -58,6 +70,6 @@
 // When focus is set using the keyboard, apply an outline.
 @mixin focus-outline {
   :global(.ms-Fabric--isFocusVisible) &:focus {
-    outline: 1px solid $focusBorderColor;
+    outline: 1px solid var($semanticColorsFocusBorder);
   }
 }

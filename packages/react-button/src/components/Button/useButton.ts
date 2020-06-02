@@ -1,6 +1,5 @@
-import { ButtonProps, ButtonSlots, ButtonSlotProps } from './Button.types';
-import { mergeProps } from '../../utils/mergeProps';
-import { ComposePreparedOptions } from '@fluentui/react-compose';
+import { ButtonProps } from './Button.types';
+import { mergeProps, ComposePreparedOptions } from '@fluentui/react-compose';
 import { tokensToStyleObject } from '@fluentui/react-theme-provider';
 
 /**
@@ -17,5 +16,5 @@ export const useButton = (props: ButtonProps, options: ComposePreparedOptions) =
     state.style = { ...props.style, ...tokensToStyleObject(tokens as Record<string, any>, '--button') };
   }
 
-  return mergeProps<ButtonProps, ButtonSlots, ButtonSlotProps>(state, options);
+  return mergeProps<ButtonProps>(props, options);
 };
