@@ -23,7 +23,8 @@ module.exports = createRule({
       return {};
     }
     const { program, esTreeNodeToTSNodeMap } = context.parserServices;
-    const tc = program.getTypeChecker();
+    /** @type {import("typescript").TypeChecker | undefined} */
+    let typeChecker;
 
     return {
       Identifier: identifier => {
@@ -32,7 +33,11 @@ module.exports = createRule({
           tsNode.parent.kind === ts.SyntaxKind.PropertyAccessExpression &&
           (identifier.name === 'which' || identifier.name === 'keyCode')
         ) {
-          const symbol = tc.getSymbolAtLocation(tsNode);
+          if (!typeChecker) {
+            // only get type checker if/when needed, to avoid the perf hit if unnecessary
+            typeChecker = program.getTypeChecker();
+          }
+          const symbol = typeChecker.getSymbolAtLocation(tsNode);
           // Unexposed parent property has the exact info we need (not sure how to get it via public API)
           const parentName = symbol && /** @type {*} */ (symbol).parent.getEscapedName().toString();
           if (parentName && /Event\b/.test(parentName)) {
