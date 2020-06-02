@@ -17,6 +17,7 @@ const createDocumentMock = (): Document => {
     removeEventListener: () => {},
   };
 
+  externalDocument.documentElement.appendChild(externalDocument.createElement('head'));
   externalDocument.documentElement.appendChild(externalDocument.createElement('body'));
   // `defaultView` is read-only by spec, getter is used as workaround
   // https://github.com/facebook/jest/issues/2227#issuecomment-430435133
