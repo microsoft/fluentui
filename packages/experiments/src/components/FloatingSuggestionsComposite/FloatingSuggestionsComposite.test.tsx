@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import { create } from 'react-test-renderer';
+import { create, act } from 'react-test-renderer';
 import { mru } from '@uifabric/example-data';
 import { BaseFloatingSuggestions } from './FloatingSuggestions';
 import * as ReactDOM from 'react-dom';
@@ -10,19 +10,26 @@ import {
   IFloatingSuggestionItemProps,
 } from './FloatingSuggestionsItem/FloatingSuggestionsItem.types';
 import { IBaseFloatingSuggestionsProps } from './FloatingSuggestions.types';
+import * as ReactTestUtils from 'react-dom/test-utils';
 
 export interface ISimple {
   key: string;
   name: string;
 }
 
-function onZeroQuerySuggestion(): ISimple[] {
-  return ['black', 'blue', 'brown', 'cyan'].map((item: string) => ({ key: item, name: item }));
-}
+let container: HTMLDivElement | null;
 
-const basicSuggestionRenderer = (props: IFloatingSuggestionOnRenderItemProps<ISimple>) => {
-  return <div key={props.key}> {props.id}</div>;
-};
+beforeEach(() => {
+  container = document.createElement('div');
+  document.body.appendChild(container);
+});
+
+afterEach(() => {
+  if (container) {
+    document.body.removeChild(container);
+  }
+  container = null;
+});
 
 export type TypedFloatingSimpleSuggestionsProps = Omit<IBaseFloatingSuggestionsProps<ISimple>, 'onRenderSuggestion'>;
 
@@ -65,12 +72,12 @@ describe('FloatingSuggestions', () => {
         isSelected: false,
         showRemoveButton: true,
       },
-    ] as unknown) as IFloatingSuggestionItem<ISimple>;
+    ] as unknown) as IFloatingSuggestionItem<ISimple>[];
 
     const component = create(
       <BaseFloatingSuggestions
         isSuggestionsVisible={isSuggestionsVisible}
-        suggestions={[_suggestions]}
+        suggestions={_suggestions}
         targetElement={null}
       />,
     );
@@ -89,6 +96,7 @@ describe('FloatingSuggestions', () => {
         item: mru[2],
         isSelected: false,
         showRemoveButton: true,
+        name: 'Alexa',
       },
       {
         key: '1',
@@ -97,8 +105,9 @@ describe('FloatingSuggestions', () => {
         item: mru[1],
         isSelected: false,
         showRemoveButton: true,
+        name: 'Alexis',
       },
-    ] as unknown) as IFloatingSuggestionItem<ISimple>;
+    ] as unknown) as IFloatingSuggestionItem<ISimple>[];
 
     const root = document.createElement('div');
     document.body.appendChild(root);
@@ -108,27 +117,37 @@ describe('FloatingSuggestions', () => {
     // since callout mount a new react root with ReactDOM.
     //
     // see https://github.com/facebook/react/pull/12895
-    (ReactDOM.render(
-      <BaseFloatingSuggestions
-        suggestions={[_suggestions]}
-        isSuggestionsVisible={true}
-        componentRef={picker}
-        targetElement={null}
-        suggestionsHeaderText={'People suggestions'}
-        noResultsFoundText={'No suggestions'}
-        onFloatingSuggestionsDismiss={undefined}
-        showSuggestionRemoveButton={true}
-        onSuggestionSelected={_onSuggestionSelected}
-        onRemoveSuggestion={_onSuggestionRemoved}
-      />,
-      root,
-    ) as unknown) as IBaseFloatingSuggestionsProps<ISimple>;
+    act(() => {
+      (ReactDOM.render(
+        <BaseFloatingSuggestions
+          suggestions={_suggestions}
+          isSuggestionsVisible={true}
+          componentRef={picker}
+          targetElement={null}
+          suggestionsHeaderText={'People suggestions'}
+          noResultsFoundText={'No suggestions'}
+          onFloatingSuggestionsDismiss={undefined}
+          showSuggestionRemoveButton={true}
+          onSuggestionSelected={_onSuggestionSelected}
+          onRemoveSuggestion={_onSuggestionRemoved}
+        />,
+        container,
+      ) as unknown) as IBaseFloatingSuggestionsProps<ISimple>;
+    });
 
     const baseFloatingPicker = document.querySelector('.ms-BaseFloatingPicker') as HTMLInputElement;
     expect(baseFloatingPicker).toBeTruthy();
 
     const floatingSuggestions = document.querySelector('.ms-FloatingSuggestions') as HTMLInputElement;
     expect(floatingSuggestions).toBeTruthy();
+
+    const callout = container?.getElementsByClassName('.ms-FloatingSuggestions-callout');
+    expect(callout).toBeTruthy();
+
+    const firstElement = container?.getElementsByClassName('ms-FloatingSuggestionsList-container');
+    expect(firstElement).toBeTruthy();
+
+    const allDivs = container?.querySelector('div');
     ReactDOM.unmountComponentAtNode(root);
   });
 });
