@@ -5,7 +5,7 @@ import getBorderFocusStyles from '../../getBorderFocusStyles';
 import checkboxIndicatorUrl from './checkboxIndicatorUrl';
 import { pxToRem } from '../../../../utils';
 
-const commonToggleBeforeStyles = v => ({
+const commonToggleBeforeStyles = (v: CheckboxVariables): ICSSInJSStyle => ({
   content: "' '",
   display: 'block',
   borderRadius: '50%',
@@ -29,10 +29,8 @@ const checkboxStyles: ComponentSlotStylesPrepared<CheckboxStylesProps, CheckboxV
     }),
 
     cursor: 'pointer',
-    outline: 0,
 
     color: v.textColor,
-    ...padding(v.rootPadding),
     verticalAlign: 'middle',
     alignItems: 'start',
 
@@ -48,7 +46,10 @@ const checkboxStyles: ComponentSlotStylesPrepared<CheckboxStylesProps, CheckboxV
             backgroundImage: checkboxIndicatorUrl(v.checkedIndicatorColor, v.checkedBackgroundHover),
           }),
           ...(!p.checked && {
-            borderColor: v.borderColorHover,
+            borderTopColor: v.borderColorHover,
+            borderRightColor: v.borderColorHover,
+            borderBottomColor: v.borderColorHover,
+            borderLeftColor: v.borderColorHover,
           }),
         }),
         ...(p.toggle &&
@@ -59,13 +60,23 @@ const checkboxStyles: ComponentSlotStylesPrepared<CheckboxStylesProps, CheckboxV
               ...commonToggleBeforeStyles(v),
               borderColor: v.borderColorHover,
               borderStyle: v.borderStyle,
-              borderWidth: v.borderWidth,
-              margin: v.togglePadding,
+              borderTopWidth: v.borderWidth,
+              borderBottomWidth: v.borderWidth,
+              borderLeftWidth: v.borderWidth,
+              borderRightWidth: v.borderWidth,
+              marginLeft: v.togglePadding,
+              marginRight: v.togglePadding,
+              marginTop: v.togglePadding,
+              marginBottom: v.togglePadding,
               background: 'transparent',
             },
 
             ...(p.checked && {
-              borderColor: v.checkedBorderColor,
+              borderTopColor: v.checkedBorderColor,
+              borderRightColor: v.checkedBorderColor,
+              borderBottomColor: v.checkedBorderColor,
+              borderLeftColor: v.checkedBorderColor,
+
               background: v.checkedBackgroundHover,
               ':before': {
                 ...commonToggleBeforeStyles(v),
@@ -86,6 +97,9 @@ const checkboxStyles: ComponentSlotStylesPrepared<CheckboxStylesProps, CheckboxV
       pointerEvents: 'none',
       color: v.disabledColor,
     }),
+
+    outlineWidth: '0',
+    ...padding(v.rootPadding),
   }),
 
   checkbox: ({ props: p, variables: v }): ICSSInJSStyle => ({
@@ -102,10 +116,19 @@ const checkboxStyles: ComponentSlotStylesPrepared<CheckboxStylesProps, CheckboxV
     width: pxToRem(16),
     height: pxToRem(16),
 
-    borderColor: v.borderColor,
-    borderStyle: v.borderStyle,
+    borderTopColor: v.borderColor,
+    borderRightColor: v.borderColor,
+    borderBottomColor: v.borderColor,
+    borderLeftColor: v.borderColor,
+    borderTopStyle: v.borderStyle as any,
+    borderRightStyle: v.borderStyle as any,
+    borderBottomStyle: v.borderStyle as any,
+    borderLeftStyle: v.borderStyle as any,
     borderRadius: v.borderRadius,
-    borderWidth: v.borderWidth,
+    borderTopWidth: v.borderWidth,
+    borderRightWidth: v.borderWidth,
+    borderBottomWidth: v.borderWidth,
+    borderLeftWidth: v.borderWidth,
     color: v.indicatorColor,
     ...margin(v.margin),
     ...padding(v.padding),

@@ -29,7 +29,10 @@ const getPseudoElementStyles = (args: BorderPseudoElementStyles): ICSSInJSStyle 
   return {
     content: '""',
     position: 'absolute',
-    borderStyle: 'solid',
+    borderTopStyle: 'solid',
+    borderRightStyle: 'solid',
+    borderBottomStyle: 'solid',
+    borderLeftStyle: 'solid',
     pointerEvents: 'none',
     top: borderEdgeValue,
     right: borderEdgeValue,
@@ -54,26 +57,42 @@ const getBorderFocusStyles = (args: BorderFocusStyles): ICSSInJSStyle => {
     borderPadding,
   } = args;
 
-  const defaultBorderStyles: React.CSSProperties = { borderWidth, borderRadius };
+  const defaultBorderStyles: React.CSSProperties = {
+    borderRadius: borderRadius,
+
+    borderTopWidth: borderWidth,
+    borderRightWidth: borderWidth,
+    borderBottomWidth: borderWidth,
+    borderLeftWidth: borderWidth,
+  };
 
   return {
     ':focus': {
-      outline: 0,
+      outlineWidth: '0',
     },
     ':focus-visible': {
-      borderColor: 'transparent',
+      borderTopColor: 'transparent',
+      borderRightColor: 'transparent',
+      borderBottomColor: 'transparent',
+      borderLeftColor: 'transparent',
 
       ':before': getPseudoElementStyles({
         zIndex: sv.zIndexes.foreground,
         borderEdgeValue: borderPadding == null ? '0' : `-${borderPadding}`,
-        borderColor: focusInnerBorderColor,
+        borderTopColor: focusInnerBorderColor,
+        borderRightColor: focusInnerBorderColor,
+        borderBottomColor: focusInnerBorderColor,
+        borderLeftColor: focusInnerBorderColor,
         ...defaultBorderStyles,
       }),
 
       ':after': getPseudoElementStyles({
         zIndex: sv.zIndexes.foreground,
         borderEdgeValue: borderPadding == null ? `-${borderWidth}` : `calc(0px - ${borderPadding} - ${borderWidth})`,
-        borderColor: focusOuterBorderColor,
+        borderTopColor: focusOuterBorderColor,
+        borderRightColor: focusOuterBorderColor,
+        borderBottomColor: focusOuterBorderColor,
+        borderLeftColor: focusOuterBorderColor,
         ...defaultBorderStyles,
       }),
     },
