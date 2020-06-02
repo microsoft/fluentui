@@ -71,7 +71,7 @@ export default function felaPerformanceEnhancer(renderer) {
     media: string = '',
     support: string = '',
   ): string {
-    let classNames = _className ? ' ' + _className : '';
+    let classNames = _className ? ` ${_className}` : '';
 
     for (const property in style) {
       const value = style[property];
