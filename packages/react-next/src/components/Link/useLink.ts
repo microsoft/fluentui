@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ComposePreparedOptions } from '@fluentui/react-compose';
-import { classNamesFunction } from '../../Utilities';
+import { classNamesFunction, useFocusRects } from '../../Utilities';
 import { ILink, ILinkProps, ILinkStyleProps, ILinkStyles } from './Link.types';
 
 const getClassNames = classNamesFunction<ILinkStyleProps, ILinkStyles>({ useStaticStyles: true });
@@ -14,6 +14,7 @@ export const useLink = (props: ILinkProps, options: ComposePreparedOptions): any
   const { as, className, disabled, href, onClick, ref, styles, theme } = props;
 
   useComponentRef(props, ref);
+  useFocusRects(ref);
 
   const classNames = getClassNames(styles!, {
     className,

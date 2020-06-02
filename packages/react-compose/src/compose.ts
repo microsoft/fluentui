@@ -22,13 +22,19 @@ function compose<
 
   const Component = (React.forwardRef<TElementType, TInputProps & TParentProps & { as?: React.ElementType }>(
     (props, ref) => {
-      return composeOptions.render(props, (ref as unknown) as React.Ref<HTMLDivElement>, {
-        ...composeOptions,
+      const { state, ...rest } = composeOptions;
+
+      const options = {
+        ...rest,
         slots: {
-          ...composeOptions.slots,
+          ...rest.slots,
           __self: Component,
         },
-      });
+      };
+
+      const slotsAndState = state({ ...props, ref }, options);
+
+      return composeOptions.render(props, (ref as unknown) as React.Ref<HTMLDivElement>, slotsAndState);
     },
   ) as unknown) as ComponentWithAs<TElementType, TInputProps & TParentProps>;
 

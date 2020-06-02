@@ -29,6 +29,12 @@ export function mergeComposeOptions(
       return mergedSlotProps;
     }, {});
 
+  const state: ComposePreparedOptions['state'] = (props, options) => {
+    if (inputOptions.state) {
+      return inputOptions.state(props, options, parentOptions.state);
+    }
+  };
+
   return {
     className: inputOptions.className || parentOptions.className,
     classes: [...parentOptions.classes, inputOptions.classes],
@@ -52,6 +58,8 @@ export function mergeComposeOptions(
     },
 
     slotProps: mapPropsToSlotPropsChain,
+
+    state,
 
     resolveSlotProps,
 

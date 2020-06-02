@@ -10,6 +10,9 @@ export const defaultComposeOptions: ComposePreparedOptions = {
   overrideStyles: false,
   slots: { __self: () => null },
   slotProps: [],
+  state: (props, options) => {
+    return options;
+  },
   resolveSlotProps: () => ({}),
   shorthandConfig: {},
 };
