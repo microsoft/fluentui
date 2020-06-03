@@ -4,9 +4,6 @@ import * as classes from './Button.scss';
 import { ButtonProps } from './Button.types';
 
 export const Button = compose<'button', {}, {}, ButtonProps, ButtonProps>(ButtonBase, {
-  classes: createClassResolver(classes),
-  slots: {
-    icon: 'div',
-  },
+  classes: createClassResolver(classes, ['root', 'icon', 'content', 'loader']),
   displayName: 'Button',
 });
