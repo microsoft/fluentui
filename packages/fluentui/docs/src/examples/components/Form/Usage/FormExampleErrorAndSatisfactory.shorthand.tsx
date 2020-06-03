@@ -6,7 +6,7 @@ const fields = [
   {
     label: 'First name',
     name: 'firstName',
-    id: 'first-name-shorthand',
+    id: 'first-name-error',
     key: 'first-name',
     errorMessage: 'ERROR',
     required: true,
@@ -14,7 +14,7 @@ const fields = [
   {
     label: 'Last name',
     name: 'lastName',
-    id: 'last-name-shorthand',
+    id: 'last-name-satisfactory',
     key: 'last-name',
     successIndicator: <PresenceAvailableIcon />,
     required: true,

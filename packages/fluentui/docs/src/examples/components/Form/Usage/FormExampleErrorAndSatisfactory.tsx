@@ -10,26 +10,26 @@ const FormExampleErrorAndSatisfactory = () => (
   >
     <Form.Field>
       <Form.Label htmlFor="firstname">First Name*</Form.Label>
-      <Input error name="first-name" id="firstname" />
+      <Input error name="first-name" id="firstname-with-error" />
       <Form.Message error>Error Message</Form.Message>
     </Form.Field>
     <Form.Field
       label="Middle name"
       name="MiddleName"
-      id="Middle-name-shorthand"
+      id="Middle-name-shorthand-with-error"
       errorMessage={'ERROR'}
       required={true}
     />
     <Form.Field
       label="Last name"
       name="lastName"
-      id="last-name-shorthand"
+      id="last-name-with=satisfactory"
       successIndicator={<PresenceAvailableIcon />}
       required={true}
     />
     <Form.Field>
       <Form.Label htmlFor="email">E-mail*</Form.Label>
-      <Input successIndicator={<PresenceAvailableIcon />} required name="email-field" id="email" />
+      <Input successIndicator={<PresenceAvailableIcon />} required name="email-field" id="email-field" />
     </Form.Field>
     <Form.Field control={{ as: Button, content: 'Submit' }} />
   </Form>
