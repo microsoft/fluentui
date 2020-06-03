@@ -102,15 +102,15 @@ const FormField: React.FC<WithAsProp<FormFieldProps>> & FluentComponentStaticPro
   const unhandledProps = useUnhandledProps(FormField.handledProps, props);
   const messageId = React.useRef<string>();
   messageId.current = getOrGenerateIdFromShorthand('error-message-', message || errorMessage, messageId.current);
-  const controlId = React.useRef<string>();
-  controlId.current = getOrGenerateIdFromShorthand('form-contro-', id, controlId.current);
+  const labelId = React.useRef<string>();
+  labelId.current = getOrGenerateIdFromShorthand('form-label-', id, labelId.current);
 
   const getA11yProps = useAccessibility<FormFieldBehaviorProps>(props.accessibility, {
     debugName: FormField.displayName,
     mapPropsToBehavior: () => ({
       hasErrorMessage: !!errorMessage,
       messageId: messageId.current,
-      id: controlId.current,
+      labelId: labelId.current,
     }),
     rtl: context.rtl,
   });
@@ -137,6 +137,7 @@ const FormField: React.FC<WithAsProp<FormFieldProps>> & FluentComponentStaticPro
       getA11yProps('label', {
         as: 'label',
         htmlFor: id,
+        id: labelId.current,
         styles: resolvedStyles.label,
       }),
   });
@@ -162,7 +163,6 @@ const FormField: React.FC<WithAsProp<FormFieldProps>> & FluentComponentStaticPro
     defaultProps: () =>
       getA11yProps('control', {
         required,
-        id: controlId.current,
         name,
         type,
         icon: !!errorMessage ? iconElement : null,
