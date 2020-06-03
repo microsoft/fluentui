@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as keyboardKey from 'keyboard-key';
+import { keyboardKey } from '@fluentui/keyboard-key';
 
 import { isConformant } from 'test/specs/commonTests';
 import { mountWithProvider } from 'test/utils';
@@ -71,7 +71,7 @@ const checkOpenTitles = (wrapper: ReactWrapper, expected: string[]): void => {
 };
 
 describe('Tree', () => {
-  isConformant(Tree, { autoControlledProps: ['activeItemIds'] });
+  isConformant(Tree, { constructorName: 'Tree', autoControlledProps: ['activeItemIds', 'selectedItemIds'] });
 
   describe('activeItemIds', () => {
     it('should contain index of item open at click', () => {

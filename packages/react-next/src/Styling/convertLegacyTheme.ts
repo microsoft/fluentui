@@ -10,6 +10,7 @@ export const convertLegacyTheme = memoizeFunction(
       stylesheets: [],
 
       // TODO: convert theme once we know its shape.
+      // tslint:disable-next-line:no-any
       tokens: legacyTheme as any,
     };
 

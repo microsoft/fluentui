@@ -42,6 +42,12 @@ export interface FocusZoneProperties {
   shouldResetActiveElementWhenTabFromZone?: boolean;
 
   /**
+   * Determines whether the FocusZone will walk up the DOM trying to invoke click callbacks on focusable elements on
+   * Enter and Space keydowns to ensure accessibility for tags that don't guarantee this behavior.
+   */
+  shouldRaiseClicks?: boolean;
+
+  /**
    * If set, the FocusZone will not be tabbable and keyboard navigation will be disabled.
    * This does not affect disabled attribute of any child.
    */

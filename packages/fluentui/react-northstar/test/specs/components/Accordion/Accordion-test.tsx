@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as keyboardKey from 'keyboard-key';
+import { keyboardKey } from '@fluentui/keyboard-key';
 
 import Accordion from 'src/components/Accordion/Accordion';
 import { isConformant, handlesAccessibility } from 'test/specs/commonTests';

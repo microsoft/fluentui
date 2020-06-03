@@ -1,27 +1,41 @@
 // TODO:
 // vertical - padding variable?
-import { Accessibility, radioGroupBehavior } from '@fluentui/accessibility';
+import { Accessibility, radioGroupBehavior, RadioGroupBehaviorProps } from '@fluentui/accessibility';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-
 import {
-  AutoControlledComponent,
   childrenExist,
   UIComponentProps,
   ChildrenComponentProps,
   commonPropTypes,
   rtlTextContainer,
-  applyAccessibilityKeyHandlers,
-  ShorthandFactory,
+  createShorthandFactory,
 } from '../../utils';
 import RadioGroupItem, { RadioGroupItemProps } from './RadioGroupItem';
-import { WithAsProp, ComponentEventHandler, withSafeTypeForAs, ShorthandCollection } from '../../types';
+import {
+  WithAsProp,
+  ComponentEventHandler,
+  withSafeTypeForAs,
+  ShorthandCollection,
+  FluentComponentStaticProps,
+  ProviderContextPrepared,
+} from '../../types';
+import {
+  useAutoControlled,
+  useTelemetry,
+  getElementType,
+  useUnhandledProps,
+  useAccessibility,
+  useStyles,
+} from '@fluentui/react-bindings';
+// @ts-ignore
+import { ThemeContext } from 'react-fela';
 
 export interface RadioGroupProps extends UIComponentProps, ChildrenComponentProps {
   /** Accessibility behavior if overridden by the user. */
-  accessibility?: Accessibility;
+  accessibility?: Accessibility<RadioGroupBehaviorProps>;
 
   /** Value of the currently checked radio item. */
   checkedValue?: number | string;
@@ -45,86 +59,79 @@ export interface RadioGroupProps extends UIComponentProps, ChildrenComponentProp
 
 export const radioGroupClassName = 'ui-radiogroup';
 
-class RadioGroup extends AutoControlledComponent<WithAsProp<RadioGroupProps>, any> {
-  static displayName = 'RadioGroup';
+export type RadioGrouptStylesProps = never;
 
-  static deprecated_className = radioGroupClassName;
+const RadioGroup: React.FC<WithAsProp<RadioGroupProps>> &
+  FluentComponentStaticProps<RadioGroupProps> & {
+    Item: typeof RadioGroupItem;
+  } = props => {
+  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const { setStart, setEnd } = useTelemetry(RadioGroup.displayName, context.telemetry);
+  setStart();
 
-  static create: ShorthandFactory<RadioGroupProps>;
+  const { children, vertical, items, className, design, styles, variables } = props;
+  const ElementType = getElementType(props);
+  const unhandledProps = useUnhandledProps(RadioGroup.handledProps, props);
 
-  static propTypes = {
-    ...commonPropTypes.createCommon({
-      content: false,
+  const getA11yProps = useAccessibility<RadioGroupBehaviorProps>(props.accessibility, {
+    debugName: RadioGroup.displayName,
+    actionHandlers: {
+      nextItem: event => setCheckedItem(event, 1),
+      prevItem: event => setCheckedItem(event, -1),
+    },
+    rtl: context.rtl,
+  });
+
+  const { classes } = useStyles<RadioGrouptStylesProps>(RadioGroup.displayName, {
+    className: radioGroupClassName,
+    mapPropsToInlineStyles: () => ({
+      className,
+      design,
+      styles,
+      variables,
     }),
-    checkedValue: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-    defaultCheckedValue: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-    items: customPropTypes.collectionShorthand,
-    onCheckedValueChange: PropTypes.func,
-    vertical: PropTypes.bool,
-  };
+    rtl: context.rtl,
+  });
 
-  static defaultProps = {
-    as: 'div',
-    accessibility: radioGroupBehavior as Accessibility,
-  };
+  const [checkedValue, setCheckedValue] = useAutoControlled({
+    defaultValue: props.defaultCheckedValue,
+    value: props.checkedValue,
+    initialValue: undefined,
+  });
 
-  static autoControlledProps = ['checkedValue'];
+  const [shouldFocus, setShouldFocus] = React.useState(false);
 
-  static Item = RadioGroupItem;
-
-  renderComponent({ ElementType, classes, accessibility, unhandledProps }) {
-    const { children, vertical } = this.props;
-    return (
-      <ElementType
-        {...accessibility.attributes.root}
-        {...rtlTextContainer.getAttributes({ forElements: [children] })}
-        {...unhandledProps}
-        {...applyAccessibilityKeyHandlers(accessibility.keyHandlers.root, unhandledProps)}
-        className={classes.root}
-      >
-        {childrenExist(children) ? children : this.renderItems(vertical)}
-      </ElementType>
-    );
-  }
-
-  actionHandlers = {
-    nextItem: event => this.setCheckedItem(event, 1),
-    prevItem: event => this.setCheckedItem(event, -1),
-  };
-
-  getItemProps = (item): RadioGroupItemProps => {
+  const getItemProps = (item): RadioGroupItemProps => {
     return (item as React.ReactElement<RadioGroupItemProps>).props || item;
   };
 
-  setCheckedItem = (event, direction) => {
-    const nextItem = this.findNextEnabledCheckedItem(direction);
+  const setCheckedItem = (event, direction) => {
+    const nextItem = findNextEnabledCheckedItem(direction);
 
     if (nextItem) {
-      this.setCheckedValue({
-        checkedValue: nextItem.value,
+      checkedValueChange({
+        nextCheckedValue: nextItem.value,
         shouldFocus: true,
         event,
-        props: nextItem,
+        itemProps: nextItem,
       });
     }
     event.preventDefault();
   };
 
-  findNextEnabledCheckedItem = (direction): RadioGroupItemProps => {
-    if (!this.props.items || !this.props.items.length) {
+  const findNextEnabledCheckedItem = (direction): RadioGroupItemProps => {
+    if (!props.items || !props.items.length) {
       return undefined;
     }
 
     const currentIndex =
       // if none of the values selected, set current index to the first item
-      this.state.checkedValue !== undefined
-        ? _.findIndex(this.props.items, item => this.getItemProps(item).value === this.state.checkedValue)
-        : 0;
+      checkedValue !== undefined ? _.findIndex(props.items, item => getItemProps(item).value === checkedValue) : 0;
 
     for (let newIndex = currentIndex + direction; newIndex !== currentIndex; newIndex += direction) {
       if (newIndex < 0) {
-        newIndex = this.props.items.length - 1;
-      } else if (newIndex >= this.props.items.length) {
+        newIndex = props.items.length - 1;
+      } else if (newIndex >= props.items.length) {
         newIndex = 0;
       }
 
@@ -132,7 +139,7 @@ class RadioGroup extends AutoControlledComponent<WithAsProp<RadioGroupProps>, an
         return undefined;
       }
 
-      const itemProps = this.getItemProps(this.props.items[newIndex]);
+      const itemProps = getItemProps(props.items[newIndex]);
       if (!itemProps.disabled) {
         return itemProps;
       }
@@ -140,48 +147,88 @@ class RadioGroup extends AutoControlledComponent<WithAsProp<RadioGroupProps>, an
     return undefined;
   };
 
-  handleItemOverrides = predefinedProps => ({
-    checked: typeof this.state.checkedValue !== 'undefined' && this.state.checkedValue === predefinedProps.value,
+  const handleItemOverrides = predefinedProps => ({
+    checked: typeof checkedValue !== 'undefined' && checkedValue === predefinedProps.value,
     onClick: (event, itemProps) => {
       const { value, disabled } = itemProps;
-      if (!disabled && value !== this.state.checkedValue) {
-        this.setCheckedValue({ checkedValue: value, shouldFocus: false, event, props: itemProps });
+      if (!disabled && value !== checkedValue) {
+        checkedValueChange({ nextCheckedValue: value, shouldFocus: false, event, itemProps });
       }
       _.invoke(predefinedProps, 'onClick', event, itemProps);
     },
-    shouldFocus: this.state.shouldFocus,
+    shouldFocus,
   });
 
-  renderItems = (vertical: boolean) => {
-    const { items } = this.props;
-    const isNoneValueSelected = this.state.checkedValue === undefined;
-
+  const renderItems = (vertical: boolean) => {
+    const isNoneValueSelected = checkedValue === undefined;
     return _.map(items, (item, index) =>
       RadioGroupItem.create(item, {
-        defaultProps: () => ({
-          vertical,
-          ...(index === 0 && isNoneValueSelected && { tabIndex: 0 }),
-        }),
-        overrideProps: this.handleItemOverrides,
+        defaultProps: () =>
+          getA11yProps('item', {
+            vertical,
+            ...(index === 0 && isNoneValueSelected && { tabIndex: 0 }),
+          }),
+        overrideProps: handleItemOverrides,
       }),
     );
   };
 
-  setCheckedValue({
-    checkedValue,
+  const checkedValueChange = ({
+    nextCheckedValue,
     shouldFocus,
     event,
-    props,
+    itemProps,
   }: {
-    checkedValue: number | string;
+    nextCheckedValue: number | string;
     shouldFocus: boolean;
     event: React.SyntheticEvent;
-    props: RadioGroupItemProps;
-  }) {
-    this.setState({ checkedValue, shouldFocus });
-    _.invoke(this.props, 'onCheckedValueChange', event, props);
-  }
-}
+    itemProps: RadioGroupItemProps;
+  }) => {
+    setCheckedValue(nextCheckedValue);
+    setShouldFocus(shouldFocus);
+    _.invoke(props, 'onCheckedValueChange', event, itemProps);
+  };
+
+  const element = getA11yProps.unstable_wrapWithFocusZone(
+    <ElementType
+      {...getA11yProps('root', {
+        className: classes.root,
+        ...unhandledProps,
+        ...rtlTextContainer.getAttributes({ forElements: [children] }),
+      })}
+    >
+      {childrenExist(children) ? children : renderItems(vertical)}
+    </ElementType>,
+  );
+
+  setEnd();
+  return element;
+};
+
+RadioGroup.displayName = 'RadioGroup';
+
+RadioGroup.propTypes = {
+  ...commonPropTypes.createCommon({
+    content: false,
+  }),
+  checkedValue: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  defaultCheckedValue: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  items: customPropTypes.collectionShorthand,
+  onCheckedValueChange: PropTypes.func,
+  vertical: PropTypes.bool,
+};
+
+RadioGroup.defaultProps = {
+  accessibility: radioGroupBehavior,
+};
+
+RadioGroup.handledProps = Object.keys(RadioGroup.propTypes) as any;
+
+RadioGroup.Item = RadioGroupItem;
+
+RadioGroup.create = createShorthandFactory({
+  Component: RadioGroup,
+});
 
 /**
  * A RadioGroup allows user to select a value from a small set of mutually exclusive options.

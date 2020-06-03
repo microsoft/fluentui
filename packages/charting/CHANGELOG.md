@@ -1,8 +1,35 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Fri, 15 May 2020 00:07:39 GMT and should not be manually modified.
+This log was last generated on Tue, 02 Jun 2020 12:36:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.2.27](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.2.27)
+
+Tue, 02 Jun 2020 12:36:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.2.23..@uifabric/charting_v2.2.27)
+
+### Patches
+
+- LineChart: Add datapoints for each line and accessibility for it ([PR #13261](https://github.com/microsoft/fluentui/pull/13261) by v-satgar@microsoft.com)
+
+## [2.2.23](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.2.23)
+
+Mon, 25 May 2020 12:38:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.2.21..@uifabric/charting_v2.2.23)
+
+### Patches
+
+- Remove implicit dep on lodash and fix other imports ([PR #13295](https://github.com/microsoft/fluentui/pull/13295) by elcraig@microsoft.com)
+
+## [2.2.21](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.2.21)
+
+Thu, 21 May 2020 12:34:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.2.14..@uifabric/charting_v2.2.21)
+
+### Patches
+
+- Line chart: Fix issue  If y-axis value has more digits it is getting truncated ([PR #13208](https://github.com/microsoft/fluentui/pull/13208) by v-satgar@microsoft.com)
 
 ## [2.2.14](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.2.14)
 

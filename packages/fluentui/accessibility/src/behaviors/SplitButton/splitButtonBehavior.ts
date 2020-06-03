@@ -1,4 +1,4 @@
-import * as keyboardKey from 'keyboard-key';
+import { keyboardKey } from '@fluentui/keyboard-key';
 import * as _ from 'lodash';
 
 import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
@@ -15,6 +15,7 @@ import menuButtonBehavior, { MenuButtonBehaviorProps } from '../MenuButton/menuB
  * Adds attribute 'aria-labelledby=trigger-id' based on the property 'triggerId' to 'menu' slot.
  * Triggers 'closeAndFocusTrigger' action with 'Escape' or 'altKey'+'ArrowUp'.
  * Triggers 'openAndFocusFirst' action with 'altKey'+'ArrowDown' on 'root' slot.
+ * Triggers 'stopPropagation' action with 'ArrowLeft' or 'ArrowRight' on 'root' slot.
  *
  * @specification
  * Adds attribute 'tabIndex=-1' to 'toggleButton' slot.
@@ -31,6 +32,9 @@ const splitButtonBehavior: Accessibility = props => {
         popup: {
           closeAndFocusTrigger: {
             keyCombinations: [{ keyCode: keyboardKey.Escape }, { keyCode: keyboardKey.ArrowUp, altKey: true }],
+          },
+          stopPropagation: {
+            keyCombinations: [{ keyCode: keyboardKey.ArrowLeft }, { keyCode: keyboardKey.ArrowRight }],
           },
         },
         root: {

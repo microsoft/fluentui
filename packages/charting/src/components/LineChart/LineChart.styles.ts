@@ -57,22 +57,41 @@ export const getStyles = (props: ILineChartStyleProps): ILineChartStyles => {
       {
         display: 'grid',
         overflow: 'hidden',
-        padding: '10px 16px 10px 16px',
+        padding: '11px 16px 10px 16px',
         backgroundColor: theme.semanticColors.bodyBackground,
+        backgroundBlendMode: 'normal, luminosity',
       },
     ],
+    calloutDateTimeContainer: {
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+    },
     calloutContentX: [
       {
-        ...fonts.medium,
-        lineHeight: '14px',
+        ...fonts.small,
+        lineHeight: '16px',
+        opacity: '0.8',
+        color: theme.semanticColors.bodySubtext,
       },
     ],
+    calloutBlockContainer: {
+      ...fonts.mediumPlus,
+      marginTop: '13px',
+      paddingLeft: '8px',
+      lineHeight: '22px',
+      color: theme.semanticColors.bodyText,
+    },
+    calloutlegendText: {
+      ...fonts.small,
+      lineHeight: '16px',
+      color: theme.semanticColors.bodySubtext,
+    },
     calloutContentY: [
       {
-        color: theme.semanticColors.bodyText,
-        ...fonts.large,
+        ...fonts.mediumPlus,
         fontWeight: 'bold',
-        lineHeight: '31px',
+        lineHeight: '22px',
       },
     ],
   };

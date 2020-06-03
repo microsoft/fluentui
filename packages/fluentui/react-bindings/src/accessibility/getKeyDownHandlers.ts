@@ -1,12 +1,11 @@
 import { KeyActions } from '@fluentui/accessibility';
-// @ts-ignore
-import * as keyboardKey from 'keyboard-key';
+import { keyboardKey } from '@fluentui/keyboard-key';
 import * as React from 'react';
 
 import shouldHandleOnKeys from './shouldHandleOnKeys';
 import { AccessibilityActionHandlers, AccessibilityKeyHandlers } from './types';
 
-const rtlKeyMap = {
+const rtlKeyMap: Record<number, number> = {
   [keyboardKey.ArrowRight]: keyboardKey.ArrowLeft,
   [keyboardKey.ArrowLeft]: keyboardKey.ArrowRight,
 };
