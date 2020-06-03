@@ -3,7 +3,7 @@ import { create } from 'react-test-renderer';
 
 import { SelectedItemsList } from './SelectedItemsList';
 import { ISelectedItemProps, ISelectedItemsList } from './SelectedItemsList.types';
-import { act } from 'react-dom/test-utils';
+import { mount } from 'enzyme';
 
 export interface ISimple {
   key: string;
@@ -11,7 +11,7 @@ export interface ISimple {
 }
 
 const basicItemRenderer = (props: ISelectedItemProps<ISimple>) => {
-  return <div key={props.name}> {props.name} </div>;
+  return <div id={props.item.name}>{props.item.name}</div>;
 };
 
 describe('SelectedItemsList', () => {
@@ -30,34 +30,30 @@ describe('SelectedItemsList', () => {
       expect(tree).toMatchSnapshot();
     });
 
-    it('can remove items', () => {
-      const onChange = (items: ISimple[] | undefined): void => {
-        expect(items!.length).toBe(1);
-        expect(items![0].name).toBe('b');
-      };
-
-      const listRef = React.createRef<ISelectedItemsList<ISimple>>();
-      create(
+    it('render all items in selectedItemsList', () => {
+      const wrapper = mount<ISelectedItemsList<ISimple>>(
         <SelectedItemsList
-          componentRef={listRef}
           onRenderItem={basicItemRenderer}
-          defaultSelectedItems={[
+          selectedItems={[
             { key: '1', name: 'a' },
             { key: '2', name: 'b' },
           ]}
-          onChange={onChange}
         />,
       );
-
-      if (!listRef.current) {
-        throw new Error('listRef was not initialized');
-      }
-
-      expect(listRef.current.items.length).toEqual(2);
-      act(() => {
-        listRef.current && listRef.current.removeItems([listRef.current.items[1]]);
-      });
-      expect(listRef.current.items.length).toEqual(1);
+      expect(wrapper).toBeDefined();
+      expect(wrapper.find('div').length).toEqual(2);
+      expect(
+        wrapper
+          .find('div')
+          .first()
+          .text(),
+      ).toEqual('a');
+      expect(
+        wrapper
+          .find('div')
+          .last()
+          .text(),
+      ).toEqual('b');
     });
   });
 });
