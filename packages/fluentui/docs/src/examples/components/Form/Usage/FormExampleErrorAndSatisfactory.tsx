@@ -9,9 +9,13 @@ const FormExampleErrorAndSatisfactory = () => (
     }}
   >
     <Form.Field>
-      <Form.Label htmlFor="firstname">First Name*</Form.Label>
-      <Input error name="first-name" id="firstname-with-error" />
-      <Form.Message error>Error Message</Form.Message>
+      <Form.Label htmlFor="firstname" id="first-name-label">
+        First Name*
+      </Form.Label>
+      <Input error name="first-name" aria-labelledby="first-name-label message-id" id="firstname-with-error" />
+      <Form.Message id="message-id" error>
+        Error Message
+      </Form.Message>
     </Form.Field>
     <Form.Field
       label="Middle name"
