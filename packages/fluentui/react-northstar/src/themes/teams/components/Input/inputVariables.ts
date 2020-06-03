@@ -20,10 +20,14 @@ export interface InputVariables {
   inputFocusBorderRadius: string;
   placeholderColor: string;
   satisfactoryColor: string;
+  borderColorError: string;
+  colorError: string;
 }
 
 export default (siteVars): InputVariables => ({
   colorDisabled: siteVars.colorScheme.brand.foregroundDisabled,
+  colorError: siteVars.colorScheme.red.foreground,
+  borderColorError: siteVars.colorScheme.red.background,
   iconPosition: 'absolute',
   iconRight: pxToRem(10),
   iconLeft: pxToRem(6),

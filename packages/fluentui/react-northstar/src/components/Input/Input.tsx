@@ -32,6 +32,7 @@ import {
   useStyles,
   useAccessibility,
 } from '@fluentui/react-bindings';
+import { ExclamationCircleIcon } from '@fluentui/react-icons-northstar';
 
 export interface InputSlotClassNames {
   input: string;
@@ -94,6 +95,10 @@ export interface InputProps extends UIComponentProps, ChildrenComponentProps, Su
   /** Input can be required to be valid. */
   required?: boolean;
 
+  error?: boolean;
+
+  errorIndicator?: ShorthandValue<BoxProps>;
+
   /** Optional Icon to display inside the Input if required and fulfilled. */
   satisfactoryIndicator?: ShorthandValue<BoxProps>;
 }
@@ -105,7 +110,7 @@ export const inputSlotClassNames: InputSlotClassNames = {
 };
 
 export type InputStylesProps = Required<
-  Pick<InputProps, 'fluid' | 'inverted' | 'inline' | 'disabled' | 'clearable' | 'iconPosition'> & {
+  Pick<InputProps, 'fluid' | 'inverted' | 'inline' | 'disabled' | 'clearable' | 'iconPosition' | 'error'> & {
     hasIcon: boolean;
     hasValue: boolean;
     requiredAndSatisfactory: boolean;
@@ -133,6 +138,8 @@ const Input: React.FC<WithAsProp<InputProps>> & FluentComponentStaticProps<Input
     variables,
     required,
     satisfactoryIndicator,
+    error,
+    errorIndicator,
   } = props;
   const inputRef = React.useRef<HTMLInputElement>();
 
@@ -160,6 +167,7 @@ const Input: React.FC<WithAsProp<InputProps>> & FluentComponentStaticProps<Input
       requiredAndSatisfactory,
       iconPosition,
       hasValue,
+      error,
     }),
     mapPropsToInlineStyles: () => ({
       className,
@@ -184,6 +192,7 @@ const Input: React.FC<WithAsProp<InputProps>> & FluentComponentStaticProps<Input
     mapPropsToBehavior: () => ({
       disabled,
       required,
+      error,
     }),
     rtl: context.rtl,
   });
@@ -224,6 +233,9 @@ const Input: React.FC<WithAsProp<InputProps>> & FluentComponentStaticProps<Input
     }
     if (requiredAndSatisfactory) {
       return satisfactoryIndicator;
+    }
+    if (error) {
+      return errorIndicator || <ExclamationCircleIcon />;
     }
     return icon || null;
   };
@@ -297,6 +309,7 @@ Input.propTypes = {
   wrapper: customPropTypes.wrapperShorthand,
   required: PropTypes.bool,
   satisfactoryIndicator: customPropTypes.shorthandAllowingChildren,
+  error: PropTypes.bool,
 };
 
 Input.defaultProps = {

@@ -11,6 +11,7 @@ const inputBehavior: Accessibility<InputBehaviorProps> = props => ({
     root: {
       'aria-disabled': props.disabled,
       ...(props.required && { 'aria-required': true }),
+      ...(props.error && { 'aria-invalid': true }),
     },
   },
   keyActions: {
@@ -27,4 +28,5 @@ export default inputBehavior;
 export type InputBehaviorProps = {
   disabled?: boolean;
   required?: boolean;
+  error?: boolean;
 };

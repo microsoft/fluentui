@@ -63,6 +63,8 @@ export interface FormFieldProps extends UIComponentProps, ChildrenComponentProps
 
   /** Indicator to be shown when field is required and non-empty */
   satisfactoryIndicator?: ShorthandValue<BoxProps>;
+
+  error?: boolean;
 }
 
 export const formFieldClassName = 'ui-form__field';
@@ -161,6 +163,7 @@ const FormField: React.FC<WithAsProp<FormFieldProps>> & FluentComponentStaticPro
         name,
         type,
         icon: !!errorMessage ? iconElement : null,
+        error: !!errorMessage || null,
         ...(!!satisfactoryIndicator && { satisfactoryIndicator }),
         styles: resolvedStyles.control,
       }),
@@ -199,7 +202,7 @@ FormField.propTypes = {
   ...commonPropTypes.createCommon({
     content: false,
   }),
-  control: customPropTypes.itemShorthand,
+  control: customPropTypes.shorthandAllowingChildren,
   id: PropTypes.string,
   inline: PropTypes.bool,
   label: customPropTypes.itemShorthand,
@@ -210,6 +213,7 @@ FormField.propTypes = {
   satisfactoryIndicator: customPropTypes.shorthandAllowingChildren,
   errorIndicator: customPropTypes.shorthandAllowingChildren,
   errorMessage: customPropTypes.shorthandAllowingChildren,
+  error: PropTypes.bool,
 };
 
 FormField.handledProps = Object.keys(FormField.propTypes) as any;

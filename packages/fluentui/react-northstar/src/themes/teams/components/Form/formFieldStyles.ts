@@ -20,9 +20,9 @@ const formFieldStyles: ComponentSlotStylesPrepared<FormFieldStylesProps, FormFie
     };
   },
   control: ({ props, variables: v }): ICSSInJSStyle => {
-    const { type, hasErrorMessage } = props;
+    const { type } = props;
     return {
-      ...(hasErrorMessage && { border: `${pxToRem(1)} solid ${v.colorScheme.red.background}` }),
+      // ...(hasErrorMessage && { border: `${pxToRem(1)} solid ${v.colorScheme.red.background}` }),
       ...(type &&
         (type === 'radio' || type === 'checkbox') && {
           marginRight: pxToRem(10),

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Form, Button } from '@fluentui/react-northstar';
+import { Form, Button, Input } from '@fluentui/react-northstar';
 import { PresenceAvailableIcon } from '@fluentui/react-icons-northstar';
 
 const FormExampleErrorAndSatisfactory = () => (
@@ -8,7 +8,18 @@ const FormExampleErrorAndSatisfactory = () => (
       alert('Form submitted');
     }}
   >
-    <Form.Field label="First name" name="firstName" id="first-name-shorthand" errorMessage={'ERROR'} required={true} />
+    <Form.Field>
+      <Form.Label htmlFor="firstname">First Name*</Form.Label>
+      <Input error name="first-name" id="firstname" />
+      <Form.Message error>Error Message</Form.Message>
+    </Form.Field>
+    <Form.Field
+      label="Middle name"
+      name="MiddleName"
+      id="Middle-name-shorthand"
+      errorMessage={'ERROR'}
+      required={true}
+    />
     <Form.Field
       label="Last name"
       name="lastName"
@@ -16,6 +27,17 @@ const FormExampleErrorAndSatisfactory = () => (
       satisfactoryIndicator={<PresenceAvailableIcon />}
       required={true}
     />
+    <Form.Field
+      label="Last name"
+      name="lastName"
+      id="last-name-shorthand"
+      satisfactoryIndicator={<PresenceAvailableIcon />}
+      required={true}
+    />
+    <Form.Field>
+      <Form.Label htmlFor="email">E-mail*</Form.Label>
+      <Input satisfactoryIndicator={<PresenceAvailableIcon />} required name="email-field" id="email" />
+    </Form.Field>
     <Form.Field control={{ as: Button, content: 'Submit' }} />
   </Form>
 );
