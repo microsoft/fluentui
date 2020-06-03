@@ -163,7 +163,7 @@ const Input: React.FC<WithAsProp<InputProps>> & FluentComponentStaticProps<Input
       inline,
       disabled,
       clearable,
-      hasIcon: !!icon || !!successIndicator,
+      hasIcon: !!icon || !!successIndicator || !!error,
       requiredAndSatisfactory,
       iconPosition,
       hasValue,
