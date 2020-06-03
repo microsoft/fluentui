@@ -1,6 +1,6 @@
 {
-  "type": "minor",
-  "comment": "Updating signature to createClassResolver to cache most of the resolution logic upfront.",
+  "type": "patch",
+  "comment": "Updating createClassResolver usage.",
   "packageName": "@fluentui/react-button",
   "email": "dzearing@microsoft.com",
   "dependentChangeType": "patch",
