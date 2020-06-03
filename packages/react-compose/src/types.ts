@@ -82,7 +82,7 @@ export type GenericDictionary = Record<string, any>;
 /**
  * Generic set of module to class name map.
  */
-export type ClassDictionary = Record<string, string | undefined>;
+export type ClassDictionary = Record<string, string>;
 
 /**
  * Generic class resolver function type.
