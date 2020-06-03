@@ -106,7 +106,7 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef(
       );
     };
 
-    const onKeyPress = (itemKey: string, ev: React.KeyboardEvent<HTMLElement>): void => {
+    const onKeyDown = (itemKey: string, ev: React.KeyboardEvent<HTMLElement>): void => {
       if (ev.which === KeyCodes.enter) {
         ev.preventDefault();
         updateSelectedItem(itemKey);
@@ -138,8 +138,8 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef(
           key={itemKey}
           className={css(classNames.link, isSelected && classNames.linkIsSelected)}
           onClick={onLinkClick.bind(this, itemKey)}
-          onKeyPress={onKeyPress.bind(this, itemKey)}
-          ariaLabel={link.ariaLabel}
+          onKeyDown={onKeyDown.bind(this, itemKey)}
+          aria-label={link.ariaLabel}
           role="tab"
           aria-selected={isSelected}
           name={link.headerText}
