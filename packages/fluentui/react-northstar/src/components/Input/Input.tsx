@@ -95,8 +95,10 @@ export interface InputProps extends UIComponentProps, ChildrenComponentProps, Su
   /** Input can be required to be valid. */
   required?: boolean;
 
+  /** Input can have error state */
   error?: boolean;
 
+  /** Input can have error indicator when error is true */
   errorIndicator?: ShorthandValue<BoxProps>;
 
   /** Optional Icon to display inside the Input if required and fulfilled. */
@@ -235,7 +237,7 @@ const Input: React.FC<WithAsProp<InputProps>> & FluentComponentStaticProps<Input
       return successIndicator;
     }
     if (error) {
-      return errorIndicator || <ExclamationCircleIcon />;
+      return errorIndicator;
     }
     return icon || null;
   };
@@ -310,6 +312,7 @@ Input.propTypes = {
   required: PropTypes.bool,
   successIndicator: customPropTypes.shorthandAllowingChildren,
   error: PropTypes.bool,
+  errorIndicator: customPropTypes.shorthandAllowingChildren,
 };
 
 Input.defaultProps = {
@@ -317,6 +320,7 @@ Input.defaultProps = {
   type: 'text',
   wrapper: {},
   iconPosition: 'end',
+  errorIndicator: <ExclamationCircleIcon />,
 };
 
 Input.handledProps = Object.keys(Input.propTypes) as any;

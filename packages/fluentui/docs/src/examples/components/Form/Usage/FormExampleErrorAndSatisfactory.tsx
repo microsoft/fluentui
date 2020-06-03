@@ -18,17 +18,10 @@ const FormExampleErrorAndSatisfactory = () => (
       </Form.Message>
     </Form.Field>
     <Form.Field
-      label="Middle name"
-      name="MiddleName"
-      id="Middle-name-shorthand-with-error"
-      errorMessage={'ERROR'}
-      required={true}
-    />
-    <Form.Field
       label="Last name"
-      name="lastName"
-      id="last-name-with=satisfactory"
-      successIndicator={<PresenceAvailableIcon />}
+      name="LastName"
+      id="last-name-shorthand-with-error"
+      errorMessage={'ERROR'}
       required={true}
     />
     <Form.Field>

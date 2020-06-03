@@ -2,7 +2,6 @@ import { Accessibility, FormFieldBehaviorProps, formFieldBehavior } from '@fluen
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import { ExclamationCircleIcon } from '@fluentui/react-icons-northstar';
 import {
   childrenExist,
   createShorthandFactory,
@@ -63,8 +62,6 @@ export interface FormFieldProps extends UIComponentProps, ChildrenComponentProps
 
   /** Indicator to be shown when field is required and non-empty */
   successIndicator?: ShorthandValue<BoxProps>;
-
-  error?: boolean;
 }
 
 export const formFieldClassName = 'ui-form__field';
@@ -94,8 +91,6 @@ const FormField: React.FC<WithAsProp<FormFieldProps>> & FluentComponentStaticPro
     variables,
     inline,
     errorMessage,
-    errorIndicator,
-    successIndicator,
   } = props;
 
   const ElementType = getElementType(props);
@@ -151,23 +146,13 @@ const FormField: React.FC<WithAsProp<FormFieldProps>> & FluentComponentStaticPro
       }),
   });
 
-  const iconElement = Box.create(errorIndicator || successIndicator, {
-    defaultProps: () =>
-      getA11yProps('icon', {
-        title: name,
-        styles: resolvedStyles.icon,
-      }),
-  });
-
   const controlElement = Box.create(control || {}, {
     defaultProps: () =>
       getA11yProps('control', {
         required,
         name,
         type,
-        icon: !!errorMessage ? iconElement : null,
         error: !!errorMessage || null,
-        ...(!!successIndicator && { successIndicator }),
         styles: resolvedStyles.control,
       }),
   });
@@ -213,17 +198,13 @@ FormField.propTypes = {
   name: PropTypes.string,
   required: PropTypes.bool,
   type: PropTypes.string,
-  successIndicator: customPropTypes.shorthandAllowingChildren,
-  errorIndicator: customPropTypes.shorthandAllowingChildren,
   errorMessage: customPropTypes.shorthandAllowingChildren,
-  error: PropTypes.bool,
 };
 
 FormField.handledProps = Object.keys(FormField.propTypes) as any;
 
 FormField.defaultProps = {
   accessibility: formFieldBehavior,
-  errorIndicator: <ExclamationCircleIcon />,
   as: 'div',
   control: { as: Input },
 };
