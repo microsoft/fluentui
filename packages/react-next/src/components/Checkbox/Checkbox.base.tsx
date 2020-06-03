@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { classNamesFunction, mergeAriaAttributeValues, warnMutuallyExclusive } from '../../Utilities';
+import { classNamesFunction, warnMutuallyExclusive } from '../../Utilities';
 import { Icon } from '../../Icon';
 import { ICheckboxProps, ICheckboxStyleProps, ICheckboxStyles } from './Checkbox.types';
-import { KeytipData } from '../../KeytipData';
 import { useId, useControllableValue, useMergedRefs } from '@uifabric/react-hooks';
 import { useFocusRects } from 'office-ui-fabric-react';
 
@@ -25,7 +24,6 @@ export const CheckboxBase = React.forwardRef((props: ICheckboxProps, forwardedRe
     checkmarkIconProps,
     ariaPositionInSet,
     ariaSetSize,
-    keytipProps,
     title,
     label,
     onChange,
@@ -73,41 +71,35 @@ export const CheckboxBase = React.forwardRef((props: ICheckboxProps, forwardedRe
   };
 
   return (
-    <KeytipData keytipProps={keytipProps} disabled={disabled}>
-      {// tslint:disable-next-line:no-any
-      (keytipAttributes: any): JSX.Element => (
-        <div className={classNames.root} title={title} ref={mergedRootRefs}>
-          <input
-            type="checkbox"
-            {...inputProps}
-            data-ktp-execute-target={keytipAttributes['data-ktp-execute-target']}
-            checked={!!isChecked}
-            disabled={disabled}
-            className={classNames.input}
-            ref={checkBox}
-            name={name}
-            id={id}
-            title={title}
-            onChange={_onChange}
-            onFocus={inputProps?.onFocus}
-            onBlur={inputProps?.onBlur}
-            aria-disabled={disabled}
-            aria-label={ariaLabel || label}
-            aria-labelledby={ariaLabelledBy}
-            aria-describedby={mergeAriaAttributeValues(ariaDescribedBy, keytipAttributes['aria-describedby'])}
-            aria-posinset={ariaPositionInSet}
-            aria-setsize={ariaSetSize}
-            aria-checked={isIndeterminate ? 'mixed' : isChecked ? 'true' : 'false'}
-          />
-          <label className={classNames.label} htmlFor={id}>
-            <div className={classNames.checkbox} data-ktp-target={keytipAttributes['data-ktp-target']}>
-              <Icon iconName="CheckMark" {...checkmarkIconProps} className={classNames.checkmark} />
-            </div>
-            {(props.onRenderLabel || onRenderLabel)(props, onRenderLabel)}
-          </label>
+    <div className={classNames.root} title={title} ref={mergedRootRefs}>
+      <input
+        type="checkbox"
+        {...inputProps}
+        checked={!!isChecked}
+        disabled={disabled}
+        className={classNames.input}
+        ref={checkBox}
+        name={name}
+        id={id}
+        title={title}
+        onChange={_onChange}
+        onFocus={inputProps?.onFocus}
+        onBlur={inputProps?.onBlur}
+        aria-disabled={disabled}
+        aria-label={ariaLabel || label}
+        aria-labelledby={ariaLabelledBy}
+        aria-describedby={ariaDescribedBy}
+        aria-posinset={ariaPositionInSet}
+        aria-setsize={ariaSetSize}
+        aria-checked={isIndeterminate ? 'mixed' : isChecked ? 'true' : 'false'}
+      />
+      <label className={classNames.label} htmlFor={id}>
+        <div className={classNames.checkbox}>
+          <Icon iconName="CheckMark" {...checkmarkIconProps} className={classNames.checkmark} />
         </div>
-      )}
-    </KeytipData>
+        {(props.onRenderLabel || onRenderLabel)(props, onRenderLabel)}
+      </label>
+    </div>
   );
 });
 
