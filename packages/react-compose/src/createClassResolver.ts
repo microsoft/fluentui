@@ -14,9 +14,9 @@ import { GenericDictionary, ClassDictionary } from './types';
  * Remaining class names would be interpretted as modifiers, applied to the `root` slot when
  * the component `state` contains a truthy matching prop name.
  */
-export const createClassResolver = (classes: ClassDictionary, slotNames: string[]) => {
+export const createClassResolver = (classes: ClassDictionary) => {
   // This is in creation time, so this will happen once per css file.
-  const { slots, modifiers, enums } = createResolvedMap(classes, slotNames);
+  const { slots, modifiers, enums } = createResolvedMap(classes);
 
   // Everything in the function below will happen at runtime, so it's very critical that this
   // code is as minimal as possible.
@@ -39,7 +39,7 @@ export const createClassResolver = (classes: ClassDictionary, slotNames: string[
       }
     }
 
-    for (const slotName of slotNames) {
+    for (const slotName of Object.keys(slots)) {
       resolvedClasses[slotName] = [
         slotName === 'root' && state.className ? state.className : '',
         slots[slotName] || '',
@@ -79,7 +79,7 @@ type ResolvedMap = {
  * name/value, and modifiers are everything else. Creating this split definition keeps runtime
  * resolution work to a minimum.
  */
-function createResolvedMap(classes: ClassDictionary, slotNames: string[]): ResolvedMap {
+function createResolvedMap(classes: ClassDictionary): ResolvedMap {
   const resolvedMap: ResolvedMap = {
     slots: {},
     modifiers: {},
@@ -93,8 +93,8 @@ function createResolvedMap(classes: ClassDictionary, slotNames: string[]): Resol
 
     if (classValue) {
       // If the class is named the same as a slot, add it to the slot.
-      if (slotNames.indexOf(key) >= 0) {
-        addClassTo(slots, key, classValue);
+      if (key.charAt(0) === '_') {
+        addClassTo(modifiers, key.substr(1), classValue);
       } else if (key.indexOf('_') >= 0) {
         // The class is an enum value. Add if the prop exists and matches.
         const parts = key.split('_');
@@ -104,7 +104,7 @@ function createResolvedMap(classes: ClassDictionary, slotNames: string[]): Resol
         enums[enumName] = enums[enumName] || {};
         addClassTo(enums[enumName], enumValue, classValue);
       } else {
-        addClassTo(modifiers, key, classValue);
+        addClassTo(slots, key, classValue);
       }
     }
   });

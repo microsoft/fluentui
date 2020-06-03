@@ -120,7 +120,7 @@
   * 2. Map property definitions to variables using the format: {component}-{property}
   * 3. Avoid defining styles directly.
  **/
-  &.primary {
+  &._primary {
     --button-fill: var(--accent-fill);
     --button-fill-hovered: var(--accent-fill-hovered);
     --button-fill-pressed: var(--accent-fill-pressed);
@@ -136,17 +136,17 @@
     --button-icon-pressed: var(--accent-icon-pressed);
   }
 
-  &.iconOnly {
+  &._iconOnly {
     width: var(--button-height);
     --button-padding: 0;
   }
 
-  &.circular {
+  &._circular {
     --button-borderRadius: 50000px;
     --button-minWidth: var(--button-height);
   }
 
-  &.fluid {
+  &._fluid {
     width: 100%;
     max-width: 100%;
   }
@@ -174,7 +174,7 @@
     --button-height: var(--button-size-largest);
   }
 
-  &.disabled {
+  &._disabled {
     pointer-events: none;
     background-color: var(--button-fill-disabled);
     color: var(--button-text-disabled);
@@ -210,7 +210,7 @@
   margin-left: var(--button-contentGap);
 }
 
-.root:hovered {
+.root:hover {
   background-color: var(--button-fill-hovered, var(--button-fill));
   color: var(--button-text-hovered, var(--button-text));
   border-color: var(--button-borderColor-hovered, var(--button-borderColor));
@@ -235,7 +235,7 @@
   }
 }
 
-.root:focused::after {
+.root:focus::after {
   position: absolute;
   left: -1px;
   top: -1px;
