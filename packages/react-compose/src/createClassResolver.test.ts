@@ -1,17 +1,14 @@
 import { createClassResolver } from './createClassResolver';
 
 describe('createClassResolver', () => {
-  const classResolver = createClassResolver(
-    {
-      root: 'root',
-      slot1: 'slot1',
-      slot2: 'slot2',
-      primary: 'primary',
-      size_small: 'small',
-      size_medium: 'medium',
-    },
-    ['root', 'slot1', 'slot2'],
-  );
+  const classResolver = createClassResolver({
+    root: 'root',
+    slot1: 'slot1',
+    slot2: 'slot2',
+    _primary: 'primary',
+    size_small: 'small',
+    size_medium: 'medium',
+  });
 
   it('can resolve slot classes', () => {
     expect(classResolver({})).toEqual({
