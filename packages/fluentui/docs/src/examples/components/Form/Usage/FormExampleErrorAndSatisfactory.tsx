@@ -27,13 +27,6 @@ const FormExampleErrorAndSatisfactory = () => (
       satisfactoryIndicator={<PresenceAvailableIcon />}
       required={true}
     />
-    <Form.Field
-      label="Last name"
-      name="lastName"
-      id="last-name-shorthand"
-      satisfactoryIndicator={<PresenceAvailableIcon />}
-      required={true}
-    />
     <Form.Field>
       <Form.Label htmlFor="email">E-mail*</Form.Label>
       <Input satisfactoryIndicator={<PresenceAvailableIcon />} required name="email-field" id="email" />
