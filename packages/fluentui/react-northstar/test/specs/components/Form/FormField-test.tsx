@@ -73,7 +73,7 @@ describe('FormField', () => {
           id: 'first-name-shorthand',
           key: 'first-name',
           required: true,
-          satisfactoryIndicator: <PresenceAvailableIcon />,
+          successIndicator: <PresenceAvailableIcon />,
         }}
       />,
     );

@@ -62,7 +62,7 @@ export interface FormFieldProps extends UIComponentProps, ChildrenComponentProps
   errorIndicator?: ShorthandValue<BoxProps>;
 
   /** Indicator to be shown when field is required and non-empty */
-  satisfactoryIndicator?: ShorthandValue<BoxProps>;
+  successIndicator?: ShorthandValue<BoxProps>;
 
   error?: boolean;
 }
@@ -95,7 +95,7 @@ const FormField: React.FC<WithAsProp<FormFieldProps>> & FluentComponentStaticPro
     inline,
     errorMessage,
     errorIndicator,
-    satisfactoryIndicator,
+    successIndicator,
   } = props;
 
   const ElementType = getElementType(props);
@@ -147,7 +147,7 @@ const FormField: React.FC<WithAsProp<FormFieldProps>> & FluentComponentStaticPro
       }),
   });
 
-  const iconElement = Box.create(errorIndicator || satisfactoryIndicator, {
+  const iconElement = Box.create(errorIndicator || successIndicator, {
     defaultProps: () =>
       getA11yProps('icon', {
         title: name,
@@ -164,7 +164,7 @@ const FormField: React.FC<WithAsProp<FormFieldProps>> & FluentComponentStaticPro
         type,
         icon: !!errorMessage ? iconElement : null,
         error: !!errorMessage || null,
-        ...(!!satisfactoryIndicator && { satisfactoryIndicator }),
+        ...(!!successIndicator && { successIndicator }),
         styles: resolvedStyles.control,
       }),
   });
@@ -210,7 +210,7 @@ FormField.propTypes = {
   name: PropTypes.string,
   required: PropTypes.bool,
   type: PropTypes.string,
-  satisfactoryIndicator: customPropTypes.shorthandAllowingChildren,
+  successIndicator: customPropTypes.shorthandAllowingChildren,
   errorIndicator: customPropTypes.shorthandAllowingChildren,
   errorMessage: customPropTypes.shorthandAllowingChildren,
   error: PropTypes.bool,

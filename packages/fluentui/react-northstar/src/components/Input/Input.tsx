@@ -100,7 +100,7 @@ export interface InputProps extends UIComponentProps, ChildrenComponentProps, Su
   errorIndicator?: ShorthandValue<BoxProps>;
 
   /** Optional Icon to display inside the Input if required and fulfilled. */
-  satisfactoryIndicator?: ShorthandValue<BoxProps>;
+  successIndicator?: ShorthandValue<BoxProps>;
 }
 
 export const inputClassName = 'ui-input';
@@ -137,7 +137,7 @@ const Input: React.FC<WithAsProp<InputProps>> & FluentComponentStaticProps<Input
     styles,
     variables,
     required,
-    satisfactoryIndicator,
+    successIndicator,
     error,
     errorIndicator,
   } = props;
@@ -153,7 +153,7 @@ const Input: React.FC<WithAsProp<InputProps>> & FluentComponentStaticProps<Input
     initialValue: '',
   });
   const hasValue: boolean = !!value && (value as string)?.length !== 0;
-  const requiredAndSatisfactory = required && !!satisfactoryIndicator && hasValue;
+  const requiredAndSatisfactory = required && !!successIndicator && hasValue;
 
   const { styles: resolvedStyles } = useStyles<InputStylesProps>(Input.displayName, {
     className: inputClassName,
@@ -163,7 +163,7 @@ const Input: React.FC<WithAsProp<InputProps>> & FluentComponentStaticProps<Input
       inline,
       disabled,
       clearable,
-      hasIcon: !!icon || !!satisfactoryIndicator,
+      hasIcon: !!icon || !!successIndicator,
       requiredAndSatisfactory,
       iconPosition,
       hasValue,
@@ -232,7 +232,7 @@ const Input: React.FC<WithAsProp<InputProps>> & FluentComponentStaticProps<Input
       return {};
     }
     if (requiredAndSatisfactory) {
-      return satisfactoryIndicator;
+      return successIndicator;
     }
     if (error) {
       return errorIndicator || <ExclamationCircleIcon />;
@@ -308,7 +308,7 @@ Input.propTypes = {
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   wrapper: customPropTypes.wrapperShorthand,
   required: PropTypes.bool,
-  satisfactoryIndicator: customPropTypes.shorthandAllowingChildren,
+  successIndicator: customPropTypes.shorthandAllowingChildren,
   error: PropTypes.bool,
 };
 

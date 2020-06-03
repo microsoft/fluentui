@@ -16,7 +16,7 @@ const fields = [
     name: 'lastName',
     id: 'last-name-shorthand',
     key: 'last-name',
-    satisfactoryIndicator: <PresenceAvailableIcon />,
+    successIndicator: <PresenceAvailableIcon />,
     required: true,
   },
   { control: { as: Button, content: 'Submit' }, key: 'submit' },

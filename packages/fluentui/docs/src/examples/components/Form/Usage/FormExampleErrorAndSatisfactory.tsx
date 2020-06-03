@@ -24,12 +24,12 @@ const FormExampleErrorAndSatisfactory = () => (
       label="Last name"
       name="lastName"
       id="last-name-shorthand"
-      satisfactoryIndicator={<PresenceAvailableIcon />}
+      successIndicator={<PresenceAvailableIcon />}
       required={true}
     />
     <Form.Field>
       <Form.Label htmlFor="email">E-mail*</Form.Label>
-      <Input satisfactoryIndicator={<PresenceAvailableIcon />} required name="email-field" id="email" />
+      <Input successIndicator={<PresenceAvailableIcon />} required name="email-field" id="email" />
     </Form.Field>
     <Form.Field control={{ as: Button, content: 'Submit' }} />
   </Form>
