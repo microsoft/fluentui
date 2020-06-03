@@ -64,9 +64,11 @@ export type TokenSetType = string | {
 };
 
 // @public (undocumented)
-export const tokensToStyleObject: (tokens: {
-    [key: string]: TokenSetType;
-}, prefix?: string | undefined, style?: {
+export const tokensToStyleObject: (tokens?: {
+    [key: string]: string | {
+        [key: string]: string | any | undefined;
+    } | undefined;
+} | undefined, prefix?: string | undefined, style?: {
     [key: string]: string | number | undefined;
 }) => {
     [key: string]: string | number | undefined;
