@@ -74,7 +74,7 @@ type ResolvedMap = {
 };
 
 /**
- * Helper to take a css module map and translate it into { slots, modifiers,  enums } where
+ * Helper to take a css module map and translate it into { slots, modifiers, enums } where
  * slots are a matched name in the slotNames array, enums have underscores splitting the matched
  * name/value, and modifiers are everything else. Creating this split definition keeps runtime
  * resolution work to a minimum.
