@@ -12,10 +12,22 @@ import { Omit } from '@uifabric/merge-styles';
 import * as React from 'react';
 
 // @public
+export function addDays(date: Date, days: number): Date;
+
+// @public
 export function addDirectionalKeyCode(which: number): void;
 
 // @public
 export function addElementAtIndex<T>(array: T[], index: number, itemToAdd: T): T[];
+
+// @public
+export function addMonths(date: Date, months: number): Date;
+
+// @public
+export function addWeeks(date: Date, weeks: number): Date;
+
+// @public
+export function addYears(date: Date, years: number): Date;
 
 // @public
 export const allowOverscrollOnElement: (element: HTMLElement | null, events: EventGroup) => void;
@@ -123,6 +135,12 @@ export const colGroupProperties: string[];
 export const colProperties: string[];
 
 // @public
+export function compareDatePart(date1: Date, date2: Date): Number;
+
+// @public
+export function compareDates(date1: Date, date2: Date): boolean;
+
+// @public
 export function composeComponentAs<TProps>(outer: IComponentAs<TProps>, inner: IComponentAs<TProps>): IComponentAs<TProps>;
 
 // @public
@@ -175,6 +193,42 @@ export const DATA_IS_SCROLLABLE_ATTRIBUTE = "data-is-scrollable";
 
 // @public (undocumented)
 export const DATA_PORTAL_ATTRIBUTE = "data-portal-element";
+
+// @public
+export enum DateRangeType {
+    // (undocumented)
+    Day = 0,
+    // (undocumented)
+    Month = 2,
+    // (undocumented)
+    Week = 1,
+    // (undocumented)
+    WorkWeek = 3
+}
+
+// @public
+export enum DayOfWeek {
+    // (undocumented)
+    Friday = 5,
+    // (undocumented)
+    Monday = 1,
+    // (undocumented)
+    Saturday = 6,
+    // (undocumented)
+    Sunday = 0,
+    // (undocumented)
+    Thursday = 4,
+    // (undocumented)
+    Tuesday = 2,
+    // (undocumented)
+    Wednesday = 3
+}
+
+// @public (undocumented)
+export const DayPickerStrings: ICalendarStrings;
+
+// @public (undocumented)
+export const DAYS_IN_WEEK = 7;
 
 // Warning: (ae-incompatible-release-tags) The symbol "DelayedRender" is marked as @public, but its signature references "IDelayedRenderState" which is marked as @internal
 //
@@ -260,6 +314,9 @@ export function filteredAssign(isAllowed: (propName: string) => boolean, target:
 // @public
 export function find<T>(array: T[], cb: (item: T, index: number) => boolean): T | undefined;
 
+// @public (undocumented)
+export function findAvailableDate(props: ICalendarDayGridStateAndProps, initialDate: Date, targetDate: Date, direction: number): Date | undefined;
+
 // @public
 export function findElementRecursive(element: HTMLElement | null, matchFunction: (element: HTMLElement) => boolean): HTMLElement | null;
 
@@ -268,6 +325,16 @@ export function findIndex<T>(array: T[], cb: (item: T, index: number) => boolean
 
 // @public
 export function findScrollableParent(startingElement: HTMLElement | null): HTMLElement | null;
+
+// @public
+export enum FirstWeekOfYear {
+    // (undocumented)
+    FirstDay = 0,
+    // (undocumented)
+    FirstFourDayWeek = 2,
+    // (undocumented)
+    FirstFullWeek = 1
+}
 
 // @public
 export function fitContentToBounds(options: IFitContentToBoundsOptions): ISize;
@@ -297,8 +364,20 @@ export function format(s: string, ...values: any[]): string;
 // @public
 export const formProperties: string[];
 
+// @public (undocumented)
+export function getBoundedDateRange(dateRange: Date[], minDate?: Date, maxDate?: Date): Date[];
+
 // @public
 export function getChildren(parent: HTMLElement, allowVirtualChildren?: boolean): HTMLElement[];
+
+// @public
+export function getDateRangeArray(date: Date, dateRangeType: DateRangeType, firstDayOfWeek: DayOfWeek, workWeekDays?: DayOfWeek[], daysToSelectInDayView?: number): Date[];
+
+// @public
+export function getDateRangeTypeToUse(dateRangeType: DateRangeType, workWeekDays: DayOfWeek[] | undefined): DateRangeType;
+
+// @public
+export function getDayInfosInRangeOfDay(props: ICalendarDayGridStateAndProps, day: IDayInfo): IDayInfo[];
 
 // @public
 export function getDistanceBetweenPoints(point1: Point, point2: Point): number;
@@ -324,6 +403,15 @@ export function getId(prefix?: string): string;
 // @public
 export function getInitials(displayName: string | undefined | null, isRtl: boolean, allowPhoneInitials?: boolean): string;
 
+// @public (undocumented)
+export function getIsAfterMaxDate(props: ICalendarDayGridStateAndProps, date: Date): boolean;
+
+// @public (undocumented)
+export function getIsBeforeMinDate(props: ICalendarDayGridStateAndProps, date: Date): boolean;
+
+// @public (undocumented)
+export function getIsRestrictedDate(props: ICalendarDayGridStateAndProps, date: Date): boolean;
+
 // @public
 export function getLanguage(): string | null;
 
@@ -332,6 +420,12 @@ export function getLastFocusable(rootElement: HTMLElement, currentElement: HTMLE
 
 // @public
 export function getLastTabbable(rootElement: HTMLElement, currentElement: HTMLElement, includeElementsInFocusZones?: boolean, checkNode?: boolean): HTMLElement | null;
+
+// @public
+export function getMonthEnd(date: Date): Date;
+
+// @public
+export function getMonthStart(date: Date): Date;
 
 // @public
 export function getNativeElementProps<TAttributes extends React.HTMLAttributes<any>>(tagName: keyof React.ReactHTML, props: {}, excludedPropNames?: string[]): TAttributes;
@@ -371,10 +465,28 @@ export function getRTLSafeKeyCode(key: number, theme?: {
 export function getScrollbarWidth(): number;
 
 // @public
+export function getStartDateOfWeek(date: Date, firstDayOfWeek: DayOfWeek): Date;
+
+// @public
 export function getVirtualParent(child: HTMLElement): HTMLElement | undefined;
 
 // @public
+export function getWeekNumber(date: Date, firstDayOfWeek: DayOfWeek, firstWeekOfYear: FirstWeekOfYear): number;
+
+// @public
+export function getWeekNumbersInMonth(weeksInMonth: number, firstDayOfWeek: DayOfWeek, firstWeekOfYear: FirstWeekOfYear, navigatedDate: Date): number[];
+
+// @public
+export function getWeeks(props: ICalendarDayGridStateAndProps, onSelectDate: Function): IDayInfo[][];
+
+// @public
 export function getWindow(rootElement?: Element | null): Window | undefined;
+
+// @public
+export function getYearEnd(date: Date): Date;
+
+// @public
+export function getYearStart(date: Date): Date;
 
 // @public
 export class GlobalSettings {
@@ -417,6 +529,52 @@ export interface IAsAsyncOptions<TProps> {
 export interface IBaseProps<T = any> {
     // (undocumented)
     componentRef?: IRefObject<T>;
+}
+
+// @public (undocumented)
+export interface ICalendarDayGridCommonProps {
+    dateRangeType: DateRangeType;
+    daysToSelectInDayView?: number;
+    firstDayOfWeek: DayOfWeek;
+    maxDate?: Date;
+    minDate?: Date;
+    navigatedDate: Date;
+    restrictedDates?: Date[];
+    selectedDate: Date;
+    strings: ICalendarStrings;
+    today?: Date;
+    weeksToShow?: number;
+    workWeekDays?: DayOfWeek[];
+}
+
+// @public (undocumented)
+export interface ICalendarDayGridCommonState {
+    weeks?: IDayInfo[][];
+}
+
+// @public (undocumented)
+export interface ICalendarDayGridStateAndProps extends ICalendarDayGridCommonProps, ICalendarDayGridCommonState {
+}
+
+// @public (undocumented)
+export interface ICalendarStrings {
+    closeButtonAriaLabel?: string;
+    days: string[];
+    goToToday: string;
+    monthPickerHeaderAriaLabel?: string;
+    months: string[];
+    nextMonthAriaLabel?: string;
+    nextYearAriaLabel?: string;
+    nextYearRangeAriaLabel?: string;
+    prevMonthAriaLabel?: string;
+    prevYearAriaLabel?: string;
+    prevYearRangeAriaLabel?: string;
+    selectedDateFormatString?: string;
+    shortDays: string[];
+    shortMonths: string[];
+    todayDateFormatString?: string;
+    weekNumberFormatString?: string;
+    yearPickerHeaderAriaLabel?: string;
 }
 
 // @public (undocumented)
@@ -500,6 +658,26 @@ export type ICustomizerProps = IBaseProps & Partial<{
 }> & {
     contextTransform?: (context: Readonly<ICustomizerContext>) => ICustomizerContext;
 };
+
+// @public (undocumented)
+export interface IDayInfo {
+    // (undocumented)
+    date: string;
+    // (undocumented)
+    isInBounds: boolean;
+    // (undocumented)
+    isInMonth: boolean;
+    // (undocumented)
+    isSelected: boolean;
+    // (undocumented)
+    isToday: boolean;
+    // (undocumented)
+    key: string;
+    // (undocumented)
+    onSelected: () => void;
+    // (undocumented)
+    originalDate: Date;
+}
 
 // Warning: (ae-internal-missing-underscore) The name "IDeclaredEventsByName" should be prefixed with an underscore because the declaration is marked as @internal
 //
@@ -789,6 +967,9 @@ export const IsFocusVisibleClassName = "ms-Fabric--isFocusVisible";
 export const isIE11: () => boolean;
 
 // @public
+export function isInDateRangeArray(date: Date, dateRange: Date[]): boolean;
+
+// @public
 export const isIOS: () => boolean;
 
 // @public (undocumented)
@@ -970,6 +1151,34 @@ export function mergeScopedSettings(oldSettings?: ISettings, newSettings?: ISett
 export function mergeSettings(oldSettings?: ISettings, newSettings?: ISettings | ISettingsFunction): ISettings;
 
 // @public
+export enum MonthOfYear {
+    // (undocumented)
+    April = 3,
+    // (undocumented)
+    August = 7,
+    // (undocumented)
+    December = 11,
+    // (undocumented)
+    February = 1,
+    // (undocumented)
+    January = 0,
+    // (undocumented)
+    July = 6,
+    // (undocumented)
+    June = 5,
+    // (undocumented)
+    March = 2,
+    // (undocumented)
+    May = 4,
+    // (undocumented)
+    November = 10,
+    // (undocumented)
+    October = 9,
+    // (undocumented)
+    September = 8
+}
+
+// @public
 export function nullRender(): JSX.Element | null;
 
 // @public
@@ -1137,6 +1346,9 @@ export function setLanguage(language: string, avoidPersisting?: boolean): void;
 //
 // @internal
 export function setMemoizeWeakMap(weakMap: any): void;
+
+// @public
+export function setMonth(date: Date, month: number): Date;
 
 // @public
 export function setPortalAttribute(element: HTMLElement): void;

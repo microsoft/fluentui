@@ -7,23 +7,25 @@ import {
   getRTLSafeKeyCode,
   format,
   classNamesFunction,
-  find,
   findIndex,
   initializeComponentRef,
+  getIsRestrictedDate,
+  findAvailableDate,
+  getDayInfosInRangeOfDay,
+  getBoundedDateRange,
+  getWeeks,
 } from '@uifabric/utilities';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 import {
   addDays,
   addWeeks,
   compareDates,
-  compareDatePart,
   getDateRangeArray,
-  isInDateRangeArray,
   getWeekNumbersInMonth,
 } from 'office-ui-fabric-react/lib/utilities/dateMath/DateMath';
 import { ICalendarDayGridProps, ICalendarDayGridStyleProps, ICalendarDayGridStyles } from './CalendarDayGrid.types';
 import { IProcessedStyleSet } from '@uifabric/styling';
-import { DateRangeType, DayOfWeek } from '../Calendar/Calendar.types';
+import { DateRangeType } from '../Calendar/Calendar.types';
 
 const DAYS_IN_WEEK = 7;
 
@@ -69,7 +71,7 @@ export class CalendarDayGridBase extends React.Component<ICalendarDayGridProps, 
 
     this.state = {
       activeDescendantId: getId(),
-      weeks: this._getWeeks(props),
+      weeks: getWeeks(props, this._onSelectDate),
     };
 
     this._onClose = this._onClose.bind(this);
@@ -77,7 +79,7 @@ export class CalendarDayGridBase extends React.Component<ICalendarDayGridProps, 
 
   // tslint:disable-next-line function-name
   public UNSAFE_componentWillReceiveProps(nextProps: ICalendarDayGridProps): void {
-    const weeks = this._getWeeks(nextProps);
+    const weeks = getWeeks(nextProps, this._onSelectDate);
     let isBackwards = undefined;
 
     if (this.state.weeks) {
@@ -337,11 +339,11 @@ export class CalendarDayGridBase extends React.Component<ICalendarDayGridProps, 
 
     // target date is restricted, search in whatever direction until finding the next possible date,
     // stopping at boundaries
-    let nextDate = this._findAvailableDate(date, targetDate, direction);
+    let nextDate = findAvailableDate({ weeks: this.state.weeks, ...this.props }, date, targetDate, direction);
 
     if (!nextDate) {
       // if no dates available in initial direction, try going backwards
-      nextDate = this._findAvailableDate(date, targetDate, -direction);
+      nextDate = findAvailableDate({ weeks: this.state.weeks, ...this.props }, date, targetDate, -direction);
     }
 
     // if the nextDate is still inside the same focusZone area, let the focusZone handle setting the focus so we
@@ -363,28 +365,6 @@ export class CalendarDayGridBase extends React.Component<ICalendarDayGridProps, 
       this.props.onNavigateDate(nextDate, true);
       ev.preventDefault();
     }
-  }
-
-  private _findAvailableDate(initialDate: Date, targetDate: Date, direction: number): Date | undefined {
-    // if the target date is available, return it immediately
-    if (!this._getIsRestrictedDate(targetDate)) {
-      return targetDate;
-    }
-
-    while (
-      compareDatePart(initialDate, targetDate) !== 0 &&
-      this._getIsRestrictedDate(targetDate) &&
-      !this._getIsAfterMaxDate(targetDate) &&
-      !this._getIsBeforeMinDate(targetDate)
-    ) {
-      targetDate = addDays(targetDate, direction);
-    }
-
-    if (compareDatePart(initialDate, targetDate) !== 0 && !this._getIsRestrictedDate(targetDate)) {
-      return targetDate;
-    }
-
-    return undefined;
   }
 
   private _onDayKeyDown = (
@@ -414,10 +394,10 @@ export class CalendarDayGridBase extends React.Component<ICalendarDayGridProps, 
     } = this.props;
 
     let dateRange = getDateRangeArray(selectedDate, dateRangeType, firstDayOfWeek, workWeekDays, daysToSelectInDayView);
-    dateRange = this._getBoundedDateRange(dateRange, minDate, maxDate);
+    dateRange = getBoundedDateRange(dateRange, minDate, maxDate);
 
     dateRange = dateRange.filter((d: Date) => {
-      return !this._getIsRestrictedDate(d);
+      return !getIsRestrictedDate(this.props, d);
     });
 
     if (onSelectDate) {
@@ -434,132 +414,6 @@ export class CalendarDayGridBase extends React.Component<ICalendarDayGridProps, 
       this.props.onDismiss();
     }
   };
-
-  /**
-   * Initial parsing of the given props to generate IDayInfo two dimensional array, which contains a representation
-   * of every day in the grid. Convenient for helping with conversions between day refs and Date objects in callbacks.
-   */
-  private _getWeeks(propsToUse: ICalendarDayGridProps): IDayInfo[][] {
-    const {
-      selectedDate,
-      dateRangeType,
-      firstDayOfWeek,
-      today,
-      minDate,
-      maxDate,
-      weeksToShow,
-      workWeekDays,
-      daysToSelectInDayView,
-    } = propsToUse;
-
-    const todaysDate = today || new Date();
-
-    const navigatedDate = propsToUse.navigatedDate ? propsToUse.navigatedDate : todaysDate;
-
-    let date;
-    if (weeksToShow && weeksToShow <= 4) {
-      // if showing less than a full month, just use date == navigatedDate
-      date = new Date(navigatedDate.toString());
-    } else {
-      date = new Date(navigatedDate.getFullYear(), navigatedDate.getMonth(), 1);
-    }
-    const weeks: IDayInfo[][] = [];
-
-    // Cycle the date backwards to get to the first day of the week.
-    while (date.getDay() !== firstDayOfWeek) {
-      date.setDate(date.getDate() - 1);
-    }
-
-    // add the transition week as last week of previous range
-    date = addDays(date, -DAYS_IN_WEEK);
-
-    // a flag to indicate whether all days of the week are outside the month
-    let isAllDaysOfWeekOutOfMonth = false;
-
-    // in work week view if the days aren't contiguous we use week view instead
-    const selectedDateRangeType = this.getDateRangeTypeToUse(dateRangeType, workWeekDays);
-
-    let selectedDates = getDateRangeArray(
-      selectedDate,
-      selectedDateRangeType,
-      firstDayOfWeek,
-      workWeekDays,
-      daysToSelectInDayView,
-    );
-    selectedDates = this._getBoundedDateRange(selectedDates, minDate, maxDate);
-
-    let shouldGetWeeks = true;
-
-    for (let weekIndex = 0; shouldGetWeeks; weekIndex++) {
-      const week: IDayInfo[] = [];
-
-      isAllDaysOfWeekOutOfMonth = true;
-
-      for (let dayIndex = 0; dayIndex < DAYS_IN_WEEK; dayIndex++) {
-        const originalDate = new Date(date.toString());
-        const dayInfo: IDayInfo = {
-          key: date.toString(),
-          date: date.getDate().toString(),
-          originalDate: originalDate,
-          isInMonth: date.getMonth() === navigatedDate.getMonth(),
-          isToday: compareDates(todaysDate, date),
-          isSelected: isInDateRangeArray(date, selectedDates),
-          onSelected: this._onSelectDate.bind(this, originalDate),
-          isInBounds: !this._getIsRestrictedDate(date),
-        };
-
-        week.push(dayInfo);
-
-        if (dayInfo.isInMonth) {
-          isAllDaysOfWeekOutOfMonth = false;
-        }
-
-        date.setDate(date.getDate() + 1);
-      }
-
-      // We append the condition of the loop depending upon the showSixWeeksByDefault prop.
-      shouldGetWeeks = weeksToShow ? weekIndex < weeksToShow + 1 : !isAllDaysOfWeekOutOfMonth || weekIndex === 0;
-
-      // we don't check shouldGetWeeks before pushing because we want to add one extra week for transition state
-      weeks.push(week);
-    }
-
-    return weeks;
-  }
-
-  private _getIsRestrictedDate(date: Date): boolean {
-    const { restrictedDates, minDate, maxDate } = this.props;
-    if (!restrictedDates && !minDate && !maxDate) {
-      return false;
-    }
-    const inRestrictedDates =
-      restrictedDates &&
-      !!find(restrictedDates, (rd: Date) => {
-        return compareDates(rd, date);
-      });
-    return inRestrictedDates || this._getIsBeforeMinDate(date) || this._getIsAfterMaxDate(date);
-  }
-
-  private _getIsBeforeMinDate(date: Date): boolean {
-    const { minDate } = this.props;
-    return minDate ? compareDatePart(minDate, date) >= 1 : false;
-  }
-
-  private _getIsAfterMaxDate(date: Date): boolean {
-    const { maxDate } = this.props;
-    return maxDate ? compareDatePart(date, maxDate) >= 1 : false;
-  }
-
-  private _getBoundedDateRange(dateRange: Date[], minDate?: Date, maxDate?: Date): Date[] {
-    let boundedDateRange = [...dateRange];
-    if (minDate) {
-      boundedDateRange = boundedDateRange.filter((date: Date) => compareDatePart(date, minDate as Date) >= 0);
-    }
-    if (maxDate) {
-      boundedDateRange = boundedDateRange.filter((date: Date) => compareDatePart(date, maxDate as Date) <= 0);
-    }
-    return boundedDateRange;
-  }
 
   /**
    *
@@ -702,40 +556,6 @@ export class CalendarDayGridBase extends React.Component<ICalendarDayGridProps, 
     return cornerStyle;
   }
 
-  /**
-   *
-   * Section for setting hover/pressed styles. Because we want arbitrary blobs of days to be selectable, to support
-   * highlighting every day in the month for month view, css :hover style isn't enough, so we need mouse callbacks
-   * to set classnames on all relevant child refs to apply the styling
-   *
-   */
-
-  private getDayInfosInRangeOfDay = (day: IDayInfo): IDayInfo[] => {
-    const { weeks } = this.state;
-    const { dateRangeType, firstDayOfWeek, workWeekDays, daysToSelectInDayView } = this.props;
-
-    // The hover state looks weird with non-contiguous days in work week view. In work week, show week hover state
-    const dateRangeHoverType = this.getDateRangeTypeToUse(dateRangeType, workWeekDays);
-
-    // gets all the dates for the given date range type that are in the same date range as the given day
-    const dateRange = getDateRangeArray(
-      day.originalDate,
-      dateRangeHoverType,
-      firstDayOfWeek,
-      workWeekDays,
-      daysToSelectInDayView,
-    ).map((date: Date) => date.getTime());
-
-    // gets all the day refs for the given dates
-    const dayInfosInRange = weeks!.reduce((accumulatedValue: IDayInfo[], currentWeek: IDayInfo[]) => {
-      return accumulatedValue.concat(
-        currentWeek.filter((weekDay: IDayInfo) => dateRange.indexOf(weekDay.originalDate.getTime()) !== -1),
-      );
-    }, []);
-
-    return dayInfosInRange;
-  };
-
   private getRefsFromDayInfos = (dayInfosInRange: IDayInfo[]): (HTMLElement | null)[] => {
     let dayRefs: (HTMLElement | null)[] = [];
     if (this.days) {
@@ -747,7 +567,7 @@ export class CalendarDayGridBase extends React.Component<ICalendarDayGridProps, 
 
   private onMouseOverDay = (day: IDayInfo) => {
     return (ev: React.MouseEvent<HTMLElement>) => {
-      const dayInfos = this.getDayInfosInRangeOfDay(day);
+      const dayInfos = getDayInfosInRangeOfDay({ weeks: this.state.weeks, ...this.props }, day);
       const dayRefs = this.getRefsFromDayInfos(dayInfos);
 
       dayRefs.forEach((dayRef: HTMLElement, index: number) => {
@@ -785,7 +605,7 @@ export class CalendarDayGridBase extends React.Component<ICalendarDayGridProps, 
 
   private onMouseDownDay = (day: IDayInfo) => {
     return (ev: React.MouseEvent<HTMLElement>) => {
-      const dayInfos = this.getDayInfosInRangeOfDay(day);
+      const dayInfos = getDayInfosInRangeOfDay({ weeks: this.state.weeks, ...this.props }, day);
       const dayRefs = this.getRefsFromDayInfos(dayInfos);
 
       dayRefs.forEach((dayRef: HTMLElement) => {
@@ -798,7 +618,7 @@ export class CalendarDayGridBase extends React.Component<ICalendarDayGridProps, 
 
   private onMouseUpDay = (day: IDayInfo) => {
     return (ev: React.MouseEvent<HTMLElement>) => {
-      const dayInfos = this.getDayInfosInRangeOfDay(day);
+      const dayInfos = getDayInfosInRangeOfDay({ weeks: this.state.weeks, ...this.props }, day);
       const dayRefs = this.getRefsFromDayInfos(dayInfos);
 
       dayRefs.forEach((dayRef: HTMLElement) => {
@@ -811,7 +631,7 @@ export class CalendarDayGridBase extends React.Component<ICalendarDayGridProps, 
 
   private onMouseOutDay = (day: IDayInfo) => {
     return (ev: React.MouseEvent<HTMLElement>) => {
-      const dayInfos = this.getDayInfosInRangeOfDay(day);
+      const dayInfos = getDayInfosInRangeOfDay({ weeks: this.state.weeks, ...this.props }, day);
       const dayRefs = this.getRefsFromDayInfos(dayInfos);
 
       dayRefs.forEach((dayRef: HTMLElement, index: number) => {
@@ -838,31 +658,5 @@ export class CalendarDayGridBase extends React.Component<ICalendarDayGridProps, 
         }
       });
     };
-  };
-
-  /**
-   * When given work week, if the days are non-contiguous, the hover states look really weird. So for non-contiguous
-   * work weeks, we'll just show week view instead.
-   */
-  private getDateRangeTypeToUse = (
-    dateRangeType: DateRangeType,
-    workWeekDays: DayOfWeek[] | undefined,
-  ): DateRangeType => {
-    if (workWeekDays && dateRangeType === DateRangeType.WorkWeek) {
-      const sortedWWDays = workWeekDays.slice().sort();
-      let isContiguous = true;
-      for (let i = 1; i < sortedWWDays.length; i++) {
-        if (sortedWWDays[i] !== sortedWWDays[i - 1] + 1) {
-          isContiguous = false;
-          break;
-        }
-      }
-
-      if (!isContiguous || workWeekDays.length === 0) {
-        return DateRangeType.Week;
-      }
-    }
-
-    return dateRangeType;
   };
 }

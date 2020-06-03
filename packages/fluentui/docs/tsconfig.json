@@ -10,7 +10,8 @@
       "@uifabric/set-version": ["packages/set-version/src"],
       "@uifabric/utilities": ["packages/utilities/src"],
       "src/*": ["packages/fluentui/react-northstar/src/*"],
-      "test/*": ["packages/fluentui/react-northstar/test/*"]
+      "test/*": ["packages/fluentui/react-northstar/test/*"],
+      "office-ui-fabric-react/lib/*": ["/packages/office-ui-fabric-react/src"]
     },
     "typeRoots": ["../../../typings", "../../../node_modules/@types"],
     "types": ["node", "webpack-env", "screener-runner"]

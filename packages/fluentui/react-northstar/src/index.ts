@@ -262,6 +262,8 @@ export * from './components/Carousel/CarouselNavigationItem';
 export { default as CarouselNavigationItem } from './components/Carousel/CarouselNavigationItem';
 export * from './components/Carousel/CarouselPaddle';
 export { default as CarouselPaddle } from './components/Carousel/CarouselPaddle';
+export * from './components/CalendarDayGrid/CalendarDayGrid';
+export { default as CalendarDayGrid } from './components/CalendarDayGrid/CalendarDayGrid';
 
 export * from './components/Table/Table';
 export { default as Table } from './components/Table/Table';
