@@ -20,28 +20,38 @@ export const createClassResolver = (classes: ClassDictionary, slotNames: string[
 
   // Everything in the function below will happen at runtime, so it's very critical that this
   // code is as minimal as possible.
-  return (state: GenericDictionary): ClassDictionary =>
-    Object.keys(slots).reduce((acc, slotName) => {
-      acc[slotName] = [
-        // Ensure state.className lands on the root
-        ...(slotName === 'root' && state.className ? [state.className] : []),
+  // tslint:disable-next-line:no-function-expression
+  return function classResolver(state: GenericDictionary): ClassDictionary {
+    const resolvedClasses: Record<string, string | string[]> = {};
 
-        // Grab the slot className
-        slots[slotName],
+    const modifierClasses = [];
+    for (const modifierName of Object.keys(modifiers)) {
+      if (!!state[modifierName]) {
+        modifierClasses.push(modifiers[modifierName]);
+      }
+    }
 
-        // Filter out the enabled modifier classes and mix them in
-        ...Object.keys(modifiers)
-          .filter((key: string) => !!state[key])
-          .map((key: string) => modifiers[key]),
+    const enumClasses = [];
+    for (const enumName of Object.keys(enums)) {
+      const enumValueClasses = enums[enumName];
+      if (enumValueClasses[state[enumName]]) {
+        enumClasses.push(enumValueClasses[state[enumName]]);
+      }
+    }
 
-        // Filter out the enum value matching classes and mix them in
-        ...Object.keys(enums)
-          .filter((key: string) => state[key] && enums[key][state[key]])
-          .map((key: string) => enums[key][state[key]]),
-      ].join(' ');
+    for (const slotName of slotNames) {
+      resolvedClasses[slotName] = [
+        slotName === 'root' && state.className ? state.className : '',
+        slots[slotName] || '',
+        ...modifierClasses,
+        ...enumClasses,
+      ]
+        .filter(Boolean)
+        .join(' ');
+    }
 
-      return acc;
-    }, {} as ClassDictionary);
+    return resolvedClasses as ClassDictionary;
+  };
 };
 
 /**
