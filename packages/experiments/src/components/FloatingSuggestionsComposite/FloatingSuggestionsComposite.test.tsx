@@ -1,14 +1,8 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
 import { create, act } from 'react-test-renderer';
-import { mru } from '@uifabric/example-data';
 import { BaseFloatingSuggestions } from './FloatingSuggestions';
 import * as ReactDOM from 'react-dom';
-import {
-  IFloatingSuggestionItem,
-  IFloatingSuggestionOnRenderItemProps,
-  IFloatingSuggestionItemProps,
-} from './FloatingSuggestionsItem/FloatingSuggestionsItem.types';
+import { IFloatingSuggestionItem } from './FloatingSuggestionsItem/FloatingSuggestionsItem.types';
 import { IBaseFloatingSuggestionsProps } from './FloatingSuggestions.types';
 import * as ReactTestUtils from 'react-dom/test-utils';
 
