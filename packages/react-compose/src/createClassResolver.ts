@@ -15,18 +15,26 @@ import { GenericDictionary, ClassDictionary } from './types';
  * the component `state` contains a truthy matching prop name.
  */
 export const createClassResolver = (classes: ClassDictionary, slotNames: string[]) => {
+  // This is in creation time, so this will happen once per css file.
   const { slots, modifiers, enums } = createResolvedMap(classes, slotNames);
 
-  return (state: GenericDictionary): ClassDictionary => {
-    return Object.keys(slots).reduce((acc, slotName) => {
+  // Everything in the function below will happen at runtime, so it's very critical that this
+  // code is as minimal as possible.
+  return (state: GenericDictionary): ClassDictionary =>
+    Object.keys(slots).reduce((acc, slotName) => {
       acc[slotName] = [
+        // Ensure state.className lands on the root
         ...(slotName === 'root' && state.className ? [state.className] : []),
+
+        // Grab the slot className
         slots[slotName],
 
+        // Filter out the enabled modifier classes and mix them in
         ...Object.keys(modifiers)
           .filter((key: string) => !!state[key])
           .map((key: string) => modifiers[key]),
 
+        // Filter out the enum value matching classes and mix them in
         ...Object.keys(enums)
           .filter((key: string) => state[key] && enums[key][state[key]])
           .map((key: string) => enums[key][state[key]]),
@@ -34,7 +42,6 @@ export const createClassResolver = (classes: ClassDictionary, slotNames: string[
 
       return acc;
     }, {} as ClassDictionary);
-  };
 };
 
 /**
@@ -56,6 +63,12 @@ type ResolvedMap = {
   enums: Record<string, Record<string, string | string[]>>;
 };
 
+/**
+ * Helper to take a css module map and translate it into { slots, modifiers,  enums } where
+ * slots are a matched name in the slotNames array, enums have underscores splitting the matched
+ * name/value, and modifiers are everything else. Creating this split definition keeps runtime
+ * resolution work to a minimum.
+ */
 function createResolvedMap(classes: ClassDictionary, slotNames: string[]): ResolvedMap {
   const resolvedMap: ResolvedMap = {
     slots: {},
@@ -87,22 +100,15 @@ function createResolvedMap(classes: ClassDictionary, slotNames: string[]): Resol
   });
 
   // Reduce map to strings
-  Object.keys(slots).reduce((acc, key) => {
-    slots[key] = (slots[key] as string[]).join(' ');
-    return acc;
-  }, slots);
-  Object.keys(modifiers).reduce((acc, key) => {
-    modifiers[key] = (modifiers[key] as string[]).join(' ');
-    return acc;
-  }, modifiers);
-  Object.keys(enums).forEach(key =>
-    Object.keys(enums[key]).forEach(val =>
-      Object.keys(enums[key][val]).reduce((acc, valKey) => {
-        enums[key][val] = (enums[key][val] as string[]).join(' ');
-        return acc;
-      }, enums[key]),
-    ),
-  );
+  collapseArray(slots);
+  collapseArray(modifiers);
+  Object.keys(enums).forEach(enumPropName => collapseArray(enums[enumPropName]));
 
   return resolvedMap;
+}
+
+function collapseArray(obj: Record<string, string | string[]>) {
+  Object.keys(obj).forEach(propName => {
+    obj[propName] = (obj[propName] as string[]).join(' ');
+  });
 }
