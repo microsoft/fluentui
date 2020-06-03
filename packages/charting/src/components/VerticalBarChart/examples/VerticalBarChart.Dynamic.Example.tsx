@@ -52,6 +52,8 @@ export class VerticalBarChartDynamicExample extends React.Component<IVerticalBar
           data={this.state.dynamicData}
           colors={this.state.colors}
           chartLabel={'Chart with Dynamic Data'}
+          hideLegend={true}
+          hideTooltip={true}
         />
         <DefaultButton text="Change data" onClick={this._changeData} />
         <DefaultButton text="Change colors" onClick={this._changeColors} />

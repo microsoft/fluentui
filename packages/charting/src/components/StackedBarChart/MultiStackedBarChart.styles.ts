@@ -2,6 +2,7 @@ import { IMultiStackedBarChartStyleProps, IMultiStackedBarChartStyles } from './
 
 export const getMultiStackedBarChartStyles = (props: IMultiStackedBarChartStyleProps): IMultiStackedBarChartStyles => {
   const { className, width, barHeight, legendColor, shouldHighlight, theme, href } = props;
+  const { fonts } = theme!;
   return {
     root: [
       theme.fonts.medium,
@@ -33,24 +34,42 @@ export const getMultiStackedBarChartStyles = (props: IMultiStackedBarChartStyleP
       flexDirection: 'column',
       marginBottom: '16px',
     },
-    hoverCardTextStyles: {
-      fontFamily: 'Segoe UI',
-      fontSize: '12px',
-      lineHeight: '14px',
+    calloutContentRoot: [
+      {
+        display: 'grid',
+        overflow: 'hidden',
+        padding: '11px 16px 10px 16px',
+        backgroundColor: theme.semanticColors.bodyBackground,
+        backgroundBlendMode: 'normal, luminosity',
+      },
+    ],
+    calloutContentX: [
+      {
+        ...fonts.small,
+        lineHeight: '16px',
+        opacity: '0.8',
+        color: theme.semanticColors.bodySubtext,
+      },
+    ],
+    calloutBlockContainer: {
+      paddingLeft: '8px',
+      lineHeight: '22px',
+      color: theme.semanticColors.bodyText,
+      borderLeft: `4px solid ${legendColor}`,
     },
-    hoverCardDataStyles: {
-      color: legendColor === '' ? theme.palette.black : legendColor,
-      fontSize: '28px',
-      fontFamily: 'Segoe UI',
-      fontWeight: 'bold',
-      lineHeight: '31px',
+    calloutlegendText: {
+      ...fonts.small,
+      lineHeight: '16px',
+      color: theme.semanticColors.bodySubtext,
     },
-    hoverCardRoot: {
-      paddingLeft: '16px',
-      paddingRight: '22px',
-      paddingTop: '15px',
-      paddingBottom: '8px',
-    },
+    calloutContentY: [
+      {
+        ...fonts.xxLarge,
+        color: legendColor ? legendColor : theme.semanticColors.bodySubtext,
+        fontWeight: 'bold',
+        lineHeight: '36px',
+      },
+    ],
     opacityChangeOnHover: {
       opacity: shouldHighlight ? '' : '0.1',
       cursor: href ? 'pointer' : 'default',

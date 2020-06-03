@@ -24,7 +24,7 @@ export class VerticalStackedBarChartBasicExample extends React.Component<Readonl
         data: 20,
         color: DefaultPalette.blueLight,
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '50%',
+        yAxisCalloutData: '20%',
       },
     ];
 
@@ -41,7 +41,7 @@ export class VerticalStackedBarChartBasicExample extends React.Component<Readonl
         data: 20,
         color: DefaultPalette.blueMid,
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '30%',
+        yAxisCalloutData: '20%',
       },
       {
         legend: 'Metadata3',
@@ -58,14 +58,14 @@ export class VerticalStackedBarChartBasicExample extends React.Component<Readonl
         data: 44,
         color: DefaultPalette.accent,
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '10%',
+        yAxisCalloutData: '44%',
       },
       {
         legend: 'Metadata2',
         data: 28,
         color: DefaultPalette.blueMid,
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '60%',
+        yAxisCalloutData: '28%',
       },
       {
         legend: 'Metadata3',
@@ -82,14 +82,14 @@ export class VerticalStackedBarChartBasicExample extends React.Component<Readonl
         data: 88,
         color: DefaultPalette.accent,
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '10%',
+        yAxisCalloutData: '88%',
       },
       {
         legend: 'Metadata2',
         data: 22,
         color: DefaultPalette.blueMid,
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '60%',
+        yAxisCalloutData: '22%',
       },
       {
         legend: 'Metadata3',

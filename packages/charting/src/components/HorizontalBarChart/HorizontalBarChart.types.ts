@@ -117,19 +117,33 @@ export interface IHorizontalBarChartStyles {
   chartDataTextDenominator: IStyle;
 
   /**
-   * styles for hover card root
+   * styles for callout root-content
    */
-  hoverCardRoot?: IStyle;
+  calloutContentRoot?: IStyle;
 
   /**
-   * styles for hover card text
+   * styles for callout Date time container
    */
-  hoverCardTextStyles?: IStyle;
+  calloutInfoContainer?: IStyle;
 
   /**
-   * styles for hover card data
+   * styles for callout Date time container
    */
-  hoverCardDataStyles?: IStyle;
+  calloutBlockContainer?: IStyle;
+
+  /**
+   * styles for callout y-content
+   */
+  calloutlegendText?: IStyle;
+
+  /**
+   * styles for callout x-content
+   */
+  calloutContentX?: IStyle;
+  /**
+   * styles for callout y-content
+   */
+  calloutContentY?: IStyle;
 
   /**
    * Style for the benchmark triangle

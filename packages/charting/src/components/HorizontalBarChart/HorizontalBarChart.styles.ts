@@ -3,7 +3,7 @@ import { IHorizontalBarChartStyleProps, IHorizontalBarChartStyles } from './Hori
 
 export const getHorizontalBarChartStyles = (props: IHorizontalBarChartStyleProps): IHorizontalBarChartStyles => {
   const { className, theme, width, color } = props;
-  const { palette } = theme!;
+  const { palette, fonts } = theme!;
 
   return {
     root: [
@@ -39,23 +39,42 @@ export const getHorizontalBarChartStyles = (props: IHorizontalBarChartStyleProps
     chartDataTextDenominator: {
       fontWeight: FontWeights.semibold,
     },
-    hoverCardTextStyles: {
-      ...theme.fonts.medium,
-      lineHeight: '14px',
+    calloutContentRoot: [
+      {
+        display: 'grid',
+        overflow: 'hidden',
+        padding: '11px 16px 10px 16px',
+        backgroundColor: theme.semanticColors.bodyBackground,
+        backgroundBlendMode: 'normal, luminosity',
+      },
+    ],
+    calloutContentX: [
+      {
+        ...fonts.small,
+        lineHeight: '16px',
+        opacity: '0.8',
+        color: theme.semanticColors.bodySubtext,
+      },
+    ],
+    calloutBlockContainer: {
+      paddingLeft: '8px',
+      lineHeight: '22px',
+      color: theme.semanticColors.bodyText,
+      borderLeft: `4px solid ${color}`,
     },
-    hoverCardDataStyles: {
-      color: color !== '' ? `${color}` : palette.black,
-      fontSize: '28px',
-      fontFamily: 'Segoe UI',
-      fontWeight: FontWeights.bold,
-      lineHeight: '31px',
+    calloutlegendText: {
+      ...fonts.small,
+      lineHeight: '16px',
+      color: theme.semanticColors.bodySubtext,
     },
-    hoverCardRoot: {
-      paddingLeft: '16px',
-      paddingRight: '22px',
-      paddingTop: '15px',
-      paddingBottom: '8px',
-    },
+    calloutContentY: [
+      {
+        ...fonts.xxLarge,
+        color: color ? color : theme.semanticColors.bodySubtext,
+        fontWeight: 'bold',
+        lineHeight: '36px',
+      },
+    ],
     triangle: {
       width: '0',
       height: '0',

@@ -2,6 +2,7 @@ import { IVerticalBarChartStyleProps, IVerticalBarChartStyles } from './Vertical
 
 export const getStyles = (props: IVerticalBarChartStyleProps): IVerticalBarChartStyles => {
   const { className, theme, width, height, legendColor, shouldHighlight } = props;
+  const { fonts } = theme!;
 
   const chartWidth = width + 50;
   const chartPadding = 20;
@@ -18,25 +19,47 @@ export const getStyles = (props: IVerticalBarChartStyleProps): IVerticalBarChart
         width: chartWidth + 2 * chartPadding,
       },
     ],
-    hoverCardRoot: {
-      paddingLeft: '16px',
-      paddingRight: '22px',
-      paddingTop: '15px',
-      paddingBottom: '8px',
-    },
-
-    hoverCardTextStyles: [
-      theme.fonts.small,
+    calloutContentRoot: [
       {
-        lineHeight: '14px',
+        display: 'grid',
+        overflow: 'hidden',
+        padding: '11px 16px 10px 16px',
+        backgroundColor: theme.semanticColors.bodyBackground,
+        backgroundBlendMode: 'normal, luminosity',
       },
     ],
-
-    hoverCardDataStyles: [
-      theme.fonts.xxLarge,
+    calloutDateTimeContainer: {
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+    },
+    calloutContentX: [
       {
-        lineHeight: '31px',
-        color: legendColor === '' ? theme.palette.black : legendColor,
+        ...fonts.small,
+        lineHeight: '16px',
+        opacity: '0.8',
+        color: theme.semanticColors.bodySubtext,
+      },
+    ],
+    calloutBlockContainer: {
+      ...fonts.xxLarge,
+      marginTop: '13px',
+      paddingLeft: '8px',
+      lineHeight: '22px',
+      color: theme.semanticColors.bodyText,
+      borderLeft: `4px solid ${legendColor}`,
+    },
+    calloutlegendText: {
+      ...fonts.small,
+      lineHeight: '16px',
+      color: theme.semanticColors.bodySubtext,
+    },
+    calloutContentY: [
+      {
+        ...fonts.xxLarge,
+        fontWeight: 'bold',
+        lineHeight: '36px',
+        color: legendColor ? legendColor : theme.semanticColors.bodySubtext,
       },
     ],
     opacityChangeOnHover: {

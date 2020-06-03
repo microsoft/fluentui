@@ -194,21 +194,6 @@ export interface IStackedBarChartStyles {
   legendContainer: IStyle;
 
   /**
-   * Style for the legend card title displayed in the hover card
-   */
-  hoverCardTextStyles: IStyle;
-
-  /**
-   * Style for the data displayed in the hover card
-   */
-  hoverCardDataStyles: IStyle;
-
-  /**
-   * Style for the root of the hover card
-   */
-  hoverCardRoot: IStyle;
-
-  /**
    * Style to change the opacity of bars in dataviz when we hover on a single bar or legends
    */
   opacityChangeOnHover: IStyle;
@@ -237,4 +222,33 @@ export interface IStackedBarChartStyles {
    * Style for the target triangle
    */
   target: IStyle;
+
+  /**
+   * styles for callout root-content
+   */
+  calloutContentRoot?: IStyle;
+
+  /**
+   * styles for callout Date time container
+   */
+  calloutInfoContainer?: IStyle;
+
+  /**
+   * styles for callout Date time container
+   */
+  calloutBlockContainer?: IStyle;
+
+  /**
+   * styles for callout y-content
+   */
+  calloutlegendText?: IStyle;
+
+  /**
+   * styles for callout x-content
+   */
+  calloutContentX?: IStyle;
+  /**
+   * styles for callout y-content
+   */
+  calloutContentY?: IStyle;
 }

@@ -155,19 +155,23 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
               <g>{bars[0]}</g>
               {!hideTooltip && isCalloutVisible ? (
                 <Callout
-                  gapSpace={10}
+                  gapSpace={15}
                   isBeakVisible={false}
                   target={this.state.refSelected}
                   setInitialFocus={true}
                   directionalHint={DirectionalHint.topRightEdge}
                   id={this._calloutId}
                 >
-                  <div className={this._classNames.hoverCardRoot}>
-                    <div className={this._classNames.hoverCardTextStyles}>
-                      {this.state.xCalloutValue ? this.state.xCalloutValue : this.state.selectedLegendTitle}
-                    </div>
-                    <div className={this._classNames.hoverCardDataStyles}>
-                      {this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard}
+                  <div className={this._classNames.calloutContentRoot}>
+                    <div className={this._classNames.calloutInfoContainer}>
+                      <div className={this._classNames.calloutBlockContainer}>
+                        <div className={this._classNames.calloutlegendText}>
+                          {this.state.xCalloutValue ? this.state.xCalloutValue : this.state.selectedLegendTitle}
+                        </div>
+                        <div className={this._classNames.calloutContentY}>
+                          {this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard}
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </Callout>

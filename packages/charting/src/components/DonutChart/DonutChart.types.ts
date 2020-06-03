@@ -129,17 +129,31 @@ export interface IDonutChartStyles {
   legendContainer: IStyle;
 
   /**
-   * Style for the legend card title displayed in the hover card
+   * styles for callout root-content
    */
-  hoverCardTextStyles: IStyle;
+  calloutContentRoot?: IStyle;
 
   /**
-   * Style for the data displayed in the hover card
+   * styles for callout Date time container
    */
-  hoverCardDataStyles: IStyle;
+  calloutInfoContainer?: IStyle;
 
   /**
-   * Style for the root of the hover card
+   * styles for callout Date time container
    */
-  hoverCardRoot: IStyle;
+  calloutBlockContainer?: IStyle;
+
+  /**
+   * styles for callout y-content
+   */
+  calloutlegendText?: IStyle;
+
+  /**
+   * styles for callout x-content
+   */
+  calloutContentX?: IStyle;
+  /**
+   * styles for callout y-content
+   */
+  calloutContentY?: IStyle;
 }

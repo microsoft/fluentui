@@ -128,17 +128,21 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
             coverTarget={true}
             isBeakVisible={false}
             directionalHint={DirectionalHint.bottomRightEdge}
-            gapSpace={10}
+            gapSpace={15}
             id={this._calloutId}
             onDismiss={this._closeCallout}
             preventDismissOnLostFocus={true}
           >
-            <div className={this._classNames.hoverCardRoot}>
-              <div className={this._classNames.hoverCardTextStyles}>
-                {this.state.xCalloutValue ? this.state.xCalloutValue : this.state.legend}
-              </div>
-              <div className={this._classNames.hoverCardDataStyles}>
-                {this.state.yCalloutValue ? this.state.yCalloutValue : this.state.value}
+            <div className={this._classNames.calloutContentRoot}>
+              <div className={this._classNames.calloutInfoContainer}>
+                <div className={this._classNames.calloutBlockContainer}>
+                  <div className={this._classNames.calloutlegendText}>
+                    {this.state.xCalloutValue ? this.state.xCalloutValue : this.state.legend}
+                  </div>
+                  <div className={this._classNames.calloutContentY}>
+                    {this.state.yCalloutValue ? this.state.yCalloutValue : this.state.value}
+                  </div>
+                </div>
               </div>
             </div>
           </Callout>

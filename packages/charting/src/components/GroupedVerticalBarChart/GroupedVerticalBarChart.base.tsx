@@ -183,12 +183,19 @@ export class GroupedVerticalBarChartBase extends React.Component<
             setInitialFocus={true}
             directionalHint={DirectionalHint.topRightEdge}
           >
-            <div className={this._classNames.hoverCardRoot}>
-              <div className={this._classNames.hoverCardTextStyles}>
-                {this.state.xCalloutValue ? this.state.xCalloutValue : this.state.titleForHoverCard}
+            <div className={this._classNames.calloutContentRoot}>
+              <div className={this._classNames.calloutDateTimeContainer}>
+                <div className={this._classNames.calloutContentX}>{this.state.xCalloutValue} </div>
+                {/*TO DO  if we add time for callout then will use this */}
+                {/* <div className={this._classNames.calloutContentX}>07:00am</div> */}
               </div>
-              <div className={this._classNames.hoverCardDataStyles}>
-                {this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard}
+              <div className={this._classNames.calloutInfoContainer}>
+                <div className={this._classNames.calloutBlockContainer}>
+                  <div className={this._classNames.calloutlegendText}>{this.state.titleForHoverCard}</div>
+                  <div className={this._classNames.calloutContentY}>
+                    {this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard}
+                  </div>
+                </div>
               </div>
             </div>
           </Callout>

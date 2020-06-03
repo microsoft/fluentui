@@ -192,19 +192,38 @@ export interface IVerticalBarChartStyles {
   bars?: IStyle;
 
   /**
-   * Style for the root of the hover card
+   * styles for callout root-content
    */
-  hoverCardRoot: IStyle;
+  calloutContentRoot?: IStyle;
 
   /**
-   * Style for the legend card title displayed in the hover card
+   * styles for callout Date time container
    */
-  hoverCardTextStyles: IStyle;
+  calloutDateTimeContainer?: IStyle;
 
   /**
-   * Style for the data displayed in the hover card
+   * styles for callout Date time container
    */
-  hoverCardDataStyles: IStyle;
+  calloutInfoContainer?: IStyle;
+
+  /**
+   * styles for callout Date time container
+   */
+  calloutBlockContainer?: IStyle;
+
+  /**
+   * styles for callout y-content
+   */
+  calloutlegendText?: IStyle;
+
+  /**
+   * styles for callout x-content
+   */
+  calloutContentX?: IStyle;
+  /**
+   * styles for callout y-content
+   */
+  calloutContentY?: IStyle;
 
   /**
    * Style to change the opacity of bars in dataviz when we hover on a single bar or legends

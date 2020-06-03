@@ -2,6 +2,7 @@ import { IGroupedVerticalBarChartStyleProps, IGroupedVerticalBarChartStyles } fr
 
 export const getStyles = (props: IGroupedVerticalBarChartStyleProps): IGroupedVerticalBarChartStyles => {
   const { theme, className, showXAxisPath, showYAxisPath, legendColor, href } = props;
+  const { fonts } = theme!;
   return {
     root: [
       theme.fonts.medium,
@@ -75,5 +76,48 @@ export const getStyles = (props: IGroupedVerticalBarChartStyleProps): IGroupedVe
     opacityChangeOnHover: {
       cursor: href ? 'pointer' : 'default',
     },
+    calloutContentRoot: [
+      {
+        display: 'grid',
+        overflow: 'hidden',
+        padding: '11px 16px 10px 16px',
+        backgroundColor: theme.semanticColors.bodyBackground,
+        backgroundBlendMode: 'normal, luminosity',
+      },
+    ],
+    calloutDateTimeContainer: {
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+    },
+    calloutContentX: [
+      {
+        ...fonts.small,
+        lineHeight: '16px',
+        opacity: '0.8',
+        color: theme.semanticColors.bodySubtext,
+      },
+    ],
+    calloutBlockContainer: {
+      ...fonts.xxLarge,
+      marginTop: '13px',
+      paddingLeft: '8px',
+      lineHeight: '22px',
+      color: theme.semanticColors.bodyText,
+      borderLeft: `4px solid ${legendColor}`,
+    },
+    calloutlegendText: {
+      ...fonts.small,
+      lineHeight: '16px',
+      color: theme.semanticColors.bodyText,
+    },
+    calloutContentY: [
+      {
+        ...fonts.xxLarge,
+        color: legendColor ? legendColor : theme.semanticColors.bodyText,
+        fontWeight: 'bold',
+        lineHeight: '36px',
+      },
+    ],
   };
 };
