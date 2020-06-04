@@ -7,21 +7,21 @@ export class VerticalStackedBarChartBasicExample extends React.Component<Readonl
     const firstChartPoints: IVSChartDataPoint[] = [
       {
         legend: 'Metadata1',
-        data: 40,
+        data: 40000,
         color: DefaultPalette.accent,
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '40%',
       },
       {
         legend: 'Metadata2',
-        data: 5,
+        data: 50000,
         color: DefaultPalette.blueMid,
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '5%',
       },
       {
         legend: 'Metadata3',
-        data: 20,
+        data: 20000,
         color: DefaultPalette.blueLight,
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '50%',
@@ -31,21 +31,21 @@ export class VerticalStackedBarChartBasicExample extends React.Component<Readonl
     const secondChartPoints: IVSChartDataPoint[] = [
       {
         legend: 'Metadata1',
-        data: 30,
+        data: 30000,
         color: DefaultPalette.accent,
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '30%',
       },
       {
         legend: 'Metadata2',
-        data: 20,
+        data: 20000,
         color: DefaultPalette.blueMid,
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '30%',
       },
       {
         legend: 'Metadata3',
-        data: 40,
+        data: 40000,
         color: DefaultPalette.blueLight,
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '40%',
@@ -55,21 +55,21 @@ export class VerticalStackedBarChartBasicExample extends React.Component<Readonl
     const thirdChartPoints: IVSChartDataPoint[] = [
       {
         legend: 'Metadata1',
-        data: 44,
+        data: 44000,
         color: DefaultPalette.accent,
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '10%',
       },
       {
         legend: 'Metadata2',
-        data: 28,
+        data: 28000,
         color: DefaultPalette.blueMid,
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '60%',
       },
       {
         legend: 'Metadata3',
-        data: 30,
+        data: 30000,
         color: DefaultPalette.blueLight,
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '30%',
@@ -79,21 +79,21 @@ export class VerticalStackedBarChartBasicExample extends React.Component<Readonl
     const fourthChartPoints: IVSChartDataPoint[] = [
       {
         legend: 'Metadata1',
-        data: 88,
+        data: 88000,
         color: DefaultPalette.accent,
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '10%',
       },
       {
         legend: 'Metadata2',
-        data: 22,
+        data: 22000,
         color: DefaultPalette.blueMid,
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '60%',
       },
       {
         legend: 'Metadata3',
-        data: 30,
+        data: 30000,
         color: DefaultPalette.blueLight,
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '30%',

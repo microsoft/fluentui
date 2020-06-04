@@ -492,6 +492,8 @@ export class VerticalStackedBarChartBase extends React.Component<
     if (node === null) {
       return;
     }
+    yAxis.ticks(this._yAxisTickCount, 's');
+    yAxis.tickPadding(5);
     d3Select(node).call(yAxis);
   }
 }
