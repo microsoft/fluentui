@@ -192,8 +192,9 @@ export class VerticalStackedBarChartBase extends React.Component<
       .range([this._height, 0]);
     const yAxis = d3AxisLeft(yAxisScale)
       .tickSizeInner(-this._width)
-      .tickPadding(10)
-      .tickValues(domains);
+      .tickPadding(5)
+      .tickValues(domains)
+      .ticks(this._yAxisTickCount, 's');
     return yAxis;
   }
 
@@ -492,8 +493,6 @@ export class VerticalStackedBarChartBase extends React.Component<
     if (node === null) {
       return;
     }
-    yAxis.ticks(this._yAxisTickCount, 's');
-    yAxis.tickPadding(5);
     d3Select(node).call(yAxis);
   }
 }
