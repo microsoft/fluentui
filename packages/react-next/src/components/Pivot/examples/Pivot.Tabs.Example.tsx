@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { Label } from '@fluentui/react-next/lib/Label';
-import { Pivot, PivotItem, PivotLinkFormat } from '@fluentui/react-next/lib/Pivot';
+import { Pivot, PivotItem } from '@fluentui/react-next/lib/Pivot';
 
 export const PivotTabsExample = () => (
   <div>
-    <Pivot aria-label="Links of Tab Style Pivot Example" linkFormat={PivotLinkFormat.tabs}>
+    <Pivot aria-label="Links of Tab Style Pivot Example" linkFormat="tabs">
       <PivotItem headerText="Foo">
         <Label>Pivot #1</Label>
       </PivotItem>

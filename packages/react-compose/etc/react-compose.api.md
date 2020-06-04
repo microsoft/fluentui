@@ -9,6 +9,9 @@ import * as React from 'react';
 // @public
 export type ClassDictionary = Record<string, string>;
 
+// @public
+export type ClassFunction = (state: GenericDictionary, slots: GenericDictionary) => ClassDictionary;
+
 // @public (undocumented)
 export interface ComponentWithAs<TElementType extends React.ElementType = 'div', TProps = {}> extends React.FunctionComponent {
     // (undocumented)
@@ -38,20 +41,20 @@ export type ComposedComponent<TProps = {}> = React.FunctionComponent<TProps> & {
 // @public (undocumented)
 export type ComposeOptions<TInputProps = {}, TInputStylesProps = {}, TParentProps = {}, TParentStylesProps = {}> = {
     className?: string;
-    classes?: ClassDictionary;
+    classes?: ClassDictionary | ClassFunction;
     displayName?: string;
     mapPropsToStylesProps?: (props: TParentStylesProps & TInputProps) => TInputStylesProps;
     handledProps?: (keyof TInputProps | 'as')[];
     overrideStyles?: boolean;
     slots?: Record<string, React.ElementType>;
-    mapPropsToSlotProps?: (props: TParentProps & TInputProps) => Record<string, object>;
+    slotProps?: (props: TParentProps & TInputProps) => Record<string, object>;
     shorthandConfig?: ShorthandConfig<TParentProps & TInputProps>;
 };
 
 // @public (undocumented)
-export type ComposePreparedOptions<TProps = {}> = {
+export type ComposePreparedOptions<TProps = {}, TState = TProps> = {
     className: string;
-    classes: ClassDictionary;
+    classes: (undefined | ClassDictionary | ClassFunction)[];
     displayName: string;
     displayNames: string[];
     mapPropsToStylesPropsChain: ((props: object) => object)[];
@@ -61,7 +64,7 @@ export type ComposePreparedOptions<TProps = {}> = {
     slots: Record<string, React.ElementType> & {
         __self: React.ElementType;
     };
-    mapPropsToSlotPropsChain: ((props: TProps) => Record<string, object>)[];
+    slotProps: ((props: TProps) => Record<string, object>)[];
     resolveSlotProps: <TResolvedProps>(props: TResolvedProps) => Record<string, object>;
     shorthandConfig: ShorthandConfig<TProps>;
 };
@@ -70,7 +73,7 @@ export type ComposePreparedOptions<TProps = {}> = {
 export type ComposeRenderFunction<TElementType extends React.ElementType = 'div', TProps = {}> = (props: TProps, ref: React.Ref<TElementType extends keyof HTMLElementTagNameMap ? HTMLElementTagNameMap[TElementType] : TElementType>, composeOptions: ComposePreparedOptions) => React.ReactElement | null;
 
 // @public
-export const createClassResolver: (classes: Record<string, string>) => (state: Record<string, any>, slots: Record<string, any>) => Record<string, string>;
+export const createClassResolver: (classes: Record<string, string>) => (state: Record<string, any>) => Record<string, string>;
 
 // @public
 export type GenericDictionary = Record<string, any>;
@@ -84,6 +87,11 @@ export type Input<TElementType extends React.ElementType = 'div', TProps = {}> =
 export type InputComposeComponent<TProps = {}> = React.FunctionComponent<TProps> & {
     fluentComposeConfig?: ComposePreparedOptions;
 };
+
+// Warning: (ae-forgotten-export) The symbol "MergePropsResult" needs to be exported by the entry point index.d.ts
+//
+// @public
+export function mergeProps<TProps, TState = TProps>(state: TState, options: ComposePreparedOptions<TProps>): MergePropsResult<TState>;
 
 // @public (undocumented)
 export type PropsOfElement<E extends keyof JSX.IntrinsicElements | React.JSXElementConstructor<any>> = JSX.LibraryManagedAttributes<E, React.ComponentPropsWithRef<E>>;

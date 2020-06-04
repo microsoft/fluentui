@@ -46,7 +46,7 @@
     "react-test-renderer": ""
   },
   "dependencies": {
-    "@uifabric/set-version": "7.0.12",
+    "@uifabric/set-version": "7.0.13",
     "tslib": ""
   },
   "peerDependencies": {

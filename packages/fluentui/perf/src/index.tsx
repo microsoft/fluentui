@@ -18,7 +18,7 @@ const performanceExamplesContext = require.context('@fluentui/docs/src/examples/
 // We want to randomize examples to avoid any notable issues with always first example
 const performanceExampleNames: string[] = _.shuffle(performanceExamplesContext.keys());
 
-const asyncRender = (element: React.ReactElement<any>, container: Element) =>
+const asyncRender = (element: React.ReactElement, container: Element) =>
   new Promise(resolve => {
     ReactDOM.render(element, container, () => {
       ReactDOM.unmountComponentAtNode(container);
@@ -43,7 +43,7 @@ const renderCycle = async (
             _.values(telemetryRef.current.performance),
             (acc, next) => {
               return {
-                componentCount: acc.componentCount + next.count,
+                componentCount: acc.componentCount + next.instances,
                 renderComponentTime: acc.renderComponentTime + next.msTotal,
               };
             },
