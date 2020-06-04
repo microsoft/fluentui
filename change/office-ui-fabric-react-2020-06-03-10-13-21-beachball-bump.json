@@ -1,8 +1,0 @@
-{
-  "type": "none",
-  "comment": "Fix mismatch with published version",
-  "packageName": "office-ui-fabric-react",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none",
-  "date": "2020-06-03T17:13:21.752Z"
-}
