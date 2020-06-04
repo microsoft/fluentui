@@ -18,7 +18,7 @@ const FormDropdown = compose<'div', FormDropdownProps, FormDropdownStylesProps, 
     displayName: 'FormDropdown',
     overrideStyles: true,
     shorthandConfig: {},
-    mapPropsToSlotProps: ({ items, placeholder }) => ({
+    slotProps: ({ items, placeholder }) => ({
       control: {
         as: Dropdown,
         items,

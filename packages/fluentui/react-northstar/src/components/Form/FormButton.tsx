@@ -20,7 +20,7 @@ const FormButton = compose<'div', FormButtonProps, FormButtonStylesProps, FormFi
     shorthandConfig: {
       mappedProp: 'content',
     },
-    mapPropsToSlotProps: ({ content }) => ({
+    slotProps: ({ content }) => ({
       control: {
         as: Button,
         content,

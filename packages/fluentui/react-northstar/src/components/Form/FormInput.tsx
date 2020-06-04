@@ -19,7 +19,7 @@ const FormInput = compose<'div', FormInputProps, FormInputStylesProps, FormField
     displayName: 'FormInput',
     overrideStyles: true,
     shorthandConfig: {},
-    mapPropsToSlotProps: _ => ({
+    slotProps: _ => ({
       control: {
         as: Input,
       },
