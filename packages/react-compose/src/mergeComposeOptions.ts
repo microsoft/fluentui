@@ -5,8 +5,8 @@ import { defaultComposeOptions } from './defaultComposeOptions';
 export function mergeComposeOptions(
   input: Input,
   inputOptions: ComposeOptions,
-  parentOptions: ComposePreparedOptions = defaultComposeOptions,
-): ComposePreparedOptions {
+  parentOptions: Required<ComposePreparedOptions> = defaultComposeOptions,
+): Required<ComposePreparedOptions> {
   const mapPropsToSlotPropsChain = inputOptions.slotProps
     ? [...parentOptions.slotProps, inputOptions.slotProps]
     : parentOptions.slotProps;

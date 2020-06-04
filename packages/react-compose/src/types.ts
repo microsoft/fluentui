@@ -36,11 +36,11 @@ export interface ComponentWithAs<TElementType extends React.ElementType = 'div',
 //
 
 export type ComposedComponent<TProps = {}> = React.FunctionComponent<TProps> & {
-  fluentComposeConfig: ComposePreparedOptions;
+  fluentComposeConfig: Required<ComposePreparedOptions>;
 };
 
 export type InputComposeComponent<TProps = {}> = React.FunctionComponent<TProps> & {
-  fluentComposeConfig?: ComposePreparedOptions;
+  fluentComposeConfig?: Required<ComposePreparedOptions>;
 };
 
 export type Input<TElementType extends React.ElementType = 'div', TProps = {}> =
@@ -51,7 +51,7 @@ export type ComposeRenderFunction<TElementType extends React.ElementType = 'div'
   props: TProps,
   ref: React.Ref<TElementType extends keyof HTMLElementTagNameMap ? HTMLElementTagNameMap[TElementType] : TElementType>,
   // tslint:disable-next-line:no-any
-  options: Omit<ComposePreparedOptions, 'state'> & MergePropsResult<TState>,
+  options: ComposePreparedOptions & MergePropsResult<TState>,
 ) => React.ReactElement | null;
 
 export type ComposeOptions<TInputProps = {}, TInputStylesProps = {}, TParentProps = {}, TParentStylesProps = {}> = {
@@ -75,7 +75,7 @@ export type ComposeOptions<TInputProps = {}, TInputStylesProps = {}, TParentProp
 
   state?: (
     props: TParentProps & TInputProps,
-    options: Omit<ComposePreparedOptions, 'state'>,
+    options: ComposePreparedOptions,
     parentState?: ComposePreparedOptions['state'],
   ) => // tslint:disable-next-line:no-any
   any;
@@ -121,7 +121,7 @@ export type ComposePreparedOptions<TProps = {}, TState = TProps> = {
   slotProps: ((props: TProps) => Record<string, object>)[];
 
   // tslint:disable-next-line:no-any
-  state: (props: TProps, options: Omit<ComposePreparedOptions, 'state'>) => any;
+  state?: (props: TProps, options: ComposePreparedOptions) => any;
 
   resolveSlotProps: <TResolvedProps>(props: TResolvedProps) => Record<string, object>;
   shorthandConfig: ShorthandConfig<TProps>;

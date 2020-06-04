@@ -10,7 +10,7 @@ export const NullRender = () => null;
  */
 export function resolveSlotProps<TProps, TState>(
   result: MergePropsResult<TState>,
-  options: Omit<ComposePreparedOptions<TProps, TState>, 'state'>,
+  options: ComposePreparedOptions<TProps, TState>,
 ): MergePropsResult<TState> {
   const { state, slots, slotProps } = result;
 

@@ -9,7 +9,7 @@ import { resolveSlotProps } from './resolveSlotProps';
  */
 export function mergeProps<TProps, TState = TProps>(
   state: TState,
-  options: Omit<ComposePreparedOptions<TProps>, 'state'>,
+  options: ComposePreparedOptions<TProps>,
 ): MergePropsResult<TState> {
   const result: MergePropsResult<TState> = {
     state: state,

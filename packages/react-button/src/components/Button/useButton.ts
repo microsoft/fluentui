@@ -6,5 +6,5 @@ import { mergeProps, ComposePreparedOptions } from '@fluentui/react-compose';
  * state, slots, and slotProps for consumption by the component.
  * @param props
  */
-export const useButton = (props: ButtonProps, options: Omit<ComposePreparedOptions, 'state'>) =>
+export const useButton = (props: ButtonProps, options: ComposePreparedOptions) =>
   mergeProps<ButtonProps>(props, options);

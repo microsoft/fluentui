@@ -24,7 +24,7 @@ type UseStylesOptions<StyleProps extends PrimitiveProps> = {
   className?: string;
 
   /** An options from compose(), should be used only if component was created by `compose()`. */
-  composeOptions?: Omit<ComposePreparedOptions, 'state'>;
+  composeOptions?: ComposePreparedOptions;
 
   /**
    * A mapping from component's props to styles functions props. Can be only primitive types as they will be used for
