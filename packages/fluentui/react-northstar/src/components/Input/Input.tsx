@@ -115,7 +115,7 @@ export type InputStylesProps = Required<
   Pick<InputProps, 'fluid' | 'inverted' | 'inline' | 'disabled' | 'clearable' | 'iconPosition' | 'error'> & {
     hasIcon: boolean;
     hasValue: boolean;
-    requiredAndsuccessful: boolean;
+    requiredAndSuccessful: boolean;
   }
 >;
 
