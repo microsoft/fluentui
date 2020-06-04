@@ -11,7 +11,3 @@ export const ToggleButtonBase = compose<'button', ToggleButtonProps, ToggleButto
     state: useToggleButton,
   },
 );
-
-ButtonBase.defaultProps = {
-  as: 'button',
-};
