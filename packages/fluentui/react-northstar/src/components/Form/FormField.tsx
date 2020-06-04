@@ -101,6 +101,7 @@ const FormField = compose<'div', FormFieldProps, FormFieldStylesProps, {}, {}>(
       errorMessage,
     } = props;
 
+    const slotProps = composeOptions.resolveSlotProps<FormFieldProps>(props);
     const ElementType = getElementType(props);
     const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
     const messageId = React.useRef<string>();
@@ -163,6 +164,7 @@ const FormField = compose<'div', FormFieldProps, FormFieldStylesProps, {}, {}>(
           type,
           error: !!errorMessage || null,
           styles: resolvedStyles.control,
+          ...slotProps.control,
         }),
     });
 

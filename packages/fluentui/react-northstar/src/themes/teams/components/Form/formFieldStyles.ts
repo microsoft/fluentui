@@ -8,6 +8,7 @@ const formFieldStyles: ComponentSlotStylesPrepared<FormFieldStylesProps, FormFie
   label: ({ props }): ICSSInJSStyle => {
     const { type, inline, required } = props;
     return {
+      display: 'inline',
       ...((!type || (type !== 'radio' && type !== 'checkbox')) && {
         display: 'block',
       }),

@@ -60,6 +60,8 @@ const Form: React.FC<WithAsProp<FormProps>> &
     Label: typeof FormLabel;
     Message: typeof FormMessage;
     Input: typeof FormInput;
+    Checkbox: typeof FormCheckbox;
+    Dropdown: typeof FormDropdown;
   } = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(Form.displayName, context.telemetry);

@@ -1,48 +1,29 @@
-import { compose, ComponentWithAs, ShorthandConfig, useUnhandledProps } from '@fluentui/react-bindings';
+import { compose, ComponentWithAs, ShorthandConfig } from '@fluentui/react-bindings';
 import { commonPropTypes } from '../../utils';
 import * as customPropTypes from '@fluentui/react-proptypes';
-import { ShorthandValue } from '../../types';
 import FormField, { FormFieldProps, FormFieldStylesProps } from './FormField';
-import Checkbox from '../Checkbox/Checkbox';
-import { TextProps } from '../Text/Text';
+import Checkbox, { CheckboxProps } from '../Checkbox/Checkbox';
 
-interface FormCheckboxOwnProps {
-  label: ShorthandValue<TextProps>;
-}
+interface FormCheckboxOwnProps extends Omit<CheckboxProps, 'styles' | 'accessibility'> {}
 
-export interface FormCheckboxProps extends FormFieldProps, FormCheckboxOwnProps {
-  label: ShorthandValue<TextProps>;
-}
+export interface FormCheckboxProps extends FormFieldProps, FormCheckboxOwnProps {}
 export type FormCheckboxStylesProps = never;
 
-export const FormCheckboxClassName = 'ui-form-input';
+export const FormCheckboxClassName = 'ui-form-checkbox';
 
 const FormCheckbox = compose<'div', FormCheckboxProps, FormCheckboxStylesProps, FormFieldProps, FormFieldStylesProps>(
-  (props, ref, composeOptions) => {
-    const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
-
-    return FormField.create(
-      {},
-      {
-        defaultProps: () => ({
-          ref,
-          control: {
-            as: Checkbox,
-            label: props.label,
-          },
-          ...unhandledProps,
-        }),
-      },
-    );
-  },
+  FormField,
   {
     className: FormCheckboxClassName,
     displayName: 'FormCheckbox',
     overrideStyles: true,
-    handledProps: ['label'],
-    shorthandConfig: {
-      mappedProp: 'label',
-    },
+    shorthandConfig: {},
+    mapPropsToSlotProps: ({ label }) => ({
+      control: {
+        as: Checkbox,
+        label,
+      },
+    }),
   },
 ) as ComponentWithAs<'div', FormCheckboxProps> & { shorthandConfig: ShorthandConfig<FormCheckboxProps> };
 

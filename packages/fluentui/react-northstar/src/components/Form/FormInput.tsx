@@ -3,9 +3,9 @@ import { commonPropTypes } from '../../utils';
 import * as customPropTypes from '@fluentui/react-proptypes';
 
 import FormField, { FormFieldProps, FormFieldStylesProps } from './FormField';
-import Input from '../Input/Input';
+import Input, { InputProps } from '../Input/Input';
 
-interface FormInputOwnProps {}
+interface FormInputOwnProps extends Omit<InputProps, 'styles' | 'accessibility'> {}
 
 export interface FormInputProps extends FormFieldProps, FormInputOwnProps {}
 export type FormInputStylesProps = never;
@@ -18,15 +18,14 @@ const FormInput = compose<'div', FormInputProps, FormInputStylesProps, FormField
     className: FormInputClassName,
     displayName: 'FormInput',
     overrideStyles: true,
+    shorthandConfig: {},
+    mapPropsToSlotProps: _ => ({
+      control: {
+        as: Input,
+      },
+    }),
   },
 ) as ComponentWithAs<'div', FormInputProps> & { shorthandConfig: ShorthandConfig<FormInputProps> };
-
-FormInput.defaultProps = {
-  as: 'div',
-  control: {
-    as: Input,
-  },
-};
 
 FormInput.propTypes = {
   ...commonPropTypes.createCommon({

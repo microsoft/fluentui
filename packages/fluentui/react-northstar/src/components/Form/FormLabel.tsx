@@ -12,7 +12,6 @@ export const FormLabelClassName = 'ui-form-label';
 const FormLabel = compose<'label', FormLabelProps, FormLabelStylesProps, BoxProps, {}>(Box, {
   className: FormLabelClassName,
   displayName: 'FormLabel',
-
   overrideStyles: true,
 }) as ComponentWithAs<'label', FormLabelProps> & { shorthandConfig: ShorthandConfig<FormLabelProps> };
 
