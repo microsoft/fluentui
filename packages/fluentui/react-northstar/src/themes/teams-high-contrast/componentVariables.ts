@@ -1,9 +1,3 @@
-export { default as AttachmentAction } from './components/Attachment/attachmentActionVariables';
-export { default as AttachmentBody } from './components/Attachment/attachmentBodyVariables';
-export { default as AttachmentDescription } from './components/Attachment/attachmentDescriptionVariables';
-export { default as AttachmentHeader } from './components/Attachment/attachmentHeaderVariables';
-export { default as AttachmentIcon } from './components/Attachment/attachmentIconVariables';
-
 export { default as Avatar } from './components/Avatar/avatarVariables';
 export { default as Button } from './components/Button/buttonVariables';
 export { default as Chat } from './components/Chat/chatVariables';
