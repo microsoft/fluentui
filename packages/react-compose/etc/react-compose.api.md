@@ -13,7 +13,7 @@ export type ClassDictionary = Record<string, string>;
 export type ClassFunction = (state: GenericDictionary, slots: GenericDictionary) => ClassDictionary;
 
 // @public
-export type ClassResolver = (state: GenericDictionary, initialClasses?: ClassDictionary) => ClassDictionary;
+export type ClassResolver = (state: GenericDictionary, partialClasses?: ClassDictionary) => ClassDictionary;
 
 // @public (undocumented)
 export interface ComponentWithAs<TElementType extends React.ElementType = 'div', TProps = {}> extends React.FunctionComponent {

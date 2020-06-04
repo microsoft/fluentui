@@ -22,8 +22,8 @@ export const createClassResolver = (classes: ClassDictionary): ClassResolver => 
   // Everything in the function below will happen at runtime, so it's very critical that this
   // code is as minimal as possible.
   // tslint:disable-next-line:no-function-expression
-  return function classResolver(state: GenericDictionary, initialClasses?: ClassDictionary): ClassDictionary {
-    const resolvedClasses: Record<string, string> = initialClasses || {};
+  return function classResolver(state: GenericDictionary, partialClasses?: ClassDictionary): ClassDictionary {
+    const resolvedClasses: Record<string, string> = {};
 
     let modifierClasses = '';
     for (const modifierName of Object.keys(modifiers)) {
@@ -48,6 +48,12 @@ export const createClassResolver = (classes: ClassDictionary): ClassResolver => 
         modifierClasses,
         enumClasses,
       );
+    }
+
+    if (partialClasses) {
+      for (const slotName of Object.keys(partialClasses)) {
+        resolvedClasses[slotName] = appendClasses(partialClasses[slotName], resolvedClasses[slotName]);
+      }
     }
 
     return resolvedClasses as ClassDictionary;
