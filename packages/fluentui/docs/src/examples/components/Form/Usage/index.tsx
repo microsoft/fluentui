@@ -5,9 +5,9 @@ import ExampleSection from '../../../../components/ComponentDoc/ExampleSection';
 const Usage = () => (
   <ExampleSection title="Usage">
     <ComponentExample
-      title="Error Message and Satisfactory Indicator"
-      description="A form can have fields with error message or satisfactory indicator."
-      examplePath="components/Form/Usage/FormExampleErrorAndSatisfactory"
+      title="Error Message and Successful Indicator"
+      description="A form can have fields with error message or successful indicator."
+      examplePath="components/Form/Usage/FormExampleErrorAndSuccessful"
     />
     <ComponentExample
       title="Checkbox"

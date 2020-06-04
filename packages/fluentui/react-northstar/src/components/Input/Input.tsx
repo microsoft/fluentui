@@ -115,7 +115,7 @@ export type InputStylesProps = Required<
   Pick<InputProps, 'fluid' | 'inverted' | 'inline' | 'disabled' | 'clearable' | 'iconPosition' | 'error'> & {
     hasIcon: boolean;
     hasValue: boolean;
-    requiredAndSatisfactory: boolean;
+    requiredAndsuccessful: boolean;
   }
 >;
 
@@ -155,7 +155,7 @@ const Input: React.FC<WithAsProp<InputProps>> & FluentComponentStaticProps<Input
     initialValue: '',
   });
   const hasValue: boolean = !!value && (value as string)?.length !== 0;
-  const requiredAndSatisfactory = required && !!successIndicator && hasValue;
+  const requiredAndsuccessful = required && !!successIndicator && hasValue;
 
   const { styles: resolvedStyles } = useStyles<InputStylesProps>(Input.displayName, {
     className: inputClassName,
@@ -166,7 +166,7 @@ const Input: React.FC<WithAsProp<InputProps>> & FluentComponentStaticProps<Input
       disabled,
       clearable,
       hasIcon: !!icon || !!successIndicator || !!error,
-      requiredAndSatisfactory,
+      requiredAndsuccessful,
       iconPosition,
       hasValue,
       error,
@@ -233,7 +233,7 @@ const Input: React.FC<WithAsProp<InputProps>> & FluentComponentStaticProps<Input
     if (clearable && (value as string)?.length !== 0) {
       return {};
     }
-    if (requiredAndSatisfactory) {
+    if (requiredAndsuccessful) {
       return successIndicator;
     }
     if (error) {
