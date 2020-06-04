@@ -146,6 +146,7 @@ const FormField = compose<'div', FormFieldProps, FormFieldStylesProps, {}, {}>(
           styles: resolvedStyles.label,
           required,
           inline,
+          type,
           ...slotProps.label,
         }),
     });
