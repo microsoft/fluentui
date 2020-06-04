@@ -73,21 +73,23 @@ function createResolvedMap(classes: ClassDictionary): ResolvedMap {
     const classValue = classes[key];
 
     if (classValue) {
-      // If the class is named the same as a slot, add it to the slot.
-      if (key.charAt(0) === '_') {
-        // strip off the underscore.
-        const modifiedKey = key.substr(1);
-        modifiers[modifiedKey] = classValue;
-      } else if (key.indexOf('_') >= 0) {
-        // The class is an enum value. Add if the prop exists and matches.
-        const parts = key.split('_');
-        const enumName = parts[0];
-        const enumValue = parts[1];
+      const classParts = key.split('_');
 
-        const enumValues = (enums[enumName] = enums[enumName] || {});
-        enumValues[enumValue] = classValue;
-      } else {
-        slots[key] = classValue;
+      // If the class is named the same as a slot, add it to the slot.
+      switch (classParts.length) {
+        case 2: // modifier
+          modifiers[classParts[1]] = classValue;
+          break;
+
+        case 3: // enum (_enumName_enumValue)
+          const enumName = classParts[1];
+          const enumValue = classParts[2];
+          const enumValues = (enums[enumName] = enums[enumName] || {});
+
+          enumValues[enumValue] = classValue;
+          break;
+        default:
+          slots[key] = classValue;
       }
     }
   });
