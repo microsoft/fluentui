@@ -52,6 +52,7 @@ describe('BasePicker', () => {
 
   afterEach(() => {
     ReactDOM.unmountComponentAtNode(root);
+    document.body.textContent = '';
   });
   const BasePickerWithType = BasePicker as new (props: IBasePickerProps<ISimple>) => BasePicker<
     ISimple,
@@ -327,5 +328,184 @@ describe('BasePicker', () => {
 
     const currentPicker = picker.current!.items;
     expect(currentPicker).toHaveLength(0);
+  });
+
+  it('Closes menu when escape is pressed', () => {
+    jest.useFakeTimers();
+    document.body.appendChild(root);
+
+    const picker = React.createRef<IBasePicker<ISimple>>();
+
+    ReactDOM.render(
+      <BasePickerWithType
+        onResolveSuggestions={onResolveSuggestions}
+        onRenderItem={onRenderItem}
+        onRenderSuggestionsItem={basicSuggestionRenderer}
+        componentRef={picker}
+      />,
+      root,
+    );
+
+    const input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
+    input.focus();
+    input.value = 'asdff';
+    ReactTestUtils.Simulate.input(input);
+    jest.runAllTimers();
+
+    const suggestions = document.querySelector('.ms-Suggestions') as HTMLElement;
+    expect(suggestions).toBeTruthy();
+
+    ReactTestUtils.Simulate.keyDown(input, { which: 27 });
+    const againSugs = document.querySelector('.ms-Suggestions') as HTMLElement;
+
+    expect(againSugs).toBeFalsy();
+  });
+
+  it('Opens menu on click when suggestions has been dismissed', () => {
+    jest.useFakeTimers();
+    document.body.appendChild(root);
+
+    const picker = React.createRef<IBasePicker<ISimple>>();
+
+    ReactDOM.render(
+      <BasePickerWithType
+        onResolveSuggestions={onResolveSuggestions}
+        onRenderItem={onRenderItem}
+        onRenderSuggestionsItem={basicSuggestionRenderer}
+        componentRef={picker}
+      />,
+      root,
+    );
+
+    const input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
+    input.focus();
+    input.value = 'asdff';
+    ReactTestUtils.Simulate.input(input);
+    jest.runAllTimers();
+
+    const suggestions = document.querySelector('.ms-Suggestions') as HTMLElement;
+    expect(suggestions).toBeTruthy();
+
+    ReactTestUtils.Simulate.keyDown(input, { which: 27 });
+    const againSugs = document.querySelector('.ms-Suggestions') as HTMLElement;
+
+    expect(againSugs).toBeFalsy();
+    ReactTestUtils.Simulate.click(input, { button: 0 });
+
+    jest.runAllTimers();
+
+    const getAgain = document.querySelector('.ms-Suggestions') as HTMLElement;
+    expect(getAgain).toBeTruthy();
+  });
+
+  it('Opens menu on click when suggestions has been dismissed', () => {
+    jest.useFakeTimers();
+    document.body.appendChild(root);
+
+    const picker = React.createRef<IBasePicker<ISimple>>();
+
+    ReactDOM.render(
+      <BasePickerWithType
+        onResolveSuggestions={onResolveSuggestions}
+        onRenderItem={onRenderItem}
+        onRenderSuggestionsItem={basicSuggestionRenderer}
+        componentRef={picker}
+      />,
+      root,
+    );
+
+    const input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
+    input.focus();
+    input.value = 'asdff';
+    ReactTestUtils.Simulate.input(input);
+    jest.runAllTimers();
+
+    const suggestions = document.querySelector('.ms-Suggestions') as HTMLElement;
+    expect(suggestions).toBeTruthy();
+
+    ReactTestUtils.Simulate.keyDown(input, { which: 27 });
+    const againSugs = document.querySelector('.ms-Suggestions') as HTMLElement;
+
+    expect(againSugs).toBeFalsy();
+    ReactTestUtils.Simulate.click(input, { button: 0 });
+
+    jest.runAllTimers();
+
+    const getAgain = document.querySelector('.ms-Suggestions') as HTMLElement;
+    expect(getAgain).toBeTruthy();
+  });
+
+  it('Opens menu when input refocused after search has happened', () => {
+    jest.useFakeTimers();
+    document.body.appendChild(root);
+
+    const picker = React.createRef<IBasePicker<ISimple>>();
+
+    ReactDOM.render(
+      <div>
+        <BasePickerWithType
+          onResolveSuggestions={onResolveSuggestions}
+          onRenderItem={onRenderItem}
+          onRenderSuggestionsItem={basicSuggestionRenderer}
+          componentRef={picker}
+        />
+        <button id="toFocus">focus me</button>
+      </div>,
+      root,
+    );
+
+    const input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
+    input.focus();
+    input.value = 'bl';
+    ReactTestUtils.Simulate.input(input);
+    jest.runAllTimers();
+
+    const suggestions = document.querySelector('.ms-Suggestions') as HTMLElement;
+    expect(suggestions).toBeTruthy();
+
+    (document.querySelector('#toFocus') as any).focus();
+
+    // Implicit test to ensure suggestions are dismissed when focus lost
+    const dismissedSugs = document.querySelector('.ms-Suggestions') as HTMLElement;
+    expect(dismissedSugs).toBeFalsy();
+
+    jest.runAllTimers();
+    input.focus();
+    jest.runAllTimers();
+
+    const getAgain = document.querySelector('.ms-Suggestions') as HTMLElement;
+    expect(getAgain).toBeTruthy();
+  });
+
+  it('Opens calls onResolveSuggestions if it currently doesnt have suggestions', () => {
+    jest.useFakeTimers();
+    document.body.appendChild(root);
+
+    let count = 0;
+    const resolveCounter = (val: string) => {
+      count++;
+      return onResolveSuggestions(val);
+    };
+    const picker = React.createRef<IBasePicker<ISimple>>();
+
+    ReactDOM.render(
+      <BasePickerWithType
+        onResolveSuggestions={resolveCounter}
+        onRenderItem={onRenderItem}
+        onRenderSuggestionsItem={basicSuggestionRenderer}
+        componentRef={picker}
+        inputProps={{ defaultVisibleValue: 'bl' }}
+      />,
+      root,
+    );
+
+    const input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
+    input.focus();
+    jest.runAllTimers();
+
+    expect(count).toEqual(1);
+
+    const suggestions = document.querySelector('.ms-Suggestions') as HTMLElement;
+    expect(suggestions).toBeTruthy();
   });
 });
