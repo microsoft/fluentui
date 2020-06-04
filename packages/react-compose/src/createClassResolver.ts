@@ -77,7 +77,7 @@ function createResolvedMap(classes: ClassDictionary): ResolvedMap {
 
       // If the class is named the same as a slot, add it to the slot.
       switch (classParts.length) {
-        case 2: // modifier
+        case 2: // modifier (_modifierName)
           modifiers[classParts[1]] = classValue;
           break;
 
@@ -88,7 +88,9 @@ function createResolvedMap(classes: ClassDictionary): ResolvedMap {
 
           enumValues[enumValue] = classValue;
           break;
+
         default:
+          // slot (root)
           slots[key] = classValue;
       }
     }
