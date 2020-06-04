@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { ButtonProps } from './Button.types';
-import { compose } from '@fluentui/react-compose';
+import { compose, ComposePreparedOptions } from '@fluentui/react-compose';
 import { useButton } from './useButton';
 
 export const ButtonBase = compose<'button', ButtonProps, ButtonProps, {}, {}>(
-  (props, ref, composeOptions) => {
+  (props: ButtonProps, ref: React.Ref<HTMLElement>, composeOptions: ComposePreparedOptions<ButtonProps>) => {
     const { slots, slotProps } = useButton(props, composeOptions);
 
     return (
@@ -23,6 +23,22 @@ export const ButtonBase = compose<'button', ButtonProps, ButtonProps, {}, {}>(
       loader: 'span',
     },
     displayName: 'ButtonBase',
+
+    handledProps: [
+      'circular',
+      'content',
+      'disabled',
+      'fluid',
+      'iconOnly',
+      'iconPosition',
+      'inverted',
+      'loader',
+      'loading',
+      'primary',
+      'secondary',
+      'size',
+      'text',
+    ],
   },
 );
 
