@@ -1,4 +1,5 @@
 import { GenericDictionary, ClassDictionary } from './types';
+import { appendClasses } from './appendClasses';
 
 /**
  * `createClassResolver` is a factory function which creates a state to classmap resolver for
@@ -22,55 +23,35 @@ export const createClassResolver = (classes: ClassDictionary) => {
   // code is as minimal as possible.
   // tslint:disable-next-line:no-function-expression
   return function classResolver(state: GenericDictionary): ClassDictionary {
-    const resolvedClasses: Record<string, string | string[]> = {};
+    const resolvedClasses: Record<string, string> = {};
 
-    const modifierClasses = [];
+    let modifierClasses = '';
     for (const modifierName of Object.keys(modifiers)) {
-      if (!!state[modifierName]) {
-        modifierClasses.push(modifiers[modifierName]);
+      if (state[modifierName]) {
+        modifierClasses = appendClasses(modifierClasses, modifiers[modifierName]);
       }
     }
 
-    const enumClasses = [];
+    let enumClasses = '';
     for (const enumName of Object.keys(enums)) {
-      const enumValueClasses = enums[enumName];
-      if (enumValueClasses[state[enumName]]) {
-        enumClasses.push(enumValueClasses[state[enumName]]);
+      const enumValues = enums[enumName];
+      // if we have a class which matches the enumName and current state value, add it.
+      if (enumValues[state[enumName]]) {
+        enumClasses = appendClasses(enumClasses, enumValues[state[enumName]]);
       }
     }
 
     for (const slotName of Object.keys(slots)) {
-      resolvedClasses[slotName] = [
-        slotName === 'root' && state.className ? state.className : '',
-        slots[slotName] || '',
-        ...modifierClasses,
-        ...enumClasses,
-      ]
-        .filter(Boolean)
-        .join(' ');
+      resolvedClasses[slotName] = appendClasses(slots[slotName], modifierClasses, enumClasses);
     }
-
     return resolvedClasses as ClassDictionary;
   };
 };
 
-/**
- * Helper function to update slot arrays within a class map.
- */
-function addClassTo(slotProps: GenericDictionary, slotName: string, className?: string | false) {
-  if (className) {
-    if (!slotProps[slotName]) {
-      slotProps[slotName] = [className];
-    } else {
-      slotProps[slotName].push(className);
-    }
-  }
-}
-
 type ResolvedMap = {
-  slots: Record<string, string | string[]>;
-  modifiers: Record<string, string | string[]>;
-  enums: Record<string, Record<string, string | string[]>>;
+  slots: Record<string, string>;
+  modifiers: Record<string, string>;
+  enums: Record<string, Record<string, string>>;
 };
 
 /**
@@ -94,31 +75,22 @@ function createResolvedMap(classes: ClassDictionary): ResolvedMap {
     if (classValue) {
       // If the class is named the same as a slot, add it to the slot.
       if (key.charAt(0) === '_') {
-        addClassTo(modifiers, key.substr(1), classValue);
+        // strip off the underscore.
+        const modifiedKey = key.substr(1);
+        modifiers[modifiedKey] = classValue;
       } else if (key.indexOf('_') >= 0) {
         // The class is an enum value. Add if the prop exists and matches.
         const parts = key.split('_');
         const enumName = parts[0];
         const enumValue = parts[1];
 
-        enums[enumName] = enums[enumName] || {};
-        addClassTo(enums[enumName], enumValue, classValue);
+        const enumValues = (enums[enumName] = enums[enumName] || {});
+        enumValues[enumValue] = classValue;
       } else {
-        addClassTo(slots, key, classValue);
+        slots[key] = classValue;
       }
     }
   });
 
-  // Reduce map to strings
-  collapseArray(slots);
-  collapseArray(modifiers);
-  Object.keys(enums).forEach(enumPropName => collapseArray(enums[enumPropName]));
-
   return resolvedMap;
-}
-
-function collapseArray(obj: Record<string, string | string[]>) {
-  Object.keys(obj).forEach(propName => {
-    obj[propName] = (obj[propName] as string[]).join(' ');
-  });
 }

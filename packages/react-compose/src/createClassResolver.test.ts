@@ -43,10 +43,10 @@ describe('createClassResolver', () => {
     });
   });
 
-  it('can resolve mixed content, including a className in props', () => {
+  it('can resolve mixed content', () => {
     // Can resolve
-    expect(classResolver({ className: 'foo', primary: true, size: 'medium' })).toEqual({
-      root: 'foo root primary medium',
+    expect(classResolver({ primary: true, size: 'medium' })).toEqual({
+      root: 'root primary medium',
       slot1: 'slot1 primary medium',
       slot2: 'slot2 primary medium',
     });

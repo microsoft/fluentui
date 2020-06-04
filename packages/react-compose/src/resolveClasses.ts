@@ -1,5 +1,6 @@
 import { ComposePreparedOptions, ClassDictionary, GenericDictionary } from './types';
 import { MergePropsResult } from './mergeProps';
+import { appendClasses } from './appendClasses';
 
 /**
  * Helper utility which takes in a classes array from compose options, resolves functions,
@@ -32,10 +33,13 @@ export function resolveClasses<TState>(
   return result;
 }
 
-function appendToSlotClassName(slotProps: Record<string, GenericDictionary>, slotName: string, className: string) {
+export function appendToSlotClassName(
+  slotProps: Record<string, GenericDictionary>,
+  slotName: string,
+  className: string,
+) {
   if (className) {
     const slot = (slotProps[slotName] = slotProps[slotName] || {});
-
-    slot.className = (slot.className ? `${slot.className} ` : '') + className;
+    slot.className = appendClasses(slot.className, className);
   }
 }
