@@ -48,30 +48,6 @@ export interface IPivotProps extends React.HTMLAttributes<HTMLDivElement> {
   defaultSelectedKey?: string;
 
   /**
-   * Default selected index for the pivot. Only provide this if the pivot is an uncontrolled component;
-   * otherwise, use the `selectedKey` property.
-   *
-   * This property is also mutually exclusive with `defaultSelectedKey`.
-   */
-  defaultSelectedIndex?: number;
-
-  /**
-   * Index of the pivot item initially selected. Mutually exclusive with `initialSelectedKey`.
-   * Only provide this if the pivot is an uncontrolled component; otherwise, use `selectedKey`.
-   *
-   * @deprecated Use `defaultSelectedIndex`
-   */
-  initialSelectedIndex?: number;
-
-  /**
-   * Key of the pivot item initially selected. Mutually exclusive with `initialSelectedIndex`.
-   * Only provide this if the pivot is an uncontrolled component; otherwise, use `selectedKey`.
-   *
-   * @deprecated Use `defaultSelectedKey`
-   */
-  initialSelectedKey?: string;
-
-  /**
    * Key of the selected pivot item. Updating this will override the Pivot's selected item state.
    * Only provide this if the pivot is a controlled component where you are maintaining the
    * current state; otherwise, use `defaultSelectedKey`.

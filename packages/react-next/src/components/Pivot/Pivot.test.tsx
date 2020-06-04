@@ -48,7 +48,7 @@ describe('Pivot', () => {
 
   it('supports JSX expressions', () => {
     const component = renderer.create(
-      <Pivot defaultSelectedIndex={1}>
+      <Pivot defaultSelectedKey={'1'}>
         <PivotItem headerText="Test Link 1">
           <div>This is item 1</div>
         </PivotItem>
