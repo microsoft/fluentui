@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Fixing issue: y-axis values getting truncated",
+  "packageName": "@uifabric/charting",
+  "email": "t-tujape@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-06-04T16:05:25.793Z"
+}
