@@ -19,10 +19,15 @@ export interface InputVariables {
   inputFocusBorderColor: string;
   inputFocusBorderRadius: string;
   placeholderColor: string;
+  successfulColor: string;
+  borderColorError: string;
+  colorError: string;
 }
 
 export default (siteVars): InputVariables => ({
   colorDisabled: siteVars.colorScheme.brand.foregroundDisabled,
+  colorError: siteVars.colorScheme.red.foreground,
+  borderColorError: siteVars.colorScheme.red.background,
   iconPosition: 'absolute',
   iconRight: pxToRem(10),
   iconLeft: pxToRem(6),
@@ -41,6 +46,7 @@ export default (siteVars): InputVariables => ({
   fontSize: siteVars.fontSizes.medium,
 
   iconColor: siteVars.colorScheme.default.foreground,
+  successfulColor: siteVars.colorScheme.green.foreground,
   inputFocusBorderColor: `transparent transparent ${siteVars.colorScheme.brand.borderFocus1} transparent`,
   inputFocusBorderRadius: `${pxToRem(3)} ${pxToRem(3)} ${pxToRem(2)} ${pxToRem(2)}`,
   placeholderColor: siteVars.colorScheme.default.foreground1,

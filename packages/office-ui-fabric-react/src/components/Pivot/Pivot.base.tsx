@@ -180,8 +180,8 @@ export class PivotBase extends React.Component<IPivotProps, IPivotState> {
         key={itemKey}
         className={isSelected ? this._classNames.linkIsSelected : this._classNames.link}
         onClick={this._onLinkClick.bind(this, itemKey)}
-        onKeyPress={this._onKeyPress.bind(this, itemKey)}
-        ariaLabel={link.ariaLabel}
+        onKeyDown={this._onKeyDown.bind(this, itemKey)}
+        aria-label={link.ariaLabel}
         role="tab"
         aria-selected={isSelected}
         name={link.headerText}
@@ -299,9 +299,9 @@ export class PivotBase extends React.Component<IPivotProps, IPivotState> {
   }
 
   /**
-   * Handle the onKeyPress event on the PivotLinks
+   * Handle the onKeyDown event on the PivotLinks
    */
-  private _onKeyPress(itemKey: string, ev: React.KeyboardEvent<HTMLElement>): void {
+  private _onKeyDown(itemKey: string, ev: React.KeyboardEvent<HTMLElement>): void {
     if (ev.which === KeyCodes.enter) {
       ev.preventDefault();
       this._updateSelectedItem(itemKey);

@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Adding `mergeProps` helper to package, to help resolving slots and slotProps given state and compose options. This decouples the props processing from compose, and adds more robustness by resolving slotProps, mixing native props into root, handling `as`, shorthand props, and merging classes.",
-  "packageName": "@fluentui/react-compose",
-  "email": "dzearing@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-05-27T19:54:51.158Z"
-}
