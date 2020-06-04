@@ -144,6 +144,9 @@ const FormField = compose<'div', FormFieldProps, FormFieldStylesProps, {}, {}>(
           htmlFor: id,
           id: labelId.current,
           styles: resolvedStyles.label,
+          required,
+          inline,
+          ...slotProps.label,
         }),
     });
 
@@ -153,6 +156,7 @@ const FormField = compose<'div', FormFieldProps, FormFieldStylesProps, {}, {}>(
           className: formFieldMessageClassName,
           id: messageId.current,
           styles: resolvedStyles.message,
+          ...slotProps.message,
         }),
     });
 

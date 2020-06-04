@@ -29,6 +29,7 @@ import FormMessage from './FormMessage';
 import FormInput from './FormInput';
 import FormCheckbox from './FormCheckbox';
 import FormDropdown from './FormDropdown';
+import FormButton from './FormButton';
 
 export interface FormProps extends UIComponentProps, ChildrenComponentProps {
   /**
@@ -62,6 +63,7 @@ const Form: React.FC<WithAsProp<FormProps>> &
     Input: typeof FormInput;
     Checkbox: typeof FormCheckbox;
     Dropdown: typeof FormDropdown;
+    Button: typeof FormButton;
   } = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(Form.displayName, context.telemetry);
@@ -144,6 +146,7 @@ Form.Message = FormMessage;
 Form.Input = FormInput;
 Form.Checkbox = FormCheckbox;
 Form.Dropdown = FormDropdown;
+Form.Button = FormButton;
 
 /**
  * A Form is used to collect, oprionally validate, and submit the user input, in a structured way.
