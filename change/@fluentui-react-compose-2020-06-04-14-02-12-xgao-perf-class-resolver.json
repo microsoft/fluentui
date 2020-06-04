@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "support partialclasses in resolver",
+  "packageName": "@fluentui/react-compose",
+  "email": "xgao@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-06-04T21:02:12.464Z"
+}
