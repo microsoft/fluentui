@@ -1,0 +1,38 @@
+import { compose, ComponentWithAs, ShorthandConfig } from '@fluentui/react-bindings';
+import { commonPropTypes } from '../../utils';
+import * as customPropTypes from '@fluentui/react-proptypes';
+
+import FormField, { FormFieldProps, FormFieldStylesProps } from './FormField';
+import Input from '../Input/Input';
+
+interface FormInputOwnProps {}
+
+export interface FormInputProps extends FormFieldProps, FormInputOwnProps {}
+export type FormInputStylesProps = never;
+
+export const FormInputClassName = 'ui-form-input';
+
+const FormInput = compose<'div', FormInputProps, FormInputStylesProps, FormFieldProps, FormFieldStylesProps>(
+  FormField,
+  {
+    className: FormInputClassName,
+    displayName: 'FormInput',
+    overrideStyles: true,
+  },
+) as ComponentWithAs<'div', FormInputProps> & { shorthandConfig: ShorthandConfig<FormInputProps> };
+
+FormInput.defaultProps = {
+  as: 'div',
+  control: {
+    as: Input,
+  },
+};
+
+FormInput.propTypes = {
+  ...commonPropTypes.createCommon({
+    content: 'shorthand',
+  }),
+  control: customPropTypes.shorthandAllowingChildren,
+};
+
+export default FormInput;
