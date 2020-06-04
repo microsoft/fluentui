@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "removing more references to wrong filetype icons from a deprecated folder",
-  "packageName": "@uifabric/pr-deploy-site",
-  "email": "caperez@microsoft.com",
-  "commit": "0f6deac5848224a8fdb827e57894d0f2e8286c3a",
-  "dependentChangeType": "patch",
-  "date": "2020-04-06T17:28:16.352Z"
-}

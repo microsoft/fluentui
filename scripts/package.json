@@ -65,7 +65,7 @@
     "babel-jest": "^24.5.0",
     "babel-loader": "^8.0.6",
     "babel-plugin-lodash": "^3.3.4",
-    "beachball": "^1.29.4",
+    "beachball": "^1.31.2",
     "chalk": "^2.1.0",
     "circular-dependency-plugin": "^5.0.2",
     "clean-webpack-plugin": "^0.1.19",
