@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { classNamesFunction, warnMutuallyExclusive } from '../../Utilities';
-import { Icon } from '../../Icon';
+import { CheckMarkIcon } from '@fluentui/react-icons';
 import { ICheckboxProps, ICheckboxStyleProps, ICheckboxStyles } from './Checkbox.types';
 import { useId, useControllableValue, useMergedRefs } from '@uifabric/react-hooks';
 import { useFocusRects } from 'office-ui-fabric-react';
@@ -95,7 +95,7 @@ export const CheckboxBase = React.forwardRef((props: ICheckboxProps, forwardedRe
       />
       <label className={classNames.label} htmlFor={id}>
         <div className={classNames.checkbox}>
-          <Icon iconName="CheckMark" {...checkmarkIconProps} className={classNames.checkmark} />
+          <CheckMarkIcon {...checkmarkIconProps} className={classNames.checkmark} />
         </div>
         {(props.onRenderLabel || onRenderLabel)(props, onRenderLabel)}
       </label>

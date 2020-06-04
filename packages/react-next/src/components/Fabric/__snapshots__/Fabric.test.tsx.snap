@@ -69,23 +69,30 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
         <div
           className="ms-Checkbox-checkbox"
         >
-          <i
+          <span
             aria-hidden={true}
             className=
                 ms-Checkbox-checkmark
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  display: inline-block;
-                  font-family: "FabricMDL2Icons";
-                  font-style: normal;
-                  font-weight: normal;
-                  speak: none;
-                }
-            data-icon-name="CheckMark"
+
+            role="presentation"
+            style={Object {}}
           >
-            
-          </i>
+            <svg
+              className=
+
+                  {
+                    fill: currentColor;
+                    height: 100%;
+                    width: 100%;
+                  }
+              viewBox="0 0 2048 2048"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1837 557L768 1627l-557-558 90-90 467 466 979-978 90 90z"
+              />
+            </svg>
+          </span>
         </div>
         <span
           aria-hidden="true"
@@ -136,23 +143,30 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
           <div
             className="ms-Checkbox-checkbox"
           >
-            <i
+            <span
               aria-hidden={true}
               className=
                   ms-Checkbox-checkmark
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    display: inline-block;
-                    font-family: "FabricMDL2Icons";
-                    font-style: normal;
-                    font-weight: normal;
-                    speak: none;
-                  }
-              data-icon-name="CheckMark"
+
+              role="presentation"
+              style={Object {}}
             >
-              
-            </i>
+              <svg
+                className=
+
+                    {
+                      fill: currentColor;
+                      height: 100%;
+                      width: 100%;
+                    }
+                viewBox="0 0 2048 2048"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1837 557L768 1627l-557-558 90-90 467 466 979-978 90 90z"
+                />
+              </svg>
+            </span>
           </div>
           <span
             aria-hidden="true"
@@ -203,23 +217,30 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
             <div
               className="ms-Checkbox-checkbox"
             >
-              <i
+              <span
                 aria-hidden={true}
                 className=
                     ms-Checkbox-checkmark
-                    {
-                      -moz-osx-font-smoothing: grayscale;
-                      -webkit-font-smoothing: antialiased;
-                      display: inline-block;
-                      font-family: "FabricMDL2Icons";
-                      font-style: normal;
-                      font-weight: normal;
-                      speak: none;
-                    }
-                data-icon-name="CheckMark"
+
+                role="presentation"
+                style={Object {}}
               >
-                
-              </i>
+                <svg
+                  className=
+
+                      {
+                        fill: currentColor;
+                        height: 100%;
+                        width: 100%;
+                      }
+                  viewBox="0 0 2048 2048"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M1837 557L768 1627l-557-558 90-90 467 466 979-978 90 90z"
+                  />
+                </svg>
+              </span>
             </div>
             <span
               aria-hidden="true"
@@ -273,23 +294,30 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
         <div
           className="ms-Checkbox-checkbox"
         >
-          <i
+          <span
             aria-hidden={true}
             className=
                 ms-Checkbox-checkmark
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  display: inline-block;
-                  font-family: "FabricMDL2Icons";
-                  font-style: normal;
-                  font-weight: normal;
-                  speak: none;
-                }
-            data-icon-name="CheckMark"
+
+            role="presentation"
+            style={Object {}}
           >
-            
-          </i>
+            <svg
+              className=
+
+                  {
+                    fill: currentColor;
+                    height: 100%;
+                    width: 100%;
+                  }
+              viewBox="0 0 2048 2048"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1837 557L768 1627l-557-558 90-90 467 466 979-978 90 90z"
+              />
+            </svg>
+          </span>
         </div>
         <span
           aria-hidden="true"
@@ -340,23 +368,30 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
           <div
             className="ms-Checkbox-checkbox"
           >
-            <i
+            <span
               aria-hidden={true}
               className=
                   ms-Checkbox-checkmark
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    display: inline-block;
-                    font-family: "FabricMDL2Icons";
-                    font-style: normal;
-                    font-weight: normal;
-                    speak: none;
-                  }
-              data-icon-name="CheckMark"
+
+              role="presentation"
+              style={Object {}}
             >
-              
-            </i>
+              <svg
+                className=
+
+                    {
+                      fill: currentColor;
+                      height: 100%;
+                      width: 100%;
+                    }
+                viewBox="0 0 2048 2048"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1837 557L768 1627l-557-558 90-90 467 466 979-978 90 90z"
+                />
+              </svg>
+            </span>
           </div>
           <span
             aria-hidden="true"
@@ -407,23 +442,30 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
             <div
               className="ms-Checkbox-checkbox"
             >
-              <i
+              <span
                 aria-hidden={true}
                 className=
                     ms-Checkbox-checkmark
-                    {
-                      -moz-osx-font-smoothing: grayscale;
-                      -webkit-font-smoothing: antialiased;
-                      display: inline-block;
-                      font-family: "FabricMDL2Icons";
-                      font-style: normal;
-                      font-weight: normal;
-                      speak: none;
-                    }
-                data-icon-name="CheckMark"
+
+                role="presentation"
+                style={Object {}}
               >
-                
-              </i>
+                <svg
+                  className=
+
+                      {
+                        fill: currentColor;
+                        height: 100%;
+                        width: 100%;
+                      }
+                  viewBox="0 0 2048 2048"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M1837 557L768 1627l-557-558 90-90 467 466 979-978 90 90z"
+                  />
+                </svg>
+              </span>
             </div>
             <span
               aria-hidden="true"
@@ -482,23 +524,30 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
         <div
           className="ms-Checkbox-checkbox"
         >
-          <i
+          <span
             aria-hidden={true}
             className=
                 ms-Checkbox-checkmark
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  display: inline-block;
-                  font-family: "FabricMDL2Icons";
-                  font-style: normal;
-                  font-weight: normal;
-                  speak: none;
-                }
-            data-icon-name="CheckMark"
+
+            role="presentation"
+            style={Object {}}
           >
-            
-          </i>
+            <svg
+              className=
+
+                  {
+                    fill: currentColor;
+                    height: 100%;
+                    width: 100%;
+                  }
+              viewBox="0 0 2048 2048"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1837 557L768 1627l-557-558 90-90 467 466 979-978 90 90z"
+              />
+            </svg>
+          </span>
         </div>
         <span
           aria-hidden="true"
@@ -549,23 +598,30 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
           <div
             className="ms-Checkbox-checkbox"
           >
-            <i
+            <span
               aria-hidden={true}
               className=
                   ms-Checkbox-checkmark
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    display: inline-block;
-                    font-family: "FabricMDL2Icons";
-                    font-style: normal;
-                    font-weight: normal;
-                    speak: none;
-                  }
-              data-icon-name="CheckMark"
+
+              role="presentation"
+              style={Object {}}
             >
-              
-            </i>
+              <svg
+                className=
+
+                    {
+                      fill: currentColor;
+                      height: 100%;
+                      width: 100%;
+                    }
+                viewBox="0 0 2048 2048"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1837 557L768 1627l-557-558 90-90 467 466 979-978 90 90z"
+                />
+              </svg>
+            </span>
           </div>
           <span
             aria-hidden="true"
@@ -616,23 +672,30 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
             <div
               className="ms-Checkbox-checkbox"
             >
-              <i
+              <span
                 aria-hidden={true}
                 className=
                     ms-Checkbox-checkmark
-                    {
-                      -moz-osx-font-smoothing: grayscale;
-                      -webkit-font-smoothing: antialiased;
-                      display: inline-block;
-                      font-family: "FabricMDL2Icons";
-                      font-style: normal;
-                      font-weight: normal;
-                      speak: none;
-                    }
-                data-icon-name="CheckMark"
+
+                role="presentation"
+                style={Object {}}
               >
-                
-              </i>
+                <svg
+                  className=
+
+                      {
+                        fill: currentColor;
+                        height: 100%;
+                        width: 100%;
+                      }
+                  viewBox="0 0 2048 2048"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M1837 557L768 1627l-557-558 90-90 467 466 979-978 90 90z"
+                  />
+                </svg>
+              </span>
             </div>
             <span
               aria-hidden="true"
@@ -686,23 +749,30 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
         <div
           className="ms-Checkbox-checkbox"
         >
-          <i
+          <span
             aria-hidden={true}
             className=
                 ms-Checkbox-checkmark
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  display: inline-block;
-                  font-family: "FabricMDL2Icons";
-                  font-style: normal;
-                  font-weight: normal;
-                  speak: none;
-                }
-            data-icon-name="CheckMark"
+
+            role="presentation"
+            style={Object {}}
           >
-            
-          </i>
+            <svg
+              className=
+
+                  {
+                    fill: currentColor;
+                    height: 100%;
+                    width: 100%;
+                  }
+              viewBox="0 0 2048 2048"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1837 557L768 1627l-557-558 90-90 467 466 979-978 90 90z"
+              />
+            </svg>
+          </span>
         </div>
         <span
           aria-hidden="true"
@@ -753,23 +823,30 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
           <div
             className="ms-Checkbox-checkbox"
           >
-            <i
+            <span
               aria-hidden={true}
               className=
                   ms-Checkbox-checkmark
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    display: inline-block;
-                    font-family: "FabricMDL2Icons";
-                    font-style: normal;
-                    font-weight: normal;
-                    speak: none;
-                  }
-              data-icon-name="CheckMark"
+
+              role="presentation"
+              style={Object {}}
             >
-              
-            </i>
+              <svg
+                className=
+
+                    {
+                      fill: currentColor;
+                      height: 100%;
+                      width: 100%;
+                    }
+                viewBox="0 0 2048 2048"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1837 557L768 1627l-557-558 90-90 467 466 979-978 90 90z"
+                />
+              </svg>
+            </span>
           </div>
           <span
             aria-hidden="true"
@@ -820,23 +897,30 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
             <div
               className="ms-Checkbox-checkbox"
             >
-              <i
+              <span
                 aria-hidden={true}
                 className=
                     ms-Checkbox-checkmark
-                    {
-                      -moz-osx-font-smoothing: grayscale;
-                      -webkit-font-smoothing: antialiased;
-                      display: inline-block;
-                      font-family: "FabricMDL2Icons";
-                      font-style: normal;
-                      font-weight: normal;
-                      speak: none;
-                    }
-                data-icon-name="CheckMark"
+
+                role="presentation"
+                style={Object {}}
               >
-                
-              </i>
+                <svg
+                  className=
+
+                      {
+                        fill: currentColor;
+                        height: 100%;
+                        width: 100%;
+                      }
+                  viewBox="0 0 2048 2048"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M1837 557L768 1627l-557-558 90-90 467 466 979-978 90 90z"
+                  />
+                </svg>
+              </span>
             </div>
             <span
               aria-hidden="true"
@@ -895,23 +979,30 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
         <div
           className="ms-Checkbox-checkbox"
         >
-          <i
+          <span
             aria-hidden={true}
             className=
                 ms-Checkbox-checkmark
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  display: inline-block;
-                  font-family: "FabricMDL2Icons";
-                  font-style: normal;
-                  font-weight: normal;
-                  speak: none;
-                }
-            data-icon-name="CheckMark"
+
+            role="presentation"
+            style={Object {}}
           >
-            
-          </i>
+            <svg
+              className=
+
+                  {
+                    fill: currentColor;
+                    height: 100%;
+                    width: 100%;
+                  }
+              viewBox="0 0 2048 2048"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1837 557L768 1627l-557-558 90-90 467 466 979-978 90 90z"
+              />
+            </svg>
+          </span>
         </div>
         <span
           aria-hidden="true"
@@ -962,23 +1053,30 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
           <div
             className="ms-Checkbox-checkbox"
           >
-            <i
+            <span
               aria-hidden={true}
               className=
                   ms-Checkbox-checkmark
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    display: inline-block;
-                    font-family: "FabricMDL2Icons";
-                    font-style: normal;
-                    font-weight: normal;
-                    speak: none;
-                  }
-              data-icon-name="CheckMark"
+
+              role="presentation"
+              style={Object {}}
             >
-              
-            </i>
+              <svg
+                className=
+
+                    {
+                      fill: currentColor;
+                      height: 100%;
+                      width: 100%;
+                    }
+                viewBox="0 0 2048 2048"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1837 557L768 1627l-557-558 90-90 467 466 979-978 90 90z"
+                />
+              </svg>
+            </span>
           </div>
           <span
             aria-hidden="true"
@@ -1029,23 +1127,30 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
             <div
               className="ms-Checkbox-checkbox"
             >
-              <i
+              <span
                 aria-hidden={true}
                 className=
                     ms-Checkbox-checkmark
-                    {
-                      -moz-osx-font-smoothing: grayscale;
-                      -webkit-font-smoothing: antialiased;
-                      display: inline-block;
-                      font-family: "FabricMDL2Icons";
-                      font-style: normal;
-                      font-weight: normal;
-                      speak: none;
-                    }
-                data-icon-name="CheckMark"
+
+                role="presentation"
+                style={Object {}}
               >
-                
-              </i>
+                <svg
+                  className=
+
+                      {
+                        fill: currentColor;
+                        height: 100%;
+                        width: 100%;
+                      }
+                  viewBox="0 0 2048 2048"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M1837 557L768 1627l-557-558 90-90 467 466 979-978 90 90z"
+                  />
+                </svg>
+              </span>
             </div>
             <span
               aria-hidden="true"
@@ -1099,23 +1204,30 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
         <div
           className="ms-Checkbox-checkbox"
         >
-          <i
+          <span
             aria-hidden={true}
             className=
                 ms-Checkbox-checkmark
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  display: inline-block;
-                  font-family: "FabricMDL2Icons";
-                  font-style: normal;
-                  font-weight: normal;
-                  speak: none;
-                }
-            data-icon-name="CheckMark"
+
+            role="presentation"
+            style={Object {}}
           >
-            
-          </i>
+            <svg
+              className=
+
+                  {
+                    fill: currentColor;
+                    height: 100%;
+                    width: 100%;
+                  }
+              viewBox="0 0 2048 2048"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1837 557L768 1627l-557-558 90-90 467 466 979-978 90 90z"
+              />
+            </svg>
+          </span>
         </div>
         <span
           aria-hidden="true"
@@ -1166,23 +1278,30 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
           <div
             className="ms-Checkbox-checkbox"
           >
-            <i
+            <span
               aria-hidden={true}
               className=
                   ms-Checkbox-checkmark
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    display: inline-block;
-                    font-family: "FabricMDL2Icons";
-                    font-style: normal;
-                    font-weight: normal;
-                    speak: none;
-                  }
-              data-icon-name="CheckMark"
+
+              role="presentation"
+              style={Object {}}
             >
-              
-            </i>
+              <svg
+                className=
+
+                    {
+                      fill: currentColor;
+                      height: 100%;
+                      width: 100%;
+                    }
+                viewBox="0 0 2048 2048"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1837 557L768 1627l-557-558 90-90 467 466 979-978 90 90z"
+                />
+              </svg>
+            </span>
           </div>
           <span
             aria-hidden="true"
@@ -1233,23 +1352,30 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
             <div
               className="ms-Checkbox-checkbox"
             >
-              <i
+              <span
                 aria-hidden={true}
                 className=
                     ms-Checkbox-checkmark
-                    {
-                      -moz-osx-font-smoothing: grayscale;
-                      -webkit-font-smoothing: antialiased;
-                      display: inline-block;
-                      font-family: "FabricMDL2Icons";
-                      font-style: normal;
-                      font-weight: normal;
-                      speak: none;
-                    }
-                data-icon-name="CheckMark"
+
+                role="presentation"
+                style={Object {}}
               >
-                
-              </i>
+                <svg
+                  className=
+
+                      {
+                        fill: currentColor;
+                        height: 100%;
+                        width: 100%;
+                      }
+                  viewBox="0 0 2048 2048"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M1837 557L768 1627l-557-558 90-90 467 466 979-978 90 90z"
+                  />
+                </svg>
+              </span>
             </div>
             <span
               aria-hidden="true"

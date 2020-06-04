@@ -95,7 +95,7 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
     ariaSetSize?: number;
     boxSide?: 'start' | 'end';
     checked?: boolean;
-    checkmarkIconProps?: IIconProps;
+    checkmarkIconProps?: React.HTMLAttributes<HTMLSpanElement>;
     className?: string;
     componentRef?: IRefObject<ICheckbox>;
     defaultChecked?: boolean;
