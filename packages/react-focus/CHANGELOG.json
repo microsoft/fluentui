@@ -2,6 +2,29 @@
   "name": "@fluentui/react-focus",
   "entries": [
     {
+      "date": "Thu, 21 May 2020 12:34:43 GMT",
+      "tag": "@fluentui/react-focus_v7.12.0",
+      "version": "7.12.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "FocusZone: Adding shouldRaiseClicks prop to allow for opt-in/opt-out way to invoke clicks on focusable elements.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "06d4f3a093cf6d531c8a9b40c596e4ff324b3090",
+            "package": "@fluentui/react-focus"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "FocusZone: Defaulting to false for the preventDefaultWhenHandled prop to maintain old behavior.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "b9d1f305e0d7235fa0b635816bfb4bb3795ab0d8",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 15 May 2020 05:52:46 GMT",
       "tag": "@fluentui/react-focus_v7.11.5",
       "version": "7.11.5",

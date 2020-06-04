@@ -2,6 +2,89 @@
   "name": "@fluentui/react-compose",
   "entries": [
     {
+      "date": "Tue, 02 Jun 2020 12:36:30 GMT",
+      "tag": "@fluentui/react-compose_v0.7.0",
+      "version": "0.7.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding `mergeProps` helper to package, to help resolving slots and slotProps given state and compose options. This decouples the props processing from compose, and adds more robustness by resolving slotProps, mixing native props into root, handling `as`, shorthand props, and merging classes.",
+            "author": "dzearing@microsoft.com",
+            "commit": "d5ed2c3804a58cb774bec86160df899fd7a8cb5a",
+            "package": "@fluentui/react-compose"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 28 May 2020 12:42:08 GMT",
+      "tag": "@fluentui/react-compose_v0.6.1",
+      "version": "0.6.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Typescript generic argument names cleaned up, removed react-is unlisted dependency usage, no breaking changes. Also split utils.ts into separate files. Each of these functions should have some unit tests.",
+            "author": "dzearing@microsoft.com",
+            "commit": "ec6e81163aecdb3c01687cb6e3f64d92ab43fef8",
+            "package": "@fluentui/react-compose"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 27 May 2020 12:40:00 GMT",
+      "tag": "@fluentui/react-compose_v0.6.0",
+      "version": "0.6.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding createClassResolver to help with auto resolving class names given class map and props.",
+            "author": "dzearing@microsoft.com",
+            "commit": "3d91f5bff251e25e9806e9da29def9811a997c43",
+            "package": "@fluentui/react-compose"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 26 May 2020 12:46:29 GMT",
+      "tag": "@fluentui/react-compose_v0.5.1",
+      "version": "0.5.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix: allow ParentProps in ComposeOptions",
+            "author": "olfedias@microsoft.com",
+            "commit": "e12167bcb98945b4299d931e285381802245128b",
+            "package": "@fluentui/react-compose"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 20 May 2020 12:31:10 GMT",
+      "tag": "@fluentui/react-compose_v0.5.0",
+      "version": "0.5.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "feat(compose): expose __self slot",
+            "author": "olfedias@microsoft.com",
+            "commit": "30fa92e7c750651fa609aa6c924b83155bebe203",
+            "package": "@fluentui/react-compose"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "add shorthand config",
+            "author": "mnajdova@gmail.com",
+            "commit": "11cb30315dcc73926c2817e81912b99ba80f3fe5",
+            "package": "@fluentui/react-compose"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 19 May 2020 12:34:06 GMT",
       "tag": "@fluentui/react-compose_v0.4.1",
       "version": "0.4.1",

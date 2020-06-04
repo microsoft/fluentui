@@ -13,6 +13,7 @@ const onRenderItem = (item: IOverflowSetItemProps): JSX.Element => {
   );
 };
 
+// tslint:disable-next-line:no-any
 const onRenderOverflowButton = (overflowItems: any[] | undefined): JSX.Element => {
   const buttonStyles: Partial<IButtonStyles> = {
     root: {

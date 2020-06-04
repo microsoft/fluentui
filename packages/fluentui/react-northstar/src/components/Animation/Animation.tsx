@@ -191,8 +191,9 @@ const Animation: React.FC<AnimationProps> & {
     };
 
     return getStyles({
+      allDisplayNames: [Animation.displayName],
       className: animationClassName,
-      displayNames: [Animation.displayName],
+      primaryDisplayName: Animation.displayName,
       props: {
         className,
         styles: createAnimationStyles(animation, context.theme),
@@ -224,15 +225,15 @@ const Animation: React.FC<AnimationProps> & {
     timingFunction,
   ]);
 
-  if (_.isNil(children)) {
-    setEnd();
-    return null;
-  }
-
   const { animationDuration, animationDelay } = animationStyles.root;
   const timeoutResult = timeout || calculateAnimationTimeout(animationDuration, animationDelay) || 0;
 
   const unhandledProps = useUnhandledProps(Animation.handledProps, props);
+
+  if (_.isNil(children)) {
+    setEnd();
+    return null;
+  }
 
   const isChildrenFunction = typeof children === 'function';
   const child = childrenExist(children) && !isChildrenFunction && (React.Children.only(children) as React.ReactElement);

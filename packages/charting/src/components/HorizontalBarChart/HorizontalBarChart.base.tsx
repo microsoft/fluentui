@@ -1,9 +1,15 @@
 import * as React from 'react';
 import { classNamesFunction, find } from 'office-ui-fabric-react/lib/Utilities';
 import { IProcessedStyleSet, IPalette } from 'office-ui-fabric-react/lib/Styling';
-import { IChartProps, IHorizontalBarChartProps, IHorizontalBarChartStyles, IChartDataPoint } from './index';
+import {
+  IChartProps,
+  IHorizontalBarChartProps,
+  IHorizontalBarChartStyleProps,
+  IHorizontalBarChartStyles,
+  IChartDataPoint,
+} from './index';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
-import { IHorizontalBarChartStyleProps } from '@uifabric/charting';
+import { ChartHoverCard } from '@uifabric/charting';
 
 const getClassNames = classNamesFunction<IHorizontalBarChartStyleProps, IHorizontalBarChartStyles>();
 
@@ -116,14 +122,11 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
             gapSpace={30}
             directionalHint={DirectionalHint.rightTopEdge}
           >
-            <div className={this._classNames.hoverCardRoot}>
-              <div className={this._classNames.hoverCardTextStyles}>
-                {this.state.xCalloutValue ? this.state.xCalloutValue : this.state.legend}
-              </div>
-              <div className={this._classNames.hoverCardDataStyles}>
-                {this.state.yCalloutValue ? this.state.yCalloutValue : this.state.hoverValue}
-              </div>
-            </div>
+            <ChartHoverCard
+              Legend={this.state.xCalloutValue ? this.state.xCalloutValue : this.state.legend!}
+              YValue={this.state.yCalloutValue ? this.state.yCalloutValue : this.state.hoverValue!}
+              color={this.state.lineColor}
+            />
           </Callout>
         ) : null}
       </div>

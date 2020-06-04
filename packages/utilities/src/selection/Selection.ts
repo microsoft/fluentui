@@ -488,5 +488,7 @@ export class Selection<TItem = IObjectWithKey> implements ISelection<TItem> {
 }
 
 function defaultGetKey<TItem = IObjectWithKey>(item: TItem, index?: number): string | number {
-  return item && (item as IObjectWithKey).key ? (item as IObjectWithKey).key! : `${index}`;
+  // 0 may be used as a key
+  const { key = `${index}` } = (item || {}) as IObjectWithKey;
+  return key;
 }

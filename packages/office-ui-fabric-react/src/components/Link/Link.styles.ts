@@ -75,6 +75,14 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
           },
         },
       },
+      !isButton && {
+        selectors: {
+          [HighContrastSelector]: {
+            // This is mainly for MessageBar, which sets MsHighContrastAdjust: none by default
+            MsHighContrastAdjust: 'auto',
+          },
+        },
+      },
 
       isDisabled && [
         'is-disabled',

@@ -1019,6 +1019,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         outline: 1px solid WindowText;
                       }
                       @media screen and (-ms-high-contrast: active){& {
+                        -ms-high-contrast-adjust: auto;
                         border-bottom: none;
                       }
                       &:active {
@@ -1251,6 +1252,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         outline: 1px solid WindowText;
                       }
                       @media screen and (-ms-high-contrast: active){& {
+                        -ms-high-contrast-adjust: auto;
                         border-bottom: none;
                       }
                       &:active {

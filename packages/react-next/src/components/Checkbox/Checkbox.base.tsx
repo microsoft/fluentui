@@ -74,7 +74,8 @@ export const CheckboxBase = React.forwardRef((props: ICheckboxProps, forwardedRe
 
   return (
     <KeytipData keytipProps={keytipProps} disabled={disabled}>
-      {(keytipAttributes: any): JSX.Element => (
+      {// tslint:disable-next-line:no-any
+      (keytipAttributes: any): JSX.Element => (
         <div className={classNames.root} title={title} ref={mergedRootRefs}>
           <input
             type="checkbox"

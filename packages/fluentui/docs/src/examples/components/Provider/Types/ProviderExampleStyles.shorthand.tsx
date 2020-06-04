@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { mergeThemes, Provider, themes } from '@fluentui/react-northstar';
+import { mergeThemes, Provider, teamsDarkTheme } from '@fluentui/react-northstar';
 
 const ProviderExampleShorthand = () => (
   <Provider
     variables={{ background: 'red' }}
     design={{ padding: '20px' }}
     styles={{ borderBottom: '3px solid blue' }}
-    theme={mergeThemes(themes.teamsDark, {
+    theme={mergeThemes(teamsDarkTheme, {
       siteVariables: {
         bodyBackground: 'salmon',
       },

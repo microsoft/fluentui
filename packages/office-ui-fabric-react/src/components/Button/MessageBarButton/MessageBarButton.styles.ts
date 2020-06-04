@@ -11,7 +11,7 @@ export const getStyles = memoizeFunction(
             inset: 1,
             highContrastStyle: {
               outlineOffset: '-4px',
-              outlineColor: 'ActiveBorder',
+              outline: '1px solid Window',
             },
             borderColor: 'transparent',
           }),

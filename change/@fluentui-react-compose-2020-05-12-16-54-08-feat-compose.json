@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat(compose): expose __self slot",
-  "packageName": "@fluentui/react-compose",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-05-12T14:54:08.002Z"
-}

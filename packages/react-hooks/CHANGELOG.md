@@ -1,8 +1,17 @@
 # Change Log - @uifabric/react-hooks
 
-This log was last generated on Thu, 07 May 2020 01:06:55 GMT and should not be manually modified.
+This log was last generated on Thu, 21 May 2020 12:34:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.4.0](https://github.com/microsoft/fluentui/tree/@uifabric/react-hooks_v7.4.0)
+
+Thu, 21 May 2020 12:34:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/react-hooks_v7.3.1..@uifabric/react-hooks_v7.4.0)
+
+### Minor changes
+
+- Add useForceUdpate hook ([PR #13146](https://github.com/microsoft/fluentui/pull/13146) by xgao@microsoft.com)
 
 ## [7.3.1](https://github.com/microsoft/fluentui/tree/@uifabric/react-hooks_v7.3.1)
 

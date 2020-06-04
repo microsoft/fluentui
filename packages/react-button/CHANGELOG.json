@@ -2,6 +2,51 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Tue, 02 Jun 2020 12:36:30 GMT",
+      "tag": "@fluentui/react-button_v0.1.12",
+      "version": "0.1.12",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Using new react-compose mergeProps.",
+            "author": "dzearing@microsoft.com",
+            "commit": "d5ed2c3804a58cb774bec86160df899fd7a8cb5a",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 01 Jun 2020 12:32:45 GMT",
+      "tag": "@fluentui/react-button_v0.1.11",
+      "version": "0.1.11",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Explicitly importing react in tempTypes and fixing bug in mergeProps.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "f45840b653f743b1d9e6c7969d60265ced676212",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 20 May 2020 12:31:10 GMT",
+      "tag": "@fluentui/react-button_v0.1.4",
+      "version": "0.1.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "feat(compose): expose __self slot",
+            "author": "olfedias@microsoft.com",
+            "commit": "30fa92e7c750651fa609aa6c924b83155bebe203",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 15 May 2020 12:42:20 GMT",
       "tag": "@fluentui/react-button_v0.1.1",
       "version": "0.1.1",

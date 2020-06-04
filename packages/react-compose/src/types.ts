@@ -1,5 +1,12 @@
 import * as React from 'react';
 
+// tslint:disable-next-line:interface-name
+export interface ShorthandConfig<TProps> {
+  mappedProp?: keyof TProps;
+  mappedArrayProp?: keyof TProps;
+  allowsJSX?: boolean;
+}
+
 //
 // "as" type safety
 //
@@ -10,14 +17,15 @@ export type PropsOfElement<
 > = JSX.LibraryManagedAttributes<E, React.ComponentPropsWithRef<E>>;
 
 // tslint:disable-next-line:interface-name
-export interface ComponentWithAs<E extends React.ElementType = 'div', P = {}> extends React.FunctionComponent {
-  <EE extends React.ElementType = E>(
-    props: Omit<PropsOfElement<EE>, 'as' | keyof P> & { as?: EE } & P,
+export interface ComponentWithAs<TElementType extends React.ElementType = 'div', TProps = {}>
+  extends React.FunctionComponent {
+  <TExtendedElementType extends React.ElementType = TElementType>(
+    props: Omit<PropsOfElement<TExtendedElementType>, 'as' | keyof TProps> & { as?: TExtendedElementType } & TProps,
   ): JSX.Element | null;
   displayName?: string;
 
-  defaultProps?: Partial<P & { as: E }>;
-  propTypes?: React.WeakValidationMap<P> & {
+  defaultProps?: Partial<TProps & { as: TElementType }>;
+  propTypes?: React.WeakValidationMap<TProps> & {
     // tslint:disable-next-line:no-any
     as: React.Requireable<string | ((props: any, context?: any) => any) | (new (props: any, context?: any) => any)>;
   };
@@ -27,57 +35,77 @@ export interface ComponentWithAs<E extends React.ElementType = 'div', P = {}> ex
 // Compose types
 //
 
-export type ComposedComponent<P = {}> = React.FunctionComponent<P> & {
+export type ComposedComponent<TProps = {}> = React.FunctionComponent<TProps> & {
   fluentComposeConfig: ComposePreparedOptions;
 };
 
-export type InputComposeComponent<P = {}> = React.FunctionComponent<P> & {
+export type InputComposeComponent<TProps = {}> = React.FunctionComponent<TProps> & {
   fluentComposeConfig?: ComposePreparedOptions;
 };
 
-export type Input<T extends React.ElementType = 'div', P = {}> =
-  | InputComposeComponent<P>
-  | ComposeRenderFunction<T, P & { as?: React.ElementType }>;
+export type Input<TElementType extends React.ElementType = 'div', TProps = {}> =
+  | InputComposeComponent<TProps>
+  | ComposeRenderFunction<TElementType, TProps & { as?: React.ElementType }>;
 
-export type ComposeRenderFunction<T extends React.ElementType = 'div', P = {}> = (
-  props: P,
-  ref: React.Ref<T extends keyof HTMLElementTagNameMap ? HTMLElementTagNameMap[T] : T>,
+export type ComposeRenderFunction<TElementType extends React.ElementType = 'div', TProps = {}> = (
+  props: TProps,
+  ref: React.Ref<TElementType extends keyof HTMLElementTagNameMap ? HTMLElementTagNameMap[TElementType] : TElementType>,
   composeOptions: ComposePreparedOptions,
 ) => React.ReactElement | null;
 
-export type ComposeOptions<InputProps = {}, InputStylesProps = {}, ParentStylesProps = {}> = {
+export type ComposeOptions<TInputProps = {}, TInputStylesProps = {}, TParentProps = {}, TParentStylesProps = {}> = {
   className?: string;
-  classes?: ClassDictionary;
+
+  classes?: ClassDictionary | ClassFunction;
+
   displayName?: string;
 
-  mapPropsToStylesProps?: (props: ParentStylesProps & InputProps) => InputStylesProps;
+  mapPropsToStylesProps?: (props: TParentStylesProps & TInputProps) => TInputStylesProps;
 
-  handledProps?: (keyof InputProps | 'as')[];
+  handledProps?: (keyof TInputProps | 'as')[];
+
   overrideStyles?: boolean;
 
   slots?: Record<string, React.ElementType>;
 
-  mapPropsToSlotProps?: (props: InputProps) => Record<string, object>;
+  slotProps?: (props: TParentProps & TInputProps) => Record<string, object>;
+
+  shorthandConfig?: ShorthandConfig<TParentProps & TInputProps>;
 };
 
-export type ClassDictionary = {
-  [key: string]: string;
-};
+/**
+ * Generic name to any dictionary.
+ */
+// tslint:disable-next-line:no-any
+export type GenericDictionary = Record<string, any>;
 
-export type ComposePreparedOptions<Props = {}> = {
+/**
+ * Generic set of module to class name map.
+ */
+export type ClassDictionary = Record<string, string>;
+
+/**
+ * Generic class resolver function type.
+ */
+export type ClassFunction = (state: GenericDictionary, slots: GenericDictionary) => ClassDictionary;
+
+export type ComposePreparedOptions<TProps = {}, TState = TProps> = {
   className: string;
-  classes: ClassDictionary;
+  classes: (undefined | ClassDictionary | ClassFunction)[];
+
   displayName: string;
   displayNames: string[];
 
   mapPropsToStylesPropsChain: ((props: object) => object)[];
   render: ComposeRenderFunction;
 
-  handledProps: (keyof Props)[];
+  handledProps: (keyof TProps)[];
+
   overrideStyles: boolean;
 
   slots: Record<string, React.ElementType> & { __self: React.ElementType };
-  mapPropsToSlotPropsChain: ((props: Props) => Record<string, object>)[];
+  slotProps: ((props: TProps) => Record<string, object>)[];
 
-  resolveSlotProps: <P>(props: P) => Record<string, object>;
+  resolveSlotProps: <TResolvedProps>(props: TResolvedProps) => Record<string, object>;
+  shorthandConfig: ShorthandConfig<TProps>;
 };

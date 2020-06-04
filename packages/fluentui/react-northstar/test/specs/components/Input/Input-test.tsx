@@ -1,6 +1,6 @@
 import * as faker from 'faker';
 import * as React from 'react';
-import * as keyboardKey from 'keyboard-key';
+import { keyboardKey } from '@fluentui/keyboard-key';
 
 import { ReactWrapper } from 'enzyme';
 import { mountWithProvider as mount } from 'test/utils';

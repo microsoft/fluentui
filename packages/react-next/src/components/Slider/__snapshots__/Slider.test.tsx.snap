@@ -66,6 +66,14 @@ exports[`Slider renders correctly 1`] = `
           }
         />
         <span
+          className="ms-Slider-enabled ms-Slider-row ms-Slider-showValue ms-Slider-inactive ms-Slider-enabled ms-Slider-row ms-Slider-showValue"
+          style={
+            Object {
+              "width": "0%",
+            }
+          }
+        />
+        <span
           className="ms-Slider-enabled ms-Slider-row ms-Slider-showValue ms-Slider-active ms-Slider-enabled ms-Slider-row ms-Slider-showValue"
           style={
             Object {

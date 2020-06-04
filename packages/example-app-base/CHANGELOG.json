@@ -2,6 +2,21 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "date": "Mon, 25 May 2020 12:38:22 GMT",
+      "tag": "@uifabric/example-app-base_v7.12.68",
+      "version": "7.12.68",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixed minor typos",
+            "author": "xia_tony@hotmail.com",
+            "commit": "8722f6c224ff811107129b41e8e62845e3106e78",
+            "package": "@uifabric/example-app-base"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 19 May 2020 12:34:06 GMT",
       "tag": "@uifabric/example-app-base_v7.12.64",
       "version": "7.12.64",

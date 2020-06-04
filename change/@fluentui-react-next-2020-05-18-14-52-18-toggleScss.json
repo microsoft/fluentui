@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Toggle: Convert react-next version to use scss.",
-  "packageName": "@fluentui/react-next",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-05-18T21:52:18.496Z"
-}
