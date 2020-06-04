@@ -89,6 +89,7 @@ describe('OverflowSet', () => {
 
   describe('keytip tests', () => {
     let overflowSet: ReactWrapper;
+    // tslint:disable-next-line:no-any
     let overflowKeytips: any;
     let items: IOverflowSetItemProps[];
     let overflowItems: IOverflowSetItemProps[];
@@ -102,6 +103,7 @@ describe('OverflowSet', () => {
       );
     };
 
+    // tslint:disable-next-line:no-any
     const onRenderOverflowButton = (overflowElements: any[] | undefined): JSX.Element => {
       return (
         <CommandBarButton
@@ -373,6 +375,7 @@ describe('OverflowSet', () => {
     });
 
     describe('with submenus', () => {
+      // tslint:disable-next-line:no-any
       let item3: any;
       beforeEach(() => {
         item3 = { ...overflowItems[0] };
@@ -557,6 +560,7 @@ describe('OverflowSet', () => {
             },
           ];
 
+          // tslint:disable-next-line:no-any
           const delayedOverflowButton = (overflowElements: any[] | undefined): JSX.Element => {
             // Overflow button which delays 2s before opening the menu
             // This simulates latency when opening the menu

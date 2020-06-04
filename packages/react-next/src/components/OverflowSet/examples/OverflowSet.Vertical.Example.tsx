@@ -24,6 +24,7 @@ const onRenderItem = (item: IOverflowSetItemProps): JSX.Element => {
   );
 };
 
+// tslint:disable-next-line:no-any
 const onRenderOverflowButton = (overflowItems: any[] | undefined): JSX.Element => {
   return (
     <CommandBarButton

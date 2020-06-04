@@ -40,6 +40,7 @@ function sharedAfterEach() {
 
   // Do this after umounting the wrapper to make sure any timers cleaned up on unmount are
   // cleaned up in fake timers world
+  // tslint:disable-next-line:no-any
   if ((global.setTimeout as any).mock) {
     jest.useRealTimers();
   }
@@ -150,6 +151,7 @@ describe('TextField rendering values from props', () => {
   });
 
   it('should render a value of 0 when given the number 0', () => {
+    // tslint:disable-next-line:no-any
     wrapper = mount(<TextField value={0 as any} onChange={noOp} componentRef={textFieldRef} />);
     expect(wrapper.getDOMNode().querySelector('input')!.value).toEqual('0');
     expect(textField!.value).toEqual('0');
@@ -172,6 +174,7 @@ describe('TextField rendering values from props', () => {
   });
 
   it('should render a default value of 0 when given the number 0', () => {
+    // tslint:disable-next-line:no-any
     wrapper = mount(<TextField defaultValue={0 as any} componentRef={textFieldRef} />);
     expect(wrapper.getDOMNode().querySelector('input')!.value).toEqual('0');
     expect(textField!.value).toEqual('0');
@@ -597,6 +600,7 @@ describe('TextField controlled vs uncontrolled usage', () => {
   });
 
   it('warns if value is null', () => {
+    // tslint:disable-next-line:no-any
     mount(<TextField value={null as any} onChange={noOp} />);
     expect(warnFn).toHaveBeenCalledTimes(1);
   });
@@ -607,6 +611,7 @@ describe('TextField controlled vs uncontrolled usage', () => {
   });
 
   it('does not warn if defaultValue is null', () => {
+    // tslint:disable-next-line:no-any
     mount(<TextField defaultValue={null as any} />);
     expect(warnFn).toHaveBeenCalledTimes(0);
   });
@@ -730,14 +735,18 @@ describe('TextField onChange', () => {
   });
 
   it('respects prop updates in response to onChange', () => {
-    onChange = jest.fn((ev: any, value?: string) => wrapper!.setProps({ value }));
+    onChange = jest.fn((ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, value?: string) =>
+      wrapper!.setProps({ value }),
+    );
     wrapper = mount(<TextField componentRef={textFieldRef} value="" onChange={onChange} />);
 
     simulateAndVerifyChange('a', 1);
   });
 
   it('should apply edits after clearing field', () => {
-    onChange = jest.fn((ev: any, value?: string) => wrapper!.setProps({ value }));
+    onChange = jest.fn((ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, value?: string) =>
+      wrapper!.setProps({ value }),
+    );
     wrapper = mount(<TextField componentRef={textFieldRef} value="" onChange={onChange} />);
 
     simulateAndVerifyChange('a', 1);

@@ -1,8 +1,17 @@
 # Change Log - @uifabric/file-type-icons
 
-This log was last generated on Mon, 25 May 2020 12:38:22 GMT and should not be manually modified.
+This log was last generated on Fri, 29 May 2020 12:35:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.3.0](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.3.0)
+
+Fri, 29 May 2020 12:35:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.2.49..@uifabric/file-type-icons_v7.3.0)
+
+### Minor changes
+
+- Add special folder icon types for file-type-icons. ([PR #13347](https://github.com/microsoft/fluentui/pull/13347) by taenri@microsoft.com)
 
 ## [7.2.49](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.2.49)
 

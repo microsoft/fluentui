@@ -2,6 +2,21 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "date": "Tue, 02 Jun 2020 12:36:30 GMT",
+      "tag": "@uifabric/styling_v7.12.15",
+      "version": "7.12.15",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update styling package sideEffects to only the ones needed",
+            "author": "xgao@microsoft.com",
+            "commit": "e7aad10a8619f34d3911e13b26d0e41d21675641",
+            "package": "@uifabric/styling"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 21 May 2020 12:34:43 GMT",
       "tag": "@uifabric/styling_v7.12.10",
       "version": "7.12.10",

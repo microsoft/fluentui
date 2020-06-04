@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Changing storybook add-on panel position to default to be at the bottom of the page.",
-  "packageName": "office-ui-fabric-react",
-  "email": "czearing@outlook.com",
-  "dependentChangeType": "patch",
-  "date": "2020-04-28T21:01:30.564Z"
-}

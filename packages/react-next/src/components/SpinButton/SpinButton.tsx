@@ -193,7 +193,8 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
           </div>
         )}
         <KeytipData keytipProps={keytipProps} disabled={disabled}>
-          {(keytipAttributes: any): JSX.Element => (
+          {// tslint:disable-next-line:no-any
+          (keytipAttributes: any): JSX.Element => (
             <div
               {...nativeProps}
               className={classNames.spinButtonWrapper}

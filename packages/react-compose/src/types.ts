@@ -56,7 +56,7 @@ export type ComposeRenderFunction<TElementType extends React.ElementType = 'div'
 export type ComposeOptions<TInputProps = {}, TInputStylesProps = {}, TParentProps = {}, TParentStylesProps = {}> = {
   className?: string;
 
-  classes?: ClassDictionary;
+  classes?: ClassDictionary | ClassFunction;
 
   displayName?: string;
 
@@ -68,7 +68,7 @@ export type ComposeOptions<TInputProps = {}, TInputStylesProps = {}, TParentProp
 
   slots?: Record<string, React.ElementType>;
 
-  mapPropsToSlotProps?: (props: TParentProps & TInputProps) => Record<string, object>;
+  slotProps?: (props: TParentProps & TInputProps) => Record<string, object>;
 
   shorthandConfig?: ShorthandConfig<TParentProps & TInputProps>;
 };
@@ -84,9 +84,14 @@ export type GenericDictionary = Record<string, any>;
  */
 export type ClassDictionary = Record<string, string>;
 
-export type ComposePreparedOptions<TProps = {}> = {
+/**
+ * Generic class resolver function type.
+ */
+export type ClassFunction = (state: GenericDictionary, slots: GenericDictionary) => ClassDictionary;
+
+export type ComposePreparedOptions<TProps = {}, TState = TProps> = {
   className: string;
-  classes: ClassDictionary;
+  classes: (undefined | ClassDictionary | ClassFunction)[];
 
   displayName: string;
   displayNames: string[];
@@ -99,7 +104,7 @@ export type ComposePreparedOptions<TProps = {}> = {
   overrideStyles: boolean;
 
   slots: Record<string, React.ElementType> & { __self: React.ElementType };
-  mapPropsToSlotPropsChain: ((props: TProps) => Record<string, object>)[];
+  slotProps: ((props: TProps) => Record<string, object>)[];
 
   resolveSlotProps: <TResolvedProps>(props: TResolvedProps) => Record<string, object>;
   shorthandConfig: ShorthandConfig<TProps>;

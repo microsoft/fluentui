@@ -28,30 +28,37 @@ export class LineChartBasicExample extends React.Component<{}, {}> {
             {
               x: new Date('2020-03-03T00:00:00.000Z'),
               y: 217000,
+              onDataPointClick: () => alert('click on 217000'),
             },
             {
               x: new Date('2020-03-04T00:00:00.000Z'),
               y: 248000,
+              onDataPointClick: () => alert('click on 248000'),
             },
             {
               x: new Date('2020-03-05T00:00:00.000Z'),
               y: 252000,
+              onDataPointClick: () => alert('click on 252000'),
             },
             {
               x: new Date('2020-03-06T00:00:00.000Z'),
               y: 274000,
+              onDataPointClick: () => alert('click on 274000'),
             },
             {
               x: new Date('2020-03-07T00:00:00.000Z'),
               y: 260000,
+              onDataPointClick: () => alert('click on 260000'),
             },
             {
               x: new Date('2020-03-08T00:00:00.000Z'),
               y: 300000,
+              onDataPointClick: () => alert('click on 300000'),
             },
             {
               x: new Date('2020-03-09T00:00:00.000Z'),
               y: 218000,
+              onDataPointClick: () => alert('click on 218000'),
             },
           ],
           color: DefaultPalette.blue,

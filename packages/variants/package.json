@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/variants",
-  "version": "7.1.74",
+  "version": "7.1.77",
   "description": "Fluent UI React subtheme generator.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -27,8 +27,8 @@
     "@uifabric/tslint-rules": "^7.2.1"
   },
   "dependencies": {
-    "@uifabric/set-version": "^7.0.12",
-    "office-ui-fabric-react": "^7.116.1",
+    "@uifabric/set-version": "^7.0.13",
+    "office-ui-fabric-react": "^7.117.3",
     "tslib": "^1.10.0"
   }
 }

@@ -53,7 +53,7 @@ describe('Slider', () => {
 
   it('can slide to default min/max and execute onChange', () => {
     let changedValue;
-    const onChange = (val: any) => {
+    const onChange = (val: number) => {
       changedValue = val;
     };
 
@@ -143,7 +143,7 @@ describe('Slider', () => {
 
   it('formats the value when a format function is passed', () => {
     const value = 10;
-    const valueFormat = (val: any) => `${val}%`;
+    const valueFormat = (val: number) => `${val}%`;
     wrapper = mount(<Slider value={value} min={0} max={100} showValue={true} valueFormat={valueFormat} />);
 
     expect(wrapper.find('label.ms-Label.ms-Slider-value').text()).toEqual(valueFormat(value));
