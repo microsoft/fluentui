@@ -12,6 +12,9 @@ export type ClassDictionary = Record<string, string>;
 // @public
 export type ClassFunction = (state: GenericDictionary, slots: GenericDictionary) => ClassDictionary;
 
+// @public
+export type ClassResolver = (state: GenericDictionary, partialClasses?: ClassDictionary) => ClassDictionary;
+
 // @public (undocumented)
 export interface ComponentWithAs<TElementType extends React.ElementType = 'div', TProps = {}> extends React.FunctionComponent {
     // (undocumented)
@@ -73,7 +76,7 @@ export type ComposePreparedOptions<TProps = {}, TState = TProps> = {
 export type ComposeRenderFunction<TElementType extends React.ElementType = 'div', TProps = {}> = (props: TProps, ref: React.Ref<TElementType extends keyof HTMLElementTagNameMap ? HTMLElementTagNameMap[TElementType] : TElementType>, composeOptions: ComposePreparedOptions) => React.ReactElement | null;
 
 // @public
-export const createClassResolver: (classes: Record<string, string>) => (state: Record<string, any>) => Record<string, string>;
+export const createClassResolver: (classes: Record<string, string>) => (state: Record<string, any>, partialClasses?: Record<string, string> | undefined) => Record<string, string>;
 
 // @public
 export type GenericDictionary = Record<string, any>;

@@ -89,6 +89,14 @@ export type ClassDictionary = Record<string, string>;
  */
 export type ClassFunction = (state: GenericDictionary, slots: GenericDictionary) => ClassDictionary;
 
+/**
+ * Resolver created using createClassResolver.
+ *
+ * @param state - Component state.
+ * @param partialClasses - Optional classes to resolve. This classes is not used to compute slots/modifiers/enums.
+ */
+export type ClassResolver = (state: GenericDictionary, partialClasses?: ClassDictionary) => ClassDictionary;
+
 export type ComposePreparedOptions<TProps = {}, TState = TProps> = {
   className: string;
   classes: (undefined | ClassDictionary | ClassFunction)[];
