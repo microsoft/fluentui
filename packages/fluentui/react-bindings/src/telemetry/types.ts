@@ -1,4 +1,4 @@
-type ComponentPerfStats = {
+export type ComponentPerfStats = {
   instances: number;
   renders: number;
 

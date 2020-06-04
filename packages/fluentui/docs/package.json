@@ -38,6 +38,7 @@
     "react-markdown": "^4.0.8",
     "react-router-dom": "^5.0.1",
     "react-source-render": "4.0.0-1",
+    "react-table": "^7.1.0",
     "react-virtualized": "^9.21.1",
     "react-vis": "^1.11.6"
   },
@@ -63,6 +64,7 @@
     "build": "gulp build:docs",
     "lint": "eslint --ext .js,.ts,.tsx .",
     "lint:fix": "yarn lint --fix",
-    "start": "gulp docs"
+    "start": "gulp docs",
+    "start:profile": "cross-env NODE_ENV=production PERF=true gulp docs"
   }
 }
