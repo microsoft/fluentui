@@ -51,11 +51,3 @@ export const ButtonCss = () => (
     </div>
   </>
 );
-
-export const ButtonsPerf = () => {
-  const buttons = Array.from({ length: 1000 }).map((n, i) => (
-    <Button key={i} content="Hello, world" primary={!!(i % 2)} icon="X" />
-  ));
-
-  return <>{buttons}</>;
-};
