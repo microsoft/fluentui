@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-next",
-  "version": "8.0.0-alpha.33",
+  "version": "8.0.0-alpha.34",
   "beachball": {
     "disallowedChangeTypes": [
       "patch",
@@ -47,7 +47,7 @@
     "@fluentui/react-compose": "^0.7.0",
     "@fluentui/react-theme-provider": "^0.1.11",
     "@uifabric/set-version": "^7.0.13",
-    "office-ui-fabric-react": "^7.117.1",
+    "office-ui-fabric-react": "^7.117.3",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

@@ -117,21 +117,6 @@ export interface IHorizontalBarChartStyles {
   chartDataTextDenominator: IStyle;
 
   /**
-   * styles for hover card root
-   */
-  hoverCardRoot?: IStyle;
-
-  /**
-   * styles for hover card text
-   */
-  hoverCardTextStyles?: IStyle;
-
-  /**
-   * styles for hover card data
-   */
-  hoverCardDataStyles?: IStyle;
-
-  /**
    * Style for the benchmark triangle
    */
   triangle: IStyle;

@@ -1,7 +1,7 @@
 import { IGroupedVerticalBarChartStyleProps, IGroupedVerticalBarChartStyles } from './GroupedVerticalBarChart.types';
 
 export const getStyles = (props: IGroupedVerticalBarChartStyleProps): IGroupedVerticalBarChartStyles => {
-  const { theme, className, showXAxisPath, showYAxisPath, legendColor, href } = props;
+  const { theme, className, showXAxisPath, showYAxisPath, href } = props;
   return {
     root: [
       theme.fonts.medium,
@@ -49,29 +49,6 @@ export const getStyles = (props: IGroupedVerticalBarChartStyleProps): IGroupedVe
       marginTop: '8px',
       marginLeft: '35px',
     },
-
-    hoverCardRoot: {
-      paddingLeft: '16px',
-      paddingRight: '22px',
-      paddingTop: '15px',
-      paddingBottom: '8px',
-    },
-
-    hoverCardTextStyles: [
-      theme.fonts.small,
-      {
-        lineHeight: '14px',
-      },
-    ],
-
-    hoverCardDataStyles: [
-      theme.fonts.xxLarge,
-      {
-        lineHeight: '31px',
-        color: legendColor === '' ? theme.palette.black : legendColor,
-      },
-    ],
-
     opacityChangeOnHover: {
       cursor: href ? 'pointer' : 'default',
     },
