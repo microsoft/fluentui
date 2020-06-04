@@ -313,7 +313,6 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
     // (undocumented)
     protected onChange(items?: T[]): void;
     protected onClick: (ev: React.MouseEvent<HTMLInputElement, MouseEvent>) => void;
-    // (undocumented)
     protected onEmptyInputFocus(): void;
     // (undocumented)
     protected onGetMoreResults: () => void;
@@ -373,7 +372,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
     protected updateSuggestionsList(suggestions: T[] | PromiseLike<T[]>, updatedValue?: string): void;
     // (undocumented)
     protected updateValue(updatedValue: string): void;
-}
+    }
 
 // @public (undocumented)
 export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BasePicker<T, P> {
