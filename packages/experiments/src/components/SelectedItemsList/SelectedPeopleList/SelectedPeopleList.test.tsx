@@ -10,10 +10,12 @@ describe('SelectedPeopleList', () => {
       <SelectedPeopleList selectedItems={[{ text: 'Person A' }, { text: 'Person B' }]} ref={pickerRef} />,
     );
 
+    expect(pickerRef.current).toBeDefined();
+
     const personANodes = rendered.root.findAll(x => !!x.children.length && x.children.indexOf('Person A') !== -1);
     const personBNodes = rendered.root.findAll(x => !!x.children.length && x.children.indexOf('Person B') !== -1);
-    expect(personANodes.length).toBeGreaterThan(0);
-    expect(personBNodes.length).toBeGreaterThan(0);
+    expect(personANodes.length).toEqual(1);
+    expect(personBNodes.length).toEqual(1);
 
     expect(rendered.toJSON()).toMatchSnapshot();
   });

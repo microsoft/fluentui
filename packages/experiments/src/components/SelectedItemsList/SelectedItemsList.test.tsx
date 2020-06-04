@@ -1,14 +1,26 @@
 import * as React from 'react';
-import { create } from 'react-test-renderer';
+import { create, act } from 'react-test-renderer';
 
 import { SelectedItemsList } from './SelectedItemsList';
-import { ISelectedItemProps, ISelectedItemsList } from './SelectedItemsList.types';
+import {
+  ISelectedItemProps,
+  ISelectedItemsList,
+  BaseSelectedItem,
+  ISelectedItemsListProps,
+} from './SelectedItemsList.types';
 import { mount } from 'enzyme';
 
 export interface ISimple {
   key: string;
   name: string;
 }
+
+export const SelectedTypedList = React.forwardRef(
+  <TPersona extends ISimple & BaseSelectedItem = ISimple>(
+    props: ISelectedItemsListProps<TPersona>,
+    ref: React.Ref<ISelectedItemsList<TPersona>>,
+  ) => <SelectedItemsList<TPersona> ref={ref} {...props} />,
+);
 
 const basicItemRenderer = (props: ISelectedItemProps<ISimple>) => {
   return <div id={props.item.name}>{props.item.name}</div>;
@@ -55,5 +67,31 @@ describe('SelectedItemsList', () => {
           .text(),
       ).toEqual('b');
     });
+  });
+
+  it('render all default seleted items in selectedItemsList', () => {
+    const wrapper = mount<ISelectedItemsList<ISimple>>(
+      <SelectedItemsList
+        onRenderItem={basicItemRenderer}
+        defaultSelectedItems={[
+          { key: 'd1', name: 'da' },
+          { key: 'd2', name: 'db' },
+        ]}
+      />,
+    );
+    expect(wrapper).toBeDefined();
+    expect(wrapper.find('div').length).toEqual(2);
+    expect(
+      wrapper
+        .find('div')
+        .first()
+        .text(),
+    ).toEqual('da');
+    expect(
+      wrapper
+        .find('div')
+        .last()
+        .text(),
+    ).toEqual('db');
   });
 });

@@ -10,8 +10,8 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
   const renderedItems = React.useMemo(() => items, [items]);
 
   React.useEffect(() => {
-    updateItems(props.selectedItems || []);
-  }, [props.selectedItems]);
+    updateItems(props.selectedItems || props.defaultSelectedItems || []);
+  }, [props.selectedItems, props.defaultSelectedItems]);
 
   const removeItems = (itemsToRemove: TItem[]): void => {
     // Intentionally not using .filter here as we want to only remove a specific
