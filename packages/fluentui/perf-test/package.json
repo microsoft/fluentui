@@ -22,7 +22,7 @@
     "@types/webpack-env": "1.15.1",
     "flamegrill": "0.1.3",
     "ignore-not-found-export-webpack-plugin": "^1.0.1",
-    "just-scripts": "0.43.0",
+    "just-scripts": "0.43.1",
     "node-fetch": "^2.6.0",
     "react": "16.8.6",
     "react-dom": "16.8.6"
