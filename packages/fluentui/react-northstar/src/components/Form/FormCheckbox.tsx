@@ -3,7 +3,7 @@ import { commonPropTypes } from '../../utils';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import FormField, { FormFieldProps, FormFieldStylesProps } from './FormField';
 import Checkbox, { CheckboxProps } from '../Checkbox/Checkbox';
-import { ShorthandValue } from 'src/types';
+import { ShorthandValue } from '../../types';
 import { TextProps } from '../Text/Text';
 
 interface FormCheckboxOwnProps extends Omit<CheckboxProps, 'styles' | 'accessibility'> {
