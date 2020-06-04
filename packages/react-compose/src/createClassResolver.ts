@@ -42,12 +42,7 @@ export const createClassResolver = (classes: ClassDictionary): ClassResolver => 
     }
 
     for (const slotName of Object.keys(slots)) {
-      resolvedClasses[slotName] = appendClasses(
-        resolvedClasses[slotName],
-        slots[slotName],
-        modifierClasses,
-        enumClasses,
-      );
+      resolvedClasses[slotName] = appendClasses(slots[slotName], modifierClasses, enumClasses);
     }
 
     if (partialClasses) {
