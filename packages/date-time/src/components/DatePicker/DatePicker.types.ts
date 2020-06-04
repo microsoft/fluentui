@@ -294,4 +294,5 @@ export interface IDatePickerStyles {
   textField: IStyle;
   callout: IStyle;
   icon: IStyle;
+  wrapper?: IStyle;
 }
