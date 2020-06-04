@@ -3,8 +3,12 @@ import { commonPropTypes } from '../../utils';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import FormField, { FormFieldProps, FormFieldStylesProps } from './FormField';
 import Checkbox, { CheckboxProps } from '../Checkbox/Checkbox';
+import { ShorthandValue } from 'src/types';
+import { TextProps } from '../Text/Text';
 
-interface FormCheckboxOwnProps extends Omit<CheckboxProps, 'styles' | 'accessibility'> {}
+interface FormCheckboxOwnProps extends Omit<CheckboxProps, 'styles' | 'accessibility'> {
+  checkboxLabel?: ShorthandValue<TextProps>;
+}
 
 export interface FormCheckboxProps extends FormFieldProps, FormCheckboxOwnProps {}
 export type FormCheckboxStylesProps = never;
@@ -17,11 +21,14 @@ const FormCheckbox = compose<'div', FormCheckboxProps, FormCheckboxStylesProps, 
     className: FormCheckboxClassName,
     displayName: 'FormCheckbox',
     overrideStyles: true,
-    shorthandConfig: {},
-    slotProps: ({ label }) => ({
+    shorthandConfig: {
+      mappedProp: 'label',
+    },
+    handledProps: ['label'],
+    slotProps: ({ checkboxLabel }) => ({
       control: {
         as: Checkbox,
-        label,
+        label: checkboxLabel,
       },
     }),
   },
