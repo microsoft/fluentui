@@ -5,9 +5,10 @@ import { mountWithProvider } from 'test/utils';
 import Button from 'src/components/Button/Button';
 import RadioGroup from 'src/components/RadioGroup/RadioGroup';
 import Input from 'src/components/Input/Input';
-import Text from 'src/components/Text/Text';
 import FormField, { formFieldMessageClassName } from 'src/components/Form/FormField';
 import Box from 'src/components/Box/Box';
+import FormLabel from 'src/components/Form/FormLabel';
+import FormMessage from 'src/components/Form/FormMessage';
 import { PresenceAvailableIcon } from '@fluentui/react-icons-northstar';
 
 const inputIconClassName = '.ui-input__icon';
@@ -19,17 +20,15 @@ const getFormField = (control: React.ComponentType<any> | string) =>
 
 describe('FormField', () => {
   isConformant(FormField, { constructorName: 'FormField' });
-  formFieldImplementsShorthandProp('label', Text);
-  formFieldImplementsShorthandProp('message', Text);
+  formFieldImplementsShorthandProp('label', FormLabel);
+  formFieldImplementsShorthandProp('message', FormMessage);
   formFieldImplementsShorthandProp('control', Box, { mapsValueToProp: 'children' });
 
   it('renders the component control provided in the control shorthand prop', () => {
     const controls = [Button, Input, RadioGroup];
-
     controls.forEach(control => {
       const formField = getFormField(control);
       const controlElement = formField.find(control);
-
       expect(controlElement.length).toEqual(1);
     });
   });

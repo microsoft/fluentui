@@ -81,7 +81,7 @@ export type FormFieldStylesProps = Required<Pick<FormFieldProps, 'type' | 'inlin
 const FormField = compose<'div', FormFieldProps, FormFieldStylesProps, {}, {}>(
   (props, ref, composeOptions) => {
     const context: ProviderContextPrepared = React.useContext(ThemeContext);
-    const { setStart, setEnd } = useTelemetry(FormField.displayName, context.telemetry);
+    const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
     setStart();
 
     const {
@@ -231,7 +231,7 @@ const FormField = compose<'div', FormFieldProps, FormFieldStylesProps, {}, {}>(
       'required',
     ],
     shorthandConfig: {
-      mappedProp: 'label',
+      mappedProp: 'control',
     },
   },
 ) as ComponentWithAs<'div', FormFieldProps> & {
@@ -256,7 +256,6 @@ FormField.propTypes = {
 
 FormField.defaultProps = {
   accessibility: formFieldBehavior,
-  as: 'div',
   control: { as: Input },
 };
 
