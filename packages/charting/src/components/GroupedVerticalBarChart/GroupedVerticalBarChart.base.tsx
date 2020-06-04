@@ -21,6 +21,7 @@ import {
   IGVSingleDataPoint,
   IGVBarChartSeriesPoint,
 } from '../../types/index';
+import { ChartHoverCard } from '@uifabric/charting';
 
 const getClassNames = classNamesFunction<IGroupedVerticalBarChartStyleProps, IGroupedVerticalBarChartStyles>();
 type stringAxis = D3Axis<string>;
@@ -183,21 +184,12 @@ export class GroupedVerticalBarChartBase extends React.Component<
             setInitialFocus={true}
             directionalHint={DirectionalHint.topRightEdge}
           >
-            <div className={this._classNames.calloutContentRoot}>
-              <div className={this._classNames.calloutDateTimeContainer}>
-                <div className={this._classNames.calloutContentX}>{this.state.xCalloutValue} </div>
-                {/*TO DO  if we add time for callout then will use this */}
-                {/* <div className={this._classNames.calloutContentX}>07:00am</div> */}
-              </div>
-              <div className={this._classNames.calloutInfoContainer}>
-                <div className={this._classNames.calloutBlockContainer}>
-                  <div className={this._classNames.calloutlegendText}>{this.state.titleForHoverCard}</div>
-                  <div className={this._classNames.calloutContentY}>
-                    {this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard}
-                  </div>
-                </div>
-              </div>
-            </div>
+            <ChartHoverCard
+              XValue={this.state.xCalloutValue}
+              Legend={this.state.titleForHoverCard}
+              YValue={this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard}
+              color={this.state.color}
+            />
           </Callout>
         ) : null}
       </div>

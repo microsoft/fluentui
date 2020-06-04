@@ -127,33 +127,4 @@ export interface IDonutChartStyles {
    * Style for the legend container.
    */
   legendContainer: IStyle;
-
-  /**
-   * styles for callout root-content
-   */
-  calloutContentRoot?: IStyle;
-
-  /**
-   * styles for callout Date time container
-   */
-  calloutInfoContainer?: IStyle;
-
-  /**
-   * styles for callout Date time container
-   */
-  calloutBlockContainer?: IStyle;
-
-  /**
-   * styles for callout y-content
-   */
-  calloutlegendText?: IStyle;
-
-  /**
-   * styles for callout x-content
-   */
-  calloutContentX?: IStyle;
-  /**
-   * styles for callout y-content
-   */
-  calloutContentY?: IStyle;
 }

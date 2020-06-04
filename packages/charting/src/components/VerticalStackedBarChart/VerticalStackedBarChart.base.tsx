@@ -8,6 +8,7 @@ import { IProcessedStyleSet, IPalette } from 'office-ui-fabric-react/lib/Styling
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { ILegend, Legends } from '../Legends/index';
+import { ChartHoverCard } from '@uifabric/charting';
 
 import {
   IVerticalStackedBarChartProps,
@@ -111,21 +112,12 @@ export class VerticalStackedBarChartBase extends React.Component<
             setInitialFocus={true}
             directionalHint={DirectionalHint.topRightEdge}
           >
-            <div className={this._classNames.calloutContentRoot}>
-              <div className={this._classNames.calloutDateTimeContainer}>
-                <div className={this._classNames.calloutContentX}>{this.state.xCalloutValue}</div>
-                {/*TO DO  if we add time for callout then will use this */}
-                {/* <div className={this._classNames.calloutContentX}>07:00am</div> */}
-              </div>
-              <div className={this._classNames.calloutInfoContainer}>
-                <div className={this._classNames.calloutBlockContainer}>
-                  <div className={this._classNames.calloutlegendText}> {this.state.selectedLegendTitle}</div>
-                  <div className={this._classNames.calloutContentY}>
-                    {this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard}
-                  </div>
-                </div>
-              </div>
-            </div>
+            <ChartHoverCard
+              XValue={this.state.xCalloutValue}
+              Legend={this.state.selectedLegendTitle}
+              YValue={this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard}
+              color={this.state.color}
+            />
           </Callout>
         ) : null}
       </div>

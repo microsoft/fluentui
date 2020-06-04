@@ -1,8 +1,7 @@
 import { IVerticalStackedBarChartStyleProps, IVerticalStackedBarChartStyles } from './VerticalStackedBarChart.types';
 
 export const getStyles = (props: IVerticalStackedBarChartStyleProps): IVerticalStackedBarChartStyles => {
-  const { className, theme, width, height, legendColor, shouldHighlight, href } = props;
-  const { fonts } = theme!;
+  const { className, theme, width, height, shouldHighlight, href } = props;
 
   const chartWidth = width! + 50;
   const chartHeight = height! + 50;
@@ -75,50 +74,6 @@ export const getStyles = (props: IVerticalStackedBarChartStyleProps): IVerticalS
     bars: [
       {
         transform: `translate(${chartMargin.left}px, 10px)`,
-      },
-    ],
-
-    calloutContentRoot: [
-      {
-        display: 'grid',
-        overflow: 'hidden',
-        padding: '11px 16px 10px 16px',
-        backgroundColor: theme.semanticColors.bodyBackground,
-        backgroundBlendMode: 'normal, luminosity',
-      },
-    ],
-    calloutDateTimeContainer: {
-      display: 'flex',
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-    },
-    calloutContentX: [
-      {
-        ...fonts.small,
-        lineHeight: '16px',
-        opacity: '0.8',
-        color: theme.semanticColors.bodySubtext,
-      },
-    ],
-    calloutBlockContainer: {
-      ...fonts.xxLarge,
-      marginTop: '13px',
-      paddingLeft: '8px',
-      lineHeight: '22px',
-      color: theme.semanticColors.bodyText,
-      borderLeft: `4px solid ${legendColor}`,
-    },
-    calloutlegendText: {
-      ...fonts.small,
-      lineHeight: '16px',
-      color: theme.semanticColors.bodySubtext,
-    },
-    calloutContentY: [
-      {
-        ...fonts.xxLarge,
-        fontWeight: 'bold',
-        lineHeight: '36px',
-        color: legendColor ? legendColor : theme.semanticColors.bodySubtext,
       },
     ],
 

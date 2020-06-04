@@ -11,6 +11,7 @@ import {
 } from './index';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
+import { ChartHoverCard } from '@uifabric/charting';
 
 const getClassNames = classNamesFunction<IMultiStackedBarChartStyleProps, IMultiStackedBarChartStyles>();
 
@@ -97,18 +98,11 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
             directionalHint={DirectionalHint.topRightEdge}
             id={this._calloutId}
           >
-            <div className={this._classNames.calloutContentRoot}>
-              <div className={this._classNames.calloutInfoContainer}>
-                <div className={this._classNames.calloutBlockContainer}>
-                  <div className={this._classNames.calloutlegendText}>
-                    {this.state.xCalloutValue ? this.state.xCalloutValue : this.state.selectedLegendTitle}
-                  </div>
-                  <div className={this._classNames.calloutContentY}>
-                    {this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard}
-                  </div>
-                </div>
-              </div>
-            </div>
+            <ChartHoverCard
+              Legend={this.state.xCalloutValue ? this.state.xCalloutValue : this.state.selectedLegendTitle}
+              YValue={this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard}
+              color={this.state.color}
+            />
           </Callout>
         ) : null}
       </div>

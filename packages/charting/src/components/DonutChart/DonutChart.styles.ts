@@ -1,8 +1,7 @@
 import { IDonutChartStyleProps, IDonutChartStyles } from './DonutChart.types';
 
 export const getStyles = (props: IDonutChartStyleProps): IDonutChartStyles => {
-  const { className, width, height, theme, color } = props;
-  const { fonts } = theme!;
+  const { className, width, height, theme } = props;
   return {
     root: [
       theme.fonts.medium,
@@ -27,41 +26,5 @@ export const getStyles = (props: IDonutChartStyleProps): IDonutChartStyles => {
       paddingTop: '16px',
       width: `${width}px`,
     },
-    calloutContentRoot: [
-      {
-        display: 'grid',
-        overflow: 'hidden',
-        padding: '11px 16px 10px 16px',
-        backgroundColor: theme.semanticColors.bodyBackground,
-        backgroundBlendMode: 'normal, luminosity',
-      },
-    ],
-    calloutContentX: [
-      {
-        ...fonts.small,
-        lineHeight: '16px',
-        opacity: '0.8',
-        color: theme.semanticColors.bodySubtext,
-      },
-    ],
-    calloutBlockContainer: {
-      paddingLeft: '8px',
-      lineHeight: '22px',
-      color: theme.semanticColors.bodyText,
-      borderLeft: `4px solid ${color}`,
-    },
-    calloutlegendText: {
-      ...fonts.small,
-      lineHeight: '16px',
-      color: theme.semanticColors.bodySubtext,
-    },
-    calloutContentY: [
-      {
-        ...fonts.xxLarge,
-        color: color ? color : theme.semanticColors.bodySubtext,
-        fontWeight: 'bold',
-        lineHeight: '36px',
-      },
-    ],
   };
 };
