@@ -223,6 +223,11 @@ export interface ICheckboxSlots {
 /**
  * {@docCategory Checkbox}
  */
+export type ICheckboxClasses = { [key in keyof ICheckboxSlots]: string };
+
+/**
+ * {@docCategory Checkbox}
+ */
 export type ICheckboxSlotProps = {
   // tslint:disable-next-line:no-any
   [key in keyof ICheckboxSlots]: any;

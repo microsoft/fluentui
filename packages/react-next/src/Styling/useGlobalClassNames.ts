@@ -1,6 +1,6 @@
 import { getGlobalClassNames, GlobalClassNames, useTheme } from '../Styling';
 
-export function useGlobalClassNames<T>(classNames: GlobalClassNames<T>): Partial<GlobalClassNames<T>> {
+export function useGlobalClassNames<T>(classNames: GlobalClassNames<T>): GlobalClassNames<T> {
   const { tokens: theme } = useTheme();
 
   return getGlobalClassNames(

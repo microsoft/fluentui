@@ -87,6 +87,11 @@ export interface ICheckbox {
     indeterminate: boolean;
 }
 
+// @public (undocumented)
+export type ICheckboxClasses = {
+    [key in keyof ICheckboxSlots]: string;
+};
+
 // @public
 export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement | HTMLInputElement> {
     ariaDescribedBy?: string;
