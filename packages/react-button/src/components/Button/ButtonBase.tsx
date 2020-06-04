@@ -4,7 +4,7 @@ import { compose, ComposePreparedOptions } from '@fluentui/react-compose';
 import { useButton } from './useButton';
 
 export const ButtonBase = compose<'button', ButtonProps, ButtonProps, {}, {}>(
-  (props: ButtonProps, ref: React.Ref<HTMLElement>, composeOptions: ComposePreparedOptions<ButtonProps>) => {
+  (props: ButtonProps, ref: React.Ref<HTMLButtonElement>, composeOptions: ComposePreparedOptions<ButtonProps>) => {
     const { slots, slotProps } = useButton(props, composeOptions);
 
     return (
