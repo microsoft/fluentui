@@ -135,6 +135,7 @@ const FormField = compose<'div', FormFieldProps, FormFieldStylesProps, {}, {}>(
         variables,
       }),
       rtl: context.rtl,
+      unstable_props: props,
     });
 
     const labelElement = createShorthand(composeOptions.slots.label, label, {
@@ -203,6 +204,7 @@ const FormField = compose<'div', FormFieldProps, FormFieldStylesProps, {}, {}>(
   {
     className: formFieldClassName,
     displayName: 'FormField',
+    overrideStyles: true,
     slots: {
       label: FormLabel,
       message: FormMessage,
