@@ -440,7 +440,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
 
     // Only attempt to resolve suggestions if it exists
     if (emptyResolveSuggestions) {
-      const suggestions = emptyResolveSuggestions!(this.state.items);
+      const suggestions = emptyResolveSuggestions(this.state.items);
 
       this.updateSuggestionsList(suggestions);
 

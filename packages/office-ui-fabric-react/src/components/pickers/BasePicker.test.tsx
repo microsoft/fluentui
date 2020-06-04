@@ -43,6 +43,10 @@ const basicSuggestionRenderer = (props: ISimple) => {
   return <div> {props.name} </div>;
 };
 
+const getSuggestions = (root: HTMLElement | Document) => {
+  return document.querySelector<HTMLElement>('.ms-Suggestions');
+};
+
 describe('BasePicker', () => {
   let root: HTMLDivElement;
   beforeEach(() => {
@@ -113,8 +117,7 @@ describe('BasePicker', () => {
     ReactTestUtils.Simulate.input(input);
     jest.runAllTimers();
 
-    const suggestions = document.querySelector('.ms-Suggestions') as HTMLInputElement;
-    expect(suggestions).toBeDefined();
+    expect(getSuggestions(document)).toBeDefined();
 
     const suggestionOptions = document.querySelectorAll('.ms-Suggestions-itemButton');
     expect(suggestionOptions.length).toEqual(2);
@@ -159,8 +162,7 @@ describe('BasePicker', () => {
     ReactTestUtils.Simulate.input(input);
     jest.runAllTimers();
 
-    const suggestions = document.querySelector('.ms-Suggestions') as HTMLInputElement;
-    expect(suggestions).toBeDefined();
+    expect(getSuggestions(document)).toBeDefined();
 
     const suggestionOptions = document.querySelectorAll('.ms-Suggestions-itemButton');
     expect(suggestionOptions.length).toEqual(0);
@@ -211,8 +213,7 @@ describe('BasePicker', () => {
     ReactTestUtils.Simulate.input(input);
     jest.runAllTimers();
 
-    const suggestions = document.querySelector('.ms-Suggestions') as HTMLInputElement;
-    expect(suggestions).toBeDefined();
+    expect(getSuggestions(document)).toBeDefined();
 
     const forceButton = document.querySelectorAll('[data-automationid=sug-forceResolve]');
     expect(forceButton.length).toEqual(1);
@@ -320,8 +321,7 @@ describe('BasePicker', () => {
     const input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
     input.focus();
 
-    const suggestions = document.querySelector('.ms-Suggestions') as HTMLInputElement;
-    expect(suggestions).toBeDefined();
+    expect(getSuggestions(document)).toBeDefined();
 
     const suggestionOptions = document.querySelectorAll('.ms-Suggestions-itemButton');
     expect(suggestionOptions.length).toEqual(15);
@@ -352,13 +352,11 @@ describe('BasePicker', () => {
     ReactTestUtils.Simulate.input(input);
     jest.runAllTimers();
 
-    const suggestions = document.querySelector('.ms-Suggestions') as HTMLElement;
-    expect(suggestions).toBeTruthy();
+    expect(getSuggestions(document)).toBeTruthy();
 
     ReactTestUtils.Simulate.keyDown(input, { which: 27 });
-    const againSugs = document.querySelector('.ms-Suggestions') as HTMLElement;
 
-    expect(againSugs).toBeFalsy();
+    expect(getSuggestions(document)).toBeFalsy();
   });
 
   it('Opens menu on click when suggestions has been dismissed', () => {
@@ -383,19 +381,16 @@ describe('BasePicker', () => {
     ReactTestUtils.Simulate.input(input);
     jest.runAllTimers();
 
-    const suggestions = document.querySelector('.ms-Suggestions') as HTMLElement;
-    expect(suggestions).toBeTruthy();
+    expect(getSuggestions(document)).toBeTruthy();
 
     ReactTestUtils.Simulate.keyDown(input, { which: 27 });
-    const againSugs = document.querySelector('.ms-Suggestions') as HTMLElement;
 
-    expect(againSugs).toBeFalsy();
+    expect(getSuggestions(document)).toBeFalsy();
     ReactTestUtils.Simulate.click(input, { button: 0 });
 
     jest.runAllTimers();
 
-    const getAgain = document.querySelector('.ms-Suggestions') as HTMLElement;
-    expect(getAgain).toBeTruthy();
+    expect(getSuggestions).toBeTruthy();
   });
 
   it('Opens menu on click when suggestions has been dismissed', () => {
@@ -420,19 +415,16 @@ describe('BasePicker', () => {
     ReactTestUtils.Simulate.input(input);
     jest.runAllTimers();
 
-    const suggestions = document.querySelector('.ms-Suggestions') as HTMLElement;
-    expect(suggestions).toBeTruthy();
+    expect(getSuggestions(document)).toBeTruthy();
 
     ReactTestUtils.Simulate.keyDown(input, { which: 27 });
-    const againSugs = document.querySelector('.ms-Suggestions') as HTMLElement;
 
-    expect(againSugs).toBeFalsy();
+    expect(getSuggestions(document)).toBeFalsy();
     ReactTestUtils.Simulate.click(input, { button: 0 });
 
     jest.runAllTimers();
 
-    const getAgain = document.querySelector('.ms-Suggestions') as HTMLElement;
-    expect(getAgain).toBeTruthy();
+    expect(getSuggestions(document)).toBeTruthy();
   });
 
   it('Opens menu when input refocused after search has happened', () => {
@@ -460,21 +452,18 @@ describe('BasePicker', () => {
     ReactTestUtils.Simulate.input(input);
     jest.runAllTimers();
 
-    const suggestions = document.querySelector('.ms-Suggestions') as HTMLElement;
-    expect(suggestions).toBeTruthy();
+    expect(getSuggestions(document)).toBeTruthy();
 
     (document.querySelector('#toFocus') as any).focus();
 
     // Implicit test to ensure suggestions are dismissed when focus lost
-    const dismissedSugs = document.querySelector('.ms-Suggestions') as HTMLElement;
-    expect(dismissedSugs).toBeFalsy();
+    expect(getSuggestions(document)).toBeFalsy();
 
     jest.runAllTimers();
     input.focus();
     jest.runAllTimers();
 
-    const getAgain = document.querySelector('.ms-Suggestions') as HTMLElement;
-    expect(getAgain).toBeTruthy();
+    expect(getSuggestions(document)).toBeTruthy();
   });
 
   it('Opens calls onResolveSuggestions if it currently doesnt have suggestions', () => {
@@ -505,7 +494,6 @@ describe('BasePicker', () => {
 
     expect(count).toEqual(1);
 
-    const suggestions = document.querySelector('.ms-Suggestions') as HTMLElement;
-    expect(suggestions).toBeTruthy();
+    expect(getSuggestions(document)).toBeTruthy();
   });
 });
