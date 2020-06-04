@@ -234,7 +234,6 @@ const TreeItem: React.FC<WithAsProp<TreeItemProps>> & FluentComponentStaticProps
         className: classes.root,
         id,
         selected,
-        onClick: handleTitleClick,
         ...rtlTextContainer.getAttributes({ forElements: [children] }),
         ...unhandledProps,
       })}
