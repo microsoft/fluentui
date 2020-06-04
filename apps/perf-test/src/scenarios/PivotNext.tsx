@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { Pivot, PivotItem } from '@fluentui/react-next';
 
-const scenario = (
-  <Pivot aria-label="Basic Pivot Example">
+const Scenario = () => {
+  return (
+    <Pivot aria-label="Basic Pivot Example">
     <PivotItem
       headerText="My Files"
       headerButtonProps={{
@@ -19,6 +20,7 @@ const scenario = (
       <div>Pivot #3</div>
     </PivotItem>
   </Pivot>
-);
+  )
+};
 
-export default scenario;
+export default Scenario;

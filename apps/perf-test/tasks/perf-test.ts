@@ -5,6 +5,7 @@ const path = require('path');
 const flamegrill = require('flamegrill');
 const scenarioIterations = require('../src/scenarioIterations');
 const scenarioNames = require('../src/scenarioNames');
+const scenarioRenderTypes = require('../src/scenarioRenderTypes');
 const { argv } = require('@uifabric/build').just;
 
 import { getFluentPerfRegressions } from './fluentPerfRegressions';
@@ -100,6 +101,7 @@ import { getFluentPerfRegressions } from './fluentPerfRegressions';
 // A high number of iterations are needed to get visualization of lower level calls that are infrequently hit by ticks.
 // Wiki: https://github.com/microsoft/fluentui/wiki/Perf-Testing
 const iterationsDefault = 5000;
+const renderTypesDefault = ['mount'];
 
 // TODO:
 //  - Results Analysis
@@ -206,6 +208,7 @@ const urlForMaster = process.env.SYSTEM_PULLREQUEST_TARGETBRANCH
 const outDir = path.join(__dirname, '../dist');
 const tempDir = path.join(__dirname, '../logfiles');
 
+// tslint:disable-next-line:no-function-expression
 module.exports = async function getPerfRegressions() {
   const iterationsArgv = /** @type {number} */ argv().iterations;
   const iterationsArg = Number.isInteger(iterationsArgv) && iterationsArgv;
@@ -233,17 +236,21 @@ module.exports = async function getPerfRegressions() {
       throw new Error(`Invalid scenario: ${scenarioName}.`);
     }
     const iterations = iterationsArg || scenarioIterations[scenarioName] || iterationsDefault;
-    // These lines can be used to check for consistency.
-    // Array.from({ length: 20 }, (entry, index) => {
-    scenarios[scenarioName] = {
-      // scenarios[scenarioName + index] = {
-      baseline: `${urlForMaster}?scenario=${scenarioName}&iterations=${iterations}`,
-      scenario: `${urlForDeploy}?scenario=${scenarioName}&iterations=${iterations}`,
-    };
+    const renderTypes = scenarioRenderTypes[scenarioName] || renderTypesDefault;
 
-    scenarioSettings[scenarioName] = {
-      iterations,
-    };
+    renderTypes.forEach(renderType => {
+      const scenarioKey = `${scenarioName}-${renderType}`;
+      const testUrlParams = `?scenario=${scenarioName}&iterations=${iterations}&renderType=${renderType}`;
+
+      scenarios[scenarioKey] = {
+        baseline: `${urlForDeploy}${testUrlParams}`, // TODO: revert before merging
+        scenario: `${urlForDeploy}${testUrlParams}`,
+      };
+
+      scenarioSettings[scenarioKey] = {
+        iterations,
+      };
+    });
   });
   // });
 
@@ -264,7 +271,16 @@ module.exports = async function getPerfRegressions() {
   }
 
   /** @type {ScenarioConfig} */
-  const scenarioConfig = { outDir, tempDir };
+  const scenarioConfig = {
+    outDir,
+    tempDir,
+    pageActions: async (page, options) => {
+      await page.goto(options.url);
+
+      await page.waitForSelector('#render-done');
+    },
+  };
+
   /** @type {CookResults} */
   const scenarioResults = await flamegrill.cook(scenarios, scenarioConfig);
 
