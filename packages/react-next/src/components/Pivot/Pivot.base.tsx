@@ -5,15 +5,13 @@ import { IPivotProps, IPivotStyleProps, IPivotStyles, IPivot } from './Pivot.typ
 import { IPivotItemProps } from './PivotItem.types';
 import { FocusZone, FocusZoneDirection, IFocusZone } from '../../FocusZone';
 import { PivotItem } from './PivotItem';
-import { PivotLinkFormat } from './Pivot.types';
-import { PivotLinkSize } from './Pivot.types';
 import { Icon } from '../../Icon';
+import { css } from 'office-ui-fabric-react';
 import { useId } from '@uifabric/react-hooks';
 
-const getClassNamesCall = classNamesFunction<IPivotStyleProps, IPivotStyles>();
-export interface IPivotState {
-  selectedKey: string | undefined;
-}
+const getClassNamesCall = classNamesFunction<IPivotStyleProps, IPivotStyles>({
+  useStaticStyles: true,
+});
 
 const COMPONENT_NAME = 'Pivot';
 
@@ -108,7 +106,7 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef(
       );
     };
 
-    const onKeyPress = (itemKey: string, ev: React.KeyboardEvent<HTMLElement>): void => {
+    const onKeyDown = (itemKey: string, ev: React.KeyboardEvent<HTMLElement>): void => {
       if (ev.which === KeyCodes.enter) {
         ev.preventDefault();
         updateSelectedItem(itemKey);
@@ -138,10 +136,10 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef(
           {...headerButtonProps}
           id={tabId}
           key={itemKey}
-          className={isSelected ? classNames.linkIsSelected : classNames.link}
+          className={css(classNames.link, isSelected && classNames.linkIsSelected)}
           onClick={onLinkClick.bind(this, itemKey)}
-          onKeyPress={onKeyPress.bind(this, itemKey)}
-          ariaLabel={link.ariaLabel}
+          onKeyDown={onKeyDown.bind(this, itemKey)}
+          aria-label={link.ariaLabel}
           role="tab"
           aria-selected={isSelected}
           name={link.headerText}
@@ -171,13 +169,12 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef(
     };
 
     const getClassNames = (): { [key in keyof IPivotStyles]: string } => {
-      const { theme } = props;
-      const rootIsLarge: boolean = props.linkSize === PivotLinkSize.large;
-      const rootIsTabs: boolean = props.linkFormat === PivotLinkFormat.tabs;
+      const { theme, linkSize, linkFormat } = props;
+
       return getClassNamesCall(props.styles!, {
         theme: theme!,
-        rootIsLarge,
-        rootIsTabs,
+        linkSize,
+        linkFormat,
       });
     };
 

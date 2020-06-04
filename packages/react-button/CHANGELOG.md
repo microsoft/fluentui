@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Mon, 01 Jun 2020 12:32:45 GMT and should not be manually modified.
+This log was last generated on Tue, 02 Jun 2020 12:36:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.1.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.1.12)
+
+Tue, 02 Jun 2020 12:36:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.1.11..@fluentui/react-button_v0.1.12)
+
+### Patches
+
+- Using new react-compose mergeProps. ([PR #13360](https://github.com/microsoft/fluentui/pull/13360) by dzearing@microsoft.com)
 
 ## [0.1.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.1.11)
 

@@ -4,8 +4,8 @@ import { compose } from '@fluentui/react-compose';
 import { useButton } from './useButton';
 
 export const ButtonBase = compose<'button', ButtonProps, ButtonProps, {}, {}>(
-  (props, ref, composeOptions) => {
-    const { slots, slotProps } = useButton(props, composeOptions);
+  (props, ref, slotsAndState) => {
+    const { slots, slotProps } = slotsAndState;
 
     return (
       <slots.root ref={ref} {...slotProps.root}>
@@ -17,12 +17,13 @@ export const ButtonBase = compose<'button', ButtonProps, ButtonProps, {}, {}>(
     );
   },
   {
+    displayName: 'ButtonBase',
     slots: {
       icon: 'span',
       content: 'span',
       loader: 'span',
     },
-    displayName: 'ButtonBase',
+    state: useButton,
   },
 );
 

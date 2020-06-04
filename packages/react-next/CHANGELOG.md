@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-next
 
-This log was last generated on Mon, 01 Jun 2020 12:32:45 GMT and should not be manually modified.
+This log was last generated on Thu, 04 Jun 2020 12:35:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-alpha.34](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.34)
+
+Thu, 04 Jun 2020 12:35:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.33..@fluentui/react-next_v8.0.0-alpha.34)
+
+### Changes
+
+- Pivot: replace onKeyPress with onKeyDown and ariaLabel with aria-label ([PR #13442](https://github.com/microsoft/fluentui/pull/13442) by behowell@microsoft.com)
+
+## [8.0.0-alpha.33](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.33)
+
+Tue, 02 Jun 2020 12:36:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.32..@fluentui/react-next_v8.0.0-alpha.33)
+
+### Changes
+
+- Use static styles in Pivot ([PR #13370](https://github.com/microsoft/fluentui/pull/13370) by behowell@microsoft.com)
+- Updating typings from compose. ([PR #13360](https://github.com/microsoft/fluentui/pull/13360) by dzearing@microsoft.com)
 
 ## [8.0.0-alpha.32](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.32)
 

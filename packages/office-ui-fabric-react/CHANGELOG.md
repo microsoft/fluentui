@@ -1,8 +1,29 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 29 May 2020 12:35:34 GMT and should not be manually modified.
+This log was last generated on Thu, 04 Jun 2020 12:35:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.117.3](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.117.3)
+
+Thu, 04 Jun 2020 12:35:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.117.1..office-ui-fabric-react_v7.117.3)
+
+### Patches
+
+- CommandBar: Fixed caching to greatly improve performance for all users ([PR #13428](https://github.com/microsoft/fluentui/pull/13428) by mgodbolt@microsoft.com)
+- Pivot: replace onKeyPress with onKeyDown and ariaLabel with aria-label ([PR #13442](https://github.com/microsoft/fluentui/pull/13442) by behowell@microsoft.com)
+
+## [7.117.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.117.1)
+
+Tue, 02 Jun 2020 12:36:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.117.0..office-ui-fabric-react_v7.117.1)
+
+### Patches
+
+- Dialog: Fixing broken deprecated props and adding snapshot tests for them. ([PR #13425](https://github.com/microsoft/fluentui/pull/13425) by humbertomakotomorimoto@gmail.com)
+- Remove explicit blocking of Alt key ([PR #13389](https://github.com/microsoft/fluentui/pull/13389) by keyou@microsoft.com)
+- add aria-checked if the role is menuitemradio ([PR #13434](https://github.com/microsoft/fluentui/pull/13434) by makopch@microsoft.com)
 
 ## [7.117.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.117.0)
 

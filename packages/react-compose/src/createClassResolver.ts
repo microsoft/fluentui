@@ -1,4 +1,5 @@
 import { GenericDictionary, ClassDictionary } from './types';
+import { appendClasses } from './appendClasses';
 
 /**
  * `createClassResolver` is a factory function which creates a state to classmap resolver for
@@ -14,54 +15,87 @@ import { GenericDictionary, ClassDictionary } from './types';
  * Remaining class names would be interpretted as modifiers, applied to the `root` slot when
  * the component `state` contains a truthy matching prop name.
  */
-export const createClassResolver = (classes: ClassDictionary) => (
-  state: GenericDictionary,
-  slots: GenericDictionary,
-): ClassDictionary => {
-  const classMap: GenericDictionary = {};
-  const modifiers: string[] = [];
+export const createClassResolver = (classes: ClassDictionary) => {
+  // This is in creation time, so this will happen once per css file.
+  const { slots, modifiers, enums } = createResolvedMap(classes);
+  console.log(slots, modifiers, enums);
 
-  // Add the default className to root
-  addClassTo(classMap, 'root', state.className);
+  // Everything in the function below will happen at runtime, so it's very critical that this
+  // code is as minimal as possible.
+  // tslint:disable-next-line:no-function-expression
+  return function classResolver(state: GenericDictionary): ClassDictionary {
+    const resolvedClasses: Record<string, string> = {};
 
-  if (classes) {
-    // Iterate through classes
-    Object.keys(classes).forEach((key: string) => {
-      const classValue = classes[key];
-
-      if (classValue) {
-        // If the class is named the same as a slot, add it to the slot.
-        if (slots.hasOwnProperty(key)) {
-          addClassTo(classMap, key, classValue);
-        } else if (key.indexOf('_') >= 0) {
-          // The class is an enum value. Add if the prop exists and matches.
-          const parts = key.split('_');
-          const enumName = parts[0];
-          const enumValue = parts[1];
-
-          state[enumName] === enumValue && modifiers.push(classValue);
-        } else {
-          state[key] && modifiers.push(classValue);
-        }
+    let modifierClasses = '';
+    for (const modifierName of Object.keys(modifiers)) {
+      if (state[modifierName]) {
+        modifierClasses = appendClasses(modifierClasses, modifiers[modifierName]);
       }
-    });
+    }
 
-    // Convert the className arrays to strings.
-    Object.keys(classMap).forEach((key: string) => (classMap[key] = classMap[key].concat(modifiers).join(' ')));
-  }
+    let enumClasses = '';
+    for (const enumName of Object.keys(enums)) {
+      const enumValues = enums[enumName];
+      // if we have a class which matches the enumName and current state value, add it.
+      if (enumValues[state[enumName]]) {
+        enumClasses = appendClasses(enumClasses, enumValues[state[enumName]]);
+      }
+    }
 
-  return classMap;
+    for (const slotName of Object.keys(slots)) {
+      resolvedClasses[slotName] = appendClasses(slots[slotName], modifierClasses, enumClasses);
+    }
+    return resolvedClasses as ClassDictionary;
+  };
+};
+
+type ResolvedMap = {
+  slots: Record<string, string>;
+  modifiers: Record<string, string>;
+  enums: Record<string, Record<string, string>>;
 };
 
 /**
- * Helper function to update slot arrays within a class map.
+ * Helper to take a css module map and translate it into { slots, modifiers, enums } where
+ * slots are a matched name in the slotNames array, enums have underscores splitting the matched
+ * name/value, and modifiers are everything else. Creating this split definition keeps runtime
+ * resolution work to a minimum.
  */
-function addClassTo(slotProps: GenericDictionary, slotName: string, className?: string | false) {
-  if (className) {
-    if (!slotProps[slotName]) {
-      slotProps[slotName] = [className];
-    } else {
-      slotProps[slotName].push(className);
+function createResolvedMap(classes: ClassDictionary): ResolvedMap {
+  const resolvedMap: ResolvedMap = {
+    slots: {},
+    modifiers: {},
+    enums: {},
+  };
+  const { slots, modifiers, enums } = resolvedMap;
+
+  // Iterate through classes
+  Object.keys(classes).forEach((key: string) => {
+    const classValue = classes[key];
+
+    if (classValue) {
+      const classParts = key.split('_');
+
+      // If the class is named the same as a slot, add it to the slot.
+      switch (classParts.length) {
+        case 2: // modifier (_modifierName)
+          modifiers[classParts[1]] = classValue;
+          break;
+
+        case 3: // enum (_enumName_enumValue)
+          const enumName = classParts[1];
+          const enumValue = classParts[2];
+          const enumValues = (enums[enumName] = enums[enumName] || {});
+
+          enumValues[enumValue] = classValue;
+          break;
+
+        default:
+          // slot (root)
+          slots[key] = classValue;
+      }
     }
-  }
+  });
+
+  return resolvedMap;
 }

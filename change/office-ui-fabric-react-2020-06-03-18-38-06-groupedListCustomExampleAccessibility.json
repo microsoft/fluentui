@@ -1,8 +1,8 @@
 {
   "type": "patch",
-  "comment": "Dialog: Fixing broken deprecated props and adding snapshot tests for them.",
+  "comment": "Fixing GroupedList custom example aria error.",
   "packageName": "office-ui-fabric-react",
   "email": "humbertomakotomorimoto@gmail.com",
   "dependentChangeType": "patch",
-  "date": "2020-06-01T20:52:38.352Z"
+  "date": "2020-06-04T01:38:06.095Z"
 }
