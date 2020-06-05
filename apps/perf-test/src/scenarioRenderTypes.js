@@ -1,22 +1,18 @@
-// You don't have to add scenarios to this structure unless
-// you want their render types to differ from the default (mount only).
+/**
+ * You don't have to add scenarios to this structure unless
+ * you want their render types to differ from the default (mount only).
+ *
+ * Note:
+ * You should not need to have re-render tests in most cases because mount test provides enough coverage.
+ * It is mostly usefual for cases where component has memoization logics. And in case of re-rendering,
+ * memoization logic help avoid certain code paths.
+ */
 
 const AllRenderTypes = ['mount', 'rerender'];
 const DefaultRenderTypes = ['mount'];
 
 const scenarioRenderTypes = {
   // TODO: uncomment to enable re-render tests
-  // Checkbox: AllRenderTypes,
-  // CheckboxNext: AllRenderTypes,
-  // PrimaryButton: AllRenderTypes,
-  // DefaultButton: AllRenderTypes,
-  // ButtonNext: AllRenderTypes,
-  // Link: AllRenderTypes,
-  // LinkNext: AllRenderTypes,
-  // Slider: AllRenderTypes,
-  // SliderNext: AllRenderTypes,
-  // Pivot: AllRenderTypes,
-  // PivotNext: AllRenderTypes,
   // ThemeProvider: AllRenderTypes,
 };
 

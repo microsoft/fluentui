@@ -360,10 +360,11 @@ function createScenarioTable(scenarioSettings, testResults, showAll) {
       .map(key => {
         const testResult = testResults[key];
         const { scenarioName, iterations, renderType } = scenarioSettings[key] || {};
+        const renderTypeFriendlyName = renderType === 'rerender' ? 'virtual re-render' : renderType;
 
         return `<tr>
             <td>${scenarioName}</td>
-            <td>${renderType}</td>
+            <td>${renderTypeFriendlyName}</td>
             ${getCell(testResult, true)}
             ${getCell(testResult, false)}
             <td>${iterations}</td>
