@@ -141,14 +141,6 @@ export interface ICheckboxSlots {
 }
 
 // @public (undocumented)
-export interface ICheckboxState extends ICheckboxProps {
-    // (undocumented)
-    isUsingCustomLabelRender: boolean;
-    // (undocumented)
-    reversed: boolean;
-}
-
-// @public (undocumented)
 export interface ICheckboxStyleProps {
     // (undocumented)
     checked?: boolean;

@@ -50,11 +50,30 @@ export const CheckboxBase = compose<'div', ICheckboxProps, ICheckboxProps, {}, {
   {
     slots: defaultSlots,
     displayName: 'CheckboxBase',
-    handledProps: ['onChange'],
+    handledProps: [
+      'componentRef',
+      'onChange',
+      'checked',
+      'defaultChecked',
+      'boxSide',
+      'label',
+      'disabled',
+      'inputProps',
+      'boxSide',
+      'ariaLabel',
+      'ariaLabelledBy',
+      'ariaPositionInSet',
+      'ariaSetSize',
+      'styles',
+      'onRenderLabel',
+      'checkmarkIconProps',
+      'keytipProps',
+      'indeterminate',
+      'defaultIndeterminate',
+    ],
   },
 );
 
 CheckboxBase.defaultProps = {
   as: 'div',
-  boxSide: 'start',
 };
