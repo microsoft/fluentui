@@ -390,7 +390,7 @@ describe('BasePicker', () => {
 
     jest.runAllTimers();
 
-    expect(getSuggestions).toBeTruthy();
+    expect(getSuggestions(document)).toBeTruthy();
   });
 
   it('Opens menu when input refocused after search has happened', () => {
