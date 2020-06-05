@@ -8,8 +8,8 @@
  * memoization logic help avoid certain code paths.
  */
 
-const AllRenderTypes = ['mount', 'rerender'];
-const DefaultRenderTypes = ['mount'];
+const AllRenderTypes = ['Mount', 'VirtualRerender'];
+const DefaultRenderTypes = ['Mount'];
 
 const scenarioRenderTypes = {
   // TODO: uncomment to enable re-render tests
