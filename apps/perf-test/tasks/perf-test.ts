@@ -5,7 +5,7 @@ const path = require('path');
 const flamegrill = require('flamegrill');
 const scenarioIterations = require('../src/scenarioIterations');
 const scenarioNames = require('../src/scenarioNames');
-const scenarioRenderTypes = require('../src/scenarioRenderTypes');
+const { scenarioRenderTypes, DefaultRenderTypes } = require('../src/scenarioRenderTypes');
 const { argv } = require('@uifabric/build').just;
 
 import { getFluentPerfRegressions } from './fluentPerfRegressions';
@@ -101,7 +101,6 @@ import { getFluentPerfRegressions } from './fluentPerfRegressions';
 // A high number of iterations are needed to get visualization of lower level calls that are infrequently hit by ticks.
 // Wiki: https://github.com/microsoft/fluentui/wiki/Perf-Testing
 const iterationsDefault = 5000;
-const renderTypesDefault = ['mount'];
 
 // TODO:
 //  - Results Analysis
@@ -236,7 +235,7 @@ module.exports = async function getPerfRegressions() {
       throw new Error(`Invalid scenario: ${scenarioName}.`);
     }
     const iterations = iterationsArg || scenarioIterations[scenarioName] || iterationsDefault;
-    const renderTypes = scenarioRenderTypes[scenarioName] || renderTypesDefault;
+    const renderTypes = scenarioRenderTypes[scenarioName] || DefaultRenderTypes;
 
     renderTypes.forEach(renderType => {
       const scenarioKey = `${scenarioName}-${renderType}`;
@@ -248,11 +247,12 @@ module.exports = async function getPerfRegressions() {
       };
 
       scenarioSettings[scenarioKey] = {
+        scenarioName,
         iterations,
+        renderType,
       };
     });
   });
-  // });
 
   console.log(`\nRunning scenarios:`);
   console.dir(scenarios);
@@ -276,7 +276,6 @@ module.exports = async function getPerfRegressions() {
     tempDir,
     pageActions: async (page, options) => {
       await page.goto(options.url);
-
       await page.waitForSelector('#render-done');
     },
   };
@@ -345,6 +344,7 @@ function createScenarioTable(scenarioSettings, testResults, showAll) {
   <table>
   <tr>
     <th>Scenario</th>
+    <th>Render type</th>
     <th>
       <a href="https://github.com/microsoft/fluentui/wiki/Perf-Testing#why-are-results-listed-in-ticks-instead-of-time-units">Master Ticks</a>
     </th>
@@ -357,10 +357,11 @@ function createScenarioTable(scenarioSettings, testResults, showAll) {
     resultsToDisplay
       .map(key => {
         const testResult = testResults[key];
-        const { iterations } = scenarioSettings[key] || {};
+        const { scenarioName, iterations, renderType } = scenarioSettings[key] || {};
 
         return `<tr>
-            <td>${scenarioNames[key] || key}</td>
+            <td>${scenarioName}</td>
+            <td>${renderType}</td>
             ${getCell(testResult, true)}
             ${getCell(testResult, false)}
             <td>${iterations}</td>

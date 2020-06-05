@@ -2,6 +2,7 @@
 // you want their render types to differ from the default (mount only).
 
 const AllRenderTypes = ['mount', 'rerender'];
+const DefaultRenderTypes = ['mount'];
 
 const scenarioRenderTypes = {
   Checkbox: AllRenderTypes,
@@ -15,4 +16,7 @@ const scenarioRenderTypes = {
   SliderNext: AllRenderTypes,
 };
 
-module.exports = scenarioRenderTypes;
+module.exports = {
+  scenarioRenderTypes,
+  DefaultRenderTypes,
+};
