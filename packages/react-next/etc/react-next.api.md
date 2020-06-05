@@ -438,14 +438,9 @@ export interface IPivotItemProps extends React.HTMLAttributes<HTMLDivElement> {
 export interface IPivotProps extends React.HTMLAttributes<HTMLDivElement> {
     className?: string;
     componentRef?: React.RefObject<IPivot>;
-    defaultSelectedIndex?: number;
     defaultSelectedKey?: string;
     getTabId?: (itemKey: string, index: number) => string;
     headersOnly?: boolean;
-    // @deprecated
-    initialSelectedIndex?: number;
-    // @deprecated
-    initialSelectedKey?: string;
     linkFormat?: PivotLinkFormatType;
     linkSize?: PivotLinkSizeType;
     onLinkClick?: (item?: PivotItem, ev?: React.MouseEvent<HTMLElement>) => void;
