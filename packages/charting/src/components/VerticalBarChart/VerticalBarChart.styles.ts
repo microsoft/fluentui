@@ -1,7 +1,7 @@
 import { IVerticalBarChartStyleProps, IVerticalBarChartStyles } from './VerticalBarChart.types';
 
 export const getStyles = (props: IVerticalBarChartStyleProps): IVerticalBarChartStyles => {
-  const { className, theme, width, height, legendColor, shouldHighlight } = props;
+  const { className, theme, width, height, shouldHighlight } = props;
 
   const chartWidth = width + 50;
   const chartPadding = 20;
@@ -16,27 +16,6 @@ export const getStyles = (props: IVerticalBarChartStyleProps): IVerticalBarChart
       className,
       {
         width: chartWidth + 2 * chartPadding,
-      },
-    ],
-    hoverCardRoot: {
-      paddingLeft: '16px',
-      paddingRight: '22px',
-      paddingTop: '15px',
-      paddingBottom: '8px',
-    },
-
-    hoverCardTextStyles: [
-      theme.fonts.small,
-      {
-        lineHeight: '14px',
-      },
-    ],
-
-    hoverCardDataStyles: [
-      theme.fonts.xxLarge,
-      {
-        lineHeight: '31px',
-        color: legendColor === '' ? theme.palette.black : legendColor,
       },
     ],
     opacityChangeOnHover: {

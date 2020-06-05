@@ -236,14 +236,14 @@ const ColorSchemeExample = () => (
 export default ColorSchemeExample;
         `}
             render={() => (
-              <React.Fragment>
+              <>
                 <Provider theme={mergeThemes(teamsTheme, theme)}>
                   <Box content="teamsTheme" />
                 </Provider>
                 <Provider theme={mergeThemes(teamsHighContrastTheme, theme)}>
                   <Box content="teamsHighContrastTheme" />
                 </Provider>
-              </React.Fragment>
+              </>
             )}
           />
 

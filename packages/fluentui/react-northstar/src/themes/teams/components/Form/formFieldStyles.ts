@@ -1,8 +1,9 @@
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { FormFieldStylesProps } from '../../../../components/Form/FormField';
 import { pxToRem } from '../../../../utils';
+import { FormFieldVariables } from './formFieldVariables';
 
-const formFieldStyles: ComponentSlotStylesPrepared<FormFieldStylesProps> = {
+const formFieldStyles: ComponentSlotStylesPrepared<FormFieldStylesProps, FormFieldVariables> = {
   root: ({ props, variables }): ICSSInJSStyle => ({}),
   label: ({ props }): ICSSInJSStyle => {
     const { type, inline, required } = props;
@@ -19,7 +20,7 @@ const formFieldStyles: ComponentSlotStylesPrepared<FormFieldStylesProps> = {
       }),
     };
   },
-  control: ({ props }): ICSSInJSStyle => {
+  control: ({ props, variables: v }): ICSSInJSStyle => {
     const { type } = props;
     return {
       ...(type &&
@@ -28,8 +29,12 @@ const formFieldStyles: ComponentSlotStylesPrepared<FormFieldStylesProps> = {
         }),
     };
   },
-  message: (): ICSSInJSStyle => ({
+  message: ({ props: p, variables: v }): ICSSInJSStyle => ({
+    ...(p.hasErrorMessage && { color: v.colorScheme.red.foreground }),
     display: 'block',
+  }),
+  icon: ({ props: p, variables: v }): ICSSInJSStyle => ({
+    ...(p.hasErrorMessage && { color: v.colorScheme.red.foreground }),
   }),
 };
 
