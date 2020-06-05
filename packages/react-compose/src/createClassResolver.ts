@@ -1,4 +1,4 @@
-import { GenericDictionary, ClassDictionary, ClassResolver } from './types';
+import { GenericDictionary, ClassDictionary } from './types';
 import { appendClasses } from './appendClasses';
 
 /**
@@ -15,14 +15,14 @@ import { appendClasses } from './appendClasses';
  * Remaining class names would be interpretted as modifiers, applied to the `root` slot when
  * the component `state` contains a truthy matching prop name.
  */
-export const createClassResolver = (classes: ClassDictionary): ClassResolver => {
+export const createClassResolver = (classes: ClassDictionary) => {
   // This is in creation time, so this will happen once per css file.
   const { slots, modifiers, enums } = createResolvedMap(classes);
 
   // Everything in the function below will happen at runtime, so it's very critical that this
   // code is as minimal as possible.
   // tslint:disable-next-line:no-function-expression
-  return function classResolver(state: GenericDictionary, partialClasses?: ClassDictionary): ClassDictionary {
+  return function classResolver(state: GenericDictionary): ClassDictionary {
     const resolvedClasses: Record<string, string> = {};
 
     let modifierClasses = '';
@@ -44,13 +44,6 @@ export const createClassResolver = (classes: ClassDictionary): ClassResolver => 
     for (const slotName of Object.keys(slots)) {
       resolvedClasses[slotName] = appendClasses(slots[slotName], modifierClasses, enumClasses);
     }
-
-    if (partialClasses) {
-      for (const slotName of Object.keys(partialClasses)) {
-        resolvedClasses[slotName] = appendClasses(partialClasses[slotName], resolvedClasses[slotName]);
-      }
-    }
-
     return resolvedClasses as ClassDictionary;
   };
 };
