@@ -2,6 +2,56 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 05 Jun 2020 05:09:39 GMT",
+      "tag": "office-ui-fabric-react_v7.117.4",
+      "version": "7.117.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixing GroupedList custom example aria error.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "97e676241348d5597786ec114976544d88246baf",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Stack: Clarifying deprecated message of props replaced by tokens.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "ce867588dbf04eb67f014453ad01ae687a1d334f",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 04 Jun 2020 12:35:08 GMT",
+      "tag": "office-ui-fabric-react_v7.117.3",
+      "version": "7.117.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "CommandBar: Fixed caching to greatly improve performance for all users",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "acd84a331fc341b32aa8dde91fec4413f0258823",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Pivot: replace onKeyPress with onKeyDown and ariaLabel with aria-label",
+            "author": "behowell@microsoft.com",
+            "commit": "6cdfa9fece63bcc310de21b7b5225aed0d029ec8",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Fix mismatch with published version",
+            "author": "elcraig@microsoft.com",
+            "commit": "af0f0804be81547cd98ca47ec6a1a3e6d19899e4",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 02 Jun 2020 12:36:30 GMT",
       "tag": "office-ui-fabric-react_v7.117.1",
       "version": "7.117.1",
