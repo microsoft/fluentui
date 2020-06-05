@@ -62,7 +62,7 @@ export type ComposeOptions<TInputProps = {}, TInputStylesProps = {}, TParentProp
 
   mapPropsToStylesProps?: (props: TParentStylesProps & TInputProps) => TInputStylesProps;
 
-  handledProps?: (keyof (TInputProps & { as: React.ElementType }))[];
+  handledProps?: (keyof TInputProps | 'as')[];
 
   overrideStyles?: boolean;
 
