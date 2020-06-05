@@ -32,6 +32,7 @@ import {
   useStyles,
   useAccessibility,
 } from '@fluentui/react-bindings';
+import { ExclamationCircleIcon } from '@fluentui/react-icons-northstar';
 
 export interface InputSlotClassNames {
   input: string;
@@ -90,6 +91,18 @@ export interface InputProps extends UIComponentProps, ChildrenComponentProps, Su
 
   /** Shorthand for the wrapper component. */
   wrapper?: ShorthandValue<BoxProps>;
+
+  /** Input can be required to be valid. */
+  required?: boolean;
+
+  /** Input can have error state */
+  error?: boolean;
+
+  /** Input can have error indicator when error is true */
+  errorIndicator?: ShorthandValue<BoxProps>;
+
+  /** Optional Icon to display inside the Input if required and fulfilled. */
+  successIndicator?: ShorthandValue<BoxProps>;
 }
 
 export const inputClassName = 'ui-input';
@@ -99,9 +112,10 @@ export const inputSlotClassNames: InputSlotClassNames = {
 };
 
 export type InputStylesProps = Required<
-  Pick<InputProps, 'fluid' | 'inverted' | 'inline' | 'disabled' | 'clearable' | 'iconPosition'> & {
+  Pick<InputProps, 'fluid' | 'inverted' | 'inline' | 'disabled' | 'clearable' | 'iconPosition' | 'error'> & {
     hasIcon: boolean;
     hasValue: boolean;
+    requiredAndSuccessful: boolean;
   }
 >;
 
@@ -124,6 +138,10 @@ const Input: React.FC<WithAsProp<InputProps>> & FluentComponentStaticProps<Input
     design,
     styles,
     variables,
+    required,
+    successIndicator,
+    error,
+    errorIndicator,
   } = props;
   const inputRef = React.useRef<HTMLInputElement>();
 
@@ -137,6 +155,7 @@ const Input: React.FC<WithAsProp<InputProps>> & FluentComponentStaticProps<Input
     initialValue: '',
   });
   const hasValue: boolean = !!value && (value as string)?.length !== 0;
+  const requiredAndSuccessful = required && !!successIndicator && hasValue;
 
   const { styles: resolvedStyles } = useStyles<InputStylesProps>(Input.displayName, {
     className: inputClassName,
@@ -146,9 +165,11 @@ const Input: React.FC<WithAsProp<InputProps>> & FluentComponentStaticProps<Input
       inline,
       disabled,
       clearable,
-      hasIcon: !!icon,
+      hasIcon: !!icon || !!successIndicator || !!error,
+      requiredAndSuccessful,
       iconPosition,
       hasValue,
+      error,
     }),
     mapPropsToInlineStyles: () => ({
       className,
@@ -172,6 +193,8 @@ const Input: React.FC<WithAsProp<InputProps>> & FluentComponentStaticProps<Input
     },
     mapPropsToBehavior: () => ({
       disabled,
+      required,
+      error,
     }),
     rtl: context.rtl,
   });
@@ -210,7 +233,12 @@ const Input: React.FC<WithAsProp<InputProps>> & FluentComponentStaticProps<Input
     if (clearable && (value as string)?.length !== 0) {
       return {};
     }
-
+    if (requiredAndSuccessful) {
+      return successIndicator;
+    }
+    if (error) {
+      return errorIndicator;
+    }
     return icon || null;
   };
 
@@ -281,6 +309,10 @@ Input.propTypes = {
   type: PropTypes.string,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   wrapper: customPropTypes.wrapperShorthand,
+  required: PropTypes.bool,
+  successIndicator: customPropTypes.shorthandAllowingChildren,
+  error: PropTypes.bool,
+  errorIndicator: customPropTypes.shorthandAllowingChildren,
 };
 
 Input.defaultProps = {
@@ -288,6 +320,7 @@ Input.defaultProps = {
   type: 'text',
   wrapper: {},
   iconPosition: 'end',
+  errorIndicator: <ExclamationCircleIcon />,
 };
 
 Input.handledProps = Object.keys(Input.propTypes) as any;

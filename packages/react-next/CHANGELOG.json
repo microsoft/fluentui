@@ -2,6 +2,21 @@
   "name": "@fluentui/react-next",
   "entries": [
     {
+      "date": "Thu, 04 Jun 2020 12:35:08 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.34",
+      "version": "8.0.0-alpha.34",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Pivot: replace onKeyPress with onKeyDown and ariaLabel with aria-label",
+            "author": "behowell@microsoft.com",
+            "commit": "6cdfa9fece63bcc310de21b7b5225aed0d029ec8",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 02 Jun 2020 12:36:30 GMT",
       "tag": "@fluentui/react-next_v8.0.0-alpha.33",
       "version": "8.0.0-alpha.33",
