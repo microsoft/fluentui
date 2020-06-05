@@ -99,7 +99,7 @@ export type ComposePreparedOptions<TProps = {}, TState = TProps> = {
   mapPropsToStylesPropsChain: ((props: object) => object)[];
   render: ComposeRenderFunction;
 
-  handledProps?: (keyof TInputProps | 'as')[];
+  handledProps: (keyof TProps | 'as')[];
 
   overrideStyles: boolean;
 
