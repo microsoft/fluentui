@@ -4,7 +4,7 @@ const files = glob.sync(config.paths.docs('**/*.steps.ts'));
 console.log(files);
 const ieSteps = files.filter(file => require(file).steps?.browsers?.includes('ie11'));
 const excludeIeFiles = files.filter(file => !require(file).steps?.browsers?.includes('ie11'));
-const ieRegexes = ieSteps.map(file => new RegExp(file.replace(/\.steps\.ts$/, '.tsx')));
-export const ieRegexesExcludes = excludeIeFiles.map(file => new RegExp(file.replace(/\.steps\.ts$/, '.tsx')));
+const ieRegexes = ieSteps.map(file => new RegExp(file.replace(/\.steps\.ts/, '.tsx')));
+export const ieRegexesExcludes = excludeIeFiles.map(file => new RegExp(file.replace(/\.steps\.ts/, '.tsx')));
 
 export default ieRegexes;
