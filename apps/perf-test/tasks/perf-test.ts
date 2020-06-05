@@ -242,7 +242,7 @@ module.exports = async function getPerfRegressions() {
       const testUrlParams = `?scenario=${scenarioName}&iterations=${iterations}&renderType=${renderType}`;
 
       scenarios[scenarioKey] = {
-        baseline: `${urlForDeploy}${testUrlParams}`, // TODO: revert before merging
+        baseline: `${urlForMaster}${testUrlParams}`,
         scenario: `${urlForDeploy}${testUrlParams}`,
       };
 
@@ -276,7 +276,9 @@ module.exports = async function getPerfRegressions() {
     tempDir,
     pageActions: async (page, options) => {
       await page.goto(options.url);
-      await page.waitForSelector('#render-done');
+
+      // TODO: uncomment to enable re-render tests
+      // await page.waitForSelector('#render-done');
     },
   };
 

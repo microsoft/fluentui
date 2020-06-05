@@ -5,18 +5,19 @@ const AllRenderTypes = ['mount', 'rerender'];
 const DefaultRenderTypes = ['mount'];
 
 const scenarioRenderTypes = {
-  Checkbox: AllRenderTypes,
-  CheckboxNext: AllRenderTypes,
-  PrimaryButton: AllRenderTypes,
-  DefaultButton: AllRenderTypes,
-  ButtonNext: AllRenderTypes,
-  Link: AllRenderTypes,
-  LinkNext: AllRenderTypes,
-  Slider: AllRenderTypes,
-  SliderNext: AllRenderTypes,
-  Pivot: AllRenderTypes,
-  PivotNext: AllRenderTypes,
-  ThemeProvider: AllRenderTypes,
+  // TODO: uncomment to enable re-render tests
+  // Checkbox: AllRenderTypes,
+  // CheckboxNext: AllRenderTypes,
+  // PrimaryButton: AllRenderTypes,
+  // DefaultButton: AllRenderTypes,
+  // ButtonNext: AllRenderTypes,
+  // Link: AllRenderTypes,
+  // LinkNext: AllRenderTypes,
+  // Slider: AllRenderTypes,
+  // SliderNext: AllRenderTypes,
+  // Pivot: AllRenderTypes,
+  // PivotNext: AllRenderTypes,
+  // ThemeProvider: AllRenderTypes,
 };
 
 module.exports = {
