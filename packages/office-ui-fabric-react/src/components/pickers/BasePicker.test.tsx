@@ -359,7 +359,7 @@ describe('BasePicker', () => {
     expect(getSuggestions(document)).toBeFalsy();
   });
 
-  it('Opens menu on click when suggestions has been dismissed', () => {
+  it('Opens menu on click when suggestions have been dismissed', () => {
     jest.useFakeTimers();
     document.body.appendChild(root);
 
