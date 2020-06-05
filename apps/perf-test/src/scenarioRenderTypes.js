@@ -13,7 +13,7 @@ const DefaultRenderTypes = ['Mount'];
 
 const scenarioRenderTypes = {
   // TODO: uncomment to enable re-render tests
-  // ThemeProvider: AllRenderTypes,
+  ThemeProvider: AllRenderTypes,
 };
 
 module.exports = {
