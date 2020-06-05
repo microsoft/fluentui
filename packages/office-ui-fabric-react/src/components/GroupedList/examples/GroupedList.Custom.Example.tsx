@@ -43,8 +43,10 @@ const onRenderHeader = (props: IGroupHeaderProps): JSX.Element => {
 
 const onRenderCell = (nestingDepth: number, item: IExampleItem, itemIndex: number): JSX.Element => {
   return (
-    <div data-selection-index={itemIndex}>
-      <span className={classNames.name}>{item.name}</span>
+    <div role="row" data-selection-index={itemIndex}>
+      <span role="cell" className={classNames.name}>
+        {item.name}
+      </span>
     </div>
   );
 };

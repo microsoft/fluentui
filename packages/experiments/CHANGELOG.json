@@ -2,6 +2,21 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Fri, 05 Jun 2020 05:09:39 GMT",
+      "tag": "@uifabric/experiments_v7.25.3",
+      "version": "7.25.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adjusting Tile scss",
+            "author": "dzearing@microsoft.com",
+            "commit": "508bd36b17dd15b3d9651d75f9b27a35a864e38a",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 29 May 2020 12:35:34 GMT",
       "tag": "@uifabric/experiments_v7.25.0",
       "version": "7.25.0",
