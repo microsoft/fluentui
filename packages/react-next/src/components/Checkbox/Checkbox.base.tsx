@@ -62,6 +62,7 @@ export const CheckboxBase = compose<'div', ICheckboxProps, ICheckboxProps, {}, {
       'boxSide',
       'ariaLabel',
       'ariaLabelledBy',
+      'ariaDescribedBy',
       'ariaPositionInSet',
       'ariaSetSize',
       'styles',
