@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Removing side effect code that was breaking webpack treeshaking.",
-  "packageName": "@uifabric/utilities",
-  "email": "dzearing@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-06-01T04:52:56.250Z"
-}

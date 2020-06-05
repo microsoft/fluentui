@@ -107,24 +107,15 @@ const createMarkdownTable = (perExamplePerfMeasures: PerExamplePerfMeasures) => 
   ]);
 };
 
-task('perf:clean', () => del(paths.perfDist(), { force: true }));
-
-task('perf:build', cb => {
-  webpackPlugin(require('../../webpack/webpack.config.perf').default, cb);
-});
-
-task('perf:run', async () => {
-  const measures: ProfilerMeasureCycle[] = [];
-  const times = (argv.times as string) || DEFAULT_RUN_TIMES;
-  const filter = argv.filter;
-
+async function runMeasures(browser: any, filter: string, mode: string, times: number): Promise<ProfilerMeasureCycle[]> {
+  // Hides progress bar on CI
   const bar = process.env.TF_BUILD ? { tick: _.noop } : new ProgressBar(':bar :current/:total', { total: times });
+  const measures: ProfilerMeasureCycle[] = [];
 
-  let browser;
+  // "new-page" allows to execute test suites always on a new page
+  // "same-page" allows to execute test suites always on a same page (better for caching scenarios)
 
-  try {
-    browser = await puppeteer.launch(safeLaunchOptions());
-
+  if (mode === 'new-page') {
     for (let i = 0; i < times; i++) {
       const page = await browser.newPage();
       await page.goto(`http://${config.server_host}:${config.perf_port}`);
@@ -135,6 +126,45 @@ task('perf:run', async () => {
 
       await page.close();
     }
+  } else if (mode === 'same-page') {
+    const page = await browser.newPage();
+    await page.goto(`http://${config.server_host}:${config.perf_port}`);
+
+    // Empty run to skip slow first run
+    await page.evaluate(filter => window.runMeasures(filter), filter);
+
+    for (let i = 0; i < times; i++) {
+      const measuresFromStep = await page.evaluate(filter => window.runMeasures(filter), filter);
+
+      measures.push(measuresFromStep);
+      bar.tick();
+    }
+
+    await page.close();
+  } else {
+    throw new Error(`Mode "${mode}" is not supported`);
+  }
+
+  return measures;
+}
+
+task('perf:clean', () => del(paths.perfDist(), { force: true }));
+
+task('perf:build', cb => {
+  webpackPlugin(require('../../webpack/webpack.config.perf').default, cb);
+});
+
+task('perf:run', async () => {
+  const filter = argv.filter as string;
+  const mode = (argv.mode as string) || 'new-page';
+  const times = (argv.times as number) || DEFAULT_RUN_TIMES;
+
+  let browser;
+  let measures: ProfilerMeasureCycle[];
+
+  try {
+    browser = await puppeteer.launch(safeLaunchOptions());
+    measures = await runMeasures(browser, filter, mode, times);
   } finally {
     if (browser) {
       await browser.close();
