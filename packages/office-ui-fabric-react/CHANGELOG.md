@@ -1,8 +1,28 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 02 Jun 2020 12:36:30 GMT and should not be manually modified.
+This log was last generated on Fri, 05 Jun 2020 05:09:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.117.4](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.117.4)
+
+Fri, 05 Jun 2020 05:09:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.117.3..office-ui-fabric-react_v7.117.4)
+
+### Patches
+
+- Fixing GroupedList custom example aria error. ([PR #13457](https://github.com/microsoft/fluentui/pull/13457) by humbertomakotomorimoto@gmail.com)
+- Stack: Clarifying deprecated message of props replaced by tokens. ([PR #13476](https://github.com/microsoft/fluentui/pull/13476) by humbertomakotomorimoto@gmail.com)
+
+## [7.117.3](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.117.3)
+
+Thu, 04 Jun 2020 12:35:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.117.1..office-ui-fabric-react_v7.117.3)
+
+### Patches
+
+- CommandBar: Fixed caching to greatly improve performance for all users ([PR #13428](https://github.com/microsoft/fluentui/pull/13428) by mgodbolt@microsoft.com)
+- Pivot: replace onKeyPress with onKeyDown and ariaLabel with aria-label ([PR #13442](https://github.com/microsoft/fluentui/pull/13442) by behowell@microsoft.com)
 
 ## [7.117.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.117.1)
 

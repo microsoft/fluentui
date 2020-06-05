@@ -37,6 +37,9 @@ export { default as Embed } from './components/Embed/embedVariables';
 export { default as Flex } from './components/Flex/flexVariables';
 export { default as FlexItem } from './components/Flex/flexItemVariables';
 
+export { default as FormField } from './components/Form/formFieldVariables';
+export { default as FormMessage } from './components/Form/formMessageVariables';
+
 export { default as Grid } from './components/Grid/gridVariables';
 
 export { default as Header } from './components/Header/headerVariables';
