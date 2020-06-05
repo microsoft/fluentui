@@ -105,7 +105,7 @@ export default async function getPerfRegressions(baselineOnly: boolean = false) 
     outDir,
     tempDir,
     pageActions: async (page, options) => {
-      page.setDefaultTimeout(90000); // set 90s timeout, default is 30s.
+      page.setDefaultTimeout(0); // set no timeout
       await page.goto(options.url);
     },
   };

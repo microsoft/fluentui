@@ -16,6 +16,7 @@ const scenarioRenderTypes = {
   SliderNext: AllRenderTypes,
   Pivot: AllRenderTypes,
   PivotNext: AllRenderTypes,
+  ThemeProvider: AllRenderTypes,
 };
 
 module.exports = {
