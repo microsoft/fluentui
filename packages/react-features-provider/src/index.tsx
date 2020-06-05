@@ -4,24 +4,25 @@ import { Features } from './types';
 export { Features } from './types';
 
 /**
- * FeatureFlags allows us to ship features off by default, unless the consuming app turns on that feature. This is
+ * Feature flags allow us to ship features off by default, unless the consuming app turns on that feature. This is
  * intended to let a partner test a given feature first before releasing it to the rest of FluentUI consumers.
  * The flags are provided via React Context.
  */
+
 const _features: Record<string, string> = {};
 
 /**
- * React context for accessing the features.
+ * React context for accessing feature flags.
  */
 export const FeaturesContext = React.createContext<Features>(_features);
 
 /**
- * Feature hook for accessing feature flags.
+ * Hook for accessing feature flags.
  */
 export const useFeatures = () => React.useContext(FeaturesContext);
 
 /**
- * Gets initial feature set. Note that if contextual features are provided through FeaturesProvider, this
+ * Gets initial feature flags. Note that if contextual features are provided through FeaturesProvider, this
  * will not return those.
  */
 export const getInitialFeatures = (): Features => _features;
@@ -39,7 +40,8 @@ export const setInitialFeatures = (features: Features) => {
 };
 
 /**
- * Exposes a FeatOuresProvider component, which takes in the feature flags and provides them via context.
+ * Exposes a FeaturesProvider component, which takes in new feature flags and provides them via context.
+ * Usage of this provider wrapper prevents overwriting of other feature flags set in a higher context.
  */
 export const FeaturesProvider = (props: React.PropsWithChildren<Features>) => {
   const { children, ...rest } = props;

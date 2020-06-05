@@ -8,10 +8,6 @@ type TestFeatures = {
 };
 
 describe('setInitialFeatures', () => {
-  beforeEach(() => {
-    setInitialFeatures({});
-  });
-
   // Test component which uses the hook.
   const Foo = () => {
     const features = useFeaturesWrapper();
