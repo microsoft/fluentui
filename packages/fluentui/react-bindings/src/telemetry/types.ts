@@ -6,6 +6,10 @@ export type ComponentPerfStats = {
   msMin: number;
   msMax: number;
 
+  msResolveVariablesTotal: number;
+  msResolveStylesTotal: number;
+  msRenderStylesTotal: number;
+
   stylesRootCacheHits: number;
   stylesSlotsCacheHits: number;
 };
@@ -27,4 +31,12 @@ export class Telemetry {
   reset() {
     this.performance = {};
   }
+  //
+  // startTimer() {
+  //   return this.enabled ? performance.now() : 0
+  // }
+  //
+  // end() {
+  //
+  // }
 }

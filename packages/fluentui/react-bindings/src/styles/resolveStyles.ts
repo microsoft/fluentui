@@ -52,25 +52,25 @@ const resolveStyles = (
     rtl,
     disableAnimations,
     renderer,
-    performance,
+    performance: performanceFlags,
     telemetry,
   } = options;
 
   const { className, design, styles, variables, ...stylesProps } = props;
   const noInlineStylesOverrides = !(design || styles);
 
-  let noVariableOverrides = performance.enableBooleanVariablesCaching || !variables;
+  let noVariableOverrides = performanceFlags.enableBooleanVariablesCaching || !variables;
 
   /* istanbul ignore else */
   if (process.env.NODE_ENV !== 'production') {
-    if (!performance.enableStylesCaching && performance.enableBooleanVariablesCaching) {
+    if (!performanceFlags.enableStylesCaching && performanceFlags.enableBooleanVariablesCaching) {
       throw new Error(
         '@fluentui/react-northstar: Please check your "performance" settings on "Provider", to enable "enableBooleanVariablesCaching" you need to enable "enableStylesCaching"',
       );
     }
   }
 
-  if (performance.enableBooleanVariablesCaching) {
+  if (performanceFlags.enableBooleanVariablesCaching) {
     if (_.isPlainObject(variables)) {
       const hasOnlyBooleanVariables = Object.keys(variables).every(
         variableName =>
@@ -87,7 +87,7 @@ const resolveStyles = (
     }
   }
 
-  const cacheEnabled = performance.enableStylesCaching && noInlineStylesOverrides && noVariableOverrides;
+  const cacheEnabled = performanceFlags.enableStylesCaching && noInlineStylesOverrides && noVariableOverrides;
 
   // Merge theme styles with inline overrides if any
   let mergedStyles: ComponentSlotStylesPrepared;
@@ -128,7 +128,7 @@ const resolveStyles = (
     theme: { direction },
     disableAnimations,
     displayName: allDisplayNames.join(':'), // does not affect styles, only used by useEnhancedRenderer in docs
-    sanitizeCss: performance.enableSanitizeCssPlugin,
+    sanitizeCss: performanceFlags.enableSanitizeCssPlugin,
   };
 
   const renderStyles = renderStylesInput || ((style: ICSSInJSStyle) => renderer.renderRule(() => style, felaParam));
@@ -147,7 +147,8 @@ const resolveStyles = (
   }
 
   const propsCacheKey = cacheEnabled ? JSON.stringify(stylesProps) : '';
-  const variablesCacheKey = cacheEnabled && performance.enableBooleanVariablesCaching ? JSON.stringify(variables) : '';
+  const variablesCacheKey =
+    cacheEnabled && performanceFlags.enableBooleanVariablesCaching ? JSON.stringify(variables) : '';
   const componentCacheKey = cacheEnabled
     ? `${allDisplayNames.join(':')}:${propsCacheKey}:${variablesCacheKey}:${styleParam.rtl}${
         styleParam.disableAnimations
@@ -186,6 +187,8 @@ const resolveStyles = (
           return resolvedStyles[lazyEvaluationKey];
         }
 
+        const telemetryStart = performance.now();
+
         // resolve/render slot styles once and cache
         resolvedStyles[lazyEvaluationKey] = mergedStyles[slotName](styleParam);
 
@@ -199,6 +202,12 @@ const resolveStyles = (
         if (process.env.NODE_ENV !== 'production' && isDebugEnabled) {
           resolvedStylesDebug[slotName] = resolvedStyles[slotName]['_debug'];
           delete resolvedStyles[slotName]['_debug'];
+        }
+
+        const telemetryStop = performance.now();
+
+        if (telemetry?.performance[primaryDisplayName]) {
+          telemetry.performance[primaryDisplayName].msResolveStylesTotal += telemetryStop - telemetryStart;
         }
 
         return resolvedStyles[lazyEvaluationKey];
@@ -222,6 +231,10 @@ const resolveStyles = (
         if (cacheEnabled && theme) {
           const classesThemeCache = classesCache.get(theme) || {};
 
+          //
+          // Cached styles
+          //
+
           if (classesThemeCache[slotCacheKey] || classesThemeCache[slotCacheKey] === '') {
             if (telemetry?.performance[primaryDisplayName]) {
               if (slotName === 'root') {
@@ -237,6 +250,10 @@ const resolveStyles = (
           }
         }
 
+        //
+        // Lazy eval
+        //
+
         if (classes[lazyEvaluationKey]) {
           return slotName === 'root'
             ? cx(componentClassName, classes[lazyEvaluationKey], className)
@@ -245,6 +262,8 @@ const resolveStyles = (
 
         // this resolves the getter magic
         const styleObj = resolvedStyles[slotName];
+
+        const telemetryStart = performance.now();
 
         if (renderStyles && styleObj) {
           classes[lazyEvaluationKey] = renderStyles(styleObj);
@@ -257,9 +276,18 @@ const resolveStyles = (
           }
         }
 
-        return slotName === 'root'
-          ? cx(componentClassName, classes[lazyEvaluationKey], className)
-          : classes[lazyEvaluationKey];
+        const resultClassName =
+          slotName === 'root'
+            ? cx(componentClassName, classes[lazyEvaluationKey], className)
+            : classes[lazyEvaluationKey];
+
+        const telemetryStop = performance.now();
+
+        if (telemetry?.performance[primaryDisplayName]) {
+          telemetry.performance[primaryDisplayName].msRenderStylesTotal += telemetryStop - telemetryStart;
+        }
+
+        return resultClassName;
       },
     });
   });

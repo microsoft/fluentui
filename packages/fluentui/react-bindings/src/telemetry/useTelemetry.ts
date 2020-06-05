@@ -22,6 +22,10 @@ export const getTelemetry = (
           msMin: Number.MAX_SAFE_INTEGER,
           msMax: 0,
 
+          msResolveVariablesTotal: 0,
+          msResolveStylesTotal: 0,
+          msRenderStylesTotal: 0,
+
           stylesRootCacheHits: 0,
           stylesSlotsCacheHits: 0,
         };

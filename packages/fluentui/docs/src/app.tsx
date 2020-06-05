@@ -6,7 +6,7 @@ import { Provider, Debug, teamsTheme, teamsDarkTheme, teamsHighContrastTheme } f
 
 import { mergeThemes } from '@fluentui/styles';
 import { ComponentPerfStats, defaultPerformanceFlags, StylesContextPerformance } from '@fluentui/react-bindings';
-import { useTable, useSortBy } from 'react-table';
+import { useTable, useSortBy, useFilters } from 'react-table';
 
 import { ThemeContext, ThemeContextData, themeContextDefaults } from './context/ThemeContext';
 import Routes from './routes';
@@ -26,21 +26,55 @@ const themes = {
   teamsHighContrastTheme,
 };
 
-type PerfFlagAction = {
-  name: keyof StylesContextPerformance;
-  value: boolean;
+type PerformanceAction =
+  | {
+      name: keyof StylesContextPerformance;
+      type: 'FLAG';
+      value: boolean;
+    }
+  | {
+      type: 'STYLE_DETAILS';
+      value: boolean;
+    }
+  | {
+      type: 'COMPONENT_FILTER';
+      value: string | undefined;
+    }
+  | {
+      type: 'COLUMN_SORT';
+      column: string;
+      value: 'asc' | 'desc';
+    };
+
+type PerformanceState = {
+  flags: StylesContextPerformance;
+  filter: string | undefined;
+  sort: { column: string; value: 'asc' | 'desc' } | undefined;
+  styleDetails: boolean;
 };
 
-const reducer: React.Reducer<StylesContextPerformance, PerfFlagAction> = (prevState, action) => {
-  return {
-    ...prevState,
-    [action.name]: action.value,
-  };
+const stateReducer: React.Reducer<PerformanceState, PerformanceAction> = (prevState, action) => {
+  switch (action.type) {
+    case 'FLAG':
+      return { ...prevState, flags: { ...prevState.flags, [action.name]: action.value } };
+    case 'STYLE_DETAILS':
+      return { ...prevState, styleDetails: action.value };
+    case 'COMPONENT_FILTER':
+      return { ...prevState, filter: action.value };
+    case 'COLUMN_SORT':
+      if (action.column) {
+        return { ...prevState, sort: { column: action.column, value: action.value } };
+      }
+
+      return { ...prevState, sort: undefined };
+    default:
+      throw new Error('11111');
+  }
 };
 
 const TelemetryGuardPerfFlags: React.FC<{
   flags: StylesContextPerformance;
-  onChange: React.Dispatch<PerfFlagAction>;
+  onChange: React.Dispatch<PerformanceAction>;
 }> = props => (
   <div style={{ flex: 1 }}>
     {Object.keys(props.flags).map(flag => (
@@ -50,7 +84,11 @@ const TelemetryGuardPerfFlags: React.FC<{
           name={flag}
           type="checkbox"
           onChange={e =>
-            props.onChange({ name: e.target.name as keyof StylesContextPerformance, value: e.target.checked })
+            props.onChange({
+              name: e.target.name as keyof StylesContextPerformance,
+              type: 'FLAG',
+              value: e.target.checked,
+            })
           }
         />
         <label style={{ paddingLeft: 5 }}>{flag}</label>
@@ -59,108 +97,317 @@ const TelemetryGuardPerfFlags: React.FC<{
   </div>
 );
 
-const TelemetryGuardView: React.FC<{ telemetryRef: React.RefObject<Telemetry> }> = ({ telemetryRef }) => {
-  const [i, forceUpdate] = React.useReducer((c: number) => c + 1, 0) as [never, () => void];
+type DataType = ComponentPerfStats & {
+  componentName: string;
+  msStylesTotal: number;
+};
+
+type DataTotalType = Omit<DataType, 'componentName'>;
+
+function Filter({ column: { filterValue, preFilteredRows, setFilter } }) {
+  const count = preFilteredRows.length;
+
+  return (
+    <input
+      value={filterValue || ''}
+      onChange={e => {
+        setFilter(e.target.value || undefined); // Set undefined to remove the filter entirely
+      }}
+      placeholder={`Search ${count} records...`}
+    />
+  );
+}
+
+type Created = {
+  telemetryRef: React.RefObject<Telemetry>;
+  showDetails: boolean;
+  filter: string;
+  sort: { column: string; value: 'asc' | 'desc' };
+  onFilterChange: (filter: string) => void;
+  onSortChange: (column: string | undefined, dir: 'asc' | 'desc') => void;
+};
+const TelemetryGuardTable = React.memo<Created>(props => {
+  const { showDetails, filter, sort, onFilterChange, onSortChange, telemetryRef } = props;
+  const [tick, forceUpdate] = React.useReducer((c: number) => c + 1, 0) as [never, () => void];
+
+  const data = React.useMemo(
+    () =>
+      _.map(
+        telemetryRef.current.performance,
+        (values, componentName): DataType => ({
+          componentName,
+          ...values,
+          msStylesTotal: values.msResolveVariablesTotal + values.msResolveStylesTotal + values.msRenderStylesTotal,
+        }),
+      ),
+    [tick, showDetails],
+  );
+  const totals = data.reduce<DataTotalType>(
+    (acc, item) => ({
+      instances: acc.instances + item.instances,
+      renders: acc.renders + item.renders,
+
+      msTotal: acc.msTotal + item.msTotal,
+      msMin: acc.msMin + item.msMin,
+      msMax: acc.msTotal + item.msMax,
+      msStylesTotal: acc.msStylesTotal + item.msStylesTotal,
+
+      msResolveVariablesTotal: acc.msResolveVariablesTotal + item.msResolveVariablesTotal,
+      msResolveStylesTotal: acc.msResolveStylesTotal + item.msResolveStylesTotal,
+      msRenderStylesTotal: acc.msRenderStylesTotal + item.msRenderStylesTotal,
+
+      stylesRootCacheHits: acc.stylesRootCacheHits + item.stylesRootCacheHits,
+      stylesSlotsCacheHits: acc.stylesSlotsCacheHits + item.stylesSlotsCacheHits,
+    }),
+    {
+      instances: 0,
+      renders: 0,
+
+      msTotal: 0,
+      msMin: 0,
+      msMax: 0,
+      msStylesTotal: 0,
+
+      msResolveVariablesTotal: 0,
+      msResolveStylesTotal: 0,
+      msRenderStylesTotal: 0,
+
+      stylesRootCacheHits: 0,
+      stylesSlotsCacheHits: 0,
+    },
+  );
+
+  const COLORS = ['#ffffcc', '#ffeda0', '#fed976', '#feb24c', '#fd8d3c', '#fc4e2a', '#e31a1c', '#bd0026', '#800026'];
+  const color = p => COLORS[Math.round((COLORS.length - 1) * p)];
 
   const columns = React.useMemo(() => {
     const componentsData = _.values(telemetryRef.current.performance);
     const firstComponentData = _.head(componentsData);
 
+    const renderRoundingFooter = (field: keyof DataType) => () => <>{_.round(totals[field], 2)}</>;
+
     return firstComponentData
       ? [
           {
-            Header: 'Component',
-            accessor: 'componentName',
+            Header: 'Components',
+            columns: [
+              {
+                Header: 'Component',
+                Filter,
+                Footer: () => <b>Totals</b>,
+                accessor: 'componentName',
+                disableSortBy: true,
+                filter: 'text',
+              },
+              {
+                Header: 'Instances',
+                Footer: renderRoundingFooter('instances'),
+                accessor: 'instances',
+                disableFilters: true,
+              },
+              {
+                Header: 'Renders',
+                Footer: renderRoundingFooter('renders'),
+                accessor: 'renders',
+                disableFilters: true,
+              },
+            ],
           },
-          ..._.map(firstComponentData, (v, key) => ({
-            Header: _.camelCase(key),
-            accessor: key,
-          })),
-        ]
+          {
+            Header: 'Timers',
+            columns: [
+              {
+                Cell: ({ value }) => _.round(value, 2),
+                Header: 'Total',
+                Footer: renderRoundingFooter('msTotal'),
+                accessor: 'msTotal',
+                disableFilters: true,
+                showPercentage: true,
+              },
+              {
+                Cell: ({ value }) => _.round(value, 2),
+                Header: 'Styles',
+                Footer: renderRoundingFooter('msStylesTotal'),
+                accessor: 'msStylesTotal',
+                disableFilters: true,
+                showPercentage: true,
+              },
+            ],
+          },
+          showDetails && {
+            Header: 'Styles',
+            columns: [
+              {
+                Cell: ({ value }) => _.round(value, 2),
+                Header: 'Variables',
+                Footer: renderRoundingFooter('msResolveVariablesTotal'),
+                accessor: 'msResolveVariablesTotal',
+                disableFilters: true,
+              },
+              {
+                Cell: ({ value }) => _.round(value, 2),
+                Header: 'Styles',
+                Footer: renderRoundingFooter('msResolveStylesTotal'),
+                accessor: 'msResolveStylesTotal',
+                disableFilters: true,
+              },
+              {
+                Cell: ({ value }) => _.round(value, 2),
+                Header: 'Fela',
+                Footer: renderRoundingFooter('msRenderStylesTotal'),
+                accessor: 'msRenderStylesTotal',
+                disableFilters: true,
+              },
+            ],
+          },
+          {
+            Header: 'Cache',
+            columns: [
+              {
+                Header: 'root',
+                accessor: 'stylesRootCacheHits',
+                disableFilters: true,
+              },
+              {
+                Header: 'slots',
+                accessor: 'stylesSlotsCacheHits',
+                disableFilters: true,
+              },
+            ],
+          },
+        ].filter(Boolean)
       : [];
-  }, [i]);
-  const data = React.useMemo(
-    () =>
-      _.map(telemetryRef.current.performance, (values, componentName): ComponentPerfStats & {
-        componentName: string;
-      } => ({
-        componentName,
-        ...values,
-        msTotal: _.round(values.msTotal, 2),
-        msMin: _.round(values.msMin, 2),
-        msMax: _.round(values.msMax, 2),
-      })),
-    [i],
-  );
+  }, [tick, showDetails]);
 
-  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = useTable(
+  const { getTableProps, getTableBodyProps, footerGroups, headerGroups, rows, prepareRow } = useTable(
     {
       columns,
       data,
 
+      autoResetFilters: false,
       autoResetSortBy: false,
+      disableMultiSort: true,
+
+      initialState: {
+        ...(filter && { filters: [{ id: 'componentName', value: filter }] }),
+        ...(sort && { sortBy: [{ id: sort.column, desc: sort.value === 'desc' }] }),
+      },
+      stateReducer: (newState, action, prevState) => {
+        if (action.type === 'setFilter' && action.columnId === 'componentName') {
+          onFilterChange(action.filterValue);
+        }
+
+        if (action.type === 'toggleSortBy') {
+          if (newState.sortBy.length > 0) {
+            onSortChange(action.columnId, newState.sortBy[0].desc ? 'desc' : 'asc');
+          } else {
+            onSortChange(undefined, 'asc');
+          }
+        }
+
+        return newState;
+      },
     },
+    useFilters,
     useSortBy,
   );
 
-  // We don't want to render all 2000 rows for this example, so cap
-  // it at 20 for this use case
-  const firstPageRows = rows.slice(0, 20);
-
   React.useEffect(() => {
     const intervalId = setInterval(() => {
-      forceUpdate();
+      // forceUpdate();
     }, 2000);
 
     return () => clearInterval(intervalId);
   }, [forceUpdate]);
 
   return (
-    <table
-      {...getTableProps()}
-      style={{ border: '1px solid grey', borderBottom: 0, borderCollapse: 'collapse', width: '100%' }}
-    >
-      <thead>
-        {headerGroups.map(headerGroup => (
-          <tr {...headerGroup.getHeaderGroupProps()}>
-            {headerGroup.headers.map(column => (
-              // Add the sorting props to control sorting. For this example
-              // we can add them into the header props
-              <th {...column.getHeaderProps(column.getSortByToggleProps())} style={{ border: '1px solid grey' }}>
-                {column.render('Header')}
-                {/* Add a sort direction indicator */}
-                <span>{column.isSorted ? (column.isSortedDesc ? ' 🔽' : ' 🔼') : ''}</span>
-              </th>
-            ))}
-          </tr>
-        ))}
-      </thead>
-      <tbody {...getTableBodyProps()}>
-        {firstPageRows.map((row, i) => {
-          prepareRow(row);
-          return (
-            <tr {...row.getRowProps()}>
-              {row.cells.map(cell => {
-                return (
-                  <td {...cell.getCellProps()} style={{ border: '1px solid grey' }}>
+    <>
+      <style>{`
+        .telemetry-table {
+          border-collapse: collapse;
+          width: 100%;
+        }
+        
+        .telemetry-table th {
+          border: 1px solid gray;
+        }
+      
+        .telemetry-table td {
+          border: 1px solid gray;
+          text-align: right;
+        }
+        
+        .telemetry-table td:first-child {
+          text-align: left;
+        }
+        
+        `}</style>
+
+      <table {...getTableProps()} className="telemetry-table">
+        <thead>
+          {headerGroups.map(group => (
+            <tr {...group.getHeaderGroupProps()}>
+              {group.headers.map(column => (
+                <th {...column.getHeaderProps()}>
+                  <div {...column.getSortByToggleProps()}>
+                    {column.render('Header')}
+                    <span>{column.isSorted ? (column.isSortedDesc ? ' 🔽' : ' 🔼') : ''}</span>
+                  </div>
+                  <div>{column.canFilter ? column.render('Filter') : null}</div>
+                </th>
+              ))}
+            </tr>
+          ))}
+        </thead>
+        <tbody {...getTableBodyProps()}>
+          {rows.map((row, i) => {
+            prepareRow(row);
+            return (
+              <tr {...row.getRowProps()}>
+                {row.cells.map(cell => (
+                  <td
+                    {...cell.getCellProps({
+                      ...(cell.column.showPercentage && {
+                        style: { backgroundColor: color(cell.value / totals[cell.column.id]) },
+                      }),
+                    })}
+                  >
                     {cell.render('Cell')}
                   </td>
-                );
-              })}
+                ))}
+              </tr>
+            );
+          })}
+        </tbody>
+        <tfoot>
+          {footerGroups.map(group => (
+            <tr {...group.getFooterGroupProps()}>
+              {group.headers.find(header => header.Footer) &&
+                group.headers.map(column => <td {...column.getFooterProps()}>{column.render('Footer')}</td>)}
             </tr>
-          );
-        })}
-      </tbody>
-    </table>
+          ))}
+        </tfoot>
+      </table>
+    </>
   );
-};
+});
 
 const TelemetryGuard: React.FC<{
   children: (telemetryRef: React.RefObject<Telemetry>, performance: StylesContextPerformance) => React.ReactElement;
 }> = props => {
   const { children } = props;
 
-  const [flags, dispatch] = React.useReducer(reducer, defaultPerformanceFlags);
+  const defaultState: PerformanceState = {
+    flags: defaultPerformanceFlags,
+    filter: undefined,
+    sort: undefined,
+    styleDetails: true,
+  };
+  const [state, dispatch] = React.useReducer(
+    stateReducer,
+    // JSON.parse can't handle undefined
+    JSON.parse(localStorage.fluentUIPerformancePanel ?? '""') || defaultState,
+  );
   const telemetryRef = React.useRef<Telemetry>();
 
   React.useEffect(() => {
@@ -170,9 +417,26 @@ const TelemetryGuard: React.FC<{
     };
   }, []);
 
+  React.useEffect(() => {
+    localStorage.fluentUIPerformancePanel = JSON.stringify(state);
+  }, [state]);
+
+  const handleStyleDetailsChange = React.useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => dispatch({ type: 'STYLE_DETAILS', value: e.target.checked }),
+    [],
+  );
+  const handleFilterChange = React.useCallback(
+    (filter: string) => dispatch({ type: 'COMPONENT_FILTER', value: filter }),
+    [],
+  );
+  const handleSortChange = React.useCallback(
+    (column, dir) => dispatch({ type: 'COLUMN_SORT', column, value: dir }),
+    [],
+  );
+
   return (
     <>
-      {children(telemetryRef, flags)}
+      {children(telemetryRef, state.flags)}
       {ReactDOM.createPortal(
         <div
           style={{
@@ -185,11 +449,31 @@ const TelemetryGuard: React.FC<{
             minWidth: 500,
           }}
         >
-          <TelemetryGuardView telemetryRef={telemetryRef} />
+          <div style={{ display: 'flex' }}>
+            <input checked={state.styleDetails} onChange={handleStyleDetailsChange} type="checkbox" />
+            <label style={{ marginLeft: 5 }}>Show all details</label>
+          </div>
+
+          <TelemetryGuardTable
+            telemetryRef={telemetryRef}
+            showDetails={state.styleDetails}
+            filter={state.filter}
+            onFilterChange={handleFilterChange}
+            onSortChange={handleSortChange}
+            sort={state.sort}
+          />
           <div style={{ border: '1px solid gray', display: 'flex', padding: '5px' }}>
-            <TelemetryGuardPerfFlags flags={flags} onChange={dispatch} />
+            <TelemetryGuardPerfFlags flags={state.flags} onChange={dispatch} />
             <div>
               <button onClick={() => telemetryRef.current.reset()}>Clear telemetry</button>
+              <button
+                onClick={() => {
+                  throw new Error('Plz implement me');
+                }}
+              >
+                Reset perf flags to defaults
+              </button>
+              <span style={{ color: 'red' }}>CLOSE YOUR CONSOLE OR YOUR MEASURES WILL BE WRONG</span>
             </div>
           </div>
         </div>,
@@ -213,28 +497,32 @@ class App extends React.Component<any, ThemeContextData> {
       <ThemeContext.Provider value={this.state}>
         <TelemetryGuard>
           {(telemetryRef, performance) => (
-            <Provider
-              as={React.Fragment}
-              theme={mergeThemes(themes[themeName], {
-                staticStyles: [
-                  {
-                    a: {
-                      textDecoration: 'none',
-                    },
-                  },
-                ],
-              })}
-              performance={performance}
-              telemetryRef={telemetryRef}
-            >
-              <Debug />
-              <Routes />
-            </Provider>
+            <PureRender telemetryRef={telemetryRef} performance={performance} themeName={themeName} />
           )}
         </TelemetryGuard>
       </ThemeContext.Provider>
     );
   }
 }
+
+const PureRender = React.memo<any>(({ telemetryRef, performance, themeName }) => (
+  <Provider
+    as={React.Fragment}
+    theme={mergeThemes(themes[themeName], {
+      staticStyles: [
+        {
+          a: {
+            textDecoration: 'none',
+          },
+        },
+      ],
+    })}
+    performance={performance}
+    telemetryRef={telemetryRef}
+  >
+    <Debug />
+    <Routes />
+  </Provider>
+));
 
 export default hot(App);
