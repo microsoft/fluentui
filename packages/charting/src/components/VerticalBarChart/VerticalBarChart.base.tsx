@@ -135,6 +135,11 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       const color: string = point.color!;
       // mapping data to the format Legends component needs
 
+      const checkSimilarLegends = actions.filter((leg: ILegend) => leg.title === point.legend && leg.color === color);
+      if (checkSimilarLegends!.length > 0) {
+        return;
+      }
+
       const legend: ILegend = {
         title: point.legend!,
         color: color,
