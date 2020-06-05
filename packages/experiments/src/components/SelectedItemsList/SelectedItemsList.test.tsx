@@ -22,6 +22,7 @@ export const SelectedTypedList = React.forwardRef(
   ) => <SelectedItemsList<TPersona> ref={ref} {...props} />,
 );
 
+const removeItems = jest.fn();
 const basicItemRenderer = (props: ISelectedItemProps<ISimple>) => {
   return <div id={props.item.name}>{props.item.name}</div>;
 };
@@ -77,6 +78,7 @@ describe('SelectedItemsList', () => {
           { key: 'd1', name: 'da' },
           { key: 'd2', name: 'db' },
         ]}
+        onItemsRemoved={removeItems}
       />,
     );
     expect(wrapper).toBeDefined();
