@@ -37,7 +37,6 @@ export * from './customizations/mergeCustomizations';
 export * from './customizations/mergeSettings';
 export * from './dom';
 export * from './extendComponent';
-export * from './FeatureFlags';
 export * from './focus';
 export * from './getId';
 export * from './getNativeElementProps';
