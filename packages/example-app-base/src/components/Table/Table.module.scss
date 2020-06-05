@@ -13,36 +13,37 @@
   }
 }
 
-.thead .tr,
-.tbody .tr:not(:last-of-type) {
+.head .row,
+.body .row:not(:last-of-type) {
   border-bottom: 1px solid $ms-color-gray60;
 }
 
-.thead {
-  .tr {
+.head {
+  .row {
     @include ms-borderColor-gray160;
   }
 }
 
-.tbody {
+.body {
 }
 
-.tr {
+.row {
+  /* no-op */
 }
 
-.td {
+.cell {
   @include ms-fontColor-gray130;
 }
 
-.th {
+.headerCell {
   @include ms-fontWeight-semibold;
   @include ms-fontColor-gray160;
   @include ms-text-align(left);
   white-space: nowrap;
 }
 
-.th,
-.td {
+.headerCell,
+.cell {
   @include ms-fontSize-14;
   padding: 14px;
   vertical-align: top;
