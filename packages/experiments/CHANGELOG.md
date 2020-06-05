@@ -1,8 +1,17 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 29 May 2020 12:35:34 GMT and should not be manually modified.
+This log was last generated on Fri, 05 Jun 2020 05:09:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.25.3](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.25.3)
+
+Fri, 05 Jun 2020 05:09:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.25.0..@uifabric/experiments_v7.25.3)
+
+### Patches
+
+- Adjusting Tile scss ([PR #13478](https://github.com/microsoft/fluentui/pull/13478) by dzearing@microsoft.com)
 
 ## [7.25.0](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.25.0)
 
