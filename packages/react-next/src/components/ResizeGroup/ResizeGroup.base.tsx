@@ -9,11 +9,13 @@ export interface IResizeGroupState {
   /**
    * Final data used to render proper sized component
    */
+  // tslint:disable-next-line:no-any
   renderedData?: any;
 
   /**
    * Data to render in a hidden div for measurement
    */
+  // tslint:disable-next-line:no-any
   dataToMeasure?: any;
 
   /**
@@ -44,6 +46,7 @@ export const getMeasurementCache = () => {
      * corresponding entry in the measurementsCache, then it will return that value.
      * Returns undefined otherwise.
      */
+    // tslint:disable-next-line:no-any
     getCachedMeasurement: (data: any): number | undefined => {
       if (data && data.cacheKey && measurementsCache.hasOwnProperty(data.cacheKey)) {
         return measurementsCache[data.cacheKey];
@@ -55,6 +58,7 @@ export const getMeasurementCache = () => {
      * Should be called whenever there is a new measurement associated with a given data object.
      * If the data has a cacheKey, store that measurement in the measurementsCache.
      */
+    // tslint:disable-next-line:no-any
     addMeasurementToCache: (data: any, measurement: number): void => {
       if (data.cacheKey) {
         measurementsCache[data.cacheKey] = measurement;
@@ -77,6 +81,7 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
    * @param getElementToMeasureDimension - A function that returns the measurement of the rendered data.
    * Only called when the measurement is not in the cache.
    */
+  // tslint:disable-next-line:no-any
   function _getMeasuredDimension(measuredData: any, getElementToMeasureDimension: () => number): number {
     const cachedDimension = _measurementCache.getCachedMeasurement(measuredData);
     if (cachedDimension !== undefined) {
@@ -97,7 +102,9 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
    * Only called when the measurement is not in the cache.
    */
   function _shrinkContentsUntilTheyFit(
+    // tslint:disable-next-line:no-any
     data: any,
+    // tslint:disable-next-line:no-any
     onReduceData: (prevData: any) => any,
     getElementToMeasureDimension: () => number,
   ): IResizeGroupState {
@@ -147,10 +154,12 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
    * Only called when the measurement is not in the cache.
    */
   function _growDataUntilItDoesNotFit(
+    // tslint:disable:no-any
     data: any,
     onGrowData: (prevData: any) => any,
     getElementToMeasureDimension: () => number,
     onReduceData: (prevData: any) => any,
+    // tslint:enable:no-any
   ): IResizeGroupState {
     let dataToMeasure = data;
     let measuredDimension: number | undefined = _getMeasuredDimension(data, getElementToMeasureDimension);
@@ -197,9 +206,11 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
    */
   function _updateContainerDimension(
     newDimension: number,
+    // tslint:disable:no-any
     fullDimensionData: any,
     renderedData: any,
     onGrowData?: (prevData: any) => any,
+    // tslint:enable:no-any
   ): IResizeGroupState {
     let nextState: IResizeGroupState;
     if (newDimension > _containerDimension!) {
@@ -276,6 +287,7 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
   }
 
   /** Function that determines if we need to render content for measurement based on the measurement cache contents. */
+  // tslint:disable-next-line:no-any
   function shouldRenderDataForMeasurement(dataToMeasure: any | undefined): boolean {
     if (!dataToMeasure || _measurementCache.getCachedMeasurement(dataToMeasure) !== undefined) {
       return false;
@@ -284,6 +296,7 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
     return true;
   }
 
+  // tslint:disable-next-line:no-any
   function getInitialResizeGroupState(data: any): IResizeGroupState {
     return {
       dataToMeasure: { ...data },

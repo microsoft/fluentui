@@ -2,6 +2,35 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Fri, 29 May 2020 12:35:34 GMT",
+      "tag": "@uifabric/experiments_v7.25.0",
+      "version": "7.25.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix Tile border color declarations so they don't get elided",
+            "author": "tmichon@microsoft.com",
+            "commit": "972bb9584f4c1e0f08bbab6308a99e1e1516d53c",
+            "package": "@uifabric/experiments"
+          },
+          {
+            "comment": "Add dedicated touch invoke functionality to SelectionZone",
+            "author": "sebastian.oettl@microsoft.com",
+            "commit": "557a96005568e03981f184a7d663e6dc490ceffc",
+            "package": "@uifabric/experiments"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Add special folder icon signals for Desktop, Documents, and Pictures.",
+            "author": "taenri@microsoft.com",
+            "commit": "cfcf5178fb8304109274a68121c7762a91f55d5b",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 25 May 2020 12:38:22 GMT",
       "tag": "@uifabric/experiments_v7.24.8",
       "version": "7.24.8",

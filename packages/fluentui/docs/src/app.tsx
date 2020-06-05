@@ -29,6 +29,7 @@ const TelemetryGuard: React.FC<{
 
   React.useEffect(() => {
     (window as any).getFluentTelemetry = () => {
+      // eslint-disable-next-line no-console
       console.table(telemetryRef.current.performance);
     };
   }, []);

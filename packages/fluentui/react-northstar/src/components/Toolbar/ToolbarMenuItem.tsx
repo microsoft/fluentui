@@ -26,6 +26,7 @@ import {
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 import { GetRefs, NodeRef, Unstable_NestingAuto } from '@fluentui/react-component-nesting-registry';
+import { useContextSelectors } from '@fluentui/react-context-selector';
 
 import {
   createShorthand,
@@ -46,6 +47,7 @@ import ToolbarMenuItemIcon, { ToolbarMenuItemIconProps } from './ToolbarMenuItem
 import { ToolbarVariablesContext, ToolbarVariablesProvider } from './toolbarVariablesContext';
 import ToolbarMenuItemSubmenuIndicator from './ToolbarMenuItemSubmenuIndicator';
 import ToolbarMenuItemActiveIndicator from './ToolbarMenuItemActiveIndicator';
+import { ToolbarItemSubscribedValue, ToolbarMenuContext } from './toolbarMenuContext';
 
 export interface ToolbarMenuItemProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
   /**
@@ -160,6 +162,10 @@ const ToolbarMenuItem = compose<'button', ToolbarMenuItemProps, ToolbarMenuItemS
 
     const itemRef = React.useRef<HTMLElement>();
     const menuRef = React.useRef<HTMLElement>();
+
+    const { menuSlot } = (useContextSelectors(ToolbarMenuContext, {
+      menuSlot: v => v.slots.menu,
+    }) as unknown) as ToolbarItemSubscribedValue; // TODO: we should improve typings for the useContextSelectors
 
     const parentVariables = React.useContext(ToolbarVariablesContext);
     const mergedVariables = mergeVariablesOverrides(parentVariables, variables);
@@ -384,7 +390,7 @@ const ToolbarMenuItem = compose<'button', ToolbarMenuItemProps, ToolbarMenuItemS
                   {...getPopperPropsFromShorthand(menu)}
                 >
                   <ToolbarVariablesProvider value={mergedVariables}>
-                    {createShorthand(composeOptions.slots.menu || ToolbarMenu, menu, {
+                    {createShorthand(composeOptions.slots.menu || menuSlot || ToolbarMenu, menu, {
                       defaultProps: () => ({
                         className: toolbarMenuItemSlotClassNames.submenu,
                         styles: resolvedStyles.menu,
@@ -436,7 +442,7 @@ const ToolbarMenuItem = compose<'button', ToolbarMenuItemProps, ToolbarMenuItemS
       activeIndicator: ToolbarMenuItemActiveIndicator,
       popup: Popup,
     },
-    mapPropsToSlotProps: props => ({
+    slotProps: props => ({
       icon: {
         hasContent: !!props.content,
       },

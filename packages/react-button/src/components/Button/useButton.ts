@@ -1,6 +1,5 @@
-import { ButtonProps, ButtonSlots, ButtonSlotProps } from './Button.types';
-import { mergeProps } from '../../utils/mergeProps';
-import { ComposePreparedOptions } from '@fluentui/react-compose';
+import { ButtonProps } from './Button.types';
+import { mergeProps, ComposePreparedOptions } from '@fluentui/react-compose';
 
 /**
  * The useButton hook processes the Button component props and returns
@@ -8,4 +7,4 @@ import { ComposePreparedOptions } from '@fluentui/react-compose';
  * @param props
  */
 export const useButton = (props: ButtonProps, options: ComposePreparedOptions) =>
-  mergeProps<ButtonProps, ButtonSlots, ButtonSlotProps>(props, options);
+  mergeProps<ButtonProps>(props, options);
