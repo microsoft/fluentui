@@ -70,7 +70,7 @@ describe('SelectedItemsList', () => {
     });
   });
 
-  it('render all default seleted items in selectedItemsList', () => {
+  it('render all default selected items in selectedItemsList', () => {
     const wrapper = mount<ISelectedItemsList<ISimple>>(
       <SelectedItemsList
         onRenderItem={basicItemRenderer}
@@ -95,5 +95,25 @@ describe('SelectedItemsList', () => {
         .last()
         .text(),
     ).toEqual('db');
+  });
+
+  it('remove all default selected items in selectedItemsList', () => {
+    const wrapper = mount<ISelectedItemsList<ISimple>>(
+      <SelectedItemsList
+        onRenderItem={basicItemRenderer}
+        defaultSelectedItems={[
+          { key: 'd1', name: 'da' },
+          { key: 'd2', name: 'db' },
+        ]}
+        onItemsRemoved={removeItems}
+      />,
+    );
+    expect(wrapper).toBeDefined();
+
+    // NOT WORKING
+    wrapper.invoke('removeItems')([
+      { key: 'd1', name: 'da' },
+      { key: 'd2', name: 'db' },
+    ]);
   });
 });

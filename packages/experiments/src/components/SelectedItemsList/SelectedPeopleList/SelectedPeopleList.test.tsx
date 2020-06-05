@@ -3,6 +3,7 @@ import { create } from 'react-test-renderer';
 
 import { SelectedPeopleList, ISelectedPeopleList } from './SelectedPeopleList';
 import { IPersonaProps } from 'office-ui-fabric-react/lib/components/Persona/Persona.types';
+import { SelectedItemsList } from '../SelectedItemsList';
 
 const removeItems = jest.fn();
 
@@ -46,7 +47,7 @@ describe('SelectedPeopleList', () => {
     expect(rendered.toJSON()).toMatchSnapshot();
   });
 
-  it('renders personas that are passed in as default', () => {
+  it('remove personas', () => {
     const onChange = (items: IPersonaProps[] | undefined): void => {
       console.log(items!.length);
     };
