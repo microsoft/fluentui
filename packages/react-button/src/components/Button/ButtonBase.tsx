@@ -37,7 +37,6 @@ export const ButtonBase = compose<'button', ButtonProps, ButtonProps, {}, {}>(
       'primary',
       'secondary',
       'size',
-      'text',
     ],
   },
 );
