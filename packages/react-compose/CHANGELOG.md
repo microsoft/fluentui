@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-compose
 
-This log was last generated on Tue, 02 Jun 2020 12:36:30 GMT and should not be manually modified.
+This log was last generated on Fri, 05 Jun 2020 05:09:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.8.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.8.0)
+
+Fri, 05 Jun 2020 05:09:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v0.7.0..@fluentui/react-compose_v0.8.0)
+
+### Minor changes
+
+- Updating signature to createClassResolver to cache most of the resolution logic upfront. ([PR #13448](https://github.com/microsoft/fluentui/pull/13448) by dzearing@microsoft.com)
+
+### Patches
+
+- Adjusting class resolution to parse enums using conventions. ([PR #13472](https://github.com/microsoft/fluentui/pull/13472) by dzearing@microsoft.com)
 
 ## [0.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.7.0)
 

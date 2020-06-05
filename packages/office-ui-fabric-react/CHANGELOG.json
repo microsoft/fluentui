@@ -2,6 +2,27 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 05 Jun 2020 05:09:39 GMT",
+      "tag": "office-ui-fabric-react_v7.117.4",
+      "version": "7.117.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixing GroupedList custom example aria error.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "97e676241348d5597786ec114976544d88246baf",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Stack: Clarifying deprecated message of props replaced by tokens.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "ce867588dbf04eb67f014453ad01ae687a1d334f",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 04 Jun 2020 12:35:08 GMT",
       "tag": "office-ui-fabric-react_v7.117.3",
       "version": "7.117.3",
