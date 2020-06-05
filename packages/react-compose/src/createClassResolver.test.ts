@@ -6,8 +6,8 @@ describe('createClassResolver', () => {
     slot1: 'slot1',
     slot2: 'slot2',
     _primary: 'primary',
-    size_small: 'small',
-    size_medium: 'medium',
+    _size_small: 'small',
+    _size_medium: 'medium',
   });
 
   it('can resolve slot classes', () => {

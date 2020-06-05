@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/example-app-base",
-  "version": "7.12.73",
+  "version": "7.12.74",
   "description": "Fluent UI React components for building documentation sites.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -47,14 +47,14 @@
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.10.26",
     "@uifabric/example-data": "^7.0.15",
-    "@uifabric/fluent-theme": "^7.1.90",
+    "@uifabric/fluent-theme": "^7.1.91",
     "@uifabric/react-hooks": "^7.4.5",
     "@uifabric/set-version": "^7.0.13",
-    "@uifabric/tsx-editor": "^0.11.87",
+    "@uifabric/tsx-editor": "^0.11.88",
     "color-check": "0.0.2",
     "markdown-to-jsx": "6.6.1",
     "office-ui-fabric-core": "^11.0.0",
-    "office-ui-fabric-react": "^7.117.3",
+    "office-ui-fabric-react": "^7.117.4",
     "react-custom-scrollbars": "^4.2.1",
     "react-syntax-highlighter": "^10.1.3",
     "tslib": "^1.10.0"

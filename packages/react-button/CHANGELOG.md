@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Tue, 02 Jun 2020 12:36:30 GMT and should not be manually modified.
+This log was last generated on Fri, 05 Jun 2020 05:09:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.1.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.1.13)
+
+Fri, 05 Jun 2020 05:09:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.1.12..@fluentui/react-button_v0.1.13)
+
+### Patches
+
+- Updating createClassResolver usage. ([PR #13448](https://github.com/microsoft/fluentui/pull/13448) by dzearing@microsoft.com)
+- Adjusting styling to adhere to conventions. ([PR #13472](https://github.com/microsoft/fluentui/pull/13472) by dzearing@microsoft.com)
 
 ## [0.1.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.1.12)
 
