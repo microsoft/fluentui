@@ -51,13 +51,4 @@ describe('createClassResolver', () => {
       slot2: 'slot2 primary medium',
     });
   });
-
-  it('can resolve with initial classes provided', () => {
-    expect(classResolver({ primary: true }, { slot2: 'slot2-2', slot3: 'slot3' })).toEqual({
-      root: 'root primary',
-      slot1: 'slot1 primary',
-      slot2: 'slot2-2 slot2 primary',
-      slot3: 'slot3',
-    });
-  });
 });
