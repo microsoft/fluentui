@@ -88,7 +88,7 @@ function getUnhandledProps<TProps, TState>(
     if (
       key !== 'className' &&
       key !== 'as' &&
-      (options.handledProps as string[]).indexOf(key) === -1 &&
+      options.handledProps.indexOf(key as keyof TProps) === -1 &&
       slots.indexOf(key) === -1
     ) {
       unhandledProps[key] = props[key];

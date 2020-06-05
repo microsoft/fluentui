@@ -62,7 +62,7 @@ export type ComposeOptions<TInputProps = {}, TInputStylesProps = {}, TParentProp
 
   mapPropsToStylesProps?: (props: TParentStylesProps & TInputProps) => TInputStylesProps;
 
-  handledProps?: string[];
+  handledProps?: (keyof TInputProps)[];
 
   overrideStyles?: boolean;
 
@@ -99,7 +99,7 @@ export type ComposePreparedOptions<TProps = {}, TState = TProps> = {
   mapPropsToStylesPropsChain: ((props: object) => object)[];
   render: ComposeRenderFunction;
 
-  handledProps: string[];
+  handledProps: (keyof TProps)[];
 
   overrideStyles: boolean;
 

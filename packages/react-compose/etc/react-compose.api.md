@@ -44,7 +44,7 @@ export type ComposeOptions<TInputProps = {}, TInputStylesProps = {}, TParentProp
     classes?: ClassDictionary | ClassFunction;
     displayName?: string;
     mapPropsToStylesProps?: (props: TParentStylesProps & TInputProps) => TInputStylesProps;
-    handledProps?: string[];
+    handledProps?: (keyof TInputProps)[];
     overrideStyles?: boolean;
     slots?: Record<string, React.ElementType>;
     slotProps?: (props: TParentProps & TInputProps) => Record<string, object>;
@@ -59,7 +59,7 @@ export type ComposePreparedOptions<TProps = {}, TState = TProps> = {
     displayNames: string[];
     mapPropsToStylesPropsChain: ((props: object) => object)[];
     render: ComposeRenderFunction;
-    handledProps: string[];
+    handledProps: (keyof TProps)[];
     overrideStyles: boolean;
     slots: Record<string, React.ElementType> & {
         __self: React.ElementType;
