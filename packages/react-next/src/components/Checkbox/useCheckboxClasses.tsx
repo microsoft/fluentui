@@ -2,7 +2,7 @@ import * as classes from './Checkbox.scss';
 import { createClassResolver } from '@fluentui/react-compose';
 import { useGlobalClassNames } from '../../Styling/useGlobalClassNames';
 import { css } from '../../Utilities';
-import { ICheckboxState, ICheckboxClasses } from './Checkbox.types';
+import { ICheckboxProps, ICheckboxClasses } from './Checkbox.types';
 
 const GlobalClassNames: Omit<ICheckboxClasses, 'input'> = {
   root: 'ms-Checkbox',
@@ -14,13 +14,13 @@ const GlobalClassNames: Omit<ICheckboxClasses, 'input'> = {
 
 const resolveClasses = createClassResolver(classes);
 
-export const useCheckboxClasses = (state: ICheckboxState) => {
-  const { reversed, checked, disabled } = state;
+export const useCheckboxClasses = (state: ICheckboxProps) => {
+  const { boxSide, checked, disabled } = state;
 
   const globalClassNames = useGlobalClassNames(GlobalClassNames);
   const resolvedClasses = resolveClasses(state, globalClassNames);
   resolvedClasses.root += ` ${css(
-    reversed && 'reversed',
+    boxSide === 'end' && 'reversed',
     checked && 'is-checked',
     disabled ? 'is-disabled' : 'is-enabled',
   )}`;

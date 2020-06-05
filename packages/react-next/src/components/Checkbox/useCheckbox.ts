@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ICheckboxProps, ICheckboxState, ICheckboxSlots, ICheckboxSlotProps } from './Checkbox.types';
+import { ICheckboxProps, ICheckboxSlots, ICheckboxSlotProps } from './Checkbox.types';
 import { ComposePreparedOptions, mergeProps } from '@fluentui/react-compose';
 import { useControllableValue, useId, useMergedRefs } from '@uifabric/react-hooks';
 import { useFocusRects, warnMutuallyExclusive } from '../../Utilities';
@@ -8,7 +8,7 @@ export const useCheckbox = (
   props: ICheckboxProps,
   options: ComposePreparedOptions,
   forwardedRef: React.Ref<HTMLDivElement>,
-): { state: ICheckboxState; slots: ICheckboxSlots; slotProps: ICheckboxSlotProps } => {
+): { state: ICheckboxProps; slots: ICheckboxSlots; slotProps: ICheckboxSlotProps } => {
   const {
     disabled,
     inputProps,
@@ -53,8 +53,6 @@ export const useCheckbox = (
     ref: mergedRootRefs,
     checked: isChecked,
     indeterminate: isIndeterminate,
-    reversed: props.boxSide !== 'start',
-    isUsingCustomLabelRender: !!props.onRenderLabel,
     input: {
       type: 'checkbox',
       ...inputProps,
@@ -87,8 +85,8 @@ export const useCheckbox = (
   };
 
   // TODO: improve typing for mergeProps
-  return mergeProps<ICheckboxProps, ICheckboxState>(handledProps, options) as {
-    state: ICheckboxState;
+  return mergeProps<ICheckboxProps>(handledProps, options) as {
+    state: ICheckboxProps;
     slots: ICheckboxSlots;
     slotProps: ICheckboxSlotProps;
   };

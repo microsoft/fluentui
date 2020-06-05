@@ -140,7 +140,7 @@ $checkboxTransitionTiming: cubic-bezier(0.4, 0, 0.23, 1);
     cursor: default;
   }
 
-  &._reversed {
+  &._boxSide_end {
     flex-direction: row-reverse;
     justify-content: flex-end;
   }
@@ -206,10 +206,10 @@ $checkboxTransitionTiming: cubic-bezier(0.4, 0, 0.23, 1);
   // is used, there will be only a 4px margin from checkbox to label. The label by default would have
   // another 4px margin for a total of 8px margin between checkbox and label. We don't combine the two
   // (and move it into the text) to not incur a breaking change for everyone using custom render atm.
-  &._reversed {
+  &._boxSide_end {
     margin-left: 4px;
   }
-  &:not(._reversed) {
+  &:not(._boxSide_end) {
     margin-right: 4px;
   }
 
@@ -277,10 +277,10 @@ $checkboxTransitionTiming: cubic-bezier(0.4, 0, 0.23, 1);
     }
   }
 
-  &._reversed {
+  &._boxSide_end {
     margin-right: 4px;
   }
-  &:not(._reversed) {
+  &:not(._boxSide_end) {
     margin-left: 4px;
   }
 }

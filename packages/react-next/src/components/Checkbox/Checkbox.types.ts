@@ -203,14 +203,6 @@ export interface ICheckboxStyles {
 /**
  * {@docCategory Checkbox}
  */
-export interface ICheckboxState extends ICheckboxProps {
-  reversed: boolean;
-  isUsingCustomLabelRender: boolean;
-}
-
-/**
- * {@docCategory Checkbox}
- */
 export interface ICheckboxSlots {
   root: React.ElementType;
   input: React.ElementType;
