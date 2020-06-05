@@ -393,40 +393,6 @@ describe('BasePicker', () => {
     expect(getSuggestions).toBeTruthy();
   });
 
-  it('Opens menu on click when suggestions has been dismissed', () => {
-    jest.useFakeTimers();
-    document.body.appendChild(root);
-
-    const picker = React.createRef<IBasePicker<ISimple>>();
-
-    ReactDOM.render(
-      <BasePickerWithType
-        onResolveSuggestions={onResolveSuggestions}
-        onRenderItem={onRenderItem}
-        onRenderSuggestionsItem={basicSuggestionRenderer}
-        componentRef={picker}
-      />,
-      root,
-    );
-
-    const input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
-    input.focus();
-    input.value = 'asdff';
-    ReactTestUtils.Simulate.input(input);
-    jest.runAllTimers();
-
-    expect(getSuggestions(document)).toBeTruthy();
-
-    ReactTestUtils.Simulate.keyDown(input, { which: 27 });
-
-    expect(getSuggestions(document)).toBeFalsy();
-    ReactTestUtils.Simulate.click(input, { button: 0 });
-
-    jest.runAllTimers();
-
-    expect(getSuggestions(document)).toBeTruthy();
-  });
-
   it('Opens menu when input refocused after search has happened', () => {
     jest.useFakeTimers();
     document.body.appendChild(root);
