@@ -1,9 +1,7 @@
 import fs from 'fs';
 import path from 'path';
-import fetch from 'node-fetch';
 import _ from 'lodash';
 import flamegrill, { CookResult, CookResults, ScenarioConfig, Scenarios } from 'flamegrill';
-
 import { generateUrl } from '@fluentui/digest';
 
 type ExtendedCookResult = CookResult & {
@@ -103,7 +101,14 @@ export default async function getPerfRegressions(baselineOnly: boolean = false) 
     });
   }
 
-  const scenarioConfig: ScenarioConfig = { outDir, tempDir };
+  const scenarioConfig: ScenarioConfig = {
+    outDir,
+    tempDir,
+    pageActions: async (page, options) => {
+      page.setDefaultTimeout(90000); // set 90s timeout, default is 30s.
+      await page.goto(options.url);
+    },
+  };
   const scenarioResults = await flamegrill.cook(scenarios, scenarioConfig);
 
   const extendedCookResults = extendCookResults(stories, scenarioResults);
