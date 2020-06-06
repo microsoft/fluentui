@@ -279,7 +279,7 @@ module.exports = async function getPerfRegressions() {
 
       await page.goto(options.url);
       // TODO: uncomment to enable re-render tests
-      await page.waitForSelector('#render-done');
+      // await page.waitForSelector('#render-done');
     },
   };
 
@@ -361,11 +361,10 @@ function createScenarioTable(scenarioSettings, testResults, showAll) {
       .map(key => {
         const testResult = testResults[key];
         const { scenarioName, iterations, renderType } = scenarioSettings[key] || {};
-        const renderTypeFriendlyName = renderType === 'VirtualRerender' ? 'Virtual re-render' : renderType;
 
         return `<tr>
             <td>${scenarioName}</td>
-            <td>${renderTypeFriendlyName}</td>
+            <td>${renderType}</td>
             ${getCell(testResult, true)}
             ${getCell(testResult, false)}
             <td>${iterations}</td>

@@ -3,17 +3,17 @@
  * you want their render types to differ from the default (mount only).
  *
  * Note:
- * You should not need to have re-render tests in most cases because mount test provides enough coverage.
+ * You should not need to have virtual-rerender tests in most cases because mount test provides enough coverage.
  * It is mostly usefual for cases where component has memoization logics. And in case of re-rendering,
  * memoization logic help avoid certain code paths.
  */
 
-const AllRenderTypes = ['Mount', 'VirtualRerender'];
-const DefaultRenderTypes = ['Mount'];
+const AllRenderTypes = ['mount', 'virtual-rerender'];
+const DefaultRenderTypes = ['mount'];
 
 const scenarioRenderTypes = {
   // TODO: uncomment to enable re-render tests
-  ThemeProvider: AllRenderTypes,
+  // ThemeProvider: AllRenderTypes,
 };
 
 module.exports = {
