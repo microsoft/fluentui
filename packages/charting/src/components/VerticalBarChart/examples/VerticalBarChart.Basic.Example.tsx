@@ -9,7 +9,7 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
   public render(): JSX.Element {
     const points = [
       { x: 0, y: 10, legend: 'First', color: 'pink', xAxisCalloutData: '2020/04/30', yAxisCalloutData: '10%' },
-      { x: 6, y: 18, legend: 'Second', color: 'red', xAxisCalloutData: '2020/04/30', yAxisCalloutData: '20%' },
+      { x: 6, y: 18, legend: 'First', color: 'pink', xAxisCalloutData: '2020/04/30', yAxisCalloutData: '20%' },
       { x: 12, y: 36, legend: 'Third', color: 'blue', xAxisCalloutData: '2020/04/30', yAxisCalloutData: '37%' },
       { x: 21, y: 20, legend: 'Fourth', color: 'green', xAxisCalloutData: '2020/04/30', yAxisCalloutData: '87%' },
       { x: 29, y: 46, legend: 'Fifth', color: 'red', xAxisCalloutData: '2020/04/30', yAxisCalloutData: '17%' },
