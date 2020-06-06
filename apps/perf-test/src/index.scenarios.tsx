@@ -25,7 +25,7 @@ const renderType = queryParams.renderType;
 
 const PerfTestScenario = scenarios[scenario];
 
-if (renderType === 'virtual-renderer') {
+if (renderType === 'virtual-rerender') {
   const PerfTestScenarioWrapper: React.FunctionComponent = () => {
     const [renderCount, setRenderCounter] = React.useState(0);
     React.useEffect(() => {
