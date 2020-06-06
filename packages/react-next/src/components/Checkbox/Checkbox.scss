@@ -132,7 +132,7 @@ $checkboxTransitionTiming: cubic-bezier(0.4, 0, 0.23, 1);
     pointer-events: none;
   }
 
-  &._isUsingCustomLabelRender {
+  &._onRenderLabel {
     align-items: center;
   }
 
