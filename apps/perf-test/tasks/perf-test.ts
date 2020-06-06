@@ -242,7 +242,7 @@ module.exports = async function getPerfRegressions() {
       const testUrlParams = `?scenario=${scenarioName}&iterations=${iterations}&renderType=${renderType}`;
 
       scenarios[scenarioKey] = {
-        baseline: `${urlForDeploy}${testUrlParams}`,
+        baseline: `${urlForMaster}${testUrlParams}`,
         scenario: `${urlForDeploy}${testUrlParams}`,
       };
 
