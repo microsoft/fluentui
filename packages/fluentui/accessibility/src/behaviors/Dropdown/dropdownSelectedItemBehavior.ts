@@ -1,6 +1,9 @@
 import { Accessibility } from '../../types';
 
 /**
+ * @description
+ * Add tabIndex to 0 if active and -1 if not
+ * Adds `aria-label` for remove icon
  * @specification
  * Adds attribute 'aria-selected=true' to 'root' slot.
  */
