@@ -41,7 +41,7 @@ export type ComposedComponent<TProps = {}> = React.FunctionComponent<TProps> & {
 // @public (undocumented)
 export type ComposeOptions<TInputProps = {}, TInputStylesProps = {}, TParentProps = {}, TParentStylesProps = {}> = {
     className?: string;
-    classes?: ClassDictionary | ClassFunction;
+    classes?: ClassDictionary | ClassFunction | (ClassDictionary | ClassFunction)[];
     displayName?: string;
     mapPropsToStylesProps?: (props: TParentStylesProps & TInputProps) => TInputStylesProps;
     handledProps?: (keyof TInputProps | 'as')[];
@@ -51,7 +51,7 @@ export type ComposeOptions<TInputProps = {}, TInputStylesProps = {}, TParentProp
     shorthandConfig?: ShorthandConfig<TParentProps & TInputProps>;
 };
 
-// @public (undocumented)
+// @public
 export type ComposePreparedOptions<TProps = {}, TState = TProps> = {
     className: string;
     classes: (undefined | ClassDictionary | ClassFunction)[];
