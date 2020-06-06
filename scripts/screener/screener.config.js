@@ -87,8 +87,7 @@ module.exports = {
     {
       browserName: 'internet explorer',
       version: '11',
-      includeRules: require('./screener.iefiles').default,
-      excludeRules: require('./screener.iefiles').ieRegexesExcludes,
+      includeRules: [/Toolbar/],
     },
   ],
 
