@@ -6,6 +6,7 @@ import { ComposePreparedOptions } from './types';
 const nullRenderer = () => null;
 
 describe('resolveSlotProps', () => {
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   const selfSlot = { __self: defaultComposeOptions.slots.__self };
 
   const defaultSlots = {

@@ -59,6 +59,7 @@ describe('merge', () => {
   });
 
   it('can handle prototype pollution', () => {
+    /* eslint-disable @typescript-eslint/naming-convention */
     const obj1 = {
       __proto__: { payload: 'malicious value' },
       constructor: { foo: 'malicious value' },
@@ -76,6 +77,7 @@ describe('merge', () => {
       constructor: { foo: 'malicious value' },
       a: { b: 'baz', __proto__: { payload: 'malicious value' } },
     };
+    /* eslint-enable @typescript-eslint/naming-convention */
 
     expect(merge({}, obj1)).toEqual({});
     expect(merge({}, obj2)).toEqual({ foo: { bar: 'baz' } });

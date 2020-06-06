@@ -77,7 +77,7 @@ export default function isConformant(
     getDisplayName,
   );
 
-  const toNextNonTrivialChild = (from: ReactWrapper) => {
+  const toNextNonTrivialChild = (from: ReactWrapper): ReactWrapper | undefined => {
     const current = from.childAt(0);
 
     if (!current) return current;

@@ -27,6 +27,7 @@
     "@types/react-dom": "16.8.4",
     "@types/webpack-env": "1.15.1",
     "@uifabric/build": "^7.0.0",
+    "@uifabric/webpack-utils": "^7.0.15",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6"

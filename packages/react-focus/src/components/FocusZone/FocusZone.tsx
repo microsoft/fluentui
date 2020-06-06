@@ -491,7 +491,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
    * Handle global tab presses so that we can patch tabindexes on the fly.
    */
   private _onKeyDownCapture = (ev: KeyboardEvent): void => {
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line deprecation/deprecation, @fluentui/deprecated-keyboard-event-props
     if (ev.which === KeyCodes.tab) {
       _outerZones.forEach((zone: FocusZone) => zone._updateTabIndexes());
     }
@@ -617,6 +617,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     } else if (ev.altKey) {
       return;
     } else {
+      // eslint-disable-next-line @fluentui/deprecated-keyboard-event-props
       switch (ev.which) {
         case KeyCodes.space:
           if (this._tryInvokeClickForFocusable(ev.target as HTMLElement)) {
