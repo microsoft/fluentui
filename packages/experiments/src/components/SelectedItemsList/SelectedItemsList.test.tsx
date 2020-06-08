@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { create, act } from 'react-test-renderer';
+import { create } from 'react-test-renderer';
 
 import { SelectedItemsList } from './SelectedItemsList';
 import {
@@ -22,11 +22,11 @@ export const SelectedTypedList = React.forwardRef(
   ) => <SelectedItemsList<TPersona> ref={ref} {...props} />,
 );
 
-const removeItems = jest.fn();
 const basicItemRenderer = (props: ISelectedItemProps<ISimple>) => {
   return <div id={props.item.name}>{props.item.name}</div>;
 };
 
+// See SelectedPeopleList.test for more tests on items manipulation.
 describe('SelectedItemsList', () => {
   describe('SelectedItemsList', () => {
     const renderNothing = () => <></>;
@@ -71,6 +71,7 @@ describe('SelectedItemsList', () => {
   });
 
   it('render all default selected items in selectedItemsList', () => {
+    const removeItems = jest.fn();
     const wrapper = mount<ISelectedItemsList<ISimple>>(
       <SelectedItemsList
         onRenderItem={basicItemRenderer}
@@ -95,25 +96,5 @@ describe('SelectedItemsList', () => {
         .last()
         .text(),
     ).toEqual('db');
-  });
-
-  it('remove all default selected items in selectedItemsList', () => {
-    const wrapper = mount<ISelectedItemsList<ISimple>>(
-      <SelectedItemsList
-        onRenderItem={basicItemRenderer}
-        defaultSelectedItems={[
-          { key: 'd1', name: 'da' },
-          { key: 'd2', name: 'db' },
-        ]}
-        onItemsRemoved={removeItems}
-      />,
-    );
-    expect(wrapper).toBeDefined();
-
-    // NOT WORKING
-    wrapper.invoke('removeItems')([
-      { key: 'd1', name: 'da' },
-      { key: 'd2', name: 'db' },
-    ]);
   });
 });

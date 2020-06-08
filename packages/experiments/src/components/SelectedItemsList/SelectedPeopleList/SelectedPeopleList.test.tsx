@@ -1,16 +1,18 @@
 import * as React from 'react';
 import { create } from 'react-test-renderer';
 
-import { SelectedPeopleList, ISelectedPeopleList } from './SelectedPeopleList';
-import { IPersonaProps } from 'office-ui-fabric-react/lib/components/Persona/Persona.types';
-import { SelectedItemsList } from '../SelectedItemsList';
-
-const removeItems = jest.fn();
-
-export interface ISimple {
-  key: string;
-  name: string;
-}
+import { people } from '@uifabric/example-data';
+import { mount } from 'enzyme';
+import {
+  SelectedPeopleList,
+  ISelectedPeopleList,
+  SelectedPersona,
+  ISelectedItemProps,
+  ItemWithContextMenu,
+  TriggerOnContextMenu,
+} from '@uifabric/experiments/lib/SelectedItemsList';
+import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
+import { groupOne } from '@uifabric/example-data';
 
 describe('SelectedPeopleList', () => {
   it('renders nothing if nothing is provided', () => {
@@ -48,22 +50,115 @@ describe('SelectedPeopleList', () => {
   });
 
   it('remove personas', () => {
-    const onChange = (items: IPersonaProps[] | undefined): void => {
-      console.log(items!.length);
-    };
-    const pickerRef: React.RefObject<ISelectedPeopleList> = React.createRef();
-    const rendered = create(
+    const onItemsRemoved = jest.fn();
+    const wrapper = mount(
       <SelectedPeopleList
-        selectedItems={[{ text: 'Person A' }, { text: 'Person B' }]}
-        ref={pickerRef}
-        onItemsRemoved={removeItems}
-        onChange={onChange}
+        key="normal"
+        removeButtonAriaLabel="Remove"
+        selectedItems={[people[0]]}
+        onItemsRemoved={onItemsRemoved}
       />,
     );
 
-    expect(pickerRef.current).toBeTruthy();
+    wrapper
+      .find('button.ms-PickerItem-removeButton')
+      .at(1)
+      .simulate('click');
 
-    pickerRef.current?.addItems([{ text: 'Person A' }, { text: 'Person B' }]);
-    //  expect(removeItems).toHaveBeenCalledTimes(1);
+    expect(onItemsRemoved).toBeCalledTimes(1);
+  });
+
+  it('group expansion as one of the items in the list', () => {
+    const _getExpandedGroupItems = (item: IPersonaProps): IPersonaProps[] => {
+      switch (item.text) {
+        case 'Group One':
+          return groupOne;
+        default:
+          return [];
+      }
+    };
+    const _canExpandItem = (item: IPersonaProps): boolean => {
+      return item.text !== undefined && item.text.indexOf('Group') !== -1;
+    };
+    const SelectedItem = (props: ISelectedItemProps<IPersonaProps>) => (
+      <SelectedPersona canExpand={_canExpandItem} getExpandedItems={_getExpandedGroupItems} {...props} />
+    );
+
+    const onItemsRemoved = jest.fn();
+    const wrapper = mount(
+      <SelectedPeopleList
+        key="normal"
+        removeButtonAriaLabel="Remove"
+        selectedItems={[people[40]]}
+        onItemsRemoved={onItemsRemoved}
+        onRenderItem={SelectedItem}
+      />,
+    );
+
+    // Expanded group
+    expect(wrapper.find('.ms-PickerPersona-container')).toHaveLength(1);
+    wrapper
+      .find('button.ms-PickerItem-removeButton')
+      .at(0)
+      .simulate('click');
+
+    // After expanding,there should be 4 items
+    expect(wrapper.find('.ms-PickerPersona-container')).toHaveLength(4);
+  });
+
+  it('edit render of the items in selected items list', () => {
+    const SelectedItem = ItemWithContextMenu({
+      menuItems: item => [
+        {
+          key: 'remove',
+          text: 'Remove',
+          onClick: removeItems(),
+        },
+        {
+          key: 'copy',
+          text: 'Copy',
+          onClick: () => _getCopyItemsText(),
+        },
+      ],
+      itemComponent: TriggerOnContextMenu(SelectedPersona),
+    });
+
+    const removeItems = jest.fn();
+    const _getCopyItemsText = jest.fn();
+    const onItemsRemoved = jest.fn();
+    const wrapper = mount(
+      <SelectedPeopleList
+        key="normal"
+        removeButtonAriaLabel="Remove"
+        selectedItems={[people[0]]}
+        onItemsRemoved={onItemsRemoved}
+        onRenderItem={SelectedItem}
+      />,
+    );
+
+    // Simulate right click to get the context menu
+    wrapper.find('.ms-PickerPersona-container').simulate('contextmenu');
+
+    // Remove and copy should show up in the menu
+    expect(wrapper.find('.ms-ContextualMenu-item')).toHaveLength(2);
+    expect(
+      wrapper
+        .find('.ms-ContextualMenu-item')
+        .at(0)
+        .text(),
+    ).toEqual('Remove');
+
+    expect(
+      wrapper
+        .find('.ms-ContextualMenu-item')
+        .at(1)
+        .text(),
+    ).toEqual('Copy');
+
+    wrapper
+      .find('.ms-ContextualMenu-item')
+      .at(0)
+      .simulate('click');
+    expect(removeItems).toBeCalledTimes(1);
   });
 });
