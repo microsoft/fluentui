@@ -209,17 +209,10 @@ export class PersonaCoinBaseClass extends React.Component<IPersonaCoinProps, IPe
     );
   };
 
-  /**
-   * Deprecation helper for getting text.
-   */
-  private _getText(): string {
-    // tslint:disable-next-line:deprecation
-    return this.props.text || this.props.primaryText || '';
-  }
-
   private _onRenderInitials = (props: IPersonaCoinProps): JSX.Element => {
     let { imageInitials } = props;
-    const { allowPhoneInitials, showUnknownPersonaCoin } = props;
+    // tslint:disable-next-line: deprecation
+    const { allowPhoneInitials, showUnknownPersonaCoin, text, primaryText } = props;
 
     if (showUnknownPersonaCoin) {
       return <Icon iconName="Help" />;
@@ -227,7 +220,7 @@ export class PersonaCoinBaseClass extends React.Component<IPersonaCoinProps, IPe
 
     const isRTL = getRTL(this.props.theme);
 
-    imageInitials = imageInitials || getInitials(this._getText(), isRTL, allowPhoneInitials);
+    imageInitials = imageInitials || getInitials(text || primaryText || '', isRTL, allowPhoneInitials);
 
     return imageInitials !== '' ? <span>{imageInitials}</span> : <Icon iconName="Contact" />;
   };
