@@ -18,7 +18,13 @@ const ExampleSection: React.FC<ExampleSectionProps> = ({ title, children }) => (
     <Header as="h2" align="center" styles={headerStyle} className="no-anchor">
       {title}
     </Header>
-    <Flex gap="gap.large" column>
+    <Flex
+      gap="gap.large"
+      column
+      styles={{
+        minWidth: '550px',
+      }}
+    >
       {children}
     </Flex>
   </>
