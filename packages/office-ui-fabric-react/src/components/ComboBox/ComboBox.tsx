@@ -267,7 +267,7 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
 
   public componentDidUpdate(prevProps: IComboBoxProps, prevState: IComboBoxState) {
     const { allowFreeform, text, onMenuOpen, onMenuDismissed } = this.props;
-    const { isOpen, focusState, selectedIndices, currentPendingValueValidIndex } = this.state;
+    const { isOpen, selectedIndices, currentPendingValueValidIndex } = this.state;
 
     // If we are newly open or are open and the pending valid index changed,
     // make sure the currently selected/pending option is scrolled into view
@@ -360,7 +360,7 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
       iconButtonProps,
       multiSelect,
     } = this.props;
-    const { isOpen, focusState: focused, suggestedDisplayValue } = this.state;
+    const { isOpen, suggestedDisplayValue } = this.state;
     this._currentVisibleValue = this._getVisibleValue();
 
     // Single select is already accessible since the whole text is selected
@@ -382,7 +382,9 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
     // to correct the behavior where the input is cleared so the user can type. If a full refactor is done, then this
     // should be removed and the multiselect combobox should behave like a picker.
     const placeholder =
-      focused && this.props.multiSelect && multiselectAccessibleText ? multiselectAccessibleText : placeholderProp;
+      this._hasFocus() && this.props.multiSelect && multiselectAccessibleText
+        ? multiselectAccessibleText
+        : placeholderProp;
 
     this._classNames = this.props.getClassNames
       ? this.props.getClassNames(
@@ -390,7 +392,7 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
           !!isOpen,
           !!disabled,
           !!required,
-          !!focused,
+          !!this._hasFocus(),
           !!allowFreeform,
           !!hasErrorMessage,
           className,
@@ -401,7 +403,7 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
           !!isOpen,
           !!disabled,
           !!required,
-          !!focused,
+          !!this._hasFocus(),
           !!allowFreeform,
           !!hasErrorMessage,
         );
@@ -454,7 +456,7 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
                   this._onShouldSelectFullInputValueInAutofillComponentDidUpdate
                 }
                 title={title}
-                preventValueSelection={!focused}
+                preventValueSelection={!this._hasFocus()}
                 placeholder={placeholder}
                 tabIndex={tabIndex}
                 {...autofill}
