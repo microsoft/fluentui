@@ -20,23 +20,17 @@ const ToolbarExampleOverflow = () => {
   const [overflowOpen, setOverflowOpen] = React.useState(false);
 
   return (
-    <div
-      style={{
-        width: '70vw',
+    <Toolbar
+      aria-label="Toolbar overflow menu"
+      items={toolbarItems}
+      overflow
+      overflowOpen={overflowOpen}
+      overflowItem={{ title: 'More' }}
+      onOverflowOpenChange={(e, { overflowOpen }) => {
+        setOverflowOpen(overflowOpen);
       }}
-    >
-      <Toolbar
-        aria-label="Toolbar overflow menu"
-        items={toolbarItems}
-        overflow
-        overflowOpen={overflowOpen}
-        overflowItem={{ title: 'More' }}
-        onOverflowOpenChange={(e, { overflowOpen }) => {
-          setOverflowOpen(overflowOpen);
-        }}
-        getOverflowItems={startIndex => itemData.slice(startIndex)}
-      />
-    </div>
+      getOverflowItems={startIndex => itemData.slice(startIndex)}
+    />
   );
 };
 
