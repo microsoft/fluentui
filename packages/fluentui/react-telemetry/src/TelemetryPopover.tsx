@@ -26,7 +26,13 @@ export const TelemetryPopover: React.FC<TelemetryPopoverProps> = props => {
 
   useEventListener({
     listener: e => {
-      if (hotKeyHandler(e)) dispatch({ type: 'SET_VISIBILITY', value: true });
+      if (state.visible) {
+        return;
+      }
+
+      if (hotKeyHandler(e)) {
+        dispatch({ type: 'SET_VISIBILITY', value: true });
+      }
     },
     target: mountNode.ownerDocument || mountNode,
     type: 'keydown',
