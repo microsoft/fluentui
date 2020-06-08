@@ -14,7 +14,7 @@ export function useCustomizationSettings(
   const onCustomizationChange = React.useCallback(() => {
     const globalSettings = Customizations.getSettings(properties, scopeName, localSettings);
     setSettings(globalSettings);
-  }, [properties, scopeName, localSettings]);
+  }, [...properties, scopeName, localSettings]);
 
   React.useEffect(() => {
     Customizations.observe(onCustomizationChange);
