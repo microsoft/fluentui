@@ -8,6 +8,9 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
   const [items, updateItems] = React.useState(props.selectedItems || props.defaultSelectedItems || []);
   const renderedItems = React.useMemo(() => items, [items]);
 
+  React.useEffect(() => {
+    updateItems(props.selectedItems || props.defaultSelectedItems || []);
+  }, [props.selectedItems]);
   const checkBox = React.useRef<TItem>(null);
 
   const removeItems = (itemsToRemove: TItem[]): void => {
