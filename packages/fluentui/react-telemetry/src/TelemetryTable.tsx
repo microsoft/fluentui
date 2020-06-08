@@ -3,6 +3,7 @@ import * as React from 'react';
 import {
   Cell,
   HeaderGroup,
+  Row,
   TableOptions,
   TableState,
   useFilters,
@@ -55,7 +56,8 @@ export const TelemetryTable: React.FC<TelemetryTableProps> = props => {
 
     footerGroups,
     headerGroups,
-    rows,
+    // @ts-ignore
+    page,
 
     prepareRow,
     // @ts-ignore
@@ -70,6 +72,7 @@ export const TelemetryTable: React.FC<TelemetryTableProps> = props => {
       totals,
 
       autoResetFilters: false,
+      autoResetPage: false,
       autoResetSortBy: false,
       disableMultiSort: true,
 
@@ -144,7 +147,7 @@ export const TelemetryTable: React.FC<TelemetryTableProps> = props => {
         </thead>
 
         <tbody {...getTableBodyProps()}>
-          {rows.map(row => {
+          {page.map((row: Row) => {
             prepareRow(row);
 
             return (
