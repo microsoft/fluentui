@@ -40,6 +40,14 @@ const DEFAULT_PROPS: IPersonaCoinProps = {
   imageAlt: '',
 };
 
+function useWarnDeprecation(props: IPersonaCoinProps) {
+  React.useEffect(() => {
+    if (process.env.NODE_ENV !== 'production') {
+      warnDeprecations('PersonaCoin', props, { primaryText: 'text' });
+    }
+  }, []);
+}
+
 /**
  * PersonaCoin with no default styles.
  * [Use the `getStyles` API to add your own styles.](https://github.com/microsoft/fluentui/wiki/Styling)
@@ -47,6 +55,8 @@ const DEFAULT_PROPS: IPersonaCoinProps = {
 export const PersonaCoinBase = React.forwardRef(
   (propsWithoutDefaults: IPersonaCoinProps, forwardedRef: React.Ref<HTMLDivElement>) => {
     const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
+
+    useWarnDeprecation(props);
 
     return <PersonaCoinBaseClass {...props} />;
   },
@@ -56,10 +66,6 @@ PersonaCoinBase.displayName = 'PersonaCoinBase';
 export class PersonaCoinBaseClass extends React.Component<IPersonaCoinProps, IPersonaState> {
   constructor(props: IPersonaCoinProps) {
     super(props);
-
-    if (process.env.NODE_ENV !== 'production') {
-      warnDeprecations('PersonaCoin', props, { primaryText: 'text' });
-    }
 
     this.state = {
       isImageLoaded: false,
