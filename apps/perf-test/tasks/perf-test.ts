@@ -278,8 +278,7 @@ module.exports = async function getPerfRegressions() {
       page.setDefaultTimeout(60000); // set 60s timeout, default is 30s.
 
       await page.goto(options.url);
-      // TODO: uncomment to enable re-render tests
-      // await page.waitForSelector('#render-done');
+      await page.waitForSelector('#render-done');
     },
   };
 

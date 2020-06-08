@@ -98,11 +98,19 @@ export class LineChartBase extends React.Component<
 
   public componentDidMount(): void {
     this._fitParentContainer();
-    window.addEventListener('resize', this._fitParentContainer);
   }
 
   public componentWillUnmount(): void {
     cancelAnimationFrame(this._reqID);
+  }
+
+  public componentDidUpdate(prevProps: ILineChartProps): void {
+    /** note that height and width are not used to resize or set as dimesions of the chart,
+     * fitParentContainer is responisble for setting the height and width or resizing of the svg/chart
+     */
+    if (prevProps.height !== this.props.height || prevProps.width !== this.props.width) {
+      this._fitParentContainer();
+    }
   }
 
   public render(): JSX.Element {
