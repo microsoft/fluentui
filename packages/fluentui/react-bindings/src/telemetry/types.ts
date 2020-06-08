@@ -31,12 +31,4 @@ export class Telemetry {
   reset() {
     this.performance = {};
   }
-  //
-  // startTimer() {
-  //   return this.enabled ? performance.now() : 0
-  // }
-  //
-  // end() {
-  //
-  // }
 }

@@ -3764,6 +3764,13 @@
   dependencies:
     "@types/react" "*"
 
+"@types/react-table@^7.0.19":
+  version "7.0.19"
+  resolved "https://registry.yarnpkg.com/@types/react-table/-/react-table-7.0.19.tgz#a70603ac0ffdeaf399fc6919aacb32fc42e9dd40"
+  integrity sha512-RYyEY7Yry6F2JsKhHeFsGdzuFF1hMqBStQrrazDzpBl4m/ECGHJxFVQjLBRzRwK+47ZKNPm79f7qEpHirbiCLA==
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-test-renderer@^16.0.0":
   version "16.8.2"
   resolved "https://registry.yarnpkg.com/@types/react-test-renderer/-/react-test-renderer-16.8.2.tgz#ad544b5571ebfc5f182c320376f1431a2b725c5e"
