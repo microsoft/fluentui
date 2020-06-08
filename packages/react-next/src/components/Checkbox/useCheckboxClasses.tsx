@@ -1,6 +1,5 @@
 import * as classes from './Checkbox.scss';
-import { createClassResolver, ClassFunction } from '@fluentui/react-compose';
-import { useGlobalClassNames } from '../../Styling/useGlobalClassNames';
+import { createClassResolver, ClassFunction, ClassDictionary } from '@fluentui/react-compose';
 import { css } from '../../Utilities';
 import { ICheckboxClasses } from './Checkbox.types';
 
@@ -14,9 +13,10 @@ const GlobalClassNames: Omit<ICheckboxClasses, 'input'> = {
 
 const defaultClassResolver = createClassResolver(classes);
 
-export const useCheckboxClasses: ClassFunction[] = [
+export const useCheckboxClasses: (ClassFunction | ClassDictionary)[] = [
   defaultClassResolver,
-  () => useGlobalClassNames(GlobalClassNames),
+  // () => useGlobalClassNames(GlobalClassNames),
+  GlobalClassNames,
   state => {
     const { boxSide, checked, disabled } = state;
     return {

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ICheckboxProps, ICheckboxSlots, ICheckboxSlotProps } from './Checkbox.types';
 import { ComposePreparedOptions, mergeProps } from '@fluentui/react-compose';
-import { useControllableValue, useId, useMergedRefs } from '@uifabric/react-hooks';
+import { useControllableValue, useMergedRefs } from '@uifabric/react-hooks';
 import { useFocusRects, warnMutuallyExclusive } from '../../Utilities';
 
 export const useCheckbox = (
@@ -23,7 +23,7 @@ export const useCheckbox = (
     checkmarkIconProps,
   } = props;
 
-  const id = useId('checkbox-', props.id);
+  // const id = useId('checkbox-', props.id);
 
   const rootRef = React.useRef<HTMLDivElement | null>(null);
   const mergedRootRefs = useMergedRefs(rootRef, forwardedRef);
@@ -60,7 +60,7 @@ export const useCheckbox = (
       checked: !!isChecked,
       disabled,
       name,
-      id,
+      id: props.id,
       title,
       onChange,
       'aria-disabled': disabled,
@@ -76,7 +76,7 @@ export const useCheckbox = (
       ...checkmarkIconProps,
     },
     container: {
-      htmlFor: id,
+      htmlFor: props.id,
     },
     text: {
       title: props.title,

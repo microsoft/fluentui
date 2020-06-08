@@ -243,6 +243,12 @@ $checkboxTransitionTiming: cubic-bezier(0.4, 0, 0.23, 1);
   color: var($semanticColorsInputForegroundChecked);
   opacity: 0;
 
+  svg {
+    // Temp
+    height: 14px;
+    width: 14px;
+  }
+
   @include high-contrast {
     color: Window;
     -ms-high-contrast-adjust: none;
