@@ -1,9 +1,6 @@
 import {
-  ComponentAnimationProp,
   useUnhandledProps,
-  unstable_createAnimationStyles as createAnimationStyles,
   unstable_calculateAnimationTimeout as calculateAnimationTimeout,
-  unstable_getStyles as getStyles,
   useTelemetry,
 } from '@fluentui/react-bindings';
 import cx from 'classnames';
@@ -16,6 +13,9 @@ import { Transition } from 'react-transition-group';
 
 import { childrenExist, StyledComponentProps, commonPropTypes, ChildrenComponentProps } from '../../utils';
 import { ComponentEventHandler, ProviderContextPrepared } from '../../types';
+import useAnimationStyles from './useAnimationStyles';
+
+export { animationClassName } from './useAnimationStyles';
 
 export type AnimationChildrenProp = (props: { classes: string }) => React.ReactNode;
 
@@ -140,8 +140,6 @@ export interface AnimationProps
   onExited?: ComponentEventHandler<AnimationProps>;
 }
 
-export const animationClassName = 'ui-animation';
-
 /**
  * An Animation provides animation effects to rendered elements.
  */
@@ -152,24 +150,7 @@ const Animation: React.FC<AnimationProps> & {
   const { setStart, setEnd } = useTelemetry(Animation.displayName, context.telemetry);
   setStart();
 
-  const {
-    appear,
-    children,
-    className,
-    delay,
-    direction,
-    duration,
-    fillMode,
-    iterationCount,
-    keyframeParams,
-    mountOnEnter,
-    name,
-    playState,
-    timeout,
-    timingFunction,
-    visible,
-    unmountOnExit,
-  } = props;
+  const { appear, children, className, mountOnEnter, timeout, visible, unmountOnExit } = props;
 
   const handleAnimationEvent = (
     event: 'onEnter' | 'onEntering' | 'onEntered' | 'onExit' | 'onExiting' | 'onExited',
@@ -177,54 +158,7 @@ const Animation: React.FC<AnimationProps> & {
     _.invoke(props, event, null, props);
   };
 
-  const { classes, styles: animationStyles } = React.useMemo(() => {
-    const animation: ComponentAnimationProp = {
-      name,
-      keyframeParams,
-      duration,
-      delay,
-      iterationCount,
-      direction,
-      fillMode,
-      playState,
-      timingFunction,
-    };
-
-    return getStyles({
-      allDisplayNames: [Animation.displayName],
-      className: animationClassName,
-      primaryDisplayName: Animation.displayName,
-      props: {
-        className,
-        styles: createAnimationStyles(animation, context.theme),
-      },
-
-      disableAnimations: context.disableAnimations,
-      renderer: context.renderer,
-      rtl: context.rtl,
-      performance: {
-        enableSanitizeCssPlugin: false,
-        enableStylesCaching: false,
-        enableVariablesCaching: false,
-        enableBooleanVariablesCaching: false,
-      },
-      saveDebug: _.noop,
-      theme: context.theme,
-    });
-  }, [
-    className,
-    context,
-    name,
-    delay,
-    direction,
-    duration,
-    fillMode,
-    iterationCount,
-    keyframeParams,
-    playState,
-    timingFunction,
-  ]);
-
+  const { classes, styles: animationStyles } = useAnimationStyles(Animation.displayName, props);
   const { animationDuration, animationDelay } = animationStyles.root;
   const timeoutResult = timeout || calculateAnimationTimeout(animationDuration, animationDelay) || 0;
 
@@ -252,9 +186,9 @@ const Animation: React.FC<AnimationProps> & {
       onExiting={handleAnimationEvent('onExiting')}
       onExited={handleAnimationEvent('onExited')}
       {...unhandledProps}
-      className={!isChildrenFunction ? cx(classes.root, (child as any)?.props?.className) : ''}
+      className={!isChildrenFunction ? cx(classes.root, className, (child as any)?.props?.className) : ''}
     >
-      {isChildrenFunction ? () => (children as AnimationChildrenProp)({ classes: classes.root }) : child}
+      {isChildrenFunction ? () => (children as AnimationChildrenProp)({ classes: cx(classes.root, className) }) : child}
     </Transition>
   );
   setEnd();
