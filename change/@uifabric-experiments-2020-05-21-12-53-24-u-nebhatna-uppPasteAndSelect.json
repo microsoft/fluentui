@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Added missing functionalities in UnifiedPeoplePicker and Example",
-  "packageName": "@uifabric/experiments",
-  "email": "nebhatna@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-05-21T19:53:24.465Z"
-}
