@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { IRefObject, IRenderFunction } from '../../Utilities';
-import { PersonaBase } from './Persona.base';
 import { ImageLoadState } from '../../Image';
 import { IStyle, ITheme } from '../../Styling';
 import { IStyleFunctionOrObject } from '../../Utilities';
@@ -13,7 +12,7 @@ export interface IPersona {}
 /**
  * {@docCategory Persona}
  */
-export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase | HTMLDivElement> {
+export interface IPersonaSharedProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * Primary text to display, usually the name of the person.
    */
