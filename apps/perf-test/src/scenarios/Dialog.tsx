@@ -8,7 +8,7 @@ const dialogContentProps: IDialogContentProps = {
   subText: 'Do you want to send this message without a subject?',
 };
 
-const DialogExample: React.FunctionComponent = () => {
+const Scenario: React.FunctionComponent = () => {
   return (
     <Dialog hidden={false} dialogContentProps={dialogContentProps}>
       <DialogFooter>Dialog Footer</DialogFooter>
@@ -16,6 +16,4 @@ const DialogExample: React.FunctionComponent = () => {
   );
 };
 
-const scenario = <DialogExample />;
-
-export default scenario;
+export default Scenario;

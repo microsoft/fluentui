@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-compose
 
-This log was last generated on Fri, 05 Jun 2020 05:09:39 GMT and should not be manually modified.
+This log was last generated on Mon, 08 Jun 2020 12:34:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.9.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.9.0)
+
+Mon, 08 Jun 2020 12:34:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v0.8.0..@fluentui/react-compose_v0.9.0)
+
+### Minor changes
+
+- Updating mergeProps to not use getNativeElementProps. ([PR #13474](https://github.com/microsoft/fluentui/pull/13474) by dzearing@microsoft.com)
+
+### Patches
+
+- compose: update classes option to allow array ([PR #13493](https://github.com/microsoft/fluentui/pull/13493) by xgao@microsoft.com)
 
 ## [0.8.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.8.0)
 

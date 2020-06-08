@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Slider } from '@fluentui/react-next';
 
-const scenario = <Slider />;
+const Scenario = () => <Slider />;
 
-export default scenario;
+export default Scenario;

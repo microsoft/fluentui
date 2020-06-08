@@ -5,6 +5,7 @@ const path = require('path');
 const flamegrill = require('flamegrill');
 const scenarioIterations = require('../src/scenarioIterations');
 const scenarioNames = require('../src/scenarioNames');
+const { scenarioRenderTypes, DefaultRenderTypes } = require('../src/scenarioRenderTypes');
 const { argv } = require('@uifabric/build').just;
 
 import { getFluentPerfRegressions } from './fluentPerfRegressions';
@@ -206,6 +207,7 @@ const urlForMaster = process.env.SYSTEM_PULLREQUEST_TARGETBRANCH
 const outDir = path.join(__dirname, '../dist');
 const tempDir = path.join(__dirname, '../logfiles');
 
+// tslint:disable-next-line:no-function-expression
 module.exports = async function getPerfRegressions() {
   const iterationsArgv = /** @type {number} */ argv().iterations;
   const iterationsArg = Number.isInteger(iterationsArgv) && iterationsArgv;
@@ -233,19 +235,24 @@ module.exports = async function getPerfRegressions() {
       throw new Error(`Invalid scenario: ${scenarioName}.`);
     }
     const iterations = iterationsArg || scenarioIterations[scenarioName] || iterationsDefault;
-    // These lines can be used to check for consistency.
-    // Array.from({ length: 20 }, (entry, index) => {
-    scenarios[scenarioName] = {
-      // scenarios[scenarioName + index] = {
-      baseline: `${urlForMaster}?scenario=${scenarioName}&iterations=${iterations}`,
-      scenario: `${urlForDeploy}?scenario=${scenarioName}&iterations=${iterations}`,
-    };
+    const renderTypes = scenarioRenderTypes[scenarioName] || DefaultRenderTypes;
 
-    scenarioSettings[scenarioName] = {
-      iterations,
-    };
+    renderTypes.forEach(renderType => {
+      const scenarioKey = `${scenarioName}-${renderType}`;
+      const testUrlParams = `?scenario=${scenarioName}&iterations=${iterations}&renderType=${renderType}`;
+
+      scenarios[scenarioKey] = {
+        baseline: `${urlForMaster}${testUrlParams}`,
+        scenario: `${urlForDeploy}${testUrlParams}`,
+      };
+
+      scenarioSettings[scenarioKey] = {
+        scenarioName,
+        iterations,
+        renderType,
+      };
+    });
   });
-  // });
 
   console.log(`\nRunning scenarios:`);
   console.dir(scenarios);
@@ -264,7 +271,18 @@ module.exports = async function getPerfRegressions() {
   }
 
   /** @type {ScenarioConfig} */
-  const scenarioConfig = { outDir, tempDir };
+  const scenarioConfig = {
+    outDir,
+    tempDir,
+    pageActions: async (page, options) => {
+      page.setDefaultTimeout(60000); // set 60s timeout, default is 30s.
+
+      await page.goto(options.url);
+      // TODO: uncomment to enable re-render tests
+      // await page.waitForSelector('#render-done');
+    },
+  };
+
   /** @type {CookResults} */
   const scenarioResults = await flamegrill.cook(scenarios, scenarioConfig);
 
@@ -329,6 +347,7 @@ function createScenarioTable(scenarioSettings, testResults, showAll) {
   <table>
   <tr>
     <th>Scenario</th>
+    <th>Render type</th>
     <th>
       <a href="https://github.com/microsoft/fluentui/wiki/Perf-Testing#why-are-results-listed-in-ticks-instead-of-time-units">Master Ticks</a>
     </th>
@@ -341,10 +360,11 @@ function createScenarioTable(scenarioSettings, testResults, showAll) {
     resultsToDisplay
       .map(key => {
         const testResult = testResults[key];
-        const { iterations } = scenarioSettings[key] || {};
+        const { scenarioName, iterations, renderType } = scenarioSettings[key] || {};
 
         return `<tr>
-            <td>${scenarioNames[key] || key}</td>
+            <td>${scenarioName}</td>
+            <td>${renderType}</td>
             ${getCell(testResult, true)}
             ${getCell(testResult, false)}
             <td>${iterations}</td>
