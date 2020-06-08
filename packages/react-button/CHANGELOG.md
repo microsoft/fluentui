@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Fri, 05 Jun 2020 05:09:39 GMT and should not be manually modified.
+This log was last generated on Mon, 08 Jun 2020 12:34:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.2.0)
+
+Mon, 08 Jun 2020 12:34:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.1.13..@fluentui/react-button_v0.2.0)
+
+### Minor changes
+
+- Cleaning up typings. ([PR #13474](https://github.com/microsoft/fluentui/pull/13474) by dzearing@microsoft.com)
 
 ## [0.1.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.1.13)
 

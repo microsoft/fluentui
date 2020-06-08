@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Updating mergeProps to not use getNativeElementProps.",
-  "packageName": "@fluentui/react-compose",
-  "email": "dzearing@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-06-04T18:34:48.206Z"
-}

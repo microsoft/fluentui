@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Deprecating defaultSelectedIndex props in Pivot.types.ts.",
-  "packageName": "office-ui-fabric-react",
-  "email": "czearing@outlook.com",
-  "dependentChangeType": "patch",
-  "date": "2020-06-04T23:33:45.989Z"
-}
