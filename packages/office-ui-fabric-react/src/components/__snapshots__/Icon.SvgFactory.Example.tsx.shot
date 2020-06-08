@@ -299,20 +299,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -353,20 +343,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -407,20 +387,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -461,20 +431,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -515,20 +475,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -569,20 +519,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -623,20 +563,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -677,20 +607,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -731,20 +651,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -785,20 +695,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -839,20 +739,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -893,20 +783,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -947,20 +827,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -1001,20 +871,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -1055,20 +915,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -1109,20 +959,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -1163,20 +1003,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -1217,20 +1047,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -1271,20 +1091,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -1325,20 +1135,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -1379,20 +1179,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -1433,20 +1223,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -1487,20 +1267,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -1541,20 +1311,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -1595,20 +1355,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -1649,20 +1399,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 3200 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -1703,20 +1443,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -1757,20 +1487,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -1811,20 +1531,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -1865,20 +1575,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -1919,20 +1619,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -1973,20 +1663,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -2027,20 +1707,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -2081,20 +1751,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -2135,20 +1795,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -2189,20 +1839,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -2243,20 +1883,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -2297,20 +1927,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -2351,20 +1971,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -2405,20 +2015,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -2459,20 +2059,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -2513,20 +2103,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -2567,20 +2147,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -2621,20 +2191,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -2675,20 +2235,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -2729,20 +2279,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -2783,20 +2323,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -2837,20 +2367,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -2891,20 +2411,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -2945,20 +2455,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -2999,20 +2499,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -3053,20 +2543,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -3107,20 +2587,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -3161,20 +2631,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -3215,20 +2675,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -3269,20 +2719,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -3323,20 +2763,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -3377,20 +2807,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -3431,20 +2851,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -3485,20 +2895,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -3539,20 +2939,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -3593,20 +2983,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -3647,20 +3027,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -3701,20 +3071,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -3755,20 +3115,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -3809,20 +3159,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -3863,20 +3203,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -3917,20 +3247,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -3971,20 +3291,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -4025,20 +3335,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -4079,20 +3379,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -4133,20 +3423,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -4187,20 +3467,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -4241,20 +3511,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -4295,20 +3555,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -4349,20 +3599,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -4403,20 +3643,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -4457,20 +3687,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -4511,20 +3731,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -4565,20 +3775,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -4619,20 +3819,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -4673,20 +3863,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -4727,20 +3907,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -4781,20 +3951,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -4835,20 +3995,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -4889,20 +4039,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -4943,20 +4083,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -4997,20 +4127,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -5051,20 +4171,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -5105,20 +4215,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -5159,20 +4259,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -5213,20 +4303,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -5267,20 +4347,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -5321,20 +4391,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -5375,20 +4435,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -5429,20 +4479,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -5483,20 +4523,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -5537,20 +4567,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -5591,20 +4611,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -5645,20 +4655,10 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
     >
       <span
         aria-hidden={true}
-        className=
-
-
         role="presentation"
         style={Object {}}
       >
         <svg
-          className=
-
-              {
-                fill: currentColor;
-                height: 100%;
-                width: 100%;
-              }
           viewBox="0 0 2048 2048"
           xmlns="http://www.w3.org/2000/svg"
         >
