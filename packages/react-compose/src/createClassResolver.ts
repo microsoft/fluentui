@@ -18,7 +18,6 @@ import { appendClasses } from './appendClasses';
 export const createClassResolver = (classes: ClassDictionary) => {
   // This is in creation time, so this will happen once per css file.
   const { slots, modifiers, enums } = createResolvedMap(classes);
-  console.log(slots, modifiers, enums);
 
   // Everything in the function below will happen at runtime, so it's very critical that this
   // code is as minimal as possible.

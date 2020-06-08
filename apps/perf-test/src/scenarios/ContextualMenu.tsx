@@ -46,5 +46,5 @@ const menuItems: IContextualMenuItem[] = [
   },
 ];
 
-const scenario = <ContextualMenu items={menuItems} hidden={false} />;
-export default scenario;
+const Scenario = () => <ContextualMenu items={menuItems} hidden={false} />;
+export default Scenario;

@@ -57,7 +57,7 @@ export type ComposeRenderFunction<TElementType extends React.ElementType = 'div'
 export type ComposeOptions<TInputProps = {}, TInputStylesProps = {}, TParentProps = {}, TParentStylesProps = {}> = {
   className?: string;
 
-  classes?: ClassDictionary | ClassFunction;
+  classes?: ClassDictionary | ClassFunction | (ClassDictionary | ClassFunction)[];
 
   displayName?: string;
 
@@ -103,6 +103,9 @@ export type ClassDictionary = Record<string, string>;
  */
 export type ClassFunction = (state: GenericDictionary, slots: GenericDictionary) => ClassDictionary;
 
+/**
+ * Merged ComposeOptions.
+ */
 export type ComposePreparedOptions<TProps = {}, TState = TProps> = {
   className: string;
   classes: (undefined | ClassDictionary | ClassFunction)[];
@@ -113,7 +116,7 @@ export type ComposePreparedOptions<TProps = {}, TState = TProps> = {
   mapPropsToStylesPropsChain: ((props: object) => object)[];
   render: ComposeRenderFunction;
 
-  handledProps: (keyof TProps)[];
+  handledProps: (keyof TProps | 'as')[];
 
   overrideStyles: boolean;
 

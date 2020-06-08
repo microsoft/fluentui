@@ -29,6 +29,8 @@ export function mergeComposeOptions(
       return mergedSlotProps;
     }, {});
 
+  const inputClasses = Array.isArray(inputOptions.classes) ? inputOptions.classes : [inputOptions.classes];
+
   const state: ComposePreparedOptions['state'] = (props, options) => {
     if (inputOptions.state) {
       return inputOptions.state(props, options, parentOptions.state);
@@ -39,7 +41,7 @@ export function mergeComposeOptions(
 
   return {
     className: inputOptions.className || parentOptions.className,
-    classes: [...parentOptions.classes, inputOptions.classes],
+    classes: [...parentOptions.classes, ...inputClasses],
 
     displayName: inputOptions.displayName || parentOptions.displayName,
     displayNames: computeDisplayNames(inputOptions, parentOptions),

@@ -18,6 +18,20 @@ export const ButtonBase = compose<'button', ButtonProps, ButtonProps, {}, {}>(
   },
   {
     displayName: 'ButtonBase',
+    handledProps: [
+      'circular',
+      'content',
+      'disabled',
+      'fluid',
+      'iconOnly',
+      'iconPosition',
+      'inverted',
+      'loader',
+      'loading',
+      'primary',
+      'secondary',
+      'size',
+    ],
     slots: {
       icon: 'span',
       content: 'span',

@@ -41,7 +41,7 @@ export type ComposedComponent<TProps = {}> = React.FunctionComponent<TProps> & {
 // @public (undocumented)
 export type ComposeOptions<TInputProps = {}, TInputStylesProps = {}, TParentProps = {}, TParentStylesProps = {}> = {
     className?: string;
-    classes?: ClassDictionary | ClassFunction;
+    classes?: ClassDictionary | ClassFunction | (ClassDictionary | ClassFunction)[];
     displayName?: string;
     mapPropsToStylesProps?: (props: TParentStylesProps & TInputProps) => TInputStylesProps;
     handledProps?: (keyof TInputProps | 'as')[];
@@ -52,7 +52,7 @@ export type ComposeOptions<TInputProps = {}, TInputStylesProps = {}, TParentProp
     state?: (props: TParentProps & TInputProps, options: ComposePreparedOptions, parentState?: ComposePreparedOptions['state']) => any;
 };
 
-// @public (undocumented)
+// @public
 export type ComposePreparedOptions<TProps = {}, TState = TProps> = {
     className: string;
     classes: (undefined | ClassDictionary | ClassFunction)[];
@@ -60,7 +60,7 @@ export type ComposePreparedOptions<TProps = {}, TState = TProps> = {
     displayNames: string[];
     mapPropsToStylesPropsChain: ((props: object) => object)[];
     render: ComposeRenderFunction;
-    handledProps: (keyof TProps)[];
+    handledProps: (keyof TProps | 'as')[];
     overrideStyles: boolean;
     slots: Record<string, React.ElementType> & {
         __self: React.ElementType;
