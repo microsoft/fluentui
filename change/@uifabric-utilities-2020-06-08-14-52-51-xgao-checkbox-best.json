@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "smaller getId",
+  "packageName": "@uifabric/utilities",
+  "email": "xgao@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-06-08T21:52:51.188Z"
+}
