@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "getGlobalClassNames: correct its return type",
-  "packageName": "@uifabric/styling",
-  "email": "xgao@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-06-04T18:31:35.101Z"
-}
