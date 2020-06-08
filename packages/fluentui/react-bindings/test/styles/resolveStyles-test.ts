@@ -28,7 +28,7 @@ const defaultPerformanceOptions: StylesContextPerformance = {
 };
 
 const resolveStylesOptions = (options?: {
-  displayNames?: ResolveStylesOptions['displayNames'];
+  displayNames?: ResolveStylesOptions['allDisplayNames'];
   componentStyles?: Record<string, ComponentSlotStylesPrepared>;
   performance?: Partial<ResolveStylesOptions['performance']>;
   props?: ResolveStylesOptions['props'];
@@ -45,7 +45,8 @@ const resolveStylesOptions = (options?: {
   };
   return {
     theme,
-    displayNames,
+    allDisplayNames: displayNames,
+    primaryDisplayName: displayNames[0],
     props,
     rtl,
     disableAnimations: false,
@@ -314,6 +315,17 @@ describe('resolveStyles', () => {
       const renderStyles = jest.fn().mockReturnValue('a');
       const options = resolveStylesOptions({
         props: { variables: { isFoo: true, isBar: null, isBaz: undefined } },
+        performance: { enableBooleanVariablesCaching: true },
+      });
+
+      expect(resolveStyles(options, resolvedVariables, renderStyles)).toHaveProperty('classes.root', 'a');
+      expect(resolveStyles(options, resolvedVariables, renderStyles)).toHaveProperty('classes.root', 'a');
+      expect(renderStyles).toHaveBeenCalledTimes(1);
+    });
+
+    test('avoids "classes" computation when enabled and there is no variables', () => {
+      const renderStyles = jest.fn().mockReturnValue('a');
+      const options = resolveStylesOptions({
         performance: { enableBooleanVariablesCaching: true },
       });
 

@@ -148,7 +148,7 @@ const Slider: React.FC<WithAsProp<SliderProps>> & FluentComponentStaticProps = p
     vertical,
     disabled,
   } = props;
-  const inputRef = React.createRef<HTMLElement>();
+  const inputRef = React.useRef<HTMLElement>();
 
   const { state, actions } = useStateManager(createSliderManager, {
     mapPropsToInitialState: () => ({

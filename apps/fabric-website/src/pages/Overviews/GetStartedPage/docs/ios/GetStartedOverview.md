@@ -4,8 +4,8 @@ Fluent UI Apple is an [open-source](https://github.com/microsoft/fluentui-apple)
 
 Fluent UI iOS includes an expanding library of controls written in Swift and supporting Objective-C. These controls implement the Fluent Design language and provide consistency across Microsoft experiences.
 
-Documentation for the controls is a work in progress. Some controls can be found in the <a href="#/controls/ios" >Controls section</a> of this site. To view the full list, see [Fluent UI Apple GitHub source folder](https://github.com/microsoft/fluentui-apple/tree/master/ios/FluentUI).
+Documentation for the controls is a work in progress. Some controls can be found in the <a href="#/controls/ios" >Controls section</a> of this site. To view the full list, see the [Fluent UI Apple GitHub source folder](https://github.com/microsoft/fluentui-apple/tree/master/ios/FluentUI).
 
 ### Start developing
 
-Setup instructions and more information can be found in [Fluent UI Apple readme](https://github.com/microsoft/fluentui-apple/blob/master/README.md).
+Setup instructions and more information can be found in the [Fluent UI Apple readme](https://github.com/microsoft/fluentui-apple/blob/master/README.md).

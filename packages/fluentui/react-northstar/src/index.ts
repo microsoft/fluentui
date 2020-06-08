@@ -1,9 +1,10 @@
-import * as themes from './themes';
+//
+// Themes
+//
+export { default as teamsTheme } from './themes/teams';
+export { default as teamsDarkTheme } from './themes/teams-dark';
+export { default as teamsHighContrastTheme } from './themes/teams-high-contrast';
 
-//
-// Theme
-//
-export { themes };
 export * from './themes/types';
 export * from './themes/colorUtils';
 
@@ -146,6 +147,14 @@ export * from './components/Menu/Menu';
 export { default as Menu } from './components/Menu/Menu';
 export * from './components/Menu/MenuItem';
 export { default as MenuItem } from './components/Menu/MenuItem';
+export * from './components/Menu/MenuItemIcon';
+export { default as MenuItemIcon } from './components/Menu/MenuItemIcon';
+export * from './components/Menu/MenuItemContent';
+export { default as MenuItemContent } from './components/Menu/MenuItemContent';
+export * from './components/Menu/MenuItemIndicator';
+export { default as MenuItemIndicator } from './components/Menu/MenuItemIndicator';
+export * from './components/Menu/MenuItemWrapper';
+export { default as MenuItemWrapper } from './components/Menu/MenuItemWrapper';
 export * from './components/Menu/MenuDivider';
 export { default as MenuDivider } from './components/Menu/MenuDivider';
 
@@ -193,14 +202,26 @@ export * from './components/Toolbar/ToolbarDivider';
 export { default as ToolbarDivider } from './components/Toolbar/ToolbarDivider';
 export * from './components/Toolbar/ToolbarItem';
 export { default as ToolbarItem } from './components/Toolbar/ToolbarItem';
+export * from './components/Toolbar/ToolbarItemWrapper';
+export { default as ToolbarItemWrapper } from './components/Toolbar/ToolbarItemWrapper';
+export * from './components/Toolbar/ToolbarItemIcon';
+export { default as ToolbarItemIcon } from './components/Toolbar/ToolbarItemIcon';
 export * from './components/Toolbar/ToolbarMenu';
 export { default as ToolbarMenu } from './components/Toolbar/ToolbarMenu';
 export * from './components/Toolbar/ToolbarMenuDivider';
 export { default as ToolbarMenuDivider } from './components/Toolbar/ToolbarMenuDivider';
 export * from './components/Toolbar/ToolbarMenuItem';
 export { default as ToolbarMenuItem } from './components/Toolbar/ToolbarMenuItem';
+export * from './components/Toolbar/ToolbarMenuItemIcon';
+export { default as ToolbarMenuItemIcon } from './components/Toolbar/ToolbarMenuItemIcon';
+export * from './components/Toolbar/ToolbarMenuItemSubmenuIndicator';
+export { default as ToolbarMenuItemSubmenuIndicator } from './components/Toolbar/ToolbarMenuItemSubmenuIndicator';
+export * from './components/Toolbar/ToolbarMenuItemActiveIndicator';
+export { default as ToolbarMenuItemActiveIndicator } from './components/Toolbar/ToolbarMenuItemActiveIndicator';
 export * from './components/Toolbar/ToolbarMenuRadioGroup';
 export { default as ToolbarMenuRadioGroup } from './components/Toolbar/ToolbarMenuRadioGroup';
+export * from './components/Toolbar/ToolbarMenuRadioGroupWrapper';
+export { default as ToolbarMenuRadioGroupWrapper } from './components/Toolbar/ToolbarMenuRadioGroupWrapper';
 export * from './components/Toolbar/ToolbarRadioGroup';
 export { default as ToolbarRadioGroup } from './components/Toolbar/ToolbarRadioGroup';
 
@@ -268,6 +289,8 @@ export * from './components/Card/CardFooter';
 export { default as CardFooter } from './components/Card/CardFooter';
 export * from './components/Card/CardColumn';
 export { default as CardColumn } from './components/Card/CardColumn';
+export * from './components/Card/CardExpandableBox';
+export { default as CardExpandableBox } from './components/Card/CardExpandableBox';
 //
 // Utilities
 //

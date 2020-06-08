@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { styled, css, memoizeFunction } from '../../Utilities';
+import { css, memoizeFunction, styled } from '../../Utilities';
 import { CheckboxBase } from './Checkbox.base';
 import { ICheckboxProps, ICheckboxStyleProps, ICheckboxStyles } from './Checkbox.types';
 import * as classes from './Checkbox.scss';

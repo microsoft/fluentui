@@ -1273,6 +1273,7 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                           data-is-focusable={true}
                           data-item-index={0}
                           data-selection-index={0}
+                          data-selection-touch-invoke={true}
                           draggable={true}
                           onFocus={[Function]}
                           onKeyDown={[Function]}
@@ -1679,6 +1680,7 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                           data-is-focusable={true}
                           data-item-index={1}
                           data-selection-index={1}
+                          data-selection-touch-invoke={true}
                           draggable={true}
                           onFocus={[Function]}
                           onKeyDown={[Function]}
@@ -2085,6 +2087,7 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                           data-is-focusable={true}
                           data-item-index={2}
                           data-selection-index={2}
+                          data-selection-touch-invoke={true}
                           draggable={true}
                           onFocus={[Function]}
                           onKeyDown={[Function]}
@@ -2491,6 +2494,7 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                           data-is-focusable={true}
                           data-item-index={3}
                           data-selection-index={3}
+                          data-selection-touch-invoke={true}
                           draggable={true}
                           onFocus={[Function]}
                           onKeyDown={[Function]}
@@ -2897,6 +2901,7 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                           data-is-focusable={true}
                           data-item-index={4}
                           data-selection-index={4}
+                          data-selection-touch-invoke={true}
                           draggable={true}
                           onFocus={[Function]}
                           onKeyDown={[Function]}
@@ -3303,6 +3308,7 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                           data-is-focusable={true}
                           data-item-index={5}
                           data-selection-index={5}
+                          data-selection-touch-invoke={true}
                           draggable={true}
                           onFocus={[Function]}
                           onKeyDown={[Function]}
@@ -3709,6 +3715,7 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                           data-is-focusable={true}
                           data-item-index={6}
                           data-selection-index={6}
+                          data-selection-touch-invoke={true}
                           draggable={true}
                           onFocus={[Function]}
                           onKeyDown={[Function]}
@@ -4115,6 +4122,7 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                           data-is-focusable={true}
                           data-item-index={7}
                           data-selection-index={7}
+                          data-selection-touch-invoke={true}
                           draggable={true}
                           onFocus={[Function]}
                           onKeyDown={[Function]}
@@ -4521,6 +4529,7 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                           data-is-focusable={true}
                           data-item-index={8}
                           data-selection-index={8}
+                          data-selection-touch-invoke={true}
                           draggable={true}
                           onFocus={[Function]}
                           onKeyDown={[Function]}
@@ -4927,6 +4936,7 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                           data-is-focusable={true}
                           data-item-index={9}
                           data-selection-index={9}
+                          data-selection-touch-invoke={true}
                           draggable={true}
                           onFocus={[Function]}
                           onKeyDown={[Function]}

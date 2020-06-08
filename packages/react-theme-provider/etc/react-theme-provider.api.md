@@ -7,6 +7,9 @@
 import * as React from 'react';
 
 // @public
+export const mergeThemes: (...themes: (ThemePrepared | Theme | undefined)[]) => ThemePrepared;
+
+// @public
 export type RecursivePartial<T> = {
     [P in keyof T]?: T[P] extends (infer U)[] ? RecursivePartial<U>[] : T[P] extends object ? RecursivePartial<T[P]> : T[P];
 };

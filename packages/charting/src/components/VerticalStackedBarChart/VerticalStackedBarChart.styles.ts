@@ -1,7 +1,7 @@
 import { IVerticalStackedBarChartStyleProps, IVerticalStackedBarChartStyles } from './VerticalStackedBarChart.types';
 
 export const getStyles = (props: IVerticalStackedBarChartStyleProps): IVerticalStackedBarChartStyles => {
-  const { className, theme, width, height, legendColor, shouldHighlight, href } = props;
+  const { className, theme, width, height, shouldHighlight, href } = props;
 
   const chartWidth = width! + 50;
   const chartHeight = height! + 50;
@@ -74,28 +74,6 @@ export const getStyles = (props: IVerticalStackedBarChartStyleProps): IVerticalS
     bars: [
       {
         transform: `translate(${chartMargin.left}px, 10px)`,
-      },
-    ],
-
-    hoverCardRoot: {
-      paddingLeft: '16px',
-      paddingRight: '22px',
-      paddingTop: '15px',
-      paddingBottom: '8px',
-    },
-
-    hoverCardTextStyles: [
-      theme.fonts.small,
-      {
-        lineHeight: '14px',
-      },
-    ],
-
-    hoverCardDataStyles: [
-      theme.fonts.xxLarge,
-      {
-        lineHeight: '31px',
-        color: legendColor === '' ? theme.palette.black : legendColor,
       },
     ],
 

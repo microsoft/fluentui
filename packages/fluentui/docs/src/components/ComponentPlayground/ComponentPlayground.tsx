@@ -50,6 +50,8 @@ const ComponentPlayground: React.FunctionComponent<ComponentPlaygroundProps> = p
     return <ComponentPlaygroundTemplate component={component} />;
   }
 
+  // This is intentional, `playgroundPath` will not change during execution
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const [element, unsupportedProps] = usePlaygroundComponent(props.componentName);
 
   return (

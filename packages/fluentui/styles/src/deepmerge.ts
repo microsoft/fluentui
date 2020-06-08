@@ -1,4 +1,5 @@
 const isObject = o => o !== null && typeof o === 'object' && !Array.isArray(o);
+const isValid = k => k !== '__proto__' && k !== 'prototype' && k !== 'constructor';
 
 // Heads Up!
 // Changes here need to consider breaking all object references.
@@ -6,14 +7,16 @@ const isObject = o => o !== null && typeof o === 'object' && !Array.isArray(o);
 const deepmerge = (...sources) => {
   const inner = (target, source) => {
     Object.keys(source).forEach(k => {
-      if (isObject(source[k])) {
-        if (!isObject(target[k])) {
-          target[k] = {};
-        }
+      if (isValid(k)) {
+        if (isObject(source[k])) {
+          if (!isObject(target[k])) {
+            target[k] = {};
+          }
 
-        inner(target[k], source[k]);
-      } else {
-        target[k] = source[k]; // TODO: do deep clone for arrays? We currently do not have any deep arrays in variables
+          inner(target[k], source[k]);
+        } else {
+          target[k] = source[k]; // TODO: do deep clone for arrays? We currently do not have any deep arrays in variables
+        }
       }
     });
     return target;

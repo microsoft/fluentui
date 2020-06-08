@@ -5,7 +5,8 @@ import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import * as _ from 'lodash';
 import cx from 'classnames';
-import * as keyboardKey from 'keyboard-key';
+import { getCode, keyboardKey } from '@fluentui/keyboard-key';
+import computeScrollIntoView from 'compute-scroll-into-view';
 
 import {
   DebounceResultFn,
@@ -458,6 +459,8 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
       getA11yStatusMessage,
       itemToString,
       toggleIndicator,
+      loading,
+      headerMessage,
     } = this.props;
     const { highlightedIndex, open, searchQuery, value } = this.state;
 
@@ -470,6 +473,33 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
           itemToString={itemToString}
           // downshift does not work with arrays as selectedItem.
           selectedItem={multiple || !value.length ? null : value[0]}
+          scrollIntoView={(node: HTMLElement, menu: HTMLElement) => {
+            if (node) {
+              const { children } = menu;
+              let nodeToScroll = node;
+              /**
+               * If it's loading downshift doesn't take the last node with loadingMessage
+               * in consideration to scrolld so we need to check if the current is the
+               * antepenultimate and is so scroll the loading into view, same for headerMessage
+               */
+              if (loading && children[children.length - 2] === node) {
+                nodeToScroll = children[children.length - 1] as HTMLElement;
+              } else if (headerMessage && children[1] === node) {
+                nodeToScroll = children[0] as HTMLElement;
+              }
+
+              // Replicating same config that Downshift uses
+              const actions = computeScrollIntoView(nodeToScroll, {
+                scrollMode: 'if-needed',
+                block: 'nearest',
+                inline: 'nearest',
+              });
+              actions.forEach(({ el, top, left }) => {
+                el.scrollTop = top;
+                el.scrollLeft = left;
+              });
+            }
+          }}
           getA11yStatusMessage={getA11yStatusMessage}
           highlightedIndex={highlightedIndex}
           onStateChange={this.handleStateChange}
@@ -1075,7 +1105,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
       e.stopPropagation();
       _.invoke(predefinedProps, 'onClick', e, dropdownSelectedItemProps);
     },
-    onKeyDown: (e: React.SyntheticEvent, dropdownSelectedItemProps: DropdownSelectedItemProps) => {
+    onKeyDown: (e: React.KeyboardEvent, dropdownSelectedItemProps: DropdownSelectedItemProps) => {
       this.handleSelectedItemKeyDown(e, item, predefinedProps, dropdownSelectedItemProps, rtl);
     },
   });
@@ -1099,9 +1129,9 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
     };
     const { disabled } = this.props;
 
-    const handleInputKeyDown = (e: React.SyntheticEvent, searchInputProps: DropdownSearchInputProps) => {
+    const handleInputKeyDown = (e: React.KeyboardEvent, searchInputProps: DropdownSearchInputProps) => {
       if (!disabled) {
-        switch (keyboardKey.getCode(e)) {
+        switch (getCode(e)) {
           case keyboardKey.Tab:
             e.stopPropagation();
             this.handleTabSelection(e, highlightedIndex, selectItemAtIndex, toggleMenu);
@@ -1157,17 +1187,17 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
       },
       // same story as above for getRootProps.
       accessibilityComboboxProps,
-      onFocus: (e: React.SyntheticEvent, searchInputProps: DropdownSearchInputProps) => {
+      onFocus: (e: React.FocusEvent, searchInputProps: DropdownSearchInputProps) => {
         if (!disabled) {
           this.setState({ focused: true, isFromKeyboard: isFromKeyboard() });
         }
 
         _.invoke(predefinedProps, 'onFocus', e, searchInputProps);
       },
-      onInputBlur: (e: React.SyntheticEvent, searchInputProps: DropdownSearchInputProps) => {
+      onInputBlur: (e: React.FocusEvent, searchInputProps: DropdownSearchInputProps) => {
         handleInputBlur(e, searchInputProps);
       },
-      onInputKeyDown: (e: React.SyntheticEvent, searchInputProps: DropdownSearchInputProps) => {
+      onInputKeyDown: (e: React.KeyboardEvent, searchInputProps: DropdownSearchInputProps) => {
         handleInputKeyDown(e, searchInputProps);
       },
     };
@@ -1258,8 +1288,8 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
     this.tryFocusSearchInput();
   };
 
-  handleTriggerButtonKeyDown = (e: React.SyntheticEvent, rtl: boolean) => {
-    switch (keyboardKey.getCode(e)) {
+  handleTriggerButtonKeyDown = (e: React.KeyboardEvent, rtl: boolean) => {
+    switch (getCode(e)) {
       case keyboardKey.ArrowLeft:
         if (!rtl) {
           this.trySetLastSelectedItemAsActive();
@@ -1276,13 +1306,13 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
   };
 
   handleListKeyDown = (
-    e: React.SyntheticEvent,
+    e: React.KeyboardEvent,
     highlightedIndex: number,
     accessibilityInputPropsKeyDown: (e) => any,
     toggleMenu: () => void,
     selectItemAtIndex: (index: number) => void,
   ) => {
-    const keyCode = keyboardKey.getCode(e);
+    const keyCode = getCode(e);
     switch (keyCode) {
       case keyboardKey.Tab:
         this.handleTabSelection(e, highlightedIndex, selectItemAtIndex, toggleMenu);
@@ -1303,7 +1333,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
   };
 
   handleSelectedItemKeyDown(
-    e: React.SyntheticEvent,
+    e: React.KeyboardEvent,
     item: ShorthandValue<DropdownItemProps>,
     predefinedProps: DropdownSelectedItemProps,
     dropdownSelectedItemProps: DropdownSelectedItemProps,
@@ -1314,7 +1344,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
     const previousKey = rtl ? keyboardKey.ArrowRight : keyboardKey.ArrowLeft;
     const nextKey = rtl ? keyboardKey.ArrowLeft : keyboardKey.ArrowRight;
 
-    switch (keyboardKey.getCode(e)) {
+    switch (getCode(e)) {
       case keyboardKey.Delete:
       case keyboardKey.Backspace:
         this.handleSelectedItemRemove(e, item, predefinedProps, dropdownSelectedItemProps);

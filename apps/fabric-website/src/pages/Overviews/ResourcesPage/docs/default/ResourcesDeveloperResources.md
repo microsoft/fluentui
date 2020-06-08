@@ -47,6 +47,6 @@ SharePoint uses Fluent UI, so if you’re building on top of or within a SharePo
 Fluent UI is the official UI toolkit for creating Office Add-ins. Check out some of these resources to learn more about how to use Fluent UI in your next Add-in.
 
 <ul class="md-list--flex">
-  <li class="mdut--full">[Add-ins overview](http://dev.office.com/docs/add-ins/overview/office-add-ins)</li>
-  <li class="mdut--full">[Using Fluent UI React in your Add-ins](http://dev.office.com/docs/add-ins/design/add-in-design)</li>
+  <li class="mdut--full">[Add-ins overview](https://docs.microsoft.com/office/dev/add-ins/)</li>
+  <li class="mdut--full">[Using Fluent UI React in your Add-ins](https://docs.microsoft.com/office/dev/add-ins/design/add-in-design)</li>
 </ul>

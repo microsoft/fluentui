@@ -1,9 +1,13 @@
-import { FocusZoneDirection, FocusZoneTabbableElements, IS_FOCUSABLE_ATTRIBUTE } from '@fluentui/accessibility';
+import {
+  FocusZoneDirection,
+  FocusZoneTabbableElements,
+  IS_ENTER_DISABLED_ATTRIBUTE,
+  IS_FOCUSABLE_ATTRIBUTE,
+} from '@fluentui/accessibility';
 import * as React from 'react';
 import cx from 'classnames';
 import * as _ from 'lodash';
-// @ts-ignore
-import * as keyboardKey from 'keyboard-key';
+import { getCode, keyboardKey, SpacebarKey } from '@fluentui/keyboard-key';
 import * as ReactDOM from 'react-dom';
 import * as PropTypes from 'prop-types';
 
@@ -13,6 +17,7 @@ import {
   getDocument,
   getParent,
   getWindow,
+  raiseClick,
   shouldWrapFocus,
 } from '@uifabric/utilities';
 
@@ -57,6 +62,7 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
     defaultTabbableElement: PropTypes.func,
     shouldFocusOnMount: PropTypes.bool,
     shouldResetActiveElementWhenTabFromZone: PropTypes.bool,
+    shouldRaiseClicks: PropTypes.bool,
     shouldFocusInnerElementWhenReceivedFocus: PropTypes.bool,
     disabled: PropTypes.bool,
     as: PropTypes.elementType as PropTypes.Requireable<React.ElementType>,
@@ -79,6 +85,7 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
     direction: FocusZoneDirection.bidirectional,
     as: 'div',
     preventDefaultWhenHandled: true,
+    shouldRaiseClicks: false,
   };
 
   static displayName = 'FocusZone';
@@ -457,7 +464,7 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
    * Handle global tab presses so that we can patch tabindexes on the fly.
    */
   _onKeyDownCapture = (ev: KeyboardEvent) => {
-    if (keyboardKey.getCode(ev) === keyboardKey.Tab) {
+    if (getCode(ev) === keyboardKey.Tab) {
       _outerZones.forEach(zone => zone.updateTabIndexes());
     }
   };
@@ -575,8 +582,8 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
     } else if (ev.altKey) {
       return undefined;
     } else {
-      switch (keyboardKey.getCode(ev)) {
-        case keyboardKey.Spacebar:
+      switch (getCode(ev)) {
+        case SpacebarKey:
           // @ts-ignore
           if (this.tryInvokeClickForFocusable(ev.target as HTMLElement)) {
             break;
@@ -713,9 +720,36 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
 
   /**
    * Walk up the dom try to find a focusable element.
-   * TODO
    */
-  tryInvokeClickForFocusable(): boolean {
+  tryInvokeClickForFocusable(targetElement: HTMLElement): boolean {
+    let target = targetElement;
+
+    if (target === this._root.current || !this.props.shouldRaiseClicks) {
+      return false;
+    }
+
+    do {
+      if (
+        target.tagName === 'BUTTON' ||
+        target.tagName === 'A' ||
+        target.tagName === 'INPUT' ||
+        target.tagName === 'TEXTAREA'
+      ) {
+        return false;
+      }
+
+      if (
+        this.isImmediateDescendantOfZone(target) &&
+        target.getAttribute(IS_FOCUSABLE_ATTRIBUTE) === 'true' &&
+        target.getAttribute(IS_ENTER_DISABLED_ATTRIBUTE) !== 'true'
+      ) {
+        raiseClick(target);
+        return true;
+      }
+
+      target = getParent(target, ALLOW_VIRTUAL_ELEMENTS) as HTMLElement;
+    } while (target !== this._root.current);
+
     return false;
   }
 

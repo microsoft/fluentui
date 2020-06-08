@@ -1,8 +1,119 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 15 May 2020 12:42:20 GMT and should not be manually modified.
+This log was last generated on Mon, 08 Jun 2020 12:34:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.118.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.118.0)
+
+Mon, 08 Jun 2020 12:34:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.117.4..office-ui-fabric-react_v7.118.0)
+
+### Minor changes
+
+- Dialog: min height for title to ensure subtext doesn't overlap 'close' button. ([PR #13492](https://github.com/microsoft/fluentui/pull/13492) by jdh@microsoft.com)
+
+### Patches
+
+- Dropdown and ContextualMenu doc comment clarifications ([PR #13471](https://github.com/microsoft/fluentui/pull/13471) by elcraig@microsoft.com)
+- Picker/PeoplePicker: Fix issue where default value wouldn't trigger suggestions ([PR #13480](https://github.com/microsoft/fluentui/pull/13480) by joschect@microsoft.com)
+- Deprecating defaultSelectedIndex props in Pivot.types.ts. ([PR #13479](https://github.com/microsoft/fluentui/pull/13479) by czearing@outlook.com)
+
+## [7.117.4](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.117.4)
+
+Fri, 05 Jun 2020 05:09:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.117.3..office-ui-fabric-react_v7.117.4)
+
+### Patches
+
+- Fixing GroupedList custom example aria error. ([PR #13457](https://github.com/microsoft/fluentui/pull/13457) by humbertomakotomorimoto@gmail.com)
+- Stack: Clarifying deprecated message of props replaced by tokens. ([PR #13476](https://github.com/microsoft/fluentui/pull/13476) by humbertomakotomorimoto@gmail.com)
+
+## [7.117.3](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.117.3)
+
+Thu, 04 Jun 2020 12:35:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.117.1..office-ui-fabric-react_v7.117.3)
+
+### Patches
+
+- CommandBar: Fixed caching to greatly improve performance for all users ([PR #13428](https://github.com/microsoft/fluentui/pull/13428) by mgodbolt@microsoft.com)
+- Pivot: replace onKeyPress with onKeyDown and ariaLabel with aria-label ([PR #13442](https://github.com/microsoft/fluentui/pull/13442) by behowell@microsoft.com)
+
+## [7.117.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.117.1)
+
+Tue, 02 Jun 2020 12:36:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.117.0..office-ui-fabric-react_v7.117.1)
+
+### Patches
+
+- Dialog: Fixing broken deprecated props and adding snapshot tests for them. ([PR #13425](https://github.com/microsoft/fluentui/pull/13425) by humbertomakotomorimoto@gmail.com)
+- Remove explicit blocking of Alt key ([PR #13389](https://github.com/microsoft/fluentui/pull/13389) by keyou@microsoft.com)
+- add aria-checked if the role is menuitemradio ([PR #13434](https://github.com/microsoft/fluentui/pull/13434) by makopch@microsoft.com)
+
+## [7.117.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.117.0)
+
+Fri, 29 May 2020 12:35:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.116.1..office-ui-fabric-react_v7.117.0)
+
+### Minor changes
+
+- Add dedicated touch invoke functionality to SelectionZone ([PR #13241](https://github.com/microsoft/fluentui/pull/13241) by sebastian.oettl@microsoft.com)
+
+### Patches
+
+- SpinButton: Reintroduce incorrect behavior of allowing updates when value is provided to prevent breaking partners. ([PR #13367](https://github.com/microsoft/fluentui/pull/13367) by elcraig@microsoft.com)
+- Changing storybook add-on panel position to default to be at the bottom of the page. ([PR #12906](https://github.com/microsoft/fluentui/pull/12906) by czearing@outlook.com)
+
+## [7.116.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.116.1)
+
+Thu, 28 May 2020 12:42:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.116.0..office-ui-fabric-react_v7.116.1)
+
+### Patches
+
+- SplitButton: Making imperative focus call on touch events. ([PR #13361](https://github.com/microsoft/fluentui/pull/13361) by humbertomakotomorimoto@gmail.com)
+
+## [7.116.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.116.0)
+
+Wed, 27 May 2020 12:40:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.115.2..office-ui-fabric-react_v7.116.0)
+
+### Minor changes
+
+- Pivot: Adding `alwaysRender` prop to `PivotItem` to allow for persistent `PivotItems` to control the amount of re-renders that happen. ([PR #12779](https://github.com/microsoft/fluentui/pull/12779) by herincon@microsoft.com)
+
+## [7.115.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.115.2)
+
+Thu, 21 May 2020 12:34:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.115.1..office-ui-fabric-react_v7.115.2)
+
+### Patches
+
+- MessageBar: Restore style overrides for Link inside MessageBar in high contrast; use dismissButtonAriaLabel as title too ([PR #13034](https://github.com/microsoft/fluentui/pull/13034) by elcraig@microsoft.com)
+- Prettier fix in Callout test. ([PR #12478](https://github.com/microsoft/fluentui/pull/12478) by humbertomakotomorimoto@gmail.com)
+
+## [7.115.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.115.1)
+
+Wed, 20 May 2020 12:31:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.115.0..office-ui-fabric-react_v7.115.1)
+
+### Patches
+
+- update MessageBarButtonBorder color ([PR #12932](https://github.com/microsoft/fluentui/pull/12932) by chrismo@microsoft.com)
+
+## [7.115.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.115.0)
+
+Mon, 18 May 2020 12:54:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.114.1..office-ui-fabric-react_v7.115.0)
+
+### Minor changes
+
+- Pass all relevant state to Nav group render override ([PR #12854](https://github.com/microsoft/fluentui/pull/12854) by tmichon@microsoft.com)
+
+### Patches
+
+- SpinButton: allow empty string as value, clean up docs and tests ([PR #13174](https://github.com/microsoft/fluentui/pull/13174) by elcraig@microsoft.com)
+- DetailsList: clarify IColumn.ariaLabel docs; other doc cleanup ([PR #13183](https://github.com/microsoft/fluentui/pull/13183) by elcraig@microsoft.com)
 
 ## [7.114.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.114.1)
 

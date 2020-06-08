@@ -1,8 +1,3 @@
-import { Stylesheet } from '@uifabric/merge-styles';
-import { getId, resetIds } from './getId';
-
-export { getId, resetIds };
-
 /**
  * Compares a to b and b to a.
  *
@@ -69,13 +64,6 @@ export function filteredAssign(isAllowed: (propName: string) => boolean, target:
   }
 
   return target;
-}
-
-// Configure ids to reset on stylesheet resets.
-const stylesheet = Stylesheet.getInstance();
-
-if (stylesheet && stylesheet.onReset) {
-  stylesheet.onReset(resetIds);
 }
 
 /**

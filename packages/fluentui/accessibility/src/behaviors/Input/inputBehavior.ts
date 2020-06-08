@@ -1,5 +1,5 @@
 import { Accessibility } from '../../types';
-import * as keyboardKey from 'keyboard-key';
+import { keyboardKey } from '@fluentui/keyboard-key';
 
 /**
  * @specification
@@ -10,6 +10,8 @@ const inputBehavior: Accessibility<InputBehaviorProps> = props => ({
   attributes: {
     root: {
       'aria-disabled': props.disabled,
+      ...(props.required && { 'aria-required': true }),
+      ...(props.error && { 'aria-invalid': true }),
     },
   },
   keyActions: {
@@ -23,6 +25,8 @@ const inputBehavior: Accessibility<InputBehaviorProps> = props => ({
 
 export default inputBehavior;
 
-type InputBehaviorProps = {
+export type InputBehaviorProps = {
   disabled?: boolean;
+  required?: boolean;
+  error?: boolean;
 };

@@ -1,8 +1,9 @@
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { FormFieldProps } from '../../../../components/Form/FormField';
+import { FormFieldStylesProps } from '../../../../components/Form/FormField';
 import { pxToRem } from '../../../../utils';
+import { FormFieldVariables } from './formFieldVariables';
 
-const formFieldStyles: ComponentSlotStylesPrepared<FormFieldProps> = {
+const formFieldStyles: ComponentSlotStylesPrepared<FormFieldStylesProps, FormFieldVariables> = {
   root: ({ props, variables }): ICSSInJSStyle => ({}),
   label: ({ props }): ICSSInJSStyle => {
     const { type, inline, required } = props;
@@ -18,7 +19,7 @@ const formFieldStyles: ComponentSlotStylesPrepared<FormFieldProps> = {
       }),
     };
   },
-  control: ({ props }): ICSSInJSStyle => {
+  control: ({ props, variables: v }): ICSSInJSStyle => {
     const { type } = props;
     return {
       ...(type &&
@@ -27,8 +28,12 @@ const formFieldStyles: ComponentSlotStylesPrepared<FormFieldProps> = {
         }),
     };
   },
-  message: (): ICSSInJSStyle => ({
+  message: ({ props: p, variables: v }): ICSSInJSStyle => ({
+    ...(p.hasErrorMessage && { color: v.colorScheme.red.foreground }),
     display: 'block',
+  }),
+  icon: ({ props: p, variables: v }): ICSSInJSStyle => ({
+    ...(p.hasErrorMessage && { color: v.colorScheme.red.foreground }),
   }),
 };
 

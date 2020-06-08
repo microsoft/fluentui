@@ -564,6 +564,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                     outline: none;
                   }
                   @media screen and (-ms-high-contrast: active){& {
+                    -ms-high-contrast-adjust: auto;
                     border-bottom: none;
                   }
                   &:active {
@@ -673,6 +674,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                     outline: none;
                   }
                   @media screen and (-ms-high-contrast: active){& {
+                    -ms-high-contrast-adjust: auto;
                     border-bottom: none;
                   }
                   &:active {
@@ -782,6 +784,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                     outline: none;
                   }
                   @media screen and (-ms-high-contrast: active){& {
+                    -ms-high-contrast-adjust: auto;
                     border-bottom: none;
                   }
                   &:active {

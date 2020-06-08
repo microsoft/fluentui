@@ -20,7 +20,7 @@ const loaderBehavior: Accessibility<LoaderBehaviorProps> = props => {
   };
 };
 
-type LoaderBehaviorProps = {
+export type LoaderBehaviorProps = {
   /** id of the loader label element. */
   labelId?: string;
 };

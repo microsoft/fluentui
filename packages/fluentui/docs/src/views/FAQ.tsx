@@ -168,14 +168,14 @@ export default () => (
           <CodeSnippet
             mode="js"
             value={`
-              import { themes } from '@fluentui/react-northstar'
+              import { teamsTheme } from '@fluentui/react-northstar'
 
               // 💡 Your overrides should be defined before rendering any Fluent UI components
 
               // will remove all existing fontFaces
-              themes.teams.fontFaces = []
+              teamsTheme.fontFaces = []
               // will replace with own definitions
-              themes.teams.fontFaces = [{
+              teamsTheme.fontFaces = [{
                 name: 'Segoe UI',
                 paths: ['https://...'],
                 style: { fontWeight: 600 },

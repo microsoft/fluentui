@@ -2,6 +2,72 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Fri, 22 May 2020 12:37:35 GMT",
+      "tag": "@uifabric/fabric-website_v7.10.58",
+      "version": "7.10.58",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update documentation for fontSize prop",
+            "author": "krsiler@microsoft.com",
+            "commit": "200b1a0960dbc059918d92385b1a4bb9a5f44406",
+            "package": "@uifabric/fabric-website"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 21 May 2020 12:34:43 GMT",
+      "tag": "@uifabric/fabric-website_v7.10.57",
+      "version": "7.10.57",
+      "comments": {
+        "none": [
+          {
+            "comment": "Remove unnecessary devDependency",
+            "author": "elcraig@microsoft.com",
+            "commit": "2fccd9fec686c2c79cc654e6d857bf7945b5e363",
+            "package": "@uifabric/fabric-website"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 19 May 2020 12:34:06 GMT",
+      "tag": "@uifabric/fabric-website_v7.10.55",
+      "version": "7.10.55",
+      "comments": {
+        "patch": [
+          {
+            "comment": "grammer fix on iOS get started change",
+            "author": "hyshin@microsoft.com",
+            "commit": "434f841fbb7d79337bb277180cfe4fc17b26e089",
+            "package": "@uifabric/fabric-website"
+          },
+          {
+            "comment": "added blurb on the Cross platform Getting Started page that FURN controls only support Windows and Mac atm",
+            "author": "ejlayne@microsoft.com",
+            "commit": "b9df2288e3eaf78388223692f573306f49c47040",
+            "package": "@uifabric/fabric-website"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 18 May 2020 12:54:52 GMT",
+      "tag": "@uifabric/fabric-website_v7.10.53",
+      "version": "7.10.53",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixed broken URLs",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "4e6191ce33cfd662c1b9b582487276be4b5867ea",
+            "package": "@uifabric/fabric-website"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 15 May 2020 05:52:46 GMT",
       "tag": "@uifabric/fabric-website_v7.10.50",
       "version": "7.10.50",

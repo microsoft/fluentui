@@ -101,7 +101,13 @@ const triggers = [
 ];
 
 const PopupExamplePointing = () => (
-  <Grid columns="repeat(3, 30px)" variables={{ padding: '30px', gridGap: '80px' }}>
+  <Grid
+    styles={{
+      gridTemplateColumns: 'repeat(3, 30px)',
+      msGridColumns: '30px 80px 30px 80px 30px',
+    }}
+    variables={{ padding: '30px', gridGap: '80px' }}
+  >
     {triggers.map(({ position, align, icon, padding }) => (
       <PopupWithButton align={align} icon={icon} key={`${position}-${align}`} padding={padding} position={position} />
     ))}

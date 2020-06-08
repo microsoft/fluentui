@@ -1,4 +1,4 @@
-import * as keyboardKey from 'keyboard-key';
+import { keyboardKey } from '@fluentui/keyboard-key';
 
 import { Accessibility, AccessibilityAttributes } from '../../types';
 import { FocusZoneDirection } from '../../focusZone/types';
@@ -39,6 +39,6 @@ const treeBehavior: Accessibility<TreeBehaviorProps> = props => {
   };
 };
 
-type TreeBehaviorProps = Pick<AccessibilityAttributes, 'aria-labelledby'>;
+export type TreeBehaviorProps = Pick<AccessibilityAttributes, 'aria-labelledby'>;
 
 export default treeBehavior;
