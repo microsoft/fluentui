@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as FUI from '@fluentui/react-northstar';
-import { ComponentInfo } from '@fluentui/docs/src/types';
+import { ComponentInfo } from '../componentInfo/types';
 
 const ComponentAnatomy = ({ componentInfo }: { componentInfo: ComponentInfo }) => {
   const shorthandProps = componentInfo.props.filter(propDef =>

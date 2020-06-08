@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Frame, { FrameContextConsumer } from 'react-frame-component';
 
-import { DebugSelector, FiberNavigator, Provider, themes } from '@fluentui/react-northstar';
+import { DebugSelector, FiberNavigator, Provider, teamsTheme } from '@fluentui/react-northstar';
 import { JSONTreeElement } from './types';
 import { EventListener } from '@fluentui/react-component-event-listener';
 import { fiberNavFindJSONTreeElement, fiberNavFindOwnerInJSONTree, renderJSONTreeToJSXElement } from '../config';
@@ -51,21 +51,24 @@ const Canvas = ({
     [],
   );
 
-  const iframeCoordinatesToWindowCoordinates: (e: MouseEvent) => { clientX: number; clientY: number } = e => {
-    const window = (e.target as HTMLElement).ownerDocument.defaultView;
-    const $iframe = window.parent.document.getElementById(iframeId);
+  const iframeCoordinatesToWindowCoordinates = React.useCallback(
+    (e: MouseEvent) => {
+      const window = (e.target as HTMLElement).ownerDocument.defaultView;
+      const $iframe = window.parent.document.getElementById(iframeId);
 
-    return {
-      clientX: $iframe.offsetLeft + e.clientX,
-      clientY: $iframe.offsetTop + e.clientY,
-    };
-  };
+      return {
+        clientX: $iframe.offsetLeft + e.clientX,
+        clientY: $iframe.offsetTop + e.clientY,
+      };
+    },
+    [iframeId],
+  );
 
   const handleMouseMove = React.useCallback(
     (e: MouseEvent) => {
       onMouseMove?.(iframeCoordinatesToWindowCoordinates(e));
     },
-    [onMouseMove],
+    [iframeCoordinatesToWindowCoordinates, onMouseMove],
   );
 
   const handleMouseUp = React.useCallback(
@@ -98,14 +101,14 @@ const Canvas = ({
     (e: MouseEvent) => {
       onCloneComponent?.(iframeCoordinatesToWindowCoordinates(e));
     },
-    [onCloneComponent],
+    [iframeCoordinatesToWindowCoordinates, onCloneComponent],
   );
 
   const handleMoveComponent = React.useCallback(
     (e: MouseEvent) => {
       onMoveComponent?.(iframeCoordinatesToWindowCoordinates(e));
     },
-    [onMoveComponent],
+    [iframeCoordinatesToWindowCoordinates, onMoveComponent],
   );
 
   const debugSize = '8px';
@@ -222,7 +225,7 @@ const Canvas = ({
 
       iframe.contentWindow.clearTimeout(animationFrame);
     };
-  }, [isExpanding, /"uuid":"/gm.exec(JSON.stringify(jsonTree))]);
+  }, [iframeId, isExpanding, isSelecting]);
 
   return (
     <Frame
@@ -256,10 +259,7 @@ const Canvas = ({
 
             <DebugSelector
               active={isSelecting}
-              key={
-                `debug-selector-${selectedComponent?.uuid ??
-                  'unknown'}` /* HACK: changing the key whenever selected component changes to remount the debug selector and hide it if needed */
-              }
+              key={`debug-selector-${selectedComponent?.uuid ?? 'unknown'}`}
               filter={fiberNav => {
                 const owner = fiberNavFindOwnerInJSONTree(fiberNav, jsonTree);
                 if (owner?.props?.['data-builder-id'] === selectedComponent?.uuid) {
@@ -296,7 +296,7 @@ const Canvas = ({
               />
             )}
 
-            <Provider theme={themes.teams} target={document}>
+            <Provider theme={teamsTheme} target={document}>
               {draggingElement && <EventListener type="mousemove" listener={handleMouseMove} target={document} />}
               {draggingElement && <EventListener type="mouseup" listener={handleMouseUp} target={document} />}
               {renderJSONTreeToJSXElement(jsonTree, renderJSONTreeElement)}

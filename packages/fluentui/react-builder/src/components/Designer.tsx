@@ -1,12 +1,11 @@
 import * as React from 'react';
 import { Text, Button } from '@fluentui/react-northstar';
 import { EventListener } from '@fluentui/react-component-event-listener';
-import renderElementToJSX from '@fluentui/docs/src/components/ExampleSnippet/renderElementToJSX';
+import { Editor, renderElementToJSX } from '@fluentui/docs-components';
 import { Ref } from '@fluentui/react-component-ref';
-import { Editor } from '@fluentui/docs-components';
 
-import componentInfoContext from '@fluentui/docs/src/utils/componentInfoContext';
-import { ComponentInfo } from '@fluentui/docs/src/types';
+import componentInfoContext from '../componentInfo/componentInfoContext';
+import { ComponentInfo } from '../componentInfo/types';
 
 // import Anatomy from './Anatomy';
 import BrowserWindow from './BrowserWindow';

@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { Button, Checkbox, RadioGroup, RadioGroupItemProps } from '@fluentui/react-northstar';
-import Logo from '@fluentui/docs/src/components/Logo/Logo';
+import { Button, Checkbox, Image, RadioGroup, RadioGroupItemProps } from '@fluentui/react-northstar';
 import { DesignerMode } from './types';
 import { OpenOutsideIcon, TrashCanIcon } from '@fluentui/react-icons-northstar';
 
@@ -40,7 +39,7 @@ const Toolbar = ({
       ...style,
     }}
   >
-    <Logo styles={{ height: '1.5rem', marginRight: '0.25rem' }} />
+    <Image styles={{ height: '1.5rem', marginRight: '0.25rem' }} src={`public/images/fluent-ui-logo.png`} />
     <div style={{ position: 'relative', width: '8em', fontSize: '18px', lineHeight: 1 }}>
       FluentUI
       <div style={{ position: 'absolute', fontSize: '11px', opacity: 0.625 }}>Builder</div>

@@ -2,8 +2,8 @@ import * as _ from 'lodash';
 import * as React from 'react';
 import { Box, Menu, Input } from '@fluentui/react-northstar';
 import { SearchIcon } from '@fluentui/react-icons-northstar';
-import { ComponentInfo } from '@fluentui/docs/src/types';
-import componentInfoContext from '@fluentui/docs/src/utils/componentInfoContext';
+import { ComponentInfo } from '../componentInfo/types';
+import componentInfoContext from '../componentInfo/componentInfoContext';
 import { EXCLUDED_COMPONENTS } from '../config';
 
 export type ListDisplayModes = 'Display Name' | 'Rendered';
@@ -24,7 +24,7 @@ const List = ({
     componentInfo => e => {
       if (onDragStart) onDragStart(componentInfo, e);
     },
-    [],
+    [onDragStart],
   );
 
   const handleFilterChange = React.useCallback((e, { value }) => {

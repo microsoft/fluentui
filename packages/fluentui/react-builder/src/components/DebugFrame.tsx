@@ -25,7 +25,7 @@ export const DebugFrame: React.FunctionComponent<DebugFrameProps> = ({
   const frameRef = React.useRef<HTMLDivElement>();
   const animationFrameId = React.useRef<number>();
 
-  const setFramePosition = (frameEl, controlEl) => {
+  const setFramePosition = React.useCallback((frameEl, controlEl) => {
     const rect = controlEl.getBoundingClientRect();
     frameEl.style.top = `${rect.top}px`;
     frameEl.style.left = `${rect.left}px`;
@@ -34,7 +34,7 @@ export const DebugFrame: React.FunctionComponent<DebugFrameProps> = ({
     frameEl.style.display = 'block';
 
     animationFrameId.current = requestAnimationFrame(() => setFramePosition(frameEl, controlEl));
-  };
+  }, []);
 
   const hideFrame = frameEl => {
     frameEl.style.display = 'none';
@@ -82,7 +82,7 @@ export const DebugFrame: React.FunctionComponent<DebugFrameProps> = ({
         : requestAnimationFrame(() => hideFrame(frameRef.current));
 
     return () => cancelAnimationFrame(animationFrameId.current);
-  }, [target, selector]);
+  }, [target, selector, setFramePosition]);
 
   return (
     <Ref innerRef={frameRef}>

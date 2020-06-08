@@ -145,7 +145,7 @@ export const DropSelector: React.FunctionComponent<DropSelectorProps> = ({
         }
       }
     },
-    [selectorRef, mouseRef, jsonTree],
+    [filter, jsonTree, mouseRef, onDropPositionChange, selectorRef],
   );
 
   const handleMouseLeave = React.useCallback(() => {

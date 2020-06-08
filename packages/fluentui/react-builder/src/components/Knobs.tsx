@@ -1,7 +1,7 @@
 import * as _ from 'lodash';
 import * as React from 'react';
 import { Header /* Slider */ } from '@fluentui/react-northstar';
-import { ComponentInfo } from '@fluentui/docs/src/types';
+import { ComponentInfo } from '../componentInfo/types';
 import { JSONTreeElement } from './types';
 import { MultiTypeKnob } from '../config';
 
@@ -91,7 +91,7 @@ const Knobs: React.FC<DesignKnobProps> = ({ onPropChange, info, jsonTreeElement 
             <MultiTypeKnob
               key={prop.name}
               label={prop.name}
-              types={types}
+              types={types as any}
               literalOptions={options}
               value={value}
               onChange={value => {

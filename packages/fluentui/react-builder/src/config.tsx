@@ -544,7 +544,7 @@ export const fiberNavFindOwnerInJSONTree = (fiberNav: FiberNavigator, jsonTree: 
 };
 
 export const jsonTreeMap = (tree: JSONTreeElement, cb) => {
-  const newTree = Object.assign({}, cb(tree));
+  const newTree = { ...cb(tree) };
 
   if (Array.isArray(newTree.children) && newTree.children.length > 0) {
     newTree.children = newTree.children.map(child => {
