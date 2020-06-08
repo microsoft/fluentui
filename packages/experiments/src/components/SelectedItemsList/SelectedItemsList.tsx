@@ -11,7 +11,6 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
   React.useEffect(() => {
     updateItems(props.selectedItems || props.defaultSelectedItems || []);
   }, [props.selectedItems]);
-  const checkBox = React.useRef<TItem>(null);
 
   const removeItems = (itemsToRemove: TItem[]): void => {
     // Intentionally not using .filter here as we want to only remove a specific
@@ -61,7 +60,6 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
             removeButtonAriaLabel={props.removeButtonAriaLabel}
             onRemoveItem={onRemoveItemCallbacks[index]}
             onItemChange={replaceItem}
-            componentRef={checkBox}
           />
         ))}
     </>
