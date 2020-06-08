@@ -81,6 +81,17 @@ export const tableCheckbox = (): React.CSSProperties => ({
   marginLeft: 5,
 });
 
+export const tableControls = (): React.CSSProperties => ({
+  border: '1px solid #e5e5e4',
+  borderBottom: 'none',
+
+  alignItems: 'center',
+  display: 'grid',
+  gridTemplateColumns: 'auto 100px 1fr auto',
+  gridGap: 5,
+  padding: 6,
+});
+
 export const tableFilter = (): React.CSSProperties => ({
   marginLeft: 5,
   width: 100,
