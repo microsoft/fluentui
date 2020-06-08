@@ -479,13 +479,14 @@ describe('ComboBox', () => {
   });
 
   it('Opens on focus when openOnKeyboardFocus is true', () => {
+    jest.useFakeTimers();
     const onMenuOpenMock = jest.fn();
-
     wrapper = mount(
       <ComboBox defaultSelectedKey="1" openOnKeyboardFocus options={DEFAULT_OPTIONS2} onMenuOpen={onMenuOpenMock} />,
     );
     const comboBoxRoot = wrapper.find('.ms-ComboBox-Input').find('input');
     comboBoxRoot.simulate('focus');
+    jest.runAllTimers();
     expect(onMenuOpenMock.mock.calls.length).toBe(1);
   });
 

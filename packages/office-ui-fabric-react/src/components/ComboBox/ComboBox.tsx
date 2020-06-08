@@ -1019,12 +1019,13 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
     }
 
     if (!this.state.focused) {
-      const state: Pick<IComboBoxState, 'focused'> | Pick<IComboBoxState, 'focused' | 'isOpen'> = { focused: true };
+      this.setState({ focused: true });
 
       if (this.props.openOnKeyboardFocus && !this.state.isOpen && !this.props.disabled) {
-        (state as Pick<IComboBoxState, 'focused' | 'isOpen'>).isOpen = true;
+        setTimeout(() => {
+          this.setState({ isOpen: true });
+        }, 50);
       }
-      this.setState(state);
     }
   };
 
