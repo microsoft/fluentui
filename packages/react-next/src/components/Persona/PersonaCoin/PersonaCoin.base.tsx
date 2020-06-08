@@ -29,12 +29,7 @@ const getClassNames = classNamesFunction<IPersonaCoinStyleProps, IPersonaCoinSty
   cacheSize: 100,
 });
 
-export interface IPersonaState {
-  isImageLoaded?: boolean;
-  isImageError?: boolean;
-}
-
-const DEFAULT_PROPS: IPersonaCoinProps = {
+const DEFAULT_PROPS = {
   size: PersonaSize.size48,
   presence: PersonaPresenceEnum.none,
   imageAlt: '',
@@ -48,6 +43,22 @@ function useWarnDeprecation(props: IPersonaCoinProps) {
   }, []);
 }
 
+function useImageLoadState({ onPhotoLoadingStateChange, imageUrl }: IPersonaCoinProps) {
+  const [imageLoadState, setImageLoadstate] = React.useState<ImageLoadState>(ImageLoadState.notLoaded);
+
+  React.useEffect(() => {
+    setImageLoadstate(ImageLoadState.notLoaded);
+  }, [imageUrl]);
+
+  const onLoadingStateChange = (loadState: ImageLoadState) => {
+    setImageLoadstate(loadState);
+
+    onPhotoLoadingStateChange?.(loadState);
+  };
+
+  return [imageLoadState, onLoadingStateChange] as const;
+}
+
 /**
  * PersonaCoin with no default styles.
  * [Use the `getStyles` API to add your own styles.](https://github.com/microsoft/fluentui/wiki/Styling)
@@ -58,32 +69,10 @@ export const PersonaCoinBase = React.forwardRef(
 
     useWarnDeprecation(props);
 
-    return <PersonaCoinBaseClass {...props} />;
-  },
-);
-PersonaCoinBase.displayName = 'PersonaCoinBase';
+    const [imageLoadState, onLoadingStateChange] = useImageLoadState(props);
 
-export class PersonaCoinBaseClass extends React.Component<IPersonaCoinProps, IPersonaState> {
-  constructor(props: IPersonaCoinProps) {
-    super(props);
+    const renderCoin = getCoinRenderer(onLoadingStateChange);
 
-    this.state = {
-      isImageLoaded: false,
-      isImageError: false,
-    };
-  }
-
-  // tslint:disable-next-line function-name
-  public UNSAFE_componentWillReceiveProps(nextProps: IPersonaCoinProps): void {
-    if (nextProps.imageUrl !== this.props.imageUrl) {
-      this.setState({
-        isImageLoaded: false,
-        isImageError: false,
-      });
-    }
-  }
-
-  public render(): JSX.Element | null {
     const {
       className,
       coinProps,
@@ -93,19 +82,19 @@ export class PersonaCoinBaseClass extends React.Component<IPersonaCoinProps, IPe
       imageUrl,
       isOutOfOffice,
       // tslint:disable:deprecation
-      onRenderCoin = this._onRenderCoin,
+      onRenderCoin = renderCoin,
       onRenderPersonaCoin = onRenderCoin,
       // tslint:enable:deprecation
-      onRenderInitials = this._onRenderInitials,
+      onRenderInitials = renderPersonaCoinInitials,
       presence,
       presenceTitle,
       presenceColors,
       showInitialsUntilImageLoads,
       theme,
-    } = this.props;
+      size,
+    } = props;
 
-    const size = this.props.size as PersonaSize;
-    const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties);
+    const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(props, divProperties);
     const divCoinProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(coinProps || {}, divProperties);
     const coinSizeStyle = coinSize ? { width: coinSize, height: coinSize } : undefined;
     const hideImage = showUnknownPersonaCoin;
@@ -130,12 +119,15 @@ export class PersonaCoinBaseClass extends React.Component<IPersonaCoinProps, IPe
     });
 
     const shouldRenderInitials = Boolean(
-      !this.state.isImageLoaded &&
-        ((showInitialsUntilImageLoads && imageUrl) || !imageUrl || this.state.isImageError || hideImage),
+      imageLoadState !== ImageLoadState.loaded &&
+        ((showInitialsUntilImageLoads && imageUrl) ||
+          !imageUrl ||
+          imageLoadState === ImageLoadState.error ||
+          hideImage),
     );
 
     return (
-      <div role="presentation" {...divProps} className={classNames.coin}>
+      <div role="presentation" {...divProps} className={classNames.coin} ref={forwardedRef}>
         {// Render PersonaCoin if size is not size8. size10 and tiny need to removed after a deprecation cleanup.
         // tslint:disable-next-line:deprecation
         size !== PersonaSize.size8 && size !== PersonaSize.size10 && size !== PersonaSize.tiny ? (
@@ -144,93 +136,83 @@ export class PersonaCoinBaseClass extends React.Component<IPersonaCoinProps, IPe
               <div
                 className={mergeStyles(
                   classNames.initials,
-                  !showUnknownPersonaCoin && { backgroundColor: getPersonaInitialsColor(this.props) },
+                  !showUnknownPersonaCoin && { backgroundColor: getPersonaInitialsColor(props) },
                 )}
                 style={coinSizeStyle}
                 aria-hidden="true"
               >
-                {onRenderInitials(this.props, this._onRenderInitials)}
+                {onRenderInitials(props, renderPersonaCoinInitials)}
               </div>
             )}
-            {!hideImage && onRenderPersonaCoin(this.props, this._onRenderCoin)}
+            {!hideImage && onRenderPersonaCoin(props, renderCoin)}
             <PersonaPresence {...personaPresenceProps} />
           </div>
         ) : // Otherwise, render just PersonaPresence.
-        this.props.presence ? (
+        props.presence ? (
           <PersonaPresence {...personaPresenceProps} />
         ) : (
           // Just render Contact Icon if there isn't a Presence prop.
           <Icon iconName="Contact" className={classNames.size10WithoutPresenceIcon} />
         )}
-        {this.props.children}
+        {props.children}
       </div>
     );
+  },
+);
+PersonaCoinBase.displayName = 'PersonaCoinBase';
+
+const getCoinRenderer = (onLoadingStateChange: (loadState: ImageLoadState) => void) => ({
+  coinSize,
+  styles,
+  imageUrl,
+  imageAlt,
+  imageShouldFadeIn,
+  imageShouldStartVisible,
+  theme,
+  showUnknownPersonaCoin,
+  size = DEFAULT_PROPS.size,
+}: IPersonaCoinProps): JSX.Element | null => {
+  // Render the Image component only if an image URL is provided
+  if (!imageUrl) {
+    return null;
+  }
+  const classNames = getClassNames(styles, {
+    theme: theme!,
+    size,
+    showUnknownPersonaCoin,
+  });
+  const dimension = coinSize || sizeToPixels[size];
+  return (
+    <Image
+      className={classNames.image}
+      imageFit={ImageFit.cover}
+      src={imageUrl}
+      width={dimension}
+      height={dimension}
+      alt={imageAlt}
+      shouldFadeIn={imageShouldFadeIn}
+      shouldStartVisible={imageShouldStartVisible}
+      onLoadingStateChange={onLoadingStateChange}
+    />
+  );
+};
+
+const renderPersonaCoinInitials = ({
+  imageInitials,
+  allowPhoneInitials,
+  showUnknownPersonaCoin,
+  text,
+  // tslint:disable-next-line: deprecation
+  primaryText,
+  theme,
+}: IPersonaCoinProps): JSX.Element => {
+  if (showUnknownPersonaCoin) {
+    return <Icon iconName="Help" />;
   }
 
-  private _onRenderCoin = (props: IPersonaCoinProps): JSX.Element | null => {
-    const {
-      coinSize,
-      styles,
-      imageUrl,
-      imageAlt,
-      imageShouldFadeIn,
-      imageShouldStartVisible,
-      theme,
-      showUnknownPersonaCoin,
-    } = this.props;
+  const isRTL = getRTL(theme);
 
-    // Render the Image component only if an image URL is provided
-    if (!imageUrl) {
-      return null;
-    }
+  imageInitials = imageInitials || getInitials(text || primaryText || '', isRTL, allowPhoneInitials);
 
-    const size = this.props.size as PersonaSize;
-
-    const classNames = getClassNames(styles, {
-      theme: theme!,
-      size,
-      showUnknownPersonaCoin,
-    });
-
-    const dimension = coinSize || sizeToPixels[size];
-
-    return (
-      <Image
-        className={classNames.image}
-        imageFit={ImageFit.cover}
-        src={imageUrl}
-        width={dimension}
-        height={dimension}
-        alt={imageAlt}
-        shouldFadeIn={imageShouldFadeIn}
-        shouldStartVisible={imageShouldStartVisible}
-        onLoadingStateChange={this._onPhotoLoadingStateChange}
-      />
-    );
-  };
-
-  private _onRenderInitials = (props: IPersonaCoinProps): JSX.Element => {
-    let { imageInitials } = props;
-    // tslint:disable-next-line: deprecation
-    const { allowPhoneInitials, showUnknownPersonaCoin, text, primaryText } = props;
-
-    if (showUnknownPersonaCoin) {
-      return <Icon iconName="Help" />;
-    }
-
-    const isRTL = getRTL(this.props.theme);
-
-    imageInitials = imageInitials || getInitials(text || primaryText || '', isRTL, allowPhoneInitials);
-
-    return imageInitials !== '' ? <span>{imageInitials}</span> : <Icon iconName="Contact" />;
-  };
-
-  private _onPhotoLoadingStateChange = (loadState: ImageLoadState) => {
-    this.setState({
-      isImageLoaded: loadState === ImageLoadState.loaded,
-      isImageError: loadState === ImageLoadState.error,
-    });
-
-    this.props.onPhotoLoadingStateChange && this.props.onPhotoLoadingStateChange(loadState);
-  };
-}
+  return imageInitials !== '' ? <span>{imageInitials}</span> : <Icon iconName="Contact" />;
+};
