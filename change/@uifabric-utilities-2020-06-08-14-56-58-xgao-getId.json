@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "getId: no need to resetIds when Stylesheet resets",
+  "packageName": "@uifabric/utilities",
+  "email": "xgao@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-06-08T21:56:58.865Z"
+}
