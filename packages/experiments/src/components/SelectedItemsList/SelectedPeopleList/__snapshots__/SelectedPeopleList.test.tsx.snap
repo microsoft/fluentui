@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SelectedPeopleList renders personas that are passed in 1`] = `
-Array [
+<div
+  role="list"
+>
   <div
     aria-labelledby="selectedItemPersona-id__0"
     className=
@@ -510,7 +512,7 @@ Array [
         </span>
       </button>
     </div>
-  </div>,
+  </div>
   <div
     aria-labelledby="selectedItemPersona-id__8"
     className=
@@ -1019,6 +1021,6 @@ Array [
         </span>
       </button>
     </div>
-  </div>,
-]
+  </div>
+</div>
 `;
