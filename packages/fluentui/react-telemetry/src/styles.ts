@@ -1,20 +1,43 @@
 import * as React from 'react';
+import { TelemetryPosition } from './useTelemetryState';
 
 const COLORS = ['#ffffcc', '#ffeda0', '#fed976', '#feb24c', '#fd8d3c', '#fc4e2a', '#e31a1c', '#bd0026', '#800026'];
 
 export const getColor = (p: number): string => COLORS[Math.round((COLORS.length - 1) * p)];
 
-export const panel = (): React.CSSProperties => ({
+export const controls = (): React.CSSProperties => ({
+  border: '1px solid #e5e5e4',
+  borderBottom: 'none',
+
+  alignItems: 'center',
+  display: 'grid',
+  gridTemplateColumns: '1fr auto',
+  gridGap: 5,
+  padding: 4,
+});
+
+export const panel = ({ position }: { position: TelemetryPosition }): React.CSSProperties => ({
   background: 'rgba(245, 245, 245)',
   color: '#565554',
 
   fontSize: '12px',
   position: 'fixed',
-  right: 0,
-  bottom: 0,
 
   minWidth: 500,
   zIndex: 1000,
+
+  ...(position === 'bottom' && {
+    right: 0,
+    bottom: 0,
+  }),
+  ...(position === 'left' && {
+    left: 0,
+    top: 0,
+  }),
+  ...(position === 'right' && {
+    right: 0,
+    top: 0,
+  }),
 });
 
 export const help = (): React.CSSProperties => ({

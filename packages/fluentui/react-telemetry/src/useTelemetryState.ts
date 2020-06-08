@@ -1,6 +1,7 @@
 import { defaultPerformanceFlags, StylesContextPerformance } from '@fluentui/react-bindings';
 import * as React from 'react';
 
+export type TelemetryPosition = 'left' | 'right' | 'bottom';
 export type TelemetryTabs = 'telemetry' | 'performance-flags' | 'help';
 export type TelemetryTableSort = { column: string; direction: 'asc' | 'desc' };
 
@@ -13,7 +14,9 @@ export type TelemetryAction =
   | { type: 'SET_TABLE_EXPAND_STYLES'; value: boolean }
   | { type: 'SET_TABLE_COMPONENT_FILTER'; value: string | undefined }
   | { type: 'SET_TABLE_SORT'; value: TelemetryTableSort | undefined }
-  | { type: 'SET_TELEMETRY_TAB'; tab: TelemetryTabs };
+  | { type: 'SET_TELEMETRY_TAB'; tab: TelemetryTabs }
+  | { type: 'SET_POSITION'; value: TelemetryPosition }
+  | { type: 'SET_VISIBILITY'; value: boolean };
 
 export type TelemetryState = {
   activeTab: TelemetryTabs;
@@ -22,6 +25,9 @@ export type TelemetryState = {
   tableComponentFilter: string | undefined;
   tableSort: TelemetryTableSort | undefined;
   tableExpandStyles: boolean;
+
+  position: TelemetryPosition;
+  visible: boolean;
 };
 
 const stateReducer: React.Reducer<TelemetryState, TelemetryAction> = (prevState, action) => {
@@ -41,6 +47,10 @@ const stateReducer: React.Reducer<TelemetryState, TelemetryAction> = (prevState,
       }
 
       return { ...prevState, tableSort: undefined };
+    case 'SET_POSITION':
+      return { ...prevState, position: action.value };
+    case 'SET_VISIBILITY':
+      return { ...prevState, visible: action.value };
     default:
       throw new Error('Not implemented');
   }
@@ -53,6 +63,9 @@ const defaultState: TelemetryState = {
   tableComponentFilter: undefined,
   tableSort: undefined,
   tableExpandStyles: true,
+
+  position: 'bottom',
+  visible: false,
 };
 
 export function useTelemetryState(): [TelemetryState, React.Dispatch<TelemetryAction>] {
