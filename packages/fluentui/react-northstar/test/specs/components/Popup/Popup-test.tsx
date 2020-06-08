@@ -49,15 +49,11 @@ describe('Popup', () => {
     const popupTriggerElement = popup.find(`#${triggerId}`);
     popupTriggerElement.simulate(openEvent.event, { keyCode: openEvent.keyCode });
 
-    setTimeout(() => {
-      expect(getPopupContent(popup).exists()).toBe(true);
-    }, 0);
+    expect(getPopupContent(popup).exists()).toBe(true);
 
     // check popup closes on Esc
     popupTriggerElement.simulate(closeEvent.event, { keyCode: closeEvent.keyCode });
-    setTimeout(() => {
-      expect(getPopupContent(popup).exists()).toBe(false);
-    }, 0);
+    expect(getPopupContent(popup).exists()).toBe(false);
   };
 
   describe('onOpenChange', () => {
@@ -178,7 +174,7 @@ describe('Popup', () => {
       ReactTestUtils.act(() => {
         ReactDOM.render(
           <EmptyThemeProvider>
-            <React.Fragment>
+            <>
               <Popup
                 trigger={<span id={triggerId}>text to trigger popup</span>}
                 content={{ id: contentId }}
@@ -189,34 +185,28 @@ describe('Popup', () => {
                 content={{ id: contentId2 }}
                 on="click"
               />
-            </React.Fragment>
+            </>
           </EmptyThemeProvider>,
           attachTo,
         );
       });
 
-      setTimeout(() => {
-        expect(document.querySelector(`#${contentId}`)).toBe(null);
-        expect(document.querySelector(`#${contentId2}`)).toBe(null);
-      }, 0);
+      expect(document.querySelector(`#${contentId}`)).toBe(null);
+      expect(document.querySelector(`#${contentId2}`)).toBe(null);
 
       ReactTestUtils.act(() => {
         domEvent.keyDown(`#${triggerId}`, { keyCode: keyboardKey.Enter });
       });
 
-      setTimeout(() => {
-        expect(document.querySelector(`#${contentId}`)).toBeDefined();
-        expect(document.querySelector(`#${contentId2}`)).toBe(null);
-      }, 0);
+      expect(document.querySelector(`#${contentId}`)).toBeDefined();
+      expect(document.querySelector(`#${contentId2}`)).toBe(null);
 
       ReactTestUtils.act(() => {
         domEvent.keyDown(`#${triggerId2}`, { keyCode: keyboardKey.Enter });
       });
 
-      setTimeout(() => {
-        expect(document.querySelector(`#${contentId}`)).toBe(null);
-        expect(document.querySelector(`#${contentId2}`)).toBeDefined();
-      }, 0);
+      expect(document.querySelector(`#${contentId}`)).toBe(null);
+      expect(document.querySelector(`#${contentId2}`)).toBeDefined();
 
       ReactDOM.unmountComponentAtNode(attachTo);
       document.body.removeChild(attachTo);
@@ -238,11 +228,9 @@ describe('Popup', () => {
       const wrapper = mountWithProvider(<Popup trigger={<button id={triggerId} />} inline content="Content" open />, {
         attachTo,
       });
+      const contentElement = document.querySelector(`#${triggerId}`).nextSibling as HTMLDivElement;
 
-      setTimeout(() => {
-        const contentElement = document.querySelector(`#${triggerId}`).nextSibling as HTMLDivElement;
-        expect(contentElement.classList.contains(popupContentClassName)).toEqual(true);
-      }, 0);
+      expect(contentElement.classList.contains(popupContentClassName)).toEqual(true);
 
       wrapper.unmount();
       document.body.removeChild(attachTo);
