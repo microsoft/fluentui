@@ -27,6 +27,7 @@ const KnobControl: React.FunctionComponent<KnobComponentProps> = props => (
     style={{
       verticalAlign: 'middle',
       width: 150,
+      overflow: 'hidden',
     }}
   >
     {props.children}
