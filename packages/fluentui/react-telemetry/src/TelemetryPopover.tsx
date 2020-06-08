@@ -11,7 +11,7 @@ import { TelemetryPerfFlags } from './TelemetryPerfFlags';
 
 export type TelemetryPopoverProps = {
   mountNode?: HTMLElement;
-  hotKeyHandler: (e: KeyboardEvent) => boolean;
+  hotKeyHandler?: (e: KeyboardEvent) => boolean;
 };
 
 function defaultHotKeyHandler(e: KeyboardEvent) {
