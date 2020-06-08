@@ -14,7 +14,7 @@ const defaultSlots: Omit<ICheckboxSlots, 'root'> = {
   checkbox: 'div',
 };
 
-export const CheckboxBase = compose<'div', ICheckboxProps, ICheckboxProps, {}, {}>(
+export const CheckboxBase = compose<'div', ICheckboxProps, {}, ICheckboxProps, {}>(
   (props, forwardedRef, composeOptions) => {
     const { slotProps, slots, state } = useCheckbox(props, composeOptions, forwardedRef);
     const { disabled, keytipProps, label } = state;

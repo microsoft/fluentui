@@ -27,7 +27,7 @@ import { ThemeProviderProps } from '@fluentui/react-theme-provider';
 import { useTheme } from '@fluentui/react-theme-provider';
 
 // @public (undocumented)
-export const Checkbox: import("@fluentui/react-compose").ComponentWithAs<import("react").ElementType<any>, {}>;
+export const Checkbox: import("@fluentui/react-compose").ComponentWithAs<"div", ICheckboxProps>;
 
 // @public (undocumented)
 export const CheckboxBase: import("@fluentui/react-compose").ComponentWithAs<"div", ICheckboxProps>;
