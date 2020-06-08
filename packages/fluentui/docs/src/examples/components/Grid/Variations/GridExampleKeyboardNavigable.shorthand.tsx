@@ -30,15 +30,30 @@ const imageButtonStyles = {
   margin: '0',
 };
 
+const getMSGridPositions = (msGridColumn, msGridRow) => ({
+  msGridColumn,
+  msGridRow,
+});
+
 const renderImages = () => {
-  return _.map(imageNames, imageName => (
-    <Image key={imageName} fluid src={`public/images/avatar/large/${imageName}.jpg`} data-is-focusable="true" />
+  return _.map(imageNames, (imageName, index) => (
+    <Image
+      key={imageName}
+      styles={getMSGridPositions(index % 7, index % 3)}
+      fluid
+      src={`public/images/avatar/large/${imageName}.jpg`}
+      data-is-focusable="true"
+    />
   ));
 };
 
 const renderImageButtons = () => {
-  return _.map(imageNames, imageName => (
-    <Button key={imageName} styles={imageButtonStyles} title={imageName}>
+  return _.map(imageNames, (imageName, index) => (
+    <Button
+      key={imageName}
+      styles={{ ...imageButtonStyles, ...getMSGridPositions(index % 7, index % 3) }}
+      title={imageName}
+    >
       <Image fluid src={`public/images/avatar/large/${imageName}.jpg`} />
     </Button>
   ));
