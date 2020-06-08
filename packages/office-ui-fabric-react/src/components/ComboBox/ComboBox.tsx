@@ -40,7 +40,7 @@ export interface IComboBoxState {
   selectedIndices?: number[];
 
   /** The focused state of the comboBox */
-  focused?: boolean;
+  focusState?: 'none' | 'focused' | 'focusing';
 
   /** This value is used for the autocomplete hint value */
   suggestedDisplayValue?: string;
@@ -210,7 +210,7 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
     this.state = {
       isOpen: false,
       selectedIndices: initialSelectedIndices,
-      focused: false,
+      focusState: 'none',
       suggestedDisplayValue: undefined,
       currentOptions: this.props.options,
       currentPendingValueValidIndex: -1,
@@ -267,7 +267,7 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
 
   public componentDidUpdate(prevProps: IComboBoxProps, prevState: IComboBoxState) {
     const { allowFreeform, text, onMenuOpen, onMenuDismissed } = this.props;
-    const { isOpen, focused, selectedIndices, currentPendingValueValidIndex } = this.state;
+    const { isOpen, focusState, selectedIndices, currentPendingValueValidIndex } = this.state;
 
     // If we are newly open or are open and the pending valid index changed,
     // make sure the currently selected/pending option is scrolled into view
@@ -280,7 +280,7 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
     // and If we are open or we are just closed, shouldFocusAfterClose is set,
     // but we are not the activeElement set focus on the input
     if (
-      focused &&
+      this._hasFocus() &&
       (isOpen ||
         (prevState.isOpen &&
           !isOpen &&
@@ -301,7 +301,7 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
     if (
       this._focusInputAfterClose &&
       ((prevState.isOpen && !isOpen) ||
-        (focused &&
+        (this._hasFocus() &&
           ((!isOpen &&
             !this.props.multiSelect &&
             prevState.selectedIndices &&
@@ -310,7 +310,7 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
             !allowFreeform ||
             text !== prevProps.text)))
     ) {
-      this._select();
+      this._onFocus();
     }
 
     this._notifyPendingValueChanged(prevState);
@@ -360,7 +360,7 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
       iconButtonProps,
       multiSelect,
     } = this.props;
-    const { isOpen, focused, suggestedDisplayValue } = this.state;
+    const { isOpen, focusState: focused, suggestedDisplayValue } = this.state;
     this._currentVisibleValue = this._getVisibleValue();
 
     // Single select is already accessible since the whole text is selected
@@ -424,7 +424,7 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
                 id={id + '-input'}
                 className={this._classNames.input}
                 type="text"
-                onFocus={this._select}
+                onFocus={this._onFocus}
                 onBlur={this._onBlur}
                 onKeyDown={this._onInputKeyDown}
                 onKeyUp={this._onInputKeyUp}
@@ -518,6 +518,12 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
         });
       }
     }
+
+    // Programatically setting focus means that there is nothing else that needs to be done
+    // Focus is now contained
+    if (!this._hasFocus()) {
+      this.setState({ focusState: 'focused' });
+    }
   };
 
   /**
@@ -581,7 +587,6 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
       currentPendingValue,
       suggestedDisplayValue,
       isOpen,
-      focused,
     } = this.state;
 
     const currentPendingIndexValid = this._indexWithinBounds(currentOptions, currentPendingValueValidIndex);
@@ -598,7 +603,7 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
 
     if (this.props.multiSelect) {
       // Multi-select
-      if (focused) {
+      if (this._hasFocus()) {
         let index = -1;
         if (autoComplete === 'on' && currentPendingIndexValid) {
           index = currentPendingValueValidIndex;
@@ -1013,18 +1018,13 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
    * Focus (and select) the content of the input
    * and set the focused state
    */
-  private _select = (): void => {
+  private _onFocus = (): void => {
     if (this._autofill.current && this._autofill.current.inputElement) {
       this._autofill.current.inputElement.select();
     }
 
-    if (!this.state.focused) {
-      const state: Pick<IComboBoxState, 'focused'> | Pick<IComboBoxState, 'focused' | 'isOpen'> = { focused: true };
-
-      if (this.props.openOnKeyboardFocus && !this.state.isOpen && !this.props.disabled) {
-        (state as Pick<IComboBoxState, 'focused' | 'isOpen'>).isOpen = true;
-      }
-      this.setState(state);
+    if (!this._hasFocus()) {
+      this.setState({ focusState: 'focusing' });
     }
   };
 
@@ -1094,8 +1094,8 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
       return;
     }
 
-    if (this.state.focused) {
-      this.setState({ focused: false });
+    if (this._hasFocus()) {
+      this.setState({ focusState: 'none' });
       if (!this.props.multiSelect || this.props.allowFreeform) {
         this._submitPendingValue(event);
       }
@@ -2031,6 +2031,13 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
       default:
         if (shouldHandleKey && isOpen) {
           this._setOpenStateAndFocusOnClose(!isOpen, true /* focusInputAfterClose */);
+        } else {
+          if (this.state.focusState === 'focusing' && this.props.openOnKeyboardFocus) {
+            this.setState({ isOpen: true });
+          }
+          if (this.state.focusState !== 'focused') {
+            this.setState({ focusState: 'focused' });
+          }
         }
         return;
     }
@@ -2116,7 +2123,7 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
 
     if (!disabled) {
       this._setOpenStateAndFocusOnClose(!isOpen, false /* focusInputAfterClose */);
-      this.setState({ focused: true });
+      this.setState({ focusState: 'focused' });
     }
   };
 
@@ -2199,7 +2206,7 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
       this.state.isOpen && this.state.selectedIndices && this.state.selectedIndices.length > 0
         ? this._id + '-list' + this.state.selectedIndices[0]
         : undefined;
-    if (this.state.isOpen && this.state.focused && this.state.currentPendingValueValidIndex !== -1) {
+    if (this.state.isOpen && this._hasFocus() && this.state.currentPendingValueValidIndex !== -1) {
       descendantText = this._id + '-list' + this.state.currentPendingValueValidIndex;
     }
     return descendantText;
@@ -2257,5 +2264,12 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
 
   private _normalizeToString(value?: string): string {
     return value || '';
+  }
+
+  /**
+   * Returns true if the component has some kind of focus. If it's either focusing or if it's focused
+   */
+  private _hasFocus() {
+    return this.state.focusState !== 'none';
   }
 }
