@@ -21,6 +21,7 @@ import {
 } from '../Persona.types';
 import { getPersonaInitialsColor } from '../PersonaInitialsColor';
 import { sizeToPixels } from '../PersonaConsts';
+import { getPropsWithDefaults } from 'office-ui-fabric-react';
 
 const getClassNames = classNamesFunction<IPersonaCoinStyleProps, IPersonaCoinStyles>({
   // There can be many PersonaCoin rendered with different sizes.
@@ -33,17 +34,26 @@ export interface IPersonaState {
   isImageError?: boolean;
 }
 
+const DEFAULT_PROPS: IPersonaCoinProps = {
+  size: PersonaSize.size48,
+  presence: PersonaPresenceEnum.none,
+  imageAlt: '',
+};
+
 /**
  * PersonaCoin with no default styles.
  * [Use the `getStyles` API to add your own styles.](https://github.com/microsoft/fluentui/wiki/Styling)
  */
-export class PersonaCoinBase extends React.Component<IPersonaCoinProps, IPersonaState> {
-  public static defaultProps: IPersonaCoinProps = {
-    size: PersonaSize.size48,
-    presence: PersonaPresenceEnum.none,
-    imageAlt: '',
-  };
+export const PersonaCoinBase = React.forwardRef(
+  (propsWithoutDefaults: IPersonaCoinProps, forwardedRef: React.Ref<HTMLDivElement>) => {
+    const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
 
+    return <PersonaCoinBaseClass {...props} />;
+  },
+);
+PersonaCoinBase.displayName = 'PersonaCoinBase';
+
+export class PersonaCoinBaseClass extends React.Component<IPersonaCoinProps, IPersonaState> {
   constructor(props: IPersonaCoinProps) {
     super(props);
 
