@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IPersonaSharedProps, Persona, PersonaInitialsColor, PersonaSize } from 'office-ui-fabric-react/lib/Persona';
+import { IPersonaSharedProps, Persona, PersonaInitialsColor, PersonaSize } from '../../../Persona';
 import { Stack } from 'office-ui-fabric-react/lib/Stack';
 
 const examplePersona: IPersonaSharedProps = {
