@@ -62,6 +62,6 @@ const groups = [
   },
 ];
 
-const scenario = <Nav selectedKey="key3" ariaLabel="Nav basic example" groups={groups} />;
+const Scenario = () => <Nav selectedKey="key3" ariaLabel="Nav basic example" groups={groups} />;
 
-export default scenario;
+export default Scenario;

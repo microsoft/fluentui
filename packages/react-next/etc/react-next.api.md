@@ -438,14 +438,9 @@ export interface IPivotItemProps extends React.HTMLAttributes<HTMLDivElement> {
 export interface IPivotProps extends React.HTMLAttributes<HTMLDivElement> {
     className?: string;
     componentRef?: React.RefObject<IPivot>;
-    defaultSelectedIndex?: number;
     defaultSelectedKey?: string;
     getTabId?: (itemKey: string, index: number) => string;
     headersOnly?: boolean;
-    // @deprecated
-    initialSelectedIndex?: number;
-    // @deprecated
-    initialSelectedKey?: string;
     linkFormat?: PivotLinkFormatType;
     linkSize?: PivotLinkSizeType;
     onLinkClick?: (item?: PivotItem, ev?: React.MouseEvent<HTMLElement>) => void;
@@ -500,7 +495,7 @@ export interface IResizeGroup {
 }
 
 // @public (undocumented)
-export interface IResizeGroupProps extends React.HTMLAttributes<ResizeGroupBase | HTMLElement> {
+export interface IResizeGroupProps extends React.HTMLAttributes<HTMLDivElement> {
     className?: string;
     componentRef?: IRefObject<IResizeGroup>;
     data: any;
@@ -1023,24 +1018,10 @@ export type PivotLinkSizeType = 'normal' | 'large';
 export const Popup: React.ForwardRefExoticComponent<IPopupProps & React.RefAttributes<HTMLDivElement>>;
 
 // @public (undocumented)
-export const ResizeGroup: typeof ResizeGroupBase;
+export const ResizeGroup: import("react").ForwardRefExoticComponent<import("./ResizeGroup.types").IResizeGroupProps & import("react").RefAttributes<HTMLDivElement>>;
 
 // @public (undocumented)
-export class ResizeGroupBase extends React.Component<IResizeGroupProps, IResizeGroupState> {
-    constructor(props: IResizeGroupProps);
-    // (undocumented)
-    componentDidMount(): void;
-    // (undocumented)
-    componentDidUpdate(prevProps: IResizeGroupProps): void;
-    // (undocumented)
-    componentWillUnmount(): void;
-    // (undocumented)
-    remeasure(): void;
-    // (undocumented)
-    render(): JSX.Element;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(nextProps: IResizeGroupProps): void;
-    }
+export const ResizeGroupBase: React.ForwardRefExoticComponent<IResizeGroupProps & React.RefAttributes<HTMLDivElement>>;
 
 // @public (undocumented)
 export enum ResizeGroupDirection {

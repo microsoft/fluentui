@@ -7,22 +7,46 @@ import {
   ISelectedPeopleListProps,
 } from '../../SelectedItemsList/SelectedPeopleList/SelectedPeopleList';
 import { UnifiedPicker } from '../UnifiedPicker';
+import { IFloatingSuggestionItemProps } from '@uifabric/experiments/lib/FloatingPeopleSuggestionsComposite';
+import { IFloatingPeopleSuggestionsProps } from '@uifabric/experiments/lib/FloatingPeopleSuggestionsComposite';
 
 export const UnifiedPeoplePicker = (props: IUnifiedPeoplePickerProps): JSX.Element => {
   // update the suggestion like componentWillReceiveProps
-  // React.useEffect(()=>{
+  const [peopleSuggestions, setPeopleSuggestions] = React.useState<IFloatingSuggestionItemProps<IPersonaProps>[]>([]);
 
-  // }, [props.floatingSuggestionProps.suggestions]);
+  React.useEffect(() => {
+    setPeopleSuggestions(props.floatingSuggestionProps.suggestions);
+  }, [props.floatingSuggestionProps.suggestions]);
 
-  const renderSelectedItems = (selectedPeopleListProps: ISelectedPeopleListProps<IPersonaProps>): JSX.Element => {
-    return <SelectedPeopleList {...selectedPeopleListProps} ref={null} />;
-  };
+  // update the selectedListItems like componentWillReceiveProps
+  const [peopleSelectedItems, setPeopleSelectedItems] = React.useState<IPersonaProps[]>([]);
+
+  React.useEffect(() => {
+    if (props.selectedItemsListProps.selectedItems) {
+      setPeopleSelectedItems(props.selectedItemsListProps.selectedItems);
+    }
+  }, [props.selectedItemsListProps.selectedItems]);
+
+  const renderSelectedItems = React.useCallback(
+    (selectedPeopleListProps: ISelectedPeopleListProps<IPersonaProps>): JSX.Element => {
+      return <SelectedPeopleList {...selectedPeopleListProps} ref={null} />;
+    },
+    [peopleSelectedItems],
+  );
+
+  const renderFloatingPeopleSuggestions = React.useCallback(
+    (floatingPeoplePickerProps: IFloatingPeopleSuggestionsProps): JSX.Element => {
+      return <FloatingPeopleSuggestions {...floatingPeoplePickerProps} />;
+    },
+    [peopleSuggestions],
+  );
+
   return (
     <>
       <UnifiedPicker
         {...props}
         onRenderSelectedItems={renderSelectedItems}
-        onRenderFloatingSuggestions={FloatingPeopleSuggestions}
+        onRenderFloatingSuggestions={renderFloatingPeopleSuggestions}
       />
     </>
   );
