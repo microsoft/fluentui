@@ -11,7 +11,7 @@ export type TelemetryDataTotals = Omit<TelemetryDataItem, 'componentName'>;
 
 export function useTelemetryData(
   telemetry: Telemetry,
-  id: number,
+  tick: number,
 ): { data: TelemetryDataItem[]; totals: TelemetryDataTotals } {
   const data = React.useMemo(
     () =>
@@ -23,7 +23,7 @@ export function useTelemetryData(
           msStylesTotal: values.msResolveVariablesTotal + values.msResolveStylesTotal + values.msRenderStylesTotal,
         }),
       ),
-    [id],
+    [tick],
   );
 
   const totals = data.reduce<TelemetryDataTotals>(
