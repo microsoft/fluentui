@@ -2,6 +2,21 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Mon, 08 Jun 2020 12:34:34 GMT",
+      "tag": "@uifabric/experiments_v7.26.0",
+      "version": "7.26.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Added missing functionalities in UnifiedPeoplePicker and Example",
+            "author": "nebhatna@microsoft.com",
+            "commit": "acf0790fc9d409b408c9d899b798ebd3318f9a85",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 05 Jun 2020 05:09:39 GMT",
       "tag": "@uifabric/experiments_v7.25.3",
       "version": "7.25.3",

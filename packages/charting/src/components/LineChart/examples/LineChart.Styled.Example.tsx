@@ -8,14 +8,30 @@ interface IRootStyles {
   width: string;
 }
 
-export class LineChartStyledExample extends React.Component<{}, {}> {
+interface IStyledLineChartExampleState {
+  width: number;
+  height: number;
+}
+
+export class LineChartStyledExample extends React.Component<{}, IStyledLineChartExampleState> {
   constructor(props: ILineChartProps) {
     super(props);
+    this.state = {
+      width: 700,
+      height: 300,
+    };
   }
 
   public render(): JSX.Element {
     return <div>{this._styledExample()}</div>;
   }
+
+  private _onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    this.setState({ width: parseInt(e.target.value, 10) });
+  };
+  private _onHeightChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    this.setState({ height: parseInt(e.target.value, 10) });
+  };
 
   private _styledExample(): JSX.Element {
     const points: ILineChartPoints[] = [
@@ -37,11 +53,27 @@ export class LineChartStyledExample extends React.Component<{}, {}> {
       chartTitle: 'Line Chart',
       lineChartData: points,
     };
-    const rootStyle: IRootStyles = { width: '700px', height: '300px' };
+    const rootStyle: IRootStyles = {
+      width: `${this.state.width}px`,
+      height: `${this.state.height}px`,
+    };
     return (
-      <div className={mergeStyles(rootStyle)}>
-        <LineChart data={data} strokeWidth={4} yMaxValue={90} hideLegend={true} />
-      </div>
+      <>
+        <label>change Width:</label>
+        <input type="range" value={this.state.width} min={200} max={1000} onChange={this._onWidthChange} />
+        <label>change Height:</label>
+        <input type="range" value={this.state.height} min={200} max={1000} onChange={this._onHeightChange} />
+        <div className={mergeStyles(rootStyle)}>
+          <LineChart
+            data={data}
+            strokeWidth={4}
+            yMaxValue={90}
+            hideLegend={true}
+            height={this.state.height}
+            width={this.state.width}
+          />
+        </div>
+      </>
     );
   }
 }
