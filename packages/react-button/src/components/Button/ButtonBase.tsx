@@ -7,7 +7,6 @@ export const ButtonBase = compose<'button', ButtonProps, ButtonProps, {}, {}>(
   (props, ref, options) => {
     const { state } = options;
     const { slots, slotProps } = mergeProps(state, options);
-    console.log(state, slots, slotProps);
 
     return (
       <slots.root ref={ref} {...slotProps.root}>
