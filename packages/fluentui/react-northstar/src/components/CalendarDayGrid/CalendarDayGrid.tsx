@@ -15,7 +15,14 @@ export const CalendarDayGrid: React.FC<WithAsProp<CalendarDayGridProps>> &
   const { strings, firstDayOfWeek, weeksToShow } = props;
 
   function renderRows() {
-    return renderHeaderRow();
+    const visibleWeeks = weeks.slice(1, weeks.length - 2);
+    return visibleWeeks.map(week => {
+      return week.map(day => (
+        <Box key={day.key} title={day.key} aria-label={day.key}>
+          {day.date}
+        </Box>
+      ));
+    });
   }
 
   const renderHeaderRow = () => {
@@ -41,6 +48,7 @@ export const CalendarDayGrid: React.FC<WithAsProp<CalendarDayGridProps>> &
 
   const element = (
     <Grid accessibility={gridBehavior} columns={7}>
+      {renderHeaderRow()}
       {renderRows()}
     </Grid>
   );

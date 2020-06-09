@@ -32,6 +32,7 @@ const unsupportedComponents = [
   'Table',
   'Toolbar',
   'Ref',
+  'CalendarDayGrid',
 ];
 
 const ComponentPlayground: React.FunctionComponent<ComponentPlaygroundProps> = props => {

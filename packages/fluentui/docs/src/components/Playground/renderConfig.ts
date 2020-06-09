@@ -4,6 +4,7 @@ import * as Bindings from '@fluentui/react-bindings';
 import * as DocsComponent from '@fluentui/docs-components';
 import * as FluentUI from '@fluentui/react-northstar';
 import * as FluentUIIcons from '@fluentui/react-icons-northstar';
+import * as FabricUtilities from '@uifabric/utilities';
 import * as ReactFela from 'react-fela';
 import * as _ from 'lodash';
 import * as React from 'react';
@@ -72,6 +73,10 @@ export const imports: Record<string, { version: string; module: any }> = {
   prettier: {
     version: docsComponentsPackageJson.peerDependencies['prettier'],
     module: null, // no need to use it in our examples
+  },
+  '@uifabric/utilities': {
+    version: projectPackageJson.dependencies['@uifabric/utilities'],
+    module: FabricUtilities,
   },
 };
 
