@@ -17,15 +17,17 @@ const PopupCustomTargetExample: React.FC = () => {
         <Button icon={<QnaIcon />} circular styles={{ cursor: 'pointer', msGridColumn: 1 }} title="Q&amp;A" />
       </Popup>
 
-      <Box styles={{ marginLeft: 10, msGridColumn: 2 }}>
-        <Text>Could you guess what does this text means? :)</Text>
-        <Divider />
-        <Ref innerRef={setTextRef}>
-          <Text>
-            "To the lascivious looking-glass I, that love's majesty to strut before a want love's majesto, to the souls
-            of York."
-          </Text>
-        </Ref>
+      <Box styles={{ msGridColumn: 2 }}>
+        <div style={{ marginLeft: 10 }}>
+          <Text>Could you guess what does this text means? :)</Text>
+          <Divider />
+          <Ref innerRef={setTextRef}>
+            <Text>
+              "To the lascivious looking-glass I, that love's majesty to strut before a want love's majesto, to the
+              souls of York."
+            </Text>
+          </Ref>
+        </div>
       </Box>
     </Grid>
   );
