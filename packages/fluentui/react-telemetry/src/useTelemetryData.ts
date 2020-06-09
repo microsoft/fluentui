@@ -23,7 +23,7 @@ export function useTelemetryData(
           msStylesTotal: values.msResolveVariablesTotal + values.msResolveStylesTotal + values.msRenderStylesTotal,
         }),
       ),
-    [tick],
+    [tick, telemetry.performance],
   );
 
   const totals = data.reduce<TelemetryDataTotals>(

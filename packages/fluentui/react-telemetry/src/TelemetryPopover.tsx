@@ -41,7 +41,7 @@ export const TelemetryPopover: React.FC<TelemetryPopoverProps> = props => {
   const outgoingContext = React.useMemo<Partial<StylesContextInputValue>>(
     () => ({
       performance: state.performanceFlags,
-      telemetry: telemetry,
+      telemetry,
     }),
     [telemetry, state.performanceFlags],
   );
