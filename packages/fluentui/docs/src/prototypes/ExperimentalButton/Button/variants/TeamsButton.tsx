@@ -1,10 +1,10 @@
 import Button from '../Button';
 import useButtonClasses, { UseButtonClassesInput } from '../hooks/useButtonClasses';
 import styled from '../utils/styled';
-import { ButtonProps, ButtonStylesProps } from '@fluentui/react-northstar'; // TODO: replace this once there are typings in the Button
+import { ButtonProps, ButtonStylesProps } from '../Button';
+import { withSafeTypeForAs } from '@fluentui/react-northstar';
 
 export interface TeamsButtonProps extends ButtonProps {
-  as?: string;
   danger?: boolean;
 }
 
@@ -38,4 +38,4 @@ export function useTeamsButtonClasses<
   });
 }
 
-export default TeamsButton;
+export default withSafeTypeForAs<typeof TeamsButton, TeamsButtonProps, 'button'>(TeamsButton);

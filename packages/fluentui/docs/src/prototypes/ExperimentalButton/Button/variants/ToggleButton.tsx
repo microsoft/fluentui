@@ -3,11 +3,10 @@ import useButtonAria from '../hooks/useButtonAria';
 import useButtonClasses from '../hooks/useButtonClasses';
 import useButtonTemplate from '../hooks/useButtonTemplate';
 import CallingsIcon from './CallingsIcon';
-import { ButtonProps, ButtonStylesProps } from '@fluentui/react-northstar';
+import { ButtonProps, ButtonStylesProps } from '../Button';
+import { withSafeTypeForAs } from '@fluentui/react-northstar';
 
-interface ToggleButtonProps extends ButtonProps {
-  as?: string;
-}
+interface ToggleButtonProps extends ButtonProps {}
 
 interface ToggleButtonStylesProps extends ButtonStylesProps {
   toggled?: boolean;
@@ -46,4 +45,4 @@ const ToggleButton = React.forwardRef((props: ToggleButtonProps, ref) => {
   return element;
 });
 
-export default ToggleButton;
+export default withSafeTypeForAs<typeof ToggleButton, ToggleButtonProps, 'button'>(ToggleButton);

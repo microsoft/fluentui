@@ -1,6 +1,13 @@
 import * as React from 'react';
 
-import { ButtonGroup, ButtonContent, ButtonProps as InternalButtonProps } from '@fluentui/react-northstar';
+import {
+  ButtonGroup,
+  ButtonContent,
+  ButtonProps as InternalButtonProps,
+  ButtonStylesProps as InternalButtonStylesProps,
+  WithAsProp,
+  withSafeTypeForAs,
+} from '@fluentui/react-northstar';
 
 import useButtonAria from './hooks/useButtonAria';
 import useButtonClasses, { UseButtonClassesInput } from './hooks/useButtonClasses';
@@ -9,10 +16,11 @@ import { ShorthandConfig } from '@fluentui/react-compose';
 
 export const buttonClassName = 'ui-button';
 
-interface ButtonProps extends InternalButtonProps {
-  as?: string;
+export interface ButtonProps extends InternalButtonProps {
   fluentOverrideConfig?: UseButtonClassesInput;
 }
+
+export interface ButtonStylesProps extends InternalButtonStylesProps {}
 
 /**
  * A Button enables users to take an action, such as submitting a form, opening a dialog, etc.
@@ -36,7 +44,7 @@ const Button = React.forwardRef((inputProps: ButtonProps, ref) => {
   });
 
   return element;
-}) as React.ForwardRefExoticComponent<ButtonProps> & {
+}) as React.ForwardRefExoticComponent<WithAsProp<ButtonProps>> & {
   Group: typeof ButtonGroup;
   Content: typeof ButtonContent;
   shorthandConfig: ShorthandConfig<ButtonProps>;
@@ -50,4 +58,4 @@ Button.shorthandConfig = {
   mappedProp: 'content',
 };
 
-export default Button;
+export default withSafeTypeForAs<typeof Button, ButtonProps, 'button'>(Button);

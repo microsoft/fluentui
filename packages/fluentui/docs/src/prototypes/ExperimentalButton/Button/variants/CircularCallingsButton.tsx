@@ -3,9 +3,9 @@ import useButtonAria from '../hooks/useButtonAria';
 import { CallingsButtonProps, useCallingsButtonClasses } from './CallingsButton';
 import useButtonTemplate from '../hooks/useButtonTemplate';
 import CallingsIcon from './CallingsIcon';
-// import CallingsContent from "./CallingsContent";
+import { withSafeTypeForAs } from '@fluentui/react-northstar';
 
-interface CircularCallingsButton extends CallingsButtonProps {}
+interface CircularCallingsButtonProps extends CallingsButtonProps {}
 
 const CircularCallingsButton = React.forwardRef((props: CallingsButtonProps, ref) => {
   const classes = useCallingsButtonClasses({
@@ -32,4 +32,6 @@ const CircularCallingsButton = React.forwardRef((props: CallingsButtonProps, ref
   return element;
 });
 
-export default CircularCallingsButton;
+export default withSafeTypeForAs<typeof CircularCallingsButton, CircularCallingsButtonProps, 'button'>(
+  CircularCallingsButton,
+);

@@ -2,6 +2,7 @@ import { TeamsButtonProps, TeamsButtonStylesProps, useTeamsButtonClasses } from 
 import TeamsButton from './TeamsButton';
 import styled from '../utils/styled';
 import { UseButtonClassesInput } from '../hooks/useButtonClasses';
+import { withSafeTypeForAs } from '@fluentui/react-northstar';
 
 export interface CallingsButtonProps extends TeamsButtonProps {
   secondary?: boolean;
@@ -37,4 +38,4 @@ export function useCallingsButtonClasses<
   });
 }
 
-export default CallingsButton;
+export default withSafeTypeForAs<typeof CallingsButton, CallingsButtonProps, 'button'>(CallingsButton);
