@@ -38,13 +38,7 @@ const getWidth = (p: DropdownPropsAndState, v: DropdownVariables): string => {
 };
 
 const isEmpty = prop => {
-  return (
-    typeof prop === 'object' &&
-    //@ts-ignore
-    !prop.props &&
-    !_.get(prop, 'children') &&
-    !_.get(prop, 'content')
-  );
+  return typeof prop === 'object' && !prop.props && !_.get(prop, 'children') && !_.get(prop, 'content');
 };
 
 const dropdownStyles: ComponentSlotStylesPrepared<DropdownPropsAndState, DropdownVariables> = {
