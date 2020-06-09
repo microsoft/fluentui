@@ -63,6 +63,7 @@ $defaultPrimaryBackground: rgb(98, 100, 167);
   --button-focusInnerColor: #fff;
 
   /* TODO: Remove. Accent should only be defined in the theme. */
+  --accent-background: rgb(98, 100, 167);
   --accent-background-focused: var(--accent-background, $defaultPrimaryBackground);
   --accent-background-hovered: rgb(88, 90, 150);
   --accent-background-pressed: rgb(70, 71, 117);

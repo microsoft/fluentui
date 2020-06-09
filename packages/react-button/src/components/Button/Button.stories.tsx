@@ -57,7 +57,7 @@ export const ButtonCss = () => (
 
 export const ButtonTokens = () => (
   <>
-    <h3>zA button can be colored using inline tokens.</h3>
+    <h3>A button can be colored using inline tokens.</h3>
     <div className={classes.vStack}>
       <Button
         icon="O"
@@ -139,13 +139,18 @@ export const ButtonTokens = () => (
       <Button
         tokens={{
           height: '48px',
+          transform: {
+            pressed: 'none',
+          },
           background: {
             default: 'rgb(29, 185, 84) none repeat scroll 0% 0% / auto padding-box border-box',
             hovered: 'rgb(30, 215, 96) none repeat scroll 0% 0% / auto padding-box border-box',
+            pressed: '#1aa34a',
           },
           contentColor: {
             default: 'rgb(255, 255, 255)',
             hovered: 'rgb(255, 255, 255)',
+            pressed: 'rgb(255, 255, 255)',
           },
           borderColor: {
             default: 'rgb(255, 255, 255)',
@@ -188,7 +193,7 @@ export const ButtonTokens = () => (
         tokens={{
           height: '24px',
           fontSize: '12px',
-          iconSize: '10px',
+          iconSize: '22px',
           padding: '0 8px',
         }}
       />
