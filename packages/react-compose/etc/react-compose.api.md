@@ -39,7 +39,7 @@ export type ComposedComponent<TProps = {}> = React.FunctionComponent<TProps> & {
 };
 
 // @public (undocumented)
-export type ComposeOptions<TInputProps = {}, TInputStylesProps = {}, TParentProps = {}, TParentStylesProps = {}> = {
+export type ComposeOptions<TInputProps = {}, TInputStylesProps = {}, TParentProps = {}, TParentStylesProps = {}, TState = TParentProps & TInputProps> = {
     className?: string;
     classes?: ClassDictionary | ClassFunction | (ClassDictionary | ClassFunction)[];
     displayName?: string;
@@ -49,7 +49,7 @@ export type ComposeOptions<TInputProps = {}, TInputStylesProps = {}, TParentProp
     slots?: Record<string, React.ElementType>;
     slotProps?: (props: TParentProps & TInputProps) => Record<string, object>;
     shorthandConfig?: ShorthandConfig<TParentProps & TInputProps>;
-    state?: (props: TParentProps & TInputProps, options: ComposePreparedOptions, parentState?: ComposePreparedOptions['state']) => any;
+    state?: (props: TState, options: ComposePreparedOptions) => any;
 };
 
 // @public
@@ -66,13 +66,15 @@ export type ComposePreparedOptions<TProps = {}, TState = TProps> = {
         __self: React.ElementType;
     };
     slotProps: ((props: TProps) => Record<string, object>)[];
-    state?: (props: TProps, options: ComposePreparedOptions) => any;
+    state: (props: TState, options: ComposePreparedOptions) => any;
     resolveSlotProps: <TResolvedProps>(props: TResolvedProps) => Record<string, object>;
     shorthandConfig: ShorthandConfig<TProps>;
 };
 
 // @public (undocumented)
-export type ComposeRenderFunction<TElementType extends React.ElementType = 'div', TProps = {}, TState = TProps> = (props: TProps, ref: React.Ref<TElementType extends keyof HTMLElementTagNameMap ? HTMLElementTagNameMap[TElementType] : TElementType>, options: ComposePreparedOptions & MergePropsResult<TState>) => React.ReactElement | null;
+export type ComposeRenderFunction<TElementType extends React.ElementType = 'div', TProps = {}, TState = TProps> = (props: TProps, ref: React.Ref<TElementType extends keyof HTMLElementTagNameMap ? HTMLElementTagNameMap[TElementType] : TElementType>, options: ComposePreparedOptions & {
+    state: any;
+}) => React.ReactElement | null;
 
 // @public
 export const createClassResolver: (classes: Record<string, string>) => (state: Record<string, any>) => Record<string, string>;
@@ -91,7 +93,7 @@ export type InputComposeComponent<TProps = {}> = React.FunctionComponent<TProps>
 };
 
 // @public
-export function mergeProps<TProps, TState = TProps>(state: TState, options: ComposePreparedOptions<TProps>): MergePropsResult<TState>;
+export function mergeProps<TProps, TState = TProps>(state: TState, options: ComposePreparedOptions<TProps, TState>): MergePropsResult<TState>;
 
 // @public (undocumented)
 export type MergePropsResult<TState extends GenericDictionary> = {

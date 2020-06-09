@@ -33,7 +33,7 @@ export function mergeComposeOptions(
 
   const state: ComposePreparedOptions['state'] = (props, options) => {
     if (inputOptions.state) {
-      return inputOptions.state(props, options, parentOptions.state);
+      return inputOptions.state(parentOptions.state(props, options), options);
     }
 
     return parentOptions.state(props, options);

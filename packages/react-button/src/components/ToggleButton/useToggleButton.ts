@@ -1,18 +1,12 @@
 import * as React from 'react';
-import { mergeProps, ComposePreparedOptions } from '@fluentui/react-compose';
 import { useControllableValue } from '@uifabric/react-hooks';
 import { ToggleButtonProps } from './ToggleButton.types';
 
 /**
- * The useToggleButton hook processes the ToggleButton component props and returns
- * state, slots, and slotProps for consumption by the component.
+ * The useToggleButton hook processes the Button component props and returns state.
  * @param props
  */
-export const useToggleButton = (
-  props: ToggleButtonProps,
-  options: ComposePreparedOptions,
-  parentState?: ComposePreparedOptions['state'],
-) => {
+export const useToggleButton = (props: ToggleButtonProps) => {
   const { checked: controlledChecked, defaultChecked = false, onClick: onButtonClick } = props;
   const [checked, setChecked] = useControllableValue(controlledChecked, defaultChecked);
 
@@ -24,11 +18,5 @@ export const useToggleButton = (
     setChecked(!checked);
   };
 
-  const state = { ...props, checked, setChecked, onClick };
-
-  if (parentState) {
-    return parentState(state, options);
-  }
-
-  return mergeProps<ToggleButtonProps>(state, options);
+  return { ...props, checked, setChecked, onClick };
 };

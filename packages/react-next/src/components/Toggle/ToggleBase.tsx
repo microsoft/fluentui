@@ -5,8 +5,10 @@ import { IToggleProps } from './Toggle.types';
 import { useToggle } from './useToggle';
 
 export const ToggleBase = compose<'div', IToggleProps, IToggleProps, {}, {}>(
-  (props, ref, slotsAndState) => {
-    const { state, slots, slotProps } = slotsAndState;
+  (props, ref, options) => {
+    const { state: toggleState } = options;
+    const { state, slots, slotProps } = toggleState;
+
     const { checked } = state;
     const { 'aria-describedby': ariaDescribedBy, disabled, keytipProps, label, offText, onText } = props;
 

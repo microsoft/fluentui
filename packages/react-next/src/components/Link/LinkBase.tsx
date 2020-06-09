@@ -5,9 +5,11 @@ import { ILinkProps } from './Link.types';
 import { useLink } from './useLink';
 
 export const LinkBase = compose<'a', ILinkProps, ILinkProps, {}, {}>(
-  (props, ref, slotsAndState) => {
+  (props, ref, options) => {
+    const { state } = options;
+    const { slots, slotProps } = state;
+
     const { 'aria-describedby': ariaDescribedBy, disabled, keytipProps } = props;
-    const { slots, slotProps } = slotsAndState;
 
     return (
       <KeytipData ariaDescribedBy={ariaDescribedBy} disabled={disabled} keytipProps={keytipProps}>
