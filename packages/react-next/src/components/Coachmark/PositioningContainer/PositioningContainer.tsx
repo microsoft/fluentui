@@ -56,9 +56,18 @@ export interface IPositioningContainerState {
   heightOffset?: number;
 }
 
-export class PositioningContainer extends React.Component<IPositioningContainerProps, IPositioningContainerState>
-  implements PositioningContainer {
-  public static defaultProps: IPositioningContainerProps = {
+export const PositioningContainer = React.forwardRef(
+  (props: IPositioningContainerProps, forwardedRef: React.Ref<HTMLDivElement>) => {
+    return <PositioningContainerClass {...props} />;
+  },
+);
+PositioningContainer.displayName = 'PositioningContainer';
+
+interface IPositioningContainerClassProps extends IPositioningContainerProps {}
+
+class PositioningContainerClass extends React.Component<IPositioningContainerClassProps, IPositioningContainerState>
+  implements PositioningContainerClass {
+  public static defaultProps: IPositioningContainerClassProps = {
     preventDismissOnScroll: false,
     offsetFromTarget: 0,
     minPagePadding: 8,
@@ -98,7 +107,7 @@ export class PositioningContainer extends React.Component<IPositioningContainerP
   private _async: Async;
   private _events: EventGroup;
 
-  constructor(props: IPositioningContainerProps) {
+  constructor(props: IPositioningContainerClassProps) {
     super(props);
 
     initializeComponentRef(this);
@@ -128,7 +137,7 @@ export class PositioningContainer extends React.Component<IPositioningContainerP
   }
 
   // tslint:disable-next-line function-name
-  public UNSAFE_componentWillUpdate(newProps: IPositioningContainerProps): void {
+  public UNSAFE_componentWillUpdate(newProps: IPositioningContainerClassProps): void {
     // If the target element changed, find the new one. If we are tracking
     // target with class name, always find element because we do not know if
     // fabric has rendered a new element and disposed the old element.
@@ -435,7 +444,9 @@ export class PositioningContainer extends React.Component<IPositioningContainerP
     }
   }
 
-  private _getTarget(props: IPositioningContainerProps = this.props): HTMLElement | string | MouseEvent | Point | null {
+  private _getTarget(
+    props: IPositioningContainerClassProps = this.props,
+  ): HTMLElement | string | MouseEvent | Point | null {
     const { target } = props;
     return target!;
   }
