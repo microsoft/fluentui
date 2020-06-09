@@ -23,8 +23,7 @@ const getStyles = (options: ResolveStylesOptions): GetStylesResult => {
   // - compute classes (with resolvedStyles)
   // - conditionally add sources for evaluating debug information to component
 
-  const telemetryStart = performance.now();
-
+  const telemetryPartStart = telemetry?.enabled ? performance.now() : 0;
   const resolvedVariables = resolveVariables(
     options.allDisplayNames,
     options.theme,
@@ -32,12 +31,8 @@ const getStyles = (options: ResolveStylesOptions): GetStylesResult => {
     options.performance.enableVariablesCaching,
   );
 
-  const telemetryStop = performance.now();
-
-  // todo: fix displayname
-
-  if (telemetry?.performance[primaryDisplayName]) {
-    telemetry.performance[primaryDisplayName].msResolveVariablesTotal += telemetryStop - telemetryStart;
+  if (telemetry?.enabled && telemetry.performance[primaryDisplayName]) {
+    telemetry.performance[primaryDisplayName].msResolveVariablesTotal += performance.now() - telemetryPartStart;
   }
 
   const { classes, resolvedStyles, resolvedStylesDebug } = resolveStyles(options, resolvedVariables);

@@ -10,7 +10,7 @@ export const getTelemetry = (
   let end: number = -1;
 
   const setStart = () => {
-    if (telemetry && telemetry.enabled) {
+    if (telemetry?.enabled) {
       start = performance.now();
 
       if (!telemetry.performance[displayName]) {
@@ -34,7 +34,7 @@ export const getTelemetry = (
   };
 
   const setEnd = () => {
-    if (telemetry && telemetry.enabled && start !== -1) {
+    if (telemetry?.enabled && start !== -1) {
       end = performance.now();
 
       const duration = end - start;

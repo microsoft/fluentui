@@ -187,7 +187,7 @@ const resolveStyles = (
           return resolvedStyles[lazyEvaluationKey];
         }
 
-        const telemetryStart = performance.now();
+        const telemetryPartStart = telemetry?.enabled ? performance.now() : 0;
 
         // resolve/render slot styles once and cache
         resolvedStyles[lazyEvaluationKey] = mergedStyles[slotName](styleParam);
@@ -204,10 +204,8 @@ const resolveStyles = (
           delete resolvedStyles[slotName]['_debug'];
         }
 
-        const telemetryStop = performance.now();
-
-        if (telemetry?.performance[primaryDisplayName]) {
-          telemetry.performance[primaryDisplayName].msResolveStylesTotal += telemetryStop - telemetryStart;
+        if (telemetry?.enabled && telemetry.performance[primaryDisplayName]) {
+          telemetry.performance[primaryDisplayName].msResolveStylesTotal += performance.now() - telemetryPartStart;
         }
 
         return resolvedStyles[lazyEvaluationKey];
@@ -262,8 +260,7 @@ const resolveStyles = (
 
         // this resolves the getter magic
         const styleObj = resolvedStyles[slotName];
-
-        const telemetryStart = performance.now();
+        const telemetryPartStart = telemetry?.enabled ? performance.now() : 0;
 
         if (renderStyles && styleObj) {
           classes[lazyEvaluationKey] = renderStyles(styleObj);
@@ -281,10 +278,8 @@ const resolveStyles = (
             ? cx(componentClassName, classes[lazyEvaluationKey], className)
             : classes[lazyEvaluationKey];
 
-        const telemetryStop = performance.now();
-
-        if (telemetry?.performance[primaryDisplayName]) {
-          telemetry.performance[primaryDisplayName].msRenderStylesTotal += telemetryStop - telemetryStart;
+        if (telemetry?.enabled && telemetry.performance[primaryDisplayName]) {
+          telemetry.performance[primaryDisplayName].msRenderStylesTotal += performance.now() - telemetryPartStart;
         }
 
         return resultClassName;
