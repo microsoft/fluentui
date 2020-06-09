@@ -176,7 +176,7 @@
       "cwd": "${workspaceRoot}/packages/example-data",
       "stopOnEntry": false,
       "runtimeExecutable": null,
-      "args": ["src/**/*.ts*"],
+      "args": ["--ext", ".ts,.tsx,.js,.jsx", "src"],
       "runtimeArgs": ["--nolazy", "--debug"],
       "env": {
         "NODE_ENV": "development"
