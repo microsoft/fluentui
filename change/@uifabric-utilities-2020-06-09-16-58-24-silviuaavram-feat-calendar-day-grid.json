@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Move date-time helper functions to utilities package",
+  "packageName": "@uifabric/utilities",
+  "email": "pompomon@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-06-09T14:58:24.630Z"
+}

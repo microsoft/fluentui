@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "Move helper functions to utils package",
+  "packageName": "@uifabric/date-time",
+  "email": "pompomon@gmail.com",
+  "dependentChangeType": "none",
+  "date": "2020-06-09T14:57:57.286Z"
+}
