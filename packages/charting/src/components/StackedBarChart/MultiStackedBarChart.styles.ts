@@ -1,5 +1,4 @@
 import { IMultiStackedBarChartStyleProps, IMultiStackedBarChartStyles } from './MultiStackedBarChart.types';
-import { FontSizes } from 'office-ui-fabric-react/lib/Styling';
 
 export const getMultiStackedBarChartStyles = (props: IMultiStackedBarChartStyleProps): IMultiStackedBarChartStyles => {
   const { className, width, barHeight, shouldHighlight, theme, href } = props;
