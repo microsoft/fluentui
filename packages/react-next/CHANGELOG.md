@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-next
 
-This log was last generated on Mon, 08 Jun 2020 12:34:34 GMT and should not be manually modified.
+This log was last generated on Tue, 09 Jun 2020 12:35:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-alpha.37](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.37)
+
+Tue, 09 Jun 2020 12:35:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.36..@fluentui/react-next_v8.0.0-alpha.37)
+
+### Changes
+
+- Migrate ResizeGroup to function component ([PR #13013](https://github.com/microsoft/fluentui/pull/13013) by miclo@microsoft.com)
 
 ## [8.0.0-alpha.36](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.36)
 

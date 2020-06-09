@@ -1,8 +1,17 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Fri, 05 Jun 2020 05:09:39 GMT and should not be manually modified.
+This log was last generated on Tue, 09 Jun 2020 12:35:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.2.31](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.2.31)
+
+Tue, 09 Jun 2020 12:35:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.2.29..@uifabric/charting_v2.2.31)
+
+### Patches
+
+- removing resize event from chart and resizing the chart in CDU based on changes in height and width prop ([PR #13505](https://github.com/microsoft/fluentui/pull/13505) by v-sivsar@microsoft.com)
 
 ## [2.2.29](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.2.29)
 
