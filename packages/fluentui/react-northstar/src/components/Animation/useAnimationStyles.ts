@@ -6,6 +6,7 @@ import {
 } from '@fluentui/react-bindings';
 import { ThemePrepared } from '@fluentui/styles';
 import * as React from 'react';
+// @ts-ignore
 import { ThemeContext } from 'react-fela';
 import * as _ from 'lodash';
 import { AnimationProps } from './Animation';

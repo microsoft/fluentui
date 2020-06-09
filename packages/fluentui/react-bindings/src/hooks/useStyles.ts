@@ -48,7 +48,7 @@ type UseStylesOptions<StyleProps extends PrimitiveProps> = {
   rtl?: boolean;
 };
 
-type UseStylesResult = {
+export type UseStylesResult = {
   classes: ComponentSlotClasses;
   styles: ComponentSlotStylesResolved;
 };
