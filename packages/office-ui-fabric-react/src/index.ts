@@ -79,5 +79,6 @@ export * from './ThemeGenerator';
 export * from './Toggle';
 export * from './Tooltip';
 export * from './Utilities';
+export { DateRangeType, DayOfWeek, FirstWeekOfYear, ICalendarStrings } from './Utilities';
 
 import './version';
