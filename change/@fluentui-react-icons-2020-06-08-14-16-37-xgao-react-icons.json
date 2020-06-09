@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "react-icons: remove dead code and merge-styles",
+  "comment": "react-icons: remove dead code, use scss instead of merge-styles, css fixes",
   "packageName": "@fluentui/react-icons",
   "email": "xgao@microsoft.com",
   "dependentChangeType": "patch",
