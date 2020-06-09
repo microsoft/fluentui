@@ -1,22 +1,18 @@
 // @ts-check
-const path = require('path');
-const { getNamingConventionConfig } = require('./namingConvention');
-const constants = require('./constants');
+const { getNamingConventionRule, getTypeInfoRuleOverrides } = require('./ruleHelpers');
+const { testFiles, docsFiles, devDependenciesFiles, tsFiles, exampleFiles } = require('./constants');
 
+/** @type {import("eslint").Linter.Config} */
 module.exports = {
   extends: [
     // Provides both rules and some parser options and other settings
     'airbnb',
     // Extended configs are applied in order, so these configs that turn other rules off should come last
     'prettier',
-    'prettier/@typescript-eslint',
     'prettier/react',
-    'plugin:@typescript-eslint/eslint-recommended', // disable some rules not needed for TS
+    'prettier/@typescript-eslint',
   ],
   parser: '@typescript-eslint/parser',
-  parserOptions: {
-    project: path.join(process.cwd(), 'tsconfig.json'),
-  },
   plugins: ['@typescript-eslint', 'deprecation', 'import', 'jest', 'jsx-a11y', 'react', 'react-hooks'],
   settings: {
     // Some config suggestions copied from https://github.com/alexgorbatchev/eslint-import-resolver-typescript#configuration
@@ -34,53 +30,27 @@ module.exports = {
     browser: true,
     'jest/globals': true,
   },
-  globals: {
-    // Promise: 'off'
-  },
   reportUnusedDisableDirectives: true,
   // matched relative to cwd
-  ignorePatterns: ['coverage', 'dist', 'etc', 'lib', 'lib-amd', 'lib-commonjs', 'node_modules', 'temp', '**/*.scss.ts'],
+  ignorePatterns: [
+    'coverage',
+    'dist',
+    'dist-storybook',
+    'etc',
+    'lib',
+    'lib-amd',
+    'lib-commonjs',
+    'node_modules',
+    'temp',
+    '**/__snapshots__',
+    '**/*.scss.ts',
+  ],
   rules: {
-    '@typescript-eslint/ban-ts-comment': 'error',
-    '@typescript-eslint/explicit-member-accessibility': [
-      'error',
-      {
-        accessibility: 'explicit',
-        overrides: { constructors: 'off' },
-      },
-    ],
-    '@typescript-eslint/member-ordering': [
-      'error',
-      {
-        default: [
-          'public-static-field',
-          'protected-static-field',
-          'private-static-field',
-          'public-instance-field',
-          'protected-instance-field',
-          'private-instance-field',
-          'public-static-method',
-          'protected-static-method',
-          'private-static-method',
-          'public-constructor',
-          'public-instance-method',
-          'protected-constructor',
-          'protected-instance-method',
-          'private-constructor',
-          'private-instance-method',
-        ],
-      },
-    ],
-    '@typescript-eslint/naming-convention': getNamingConventionConfig(true /* prefixWithI */),
-    '@typescript-eslint/no-empty-function': 'error',
-    '@typescript-eslint/no-explicit-any': 'error', // no-any
-    '@typescript-eslint/prefer-namespace-keyword': 'error',
     curly: ['error', 'all'],
-    'deprecation/deprecation': 'error',
     'dot-notation': 'error',
     eqeqeq: ['error', 'always'],
     'guard-for-in': 'error',
-    'import/no-extraneous-dependencies': ['error', { devDependencies: constants.devDependenciesFiles }],
+    'import/no-extraneous-dependencies': ['error', { devDependencies: [...devDependenciesFiles] }],
     'jsx-a11y/tabindex-no-positive': 'error',
     'max-len': [
       'error',
@@ -115,16 +85,16 @@ module.exports = {
     'no-shadow': ['error', { hoist: 'all' }],
     'no-var': 'error',
     'prefer-const': 'error',
-    'prefer-arrow-callback': 'error', // no-function-expression
+    'prefer-arrow-callback': 'error', // tslint: no-function-expression
     radix: ['error', 'always'],
     // Use className and provide css rules instead of using inline styles.
     // TODO: this doesn't forbid style on built-in elements--do we care?
-    'react/forbid-component-props': ['error', { forbid: ['style'] }], // jsx-ban-props
+    'react/forbid-component-props': ['error', { forbid: ['style'] }], // tslint: jsx-ban-props
     'react/jsx-key': 'error',
     'react/jsx-no-bind': [
       'error',
       {
-        allowArrowFunctions: false, // jsx-no-lambda
+        allowArrowFunctions: false, // tslint: jsx-no-lambda
         allowFunctions: false,
         allowBind: false,
       },
@@ -201,7 +171,6 @@ module.exports = {
     'object-shorthand': 'off',
     'operator-assignment': 'off',
     'prefer-destructuring': 'off',
-    'prefer-spread': 'off',
     'prefer-template': 'off',
     'react/button-has-type': 'off',
     'react/destructuring-assignment': 'off',
@@ -226,23 +195,15 @@ module.exports = {
     // Enable ASAP (not done in this PR to make resulting changes reviewable)
     'react-hooks/exhaustive-deps': 'off',
     'react-hooks/rules-of-hooks': 'off',
-
-    // airbnb options don't handle TS properly https://github.com/airbnb/javascript/blob/master/packages/eslint-config-airbnb-base/rules/style.js#L334
+    // airbnb options ban for-of which is unnecessary for TS and modern node (https://github.com/airbnb/javascript/blob/master/packages/eslint-config-airbnb-base/rules/style.js#L334)
     // but this is a very powerful rule we may want to use in other ways
     'no-restricted-syntax': 'off',
 
-    // permanently disable due to using other rules which do the same thing
-    camelcase: 'off', // redundant with @typescript-eslint/naming-convention
-
     // permanently disable because we disagree with these rules
+    'no-await-in-loop': 'off', // contrary to rule docs, awaited things often are NOT parallelizable
     'no-restricted-globals': 'off', // airbnb bans isNaN in favor of Number.isNaN which is unavailable in IE 11
     'react/jsx-props-no-spreading': 'off',
     'react/prop-types': 'off',
-
-    // permanently disable due to improper TS handling or unnecessary for TS
-    // (and not covered by plugin:@typescript-eslint/eslint-recommended)
-    'no-unused-vars': 'off',
-    'react/jsx-filename-extension': 'off',
 
     // permanently disable due to perf problems and limited benefit
     // see here for perf testing (note that you must run eslint directly)
@@ -266,9 +227,66 @@ module.exports = {
     'import/no-named-as-default-member': 'off',
   },
   overrides: [
+    // Enable rules requiring type info only for appropriate files/circumstances
+    ...getTypeInfoRuleOverrides({
+      'deprecation/deprecation': 'error',
+      ...getNamingConventionRule(true /* prefixWithI */),
+    }),
+    {
+      files: [...tsFiles],
+      excludedFiles: 'src/**/*.scss.ts',
+      // This turns off a few rules that don't work or are unnecessary for TS, and enables a few
+      // that make sense for TS: no-var, prefer-const, prefer-rest-params, prefer-spread
+      // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/src/configs/eslint-recommended.ts
+      extends: ['plugin:@typescript-eslint/eslint-recommended'],
+      // and manually enable rules that only work on TS
+      rules: {
+        '@typescript-eslint/ban-ts-comment': 'error',
+        '@typescript-eslint/explicit-member-accessibility': [
+          'error',
+          {
+            accessibility: 'explicit',
+            overrides: { constructors: 'off' },
+          },
+        ],
+        '@typescript-eslint/member-ordering': [
+          'error',
+          {
+            default: [
+              'public-static-field',
+              'protected-static-field',
+              'private-static-field',
+              'public-instance-field',
+              'protected-instance-field',
+              'private-instance-field',
+              'public-static-method',
+              'protected-static-method',
+              'private-static-method',
+              'public-constructor',
+              'public-instance-method',
+              'protected-constructor',
+              'protected-instance-method',
+              'private-constructor',
+              'private-instance-method',
+            ],
+          },
+        ],
+        '@typescript-eslint/no-empty-function': 'error',
+        '@typescript-eslint/no-explicit-any': 'error', // tslint: no-any
+        '@typescript-eslint/prefer-namespace-keyword': 'error',
+
+        // permanently disable due to using other rules which do the same thing
+        camelcase: 'off', // redundant with @typescript-eslint/naming-convention
+
+        // permanently disable due to improper TS handling or unnecessary for TS
+        // (and not covered by plugin:@typescript-eslint/eslint-recommended)
+        'no-unused-vars': 'off',
+        'react/jsx-filename-extension': 'off',
+      },
+    },
     {
       // Test overrides
-      files: constants.testFiles,
+      files: [...testFiles],
       rules: {
         'no-console': 'off',
         'react/jsx-no-bind': [
@@ -282,29 +300,24 @@ module.exports = {
       },
     },
     {
-      files: '**/*.deprecated.test.ts*',
+      files: 'src/**/*.deprecated.test.{ts,tsx}',
       rules: {
         'deprecation/deprecation': 'off', // the purpose of these tests
       },
     },
     {
       // Example overrides
-      files: '**/*.Example.tsx',
+      files: [...exampleFiles],
       rules: {
         'no-alert': 'off',
         'no-console': 'off',
-        'import/no-extraneous-dependencies': 'off', // false positive for self-imports
-        // 'import/no-relative-parent-imports': 'error',
       },
     },
     {
       // Docs overrides (excluding examples)
-      files: constants.docsFiles,
+      files: [...docsFiles],
       rules: {
         'import/no-webpack-loader-syntax': 'off', // this is ok in docs
-        // 'import/no-extraneous-dependencies': 'off', // false positive for self-imports
-        // docs are generally only for dev purposes
-        // 'import/no-extraneous-dependencies': 'off',
       },
     },
   ],

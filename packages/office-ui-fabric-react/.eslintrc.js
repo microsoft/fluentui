@@ -1,6 +1,7 @@
 // @ts-check
-const constants = require('@uifabric/build/eslint/constants');
+const { devDependenciesFiles, exampleFiles } = require('@uifabric/build/eslint/constants');
 
+/** @type {import("eslint").Linter.Config} */
 module.exports = {
   extends: ['../../scripts/eslint/v7'],
   root: true,
@@ -10,18 +11,17 @@ module.exports = {
     'import/no-extraneous-dependencies': [
       'error',
       {
-        devDependencies: [...constants.devDependenciesFiles, 'src/common/{shallowUntilTarget,testUtilities}.ts'],
+        devDependencies: [...devDependenciesFiles, 'src/common/{shallowUntilTarget,testUtilities}.ts'],
       },
     ],
     // "import-blacklist": [true, { "../../Styling": ["FontSizes"] }]
   },
   overrides: [
     {
-      files: '**/*.Example.tsx',
+      files: [...exampleFiles],
       rules: {
-        // This override is also in the main v7 config, but for some reason to prevent false errors
-        // from showing in the editor, it had to be added here too.
-        'import/no-extraneous-dependencies': 'off', // false positive for self-imports
+        // Our examples depend on @uifabric/example-data which is intentionally not in dependencies
+        'import/no-extraneous-dependencies': 'off',
       },
     },
   ],

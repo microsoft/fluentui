@@ -1,10 +1,11 @@
 // @ts-check
-const { getNamingConventionConfig } = require('@uifabric/build/eslint/namingConvention');
+const { getNamingConventionRule } = require('@uifabric/build/eslint/ruleHelpers');
 
+/** @type {import("eslint").Linter.Config} */
 module.exports = {
   extends: ['../../scripts/eslint/v7'],
   root: true,
   rules: {
-    '@typescript-eslint/naming-convention': getNamingConventionConfig(false /* prefixWithI */),
+    ...getNamingConventionRule(false /* prefixWithI */),
   },
 };

@@ -40,7 +40,7 @@ export function hoistMethods(
       hoisted.push(methodName);
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       destination[methodName] = function(...args: any[]): void {
-        source[methodName].apply(source, args);
+        source[methodName](...args);
       };
     }
   }
