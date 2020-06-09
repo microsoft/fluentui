@@ -183,6 +183,7 @@ export { default as ShareGenericIcon } from './components/ShareGenericIcon';
 export { default as ShareLocationIcon } from './components/ShareLocationIcon';
 export { default as ShareToIcon } from './components/ShareToIcon';
 export { default as Shift24hIcon } from './components/Shift24hIcon';
+export { default as ShiftActivityIcon } from './components/ShiftActivityIcon';
 export { default as SkypeLogoIcon } from './components/SkypeLogoIcon';
 export { default as SpeakerMuteIcon } from './components/SpeakerMuteIcon';
 export { default as SpeakerPersonIcon } from './components/SpeakerPersonIcon';
