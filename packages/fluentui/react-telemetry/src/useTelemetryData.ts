@@ -23,6 +23,8 @@ export function useTelemetryData(
           msStylesTotal: values.msResolveVariablesTotal + values.msResolveStylesTotal + values.msRenderStylesTotal,
         }),
       ),
+    // `tick` is required as a dependency to trigger table's upgrade
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [tick, telemetry.performance],
   );
 
