@@ -70,6 +70,12 @@ export interface IBreadcrumbProps extends React.HTMLAttributes<HTMLElement> {
   onReduceData?: (data: IBreadcrumbData) => IBreadcrumbData | undefined;
 
   /**
+   * Method that determines how to group the length of the breadcrumb.
+   * Return undefined to never increase breadcrumb length.
+   */
+  onGrowData?: (data: IBreadcrumbData) => IBreadcrumbData | undefined;
+
+  /**
    * Aria label for the root element of the breadcrumb (which is a navigation landmark).
    */
   ariaLabel?: string;
