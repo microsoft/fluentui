@@ -11,10 +11,10 @@ const FocusZoneContent: React.FunctionComponent = () => {
   return <>{items}</>;
 };
 
-const scenario = (
+const Scenario = () => (
   <FocusZone as="ul">
     <FocusZoneContent />
   </FocusZone>
 );
 
-export default scenario;
+export default Scenario;

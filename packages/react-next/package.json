@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-next",
-  "version": "8.0.0-alpha.33",
+  "version": "8.0.0-alpha.36",
   "beachball": {
     "disallowedChangeTypes": [
       "patch",
@@ -44,10 +44,10 @@
     "storybook-addon-performance": "^0.9.0"
   },
   "dependencies": {
-    "@fluentui/react-compose": "^0.7.0",
+    "@fluentui/react-compose": "^0.9.0",
     "@fluentui/react-theme-provider": "^0.1.11",
     "@uifabric/set-version": "^7.0.13",
-    "office-ui-fabric-react": "^7.117.1",
+    "office-ui-fabric-react": "^7.118.0",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {
