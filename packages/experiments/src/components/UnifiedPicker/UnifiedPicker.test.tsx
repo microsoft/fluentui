@@ -5,7 +5,7 @@ import { ISelectedItemProps, ISelectedItemsListProps } from '../SelectedItemsLis
 import { IBaseFloatingSuggestionsProps, BaseFloatingSuggestions } from '../FloatingSuggestionsComposite';
 import { create } from 'react-test-renderer';
 import { SelectedItemsList } from '../SelectedItemsList';
-import { IFloatingSuggestionItem, IFloatingSuggestionItemProps } from '../../FloatingSuggestionsComposite';
+import { IFloatingSuggestionItem } from '../../FloatingSuggestionsComposite';
 
 export interface ISimple {
   key: string;
@@ -28,6 +28,28 @@ const basicRenderFloatingPicker = (props: IBaseFloatingSuggestionsProps<ISimple>
 const basicRenderSelectedItemsList = (props: ISelectedItemsListProps<ISimple>) => {
   return <SelectedItemsList {...props} />;
 };
+
+function _startsWith(text: string, filterText: string): boolean {
+  return text.toLowerCase().indexOf(filterText.toLowerCase()) === 0;
+}
+
+const allColors = [
+  'black',
+  'blue',
+  'brown',
+  'cyan',
+  'green',
+  'magenta',
+  'mauve',
+  'orange',
+  'pink',
+  'purple',
+  'red',
+  'rose',
+  'violet',
+  'white',
+  'yellow',
+];
 
 let floatingPickerProps = ({
   onRenderSuggestion: basicSuggestionRenderer,
@@ -56,7 +78,7 @@ describe('UnifiedPicker', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('renders BaseExtendedPicker correctly with selected and suggested items', () => {
+  it('renders correctly with selected and suggested items', () => {
     floatingPickerProps = ({
       onRenderSuggestion: basicSuggestionRenderer,
       onRenderSuggestionsItem: basicSuggestionRenderer,
@@ -108,28 +130,8 @@ describe('UnifiedPicker', () => {
       onRenderItem: basicItemRenderer,
     };
 
-    function _startsWith(text: string, filterText: string): boolean {
-      return text.toLowerCase().indexOf(filterText.toLowerCase()) === 0;
-    }
     let suggestionList: IFloatingSuggestionItem<ISimple>[] = [];
     const _onInputChange = (filterText: string): void => {
-      const allColors = [
-        'black',
-        'blue',
-        'brown',
-        'cyan',
-        'green',
-        'magenta',
-        'mauve',
-        'orange',
-        'pink',
-        'purple',
-        'red',
-        'rose',
-        'violet',
-        'white',
-        'yellow',
-      ];
       const colorSuggestions = allColors.filter((item: string) => _startsWith(item || '', filterText));
       suggestionList = colorSuggestions.map(item => {
         const newItem = {
@@ -167,8 +169,6 @@ describe('UnifiedPicker', () => {
     expect(suggestionList[1].item.name).toEqual('blue');
   });
   it('Can hide and show picker', () => {
-    jest.useFakeTimers();
-
     floatingPickerProps = ({
       onRenderSuggestion: basicSuggestionRenderer,
       targetElement: null,
@@ -191,27 +191,7 @@ describe('UnifiedPicker', () => {
     } as unknown) as IBaseFloatingSuggestionsProps<ISimple>;
 
     let suggestionList: IFloatingSuggestionItem<ISimple>[] = [];
-    function _startsWith(text: string, filterText: string): boolean {
-      return text.toLowerCase().indexOf(filterText.toLowerCase()) === 0;
-    }
     const _onInputChange = (filterText: string): void => {
-      const allColors = [
-        'black',
-        'blue',
-        'brown',
-        'cyan',
-        'green',
-        'magenta',
-        'mauve',
-        'orange',
-        'pink',
-        'purple',
-        'red',
-        'rose',
-        'violet',
-        'white',
-        'yellow',
-      ];
       const colorSuggestions = allColors.filter((item: string) => _startsWith(item || '', filterText));
       suggestionList = colorSuggestions.map(item => {
         const newItem = {

@@ -4,7 +4,6 @@ import { create } from 'react-test-renderer';
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 import { UnifiedPeoplePicker } from './UnifiedPeoplePicker';
 import {
-  IFloatingSuggestionItemProps,
   IFloatingSuggestionItem,
   IFloatingPeopleSuggestionsProps,
 } from '@uifabric/experiments/lib/FloatingPeopleSuggestionsComposite';
@@ -49,7 +48,7 @@ describe('UnifiedPeoplePicker', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('renders BaseExtendedPicker correctly with selected and suggested items', () => {
+  it('renders correctly with selected and suggested items', () => {
     floatingPeoplePickerProps.suggestions = [
       {
         key: '1',
@@ -70,5 +69,39 @@ describe('UnifiedPeoplePicker', () => {
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  it('renders correctly with selected and suggested items and callbacks provided', () => {
+    selectedPeopleListProps.selectedItems = [people[0]];
+    let suggestionList: IFloatingSuggestionItem<IPersonaProps>[] = [];
+    const _onInputChange = (filterText: string): void => {
+      const allPeople = people;
+      const suggestions = allPeople.filter((item: IPersonaProps) => _startsWith(item.text || '', filterText));
+      suggestionList = suggestions.map(item => {
+        return { item: item, isSelected: false, key: item.key } as IFloatingSuggestionItem<IPersonaProps>;
+      });
+    };
+
+    function _startsWith(text: string, filterText: string): boolean {
+      return text.toLowerCase().indexOf(filterText.toLowerCase()) === 0;
+    }
+
+    floatingPeoplePickerProps.suggestions = suggestionList;
+
+    const wrapper = mount(
+      <UnifiedPeoplePicker
+        floatingSuggestionProps={floatingPeoplePickerProps}
+        selectedItemsListProps={selectedPeopleListProps}
+        onInputChange={_onInputChange}
+      />,
+    );
+
+    const inputElement: InputElementWrapper = wrapper.find('input');
+    expect(inputElement).toHaveLength(1);
+    inputElement.simulate('input', { target: { value: 'annie' } });
+
+    // still just validating the suggestionlist, as enzyme has a bug for
+    // re-render
+    expect(suggestionList).toHaveLength(3);
   });
 });
