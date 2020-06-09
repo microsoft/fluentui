@@ -32,12 +32,12 @@ const suggest = (input, choices) => Promise.resolve(choices.filter(i => i.title.
 
     message: 'Which project to start (select or type partial name)?',
     suggest,
-    choices: [...defaults.map(p => ({ title: p, value: p })), ...projectsWithStartCommand],
+    choices: [...defaults.map(p => ({ title: p, value: { pkg: p, command: 'start' } })), ...projectsWithStartCommand],
   });
 
   spawnSync(
     'yarn',
-    ['workspace', response.project.pkg, response.project.command ?? 'start', ...(extraArgs.length > 0 ? [extraArgs] : [])],
+    ['workspace', response.project.pkg, response.project.command, ...(extraArgs.length > 0 ? [extraArgs] : [])],
     {
       shell: true,
       stdio: 'inherit',
