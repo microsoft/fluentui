@@ -2,8 +2,6 @@ import { ComposeStandardStatics } from '../../utils/tempTypes';
 import { ComposeOptions } from '@fluentui/react-compose';
 import { ButtonProps, ButtonSlots } from '../Button/Button.types';
 
-export type SizeValue = 'smallest' | 'smaller' | 'small' | 'medium' | 'large' | 'larger' | 'largest';
-
 export interface ToggleButtonProps extends ButtonProps {
   /**
    * Defines the controlled checked state of the `ToggleButton`.
