@@ -10,7 +10,7 @@ import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import config from '../config';
 
 const { paths } = config;
-const { __DEV__, __PROD__ } = config.compiler_globals;
+const { __DEV__, __PERF__, __PROD__ } = config.compiler_globals;
 
 const webpackConfig: webpack.Configuration = {
   name: 'client',
@@ -171,6 +171,10 @@ if (__PROD__) {
       },
     }),
   ];
+
+  if (__PERF__) {
+    webpackConfig.optimization.minimizer = [];
+  }
 }
 
 if (process.env.ANALYZE) {

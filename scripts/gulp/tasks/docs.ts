@@ -180,21 +180,25 @@ task('serve:docs:hot', async () => {
   const webpackConfig = require('../../webpack/webpack.config').default;
   const compiler = webpack(webpackConfig);
 
-  server = await serve(paths.docsDist(), config.server_host, config.server_port, app =>
-    app
-      .use(
-        WebpackDevMiddleware(compiler, {
-          publicPath: webpackConfig.output.publicPath,
-          contentBase: paths.docsSrc(),
-          hot: true,
-          quiet: false,
-          noInfo: true, // must be quite for hot middleware to show overlay
-          lazy: false,
-          stats: config.compiler_stats,
-        } as WebpackDevMiddleware.Options),
-      )
-      .use(WebpackHotMiddleware(compiler)),
-  );
+  server = await serve(paths.docsDist(), config.server_host, config.server_port, app => {
+    app.use(
+      WebpackDevMiddleware(compiler, {
+        publicPath: webpackConfig.output.publicPath,
+        contentBase: paths.docsSrc(),
+        hot: process.env.NODE_ENV !== 'production',
+        quiet: false,
+        noInfo: true, // must be quite for hot middleware to show overlay
+        lazy: false,
+        stats: config.compiler_stats,
+      } as WebpackDevMiddleware.Options),
+    );
+
+    if (process.env.NODE_ENV !== 'production') {
+      app.use(WebpackHotMiddleware(compiler));
+    }
+
+    return app;
+  });
 });
 
 task('serve:docs:stop', () => forceClose(server));
