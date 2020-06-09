@@ -37,7 +37,7 @@ const suggest = (input, choices) => Promise.resolve(choices.filter(i => i.title.
 
   spawnSync(
     'yarn',
-    ['workspace', response.project.pkg, response.project.command, ...(extraArgs.length > 0 ? [extraArgs] : [])],
+    ['workspace', response.project.pkg, response.project.command ?? 'start', ...(extraArgs.length > 0 ? [extraArgs] : [])],
     {
       shell: true,
       stdio: 'inherit',
