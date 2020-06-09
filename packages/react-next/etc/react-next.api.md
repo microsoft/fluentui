@@ -473,6 +473,8 @@ export interface IPivotStyles {
     linkContent: IStyle;
     // (undocumented)
     linkIsSelected: IStyle;
+    // (undocumented)
+    overflowMenu: IStyle;
     root: IStyle;
     // (undocumented)
     text: IStyle;

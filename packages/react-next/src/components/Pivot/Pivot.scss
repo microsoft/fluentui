@@ -12,7 +12,8 @@
   white-space: nowrap;
 }
 
-.link {
+.link,
+.overflowMenu {
   @include fonts-medium;
   color: var($semanticColorsActionLink);
   display: inline-block;
@@ -160,6 +161,10 @@
       }
     }
   }
+}
+
+.overflowMenu {
+  visibility: hidden;
 }
 
 .linkContent {

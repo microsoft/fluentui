@@ -135,6 +135,7 @@ export interface IPivotStyles {
   text: IStyle;
   count: IStyle;
   icon: IStyle;
+  overflowMenu: IStyle;
   itemContainer?: IStyle;
 }
 
