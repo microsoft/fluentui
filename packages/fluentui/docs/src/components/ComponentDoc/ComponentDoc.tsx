@@ -148,6 +148,7 @@ class ComponentDoc extends React.Component<ComponentDocProps, ComponentDocState>
           <ThemeContext.Consumer>
             {({ changeTheme, themeOptions }) => (
               <Dropdown
+                id="theme-switch"
                 style={{ float: 'right' }}
                 getA11yStatusMessage={getA11yStatusMessage}
                 getA11ySelectionMessage={getA11ySelectionMessage}
