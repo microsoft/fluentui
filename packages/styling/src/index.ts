@@ -4,3 +4,4 @@ export * from './utilities/index';
 export * from './interfaces/index';
 export * from './MergeStyles';
 import './version';
+import './styles/theme';
