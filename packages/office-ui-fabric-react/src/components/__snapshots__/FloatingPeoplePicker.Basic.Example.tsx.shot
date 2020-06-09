@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Component Examples renders FloatingPeoplePicker.Basic.Example.tsx correctly 1`] = `
-<div>
+Array [
   <div
     style={
       Object {
@@ -17,10 +17,11 @@ exports[`Component Examples renders FloatingPeoplePicker.Basic.Example.tsx corre
             -webkit-font-smoothing: antialiased;
             align-items: stretch;
             background-color: #ffffff;
-            border: 1px solid #a6a6a6;
+            border-radius: 2px;
+            border: 1px solid #605e5c;
             box-shadow: none;
             box-sizing: border-box;
-            color: #333333;
+            color: #323130;
             display: flex;
             flex-direction: row;
             flex-wrap: nowrap;
@@ -38,18 +39,19 @@ exports[`Component Examples renders FloatingPeoplePicker.Basic.Example.tsx corre
             padding-top: 1px;
           }
           @media screen and (-ms-high-contrast: active){& {
-            border: 1px solid WindowText;
+            border-color: WindowText;
           }
           &:hover {
-            border-color: #212121;
+            border-color: #323130;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
           }
-          &:hover $iconContainer {
+          &:hover .ms-SearchBox-iconContainer {
             color: #005a9e;
           }
       onFocusCapture={[Function]}
+      role="search"
     >
       <div
         aria-hidden={true}
@@ -70,6 +72,7 @@ exports[`Component Examples renders FloatingPeoplePicker.Basic.Example.tsx corre
         onClick={[Function]}
       >
         <i
+          aria-hidden={true}
           className=
               ms-SearchBox-icon
               {
@@ -84,13 +87,11 @@ exports[`Component Examples renders FloatingPeoplePicker.Basic.Example.tsx corre
                 transition: opacity 0.167s 0s;
               }
           data-icon-name="Search"
-          role="presentation"
         >
           
         </i>
       </div>
       <input
-        aria-label="Search for person"
         className=
             ms-SearchBox-field
             {
@@ -98,7 +99,7 @@ exports[`Component Examples renders FloatingPeoplePicker.Basic.Example.tsx corre
               border: none;
               box-shadow: none;
               box-sizing: border-box;
-              color: #333333;
+              color: #323130;
               flex: 1 1 0px;
               font-family: inherit;
               font-size: inherit;
@@ -116,27 +117,34 @@ exports[`Component Examples renders FloatingPeoplePicker.Basic.Example.tsx corre
               padding-top: 0px;
               text-overflow: ellipsis;
             }
-            &::-ms-clear {
-              display: none;
-            }
             &::placeholder {
-              color: #666666;
+              color: #605e5c;
               opacity: 1;
             }
             &:-ms-input-placeholder {
-              color: #666666;
+              color: #605e5c;
+              opacity: 1;
+            }
+            &::-ms-input-placeholder {
+              color: #605e5c;
+              opacity: 1;
+            }
+            &::-ms-clear {
+              display: none;
             }
         id="SearchBox0"
+        onBlur={[Function]}
         onChange={[Function]}
         onInput={[Function]}
         onKeyDown={[Function]}
         placeholder="Search for person"
+        role="searchbox"
         value=""
       />
     </div>
-  </div>
+  </div>,
   <div
     className="ms-BasePicker ms-BaseFloatingPicker"
-  />
-</div>
+  />,
+]
 `;

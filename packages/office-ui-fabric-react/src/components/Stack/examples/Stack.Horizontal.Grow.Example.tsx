@@ -1,37 +1,41 @@
 import * as React from 'react';
-import { mergeStyleSets, DefaultPalette, IStackTokens, Stack } from 'office-ui-fabric-react';
+import { DefaultPalette, Stack, IStackStyles, IStackTokens, IStackItemStyles } from 'office-ui-fabric-react';
 
-export class HorizontalStackGrowExample extends React.Component<{}, {}> {
-  public render(): JSX.Element {
-    const styles = mergeStyleSets({
-      root: {
-        background: DefaultPalette.themeTertiary
-      },
+// Styles definition
+const stackStyles: IStackStyles = {
+  root: {
+    background: DefaultPalette.themeTertiary,
+  },
+};
+const stackItemStyles: IStackItemStyles = {
+  root: {
+    alignItems: 'center',
+    background: DefaultPalette.themePrimary,
+    color: DefaultPalette.white,
+    display: 'flex',
+    height: 50,
+    justifyContent: 'center',
+  },
+};
 
-      item: {
-        height: 50,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        color: DefaultPalette.white,
-        background: DefaultPalette.themePrimary
-      }
-    });
+// Tokens definition
+const stackTokens: IStackTokens = {
+  childrenGap: 5,
+  padding: 10,
+};
 
-    const stackTokens: IStackTokens = { childrenGap: 5 };
-
-    return (
-      <Stack horizontal tokens={stackTokens} padding={10} className={styles.root}>
-        <Stack.Item grow={3} className={styles.item}>
-          Grow is 3
-        </Stack.Item>
-        <Stack.Item grow={2} className={styles.item}>
-          Grow is 2
-        </Stack.Item>
-        <Stack.Item grow className={styles.item}>
-          Grow is 1
-        </Stack.Item>
-      </Stack>
-    );
-  }
-}
+export const HorizontalStackGrowExample: React.FunctionComponent = () => {
+  return (
+    <Stack horizontal styles={stackStyles} tokens={stackTokens}>
+      <Stack.Item grow={3} styles={stackItemStyles}>
+        Grow is 3
+      </Stack.Item>
+      <Stack.Item grow={2} styles={stackItemStyles}>
+        Grow is 2
+      </Stack.Item>
+      <Stack.Item grow styles={stackItemStyles}>
+        Grow is 1
+      </Stack.Item>
+    </Stack>
+  );
+};

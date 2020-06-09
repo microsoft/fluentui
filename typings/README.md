@@ -1,10 +1,7 @@
-# `@uifabric/typings`
-
 This folder contains custom type definitions for:
 
 - custom global types
-- packages which don't have `@types` or included declaration files (though ideally these custom types should
-  be contributed to [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped) for publishing!)
+- packages which don't have `@types` or included declaration files (though ideally these custom types should be contributed to [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped) for publishing!)
 
 ## Using custom global types
 
@@ -16,6 +13,6 @@ The `custom-global` types are not referenced by default in most projects. To add
 to `tsconfig.json` `compilerOptions`:
 
 ```js
-"typeRoots": ["node_modules/@types", "../../typings"],
+"typeRoots": ["../../node_modules/@types", "../../typings"],
 "types": ["custom-global"] // and any other types you reference
 ```

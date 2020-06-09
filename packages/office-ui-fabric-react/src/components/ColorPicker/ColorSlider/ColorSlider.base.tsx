@@ -1,141 +1,221 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction } from '../../../Utilities';
-import { IColorSliderProps, IColorSliderStyleProps, IColorSliderStyles } from './ColorSlider.types';
+import {
+  classNamesFunction,
+  initializeComponentRef,
+  on,
+  KeyCodes,
+  getWindow,
+  warnDeprecations,
+  warn,
+} from '../../../Utilities';
+import { IColorSliderProps, IColorSliderStyleProps, IColorSliderStyles, IColorSlider } from './ColorSlider.types';
+import { clamp } from '../../../utilities/color/clamp';
+import { MAX_COLOR_HUE, MAX_COLOR_ALPHA } from '../../../utilities/color/consts';
 
 const getClassNames = classNamesFunction<IColorSliderStyleProps, IColorSliderStyles>();
 
-/**
- * {@docCategory ColorPicker}
- */
-export interface IColorSliderProps {
-  componentRef?: () => void;
-  minValue?: number;
-  maxValue?: number;
-  value?: number;
-  thumbColor?: string;
-  overlayStyle?: any;
-  onChange?: (event: React.MouseEvent<HTMLElement>, newValue?: number) => void;
-  onChanged?: (newValue: number) => void;
-
-  className?: string;
-  style?: any;
-}
-
 export interface IColorSliderState {
-  isAdjusting?: boolean;
-  origin?: { x: number; originalValue: number };
-  currentValue?: number;
+  currentValue: number;
 }
 
 /**
  * {@docCategory ColorPicker}
  */
-export class ColorSliderBase extends BaseComponent<IColorSliderProps, IColorSliderState> {
-  public static defaultProps = {
-    minValue: 0,
-    maxValue: 100,
-    thumbColor: 'inherit',
-    value: 0
+export class ColorSliderBase extends React.Component<IColorSliderProps, IColorSliderState> implements IColorSlider {
+  public static defaultProps: Partial<IColorSliderProps> = {
+    value: 0,
   };
 
+  private _disposables: (() => void)[] = [];
   private _root = React.createRef<HTMLDivElement>();
 
   constructor(props: IColorSliderProps) {
     super(props);
 
-    this._warnDeprecations({
-      onChanged: 'onChange'
-    });
+    initializeComponentRef(this);
 
-    const { value } = this.props;
+    warnDeprecations('ColorSlider', props, {
+      thumbColor: 'styles.sliderThumb',
+      overlayStyle: 'overlayColor',
+      isAlpha: 'type',
+      maxValue: 'type',
+      minValue: 'type',
+    });
+    // tslint:disable-next-line:deprecation
+    if (this._type !== 'hue' && !(props.overlayColor || props.overlayStyle)) {
+      warn(`ColorSlider: 'overlayColor' is required when 'type' is "alpha" or "transparency"`);
+    }
 
     this.state = {
-      isAdjusting: false,
-      origin: undefined,
-      currentValue: value
+      currentValue: props.value || 0,
     };
   }
 
-  public componentWillReceiveProps(newProps: IColorSliderProps): void {
-    if (newProps && newProps.value) {
-      this.setState({ currentValue: newProps.value });
+  public get value(): number {
+    return this.state.currentValue;
+  }
+
+  public componentDidUpdate(prevProps: Readonly<IColorSliderProps>, prevState: Readonly<IColorSliderState>): void {
+    // if props changed (as opposed to a state update), set the value
+    // TODO: switch to strict controlled pattern instead
+    if (prevProps !== this.props && this.props.value !== undefined) {
+      this.setState({ currentValue: this.props.value });
     }
   }
 
+  public componentWillUnmount() {
+    this._disposeListeners();
+  }
+
   public render(): JSX.Element {
-    const { isAlpha, minValue, maxValue, overlayStyle, theme, className, styles } = this.props;
-    const { currentValue } = this.state;
+    const type = this._type;
+    const maxValue = this._maxValue;
+    const {
+      // tslint:disable-next-line:deprecation
+      overlayStyle,
+      overlayColor,
+      theme,
+      className,
+      styles,
+      ariaLabel = type,
+    } = this.props;
+    const currentValue = this.value;
 
     const classNames = getClassNames(styles!, {
       theme: theme!,
-      className
+      className,
+      type,
     });
 
-    const currentPercentage = (100 * (currentValue! - minValue!)) / (maxValue! - minValue!);
-
-    const hueStyle = {
-      background:
-        // tslint:disable-next-line:max-line-length
-        'linear-gradient(to left,red 0,#f09 10%,#cd00ff 20%,#3200ff 30%,#06f 40%,#00fffd 50%,#0f6 60%,#35ff00 70%,#cdff00 80%,#f90 90%,red 100%)'
-    };
-
-    const alphaStyle = {
-      backgroundImage:
-        // tslint:disable-next-line:max-line-length
-        'url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAJUlEQVQYV2N89erVfwY0ICYmxoguxjgUFKI7GsTH5m4M3w1ChQC1/Ca8i2n1WgAAAABJRU5ErkJggg==)'
-    };
-
-    const sliderStyle = isAlpha ? alphaStyle : hueStyle;
+    const currentPercentage = (100 * currentValue) / maxValue;
 
     return (
-      <div ref={this._root} className={classNames.root} onMouseDown={this._onMouseDown} style={sliderStyle}>
-        <div className={classNames.sliderOverlay} style={overlayStyle} />
+      <div
+        ref={this._root}
+        className={classNames.root}
+        tabIndex={0}
+        onKeyDown={this._onKeyDown}
+        onMouseDown={this._onMouseDown}
+        role="slider"
+        aria-valuenow={currentValue}
+        // Narrator doesn't read aria-valuenow properly
+        aria-valuetext={String(currentValue)}
+        aria-valuemin={0}
+        aria-valuemax={maxValue}
+        aria-label={ariaLabel}
+        data-is-focusable={true}
+      >
+        {!!(overlayColor || overlayStyle) && (
+          <div
+            className={classNames.sliderOverlay}
+            // this isn't included in getStyles because it may change frequently
+            style={
+              overlayColor
+                ? {
+                    background:
+                      type === 'transparency'
+                        ? `linear-gradient(to right, #${overlayColor}, transparent)`
+                        : `linear-gradient(to right, transparent, #${overlayColor})`,
+                  }
+                : overlayStyle
+            }
+          />
+        )}
         <div className={classNames.sliderThumb} style={{ left: currentPercentage + '%' }} />
       </div>
     );
   }
 
+  private get _type(): IColorSliderProps['type'] {
+    // tslint:disable-next-line:deprecation
+    const { isAlpha, type = isAlpha ? 'alpha' : 'hue' } = this.props;
+    return type;
+  }
+
+  private get _maxValue(): number {
+    return this._type === 'hue' ? MAX_COLOR_HUE : MAX_COLOR_ALPHA;
+  }
+
+  private _onKeyDown = (ev: React.KeyboardEvent): void => {
+    let currentValue = this.value;
+    const maxValue = this._maxValue;
+    const increment = ev.shiftKey ? 10 : 1;
+
+    // Intentionally DO NOT flip the color picker in RTL: its orientation is not very meaningful,
+    // and getting all the math and styles flipped correctly is tricky
+    switch (ev.which) {
+      case KeyCodes.left: {
+        currentValue -= increment;
+        break;
+      }
+      case KeyCodes.right: {
+        currentValue += increment;
+        break;
+      }
+      case KeyCodes.home: {
+        currentValue = 0;
+        break;
+      }
+      case KeyCodes.end: {
+        currentValue = maxValue;
+        break;
+      }
+      default: {
+        return;
+      }
+    }
+
+    this._updateValue(ev, clamp(currentValue, maxValue));
+  };
+
   private _onMouseDown = (ev: React.MouseEvent<HTMLElement>): void => {
-    this._events.on(window, 'mousemove', this._onMouseMove, true);
-    this._events.on(window, 'mouseup', this._onMouseUp, true);
+    const win = getWindow(this as any);
+
+    if (win) {
+      this._disposables.push(
+        on(win, 'mousemove', this._onMouseMove as (ev: MouseEvent) => void, true),
+        on(win, 'mouseup', this._disposeListeners, true),
+      );
+    }
 
     this._onMouseMove(ev);
   };
 
-  private _onMouseMove = (ev: React.MouseEvent<HTMLElement>): void => {
+  private _onMouseMove = (ev: MouseEvent | React.MouseEvent): void => {
     if (!this._root.current) {
       return;
     }
 
-    const { onChange, onChanged, minValue, maxValue } = this.props;
+    const maxValue = this._maxValue;
     const rectSize = this._root.current.getBoundingClientRect();
 
     const currentPercentage = (ev.clientX - rectSize.left) / rectSize.width;
-    const newValue = Math.min(maxValue!, Math.max(minValue!, currentPercentage * maxValue!));
+    const newValue = clamp(Math.round(currentPercentage * maxValue), maxValue);
 
-    this.setState({
-      isAdjusting: true,
-      currentValue: newValue
-    });
+    this._updateValue(ev, newValue);
+  };
+
+  private _disposeListeners = (): void => {
+    this._disposables.forEach(dispose => dispose());
+    this._disposables = [];
+  };
+
+  private _updateValue(ev: MouseEvent | KeyboardEvent | React.MouseEvent | React.KeyboardEvent, newValue: number) {
+    if (newValue === this.value) {
+      return;
+    }
+
+    const { onChange } = this.props;
 
     if (onChange) {
-      onChange(ev, newValue);
+      onChange(ev as React.MouseEvent | React.KeyboardEvent, newValue);
     }
 
-    if (onChanged) {
-      onChanged(newValue);
+    if (!ev.defaultPrevented) {
+      this.setState({
+        currentValue: newValue,
+      });
+      ev.preventDefault();
     }
-
-    ev.preventDefault();
-    ev.stopPropagation();
-  };
-
-  private _onMouseUp = (ev: React.MouseEvent<HTMLElement>): void => {
-    this._events.off();
-
-    this.setState({
-      isAdjusting: false,
-      origin: undefined
-    });
-  };
+  }
 }

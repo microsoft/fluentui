@@ -2,22 +2,11 @@ const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
 const path = require('path');
 const fs = require('fs');
-const commandLineArgs = require('command-line-args');
+const yargs = require('yargs');
 
-const optionDefinitions = [
-  {
-    name: 'webpackConfig',
-    alias: 'w',
-    type: String
-  }
-];
+const options = yargs.option('webpackConfig', { alias: 'w', type: 'string' }).argv;
 
-const options = commandLineArgs(optionDefinitions);
-let webpackConfigFilePath = 'webpack.codepen.config.js';
-
-if (options && options.webpackConfig) {
-  webpackConfigFilePath = options.webpackConfig;
-}
+const webpackConfigFilePath = options.webpackConfig || 'webpack.codepen.config.js';
 
 const configPath = path.resolve(process.cwd(), webpackConfigFilePath);
 
@@ -27,8 +16,8 @@ if (fs.existsSync(configPath)) {
   const compiler = webpack(webpackConfig);
   const devServerOptions = Object.assign({}, webpackConfig.devServer, {
     stats: {
-      colors: true
-    }
+      colors: true,
+    },
   });
   const server = new WebpackDevServer(compiler, devServerOptions);
 
@@ -40,7 +29,7 @@ if (fs.existsSync(configPath)) {
   <script type="text/javascript" src="https://unpkg.com/react@16/umd/react.development.js"></script>
   <script type="text/javascript" src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
   <script type="text/javascript" src="${url}/office-ui-fabric-react.js"></script>
-`
+`,
     );
   });
 }

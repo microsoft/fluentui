@@ -3,7 +3,7 @@ import { classNamesFunction } from '../../Utilities';
 import { IKeytipProps, IKeytipStyleProps, IKeytipStyles } from './Keytip.types';
 
 /**
- * A component corresponding the the content rendered inside the callout of the keytip component.
+ * A component corresponding the content rendered inside the callout of the keytip component.
  * {@docCategory Keytips}
  */
 export class KeytipContentBase extends React.Component<IKeytipProps, {}> {
@@ -14,7 +14,7 @@ export class KeytipContentBase extends React.Component<IKeytipProps, {}> {
     const classNames = getClassNames(styles!, {
       theme: theme!,
       disabled,
-      visible
+      visible,
     });
 
     return (

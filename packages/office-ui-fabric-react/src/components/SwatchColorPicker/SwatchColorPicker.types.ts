@@ -1,18 +1,22 @@
 import { IStyle, ITheme } from '../../Styling';
 import { IStyleFunctionOrObject } from '../../Utilities';
-import { IColorCellProps, IColorPickerGridCellStyleProps, IColorPickerGridCellStyles } from './ColorPickerGridCell.types';
+import {
+  IColorCellProps,
+  IColorPickerGridCellStyleProps,
+  IColorPickerGridCellStyles,
+} from './ColorPickerGridCell.types';
 
 /**
  * {@docCategory SwatchColorPicker}
  */
 export interface ISwatchColorPickerProps {
   /**
-   * the number of columns for the swatch color picker
+   * Number of columns for the swatch color picker
    */
   columnCount: number;
 
   /**
-   * The id for the swatch color picker
+   * ID for the swatch color picker's root element. Also used as a prefix for the IDs of color cells.
    */
   id?: string;
 
@@ -22,17 +26,22 @@ export interface ISwatchColorPickerProps {
   className?: string;
 
   /**
-   * The shape of the color cells, defaults to circle
+   * The shape of the color cells.
+   * @default 'circle'
    */
   cellShape?: 'circle' | 'square';
 
   /**
-   * The id of color cell that is currently selected
+   * The ID of color cell that is currently selected
    */
   selectedId?: string;
 
   /**
-   * The color cells that will be made available to the user
+   * The color cells that will be made available to the user.
+   *
+   * Note: When the reference to this prop changes, regardless of how many color cells change,
+   * all of the color cells will be re-rendered (potentially bad perf) because we memoize
+   * based on this prop's reference.
    */
   colorCells: IColorCellProps[];
 
@@ -40,7 +49,7 @@ export interface ISwatchColorPickerProps {
    * Indicates whether the SwatchColorPicker is fully controlled.
    * When true, the component will not set its internal state to track the selected color.
    * Instead, the parent component will be responsible for handling state in the callbacks like
-   * onColorChanged.
+   * `onColorChanged`.
    *
    * NOTE: This property is a temporary workaround to force the component to be fully controllable
    * without breaking existing behavior
@@ -48,49 +57,60 @@ export interface ISwatchColorPickerProps {
   isControlled?: boolean;
 
   /**
-   * Callback issued when the user changes the color.
-   * Note, if no id or color is given, there is no selected cell
+   * Callback for when the user changes the color.
+   * If `id` and `color` are unspecified, there is no selected cell.
    * (e.g. the user executed the currently selected cell to unselect it)
    */
   onColorChanged?: (id?: string, color?: string) => void;
 
   /**
-   * Callback issued when the user hovers over a color cell.
-   * Note, if no id or color is given, cells are not longer being hovered
+   * Callback for when the user hovers over a color cell.
+   * If `id` and `color` are unspecified, cells are no longer being hovered.
    */
   onCellHovered?: (id?: string, color?: string) => void;
 
   /**
-   * Callback issued when the user focuses a color cell.
-   * Note, if no id or color is given, cells are not longer being focused
+   * Callback for when the user focuses a color cell.
+   * If `id` and `color` are unspecified, cells are no longer being focused.
    */
   onCellFocused?: (id?: string, color?: string) => void;
 
   /**
-   * Is this swatch color picker disabled?
+   * Whether the control is disabled.
    */
   disabled?: boolean;
 
   /**
-   * The optional position this grid is in the parent set (index in a parent menu, for example)
+   * Position this grid is in the parent set (index in a parent menu, for example)
+   */
+  ariaPosInSet?: number;
+
+  /**
+   * @deprecated Use `ariaPosInSet`
    */
   positionInSet?: number;
 
   /**
-   * The optional size of the parent set (size of parent menu, for example)
+   * Size of the parent set (size of parent menu, for example)
+   */
+  ariaSetSize?: number;
+
+  /**
+   * @deprecated Use `ariaSetSize`
    */
   setSize?: number;
 
   /**
-   * Should focus cycle to the beginning of once the user navigates past the end (and vice versa).
-   * This prop is only relevant if doNotcontainWithinFocusZone is not true
+   * Whether focus should cycle back to the beginning once the user navigates past the end (and vice versa).
+   * Only relevant if `doNotContainWithinFocusZone` is not true.
    * @defaultvalue true
    */
   shouldFocusCircularNavigate?: boolean;
 
   /**
-   * If true do not contain the grid inside of a FocusZone.
-   * If false contain the grid inside of a FocusZone.
+   * If false (the default), the grid is contained inside a FocusZone.
+   * If true, a FocusZone is not used.
+   * @default false
    */
   doNotContainWithinFocusZone?: boolean;
 
@@ -114,8 +134,7 @@ export interface ISwatchColorPickerProps {
 
   /**
    * Width of the border indicating a hovered/selected cell, in pixels
-   * If `cellWidth` is less than 24px, then default value is 2px. Otherwise it defaults to 4px.
-   * @defaultvalue 2
+   * @defaultvalue If `cellWidth` is less than 24px, then default value is 2px. Otherwise it defaults to 4px.
    */
   cellBorderWidth?: number;
 
@@ -125,24 +144,23 @@ export interface ISwatchColorPickerProps {
   theme?: ITheme;
 
   /**
-   * Optional styles for the component.
+   * Styles for the component.
    */
   styles?: IStyleFunctionOrObject<ISwatchColorPickerStyleProps, ISwatchColorPickerStyles>;
 
   /**
-   * Optional styles for the component.
+   * Styles for the grid cells.
    */
   getColorGridCellStyles?: IStyleFunctionOrObject<IColorPickerGridCellStyleProps, IColorPickerGridCellStyles>;
 
   /**
-   * Optional, whether to update focus when a cell is hovered.
+   * Whether to update focus when a cell is hovered.
    * @defaultvalue false
    */
   focusOnHover?: boolean;
 
   /**
-   * Selector to focus on mouseLeave
-   * SHOULD ONLY BE USED IN CONJUNCTION WITH focusOnHover
+   * Selector to focus on mouse leave. Should only be used in conjunction with `focusOnHover`.
    */
   mouseLeaveParentSelector?: string | undefined;
 }
@@ -174,7 +192,7 @@ export interface ISwatchColorPickerStyleProps {
  */
 export interface ISwatchColorPickerStyles {
   /**
-   * Style applied to the container grid of the swatchColorPicker
+   * Style applied to the container grid.
    */
   root: IStyle;
 
@@ -184,7 +202,7 @@ export interface ISwatchColorPickerStyles {
   tableCell: IStyle;
 
   /**
-   * Optional, style for the FocusZone container for the grid
+   * Style for the FocusZone container for the grid.
    */
   focusedContainer?: IStyle;
 }

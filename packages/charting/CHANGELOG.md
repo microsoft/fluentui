@@ -1,6 +1,413 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Mon, 03 Jun 2019 23:04:02 GMT and should not be manually modified.
+This log was last generated on Fri, 05 Jun 2020 05:09:39 GMT and should not be manually modified.
+
+<!-- Start content -->
+
+## [2.2.29](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.2.29)
+
+Fri, 05 Jun 2020 05:09:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.2.27..@uifabric/charting_v2.2.29)
+
+### Patches
+
+- Charting: Change charts callout UI ([PR #13450](https://github.com/microsoft/fluentui/pull/13450) by v-satgar@microsoft.com)
+
+## [2.2.27](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.2.27)
+
+Tue, 02 Jun 2020 12:36:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.2.23..@uifabric/charting_v2.2.27)
+
+### Patches
+
+- LineChart: Add datapoints for each line and accessibility for it ([PR #13261](https://github.com/microsoft/fluentui/pull/13261) by v-satgar@microsoft.com)
+
+## [2.2.23](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.2.23)
+
+Mon, 25 May 2020 12:38:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.2.21..@uifabric/charting_v2.2.23)
+
+### Patches
+
+- Remove implicit dep on lodash and fix other imports ([PR #13295](https://github.com/microsoft/fluentui/pull/13295) by elcraig@microsoft.com)
+
+## [2.2.21](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.2.21)
+
+Thu, 21 May 2020 12:34:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.2.14..@uifabric/charting_v2.2.21)
+
+### Patches
+
+- Line chart: Fix issue  If y-axis value has more digits it is getting truncated ([PR #13208](https://github.com/microsoft/fluentui/pull/13208) by v-satgar@microsoft.com)
+
+## [2.2.14](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.2.14)
+
+Fri, 15 May 2020 00:07:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.2.13..@uifabric/charting_v2.2.14)
+
+### Patches
+
+- MultiStackedBarChart: Fix breaking chart when focus on bars through keyboard ([PR #13156](https://github.com/microsoft/fluentui/pull/13156) by v-satgar@microsoft.com)
+
+## [2.2.13](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.2.13)
+
+Thu, 14 May 2020 12:34:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.2.7..@uifabric/charting_v2.2.13)
+
+### Patches
+
+- Fix issue in stacked bar chart for Rounded value to 1 if less than 1% to appear in the chart ([PR #13141](https://github.com/microsoft/fluentui/pull/13141) by v-satgar@microsoft.com)
+- Charting : Add theme support for xaxis and yaxis for line chart and change office-ui-fabric-react from dependencies to peerDependencies ([PR #13140](https://github.com/microsoft/fluentui/pull/13140) by v-satgar@microsoft.com)
+
+## [2.2.7](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.2.7)
+
+Thu, 07 May 2020 01:06:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.2.6..@uifabric/charting_v2.2.7)
+
+### Patches
+
+- Addressing commonjs imports. ([PR #13031](https://github.com/microsoft/fluentui/pull/13031) by dzearing@microsoft.com)
+- Charting package: Expose prop for hide tooltips in charts ([PR #13023](https://github.com/microsoft/fluentui/pull/13023) by v-satgar@microsoft.com)
+
+## [2.2.6](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.2.6)
+
+Wed, 06 May 2020 12:32:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.2.5..@uifabric/charting_v2.2.6)
+
+### Patches
+
+- callout prop added to charts ([PR #12936](https://github.com/microsoft/fluentui/pull/12936) by v-jasha@microsoft.com)
+
+## [2.2.5](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.2.5)
+
+Tue, 05 May 2020 12:34:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.2.1..@uifabric/charting_v2.2.5)
+
+### Patches
+
+- Stacked Bar Chart: Rounded value to 1 if less than 1%  to appear in the chart ([PR #12939](https://github.com/microsoft/fluentui/pull/12939) by v-satgar@microsoft.com)
+
+## [2.2.1](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.2.1)
+
+Thu, 30 Apr 2020 12:31:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.2.0..@uifabric/charting_v2.2.1)
+
+### Patches
+
+- addding dismiss delay to overcome instant closing on blur ([PR #12911](https://github.com/microsoft/fluentui/pull/12911) by v-sivsar@microsoft.com)
+- Charting: Change FocusZone imports to @fluentui/react-focus from office-ui-fabric-react/lib/FocusZone ([PR #12917](https://github.com/microsoft/fluentui/pull/12917) by v-satgar@microsoft.com)
+
+## [2.2.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.2.0)
+
+Wed, 29 Apr 2020 12:34:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.1.0..@uifabric/charting_v2.2.0)
+
+### Minor changes
+
+- Add EventAnnotation feature for linechart. ([PR #12681](https://github.com/microsoft/fluentui/pull/12681) by Qian.Zheqi@microsoft.com)
+
+## [2.1.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.1.0)
+
+Thu, 23 Apr 2020 12:32:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.0.4..@uifabric/charting_v2.1.0)
+
+### Minor changes
+
+- adding new prop hideLegend in donut chart and line chart which decides to show or hide legends ([PR #12469](https://github.com/microsoft/fluentui/pull/12469) by v-sivsar@microsoft.com)
+- adding onclick to the line in the line chart ([PR #12548](https://github.com/microsoft/fluentui/pull/12548) by v-sivsar@microsoft.com)
+
+## [2.0.4](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.0.4)
+
+Wed, 22 Apr 2020 12:33:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.0.0..@uifabric/charting_v2.0.4)
+
+### Patches
+
+- Fix issue line chart 'Tool tip' is displayed top of the page throgh accessibility ([PR #12761](https://github.com/microsoft/fluentui/pull/12761) by v-satgar@microsoft.com)
+
+## [2.0.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.0.0)
+
+Fri, 17 Apr 2020 12:34:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v1.4.0..@uifabric/charting_v2.0.0)
+
+### Major changes
+
+- Grouped verical bar chart ([PR #12687](https://github.com/microsoft/fluentui/pull/12687) by v-jasha@microsoft.com)
+
+## [1.4.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v1.4.0)
+
+Thu, 16 Apr 2020 04:01:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v1.1.4..@uifabric/charting_v1.4.0)
+
+### Minor changes
+
+- Provide customization for line chart tooltip and Y Axis label ([PR #12622](https://github.com/microsoft/fluentui/pull/12622) by v-satgar@microsoft.com)
+- Add Callout and Legends for vertical bar chart ([PR #12623](https://github.com/microsoft/fluentui/pull/12623) by v-satgar@microsoft.com)
+
+### Patches
+
+- Readme: Fabric=>Fluent wording updates ([PR #12508](https://github.com/microsoft/fluentui/pull/12508) by elcraig@microsoft.com)
+
+## 1.1.0
+Thu, 02 Apr 2020 12:30:40 GMT
+
+### Minor changes
+
+- DonutChart: Add prop to allow string inside Donut. (v-satgar@microsoft.com)
+- providing Ymin and Ymax as props to the user (v-sivsar@microsoft.com)
+## 1.0.0
+Wed, 25 Mar 2020 12:30:04 GMT
+
+### Major
+
+- Vertical stacked bar chart added to charting package (v-jasha@microsoft.com)
+### Patches
+
+- Changing references of Fabric to Fluent (mgodbolt@microsoft.com)
+## 0.143.0
+Tue, 24 Mar 2020 12:26:03 GMT
+
+### Minor changes
+
+- expose prop for overflow items text in legends (v-satgar@microsoft.com)
+## 0.142.0
+Mon, 23 Mar 2020 12:28:29 GMT
+
+### Minor changes
+
+- Add support for screen reader when hover on donnut chart (v-satgar@microsoft.com)
+### Patches
+
+- Replace OfficeDev/office-ui-fabric-react with microsoft/fluentui (elcraig@microsoft.com)
+## 0.141.6
+Thu, 19 Mar 2020 12:29:37 GMT
+
+### Patches
+
+- fixed accessiblity for the  statcked and multistacked bar chart by adding id for each callout and setting aria-labelledby accordingly (v-sivsar@microsoft.com)
+## 0.141.1
+Thu, 12 Mar 2020 12:35:00 GMT
+
+### Patches
+
+- Fix issues stacked bar chart hover issue,line chart dot and line chart y axis disorted (v-satgar@microsoft.com)
+## 0.141.0
+Wed, 11 Mar 2020 12:24:03 GMT
+
+### Minor changes
+
+- Line chart Accessibility with screen reader (v-satgar@microsoft.com)
+## 0.140.3
+Tue, 25 Feb 2020 12:25:39 GMT
+
+### Patches
+
+- Enable keyboard accessibility for Donut chart (v-satgar@microsoft.com)
+## 0.140.0
+Thu, 20 Feb 2020 12:20:16 GMT
+
+### Minor changes
+
+- adding aria-* attributes to the legends, and we can also access legends in the hover card by clicking up/down arrow (v-sivsar@microsoft.com)
+## 0.139.6
+Mon, 27 Jan 2020 03:59:43 GMT
+
+### Patches
+
+- Provided accessability for stacked bar chart (v-satgar@microsoft.com)
+## 0.139.4
+Thu, 23 Jan 2020 12:32:26 GMT
+
+### Patches
+
+- adding minimun legend container height (v-sivsar@microsoft.com)
+- closing callout on pressing esc key (v-sivsar@microsoft.com)
+## 0.139.2
+Fri, 17 Jan 2020 02:32:17 GMT
+
+### Patches
+
+- Update tslib minver to first version containing __spreadArrays helper due to changes in how TS emits spreads. (jagore@microsoft.com)
+## 0.139.1
+Wed, 08 Jan 2020 17:02:57 GMT
+
+### Patches
+
+- bumping load-themed-styles to take advantage of es6 version of it (kchau@microsoft.com)
+## 0.139.0
+Tue, 26 Nov 2019 12:32:11 GMT
+
+### Minor changes
+
+- removing the sticky={true} property from the hover card as the card should hide when the mouse goes away from the target element, and also added the gap space 12 to avoid the flickering issue of the hover card (v-sivsar@microsoft.com)
+## 0.138.1
+Tue, 19 Nov 2019 12:29:10 GMT
+
+### Patches
+
+- Fix the bug that x-axis for linechart does not display properly (dajiang@microsoft.com)
+## 0.138.0
+Tue, 05 Nov 2019 12:25:16 GMT
+
+### Minor changes
+
+- Enabled wrap lines for legends (dajiang@microsoft.com)
+## 0.137.2
+Thu, 24 Oct 2019 12:31:42 GMT
+
+### Patches
+
+- Change gapSpace to 10 to resolve line chart flickering issue (v-ragor@microsoft.com)
+## 0.137.1
+Tue, 22 Oct 2019 12:32:05 GMT
+
+### Patches
+
+- Fix getDerivedStateFromProps signatures (elcraig@microsoft.com)
+## 0.137.0
+Wed, 09 Oct 2019 22:25:09 GMT
+
+### Minor changes
+
+- Add placeholder mode to StackedBarChart (dajiang@microsoft.com)
+## 0.136.2
+Thu, 03 Oct 2019 23:14:46 GMT
+
+### Patches
+
+- Fixes publish issue from beachball (odbuild@microsoft.com)
+## 0.136.0
+Thu, 03 Oct 2019 01:14:35 GMT
+
+### Minor changes
+
+- Add benchmark triangle in stackedBarChart (dajiang@microsoft.com)
+## 0.135.0
+Wed, 11 Sep 2019 12:35:47 GMT
+
+### Minor changes
+
+- Expose hideLegend prop for stacked bar chart (v-ragor@microsoft.com)
+## 0.134.4
+Wed, 04 Sep 2019 04:09:58 GMT
+
+### Patches
+
+- fix version file (kchau@microsoft.com)
+## 0.134.3
+Tue, 27 Aug 2019 12:33:51 GMT
+
+### Patches
+
+- Remove relative imports from examples and fix incorrectly named example files (elcraig@microsoft.com)
+## 0.134.2
+Fri, 23 Aug 2019 12:35:28 GMT
+
+### Patches
+
+- Update npmignores, delete unused jest setup files (elcraig@microsoft.com)
+- Fix up readme and package.json descriptions (elcraig@microsoft.com)
+
+## 0.134.1
+Tue, 13 Aug 2019 12:31:12 GMT
+
+### Patches
+
+- Fix donut chart transform when height and width props change (v-ragor@microsoft.com)
+
+## 0.134.0
+Wed, 07 Aug 2019 12:32:28 GMT
+
+### Minor changes
+
+- Initial implementation of clickable legends (atgupta@microsoft.com)
+
+## 0.133.5
+Mon, 22 Jul 2019 12:28:42 GMT
+
+### Patches
+
+- Improve how to get the min query string (elcraig@microsoft.com)
+
+## 0.133.4
+Wed, 17 Jul 2019 18:58:57 GMT
+
+### Patches
+
+- Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom. (makotom@microsoft.com)
+
+## 0.133.2
+Wed, 10 Jul 2019 12:28:00 GMT
+
+### Patches
+
+- FIx linechart issue when consumer didn't sent height and width for the chart (v-ragor@microsoft.com)
+
+## 0.133.1
+Mon, 01 Jul 2019 18:51:42 GMT
+
+### Patches
+
+- adds react-app-polyfill
+
+## 0.133.0
+Thu, 27 Jun 2019 22:14:22 GMT
+
+### Minor changes
+
+- Bisected the height to the chart and legends
+
+## 0.132.0
+Thu, 20 Jun 2019 12:27:38 GMT
+
+### Minor changes
+
+- Fixing peer deps.
+
+## 0.131.3
+Tue, 18 Jun 2019 12:26:19 GMT
+
+### Patches
+
+- Add data viz separator for HorizontalBarChart
+
+## 0.131.2
+Fri, 14 Jun 2019 12:26:30 GMT
+
+### Patches
+
+- Resolved the issue of the legends repeating even with same color and legend
+- Fix missing assets in production build.
+
+## 0.131.1
+Thu, 13 Jun 2019 00:24:48 GMT
+
+### Patches
+
+- Initial release of Fabric 7
+- Fix verticalBarChart x-axis description cut off issue
+
+## 0.30.3
+Wed, 12 Jun 2019 00:42:26 GMT
+
+### Patches
+
+- Render demo app with Markdown instead of PageMarkdown
+- Update and dedupe React deps.
+
+## 0.30.2
+Tue, 11 Jun 2019 12:21:35 GMT
+
+### Patches
+
+- Fix LineChart does not display properly in FireFox browser
+
+## 0.30.1
+Fri, 07 Jun 2019 12:21:48 GMT
+
+### Patches
+
+- Data Viz 'Legends' is not accessible using keyboard tab navigation
 
 ## 0.30.0
 Mon, 03 Jun 2019 23:04:02 GMT
@@ -91,7 +498,7 @@ Wed, 06 Feb 2019 13:38:06 GMT
 
 ### Patches
 
-- office ui fabric charting package, legend related changes 
+- office ui fabric charting package, legend related changes
 
 ## 0.28.5
 Tue, 08 Jan 2019 13:34:49 GMT
@@ -215,7 +622,7 @@ Mon, 08 Oct 2018 12:24:15 GMT
 
 ### Patches
 
-- Moving tslint/prettier dependencies 
+- Moving tslint/prettier dependencies
 
 ## 0.24.0
 Thu, 04 Oct 2018 12:26:48 GMT
@@ -342,7 +749,7 @@ Fri, 31 Aug 2018 10:27:35 GMT
 ### Patches
 
 - Fixes the usage of renamed variable
-- horizontal bar chart modified according to figma 
+- horizontal bar chart modified according to figma
 
 ## 0.17.0
 Thu, 30 Aug 2018 19:26:04 GMT
@@ -360,7 +767,7 @@ Thu, 30 Aug 2018 10:32:49 GMT
 
 ### Patches
 
-- Donut chart with legends and hover behavior 
+- Donut chart with legends and hover behavior
 
 ## 0.16.0
 Fri, 24 Aug 2018 10:26:08 GMT
@@ -585,7 +992,7 @@ Tue, 10 Apr 2018 17:37:28 GMT
 
 ### Minor changes
 
-- FloatingPicker: add show/hide picker call backs, fix double resolve when queryString is the same 
+- FloatingPicker: add show/hide picker call backs, fix double resolve when queryString is the same
 
 ### Patches
 
@@ -1150,4 +1557,3 @@ Wed, 16 Aug 2017 10:11:43 GMT
 Tue, 15 Aug 2017 10:19:22 GMT
 
 *Initial release*
-

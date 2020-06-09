@@ -13,13 +13,13 @@ const eventMapping = {
   touch: {
     start: 'touchstart',
     move: 'touchmove',
-    stop: 'touchend'
+    stop: 'touchend',
   },
   mouse: {
     start: 'mousedown',
     move: 'mousemove',
-    stop: 'mouseup'
-  }
+    stop: 'mouseup',
+  },
 };
 
 // These are needed so that we can generalize the events
@@ -37,7 +37,7 @@ export class DraggableZone extends React.Component<IDraggableZoneProps, IDraggab
     this.state = {
       isDragging: false,
       position: this.props.position || { x: 0, y: 0 },
-      lastPosition: undefined
+      lastPosition: undefined,
     };
   }
 
@@ -52,7 +52,7 @@ export class DraggableZone extends React.Component<IDraggableZoneProps, IDraggab
   }
 
   public render() {
-    const child = React.Children.only(this.props.children);
+    const child: any = React.Children.only(this.props.children);
     const { props } = child;
     const { position } = this.props;
     const { position: statePosition, isDragging } = this.state;
@@ -67,18 +67,18 @@ export class DraggableZone extends React.Component<IDraggableZoneProps, IDraggab
     return React.cloneElement(child, {
       style: {
         ...props.style,
-        transform: `translate(${x}px, ${y}px)`
+        transform: `translate(${x}px, ${y}px)`,
       },
       className: getClassNames(props.className, this.state.isDragging).root,
       onMouseDown: this._onMouseDown,
       onMouseUp: this._onMouseUp,
       onTouchStart: this._onTouchStart,
-      onTouchEnd: this._onTouchEnd
+      onTouchEnd: this._onTouchEnd,
     });
   }
 
   private _onMouseDown = (event: MouseTouchEvent<HTMLElement>) => {
-    const onMouseDown = React.Children.only(this.props.children).props.onMouseDown;
+    const onMouseDown = (React.Children.only(this.props.children) as any).props.onMouseDown;
     if (onMouseDown) {
       onMouseDown(event);
     }
@@ -88,7 +88,7 @@ export class DraggableZone extends React.Component<IDraggableZoneProps, IDraggab
   };
 
   private _onMouseUp = (event: MouseTouchEvent<HTMLElement>) => {
-    const onMouseUp = React.Children.only(this.props.children).props.onMouseUp;
+    const onMouseUp = (React.Children.only(this.props.children) as any).props.onMouseUp;
     if (onMouseUp) {
       onMouseUp(event);
     }
@@ -98,7 +98,7 @@ export class DraggableZone extends React.Component<IDraggableZoneProps, IDraggab
   };
 
   private _onTouchStart = (event: MouseTouchEvent<HTMLElement>) => {
-    const onTouchStart = React.Children.only(this.props.children).props.onTouchStart;
+    const onTouchStart = (React.Children.only(this.props.children) as any).props.onTouchStart;
     if (onTouchStart) {
       onTouchStart(event);
     }
@@ -108,7 +108,7 @@ export class DraggableZone extends React.Component<IDraggableZoneProps, IDraggab
   };
 
   private _onTouchEnd = (event: MouseTouchEvent<HTMLElement>) => {
-    const onTouchEnd = React.Children.only(this.props.children).props.onTouchEnd;
+    const onTouchEnd = (React.Children.only(this.props.children) as any).props.onTouchEnd;
     if (onTouchEnd) {
       onTouchEnd(event);
     }
@@ -127,7 +127,8 @@ export class DraggableZone extends React.Component<IDraggableZoneProps, IDraggab
     // if the target does match the preventDragSelector, bail out
     if (
       (this.props.handleSelector && !this._matchesSelector(event.target as HTMLElement, this.props.handleSelector)) ||
-      (this.props.preventDragSelector && this._matchesSelector(event.target as HTMLElement, this.props.preventDragSelector))
+      (this.props.preventDragSelector &&
+        this._matchesSelector(event.target as HTMLElement, this.props.preventDragSelector))
     ) {
       return;
     }
@@ -147,14 +148,14 @@ export class DraggableZone extends React.Component<IDraggableZoneProps, IDraggab
 
     this.setState({
       isDragging: true,
-      lastPosition: position
+      lastPosition: position,
     });
 
     // hook up the appropriate mouse/touch events to the body to ensure
     // smooth dragging
     this._events = [
-      on(document.body, this._currentEventType.move, this._onDrag),
-      on(document.body, this._currentEventType.stop, this._onDragStop)
+      on(document.body, this._currentEventType.move, this._onDrag, true /* use capture phase */),
+      on(document.body, this._currentEventType.stop, this._onDragStop, true /* use capture phase */),
     ];
   };
 
@@ -177,7 +178,7 @@ export class DraggableZone extends React.Component<IDraggableZoneProps, IDraggab
 
     this.setState({
       position: updatedPosition,
-      lastPosition: position
+      lastPosition: position,
     });
   };
 
@@ -196,14 +197,14 @@ export class DraggableZone extends React.Component<IDraggableZoneProps, IDraggab
     // Set dragging to false and reset the lastPosition
     this.setState({
       isDragging: false,
-      lastPosition: undefined
+      lastPosition: undefined,
     });
 
     this.props.onStop && this.props.onStop(event, baseDragData);
 
     if (this.props.position) {
       this.setState({
-        position: this.props.position
+        position: this.props.position,
       });
     }
 
@@ -226,7 +227,7 @@ export class DraggableZone extends React.Component<IDraggableZoneProps, IDraggab
     const eventToGetOffset = touchObj || event;
     return {
       x: eventToGetOffset.clientX,
-      y: eventToGetOffset.clientY
+      y: eventToGetOffset.clientY,
     };
   }
 
@@ -263,7 +264,8 @@ export class DraggableZone extends React.Component<IDraggableZoneProps, IDraggab
     }
 
     /* tslint:disable-next-line:no-string-literal */
-    const matchesSelectorFn: Function = element.matches || element.webkitMatchesSelector || element['msMatchesSelector'] /* for IE */;
+    const matchesSelectorFn: Function =
+        element.matches || element.webkitMatchesSelector || (element as any).msMatchesSelector /* for IE */;
 
     if (!matchesSelectorFn) {
       return false;
@@ -303,33 +305,33 @@ export class DraggableZone extends React.Component<IDraggableZoneProps, IDraggab
       return {
         delta: { x: 0, y: 0 },
         lastPosition: position,
-        position
+        position,
       };
     }
 
     return {
       delta: {
         x: position.x - lastPosition.x,
-        y: position.y - lastPosition.y
+        y: position.y - lastPosition.y,
       },
       lastPosition,
-      position
+      position,
     };
   }
 
   /**
    * Creates an updated DragData based off the current position and given baseDragData
-   * @param baseDragData The base DragData (gotten from _createDragDataFromPosition) used to calculate the updated positions
+   * @param baseDragData The base DragData (from _createDragDataFromPosition) used to calculate the updated positions
    */
   private _createUpdatedDragData(baseDragData: IDragData): IDragData {
     const { position } = this.state;
     return {
       position: {
         x: position.x + baseDragData.delta.x,
-        y: position.y + baseDragData.delta.y
+        y: position.y + baseDragData.delta.y,
       },
       delta: baseDragData.delta,
-      lastPosition: position
+      lastPosition: position,
     };
   }
 }

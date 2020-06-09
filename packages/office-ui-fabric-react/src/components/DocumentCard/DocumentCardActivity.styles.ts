@@ -1,4 +1,4 @@
-import { getGlobalClassNames, FontSizes, FontWeights } from '../../Styling';
+import { getGlobalClassNames, FontWeights } from '../../Styling';
 import { IDocumentCardActivityStyleProps, IDocumentCardActivityStyles } from './DocumentCardActivity.types';
 
 const VERTICAL_PADDING = 8;
@@ -13,12 +13,12 @@ export const DocumentCardActivityGlobalClassNames = {
   name: 'ms-DocumentCardActivity-name',
   activity: 'ms-DocumentCardActivity-activity',
   avatars: 'ms-DocumentCardActivity-avatars',
-  avatar: 'ms-DocumentCardActivity-avatar'
+  avatar: 'ms-DocumentCardActivity-avatar',
 };
 
 export const getStyles = (props: IDocumentCardActivityStyleProps): IDocumentCardActivityStyles => {
   const { theme, className, multiplePeople } = props;
-  const { palette } = theme;
+  const { palette, fonts } = theme;
 
   const classNames = getGlobalClassNames(DocumentCardActivityGlobalClassNames, theme);
 
@@ -28,16 +28,16 @@ export const getStyles = (props: IDocumentCardActivityStyleProps): IDocumentCard
       multiplePeople && classNames.multiplePeople,
       {
         padding: `${VERTICAL_PADDING}px ${HORIZONTAL_PADDING}px`,
-        position: 'relative'
+        position: 'relative',
       },
-      className
+      className,
     ],
     avatars: [
       classNames.avatars,
       {
         marginLeft: '-2px', // Avatars sit outside of the usual padding for visual balance
-        height: '32px'
-      }
+        height: '32px',
+      },
     ],
     avatar: [
       classNames.avatar,
@@ -58,13 +58,13 @@ export const getStyles = (props: IDocumentCardActivityStyleProps): IDocumentCard
             right: '-1px',
             bottom: '-1px',
             border: `2px solid ${palette.white}`, // Match the background of the card
-            borderRadius: '50%'
+            borderRadius: '50%',
           },
           ':nth-of-type(2)': multiplePeople && {
-            marginLeft: '-16px'
-          }
-        }
-      }
+            marginLeft: '-16px',
+          },
+        },
+      },
     ],
     details: [
       classNames.details,
@@ -75,35 +75,35 @@ export const getStyles = (props: IDocumentCardActivityStyleProps): IDocumentCard
         height: IMAGE_SIZE,
         position: 'absolute',
         top: VERTICAL_PADDING,
-        width: `calc(100% - ${HORIZONTAL_PADDING + IMAGE_SIZE + PERSONA_TEXT_GUTTER + HORIZONTAL_PADDING}px)`
-      }
+        width: `calc(100% - ${HORIZONTAL_PADDING + IMAGE_SIZE + PERSONA_TEXT_GUTTER + HORIZONTAL_PADDING}px)`,
+      },
     ],
     name: [
       classNames.name,
       {
         display: 'block',
-        fontSize: FontSizes.small,
+        fontSize: fonts.small.fontSize,
         lineHeight: '15px',
         height: '15px',
         overflow: 'hidden',
         textOverflow: 'ellipsis',
         whiteSpace: 'nowrap',
         color: palette.neutralPrimary,
-        fontWeight: FontWeights.semibold
-      }
+        fontWeight: FontWeights.semibold,
+      },
     ],
     activity: [
       classNames.activity,
       {
         display: 'block',
-        fontSize: FontSizes.small,
+        fontSize: fonts.small.fontSize,
         lineHeight: '15px',
         height: '15px',
         overflow: 'hidden',
         textOverflow: 'ellipsis',
         whiteSpace: 'nowrap',
-        color: palette.neutralSecondary
-      }
-    ]
+        color: palette.neutralSecondary,
+      },
+    ],
   };
 };

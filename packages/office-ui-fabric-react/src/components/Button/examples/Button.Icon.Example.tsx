@@ -1,39 +1,50 @@
 import * as React from 'react';
-import { css, classNamesFunction, IconButton, IButtonProps, IStyle } from 'office-ui-fabric-react';
+import { IconButton, IIconProps, IContextualMenuProps, Stack, Link } from 'office-ui-fabric-react';
 
-type IButtonBasicExampleStyleProps = {};
-
-interface IButtonBasicExampleStyles {
-  example?: IStyle;
+export interface IButtonExampleProps {
+  // These are set based on the toggles shown above the examples (not needed in real code)
+  disabled?: boolean;
+  checked?: boolean;
 }
 
-const exampleStyles: IButtonBasicExampleStyles = {
-  example: [
-    'ms-BasicButtonsExample',
+const emojiIcon: IIconProps = { iconName: 'Emoji2' };
+
+const menuProps: IContextualMenuProps = {
+  items: [
     {
-      selectors: {
-        '.ms-Button': {
-          margin: '10px 0'
-        }
-      }
-    }
-  ]
+      key: 'emailMessage',
+      text: 'Email message',
+      iconProps: { iconName: 'Mail' },
+    },
+    {
+      key: 'calendarEvent',
+      text: 'Calendar event',
+      iconProps: { iconName: 'Calendar' },
+    },
+  ],
+  directionalHintFixed: true,
 };
 
-const getClassNames = classNamesFunction<IButtonBasicExampleStyleProps, IButtonBasicExampleStyles>();
-const classNames = getClassNames(exampleStyles, {});
+export const ButtonIconExample: React.FunctionComponent<IButtonExampleProps> = props => {
+  const { disabled, checked } = props;
 
-export class ButtonIconExample extends React.Component<IButtonProps> {
-  public render(): JSX.Element {
-    const { disabled, checked } = this.props;
-
-    return (
-      <div className={css(classNames.example)}>
-        <IconButton disabled={disabled} checked={checked} iconProps={{ iconName: 'Emoji2' }} title="Emoji" ariaLabel="Emoji" />
-        <p>
-          For a list of Icons, visit our <a href="https://developer.microsoft.com/en-us/fabric#/styles/icons">Icon documentation</a>.
-        </p>
-      </div>
-    );
-  }
-}
+  return (
+    <div>
+      <Stack tokens={{ childrenGap: 8 }} horizontal>
+        <IconButton iconProps={emojiIcon} title="Emoji" ariaLabel="Emoji" disabled={disabled} checked={checked} />
+        <IconButton
+          menuProps={menuProps}
+          iconProps={emojiIcon}
+          title="Emoji"
+          ariaLabel="Emoji"
+          disabled={disabled}
+          checked={checked}
+        />
+      </Stack>
+      <p>
+        For a list of Icons, visit our{' '}
+        <Link href="https://developer.microsoft.com/en-us/fluentui#/styles/icons">Icon documentation</Link>.
+      </p>
+    </div>
+  );
+};

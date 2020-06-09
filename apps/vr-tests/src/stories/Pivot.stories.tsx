@@ -15,12 +15,14 @@ storiesOf('Pivot', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </Screener>,
   )
   .addStory('Root', () => (
     <Pivot>
-      <PivotItem headerText="My Files">Content</PivotItem>
-      <PivotItem headerText="Recent" />
+      <PivotItem headerText="My Files" itemIcon="Globe">
+        Content
+      </PivotItem>
+      <PivotItem headerText="Recent" itemIcon="Globe" itemCount={1} />
       <PivotItem headerText="Shared with me" />
     </Pivot>
   ))
@@ -36,7 +38,7 @@ storiesOf('Pivot', module)
         <PivotItem headerText="Shared with me" itemIcon="Ringer" itemCount={1} />
       </Pivot>
     ),
-    { rtl: true }
+    { rtl: true },
   )
   .addStory('Large', () => (
     <Pivot linkSize={PivotLinkSize.large}>
@@ -55,7 +57,7 @@ storiesOf('Pivot', module)
         <PivotItem headerText="Biz" />
       </Pivot>
     ),
-    { rtl: true }
+    { rtl: true },
   )
   .addStory('Tabs large', () => (
     <Pivot linkFormat={PivotLinkFormat.tabs} linkSize={PivotLinkSize.large}>

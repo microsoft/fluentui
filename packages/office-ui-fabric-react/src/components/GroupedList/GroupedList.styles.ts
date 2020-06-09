@@ -1,16 +1,16 @@
 import { IGroupedListStyleProps, IGroupedListStyles } from './GroupedList.types';
-import { getGlobalClassNames, FontSizes, AnimationVariables } from '../../Styling';
+import { getGlobalClassNames, AnimationVariables } from '../../Styling';
 
 const GlobalClassNames = {
   root: 'ms-GroupedList',
   compact: 'ms-GroupedList--Compact',
   group: 'ms-GroupedList-group',
   link: 'ms-Link',
-  listCell: 'ms-List-cell'
+  listCell: 'ms-List-cell',
 };
 
 const beziers = {
-  easeInOutSine: 'cubic-bezier(0.445, 0.050, 0.550, 0.950)'
+  easeInOutSine: 'cubic-bezier(0.445, 0.050, 0.550, 0.950)',
 };
 
 export const getStyles = (props: IGroupedListStyleProps): IGroupedListStyles => {
@@ -21,38 +21,35 @@ export const getStyles = (props: IGroupedListStyleProps): IGroupedListStyles => 
   return {
     root: [
       classNames.root,
-      theme.fonts.medium,
+      theme.fonts.small,
       {
         position: 'relative',
-        fontSize: FontSizes.small,
         selectors: {
           [`.${classNames.listCell}`]: {
-            minHeight: 38 // be consistent with DetailsList styles
-          }
-        }
+            minHeight: 38, // be consistent with DetailsList styles
+          },
+        },
       },
       compact && [
         classNames.compact,
         {
           selectors: {
             [`.${classNames.listCell}`]: {
-              minHeight: 32 // be consistent with DetailsList styles
-            }
-          }
-        }
+              minHeight: 32, // be consistent with DetailsList styles
+            },
+          },
+        },
       ],
-      className
+      className,
     ],
     group: [
       classNames.group,
       {
-        transition: `background-color ${AnimationVariables.durationValue2} ${beziers.easeInOutSine}`
-      }
+        transition: `background-color ${AnimationVariables.durationValue2} ${beziers.easeInOutSine}`,
+      },
     ],
-    groupIsDropping: [
-      {
-        backgroundColor: palette.neutralLight
-      }
-    ]
+    groupIsDropping: {
+      backgroundColor: palette.neutralLight,
+    },
   };
 };

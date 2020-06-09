@@ -1,13 +1,14 @@
+import * as React from 'react';
 import { IStyle, ITheme } from '../../Styling';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { IPoint, IRectangle, IStyleFunctionOrObject } from '../../Utilities';
+import { Point, IRectangle, IStyleFunctionOrObject } from '../../Utilities';
 import { ICalloutPositionedInfo } from '../../utilities/positioning';
 import { ILayerProps } from '../../Layer';
 
 /**
  * {@docCategory Callout}
  */
-export type Target = Element | string | MouseEvent | IPoint | null;
+export type Target = Element | string | MouseEvent | Point | null | React.RefObject<Element>;
 
 /**
  * {@docCategory Callout}
@@ -28,7 +29,9 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
 
   /**
    * How the element should be positioned in RTL layouts.
-   * If not specified, a mirror of `directionalHint` will be used instead
+   * If not specified, a mirror of the `directionalHint` alignment edge will be used instead.
+   * This means that `DirectionalHint.BottomLeft` will change to `DirectionalHint.BottomRight` but
+   * `DirectionalHint.LeftAuto` will not change.
    */
   directionalHintForRTL?: DirectionalHint;
 
@@ -63,9 +66,9 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
   backgroundColor?: string;
 
   /**
-   * The bounding rectangle for which  the contextual menu can appear in.
+   * The bounding rectangle (or callback that returns a rectangle) for which  the contextual menu can appear in.
    */
-  bounds?: IRectangle;
+  bounds?: IRectangle | ((target?: Target, targetWindow?: Window) => IRectangle | undefined);
 
   /**
    * The minimum distance the callout will be away from the edge of the screen.
@@ -138,6 +141,9 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
 
   /**
    * CSS style to apply to the callout.
+   *
+   * If you set `overflowY` in this object, it provides a performance optimization by preventing
+   * Popup (underlying component of Callout) from calculating whether it needs a scroll bar.
    */
   style?: React.CSSProperties;
 
@@ -226,6 +232,32 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
    * once the callout is visible.
    */
   hidden?: boolean;
+
+  /**
+   * If true, the component will be updated even when hidden=true.
+   * Note that this would consume resources to update even though
+   * nothing is being shown to the user.
+   * This might be helpful though if your updates are small and you want the
+   * callout to be revealed fast to the user when hidden is set to false.
+   */
+  shouldUpdateWhenHidden?: boolean;
+
+  /**
+   * If true, when this component is unmounted, focus will be restored to the element that had focus when the component
+   * first mounted.
+   * @defaultvalue true
+   * @deprecated use onRestoreFocus callback instead
+   */
+  shouldRestoreFocus?: boolean;
+
+  /**
+   * Called when the component is unmounting, and focus needs to be restored.
+   * Argument passed down contains two variables, the element that the underlying
+   * popup believes focus should go to * and whether or not the popup currently
+   * contains focus. If this is provided, focus will not be restored automatically,
+   * you'll need to call originalElement.focus()
+   */
+  onRestoreFocus?: (options: { originalElement?: HTMLElement | Window; containsFocus: boolean }) => void;
 }
 
 /**

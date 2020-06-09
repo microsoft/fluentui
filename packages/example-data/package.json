@@ -1,0 +1,31 @@
+{
+  "name": "@uifabric/example-data",
+  "version": "7.0.15",
+  "description": "Data generators for Fluent UI React examples.",
+  "main": "lib-commonjs/index.js",
+  "module": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/fluentui"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "just-scripts build",
+    "bundle": "just-scripts bundle",
+    "lint": "just-scripts lint",
+    "test": "just-scripts test",
+    "clean": "just-scripts clean",
+    "code-style": "just-scripts code-style",
+    "update-api": "just-scripts update-api",
+    "just": "just-scripts"
+  },
+  "devDependencies": {
+    "@types/webpack-env": "1.15.1",
+    "@uifabric/build": "^7.0.0",
+    "@uifabric/tslint-rules": "^7.2.1"
+  },
+  "dependencies": {
+    "tslib": "^1.10.0"
+  }
+}

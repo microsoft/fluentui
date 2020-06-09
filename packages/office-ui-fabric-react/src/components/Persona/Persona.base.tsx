@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, divProperties, getNativeProps, IRenderFunction } from '../../Utilities';
+import { warnDeprecations, classNamesFunction, divProperties, getNativeProps, IRenderFunction } from '../../Utilities';
 import { TooltipHost, TooltipOverflowMode, DirectionalHint } from '../../Tooltip';
 import { PersonaCoin } from './PersonaCoin/PersonaCoin';
 import {
@@ -8,26 +8,28 @@ import {
   IPersonaStyles,
   PersonaPresence as PersonaPresenceEnum,
   PersonaSize,
-  IPersonaCoinProps
+  IPersonaCoinProps,
 } from './Persona.types';
 
 const getClassNames = classNamesFunction<IPersonaStyleProps, IPersonaStyles>();
 
 /**
  * Persona with no default styles.
- * [Use the `styles` API to add your own styles.](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Styling)
+ * [Use the `styles` API to add your own styles.](https://github.com/microsoft/fluentui/wiki/Styling)
  */
-export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
+export class PersonaBase extends React.Component<IPersonaProps, {}> {
   public static defaultProps: IPersonaProps = {
     size: PersonaSize.size48,
     presence: PersonaPresenceEnum.none,
-    imageAlt: ''
+    imageAlt: '',
   };
 
   constructor(props: IPersonaProps) {
     super(props);
 
-    this._warnDeprecations({ primaryText: 'text' });
+    if (process.env.NODE_ENV !== 'production') {
+      warnDeprecations('Persona', props, { primaryText: 'text' });
+    }
   }
 
   public render(): JSX.Element {
@@ -42,7 +44,8 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
       onRenderOptionalText = _onRenderOptionalText,
       onRenderPrimaryText = _onRenderPrimaryText,
       onRenderSecondaryText = _onRenderSecondaryText,
-      onRenderTertiaryText = _onRenderTertiaryText
+      onRenderTertiaryText = _onRenderTertiaryText,
+      onRenderPersonaCoin = this._onRenderPersonaCoin,
     } = this.props;
     const size = this.props.size as PersonaSize;
 
@@ -60,13 +63,17 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
       imageShouldStartVisible,
       imageUrl,
       initialsColor,
+      isOutOfOffice,
       onPhotoLoadingStateChange,
+      // tslint:disable-next-line:deprecation
       onRenderCoin,
       onRenderInitials,
       presence,
+      presenceTitle,
+      presenceColors,
       showInitialsUntilImageLoads,
       showSecondaryText,
-      theme
+      theme,
     } = this.props;
 
     const personaCoinProps: IPersonaCoinProps = {
@@ -83,10 +90,13 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
       onRenderCoin,
       onRenderInitials,
       presence,
+      presenceTitle,
       showInitialsUntilImageLoads,
       size,
       text: this._getText(),
-      ...coinProps
+      isOutOfOffice,
+      presenceColors,
+      ...coinProps,
     };
 
     const classNames = getClassNames(styles, {
@@ -94,10 +104,10 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
       className,
       showSecondaryText,
       presence,
-      size
+      size,
     });
 
-    const divProps = getNativeProps(this.props, divProperties);
+    const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties);
     const personaDetails = (
       <div className={classNames.details}>
         {this._renderElement(classNames.primaryText, onRenderPrimaryText, _onRenderPrimaryText)}
@@ -109,9 +119,20 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
     );
 
     return (
-      <div {...divProps} className={classNames.root} style={coinSize ? { height: coinSize, minWidth: coinSize } : undefined}>
-        <PersonaCoin {...personaCoinProps} />
-        {(!hidePersonaDetails || (size === PersonaSize.size10 || size === PersonaSize.tiny)) && personaDetails}
+      <div
+        {...divProps}
+        className={classNames.root}
+        style={coinSize ? { height: coinSize, minWidth: coinSize } : undefined}
+      >
+        {onRenderPersonaCoin(personaCoinProps, this._onRenderPersonaCoin)}
+        {// tslint:disable:deprecation
+        (!hidePersonaDetails ||
+          size === PersonaSize.size8 ||
+          size === PersonaSize.size10 ||
+          size === PersonaSize.tiny) &&
+          personaDetails
+        // tslint:enable:deprecation
+        }
       </div>
     );
   }
@@ -126,7 +147,7 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
   private _renderElement(
     classNames: string,
     renderFunction: IRenderFunction<IPersonaProps> | undefined,
-    defaultRenderFunction: IRenderFunction<IPersonaProps> | undefined
+    defaultRenderFunction: IRenderFunction<IPersonaProps> | undefined,
   ): JSX.Element {
     return (
       <div dir="auto" className={classNames}>
@@ -139,6 +160,7 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
    * Deprecation helper for getting text.
    */
   private _getText(): string {
+    // tslint:disable-next-line:deprecation
     return this.props.text || this.props.primaryText || '';
   }
 
@@ -153,11 +175,19 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
       ? (): JSX.Element => {
           // default onRender behaviour
           return (
-            <TooltipHost content={text} overflowMode={TooltipOverflowMode.Parent} directionalHint={DirectionalHint.topLeftEdge}>
+            <TooltipHost
+              content={text}
+              overflowMode={TooltipOverflowMode.Parent}
+              directionalHint={DirectionalHint.topLeftEdge}
+            >
               {text}
             </TooltipHost>
           );
         }
       : undefined;
   }
+
+  private _onRenderPersonaCoin = (props: IPersonaCoinProps): JSX.Element | null => {
+    return <PersonaCoin {...props} />;
+  };
 }

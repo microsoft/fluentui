@@ -5,12 +5,12 @@ module.exports = resources.createServeConfig({
   entry: './src/demo/index.tsx',
 
   output: {
-    filename: 'demo-app.js'
+    filename: 'demo-app.js',
   },
 
   externals: {
     react: 'React',
-    'react-dom': 'ReactDOM'
+    'react-dom': 'ReactDOM',
   },
 
   resolve: {
@@ -26,7 +26,7 @@ module.exports = resources.createServeConfig({
       'office-ui-fabric-react/src': path.resolve(__dirname, '../../packages/office-ui-fabric-react/src'),
       '@uifabric/theme-samples$': path.join(__dirname, '../../packages/theme-samples/src'),
       'Props.ts.js': 'Props',
-      'Example.tsx.js': 'Example'
-    }
-  }
+      'Example.tsx.js': 'Example',
+    },
+  },
 });

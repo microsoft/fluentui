@@ -24,6 +24,19 @@ $usageListPadding: 24px;
       color: $linkHoveredColor;
     }
   }
+
+  :global(.ms-MessageBar) a:global(.ms-Link) {
+    // Link colors need to be darker inside MessageBar
+    color: $ms-color-themeDark;
+    &:link {
+      color: $ms-color-themeDark;
+    }
+    &:active,
+    &:hover,
+    &:active:hover {
+      color: $linkHoveredColor;
+    }
+  }
 }
 
 .section {
@@ -35,7 +48,8 @@ $usageListPadding: 24px;
   position: relative;
   opacity: 0;
   transform: translate3d(0, 48px, 0);
-  transition: transform $ms-motion-duration-3 $ms-motion-timing-decelerate, opacity $ms-motion-duration-3 $ms-motion-timing-decelerate 0.05s;
+  transition: transform $ms-motion-duration-3 $ms-motion-timing-decelerate,
+    opacity $ms-motion-duration-3 $ms-motion-timing-decelerate 0.05s;
 
   &:last-child {
     margin-bottom: 0;
@@ -181,6 +195,9 @@ $usageListPadding: 24px;
 
 .subHeading {
   @include ms-fontSize-24;
+  // These headings are programmatically focusable to simulate jumping to an anchor,
+  // but they shouldn't have a focus outline
+  outline: none;
 }
 
 .smallSubHeading {

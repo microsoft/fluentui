@@ -9,11 +9,8 @@
 
   .dark &,
   .dark.selected {
-    color: $ms-color-white;
-  }
-
-  .isFluent & {
-    color: $ms-color-yellowDark;
+    // color must be white irrespective of theme
+    color: #fff;
   }
 
   &:first-child {

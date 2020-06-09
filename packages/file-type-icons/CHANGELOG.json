@@ -2,6 +2,601 @@
   "name": "@uifabric/file-type-icons",
   "entries": [
     {
+      "date": "Fri, 29 May 2020 12:35:34 GMT",
+      "tag": "@uifabric/file-type-icons_v7.3.0",
+      "version": "7.3.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add special folder icon types for file-type-icons.",
+            "author": "taenri@microsoft.com",
+            "commit": "cfcf5178fb8304109274a68121c7762a91f55d5b",
+            "package": "@uifabric/file-type-icons"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 25 May 2020 12:38:22 GMT",
+      "tag": "@uifabric/file-type-icons_v7.2.49",
+      "version": "7.2.49",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add empty alt text for filetype icon img",
+            "author": "erabelle@microsoft.com",
+            "commit": "eb1750d8c3f1f0e5a6c1506b5b16261454f7b451",
+            "package": "@uifabric/file-type-icons"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 15 May 2020 00:07:39 GMT",
+      "tag": "@uifabric/file-type-icons_v7.2.44",
+      "version": "7.2.44",
+      "comments": {
+        "patch": [
+          {
+            "comment": "adding 'pbiapp' entry in file type icon mapping file",
+            "author": "caperez@microsoft.com",
+            "commit": "e3b694db919a39d5369381d43f601eeedf06fbef",
+            "package": "@uifabric/file-type-icons"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 07 May 2020 01:06:55 GMT",
+      "tag": "@uifabric/file-type-icons_v7.2.40",
+      "version": "7.2.40",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Addressing commonjs imports.",
+            "author": "dzearing@microsoft.com",
+            "commit": "f4a995d4166c7812976b13c6638fb1ae32a8667d",
+            "package": "@uifabric/file-type-icons"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 06 May 2020 12:32:22 GMT",
+      "tag": "@uifabric/file-type-icons_v7.2.39",
+      "version": "7.2.39",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Using a fresh version string to bust the CDN cache. I tested v1 and it brings back all the right icons.",
+            "author": "caperez@microsoft.com",
+            "commit": "8c8c394e5097b81602df3d40c6fc19cf387fc451",
+            "package": "@uifabric/file-type-icons"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Apr 2020 04:01:45 GMT",
+      "tag": "@uifabric/file-type-icons_v7.2.30",
+      "version": "7.2.30",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Readme: Remove section about fluent icons (should be default now); Fabric=>Fluent wording updates",
+            "author": "elcraig@microsoft.com",
+            "commit": "9e3c7c7d4b92e132820cdbcd61a667829c712ecb",
+            "package": "@uifabric/file-type-icons"
+          },
+          {
+            "comment": "Improving the icon filetype mapping file to cover even more extensions, including those already served by Teams mobile app",
+            "author": "caperez@microsoft.com",
+            "commit": "c847450db51500f13847542b8f4c89dd277bb2bb",
+            "package": "@uifabric/file-type-icons"
+          }
+        ],
+        "none": [
+          {
+            "comment": "sync package version",
+            "author": "xgao@microsoft.com",
+            "commit": "6f39958352207acb3029458503db0969a4359806",
+            "package": "@uifabric/file-type-icons"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 Apr 2020 12:24:31 GMT",
+      "tag": "@uifabric/file-type-icons_v7.2.28",
+      "version": "7.2.28",
+      "comments": {
+        "none": [
+          {
+            "comment": "chore: bump @types/react",
+            "author": "olfedias@microsoft.com",
+            "commit": "1c25191a3a6a1b6e8a0aca3c7cf7f3a629171738"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 25 Mar 2020 12:30:04 GMT",
+      "tag": "@uifabric/file-type-icons_v7.2.26",
+      "version": "7.2.26",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Changing references of Fabric to Fluent",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "3ec9a0efa90dc462104e717dc0f9c41e1b4fcd60"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 23 Mar 2020 12:28:29 GMT",
+      "tag": "@uifabric/file-type-icons_v7.2.25",
+      "version": "7.2.25",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Replace OfficeDev/office-ui-fabric-react with microsoft/fluentui",
+            "author": "elcraig@microsoft.com",
+            "commit": "94a0cc4f2c7129b66cb69159889f0ac95e8c88ee"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 19 Mar 2020 12:29:37 GMT",
+      "tag": "@uifabric/file-type-icons_v7.2.24",
+      "version": "7.2.24",
+      "comments": {
+        "none": [
+          {
+            "comment": "Run prettier: 120 line length, trailing commas",
+            "author": "elcraig@microsoft.com",
+            "commit": "b55b99b22a9972f79dd9b0c45dcb983233b2c157"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 17 Feb 2020 17:06:50 GMT",
+      "tag": "@uifabric/file-type-icons_v7.2.13",
+      "version": "7.2.13",
+      "comments": {
+        "none": [
+          {
+            "comment": "upgrading types for webpack-env",
+            "author": "kchau@microsoft.com",
+            "commit": "7d071a411865930641727e54da85d2d601c5722b"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 11 Feb 2020 18:37:59 GMT",
+      "tag": "@uifabric/file-type-icons_v7.2.10",
+      "version": "7.2.10",
+      "comments": {
+        "none": [
+          {
+            "comment": "fixing released versions",
+            "author": "kchau@microsoft.com",
+            "commit": "207521eb85f200e2cda239d06eacdf5f49efdadc"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 07 Feb 2020 12:41:31 GMT",
+      "tag": "@uifabric/file-type-icons_v7.2.8",
+      "version": "7.2.8",
+      "comments": {
+        "none": [
+          {
+            "comment": "Remove unused config files",
+            "author": "elcraig@microsoft.com",
+            "commit": "33b1c3474b1b8e899a1c24a4c1ee973908686df1"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 31 Jan 2020 19:00:10 GMT",
+      "tag": "@uifabric/file-type-icons_v7.2.7",
+      "version": "7.2.7",
+      "comments": {
+        "none": [
+          {
+            "comment": "bumping versions to fix broken publishes",
+            "author": "kchau@microsoft.com",
+            "commit": "1fd6f0a289e8f0f126c9609b8e775ac0ced03b81"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 28 Jan 2020 12:43:24 GMT",
+      "tag": "@uifabric/file-type-icons_v7.2.6",
+      "version": "7.2.6",
+      "comments": {
+        "none": [
+          {
+            "comment": "Rename all just configs to TS.",
+            "author": "jagore@microsoft.com",
+            "commit": "373c657b0bf9bf5d8e8433d8df8ccdccaec89e45"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 17 Jan 2020 02:32:17 GMT",
+      "tag": "@uifabric/file-type-icons_v7.2.4",
+      "version": "7.2.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update tslib minver to first version containing __spreadArrays helper due to changes in how TS emits spreads.",
+            "author": "jagore@microsoft.com",
+            "commit": "52dc239bf89dbe76daa5f4776ee4368957938a1a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 15 Jan 2020 00:21:25 GMT",
+      "tag": "@uifabric/file-type-icons_v7.2.3",
+      "version": "7.2.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Make news icon available",
+            "author": "hjorturj@microsoft.com",
+            "commit": "3b1679c670b59956d04d61306fca5897cd6fdc2c"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 08 Jan 2020 17:02:57 GMT",
+      "tag": "@uifabric/file-type-icons_v7.2.2",
+      "version": "7.2.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "Break up build task into build, bundle, test and lint tasks. Add parallelization pipeline using new tasks.",
+            "author": "jagore@microsoft.com",
+            "commit": "f1f07695f5d18c2c975eef382c5b777d7ccb52e2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 31 Dec 2019 12:31:45 GMT",
+      "tag": "@uifabric/file-type-icons_v7.2.2",
+      "version": "7.2.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "added stream icon code to getFileIconProps",
+            "author": "azra.bandukwala@microsoft.com",
+            "commit": "44d0a3ed65bbcb6f2615ccf5ccb9a68f47e86524"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 17 Dec 2019 12:29:42 GMT",
+      "tag": "@uifabric/file-type-icons_v7.2.1",
+      "version": "7.2.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Refining typography and signal icon on top of Folder Icon, filetype mapping updates",
+            "author": "caperez@microsoft.com",
+            "commit": "4d72a330013373ac60292c9cb3ef8787ad2fd408"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 06 Dec 2019 12:33:21 GMT",
+      "tag": "@uifabric/file-type-icons_v7.2.0",
+      "version": "7.2.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Added stream to file icon types",
+            "author": "azbanduk@microsoft.com",
+            "commit": "9a2fa4a81f817eaf50b790dfeaade9a421965c17"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 14 Nov 2019 12:30:52 GMT",
+      "tag": "@uifabric/file-type-icons_v7.1.4",
+      "version": "7.1.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "adding a new icon size for file icons",
+            "author": "kchau@microsoft.com",
+            "commit": "2d83e4fdbf44ca25c7bcb873459bc4513c323530"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 08 Nov 2019 12:30:07 GMT",
+      "tag": "@uifabric/file-type-icons_v7.1.3",
+      "version": "7.1.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Added size 24 to file type icons",
+            "author": "v-mare@microsoft.com",
+            "commit": "3da1a1bad7fabc19d95d927ed8b2501f894eeb74"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 15 Oct 2019 12:32:28 GMT",
+      "tag": "@uifabric/file-type-icons_v7.1.2",
+      "version": "7.1.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fabric 7 mappings for filetypeicon cal/contact/fluid/pbids",
+            "author": "caperez@microsoft.com",
+            "commit": "5fbf1010f9b753c9eac17f5565efddcd998a4116"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 27 Sep 2019 12:33:04 GMT",
+      "tag": "@uifabric/file-type-icons_v7.1.1",
+      "version": "7.1.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Golden Folder grid view css cleanup for Fabric Master, rev filetype version param string",
+            "author": "caperez@microsoft.com",
+            "commit": "dcbea452fae639fd4fd48c486f3256f5309ac66e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 12 Sep 2019 12:34:15 GMT",
+      "tag": "@uifabric/file-type-icons_v7.1.0",
+      "version": "7.1.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "updating office file type to include .b",
+            "author": "caperez@microsoft.com",
+            "commit": "59b7ad45e279e234a94b9eaa493140cc9ac85eda"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 04 Sep 2019 04:09:58 GMT",
+      "tag": "@uifabric/file-type-icons_v7.0.8",
+      "version": "7.0.8",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix version file",
+            "author": "kchau@microsoft.com",
+            "commit": "fbccfaf91bfe3c77d95c614ac2cb69b7c9e1dad1"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 23 Aug 2019 12:35:28 GMT",
+      "tag": "@uifabric/file-type-icons_v7.0.7",
+      "version": "7.0.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update npmignores, delete unused jest setup files",
+            "author": "elcraig@microsoft.com",
+            "commit": "b12aaa280221562003af1e0f02aa5f3a5b008041"
+          },
+          {
+            "comment": "Fix up readme and package.json descriptions",
+            "author": "elcraig@microsoft.com",
+            "commit": "b1aef500b4b86eb5643d9f7db4c06114b5d7cc71"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 23 Jul 2019 16:33:51 GMT",
+      "tag": "@uifabric/file-type-icons_v7.0.6",
+      "version": "7.0.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Added multiple.png to FileIconType enum",
+            "author": "t-shfozd@microsoft.com",
+            "commit": "4717c9370521adb2d8afa0d4398b5ece9fb4b311"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Jul 2019 18:58:57 GMT",
+      "tag": "@uifabric/file-type-icons_v7.0.5",
+      "version": "7.0.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom.",
+            "author": "makotom@microsoft.com",
+            "commit": "4fa2fef6380c18877fcf379648d4e52146d59812"
+          }
+        ],
+        "none": [
+          {
+            "comment": "get rid of npx",
+            "author": "kchau@microsoft.com",
+            "commit": "472993033369aa470e59197a534045c02c24e852"
+          }
+        ]
+      }
+    },
+    {
+      "version": "7.0.4",
+      "tag": "@uifabric/file-type-icons_v7.0.4",
+      "date": "Mon, 01 Jul 2019 18:51:42 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "adds react-app-polyfill",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "40245650abdfb17e9f1cd6472f3671380237bcc2"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^7.1.0` to `^7.1.1`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "7.0.3",
+      "tag": "@uifabric/file-type-icons_v7.0.3",
+      "date": "Fri, 14 Jun 2019 12:26:30 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix missing assets in production build.",
+            "author": "JD Huntington <jdh@microsoft.com>",
+            "commit": "e1bebe54dd798847060baaf4a52956c2f6dd866b"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/prettier-rules\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/tslint-rules\" from `^7.0.1` to `^7.0.2`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "7.0.2",
+      "tag": "@uifabric/file-type-icons_v7.0.2",
+      "date": "Thu, 13 Jun 2019 00:24:48 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Initial release of Fabric 7",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "9bc84498f2a95e5e822178214edce2a947adac38"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^7.0.0` to `^7.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/prettier-rules\" from `^7.0.0` to `^7.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/tslint-rules\" from `^7.0.0` to `^7.0.1`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "7.0.0",
+      "tag": "@uifabric/file-type-icons_v7.0.0",
+      "date": "Wed, 12 Jun 2019 00:42:26 GMT",
+      "comments": {
+        "major": [
+          {
+            "comment": "Update file type icons to use new Fluent assets by default",
+            "author": "JD Huntington <jdh@microsoft.com>",
+            "commit": "5e46b402ec5ecc8326451b06cf07a0ab95246f45"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Update and dedupe React deps.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "affa33fd7a25c857ad8d209349cb9e4ecc352ec6"
+          },
+          {
+            "comment": "fix mapping for OneNote notebook filetype icon",
+            "author": "Kevin Coughlin <706967+KevinTCoughlin@users.noreply.github.com>",
+            "commit": "5ffde2d052c19c1b06407f3606bd766e34a1b6e2"
+          },
+          {
+            "comment": "updating getFileTypeIconProps to make reference to correct sharepoint… ",
+            "author": "Kevin Coughlin <706967+KevinTCoughlin@users.noreply.github.com>",
+            "commit": "5ffde2d052c19c1b06407f3606bd766e34a1b6e2"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.48.1` to `^6.49.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.5.1",
+      "tag": "@uifabric/file-type-icons_v6.5.1",
+      "date": "Tue, 11 Jun 2019 12:21:35 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "adding missing filetype mappings to support LPC and other partners",
+            "author": "bigbadcapers <caperez@microsoft.com>",
+            "commit": "85d388a422847f65745b0e49f4a8eabd46553796"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.48.0` to `^6.48.1`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.5.0",
+      "tag": "@uifabric/file-type-icons_v6.5.0",
+      "date": "Wed, 05 Jun 2019 12:22:30 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "added new extensions to icon groups to support LPC and Outlook mobile",
+            "author": "Kosta Tachtevrenidis <tachtevrenidis@hotmail.com>",
+            "commit": "a0608b576f996ce322b524d2fb11541df9f7e390"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.47.6` to `^6.48.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.4.10",
       "tag": "@uifabric/file-type-icons_v6.4.10",
       "date": "Thu, 16 May 2019 05:28:50 GMT",

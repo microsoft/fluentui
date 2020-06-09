@@ -14,19 +14,19 @@ export const SliderStyles = (props: ISliderStyleProps): Partial<ISliderStyles> =
   return {
     activeSection: [
       !disabled && {
-        backgroundColor: semanticColors.controlAccent
+        backgroundColor: semanticColors.controlAccent,
       },
       disabled && {
-        background: semanticColors.disabledBodyText
-      }
+        background: semanticColors.disabledBodyText,
+      },
     ],
     inactiveSection: [
       !disabled && {
-        background: semanticColors.controlOutlineDisabled
+        background: semanticColors.controlOutlineDisabled,
       },
       disabled && {
-        background: semanticColors.disabledBodyText
-      }
+        background: semanticColors.disabledBodyText,
+      },
     ],
     slideBox: [
       !disabled && {
@@ -35,16 +35,16 @@ export const SliderStyles = (props: ISliderStyleProps): Partial<ISliderStyles> =
             {
               borderColor: semanticColors.controlAccent,
               height: SLIDER_DIAMETER,
-              width: SLIDER_DIAMETER
+              width: SLIDER_DIAMETER,
             },
             vertical && {
-              marginLeft: SLIDER_OFFSET
+              marginLeft: SLIDER_OFFSET,
             },
             !vertical && {
-              marginTop: SLIDER_OFFSET
-            }
-          ]
-        }
+              marginTop: SLIDER_OFFSET,
+            },
+          ],
+        },
       },
       disabled && {
         selectors: {
@@ -52,43 +52,43 @@ export const SliderStyles = (props: ISliderStyleProps): Partial<ISliderStyles> =
             {
               borderColor: semanticColors.disabledBodyText,
               height: SLIDER_DIAMETER,
-              width: SLIDER_DIAMETER
+              width: SLIDER_DIAMETER,
             },
             vertical && {
-              marginLeft: SLIDER_OFFSET
+              marginLeft: SLIDER_OFFSET,
             },
             !vertical && {
-              marginTop: SLIDER_OFFSET
-            }
-          ]
-        }
-      }
+              marginTop: SLIDER_OFFSET,
+            },
+          ],
+        },
+      },
     ],
     line: [
       !vertical && {
         selectors: {
           '.ms-Slider-active': {
             height: SLIDER_BOX_DIMENSION,
-            borderRadius: SLIDER_BORDER_RADIUS
+            borderRadius: SLIDER_BORDER_RADIUS,
           },
           '.ms-Slider-inactive': {
             height: SLIDER_BOX_DIMENSION,
-            borderRadius: SLIDER_BORDER_RADIUS
-          }
-        }
+            borderRadius: SLIDER_BORDER_RADIUS,
+          },
+        },
       },
       vertical && {
         selectors: {
           '.ms-Slider-active': {
             width: SLIDER_BOX_DIMENSION,
-            borderRadius: SLIDER_BORDER_RADIUS
+            borderRadius: SLIDER_BORDER_RADIUS,
           },
           '.ms-Slider-inactive': {
             width: SLIDER_BOX_DIMENSION,
-            borderRadius: SLIDER_BORDER_RADIUS
-          }
-        }
-      }
+            borderRadius: SLIDER_BORDER_RADIUS,
+          },
+        },
+      },
     ],
     valueLabel: [
       !disabled && {
@@ -98,9 +98,9 @@ export const SliderStyles = (props: ISliderStyleProps): Partial<ISliderStyles> =
         textAlign: StyleConstants.textAlignCenter,
         selectors: {
           '&.ms-Slider-value': {
-            color: semanticColors.bodyText
-          }
-        }
+            color: semanticColors.bodyText,
+          },
+        },
       },
       disabled && {
         borderColor: semanticColors.inputBorder,
@@ -110,10 +110,10 @@ export const SliderStyles = (props: ISliderStyleProps): Partial<ISliderStyles> =
         textAlign: StyleConstants.textAlignCenter,
         selectors: {
           '&.ms-Slider-value': {
-            color: semanticColors.disabledBodyText
-          }
-        }
-      }
-    ]
+            color: semanticColors.disabledBodyText,
+          },
+        },
+      },
+    ],
   };
 };

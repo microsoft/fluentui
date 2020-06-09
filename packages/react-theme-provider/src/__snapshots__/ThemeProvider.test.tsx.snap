@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ThemeProvider renders a div 1`] = `
+<div
+  style={
+    Object {
+      "--body-divider": "#eee",
+      "--body-fill": "white",
+      "--body-link": "blue",
+      "--body-subText": "#333",
+      "--body-text": "black",
+    }
+  }
+>
+  Hello
+</div>
+`;
+
+exports[`ThemeProvider renders a div with styling 1`] = `
+<div
+  style={
+    Object {
+      "--body-divider": "#eee",
+      "--body-fill": "white",
+      "--body-link": "blue",
+      "--body-subText": "#333",
+      "--body-text": "black",
+    }
+  }
+>
+  Hello
+</div>
+`;
+
+exports[`ThemeProvider renders nested themes 1`] = `
+<div
+  style={
+    Object {
+      "--body-divider": "#eee",
+      "--body-fill": "white",
+      "--body-link": "blue",
+      "--body-subText": "#333",
+      "--body-text": "black",
+    }
+  }
+>
+  <div>
+    Light theme
+  </div>
+  <div
+    style={
+      Object {
+        "--body-divider": "#eee",
+        "--body-fill": "black",
+        "--body-link": "blue",
+        "--body-subText": "#333",
+        "--body-text": "white",
+      }
+    }
+  >
+    <div>
+      Dark theme
+    </div>
+  </div>
+</div>
+`;

@@ -1,9 +1,11 @@
 ### Control name
 
-`MSDateTimePicker`
+`DateTimePicker` in Swift, `MSFDateTimePicker` in Objective-C
 
-### Library
+### Source code
 
-[UI Fabric iOS](https://github.com/OfficeDev/ui-fabric-ios)
+[DateTimePicker](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI/Date%20Time%20Pickers/DateTimePicker.swift)
 
-[Sample Code](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric.Demo/OfficeUIFabric.Demo/Demos/MSDateTimePickerDemoController.swift)
+### Sample code
+
+[DateTimePicker demo](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI.Demo/FluentUI.Demo/Demos/DateTimePickerDemoController.swift)

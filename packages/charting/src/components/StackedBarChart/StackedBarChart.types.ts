@@ -1,14 +1,26 @@
 import { ITheme, IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
+import { IOverflowSetProps } from 'office-ui-fabric-react/lib/OverflowSet';
+import { IFocusZoneProps } from '@fluentui/react-focus';
 
 export interface IStackedBarChart {}
-import { IChartProps } from './index';
+import { IChartProps, IChartDataPoint } from './index';
 
 export interface IStackedBarChartProps {
   /**
    * Data to render in the chart.
    */
   data?: IChartProps;
+
+  /**
+   * Benchmark Data to render in the chart.
+   */
+  benchmarkData?: IChartDataPoint;
+
+  /**
+   * Target Data to render in the chart.
+   */
+  targetData?: IChartDataPoint;
 
   /**
    * Width of the chart.
@@ -34,6 +46,13 @@ export interface IStackedBarChartProps {
    * @default false
    */
   hideNumberDisplay?: boolean;
+
+  /**
+   * Do not show tooltips in chart
+   *
+   * @default false
+   */
+  hideTooltip?: boolean;
 
   /**
    * Additional CSS class(es) to apply to the StackedBarChart.
@@ -69,6 +88,26 @@ export interface IStackedBarChartProps {
    * If this value is set to true the denominator will not be shown for the ratio above the chart
    */
   hideDenominator?: boolean;
+
+  /**
+   * Enable the legends to wrap lines if there is not enough space to show all legends on a single line
+   */
+  enabledLegendsWrapLines?: boolean;
+
+  /**
+   * overflow props for the legend
+   */
+  legendsOverflowProps?: Partial<IOverflowSetProps>;
+
+  /**
+   * text for overflow legends string
+   */
+  legendsOverflowText?: string;
+
+  /**
+   * focus zone props in hover card for legends
+   */
+  focusZonePropsForLegendsInHoverCard?: IFocusZoneProps;
 }
 
 export interface IStackedBarChartStyleProps {
@@ -111,6 +150,26 @@ export interface IStackedBarChartStyleProps {
    * prop to check to decide cursor type
    */
   href?: string;
+
+  /**
+   * the color for the benchmark triangle
+   */
+  benchmarkColor?: string;
+
+  /**
+   * the ratio position for the benchmark triangle
+   */
+  benchmarkRatio?: number;
+
+  /**
+   * the color for the target triangle
+   */
+  targetColor?: string;
+
+  /**
+   * the ratio position for the target triangle
+   */
+  targetRatio?: number;
 }
 
 export interface IStackedBarChartStyles {
@@ -135,21 +194,6 @@ export interface IStackedBarChartStyles {
   legendContainer: IStyle;
 
   /**
-   * Style for the legend card title displayed in the hover card
-   */
-  hoverCardTextStyles: IStyle;
-
-  /**
-   * Style for the data displayed in the hover card
-   */
-  hoverCardDataStyles: IStyle;
-
-  /**
-   * Style for the root of the hover card
-   */
-  hoverCardRoot: IStyle;
-
-  /**
    * Style to change the opacity of bars in dataviz when we hover on a single bar or legends
    */
   opacityChangeOnHover: IStyle;
@@ -163,4 +207,19 @@ export interface IStackedBarChartStyles {
    * Style for the chart ratio denominator
    */
   ratioDenominator: IStyle;
+
+  /**
+   * Style for the benchmark container
+   */
+  benchmarkContainer: IStyle;
+
+  /**
+   * Style for the benchmark triangle
+   */
+  benchmark: IStyle;
+
+  /**
+   * Style for the target triangle
+   */
+  target: IStyle;
 }

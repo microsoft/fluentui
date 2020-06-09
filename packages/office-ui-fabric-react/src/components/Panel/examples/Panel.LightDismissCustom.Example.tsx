@@ -1,73 +1,65 @@
+import * as React from 'react';
 import { DefaultButton, PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { Dialog, DialogFooter, DialogType } from 'office-ui-fabric-react/lib/Dialog';
 import { Panel } from 'office-ui-fabric-react/lib/Panel';
-import * as React from 'react';
+import { useConstCallback } from '@uifabric/react-hooks';
 
-export interface IPanelLightDismissCustomExampleState {
-  showPanel: boolean;
-  hideDialog: boolean;
-}
+const explanation =
+  'If this panel is closed using light dismiss (clicking outside the panel), a confirmation dialog will appear.';
+const dialogContentProps = {
+  type: DialogType.normal,
+  title: 'Are you sure you want to close the panel?',
+};
+const dialogModalProps = {
+  isBlocking: true,
+  styles: { main: { maxWidth: 450 } },
+};
 
-export class PanelLightDismissCustomExample extends React.Component<{}, IPanelLightDismissCustomExampleState> {
-  public state: IPanelLightDismissCustomExampleState = {
-    showPanel: false,
-    hideDialog: true
-  };
+export const PanelLightDismissCustomExample: React.FunctionComponent = () => {
+  const [isPanelOpen, setIsPanelOpen] = React.useState(false);
+  const [isDialogVisible, setIsDialogVisible] = React.useState(false);
 
-  public render() {
-    return (
-      <div>
-        <DefaultButton text="Open panel" onClick={this._showPanel} />
-        <Panel
-          isOpen={this.state.showPanel}
-          isLightDismiss={true}
-          headerText="Light Dismiss Panel"
-          onDismiss={this._hidePanel}
-          onLightDismissClick={this._showDialog}
-        >
-          <span>Light Dismiss usage is meant for the Contextual Menu on mobile sized breakpoints.</span>
-        </Panel>
-        <Dialog
-          hidden={this.state.hideDialog}
-          onDismiss={this._closeDialog}
-          dialogContentProps={{
-            type: DialogType.normal,
-            title: 'Are you sure you want to close the panel?'
-          }}
-          modalProps={{
-            titleAriaId: 'myLabelId',
-            subtitleAriaId: 'mySubTextId',
-            isBlocking: true,
-            styles: { main: { maxWidth: 450 } }
-          }}
-        >
-          <DialogFooter>
-            <PrimaryButton onClick={this._closeDialogAndHidePanel} text="Yes" />
-            <DefaultButton onClick={this._closeDialog} text="No" />
-          </DialogFooter>
-        </Dialog>
-      </div>
-    );
-  }
+  const openPanel = useConstCallback(() => setIsPanelOpen(true));
+  const dismissPanel = useConstCallback(() => setIsPanelOpen(false));
+  const showDialog = useConstCallback(() => setIsDialogVisible(true));
+  const hideDialog = useConstCallback(ev => {
+    ev.preventDefault();
+    setIsDialogVisible(false);
+  });
+  const hideDialogAndPanel = useConstCallback(() => {
+    setIsPanelOpen(false);
+    setIsDialogVisible(false);
+  });
 
-  private _showPanel = () => {
-    this.setState({ showPanel: true });
-  };
-
-  private _hidePanel = () => {
-    this.setState({ showPanel: false });
-  };
-
-  private _showDialog = () => {
-    this.setState({ hideDialog: false });
-  };
-
-  private _closeDialog = () => {
-    this.setState({ hideDialog: true });
-  };
-
-  private _closeDialogAndHidePanel = () => {
-    this._hidePanel();
-    this._closeDialog();
-  };
-}
+  return (
+    <div>
+      {explanation}
+      <br />
+      <br />
+      <DefaultButton text="Open panel" onClick={openPanel} />
+      <Panel
+        isOpen={isPanelOpen}
+        isLightDismiss={true}
+        // Use this prop to do special handling *only* for light dismiss.
+        // If you provide this, the normal onDismiss won't be called for light dismiss.
+        onLightDismissClick={showDialog}
+        onDismiss={dismissPanel}
+        headerText="Panel with custom light dismiss behavior"
+        closeButtonAriaLabel="Close"
+      >
+        <p>{explanation}</p>
+      </Panel>
+      <Dialog
+        hidden={!isDialogVisible}
+        onDismiss={hideDialog}
+        dialogContentProps={dialogContentProps}
+        modalProps={dialogModalProps}
+      >
+        <DialogFooter>
+          <PrimaryButton onClick={hideDialogAndPanel} text="Yes" />
+          <DefaultButton onClick={hideDialog} text="No" />
+        </DialogFooter>
+      </Dialog>
+    </div>
+  );
+};

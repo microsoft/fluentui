@@ -5,26 +5,25 @@ import { DefaultPalette } from './DefaultPalette';
 import { DefaultSpacing } from './DefaultSpacing';
 import { loadTheme as legacyLoadTheme } from '@microsoft/load-themed-styles';
 import { DefaultEffects } from './DefaultEffects';
+import { IRawStyle } from '@uifabric/merge-styles';
 
 let _theme: ITheme = createTheme({
   palette: DefaultPalette,
   semanticColors: _makeSemanticColorsFromPalette(DefaultPalette, false, false),
   fonts: DefaultFontStyles,
   isInverted: false,
-  disableGlobalClassNames: false
+  disableGlobalClassNames: false,
 });
 let _onThemeChangeCallbacks: Array<(theme: ITheme) => void> = [];
 
 export const ThemeSettingName = 'theme';
 
 if (!Customizations.getSettings([ThemeSettingName]).theme) {
-  const win = getWindow();
+  const win: any = getWindow(); // tslint:disable-line:no-any
 
-  // tslint:disable:no-string-literal no-any
-  if (win && (win as any)['FabricConfig'] && (win as any)['FabricConfig'].theme) {
-    _theme = createTheme((win as any)['FabricConfig'].theme);
+  if (win?.FabricConfig?.theme) {
+    _theme = createTheme(win.FabricConfig.theme);
   }
-  // tslint:enable:no-string-literal no-any
 
   // Set the default theme.
   Customizations.applySettings({ [ThemeSettingName]: _theme });
@@ -94,13 +93,20 @@ export function loadTheme(theme: IPartialTheme, depComments: boolean = false): I
  * @param theme - The theme object
  */
 function _loadFonts(theme: ITheme): { [name: string]: string } {
-  const lines = {};
+  const lines: { [key: string]: string } = {};
 
   for (const fontName of Object.keys(theme.fonts)) {
-    const font = theme.fonts[fontName];
+    const font: IRawStyle = theme.fonts[fontName as keyof IFontStyles];
+
     for (const propName of Object.keys(font)) {
-      const name = 'ms-font-' + fontName + '-' + propName;
-      lines[name] = `"[theme:${name}, default: ${font[propName]}]"`;
+      const name: string = fontName + propName.charAt(0).toUpperCase() + propName.slice(1);
+      let value = font[propName as keyof IRawStyle] as string;
+
+      if (propName === 'fontSize' && typeof value === 'number') {
+        // if it's a number, convert it to px by default like our theming system does
+        value = value + 'px';
+      }
+      lines[name] = value;
     }
   }
   return lines;
@@ -121,19 +127,19 @@ export function createTheme(theme: IPartialTheme, depComments: boolean = false):
   // mix in custom overrides with good slots first, since custom overrides might be used in fixing deprecated slots
   let newSemanticColors = {
     ..._makeSemanticColorsFromPalette(newPalette, !!theme.isInverted, depComments),
-    ...theme.semanticColors
+    ...theme.semanticColors,
   };
 
   let defaultFontStyles: IFontStyles = { ...DefaultFontStyles };
 
   if (theme.defaultFontStyle) {
-    for (const fontStyle of Object.keys(defaultFontStyles)) {
+    for (const fontStyle of Object.keys(defaultFontStyles) as (keyof IFontStyles)[]) {
       defaultFontStyles[fontStyle] = merge({}, defaultFontStyles[fontStyle], theme.defaultFontStyle);
     }
   }
 
   if (theme.fonts) {
-    for (const fontStyle of Object.keys(theme.fonts)) {
+    for (const fontStyle of Object.keys(theme.fonts) as (keyof IFontStyles)[]) {
       defaultFontStyles[fontStyle] = merge({}, defaultFontStyles[fontStyle], theme.fonts[fontStyle]);
     }
   }
@@ -141,42 +147,31 @@ export function createTheme(theme: IPartialTheme, depComments: boolean = false):
   return {
     palette: newPalette,
     fonts: {
-      ...defaultFontStyles
+      ...defaultFontStyles,
     },
+    rtl: theme.rtl,
     semanticColors: newSemanticColors,
     isInverted: !!theme.isInverted,
     disableGlobalClassNames: !!theme.disableGlobalClassNames,
     spacing: {
       ...DefaultSpacing,
-      ...theme.spacing
+      ...theme.spacing,
     },
     effects: {
       ...DefaultEffects,
-      ...theme.effects
-    }
+      ...theme.effects,
+    },
   };
-}
-
-/**
- * Helper to pull a given property name from a given set of sources, in order, if available. Otherwise returns the property name.
- */
-function _expandFrom<TRetVal, TMapType>(propertyName: string | TRetVal | undefined, ...maps: TMapType[]): TRetVal {
-  if (propertyName) {
-    for (const map of maps) {
-      if (map[propertyName as string]) {
-        return map[propertyName as string];
-      }
-    }
-  }
-
-  return propertyName as TRetVal;
 }
 
 // Generates all the semantic slot colors based on the Fabric palette.
 // We'll use these as fallbacks for semantic slots that the passed in theme did not define.
 function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depComments: boolean): ISemanticColors {
   let toReturn: ISemanticColors = {
+    // DEFAULTS
     bodyBackground: p.white,
+    bodyBackgroundHovered: p.neutralLighter,
+    bodyBackgroundChecked: p.neutralLight,
     bodyStandoutBackground: p.neutralLighterAlt,
     bodyFrameBackground: p.white,
     bodyFrameDivider: p.neutralLight,
@@ -184,52 +179,35 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depCom
     bodyTextChecked: p.black,
     bodySubtext: p.neutralSecondary,
     bodyDivider: p.neutralLight,
-
-    disabledBackground: p.neutralLighter,
-    disabledText: p.neutralTertiary,
     disabledBodyText: p.neutralTertiary,
-    disabledSubtext: p.neutralQuaternary,
     disabledBodySubtext: p.neutralTertiaryAlt,
-
+    disabledBorder: p.neutralTertiaryAlt,
     focusBorder: p.neutralSecondary,
     variantBorder: p.neutralLight,
     variantBorderHovered: p.neutralTertiary,
     defaultStateBackground: p.neutralLighterAlt,
 
-    errorText: !isInverted ? p.redDark : '#ff5f5f',
-    warningText: !isInverted ? '#333333' : '#ffffff',
-    errorBackground: !isInverted ? 'rgba(232, 17, 35, .2)' : 'rgba(232, 17, 35, .5)',
-    blockingBackground: !isInverted ? 'rgba(234, 67, 0, .2)' : 'rgba(234, 67, 0, .5)',
-    warningBackground: !isInverted ? 'rgba(255, 185, 0, .2)' : 'rgba(255, 251, 0, .6)',
-    warningHighlight: !isInverted ? '#ffb900' : '#fff100',
-    successBackground: !isInverted ? 'rgba(186, 216, 10, .2)' : 'rgba(186, 216, 10, .4)',
+    // LINKS
+    actionLink: p.neutralPrimary,
+    actionLinkHovered: p.neutralDark,
+    link: p.themePrimary,
+    linkHovered: p.themeDarker,
 
-    inputBorder: p.neutralTertiary,
-    inputBorderHovered: p.neutralPrimary,
-    inputBackground: p.white,
-    inputBackgroundChecked: p.themePrimary,
-    inputBackgroundCheckedHovered: p.themeDarkAlt,
-    inputForegroundChecked: p.white,
-    inputFocusBorderAlt: p.themePrimary,
-    smallInputBorder: p.neutralSecondary,
-    inputText: p.neutralPrimary,
-    inputTextHovered: p.neutralDark,
-    inputPlaceholderText: p.neutralSecondary,
-
-    buttonBackground: p.neutralLighter,
+    // BUTTONS
+    buttonBackground: p.white,
     buttonBackgroundChecked: p.neutralTertiaryAlt,
-    buttonBackgroundHovered: p.neutralLight,
+    buttonBackgroundHovered: p.neutralLighter,
     buttonBackgroundCheckedHovered: p.neutralLight,
     buttonBackgroundPressed: p.neutralLight,
     buttonBackgroundDisabled: p.neutralLighter,
-    buttonBorder: 'transparent',
+    buttonBorder: p.neutralSecondaryAlt,
     buttonText: p.neutralPrimary,
     buttonTextHovered: p.neutralDark,
     buttonTextChecked: p.neutralDark,
     buttonTextCheckedHovered: p.black,
     buttonTextPressed: p.neutralDark,
     buttonTextDisabled: p.neutralTertiary,
-    buttonBorderDisabled: 'transparent',
+    buttonBorderDisabled: p.neutralLighter,
 
     primaryButtonBackground: p.themePrimary,
     primaryButtonBackgroundHovered: p.themeDarkAlt,
@@ -244,15 +222,27 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depCom
     accentButtonBackground: p.accent,
     accentButtonText: p.white,
 
-    menuBackground: p.white,
-    menuDivider: p.neutralTertiaryAlt,
-    menuIcon: p.themePrimary,
-    menuHeader: p.themePrimary,
-    menuItemBackgroundHovered: p.neutralLighter,
-    menuItemBackgroundPressed: p.neutralLight,
-    menuItemText: p.neutralPrimary,
-    menuItemTextHovered: p.neutralDark,
+    // INPUTS
+    inputBorder: p.neutralSecondary,
+    inputBorderHovered: p.neutralPrimary,
+    inputBackground: p.white,
+    inputBackgroundChecked: p.themePrimary,
+    inputBackgroundCheckedHovered: p.themeDark,
+    inputPlaceholderBackgroundChecked: p.themeLighter,
+    inputForegroundChecked: p.white,
+    inputIcon: p.themePrimary,
+    inputIconHovered: p.themeDark,
+    inputIconDisabled: p.neutralTertiary,
+    inputFocusBorderAlt: p.themePrimary,
+    smallInputBorder: p.neutralSecondary,
+    inputText: p.neutralPrimary,
+    inputTextHovered: p.neutralDark,
+    inputPlaceholderText: p.neutralSecondary,
+    disabledBackground: p.neutralLighter,
+    disabledText: p.neutralTertiary,
+    disabledSubtext: p.neutralQuaternary,
 
+    // LISTS
     listBackground: p.white,
     listText: p.neutralPrimary,
     listItemBackgroundHovered: p.neutralLighter,
@@ -262,14 +252,42 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depCom
     listHeaderBackgroundHovered: p.neutralLighter,
     listHeaderBackgroundPressed: p.neutralLight,
 
-    actionLink: p.neutralPrimary,
-    actionLinkHovered: p.neutralDark,
-    link: p.themePrimary,
-    linkHovered: p.themeDarker,
+    // MENUS
+    menuBackground: p.white,
+    menuDivider: p.neutralTertiaryAlt,
+    menuIcon: p.themePrimary,
+    menuHeader: p.themePrimary,
+    menuItemBackgroundHovered: p.neutralLighter,
+    menuItemBackgroundPressed: p.neutralLight,
+    menuItemText: p.neutralPrimary,
+    menuItemTextHovered: p.neutralDark,
+
+    errorText: !isInverted ? '#a4262c' : '#F1707B',
+
+    messageText: !isInverted ? '#323130' : '#F3F2F1',
+    messageLink: !isInverted ? '#005A9E' : '#6CB8F6',
+    messageLinkHovered: !isInverted ? '#004578' : '#82C7FF',
+
+    infoIcon: !isInverted ? '#605e5c' : '#C8C6C4',
+    errorIcon: !isInverted ? '#A80000' : '#F1707B',
+    blockingIcon: !isInverted ? '#FDE7E9' : '#442726',
+    warningIcon: !isInverted ? '#797775' : '#C8C6C4',
+    severeWarningIcon: !isInverted ? '#D83B01' : '#FCE100',
+    successIcon: !isInverted ? '#107C10' : '#92C353',
+
+    infoBackground: !isInverted ? '#f3f2f1' : '#323130',
+    errorBackground: !isInverted ? '#FDE7E9' : '#442726',
+    blockingBackground: !isInverted ? '#FDE7E9' : '#442726',
+    warningBackground: !isInverted ? '#FFF4CE' : '#433519',
+    severeWarningBackground: !isInverted ? '#FED9CC' : '#4F2A0F',
+    successBackground: !isInverted ? '#DFF6DD' : '#393D1B',
 
     // Deprecated slots, second pass by _fixDeprecatedSlots() later for self-referential slots
+    warningHighlight: !isInverted ? '#ffb900' : '#fff100',
+    warningText: '',
+    successText: !isInverted ? '#107C10' : '#92c353',
     listTextColor: '',
-    menuItemBackgroundChecked: p.neutralLight
+    menuItemBackgroundChecked: p.neutralLight,
   };
 
   return _fixDeprecatedSlots(toReturn, depComments!);
@@ -282,7 +300,15 @@ function _fixDeprecatedSlots(s: ISemanticColors, depComments: boolean): ISemanti
     dep = ' /* @deprecated */';
   }
 
+  // tslint:disable-next-line:deprecation
   s.listTextColor = s.listText + dep;
+  // tslint:disable-next-line:deprecation
   s.menuItemBackgroundChecked += dep;
+  // tslint:disable-next-line:deprecation
+  s.warningHighlight += dep;
+  // tslint:disable-next-line:deprecation
+  s.warningText = s.messageText + dep;
+  // tslint:disable-next-line:deprecation
+  s.successText += dep;
   return s;
 }

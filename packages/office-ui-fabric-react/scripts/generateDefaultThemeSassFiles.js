@@ -34,7 +34,7 @@ for (const fontName in fonts) {
   lines.push(`}`);
 }
 
-const srcRoot = './src/common';
+const srcRoot = '../src/common';
 const fontsOutputFilename = '_themeVariables.scss';
 fs.writeFileSync(path.join(srcRoot, fontsOutputFilename), lines.join('\n'));
 
@@ -57,7 +57,9 @@ const deprecatedTag = ' /* @deprecated */';
 for (const color in semanticColors) {
   const name = color + 'Color';
   if (semanticColors[color].indexOf(deprecatedTag) >= 0) {
-    semanticLines.push(`$${name}: '[theme:${color}, default: ${semanticColors[color].replace(deprecatedTag, '')}]'; ${deprecatedTag}`);
+    semanticLines.push(
+      `$${name}: '[theme:${color}, default: ${semanticColors[color].replace(deprecatedTag, '')}]'; ${deprecatedTag}`,
+    );
   } else {
     semanticLines.push(`$${name}: '[theme:${color}, default: ${semanticColors[color]}]'; `);
   }

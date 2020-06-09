@@ -9,9 +9,15 @@ import { Platforms } from '../../../interfaces/Platforms';
 const visibilityData = require('../../../data/layout-visibility.json');
 const breakpointsData = require('../../../data/responsive-breakpoints.json');
 
-export const LayoutPage: React.StatelessComponent<IStylesPageProps> = props => {
+export const LayoutPage: React.FunctionComponent<IStylesPageProps> = props => {
   const { platform } = props;
-  return <StylesAreaPage {...props} {...LayoutPageProps[platform]} otherSections={_otherSections(platform)} />;
+  return (
+    <StylesAreaPage
+      {...props}
+      {...LayoutPageProps[platform]}
+      otherSections={_otherSections(platform) as IPageSectionProps[]}
+    />
+  );
 };
 
 function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
@@ -25,17 +31,20 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
               <p>The grid and utilities use this common set of six breakpoints.</p>
               <Table content={breakpointsData} />
             </>
-          )
+          ),
         },
         {
           sectionName: 'Grid',
           content: (
             <>
               <p>
-                Fabric comes with a mobile-first, 12-column, responsive grid that you can use to create flexible layouts for a variety of
-                screen sizes and device types.
+                Fabric Core comes with a mobile-first, 12-column, responsive grid that you can use to create flexible
+                layouts for a variety of screen sizes and device types.
               </p>
-              <div className="ms-Grid" aria-label="Example fabric grid where every row has a different number of columns.">
+              <div
+                className="ms-Grid"
+                aria-label="Example Fabric Core grid where every row has a different number of columns."
+              >
                 <div className="ms-Grid-row" aria-label="Example of 12 equal columns using the grid">
                   <div className={'ms-Grid-col ms-sm1 ' + styles.demoBlockCol}>
                     <div className={styles.demoBlock}>1</div>
@@ -134,20 +143,20 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 </div>
               </div>
             </>
-          )
+          ),
         },
         {
           sectionName: 'Implementation',
           content: (
             <>
               <p>
-                A grid (ms-Grid) can contain multiple rows (ms-Grid-row), each of which has one or more columns (ms-Grid-col). Utility
-                classes (ms-sm6) specify how large each column should be on small, medium, and large devices. The columns in a row should
-                add up to 12 for each device size.
+                A grid (ms-Grid) can contain multiple rows (ms-Grid-row), each of which has one or more columns
+                (ms-Grid-col). Utility classes (ms-sm6) specify how large each column should be on small, medium, and
+                large devices. The columns in a row should add up to 12 for each device size.
               </p>
               <p>
-                Newer versions of Fabric require the <code>dir</code> attribute to be set to specify how the content should be rendered
-                (whether left-to-right, <code>ltr</code>, or right-to-left, <code>rtl</code>
+                Newer versions of Fabric Core require the <code>dir</code> attribute to be set to specify how the
+                content should be rendered (whether left-to-right, <code>ltr</code>, or right-to-left, <code>rtl</code>
                 ).
               </p>
               <CodeSnippet language="html">
@@ -171,13 +180,13 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
 
               <MarkdownHeader as="h4">Inheritance</MarkdownHeader>
               <p>
-                Because Fabric is mobile-first, any layout defined for small screens is automatically inherited by medium and large screens.
-                The small size utilities (ms-sm6) are required. If you want to change the layout on larger screens, you can apply the other
-                utility classes.
+                Because Fabric Core is mobile-first, any layout defined for small screens is automatically inherited by
+                medium and large screens. The small size utilities (ms-sm6) are required. If you want to change the
+                layout on larger screens, you can apply the other utility classes.
               </p>
               <p>
-                Try this out! On a large screen, the example block will be smaller. Try shrinking your browser window to see how the example
-                block will take up the entire width of the screen.
+                Try this out! On a large screen, the example block will be smaller. Try shrinking your browser window to
+                see how the example block will take up the entire width of the screen.
               </p>
               <CodeSnippet language="html">{`<div class="ms-Grid-col ms-sm12 ms-lg4">Example</div>`}</CodeSnippet>
               <div className="ms-Grid">
@@ -190,8 +199,9 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
 
               <MarkdownHeader as="h4">Push and pull</MarkdownHeader>
               <p>
-                You might want your column source order to differ from the display order, or to change the column display order based on the
-                screen size. The push and pull utilities make this possible. Push moves a column to the right; pull moves it to the left.
+                You might want your column source order to differ from the display order, or to change the column
+                display order based on the screen size. The push and pull utilities make this possible. Push moves a
+                column to the right; pull moves it to the left.
               </p>
               <CodeSnippet language="html">
                 {`<div class="ms-Grid-col ms-sm4 ms-smPush8">First in code</div>
@@ -210,9 +220,9 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
 
               <MarkdownHeader as="h4">Visibility</MarkdownHeader>
               <p>
-                Some designs call for certain content to be shown or hidden depending on the screen size. You can achieve this using
-                Fabric's responsive visibility classes. These allow you to show or hide content at a specific screen size, or across a whole
-                range of sizes.
+                Some designs call for certain content to be shown or hidden depending on the screen size. You can
+                achieve this using Fabric Core's responsive visibility classes. These allow you to show or hide content
+                at a specific screen size, or across a whole range of sizes.
               </p>
               <Table content={visibilityData} responsive={true} />
 
@@ -231,8 +241,8 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 </div>
               </div>
             </>
-          )
-        }
+          ),
+        },
       ];
   }
 }

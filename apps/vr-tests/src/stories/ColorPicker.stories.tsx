@@ -15,7 +15,7 @@ storiesOf('ColorPicker', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </Screener>,
   )
   .addStory(
     'Root',
@@ -24,21 +24,21 @@ storiesOf('ColorPicker', module)
         <ColorPicker
           color="#FFF"
           styles={{
-            input: { fontFamily: 'Segoe UI' }
+            input: { fontFamily: 'Segoe UI' },
           }}
         />
       </Fabric>
     ),
     {
-      rtl: true
-    }
+      rtl: true,
+    },
   )
   .addStory('Blue', () => (
     <Fabric>
       <ColorPicker
         color="#48B"
         styles={{
-          input: { fontFamily: 'Segoe UI' }
+          input: { fontFamily: 'Segoe UI' },
         }}
       />
     </Fabric>

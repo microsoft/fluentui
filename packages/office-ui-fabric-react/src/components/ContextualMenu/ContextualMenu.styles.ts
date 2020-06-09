@@ -8,14 +8,14 @@ const GlobalClassNames = {
   list: 'ms-ContextualMenu-list',
   header: 'ms-ContextualMenu-header',
   title: 'ms-ContextualMenu-title',
-  isopen: 'is-open'
+  isopen: 'is-open',
 };
 
 export const getStyles = (props: IContextualMenuStyleProps): IContextualMenuStyles => {
   const { className, theme } = props;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
-  const { palette, fonts, semanticColors } = theme;
+  const { fonts, semanticColors, effects } = theme;
 
   return {
     root: [
@@ -23,18 +23,18 @@ export const getStyles = (props: IContextualMenuStyleProps): IContextualMenuStyl
       classNames.root,
       classNames.isopen,
       {
-        backgroundColor: semanticColors.bodyBackground,
-        minWidth: '180px'
+        backgroundColor: semanticColors.menuBackground,
+        minWidth: '180px',
       },
-      className
+      className,
     ],
     container: [
       classNames.container,
       {
         selectors: {
-          ':focus': { outline: 0 }
-        }
-      }
+          ':focus': { outline: 0 },
+        },
+      },
     ],
     list: [
       classNames.list,
@@ -42,8 +42,8 @@ export const getStyles = (props: IContextualMenuStyleProps): IContextualMenuStyl
       {
         listStyleType: 'none',
         margin: '0',
-        padding: '0'
-      }
+        padding: '0',
+      },
     ],
     header: [
       classNames.header,
@@ -59,20 +59,27 @@ export const getStyles = (props: IContextualMenuStyleProps): IContextualMenuStyl
         cursor: 'default',
         padding: '0px 6px',
         userSelect: 'none',
-        textAlign: 'left'
-      }
+        textAlign: 'left',
+      },
     ],
     title: [
       classNames.title,
       {
-        fontSize: '16px',
+        fontSize: fonts.mediumPlus.fontSize,
         paddingRight: '14px',
         paddingLeft: '14px',
         paddingBottom: '5px',
         paddingTop: '5px',
-        backgroundColor: palette.neutralLight
-      }
+        backgroundColor: semanticColors.menuItemBackgroundPressed,
+      },
     ],
-    subComponentStyles: { callout: {}, menuItem: {} }
+    subComponentStyles: {
+      callout: {
+        root: {
+          boxShadow: effects.elevation8,
+        },
+      },
+      menuItem: {},
+    },
   };
 };

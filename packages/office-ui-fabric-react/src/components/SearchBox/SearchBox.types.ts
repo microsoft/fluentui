@@ -43,7 +43,7 @@ export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElem
   /**
    * Callback function for when the typed input for the SearchBox has changed.
    */
-  onChange?: (newValue: any) => void;
+  onChange?: (event?: React.ChangeEvent<HTMLInputElement>, newValue?: string) => void;
 
   /**
    * Callback executed when the user presses enter in the search box.
@@ -85,7 +85,6 @@ export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElem
 
   /**
    * The aria label of the SearchBox for the benefit of screen readers.
-   * @defaultvalue placeholder
    */
   ariaLabel?: string;
 

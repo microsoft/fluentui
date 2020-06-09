@@ -15,14 +15,23 @@ export interface IImplementationSectionProps extends IPageSectionPropsWithSectio
   hideImplementationTitle?: boolean;
 }
 
-export const ImplementationSection: React.StatelessComponent<IImplementationSectionProps> = props => {
-  const { className, sectionName, readableSectionName, style, propertiesTablesSources, jsonDocs, hideImplementationTitle, id } = props;
+export const ImplementationSection: React.FunctionComponent<IImplementationSectionProps> = props => {
+  const {
+    className,
+    readableSectionName = props.sectionName,
+    style,
+    propertiesTablesSources,
+    jsonDocs,
+    hideImplementationTitle,
+    id,
+  } = props;
   return (
     <div className={className} style={style}>
       {!hideImplementationTitle && (
         <div className={styles.sectionHeader}>
-          <h2 className={styles.subHeading} id={id}>
-            {readableSectionName || sectionName}
+          {/* This heading must be programmatically focusable for simulating jumping to an anchor */}
+          <h2 className={styles.subHeading} id={id} tabIndex={-1}>
+            {readableSectionName}
           </h2>
         </div>
       )}
@@ -60,9 +69,9 @@ function _getNativePropsInfo(props: IImplementationSectionProps): JSX.Element | 
 
   return (
     <MessageBar>
-      <strong>Native props allowed {componentNameJsx && <>for {componentNameJsx}</>}</strong> - all HTML attributes native to the{' '}
-      {elementsArr}, including all aria and custom data attributes, can be applied as native props on {componentNameJsx || 'this component'}
-      .
+      <strong>Native props allowed {componentNameJsx && <>for {componentNameJsx}</>}</strong> - all HTML attributes
+      native to the {elementsArr}, including all aria and custom data attributes, can be applied as native props on{' '}
+      {componentNameJsx || 'this component'}.
     </MessageBar>
   );
 }

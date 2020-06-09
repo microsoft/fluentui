@@ -7,13 +7,13 @@ export class LayoutGroup extends React.Component<ILayoutGroupProps, {}> {
   public static defaultProps: ILayoutGroupProps = {
     layoutGap: 8,
     direction: 'vertical',
-    justify: 'start'
+    justify: 'start',
   };
 
   public render(): JSX.Element | null {
     const { children, direction, layoutGap, justify } = this.props;
 
-    const divProps = getNativeProps(this.props, divProperties);
+    const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties);
 
     const numberOfChildren = React.Children.count(children);
 
@@ -27,16 +27,16 @@ export class LayoutGroup extends React.Component<ILayoutGroupProps, {}> {
             'ms-LayoutGroup-item',
             direction === 'horizontal' &&
               !isLastChild && {
-                marginRight: layoutGap + 'px'
+                marginRight: layoutGap + 'px',
               },
             direction === 'vertical' &&
               !isLastChild && {
-                marginBottom: layoutGap + 'px'
+                marginBottom: layoutGap + 'px',
               },
             justify === 'fill' && {
               flexBasis: '0',
-              flexGrow: 1
-            }
+              flexGrow: 1,
+            },
           )}
         >
           {child}
@@ -51,7 +51,7 @@ export class LayoutGroup extends React.Component<ILayoutGroupProps, {}> {
         className={mergeStyles('ms-LayoutGroup', {
           display: 'flex',
           flexDirection: direction === 'horizontal' ? 'row' : 'column',
-          justifyContent: this._getJustify(justify)
+          justifyContent: this._getJustify(justify),
         } as IRawStyle)}
       >
         {group}

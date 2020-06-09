@@ -1,168 +1,160 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Component Examples renders Dialog.Modeless.Example.tsx correctly 1`] = `
-<div>
+Array [
   <input
     placeholder="Focus Me While Open"
     type="text"
-  />
+  />,
   <div>
     <div
       className=
-          ms-Checkbox
+          ms-Toggle
           is-enabled
           {
-            display: flex;
-            position: relative;
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            margin-bottom: 8px;
           }
     >
-      <input
-        aria-disabled={false}
-        checked={false}
-        className=
-
-            {
-              background: none;
-              opacity: 0;
-              position: absolute;
-            }
-            .ms-Fabric--isFocusVisible &:focus + label {
-              outline-offset: 2px;
-              outline: 1px solid #666666;
-            }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label {
-              outline: 1px solid ActiveBorder;
-            }
-        disabled={false}
-        id="checkbox-0"
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
-        type="checkbox"
-      />
       <label
         className=
-            ms-Checkbox-label
+            ms-Label
+            ms-Toggle-label
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              align-items: flex-start;
-              cursor: pointer;
-              display: flex;
+              box-shadow: none;
+              box-sizing: border-box;
+              color: #323130;
+              display: block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
-              font-weight: 400;
-              position: relative;
-              text-align: left;
-              user-select: none;
+              font-weight: 600;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              overflow-wrap: break-word;
+              padding-bottom: 5px;
+              padding-left: 0;
+              padding-right: 0;
+              padding-top: 5px;
+              word-wrap: break-word;
             }
-            &:hover .ms-Checkbox-checkbox {
-              border-color: #333333;
-            }
-            @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
-              border-color: Highlight;
-            }
-            &:focus .ms-Checkbox-checkbox {
-              border-color: #333333;
-            }
-            &:hover .ms-Checkbox-checkmark {
-              color: #a6a6a6;
-              opacity: 1;
-            }
-            @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
-              color: Highlight;
-            }
-            &:hover .ms-Checkbox-text {
-              color: #333333;
-            }
-            &:focus .ms-Checkbox-text {
-              color: #333333;
-            }
-        htmlFor="checkbox-0"
+        htmlFor="Toggle0"
+        id="Toggle0-label"
       >
-        <div
+        Is draggable
+      </label>
+      <div
+        className=
+            ms-Toggle-innerContainer
+            {
+              display: inline-flex;
+              position: relative;
+            }
+      >
+        <button
+          aria-checked={false}
+          aria-disabled={false}
+          aria-labelledby="Toggle0-label"
+          checked={false}
           className=
-              ms-Checkbox-checkbox
+              ms-Toggle-background
               {
                 align-items: center;
-                border-color: #666666;
-                border-style: solid;
-                border-width: 1px;
+                background: #ffffff;
+                border-radius: 10px;
+                border: 1px solid #605e5c;
                 box-sizing: border-box;
+                cursor: pointer;
                 display: flex;
-                flex-shrink: 0;
+                font-size: 20px;
                 height: 20px;
-                justify-content: center;
-                margin-right: 4px;
-                overflow: hidden;
-                transition-duration: 200ms;
-                transition-property: background, border, border-color;
-                transition-timing-function: cubic-bezier(.4, 0, .23, 1);
-                width: 20px;
+                outline: transparent;
+                padding-bottom: 0;
+                padding-left: 3px;
+                padding-right: 3px;
+                padding-top: 0;
+                position: relative;
+                transition: all 0.1s ease;
+                width: 40px;
               }
+              &::-moz-focus-inner {
+                border: 0;
+              }
+              .ms-Fabric--isFocusVisible &:focus:after {
+                border: 1px solid #ffffff;
+                bottom: -2px;
+                content: "";
+                left: -2px;
+                outline: 1px solid #605e5c;
+                position: absolute;
+                right: -2px;
+                top: -2px;
+                z-index: 1;
+              }
+              &:hover {
+                border-color: #323130;
+              }
+              &:hover .ms-Toggle-thumb {
+                background-color: #201f1e;
+              }
+              @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
+                border-color: Highlight;
+              }
+              @media screen and (-ms-high-contrast: active){&:hover {
+                border-color: Highlight;
+              }
+          data-is-focusable={true}
+          disabled={false}
+          id="Toggle0"
+          onChange={[Function]}
+          onClick={[Function]}
+          role="switch"
+          type="button"
         >
-          <i
+          <span
             className=
-                ms-Checkbox-checkmark
+                ms-Toggle-thumb
                 {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  color: #ffffff;
-                  display: inline-block;
-                  font-family: "FabricMDL2Icons";
-                  font-style: normal;
-                  font-weight: normal;
-                  opacity: 0;
-                  speak: none;
+                  background-color: #605e5c;
+                  border-color: transparent;
+                  border-radius: 50%;
+                  border-style: solid;
+                  border-width: .28em;
+                  box-sizing: border-box;
+                  display: block;
+                  height: 12px;
+                  transition: all 0.1s ease;
+                  width: 12px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
-                  -ms-high-contrast-adjust: none;
-                  color: Window;
-                }
-            data-icon-name="CheckMark"
-            role="presentation"
-          >
-            
-          </i>
-        </div>
-        <span
-          className=
-              ms-Checkbox-text
-              {
-                color: #333333;
-                font-size: 14px;
-                line-height: 20px;
-                margin-left: 4px;
-              }
-        >
-          Is draggable
-        </span>
-      </label>
+          />
+        </button>
+      </div>
     </div>
     <button
-      aria-describedby="id__2"
-      aria-labelledby="id__1"
       className=
           ms-Button
           ms-Button--default
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
-            background-color: #f4f4f4;
-            border-radius: 0px;
-            border: 1px solid transparent;
+            background-color: #ffffff;
+            border-radius: 2px;
+            border: 1px solid #8a8886;
             box-sizing: border-box;
-            color: #333333;
+            color: #323130;
             cursor: pointer;
             display: inline-block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
             height: 32px;
-            margin-bottom: 0px;
-            margin-left: 0px;
-            margin-right: 0px;
-            margin-top: 0px;
             min-width: 80px;
             outline: transparent;
             padding-bottom: 0;
@@ -173,20 +165,19 @@ exports[`Component Examples renders Dialog.Modeless.Example.tsx correctly 1`] = 
             text-align: center;
             text-decoration: none;
             user-select: none;
-            vertical-align: top;
           }
           &::-moz-focus-inner {
             border: 0;
           }
           .ms-Fabric--isFocusVisible &:focus:after {
-            border: 1px solid #ffffff;
-            bottom: 0px;
+            border: 1px solid transparent;
+            bottom: 2px;
             content: "";
-            left: 0px;
-            outline: 1px solid #666666;
+            left: 2px;
+            outline: 1px solid #605e5c;
             position: absolute;
-            right: 0px;
-            top: 0px;
+            right: 2px;
+            top: 2px;
             z-index: 1;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -203,16 +194,16 @@ exports[`Component Examples renders Dialog.Modeless.Example.tsx correctly 1`] = 
             top: 0px;
           }
           &:hover {
-            background-color: #eaeaea;
-            color: #212121;
+            background-color: #f3f2f1;
+            color: #201f1e;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
             color: Highlight;
           }
           &:active {
-            background-color: #c8c8c8;
-            color: #212121;
+            background-color: #edebe9;
+            color: #201f1e;
           }
       data-is-focusable={true}
       onClick={[Function]}
@@ -223,7 +214,7 @@ exports[`Component Examples renders Dialog.Modeless.Example.tsx correctly 1`] = 
       onMouseUp={[Function]}
       type="button"
     >
-      <div
+      <span
         className=
             ms-Button-flexContainer
             {
@@ -233,18 +224,21 @@ exports[`Component Examples renders Dialog.Modeless.Example.tsx correctly 1`] = 
               height: 100%;
               justify-content: center;
             }
+        data-automationid="splitbuttonprimary"
       >
-        <div
+        <span
           className=
               ms-Button-textContainer
               {
+                display: block;
                 flex-grow: 1;
               }
         >
-          <div
+          <span
             className=
                 ms-Button-label
                 {
+                  display: block;
                   font-weight: 600;
                   line-height: 100%;
                   margin-bottom: 0;
@@ -255,34 +249,28 @@ exports[`Component Examples renders Dialog.Modeless.Example.tsx correctly 1`] = 
             id="id__1"
           >
             Open Dialog
-          </div>
-        </div>
-      </div>
+          </span>
+        </span>
+      </span>
     </button>
     <button
-      aria-describedby="id__5"
-      aria-labelledby="id__4"
       className=
           ms-Button
           ms-Button--default
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
-            background-color: #f4f4f4;
-            border-radius: 0px;
-            border: 1px solid transparent;
+            background-color: #ffffff;
+            border-radius: 2px;
+            border: 1px solid #8a8886;
             box-sizing: border-box;
-            color: #333333;
+            color: #323130;
             cursor: pointer;
             display: inline-block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
             height: 32px;
-            margin-bottom: 0px;
-            margin-left: 0px;
-            margin-right: 0px;
-            margin-top: 0px;
             min-width: 80px;
             outline: transparent;
             padding-bottom: 0;
@@ -293,20 +281,19 @@ exports[`Component Examples renders Dialog.Modeless.Example.tsx correctly 1`] = 
             text-align: center;
             text-decoration: none;
             user-select: none;
-            vertical-align: top;
           }
           &::-moz-focus-inner {
             border: 0;
           }
           .ms-Fabric--isFocusVisible &:focus:after {
-            border: 1px solid #ffffff;
-            bottom: 0px;
+            border: 1px solid transparent;
+            bottom: 2px;
             content: "";
-            left: 0px;
-            outline: 1px solid #666666;
+            left: 2px;
+            outline: 1px solid #605e5c;
             position: absolute;
-            right: 0px;
-            top: 0px;
+            right: 2px;
+            top: 2px;
             z-index: 1;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -323,16 +310,16 @@ exports[`Component Examples renders Dialog.Modeless.Example.tsx correctly 1`] = 
             top: 0px;
           }
           &:hover {
-            background-color: #eaeaea;
-            color: #212121;
+            background-color: #f3f2f1;
+            color: #201f1e;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
             color: Highlight;
           }
           &:active {
-            background-color: #c8c8c8;
-            color: #212121;
+            background-color: #edebe9;
+            color: #201f1e;
           }
       data-is-focusable={true}
       onClick={[Function]}
@@ -343,7 +330,7 @@ exports[`Component Examples renders Dialog.Modeless.Example.tsx correctly 1`] = 
       onMouseUp={[Function]}
       type="button"
     >
-      <div
+      <span
         className=
             ms-Button-flexContainer
             {
@@ -353,18 +340,21 @@ exports[`Component Examples renders Dialog.Modeless.Example.tsx correctly 1`] = 
               height: 100%;
               justify-content: center;
             }
+        data-automationid="splitbuttonprimary"
       >
-        <div
+        <span
           className=
               ms-Button-textContainer
               {
+                display: block;
                 flex-grow: 1;
               }
         >
-          <div
+          <span
             className=
                 ms-Button-label
                 {
+                  display: block;
                   font-weight: 600;
                   line-height: 100%;
                   margin-bottom: 0;
@@ -375,10 +365,10 @@ exports[`Component Examples renders Dialog.Modeless.Example.tsx correctly 1`] = 
             id="id__4"
           >
             Close Dialog
-          </div>
-        </div>
-      </div>
+          </span>
+        </span>
+      </span>
     </button>
-  </div>
-</div>
+  </div>,
+]
 `;

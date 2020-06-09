@@ -1,6 +1,175 @@
 # Change Log - @uifabric/foundation
 
-This log was last generated on Tue, 14 May 2019 07:50:30 GMT and should not be manually modified.
+This log was last generated on Thu, 07 May 2020 01:06:55 GMT and should not be manually modified.
+
+<!-- Start content -->
+
+## [7.7.10](https://github.com/microsoft/fluentui/tree/@uifabric/foundation_v7.7.10)
+
+Thu, 07 May 2020 01:06:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/foundation_v7.7.0..@uifabric/foundation_v7.7.10)
+
+### Patches
+
+- Addressing commonjs imports. ([PR #13031](https://github.com/microsoft/fluentui/pull/13031) by dzearing@microsoft.com)
+
+## [7.7.0](https://github.com/microsoft/fluentui/tree/@uifabric/foundation_v7.7.0)
+
+Thu, 16 Apr 2020 04:01:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/foundation_v7.5.25..@uifabric/foundation_v7.7.0)
+
+### Minor changes
+
+- Fixing rtl customizer scenarios in Foundation components. ([PR #12649](https://github.com/microsoft/fluentui/pull/12649) by humbertomakotomorimoto@gmail.com)
+
+### Patches
+
+- Readme: Fabric=>Fluent wording updates ([PR #12508](https://github.com/microsoft/fluentui/pull/12508) by elcraig@microsoft.com)
+
+## 7.5.23
+Wed, 25 Mar 2020 12:30:04 GMT
+
+### Patches
+
+- Changing references of Fabric to Fluent (mgodbolt@microsoft.com)
+## 7.5.22
+Mon, 23 Mar 2020 12:28:29 GMT
+
+### Patches
+
+- Replace OfficeDev/office-ui-fabric-react with microsoft/fluentui (elcraig@microsoft.com)
+## 7.5.2
+Fri, 17 Jan 2020 02:32:17 GMT
+
+### Patches
+
+- Update tslib minver to first version containing __spreadArrays helper due to changes in how TS emits spreads. (jagore@microsoft.com)
+## 7.5.1
+Thu, 16 Jan 2020 12:28:58 GMT
+
+### Patches
+
+- Upgrade repo to TS3.7. (jagore@microsoft.com)
+## 7.5.0
+Thu, 07 Nov 2019 12:26:32 GMT
+
+### Minor changes
+
+- Deprecate IPropsWithChildren type that is redundant with React.PropsWithChildren. (jagore@microsoft.com)
+## 7.4.4
+Thu, 03 Oct 2019 23:14:46 GMT
+
+### Patches
+
+- Fixing a publishing issue with foundation (odbuild@microsoft.com)
+- Fixes broken publish (odbuild@microsoft.com)
+## 7.4.2
+Thu, 03 Oct 2019 01:14:35 GMT
+
+### Patches
+
+- Foundation next requires @uifabric/merge-styles dependency (KevinTCoughlin@users.noreply.github.com)
+## 7.4.1
+Thu, 12 Sep 2019 12:34:15 GMT
+
+### Patches
+
+- Enable api-extractor, and minor import fixes to prevent api-extractor errors (elcraig@microsoft.com)
+## 7.4.0
+Fri, 06 Sep 2019 12:34:51 GMT
+
+### Minor changes
+
+- Foundation: Allowing recomposition in composed. (humbertomakotomorimoto@gmail.com)
+## 7.3.1
+Wed, 04 Sep 2019 04:09:58 GMT
+
+### Patches
+
+- fix version file (kchau@microsoft.com)
+## 7.3.0
+Mon, 02 Sep 2019 12:33:56 GMT
+
+### Minor changes
+
+- Foundation: Moving slots inside composed options. (humbertomakotomorimoto@gmail.com)
+## 7.2.0
+Thu, 29 Aug 2019 12:30:00 GMT
+
+### Minor changes
+
+- Renaming createComponent to compose and moving View inside component options object. (humbertomakotomorimoto@gmail.com)
+## 7.1.0
+Mon, 26 Aug 2019 12:30:49 GMT
+
+### Minor changes
+
+- Memoizing styling in createComponent for components that have their default styling determined entirely by tokens. (Humberto.Morimoto@microsoft.com)
+## 7.0.4
+Fri, 23 Aug 2019 12:35:28 GMT
+
+### Patches
+
+- Update npmignores, delete unused jest setup files (elcraig@microsoft.com)
+- Fix up readme and package.json descriptions (elcraig@microsoft.com)
+
+## 7.0.3
+Wed, 17 Jul 2019 18:58:57 GMT
+
+### Patches
+
+- Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom. (makotom@microsoft.com)
+
+## 7.0.2
+Mon, 01 Jul 2019 18:51:42 GMT
+
+### Patches
+
+- adds react-app-polyfill
+
+## 7.0.1
+Fri, 14 Jun 2019 15:54:00 GMT
+
+### Patches
+
+- Major bumping the foundation package. (Though the tooling will report this as a patch.)
+
+## 0.109.2
+Fri, 14 Jun 2019 12:26:30 GMT
+
+### Patches
+
+- Fix missing assets in production build.
+
+## 0.109.1
+Thu, 13 Jun 2019 00:24:48 GMT
+
+### Patches
+
+- Initial release of Fabric 7
+
+## 0.8.0
+Wed, 12 Jun 2019 00:42:26 GMT
+
+### Minor changes
+
+- Updating IComponent typings for ease of use in tests.
+- Evolve create component API to separate out view and make options bag optional.
+- Enable API verification and export legacy styled.
+- Foundation: Convert state components to hooks.
+- Slots: Move slot options from individual props to new slots prop object.
+- Slots: Refactor API and add slot options object.
+
+### Patches
+
+- Update and dedupe React deps.
+
+## 0.7.7
+Tue, 11 Jun 2019 12:21:35 GMT
+
+### Patches
+
+- upgrade to api-extractor 7.1.6
 
 ## 0.7.6
 Tue, 14 May 2019 07:50:30 GMT
@@ -77,7 +246,7 @@ Mon, 08 Oct 2018 12:24:15 GMT
 
 ### Patches
 
-- Moving tslint/prettier dependencies 
+- Moving tslint/prettier dependencies
 
 ## 0.5.4
 Tue, 02 Oct 2018 12:28:04 GMT
@@ -191,4 +360,3 @@ Mon, 09 Jul 2018 18:08:32 GMT
 ### Patches
 
 - Improve typing consistency.
-

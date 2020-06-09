@@ -1,9 +1,11 @@
-@import '../../node_modules/office-ui-fabric-core/dist/sass/References';
+@import '~office-ui-fabric-core/dist/sass/References';
 @import './variables';
+@import './mixins';
 
 // Root elements
 :global {
-  html, body {
+  html,
+  body {
     -webkit-font-smoothing: antialiased;
     -webkit-tap-highlight-color: transparent;
     background: $ms-color-gray10; // Match header/footer color for browsers with momentum scroll
@@ -12,13 +14,20 @@
     margin: 0;
     padding: 0;
     width: 100%;
+
+    @include high-contrast {
+      // The gradient doesn't behave well in high contrast, so get rid of it.
+      background: transparent;
+    }
   }
 
   // Border box everywhere
   html {
     box-sizing: border-box;
   }
-  *, *:before, *:after {
+  *,
+  *:before,
+  *:after {
     box-sizing: inherit;
   }
 
@@ -37,7 +46,8 @@
 
   // Implementation table styles
   .PropertiesTable {
-    > h2 { // Table headers are h2s, but should be styled like h3s
+    > h2 {
+      // Table headers are h2s, but should be styled like h3s
       @include ms-fontSize-20;
       @include ms-fontWeight-semibold;
       @include ms-fontColor-gray130;
@@ -46,7 +56,8 @@
 
     // Table headers and group headers
     .ms-DetailsHeader-cellName, // Table headers
-    .ms-GroupHeader-title span { // Group headers
+    .ms-GroupHeader-title span {
+      // Group headers
       @include ms-fontWeight-semibold;
       @include ms-fontColor-gray160;
     }
@@ -62,14 +73,50 @@
   }
 
   // Feedback section styles
-  .Feedback-button .ms-Button-label { // Feedback button color overridden by UHF
+  .FeedbackList-button .ms-Button-label {
+    // Feedback button color overridden by UHF
     @include ms-fontColor-white;
+
+    @include high-contrast {
+      color: Window;
+    }
+  }
+
+  // #headerWrapper is the UHF header wrapper. The p, ul, ol style in _typography.scss was making
+  // the header links larger than they should be, so reset that here.
+  #headerWrapper,
+  #footerWrapper,
+  #socialMediaContainer {
+    p,
+    ul,
+    ol {
+      font-size: inherit;
+    }
+  }
+
+  // Hide UHF back to top button that attempts to go to a nonexistent #main-content page,
+  // and #flightPicker element which creates accessibility issues
+  a.m-back-to-top,
+  #flightPicker {
+    display: none !important;
+  }
+
+  .c-uhfh .c-show-pipe::before {
+    color: #737373 !important
+  }
+
+  #uhfCatLogo {
+    color: #737373 !important
   }
 
   @media screen and (min-width: $uhf-screen-min-mobile) {
     // Align logo with left nav
     .c-uhfh > div {
-      padding: 0 $App-padding-right-sm 0 $App-padding-left-sm;
+      padding: 0 $App-padding-right-lg 0 $App-padding-left-lg !important;
+    }
+
+    .c-uhfh-gcontainer-st {
+      max-width: 1636px !important;
     }
 
     #uhfLogo {

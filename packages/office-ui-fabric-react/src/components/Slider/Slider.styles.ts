@@ -17,47 +17,73 @@ const GlobalClassNames = {
   valueLabel: 'ms-Slider-value',
   showValue: 'ms-Slider-showValue',
   showTransitions: 'ms-Slider-showTransitions',
-  zeroTick: 'ms-Slider-zeroTick'
+  zeroTick: 'ms-Slider-zeroTick',
 };
 
 export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
-  const { className, titleLabelClassName, theme } = props;
+  const { className, titleLabelClassName, theme, vertical, disabled, showTransitions, showValue } = props;
+  const { semanticColors } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
-  const slideBoxActiveSectionStyles = !props.disabled && {
-    backgroundColor: theme.palette.themePrimary,
+  /** Tokens:
+   *   The word "active" in the token refers to the selected section of the slider
+   *   The word "inactive" in the token refers to the unselected section of the slider */
+  const pressedActiveSectionColor = semanticColors.inputBackgroundCheckedHovered;
+  const hoveredActiveSectionColor = semanticColors.inputBackgroundChecked;
+  const hoveredPressedinactiveSectionColor = semanticColors.inputPlaceholderBackgroundChecked;
+  const restActiveSectionColor = semanticColors.smallInputBorder;
+  const restInactiveSectionColor = semanticColors.disabledBorder;
+
+  const disabledActiveSectionColor = semanticColors.disabledText;
+  const disabledInactiveSectionColor = semanticColors.disabledBackground;
+
+  const thumbBackgroundColor = semanticColors.inputBackground;
+  const thumbBorderColor = semanticColors.smallInputBorder;
+  const thumbDisabledBorderColor = semanticColors.disabledBorder;
+
+  const slideBoxActiveSectionStyles = !disabled && {
+    backgroundColor: pressedActiveSectionColor,
     selectors: {
       [HighContrastSelector]: {
-        backgroundColor: 'Highlight'
-      }
-    }
+        backgroundColor: 'Highlight',
+      },
+    },
   };
 
-  const slideBoxInactiveSectionStyles = !props.disabled && {
-    backgroundColor: theme.palette.themeLight,
+  const slideBoxInactiveSectionStyles = !disabled && {
+    backgroundColor: hoveredPressedinactiveSectionColor,
     selectors: {
       [HighContrastSelector]: {
-        borderColor: 'Highlight'
-      }
-    }
+        borderColor: 'Highlight',
+      },
+    },
   };
 
-  const slideBoxActiveThumbStyles = !props.disabled && {
-    border: `2px solid ${theme.palette.themePrimary}`,
+  const slideHoverSectionStyles = !disabled && {
+    backgroundColor: hoveredActiveSectionColor,
     selectors: {
       [HighContrastSelector]: {
-        borderColor: 'Highlight'
-      }
-    }
+        backgroundColor: 'Highlight',
+      },
+    },
+  };
+
+  const slideBoxActiveThumbStyles = !disabled && {
+    border: `2px solid ${pressedActiveSectionColor}`,
+    selectors: {
+      [HighContrastSelector]: {
+        borderColor: 'Highlight',
+      },
+    },
   };
 
   const slideBoxActiveZeroTickStyles = !props.disabled && {
-    backgroundColor: theme.palette.themeLight,
+    backgroundColor: semanticColors.inputPlaceholderBackgroundChecked,
     selectors: {
       [HighContrastSelector]: {
-        backgroundColor: 'Highlight'
-      }
-    }
+        backgroundColor: 'Highlight',
+      },
+    },
   };
 
   return {
@@ -65,36 +91,36 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
       classNames.root,
       theme.fonts.medium,
       {
-        userSelect: 'none'
+        userSelect: 'none',
       },
-      props.vertical && {
-        marginRight: 8
+      vertical && {
+        marginRight: 8,
       },
-      ...[!props.disabled ? classNames.enabled : undefined],
-      ...[props.disabled ? classNames.disabled : undefined],
-      ...[!props.vertical ? classNames.row : undefined],
-      ...[props.vertical ? classNames.column : undefined],
-      className
+      ...[!disabled ? classNames.enabled : undefined],
+      ...[disabled ? classNames.disabled : undefined],
+      ...[!vertical ? classNames.row : undefined],
+      ...[vertical ? classNames.column : undefined],
+      className,
     ],
     titleLabel: [
       {
-        padding: 0
+        padding: 0,
       },
-      titleLabelClassName
+      titleLabelClassName,
     ],
     container: [
       classNames.container,
       {
         display: 'flex',
         flexWrap: 'nowrap',
-        alignItems: 'center'
+        alignItems: 'center',
       },
-      props.vertical && {
+      vertical && {
         flexDirection: 'column',
         height: '100%',
         textAlign: 'center',
-        margin: '8px 0'
-      }
+        margin: '8px 0',
+      },
     ],
     slideBox: [
       classNames.slideBox,
@@ -107,195 +133,192 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
         display: 'flex',
         alignItems: 'center',
         selectors: {
-          ':active $activeSection': slideBoxActiveSectionStyles,
-          ':hover $activeSection': slideBoxActiveSectionStyles,
-          ':active $inactiveSection': slideBoxInactiveSectionStyles,
-          ':hover $inactiveSection': slideBoxInactiveSectionStyles,
-          ':active $thumb': slideBoxActiveThumbStyles,
-          ':hover $thumb': slideBoxActiveThumbStyles,
-          ':active $zeroTick': slideBoxActiveZeroTickStyles,
-          ':hover $zeroTick': slideBoxActiveZeroTickStyles,
-          $thumb: [
-            {
-              borderWidth: 2,
-              borderStyle: 'solid',
-              borderColor: theme.palette.neutralSecondary,
-              borderRadius: 10,
-              boxSizing: 'border-box',
-              background: theme.palette.white,
-              display: 'block',
-              width: 16,
-              height: 16,
-              position: 'absolute'
-            },
-            props.vertical
-              ? {
-                  left: -6,
-                  margin: '0 auto',
-                  transform: 'translateY(8px)'
-                }
-              : {
-                  top: -6,
-                  transform: getRTL() ? 'translateX(50%)' : 'translateX(-50%)'
-                },
-            props.showTransitions && {
-              transition: `left ${AnimationVariables.durationValue3} ${AnimationVariables.easeFunction1}`
-            },
-            props.disabled && {
-              borderColor: theme.palette.neutralTertiaryAlt,
-              selectors: {
-                [HighContrastSelector]: {
-                  borderColor: 'GrayText'
-                }
-              }
-            }
-          ]
-        }
+          [`:active .${classNames.activeSection}`]: slideBoxActiveSectionStyles,
+          [`:hover .${classNames.activeSection}`]: slideHoverSectionStyles,
+          [`:active .${classNames.inactiveSection}`]: slideBoxInactiveSectionStyles,
+          [`:hover .${classNames.inactiveSection}`]: slideBoxInactiveSectionStyles,
+          [`:active .${classNames.thumb}`]: slideBoxActiveThumbStyles,
+          [`:hover .${classNames.thumb}`]: slideBoxActiveThumbStyles,
+          [`:active .${classNames.zeroTick}`]: slideBoxActiveZeroTickStyles,
+          [`:hover .${classNames.zeroTick}`]: slideBoxActiveZeroTickStyles,
+        },
       },
-      props.vertical
+      vertical
         ? {
             height: '100%',
             width: 28,
-            padding: '8px 0' // Make room for thumb at bottom of line
+            padding: '8px 0', // Make room for thumb at bottom of line
           }
         : {
             height: 28,
             width: 'auto',
-            padding: '0 8px' // Make room for thumb at ends of line
+            padding: '0 8px', // Make room for thumb at ends of line
           },
-      ...[props.showValue ? classNames.showValue : undefined],
-      ...[props.showTransitions ? classNames.showTransitions : undefined]
+      ...[showValue ? classNames.showValue : undefined],
+      ...[showTransitions ? classNames.showTransitions : undefined],
     ],
-    thumb: [classNames.thumb],
+    thumb: [
+      classNames.thumb,
+      {
+        borderWidth: 2,
+        borderStyle: 'solid',
+        borderColor: thumbBorderColor,
+        borderRadius: 10,
+        boxSizing: 'border-box',
+        background: thumbBackgroundColor,
+        display: 'block',
+        width: 16,
+        height: 16,
+        position: 'absolute',
+      },
+      vertical
+        ? {
+            left: -6,
+            margin: '0 auto',
+            transform: 'translateY(8px)',
+          }
+        : {
+            top: -6,
+            transform: getRTL(theme) ? 'translateX(50%)' : 'translateX(-50%)',
+          },
+      showTransitions && {
+        transition: `left ${AnimationVariables.durationValue3} ${AnimationVariables.easeFunction1}`,
+      },
+      disabled && {
+        borderColor: thumbDisabledBorderColor,
+        selectors: {
+          [HighContrastSelector]: {
+            borderColor: 'GrayText',
+          },
+        },
+      },
+    ],
     line: [
       classNames.line,
       {
         display: 'flex',
         position: 'relative',
-        selectors: {
-          $lineContainer: [
-            {
-              borderRadius: 4,
-              boxSizing: 'border-box'
-            },
-            props.vertical
-              ? {
-                  width: 4,
-                  height: '100%'
-                }
-              : {
-                  height: 4,
-                  width: '100%'
-                }
-          ]
-        }
       },
-      props.vertical
+      vertical
         ? {
             height: '100%',
             width: 4,
             margin: '0 auto',
-            flexDirection: 'column-reverse'
+            flexDirection: 'column-reverse',
           }
         : {
-            width: '100%'
-          }
+            width: '100%',
+          },
     ],
-    lineContainer: [{}],
+    lineContainer: [
+      {
+        borderRadius: 4,
+        boxSizing: 'border-box',
+      },
+      vertical
+        ? {
+            width: 4,
+            height: '100%',
+          }
+        : {
+            height: 4,
+            width: '100%',
+          },
+    ],
     activeSection: [
       classNames.activeSection,
       {
-        background: theme.palette.neutralSecondary,
+        background: restActiveSectionColor,
         selectors: {
           [HighContrastSelector]: {
-            backgroundColor: 'WindowText'
-          }
-        }
+            backgroundColor: 'WindowText',
+          },
+        },
       },
-      props.showTransitions && {
-        transition: `width ${AnimationVariables.durationValue3} ${AnimationVariables.easeFunction1}`
+      showTransitions && {
+        transition: `width ${AnimationVariables.durationValue3} ${AnimationVariables.easeFunction1}`,
       },
-      props.disabled && {
-        background: theme.palette.neutralTertiaryAlt,
+      disabled && {
+        background: disabledActiveSectionColor,
         selectors: {
           [HighContrastSelector]: {
             backgroundColor: 'GrayText',
-            borderColor: 'GrayText'
-          }
-        }
-      }
+            borderColor: 'GrayText',
+          },
+        },
+      },
     ],
     inactiveSection: [
       classNames.inactiveSection,
       {
-        background: theme.palette.neutralTertiaryAlt,
+        background: restInactiveSectionColor,
         selectors: {
           [HighContrastSelector]: {
-            border: '1px solid WindowText'
-          }
-        }
+            border: '1px solid WindowText',
+          },
+        },
       },
-      props.showTransitions && {
-        transition: `width ${AnimationVariables.durationValue3} ${AnimationVariables.easeFunction1}`
+      showTransitions && {
+        transition: `width ${AnimationVariables.durationValue3} ${AnimationVariables.easeFunction1}`,
       },
-      props.disabled && {
-        background: theme.palette.neutralLight,
+      disabled && {
+        background: disabledInactiveSectionColor,
         selectors: {
           [HighContrastSelector]: {
-            borderColor: 'GrayText'
-          }
-        }
-      }
+            borderColor: 'GrayText',
+          },
+        },
+      },
     ],
     zeroTick: [
       classNames.zeroTick,
       {
         position: 'absolute',
-        background: theme.palette.neutralTertiaryAlt,
+        background: semanticColors.disabledBorder,
         selectors: {
           [HighContrastSelector]: {
-            backgroundColor: 'WindowText'
-          }
-        }
+            backgroundColor: 'WindowText',
+          },
+        },
       },
       props.disabled && {
-        background: theme.palette.neutralLight,
+        background: semanticColors.disabledBackground,
         selectors: {
           [HighContrastSelector]: {
-            backgroundColor: 'GrayText'
-          }
-        }
+            backgroundColor: 'GrayText',
+          },
+        },
       },
       props.vertical
         ? {
             width: '16px',
             height: '1px',
-            transform: getRTL() ? 'translateX(6px)' : 'translateX(-6px)'
+            transform: getRTL(theme) ? 'translateX(6px)' : 'translateX(-6px)',
           }
         : {
             width: '1px',
             height: '16px',
-            transform: 'translateY(-6px)'
-          }
+            transform: 'translateY(-6px)',
+          },
     ],
     valueLabel: [
       classNames.valueLabel,
       {
         flexShrink: 1,
         width: 30,
-        lineHeight: '1' // using a string here meaning it's relative to the size of the font
+        lineHeight: '1', // using a string here meaning it's relative to the size of the font
       },
-      props.vertical
+      vertical
         ? {
             margin: '0 auto',
             whiteSpace: 'nowrap',
-            width: 40
+            width: 40,
           }
         : {
             margin: '0 8px',
             whiteSpace: 'nowrap',
-            width: 40
-          }
-    ]
+            width: 40,
+          },
+    ],
   };
 };

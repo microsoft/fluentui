@@ -1,9 +1,11 @@
 ### Control name
 
-`MSSegmentedControl`
+`SegmentedControl` in Swift, `MSFSegmentedControl` in Objective-C
 
-### Library
+### Source code
 
-[UI Fabric iOS](https://github.com/OfficeDev/ui-fabric-ios)
+[SegmentedControl](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI/Controls/SegmentedControl.swift)
 
-[Sample Code](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric.Demo/OfficeUIFabric.Demo/Demos/MSSegmentedControlDemoController.swift)
+### Sample code
+
+[SegmentedControl demo](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI.Demo/FluentUI.Demo/Demos/SegmentedControlDemoController.swift)

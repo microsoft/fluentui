@@ -6,7 +6,7 @@ exports[`PersonaCoin renders a coin with a contact icon 1`] = `
       test-cn-root
       {
         align-items: center;
-        background-color: #2D89EF;
+        background-color: #0078D4;
         border-radius: 50%;
         color: white;
         display: flex;
@@ -17,6 +17,7 @@ exports[`PersonaCoin renders a coin with a contact icon 1`] = `
       }
 >
   <i
+    aria-hidden={true}
     className=
         test-cn-initials
         {
@@ -30,7 +31,6 @@ exports[`PersonaCoin renders a coin with a contact icon 1`] = `
           speak: none;
         }
     data-icon-name="Contact"
-    role="presentation"
   >
     
   </i>
@@ -43,7 +43,7 @@ exports[`PersonaCoin renders a coin with a contact icon for a Chinese name 1`] =
       test-cn-root
       {
         align-items: center;
-        background-color: #00A300;
+        background-color: #69797E;
         border-radius: 50%;
         color: white;
         display: flex;
@@ -54,6 +54,7 @@ exports[`PersonaCoin renders a coin with a contact icon for a Chinese name 1`] =
       }
 >
   <i
+    aria-hidden={true}
     className=
         test-cn-initials
         {
@@ -67,7 +68,6 @@ exports[`PersonaCoin renders a coin with a contact icon for a Chinese name 1`] =
           speak: none;
         }
     data-icon-name="Contact"
-    role="presentation"
   >
     
   </i>
@@ -80,7 +80,7 @@ exports[`PersonaCoin renders a coin with the initials JB 1`] = `
       test-cn-root
       {
         align-items: center;
-        background-color: #2D89EF;
+        background-color: #0078D4;
         border-radius: 50%;
         color: white;
         display: flex;
@@ -96,7 +96,6 @@ exports[`PersonaCoin renders a coin with the initials JB 1`] = `
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          color: inherit;
           display: inline;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 19.2px;
@@ -116,7 +115,7 @@ exports[`PersonaCoin renders a correct persona 1`] = `
       test-cn-root
       {
         align-items: center;
-        background-color: #5E4B8B;
+        background-color: #A4262C;
         border-radius: 50%;
         color: white;
         display: flex;
@@ -132,7 +131,6 @@ exports[`PersonaCoin renders a correct persona 1`] = `
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          color: inherit;
           display: inline;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 19.2px;
@@ -168,7 +166,6 @@ exports[`PersonaCoin renders a red coin 1`] = `
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          color: inherit;
           display: inline;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 19.2px;
@@ -188,7 +185,7 @@ exports[`PersonaCoin renders presence correctly when a very large coin is render
       test-cn-root
       {
         align-items: center;
-        background-color: #00A300;
+        background-color: #69797E;
         border-radius: 50%;
         color: white;
         display: flex;
@@ -199,6 +196,7 @@ exports[`PersonaCoin renders presence correctly when a very large coin is render
       }
 >
   <i
+    aria-hidden={true}
     className=
         test-cn-initials
         {
@@ -212,7 +210,6 @@ exports[`PersonaCoin renders presence correctly when a very large coin is render
           speak: none;
         }
     data-icon-name="Contact"
-    role="presentation"
   >
     
   </i>
@@ -222,7 +219,7 @@ exports[`PersonaCoin renders presence correctly when a very large coin is render
         {
           -ms-high-contrast-adjust: none;
           background-clip: content-box;
-          background-color: #E81123;
+          background-color: #C50F1F;
           border-radius: 50%;
           border: 2px solid #ffffff;
           bottom: -2px;
@@ -238,6 +235,7 @@ exports[`PersonaCoin renders presence correctly when a very large coin is render
           background-color: WindowText;
           border-color: Window;
         }
+    role="presentation"
     style={
       Object {
         "height": "33.333333333333336px",
@@ -246,6 +244,7 @@ exports[`PersonaCoin renders presence correctly when a very large coin is render
     }
   >
     <i
+      aria-hidden={true}
       className=
           ms-Persona-presenceIcon
           {
@@ -265,7 +264,6 @@ exports[`PersonaCoin renders presence correctly when a very large coin is render
             color: Window;
           }
       data-icon-name="SkypeMinus"
-      role="presentation"
       style={
         Object {
           "fontSize": "16.666666666666668px",
@@ -285,7 +283,7 @@ exports[`PersonaCoin renders presence when it is passed 1`] = `
       test-cn-root
       {
         align-items: center;
-        background-color: #00A300;
+        background-color: #69797E;
         border-radius: 50%;
         color: white;
         display: flex;
@@ -296,6 +294,7 @@ exports[`PersonaCoin renders presence when it is passed 1`] = `
       }
 >
   <i
+    aria-hidden={true}
     className=
         test-cn-initials
         {
@@ -309,7 +308,6 @@ exports[`PersonaCoin renders presence when it is passed 1`] = `
           speak: none;
         }
     data-icon-name="Contact"
-    role="presentation"
   >
     
   </i>
@@ -319,7 +317,7 @@ exports[`PersonaCoin renders presence when it is passed 1`] = `
         {
           -ms-high-contrast-adjust: none;
           background-clip: content-box;
-          background-color: #E81123;
+          background-color: #C50F1F;
           border-radius: 50%;
           border: 2px solid #ffffff;
           bottom: -2px;
@@ -335,6 +333,7 @@ exports[`PersonaCoin renders presence when it is passed 1`] = `
           background-color: WindowText;
           border-color: Window;
         }
+    role="presentation"
     style={
       Object {
         "height": "16px",
@@ -343,6 +342,7 @@ exports[`PersonaCoin renders presence when it is passed 1`] = `
     }
   >
     <i
+      aria-hidden={true}
       className=
           ms-Persona-presenceIcon
           {
@@ -362,7 +362,6 @@ exports[`PersonaCoin renders presence when it is passed 1`] = `
             color: Window;
           }
       data-icon-name="SkypeMinus"
-      role="presentation"
       style={
         Object {
           "fontSize": "8px",
@@ -382,7 +381,7 @@ exports[`PersonaCoin renders the coin with the provided image 1`] = `
       test-cn-root
       {
         align-items: center;
-        background-color: #00A300;
+        background-color: #69797E;
         border-radius: 50%;
         color: white;
         display: flex;
@@ -398,7 +397,6 @@ exports[`PersonaCoin renders the coin with the provided image 1`] = `
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          color: inherit;
           display: inline;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 19.2px;

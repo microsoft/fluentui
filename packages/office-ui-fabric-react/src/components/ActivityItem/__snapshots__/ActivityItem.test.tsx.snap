@@ -9,7 +9,7 @@ exports[`ActivityItem renders compact with a single persona correctly 1`] = `
         -webkit-font-smoothing: antialiased;
         align-items: center;
         box-sizing: border-box;
-        color: #666666;
+        color: #605e5c;
         display: flex;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 12px;
@@ -77,7 +77,7 @@ exports[`ActivityItem renders compact with a single persona correctly 1`] = `
               overflow: visible;
               width: 8px;
             }
-        size={8}
+        role="presentation"
         style={
           Object {
             "display": "inline-block",
@@ -97,17 +97,18 @@ exports[`ActivityItem renders compact with a single persona correctly 1`] = `
                 text-align: center;
                 width: 16px;
               }
+          role="presentation"
         >
           <div
             aria-hidden="true"
             className=
                 ms-Persona-initials
                 {
-                  background-color: #2D89EF;
+                  background-color: #4F6BED;
                   border-radius: 50%;
                   color: #ffffff;
-                  font-size: 11px;
-                  font-weight: 400;
+                  font-size: 10px;
+                  font-weight: 600;
                   height: 16px;
                   line-height: 16px;
                 }
@@ -117,6 +118,9 @@ exports[`ActivityItem renders compact with a single persona correctly 1`] = `
                   border: 1px solid WindowText;
                   box-sizing: border-box;
                   color: WindowText;
+                }
+                & i {
+                  font-weight: 600;
                 }
           >
             <span>
@@ -165,7 +169,7 @@ exports[`ActivityItem renders compact with an icon correctly 1`] = `
         -webkit-font-smoothing: antialiased;
         align-items: center;
         box-sizing: border-box;
-        color: #666666;
+        color: #605e5c;
         display: flex;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 12px;
@@ -205,19 +209,19 @@ exports[`ActivityItem renders compact with an icon correctly 1`] = `
         }
   >
     <i
+      aria-hidden={true}
       className=
 
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
             display: inline-block;
-            font-family: "FabricMDL2Icons-1";
+            font-family: "FabricMDL2Icons-2";
             font-style: normal;
             font-weight: normal;
             speak: none;
           }
       data-icon-name="Message"
-      role="presentation"
     >
       
     </i>
@@ -263,7 +267,7 @@ exports[`ActivityItem renders compact with animation correctly 1`] = `
         animation-iteration-count: 1;
         animation-name: keyframes from{opacity:0;}to{opacity:1;};
         box-sizing: border-box;
-        color: #666666;
+        color: #605e5c;
         display: flex;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 12px;
@@ -350,7 +354,7 @@ exports[`ActivityItem renders compact with animation correctly 1`] = `
               overflow: visible;
               width: 8px;
             }
-        size={8}
+        role="presentation"
         style={
           Object {
             "display": "inline-block",
@@ -370,17 +374,18 @@ exports[`ActivityItem renders compact with animation correctly 1`] = `
                 text-align: center;
                 width: 16px;
               }
+          role="presentation"
         >
           <div
             aria-hidden="true"
             className=
                 ms-Persona-initials
                 {
-                  background-color: #2D89EF;
+                  background-color: #4F6BED;
                   border-radius: 50%;
                   color: #ffffff;
-                  font-size: 11px;
-                  font-weight: 400;
+                  font-size: 10px;
+                  font-weight: 600;
                   height: 16px;
                   line-height: 16px;
                 }
@@ -390,6 +395,9 @@ exports[`ActivityItem renders compact with animation correctly 1`] = `
                   border: 1px solid WindowText;
                   box-sizing: border-box;
                   color: WindowText;
+                }
+                & i {
+                  font-weight: 600;
                 }
           >
             <span>
@@ -441,7 +449,7 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
         -webkit-font-smoothing: antialiased;
         align-items: center;
         box-sizing: border-box;
-        color: #666666;
+        color: #605e5c;
         display: flex;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 12px;
@@ -509,7 +517,7 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
               overflow: visible;
               width: 8px;
             }
-        size={8}
+        role="presentation"
         style={
           Object {
             "display": "inline-block",
@@ -529,17 +537,18 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
                 text-align: center;
                 width: 16px;
               }
+          role="presentation"
         >
           <div
             aria-hidden="true"
             className=
                 ms-Persona-initials
                 {
-                  background-color: #2D89EF;
+                  background-color: #4F6BED;
                   border-radius: 50%;
                   color: #ffffff;
-                  font-size: 11px;
-                  font-weight: 400;
+                  font-size: 10px;
+                  font-weight: 600;
                   height: 16px;
                   line-height: 16px;
                 }
@@ -549,6 +558,9 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
                   border: 1px solid WindowText;
                   box-sizing: border-box;
                   color: WindowText;
+                }
+                & i {
+                  font-weight: 600;
                 }
           >
             <span>
@@ -573,7 +585,7 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
               overflow: visible;
               width: 8px;
             }
-        size={8}
+        role="presentation"
         style={
           Object {
             "display": "inline-block",
@@ -593,6 +605,7 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
                 text-align: center;
                 width: 16px;
               }
+          role="presentation"
         >
           <div
             className=
@@ -664,7 +677,7 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
               overflow: visible;
               width: 8px;
             }
-        size={8}
+        role="presentation"
         style={
           Object {
             "display": "inline-block",
@@ -684,17 +697,18 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
                 text-align: center;
                 width: 16px;
               }
+          role="presentation"
         >
           <div
             aria-hidden="true"
             className=
                 ms-Persona-initials
                 {
-                  background-color: #00ABA9;
+                  background-color: #D13438;
                   border-radius: 50%;
                   color: #ffffff;
-                  font-size: 11px;
-                  font-weight: 400;
+                  font-size: 10px;
+                  font-weight: 600;
                   height: 16px;
                   line-height: 16px;
                 }
@@ -704,6 +718,9 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
                   border: 1px solid WindowText;
                   box-sizing: border-box;
                   color: WindowText;
+                }
+                & i {
+                  font-weight: 600;
                 }
           >
             <span>
@@ -752,7 +769,7 @@ exports[`ActivityItem renders with a single persona correctly 1`] = `
         -webkit-font-smoothing: antialiased;
         align-items: flex-start;
         box-sizing: border-box;
-        color: #666666;
+        color: #605e5c;
         display: flex;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 12px;
@@ -794,7 +811,7 @@ exports[`ActivityItem renders with a single persona correctly 1`] = `
               font-size: 14px;
               font-weight: 400;
             }
-        size={11}
+        role="presentation"
       >
         <div
           className=
@@ -806,17 +823,18 @@ exports[`ActivityItem renders with a single persona correctly 1`] = `
                 text-align: center;
                 width: 32px;
               }
+          role="presentation"
         >
           <div
             aria-hidden="true"
             className=
                 ms-Persona-initials
                 {
-                  background-color: #2D89EF;
+                  background-color: #4F6BED;
                   border-radius: 50%;
                   color: #ffffff;
                   font-size: 14px;
-                  font-weight: 400;
+                  font-weight: 600;
                   height: 32px;
                   line-height: 32px;
                 }
@@ -826,6 +844,9 @@ exports[`ActivityItem renders with a single persona correctly 1`] = `
                   border: 1px solid WindowText;
                   box-sizing: border-box;
                   color: WindowText;
+                }
+                & i {
+                  font-weight: 600;
                 }
           >
             <span>
@@ -861,7 +882,7 @@ exports[`ActivityItem renders with a single persona correctly 1`] = `
       className=
           ms-ActivityItem-commentText
           {
-            color: #333333;
+            color: #323130;
           }
     >
       <span>
@@ -874,7 +895,7 @@ exports[`ActivityItem renders with a single persona correctly 1`] = `
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
-            color: #666666;
+            color: #605e5c;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 10px;
             font-weight: 400;
@@ -895,7 +916,7 @@ exports[`ActivityItem renders with an icon correctly 1`] = `
         -webkit-font-smoothing: antialiased;
         align-items: flex-start;
         box-sizing: border-box;
-        color: #666666;
+        color: #605e5c;
         display: flex;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 12px;
@@ -914,19 +935,19 @@ exports[`ActivityItem renders with an icon correctly 1`] = `
         }
   >
     <i
+      aria-hidden={true}
       className=
 
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
             display: inline-block;
-            font-family: "FabricMDL2Icons-1";
+            font-family: "FabricMDL2Icons-2";
             font-style: normal;
             font-weight: normal;
             speak: none;
           }
       data-icon-name="Message"
-      role="presentation"
     >
       
     </i>
@@ -956,7 +977,7 @@ exports[`ActivityItem renders with an icon correctly 1`] = `
       className=
           ms-ActivityItem-commentText
           {
-            color: #333333;
+            color: #323130;
           }
     >
       <span>
@@ -969,7 +990,7 @@ exports[`ActivityItem renders with an icon correctly 1`] = `
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
-            color: #666666;
+            color: #605e5c;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 10px;
             font-weight: 400;
@@ -990,7 +1011,7 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
         -webkit-font-smoothing: antialiased;
         align-items: flex-start;
         box-sizing: border-box;
-        color: #666666;
+        color: #605e5c;
         display: flex;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 12px;
@@ -1032,7 +1053,7 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
               font-size: 14px;
               font-weight: 400;
             }
-        size={8}
+        role="presentation"
       >
         <div
           className=
@@ -1044,17 +1065,18 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
                 text-align: center;
                 width: 16px;
               }
+          role="presentation"
         >
           <div
             aria-hidden="true"
             className=
                 ms-Persona-initials
                 {
-                  background-color: #2D89EF;
+                  background-color: #4F6BED;
                   border-radius: 50%;
                   color: #ffffff;
-                  font-size: 11px;
-                  font-weight: 400;
+                  font-size: 10px;
+                  font-weight: 600;
                   height: 16px;
                   line-height: 16px;
                 }
@@ -1064,6 +1086,9 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
                   border: 1px solid WindowText;
                   box-sizing: border-box;
                   color: WindowText;
+                }
+                & i {
+                  font-weight: 600;
                 }
           >
             <span>
@@ -1085,7 +1110,7 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
               font-size: 14px;
               font-weight: 400;
             }
-        size={8}
+        role="presentation"
       >
         <div
           className=
@@ -1097,6 +1122,7 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
                 text-align: center;
                 width: 16px;
               }
+          role="presentation"
         >
           <div
             className=
@@ -1165,7 +1191,7 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
               font-size: 14px;
               font-weight: 400;
             }
-        size={8}
+        role="presentation"
       >
         <div
           className=
@@ -1177,17 +1203,18 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
                 text-align: center;
                 width: 16px;
               }
+          role="presentation"
         >
           <div
             aria-hidden="true"
             className=
                 ms-Persona-initials
                 {
-                  background-color: #00ABA9;
+                  background-color: #D13438;
                   border-radius: 50%;
                   color: #ffffff;
-                  font-size: 11px;
-                  font-weight: 400;
+                  font-size: 10px;
+                  font-weight: 600;
                   height: 16px;
                   line-height: 16px;
                 }
@@ -1197,6 +1224,9 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
                   border: 1px solid WindowText;
                   box-sizing: border-box;
                   color: WindowText;
+                }
+                & i {
+                  font-weight: 600;
                 }
           >
             <span>
@@ -1218,7 +1248,7 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
               font-size: 14px;
               font-weight: 400;
             }
-        size={8}
+        role="presentation"
       >
         <div
           className=
@@ -1230,6 +1260,7 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
                 text-align: center;
                 width: 16px;
               }
+          role="presentation"
         >
           <div
             className=
@@ -1312,7 +1343,7 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
       className=
           ms-ActivityItem-commentText
           {
-            color: #333333;
+            color: #323130;
           }
     >
       <span>
@@ -1325,7 +1356,7 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
-            color: #666666;
+            color: #605e5c;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 10px;
             font-weight: 400;

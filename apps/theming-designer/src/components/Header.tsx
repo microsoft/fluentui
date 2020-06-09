@@ -1,7 +1,5 @@
 import * as React from 'react';
-import { Card } from '@uifabric/react-cards';
-import { Stack } from 'office-ui-fabric-react/lib/Stack';
-import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
+import { Stack, Link, ILinkStyleProps, ILinkStyles, PrimaryButton, ITheme, IStackProps } from 'office-ui-fabric-react';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
 import { Pivot, PivotItem } from 'office-ui-fabric-react/lib/Pivot';
 import { IThemeRules, ThemeGenerator } from 'office-ui-fabric-react/lib/ThemeGenerator';
@@ -20,37 +18,61 @@ export interface IHeaderState {
 }
 
 const outputPanelClassName = mergeStyles({
-  display: 'flex'
+  display: 'flex',
 });
 
 const textAreaClassName = mergeStyles({
   height: 350,
-  width: 280,
+  width: '100%',
   marginRight: 28,
   backgroundColor: 'white',
-  color: '#333'
+  color: '#333',
 });
 
 const microsoftLogo = mergeStyles({
-  width: '120px'
+  width: '120px',
+  display: 'block',
 });
 
-const pipeFabricClassName = mergeStyles({
-  fontSize: '15px',
-  fontWeight: 'bold',
-  color: '#000000',
-  textDecoration: 'none',
-  marginTop: '10px'
+const pipeFabricStyles = (p: ILinkStyleProps): ILinkStyles => ({
+  root: {
+    textDecoration: 'none',
+    color: p.theme.semanticColors.bodyText,
+    fontWeight: '600',
+    fontSize: p.theme.fonts.medium.fontSize,
+  },
 });
 
-const codeHeader = "import { loadTheme } from 'office-ui-fabric-react';\n\n";
-const codepenHeader = 'const { loadTheme, DefaultButton, PrimaryButton, Toggle, TooltipHost } = Fabric;\n\n';
-const codepenSamples =
-  '\n\nclass Content extends React.Component {\n  public render() {\n    return (<div>' +
-  '<DefaultButton text="DefaultButton"/><PrimaryButton text="PrimaryButton"/>' +
-  '<Toggle label="Enabled"/><Toggle label="Disabled" disabled={true}/>' +
-  '</div>);\n  }\n}\n' +
-  "ReactDOM.render(<Content />,document.getElementById('content'));";
+const headerStackStyles = (p: IStackProps, theme: ITheme) => ({
+  root: {
+    backgroundColor: theme.semanticColors.bodyBackground,
+    minHeight: 47,
+    padding: '0 32px',
+    boxShadow: theme.effects.elevation16,
+  },
+});
+
+const codepenHeader = `const {
+  createTheme,
+  Customizations,
+  DefaultButton,
+  PrimaryButton,
+  Toggle,
+  TooltipHost
+} = Fabric;\n\n`;
+const codepenSamples = `\n\nclass Content extends React.Component {
+    public render()
+    {
+      Customizations.applySettings({ theme: myTheme });
+      return (
+        <div>
+          <DefaultButton text="DefaultButton"/><PrimaryButton text="PrimaryButton"/>
+          <Toggle label="Enabled"/><Toggle label="Disabled" disabled={true}/>
+        </div>
+      );
+    }
+}
+ReactDOM.render(<Content />,document.getElementById('content'));`;
 
 export class Header extends React.Component<IHeaderProps, IHeaderState> {
   constructor(props: any) {
@@ -59,70 +81,78 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
       showPanel: false,
       jsonTheme: '',
       powershellTheme: '',
-      themeAsCode: <div />
+      themeAsCode: <div />,
     };
   }
 
   public render(): JSX.Element {
     return (
-      <Card
-        styles={{
-          root: { backgroundColor: 'white', minWidth: '99%', height: '35px', position: 'fixed', left: '0', top: '0', zIndex: 600 }
-        }}
-      >
-        <Stack horizontal tokens={{ childrenGap: 1200 }}>
-          <Stack horizontal>
-            <a href="https://www.microsoft.com" title="Microsoft Home Page" aria-label="Microsoft Home Page" className={microsoftLogo}>
-              <img src="https://themingdesigner.blob.core.windows.net/$web/MicrosoftLogo.png" className={microsoftLogo} />
-            </a>
-            <a
-              href="https://www.aka.ms/themedesigner"
-              title="Microsoft Theme Designer page"
-              aria-label="Microsoft Fabric Theme Designer page"
-              className={pipeFabricClassName}
-            >
-              <span> | UI Fabric Theme Designer </span>
-            </a>
-          </Stack>
-          <Stack horizontal styles={{ root: { position: 'absolute', right: '25px' } }}>
-            <PrimaryButton text="Export theme" onClick={this.showPanel} styles={{ root: { width: '130px', height: '35px' } }} />
-            <Panel
-              isOpen={this.state.showPanel}
-              type={PanelType.smallFixedFar}
-              onDismiss={this.hidePanel}
-              headerText="Export theme"
-              closeButtonAriaLabel="Close"
-              onRenderFooterContent={this.onRenderFooterContent}
-            >
-              <span>
-                <p>
-                  This code block initializes the theme you have configured above and loads it using the loadTheme utility function. Calling
-                  loadTheme will automatically apply the configured theming to any Fabric controls used within the same app. You can also
-                  export this example to CodePen with a few component examples below.
-                </p>
-              </span>
-              <div className={outputPanelClassName}>
-                <Pivot>
-                  <PivotItem headerText="Code">
-                    <textarea
-                      className={textAreaClassName}
-                      readOnly={true}
-                      spellCheck={false}
-                      value={codeHeader + this.state.themeAsCode}
-                    />
-                  </PivotItem>
-                  <PivotItem headerText="JSON">
-                    <textarea className={textAreaClassName} readOnly={true} spellCheck={false} value={this.state.jsonTheme} />
-                  </PivotItem>
-                  <PivotItem headerText="PowerShell">
-                    <textarea className={textAreaClassName} readOnly={true} spellCheck={false} value={this.state.powershellTheme} />
-                  </PivotItem>
-                </Pivot>
-              </div>
-            </Panel>
-          </Stack>
+      <Stack horizontal verticalAlign="center" grow={0} styles={headerStackStyles}>
+        <Stack horizontal grow={1} verticalAlign="center">
+          <a
+            href="https://www.microsoft.com"
+            title="Microsoft Home Page"
+            aria-label="Microsoft Home Page"
+            className={microsoftLogo}
+          >
+            <img src="https://themingdesigner.blob.core.windows.net/$web/MicrosoftLogo.png" className={microsoftLogo} />
+          </a>
+          <Link
+            href="https://www.aka.ms/themedesigner"
+            title="Microsoft Theme Designer page"
+            aria-label="Microsoft Fabric Theme Designer page"
+            styles={pipeFabricStyles}
+          >
+            | Fluent UI Theme Designer
+          </Link>
         </Stack>
-      </Card>
+        <PrimaryButton text="Export theme" onClick={this.showPanel} />
+        <Panel
+          isOpen={this.state.showPanel}
+          type={PanelType.smallFixedFar}
+          onDismiss={this.hidePanel}
+          headerText="Export theme"
+          closeButtonAriaLabel="Close"
+          onRenderFooterContent={this.onRenderFooterContent}
+        >
+          <span>
+            <p>
+              This code block creates the theme you have configured above using the createTheme utility function.
+              Calling Customizations.applySettings with this theme will automatically apply the configured theming to
+              any Fabric controls used within the same app. You can also export this example to CodePen with a few
+              component examples below.
+            </p>
+          </span>
+          <div className={outputPanelClassName}>
+            <Pivot>
+              <PivotItem headerText="Code">
+                <textarea
+                  className={textAreaClassName}
+                  readOnly={true}
+                  spellCheck={false}
+                  value={this.state.themeAsCode}
+                />
+              </PivotItem>
+              <PivotItem headerText="JSON">
+                <textarea
+                  className={textAreaClassName}
+                  readOnly={true}
+                  spellCheck={false}
+                  value={this.state.jsonTheme}
+                />
+              </PivotItem>
+              <PivotItem headerText="PowerShell">
+                <textarea
+                  className={textAreaClassName}
+                  readOnly={true}
+                  spellCheck={false}
+                  value={this.state.powershellTheme}
+                />
+              </PivotItem>
+            </Pivot>
+          </div>
+        </Panel>
+      </Stack>
     );
   }
 
@@ -148,14 +178,17 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
     this.setState({
       jsonTheme: JSON.stringify(ThemeGenerator.getThemeAsJson(abridgedTheme), void 0, 2),
       powershellTheme: ThemeGenerator.getThemeForPowerShell(abridgedTheme),
-      themeAsCode: ThemeGenerator.getThemeAsCode(abridgedTheme)
+      themeAsCode: ThemeGenerator.getThemeAsCodeWithCreateTheme(abridgedTheme),
     });
   };
 
   private onRenderFooterContent = () => {
     return (
       <div>
-        <CodepenComponent jsContent={codepenHeader + this.state.themeAsCode + codepenSamples} buttonAs={PrimaryButton} />
+        <CodepenComponent
+          jsContent={codepenHeader + this.state.themeAsCode + codepenSamples}
+          buttonAs={PrimaryButton}
+        />
       </div>
     );
   };

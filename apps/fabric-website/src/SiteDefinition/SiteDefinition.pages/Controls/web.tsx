@@ -27,7 +27,7 @@ export const categories: { Other?: ICategory; [name: string]: ICategory } = {
     Slider: {},
     SpinButton: {},
     TextField: {},
-    Toggle: {}
+    Toggle: {},
   },
   'Galleries & Pickers': {
     Pickers: {},
@@ -35,7 +35,7 @@ export const categories: { Other?: ICategory; [name: string]: ICategory } = {
     ColorPicker: {},
     DatePicker: {},
     PeoplePicker: {},
-    SwatchColorPicker: {}
+    SwatchColorPicker: {},
   },
   'Items & Lists': {
     List: { title: 'Basic List' },
@@ -65,15 +65,15 @@ export const categories: { Other?: ICategory; [name: string]: ICategory } = {
         Advanced: { title: 'Variable Row Heights', url: 'variablerowheights' },
         DragDrop: { title: 'Drag & Drop', url: 'draganddrop' },
         NavigatingFocus: { title: 'Inner Navigation', url: 'innernavigation' },
-        Shimmer: {}
-      }
+        Shimmer: {},
+      },
     },
     GroupedList: {},
     ActivityItem: {},
     DocumentCard: {},
     Facepile: {},
     HoverCard: {},
-    Persona: {}
+    Persona: {},
   },
   'Commands, Menus & Navs': {
     Breadcrumb: {},
@@ -81,17 +81,17 @@ export const categories: { Other?: ICategory; [name: string]: ICategory } = {
     ContextualMenu: {},
     Nav: {},
     OverflowSet: {},
-    Pivot: {}
+    Pivot: {},
   },
   'Notification & Engagement': {
     Coachmark: {},
     MessageBar: {},
-    TeachingBubble: {}
+    TeachingBubble: {},
   },
   Progress: {
     ProgressIndicator: {},
     Shimmer: {},
-    Spinner: {}
+    Spinner: {},
   },
   Surfaces: {
     Callout: {},
@@ -99,7 +99,7 @@ export const categories: { Other?: ICategory; [name: string]: ICategory } = {
     Modal: {},
     Panel: {},
     ScrollablePane: {},
-    Tooltip: {}
+    Tooltip: {},
   },
   Utilities: {
     Announced: {
@@ -107,8 +107,8 @@ export const categories: { Other?: ICategory; [name: string]: ICategory } = {
         QuickActions: { title: 'Quick Actions' },
         SearchResults: { title: 'Search Results' },
         LazyLoading: { title: 'Lazy Loading' },
-        BulkOperations: { title: 'Bulk Operations' }
-      }
+        BulkOperations: { title: 'Bulk Operations' },
+      },
     },
     FocusTrapZone: {},
     FocusZone: {},
@@ -123,9 +123,12 @@ export const categories: { Other?: ICategory; [name: string]: ICategory } = {
     Separator: {},
     Stack: {},
     Text: {},
-    Themes: {}
+    Themes: {},
   },
-  References: {}
+  Experimental: {
+    Card: {},
+  },
+  References: {},
   // The "Other" category can be useful for local development, but it currently can also cause
   // non-web controls (such as Chip) to show up on the web controls page.
   // Other: {}
@@ -204,6 +207,7 @@ function generateCategories() {
     // First page in the category is a non-category version of the parent page
     parentPage.pages = [{ ...parentPage }];
     parentPage.isCategory = true;
+    delete parentPage.url;
 
     for (const pagePath of childPagePaths) {
       // pagePath will be like ./DetailsList/DetailsListBasicPage
@@ -219,8 +223,8 @@ function generateCategories() {
           _generatePage(requireContext, pageComponentName, pagePath, {
             ...subPageOverrides,
             title: `${parentComponentName} - ${subPageOverrides.title || pageName}`,
-            url: `${parentComponentName}/${subPageOverrides.url || pageName}`.toLowerCase()
-          })
+            url: `${parentComponentName}/${subPageOverrides.url || pageName}`.toLowerCase(),
+          }),
         );
       }
     }
@@ -232,22 +236,18 @@ function generateCategories() {
   // Convert the categories to an array (filter out empty categories)
   return categoryNames
     .filter(category => !!pagesByCategory[category].length)
-    .map(category => {
-      const pages = pagesByCategory[category];
-      return {
-        title: category,
-        url: pages[0].url,
-        isCategory: true,
-        pages
-      };
-    });
+    .map(category => ({
+      title: category,
+      isCategory: true,
+      pages: pagesByCategory[category],
+    }));
 }
 
 function _generatePage(
   requireContext: __WebpackModuleApi.RequireContext,
   componentName: string,
   pagePath: string,
-  overrides: CategoryPage
+  overrides: CategoryPage,
 ): CategoryPage & INavPage {
   const { url, ...nonUrlOverrides } = overrides;
   return {
@@ -255,7 +255,7 @@ function _generatePage(
     url: '#/controls/web/' + (url || componentName.toLowerCase()),
     component: () => <LoadingComponent title={overrides.title || componentName} />,
     getComponent: cb => requireContext(pagePath).then((mod: any) => cb(mod[componentName + 'Page'])),
-    ...nonUrlOverrides
+    ...nonUrlOverrides,
   };
 }
 
@@ -272,7 +272,7 @@ function _loadReferences(): INavPage[] {
       getComponent: cb =>
         requireContext(pagePath).then((jsonDocs: IPageJson) => {
           cb(() => <ControlsAreaPage jsonDocs={jsonDocs} title={pageName} hideImplementationTitle />);
-        })
+        }),
     };
   });
 }
@@ -283,9 +283,12 @@ export const controlsPagesWeb: INavPage[] = [
     url: '#/controls/web',
     isHiddenFromMainNav: true,
     component: () => <LoadingComponent title="Controls" />,
-    getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Overviews/ControlsPage/ControlsPage').ControlsPage))
+    getComponent: cb =>
+      require.ensure([], require =>
+        cb(require<any>('../../../pages/Overviews/ControlsPage/ControlsPage').ControlsPage),
+      ),
   },
-  ...generateCategories()
+  ...generateCategories(),
 ];
 
 // Old list

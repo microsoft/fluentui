@@ -1,19 +1,20 @@
 import { IButtonStyles } from './Button.types';
 import { memoizeFunction } from '../../Utilities';
-import { HighContrastSelector, ITheme, IRawStyle, getFocusStyle, FontSizes, hiddenContentStyle } from '../../Styling';
+import { HighContrastSelector, ITheme, IRawStyle, getFocusStyle, hiddenContentStyle } from '../../Styling';
 
 const noOutline: IRawStyle = {
-  outline: 0
+  outline: 0,
 };
 
-const iconStyle = {
-  fontSize: FontSizes.icon,
-  margin: '0 4px',
-  height: '16px',
-  lineHeight: '16px',
-  textAlign: 'center',
-  verticalAlign: 'middle',
-  flexShrink: 0
+const iconStyle = (fontSize?: string | number): IRawStyle => {
+  return {
+    fontSize: fontSize,
+    margin: '0 4px',
+    height: '16px',
+    lineHeight: '16px',
+    textAlign: 'center',
+    flexShrink: 0,
+  };
 };
 
 /**
@@ -23,7 +24,7 @@ const iconStyle = {
  */
 export const getStyles = memoizeFunction(
   (theme: ITheme): IButtonStyles => {
-    const { semanticColors } = theme;
+    const { semanticColors, effects, fonts } = theme;
 
     const border = semanticColors.buttonBorder;
     const disabledBackground = semanticColors.disabledBackground;
@@ -34,12 +35,12 @@ export const getStyles = memoizeFunction(
       bottom: -2,
       right: -2,
       border: 'none',
-      outlineColor: 'ButtonText'
+      outlineColor: 'ButtonText',
     };
 
     return {
       root: [
-        getFocusStyle(theme, { inset: -1, highContrastStyle: buttonHighContrastFocus }),
+        getFocusStyle(theme, { inset: 1, highContrastStyle: buttonHighContrastFocus, borderColor: 'transparent' }),
         theme.fonts.medium,
         {
           boxSizing: 'border-box',
@@ -49,25 +50,25 @@ export const getStyles = memoizeFunction(
           textDecoration: 'none',
           textAlign: 'center',
           cursor: 'pointer',
-          verticalAlign: 'top',
           padding: '0 16px',
-          borderRadius: 0,
-          margin: 0,
+          borderRadius: effects.roundedCorner2,
+
           selectors: {
             // IE11 workaround for preventing shift of child elements of a button when active.
             ':active > *': {
               position: 'relative',
               left: 0,
-              top: 0
-            }
-          }
-        }
+              top: 0,
+            },
+          },
+        },
       ],
 
       rootDisabled: [
-        getFocusStyle(theme, { inset: -1, highContrastStyle: buttonHighContrastFocus }),
+        getFocusStyle(theme, { inset: 1, highContrastStyle: buttonHighContrastFocus, borderColor: 'transparent' }),
         {
           backgroundColor: disabledBackground,
+          borderColor: disabledBackground,
           color: disabledText,
           cursor: 'default',
           pointerEvents: 'none',
@@ -76,18 +77,18 @@ export const getStyles = memoizeFunction(
             ':focus': noOutline,
             [HighContrastSelector]: {
               color: 'grayText',
-              bordercolor: 'grayText'
-            }
-          }
-        }
+              borderColor: 'grayText',
+            },
+          },
+        },
       ],
 
       iconDisabled: {
-        color: disabledText
+        color: disabledText,
       },
 
       menuIconDisabled: {
-        color: disabledText
+        color: disabledText,
       },
 
       flexContainer: {
@@ -95,28 +96,28 @@ export const getStyles = memoizeFunction(
         height: '100%',
         flexWrap: 'nowrap',
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+      },
+      description: {
+        display: 'block',
       },
 
       textContainer: {
-        flexGrow: 1
+        flexGrow: 1,
+        display: 'block',
       },
 
-      icon: iconStyle,
+      icon: iconStyle(fonts.mediumPlus.fontSize),
 
-      menuIcon: [
-        iconStyle,
-        {
-          fontSize: FontSizes.small
-        }
-      ],
+      menuIcon: iconStyle(fonts.small.fontSize),
 
       label: {
         margin: '0 4px',
-        lineHeight: '100%'
+        lineHeight: '100%',
+        display: 'block',
       },
 
-      screenReaderText: hiddenContentStyle
+      screenReaderText: hiddenContentStyle,
     };
-  }
+  },
 );

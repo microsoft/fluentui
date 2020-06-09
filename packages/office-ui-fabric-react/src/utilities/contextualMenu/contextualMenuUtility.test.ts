@@ -1,4 +1,4 @@
-import { getIsChecked, hasSubmenu } from './contextualMenuUtility';
+import { getIsChecked, hasSubmenu, getMenuItemAriaRole } from './contextualMenuUtility';
 import { IContextualMenuItem } from '../../index';
 
 describe('getIsChecked', () => {
@@ -18,6 +18,14 @@ describe('getIsChecked', () => {
       menuItem.checked = true;
       expect(getIsChecked(menuItem)).toBe(true);
     });
+  });
+
+  it('when item cannot be checked', () => {
+    const menuItem: IContextualMenuItem = {
+      key: '123',
+      canCheck: false,
+    };
+    expect(getIsChecked(menuItem)).toBe(null);
   });
 
   describe('when item isChecked', () => {
@@ -54,6 +62,18 @@ describe('getIsChecked', () => {
     it('returns false', () => {
       expect(getIsChecked(menuItem)).toBeFalsy();
     });
+  });
+});
+
+describe('getMenuItemAriaRole', () => {
+  it('menu item is checkbox', () => {
+    const menuItem: IContextualMenuItem = { key: '123', canCheck: true, checked: false };
+    expect(getMenuItemAriaRole(menuItem)).toBe('menuitemcheckbox');
+  });
+
+  it('menu item is not checkbox', () => {
+    const menuItem: IContextualMenuItem = { key: '123', canCheck: false };
+    expect(getMenuItemAriaRole(menuItem)).toBe('menuitem');
   });
 });
 

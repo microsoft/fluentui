@@ -9,7 +9,9 @@ import * as stylesImport from './PickerItemsDefault.scss';
 // tslint:disable-next-line:no-any
 const styles: any = stylesImport;
 
-export const SelectedItemDefault: (props: IPeoplePickerItemProps) => JSX.Element = (peoplePickerItemProps: IPeoplePickerItemProps) => {
+export const SelectedItemDefault: (props: IPeoplePickerItemProps) => JSX.Element = (
+  peoplePickerItemProps: IPeoplePickerItemProps,
+) => {
   const { item, onRemoveItem, index, selected, removeButtonAriaLabel } = peoplePickerItemProps;
 
   const itemId = getId();
@@ -27,7 +29,7 @@ export const SelectedItemDefault: (props: IPeoplePickerItemProps) => JSX.Element
         'ms-PickerPersona-container',
         styles.personaContainer,
         { ['is-selected ' + styles.personaContainerIsSelected]: selected },
-        { ['is-invalid ' + styles.validationError]: !item.isValid }
+        { ['is-invalid ' + styles.validationError]: !item.isValid },
       )}
       data-is-focusable={true}
       data-is-sub-focuszone={true}
@@ -36,7 +38,11 @@ export const SelectedItemDefault: (props: IPeoplePickerItemProps) => JSX.Element
       aria-labelledby={'selectedItemPersona-' + itemId}
     >
       <div className={css('ms-PickerItem-content', styles.itemContent)} id={'selectedItemPersona-' + itemId}>
-        <Persona {...item} presence={item.presence !== undefined ? item.presence : PersonaPresence.none} size={PersonaSize.size28} />
+        <Persona
+          {...item}
+          presence={item.presence !== undefined ? item.presence : PersonaPresence.none}
+          size={PersonaSize.size28} // tslint:disable-line:deprecation
+        />
       </div>
       <IconButton
         onClick={onClickIconButton(onRemoveItem)}

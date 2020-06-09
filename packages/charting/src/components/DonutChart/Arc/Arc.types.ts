@@ -33,6 +33,16 @@ export interface IArcProps {
   hoverOnCallback?: Function;
 
   /**
+   * Defines the function that is executed upon hovering over the legend
+   */
+  onFocusCallback?: Function;
+
+  /**
+   * Defines the function that is executed upon hovering Leave the legend
+   */
+  onBlurCallback?: Function;
+
+  /**
    * Defines the function that is executed upon hovering Leave the legend
    */
   hoverLeaveCallback?: Function;
@@ -41,6 +51,12 @@ export interface IArcProps {
    * Uniq string for chart
    */
   uniqText?: string;
+
+  /**
+   * string for callout id
+   */
+  calloutId?: string;
+
   /**
    * Active Arc for chart
    */
@@ -50,6 +66,11 @@ export interface IArcProps {
    * internal prop for href
    */
   href?: string;
+
+  /**
+   * props for inside donut value
+   */
+  valueInsideDonut?: string | number;
 }
 
 export interface IArcData {
@@ -84,4 +105,9 @@ export interface IArcStyles {
    * Style set for the card header component root
    */
   root: IStyle;
+
+  /**
+   * Style set for the inside donut string
+   */
+  insideDonutString: IStyle;
 }

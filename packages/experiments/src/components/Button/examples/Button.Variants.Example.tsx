@@ -1,27 +1,26 @@
 import * as React from 'react';
+import { Stack, Text } from 'office-ui-fabric-react';
 import {
   ActionButton,
-  BaseButton,
   CommandBarButton,
   CompoundButton,
   DefaultButton,
   IconButton,
   MessageBarButton,
-  PrimaryButton
+  PrimaryButton,
+  Actionable,
+  MenuButton,
+  SplitButton,
+  ISplitButtonProps,
 } from '@uifabric/experiments';
-import { Stack, Text } from 'office-ui-fabric-react';
 
 const tokens = {
   sectionStack: {
-    childrenGap: 32
+    childrenGap: 32,
   },
   buttonStack: {
-    childrenGap: 12
-  }
-};
-
-const alertClicked = (): void => {
-  alert('Clicked');
+    childrenGap: 12,
+  },
 };
 
 const ButtonStack = (props: { children: JSX.Element[] | JSX.Element }) => (
@@ -33,43 +32,72 @@ const ButtonStack = (props: { children: JSX.Element[] | JSX.Element }) => (
 // tslint:disable:jsx-no-lambda
 export class ButtonVariantsExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
+    const menuProps: ISplitButtonProps['menu'] = {
+      items: [
+        {
+          key: 'a',
+          name: 'Item a',
+        },
+        {
+          key: 'b',
+          name: 'Item b',
+        },
+      ],
+    };
+
     return (
       <Stack tokens={tokens.sectionStack}>
         <Stack tokens={tokens.buttonStack}>
           <ButtonStack>
-            <DefaultButton text="Default button" onClick={alertClicked} />
-            <DefaultButton disabled text="Disabled default button" onClick={alertClicked} />
-            <PrimaryButton text="Primary button" onClick={alertClicked} />
-            <PrimaryButton disabled text="Disabled primary button" onClick={alertClicked} />
+            <Actionable>Actionable</Actionable>
+            <Actionable disabled>Disabled Actionable</Actionable>
           </ButtonStack>
           <ButtonStack>
-            <BaseButton text="Base Button" onClick={alertClicked} />
-            <BaseButton disabled text="Disabled Base Button" onClick={alertClicked} />
+            <DefaultButton content="Default button" />
+            <DefaultButton disabled content="Disabled default button" />
+            <PrimaryButton content="Primary button" />
+            <PrimaryButton disabled content="Disabled primary button" />
           </ButtonStack>
           <ButtonStack>
-            <ActionButton text="Action button" onClick={alertClicked} />
-            <ActionButton disabled text="Disabled action button" onClick={alertClicked} />
+            <ActionButton content="Action button" />
+            <ActionButton disabled content="Disabled action button" />
           </ButtonStack>
           <ButtonStack>
-            <CommandBarButton text="Command bar button" onClick={alertClicked} />
-            <CommandBarButton disabled text="Disabled command bar button" onClick={alertClicked} />
+            <CommandBarButton content="Command bar button" />
+            <CommandBarButton disabled content="Disabled command bar button" />
           </ButtonStack>
           <ButtonStack>
-            <CompoundButton text="Compound button" secondaryText="Enabled" onClick={alertClicked} />
-            <CompoundButton primary text="Compound button" secondaryText="Primary Enabled" onClick={alertClicked} />
-            <CompoundButton disabled text="Compound button" secondaryText="Disabled" onClick={alertClicked} />
-            <CompoundButton primary disabled text="Compound button" secondaryText="Primary Disabled" onClick={alertClicked} />
+            <CompoundButton content="Compound button" secondaryText="Enabled" />
+            <CompoundButton primary content="Compound button" secondaryText="Primary Enabled" />
+            <CompoundButton disabled content="Compound button" secondaryText="Disabled" />
+            <CompoundButton primary disabled content="Compound button" secondaryText="Primary Disabled" />
           </ButtonStack>
           <ButtonStack>
             <Stack horizontal verticalAlign="center">
               <Text>Icon Button:</Text>
-              <IconButton iconProps={{ iconName: 'Emoji2' }} onClick={alertClicked} />
-              <IconButton disabled iconProps={{ iconName: 'Emoji2' }} onClick={alertClicked} />
+              <IconButton icon={{ iconName: 'Emoji2' }} />
+              <IconButton disabled icon={{ iconName: 'Emoji2' }} />
             </Stack>
           </ButtonStack>
           <ButtonStack>
-            <MessageBarButton text="Message bar button" onClick={alertClicked} />
-            <MessageBarButton disabled text="Disabled message bar button" onClick={alertClicked} />
+            <MessageBarButton content="Default" />
+            <MessageBarButton primary content="Primary" />
+            <MessageBarButton disabled content="Disabled" />
+            <MessageBarButton primary disabled content="P Disabled" />
+          </ButtonStack>
+          <ButtonStack>
+            <MenuButton content="Button" menu={menuProps} />
+            <MenuButton primary content="Button" menu={menuProps} />
+            <MenuButton disabled content="Button" menu={menuProps} />
+            <MenuButton primary disabled content="Button" menu={menuProps} />
+          </ButtonStack>
+          <ButtonStack>
+            <SplitButton content="Button" menu={menuProps} />
+            <SplitButton disabled content="Button" menu={menuProps} />
+            <SplitButton primary content="Button" menu={menuProps} />
+            <SplitButton disabled primary content="Button" menu={menuProps} />
+            <SplitButton primaryActionDisabled content="Button" menu={menuProps} />
+            <SplitButton primaryActionDisabled primary content="Button" menu={menuProps} />
           </ButtonStack>
         </Stack>
       </Stack>

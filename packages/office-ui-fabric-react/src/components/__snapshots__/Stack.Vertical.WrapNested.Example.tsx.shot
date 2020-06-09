@@ -44,11 +44,11 @@ exports[`Component Examples renders Stack.Vertical.WrapNested.Example.tsx correc
             -webkit-font-smoothing: antialiased;
             box-shadow: none;
             box-sizing: border-box;
-            color: #333333;
+            color: #323130;
             display: block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
-            font-weight: 400;
+            font-weight: 600;
             margin-bottom: 0px;
             margin-left: 0px;
             margin-right: 0px;
@@ -79,6 +79,7 @@ exports[`Component Examples renders Stack.Vertical.WrapNested.Example.tsx correc
         aria-valuemax={420}
         aria-valuemin={1}
         aria-valuenow={420}
+        aria-valuetext="420"
         className=
             ms-Slider-slideBox
             ms-Slider-showValue
@@ -107,74 +108,59 @@ exports[`Component Examples renders Stack.Vertical.WrapNested.Example.tsx correc
               bottom: 1px;
               content: "";
               left: 1px;
-              outline: 1px solid #666666;
+              outline: 1px solid #605e5c;
               position: absolute;
               right: 1px;
               top: 1px;
               z-index: 1;
             }
-            &:active $activeSection {
+            &:active .ms-Slider-active {
+              background-color: #005a9e;
+            }
+            @media screen and (-ms-high-contrast: active){&:active .ms-Slider-active {
+              background-color: Highlight;
+            }
+            &:hover .ms-Slider-active {
               background-color: #0078d4;
             }
-            @media screen and (-ms-high-contrast: active){&:active $activeSection {
+            @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-active {
               background-color: Highlight;
             }
-            &:hover $activeSection {
-              background-color: #0078d4;
+            &:active .ms-Slider-inactive {
+              background-color: #deecf9;
             }
-            @media screen and (-ms-high-contrast: active){&:hover $activeSection {
+            @media screen and (-ms-high-contrast: active){&:active .ms-Slider-inactive {
+              border-color: Highlight;
+            }
+            &:hover .ms-Slider-inactive {
+              background-color: #deecf9;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-inactive {
+              border-color: Highlight;
+            }
+            &:active .ms-Slider-thumb {
+              border: 2px solid #005a9e;
+            }
+            @media screen and (-ms-high-contrast: active){&:active .ms-Slider-thumb {
+              border-color: Highlight;
+            }
+            &:hover .ms-Slider-thumb {
+              border: 2px solid #005a9e;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-thumb {
+              border-color: Highlight;
+            }
+            &:active .ms-Slider-zeroTick {
+              background-color: #deecf9;
+            }
+            @media screen and (-ms-high-contrast: active){&:active .ms-Slider-zeroTick {
               background-color: Highlight;
             }
-            &:active $inactiveSection {
-              background-color: #c7e0f4;
+            &:hover .ms-Slider-zeroTick {
+              background-color: #deecf9;
             }
-            @media screen and (-ms-high-contrast: active){&:active $inactiveSection {
-              border-color: Highlight;
-            }
-            &:hover $inactiveSection {
-              background-color: #c7e0f4;
-            }
-            @media screen and (-ms-high-contrast: active){&:hover $inactiveSection {
-              border-color: Highlight;
-            }
-            &:active $thumb {
-              border: 2px solid #0078d4;
-            }
-            @media screen and (-ms-high-contrast: active){&:active $thumb {
-              border-color: Highlight;
-            }
-            &:hover $thumb {
-              border: 2px solid #0078d4;
-            }
-            @media screen and (-ms-high-contrast: active){&:hover $thumb {
-              border-color: Highlight;
-            }
-            &:active $zeroTick {
-              background-color: #c7e0f4;
-            }
-            @media screen and (-ms-high-contrast: active){&:active $zeroTick {
+            @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-zeroTick {
               background-color: Highlight;
-            }
-            &:hover $zeroTick {
-              background-color: #c7e0f4;
-            }
-            @media screen and (-ms-high-contrast: active){&:hover $zeroTick {
-              background-color: Highlight;
-            }
-            & $thumb {
-              background: #ffffff;
-              border-color: #666666;
-              border-radius: 10px;
-              border-style: solid;
-              border-width: 2px;
-              box-sizing: border-box;
-              display: block;
-              height: 16px;
-              position: absolute;
-              top: -6px;
-              transform: translateX(-50%);
-              transition: left 0.367s cubic-bezier(.1,.9,.2,1);
-              width: 16px;
             }
         data-is-focusable={true}
         id="Slider0"
@@ -192,17 +178,25 @@ exports[`Component Examples renders Stack.Vertical.WrapNested.Example.tsx correc
                 position: relative;
                 width: 100%;
               }
-              & $lineContainer {
-                border-radius: 4px;
-                box-sizing: border-box;
-                height: 4px;
-                width: 100%;
-              }
         >
           <span
             className=
                 ms-Slider-thumb
-
+                {
+                  background: #ffffff;
+                  border-color: #605e5c;
+                  border-radius: 10px;
+                  border-style: solid;
+                  border-width: 2px;
+                  box-sizing: border-box;
+                  display: block;
+                  height: 16px;
+                  position: absolute;
+                  top: -6px;
+                  transform: translateX(-50%);
+                  transition: left 0.367s cubic-bezier(.1,.9,.2,1);
+                  width: 16px;
+                }
             style={
               Object {
                 "left": "100%",
@@ -212,9 +206,14 @@ exports[`Component Examples renders Stack.Vertical.WrapNested.Example.tsx correc
           <span
             className=
                 ms-Slider-active
-
                 {
-                  background: #666666;
+                  border-radius: 4px;
+                  box-sizing: border-box;
+                  height: 4px;
+                  width: 100%;
+                }
+                {
+                  background: #605e5c;
                   transition: width 0.367s cubic-bezier(.1,.9,.2,1);
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -229,9 +228,14 @@ exports[`Component Examples renders Stack.Vertical.WrapNested.Example.tsx correc
           <span
             className=
                 ms-Slider-inactive
-
                 {
-                  background: #c8c8c8;
+                  border-radius: 4px;
+                  box-sizing: border-box;
+                  height: 4px;
+                  width: 100%;
+                }
+                {
+                  background: #c8c6c4;
                   transition: width 0.367s cubic-bezier(.1,.9,.2,1);
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -254,12 +258,12 @@ exports[`Component Examples renders Stack.Vertical.WrapNested.Example.tsx correc
               -webkit-font-smoothing: antialiased;
               box-shadow: none;
               box-sizing: border-box;
-              color: #333333;
+              color: #323130;
               display: block;
               flex-shrink: 1;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
-              font-weight: 400;
+              font-weight: 600;
               line-height: 1;
               margin-bottom: 0;
               margin-left: 8px;
@@ -324,21 +328,12 @@ exports[`Component Examples renders Stack.Vertical.WrapNested.Example.tsx correc
         className=
             ms-Stack
             {
-              background: #a6a6a6;
+              background: #a19f9d;
               display: flex;
               flex-wrap: wrap;
               height: 100%;
               overflow: visible;
               width: auto;
-            }
-            & span {
-              align-items: center;
-              background: #0078d4;
-              color: #ffffff;
-              display: flex;
-              height: 50px;
-              justify-content: center;
-              width: 50px;
             }
       >
         <div
@@ -370,25 +365,109 @@ exports[`Component Examples renders Stack.Vertical.WrapNested.Example.tsx correc
                 flex-shrink: 1;
               }
         >
-          <span>
+          <span
+            style={
+              Object {
+                "alignItems": "center",
+                "background": "#0078d4",
+                "color": "#ffffff",
+                "display": "flex",
+                "height": 50,
+                "justifyContent": "center",
+                "width": 50,
+              }
+            }
+          >
             1
           </span>
-          <span>
+          <span
+            style={
+              Object {
+                "alignItems": "center",
+                "background": "#0078d4",
+                "color": "#ffffff",
+                "display": "flex",
+                "height": 50,
+                "justifyContent": "center",
+                "width": 50,
+              }
+            }
+          >
             2
           </span>
-          <span>
+          <span
+            style={
+              Object {
+                "alignItems": "center",
+                "background": "#0078d4",
+                "color": "#ffffff",
+                "display": "flex",
+                "height": 50,
+                "justifyContent": "center",
+                "width": 50,
+              }
+            }
+          >
             3
           </span>
-          <span>
+          <span
+            style={
+              Object {
+                "alignItems": "center",
+                "background": "#0078d4",
+                "color": "#ffffff",
+                "display": "flex",
+                "height": 50,
+                "justifyContent": "center",
+                "width": 50,
+              }
+            }
+          >
             4
           </span>
-          <span>
+          <span
+            style={
+              Object {
+                "alignItems": "center",
+                "background": "#0078d4",
+                "color": "#ffffff",
+                "display": "flex",
+                "height": 50,
+                "justifyContent": "center",
+                "width": 50,
+              }
+            }
+          >
             5
           </span>
-          <span>
+          <span
+            style={
+              Object {
+                "alignItems": "center",
+                "background": "#0078d4",
+                "color": "#ffffff",
+                "display": "flex",
+                "height": 50,
+                "justifyContent": "center",
+                "width": 50,
+              }
+            }
+          >
             6
           </span>
-          <span>
+          <span
+            style={
+              Object {
+                "alignItems": "center",
+                "background": "#0078d4",
+                "color": "#ffffff",
+                "display": "flex",
+                "height": 50,
+                "justifyContent": "center",
+                "width": 50,
+              }
+            }
+          >
             7
           </span>
         </div>
@@ -397,21 +476,12 @@ exports[`Component Examples renders Stack.Vertical.WrapNested.Example.tsx correc
         className=
             ms-Stack
             {
-              background: #666666;
+              background: #605e5c;
               display: flex;
               flex-wrap: wrap;
               height: 100%;
               overflow: visible;
               width: auto;
-            }
-            & span {
-              align-items: center;
-              background: #005a9e;
-              color: #ffffff;
-              display: flex;
-              height: 50px;
-              justify-content: center;
-              width: 50px;
             }
       >
         <div
@@ -443,13 +513,49 @@ exports[`Component Examples renders Stack.Vertical.WrapNested.Example.tsx correc
                 flex-shrink: 1;
               }
         >
-          <span>
+          <span
+            style={
+              Object {
+                "alignItems": "center",
+                "background": "#005a9e",
+                "color": "#ffffff",
+                "display": "flex",
+                "height": 50,
+                "justifyContent": "center",
+                "width": 50,
+              }
+            }
+          >
             1
           </span>
-          <span>
+          <span
+            style={
+              Object {
+                "alignItems": "center",
+                "background": "#005a9e",
+                "color": "#ffffff",
+                "display": "flex",
+                "height": 50,
+                "justifyContent": "center",
+                "width": 50,
+              }
+            }
+          >
             2
           </span>
-          <span>
+          <span
+            style={
+              Object {
+                "alignItems": "center",
+                "background": "#005a9e",
+                "color": "#ffffff",
+                "display": "flex",
+                "height": 50,
+                "justifyContent": "center",
+                "width": 50,
+              }
+            }
+          >
             3
           </span>
         </div>
@@ -458,21 +564,12 @@ exports[`Component Examples renders Stack.Vertical.WrapNested.Example.tsx correc
         className=
             ms-Stack
             {
-              background: #333333;
+              background: #323130;
               display: flex;
               flex-wrap: wrap;
               height: 100%;
               overflow: visible;
               width: auto;
-            }
-            & span {
-              align-items: center;
-              background: #004578;
-              color: #ffffff;
-              display: flex;
-              height: 50px;
-              justify-content: center;
-              width: 50px;
             }
       >
         <div
@@ -504,34 +601,154 @@ exports[`Component Examples renders Stack.Vertical.WrapNested.Example.tsx correc
                 flex-shrink: 1;
               }
         >
-          <span>
+          <span
+            style={
+              Object {
+                "alignItems": "center",
+                "background": "#004578",
+                "color": "#ffffff",
+                "display": "flex",
+                "height": 50,
+                "justifyContent": "center",
+                "width": 50,
+              }
+            }
+          >
             1
           </span>
-          <span>
+          <span
+            style={
+              Object {
+                "alignItems": "center",
+                "background": "#004578",
+                "color": "#ffffff",
+                "display": "flex",
+                "height": 50,
+                "justifyContent": "center",
+                "width": 50,
+              }
+            }
+          >
             2
           </span>
-          <span>
+          <span
+            style={
+              Object {
+                "alignItems": "center",
+                "background": "#004578",
+                "color": "#ffffff",
+                "display": "flex",
+                "height": 50,
+                "justifyContent": "center",
+                "width": 50,
+              }
+            }
+          >
             3
           </span>
-          <span>
+          <span
+            style={
+              Object {
+                "alignItems": "center",
+                "background": "#004578",
+                "color": "#ffffff",
+                "display": "flex",
+                "height": 50,
+                "justifyContent": "center",
+                "width": 50,
+              }
+            }
+          >
             4
           </span>
-          <span>
+          <span
+            style={
+              Object {
+                "alignItems": "center",
+                "background": "#004578",
+                "color": "#ffffff",
+                "display": "flex",
+                "height": 50,
+                "justifyContent": "center",
+                "width": 50,
+              }
+            }
+          >
             5
           </span>
-          <span>
+          <span
+            style={
+              Object {
+                "alignItems": "center",
+                "background": "#004578",
+                "color": "#ffffff",
+                "display": "flex",
+                "height": 50,
+                "justifyContent": "center",
+                "width": 50,
+              }
+            }
+          >
             6
           </span>
-          <span>
+          <span
+            style={
+              Object {
+                "alignItems": "center",
+                "background": "#004578",
+                "color": "#ffffff",
+                "display": "flex",
+                "height": 50,
+                "justifyContent": "center",
+                "width": 50,
+              }
+            }
+          >
             7
           </span>
-          <span>
+          <span
+            style={
+              Object {
+                "alignItems": "center",
+                "background": "#004578",
+                "color": "#ffffff",
+                "display": "flex",
+                "height": 50,
+                "justifyContent": "center",
+                "width": 50,
+              }
+            }
+          >
             8
           </span>
-          <span>
+          <span
+            style={
+              Object {
+                "alignItems": "center",
+                "background": "#004578",
+                "color": "#ffffff",
+                "display": "flex",
+                "height": 50,
+                "justifyContent": "center",
+                "width": 50,
+              }
+            }
+          >
             9
           </span>
-          <span>
+          <span
+            style={
+              Object {
+                "alignItems": "center",
+                "background": "#004578",
+                "color": "#ffffff",
+                "display": "flex",
+                "height": 50,
+                "justifyContent": "center",
+                "width": 50,
+              }
+            }
+          >
             10
           </span>
         </div>

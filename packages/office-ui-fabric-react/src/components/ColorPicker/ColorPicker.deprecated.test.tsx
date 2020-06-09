@@ -1,16 +1,16 @@
 import * as React from 'react';
 import { mount, ReactWrapper } from 'enzyme';
-import * as ReactTestUtils from 'react-dom/test-utils';
-import { setWarningCallback } from '@uifabric/utilities';
+
 import { ColorPicker } from './ColorPicker';
 import { ColorPickerBase, IColorPickerState } from './ColorPicker.base';
-import { IColorPicker, IColorPickerProps } from './ColorPicker.types';
-import { IColor } from '../../utilities/color/interfaces';
-import { mockEvent } from '../../common/testUtilities';
+import { IColorPickerProps, IColorPickerStrings } from './ColorPicker.types';
+import { ColorSliderBase } from './ColorSlider/ColorSlider.base';
+import { setWarningCallback } from '../../Utilities';
 
-describe('ColorPicker deprecated', () => {
+// tslint:disable:deprecation
+
+describe('ColorPicker', () => {
   let wrapper: ReactWrapper<IColorPickerProps, IColorPickerState, ColorPickerBase> | undefined;
-  const colorPickerRef = React.createRef<IColorPicker>();
 
   beforeAll(() => {
     // Prevent warn deprecations from failing test
@@ -30,47 +30,64 @@ describe('ColorPicker deprecated', () => {
     }
   });
 
-  it('respects color prop change', () => {
-    const onColorChanged = jest.fn();
-    wrapper = mount(<ColorPicker color="#abcdef" onColorChanged={onColorChanged} componentRef={colorPickerRef} />);
+  it('hides alpha control slider', () => {
+    wrapper = mount(<ColorPicker color="#ffffff" alphaSliderHidden={true} />);
 
-    wrapper.setProps({ color: '#AEAEAE' });
-    expect(colorPickerRef.current!.color.hex).toEqual('aeaeae');
-    // It's weird that a change handler would be called when the consumer updated props,
-    // but we do that with onColorChanged to preserve existing behavior (in case anyone
-    // depended on it).
-    expect(onColorChanged).toHaveBeenCalledTimes(1);
+    const alphaSlider = wrapper.find('.is-alpha');
+    const tableHeaders = wrapper.find('thead td');
+
+    // There should only be table headers and inputs for hex, red, green, and blue (no alpha)
+    expect(alphaSlider.exists()).toBe(false);
+    expect(tableHeaders).toHaveLength(4);
+
+    const inputs = wrapper.getDOMNode().querySelectorAll('input') as NodeListOf<HTMLInputElement>;
+    expect(inputs).toHaveLength(4);
+    expect(inputs[0].value).toBe('ffffff');
+    expect(inputs[1].value).toBe('255');
+    expect(inputs[2].value).toBe('255');
+    expect(inputs[3].value).toBe('255');
   });
 
-  it('allows updating text fields when color is specified', () => {
-    let updatedColor: string | undefined;
-    const onColorChanged = jest.fn((ev: any, color: IColor) => {
-      updatedColor = color.str;
+  it('renders deprecated custom strings', () => {
+    const fields = ['Custom Hex', 'Custom Red', 'Custom Green', 'Custom Blue', 'Custom Alpha'];
+
+    wrapper = mount(
+      <ColorPicker
+        color="#FFFFFF"
+        hexLabel={fields[0]}
+        redLabel={fields[1]}
+        greenLabel={fields[2]}
+        blueLabel={fields[3]}
+        alphaLabel={fields[4]}
+      />,
+    );
+
+    const tableHeaders = wrapper.find('thead td');
+    tableHeaders.forEach((node, index) => {
+      expect(node.text()).toEqual(fields[index]);
     });
 
-    wrapper = mount(<ColorPicker onColorChanged={onColorChanged} color="#000000" componentRef={colorPickerRef} />);
+    const sliders = wrapper.find(ColorSliderBase);
+    expect(sliders.at(1).html()).toContain('Custom Alpha');
+  });
 
-    const inputs = wrapper.getDOMNode().querySelectorAll('.ms-ColorPicker-input input');
+  it('renders mix of new and deprecated custom strings', () => {
+    const customRed = 'Custom Red';
+    const customAlpha = 'Custom Alpha';
+    const customStrings: IColorPickerStrings = {
+      hex: 'Custom Hex',
+      blue: 'Custom Blue',
+    };
 
-    const redInput = inputs[1];
-    ReactTestUtils.Simulate.input(redInput, mockEvent('255'));
-    ReactTestUtils.Simulate.blur(redInput);
-    expect(onColorChanged).toHaveBeenCalledTimes(1);
-    expect(updatedColor).toBe('#ff0000');
-    expect(colorPickerRef.current!.color.str).toBe('#ff0000');
+    wrapper = mount(
+      <ColorPicker color="#FFFFFF" strings={customStrings} redLabel={customRed} alphaLabel={customAlpha} />,
+    );
 
-    const hexInput = inputs[0];
-    ReactTestUtils.Simulate.input(hexInput, mockEvent('00ff00'));
-    ReactTestUtils.Simulate.blur(hexInput);
-    expect(onColorChanged).toHaveBeenCalledTimes(2);
-    expect(updatedColor).toBe('#00ff00');
-    expect(colorPickerRef.current!.color.str).toBe('#00ff00');
-
-    const alphaInput = inputs[4];
-    ReactTestUtils.Simulate.input(alphaInput, mockEvent('50'));
-    ReactTestUtils.Simulate.blur(alphaInput);
-    expect(onColorChanged).toHaveBeenCalledTimes(3);
-    expect(updatedColor).toBe('rgba(0, 255, 0, 0.5)');
-    expect(colorPickerRef.current!.color.str).toBe('rgba(0, 255, 0, 0.5)');
+    const tableHeaders = wrapper.find('thead td');
+    expect(tableHeaders.at(0).text()).toEqual(customStrings.hex);
+    expect(tableHeaders.at(1).text()).toEqual(customRed);
+    expect(tableHeaders.at(2).text()).toEqual('Green'); // not customized
+    expect(tableHeaders.at(3).text()).toEqual(customStrings.blue);
+    expect(tableHeaders.at(4).text()).toEqual(customAlpha);
   });
 });

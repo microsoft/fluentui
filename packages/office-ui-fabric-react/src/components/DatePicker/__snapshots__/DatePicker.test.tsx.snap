@@ -23,9 +23,7 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
       }
 >
   <div
-    aria-expanded={false}
     aria-haspopup="true"
-    role="combobox"
   >
     <div
       className=
@@ -56,9 +54,7 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
           }
     >
       <div
-        className=
-            ms-TextField-wrapper
-
+        className="ms-TextField-wrapper"
       >
         <div
           className=
@@ -66,7 +62,8 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
               {
                 align-items: stretch;
                 background: #ffffff;
-                border: 1px solid #a6a6a6;
+                border-radius: 2px;
+                border: 1px solid #605e5c;
                 box-shadow: none;
                 box-sizing: border-box;
                 cursor: text;
@@ -84,13 +81,14 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
                 position: relative;
               }
               &:hover {
-                border-color: #333333;
+                border-color: #323130;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
               }
         >
           <input
+            aria-expanded={false}
             aria-invalid={false}
             className=
                 ms-TextField-field
@@ -103,7 +101,7 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
                   border: none;
                   box-shadow: none;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
@@ -114,24 +112,49 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
                   min-width: 0px;
                   outline: 0px;
                   padding-bottom: 0;
-                  padding-left: 12px;
+                  padding-left: 8px;
                   padding-right: 24px;
                   padding-top: 0;
                   text-overflow: ellipsis;
                   width: 100%;
                 }
-                &:active, &:focus, &:hover {
+                &:active {
+                  outline: 0px;
+                }
+                &:focus {
+                  outline: 0px;
+                }
+                &:hover {
                   outline: 0px;
                 }
                 &::-ms-clear {
                   display: none;
                 }
                 &::placeholder {
-                  color: #666666;
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #605e5c;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
                   opacity: 1;
                 }
                 &:-ms-input-placeholder {
-                  color: #666666;
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #605e5c;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  opacity: 1;
+                }
+                &::-ms-input-placeholder {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #605e5c;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
                   opacity: 1;
                 }
             id="DatePicker0-label"
@@ -143,17 +166,19 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
             onKeyDown={[Function]}
             readOnly={true}
             required={false}
+            role="combobox"
             type="text"
             value=""
           />
           <i
+            aria-hidden={true}
             className=
                 ms-DatePicker-event--without-label
                 msDatePickerDisabled
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #666666;
+                  color: #605e5c;
                   cursor: pointer;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
@@ -161,15 +186,17 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
                   font-style: normal;
                   font-weight: normal;
                   line-height: 18px;
+                  padding-bottom: 5px;
+                  padding-left: 5px;
+                  padding-right: 5px;
+                  padding-top: 7px;
                   pointer-events: initial;
                   position: absolute;
-                  right: 9px;
+                  right: 4px;
                   speak: none;
-                  top: 7px;
                 }
             data-icon-name="Calendar"
             onClick={[Function]}
-            role="presentation"
           >
             
           </i>

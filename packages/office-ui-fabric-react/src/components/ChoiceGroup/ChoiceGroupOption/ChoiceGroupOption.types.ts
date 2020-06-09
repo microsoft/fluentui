@@ -4,14 +4,16 @@ import { IRefObject } from '../../../Utilities';
 import { IChoiceGroupOption } from '../../ChoiceGroup/ChoiceGroup.types';
 
 /**
+ * @deprecated Use `IChoiceGroupOptionProps['onFocus']` directly
  * {@docCategory ChoiceGroup}
  */
-export type OnFocusCallback = (ev?: React.FocusEvent<HTMLElement | HTMLInputElement>, props?: IChoiceGroupOption) => void | undefined;
+export type OnFocusCallback = IChoiceGroupOptionProps['onFocus'];
 
 /**
+ * @deprecated Use `IChoiceGroupOptionProps['onChange']` directly
  * {@docCategory ChoiceGroup}
  */
-export type OnChangeCallback = (evt?: React.FormEvent<HTMLElement | HTMLInputElement>, props?: IChoiceGroupOption) => void;
+export type OnChangeCallback = IChoiceGroupOptionProps['onChange'];
 
 /**
  * {@docCategory ChoiceGroup}
@@ -26,12 +28,12 @@ export interface IChoiceGroupOptionProps extends IChoiceGroupOption {
   /**
    * A callback for receiving a notification when the choice has been changed.
    */
-  onChange?: OnChangeCallback;
+  onChange?: (evt?: React.FormEvent<HTMLElement | HTMLInputElement>, props?: IChoiceGroupOption) => void;
 
   /**
    * A callback for receiving a notification when the choice has received focus.
    */
-  onFocus?: OnFocusCallback;
+  onFocus?: (ev?: React.FocusEvent<HTMLElement | HTMLInputElement>, props?: IChoiceGroupOption) => void | undefined;
 
   /**
    * A callback for receiving a notification when the choice has lost focus.
@@ -60,15 +62,36 @@ export interface IChoiceGroupOptionProps extends IChoiceGroupOption {
 }
 
 /**
+ * Defines props needed to construct styles.
+ * This represents the simplified set of immutable things which control the class names.
  * {@docCategory ChoiceGroup}
  */
 export interface IChoiceGroupOptionStyleProps {
+  /** Theme provided by High-Order Component. */
   theme: ITheme;
+
+  /** Whether the option has an icon. */
   hasIcon?: boolean;
+
+  /** Whether the option icon is an image. */
   hasImage?: boolean;
+
+  /** Whether the option is checked or not. */
   checked?: boolean;
+
+  /** Whether the option is disabled or not. */
   disabled?: boolean;
+
+  /** Whether the image width or height are higher than `71`. */
   imageIsLarge?: boolean;
+
+  /**
+   * Image sizes used when `hasImage` or `hasIcon` style props are enabled.
+   * @defaultvalue \{height: 32, width: 32\}
+   */
+  imageSize?: { height: number; width: number };
+
+  /** Whether the option is in focus or not. */
   focused?: boolean;
 }
 

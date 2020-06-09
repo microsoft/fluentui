@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { App, IAppDefinition, IAppLink } from '../components/App/index';
-import { Router, Route } from 'office-ui-fabric-react/lib/utilities/router/index';
+import { Router, Route } from './router/index';
 import { setBaseUrl } from 'office-ui-fabric-react/lib/Utilities';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 
@@ -18,7 +18,7 @@ export function createApp(
   examples: ExampleGroup | ExampleGroup[],
   defaultRouteComponent: () => JSX.Element | null = () => null,
   appTitle?: string,
-  headerLinks?: IAppLink[]
+  headerLinks?: IAppLink[],
 ): void {
   let rootElement: HTMLElement | null;
   const groups: ExampleGroup[] = !Array.isArray(examples) ? [examples] : examples;
@@ -32,7 +32,7 @@ export function createApp(
     const routes: (JSX.Element | JSX.Element[])[] = groups.map(group =>
       group.examples.map(example => {
         return <Route key={example.key} path={'#component=' + example.key} component={example.onRender} />;
-      })
+      }),
     );
 
     // Add the default route
@@ -61,7 +61,7 @@ export function createApp(
           </Route>
         </Router>
       </Fabric>,
-      rootElement
+      rootElement,
     );
   }
 
@@ -84,7 +84,7 @@ export function createApp(
 }
 
 function _getComponent<TProps extends React.Props<{}>>(props: TProps): JSX.Element {
-  return <div {...props as React.HTMLAttributes<HTMLDivElement>} />;
+  return <div {...(props as React.HTMLAttributes<HTMLDivElement>)} />;
 }
 
 function _getDefinition(groups: ExampleGroup[]): IAppDefinition {
@@ -97,22 +97,22 @@ function _getDefinition(groups: ExampleGroup[]): IAppDefinition {
         component: example.onRender,
         key: example.key,
         name: example.title,
-        url: '#component=' + example.key
-      }))
+        url: '#component=' + example.key,
+      })),
     })),
     headerLinks: [
       {
         name: 'Getting started',
-        url: '#/'
+        url: '#/',
       },
       {
         name: 'Fabric',
-        url: 'http://dev.office.com/fabric'
+        url: 'https://developer.microsoft.com/en-us/fluentui',
       },
       {
-        name: 'Github',
-        url: 'http://www.github.com/officedev'
-      }
-    ]
+        name: 'GitHub',
+        url: 'https://github.com/microsoft/fluentui',
+      },
+    ],
   };
 }

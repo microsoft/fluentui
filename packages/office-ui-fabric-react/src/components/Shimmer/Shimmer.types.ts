@@ -146,7 +146,8 @@ export interface IGap extends IShimmerElement {
 }
 
 /**
- * Defines props needed to construct styles. This represents the simplified set of immutable things which control the class names.
+ * Defines props needed to construct styles.
+ * This represents the simplified set of immutable things which control the class names.
  * {@docCategory Shimmer}
  */
 export interface IShimmerStyleProps {
@@ -177,8 +178,11 @@ export interface IShimmerStyles {
   /** Refers to the root wrapper element. */
   root?: IStyle;
 
-  /** Refers to wrapper element of the shimmer animation only. */
+  /** Refers to wrapper element of the shimmer only. */
   shimmerWrapper?: IStyle;
+
+  /** Refers to gradient element of the shimmer animation only. */
+  shimmerGradient?: IStyle;
 
   /** Refers to wrapper element of the children only. */
   dataWrapper?: IStyle;
@@ -205,7 +209,7 @@ export enum ShimmerElementType {
   /**
    * Gap element type
    */
-  gap = 3
+  gap = 3,
 }
 
 /**
@@ -226,7 +230,7 @@ export enum ShimmerElementsDefaultHeights {
   /**
    * Default height of the circle element when not provided by user: 24px
    */
-  circle = 24
+  circle = 24,
 }
 
 /**
@@ -247,7 +251,8 @@ export interface IShimmerColors {
   shimmerWave?: string;
 
   /**
-   * Defines the background color of the space in between and around shimmer elements (borders, gaps and rounded corners).
+   * Defines the background color of the space in between and around shimmer elements (borders, gaps and
+   * rounded corners).
    * @defaultvalue theme.palette.white
    */
   background?: string;

@@ -1,46 +1,24 @@
-import { Stylesheet } from '../Stylesheet';
+import { IStyleOptions } from '../IStyleOptions';
 
 const LEFT = 'left';
 const RIGHT = 'right';
 const NO_FLIP = '@noflip';
 const NAME_REPLACEMENTS: { [key: string]: string } = {
   [LEFT]: RIGHT,
-  [RIGHT]: LEFT
+  [RIGHT]: LEFT,
 };
 const VALUE_REPLACEMENTS: { [key: string]: string } = {
   'w-resize': 'e-resize',
   'sw-resize': 'se-resize',
-  'nw-resize': 'ne-resize'
+  'nw-resize': 'ne-resize',
 };
-
-let _rtl = getRTL();
-
-/**
- * Sets the current RTL value.
- */
-export function setRTL(isRTL: boolean): void {
-  if (_rtl !== isRTL) {
-    Stylesheet.getInstance().resetKeys();
-    _rtl = isRTL;
-  }
-}
-
-/**
- * Gets the current RTL value.
- */
-export function getRTL(): boolean {
-  if (_rtl === undefined) {
-    _rtl = typeof document !== 'undefined' && !!document.documentElement && document.documentElement.getAttribute('dir') === 'rtl';
-  }
-  return _rtl;
-}
 
 /**
  * RTLifies the rulePair in the array at the current index. This mutates the array for performance
  * reasons.
  */
-export function rtlifyRules(rulePairs: (string | number)[], index: number): void {
-  if (getRTL()) {
+export function rtlifyRules(options: IStyleOptions, rulePairs: (string | number)[], index: number): void {
+  if (options.rtl) {
     const name = rulePairs[index] as string;
 
     if (!name) {

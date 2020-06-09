@@ -1,9 +1,11 @@
 ### Control name
 
-`MSSeparator`
+`Separator` in Swift, `MSFSeparator` in Objective-C
 
-### Library
+### Source code
 
-[UI Fabric iOS](https://github.com/OfficeDev/ui-fabric-ios)
+[Separator](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI/Controls/Separator.swift)
 
-[Sample Code](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric/Table%20View/MSTableViewCell.swift)
+### Sample code
+
+[Used in TableViewCell](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI/Table%20View/TableViewCell.swift)

@@ -2,6 +2,8 @@
 
 exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`] = `
 <div
+  aria-label="Custom Example"
+  aria-orientation="horizontal"
   className=
       ms-FocusZone
       ms-OverflowSet
@@ -29,129 +31,164 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
   >
     <div
       className=
-          ms-SearchBox
+          ms-Checkbox
+          is-enabled
           {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            align-items: stretch;
-            background-color: #ffffff;
-            border: 1px solid #a6a6a6;
-            box-shadow: none;
-            box-sizing: border-box;
-            color: #333333;
             display: flex;
-            flex-direction: row;
-            flex-wrap: nowrap;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 400;
-            height: 32px;
-            margin-bottom: 0px;
-            margin-left: 0px;
-            margin-right: 0px;
-            margin-top: 0px;
-            padding-bottom: 1px;
-            padding-left: 4px;
-            padding-right: 0;
-            padding-top: 1px;
-            width: 200px;
+            margin-right: 5px;
+            position: relative;
           }
-          @media screen and (-ms-high-contrast: active){& {
-            border: 1px solid WindowText;
+          &:hover .ms-Checkbox-checkbox {
+            border-color: #323130;
           }
-          &:hover {
-            border-color: #212121;
-          }
-          @media screen and (-ms-high-contrast: active){&:hover {
+          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
             border-color: Highlight;
           }
-          &:hover $iconContainer {
-            color: #005a9e;
+          &:focus .ms-Checkbox-checkbox {
+            border-color: #323130;
           }
-      onFocusCapture={[Function]}
+          &:hover .ms-Checkbox-checkmark {
+            color: #605e5c;
+            opacity: 1;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
+            color: Highlight;
+          }
+          &:hover .ms-Checkbox-text {
+            color: #201f1e;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+            color: WindowText;
+          }
+          &:focus .ms-Checkbox-text {
+            color: #201f1e;
+          }
+          @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+            color: WindowText;
+          }
     >
-      <div
-        aria-hidden={true}
-        className=
-            ms-SearchBox-iconContainer
-            {
-              color: #0078d4;
-              cursor: text;
-              display: flex;
-              flex-direction: column;
-              flex-shrink: 0;
-              font-size: 16px;
-              justify-content: center;
-              text-align: center;
-              transition: width 0.167s;
-              width: 32px;
-            }
-        onClick={[Function]}
-      >
-        <i
-          className=
-              ms-SearchBox-icon
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                display: inline-block;
-                font-family: "FabricMDL2Icons";
-                font-style: normal;
-                font-weight: normal;
-                opacity: 1;
-                speak: none;
-                transition: opacity 0.167s 0s;
-              }
-          data-icon-name="Search"
-          role="presentation"
-        >
-          
-        </i>
-      </div>
       <input
-        aria-label="Search"
+        aria-checked="false"
+        aria-label="A Checkbox"
+        checked={false}
         className=
-            ms-SearchBox-field
+
             {
-              background-color: transparent;
-              border: none;
-              box-shadow: none;
-              box-sizing: border-box;
-              color: #333333;
-              flex: 1 1 0px;
-              font-family: inherit;
-              font-size: inherit;
-              font-weight: inherit;
-              margin-bottom: 0px;
-              margin-left: 0px;
-              margin-right: 0px;
-              margin-top: 0px;
-              min-width: 0px;
-              outline: none;
-              overflow: hidden;
-              padding-bottom: 0.5px;
-              padding-left: 0px;
-              padding-right: 0px;
-              padding-top: 0px;
-              text-overflow: ellipsis;
+              background: none;
+              opacity: 0;
+              position: absolute;
             }
-            &::-ms-clear {
-              display: none;
+            .ms-Fabric--isFocusVisible &:focus + label::before {
+              outline-offset: 2px;
+              outline: 1px solid #605e5c;
             }
-            &::placeholder {
-              color: #666666;
-              opacity: 1;
+            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
+              outline: 1px solid ActiveBorder;
             }
-            &:-ms-input-placeholder {
-              color: #666666;
-            }
-        id="SearchBox1"
+        id="checkbox-1"
+        onBlur={[Function]}
         onChange={[Function]}
-        onInput={[Function]}
-        onKeyDown={[Function]}
-        placeholder="Search"
-        value=""
+        onFocus={[Function]}
+        role="menuitemcheckbox"
+        type="checkbox"
       />
+      <label
+        className=
+            ms-Checkbox-label
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              align-items: flex-start;
+              cursor: pointer;
+              display: flex;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              position: relative;
+              user-select: none;
+            }
+            &::before {
+              bottom: 0px;
+              content: "";
+              left: 0px;
+              pointer-events: none;
+              position: absolute;
+              right: 0px;
+              top: 0px;
+            }
+        htmlFor="checkbox-1"
+      >
+        <div
+          className=
+              ms-Checkbox-checkbox
+              {
+                align-items: center;
+                border-radius: 2px;
+                border: 1px solid #323130;
+                box-sizing: border-box;
+                display: flex;
+                flex-shrink: 0;
+                height: 20px;
+                justify-content: center;
+                margin-right: 4px;
+                overflow: hidden;
+                position: relative;
+                transition-duration: 200ms;
+                transition-property: background, border, border-color;
+                transition-timing-function: cubic-bezier(.4, 0, .23, 1);
+                width: 20px;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: WindowText;
+              }
+              @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                forced-color-adjust: none;
+              }
+        >
+          <i
+            aria-hidden={true}
+            className=
+                ms-Checkbox-checkmark
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #ffffff;
+                  display: inline-block;
+                  font-family: "FabricMDL2Icons";
+                  font-style: normal;
+                  font-weight: normal;
+                  opacity: 0;
+                  speak: none;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  -ms-high-contrast-adjust: none;
+                  color: Window;
+                }
+            data-icon-name="CheckMark"
+          >
+            
+          </i>
+        </div>
+        <span
+          aria-hidden="true"
+          className=
+              ms-Checkbox-text
+              {
+                color: #323130;
+                font-size: 14px;
+                line-height: 20px;
+                margin-left: 4px;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                color: WindowText;
+              }
+              @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                forced-color-adjust: none;
+              }
+        >
+          A Checkbox
+        </span>
+      </label>
     </div>
   </div>
   <div
@@ -169,23 +206,20 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
       className=
           ms-Button
           ms-Button--commandBar
+          ms-Button--hasMenu
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
-            background-color: #f4f4f4;
+            background-color: #ffffff;
             border-radius: 0px;
-            border: 1px solid transparent;
+            border: none;
             box-sizing: border-box;
-            color: #333333;
+            color: #323130;
             cursor: pointer;
             display: inline-block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
-            margin-bottom: 0px;
-            margin-left: 0px;
-            margin-right: 0px;
-            margin-top: 0px;
             min-width: 40px;
             outline: transparent;
             padding-bottom: 0;
@@ -196,20 +230,19 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
             text-align: center;
             text-decoration: none;
             user-select: none;
-            vertical-align: top;
           }
           &::-moz-focus-inner {
             border: 0;
           }
           .ms-Fabric--isFocusVisible &:focus:after {
-            border: 1px solid #ffffff;
-            bottom: 0px;
+            border: 1px solid transparent;
+            bottom: 3px;
             content: "";
-            left: 0px;
-            outline: 1px solid #666666;
+            left: 3px;
+            outline: 1px solid #605e5c;
             position: absolute;
-            right: 0px;
-            top: 0px;
+            right: 3px;
+            top: 3px;
             z-index: 1;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -229,15 +262,27 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
             border: none;
           }
           &:hover {
-            background-color: #eaeaea;
-            color: #212121;
+            background-color: #f3f2f1;
+            color: #201f1e;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             color: Highlight;
           }
+          &:hover .ms-Button-icon {
+            color: #106ebe;
+          }
+          &:hover .ms-Button-menuIcon {
+            color: #323130;
+          }
           &:active {
-            background-color: #dadada;
-            color: #000000;
+            background-color: #edebe9;
+            color: #201f1e;
+          }
+          &:active .ms-Button-icon {
+            color: #005a9e;
+          }
+          &:active .ms-Button-menuIcon {
+            color: #323130;
           }
       data-is-focusable={true}
       onClick={[Function]}
@@ -246,9 +291,10 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
       onKeyUp={[Function]}
       onMouseDown={[Function]}
       onMouseUp={[Function]}
+      role="menuitem"
       type="button"
     >
-      <div
+      <span
         className=
             ms-Button-flexContainer
             {
@@ -258,46 +304,59 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
               height: 100%;
               justify-content: center;
             }
+        data-automationid="splitbuttonprimary"
       >
         <i
+          aria-hidden={true}
           className=
+              ms-Icon
               ms-Button-icon
+              {
+                display: inline-block;
+              }
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #106ebe;
-                display: inline-block;
-                flex-shrink: 0;
                 font-family: "FabricMDL2Icons";
-                font-size: 16px;
                 font-style: normal;
                 font-weight: normal;
+                speak: none;
+              }
+              {
+                color: #0078d4;
+                flex-shrink: 0;
+                font-size: 16px;
                 height: 16px;
                 line-height: 16px;
                 margin-bottom: 0;
                 margin-left: 4px;
                 margin-right: 4px;
                 margin-top: 0;
-                speak: none;
                 text-align: center;
-                vertical-align: middle;
               }
           data-icon-name="Add"
           role="presentation"
+          style={
+            Object {
+              "fontFamily": "\\"FabricMDL2Icons\\"",
+            }
+          }
         >
           
         </i>
-        <div
+        <span
           className=
               ms-Button-textContainer
               {
+                display: block;
                 flex-grow: 1;
               }
         >
-          <div
+          <span
             className=
                 ms-Button-label
                 {
+                  display: block;
                   font-weight: normal;
                   line-height: 100%;
                   margin-bottom: 0;
@@ -308,37 +367,47 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
             id="id__2"
           >
             New
-          </div>
-        </div>
+          </span>
+        </span>
         <i
+          aria-hidden={true}
           className=
+              ms-Icon
               ms-Button-menuIcon
+              {
+                display: inline-block;
+              }
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #666666;
-                display: inline-block;
-                flex-shrink: 0;
                 font-family: "FabricMDL2Icons";
-                font-size: 12px;
                 font-style: normal;
                 font-weight: normal;
+                speak: none;
+              }
+              {
+                color: #605e5c;
+                flex-shrink: 0;
+                font-size: 12px;
                 height: 16px;
                 line-height: 16px;
                 margin-bottom: 0;
                 margin-left: 4px;
                 margin-right: 4px;
                 margin-top: 0;
-                speak: none;
                 text-align: center;
-                vertical-align: middle;
               }
           data-icon-name="ChevronDown"
           role="presentation"
+          style={
+            Object {
+              "fontFamily": "\\"FabricMDL2Icons\\"",
+            }
+          }
         >
           
         </i>
-      </div>
+      </span>
     </button>
   </div>
   <div
@@ -356,20 +425,16 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
-            background-color: #f4f4f4;
+            background-color: #ffffff;
             border-radius: 0px;
-            border: 1px solid transparent;
+            border: none;
             box-sizing: border-box;
-            color: #333333;
+            color: #323130;
             cursor: pointer;
             display: inline-block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
-            margin-bottom: 0px;
-            margin-left: 0px;
-            margin-right: 0px;
-            margin-top: 0px;
             min-width: 40px;
             outline: transparent;
             padding-bottom: 0;
@@ -380,20 +445,19 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
             text-align: center;
             text-decoration: none;
             user-select: none;
-            vertical-align: top;
           }
           &::-moz-focus-inner {
             border: 0;
           }
           .ms-Fabric--isFocusVisible &:focus:after {
-            border: 1px solid #ffffff;
-            bottom: 0px;
+            border: 1px solid transparent;
+            bottom: 3px;
             content: "";
-            left: 0px;
-            outline: 1px solid #666666;
+            left: 3px;
+            outline: 1px solid #605e5c;
             position: absolute;
-            right: 0px;
-            top: 0px;
+            right: 3px;
+            top: 3px;
             z-index: 1;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -413,15 +477,27 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
             border: none;
           }
           &:hover {
-            background-color: #eaeaea;
-            color: #212121;
+            background-color: #f3f2f1;
+            color: #201f1e;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             color: Highlight;
           }
+          &:hover .ms-Button-icon {
+            color: #106ebe;
+          }
+          &:hover .ms-Button-menuIcon {
+            color: #323130;
+          }
           &:active {
-            background-color: #dadada;
-            color: #000000;
+            background-color: #edebe9;
+            color: #201f1e;
+          }
+          &:active .ms-Button-icon {
+            color: #005a9e;
+          }
+          &:active .ms-Button-menuIcon {
+            color: #323130;
           }
       data-is-focusable={true}
       onClick={[Function]}
@@ -430,9 +506,10 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
       onKeyUp={[Function]}
       onMouseDown={[Function]}
       onMouseUp={[Function]}
+      role="menuitem"
       type="button"
     >
-      <div
+      <span
         className=
             ms-Button-flexContainer
             {
@@ -442,46 +519,59 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
               height: 100%;
               justify-content: center;
             }
+        data-automationid="splitbuttonprimary"
       >
         <i
+          aria-hidden={true}
           className=
+              ms-Icon
               ms-Button-icon
+              {
+                display: inline-block;
+              }
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #106ebe;
-                display: inline-block;
-                flex-shrink: 0;
                 font-family: "FabricMDL2Icons";
-                font-size: 16px;
                 font-style: normal;
                 font-weight: normal;
+                speak: none;
+              }
+              {
+                color: #0078d4;
+                flex-shrink: 0;
+                font-size: 16px;
                 height: 16px;
                 line-height: 16px;
                 margin-bottom: 0;
                 margin-left: 4px;
                 margin-right: 4px;
                 margin-top: 0;
-                speak: none;
                 text-align: center;
-                vertical-align: middle;
               }
           data-icon-name="Upload"
           role="presentation"
+          style={
+            Object {
+              "fontFamily": "\\"FabricMDL2Icons\\"",
+            }
+          }
         >
           
         </i>
-        <div
+        <span
           className=
               ms-Button-textContainer
               {
+                display: block;
                 flex-grow: 1;
               }
         >
-          <div
+          <span
             className=
                 ms-Button-label
                 {
+                  display: block;
                   font-weight: normal;
                   line-height: 100%;
                   margin-bottom: 0;
@@ -492,9 +582,9 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
             id="id__5"
           >
             Upload
-          </div>
-        </div>
-      </div>
+          </span>
+        </span>
+      </span>
     </button>
   </div>
   <div
@@ -512,20 +602,16 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
-            background-color: #f4f4f4;
+            background-color: #ffffff;
             border-radius: 0px;
-            border: 1px solid transparent;
+            border: none;
             box-sizing: border-box;
-            color: #333333;
+            color: #323130;
             cursor: pointer;
             display: inline-block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
-            margin-bottom: 0px;
-            margin-left: 0px;
-            margin-right: 0px;
-            margin-top: 0px;
             min-width: 40px;
             outline: transparent;
             padding-bottom: 0;
@@ -536,20 +622,19 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
             text-align: center;
             text-decoration: none;
             user-select: none;
-            vertical-align: top;
           }
           &::-moz-focus-inner {
             border: 0;
           }
           .ms-Fabric--isFocusVisible &:focus:after {
-            border: 1px solid #ffffff;
-            bottom: 0px;
+            border: 1px solid transparent;
+            bottom: 3px;
             content: "";
-            left: 0px;
-            outline: 1px solid #666666;
+            left: 3px;
+            outline: 1px solid #605e5c;
             position: absolute;
-            right: 0px;
-            top: 0px;
+            right: 3px;
+            top: 3px;
             z-index: 1;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -569,15 +654,27 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
             border: none;
           }
           &:hover {
-            background-color: #eaeaea;
-            color: #212121;
+            background-color: #f3f2f1;
+            color: #201f1e;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             color: Highlight;
           }
+          &:hover .ms-Button-icon {
+            color: #106ebe;
+          }
+          &:hover .ms-Button-menuIcon {
+            color: #323130;
+          }
           &:active {
-            background-color: #dadada;
-            color: #000000;
+            background-color: #edebe9;
+            color: #201f1e;
+          }
+          &:active .ms-Button-icon {
+            color: #005a9e;
+          }
+          &:active .ms-Button-menuIcon {
+            color: #323130;
           }
       data-is-focusable={true}
       onClick={[Function]}
@@ -586,9 +683,10 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
       onKeyUp={[Function]}
       onMouseDown={[Function]}
       onMouseUp={[Function]}
+      role="menuitem"
       type="button"
     >
-      <div
+      <span
         className=
             ms-Button-flexContainer
             {
@@ -598,46 +696,59 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
               height: 100%;
               justify-content: center;
             }
+        data-automationid="splitbuttonprimary"
       >
         <i
+          aria-hidden={true}
           className=
+              ms-Icon
               ms-Button-icon
+              {
+                display: inline-block;
+              }
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #106ebe;
-                display: inline-block;
-                flex-shrink: 0;
                 font-family: "FabricMDL2Icons";
-                font-size: 16px;
                 font-style: normal;
                 font-weight: normal;
+                speak: none;
+              }
+              {
+                color: #0078d4;
+                flex-shrink: 0;
+                font-size: 16px;
                 height: 16px;
                 line-height: 16px;
                 margin-bottom: 0;
                 margin-left: 4px;
                 margin-right: 4px;
                 margin-top: 0;
-                speak: none;
                 text-align: center;
-                vertical-align: middle;
               }
           data-icon-name="Share"
           role="presentation"
+          style={
+            Object {
+              "fontFamily": "\\"FabricMDL2Icons\\"",
+            }
+          }
         >
           
         </i>
-        <div
+        <span
           className=
               ms-Button-textContainer
               {
+                display: block;
                 flex-grow: 1;
               }
         >
-          <div
+          <span
             className=
                 ms-Button-label
                 {
+                  display: block;
                   font-weight: normal;
                   line-height: 100%;
                   margin-bottom: 0;
@@ -648,9 +759,9 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
             id="id__8"
           >
             Share
-          </div>
-        </div>
-      </div>
+          </span>
+        </span>
+      </span>
     </button>
   </div>
   <div
@@ -664,29 +775,27 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
     <button
       aria-expanded={false}
       aria-haspopup={true}
+      aria-label="More items"
       aria-owns={null}
       className=
           ms-Button
           ms-Button--commandBar
+          ms-Button--hasMenu
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
             align-self: stretch;
-            background-color: #f4f4f4;
+            background-color: #ffffff;
             border-radius: 0px;
-            border: 1px solid transparent;
+            border: none;
             box-sizing: border-box;
-            color: #333333;
+            color: #323130;
             cursor: pointer;
             display: inline-block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
             height: auto;
-            margin-bottom: 0px;
-            margin-left: 0px;
-            margin-right: 0px;
-            margin-top: 0px;
             min-width: 0px;
             outline: transparent;
             padding-bottom: 0;
@@ -697,20 +806,19 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
             text-align: center;
             text-decoration: none;
             user-select: none;
-            vertical-align: top;
           }
           &::-moz-focus-inner {
             border: 0;
           }
           .ms-Fabric--isFocusVisible &:focus:after {
-            border: 1px solid #ffffff;
-            bottom: 0px;
+            border: 1px solid transparent;
+            bottom: 3px;
             content: "";
-            left: 0px;
-            outline: 1px solid #666666;
+            left: 3px;
+            outline: 1px solid #605e5c;
             position: absolute;
-            right: 0px;
-            top: 0px;
+            right: 3px;
+            top: 3px;
             z-index: 1;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -730,15 +838,27 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
             border: none;
           }
           &:hover {
-            background-color: #eaeaea;
-            color: #212121;
+            background-color: #f3f2f1;
+            color: #201f1e;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             color: Highlight;
           }
+          &:hover .ms-Button-icon {
+            color: #106ebe;
+          }
+          &:hover .ms-Button-menuIcon {
+            color: #323130;
+          }
           &:active {
-            background-color: #dadada;
-            color: #000000;
+            background-color: #edebe9;
+            color: #201f1e;
+          }
+          &:active .ms-Button-icon {
+            color: #005a9e;
+          }
+          &:active .ms-Button-menuIcon {
+            color: #323130;
           }
       data-is-focusable={true}
       onClick={[Function]}
@@ -747,9 +867,10 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
       onKeyUp={[Function]}
       onMouseDown={[Function]}
       onMouseUp={[Function]}
+      role="menuitem"
       type="button"
     >
-      <div
+      <span
         className=
             ms-Button-flexContainer
             {
@@ -759,36 +880,47 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
               height: 100%;
               justify-content: center;
             }
+        data-automationid="splitbuttonprimary"
       >
         <i
+          aria-hidden={true}
           className=
+              ms-Icon
               ms-Button-menuIcon
+              {
+                display: inline-block;
+              }
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #666666;
-                display: inline-block;
-                flex-shrink: 0;
                 font-family: "FabricMDL2Icons";
-                font-size: 12px;
                 font-style: normal;
                 font-weight: normal;
+                speak: none;
+              }
+              {
+                color: #605e5c;
+                flex-shrink: 0;
+                font-size: 12px;
                 height: 16px;
                 line-height: 16px;
                 margin-bottom: 0;
                 margin-left: 4px;
                 margin-right: 4px;
                 margin-top: 0;
-                speak: none;
                 text-align: center;
-                vertical-align: middle;
               }
           data-icon-name="More"
           role="presentation"
+          style={
+            Object {
+              "fontFamily": "\\"FabricMDL2Icons\\"",
+            }
+          }
         >
           
         </i>
-      </div>
+      </span>
     </button>
   </div>
 </div>

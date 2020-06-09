@@ -6,25 +6,29 @@ const menuProps: IMenuButtonProps['menu'] = {
   items: [
     {
       key: 'a',
-      name: 'Item a'
+      name: 'Item a',
     },
     {
       key: 'b',
-      name: 'Item b'
-    }
-  ]
+      name: 'Item b',
+    },
+  ],
 };
 
 const tokens = {
   sectionStack: {
-    childrenGap: 32
+    childrenGap: 32,
   },
   headingStack: {
-    childrenGap: 16
+    childrenGap: 16,
+    padding: 8,
   },
   buttonStack: {
-    childrenGap: 12
-  }
+    childrenGap: 12,
+  },
+  multilineButtonStack: {
+    padding: '8px 0px',
+  },
 };
 
 const ButtonStack = (props: { children: JSX.Element[] | JSX.Element }) => (
@@ -38,7 +42,7 @@ export class MenuButtonExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     return (
       <Stack tokens={tokens.sectionStack}>
-        <Stack tokens={tokens.headingStack} padding={8}>
+        <Stack tokens={tokens.headingStack}>
           <div>
             <Stack tokens={tokens.buttonStack}>
               <ButtonStack>
@@ -48,7 +52,7 @@ export class MenuButtonExample extends React.Component<{}, {}> {
               </ButtonStack>
               <ButtonStack>
                 <MenuButton icon="Share" menu={menuProps}>
-                  <Stack padding="8px 0" as="span" horizontalAlign="start">
+                  <Stack as="span" horizontalAlign="start" tokens={tokens.multilineButtonStack}>
                     <Text>I am a compound multiline button.</Text>
                     <Text variant="small">I can have a caption.</Text>
                   </Stack>

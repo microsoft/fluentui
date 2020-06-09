@@ -7,6 +7,7 @@ import { ILayerProps } from '../../Layer';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import { IIconProps } from '../../Icon';
 import { IContextualMenuProps } from '../../ContextualMenu';
+import { IOverlayProps } from '../../Overlay';
 
 export interface IDragOptions {
   /**
@@ -33,7 +34,7 @@ export interface IDragOptions {
   /**
    * The Draggable Control Menu so that the draggable zone can be moved via the keyboard
    */
-  menu: React.StatelessComponent<IContextualMenuProps>;
+  menu: React.FunctionComponent<IContextualMenuProps>;
 }
 
 /**
@@ -89,9 +90,14 @@ export interface IModalProps extends React.ClassAttributes<ModalBase>, IWithResp
   onDismissed?: () => any;
 
   /**
-   * Props to be passed through to Layer
+   * Defines an optional set of props to be passed through to Layer
    */
   layerProps?: ILayerProps;
+
+  /**
+   * Defines an optional set of props to be passed through to Overlay
+   */
+  overlay?: IOverlayProps;
 
   /**
    * Whether the dialog can be light dismissed by clicking outside the dialog (on the overlay).
@@ -147,13 +153,22 @@ export interface IModalProps extends React.ClassAttributes<ModalBase>, IWithResp
    * The options to make the modal draggable
    */
   dragOptions?: IDragOptions;
+
+  /**
+   * Allow body scroll on content and overlay on touch devices. Changing after mounting has no effect.
+   * @defaultvalue false
+   */
+  allowTouchBodyScroll?: boolean;
 }
 
 /**
  * {@docCategory Modal}
  */
 export type IModalStyleProps = Required<Pick<IModalProps, 'theme'>> &
-  Pick<IModalProps, 'className' | 'containerClassName' | 'scrollableContentClassName' | 'topOffsetFixed' | 'isModeless'> & {
+  Pick<
+    IModalProps,
+    'className' | 'containerClassName' | 'scrollableContentClassName' | 'topOffsetFixed' | 'isModeless'
+  > & {
     /** Modal open state. */
     isOpen?: boolean;
     /** Modal visible state. */

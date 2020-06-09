@@ -34,7 +34,10 @@ export interface ILayerProps extends React.HTMLAttributes<HTMLDivElement | Layer
    */
   className?: string;
 
-  /** Callback for when the layer is mounted. */
+  /**
+   * Callback for when the layer is mounted.
+   * @deprecated Use onLayerDidMount.
+   */
   onLayerMounted?: () => void;
 
   /**

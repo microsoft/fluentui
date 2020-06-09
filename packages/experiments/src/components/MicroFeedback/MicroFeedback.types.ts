@@ -1,13 +1,18 @@
 import { IComponent, IComponentStyles, ISlotProp, IStyleableComponentProps } from '../../Foundation';
 import { ICalloutSlot, IListSlot } from '../../utilities/factoryComponents.types';
 import { IBaseProps } from '../../Utilities';
-import { IButtonSlot } from '@uifabric/experiments';
+import { IButtonSlot } from '../Button/Button.types';
 import { IStackSlot, ITextSlot } from 'office-ui-fabric-react';
 
-export type IMicroFeedbackComponent = IComponent<IMicroFeedbackProps, IMicroFeedbackTokens, IMicroFeedbackStyles, IMicroFeedbackViewProps>;
+export type IMicroFeedbackComponent = IComponent<
+  IMicroFeedbackProps,
+  IMicroFeedbackTokens,
+  IMicroFeedbackStyles,
+  IMicroFeedbackViewProps
+>;
 
-// These types are redundant with IMicroFeedbackComponent but are needed until TS function return widening issue is resolved:
-// https://github.com/Microsoft/TypeScript/issues/241
+// These types are redundant with IMicroFeedbackComponent but are needed until TS function return widening issue
+// is resolved: https://github.com/Microsoft/TypeScript/issues/241
 // For now, these helper types can be used to provide return type safety when specifying tokens and styles functions.
 export type IMicroFeedbackTokenReturnType = ReturnType<Extract<IMicroFeedbackComponent['tokens'], Function>>;
 export type IMicroFeedbackStylesReturnType = ReturnType<Extract<IMicroFeedbackComponent['styles'], Function>>;
@@ -103,6 +108,16 @@ export interface IMicroFeedbackProps
    * Defines a localized string for the Dislike icon.
    */
   dislikeIconTitle?: string;
+
+  /**
+   * Defines a localized string for the aria label of the Like icon for the benefit of screen readers.
+   */
+  likeIconAriaLabel?: string;
+
+  /**
+   * Defines a localized string for the aria label of the Dislike icon for the benefit of screen readers.
+   */
+  dislikeIconAriaLabel?: string;
 
   /**
    * Defines an optional question that is asked if Like is selected.

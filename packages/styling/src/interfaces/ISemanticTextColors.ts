@@ -42,7 +42,8 @@ export interface ISemanticTextColors {
   linkHovered: string;
 
   /**
-   * The default color for disabled text on top of disabledBackground; e.g. text in a disabled text field, disabled button text.
+   * The default color for disabled text on top of disabledBackground; e.g. text in a disabled text field or
+   * disabled button text.
    */
   disabledText: string;
 
@@ -62,15 +63,15 @@ export interface ISemanticTextColors {
   disabledBodySubtext: string;
 
   //// Invariants - slots that rarely change color theme-to-theme because the color has meaning
-
   /**
-   * The default color of error text, used on bodyBackground.
+   * The default color of error text on bodyBackground.
    */
   errorText: string;
+
   /**
-   * The color of text on errorBackground, warningBackground, blockingBackground, or successBackground.
+   * The default color of text in a message bar.
    */
-  warningText: string;
+  messageText: string;
 
   /**
    * The color of input text.
@@ -151,4 +152,14 @@ export interface ISemanticTextColors {
   /** @deprecated
    * This slot was incorrectly named. Use listText instead. */
   listTextColor: string;
+
+  /** @deprecated
+   * No longer used. Consider using messageText and/or warningIcon instead.
+   */
+  warningText: string;
+
+  /** @deprecated
+   * No longer used. Consider using messageText and/or successIcon instead.
+   */
+  successText: string;
 }

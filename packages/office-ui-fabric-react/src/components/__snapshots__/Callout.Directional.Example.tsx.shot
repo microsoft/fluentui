@@ -1,11 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`] = `
-<div
-  className="ms-CalloutExample"
->
+Array [
   <div
-    className="ms-CalloutExample-configArea"
+    className=
+
+        {
+          display: inline-block;
+          min-width: 300px;
+        }
   >
     <div
       className=
@@ -14,10 +17,52 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
           is-enabled
           {
             display: flex;
+            margin-bottom: 10px;
+            margin-left: 0;
+            margin-right: 0;
+            margin-top: 10px;
             position: relative;
+          }
+          &:hover .ms-Checkbox-checkbox {
+            background: #005a9e;
+            border-color: #005a9e;
+          }
+          &:focus .ms-Checkbox-checkbox {
+            background: #005a9e;
+            border-color: #005a9e;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
+            background: Window;
+            border-color: Highlight;
+          }
+          @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-checkbox {
+            background: Highlight;
+          }
+          @media screen and (-ms-high-contrast: active){&:focus:hover .ms-Checkbox-checkbox {
+            background: Highlight;
+          }
+          @media screen and (-ms-high-contrast: active){&:focus:hover .ms-Checkbox-checkmark {
+            color: Window;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
+            color: Highlight;
+          }
+          &:hover .ms-Checkbox-text {
+            color: #201f1e;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+            color: WindowText;
+          }
+          &:focus .ms-Checkbox-text {
+            color: #201f1e;
+          }
+          @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+            color: WindowText;
           }
     >
       <input
+        aria-checked="true"
+        aria-label="Show beak"
         checked={true}
         className=
 
@@ -26,14 +71,14 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
               opacity: 0;
               position: absolute;
             }
-            .ms-Fabric--isFocusVisible &:focus + label {
+            .ms-Fabric--isFocusVisible &:focus + label::before {
               outline-offset: 2px;
-              outline: 1px solid #666666;
+              outline: 1px solid #605e5c;
             }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label {
+            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
               outline: 1px solid ActiveBorder;
             }
-        id="checkbox-0"
+        id="checkbox-2"
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
@@ -52,40 +97,18 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
               font-size: 14px;
               font-weight: 400;
               position: relative;
-              text-align: left;
               user-select: none;
             }
-            &:hover .ms-Checkbox-checkbox {
-              background: #106ebe;
-              border-color: #106ebe;
+            &::before {
+              bottom: 0px;
+              content: "";
+              left: 0px;
+              pointer-events: none;
+              position: absolute;
+              right: 0px;
+              top: 0px;
             }
-            &:focus .ms-Checkbox-checkbox {
-              background: #106ebe;
-              border-color: #106ebe;
-            }
-            @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
-              background: Window;
-              border-color: Highlight;
-            }
-            @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-checkbox {
-              background: Highlight;
-            }
-            @media screen and (-ms-high-contrast: active){&:focus:hover .ms-Checkbox-checkbox {
-              background: Highlight;
-            }
-            @media screen and (-ms-high-contrast: active){&:focus:hover .ms-Checkbox-checkmark {
-              color: Window;
-            }
-            @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
-              color: Highlight;
-            }
-            &:hover .ms-Checkbox-text {
-              color: #333333;
-            }
-            &:focus .ms-Checkbox-text {
-              color: #333333;
-            }
-        htmlFor="checkbox-0"
+        htmlFor="checkbox-2"
       >
         <div
           className=
@@ -94,8 +117,8 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
                 align-items: center;
                 background: #0078d4;
                 border-color: #0078d4;
-                border-style: solid;
-                border-width: 1px;
+                border-radius: 2px;
+                border: 1px solid #323130;
                 box-sizing: border-box;
                 display: flex;
                 flex-shrink: 0;
@@ -103,6 +126,7 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
                 justify-content: center;
                 margin-right: 4px;
                 overflow: hidden;
+                position: relative;
                 transition-duration: 200ms;
                 transition-property: background, border, border-color;
                 transition-timing-function: cubic-bezier(.4, 0, .23, 1);
@@ -112,8 +136,12 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
                 background: Highlight;
                 border-color: Highlight;
               }
+              @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                forced-color-adjust: none;
+              }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-Checkbox-checkmark
                 {
@@ -132,19 +160,25 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
                   color: Window;
                 }
             data-icon-name="CheckMark"
-            role="presentation"
           >
             
           </i>
         </div>
         <span
+          aria-hidden="true"
           className=
               ms-Checkbox-text
               {
-                color: #333333;
+                color: #323130;
                 font-size: 14px;
                 line-height: 20px;
                 margin-left: 4px;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                color: WindowText;
+              }
+              @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                forced-color-adjust: none;
               }
         >
           Show beak
@@ -173,11 +207,11 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
               -webkit-font-smoothing: antialiased;
               box-shadow: none;
               box-sizing: border-box;
-              color: #333333;
+              color: #323130;
               display: block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
-              font-weight: 400;
+              font-weight: 600;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
@@ -189,7 +223,7 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
               padding-top: 0px;
               word-wrap: break-word;
             }
-        htmlFor="Slider1"
+        htmlFor="Slider3"
       >
         Gap Space
       </label>
@@ -208,6 +242,7 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
           aria-valuemax={30}
           aria-valuemin={0}
           aria-valuenow={0}
+          aria-valuetext="0"
           className=
               ms-Slider-slideBox
               ms-Slider-showValue
@@ -236,77 +271,62 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
                 bottom: 1px;
                 content: "";
                 left: 1px;
-                outline: 1px solid #666666;
+                outline: 1px solid #605e5c;
                 position: absolute;
                 right: 1px;
                 top: 1px;
                 z-index: 1;
               }
-              &:active $activeSection {
+              &:active .ms-Slider-active {
+                background-color: #005a9e;
+              }
+              @media screen and (-ms-high-contrast: active){&:active .ms-Slider-active {
+                background-color: Highlight;
+              }
+              &:hover .ms-Slider-active {
                 background-color: #0078d4;
               }
-              @media screen and (-ms-high-contrast: active){&:active $activeSection {
+              @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-active {
                 background-color: Highlight;
               }
-              &:hover $activeSection {
-                background-color: #0078d4;
+              &:active .ms-Slider-inactive {
+                background-color: #deecf9;
               }
-              @media screen and (-ms-high-contrast: active){&:hover $activeSection {
+              @media screen and (-ms-high-contrast: active){&:active .ms-Slider-inactive {
+                border-color: Highlight;
+              }
+              &:hover .ms-Slider-inactive {
+                background-color: #deecf9;
+              }
+              @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-inactive {
+                border-color: Highlight;
+              }
+              &:active .ms-Slider-thumb {
+                border: 2px solid #005a9e;
+              }
+              @media screen and (-ms-high-contrast: active){&:active .ms-Slider-thumb {
+                border-color: Highlight;
+              }
+              &:hover .ms-Slider-thumb {
+                border: 2px solid #005a9e;
+              }
+              @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-thumb {
+                border-color: Highlight;
+              }
+              &:active .ms-Slider-zeroTick {
+                background-color: #deecf9;
+              }
+              @media screen and (-ms-high-contrast: active){&:active .ms-Slider-zeroTick {
                 background-color: Highlight;
               }
-              &:active $inactiveSection {
-                background-color: #c7e0f4;
+              &:hover .ms-Slider-zeroTick {
+                background-color: #deecf9;
               }
-              @media screen and (-ms-high-contrast: active){&:active $inactiveSection {
-                border-color: Highlight;
-              }
-              &:hover $inactiveSection {
-                background-color: #c7e0f4;
-              }
-              @media screen and (-ms-high-contrast: active){&:hover $inactiveSection {
-                border-color: Highlight;
-              }
-              &:active $thumb {
-                border: 2px solid #0078d4;
-              }
-              @media screen and (-ms-high-contrast: active){&:active $thumb {
-                border-color: Highlight;
-              }
-              &:hover $thumb {
-                border: 2px solid #0078d4;
-              }
-              @media screen and (-ms-high-contrast: active){&:hover $thumb {
-                border-color: Highlight;
-              }
-              &:active $zeroTick {
-                background-color: #c7e0f4;
-              }
-              @media screen and (-ms-high-contrast: active){&:active $zeroTick {
+              @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-zeroTick {
                 background-color: Highlight;
-              }
-              &:hover $zeroTick {
-                background-color: #c7e0f4;
-              }
-              @media screen and (-ms-high-contrast: active){&:hover $zeroTick {
-                background-color: Highlight;
-              }
-              & $thumb {
-                background: #ffffff;
-                border-color: #666666;
-                border-radius: 10px;
-                border-style: solid;
-                border-width: 2px;
-                box-sizing: border-box;
-                display: block;
-                height: 16px;
-                position: absolute;
-                top: -6px;
-                transform: translateX(-50%);
-                transition: left 0.367s cubic-bezier(.1,.9,.2,1);
-                width: 16px;
               }
           data-is-focusable={true}
-          id="Slider1"
+          id="Slider3"
           onKeyDown={[Function]}
           onMouseDown={[Function]}
           onTouchStart={[Function]}
@@ -321,17 +341,25 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
                   position: relative;
                   width: 100%;
                 }
-                & $lineContainer {
-                  border-radius: 4px;
-                  box-sizing: border-box;
-                  height: 4px;
-                  width: 100%;
-                }
           >
             <span
               className=
                   ms-Slider-thumb
-
+                  {
+                    background: #ffffff;
+                    border-color: #605e5c;
+                    border-radius: 10px;
+                    border-style: solid;
+                    border-width: 2px;
+                    box-sizing: border-box;
+                    display: block;
+                    height: 16px;
+                    position: absolute;
+                    top: -6px;
+                    transform: translateX(-50%);
+                    transition: left 0.367s cubic-bezier(.1,.9,.2,1);
+                    width: 16px;
+                  }
               style={
                 Object {
                   "left": "0%",
@@ -341,9 +369,14 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
             <span
               className=
                   ms-Slider-active
-
                   {
-                    background: #666666;
+                    border-radius: 4px;
+                    box-sizing: border-box;
+                    height: 4px;
+                    width: 100%;
+                  }
+                  {
+                    background: #605e5c;
                     transition: width 0.367s cubic-bezier(.1,.9,.2,1);
                   }
                   @media screen and (-ms-high-contrast: active){& {
@@ -358,9 +391,14 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
             <span
               className=
                   ms-Slider-inactive
-
                   {
-                    background: #c8c8c8;
+                    border-radius: 4px;
+                    box-sizing: border-box;
+                    height: 4px;
+                    width: 100%;
+                  }
+                  {
+                    background: #c8c6c4;
                     transition: width 0.367s cubic-bezier(.1,.9,.2,1);
                   }
                   @media screen and (-ms-high-contrast: active){& {
@@ -383,12 +421,12 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
                 -webkit-font-smoothing: antialiased;
                 box-shadow: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 display: block;
                 flex-shrink: 1;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
-                font-weight: 400;
+                font-weight: 600;
                 line-height: 1;
                 margin-bottom: 0;
                 margin-left: 8px;
@@ -430,11 +468,11 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
               -webkit-font-smoothing: antialiased;
               box-shadow: none;
               box-sizing: border-box;
-              color: #333333;
+              color: #323130;
               display: block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
-              font-weight: 400;
+              font-weight: 600;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
@@ -446,7 +484,7 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
               padding-top: 0px;
               word-wrap: break-word;
             }
-        htmlFor="Slider2"
+        htmlFor="Slider4"
       >
         Beak Width
       </label>
@@ -465,6 +503,7 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
           aria-valuemax={50}
           aria-valuemin={10}
           aria-valuenow={16}
+          aria-valuetext="16"
           className=
               ms-Slider-slideBox
               ms-Slider-showValue
@@ -493,77 +532,62 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
                 bottom: 1px;
                 content: "";
                 left: 1px;
-                outline: 1px solid #666666;
+                outline: 1px solid #605e5c;
                 position: absolute;
                 right: 1px;
                 top: 1px;
                 z-index: 1;
               }
-              &:active $activeSection {
+              &:active .ms-Slider-active {
+                background-color: #005a9e;
+              }
+              @media screen and (-ms-high-contrast: active){&:active .ms-Slider-active {
+                background-color: Highlight;
+              }
+              &:hover .ms-Slider-active {
                 background-color: #0078d4;
               }
-              @media screen and (-ms-high-contrast: active){&:active $activeSection {
+              @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-active {
                 background-color: Highlight;
               }
-              &:hover $activeSection {
-                background-color: #0078d4;
+              &:active .ms-Slider-inactive {
+                background-color: #deecf9;
               }
-              @media screen and (-ms-high-contrast: active){&:hover $activeSection {
+              @media screen and (-ms-high-contrast: active){&:active .ms-Slider-inactive {
+                border-color: Highlight;
+              }
+              &:hover .ms-Slider-inactive {
+                background-color: #deecf9;
+              }
+              @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-inactive {
+                border-color: Highlight;
+              }
+              &:active .ms-Slider-thumb {
+                border: 2px solid #005a9e;
+              }
+              @media screen and (-ms-high-contrast: active){&:active .ms-Slider-thumb {
+                border-color: Highlight;
+              }
+              &:hover .ms-Slider-thumb {
+                border: 2px solid #005a9e;
+              }
+              @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-thumb {
+                border-color: Highlight;
+              }
+              &:active .ms-Slider-zeroTick {
+                background-color: #deecf9;
+              }
+              @media screen and (-ms-high-contrast: active){&:active .ms-Slider-zeroTick {
                 background-color: Highlight;
               }
-              &:active $inactiveSection {
-                background-color: #c7e0f4;
+              &:hover .ms-Slider-zeroTick {
+                background-color: #deecf9;
               }
-              @media screen and (-ms-high-contrast: active){&:active $inactiveSection {
-                border-color: Highlight;
-              }
-              &:hover $inactiveSection {
-                background-color: #c7e0f4;
-              }
-              @media screen and (-ms-high-contrast: active){&:hover $inactiveSection {
-                border-color: Highlight;
-              }
-              &:active $thumb {
-                border: 2px solid #0078d4;
-              }
-              @media screen and (-ms-high-contrast: active){&:active $thumb {
-                border-color: Highlight;
-              }
-              &:hover $thumb {
-                border: 2px solid #0078d4;
-              }
-              @media screen and (-ms-high-contrast: active){&:hover $thumb {
-                border-color: Highlight;
-              }
-              &:active $zeroTick {
-                background-color: #c7e0f4;
-              }
-              @media screen and (-ms-high-contrast: active){&:active $zeroTick {
+              @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-zeroTick {
                 background-color: Highlight;
-              }
-              &:hover $zeroTick {
-                background-color: #c7e0f4;
-              }
-              @media screen and (-ms-high-contrast: active){&:hover $zeroTick {
-                background-color: Highlight;
-              }
-              & $thumb {
-                background: #ffffff;
-                border-color: #666666;
-                border-radius: 10px;
-                border-style: solid;
-                border-width: 2px;
-                box-sizing: border-box;
-                display: block;
-                height: 16px;
-                position: absolute;
-                top: -6px;
-                transform: translateX(-50%);
-                transition: left 0.367s cubic-bezier(.1,.9,.2,1);
-                width: 16px;
               }
           data-is-focusable={true}
-          id="Slider2"
+          id="Slider4"
           onKeyDown={[Function]}
           onMouseDown={[Function]}
           onTouchStart={[Function]}
@@ -578,17 +602,25 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
                   position: relative;
                   width: 100%;
                 }
-                & $lineContainer {
-                  border-radius: 4px;
-                  box-sizing: border-box;
-                  height: 4px;
-                  width: 100%;
-                }
           >
             <span
               className=
                   ms-Slider-thumb
-
+                  {
+                    background: #ffffff;
+                    border-color: #605e5c;
+                    border-radius: 10px;
+                    border-style: solid;
+                    border-width: 2px;
+                    box-sizing: border-box;
+                    display: block;
+                    height: 16px;
+                    position: absolute;
+                    top: -6px;
+                    transform: translateX(-50%);
+                    transition: left 0.367s cubic-bezier(.1,.9,.2,1);
+                    width: 16px;
+                  }
               style={
                 Object {
                   "left": "15%",
@@ -598,9 +630,14 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
             <span
               className=
                   ms-Slider-active
-
                   {
-                    background: #666666;
+                    border-radius: 4px;
+                    box-sizing: border-box;
+                    height: 4px;
+                    width: 100%;
+                  }
+                  {
+                    background: #605e5c;
                     transition: width 0.367s cubic-bezier(.1,.9,.2,1);
                   }
                   @media screen and (-ms-high-contrast: active){& {
@@ -615,9 +652,14 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
             <span
               className=
                   ms-Slider-inactive
-
                   {
-                    background: #c8c8c8;
+                    border-radius: 4px;
+                    box-sizing: border-box;
+                    height: 4px;
+                    width: 100%;
+                  }
+                  {
+                    background: #c8c6c4;
                     transition: width 0.367s cubic-bezier(.1,.9,.2,1);
                   }
                   @media screen and (-ms-high-contrast: active){& {
@@ -640,12 +682,12 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
                 -webkit-font-smoothing: antialiased;
                 box-shadow: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 display: block;
                 flex-shrink: 1;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
-                font-weight: 400;
+                font-weight: 600;
                 line-height: 1;
                 margin-bottom: 0;
                 margin-left: 8px;
@@ -666,9 +708,7 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
       </div>
     </div>
     <div
-      className=
-          ms-Dropdown-container
-
+      className="ms-Dropdown-container"
     >
       <label
         className=
@@ -679,11 +719,11 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
               -webkit-font-smoothing: antialiased;
               box-shadow: none;
               box-sizing: border-box;
-              color: #333333;
+              color: #323130;
               display: inline-block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
-              font-weight: 400;
+              font-weight: 600;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
@@ -695,23 +735,23 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
               padding-top: 5px;
               word-wrap: break-word;
             }
-        htmlFor="Dropdown3"
-        id="Dropdown3-label"
+        id="Dropdown5-label"
       >
         Directional hint
       </label>
       <div
-        aria-describedby="Dropdown3-option"
         aria-expanded="false"
-        aria-labelledby="Dropdown3-label"
+        aria-haspopup="listbox"
+        aria-labelledby="Dropdown5-label Dropdown5-option"
         className=
             ms-Dropdown
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
+              border-color: #605e5c;
               box-shadow: none;
               box-sizing: border-box;
-              color: #333333;
+              color: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
@@ -728,82 +768,84 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
               user-select: none;
             }
             &:hover .ms-Dropdown-title {
-              border-color: #212121;
-              color: #212121;
+              border-color: #323130;
+              color: #201f1e;
             }
             @media screen and (-ms-high-contrast: active){&:hover .ms-Dropdown-title {
               border-color: Highlight;
             }
             &:focus .ms-Dropdown-title {
-              border-color: #0078d4;
-              color: #212121;
+              color: #201f1e;
             }
             @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title {
-              background-color: Highlight;
+              color: Highlight;
+            }
+            &:focus:after {
+              border-radius: 2px;
+              border: 2px solid #0078d4;
+              box-sizing: border-box;
+              content: '';
+              height: 100%;
+              left: 0px;
+              pointer-events: none;
+              position: absolute;
+              top: 0px;
+              width: 100%;
+            }
+            @media screen and (-ms-high-contrast: active){&:focus:after {
               border-color: Highlight;
-              color: HighlightText;
-            }
-            @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title:hover {
-              color: HighlightText;
-            }
-            @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: black-on-white){&:focus .ms-Dropdown-title {
-              -ms-high-contrast-adjust: none;
+              color: Highlight;
             }
             &:active .ms-Dropdown-title {
-              border-color: #005a9e;
-              color: #212121;
+              border-color: #0078d4;
+              color: #201f1e;
             }
             @media screen and (-ms-high-contrast: active){&:active .ms-Dropdown-title {
               border-color: Highlight;
             }
             &:hover .ms-Dropdown-caretDown {
-              color: #212121;
+              color: #323130;
             }
             &:focus .ms-Dropdown-caretDown {
-              color: #212121;
+              color: #323130;
             }
             @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-caretDown {
-              color: HighlightText;
-            }
-            @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: black-on-white){&:focus .ms-Dropdown-caretDown {
-              -ms-high-contrast-adjust: none;
+              color: Highlight;
             }
             &:active .ms-Dropdown-caretDown {
-              color: #212121;
+              color: #323130;
             }
             &:hover .ms-Dropdown-titleIsPlaceHolder {
-              color: #666666;
+              color: #323130;
             }
             &:focus .ms-Dropdown-titleIsPlaceHolder {
-              color: #666666;
+              color: #323130;
             }
             &:active .ms-Dropdown-titleIsPlaceHolder {
-              color: #666666;
+              color: #323130;
             }
             &:hover .ms-Dropdown-title--hasError {
-              border-color: #a80000;
+              border-color: #a4262c;
             }
             &:active .ms-Dropdown-title--hasError {
-              border-color: #a80000;
-            }
-            &:focus .ms-Dropdown-title--hasError {
-              border-color: #a80000;
+              border-color: #a4262c;
             }
         data-is-focusable={true}
-        id="Dropdown3"
+        id="Dropdown5"
         onBlur={[Function]}
         onChange={[Function]}
         onClick={[Function]}
         onFocus={[Function]}
         onKeyDown={[Function]}
         onKeyUp={[Function]}
+        onMouseDown={[Function]}
         role="listbox"
         tabIndex={0}
       >
         <span
           aria-atomic={true}
-          aria-label="Bottom Left Edge"
-          aria-live="off"
+          aria-invalid={false}
+          aria-live="polite"
           aria-posinset={5}
           aria-selected={true}
           aria-setsize={14}
@@ -811,7 +853,8 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
               ms-Dropdown-title
               {
                 background-color: #ffffff;
-                border-color: #a6a6a6;
+                border-color: #605e5c;
+                border-radius: 2px;
                 border-style: solid;
                 border-width: 1px;
                 box-shadow: none;
@@ -826,19 +869,17 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
                 margin-top: 0px;
                 overflow: hidden;
                 padding-bottom: 0;
-                padding-left: 12px;
-                padding-right: 32px;
+                padding-left: 8px;
+                padding-right: 28px;
                 padding-top: 0;
                 position: relative;
                 text-overflow: ellipsis;
                 white-space: nowrap;
               }
-          id="Dropdown3-option"
+          id="Dropdown5-option"
           role="option"
         >
-          <span>
-            Bottom Left Edge
-          </span>
+          Bottom Left Edge
         </span>
         <span
           className=
@@ -848,17 +889,18 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
                 height: 32px;
                 line-height: 30px;
                 position: absolute;
-                right: 12px;
+                right: 8px;
                 top: 1px;
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-Dropdown-caretDown
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #666666;
+                  color: #605e5c;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-size: 12px;
@@ -868,40 +910,46 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
                   speak: none;
                 }
             data-icon-name="ChevronDown"
-            role="presentation"
           >
             
           </i>
         </span>
       </div>
     </div>
-  </div>
+  </div>,
   <div
-    className="ms-CalloutExample-buttonArea"
+    className=
+
+        {
+          display: inline-block;
+          height: 32px;
+          margin-bottom: 0;
+          margin-left: 100px;
+          margin-right: 100px;
+          margin-top: 0;
+          min-width: 130px;
+          text-align: center;
+          vertical-align: top;
+        }
   >
     <button
       className=
           ms-Button
           ms-Button--default
-          calloutExampleButton
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
-            background-color: #f4f4f4;
-            border-radius: 0px;
-            border: 1px solid transparent;
+            background-color: #ffffff;
+            border-radius: 2px;
+            border: 1px solid #8a8886;
             box-sizing: border-box;
-            color: #333333;
+            color: #323130;
             cursor: pointer;
             display: inline-block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
             height: 32px;
-            margin-bottom: 0px;
-            margin-left: 0px;
-            margin-right: 0px;
-            margin-top: 0px;
             min-width: 80px;
             outline: transparent;
             padding-bottom: 0;
@@ -912,20 +960,20 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
             text-align: center;
             text-decoration: none;
             user-select: none;
-            vertical-align: top;
+            width: 100%;
           }
           &::-moz-focus-inner {
             border: 0;
           }
           .ms-Fabric--isFocusVisible &:focus:after {
-            border: 1px solid #ffffff;
-            bottom: 0px;
+            border: 1px solid transparent;
+            bottom: 2px;
             content: "";
-            left: 0px;
-            outline: 1px solid #666666;
+            left: 2px;
+            outline: 1px solid #605e5c;
             position: absolute;
-            right: 0px;
-            top: 0px;
+            right: 2px;
+            top: 2px;
             z-index: 1;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -942,16 +990,16 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
             top: 0px;
           }
           &:hover {
-            background-color: #eaeaea;
-            color: #212121;
+            background-color: #f3f2f1;
+            color: #201f1e;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
             color: Highlight;
           }
           &:active {
-            background-color: #c8c8c8;
-            color: #212121;
+            background-color: #edebe9;
+            color: #201f1e;
           }
       data-is-focusable={true}
       onClick={[Function]}
@@ -962,7 +1010,7 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
       onMouseUp={[Function]}
       type="button"
     >
-      <div
+      <span
         className=
             ms-Button-flexContainer
             {
@@ -972,18 +1020,21 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
               height: 100%;
               justify-content: center;
             }
+        data-automationid="splitbuttonprimary"
       >
-        <div
+        <span
           className=
               ms-Button-textContainer
               {
+                display: block;
                 flex-grow: 1;
               }
         >
-          <div
+          <span
             className=
                 ms-Button-label
                 {
+                  display: block;
                   font-weight: 600;
                   line-height: 100%;
                   margin-bottom: 0;
@@ -991,13 +1042,13 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
                   margin-right: 4px;
                   margin-top: 0;
                 }
-            id="id__4"
+            id="id__6"
           >
             Show callout
-          </div>
-        </div>
-      </div>
+          </span>
+        </span>
+      </span>
     </button>
-  </div>
-</div>
+  </div>,
+]
 `;

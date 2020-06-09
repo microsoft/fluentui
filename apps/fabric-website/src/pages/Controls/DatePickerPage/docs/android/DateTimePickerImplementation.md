@@ -1,9 +1,13 @@
-### Control name
+### Control names
 
+`DateTimePicker`  
 `DateTimePickerDialog`
 
-### Library
+### Source code
 
-[UI Fabric Android](https://github.com/OfficeDev/ui-fabric-android)
+[DateTimePicker](https://github.com/microsoft/fluentui-android/blob/master/FluentUI/src/main/java/com/microsoft/fluentui/datetimepicker/DateTimePicker.kt)  
+[DateTimePickerDialog](https://github.com/microsoft/fluentui-android/blob/master/FluentUI/src/main/java/com/microsoft/fluentui/datetimepicker/DateTimePickerDialog.kt)
 
-[Sample Code](https://github.com/OfficeDev/ui-fabric-android/blob/master/OfficeUIFabric.Demo/src/main/java/com/microsoft/officeuifabricdemo/demos/DateTimePickerDialogActivity.kt)
+### Sample code
+
+[DateTimePicker demo activity](https://github.com/microsoft/fluentui-android/blob/master/FluentUI.Demo/src/main/java/com/microsoft/fluentuidemo/demos/DateTimePickerActivity.kt)

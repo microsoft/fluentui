@@ -2,7 +2,7 @@ import { getGlobalClassNames, HighContrastSelector } from '../../../Styling';
 import { IPlainCardStyles, IPlainCardStyleProps } from './PlainCard.types';
 
 const GlobalClassNames = {
-  root: 'ms-PlainCard-root'
+  root: 'ms-PlainCard-root',
 };
 
 export function getStyles(props: IPlainCardStyleProps): IPlainCardStyles {
@@ -15,15 +15,13 @@ export function getStyles(props: IPlainCardStyleProps): IPlainCardStyles {
       classNames.root,
       {
         pointerEvents: 'auto',
-        boxShadow: '0 0 20px rgba(0, 0, 0, .2)',
-        border: 'none',
         selectors: {
           [HighContrastSelector]: {
-            border: '1px solid WindowText'
-          }
-        }
+            border: '1px solid WindowText',
+          },
+        },
       },
-      className
-    ]
+      className,
+    ],
   };
 }

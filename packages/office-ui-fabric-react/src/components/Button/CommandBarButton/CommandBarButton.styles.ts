@@ -3,147 +3,215 @@ import { ITheme, concatStyleSets, getFocusStyle, HighContrastSelector } from '..
 import { memoizeFunction } from '../../../Utilities';
 import { getStyles as getBaseButtonStyles } from '../BaseButton.styles';
 import { getStyles as getSplitButtonStyles } from '../SplitButton/SplitButton.styles';
+import { ButtonGlobalClassNames } from '../BaseButton.classNames';
 
 export const getStyles = memoizeFunction(
   (theme: ITheme, customStyles?: IButtonStyles, focusInset?: string, focusColor?: string): IButtonStyles => {
     const baseButtonStyles: IButtonStyles = getBaseButtonStyles(theme);
     const baseSplitButtonStyles: IButtonStyles = getSplitButtonStyles(theme);
+
+    const { palette: p, semanticColors } = theme;
+
     const commandButtonHighContrastFocus = {
       left: 4,
       top: 4,
       bottom: 4,
       right: 4,
-      border: 'none'
+      border: 'none',
     };
 
     const commandButtonStyles: IButtonStyles = {
       root: [
-        getFocusStyle(theme, { inset: -1, highContrastStyle: commandButtonHighContrastFocus }),
+        getFocusStyle(theme, {
+          inset: 2,
+          highContrastStyle: commandButtonHighContrastFocus,
+          borderColor: 'transparent',
+        }),
         theme.fonts.medium,
         {
           minWidth: '40px',
-          backgroundColor: theme.palette.neutralLighter,
-          color: theme.palette.neutralPrimary,
+          backgroundColor: p.white,
+          color: p.neutralPrimary,
           padding: '0 4px',
+          border: 'none',
+          borderRadius: 0,
           selectors: {
             [HighContrastSelector]: {
-              border: 'none'
-            }
-          }
-        }
+              border: 'none',
+            },
+          },
+        },
       ],
 
       rootHovered: {
-        backgroundColor: theme.palette.neutralLight,
-        color: theme.palette.neutralDark,
+        backgroundColor: p.neutralLighter,
+        color: p.neutralDark,
         selectors: {
           [HighContrastSelector]: {
-            color: 'Highlight'
-          }
-        }
+            color: 'Highlight',
+          },
+          [`.${ButtonGlobalClassNames.msButtonIcon}`]: {
+            color: p.themeDarkAlt,
+          },
+          [`.${ButtonGlobalClassNames.msButtonMenuIcon}`]: {
+            color: p.neutralPrimary,
+          },
+        },
       },
 
       rootPressed: {
-        backgroundColor: theme.palette.neutralQuaternaryAlt,
-        color: theme.palette.black
+        backgroundColor: p.neutralLight,
+        color: p.neutralDark,
+        selectors: {
+          [`.${ButtonGlobalClassNames.msButtonIcon}`]: {
+            color: p.themeDark,
+          },
+          [`.${ButtonGlobalClassNames.msButtonMenuIcon}`]: {
+            color: p.neutralPrimary,
+          },
+        },
       },
 
       rootChecked: {
-        backgroundColor: theme.palette.neutralQuaternaryAlt,
-        color: theme.palette.black
-      },
-
-      rootExpanded: {
-        backgroundColor: theme.palette.neutralQuaternaryAlt,
-        color: theme.palette.black
+        backgroundColor: p.neutralLight,
+        color: p.neutralDark,
+        selectors: {
+          [`.${ButtonGlobalClassNames.msButtonIcon}`]: {
+            color: p.themeDark,
+          },
+          [`.${ButtonGlobalClassNames.msButtonMenuIcon}`]: {
+            color: p.neutralPrimary,
+          },
+        },
       },
 
       rootCheckedHovered: {
-        backgroundColor: theme.palette.neutralQuaternary,
-        color: theme.palette.black
+        backgroundColor: p.neutralQuaternaryAlt,
+        selectors: {
+          [`.${ButtonGlobalClassNames.msButtonIcon}`]: {
+            color: p.themeDark,
+          },
+          [`.${ButtonGlobalClassNames.msButtonMenuIcon}`]: {
+            color: p.neutralPrimary,
+          },
+        },
+      },
+
+      rootExpanded: {
+        backgroundColor: p.neutralLight,
+        color: p.neutralDark,
+        selectors: {
+          [`.${ButtonGlobalClassNames.msButtonIcon}`]: {
+            color: p.themeDark,
+          },
+          [`.${ButtonGlobalClassNames.msButtonMenuIcon}`]: {
+            color: p.neutralPrimary,
+          },
+        },
+      },
+
+      rootExpandedHovered: {
+        backgroundColor: p.neutralQuaternaryAlt,
+      },
+
+      rootDisabled: {
+        backgroundColor: p.white,
+        selectors: {
+          [`.${ButtonGlobalClassNames.msButtonIcon}`]: {
+            color: semanticColors.disabledBodySubtext,
+          },
+        },
       },
 
       // Split button styles
       splitButtonContainer: {
+        height: '100%',
         selectors: {
           [HighContrastSelector]: {
-            border: 'none'
-          }
-        }
+            border: 'none',
+          },
+        },
       },
 
       splitButtonDivider: {
-        backgroundColor: theme.palette.neutralTertiaryAlt,
-        marginTop: 4,
-        marginBottom: 4
+        backgroundColor: p.neutralTertiaryAlt,
       },
 
       splitButtonMenuButton: {
-        backgroundColor: theme.palette.neutralLighter,
-        color: theme.palette.neutralPrimary,
+        backgroundColor: p.white,
+        border: 'none',
+        borderTopRightRadius: '0',
+        borderBottomRightRadius: '0',
+        color: p.neutralSecondary,
         selectors: {
           ':hover': {
-            backgroundColor: theme.palette.neutralLight,
-            color: theme.palette.neutralDark,
+            backgroundColor: p.neutralLighter,
+            color: p.neutralDark,
             selectors: {
               [HighContrastSelector]: {
-                color: 'Highlight'
-              }
-            }
-          }
-        }
+                color: 'Highlight',
+              },
+              [`.${ButtonGlobalClassNames.msButtonIcon}`]: {
+                color: p.neutralPrimary,
+              },
+            },
+          },
+          ':active': {
+            backgroundColor: p.neutralLight,
+            selectors: {
+              [`.${ButtonGlobalClassNames.msButtonIcon}`]: {
+                color: p.neutralPrimary,
+              },
+            },
+          },
+        },
       },
 
       splitButtonMenuButtonDisabled: {
-        backgroundColor: theme.palette.neutralLighter,
-        selectors: {
-          ':hover': {
-            backgroundColor: theme.palette.neutralLighter
-          }
-        }
+        backgroundColor: p.white,
       },
 
       splitButtonMenuButtonChecked: {
-        backgroundColor: theme.palette.neutralQuaternaryAlt,
-        color: theme.palette.black,
+        backgroundColor: p.neutralLight,
+        color: p.neutralDark,
         selectors: {
           ':hover': {
-            backgroundColor: theme.palette.neutralQuaternaryAlt
-          }
-        }
+            backgroundColor: p.neutralQuaternaryAlt,
+          },
+        },
       },
 
       splitButtonMenuButtonExpanded: {
-        backgroundColor: theme.palette.neutralQuaternaryAlt,
-        color: theme.palette.black,
+        backgroundColor: p.neutralLight,
+        color: p.black,
         selectors: {
           ':hover': {
-            backgroundColor: theme.palette.neutralQuaternaryAlt
-          }
-        }
+            backgroundColor: p.neutralQuaternaryAlt,
+          },
+        },
       },
 
       splitButtonMenuIcon: {
-        color: theme.palette.neutralPrimary
+        color: p.neutralPrimary,
       },
 
       splitButtonMenuIconDisabled: {
-        color: theme.palette.neutralTertiary
+        color: p.neutralTertiary,
       },
 
       label: {
-        fontWeight: 'normal' // theme.fontWeights.semibold,
+        fontWeight: 'normal', // theme.fontWeights.semibold,
       },
 
       icon: {
-        color: theme.palette.themeDarkAlt
+        color: p.themePrimary,
       },
 
       menuIcon: {
-        color: theme.palette.neutralSecondary
-      }
+        color: p.neutralSecondary,
+      },
     };
 
-    return concatStyleSets(baseButtonStyles, commandButtonStyles, baseSplitButtonStyles, customStyles)!;
-  }
+    return concatStyleSets(baseButtonStyles, baseSplitButtonStyles, commandButtonStyles, customStyles)!;
+  },
 );

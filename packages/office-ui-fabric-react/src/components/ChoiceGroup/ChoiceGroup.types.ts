@@ -15,7 +15,7 @@ export interface IChoiceGroup {
   checkedOption: IChoiceGroupOption | undefined;
 
   /**
-   * Sets focus to the choiceGroup.
+   * Sets focus to the checked option or the first enabled option in the ChoiceGroup.
    */
   focus: () => void;
 }
@@ -38,6 +38,8 @@ export interface IChoiceGroupProps extends React.InputHTMLAttributes<HTMLElement
   /**
    * The key of the option that will be initially checked.
    */
+  // TODO (Fabric 8?): defaultSelectedKey/selectedKey allow numbers but IChoiceGroupOption doesn't.
+  // This should be consistent one way or the other everywhere.
   defaultSelectedKey?: string | number;
 
   /**
@@ -63,7 +65,7 @@ export interface IChoiceGroupProps extends React.InputHTMLAttributes<HTMLElement
   onChanged?: (option: IChoiceGroupOption, evt?: React.FormEvent<HTMLElement | HTMLInputElement>) => void;
 
   /**
-   * Theme (provided through customization.)
+   * Theme (provided through customization).
    */
   theme?: ITheme;
 
@@ -73,7 +75,7 @@ export interface IChoiceGroupProps extends React.InputHTMLAttributes<HTMLElement
   styles?: IStyleFunctionOrObject<IChoiceGroupStyleProps, IChoiceGroupStyles>;
 
   /**
-   * Aria labelled by prop for the ChoiceGroup itself
+   * ID of an element to use as the aria label for this ChoiceGroup.
    */
   ariaLabelledBy?: string;
 }
@@ -81,7 +83,7 @@ export interface IChoiceGroupProps extends React.InputHTMLAttributes<HTMLElement
 /**
  * {@docCategory ChoiceGroup}
  */
-export interface IChoiceGroupOption extends React.HTMLAttributes<HTMLElement | HTMLInputElement> {
+export interface IChoiceGroupOption extends React.InputHTMLAttributes<HTMLElement | HTMLInputElement> {
   /**
    * A required key to uniquely identify the option.
    */
@@ -93,27 +95,28 @@ export interface IChoiceGroupOption extends React.HTMLAttributes<HTMLElement | H
   text: string;
 
   /**
-   * Optional override of option render
+   * Used to customize option rendering.
    */
   onRenderField?: IRenderFunction<IChoiceGroupOption>;
 
   /**
-   * Optional override of label render
+   * Used to customize label rendering.
    */
-  onRenderLabel?: (option: IChoiceGroupOption) => JSX.Element;
+  onRenderLabel?: IRenderFunction<IChoiceGroupOption>;
 
   /**
-   * The Icon component props for choice field
+   * Props for an icon to display with this option.
    */
   iconProps?: IIconProps;
 
   /**
-   * The src of image for choice field.
+   * Image to display with this option.
    */
   imageSrc?: string;
 
   /**
-   * The alt of image for choice field. Defaults to '' if not set.
+   * Alt text if the option is an image.
+   * @default '' (empty string)
    */
   imageAlt?: string;
 
@@ -124,7 +127,7 @@ export interface IChoiceGroupOption extends React.HTMLAttributes<HTMLElement | H
 
   /**
    * The width and height of the image in px for choice field.
-   * @defaultvalue \{ width: 32, height: 32 \}
+   * @defaultvalue `{ width: 32, height: 32 }`
    */
   imageSize?: { width: number; height: number };
 
@@ -135,23 +138,27 @@ export interface IChoiceGroupOption extends React.HTMLAttributes<HTMLElement | H
 
   /**
    * Whether or not the option is checked.
+   * @deprecated Do not track checked state in the options themselves. Instead, either pass
+   * `defaultSelectedKey` to the `ChoiceGroup` and allow it to track selection state internally
+   * (uncontrolled), or pass `selectedKey` and `onChange` to the `ChoiceGroup` to track/update
+   * the selection state manually (controlled).
    */
+  // This should move from IChoiceGroupOption to IChoiceGroupOptionProps, so that the ChoiceGroup
+  // can still set the option as checked for rendering purposes
   checked?: boolean;
 
   /**
-   * DOM id to tag the ChoiceGroup input with, for reference.
-   * Should be used for 'aria-owns' and other such uses, rather than direct reference for programmatic purposes.
+   * ID used on the option's input element.
    */
   id?: string;
 
   /**
-   * DOM id to tag the ChoiceGroup label with, for reference.
-   * Should be used for 'aria-owns' and other such uses, rather than direct reference for programmatic purposes.
+   * ID used on the option's label.
    */
   labelId?: string;
 
   /**
-   * The aria label of the ChoiceGroupOption for the benefit of screen readers.
+   * Aria label of the option for the benefit of screen reader users.
    */
   ariaLabel?: string;
 
@@ -174,7 +181,15 @@ export interface IChoiceGroupStyleProps {
  * {@docCategory ChoiceGroup}
  */
 export interface IChoiceGroupStyles {
+  /**
+   * The actual root of the component.
+   * @deprecated Styles will be merged with `root` in a future release.
+   */
   applicationRole?: IStyle;
+  /**
+   * Not currently the actual root of the component (will be fixed in a future release).
+   * For now, to style the actual root, use `applicationRole`.
+   */
   root?: IStyle;
   label?: IStyle;
   flexContainer?: IStyle;

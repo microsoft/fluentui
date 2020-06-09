@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { TPlatformPages } from '../PlatformPicker/PlatformPicker.types';
-import { IRouteProps } from 'office-ui-fabric-react/lib/utilities/router/Route';
+import { IRouteProps } from '../../utilities/router/index';
 
 /**
  * Props for the nav.
@@ -32,9 +32,9 @@ export interface INavPage<TPlatform extends string = string> extends Pick<IRoute
   title: string;
 
   /**
-   * URL for this page, relative to the site's root.
+   * URL for this page, relative to the site's root. Undefined for categories.
    */
-  url: string;
+  url?: string;
 
   /**
    * Unique CSS class name for this page.
@@ -100,5 +100,5 @@ export interface INavPage<TPlatform extends string = string> extends Pick<IRoute
 
 export enum NavSortType {
   alphabetized = 'alphabetized',
-  categories = 'categories'
+  categories = 'categories',
 }

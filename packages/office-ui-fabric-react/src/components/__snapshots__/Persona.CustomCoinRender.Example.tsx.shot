@@ -2,10 +2,28 @@
 
 exports[`Component Examples renders Persona.CustomCoinRender.Example.tsx correctly 1`] = `
 <div
-  className="ms-PersonaExample"
+  className=
+      ms-Stack
+      {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        height: auto;
+        width: auto;
+      }
+      & > * {
+        text-overflow: ellipsis;
+      }
+      & > *:not(:first-child) {
+        margin-top: 10px;
+      }
+      & > *:not(.ms-StackItem) {
+        flex-shrink: 1;
+      }
 >
   <div>
-    Custom functional element in place of persona coin's image
+    Custom render function in place of persona coin's image
   </div>
   <div
     className=
@@ -18,7 +36,7 @@ exports[`Component Examples renders Persona.CustomCoinRender.Example.tsx correct
           align-items: center;
           box-shadow: none;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: flex;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
@@ -38,10 +56,6 @@ exports[`Component Examples renders Persona.CustomCoinRender.Example.tsx correct
         & .contextualHost {
           display: none;
         }
-        &:hover $primaryText {
-          color: #212121;
-        }
-    size={14}
     style={
       Object {
         "height": 72,
@@ -60,7 +74,7 @@ exports[`Component Examples renders Persona.CustomCoinRender.Example.tsx correct
             font-size: 14px;
             font-weight: 400;
           }
-      size={14}
+      role="presentation"
     >
       <div
         className=
@@ -72,6 +86,7 @@ exports[`Component Examples renders Persona.CustomCoinRender.Example.tsx correct
               text-align: center;
               width: 72px;
             }
+        role="presentation"
         style={
           Object {
             "height": 72,
@@ -79,23 +94,25 @@ exports[`Component Examples renders Persona.CustomCoinRender.Example.tsx correct
           }
         }
       >
-        <div
-          className="customExampleCoin"
-        >
-          <img
-            alt="Custom Coin Image"
-            height={72}
-            src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-male.png"
-            width={72}
-          />
-        </div>
+        <img
+          alt="Ted Randall, status is available at 4 PM"
+          className=
+
+              {
+                border-radius: 20px;
+                display: block;
+              }
+          height={72}
+          src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-male.png"
+          width={72}
+        />
         <div
           className=
               ms-Persona-presence
               {
                 -ms-high-contrast-adjust: none;
                 background-clip: content-box;
-                background-color: #7FBA00;
+                background-color: #6BB700;
                 border-radius: 50%;
                 border: 2px solid #ffffff;
                 bottom: -2px;
@@ -111,6 +128,7 @@ exports[`Component Examples renders Persona.CustomCoinRender.Example.tsx correct
                 background-color: Highlight;
                 border-color: Window;
               }
+          role="presentation"
           style={
             Object {
               "height": "24px",
@@ -119,6 +137,7 @@ exports[`Component Examples renders Persona.CustomCoinRender.Example.tsx correct
           }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-Persona-presenceIcon
                 {
@@ -138,7 +157,6 @@ exports[`Component Examples renders Persona.CustomCoinRender.Example.tsx correct
                   color: Window;
                 }
             data-icon-name="SkypeCheck"
-            role="presentation"
             style={
               Object {
                 "fontSize": "12px",
@@ -171,12 +189,15 @@ exports[`Component Examples renders Persona.CustomCoinRender.Example.tsx correct
         className=
             ms-Persona-primaryText
             {
-              color: #333333;
-              font-size: 21px;
+              color: #323130;
+              font-size: 20px;
               font-weight: 400;
               overflow: hidden;
               text-overflow: ellipsis;
               white-space: nowrap;
+            }
+            &:hover {
+              color: #201f1e;
             }
         dir="auto"
       >
@@ -188,6 +209,7 @@ exports[`Component Examples renders Persona.CustomCoinRender.Example.tsx correct
               }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
@@ -198,7 +220,7 @@ exports[`Component Examples renders Persona.CustomCoinRender.Example.tsx correct
         className=
             ms-Persona-secondaryText
             {
-              color: #666666;
+              color: #605e5c;
               font-size: 14px;
               font-weight: 400;
               overflow: hidden;
@@ -215,6 +237,7 @@ exports[`Component Examples renders Persona.CustomCoinRender.Example.tsx correct
               }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
@@ -225,9 +248,9 @@ exports[`Component Examples renders Persona.CustomCoinRender.Example.tsx correct
         className=
             ms-Persona-tertiaryText
             {
-              color: #666666;
+              color: #605e5c;
               display: block;
-              font-size: 12px;
+              font-size: 14px;
               font-weight: 400;
               overflow: hidden;
               text-overflow: ellipsis;
@@ -239,9 +262,9 @@ exports[`Component Examples renders Persona.CustomCoinRender.Example.tsx correct
         className=
             ms-Persona-optionalText
             {
-              color: #666666;
+              color: #605e5c;
               display: none;
-              font-size: 12px;
+              font-size: 14px;
               font-weight: 400;
               overflow: hidden;
               text-overflow: ellipsis;
@@ -257,6 +280,7 @@ exports[`Component Examples renders Persona.CustomCoinRender.Example.tsx correct
               }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >

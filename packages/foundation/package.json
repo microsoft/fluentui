@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/foundation",
-  "version": "0.7.6",
+  "version": "7.7.22",
   "description": "Foundation library for building Fabric components.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -10,45 +10,53 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/OfficeDev/office-ui-fabric-react"
+    "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
   "scripts": {
-    "build": "npx just-scripts build",
-    "just": "npx just-scripts",
-    "clean": "npx just-scripts clean",
-    "code-style": "npx just-scripts code-style",
-    "start": "npx just-scripts dev",
-    "start-test": "npx just-scripts jest-watch",
-    "update-snapshots": "npx just-scripts jest -u"
+    "build": "just-scripts build",
+    "bundle": "just-scripts bundle",
+    "lint": "just-scripts lint",
+    "test": "just-scripts test",
+    "just": "just-scripts",
+    "clean": "just-scripts clean",
+    "code-style": "just-scripts code-style",
+    "start": "just-scripts dev",
+    "start-test": "just-scripts jest-watch",
+    "update-api": "just-scripts update-api",
+    "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
-    "@types/enzyme": "3.1.13",
+    "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
-    "@types/jest": "23.0.0",
-    "@types/react": "16.3.16",
-    "@types/react-dom": "16.0.5",
+    "@types/jest": "~24.9.0",
+    "@types/react": "16.8.25",
+    "@types/react-dom": "16.8.4",
     "@types/react-test-renderer": "^16.0.0",
     "@types/sinon": "2.2.2",
-    "@uifabric/jest-serializer-merge-styles": "^6.0.9",
-    "@uifabric/prettier-rules": "^1.0.2",
-    "@uifabric/tslint-rules": "^1.0.2",
-    "enzyme": "^3.4.1",
-    "enzyme-adapter-react-16": "^1.2.0",
-    "react": "~16.6.3",
-    "react-dom": "~16.6.3",
+    "@uifabric/build": "^7.0.0",
+    "@uifabric/jest-serializer-merge-styles": "^7.0.26",
+    "@uifabric/tslint-rules": "^7.2.1",
+    "enzyme": "~3.10.0",
+    "enzyme-adapter-react-16": "^1.15.0",
+    "react": "16.8.6",
+    "react-app-polyfill": "~1.0.1",
+    "react-dom": "16.8.6",
+    "react-hooks-testing-library": "^0.5.0",
     "react-test-renderer": "^16.3.0",
-    "sinon": "^4.1.3",
-    "@uifabric/build": "*"
+    "sinon": "^4.1.3"
   },
   "dependencies": {
-    "@uifabric/set-version": "^1.1.3",
-    "@uifabric/styling": "^6.47.6",
-    "@uifabric/utilities": "^6.39.3",
-    "tslib": "^1.7.1"
+    "@uifabric/merge-styles": "^7.14.1",
+    "@uifabric/set-version": "^7.0.13",
+    "@uifabric/styling": "^7.12.15",
+    "@uifabric/utilities": "^7.20.3",
+    "tslib": "^1.10.0"
   },
   "peerDependencies": {
-    "react": "^0.14.9 || ^15.0.1-0 || ^16.0.0-0",
-    "react-dom": "^0.14.9 || ^15.0.1-0 || ^16.0.0-0"
+    "@types/react": ">=16.8.0 <17.0.0",
+    "@types/react-dom": ">=16.8.0 <17.0.0",
+    "react": ">=16.8.0 <17.0.0",
+    "react-dom": ">=16.8.0 <17.0.0"
   }
 }

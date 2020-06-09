@@ -1,9 +1,12 @@
-import { ITooltipStyleProps, ITooltipStyles, TooltipDelay } from './Tooltip.types';
+import { ITooltipStyleProps, ITooltipStyles } from './Tooltip.types';
 import { AnimationClassNames } from '../../Styling';
 
 export const getStyles = (props: ITooltipStyleProps): ITooltipStyles => {
-  const { className, delay, maxWidth, theme } = props;
-  const { palette, fonts } = theme;
+  const { className, beakWidth = 16, gapSpace = 0, maxWidth, theme } = props;
+  const { semanticColors, fonts, effects } = theme;
+
+  // The math here is done to account for the 45 degree rotation of the beak
+  const tooltipGapSpace = -(Math.sqrt((beakWidth * beakWidth) / 2) + gapSpace);
 
   return {
     root: [
@@ -11,28 +14,35 @@ export const getStyles = (props: ITooltipStyleProps): ITooltipStyles => {
       theme.fonts.medium,
       AnimationClassNames.fadeIn200,
       {
-        background: palette.white,
+        background: semanticColors.menuBackground,
+        boxShadow: effects.elevation8,
         padding: '8px',
-        animationDelay: '300ms',
-        maxWidth: maxWidth
+        maxWidth: maxWidth,
+        selectors: {
+          ':after': {
+            content: `''`,
+            position: 'absolute',
+            bottom: tooltipGapSpace,
+            left: tooltipGapSpace,
+            right: tooltipGapSpace,
+            top: tooltipGapSpace,
+            zIndex: 0,
+          },
+        },
       },
-      delay === TooltipDelay.zero && {
-        animationDelay: '0s'
-      },
-      delay === TooltipDelay.long && {
-        animationDelay: '500ms'
-      },
-      className
+      className,
     ],
     content: [
       'ms-Tooltip-content',
       fonts.small,
       {
-        color: palette.neutralPrimary,
+        position: 'relative',
+        zIndex: 1,
+        color: semanticColors.menuItemText,
         wordWrap: 'break-word',
         overflowWrap: 'break-word',
-        overflow: 'hidden'
-      }
+        overflow: 'hidden',
+      },
     ],
     subText: [
       'ms-Tooltip-subtext',
@@ -41,8 +51,8 @@ export const getStyles = (props: ITooltipStyleProps): ITooltipStyles => {
         fontSize: 'inherit',
         fontWeight: 'inherit',
         color: 'inherit',
-        margin: 0
-      }
-    ]
+        margin: 0,
+      },
+    ],
   };
 };

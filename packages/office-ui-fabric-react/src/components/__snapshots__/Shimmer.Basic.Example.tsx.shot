@@ -7,7 +7,7 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
-        color: #333333;
+        color: #323130;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
         font-weight: 400;
@@ -25,7 +25,7 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
       & textarea {
         font-family: inherit;
       }
-      & > * {
+      & > .ms-Shimmer-container {
         margin-bottom: 10px;
         margin-left: 0;
         margin-right: 0;
@@ -50,20 +50,14 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
       className=
           ms-Shimmer-shimmerWrapper
           {
-            animation-direction: normal;
-            animation-duration: 2s;
-            animation-iteration-count: infinite;
-            animation-name: keyframes 0%{background-position:-1000%;}100%{background-position:1000%;};
-            animation-timing-function: ease-in-out;
-            background: #f4f4f4
-                              linear-gradient(
-                                to right,
-                                #f4f4f4 0%,
-                                #eaeaea 50%,
-                                #f4f4f4 100%)
-                              0 0 / 90% 100%
-                              no-repeat;
+            background-color: #f3f2f1;
+            overflow: hidden;
+            position: relative;
+            transform: translateZ(0);
             transition: opacity 200ms;
+          }
+          & > * {
+            transform: translateZ(0);
           }
           @media screen and (-ms-high-contrast: active){& {
             background: WindowText
@@ -74,6 +68,9 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
                                     transparent 100%)
                                   0 0 / 90% 100%
                                   no-repeat;
+          }
+          @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+            forced-color-adjust: none;
           }
       style={
         Object {
@@ -83,6 +80,31 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
     >
       <div
         className=
+            ms-Shimmer-shimmerGradient
+            {
+              animation-direction: normal;
+              animation-duration: 2s;
+              animation-iteration-count: infinite;
+              animation-name: keyframes 0%{transform:translateX(-100%);}100%{transform:translateX(100%);};
+              animation-timing-function: ease-in-out;
+              background: #f3f2f1
+                                  linear-gradient(
+                                    to right,
+                                    #f3f2f1 0%,
+                                    #edebe9 50%,
+                                    #f3f2f1 100%)
+                                  0 0 / 90% 100%
+                                  no-repeat;
+              height: 100%;
+              left: 0px;
+              position: absolute;
+              top: 0px;
+              transform: translateX(-100%);
+              width: 100%;
+            }
+      />
+      <div
+        className=
             ms-ShimmerElementsGroup-root
             {
               -moz-osx-font-smoothing: grayscale;
@@ -93,6 +115,7 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
+              position: relative;
             }
         style={
           Object {
@@ -210,26 +233,19 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
           height: auto;
           position: relative;
         }
-    width="75%"
   >
     <div
       className=
           ms-Shimmer-shimmerWrapper
           {
-            animation-direction: normal;
-            animation-duration: 2s;
-            animation-iteration-count: infinite;
-            animation-name: keyframes 0%{background-position:-1000%;}100%{background-position:1000%;};
-            animation-timing-function: ease-in-out;
-            background: #f4f4f4
-                              linear-gradient(
-                                to right,
-                                #f4f4f4 0%,
-                                #eaeaea 50%,
-                                #f4f4f4 100%)
-                              0 0 / 90% 100%
-                              no-repeat;
+            background-color: #f3f2f1;
+            overflow: hidden;
+            position: relative;
+            transform: translateZ(0);
             transition: opacity 200ms;
+          }
+          & > * {
+            transform: translateZ(0);
           }
           @media screen and (-ms-high-contrast: active){& {
             background: WindowText
@@ -240,6 +256,9 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
                                     transparent 100%)
                                   0 0 / 90% 100%
                                   no-repeat;
+          }
+          @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+            forced-color-adjust: none;
           }
       style={
         Object {
@@ -249,6 +268,31 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
     >
       <div
         className=
+            ms-Shimmer-shimmerGradient
+            {
+              animation-direction: normal;
+              animation-duration: 2s;
+              animation-iteration-count: infinite;
+              animation-name: keyframes 0%{transform:translateX(-100%);}100%{transform:translateX(100%);};
+              animation-timing-function: ease-in-out;
+              background: #f3f2f1
+                                  linear-gradient(
+                                    to right,
+                                    #f3f2f1 0%,
+                                    #edebe9 50%,
+                                    #f3f2f1 100%)
+                                  0 0 / 90% 100%
+                                  no-repeat;
+              height: 100%;
+              left: 0px;
+              position: absolute;
+              top: 0px;
+              transform: translateX(-100%);
+              width: 100%;
+            }
+      />
+      <div
+        className=
             ms-ShimmerElementsGroup-root
             {
               -moz-osx-font-smoothing: grayscale;
@@ -259,6 +303,7 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
+              position: relative;
             }
         style={
           Object {
@@ -376,26 +421,19 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
           height: auto;
           position: relative;
         }
-    width="50%"
   >
     <div
       className=
           ms-Shimmer-shimmerWrapper
           {
-            animation-direction: normal;
-            animation-duration: 2s;
-            animation-iteration-count: infinite;
-            animation-name: keyframes 0%{background-position:-1000%;}100%{background-position:1000%;};
-            animation-timing-function: ease-in-out;
-            background: #f4f4f4
-                              linear-gradient(
-                                to right,
-                                #f4f4f4 0%,
-                                #eaeaea 50%,
-                                #f4f4f4 100%)
-                              0 0 / 90% 100%
-                              no-repeat;
+            background-color: #f3f2f1;
+            overflow: hidden;
+            position: relative;
+            transform: translateZ(0);
             transition: opacity 200ms;
+          }
+          & > * {
+            transform: translateZ(0);
           }
           @media screen and (-ms-high-contrast: active){& {
             background: WindowText
@@ -407,12 +445,40 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
                                   0 0 / 90% 100%
                                   no-repeat;
           }
+          @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+            forced-color-adjust: none;
+          }
       style={
         Object {
           "width": "50%",
         }
       }
     >
+      <div
+        className=
+            ms-Shimmer-shimmerGradient
+            {
+              animation-direction: normal;
+              animation-duration: 2s;
+              animation-iteration-count: infinite;
+              animation-name: keyframes 0%{transform:translateX(-100%);}100%{transform:translateX(100%);};
+              animation-timing-function: ease-in-out;
+              background: #f3f2f1
+                                  linear-gradient(
+                                    to right,
+                                    #f3f2f1 0%,
+                                    #edebe9 50%,
+                                    #f3f2f1 100%)
+                                  0 0 / 90% 100%
+                                  no-repeat;
+              height: 100%;
+              left: 0px;
+              position: absolute;
+              top: 0px;
+              transform: translateX(-100%);
+              width: 100%;
+            }
+      />
       <div
         className=
             ms-ShimmerElementsGroup-root
@@ -425,6 +491,7 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
+              position: relative;
             }
         style={
           Object {
@@ -548,20 +615,14 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
       className=
           ms-Shimmer-shimmerWrapper
           {
-            animation-direction: normal;
-            animation-duration: 2s;
-            animation-iteration-count: infinite;
-            animation-name: keyframes 0%{background-position:-1000%;}100%{background-position:1000%;};
-            animation-timing-function: ease-in-out;
-            background: #f4f4f4
-                              linear-gradient(
-                                to right,
-                                #f4f4f4 0%,
-                                #eaeaea 50%,
-                                #f4f4f4 100%)
-                              0 0 / 90% 100%
-                              no-repeat;
+            background-color: #f3f2f1;
+            overflow: hidden;
+            position: relative;
+            transform: translateZ(0);
             transition: opacity 200ms;
+          }
+          & > * {
+            transform: translateZ(0);
           }
           @media screen and (-ms-high-contrast: active){& {
             background: WindowText
@@ -573,12 +634,40 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
                                   0 0 / 90% 100%
                                   no-repeat;
           }
+          @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+            forced-color-adjust: none;
+          }
       style={
         Object {
           "width": "100%",
         }
       }
     >
+      <div
+        className=
+            ms-Shimmer-shimmerGradient
+            {
+              animation-direction: normal;
+              animation-duration: 2s;
+              animation-iteration-count: infinite;
+              animation-name: keyframes 0%{transform:translateX(-100%);}100%{transform:translateX(100%);};
+              animation-timing-function: ease-in-out;
+              background: #f3f2f1
+                                  linear-gradient(
+                                    to right,
+                                    #f3f2f1 0%,
+                                    #edebe9 50%,
+                                    #f3f2f1 100%)
+                                  0 0 / 90% 100%
+                                  no-repeat;
+              height: 100%;
+              left: 0px;
+              position: absolute;
+              top: 0px;
+              transform: translateX(-100%);
+              width: 100%;
+            }
+      />
       <div
         className=
             ms-ShimmerElementsGroup-root
@@ -591,6 +680,7 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
+              position: relative;
             }
         style={
           Object {
@@ -680,6 +770,7 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
                 border-color: #ffffff;
                 border-top-style: solid;
                 border-top-width: 4px;
+                border-width: 0px;
                 box-sizing: content-box;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
@@ -785,20 +876,14 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
       className=
           ms-Shimmer-shimmerWrapper
           {
-            animation-direction: normal;
-            animation-duration: 2s;
-            animation-iteration-count: infinite;
-            animation-name: keyframes 0%{background-position:-1000%;}100%{background-position:1000%;};
-            animation-timing-function: ease-in-out;
-            background: #f4f4f4
-                              linear-gradient(
-                                to right,
-                                #f4f4f4 0%,
-                                #eaeaea 50%,
-                                #f4f4f4 100%)
-                              0 0 / 90% 100%
-                              no-repeat;
+            background-color: #f3f2f1;
+            overflow: hidden;
+            position: relative;
+            transform: translateZ(0);
             transition: opacity 200ms;
+          }
+          & > * {
+            transform: translateZ(0);
           }
           @media screen and (-ms-high-contrast: active){& {
             background: WindowText
@@ -810,12 +895,40 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
                                   0 0 / 90% 100%
                                   no-repeat;
           }
+          @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+            forced-color-adjust: none;
+          }
       style={
         Object {
           "width": "100%",
         }
       }
     >
+      <div
+        className=
+            ms-Shimmer-shimmerGradient
+            {
+              animation-direction: normal;
+              animation-duration: 2s;
+              animation-iteration-count: infinite;
+              animation-name: keyframes 0%{transform:translateX(-100%);}100%{transform:translateX(100%);};
+              animation-timing-function: ease-in-out;
+              background: #f3f2f1
+                                  linear-gradient(
+                                    to right,
+                                    #f3f2f1 0%,
+                                    #edebe9 50%,
+                                    #f3f2f1 100%)
+                                  0 0 / 90% 100%
+                                  no-repeat;
+              height: 100%;
+              left: 0px;
+              position: absolute;
+              top: 0px;
+              transform: translateX(-100%);
+              width: 100%;
+            }
+      />
       <div
         className=
             ms-ShimmerElementsGroup-root
@@ -828,6 +941,7 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
+              position: relative;
             }
         style={
           Object {
@@ -917,6 +1031,7 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
                 border-color: #ffffff;
                 border-top-style: solid;
                 border-top-width: 4px;
+                border-width: 0px;
                 box-sizing: content-box;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
@@ -1042,6 +1157,7 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
                 border-color: #ffffff;
                 border-top-style: solid;
                 border-top-width: 4px;
+                border-width: 0px;
                 box-sizing: content-box;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
@@ -1167,6 +1283,7 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
                 border-color: #ffffff;
                 border-top-style: solid;
                 border-top-width: 4px;
+                border-width: 0px;
                 box-sizing: content-box;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
@@ -1292,6 +1409,7 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
                 border-color: #ffffff;
                 border-top-style: solid;
                 border-top-width: 4px;
+                border-width: 0px;
                 box-sizing: content-box;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
@@ -1392,26 +1510,19 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
           height: auto;
           position: relative;
         }
-    width="70%"
   >
     <div
       className=
           ms-Shimmer-shimmerWrapper
           {
-            animation-direction: normal;
-            animation-duration: 2s;
-            animation-iteration-count: infinite;
-            animation-name: keyframes 0%{background-position:-1000%;}100%{background-position:1000%;};
-            animation-timing-function: ease-in-out;
-            background: #f4f4f4
-                              linear-gradient(
-                                to right,
-                                #f4f4f4 0%,
-                                #eaeaea 50%,
-                                #f4f4f4 100%)
-                              0 0 / 90% 100%
-                              no-repeat;
+            background-color: #f3f2f1;
+            overflow: hidden;
+            position: relative;
+            transform: translateZ(0);
             transition: opacity 200ms;
+          }
+          & > * {
+            transform: translateZ(0);
           }
           @media screen and (-ms-high-contrast: active){& {
             background: WindowText
@@ -1422,6 +1533,9 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
                                     transparent 100%)
                                   0 0 / 90% 100%
                                   no-repeat;
+          }
+          @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+            forced-color-adjust: none;
           }
       style={
         Object {
@@ -1431,6 +1545,31 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
     >
       <div
         className=
+            ms-Shimmer-shimmerGradient
+            {
+              animation-direction: normal;
+              animation-duration: 2s;
+              animation-iteration-count: infinite;
+              animation-name: keyframes 0%{transform:translateX(-100%);}100%{transform:translateX(100%);};
+              animation-timing-function: ease-in-out;
+              background: #f3f2f1
+                                  linear-gradient(
+                                    to right,
+                                    #f3f2f1 0%,
+                                    #edebe9 50%,
+                                    #f3f2f1 100%)
+                                  0 0 / 90% 100%
+                                  no-repeat;
+              height: 100%;
+              left: 0px;
+              position: absolute;
+              top: 0px;
+              transform: translateX(-100%);
+              width: 100%;
+            }
+      />
+      <div
+        className=
             ms-ShimmerElementsGroup-root
             {
               -moz-osx-font-smoothing: grayscale;
@@ -1441,6 +1580,7 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
+              position: relative;
             }
         style={
           Object {
@@ -1530,6 +1670,7 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
                 border-color: #ffffff;
                 border-top-style: solid;
                 border-top-width: 4px;
+                border-width: 0px;
                 box-sizing: content-box;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
@@ -1655,6 +1796,7 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
                 border-color: #ffffff;
                 border-top-style: solid;
                 border-top-width: 4px;
+                border-width: 0px;
                 box-sizing: content-box;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
@@ -1780,6 +1922,7 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
                 border-color: #ffffff;
                 border-top-style: solid;
                 border-top-width: 4px;
+                border-width: 0px;
                 box-sizing: content-box;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
@@ -1905,6 +2048,7 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
                 border-color: #ffffff;
                 border-top-style: solid;
                 border-top-width: 4px;
+                border-width: 0px;
                 box-sizing: content-box;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
@@ -2011,20 +2155,14 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
       className=
           ms-Shimmer-shimmerWrapper
           {
-            animation-direction: normal;
-            animation-duration: 2s;
-            animation-iteration-count: infinite;
-            animation-name: keyframes 0%{background-position:-1000%;}100%{background-position:1000%;};
-            animation-timing-function: ease-in-out;
-            background: #f4f4f4
-                              linear-gradient(
-                                to right,
-                                #f4f4f4 0%,
-                                #eaeaea 50%,
-                                #f4f4f4 100%)
-                              0 0 / 90% 100%
-                              no-repeat;
+            background-color: #f3f2f1;
+            overflow: hidden;
+            position: relative;
+            transform: translateZ(0);
             transition: opacity 200ms;
+          }
+          & > * {
+            transform: translateZ(0);
           }
           @media screen and (-ms-high-contrast: active){& {
             background: WindowText
@@ -2036,12 +2174,40 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
                                   0 0 / 90% 100%
                                   no-repeat;
           }
+          @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+            forced-color-adjust: none;
+          }
       style={
         Object {
           "width": "100%",
         }
       }
     >
+      <div
+        className=
+            ms-Shimmer-shimmerGradient
+            {
+              animation-direction: normal;
+              animation-duration: 2s;
+              animation-iteration-count: infinite;
+              animation-name: keyframes 0%{transform:translateX(-100%);}100%{transform:translateX(100%);};
+              animation-timing-function: ease-in-out;
+              background: #f3f2f1
+                                  linear-gradient(
+                                    to right,
+                                    #f3f2f1 0%,
+                                    #edebe9 50%,
+                                    #f3f2f1 100%)
+                                  0 0 / 90% 100%
+                                  no-repeat;
+              height: 100%;
+              left: 0px;
+              position: absolute;
+              top: 0px;
+              transform: translateX(-100%);
+              width: 100%;
+            }
+      />
       <div
         className=
             ms-ShimmerElementsGroup-root
@@ -2054,6 +2220,7 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
+              position: relative;
             }
         style={
           Object {
@@ -2214,6 +2381,7 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
                 border-color: #ffffff;
                 border-top-style: solid;
                 border-top-width: 8px;
+                border-width: 0px;
                 box-sizing: content-box;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
@@ -2339,6 +2507,7 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
                 border-color: #ffffff;
                 border-top-style: solid;
                 border-top-width: 0px;
+                border-width: 0px;
                 box-sizing: content-box;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
@@ -2464,6 +2633,7 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
                 border-color: #ffffff;
                 border-top-style: solid;
                 border-top-width: 4px;
+                border-width: 0px;
                 box-sizing: content-box;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
@@ -2589,6 +2759,7 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
                 border-color: #ffffff;
                 border-top-style: solid;
                 border-top-width: 14px;
+                border-width: 0px;
                 box-sizing: content-box;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;

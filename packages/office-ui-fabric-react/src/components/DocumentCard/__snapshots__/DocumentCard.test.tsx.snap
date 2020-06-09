@@ -7,12 +7,31 @@ exports[`DocumentCard renders DocumentCard correctly 1`] = `
       {
         -webkit-font-smoothing: antialiased;
         background-color: #ffffff;
-        border: 1px solid #eaeaea;
-        box-sizing: border-box;
+        border: 1px solid #edebe9;
         max-width: 320px;
         min-width: 206px;
         position: relative;
         user-select: none;
+      }
+      &:focus {
+        outline: 0px solid;
+      }
+      .ms-Fabric--isFocusVisible &:focus {
+        border-color: #605e5c;
+      }
+      .ms-Fabric--isFocusVisible &:focus:after {
+        border-radius: 2px;
+        border: 2px solid #605e5c;
+        bottom: -1px;
+        content: '';
+        left: -1px;
+        pointer-events: none;
+        position: absolute;
+        right: -1px;
+        top: -1px;
+      }
+      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+        border-color: Highlight;
       }
       & .ms-DocumentCardLocation + .ms-DocumentCardTitle {
         padding-top: 4px;
@@ -23,8 +42,13 @@ exports[`DocumentCard renders DocumentCard correctly 1`] = `
     className=
         ms-DocumentCardPreview
         {
-          background-color: #f8f8f8;
-          border-bottom: 1px solid #eaeaea;
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          background-color: #faf9f8;
+          border-bottom: 1px solid #edebe9;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 12px;
+          font-weight: 400;
           overflow: hidden;
           position: relative;
         }
@@ -35,11 +59,11 @@ exports[`DocumentCard renders DocumentCard correctly 1`] = `
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          color: #333333;
+          color: #323130;
           display: block;
-          font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 17px;
-          font-weight: 300;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 18px;
+          font-weight: 400;
           height: 38px;
           line-height: 21px;
           overflow: hidden;
@@ -106,7 +130,6 @@ exports[`DocumentCard renders DocumentCard correctly 1`] = `
                 font-weight: 400;
               }
           role="presentation"
-          size={11}
         >
           <div
             className=
@@ -118,17 +141,18 @@ exports[`DocumentCard renders DocumentCard correctly 1`] = `
                   text-align: center;
                   width: 32px;
                 }
+            role="presentation"
           >
             <div
               aria-hidden="true"
               className=
                   ms-Persona-initials
                   {
-                    background-color: #2D89EF;
+                    background-color: #0078D4;
                     border-radius: 50%;
                     color: #ffffff;
                     font-size: 14px;
-                    font-weight: 400;
+                    font-weight: 600;
                     height: 32px;
                     line-height: 32px;
                   }
@@ -139,8 +163,12 @@ exports[`DocumentCard renders DocumentCard correctly 1`] = `
                     box-sizing: border-box;
                     color: WindowText;
                   }
+                  & i {
+                    font-weight: 600;
+                  }
             >
               <i
+                aria-hidden={true}
                 className=
 
                     {
@@ -153,7 +181,6 @@ exports[`DocumentCard renders DocumentCard correctly 1`] = `
                       speak: none;
                     }
                 data-icon-name="Contact"
-                role="presentation"
               >
                 
               </i>
@@ -177,7 +204,7 @@ exports[`DocumentCard renders DocumentCard correctly 1`] = `
         className=
             ms-DocumentCardActivity-name
             {
-              color: #333333;
+              color: #323130;
               display: block;
               font-size: 12px;
               font-weight: 600;
@@ -194,7 +221,7 @@ exports[`DocumentCard renders DocumentCard correctly 1`] = `
         className=
             ms-DocumentCardActivity-activity
             {
-              color: #666666;
+              color: #605e5c;
               display: block;
               font-size: 12px;
               height: 15px;

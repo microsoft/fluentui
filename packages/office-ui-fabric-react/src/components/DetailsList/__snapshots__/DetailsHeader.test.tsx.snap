@@ -12,27 +12,27 @@ exports[`DetailsHeader can render 1`] = `
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
         background: #ffffff;
-        border-bottom: 1px solid #eaeaea;
+        border-bottom: 1px solid #edebe9;
         box-sizing: content-box;
         cursor: default;
         display: inline-block;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 12px;
         font-weight: 400;
-        height: 32px;
-        line-height: 32px;
+        height: 42px;
+        line-height: 42px;
         min-width: 100%;
         padding-bottom: 1px;
-        padding-top: 1px;
+        padding-top: 16px;
         position: relative;
         user-select: none;
         vertical-align: top;
         white-space: nowrap;
       }
-      &:hover $check {
+      &:hover .ms-DetailsHeader-check {
         opacity: 1;
       }
-      & ms-TooltipHost $checkTooltip {
+      & .ms-TooltipHost .ms-DetailsHeader-checkTooltip {
         display: block;
       }
   data-automationid="DetailsHeader"
@@ -58,9 +58,9 @@ exports[`DetailsHeader can render 1`] = `
           align-items: center;
           border: none;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: inline-flex;
-          height: 32px;
+          height: 42px;
           line-height: inherit;
           margin-bottom: 0px;
           margin-left: 0px;
@@ -85,7 +85,7 @@ exports[`DetailsHeader can render 1`] = `
           bottom: 1px;
           content: "";
           left: 1px;
-          outline: 1px solid #666666;
+          outline: 1px solid #605e5c;
           position: absolute;
           right: 1px;
           top: 1px;
@@ -95,17 +95,17 @@ exports[`DetailsHeader can render 1`] = `
     role="columnheader"
   >
     <span
-      className=
-
-
+      className="ms-DetailsHeader-checkTooltip"
     >
       <div
         aria-checked={false}
         className=
             ms-DetailsRow-check
+            ms-DetailsHeader-check
             ms-DetailsRow-check--isHeader
+            ms-Check-checkHost
             {
-              height: 32px;
+              height: 42px;
             }
             .ms-Fabric--isFocusVisible &:focus {
               opacity: 1;
@@ -123,7 +123,7 @@ exports[`DetailsHeader can render 1`] = `
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 12px;
               font-weight: 400;
-              height: 32px;
+              height: 42px;
               justify-content: center;
               margin-bottom: 0px;
               margin-left: 0px;
@@ -137,7 +137,7 @@ exports[`DetailsHeader can render 1`] = `
               padding-top: 0px;
               position: relative;
               vertical-align: top;
-              width: 40px;
+              width: 48px;
             }
             &::-moz-focus-inner {
               border: 0;
@@ -147,16 +147,12 @@ exports[`DetailsHeader can render 1`] = `
               bottom: 1px;
               content: "";
               left: 1px;
-              outline: 1px solid #666666;
+              outline: 1px solid #605e5c;
               position: absolute;
               right: 1px;
               top: 1px;
               z-index: 1;
             }
-            &:hover {
-              opacity: 1;
-            }
-
         data-automationid="DetailsRowCheck"
         data-is-focusable={true}
         data-selection-toggle={true}
@@ -190,26 +186,41 @@ exports[`DetailsHeader can render 1`] = `
                 right: 1px;
                 top: 1px;
               }
-              $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+              .ms-Check-checkHost:hover & {
+                opacity: 1;
+              }
+              .ms-Check-checkHost:focus & {
+                opacity: 1;
+              }
+              &:hover {
+                opacity: 1;
+              }
+              &:focus {
                 opacity: 1;
               }
         >
           <i
+            aria-hidden={true}
             className=
+                ms-Icon
                 ms-Check-circle
+                {
+                  display: inline-block;
+                }
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #c8c8c8;
-                  display: inline-block;
                   font-family: "FabricMDL2Icons";
-                  font-size: 18px;
                   font-style: normal;
                   font-weight: normal;
+                  speak: none;
+                }
+                {
+                  color: #605e5c;
+                  font-size: 18px;
                   height: 18px;
                   left: 0px;
                   position: absolute;
-                  speak: none;
                   text-align: center;
                   top: 0px;
                   vertical-align: middle;
@@ -220,26 +231,37 @@ exports[`DetailsHeader can render 1`] = `
                 }
             data-icon-name="CircleRing"
             role="presentation"
+            style={
+              Object {
+                "fontFamily": "\\"FabricMDL2Icons\\"",
+              }
+            }
           >
             
           </i>
           <i
+            aria-hidden={true}
             className=
+                ms-Icon
                 ms-Check-check
+                {
+                  display: inline-block;
+                }
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #c8c8c8;
-                  display: inline-block;
                   font-family: "FabricMDL2Icons";
-                  font-size: 16px;
                   font-style: normal;
                   font-weight: normal;
+                  speak: none;
+                }
+                {
+                  color: #605e5c;
+                  font-size: 16px;
                   height: 18px;
                   left: .5px;
                   opacity: 0;
                   position: absolute;
-                  speak: none;
                   text-align: center;
                   top: 0px;
                   vertical-align: middle;
@@ -253,6 +275,11 @@ exports[`DetailsHeader can render 1`] = `
                 }
             data-icon-name="StatusCircleCheckmark"
             role="presentation"
+            style={
+              Object {
+                "fontFamily": "\\"FabricMDL2Icons\\"",
+              }
+            }
           >
             
           </i>
@@ -270,12 +297,12 @@ exports[`DetailsHeader can render 1`] = `
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: inline-block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
           font-weight: 400;
-          height: 32px;
+          height: 42px;
           line-height: inherit;
           margin-bottom: 0;
           margin-left: 0;
@@ -300,18 +327,18 @@ exports[`DetailsHeader can render 1`] = `
           bottom: 1px;
           content: "";
           left: 1px;
-          outline: 1px solid #666666;
+          outline: 1px solid #605e5c;
           position: absolute;
           right: 1px;
           top: 1px;
           z-index: 1;
         }
         &:hover {
-          background: #f4f4f4;
-          color: #333333;
+          background: #f3f2f1;
+          color: #323130;
         }
         &:active {
-          background: #eaeaea;
+          background: #edebe9;
         }
         &:hover i[data-icon-name="GripperBarVertical"] {
           display: block;
@@ -366,7 +393,7 @@ exports[`DetailsHeader can render 1`] = `
               bottom: 1px;
               content: "";
               left: 1px;
-              outline: 1px solid #666666;
+              outline: 1px solid #605e5c;
               position: absolute;
               right: 1px;
               top: 1px;
@@ -382,6 +409,8 @@ exports[`DetailsHeader can render 1`] = `
               ms-DetailsHeader-cellName
               {
                 flex: 0 1 auto;
+                font-size: 14px;
+                font-weight: 600;
                 overflow: hidden;
                 text-overflow: ellipsis;
               }
@@ -413,7 +442,7 @@ exports[`DetailsHeader can render 1`] = `
           border: 0px;
         }
         &:after {
-          background: #c8c8c8;
+          background: #c8c6c4;
           bottom: 0px;
           content: "";
           left: 50%;
@@ -430,7 +459,7 @@ exports[`DetailsHeader can render 1`] = `
           opacity: 1;
           transition: opacity 0.3s linear;
         }
-        &$cellIsResizing:after {
+        &.is-resizing:after {
           box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.4);
           opacity: 1;
           transition: opacity 0.3s linear;
@@ -459,12 +488,12 @@ exports[`DetailsHeader can render 1`] = `
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: inline-block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
           font-weight: 400;
-          height: 32px;
+          height: 42px;
           line-height: inherit;
           margin-bottom: 0;
           margin-left: 0;
@@ -489,18 +518,18 @@ exports[`DetailsHeader can render 1`] = `
           bottom: 1px;
           content: "";
           left: 1px;
-          outline: 1px solid #666666;
+          outline: 1px solid #605e5c;
           position: absolute;
           right: 1px;
           top: 1px;
           z-index: 1;
         }
         &:hover {
-          background: #f4f4f4;
-          color: #333333;
+          background: #f3f2f1;
+          color: #323130;
         }
         &:active {
-          background: #eaeaea;
+          background: #edebe9;
         }
         &:hover i[data-icon-name="GripperBarVertical"] {
           display: block;
@@ -555,7 +584,7 @@ exports[`DetailsHeader can render 1`] = `
               bottom: 1px;
               content: "";
               left: 1px;
-              outline: 1px solid #666666;
+              outline: 1px solid #605e5c;
               position: absolute;
               right: 1px;
               top: 1px;
@@ -571,6 +600,8 @@ exports[`DetailsHeader can render 1`] = `
               ms-DetailsHeader-cellName
               {
                 flex: 0 1 auto;
+                font-size: 14px;
+                font-weight: 600;
                 overflow: hidden;
                 text-overflow: ellipsis;
               }
@@ -579,24 +610,34 @@ exports[`DetailsHeader can render 1`] = `
           b
         </span>
         <i
+          aria-hidden={true}
           className=
-
+              ms-Icon
+              {
+                display: inline-block;
+              }
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #666666;
-                display: inline-block;
                 font-family: "FabricMDL2Icons";
                 font-style: normal;
                 font-weight: normal;
+                speak: none;
+              }
+              {
+                color: #605e5c;
                 opacity: 1;
                 padding-left: 4px;
                 position: relative;
-                speak: none;
                 top: 1px;
               }
           data-icon-name="SortUp"
           role="presentation"
+          style={
+            Object {
+              "fontFamily": "\\"FabricMDL2Icons\\"",
+            }
+          }
         >
           
         </i>
@@ -624,7 +665,7 @@ exports[`DetailsHeader can render 1`] = `
           border: 0px;
         }
         &:after {
-          background: #c8c8c8;
+          background: #c8c6c4;
           bottom: 0px;
           content: "";
           left: 50%;
@@ -641,7 +682,7 @@ exports[`DetailsHeader can render 1`] = `
           opacity: 1;
           transition: opacity 0.3s linear;
         }
-        &$cellIsResizing:after {
+        &.is-resizing:after {
           box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.4);
           opacity: 1;
           transition: opacity 0.3s linear;
@@ -669,12 +710,12 @@ exports[`DetailsHeader can render 1`] = `
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: inline-block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
           font-weight: 400;
-          height: 32px;
+          height: 42px;
           line-height: inherit;
           margin-bottom: 0;
           margin-left: 0;
@@ -699,18 +740,18 @@ exports[`DetailsHeader can render 1`] = `
           bottom: 1px;
           content: "";
           left: 1px;
-          outline: 1px solid #666666;
+          outline: 1px solid #605e5c;
           position: absolute;
           right: 1px;
           top: 1px;
           z-index: 1;
         }
         &:hover {
-          background: #f4f4f4;
-          color: #333333;
+          background: #f3f2f1;
+          color: #323130;
         }
         &:active {
-          background: #eaeaea;
+          background: #edebe9;
         }
         &:hover i[data-icon-name="GripperBarVertical"] {
           display: block;
@@ -766,7 +807,7 @@ exports[`DetailsHeader can render 1`] = `
               bottom: 1px;
               content: "";
               left: 1px;
-              outline: 1px solid #666666;
+              outline: 1px solid #605e5c;
               position: absolute;
               right: 1px;
               top: 1px;
@@ -782,6 +823,8 @@ exports[`DetailsHeader can render 1`] = `
               ms-DetailsHeader-cellName
               {
                 flex: 0 1 auto;
+                font-size: 14px;
+                font-weight: 600;
                 overflow: hidden;
                 text-overflow: ellipsis;
               }
@@ -792,21 +835,32 @@ exports[`DetailsHeader can render 1`] = `
         <i
           aria-hidden={true}
           className=
+              ms-Icon
               ms-DetailsHeader-filterChevron
+              {
+                display: inline-block;
+              }
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #a6a6a6;
-                display: inline-block;
                 font-family: "FabricMDL2Icons";
                 font-style: normal;
                 font-weight: normal;
-                padding-left: 4px;
                 speak: none;
+              }
+              {
+                color: #a19f9d;
+                font-size: 12px;
+                padding-left: 6px;
                 vertical-align: middle;
               }
           data-icon-name="ChevronDown"
           role="presentation"
+          style={
+            Object {
+              "fontFamily": "\\"FabricMDL2Icons\\"",
+            }
+          }
         >
           
         </i>
@@ -834,7 +888,7 @@ exports[`DetailsHeader can render 1`] = `
           border: 0px;
         }
         &:after {
-          background: #c8c8c8;
+          background: #c8c6c4;
           bottom: 0px;
           content: "";
           left: 50%;
@@ -851,7 +905,7 @@ exports[`DetailsHeader can render 1`] = `
           opacity: 1;
           transition: opacity 0.3s linear;
         }
-        &$cellIsResizing:after {
+        &.is-resizing:after {
           box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.4);
           opacity: 1;
           transition: opacity 0.3s linear;
@@ -884,31 +938,28 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
         background: #ffffff;
-        border-bottom: 1px solid #eaeaea;
+        border-bottom: 1px solid #edebe9;
         box-sizing: content-box;
         cursor: default;
         display: inline-block;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 12px;
         font-weight: 400;
-        height: 32px;
-        line-height: 32px;
+        height: 42px;
+        line-height: 42px;
         min-width: 100%;
         padding-bottom: 1px;
-        padding-top: 1px;
+        padding-top: 16px;
         position: relative;
         user-select: none;
         vertical-align: top;
         white-space: nowrap;
       }
-      &:hover $check {
+      &:hover .ms-DetailsHeader-check {
         opacity: 1;
       }
-      & ms-TooltipHost $checkTooltip {
+      & .ms-TooltipHost .ms-DetailsHeader-checkTooltip {
         display: block;
-      }
-      & $cell$cellIsCheck {
-        visibility: hidden;
       }
   data-automationid="DetailsHeader"
   data-focuszone-id="FocusZone3"
@@ -933,9 +984,9 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
           align-items: center;
           border: none;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: inline-flex;
-          height: 32px;
+          height: 42px;
           line-height: inherit;
           margin-bottom: 0px;
           margin-left: 0px;
@@ -960,7 +1011,7 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
           bottom: 1px;
           content: "";
           left: 1px;
-          outline: 1px solid #666666;
+          outline: 1px solid #605e5c;
           position: absolute;
           right: 1px;
           top: 1px;
@@ -969,17 +1020,17 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
     role="columnheader"
   >
     <span
-      className=
-
-
+      className="ms-DetailsHeader-checkTooltip"
     >
       <div
         className=
             ms-DetailsRow-check
+            ms-DetailsHeader-check
             ms-DetailsRow-check--isDisabled
             ms-DetailsRow-check--isHeader
+            ms-Check-checkHost
             {
-              height: 32px;
+              height: 42px;
             }
             .ms-Fabric--isFocusVisible &:focus {
               opacity: 1;
@@ -997,7 +1048,7 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 12px;
               font-weight: 400;
-              height: 32px;
+              height: 42px;
               justify-content: center;
               margin-bottom: 0px;
               margin-left: 0px;
@@ -1011,7 +1062,7 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
               padding-top: 0px;
               position: relative;
               vertical-align: top;
-              width: 40px;
+              width: 48px;
             }
             &::-moz-focus-inner {
               border: 0;
@@ -1021,14 +1072,11 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
               bottom: 1px;
               content: "";
               left: 1px;
-              outline: 1px solid #666666;
+              outline: 1px solid #605e5c;
               position: absolute;
               right: 1px;
               top: 1px;
               z-index: 1;
-            }
-            &:hover {
-              opacity: 1;
             }
         id="header2-check"
       />
@@ -1044,12 +1092,12 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: inline-block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
           font-weight: 400;
-          height: 32px;
+          height: 42px;
           line-height: inherit;
           margin-bottom: 0;
           margin-left: 0;
@@ -1074,18 +1122,18 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
           bottom: 1px;
           content: "";
           left: 1px;
-          outline: 1px solid #666666;
+          outline: 1px solid #605e5c;
           position: absolute;
           right: 1px;
           top: 1px;
           z-index: 1;
         }
         &:hover {
-          background: #f4f4f4;
-          color: #333333;
+          background: #f3f2f1;
+          color: #323130;
         }
         &:active {
-          background: #eaeaea;
+          background: #edebe9;
         }
         &:hover i[data-icon-name="GripperBarVertical"] {
           display: block;
@@ -1140,7 +1188,7 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
               bottom: 1px;
               content: "";
               left: 1px;
-              outline: 1px solid #666666;
+              outline: 1px solid #605e5c;
               position: absolute;
               right: 1px;
               top: 1px;
@@ -1156,6 +1204,8 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
               ms-DetailsHeader-cellName
               {
                 flex: 0 1 auto;
+                font-size: 14px;
+                font-weight: 600;
                 overflow: hidden;
                 text-overflow: ellipsis;
               }
@@ -1187,7 +1237,7 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
           border: 0px;
         }
         &:after {
-          background: #c8c8c8;
+          background: #c8c6c4;
           bottom: 0px;
           content: "";
           left: 50%;
@@ -1204,7 +1254,7 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
           opacity: 1;
           transition: opacity 0.3s linear;
         }
-        &$cellIsResizing:after {
+        &.is-resizing:after {
           box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.4);
           opacity: 1;
           transition: opacity 0.3s linear;
@@ -1233,12 +1283,12 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: inline-block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
           font-weight: 400;
-          height: 32px;
+          height: 42px;
           line-height: inherit;
           margin-bottom: 0;
           margin-left: 0;
@@ -1263,18 +1313,18 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
           bottom: 1px;
           content: "";
           left: 1px;
-          outline: 1px solid #666666;
+          outline: 1px solid #605e5c;
           position: absolute;
           right: 1px;
           top: 1px;
           z-index: 1;
         }
         &:hover {
-          background: #f4f4f4;
-          color: #333333;
+          background: #f3f2f1;
+          color: #323130;
         }
         &:active {
-          background: #eaeaea;
+          background: #edebe9;
         }
         &:hover i[data-icon-name="GripperBarVertical"] {
           display: block;
@@ -1329,7 +1379,7 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
               bottom: 1px;
               content: "";
               left: 1px;
-              outline: 1px solid #666666;
+              outline: 1px solid #605e5c;
               position: absolute;
               right: 1px;
               top: 1px;
@@ -1345,6 +1395,8 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
               ms-DetailsHeader-cellName
               {
                 flex: 0 1 auto;
+                font-size: 14px;
+                font-weight: 600;
                 overflow: hidden;
                 text-overflow: ellipsis;
               }
@@ -1353,24 +1405,34 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
           b
         </span>
         <i
+          aria-hidden={true}
           className=
-
+              ms-Icon
+              {
+                display: inline-block;
+              }
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #666666;
-                display: inline-block;
                 font-family: "FabricMDL2Icons";
                 font-style: normal;
                 font-weight: normal;
+                speak: none;
+              }
+              {
+                color: #605e5c;
                 opacity: 1;
                 padding-left: 4px;
                 position: relative;
-                speak: none;
                 top: 1px;
               }
           data-icon-name="SortUp"
           role="presentation"
+          style={
+            Object {
+              "fontFamily": "\\"FabricMDL2Icons\\"",
+            }
+          }
         >
           
         </i>
@@ -1398,7 +1460,7 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
           border: 0px;
         }
         &:after {
-          background: #c8c8c8;
+          background: #c8c6c4;
           bottom: 0px;
           content: "";
           left: 50%;
@@ -1415,7 +1477,7 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
           opacity: 1;
           transition: opacity 0.3s linear;
         }
-        &$cellIsResizing:after {
+        &.is-resizing:after {
           box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.4);
           opacity: 1;
           transition: opacity 0.3s linear;
@@ -1443,12 +1505,12 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: inline-block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
           font-weight: 400;
-          height: 32px;
+          height: 42px;
           line-height: inherit;
           margin-bottom: 0;
           margin-left: 0;
@@ -1473,18 +1535,18 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
           bottom: 1px;
           content: "";
           left: 1px;
-          outline: 1px solid #666666;
+          outline: 1px solid #605e5c;
           position: absolute;
           right: 1px;
           top: 1px;
           z-index: 1;
         }
         &:hover {
-          background: #f4f4f4;
-          color: #333333;
+          background: #f3f2f1;
+          color: #323130;
         }
         &:active {
-          background: #eaeaea;
+          background: #edebe9;
         }
         &:hover i[data-icon-name="GripperBarVertical"] {
           display: block;
@@ -1540,7 +1602,7 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
               bottom: 1px;
               content: "";
               left: 1px;
-              outline: 1px solid #666666;
+              outline: 1px solid #605e5c;
               position: absolute;
               right: 1px;
               top: 1px;
@@ -1556,6 +1618,8 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
               ms-DetailsHeader-cellName
               {
                 flex: 0 1 auto;
+                font-size: 14px;
+                font-weight: 600;
                 overflow: hidden;
                 text-overflow: ellipsis;
               }
@@ -1566,21 +1630,32 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
         <i
           aria-hidden={true}
           className=
+              ms-Icon
               ms-DetailsHeader-filterChevron
+              {
+                display: inline-block;
+              }
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #a6a6a6;
-                display: inline-block;
                 font-family: "FabricMDL2Icons";
                 font-style: normal;
                 font-weight: normal;
-                padding-left: 4px;
                 speak: none;
+              }
+              {
+                color: #a19f9d;
+                font-size: 12px;
+                padding-left: 6px;
                 vertical-align: middle;
               }
           data-icon-name="ChevronDown"
           role="presentation"
+          style={
+            Object {
+              "fontFamily": "\\"FabricMDL2Icons\\"",
+            }
+          }
         >
           
         </i>
@@ -1608,7 +1683,7 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
           border: 0px;
         }
         &:after {
-          background: #c8c8c8;
+          background: #c8c6c4;
           bottom: 0px;
           content: "";
           left: 50%;
@@ -1625,7 +1700,7 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
           opacity: 1;
           transition: opacity 0.3s linear;
         }
-        &$cellIsResizing:after {
+        &.is-resizing:after {
           box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.4);
           opacity: 1;
           transition: opacity 0.3s linear;
@@ -1658,27 +1733,27 @@ exports[`DetailsHeader renders accessible labels 1`] = `
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
         background: #ffffff;
-        border-bottom: 1px solid #eaeaea;
+        border-bottom: 1px solid #edebe9;
         box-sizing: content-box;
         cursor: default;
         display: inline-block;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 12px;
         font-weight: 400;
-        height: 32px;
-        line-height: 32px;
+        height: 42px;
+        line-height: 42px;
         min-width: 100%;
         padding-bottom: 1px;
-        padding-top: 1px;
+        padding-top: 16px;
         position: relative;
         user-select: none;
         vertical-align: top;
         white-space: nowrap;
       }
-      &:hover $check {
+      &:hover .ms-DetailsHeader-check {
         opacity: 1;
       }
-      & ms-TooltipHost $checkTooltip {
+      & .ms-TooltipHost .ms-DetailsHeader-checkTooltip {
         display: block;
       }
   data-automationid="DetailsHeader"
@@ -1704,9 +1779,9 @@ exports[`DetailsHeader renders accessible labels 1`] = `
           align-items: center;
           border: none;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: inline-flex;
-          height: 32px;
+          height: 42px;
           line-height: inherit;
           margin-bottom: 0px;
           margin-left: 0px;
@@ -1731,7 +1806,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
           bottom: 1px;
           content: "";
           left: 1px;
-          outline: 1px solid #666666;
+          outline: 1px solid #605e5c;
           position: absolute;
           right: 1px;
           top: 1px;
@@ -1741,17 +1816,17 @@ exports[`DetailsHeader renders accessible labels 1`] = `
     role="columnheader"
   >
     <span
-      className=
-
-
+      className="ms-DetailsHeader-checkTooltip"
     >
       <div
         aria-checked={false}
         className=
             ms-DetailsRow-check
+            ms-DetailsHeader-check
             ms-DetailsRow-check--isHeader
+            ms-Check-checkHost
             {
-              height: 32px;
+              height: 42px;
             }
             .ms-Fabric--isFocusVisible &:focus {
               opacity: 1;
@@ -1769,7 +1844,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 12px;
               font-weight: 400;
-              height: 32px;
+              height: 42px;
               justify-content: center;
               margin-bottom: 0px;
               margin-left: 0px;
@@ -1783,7 +1858,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
               padding-top: 0px;
               position: relative;
               vertical-align: top;
-              width: 40px;
+              width: 48px;
             }
             &::-moz-focus-inner {
               border: 0;
@@ -1793,16 +1868,12 @@ exports[`DetailsHeader renders accessible labels 1`] = `
               bottom: 1px;
               content: "";
               left: 1px;
-              outline: 1px solid #666666;
+              outline: 1px solid #605e5c;
               position: absolute;
               right: 1px;
               top: 1px;
               z-index: 1;
             }
-            &:hover {
-              opacity: 1;
-            }
-
         data-automationid="DetailsRowCheck"
         data-is-focusable={true}
         data-selection-toggle={true}
@@ -1836,26 +1907,41 @@ exports[`DetailsHeader renders accessible labels 1`] = `
                 right: 1px;
                 top: 1px;
               }
-              $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+              .ms-Check-checkHost:hover & {
+                opacity: 1;
+              }
+              .ms-Check-checkHost:focus & {
+                opacity: 1;
+              }
+              &:hover {
+                opacity: 1;
+              }
+              &:focus {
                 opacity: 1;
               }
         >
           <i
+            aria-hidden={true}
             className=
+                ms-Icon
                 ms-Check-circle
+                {
+                  display: inline-block;
+                }
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #c8c8c8;
-                  display: inline-block;
                   font-family: "FabricMDL2Icons";
-                  font-size: 18px;
                   font-style: normal;
                   font-weight: normal;
+                  speak: none;
+                }
+                {
+                  color: #605e5c;
+                  font-size: 18px;
                   height: 18px;
                   left: 0px;
                   position: absolute;
-                  speak: none;
                   text-align: center;
                   top: 0px;
                   vertical-align: middle;
@@ -1866,26 +1952,37 @@ exports[`DetailsHeader renders accessible labels 1`] = `
                 }
             data-icon-name="CircleRing"
             role="presentation"
+            style={
+              Object {
+                "fontFamily": "\\"FabricMDL2Icons\\"",
+              }
+            }
           >
             
           </i>
           <i
+            aria-hidden={true}
             className=
+                ms-Icon
                 ms-Check-check
+                {
+                  display: inline-block;
+                }
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #c8c8c8;
-                  display: inline-block;
                   font-family: "FabricMDL2Icons";
-                  font-size: 16px;
                   font-style: normal;
                   font-weight: normal;
+                  speak: none;
+                }
+                {
+                  color: #605e5c;
+                  font-size: 16px;
                   height: 18px;
                   left: .5px;
                   opacity: 0;
                   position: absolute;
-                  speak: none;
                   text-align: center;
                   top: 0px;
                   vertical-align: middle;
@@ -1899,6 +1996,11 @@ exports[`DetailsHeader renders accessible labels 1`] = `
                 }
             data-icon-name="StatusCircleCheckmark"
             role="presentation"
+            style={
+              Object {
+                "fontFamily": "\\"FabricMDL2Icons\\"",
+              }
+            }
           >
             
           </i>
@@ -1916,12 +2018,12 @@ exports[`DetailsHeader renders accessible labels 1`] = `
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: inline-block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
           font-weight: 400;
-          height: 32px;
+          height: 42px;
           line-height: inherit;
           margin-bottom: 0;
           margin-left: 0;
@@ -1946,18 +2048,18 @@ exports[`DetailsHeader renders accessible labels 1`] = `
           bottom: 1px;
           content: "";
           left: 1px;
-          outline: 1px solid #666666;
+          outline: 1px solid #605e5c;
           position: absolute;
           right: 1px;
           top: 1px;
           z-index: 1;
         }
         &:hover {
-          background: #f4f4f4;
-          color: #333333;
+          background: #f3f2f1;
+          color: #323130;
         }
         &:active {
-          background: #eaeaea;
+          background: #edebe9;
         }
         &:hover i[data-icon-name="GripperBarVertical"] {
           display: block;
@@ -2012,7 +2114,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
               bottom: 1px;
               content: "";
               left: 1px;
-              outline: 1px solid #666666;
+              outline: 1px solid #605e5c;
               position: absolute;
               right: 1px;
               top: 1px;
@@ -2028,6 +2130,8 @@ exports[`DetailsHeader renders accessible labels 1`] = `
               ms-DetailsHeader-cellName
               {
                 flex: 0 1 auto;
+                font-size: 14px;
+                font-weight: 600;
                 overflow: hidden;
                 text-overflow: ellipsis;
               }
@@ -2059,7 +2163,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
           border: 0px;
         }
         &:after {
-          background: #c8c8c8;
+          background: #c8c6c4;
           bottom: 0px;
           content: "";
           left: 50%;
@@ -2076,7 +2180,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
           opacity: 1;
           transition: opacity 0.3s linear;
         }
-        &$cellIsResizing:after {
+        &.is-resizing:after {
           box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.4);
           opacity: 1;
           transition: opacity 0.3s linear;
@@ -2105,12 +2209,12 @@ exports[`DetailsHeader renders accessible labels 1`] = `
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: inline-block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
           font-weight: 400;
-          height: 32px;
+          height: 42px;
           line-height: inherit;
           margin-bottom: 0;
           margin-left: 0;
@@ -2135,18 +2239,18 @@ exports[`DetailsHeader renders accessible labels 1`] = `
           bottom: 1px;
           content: "";
           left: 1px;
-          outline: 1px solid #666666;
+          outline: 1px solid #605e5c;
           position: absolute;
           right: 1px;
           top: 1px;
           z-index: 1;
         }
         &:hover {
-          background: #f4f4f4;
-          color: #333333;
+          background: #f3f2f1;
+          color: #323130;
         }
         &:active {
-          background: #eaeaea;
+          background: #edebe9;
         }
         &:hover i[data-icon-name="GripperBarVertical"] {
           display: block;
@@ -2202,7 +2306,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
               bottom: 1px;
               content: "";
               left: 1px;
-              outline: 1px solid #666666;
+              outline: 1px solid #605e5c;
               position: absolute;
               right: 1px;
               top: 1px;
@@ -2218,6 +2322,8 @@ exports[`DetailsHeader renders accessible labels 1`] = `
               ms-DetailsHeader-cellName
               {
                 flex: 0 1 auto;
+                font-size: 14px;
+                font-weight: 600;
                 overflow: hidden;
                 text-overflow: ellipsis;
               }
@@ -2226,24 +2332,34 @@ exports[`DetailsHeader renders accessible labels 1`] = `
           b
         </span>
         <i
+          aria-hidden={true}
           className=
-
+              ms-Icon
+              {
+                display: inline-block;
+              }
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #666666;
-                display: inline-block;
                 font-family: "FabricMDL2Icons";
                 font-style: normal;
                 font-weight: normal;
+                speak: none;
+              }
+              {
+                color: #605e5c;
                 opacity: 1;
                 padding-left: 4px;
                 position: relative;
-                speak: none;
                 top: 1px;
               }
           data-icon-name="SortUp"
           role="presentation"
+          style={
+            Object {
+              "fontFamily": "\\"FabricMDL2Icons\\"",
+            }
+          }
         >
           
         </i>
@@ -2294,7 +2410,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
           border: 0px;
         }
         &:after {
-          background: #c8c8c8;
+          background: #c8c6c4;
           bottom: 0px;
           content: "";
           left: 50%;
@@ -2311,7 +2427,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
           opacity: 1;
           transition: opacity 0.3s linear;
         }
-        &$cellIsResizing:after {
+        &.is-resizing:after {
           box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.4);
           opacity: 1;
           transition: opacity 0.3s linear;
@@ -2340,12 +2456,12 @@ exports[`DetailsHeader renders accessible labels 1`] = `
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: inline-block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
           font-weight: 400;
-          height: 32px;
+          height: 42px;
           line-height: inherit;
           margin-bottom: 0;
           margin-left: 0;
@@ -2370,18 +2486,18 @@ exports[`DetailsHeader renders accessible labels 1`] = `
           bottom: 1px;
           content: "";
           left: 1px;
-          outline: 1px solid #666666;
+          outline: 1px solid #605e5c;
           position: absolute;
           right: 1px;
           top: 1px;
           z-index: 1;
         }
         &:hover {
-          background: #f4f4f4;
-          color: #333333;
+          background: #f3f2f1;
+          color: #323130;
         }
         &:active {
-          background: #eaeaea;
+          background: #edebe9;
         }
         &:hover i[data-icon-name="GripperBarVertical"] {
           display: block;
@@ -2438,7 +2554,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
               bottom: 1px;
               content: "";
               left: 1px;
-              outline: 1px solid #666666;
+              outline: 1px solid #605e5c;
               position: absolute;
               right: 1px;
               top: 1px;
@@ -2454,6 +2570,8 @@ exports[`DetailsHeader renders accessible labels 1`] = `
               ms-DetailsHeader-cellName
               {
                 flex: 0 1 auto;
+                font-size: 14px;
+                font-weight: 600;
                 overflow: hidden;
                 text-overflow: ellipsis;
               }
@@ -2462,63 +2580,96 @@ exports[`DetailsHeader renders accessible labels 1`] = `
           c
         </span>
         <i
+          aria-hidden={true}
           className=
-
+              ms-Icon
+              ms-DetailsColumn-nearIcon
+              {
+                display: inline-block;
+              }
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #666666;
-                display: inline-block;
                 font-family: "FabricMDL2Icons";
                 font-style: normal;
                 font-weight: normal;
+                speak: none;
+              }
+              {
+                color: #605e5c;
                 opacity: 1;
                 padding-left: 8px;
-                speak: none;
               }
           data-icon-name="Filter"
           role="presentation"
+          style={
+            Object {
+              "fontFamily": "\\"FabricMDL2Icons\\"",
+            }
+          }
         >
           
         </i>
         <i
+          aria-hidden={true}
           className=
-
+              ms-Icon
+              ms-DetailsColumn-nearIcon
+              {
+                display: inline-block;
+              }
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #666666;
-                display: inline-block;
-                font-family: "FabricMDL2Icons-6";
+                font-family: "FabricMDL2Icons-7";
                 font-style: normal;
                 font-weight: normal;
+                speak: none;
+              }
+              {
+                color: #605e5c;
                 opacity: 1;
                 padding-left: 8px;
-                speak: none;
               }
           data-icon-name="GroupedDescending"
           role="presentation"
+          style={
+            Object {
+              "fontFamily": "\\"FabricMDL2Icons-7\\"",
+            }
+          }
         >
           
         </i>
         <i
           aria-hidden={true}
           className=
+              ms-Icon
               ms-DetailsHeader-filterChevron
+              {
+                display: inline-block;
+              }
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #a6a6a6;
-                display: inline-block;
                 font-family: "FabricMDL2Icons";
                 font-style: normal;
                 font-weight: normal;
-                padding-left: 4px;
                 speak: none;
+              }
+              {
+                color: #a19f9d;
+                font-size: 12px;
+                padding-left: 6px;
                 vertical-align: middle;
               }
           data-icon-name="ChevronDown"
           role="presentation"
+          style={
+            Object {
+              "fontFamily": "\\"FabricMDL2Icons\\"",
+            }
+          }
         >
           
         </i>
@@ -2570,7 +2721,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
           border: 0px;
         }
         &:after {
-          background: #c8c8c8;
+          background: #c8c6c4;
           bottom: 0px;
           content: "";
           left: 50%;
@@ -2587,7 +2738,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
           opacity: 1;
           transition: opacity 0.3s linear;
         }
-        &$cellIsResizing:after {
+        &.is-resizing:after {
           box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.4);
           opacity: 1;
           transition: opacity 0.3s linear;

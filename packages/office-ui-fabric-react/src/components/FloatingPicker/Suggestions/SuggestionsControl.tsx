@@ -1,15 +1,16 @@
 import * as React from 'react';
-import { BaseComponent, css, KeyCodes } from '../../../Utilities';
+import { css, KeyCodes, initializeComponentRef } from '../../../Utilities';
 import { IButton } from '../../../Button';
 import { ISuggestionModel } from '../../../Pickers';
 import {
   ISuggestionsHeaderFooterItemProps,
   ISuggestionsControlProps,
   ISuggestionsCoreProps,
-  ISuggestionsHeaderFooterProps
+  ISuggestionsHeaderFooterProps,
 } from './Suggestions.types';
 import { SuggestionsCore } from './SuggestionsCore';
 import * as stylesImport from './SuggestionsControl.scss';
+import { hiddenContentStyle, mergeStyles } from '../../../Styling';
 
 // tslint:disable-next-line:no-any
 const styles: any = stylesImport;
@@ -17,7 +18,7 @@ const styles: any = stylesImport;
 export enum SuggestionItemType {
   header,
   suggestion,
-  footer
+  footer,
 }
 
 export interface ISuggestionsControlState<T> {
@@ -26,7 +27,13 @@ export interface ISuggestionsControlState<T> {
   suggestions: ISuggestionModel<T>[];
 }
 
-export class SuggestionsHeaderFooterItem extends BaseComponent<ISuggestionsHeaderFooterItemProps, {}> {
+export class SuggestionsHeaderFooterItem extends React.Component<ISuggestionsHeaderFooterItemProps, {}> {
+  constructor(props: ISuggestionsHeaderFooterItemProps) {
+    super(props);
+
+    initializeComponentRef(this);
+  }
+
   public render(): JSX.Element {
     const { renderItem, onExecute, isSelected, id, className } = this.props;
     return onExecute ? (
@@ -34,7 +41,7 @@ export class SuggestionsHeaderFooterItem extends BaseComponent<ISuggestionsHeade
         id={id}
         onClick={onExecute}
         className={css('ms-Suggestions-sectionButton', className, styles.actionButton, {
-          ['is-selected ' + styles.buttonSelected]: isSelected
+          ['is-selected ' + styles.buttonSelected]: isSelected,
         })}
       >
         {renderItem()}
@@ -50,22 +57,23 @@ export class SuggestionsHeaderFooterItem extends BaseComponent<ISuggestionsHeade
 /**
  * Class when used with SuggestionsStore, renders a suggestions control with customizable headers and footers
  */
-export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProps<T>, ISuggestionsControlState<T>> {
+export class SuggestionsControl<T> extends React.Component<ISuggestionsControlProps<T>, ISuggestionsControlState<T>> {
   protected _forceResolveButton: IButton;
   protected _searchForMoreButton: IButton;
-  protected _selectedElement: HTMLDivElement;
-  protected _suggestions: SuggestionsCore<T>;
-  private SuggestionsOfProperType: new (props: ISuggestionsCoreProps<T>) => SuggestionsCore<T> = SuggestionsCore as new (
-    props: ISuggestionsCoreProps<T>
-  ) => SuggestionsCore<T>;
+  protected _selectedElement = React.createRef<HTMLDivElement>();
+  protected _suggestions = React.createRef<SuggestionsCore<T>>();
+  private SuggestionsOfProperType: new (props: ISuggestionsCoreProps<T>) => SuggestionsCore<
+    T
+  > = SuggestionsCore as new (props: ISuggestionsCoreProps<T>) => SuggestionsCore<T>;
 
   constructor(suggestionsProps: ISuggestionsControlProps<T>) {
     super(suggestionsProps);
 
+    initializeComponentRef(this);
     this.state = {
       selectedHeaderIndex: -1,
       selectedFooterIndex: -1,
-      suggestions: suggestionsProps.suggestions
+      suggestions: suggestionsProps.suggestions,
     };
   }
 
@@ -77,7 +85,8 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
     this.scrollSelected();
   }
 
-  public componentWillReceiveProps(newProps: ISuggestionsControlProps<T>): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillReceiveProps(newProps: ISuggestionsControlProps<T>): void {
     if (newProps.suggestions) {
       this.setState({ suggestions: newProps.suggestions }, () => {
         this.resetSelectedItem();
@@ -86,35 +95,44 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
   }
 
   public componentWillUnmount(): void {
-    this._suggestions.deselectAllSuggestions();
+    this._suggestions.current?.deselectAllSuggestions();
   }
 
   public render(): JSX.Element {
-    const { className, headerItemsProps, footerItemsProps } = this.props;
+    const { className, headerItemsProps, footerItemsProps, suggestionsAvailableAlertText } = this.props;
+
+    const screenReaderTextStyles = mergeStyles(hiddenContentStyle);
+    const shouldAlertSuggestionsAvailableText =
+      this.state.suggestions && this.state.suggestions.length > 0 && suggestionsAvailableAlertText;
 
     return (
       <div className={css('ms-Suggestions', className ? className : '', styles.root)}>
         {headerItemsProps && this.renderHeaderItems()}
         {this._renderSuggestions()}
         {footerItemsProps && this.renderFooterItems()}
+        {shouldAlertSuggestionsAvailableText ? (
+          <span role="alert" aria-live="polite" className={screenReaderTextStyles}>
+            {suggestionsAvailableAlertText}
+          </span>
+        ) : null}
       </div>
     );
   }
 
-  public get currentSuggestion(): ISuggestionModel<T> {
-    return this._suggestions && this._suggestions.getCurrentItem();
+  public get currentSuggestion(): ISuggestionModel<T> | undefined {
+    return this._suggestions.current?.getCurrentItem() || undefined;
   }
 
   public get currentSuggestionIndex(): number {
-    return this._suggestions ? this._suggestions.currentIndex : -1;
+    return this._suggestions.current ? this._suggestions.current.currentIndex : -1;
   }
 
   public get selectedElement(): HTMLDivElement | undefined {
-    return this._selectedElement ? this._selectedElement : this._suggestions.selectedElement;
+    return this._selectedElement.current ? this._selectedElement.current : this._suggestions.current?.selectedElement;
   }
 
   public hasSuggestionSelected(): boolean {
-    return this._suggestions && this._suggestions.hasSuggestionSelected();
+    return this._suggestions.current?.hasSuggestionSelected() || false;
   }
 
   public hasSelection(): boolean {
@@ -131,7 +149,7 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
       if (selectedHeaderItem.onExecute) {
         selectedHeaderItem.onExecute();
       }
-    } else if (this._suggestions.hasSuggestionSelected()) {
+    } else if (this._suggestions.current?.hasSuggestionSelected()) {
       this.props.completeSuggestion();
     } else if (footerItemsProps && selectedFooterIndex !== -1 && selectedFooterIndex < footerItemsProps.length) {
       const selectedFooterItem = footerItemsProps[selectedFooterIndex];
@@ -142,7 +160,7 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
   }
 
   public removeSuggestion(index?: number): void {
-    this._suggestions.removeSuggestion(index ? index : this._suggestions.currentIndex);
+    this._suggestions.current?.removeSuggestion(index ? index : this._suggestions.current?.currentIndex);
   }
 
   /**
@@ -153,12 +171,16 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
     const { selectedHeaderIndex, selectedFooterIndex } = this.state;
     let isKeyDownHandled = false;
     if (keyCode === KeyCodes.down) {
-      if (selectedHeaderIndex === -1 && !this._suggestions.hasSuggestionSelected() && selectedFooterIndex === -1) {
+      if (
+        selectedHeaderIndex === -1 &&
+        !this._suggestions.current?.hasSuggestionSelected() &&
+        selectedFooterIndex === -1
+      ) {
         this.selectFirstItem();
       } else if (selectedHeaderIndex !== -1) {
         this.selectNextItem(SuggestionItemType.header);
         isKeyDownHandled = true;
-      } else if (this._suggestions.hasSuggestionSelected()) {
+      } else if (this._suggestions.current?.hasSuggestionSelected()) {
         this.selectNextItem(SuggestionItemType.suggestion);
         isKeyDownHandled = true;
       } else if (selectedFooterIndex !== -1) {
@@ -166,12 +188,16 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
         isKeyDownHandled = true;
       }
     } else if (keyCode === KeyCodes.up) {
-      if (selectedHeaderIndex === -1 && !this._suggestions.hasSuggestionSelected() && selectedFooterIndex === -1) {
+      if (
+        selectedHeaderIndex === -1 &&
+        !this._suggestions.current?.hasSuggestionSelected() &&
+        selectedFooterIndex === -1
+      ) {
         this.selectLastItem();
       } else if (selectedHeaderIndex !== -1) {
         this.selectPreviousItem(SuggestionItemType.header);
         isKeyDownHandled = true;
-      } else if (this._suggestions.hasSuggestionSelected()) {
+      } else if (this._suggestions.current?.hasSuggestionSelected()) {
         this.selectPreviousItem(SuggestionItemType.suggestion);
         isKeyDownHandled = true;
       } else if (selectedFooterIndex !== -1) {
@@ -190,8 +216,8 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
 
   // TODO get the element to scroll into view properly regardless of direction.
   public scrollSelected(): void {
-    if (this._selectedElement) {
-      this._selectedElement.scrollIntoView(false);
+    if (this._selectedElement.current) {
+      this._selectedElement.current.scrollIntoView(false);
     }
   }
 
@@ -210,7 +236,7 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
           const isSelected = selectedHeaderIndex !== -1 && selectedHeaderIndex === index;
           return headerItemProps.shouldShow() ? (
             <div
-              ref={this._resolveRef(isSelected ? '_selectedElement' : '')}
+              ref={isSelected ? this._selectedElement : undefined}
               id={'sug-header' + index}
               key={'sug-header' + index}
               role="listitem"
@@ -244,7 +270,7 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
           const isSelected = selectedFooterIndex !== -1 && selectedFooterIndex === index;
           return footerItemProps.shouldShow() ? (
             <div
-              ref={this._resolveRef(isSelected ? '_selectedElement' : '')}
+              ref={isSelected ? this._selectedElement : undefined}
               id={'sug-footer' + index}
               key={'sug-footer' + index}
               role="listitem"
@@ -267,7 +293,7 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
   protected _renderSuggestions(): JSX.Element {
     const TypedSuggestions = this.SuggestionsOfProperType;
 
-    return <TypedSuggestions ref={this._resolveRef('_suggestions')} {...this.props} suggestions={this.state.suggestions} />;
+    return <TypedSuggestions ref={this._suggestions} {...this.props} suggestions={this.state.suggestions} />;
   }
 
   /**
@@ -288,7 +314,7 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
     // If this is the original item type, use the current index
     const selectionChanged = this._selectNextItemOfItemType(
       itemType,
-      startedItemType === itemType ? this._getCurrentIndexForType(itemType) : undefined
+      startedItemType === itemType ? this._getCurrentIndexForType(itemType) : undefined,
     );
 
     // If the selection did not change, try to select from the next suggestion type group
@@ -314,7 +340,7 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
     // Try to set the selection to the previous selectable item, of the same suggestion item type group
     const selectionChanged = this._selectPreviousItemOfItemType(
       itemType,
-      startedItemType === itemType ? this._getCurrentIndexForType(itemType) : undefined
+      startedItemType === itemType ? this._getCurrentIndexForType(itemType) : undefined,
     );
 
     // If the selection did not change, try to select from the previous suggestion type group
@@ -328,7 +354,7 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
    */
   protected resetSelectedItem(): void {
     this.setState({ selectedHeaderIndex: -1, selectedFooterIndex: -1 });
-    this._suggestions.deselectAllSuggestions();
+    this._suggestions.current?.deselectAllSuggestions();
 
     // Select the first item if the shouldSelectFirstItem prop is not set or it is set and it returns true
     if (this.props.shouldSelectFirstItem === undefined || this.props.shouldSelectFirstItem()) {
@@ -375,7 +401,7 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
   private _selectNextItemOfItemType(itemType: SuggestionItemType, currentIndex: number = -1): boolean {
     if (itemType === SuggestionItemType.suggestion) {
       if (this.state.suggestions.length > currentIndex + 1) {
-        this._suggestions.setSelectedSuggestion(currentIndex + 1);
+        this._suggestions.current?.setSelectedSuggestion(currentIndex + 1);
         this.setState({ selectedHeaderIndex: -1, selectedFooterIndex: -1 });
         return true;
       }
@@ -389,7 +415,7 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
           if (item.onExecute && item.shouldShow()) {
             this.setState({ selectedHeaderIndex: isHeader ? i : -1 });
             this.setState({ selectedFooterIndex: isHeader ? -1 : i });
-            this._suggestions.deselectAllSuggestions();
+            this._suggestions.current?.deselectAllSuggestions();
             return true;
           }
         }
@@ -409,7 +435,7 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
     if (itemType === SuggestionItemType.suggestion) {
       const index = currentIndex !== undefined ? currentIndex : this.state.suggestions.length;
       if (index > 0) {
-        this._suggestions.setSelectedSuggestion(index - 1);
+        this._suggestions.current?.setSelectedSuggestion(index - 1);
         this.setState({ selectedHeaderIndex: -1, selectedFooterIndex: -1 });
         return true;
       }
@@ -424,7 +450,7 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
             if (item.onExecute && item.shouldShow()) {
               this.setState({ selectedHeaderIndex: isHeader ? i : -1 });
               this.setState({ selectedFooterIndex: isHeader ? -1 : i });
-              this._suggestions.deselectAllSuggestions();
+              this._suggestions.current?.deselectAllSuggestions();
               return true;
             }
           }
@@ -440,7 +466,7 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
       case SuggestionItemType.header:
         return this.state.selectedHeaderIndex;
       case SuggestionItemType.suggestion:
-        return this._suggestions.currentIndex;
+        return this._suggestions.current!.currentIndex;
       case SuggestionItemType.footer:
         return this.state.selectedFooterIndex;
     }

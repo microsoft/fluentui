@@ -8,7 +8,7 @@ const globalClassNames = {
   main: 'ms-Dialog-main',
   scrollableContent: 'ms-Modal-scrollableContent',
   isOpen: 'is-open',
-  layer: 'ms-Modal-Layer'
+  layer: 'ms-Modal-Layer',
 };
 
 export const getStyles = (props: IModalStyleProps): IModalStyles => {
@@ -24,16 +24,16 @@ export const getStyles = (props: IModalStyleProps): IModalStyles => {
     topOffsetFixed,
     isModeless,
     layerClassName,
-    isDefaultDragHandle
+    isDefaultDragHandle,
   } = props;
-  const { palette } = theme;
+  const { palette, effects, fonts } = theme;
 
   const classNames = getGlobalClassNames(globalClassNames, theme);
 
   return {
     root: [
       classNames.root,
-      theme.fonts.medium,
+      fonts.medium,
       {
         backgroundColor: 'transparent',
         position: isModeless ? 'absolute' : 'fixed',
@@ -44,40 +44,44 @@ export const getStyles = (props: IModalStyleProps): IModalStyles => {
         justifyContent: 'center',
         opacity: 0,
         pointerEvents: 'none',
-        transition: `opacity ${animationDuration}`
+        transition: `opacity ${animationDuration}`,
       },
       topOffsetFixed &&
         hasBeenOpened && {
-          alignItems: 'flex-start'
+          alignItems: 'flex-start',
         },
       isOpen && classNames.isOpen,
       isVisible && {
         opacity: 1,
-        pointerEvents: 'auto'
+        pointerEvents: 'auto',
       },
-      className
+      className,
     ],
     main: [
       classNames.main,
       {
-        boxShadow: '0 0 5px 0 rgba(0, 0, 0, 0.4)',
+        boxShadow: effects.elevation64,
+        borderRadius: effects.roundedCorner2,
         backgroundColor: palette.white,
         boxSizing: 'border-box',
         position: 'relative',
         textAlign: 'left',
         outline: '3px solid transparent',
-        maxHeight: '100%',
+        maxHeight: 'calc(100% - 32px)',
+        maxWidth: 'calc(100% - 32px)',
+        minHeight: '176px',
+        minWidth: '288px',
         overflowY: 'auto',
-        zIndex: isModeless ? ZIndexes.Layer : undefined
+        zIndex: isModeless ? ZIndexes.Layer : undefined,
       },
       topOffsetFixed &&
         hasBeenOpened && {
-          top: modalRectangleTop
+          top: modalRectangleTop,
         },
       isDefaultDragHandle && {
-        cursor: 'move'
+        cursor: 'move',
       },
-      containerClassName
+      containerClassName,
     ],
     scrollableContent: [
       classNames.scrollableContent,
@@ -87,11 +91,11 @@ export const getStyles = (props: IModalStyleProps): IModalStyles => {
         maxHeight: '100vh',
         selectors: {
           ['@supports (-webkit-overflow-scrolling: touch)']: {
-            maxHeight: window.innerHeight
-          }
-        }
+            maxHeight: window.innerHeight,
+          },
+        },
       },
-      scrollableContentClassName
+      scrollableContentClassName,
     ],
     layer: isModeless && [
       layerClassName,
@@ -99,19 +103,20 @@ export const getStyles = (props: IModalStyleProps): IModalStyles => {
       {
         position: 'static',
         width: 'unset',
-        height: 'unset'
-      }
+        height: 'unset',
+      },
     ],
     keyboardMoveIconContainer: {
       position: 'absolute',
       display: 'flex',
       justifyContent: 'center',
       width: '100%',
-      padding: '3px 0px'
+      padding: '3px 0px',
     },
     keyboardMoveIcon: {
-      fontSize: '24px',
-      width: '24px'
-    }
+      // tslint:disable-next-line:deprecation
+      fontSize: fonts.xLargePlus.fontSize,
+      width: '24px',
+    },
   };
 };

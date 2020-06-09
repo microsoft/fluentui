@@ -33,7 +33,7 @@ describe('safeRequestAnimationFrame', () => {
   });
 
   it('can request animation frame', () => {
-    const wrapper = mount(<Foo />);
+    mount(<Foo />);
 
     expect(rafCalled).toEqual(false);
 

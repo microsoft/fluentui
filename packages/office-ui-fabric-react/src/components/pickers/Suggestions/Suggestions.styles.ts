@@ -1,4 +1,4 @@
-import { getGlobalClassNames, FontSizes, IStyle, hiddenContentStyle } from '../../../Styling';
+import { getGlobalClassNames, IStyle, hiddenContentStyle } from '../../../Styling';
 import { ISuggestionsStyleProps, ISuggestionsStyles } from './Suggestions.types';
 
 const GlobalClassNames = {
@@ -10,18 +10,17 @@ const GlobalClassNames = {
   spinner: 'ms-Suggestions-spinner',
   noSuggestions: 'ms-Suggestions-none',
   suggestionsAvailable: 'ms-Suggestions-suggestionsAvailable',
-  isSelected: 'is-selected'
+  isSelected: 'is-selected',
 };
 
 export function getStyles(props: ISuggestionsStyleProps): ISuggestionsStyles {
   const { className, suggestionsClassName, theme, forceResolveButtonSelected, searchForMoreButtonSelected } = props;
 
-  const { palette } = theme;
+  const { palette, semanticColors, fonts } = theme;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   const actionButtonStyles: IStyle = {
-    background: 'none',
     backgroundColor: 'transparent',
     border: 0,
     cursor: 'pointer',
@@ -32,36 +31,36 @@ export function getStyles(props: ISuggestionsStyleProps): ISuggestionsStyles {
     height: 40,
     textAlign: 'left',
     width: '100%',
-    fontSize: FontSizes.small,
+    fontSize: fonts.small.fontSize,
     selectors: {
       ':hover': {
-        backgroundColor: palette.neutralLight,
-        cursor: 'pointer'
+        backgroundColor: semanticColors.menuItemBackgroundPressed,
+        cursor: 'pointer',
       },
       ':focus, :active': {
-        backgroundColor: palette.themeLight
+        backgroundColor: palette.themeLight,
       },
       '.ms-Button-icon': {
-        fontSize: FontSizes.icon,
-        width: 25
+        fontSize: fonts.mediumPlus.fontSize,
+        width: 25,
       },
       '.ms-Button-label': {
-        margin: '0 4px 0 9px'
-      }
-    }
+        margin: '0 4px 0 9px',
+      },
+    },
   };
 
   const actionButtonSelectedStyles: IStyle = {
-    backgroundColor: palette.themeLight
+    backgroundColor: palette.themeLight,
   };
 
   return {
     root: [
       classNames.root,
       {
-        minWidth: 260
+        minWidth: 260,
       },
-      className
+      className,
     ],
     suggestionsContainer: [
       classNames.suggestionsContainer,
@@ -69,38 +68,37 @@ export function getStyles(props: ISuggestionsStyleProps): ISuggestionsStyles {
         overflowY: 'auto',
         overflowX: 'hidden',
         maxHeight: 300,
-        borderBottom: `1px solid ${palette.neutralLight}`
       },
-      suggestionsClassName
+      suggestionsClassName,
     ],
     title: [
       classNames.title,
       {
         padding: '0 12px',
-        fontSize: FontSizes.small,
+        fontSize: fonts.small.fontSize,
         color: palette.themePrimary,
         lineHeight: 40,
-        borderBottom: `1px solid ${palette.neutralLight}`
-      }
+        borderBottom: `1px solid ${semanticColors.menuItemBackgroundPressed}`,
+      },
     ],
     forceResolveButton: [
       classNames.forceResolveButton,
       actionButtonStyles,
-      forceResolveButtonSelected && [classNames.isSelected, actionButtonSelectedStyles]
+      forceResolveButtonSelected && [classNames.isSelected, actionButtonSelectedStyles],
     ],
     searchForMoreButton: [
       classNames.searchForMoreButton,
       actionButtonStyles,
-      searchForMoreButtonSelected && [classNames.isSelected, actionButtonSelectedStyles]
+      searchForMoreButtonSelected && [classNames.isSelected, actionButtonSelectedStyles],
     ],
     noSuggestions: [
       classNames.noSuggestions,
       {
         textAlign: 'center',
         color: palette.neutralSecondary,
-        fontSize: FontSizes.small,
-        lineHeight: 30
-      }
+        fontSize: fonts.small.fontSize,
+        lineHeight: 30,
+      },
     ],
     suggestionsAvailable: [classNames.suggestionsAvailable, hiddenContentStyle],
     subComponentStyles: {
@@ -113,19 +111,19 @@ export function getStyles(props: ISuggestionsStyleProps): ISuggestionsStyles {
             textAlign: 'left',
             whiteSpace: 'nowrap',
             lineHeight: 20,
-            fontSize: FontSizes.small
-          }
+            fontSize: fonts.small.fontSize,
+          },
         ],
         circle: {
           display: 'inline-block',
-          verticalAlign: 'middle'
+          verticalAlign: 'middle',
         },
         label: {
           display: 'inline-block',
           verticalAlign: 'middle',
-          margin: '0 10px 0 16px'
-        }
-      }
-    }
+          margin: '0 10px 0 16px',
+        },
+      },
+    },
   };
 }

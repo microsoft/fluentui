@@ -11,7 +11,7 @@ export interface IDetailsListNavigatingFocusExampleState {
 export class DetailsListNavigatingFocusExample extends React.Component<{}, IDetailsListNavigatingFocusExampleState> {
   public state: IDetailsListNavigatingFocusExampleState = {
     items: generateItems(''),
-    key: 0
+    key: 0,
   };
 
   private _columns: IColumn[] = [
@@ -23,13 +23,13 @@ export class DetailsListNavigatingFocusExample extends React.Component<{}, IDeta
         <Link key={item} onClick={() => this._navigate(item)}>
           {item}
         </Link>
-      )
+      ),
     } as IColumn,
     {
       key: 'size',
       name: 'Size',
-      onRender: item => '4 KB'
-    } as IColumn
+      onRender: item => '4 KB',
+    } as IColumn,
   ];
 
   public render(): JSX.Element {
@@ -45,6 +45,7 @@ export class DetailsListNavigatingFocusExample extends React.Component<{}, IDeta
         initialFocusedIndex={this.state.initialFocusedIndex}
         ariaLabelForSelectionColumn="Toggle selection"
         ariaLabelForSelectAllCheckbox="Toggle selection for all items"
+        checkButtonAriaLabel="Row checkbox"
       />
     );
   }
@@ -54,7 +55,7 @@ export class DetailsListNavigatingFocusExample extends React.Component<{}, IDeta
       items: generateItems(name + ' / '),
       initialFocusedIndex: 0,
       // Simulate navigation by updating the list's key, which causes it to re-render
-      key: this.state.key + 1
+      key: this.state.key + 1,
     });
   };
 }

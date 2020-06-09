@@ -2,7 +2,7 @@
 import { IAppDefinition } from '@uifabric/example-app-base';
 
 export const AppDefinition: IAppDefinition = {
-  appTitle: 'Fabric - React',
+  appTitle: 'Fluent UI React - Charting',
 
   testPages: [],
   examplePages: [
@@ -12,59 +12,59 @@ export const AppDefinition: IAppDefinition = {
           component: require<any>('../components/LineChart/LineChartPage').LineChartPage,
           key: 'LineChart',
           name: 'LineChart',
-          url: '#/examples/linechart'
+          url: '#/examples/linechart',
         },
         {
           component: require<any>('../components/VerticalBarChart/VerticalBarChartPage').VerticalBarChartPage,
           key: 'VerticalBarChart',
           name: 'VerticalBarChart',
-          url: '#/examples/verticalbarchart'
+          url: '#/examples/verticalbarchart',
         },
         {
           component: require<any>('../components/HorizontalBarChart/HorizontalBarChartPage').HorizontalBarChartPage,
           key: 'HorizontalBarChart',
           name: 'HorizontalBarChart',
-          url: '#/examples/horizontalbarchart'
+          url: '#/examples/horizontalbarchart',
         },
         {
           component: require<any>('../components/PieChart/PieChartPage').PieChartPage,
           key: 'PieChart',
           name: 'PieChart',
-          url: '#/examples/piechart'
+          url: '#/examples/piechart',
         },
         {
           component: require<any>('../components/DonutChart/DonutChartPage').DonutChartPage,
           key: 'DonutChart',
           name: 'DonutChart',
-          url: '#/examples/Donutchart'
+          url: '#/examples/Donutchart',
         },
         {
           component: require<any>('../components/Legends/LegendsPage').LegendsPage,
           key: 'Legends',
           name: 'Legends',
-          url: '#/examples/Legends'
+          url: '#/examples/Legends',
         },
         {
           component: require<any>('../components/StackedBarChart/StackedBarChartPage').StackedBarChartPage,
           key: 'StackedBarChart',
           name: 'StackedBarChart',
-          url: '#/examples/stackedbarchart'
-        }
-      ]
-    }
+          url: '#/examples/stackedbarchart',
+        },
+      ],
+    },
   ],
   headerLinks: [
     {
       name: 'Getting started',
-      url: '#/'
+      url: '#/',
     },
     {
       name: 'Fabric',
-      url: 'http://dev.office.com/fabric'
+      url: 'https://developer.microsoft.com/en-us/fluentui',
     },
     {
-      name: 'Github',
-      url: 'http://www.github.com/officedev'
-    }
-  ]
+      name: 'GitHub',
+      url: 'https://github.com/microsoft/fluentui',
+    },
+  ],
 };

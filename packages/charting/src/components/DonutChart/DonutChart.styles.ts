@@ -1,7 +1,7 @@
 import { IDonutChartStyleProps, IDonutChartStyles } from './DonutChart.types';
 
 export const getStyles = (props: IDonutChartStyleProps): IDonutChartStyles => {
-  const { className, width, height, theme, color } = props;
+  const { className, width, height, theme } = props;
   return {
     root: [
       theme.fonts.medium,
@@ -11,37 +11,20 @@ export const getStyles = (props: IDonutChartStyleProps): IDonutChartStyles => {
         display: 'flex',
         flexDirection: 'column',
         width: '100%',
-        height: '100%'
+        height: '100%',
       },
-      className
+      className,
     ],
     chart: {
       width: width,
       height: height,
       boxSizing: 'content-box',
       overflow: 'visible',
-      alignmentAdjust: 'center'
+      alignmentAdjust: 'center',
     },
     legendContainer: {
       paddingTop: '16px',
-      width: `${width}px`
+      width: `${width}px`,
     },
-    hoverCardTextStyles: {
-      ...theme.fonts.medium,
-      lineHeight: '14px'
-    },
-    hoverCardDataStyles: {
-      color: color === '' ? theme.palette.black : color,
-      fontSize: '28px',
-      fontFamily: 'Segoe UI',
-      fontWeight: 'bold',
-      lineHeight: '31px'
-    },
-    hoverCardRoot: {
-      paddingLeft: '16px',
-      paddingRight: '22px',
-      paddingTop: '15px',
-      paddingBottom: '8px'
-    }
   };
 };

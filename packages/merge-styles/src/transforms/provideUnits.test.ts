@@ -23,7 +23,7 @@ describe('provideUnits', () => {
         property + 'Top',
         1,
         property + 'Bottom',
-        1
+        1,
       ];
 
       provideUnits(testSet, 0);
@@ -42,7 +42,7 @@ describe('provideUnits', () => {
         property + 'Top',
         '1px',
         property + 'Bottom',
-        '1px'
+        '1px',
       ]);
     });
   });

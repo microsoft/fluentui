@@ -1,5 +1,5 @@
 import { IDetailsListStyleProps, IDetailsListStyles } from './DetailsList.types';
-import { getGlobalClassNames, FontSizes } from '../../Styling';
+import { getGlobalClassNames } from '../../Styling';
 
 const GlobalClassNames = {
   root: 'ms-DetailsList',
@@ -8,7 +8,7 @@ const GlobalClassNames = {
   headerWrapper: 'ms-DetailsList-headerWrapper',
   isFixed: 'is-fixed',
   isHorizontalConstrained: 'is-horizontalConstrained',
-  listCell: 'ms-List-cell'
+  listCell: 'ms-List-cell',
 };
 
 export const getStyles = (props: IDetailsListStyleProps): IDetailsListStyles => {
@@ -22,28 +22,27 @@ export const getStyles = (props: IDetailsListStyleProps): IDetailsListStyles => 
       theme.fonts.small,
       {
         position: 'relative',
-        fontSize: FontSizes.small,
         background: semanticColors.listBackground,
         color: semanticColors.listText,
         selectors: {
           [`& .${classNames.listCell}`]: {
             minHeight: 38,
-            wordBreak: 'break-word'
-          }
-        }
+            wordBreak: 'break-word',
+          },
+        },
       },
 
-      isFixed && [classNames.isFixed],
+      isFixed && classNames.isFixed,
 
       compact && [
         classNames.compact,
         {
           selectors: {
             [`.${classNames.listCell}`]: {
-              minHeight: 32
-            }
-          }
-        }
+              minHeight: 32,
+            },
+          },
+        },
       ],
 
       isHorizontalConstrained && [
@@ -51,21 +50,21 @@ export const getStyles = (props: IDetailsListStyleProps): IDetailsListStyles => 
         {
           overflowX: 'auto',
           overflowY: 'visible',
-          WebkitOverflowScrolling: 'touch'
-        }
+          WebkitOverflowScrolling: 'touch',
+        },
       ],
 
-      className
+      className,
     ],
 
     focusZone: [
       {
         display: 'inline-block',
         minWidth: '100%',
-        minHeight: 1
-      }
+        minHeight: 1,
+      },
     ],
-    headerWrapper: [classNames.headerWrapper],
-    contentWrapper: [classNames.contentWrapper]
+    headerWrapper: classNames.headerWrapper,
+    contentWrapper: classNames.contentWrapper,
   };
 };

@@ -66,9 +66,7 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
           }
     >
       <div
-        className=
-            ms-TextField-wrapper
-
+        className="ms-TextField-wrapper"
       >
         <label
           className=
@@ -78,11 +76,11 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                 -webkit-font-smoothing: antialiased;
                 box-shadow: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 display: block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
-                font-weight: 400;
+                font-weight: 600;
                 margin-bottom: 0px;
                 margin-left: 0px;
                 margin-right: 0px;
@@ -95,6 +93,7 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                 word-wrap: break-word;
               }
           htmlFor="TextField0"
+          id="TextFieldLabel2"
         >
           With prefix
         </label>
@@ -104,7 +103,8 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
               {
                 align-items: stretch;
                 background: #ffffff;
-                border: 1px solid #a6a6a6;
+                border-radius: 2px;
+                border: 1px solid #605e5c;
                 box-shadow: none;
                 box-sizing: border-box;
                 cursor: text;
@@ -122,7 +122,7 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                 position: relative;
               }
               &:hover {
-                border-color: #333333;
+                border-color: #323130;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -133,8 +133,8 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                 ms-TextField-prefix
                 {
                   align-items: center;
-                  background: #f4f4f4;
-                  color: #666666;
+                  background: #f3f2f1;
+                  color: #605e5c;
                   display: flex;
                   flex-shrink: 0;
                   line-height: 1px;
@@ -158,6 +158,7 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
           <input
             aria-invalid={false}
             aria-label="Example text field with https:// prefix"
+            aria-labelledby="TextFieldLabel2"
             className=
                 ms-TextField-field
                 {
@@ -169,7 +170,7 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                   border: none;
                   box-shadow: none;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
@@ -180,24 +181,49 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                   min-width: 0px;
                   outline: 0px;
                   padding-bottom: 0;
-                  padding-left: 12px;
-                  padding-right: 12px;
+                  padding-left: 8px;
+                  padding-right: 8px;
                   padding-top: 0;
                   text-overflow: ellipsis;
                   width: 100%;
                 }
-                &:active, &:focus, &:hover {
+                &:active {
+                  outline: 0px;
+                }
+                &:focus {
+                  outline: 0px;
+                }
+                &:hover {
                   outline: 0px;
                 }
                 &::-ms-clear {
                   display: none;
                 }
                 &::placeholder {
-                  color: #666666;
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #605e5c;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
                   opacity: 1;
                 }
                 &:-ms-input-placeholder {
-                  color: #666666;
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #605e5c;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  opacity: 1;
+                }
+                &::-ms-input-placeholder {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #605e5c;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
                   opacity: 1;
                 }
             id="TextField0"
@@ -235,9 +261,7 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
           }
     >
       <div
-        className=
-            ms-TextField-wrapper
-
+        className="ms-TextField-wrapper"
       >
         <label
           className=
@@ -247,11 +271,11 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                 -webkit-font-smoothing: antialiased;
                 box-shadow: none;
                 box-sizing: border-box;
-                color: #a6a6a6;
+                color: #a19f9d;
                 display: block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
-                font-weight: 400;
+                font-weight: 600;
                 margin-bottom: 0px;
                 margin-left: 0px;
                 margin-right: 0px;
@@ -266,7 +290,8 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
               @media screen and (-ms-high-contrast: active){& {
                 color: GrayText;
               }
-          htmlFor="TextField2"
+          htmlFor="TextField3"
+          id="TextFieldLabel5"
         >
           Disabled with prefix
         </label>
@@ -275,10 +300,10 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
               ms-TextField-fieldGroup
               {
                 align-items: stretch;
-                background-color: #f4f4f4;
                 background: #ffffff;
-                border-color: #f4f4f4;
-                border: 1px solid #a6a6a6;
+                border-color: #f3f2f1;
+                border-radius: 2px;
+                border: 1px solid #605e5c;
                 box-shadow: none;
                 box-sizing: border-box;
                 cursor: default;
@@ -295,8 +320,8 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                 padding-top: 0px;
                 position: relative;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
-                border-color: Highlight;
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: GrayText;
               }
         >
           <div
@@ -304,8 +329,8 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                 ms-TextField-prefix
                 {
                   align-items: center;
-                  background: #f4f4f4;
-                  color: #a6a6a6;
+                  background: #f3f2f1;
+                  color: #a19f9d;
                   display: flex;
                   flex-shrink: 0;
                   line-height: 1px;
@@ -329,19 +354,20 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
           <input
             aria-invalid={false}
             aria-label="Example text field with https:// prefix"
+            aria-labelledby="TextFieldLabel5"
             className=
                 ms-TextField-field
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  background-color: transparent;
+                  background-color: #f3f2f1;
                   background: none;
-                  border-color: transparent;
+                  border-color: #f3f2f1;
                   border-radius: 0px;
                   border: none;
                   box-shadow: none;
                   box-sizing: border-box;
-                  color: #a6a6a6;
+                  color: #a19f9d;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
@@ -352,28 +378,53 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                   min-width: 0px;
                   outline: 0px;
                   padding-bottom: 0;
-                  padding-left: 12px;
-                  padding-right: 12px;
+                  padding-left: 8px;
+                  padding-right: 8px;
                   padding-top: 0;
                   text-overflow: ellipsis;
                   width: 100%;
                 }
-                &:active, &:focus, &:hover {
+                &:active {
+                  outline: 0px;
+                }
+                &:focus {
+                  outline: 0px;
+                }
+                &:hover {
                   outline: 0px;
                 }
                 &::-ms-clear {
                   display: none;
                 }
                 &::placeholder {
-                  color: #a6a6a6;
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #a19f9d;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
                   opacity: 1;
                 }
                 &:-ms-input-placeholder {
-                  color: #a6a6a6;
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #a19f9d;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  opacity: 1;
+                }
+                &::-ms-input-placeholder {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #a19f9d;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
                   opacity: 1;
                 }
             disabled={true}
-            id="TextField2"
+            id="TextField3"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
@@ -429,9 +480,7 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
           }
     >
       <div
-        className=
-            ms-TextField-wrapper
-
+        className="ms-TextField-wrapper"
       >
         <label
           className=
@@ -441,11 +490,11 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                 -webkit-font-smoothing: antialiased;
                 box-shadow: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 display: block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
-                font-weight: 400;
+                font-weight: 600;
                 margin-bottom: 0px;
                 margin-left: 0px;
                 margin-right: 0px;
@@ -457,7 +506,8 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                 padding-top: 5px;
                 word-wrap: break-word;
               }
-          htmlFor="TextField4"
+          htmlFor="TextField6"
+          id="TextFieldLabel8"
         >
           With suffix
         </label>
@@ -467,7 +517,8 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
               {
                 align-items: stretch;
                 background: #ffffff;
-                border: 1px solid #a6a6a6;
+                border-radius: 2px;
+                border: 1px solid #605e5c;
                 box-shadow: none;
                 box-sizing: border-box;
                 cursor: text;
@@ -485,7 +536,7 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                 position: relative;
               }
               &:hover {
-                border-color: #333333;
+                border-color: #323130;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -494,6 +545,7 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
           <input
             aria-invalid={false}
             aria-label="Example text field with .com suffix"
+            aria-labelledby="TextFieldLabel8"
             className=
                 ms-TextField-field
                 {
@@ -505,7 +557,7 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                   border: none;
                   box-shadow: none;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
@@ -516,27 +568,52 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                   min-width: 0px;
                   outline: 0px;
                   padding-bottom: 0;
-                  padding-left: 12px;
-                  padding-right: 12px;
+                  padding-left: 8px;
+                  padding-right: 8px;
                   padding-top: 0;
                   text-overflow: ellipsis;
                   width: 100%;
                 }
-                &:active, &:focus, &:hover {
+                &:active {
+                  outline: 0px;
+                }
+                &:focus {
+                  outline: 0px;
+                }
+                &:hover {
                   outline: 0px;
                 }
                 &::-ms-clear {
                   display: none;
                 }
                 &::placeholder {
-                  color: #666666;
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #605e5c;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
                   opacity: 1;
                 }
                 &:-ms-input-placeholder {
-                  color: #666666;
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #605e5c;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
                   opacity: 1;
                 }
-            id="TextField4"
+                &::-ms-input-placeholder {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #605e5c;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  opacity: 1;
+                }
+            id="TextField6"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
@@ -549,8 +626,8 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                 ms-TextField-suffix
                 {
                   align-items: center;
-                  background: #f4f4f4;
-                  color: #666666;
+                  background: #f3f2f1;
+                  color: #605e5c;
                   display: flex;
                   flex-shrink: 0;
                   line-height: 1px;
@@ -597,9 +674,7 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
           }
     >
       <div
-        className=
-            ms-TextField-wrapper
-
+        className="ms-TextField-wrapper"
       >
         <label
           className=
@@ -609,11 +684,11 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                 -webkit-font-smoothing: antialiased;
                 box-shadow: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 display: block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
-                font-weight: 400;
+                font-weight: 600;
                 margin-bottom: 0px;
                 margin-left: 0px;
                 margin-right: 0px;
@@ -625,7 +700,8 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                 padding-top: 5px;
                 word-wrap: break-word;
               }
-          htmlFor="TextField6"
+          htmlFor="TextField9"
+          id="TextFieldLabel11"
         >
           With prefix and suffix
         </label>
@@ -635,7 +711,8 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
               {
                 align-items: stretch;
                 background: #ffffff;
-                border: 1px solid #a6a6a6;
+                border-radius: 2px;
+                border: 1px solid #605e5c;
                 box-shadow: none;
                 box-sizing: border-box;
                 cursor: text;
@@ -653,7 +730,7 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                 position: relative;
               }
               &:hover {
-                border-color: #333333;
+                border-color: #323130;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -664,8 +741,8 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                 ms-TextField-prefix
                 {
                   align-items: center;
-                  background: #f4f4f4;
-                  color: #666666;
+                  background: #f3f2f1;
+                  color: #605e5c;
                   display: flex;
                   flex-shrink: 0;
                   line-height: 1px;
@@ -689,6 +766,7 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
           <input
             aria-invalid={false}
             aria-label="Example text field with https:// prefix and .com suffix"
+            aria-labelledby="TextFieldLabel11"
             className=
                 ms-TextField-field
                 {
@@ -700,7 +778,7 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                   border: none;
                   box-shadow: none;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
@@ -711,27 +789,52 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                   min-width: 0px;
                   outline: 0px;
                   padding-bottom: 0;
-                  padding-left: 12px;
-                  padding-right: 12px;
+                  padding-left: 8px;
+                  padding-right: 8px;
                   padding-top: 0;
                   text-overflow: ellipsis;
                   width: 100%;
                 }
-                &:active, &:focus, &:hover {
+                &:active {
+                  outline: 0px;
+                }
+                &:focus {
+                  outline: 0px;
+                }
+                &:hover {
                   outline: 0px;
                 }
                 &::-ms-clear {
                   display: none;
                 }
                 &::placeholder {
-                  color: #666666;
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #605e5c;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
                   opacity: 1;
                 }
                 &:-ms-input-placeholder {
-                  color: #666666;
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #605e5c;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
                   opacity: 1;
                 }
-            id="TextField6"
+                &::-ms-input-placeholder {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #605e5c;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  opacity: 1;
+                }
+            id="TextField9"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
@@ -744,8 +847,8 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                 ms-TextField-suffix
                 {
                   align-items: center;
-                  background: #f4f4f4;
-                  color: #666666;
+                  background: #f3f2f1;
+                  color: #605e5c;
                   display: flex;
                   flex-shrink: 0;
                   line-height: 1px;

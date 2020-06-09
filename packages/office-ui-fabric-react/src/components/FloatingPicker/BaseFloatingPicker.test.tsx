@@ -24,7 +24,7 @@ function onResolveSuggestions(text: string): ISimple[] {
     'rose',
     'violet',
     'white',
-    'yellow'
+    'yellow',
   ]
     .filter((tag: string) => tag.toLowerCase().indexOf(text.toLowerCase()) === 0)
     .map((item: string) => ({ key: item, name: item }));
@@ -47,10 +47,9 @@ export type TypedBaseFloatingPicker = BaseFloatingPicker<ISimple, IBaseFloatingP
 
 describe('Pickers', () => {
   describe('BaseFloatingPicker', () => {
-    const BaseFloatingPickerWithType = BaseFloatingPicker as new (props: IBaseFloatingPickerProps<ISimple>) => BaseFloatingPicker<
-      ISimple,
-      IBaseFloatingPickerProps<ISimple>
-    >;
+    const BaseFloatingPickerWithType = BaseFloatingPicker as new (
+      props: IBaseFloatingPickerProps<ISimple>,
+    ) => BaseFloatingPicker<ISimple, IBaseFloatingPickerProps<ISimple>>;
 
     it('renders BaseFloatingPicker correctly', () => {
       const component = renderer.create(
@@ -58,7 +57,7 @@ describe('Pickers', () => {
           onResolveSuggestions={onResolveSuggestions}
           onRenderSuggestionsItem={basicSuggestionRenderer}
           suggestionsStore={new SuggestionsStore<ISimple>()}
-        />
+        />,
       );
       const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
@@ -70,7 +69,7 @@ describe('Pickers', () => {
       document.body.appendChild(input);
       document.body.appendChild(root);
 
-      const picker: TypedBaseFloatingPicker = ReactDOM.render(
+      const picker: TypedBaseFloatingPicker = (ReactDOM.render(
         <BaseFloatingPickerWithType
           onResolveSuggestions={onResolveSuggestions}
           onRenderSuggestionsItem={basicSuggestionRenderer}
@@ -78,8 +77,8 @@ describe('Pickers', () => {
           onZeroQuerySuggestion={onZeroQuerySuggestion}
           inputElement={input}
         />,
-        root
-      ) as TypedBaseFloatingPicker;
+        root,
+      ) as unknown) as TypedBaseFloatingPicker;
 
       input.value = 'a';
       picker.onQueryStringChanged('a');
@@ -93,23 +92,25 @@ describe('Pickers', () => {
     });
 
     it('updates suggestions on query string changed', () => {
+      jest.useFakeTimers();
       const root = document.createElement('div');
       const input = document.createElement('input');
       document.body.appendChild(input);
       document.body.appendChild(root);
 
-      const picker: TypedBaseFloatingPicker = ReactDOM.render(
+      const picker: TypedBaseFloatingPicker = (ReactDOM.render(
         <BaseFloatingPickerWithType
           onResolveSuggestions={onResolveSuggestions}
           onRenderSuggestionsItem={basicSuggestionRenderer}
           suggestionsStore={new SuggestionsStore<ISimple>()}
           inputElement={input}
         />,
-        root
-      ) as TypedBaseFloatingPicker;
+        root,
+      ) as unknown) as TypedBaseFloatingPicker;
 
       input.value = 'b';
       picker.onQueryStringChanged('b');
+      jest.runAllTimers();
 
       expect(picker.suggestions.length).toEqual(3);
 

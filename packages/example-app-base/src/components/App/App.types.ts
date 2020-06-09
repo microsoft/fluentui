@@ -1,5 +1,5 @@
 import { IStyle, ITheme } from 'office-ui-fabric-react/lib/Styling';
-import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
+import { IStyleFunctionOrObject, ICustomizations } from 'office-ui-fabric-react/lib/Utilities';
 import { IWithResponsiveModeState } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode';
 import { INavLink, INavLinkGroup, INavStyleProps } from 'office-ui-fabric-react/lib/Nav';
 import { IPanelStyleProps } from 'office-ui-fabric-react/lib/Panel';
@@ -10,7 +10,7 @@ export enum ExampleStatus {
   placeholder = 0,
   started = 1,
   beta = 2,
-  release = 3
+  release = 3,
 }
 
 export interface IAppLink extends INavLink {
@@ -30,8 +30,14 @@ export interface IAppDefinition {
   headerLinks: IAppLink[];
   /**
    * Optional customizations to apply to the application.
+   *
+   * `IAppCustomizations` members (`exampleCardCustomizations` and `hideSchemes`), if provided,
+   * are applied using `AppCustomizationsContext`.
+   *
+   * `ICustomizations` members (`settings` and `scopedSettings`), if provided, are applied
+   * using `Customizer`.
    */
-  customizations?: IAppCustomizations;
+  customizations?: IAppCustomizations & Partial<ICustomizations>;
 }
 
 export interface IAppProps extends IWithResponsiveModeState {
@@ -44,7 +50,11 @@ export interface IAppProps extends IWithResponsiveModeState {
   styles?: IStyleFunctionOrObject<IAppStyleProps, IAppStyles>;
 }
 
-export type IAppStyleProps = Required<Pick<IAppProps, 'responsiveMode'>> & Pick<IAppProps, 'theme'>;
+export type IAppStyleProps = Required<Pick<IAppProps, 'responsiveMode'>> &
+  Pick<IAppProps, 'theme'> & {
+    /** Whether the page needs to show only the examples card */
+    showOnlyExamples?: boolean;
+  };
 
 export interface IAppStyles {
   root: IStyle;

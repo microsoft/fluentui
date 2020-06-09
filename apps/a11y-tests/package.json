@@ -1,37 +1,41 @@
 {
   "name": "a11y-tests",
-  "version": "1.0.0",
+  "version": "7.0.0",
   "private": true,
-  "description": "A11y Tests for Office UI Fabric React",
+  "description": "A11y Tests for Fluent UI React",
   "scripts": {
-    "build": "npx just-scripts build",
-    "just": "npx just-scripts",
-    "test": "npx just-scripts jest",
-    "code-style": "npx just-scripts code-style",
-    "update-snapshots": "npx just-scripts jest -u"
+    "build": "just-scripts build",
+    "bundle": "just-scripts bundle",
+    "lint": "just-scripts lint",
+    "just": "just-scripts",
+    "test": "just-scripts test",
+    "code-style": "just-scripts code-style",
+    "update-snapshots": "just-scripts jest -u"
   },
   "dependencies": {
-    "@uifabric/fabric-website-resources": "^6.18.3",
+    "@uifabric/fabric-website-resources": "^7.6.77",
     "axe-core": "^3.2.2",
     "axe-puppeteer": "^1.0.0",
-    "axe-sarif-converter": "^1.0.0",
+    "axe-sarif-converter": "^2.0.1",
     "glob": "^7.1.2",
     "mkdirp": "^0.5.1",
-    "office-ui-fabric-react": "^6.188.2",
+    "office-ui-fabric-react": "^7.118.0",
     "puppeteer": "^1.13.0",
-    "tslib": "^1.7.1",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "tslib": "^1.10.0",
+    "react": "16.8.6",
+    "react-app-polyfill": "~1.0.1",
+    "react-dom": "16.8.6"
   },
   "devDependencies": {
     "@types/glob": "^7.1.1",
-    "@types/jest": "23.0.0",
-    "@types/node": "^8.10.29",
+    "@types/jest": "~24.9.0",
+    "@types/node": "^10.3.2",
     "@types/puppeteer": "1.12.3",
-    "@types/react": "16.3.16",
-    "@types/react-dom": "16.0.5",
-    "@uifabric/build": "*",
-    "@uifabric/icons": "^6.5.2",
-    "@uifabric/tslint-rules": "^1.0.2"
+    "@types/react": "16.8.25",
+    "@types/react-dom": "16.8.4",
+    "@types/sarif": "^2.1.1",
+    "@uifabric/build": "^7.0.0",
+    "@uifabric/icons": "^7.3.48",
+    "@uifabric/tslint-rules": "^7.2.1"
   }
 }

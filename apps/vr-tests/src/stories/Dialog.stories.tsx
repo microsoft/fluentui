@@ -8,7 +8,7 @@ import {
   DialogType,
   DialogFooter,
   PrimaryButton,
-  DefaultButton
+  DefaultButton,
 } from 'office-ui-fabric-react';
 
 const footer = (
@@ -21,7 +21,7 @@ const footer = (
 const text = {
   title: 'All emails together',
   subText:
-    'Your Inbox has changed. No longer does it include favorites, it is a singular destination for your emails.'
+    'Your Inbox has changed. No longer does it include favorites, it is a singular destination for your emails.',
 };
 
 storiesOf('Dialog', module)
@@ -34,7 +34,7 @@ storiesOf('Dialog', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </Screener>,
   )
   .addStory(
     'Root',
@@ -47,7 +47,7 @@ storiesOf('Dialog', module)
         {footer}
       </Dialog>
     ),
-    { rtl: true }
+    { rtl: true },
   )
   .addStory('Wide Dialog', () => (
     <Dialog

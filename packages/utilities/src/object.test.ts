@@ -6,8 +6,8 @@ describe('assign', () => {
       a: 1,
       b: 'string',
       c: {
-        d: 2
-      }
+        d: 2,
+      },
     };
 
     let resultTarget = {};
@@ -23,7 +23,7 @@ describe('filteredAssign', () => {
   it('can copy an object but avoid copying some parameters', () => {
     let source = {
       a: 1,
-      b: 'string'
+      b: 'string',
     };
     let result = filteredAssign((propName: string) => propName !== 'b', {}, source);
 
@@ -38,7 +38,7 @@ describe('mapEnumByName', () => {
       first,
       second,
       third,
-      fourth
+      fourth,
     }
 
     let result: string[] = [];
@@ -59,7 +59,7 @@ describe('values', () => {
     const obj = {
       test: 1,
       ing: 2,
-      '123': 3
+      '123': 3,
     };
     const objValues = values<number>(obj);
     expect(objValues).toHaveLength(3);

@@ -11,28 +11,29 @@ export const ComboBoxStyles = (props: IComboBoxProps): Partial<IComboBoxStyles> 
     root: {
       borderRadius: effects.roundedCorner2, // the bound input box
       borderColor: palette.neutralSecondaryAlt,
-      paddingLeft: 8
+      paddingLeft: 8,
     },
     rootHovered: {
       selectors: {
         '.ms-ComboBox-Input': {
-          color: palette.neutralDark
-        }
-      }
+          color: palette.neutralDark,
+        },
+      },
     },
     rootError: {
-      borderColor: palette.red // current structure of ComboBox does not allow to change the hover/focus color when has error
+      // current structure of ComboBox does not allow to change the hover/focus color when has error
+      borderColor: palette.red,
     },
     callout: {
       borderRadius: effects.roundedCorner2,
       border: 'none',
       boxShadow: effects.elevation8,
       selectors: {
-        '.ms-Callout-main': { borderRadius: effects.roundedCorner2 }
-      }
+        '.ms-Callout-main': { borderRadius: effects.roundedCorner2 },
+      },
     },
     header: {
-      padding: '0 8px'
+      padding: '0 8px',
     },
     optionsContainer: {
       selectors: {
@@ -41,26 +42,26 @@ export const ComboBoxStyles = (props: IComboBoxProps): Partial<IComboBoxStyles> 
           paddingRight: 8,
           selectors: {
             ':hover:active': {
-              backgroundColor: palette.neutralLight
-            }
-          }
+              backgroundColor: palette.neutralLight,
+            },
+          },
         },
         '.is-checked': {
           backgroundColor: 'transparent',
           selectors: {
             ':hover': {
-              backgroundColor: palette.neutralLighter
-            }
-          }
+              backgroundColor: palette.neutralLighter,
+            },
+          },
         },
         '.ms-Checkbox': {
           selectors: {
             ':hover': {
-              backgroundColor: palette.neutralLighter
-            }
-          }
-        }
-      }
-    }
+              backgroundColor: palette.neutralLighter,
+            },
+          },
+        },
+      },
+    },
   };
 };

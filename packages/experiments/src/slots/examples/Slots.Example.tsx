@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Button } from '@uifabric/experiments';
-import { IStackProps, Spinner, Stack } from 'office-ui-fabric-react';
+import { Spinner, Stack, TooltipHost, IStackProps } from 'office-ui-fabric-react';
 
 const stackProps: IStackProps = { tokens: { childrenGap: 16 }, padding: 8, maxWidth: 400 };
 
@@ -10,14 +10,23 @@ export class SlotsExample extends React.Component<{}, {}> {
     return (
       <Stack {...stackProps} maxWidth={400}>
         <Button
-          // Render function usage
-          root={render => render((RootType, rootProps) => <RootType {...rootProps} />)}
-          // Subcomponent props usage
-          stack={{ styles: { root: { background: 'lightblue' } } }}
+          // Render function usage, wrapping default content
+          slots={{
+            root: {
+              render: (rootProps, DefaultComponent) => (
+                <TooltipHost content="This is the tooltip">
+                  <DefaultComponent {...rootProps} />
+                </TooltipHost>
+              ),
+            },
+            content: {
+              // TODO: add 'element' option with JSX?
+              // element: <Spinner />
+              component: Spinner as any,
+            },
+          }}
           // Shorthand prop usage
           icon="share"
-          // Render function usage
-          content={render => render((ComponentType, props) => <Spinner />)}
         >
           Just a button with a spinner as its content.
         </Button>

@@ -1,157 +1,61 @@
 import * as React from 'react';
+import { CommandBar, ICommandBarItemProps } from 'office-ui-fabric-react/lib/CommandBar';
+import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
 
-import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
+const overflowButtonProps: IButtonProps = { ariaLabel: 'More commands' };
 
-export class CommandBarSplitDisabledExample extends React.Component<{}, {}> {
-  public render(): JSX.Element {
-    return (
-      <div>
-        <CommandBar
-          items={this.getItems()}
-          overflowItems={this.getOverlflowItems()}
-          overflowButtonProps={{ ariaLabel: 'More commands' }}
-          farItems={this.getFarItems()}
-          ariaLabel={'Use left and right arrow keys to navigate between commands'}
-        />
-      </div>
-    );
-  }
+export const CommandBarSplitDisabledExample: React.FunctionComponent = () => {
+  return (
+    <div>
+      <CommandBar
+        items={_items}
+        overflowButtonProps={overflowButtonProps}
+        ariaLabel="Use left and right arrow keys to navigate between commands"
+      />
+    </div>
+  );
+};
 
-  // Data for CommandBar
-  private getItems = () => {
-    return [
-      {
-        key: 'newItem',
-        name: 'New',
-        cacheKey: 'myCacheKey', // changing this key will invalidate this items cache
-        iconProps: {
-          iconName: 'Add'
-        },
-        split: true,
-        ariaLabel: 'New',
-        subMenuProps: {
-          items: [
-            {
-              key: 'emailMessage',
-              name: 'Email message',
-              iconProps: {
-                iconName: 'Mail'
-              },
-              ['data-automation-id']: 'newEmailButton'
-            },
-            {
-              key: 'calendarEvent',
-              name: 'Calendar event',
-              iconProps: {
-                iconName: 'Calendar'
-              }
-            }
-          ]
-        }
-      },
-      {
-        key: 'upload',
-        name: 'Upload',
-        iconProps: {
-          iconName: 'Upload'
-        },
-        split: true,
-        disabled: true,
-        href: 'https://dev.office.com/fabric',
-        ['data-automation-id']: 'uploadButton',
-        subMenuProps: {
-          items: [
-            {
-              key: 'item1',
-              name: 'Item One'
-            },
-            {
-              key: 'item2',
-              name: 'Item Two'
-            }
-          ]
-        }
-      },
-      {
-        key: 'share',
-        name: 'Share',
-        iconProps: {
-          iconName: 'Share'
-        },
-        disabled: true
-      },
-      {
-        key: 'download',
-        name: 'Download',
-        iconProps: {
-          iconName: 'Download'
-        },
-        iconOnly: true,
-        disabled: true
-      }
-    ];
-  };
-
-  private getOverlflowItems = () => {
-    return [
-      {
-        key: 'move',
-        name: 'Move to...',
-        onClick: () => console.log('Move to'),
-        iconProps: {
-          iconName: 'MoveToFolder'
-        }
-      },
-      {
-        key: 'copy',
-        name: 'Copy to...',
-        onClick: () => console.log('Copy to'),
-        iconProps: {
-          iconName: 'Copy'
-        }
-      },
-      {
-        key: 'rename',
-        name: 'Rename...',
-        onClick: () => console.log('Rename'),
-        iconProps: {
-          iconName: 'Edit'
-        }
-      }
-    ];
-  };
-
-  private getFarItems = () => {
-    return [
-      {
-        key: 'sort',
-        name: 'Sort',
-        ariaLabel: 'Sort',
-        iconProps: {
-          iconName: 'SortLines'
-        },
-        onClick: () => console.log('Sort')
-      },
-      {
-        key: 'tile',
-        name: 'Grid view',
-        ariaLabel: 'Grid view',
-        iconProps: {
-          iconName: 'Tiles'
-        },
-        iconOnly: true,
-        onClick: () => console.log('Tiles')
-      },
-      {
-        key: 'info',
-        name: 'Info',
-        ariaLabel: 'Info',
-        iconProps: {
-          iconName: 'Info'
-        },
-        iconOnly: true,
-        onClick: () => console.log('Info')
-      }
-    ];
-  };
-}
+const _items: ICommandBarItemProps[] = [
+  {
+    key: 'newItem',
+    text: 'New',
+    iconProps: { iconName: 'Add' },
+    split: true,
+    ariaLabel: 'New',
+    subMenuProps: {
+      items: [
+        { key: 'emailMessage', text: 'Email message', iconProps: { iconName: 'Mail' } },
+        { key: 'calendarEvent', text: 'Calendar event', iconProps: { iconName: 'Calendar' } },
+      ],
+    },
+  },
+  {
+    key: 'upload',
+    text: 'Upload',
+    iconProps: { iconName: 'Upload' },
+    split: true,
+    disabled: true,
+    href: 'https://developer.microsoft.com/en-us/fluentui',
+    subMenuProps: {
+      items: [
+        { key: 'item1', text: 'Item One' },
+        { key: 'item2', text: 'Item Two' },
+      ],
+    },
+  },
+  {
+    key: 'share',
+    text: 'Share',
+    iconProps: { iconName: 'Share' },
+    disabled: true,
+  },
+  {
+    key: 'download',
+    text: 'Download',
+    ariaLabel: 'Download',
+    iconProps: { iconName: 'Download' },
+    iconOnly: true,
+    disabled: true,
+  },
+];

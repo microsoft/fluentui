@@ -12,90 +12,73 @@ import { TextFieldStyledExample } from './examples/TextField.Styled.Example';
 import { TextFieldMaskedExample } from './examples/TextField.Masked.Example';
 
 const TextFieldBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Basic.Example.tsx') as string;
-const TextFieldBasicExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Basic.Example.tsx') as string;
 const TextFieldBorderlessExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Borderless.Example.tsx') as string;
-const TextFieldBorderlessExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Borderless.Example.tsx') as string;
 const TextFieldCustomRenderExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.CustomRender.Example.tsx') as string;
-const TextFieldCustomRenderExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.CustomRender.Example.tsx') as string;
 const TextFieldErrorMessageExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.ErrorMessage.Example.tsx') as string;
-const TextFieldErrorMessageExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.ErrorMessage.Example.tsx') as string;
 const TextFieldMultilineExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Multiline.Example.tsx') as string;
-const TextFieldMultilineExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Multiline.Example.tsx') as string;
 const TextFieldControlledExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Controlled.Example.tsx') as string;
-const TextFieldControlledExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Controlled.Example.tsx') as string;
 const TextFieldPrefixAndSuffixExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.PrefixAndSuffix.Example.tsx') as string;
-const TextFieldPrefixAndSuffixExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.PrefixAndSuffix.Example.tsx') as string;
 const TextFieldStyledExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Styled.Example.tsx') as string;
-const TextFieldStyledExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Styled.Example.tsx') as string;
 const TextFieldMaskedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Masked.Example.tsx') as string;
-const TextFieldMaskedExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Masked.Example.tsx') as string;
 
 export const TextFieldPageProps: IDocPageProps = {
   title: 'TextField',
   componentName: 'TextField',
-  componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/TextField',
+  componentUrl:
+    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/TextField',
   examples: [
     {
       title: 'Basic TextFields',
       code: TextFieldBasicExampleCode,
       view: <TextFieldBasicExample />,
-      codepenJS: TextFieldBasicExampleCodepen
     },
     {
       title: 'Controlled TextFields',
       code: TextFieldControlledExampleCode,
       view: <TextFieldControlledExample />,
-      codepenJS: TextFieldControlledExampleCodepen
     },
     {
       title: 'Multiline TextField',
       code: TextFieldMultilineExampleCode,
-      codepenJS: TextFieldMultilineExampleCodepen,
-      view: <TextFieldMultilineExample />
+      view: <TextFieldMultilineExample />,
     },
     {
       title: 'Underlined and borderless TextFields',
       code: TextFieldBorderlessExampleCode,
       view: <TextFieldBorderlessExample />,
-      codepenJS: TextFieldBorderlessExampleCodepen
     },
     {
       title: 'Customizable Masked TextField',
       code: TextFieldMaskedExampleCode,
       view: <TextFieldMaskedExample />,
-      codepenJS: TextFieldMaskedExampleCodepen
     },
     {
       title: 'TextField with prefix and/or suffix',
       code: TextFieldPrefixAndSuffixExampleCode,
-      codepenJS: TextFieldPrefixAndSuffixExampleCodepen,
-      view: <TextFieldPrefixAndSuffixExample />
+      view: <TextFieldPrefixAndSuffixExample />,
     },
     {
       title: 'TextFields with custom rendering',
       code: TextFieldCustomRenderExampleCode,
-      codepenJS: TextFieldCustomRenderExampleCodepen,
-      view: <TextFieldCustomRenderExample />
+      view: <TextFieldCustomRenderExample />,
     },
     {
       title: 'TextField error message variations',
       code: TextFieldErrorMessageExampleCode,
-      codepenJS: TextFieldErrorMessageExampleCodepen,
-      view: <TextFieldErrorMessageExample />
+      view: <TextFieldErrorMessageExample />,
     },
     {
       title: 'TextField subcomponent styling',
       code: TextFieldStyledExampleCode,
-      codepenJS: TextFieldStyledExampleCodepen,
-      view: <TextFieldStyledExample />
-    }
+      view: <TextFieldStyledExample />,
+    },
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/TextField/docs/TextFieldOverview.md'),
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/TextField/docs/TextFieldDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/TextField/docs/TextFieldDonts.md'),
-  isHeaderVisible: true,
+  isHeaderVisible: false,
   isFeedbackVisible: true,
   allowNativeProps: true,
-  nativePropsElement: ['input', 'textarea']
+  nativePropsElement: ['input', 'textarea'],
 };

@@ -7,24 +7,26 @@ export const controlsPagesIos: INavPage[] = [
     url: '#/controls/ios',
     isHiddenFromMainNav: true,
     component: () => <LoadingComponent title="Controls" />,
-    getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Overviews/ControlsPage/ControlsPage').ControlsPage))
+    getComponent: cb =>
+      require.ensure([], require =>
+        cb(require<any>('../../../pages/Overviews/ControlsPage/ControlsPage').ControlsPage),
+      ),
   },
   {
     title: 'Basic Inputs',
-    url: '#/controls/ios/button',
     isCategory: true,
     pages: [
       {
         title: 'Button',
         url: '#/controls/ios/button',
         component: () => <LoadingComponent title="Button" />,
-        getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Controls/ButtonPage/ButtonPage').ButtonPage))
-      }
-    ]
+        getComponent: cb =>
+          require.ensure([], require => cb(require<any>('../../../pages/Controls/ButtonPage/ButtonPage').ButtonPage)),
+      },
+    ],
   },
   {
     title: 'Pickers',
-    url: '#/controls/ios/date-time-picker',
     isCategory: true,
     pages: [
       {
@@ -32,91 +34,160 @@ export const controlsPagesIos: INavPage[] = [
         url: '#/controls/ios/date-time-picker',
         component: () => <LoadingComponent title="Date & Time Picker" />,
         getComponent: cb =>
-          require.ensure([], require => cb(require<any>('../../../pages/Controls/DatePickerPage/DatePickerPage').DatePickerPage))
-      }
-    ]
+          require.ensure([], require =>
+            cb(require<any>('../../../pages/Controls/DatePickerPage/DatePickerPage').DatePickerPage),
+          ),
+      },
+    ],
   },
   {
     title: 'Items & Lists',
-    url: '#/controls/ios/avatar',
     isCategory: true,
     pages: [
       {
         title: 'Avatar',
         url: '#/controls/ios/avatar',
         component: () => <LoadingComponent title="Avatar" />,
-        getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Controls/AvatarPage/AvatarPage').AvatarPage))
+        getComponent: cb =>
+          require.ensure([], require => cb(require<any>('../../../pages/Controls/AvatarPage/AvatarPage').AvatarPage)),
       },
       {
         title: 'Chip',
         url: '#/controls/ios/chip',
         component: () => <LoadingComponent title="Chip" />,
-        getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Controls/ChipPage/ChipPage').ChipPage))
+        getComponent: cb =>
+          require.ensure([], require => cb(require<any>('../../../pages/Controls/ChipPage/ChipPage').ChipPage)),
       },
       {
         title: 'List Cells',
         url: '#/controls/ios/listcells',
         component: () => <LoadingComponent title="List Cells" />,
         getComponent: cb =>
-          require.ensure([], require => cb(require<any>('../../../pages/Controls/ListCellsPage/ListCellsPage').ListCellsPage))
+          require.ensure([], require =>
+            cb(require<any>('../../../pages/Controls/ListCellsPage/ListCellsPage').ListCellsPage),
+          ),
       },
       {
         title: 'Persona',
         url: '#/controls/ios/persona',
         component: () => <LoadingComponent title="Persona" />,
-        getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Controls/PersonaPage/PersonaPage').PersonaPage))
-      }
-    ]
+        getComponent: cb =>
+          require.ensure([], require =>
+            cb(require<any>('../../../pages/Controls/PersonaPage/PersonaPage').PersonaPage),
+          ),
+      },
+    ],
   },
   {
     title: 'Commands, Menus & Navs',
-    url: '#/controls/ios/pivot',
     isCategory: true,
     pages: [
+      {
+        title: 'Navigation Bar',
+        url: '#/controls/ios/navigationbar',
+        component: () => <LoadingComponent title="NavBar" />,
+        getComponent: cb =>
+          require.ensure([], require => cb(require<any>('../../../pages/Controls/NavBarPage/NavBarPage').NavBarPage)),
+      },
+      {
+        title: 'Pill Button Bar',
+        url: '#/controls/ios/pillbuttonbar',
+        component: () => <LoadingComponent title="Pill Button Bar" />,
+        getComponent: cb =>
+          require.ensure([], require =>
+            cb(require<any>('../../../pages/Controls/PillButtonBarPage/PillButtonBarPage').PillButtonBarPage),
+          ),
+      },
       {
         title: 'Pivot',
         url: '#/controls/ios/pivot',
         component: () => <LoadingComponent title="Pivot" />,
-        getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Controls/PivotPage/PivotPage').PivotPage))
+        getComponent: cb =>
+          require.ensure([], require => cb(require<any>('../../../pages/Controls/PivotPage/PivotPage').PivotPage)),
       },
       {
         title: 'Popup Menu',
         url: '#/controls/ios/popupmenu',
         component: () => <LoadingComponent title="Popup Menu" />,
         getComponent: cb =>
-          require.ensure([], require => cb(require<any>('../../../pages/Controls/PopupMenuPage/PopupMenuPage').PopupMenuPage))
-      }
-    ]
+          require.ensure([], require =>
+            cb(require<any>('../../../pages/Controls/PopupMenuPage/PopupMenuPage').PopupMenuPage),
+          ),
+      },
+      {
+        title: 'Tab Bar',
+        url: '#/controls/ios/tabbar',
+        component: () => <LoadingComponent title="Tab Bar" />,
+        getComponent: cb =>
+          require.ensure([], require =>
+            cb(require<any>('../../../pages/Controls/BottomNavigationPage/BottomNavigationPage').BottomNavigationPage),
+          ),
+      },
+    ],
+  },
+  {
+    title: 'Notification & Engagement',
+    isCategory: true,
+    pages: [
+      {
+        title: 'Message Bar',
+        url: '#/controls/ios/messagebar',
+        component: () => <LoadingComponent title="Message Bar" />,
+        getComponent: cb =>
+          require.ensure([], require =>
+            cb(require<any>('../../../pages/Controls/MessageBarPage/MessageBarPage').MessageBarPage),
+          ),
+      },
+      {
+        title: 'Tooltip',
+        url: '#/controls/ios/tooltip',
+        component: () => <LoadingComponent title="Tooltip" />,
+        getComponent: cb =>
+          require.ensure([], require =>
+            cb(require<any>('../../../pages/Controls/TooltipPage/TooltipPage').TooltipPage),
+          ),
+      },
+    ],
   },
   {
     title: 'Progress',
-    url: '#/controls/ios/spinner',
     isCategory: true,
     pages: [
+      {
+        title: 'Shimmer',
+        url: '#/controls/ios/shimmer',
+        component: () => <LoadingComponent title="Shimmer" />,
+        getComponent: cb =>
+          require.ensure([], require =>
+            cb(require<any>('../../../pages/Controls/ShimmerPage/ShimmerPage').ShimmerPage),
+          ),
+      },
       {
         title: 'Spinner',
         url: '#/controls/ios/spinner',
         component: () => <LoadingComponent title="Spinner" />,
-        getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Controls/SpinnerPage/SpinnerPage').SpinnerPage))
-      }
-    ]
+        getComponent: cb =>
+          require.ensure([], require =>
+            cb(require<any>('../../../pages/Controls/SpinnerPage/SpinnerPage').SpinnerPage),
+          ),
+      },
+    ],
   },
   {
     title: 'Surfaces',
-    url: '#/controls/ios/drawer',
     isCategory: true,
     pages: [
       {
         title: 'Drawer',
         url: '#/controls/ios/drawer',
         component: () => <LoadingComponent title="Drawer" />,
-        getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Controls/DrawerPage/DrawerPage').DrawerPage))
-      }
-    ]
+        getComponent: cb =>
+          require.ensure([], require => cb(require<any>('../../../pages/Controls/DrawerPage/DrawerPage').DrawerPage)),
+      },
+    ],
   },
   {
     title: 'Utilities',
-    url: '#/controls/ios/separator',
     isCategory: true,
     pages: [
       {
@@ -124,14 +195,17 @@ export const controlsPagesIos: INavPage[] = [
         url: '#/controls/ios/separator',
         component: () => <LoadingComponent title="Separator" />,
         getComponent: cb =>
-          require.ensure([], require => cb(require<any>('../../../pages/Controls/SeparatorPage/SeparatorPage').SeparatorPage))
+          require.ensure([], require =>
+            cb(require<any>('../../../pages/Controls/SeparatorPage/SeparatorPage').SeparatorPage),
+          ),
       },
       {
         title: 'Text',
         url: '#/controls/ios/text',
         component: () => <LoadingComponent title="Text" />,
-        getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Controls/TextPage/TextPage').TextPage))
-      }
-    ]
-  }
+        getComponent: cb =>
+          require.ensure([], require => cb(require<any>('../../../pages/Controls/TextPage/TextPage').TextPage)),
+      },
+    ],
+  },
 ];

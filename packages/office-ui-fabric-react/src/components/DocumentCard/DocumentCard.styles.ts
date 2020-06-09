@@ -1,4 +1,5 @@
-import { getGlobalClassNames, FontSizes } from '../../Styling';
+import { getGlobalClassNames, getInputFocusStyle } from '../../Styling';
+import { IsFocusVisibleClassName } from '../../Utilities';
 import { IDocumentCardStyleProps, IDocumentCardStyles } from './DocumentCard.types';
 import { DocumentCardPreviewGlobalClassNames as previewClassNames } from './DocumentCardPreview.styles';
 import { DocumentCardActivityGlobalClassNames as activityClassNames } from './DocumentCardActivity.styles';
@@ -8,12 +9,12 @@ import { DocumentCardLocationGlobalClassNames as locationClassNames } from './Do
 const GlobalClassNames = {
   root: 'ms-DocumentCard',
   rootActionable: 'ms-DocumentCard--actionable',
-  rootCompact: 'ms-DocumentCard--compact'
+  rootCompact: 'ms-DocumentCard--compact',
 };
 
 export const getStyles = (props: IDocumentCardStyleProps): IDocumentCardStyles => {
   const { className, theme, actionable, compact } = props;
-  const { palette } = theme;
+  const { palette, fonts, effects } = theme;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
@@ -24,16 +25,19 @@ export const getStyles = (props: IDocumentCardStyleProps): IDocumentCardStyles =
         WebkitFontSmoothing: 'antialiased',
         backgroundColor: palette.white,
         border: `1px solid ${palette.neutralLight}`,
-        boxSizing: 'border-box',
         maxWidth: '320px',
         minWidth: '206px',
         userSelect: 'none',
         position: 'relative',
         selectors: {
+          ':focus': {
+            outline: '0px solid',
+          },
+          [`.${IsFocusVisibleClassName} &:focus`]: getInputFocusStyle(palette.neutralSecondary, effects.roundedCorner2),
           [`.${locationClassNames.root} + .${titleClassNames.root}`]: {
-            paddingTop: '4px'
-          }
-        }
+            paddingTop: '4px',
+          },
+        },
       },
       actionable && [
         classNames.rootActionable,
@@ -41,7 +45,7 @@ export const getStyles = (props: IDocumentCardStyleProps): IDocumentCardStyles =
           selectors: {
             ':hover': {
               cursor: 'pointer',
-              borderColor: palette.neutralTertiaryAlt
+              borderColor: palette.neutralTertiaryAlt,
             },
             ':hover:after': {
               content: '" "',
@@ -51,10 +55,10 @@ export const getStyles = (props: IDocumentCardStyleProps): IDocumentCardStyles =
               bottom: 0,
               left: 0,
               border: `1px solid ${palette.neutralTertiaryAlt}`,
-              pointerEvents: 'none'
-            }
-          }
-        }
+              pointerEvents: 'none',
+            },
+          },
+        },
       ],
       compact && [
         classNames.rootCompact,
@@ -67,24 +71,24 @@ export const getStyles = (props: IDocumentCardStyleProps): IDocumentCardStyles =
               borderRight: `1px solid ${palette.neutralLight}`,
               borderBottom: 0, // Remove the usual border from the preview
               maxHeight: '106px',
-              maxWidth: '144px'
+              maxWidth: '144px',
             },
             [`.${previewClassNames.icon}`]: {
               maxHeight: '32px',
-              maxWidth: '32px'
+              maxWidth: '32px',
             },
             [`.${activityClassNames.root}`]: {
-              paddingBottom: '12px'
+              paddingBottom: '12px',
             },
             [`.${titleClassNames.root}`]: {
               paddingBottom: '12px 16px 8px 16px',
-              fontSize: FontSizes.mediumPlus,
-              lineHeight: '16px'
-            }
-          }
-        }
+              fontSize: fonts.mediumPlus.fontSize,
+              lineHeight: '16px',
+            },
+          },
+        },
       ],
-      className
-    ]
+      className,
+    ],
   };
 };

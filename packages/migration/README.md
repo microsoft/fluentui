@@ -1,8 +1,9 @@
-# [@uifabric/migration](http://dev.microsoft.com/fabric)
+# @uifabric/migration
 
-## Migration for Office UI Fabric React
+**Migration scripts for [Fluent UI React](https://developer.microsoft.com/en-us/fluentui)**
+([formerly Office UI Fabric React](https://developer.microsoft.com/en-us/office/blogs/ui-fabric-is-evolving-into-fluent-ui/))
 
-These are a set of scripts to help migrating your code to be compatible with Fabric during an upgrade of Fabric.
+These are a set of scripts to help migrating your code to be compatible with the latest version during an upgrade.
 
 ## How to use this?
 

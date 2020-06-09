@@ -42,6 +42,11 @@
   align-content: flex-start;
 }
 
+.row {
+  display: flex;
+  width: 100%;
+}
+
 .shimmeredList {
   &::after {
     content: '';
@@ -50,7 +55,12 @@
     right: 0;
     bottom: 0;
     left: 0;
-    background-image: linear-gradient(to bottom, transparent 30%, $ms-color-whiteTranslucent40 65%, $ms-color-white 100%);
+    background-image: linear-gradient(
+      to bottom,
+      transparent 30%,
+      $ms-color-whiteTranslucent40 65%,
+      $ms-color-white 100%
+    );
   }
 }
 

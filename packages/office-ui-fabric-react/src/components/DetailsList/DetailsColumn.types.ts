@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { IColumn } from './DetailsList.types';
 import { DetailsColumnBase } from './DetailsColumn.base';
 import { IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
@@ -5,6 +6,17 @@ import { ITooltipHostProps } from '../../Tooltip';
 import { IDragDropHelper } from '../../utilities/dragdrop/index';
 import { ICellStyleProps } from './DetailsRow.types';
 import { ITheme, IStyle } from '../../Styling';
+
+/**
+ * {@docgategory DetailsList}
+ */
+export interface IDetailsColumnRenderTooltipProps extends ITooltipHostProps {
+  /**
+   * Information about the column for which the tooltip is being rendered.
+   * Use this to format status information about the column, such as its filter or sort state.
+   */
+  column?: IColumn;
+}
 
 /**
  * {@docCategory DetailsList}
@@ -37,7 +49,7 @@ export interface IDetailsColumnProps extends React.ClassAttributes<DetailsColumn
   /**
    * Render function for providing a column header tooltip.
    */
-  onRenderColumnHeaderTooltip?: IRenderFunction<ITooltipHostProps>;
+  onRenderColumnHeaderTooltip?: IRenderFunction<IDetailsColumnRenderTooltipProps>;
   /**
    * Callback fired when click event occurs.
    */
@@ -70,6 +82,12 @@ export interface IDetailsColumnProps extends React.ClassAttributes<DetailsColumn
    * Custom styles for cell rendering.
    */
   cellStyleProps?: ICellStyleProps;
+  /**
+   * Whether to use fast icon and check components. The icons can't be targeted by customization
+   * but are still customizable via class names.
+   * @defaultvalue true
+   */
+  useFastIcons?: boolean;
 }
 
 /**

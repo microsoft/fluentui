@@ -2,14 +2,21 @@ import * as React from 'react';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
-import { DetailsList, DetailsListLayoutMode, Selection, SelectionMode, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
+import { Announced } from 'office-ui-fabric-react/lib/Announced';
+import {
+  DetailsList,
+  DetailsListLayoutMode,
+  Selection,
+  SelectionMode,
+  IColumn,
+} from 'office-ui-fabric-react/lib/DetailsList';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 
 const classNames = mergeStyleSets({
   fileIconHeaderIcon: {
     padding: 0,
-    fontSize: '16px'
+    fontSize: '16px',
   },
   fileIconCell: {
     textAlign: 'center',
@@ -20,33 +27,33 @@ const classNames = mergeStyleSets({
         verticalAlign: 'middle',
         height: '100%',
         width: '0px',
-        visibility: 'hidden'
-      }
-    }
+        visibility: 'hidden',
+      },
+    },
   },
   fileIconImg: {
     verticalAlign: 'middle',
     maxHeight: '16px',
-    maxWidth: '16px'
+    maxWidth: '16px',
   },
   controlWrapper: {
     display: 'flex',
-    flexWrap: 'wrap'
+    flexWrap: 'wrap',
   },
   exampleToggle: {
     display: 'inline-block',
     marginBottom: '10px',
-    marginRight: '30px'
+    marginRight: '30px',
   },
   selectionDetails: {
-    marginBottom: '20px'
-  }
+    marginBottom: '20px',
+  },
 });
 const controlStyles = {
   root: {
     margin: '0 30px 20px 0',
-    maxWidth: '300px'
-  }
+    maxWidth: '300px',
+  },
 };
 
 export interface IDetailsListDocumentsExampleState {
@@ -55,9 +62,11 @@ export interface IDetailsListDocumentsExampleState {
   selectionDetails: string;
   isModalSelection: boolean;
   isCompactMode: boolean;
+  announcedMessage?: string;
 }
 
 export interface IDocument {
+  key: string;
   name: string;
   value: string;
   iconName: string;
@@ -93,7 +102,7 @@ export class DetailsListDocumentsExample extends React.Component<{}, IDetailsLis
         onColumnClick: this._onColumnClick,
         onRender: (item: IDocument) => {
           return <img src={item.iconName} className={classNames.fileIconImg} alt={item.fileType + ' file icon'} />;
-        }
+        },
       },
       {
         key: 'column2',
@@ -109,7 +118,7 @@ export class DetailsListDocumentsExample extends React.Component<{}, IDetailsLis
         sortDescendingAriaLabel: 'Sorted Z to A',
         onColumnClick: this._onColumnClick,
         data: 'string',
-        isPadded: true
+        isPadded: true,
       },
       {
         key: 'column3',
@@ -123,7 +132,7 @@ export class DetailsListDocumentsExample extends React.Component<{}, IDetailsLis
         onRender: (item: IDocument) => {
           return <span>{item.dateModified}</span>;
         },
-        isPadded: true
+        isPadded: true,
       },
       {
         key: 'column4',
@@ -138,7 +147,7 @@ export class DetailsListDocumentsExample extends React.Component<{}, IDetailsLis
         onRender: (item: IDocument) => {
           return <span>{item.modifiedBy}</span>;
         },
-        isPadded: true
+        isPadded: true,
       },
       {
         key: 'column5',
@@ -152,16 +161,16 @@ export class DetailsListDocumentsExample extends React.Component<{}, IDetailsLis
         onColumnClick: this._onColumnClick,
         onRender: (item: IDocument) => {
           return <span>{item.fileSize}</span>;
-        }
-      }
+        },
+      },
     ];
 
     this._selection = new Selection({
       onSelectionChanged: () => {
         this.setState({
-          selectionDetails: this._getSelectionDetails()
+          selectionDetails: this._getSelectionDetails(),
         });
-      }
+      },
     });
 
     this.state = {
@@ -169,12 +178,13 @@ export class DetailsListDocumentsExample extends React.Component<{}, IDetailsLis
       columns: columns,
       selectionDetails: this._getSelectionDetails(),
       isModalSelection: false,
-      isCompactMode: false
+      isCompactMode: false,
+      announcedMessage: undefined,
     };
   }
 
   public render() {
-    const { columns, isCompactMode, items, selectionDetails, isModalSelection } = this.state;
+    const { columns, isCompactMode, items, selectionDetails, isModalSelection, announcedMessage } = this.state;
 
     return (
       <Fabric>
@@ -196,25 +206,44 @@ export class DetailsListDocumentsExample extends React.Component<{}, IDetailsLis
             styles={controlStyles}
           />
           <TextField label="Filter by name:" onChange={this._onChangeText} styles={controlStyles} />
+          <Announced message={`Number of items after filter applied: ${items.length}.`} />
         </div>
         <div className={classNames.selectionDetails}>{selectionDetails}</div>
-        <MarqueeSelection selection={this._selection}>
+        <Announced message={selectionDetails} />
+        {announcedMessage ? <Announced message={announcedMessage} /> : undefined}
+        {isModalSelection ? (
+          <MarqueeSelection selection={this._selection}>
+            <DetailsList
+              items={items}
+              compact={isCompactMode}
+              columns={columns}
+              selectionMode={SelectionMode.multiple}
+              getKey={this._getKey}
+              setKey="multiple"
+              layoutMode={DetailsListLayoutMode.justified}
+              isHeaderVisible={true}
+              selection={this._selection}
+              selectionPreservedOnEmptyClick={true}
+              onItemInvoked={this._onItemInvoked}
+              enterModalSelectionOnTouch={true}
+              ariaLabelForSelectionColumn="Toggle selection"
+              ariaLabelForSelectAllCheckbox="Toggle selection for all items"
+              checkButtonAriaLabel="Row checkbox"
+            />
+          </MarqueeSelection>
+        ) : (
           <DetailsList
             items={items}
             compact={isCompactMode}
             columns={columns}
-            selectionMode={isModalSelection ? SelectionMode.multiple : SelectionMode.none}
-            setKey="set"
+            selectionMode={SelectionMode.none}
+            getKey={this._getKey}
+            setKey="none"
             layoutMode={DetailsListLayoutMode.justified}
             isHeaderVisible={true}
-            selection={this._selection}
-            selectionPreservedOnEmptyClick={true}
             onItemInvoked={this._onItemInvoked}
-            enterModalSelectionOnTouch={true}
-            ariaLabelForSelectionColumn="Toggle selection"
-            ariaLabelForSelectAllCheckbox="Toggle selection for all items"
           />
-        </MarqueeSelection>
+        )}
       </Fabric>
     );
   }
@@ -223,6 +252,10 @@ export class DetailsListDocumentsExample extends React.Component<{}, IDetailsLis
     if (previousState.isModalSelection !== this.state.isModalSelection && !this.state.isModalSelection) {
       this._selection.setAllSelected(false);
     }
+  }
+
+  private _getKey(item: any, index?: number): string {
+    return item.key;
   }
 
   private _onChangeCompactMode = (ev: React.MouseEvent<HTMLElement>, checked: boolean): void => {
@@ -235,7 +268,7 @@ export class DetailsListDocumentsExample extends React.Component<{}, IDetailsLis
 
   private _onChangeText = (ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, text: string): void => {
     this.setState({
-      items: text ? this._allItems.filter(i => i.name.toLowerCase().indexOf(text) > -1) : this._allItems
+      items: text ? this._allItems.filter(i => i.name.toLowerCase().indexOf(text) > -1) : this._allItems,
     });
   };
 
@@ -264,6 +297,11 @@ export class DetailsListDocumentsExample extends React.Component<{}, IDetailsLis
       if (newCol === currColumn) {
         currColumn.isSortedDescending = !currColumn.isSortedDescending;
         currColumn.isSorted = true;
+        this.setState({
+          announcedMessage: `${currColumn.name} is sorted ${
+            currColumn.isSortedDescending ? 'descending' : 'ascending'
+          }`,
+        });
       } else {
         newCol.isSorted = false;
         newCol.isSortedDescending = true;
@@ -272,7 +310,7 @@ export class DetailsListDocumentsExample extends React.Component<{}, IDetailsLis
     const newItems = _copyAndSort(items, currColumn.fieldName!, currColumn.isSortedDescending);
     this.setState({
       columns: newColumns,
-      items: newItems
+      items: newItems,
     });
   };
 }
@@ -296,6 +334,7 @@ function _generateDocuments() {
       .map((name: string) => name.charAt(0).toUpperCase() + name.slice(1))
       .join(' ');
     items.push({
+      key: i.toString(),
       name: fileName,
       value: fileName,
       iconName: randomFileType.url,
@@ -304,7 +343,7 @@ function _generateDocuments() {
       dateModified: randomDate.dateFormatted,
       dateModifiedValue: randomDate.value,
       fileSize: randomFileSize.value,
-      fileSizeRaw: randomFileSize.rawSize
+      fileSizeRaw: randomFileSize.rawSize,
     });
   }
   return items;
@@ -314,33 +353,47 @@ function _randomDate(start: Date, end: Date): { value: number; dateFormatted: st
   const date: Date = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
   return {
     value: date.valueOf(),
-    dateFormatted: date.toLocaleDateString()
+    dateFormatted: date.toLocaleDateString(),
   };
 }
 
 const FILE_ICONS: { name: string }[] = [
   { name: 'accdb' },
+  { name: 'audio' },
+  { name: 'code' },
   { name: 'csv' },
   { name: 'docx' },
   { name: 'dotx' },
+  { name: 'mpp' },
   { name: 'mpt' },
-  { name: 'odt' },
+  { name: 'model' },
   { name: 'one' },
-  { name: 'onepkg' },
   { name: 'onetoc' },
+  { name: 'potx' },
+  { name: 'ppsx' },
+  { name: 'pdf' },
+  { name: 'photo' },
   { name: 'pptx' },
+  { name: 'presentation' },
+  { name: 'potx' },
   { name: 'pub' },
+  { name: 'rtf' },
+  { name: 'spreadsheet' },
+  { name: 'txt' },
+  { name: 'vector' },
   { name: 'vsdx' },
-  { name: 'xls' },
+  { name: 'vssx' },
+  { name: 'vstx' },
   { name: 'xlsx' },
-  { name: 'xsn' }
+  { name: 'xltx' },
+  { name: 'xsn' },
 ];
 
 function _randomFileIcon(): { docType: string; url: string } {
   const docType: string = FILE_ICONS[Math.floor(Math.random() * FILE_ICONS.length)].name;
   return {
     docType,
-    url: `https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/svg/${docType}_16x1.svg`
+    url: `https://static2.sharepointonline.com/files/fabric/assets/item-types/16/${docType}.svg`,
   };
 }
 
@@ -348,7 +401,7 @@ function _randomFileSize(): { value: string; rawSize: number } {
   const fileSize: number = Math.floor(Math.random() * 100) + 30;
   return {
     value: `${fileSize} KB`,
-    rawSize: fileSize
+    rawSize: fileSize,
   };
 }
 

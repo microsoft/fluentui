@@ -10,8 +10,9 @@ export {
   InjectionMode,
   Stylesheet,
   concatStyleSets,
+  concatStyleSetsWithProps,
   fontFace,
   keyframes,
   mergeStyleSets,
-  mergeStyles
+  mergeStyles,
 } from '@uifabric/merge-styles';

@@ -1,3 +1,105 @@
+<div
+  id="metadata"
+  title="Home - Fluent UI"
+  description="The official front-end framework for building experiences that fit seamlessly into Microsoft 365."
+  style="visibility:hidden"
+></div>
+<style>
+  body,
+  html {
+    margin: 0;
+    padding: 0;
+  }
+  .loading {
+    align-items: center;
+    background-color: #212121;
+    border-top: 50px solid #000;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+  }
+</style>
+
+<script type="text/javascript">
+  var appInsights =
+    window.appInsights ||
+    (function(e) {
+      function n(e) {
+        t[e] = function() {
+          var n = arguments;
+          t.queue.push(function() {
+            t[e].apply(t, n);
+          });
+        };
+      }
+      var t = { config: e };
+      t.initialize = !0;
+      var i = document,
+        a = window;
+      setTimeout(function() {
+        var n = i.createElement('script');
+        (n.src = e.url || 'https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js'),
+          i.getElementsByTagName('script')[0].parentNode.appendChild(n);
+      });
+      try {
+        t.cookie = i.cookie;
+      } catch (e) {}
+      (t.queue = []), (t.version = 2);
+      for (
+        var r = ['Event', 'PageView', 'Exception', 'Trace', 'DependencyData', 'Metric', 'PageViewPerformance'];
+        r.length;
+
+      )
+        n('track' + r.pop());
+      n('startTrackPage'), n('stopTrackPage');
+      var s = 'Track' + r[0];
+      if (
+        (n('start' + s),
+        n('stop' + s),
+        n('addTelemetryInitializer'),
+        n('setAuthenticatedUserContext'),
+        n('clearAuthenticatedUserContext'),
+        n('flush'),
+        (t.SeverityLevel = {
+          Verbose: 0,
+          Information: 1,
+          Warning: 2,
+          Error: 3,
+          Critical: 4,
+        }),
+        !(
+          !0 === e.disableExceptionTracking ||
+          (e.extensionConfig &&
+            e.extensionConfig.ApplicationInsightsAnalytics &&
+            !0 === e.extensionConfig.ApplicationInsightsAnalytics.disableExceptionTracking)
+        ))
+      ) {
+        n('_' + (r = 'onerror'));
+        var o = a[r];
+        (a[r] = function(e, n, i, a, s) {
+          var c = o && o(e, n, i, a, s);
+          return (
+            !0 !== c &&
+              t['_' + r]({
+                message: e,
+                url: n,
+                lineNumber: i,
+                columnNumber: a,
+                error: s,
+              }),
+            c
+          );
+        }),
+          (e.autoExceptionInstrumented = !0);
+      }
+      return t;
+    })({
+      instrumentationKey: '8a822908-f374-4206-900d-07ef9d2d4e9f',
+    });
+  (window.appInsights = appInsights),
+    appInsights.queue && 0 === appInsights.queue.length && appInsights.trackPageView({});
+</script>
+
 <div id="main">
   <div class="loading">
     <img
@@ -11,54 +113,51 @@
 </div>
 
 <script type="text/javascript">
+  // @ts-check
+  var isProduction = location.hostname === 'developer.microsoft.com';
+  var isDev = getParameterByName('isDev') === '1';
   var devhost = getParameterByName('devhost');
   var entryPointFilename = 'fabric-sitev5';
   var appPath = '';
   var Flight = {};
 
-  // Update as new fabric versions and its documentation are supported
-  var fabricVersions = [5, 6];
-
-  // Get fabricVer from URL param, session value, or latest version in array
-  var fabricVersion = Number(
-    getParameterByName('fabricVer') || window.sessionStorage.getItem('fabricVer') || fabricVersions[fabricVersions.length - 1]
-  );
-
-  // Set session value if it's in array
-  if (fabricVersions.indexOf(fabricVersion) > -1) {
-    window.sessionStorage.setItem('fabricVer', fabricVersion);
-  }
-
   if (devhost !== null) {
     if (devhost === '') {
-      var loc = window.location;
-      devhost = loc.protocol + '//' + loc.host + loc.pathname.replace('homepage.htm', '');
+      devhost = location.origin + location.pathname.replace('homepage.htm', '');
     }
     appPath = devhost;
     Flight.baseCDNUrl = devhost;
-    loadAppScripts(appPath);
+    loadAppScripts();
   } else {
-    var prefixVer =
-      fabricVersions.indexOf(fabricVersion) > -1 && fabricVersion !== fabricVersions.slice(-1)[0] ? 'v' + fabricVersion + '-' : '';
+    var fabricVersions = [5, 6, 7];
 
-    var configPrefix = 'fabric-website-' + prefixVer + 'df';
+    var fabricVersion = Number(
+      getParameterByName('fabricVer') ||
+        window.sessionStorage.getItem('fabricVer') ||
+        fabricVersions[fabricVersions.length - 1]
+    );
 
-    if (location.hostname === 'developer.microsoft.com') {
-      configPrefix = 'fabric-website-' + prefixVer + 'prod';
+    if (fabricVersions.indexOf(fabricVersion) > -1) {
+      window.sessionStorage.setItem('fabricVer', fabricVersion);
     }
+
+    var prefixVer =
+      fabricVersions.indexOf(fabricVersion) > -1 && fabricVersion !== fabricVersions.slice(-1)[0]
+        ? 'v' + fabricVersion + '-'
+        : '';
+
+    var configPrefix = 'fabric-website-' + prefixVer + (isProduction ? 'prod' : 'df');
 
     var configScript = ['https://fabricweb.azureedge.net/fabric-website/manifests/' + configPrefix + '.js'];
 
     loadScripts(configScript, function() {
       if (window.Flight) {
-        appPath += window.Flight.baseCDNUrl;
-
-        loadAppScripts(appPath);
+        appPath = window.Flight.baseCDNUrl;
+        loadAppScripts();
       }
     });
   }
 
-  // Simple synchronous script loader with callback. Adapted from https://stackoverflow.com/questions/1866717
   function loadScripts(array, callback) {
     var loader = function(src, handler, failHandler) {
       var script = document.createElement('script');
@@ -81,7 +180,8 @@
     (function run() {
       if (array.length != 0) {
         const scriptName = array.shift();
-        loader(scriptName, run, () => {
+        loader(scriptName, run, function() {
+          window.MonacoConfig.useMinified = false;
           loader(scriptName.replace('.min.js', '.js'), run);
         });
       } else {
@@ -90,26 +190,19 @@
     })();
   }
 
-  function loadAppScripts(appPath) {
-    var scripts = [appPath + entryPointFilename + '.min.js'];
+  function loadAppScripts() {
+    loadScripts([appPath + entryPointFilename + (isDev ? '.js' : '.min.js')]);
 
-    if (!window.React) {
-      var reactPath = '//cdnjs.cloudflare.com/ajax/libs/react/16.3.2/umd/react';
-      var reactDomPath = '//cdnjs.cloudflare.com/ajax/libs/react-dom/16.3.2/umd/react-dom';
-
-      reactPath = reactPath + '.production.min.js';
-      reactDomPath = reactDomPath + '.production.min.js';
-
-      scripts.unshift(reactDomPath);
-      scripts.unshift(reactPath);
-    }
-
-    loadScripts(scripts);
+    window.MonacoConfig = {
+      baseUrl: appPath,
+      useMinified: !isDev,
+      crossDomain: true,
+    };
   }
 
   function getParameterByName(name, url) {
     if (!url) {
-      url = window.location.href;
+      url = location.href;
     }
     name = name.replace(/[\[\]]/g, '\\$&');
     var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),

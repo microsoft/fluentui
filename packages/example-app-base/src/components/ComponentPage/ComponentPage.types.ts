@@ -16,28 +16,21 @@ export interface IComponentPageProps {
   componentName: string;
   /** Component examples **/
   exampleCards?: JSX.Element;
-  /** @deprecated Use `exampleCards` */
-  implementationExampleCards?: JSX.Element;
   /** Component properties table(s) **/
   propertiesTables?: JSX.Element;
   bestPractices?: JSX.Element;
   dos?: JSX.Element;
   donts?: JSX.Element;
   overview?: JSX.Element;
+  accessibility?: JSX.Element;
   /**
    * Related link
-   * @deprecated No longer shown
    */
   related?: JSX.Element;
   isHeaderVisible?: boolean;
   areBadgesVisible?: boolean;
   /** className of the component being documented */
   className?: string;
-  /**
-   * Status of the component; e.g. keyboard accessible
-   * @deprecated Still rendered for now but will be removed in >= 7
-   */
-  componentStatus?: JSX.Element;
   /** Pass through other sections for ComponentPage */
   otherSections?: IComponentPageSection[];
   /** Includes the feedback section **/
@@ -65,7 +58,7 @@ export interface IComponentPageProps {
 
   /**
    * Link to the BestPractices markdown file on GitHub.
-   * Enables the 'Edit Best Practices' button.
+   * Enables the 'Edit Best practices' button.
    * Overrides URL from componentUrl.
    */
   editBestPracticesUrl?: string;
@@ -103,7 +96,7 @@ export interface IComponentPageProps {
   jsonDocs?: IPageJson;
 }
 
-export type IComponentPageStyleProps = Pick<IComponentPageProps, 'theme' | 'componentStatus'>;
+export type IComponentPageStyleProps = Pick<IComponentPageProps, 'theme'>;
 
 export interface IComponentPageStyles {
   root: IStyle;
@@ -119,18 +112,16 @@ export interface IComponentPageStyles {
   overviewText: IStyle;
   overviewHeading: IStyle;
   /**
-   * Used on the actual (rarely shown) "Best Practices" part of the best practices/dos/don'ts section.
+   * Used on the actual (rarely shown) "Best practices" part of the best practices/dos/don'ts section.
    * For the wrapper of both this section and the dos/don'ts, use `bestPracticesSection`.
    */
   usageSection: IStyle;
-  /** Used on the actual (rarely shown) "Best Practices" heading. */
+  /** Used on the actual (rarely shown) "Best practices" heading. */
   usageHeading: IStyle;
   variantsSection: IStyle;
   variantsTitle: IStyle;
   variantsList: IStyle;
   implementationSection: IStyle;
-  /** @deprecated */
-  implementationExamplesSection: IStyle;
   feedbackSection: IStyle;
   /** Wrapper for best practices, dos, and don'ts */
   bestPracticesSection: IStyle;
@@ -143,5 +134,4 @@ export interface IComponentPageStyles {
   dosLine: IStyle;
   dontsSection: IStyle;
   dontsLine: IStyle;
-  statusSection: IStyle;
 }

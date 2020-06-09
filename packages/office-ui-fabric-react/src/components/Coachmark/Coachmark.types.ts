@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { IStyle, ITheme } from '../../Styling';
 import { IPositioningContainerProps } from './PositioningContainer/PositioningContainer.types';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
@@ -175,6 +176,13 @@ export interface ICoachmarkProps extends React.ClassAttributes<CoachmarkBase> {
    * @defaultvalue false
    */
   preventDismissOnLostFocus?: boolean;
+
+  /**
+   * If true then the Coachmark beak (arrow pointing towards target) will always be visible as long as
+   * Coachmark is visible
+   * @defaultvalue false
+   */
+  persistentBeak?: boolean;
 
   /**
    * If true then focus will not be set to the Coachmark when it mounts. Useful in cases where focus on coachmark

@@ -40,4 +40,9 @@ describe('extractAnchorLink', () => {
     // unexpected but just in case?
     expect(extractAnchorLink('http://whatever#/components/checkbox#Overview#wat')).toBe('');
   });
+
+  it('does not include query string in returned value', () => {
+    expect(extractAnchorLink('http://whatever#Overview?min=1')).toBe('');
+    expect(extractAnchorLink('http://whatever#/components/checkbox#Overview?min=1')).toBe('Overview');
+  });
 });

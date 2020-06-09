@@ -5,7 +5,7 @@ import * as styles from '../Page.module.scss';
 import { EditSection } from '../../EditSection/index';
 import { Markdown } from '../../Markdown/index';
 
-export const OtherPageSection: React.StatelessComponent<IPageSectionProps> = props => {
+export const OtherPageSection: React.FunctionComponent<IPageSectionProps> = props => {
   const {
     // prettier-ignore
     className,
@@ -15,7 +15,7 @@ export const OtherPageSection: React.StatelessComponent<IPageSectionProps> = pro
     readableSectionName = sectionName,
     style,
     id,
-    title = 'Page'
+    title = 'Page',
   } = props;
 
   const editSection = editUrl && (
@@ -26,7 +26,8 @@ export const OtherPageSection: React.StatelessComponent<IPageSectionProps> = pro
     <div className={className} style={style}>
       {readableSectionName ? (
         <div className={styles.sectionHeader}>
-          <h2 className={styles.subHeading} id={id}>
+          {/* This heading must be programmatically focusable for simulating jumping to an anchor */}
+          <h2 className={styles.subHeading} id={id} tabIndex={-1}>
             {readableSectionName}
           </h2>
           {editSection}

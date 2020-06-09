@@ -1,26 +1,29 @@
 {
   "name": "@uifabric/pr-deploy-site",
-  "version": "0.0.1",
+  "version": "7.0.45",
   "description": "A site to be deployed as a static site to view what is built during PR",
   "main": "index.js",
+  "private": true,
   "scripts": {
-    "build": "npx just-scripts copy",
-    "just": "npx just-scripts"
+    "build": "just-scripts build",
+    "bundle": "just-scripts bundle",
+    "test": "just-scripts test",
+    "just": "just-scripts"
   },
   "license": "MIT",
   "dependencies": {
-    "@uifabric/charting": "^0.30.0",
-    "@uifabric/date-time": "6.2.0",
-    "@uifabric/experiments": "^6.78.5",
-    "@uifabric/fabric-website-resources": "^6.18.3",
-    "@uifabric/fabric-website": "^6.18.10",
-    "@uifabric/foundation-scenarios": "^0.1.0",
-    "perf-test": "^6.0.0",
-    "test-bundles": "^6.0.0",
-    "theming-designer": "^1.0.0",
-    "todo-app": "^6.0.0"
+    "@fluentui/docs": "^0.49.0",
+    "@uifabric/charting": "^2.2.30",
+    "@uifabric/date-time": "^7.8.96",
+    "@uifabric/experiments": "^7.26.0",
+    "@uifabric/fabric-website": "^7.10.66",
+    "@uifabric/fabric-website-resources": "^7.6.77",
+    "office-ui-fabric-react": "^7.118.0",
+    "perf-test": "^7.0.0",
+    "theming-designer": "^7.0.0",
+    "todo-app": "^7.0.0"
   },
   "devDependencies": {
-    "@uifabric/build": "*"
+    "@uifabric/build": "^7.0.0"
   }
 }

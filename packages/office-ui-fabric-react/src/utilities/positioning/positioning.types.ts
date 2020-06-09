@@ -1,19 +1,18 @@
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { IPoint } from './positioning.types';
 import { IRectangle } from '../../Utilities';
 
 export enum RectangleEdge {
   top = 1,
   bottom = -1,
   left = 2,
-  right = -2
+  right = -2,
 }
 
 export enum Position {
   top = 0,
   bottom = 1,
   start = 2,
-  end = 3
+  end = 3,
 }
 export interface IPositionProps {
   target?: Element | MouseEvent | IPoint;
@@ -44,7 +43,7 @@ export interface IPositionProps {
 
   /**
    * If true the positioning logic will prefer flipping edges over nudging the rectangle to fit within bounds,
-   * thus making sure the the element align perfectly with target.
+   * thus making sure the element align perfectly with target.
    */
   alignTargetEdge?: boolean;
 }
@@ -101,10 +100,17 @@ export interface IPosition {
   [key: string]: number | undefined;
 }
 
-export interface IPoint {
-  x: number;
-  y: number;
+// tslint:disable-next-line:interface-name
+export interface Point {
+  left?: number;
+  top?: number;
+  /** @deprecated Use `left` instead */
+  x?: number;
+  /** @deprecated Use `top` instead */
+  y?: number;
 }
+
+export interface IPoint extends Point {}
 
 export interface IPositionDirectionalHintData {
   targetEdge: RectangleEdge;

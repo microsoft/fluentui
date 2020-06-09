@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
     "outDir": "lib",
     "target": "es5",
     "module": "commonjs",
@@ -15,10 +14,8 @@
     "noImplicitThis": true,
     "skipLibCheck": true,
     "lib": ["es5", "dom"],
-    "types": ["node", "webpack-env"],
-    "paths": {
-      "office-ui-fabric-react/lib/*": ["node_modules/office-ui-fabric-react/lib/*"]
-    }
+    "typeRoots": ["../../node_modules/@types", "../../typings"],
+    "types": ["webpack-env", "custom-global"]
   },
   "include": ["src"]
 }

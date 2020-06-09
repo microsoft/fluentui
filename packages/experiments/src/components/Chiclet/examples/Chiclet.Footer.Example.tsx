@@ -1,15 +1,12 @@
 import * as React from 'react';
 import { Chiclet, ChicletSize } from '@uifabric/experiments';
-import { IButtonProps, IconButton, Stack } from 'office-ui-fabric-react';
-import * as exampleStyles from './Chiclet.Basic.Example.scss';
+import { IButtonProps, IconButton } from 'office-ui-fabric-react/lib/Button';
+import { Text } from 'office-ui-fabric-react/lib/Text';
+import { mergeStyles, FontWeights } from 'office-ui-fabric-react/lib/Styling';
 
-const TEST_URL = 'http://fabricweb.z5.web.core.windows.net/pr-deploy-site/refs/heads/master/chiclet-test.html';
+const SAMPLE_URL = 'https://contoso.sharepoint.com';
 
-export class FooterComponent extends React.Component<IFooterComponent, {}> {
-  constructor(props: IFooterComponent) {
-    super(props);
-  }
-
+class FooterComponent extends React.Component<IFooterComponent, {}> {
   public render(): JSX.Element {
     const { buttonProps, activities } = this.props;
 
@@ -17,35 +14,56 @@ export class FooterComponent extends React.Component<IFooterComponent, {}> {
   }
 }
 
-export interface IChicletFooterExampleState {
-  textFieldValue: string;
-}
+const footerStyle = mergeStyles({
+  display: 'flex',
+  position: 'absolute',
+  alignItems: 'flex-end',
+  justifyContent: 'flex-start',
+  height: 36,
+  width: '100%',
+  bottom: 0,
+});
 
-export class ChicletFooterExample extends React.Component<{}, IChicletFooterExampleState> {
-  constructor(props: {}) {
-    super(props);
+const activitiesStyle = mergeStyles({
+  paddingLeft: 16,
+  paddingBottom: 8,
+  fontWeight: FontWeights.semibold,
+});
 
-    this.state = {
-      textFieldValue: 'http://localhost:4322'
-    };
-  }
+const actionsStyle = mergeStyles({
+  display: 'flex',
+  fontSize: 16,
+  marginLeft: 'auto',
+});
 
-  public render(): JSX.Element {
-    const footerButtonProps: IButtonProps[] = [
-      { iconProps: { iconName: 'More' } },
-      { iconProps: { iconName: 'Save' } },
-      { iconProps: { iconName: 'Share' } }
-    ];
-    const footer = <FooterComponent buttonProps={footerButtonProps} activities="10 Comments  16 Shares  87 Views" />;
+const actionStyle = mergeStyles({
+  cursor: 'pointer',
+  width: 32,
+  height: 36,
+  backgroundColor: 'white',
+  color: '#0078d7',
+});
 
-    return (
-      <Stack tokens={{ childrenGap: 16 }}>
-        <Chiclet url={TEST_URL} size={ChicletSize.medium} footer={footer} />
-      </Stack>
-    );
-  }
-}
+export const ChicletFooterExample: React.FunctionComponent<{}> = () => {
+  const footerButtonProps: IButtonProps[] = [
+    { iconProps: { iconName: 'More' } },
+    { iconProps: { iconName: 'Save' } },
+    { iconProps: { iconName: 'Share' } },
+  ];
+  const footer = <FooterComponent buttonProps={footerButtonProps} activities="10 Comments  16 Shares  87 Views" />;
 
+  return (
+    <Chiclet
+      url={SAMPLE_URL}
+      image="https://static2.sharepointonline.com/files/fabric/assets/item-types/96/docx.svg"
+      title="Quarterly Results.docx"
+      size={ChicletSize.medium}
+      footer={footer}
+    />
+  );
+};
+
+// tslint:disable-next-line:deprecation
 export interface IFooterComponent extends React.Props<FooterComponent> {
   buttonProps: IButtonProps[];
   activities: string;
@@ -53,13 +71,15 @@ export interface IFooterComponent extends React.Props<FooterComponent> {
 
 function _renderFooter(buttonProps: IButtonProps[], activities: string): React.ReactElement<HTMLDivElement> {
   return (
-    <div className={exampleStyles.footer}>
-      <div className={exampleStyles.activities}>{activities ? activities : null}</div>
-      <div className={exampleStyles.actions}>
+    <div className={footerStyle}>
+      <Text variant="small" className={activitiesStyle}>
+        {activities}
+      </Text>
+      <div className={actionsStyle}>
         {buttonProps &&
           buttonProps.map((buttonProp: IButtonProps, index: number) => {
             return (
-              <div className={exampleStyles.action} key={index}>
+              <div className={actionStyle} key={index}>
                 <IconButton {...buttonProp} />
               </div>
             );

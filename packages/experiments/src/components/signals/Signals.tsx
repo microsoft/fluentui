@@ -18,7 +18,13 @@ export const BlockedSignal: Signal = (props: ISignalProps): JSX.Element => {
 };
 
 export const MissingMetadataSignal: Signal = (props: ISignalProps): JSX.Element => {
-  return <IconSignal {...props} signalClass={SignalsStyles.missingMetadata} iconName={getRTL() ? 'TagUnknown12Mirror' : 'TagUnknown12'} />;
+  return (
+    <IconSignal
+      {...props}
+      signalClass={SignalsStyles.missingMetadata}
+      iconName={getRTL() ? 'TagUnknown12Mirror' : 'TagUnknown12'}
+    />
+  );
 };
 
 export const WarningSignal: Signal = (props: ISignalProps): JSX.Element => {
@@ -43,6 +49,10 @@ export const RecordSignal: Signal = (props: ISignalProps): JSX.Element => {
 
 export const NeedsRepublishingSignal: Signal = (props: ISignalProps): JSX.Element => {
   return <IconSignal {...props} signalClass={SignalsStyles.needsRepublishing} iconName="readingmode" />;
+};
+
+export const ItemScheduledSignal: Signal = (props: ISignalProps): JSX.Element => {
+  return <IconSignal {...props} signalClass={SignalsStyles.itemScheduled} iconName="datetime2" />;
 };
 
 /**
@@ -108,6 +118,18 @@ export const SharedSignal: Signal = (props: ISignalProps): JSX.Element => {
   return <IconSignal {...props} signalClass={SignalsStyles.shared} iconName="people" />;
 };
 
+export const DesktopSignal: Signal = (props: ISignalProps): JSX.Element => {
+  return <IconSignal {...props} signalClass={SignalsStyles.folder} iconName="desktopfolder" />;
+};
+
+export const DocumentsSignal: Signal = (props: ISignalProps): JSX.Element => {
+  return <IconSignal {...props} signalClass={SignalsStyles.folder} iconName="documentsfolder" />;
+};
+
+export const PicturesSignal: Signal = (props: ISignalProps): JSX.Element => {
+  return <IconSignal {...props} signalClass={SignalsStyles.folder} iconName="picturesfolder" />;
+};
+
 export const MalwareDetectedSignal: Signal = (props: ISignalProps): JSX.Element => {
   return <IconSignal {...props} signalClass={SignalsStyles.malwareDetected} iconName="BlockedSiteSolid12" />;
 };
@@ -144,5 +166,7 @@ type IIconSignalProps = ISignalProps &
 function IconSignal(props: IIconSignalProps): JSX.Element {
   const { ariaLabel, className, signalClass, ...spanProps } = props;
 
-  return <Icon {...spanProps} ariaLabel={props.ariaLabel} className={css(SignalStyles.signal, signalClass, className)} />;
+  return (
+    <Icon {...spanProps} ariaLabel={props.ariaLabel} className={css(SignalStyles.signal, signalClass, className)} />
+  );
 }

@@ -3,6 +3,7 @@ import * as React from 'react';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import { IStyle, ITheme } from '../../Styling';
+import { ICalloutProps } from '../../Callout';
 
 /**
  * Interface containing props common for all types of cards.
@@ -76,6 +77,11 @@ export interface IBaseCardProps<TComponent, TStyles, TStyleProps> extends React.
    * Trap focus or not
    */
   trapFocus?: boolean;
+
+  /**
+   * Custom overriding props to Callout
+   */
+  calloutProps?: ICalloutProps;
 }
 
 /**

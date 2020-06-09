@@ -10,6 +10,6 @@ const TimeConstants = {
   MinutesInOneDay: 1440,
   MinutesInOneHour: 60,
   DaysInOneWeek: 7,
-  MonthInOneYear: 12
+  MonthInOneYear: 12,
 };
 export default TimeConstants;

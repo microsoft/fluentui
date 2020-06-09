@@ -1,21 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Button view renders a default Button with content correctly 1`] = `
+exports[`Button renders a default Button with content correctly 1`] = `
 <button
   className=
-
+      ms-Button
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
-        background-color: #f4f4f4;
-        border-color: transparent;
-        border-radius: 0px;
+        align-items: center;
+        background-color: #ffffff;
+        border-color: #8a8886;
+        border-radius: 2px;
         border-style: solid;
         border-width: 1px;
         box-sizing: border-box;
-        color: #333333;
+        color: #323130;
         cursor: pointer;
-        display: inline-block;
+        display: inline-flex;
+        flex-direction: row;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
         font-weight: 600;
@@ -29,8 +31,8 @@ exports[`Button view renders a default Button with content correctly 1`] = `
         outline: transparent;
         overflow: hidden;
         padding-bottom: 0px;
-        padding-left: 0px;
-        padding-right: 0px;
+        padding-left: 20px;
+        padding-right: 20px;
         padding-top: 0px;
         position: relative;
         text-align: center;
@@ -43,381 +45,79 @@ exports[`Button view renders a default Button with content correctly 1`] = `
       }
       .ms-Fabric--isFocusVisible &:focus:after {
         border: 1px solid #ffffff;
-        bottom: 1px;
+        bottom: 2px;
         content: "";
-        left: 1px;
-        outline: 1px solid #666666;
+        left: 2px;
+        outline: 1px solid #605e5c;
         position: absolute;
-        right: 1px;
-        top: 1px;
+        right: 2px;
+        top: 2px;
         z-index: 1;
       }
-      &:hover {
-        background-color: #eaeaea;
-        border-color: transparent;
-        color: #212121;
+      & > * {
+        margin-left: 4px 4px;
+        text-overflow: ellipsis;
       }
-      @media screen and (-ms-high-contrast: active){&:hover {
-        border-color: Highlight;
-        color: Highlight;
-      }
-      &:active {
-        background-color: #eaeaea;
-        border-color: transparent;
-        color: #212121;
-      }
-      @media screen and (-ms-high-contrast: active){&:active {
-        border-color: Highlight;
-        color: Highlight;
-      }
-      &:hover .ms-Icon-46 {
-        color: #212121;
-      }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Icon-46 {
-        color: Highlight;
-      }
-      &:active .ms-Icon-46 {
-        color: #212121;
-      }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Icon-46 {
-        color: Highlight;
-      }
-  onClick={[Function]}
-  role="button"
-  type="button"
->
-  <span
-    className=
-        ms-Stack
-        {
-          align-items: center;
-          box-sizing: border-box;
-          display: flex;
-          flex-direction: row;
-          flex-wrap: nowrap;
-          height: 100%;
-          justify-content: center;
-          padding-bottom: 0px;
-          padding-left: 16px;
-          padding-right: 16px;
-          padding-top: 0px;
-          width: auto;
-        }
-        & > * {
-          text-overflow: ellipsis;
-        }
-        & > *:not(:first-child) {
-          margin-left: 8px;
-        }
-        & > *:not(.ms-StackItem) {
-          flex-shrink: 1;
-        }
-  >
-    <span
-      className=
-
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            color: inherit;
-            display: inline;
-            font-family: inherit;
-            font-size: 14px;
-            font-weight: 600;
-            moz-osx-font-smoothing: grayscale;
-            overflow: visible;
-            webkit-font-smoothing: antialiased;
-          }
-    >
-      Default button
-    </span>
-  </span>
-</button>
-`;
-
-exports[`Button view renders a disabled primary Button with content correctly 1`] = `
-<button
-  aria-disabled={true}
-  className=
-
-      {
-        -moz-osx-font-smoothing: grayscale;
-        -webkit-font-smoothing: antialiased;
-        background-color: #f4f4f4;
-        border-color: transparent;
-        border-radius: 0px;
-        border-style: solid;
-        border-width: 1px;
-        box-sizing: border-box;
-        color: #a6a6a6;
-        cursor: default;
-        display: inline-block;
-        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-        font-size: 14px;
-        font-weight: 600;
-        justify-content: center;
-        margin-bottom: 0px;
-        margin-left: 0px;
-        margin-right: 0px;
-        margin-top: 0px;
-        min-height: 32px;
-        min-width: 100px;
-        outline: transparent;
-        overflow: hidden;
-        padding-bottom: 0px;
-        padding-left: 0px;
-        padding-right: 0px;
-        padding-top: 0px;
-        position: relative;
-        text-align: center;
-        text-decoration: none;
-        user-select: none;
-        vertical-align: baseline;
-      }
-      &::-moz-focus-inner {
-        border: 0;
-      }
-      .ms-Fabric--isFocusVisible &:focus:after {
-        border: 1px solid #ffffff;
-        bottom: 1px;
-        content: "";
-        left: 1px;
-        outline: 1px solid #666666;
-        position: absolute;
-        right: 1px;
-        top: 1px;
-        z-index: 1;
+      & > *:not(:first-child) {
+        margin-left: 8px;
       }
       @media screen and (-ms-high-contrast: active){& {
-        -ms-high-contrast-adjust: none;
-        background-color: Window;
-        border-color: GrayText;
-        color: GrayText;
-      }
-      &:hover {
-        background-color: #f4f4f4;
-        border-color: transparent;
-        color: #a6a6a6;
-      }
-      @media screen and (-ms-high-contrast: active){&:hover {
-        background-color: Window;
-        border-color: GrayText;
-        color: GrayText;
-      }
-      &:active {
-        background-color: #f4f4f4;
-        border-color: transparent;
-        color: #a6a6a6;
-      }
-      @media screen and (-ms-high-contrast: active){&:active {
-        background-color: Window;
-        border-color: GrayText;
-        color: GrayText;
-      }
-      &:hover .ms-Icon-56 {
-        color: #a6a6a6;
-      }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Icon-56 {
-        color: GrayText;
-      }
-      &:active .ms-Icon-56 {
-        color: #a6a6a6;
-      }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Icon-56 {
-        color: GrayText;
-      }
-  disabled={true}
-  onClick={[Function]}
-  role="button"
-  type="button"
->
-  <span
-    className=
-        ms-Stack
-        {
-          align-items: center;
-          box-sizing: border-box;
-          display: flex;
-          flex-direction: row;
-          flex-wrap: nowrap;
-          height: 100%;
-          justify-content: center;
-          padding-bottom: 0px;
-          padding-left: 16px;
-          padding-right: 16px;
-          padding-top: 0px;
-          width: auto;
-        }
-        & > * {
-          text-overflow: ellipsis;
-        }
-        & > *:not(:first-child) {
-          margin-left: 8px;
-        }
-        & > *:not(.ms-StackItem) {
-          flex-shrink: 1;
-        }
-  >
-    <span
-      className=
-
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            color: inherit;
-            display: inline;
-            font-family: inherit;
-            font-size: 14px;
-            font-weight: 600;
-            moz-osx-font-smoothing: grayscale;
-            overflow: visible;
-            webkit-font-smoothing: antialiased;
-          }
-    >
-      Disabled primary button
-    </span>
-  </span>
-</button>
-`;
-
-exports[`Button view renders a primary Button with content correctly 1`] = `
-<button
-  className=
-
-      {
-        -moz-osx-font-smoothing: grayscale;
-        -webkit-font-smoothing: antialiased;
-        background-color: #0078d4;
-        border-color: transparent;
-        border-radius: 0px;
-        border-style: solid;
         border-width: 1px;
-        box-sizing: border-box;
-        color: #ffffff;
-        cursor: pointer;
-        display: inline-block;
-        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-        font-size: 14px;
-        font-weight: 600;
-        justify-content: center;
-        margin-bottom: 0px;
-        margin-left: 0px;
-        margin-right: 0px;
-        margin-top: 0px;
-        min-height: 32px;
-        min-width: 100px;
-        outline: transparent;
-        overflow: hidden;
-        padding-bottom: 0px;
-        padding-left: 0px;
-        padding-right: 0px;
-        padding-top: 0px;
-        position: relative;
-        text-align: center;
-        text-decoration: none;
-        user-select: none;
-        vertical-align: baseline;
-      }
-      &::-moz-focus-inner {
-        border: 0;
-      }
-      .ms-Fabric--isFocusVisible &:focus:after {
-        border: 1px solid #ffffff;
-        bottom: 1px;
-        content: "";
-        left: 1px;
-        outline: 1px solid #666666;
-        position: absolute;
-        right: 1px;
-        top: 1px;
-        z-index: 1;
-      }
-      @media screen and (-ms-high-contrast: active){& {
-        -ms-high-contrast-adjust: none;
-        background-color: WindowText;
-        color: Window;
       }
       &:hover {
-        background-color: #106ebe;
-        border-color: transparent;
-        color: #ffffff;
+        background-color: #f3f2f1;
+        border-color: #8a8886;
+        color: #201f1e;
       }
       @media screen and (-ms-high-contrast: active){&:hover {
-        background-color: Highlight;
         border-color: Highlight;
-        color: Window;
+        color: Highlight;
       }
       &:active {
-        background-color: #005a9e;
-        border-color: transparent;
-        color: #ffffff;
+        background-color: #edebe9;
+        border-color: #8a8886;
+        color: #201f1e;
       }
       @media screen and (-ms-high-contrast: active){&:active {
-        background-color: Highlight;
         border-color: Highlight;
-        color: Window;
+        color: Highlight;
       }
-      &:hover .ms-Icon-54 {
-        color: #ffffff;
+      &:hover .ms-Button-icon {
+        color: #201f1e;
       }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Icon-54 {
-        color: Window;
+      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
+        color: Highlight;
       }
-      &:active .ms-Icon-54 {
-        color: #ffffff;
+      &:active .ms-Button-icon {
+        color: #201f1e;
       }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Icon-54 {
-        color: Window;
+      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
+        color: Highlight;
+      }
+      .ms-Fabric--isFocusVisible &:focus {
+        border-style: solid;
       }
   onClick={[Function]}
   role="button"
+  tabIndex={0}
   type="button"
 >
   <span
     className=
-        ms-Stack
+
         {
-          align-items: center;
-          box-sizing: border-box;
-          display: flex;
-          flex-direction: row;
-          flex-wrap: nowrap;
-          height: 100%;
-          justify-content: center;
-          padding-bottom: 0px;
-          padding-left: 16px;
-          padding-right: 16px;
-          padding-top: 0px;
-          width: auto;
-        }
-        & > * {
-          text-overflow: ellipsis;
-        }
-        & > *:not(:first-child) {
-          margin-left: 8px;
-        }
-        & > *:not(.ms-StackItem) {
-          flex-shrink: 1;
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          display: inline;
+          font-family: inherit;
+          font-size: 14px;
+          font-weight: 600;
+          moz-osx-font-smoothing: grayscale;
+          overflow: visible;
+          webkit-font-smoothing: antialiased;
         }
   >
-    <span
-      className=
-
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            color: inherit;
-            display: inline;
-            font-family: inherit;
-            font-size: 14px;
-            font-weight: 600;
-            moz-osx-font-smoothing: grayscale;
-            overflow: visible;
-            webkit-font-smoothing: antialiased;
-          }
-    >
-      Primary button
-    </span>
+    Default button
   </span>
 </button>
 `;

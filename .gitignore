@@ -1,3 +1,18 @@
+# FluentUI code
+*.source.json
+*.info.json
+*.tsbuildinfo
+packages/fluentui/docs/src/componentInfo
+packages/fluentui/docs/src/componentMenu.json
+packages/fluentui/docs/src/behaviorMenu.json
+packages/fluentui/docs/src/bundleStats.json
+packages/fluentui/docs/src/currentBundleStats.json
+packages/fluentui/docs/src/exampleMenus
+packages/fluentui/docs/src/exampleSources
+packages/fluentui/docs/dist/
+packages/fluentui/ability-attributes/src/schema.ts
+stats/
+
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
@@ -46,7 +61,7 @@ lib-commonjs
 lib-es2015
 coverage
 dist
-test-dependencies
+dist-storybook
 screenshots
 
 *.tar.gz
@@ -110,9 +125,8 @@ gulp-cache
 
 # NPM debug logs
 npm-debug.log.*
-
+shrinkwrap.yaml
 package-lock.json
-yarn.lock
 
 *.swp
 
@@ -123,3 +137,13 @@ yarn.lock
 
 # Fabric website
 apps/fabric-website/flights/
+
+# Rush files - since we are moving away from it
+/common
+rush.json
+
+# package manifest
+/package-manifest.json
+
+# Copied monaco-editor files
+/packages/monaco-editor/esm

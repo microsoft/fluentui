@@ -1,39 +1,45 @@
 import * as React from 'react';
-import { mergeStyleSets, DefaultPalette, IStackTokens, Stack } from 'office-ui-fabric-react';
+import { Stack, IStackStyles, IStackTokens, IStackItemStyles } from 'office-ui-fabric-react/lib/Stack';
+import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
-export class VerticalStackGrowExample extends React.Component<{}, {}> {
-  public render(): JSX.Element {
-    const styles = mergeStyleSets({
-      root: {
-        background: DefaultPalette.themeTertiary,
-        height: 250
-      },
+// Styles definition
+const stackStyles: IStackStyles = {
+  root: {
+    background: DefaultPalette.themeTertiary,
+    height: 250,
+  },
+};
+const stackItemStyles: IStackItemStyles = {
+  root: {
+    alignItems: 'center',
+    background: DefaultPalette.themePrimary,
+    color: DefaultPalette.white,
+    display: 'flex',
+    justifyContent: 'center',
+  },
+};
 
-      item: {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        background: DefaultPalette.themePrimary,
-        color: DefaultPalette.white
-      }
-    });
+// Tokens definition
+const outerStackTokens: IStackTokens = { childrenGap: 5 };
+const innerStackTokens: IStackTokens = {
+  childrenGap: 5,
+  padding: 10,
+};
 
-    const stackTokens: IStackTokens = { childrenGap: 5 };
-
-    return (
-      <Stack tokens={stackTokens}>
-        <Stack tokens={stackTokens} padding={10} className={styles.root}>
-          <Stack.Item grow={3} className={styles.item}>
-            Grow is 3
-          </Stack.Item>
-          <Stack.Item grow={2} className={styles.item}>
-            Grow is 2
-          </Stack.Item>
-          <Stack.Item grow className={styles.item}>
-            Grow is 1
-          </Stack.Item>
-        </Stack>
+export const VerticalStackGrowExample: React.FunctionComponent = () => {
+  return (
+    <Stack tokens={outerStackTokens}>
+      <Stack styles={stackStyles} tokens={innerStackTokens}>
+        <Stack.Item grow={3} styles={stackItemStyles}>
+          Grow is 3
+        </Stack.Item>
+        <Stack.Item grow={2} styles={stackItemStyles}>
+          Grow is 2
+        </Stack.Item>
+        <Stack.Item grow styles={stackItemStyles}>
+          Grow is 1
+        </Stack.Item>
       </Stack>
-    );
-  }
-}
+    </Stack>
+  );
+};

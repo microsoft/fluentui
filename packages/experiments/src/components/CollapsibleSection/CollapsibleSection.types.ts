@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IComponent, IComponentStyles, IHTMLSlot, IStyleableComponentProps } from '../../Foundation';
+import { IComponent, IComponentStyles, IHTMLSlot, ISlottableProps, IStyleableComponentProps } from '../../Foundation';
 import { IBaseProps, IRefObject } from '../../Utilities';
 import { ICollapsibleSectionTitleSlot } from './CollapsibleSectionTitle.types';
 
@@ -10,8 +10,8 @@ export type ICollapsibleSectionComponent = IComponent<
   ICollapsibleSectionViewProps
 >;
 
-// These types are redundant with ICollapsibleSectionComponent but are needed until TS function return widening issue is resolved:
-// https://github.com/Microsoft/TypeScript/issues/241
+// These types are redundant with ICollapsibleSectionComponent but are needed until TS function return widening issue
+// is resolved: https://github.com/Microsoft/TypeScript/issues/241
 // For now, these helper types can be used to provide return type safety when specifying tokens and styles functions.
 export type ICollapsibleSectionTokenReturnType = ReturnType<Extract<ICollapsibleSectionComponent['tokens'], Function>>;
 export type ICollapsibleSectionStylesReturnType = ReturnType<Extract<ICollapsibleSectionComponent['styles'], Function>>;
@@ -25,7 +25,7 @@ export interface ICollapsibleSectionSlots {
 export interface ICollapsibleSection {}
 
 export interface ICollapsibleSectionProps
-  extends ICollapsibleSectionSlots,
+  extends ISlottableProps<ICollapsibleSectionSlots>,
     IStyleableComponentProps<ICollapsibleSectionViewProps, ICollapsibleSectionStyles, ICollapsibleSectionTokens>,
     IBaseProps<ICollapsibleSection> {
   /**

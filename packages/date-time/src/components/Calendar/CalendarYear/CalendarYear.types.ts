@@ -1,5 +1,6 @@
+import * as React from 'react';
 import { IBaseProps, IRefObject, IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
-import { ICalendarIconStrings } from '../Calendar.types';
+import { ICalendarIconStrings, AnimationDirection } from '../Calendar.types';
 import { ITheme } from '@uifabric/styling';
 import { ICalendarPickerStyleProps, ICalendarPickerStyles } from '../CalendarPicker/CalendarPicker.types';
 
@@ -20,6 +21,7 @@ export interface ICalendarYearStrings {
   rangeAriaLabel?: string | ICalendarYearRangeToString;
   prevRangeAriaLabel?: string | ICalendarYearRangeToString;
   nextRangeAriaLabel?: string | ICalendarYearRangeToString;
+  headerAriaLabelFormatString?: string;
 }
 
 export interface ICalendarYearProps extends IBaseProps<ICalendarYear> {
@@ -108,6 +110,11 @@ export interface ICalendarYearProps extends IBaseProps<ICalendarYear> {
    * @param year The year to render
    */
   onRenderYear?: (year: number) => React.ReactNode;
+
+  /**
+   * The cardinal directions for animation to occur during transitions, either horizontal or veritcal
+   */
+  animationDirection?: AnimationDirection;
 }
 
 export interface ICalendarYearStyleProps extends ICalendarPickerStyleProps {}
@@ -124,4 +131,9 @@ export interface ICalendarYearHeaderProps extends ICalendarYearProps, ICalendarY
    * Callback action when the 'next' navigation button is selected
    */
   onSelectNext?: () => void;
+
+  /**
+   * Whether title entering animation should be forwards or backwards
+   */
+  animateBackwards?: boolean;
 }

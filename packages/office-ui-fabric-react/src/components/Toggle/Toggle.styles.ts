@@ -1,14 +1,22 @@
-import { HighContrastSelector, getFocusStyle } from '../../Styling';
+import { HighContrastSelector, getFocusStyle, FontWeights } from '../../Styling';
 import { IToggleStyleProps, IToggleStyles } from './Toggle.types';
+
+const DEFAULT_PILL_WIDTH = 40;
+const DEFAULT_PILL_HEIGHT = 20;
+const DEFAULT_THUMB_SIZE = 12;
 
 export const getStyles = (props: IToggleStyleProps): IToggleStyles => {
   const { theme, className, disabled, checked, inlineLabel, onOffMissing } = props;
-  const { semanticColors } = theme;
+  const { semanticColors, palette } = theme;
+
+  // Tokens
   const pillUncheckedBackground = semanticColors.bodyBackground;
   const pillCheckedBackground = semanticColors.inputBackgroundChecked;
-  const pillCheckedHoveredBackground = semanticColors.inputBackgroundCheckedHovered;
+  // TODO: after updating the semanticColors slots mapping this needs to be semanticColors.inputBackgroundCheckedHovered
+  const pillCheckedHoveredBackground = palette.themeDark;
+  const thumbUncheckedHoveredBackground = palette.neutralDark;
   const pillCheckedDisabledBackground = semanticColors.disabledBodySubtext;
-  const thumbBackground = semanticColors.inputBorderHovered;
+  const thumbBackground = semanticColors.smallInputBorder;
   const thumbCheckedBackground = semanticColors.inputForegroundChecked;
   const thumbDisabledBackground = semanticColors.disabledBodySubtext;
   const thumbCheckedDisabledBackground = semanticColors.disabledBackground;
@@ -25,13 +33,13 @@ export const getStyles = (props: IToggleStyleProps): IToggleStyles => {
       disabled && 'is-disabled',
       theme.fonts.medium,
       {
-        marginBottom: '8px'
+        marginBottom: '8px',
       },
       inlineLabel && {
         display: 'flex',
-        alignItems: 'center'
+        alignItems: 'center',
       },
-      className
+      className,
     ],
 
     label: [
@@ -40,27 +48,28 @@ export const getStyles = (props: IToggleStyleProps): IToggleStyles => {
         color: textDisabledColor,
         selectors: {
           [HighContrastSelector]: {
-            color: 'GrayText'
-          }
-        }
+            color: 'GrayText',
+          },
+        },
       },
       inlineLabel &&
         !onOffMissing && {
-          marginRight: 16
+          marginRight: 16,
         },
       onOffMissing &&
         inlineLabel && {
           order: 1,
-          marginLeft: 16
-        }
+          marginLeft: 16,
+        },
+      inlineLabel && { wordBreak: 'break-all' },
     ],
 
     container: [
       'ms-Toggle-innerContainer',
       {
         display: 'inline-flex',
-        position: 'relative'
-      }
+        position: 'relative',
+      },
     ],
 
     pill: [
@@ -69,43 +78,42 @@ export const getStyles = (props: IToggleStyleProps): IToggleStyles => {
       {
         fontSize: '20px',
         boxSizing: 'border-box',
-        width: '2.2em',
-        height: '1em',
-        borderRadius: '1em',
+        width: DEFAULT_PILL_WIDTH,
+        height: DEFAULT_PILL_HEIGHT,
+        borderRadius: DEFAULT_PILL_HEIGHT / 2,
         transition: 'all 0.1s ease',
-        borderWidth: '1px',
-        borderStyle: 'solid',
+        border: `1px solid ${pillBorderColor}`,
         background: pillUncheckedBackground,
-        borderColor: pillBorderColor,
         cursor: 'pointer',
         display: 'flex',
         alignItems: 'center',
-        padding: '0 .2em'
+        padding: '0 3px',
       },
       !disabled && [
         !checked && {
           selectors: {
             ':hover': [
               {
-                borderColor: pillBorderHoveredColor
-              }
+                borderColor: pillBorderHoveredColor,
+              },
             ],
             ':hover .ms-Toggle-thumb': [
               {
+                backgroundColor: thumbUncheckedHoveredBackground,
                 selectors: {
                   [HighContrastSelector]: {
-                    borderColor: 'Highlight'
-                  }
-                }
-              }
-            ]
-          }
+                    borderColor: 'Highlight',
+                  },
+                },
+              },
+            ],
+          },
         },
         checked && [
           {
             background: pillCheckedBackground,
             borderColor: 'transparent',
-            justifyContent: 'flex-end'
+            justifyContent: 'flex-end',
           },
           {
             selectors: {
@@ -115,61 +123,62 @@ export const getStyles = (props: IToggleStyleProps): IToggleStyles => {
                   borderColor: 'transparent',
                   selectors: {
                     [HighContrastSelector]: {
-                      backgroundColor: 'Highlight'
-                    }
-                  }
-                }
+                      backgroundColor: 'Highlight',
+                    },
+                  },
+                },
               ],
               [HighContrastSelector]: {
-                backgroundColor: 'WindowText'
-              }
-            }
-          }
-        ]
+                backgroundColor: 'WindowText',
+              },
+            },
+          },
+        ],
       ],
       disabled && [
         {
-          cursor: 'default'
+          cursor: 'default',
         },
         !checked && [
           {
-            borderColor: pillBorderDisabledColor
-          }
+            borderColor: pillBorderDisabledColor,
+          },
         ],
         checked && [
           {
             backgroundColor: pillCheckedDisabledBackground,
             borderColor: 'transparent',
-            justifyContent: 'flex-end'
-          }
-        ]
+            justifyContent: 'flex-end',
+          },
+        ],
       ],
       !disabled && {
         selectors: {
           '&:hover': {
             selectors: {
               [HighContrastSelector]: {
-                borderColor: 'Highlight'
-              }
-            }
-          }
-        }
-      }
+                borderColor: 'Highlight',
+              },
+            },
+          },
+        },
+      },
     ],
 
     thumb: [
       'ms-Toggle-thumb',
       {
-        width: '.5em',
-        height: '.5em',
-        borderRadius: '.5em',
+        display: 'block',
+        width: DEFAULT_THUMB_SIZE,
+        height: DEFAULT_THUMB_SIZE,
+        borderRadius: '50%',
         transition: 'all 0.1s ease',
         backgroundColor: thumbBackground,
         /* Border is added to handle high contrast mode for Firefox */
         borderColor: 'transparent',
         borderWidth: '.28em',
         borderStyle: 'solid',
-        boxSizing: 'border-box'
+        boxSizing: 'border-box',
       },
       !disabled &&
         checked && [
@@ -178,23 +187,23 @@ export const getStyles = (props: IToggleStyleProps): IToggleStyles => {
             selectors: {
               [HighContrastSelector]: {
                 backgroundColor: 'Window',
-                borderColor: 'Window'
-              }
-            }
-          }
+                borderColor: 'Window',
+              },
+            },
+          },
         ],
       disabled && [
         !checked && [
           {
-            backgroundColor: thumbDisabledBackground
-          }
+            backgroundColor: thumbDisabledBackground,
+          },
         ],
         checked && [
           {
-            backgroundColor: thumbCheckedDisabledBackground
-          }
-        ]
-      ]
+            backgroundColor: thumbCheckedDisabledBackground,
+          },
+        ],
+      ],
     ],
 
     text: [
@@ -205,9 +214,10 @@ export const getStyles = (props: IToggleStyleProps): IToggleStyles => {
           '&&': {
             padding: '0',
             margin: '0 8px',
-            userSelect: 'none'
-          }
-        }
+            userSelect: 'none',
+            fontWeight: FontWeights.regular,
+          },
+        },
       },
       disabled && {
         selectors: {
@@ -215,12 +225,12 @@ export const getStyles = (props: IToggleStyleProps): IToggleStyles => {
             color: textDisabledColor,
             selectors: {
               [HighContrastSelector]: {
-                color: 'GrayText'
-              }
-            }
-          }
-        }
-      }
-    ]
+                color: 'GrayText',
+              },
+            },
+          },
+        },
+      },
+    ],
   };
 };

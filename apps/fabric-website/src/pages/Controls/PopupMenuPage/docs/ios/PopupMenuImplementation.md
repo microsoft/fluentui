@@ -1,9 +1,15 @@
 ### Control name
 
-`MSPopupMenuController`
+`PopupMenuController` in Swift, `MSFPopupMenuController` in Objective-C
 
-### Library
+`PopupMenuItem` in Swift, `MSFPopupMenuItem` in Objective-C
 
-[UI Fabric iOS](https://github.com/OfficeDev/ui-fabric-ios)
+### Source code
 
-[Sample Code](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric.Demo/OfficeUIFabric.Demo/Demos/MSPopupMenuDemoController.swift)
+[PopupMenuController](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI/Popup%20Menu/PopupMenuController.swift)
+
+[PopupMenuItem](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI/Popup%20Menu/PopupMenuItem.swift)
+
+### Sample code
+
+[PopupMenuController demo](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI.Demo/FluentUI.Demo/Demos/PopupMenuDemoController.swift)

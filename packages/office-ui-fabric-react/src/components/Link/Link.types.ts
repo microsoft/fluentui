@@ -47,7 +47,8 @@ export interface ILinkHTMLAttributes<T> extends React.HTMLAttributes<T> {
 /**
  * {@docCategory Link}
  */
-export interface ILinkProps extends ILinkHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement | LinkBase> {
+export interface ILinkProps
+  extends ILinkHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement | LinkBase> {
   /**
    * Optional callback to access the ILink interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -72,7 +73,7 @@ export interface ILinkProps extends ILinkHTMLAttributes<HTMLAnchorElement | HTML
   /**
    * A component that should be used as the root element of the link returned from the Link component.
    */
-  as?: string | React.ComponentClass | React.StatelessComponent;
+  as?: string | React.ComponentClass | React.FunctionComponent;
 
   /**
    * Optional keytip for this Link

@@ -1,18 +1,24 @@
 import * as React from 'react';
 import { AccessibilityChecker } from './AccessibilityChecker';
-import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
-import { BaseSlots, IThemeRules, ThemeGenerator, themeRulesStandardCreator } from 'office-ui-fabric-react/lib/ThemeGenerator';
+import {
+  BaseSlots,
+  IThemeRules,
+  FabricSlots,
+  ThemeGenerator,
+  themeRulesStandardCreator,
+} from 'office-ui-fabric-react/lib/ThemeGenerator';
+import { Async } from 'office-ui-fabric-react/lib/Utilities';
 import { createTheme, ITheme } from 'office-ui-fabric-react/lib/Styling';
-import { FabricPalette } from './FabricPalette';
+import { ThemeSlots } from './ThemeSlots';
 import { getColorFromString, IColor } from 'office-ui-fabric-react/lib/Color';
 import { Header } from './Header';
 import { IconButton } from 'office-ui-fabric-react/lib/Button';
 import { isDark } from 'office-ui-fabric-react/lib/utilities/color/shades';
 import { mergeStyles } from '@uifabric/merge-styles';
 import { Samples } from './Samples/index';
-import { SemanticSlots } from './SemanticSlots';
-import { Stack } from 'office-ui-fabric-react/lib/Stack';
+import { Stack, IStackProps } from 'office-ui-fabric-react/lib/Stack';
 import { ThemeDesignerColorPicker } from './ThemeDesignerColorPicker';
+import { Text } from 'office-ui-fabric-react';
 import { ThemeProvider } from 'office-ui-fabric-react/lib/Foundation';
 import { MainPanelWidth } from '../shared/MainPanelStyles';
 
@@ -24,100 +30,150 @@ export interface IThemingDesignerState {
   themeRules?: IThemeRules;
 }
 
-const outerMostStack = mergeStyles({
-  width: '100%'
-});
+const Page = (props: IStackProps) => (
+  <Stack
+    gap={10}
+    className={mergeStyles({
+      height: '100vh',
+      overflow: 'hidden',
+      selectors: {
+        ':global(body)': {
+          padding: 0,
+          margin: 0,
+        },
+      },
+    })}
+    {...props}
+  />
+);
 
-const sidebarStyles = mergeStyles({
-  marginTop: '35px',
-  width: '300px'
-});
+const Content = (props: IStackProps) => (
+  <Stack horizontal gap={10} className={mergeStyles({ overflow: 'hidden' })} {...props} />
+);
 
-const sidebarContentStyles = mergeStyles({
-  borderRight: '1px solid #ddd',
-  minHeight: '100%',
-  paddingRight: '1rem',
-  position: 'fixed',
-  top: '60px',
-  left: '10px',
-  width: '300px'
-});
+const Sidebar = (props: IStackProps) => (
+  <Stack
+    disableShrink
+    gap={20}
+    grow={0}
+    className={mergeStyles({
+      borderRight: '1px solid #ddd',
+      paddingRight: '1rem',
+    })}
+    {...props}
+  />
+);
 
-const cardsBlockStyles = mergeStyles({
-  minWidth: MainPanelWidth,
-  marginTop: '35px'
-});
+const Main = (props: IStackProps) => (
+  <Stack
+    grow={1}
+    disableShrink
+    className={mergeStyles({
+      minWidth: MainPanelWidth,
+      overflow: 'scroll',
+    })}
+    {...props}
+  />
+);
 
-let colorChangeTimeout: number;
+export class ThemingDesigner extends React.Component<{}, IThemingDesignerState> {
+  private _colorChangeTimeout: number;
+  private _fabricPaletteColorChangeTimeout: number;
+  private _async: Async;
 
-export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
-  constructor(props: any) {
+  constructor(props: {}) {
     super(props);
 
-    this.state = this._buildInitialState();
+    this._async = new Async(this);
 
-    this._onPrimaryColorPickerChange = this._onPrimaryColorPickerChange.bind(this);
-    this._onTextColorPickerChange = this._onTextColorPickerChange.bind(this);
-    this._onBkgColorPickerChange = this._onBkgColorPickerChange.bind(this);
+    this.state = this._buildInitialState();
+  }
+
+  public componentWillUnmount(): void {
+    this._async.dispose();
   }
 
   public render() {
     return (
-      <Stack gap={10} className={outerMostStack}>
+      <Page>
         <Header themeRules={this.state.themeRules} />
-        <Stack horizontal gap={10}>
-          <Stack.Item shrink={false} grow={false} className={sidebarStyles}>
-            <Stack gap={20} className={sidebarContentStyles}>
-              <h1>
-                <IconButton
-                  disabled={false}
-                  checked={false}
-                  iconProps={{ iconName: 'Color', styles: { root: { fontSize: '20px' } } }}
-                  title="Colors"
-                  ariaLabel="Colors"
-                />
-                Color
-              </h1>
-              {/* the three base slots, prominently displayed at the top of the page */}
-              <ThemeDesignerColorPicker
-                color={this.state.primaryColor}
-                onColorChange={this._onPrimaryColorPickerChange}
-                label={'Primary color'}
+        <Content>
+          <Sidebar>
+            <Text variant={'xLarge'} styles={{ root: { fontWeight: 600, marginLeft: 20 } }}>
+              <IconButton
+                disabled={false}
+                checked={false}
+                iconProps={{ iconName: 'Color', styles: { root: { fontSize: '20px', marginRight: 12 } } }}
+                title="Colors"
+                ariaLabel="Colors"
               />
-              <ThemeDesignerColorPicker color={this.state.textColor} onColorChange={this._onTextColorPickerChange} label={'Text color'} />
-              <ThemeDesignerColorPicker
-                color={this.state.backgroundColor}
-                onColorChange={this._onBkgColorPickerChange}
-                label={'Background color'}
-              />
-            </Stack>
-          </Stack.Item>
-          <Stack.Item grow={1} disableShrink className={cardsBlockStyles}>
-            <Stack>
-              <ThemeProvider theme={this.state.theme}>
-                <Samples backgroundColor={this.state.backgroundColor.str} textColor={this.state.textColor.str} />
-              </ThemeProvider>
-              <AccessibilityChecker theme={this.state.theme} themeRules={this.state.themeRules} />
-              <FabricPalette themeRules={this.state.themeRules} />
-              <SemanticSlots theme={this.state.theme} />;
-            </Stack>
-          </Stack.Item>
-        </Stack>
-      </Stack>
+              Color
+            </Text>
+            {/* the three base slots, prominently displayed at the top of the page */}
+            <ThemeDesignerColorPicker
+              color={this.state.primaryColor}
+              onColorChange={this._onPrimaryColorPickerChange}
+              label={'Primary color'}
+            />
+            <ThemeDesignerColorPicker
+              color={this.state.textColor}
+              onColorChange={this._onTextColorPickerChange}
+              label={'Text color'}
+            />
+            <ThemeDesignerColorPicker
+              color={this.state.backgroundColor}
+              onColorChange={this._onBkgColorPickerChange}
+              label={'Background color'}
+            />
+          </Sidebar>
+          <Main>
+            <ThemeProvider theme={this.state.theme}>
+              <Samples backgroundColor={this.state.backgroundColor.str} textColor={this.state.textColor.str} />
+            </ThemeProvider>
+            <AccessibilityChecker theme={this.state.theme} themeRules={this.state.themeRules} />
+            <ThemeSlots
+              theme={this.state.theme}
+              themeRules={this.state.themeRules}
+              onFabricPaletteColorChange={this._onFabricPaletteColorChange}
+            />
+          </Main>
+        </Content>
+      </Page>
     );
   }
 
-  private _onPrimaryColorPickerChange(newColor: IColor | undefined) {
+  private _onFabricPaletteColorChange = (newColor: IColor | undefined, fabricSlot: FabricSlots) => {
+    if (this._fabricPaletteColorChangeTimeout) {
+      this._async.clearTimeout(this._fabricPaletteColorChangeTimeout);
+    }
+    if (!this.state.themeRules) {
+      return;
+    }
+    this._fabricPaletteColorChangeTimeout = this._async.setTimeout(() => {
+      const { themeRules } = this.state;
+      if (themeRules) {
+        const currentIsDark = isDark(themeRules[FabricSlots[fabricSlot]].color!);
+        ThemeGenerator.setSlot(themeRules[FabricSlots[fabricSlot]], newColor, currentIsDark, true, true);
+        if (currentIsDark !== isDark(themeRules[FabricSlots[fabricSlot]].color!)) {
+          // isInverted got swapped, so need to refresh slots with new shading rules
+          ThemeGenerator.insureSlots(themeRules, currentIsDark);
+        }
+      }
+      this.setState({ themeRules: themeRules }, this._makeNewTheme);
+    }, 20);
+  };
+
+  private _onPrimaryColorPickerChange = (newColor: IColor | undefined) => {
     this._onColorChange(this.state.primaryColor, BaseSlots.primaryColor, newColor);
-  }
+  };
 
-  private _onTextColorPickerChange(newColor: IColor | undefined) {
+  private _onTextColorPickerChange = (newColor: IColor | undefined) => {
     this._onColorChange(this.state.textColor, BaseSlots.foregroundColor, newColor);
-  }
+  };
 
-  private _onBkgColorPickerChange(newColor: IColor | undefined) {
+  private _onBkgColorPickerChange = (newColor: IColor | undefined) => {
     this._onColorChange(this.state.backgroundColor, BaseSlots.backgroundColor, newColor);
-  }
+  };
 
   private _makeNewTheme = (): void => {
     if (this.state.themeRules) {
@@ -127,15 +183,15 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
 
       const finalTheme = createTheme({
         ...{ palette: themeAsJson },
-        isInverted: isDark(this.state.themeRules[BaseSlots[BaseSlots.backgroundColor]].color!)
+        isInverted: isDark(this.state.themeRules[BaseSlots[BaseSlots.backgroundColor]].color!),
       });
       this.setState({ theme: finalTheme });
     }
   };
 
   private _onColorChange = (colorToChange: IColor, baseSlot: BaseSlots, newColor: IColor | undefined) => {
-    if (colorChangeTimeout) {
-      clearTimeout(colorChangeTimeout);
+    if (this._colorChangeTimeout) {
+      this._async.clearTimeout(this._colorChangeTimeout);
     }
     if (newColor) {
       if (colorToChange === this.state.primaryColor) {
@@ -147,7 +203,7 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
       } else {
         return;
       }
-      colorChangeTimeout = this._async.setTimeout(() => {
+      this._colorChangeTimeout = this._async.setTimeout(() => {
         const themeRules = this.state.themeRules;
         if (themeRules) {
           const currentIsDark = isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!);
@@ -169,12 +225,18 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
     const colors = {
       primaryColor: getColorFromString('#0078d4')!,
       textColor: getColorFromString('#323130')!,
-      backgroundColor: getColorFromString('#ffffff')!
+      backgroundColor: getColorFromString('#ffffff')!,
     };
     ThemeGenerator.insureSlots(themeRules, isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!));
-    ThemeGenerator.setSlot(themeRules[BaseSlots[BaseSlots.primaryColor]], colors.primaryColor);
-    ThemeGenerator.setSlot(themeRules[BaseSlots[BaseSlots.foregroundColor]], colors.textColor);
-    ThemeGenerator.setSlot(themeRules[BaseSlots[BaseSlots.backgroundColor]], colors.backgroundColor);
+    ThemeGenerator.setSlot(themeRules[BaseSlots[BaseSlots.primaryColor]], colors.primaryColor, undefined, false, false);
+    ThemeGenerator.setSlot(themeRules[BaseSlots[BaseSlots.foregroundColor]], colors.textColor, undefined, false, false);
+    ThemeGenerator.setSlot(
+      themeRules[BaseSlots[BaseSlots.backgroundColor]],
+      colors.backgroundColor,
+      undefined,
+      false,
+      false,
+    );
 
     const themeAsJson: {
       [key: string]: string;
@@ -182,13 +244,13 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
 
     const finalTheme = createTheme({
       ...{ palette: themeAsJson },
-      isInverted: isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!)
+      isInverted: isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!),
     });
 
     const state = {
       ...colors,
       theme: finalTheme,
-      themeRules: themeRules
+      themeRules: themeRules,
     };
 
     return state;

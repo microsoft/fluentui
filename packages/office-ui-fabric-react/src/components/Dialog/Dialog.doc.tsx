@@ -8,40 +8,34 @@ import { DialogTopOffsetFixedExample } from './examples/Dialog.TopOffsetFixed.Ex
 import { DialogModelessExample } from './examples/Dialog.Modeless.Example';
 
 const DialogBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Dialog/examples/Dialog.Basic.Example.tsx') as string;
-const DialogBasicExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Dialog/examples/Dialog.Basic.Example.tsx') as string;
 const DialogLargeHeaderExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Dialog/examples/Dialog.LargeHeader.Example.tsx') as string;
-const DialogLargeHeaderExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Dialog/examples/Dialog.LargeHeader.Example.tsx') as string;
 const DialogBlockingExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Dialog/examples/Dialog.Blocking.Example.tsx') as string;
-const DialogBlockingExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Dialog/examples/Dialog.Blocking.Example.tsx') as string;
 const DialogTopOffsetFixedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Dialog/examples/Dialog.TopOffsetFixed.Example.tsx') as string;
-const DialogTopOffsetFixedExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Dialog/examples/Dialog.TopOffsetFixed.Example.tsx') as string;
 const DialogModelessExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Dialog/examples/Dialog.Modeless.Example.tsx') as string;
-const DialogModelessExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Dialog/examples/Dialog.Modeless.Example.tsx') as string;
 
 export const DialogPageProps: IDocPageProps = {
   title: 'Dialog',
   componentName: 'Dialog',
-  componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Dialog',
+  componentUrl:
+    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/Dialog',
   examples: [
     {
       title: 'Default Dialog',
       code: DialogBasicExampleCode,
-      codepenJS: DialogBasicExampleCodepen,
-      view: <DialogBasicExample />
+      view: <DialogBasicExample />,
     },
     {
       title: 'Dialog with large header and ChoiceGroup',
       code: DialogLargeHeaderExampleCode,
-      codepenJS: DialogLargeHeaderExampleCodepen,
       view: (
         <>
           <p>
-            Use this Dialog sparingly, when calling extra attention to the content. It can be used in situations where you want to teach the
-            user something or notify them of an important change.
+            Use this Dialog sparingly, when calling extra attention to the content. It can be used in situations where
+            you want to teach the user something or notify them of an important change.
           </p>
           <DialogLargeHeaderExample />
         </>
-      )
+      ),
     },
     {
       title: 'Blocking Dialog',
@@ -49,40 +43,37 @@ export const DialogPageProps: IDocPageProps = {
       view: (
         <>
           <p>
-            A blocking Dialog disables all other actions and commands on the page behind it. They should be used very sparingly, only when
-            it is critical that the user makes a choice or provides information before they can proceed. Blocking Dialogs are generally used
-            for irreversible or potentially destructive tasks.
+            A blocking Dialog disables all other actions and commands on the page behind it. They should be used very
+            sparingly, only when it is critical that the user makes a choice or provides information before they can
+            proceed. Blocking Dialogs are generally used for irreversible or potentially destructive tasks.
           </p>
           <DialogBlockingExample />
         </>
       ),
-      codepenJS: DialogBlockingExampleCodepen
     },
     {
       title: 'Dialog with Top Offset Fixed',
       code: DialogTopOffsetFixedExampleCode,
-      codepenJS: DialogTopOffsetFixedExampleCodepen,
       view: (
         <>
           <p>
-            This Dialog maintains its top position and expands only the bottom, offering a more stable appearance when a Dialog's content
-            changes dynamically.
+            This Dialog maintains its top position and expands only the bottom, offering a more stable appearance when a
+            Dialog's content changes dynamically.
           </p>
           <DialogTopOffsetFixedExample />
         </>
-      )
+      ),
     },
     {
       title: 'Modeless Dialog',
       code: DialogModelessExampleCode,
-      codepenJS: DialogModelessExampleCodepen,
-      view: <DialogModelessExample />
-    }
+      view: <DialogModelessExample />,
+    },
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Dialog/docs/DialogOverview.md'),
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Dialog/docs/DialogDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Dialog/docs/DialogDonts.md'),
   isHeaderVisible: true,
-  isFeedbackVisible: true
+  isFeedbackVisible: true,
 };

@@ -1,5 +1,5 @@
 import { mergeStyleSets } from './mergeStyleSets';
-import { Stylesheet, InjectionMode } from './Stylesheet';
+import { Stylesheet, InjectionMode, IStyleSheetConfig } from './Stylesheet';
 import { IStyleSet } from './IStyleSet';
 import { IStyleFunctionOrObject } from './IStyleFunction';
 import { IStyle } from './IStyle';
@@ -15,14 +15,14 @@ describe('mergeStyleSets', () => {
 
   it('can merge style sets', () => {
     const fn1 = jest.fn().mockReturnValue({
-      root: { background: 'green', fontSize: 12 }
+      root: { background: 'green', fontSize: 12 },
     });
 
     const fn2 = jest.fn().mockReturnValue({
       root: {
         background: 'yellow',
-        color: 'pink'
-      }
+        color: 'pink',
+      },
     });
 
     const empty: { c?: string } = {};
@@ -32,23 +32,23 @@ describe('mergeStyleSets', () => {
         root: { background: 'red' },
         a: { background: 'green' },
         subComponentStyles: {
-          labelStyles: fn1
-        }
+          labelStyles: fn1,
+        },
       },
       {
         a: { background: 'white' },
-        b: { background: 'blue' }
+        b: { background: 'blue' },
       },
       {
         root: {
           selectors: {
-            ':hover': { background: 'yellow' }
-          }
+            ':hover': { background: 'yellow' },
+          },
         },
         subComponentStyles: {
-          labelStyles: fn2
-        }
-      }
+          labelStyles: fn2,
+        },
+      },
     );
 
     expect(result.root).toBe('root-0');
@@ -57,11 +57,16 @@ describe('mergeStyleSets', () => {
     expect(result.subComponentStyles).toBeDefined();
     const mergedLabelStyles = result.subComponentStyles!.labelStyles({});
     expect(mergedLabelStyles).toEqual({
-      root: [{ background: 'green', fontSize: 12 }, { background: 'yellow', color: 'pink' }]
+      root: [
+        { background: 'green', fontSize: 12 },
+        { background: 'yellow', color: 'pink' },
+      ],
     });
 
     expect(_stylesheet.getRules()).toEqual(
-      '.root-0{background:red;}.root-0:hover{background:yellow;}' + '.a-1{background:white;}' + '.b-2{background:blue;}'
+      '.root-0{background:red;}.root-0:hover{background:yellow;}' +
+        '.a-1{background:white;}' +
+        '.b-2{background:blue;}',
     );
   });
 
@@ -70,20 +75,22 @@ describe('mergeStyleSets', () => {
       undefined,
       {
         root: { background: 'red' },
-        a: { background: 'green' }
+        a: { background: 'green' },
       },
       null,
       {
         a: { background: 'white' },
-        b: { background: 'blue' }
-      }
+        b: { background: 'blue' },
+      },
     );
 
     expect(result.root).toBe('root-0');
     expect(result.a).toBe('a-1');
     expect(result.b).toBe('b-2');
 
-    expect(_stylesheet.getRules()).toEqual('.root-0{background:red;}' + '.a-1{background:white;}' + '.b-2{background:blue;}');
+    expect(_stylesheet.getRules()).toEqual(
+      '.root-0{background:red;}' + '.a-1{background:white;}' + '.b-2{background:blue;}',
+    );
   });
 
   it('can merge correctly when all inputs are falsey', () => {
@@ -95,72 +102,10 @@ describe('mergeStyleSets', () => {
     expect(_stylesheet.getRules()).toBe('');
   });
 
-  it('can expand child selectors', () => {
-    const result = mergeStyleSets({
-      a: {
-        selectors: {
-          ':hover $b': {
-            background: 'green'
-          },
-          ':focus $c-foo': {
-            background: 'red'
-          },
-          ':active .d': {
-            background: 'pink'
-          }
-        }
-      },
-      b: {
-        background: 'blue'
-      },
-      'c-foo': {}
-    });
-
-    expect(result).toEqual({
-      a: 'a-0',
-      b: 'b-1',
-      'c-foo': 'c-foo-2',
-      subComponentStyles: {}
-    });
-
-    expect(_stylesheet.getRules()).toEqual(
-      '.a-0:hover .b-1{background:green;}' +
-        '.a-0:focus .c-foo-2{background:red;}' +
-        '.a-0:active .d{background:pink;}' +
-        '.b-1{background:blue;}'
-    );
-  });
-
-  it('can expand child selectors with static class names', () => {
-    const styles = mergeStyleSets({
-      root: [
-        'a',
-        {
-          selectors: {
-            '&:hover $child': { background: 'red' }
-          }
-        }
-      ],
-      child: [
-        'd',
-        {
-          background: 'green'
-        }
-      ]
-    });
-
-    expect(styles).toEqual({
-      root: 'a root-0',
-      child: 'd child-1',
-      subComponentStyles: {}
-    });
-    expect(_stylesheet.getRules()).toEqual('.root-0:hover .child-1{background:red;}' + '.child-1{background:green;}');
-  });
-
   it('can merge class names', () => {
     expect(mergeStyleSets({ root: ['a', 'b', { background: 'red' }] })).toEqual({
       root: 'a b root-0',
-      subComponentStyles: {}
+      subComponentStyles: {},
     });
   });
 
@@ -194,14 +139,29 @@ describe('mergeStyleSets', () => {
 
   it('can merge two sets with class names', () => {
     const styleSet1 = mergeStyleSets({
-      root: ['ms-Foo', { background: 'red' }]
+      root: ['ms-Foo', { background: 'red' }],
     });
     const styleSet2 = mergeStyleSets(styleSet1, {
-      root: ['ms-Bar', { background: 'green' }]
+      root: ['ms-Bar', { background: 'green' }],
     });
 
     expect(styleSet2).toEqual({ root: 'ms-Foo ms-Bar root-1', subComponentStyles: {} });
     expect(_stylesheet.getRules()).toEqual('.root-0{background:red;}' + '.root-1{background:green;}');
+  });
+
+  it('can merge correctly when class names are provided by application', () => {
+    _stylesheet.setConfig({ namespace: 'ns' });
+    _stylesheet.getClassNameCache()['ltr&displayNametestdisplayblock'] = 'test-0';
+
+    const styles = mergeStyleSets({ test: ['test-0'] });
+    const styles2 = mergeStyleSets({ test: { display: 'block' } });
+    const styles3 = mergeStyleSets({ root: [{ background: 'red' }, 'test-0'] });
+
+    expect(styles.test).toBe('test-0');
+    expect(styles2.test).toBe('test-0');
+    expect(styles3.root).toBe('test-0 ns-root-0');
+
+    _stylesheet.setConfig({ namespace: undefined });
   });
 
   describe('typings tests', () => {
@@ -234,27 +194,27 @@ describe('mergeStyleSets', () => {
       return;
     };
 
-    const SubComponent: (props: { styles: IStyleFunctionOrObject<ISubComponentStyleProps, ISubComponentStyles> }) => any = (props: {
+    const SubComponent: (props: {
       styles: IStyleFunctionOrObject<ISubComponentStyleProps, ISubComponentStyles>;
-    }) => {
+    }) => any = (props: { styles: IStyleFunctionOrObject<ISubComponentStyleProps, ISubComponentStyles> }) => {
       return;
     };
 
-    const getStyles = (): IStyles => ({
+    const getStyles = () => ({
       root: {
-        background: 'red'
+        background: 'red',
       },
       subComponentStyles: {
-        button: () => ({
+        button: (props: { isCollapsed: boolean }) => ({
           root: {
-            background: 'green'
-          }
-        })
-      }
+            background: 'green',
+          },
+        }),
+      },
     });
 
     it('IStyleSet/IProcessedStyleSet should work with standard sub components', () => {
-      const classNames = mergeStyleSets<IStyles>(getStyles());
+      const classNames = mergeStyleSets(getStyles());
 
       SubComponent({ styles: classNames.subComponentStyles.button });
 
@@ -263,7 +223,7 @@ describe('mergeStyleSets', () => {
     });
 
     it('IStyleSet/IProcessedStyleSet should work with legacy sub components that only take IStyleFunctions', () => {
-      const classNames = mergeStyleSets<IStyles>(getStyles());
+      const classNames = mergeStyleSets(getStyles());
 
       LegacySubComponent({ styles: classNames.subComponentStyles.button({ isCollapsed: false }) });
 
@@ -272,33 +232,24 @@ describe('mergeStyleSets', () => {
     });
 
     describe('IStylesWithStyleObjectAsSubCommponent', () => {
-      const getStyles2 = (): IStylesWithStyleObjectAsSubCommponent => ({
+      const getStyles2 = () => ({
         root: {
-          background: 'red'
+          background: 'red',
         },
         subComponentStyles: {
           button: {
             root: {
-              background: 'green'
-            }
-          }
-        }
+              background: 'green',
+            },
+          },
+        },
       });
 
       it('IStyleSet/IProcessedStyleSet should work with standard sub components', () => {
-        const classNames = mergeStyleSets<IStyles>(getStyles2());
+        const classNames = mergeStyleSets(getStyles2());
 
         // this test primarily
         SubComponent({ styles: classNames.subComponentStyles.button });
-
-        // this test primarily tests that the lines above do not result in a Typescript error.
-        expect.assertions(0);
-      });
-
-      it('IStyleSet/IProcessedStyleSet should work with legacy sub components that only take IStyleFunctions', () => {
-        const classNames = mergeStyleSets<IStylesWithStyleObjectAsSubCommponent>(getStyles2());
-
-        LegacySubComponent({ styles: classNames.subComponentStyles.button({ isCollapsed: false }) });
 
         // this test primarily tests that the lines above do not result in a Typescript error.
         expect.assertions(0);

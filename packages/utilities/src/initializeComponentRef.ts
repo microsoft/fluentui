@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { IBaseProps } from './BaseComponent.types';
 import { extendComponent } from './extendComponent';
 
@@ -11,7 +12,7 @@ export function initializeComponentRef<TProps extends IBaseProps, TState>(obj: R
   extendComponent(obj, {
     componentDidMount: _onMount,
     componentDidUpdate: _onUpdate,
-    componentWillUnmount: _onUnmount
+    componentWillUnmount: _onUnmount,
   });
 }
 

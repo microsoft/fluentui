@@ -3,13 +3,14 @@ import { getGlobalClassNames, HighContrastSelector, IRawStyle } from '../../../S
 
 const GlobalClassNames = {
   root: 'ms-ShimmerCircle-root',
-  svg: 'ms-ShimmerCircle-svg'
+  svg: 'ms-ShimmerCircle-svg',
 };
 
 export function getStyles(props: IShimmerCircleStyleProps): IShimmerCircleStyles {
+  // tslint:disable-next-line:deprecation
   const { height, borderStyle, theme } = props;
 
-  const { palette } = theme;
+  const { semanticColors } = theme;
   const globalClassNames = getGlobalClassNames(GlobalClassNames, theme);
 
   const borderStyles: IRawStyle = !!borderStyle ? borderStyle : {};
@@ -25,26 +26,26 @@ export function getStyles(props: IShimmerCircleStyleProps): IShimmerCircleStyles
         boxSizing: 'content-box',
         borderTopStyle: 'solid',
         borderBottomStyle: 'solid',
-        borderColor: palette.white,
+        borderColor: semanticColors.bodyBackground,
         selectors: {
           [HighContrastSelector]: {
-            borderColor: 'Window'
-          }
-        }
+            borderColor: 'Window',
+          },
+        },
       },
-      borderStyles
+      borderStyles,
     ],
     svg: [
       globalClassNames.svg,
       {
         display: 'block',
-        fill: palette.white,
+        fill: semanticColors.bodyBackground,
         selectors: {
           [HighContrastSelector]: {
-            fill: 'Window'
-          }
-        }
-      }
-    ]
+            fill: 'Window',
+          },
+        },
+      },
+    ],
   };
 }

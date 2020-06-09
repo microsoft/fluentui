@@ -11,9 +11,9 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
   onFocus={[Function]}
   onKeyDown={[Function]}
   onMouseDownCapture={[Function]}
-  role="presentation"
 >
   <nav
+    aria-label="Nav example with custom group headers"
     className=
         ms-Nav
         {
@@ -29,10 +29,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
     role="navigation"
   >
     <div
-      className=
-          ms-Nav-group
-          is-expanded
-
+      className="ms-Nav-group is-expanded"
     >
       <h3>
         Pages
@@ -54,6 +51,10 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
               ms-Nav-navItems
               {
                 list-style-type: none;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
                 padding-bottom: 0px;
                 padding-left: 0px;
                 padding-right: 0px;
@@ -76,8 +77,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
               className=
                   ms-Nav-compositeLink
                   {
-                    background-color: #ffffff;
-                    color: #333333;
+                    color: #323130;
                     display: block;
                     position: relative;
                   }
@@ -93,21 +93,17 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
                       background-color: transparent;
-                      border-radius: 0px;
+                      border-radius: 2px;
                       border: 1px solid transparent;
                       box-sizing: border-box;
-                      color: #333333;
+                      color: #323130;
                       cursor: pointer;
                       display: block;
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 14px;
                       font-weight: 400;
-                      height: 36px;
-                      line-height: 36px;
-                      margin-bottom: 0px;
-                      margin-left: 0px;
-                      margin-right: 0px;
-                      margin-top: 0px;
+                      height: 44px;
+                      line-height: 44px;
                       outline: transparent;
                       overflow: hidden;
                       padding-bottom: 0;
@@ -119,7 +115,6 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                       text-decoration: none;
                       text-overflow: ellipsis;
                       user-select: none;
-                      vertical-align: top;
                       white-space: nowrap;
                       width: 100%;
                     }
@@ -131,7 +126,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                       bottom: 1px;
                       content: "";
                       left: 1px;
-                      outline: 1px solid #666666;
+                      outline: 1px solid #605e5c;
                       position: absolute;
                       right: 1px;
                       top: 1px;
@@ -166,9 +161,14 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                     &:active .ms-Button-icon {
                       color: #004578;
                     }
+                    @media screen and (-ms-high-contrast: active){& {
+                      border-color: transparent;
+                    }
+                    @media screen and (-ms-high-contrast: active){&:focus {
+                      border-color: WindowText;
+                    }
                     .ms-Nav-compositeLink:hover & {
-                      background-color: #f8f8f8;
-                      color: #333333;
+                      background-color: #f3f2f1;
                     }
                 data-is-focusable={true}
                 href="http://msn.com"
@@ -178,9 +178,11 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                 onKeyUp={[Function]}
                 onMouseDown={[Function]}
                 onMouseUp={[Function]}
+                rel="noopener noreferrer"
+                target="_blank"
                 title="Activity"
               >
-                <div
+                <span
                   className=
                       ms-Button-flexContainer
                       {
@@ -190,6 +192,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                         height: 100%;
                         justify-content: flex-start;
                       }
+                  data-automationid="splitbuttonprimary"
                 >
                   <div
                     className=
@@ -207,7 +210,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                   >
                     Activity
                   </div>
-                </div>
+                </span>
               </a>
             </div>
           </li>
@@ -226,8 +229,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
               className=
                   ms-Nav-compositeLink
                   {
-                    background-color: #ffffff;
-                    color: #333333;
+                    color: #323130;
                     display: block;
                     position: relative;
                   }
@@ -243,21 +245,17 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
                       background-color: transparent;
-                      border-radius: 0px;
+                      border-radius: 2px;
                       border: 1px solid transparent;
                       box-sizing: border-box;
-                      color: #333333;
+                      color: #323130;
                       cursor: pointer;
                       display: block;
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 14px;
                       font-weight: 400;
-                      height: 36px;
-                      line-height: 36px;
-                      margin-bottom: 0px;
-                      margin-left: 0px;
-                      margin-right: 0px;
-                      margin-top: 0px;
+                      height: 44px;
+                      line-height: 44px;
                       outline: transparent;
                       overflow: hidden;
                       padding-bottom: 0;
@@ -269,7 +267,6 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                       text-decoration: none;
                       text-overflow: ellipsis;
                       user-select: none;
-                      vertical-align: top;
                       white-space: nowrap;
                       width: 100%;
                     }
@@ -281,7 +278,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                       bottom: 1px;
                       content: "";
                       left: 1px;
-                      outline: 1px solid #666666;
+                      outline: 1px solid #605e5c;
                       position: absolute;
                       right: 1px;
                       top: 1px;
@@ -316,9 +313,14 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                     &:active .ms-Button-icon {
                       color: #004578;
                     }
+                    @media screen and (-ms-high-contrast: active){& {
+                      border-color: transparent;
+                    }
+                    @media screen and (-ms-high-contrast: active){&:focus {
+                      border-color: WindowText;
+                    }
                     .ms-Nav-compositeLink:hover & {
-                      background-color: #f8f8f8;
-                      color: #333333;
+                      background-color: #f3f2f1;
                     }
                 data-is-focusable={true}
                 href="http://msn.com"
@@ -328,9 +330,11 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                 onKeyUp={[Function]}
                 onMouseDown={[Function]}
                 onMouseUp={[Function]}
+                rel="noopener noreferrer"
+                target="_blank"
                 title="News"
               >
-                <div
+                <span
                   className=
                       ms-Button-flexContainer
                       {
@@ -340,6 +344,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                         height: 100%;
                         justify-content: flex-start;
                       }
+                  data-automationid="splitbuttonprimary"
                 >
                   <div
                     className=
@@ -357,7 +362,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                   >
                     News
                   </div>
-                </div>
+                </span>
               </a>
             </div>
           </li>
@@ -365,10 +370,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
       </div>
     </div>
     <div
-      className=
-          ms-Nav-group
-          is-expanded
-
+      className="ms-Nav-group is-expanded"
     >
       <h3>
         More pages
@@ -390,6 +392,10 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
               ms-Nav-navItems
               {
                 list-style-type: none;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
                 padding-bottom: 0px;
                 padding-left: 0px;
                 padding-right: 0px;
@@ -412,8 +418,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
               className=
                   ms-Nav-compositeLink
                   {
-                    background-color: #ffffff;
-                    color: #333333;
+                    color: #323130;
                     display: block;
                     position: relative;
                   }
@@ -429,21 +434,17 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
                       background-color: transparent;
-                      border-radius: 0px;
+                      border-radius: 2px;
                       border: 1px solid transparent;
                       box-sizing: border-box;
-                      color: #333333;
+                      color: #323130;
                       cursor: pointer;
                       display: block;
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 14px;
                       font-weight: 400;
-                      height: 36px;
-                      line-height: 36px;
-                      margin-bottom: 0px;
-                      margin-left: 0px;
-                      margin-right: 0px;
-                      margin-top: 0px;
+                      height: 44px;
+                      line-height: 44px;
                       outline: transparent;
                       overflow: hidden;
                       padding-bottom: 0;
@@ -455,7 +456,6 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                       text-decoration: none;
                       text-overflow: ellipsis;
                       user-select: none;
-                      vertical-align: top;
                       white-space: nowrap;
                       width: 100%;
                     }
@@ -467,7 +467,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                       bottom: 1px;
                       content: "";
                       left: 1px;
-                      outline: 1px solid #666666;
+                      outline: 1px solid #605e5c;
                       position: absolute;
                       right: 1px;
                       top: 1px;
@@ -502,9 +502,14 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                     &:active .ms-Button-icon {
                       color: #004578;
                     }
+                    @media screen and (-ms-high-contrast: active){& {
+                      border-color: transparent;
+                    }
+                    @media screen and (-ms-high-contrast: active){&:focus {
+                      border-color: WindowText;
+                    }
                     .ms-Nav-compositeLink:hover & {
-                      background-color: #f8f8f8;
-                      color: #333333;
+                      background-color: #f3f2f1;
                     }
                 data-is-focusable={true}
                 href="http://msn.com"
@@ -514,9 +519,11 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                 onKeyUp={[Function]}
                 onMouseDown={[Function]}
                 onMouseUp={[Function]}
+                rel="noopener noreferrer"
+                target="_blank"
                 title="Settings"
               >
-                <div
+                <span
                   className=
                       ms-Button-flexContainer
                       {
@@ -526,6 +533,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                         height: 100%;
                         justify-content: flex-start;
                       }
+                  data-automationid="splitbuttonprimary"
                 >
                   <div
                     className=
@@ -543,7 +551,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                   >
                     Settings
                   </div>
-                </div>
+                </span>
               </a>
             </div>
           </li>
@@ -562,8 +570,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
               className=
                   ms-Nav-compositeLink
                   {
-                    background-color: #ffffff;
-                    color: #333333;
+                    color: #323130;
                     display: block;
                     position: relative;
                   }
@@ -579,21 +586,17 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
                       background-color: transparent;
-                      border-radius: 0px;
+                      border-radius: 2px;
                       border: 1px solid transparent;
                       box-sizing: border-box;
-                      color: #333333;
+                      color: #323130;
                       cursor: pointer;
                       display: block;
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 14px;
                       font-weight: 400;
-                      height: 36px;
-                      line-height: 36px;
-                      margin-bottom: 0px;
-                      margin-left: 0px;
-                      margin-right: 0px;
-                      margin-top: 0px;
+                      height: 44px;
+                      line-height: 44px;
                       outline: transparent;
                       overflow: hidden;
                       padding-bottom: 0;
@@ -605,7 +608,6 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                       text-decoration: none;
                       text-overflow: ellipsis;
                       user-select: none;
-                      vertical-align: top;
                       white-space: nowrap;
                       width: 100%;
                     }
@@ -617,7 +619,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                       bottom: 1px;
                       content: "";
                       left: 1px;
-                      outline: 1px solid #666666;
+                      outline: 1px solid #605e5c;
                       position: absolute;
                       right: 1px;
                       top: 1px;
@@ -652,9 +654,14 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                     &:active .ms-Button-icon {
                       color: #004578;
                     }
+                    @media screen and (-ms-high-contrast: active){& {
+                      border-color: transparent;
+                    }
+                    @media screen and (-ms-high-contrast: active){&:focus {
+                      border-color: WindowText;
+                    }
                     .ms-Nav-compositeLink:hover & {
-                      background-color: #f8f8f8;
-                      color: #333333;
+                      background-color: #f3f2f1;
                     }
                 data-is-focusable={true}
                 href="http://msn.com"
@@ -664,9 +671,11 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                 onKeyUp={[Function]}
                 onMouseDown={[Function]}
                 onMouseUp={[Function]}
+                rel="noopener noreferrer"
+                target="_blank"
                 title="Notes"
               >
-                <div
+                <span
                   className=
                       ms-Button-flexContainer
                       {
@@ -676,6 +685,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                         height: 100%;
                         justify-content: flex-start;
                       }
+                  data-automationid="splitbuttonprimary"
                 >
                   <div
                     className=
@@ -693,7 +703,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                   >
                     Notes
                   </div>
-                </div>
+                </span>
               </a>
             </div>
           </li>

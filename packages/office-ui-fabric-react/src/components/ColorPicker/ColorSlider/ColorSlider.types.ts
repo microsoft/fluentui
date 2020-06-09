@@ -1,15 +1,19 @@
+import * as React from 'react';
 import { ITheme, IStyle } from '../../../Styling';
-import { IBaseProps, IRefObject, IStyleFunctionOrObject } from '../../../Utilities';
+import { IRefObject, IStyleFunctionOrObject } from '../../../Utilities';
 
 /**
  * {@docCategory ColorPicker}
  */
-export interface IColorSlider {}
+export interface IColorSlider {
+  /** Current value of the slider. */
+  value: number;
+}
 
 /**
  * {@docCategory ColorPicker}
  */
-export interface IColorSliderProps extends IBaseProps<IColorSlider> {
+export interface IColorSliderProps {
   /**
    * Gets the component ref.
    */
@@ -17,11 +21,13 @@ export interface IColorSliderProps extends IBaseProps<IColorSlider> {
 
   /**
    * Minimum value of the slider.
+   * @deprecated Will always be 0
    */
   minValue?: number;
 
   /**
    * Maximum value of the slider.
+   * @deprecated Will be 100 for alpha or transparency sliders, or 359 for hue sliders.
    */
   maxValue?: number;
 
@@ -31,31 +37,45 @@ export interface IColorSliderProps extends IBaseProps<IColorSlider> {
   value?: number;
 
   /**
+   * Label of the ColorSlider for the benefit of screen reader users.
+   */
+  ariaLabel?: string;
+
+  /**
+   * Type of slider to display.
+   * @defaultvalue 'hue'
+   */
+  type?: 'hue' | 'alpha' | 'transparency';
+
+  /**
+   * If true, the slider represents an alpha slider and will display a gray checkered pattern
+   * in the background. Otherwise, the slider represents a hue slider.
+   * @defaultvalue false
+   * @deprecated Use `type`
+   */
+  isAlpha?: boolean;
+
+  /**
+   * Hex color to use when rendering an alpha or transparency slider's overlay, *without* the `#`.
+   */
+  overlayColor?: string;
+
+  /**
    * CSS-compatible string for the color of the thumb element.
+   * @deprecated Not used. Use `styles.sliderThumb` instead.
    */
   thumbColor?: string;
 
   /**
    * Custom style for the overlay element.
+   * @deprecated Use `overlayColor` instead
    */
-  overlayStyle?: any;
+  overlayStyle?: React.CSSProperties;
 
   /**
    * Callback issued when the value changes.
    */
-  onChange?: (event: React.MouseEvent<HTMLElement>, newValue?: number) => void;
-
-  /**
-   * Deprecated, use `onChange` instead.
-   * @deprecated Use `onChange` instead.
-   */
-  onChanged?: (newValue: number) => void;
-
-  /**
-   * If true, the slider represents an alpha slider.
-   * Otherwise, the slider represents a hue slider.
-   */
-  isAlpha?: boolean;
+  onChange?: (event: React.MouseEvent | React.KeyboardEvent, newValue?: number) => void;
 
   /**
    * Additional CSS class(es) to apply to the ColorSlider.
@@ -76,17 +96,13 @@ export interface IColorSliderProps extends IBaseProps<IColorSlider> {
 /**
  * {@docCategory ColorPicker}
  */
-export interface IColorSliderStyleProps {
-  /**
-   * Theme (provided through customization).
-   */
-  theme: ITheme;
-
-  /**
-   * Additional CSS class(es) to apply to the ColorSlider.
-   */
-  className?: string;
-}
+export type IColorSliderStyleProps = Required<Pick<IColorSliderProps, 'theme'>> &
+  Pick<IColorSliderProps, 'className' | 'type'> & {
+    /**
+     * @deprecated Use `type`
+     */
+    isAlpha?: boolean;
+  };
 
 /**
  * {@docCategory ColorPicker}

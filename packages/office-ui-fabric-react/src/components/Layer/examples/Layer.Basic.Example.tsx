@@ -1,84 +1,35 @@
-import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
-import 'office-ui-fabric-react/lib/common/_exampleStyles.scss';
-import { Layer } from 'office-ui-fabric-react/lib/Layer';
-import { AnimationClassNames } from 'office-ui-fabric-react/lib/Styling';
-import { BaseComponent, css } from 'office-ui-fabric-react/lib/Utilities';
-import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import * as styles from './Layer.Example.scss';
+import { AnimationClassNames, mergeStyles, getTheme } from 'office-ui-fabric-react/lib/Styling';
+import { Layer } from 'office-ui-fabric-react/lib/Layer';
+import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
+import { useBoolean } from '@uifabric/react-hooks';
 
-export interface ILayerContentExampleState {
-  time: string;
-}
+export const LayerBasicExample: React.FunctionComponent = () => {
+  const [showLayer, { toggle: toggleShowLayer }] = useBoolean(false);
 
-export class LayerContentExample extends BaseComponent<{}, ILayerContentExampleState> {
-  public static contextTypes = {
-    message: PropTypes.string
-  };
+  const content = <div className={contentClass}>Hello world</div>;
 
-  public state = {
-    time: new Date().toLocaleTimeString()
-  };
+  return (
+    <div>
+      <Toggle
+        label="Wrap the content box below in a Layer"
+        inlineLabel
+        checked={showLayer}
+        onChange={toggleShowLayer}
+      />
 
-  public context: {
-    message: string;
-  };
+      {showLayer ? <Layer>{content}</Layer> : content}
+    </div>
+  );
+};
 
-  public componentDidMount() {
-    this._async.setInterval(() => {
-      this.setState({
-        time: new Date().toLocaleTimeString()
-      });
-    }, 1000);
-  }
-
-  public render() {
-    return (
-      <div className={css(styles.content, AnimationClassNames.scaleUpIn100)}>
-        <div className={styles.textContent}>{this.context.message}</div>
-        <div>{this.state.time}</div>
-      </div>
-    );
-  }
-}
-
-export interface ILayerBasicExampleState {
-  showLayer: boolean;
-}
-
-export class LayerBasicExample extends BaseComponent<{}, ILayerBasicExampleState> {
-  public static childContextTypes = {
-    message: PropTypes.string
-  };
-
-  public state = {
-    showLayer: false
-  };
-
-  public getChildContext() {
-    return {
-      message: 'Hello world.'
-    };
-  }
-
-  public render() {
-    const { showLayer } = this.state;
-    return (
-      <div>
-        <Toggle label="Wrap the content box below in a Layer" inlineLabel checked={showLayer} onChange={this._onChange} />
-
-        {showLayer ? (
-          <Layer>
-            <LayerContentExample />
-          </Layer>
-        ) : (
-          <LayerContentExample />
-        )}
-      </div>
-    );
-  }
-
-  private _onChange = (ev: React.FormEvent<HTMLElement | HTMLInputElement>, checked: boolean): void => {
-    this.setState({ showLayer: checked });
-  };
-}
+const theme = getTheme();
+const contentClass = mergeStyles([
+  {
+    backgroundColor: theme.palette.themePrimary,
+    color: theme.palette.white,
+    lineHeight: '50px',
+    padding: '0 20px',
+  },
+  AnimationClassNames.scaleUpIn100,
+]);

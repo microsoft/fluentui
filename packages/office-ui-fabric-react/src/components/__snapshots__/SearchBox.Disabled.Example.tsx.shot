@@ -2,7 +2,25 @@
 
 exports[`Component Examples renders SearchBox.Disabled.Example.tsx correctly 1`] = `
 <div
-  className="ms-SearchBoxExample"
+  className=
+      ms-Stack
+      {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        height: auto;
+        width: auto;
+      }
+      & > * {
+        text-overflow: ellipsis;
+      }
+      & > *:not(:first-child) {
+        margin-top: 20px;
+      }
+      & > *:not(.ms-StackItem) {
+        flex-shrink: 1;
+      }
 >
   <div
     className=
@@ -12,12 +30,13 @@ exports[`Component Examples renders SearchBox.Disabled.Example.tsx correctly 1`]
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
           align-items: stretch;
-          background-color: #f4f4f4;
-          border-color: #f4f4f4;
-          border: 1px solid #a6a6a6;
+          background-color: #f3f2f1;
+          border-color: #f3f2f1;
+          border-radius: 2px;
+          border: 1px solid #605e5c;
           box-shadow: none;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           cursor: default;
           display: flex;
           flex-direction: row;
@@ -37,25 +56,26 @@ exports[`Component Examples renders SearchBox.Disabled.Example.tsx correctly 1`]
           pointer-events: none;
         }
         @media screen and (-ms-high-contrast: active){& {
-          border: 1px solid WindowText;
+          border-color: GrayText;
         }
         &:hover {
-          border-color: #212121;
+          border-color: #323130;
         }
         @media screen and (-ms-high-contrast: active){&:hover {
           border-color: Highlight;
         }
-        &:hover $iconContainer {
+        &:hover .ms-SearchBox-iconContainer {
           color: #005a9e;
         }
     onFocusCapture={[Function]}
+    role="search"
   >
     <div
       aria-hidden={true}
       className=
           ms-SearchBox-iconContainer
           {
-            color: #a6a6a6;
+            color: #a19f9d;
             cursor: text;
             display: flex;
             flex-direction: column;
@@ -69,6 +89,7 @@ exports[`Component Examples renders SearchBox.Disabled.Example.tsx correctly 1`]
       onClick={[Function]}
     >
       <i
+        aria-hidden={true}
         className=
             ms-SearchBox-icon
             {
@@ -83,13 +104,11 @@ exports[`Component Examples renders SearchBox.Disabled.Example.tsx correctly 1`]
               transition: opacity 0.167s 0s;
             }
         data-icon-name="Search"
-        role="presentation"
       >
         
       </i>
     </div>
     <input
-      aria-label="Search"
       className=
           ms-SearchBox-field
           {
@@ -97,7 +116,7 @@ exports[`Component Examples renders SearchBox.Disabled.Example.tsx correctly 1`]
             border: none;
             box-shadow: none;
             box-sizing: border-box;
-            color: #a6a6a6;
+            color: #a19f9d;
             flex: 1 1 0px;
             font-family: inherit;
             font-size: inherit;
@@ -115,22 +134,29 @@ exports[`Component Examples renders SearchBox.Disabled.Example.tsx correctly 1`]
             padding-top: 0px;
             text-overflow: ellipsis;
           }
-          &::-ms-clear {
-            display: none;
-          }
           &::placeholder {
-            color: #666666;
+            color: #605e5c;
             opacity: 1;
           }
           &:-ms-input-placeholder {
-            color: #666666;
+            color: #605e5c;
+            opacity: 1;
+          }
+          &::-ms-input-placeholder {
+            color: #605e5c;
+            opacity: 1;
+          }
+          &::-ms-clear {
+            display: none;
           }
       disabled={true}
       id="SearchBox0"
+      onBlur={[Function]}
       onChange={[Function]}
       onInput={[Function]}
       onKeyDown={[Function]}
       placeholder="Search"
+      role="searchbox"
       value=""
     />
   </div>
@@ -144,12 +170,13 @@ exports[`Component Examples renders SearchBox.Disabled.Example.tsx correctly 1`]
           -webkit-font-smoothing: antialiased;
           align-items: stretch;
           background-color: transparent;
-          border-color: #f4f4f4;
+          border-color: #f3f2f1;
+          border-radius: 0px;
           border-width: 0 0 1px 0;
-          border: 1px solid #a6a6a6;
+          border: 1px solid #605e5c;
           box-shadow: none;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           cursor: default;
           display: flex;
           flex-direction: row;
@@ -169,25 +196,26 @@ exports[`Component Examples renders SearchBox.Disabled.Example.tsx correctly 1`]
           pointer-events: none;
         }
         @media screen and (-ms-high-contrast: active){& {
-          border: 1px solid WindowText;
+          border-color: GrayText;
         }
         &:hover {
-          border-color: #212121;
+          border-color: #323130;
         }
         @media screen and (-ms-high-contrast: active){&:hover {
           border-color: Highlight;
         }
-        &:hover $iconContainer {
+        &:hover .ms-SearchBox-iconContainer {
           color: #005a9e;
         }
     onFocusCapture={[Function]}
+    role="search"
   >
     <div
       aria-hidden={true}
       className=
           ms-SearchBox-iconContainer
           {
-            color: #a6a6a6;
+            color: #a19f9d;
             cursor: text;
             display: flex;
             flex-direction: column;
@@ -201,6 +229,7 @@ exports[`Component Examples renders SearchBox.Disabled.Example.tsx correctly 1`]
       onClick={[Function]}
     >
       <i
+        aria-hidden={true}
         className=
             ms-SearchBox-icon
             {
@@ -215,13 +244,11 @@ exports[`Component Examples renders SearchBox.Disabled.Example.tsx correctly 1`]
               transition: opacity 0.167s 0s;
             }
         data-icon-name="Search"
-        role="presentation"
       >
         
       </i>
     </div>
     <input
-      aria-label="Search"
       className=
           ms-SearchBox-field
           {
@@ -229,7 +256,7 @@ exports[`Component Examples renders SearchBox.Disabled.Example.tsx correctly 1`]
             border: none;
             box-shadow: none;
             box-sizing: border-box;
-            color: #a6a6a6;
+            color: #a19f9d;
             flex: 1 1 0px;
             font-family: inherit;
             font-size: inherit;
@@ -247,22 +274,29 @@ exports[`Component Examples renders SearchBox.Disabled.Example.tsx correctly 1`]
             padding-top: 0px;
             text-overflow: ellipsis;
           }
-          &::-ms-clear {
-            display: none;
-          }
           &::placeholder {
-            color: #666666;
+            color: #605e5c;
             opacity: 1;
           }
           &:-ms-input-placeholder {
-            color: #666666;
+            color: #605e5c;
+            opacity: 1;
+          }
+          &::-ms-input-placeholder {
+            color: #605e5c;
+            opacity: 1;
+          }
+          &::-ms-clear {
+            display: none;
           }
       disabled={true}
       id="SearchBox1"
+      onBlur={[Function]}
       onChange={[Function]}
       onInput={[Function]}
       onKeyDown={[Function]}
       placeholder="Search"
+      role="searchbox"
       value=""
     />
   </div>

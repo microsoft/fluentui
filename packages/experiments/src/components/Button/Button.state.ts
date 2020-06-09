@@ -1,23 +1,19 @@
-import * as React from 'react';
-import { BaseState } from '../../utilities/BaseState';
-import { IButtonProps, IButtonViewProps } from './Button.types';
+import { useImperativeHandle, useRef } from 'react';
+import { IButtonComponent, IButtonViewProps } from './Button.types';
 
-export type IButtonState = Pick<IButtonViewProps, 'buttonRef'>;
+export const useButtonState: IButtonComponent['state'] = props => {
+  const buttonRef = useRef<HTMLButtonElement | null>(null);
 
-export class ButtonState extends BaseState<IButtonProps, IButtonViewProps, IButtonState> {
-  private _buttonRef = React.createRef<HTMLButtonElement>();
+  useImperativeHandle(props.componentRef, () => ({
+    focus: () => {
+      buttonRef.current && buttonRef.current.focus();
+    },
+  }));
 
-  constructor(props: ButtonState['props']) {
-    super(props);
+  const viewProps: IButtonViewProps = {
+    ...props,
+    buttonRef,
+  };
 
-    this.state = {
-      buttonRef: this._buttonRef
-    };
-  }
-
-  public focus(): void {
-    if (this._buttonRef.current) {
-      this._buttonRef.current.focus();
-    }
-  }
-}
+  return viewProps;
+};

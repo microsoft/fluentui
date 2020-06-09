@@ -1,12 +1,18 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction } from '../../Utilities';
+import { classNamesFunction, initializeComponentRef } from '../../Utilities';
 import { ILink, ILinkProps, ILinkStyleProps, ILinkStyles } from './Link.types';
 import { KeytipData } from '../../KeytipData';
 
 const getClassNames = classNamesFunction<ILinkStyleProps, ILinkStyles>();
 
-export class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
+export class LinkBase extends React.Component<ILinkProps, {}> implements ILink {
   private _link = React.createRef<HTMLAnchorElement | HTMLButtonElement | null>();
+
+  constructor(props: ILinkProps) {
+    super(props);
+
+    initializeComponentRef(this);
+  }
 
   public render(): JSX.Element {
     const { disabled, children, className, href, theme, styles, keytipProps } = this.props;
@@ -15,7 +21,7 @@ export class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
       className,
       isButton: !href,
       isDisabled: disabled,
-      theme: theme!
+      theme: theme!,
     });
 
     const RootType = this._getRootType(this.props);
@@ -61,8 +67,8 @@ export class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
   };
 
   private _adjustPropsForRootType(
-    RootType: string | React.ComponentClass | React.StatelessComponent,
-    props: ILinkProps & { getStyles?: any }
+    RootType: string | React.ComponentClass | React.FunctionComponent,
+    props: ILinkProps & { getStyles?: any },
   ): Partial<ILinkProps> {
     // Deconstruct the props so we remove props like `as`, `theme` and `styles`
     // as those will always be removed. We also take some props that are optional
@@ -76,7 +82,7 @@ export class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
         return {
           target,
           href: disabled ? undefined : href,
-          ...restProps
+          ...restProps,
         };
       }
 
@@ -85,7 +91,7 @@ export class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
         return {
           type: 'button',
           disabled,
-          ...restProps
+          ...restProps,
         };
       }
 
@@ -97,7 +103,7 @@ export class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
     return { target, href, disabled, ...restProps };
   }
 
-  private _getRootType(props: ILinkProps): string | React.ComponentClass | React.StatelessComponent {
+  private _getRootType(props: ILinkProps): string | React.ComponentClass | React.FunctionComponent {
     if (props.as) {
       return props.as;
     }

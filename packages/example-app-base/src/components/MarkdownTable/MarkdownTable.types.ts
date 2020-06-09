@@ -15,10 +15,11 @@ export interface IMarkdownTableCellProps extends IMarkdownTableProps {
    * Render the table cell as a th or td.
    * @default 'td'
    */
-  as: 'th' | 'td';
+  as?: 'th' | 'td';
 }
 
-export type IMarkdownTableStyleProps = Required<Pick<IMarkdownTableProps, 'theme'>> & Pick<IMarkdownTableProps, 'className'>;
+export type IMarkdownTableStyleProps = Required<Pick<IMarkdownTableProps, 'theme'>> &
+  Pick<IMarkdownTableProps, 'className'>;
 
 export interface IMarkdownTableStyles {
   root: IStyle;

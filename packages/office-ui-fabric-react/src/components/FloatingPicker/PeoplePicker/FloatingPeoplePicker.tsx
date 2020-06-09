@@ -21,7 +21,7 @@ export class FloatingPeoplePicker extends BaseFloatingPeoplePicker {
   public static defaultProps: any = {
     onRenderSuggestionsItem: (props: IPersonaProps, itemProps?: IBasePickerSuggestionsProps) =>
       SuggestionItemNormal({ ...props }, { ...itemProps }),
-    createGenericItem: createItem
+    createGenericItem: createItem,
   };
 }
 
@@ -31,7 +31,7 @@ export function createItem(name: string, isValid: boolean): ISuggestionModel<IPe
     key: name,
     primaryText: name,
     imageInitials: '!',
-    isValid: isValid
+    isValid: isValid,
   };
 
   if (!isValid) {

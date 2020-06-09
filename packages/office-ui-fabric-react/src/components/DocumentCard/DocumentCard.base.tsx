@@ -1,16 +1,31 @@
 import * as React from 'react';
 import { IProcessedStyleSet } from '../../Styling';
-import { BaseComponent, classNamesFunction, KeyCodes, getNativeProps, divProperties } from '../../Utilities';
-import { DocumentCardType, IDocumentCard, IDocumentCardProps, IDocumentCardStyleProps, IDocumentCardStyles } from './DocumentCard.types';
+import {
+  classNamesFunction,
+  KeyCodes,
+  getNativeProps,
+  divProperties,
+  warnDeprecations,
+  initializeComponentRef,
+} from '../../Utilities';
+import {
+  DocumentCardType,
+  IDocumentCard,
+  IDocumentCardProps,
+  IDocumentCardStyleProps,
+  IDocumentCardStyles,
+} from './DocumentCard.types';
 
 const getClassNames = classNamesFunction<IDocumentCardStyleProps, IDocumentCardStyles>();
+
+const COMPONENT_NAME = 'DocumentCard';
 
 /**
  * {@docCategory DocumentCard}
  */
-export class DocumentCardBase extends BaseComponent<IDocumentCardProps, any> implements IDocumentCard {
+export class DocumentCardBase extends React.Component<IDocumentCardProps, any> implements IDocumentCard {
   public static defaultProps: IDocumentCardProps = {
-    type: DocumentCardType.normal
+    type: DocumentCardType.normal,
   };
 
   private _rootElement = React.createRef<HTMLDivElement>();
@@ -19,28 +34,35 @@ export class DocumentCardBase extends BaseComponent<IDocumentCardProps, any> imp
   constructor(props: IDocumentCardProps) {
     super(props);
 
-    this._warnDeprecations({
-      accentColor: undefined
+    initializeComponentRef(this);
+    warnDeprecations(COMPONENT_NAME, props, {
+      accentColor: undefined,
     });
   }
 
   public render(): JSX.Element {
+    // tslint:disable-next-line:deprecation
     const { onClick, onClickHref, children, type, accentColor, styles, theme, className } = this.props;
-    const nativeProps = getNativeProps(this.props, divProperties, ['className', 'onClick', 'type', 'role']);
+    const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties, [
+      'className',
+      'onClick',
+      'type',
+      'role',
+    ]);
     const actionable = onClick || onClickHref ? true : false;
 
     this._classNames = getClassNames(styles!, {
       theme: theme!,
       className,
       actionable,
-      compact: type === DocumentCardType.compact ? true : false
+      compact: type === DocumentCardType.compact ? true : false,
     });
 
     // Override the border color if an accent color was provided (compact card only)
     let style;
     if (type === DocumentCardType.compact && accentColor) {
       style = {
-        borderBottomColor: accentColor
+        borderBottomColor: accentColor,
       };
     }
 

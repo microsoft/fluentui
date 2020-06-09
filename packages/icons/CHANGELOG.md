@@ -1,6 +1,104 @@
 # Change Log - @uifabric/icons
 
-This log was last generated on Tue, 14 May 2019 07:50:30 GMT and should not be manually modified.
+This log was last generated on Thu, 07 May 2020 01:06:55 GMT and should not be manually modified.
+
+<!-- Start content -->
+
+## [7.3.36](https://github.com/microsoft/fluentui/tree/@uifabric/icons_v7.3.36)
+
+Thu, 07 May 2020 01:06:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/icons_v7.3.26..@uifabric/icons_v7.3.36)
+
+### Patches
+
+- Addressing commonjs imports. ([PR #13031](https://github.com/microsoft/fluentui/pull/13031) by dzearing@microsoft.com)
+
+## [7.3.26](https://github.com/microsoft/fluentui/tree/@uifabric/icons_v7.3.26)
+
+Thu, 16 Apr 2020 04:01:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/icons_v7.3.22..@uifabric/icons_v7.3.26)
+
+### Patches
+
+- Readme: Clarify usage docs; Fabric=>Fluent wording updates ([PR #12508](https://github.com/microsoft/fluentui/pull/12508) by elcraig@microsoft.com)
+
+## 7.3.22
+Wed, 25 Mar 2020 12:30:04 GMT
+
+### Patches
+
+- Changing references of Fabric to Fluent (mgodbolt@microsoft.com)
+## 7.3.21
+Mon, 23 Mar 2020 12:28:29 GMT
+
+### Patches
+
+- Replace OfficeDev/office-ui-fabric-react with microsoft/fluentui (elcraig@microsoft.com)
+## 7.3.1
+Fri, 17 Jan 2020 02:32:17 GMT
+
+### Patches
+
+- Update tslib minver to first version containing __spreadArrays helper due to changes in how TS emits spreads. (jagore@microsoft.com)
+## 7.3.0
+Mon, 23 Sep 2019 12:33:15 GMT
+
+### Minor changes
+
+- Updates icons to v3.50, adding new icons and visual changes to some existing ones. (pejahn@microsoft.com)
+## 7.2.1
+Thu, 12 Sep 2019 12:34:15 GMT
+
+### Patches
+
+- Enable api-extractor for OUFR deps (elcraig@microsoft.com)
+## 7.2.0
+Wed, 04 Sep 2019 12:32:15 GMT
+
+### Minor changes
+
+- Update Fabric icons to v3.46, adding many new icons. (pejahn@microsoft.com)
+## 7.1.3
+Wed, 04 Sep 2019 04:09:58 GMT
+
+### Patches
+
+- fix version file (kchau@microsoft.com)
+## 7.1.2
+Fri, 23 Aug 2019 12:35:28 GMT
+
+### Patches
+
+- Update npmignores, delete unused jest setup files (elcraig@microsoft.com)
+- Fix up readme and package.json descriptions (elcraig@microsoft.com)
+
+## 7.1.1
+Wed, 17 Jul 2019 18:58:57 GMT
+
+### Patches
+
+- Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom. (makotom@microsoft.com)
+
+## 7.1.0
+Tue, 02 Jul 2019 12:29:06 GMT
+
+### Minor changes
+
+- Update MDL2 icons. Add AllIconNames.json
+
+## 7.0.2
+Fri, 14 Jun 2019 12:26:30 GMT
+
+### Patches
+
+- Fix missing assets in production build.
+
+## 7.0.1
+Thu, 13 Jun 2019 00:24:48 GMT
+
+### Patches
+
+- Initial release of Fabric 7
 
 ## 6.5.2
 Tue, 14 May 2019 07:50:30 GMT
@@ -49,7 +147,7 @@ Mon, 08 Oct 2018 12:24:15 GMT
 
 ### Patches
 
-- Moving tslint/prettier dependencies 
+- Moving tslint/prettier dependencies
 
 ## 6.1.1
 Fri, 21 Sep 2018 14:25:46 GMT
@@ -184,4 +282,3 @@ Wed, 27 Sep 2017 00:20:58 GMT
 ### Patches
 
 - Initial release of the icons package.
-

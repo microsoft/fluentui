@@ -23,6 +23,8 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
       }
 >
   <div
+    aria-label="Document Card with document preview. Revenue stream proposal fiscal year 2016 version 2.
+      Created by Roko Kolar a few minutes ago"
     className=
         ms-DocumentCard
         ms-DocumentCard--actionable
@@ -30,8 +32,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
         {
           -webkit-font-smoothing: antialiased;
           background-color: #ffffff;
-          border: 1px solid #eaeaea;
-          box-sizing: border-box;
+          border: 1px solid #edebe9;
           display: flex;
           height: 108px;
           max-width: 480px;
@@ -39,15 +40,35 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
           position: relative;
           user-select: none;
         }
+        &:focus {
+          outline: 0px solid;
+        }
+        .ms-Fabric--isFocusVisible &:focus {
+          border-color: #605e5c;
+        }
+        .ms-Fabric--isFocusVisible &:focus:after {
+          border-radius: 2px;
+          border: 2px solid #605e5c;
+          bottom: -1px;
+          content: '';
+          left: -1px;
+          pointer-events: none;
+          position: absolute;
+          right: -1px;
+          top: -1px;
+        }
+        @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+          border-color: Highlight;
+        }
         & .ms-DocumentCardLocation + .ms-DocumentCardTitle {
           padding-top: 4px;
         }
         &:hover {
-          border-color: #c8c8c8;
+          border-color: #c8c6c4;
           cursor: pointer;
         }
         &:hover:after {
-          border: 1px solid #c8c8c8;
+          border: 1px solid #c8c6c4;
           bottom: 0px;
           content: " ";
           left: 0px;
@@ -58,7 +79,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
         }
         & .ms-DocumentCardPreview {
           border-bottom: 0px;
-          border-right: 1px solid #eaeaea;
+          border-right: 1px solid #edebe9;
           max-height: 106px;
           max-width: 144px;
         }
@@ -70,7 +91,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
           padding-bottom: 12px;
         }
         & .ms-DocumentCardTitle {
-          font-size: 15px;
+          font-size: 16px;
           line-height: 16px;
           padding-bottom: 12px 16px 8px 16px;
         }
@@ -84,8 +105,13 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
       className=
           ms-DocumentCardPreview
           {
-            background-color: #f8f8f8;
-            border-bottom: 1px solid #eaeaea;
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            background-color: #faf9f8;
+            border-bottom: 1px solid #edebe9;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 12px;
+            font-weight: 400;
             overflow: hidden;
             position: relative;
           }
@@ -164,7 +190,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
             onError={[Function]}
             onLoad={[Function]}
             role="presentation"
-            src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/icon-ppt.png"
+            src="https://static2.sharepointonline.com/files/fabric/assets/item-types/32/pptx.png"
           />
         </div>
       </div>
@@ -186,11 +212,11 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              color: #333333;
+              color: #323130;
               display: block;
-              font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 17px;
-              font-weight: 300;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 18px;
+              font-weight: 400;
               height: 38px;
               line-height: 21px;
               overflow: hidden;
@@ -200,6 +226,11 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
               padding-top: 8px;
               word-wrap: break-word;
             }
+        style={
+          Object {
+            "whiteSpace": "nowrap",
+          }
+        }
         title="Revenue stream proposal fiscal year 2016 version02.pptx"
       >
         Revenue stream proposal fiscal year 2016 version02.pptx
@@ -257,7 +288,6 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                     font-weight: 400;
                   }
               role="presentation"
-              size={11}
             >
               <div
                 className=
@@ -269,17 +299,18 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                       text-align: center;
                       width: 32px;
                     }
+                role="presentation"
               >
                 <div
                   aria-hidden="true"
                   className=
                       ms-Persona-initials
                       {
-                        background-color: #00ABA9;
+                        background-color: #0B6A0B;
                         border-radius: 50%;
                         color: #ffffff;
                         font-size: 14px;
-                        font-weight: 400;
+                        font-weight: 600;
                         height: 32px;
                         line-height: 32px;
                       }
@@ -289,6 +320,9 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                         border: 1px solid WindowText;
                         box-sizing: border-box;
                         color: WindowText;
+                      }
+                      & i {
+                        font-weight: 600;
                       }
                 >
                   <span>
@@ -314,7 +348,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
             className=
                 ms-DocumentCardActivity-name
                 {
-                  color: #333333;
+                  color: #323130;
                   display: block;
                   font-size: 12px;
                   font-weight: 600;
@@ -331,7 +365,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
             className=
                 ms-DocumentCardActivity-activity
                 {
-                  color: #666666;
+                  color: #605e5c;
                   display: block;
                   font-size: 12px;
                   height: 15px;
@@ -348,6 +382,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
     </div>
   </div>
   <div
+    aria-label="Document Card with folder or site activity. 4 files were uploaded. Created by Annie Lindqvist a few minutes ago"
     className=
         ms-DocumentCard
         ms-DocumentCard--actionable
@@ -355,8 +390,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
         {
           -webkit-font-smoothing: antialiased;
           background-color: #ffffff;
-          border: 1px solid #eaeaea;
-          box-sizing: border-box;
+          border: 1px solid #edebe9;
           display: flex;
           height: 108px;
           max-width: 480px;
@@ -364,15 +398,35 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
           position: relative;
           user-select: none;
         }
+        &:focus {
+          outline: 0px solid;
+        }
+        .ms-Fabric--isFocusVisible &:focus {
+          border-color: #605e5c;
+        }
+        .ms-Fabric--isFocusVisible &:focus:after {
+          border-radius: 2px;
+          border: 2px solid #605e5c;
+          bottom: -1px;
+          content: '';
+          left: -1px;
+          pointer-events: none;
+          position: absolute;
+          right: -1px;
+          top: -1px;
+        }
+        @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+          border-color: Highlight;
+        }
         & .ms-DocumentCardLocation + .ms-DocumentCardTitle {
           padding-top: 4px;
         }
         &:hover {
-          border-color: #c8c8c8;
+          border-color: #c8c6c4;
           cursor: pointer;
         }
         &:hover:after {
-          border: 1px solid #c8c8c8;
+          border: 1px solid #c8c6c4;
           bottom: 0px;
           content: " ";
           left: 0px;
@@ -383,7 +437,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
         }
         & .ms-DocumentCardPreview {
           border-bottom: 0px;
-          border-right: 1px solid #eaeaea;
+          border-right: 1px solid #edebe9;
           max-height: 106px;
           max-width: 144px;
         }
@@ -395,7 +449,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
           padding-bottom: 12px;
         }
         & .ms-DocumentCardTitle {
-          font-size: 15px;
+          font-size: 16px;
           line-height: 16px;
           padding-bottom: 12px 16px 8px 16px;
         }
@@ -409,8 +463,13 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
       className=
           ms-DocumentCardPreview
           {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             background-color: #ffffff;
-            border-bottom: 1px solid #eaeaea;
+            border-bottom: 1px solid #edebe9;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 12px;
+            font-weight: 400;
             overflow: hidden;
             position: relative;
           }
@@ -435,18 +494,6 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                 line-height: 16px;
                 margin-bottom: 8px;
                 overflow: hidden;
-                padding-left: 24px;
-                position: relative;
-                text-overflow: ellipsis;
-                white-space: nowrap;
-              }
-              & a {
-                color: #212121;
-                font-size: 12px;
-                text-decoration: none;
-              }
-              & a:hover {
-                color: #0078d4;
               }
         >
           <li>
@@ -456,13 +503,12 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
+                    display: inline-block;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
-                    left: 0px;
+                    margin-right: 8px;
                     overflow: hidden;
-                    position: absolute;
-                    top: 0px;
                   }
               style={
                 Object {
@@ -487,7 +533,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                 onError={[Function]}
                 onLoad={[Function]}
                 role="presentation"
-                src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/icon-ppt.png"
+                src="https://static2.sharepointonline.com/files/fabric/assets/item-types/32/pptx.png"
               />
             </div>
             <a
@@ -496,30 +542,63 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    color: #0078d4;
+                    box-sizing: border-box;
+                    color: #201f1e;
+                    display: inline-block;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: inherit;
                     font-weight: inherit;
-                    outline: none;
+                    outline: transparent;
+                    overflow: hidden;
+                    position: relative;
                     text-decoration: none;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    width: calc(100% - 24px);
                   }
                   .ms-Fabric--isFocusVisible &:focus {
-                    box-shadow: 0 0 0 1px #666666 inset;
+                    box-shadow: 0 0 0 1px #605e5c inset;
+                    outline: 1px auto #605e5c;
                   }
                   @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
-                    outline: 1px solid WindowText;
+                    outline: none;
                   }
                   @media screen and (-ms-high-contrast: active){& {
+                    -ms-high-contrast-adjust: auto;
                     border-bottom: none;
                   }
-                  &:active, &:hover, &:active:hover {
+                  &:active {
                     color: #004578;
+                    text-decoration: underline;
                   }
-                  @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
+                  &:hover {
+                    color: #0078d4;
+                    text-decoration: underline;
+                  }
+                  &:active:hover {
+                    color: #004578;
                     text-decoration: underline;
                   }
                   &:focus {
                     color: #0078d4;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus:after {
+                    border: 1px solid #ffffff;
+                    bottom: 1px;
+                    content: "";
+                    left: 1px;
+                    outline: 1px solid #605e5c;
+                    position: absolute;
+                    right: 1px;
+                    top: 1px;
+                    z-index: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                    border: 1px solid WindowText;
+                    outline: none;
                   }
               href="http://bing.com"
               onClick={[Function]}
@@ -534,13 +613,12 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
+                    display: inline-block;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
-                    left: 0px;
+                    margin-right: 8px;
                     overflow: hidden;
-                    position: absolute;
-                    top: 0px;
                   }
               style={
                 Object {
@@ -565,7 +643,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                 onError={[Function]}
                 onLoad={[Function]}
                 role="presentation"
-                src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/icon-ppt.png"
+                src="https://static2.sharepointonline.com/files/fabric/assets/item-types/32/pptx.png"
               />
             </div>
             <a
@@ -574,30 +652,63 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    color: #0078d4;
+                    box-sizing: border-box;
+                    color: #201f1e;
+                    display: inline-block;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: inherit;
                     font-weight: inherit;
-                    outline: none;
+                    outline: transparent;
+                    overflow: hidden;
+                    position: relative;
                     text-decoration: none;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    width: calc(100% - 24px);
                   }
                   .ms-Fabric--isFocusVisible &:focus {
-                    box-shadow: 0 0 0 1px #666666 inset;
+                    box-shadow: 0 0 0 1px #605e5c inset;
+                    outline: 1px auto #605e5c;
                   }
                   @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
-                    outline: 1px solid WindowText;
+                    outline: none;
                   }
                   @media screen and (-ms-high-contrast: active){& {
+                    -ms-high-contrast-adjust: auto;
                     border-bottom: none;
                   }
-                  &:active, &:hover, &:active:hover {
+                  &:active {
                     color: #004578;
+                    text-decoration: underline;
                   }
-                  @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
+                  &:hover {
+                    color: #0078d4;
+                    text-decoration: underline;
+                  }
+                  &:active:hover {
+                    color: #004578;
                     text-decoration: underline;
                   }
                   &:focus {
                     color: #0078d4;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus:after {
+                    border: 1px solid #ffffff;
+                    bottom: 1px;
+                    content: "";
+                    left: 1px;
+                    outline: 1px solid #605e5c;
+                    position: absolute;
+                    right: 1px;
+                    top: 1px;
+                    z-index: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                    border: 1px solid WindowText;
+                    outline: none;
                   }
               href="http://bing.com"
               onClick={[Function]}
@@ -612,13 +723,12 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
+                    display: inline-block;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
-                    left: 0px;
+                    margin-right: 8px;
                     overflow: hidden;
-                    position: absolute;
-                    top: 0px;
                   }
               style={
                 Object {
@@ -643,7 +753,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                 onError={[Function]}
                 onLoad={[Function]}
                 role="presentation"
-                src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/icon-ppt.png"
+                src="https://static2.sharepointonline.com/files/fabric/assets/item-types/32/pptx.png"
               />
             </div>
             <a
@@ -652,30 +762,63 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    color: #0078d4;
+                    box-sizing: border-box;
+                    color: #201f1e;
+                    display: inline-block;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: inherit;
                     font-weight: inherit;
-                    outline: none;
+                    outline: transparent;
+                    overflow: hidden;
+                    position: relative;
                     text-decoration: none;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    width: calc(100% - 24px);
                   }
                   .ms-Fabric--isFocusVisible &:focus {
-                    box-shadow: 0 0 0 1px #666666 inset;
+                    box-shadow: 0 0 0 1px #605e5c inset;
+                    outline: 1px auto #605e5c;
                   }
                   @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
-                    outline: 1px solid WindowText;
+                    outline: none;
                   }
                   @media screen and (-ms-high-contrast: active){& {
+                    -ms-high-contrast-adjust: auto;
                     border-bottom: none;
                   }
-                  &:active, &:hover, &:active:hover {
+                  &:active {
                     color: #004578;
+                    text-decoration: underline;
                   }
-                  @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
+                  &:hover {
+                    color: #0078d4;
+                    text-decoration: underline;
+                  }
+                  &:active:hover {
+                    color: #004578;
                     text-decoration: underline;
                   }
                   &:focus {
                     color: #0078d4;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus:after {
+                    border: 1px solid #ffffff;
+                    bottom: 1px;
+                    content: "";
+                    left: 1px;
+                    outline: 1px solid #605e5c;
+                    position: absolute;
+                    right: 1px;
+                    top: 1px;
+                    z-index: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                    border: 1px solid WindowText;
+                    outline: none;
                   }
               href="http://bing.com"
               onClick={[Function]}
@@ -689,7 +832,6 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
 
               {
                 display: block;
-                font-size: 12px;
                 padding-bottom: 8px;
                 padding-left: 16px;
                 padding-right: 16px;
@@ -717,11 +859,11 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              color: #333333;
+              color: #323130;
               display: block;
-              font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 17px;
-              font-weight: 300;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 18px;
+              font-weight: 400;
               height: 38px;
               line-height: 21px;
               overflow: hidden;
@@ -731,6 +873,11 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
               padding-top: 8px;
               word-wrap: break-word;
             }
+        style={
+          Object {
+            "whiteSpace": "nowrap",
+          }
+        }
         title="4 files were uploaded"
       >
         4 files were uploaded
@@ -788,7 +935,6 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                     font-weight: 400;
                   }
               role="presentation"
-              size={11}
             >
               <div
                 className=
@@ -800,6 +946,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                       text-align: center;
                       width: 32px;
                     }
+                role="presentation"
               >
                 <div
                   className=
@@ -872,7 +1019,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
             className=
                 ms-DocumentCardActivity-name
                 {
-                  color: #333333;
+                  color: #323130;
                   display: block;
                   font-size: 12px;
                   font-weight: 600;
@@ -889,7 +1036,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
             className=
                 ms-DocumentCardActivity-activity
                 {
-                  color: #666666;
+                  color: #605e5c;
                   display: block;
                   font-size: 12px;
                   height: 15px;
@@ -906,6 +1053,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
     </div>
   </div>
   <div
+    aria-label="Document Card with icon. View and share files. Created by Aaron Reid a few minutes ago"
     className=
         ms-DocumentCard
         ms-DocumentCard--actionable
@@ -913,8 +1061,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
         {
           -webkit-font-smoothing: antialiased;
           background-color: #ffffff;
-          border: 1px solid #eaeaea;
-          box-sizing: border-box;
+          border: 1px solid #edebe9;
           display: flex;
           height: 108px;
           max-width: 480px;
@@ -922,15 +1069,35 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
           position: relative;
           user-select: none;
         }
+        &:focus {
+          outline: 0px solid;
+        }
+        .ms-Fabric--isFocusVisible &:focus {
+          border-color: #605e5c;
+        }
+        .ms-Fabric--isFocusVisible &:focus:after {
+          border-radius: 2px;
+          border: 2px solid #605e5c;
+          bottom: -1px;
+          content: '';
+          left: -1px;
+          pointer-events: none;
+          position: absolute;
+          right: -1px;
+          top: -1px;
+        }
+        @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+          border-color: Highlight;
+        }
         & .ms-DocumentCardLocation + .ms-DocumentCardTitle {
           padding-top: 4px;
         }
         &:hover {
-          border-color: #c8c8c8;
+          border-color: #c8c6c4;
           cursor: pointer;
         }
         &:hover:after {
-          border: 1px solid #c8c8c8;
+          border: 1px solid #c8c6c4;
           bottom: 0px;
           content: " ";
           left: 0px;
@@ -941,7 +1108,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
         }
         & .ms-DocumentCardPreview {
           border-bottom: 0px;
-          border-right: 1px solid #eaeaea;
+          border-right: 1px solid #edebe9;
           max-height: 106px;
           max-width: 144px;
         }
@@ -953,7 +1120,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
           padding-bottom: 12px;
         }
         & .ms-DocumentCardTitle {
-          font-size: 15px;
+          font-size: 16px;
           line-height: 16px;
           padding-bottom: 12px 16px 8px 16px;
         }
@@ -967,8 +1134,13 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
       className=
           ms-DocumentCardPreview
           {
-            background-color: #f8f8f8;
-            border-bottom: 1px solid #eaeaea;
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            background-color: #faf9f8;
+            border-bottom: 1px solid #edebe9;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 12px;
+            font-weight: 400;
             overflow: hidden;
             position: relative;
           }
@@ -991,6 +1163,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
         }
       >
         <i
+          aria-hidden={true}
           className=
 
               {
@@ -998,14 +1171,13 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                 -webkit-font-smoothing: antialiased;
                 color: #ffffff;
                 display: inline-block;
-                font-family: "FabricMDL2Icons-1";
+                font-family: "FabricMDL2Icons-2";
                 font-size: 42px;
                 font-style: normal;
                 font-weight: normal;
                 speak: none;
               }
           data-icon-name="OpenFile"
-          role="presentation"
         >
           
         </i>
@@ -1028,11 +1200,11 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              color: #333333;
+              color: #323130;
               display: block;
-              font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 17px;
-              font-weight: 300;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 18px;
+              font-weight: 400;
               height: 38px;
               line-height: 21px;
               overflow: hidden;
@@ -1042,6 +1214,11 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
               padding-top: 8px;
               word-wrap: break-word;
             }
+        style={
+          Object {
+            "whiteSpace": "nowrap",
+          }
+        }
         title="View and share files"
       >
         View and share files
@@ -1099,7 +1276,6 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                     font-weight: 400;
                   }
               role="presentation"
-              size={11}
             >
               <div
                 className=
@@ -1111,6 +1287,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                       text-align: center;
                       width: 32px;
                     }
+                role="presentation"
               >
                 <div
                   className=
@@ -1183,7 +1360,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
             className=
                 ms-DocumentCardActivity-name
                 {
-                  color: #333333;
+                  color: #323130;
                   display: block;
                   font-size: 12px;
                   font-weight: 600;
@@ -1200,7 +1377,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
             className=
                 ms-DocumentCardActivity-activity
                 {
-                  color: #666666;
+                  color: #605e5c;
                   display: block;
                   font-size: 12px;
                   height: 15px;
@@ -1217,6 +1394,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
     </div>
   </div>
   <div
+    aria-label="Document Card with email conversation. Conversation about takeaways from annual SharePoint conference. Sent by Christian Bergqvist a few minutes ago"
     className=
         ms-DocumentCard
         ms-DocumentCard--actionable
@@ -1224,8 +1402,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
         {
           -webkit-font-smoothing: antialiased;
           background-color: #ffffff;
-          border: 1px solid #eaeaea;
-          box-sizing: border-box;
+          border: 1px solid #edebe9;
           display: flex;
           height: 108px;
           max-width: 480px;
@@ -1233,15 +1410,35 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
           position: relative;
           user-select: none;
         }
+        &:focus {
+          outline: 0px solid;
+        }
+        .ms-Fabric--isFocusVisible &:focus {
+          border-color: #605e5c;
+        }
+        .ms-Fabric--isFocusVisible &:focus:after {
+          border-radius: 2px;
+          border: 2px solid #605e5c;
+          bottom: -1px;
+          content: '';
+          left: -1px;
+          pointer-events: none;
+          position: absolute;
+          right: -1px;
+          top: -1px;
+        }
+        @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+          border-color: Highlight;
+        }
         & .ms-DocumentCardLocation + .ms-DocumentCardTitle {
           padding-top: 4px;
         }
         &:hover {
-          border-color: #c8c8c8;
+          border-color: #c8c6c4;
           cursor: pointer;
         }
         &:hover:after {
-          border: 1px solid #c8c8c8;
+          border: 1px solid #c8c6c4;
           bottom: 0px;
           content: " ";
           left: 0px;
@@ -1252,7 +1449,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
         }
         & .ms-DocumentCardPreview {
           border-bottom: 0px;
-          border-right: 1px solid #eaeaea;
+          border-right: 1px solid #edebe9;
           max-height: 106px;
           max-width: 144px;
         }
@@ -1264,7 +1461,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
           padding-bottom: 12px;
         }
         & .ms-DocumentCardTitle {
-          font-size: 15px;
+          font-size: 16px;
           line-height: 16px;
           padding-bottom: 12px 16px 8px 16px;
         }
@@ -1278,8 +1475,13 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
       className=
           ms-DocumentCardPreview
           {
-            background-color: #f8f8f8;
-            border-bottom: 1px solid #eaeaea;
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            background-color: #faf9f8;
+            border-bottom: 1px solid #edebe9;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 12px;
+            font-weight: 400;
             overflow: hidden;
             position: relative;
           }
@@ -1289,7 +1491,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
             ms-DocumentCardPreview-iconContainer
             {
               align-items: center;
-              background-color: #f8f8f8;
+              background-color: #faf9f8;
               display: flex;
               height: 100%;
               justify-content: center;
@@ -1302,12 +1504,13 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
         }
       >
         <i
+          aria-hidden={true}
           className=
 
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                background-color: #f8f8f8;
+                background-color: #faf9f8;
                 color: #0078d7;
                 display: inline-block;
                 font-family: "FabricMDL2Icons-9";
@@ -1317,7 +1520,6 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                 speak: none;
               }
           data-icon-name="OutlookLogo"
-          role="presentation"
         >
           
         </i>
@@ -1340,11 +1542,11 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              color: #333333;
+              color: #323130;
               display: block;
-              font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 17px;
-              font-weight: 300;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 18px;
+              font-weight: 400;
               height: 38px;
               line-height: 21px;
               overflow: hidden;
@@ -1354,6 +1556,11 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
               padding-top: 8px;
               word-wrap: break-word;
             }
+        style={
+          Object {
+            "whiteSpace": "nowrap",
+          }
+        }
         title="Conversation about takeaways from annual SharePoint conference"
       >
         Conversation about takeaways from annual SharePoint conference
@@ -1411,7 +1618,6 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                     font-weight: 400;
                   }
               role="presentation"
-              size={11}
             >
               <div
                 className=
@@ -1423,17 +1629,18 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                       text-align: center;
                       width: 32px;
                     }
+                role="presentation"
               >
                 <div
                   aria-hidden="true"
                   className=
                       ms-Persona-initials
                       {
-                        background-color: #7E3878;
+                        background-color: #A4262C;
                         border-radius: 50%;
                         color: #ffffff;
                         font-size: 14px;
-                        font-weight: 400;
+                        font-weight: 600;
                         height: 32px;
                         line-height: 32px;
                       }
@@ -1443,6 +1650,9 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                         border: 1px solid WindowText;
                         box-sizing: border-box;
                         color: WindowText;
+                      }
+                      & i {
+                        font-weight: 600;
                       }
                 >
                   <span>
@@ -1468,7 +1678,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
             className=
                 ms-DocumentCardActivity-name
                 {
-                  color: #333333;
+                  color: #323130;
                   display: block;
                   font-size: 12px;
                   font-weight: 600;
@@ -1485,7 +1695,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
             className=
                 ms-DocumentCardActivity-activity
                 {
-                  color: #666666;
+                  color: #605e5c;
                   display: block;
                   font-size: 12px;
                   height: 15px;

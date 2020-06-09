@@ -1,25 +1,34 @@
 import * as React from 'react';
-import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
-import { createListItems, IExampleItem } from 'office-ui-fabric-react/lib/utilities/exampleData';
+import { Async } from 'office-ui-fabric-react/lib/Utilities';
+import { createListItems, IExampleItem } from '@uifabric/example-data';
 import { IColumn, buildColumns, SelectionMode, Toggle } from 'office-ui-fabric-react/lib/index';
 import { ShimmeredDetailsList } from 'office-ui-fabric-react/lib/ShimmeredDetailsList';
 
 const fileIcons: { name: string }[] = [
   { name: 'accdb' },
+  { name: 'audio' },
+  { name: 'code' },
   { name: 'csv' },
   { name: 'docx' },
   { name: 'dotx' },
   { name: 'mpt' },
-  { name: 'odt' },
+  { name: 'model' },
   { name: 'one' },
-  { name: 'onepkg' },
   { name: 'onetoc' },
+  { name: 'pdf' },
+  { name: 'photo' },
   { name: 'pptx' },
+  { name: 'presentation' },
+  { name: 'potx' },
   { name: 'pub' },
+  { name: 'rtf' },
+  { name: 'spreadsheet' },
+  { name: 'txt' },
+  { name: 'vector' },
   { name: 'vsdx' },
-  { name: 'xls' },
   { name: 'xlsx' },
-  { name: 'xsn' }
+  { name: 'xltx' },
+  { name: 'xsn' },
 ];
 
 const ITEMS_COUNT = 200;
@@ -33,9 +42,10 @@ export interface IShimmerApplicationExampleState {
   isDataLoaded?: boolean;
 }
 
-export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplicationExampleState> {
+export class ShimmerApplicationExample extends React.Component<{}, IShimmerApplicationExampleState> {
   private _lastIntervalId: number;
   private _lastIndexWithData: number;
+  private _async: Async;
 
   constructor(props: {}) {
     super(props);
@@ -43,8 +53,14 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
     this.state = {
       items: [],
       columns: _buildColumns(),
-      isDataLoaded: false
+      isDataLoaded: false,
     };
+
+    this._async = new Async(this);
+  }
+
+  public componentWillUnmount(): void {
+    this._async.dispose();
   }
 
   public render(): JSX.Element {
@@ -68,6 +84,8 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
             selectionMode={SelectionMode.none}
             onRenderItemColumn={this._onRenderItemColumn}
             enableShimmer={!isDataLoaded}
+            ariaLabelForShimmer="Content is being fetched"
+            ariaLabelForGrid="Item details"
             listProps={{ renderedWindowsAhead: 0, renderedWindowsBehind: 0 }}
           />
         </div>
@@ -82,11 +100,11 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
       itemsCopy.splice(
         this._lastIndexWithData,
         randomQuantity,
-        ..._items.slice(this._lastIndexWithData, this._lastIndexWithData + randomQuantity)
+        ..._items.slice(this._lastIndexWithData, this._lastIndexWithData + randomQuantity),
       );
       this._lastIndexWithData += randomQuantity;
       this.setState({
-        items: itemsCopy
+        items: itemsCopy,
       });
     }, INTERVAL_DELAY);
   };
@@ -112,7 +130,7 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
     }
     this.setState({
       isDataLoaded: checked,
-      items: items
+      items: items,
     });
   };
 
@@ -128,7 +146,7 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
     const docType: string = fileIcons[Math.floor(Math.random() * fileIcons.length) + 0].name;
     return {
       docType,
-      url: `https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/svg/${docType}_16x1.svg`
+      url: `https://static2.sharepointonline.com/files/fabric/assets/item-types/16/${docType}.svg`,
     };
   }
 }

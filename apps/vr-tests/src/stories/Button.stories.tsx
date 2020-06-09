@@ -7,16 +7,17 @@ import {
   DefaultButton,
   ActionButton,
   CompoundButton,
+  IconButton,
   IButtonProps,
-  CommandBarButton
+  CommandBarButton,
 } from 'office-ui-fabric-react';
 
 const baseProps: IButtonProps = {
   iconProps: {
-    iconName: 'AddFriend'
+    iconName: 'AddFriend',
   },
   children: 'Button',
-  secondaryText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor'
+  secondaryText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor',
 };
 
 const commandProps: IButtonProps = {
@@ -29,18 +30,18 @@ const commandProps: IButtonProps = {
         key: 'emailMessage',
         text: 'Email message',
         iconProps: {
-          iconName: 'Mail'
-        }
+          iconName: 'Mail',
+        },
       },
       {
         key: 'calendarEvent',
         text: 'Calendar event',
         iconProps: {
-          iconName: 'Calendar'
-        }
-      }
-    ]
-  }
+          iconName: 'Calendar',
+        },
+      },
+    ],
+  },
 };
 
 storiesOf('Button Default', module)
@@ -165,10 +166,16 @@ storiesOf('Button Split', module)
   ))
   .addStory('Root', () => <DefaultButton {...commandProps} split={true} />, { rtl: true })
   .addStory('Disabled', () => <DefaultButton {...commandProps} disabled={true} split={true} />)
+  .addStory('Default with Primary Action Disabled', () => (
+    <DefaultButton {...commandProps} primaryDisabled={true} split={true} />
+  ))
   .addStory('Checked', () => <DefaultButton {...commandProps} checked={true} split={true} />)
   .addStory('Primary', () => <DefaultButton {...commandProps} primary={true} split={true} />)
   .addStory('Primary Disabled', () => (
     <DefaultButton {...commandProps} primary={true} disabled={true} split={true} />
+  ))
+  .addStory('Primary with Primary Action Disabled', () => (
+    <DefaultButton {...commandProps} primaryDisabled={true} primary={true} split={true} />
   ))
   .addStory('Primary Checked', () => (
     <DefaultButton {...commandProps} primary={true} checked={true} split={true} />
@@ -204,6 +211,40 @@ storiesOf('Button Special Scenarios', module)
         iconProps={{ iconName: 'Add' }}
         menuIconProps={{}}
         styles={{ root: { width: '100%' } }}
+      />
+    </div>
+  ));
+
+storiesOf('IconButton Scenarios', module)
+  .addDecorator(FabricDecorator)
+  .addDecorator(story => (
+    <Screener
+      steps={new Steps()
+        .snapshot('icon', { cropTo: '.testWrapper' })
+        .hover('.ms-Button')
+        .snapshot('hover icon', { cropTo: '.testWrapper' })
+        .end()}
+    >
+      {story()}
+    </Screener>
+  ))
+
+  .addStory('normal icon button', () => (
+    <div>
+      <IconButton iconProps={{ iconName: 'Globe' }} primary={true} />
+    </div>
+  ))
+  .addStory('icon button with menu', () => (
+    <div>
+      <IconButton
+        iconProps={{ iconName: 'Globe' }}
+        primary={true}
+        menuProps={{
+          items: [
+            { key: 'a', text: 'Item 1' },
+            { key: 'b', text: 'Item 2' },
+          ],
+        }}
       />
     </div>
   ));

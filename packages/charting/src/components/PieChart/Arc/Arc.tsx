@@ -6,7 +6,7 @@ import { getStyles } from './Arc.styles';
 
 export class Arc extends React.Component<IArcProps, {}> {
   public static defaultProps: Partial<IArcProps> = {
-    arc: shape.arc()
+    arc: shape.arc(),
   };
 
   public state: {} = {};

@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { CollapseAllVisibility } from '../../GroupedList';
-import { ITooltipHostProps } from '../../Tooltip';
 import { ITheme, IStyle } from '../../Styling';
 import { DetailsHeaderBase } from './DetailsHeader.base';
 import { IColumn, DetailsListLayoutMode, IColumnReorderOptions, ColumnDragEndLocation } from './DetailsList.types';
 import { ICellStyleProps, IDetailsItemProps } from './DetailsRow.types';
 import { ISelection, SelectionMode } from '../../utilities/selection/index';
 import { IDetailsCheckboxProps } from './DetailsRowCheck.types';
+import { IDetailsColumnRenderTooltipProps } from './DetailsColumn.types';
 
 /**
  * {@docCategory DetailsList}
@@ -49,7 +49,7 @@ export interface IDetailsHeaderBaseProps extends React.ClassAttributes<DetailsHe
   onColumnContextMenu?: (column: IColumn, ev: React.MouseEvent<HTMLElement>) => void;
 
   /** Callback to render a tooltip for the column header */
-  onRenderColumnHeaderTooltip?: IRenderFunction<ITooltipHostProps>;
+  onRenderColumnHeaderTooltip?: IRenderFunction<IDetailsColumnRenderTooltipProps>;
 
   /** Whether to collapse for all visibility */
   collapseAllVisibility?: CollapseAllVisibility;
@@ -89,6 +89,13 @@ export interface IDetailsHeaderBaseProps extends React.ClassAttributes<DetailsHe
 
   /** If provided, can be used to render a custom checkbox */
   onRenderDetailsCheckbox?: IRenderFunction<IDetailsCheckboxProps>;
+
+  /**
+   * Whether to use fast icon and check components. The icons can't be targeted by customization
+   * but are still customizable via class names.
+   * @defaultvalue true
+   */
+  useFastIcons?: boolean;
 }
 
 /**
@@ -117,18 +124,16 @@ export interface IDetailsHeaderProps extends IDetailsHeaderBaseProps {
 export enum SelectAllVisibility {
   none = 0,
   hidden = 1,
-  visible = 2
+  visible = 2,
 }
 
 /**
  * {@docCategory DetailsList}
  */
 export interface IDetailsHeaderState {
-  columnReorderProps?: IColumnReorderHeaderProps;
   columnResizeDetails?: IColumnResizeDetails;
   isAllSelected?: boolean;
   isSizing?: boolean;
-  groupNestingDepth?: number;
   isAllCollapsed?: boolean;
 }
 

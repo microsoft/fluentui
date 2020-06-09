@@ -21,11 +21,11 @@ storiesOf('TeachingBubble', module)
     () => {
       return (
         <TeachingBubble
-          illustrationImage={{ src: 'http://placehold.it/364x140' }}
+          illustrationImage={{ src: 'http://placehold.it/364x220' }}
           calloutProps={{ directionalHint: DirectionalHint.bottomCenter }}
           isWide={true}
           hasSmallHeadline={true}
-          hasCloseIcon={true}
+          hasCloseButton={true}
           primaryButtonProps={{ children: 'Got it' }}
           headline="Discover what’s trending around you"
         >
@@ -34,15 +34,15 @@ storiesOf('TeachingBubble', module)
         </TeachingBubble>
       );
     },
-    { rtl: true }
+    { rtl: true },
   )
   .addStory('SmallHeadline', () => {
     return (
       <TeachingBubble
         hasSmallHeadline={true}
-        hasCloseIcon={true}
+        hasCloseButton={true}
         primaryButtonProps={{
-          children: 'Got it'
+          children: 'Got it',
         }}
         headline="Discover what’s trending around you"
       >

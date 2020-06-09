@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { IButtonClassNames } from '../../components/Button/BaseButton.classNames';
 import { ITheme } from '../../Styling';
 
@@ -88,7 +89,7 @@ export interface IGridCellProps<T> {
     disabled: boolean,
     checked: boolean,
     expanded: boolean,
-    isSplit: boolean | undefined
+    isSplit: boolean | undefined,
   ) => IButtonClassNames;
 
   /**

@@ -4,10 +4,14 @@
 
 `PersonaListView` Assembling PersonaView into a performant list
 
-### Library
+### Source code
 
-[UI Fabric Android](https://github.com/OfficeDev/ui-fabric-android)
+[PersonaView](https://github.com/microsoft/fluentui-android/blob/master/FluentUI/src/main/java/com/microsoft/fluentui/persona/PersonaView.kt)
 
-[Sample Code for PersonaView](https://github.com/OfficeDev/ui-fabric-android/blob/master/OfficeUIFabric.Demo/src/main/java/com/microsoft/officeuifabricdemo/demos/PersonaViewActivity.kt)
+[PersonaListView](https://github.com/microsoft/fluentui-android/blob/master/FluentUI/src/main/java/com/microsoft/fluentui/persona/PersonaListView.kt)
 
-[Sample Code for PersonaListView](https://github.com/OfficeDev/ui-fabric-android/blob/master/OfficeUIFabric.Demo/src/main/java/com/microsoft/officeuifabricdemo/demos/PersonaListViewActivity.kt)
+### Sample code
+
+[PersonaView demo activity](https://github.com/microsoft/fluentui-android/blob/master/FluentUI.Demo/src/main/java/com/microsoft/fluentuidemo/demos/PersonaViewActivity.kt)
+
+[PersonaListView demo activity](https://github.com/microsoft/fluentui-android/blob/master/FluentUI.Demo/src/main/java/com/microsoft/fluentuidemo/demos/PersonaListViewActivity.kt)

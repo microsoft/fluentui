@@ -121,7 +121,7 @@ jobs:
         displayName: Install $(PackageName) in TypeScript $(TypeScriptVersion) test app
         workingDirectory: $(Build.StagingDirectory)/__tests__/tests/$(TypeScriptVersion)
 
-      # Build sample app consuming Office UI Fabric React to test TypeScript version compatibility
+      # Build sample app consuming Fluent UI React to test TypeScript version compatibility
       - script: |
           node common/scripts/install-run-rush.js test --to $(TypeScriptVersion)-office-ui-fabric-react-test
         displayName: Build TypeScript $(TypeScriptVersion) test app
@@ -171,17 +171,17 @@ jobs:
           $compatibleTsVersions = "";
           $compatMapArray = Get-Content $env:BUILD_STAGINGDIRECTORY/compatMapDrop/compatMap.txt;
           foreach($line in $compatMapArray) {
-            if($i -match 0) {
-              $releaseVersion = $line;
-            } else {
-              if($i -match 1) {
-                $compatibleTsVersions += $line;
-              } else {
-                $compatibleTsVersions += ", ";
-                $compatibleTsVersions += $line;
-              }
-            }
-            $i++;
+          if($i -match 0) {
+          $releaseVersion = $line;
+          } else {
+          if($i -match 1) {
+          $compatibleTsVersions += $line;
+          } else {
+          $compatibleTsVersions += ", ";
+          $compatibleTsVersions += $line;
+          }
+          }
+          $i++;
           }
           Write-Host $releaseVersion;
           Write-Host $compatibleTsVersions;

@@ -12,6 +12,6 @@ export function addVariants(theme: ITheme): void {
   theme.schemes = {
     strong: getStrongVariant(theme),
     soft: getSoftVariant(theme),
-    neutral: getNeutralVariant(theme)
+    neutral: getNeutralVariant(theme),
   };
 }

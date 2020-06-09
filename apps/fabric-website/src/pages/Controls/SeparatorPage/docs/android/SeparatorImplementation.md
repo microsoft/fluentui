@@ -2,8 +2,10 @@
 
 `ms_row_divider`
 
-### Library
+### Source code
 
-[UI Fabric Android](https://github.com/OfficeDev/ui-fabric-android)
+[ms_row_divider](https://github.com/microsoft/fluentui-android/blob/master/FluentUI/src/main/res/drawable/ms_row_divider.xml)
 
-[Sample Code](https://github.com/OfficeDev/ui-fabric-android/blob/master/OfficeUIFabric.Demo/src/main/java/com/microsoft/officeuifabricdemo/DemoListActivity.kt)
+### Sample code
+
+[ms_row_divider in XML](https://github.com/microsoft/fluentui-android/blob/master/FluentUI/src/main/res/layout/view_time_picker.xml)

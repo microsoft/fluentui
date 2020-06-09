@@ -1,8 +1,10 @@
 import * as React from 'react';
 import { IFocusTrapZoneProps } from '../../FocusTrapZone';
 import { ILayerProps } from '../../Layer';
+import { IOverlayProps } from '../../Overlay';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
+import { IButtonStyles } from '../Button/Button.types';
 import { PanelBase } from './Panel.base';
 
 /**
@@ -32,7 +34,10 @@ export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
 
   /**
    * Whether the panel is displayed.
-   * @defaultvalue false
+   * If true, will cause panel to stay open even if dismissed.
+   * If false, will cause panel to stay hidden.
+   * If undefined, will allow the panel to control its own visility through open/dismiss methods.
+   * @defaultvalue undefined
    */
   isOpen?: boolean;
 
@@ -74,6 +79,11 @@ export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
   headerText?: string;
 
   /**
+   * The props for header text container.
+   */
+  headerTextProps?: React.HTMLAttributes<HTMLDivElement>;
+
+  /**
    * A callback function for when the Panel is opened, before the animation completes.
    */
   onOpen?: () => void;
@@ -90,7 +100,8 @@ export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
   onDismiss?: (ev?: React.SyntheticEvent<HTMLElement>) => void;
 
   /**
-   * A callback function which is called after the Panel is dismissed and the animation is complete.
+   * A callback function which is called **after** the Panel is dismissed and the animation is complete.
+   * (If you need to update the Panel's `isOpen` prop in response to a dismiss event, use `onDismiss` instead.)
    */
   onDismissed?: () => void;
 
@@ -112,7 +123,7 @@ export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
 
   /**
    * Type of the panel.
-   * @defaultvalue PanelType.smallFixedRight
+   * @defaultvalue PanelType.smallFixedFar
    */
   type?: PanelType;
 
@@ -171,6 +182,11 @@ export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
   layerProps?: ILayerProps;
 
   /**
+   * Optional props to pass to the Overlay component that the panel uses.
+   */
+  overlayProps?: IOverlayProps;
+
+  /**
    * Optional custom function to handle clicks outside the panel in lightdismiss mode
    */
   onLightDismissClick?: () => void;
@@ -215,6 +231,12 @@ export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
    * @deprecated Serves no function.
    */
   componentId?: string;
+
+  /**
+   * Allow body scroll on content and overlay on touch devices. Changing after mounting has no effect.
+   * @defaultvalue false
+   */
+  allowTouchBodyScroll?: boolean;
 }
 
 /**
@@ -291,7 +313,8 @@ export enum PanelType {
   large = 4,
 
   /**
-   * Renders the Panel in `large` size, anchored to the far side (right in LTR mode), with a fixed width at XX-Large breakpoint.
+   * Renders the Panel in `large` size, anchored to the far side (right in LTR mode), with a fixed width at
+   * XX-Large breakpoint.
    * - Small (320-479): adapts to `PanelType.smallFluid` at this breakpoint
    * - Medium (480-639): adapts to `PanelType.smallFixedFar` at this breakpoint
    * - Large (640-1023): adapts to `PanelType.medium` at this breakpoint
@@ -325,7 +348,7 @@ export enum PanelType {
    * - When screen width reaches the `customWidth` value it will behave like a fluid width Panel
    * taking up 100% of the viewport width
    */
-  customNear = 8
+  customNear = 8,
 }
 
 /**
@@ -391,17 +414,20 @@ export interface IPanelStyleProps {
    * Optional parameter to provider the class name for header text
    */
   headerClassName?: string;
+
+  /**
+   * Determines where the header is rendered based on whether the user
+   * has passed in a custom onRenderNavigation or onRenderNavigationContent render callback
+   */
+  hasCustomNavigation?: boolean;
 }
 
-// TODO -Issue #5689: Comment in once Button is converted to mergeStyles
-// export interface IPanelSubComponentStyles {
-//   /**
-//    * Styling for Icon child component.
-//    */
-//   // TODO: this should be the interface once we're on TS 2.9.2 but otherwise causes errors in 2.8.4
-//   // button: IStyleFunctionOrObject<IButtonStyleProps, IButtonStyles>;
-//   button: IStyleFunctionOrObject<any, any>;
-// }
+export interface IPanelSubComponentStyles {
+  /**
+   * Styling for close button child component.
+   */
+  closeButton: Partial<IButtonStyles>;
+}
 
 /**
  * {@docCategory Panel}
@@ -449,8 +475,9 @@ export interface IPanelStyles {
 
   /**
    * Style for the close button IconButton element.
+   * @deprecated Use `subComponentStyles.closeButton` instead.
    */
-  closeButton: IStyle;
+  closeButton?: IStyle;
 
   /**
    * Style for the header container div element.
@@ -458,7 +485,7 @@ export interface IPanelStyles {
   header: IStyle;
 
   /**
-   * Style for the header inner p element.
+   * Style for the header text div element.
    */
   headerText: IStyle;
 
@@ -477,9 +504,8 @@ export interface IPanelStyles {
    */
   footerInner: IStyle;
 
-  // TODO -Issue #5689: Comment in once Button is converted to mergeStyles
   /**
    * Styling for subcomponents.
    */
-  // subComponentStyles: IPanelSubComponentStyles;
+  subComponentStyles: IPanelSubComponentStyles;
 }

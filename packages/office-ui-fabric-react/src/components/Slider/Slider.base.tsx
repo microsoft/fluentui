@@ -1,5 +1,16 @@
 import * as React from 'react';
-import { BaseComponent, KeyCodes, css, getId, getRTL, getRTLSafeKeyCode } from '../../Utilities';
+import {
+  KeyCodes,
+  css,
+  getId,
+  getRTL,
+  getRTLSafeKeyCode,
+  warnMutuallyExclusive,
+  initializeComponentRef,
+  Async,
+  on,
+  FocusRects,
+} from '../../Utilities';
 import { ISliderProps, ISlider, ISliderStyleProps, ISliderStyles } from './Slider.types';
 import { classNamesFunction, getNativeProps, divProperties } from '../../Utilities';
 import { Label } from '../../Label';
@@ -9,16 +20,11 @@ export interface ISliderState {
   renderedValue?: number;
 }
 
-/**
- * @deprecated Unused.
- */
-export enum ValuePosition {
-  Previous = 0,
-  Next = 1
-}
-
 const getClassNames = classNamesFunction<ISliderStyleProps, ISliderStyles>();
-export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implements ISlider {
+const COMPONENT_NAME = 'SliderBase';
+export const ONKEYDOWN_TIMEOUT_DURATION = 1000;
+
+export class SliderBase extends React.Component<ISliderProps, ISliderState> implements ISlider {
   public static defaultProps: ISliderProps = {
     step: 1,
     min: 0,
@@ -27,42 +33,40 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
     disabled: false,
     vertical: false,
     buttonProps: {},
-    originFromZero: false
+    originFromZero: false,
   };
 
+  private _async: Async;
+  private _disposables: (() => void)[] = [];
   private _sliderLine = React.createRef<HTMLDivElement>();
   private _thumb = React.createRef<HTMLSpanElement>();
   private _id: string;
+  private _onKeyDownTimer = -1;
 
   constructor(props: ISliderProps) {
     super(props);
 
-    this._warnMutuallyExclusive({
-      value: 'defaultValue'
+    this._async = new Async(this);
+    initializeComponentRef(this);
+
+    warnMutuallyExclusive(COMPONENT_NAME, this.props, {
+      value: 'defaultValue',
     });
 
     this._id = getId('Slider');
 
-    const value = props.value !== undefined ? props.value : props.defaultValue !== undefined ? props.defaultValue : props.min;
+    const value =
+      props.value !== undefined ? props.value : props.defaultValue !== undefined ? props.defaultValue : props.min;
 
     this.state = {
       value: value,
-      renderedValue: value
+      renderedValue: undefined,
     };
   }
 
-  /**
-   * Invoked when a component is receiving new props. This method is not called for the initial render.
-   */
-  public componentWillReceiveProps(newProps: ISliderProps): void {
-    if (newProps.value !== undefined) {
-      const value = Math.max(newProps.min as number, Math.min(newProps.max as number, newProps.value));
-
-      this.setState({
-        value: value,
-        renderedValue: value
-      });
-    }
+  public componentWillUnmount() {
+    this._async.dispose();
+    this._disposeListeners();
   }
 
   public render(): React.ReactElement<{}> {
@@ -79,9 +83,10 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
       valueFormat,
       styles,
       theme,
-      originFromZero
+      originFromZero,
     } = this.props;
-    const { value, renderedValue } = this.state;
+    const value = this.value;
+    const renderedValue = this.renderedValue;
     const thumbOffsetPercent: number = min === max ? 0 : ((renderedValue! - min!) / (max! - min!)) * 100;
     const zeroOffsetPercent: number = min! >= 0 ? 0 : (-min! / (max! - min!)) * 100;
     const lengthString = vertical ? 'height' : 'width';
@@ -94,19 +99,22 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
       vertical,
       showTransitions: renderedValue === value,
       showValue,
-      theme: theme!
+      theme: theme!,
     });
-    const divButtonProps = buttonProps ? getNativeProps(buttonProps, divProperties) : undefined;
+    const divButtonProps = buttonProps
+      ? getNativeProps<React.HTMLAttributes<HTMLDivElement>>(buttonProps, divProperties)
+      : undefined;
 
     return (
       <div className={classNames.root}>
         {label && (
-          <Label className={classNames.titleLabel} {...(ariaLabel ? {} : { htmlFor: this._id })}>
+          <Label className={classNames.titleLabel} {...(ariaLabel ? {} : { htmlFor: this._id })} disabled={disabled}>
             {label}
           </Label>
         )}
         <div className={classNames.container}>
           <div
+            id={this._id}
             aria-valuenow={value}
             aria-valuemin={min}
             aria-valuemax={max}
@@ -118,16 +126,22 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
             {...onKeyDownProp}
             {...divButtonProps}
             className={css(classNames.slideBox, buttonProps!.className)}
-            id={this._id}
             role="slider"
             tabIndex={disabled ? undefined : 0}
             data-is-focusable={!disabled}
           >
             <div ref={this._sliderLine} className={classNames.line}>
               {originFromZero && (
-                <span className={css(classNames.zeroTick)} style={this._getStyleUsingOffsetPercent(vertical, zeroOffsetPercent)} />
+                <span
+                  className={css(classNames.zeroTick)}
+                  style={this._getStyleUsingOffsetPercent(vertical, zeroOffsetPercent)}
+                />
               )}
-              <span ref={this._thumb} className={classNames.thumb} style={this._getStyleUsingOffsetPercent(vertical, thumbOffsetPercent)} />
+              <span
+                ref={this._thumb}
+                className={classNames.thumb}
+                style={this._getStyleUsingOffsetPercent(vertical, thumbOffsetPercent)}
+              />
               {originFromZero ? (
                 <>
                   <span
@@ -157,11 +171,17 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
               )}
             </div>
           </div>
-          {showValue && <Label className={classNames.valueLabel}>{valueFormat ? valueFormat(value!) : value}</Label>}
+          {showValue && (
+            <Label className={classNames.valueLabel} disabled={disabled}>
+              {valueFormat ? valueFormat(value!) : value}
+            </Label>
+          )}
         </div>
+        <FocusRects />
       </div>
     ) as React.ReactElement<{}>;
   }
+
   public focus(): void {
     if (this._thumb.current) {
       this._thumb.current.focus();
@@ -169,29 +189,47 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
   }
 
   public get value(): number | undefined {
-    return this.state.value;
+    const { value = this.state.value } = this.props;
+    if (this.props.min === undefined || this.props.max === undefined || value === undefined) {
+      return undefined;
+    } else {
+      return Math.max(this.props.min, Math.min(this.props.max, value));
+    }
+  }
+
+  private get renderedValue(): number | undefined {
+    // renderedValue is expected to be defined while user is interacting with control, otherwise `undefined`.
+    // Fall back to `value`.
+    const { renderedValue = this.value } = this.state;
+    return renderedValue;
   }
 
   private _getAriaValueText = (value: number | undefined): string | undefined => {
-    if (this.props.ariaValueText && value !== undefined) {
-      return this.props.ariaValueText(value);
+    const { ariaValueText } = this.props;
+    if (value !== undefined) {
+      return ariaValueText ? ariaValueText(value) : value.toString();
     }
+    return undefined;
   };
 
   private _getStyleUsingOffsetPercent(vertical: boolean | undefined, thumbOffsetPercent: number): any {
-    const direction: string = vertical ? 'bottom' : getRTL() ? 'right' : 'left';
+    const direction: string = vertical ? 'bottom' : getRTL(this.props.theme) ? 'right' : 'left';
     return {
-      [direction]: thumbOffsetPercent + '%'
+      [direction]: thumbOffsetPercent + '%',
     };
   }
 
   private _onMouseDownOrTouchStart = (event: MouseEvent | TouchEvent): void => {
     if (event.type === 'mousedown') {
-      this._events.on(window, 'mousemove', this._onMouseMoveOrTouchMove, true);
-      this._events.on(window, 'mouseup', this._onMouseUpOrTouchEnd, true);
+      this._disposables.push(
+        on(window, 'mousemove', this._onMouseMoveOrTouchMove, true),
+        on(window, 'mouseup', this._onMouseUpOrTouchEnd, true),
+      );
     } else if (event.type === 'touchstart') {
-      this._events.on(window, 'touchmove', this._onMouseMoveOrTouchMove, true);
-      this._events.on(window, 'touchend', this._onMouseUpOrTouchEnd, true);
+      this._disposables.push(
+        on(window, 'touchmove', this._onMouseMoveOrTouchMove, true),
+        on(window, 'touchend', this._onMouseUpOrTouchEnd, true),
+      );
     }
     this._onMouseMoveOrTouchMove(event, true);
   };
@@ -211,7 +249,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
 
     if (!this.props.vertical) {
       const left: number | undefined = this._getPosition(event, this.props.vertical);
-      distance = getRTL() ? sliderPositionRect.right - left! : left! - sliderPositionRect.left;
+      distance = getRTL(this.props.theme) ? sliderPositionRect.right - left! : left! - sliderPositionRect.left;
       currentSteps = distance / stepLength;
     } else {
       const bottom: number | undefined = this._getPosition(event, this.props.vertical);
@@ -249,14 +287,15 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
         break;
       case 'touchstart':
       case 'touchmove':
-        currentPosition = !vertical ? (event as TouchEvent).touches[0].clientX : (event as TouchEvent).touches[0].clientY;
+        currentPosition = !vertical
+          ? (event as TouchEvent).touches[0].clientX
+          : (event as TouchEvent).touches[0].clientY;
         break;
     }
     return currentPosition;
   }
   private _updateValue(value: number, renderedValue: number): void {
-    const { step } = this.props;
-
+    const { step, snapToStep } = this.props;
     let numDec = 0;
     if (isFinite(step!)) {
       while (Math.round(step! * Math.pow(10, numDec)) / Math.pow(10, numDec) !== step!) {
@@ -268,30 +307,39 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
     const roundedValue = parseFloat(value.toFixed(numDec));
     const valueChanged = roundedValue !== this.state.value;
 
+    if (snapToStep) {
+      renderedValue = roundedValue;
+    }
+
     this.setState(
       {
         value: roundedValue,
-        renderedValue
+        renderedValue,
       },
       () => {
         if (valueChanged && this.props.onChange) {
           this.props.onChange(this.state.value as number);
         }
-      }
+      },
     );
   }
 
   private _onMouseUpOrTouchEnd = (event: MouseEvent | TouchEvent): void => {
-    // Synchronize the renderedValue to the actual value.
+    // Disable renderedValue override.
     this.setState({
-      renderedValue: this.state.value
+      renderedValue: undefined,
     });
 
     if (this.props.onChanged) {
       this.props.onChanged(event, this.state.value as number);
     }
 
-    this._events.off();
+    this._disposeListeners();
+  };
+
+  private _disposeListeners = (): void => {
+    this._disposables.forEach(dispose => dispose());
+    this._disposables = [];
   };
 
   private _onKeyDown = (event: KeyboardEvent): void => {
@@ -300,14 +348,23 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
 
     let diff: number | undefined = 0;
 
+    // tslint:disable-next-line:deprecation
     switch (event.which) {
-      case getRTLSafeKeyCode(KeyCodes.left):
+      case getRTLSafeKeyCode(KeyCodes.left, this.props.theme):
       case KeyCodes.down:
         diff = -(step as number);
+
+        this._clearOnKeyDownTimer();
+        this._setOnKeyDownTimer(event);
+
         break;
-      case getRTLSafeKeyCode(KeyCodes.right):
+      case getRTLSafeKeyCode(KeyCodes.right, this.props.theme):
       case KeyCodes.up:
         diff = step;
+
+        this._clearOnKeyDownTimer();
+        this._setOnKeyDownTimer(event);
+
         break;
 
       case KeyCodes.home:
@@ -328,5 +385,17 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
 
     event.preventDefault();
     event.stopPropagation();
+  };
+
+  private _clearOnKeyDownTimer = (): void => {
+    this._async.clearTimeout(this._onKeyDownTimer);
+  };
+
+  private _setOnKeyDownTimer = (event: KeyboardEvent): void => {
+    this._onKeyDownTimer = this._async.setTimeout(() => {
+      if (this.props.onChanged) {
+        this.props.onChanged(event, this.state.value as number);
+      }
+    }, ONKEYDOWN_TIMEOUT_DURATION);
   };
 }

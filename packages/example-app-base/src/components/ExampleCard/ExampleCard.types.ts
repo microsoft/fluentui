@@ -1,6 +1,7 @@
 import { IStyle, ITheme } from 'office-ui-fabric-react/lib/Styling';
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 import { IDropdownStyleProps } from 'office-ui-fabric-react/lib/Dropdown';
+import { IPackageGroup } from '@uifabric/tsx-editor';
 
 export interface IExampleCardProps {
   /** Example title */
@@ -19,7 +20,11 @@ export interface IExampleCardProps {
   donts?: JSX.Element;
   /** Whether the example is scrollable */
   isScrollable?: boolean;
-  /** JS string used in the example card's "Export to CodePen" button */
+  /**
+   * JS string used for the example card's "Export to CodePen" button.
+   * @deprecated Determining if export to codepen is supported and transforming the example
+   * are now handled automatically at runtime.
+   */
   codepenJS?: string;
 
   /** Theme provided by higher-order component. */
@@ -27,6 +32,19 @@ export interface IExampleCardProps {
 
   /** Optional override styles */
   styles?: IStyleFunctionOrObject<IExampleCardStyleProps, IExampleCardStyles>;
+
+  /** On click handler to ensure only one code editor instance is shown at once */
+  onToggleEditor?: (card: string) => void;
+
+  /** Whether code example is visible */
+  isCodeVisible?: boolean;
+
+  /**
+   * Custom supported packages for the live code editor. Defaults to core Fabric packages plus
+   * example-data. If you want to build off the default list of packages, it's exported from
+   * `@uifabric/tsx-editor/lib/utilities/defaultSupportedPackages`.
+   */
+  editorSupportedPackages?: IPackageGroup[];
 }
 
 export type IExampleCardStyleProps = Pick<IExampleCardProps, 'isRightAligned' | 'isScrollable' | 'theme'> & {

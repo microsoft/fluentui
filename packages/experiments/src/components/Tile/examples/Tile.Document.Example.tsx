@@ -8,9 +8,9 @@ import {
   SharedSignal,
   Tile,
   getTileLayout,
-  renderTileWithLayout
+  renderTileWithLayout,
 } from '@uifabric/experiments';
-import { lorem } from '@uifabric/example-app-base';
+import { lorem } from '@uifabric/example-data';
 import * as TileExampleStylesModule from './Tile.Example.scss';
 
 // tslint:disable-next-line:no-any
@@ -19,24 +19,24 @@ const TileExampleStyles = TileExampleStylesModule as any;
 const ITEMS: { name: string; activity: string }[] = [
   {
     name: lorem(2),
-    activity: lorem(6)
+    activity: lorem(6),
   },
   {
     name: lorem(2),
-    activity: lorem(6)
+    activity: lorem(6),
   },
   {
     name: lorem(2),
-    activity: lorem(6)
+    activity: lorem(6),
   },
   {
     name: lorem(2),
-    activity: lorem(6)
+    activity: lorem(6),
   },
   {
     name: lorem(2),
-    activity: lorem(6)
-  }
+    activity: lorem(6),
+  },
 ];
 
 interface IDocumentTileWithThumbnailProps {
@@ -45,14 +45,14 @@ interface IDocumentTileWithThumbnailProps {
   item: typeof ITEMS[0];
 }
 
-const DocumentTileWithThumbnail: React.StatelessComponent<IDocumentTileWithThumbnailProps> = (
-  props: IDocumentTileWithThumbnailProps
+const DocumentTileWithThumbnail: React.FunctionComponent<IDocumentTileWithThumbnailProps> = (
+  props: IDocumentTileWithThumbnailProps,
 ): JSX.Element => {
   const tile = (
     <Tile
       contentSize={{
         width: 176,
-        height: 171
+        height: 171,
       }}
       itemName={<SignalField before={<TrendingSignal />}>{props.item.name}</SignalField>}
       itemActivity={<SignalField before={<CommentsSignal>{'12'}</CommentsSignal>}>{props.item.activity}</SignalField>}
@@ -67,7 +67,7 @@ const DocumentTileWithThumbnail: React.StatelessComponent<IDocumentTileWithThumb
   const imageSize = fitContentToBounds({
     contentSize: props.originalImageSize,
     boundsSize: foregroundSize,
-    mode: 'contain'
+    mode: 'contain',
   });
 
   return (
@@ -78,7 +78,7 @@ const DocumentTileWithThumbnail: React.StatelessComponent<IDocumentTileWithThumb
             src={`//placehold.it/${Math.round(imageSize.width)}x${Math.round(imageSize.height)}`}
             className={css(TileExampleStyles.tileImage)}
           />
-        )
+        ),
       })}
     </div>
   );
@@ -93,7 +93,7 @@ export class TileDocumentExample extends React.Component<{}, ITileDocumentExampl
     super(props);
 
     this.state = {
-      imagesLoaded: true
+      imagesLoaded: true,
     };
   }
 
@@ -107,7 +107,7 @@ export class TileDocumentExample extends React.Component<{}, ITileDocumentExampl
         <DocumentTileWithThumbnail
           originalImageSize={{
             width: 40,
-            height: 40
+            height: 40,
           }}
           showForeground={imagesLoaded}
           item={ITEMS[0]}
@@ -115,7 +115,7 @@ export class TileDocumentExample extends React.Component<{}, ITileDocumentExampl
         <DocumentTileWithThumbnail
           originalImageSize={{
             width: 200,
-            height: 150
+            height: 150,
           }}
           showForeground={imagesLoaded}
           item={ITEMS[1]}
@@ -123,7 +123,7 @@ export class TileDocumentExample extends React.Component<{}, ITileDocumentExampl
         <DocumentTileWithThumbnail
           originalImageSize={{
             width: 150,
-            height: 200
+            height: 200,
           }}
           showForeground={imagesLoaded}
           item={ITEMS[2]}
@@ -131,7 +131,7 @@ export class TileDocumentExample extends React.Component<{}, ITileDocumentExampl
         <DocumentTileWithThumbnail
           originalImageSize={{
             width: 16,
-            height: 16
+            height: 16,
           }}
           showForeground={imagesLoaded}
           item={ITEMS[3]}
@@ -143,12 +143,12 @@ export class TileDocumentExample extends React.Component<{}, ITileDocumentExampl
             itemActivity={<SignalField before={<SharedSignal />}>{ITEMS[3].activity}</SignalField>}
             foreground={
               <img
-                src={`https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/svg/docx_48x1.svg`}
+                src={`https://static2.sharepointonline.com/files/fabric/assets/item-types/64/docx.svg`}
                 style={{
                   display: 'block',
                   width: '64px',
                   height: '64px',
-                  margin: '16px'
+                  margin: '16px',
                 }}
               />
             }
@@ -161,7 +161,7 @@ export class TileDocumentExample extends React.Component<{}, ITileDocumentExampl
 
   private _onImagesLoadedChanged = (event: React.FormEvent<HTMLInputElement>, checked: boolean): void => {
     this.setState({
-      imagesLoaded: checked
+      imagesLoaded: checked,
     });
   };
 }

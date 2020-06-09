@@ -1,6 +1,5 @@
-import * as React from 'react';
-import { BaseState } from '../../utilities/BaseState';
-import { IMicroFeedbackProps, IMicroFeedbackViewProps, VoteType } from './MicroFeedback.types';
+import { IMicroFeedbackComponent, IMicroFeedbackViewProps, VoteType } from './MicroFeedback.types';
+import { useCallback, useRef, useState } from 'react';
 
 export type IMicroFeedbackState = Pick<
   IMicroFeedbackViewProps,
@@ -16,65 +15,68 @@ export type IMicroFeedbackState = Pick<
   | 'isThanksVisible'
 >;
 
-export class MicroFeedbackState extends BaseState<IMicroFeedbackProps, IMicroFeedbackViewProps, IMicroFeedbackState> {
-  private _likeRef = React.createRef<HTMLDivElement>();
-  private _dislikeRef = React.createRef<HTMLDivElement>();
-  private _timerHandle?: number;
+export const useMicroFeedbackState: IMicroFeedbackComponent['state'] = props => {
+  const { sendFeedback } = props;
+  const likeRef = useRef<HTMLDivElement | null>(null);
+  const dislikeRef = useRef<HTMLDivElement | null>(null);
+  const [timerHandle, setTimerHandle] = useState<number | undefined>(undefined);
+  const [vote, setVote] = useState<VoteType>('no_vote');
+  const [isFollowUpVisible, setIsFollowUpVisible] = useState(false);
+  const [isThanksVisible, setIsThanksVisible] = useState(false);
 
-  constructor(props: MicroFeedbackState['props']) {
-    super(props, {});
+  const onCalloutDismiss = useCallback((): void => {
+    setIsFollowUpVisible(false);
+  }, []);
 
-    this.state = {
-      vote: 'no_vote',
-      isFollowUpVisible: false,
-      likeRef: this._likeRef,
-      dislikeRef: this._dislikeRef,
-      onCalloutDismiss: this._onCalloutDismiss,
-      onThanksDismiss: this._onThanksDismiss,
-      onThanksShow: this._onThanksShow,
-      onLikeVote: this._onLikeVote,
-      onDislikeVote: this._onDislikeVote,
-      isThanksVisible: false
-    };
-  }
+  const onThanksDismiss = useCallback((): void => {
+    clearTimeout(timerHandle);
+    setIsThanksVisible(false);
+  }, [timerHandle]);
 
-  private _onCalloutDismiss = (): void => {
-    this.setState({ isFollowUpVisible: false });
-  };
+  const processVote = useCallback(
+    (newVote: VoteType): void => {
+      // If the vote that is already selected is picked, then toggle off
+      const updatedVote: VoteType = vote === newVote ? 'no_vote' : newVote;
+      setIsFollowUpVisible(true);
+      setVote(updatedVote);
+      if (updatedVote !== 'no_vote' && sendFeedback) {
+        sendFeedback(updatedVote);
+      }
+    },
+    [sendFeedback, vote],
+  );
 
-  private _onThanksDismiss = (): void => {
-    clearTimeout(this._timerHandle);
-    this.setState({ isThanksVisible: false });
-  };
+  const onLikeVote = useCallback((): void => {
+    processVote('like');
+  }, [processVote]);
 
-  private _onLikeVote = (): void => {
-    this._vote('like');
-  };
+  const onDislikeVote = useCallback((): void => {
+    processVote('dislike');
+  }, [processVote]);
 
-  private _onDislikeVote = (): void => {
-    this._vote('dislike');
-  };
+  const hideThanksMessage = useCallback((): void => {
+    setIsThanksVisible(false);
+  }, []);
 
-  private _onThanksShow = (): void => {
-    this.setState({ isThanksVisible: true });
+  const onThanksShow = useCallback((): void => {
+    setIsThanksVisible(true);
 
     // Hide the Thanks message after 2 seconds
-    this._timerHandle = setTimeout(this._hideThanksMessage, 2000);
-  };
+    setTimerHandle((setTimeout(hideThanksMessage, 2000) as unknown) as number);
+  }, [hideThanksMessage]);
 
-  private _hideThanksMessage = (): void => {
-    this.setState({ isThanksVisible: false });
+  const viewProps: IMicroFeedbackViewProps = {
+    ...props,
+    vote: vote,
+    isFollowUpVisible,
+    likeRef,
+    dislikeRef,
+    onCalloutDismiss,
+    onThanksDismiss,
+    onThanksShow,
+    onLikeVote,
+    onDislikeVote,
+    isThanksVisible,
   };
-
-  private _vote = (newVote: VoteType): void => {
-    const { sendFeedback } = this.props;
-    const { vote } = this.state;
-
-    // If the vote that is already selected is picked, then toggle off
-    const updatedVote: VoteType = vote === newVote ? 'no_vote' : newVote;
-    this.setState({ isFollowUpVisible: true, vote: updatedVote });
-    if (updatedVote !== 'no_vote' && sendFeedback) {
-      sendFeedback(updatedVote);
-    }
-  };
-}
+  return viewProps;
+};

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { VerticalBarChart, IVerticalBarChartProps } from '@uifabric/charting/lib/VerticalBarChart';
+import { VerticalBarChart, IVerticalBarChartProps } from '@uifabric/charting';
 import { DefaultPalette, DefaultFontStyles } from 'office-ui-fabric-react/lib/Styling';
 
 export class VerticalBarChartStyledExample extends React.Component<IVerticalBarChartProps, {}> {
@@ -28,36 +28,36 @@ export class VerticalBarChartStyledExample extends React.Component<IVerticalBarC
       { x: 'Seventeen', y: 11 },
       { x: 'Eighteen', y: 50 },
       { x: 'Nineteen', y: 43 },
-      { x: 'Twenty', y: 20 }
+      { x: 'Twenty', y: 20 },
     ];
 
     const axisStyle = {
-      stroke: DefaultPalette.orange
+      stroke: DefaultPalette.orange,
     };
     const textStyle = {
       fill: DefaultPalette.orangeLight,
-      fontSize: '12px'
+      fontSize: '12px',
     };
 
     const customStyles = () => {
       return {
         chart: {
-          paddingBottom: '45px'
+          paddingBottom: '45px',
         },
         chartLabel: {
           color: DefaultPalette.orange,
-          ...DefaultFontStyles.large
+          ...DefaultFontStyles.large,
         },
         xAxisDomain: axisStyle,
         xAxisTicks: axisStyle,
         xAxisText: {
           transform: 'rotateZ(-40deg)',
           textAnchor: 'end',
-          ...textStyle
+          ...textStyle,
         },
         yAxisDomain: axisStyle,
         yAxisTicks: axisStyle,
-        yAxisText: textStyle
+        yAxisText: textStyle,
       };
     };
 
@@ -72,6 +72,8 @@ export class VerticalBarChartStyledExample extends React.Component<IVerticalBarC
         yAxisTickCount={6}
         styles={customStyles}
         colors={customColors}
+        hideLegend={true}
+        hideTooltip={true}
         chartLabel={'Chart with Axis Labels and Custom Styles'}
       />
     );

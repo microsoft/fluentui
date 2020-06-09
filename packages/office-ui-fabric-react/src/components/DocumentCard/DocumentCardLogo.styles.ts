@@ -2,12 +2,12 @@ import { getGlobalClassNames } from '../../Styling';
 import { IDocumentCardLogoStyleProps, IDocumentCardLogoStyles } from './DocumentCardLogo.types';
 
 const GlobalClassNames = {
-  root: 'ms-DocumentCardLogo'
+  root: 'ms-DocumentCardLogo',
 };
 
 export const getStyles = (props: IDocumentCardLogoStyleProps): IDocumentCardLogoStyles => {
   const { theme, className } = props;
-  const { palette } = theme;
+  const { palette, fonts } = theme;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
@@ -15,12 +15,13 @@ export const getStyles = (props: IDocumentCardLogoStyleProps): IDocumentCardLogo
     root: [
       classNames.root,
       {
-        fontSize: '32px',
+        // tslint:disable-next-line:deprecation
+        fontSize: fonts.xxLargePlus.fontSize,
         color: palette.themePrimary,
         display: 'block',
-        padding: '16px 16px 0 16px'
+        padding: '16px 16px 0 16px',
       },
-      className
-    ]
+      className,
+    ],
   };
 };

@@ -1,3 +1,5 @@
+import { getWindow } from './dom/getWindow';
+
 declare function setTimeout(cb: Function, delay: number): number;
 declare function setInterval(cb: Function, delay: number): number;
 
@@ -137,10 +139,12 @@ export class Async {
   /**
    * SetImmediate override, which will auto cancel the immediate during dispose.
    * @param callback - Callback to execute.
+   * @param targetElement - Optional target element to use for identifying the correct window.
    * @returns The setTimeout id.
    */
-  public setImmediate(callback: () => void): number {
+  public setImmediate(callback: () => void, targetElement?: Element | null): number {
     let immediateId = 0;
+    const win = getWindow(targetElement)!;
 
     if (!this._isDisposed) {
       if (!this._immediateIds) {
@@ -162,7 +166,7 @@ export class Async {
         }
       };
 
-      immediateId = window.setImmediate ? window.setImmediate(setImmediateCallback) : window.setTimeout(setImmediateCallback, 0);
+      immediateId = win.setTimeout(setImmediateCallback, 0);
       /* tslint:enable:ban-native-functions */
 
       this._immediateIds[immediateId] = true;
@@ -174,11 +178,14 @@ export class Async {
   /**
    * Clears the immediate.
    * @param id - Id to cancel.
+   * @param targetElement - Optional target element to use for identifying the correct window.
    */
-  public clearImmediate(id: number): void {
+  public clearImmediate(id: number, targetElement?: Element | null): void {
+    const win = getWindow(targetElement)!;
+
     if (this._immediateIds && this._immediateIds[id]) {
       /* tslint:disable:ban-native-functions */
-      window.clearImmediate ? window.clearImmediate(id) : window.clearTimeout(id);
+      win.clearTimeout(id);
       delete this._immediateIds[id];
       /* tslint:enable:ban-native-functions */
     }
@@ -235,7 +242,7 @@ export class Async {
    * function will return the result of the last func call.
    *
    * Note: If leading and trailing options are true func will be called on the trailing edge of
-   * the timeout only if the the throttled function is invoked more than once during the wait timeout.
+   * the timeout only if the throttled function is invoked more than once during the wait timeout.
    *
    * @param func - The function to throttle.
    * @param wait - The number of milliseconds to throttle executions to. Defaults to 0.
@@ -248,7 +255,7 @@ export class Async {
     options?: {
       leading?: boolean;
       trailing?: boolean;
-    }
+    },
   ): T | (() => void) {
     if (this._isDisposed) {
       return this._noop;
@@ -305,7 +312,7 @@ export class Async {
    * to the debounced function will return the result of the last func call.
    *
    * Note: If leading and trailing options are true func will be called on the trailing edge of
-   * the timeout only if the the debounced function is invoked more than once during the wait
+   * the timeout only if the debounced function is invoked more than once during the wait
    * timeout.
    *
    * @param func - The function to debounce.
@@ -320,7 +327,7 @@ export class Async {
       leading?: boolean;
       maxWait?: number;
       trailing?: boolean;
-    }
+    },
   ): ICancelable<T> & (() => void) {
     if (this._isDisposed) {
       let noOpFunction: ICancelable<T> & (() => T) = (() => {
@@ -438,8 +445,9 @@ export class Async {
     return resultFunction;
   }
 
-  public requestAnimationFrame(callback: () => void): number {
+  public requestAnimationFrame(callback: () => void, targetElement?: Element | null): number {
     let animationFrameId = 0;
+    const win = getWindow(targetElement)!;
 
     if (!this._isDisposed) {
       if (!this._animationFrameIds) {
@@ -460,9 +468,9 @@ export class Async {
         }
       };
 
-      animationFrameId = window.requestAnimationFrame
-        ? window.requestAnimationFrame(animationFrameCallback)
-        : window.setTimeout(animationFrameCallback, 0);
+      animationFrameId = win.requestAnimationFrame
+        ? win.requestAnimationFrame(animationFrameCallback)
+        : win.setTimeout(animationFrameCallback, 0);
       /* tslint:enable:ban-native-functions */
 
       this._animationFrameIds[animationFrameId] = true;
@@ -471,10 +479,12 @@ export class Async {
     return animationFrameId;
   }
 
-  public cancelAnimationFrame(id: number): void {
+  public cancelAnimationFrame(id: number, targetElement?: Element | null): void {
+    const win = getWindow(targetElement)!;
+
     if (this._animationFrameIds && this._animationFrameIds[id]) {
       /* tslint:disable:ban-native-functions */
-      window.cancelAnimationFrame ? window.cancelAnimationFrame(id) : window.clearTimeout(id);
+      win.cancelAnimationFrame ? win.cancelAnimationFrame(id) : win.clearTimeout(id);
       /* tslint:enable:ban-native-functions */
       delete this._animationFrameIds[id];
     }

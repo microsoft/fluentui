@@ -6,7 +6,7 @@ const postcssModules = require('postcss-modules');
 
 const modules = postcssModules({
   getJSON,
-  generateScopedName
+  generateScopedName,
 });
 const _fileNameToClassMap = {};
 
@@ -17,7 +17,7 @@ function createTypeScriptModule(fileName, css) {
   const source = [
     `/* tslint:disable */`,
     `import { loadStyles } from \'@microsoft/load-themed-styles\';`,
-    `loadStyles(${JSON.stringify(splitStyles(css))});`
+    `loadStyles(${JSON.stringify(splitStyles(css))});`,
   ];
 
   const map = _fileNameToClassMap[fileName];

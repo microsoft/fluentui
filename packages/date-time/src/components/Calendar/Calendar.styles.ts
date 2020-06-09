@@ -6,7 +6,7 @@ export const styles = (props: ICalendarStyleProps): ICalendarStyles => {
   const { palette } = theme;
 
   let totalWidth = isDayPickerVisible && isMonthPickerVisible ? 440 : 220;
-  if (showWeekNumbers) {
+  if (showWeekNumbers && isDayPickerVisible) {
     totalWidth += 30;
   }
 
@@ -15,23 +15,23 @@ export const styles = (props: ICalendarStyleProps): ICalendarStyles => {
       normalize,
       {
         display: 'flex',
-        width: totalWidth
+        width: totalWidth,
       },
       !isMonthPickerVisible && {
-        flexDirection: 'column'
+        flexDirection: 'column',
       },
-      className
+      className,
     ],
     divider: {
       top: 0,
       borderRight: '1px solid',
-      borderColor: palette.neutralLight
+      borderColor: palette.neutralLight,
     },
     monthPickerWrapper: [
       {
         display: 'flex',
-        flexDirection: 'column'
-      }
+        flexDirection: 'column',
+      },
     ],
     goTodayButton: [
       getFocusStyle(theme, { inset: -1 }),
@@ -46,25 +46,36 @@ export const styles = (props: ICalendarStyleProps): ICalendarStyles => {
         padding: '0 4px',
         alignSelf: 'flex-end',
         marginRight: 16,
+        marginTop: 3,
         fontSize: FontSizes.small,
+        overflow: 'visible', // explicitly specify for IE11
         selectors: {
           '& div': {
-            fontSize: FontSizes.small
+            fontSize: FontSizes.small,
           },
           '&:hover': {
             color: palette.themePrimary,
             backgroundColor: 'transparent',
-            cursor: 'pointer'
+            cursor: 'pointer',
           },
           '&:active': {
-            color: palette.themeDark
+            color: palette.themeDark,
           },
           '&:disabled': {
             color: palette.neutralTertiaryAlt,
-            pointerEvents: 'none'
-          }
-        }
-      }
-    ]
+            pointerEvents: 'none',
+          },
+        },
+      },
+    ],
+    liveRegion: {
+      border: 0,
+      height: '1px',
+      margin: '-1px',
+      overflow: 'hidden',
+      padding: 0,
+      width: '1px',
+      position: 'absolute',
+    },
   };
 };

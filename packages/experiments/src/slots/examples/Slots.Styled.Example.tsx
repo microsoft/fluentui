@@ -10,31 +10,23 @@ const ButtonTheme = {
       styles: {
         root: {
           fontSize: 24,
-          color: 'purple'
-        }
-      }
-    },
-    Stack: {
-      styles: {
-        root: {
-          background: 'lightblue'
-        }
-      }
+          color: 'purple',
+        },
+      },
     },
     Text: {
       styles: {
         root: {
-          color: 'purple'
-        }
-      }
-    }
-  }
+          color: 'purple',
+        },
+      },
+    },
+  },
 };
 
 const getButtonStyles: IButtonComponent['styles'] = {
   icon: ButtonTheme.scopedSettings.Icon.styles.root,
-  stack: ButtonTheme.scopedSettings.Stack.styles.root,
-  content: ButtonTheme.scopedSettings.Text.styles.root
+  content: ButtonTheme.scopedSettings.Text.styles.root,
 };
 
 // tslint:disable:jsx-no-lambda
@@ -44,11 +36,21 @@ export class SlotsStyledExample extends React.Component<{}, {}> {
     return (
       <Stack>
         <Stack {...stackProps}>
-          <Button icon={{ iconName: 'share', styles: ButtonTheme.scopedSettings.Icon.styles }} content="Icon as IIconProps with styles" />
-          <Button icon="share" content={{ children: 'Text as ITextProps with styles', styles: ButtonTheme.scopedSettings.Text.styles }} />
-          <Button icon={{ iconName: 'share', styles: { root: { color: 'red' } } }} styles={getButtonStyles} content="Button styles prop" />
+          <Button
+            icon={{ iconName: 'share', style: ButtonTheme.scopedSettings.Icon.styles.root }}
+            content="Icon as IIconProps with style"
+          />
+          <Button
+            icon="share"
+            content={{ children: 'Text as ITextProps with styles', styles: ButtonTheme.scopedSettings.Text.styles }}
+          />
+          <Button
+            icon={{ iconName: 'share', style: { color: 'red' } }}
+            styles={getButtonStyles}
+            content="Button styles prop"
+          />
           <Customizer {...ButtonTheme}>
-            <Button icon={{ iconName: 'share' }} content="Button scopedSettings" />
+            <Button icon="share" content="Button scopedSettings" />
           </Customizer>
         </Stack>
       </Stack>

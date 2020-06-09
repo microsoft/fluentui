@@ -3,10 +3,12 @@ import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { SearchBox, Fabric } from 'office-ui-fabric-react';
+import { FabricDecorator } from '../utilities';
 
 // FabricDecorator isn't added at the top level so that the full SearchBox can be rendered without a parent div
 
 storiesOf('SearchBox', module)
+  .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
@@ -31,7 +33,7 @@ storiesOf('SearchBox', module)
         </div>
       </Fabric>
     ),
-    { rtl: true }
+    { rtl: true },
   )
   .addStory(
     'Full',
@@ -40,5 +42,5 @@ storiesOf('SearchBox', module)
         <SearchBox placeholder="Search" />
       </Fabric>
     ),
-    { rtl: true }
+    { rtl: true },
   );

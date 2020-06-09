@@ -28,12 +28,12 @@ export class SiteMessageBar extends React.Component<ISiteMessageBarProps, ISiteM
   }
 
   public render() {
-    const { text, linkUrl, linkText, styles } = this.props;
+    const { text, linkUrl, linkText, styles, ...rest } = this.props;
     const { isVisible } = this.state;
 
     return isVisible ? (
-      <MessageBar onDismiss={this._onClose} isMultiline dismissButtonAriaLabel="Close" styles={styles}>
-        {text + ' '}
+      <MessageBar onDismiss={this._onClose} isMultiline dismissButtonAriaLabel="Close" styles={styles} {...rest}>
+        {text}{' '}
         {!!(linkUrl && linkText) && (
           <Link href={linkUrl} target={linkUrl.indexOf('http') === 0 ? '_blank' : ''}>
             {linkText}
@@ -53,7 +53,7 @@ export class SiteMessageBar extends React.Component<ISiteMessageBarProps, ISiteM
     }
 
     this.setState({
-      isVisible: false
+      isVisible: false,
     });
   };
 }

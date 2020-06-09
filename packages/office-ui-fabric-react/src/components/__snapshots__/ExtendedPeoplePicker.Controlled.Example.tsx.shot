@@ -23,7 +23,6 @@ exports[`Component Examples renders ExtendedPeoplePicker.Controlled.Example.tsx 
       onFocus={[Function]}
       onKeyDown={[Function]}
       onMouseDownCapture={[Function]}
-      role="presentation"
     >
       <div
         className="ms-SelectionZone"
@@ -55,10 +54,10 @@ exports[`Component Examples renders ExtendedPeoplePicker.Controlled.Example.tsx 
             To:
           </div>
           <input
+            aria-autocomplete="both"
             aria-expanded={false}
             aria-haspopup="true"
             aria-label="People Picker"
-            aria-owns="suggestion-list"
             autoCapitalize="off"
             autoComplete="off"
             className="ms-BasePicker-input"
@@ -68,6 +67,7 @@ exports[`Component Examples renders ExtendedPeoplePicker.Controlled.Example.tsx 
             onClick={[Function]}
             onCompositionEnd={[Function]}
             onCompositionStart={[Function]}
+            onCompositionUpdate={[Function]}
             onFocus={[Function]}
             onInput={[Function]}
             onKeyDown={[Function]}
@@ -90,8 +90,8 @@ exports[`Component Examples renders ExtendedPeoplePicker.Controlled.Example.tsx 
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
           background-color: #0078d4;
-          border-radius: 0px;
-          border: 1px solid transparent;
+          border-radius: 2px;
+          border: 1px solid #0078d4;
           box-sizing: border-box;
           color: #ffffff;
           cursor: pointer;
@@ -100,10 +100,6 @@ exports[`Component Examples renders ExtendedPeoplePicker.Controlled.Example.tsx 
           font-size: 14px;
           font-weight: 400;
           height: 32px;
-          margin-bottom: 0px;
-          margin-left: 0px;
-          margin-right: 0px;
-          margin-top: 0px;
           min-width: 80px;
           outline: transparent;
           padding-bottom: 0;
@@ -114,20 +110,20 @@ exports[`Component Examples renders ExtendedPeoplePicker.Controlled.Example.tsx 
           text-align: center;
           text-decoration: none;
           user-select: none;
-          vertical-align: top;
         }
         &::-moz-focus-inner {
           border: 0;
         }
         .ms-Fabric--isFocusVisible &:focus:after {
-          border: 1px solid #ffffff;
-          bottom: 0px;
+          border: none;
+          bottom: 2px;
           content: "";
-          left: 0px;
-          outline: 1px solid #666666;
+          left: 2px;
+          outline-color: #ffffff;
+          outline: 1px solid #605e5c;
           position: absolute;
-          right: 0px;
-          top: 0px;
+          right: 2px;
+          top: 2px;
           z-index: 1;
         }
         @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -146,23 +142,28 @@ exports[`Component Examples renders ExtendedPeoplePicker.Controlled.Example.tsx 
         @media screen and (-ms-high-contrast: active){& {
           -ms-high-contrast-adjust: none;
           background-color: WindowText;
+          border-color: WindowText;
           color: Window;
         }
         &:hover {
           background-color: #106ebe;
+          border: 1px solid #106ebe;
           color: #ffffff;
         }
         @media screen and (-ms-high-contrast: active){&:hover {
           background-color: Highlight;
+          border-color: Highlight;
           color: Window;
         }
         &:active {
           background-color: #005a9e;
+          border: 1px solid #005a9e;
           color: #ffffff;
         }
         @media screen and (-ms-high-contrast: active){&:active {
           -ms-high-contrast-adjust: none;
           background-color: WindowText;
+          border-color: WindowText;
           color: Window;
         }
     data-is-focusable={true}
@@ -174,7 +175,7 @@ exports[`Component Examples renders ExtendedPeoplePicker.Controlled.Example.tsx 
     onMouseUp={[Function]}
     type="button"
   >
-    <div
+    <span
       className=
           ms-Button-flexContainer
           {
@@ -184,18 +185,21 @@ exports[`Component Examples renders ExtendedPeoplePicker.Controlled.Example.tsx 
             height: 100%;
             justify-content: center;
           }
+      data-automationid="splitbuttonprimary"
     >
-      <div
+      <span
         className=
             ms-Button-textContainer
             {
+              display: block;
               flex-grow: 1;
             }
       >
-        <div
+        <span
           className=
               ms-Button-label
               {
+                display: block;
                 font-weight: 600;
                 line-height: 100%;
                 margin-bottom: 0;
@@ -206,9 +210,9 @@ exports[`Component Examples renders ExtendedPeoplePicker.Controlled.Example.tsx 
           id="id__1"
         >
           Set focus
-        </div>
-      </div>
-    </div>
+        </span>
+      </span>
+    </span>
   </button>
 </div>
 `;

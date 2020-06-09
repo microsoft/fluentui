@@ -1,116 +1,94 @@
 import * as React from 'react';
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { Callout } from 'office-ui-fabric-react/lib/Callout';
-import { Link } from 'office-ui-fabric-react/lib/Link';
-import { getTheme, FontWeights, mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
-import { getId } from 'office-ui-fabric-react/lib/Utilities';
+import { DefaultButton, Callout, Link, getTheme, FontWeights, mergeStyleSets, Text } from 'office-ui-fabric-react';
+import { useBoolean, useId } from '@uifabric/react-hooks';
 
-export interface ICalloutBasicExampleState {
-  isCalloutVisible?: boolean;
-}
-
-// Themed styles for the example.
 const theme = getTheme();
 const styles = mergeStyleSets({
   buttonArea: {
     verticalAlign: 'top',
     display: 'inline-block',
-    textAlign: 'center'
+    textAlign: 'center',
+    margin: '0 100px',
+    minWidth: 130,
+    height: 32,
   },
   callout: {
-    maxWidth: 300
+    maxWidth: 300,
   },
   header: {
-    padding: '18px 24px 12px'
+    padding: '18px 24px 12px',
   },
   title: [
     theme.fonts.xLarge,
     {
       margin: 0,
-      color: theme.palette.neutralPrimary,
-      fontWeight: FontWeights.semilight
-    }
+      fontWeight: FontWeights.semilight,
+    },
   ],
   inner: {
     height: '100%',
-    padding: '0 24px 20px'
+    padding: '0 24px 20px',
   },
   actions: {
     position: 'relative',
     marginTop: 20,
     width: '100%',
-    whiteSpace: 'nowrap'
+    whiteSpace: 'nowrap',
   },
+  subtext: [
+    theme.fonts.small,
+    {
+      margin: 0,
+      fontWeight: FontWeights.semilight,
+    },
+  ],
   link: [
     theme.fonts.medium,
     {
-      color: theme.palette.neutralPrimary
-    }
-  ]
+      color: theme.palette.neutralPrimary,
+    },
+  ],
 });
 
-// Example code
-export class CalloutBasicExample extends React.Component<{}, ICalloutBasicExampleState> {
-  public state: ICalloutBasicExampleState = {
-    isCalloutVisible: false
-  };
+export const CalloutBasicExample: React.FunctionComponent = () => {
+  const [isCalloutVisible, { toggle: toggleIsCalloutVisible }] = useBoolean(false);
 
-  private _menuButtonElement = React.createRef<HTMLDivElement>();
-  // Use getId() to ensure that the callout label and description IDs are unique on the page.
-  // (It's also okay to use plain strings without getId() and manually ensure their uniqueness.)
-  private _labelId: string = getId('callout-label');
-  private _descriptionId: string = getId('callout-description');
-
-  public render(): JSX.Element {
-    const { isCalloutVisible } = this.state;
-
-    return (
-      <div>
-        <div className={styles.buttonArea} ref={this._menuButtonElement}>
-          <DefaultButton onClick={this._onShowMenuClicked} text={isCalloutVisible ? 'Hide callout' : 'Show callout'} />
-        </div>
+  const labelId: string = useId('callout-label');
+  const descriptionId: string = useId('callout-description');
+  return (
+    <>
+      <div className={styles.buttonArea}>
+        <DefaultButton onClick={toggleIsCalloutVisible} text={isCalloutVisible ? 'Hide Callout' : 'Show Callout'} />
+      </div>
+      {isCalloutVisible && (
         <Callout
-          className="ms-CalloutExample-callout"
-          ariaLabelledBy={this._labelId}
-          ariaDescribedBy={this._descriptionId}
+          className={styles.callout}
+          ariaLabelledBy={labelId}
+          ariaDescribedBy={descriptionId}
           role="alertdialog"
           gapSpace={0}
-          target={this._menuButtonElement.current}
-          onDismiss={this._onCalloutDismiss}
-          setInitialFocus={true}
-          hidden={!this.state.isCalloutVisible}
+          target={`.${styles.buttonArea}`}
+          onDismiss={toggleIsCalloutVisible}
+          setInitialFocus
         >
-          <div className="ms-CalloutExample-header">
-            <p className="ms-CalloutExample-title" id={this._labelId}>
+          <div className={styles.header}>
+            <Text className={styles.title} id={labelId}>
               All of your favorite people
-            </p>
+            </Text>
           </div>
-          <div className="ms-CalloutExample-inner">
-            <div className="ms-CalloutExample-content">
-              <p className="ms-CalloutExample-subText" id={this._descriptionId}>
-                Message body is optional. If help documentation is available, consider adding a link to learn more at the bottom.
-              </p>
-            </div>
-            <div className="ms-CalloutExample-actions">
-              <Link className="ms-CalloutExample-link" href="http://microsoft.com">
+          <div className={styles.inner}>
+            <Text className={styles.subtext} id={descriptionId}>
+              Message body is optional. If help documentation is available, consider adding a link to learn more at the
+              bottom.
+            </Text>
+            <div className={styles.actions}>
+              <Link className={styles.link} href="http://microsoft.com" target="_blank">
                 Go to microsoft
               </Link>
             </div>
           </div>
         </Callout>
-      </div>
-    );
-  }
-
-  private _onShowMenuClicked = (): void => {
-    this.setState({
-      isCalloutVisible: !this.state.isCalloutVisible
-    });
-  };
-
-  private _onCalloutDismiss = (): void => {
-    this.setState({
-      isCalloutVisible: false
-    });
-  };
-}
+      )}
+    </>
+  );
+};

@@ -1,6 +1,133 @@
 # Change Log - @uifabric/azure-themes
 
-This log was last generated on Wed, 22 May 2019 12:21:34 GMT and should not be manually modified.
+This log was last generated on Thu, 07 May 2020 01:06:55 GMT and should not be manually modified.
+
+<!-- Start content -->
+
+## [7.1.3](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.1.3)
+
+Thu, 07 May 2020 01:06:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.1.0..@uifabric/azure-themes_v7.1.3)
+
+### Patches
+
+- Addressing commonjs imports. ([PR #13031](https://github.com/microsoft/fluentui/pull/13031) by dzearing@microsoft.com)
+
+## [7.1.0](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.1.0)
+
+Fri, 01 May 2020 12:28:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.0.59..@uifabric/azure-themes_v7.1.0)
+
+### Minor changes
+
+- Azure-theme component style updates per Azure portal design team ([PR #12537](https://github.com/microsoft/fluentui/pull/12537) by jagaheri@microsoft.com)
+
+## [7.0.59](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.0.59)
+
+Thu, 16 Apr 2020 04:01:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.0.50..@uifabric/azure-themes_v7.0.59)
+
+### Patches
+
+- Readme: Fabric=>Fluent wording updates ([PR #12508](https://github.com/microsoft/fluentui/pull/12508) by elcraig@microsoft.com)
+
+## 7.0.50
+Wed, 25 Mar 2020 12:30:04 GMT
+
+### Patches
+
+- Changing references of Fabric to Fluent (mgodbolt@microsoft.com)
+## 7.0.49
+Mon, 23 Mar 2020 12:28:29 GMT
+
+### Patches
+
+- Replace OfficeDev/office-ui-fabric-react with microsoft/fluentui (elcraig@microsoft.com)
+## 7.0.47
+Wed, 18 Mar 2020 12:24:00 GMT
+
+### Patches
+
+- Azure theme: Adding storybook `yarn start` workflow for helping to design and debug the Azure themes. (dzearing@microsoft.com)
+## 7.0.21
+Thu, 06 Feb 2020 12:37:34 GMT
+
+### Patches
+
+- Fix incorrect icon color for disabled contextual menu icon. (xinychen@microsoft.com)
+## 7.0.11
+Fri, 17 Jan 2020 02:32:17 GMT
+
+### Patches
+
+- Update tslib minver to first version containing __spreadArrays helper due to changes in how TS emits spreads. (jagore@microsoft.com)
+## 7.0.10
+Thu, 07 Nov 2019 12:26:32 GMT
+
+### Patches
+
+- Correct the checked checkbox background in Azure light theme. (xinychen@microsoft.com)
+## 7.0.9
+Wed, 11 Sep 2019 12:35:47 GMT
+
+### Patches
+
+- Checkbox alignment and visual artifact fix (rykelly@microsoft.com)
+## 7.0.8
+Wed, 04 Sep 2019 12:32:15 GMT
+
+### Patches
+
+- DropDown: Fixed dropdownItem and dropdownItemSelected azure-theme styles. (xinychen@microsoft.com)
+## 7.0.7
+Wed, 04 Sep 2019 04:09:58 GMT
+
+### Patches
+
+- fix version file (kchau@microsoft.com)
+## 7.0.6
+Fri, 23 Aug 2019 12:35:28 GMT
+
+### Patches
+
+- Update npmignores, delete unused jest setup files (elcraig@microsoft.com)
+- Fix up readme and package.json descriptions (elcraig@microsoft.com)
+
+## 7.0.5
+Mon, 29 Jul 2019 12:26:00 GMT
+
+### Patches
+
+- Fix Typo in Azure Themes README (email not defined)
+
+## 7.0.4
+Wed, 17 Jul 2019 18:58:57 GMT
+
+### Patches
+
+- Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom. (makotom@microsoft.com)
+
+## 7.0.2
+Fri, 14 Jun 2019 12:26:30 GMT
+
+### Patches
+
+- Fix missing assets in production build.
+
+## 7.0.1
+Thu, 13 Jun 2019 00:24:48 GMT
+
+### Patches
+
+- Initial release of Fabric 7
+
+## 6.0.2
+Wed, 12 Jun 2019 00:42:26 GMT
+
+### Patches
+
+- Update DatePicker import path
+- Nav, Calendar, and DatePicker move into office-ui-fabric-react
 
 ## 6.0.1
 Wed, 22 May 2019 12:21:34 GMT
@@ -76,4 +203,3 @@ Mon, 21 Jan 2019 13:36:01 GMT
 Thu, 17 Jan 2019 13:34:42 GMT
 
 *Initial release*
-

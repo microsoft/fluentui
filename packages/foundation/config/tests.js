@@ -6,7 +6,7 @@ const Adapter = require('enzyme-adapter-react-16');
 
 // Suppress icon warnings.
 setIconOptions({
-  disableWarnings: true
+  disableWarnings: true,
 });
 
 // Mock requestAnimationFrame for React 16+.

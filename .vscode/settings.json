@@ -3,6 +3,7 @@
   "editor.tabSize": 2,
   // When opening a file, `editor.tabSize` and `editor.insertSpaces` will NOT be detected based on the file contents.
   "editor.detectIndentation": false,
+  "editor.formatOnSave": true,
   // When enabled, will trim trailing whitespace when you save a file.
   "files.trimTrailingWhitespace": true,
   "files.insertFinalNewline": true,
@@ -37,19 +38,35 @@
     "**/dist": true,
     "**/*.scss.ts": true
   },
-  // Without this setting, editor.wordWrapColumn is not used.
-  "editor.wordWrap": "wordWrapColumn",
-  // Controls after how many characters the editor will wrap to the next line. Setting this to 0 turns on viewport width wrapping
-  "editor.wordWrapColumn": 140,
+  "editor.rulers": [120],
   "tslint.enable": true,
-  "tslint.rulesDirectory": "./common/temp/node_modules/tslint-microsoft-contrib",
-  // Defines space handling after opening and before closing JSX expression braces. Requires TypeScript >= 2.0.6.
+  "tslint.rulesDirectory": "./node_modules/tslint-microsoft-contrib",
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": false,
-  "editor.formatOnSave": true,
-  "typescript.tsdk": "./common/temp/node_modules/typescript/lib",
+  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis": false,
+  "typescript.preferences.quoteStyle": "single",
+  "typescript.tsdk": "./node_modules/typescript/lib",
   "tslint.autoFixOnSave": false,
+  "tslint.exclude": "**/*.scss.ts",
   "files.associations": {
-    "rush.json": "jsonc",
-    "**/common/config/rush/*.json": "jsonc"
+    "**/tslint.json": "jsonc",
+    "**/tslint.*.json": "jsonc"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[handlebars]": {
+    "editor.formatOnSave": false
   }
 }

@@ -1,6 +1,7 @@
 {
   "name": "@uifabric/lists",
-  "version": "0.1.0",
+  "version": "0.102.0",
+  "private": true,
   "description": "Experimental React components for list experiences for Microsoft 365.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -10,48 +11,53 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/OfficeDev/office-ui-fabric-react"
+    "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
   "scripts": {
-    "build": "npx just-scripts build",
-    "clean": "npx just-scripts clean",
-    "code-style": "npx just-scripts code-style",
-    "start": "npx just-scripts dev",
-    "start-test": "npx just-scripts jest-watch",
-    "update-api": "npx just-scripts update-api",
-    "update-snapshots": "npx just-scripts jest -u",
-    "just": "npx just-scripts"
+    "build": "just-scripts build",
+    "bundle": "just-scripts bundle",
+    "lint": "just-scripts lint",
+    "test": "just-scripts test",
+    "clean": "just-scripts clean",
+    "code-style": "just-scripts code-style",
+    "start": "just-scripts dev:storybook",
+    "start-test": "just-scripts jest-watch",
+    "update-api": "just-scripts update-api",
+    "update-snapshots": "just-scripts jest -u",
+    "just": "just-scripts"
   },
   "devDependencies": {
-    "@types/enzyme": "3.1.13",
+    "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/es6-promise": "0.0.32",
-    "@types/jest": "23.0.0",
-    "@types/react": "16.3.16",
-    "@types/react-dom": "16.0.5",
+    "@types/jest": "~24.9.0",
+    "@types/react": "16.8.25",
+    "@types/react-dom": "16.8.4",
     "@types/react-test-renderer": "^16.0.0",
-    "@types/webpack-env": "1.13.9",
-    "@uifabric/example-app-base": "^6.23.1",
-    "@uifabric/jest-serializer-merge-styles": "^6.0.9",
-    "@uifabric/prettier-rules": "^1.0.2",
-    "@uifabric/tslint-rules": "^1.0.2",
-    "enzyme": "^3.4.1",
-    "enzyme-adapter-react-16": "^1.2.0",
+    "@types/webpack-env": "1.15.1",
+    "@uifabric/example-app-base": "^7.12.75",
+    "@uifabric/jest-serializer-merge-styles": "^7.0.26",
+    "@uifabric/tslint-rules": "^7.2.1",
+    "enzyme": "~3.10.0",
+    "enzyme-adapter-react-16": "^1.15.0",
     "es6-weak-map": "^2.0.2",
-    "react": "~16.6.3",
-    "react-dom": "~16.6.3",
+    "react": "16.8.6",
+    "react-app-polyfill": "~1.0.1",
+    "react-dom": "16.8.6",
     "react-test-renderer": "^16.3.0",
-    "@uifabric/build": "*"
+    "@uifabric/build": "^7.0.0"
   },
   "dependencies": {
-    "@microsoft/load-themed-styles": "^1.7.13",
-    "@uifabric/set-version": "^1.1.3",
-    "office-ui-fabric-react": "^6.188.2",
-    "tslib": "^1.7.1"
+    "@microsoft/load-themed-styles": "^1.10.26",
+    "@uifabric/set-version": "^7.0.13",
+    "office-ui-fabric-react": "^7.118.0",
+    "tslib": "^1.10.0"
   },
   "peerDependencies": {
-    "react": "~16.6.3",
-    "react-dom": "~16.6.3"
+    "@types/react": ">=16.8.0 <17.0.0",
+    "@types/react-dom": ">=16.8.0 <17.0.0",
+    "react": ">=16.8.0 <17.0.0",
+    "react-dom": ">=16.8.0 <17.0.0"
   }
 }

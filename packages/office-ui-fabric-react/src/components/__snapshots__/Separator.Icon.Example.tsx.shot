@@ -28,7 +28,6 @@ exports[`Component Examples renders Separator.Icon.Example.tsx correctly 1`] = `
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          color: inherit;
           display: inline;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
@@ -56,7 +55,7 @@ exports[`Component Examples renders Separator.Icon.Example.tsx correctly 1`] = `
           text-align: center;
         }
         &:before {
-          background-color: #f4f4f4;
+          background-color: #f3f2f1;
           bottom: 0;
           content: "";
           display: block;
@@ -73,7 +72,7 @@ exports[`Component Examples renders Separator.Icon.Example.tsx correctly 1`] = `
 
           {
             background: #ffffff;
-            color: #333333;
+            color: #323130;
             display: inline-block;
             padding-bottom: 0;
             padding-left: 12px;
@@ -84,6 +83,7 @@ exports[`Component Examples renders Separator.Icon.Example.tsx correctly 1`] = `
       role="separator"
     >
       <i
+        aria-hidden={true}
         className=
 
             {
@@ -99,7 +99,6 @@ exports[`Component Examples renders Separator.Icon.Example.tsx correctly 1`] = `
               width: 24px;
             }
         data-icon-name="Clock"
-        role="presentation"
       >
         
       </i>

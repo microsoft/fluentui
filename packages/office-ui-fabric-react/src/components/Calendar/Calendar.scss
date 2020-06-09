@@ -1,8 +1,5 @@
 @import '../../common/common';
-// Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information.
-//
-// Office UI Fabric
-// --------------------------------------------------
+
 // Calendar styles
 $Calendar-day: 28px;
 $Calendar-dayPicker-margin: 10px;
@@ -10,6 +7,7 @@ $Calendar-dayPicker-margin: 10px;
   @include ms-normalize;
 
   * {
+    overflow: visible;
     @include focus-border($color: $ms-color-neutralSecondary);
   }
 }
@@ -84,8 +82,8 @@ $Calendar-dayPicker-margin: 10px;
   display: inline-flex;
   flex-grow: 1;
   @include ms-font-m;
+  font-weight: 600;
   color: $ms-color-neutralPrimary;
-  font-weight: $ms-font-weight-semibold;
   padding: 0 5px;
 }
 
@@ -161,22 +159,18 @@ $Calendar-dayPicker-margin: 10px;
 }
 
 // Today.
+.dayIsToday {
+  border-radius: 100%;
+}
 .dayIsToday,
 .dayIsToday:hover {
   position: relative;
-  background-color: $ms-color-themeLight;
+  background-color: $ms-color-neutralLighter;
   @include high-contrast {
     background-color: highlight;
-    border-radius: 2px;
-  }
-  span {
-    @include high-contrast {
-      -ms-high-contrast-adjust: none;
-      color: window;
-    }
   }
   &:hover {
-    border-radius: 0px;
+    border-radius: 100%;
   }
 }
 
@@ -195,7 +189,7 @@ $Calendar-dayPicker-margin: 10px;
 .dayIsFocused:hover,
 .dayIsUnfocused:hover {
   cursor: pointer;
-  background: $ms-color-neutralLight;
+  background: $ms-color-neutralLighter;
   color: $ms-color-neutralDark;
 }
 
@@ -203,6 +197,8 @@ $Calendar-dayPicker-margin: 10px;
 .daySelection.dayIsHighlighted:hover,
 .pickerIsFocused .dayIsHighlighted.daySelection {
   cursor: pointer;
+  background-color: $ms-color-neutralLight;
+  border-radius: 2px;
   @include high-contrast {
     border: 2px solid Highlight;
     :not(.dayIsToday) span {
@@ -214,7 +210,7 @@ $Calendar-dayPicker-margin: 10px;
 .dayIsHighlighted {
   button.dayIsToday {
     @include high-contrast {
-      border-radius: 0px;
+      border-radius: 100%;
     }
     span {
       @include high-contrast {
@@ -226,14 +222,14 @@ $Calendar-dayPicker-margin: 10px;
 
 .dayIsFocused:active,
 .dayIsHighlighted {
-  background: $ms-color-themeLight;
+  background-color: $ms-color-themeLight;
 }
 
 .dayIsFocused:active,
 .dayIsHighlighted {
   &.day {
-    color: $ms-color-neutralPrimary;
-    font-weight: $ms-font-weight-semibold;
+    color: $ms-color-neutralDark;
+    background-color: $ms-color-neutralLight;
   }
 }
 
@@ -253,18 +249,18 @@ $Calendar-dayPicker-margin: 10px;
 .dayHover,
 .dayHover:hover {
   cursor: pointer;
-  background: $ms-color-neutralLight;
+  background: $ms-color-neutralLighter;
   color: $ms-color-neutralDark;
 }
 
 .dayPress,
 .dayPress:hover {
   cursor: pointer;
-  font-weight: $ms-font-weight-semibold;
-  background: $ms-color-themeLight;
-  color: $ms-color-neutralPrimary;
+  color: $ms-color-neutralDark;
+  background-color: $ms-color-neutralLight;
   .dayIsToday {
     background: $ms-color-themePrimary;
+    border-radius: 100%;
   }
 }
 
@@ -276,9 +272,8 @@ $Calendar-dayPicker-margin: 10px;
 .weekBackground,
 .weekBackground:hover,
 .weekBackground:active {
-  background: $ms-color-themeLight;
-  color: $ms-color-neutralPrimary;
-  font-weight: $ms-font-weight-semibold;
+  background-color: $ms-color-neutralLight;
+  color: $ms-color-neutralDark;
 }
 
 // Today.
@@ -289,6 +284,7 @@ $Calendar-dayPicker-margin: 10px;
   color: $ms-color-white;
   font-weight: $ms-font-weight-semibold;
   background: $ms-color-themePrimary;
+  border-radius: 100%;
 }
 
 .showWeekNumbers {
@@ -408,11 +404,11 @@ $Calendar-dayPicker-margin: 10px;
   flex-grow: 1;
   padding: 0 5px;
   @include ms-font-m;
+  font-weight: 600;
   color: $ms-color-neutralPrimary;
   height: $Calendar-day;
   line-height: $Calendar-day;
   @include margin-left(5px);
-  font-weight: $ms-font-weight-semibold;
 }
 
 // A grid of month or year options, which pushes them over
@@ -442,7 +438,7 @@ $Calendar-dayPicker-margin: 10px;
   border-radius: 2px;
   &:hover {
     color: $ms-color-neutralDark;
-    background-color: $ms-color-neutralLight;
+    background-color: $ms-color-neutralLighter;
     outline: 1px solid transparent;
     @include high-contrast {
       outline-color: highlight;
@@ -454,8 +450,8 @@ $Calendar-dayPicker-margin: 10px;
     }
   }
   &.isHighlighted {
-    background-color: $ms-color-neutralPrimary;
-    color: $ms-color-white;
+    background-color: $ms-color-neutralLight;
+    color: $ms-color-neutralDark;
   }
 }
 
@@ -744,14 +740,14 @@ $Calendar-dayPicker-margin: 10px;
   display: inline-block;
 
   &:hover {
-    background-color: $ms-color-neutralLight;
+    background-color: $ms-color-neutralLighter;
     color: $ms-color-neutralDark;
     @include high-contrast {
       outline: 1px solid highlight;
     }
   }
   &:active {
-    background-color: $ms-color-themeLight;
+    background-color: $ms-color-neutralLight;
     @include high-contrast {
       color: highlight;
     }
@@ -759,11 +755,10 @@ $Calendar-dayPicker-margin: 10px;
 }
 
 .monthIsHighlighted {
-  font-weight: $ms-font-weight-semibold;
-  background-color: $ms-color-themeLight;
-  color: $ms-color-neutralPrimary;
+  background-color: $ms-color-neutralLight;
+  color: $ms-color-neutralDark;
   &.monthOption:hover {
-    background-color: $ms-color-themeLight;
+    background-color: $ms-color-neutralLight;
   }
   @include high-contrast {
     color: highlight;
@@ -776,43 +771,38 @@ $Calendar-dayPicker-margin: 10px;
 }
 
 .monthIsCurrentMonth {
-  font-weight: $ms-font-weight-semibold;
   color: $ms-color-white;
-  background-color: $ms-color-themePrimary;
+  background-color: $ms-color-neutralLight;
   &.monthOption:hover {
-    font-weight: $ms-font-weight-semibold;
     color: $ms-color-white;
-    background-color: $ms-color-themePrimary;
+    background-color: $ms-color-neutralLighter;
   }
 }
 
 .monthOption:active {
-  background-color: $ms-color-themeLight;
+  background-color: $ms-color-neutralLight;
   color: $ms-color-neutralDark;
 }
 
 .yearIsHighlighted {
-  font-weight: $ms-font-weight-semibold;
-  background-color: $ms-color-themeLight;
-  color: $ms-color-neutralPrimary;
+  background-color: $ms-color-neutralLight;
+  color: $ms-color-neutralDark;
   &.yearOption:hover {
-    background-color: $ms-color-themeLight;
+    background-color: $ms-color-neutralLighter;
   }
 }
 
 .yearIsCurrentYear {
-  font-weight: $ms-font-weight-semibold;
   color: $ms-color-white;
-  background-color: $ms-color-themePrimary;
+  background-color: $ms-color-neutralLight;
   &.yearOption:hover {
-    font-weight: $ms-font-weight-semibold;
     color: $ms-color-white;
-    background-color: $ms-color-themePrimary;
+    background-color: $ms-color-neutralLighter;
   }
 }
 
 .yearOption:active {
-  background-color: $ms-color-themeLight;
+  background-color: $ms-color-neutralLight;
   color: $ms-color-neutralDark;
 }
 

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IRenderFunction, getDocument } from 'office-ui-fabric-react/lib/Utilities';
+import { mergeStyles, getTheme } from 'office-ui-fabric-react/lib/Styling';
 import {
   DetailsList,
   DetailsRow,
@@ -7,501 +7,385 @@ import {
   IDetailsRowStyles,
   DetailsListLayoutMode,
   IColumn,
-  ColumnActionsMode
+  ColumnActionsMode,
 } from 'office-ui-fabric-react/lib/DetailsList';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { SelectionMode } from 'office-ui-fabric-react/lib/Selection';
 import { Stack } from 'office-ui-fabric-react/lib/Stack';
-import { Text } from 'office-ui-fabric-react/lib/Text';
+import { Text, ITextStyles } from 'office-ui-fabric-react/lib/Text';
 import { ILinkToken } from 'office-ui-fabric-react/lib/common/DocPage.types';
-import { IApiInterfaceProperty, IApiEnumProperty, IMethod } from './ApiReferencesTableSet.types';
+import { useConst } from '@uifabric/react-hooks';
+import {
+  IApiInterfaceProperty,
+  IApiEnumProperty,
+  IMethod,
+  IApiReferencesTableProps,
+} from './ApiReferencesTableSet.types';
 import { Markdown } from '../Markdown/index';
+import { codeFontFamily } from '../CodeSnippet/CodeSnippet.styles';
+import { titleCase } from '../../utilities/string';
 
-export interface IApiReferencesTableProps {
-  title?: string;
-  properties: IApiInterfaceProperty[] | IApiEnumProperty[];
-  methods?: IMethod[];
-  renderAsEnum?: boolean;
-  renderAsClass?: boolean;
-  renderAsTypeAlias?: boolean;
-  key?: string;
-  name?: string;
-  description?: string;
-  extendsTokens?: ILinkToken[];
+// TODO: remove
+export { IApiReferencesTableProps };
+export type IApiReferencesTableState = {};
+
+/** @internal */
+type IApiDetailsListProps = (IApiEnumDetailsListProps | IApiPropertyDetailsListProps | IApiMethodDetailsListProps) & {
+  tokenResolver: IApiReferencesTableProps['tokenResolver'];
+};
+/** Do not use directly */
+interface IApiEnumDetailsListProps {
+  itemKind: 'enum';
+  items: IApiEnumProperty[];
+}
+/** Do not use directly */
+interface IApiPropertyDetailsListProps {
+  itemKind: 'property';
+  items: IApiInterfaceProperty[];
+}
+/** Do not use directly */
+interface IApiMethodDetailsListProps {
+  itemKind: 'method';
+  items: IMethod[];
 }
 
-export interface IApiReferencesTableState {
-  properties: IApiInterfaceProperty[] | IApiEnumProperty[];
-  methods?: IMethod[];
-  isEnum: boolean;
-  isClass: boolean;
-  isTypeAlias: boolean;
-}
-
-export const XSMALL_GAP_SIZE = 2.5;
-export const SMALL_GAP_SIZE = 8;
-export const MEDIUM_GAP_SIZE = 16;
-export const LARGE_GAP_SIZE = 48;
+/** @internal */
+export const gapTokens = {
+  xsmall: { childrenGap: 2.5 },
+  small: { childrenGap: 8 },
+  medium: { childrenGap: 16 },
+  large: { childrenGap: 48 },
+};
 
 const DEPRECATED_COLOR = '#FFF1CC';
-
-const backticksRegex = new RegExp('`[^`]*`', 'g');
-
-const referencesTableCell = (text: string | JSX.Element[], deprecated: boolean) => {
-  return (
-    <>
-      {deprecated && (
-        <Text
-          block
-          variant="small"
-          styles={{
-            root: {
-              backgroundColor: DEPRECATED_COLOR,
-              padding: 10,
-              borderRadius: 2,
-              marginBottom: text ? '1em' : undefined
-            }
-          }}
-        >
-          Warning: this API is now obsolete.
-        </Text>
-      )}
-      <Text block variant="small">
-        {text}
-      </Text>
-    </>
-  );
+const deprecatedTextStyles: Partial<ITextStyles> = {
+  root: {
+    backgroundColor: DEPRECATED_COLOR,
+    padding: 10,
+    borderRadius: 2,
+  },
 };
+
+const theme = getTheme();
+const rootClass = mergeStyles({
+  selectors: {
+    // Switch code blocks to a nicer font family and smaller size (monospace fonts tend to be large)
+    code: { fontFamily: codeFontFamily, fontSize: '11px' },
+    // Fix margins around Members/Methods h4 and control font size
+    h4: { margin: '16px 0 -8px 0', fontSize: '16px' },
+  },
+});
 
 export class ApiReferencesTable extends React.Component<IApiReferencesTableProps, IApiReferencesTableState> {
   public static defaultProps: Partial<IApiReferencesTableProps> = {
-    title: 'Properties'
+    title: 'Properties',
   };
 
-  private _baseUrl: string;
-  private _defaultColumns: IColumn[];
-  private _methodColumns: IColumn[];
-  private _enumColumns: IColumn[];
+  private _isEnum: boolean;
+  private _isClass: boolean;
+  private _isTypeAlias: boolean;
 
   constructor(props: IApiReferencesTableProps) {
     super(props);
 
-    if (props.renderAsEnum) {
-      const properties = (props.properties as IApiEnumProperty[])
-        .sort((a: IApiEnumProperty, b: IApiEnumProperty) => (a.value < b.value ? -1 : a.value > b.value ? 1 : 0))
-        .map((prop: IApiEnumProperty) => ({ ...prop, key: prop.name }));
-
-      this.state = {
-        properties,
-        isEnum: true,
-        isClass: false,
-        isTypeAlias: false
-      };
-    } else if (props.renderAsClass) {
-      const members = (props.properties as IApiInterfaceProperty[])
-        .sort((a: IApiInterfaceProperty, b: IApiInterfaceProperty) => (a.name < b.name ? -1 : a.name > b.name ? 1 : 0))
-        .map((prop: IApiInterfaceProperty) => ({ ...prop, key: prop.name }));
-
-      const methods = (props.methods as IMethod[])
-        .sort((a: IMethod, b: IMethod) => (a.name < b.name ? -1 : a.name > b.name ? 1 : 0))
-        .map((prop: IMethod) => ({ ...prop, key: prop.name }));
-
-      this.state = {
-        properties: members,
-        isEnum: false,
-        isClass: true,
-        isTypeAlias: false,
-        methods: methods
-      };
-    } else {
-      const properties = (props.properties as IApiInterfaceProperty[])
-        .sort((a: IApiInterfaceProperty, b: IApiInterfaceProperty) => (a.name < b.name ? -1 : a.name > b.name ? 1 : 0))
-        .map((prop: IApiInterfaceProperty) => ({ ...prop, key: prop.name }));
-
-      this.state = {
-        properties,
-        isEnum: !!props.renderAsEnum,
-        isClass: !!props.renderAsClass,
-        isTypeAlias: !!props.renderAsTypeAlias
-      };
-    }
-
-    const doc = getDocument();
-    this._baseUrl = doc ? document.location.href : '';
-
-    this._defaultColumns = [
-      {
-        key: 'name',
-        name: 'Name',
-        fieldName: 'name',
-        minWidth: 150,
-        maxWidth: 250,
-        isCollapsible: false,
-        isRowHeader: true,
-        isResizable: true,
-        onRender: this.createRenderCellInterface('name'),
-        columnActionsMode: ColumnActionsMode.disabled
-      },
-      {
-        key: 'type',
-        name: 'Type',
-        fieldName: 'type',
-        minWidth: 130,
-        maxWidth: 150,
-        isCollapsible: false,
-        isResizable: true,
-        isMultiline: true,
-        onRender: this.createRenderCellType('typeTokens'),
-        columnActionsMode: ColumnActionsMode.disabled
-      },
-      {
-        key: 'defaultValue',
-        name: 'Default value',
-        fieldName: 'defaultValue',
-        minWidth: 130,
-        maxWidth: 150,
-        isCollapsible: false,
-        isResizable: true,
-        isMultiline: true,
-        onRender: this.createRenderCellInterface('defaultValue'),
-        columnActionsMode: ColumnActionsMode.disabled
-      },
-      {
-        key: 'description',
-        name: 'Description',
-        fieldName: 'description',
-        minWidth: 300,
-        maxWidth: 400,
-        isCollapsible: false,
-        isResizable: true,
-        isMultiline: true,
-        onRender: this.createRenderCellInterface('description'),
-        columnActionsMode: ColumnActionsMode.disabled
-      }
-    ];
-
-    this._methodColumns = [
-      {
-        key: 'name',
-        name: 'Name',
-        fieldName: 'name',
-        minWidth: 150,
-        maxWidth: 250,
-        isCollapsible: false,
-        isRowHeader: true,
-        isResizable: true,
-        onRender: this.createRenderCellInterface('name'),
-        columnActionsMode: ColumnActionsMode.disabled
-      },
-      {
-        key: 'signature',
-        name: 'Signature',
-        fieldName: 'signature',
-        minWidth: 200,
-        maxWidth: 300,
-        isCollapsible: false,
-        isResizable: true,
-        isMultiline: true,
-        onRender: this.createRenderCellSignature('typeTokens'),
-        columnActionsMode: ColumnActionsMode.disabled
-      },
-      {
-        key: 'description',
-        name: 'Description',
-        fieldName: 'description',
-        minWidth: 300,
-        maxWidth: 400,
-        isCollapsible: false,
-        isResizable: true,
-        isMultiline: true,
-        onRender: this.createRenderCellInterface('description'),
-        columnActionsMode: ColumnActionsMode.disabled
-      }
-    ];
-
-    this._enumColumns = [
-      {
-        key: 'name',
-        name: 'Name',
-        fieldName: 'name',
-        minWidth: 150,
-        maxWidth: 250,
-        isCollapsible: false,
-        isRowHeader: true,
-        isResizable: true,
-        onRender: this.createRenderCellEnum('name')
-      },
-      {
-        key: 'value',
-        name: 'Value',
-        fieldName: 'value',
-        minWidth: 100,
-        maxWidth: 200,
-        isCollapsible: false,
-        isResizable: true,
-        onRender: this.createRenderCellEnum('value')
-      },
-      {
-        key: 'description',
-        name: 'Description',
-        fieldName: 'description',
-        minWidth: 300,
-        maxWidth: 400,
-        isCollapsible: false,
-        isResizable: true,
-        onRender: this.createRenderCellEnum('description')
-      }
-    ];
+    const { renderAs } = props;
+    this._isEnum = !!(renderAs === 'enum' || props.renderAsEnum);
+    this._isClass = !!(renderAs === 'class' || props.renderAsClass);
+    this._isTypeAlias = !!(renderAs === 'typeAlias' || props.renderAsTypeAlias);
   }
 
   public render(): JSX.Element | null {
-    const { description, extendsTokens } = this.props;
-    const { properties, isEnum, isClass } = this.state;
+    const { extendsTokens, deprecated, deprecatedMessage, tokenResolver, properties, methods } = this.props;
+
+    const hasProperties = properties.length > 0;
+    const hasMethods = methods && methods.length > 0;
+    const hasExtendsTokens = extendsTokens && extendsTokens.length > 0;
+
+    const description =
+      (this.props.description || '').trim() ||
+      // If this is an empty table with no description, add something basic to make clear that
+      // the empty heading is intentional
+      (!this._isTypeAlias && !hasProperties && !hasMethods ? '(No properties)' : undefined);
 
     return (
-      <Stack gap={MEDIUM_GAP_SIZE}>
-        <Stack gap={SMALL_GAP_SIZE}>
+      <Stack className={rootClass} tokens={gapTokens.medium}>
+        <Stack tokens={gapTokens.small}>
           {this._renderTitle()}
-          {(description || (extendsTokens && extendsTokens.length > 0)) && (
-            <Stack gap={XSMALL_GAP_SIZE}>
-              {this._renderDescription()}
-              {this._renderExtends()}
+          {deprecated && _renderDeprecatedMessage(deprecatedMessage)}
+          {(description || hasExtendsTokens) && (
+            <Stack tokens={gapTokens.xsmall}>
+              {description && <Markdown>{description}</Markdown>}
+              {hasExtendsTokens && (
+                <Text variant="small">Extends &nbsp;{_renderLinkTokens(tokenResolver, extendsTokens!)}</Text>
+              )}
             </Stack>
           )}
         </Stack>
-        {isClass
-          ? this._renderClass()
-          : properties.length >= 1 && (
-              <DetailsList
-                selectionMode={SelectionMode.none}
-                layoutMode={DetailsListLayoutMode.justified}
-                items={properties}
-                columns={isEnum ? this._enumColumns : this._defaultColumns}
-                onRenderRow={this._onRenderRow}
+        {(hasMethods || hasProperties) && this._renderTables()}
+      </Stack>
+    );
+  }
+
+  private _renderTables(): JSX.Element | undefined {
+    const { properties, methods, tokenResolver } = this.props;
+
+    if (this._isClass) {
+      // Render class members and methods tables
+      return (
+        <Stack tokens={gapTokens.medium}>
+          {properties.length > 0 && (
+            <Stack tokens={gapTokens.small}>
+              <h4>Members</h4>
+              <ApiDetailsList
+                itemKind="property"
+                items={properties as IApiInterfaceProperty[]}
+                tokenResolver={tokenResolver}
               />
-            )}
-      </Stack>
+            </Stack>
+          )}
+          {methods && methods.length > 0 && (
+            <Stack tokens={gapTokens.small}>
+              <h4>Methods</h4>
+              <ApiDetailsList itemKind="method" items={methods!} tokenResolver={tokenResolver} />
+            </Stack>
+          )}
+        </Stack>
+      );
+    }
+
+    // Render enum or interface property tables
+    // (the calling method already verified that at least one property is defined)
+    return this._isEnum ? (
+      <ApiDetailsList itemKind="enum" items={properties as IApiEnumProperty[]} tokenResolver={tokenResolver} />
+    ) : (
+      <ApiDetailsList itemKind="property" items={properties as IApiInterfaceProperty[]} tokenResolver={tokenResolver} />
     );
-  }
-
-  private renderCell = (text: string, deprecated: boolean = false) => {
-    // When the text is passed to this function, it has had newline characters removed,
-    // so the regex will match backtick sequences that span multiple lines.
-    let regexResult: RegExpExecArray | null;
-    const codeBlocks: { index: number; text: string }[] = [];
-    while ((regexResult = backticksRegex.exec(text)) !== null) {
-      codeBlocks.push({
-        index: regexResult.index,
-        text: regexResult[0]
-      });
-    }
-
-    if (codeBlocks.length === 0) {
-      return referencesTableCell(text, deprecated);
-    }
-
-    const textElements = this._extractCodeBlocks(text, codeBlocks);
-
-    return referencesTableCell(textElements, deprecated);
-  };
-
-  private renderCellType = (typeTokens: ILinkToken[]) => {
-    return this._parseILinkTokens(false, typeTokens);
-  };
-
-  private createRenderCellEnum = (propertyName: keyof IApiEnumProperty) => (item: IApiEnumProperty) => this.renderCell(item[propertyName]);
-
-  private createRenderCellInterface = (propertyName: 'name' | 'description' | 'defaultValue') => (item: IApiInterfaceProperty) =>
-    this.renderCell(item[propertyName], propertyName === 'description' && item.deprecated);
-
-  private createRenderCellType = (propertyName: 'typeTokens') => (item: IApiInterfaceProperty) => this.renderCellType(item[propertyName]);
-
-  private createRenderCellSignature = (propertyName: 'typeTokens') => (item: IMethod) => this.renderCellType(item[propertyName]);
-
-  /**
-   * Loops through text and places code blocks in code elements
-   */
-  private _extractCodeBlocks(text: string, codeBlocks: { index: number; text: string }[]): JSX.Element[] {
-    const textElements: JSX.Element[] = [];
-
-    let codeIndex = 0;
-    let textIndex = 0;
-    let key = 0;
-    while (textIndex < text.length && codeIndex < codeBlocks.length) {
-      const codeBlock = codeBlocks[codeIndex];
-      if (textIndex < codeBlock.index) {
-        const str = text.substring(textIndex, codeBlock.index);
-        textElements.push(<span key={key}>{str}</span>);
-        textIndex += str.length;
-      } else {
-        textElements.push(<code key={key}>{codeBlock.text.substring(1, codeBlock.text.length - 1)}</code>);
-        codeIndex++;
-        textIndex += codeBlock.text.length;
-      }
-      key++;
-    }
-    if (textIndex < text.length) {
-      textElements.push(<span key={key}>{text.substring(textIndex, text.length)}</span>);
-    }
-
-    return textElements;
-  }
-
-  private _renderClass(): JSX.Element | undefined {
-    const { properties, methods } = this.state;
-
-    return (
-      <Stack gap={MEDIUM_GAP_SIZE}>
-        {properties && properties.length > 0 && (
-          <Stack gap={SMALL_GAP_SIZE}>
-            <Text variant={'medium'}>Members</Text>
-            <DetailsList
-              selectionMode={SelectionMode.none}
-              layoutMode={DetailsListLayoutMode.justified}
-              items={properties}
-              columns={this._defaultColumns}
-              onRenderRow={this._onRenderRow}
-            />
-          </Stack>
-        )}
-        {methods && methods.length > 0 && (
-          <Stack gap={SMALL_GAP_SIZE}>
-            <Text variant={'medium'}>Methods</Text>
-            <DetailsList
-              selectionMode={SelectionMode.none}
-              layoutMode={DetailsListLayoutMode.justified}
-              items={methods}
-              columns={this._methodColumns}
-              onRenderRow={this._onRenderRow}
-            />
-          </Stack>
-        )}
-      </Stack>
-    );
-  }
-
-  private _renderExtends(): JSX.Element | undefined {
-    const { extendsTokens } = this.props;
-
-    return this._parseILinkTokens(true, extendsTokens);
-  }
-
-  private _renderDescription(): JSX.Element | undefined {
-    const { description } = this.props;
-
-    return description ? <Markdown>{description}</Markdown> : undefined;
   }
 
   private _renderTitle(): JSX.Element | undefined {
     const { title, name } = this.props;
 
     return title ? (
-      <Text variant="xLarge" as="h3" styles={{ root: { marginTop: 0 } }} id={name}>
+      // This heading must be programmatically focusable for simulating jumping to an anchor
+      <Text variant="xLarge" as="h3" styles={{ root: { marginTop: 0 } }} id={name} tabIndex={-1}>
         {title}
       </Text>
     ) : (
       undefined
     );
   }
+}
 
-  private _onRenderRow = (props: IDetailsRowProps, defaultRender?: IRenderFunction<IDetailsRowProps>): JSX.Element => {
-    const rowStyles: Partial<IDetailsRowStyles> = {
-      root: {
-        selectors: {
-          ':hover': {
-            background: 'none'
-          }
-        }
-      },
-      isMultiline: {
-        wordBreak: 'break-word'
-      }
-    };
-
-    return <DetailsRow {...props} styles={rowStyles} />;
-  };
-
-  private _parseILinkTokens(extend: boolean, linkTokens?: ILinkToken[]): JSX.Element | undefined {
-    const { isTypeAlias } = this.state;
-
-    if (linkTokens && linkTokens.length > 0) {
-      if (isTypeAlias) {
-        return (
-          <Text variant={'medium'}>
-            <code>{this._parseILinkTokensHelper(linkTokens, false)}</code>
-          </Text>
-        );
-      } else if (extend) {
-        return (
-          <Text variant={'small'}>
-            {'Extends '}
-            {this._parseILinkTokensHelper(linkTokens, true)}
-          </Text>
-        );
-      } else {
-        return (
-          <Text variant={'small'}>
-            <code>{this._parseILinkTokensHelper(linkTokens, false)}</code>
-          </Text>
-        );
-      }
+/**
+ * Memoized DetailsList wrapper handling scenarios specific to API reference tables.
+ */
+const ApiDetailsList: React.FunctionComponent<IApiDetailsListProps> = React.memo(props => {
+  // Alphabetize the items and add a key to each one.
+  const { itemKind, items } = props;
+  const processedItems: IApiEnumProperty[] | IApiInterfaceProperty[] | IMethod[] = useConst(() => {
+    if (itemKind === 'enum') {
+      return (items as IApiEnumProperty[])
+        .sort((a, b) => (a.value < b.value ? -1 : a.value > b.value ? 1 : 0))
+        .map(item => ({ ...item, key: item.name }));
     }
+    return (items as IApiInterfaceProperty[] | IMethod[])
+      .sort((a, b) => {
+        // Ensure anything required comes first if handling props.
+        if (itemKind === 'property' && !!a.required !== !!b.required) {
+          return a.required ? -1 : 1;
+        }
+        // Ensure the constructor is first if handling methods.
+        if (itemKind === 'method' && a.name === 'constructor') {
+          return -1;
+        }
+        return a.name < b.name ? -1 : a.name > b.name ? 1 : 0;
+      })
+      .map(item => ({ ...item, key: item.name }));
+  });
 
-    return undefined;
-  }
+  const columns = useConst(() => _getColumns(props));
 
-  private _parseILinkTokensHelper = (linkTokens: ILinkToken[], extend: boolean): JSX.Element | undefined => {
-    return (
-      <>
-        {linkTokens.map((token: ILinkToken, index: number) => {
-          let hash: string = '/controls/web/';
-          // get hash to set correct href value on the links for the local site vs. the Fabric site
+  return (
+    <DetailsList
+      items={processedItems}
+      columns={columns}
+      selectionMode={SelectionMode.none}
+      layoutMode={DetailsListLayoutMode.justified}
+      onRenderRow={_onRenderRow}
+      onShouldVirtualize={_returnFalse}
+    />
+  );
+});
 
-          const split = this._baseUrl.split('#');
-          const cleanedSplit = split.filter(value => !!value);
-          if (cleanedSplit && cleanedSplit.length > 1) {
-            // handle /references/referenceName structure
-            if (cleanedSplit[1].indexOf('/references/') !== -1) {
-              const indexOfReferenceName = cleanedSplit[1].lastIndexOf('/');
-              const indexOfReferences = cleanedSplit[1].lastIndexOf('/', indexOfReferenceName - 1);
-              hash = cleanedSplit[1].substring(0, indexOfReferences + 1);
-            } else {
-              const indexOfPageName = cleanedSplit[1].lastIndexOf('/');
-              hash = cleanedSplit[1].substring(0, indexOfPageName + 1);
+const _returnFalse = () => false;
+
+const rowStyles: Partial<IDetailsRowStyles> = {
+  root: {
+    color: theme.semanticColors.bodyText,
+    selectors: {
+      ':hover': {
+        background: 'none',
+        color: theme.semanticColors.bodyText,
+      },
+    },
+  },
+  isMultiline: { wordBreak: 'break-word' },
+};
+function _onRenderRow(props: IDetailsRowProps) {
+  return <DetailsRow {...props} styles={rowStyles} />;
+}
+
+/** Field names used in the API list (used in generating columns and renderers) */
+type ApiListFieldName = 'name' | 'value' | 'type' | 'defaultValue' | 'description' | 'signature';
+
+/** Map from field name to min and max widths (used in generating columns) */
+const columnWidths: { [K in ApiListFieldName]: [number, number] } = {
+  name: [150, 250],
+  value: [100, 200],
+  type: [130, 150],
+  defaultValue: [130, 150],
+  description: [300, 400],
+  signature: [200, 300],
+};
+
+/** Map from item kind to list of column names (used in generating columns) */
+const columnNames: { [K in IApiDetailsListProps['itemKind']]: ApiListFieldName[] } = {
+  enum: ['name', 'value', 'description'],
+  method: ['name', 'signature', 'description'],
+  property: ['name', 'type', 'defaultValue', 'description'],
+};
+
+function _getColumns(props: IApiDetailsListProps): IColumn[] {
+  const { itemKind, tokenResolver } = props;
+  return columnNames[itemKind].map(
+    (fieldName: ApiListFieldName): IColumn => {
+      const [minWidth, maxWidth] = columnWidths[fieldName];
+
+      return {
+        name: fieldName === 'defaultValue' ? 'Default value' : titleCase(fieldName),
+        fieldName,
+        key: fieldName,
+        minWidth,
+        maxWidth,
+        isCollapsible: false,
+        isResizable: true,
+        isMultiline: fieldName !== 'name' && fieldName !== 'value',
+        isRowHeader: fieldName === 'name',
+        columnActionsMode: ColumnActionsMode.disabled,
+        onRender: (item: IApiInterfaceProperty | IApiEnumProperty | IMethod) => {
+          if (fieldName === 'type' || fieldName === 'signature') {
+            const typeTokens = (item as IMethod | IApiInterfaceProperty).typeTokens;
+            if (typeTokens && typeTokens.length > 0) {
+              return <Text variant="small">{_renderLinkTokens(tokenResolver, typeTokens)}</Text>;
             }
-          }
-          if (token.pageKind && token.hyperlinkedPage) {
-            let href;
-
-            // whether the link should be opened in a new tab, defaults to true
-            let newTab = true;
-
-            if (token.pageKind === 'References') {
-              const referencePage = hash + token.pageKind.toLowerCase() + '/' + token.hyperlinkedPage.toLowerCase();
-              href = '#' + referencePage + '#' + token.text;
-              if (cleanedSplit.length > 1 && cleanedSplit[1] === referencePage) {
-                newTab = false;
-              }
-            } else {
-              const componentPage = hash + token.hyperlinkedPage.toLowerCase();
-              href = '#' + componentPage + '#' + token.text;
-              if (cleanedSplit.length > 1 && cleanedSplit[1] === componentPage) {
-                newTab = false;
-              }
-            }
-
-            return (
-              <Link href={href} key={token.text + index} target={newTab ? '_blank' : undefined}>
-                {extend ? token.text : <code>{token.text}</code>}
-              </Link>
-            );
-          } else if (token.text) {
-            return extend ? token.text : <code key={token.text + index}>{token.text}</code>;
-          } else {
             return undefined;
           }
-        })}
-      </>
-    );
-  };
+          return _renderCell(item, fieldName);
+        },
+      };
+    },
+  );
+}
+
+function _renderCell(
+  item: IApiInterfaceProperty | IApiEnumProperty | IMethod,
+  property: 'name' | 'description' | 'defaultValue' | 'value',
+) {
+  let text = (item as any)[property] || ''; // tslint:disable-line:no-any
+  // Format property names and defaults as code for easier reading
+  if (property !== 'description' && text.indexOf('`') === -1) {
+    text = '`' + text + '`';
+  }
+
+  // For description only, render a message if the property is deprecated.
+  if (property === 'description') {
+    return _referencesTableCell(text, { deprecated: item.deprecated, deprecatedMessage: item.deprecatedMessage });
+  }
+  if (property === 'name' && (item as IApiInterfaceProperty).required) {
+    return _referencesTableCell(text, { required: true });
+  }
+  return _referencesTableCell(text);
+}
+
+function _referencesTableCell(
+  text: string,
+  options: Pick<IApiInterfaceProperty, 'deprecated' | 'deprecatedMessage' | 'required'> = {},
+) {
+  const { deprecated, deprecatedMessage, required } = options;
+  return (
+    <>
+      {deprecated && _renderDeprecatedMessage(deprecatedMessage)}
+      <Text block variant="small" style={{ marginTop: deprecated ? '1em' : undefined }}>
+        {_extractCodeBlocks(text)}
+        {required && <em> (required)</em>}
+      </Text>
+    </>
+  );
+}
+
+function _renderDeprecatedMessage(deprecatedMessage?: string) {
+  deprecatedMessage = (deprecatedMessage || '').trim();
+  if (deprecatedMessage) {
+    // Ensure the message is formatted as a sentence
+    deprecatedMessage = deprecatedMessage[0].toUpperCase() + deprecatedMessage.slice(1);
+    if (deprecatedMessage.slice(-1)[0] !== '.') {
+      deprecatedMessage += '.';
+    }
+  }
+  return (
+    <Text block variant="small" styles={deprecatedTextStyles}>
+      Warning: this API is now obsolete. {deprecatedMessage && _extractCodeBlocks(deprecatedMessage)}
+    </Text>
+  );
+}
+
+/**
+ * Convert from a list of tokens to a list of actual links and code segments.
+ */
+function _renderLinkTokens(
+  tokenResolver: IApiReferencesTableProps['tokenResolver'],
+  linkTokens: ILinkToken[],
+): React.ReactNode[] {
+  return linkTokens.map((token: ILinkToken, index: number) => {
+    if (token.text) {
+      const key = token.text + index;
+
+      if (token.linkedPage && token.linkedPageGroup) {
+        return (
+          <Link key={key} {...tokenResolver(token as Required<ILinkToken>)}>
+            <code>{token.text}</code>
+          </Link>
+        );
+      }
+      return <code key={key}>{token.text}</code>;
+    }
+    return undefined;
+  });
+}
+
+/**
+ * Loops through text and places code blocks in code elements
+ */
+function _extractCodeBlocks(text: string): React.ReactNode[] {
+  // Unescape some characters
+  text = (text || '').replace(/\\([@<>{}])/g, '$1');
+
+  const result: React.ReactNode[] = [];
+  let index = 0;
+  let inCodeBlock = false;
+  while (index < text.length) {
+    let sectionEnd = text.indexOf('`', index);
+    if (sectionEnd === -1) {
+      sectionEnd = text.length;
+    }
+    const sectionContent = text.substring(index, sectionEnd);
+    if (inCodeBlock) {
+      result.push(<code key={index}>{sectionContent}</code>);
+    } else {
+      result.push(sectionContent);
+    }
+    inCodeBlock = !inCodeBlock;
+    index = sectionEnd + 1;
+  }
+  return result;
 }

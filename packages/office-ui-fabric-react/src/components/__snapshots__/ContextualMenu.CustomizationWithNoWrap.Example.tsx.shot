@@ -8,25 +8,22 @@ exports[`Component Examples renders ContextualMenu.CustomizationWithNoWrap.Examp
   className=
       ms-Button
       ms-Button--default
+      ms-Button--hasMenu
       ContextualMenuButton3
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
-        background-color: #f4f4f4;
-        border-radius: 0px;
-        border: 1px solid transparent;
+        background-color: #ffffff;
+        border-radius: 2px;
+        border: 1px solid #8a8886;
         box-sizing: border-box;
-        color: #333333;
+        color: #323130;
         cursor: pointer;
         display: inline-block;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
         font-weight: 400;
         height: 32px;
-        margin-bottom: 0px;
-        margin-left: 0px;
-        margin-right: 0px;
-        margin-top: 0px;
         min-width: 80px;
         outline: transparent;
         padding-bottom: 0;
@@ -37,20 +34,19 @@ exports[`Component Examples renders ContextualMenu.CustomizationWithNoWrap.Examp
         text-align: center;
         text-decoration: none;
         user-select: none;
-        vertical-align: top;
       }
       &::-moz-focus-inner {
         border: 0;
       }
       .ms-Fabric--isFocusVisible &:focus:after {
-        border: 1px solid #ffffff;
-        bottom: 0px;
+        border: 1px solid transparent;
+        bottom: 2px;
         content: "";
-        left: 0px;
-        outline: 1px solid #666666;
+        left: 2px;
+        outline: 1px solid #605e5c;
         position: absolute;
-        right: 0px;
-        top: 0px;
+        right: 2px;
+        top: 2px;
         z-index: 1;
       }
       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -67,16 +63,16 @@ exports[`Component Examples renders ContextualMenu.CustomizationWithNoWrap.Examp
         top: 0px;
       }
       &:hover {
-        background-color: #eaeaea;
-        color: #212121;
+        background-color: #f3f2f1;
+        color: #201f1e;
       }
       @media screen and (-ms-high-contrast: active){&:hover {
         border-color: Highlight;
         color: Highlight;
       }
       &:active {
-        background-color: #c8c8c8;
-        color: #212121;
+        background-color: #edebe9;
+        color: #201f1e;
       }
   data-is-focusable={true}
   onClick={[Function]}
@@ -87,7 +83,7 @@ exports[`Component Examples renders ContextualMenu.CustomizationWithNoWrap.Examp
   onMouseUp={[Function]}
   type="button"
 >
-  <div
+  <span
     className=
         ms-Button-flexContainer
         {
@@ -97,18 +93,21 @@ exports[`Component Examples renders ContextualMenu.CustomizationWithNoWrap.Examp
           height: 100%;
           justify-content: center;
         }
+    data-automationid="splitbuttonprimary"
   >
-    <div
+    <span
       className=
           ms-Button-textContainer
           {
+            display: block;
             flex-grow: 1;
           }
     >
-      <div
+      <span
         className=
             ms-Button-label
             {
+              display: block;
               font-weight: 600;
               line-height: 100%;
               margin-bottom: 0;
@@ -119,35 +118,45 @@ exports[`Component Examples renders ContextualMenu.CustomizationWithNoWrap.Examp
         id="id__0"
       >
         Click for ContextualMenu
-      </div>
-    </div>
+      </span>
+    </span>
     <i
+      aria-hidden={true}
       className=
+          ms-Icon
           ms-Button-menuIcon
+          {
+            display: inline-block;
+          }
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
-            display: inline-block;
-            flex-shrink: 0;
             font-family: "FabricMDL2Icons";
-            font-size: 12px;
             font-style: normal;
             font-weight: normal;
+            speak: none;
+          }
+          {
+            flex-shrink: 0;
+            font-size: 12px;
             height: 16px;
             line-height: 16px;
             margin-bottom: 0;
             margin-left: 4px;
             margin-right: 4px;
             margin-top: 0;
-            speak: none;
             text-align: center;
-            vertical-align: middle;
           }
       data-icon-name="ChevronDown"
       role="presentation"
+      style={
+        Object {
+          "fontFamily": "\\"FabricMDL2Icons\\"",
+        }
+      }
     >
       
     </i>
-  </div>
+  </span>
 </button>
 `;

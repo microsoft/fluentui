@@ -7,15 +7,15 @@ import {
   classNamesFunction,
   customizable,
   getDocument,
-  createRef,
   setPortalAttribute,
   setVirtualParent,
-  warnDeprecations
+  warnDeprecations,
 } from '../../Utilities';
 import { registerLayer, getDefaultTarget, unregisterLayer } from './Layer.notification';
 
 export type ILayerBaseState = {
-  hasMounted: boolean;
+  hostId?: string;
+  layerElement?: HTMLElement;
 };
 
 const getClassNames = classNamesFunction<ILayerStyleProps, ILayerStyles>();
@@ -24,214 +24,137 @@ const getClassNames = classNamesFunction<ILayerStyleProps, ILayerStyles>();
 export class LayerBase extends React.Component<ILayerProps, ILayerBaseState> {
   public static defaultProps: ILayerProps = {
     onLayerDidMount: () => undefined,
-    onLayerWillUnmount: () => undefined
+    onLayerWillUnmount: () => undefined,
   };
 
-  private _host: Node;
-  private _layerElement: HTMLElement | undefined;
-  private _rootElement = createRef<HTMLDivElement>();
+  private _rootRef = React.createRef<HTMLSpanElement>();
 
   constructor(props: ILayerProps) {
     super(props);
 
-    this.state = {
-      hasMounted: false
-    };
+    this.state = {};
 
     if (process.env.NODE_ENV !== 'production') {
       warnDeprecations('Layer', props, {
-        onLayerMounted: 'onLayerDidMount'
+        onLayerMounted: 'onLayerDidMount',
       });
-    }
-
-    if (this.props.hostId) {
-      registerLayer(this.props.hostId, this);
-    }
-  }
-
-  public componentWillMount(): void {
-    this._layerElement = this._getLayerElement();
-  }
-
-  public componentWillUpdate(): void {
-    if (!this._layerElement) {
-      this._layerElement = this._getLayerElement();
     }
   }
 
   public componentDidMount(): void {
-    // We can safely set state immediately because the ref wrapper will make sure the virtual
-    //    parent has been set before componentDidMount is called.
-    this.setState({ hasMounted: true });
+    const { hostId } = this.props;
 
-    this._setVirtualParent();
-
-    const { onLayerDidMount, onLayerMounted } = this.props;
-    if (onLayerMounted) {
-      onLayerMounted();
-    }
-
-    if (onLayerDidMount) {
-      onLayerDidMount();
-    }
-  }
-
-  public componentWillUnmount(): void {
-    this._removeLayerElement();
-
-    const { onLayerWillUnmount, hostId } = this.props;
-    if (onLayerWillUnmount) {
-      onLayerWillUnmount();
-    }
+    this._createLayerElement();
 
     if (hostId) {
-      unregisterLayer(hostId, this);
+      registerLayer(hostId, this._createLayerElement);
     }
-  }
-
-  public componentDidUpdate(): void {
-    this._setVirtualParent();
   }
 
   public render(): React.ReactNode {
+    const { layerElement } = this.state;
     const classNames = this._getClassNames();
     const { eventBubblingEnabled } = this.props;
-    const { hasMounted } = this.state;
 
     return (
-      <span className="ms-layer" ref={this._handleRootElementRef}>
-        {this._layerElement &&
-          hasMounted &&
+      <span className="ms-layer" ref={this._rootRef}>
+        {layerElement &&
           ReactDOM.createPortal(
-            eventBubblingEnabled ? (
-              <Fabric className={classNames.content}>{this.props.children}</Fabric>
-            ) : (
-              <Fabric
-                className={classNames.content}
-                onClick={this._filterEvent}
-                onContextMenu={this._filterEvent}
-                onDoubleClick={this._filterEvent}
-                onDrag={this._filterEvent}
-                onDragEnd={this._filterEvent}
-                onDragEnter={this._filterEvent}
-                onDragExit={this._filterEvent}
-                onDragLeave={this._filterEvent}
-                onDragOver={this._filterEvent}
-                onDragStart={this._filterEvent}
-                onDrop={this._filterEvent}
-                onMouseDown={this._filterEvent}
-                onMouseEnter={this._filterEvent}
-                onMouseLeave={this._filterEvent}
-                onMouseMove={this._filterEvent}
-                onMouseOver={this._filterEvent}
-                onMouseOut={this._filterEvent}
-                onMouseUp={this._filterEvent}
-                onKeyDown={this._filterEvent}
-                onKeyPress={this._filterEvent}
-                onKeyUp={this._filterEvent}
-                onFocus={this._filterEvent}
-                onBlur={this._filterEvent}
-                onChange={this._filterEvent}
-                onInput={this._filterEvent}
-                onInvalid={this._filterEvent}
-                onSubmit={this._filterEvent}
-              >
-                {this.props.children}
-              </Fabric>
-            ),
-            this._layerElement
+            <Fabric {...(!eventBubblingEnabled && _getFilteredEvents())} className={classNames.content}>
+              {this.props.children}
+            </Fabric>,
+            layerElement,
           )}
       </span>
     );
   }
 
-  /**
-   * rootElement wrapper for setting virtual parent as soon as root element ref is available.
-   */
-  private _handleRootElementRef = (ref: HTMLDivElement): void => {
-    this._rootElement(ref);
-    if (ref) {
-      // TODO: Calling _setVirtualParent in this ref wrapper SHOULD allow us to remove
-      //    other calls to _setVirtualParent throughout this class. However,
-      //    as this is an immediate fix for a P0 issue the existing _setVirtualParent
-      //    calls are left for now to minimize potential regression.
-      this._setVirtualParent();
+  public componentDidUpdate(): void {
+    if (this.props.hostId !== this.state.hostId) {
+      this._createLayerElement();
     }
+  }
+
+  public componentWillUnmount(): void {
+    const { hostId } = this.props;
+
+    this._removeLayerElement();
+    if (hostId) {
+      unregisterLayer(hostId, this._createLayerElement);
+    }
+  }
+
+  private _createLayerElement = () => {
+    const { hostId } = this.props;
+
+    const doc = getDocument(this._rootRef.current);
+    const host = this._getHost();
+
+    if (!doc || !host) {
+      return;
+    }
+
+    // If one was already existing, remove.
+    this._removeLayerElement();
+
+    const layerElement = doc.createElement('div');
+    const classNames = this._getClassNames();
+
+    layerElement.className = classNames.root!;
+    setPortalAttribute(layerElement);
+    setVirtualParent(layerElement, this._rootRef.current!);
+
+    this.props.insertFirst ? host.insertBefore(layerElement, host.firstChild) : host.appendChild(layerElement);
+
+    this.setState(
+      {
+        hostId,
+        layerElement,
+      },
+      () => {
+        // tslint:disable-next-line:deprecation
+        const { onLayerDidMount, onLayerMounted } = this.props;
+        if (onLayerMounted) {
+          onLayerMounted();
+        }
+
+        if (onLayerDidMount) {
+          onLayerDidMount();
+        }
+      },
+    );
   };
 
-  /**
-   * Helper to stop events from bubbling up out of Layer.
-   */
-  private _filterEvent = (ev: React.SyntheticEvent<HTMLElement>): void => {
-    // We should just be able to check ev.bubble here and only stop events that are bubbling up. However, even though mouseenter and
-    //    mouseleave do NOT bubble up, they are showing up as bubbling. Therefore we stop events based on event name rather than ev.bubble.
-    if (ev.eventPhase === Event.BUBBLING_PHASE && ev.type !== 'mouseenter' && ev.type !== 'mouseleave') {
-      ev.stopPropagation();
+  private _removeLayerElement(): void {
+    const { onLayerWillUnmount } = this.props;
+    const { layerElement } = this.state;
+
+    if (onLayerWillUnmount) {
+      onLayerWillUnmount();
     }
-  };
+
+    if (layerElement && layerElement.parentNode) {
+      const parentNode = layerElement.parentNode;
+      if (parentNode) {
+        parentNode.removeChild(layerElement);
+      }
+    }
+  }
 
   private _getClassNames() {
     const { className, styles, theme } = this.props;
     const classNames = getClassNames(styles!, {
       theme: theme!,
       className,
-      isNotHost: !this.props.hostId
+      isNotHost: !this.props.hostId,
     });
 
     return classNames;
   }
 
-  private _setVirtualParent() {
-    if (this._rootElement && this._rootElement.current && this._layerElement) {
-      setVirtualParent(this._layerElement, this._rootElement.current);
-    }
-  }
-
-  private _getLayerElement(): HTMLElement | undefined {
-    const host = this._getHost();
-
-    const classNames = this._getClassNames();
-
-    if (host !== this._host) {
-      this._removeLayerElement();
-    }
-
-    if (host) {
-      this._host = host;
-
-      if (!this._layerElement) {
-        const doc = getDocument();
-        if (!doc) {
-          return;
-        }
-
-        this._layerElement = doc.createElement('div');
-        this._layerElement.className = classNames.root!;
-        setPortalAttribute(this._layerElement);
-
-        this.props.insertFirst ? host.insertBefore(this._layerElement, host.firstChild) : host.appendChild(this._layerElement);
-      }
-    }
-
-    return this._layerElement;
-  }
-
-  private _removeLayerElement(): void {
-    if (this._layerElement) {
-      this.props.onLayerWillUnmount!();
-
-      const parentNode = this._layerElement.parentNode;
-      if (parentNode) {
-        parentNode.removeChild(this._layerElement);
-      }
-      this._layerElement = undefined;
-    }
-  }
-
   private _getHost(): Node | undefined {
     const { hostId } = this.props;
-
-    const doc = getDocument();
+    const doc = getDocument(this._rootRef.current);
     if (!doc) {
       return undefined;
     }
@@ -243,4 +166,63 @@ export class LayerBase extends React.Component<ILayerProps, ILayerBaseState> {
       return defaultHostSelector ? (doc.querySelector(defaultHostSelector) as Node) : doc.body;
     }
   }
+}
+
+const _onFilterEvent = (ev: React.SyntheticEvent<HTMLElement>): void => {
+  // We should just be able to check ev.bubble here and only stop events that are bubbling up. However, even though
+  // mouseenter and mouseleave do NOT bubble up, they are showing up as bubbling. Therefore we stop events based on
+  // event name rather than ev.bubble.
+  if (
+    ev.eventPhase === Event.BUBBLING_PHASE &&
+    ev.type !== 'mouseenter' &&
+    ev.type !== 'mouseleave' &&
+    ev.type !== 'touchstart' &&
+    ev.type !== 'touchend'
+  ) {
+    ev.stopPropagation();
+  }
+};
+
+let _filteredEventProps: { [key: string]: (ev: React.SyntheticEvent<HTMLElement, Event>) => void };
+
+function _getFilteredEvents() {
+  if (!_filteredEventProps) {
+    _filteredEventProps = {} as any;
+
+    [
+      'onClick',
+      'onContextMenu',
+      'onDoubleClick',
+      'onDrag',
+      'onDragEnd',
+      'onDragEnter',
+      'onDragExit',
+      'onDragLeave',
+      'onDragOver',
+      'onDragStart',
+      'onDrop',
+      'onMouseDown',
+      'onMouseEnter',
+      'onMouseLeave',
+      'onMouseMove',
+      'onMouseOver',
+      'onMouseOut',
+      'onMouseUp',
+      'onTouchMove',
+      'onTouchStart',
+      'onTouchCancel',
+      'onTouchEnd',
+      'onKeyDown',
+      'onKeyPress',
+      'onKeyUp',
+      'onFocus',
+      'onBlur',
+      'onChange',
+      'onInput',
+      'onInvalid',
+      'onSubmit',
+    ].forEach(name => (_filteredEventProps[name] = _onFilterEvent));
+  }
+
+  return _filteredEventProps;
 }

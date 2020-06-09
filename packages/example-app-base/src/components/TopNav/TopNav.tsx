@@ -49,9 +49,9 @@ export class TopNav extends React.Component<ITopNavProps, ITopNavState> {
                   iconName: 'GlobalNavButton',
                   styles: {
                     root: {
-                      fontSize: 20 // Matches UHF menu
-                    }
-                  }
+                      fontSize: 20, // Matches UHF menu
+                    },
+                  },
                 }}
                 onClick={this._openNavPanel}
               />
@@ -66,8 +66,8 @@ export class TopNav extends React.Component<ITopNavProps, ITopNavState> {
                 onRenderFooterContent={onRenderNavFooter}
                 styles={{
                   navigation: {
-                    height: 52 // Matches TopNav height
-                  }
+                    height: 52, // Matches TopNav height
+                  },
                 }}
               >
                 {pages && <FocusZone>{this._renderLinkList(pages, true)}</FocusZone>}
@@ -96,7 +96,7 @@ export class TopNav extends React.Component<ITopNavProps, ITopNavState> {
     resizeTimer = setTimeout(() => {
       this._isMounted &&
         this.setState({
-          isSmallScreen: window.innerWidth < ScreenWidthMinUhfMobile
+          isSmallScreen: window.innerWidth < ScreenWidthMinUhfMobile,
         });
     }, 100);
   };
@@ -121,7 +121,7 @@ export class TopNav extends React.Component<ITopNavProps, ITopNavState> {
     const home = pages.filter((page: INavPage) => page.isHomePage)[0];
     if (home) {
       return (
-        <a href={home.url} className={styles.appLogo} title="UI Fabric Home page">
+        <a href={home.url} className={styles.appLogo} title="Home page">
           {/* @todo: Set up baseImageUrl to easily swap image host. */}
           <img src={this.props.siteLogoSource} role="presentation" />
         </a>
@@ -143,7 +143,7 @@ export class TopNav extends React.Component<ITopNavProps, ITopNavState> {
           // tslint:disable-next-line:no-any
           page.className && (styles as any)[page.className],
           hasActiveChild(page, platform) && styles.isActive,
-          isStacked && styles.isStacked
+          isStacked && styles.isStacked,
         )}
         key={linkIndex}
       >

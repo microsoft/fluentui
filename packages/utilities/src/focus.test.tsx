@@ -1,6 +1,4 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import {
@@ -10,9 +8,8 @@ import {
   getElementIndexPath,
   getFirstTabbable,
   getFocusableByIndexPath,
-  getLastTabbable
+  getLastTabbable,
 } from './focus';
-import { nullRender } from './BaseComponent';
 
 let _hiddenElement: HTMLElement | undefined;
 let _visibleElement: HTMLElement | undefined;
@@ -28,17 +25,17 @@ function _initialize(): void {
   _hiddenElement = renderIntoDocument(
     <div data-is-visible={false}>
       <button />
-    </div>
+    </div>,
   ) as HTMLElement;
   _visibleElement = renderIntoDocument(
     <div data-is-visible={true}>
       <button />
-    </div>
+    </div>,
   ) as HTMLElement;
   _element = renderIntoDocument(
     <div>
       <button />
-    </div>
+    </div>,
   ) as HTMLElement;
   // tslint:disable-next-line:no-any
   (_element as any).isVisible = true;
@@ -96,6 +93,12 @@ describe('isElementTabbable', () => {
     expect(isElementTabbable(input)).toEqual(true);
   });
 
+  it('returns true on select elements', () => {
+    let select = document.createElement('select');
+
+    expect(isElementTabbable(select)).toEqual(true);
+  });
+
   it('returns true on textarea elements', () => {
     let textarea = document.createElement('textarea');
 
@@ -150,7 +153,7 @@ describe('focusAsync', () => {
         <button className="a">a</button>
         <button className="b">b</button>
         <button className="c">c</button>
-      </div>
+      </div>,
     );
 
     const container = ReactDOM.findDOMNode(component as React.ReactInstance) as Element;
@@ -161,13 +164,13 @@ describe('focusAsync', () => {
     // Focus the first button.
     focusAsync(buttonA);
     window.requestAnimationFrame(() => {
-      expect(container.ownerDocument.activeElement).toBe(buttonA);
+      expect(container.ownerDocument!.activeElement).toBe(buttonA);
 
       // Focus the second button, then the third before the next frame
       focusAsync(buttonB);
       focusAsync(buttonC);
       window.requestAnimationFrame(() => {
-        expect(container.ownerDocument.activeElement).toBe(buttonC);
+        expect(container.ownerDocument!.activeElement).toBe(buttonC);
       });
     });
 
@@ -177,7 +180,8 @@ describe('focusAsync', () => {
   it('can focus a component which implements focus()', () => {
     let calledFocus = false;
     const fakeComponent = {
-      focus: () => (calledFocus = true)
+      ownerDocument: {},
+      focus: () => (calledFocus = true),
     };
 
     focusAsync(fakeComponent);
@@ -220,7 +224,7 @@ describe('getFocusableByIndexPath', () => {
     </div>
   `;
 
-    const child = parent.querySelector('#child') as HTMLElement;
+    parent.querySelector('#child') as HTMLElement;
 
     expect(getFocusableByIndexPath(parent, [0, 2, 1])).toEqual(null);
   });
@@ -286,7 +290,7 @@ describe('getFirstTabbable', () => {
             c
           </button>
         </div>
-      </div>
+      </div>,
     );
 
     const container = ReactDOM.findDOMNode(component as React.ReactInstance) as HTMLElement;
@@ -311,7 +315,7 @@ describe('getFirstTabbable', () => {
             c
           </button>
         </div>
-      </div>
+      </div>,
     );
 
     const container = ReactDOM.findDOMNode(component as React.ReactInstance) as HTMLElement;
@@ -337,7 +341,7 @@ describe('getLastTabbable', () => {
             c
           </button>
         </div>
-      </div>
+      </div>,
     );
 
     const container = ReactDOM.findDOMNode(component as React.ReactInstance) as HTMLElement;
@@ -362,7 +366,7 @@ describe('getLastTabbable', () => {
             c
           </button>
         </div>
-      </div>
+      </div>,
     );
 
     const container = ReactDOM.findDOMNode(component as React.ReactInstance) as HTMLElement;

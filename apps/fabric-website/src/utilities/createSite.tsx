@@ -4,10 +4,16 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as es6Promise from 'es6-promise';
 import { Fabric, setBaseUrl } from 'office-ui-fabric-react';
-import { Route, Router } from 'office-ui-fabric-react/lib/utilities/router/index';
 import { initializeIcons } from '@uifabric/icons/lib/index';
+import {
+  INavPage,
+  ISiteDefinition,
+  currentFabricBreakpoint,
+  jumpToAnchor,
+  handleRedirects,
+} from '@uifabric/example-app-base/lib/index2';
+import { Route, Router } from '@uifabric/example-app-base';
 import { Site } from '../components/Site/index';
-import { INavPage, ISiteDefinition, currentFabricBreakpoint, jumpToAnchor, handleRedirects } from '@uifabric/example-app-base/lib/index2';
 import { hasUHF, isLocal } from './location';
 
 // Polyfill needed by FeedbackList
@@ -45,7 +51,7 @@ let rootElement: HTMLElement;
 
 export function createSite<TPlatforms extends string>(
   siteDefinition: ISiteDefinition<TPlatforms>,
-  defaultRouteComponent?: React.ComponentType | React.ComponentType[]
+  defaultRouteComponent?: React.ComponentType | React.ComponentType[],
 ) {
   if (document.readyState === 'interactive' || document.readyState === 'complete') {
     _onLoad();
@@ -61,7 +67,13 @@ export function createSite<TPlatforms extends string>(
   function _createRoutes(pages: INavPage<TPlatforms>[]): JSX.Element[] {
     let routes: JSX.Element[] = [];
     pages.forEach((page: INavPage<TPlatforms>) => {
-      routes.push(<Route key={page.url} path={page.url} component={page.component} getComponent={page.getComponent} />);
+      // Create a route for each page and its children.
+      // Categories don't have an actual corresponding URL but may have children.
+      if (page.url && (page.component || page.getComponent)) {
+        routes.push(
+          <Route key={page.url} path={page.url} component={page.component} getComponent={page.getComponent} />,
+        );
+      }
       if (page.platforms) {
         Object.keys(page.platforms).forEach((plat: TPlatforms) => {
           const platformPages: INavPage<TPlatforms>[] = page.platforms && page.platforms[plat];
@@ -111,7 +123,7 @@ export function createSite<TPlatforms extends string>(
           <Route component={renderSite}>{_getSiteRoutes()}</Route>
         </Router>
       </Fabric>,
-      rootElement
+      rootElement,
     );
   }
 
@@ -132,4 +144,8 @@ function addCSSToHeader(fileName: string): void {
   headEl.appendChild(linkEl);
 }
 
-addCSSToHeader('https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/' + corePackageVersion + '/css/fabric.min.css');
+addCSSToHeader(
+  'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/' +
+    corePackageVersion +
+    '/css/fabric.min.css',
+);

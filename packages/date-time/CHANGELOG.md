@@ -1,6 +1,350 @@
 # Change Log - @uifabric/date-time
 
-This log was last generated on Mon, 03 Jun 2019 12:23:18 GMT and should not be manually modified.
+This log was last generated on Fri, 08 May 2020 12:35:40 GMT and should not be manually modified.
+
+<!-- Start content -->
+
+## [7.8.74](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.8.74)
+
+Fri, 08 May 2020 12:35:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.8.73..@uifabric/date-time_v7.8.74)
+
+### Patches
+
+- update snapshots for merge-styles change to not generate class with no styles ([PR #13029](https://github.com/microsoft/fluentui/pull/13029) by pingj@microsoft.com)
+
+## [7.8.73](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.8.73)
+
+Thu, 07 May 2020 01:06:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.8.55..@uifabric/date-time_v7.8.73)
+
+### Patches
+
+- Addressing commonjs imports. ([PR #13031](https://github.com/microsoft/fluentui/pull/13031) by dzearing@microsoft.com)
+
+## [7.8.55](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.8.55)
+
+Thu, 16 Apr 2020 04:01:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.8.53..@uifabric/date-time_v7.8.55)
+
+### Patches
+
+- Readme: Fabric=>Fluent wording updates ([PR #12508](https://github.com/microsoft/fluentui/pull/12508) by elcraig@microsoft.com)
+- Fixed a bug in the DatePicker causing an existing validation error to be cleared when tabbing through the component. ([PR #12602](https://github.com/microsoft/fluentui/pull/12602) by michaelmajgaard@outlook.com)
+
+## 7.8.45
+Wed, 25 Mar 2020 12:30:04 GMT
+
+### Patches
+
+- Changing references of Fabric to Fluent (mgodbolt@microsoft.com)
+## 7.8.44
+Mon, 23 Mar 2020 12:28:29 GMT
+
+### Patches
+
+- Replace OfficeDev/office-ui-fabric-react with microsoft/fluentui (elcraig@microsoft.com)
+## 7.8.41
+Tue, 17 Mar 2020 12:28:58 GMT
+
+### Patches
+
+- remove all usages of BaseComponent and initializeFocusRects (xgao@microsoft.com)
+## 7.8.40
+Mon, 16 Mar 2020 12:28:27 GMT
+
+### Patches
+
+- CalendarDayGrid: navigatedDate should have defaultValue of today (aneeshak@microsoft.com)
+## 7.8.28
+Tue, 25 Feb 2020 12:25:39 GMT
+
+### Patches
+
+- Fixed date time doc page file layout (elcraig@microsoft.com)
+## 7.8.25
+Thu, 20 Feb 2020 12:20:16 GMT
+
+### Patches
+
+- DatePicker: Fixing onSelectDate event being called twice when allowTextInput is set to true. (Humberto.Morimoto@microsoft.com)
+## 7.8.8
+Fri, 24 Jan 2020 12:30:27 GMT
+
+### Patches
+
+- DatePicker: Fixing issue with formatted dates. (Humberto.Morimoto@microsoft.com)
+- Updating text field validation in date-time package to check new value rather than old one. (chce@netcompany.com)
+## 7.8.5
+Fri, 17 Jan 2020 02:32:17 GMT
+
+### Patches
+
+- Update tslib minver to first version containing __spreadArrays helper due to changes in how TS emits spreads. (jagore@microsoft.com)
+## 7.8.4
+Fri, 17 Jan 2020 01:24:12 GMT
+
+### Patches
+
+- DatePicker: error message for required field is not cleared when date is selected from calendar (xgao@microsoft.com)
+## 7.8.3
+Wed, 08 Jan 2020 17:02:57 GMT
+
+### Patches
+
+- bumping load-themed-styles to take advantage of es6 version of it (kchau@microsoft.com)
+## 7.8.2
+Wed, 11 Dec 2019 12:30:26 GMT
+
+### Patches
+
+- Allow focus on CalendarMonth header. (phtucker@microsoft.com)
+## 7.8.1
+Fri, 06 Dec 2019 12:33:21 GMT
+
+### Patches
+
+- updated snapshots (betrue@microsoft.com)
+## 7.8.0
+Tue, 03 Dec 2019 12:36:28 GMT
+
+### Minor changes
+
+- DatePicker: Making styles accept functions and objects and not only functions. (Humberto.Morimoto@microsoft.com)
+## 7.7.0
+Tue, 26 Nov 2019 12:32:11 GMT
+
+### Minor changes
+
+- applying a custom ref callback for days in the calendardaygrid to allow consumers to specify their own properties directly on the dom element (jolore@microsoft.com)
+## 7.6.0
+Mon, 25 Nov 2019 12:31:13 GMT
+
+### Minor changes
+
+- Accessibility fixes for date-time Calendar, adding new strings for new aria labels and fixing aria-live regions (jolore@microsoft.com)
+## 7.5.7
+Thu, 21 Nov 2019 12:30:32 GMT
+
+### Patches
+
+- updating work week hover state to match the actual days that are going to be selected. The mouse over state still takes the whole week into account (jolore@microsoft.com)
+## 7.5.6
+Fri, 08 Nov 2019 12:30:07 GMT
+
+### Patches
+
+- Change files (betrue@microsoft.com)
+## 7.5.5
+Wed, 30 Oct 2019 19:36:52 GMT
+
+### Patches
+
+- Fixed accessibility of today in date-time package (betrue@microsoft.com)
+## 7.5.4
+Thu, 24 Oct 2019 12:31:42 GMT
+
+### Patches
+
+- undefined (phtucker@microsoft.com)
+## 7.5.3
+Tue, 22 Oct 2019 12:32:05 GMT
+
+### Patches
+
+- Fix getDerivedStateFromProps signatures (elcraig@microsoft.com)
+## 7.5.2
+Thu, 03 Oct 2019 23:14:46 GMT
+
+### Patches
+
+- Fixes publish issue from beachball (odbuild@microsoft.com)
+## 7.5.0
+Mon, 30 Sep 2019 12:35:16 GMT
+
+### Minor changes
+
+- undefined (jolore@microsoft.com)
+- initial commit of multi-day day view implementation. Lots of style updates to allow the hover states to work- previously hover states were always static, but now the classes have to update dynamically as the mouse moves over days (jolore@microsoft.com)
+## 7.4.8
+Wed, 25 Sep 2019 12:34:56 GMT
+
+### Patches
+
+- fixing focus outline in IE11. The outline in IE11 does not show if it overflows the div it's in unless we explicitly set overflow: visible on the div (other browsers have this as the default). (jolore@microsoft.com)
+## 7.4.7
+Tue, 24 Sep 2019 12:35:43 GMT
+
+### Patches
+
+- Remove codepen-loader usage (elcraig@microsoft.com)
+## 7.4.6
+Mon, 23 Sep 2019 12:33:15 GMT
+
+### Patches
+
+- Icon Accessibility updates: update aria-hidden to pull aria-labelledBy from root and imageProps and removed role presentation - should not apply when a label is provided. (marygans@microsoft.com)
+## 7.4.5
+Mon, 16 Sep 2019 12:34:47 GMT
+
+### Patches
+
+- DatePicker: call custom text field onChange handler if it exists in default onChange handler (naethell@microsoft.com)
+## 7.4.4
+Wed, 04 Sep 2019 04:09:58 GMT
+
+### Patches
+
+- fix version file (kchau@microsoft.com)
+## 7.4.3
+Thu, 29 Aug 2019 12:30:00 GMT
+
+### Patches
+
+- small bug fixes. Fix overflow issue in firefox, fix mouse hover issue in all, fix perf issue in month view rendering of Calendar (jolore@microsoft.com)
+## 7.4.2
+Mon, 26 Aug 2019 12:30:49 GMT
+
+### Patches
+
+- Updating snapshots. (dzearing@hotmail.com)
+## 7.4.1
+Fri, 23 Aug 2019 12:35:28 GMT
+
+### Patches
+
+- Update npmignores, delete unused jest setup files (elcraig@microsoft.com)
+- Fix up readme and package.json descriptions (elcraig@microsoft.com)
+
+## 7.4.0
+Thu, 15 Aug 2019 12:30:43 GMT
+
+### Minor changes
+
+- Rename deprecated React lifecycle functions to prevent development mode warnings in React 16.9. (jagore@microsoft.com)
+
+## 7.3.0
+Thu, 08 Aug 2019 12:32:41 GMT
+
+### Minor changes
+
+- Moves aria-label to same element as role=combobox on the datepicker as required by the aria docs (susunda@microsoft.com)
+
+## 7.2.1
+Tue, 06 Aug 2019 12:32:07 GMT
+
+### Patches
+
+- fixing broken IE11 by removing findIndex call, fixing the weeklydaypicker not rerendering when passed new initial date (jolore@microsoft.com)
+
+## 7.2.0
+Fri, 02 Aug 2019 12:33:29 GMT
+
+### Minor changes
+
+- finishing up the slide animation to apply to calendar and month and year pickers, and allow consumer to specify direction (jolore@microsoft.com)
+
+## 7.1.7
+Mon, 22 Jul 2019 12:28:42 GMT
+
+### Patches
+
+- fixing issue where buttons don't hide if they have focus, adding touch for navigation (jolore@microsoft.com)
+- Improve how to get the min query string (elcraig@microsoft.com)
+
+## 7.1.6
+Wed, 17 Jul 2019 18:58:57 GMT
+
+### Patches
+
+- Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom. (makotom@microsoft.com)
+
+## 7.1.4
+Thu, 04 Jul 2019 12:29:39 GMT
+
+### Patches
+
+- fix date conversion for weeklydaypicker (jolore@microsoft.com)
+
+## 7.1.3
+Mon, 01 Jul 2019 18:51:42 GMT
+
+### Patches
+
+- adds react-app-polyfill
+
+## 7.1.2
+Wed, 26 Jun 2019 12:23:41 GMT
+
+### Patches
+
+- update snapshots
+
+## 7.1.1
+Thu, 20 Jun 2019 12:27:38 GMT
+
+### Patches
+
+- fixing min/max date being ignored
+
+## 7.1.0
+Mon, 17 Jun 2019 12:26:51 GMT
+
+### Minor changes
+
+- adding new weekdaypicker component, refactoring calendardaygrid out of calendarday to share with new component
+
+## 7.0.2
+Fri, 14 Jun 2019 12:26:30 GMT
+
+### Patches
+
+- Fix missing assets in production build.
+
+## 7.0.1
+Thu, 13 Jun 2019 00:24:48 GMT
+
+### Patches
+
+- Initial release of Fabric 7
+
+## 6.3.3
+Wed, 12 Jun 2019 00:42:26 GMT
+
+### Patches
+
+- Re-export shared date utilities rather than duplicating
+- Render demo app with Markdown instead of PageMarkdown
+- Update and dedupe React deps.
+
+## 6.3.2
+Tue, 11 Jun 2019 12:21:35 GMT
+
+### Patches
+
+- upgrade to api-extractor 7.1.6
+
+## 6.3.1
+Mon, 10 Jun 2019 12:23:59 GMT
+
+### Patches
+
+- Snapshot updates to components for adding aria-hidden to icon component conditionally
+
+## 6.3.0
+Fri, 07 Jun 2019 12:21:48 GMT
+
+### Minor changes
+
+- styling updates for datetime calendar
+
+## 6.2.1
+Wed, 05 Jun 2019 12:22:30 GMT
+
+### Patches
+
+- add tooltips to Calendar buttons without text and fix text overflow bug in calendar header button with long names
+- TextField: adds aria-labelledby to input
 
 ## 6.2.0
 Mon, 03 Jun 2019 12:23:18 GMT
@@ -126,4 +470,3 @@ Thu, 29 Nov 2018 19:34:12 GMT
 ### Minor changes
 
 - Creating the initial date-time package, including the first stage of the Calendar component css-in-js refactor, and creating the example page.
-

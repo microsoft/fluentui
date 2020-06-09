@@ -1,12 +1,13 @@
 import { getDocument } from './dom/getDocument';
 import { mergeStyles } from '@uifabric/merge-styles';
 import { EventGroup } from './EventGroup';
+import { getWindow } from './dom/getWindow';
 
 let _scrollbarWidth: number;
 let _bodyScrollDisabledCount = 0;
 
 const DisabledScrollClassName = mergeStyles({
-  overflow: 'hidden !important' as 'hidden'
+  overflow: 'hidden !important' as 'hidden',
 });
 
 /**
@@ -18,7 +19,15 @@ const DisabledScrollClassName = mergeStyles({
  */
 export const DATA_IS_SCROLLABLE_ATTRIBUTE = 'data-is-scrollable';
 
-const _makeElementScrollAllower = () => {
+/**
+ * Allows the user to scroll within a element,
+ * while preventing the user from scrolling the body
+ */
+export const allowScrollOnElement = (element: HTMLElement | null, events: EventGroup): void => {
+  if (!element) {
+    return;
+  }
+
   let _previousClientY = 0;
   let _element: Element | null = null;
 
@@ -65,23 +74,24 @@ const _makeElementScrollAllower = () => {
     }
   };
 
-  return (element: HTMLElement | null, events: EventGroup): void => {
-    if (!element) {
-      return;
-    }
+  events.on(element, 'touchstart', _saveClientY, { passive: false });
+  events.on(element, 'touchmove', _preventOverscrolling, { passive: false });
 
-    events.on(element, 'touchstart', _saveClientY, { passive: false });
-    events.on(element, 'touchmove', _preventOverscrolling, { passive: false });
-
-    _element = element;
-  };
+  _element = element;
 };
 
 /**
- * Allows the user to scroll within a element,
- * while preventing the user from scrolling the body
+ * Same as allowScrollOnElement but does not prevent overscrolling.
  */
-export const allowScrollOnElement = _makeElementScrollAllower();
+export const allowOverscrollOnElement = (element: HTMLElement | null, events: EventGroup): void => {
+  if (!element) {
+    return;
+  }
+  const _allowElementScroll = (event: TouchEvent) => {
+    event.stopPropagation();
+  };
+  events.on(element, 'touchmove', _allowElementScroll, { passive: false });
+};
 
 const _disableIosBodyScroll = (event: TouchEvent) => {
   event.preventDefault();
@@ -153,9 +163,10 @@ export function getScrollbarWidth(): number {
  */
 export function findScrollableParent(startingElement: HTMLElement | null): HTMLElement | null {
   let el: HTMLElement | null = startingElement;
+  const doc = getDocument(startingElement)!;
 
   // First do a quick scan for the scrollable attribute.
-  while (el && el !== document.body) {
+  while (el && el !== doc.body) {
     if (el.getAttribute(DATA_IS_SCROLLABLE_ATTRIBUTE) === 'true') {
       return el;
     }
@@ -165,7 +176,7 @@ export function findScrollableParent(startingElement: HTMLElement | null): HTMLE
   // If we haven't found it, the use the slower method: compute styles to evaluate if overflow is set.
   el = startingElement;
 
-  while (el && el !== document.body) {
+  while (el && el !== doc.body) {
     if (el.getAttribute(DATA_IS_SCROLLABLE_ATTRIBUTE) !== 'false') {
       const computedStyles = getComputedStyle(el);
       let overflowY = computedStyles ? computedStyles.getPropertyValue('overflow-y') : '';
@@ -179,9 +190,9 @@ export function findScrollableParent(startingElement: HTMLElement | null): HTMLE
   }
 
   // Fall back to window scroll.
-  if (!el || el === document.body) {
+  if (!el || el === doc.body) {
     // tslint:disable-next-line:no-any
-    el = window as any;
+    el = getWindow(startingElement) as any;
   }
 
   return el;

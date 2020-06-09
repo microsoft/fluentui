@@ -10,10 +10,10 @@
     "experimentalDecorators": true,
     "importHelpers": true,
     "strict": true,
+    "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
-    "preserveConstEnums": true,
-    "types": ["jest"]
+    "preserveConstEnums": true
   },
   "include": ["src"]
 }

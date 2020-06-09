@@ -1,6 +1,305 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Tue, 14 May 2019 07:50:30 GMT and should not be manually modified.
+This log was last generated on Tue, 02 Jun 2020 12:36:30 GMT and should not be manually modified.
+
+<!-- Start content -->
+
+## [7.12.15](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.12.15)
+
+Tue, 02 Jun 2020 12:36:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/styling_v7.12.10..@uifabric/styling_v7.12.15)
+
+### Patches
+
+- Update styling package sideEffects to only the ones needed ([PR #13422](https://github.com/microsoft/fluentui/pull/13422) by xgao@microsoft.com)
+
+## [7.12.4](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.12.4)
+
+Fri, 08 May 2020 12:35:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/styling_v7.12.3..@uifabric/styling_v7.12.4)
+
+### Patches
+
+- Add selector to turn off high contrast adjustment in (only) Edge Chromium browser ([PR #13035](https://github.com/microsoft/fluentui/pull/13035) by xgao@microsoft.com)
+
+## [7.12.3](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.12.3)
+
+Thu, 07 May 2020 01:06:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/styling_v7.12.2..@uifabric/styling_v7.12.3)
+
+### Patches
+
+- Addressing commonjs imports. ([PR #13031](https://github.com/microsoft/fluentui/pull/13031) by dzearing@microsoft.com)
+
+## [7.12.2](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.12.2)
+
+Wed, 06 May 2020 12:32:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/styling_v7.12.0..@uifabric/styling_v7.12.2)
+
+### Patches
+
+- Styling tsconfig: adding noImplicitAny and noUnusedLocals. ([PR #12994](https://github.com/microsoft/fluentui/pull/12994) by dzearing@microsoft.com)
+
+## [7.12.0](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.12.0)
+
+Wed, 29 Apr 2020 12:34:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/styling_v7.11.8..@uifabric/styling_v7.12.0)
+
+### Minor changes
+
+- update MessageBar colors ([PR #12821](https://github.com/microsoft/fluentui/pull/12821) by chrismo@microsoft.com)
+
+## [7.11.8](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.11.8)
+
+Wed, 22 Apr 2020 12:33:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/styling_v7.11.3..@uifabric/styling_v7.11.8)
+
+### Patches
+
+- remove outdated comment ([PR #12802](https://github.com/microsoft/fluentui/pull/12802) by phkuo@microsoft.com)
+
+## [7.11.3](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.11.3)
+
+Thu, 16 Apr 2020 04:01:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/styling_v7.11.2..@uifabric/styling_v7.11.3)
+
+### Patches
+
+- Readme: Fabric=>Fluent wording updates ([PR #12508](https://github.com/microsoft/fluentui/pull/12508) by elcraig@microsoft.com)
+
+## 7.11.0
+Wed, 25 Mar 2020 12:30:04 GMT
+
+### Minor changes
+
+- Adding bold font weight definition (dzearing@microsoft.com)
+### Patches
+
+- Changing references of Fabric to Fluent (mgodbolt@microsoft.com)
+## 7.10.22
+Mon, 23 Mar 2020 12:28:29 GMT
+
+### Patches
+
+- Replace OfficeDev/office-ui-fabric-react with microsoft/fluentui (elcraig@microsoft.com)
+## 7.10.15
+Tue, 03 Mar 2020 12:27:24 GMT
+
+### Patches
+
+- Turning on tslint 'deprecation' rule. (Humberto.Morimoto@microsoft.com)
+## 7.10.2
+Wed, 22 Jan 2020 12:36:43 GMT
+
+### Patches
+
+- TextField: fix focused bottom border mis-alignment when errorMessage is set (v-jajach@microsoft.com)
+## 7.10.1
+Fri, 17 Jan 2020 02:32:17 GMT
+
+### Patches
+
+- Update tslib minver to first version containing __spreadArrays helper due to changes in how TS emits spreads. (jagore@microsoft.com)
+## 7.10.0
+Fri, 10 Jan 2020 12:31:47 GMT
+
+### Minor changes
+
+- add borderPosition param to getInputFocusStyle (xgao@microsoft.com)
+## 7.9.0
+Wed, 08 Jan 2020 17:02:57 GMT
+
+### Minor changes
+
+- add getInputFocusStyle function to build styles for text input on focus (xgao@microsoft.com)
+### Patches
+
+- bumping load-themed-styles to take advantage of es6 version of it (kchau@microsoft.com)
+## 7.8.1
+Tue, 31 Dec 2019 12:31:45 GMT
+
+### Patches
+
+- createTheme: Pass through RTL if specified (mgodbolt@microsoft.com)
+## 7.8.0
+Tue, 24 Dec 2019 12:33:51 GMT
+
+### Minor changes
+
+- Export IIconSubsetRecord (elcraig@microsoft.com)
+## 7.7.4
+Fri, 06 Dec 2019 12:33:21 GMT
+
+### Patches
+
+- Making rest state accessible (betrue@microsoft.com)
+## 7.7.3
+Thu, 14 Nov 2019 12:30:52 GMT
+
+### Patches
+
+- Theme Designer: pull semantic slots from primary source instead of have a secondary mapping. (email not defined)
+## 7.7.2
+Thu, 26 Sep 2019 12:32:32 GMT
+
+### Patches
+
+- Add optional rtl property to IScheme (jdh@microsoft.com)
+## 7.7.1
+Mon, 23 Sep 2019 12:33:15 GMT
+
+### Patches
+
+- Animations should not leave invisible elements behind so setting visibility to hidden on fade out to get rid of any interactivity where the faded element was (email not defined)
+## 7.7.0
+Fri, 20 Sep 2019 12:34:28 GMT
+
+### Minor changes
+
+- Exporting new merge-styles apis. (dzearing@microsoft.com)
+## 7.6.2
+Wed, 04 Sep 2019 04:09:58 GMT
+
+### Patches
+
+- fix version file (kchau@microsoft.com)
+## 7.6.1
+Fri, 23 Aug 2019 12:35:28 GMT
+
+### Patches
+
+- Update npmignores, delete unused jest setup files (elcraig@microsoft.com)
+- Fix up readme and package.json descriptions (elcraig@microsoft.com)
+
+## 7.6.0
+Tue, 20 Aug 2019 12:31:26 GMT
+
+### Minor changes
+
+- Semantic slots: add bodyBackgroundHovered and bodyBackgroundSelected (phkuo@microsoft.com)
+
+### Patches
+
+- Fix generation of font size theming variables for legacy (phkuo@microsoft.com)
+
+## 7.5.1
+Mon, 19 Aug 2019 12:32:05 GMT
+
+### Patches
+
+- Fix theming code type issue (phkuo@microsoft.com)
+
+## 7.5.0
+Thu, 15 Aug 2019 12:30:43 GMT
+
+### Minor changes
+
+- Adding input semantic slots (marygans@microsoft.com)
+
+## 7.4.1
+Fri, 09 Aug 2019 12:31:50 GMT
+
+### Patches
+
+- fix font theme variable values for legacy-load-theme (phkuo@microsoft.com)
+
+## 7.4.0
+Fri, 02 Aug 2019 12:33:29 GMT
+
+### Minor changes
+
+- Semantic Colors: Changing and adding a few colors that target input controls. (v-mare@microsoft.com)
+
+## 7.3.1
+Wed, 24 Jul 2019 12:27:56 GMT
+
+### Patches
+
+- Removing react dependency in @uifabric/styling library. (Humberto.Morimoto@microsoft.com)
+
+## 7.3.0
+Mon, 22 Jul 2019 12:28:42 GMT
+
+### Minor changes
+
+- Adding Georgian and Armenian font for Segoe UI Web (marygans@microsoft.com)
+- Export default effects (joschect@microsoft.com)
+
+## 7.2.1
+Wed, 17 Jul 2019 18:58:57 GMT
+
+### Patches
+
+- Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom. (makotom@microsoft.com)
+
+## 7.2.0
+Sat, 13 Jul 2019 22:20:41 GMT
+
+### Minor changes
+
+- Adding Georgian and Armenian font for Segoe UI Web (marygans@microsoft.com)
+
+## 7.1.1
+Mon, 01 Jul 2019 18:51:42 GMT
+
+### Patches
+
+- adds react-app-polyfill
+
+## 7.1.0
+Thu, 27 Jun 2019 18:25:04 GMT
+
+### Minor changes
+
+- Semantic Slots: added successText.
+- Add `font-display: 'swap'` when registering font face'
+
+## 7.0.3
+Wed, 26 Jun 2019 12:23:41 GMT
+
+### Patches
+
+- Add getPlaceholderStyles to return style object based on browser used
+
+## 7.0.2
+Fri, 14 Jun 2019 12:26:30 GMT
+
+### Patches
+
+- Fix missing assets in production build.
+
+## 7.0.1
+Thu, 13 Jun 2019 00:24:48 GMT
+
+### Patches
+
+- Initial release of Fabric 7
+
+## 6.49.0
+Wed, 12 Jun 2019 00:42:26 GMT
+
+### Minor changes
+
+- Remap existing font variables to new values.
+- Extend `getFocusStyle` to include named parameters.
+
+### Patches
+
+- Update and dedupe React deps.
+
+## 6.48.1
+Tue, 11 Jun 2019 12:21:35 GMT
+
+### Patches
+
+- upgrade to api-extractor 7.1.6
+
+## 6.48.0
+Wed, 05 Jun 2019 12:22:30 GMT
+
+### Minor changes
+
+- Add font steps so that Fabric 7's Fluent theme will be backwards compatible
 
 ## 6.47.6
 Tue, 14 May 2019 07:50:30 GMT
@@ -226,7 +525,7 @@ Mon, 08 Oct 2018 12:24:15 GMT
 
 ### Patches
 
-- Moving tslint/prettier dependencies 
+- Moving tslint/prettier dependencies
 
 ## 6.29.1
 Fri, 05 Oct 2018 23:29:26 GMT
@@ -627,7 +926,7 @@ Thu, 25 Jan 2018 11:23:06 GMT
 
 ### Minor changes
 
-- Add focus clear func to styling and change maxheight/maxfontsize to CSSPixelUnitRule 
+- Add focus clear func to styling and change maxheight/maxfontsize to CSSPixelUnitRule
 
 ## 5.16.0
 Wed, 24 Jan 2018 11:23:26 GMT
@@ -1160,7 +1459,7 @@ Wed, 21 Jun 2017 00:45:41 GMT
 
 ### Minor changes
 
-- Consume latest version of createApp 
+- Consume latest version of createApp
 
 ### Patches
 
@@ -1332,4 +1631,3 @@ Fri, 21 Apr 2017 06:23:54 GMT
 ### Patches
 
 - Adding the initial styling package. Initial checkin, not meant to be consumed until we release a 1.0.0.
-

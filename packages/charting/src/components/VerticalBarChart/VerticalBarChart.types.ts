@@ -1,8 +1,10 @@
 import { ITheme, IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 import { IDataPoint } from '../../types/IDataPoint';
+import { IOverflowSetProps } from 'office-ui-fabric-react/lib/OverflowSet';
+import { IFocusZoneProps } from '@fluentui/react-focus';
 
-export { IDataPoint } from '../../types/IDataPoint';
+export { IDataPoint, IVerticalBarChartDataPoint } from '../../types/IDataPoint';
 
 export interface IVerticalBarChart {}
 
@@ -56,13 +58,76 @@ export interface IVerticalBarChartProps {
    * Call to provide customized styling that will layer on top of the variant rules.
    */
   styles?: IStyleFunctionOrObject<IVerticalBarChartStyleProps, IVerticalBarChartStyles>;
+
+  /**
+   * Enable the legends to wrap lines if there is not enough space to show all legends on a single line
+   */
+  enabledLegendsWrapLines?: boolean;
+
+  /**
+   * overflow props for the legends
+   */
+  legendsOverflowProps?: Partial<IOverflowSetProps>;
+
+  /**
+   * focus zone props in hover card for legends
+   */
+  focusZonePropsForLegendsInHoverCard?: IFocusZoneProps;
+
+  /**
+   * text for overflow legends string
+   */
+  legendsOverflowText?: string;
+
+  /**
+   * decides wether to show/hide legends
+   * @defaultvalue false
+   */
+  hideLegend?: boolean;
+
+  /**
+   * Do not show tooltips in chart
+   *
+   * @default false
+   */
+  hideTooltip?: boolean;
 }
 
 export interface IVerticalBarChartStyleProps {
+  /**
+   * Theme (provided through customization.)
+   */
   theme: ITheme;
+
+  /**
+   * Additional CSS class(es) to apply to the StackedBarChart.
+   */
   className?: string;
+
+  /**
+   * Width of the chart.
+   */
   width: number;
+
+  /**
+   * Height of the chart.
+   */
   height: number;
+
+  /**
+   * color of the datapoint legend
+   */
+  legendColor?: string;
+
+  /**
+   * Link to redirect if click action for graph
+   */
+  href?: string;
+
+  /**
+   * prop to check if the chart is selcted or hovered upon to determine opacity
+   */
+  shouldHighlight?: boolean;
 }
 
 export interface IVerticalBarChartStyles {
@@ -125,4 +190,14 @@ export interface IVerticalBarChartStyles {
    * Style for the element containing all the bars in the chart.
    */
   bars?: IStyle;
+
+  /**
+   * Style to change the opacity of bars in dataviz when we hover on a single bar or legends
+   */
+  opacityChangeOnHover: IStyle;
+
+  /**
+   * Style for the legends container
+   */
+  legendContainer?: IStyle;
 }

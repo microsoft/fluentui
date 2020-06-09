@@ -1,7 +1,11 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction } from '../../../Utilities';
-import { IShimmerElementsGroupProps, IShimmerElementsGroupStyleProps, IShimmerElementsGroupStyles } from './ShimmerElementsGroup.types';
+import { classNamesFunction, memoizeFunction } from '../../../Utilities';
 import { IRawStyle } from '../../../Styling';
+import {
+  IShimmerElementsGroupProps,
+  IShimmerElementsGroupStyleProps,
+  IShimmerElementsGroupStyles,
+} from './ShimmerElementsGroup.types';
 import { ShimmerElementType, ShimmerElementsDefaultHeights, IShimmerElement } from '../Shimmer.types';
 import { ShimmerLine } from '../ShimmerLine/ShimmerLine';
 import { IShimmerLineStyles } from '../ShimmerLine/ShimmerLine.types';
@@ -15,92 +19,97 @@ const getClassNames = classNamesFunction<IShimmerElementsGroupStyleProps, IShimm
 /**
  * {@docCategory Shimmer}
  */
-export class ShimmerElementsGroupBase extends BaseComponent<IShimmerElementsGroupProps, {}> {
-  public static defaultProps: IShimmerElementsGroupProps = {
-    flexWrap: false
-  };
+export const ShimmerElementsGroupBase: React.FunctionComponent<IShimmerElementsGroupProps> = props => {
+  const {
+    styles,
+    width = 'auto',
+    shimmerElements,
+    rowHeight = findMaxElementHeight(shimmerElements || []),
+    flexWrap = false,
+    theme,
+    backgroundColor,
+  } = props;
 
-  private _classNames: { [key in keyof IShimmerElementsGroupStyles]: string };
+  const classNames = getClassNames(styles!, {
+    theme: theme!,
+    flexWrap,
+  });
 
-  constructor(props: IShimmerElementsGroupProps) {
-    super(props);
-  }
+  return (
+    <div style={{ width: width }} className={classNames.root}>
+      {getRenderedElements(shimmerElements, backgroundColor, rowHeight)}
+    </div>
+  );
+};
 
-  public render(): JSX.Element {
-    const { styles, width, shimmerElements, rowHeight, flexWrap, theme } = this.props;
+function getRenderedElements(
+  shimmerElements?: IShimmerElement[],
+  backgroundColor?: string,
+  rowHeight?: number,
+): React.ReactNode {
+  const renderedElements: React.ReactNode = shimmerElements ? (
+    shimmerElements.map(
+      (element: IShimmerElement, index: number): JSX.Element => {
+        const { type, ...filteredElem } = element;
+        const { verticalAlign, height } = filteredElem;
+        const styles = getElementStyles(verticalAlign, type, height, backgroundColor, rowHeight);
 
-    this._classNames = getClassNames(styles!, {
-      theme: theme!,
-      flexWrap
-    });
-
-    const height = rowHeight ? rowHeight : this._findMaxElementHeight(shimmerElements ? shimmerElements : []);
-
-    return (
-      // tslint:disable-next-line:jsx-ban-props
-      <div style={{ width: width ? width : 'auto' }} className={this._classNames.root}>
-        {this._getRenderedElements(shimmerElements, height)}
-      </div>
-    );
-  }
-
-  private _getRenderedElements = (shimmerElements?: IShimmerElement[], rowHeight?: number): React.ReactNode => {
-    const renderedElements: React.ReactNode = shimmerElements ? (
-      shimmerElements.map(
-        (elem: IShimmerElement, index: number): JSX.Element => {
-          const { type, ...filteredElem } = elem;
-          switch (elem.type) {
-            case ShimmerElementType.circle:
-              return <ShimmerCircle key={index} {...filteredElem} styles={this._getStyles(elem, rowHeight)} />;
-            case ShimmerElementType.gap:
-              return <ShimmerGap key={index} {...filteredElem} styles={this._getStyles(elem, rowHeight)} />;
-            case ShimmerElementType.line:
-              return <ShimmerLine key={index} {...filteredElem} styles={this._getStyles(elem, rowHeight)} />;
-          }
+        switch (element.type) {
+          case ShimmerElementType.circle:
+            return <ShimmerCircle key={index} {...filteredElem} styles={styles} />;
+          case ShimmerElementType.gap:
+            return <ShimmerGap key={index} {...filteredElem} styles={styles} />;
+          case ShimmerElementType.line:
+            return <ShimmerLine key={index} {...filteredElem} styles={styles} />;
         }
-      )
-    ) : (
-      <ShimmerLine height={ShimmerElementsDefaultHeights.line} styles={{ root: [{ borderWidth: '0px' }] }} />
-    );
+      },
+    )
+  ) : (
+    <ShimmerLine height={ShimmerElementsDefaultHeights.line} />
+  );
 
-    return renderedElements;
-  };
+  return renderedElements;
+}
 
-  private _getStyles = (elem: IShimmerElement, rowHeight?: number): IShimmerCircleStyles | IShimmerGapStyles | IShimmerLineStyles => {
-    const { backgroundColor } = this.props;
-    const { verticalAlign, type } = elem;
-    const elemHeight: number | undefined = elem.height;
-    const dif: number = rowHeight && elemHeight ? rowHeight - elemHeight : 0;
+const getElementStyles = memoizeFunction(
+  (
+    verticalAlign: 'center' | 'bottom' | 'top' | undefined,
+    elementType: ShimmerElementType,
+    elementHeight: number | undefined,
+    backgroundColor?: string,
+    rowHeight?: number,
+  ): IShimmerCircleStyles | IShimmerGapStyles | IShimmerLineStyles => {
+    const dif: number = rowHeight && elementHeight ? rowHeight - elementHeight : 0;
 
     let borderStyle: IRawStyle | undefined;
 
     if (!verticalAlign || verticalAlign === 'center') {
       borderStyle = {
         borderBottomWidth: `${dif ? Math.floor(dif / 2) : 0}px`,
-        borderTopWidth: `${dif ? Math.ceil(dif / 2) : 0}px`
+        borderTopWidth: `${dif ? Math.ceil(dif / 2) : 0}px`,
       };
     } else if (verticalAlign && verticalAlign === 'top') {
       borderStyle = {
-        borderBottomWidth: `${dif ? dif : 0}px`,
-        borderTopWidth: `0px`
+        borderBottomWidth: `${dif}px`,
+        borderTopWidth: `0px`,
       };
     } else if (verticalAlign && verticalAlign === 'bottom') {
       borderStyle = {
         borderBottomWidth: `0px`,
-        borderTopWidth: `${dif ? dif : 0}px`
+        borderTopWidth: `${dif}px`,
       };
     }
 
     if (backgroundColor) {
-      switch (type) {
+      switch (elementType) {
         case ShimmerElementType.circle:
           return {
             root: { ...borderStyle, borderColor: backgroundColor },
-            svg: { fill: backgroundColor }
+            svg: { fill: backgroundColor },
           };
         case ShimmerElementType.gap:
           return {
-            root: { ...borderStyle, borderColor: backgroundColor, backgroundColor: backgroundColor }
+            root: { ...borderStyle, borderColor: backgroundColor, backgroundColor: backgroundColor },
           };
         case ShimmerElementType.line:
           return {
@@ -108,45 +117,45 @@ export class ShimmerElementsGroupBase extends BaseComponent<IShimmerElementsGrou
             topLeftCorner: { fill: backgroundColor },
             topRightCorner: { fill: backgroundColor },
             bottomLeftCorner: { fill: backgroundColor },
-            bottomRightCorner: { fill: backgroundColor }
+            bottomRightCorner: { fill: backgroundColor },
           };
       }
     }
 
     return {
-      root: { ...borderStyle }
+      root: borderStyle,
     };
-  };
+  },
+);
 
-  /**
-   * User should not worry to provide which of the elements is the highest, we do the calculation for him.
-   * Plus if user forgot to specify the height we assign their defaults.
-   */
-  private _findMaxElementHeight = (elements: IShimmerElement[]): number => {
-    const itemsDefaulted: IShimmerElement[] = elements.map(
-      (elem: IShimmerElement): IShimmerElement => {
-        switch (elem.type) {
-          case ShimmerElementType.circle:
-            if (!elem.height) {
-              elem.height = ShimmerElementsDefaultHeights.circle;
-            }
-          case ShimmerElementType.line:
-            if (!elem.height) {
-              elem.height = ShimmerElementsDefaultHeights.line;
-            }
-          case ShimmerElementType.gap:
-            if (!elem.height) {
-              elem.height = ShimmerElementsDefaultHeights.gap;
-            }
-        }
-        return elem;
+/**
+ * User should not worry to provide which of the elements is the highest so we do the calculation for him.
+ * Plus if user forgot to specify the height we assign their defaults.
+ */
+function findMaxElementHeight(shimmerElements: IShimmerElement[]): number {
+  const shimmerElementsDefaulted: IShimmerElement[] = shimmerElements.map(
+    (element: IShimmerElement): IShimmerElement => {
+      switch (element.type) {
+        case ShimmerElementType.circle:
+          if (!element.height) {
+            element.height = ShimmerElementsDefaultHeights.circle;
+          }
+        case ShimmerElementType.line:
+          if (!element.height) {
+            element.height = ShimmerElementsDefaultHeights.line;
+          }
+        case ShimmerElementType.gap:
+          if (!element.height) {
+            element.height = ShimmerElementsDefaultHeights.gap;
+          }
       }
-    );
+      return element;
+    },
+  );
 
-    const rowHeight = itemsDefaulted.reduce((acc: number, next: IShimmerElement): number => {
-      return next.height ? (next.height > acc ? next.height : acc) : acc;
-    }, 0);
+  const rowHeight = shimmerElementsDefaulted.reduce((acc: number, next: IShimmerElement): number => {
+    return next.height ? (next.height > acc ? next.height : acc) : acc;
+  }, 0);
 
-    return rowHeight;
-  };
+  return rowHeight;
 }

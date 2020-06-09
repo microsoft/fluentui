@@ -1,12 +1,12 @@
 import {
   IStyle,
-  IPalette,
   ISemanticColors,
   HighContrastSelector,
   ScreenWidthMaxSmall,
   getScreenSelector,
+  getGlobalClassNames,
   getFocusStyle,
-  getGlobalClassNames
+  IconFontSizes,
 } from '../../Styling';
 import { IMessageBarStyleProps, IMessageBarStyles, MessageBarType } from './MessageBar.types';
 
@@ -30,86 +30,95 @@ const GlobalClassNames = {
   dismissal: 'ms-MessageBar-dismissal',
   expand: 'ms-MessageBar-expand',
   actions: 'ms-MessageBar-actions',
-  actionsSingleline: 'ms-MessageBar-actionsSingleLine'
+  actionsSingleline: 'ms-MessageBar-actionsSingleLine',
 };
 
-// Returns the background color of the MessageBar root element based on the type of MessageBar.
-const getRootBackground = (messageBarType: MessageBarType | undefined, palette: IPalette, semanticColors: ISemanticColors): string => {
-  switch (messageBarType) {
-    case MessageBarType.error:
-    case MessageBarType.blocked:
-      return semanticColors.errorBackground;
-    case MessageBarType.severeWarning:
-      return semanticColors.blockingBackground;
-    case MessageBarType.success:
-      return semanticColors.successBackground;
-    case MessageBarType.warning:
-      return semanticColors.warningBackground;
-  }
-  return palette.neutralLighter;
+const backgroundColor: { [key: string]: keyof ISemanticColors } = {
+  [MessageBarType.error]: 'errorBackground',
+  [MessageBarType.blocked]: 'errorBackground',
+  [MessageBarType.success]: 'successBackground',
+  [MessageBarType.warning]: 'warningBackground',
+  [MessageBarType.severeWarning]: 'severeWarningBackground',
+  [MessageBarType.info]: 'infoBackground',
 };
 
-// Returns the icon color based on the type of MessageBar.
-const getIconColor = (messageBarType: MessageBarType | undefined, palette: IPalette, semanticColors: ISemanticColors): string => {
-  switch (messageBarType) {
-    case MessageBarType.error:
-    case MessageBarType.blocked:
-    case MessageBarType.severeWarning:
-      return semanticColors.errorText;
-    case MessageBarType.success:
-      return palette.green;
-    case MessageBarType.warning:
-      return semanticColors.warningText;
-  }
-  return palette.neutralSecondary;
+const highContrastBackgroundColor: { [key: string]: string } = {
+  [MessageBarType.error]: 'rgba(255, 0, 0, 0.3)',
+  [MessageBarType.blocked]: 'rgba(255, 0, 0, 0.3)',
+  [MessageBarType.success]: 'rgba(48, 241, 73, 0.3)',
+  [MessageBarType.warning]: 'rgba(255, 254, 57, 0.3)',
+  [MessageBarType.severeWarning]: 'rgba(255, 0, 0, 0.3)',
+  [MessageBarType.info]: 'Window',
+};
+
+const iconColor: { [key: string]: keyof ISemanticColors } = {
+  [MessageBarType.error]: 'errorIcon',
+  [MessageBarType.blocked]: 'errorIcon',
+  [MessageBarType.success]: 'successIcon',
+  [MessageBarType.warning]: 'warningIcon',
+  [MessageBarType.severeWarning]: 'severeWarningIcon',
+  [MessageBarType.info]: 'infoIcon',
 };
 
 export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
-  const { theme, className, messageBarType, onDismiss, actions, truncated, isMultiline, expandSingleLine } = props;
-  const { semanticColors, palette, fonts } = theme;
+  const {
+    theme,
+    className,
+    onDismiss,
+    truncated,
+    isMultiline,
+    expandSingleLine,
+    messageBarType = MessageBarType.info,
+  } = props;
+  const { semanticColors, fonts } = theme;
 
   const SmallScreenSelector = getScreenSelector(0, ScreenWidthMaxSmall);
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   const dismissalAndExpandIconStyle: IStyle = {
-    fontSize: 12,
-    height: 12,
-    lineHeight: '12px',
-    color: palette.neutralPrimary,
+    fontSize: IconFontSizes.xSmall,
+    height: 10,
+    lineHeight: '10px',
+    color: semanticColors.messageText,
     selectors: {
       [HighContrastSelector]: {
         MsHighContrastAdjust: 'none',
-        color: 'window'
-      }
-    }
+        color: 'WindowText',
+      },
+    },
   };
 
-  const dismissalAndExpandSingleLineStyle: IStyle = {
-    display: 'flex',
-    selectors: {
-      '& .ms-Button-icon': dismissalAndExpandIconStyle
-    }
-  };
-
-  const dismissalAndExpandStyle: IStyle = {
-    flexShrink: 0,
-    margin: 8,
-    marginLeft: 0,
-    selectors: {
-      '& .ms-Button-icon': dismissalAndExpandIconStyle,
-      [SmallScreenSelector]: {
-        margin: '0px 0px 0px 8px'
-      }
-    }
-  };
-
-  const focusStyle = getFocusStyle(theme, { borderColor: palette.black });
+  const dismissalAndExpandStyle: IStyle = [
+    getFocusStyle(theme, {
+      inset: 1,
+      highContrastStyle: {
+        outlineOffset: '-6px',
+        outline: '1px solid Highlight',
+      },
+      borderColor: 'transparent',
+    }),
+    {
+      flexShrink: 0,
+      width: 32,
+      height: 32,
+      padding: '8px 12px',
+      selectors: {
+        '& .ms-Button-icon': dismissalAndExpandIconStyle,
+        ':hover': {
+          backgroundColor: 'transparent',
+        },
+        ':active': {
+          backgroundColor: 'transparent',
+        },
+      },
+    },
+  ];
 
   return {
     root: [
       classNames.root,
-      theme.fonts.medium,
+      fonts.medium,
       messageBarType === MessageBarType.error && classNames.error,
       messageBarType === MessageBarType.blocked && classNames.blocked,
       messageBarType === MessageBarType.severeWarning && classNames.severeWarning,
@@ -119,87 +128,61 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
       !isMultiline && onDismiss && classNames.dismissalSingleLine,
       !isMultiline && truncated && classNames.expandingSingleLine,
       {
-        background: getRootBackground(messageBarType, palette, semanticColors),
-        color: palette.neutralPrimary,
+        background: semanticColors[backgroundColor[messageBarType]],
+        color: semanticColors.messageText,
         minHeight: 32,
         width: '100%',
-        boxSizing: 'border-box',
         display: 'flex',
         wordBreak: 'break-word',
         selectors: {
-          '& .ms-Link': {
-            color: palette.themeDark,
-            ...fonts.small
+          '.ms-Link': {
+            color: semanticColors.messageLink,
+            selectors: {
+              ':hover': {
+                color: semanticColors.messageLinkHovered,
+              },
+            },
           },
           [HighContrastSelector]: {
-            background: 'windowText',
-            color: 'Window'
-          }
-        }
+            MsHighContrastAdjust: 'none',
+            background: highContrastBackgroundColor[messageBarType],
+            border: '1px solid WindowText',
+            color: 'WindowText',
+          },
+        },
       },
       isMultiline && {
-        flexDirection: 'column'
-      },
-      !isMultiline && {
-        selectors: {
-          [SmallScreenSelector]: {
-            flexDirection: 'column'
-          }
-        }
-      },
-      truncated && {
         flexDirection: 'column',
-        selectors: {
-          '& .ms-Button-icon': dismissalAndExpandIconStyle
-        }
       },
-      className
+      className,
     ],
     content: [
       classNames.content,
       {
         display: 'flex',
-        lineHeight: 'normal',
         width: '100%',
-        boxSizing: 'border-box'
+        lineHeight: 'normal',
       },
-      !isMultiline && {
-        selectors: {
-          [SmallScreenSelector]: {
-            flexDirection: 'row'
-          }
-        }
-      },
-      (truncated || isMultiline) && {
-        flexDirection: 'row'
-      }
     ],
     iconContainer: [
       classNames.iconContainer,
       {
-        fontSize: 16,
+        fontSize: IconFontSizes.medium,
         minWidth: 16,
         minHeight: 16,
         display: 'flex',
-        color: palette.neutralSecondary,
         flexShrink: 0,
-        margin: 16,
-        marginRight: 0,
-        selectors: {
-          [SmallScreenSelector]: {
-            margin: '8px 0px 8px 8px'
-          }
-        }
-      }
+        margin: '8px 0 8px 12px',
+      },
     ],
     icon: {
-      color: getIconColor(messageBarType, palette, semanticColors),
+      color: semanticColors[iconColor[messageBarType]],
       selectors: {
         [HighContrastSelector]: {
           MsHighContrastAdjust: 'none',
-          color: 'window'
-        }
-      }
+          color: 'WindowText',
+        },
+      },
     },
     text: [
       classNames.text,
@@ -207,85 +190,57 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
         minWidth: 0,
         display: 'flex',
         flexGrow: 1,
-        margin: '16px 8px',
+        margin: 8,
         ...fonts.small,
         selectors: {
-          [SmallScreenSelector]: {
-            margin: '8px 0px 8px 8px'
-          },
           [HighContrastSelector]: {
             MsHighContrastAdjust: 'none',
-            color: 'window'
-          }
-        }
+          },
+        },
       },
       !onDismiss && {
-        marginRight: 16,
-        selectors: {
-          [SmallScreenSelector]: {
-            marginRight: 8
-          }
-        }
+        marginRight: 12,
       },
-      isMultiline &&
-        actions && {
-          marginBottom: 8,
-          selectors: {
-            [SmallScreenSelector]: {
-              marginBottom: 0
-            }
-          }
-        },
-      !isMultiline &&
-        actions && {
-          selectors: {
-            [SmallScreenSelector]: {
-              marginBottom: 0
-            }
-          }
-        }
     ],
     innerText: [
       classNames.innerText,
       {
         lineHeight: 16,
         selectors: {
-          '& span': {
-            selectors: {
-              '& a': {
-                paddingLeft: 4
-              }
-            }
-          }
-        }
+          '& span a': {
+            paddingLeft: 4,
+          },
+        },
       },
       truncated && {
         overflow: 'visible',
-        whiteSpace: 'pre-wrap'
+        whiteSpace: 'pre-wrap',
       },
       !isMultiline && {
+        // In high contrast this causes the top and bottom of links' focus outline to be clipped
+        // (not sure of a good way around that while still maintaining text clipping)
         overflow: 'hidden',
         textOverflow: 'ellipsis',
-        whiteSpace: 'nowrap'
+        whiteSpace: 'nowrap',
       },
       !isMultiline &&
         !truncated && {
           selectors: {
             [SmallScreenSelector]: {
               overflow: 'visible',
-              whiteSpace: 'pre-wrap'
-            }
-          }
+              whiteSpace: 'pre-wrap',
+            },
+          },
         },
       expandSingleLine && {
         overflow: 'visible',
-        whiteSpace: 'pre-wrap'
-      }
+        whiteSpace: 'pre-wrap',
+      },
     ],
-    dismissSingleLine: [classNames.dismissSingleLine, dismissalAndExpandSingleLineStyle],
-    expandSingleLine: [classNames.expandSingleLine, dismissalAndExpandSingleLineStyle],
-    dismissal: [classNames.dismissal, dismissalAndExpandStyle, focusStyle],
-    expand: [classNames.expand, dismissalAndExpandStyle, focusStyle],
+    dismissSingleLine: classNames.dismissSingleLine,
+    expandSingleLine: classNames.expandSingleLine,
+    dismissal: [classNames.dismissal, dismissalAndExpandStyle],
+    expand: [classNames.expand, dismissalAndExpandStyle],
     actions: [
       isMultiline ? classNames.actions : classNames.actionsSingleline,
       {
@@ -295,21 +250,20 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
         flexBasis: 'auto',
         flexDirection: 'row-reverse',
         alignItems: 'center',
-        margin: '8px 8px 8px 0',
+        margin: '0 12px 0 8px',
         selectors: {
           '& button:nth-child(n+2)': {
-            marginLeft: 8
-          }
-        }
+            marginLeft: 8,
+          },
+        },
       },
       isMultiline && {
-        margin: '0px 12px 12px 0',
-        selectors: {
-          '& button:nth-child(n+2)': {
-            marginLeft: 12
-          }
-        }
-      }
-    ]
+        marginBottom: 8,
+      },
+      onDismiss &&
+        !isMultiline && {
+          marginRight: 0,
+        },
+    ],
   };
 };

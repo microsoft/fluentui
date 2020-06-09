@@ -1,21 +1,22 @@
 import * as React from 'react';
-import { IDetailsRowCheckProps, IDetailsCheckboxProps } from './DetailsRowCheck.types';
-import { css, styled } from '../../Utilities';
+import {
+  IDetailsRowCheckProps,
+  IDetailsCheckboxProps,
+  IDetailsRowCheckStyleProps,
+  IDetailsRowCheckStyles,
+} from './DetailsRowCheck.types';
+import { css, styled, classNamesFunction } from '../../Utilities';
 import { Check } from '../../Check';
-import { ICheckStyleProps, ICheckStyles } from '../Check/Check.types';
-import { getStyles as getCheckStyles } from '../Check/Check.styles';
 import { getStyles } from './DetailsRowCheck.styles';
-import { IDetailsRowCheckStyleProps, IDetailsRowCheckStyles } from './DetailsRowCheck.types';
-import { classNamesFunction } from '../../Utilities';
+import { composeRenderFunction } from '@uifabric/utilities';
+import { ITheme } from '../../Styling';
 
-const getCheckClassNames = classNamesFunction<ICheckStyleProps, ICheckStyles>();
 const getClassNames = classNamesFunction<IDetailsRowCheckStyleProps, IDetailsRowCheckStyles>();
 
-const DetailsRowCheckBase = (props: IDetailsRowCheckProps) => {
+const DetailsRowCheckBase: React.FunctionComponent<IDetailsRowCheckProps> = props => {
   const {
     isVisible = false,
     canSelect = false,
-    isSelected = false,
     anySelected = false,
     selected = false,
     isHeader = false,
@@ -25,57 +26,65 @@ const DetailsRowCheckBase = (props: IDetailsRowCheckProps) => {
     theme,
     compact,
     onRenderDetailsCheckbox,
+    useFastIcons = true, // must be removed from buttonProps
     ...buttonProps
   } = props;
+  const defaultCheckboxRender = useFastIcons ? _fastDefaultCheckboxRender : _defaultCheckboxRender;
 
-  const isPressed = isSelected || selected;
-
-  const checkStyles = getCheckStyles({ theme: theme! });
-
-  const checkClassNames = getCheckClassNames(checkStyles, {
-    theme: theme!
-  });
+  const onRenderCheckbox = onRenderDetailsCheckbox
+    ? composeRenderFunction(onRenderDetailsCheckbox, defaultCheckboxRender)
+    : defaultCheckboxRender;
 
   const classNames = getClassNames(styles, {
     theme: theme!,
     canSelect,
-    selected: isPressed,
+    selected,
     anySelected,
     className,
     isHeader,
     isVisible,
-    compact
+    compact,
   });
 
-  const defaultCheckboxRender = (checkboxProps: IDetailsCheckboxProps) => {
-    return <Check checked={checkboxProps.checked} />;
-  };
-
   const detailsCheckboxProps: IDetailsCheckboxProps = {
-    checked: isPressed
+    checked: selected,
+    theme,
   };
 
   return canSelect ? (
     <div
       {...buttonProps}
       role="checkbox"
-      className={css(classNames.root, classNames.check, checkClassNames.checkHost)}
-      aria-checked={isPressed}
+      // tslint:disable-next-line:deprecation
+      className={css(classNames.root, classNames.check)}
+      aria-checked={selected}
       data-selection-toggle={true}
       data-automationid="DetailsRowCheck"
     >
-      {onRenderDetailsCheckbox
-        ? onRenderDetailsCheckbox(detailsCheckboxProps, defaultCheckboxRender)
-        : defaultCheckboxRender(detailsCheckboxProps)}
+      {onRenderCheckbox(detailsCheckboxProps)}
     </div>
   ) : (
+    // tslint:disable-next-line:deprecation
     <div {...buttonProps} className={css(classNames.root, classNames.check)} />
   );
 };
+
+const FastCheck = React.memo((props: { theme?: ITheme; checked?: boolean; className?: string }) => {
+  return <Check theme={props.theme} checked={props.checked} className={props.className} useFastIcons />;
+});
+
+function _defaultCheckboxRender(checkboxProps: IDetailsCheckboxProps) {
+  return <Check checked={checkboxProps.checked} />;
+}
+
+function _fastDefaultCheckboxRender(checkboxProps: IDetailsCheckboxProps) {
+  return <FastCheck theme={checkboxProps.theme} checked={checkboxProps.checked} />;
+}
 
 export const DetailsRowCheck = styled<IDetailsRowCheckProps, IDetailsRowCheckStyleProps, IDetailsRowCheckStyles>(
   DetailsRowCheckBase,
   getStyles,
   undefined,
-  { scope: 'DetailsRowCheck' }
+  { scope: 'DetailsRowCheck' },
+  true,
 );

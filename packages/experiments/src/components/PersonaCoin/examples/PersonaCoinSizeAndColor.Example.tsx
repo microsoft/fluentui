@@ -5,14 +5,14 @@ import { PersonaTestImages } from '@uifabric/experiments/lib/common/TestImages';
 
 const tokens = {
   sectionStack: {
-    childrenGap: 32
+    childrenGap: 32,
   },
   headingStack: {
-    childrenGap: 16
+    childrenGap: 16,
   },
   personaCoinStack: {
-    childrenGap: 12
-  }
+    childrenGap: 12,
+  },
 };
 
 export class PersonaCoinSizeAndColorExample extends React.Component<{}, {}> {

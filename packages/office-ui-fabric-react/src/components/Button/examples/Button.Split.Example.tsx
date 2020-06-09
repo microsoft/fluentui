@@ -1,222 +1,81 @@
 import * as React from 'react';
-import {
-  css,
-  classNamesFunction,
-  DefaultButton,
-  HighContrastSelector,
-  IButtonProps,
-  IButtonStyles,
-  IconButton,
-  IStyle,
-  Label
-} from 'office-ui-fabric-react';
+import { DefaultButton, IContextualMenuProps, Stack, IStackTokens } from 'office-ui-fabric-react';
 
-type IButtonBasicExampleStyleProps = {};
-
-interface IButtonBasicExampleStyles {
-  twoup?: IStyle;
+export interface IButtonExampleProps {
+  // These are set based on the toggles shown above the examples (not needed in real code)
+  disabled?: boolean;
+  checked?: boolean;
 }
 
-const exampleStyles: IButtonBasicExampleStyles = {
-  twoup: [
-    'ms-BasicButtonsTwoUp',
+const menuProps: IContextualMenuProps = {
+  items: [
     {
-      display: 'flex',
-      selectors: {
-        '& > *': {
-          flexGrow: 1
-        },
-        '.ms-Label': {
-          marginBottom: '10px'
-        }
-      }
-    }
-  ]
+      key: 'emailMessage',
+      text: 'Email message',
+      iconProps: { iconName: 'Mail' },
+    },
+    {
+      key: 'calendarEvent',
+      text: 'Calendar event',
+      iconProps: { iconName: 'Calendar' },
+    },
+  ],
+};
+// Example formatting
+const stackTokens: IStackTokens = { childrenGap: 40 };
+
+export const ButtonSplitExample: React.FunctionComponent<IButtonExampleProps> = props => {
+  const { disabled, checked } = props;
+
+  return (
+    <Stack horizontal wrap tokens={stackTokens}>
+      <DefaultButton
+        text="Standard"
+        split
+        splitButtonAriaLabel="See 2 options"
+        aria-roledescription="split button"
+        menuProps={menuProps}
+        onClick={_alertClicked}
+        disabled={disabled}
+        checked={checked}
+      />
+      <DefaultButton
+        text="Primary"
+        primary
+        split
+        splitButtonAriaLabel="See 2 options"
+        aria-roledescription="split button"
+        menuProps={menuProps}
+        onClick={_alertClicked}
+        disabled={disabled}
+        checked={checked}
+      />
+      <DefaultButton
+        text="Main action disabled"
+        primaryDisabled
+        split
+        splitButtonAriaLabel="See 2 options"
+        aria-roledescription="split button"
+        menuProps={menuProps}
+        onClick={_alertClicked}
+        disabled={disabled}
+        checked={checked}
+      />
+      <DefaultButton
+        text="Disabled"
+        disabled
+        allowDisabledFocus
+        split
+        splitButtonAriaLabel="See 2 options"
+        aria-roledescription="split button"
+        menuProps={menuProps}
+        onClick={_alertClicked}
+        checked={checked}
+      />
+    </Stack>
+  );
 };
 
-const customSplitButtonStyles: IButtonStyles = {
-  splitButtonMenuButton: { backgroundColor: 'white', width: '10px' },
-  splitButtonMenuIcon: { fontSize: '7px' },
-  splitButtonDivider: { borderLeft: '1px solid #c8c8c8', right: 17 },
-  splitButtonContainer: {
-    selectors: {
-      [HighContrastSelector]: {
-        border: 'none'
-      }
-    }
-  }
-};
-
-const alertClicked = (): void => {
+function _alertClicked() {
   alert('Clicked');
-};
-
-const getClassNames = classNamesFunction<IButtonBasicExampleStyleProps, IButtonBasicExampleStyles>();
-const classNames = getClassNames(exampleStyles, {});
-
-export class ButtonSplitExample extends React.Component<IButtonProps> {
-  public render(): JSX.Element {
-    const { disabled, checked } = this.props;
-
-    return (
-      <div className={css(classNames.twoup)}>
-        <div>
-          <Label>Standard</Label>
-          <DefaultButton
-            data-automation-id="test"
-            disabled={disabled}
-            checked={checked}
-            text="Create account"
-            onClick={alertClicked}
-            split={true}
-            splitButtonAriaLabel={'See 2 sample options'}
-            aria-roledescription={'split button'}
-            style={{ height: '35px' }}
-            menuProps={{
-              items: [
-                {
-                  key: 'emailMessage',
-                  text: 'Email message',
-                  iconProps: { iconName: 'Mail' }
-                },
-                {
-                  key: 'calendarEvent',
-                  text: 'Calendar event',
-                  iconProps: { iconName: 'Calendar' }
-                }
-              ]
-            }}
-          />
-        </div>
-        <div>
-          <Label>Primary</Label>
-          <DefaultButton
-            primary
-            data-automation-id="test"
-            disabled={disabled}
-            checked={checked}
-            text="Create account"
-            onClick={alertClicked}
-            split={true}
-            aria-roledescription={'split button'}
-            style={{ height: '35px' }}
-            menuProps={{
-              items: [
-                {
-                  key: 'emailMessage',
-                  text: 'Email message',
-                  iconProps: { iconName: 'Mail' }
-                },
-                {
-                  key: 'calendarEvent',
-                  text: 'Calendar event',
-                  iconProps: { iconName: 'Calendar' }
-                }
-              ]
-            }}
-          />
-        </div>
-        <div>
-          <Label>Primary Action Disabled</Label>
-          <DefaultButton
-            primary
-            data-automation-id="test"
-            disabled={disabled}
-            primaryDisabled={true}
-            checked={checked}
-            text="Create account"
-            onClick={alertClicked}
-            split={true}
-            aria-roledescription={'split button'}
-            style={{ height: '35px' }}
-            menuProps={{
-              items: [
-                {
-                  key: 'emailMessage',
-                  text: 'Email message',
-                  iconProps: { iconName: 'Mail' }
-                },
-                {
-                  key: 'calendarEvent',
-                  text: 'Calendar event',
-                  iconProps: { iconName: 'Calendar' }
-                }
-              ]
-            }}
-          />
-        </div>
-        <div>
-          <Label>Button Disabled</Label>
-          <DefaultButton
-            primary
-            data-automation-id="test"
-            disabled={true}
-            allowDisabledFocus={true}
-            checked={checked}
-            text="Create account"
-            onClick={alertClicked}
-            onKeyPress={alertClicked}
-            onKeyDown={alertClicked}
-            onKeyUp={alertClicked}
-            onMouseDown={alertClicked}
-            onMouseUp={alertClicked}
-            split={true}
-            aria-roledescription={'split button'}
-            style={{ height: '35px' }}
-            menuProps={{
-              items: [
-                {
-                  key: 'emailMessage',
-                  text: 'Email message',
-                  iconProps: { iconName: 'Mail' }
-                },
-                {
-                  key: 'calendarEvent',
-                  text: 'Calendar event',
-                  iconProps: { iconName: 'Calendar' }
-                }
-              ]
-            }}
-          />
-        </div>
-      </div>
-    );
-  }
-}
-
-export class ButtonSplitCustomExample extends React.Component<IButtonProps> {
-  public render(): JSX.Element {
-    const { disabled, checked } = this.props;
-
-    return (
-      <div>
-        <Label>Split button with icon and custom styles</Label>
-        <IconButton
-          data-automation-id="test"
-          disabled={disabled}
-          checked={checked}
-          iconProps={{ iconName: 'Upload' }}
-          text="Create account"
-          onClick={alertClicked}
-          split={true}
-          aria-roledescription={'split button'}
-          styles={customSplitButtonStyles}
-          menuProps={{
-            items: [
-              {
-                key: 'emailMessage',
-                text: 'Email message',
-                iconProps: { iconName: 'Mail' }
-              },
-              {
-                key: 'calendarEvent',
-                text: 'Calendar event',
-                iconProps: { iconName: 'Calendar' }
-              }
-            ]
-          }}
-        />
-      </div>
-    );
-  }
 }

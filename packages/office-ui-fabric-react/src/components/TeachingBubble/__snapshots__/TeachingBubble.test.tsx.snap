@@ -20,11 +20,9 @@ exports[`TeachingBubble renders TeachingBubble correctly 1`] = `
           animation-fill-mode: both;
           animation-name: keyframes 0%{opacity:0;animation-timing-function:cubic-bezier(.1,.9,.2,1);transform:scale3d(.90,.90,.90);}100%{opacity:1;transform:scale3d(1,1,1);};
           animation-timing-function: linear;
-          border-color: #eaeaea;
-          border-style: solid;
-          border-width: 1px;
+          border-radius: 2px;
           border: 0px;
-          box-shadow: none !important;
+          box-shadow: 0 6.4px 14.4px 0 rgba(0, 0, 0, 0.132), 0 1.2px 3.6px 0 rgba(0, 0, 0, 0.108);
           box-sizing: border-box;
           display: block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -57,14 +55,17 @@ exports[`TeachingBubble renders TeachingBubble correctly 1`] = `
           {
             background-color: #ffffff;
             background: #0078d4;
+            border-radius: 2px;
             overflow-x: hidden;
             overflow-y: hidden;
             position: relative;
           }
       onKeyDown={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
       style={
         Object {
-          "maxHeight": 750,
+          "maxHeight": 752,
           "outline": "none",
           "overflowY": "hidden",
         }
@@ -80,7 +81,6 @@ exports[`TeachingBubble renders TeachingBubble correctly 1`] = `
                 animation-name: keyframes 0%{opacity:0;animation-timing-function:cubic-bezier(.1,.9,.2,1);transform:scale3d(.90,.90,.90);}100%{opacity:1;transform:scale3d(1,1,1);};
                 animation-timing-function: linear;
                 border: 0px;
-                box-shadow: none !important;
                 display: flex;
                 max-width: 456px;
                 outline: transparent;
@@ -91,39 +91,66 @@ exports[`TeachingBubble renders TeachingBubble correctly 1`] = `
           tabIndex={-1}
         >
           <div
-            className=
-                ms-TeachingBubble-bodycontent
-                {
-                  max-width: 302px;
-                  padding-bottom: 20px;
-                  padding-left: 20px;
-                  padding-right: 20px;
-                  padding-top: 20px;
-                }
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onFocusCapture={[Function]}
           >
             <div
+              data-is-visible={true}
+              onFocus={[Function]}
+              style={
+                Object {
+                  "pointerEvents": "none",
+                  "position": "fixed",
+                }
+              }
+              tabIndex={0}
+            />
+            <div
               className=
-                  ms-TeachingBubble-body
-                  &:not(:last-child) {
-                    margin-bottom: 20px;
+                  ms-TeachingBubble-bodycontent
+                  {
+                    padding-bottom: 20px;
+                    padding-left: 24px;
+                    padding-right: 24px;
+                    padding-top: 20px;
                   }
             >
-              <p
+              <div
                 className=
-                    ms-TeachingBubble-subText
-                    {
-                      color: #ffffff;
-                      font-size: 14px;
-                      font-weight: 300;
-                      margin-bottom: 0px;
-                      margin-left: 0px;
-                      margin-right: 0px;
-                      margin-top: 0px;
+                    ms-TeachingBubble-body
+                    &:not(:last-child) {
+                      margin-bottom: 20px;
                     }
               >
-                Test Content
-              </p>
+                <p
+                  className=
+                      ms-TeachingBubble-subText
+                      {
+                        color: #ffffff;
+                        font-size: 14px;
+                        font-weight: 400;
+                        margin-bottom: 0px;
+                        margin-left: 0px;
+                        margin-right: 0px;
+                        margin-top: 0px;
+                      }
+                >
+                  Test Content
+                </p>
+              </div>
             </div>
+            <div
+              data-is-visible={true}
+              onFocus={[Function]}
+              style={
+                Object {
+                  "pointerEvents": "none",
+                  "position": "fixed",
+                }
+              }
+              tabIndex={0}
+            />
           </div>
         </div>
       </div>
@@ -142,7 +169,6 @@ exports[`TeachingBubble renders TeachingBubbleContent correctly 1`] = `
         animation-name: keyframes 0%{opacity:0;animation-timing-function:cubic-bezier(.1,.9,.2,1);transform:scale3d(.90,.90,.90);}100%{opacity:1;transform:scale3d(1,1,1);};
         animation-timing-function: linear;
         border: 0px;
-        box-shadow: none !important;
         display: block;
         max-width: 364px;
         outline: transparent;
@@ -153,65 +179,91 @@ exports[`TeachingBubble renders TeachingBubbleContent correctly 1`] = `
   tabIndex={-1}
 >
   <div
-    className=
-        ms-TeachingBubble-bodycontent
-        {
-          padding-bottom: 20px;
-          padding-left: 20px;
-          padding-right: 20px;
-          padding-top: 20px;
-        }
+    onBlur={[Function]}
+    onFocus={[Function]}
+    onFocusCapture={[Function]}
   >
     <div
-      className=
-          ms-TeachingBubble-header
-          ms-TeachingBubble-header--large
-          &:not(:last-child) {
-            margin-bottom: 14px;
-          }
-    >
-      <p
-        className=
-            ms-TeachingBubble-headline
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              color: #ffffff;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 28px;
-              font-weight: 100;
-              margin-bottom: 0px;
-              margin-left: 0px;
-              margin-right: 0px;
-              margin-top: 0px;
-            }
-      >
-        Test Title
-      </p>
-    </div>
+      data-is-visible={true}
+      onFocus={[Function]}
+      style={
+        Object {
+          "pointerEvents": "none",
+          "position": "fixed",
+        }
+      }
+      tabIndex={0}
+    />
     <div
       className=
-          ms-TeachingBubble-body
-          &:not(:last-child) {
-            margin-bottom: 20px;
+          ms-TeachingBubble-bodycontent
+          {
+            padding-bottom: 20px;
+            padding-left: 24px;
+            padding-right: 24px;
+            padding-top: 20px;
           }
     >
-      <p
+      <div
         className=
-            ms-TeachingBubble-subText
-            {
-              color: #ffffff;
-              font-size: 14px;
-              font-weight: 300;
-              margin-bottom: 0px;
-              margin-left: 0px;
-              margin-right: 0px;
-              margin-top: 0px;
+            ms-TeachingBubble-header
+            ms-TeachingBubble-header--large
+            &:not(:last-child) {
+              margin-bottom: 14px;
             }
       >
-        Content
-      </p>
+        <p
+          className=
+              ms-TeachingBubble-headline
+              {
+                color: #ffffff;
+                font-size: 20px;
+                font-weight: 600;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+              }
+          role="heading"
+        >
+          Test Title
+        </p>
+      </div>
+      <div
+        className=
+            ms-TeachingBubble-body
+            &:not(:last-child) {
+              margin-bottom: 20px;
+            }
+      >
+        <p
+          className=
+              ms-TeachingBubble-subText
+              {
+                color: #ffffff;
+                font-size: 14px;
+                font-weight: 400;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+              }
+        >
+          Content
+        </p>
+      </div>
     </div>
+    <div
+      data-is-visible={true}
+      onFocus={[Function]}
+      style={
+        Object {
+          "pointerEvents": "none",
+          "position": "fixed",
+        }
+      }
+      tabIndex={0}
+    />
   </div>
 </div>
 `;
@@ -226,7 +278,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
         animation-name: keyframes 0%{opacity:0;animation-timing-function:cubic-bezier(.1,.9,.2,1);transform:scale3d(.90,.90,.90);}100%{opacity:1;transform:scale3d(1,1,1);};
         animation-timing-function: linear;
         border: 0px;
-        box-shadow: none !important;
         display: block;
         max-width: 364px;
         outline: transparent;
@@ -237,273 +288,475 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
   tabIndex={-1}
 >
   <div
-    className=
-        ms-TeachingBubble-bodycontent
-        {
-          padding-bottom: 20px;
-          padding-left: 20px;
-          padding-right: 20px;
-          padding-top: 20px;
-        }
+    onBlur={[Function]}
+    onFocus={[Function]}
+    onFocusCapture={[Function]}
   >
     <div
-      className=
-          ms-TeachingBubble-header
-          ms-TeachingBubble-header--large
-          &:not(:last-child) {
-            margin-bottom: 14px;
-          }
-    >
-      <p
-        className=
-            ms-TeachingBubble-headline
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              color: #ffffff;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 28px;
-              font-weight: 100;
-              margin-bottom: 0px;
-              margin-left: 0px;
-              margin-right: 0px;
-              margin-top: 0px;
-            }
-      >
-        Test Title
-      </p>
-    </div>
+      data-is-visible={true}
+      onFocus={[Function]}
+      style={
+        Object {
+          "pointerEvents": "none",
+          "position": "fixed",
+        }
+      }
+      tabIndex={0}
+    />
     <div
       className=
-          ms-TeachingBubble-body
-          &:not(:last-child) {
-            margin-bottom: 20px;
-          }
-    >
-      <p
-        className=
-            ms-TeachingBubble-subText
-            {
-              color: #ffffff;
-              font-size: 14px;
-              font-weight: 300;
-              margin-bottom: 0px;
-              margin-left: 0px;
-              margin-right: 0px;
-              margin-top: 0px;
-            }
-      >
-        Content
-      </p>
-    </div>
-    <div
-      className=
-          ms-TeachingBubble-footer
+          ms-TeachingBubble-bodycontent
           {
-            align-items: center;
-            color: #ffffff;
-            display: flex;
-          }
-          & > *:not(:first-child) {
-            margin-left: 20px;
+            padding-bottom: 20px;
+            padding-left: 24px;
+            padding-right: 24px;
+            padding-top: 20px;
           }
     >
-      <button
+      <div
         className=
-            ms-Button
-            ms-Button--primary
-            ms-TeachingBubble-primaryButton
-            primary-className
+            ms-TeachingBubble-header
+            ms-TeachingBubble-header--large
             {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              background-color: #ffffff;
-              border-color: #ffffff;
-              border-radius: 0px;
-              border: 1px solid transparent;
+              margin-right: 24px;
+            }
+            &:not(:last-child) {
+              margin-bottom: 14px;
+            }
+      >
+        <p
+          className=
+              ms-TeachingBubble-headline
+              {
+                color: #ffffff;
+                font-size: 20px;
+                font-weight: 600;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+              }
+          role="heading"
+        >
+          Test Title
+        </p>
+      </div>
+      <div
+        className=
+            ms-TeachingBubble-body
+            &:not(:last-child) {
+              margin-bottom: 20px;
+            }
+      >
+        <p
+          className=
+              ms-TeachingBubble-subText
+              {
+                color: #ffffff;
+                font-size: 14px;
+                font-weight: 400;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+              }
+        >
+          Content
+        </p>
+      </div>
+      <div
+        className=
+            ms-Stack
+            ms-TeachingBubble-footer
+            {
+              align-items: center;
               box-sizing: border-box;
               color: #ffffff;
-              cursor: pointer;
-              display: inline-block;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
-              height: 32px;
-              margin-bottom: 0px;
+              display: flex;
+              flex-direction: row;
+              flex-wrap: nowrap;
+              flex: auto;
+              height: auto;
+              justify-content: flex-end;
+              width: auto;
+            }
+            & > * {
+              text-overflow: ellipsis;
+            }
+            & > *:not(:first-child) {
               margin-left: 0px;
-              margin-right: 0px;
-              margin-top: 0px;
-              min-width: 80px;
-              outline: transparent;
-              padding-bottom: 0;
-              padding-left: 16px;
-              padding-right: 16px;
-              padding-top: 0;
-              position: relative;
-              text-align: center;
-              text-decoration: none;
-              user-select: none;
-              vertical-align: top;
-              white-space: nowrap;
             }
-            &::-moz-focus-inner {
-              border: 0;
+            & > *:not(.ms-StackItem) {
+              flex-shrink: 1;
             }
-            .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #ffffff;
-              bottom: 0px;
-              content: "";
-              left: 0px;
-              outline: 1px solid #666666;
-              position: absolute;
-              right: 0px;
-              top: 0px;
-              z-index: 1;
+            & .ms-Button:not(:first-child) {
+              margin-left: 10px;
             }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-              border: none;
-              bottom: -2px;
-              left: -2px;
-              outline-color: ButtonText;
-              right: -2px;
-              top: -2px;
-            }
-            &:active > * {
-              left: 0px;
-              position: relative;
-              top: 0px;
-            }
-            @media screen and (-ms-high-contrast: active){& {
-              -ms-high-contrast-adjust: none;
-              background-color: WindowText;
-              color: Window;
-            }
-            &:hover {
-              background-color: #deecf9;
-              border-color: #deecf9;
-              color: #ffffff;
-            }
-            @media screen and (-ms-high-contrast: active){&:hover {
-              background-color: Highlight;
-              color: Window;
-            }
-            &:focus {
-              background-color: #deecf9;
-              border-color: #ffffff;
-            }
-            &:active {
-              background-color: #ffffff;
-              border-color: #ffffff;
-              color: #ffffff;
-            }
-            @media screen and (-ms-high-contrast: active){&:active {
-              -ms-high-contrast-adjust: none;
-              background-color: WindowText;
-              color: Window;
-            }
-            & .ms-Button-label {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              color: #0078d4;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
-            }
-        data-is-focusable={true}
-        onClick={[Function]}
-        onKeyDown={[Function]}
-        onKeyPress={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseUp={[Function]}
-        type="button"
       >
         <div
           className=
-              ms-Button-flexContainer
+              ms-StackItem
               {
-                align-items: center;
-                display: flex;
-                flex-wrap: nowrap;
-                height: 100%;
-                justify-content: center;
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                align-self: center;
+                flex-shrink: 1;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                height: auto;
+                width: auto;
               }
         >
-          <div
-            className=
-                ms-Button-textContainer
-                {
-                  flex-grow: 1;
-                }
-          >
-            <div
-              className=
-                  ms-Button-label
-                  {
-                    font-weight: 600;
-                    line-height: 100%;
-                    margin-bottom: 0;
-                    margin-left: 4px;
-                    margin-right: 4px;
-                    margin-top: 0;
-                  }
-              id="id__0"
-            >
-              Test Primary Button
-            </div>
-          </div>
+          <span />
         </div>
-      </button>
+        <div
+          className=
+              ms-StackItem
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                flex-shrink: 1;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                height: auto;
+                width: auto;
+              }
+        >
+          <button
+            className=
+                ms-Button
+                ms-Button--default
+                ms-TeachingBubble-secondaryButton
+                secondary-className
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  background-color: #0078d4;
+                  border-color: #ffffff;
+                  border-radius: 2px;
+                  border: 1px solid #8a8886;
+                  box-sizing: border-box;
+                  color: #323130;
+                  cursor: pointer;
+                  display: inline-block;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  height: 32px;
+                  min-width: 80px;
+                  outline: transparent;
+                  padding-bottom: 0;
+                  padding-left: 16px;
+                  padding-right: 16px;
+                  padding-top: 0;
+                  position: relative;
+                  text-align: center;
+                  text-decoration: none;
+                  user-select: none;
+                  white-space: nowrap;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid transparent;
+                  bottom: 2px;
+                  content: "";
+                  left: 2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 2px;
+                  top: 2px;
+                  z-index: 1;
+                }
+                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  border: none;
+                  bottom: -2px;
+                  left: -2px;
+                  outline-color: ButtonText;
+                  right: -2px;
+                  top: -2px;
+                }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
+                }
+                &:hover {
+                  background-color: #106ebe;
+                  border-color: #ffffff;
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
+                }
+                &:focus {
+                  background-color: #106ebe;
+                  border-color: #ffffff;
+                }
+                &:active {
+                  background-color: #0078d4;
+                  border-color: #ffffff;
+                  color: #201f1e;
+                }
+                & .ms-Button-label {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #ffffff;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                }
+            data-is-focusable={true}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
+            type="button"
+          >
+            <span
+              className=
+                  ms-Button-flexContainer
+                  {
+                    align-items: center;
+                    display: flex;
+                    flex-wrap: nowrap;
+                    height: 100%;
+                    justify-content: center;
+                  }
+              data-automationid="splitbuttonprimary"
+            >
+              <span
+                className=
+                    ms-Button-textContainer
+                    {
+                      display: block;
+                      flex-grow: 1;
+                    }
+              >
+                <span
+                  className=
+                      ms-Button-label
+                      {
+                        display: block;
+                        font-weight: 600;
+                        line-height: 100%;
+                        margin-bottom: 0;
+                        margin-left: 4px;
+                        margin-right: 4px;
+                        margin-top: 0;
+                      }
+                  id="id__0"
+                >
+                  Test Secondary Button
+                </span>
+              </span>
+            </span>
+          </button>
+          <button
+            className=
+                ms-Button
+                ms-Button--primary
+                ms-TeachingBubble-primaryButton
+                primary-className
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  background-color: #ffffff;
+                  border-color: #ffffff;
+                  border-radius: 2px;
+                  border: 1px solid #0078d4;
+                  box-sizing: border-box;
+                  color: #0078d4;
+                  cursor: pointer;
+                  display: inline-block;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  height: 32px;
+                  min-width: 80px;
+                  outline: transparent;
+                  padding-bottom: 0;
+                  padding-left: 16px;
+                  padding-right: 16px;
+                  padding-top: 0;
+                  position: relative;
+                  text-align: center;
+                  text-decoration: none;
+                  user-select: none;
+                  white-space: nowrap;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: none;
+                  bottom: 2px;
+                  content: "";
+                  left: 2px;
+                  outline-color: #ffffff;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 2px;
+                  top: 2px;
+                  z-index: 1;
+                }
+                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  border: none;
+                  bottom: -2px;
+                  left: -2px;
+                  outline-color: ButtonText;
+                  right: -2px;
+                  top: -2px;
+                }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  -ms-high-contrast-adjust: none;
+                  background-color: WindowText;
+                  border-color: WindowText;
+                  color: Window;
+                }
+                &:hover {
+                  background-color: #deecf9;
+                  border-color: #deecf9;
+                  border: 1px solid #106ebe;
+                  color: #0078d4;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  background-color: Highlight;
+                  border-color: Highlight;
+                  color: Window;
+                }
+                &:focus {
+                  background-color: #deecf9;
+                  border-color: #ffffff;
+                }
+                &:active {
+                  background-color: #ffffff;
+                  border-color: #ffffff;
+                  border: 1px solid #005a9e;
+                  color: #0078d4;
+                }
+                @media screen and (-ms-high-contrast: active){&:active {
+                  -ms-high-contrast-adjust: none;
+                  background-color: WindowText;
+                  border-color: WindowText;
+                  color: Window;
+                }
+                & .ms-Button-label {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                }
+            data-is-focusable={true}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
+            type="button"
+          >
+            <span
+              className=
+                  ms-Button-flexContainer
+                  {
+                    align-items: center;
+                    display: flex;
+                    flex-wrap: nowrap;
+                    height: 100%;
+                    justify-content: center;
+                  }
+              data-automationid="splitbuttonprimary"
+            >
+              <span
+                className=
+                    ms-Button-textContainer
+                    {
+                      display: block;
+                      flex-grow: 1;
+                    }
+              >
+                <span
+                  className=
+                      ms-Button-label
+                      {
+                        display: block;
+                        font-weight: 600;
+                        line-height: 100%;
+                        margin-bottom: 0;
+                        margin-left: 4px;
+                        margin-right: 4px;
+                        margin-top: 0;
+                      }
+                  id="id__3"
+                >
+                  Test Primary Button
+                </span>
+              </span>
+            </span>
+          </button>
+        </div>
+      </div>
       <button
         className=
             ms-Button
-            ms-Button--default
-            ms-TeachingBubble-secondaryButton
-            secondary-className
+            ms-Button--icon
+            ms-TeachingBubble-closebutton
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              background-color: #0078d4;
-              border-color: #ffffff;
+              background-color: transparent;
               border-radius: 0px;
-              border: 1px solid transparent;
+              border: none;
               box-sizing: border-box;
-              color: #333333;
+              color: #ffffff;
               cursor: pointer;
               display: inline-block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
+              font-size: 12px;
               font-weight: 400;
               height: 32px;
-              margin-bottom: 0px;
-              margin-left: 0px;
-              margin-right: 0px;
-              margin-top: 0px;
-              min-width: 80px;
+              margin-bottom: 0;
+              margin-left: 0;
+              margin-right: 15px;
+              margin-top: 15px;
               outline: transparent;
               padding-bottom: 0;
-              padding-left: 16px;
-              padding-right: 16px;
+              padding-left: 4px;
+              padding-right: 4px;
               padding-top: 0;
-              position: relative;
+              position: absolute;
+              right: 0px;
               text-align: center;
               text-decoration: none;
+              top: 0px;
               user-select: none;
-              vertical-align: top;
-              white-space: nowrap;
+              width: 32px;
             }
             &::-moz-focus-inner {
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #ffffff;
-              bottom: 0px;
+              border: 1px solid transparent;
+              bottom: 2px;
               content: "";
-              left: 0px;
-              outline: 1px solid #666666;
+              left: 2px;
+              outline: 1px solid #605e5c;
               position: absolute;
-              right: 0px;
-              top: 0px;
+              right: 2px;
+              top: 2px;
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -520,29 +773,21 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
               top: 0px;
             }
             &:hover {
-              background-color: #eaeaea;
-              color: #212121;
+              background-color: #f3f2f1;
+              background: #106ebe;
+              color: #ffffff;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
               color: Highlight;
             }
+            &:focus {
+              border: 1px solid #edebe9;
+            }
             &:active {
-              background-color: #0078d4;
-              border-color: #ffffff;
-              color: #212121;
-            }
-            & .ms-Button-label {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
+              background-color: #edebe9;
+              background: #005a9e;
               color: #ffffff;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
-            }
-            &:hover, &:focus {
-              background-color: #106ebe;
-              border-color: #ffffff;
             }
         data-is-focusable={true}
         onClick={[Function]}
@@ -553,7 +798,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
         onMouseUp={[Function]}
         type="button"
       >
-        <div
+        <span
           className=
               ms-Button-flexContainer
               {
@@ -563,158 +808,144 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
                 height: 100%;
                 justify-content: center;
               }
+          data-automationid="splitbuttonprimary"
         >
-          <div
+          <i
+            aria-hidden={true}
             className=
-                ms-Button-textContainer
+                ms-Icon
+                ms-Button-icon
                 {
-                  flex-grow: 1;
+                  display: inline-block;
                 }
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  font-family: "FabricMDL2Icons";
+                  font-style: normal;
+                  font-weight: normal;
+                  speak: none;
+                }
+                {
+                  flex-shrink: 0;
+                  font-size: 16px;
+                  height: 16px;
+                  line-height: 16px;
+                  margin-bottom: 0;
+                  margin-left: 4px;
+                  margin-right: 4px;
+                  margin-top: 0;
+                  text-align: center;
+                }
+            data-icon-name="Cancel"
+            role="presentation"
+            style={
+              Object {
+                "fontFamily": "\\"FabricMDL2Icons\\"",
+              }
+            }
           >
-            <div
-              className=
-                  ms-Button-label
-                  {
-                    font-weight: 600;
-                    line-height: 100%;
-                    margin-bottom: 0;
-                    margin-left: 4px;
-                    margin-right: 4px;
-                    margin-top: 0;
-                  }
-              id="id__3"
-            >
-              Test Secondary Button
-            </div>
-          </div>
-        </div>
+            
+          </i>
+        </span>
       </button>
     </div>
+    <div
+      data-is-visible={true}
+      onFocus={[Function]}
+      style={
+        Object {
+          "pointerEvents": "none",
+          "position": "fixed",
+        }
+      }
+      tabIndex={0}
+    />
   </div>
-  <button
-    className=
-        ms-Button
-        ms-Button--icon
-        ms-TeachingBubble-closebutton
-        {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
-          background-color: transparent;
-          border-radius: 0px;
-          border: none;
-          box-sizing: border-box;
-          color: #ffffff;
-          cursor: pointer;
-          display: inline-block;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 12px;
-          font-weight: 400;
-          height: 32px;
-          margin-bottom: 0px;
-          margin-left: 0px;
-          margin-right: 0px;
-          margin-top: 0px;
-          outline: transparent;
-          padding-bottom: 0;
-          padding-left: 4px;
-          padding-right: 4px;
-          padding-top: 0;
-          position: absolute;
-          right: 0px;
-          text-align: center;
-          text-decoration: none;
-          top: 0px;
-          user-select: none;
-          vertical-align: top;
-          width: 32px;
-        }
-        &::-moz-focus-inner {
-          border: 0;
-        }
-        .ms-Fabric--isFocusVisible &:focus:after {
-          border: 1px solid #ffffff;
-          bottom: 0px;
-          content: "";
-          left: 0px;
-          outline: 1px solid #666666;
-          position: absolute;
-          right: 0px;
-          top: 0px;
-          z-index: 1;
-        }
-        @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-          border: none;
-          bottom: -2px;
-          left: -2px;
-          outline-color: ButtonText;
-          right: -2px;
-          top: -2px;
-        }
-        &:active > * {
-          left: 0px;
-          position: relative;
-          top: 0px;
-        }
-        &:hover {
-          background: transparent;
-          color: #212121;
-        }
-        @media screen and (-ms-high-contrast: active){&:hover {
-          border-color: Highlight;
-          color: Highlight;
-        }
-        &:active {
-          color: #0078d4;
-        }
-    data-is-focusable={true}
-    onClick={[Function]}
-    onKeyDown={[Function]}
-    onKeyPress={[Function]}
-    onKeyUp={[Function]}
-    onMouseDown={[Function]}
-    onMouseUp={[Function]}
-    type="button"
+</div>
+`;
+
+exports[`TeachingBubble renders TeachingBubbleContent with calloutProps that deal with styles 1`] = `
+<div
+  className=
+      ms-TeachingBubble-content
+      {
+        animation-duration: 300ms;
+        animation-fill-mode: both;
+        animation-name: keyframes 0%{opacity:0;animation-timing-function:cubic-bezier(.1,.9,.2,1);transform:scale3d(.90,.90,.90);}100%{opacity:1;transform:scale3d(1,1,1);};
+        animation-timing-function: linear;
+        border: 0px;
+        display: block;
+        max-width: 364px;
+        outline: transparent;
+        width: calc(100% + 1px);
+      }
+  data-is-focusable={true}
+  role="dialog"
+  tabIndex={-1}
+>
+  <div
+    onBlur={[Function]}
+    onFocus={[Function]}
+    onFocusCapture={[Function]}
   >
     <div
+      data-is-visible={true}
+      onFocus={[Function]}
+      style={
+        Object {
+          "pointerEvents": "none",
+          "position": "fixed",
+        }
+      }
+      tabIndex={0}
+    />
+    <div
       className=
-          ms-Button-flexContainer
+          ms-TeachingBubble-bodycontent
           {
-            align-items: center;
-            display: flex;
-            flex-wrap: nowrap;
-            height: 100%;
-            justify-content: center;
+            padding-bottom: 20px;
+            padding-left: 24px;
+            padding-right: 24px;
+            padding-top: 20px;
           }
     >
-      <i
+      <div
         className=
-            ms-Button-icon
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              display: inline-block;
-              flex-shrink: 0;
-              font-family: "FabricMDL2Icons";
-              font-size: 16px;
-              font-style: normal;
-              font-weight: normal;
-              height: 16px;
-              line-height: 16px;
-              margin-bottom: 0;
-              margin-left: 4px;
-              margin-right: 4px;
-              margin-top: 0;
-              speak: none;
-              text-align: center;
-              vertical-align: middle;
+            ms-TeachingBubble-body
+            &:not(:last-child) {
+              margin-bottom: 20px;
             }
-        data-icon-name="Cancel"
-        role="presentation"
       >
-        
-      </i>
+        <p
+          className=
+              ms-TeachingBubble-subText
+              {
+                color: #ffffff;
+                font-size: 14px;
+                font-weight: 400;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+              }
+        >
+          Content
+        </p>
+      </div>
     </div>
-  </button>
+    <div
+      data-is-visible={true}
+      onFocus={[Function]}
+      style={
+        Object {
+          "pointerEvents": "none",
+          "position": "fixed",
+        }
+      }
+      tabIndex={0}
+    />
+  </div>
 </div>
 `;
 
@@ -728,7 +959,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with condensed headline co
         animation-name: keyframes 0%{opacity:0;animation-timing-function:cubic-bezier(.1,.9,.2,1);transform:scale3d(.90,.90,.90);}100%{opacity:1;transform:scale3d(1,1,1);};
         animation-timing-function: linear;
         border: 0px;
-        box-shadow: none !important;
         display: block;
         max-width: 364px;
         outline: transparent;
@@ -739,65 +969,95 @@ exports[`TeachingBubble renders TeachingBubbleContent with condensed headline co
   tabIndex={-1}
 >
   <div
-    className=
-        ms-TeachingBubble-bodycontent
-        {
-          padding-bottom: 20px;
-          padding-left: 20px;
-          padding-right: 20px;
-          padding-top: 20px;
-        }
+    onBlur={[Function]}
+    onFocus={[Function]}
+    onFocusCapture={[Function]}
   >
     <div
-      className=
-          ms-TeachingBubble-header
-          ms-TeachingBubble-header--condensed
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 600;
-            margin-right: 10px;
-          }
-    >
-      <p
-        className=
-            ms-TeachingBubble-headline
-            {
-              color: #ffffff;
-              margin-bottom: 0px;
-              margin-left: 0px;
-              margin-right: 0px;
-              margin-top: 0px;
-            }
-      >
-        Test Title
-      </p>
-    </div>
+      data-is-visible={true}
+      onFocus={[Function]}
+      style={
+        Object {
+          "pointerEvents": "none",
+          "position": "fixed",
+        }
+      }
+      tabIndex={0}
+    />
     <div
       className=
-          ms-TeachingBubble-body
-          &:not(:last-child) {
-            margin-bottom: 20px;
+          ms-TeachingBubble-bodycontent
+          {
+            padding-bottom: 20px;
+            padding-left: 24px;
+            padding-right: 24px;
+            padding-top: 20px;
           }
     >
-      <p
+      <div
         className=
-            ms-TeachingBubble-subText
+            ms-TeachingBubble-header
+            ms-TeachingBubble-header--condensed
             {
-              color: #ffffff;
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
-              font-weight: 300;
-              margin-bottom: 0px;
-              margin-left: 0px;
-              margin-right: 0px;
-              margin-top: 0px;
+              font-weight: 600;
+              margin-bottom: 14px;
             }
       >
-        Content
-      </p>
+        <p
+          className=
+              ms-TeachingBubble-headline
+              {
+                color: #ffffff;
+                font-weight: 600;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+              }
+          role="heading"
+        >
+          Test Title
+        </p>
+      </div>
+      <div
+        className=
+            ms-TeachingBubble-body
+            &:not(:last-child) {
+              margin-bottom: 20px;
+            }
+      >
+        <p
+          className=
+              ms-TeachingBubble-subText
+              {
+                color: #ffffff;
+                font-size: 14px;
+                font-weight: 400;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+              }
+        >
+          Content
+        </p>
+      </div>
     </div>
+    <div
+      data-is-visible={true}
+      onFocus={[Function]}
+      style={
+        Object {
+          "pointerEvents": "none",
+          "position": "fixed",
+        }
+      }
+      tabIndex={0}
+    />
   </div>
 </div>
 `;
@@ -812,7 +1072,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with custom footer text 1`
         animation-name: keyframes 0%{opacity:0;animation-timing-function:cubic-bezier(.1,.9,.2,1);transform:scale3d(.90,.90,.90);}100%{opacity:1;transform:scale3d(1,1,1);};
         animation-timing-function: linear;
         border: 0px;
-        box-shadow: none !important;
         display: block;
         max-width: 364px;
         outline: transparent;
@@ -823,54 +1082,129 @@ exports[`TeachingBubble renders TeachingBubbleContent with custom footer text 1`
   tabIndex={-1}
 >
   <div
-    className=
-        ms-TeachingBubble-bodycontent
-        {
-          padding-bottom: 20px;
-          padding-left: 20px;
-          padding-right: 20px;
-          padding-top: 20px;
-        }
+    onBlur={[Function]}
+    onFocus={[Function]}
+    onFocusCapture={[Function]}
   >
     <div
-      className=
-          ms-TeachingBubble-body
-          &:not(:last-child) {
-            margin-bottom: 20px;
-          }
-    >
-      <p
-        className=
-            ms-TeachingBubble-subText
-            {
-              color: #ffffff;
-              font-size: 14px;
-              font-weight: 300;
-              margin-bottom: 0px;
-              margin-left: 0px;
-              margin-right: 0px;
-              margin-top: 0px;
-            }
-      >
-        Content
-      </p>
-    </div>
+      data-is-visible={true}
+      onFocus={[Function]}
+      style={
+        Object {
+          "pointerEvents": "none",
+          "position": "fixed",
+        }
+      }
+      tabIndex={0}
+    />
     <div
       className=
-          ms-TeachingBubble-footer
+          ms-TeachingBubble-bodycontent
           {
-            align-items: center;
-            color: #ffffff;
-            display: flex;
-          }
-          & > *:not(:first-child) {
-            margin-left: 20px;
+            padding-bottom: 20px;
+            padding-left: 24px;
+            padding-right: 24px;
+            padding-top: 20px;
           }
     >
-      <span>
-        1 of 2
-      </span>
+      <div
+        className=
+            ms-TeachingBubble-body
+            &:not(:last-child) {
+              margin-bottom: 20px;
+            }
+      >
+        <p
+          className=
+              ms-TeachingBubble-subText
+              {
+                color: #ffffff;
+                font-size: 14px;
+                font-weight: 400;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+              }
+        >
+          Content
+        </p>
+      </div>
+      <div
+        className=
+            ms-Stack
+            ms-TeachingBubble-footer
+            {
+              align-items: center;
+              box-sizing: border-box;
+              color: #ffffff;
+              display: flex;
+              flex-direction: row;
+              flex-wrap: nowrap;
+              flex: auto;
+              height: auto;
+              justify-content: space-between;
+              width: auto;
+            }
+            & > * {
+              text-overflow: ellipsis;
+            }
+            & > *:not(:first-child) {
+              margin-left: 0px;
+            }
+            & > *:not(.ms-StackItem) {
+              flex-shrink: 1;
+            }
+            & .ms-Button:not(:first-child) {
+              margin-left: 10px;
+            }
+      >
+        <div
+          className=
+              ms-StackItem
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                align-self: center;
+                flex-shrink: 1;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                height: auto;
+                width: auto;
+              }
+        >
+          <span>
+            1 of 2
+          </span>
+        </div>
+        <div
+          className=
+              ms-StackItem
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                flex-shrink: 1;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                height: auto;
+                width: auto;
+              }
+        />
+      </div>
     </div>
+    <div
+      data-is-visible={true}
+      onFocus={[Function]}
+      style={
+        Object {
+          "pointerEvents": "none",
+          "position": "fixed",
+        }
+      }
+      tabIndex={0}
+    />
   </div>
 </div>
 `;
@@ -885,7 +1219,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with image correctly 1`] =
         animation-name: keyframes 0%{opacity:0;animation-timing-function:cubic-bezier(.1,.9,.2,1);transform:scale3d(.90,.90,.90);}100%{opacity:1;transform:scale3d(1,1,1);};
         animation-timing-function: linear;
         border: 0px;
-        box-shadow: none !important;
         display: block;
         max-width: 364px;
         outline: transparent;
@@ -896,10 +1229,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with image correctly 1`] =
   tabIndex={-1}
 >
   <div
-    className=
-        ms-TeachingBubble-header
-        ms-TeachingBubble-image
-
+    className="ms-TeachingBubble-header ms-TeachingBubble-image"
   >
     <div
       className=
@@ -936,65 +1266,91 @@ exports[`TeachingBubble renders TeachingBubbleContent with image correctly 1`] =
     </div>
   </div>
   <div
-    className=
-        ms-TeachingBubble-bodycontent
-        {
-          padding-bottom: 20px;
-          padding-left: 20px;
-          padding-right: 20px;
-          padding-top: 20px;
-        }
+    onBlur={[Function]}
+    onFocus={[Function]}
+    onFocusCapture={[Function]}
   >
     <div
-      className=
-          ms-TeachingBubble-header
-          ms-TeachingBubble-header--large
-          &:not(:last-child) {
-            margin-bottom: 14px;
-          }
-    >
-      <p
-        className=
-            ms-TeachingBubble-headline
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              color: #ffffff;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 28px;
-              font-weight: 100;
-              margin-bottom: 0px;
-              margin-left: 0px;
-              margin-right: 0px;
-              margin-top: 0px;
-            }
-      >
-        Test Title
-      </p>
-    </div>
+      data-is-visible={true}
+      onFocus={[Function]}
+      style={
+        Object {
+          "pointerEvents": "none",
+          "position": "fixed",
+        }
+      }
+      tabIndex={0}
+    />
     <div
       className=
-          ms-TeachingBubble-body
-          &:not(:last-child) {
-            margin-bottom: 20px;
+          ms-TeachingBubble-bodycontent
+          {
+            padding-bottom: 20px;
+            padding-left: 24px;
+            padding-right: 24px;
+            padding-top: 20px;
           }
     >
-      <p
+      <div
         className=
-            ms-TeachingBubble-subText
-            {
-              color: #ffffff;
-              font-size: 14px;
-              font-weight: 300;
-              margin-bottom: 0px;
-              margin-left: 0px;
-              margin-right: 0px;
-              margin-top: 0px;
+            ms-TeachingBubble-header
+            ms-TeachingBubble-header--large
+            &:not(:last-child) {
+              margin-bottom: 14px;
             }
       >
-        Content
-      </p>
+        <p
+          className=
+              ms-TeachingBubble-headline
+              {
+                color: #ffffff;
+                font-size: 20px;
+                font-weight: 600;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+              }
+          role="heading"
+        >
+          Test Title
+        </p>
+      </div>
+      <div
+        className=
+            ms-TeachingBubble-body
+            &:not(:last-child) {
+              margin-bottom: 20px;
+            }
+      >
+        <p
+          className=
+              ms-TeachingBubble-subText
+              {
+                color: #ffffff;
+                font-size: 14px;
+                font-weight: 400;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+              }
+        >
+          Content
+        </p>
+      </div>
     </div>
+    <div
+      data-is-visible={true}
+      onFocus={[Function]}
+      style={
+        Object {
+          "pointerEvents": "none",
+          "position": "fixed",
+        }
+      }
+      tabIndex={0}
+    />
   </div>
 </div>
 `;
@@ -1009,7 +1365,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with small headline correc
         animation-name: keyframes 0%{opacity:0;animation-timing-function:cubic-bezier(.1,.9,.2,1);transform:scale3d(.90,.90,.90);}100%{opacity:1;transform:scale3d(1,1,1);};
         animation-timing-function: linear;
         border: 0px;
-        box-shadow: none !important;
         display: block;
         max-width: 364px;
         outline: transparent;
@@ -1020,68 +1375,97 @@ exports[`TeachingBubble renders TeachingBubbleContent with small headline correc
   tabIndex={-1}
 >
   <div
-    className=
-        ms-TeachingBubble-bodycontent
-        {
-          padding-bottom: 20px;
-          padding-left: 20px;
-          padding-right: 20px;
-          padding-top: 20px;
-        }
+    onBlur={[Function]}
+    onFocus={[Function]}
+    onFocusCapture={[Function]}
   >
     <div
-      className=
-          ms-TeachingBubble-header
-          ms-TeachingBubble-header--small
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 600;
-            margin-right: 10px;
-          }
-          &:not(:last-child) {
-            margin-bottom: 14px;
-          }
-    >
-      <p
-        className=
-            ms-TeachingBubble-headline
-            {
-              color: #ffffff;
-              margin-bottom: 0px;
-              margin-left: 0px;
-              margin-right: 0px;
-              margin-top: 0px;
-            }
-      >
-        Test Title
-      </p>
-    </div>
+      data-is-visible={true}
+      onFocus={[Function]}
+      style={
+        Object {
+          "pointerEvents": "none",
+          "position": "fixed",
+        }
+      }
+      tabIndex={0}
+    />
     <div
       className=
-          ms-TeachingBubble-body
-          &:not(:last-child) {
-            margin-bottom: 20px;
+          ms-TeachingBubble-bodycontent
+          {
+            padding-bottom: 20px;
+            padding-left: 24px;
+            padding-right: 24px;
+            padding-top: 20px;
           }
     >
-      <p
+      <div
         className=
-            ms-TeachingBubble-subText
+            ms-TeachingBubble-header
+            ms-TeachingBubble-header--small
             {
-              color: #ffffff;
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
-              font-weight: 300;
-              margin-bottom: 0px;
-              margin-left: 0px;
-              margin-right: 0px;
-              margin-top: 0px;
+              font-weight: 600;
+            }
+            &:not(:last-child) {
+              margin-bottom: 14px;
             }
       >
-        Content
-      </p>
+        <p
+          className=
+              ms-TeachingBubble-headline
+              {
+                color: #ffffff;
+                font-weight: 600;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+              }
+          role="heading"
+        >
+          Test Title
+        </p>
+      </div>
+      <div
+        className=
+            ms-TeachingBubble-body
+            &:not(:last-child) {
+              margin-bottom: 20px;
+            }
+      >
+        <p
+          className=
+              ms-TeachingBubble-subText
+              {
+                color: #ffffff;
+                font-size: 14px;
+                font-weight: 400;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+              }
+        >
+          Content
+        </p>
+      </div>
     </div>
+    <div
+      data-is-visible={true}
+      onFocus={[Function]}
+      style={
+        Object {
+          "pointerEvents": "none",
+          "position": "fixed",
+        }
+      }
+      tabIndex={0}
+    />
   </div>
 </div>
 `;

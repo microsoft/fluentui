@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { classNamesFunction, getNativeProps, imageProperties } from '../../Utilities';
+import { classNamesFunction, getNativeProps, imgProperties } from '../../Utilities';
 import { IImageProps, IImageStyleProps, IImageStyles, ImageCoverStyle, ImageFit, ImageLoadState } from './Image.types';
 
 const getClassNames = classNamesFunction<IImageStyleProps, IImageStyles>();
@@ -12,7 +12,7 @@ const KEY_PREFIX = 'fabricImage';
 
 export class ImageBase extends React.Component<IImageProps, IImageState> {
   public static defaultProps = {
-    shouldFadeIn: true
+    shouldFadeIn: true,
   };
 
   private static _svgRegex = /\.svg$/i;
@@ -28,14 +28,15 @@ export class ImageBase extends React.Component<IImageProps, IImageState> {
     super(props);
 
     this.state = {
-      loadState: ImageLoadState.notLoaded
+      loadState: ImageLoadState.notLoaded,
     };
   }
 
-  public componentWillReceiveProps(nextProps: IImageProps): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillReceiveProps(nextProps: IImageProps): void {
     if (nextProps.src !== this.props.src) {
       this.setState({
-        loadState: ImageLoadState.notLoaded
+        loadState: ImageLoadState.notLoaded,
       });
     } else if (this.state.loadState === ImageLoadState.loaded) {
       this._computeCoverStyle(nextProps);
@@ -50,7 +51,10 @@ export class ImageBase extends React.Component<IImageProps, IImageState> {
   }
 
   public render(): JSX.Element {
-    const imageProps = getNativeProps(this.props, imageProperties, ['width', 'height']);
+    const imageProps = getNativeProps<React.ImgHTMLAttributes<HTMLImageElement>>(this.props, imgProperties, [
+      'width',
+      'height',
+    ]);
     const {
       src,
       alt,
@@ -63,7 +67,7 @@ export class ImageBase extends React.Component<IImageProps, IImageState> {
       role,
       maximizeFrame,
       styles,
-      theme
+      theme,
     } = this.props;
     const { loadState } = this.state;
     const coverStyle = this.props.coverStyle !== undefined ? this.props.coverStyle : this._coverStyle;
@@ -75,7 +79,9 @@ export class ImageBase extends React.Component<IImageProps, IImageState> {
       maximizeFrame,
       shouldFadeIn,
       shouldStartVisible,
-      isLoaded: loadState === ImageLoadState.loaded || (loadState === ImageLoadState.notLoaded && this.props.shouldStartVisible),
+      isLoaded:
+        loadState === ImageLoadState.loaded ||
+        (loadState === ImageLoadState.notLoaded && this.props.shouldStartVisible),
       isLandscape: coverStyle === ImageCoverStyle.landscape,
       isCenter: imageFit === ImageFit.center,
       isCenterContain: imageFit === ImageFit.centerContain,
@@ -84,7 +90,7 @@ export class ImageBase extends React.Component<IImageProps, IImageState> {
       isCover: imageFit === ImageFit.cover,
       isNone: imageFit === ImageFit.none,
       isError: loadState === ImageLoadState.error,
-      isNotImageFit: imageFit === undefined
+      isNotImageFit: imageFit === undefined,
     });
 
     // If image dimensions aren't specified, the natural size of the image is used.
@@ -115,7 +121,7 @@ export class ImageBase extends React.Component<IImageProps, IImageState> {
 
     if (src) {
       this.setState({
-        loadState: ImageLoadState.loaded
+        loadState: ImageLoadState.loaded,
       });
     }
   };
@@ -130,14 +136,14 @@ export class ImageBase extends React.Component<IImageProps, IImageState> {
       // for some browsers, SVG images do not have a naturalWidth or naturalHeight, so fall back
       // to checking .complete for these images.
       const isLoaded: boolean = this._imageElement.current
-        ? (src && (this._imageElement.current.naturalWidth > 0 && this._imageElement.current.naturalHeight > 0)) ||
+        ? (src && this._imageElement.current.naturalWidth > 0 && this._imageElement.current.naturalHeight > 0) ||
           (this._imageElement.current.complete && ImageBase._svgRegex.test(src!))
         : false;
 
       if (isLoaded) {
         this._computeCoverStyle(this.props);
         this.setState({
-          loadState: ImageLoadState.loaded
+          loadState: ImageLoadState.loaded,
         });
       }
     }
@@ -182,7 +188,7 @@ export class ImageBase extends React.Component<IImageProps, IImageState> {
       this.props.onError(ev);
     }
     this.setState({
-      loadState: ImageLoadState.error
+      loadState: ImageLoadState.error,
     });
   };
 }

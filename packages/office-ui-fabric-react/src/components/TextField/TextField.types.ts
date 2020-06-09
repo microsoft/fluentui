@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { IStyle, IStyleSet, ITheme } from '../../Styling';
 import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { IIconProps } from '../../Icon';
@@ -87,6 +88,8 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
 
   /**
    * Custom renderer for the label.
+   * If you don't call defaultRender, ensure that you give your custom-rendered label an id and that
+   * you set the textfield's aria-labelledby prop to that id.
    */
   onRenderLabel?: IRenderFunction<ITextFieldProps>;
 
@@ -101,11 +104,6 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
   onRenderDescription?: IRenderFunction<ITextFieldProps>;
 
   /**
-   * @deprecated Use `prefix` instead.
-   */
-  addonString?: string;
-
-  /**
    * Prefix displayed before the text field contents. This is not included in the value.
    * Ensure a descriptive label is present to assist screen readers, as the value does not include the prefix.
    */
@@ -116,11 +114,6 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
    * Ensure a descriptive label is present to assist screen readers, as the value does not include the suffix.
    */
   suffix?: string;
-
-  /**
-   * @deprecated Use `onRenderPrefix` instead.
-   */
-  onRenderAddon?: IRenderFunction<ITextFieldProps>;
 
   /**
    * Custom render function for prefix.
@@ -170,24 +163,10 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
 
   /**
    * Callback for when the input value changes.
-   * This is called on both `input` and `change` native events.
+   * This is called on both `input` and `change` events.
+   * (In a later version, this will probably only be called for the `change` event.)
    */
   onChange?: (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string) => void;
-
-  /**
-   * @deprecated Use `onChange` instead.
-   */
-  onChanged?: (newValue: any) => void;
-
-  /**
-   * Called after the input's value updates but before re-rendering.
-   * Unlike `onChange`, this is also called when the value is updated via props.
-   *
-   * NOTE: This should be used *very* rarely. `onChange` is more appropriate for most situations.
-   *
-   * @param newValue - The new value. Type should be string.
-   */
-  onBeforeChange?: (newValue?: string) => void;
 
   /**
    * Function called after validation completes.
@@ -198,12 +177,12 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
    * Function used to determine whether the input value is valid and get an error message if not.
    * Mutually exclusive with the static string `errorMessage` (it will take precedence over this).
    *
-   * When it returns string | JSX.Element:
+   * When it returns `string | JSX.Element`:
    * - If valid, it returns empty string.
    * - If invalid, it returns the error message and the text field will
    *   show a red border and show an error message below the text field.
    *
-   * When it returns Promise\<string | JSX.Element\>:
+   * When it returns `Promise<string | JSX.Element>`:
    * - The resolved value is displayed as the error message.
    * - If rejected, the value is thrown away.
    */
@@ -211,6 +190,7 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
 
   /**
    * Text field will start to validate after users stop typing for `deferredValidationTime` milliseconds.
+   * Updates to this prop will not be respected.
    * @defaultvalue 200
    */
   deferredValidationTime?: number;
@@ -263,11 +243,6 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
   styles?: IStyleFunctionOrObject<ITextFieldStyleProps, ITextFieldStyles>;
 
   /**
-   * @deprecated Use `iconProps` instead.
-   */
-  iconClass?: string;
-
-  /**
    * Whether the input field should have autocomplete enabled.
    * This tells the browser to display options based on earlier typed values.
    * Common values are 'on' and 'off' but for all possible values see the following links:
@@ -277,6 +252,7 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
   autoComplete?: string;
 
   /**
+   * Only used by MaskedTextField:
    * The masking string that defines the mask's behavior.
    * A backslash will escape any character.
    * Special format characters are:
@@ -289,12 +265,14 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
   mask?: string;
 
   /**
+   * Only used by MaskedTextField:
    * The character to show in place of unfilled characters of the mask.
    * @defaultvalue '_'
    */
   maskChar?: string;
 
   /**
+   * Only used by MaskedTextField:
    * An object defining the format characters and corresponding regexp values.
    * Default format characters: \{
    *  '9': /[0-9]/,
@@ -303,11 +281,6 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
    * \}
    */
   maskFormat?: { [key: string]: RegExp };
-
-  /**
-   * @deprecated Serves no function.
-   */
-  componentId?: string;
 }
 
 /**
@@ -324,7 +297,6 @@ export type ITextFieldStyleProps = Required<Pick<ITextFieldProps, 'theme'>> &
     | 'borderless'
     | 'resizable'
     | 'underlined'
-    | 'iconClass'
     | 'autoAdjustHeight'
   > & {
     /** Element has an error message. */

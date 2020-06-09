@@ -259,6 +259,12 @@ export interface IFontFace extends IRawFontStyle {
   unicodeRange?: ICSSRule | string;
 
   /**
+   * Determines how a font face is displayed based on whether and when it is downloaded
+   * and ready to use.
+   */
+  fontDisplay?: 'auto' | 'block' | 'swap' | 'fallback' | 'optional';
+
+  /**
    * Feature settings for the font.
    */
   fontFeatureSettings?: string;
@@ -275,6 +281,11 @@ export interface IRawStyleBase extends IRawFontStyle {
    * (Ms specific) constrast adjust rule.
    */
   MsHighContrastAdjust?: ICSSRule | string;
+
+  /**
+   * (Ms specific) scrollbar behavior adjust rule.
+   */
+  MsOverflowStyle?: 'auto' | 'none' | 'scrollbar' | '-ms-autohiding-scrollbar';
 
   /**
    * (Moz specific) font smoothing directive.
@@ -295,6 +306,12 @@ export interface IRawStyleBase extends IRawFontStyle {
    * (Webkit specific) color of the highlight that appears overa  link while it's being tapped
    */
   WebkitTapHighlightColor?: string;
+
+  /**
+   * (Webkit specific) controls the text inflation algorithm used on some smartphones and tablets.
+   * Other browsers will ignore this property.
+   */
+  WebkitTextSizeAdjust?: 'none' | 'auto' | ICSSPercentageRule | ICSSRule;
 
   /**
    * Aligns a flex container's lines within the flex container when there is extra space
@@ -344,7 +361,8 @@ export interface IRawStyleBase extends IRawFontStyle {
   animation?: ICSSRule | string;
 
   /**
-   * Defines a length of time to elapse before an animation starts, allowing an animation to begin execution some time after it is applied.
+   * Defines a length of time to elapse before an animation starts, allowing an animation to begin execution
+   * some time after it is applied.
    */
   animationDelay?: ICSSRule | string;
 
@@ -503,12 +521,12 @@ export interface IRawStyleBase extends IRawFontStyle {
   /**
    * Defines the shape of the border of the bottom-left corner.
    */
-  borderBottomLeftRadius?: ICSSRule | string;
+  borderBottomLeftRadius?: ICSSRule | ICSSPixelUnitRule;
 
   /**
    * Defines the shape of the border of the bottom-right corner.
    */
-  borderBottomRightRadius?: ICSSRule | string;
+  borderBottomRightRadius?: ICSSRule | ICSSPixelUnitRule;
 
   /**
    * Sets the line style of the bottom border of a box.
@@ -663,12 +681,12 @@ export interface IRawStyleBase extends IRawFontStyle {
   /**
    * Sets the rounding of the top-left corner of the element.
    */
-  borderTopLeftRadius?: ICSSRule | string;
+  borderTopLeftRadius?: ICSSRule | ICSSPixelUnitRule;
 
   /**
    * Sets the rounding of the top-right corner of the element.
    */
-  borderTopRightRadius?: ICSSRule | string;
+  borderTopRightRadius?: ICSSRule | ICSSPixelUnitRule;
 
   /**
    * Sets the style of an element's top border. To set all four borders, use the
@@ -957,6 +975,12 @@ export interface IRawStyleBase extends IRawFontStyle {
   flowFrom?: ICSSRule | string;
 
   /**
+   * The property which allows authors to opt particular elements out of forced colors mode,
+   * restoring full control over the colors to CSS. Currently it's only supported in Edge Chromium.
+   */
+  forcedColorAdjust?: 'auto' | 'none';
+
+  /**
    * Lays out one or more grid items bound by 4 grid lines. Shorthand for setting
    * grid-column-start, grid-column-end, grid-row-start, and grid-row-end in a single
    * declaration.
@@ -1114,7 +1138,15 @@ export interface IRawStyleBase extends IRawFontStyle {
    * See CSS justify-content property
    * https://www.w3.org/TR/css-flexbox-1/#justify-content-property
    */
-  justifyContent?: ICSSRule | 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly' | 'stretch';
+  justifyContent?:
+    | ICSSRule
+    | 'flex-start'
+    | 'flex-end'
+    | 'center'
+    | 'space-between'
+    | 'space-around'
+    | 'space-evenly'
+    | 'stretch';
 
   /**
    * Justifies the box (as the alignment subject) within its containing block (as the alignment container)
@@ -1813,6 +1845,12 @@ export interface IRawStyleBase extends IRawFontStyle {
    * text, along with optional color and blur radius values.
    */
   textShadow?: ICSSRule | string;
+
+  /**
+   * The text-size-adjust CSS property controls the text inflation algorithm used
+   * on some smartphones and tablets. Other browsers will ignore this property.
+   */
+  textSizeAdjust?: 'none' | 'auto' | ICSSPercentageRule | ICSSRule;
 
   /**
    * This property transforms text for styling purposes. (It has no effect on the

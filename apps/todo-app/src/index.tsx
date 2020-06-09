@@ -23,7 +23,7 @@ function start(): void {
     <Fabric>
       <Todo dataProvider={_dataProvider} />
     </Fabric>,
-    _rootDiv
+    _rootDiv,
   );
 }
 

@@ -1,12 +1,19 @@
 import * as React from 'react';
-import { css, getDocument, classNamesFunction, styled } from 'office-ui-fabric-react/lib/Utilities';
+import { css, classNamesFunction, styled } from 'office-ui-fabric-react/lib/Utilities';
 import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { Stack, IStackProps } from 'office-ui-fabric-react/lib/Stack';
 import { MessageBar } from 'office-ui-fabric-react/lib/MessageBar';
 import { EditSection } from '../EditSection/index';
-import { IComponentPageProps, IComponentPageStyleProps, IComponentPageStyles, IComponentPageSection } from './ComponentPage.types';
+import {
+  IComponentPageProps,
+  IComponentPageStyleProps,
+  IComponentPageStyles,
+  IComponentPageSection,
+} from './ComponentPage.types';
 import { getStyles } from './ComponentPage.styles';
+import { showOnlyExamples } from '../../utilities/showOnlyExamples';
+import { getCurrentUrl } from '../../utilities/getCurrentUrl';
 
 const getClassNames = classNamesFunction<IComponentPageStyleProps, IComponentPageStyles>();
 
@@ -27,40 +34,44 @@ interface IExtendedComponentPageSection extends IComponentPageSection {
 const headingWithEditStackProps: IStackProps = {
   horizontal: true,
   verticalAlign: 'center',
-  horizontalAlign: 'space-between'
+  horizontalAlign: 'space-between',
 };
 
 export class ComponentPageBase extends React.PureComponent<IComponentPageProps> {
   public static defaultProps: Partial<IComponentPageProps> = {
     isHeaderVisible: true,
-    areBadgesVisible: false
+    areBadgesVisible: false,
   };
 
   private _baseUrl: string;
+  private _showOnlyExamples: boolean;
   private _styles: IProcessedStyleSet<IComponentPageStyles>;
 
   constructor(props: IComponentPageProps) {
     super(props);
 
-    const doc = getDocument();
-    this._baseUrl = doc ? document.location.href : '';
+    this._baseUrl = getCurrentUrl();
+    this._showOnlyExamples = showOnlyExamples();
   }
 
   public render() {
     const { componentName, className, otherSections, styles, theme } = this.props;
 
+    const onlyExamples = this._showOnlyExamples;
+
     const classNames = (this._styles = getClassNames(styles, { theme }));
 
-    return (
+    return onlyExamples ? (
+      this._getVariants()
+    ) : (
       <div className={css(classNames.root, className)}>
         <div className={componentName}>
           {this._getPageHeader()}
           <div className={classNames.body}>
-            {this._getComponentStatusBadges()}
             {this._getOverview()}
             {this._getBestPractices()}
             {this._getVariants()}
-            {this._getImplementationExamples()}
+            {this._getAccessibility()}
             {this._getPropertiesTable()}
             {this._getFeedback()}
             {otherSections && otherSections.map(section => this._getSection(section))}
@@ -88,18 +99,21 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
 
     const sections = [
       { title: 'Overview' },
-      !!(props.bestPractices || (props.dos && props.donts)) && { title: 'Best Practices' },
+      !!(props.bestPractices || (props.dos && props.donts)) && { title: 'Best practices' },
       props.exampleCards && { title: 'Variants' },
-      props.implementationExampleCards && { title: 'Implementation Examples' },
       props.propertiesTables && { title: 'Implementation' },
       props.isFeedbackVisible && { title: 'Feedback' },
-      ...(props.otherSections || [])
+      ...(props.otherSections || []),
     ].filter(section => !!section) as Array<{ title: string }>;
 
     return (
-      <Stack horizontal maxWidth="100%" wrap tokens={{ childrenGap: '5px 40px' }} className={classNames.navigation}>
+      <Stack horizontal wrap tokens={{ childrenGap: '5px 40px', maxWidth: '100%' }} className={classNames.navigation}>
         {sections.map(section => (
-          <Link key={section.title} href={this._baseUrl + '#' + _idFromSectionTitle(section.title)} className={classNames.headerLink}>
+          <Link
+            key={section.title}
+            href={this._baseUrl + '#' + _idFromSectionTitle(section.title)}
+            className={classNames.headerLink}
+          >
             {section.title}
           </Link>
         ))}
@@ -125,13 +139,15 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
         componentNameJsx = <code>{allowNativePropsForComponentName}</code>;
       }
 
+      // tslint:disable:max-line-length
       return (
         <MessageBar>
-          <strong>Native props allowed {componentNameJsx && <>for {componentNameJsx}</>}</strong> - all HTML attributes native to the{' '}
-          {elementsArr}, including all aria and custom data attributes, can be applied as native props on{' '}
+          <strong>Native props allowed {componentNameJsx && <>for {componentNameJsx}</>}</strong> - all HTML attributes
+          native to the {elementsArr}, including all aria and custom data attributes, can be applied as native props on{' '}
           {componentNameJsx || 'this component'}.
         </MessageBar>
       );
+      // tslint:enable:max-line-length
     }
   }
 
@@ -146,7 +162,7 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
           </>
         ),
         wrapperClass: this._styles.implementationSection,
-        titleClass: null
+        titleClass: null,
       });
     }
   }
@@ -167,12 +183,12 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
       <div id="BestPractices" className={classNames.bestPracticesSection}>
         {bestPractices &&
           this._getSection({
-            title: 'Best Practices',
+            title: 'Best practices',
             section: bestPractices,
             editUrl: practicesUrl,
             wrapperClass: classNames.usageSection,
             titleClass: classNames.usageHeading,
-            id: null
+            id: null,
           })}
         {!!(dos && donts) && (
           <div className={css(classNames.section, classNames.doSections)}>
@@ -212,27 +228,13 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
     }
   }
 
-  private _getImplementationExamples(): JSX.Element | undefined {
-    const { implementationExampleCards } = this.props;
-    if (implementationExampleCards) {
-      return this._getSection({
-        title: 'Implementation Examples',
-        section: implementationExampleCards,
-        wrapperClass: this._styles.implementationExamplesSection
-      });
-    }
-  }
-
   private _getFeedback(): JSX.Element | undefined {
     if (this.props.isFeedbackVisible && this.props.feedback) {
-      return this._getSection({ title: 'Feedback', section: this.props.feedback, wrapperClass: this._styles.feedbackSection });
-    }
-  }
-
-  private _getComponentStatusBadges(): JSX.Element | undefined {
-    const classNames = this._styles;
-    if (this.props.componentStatus && this.props.areBadgesVisible) {
-      return <div className={css(classNames.section, classNames.statusSection)}>{this.props.componentStatus}</div>;
+      return this._getSection({
+        title: 'Feedback',
+        section: this.props.feedback,
+        wrapperClass: this._styles.feedbackSection,
+      });
     }
   }
 
@@ -244,7 +246,20 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
         section: overview,
         editUrl: this._getURL('Overview', editOverviewUrl),
         wrapperClass: this._styles.overviewSection,
-        titleClass: this._styles.overviewHeading
+        titleClass: this._styles.overviewHeading,
+      });
+    }
+
+    return undefined;
+  }
+
+  private _getAccessibility(): JSX.Element | undefined {
+    const { accessibility, editOverviewUrl } = this.props;
+    if (accessibility) {
+      return this._getSection({
+        title: 'Accessibility',
+        section: accessibility,
+        editUrl: this._getURL('Accessibility', editOverviewUrl),
       });
     }
 
@@ -258,7 +273,7 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
       wrapperClass = this._styles.variantsSection,
       titleClass = this._styles.variantsTitle,
       id = _idFromSectionTitle(section.title),
-      editUrl
+      editUrl,
     } = section;
     const classNames = this._styles;
     return (
@@ -298,10 +313,10 @@ function _idFromSectionTitle(title: string): string {
   return title.replace(/[^\w-]/g, '');
 }
 
-export const ComponentPage: React.StatelessComponent<IComponentPageProps> = styled<
+export const ComponentPage: React.FunctionComponent<IComponentPageProps> = styled<
   IComponentPageProps,
   IComponentPageStyleProps,
   IComponentPageStyles
 >(ComponentPageBase, getStyles, undefined, {
-  scope: 'ComponentPage'
+  scope: 'ComponentPage',
 });

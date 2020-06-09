@@ -1,9 +1,7 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 import * as ReactDOM from 'react-dom';
 import { IAppLink, IAppLinkGroup, IAppProps, IAppDefinition, App as AppBase } from '../index';
-import { Router, Route } from 'office-ui-fabric-react/lib/utilities/router/index';
+import { Router, Route } from './router/index';
 import { setBaseUrl, Fabric, initializeIcons, mergeStyles } from 'office-ui-fabric-react';
 import { jumpToAnchor } from './jumpToAnchor';
 
@@ -15,12 +13,12 @@ initializeIcons();
 mergeStyles({
   selectors: {
     ':global(html), :global(body)': {
-      WebkitTapHighlightColor: 'transparent'
-    }
-  }
+      WebkitTapHighlightColor: 'transparent',
+    },
+  },
 });
 
-export function createDemoApp(appDefinition: IAppDefinition, gettingStartedPage: React.StatelessComponent) {
+export function createDemoApp(appDefinition: IAppDefinition, gettingStartedPage: React.FunctionComponent) {
   let rootElement: HTMLElement | null;
 
   function _scrollAnchorLink(): void {
@@ -34,35 +32,46 @@ export function createDemoApp(appDefinition: IAppDefinition, gettingStartedPage:
       <Fabric>
         <Router onNewRouteLoaded={_scrollAnchorLink}>{_getRoutes()}</Router>
       </Fabric>,
-      rootElement
+      rootElement,
     );
   }
 
   function _getRoutes(): JSX.Element[] {
-    const routes = appDefinition.testPages.map((page: IAppLink) => <Route key={page.key} path={page.url} component={page.component} />);
+    const routes = appDefinition.testPages.map((page: IAppLink) => (
+      <Route key={page.key} path={page.url} component={page.component} />
+    ));
     const appRoutes: JSX.Element[] = [];
 
     appDefinition.examplePages.forEach((group: IAppLinkGroup) => {
-      group.links
-        .filter((link: IAppLink) => link.hasOwnProperty('component') || link.hasOwnProperty('getComponent'))
-        .forEach((link: IAppLink) => {
-          const { component, getComponent } = link;
-
-          appRoutes.push(<Route key={link.key} path={link.url} component={component} getComponent={getComponent} />);
-        });
+      appRoutes.push(..._getRoutesFromLinks(group.links));
     });
 
     // Default route.
     appRoutes.push(<Route key="gettingstarted" component={gettingStartedPage} />);
 
-    const App: React.StatelessComponent<IAppProps> = props => <AppBase appDefinition={appDefinition} {...props} />;
+    const App: React.FunctionComponent<IAppProps> = props => <AppBase appDefinition={appDefinition} {...props} />;
 
     routes.push(
       <Route key="app" component={App}>
         {appRoutes}
-      </Route>
+      </Route>,
     );
 
+    return routes;
+  }
+
+  function _getRoutesFromLinks(links: IAppLink[]): JSX.Element[] {
+    const routes: JSX.Element[] = [];
+    for (const link of links) {
+      if (link.component || link.getComponent) {
+        routes.push(
+          <Route key={link.key} path={link.url} component={link.component} getComponent={link.getComponent} />,
+        );
+        if (link.links) {
+          routes.push(..._getRoutesFromLinks(link.links));
+        }
+      }
+    }
     return routes;
   }
 

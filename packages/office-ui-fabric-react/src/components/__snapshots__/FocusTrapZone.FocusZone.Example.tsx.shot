@@ -66,11 +66,11 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
               -webkit-font-smoothing: antialiased;
               box-shadow: none;
               box-sizing: border-box;
-              color: #333333;
+              color: #323130;
               display: block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
-              font-weight: 400;
+              font-weight: 600;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
@@ -104,23 +104,21 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
               {
                 align-items: center;
                 background: #ffffff;
-                border-color: #666666;
-                border-radius: 1em;
-                border-style: solid;
-                border-width: 1px;
+                border-radius: 10px;
+                border: 1px solid #605e5c;
                 box-sizing: border-box;
                 cursor: pointer;
                 display: flex;
                 font-size: 20px;
-                height: 1em;
+                height: 20px;
                 outline: transparent;
                 padding-bottom: 0;
-                padding-left: .2em;
-                padding-right: .2em;
+                padding-left: 3px;
+                padding-right: 3px;
                 padding-top: 0;
                 position: relative;
                 transition: all 0.1s ease;
-                width: 2.2em;
+                width: 40px;
               }
               &::-moz-focus-inner {
                 border: 0;
@@ -130,14 +128,17 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
                 bottom: -2px;
                 content: "";
                 left: -2px;
-                outline: 1px solid #666666;
+                outline: 1px solid #605e5c;
                 position: absolute;
                 right: -2px;
                 top: -2px;
                 z-index: 1;
               }
               &:hover {
-                border-color: #333333;
+                border-color: #323130;
+              }
+              &:hover .ms-Toggle-thumb {
+                background-color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
                 border-color: Highlight;
@@ -152,19 +153,20 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
           role="switch"
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Toggle-thumb
                 {
-                  background-color: #333333;
+                  background-color: #605e5c;
                   border-color: transparent;
-                  border-radius: .5em;
+                  border-radius: 50%;
                   border-style: solid;
                   border-width: .28em;
                   box-sizing: border-box;
-                  height: .5em;
+                  display: block;
+                  height: 12px;
                   transition: all 0.1s ease;
-                  width: .5em;
+                  width: 12px;
                 }
           />
         </button>
@@ -177,11 +179,11 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
                 -webkit-font-smoothing: antialiased;
                 box-shadow: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 display: block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
-                font-weight: 400;
+                font-weight: 600;
                 margin-bottom: 0px;
                 margin-left: 0px;
                 margin-right: 0px;
@@ -194,6 +196,7 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
                 word-wrap: break-word;
               }
               && {
+                font-weight: 400;
                 margin-bottom: 0;
                 margin-left: 8px;
                 margin-right: 8px;
@@ -222,7 +225,6 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
       onFocus={[Function]}
       onKeyDown={[Function]}
       onMouseDownCapture={[Function]}
-      role="presentation"
     >
       <div
         className=
@@ -257,21 +259,17 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                background-color: #f4f4f4;
-                border-radius: 0px;
-                border: 1px solid transparent;
+                background-color: #ffffff;
+                border-radius: 2px;
+                border: 1px solid #8a8886;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 height: 32px;
-                margin-bottom: 0px;
-                margin-left: 0px;
-                margin-right: 0px;
-                margin-top: 0px;
                 min-width: 80px;
                 outline: transparent;
                 padding-bottom: 0;
@@ -282,20 +280,19 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
               }
               &::-moz-focus-inner {
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -312,16 +309,16 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
                 top: 0px;
               }
               &:hover {
-                background-color: #eaeaea;
-                color: #212121;
+                background-color: #f3f2f1;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
                 color: Highlight;
               }
               &:active {
-                background-color: #c8c8c8;
-                color: #212121;
+                background-color: #edebe9;
+                color: #201f1e;
               }
           data-is-focusable={true}
           onClick={[Function]}
@@ -332,7 +329,7 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -342,18 +339,21 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
                   height: 100%;
                   justify-content: center;
                 }
+            data-automationid="splitbuttonprimary"
           >
-            <div
+            <span
               className=
                   ms-Button-textContainer
                   {
+                    display: block;
                     flex-grow: 1;
                   }
             >
-              <div
+              <span
                 className=
                     ms-Button-label
                     {
+                      display: block;
                       font-weight: 600;
                       line-height: 100%;
                       margin-bottom: 0;
@@ -364,9 +364,9 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
                 id="id__2"
               >
                 FZ1
-              </div>
-            </div>
-          </div>
+              </span>
+            </span>
+          </span>
         </button>
         <button
           className=
@@ -375,21 +375,17 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                background-color: #f4f4f4;
-                border-radius: 0px;
-                border: 1px solid transparent;
+                background-color: #ffffff;
+                border-radius: 2px;
+                border: 1px solid #8a8886;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 height: 32px;
-                margin-bottom: 0px;
-                margin-left: 0px;
-                margin-right: 0px;
-                margin-top: 0px;
                 min-width: 80px;
                 outline: transparent;
                 padding-bottom: 0;
@@ -400,20 +396,19 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
               }
               &::-moz-focus-inner {
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -430,16 +425,16 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
                 top: 0px;
               }
               &:hover {
-                background-color: #eaeaea;
-                color: #212121;
+                background-color: #f3f2f1;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
                 color: Highlight;
               }
               &:active {
-                background-color: #c8c8c8;
-                color: #212121;
+                background-color: #edebe9;
+                color: #201f1e;
               }
           data-is-focusable={true}
           onClick={[Function]}
@@ -450,7 +445,7 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -460,18 +455,21 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
                   height: 100%;
                   justify-content: center;
                 }
+            data-automationid="splitbuttonprimary"
           >
-            <div
+            <span
               className=
                   ms-Button-textContainer
                   {
+                    display: block;
                     flex-grow: 1;
                   }
             >
-              <div
+              <span
                 className=
                     ms-Button-label
                     {
+                      display: block;
                       font-weight: 600;
                       line-height: 100%;
                       margin-bottom: 0;
@@ -482,9 +480,9 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
                 id="id__5"
               >
                 FZ1
-              </div>
-            </div>
-          </div>
+              </span>
+            </span>
+          </span>
         </button>
         <button
           className=
@@ -493,21 +491,17 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                background-color: #f4f4f4;
-                border-radius: 0px;
-                border: 1px solid transparent;
+                background-color: #ffffff;
+                border-radius: 2px;
+                border: 1px solid #8a8886;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 height: 32px;
-                margin-bottom: 0px;
-                margin-left: 0px;
-                margin-right: 0px;
-                margin-top: 0px;
                 min-width: 80px;
                 outline: transparent;
                 padding-bottom: 0;
@@ -518,20 +512,19 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
               }
               &::-moz-focus-inner {
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -548,16 +541,16 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
                 top: 0px;
               }
               &:hover {
-                background-color: #eaeaea;
-                color: #212121;
+                background-color: #f3f2f1;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
                 color: Highlight;
               }
               &:active {
-                background-color: #c8c8c8;
-                color: #212121;
+                background-color: #edebe9;
+                color: #201f1e;
               }
           data-is-focusable={true}
           onClick={[Function]}
@@ -568,7 +561,7 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -578,18 +571,21 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
                   height: 100%;
                   justify-content: center;
                 }
+            data-automationid="splitbuttonprimary"
           >
-            <div
+            <span
               className=
                   ms-Button-textContainer
                   {
+                    display: block;
                     flex-grow: 1;
                   }
             >
-              <div
+              <span
                 className=
                     ms-Button-label
                     {
+                      display: block;
                       font-weight: 600;
                       line-height: 100%;
                       margin-bottom: 0;
@@ -600,9 +596,9 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
                 id="id__8"
               >
                 FZ1
-              </div>
-            </div>
-          </div>
+              </span>
+            </span>
+          </span>
         </button>
       </div>
     </div>
@@ -613,21 +609,17 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
-            background-color: #f4f4f4;
-            border-radius: 0px;
-            border: 1px solid transparent;
+            background-color: #ffffff;
+            border-radius: 2px;
+            border: 1px solid #8a8886;
             box-sizing: border-box;
-            color: #333333;
+            color: #323130;
             cursor: pointer;
             display: inline-block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
             height: 32px;
-            margin-bottom: 0px;
-            margin-left: 0px;
-            margin-right: 0px;
-            margin-top: 0px;
             min-width: 80px;
             outline: transparent;
             padding-bottom: 0;
@@ -638,20 +630,19 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
             text-align: center;
             text-decoration: none;
             user-select: none;
-            vertical-align: top;
           }
           &::-moz-focus-inner {
             border: 0;
           }
           .ms-Fabric--isFocusVisible &:focus:after {
-            border: 1px solid #ffffff;
-            bottom: 0px;
+            border: 1px solid transparent;
+            bottom: 2px;
             content: "";
-            left: 0px;
-            outline: 1px solid #666666;
+            left: 2px;
+            outline: 1px solid #605e5c;
             position: absolute;
-            right: 0px;
-            top: 0px;
+            right: 2px;
+            top: 2px;
             z-index: 1;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -668,16 +659,16 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
             top: 0px;
           }
           &:hover {
-            background-color: #eaeaea;
-            color: #212121;
+            background-color: #f3f2f1;
+            color: #201f1e;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
             color: Highlight;
           }
           &:active {
-            background-color: #c8c8c8;
-            color: #212121;
+            background-color: #edebe9;
+            color: #201f1e;
           }
       data-is-focusable={true}
       onClick={[Function]}
@@ -688,7 +679,7 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
       onMouseUp={[Function]}
       type="button"
     >
-      <div
+      <span
         className=
             ms-Button-flexContainer
             {
@@ -698,18 +689,21 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
               height: 100%;
               justify-content: center;
             }
+        data-automationid="splitbuttonprimary"
       >
-        <div
+        <span
           className=
               ms-Button-textContainer
               {
+                display: block;
                 flex-grow: 1;
               }
         >
-          <div
+          <span
             className=
                 ms-Button-label
                 {
+                  display: block;
                   font-weight: 600;
                   line-height: 100%;
                   margin-bottom: 0;
@@ -720,9 +714,9 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
             id="id__11"
           >
             No FZ
-          </div>
-        </div>
-      </div>
+          </span>
+        </span>
+      </span>
     </button>
     <div
       className=
@@ -735,7 +729,6 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
       onFocus={[Function]}
       onKeyDown={[Function]}
       onMouseDownCapture={[Function]}
-      role="presentation"
     >
       <div
         className=
@@ -770,21 +763,17 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                background-color: #f4f4f4;
-                border-radius: 0px;
-                border: 1px solid transparent;
+                background-color: #ffffff;
+                border-radius: 2px;
+                border: 1px solid #8a8886;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 height: 32px;
-                margin-bottom: 0px;
-                margin-left: 0px;
-                margin-right: 0px;
-                margin-top: 0px;
                 min-width: 80px;
                 outline: transparent;
                 padding-bottom: 0;
@@ -795,20 +784,19 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
               }
               &::-moz-focus-inner {
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -825,16 +813,16 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
                 top: 0px;
               }
               &:hover {
-                background-color: #eaeaea;
-                color: #212121;
+                background-color: #f3f2f1;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
                 color: Highlight;
               }
               &:active {
-                background-color: #c8c8c8;
-                color: #212121;
+                background-color: #edebe9;
+                color: #201f1e;
               }
           data-is-focusable={true}
           onClick={[Function]}
@@ -845,7 +833,7 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -855,18 +843,21 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
                   height: 100%;
                   justify-content: center;
                 }
+            data-automationid="splitbuttonprimary"
           >
-            <div
+            <span
               className=
                   ms-Button-textContainer
                   {
+                    display: block;
                     flex-grow: 1;
                   }
             >
-              <div
+              <span
                 className=
                     ms-Button-label
                     {
+                      display: block;
                       font-weight: 600;
                       line-height: 100%;
                       margin-bottom: 0;
@@ -877,9 +868,9 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
                 id="id__15"
               >
                 FZ2
-              </div>
-            </div>
-          </div>
+              </span>
+            </span>
+          </span>
         </button>
         <button
           className=
@@ -888,21 +879,17 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                background-color: #f4f4f4;
-                border-radius: 0px;
-                border: 1px solid transparent;
+                background-color: #ffffff;
+                border-radius: 2px;
+                border: 1px solid #8a8886;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 height: 32px;
-                margin-bottom: 0px;
-                margin-left: 0px;
-                margin-right: 0px;
-                margin-top: 0px;
                 min-width: 80px;
                 outline: transparent;
                 padding-bottom: 0;
@@ -913,20 +900,19 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
               }
               &::-moz-focus-inner {
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -943,16 +929,16 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
                 top: 0px;
               }
               &:hover {
-                background-color: #eaeaea;
-                color: #212121;
+                background-color: #f3f2f1;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
                 color: Highlight;
               }
               &:active {
-                background-color: #c8c8c8;
-                color: #212121;
+                background-color: #edebe9;
+                color: #201f1e;
               }
           data-is-focusable={true}
           onClick={[Function]}
@@ -963,7 +949,7 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -973,18 +959,21 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
                   height: 100%;
                   justify-content: center;
                 }
+            data-automationid="splitbuttonprimary"
           >
-            <div
+            <span
               className=
                   ms-Button-textContainer
                   {
+                    display: block;
                     flex-grow: 1;
                   }
             >
-              <div
+              <span
                 className=
                     ms-Button-label
                     {
+                      display: block;
                       font-weight: 600;
                       line-height: 100%;
                       margin-bottom: 0;
@@ -995,9 +984,9 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
                 id="id__18"
               >
                 FZ2
-              </div>
-            </div>
-          </div>
+              </span>
+            </span>
+          </span>
         </button>
         <button
           className=
@@ -1006,21 +995,17 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                background-color: #f4f4f4;
-                border-radius: 0px;
-                border: 1px solid transparent;
+                background-color: #ffffff;
+                border-radius: 2px;
+                border: 1px solid #8a8886;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 height: 32px;
-                margin-bottom: 0px;
-                margin-left: 0px;
-                margin-right: 0px;
-                margin-top: 0px;
                 min-width: 80px;
                 outline: transparent;
                 padding-bottom: 0;
@@ -1031,20 +1016,19 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
               }
               &::-moz-focus-inner {
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -1061,16 +1045,16 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
                 top: 0px;
               }
               &:hover {
-                background-color: #eaeaea;
-                color: #212121;
+                background-color: #f3f2f1;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
                 color: Highlight;
               }
               &:active {
-                background-color: #c8c8c8;
-                color: #212121;
+                background-color: #edebe9;
+                color: #201f1e;
               }
           data-is-focusable={true}
           onClick={[Function]}
@@ -1081,7 +1065,7 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -1091,18 +1075,21 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
                   height: 100%;
                   justify-content: center;
                 }
+            data-automationid="splitbuttonprimary"
           >
-            <div
+            <span
               className=
                   ms-Button-textContainer
                   {
+                    display: block;
                     flex-grow: 1;
                   }
             >
-              <div
+              <span
                 className=
                     ms-Button-label
                     {
+                      display: block;
                       font-weight: 600;
                       line-height: 100%;
                       margin-bottom: 0;
@@ -1113,9 +1100,9 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
                 id="id__21"
               >
                 FZ2
-              </div>
-            </div>
-          </div>
+              </span>
+            </span>
+          </span>
         </button>
       </div>
     </div>

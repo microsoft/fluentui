@@ -1,9 +1,10 @@
+import * as React from 'react';
 import { DayOfWeek, ICalendarProps } from '../../Calendar';
 import { FirstWeekOfYear } from '../../utilities/dateValues/DateValues';
 import { ICalendarFormatDateCallbacks, ICalendarStrings } from '../Calendar/Calendar.types';
 import { IStyle, ITheme } from '../../Styling';
-import { IRefObject, IBaseProps, IStyleFunction, IComponentAs } from '../../Utilities';
-import { ICalloutProps } from '../../Callout';
+import { IRefObject, IBaseProps, IStyleFunctionOrObject, IComponentAs } from '../../Utilities';
+import { ICalloutProps } from '../Callout/Callout.types';
 import { ITextFieldProps } from '../TextField/TextField.types';
 
 /**
@@ -30,7 +31,7 @@ export interface IDatePickerProps extends IBaseProps<IDatePicker>, React.HTMLAtt
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  styles?: IStyleFunction<IDatePickerStyleProps, IDatePickerStyles>;
+  styles?: IStyleFunctionOrObject<IDatePickerStyleProps, IDatePickerStyles>;
 
   /**
    * Theme provided by High-Order Component.

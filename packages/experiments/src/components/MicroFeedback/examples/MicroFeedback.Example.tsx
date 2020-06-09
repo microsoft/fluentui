@@ -10,8 +10,8 @@ export class MicroFeedbackExample extends React.Component<{}, {}> {
 
     const microfeedbackStyles: IMicroFeedbackStyles = {
       root: {
-        float: 'left'
-      }
+        float: 'left',
+      },
     };
     return (
       <div>

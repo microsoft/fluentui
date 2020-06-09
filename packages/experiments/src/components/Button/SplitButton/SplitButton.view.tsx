@@ -1,67 +1,128 @@
 /** @jsx withSlots */
-import { ContextualMenu, Stack, Text } from 'office-ui-fabric-react';
-import { withSlots, getSlots } from '../../../Foundation';
-import { Icon } from '../../../utilities/factoryComponents';
+import { ContextualMenu, Text } from 'office-ui-fabric-react';
+import { withSlots } from '../../../Foundation';
+import { FontIcon } from '../../../utilities/factoryComponents';
 
 import { Button } from '../Button';
 import { MenuButton } from '../MenuButton/MenuButton';
-import { ISplitButtonComponent, ISplitButtonProps, ISplitButtonSlots } from './SplitButton.types';
+import { ISplitButtonComponent, ISplitButtonTokens } from './SplitButton.types';
 
-export const SplitButtonView: ISplitButtonComponent['view'] = props => {
+export const SplitButtonSlots: ISplitButtonComponent['slots'] = props => ({
+  root: 'span',
+  button: Button,
+  menuButton: MenuButton,
+  icon: FontIcon,
+  content: Text,
+  menuArea: 'span',
+  menu: ContextualMenu,
+  menuIcon: FontIcon,
+  splitDividerContainer: 'span',
+  splitDivider: 'span',
+});
+
+export const SplitButtonView: ISplitButtonComponent['view'] = (props, slots) => {
   const {
     styles,
+    tokens,
     children,
+    content,
     primary,
     disabled,
     onClick,
+    onKeyDown,
+    allowDisabledFocus,
     ariaLabel,
+    keytipProps,
+    defaultExpanded,
     expanded,
-    menu: Menu,
-    primaryActionDisabled,
-    buttonRef,
     onMenuDismiss,
-    menuTarget,
+    primaryActionDisabled,
+    secondaryAriaLabel,
     onSecondaryActionClick,
+    root,
+    button,
+    menu,
+    buttonRef,
+    menuButtonRef,
     ...rest
   } = props;
 
-  const Slots = getSlots<ISplitButtonProps, ISplitButtonSlots>(props, {
-    root: Stack,
-    button: Button,
-    menuButton: MenuButton,
-    stack: Stack,
-    icon: Icon,
-    content: Text,
-    menu: ContextualMenu,
-    menuIcon: Icon,
-    splitDivider: 'span'
-  });
+  const menuButtonAriaLabel = secondaryAriaLabel ? secondaryAriaLabel : ariaLabel ? ariaLabel : (content as string);
+
+  const {
+    contentPadding,
+    contentPaddingFocused,
+    secondaryPadding,
+    ...splitButtonTokens
+  } = tokens as ISplitButtonTokens;
+  const {
+    backgroundColor,
+    backgroundColorHovered,
+    backgroundColorPressed,
+    borderColor,
+    borderColorHovered,
+    borderColorPressed,
+    color,
+    colorHovered,
+    colorPressed,
+    highContrastBackgroundColor,
+    highContrastBackgroundColorHovered,
+    highContrastBackgroundColorPressed,
+    highContrastBorderColor,
+    highContrastBorderColorHovered,
+    highContrastBorderColorPressed,
+    highContrastColor,
+    highContrastColorHovered,
+    highContrastColorPressed,
+    highContrastIconColor,
+    highContrastIconColorHovered,
+    highContrastIconColorPressed,
+    iconColor,
+    iconColorHovered,
+    iconColorPressed,
+    ...nonColoredButtonTokens
+  } = splitButtonTokens;
+  const buttonTokens = primaryActionDisabled
+    ? { contentPadding, contentPaddingFocused, ...nonColoredButtonTokens }
+    : tokens;
+  const menuButtonTokens = { contentPadding: secondaryPadding, ...splitButtonTokens };
 
   return (
-    <Slots.root horizontal as="span" verticalAlign="stretch">
-      <Slots.button
+    <slots.root>
+      <slots.button
         primary={primary}
         disabled={primaryActionDisabled || disabled}
-        aria-disabled={primaryActionDisabled || disabled}
-        aria-label={ariaLabel}
+        allowDisabledFocus={allowDisabledFocus}
+        ariaLabel={ariaLabel}
         onClick={onClick}
         componentRef={buttonRef}
+        content={content}
+        onKeyDown={onKeyDown}
+        tokens={buttonTokens}
         {...rest}
       >
         {children}
-      </Slots.button>
+      </slots.button>
 
-      <Slots.splitDivider />
+      <slots.splitDividerContainer>
+        <slots.splitDivider />
+      </slots.splitDividerContainer>
 
-      <Slots.menuButton
+      <slots.menuButton
         primary={primary}
         disabled={disabled}
+        defaultExpanded={defaultExpanded}
         expanded={expanded}
-        aria-disabled={disabled}
-        aria-label={ariaLabel}
+        allowDisabledFocus={allowDisabledFocus}
+        ariaLabel={menuButtonAriaLabel}
         onClick={onSecondaryActionClick}
-        menu={Menu}
+        componentRef={menuButtonRef}
+        keytipProps={keytipProps}
+        menu={menu}
+        onKeyDown={onKeyDown}
+        onMenuDismiss={onMenuDismiss}
+        tokens={menuButtonTokens}
       />
-    </Slots.root>
+    </slots.root>
   );
 };

@@ -1,26 +1,25 @@
 import * as React from 'react';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
+import { Stack } from 'office-ui-fabric-react/lib/Stack';
 
-export interface ICheckboxBasicExampleState {
-  isChecked: boolean;
-}
+// Used to add spacing between example checkboxes
+const stackTokens = { childrenGap: 10 };
 
-export class CheckboxBasicExample extends React.Component<{}, ICheckboxBasicExampleState> {
-  constructor(props: {}) {
-    super(props);
+export const CheckboxBasicExample: React.FunctionComponent = () => {
+  // These checkboxes are uncontrolled because they don't set the `checked` prop.
+  return (
+    <Stack tokens={stackTokens}>
+      <Checkbox label="Unchecked checkbox (uncontrolled)" onChange={_onChange} />
 
-    this._onCheckboxChange = this._onCheckboxChange.bind(this);
-  }
+      <Checkbox label="Checked checkbox (uncontrolled)" defaultChecked onChange={_onChange} />
 
-  public render(): JSX.Element {
-    return (
-      <div>
-        <Checkbox label="Standard checkbox" onChange={this._onCheckboxChange} />
-      </div>
-    );
-  }
+      <Checkbox label="Disabled checkbox" disabled />
 
-  private _onCheckboxChange(ev: React.FormEvent<HTMLElement>, isChecked: boolean): void {
-    console.log(`The option has been changed to ${isChecked}.`);
-  }
+      <Checkbox label="Disabled checked checkbox" disabled defaultChecked />
+    </Stack>
+  );
+};
+
+function _onChange(ev: React.FormEvent<HTMLElement>, isChecked: boolean) {
+  console.log(`The option has been changed to ${isChecked}.`);
 }

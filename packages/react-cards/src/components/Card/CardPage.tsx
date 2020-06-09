@@ -1,11 +1,20 @@
 import * as React from 'react';
-import { ExampleCard, IComponentDemoPageProps, ComponentPage, PageMarkdown, PropertiesTableSet } from '@uifabric/example-app-base';
+import {
+  ExampleCard,
+  IComponentDemoPageProps,
+  ComponentPage,
+  Markdown,
+  PropertiesTableSet,
+} from '@uifabric/example-app-base';
 
-import { CardBasicExample } from './examples/Card.Basic.Example';
-const CardBasicExampleCode = require('!raw-loader!@uifabric/react-cards/src/components/Card/examples/Card.Basic.Example.tsx') as string;
+import { CardVerticalExample } from './examples/Card.Vertical.Example';
+const CardVerticalExampleCode = require('!raw-loader!@uifabric/react-cards/src/components/Card/examples/Card.Vertical.Example.tsx') as string;
 
-import { CardCompactExample } from './examples/Card.Compact.Example';
-const CardCompactExampleCode = require('!raw-loader!@uifabric/react-cards/src/components/Card/examples/Card.Compact.Example.tsx') as string;
+import { CardHorizontalExample } from './examples/Card.Horizontal.Example';
+const CardHorizontalExampleCode = require('!raw-loader!@uifabric/react-cards/src/components/Card/examples/Card.Horizontal.Example.tsx') as string;
+
+import { CardConfigureExample } from './examples/Card.Configure.Example';
+const CardConfigureExampleCode = require('!raw-loader!@uifabric/react-cards/src/components/Card/examples/Card.Configure.Example.tsx') as string;
 
 export class CardPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -15,24 +24,38 @@ export class CardPage extends React.Component<IComponentDemoPageProps, {}> {
         componentName="Card"
         exampleCards={
           <div>
-            <ExampleCard title="Basic Card" code={CardBasicExampleCode}>
-              <CardBasicExample />
+            <ExampleCard title="Vertical Card" code={CardVerticalExampleCode}>
+              <CardVerticalExample />
             </ExampleCard>
-            <ExampleCard title="Compact Card" code={CardCompactExampleCode}>
-              <CardCompactExample />
+            <ExampleCard title="Horizontal Card" code={CardHorizontalExampleCode}>
+              <CardHorizontalExample />
+            </ExampleCard>
+            <ExampleCard title="Configure Properties" code={CardConfigureExampleCode}>
+              <CardConfigureExample />
             </ExampleCard>
           </div>
         }
         propertiesTables={
-          <PropertiesTableSet sources={[require<string>('!raw-loader!@uifabric/react-cards/src/components/Card/Card.types.ts')]} />
+          <PropertiesTableSet
+            sources={[require<string>('!raw-loader!@uifabric/react-cards/src/components/Card/Card.types.ts')]}
+          />
         }
-        // tslint:disable:deprecation
         overview={
-          <PageMarkdown>{require<string>('!raw-loader!@uifabric/react-cards/src/components/Card/docs/CardOverview.md')}</PageMarkdown>
+          <Markdown>
+            {require<string>('!raw-loader!@uifabric/react-cards/src/components/Card/docs/CardOverview.md')}
+          </Markdown>
         }
         bestPractices={<div />}
-        dos={<PageMarkdown>{require<string>('!raw-loader!@uifabric/react-cards/src/components/Card/docs/CardDos.md')}</PageMarkdown>}
-        donts={<PageMarkdown>{require<string>('!raw-loader!@uifabric/react-cards/src/components/Card/docs/CardDonts.md')}</PageMarkdown>}
+        dos={
+          <Markdown>
+            {require<string>('!raw-loader!@uifabric/react-cards/src/components/Card/docs/CardDos.md')}
+          </Markdown>
+        }
+        donts={
+          <Markdown>
+            {require<string>('!raw-loader!@uifabric/react-cards/src/components/Card/docs/CardDonts.md')}
+          </Markdown>
+        }
         isHeaderVisible={this.props.isHeaderVisible}
       />
     );

@@ -1,13 +1,17 @@
-### Control Name
+### Control name
 
-`MSActivityIndicatorView` The spinning element.
+`ActivityIndicatorView`in Swift, `MSFActivityIndicatorView` in Objective-C: The spinning element.
 
-`MSHUD` The overlay with large spinner and modes.
+`HUD` in Swift, `MSFHUD` in Objective-C: The overlay with large spinner and modes.
 
-### Library
+### Source code
 
-[UI Fabric iOS](https://github.com/OfficeDev/ui-fabric-ios)
+[ActivityIndicatorView](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI/Controls/ActivityIndicatorView.swift)
 
-[Sample Code for Activity Indicator View](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric.Demo/OfficeUIFabric.Demo/Demos/MSActivityIndicatorViewDemoController.swift)
+[HUD](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI/HUD/HUD.swift)
 
-[Sample Code for HUD](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric.Demo/OfficeUIFabric.Demo/Demos/MSHUDDemoController.swift)
+### Sample code
+
+[ActivityIndicatorView demo](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI.Demo/FluentUI.Demo/Demos/ActivityIndicatorViewDemoController.swift)
+
+[HUD demo](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI.Demo/FluentUI.Demo/Demos/HUDDemoController.swift)

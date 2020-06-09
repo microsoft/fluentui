@@ -1,9 +1,11 @@
 ### Control name
 
-`MSButton`
+`Button` in Swift, `MSFButton` in Objective-C
 
-### Library
+### Source code
 
-[UI Fabric iOS](https://github.com/OfficeDev/ui-fabric-ios)
+[Button](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI/Controls/Button.swift)
 
-[Sample Code](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric.Demo/OfficeUIFabric.Demo/Demos/MSButtonDemoController.swift)
+### Sample code
+
+[Button demo](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI.Demo/FluentUI.Demo/Demos/ButtonDemoController.swift)

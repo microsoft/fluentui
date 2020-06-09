@@ -21,7 +21,7 @@ export type TypedBaseSelectedItemsList = BaseSelectedItemsList<ISimple, IBaseSel
 describe('SelectedItemsList', () => {
   describe('BaseSelectedItemsList', () => {
     const BaseSelectedItemsListWithType = BaseSelectedItemsList as new (
-      props: IBaseSelectedItemsListProps<ISimple>
+      props: IBaseSelectedItemsListProps<ISimple>,
     ) => BaseSelectedItemsList<ISimple, IBaseSelectedItemsListProps<ISimple>>;
 
     it('renders BaseSelectedItemsList correctly', () => {
@@ -38,14 +38,17 @@ describe('SelectedItemsList', () => {
         expect(items![0].name).toBe('b');
       };
 
-      const itemsList: TypedBaseSelectedItemsList = ReactDOM.render(
+      const itemsList: TypedBaseSelectedItemsList = (ReactDOM.render(
         <BaseSelectedItemsListWithType
           onRenderItem={basicItemRenderer}
-          selectedItems={[{ key: '1', name: 'a' }, { key: '2', name: 'b' }]}
+          selectedItems={[
+            { key: '1', name: 'a' },
+            { key: '2', name: 'b' },
+          ]}
           onChange={onChange}
         />,
-        root
-      ) as TypedBaseSelectedItemsList;
+        root,
+      ) as unknown) as TypedBaseSelectedItemsList;
 
       expect(itemsList.items.length).toEqual(2);
       itemsList.removeItemAt(0);
@@ -53,12 +56,15 @@ describe('SelectedItemsList', () => {
 
     it('can add items', () => {
       const root = document.createElement('div');
-      const itemsList: TypedBaseSelectedItemsList = ReactDOM.render(
+      const itemsList: TypedBaseSelectedItemsList = (ReactDOM.render(
         <BaseSelectedItemsListWithType onRenderItem={basicItemRenderer} />,
-        root
-      ) as TypedBaseSelectedItemsList;
+        root,
+      ) as unknown) as TypedBaseSelectedItemsList;
 
-      const items: ISimple[] = [{ key: '1', name: 'a' }, { key: '2', name: 'b' }];
+      const items: ISimple[] = [
+        { key: '1', name: 'a' },
+        { key: '2', name: 'b' },
+      ];
       itemsList.addItems(items);
 
       expect(itemsList.items.length).toEqual(2);

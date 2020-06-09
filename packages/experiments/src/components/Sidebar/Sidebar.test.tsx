@@ -3,7 +3,7 @@
  */
 
 import * as Enzyme from 'enzyme';
-import { createRef, getTheme } from 'office-ui-fabric-react';
+import { getTheme } from 'office-ui-fabric-react';
 import { CommandBarButton } from 'office-ui-fabric-react/lib/Button';
 import * as React from 'react';
 import { ISidebar, ISidebarProps, Sidebar, SidebarButton } from './index';
@@ -23,15 +23,15 @@ describe('Sidebar', () => {
           key: 'basic-example-item1',
           name: 'Item 1',
           iconProps: { iconName: 'BuildQueue' },
-          active: false
+          active: false,
         },
         {
           key: 'basic-example-item2',
           name: 'Item 2',
           iconProps: { iconName: 'Bullseye' },
-          active: true
-        }
-      ]
+          active: true,
+        },
+      ],
     };
 
     sidebarAccordionExampleProps = {
@@ -48,9 +48,9 @@ describe('Sidebar', () => {
               key: 'basic-example-accordion1-link1',
               name: 'Inner Link 1',
               iconProps: { iconName: 'Mail' },
-              active: false
-            }
-          ]
+              active: false,
+            },
+          ],
         },
         {
           key: 'basic-example-accordion2',
@@ -61,17 +61,17 @@ describe('Sidebar', () => {
               key: 'basic-example-accordion2-link1',
               name: 'Inner Link 1',
               iconProps: { iconName: 'DiamondSolid' },
-              active: false
+              active: false,
             },
             {
               key: 'basic-example-accordion2-link2',
               name: 'Inner Link 2',
               iconProps: { iconName: 'DeliveryTruck' },
-              active: false
-            }
-          ]
-        }
-      ]
+              active: false,
+            },
+          ],
+        },
+      ],
     };
   });
 
@@ -91,11 +91,11 @@ describe('Sidebar', () => {
   });
 
   it('should render the component with context menu when collapsed', () => {
-    const sidebar = createRef<ISidebar>();
+    const sidebar = React.createRef<ISidebar>();
 
     const wrapper = Enzyme.shallow(<Sidebar componentRef={sidebar} {...sidebarAccordionExampleProps} />);
 
-    sidebar.value && sidebar.value.setCollapsed(true);
+    sidebar.current && sidebar.current.setCollapsed(true);
     wrapper.update();
 
     expect(wrapper.find('.ba-SidebarContextualMenuButton').length).toBe(2);
@@ -113,16 +113,16 @@ describe('Sidebar', () => {
             key: 'basic-example-item1',
             name: 'Item 1',
             iconProps: { iconName: 'BuildQueue' },
-            active: false
+            active: false,
           },
           {
             key: 'basic-example-item2',
             name: 'Item 2',
             iconProps: { iconName: 'Bullseye' },
-            active: true
-          }
+            active: true,
+          },
         ]}
-      />
+      />,
     );
     expect(wrapper.find(TestButton).length).toBe(2);
   });
@@ -139,16 +139,16 @@ describe('Sidebar', () => {
             name: 'Item 1',
             iconProps: { iconName: 'BuildQueue' },
             active: false,
-            buttonAs: TestButton
+            buttonAs: TestButton,
           },
           {
             key: 'basic-example-item2',
             name: 'Item 2',
             iconProps: { iconName: 'Bullseye' },
-            active: true
-          }
+            active: true,
+          },
         ]}
-      />
+      />,
     );
     expect(wrapper.find(TestButton).length).toBe(1);
     expect(wrapper.find(SidebarButton).length).toBe(1);
@@ -172,16 +172,16 @@ describe('Sidebar', () => {
                   <TestButton text={item.name} iconProps={item.iconProps} checked={item.active} />
                 </div>
               );
-            }
+            },
           },
           {
             key: 'basic-example-item2',
             name: 'Item 2',
             iconProps: { iconName: 'Bullseye' },
-            active: true
-          }
+            active: true,
+          },
         ]}
-      />
+      />,
     );
     expect(wrapper.find(TestButton).length).toBe(1);
     expect(wrapper.find(SidebarButton).length).toBe(1);

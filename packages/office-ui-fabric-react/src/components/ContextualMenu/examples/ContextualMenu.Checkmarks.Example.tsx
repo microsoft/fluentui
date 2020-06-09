@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { IContextualMenuItem, ContextualMenuItemType, DirectionalHint } from 'office-ui-fabric-react/lib/ContextualMenu';
+import {
+  ContextualMenuItemType,
+  DirectionalHint,
+  IContextualMenuItem,
+  IContextualMenuProps,
+} from 'office-ui-fabric-react/lib/ContextualMenu';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import './ContextualMenuExample.scss';
-
-export interface IContextualMenuMultiselectExampleState {
-  selection?: { [key: string]: boolean };
-}
 
 const keys: string[] = [
   'newItem',
@@ -22,191 +22,195 @@ const keys: string[] = [
   'splitButtonSubMenuLeftDirection',
   'emailMessageLeft',
   'calendarEventLeft',
-  'disabledPrimarySplit'
+  'disabledPrimarySplit',
 ];
 
-export class ContextualMenuCheckmarksExample extends React.Component<{}, IContextualMenuMultiselectExampleState> {
-  constructor(props: {}) {
-    super(props);
+export const ContextualMenuCheckmarksExample: React.FunctionComponent = () => {
+  const [selection, setSelection] = React.useState<{ [key: string]: boolean }>({});
 
-    this._onToggleSelect = this._onToggleSelect.bind(this);
+  const onToggleSelect = React.useCallback(
+    (ev?: React.MouseEvent<HTMLButtonElement>, item?: IContextualMenuItem): void => {
+      ev && ev.preventDefault();
 
-    this.state = {
-      selection: {}
-    };
-  }
+      if (item) {
+        setSelection({ ...selection, [item.key]: selection[item.key] === undefined ? true : !selection[item.key] });
+      }
+    },
+    [selection],
+  );
 
-  public render(): JSX.Element {
-    const { selection } = this.state;
+  const menuItems: IContextualMenuItem[] = React.useMemo(
+    () => [
+      {
+        key: keys[0],
+        text: 'New',
+        canCheck: true,
+        isChecked: selection[keys[0]],
+        onClick: onToggleSelect,
+      },
+      {
+        key: keys[1],
+        text: 'Share',
+        canCheck: true,
+        isChecked: selection[keys[1]],
+        onClick: onToggleSelect,
+      },
+      {
+        key: keys[2],
+        text: 'Mobile',
+        canCheck: true,
+        isChecked: selection[keys[2]],
+        onClick: onToggleSelect,
+      },
+      {
+        key: 'divider_1',
+        itemType: ContextualMenuItemType.Divider,
+      },
 
-    return (
-      <DefaultButton
-        text="Click for ContextualMenu"
-        menuProps={{
-          shouldFocusOnMount: true,
+      {
+        key: keys[3],
+        text: 'Print',
+        canCheck: true,
+        isChecked: selection[keys[3]],
+        onClick: onToggleSelect,
+      },
+      {
+        key: keys[4],
+        text: 'Music',
+        canCheck: true,
+        isChecked: selection[keys[4]],
+        onClick: onToggleSelect,
+      },
+      {
+        key: keys[5],
+        iconProps: {
+          iconName: 'MusicInCollectionFill',
+        },
+        subMenuProps: {
           items: [
             {
-              key: keys[0],
-              text: 'New',
+              key: keys[6],
+              text: 'Email message',
               canCheck: true,
-              isChecked: selection![keys[0]],
-              onClick: this._onToggleSelect
+              isChecked: selection[keys[6]],
+              onClick: onToggleSelect,
             },
             {
-              key: keys[1],
-              text: 'Share',
+              key: keys[7],
+              text: 'Calendar event',
               canCheck: true,
-              isChecked: selection![keys[1]],
-              onClick: this._onToggleSelect
+              isChecked: selection[keys[7]],
+              onClick: onToggleSelect,
+            },
+          ],
+        },
+        text: 'Split Button',
+        canCheck: true,
+        isChecked: selection[keys[5]],
+        split: true,
+        onClick: onToggleSelect,
+      },
+      {
+        key: keys[8],
+        iconProps: {
+          iconName: 'MusicInCollectionFill',
+        },
+        subMenuProps: {
+          items: [
+            {
+              key: keys[9],
+              text: 'Email message',
+              canCheck: true,
+              isChecked: selection[keys[9]],
+              onClick: onToggleSelect,
             },
             {
-              key: keys[2],
-              text: 'Mobile',
+              key: keys[10],
+              text: 'Calendar event',
               canCheck: true,
-              isChecked: selection![keys[2]],
-              onClick: this._onToggleSelect
+              isChecked: selection[keys[10]],
+              onClick: onToggleSelect,
             },
-            {
-              key: 'divider_1',
-              itemType: ContextualMenuItemType.Divider
-            },
-
-            {
-              key: keys[3],
-              text: 'Print',
-              canCheck: true,
-              isChecked: selection![keys[3]],
-              onClick: this._onToggleSelect
-            },
-            {
-              key: keys[4],
-              text: 'Music',
-              canCheck: true,
-              isChecked: selection![keys[4]],
-              onClick: this._onToggleSelect
-            },
-            {
-              key: keys[5],
-              iconProps: {
-                iconName: 'MusicInCollectionFill'
-              },
-              subMenuProps: {
-                items: [
-                  {
-                    key: keys[6],
-                    text: 'Email message',
-                    canCheck: true,
-                    isChecked: selection![keys[6]],
-                    onClick: this._onToggleSelect
-                  },
-                  {
-                    key: keys[7],
-                    text: 'Calendar event',
-                    canCheck: true,
-                    isChecked: selection![keys[7]],
-                    onClick: this._onToggleSelect
-                  }
-                ]
-              },
-              text: 'Split Button',
-              canCheck: true,
-              isChecked: selection![keys[5]],
-              split: true,
-              onClick: this._onToggleSelect
-            },
-            {
-              key: keys[8],
-              iconProps: {
-                iconName: 'MusicInCollectionFill'
-              },
-              subMenuProps: {
-                items: [
-                  {
-                    key: keys[9],
-                    text: 'Email message',
-                    canCheck: true,
-                    isChecked: selection![keys[9]],
-                    onClick: this._onToggleSelect
-                  },
-                  {
-                    key: keys[10],
-                    text: 'Calendar event',
-                    canCheck: true,
-                    isChecked: selection![keys[10]],
-                    onClick: this._onToggleSelect
-                  }
-                ]
-              },
-              text: 'Split Button',
-              canCheck: true,
-              isChecked: selection![keys[8]],
-              split: true,
-              onClick: this._onToggleSelect,
-              disabled: true
-            },
-            {
-              key: keys[11],
-              iconProps: {
-                iconName: 'MusicInCollectionFill'
-              },
-              subMenuProps: {
-                directionalHint: DirectionalHint.leftCenter,
-                items: [
-                  {
-                    key: keys[12],
-                    text: 'Email message',
-                    canCheck: true,
-                    isChecked: selection![keys[12]],
-                    onClick: this._onToggleSelect
-                  },
-                  {
-                    key: keys[13],
-                    text: 'Calendar event',
-                    canCheck: true,
-                    isChecked: selection![keys[13]],
-                    onClick: this._onToggleSelect
-                  }
-                ]
-              },
-              text: 'Split Button Left Menu',
-              canCheck: true,
-              isChecked: selection![keys[11]],
-              split: true,
-              onClick: this._onToggleSelect
-            },
+          ],
+        },
+        text: 'Split Button',
+        canCheck: true,
+        isChecked: selection[keys[8]],
+        split: true,
+        onClick: onToggleSelect,
+        disabled: true,
+      },
+      {
+        key: keys[11],
+        iconProps: {
+          iconName: 'MusicInCollectionFill',
+        },
+        subMenuProps: {
+          directionalHint: DirectionalHint.leftCenter,
+          items: [
             {
               key: keys[12],
-              iconProps: {
-                iconName: 'MusicInCollectionFill'
-              },
-              subMenuProps: {
-                items: [
-                  {
-                    key: keys[12],
-                    name: 'Email message',
-                    canCheck: true,
-                    isChecked: selection![keys[12]],
-                    onClick: this._onToggleSelect
-                  }
-                ]
-              },
-              name: 'Split Button Disabled Primary',
-              split: true,
-              primaryDisabled: true
-            }
-          ]
-        }}
-      />
-    );
-  }
+              text: 'Email message',
+              canCheck: true,
+              isChecked: selection[keys[12]],
+              onClick: onToggleSelect,
+            },
+            {
+              key: keys[13],
+              text: 'Calendar event',
+              canCheck: true,
+              isChecked: selection[keys[13]],
+              onClick: onToggleSelect,
+            },
+          ],
+        },
+        text: 'Split Button Left Menu',
+        canCheck: true,
+        isChecked: selection[keys[11]],
+        split: true,
+        onClick: onToggleSelect,
+      },
+      {
+        key: keys[12],
+        iconProps: {
+          iconName: 'MusicInCollectionFill',
+        },
+        subMenuProps: {
+          items: [
+            {
+              key: keys[12],
+              name: 'Email message',
+              canCheck: true,
+              isChecked: selection[keys[12]],
+              onClick: onToggleSelect,
+            },
+          ],
+        },
+        name: 'Split Button Disabled Primary',
+        split: true,
+        primaryDisabled: true,
+      },
+      {
+        key: keys[13],
+        iconProps: {
+          iconName: selection![keys[13]] ? 'SingleBookmarkSolid' : 'SingleBookmark',
+        },
+        name: selection![keys[13]] ? 'Toogled command no checkmark' : 'Toogle command no checkmark',
+        canCheck: false,
+        isChecked: selection![keys[13]],
+        onClick: onToggleSelect,
+      },
+    ],
+    [selection, onToggleSelect],
+  );
 
-  private _onToggleSelect(ev?: React.MouseEvent<HTMLButtonElement>, item?: IContextualMenuItem): void {
-    const { selection } = this.state;
-    ev!.preventDefault();
-    selection![item!.key] = !selection![item!.key];
+  const menuProps: IContextualMenuProps = React.useMemo(
+    () => ({
+      shouldFocusOnMount: true,
+      items: menuItems,
+    }),
+    [menuItems],
+  );
 
-    this.setState({
-      selection: selection
-    });
-  }
-}
+  return <DefaultButton text="Click for ContextualMenu" menuProps={menuProps} />;
+};

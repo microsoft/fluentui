@@ -6,18 +6,27 @@ import { Layer } from '../../../Layer';
 // Utilites/Helpers
 import { DirectionalHint } from '../../../common/DirectionalHint';
 import {
-  BaseComponent,
-  IPoint,
+  Point,
   IRectangle,
   assign,
   css,
   elementContains,
   focusFirstChild,
   getWindow,
-  getDocument
+  getDocument,
+  initializeComponentRef,
+  Async,
+  EventGroup,
 } from '../../../Utilities';
 
-import { getMaxHeight, positionElement, IPositionedData, IPositionProps, IPosition, RectangleEdge } from '../../../utilities/positioning';
+import {
+  getMaxHeight,
+  positionElement,
+  IPositionedData,
+  IPositionProps,
+  IPosition,
+  RectangleEdge,
+} from '../../../utilities/positioning';
 
 import { AnimationClassNames, mergeStyles } from '../../../Styling';
 
@@ -31,7 +40,7 @@ const SLIDE_ANIMATIONS: { [key: number]: string } = {
   [RectangleEdge.top]: 'slideUpIn20',
   [RectangleEdge.bottom]: 'slideDownIn20',
   [RectangleEdge.left]: 'slideLeftIn20',
-  [RectangleEdge.right]: 'slideRightIn20'
+  [RectangleEdge.right]: 'slideRightIn20',
 };
 
 export interface IPositioningContainerState {
@@ -47,13 +56,13 @@ export interface IPositioningContainerState {
   heightOffset?: number;
 }
 
-export class PositioningContainer extends BaseComponent<IPositioningContainerProps, IPositioningContainerState>
+export class PositioningContainer extends React.Component<IPositioningContainerProps, IPositioningContainerState>
   implements PositioningContainer {
   public static defaultProps: IPositioningContainerProps = {
     preventDismissOnScroll: false,
     offsetFromTarget: 0,
     minPagePadding: 8,
-    directionalHint: DirectionalHint.bottomAutoEdge
+    directionalHint: DirectionalHint.bottomAutoEdge,
   };
 
   private _didSetInitialFocus: boolean;
@@ -84,20 +93,28 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerPro
    */
   private _maxHeight: number | undefined;
   private _positionAttempts: number;
-  private _target: HTMLElement | MouseEvent | IPoint | null;
+  private _target: HTMLElement | MouseEvent | Point | null;
   private _setHeightOffsetTimer: number;
+  private _async: Async;
+  private _events: EventGroup;
 
   constructor(props: IPositioningContainerProps) {
     super(props);
+
+    initializeComponentRef(this);
+    this._async = new Async(this);
+    this._events = new EventGroup(this);
+
     this._didSetInitialFocus = false;
     this.state = {
       positions: undefined,
-      heightOffset: 0
+      heightOffset: 0,
     };
     this._positionAttempts = 0;
   }
 
-  public componentWillMount(): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillMount(): void {
     this._setTargetWindowAndElement(this._getTarget());
   }
 
@@ -110,7 +127,8 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerPro
     this._updateAsyncPosition();
   }
 
-  public componentWillUpdate(newProps: IPositioningContainerProps): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillUpdate(newProps: IPositioningContainerProps): void {
     // If the target element changed, find the new one. If we are tracking
     // target with class name, always find element because we do not know if
     // fabric has rendered a new element and disposed the old element.
@@ -128,6 +146,11 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerPro
     if (newProps.finalHeight !== this.props.finalHeight) {
       this._setHeightOffsetEveryFrame();
     }
+  }
+
+  public componentWillUnmount(): void {
+    this._async.dispose();
+    this._events.dispose();
   }
 
   public render(): JSX.Element | null {
@@ -157,12 +180,13 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerPro
             styles.root,
             className,
             directionalClassName,
-            !!positioningContainerWidth && { width: positioningContainerWidth }
+            !!positioningContainerWidth && { width: positioningContainerWidth },
           )}
           // tslint:disable-next-line:jsx-ban-props
           style={positions ? positions.elementPosition : OFF_SCREEN_STYLE}
-          tabIndex={-1} // Safari and Firefox on Mac OS requires this to back-stop click events so focus remains in the Callout.
+          // Safari and Firefox on Mac OS requires this to back-stop click events so focus remains in the Callout.
           // See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#Clicking_and_focus
+          tabIndex={-1}
           ref={this._contentHost}
         >
           {children}
@@ -203,14 +227,16 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerPro
 
   protected _dismissOnLostFocus(ev: Event): void {
     const target = ev.target as HTMLElement;
-    const clickedOutsideCallout = this._positionedHost.current && !elementContains(this._positionedHost.current, target);
+    const clickedOutsideCallout =
+      this._positionedHost.current && !elementContains(this._positionedHost.current, target);
 
     if (
       (!this._target && clickedOutsideCallout) ||
       (ev.target !== this._targetWindow &&
         clickedOutsideCallout &&
         ((this._target as MouseEvent).stopPropagation ||
-          (!this._target || (target !== this._target && !elementContains(this._target as HTMLElement, target)))))
+          !this._target ||
+          (target !== this._target && !elementContains(this._target as HTMLElement, target))))
     ) {
       this.onResize(ev);
     }
@@ -262,24 +288,24 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerPro
       if (document.body.contains(currentProps!.target as Node)) {
         currentProps!.gapSpace = offsetFromTarget;
         const newPositions: IPositionedData = positionElement(currentProps!, hostElement, positioningContainerElement);
-        // Set the new position only when the positions are not exists or one of the new positioningContainer positions are different.
-        // The position should not change if the position is within 2 decimal places.
+        // Set the new position only when the positions are not exists or one of the new positioningContainer positions
+        // are different. The position should not change if the position is within 2 decimal places.
         if (
           (!positions && newPositions) ||
           (positions && newPositions && !this._arePositionsEqual(positions, newPositions) && this._positionAttempts < 5)
         ) {
-          // We should not reposition the positioningContainer more than a few times, if it is then the content is likely resizing
-          // and we should stop trying to reposition to prevent a stack overflow.
+          // We should not reposition the positioningContainer more than a few times, if it is then the content is
+          // likely resizing and we should stop trying to reposition to prevent a stack overflow.
           this._positionAttempts++;
           this.setState(
             {
-              positions: newPositions
+              positions: newPositions,
             },
             () => {
               if (onPositioned) {
                 onPositioned(newPositions);
               }
-            }
+            },
           );
         } else {
           this._positionAttempts = 0;
@@ -289,7 +315,7 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerPro
         }
       } else if (positions !== undefined) {
         this.setState({
-          positions: undefined
+          positions: undefined,
         });
       }
     }
@@ -306,7 +332,7 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerPro
           right: this._targetWindow.innerWidth - this.props.minPagePadding!,
           bottom: this._targetWindow.innerHeight - this.props.minPagePadding!,
           width: this._targetWindow.innerWidth - this.props.minPagePadding! * 2,
-          height: this._targetWindow.innerHeight - this.props.minPagePadding! * 2
+          height: this._targetWindow.innerHeight - this.props.minPagePadding! * 2,
         };
       }
       this._positioningBounds = currentBounds;
@@ -338,7 +364,6 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerPro
 
   private _comparePositions(oldPositions: IPosition, newPositions: IPosition): boolean {
     for (const key in newPositions) {
-      // This needs to be checked here and below because there is a linting error if for in does not immediately have an if statement
       if (newPositions.hasOwnProperty(key)) {
         const oldPositionEdge = oldPositions[key];
         const newPositionEdge = newPositions[key];
@@ -353,17 +378,24 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerPro
     return true;
   }
 
-  private _setTargetWindowAndElement(target: HTMLElement | string | MouseEvent | IPoint | null): void {
+  private _setTargetWindowAndElement(target: HTMLElement | string | MouseEvent | Point | null): void {
+    const currentElement = this._positionedHost.current;
+
     if (target) {
       if (typeof target === 'string') {
         const currentDoc: Document = getDocument()!;
         this._target = currentDoc ? (currentDoc.querySelector(target) as HTMLElement) : null;
-        this._targetWindow = getWindow()!;
-      } else if ((target as MouseEvent).stopPropagation) {
-        this._targetWindow = getWindow((target as MouseEvent).toElement as HTMLElement)!;
+        this._targetWindow = getWindow(currentElement)!;
+      } else if (!!(target as MouseEvent).stopPropagation) {
+        this._targetWindow = getWindow((target as MouseEvent).target as HTMLElement)!;
         this._target = target;
-      } else if ((target as IPoint).x !== undefined && (target as IPoint).y !== undefined) {
-        this._targetWindow = getWindow()!;
+      } else if (
+        // tslint:disable-next-line:deprecation
+        ((target as Point).left !== undefined || (target as Point).x !== undefined) &&
+        // tslint:disable-next-line:deprecation
+        ((target as Point).top !== undefined || (target as Point).y !== undefined)
+      ) {
+        this._targetWindow = getWindow(currentElement)!;
         this._target = target;
       } else {
         const targetElement: HTMLElement = target as HTMLElement;
@@ -371,7 +403,7 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerPro
         this._target = target;
       }
     } else {
-      this._targetWindow = getWindow()!;
+      this._targetWindow = getWindow(currentElement)!;
     }
   }
 
@@ -391,7 +423,7 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerPro
         const scrollDiff: number = cardScrollHeight - cardCurrHeight;
 
         this.setState({
-          heightOffset: this.state.heightOffset! + scrollDiff
+          heightOffset: this.state.heightOffset! + scrollDiff,
         });
 
         if (positioningContainerMainElem.offsetHeight < this.props.finalHeight!) {
@@ -403,7 +435,7 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerPro
     }
   }
 
-  private _getTarget(props: IPositioningContainerProps = this.props): HTMLElement | string | MouseEvent | IPoint | null {
+  private _getTarget(props: IPositioningContainerProps = this.props): HTMLElement | string | MouseEvent | Point | null {
     const { target } = props;
     return target!;
   }

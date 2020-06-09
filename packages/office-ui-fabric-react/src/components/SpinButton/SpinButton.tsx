@@ -3,13 +3,17 @@ import { IconButton } from '../../Button';
 import { Label } from '../../Label';
 import { Icon } from '../../Icon';
 import {
-  BaseComponent,
+  initializeComponentRef,
+  warnMutuallyExclusive,
+  Async,
   getId,
   KeyCodes,
   customizable,
   calculatePrecision,
   precisionRound,
-  mergeAriaAttributeValues
+  mergeAriaAttributeValues,
+  getNativeProps,
+  divProperties,
 } from '../../Utilities';
 import { ISpinButton, ISpinButtonProps } from './SpinButton.types';
 import { Position } from '../../utilities/positioning';
@@ -20,7 +24,7 @@ import { KeytipData } from '../../KeytipData';
 export enum KeyboardSpinDirection {
   down = -1,
   notSpinning = 0,
-  up = 1
+  up = 1,
 }
 
 export interface ISpinButtonState {
@@ -41,15 +45,19 @@ export interface ISpinButtonState {
   keyboardSpinDirection: KeyboardSpinDirection;
 }
 
+// TODO (Fabric Next): remove default min/max values (issue #11358).
 export type DefaultProps = Required<
-  Pick<ISpinButtonProps, 'step' | 'min' | 'max' | 'disabled' | 'labelPosition' | 'label' | 'incrementButtonIcon' | 'decrementButtonIcon'>
+  Pick<
+    ISpinButtonProps,
+    'step' | 'min' | 'max' | 'disabled' | 'labelPosition' | 'label' | 'incrementButtonIcon' | 'decrementButtonIcon'
+  >
 >;
 
 /** Internal only props */
 type ISpinButtonInternalProps = ISpinButtonProps & DefaultProps;
 
 @customizable('SpinButton', ['theme', 'styles'], true)
-export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState> implements ISpinButton {
+export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonState> implements ISpinButton {
   public static defaultProps: DefaultProps = {
     step: 1,
     min: 0,
@@ -58,9 +66,10 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     labelPosition: Position.start,
     label: '',
     incrementButtonIcon: { iconName: 'ChevronUpSmall' },
-    decrementButtonIcon: { iconName: 'ChevronDownSmall' }
+    decrementButtonIcon: { iconName: 'ChevronDownSmall' },
   };
 
+  private _async: Async;
   private _input = React.createRef<HTMLInputElement>();
   private _inputId: string;
   private _labelId: string;
@@ -76,22 +85,29 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
   constructor(props: ISpinButtonProps) {
     super(props);
 
-    this._warnMutuallyExclusive({
-      value: 'defaultValue'
+    initializeComponentRef(this);
+
+    warnMutuallyExclusive('SpinButton', props, {
+      value: 'defaultValue',
     });
 
-    const value = props.value || props.defaultValue || String(props.min) || '0';
+    // Don't use || here because it won't handle empty strings properly
+    let { value = props.defaultValue } = props;
+    if (value === undefined) {
+      value = typeof props.min === 'number' ? String(props.min) : '0';
+    }
     this._lastValidValue = value;
 
     // Ensure that the autocalculated precision is not negative.
-    this._precision = this._calculatePrecision(this.props as ISpinButtonInternalProps);
+    this._precision = this._calculatePrecision(props as ISpinButtonInternalProps);
 
     this.state = {
       isFocused: false,
-      value: value,
-      keyboardSpinDirection: KeyboardSpinDirection.notSpinning
+      value,
+      keyboardSpinDirection: KeyboardSpinDirection.notSpinning,
     };
 
+    this._async = new Async(this);
     this._currentStepFunctionHandle = -1;
     this._labelId = getId('Label');
     this._inputId = getId('input');
@@ -99,20 +115,19 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     this._valueToValidate = undefined;
   }
 
+  public componentWillUnmount(): void {
+    this._async.dispose();
+  }
+
   /**
    * Invoked when a component is receiving new props. This method is not called for the initial render.
    */
-  public componentWillReceiveProps(newProps: ISpinButtonProps): void {
-    this._lastValidValue = this.state.value;
-    let value: string = newProps.value ? newProps.value : String(newProps.min);
-    if (newProps.defaultValue) {
-      value = String(Math.max(newProps.min as number, Math.min(newProps.max as number, Number(newProps.defaultValue))));
-    }
-
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillReceiveProps(newProps: ISpinButtonProps): void {
     if (newProps.value !== undefined) {
-      this.setState({
-        value: value
-      });
+      // Value from props is considered pre-validated
+      this._lastValidValue = newProps.value;
+      this.setState({ value: newProps.value });
     }
     this._precision = this._calculatePrecision(newProps as ISpinButtonProps & DefaultProps);
   }
@@ -129,7 +144,6 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
       incrementButtonAriaLabel,
       decrementButtonIcon,
       decrementButtonAriaLabel,
-      title,
       ariaLabel,
       ariaDescribedBy,
       styles: customStyles,
@@ -141,22 +155,38 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
       ariaValueNow,
       ariaValueText,
       keytipProps,
-      className
+      className,
+      inputProps,
+      iconButtonProps,
     } = this.props as ISpinButtonInternalProps;
 
-    const { isFocused, value, keyboardSpinDirection } = this.state;
+    const { isFocused, keyboardSpinDirection } = this.state;
+    const value = this.value;
 
     const classNames = this.props.getClassNames
-      ? this.props.getClassNames(theme!, !!disabled, !!isFocused, keyboardSpinDirection, labelPosition, className)
-      : getClassNames(getStyles(theme!, customStyles), !!disabled, !!isFocused, keyboardSpinDirection, labelPosition, className);
+      ? this.props.getClassNames(theme!, disabled, isFocused, keyboardSpinDirection, labelPosition, className)
+      : getClassNames(
+          getStyles(theme!, customStyles),
+          disabled,
+          isFocused,
+          keyboardSpinDirection,
+          labelPosition,
+          className,
+        );
+
+    const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties, [
+      'onBlur',
+      'onFocus',
+      'className',
+    ]);
 
     return (
       <div className={classNames.root}>
-        {labelPosition !== Position.bottom && (
+        {labelPosition !== Position.bottom && (iconProps || label) && (
           <div className={classNames.labelWrapper}>
             {iconProps && <Icon {...iconProps} className={classNames.icon} aria-hidden="true" />}
             {label && (
-              <Label id={this._labelId} htmlFor={this._inputId} className={classNames.label}>
+              <Label id={this._labelId} htmlFor={this._inputId} className={classNames.label} disabled={disabled}>
                 {label}
               </Label>
             )}
@@ -165,8 +195,8 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
         <KeytipData keytipProps={keytipProps} disabled={disabled}>
           {(keytipAttributes: any): JSX.Element => (
             <div
+              {...nativeProps}
               className={classNames.spinButtonWrapper}
-              title={title && title}
               aria-label={ariaLabel && ariaLabel}
               aria-posinset={ariaPositionInSet}
               aria-setsize={ariaSetSize}
@@ -182,8 +212,20 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
                 autoComplete="off"
                 role="spinbutton"
                 aria-labelledby={label && this._labelId}
-                aria-valuenow={!isNaN(Number(ariaValueNow)) ? ariaValueNow : !isNaN(Number(value)) ? Number(value) : undefined}
-                aria-valuetext={ariaValueText ? ariaValueText : isNaN(Number(value)) ? value : undefined}
+                aria-valuenow={
+                  typeof ariaValueNow === 'number'
+                    ? ariaValueNow
+                    : value && !isNaN(Number(value)) // Number('') is 0 which may not be desirable
+                    ? Number(value)
+                    : undefined
+                }
+                aria-valuetext={
+                  typeof ariaValueText === 'string'
+                    ? ariaValueText
+                    : !value || isNaN(Number(value)) // Number('') is 0 which may not be desirable
+                    ? value
+                    : undefined
+                }
                 aria-valuemin={min}
                 aria-valuemax={max}
                 aria-describedby={mergeAriaAttributeValues(ariaDescribedBy, keytipAttributes['aria-describedby'])}
@@ -192,10 +234,11 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
                 onFocus={this._onFocus}
                 onKeyDown={this._handleKeyDown}
                 onKeyUp={this._handleKeyUp}
-                readOnly={disabled}
+                disabled={disabled}
                 aria-disabled={disabled}
                 data-lpignore={true}
                 data-ktp-execute-target={keytipAttributes['data-ktp-execute-target']}
+                {...inputProps}
               />
               <span className={classNames.arrowBox}>
                 <IconButton
@@ -210,6 +253,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
                   tabIndex={-1}
                   ariaLabel={incrementButtonAriaLabel}
                   data-is-focusable={false}
+                  {...iconButtonProps}
                 />
                 <IconButton
                   styles={getArrowButtonStyles(theme!, false, customDownArrowButtonStyles)}
@@ -223,16 +267,17 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
                   tabIndex={-1}
                   ariaLabel={decrementButtonAriaLabel}
                   data-is-focusable={false}
+                  {...iconButtonProps}
                 />
               </span>
             </div>
           )}
         </KeytipData>
-        {labelPosition === Position.bottom && (
+        {labelPosition === Position.bottom && (iconProps || label) && (
           <div className={classNames.labelWrapper}>
             {iconProps && <Icon iconName={iconProps.iconName} className={classNames.icon} aria-hidden="true" />}
             {label && (
-              <Label id={this._labelId} htmlFor={this._inputId} className={classNames.label}>
+              <Label id={this._labelId} htmlFor={this._inputId} className={classNames.label} disabled={disabled}>
                 {label}
               </Label>
             )}
@@ -246,6 +291,17 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     if (this._input.current) {
       this._input.current.focus();
     }
+  }
+
+  /**
+   * Gets the value of the spin button.
+   */
+  public get value(): string | undefined {
+    // TODO (version 8): value from props should ALWAYS override value from state.
+    // In a class component the code should be:
+    // const { value = this.state.value } = this.props;
+    // return value;
+    return this.state.value;
   }
 
   private _onFocus = (ev: React.FocusEvent<HTMLInputElement>): void => {
@@ -274,13 +330,6 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
       this.props.onBlur(ev);
     }
   };
-
-  /**
-   * Gets the value of the spin button.
-   */
-  public get value(): string | undefined {
-    return this.props.value === undefined ? this.state.value : this.props.value;
-  }
 
   private _onValidate = (value: string, event?: React.SyntheticEvent<HTMLElement>): string | void => {
     if (this.props.onValidate) {
@@ -344,26 +393,37 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
 
   private _onChange(): void {
     /**
-     * A noop input change handler.
-     * https://github.com/facebook/react/issues/7027.
-     * Using the native onInput handler fixes the issue but onChange
-     * still need to be wired to avoid React console errors
-     * TODO: Check if issue is resolved when React 16 is available.
+     * A noop input change handler. Using onInput instead of onChange was meant to address an issue
+     * which apparently has been resolved in React 16 (https://github.com/facebook/react/issues/7027).
+     * The no-op onChange handler was still needed because React gives console errors if an input
+     * doesn't have onChange.
+     *
+     * TODO (Fabric 8?) - switch to just calling onChange (this is a breaking change for any tests,
+     * ours or 3rd-party, which simulate entering text in a SpinButton)
      */
   }
 
   /**
-   * This is used when validating text entry
-   * in the input (not when changed via the buttons)
+   * This is used when validating text entry in the input on blur or when enter key is pressed
+   * (not when changed via the buttons).
    * @param event - the event that fired
    */
   private _validate = (event: React.FocusEvent<HTMLInputElement> | React.KeyboardEvent<HTMLInputElement>): void => {
-    if (this.state.value !== undefined && this._valueToValidate !== undefined && this._valueToValidate !== this._lastValidValue) {
+    if (
+      this.value !== undefined &&
+      this._valueToValidate !== undefined &&
+      this._valueToValidate !== this._lastValidValue
+    ) {
       const newValue = this._onValidate!(this._valueToValidate, event);
-      if (newValue) {
+      // Done validating this value, so clear it
+      this._valueToValidate = undefined;
+
+      if (newValue !== undefined) {
         this._lastValidValue = newValue;
-        this._valueToValidate = undefined;
         this.setState({ value: newValue });
+      } else {
+        // Value was invalid. Reset state to last valid value.
+        this.setState({ value: this._lastValidValue });
       }
     }
   };
@@ -378,7 +438,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     const value: string = element.value;
     this._valueToValidate = value;
     this.setState({
-      value: value
+      value: value,
     });
   };
 
@@ -388,9 +448,13 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
    * when spinning in response to a mouseDown
    * @param stepFunction - function to use to step by
    */
-  private _updateValue = (shouldSpin: boolean, stepDelay: number, stepFunction: (value: string) => string | void): void => {
-    const newValue: string | void = stepFunction(this.state.value);
-    if (newValue) {
+  private _updateValue = (
+    shouldSpin: boolean,
+    stepDelay: number,
+    stepFunction: (value: string) => string | void,
+  ): void => {
+    const newValue: string | void = stepFunction(this.value || '');
+    if (newValue !== undefined) {
       this._lastValidValue = newValue;
       this.setState({ value: newValue });
     }
@@ -451,11 +515,10 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
         this._updateValue(false /* shouldSpin */, this._initialStepDelay, this._onDecrement!);
         break;
       case KeyCodes.enter:
-      case KeyCodes.tab:
         this._validate(event);
         break;
       case KeyCodes.escape:
-        if (this.state.value !== this._lastValidValue) {
+        if (this.value !== this._lastValidValue) {
           this.setState({ value: this._lastValidValue });
         }
         break;

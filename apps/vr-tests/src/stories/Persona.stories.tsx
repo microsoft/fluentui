@@ -4,7 +4,7 @@ import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
 import { IPersonaProps, Persona, PersonaPresence, PersonaSize } from 'office-ui-fabric-react';
-import { TestImages } from '../common/TestImages';
+import { TestImages } from '@uifabric/example-data';
 
 const examplePersona: IPersonaProps = {
   imageUrl: TestImages.personaFemale,
@@ -12,7 +12,7 @@ const examplePersona: IPersonaProps = {
   text: 'Annie Lindqvist',
   secondaryText: 'Software Engineer',
   tertiaryText: 'In a meeting',
-  optionalText: 'Available at 4:00pm'
+  optionalText: 'Available at 4:00pm',
 };
 
 // prettier-ignore
@@ -178,6 +178,19 @@ storiesOf('Persona', module)
         <Persona
           {...examplePersona}
           size={PersonaSize.extraLarge}
+          presence={PersonaPresence.blocked}
+        />
+      </div>
+    ),
+    { rtl: true }
+  )
+  .addStory(
+    'size120',
+    () => (
+      <div>
+        <Persona
+          {...examplePersona}
+          size={PersonaSize.size120}
           presence={PersonaPresence.blocked}
         />
       </div>

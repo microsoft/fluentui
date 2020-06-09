@@ -1,37 +1,65 @@
 import * as React from 'react';
 import { Chiclet, ChicletSize } from '@uifabric/experiments';
-import * as exampleStyles from './Chiclet.Basic.Example.scss';
-import { Breadcrumb, getRTL, IBreadcrumbItem, Icon, TooltipHost, TooltipOverflowMode } from 'office-ui-fabric-react';
+import { Breadcrumb, IBreadcrumbItem } from 'office-ui-fabric-react/lib/Breadcrumb';
+import { Icon } from 'office-ui-fabric-react/lib/Icon';
+import { TooltipHost, TooltipOverflowMode } from 'office-ui-fabric-react/lib/Tooltip';
+import { getRTL } from 'office-ui-fabric-react/lib/Utilities';
+import { mergeStyles, FontWeights } from 'office-ui-fabric-react/lib/Styling';
 
-const TEST_URL = 'http://fabricweb.z5.web.core.windows.net/pr-deploy-site/refs/heads/master/chiclet-test.html';
+const SAMPLE_URL = 'https://contoso.sharepoint.com';
 
-export class ChicletBreadcrumbExample extends React.Component<{}, {}> {
+const chevronStyle = mergeStyles({
+  fontSize: 8,
+  paddingLeft: 3,
+  paddingRight: 3,
+});
+
+const descriptionStyle = mergeStyles({
+  fontSize: 12,
+  fontWeight: FontWeights.semibold,
+  lineHeight: 14,
+  textAlign: 'left',
+  color: '#797671',
+  maxWidth: '100%',
+  whiteSpace: 'nowrap',
+  textOverflow: 'ellipsis',
+});
+
+export class ChicletBreadcrumbExample extends React.Component {
   constructor(props: {}) {
     super(props);
   }
 
   public render(): JSX.Element {
-    const divider = () => <Icon iconName={getRTL() ? 'ChevronLeft' : 'ChevronRightSmall'} className={exampleStyles.chevron} />;
+    const divider = () => <Icon iconName={getRTL() ? 'ChevronLeft' : 'ChevronRightSmall'} className={chevronStyle} />;
     const breadcrumb = (
       <Breadcrumb
         items={[
           { text: 'Files', key: 'Files' },
           { text: 'OneDrive Design', key: 'OneDrive Design' },
           { text: 'Emails', key: 'Emails' },
-          { text: 'Campaigns', key: 'Campaigns' }
+          { text: 'Campaigns', key: 'Campaigns' },
         ]}
-        className={exampleStyles.description}
+        className={descriptionStyle}
         onRenderItem={this._onRenderItem}
         dividerAs={divider}
       />
     );
 
-    return <Chiclet url={TEST_URL} size={ChicletSize.medium} description={breadcrumb} />;
+    return (
+      <Chiclet
+        url={SAMPLE_URL}
+        title="Quarterly Results.docx"
+        image="https://static2.sharepointonline.com/files/fabric/assets/item-types/96/docx.svg"
+        size={ChicletSize.medium}
+        description={breadcrumb}
+      />
+    );
   }
 
   private _onRenderItem(item: IBreadcrumbItem): JSX.Element {
     return (
-      <TooltipHost content={item.text} overflowMode={TooltipOverflowMode.Parent} className={exampleStyles.description}>
+      <TooltipHost overflowMode={TooltipOverflowMode.Parent} className={descriptionStyle}>
         {item.text}
       </TooltipHost>
     );

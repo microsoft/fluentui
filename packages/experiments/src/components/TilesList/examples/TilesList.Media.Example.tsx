@@ -1,12 +1,27 @@
 import * as React from 'react';
-import { TilesList, ITileSize, ITilesGridItem, ITilesGridSegment } from '@uifabric/experiments/lib/TilesList';
-import { Tile, getTileLayout, renderTileWithLayout } from '../../../Tile';
+import {
+  TilesList,
+  ITilesGridItem,
+  ITilesGridSegment,
+  ITilesGridItemCellProps,
+} from '@uifabric/experiments/lib/TilesList';
+import { Tile, getTileLayout, renderTileWithLayout } from '@uifabric/experiments/lib/Tile';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 import { Selection, SelectionZone } from 'office-ui-fabric-react/lib/Selection';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { AnimationClassNames } from 'office-ui-fabric-react/lib/Styling';
-import { IExampleGroup, IExampleItem, createGroup, createMediaItems, getTileCells } from './ExampleHelpers';
+import {
+  IExampleGroup,
+  IExampleItem,
+  createGroup,
+  createMediaItems,
+  getExampleTilesListCells,
+  onRenderTilesListExampleRoot,
+  onRenderTilesListExampleRow,
+} from '@uifabric/experiments/lib/components/TilesList/examples/ExampleHelpers';
 import * as TilesListExampleStylesModule from './TilesList.Example.scss';
+import { lorem } from '@uifabric/example-data';
+import { SignalField, SharedSignal, CommentsSignal } from '@uifabric/experiments/lib/Signals';
 
 // tslint:disable-next-line:no-any
 const TilesListExampleStyles = TilesListExampleStylesModule as any;
@@ -31,12 +46,9 @@ const GROUPS = createGroups();
 
 const ITEMS = ([] as IExampleItem[]).concat(...GROUPS.map((group: { items: IExampleItem[] }) => group.items));
 
-declare class TilesListClass extends TilesList<IExampleItem> {}
-
-const TilesListType: typeof TilesListClass = TilesList;
-
 export interface ITilesListMediaExampleState {
   isModalSelection: boolean;
+  nameplateOnlyOnHover: boolean;
   cells: (ITilesGridItem<IExampleItem> | ITilesGridSegment<IExampleItem>)[];
 }
 
@@ -48,17 +60,18 @@ export class TilesListMediaExample extends React.Component<{}, ITilesListMediaEx
 
     this._selection = new Selection({
       getKey: (item: IExampleItem) => item.key,
-      onSelectionChanged: this._onSelectionChange
+      onSelectionChanged: this._onSelectionChange,
     });
 
     this._selection.setItems(ITEMS);
 
     this.state = {
       isModalSelection: this._selection.isModal(),
-      cells: getTileCells(GROUPS, {
+      nameplateOnlyOnHover: false,
+      cells: getExampleTilesListCells(GROUPS, {
         onRenderCell: this._onRenderMediaCell,
-        onRenderHeader: this._onRenderHeader
-      })
+        onRenderHeader: this._onRenderHeader,
+      }),
     };
   }
 
@@ -73,9 +86,21 @@ export class TilesListMediaExample extends React.Component<{}, ITilesListMediaEx
           onText="Modal"
           offText="Normal"
         />
+        <Toggle
+          label="Hide Nameplates Until Hovered"
+          checked={this.state.nameplateOnlyOnHover}
+          onChange={this._onToggleNameplateOnlyOnHover}
+          onText="Shown on hover"
+          offText="Always shown"
+        />
         <MarqueeSelection selection={this._selection}>
           <SelectionZone selection={this._selection} onItemInvoked={this._onItemInvoked} enterModalOnTouch={true}>
-            <TilesListType role="list" items={this.state.cells} />
+            <TilesList<IExampleItem>
+              onRenderRoot={onRenderTilesListExampleRoot}
+              onRenderRow={onRenderTilesListExampleRow}
+              items={this.state.cells}
+              role="grid"
+            />
           </SelectionZone>
         </MarqueeSelection>
       </div>
@@ -86,9 +111,19 @@ export class TilesListMediaExample extends React.Component<{}, ITilesListMediaEx
     this._selection.setModal(checked);
   };
 
+  private _onToggleNameplateOnlyOnHover = (event: React.MouseEvent<HTMLElement>, checked: boolean): void => {
+    this.setState({
+      nameplateOnlyOnHover: checked,
+      cells: getExampleTilesListCells(GROUPS, {
+        onRenderCell: this._onRenderMediaCell,
+        onRenderHeader: this._onRenderHeader,
+      }),
+    });
+  };
+
   private _onSelectionChange = (): void => {
     this.setState({
-      isModalSelection: this._selection.isModal()
+      isModalSelection: this._selection.isModal(),
     });
   };
 
@@ -99,12 +134,20 @@ export class TilesListMediaExample extends React.Component<{}, ITilesListMediaEx
     alert(`Invoked item '${item.name}'`);
   };
 
-  private _onRenderMediaCell = (item: IExampleItem, finalSize: ITileSize): JSX.Element => {
+  private _onRenderMediaCell = (props: ITilesGridItemCellProps<IExampleItem>): JSX.Element => {
+    const {
+      finalSize,
+      item,
+      position: { column },
+    } = props;
+
+    const pixelWidth = Math.round(finalSize.width);
+    const pixelHeight = Math.round(finalSize.height);
+
     const tile = (
       <Tile
-        role="listitem"
-        aria-setsize={ITEMS.length}
-        aria-posinset={item.index}
+        role="gridcell"
+        aria-colindex={column + 1}
         contentSize={finalSize}
         className={AnimationClassNames.fadeIn400}
         selection={this._selection}
@@ -115,7 +158,24 @@ export class TilesListMediaExample extends React.Component<{}, ITilesListMediaEx
         }
         showBackgroundFrame={true}
         itemName={item.name}
-        itemActivity={item.key}
+        itemActivity={
+          <>
+            <div style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+              {pixelWidth}&#x205F;&times;&#x205F;{pixelHeight}&ensp;&middot;&ensp;3.14&nbsp;MB
+            </div>
+            <SignalField
+              before={
+                <>
+                  <SharedSignal key={1} />
+                  <CommentsSignal key={2} />
+                </>
+              }
+            >
+              {lorem(7)}
+            </SignalField>
+          </>
+        }
+        nameplateOnlyOnHover={this.state.nameplateOnlyOnHover}
       />
     );
 
@@ -127,13 +187,18 @@ export class TilesListMediaExample extends React.Component<{}, ITilesListMediaEx
           className={TilesListExampleStyles.tileImage}
           src={`//placehold.it/${Math.round(backgroundSize.width)}x${Math.round(backgroundSize.height)}`}
         />
-      )
+      ),
     });
   };
 
-  private _onRenderHeader = (item: IExampleItem): JSX.Element => {
+  private _onRenderHeader = (props: ITilesGridItemCellProps<IExampleItem>): JSX.Element => {
+    const {
+      item,
+      position: { column },
+    } = props;
+
     return (
-      <div role="presentation">
+      <div role="griditem" aria-colindex={column + 1}>
         <h3>{item.name}</h3>
       </div>
     );

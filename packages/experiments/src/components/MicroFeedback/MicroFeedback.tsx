@@ -1,16 +1,15 @@
 import * as React from 'react';
 import { createComponent } from '../../Foundation';
-import { MicroFeedbackState as state } from './MicroFeedback.state';
+import { useMicroFeedbackState as state } from './MicroFeedback.state';
 import { MicroFeedbackStyles as styles, MicroFeedbackTokens as tokens } from './MicroFeedback.styles';
 import { IMicroFeedbackProps } from './MicroFeedback.types';
-import { MicroFeedbackView as view } from './MicroFeedback.view';
+import { MicroFeedbackView } from './MicroFeedback.view';
 
-export const MicroFeedback: React.StatelessComponent<IMicroFeedbackProps> = createComponent({
+export const MicroFeedback: React.FunctionComponent<IMicroFeedbackProps> = createComponent(MicroFeedbackView, {
   displayName: 'MicroFeedback',
   state,
   styles,
   tokens,
-  view
 });
 
 export default MicroFeedback;

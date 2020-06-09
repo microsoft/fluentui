@@ -1,16 +1,17 @@
-import * as React from 'react';
-import { createComponent } from '../../../Foundation';
-import { MenuButtonState as state } from './MenuButton.state';
+// Temporary import file to experiment with next version of foundation.
+import { composed } from '@uifabric/foundation/lib/next/composed';
+import { useMenuButtonState as state } from './MenuButton.state';
 import { MenuButtonStyles as styles, MenuButtonTokens as tokens } from './MenuButton.styles';
 import { IMenuButtonProps } from './MenuButton.types';
-import { MenuButtonView as view } from './MenuButton.view';
+import { MenuButtonSlots as slots, MenuButtonView as view } from './MenuButton.view';
 
-export const MenuButton: React.StatelessComponent<IMenuButtonProps> = createComponent({
+export const MenuButton: React.FunctionComponent<IMenuButtonProps> = composed({
   displayName: 'MenuButton',
+  slots,
   state,
   styles,
   tokens,
-  view
+  view,
 });
 
 export default MenuButton;

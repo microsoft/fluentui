@@ -1,14 +1,21 @@
 import * as React from 'react';
 import { KeyCodes, createArray, getRTLSafeKeyCode } from 'office-ui-fabric-react/lib/Utilities';
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
+import { useConst } from '@uifabric/react-hooks';
+import { TextField } from 'office-ui-fabric-react';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
-import { DetailsRow, IColumn, Selection, SelectionMode } from 'office-ui-fabric-react/lib/DetailsList';
+import {
+  DetailsRow,
+  IDetailsRowStyles,
+  IColumn,
+  Selection,
+  SelectionMode,
+} from 'office-ui-fabric-react/lib/DetailsList';
 
 const ITEMS = createArray(10, index => ({
   key: index.toString(),
   name: 'Item-' + index,
-  url: 'http://placehold.it/100x' + (200 + index!)
+  url: 'http://placehold.it/100x' + (100 + index!),
 }));
 
 const COLUMNS: IColumn[] = [
@@ -16,53 +23,63 @@ const COLUMNS: IColumn[] = [
     key: 'name',
     name: 'Name',
     fieldName: 'name',
-    minWidth: 100
+    minWidth: 100,
   },
   {
     key: 'link',
     name: 'Link',
-    fieldName: 'url',
+    fieldName: '',
     minWidth: 100,
-    onRender: item => <Link href={item.url}>{item.url}</Link>
+    onRender: item => <Link href={item.url}>{item.url}</Link>,
   },
   {
-    key: 'link',
+    key: 'textfield',
     name: 'Link',
-    fieldName: 'url',
-    minWidth: 100,
-    onRender: item => <DefaultButton>{item.url}</DefaultButton>
-  }
+    fieldName: '',
+    minWidth: 130,
+    onRender: item => <TextField readOnly defaultValue={'ReadOnly ' + item.name} />,
+  },
+  {
+    key: 'textfield2',
+    name: 'Link2',
+    fieldName: '',
+    minWidth: 130,
+    onRender: item => <TextField defaultValue={item.name} />,
+  },
 ];
 
-export class FocusZoneListExample extends React.PureComponent {
-  private _selection: Selection;
+const detailsRowStyles: Partial<IDetailsRowStyles> = { root: { display: 'block', width: '100%' } };
 
-  constructor(props: {}) {
-    super(props);
+export const FocusZoneListExample: React.FunctionComponent = () => {
+  //  Initialize the selection when the component is first rendered (same instance will be reused)
+  const selection = useConst(() => {
+    const sel = new Selection();
+    sel.setItems(ITEMS);
+    return sel;
+  });
 
-    this._selection = new Selection();
-    this._selection.setItems(ITEMS);
-  }
+  return (
+    <FocusZone
+      direction={FocusZoneDirection.vertical}
+      isCircularNavigation={true}
+      shouldEnterInnerZone={_shouldEnterInnerZone}
+      role="grid"
+    >
+      {ITEMS.map((item, index) => (
+        <DetailsRow
+          key={item.name}
+          item={item}
+          itemIndex={index}
+          columns={COLUMNS}
+          selectionMode={SelectionMode.none}
+          selection={selection}
+          styles={detailsRowStyles}
+        />
+      ))}
+    </FocusZone>
+  );
+};
 
-  public render(): JSX.Element {
-    return (
-      <FocusZone direction={FocusZoneDirection.vertical} isCircularNavigation={true} isInnerZoneKeystroke={this._isInnerZoneKeystroke}>
-        {ITEMS.map((item, index) => (
-          <DetailsRow
-            key={item.name}
-            item={item}
-            itemIndex={index}
-            columns={COLUMNS}
-            selectionMode={SelectionMode.none}
-            selection={this._selection}
-            styles={{ root: { display: 'block', width: '100%' } }}
-          />
-        ))}
-      </FocusZone>
-    );
-  }
-
-  private _isInnerZoneKeystroke = (ev: React.KeyboardEvent<HTMLElement>): boolean => {
-    return ev.which === getRTLSafeKeyCode(KeyCodes.right);
-  };
+function _shouldEnterInnerZone(ev: React.KeyboardEvent<HTMLElement>): boolean {
+  return ev.which === getRTLSafeKeyCode(KeyCodes.right);
 }

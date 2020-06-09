@@ -6,7 +6,7 @@ import { FabricDecorator } from '../utilities';
 import { Icon, IconType, getIconClassName, Fabric } from 'office-ui-fabric-react';
 import * as IconNames from '../../../../packages/icons/src/IconNames';
 
-import { TestImages } from '../common/TestImages';
+import { TestImages } from '@uifabric/example-data';
 
 // Rendering allIcons tests that the icon package can initialize all icons from the cdn
 const allIcons: JSX.Element[] = [];
@@ -25,7 +25,7 @@ storiesOf('Icon', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </Screener>,
   )
   .addStory('Root', () => (
     <Fabric>
@@ -46,7 +46,7 @@ storiesOf('Icon', module)
         iconName={'None'}
         iconType={IconType.image}
         imageProps={{
-          src: TestImages.iconOne
+          src: TestImages.iconOne,
         }}
       />
     </Fabric>

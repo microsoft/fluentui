@@ -1,6 +1,211 @@
 # Change Log - @uifabric/file-type-icons
 
-This log was last generated on Thu, 16 May 2019 05:28:50 GMT and should not be manually modified.
+This log was last generated on Fri, 29 May 2020 12:35:34 GMT and should not be manually modified.
+
+<!-- Start content -->
+
+## [7.3.0](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.3.0)
+
+Fri, 29 May 2020 12:35:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.2.49..@uifabric/file-type-icons_v7.3.0)
+
+### Minor changes
+
+- Add special folder icon types for file-type-icons. ([PR #13347](https://github.com/microsoft/fluentui/pull/13347) by taenri@microsoft.com)
+
+## [7.2.49](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.2.49)
+
+Mon, 25 May 2020 12:38:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.2.44..@uifabric/file-type-icons_v7.2.49)
+
+### Patches
+
+- Add empty alt text for filetype icon img ([PR #13194](https://github.com/microsoft/fluentui/pull/13194) by erabelle@microsoft.com)
+
+## [7.2.44](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.2.44)
+
+Fri, 15 May 2020 00:07:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.2.40..@uifabric/file-type-icons_v7.2.44)
+
+### Patches
+
+- adding 'pbiapp' entry in file type icon mapping file ([PR #12865](https://github.com/microsoft/fluentui/pull/12865) by caperez@microsoft.com)
+
+## [7.2.40](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.2.40)
+
+Thu, 07 May 2020 01:06:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.2.39..@uifabric/file-type-icons_v7.2.40)
+
+### Patches
+
+- Addressing commonjs imports. ([PR #13031](https://github.com/microsoft/fluentui/pull/13031) by dzearing@microsoft.com)
+
+## [7.2.39](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.2.39)
+
+Wed, 06 May 2020 12:32:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.2.30..@uifabric/file-type-icons_v7.2.39)
+
+### Patches
+
+- Using a fresh version string to bust the CDN cache. I tested v1 and it brings back all the right icons. ([PR #13008](https://github.com/microsoft/fluentui/pull/13008) by caperez@microsoft.com)
+
+## [7.2.30](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.2.30)
+
+Thu, 16 Apr 2020 04:01:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.2.28..@uifabric/file-type-icons_v7.2.30)
+
+### Patches
+
+- Readme: Remove section about fluent icons (should be default now); Fabric=>Fluent wording updates ([PR #12508](https://github.com/microsoft/fluentui/pull/12508) by elcraig@microsoft.com)
+- Improving the icon filetype mapping file to cover even more extensions, including those already served by Teams mobile app ([PR #12422](https://github.com/microsoft/fluentui/pull/12422) by caperez@microsoft.com)
+
+## 7.2.26
+Wed, 25 Mar 2020 12:30:04 GMT
+
+### Patches
+
+- Changing references of Fabric to Fluent (mgodbolt@microsoft.com)
+## 7.2.25
+Mon, 23 Mar 2020 12:28:29 GMT
+
+### Patches
+
+- Replace OfficeDev/office-ui-fabric-react with microsoft/fluentui (elcraig@microsoft.com)
+## 7.2.4
+Fri, 17 Jan 2020 02:32:17 GMT
+
+### Patches
+
+- Update tslib minver to first version containing __spreadArrays helper due to changes in how TS emits spreads. (jagore@microsoft.com)
+## 7.2.3
+Wed, 15 Jan 2020 00:21:25 GMT
+
+### Patches
+
+- Make news icon available (hjorturj@microsoft.com)
+## 7.2.2
+Tue, 31 Dec 2019 12:31:45 GMT
+
+### Patches
+
+- added stream icon code to getFileIconProps (azra.bandukwala@microsoft.com)
+## 7.2.1
+Tue, 17 Dec 2019 12:29:42 GMT
+
+### Patches
+
+- Refining typography and signal icon on top of Folder Icon, filetype mapping updates (caperez@microsoft.com)
+## 7.2.0
+Fri, 06 Dec 2019 12:33:21 GMT
+
+### Minor changes
+
+- Added stream to file icon types (azbanduk@microsoft.com)
+## 7.1.4
+Thu, 14 Nov 2019 12:30:52 GMT
+
+### Patches
+
+- adding a new icon size for file icons (kchau@microsoft.com)
+## 7.1.3
+Fri, 08 Nov 2019 12:30:07 GMT
+
+### Patches
+
+- Added size 24 to file type icons (v-mare@microsoft.com)
+## 7.1.2
+Tue, 15 Oct 2019 12:32:28 GMT
+
+### Patches
+
+- Fabric 7 mappings for filetypeicon cal/contact/fluid/pbids (caperez@microsoft.com)
+## 7.1.1
+Fri, 27 Sep 2019 12:33:04 GMT
+
+### Patches
+
+- Golden Folder grid view css cleanup for Fabric Master, rev filetype version param string (caperez@microsoft.com)
+## 7.1.0
+Thu, 12 Sep 2019 12:34:15 GMT
+
+### Minor changes
+
+- updating office file type to include .b (caperez@microsoft.com)
+## 7.0.8
+Wed, 04 Sep 2019 04:09:58 GMT
+
+### Patches
+
+- fix version file (kchau@microsoft.com)
+## 7.0.7
+Fri, 23 Aug 2019 12:35:28 GMT
+
+### Patches
+
+- Update npmignores, delete unused jest setup files (elcraig@microsoft.com)
+- Fix up readme and package.json descriptions (elcraig@microsoft.com)
+
+## 7.0.6
+Tue, 23 Jul 2019 16:33:51 GMT
+
+### Patches
+
+- Added multiple.png to FileIconType enum (t-shfozd@microsoft.com)
+
+## 7.0.5
+Wed, 17 Jul 2019 18:58:57 GMT
+
+### Patches
+
+- Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom. (makotom@microsoft.com)
+
+## 7.0.4
+Mon, 01 Jul 2019 18:51:42 GMT
+
+### Patches
+
+- adds react-app-polyfill
+
+## 7.0.3
+Fri, 14 Jun 2019 12:26:30 GMT
+
+### Patches
+
+- Fix missing assets in production build.
+
+## 7.0.2
+Thu, 13 Jun 2019 00:24:48 GMT
+
+### Patches
+
+- Initial release of Fabric 7
+
+## 7.0.0
+Wed, 12 Jun 2019 00:42:26 GMT
+
+### Breaking changes
+
+- Update file type icons to use new Fluent assets by default
+
+### Patches
+
+- Update and dedupe React deps.
+- fix mapping for OneNote notebook filetype icon
+- updating getFileTypeIconProps to make reference to correct sharepoint…
+
+## 6.5.1
+Tue, 11 Jun 2019 12:21:35 GMT
+
+### Patches
+
+- adding missing filetype mappings to support LPC and other partners
+
+## 6.5.0
+Wed, 05 Jun 2019 12:22:30 GMT
+
+### Minor changes
+
+- added new extensions to icon groups to support LPC and Outlook mobile
 
 ## 6.4.10
 Thu, 16 May 2019 05:28:50 GMT
@@ -36,7 +241,7 @@ Thu, 18 Apr 2019 12:31:50 GMT
 ### Patches
 
 - fix mapping for OneNote notebook filetype icon
-- updating getFileTypeIconProps to make reference to correct sharepoint… 
+- updating getFileTypeIconProps to make reference to correct sharepoint…
 
 ## 6.4.5
 Wed, 10 Apr 2019 12:33:17 GMT
@@ -58,7 +263,7 @@ Tue, 12 Mar 2019 12:31:43 GMT
 ### Patches
 
 - fix mapping for OneNote notebook filetype icon
-- updating getFileTypeIconProps to make reference to correct sharepoint… 
+- updating getFileTypeIconProps to make reference to correct sharepoint…
 
 ## 6.4.2
 Fri, 01 Mar 2019 13:33:08 GMT
@@ -93,7 +298,7 @@ Mon, 08 Oct 2018 12:24:15 GMT
 
 ### Patches
 
-- Moving tslint/prettier dependencies 
+- Moving tslint/prettier dependencies
 
 ## 6.1.2
 Fri, 21 Sep 2018 14:25:46 GMT
@@ -214,4 +419,3 @@ Mon, 04 Dec 2017 17:27:54 GMT
 ### Minor changes
 
 - Add package for file type icons
-

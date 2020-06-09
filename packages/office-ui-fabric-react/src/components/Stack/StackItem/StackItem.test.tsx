@@ -7,7 +7,7 @@ describe('Stack Item', () => {
     const wrapper = mount(
       <Stack>
         <div className="test" />
-      </Stack>
+      </Stack>,
     );
 
     expect(wrapper.find('div.test').length).toBe(1);
@@ -19,7 +19,7 @@ describe('Stack Item', () => {
         <Stack.Item>
           <div className="test" />
         </Stack.Item>
-      </Stack>
+      </Stack>,
     );
 
     expect(wrapper.find('div.test').length).toBe(1);
@@ -31,7 +31,7 @@ describe('Stack Item', () => {
         <Stack.Item>
           <div />
         </Stack.Item>
-      </Stack>
+      </Stack>,
     );
 
     expect(wrapper.find('.test').length).toBe(0);
@@ -42,7 +42,7 @@ describe('Stack Item', () => {
       mount(
         <Stack>
           <Stack.Item />
-        </Stack>
+        </Stack>,
       );
     };
 
@@ -58,7 +58,7 @@ describe('Stack Item', () => {
         <Stack.Item className={stackItemClassName}>
           <span className={childClassName} />
         </Stack.Item>
-      </Stack>
+      </Stack>,
     );
 
     const stackItem = wrapper.find('div').at(1);

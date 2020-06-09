@@ -2,26 +2,32 @@
 import { IAppDefinition } from '@uifabric/example-app-base';
 
 export const AppDefinition: IAppDefinition = {
-  appTitle: 'Fabric - React',
+  appTitle: 'Fluent UI React - Lists',
 
   testPages: [],
   examplePages: [
     {
-      links: []
-    }
+      links: [
+        {
+          component: require<any>('./pages/StaticListPage').StaticListPage,
+          name: 'StaticList',
+          url: '#/StaticList',
+        },
+      ],
+    },
   ],
   headerLinks: [
     {
       name: 'Getting started',
-      url: '#/'
+      url: '#/',
     },
     {
       name: 'Fabric',
-      url: 'http://dev.office.com/fabric'
+      url: 'https://developer.microsoft.com/en-us/fluentui',
     },
     {
-      name: 'Github',
-      url: 'http://www.github.com/officedev'
-    }
-  ]
+      name: 'GitHub',
+      url: 'https://github.com/microsoft/fluentui',
+    },
+  ],
 };

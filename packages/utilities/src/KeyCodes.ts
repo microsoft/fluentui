@@ -103,6 +103,6 @@ export const KeyCodes = {
   openBracket: 219 as 219,
   backSlash: 220 as 220,
   closeBracket: 221 as 221,
-  singleQuote: 222 as 222
+  singleQuote: 222 as 222,
 };
 export type KeyCodes = number;

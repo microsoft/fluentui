@@ -28,8 +28,14 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase | 
 
   /**
    * Optional custom renderer for the coin
+   * @deprecated Use `onRenderPersonaCoin` for custom rendering instead
    */
   onRenderCoin?: IRenderFunction<IPersonaSharedProps>;
+
+  /**
+   * Optional custom renderer for the coin
+   */
+  onRenderPersonaCoin?: IRenderFunction<IPersonaSharedProps>;
 
   /**
    * If true, adds the css class 'is-fadeIn' to the image.
@@ -82,6 +88,17 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase | 
    */
   initialsColor?: PersonaInitialsColor | string;
 
+  /** The colors to be used for the presence-icon and it's background */
+  presenceColors?: {
+    available: string;
+    away: string;
+    busy: string;
+    dnd: string;
+    offline: string;
+    oof: string;
+    background: string;
+  };
+
   /**
    * Presence of the person to display - will not display presence if undefined.
    * @defaultvalue PersonaPresence.none
@@ -89,17 +106,29 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase | 
   presence?: PersonaPresence;
 
   /**
+   * Presence title to be shown as a tooltip on hover over the presence icon.
+   */
+  presenceTitle?: string;
+
+  /**
+   * This flag can be used to signal the persona is out of office.
+   * This will change the way the presence icon looks for statuses that support dual-presence.
+   */
+  isOutOfOffice?: boolean;
+
+  /**
    * Secondary text to display, usually the role of the user.
    */
   secondaryText?: string;
 
   /**
-   * Tertiary text to display, usually the status of the user. The tertiary text will only be shown when using Size72 or Size100.
+   * Tertiary text to display, usually the status of the user.
+   * The tertiary text will only be shown when using size72 or size100.
    */
   tertiaryText?: string;
 
   /**
-   * Optional text to display, usually a custom message set. The optional text will only be shown when using Size100.
+   * Optional text to display, usually a custom message set. The optional text will only be shown when using size100.
    */
   optionalText?: string;
 
@@ -320,29 +349,9 @@ export interface IPersonaPresenceProps extends IPersonaSharedProps {
 /**
  * {@docCategory Persona}
  */
-export interface IPersonaPresenceStyleProps {
-  /**
-   * Theme provided by High-Order Component.
-   */
-  theme: ITheme;
-
-  /**
-   * Custom class name.
-   */
-  className?: string;
-
-  /**
-   * Presence of the person to display - will not display presence if undefined.
-   * @defaultvalue PersonaPresence.none
-   */
-  presence?: PersonaPresence;
-
-  /**
-   * Decides the size of the control.
-   * @defaultvalue PersonaSize.size48
-   */
-  size?: PersonaSize;
-}
+export type IPersonaPresenceStyleProps = Required<Pick<IPersonaSharedProps, 'theme'>> &
+  Pick<IPersonaSharedProps, 'presence' | 'isOutOfOffice' | 'size' | 'presenceColors'> &
+  Pick<IPersonaProps, 'className'>;
 
 /**
  * {@docCategory Persona}
@@ -357,50 +366,110 @@ export interface IPersonaPresenceStyles {
  */
 export enum PersonaSize {
   /**
-   * tiny size has been deprecated in favor of standardized numeric sizing. Use `size10` instead.
-   * @deprecated Use `size10` instead.
+   * `tiny` size has been deprecated in favor of standardized numeric sizing. Use `size8` instead.
+   * @deprecated Use `size8` instead.
    */
   tiny = 0,
+
   /**
    *
-   * extraExtraSmall size has been deprecated in favor of standardized numeric sizing. Use `size24` instead.
+   * `extraExtraSmall` size has been deprecated in favor of standardized numeric sizing. Use `size24` instead.
    * @deprecated Use `size24` instead.
    */
   extraExtraSmall = 1,
+
   /**
-   * extraSmall size has been deprecated in favor of standardized numeric sizing. Use `size32` instead.
+   * `extraSmall` size has been deprecated in favor of standardized numeric sizing. Use `size32` instead.
    * @deprecated Use `size32` instead.
    */
   extraSmall = 2,
+
   /**
-   * small size has been deprecated in favor of standardized numeric sizing. Use `size40` instead.
+   * `small` size has been deprecated in favor of standardized numeric sizing. Use `size40` instead.
    * @deprecated Use `size40` instead.
    */
   small = 3,
+
   /**
-   * regular size has been deprecated in favor of standardized numeric sizing. Use `size48` instead.
+   * `regular` size has been deprecated in favor of standardized numeric sizing. Use `size48` instead.
    * @deprecated Use `size48` instead.
    */
   regular = 4,
+
   /**
-   * large size has been deprecated in favor of standardized numeric sizing. Use `size72` instead.
+   * `large` size has been deprecated in favor of standardized numeric sizing. Use `size72` instead.
    * @deprecated Use `size72` instead.
    */
   large = 5,
+
   /**
-   * extraLarge size has been deprecated in favor of standardized numeric sizing. Use `size100` instead.
+   * `extraLarge` size has been deprecated in favor of standardized numeric sizing. Use `size100` instead.
    * @deprecated Use `size100` instead.
    */
   extraLarge = 6,
-  size28 = 7,
-  size16 = 8,
+
+  /**
+   * No `PersonaCoin` is rendered.
+   */
+  size8 = 17,
+
+  /**
+   * No `PersonaCoin` is rendered. Deprecated in favor of `size8` to align with design specifications.
+   * @deprecated Use `size8` instead. Will be removed in a future major release.
+   */
   size10 = 9,
+
+  /**
+   * Renders a 16px `PersonaCoin`. Deprecated due to not being in the design specification.
+   * @deprecated Will be removed in a future major release.
+   */
+  size16 = 8,
+
+  /**
+   * Renders a 24px `PersonaCoin`.
+   */
   size24 = 10,
+
+  /**
+   * Renders a 28px `PersonaCoin`. Deprecated due to not being in the design specification.
+   * @deprecated Will be removed in a future major release.
+   */
+  size28 = 7,
+
+  /**
+   * Renders a 32px `PersonaCoin`.
+   */
   size32 = 11,
+
+  /**
+   * Renders a 40px `PersonaCoin`.
+   */
   size40 = 12,
+
+  /**
+   * Renders a 48px `PersonaCoin`.
+   */
   size48 = 13,
+
+  /**
+   * Renders a 56px `PersonaCoin`.
+   */
+  size56 = 16,
+
+  /**
+   * Renders a 72px `PersonaCoin`.
+   */
   size72 = 14,
-  size100 = 15
+
+  /**
+   * Renders a 100px `PersonaCoin`.
+   */
+  size100 = 15,
+
+  /**
+   * Renders a 120px `PersonaCoin`.
+   */
+  size120 = 18,
 }
 
 /**
@@ -413,7 +482,7 @@ export enum PersonaPresence {
   away = 3,
   dnd = 4,
   blocked = 5,
-  busy = 6
+  busy = 6,
 }
 
 /**
@@ -432,12 +501,14 @@ export enum PersonaInitialsColor {
   magenta = 9,
   purple = 10,
   /**
-   * Black is a color that can result in offensive persona coins with some initials combinations, so it can only be set with overrides
+   * Black can result in offensive persona coins with some initials combinations, so it can only be set with overrides.
+   * @deprecated will be removed in a future major release.
    */
   black = 11,
   orange = 12,
   /**
-   * Red is a color that often has a special meaning, so it is considered a reserved color and can only be set with overrides
+   * Red often has a special meaning, so it is considered a reserved color and can only be set with overrides.
+   * @deprecated will be removed in a future major release.
    */
   red = 13,
   darkRed = 14,
@@ -446,5 +517,16 @@ export enum PersonaInitialsColor {
    * Its primary use is for overflow buttons, so it is considered a reserved color and can only be set with overrides.
    */
   transparent = 15,
-  violet = 16
+  violet = 16,
+  lightRed = 17,
+  gold = 18,
+  burgundy = 19,
+  warmGray = 20,
+  coolGray = 21,
+  /**
+   * Gray can result in offensive persona coins with some initials combinations, so it can only be set with overrides.
+   */
+  gray = 22,
+  cyan = 23,
+  rust = 24,
 }

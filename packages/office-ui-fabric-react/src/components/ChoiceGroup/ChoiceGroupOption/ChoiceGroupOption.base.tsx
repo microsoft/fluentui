@@ -1,18 +1,34 @@
 import * as React from 'react';
 import { Image } from '../../../Image';
 import { Icon } from '../../../Icon';
-import { IChoiceGroupOptionProps, IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles } from './ChoiceGroupOption.types';
-import { classNamesFunction, getNativeProps, inputProperties, css } from '../../../Utilities';
+import {
+  IChoiceGroupOptionProps,
+  IChoiceGroupOptionStyleProps,
+  IChoiceGroupOptionStyles,
+} from './ChoiceGroupOption.types';
+import { classNamesFunction, getNativeProps, inputProperties, css, initializeComponentRef } from '../../../Utilities';
 import { IProcessedStyleSet } from '../../../Styling';
+import { composeRenderFunction } from '@uifabric/utilities';
 
 const getClassNames = classNamesFunction<IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles>();
+
+const LARGE_IMAGE_SIZE = 71;
 
 /**
  * {@docCategory ChoiceGroup}
  */
-export class ChoiceGroupOptionBase extends React.Component<IChoiceGroupOptionProps, any> {
-  private _inputElement = React.createRef<HTMLInputElement>();
+export class ChoiceGroupOptionBase extends React.Component<IChoiceGroupOptionProps, {}> {
+  public static defaultProps: Partial<IChoiceGroupOptionProps> = {
+    // This ensures default imageSize value doesn't mutate. Mutation can cause style re-calcuation.
+    imageSize: { width: 32, height: 32 },
+  };
+
   private _classNames: IProcessedStyleSet<IChoiceGroupOptionStyles>;
+
+  constructor(props: IChoiceGroupOptionProps) {
+    super(props);
+    initializeComponentRef(this);
+  }
 
   public render(): JSX.Element {
     const {
@@ -22,8 +38,9 @@ export class ChoiceGroupOptionBase extends React.Component<IChoiceGroupOptionPro
       theme,
       iconProps,
       imageSrc,
-      imageSize = { width: 32, height: 32 },
+      imageSize,
       disabled,
+      // tslint:disable-next-line:deprecation
       checked,
       id,
       styles,
@@ -38,8 +55,9 @@ export class ChoiceGroupOptionBase extends React.Component<IChoiceGroupOptionPro
       hasImage: !!imageSrc,
       checked,
       disabled,
-      imageIsLarge: !!imageSrc && (imageSize.width > 71 || imageSize.height > 71),
-      focused
+      imageIsLarge: !!imageSrc && (imageSize!.width > LARGE_IMAGE_SIZE || imageSize!.height > LARGE_IMAGE_SIZE),
+      imageSize,
+      focused,
     });
 
     const { className, ...nativeProps } = getNativeProps<{ className: string }>(rest, inputProperties);
@@ -48,8 +66,7 @@ export class ChoiceGroupOptionBase extends React.Component<IChoiceGroupOptionPro
       <div className={this._classNames.root}>
         <div className={this._classNames.choiceFieldWrapper}>
           <input
-            aria-label={ariaLabel ? ariaLabel : undefined}
-            ref={this._inputElement}
+            aria-label={ariaLabel}
             id={id}
             className={css(this._classNames.input, className)}
             type="radio"
@@ -57,10 +74,10 @@ export class ChoiceGroupOptionBase extends React.Component<IChoiceGroupOptionPro
             disabled={disabled}
             checked={checked}
             required={required}
-            onChange={this._onChange.bind(this, this.props)}
-            onFocus={this._onFocus.bind(this, this.props)}
-            onBlur={this._onBlur.bind(this, this.props)}
             {...nativeProps}
+            onChange={this._onChange}
+            onFocus={this._onFocus}
+            onBlur={this._onBlur}
           />
           {onRenderField(this.props, this._onRenderField)}
         </div>
@@ -68,58 +85,58 @@ export class ChoiceGroupOptionBase extends React.Component<IChoiceGroupOptionPro
     );
   }
 
-  private _onChange(props: IChoiceGroupOptionProps, evt: React.FormEvent<HTMLInputElement>): void {
-    const { onChange } = props;
+  private _onChange = (evt: React.FormEvent<HTMLInputElement>): void => {
+    const { onChange } = this.props;
     if (onChange) {
-      onChange(evt, props);
+      onChange(evt, this.props);
     }
-  }
+  };
 
-  private _onBlur(props: IChoiceGroupOptionProps, evt: React.FocusEvent<HTMLElement>) {
-    const { onBlur } = props;
+  private _onBlur = (evt: React.FocusEvent<HTMLElement>) => {
+    const { onBlur } = this.props;
     if (onBlur) {
-      onBlur(evt, props);
+      onBlur(evt, this.props);
     }
-  }
+  };
 
-  private _onFocus(props: IChoiceGroupOptionProps, evt: React.FocusEvent<HTMLElement>) {
-    const { onFocus } = props;
+  private _onFocus = (evt: React.FocusEvent<HTMLElement>) => {
+    const { onFocus } = this.props;
     if (onFocus) {
-      onFocus(evt, props);
+      onFocus(evt, this.props);
     }
-  }
+  };
 
   private _onRenderField = (props: IChoiceGroupOptionProps): JSX.Element => {
-    const { onRenderLabel = this._onRenderLabel, id, imageSrc, imageAlt, selectedImageSrc, iconProps } = props;
+    const { id, imageSrc, imageAlt = '', selectedImageSrc, iconProps } = props;
 
     const imageSize = props.imageSize ? props.imageSize : { width: 32, height: 32 };
+
+    const onRenderLabel = props.onRenderLabel
+      ? composeRenderFunction(props.onRenderLabel, this._onRenderLabel)
+      : this._onRenderLabel;
+
+    const label = onRenderLabel(props);
 
     return (
       <label htmlFor={id} className={this._classNames.field}>
         {imageSrc && (
-          <div className={this._classNames.innerField} style={{ height: imageSize.height, width: imageSize.width }}>
+          <div className={this._classNames.innerField}>
             <div className={this._classNames.imageWrapper}>
-              <Image src={imageSrc} alt={imageAlt ? imageAlt : ''} width={imageSize.width} height={imageSize.height} />
+              <Image src={imageSrc} alt={imageAlt} width={imageSize.width} height={imageSize.height} />
             </div>
             <div className={this._classNames.selectedImageWrapper}>
-              <Image src={selectedImageSrc} alt={imageAlt ? imageAlt : ''} width={imageSize.width} height={imageSize.height} />
+              <Image src={selectedImageSrc} alt={imageAlt} width={imageSize.width} height={imageSize.height} />
             </div>
           </div>
         )}
-        {iconProps ? (
+        {iconProps && (
           <div className={this._classNames.innerField}>
             <div className={this._classNames.iconWrapper}>
               <Icon {...iconProps} />
             </div>
           </div>
-        ) : null}
-        {imageSrc || iconProps ? (
-          <div className={this._classNames.labelWrapper} style={{ maxWidth: imageSize.width * 2 }}>
-            {onRenderLabel!(props)}
-          </div>
-        ) : (
-          onRenderLabel!(props)
         )}
+        {imageSrc || iconProps ? <div className={this._classNames.labelWrapper}>{label}</div> : label}
       </label>
     );
   };

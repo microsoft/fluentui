@@ -1,9 +1,29 @@
 import { ICalendarPickerStyleProps, ICalendarPickerStyles } from './CalendarPicker.types';
-import { normalize, FontSizes, FontWeights, getFocusStyle } from '@uifabric/styling';
+import { normalize, FontSizes, FontWeights, getFocusStyle, IRawStyle, AnimationStyles } from '@uifabric/styling';
+import { AnimationDirection } from '../Calendar.types';
 
 export const getStyles = (props: ICalendarPickerStyleProps): ICalendarPickerStyles => {
-  const { className, theme, hasHeaderClickCallback, highlightCurrent, highlightSelected } = props;
+  const {
+    className,
+    theme,
+    hasHeaderClickCallback,
+    highlightCurrent,
+    highlightSelected,
+    animateBackwards,
+    animationDirection,
+  } = props;
   const { palette } = theme;
+
+  let animationStyle: IRawStyle = {};
+  if (animateBackwards !== undefined) {
+    if (animationDirection === AnimationDirection.Horizontal) {
+      animationStyle = animateBackwards ? AnimationStyles.slideRightIn20 : AnimationStyles.slideLeftIn20;
+    } else {
+      animationStyle = animateBackwards ? AnimationStyles.slideDownIn20 : AnimationStyles.slideUpIn20;
+    }
+  }
+
+  const headerAnimationStyle: IRawStyle = animateBackwards !== undefined ? AnimationStyles.fadeIn200 : {};
 
   return {
     root: [
@@ -11,23 +31,26 @@ export const getStyles = (props: ICalendarPickerStyleProps): ICalendarPickerStyl
       {
         width: 196,
         padding: 12,
-        boxSizing: 'content-box'
+        boxSizing: 'content-box',
+        overflow: 'hidden',
       },
-      className
+      className,
     ],
     headerContainer: {
-      display: 'flex'
+      display: 'flex',
     },
     currentItemButton: [
       getFocusStyle(theme, { inset: -1 }),
       {
+        ...headerAnimationStyle,
         fontSize: FontSizes.medium,
         fontWeight: FontWeights.semibold,
         textAlign: 'left',
         backgroundColor: 'transparent',
         flexGrow: 1,
         padding: '0 4px 0 10px',
-        border: 'none'
+        border: 'none',
+        overflow: 'visible', // explicitly specify for IE11
       },
       hasHeaderClickCallback && {
         selectors: {
@@ -35,14 +58,14 @@ export const getStyles = (props: ICalendarPickerStyleProps): ICalendarPickerStyl
             cursor: !hasHeaderClickCallback ? 'default' : 'pointer',
             color: palette.neutralDark,
             outline: '1px solid transparent',
-            backgroundColor: palette.neutralLight
-          }
-        }
-      }
+            backgroundColor: palette.neutralLight,
+          },
+        },
+      },
     ],
     navigationButtonsContainer: {
       display: 'flex',
-      alignItems: 'center'
+      alignItems: 'center',
     },
     navigationButton: [
       getFocusStyle(theme, { inset: -1 }),
@@ -61,18 +84,28 @@ export const getStyles = (props: ICalendarPickerStyleProps): ICalendarPickerStyl
         backgroundColor: 'transparent',
         border: 'none',
         padding: 0,
+        overflow: 'visible', // explicitly specify for IE11
         selectors: {
           '&:hover': {
             color: palette.neutralDark,
             cursor: 'pointer',
             outline: '1px solid transparent',
-            backgroundColor: palette.neutralLight
-          }
-        }
-      }
+            backgroundColor: palette.neutralLight,
+          },
+        },
+      },
     ],
     gridContainer: {
-      marginTop: 4
+      marginTop: 4,
+    },
+    buttonRow: {
+      ...animationStyle,
+      marginBottom: 16,
+      selectors: {
+        '&:nth-child(n + 3)': {
+          marginBottom: 0,
+        },
+      },
     },
     itemButton: [
       getFocusStyle(theme, { inset: -1 }),
@@ -84,32 +117,33 @@ export const getStyles = (props: ICalendarPickerStyleProps): ICalendarPickerStyl
         lineHeight: 40,
         fontSize: FontSizes.small,
         padding: 0,
-        margin: '0 12px 16px 0',
+        margin: '0 12px 0 0',
         color: palette.neutralPrimary,
         backgroundColor: 'transparent',
         border: 'none',
         borderRadius: 2,
+        overflow: 'visible', // explicitly specify for IE11
         selectors: {
           '&:nth-child(4n + 4)': {
-            marginRight: 0
+            marginRight: 0,
           },
           '&:nth-child(n + 9)': {
-            marginBottom: 0
+            marginBottom: 0,
           },
           '& div': {
-            fontWeight: FontWeights.regular
+            fontWeight: FontWeights.regular,
           },
           '&:hover': {
             color: palette.neutralDark,
             backgroundColor: palette.neutralLight,
             cursor: 'pointer',
-            outline: '1px solid transparent'
+            outline: '1px solid transparent',
           },
           '&:active': {
-            backgroundColor: palette.themeLight
-          }
-        }
-      }
+            backgroundColor: palette.themeLight,
+          },
+        },
+      },
     ],
     current: highlightCurrent
       ? {
@@ -117,12 +151,12 @@ export const getStyles = (props: ICalendarPickerStyleProps): ICalendarPickerStyl
           backgroundColor: palette.themePrimary,
           selectors: {
             '& div': {
-              fontWeight: FontWeights.semibold
+              fontWeight: FontWeights.semibold,
             },
             '&:hover': {
-              backgroundColor: palette.themePrimary
-            }
-          }
+              backgroundColor: palette.themePrimary,
+            },
+          },
         }
       : {},
     selected: highlightSelected
@@ -132,21 +166,21 @@ export const getStyles = (props: ICalendarPickerStyleProps): ICalendarPickerStyl
           fontWeight: FontWeights.semibold,
           selectors: {
             '& div': {
-              fontWeight: FontWeights.semibold
+              fontWeight: FontWeights.semibold,
             },
             '&:hover, &:active': {
-              backgroundColor: palette.themeLight
-            }
-          }
+              backgroundColor: palette.themeLight,
+            },
+          },
         }
       : {},
     disabled: {
       selectors: {
         '&, &:disabled, & button': {
           color: palette.neutralTertiaryAlt,
-          pointerEvents: 'none'
-        }
-      }
-    }
+          pointerEvents: 'none',
+        },
+      },
+    },
   };
 };

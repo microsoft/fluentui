@@ -1,4 +1,4 @@
-import { getGlobalClassNames, FontSizes } from '../../Styling';
+import { getGlobalClassNames } from '../../Styling';
 import { IDocumentCardActionsStyleProps, IDocumentCardActionsStyles } from './DocumentCardActions.types';
 
 const ACTION_SIZE = 34;
@@ -8,12 +8,12 @@ const VERTICAL_PADDING = 4;
 const GlobalClassNames = {
   root: 'ms-DocumentCardActions',
   action: 'ms-DocumentCardActions-action',
-  views: 'ms-DocumentCardActions-views'
+  views: 'ms-DocumentCardActions-views',
 };
 
 export const getStyles = (props: IDocumentCardActionsStyleProps): IDocumentCardActionsStyles => {
   const { className, theme } = props;
-  const { palette } = theme;
+  const { palette, fonts } = theme;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
@@ -23,9 +23,9 @@ export const getStyles = (props: IDocumentCardActionsStyleProps): IDocumentCardA
       {
         height: `${ACTION_SIZE}px`,
         padding: `${VERTICAL_PADDING}px ${HORIZONTAL_PADDING}px`,
-        position: 'relative'
+        position: 'relative',
       },
-      className
+      className,
     ],
     action: [
       classNames.action,
@@ -37,28 +37,28 @@ export const getStyles = (props: IDocumentCardActionsStyleProps): IDocumentCardA
 
         selectors: {
           '.ms-Button': {
-            fontSize: '16px',
+            fontSize: fonts.mediumPlus.fontSize,
             height: ACTION_SIZE,
-            width: ACTION_SIZE
+            width: ACTION_SIZE,
           },
           '.ms-Button:hover .ms-Button-icon': {
             color: theme.semanticColors.buttonText,
-            cursor: 'pointer'
-          }
-        }
-      }
+            cursor: 'pointer',
+          },
+        },
+      },
     ],
     views: [
       classNames.views,
       {
         textAlign: 'right',
-        lineHeight: ACTION_SIZE
-      }
+        lineHeight: ACTION_SIZE,
+      },
     ],
     viewsIcon: {
       marginRight: '8px',
-      fontSize: FontSizes.medium,
-      verticalAlign: 'top'
-    }
+      fontSize: fonts.medium.fontSize,
+      verticalAlign: 'top',
+    },
   };
 };

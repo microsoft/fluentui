@@ -1,4 +1,4 @@
-# [merge-styles](http://dev.office.com/fabric)
+# @uifabric/merge-styles
 
 The `merge-styles` library provides utilities for loading styles through javascript. It is designed to make it simple to style components through javascript. It generates css classes, rather than using inline styling, to ensure we can use css features like pseudo selectors (:hover) and parent/child selectors (media queries).
 
@@ -59,7 +59,19 @@ The api surfaces consists of 3 methods and a handful of interfaces:
 
 `mergeStyleSets(...args[]: IStyleSet[]): { [key: string]: string }` - Takes in one or more style set objects, each consisting of a set of areas, each which will produce a class name. Using this is analogous to calling mergeStyles for each property in the object, but ensures we maintain the set ordering when multiple style sets are merged.
 
-`concatStyleSet(...args[]: IStyleSet[]): IStyleSet` - In some cases you simply need to combine style sets, without actually generating class names (it is costs in performance to generate class names.) This tool returns a single set merging many together.
+`concatStyleSets(...args[]: IStyleSet[]): IStyleSet` - In some cases you simply need to combine style sets, without actually generating class names (it is costs in performance to generate class names.) This tool returns a single set merging many together.
+
+`concatStyleSetsWithProps(props: {}, ...args[]: IStyleSet[]): IStyleSet` - Similar to `concatStyleSet` except that style sets which contain functional evaluation of styles are evaluated prior to concatenating.
+
+Example:
+
+```tsx
+const result = concatStyleSetsWithProps<IFooProps, IFooStyles>(
+  { foo: 'bar' },
+  (props: IFooProps) => ({ root: { background: props.foo } }),
+  (props: IFooProps) => ({ root: { color: props.foo } }),
+);
+```
 
 ## Vocabulary
 
@@ -68,7 +80,7 @@ A **style object** represents the collection of css rules, except that the names
 ```tsx
 let style = {
   backgroundColor: 'red',
-  left: 42
+  left: 42,
 };
 ```
 
@@ -87,12 +99,12 @@ let style = {
 };
 ```
 
-A **style set** represents a map of area to style object. When building a component, you need to generate a class name for each element that requires styling. You would defint this in a **style set**.
+A **style set** represents a map of area to style object. When building a component, you need to generate a class name for each element that requires styling. You would define this in a **style set**.
 
 ```tsx
 let styleSet = {
   root: { background: 'red' },
-  button: { margin: 42 }
+  button: { margin: 42 },
 };
 ```
 
@@ -114,17 +126,16 @@ export interface IComponentClassNames {
 export const getClassNames = (): IComponentClassNames => {
   return mergeStyleSets({
     root: {
-        background: 'red'
-      }
-    ),
+      background: 'red',
+    },
 
     button: {
       backgroundColor: 'green',
     },
 
     buttonIcon: {
-      margin: 10
-    }
+      margin: 10,
+    },
   });
 };
 ```
@@ -230,12 +241,12 @@ mergeStyles({
   background: 'red',
   selectors: {
     '@media(max-width: 600px)': {
-      background: 'green'
+      background: 'green',
     },
     '@supports(display: grid)': {
-      display: 'grid'
-    }
-  }
+      display: 'grid',
+    },
+  },
 });
 ```
 
@@ -287,25 +298,22 @@ to target the parent elements:
 ```tsx
 const classNames = {
   root: 'Foo-root',
-  child: 'Foo-child'
+  child: 'Foo-child',
 };
 
 mergeStyleSets({
-  root: [
-    classNames.root,
-    { background: 'lightgreen' }
-  ],
+  root: [classNames.root, { background: 'lightgreen' }],
 
   child: [
     classNames.child,
     {
       selectors: {
         [`.${classNames.root}:hover &`]: {
-          background: 'green'
-        }
-      }
-    }
-  ]
+          background: 'green',
+        },
+      },
+    },
+  ],
 });
 ```
 
@@ -359,12 +367,12 @@ export const getClassNames = (isToggled: boolean): IComponentClassNames => {
   return mergeStyleSets({
     root: [
       {
-        background: 'red'
+        background: 'red',
       },
       isToggled && {
-        background: 'green'
-      }
-    ]
+        background: 'green',
+      },
+    ],
   });
 };
 ```
@@ -379,7 +387,7 @@ In rare condition where you want to avoid auto flipping, you can annotate the ru
 
 ```tsx
 mergeStyles({
-  left: '42px @noflip'
+  left: '42px @noflip',
 });
 ```
 
@@ -411,7 +419,7 @@ import { fontFace } from '@uifabric/merge-styles';
 fontFace({
   fontFamily: `"Segoe UI"`,
   src: `url("//cdn.com/fontface.woff2) format(woff2)`,
-  fontWeight: 'normal'
+  fontWeight: 'normal',
 });
 ```
 
@@ -426,21 +434,35 @@ import { keyframes, mergeStyleSets } from '@uifabric/merge-styles';
 
 let fadeIn = keyframes({
   from: {
-    opacity: 0
+    opacity: 0,
   },
   to: {
-    opacity: 1
-  }
+    opacity: 1,
+  },
 });
 
 export const getClassNames = () => {
   return mergeStyleSets({
     root: {
-      animationName: fadeIn
-    }
+      animationName: fadeIn,
+    },
   });
 };
 ```
+
+## Controlling where styles are injected
+
+By default `merge-styles` will initially inject a `style` element into the document head as the first node and then append and new `style` elements as next sibling to the previous one added.
+
+In some cases you may want to control where styles are injected to ensure some stylesheets are more specific than others. To do this, you can add a placeholder `style` element in the head with `data-merge-styles` attribute:
+
+```html
+<head>
+  <style data-merge-styles></style>
+</head>
+```
+
+Merge styles will ensure that any generated styles are added after the placeholder.
 
 ## Server-side rendering
 
@@ -456,14 +478,40 @@ let { html, css } = renderStatic(() => {
 });
 ```
 
-Caveats for server-side rendering (TODOs):
+Caveats for server-side rendering:
 
-- Currently font face definitions and keyframes won't be included in the result.
+- Rules registered in the file scope of code won't be re-evaluated and therefore won't be included in the result. Try to avoid using classes which are not evaluated at runtime.
 
-- Using the `memoizeFunction` utility may short circuit calling merge-styles APIs to register styles, which may cause the helper here to skip returning css. This can be fixed, but it is currently a known limitation.
+For example:
 
-- Until all Fabric components use the merge-styles library, this will only return a subset of the styling. Also a known limitation and work in progress.
+```tsx
+const rootClass = mergeStyles({ background: 'red' });
+const App = () => <div className={rootClass} />;
 
-- The rehydration logic has not yet been implemented, so we may run into issues when you rehydrate.
+// App will render, but "rootClass" is a string which won't get re-evaluated in this call.
+renderStatic(() => ReactDOM.renderToString(<App/>);
+```
 
-- Only components which USE mergeStyles will have their css included. In Fabric, not all components have been converted from using SASS yet.
+- Using `memoizeFunction` around rule calculation can help with excessive rule recalc performance overhead.
+
+- Rehydration on the client may result in mismatched rules. You can apply a namespace on the server side to ensure there aren't name collisions.
+
+## Working with content security policy (CSP)
+
+Some content security policies prevent style injection without a nonce. To set the nonce used by `merge-styles`:
+
+```ts
+Stylesheet.getInstance().setConfig({
+  cspSettings: { nonce: 'your nonce here' },
+});
+```
+
+If you're working inside a Fluent UI React app ([formerly Office UI Fabric React](https://developer.microsoft.com/en-us/office/blogs/ui-fabric-is-evolving-into-fluent-ui/)), this setting can also be applied using the global `window.FabricConfig.mergeStyles.cspSettings`. Note that this must be set before any Fluent UI React code is loaded, or it may not be applied properly.
+
+```ts
+window.FabricConfig = {
+  mergeStyles: {
+    cspSettings: { nonce: 'your nonce here' },
+  },
+};
+```

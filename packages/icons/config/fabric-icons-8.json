@@ -10,6 +10,218 @@
   },
   "glyphs": [
     {
+      "name": "CollapseMenu",
+      "unicode": "EF66"
+    },
+    {
+      "name": "ExpandMenu",
+      "unicode": "EF67"
+    },
+    {
+      "name": "Boards",
+      "unicode": "EF68"
+    },
+    {
+      "name": "SunAdd",
+      "unicode": "EF69"
+    },
+    {
+      "name": "SunQuestionMark",
+      "unicode": "EF6A"
+    },
+    {
+      "name": "LandscapeOrientation",
+      "unicode": "EF6B"
+    },
+    {
+      "name": "DocumentSearch",
+      "unicode": "EF6C"
+    },
+    {
+      "name": "PublicCalendar",
+      "unicode": "EF6D"
+    },
+    {
+      "name": "PublicContactCard",
+      "unicode": "EF6E"
+    },
+    {
+      "name": "PublicEmail",
+      "unicode": "EF6F"
+    },
+    {
+      "name": "PublicFolder",
+      "unicode": "EF70"
+    },
+    {
+      "name": "WordDocument",
+      "unicode": "EF71"
+    },
+    {
+      "name": "PowerPointDocument",
+      "unicode": "EF72"
+    },
+    {
+      "name": "ExcelDocument",
+      "unicode": "EF73"
+    },
+    {
+      "name": "GroupedList",
+      "unicode": "EF74"
+    },
+    {
+      "name": "ClassroomLogo",
+      "unicode": "EF75"
+    },
+    {
+      "name": "Sections",
+      "unicode": "EF76"
+    },
+    {
+      "name": "EditPhoto",
+      "unicode": "EF77"
+    },
+    {
+      "name": "Starburst",
+      "unicode": "EF78"
+    },
+    {
+      "name": "ShareiOS",
+      "unicode": "EF79"
+    },
+    {
+      "name": "AirTickets",
+      "unicode": "EF7A"
+    },
+    {
+      "name": "PencilReply",
+      "unicode": "EF7B"
+    },
+    {
+      "name": "Tiles2",
+      "unicode": "EF7C"
+    },
+    {
+      "name": "SkypeCircleCheck",
+      "unicode": "EF7D"
+    },
+    {
+      "name": "SkypeCircleClock",
+      "unicode": "EF7E"
+    },
+    {
+      "name": "SkypeCircleMinus",
+      "unicode": "EF7F"
+    },
+    {
+      "name": "SkypeMessage",
+      "unicode": "EF83"
+    },
+    {
+      "name": "ClosedCaption",
+      "unicode": "EF84"
+    },
+    {
+      "name": "ATPLogo",
+      "unicode": "EF85"
+    },
+    {
+      "name": "OfficeFormsLogoInverse",
+      "unicode": "EF86"
+    },
+    {
+      "name": "RecycleBin",
+      "unicode": "EF87"
+    },
+    {
+      "name": "EmptyRecycleBin",
+      "unicode": "EF88"
+    },
+    {
+      "name": "Hide2",
+      "unicode": "EF89"
+    },
+    {
+      "name": "Breadcrumb",
+      "unicode": "EF8C"
+    },
+    {
+      "name": "BirthdayCake",
+      "unicode": "EF8D"
+    },
+    {
+      "name": "TimeEntry",
+      "unicode": "EF95"
+    },
+    {
+      "name": "CRMProcesses",
+      "unicode": "EFB1"
+    },
+    {
+      "name": "PageEdit",
+      "unicode": "EFB6"
+    },
+    {
+      "name": "PageArrowRight",
+      "unicode": "EFB8"
+    },
+    {
+      "name": "PageRemove",
+      "unicode": "EFBA"
+    },
+    {
+      "name": "Database",
+      "unicode": "EFC7"
+    },
+    {
+      "name": "DataManagementSettings",
+      "unicode": "EFC8"
+    },
+    {
+      "name": "CRMServices",
+      "unicode": "EFD2"
+    },
+    {
+      "name": "EditContact",
+      "unicode": "EFD3"
+    },
+    {
+      "name": "ConnectContacts",
+      "unicode": "EFD4"
+    },
+    {
+      "name": "AppIconDefaultAdd",
+      "unicode": "EFDA"
+    },
+    {
+      "name": "AppIconDefaultList",
+      "unicode": "EFDE"
+    },
+    {
+      "name": "ActivateOrders",
+      "unicode": "EFE0"
+    },
+    {
+      "name": "DeactivateOrders",
+      "unicode": "EFE1"
+    },
+    {
+      "name": "ProductCatalog",
+      "unicode": "EFE8"
+    },
+    {
+      "name": "ScatterChart",
+      "unicode": "EFEB"
+    },
+    {
+      "name": "AccountActivity",
+      "unicode": "EFF4"
+    },
+    {
+      "name": "DocumentManagement",
+      "unicode": "EFFC"
+    },
+    {
       "name": "CRMReport",
       "unicode": "EFFE"
     },
@@ -20,6 +232,10 @@
     {
       "name": "Relationship",
       "unicode": "F003"
+    },
+    {
+      "name": "HomeVerify",
+      "unicode": "F00E"
     },
     {
       "name": "ZipFolder",
@@ -42,6 +258,10 @@
       "unicode": "F02C"
     },
     {
+      "name": "PageShared",
+      "unicode": "F02D"
+    },
+    {
       "name": "SaveAndClose",
       "unicode": "F038"
     },
@@ -58,6 +278,10 @@
       "unicode": "F056"
     },
     {
+      "name": "Compare",
+      "unicode": "F057"
+    },
+    {
       "name": "EventDate",
       "unicode": "F059"
     },
@@ -72,6 +296,10 @@
     {
       "name": "SetAction",
       "unicode": "F071"
+    },
+    {
+      "name": "ChatBot",
+      "unicode": "F08B"
     },
     {
       "name": "CaretSolidLeft",
@@ -174,240 +402,12 @@
       "unicode": "F0AC"
     },
     {
+      "name": "PhotoVideoMedia",
+      "unicode": "F0B1"
+    },
+    {
       "name": "AddFavorite",
       "unicode": "F0C8"
-    },
-    {
-      "name": "AddFavoriteFill",
-      "unicode": "F0C9"
-    },
-    {
-      "name": "BufferTimeBefore",
-      "unicode": "F0CF"
-    },
-    {
-      "name": "BufferTimeAfter",
-      "unicode": "F0D0"
-    },
-    {
-      "name": "BufferTimeBoth",
-      "unicode": "F0D1"
-    },
-    {
-      "name": "PublishContent",
-      "unicode": "F0D4"
-    },
-    {
-      "name": "CannedChat",
-      "unicode": "F0F2"
-    },
-    {
-      "name": "SkypeForBusinessLogo",
-      "unicode": "F0FC"
-    },
-    {
-      "name": "TabCenter",
-      "unicode": "F100"
-    },
-    {
-      "name": "PageCheckedin",
-      "unicode": "F104"
-    },
-    {
-      "name": "PageList",
-      "unicode": "F106"
-    },
-    {
-      "name": "ReadOutLoud",
-      "unicode": "F112"
-    },
-    {
-      "name": "CaretBottomLeftSolid8",
-      "unicode": "F121"
-    },
-    {
-      "name": "CaretBottomRightSolid8",
-      "unicode": "F122"
-    },
-    {
-      "name": "FolderHorizontal",
-      "unicode": "F12B"
-    },
-    {
-      "name": "MicrosoftStaffhubLogo",
-      "unicode": "F130"
-    },
-    {
-      "name": "GiftboxOpen",
-      "unicode": "F133"
-    },
-    {
-      "name": "StatusCircleOuter",
-      "unicode": "F136"
-    },
-    {
-      "name": "StatusCircleInner",
-      "unicode": "F137"
-    },
-    {
-      "name": "StatusCircleRing",
-      "unicode": "F138"
-    },
-    {
-      "name": "StatusTriangleOuter",
-      "unicode": "F139"
-    },
-    {
-      "name": "StatusTriangleInner",
-      "unicode": "F13A"
-    },
-    {
-      "name": "StatusTriangleExclamation",
-      "unicode": "F13B"
-    },
-    {
-      "name": "StatusCircleExclamation",
-      "unicode": "F13C"
-    },
-    {
-      "name": "StatusCircleErrorX",
-      "unicode": "F13D"
-    },
-    {
-      "name": "StatusCircleInfo",
-      "unicode": "F13F"
-    },
-    {
-      "name": "StatusCircleBlock",
-      "unicode": "F140"
-    },
-    {
-      "name": "StatusCircleBlock2",
-      "unicode": "F141"
-    },
-    {
-      "name": "StatusCircleQuestionMark",
-      "unicode": "F142"
-    },
-    {
-      "name": "StatusCircleSync",
-      "unicode": "F143"
-    },
-    {
-      "name": "Toll",
-      "unicode": "F160"
-    },
-    {
-      "name": "ExploreContentSingle",
-      "unicode": "F164"
-    },
-    {
-      "name": "CollapseContent",
-      "unicode": "F165"
-    },
-    {
-      "name": "CollapseContentSingle",
-      "unicode": "F166"
-    },
-    {
-      "name": "InfoSolid",
-      "unicode": "F167"
-    },
-    {
-      "name": "ProgressRingDots",
-      "unicode": "F16A"
-    },
-    {
-      "name": "CaloriesAdd",
-      "unicode": "F172"
-    },
-    {
-      "name": "BranchFork",
-      "unicode": "F173"
-    },
-    {
-      "name": "MobileReport",
-      "unicode": "F18A"
-    },
-    {
-      "name": "ScaleVolume",
-      "unicode": "F18C"
-    },
-    {
-      "name": "HardDriveGroup",
-      "unicode": "F18F"
-    },
-    {
-      "name": "FastMode",
-      "unicode": "F19A"
-    },
-    {
-      "name": "ToggleLeft",
-      "unicode": "F19E"
-    },
-    {
-      "name": "ToggleRight",
-      "unicode": "F19F"
-    },
-    {
-      "name": "TriangleShape",
-      "unicode": "F1A7"
-    },
-    {
-      "name": "RectangleShape",
-      "unicode": "F1A9"
-    },
-    {
-      "name": "Trophy2",
-      "unicode": "F1AE"
-    },
-    {
-      "name": "BucketColor",
-      "unicode": "F1B6"
-    },
-    {
-      "name": "BucketColorFill",
-      "unicode": "F1B7"
-    },
-    {
-      "name": "Taskboard",
-      "unicode": "F1C2"
-    },
-    {
-      "name": "SingleColumn",
-      "unicode": "F1D3"
-    },
-    {
-      "name": "DoubleColumn",
-      "unicode": "F1D4"
-    },
-    {
-      "name": "TripleColumn",
-      "unicode": "F1D5"
-    },
-    {
-      "name": "ColumnLeftTwoThirds",
-      "unicode": "F1D6"
-    },
-    {
-      "name": "ColumnRightTwoThirds",
-      "unicode": "F1D7"
-    },
-    {
-      "name": "AccessLogoFill",
-      "unicode": "F1DB"
-    },
-    {
-      "name": "AnalyticsLogo",
-      "unicode": "F1DE"
-    },
-    {
-      "name": "AnalyticsQuery",
-      "unicode": "F1DF"
-    },
-    {
-      "name": "NewAnalyticsQuery",
-      "unicode": "F1E0"
     }
   ]
 }

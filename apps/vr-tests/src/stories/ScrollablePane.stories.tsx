@@ -4,7 +4,7 @@ import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
 import { Fabric, ScrollablePane, StickyPositionType, Sticky } from 'office-ui-fabric-react';
-import { lorem } from 'office-ui-fabric-react/lib/utilities/exampleData';
+import { lorem } from '@uifabric/example-data';
 
 const colors = ['#eaeaea', '#dadada', '#d0d0d0', '#c8c8c8', '#a6a6a6', '#c7e0f4'];
 
@@ -20,7 +20,7 @@ function createContentArea(index: number) {
     <div
       key={index}
       style={{
-        backgroundColor: color
+        backgroundColor: color,
       }}
     >
       <Sticky stickyPosition={StickyPositionType.Both}>
@@ -31,7 +31,7 @@ function createContentArea(index: number) {
             fontSize: '13px',
             borderTop: '1px solid #000',
             borderBottom: '1px solid #000',
-            color: '#201f1e'
+            color: '#201f1e',
           }}
         >
           Sticky Component #{index + 1}
@@ -49,7 +49,7 @@ storiesOf('ScrollablePane', module)
       steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .executeScript(
-          "document.getElementsByClassName('ms-ScrollablePane--contentContainer')[0].scrollTop = 9999"
+          "document.getElementsByClassName('ms-ScrollablePane--contentContainer')[0].scrollTop = 9999",
         )
         .snapshot('scrolled', { cropTo: '.testWrapper' })
         .end()}
@@ -63,7 +63,7 @@ storiesOf('ScrollablePane', module)
         height: '600px',
         position: 'relative',
         maxHeight: 'inherit',
-        width: '400px'
+        width: '400px',
       }}
     >
       <Fabric>

@@ -11,14 +11,14 @@ const globalClassNames = {
   linkFlair: 'Nav-linkFlair',
   linkFlairStarted: 'is-state1',
   linkFlairBeta: 'is-state2',
-  linkFlairRelease: 'is-state3'
+  linkFlairRelease: 'is-state3',
 };
 
 const headerHeight = 50;
 const navWidth = 300;
 
 export const getStyles: IStyleFunction<IAppStyleProps, IAppStyles> = props => {
-  const { responsiveMode, theme = getTheme() } = props;
+  const { responsiveMode, theme = getTheme(), showOnlyExamples } = props;
   const isLargeDown = responsiveMode <= ResponsiveMode.large;
   return {
     root: [
@@ -32,11 +32,11 @@ export const getStyles: IStyleFunction<IAppStyleProps, IAppStyles> = props => {
             top: 0,
             minWidth: '100%',
             minHeight: '100%',
-            '-webkit-tap-highlight-color': 'transparent'
-          }
-        }
+            '-webkit-tap-highlight-color': 'transparent',
+          },
+        },
       },
-      globalClassNames.root
+      globalClassNames.root,
     ],
     headerContainer: [
       {
@@ -44,9 +44,9 @@ export const getStyles: IStyleFunction<IAppStyleProps, IAppStyles> = props => {
         top: 0,
         height: headerHeight,
         left: 0,
-        right: 0
+        right: 0,
       },
-      globalClassNames.header
+      globalClassNames.header,
     ],
     leftNavContainer: [
       {
@@ -60,16 +60,16 @@ export const getStyles: IStyleFunction<IAppStyleProps, IAppStyles> = props => {
         boxSizing: 'border-box',
         overflowX: 'hidden',
         overflowY: 'auto',
-        WebkitOverflowScrolling: 'touch'
+        WebkitOverflowScrolling: 'touch',
       },
-      globalClassNames.leftNav
+      globalClassNames.leftNav,
     ],
     content: [
       {
         position: 'absolute',
-        left: isLargeDown ? 0 : navWidth,
+        left: isLargeDown || showOnlyExamples ? 0 : navWidth,
         right: 0,
-        top: headerHeight,
+        top: !showOnlyExamples ? headerHeight : 0,
         bottom: 0,
         padding: isLargeDown ? 5 : undefined,
         overflowX: 'auto',
@@ -77,9 +77,9 @@ export const getStyles: IStyleFunction<IAppStyleProps, IAppStyles> = props => {
         // Helps to enable hardware acceleration and improve painting performance.
         transform: 'translateZ(0)',
         // Helps to enable smooth scrolling on ios devices.
-        WebkitOverflowScrolling: 'touch'
+        WebkitOverflowScrolling: 'touch',
       },
-      globalClassNames.content
+      globalClassNames.content,
     ],
     linkFlair: [
       {
@@ -96,28 +96,28 @@ export const getStyles: IStyleFunction<IAppStyleProps, IAppStyles> = props => {
         right: 20,
         top: '50%',
         padding: '2px 6px',
-        borderRadius: 2
+        borderRadius: 2,
       },
-      globalClassNames.linkFlair
+      globalClassNames.linkFlair,
     ],
     linkFlairStarted: [
       {
         background: theme.palette.yellowLight,
-        color: theme.palette.black
+        color: theme.palette.black,
       },
-      globalClassNames.linkFlairStarted
+      globalClassNames.linkFlairStarted,
     ],
     linkFlairBeta: [
       {
-        background: theme.palette.greenLight
+        background: theme.palette.greenLight,
       },
-      globalClassNames.linkFlairBeta
+      globalClassNames.linkFlairBeta,
     ],
     linkFlairRelease: [
       {
-        background: theme.palette.green
+        background: theme.palette.green,
       },
-      globalClassNames.linkFlairRelease
+      globalClassNames.linkFlairRelease,
     ],
     subComponentStyles: {
       header: {},
@@ -127,10 +127,13 @@ export const getStyles: IStyleFunction<IAppStyleProps, IAppStyles> = props => {
           top: 0,
           left: 0,
           right: 0,
-          bottom: 0
-        }
+          bottom: 0,
+        },
+        groupContent: {
+          marginBottom: 20,
+        },
       },
-      navPanel: { root: { top: headerHeight } }
-    }
+      navPanel: { root: { top: headerHeight } },
+    },
   };
 };

@@ -1,27 +1,44 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, getNativeProps, divProperties, enableBodyScroll, disableBodyScroll } from '../../Utilities';
+import {
+  classNamesFunction,
+  getNativeProps,
+  divProperties,
+  enableBodyScroll,
+  disableBodyScroll,
+  initializeComponentRef,
+} from '../../Utilities';
 import { IOverlayProps, IOverlayStyleProps, IOverlayStyles } from './Overlay.types';
 
 const getClassNames = classNamesFunction<IOverlayStyleProps, IOverlayStyles>();
 
-export class OverlayBase extends BaseComponent<IOverlayProps, {}> {
+export class OverlayBase extends React.Component<IOverlayProps, {}> {
+  private _allowTouchBodyScroll: boolean;
+
+  constructor(props: IOverlayProps) {
+    super(props);
+
+    initializeComponentRef(this);
+    const { allowTouchBodyScroll = false } = this.props;
+    this._allowTouchBodyScroll = allowTouchBodyScroll;
+  }
+
   public componentDidMount(): void {
-    disableBodyScroll();
+    !this._allowTouchBodyScroll && disableBodyScroll();
   }
 
   public componentWillUnmount(): void {
-    enableBodyScroll();
+    !this._allowTouchBodyScroll && enableBodyScroll();
   }
 
   public render(): JSX.Element {
     const { isDarkThemed: isDark, className, theme, styles } = this.props;
 
-    const divProps = getNativeProps(this.props, divProperties);
+    const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties);
 
     const classNames = getClassNames(styles!, {
       theme: theme!,
       className,
-      isDark
+      isDark,
     });
 
     return <div {...divProps} className={classNames.root} />;

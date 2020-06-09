@@ -1,19 +1,19 @@
 import * as React from 'react';
 import { Announced } from 'office-ui-fabric-react/lib/Announced';
 import { Link } from 'office-ui-fabric-react/lib/Link';
-import { DetailsList, Selection } from 'office-ui-fabric-react/lib/DetailsList';
+import { DetailsList, IDragDropEvents } from 'office-ui-fabric-react/lib/DetailsList';
+import { Selection } from 'office-ui-fabric-react/lib/Selection';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { IColumn } from 'office-ui-fabric-react/lib/DetailsList';
 import { Text } from 'office-ui-fabric-react/lib/Text';
 import { IStackTokens, Stack } from 'office-ui-fabric-react/lib/Stack';
-import { IDragDropEvents } from 'office-ui-fabric-react/lib/utilities/dragdrop/interfaces';
 import { mergeStyles, getTheme } from 'office-ui-fabric-react/lib/Styling';
 
 const _items: IFileExampleItem[] = [];
 
 const theme = getTheme();
 const dragEnterClass = mergeStyles({
-  backgroundColor: theme.palette.neutralLight
+  backgroundColor: theme.palette.neutralLight,
 });
 
 const _columns: IColumn[] = ['Name', 'Modified', 'Modified By', 'File Size'].map((name: string) => {
@@ -24,7 +24,7 @@ const _columns: IColumn[] = ['Name', 'Modified', 'Modified By', 'File Size'].map
     key: fieldName,
     minWidth: 100,
     maxWidth: 200,
-    isResizable: true
+    isResizable: true,
   };
 });
 
@@ -35,11 +35,11 @@ const _names: string[] = [
   'Roko Kolar',
   'Christian Bergqvist',
   'Valentina Lovric',
-  'Makenzie Sharett'
+  'Makenzie Sharett',
 ];
 
-function generateRandomDate(): string {
-  return new Date(new Date(2010, 0, 1).getTime() + Math.random() * (new Date().getTime() - new Date(2010, 0, 1).getTime())).toDateString();
+function getMockDateString(): string {
+  return 'Thu Jan 05 2017‌';
 }
 
 export interface IFileExampleItem {
@@ -73,16 +73,16 @@ export class AnnouncedBulkOperationsExample extends React.Component<{}, IAnnounc
         _items.push({
           key: 'item-' + i,
           name: 'Item ' + i,
-          modified: generateRandomDate(),
+          modified: getMockDateString(),
           modifiedby: _names[Math.floor(Math.random() * _names.length)],
-          filesize: Math.floor(Math.random() * 30).toString() + ' MB'
+          filesize: Math.floor(Math.random() * 30).toString() + ' MB',
         });
       }
     }
 
     this.state = {
       items: _items,
-      numberOfItems: 0
+      numberOfItems: 0,
     };
   }
 
@@ -94,8 +94,8 @@ export class AnnouncedBulkOperationsExample extends React.Component<{}, IAnnounc
       <Stack tokens={stackTokens}>
         <Text>Turn on Narrator and drag and drop the items.</Text>
         <Text>
-          Note: This example is to showcase the concept of copying, uploading, or moving many items and not fully illustrative of the real
-          world scenario.
+          Note: This example is to showcase the concept of copying, uploading, or moving many items and not fully
+          illustrative of the real world scenario.
         </Text>
         {this._renderAnnounced()}
         <MarqueeSelection selection={this._selection}>
@@ -119,7 +119,9 @@ export class AnnouncedBulkOperationsExample extends React.Component<{}, IAnnounc
   private _renderAnnounced(): JSX.Element | undefined {
     const { numberOfItems } = this.state;
     if (numberOfItems > 0) {
-      return <Announced message={`${numberOfItems} item${numberOfItems === 1 ? '' : 's'} moved`} />;
+      return (
+        <Announced message={`${numberOfItems} item${numberOfItems === 1 ? '' : 's'} moved`} aria-live={'assertive'} />
+      );
     }
   }
 
@@ -142,7 +144,7 @@ export class AnnouncedBulkOperationsExample extends React.Component<{}, IAnnounc
       onDragEnd: () => {
         this._draggedItem = undefined;
         this._draggedIndex = -1;
-      }
+      },
     };
   }
 

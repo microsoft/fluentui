@@ -6,7 +6,7 @@ import {
   IDetailsRowProps,
   IColumn,
   IGroup,
-  SelectionMode
+  SelectionMode,
 } from 'office-ui-fabric-react/lib/DetailsList';
 import { MessageBar, MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
 import { ITheme } from 'office-ui-fabric-react/lib/Styling';
@@ -22,10 +22,11 @@ interface IAccessibilityDetailsList {
   key: string;
   contrastRatio: String;
   slotPair: String;
+  colorPair: String;
 }
 
-export const AccessibilityDetailsList: React.StatelessComponent<IAccessibilityDetailsListProps> = (
-  props: IAccessibilityDetailsListProps
+export const AccessibilityDetailsList: React.FunctionComponent<IAccessibilityDetailsListProps> = (
+  props: IAccessibilityDetailsListProps,
 ) => {
   let allContrastRatioPairs = props.nonAccessiblePairs.concat(props.accessiblePairs);
   let nonAccessibleStartIndex = props.nonAccessiblePairs.length;
@@ -38,21 +39,14 @@ export const AccessibilityDetailsList: React.StatelessComponent<IAccessibilityDe
   const onRenderRow = (detailsRowProps: IDetailsRowProps | undefined): JSX.Element => {
     // Set each row's background and text color to what's specified by its respective slot rule
     if (detailsRowProps && newTheme) {
-      const currentSlotPair = detailsRowProps!.item.slotPair;
-      const pairSplit = currentSlotPair.split(' on ');
-      const currForegroundColor = pairSplit[0];
-      const currBackgroundColor = pairSplit[1];
-
       const rowStyles: Partial<IDetailsRowStyles> = {
         root: {
-          backgroundColor: (newTheme!.palette as any)[currBackgroundColor],
-          color: (newTheme!.palette as any)[currForegroundColor],
           selectors: {
             ':hover': {
-              background: 'transparent'
-            }
-          }
-        }
+              background: 'transparent',
+            },
+          },
+        },
       };
       return <DetailsRow {...detailsRowProps!} styles={rowStyles} />;
     } else {
@@ -84,7 +78,8 @@ export const AccessibilityDetailsList: React.StatelessComponent<IAccessibilityDe
     items.push({
       key: i.toString(),
       contrastRatio: allContrastRatioPairs[i].contrastRatioValue,
-      slotPair: allContrastRatioPairs[i].contrastRatioPair
+      slotPair: allContrastRatioPairs[i].contrastRatioPair,
+      colorPair: allContrastRatioPairs[i].colorPair,
     });
   }
 
@@ -94,13 +89,21 @@ export const AccessibilityDetailsList: React.StatelessComponent<IAccessibilityDe
       key: 'accessiblepairs',
       name: 'Accessible pairs',
       startIndex: nonAccessibleStartIndex,
-      count: accessiblePairsListCount
-    }
+      count: accessiblePairsListCount,
+    },
   ];
 
   columns = [
-    { key: 'contrastRatio', name: 'Contrast ratio: AA', fieldName: 'contrastRatio', minWidth: 100, maxWidth: 200, isResizable: true },
-    { key: 'slotPair', name: 'Slot pair', fieldName: 'slotPair', minWidth: 100, maxWidth: 200 }
+    {
+      key: 'contrastRatio',
+      name: 'Contrast ratio: AA',
+      fieldName: 'contrastRatio',
+      minWidth: 100,
+      maxWidth: 200,
+      isResizable: true,
+    },
+    { key: 'colorPair', name: 'Color pair', fieldName: 'colorPair', minWidth: 100, maxWidth: 300 },
+    { key: 'slotPair', name: 'Slot pair', fieldName: 'slotPair', minWidth: 100, maxWidth: 200 },
   ];
 
   return (
@@ -113,9 +116,10 @@ export const AccessibilityDetailsList: React.StatelessComponent<IAccessibilityDe
         ariaLabelForSelectAllCheckbox="Toggle selection for all items"
         ariaLabelForSelectionColumn="Toggle selection"
         selectionMode={SelectionMode.none}
+        disableSelectionZone={true}
         onRenderRow={onRenderRow}
         groupProps={{
-          showEmptyGroups: true
+          showEmptyGroups: true,
         }}
       />
     </div>

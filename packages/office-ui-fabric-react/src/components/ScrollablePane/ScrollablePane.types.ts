@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { ScrollablePaneBase } from './ScrollablePane.base';
-import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import { IStyle, ITheme } from '../../Styling';
+import { ScrollablePaneBase } from './ScrollablePane.base';
+import { Sticky } from '../Sticky/Sticky';
 
 /**
  * {@docCategory ScrollablePane}
@@ -98,10 +99,25 @@ export interface IScrollablePaneStyles {
  */
 export const ScrollbarVisibility = {
   auto: 'auto' as 'auto',
-  always: 'always' as 'always'
+  always: 'always' as 'always',
 };
 
 /**
  * {@docCategory ScrollablePane}
  */
 export type ScrollbarVisibility = typeof ScrollbarVisibility[keyof typeof ScrollbarVisibility];
+
+export interface IScrollablePaneContext {
+  scrollablePane?: {
+    subscribe: (handler: (container: HTMLElement, stickyContainer: HTMLElement) => void) => void;
+    unsubscribe: (handler: (container: HTMLElement, stickyContainer: HTMLElement) => void) => void;
+    addSticky: (sticky: Sticky) => void;
+    removeSticky: (sticky: Sticky) => void;
+    updateStickyRefHeights: () => void;
+    sortSticky: (sticky: Sticky, sortAgain?: boolean) => void;
+    notifySubscribers: (sort?: boolean) => void;
+    syncScrollSticky: (sticky: Sticky) => void;
+  };
+}
+
+export const ScrollablePaneContext = React.createContext<IScrollablePaneContext>({ scrollablePane: undefined });

@@ -9,10 +9,10 @@ export const getStyles: IStyleFunction<IPropertiesTableSetStyleProps, IPropertie
       {
         marginBottom: 20,
         overflowX: 'auto',
-        overflowY: 'inherit'
+        overflowY: 'inherit',
       },
-      'PropertiesTable'
+      'PropertiesTable',
     ],
-    tableHeader: theme.fonts.xLarge
+    tableHeader: theme.fonts.mediumPlus,
   };
 };

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DatePicker, DayOfWeek, IDatePickerStrings } from 'office-ui-fabric-react/lib/DatePicker';
 import { addMonths, addYears } from 'office-ui-fabric-react/lib/utilities/dateMath/DateMath';
-import './DatePicker.Examples.scss';
+import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 
 const today: Date = new Date(Date.now());
 const minDate: Date = addMonths(today, -1);
@@ -11,7 +11,20 @@ out-of-bounds dates to be picked or entered. In this example, the allowed dates 
 ${minDate.toLocaleDateString()}-${maxDate.toLocaleDateString()}`;
 
 const DayPickerStrings: IDatePickerStrings = {
-  months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+  months: [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ],
 
   shortMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
 
@@ -30,39 +43,31 @@ const DayPickerStrings: IDatePickerStrings = {
 
   invalidInputErrorMessage: 'Invalid date format.',
 
-  isOutOfBoundsErrorMessage: `Date must be between ${minDate.toLocaleDateString()}-${maxDate.toLocaleDateString()}`
+  isOutOfBoundsErrorMessage: `Date must be between ${minDate.toLocaleDateString()}-${maxDate.toLocaleDateString()}`,
 };
 
-export interface IDatePickerRequiredExampleState {
-  firstDayOfWeek?: DayOfWeek;
-}
+const controlClass = mergeStyleSets({
+  control: {
+    margin: '0 0 15px 0',
+    maxWidth: '300px',
+  },
+});
 
-export class DatePickerBoundedExample extends React.Component<{}, IDatePickerRequiredExampleState> {
-  constructor(props: {}) {
-    super(props);
+const firstDayOfWeek = DayOfWeek.Sunday;
 
-    this.state = {
-      firstDayOfWeek: DayOfWeek.Sunday
-    };
-  }
-
-  public render(): JSX.Element {
-    const { firstDayOfWeek } = this.state;
-
-    return (
-      <div className="docs-DatePickerExample">
-        <p>{description}</p>
-        <DatePicker
-          isRequired={false}
-          firstDayOfWeek={firstDayOfWeek}
-          strings={DayPickerStrings}
-          placeholder="Select a date..."
-          ariaLabel="Select a date"
-          minDate={minDate}
-          maxDate={maxDate}
-          allowTextInput={true}
-        />
-      </div>
-    );
-  }
-}
+export const DatePickerBoundedExample: React.FC = () => (
+  <div>
+    <p>{description}</p>
+    <DatePicker
+      className={controlClass.control}
+      isRequired={false}
+      firstDayOfWeek={firstDayOfWeek}
+      strings={DayPickerStrings}
+      placeholder="Select a date..."
+      ariaLabel="Select a date"
+      minDate={minDate}
+      maxDate={maxDate}
+      allowTextInput={true}
+    />
+  </div>
+);

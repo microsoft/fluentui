@@ -3,7 +3,7 @@ import { IAppDefinition } from '@uifabric/example-app-base';
 import { AppCustomizations } from './customizations';
 
 export const AppDefinition: IAppDefinition = {
-  appTitle: 'Fabric - React',
+  appTitle: 'Fluent UI React - Cards',
   customizations: AppCustomizations,
   testPages: [],
   examplePages: [
@@ -13,23 +13,23 @@ export const AppDefinition: IAppDefinition = {
           component: require<any>('../components/Card/CardPage').CardPage,
           key: 'Card',
           name: 'Card',
-          url: '#/examples/card'
-        }
-      ]
-    }
+          url: '#/examples/card',
+        },
+      ],
+    },
   ],
   headerLinks: [
     {
       name: 'Getting started',
-      url: '#/'
+      url: '#/',
     },
     {
       name: 'Fabric',
-      url: 'http://dev.office.com/fabric'
+      url: 'https://developer.microsoft.com/en-us/fluentui',
     },
     {
-      name: 'Github',
-      url: 'http://www.github.com/officedev'
-    }
-  ]
+      name: 'GitHub',
+      url: 'https://github.com/microsoft/fluentui',
+    },
+  ],
 };

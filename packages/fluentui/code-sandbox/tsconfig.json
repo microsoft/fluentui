@@ -1,0 +1,16 @@
+{
+  "extends": "../../../scripts/typescript/tsconfig.fluentui",
+  "compilerOptions": {
+    "composite": true,
+    "outDir": "dist/dts"
+  },
+  "include": ["src"],
+  "references": [
+    {
+      "path": "../docs-components"
+    },
+    {
+      "path": "../react-northstar"
+    }
+  ]
+}

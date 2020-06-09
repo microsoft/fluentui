@@ -4,7 +4,7 @@ import { getGlobalClassNames } from '../../Styling';
 const GlobalClassNames = {
   actions: 'ms-Dialog-actions',
   action: 'ms-Dialog-action',
-  actionsRight: 'ms-Dialog-actionsRight'
+  actionsRight: 'ms-Dialog-actionsRight',
 };
 
 export const getStyles = (props: IDialogFooterStyleProps): IDialogFooterStyles => {
@@ -20,19 +20,24 @@ export const getStyles = (props: IDialogFooterStyleProps): IDialogFooterStyles =
         width: '100%',
         minHeight: '24px',
         lineHeight: '24px',
-        margin: '20px 0 0',
+        margin: '16px 0 0',
         fontSize: '0',
 
         selectors: {
           '.ms-Button': {
-            lineHeight: 'normal'
-          }
-        }
+            lineHeight: 'normal',
+          },
+        },
       },
-      className
+      className,
     ],
 
-    action: [classNames.action],
+    action: [
+      classNames.action,
+      {
+        margin: '0 4px',
+      },
+    ],
 
     actionsRight: [
       classNames.actionsRight,
@@ -40,13 +45,7 @@ export const getStyles = (props: IDialogFooterStyleProps): IDialogFooterStyles =
         textAlign: 'right',
         marginRight: '-4px',
         fontSize: '0',
-
-        selectors: {
-          $action: {
-            margin: '0 4px'
-          }
-        }
-      }
-    ]
+      },
+    ],
   };
 };

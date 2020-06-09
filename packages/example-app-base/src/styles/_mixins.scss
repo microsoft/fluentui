@@ -16,7 +16,7 @@
 
   // When the element that uses this mixin is in a :focus state, add a pseudo-element to
   // create a border. Only do this when it's a child of ms-Fabric in a focusVisible state.
-  :global(.ms-Fabric.is-focusVisible) &:focus:after {
+  :global(.ms-Fabric--isFocusVisible) &:focus:after {
     content: '';
     position: absolute;
     top: $inset + 1px;
@@ -32,5 +32,13 @@
     // Make the content not respond to mouse/touch events.
     // Reference: https://css-tricks.com/almanac/properties/p/pointer-events/
     pointer-events: none;
+  }
+}
+
+// High contrast mode mixins
+// @todo: Should be defined in common base
+@mixin high-contrast {
+  @media screen and (-ms-high-contrast: active) {
+    @content;
   }
 }

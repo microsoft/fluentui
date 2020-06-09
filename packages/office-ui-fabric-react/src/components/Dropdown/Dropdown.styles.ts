@@ -1,7 +1,7 @@
 import { IDropdownStyles, IDropdownStyleProps } from './Dropdown.types';
-import { IStyleFunction } from '../../Utilities';
+import { IStyleFunction, IsFocusVisibleClassName } from '../../Utilities';
+import { RectangleEdge } from '../../utilities/positioning';
 import {
-  FontSizes,
   FontWeights,
   HighContrastSelector,
   IRawStyle,
@@ -10,7 +10,7 @@ import {
   normalize,
   HighContrastSelectorWhite,
   getScreenSelector,
-  ScreenWidthMinMedium
+  ScreenWidthMinMedium,
 } from '../../Styling';
 
 const GlobalClassNames = {
@@ -28,16 +28,16 @@ const GlobalClassNames = {
   dropdownOptionText: 'ms-Dropdown-optionText',
   dropdownItemHeader: 'ms-Dropdown-header',
   titleIsPlaceHolder: 'ms-Dropdown-titleIsPlaceHolder',
-  titleHasError: 'ms-Dropdown-title--hasError'
+  titleHasError: 'ms-Dropdown-title--hasError',
 };
 
 const DROPDOWN_HEIGHT = 32;
-const DROPDOWN_ITEM_HEIGHT = 32;
+const DROPDOWN_ITEM_HEIGHT = 36;
 
 const highContrastAdjustMixin = {
   [`${HighContrastSelector}, ${HighContrastSelectorWhite.replace('@media ', '')}`]: {
-    MsHighContrastAdjust: 'none'
-  }
+    MsHighContrastAdjust: 'none',
+  },
 };
 
 const highContrastItemAndTitleStateMixin: IRawStyle = {
@@ -46,22 +46,17 @@ const highContrastItemAndTitleStateMixin: IRawStyle = {
       backgroundColor: 'Highlight',
       borderColor: 'Highlight',
       color: 'HighlightText',
-      selectors: {
-        ':hover': {
-          color: 'HighlightText' // overrides the hover styling for buttons that are also selected
-        }
-      }
     },
-    ...highContrastAdjustMixin
-  }
+    ...highContrastAdjustMixin,
+  },
 };
 
 const highContrastBorderState: IRawStyle = {
   selectors: {
     [HighContrastSelector]: {
-      borderColor: 'Highlight'
-    }
-  }
+      borderColor: 'Highlight',
+    },
+  },
 };
 
 const MinimumScreenSelector = getScreenSelector(0, ScreenWidthMinMedium);
@@ -77,7 +72,8 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
     required,
     isRenderingPlaceholder,
     panelClassName,
-    calloutClassName
+    calloutClassName,
+    calloutRenderEdge,
   } = props;
 
   if (!theme) {
@@ -85,18 +81,18 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
   }
 
   const globalClassnames = getGlobalClassNames(GlobalClassNames, theme);
-  const { palette, semanticColors } = theme;
+  const { palette, semanticColors, effects, fonts } = theme;
 
   const rootHoverFocusActiveSelectorNeutralDarkMixin: IStyle = {
-    color: semanticColors.menuItemTextHovered
+    color: semanticColors.menuItemTextHovered,
   };
 
-  const rootHoverFocusActiveSelectorBodySubtextMixin: IStyle = {
-    color: semanticColors.bodySubtext
+  const rootHoverFocusActiveSelectorNeutralPrimaryMixin: IStyle = {
+    color: semanticColors.menuItemText,
   };
 
   const borderColorError: IStyle = {
-    borderColor: semanticColors.errorText
+    borderColor: semanticColors.errorText,
   };
 
   const dropdownItemStyle: IStyle = [
@@ -105,108 +101,185 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
       backgroundColor: 'transparent',
       boxSizing: 'border-box',
       cursor: 'pointer',
-      display: 'block',
-      padding: '4px 16px',
+      display: 'flex',
+      alignItems: 'center',
+      padding: '0 8px',
       width: '100%',
       minHeight: DROPDOWN_ITEM_HEIGHT,
       lineHeight: 20,
-      height: 'auto',
+      height: 0,
       position: 'relative',
       border: '1px solid transparent',
+      borderRadius: 0,
       wordWrap: 'break-word',
       overflowWrap: 'break-word',
-      textAlign: 'left'
-    }
+      textAlign: 'left',
+    },
   ];
+
+  const selectedItemBackgroundColor = semanticColors.menuItemBackgroundPressed;
+
+  const itemSelectors = (isSelected: boolean = false) => {
+    return {
+      selectors: {
+        '&:hover:focus': [
+          {
+            color: semanticColors.menuItemTextHovered,
+            backgroundColor: !isSelected ? semanticColors.menuItemBackgroundHovered : selectedItemBackgroundColor,
+          },
+          highContrastItemAndTitleStateMixin,
+        ],
+        '&:focus': [
+          {
+            backgroundColor: !isSelected ? 'transparent' : selectedItemBackgroundColor,
+          },
+          highContrastItemAndTitleStateMixin,
+        ],
+        '&:active': [
+          {
+            color: semanticColors.menuItemTextHovered,
+            backgroundColor: !isSelected ? semanticColors.menuBackground : semanticColors.menuItemBackgroundHovered,
+          },
+          highContrastItemAndTitleStateMixin,
+        ],
+        [HighContrastSelector]: {
+          borderColor: 'Window',
+        },
+        [`.${IsFocusVisibleClassName} &:focus:after`]: {
+          left: 0,
+          top: 0,
+          bottom: 0,
+          right: 0,
+        },
+      },
+    };
+  };
 
   const dropdownItemSelected: IStyle = [
     ...dropdownItemStyle,
     {
-      backgroundColor: palette.neutralQuaternaryAlt,
-      color: palette.black
+      backgroundColor: selectedItemBackgroundColor,
+      color: semanticColors.menuItemTextHovered,
     },
-    highContrastItemAndTitleStateMixin
+    itemSelectors(true),
+    highContrastItemAndTitleStateMixin,
   ];
 
   const dropdownItemDisabled: IStyle = [
     ...dropdownItemStyle,
     {
       color: semanticColors.disabledText,
-      cursor: 'default'
-    }
+      cursor: 'default',
+      selectors: {
+        [HighContrastSelector]: {
+          color: 'GrayText',
+        },
+      },
+    },
   ];
 
+  const titleOpenBorderRadius =
+    calloutRenderEdge === RectangleEdge.bottom
+      ? `${effects.roundedCorner2} ${effects.roundedCorner2} 0 0`
+      : `0 0 ${effects.roundedCorner2} ${effects.roundedCorner2}`;
+
+  const calloutOpenBorderRadius =
+    calloutRenderEdge === RectangleEdge.bottom
+      ? `0 0 ${effects.roundedCorner2} ${effects.roundedCorner2}`
+      : `${effects.roundedCorner2} ${effects.roundedCorner2} 0 0`;
+
   return {
-    root: globalClassnames.root,
+    root: [globalClassnames.root, className],
     label: globalClassnames.label,
     dropdown: [
       globalClassnames.dropdown,
       normalize,
+      fonts.medium,
       {
-        ...theme.fonts.medium,
         color: semanticColors.menuItemText,
+        borderColor: semanticColors.focusBorder,
         position: 'relative',
         outline: 0,
         userSelect: 'none',
         selectors: {
           ['&:hover .' + globalClassnames.title]: [
             !disabled && rootHoverFocusActiveSelectorNeutralDarkMixin,
-            { borderColor: palette.neutralDark },
-            highContrastBorderState
+            { borderColor: isOpen ? palette.neutralSecondary : palette.neutralPrimary },
+            highContrastBorderState,
           ],
           ['&:focus .' + globalClassnames.title]: [
             !disabled && rootHoverFocusActiveSelectorNeutralDarkMixin,
+            { selectors: { [HighContrastSelector]: { color: 'Highlight' } } },
+          ],
+
+          ['&:focus:after']: [
             {
-              borderColor:
-                palette.themePrimary /* see https://github.com/OfficeDev/office-ui-fabric-react/pull/9182 for semantic color disc */
+              pointerEvents: 'none',
+              content: "''",
+              position: 'absolute',
+              boxSizing: 'border-box',
+              top: '0px',
+              left: '0px',
+              width: '100%',
+              height: '100%',
+              // see https://github.com/microsoft/fluentui/pull/9182 for semantic color disc
+              border: !disabled ? `2px solid ${palette.themePrimary}` : 'none',
+              borderRadius: '2px',
+
+              selectors: {
+                [HighContrastSelector]: {
+                  borderColor: 'Highlight',
+                  color: 'Highlight',
+                },
+              },
             },
-            highContrastItemAndTitleStateMixin
           ],
           ['&:active .' + globalClassnames.title]: [
             !disabled && rootHoverFocusActiveSelectorNeutralDarkMixin,
-            { borderColor: palette.themeDark },
-            highContrastBorderState
+            { borderColor: palette.themePrimary },
+            highContrastBorderState,
           ],
 
-          ['&:hover .' + globalClassnames.caretDown]: !disabled && rootHoverFocusActiveSelectorNeutralDarkMixin,
+          ['&:hover .' + globalClassnames.caretDown]: !disabled && rootHoverFocusActiveSelectorNeutralPrimaryMixin,
           ['&:focus .' + globalClassnames.caretDown]: [
-            !disabled && rootHoverFocusActiveSelectorNeutralDarkMixin,
-            { selectors: { [HighContrastSelector]: { color: 'HighlightText' }, ...highContrastAdjustMixin } }
+            !disabled && rootHoverFocusActiveSelectorNeutralPrimaryMixin,
+            { selectors: { [HighContrastSelector]: { color: 'Highlight' } } },
           ],
-          ['&:active .' + globalClassnames.caretDown]: !disabled && rootHoverFocusActiveSelectorNeutralDarkMixin,
+          ['&:active .' + globalClassnames.caretDown]: !disabled && rootHoverFocusActiveSelectorNeutralPrimaryMixin,
 
-          ['&:hover .' + globalClassnames.titleIsPlaceHolder]: rootHoverFocusActiveSelectorBodySubtextMixin,
-          ['&:focus .' + globalClassnames.titleIsPlaceHolder]: rootHoverFocusActiveSelectorBodySubtextMixin,
-          ['&:active .' + globalClassnames.titleIsPlaceHolder]: rootHoverFocusActiveSelectorBodySubtextMixin,
+          ['&:hover .' + globalClassnames.titleIsPlaceHolder]:
+            !disabled && rootHoverFocusActiveSelectorNeutralPrimaryMixin,
+          ['&:focus .' + globalClassnames.titleIsPlaceHolder]:
+            !disabled && rootHoverFocusActiveSelectorNeutralPrimaryMixin,
+          ['&:active .' + globalClassnames.titleIsPlaceHolder]:
+            !disabled && rootHoverFocusActiveSelectorNeutralPrimaryMixin,
 
           ['&:hover .' + globalClassnames.titleHasError]: borderColorError,
           ['&:active .' + globalClassnames.titleHasError]: borderColorError,
-          ['&:focus .' + globalClassnames.titleHasError]: borderColorError
-        }
+        },
       },
-      className,
       isOpen && 'is-open',
       disabled && 'is-disabled',
       required && 'is-required',
       required &&
         !hasLabel && {
           selectors: {
-            ':after': {
+            ':before': {
               content: `'*'`,
               color: semanticColors.errorText,
               position: 'absolute',
               top: -5,
-              right: -10
+              right: -10,
             },
             [HighContrastSelector]: {
               selectors: {
                 ':after': {
-                  right: -14 // moving the * 4 pixel to right to alleviate border clipping in HC mode.
-                }
-              }
-            }
-          }
-        }
+                  right: -14, // moving the * 4 pixel to right to alleviate border clipping in HC mode.
+                },
+              },
+            },
+          },
+        },
     ],
     title: [
       globalClassnames.title,
@@ -216,15 +289,16 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
         borderWidth: 1,
         borderStyle: 'solid',
         borderColor: semanticColors.inputBorder,
+        borderRadius: isOpen ? titleOpenBorderRadius : effects.roundedCorner2,
         cursor: 'pointer',
         display: 'block',
         height: DROPDOWN_HEIGHT,
         lineHeight: DROPDOWN_HEIGHT - 2,
-        padding: `0 ${DROPDOWN_HEIGHT}px 0 12px`,
+        padding: `0 28px 0 8px`,
         position: 'relative',
         overflow: 'hidden',
         whiteSpace: 'nowrap',
-        textOverflow: 'ellipsis'
+        textOverflow: 'ellipsis',
       },
       isRenderingPlaceholder && [globalClassnames.titleIsPlaceHolder, { color: semanticColors.inputPlaceholderText }],
       hasError && [globalClassnames.titleHasError, borderColorError],
@@ -233,58 +307,42 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
         border: 'none',
         color: semanticColors.disabledText,
         cursor: 'default',
-        selectors: { [HighContrastSelector]: { border: '1px solid GrayText', color: 'GrayText' } }
-      }
+        selectors: { [HighContrastSelector]: { border: '1px solid GrayText', color: 'GrayText' } },
+      },
     ],
     caretDownWrapper: [
       globalClassnames.caretDownWrapper,
       {
         position: 'absolute',
         top: 1,
-        right: 12,
+        right: 8,
         height: DROPDOWN_HEIGHT,
-        lineHeight: DROPDOWN_HEIGHT - 2 // height minus the border
+        lineHeight: DROPDOWN_HEIGHT - 2, // height minus the border
       },
       !disabled && {
-        cursor: 'pointer'
-      }
+        cursor: 'pointer',
+      },
     ],
     caretDown: [
       globalClassnames.caretDown,
-      { color: semanticColors.bodySubtext, fontSize: FontSizes.small, pointerEvents: 'none' },
-      disabled && { color: semanticColors.disabledText, selectors: { [HighContrastSelector]: { color: 'GrayText' } } }
+      { color: palette.neutralSecondary, fontSize: fonts.small.fontSize, pointerEvents: 'none' },
+      disabled && { color: semanticColors.disabledText, selectors: { [HighContrastSelector]: { color: 'GrayText' } } },
     ],
     errorMessage: { color: semanticColors.errorText, ...theme.fonts.small, paddingTop: 5 },
     callout: [
       globalClassnames.callout,
       {
-        boxShadow: '0 0 2px 0 rgba(0,0,0,0.2)',
-        border: `1px solid ${semanticColors.variantBorder}`
+        boxShadow: effects.elevation8,
+        borderRadius: calloutOpenBorderRadius,
+        selectors: {
+          ['.ms-Callout-main']: { borderRadius: calloutOpenBorderRadius },
+        },
       },
-      calloutClassName
+      calloutClassName,
     ],
     dropdownItemsWrapper: { selectors: { '&:focus': { outline: 0 } } },
     dropdownItems: [globalClassnames.dropdownItems, { display: 'block' }],
-    dropdownItem: [
-      ...dropdownItemStyle,
-      {
-        selectors: {
-          [HighContrastSelector]: {
-            borderColor: 'Window'
-          },
-          '&:hover': {
-            color: 'inherit'
-          },
-          '&:focus': {
-            backgroundColor: semanticColors.listItemBackgroundHovered
-          },
-          '&:active': {
-            backgroundColor: semanticColors.listHeaderBackgroundHovered,
-            color: palette.black
-          }
-        }
-      }
-    ],
+    dropdownItem: [...dropdownItemStyle, itemSelectors()],
     dropdownItemSelected: dropdownItemSelected,
     dropdownItemDisabled: dropdownItemDisabled,
     dropdownItemSelectedAndDisabled: [dropdownItemSelected, dropdownItemDisabled, { backgroundColor: 'transparent' }],
@@ -300,13 +358,13 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
         maxWidth: '100%',
         wordWrap: 'break-word',
         overflowWrap: 'break-word',
-        margin: '1px'
-      }
+        margin: '1px',
+      },
     ],
     dropdownItemHeader: [
       globalClassnames.dropdownItemHeader,
       {
-        ...theme.fonts.medium,
+        ...fonts.medium,
         fontWeight: FontWeights.semibold,
         color: semanticColors.menuHeader,
         background: 'none',
@@ -315,28 +373,36 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
         height: DROPDOWN_ITEM_HEIGHT,
         lineHeight: DROPDOWN_ITEM_HEIGHT,
         cursor: 'default',
-        padding: '0px 16px',
+        padding: '0 8px',
         userSelect: 'none',
-        textAlign: 'left'
-      }
+        textAlign: 'left',
+      },
     ],
     subComponentStyles: {
       label: { root: { display: 'inline-block' } },
+      multiSelectItem: {
+        root: {
+          padding: 0,
+        },
+        label: {
+          alignSelf: 'stretch',
+          padding: '0 8px',
+          width: '100%',
+        },
+      },
       panel: {
         root: [panelClassName],
         main: {
-          // Force drop shadow even under medium breakpoint
-          boxShadow: '-30px 0px 30px -30px rgba(0,0,0,0.2)',
           selectors: {
             // In case of extra small screen sizes
             [MinimumScreenSelector]: {
               // panelWidth xs
-              width: 272
-            }
-          }
+              width: 272,
+            },
+          },
         },
-        contentInner: { padding: '0 0 20px' }
-      }
-    }
+        contentInner: { padding: '0 0 20px' },
+      },
+    },
   };
 };

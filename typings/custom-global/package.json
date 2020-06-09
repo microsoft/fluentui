@@ -1,0 +1,11 @@
+{
+  "name": "custom-global",
+  "version": "7.0.0",
+  "private": true,
+  "description": "Internal custom global types for Fluent UI packages",
+  "main": "",
+  "types": "index.d.ts",
+  "dependencies": {
+    "@types/webpack-env": "1.15.1"
+  }
+}

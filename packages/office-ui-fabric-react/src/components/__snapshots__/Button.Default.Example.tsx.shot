@@ -3,322 +3,272 @@
 exports[`Component Examples renders Button.Default.Example.tsx correctly 1`] = `
 <div
   className=
-      ms-BasicButtonsTwoUp
+      ms-Stack
       {
+        box-sizing: border-box;
         display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        height: auto;
+        width: auto;
       }
       & > * {
-        flex-grow: 1;
+        text-overflow: ellipsis;
       }
-      & .ms-Label {
-        margin-bottom: 10px;
+      & > *:not(:first-child) {
+        margin-left: 40px;
+      }
+      & > *:not(.ms-StackItem) {
+        flex-shrink: 1;
       }
 >
-  <div>
-    <label
+  <button
+    className=
+        ms-Button
+        ms-Button--default
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          background-color: #ffffff;
+          border-radius: 2px;
+          border: 1px solid #8a8886;
+          box-sizing: border-box;
+          color: #323130;
+          cursor: pointer;
+          display: inline-block;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          height: 32px;
+          min-width: 80px;
+          outline: transparent;
+          padding-bottom: 0;
+          padding-left: 16px;
+          padding-right: 16px;
+          padding-top: 0;
+          position: relative;
+          text-align: center;
+          text-decoration: none;
+          user-select: none;
+        }
+        &::-moz-focus-inner {
+          border: 0;
+        }
+        .ms-Fabric--isFocusVisible &:focus:after {
+          border: 1px solid transparent;
+          bottom: 2px;
+          content: "";
+          left: 2px;
+          outline: 1px solid #605e5c;
+          position: absolute;
+          right: 2px;
+          top: 2px;
+          z-index: 1;
+        }
+        @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+          border: none;
+          bottom: -2px;
+          left: -2px;
+          outline-color: ButtonText;
+          right: -2px;
+          top: -2px;
+        }
+        &:active > * {
+          left: 0px;
+          position: relative;
+          top: 0px;
+        }
+        &:hover {
+          background-color: #f3f2f1;
+          color: #201f1e;
+        }
+        @media screen and (-ms-high-contrast: active){&:hover {
+          border-color: Highlight;
+          color: Highlight;
+        }
+        &:active {
+          background-color: #edebe9;
+          color: #201f1e;
+        }
+    data-is-focusable={true}
+    onClick={[Function]}
+    onKeyDown={[Function]}
+    onKeyPress={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseUp={[Function]}
+    type="button"
+  >
+    <span
       className=
-          ms-Label
+          ms-Button-flexContainer
           {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            box-shadow: none;
-            box-sizing: border-box;
-            color: #333333;
-            display: block;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 400;
-            margin-bottom: 0px;
-            margin-left: 0px;
-            margin-right: 0px;
-            margin-top: 0px;
-            overflow-wrap: break-word;
-            padding-bottom: 5px;
-            padding-left: 0;
-            padding-right: 0;
-            padding-top: 5px;
-            word-wrap: break-word;
+            align-items: center;
+            display: flex;
+            flex-wrap: nowrap;
+            height: 100%;
+            justify-content: center;
           }
+      data-automationid="splitbuttonprimary"
     >
-      Standard
-    </label>
-    <button
-      className=
-          ms-Button
-          ms-Button--default
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            background-color: #f4f4f4;
-            border-radius: 0px;
-            border: 1px solid transparent;
-            box-sizing: border-box;
-            color: #333333;
-            cursor: pointer;
-            display: inline-block;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 400;
-            height: 32px;
-            margin-bottom: 0px;
-            margin-left: 0px;
-            margin-right: 0px;
-            margin-top: 0px;
-            min-width: 80px;
-            outline: transparent;
-            padding-bottom: 0;
-            padding-left: 16px;
-            padding-right: 16px;
-            padding-top: 0;
-            position: relative;
-            text-align: center;
-            text-decoration: none;
-            user-select: none;
-            vertical-align: top;
-          }
-          &::-moz-focus-inner {
-            border: 0;
-          }
-          .ms-Fabric--isFocusVisible &:focus:after {
-            border: 1px solid #ffffff;
-            bottom: 0px;
-            content: "";
-            left: 0px;
-            outline: 1px solid #666666;
-            position: absolute;
-            right: 0px;
-            top: 0px;
-            z-index: 1;
-          }
-          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-            border: none;
-            bottom: -2px;
-            left: -2px;
-            outline-color: ButtonText;
-            right: -2px;
-            top: -2px;
-          }
-          &:active > * {
-            left: 0px;
-            position: relative;
-            top: 0px;
-          }
-          &:hover {
-            background-color: #eaeaea;
-            color: #212121;
-          }
-          @media screen and (-ms-high-contrast: active){&:hover {
-            border-color: Highlight;
-            color: Highlight;
-          }
-          &:active {
-            background-color: #c8c8c8;
-            color: #212121;
-          }
-      data-automation-id="test"
-      data-is-focusable={true}
-      onClick={[Function]}
-      onKeyDown={[Function]}
-      onKeyPress={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseUp={[Function]}
-      type="button"
-    >
-      <div
+      <span
         className=
-            ms-Button-flexContainer
+            ms-Button-textContainer
             {
-              align-items: center;
-              display: flex;
-              flex-wrap: nowrap;
-              height: 100%;
-              justify-content: center;
+              display: block;
+              flex-grow: 1;
             }
       >
-        <div
+        <span
           className=
-              ms-Button-textContainer
+              ms-Button-label
               {
-                flex-grow: 1;
+                display: block;
+                font-weight: 600;
+                line-height: 100%;
+                margin-bottom: 0;
+                margin-left: 4px;
+                margin-right: 4px;
+                margin-top: 0;
               }
+          id="id__0"
         >
-          <div
-            className=
-                ms-Button-label
-                {
-                  font-weight: 600;
-                  line-height: 100%;
-                  margin-bottom: 0;
-                  margin-left: 4px;
-                  margin-right: 4px;
-                  margin-top: 0;
-                }
-            id="id__0"
-          >
-            Button
-          </div>
-        </div>
-      </div>
-    </button>
-  </div>
-  <div>
-    <label
+          Standard
+        </span>
+      </span>
+    </span>
+  </button>
+  <button
+    className=
+        ms-Button
+        ms-Button--primary
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          background-color: #0078d4;
+          border-radius: 2px;
+          border: 1px solid #0078d4;
+          box-sizing: border-box;
+          color: #ffffff;
+          cursor: pointer;
+          display: inline-block;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          height: 32px;
+          min-width: 80px;
+          outline: transparent;
+          padding-bottom: 0;
+          padding-left: 16px;
+          padding-right: 16px;
+          padding-top: 0;
+          position: relative;
+          text-align: center;
+          text-decoration: none;
+          user-select: none;
+        }
+        &::-moz-focus-inner {
+          border: 0;
+        }
+        .ms-Fabric--isFocusVisible &:focus:after {
+          border: none;
+          bottom: 2px;
+          content: "";
+          left: 2px;
+          outline-color: #ffffff;
+          outline: 1px solid #605e5c;
+          position: absolute;
+          right: 2px;
+          top: 2px;
+          z-index: 1;
+        }
+        @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+          border: none;
+          bottom: -2px;
+          left: -2px;
+          outline-color: ButtonText;
+          right: -2px;
+          top: -2px;
+        }
+        &:active > * {
+          left: 0px;
+          position: relative;
+          top: 0px;
+        }
+        @media screen and (-ms-high-contrast: active){& {
+          -ms-high-contrast-adjust: none;
+          background-color: WindowText;
+          border-color: WindowText;
+          color: Window;
+        }
+        &:hover {
+          background-color: #106ebe;
+          border: 1px solid #106ebe;
+          color: #ffffff;
+        }
+        @media screen and (-ms-high-contrast: active){&:hover {
+          background-color: Highlight;
+          border-color: Highlight;
+          color: Window;
+        }
+        &:active {
+          background-color: #005a9e;
+          border: 1px solid #005a9e;
+          color: #ffffff;
+        }
+        @media screen and (-ms-high-contrast: active){&:active {
+          -ms-high-contrast-adjust: none;
+          background-color: WindowText;
+          border-color: WindowText;
+          color: Window;
+        }
+    data-is-focusable={true}
+    onClick={[Function]}
+    onKeyDown={[Function]}
+    onKeyPress={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseUp={[Function]}
+    type="button"
+  >
+    <span
       className=
-          ms-Label
+          ms-Button-flexContainer
           {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            box-shadow: none;
-            box-sizing: border-box;
-            color: #333333;
-            display: block;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 400;
-            margin-bottom: 0px;
-            margin-left: 0px;
-            margin-right: 0px;
-            margin-top: 0px;
-            overflow-wrap: break-word;
-            padding-bottom: 5px;
-            padding-left: 0;
-            padding-right: 0;
-            padding-top: 5px;
-            word-wrap: break-word;
+            align-items: center;
+            display: flex;
+            flex-wrap: nowrap;
+            height: 100%;
+            justify-content: center;
           }
+      data-automationid="splitbuttonprimary"
     >
-      Primary
-    </label>
-    <button
-      className=
-          ms-Button
-          ms-Button--primary
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            background-color: #0078d4;
-            border-radius: 0px;
-            border: 1px solid transparent;
-            box-sizing: border-box;
-            color: #ffffff;
-            cursor: pointer;
-            display: inline-block;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 400;
-            height: 32px;
-            margin-bottom: 0px;
-            margin-left: 0px;
-            margin-right: 0px;
-            margin-top: 0px;
-            min-width: 80px;
-            outline: transparent;
-            padding-bottom: 0;
-            padding-left: 16px;
-            padding-right: 16px;
-            padding-top: 0;
-            position: relative;
-            text-align: center;
-            text-decoration: none;
-            user-select: none;
-            vertical-align: top;
-          }
-          &::-moz-focus-inner {
-            border: 0;
-          }
-          .ms-Fabric--isFocusVisible &:focus:after {
-            border: 1px solid #ffffff;
-            bottom: 0px;
-            content: "";
-            left: 0px;
-            outline: 1px solid #666666;
-            position: absolute;
-            right: 0px;
-            top: 0px;
-            z-index: 1;
-          }
-          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-            border: none;
-            bottom: -2px;
-            left: -2px;
-            outline-color: ButtonText;
-            right: -2px;
-            top: -2px;
-          }
-          &:active > * {
-            left: 0px;
-            position: relative;
-            top: 0px;
-          }
-          @media screen and (-ms-high-contrast: active){& {
-            -ms-high-contrast-adjust: none;
-            background-color: WindowText;
-            color: Window;
-          }
-          &:hover {
-            background-color: #106ebe;
-            color: #ffffff;
-          }
-          @media screen and (-ms-high-contrast: active){&:hover {
-            background-color: Highlight;
-            color: Window;
-          }
-          &:active {
-            background-color: #005a9e;
-            color: #ffffff;
-          }
-          @media screen and (-ms-high-contrast: active){&:active {
-            -ms-high-contrast-adjust: none;
-            background-color: WindowText;
-            color: Window;
-          }
-      data-automation-id="test"
-      data-is-focusable={true}
-      onClick={[Function]}
-      onKeyDown={[Function]}
-      onKeyPress={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseUp={[Function]}
-      type="button"
-    >
-      <div
+      <span
         className=
-            ms-Button-flexContainer
+            ms-Button-textContainer
             {
-              align-items: center;
-              display: flex;
-              flex-wrap: nowrap;
-              height: 100%;
-              justify-content: center;
+              display: block;
+              flex-grow: 1;
             }
       >
-        <div
+        <span
           className=
-              ms-Button-textContainer
+              ms-Button-label
               {
-                flex-grow: 1;
+                display: block;
+                font-weight: 600;
+                line-height: 100%;
+                margin-bottom: 0;
+                margin-left: 4px;
+                margin-right: 4px;
+                margin-top: 0;
               }
+          id="id__3"
         >
-          <div
-            className=
-                ms-Button-label
-                {
-                  font-weight: 600;
-                  line-height: 100%;
-                  margin-bottom: 0;
-                  margin-left: 4px;
-                  margin-right: 4px;
-                  margin-top: 0;
-                }
-            id="id__3"
-          >
-            Button
-          </div>
-        </div>
-      </div>
-    </button>
-  </div>
+          Primary
+        </span>
+      </span>
+    </span>
+  </button>
 </div>
 `;

@@ -1,5 +1,12 @@
 import { IPivotStyleProps, IPivotStyles } from './Pivot.types';
-import { AnimationVariables, getGlobalClassNames, HighContrastSelector, IStyle, normalize, FontSizes, FontWeights } from '../../Styling';
+import {
+  AnimationVariables,
+  getGlobalClassNames,
+  HighContrastSelector,
+  IStyle,
+  normalize,
+  FontWeights,
+} from '../../Styling';
 import { IsFocusVisibleClassName } from '../../Utilities';
 
 const globalClassNames = {
@@ -11,131 +18,136 @@ const globalClassNames = {
   root: 'ms-Pivot',
   rootIsLarge: 'ms-Pivot--large',
   rootIsTabs: 'ms-Pivot--tabs',
-  text: 'ms-Pivot-text'
+  text: 'ms-Pivot-text',
 };
 
 const linkStyles = (props: IPivotStyleProps): IStyle[] => {
   const { rootIsLarge, rootIsTabs } = props;
-  const { palette, semanticColors } = props.theme;
+  const { semanticColors, fonts } = props.theme;
   return [
+    fonts.medium,
     {
       color: semanticColors.actionLink,
       display: 'inline-block',
-      fontSize: FontSizes.medium,
-      fontWeight: FontWeights.regular,
-      lineHeight: '40px',
-      marginRight: '8px',
+      lineHeight: 44,
+      height: 44,
+      marginRight: 8,
       padding: '0 8px',
       textAlign: 'center',
       position: 'relative',
       backgroundColor: 'transparent',
       border: 0,
+      borderRadius: 0,
       selectors: {
         ':before': {
           backgroundColor: 'transparent',
           bottom: 0,
           content: '""',
-          height: '2px',
-          left: '8px',
+          height: 2,
+          left: 8,
           position: 'absolute',
-          right: '8px',
-          transition: `background-color ${AnimationVariables.durationValue2} ${AnimationVariables.easeFunction2}`
+          right: 8,
+          transition: `left ${AnimationVariables.durationValue2} ${AnimationVariables.easeFunction2},
+                      right ${AnimationVariables.durationValue2} ${AnimationVariables.easeFunction2}`,
         },
         ':after': {
           color: 'transparent',
           content: 'attr(data-content)',
           display: 'block',
           fontWeight: FontWeights.bold,
-          height: '1px',
+          height: 1,
           overflow: 'hidden',
-          visibility: 'hidden'
+          visibility: 'hidden',
         },
         ':hover': {
-          color: semanticColors.actionLinkHovered,
-          cursor: 'pointer'
+          backgroundColor: semanticColors.buttonBackgroundHovered,
+          color: semanticColors.buttonTextHovered,
+          cursor: 'pointer',
+        },
+        ':active': {
+          backgroundColor: semanticColors.buttonBackgroundPressed,
+          color: semanticColors.buttonTextHovered,
         },
         ':focus': {
-          outline: 'none'
+          outline: 'none',
         },
         [`.${IsFocusVisibleClassName} &:focus`]: {
-          outline: `1px solid ${semanticColors.focusBorder}`
+          outline: `1px solid ${semanticColors.focusBorder}`,
         },
         [`.${IsFocusVisibleClassName} &:focus:after`]: {
           content: 'attr(data-content)',
           position: 'relative',
-          border: 0
-        }
-      }
+          border: 0,
+        },
+      },
     },
     rootIsLarge && {
-      fontSize: FontSizes.large
+      fontSize: fonts.large.fontSize,
     },
     rootIsTabs && [
       {
         marginRight: 0,
-        height: '40px',
-        lineHeight: '40px',
-        backgroundColor: palette.neutralLighter,
+        height: 44,
+        lineHeight: 44,
+        backgroundColor: semanticColors.buttonBackground,
         padding: '0 10px',
         verticalAlign: 'top',
         selectors: {
           ':focus': {
-            outlineOffset: '-1px'
+            outlineOffset: '-1px',
           },
           [`.${IsFocusVisibleClassName} &:focus::before`]: {
             height: 'auto',
             background: 'transparent',
-            transition: 'none'
-          }
-        }
-      }
-    ]
+            transition: 'none',
+          },
+        },
+      },
+    ],
   ];
 };
 
 export const getStyles = (props: IPivotStyleProps): IPivotStyles => {
   const { className, rootIsLarge, rootIsTabs, theme } = props;
-  const { palette, semanticColors } = theme;
+  const { semanticColors, fonts } = theme;
 
   const classNames = getGlobalClassNames(globalClassNames, theme);
 
   return {
     root: [
       classNames.root,
-      theme.fonts.medium,
+      fonts.medium,
       normalize,
       {
-        fontSize: FontSizes.medium,
-        fontWeight: FontWeights.regular,
         position: 'relative',
-        color: palette.themePrimary,
-        whiteSpace: 'nowrap'
+        color: semanticColors.link,
+        whiteSpace: 'nowrap',
       },
       rootIsLarge && classNames.rootIsLarge,
       rootIsTabs && classNames.rootIsTabs,
-      className
+      className,
     ],
+    itemContainer: {
+      selectors: {
+        '&[hidden]': {
+          display: 'none',
+        },
+      },
+    },
     link: [
       classNames.link,
       ...linkStyles(props),
-      {
-        selectors: {
-          ':hover::before': {
-            boxSizing: 'border-box',
-            borderBottom: '2px solid transparent'
-          }
-        }
-      },
       rootIsTabs && {
         selectors: {
           '&:hover, &:focus': {
-            color: palette.black
+            color: semanticColors.buttonTextCheckedHovered,
           },
-          ':active': {
-            backgroundColor: palette.themePrimary
-          }
-        }
-      }
+          '&:active, &:hover': {
+            color: semanticColors.primaryButtonText,
+            backgroundColor: semanticColors.primaryButtonBackground,
+          },
+        },
+      },
     ],
     linkIsSelected: [
       classNames.link,
@@ -145,23 +157,26 @@ export const getStyles = (props: IPivotStyleProps): IPivotStyles => {
         fontWeight: FontWeights.semibold,
         selectors: {
           ':before': {
-            boxSizing: 'border-box',
-            borderBottom: `2px solid ${semanticColors.inputBackgroundChecked}`,
+            backgroundColor: semanticColors.inputBackgroundChecked,
             selectors: {
               [HighContrastSelector]: {
-                borderBottomColor: 'Highlight'
-              }
-            }
+                backgroundColor: 'Highlight',
+              },
+            },
+          },
+          ':hover::before': {
+            left: 0,
+            right: 0,
           },
           [HighContrastSelector]: {
-            color: 'Highlight'
-          }
-        }
+            color: 'Highlight',
+          },
+        },
       },
       rootIsTabs && {
-        backgroundColor: palette.themePrimary,
-        color: palette.white,
-        fontWeight: FontWeights.semilight,
+        backgroundColor: semanticColors.primaryButtonBackground,
+        color: semanticColors.primaryButtonText,
+        fontWeight: FontWeights.regular,
         selectors: {
           ':before': {
             backgroundColor: 'transparent',
@@ -172,45 +187,53 @@ export const getStyles = (props: IPivotStyleProps): IPivotStyles => {
             right: 0,
             bottom: 0,
             content: '""',
-            height: 'auto'
+            height: 'auto',
           },
-          '&:active, &:hover': {
-            color: palette.white
+          ':hover': {
+            backgroundColor: semanticColors.primaryButtonBackgroundHovered,
+            color: semanticColors.primaryButtonText,
+          },
+          '&:active': {
+            backgroundColor: semanticColors.primaryButtonBackgroundPressed,
+            color: semanticColors.primaryButtonText,
           },
           [HighContrastSelector]: {
             fontWeight: FontWeights.semibold,
             color: 'HighlightText',
             background: 'Highlight',
-            MsHighContrastAdjust: 'none'
-          }
-        }
-      }
+            MsHighContrastAdjust: 'none',
+          },
+        },
+      },
     ],
-    linkContent: [classNames.linkContent],
+    linkContent: [
+      classNames.linkContent,
+      {
+        flex: '0 1 100%',
+        selectors: {
+          '& > * ': {
+            marginLeft: 4,
+          },
+          '& > *:first-child': {
+            marginLeft: 0,
+          },
+        },
+      },
+    ],
     text: [
       classNames.text,
       {
         display: 'inline-block',
-        verticalAlign: 'top'
-      }
+        verticalAlign: 'top',
+      },
     ],
     count: [
       classNames.count,
       {
-        marginLeft: '4px',
         display: 'inline-block',
-        verticalAlign: 'top'
-      }
+        verticalAlign: 'top',
+      },
     ],
-    icon: [
-      classNames.icon,
-      {
-        selectors: {
-          '& + $text': {
-            marginLeft: '4px'
-          }
-        }
-      }
-    ]
+    icon: classNames.icon,
   };
 };

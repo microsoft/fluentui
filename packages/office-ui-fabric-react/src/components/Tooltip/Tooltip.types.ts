@@ -12,7 +12,6 @@ import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 export interface ITooltip {}
 
 /**
- * Tooltip component props.
  * {@docCategory Tooltip}
  */
 export interface ITooltipProps extends React.HTMLAttributes<HTMLDivElement | TooltipBase> {
@@ -23,24 +22,24 @@ export interface ITooltipProps extends React.HTMLAttributes<HTMLDivElement | Too
   componentRef?: IRefObject<ITooltip>;
 
   /**
-   * Properties to pass through for Callout, reference detail properties in ICalloutProps
-   * @defaultvalue isBeakVisible: true, beakWidth: 16, gapSpace: 0, setInitialFocus: true, doNotLayer: false
+   * Properties to pass through for Callout.
+   * @defaultvalue `{ isBeakVisible: true, beakWidth: 16, gapSpace: 0, setInitialFocus: true, doNotLayer: false }`
    */
   calloutProps?: ICalloutProps;
 
   /**
-   *  Content to be passed to the tooltip
+   * Content to be passed to the tooltip
    */
   content?: string | JSX.Element | JSX.Element[];
 
   /**
-   *  Render function to populate content area
+   * Render function to populate tooltip content.
    */
   onRenderContent?: IRenderFunction<ITooltipProps>;
 
   /**
-   * Length of delay. Can be set to zero if you do not want a delay.
-   * @defaultvalue medium
+   * Length of delay. Set to `TooltipDelay.zero` if you do not want a delay.
+   * @defaultvalue TooltipDelay.medium
    */
   delay?: TooltipDelay;
 
@@ -56,7 +55,7 @@ export interface ITooltipProps extends React.HTMLAttributes<HTMLDivElement | Too
   targetElement?: HTMLElement;
 
   /**
-   * Indicator of how the tooltip should be anchored to its targetElement.
+   * How the tooltip should be anchored to its `targetElement`.
    * @defaultvalue DirectionalHint.topCenter
    */
   directionalHint?: DirectionalHint;
@@ -68,7 +67,7 @@ export interface ITooltipProps extends React.HTMLAttributes<HTMLDivElement | Too
   directionalHintForRTL?: DirectionalHint;
 
   /**
-   * Theme to apply to the component.
+   * Theme provided by higher-order component.
    */
   theme?: ITheme;
 
@@ -83,26 +82,23 @@ export interface ITooltipProps extends React.HTMLAttributes<HTMLDivElement | Too
  */
 export enum TooltipDelay {
   zero = 0,
+  /** 300 ms delay before showng the tooltip */
   medium = 1,
-  long = 2
+  /** 500 ms delay before showing the tooltip */
+  long = 2,
 }
 
 /**
  * {@docCategory Tooltip}
  */
 export interface ITooltipStyleProps {
-  /**
-   * Accept theme prop.
-   */
   theme: ITheme;
 
-  /**
-   * Accept custom classNames
-   */
   className?: string;
 
   /**
    * Delay before tooltip appears.
+   * @deprecated Delay logic moved to TooltipHost vs relying on animation delay.
    */
   delay?: TooltipDelay;
 
@@ -110,6 +106,18 @@ export interface ITooltipStyleProps {
    * Maximum width of tooltip.
    */
   maxWidth?: string;
+
+  /**
+   * The gap between the Callout and the target
+   * @defaultvalue 0
+   */
+  gapSpace?: number;
+
+  /**
+   * The width of the Callout's beak
+   * @defaultvalue 16
+   */
+  beakWidth?: number;
 }
 
 /**

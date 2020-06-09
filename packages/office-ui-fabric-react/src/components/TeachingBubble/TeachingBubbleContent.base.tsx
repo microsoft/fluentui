@@ -1,21 +1,23 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, KeyCodes } from '../../Utilities';
+import { initializeComponentRef, classNamesFunction, KeyCodes } from '../../Utilities';
 import { ITeachingBubbleProps, ITeachingBubbleStyleProps, ITeachingBubbleStyles } from './TeachingBubble.types';
 import { ITeachingBubbleState } from './TeachingBubble.base';
 import { PrimaryButton, DefaultButton, IconButton } from '../../Button';
 import { Image, ImageFit } from '../../Image';
+import { Stack } from '../../Stack';
+import { FocusTrapZone } from '../../FocusTrapZone';
 
 const getClassNames = classNamesFunction<ITeachingBubbleStyleProps, ITeachingBubbleStyles>();
 
-export class TeachingBubbleContentBase extends BaseComponent<ITeachingBubbleProps, ITeachingBubbleState> {
+export class TeachingBubbleContentBase extends React.Component<ITeachingBubbleProps, ITeachingBubbleState> {
   // Specify default props values
   public static defaultProps = {
     hasCondensedHeadline: false,
     imageProps: {
       imageFit: ImageFit.cover,
       width: 364,
-      height: 130
-    }
+      height: 130,
+    },
   };
 
   public rootElement = React.createRef<HTMLDivElement>();
@@ -23,6 +25,7 @@ export class TeachingBubbleContentBase extends BaseComponent<ITeachingBubbleProp
   constructor(props: ITeachingBubbleProps) {
     super(props);
 
+    initializeComponentRef(this);
     this.state = {};
   }
 
@@ -52,7 +55,8 @@ export class TeachingBubbleContentBase extends BaseComponent<ITeachingBubbleProp
       secondaryButtonProps,
       headline,
       hasCondensedHeadline,
-      hasCloseIcon,
+      // tslint:disable-next-line:deprecation
+      hasCloseButton = this.props.hasCloseIcon,
       onDismiss,
       closeButtonAriaLabel,
       hasSmallHeadline,
@@ -61,7 +65,8 @@ export class TeachingBubbleContentBase extends BaseComponent<ITeachingBubbleProp
       theme,
       ariaDescribedBy,
       ariaLabelledBy,
-      footerContent: customFooterContent
+      footerContent: customFooterContent,
+      focusTrapZoneProps,
     } = this.props;
 
     let imageContent;
@@ -74,15 +79,17 @@ export class TeachingBubbleContentBase extends BaseComponent<ITeachingBubbleProp
       theme: theme!,
       hasCondensedHeadline,
       hasSmallHeadline,
+      hasCloseButton,
+      hasHeadline: !!headline,
       isWide,
       primaryButtonClassName: primaryButtonProps ? primaryButtonProps.className : undefined,
-      secondaryButtonClassName: secondaryButtonProps ? secondaryButtonProps.className : undefined
+      secondaryButtonClassName: secondaryButtonProps ? secondaryButtonProps.className : undefined,
     });
 
     if (illustrationImage && illustrationImage.src) {
       imageContent = (
         <div className={classNames.imageContent}>
-          <Image {...illustrationImage as any} />
+          <Image {...(illustrationImage as any)} />
         </div>
       );
     }
@@ -92,7 +99,7 @@ export class TeachingBubbleContentBase extends BaseComponent<ITeachingBubbleProp
 
       headerContent = (
         <div className={classNames.header}>
-          <HeaderWrapperAs className={classNames.headline} id={ariaLabelledBy}>
+          <HeaderWrapperAs role="heading" className={classNames.headline} id={ariaLabelledBy}>
             {headline}
           </HeaderWrapperAs>
         </div>
@@ -113,15 +120,17 @@ export class TeachingBubbleContentBase extends BaseComponent<ITeachingBubbleProp
 
     if (primaryButtonProps || secondaryButtonProps || customFooterContent) {
       footerContent = (
-        <div className={classNames.footer}>
-          {primaryButtonProps && <PrimaryButton {...primaryButtonProps} className={classNames.primaryButton} />}
-          {secondaryButtonProps && <DefaultButton {...secondaryButtonProps} className={classNames.secondaryButton} />}
-          {customFooterContent && <span>{customFooterContent}</span>}
-        </div>
+        <Stack className={classNames.footer} horizontal horizontalAlign={customFooterContent ? 'space-between' : 'end'}>
+          <Stack.Item align="center">{<span>{customFooterContent}</span>}</Stack.Item>
+          <Stack.Item>
+            {secondaryButtonProps && <DefaultButton {...secondaryButtonProps} className={classNames.secondaryButton} />}
+            {primaryButtonProps && <PrimaryButton {...primaryButtonProps} className={classNames.primaryButton} />}
+          </Stack.Item>
+        </Stack>
       );
     }
 
-    if (hasCloseIcon) {
+    if (hasCloseButton) {
       closeButton = (
         <IconButton
           className={classNames.closeButton}
@@ -144,12 +153,14 @@ export class TeachingBubbleContentBase extends BaseComponent<ITeachingBubbleProp
         data-is-focusable={true}
       >
         {imageContent}
-        <div className={classNames.bodyContent}>
-          {headerContent}
-          {bodyContent}
-          {footerContent}
-        </div>
-        {closeButton}
+        <FocusTrapZone isClickableOutsideFocusTrap={true} {...focusTrapZoneProps}>
+          <div className={classNames.bodyContent}>
+            {headerContent}
+            {bodyContent}
+            {footerContent}
+            {closeButton}
+          </div>
+        </FocusTrapZone>
       </div>
     );
   }

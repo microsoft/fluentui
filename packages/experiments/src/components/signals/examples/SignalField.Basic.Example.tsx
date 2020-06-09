@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { SignalField, SignalFieldMode, YouCheckedOutSignal, AwaitingApprovalSignal } from '@uifabric/experiments';
-import { lorem } from '@uifabric/example-app-base';
+import { lorem } from '@uifabric/example-data';
 import { Checkbox } from 'office-ui-fabric-react';
 
 export interface ISignalFieldBasicExampleState {
@@ -14,7 +14,7 @@ export class SignalFieldBasicExample extends React.Component<{}, ISignalFieldBas
     super(props);
 
     this.state = {
-      mode: 'compact'
+      mode: 'compact',
     };
   }
 
@@ -35,7 +35,7 @@ export class SignalFieldBasicExample extends React.Component<{}, ISignalFieldBas
 
   private _onModeChange = (event: React.MouseEvent<HTMLElement>, checked?: boolean | undefined): void => {
     this.setState({
-      mode: checked ? 'wide' : 'compact'
+      mode: checked ? 'wide' : 'compact',
     });
   };
 }

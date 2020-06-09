@@ -17,7 +17,7 @@ describe('Link', () => {
     const component = renderer.create(
       <Link href="#" disabled={true}>
         I'm a disabled link
-      </Link>
+      </Link>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -44,7 +44,7 @@ describe('Link', () => {
     const component = renderer.create(
       <Link href="#" className="customClassName">
         I'm a link
-      </Link>
+      </Link>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -54,7 +54,7 @@ describe('Link', () => {
     const component = renderer.create(
       <Link as="div" className="customClassName">
         I'm a div
-      </Link>
+      </Link>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -64,7 +64,7 @@ describe('Link', () => {
     const component = renderer.create(
       <Link as="blockquote" cite={'hi'} className="customClassName">
         I'm a blockquote
-      </Link>
+      </Link>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -80,7 +80,7 @@ describe('Link', () => {
     const component = renderer.create(
       <Link as={Route} className="customClassName">
         I'm a Route
-      </Link>
+      </Link>,
     );
     const testInstance = component.root;
     expect(() => testInstance.findByType(Route)).not.toThrow();
@@ -94,9 +94,9 @@ describe('Link', () => {
         ReactDOM.renderToStaticMarkup(
           <Customizer settings={{ theme: NoClassNamesTheme }}>
             <Link href="helloworld.html">My Link</Link>
-          </Customizer>
-        )
-      )
+          </Customizer>,
+        ),
+      ),
     ).toBe(false);
   });
 
@@ -107,7 +107,7 @@ describe('Link', () => {
       mount(
         <Link as="div" className="customClassName" componentRef={myRef}>
           I'm a div
-        </Link>
+        </Link>,
       );
 
     expect(renderLinkWithComponentRef).not.toThrow();
@@ -119,7 +119,7 @@ describe('Link', () => {
     const component = mount(
       <Link className="customClassName" componentRef={myRef}>
         I'm a div
-      </Link>
+      </Link>,
     );
 
     expect(Object.keys(component.find('button').props())).not.toContain('componentRef');

@@ -15,7 +15,7 @@ storiesOf('Modal', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </Screener>,
   )
   .addStory('Root', () => (
     <Modal isOpen isBlocking={false}>

@@ -10,7 +10,7 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
         padding-right: 2px;
         padding-top: 2px;
       }
-      & > * {
+      & > .ms-Shimmer-container {
         margin-bottom: 10px;
         margin-left: 0;
         margin-right: 0;
@@ -47,23 +47,21 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
             {
               align-items: center;
               background: #ffffff;
-              border-color: #666666;
-              border-radius: 1em;
-              border-style: solid;
-              border-width: 1px;
+              border-radius: 10px;
+              border: 1px solid #605e5c;
               box-sizing: border-box;
               cursor: pointer;
               display: flex;
               font-size: 20px;
-              height: 1em;
+              height: 20px;
               outline: transparent;
               padding-bottom: 0;
-              padding-left: .2em;
-              padding-right: .2em;
+              padding-left: 3px;
+              padding-right: 3px;
               padding-top: 0;
               position: relative;
               transition: all 0.1s ease;
-              width: 2.2em;
+              width: 40px;
             }
             &::-moz-focus-inner {
               border: 0;
@@ -73,14 +71,17 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
               bottom: -2px;
               content: "";
               left: -2px;
-              outline: 1px solid #666666;
+              outline: 1px solid #605e5c;
               position: absolute;
               right: -2px;
               top: -2px;
               z-index: 1;
             }
             &:hover {
-              border-color: #333333;
+              border-color: #323130;
+            }
+            &:hover .ms-Toggle-thumb {
+              background-color: #201f1e;
             }
             @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
               border-color: Highlight;
@@ -95,19 +96,20 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
         role="switch"
         type="button"
       >
-        <div
+        <span
           className=
               ms-Toggle-thumb
               {
-                background-color: #333333;
+                background-color: #605e5c;
                 border-color: transparent;
-                border-radius: .5em;
+                border-radius: 50%;
                 border-style: solid;
                 border-width: .28em;
                 box-sizing: border-box;
-                height: .5em;
+                display: block;
+                height: 12px;
                 transition: all 0.1s ease;
-                width: .5em;
+                width: 12px;
               }
         />
       </button>
@@ -120,11 +122,11 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
               -webkit-font-smoothing: antialiased;
               box-shadow: none;
               box-sizing: border-box;
-              color: #333333;
+              color: #323130;
               display: block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
-              font-weight: 400;
+              font-weight: 600;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
@@ -137,6 +139,7 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
               word-wrap: break-word;
             }
             && {
+              font-weight: 400;
               margin-bottom: 0;
               margin-left: 8px;
               margin-right: 8px;
@@ -171,20 +174,14 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
       className=
           ms-Shimmer-shimmerWrapper
           {
-            animation-direction: normal;
-            animation-duration: 2s;
-            animation-iteration-count: infinite;
-            animation-name: keyframes 0%{background-position:-1000%;}100%{background-position:1000%;};
-            animation-timing-function: ease-in-out;
-            background: #f4f4f4
-                              linear-gradient(
-                                to right,
-                                #f4f4f4 0%,
-                                #eaeaea 50%,
-                                #f4f4f4 100%)
-                              0 0 / 90% 100%
-                              no-repeat;
+            background-color: #f3f2f1;
+            overflow: hidden;
+            position: relative;
+            transform: translateZ(0);
             transition: opacity 200ms;
+          }
+          & > * {
+            transform: translateZ(0);
           }
           @media screen and (-ms-high-contrast: active){& {
             background: WindowText
@@ -196,12 +193,40 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
                                   0 0 / 90% 100%
                                   no-repeat;
           }
+          @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+            forced-color-adjust: none;
+          }
       style={
         Object {
           "width": "100%",
         }
       }
     >
+      <div
+        className=
+            ms-Shimmer-shimmerGradient
+            {
+              animation-direction: normal;
+              animation-duration: 2s;
+              animation-iteration-count: infinite;
+              animation-name: keyframes 0%{transform:translateX(-100%);}100%{transform:translateX(100%);};
+              animation-timing-function: ease-in-out;
+              background: #f3f2f1
+                                  linear-gradient(
+                                    to right,
+                                    #f3f2f1 0%,
+                                    #edebe9 50%,
+                                    #f3f2f1 100%)
+                                  0 0 / 90% 100%
+                                  no-repeat;
+              height: 100%;
+              left: 0px;
+              position: absolute;
+              top: 0px;
+              transform: translateX(-100%);
+              width: 100%;
+            }
+      />
       <div
         className=
             ms-ShimmerElementsGroup-root
@@ -214,6 +239,7 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
+              position: relative;
             }
         style={
           Object {
@@ -385,23 +411,21 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
             {
               align-items: center;
               background: #ffffff;
-              border-color: #666666;
-              border-radius: 1em;
-              border-style: solid;
-              border-width: 1px;
+              border-radius: 10px;
+              border: 1px solid #605e5c;
               box-sizing: border-box;
               cursor: pointer;
               display: flex;
               font-size: 20px;
-              height: 1em;
+              height: 20px;
               outline: transparent;
               padding-bottom: 0;
-              padding-left: .2em;
-              padding-right: .2em;
+              padding-left: 3px;
+              padding-right: 3px;
               padding-top: 0;
               position: relative;
               transition: all 0.1s ease;
-              width: 2.2em;
+              width: 40px;
             }
             &::-moz-focus-inner {
               border: 0;
@@ -411,14 +435,17 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
               bottom: -2px;
               content: "";
               left: -2px;
-              outline: 1px solid #666666;
+              outline: 1px solid #605e5c;
               position: absolute;
               right: -2px;
               top: -2px;
               z-index: 1;
             }
             &:hover {
-              border-color: #333333;
+              border-color: #323130;
+            }
+            &:hover .ms-Toggle-thumb {
+              background-color: #201f1e;
             }
             @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
               border-color: Highlight;
@@ -433,19 +460,20 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
         role="switch"
         type="button"
       >
-        <div
+        <span
           className=
               ms-Toggle-thumb
               {
-                background-color: #333333;
+                background-color: #605e5c;
                 border-color: transparent;
-                border-radius: .5em;
+                border-radius: 50%;
                 border-style: solid;
                 border-width: .28em;
                 box-sizing: border-box;
-                height: .5em;
+                display: block;
+                height: 12px;
                 transition: all 0.1s ease;
-                width: .5em;
+                width: 12px;
               }
         />
       </button>
@@ -458,11 +486,11 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
               -webkit-font-smoothing: antialiased;
               box-shadow: none;
               box-sizing: border-box;
-              color: #333333;
+              color: #323130;
               display: block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
-              font-weight: 400;
+              font-weight: 600;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
@@ -475,6 +503,7 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
               word-wrap: break-word;
             }
             && {
+              font-weight: 400;
               margin-bottom: 0;
               margin-left: 8px;
               margin-right: 8px;
@@ -504,26 +533,19 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
           height: auto;
           position: relative;
         }
-    width={300}
   >
     <div
       className=
           ms-Shimmer-shimmerWrapper
           {
-            animation-direction: normal;
-            animation-duration: 2s;
-            animation-iteration-count: infinite;
-            animation-name: keyframes 0%{background-position:-1000%;}100%{background-position:1000%;};
-            animation-timing-function: ease-in-out;
-            background: #f4f4f4
-                              linear-gradient(
-                                to right,
-                                #f4f4f4 0%,
-                                #eaeaea 50%,
-                                #f4f4f4 100%)
-                              0 0 / 90% 100%
-                              no-repeat;
+            background-color: #f3f2f1;
+            overflow: hidden;
+            position: relative;
+            transform: translateZ(0);
             transition: opacity 200ms;
+          }
+          & > * {
+            transform: translateZ(0);
           }
           @media screen and (-ms-high-contrast: active){& {
             background: WindowText
@@ -535,12 +557,40 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
                                   0 0 / 90% 100%
                                   no-repeat;
           }
+          @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+            forced-color-adjust: none;
+          }
       style={
         Object {
-          "width": 300,
+          "width": "300",
         }
       }
     >
+      <div
+        className=
+            ms-Shimmer-shimmerGradient
+            {
+              animation-direction: normal;
+              animation-duration: 2s;
+              animation-iteration-count: infinite;
+              animation-name: keyframes 0%{transform:translateX(-100%);}100%{transform:translateX(100%);};
+              animation-timing-function: ease-in-out;
+              background: #f3f2f1
+                                  linear-gradient(
+                                    to right,
+                                    #f3f2f1 0%,
+                                    #edebe9 50%,
+                                    #f3f2f1 100%)
+                                  0 0 / 90% 100%
+                                  no-repeat;
+              height: 100%;
+              left: 0px;
+              position: absolute;
+              top: 0px;
+              transform: translateX(-100%);
+              width: 100%;
+            }
+      />
       <div
         style={
           Object {
@@ -560,6 +610,7 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
+                position: relative;
               }
           style={
             Object {
@@ -651,6 +702,7 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
+                position: relative;
               }
           style={
             Object {
@@ -669,6 +721,7 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
                   border-color: #ffffff;
                   border-top-style: solid;
                   border-top-width: 10px;
+                  border-width: 0px;
                   box-sizing: content-box;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
@@ -765,6 +818,7 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
                   border-color: #ffffff;
                   border-top-style: solid;
                   border-top-width: 6px;
+                  border-width: 0px;
                   box-sizing: content-box;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
@@ -909,7 +963,7 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
               align-items: center;
               box-shadow: none;
               box-sizing: border-box;
-              color: #333333;
+              color: #323130;
               display: flex;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
@@ -929,10 +983,6 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
             & .contextualHost {
               display: none;
             }
-            &:hover $primaryText {
-              color: #212121;
-            }
-        size={12}
       >
         <div
           className=
@@ -945,7 +995,7 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
                 font-size: 14px;
                 font-weight: 400;
               }
-          size={12}
+          role="presentation"
         >
           <div
             className=
@@ -957,17 +1007,18 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
                   text-align: center;
                   width: 40px;
                 }
+            role="presentation"
           >
             <div
               aria-hidden="true"
               className=
                   ms-Persona-initials
                   {
-                    background-color: #2D89EF;
+                    background-color: #0078D4;
                     border-radius: 50%;
                     color: #ffffff;
-                    font-size: 14px;
-                    font-weight: 400;
+                    font-size: 16px;
+                    font-weight: 600;
                     height: 40px;
                     line-height: 40px;
                   }
@@ -978,8 +1029,12 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
                     box-sizing: border-box;
                     color: WindowText;
                   }
+                  & i {
+                    font-weight: 600;
+                  }
             >
               <i
+                aria-hidden={true}
                 className=
 
                     {
@@ -992,7 +1047,6 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
                       speak: none;
                     }
                 data-icon-name="Contact"
-                role="presentation"
               >
                 
               </i>
@@ -1003,7 +1057,7 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
                   {
                     -ms-high-contrast-adjust: none;
                     background-clip: content-box;
-                    background-color: #FCD116;
+                    background-color: #FFAA44;
                     border-radius: 50%;
                     border: 2px solid #ffffff;
                     bottom: -2px;
@@ -1019,8 +1073,10 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
                     background-color: WindowText;
                     border-color: Window;
                   }
+              role="presentation"
             >
               <i
+                aria-hidden={true}
                 className=
                     ms-Persona-presenceIcon
                     {
@@ -1042,7 +1098,6 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
                       color: Window;
                     }
                 data-icon-name="SkypeClock"
-                role="presentation"
               >
                 
               </i>
@@ -1058,8 +1113,8 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
                 justify-content: space-around;
                 min-width: 0px;
                 padding-bottom: 0;
-                padding-left: 16px;
-                padding-right: 24px;
+                padding-left: 12px;
+                padding-right: 12px;
                 padding-top: 0;
                 text-align: left;
                 width: 100%;
@@ -1069,12 +1124,15 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
             className=
                 ms-Persona-primaryText
                 {
-                  color: #333333;
+                  color: #323130;
                   font-size: 14px;
                   font-weight: 400;
                   overflow: hidden;
                   text-overflow: ellipsis;
                   white-space: nowrap;
+                }
+                &:hover {
+                  color: #201f1e;
                 }
             dir="auto"
           />
@@ -1082,7 +1140,7 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
             className=
                 ms-Persona-secondaryText
                 {
-                  color: #666666;
+                  color: #605e5c;
                   font-size: 12px;
                   font-weight: 400;
                   overflow: hidden;
@@ -1095,9 +1153,9 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
             className=
                 ms-Persona-tertiaryText
                 {
-                  color: #666666;
+                  color: #605e5c;
                   display: none;
-                  font-size: 12px;
+                  font-size: 14px;
                   font-weight: 400;
                   overflow: hidden;
                   text-overflow: ellipsis;
@@ -1109,9 +1167,9 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
             className=
                 ms-Persona-optionalText
                 {
-                  color: #666666;
+                  color: #605e5c;
                   display: none;
-                  font-size: 12px;
+                  font-size: 14px;
                   font-weight: 400;
                   overflow: hidden;
                   text-overflow: ellipsis;

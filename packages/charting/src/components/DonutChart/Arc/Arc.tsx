@@ -11,12 +11,12 @@ export interface IArcState {
 
 export class Arc extends React.Component<IArcProps, IArcState> {
   public static defaultProps: Partial<IArcProps> = {
-    arc: shape.arc()
+    arc: shape.arc(),
   };
 
-  public state: IArcState = {};
+  private currentRef = React.createRef<SVGPathElement>();
 
-  public static getDerivedStateFromProps(nextProps: Readonly<IArcProps>): null {
+  public static getDerivedStateFromProps(nextProps: Readonly<IArcProps>): Partial<IArcState> | null {
     _updateChart(nextProps);
     return null;
   }
@@ -26,26 +26,41 @@ export class Arc extends React.Component<IArcProps, IArcState> {
   }
 
   public render(): JSX.Element {
-    const { color, arc, href } = this.props;
+    const { color, arc, href, valueInsideDonut } = this.props;
     const getClassNames = classNamesFunction<IArcProps, IArcStyles>();
     const classNames = getClassNames(getStyles, { color, href });
     const id = this.props.uniqText! + this.props.data!.data.legend!.replace(/\s+/, '') + this.props.data!.data.data;
-    const opacity: number = this.props.activeArc === this.props.data!.data.legend || this.props.activeArc === '' ? 1 : 0.1;
+    const opacity: number =
+      this.props.activeArc === this.props.data!.data.legend || this.props.activeArc === '' ? 1 : 0.1;
     return (
-      <g>
+      <g ref={this.currentRef}>
         <path
           id={id}
           d={arc(this.props.data)}
+          onFocus={this._onFocus.bind(this, this.props.data!.data)}
           className={classNames.root}
+          data-is-focusable={true}
           onMouseOver={this._hoverOn.bind(this, this.props.data!.data)}
           onMouseMove={this._hoverOn.bind(this, this.props.data!.data)}
           onMouseLeave={this._hoverOff}
+          onBlur={this._onBlur}
           opacity={opacity}
           onClick={this._redirectToUrl.bind(this, href)}
+          aria-labelledby={this.props.calloutId}
         />
+        <text textAnchor={'middle'} className={classNames.insideDonutString} y={5}>
+          {valueInsideDonut}
+        </text>
       </g>
     );
   }
+
+  private _onFocus(data: IChartDataPoint): void {
+    if (this.props.activeArc === this.props.data!.data.legend || this.props.activeArc === '') {
+      this.props.onFocusCallback!(data, this.currentRef.current);
+    }
+  }
+
   private _hoverOn(data: IChartDataPoint, mouseEvent: React.MouseEvent<SVGPathElement>): void {
     mouseEvent.persist();
     if (this.props.activeArc === this.props.data!.data.legend || this.props.activeArc === '') {
@@ -55,6 +70,10 @@ export class Arc extends React.Component<IArcProps, IArcState> {
 
   private _hoverOff = (): void => {
     this.props.hoverLeaveCallback!();
+  };
+
+  private _onBlur = (): void => {
+    this.props.onBlurCallback!();
   };
 
   private _redirectToUrl(href: string | undefined): void {

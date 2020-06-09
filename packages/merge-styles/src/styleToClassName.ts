@@ -5,6 +5,7 @@ import { kebabRules } from './transforms/kebabRules';
 import { prefixRules } from './transforms/prefixRules';
 import { provideUnits } from './transforms/provideUnits';
 import { rtlifyRules } from './transforms/rtlifyRules';
+import { IStyleOptions } from './IStyleOptions';
 
 const DISPLAY_NAME = 'displayName';
 
@@ -54,18 +55,20 @@ function expandCommaSeparatedGlobals(selectorWithGlobals: string): string {
         match[1]
           .split(',')
           .map((v: string) => `:global(${v.trim()})`)
-          .join(', ')
+          .join(', '),
       ]);
     }
   }
 
   // Replace the found selectors with their wrapped variants in reverse order
-  return replacementInfo.reverse().reduce((selector: string, [matchIndex, matchEndIndex, replacement]: ReplacementInfo) => {
-    const prefix = selector.slice(0, matchIndex);
-    const suffix = selector.slice(matchEndIndex);
+  return replacementInfo
+    .reverse()
+    .reduce((selector: string, [matchIndex, matchEndIndex, replacement]: ReplacementInfo) => {
+      const prefix = selector.slice(0, matchIndex);
+      const suffix = selector.slice(matchEndIndex);
 
-    return prefix + replacement + suffix;
-  }, selectorWithGlobals);
+      return prefix + replacement + suffix;
+    }, selectorWithGlobals);
 }
 
 function expandSelector(newSelector: string, currentSelector: string): string {
@@ -116,16 +119,12 @@ function extractRules(args: IStyle[], rules: IRuleSet = { __order: [] }, current
                 newSelector = newSelector + '{' + currentSelector;
                 extractRules([selectorValue], rules, newSelector);
               } else if (newSelector.indexOf(',') > -1) {
-                const commaSeparatedSelectors = expandCommaSeparatedGlobals(newSelector)
-                  .split(/,/g)
-                  .map((s: string) => s.trim());
-                extractRules(
-                  [selectorValue],
-                  rules,
-                  commaSeparatedSelectors
-                    .map((commaSeparatedSelector: string) => expandSelector(commaSeparatedSelector, currentSelector))
-                    .join(', ')
-                );
+                expandCommaSeparatedGlobals(newSelector)
+                  .split(',')
+                  .map((s: string) => s.trim())
+                  .forEach((separatedSelector: string) =>
+                    extractRules([selectorValue], rules, expandSelector(separatedSelector, currentSelector)),
+                  );
               } else {
                 extractRules([selectorValue], rules, expandSelector(newSelector, currentSelector));
               }
@@ -159,8 +158,8 @@ function expandQuads(currentRules: IDictionary, name: string, value: string): vo
   currentRules[name + 'Left'] = parts[3] || parts[1] || parts[0];
 }
 
-function getKeyForRules(rules: IRuleSet): string | undefined {
-  const serialized: string[] = [];
+function getKeyForRules(options: IStyleOptions, rules: IRuleSet): string | undefined {
+  const serialized: string[] = [options.rtl ? 'rtl' : 'ltr'];
   let hasProps = false;
 
   for (const selector of rules.__order) {
@@ -178,7 +177,19 @@ function getKeyForRules(rules: IRuleSet): string | undefined {
   return hasProps ? serialized.join('') : undefined;
 }
 
-export function serializeRuleEntries(ruleEntries: { [key: string]: string | number }): string {
+function repeatString(target: string, count: number): string {
+  if (count <= 0) {
+    return '';
+  }
+
+  if (count === 1) {
+    return target;
+  }
+
+  return target + repeatString(target, count - 1);
+}
+
+export function serializeRuleEntries(options: IStyleOptions, ruleEntries: { [key: string]: string | number }): string {
   if (!ruleEntries) {
     return '';
   }
@@ -195,7 +206,7 @@ export function serializeRuleEntries(ruleEntries: { [key: string]: string | numb
   for (let i = 0; i < allEntries.length; i += 2) {
     kebabRules(allEntries, i);
     provideUnits(allEntries, i);
-    rtlifyRules(allEntries, i);
+    rtlifyRules(options, allEntries, i);
     prefixRules(allEntries, i);
   }
 
@@ -214,16 +225,16 @@ export interface IRegistration {
   rulesToInsert: string[];
 }
 
-export function styleToRegistration(...args: IStyle[]): IRegistration | undefined {
+export function styleToRegistration(options: IStyleOptions, ...args: IStyle[]): IRegistration | undefined {
   const rules: IRuleSet = extractRules(args);
-  const key = getKeyForRules(rules);
+  const key = getKeyForRules(options, rules);
 
   if (key) {
     const stylesheet = Stylesheet.getInstance();
     const registration: Partial<IRegistration> = {
       className: stylesheet.classNameFromKey(key),
       key,
-      args
+      args,
     };
 
     if (!registration.className) {
@@ -231,16 +242,24 @@ export function styleToRegistration(...args: IStyle[]): IRegistration | undefine
       const rulesToInsert: string[] = [];
 
       for (const selector of rules.__order) {
-        rulesToInsert.push(selector, serializeRuleEntries(rules[selector]));
+        rulesToInsert.push(selector, serializeRuleEntries(options, rules[selector]));
       }
       registration.rulesToInsert = rulesToInsert;
     }
 
     return registration as IRegistration;
   }
+
+  return undefined;
 }
 
-export function applyRegistration(registration: IRegistration, classMap?: { [key: string]: string }): void {
+/**
+ * Insert style to stylesheet.
+ * @param registration Style registration.
+ * @param specificityMultiplier Number of times classname selector is repeated in the css rule.
+ * This is to increase css specificity in case it's needed. Default to 1.
+ */
+export function applyRegistration(registration: IRegistration, specificityMultiplier: number = 1): void {
   const stylesheet = Stylesheet.getInstance();
   const { className, key, args, rulesToInsert } = registration;
 
@@ -250,23 +269,10 @@ export function applyRegistration(registration: IRegistration, classMap?: { [key
       const rules = rulesToInsert[i + 1];
       if (rules) {
         let selector = rulesToInsert[i];
-
-        // Fix selector using map.
-        selector = selector.replace(
-          /(&)|\$([\w-]+)\b/g,
-          (match: string, amp: string, cn: string): string => {
-            if (amp) {
-              return '.' + registration.className;
-            } else if (cn) {
-              return '.' + ((classMap && classMap[cn]) || cn);
-            }
-            return '';
-          }
-        );
+        selector = selector.replace(/&/g, repeatString(`.${registration.className}`, specificityMultiplier));
 
         // Insert. Note if a media query, we must close the query with a final bracket.
         const processedRule = `${selector}{${rules}}${selector.indexOf('@') === 0 ? '}' : ''}`;
-
         stylesheet.insertRule(processedRule);
       }
     }
@@ -274,10 +280,10 @@ export function applyRegistration(registration: IRegistration, classMap?: { [key
   }
 }
 
-export function styleToClassName(...args: IStyle[]): string {
-  const registration = styleToRegistration(...args);
+export function styleToClassName(options: IStyleOptions, ...args: IStyle[]): string {
+  const registration = styleToRegistration(options, ...args);
   if (registration) {
-    applyRegistration(registration);
+    applyRegistration(registration, options.specificityMultiplier);
 
     return registration.className;
   }

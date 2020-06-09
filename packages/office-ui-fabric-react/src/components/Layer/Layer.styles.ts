@@ -4,7 +4,7 @@ import { ZIndexes, getGlobalClassNames } from '../../Styling';
 const GlobalClassNames = {
   root: 'ms-Layer',
   rootNoHost: 'ms-Layer--fixed',
-  content: 'ms-Layer-content'
+  content: 'ms-Layer-content',
 };
 
 export const getStyles = (props: ILayerStyleProps): ILayerStyles => {
@@ -23,18 +23,18 @@ export const getStyles = (props: ILayerStyleProps): ILayerStyles => {
           zIndex: ZIndexes.Layer,
           top: 0,
           left: 0,
-          width: '100vw',
-          height: '100vh',
-          visibility: 'hidden'
-        }
+          bottom: 0,
+          right: 0,
+          visibility: 'hidden',
+        },
       ],
-      className
+      className,
     ],
     content: [
       classNames.content,
       {
-        visibility: 'visible'
-      }
-    ]
+        visibility: 'visible',
+      },
+    ],
   };
 };

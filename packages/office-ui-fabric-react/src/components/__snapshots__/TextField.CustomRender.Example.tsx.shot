@@ -17,7 +17,7 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
         text-overflow: ellipsis;
       }
       & > *:not(:first-child) {
-        margin-top: 20px;
+        margin-top: 4px;
       }
       & > *:not(.ms-StackItem) {
         flex-shrink: 1;
@@ -46,9 +46,7 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
         }
   >
     <div
-      className=
-          ms-TextField-wrapper
-
+      className="ms-TextField-wrapper"
     >
       <div
         className=
@@ -60,19 +58,22 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
               flex-direction: row;
               flex-wrap: nowrap;
               height: auto;
+              max-width: 300px;
               width: auto;
             }
             & > * {
               text-overflow: ellipsis;
             }
             & > *:not(:first-child) {
-              margin-left: 0px;
+              margin-left: 4px;
             }
             & > *:not(.ms-StackItem) {
               flex-shrink: 1;
             }
       >
-        <span>
+        <span
+          id="label0"
+        >
           Custom label rendering
         </span>
         <button
@@ -84,10 +85,10 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
-                border-radius: 0px;
+                border-radius: 2px;
                 border: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #0078d4;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -95,9 +96,6 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
                 font-weight: 400;
                 height: 32px;
                 margin-bottom: -3px;
-                margin-left: 0px;
-                margin-right: 0px;
-                margin-top: 0px;
                 outline: transparent;
                 padding-bottom: 0;
                 padding-left: 4px;
@@ -107,21 +105,20 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 32px;
               }
               &::-moz-focus-inner {
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -138,17 +135,19 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
                 top: 0px;
               }
               &:hover {
-                color: #212121;
+                background-color: #f3f2f1;
+                color: #106ebe;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
                 color: Highlight;
               }
               &:active {
-                color: #0078d4;
+                background-color: #edebe9;
+                color: #005a9e;
               }
           data-is-focusable={true}
-          id="iconButton1"
+          id="iconButton5"
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
@@ -158,7 +157,7 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
           title="Info"
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -168,35 +167,46 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
                   height: 100%;
                   justify-content: center;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <i
+              aria-hidden={true}
               className=
+                  ms-Icon
                   ms-Button-icon
+                  {
+                    display: inline-block;
+                  }
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    display: inline-block;
-                    flex-shrink: 0;
                     font-family: "FabricMDL2Icons";
-                    font-size: 16px;
                     font-style: normal;
                     font-weight: normal;
+                    speak: none;
+                  }
+                  {
+                    flex-shrink: 0;
+                    font-size: 16px;
                     height: 16px;
                     line-height: 16px;
                     margin-bottom: 0;
                     margin-left: 4px;
                     margin-right: 4px;
                     margin-top: 0;
-                    speak: none;
                     text-align: center;
-                    vertical-align: middle;
                   }
               data-icon-name="Info"
               role="presentation"
+              style={
+                Object {
+                  "fontFamily": "\\"FabricMDL2Icons\\"",
+                }
+              }
             >
               
             </i>
-          </div>
+          </span>
         </button>
       </div>
       <div
@@ -205,7 +215,8 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
             {
               align-items: stretch;
               background: #ffffff;
-              border: 1px solid #a6a6a6;
+              border-radius: 2px;
+              border: 1px solid #605e5c;
               box-shadow: none;
               box-sizing: border-box;
               cursor: text;
@@ -223,15 +234,16 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
               position: relative;
             }
             &:hover {
-              border-color: #333333;
+              border-color: #323130;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
             }
       >
         <input
-          aria-describedby="TextFieldDescription3"
+          aria-describedby="TextFieldDescription2"
           aria-invalid={false}
+          aria-labelledby="label0"
           className=
               ms-TextField-field
               {
@@ -243,7 +255,7 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
                 border: none;
                 box-shadow: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
@@ -254,27 +266,52 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
                 min-width: 0px;
                 outline: 0px;
                 padding-bottom: 0;
-                padding-left: 12px;
-                padding-right: 12px;
+                padding-left: 8px;
+                padding-right: 8px;
                 padding-top: 0;
                 text-overflow: ellipsis;
                 width: 100%;
               }
-              &:active, &:focus, &:hover {
+              &:active {
+                outline: 0px;
+              }
+              &:focus {
+                outline: 0px;
+              }
+              &:hover {
                 outline: 0px;
               }
               &::-ms-clear {
                 display: none;
               }
               &::placeholder {
-                color: #666666;
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                color: #605e5c;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
                 opacity: 1;
               }
               &:-ms-input-placeholder {
-                color: #666666;
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                color: #605e5c;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
                 opacity: 1;
               }
-          id="TextField2"
+              &::-ms-input-placeholder {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                color: #605e5c;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                opacity: 1;
+              }
+          id="TextField1"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -285,14 +322,14 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
       </div>
     </div>
     <span
-      id="TextFieldDescription3"
+      id="TextFieldDescription2"
     >
       <span
         className=
             ms-TextField-description
             {
-              color: #666666;
-              font-size: 11px;
+              color: #605e5c;
+              font-size: 10px;
             }
       >
         Click the (i) icon!
@@ -323,45 +360,90 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
         }
   >
     <div
-      className=
-          ms-TextField-wrapper
-
+      className="ms-TextField-wrapper"
     >
-      <label
+      <div
         className=
-            ms-Label
+            ms-Stack
             {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              box-shadow: none;
+              align-items: center;
               box-sizing: border-box;
-              color: #333333;
-              display: block;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
-              margin-bottom: 0px;
-              margin-left: 0px;
-              margin-right: 0px;
-              margin-top: 0px;
-              overflow-wrap: break-word;
-              padding-bottom: 5px;
-              padding-left: 0;
-              padding-right: 0;
-              padding-top: 5px;
-              word-wrap: break-word;
+              display: flex;
+              flex-direction: row;
+              flex-wrap: nowrap;
+              height: auto;
+              max-width: 300px;
+              width: auto;
             }
-        htmlFor="TextField7"
+            & > * {
+              text-overflow: ellipsis;
+            }
+            & > *:not(:first-child) {
+              margin-left: 4px;
+            }
+            & > *:not(.ms-StackItem) {
+              flex-shrink: 1;
+            }
       >
-        Custom description rendering
-      </label>
+        <span>
+          <label
+            className=
+                ms-Label
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  box-shadow: none;
+                  box-sizing: border-box;
+                  color: #323130;
+                  display: block;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 600;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
+                  overflow-wrap: break-word;
+                  padding-bottom: 5px;
+                  padding-left: 0;
+                  padding-right: 0;
+                  padding-top: 5px;
+                  word-wrap: break-word;
+                }
+            htmlFor="TextField9"
+            id="TextFieldLabel11"
+          >
+            Wrapping default label renderer
+          </label>
+        </span>
+        <i
+          aria-label="Globe"
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                display: inline-block;
+                font-family: "FabricMDL2Icons-0";
+                font-style: normal;
+                font-weight: normal;
+                margin-bottom: -3px;
+                speak: none;
+              }
+          data-icon-name="Globe"
+          title="Globe"
+        >
+          
+        </i>
+      </div>
       <div
         className=
             ms-TextField-fieldGroup
             {
               align-items: stretch;
               background: #ffffff;
-              border: 1px solid #a6a6a6;
+              border-radius: 2px;
+              border: 1px solid #605e5c;
               box-shadow: none;
               box-sizing: border-box;
               cursor: text;
@@ -379,15 +461,15 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
               position: relative;
             }
             &:hover {
-              border-color: #333333;
+              border-color: #323130;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
             }
       >
         <input
-          aria-describedby="TextFieldDescription8"
           aria-invalid={false}
+          aria-labelledby="TextFieldLabel11"
           className=
               ms-TextField-field
               {
@@ -399,7 +481,7 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
                 border: none;
                 box-shadow: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
@@ -410,27 +492,219 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
                 min-width: 0px;
                 outline: 0px;
                 padding-bottom: 0;
-                padding-left: 12px;
-                padding-right: 12px;
+                padding-left: 8px;
+                padding-right: 8px;
                 padding-top: 0;
                 text-overflow: ellipsis;
                 width: 100%;
               }
-              &:active, &:focus, &:hover {
+              &:active {
+                outline: 0px;
+              }
+              &:focus {
+                outline: 0px;
+              }
+              &:hover {
                 outline: 0px;
               }
               &::-ms-clear {
                 display: none;
               }
               &::placeholder {
-                color: #666666;
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                color: #605e5c;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
                 opacity: 1;
               }
               &:-ms-input-placeholder {
-                color: #666666;
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                color: #605e5c;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
                 opacity: 1;
               }
-          id="TextField7"
+              &::-ms-input-placeholder {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                color: #605e5c;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                opacity: 1;
+              }
+          id="TextField9"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onInput={[Function]}
+          type="text"
+          value=""
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className=
+        ms-TextField
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          box-shadow: none;
+          box-sizing: border-box;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          position: relative;
+        }
+  >
+    <div
+      className="ms-TextField-wrapper"
+    >
+      <label
+        className=
+            ms-Label
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              box-shadow: none;
+              box-sizing: border-box;
+              color: #323130;
+              display: block;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 600;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              overflow-wrap: break-word;
+              padding-bottom: 5px;
+              padding-left: 0;
+              padding-right: 0;
+              padding-top: 5px;
+              word-wrap: break-word;
+            }
+        htmlFor="TextField12"
+        id="TextFieldLabel14"
+      >
+        Custom description rendering
+      </label>
+      <div
+        className=
+            ms-TextField-fieldGroup
+            {
+              align-items: stretch;
+              background: #ffffff;
+              border-radius: 2px;
+              border: 1px solid #605e5c;
+              box-shadow: none;
+              box-sizing: border-box;
+              cursor: text;
+              display: flex;
+              flex-direction: row;
+              height: 32px;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+              position: relative;
+            }
+            &:hover {
+              border-color: #323130;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover {
+              border-color: Highlight;
+            }
+      >
+        <input
+          aria-describedby="TextFieldDescription13"
+          aria-invalid={false}
+          aria-labelledby="TextFieldLabel14"
+          className=
+              ms-TextField-field
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                background-color: transparent;
+                background: none;
+                border-radius: 0px;
+                border: none;
+                box-shadow: none;
+                box-sizing: border-box;
+                color: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                min-width: 0px;
+                outline: 0px;
+                padding-bottom: 0;
+                padding-left: 8px;
+                padding-right: 8px;
+                padding-top: 0;
+                text-overflow: ellipsis;
+                width: 100%;
+              }
+              &:active {
+                outline: 0px;
+              }
+              &:focus {
+                outline: 0px;
+              }
+              &:hover {
+                outline: 0px;
+              }
+              &::-ms-clear {
+                display: none;
+              }
+              &::placeholder {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                color: #605e5c;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                opacity: 1;
+              }
+              &:-ms-input-placeholder {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                color: #605e5c;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                opacity: 1;
+              }
+              &::-ms-input-placeholder {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                color: #605e5c;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                opacity: 1;
+              }
+          id="TextField12"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -441,7 +715,7 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
       </div>
     </div>
     <span
-      id="TextFieldDescription8"
+      id="TextFieldDescription13"
     >
       <span
         className=

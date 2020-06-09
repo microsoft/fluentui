@@ -1,4 +1,4 @@
-import { IComponentStyles, IHTMLSlot, IComponent, IStyleableComponentProps } from '../../../Foundation';
+import { IComponentStyles, IHTMLSlot, IComponent, ISlotProp, IStyleableComponentProps } from '../../../Foundation';
 
 /**
  * {@docCategory Stack}
@@ -8,12 +8,17 @@ export type IStackItemComponent = IComponent<IStackItemProps, IStackItemTokens, 
 /**
  * {@docCategory Stack}
  */
+export type IStackItemSlot = ISlotProp<IStackItemProps>;
+
+/**
+ * {@docCategory Stack}
+ */
 export interface IStackItemSlots {
   root?: IHTMLSlot;
 }
 
-// The following two types are redundant with IStackItemComponent but are needed until TS function return widening issue is resolved:
-// https://github.com/Microsoft/TypeScript/issues/241
+// The following two types are redundant with IStackItemComponent but are needed until TS function return widening
+// issue is resolved: https://github.com/Microsoft/TypeScript/issues/241
 // For now, these helper types can be used to provide return type safety when specifying tokens and styles functions.
 
 /**
@@ -29,7 +34,9 @@ export type IStackItemStylesReturnType = ReturnType<Extract<IStackItemComponent[
 /**
  * {@docCategory Stack}
  */
-export interface IStackItemProps extends IStackItemSlots, IStyleableComponentProps<IStackItemProps, IStackItemTokens, IStackItemStyles> {
+export interface IStackItemProps
+  extends IStackItemSlots,
+    IStyleableComponentProps<IStackItemProps, IStackItemTokens, IStackItemStyles> {
   /**
    * Defines a CSS class name used to style the StackItem.
    */
@@ -74,7 +81,15 @@ export interface IStackItemProps extends IStackItemSlots, IStyleableComponentPro
  * {@docCategory Stack}
  */
 export interface IStackItemTokens {
+  /**
+   * Defines the margin to be applied to the StackItem relative to its container.
+   */
   margin?: number | string;
+
+  /**
+   * Defines the padding to be applied to the StackItem contents relative to its border.
+   */
+  padding?: number | string;
 }
 
 /**

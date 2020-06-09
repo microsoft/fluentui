@@ -5,7 +5,23 @@ const resources = require('../../scripts/webpack/webpack-resources');
 // Files which should not be considered top-level entries.
 const TopLevelEntryFileExclusions = ['index.js', 'version.js', 'index.bundle.js'];
 
+// Helper to resolve the path to an entry name for a given package.
+const resolvePath = (packageName, entryFileName = 'index.js') =>
+  path.join(path.dirname(require.resolve(packageName)).replace('lib-commonjs', 'lib'), entryFileName);
+
+// Create entries for all top level imports.
 const Entries = _buildEntries('office-ui-fabric-react');
+_buildEntries('@fluentui/react-next', Entries);
+
+// Create entries for single top level import.
+Entries['react-button'] = resolvePath('@fluentui/react-button');
+Entries['react-compose'] = resolvePath('@fluentui/react-compose');
+Entries['keyboard-key'] = resolvePath('@fluentui/keyboard-key');
+
+// Note: The experimental button bundle evaluation seems to be slowing down PRs
+// significantly. Commenting out for now.
+
+// Entries['experiments-Button'] = resolvePath('@uifabric/experiments', 'Button.js');
 
 module.exports = Object.keys(Entries).map(
   entryName =>
@@ -14,12 +30,12 @@ module.exports = Object.keys(Entries).map(
       true,
       {
         entry: {
-          [entryName]: Entries[entryName]
+          [entryName]: Entries[entryName],
         },
         externals: {
           react: 'React',
-          'react-dom': 'ReactDOM'
-        }
+          'react-dom': 'ReactDOM',
+        },
         // plugins: [
         //   {
         //     apply: compiler => {
@@ -29,8 +45,8 @@ module.exports = Object.keys(Entries).map(
         // ]
       },
       true,
-      true
-    )[0]
+      true,
+    )[0],
 );
 
 /**
@@ -50,8 +66,7 @@ module.exports = Object.keys(Entries).map(
 /**
  * Build webpack entries based on top level imports available in a package.
  */
-function _buildEntries(packageName) {
-  const entries = {};
+function _buildEntries(packageName, entries = {}) {
   let packagePath = '';
 
   try {
@@ -72,7 +87,7 @@ function _buildEntries(packageName) {
       // Replace commonjs paths with lib paths.
       const entryPath = path.join(packagePath, itemName);
 
-      entries[`${packageName}-${entryName}`] = entryPath;
+      entries[`${packageName.replace('@', '').replace('/', '-')}-${entryName}`] = entryPath;
     }
   });
 

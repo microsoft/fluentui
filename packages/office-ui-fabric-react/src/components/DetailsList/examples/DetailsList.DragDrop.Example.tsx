@@ -1,26 +1,34 @@
 import * as React from 'react';
 import { Link } from 'office-ui-fabric-react/lib/Link';
-import { DetailsList, Selection, IColumn, buildColumns, IColumnReorderOptions } from 'office-ui-fabric-react/lib/DetailsList';
+import {
+  DetailsList,
+  Selection,
+  IColumn,
+  buildColumns,
+  IColumnReorderOptions,
+  IDragDropEvents,
+  IDragDropContext,
+} from 'office-ui-fabric-react/lib/DetailsList';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
-import { IDragDropEvents, IDragDropContext } from 'office-ui-fabric-react/lib/utilities/dragdrop/interfaces';
-import { createListItems, IExampleItem } from 'office-ui-fabric-react/lib/utilities/exampleData';
+import { createListItems, IExampleItem } from '@uifabric/example-data';
 import { TextField, ITextFieldStyles } from 'office-ui-fabric-react/lib/TextField';
-import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
+import { Toggle, IToggleStyles } from 'office-ui-fabric-react/lib/Toggle';
 import { getTheme, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
 const theme = getTheme();
 const margin = '0 30px 20px 0';
 const dragEnterClass = mergeStyles({
-  backgroundColor: theme.palette.neutralLight
+  backgroundColor: theme.palette.neutralLight,
 });
 const controlWrapperClass = mergeStyles({
   display: 'flex',
-  flexWrap: 'wrap'
+  flexWrap: 'wrap',
 });
 const textFieldStyles: Partial<ITextFieldStyles> = {
   root: { margin: margin },
-  fieldGroup: { maxWidth: '100px' }
+  fieldGroup: { maxWidth: '100px' },
 };
+const togglesStyles: Partial<IToggleStyles> = { root: { margin } };
 
 export interface IDetailsListDragDropExampleState {
   items: IExampleItem[];
@@ -49,7 +57,7 @@ export class DetailsListDragDropExample extends React.Component<{}, IDetailsList
       columns: buildColumns(items, true),
       isColumnReorderEnabled: true,
       frozenColumnCountFromStart: '1',
-      frozenColumnCountFromEnd: '0'
+      frozenColumnCountFromEnd: '0',
     };
   }
 
@@ -65,7 +73,7 @@ export class DetailsListDragDropExample extends React.Component<{}, IDetailsList
             onChange={this._onChangeColumnReorderEnabled}
             onText="Enabled"
             offText="Disabled"
-            styles={{ root: { margin: margin } }}
+            styles={togglesStyles}
           />
           <TextField
             label="Number of left frozen columns"
@@ -95,6 +103,7 @@ export class DetailsListDragDropExample extends React.Component<{}, IDetailsList
             columnReorderOptions={this.state.isColumnReorderEnabled ? this._getColumnReorderOptions() : undefined}
             ariaLabelForSelectionColumn="Toggle selection"
             ariaLabelForSelectAllCheckbox="Toggle selection for all items"
+            checkButtonAriaLabel="Row checkbox"
           />
         </MarqueeSelection>
       </div>
@@ -115,7 +124,7 @@ export class DetailsListDragDropExample extends React.Component<{}, IDetailsList
     return {
       frozenColumnCountFromStart: parseInt(this.state.frozenColumnCountFromStart, 10),
       frozenColumnCountFromEnd: parseInt(this.state.frozenColumnCountFromEnd, 10),
-      handleColumnReorder: this._handleColumnReorder
+      handleColumnReorder: this._handleColumnReorder,
     };
   }
 
@@ -123,11 +132,17 @@ export class DetailsListDragDropExample extends React.Component<{}, IDetailsList
     return isNaN(Number(value)) ? `The value should be a number, actual is ${value}.` : '';
   }
 
-  private _onChangeStartCountText = (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, text: string): void => {
+  private _onChangeStartCountText = (
+    event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>,
+    text: string,
+  ): void => {
     this.setState({ frozenColumnCountFromStart: text });
   };
 
-  private _onChangeEndCountText = (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, text: string): void => {
+  private _onChangeEndCountText = (
+    event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>,
+    text: string,
+  ): void => {
     this.setState({ frozenColumnCountFromEnd: text });
   };
 
@@ -162,7 +177,7 @@ export class DetailsListDragDropExample extends React.Component<{}, IDetailsList
       onDragEnd: (item?: any, event?: DragEvent) => {
         this._draggedItem = undefined;
         this._draggedIndex = -1;
-      }
+      },
     };
   }
 
@@ -184,16 +199,11 @@ export class DetailsListDragDropExample extends React.Component<{}, IDetailsList
       ? (this._selection.getSelection() as IExampleItem[])
       : [this._draggedItem!];
 
+    const insertIndex = this.state.items.indexOf(item);
     const items = this.state.items.filter(itm => draggedItems.indexOf(itm) === -1);
-    let insertIndex = items.indexOf(item);
-
-    // if dragging/dropping on itself, index will be 0.
-    if (insertIndex === -1) {
-      insertIndex = 0;
-    }
 
     items.splice(insertIndex, 0, ...draggedItems);
 
-    this.setState({ items: items });
+    this.setState({ items });
   }
 }

@@ -9,7 +9,7 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
     }
   }
 >
-  Current selectedKey: 
+  Current selectedKey:
   Settings
   <div
     style={
@@ -20,6 +20,8 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
     }
   >
     <div
+      aria-label="No Selected Pivot Example"
+      role="toolbar"
       style={
         Object {
           "flexGrow": 1,
@@ -36,7 +38,6 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
-        role="presentation"
       >
         <div
           className=
@@ -77,18 +78,15 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
                   border-radius: 0px;
                   border: 0px;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   cursor: pointer;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
-                  height: 40px;
-                  line-height: 40px;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
+                  height: 44px;
+                  line-height: 44px;
                   margin-right: 8px;
-                  margin-top: 0px;
                   outline: transparent;
                   padding-bottom: 0;
                   padding-left: 8px;
@@ -98,20 +96,19 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
                   text-align: center;
                   text-decoration: none;
                   user-select: none;
-                  vertical-align: top;
                 }
                 &::-moz-focus-inner {
                   border: 0;
                 }
                 .ms-Fabric--isFocusVisible &:focus:after {
                   border: 0px;
-                  bottom: 0px;
+                  bottom: 2px;
                   content: attr(data-content);
-                  left: 0px;
-                  outline: 1px solid #666666;
+                  left: 2px;
+                  outline: 1px solid #605e5c;
                   position: relative;
-                  right: 0px;
-                  top: 0px;
+                  right: 2px;
+                  top: 2px;
                   z-index: 1;
                 }
                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -128,7 +125,8 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
                   top: 0px;
                 }
                 &:hover {
-                  color: #212121;
+                  background-color: #f3f2f1;
+                  color: #201f1e;
                   cursor: pointer;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
@@ -142,7 +140,8 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
                   outline: none;
                 }
                 &:active {
-                  color: #000000;
+                  background-color: #edebe9;
+                  color: #201f1e;
                 }
                 &:active .ms-Button-icon {
                   color: #004578;
@@ -155,7 +154,8 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
                   left: 8px;
                   position: absolute;
                   right: 8px;
-                  transition: background-color 0.267s cubic-bezier(.1,.25,.75,.9);
+                  transition: left 0.267s cubic-bezier(.1,.25,.75,.9),
+                                      right 0.267s cubic-bezier(.1,.25,.75,.9);
                 }
                 &:after {
                   color: transparent;
@@ -167,11 +167,7 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
                   visibility: hidden;
                 }
                 .ms-Fabric--isFocusVisible &:focus {
-                  outline: 1px solid #666666;
-                }
-                &:hover::before {
-                  border-bottom: 2px solid transparent;
-                  box-sizing: border-box;
+                  outline: 1px solid #605e5c;
                 }
             data-content="Thing1"
             data-is-focusable={true}
@@ -186,7 +182,7 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
             role="tab"
             type="button"
           >
-            <div
+            <span
               className=
                   ms-Button-flexContainer
                   {
@@ -196,11 +192,20 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
                     height: 100%;
                     justify-content: flex-start;
                   }
+              data-automationid="splitbuttonprimary"
             >
               <span
                 className=
                     ms-Pivot-linkContent
-
+                    {
+                      flex: 0 1 100%;
+                    }
+                    & > *  {
+                      margin-left: 4px;
+                    }
+                    & > *:first-child {
+                      margin-left: 0px;
+                    }
               >
                 <span
                   className=
@@ -210,11 +215,11 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
                         vertical-align: top;
                       }
                 >
-                   
+
                   Thing1
                 </span>
               </span>
-            </div>
+            </span>
           </button>
           <button
             aria-selected={false}
@@ -230,18 +235,15 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
                   border-radius: 0px;
                   border: 0px;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   cursor: pointer;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
-                  height: 40px;
-                  line-height: 40px;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
+                  height: 44px;
+                  line-height: 44px;
                   margin-right: 8px;
-                  margin-top: 0px;
                   outline: transparent;
                   padding-bottom: 0;
                   padding-left: 8px;
@@ -251,20 +253,19 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
                   text-align: center;
                   text-decoration: none;
                   user-select: none;
-                  vertical-align: top;
                 }
                 &::-moz-focus-inner {
                   border: 0;
                 }
                 .ms-Fabric--isFocusVisible &:focus:after {
                   border: 0px;
-                  bottom: 0px;
+                  bottom: 2px;
                   content: attr(data-content);
-                  left: 0px;
-                  outline: 1px solid #666666;
+                  left: 2px;
+                  outline: 1px solid #605e5c;
                   position: relative;
-                  right: 0px;
-                  top: 0px;
+                  right: 2px;
+                  top: 2px;
                   z-index: 1;
                 }
                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -281,7 +282,8 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
                   top: 0px;
                 }
                 &:hover {
-                  color: #212121;
+                  background-color: #f3f2f1;
+                  color: #201f1e;
                   cursor: pointer;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
@@ -295,7 +297,8 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
                   outline: none;
                 }
                 &:active {
-                  color: #000000;
+                  background-color: #edebe9;
+                  color: #201f1e;
                 }
                 &:active .ms-Button-icon {
                   color: #004578;
@@ -308,7 +311,8 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
                   left: 8px;
                   position: absolute;
                   right: 8px;
-                  transition: background-color 0.267s cubic-bezier(.1,.25,.75,.9);
+                  transition: left 0.267s cubic-bezier(.1,.25,.75,.9),
+                                      right 0.267s cubic-bezier(.1,.25,.75,.9);
                 }
                 &:after {
                   color: transparent;
@@ -320,11 +324,7 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
                   visibility: hidden;
                 }
                 .ms-Fabric--isFocusVisible &:focus {
-                  outline: 1px solid #666666;
-                }
-                &:hover::before {
-                  border-bottom: 2px solid transparent;
-                  box-sizing: border-box;
+                  outline: 1px solid #605e5c;
                 }
             data-content="Thing2"
             data-is-focusable={true}
@@ -339,7 +339,7 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
             role="tab"
             type="button"
           >
-            <div
+            <span
               className=
                   ms-Button-flexContainer
                   {
@@ -349,11 +349,20 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
                     height: 100%;
                     justify-content: flex-start;
                   }
+              data-automationid="splitbuttonprimary"
             >
               <span
                 className=
                     ms-Pivot-linkContent
-
+                    {
+                      flex: 0 1 100%;
+                    }
+                    & > *  {
+                      margin-left: 4px;
+                    }
+                    & > *:first-child {
+                      margin-left: 0px;
+                    }
               >
                 <span
                   className=
@@ -363,11 +372,11 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
                         vertical-align: top;
                       }
                 >
-                   
+
                   Thing2
                 </span>
               </span>
-            </div>
+            </span>
           </button>
           <button
             aria-selected={false}
@@ -383,18 +392,15 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
                   border-radius: 0px;
                   border: 0px;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   cursor: pointer;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
-                  height: 40px;
-                  line-height: 40px;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
+                  height: 44px;
+                  line-height: 44px;
                   margin-right: 8px;
-                  margin-top: 0px;
                   outline: transparent;
                   padding-bottom: 0;
                   padding-left: 8px;
@@ -404,20 +410,19 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
                   text-align: center;
                   text-decoration: none;
                   user-select: none;
-                  vertical-align: top;
                 }
                 &::-moz-focus-inner {
                   border: 0;
                 }
                 .ms-Fabric--isFocusVisible &:focus:after {
                   border: 0px;
-                  bottom: 0px;
+                  bottom: 2px;
                   content: attr(data-content);
-                  left: 0px;
-                  outline: 1px solid #666666;
+                  left: 2px;
+                  outline: 1px solid #605e5c;
                   position: relative;
-                  right: 0px;
-                  top: 0px;
+                  right: 2px;
+                  top: 2px;
                   z-index: 1;
                 }
                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -434,7 +439,8 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
                   top: 0px;
                 }
                 &:hover {
-                  color: #212121;
+                  background-color: #f3f2f1;
+                  color: #201f1e;
                   cursor: pointer;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
@@ -448,7 +454,8 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
                   outline: none;
                 }
                 &:active {
-                  color: #000000;
+                  background-color: #edebe9;
+                  color: #201f1e;
                 }
                 &:active .ms-Button-icon {
                   color: #004578;
@@ -461,7 +468,8 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
                   left: 8px;
                   position: absolute;
                   right: 8px;
-                  transition: background-color 0.267s cubic-bezier(.1,.25,.75,.9);
+                  transition: left 0.267s cubic-bezier(.1,.25,.75,.9),
+                                      right 0.267s cubic-bezier(.1,.25,.75,.9);
                 }
                 &:after {
                   color: transparent;
@@ -473,11 +481,7 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
                   visibility: hidden;
                 }
                 .ms-Fabric--isFocusVisible &:focus {
-                  outline: 1px solid #666666;
-                }
-                &:hover::before {
-                  border-bottom: 2px solid transparent;
-                  box-sizing: border-box;
+                  outline: 1px solid #605e5c;
                 }
             data-content="Thing3"
             data-is-focusable={true}
@@ -492,7 +496,7 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
             role="tab"
             type="button"
           >
-            <div
+            <span
               className=
                   ms-Button-flexContainer
                   {
@@ -502,11 +506,20 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
                     height: 100%;
                     justify-content: flex-start;
                   }
+              data-automationid="splitbuttonprimary"
             >
               <span
                 className=
                     ms-Pivot-linkContent
-
+                    {
+                      flex: 0 1 100%;
+                    }
+                    & > *  {
+                      margin-left: 4px;
+                    }
+                    & > *:first-child {
+                      margin-left: 0px;
+                    }
               >
                 <span
                   className=
@@ -516,11 +529,11 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
                         vertical-align: top;
                       }
                 >
-                   
+
                   Thing3
                 </span>
               </span>
-            </div>
+            </span>
           </button>
         </div>
       </div>
@@ -528,49 +541,44 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
     <button
       className=
           ms-Button
-          ms-Button--icon
+          ms-Button--default
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
-            background-color: transparent;
-            border-radius: 0px;
-            border: none;
+            background-color: #ffffff;
+            border-radius: 2px;
+            border: 1px solid #8a8886;
             box-sizing: border-box;
-            color: #333333;
+            color: #323130;
             cursor: pointer;
             display: inline-block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
             height: 32px;
-            margin-bottom: 0px;
-            margin-left: 0px;
-            margin-right: 0px;
-            margin-top: 0px;
+            min-width: 80px;
             outline: transparent;
             padding-bottom: 0;
-            padding-left: 4px;
-            padding-right: 4px;
+            padding-left: 16px;
+            padding-right: 16px;
             padding-top: 0;
             position: relative;
             text-align: center;
             text-decoration: none;
             user-select: none;
-            vertical-align: top;
-            width: 32px;
           }
           &::-moz-focus-inner {
             border: 0;
           }
           .ms-Fabric--isFocusVisible &:focus:after {
-            border: 1px solid #ffffff;
-            bottom: 0px;
+            border: 1px solid transparent;
+            bottom: 2px;
             content: "";
-            left: 0px;
-            outline: 1px solid #666666;
+            left: 2px;
+            outline: 1px solid #605e5c;
             position: absolute;
-            right: 0px;
-            top: 0px;
+            right: 2px;
+            top: 2px;
             z-index: 1;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -587,14 +595,16 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
             top: 0px;
           }
           &:hover {
-            color: #212121;
+            background-color: #f3f2f1;
+            color: #201f1e;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
             color: Highlight;
           }
           &:active {
-            color: #0078d4;
+            background-color: #edebe9;
+            color: #201f1e;
           }
       data-is-focusable={true}
       onClick={[Function]}
@@ -605,7 +615,7 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
       onMouseUp={[Function]}
       type="button"
     >
-      <div
+      <span
         className=
             ms-Button-flexContainer
             {
@@ -615,40 +625,72 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
               height: 100%;
               justify-content: center;
             }
+        data-automationid="splitbuttonprimary"
       >
         <i
+          aria-hidden={true}
           className=
+              ms-Icon
               ms-Button-icon
+              {
+                display: inline-block;
+              }
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                display: inline-block;
-                flex-shrink: 0;
                 font-family: "FabricMDL2Icons";
-                font-size: 16px;
                 font-style: normal;
                 font-weight: normal;
+                speak: none;
+              }
+              {
+                flex-shrink: 0;
+                font-size: 16px;
                 height: 16px;
                 line-height: 16px;
                 margin-bottom: 0;
                 margin-left: 4px;
                 margin-right: 4px;
                 margin-top: 0;
-                speak: none;
                 text-align: center;
-                vertical-align: middle;
               }
           data-icon-name="Settings"
           role="presentation"
           style={
             Object {
               "color": "blue",
+              "fontFamily": "\\"FabricMDL2Icons\\"",
             }
           }
         >
           
         </i>
-      </div>
+        <span
+          className=
+              ms-Button-textContainer
+              {
+                display: block;
+                flex-grow: 1;
+              }
+        >
+          <span
+            className=
+                ms-Button-label
+                {
+                  display: block;
+                  font-weight: 600;
+                  line-height: 100%;
+                  margin-bottom: 0;
+                  margin-left: 4px;
+                  margin-right: 4px;
+                  margin-top: 0;
+                }
+            id="id__11"
+          >
+            Settings
+          </span>
+        </span>
+      </span>
     </button>
   </div>
   <div>

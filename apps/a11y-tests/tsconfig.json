@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
     "outDir": "dist",
     "target": "es5",
     "module": "commonjs",
@@ -16,10 +15,7 @@
     "preserveConstEnums": true,
     "lib": ["es2017", "dom"],
     "types": ["jest"],
-    "jsx": "react",
-    "paths": {
-      "office-ui-fabric-react/lib/*": ["node_modules/office-ui-fabric-react/lib/*"]
-    }
+    "jsx": "react"
   },
   "include": ["src"]
 }

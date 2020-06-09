@@ -6,31 +6,31 @@ import { CollapsibleSection, ICollapsibleSectionProps } from '../../CollapsibleS
 import { IAccordionComponent, IAccordionProps, IAccordionSlots } from './Accordion.types';
 import { styles } from './Accordion.styles';
 
-const AccordionItemType = (<CollapsibleSection /> as React.ReactElement<ICollapsibleSectionProps>).type;
+const AccordionItemType = ((<CollapsibleSection />) as React.ReactElement<ICollapsibleSectionProps>).type;
 
-const view: IAccordionComponent['view'] = props => {
+const AccordionView: IAccordionComponent['view'] = props => {
   const { collapseItems } = props;
 
-  const children: React.ReactChild[] = React.Children.map(
+  const children: React.ReactChild[] | undefined | null = React.Children.map(
     props.children,
     (child: React.ReactElement<ICollapsibleSectionProps>, index: number) => {
       const defaultItemProps: ICollapsibleSectionProps = {
-        defaultCollapsed: collapseItems
+        defaultCollapsed: collapseItems,
       };
 
       if (child.type === AccordionItemType) {
         return React.cloneElement(child, {
           ...defaultItemProps,
-          ...child.props
+          ...child.props,
         });
       }
 
       return <CollapsibleSection {...defaultItemProps}> {child} </CollapsibleSection>;
-    }
+    },
   );
 
   const Slots = getSlots<ICollapsibleSectionProps, IAccordionSlots>(props, {
-    root: 'div'
+    root: 'div',
   });
 
   return <Slots.root>{children}</Slots.root>;
@@ -38,16 +38,15 @@ const view: IAccordionComponent['view'] = props => {
 
 const AccordionStatics = {
   Item: CollapsibleSection,
-  defaultProps: {}
+  defaultProps: {},
 };
 
-export const Accordion: React.StatelessComponent<IAccordionProps> & {
-  Item: React.StatelessComponent<ICollapsibleSectionProps>;
-} = createComponent({
+export const Accordion: React.FunctionComponent<IAccordionProps> & {
+  Item: React.FunctionComponent<ICollapsibleSectionProps>;
+} = createComponent(AccordionView, {
   displayName: 'Accordion',
   styles,
-  view,
-  statics: AccordionStatics
+  statics: AccordionStatics,
 });
 
 export default Accordion;

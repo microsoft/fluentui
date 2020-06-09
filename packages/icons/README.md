@@ -1,12 +1,13 @@
-# [Office UI Fabric - Icons](http://dev.office.com/fabric)
+# @uifabric/icons
 
-##### The React-based front-end framework for building experiences for Office and Office 365.
+**Icons for [Fluent UI React](https://developer.microsoft.com/en-us/fluentui)**
+([formerly Office UI Fabric React](https://developer.microsoft.com/en-us/office/blogs/ui-fabric-is-evolving-into-fluent-ui/))
 
-Fabric Icons includes a collection of 1100+ icons which you can use in your application.
+Fluent UI React Icons includes a collection of 1100+ icons which you can use in your application.
 
-# Getting started
+## Getting started
 
-If you are using Fabric React components, you can make all icons available by calling the `initializeIcons` function from the `@uifabric/icons` package:
+If you are using Fluent UI React components, you can make all icons available by calling the `initializeIcons` function from the `@uifabric/icons` package:
 
 ```tsx
 import { initializeIcons } from '@uifabric/icons';
@@ -20,19 +21,21 @@ initializeIcons('https://my.cdn.com/path/to/icons/');
 
 This will make ALL icons in the collection available, but will download them on demand when referenced using the `@uifabric/styling` APIs `getIcon` or `getIconClassName`.
 
-# Usage in code
+## Usage in code
 
-## getIcon API
+### Icon component
 
-If you are using Fabric React, you can use the `Icon` component and pass in the corresponding iconName property to render a given icon.
+If you are using Fluent UI React, you can use the `Icon` component and pass in the corresponding iconName property to render a given icon.
 
 ```tsx
-import { Icon } from 'office-ui-fabric-react/lib/Icon';
+import { Icon } from '@fluentui/react/lib/Icon';
 
 <Icon iconName="Snow" />;
 ```
 
-The styling package includes a `getIconClassName` api which can provide a css class to use for rendering the icon manually using the `:before` pseudoselector:
+### `getIconClassName` API
+
+The styling package includes a `getIconClassName` API which can provide a css class to use for rendering the icon manually using the `:before` pseudoselector:
 
 ```ts
 import { getIconClassName } from '@uifabric/styling';
@@ -40,6 +43,6 @@ import { getIconClassName } from '@uifabric/styling';
 return `<i class="${getIconClassName('Snow')}" />`;
 ```
 
-# Notes
+## Notes
 
-See [Office UI Fabric React](http://github.com/OfficeDev/office-ui-fabric-react) for more details on the UI Fabric project and packages within.
+See [GitHub](https://github.com/microsoft/fluentui) for more details on the Fluent UI React project and packages within.

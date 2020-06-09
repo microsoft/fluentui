@@ -1,11 +1,10 @@
 import * as React from 'react';
-
 import { css, createArray } from 'office-ui-fabric-react/lib/Utilities';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { MarqueeSelection, Selection, IObjectWithKey } from 'office-ui-fabric-react/lib/MarqueeSelection';
-import * as styles from './MarqueeSelection.Basic.Example.scss';
-import * as exampleStyles from '../../../common/_exampleStyles.scss';
+import { getTheme, mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 
+import { useBoolean, useConstCallback, useConst } from '@uifabric/react-hooks';
 interface IPhoto extends IObjectWithKey {
   url: string;
   width: number;
@@ -14,75 +13,86 @@ interface IPhoto extends IObjectWithKey {
 
 const PHOTOS: IPhoto[] = createArray(250, (index: number) => {
   const randomWidth = 50 + Math.floor(Math.random() * 150);
-
   return {
     key: index,
     url: `http://placehold.it/${randomWidth}x100`,
     width: randomWidth,
-    height: 100
+    height: 100,
   };
 });
 
-export interface IMarqueeSelectionBasicExampleState {
-  isMarqueeEnabled: boolean;
-}
+const theme = getTheme();
+const styles = mergeStyleSets({
+  photoList: {
+    display: 'inline-block',
+    border: '1px solid ' + theme.palette.neutralTertiary,
+    margin: 0,
+    padding: 10,
+    overflow: 'hidden',
+    userSelect: 'none',
+  },
 
-export class MarqueeSelectionBasicExample extends React.Component<{}, IMarqueeSelectionBasicExampleState> {
-  private _selection: Selection;
-  private _isMounted: boolean;
+  photoCell: {
+    position: 'relative',
+    display: 'inline-block',
+    margin: 2,
+    boxSizing: 'border-box',
+    background: theme.palette.neutralLighter,
+    lineHeight: 100,
+    verticalAlign: 'middle',
+    textAlign: 'center',
+    selectors: {
+      '&.is-selected': {
+        background: theme.palette.themeLighter,
+        border: '1px solid ' + theme.palette.themePrimary,
+      },
+    },
+  },
+  checkbox: {
+    margin: '10px 0',
+  },
+});
 
-  constructor(props: {}) {
-    super(props);
+const useForceUpdate = () => {
+  const [, setCount] = React.useState(0);
+  console.log('update');
+  return useConstCallback(() => setCount(current => current + 1));
+};
 
-    this.state = {
-      isMarqueeEnabled: true
-    };
+export const MarqueeSelectionBasicExample: React.FunctionComponent = () => {
+  const [isMarqueeEnabled, { toggle: toggleIsMarqueeEnabled }] = useBoolean(true);
+  const forceUpdate = useForceUpdate();
 
-    this._selection = new Selection({
-      onSelectionChanged: () => {
-        if (this._isMounted) {
-          this.forceUpdate();
-        }
-      }
-    });
+  const selection = useConst(
+    () =>
+      new Selection<IPhoto>({
+        items: PHOTOS,
+        onSelectionChanged: forceUpdate,
+      }),
+  );
 
-    this._selection.setItems(PHOTOS);
-  }
-
-  public componentDidMount(): void {
-    this._isMounted = true;
-  }
-
-  public render(): JSX.Element {
-    return (
-      <MarqueeSelection selection={this._selection} isEnabled={this.state.isMarqueeEnabled}>
-        <Checkbox className={exampleStyles.exampleCheckbox} label="Is marquee enabled" defaultChecked={true} onChange={this._onChange} />
-        <p>Drag a rectangle around the items below to select them:</p>
-        <ul className={styles.photoList}>
-          {PHOTOS.map((photo, index) => (
-            <div
-              key={index}
-              className={css(styles.photoCell, this._selection.isIndexSelected(index) && 'is-selected')}
-              data-is-focusable={true}
-              data-selection-index={index}
-              onClick={this._log('clicked')}
-              style={{ width: photo.width, height: photo.height }}
-            >
-              {index}
-            </div>
-          ))}
-        </ul>
-      </MarqueeSelection>
-    );
-  }
-
-  private _log(text: string): () => void {
-    return (): void => {
-      console.log(text);
-    };
-  }
-
-  private _onChange = (ev: React.FormEvent<HTMLElement | HTMLInputElement>, isMarqueeEnabled: boolean | undefined): void => {
-    this.setState({ isMarqueeEnabled: isMarqueeEnabled! });
-  };
-}
+  return (
+    <MarqueeSelection selection={selection} isEnabled={isMarqueeEnabled}>
+      <Checkbox
+        className={styles.checkbox}
+        label="Is marquee enabled"
+        defaultChecked
+        onChange={toggleIsMarqueeEnabled}
+      />
+      <p>Drag a rectangle around the items below to select them:</p>
+      <ul className={styles.photoList}>
+        {PHOTOS.map((photo, index) => (
+          <div
+            key={index}
+            className={css(styles.photoCell, selection.isIndexSelected(index) && 'is-selected')}
+            data-is-focusable
+            data-selection-index={index}
+            style={{ width: photo.width, height: photo.height }}
+          >
+            {index}
+          </div>
+        ))}
+      </ul>
+    </MarqueeSelection>
+  );
+};

@@ -18,22 +18,22 @@ export const TagPickerStyles = (props: IBasePickerStyleProps): Partial<IBasePick
       selectors: {
         '[disabled]': {
           backgroundColor: semanticColors.buttonBackgroundDisabled,
-          color: semanticColors.buttonTextDisabled
-        }
-      }
+          color: semanticColors.buttonTextDisabled,
+        },
+      },
     },
     input: {
       color: extendedSemanticColors.inputText,
       backgroundColor: StyleConstants.transparent,
-      border: 'none'
+      border: 'none',
     },
     itemsWrapper: {
       color: semanticColors.bodyText,
       border: 'none',
-      backgroundColor: StyleConstants.transparent
+      backgroundColor: StyleConstants.transparent,
     },
     text: {
-      border: `${StyleConstants.borderWidth} solid ${extendedSemanticColors.controlOutline}`
-    }
+      border: `${StyleConstants.borderWidth} solid ${extendedSemanticColors.controlOutline}`,
+    },
   };
 };

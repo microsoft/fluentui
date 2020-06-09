@@ -22,7 +22,7 @@ export const VariantThemeType = {
    * The foreground/text becomes shades of the background color.
    * The primary color becomes shades of the background.
    */
-  Strong: 3 as 3
+  Strong: 3 as 3,
 };
 
 export type VariantThemeType = typeof VariantThemeType[keyof typeof VariantThemeType];

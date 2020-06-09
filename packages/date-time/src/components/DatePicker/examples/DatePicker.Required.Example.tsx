@@ -1,25 +1,6 @@
 import * as React from 'react';
-import { DatePicker, DayOfWeek, IDatePickerStrings } from '@uifabric/date-time';
+import { DatePicker, DayOfWeek, defaultDayPickerStrings } from '@uifabric/date-time';
 import './DatePicker.Examples.scss';
-
-const DayPickerStrings: IDatePickerStrings = {
-  months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-  shortMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-  days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-  shortDays: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
-  goToToday: 'Go to today',
-  weekNumberFormatString: 'Week number {0}',
-  prevMonthAriaLabel: 'Previous month',
-  nextMonthAriaLabel: 'Next month',
-  prevYearAriaLabel: 'Previous year',
-  nextYearAriaLabel: 'Next year',
-  prevYearRangeAriaLabel: 'Previous year range',
-  nextYearRangeAriaLabel: 'Next year range',
-  closeButtonAriaLabel: 'Close',
-
-  isRequiredErrorMessage: 'Field is required.',
-  invalidInputErrorMessage: 'Invalid date format.'
-};
 
 export interface IDatePickerRequiredExampleState {
   firstDayOfWeek?: DayOfWeek;
@@ -30,7 +11,7 @@ export class DatePickerRequiredExample extends React.Component<{}, IDatePickerRe
     super(props);
 
     this.state = {
-      firstDayOfWeek: DayOfWeek.Sunday
+      firstDayOfWeek: DayOfWeek.Sunday,
     };
   }
 
@@ -44,14 +25,14 @@ export class DatePickerRequiredExample extends React.Component<{}, IDatePickerRe
           label="Date required (with label)"
           isRequired={true}
           firstDayOfWeek={firstDayOfWeek}
-          strings={DayPickerStrings}
+          strings={defaultDayPickerStrings}
           placeholder="Select a date..."
           ariaLabel="Select a date"
         />
         <DatePicker
           isRequired={true}
           firstDayOfWeek={firstDayOfWeek}
-          strings={DayPickerStrings}
+          strings={defaultDayPickerStrings}
           placeholder="Date required with no label..."
           ariaLabel="Select a date"
         />

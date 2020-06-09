@@ -1,0 +1,189 @@
+{
+  "fontName": "fabric-icons-17",
+  "fontFamilyName": "FabricMDL2Icons-17",
+  "excludeGlyphs": false,
+  "excludeThirdPartyIcons": true,
+  "chunkSubsets": true,
+  "hashFontFileName": true,
+  "subsetChunkSettings": {
+    "maxSubsetSize": 100
+  },
+  "glyphs": [
+    {
+      "name": "CustomizeToolbar",
+      "unicode": "F828"
+    },
+    {
+      "name": "DuplicateRow",
+      "unicode": "F82A"
+    },
+    {
+      "name": "RemoveFromTrash",
+      "unicode": "F82B"
+    },
+    {
+      "name": "MailOptions",
+      "unicode": "F82C"
+    },
+    {
+      "name": "Childof",
+      "unicode": "F82D"
+    },
+    {
+      "name": "Footer",
+      "unicode": "F82E"
+    },
+    {
+      "name": "Header",
+      "unicode": "F82F"
+    },
+    {
+      "name": "BarChartVerticalFill",
+      "unicode": "F830"
+    },
+    {
+      "name": "StackedColumnChart2Fill",
+      "unicode": "F831"
+    },
+    {
+      "name": "PlainText",
+      "unicode": "F834"
+    },
+    {
+      "name": "AccessibiltyChecker",
+      "unicode": "F835"
+    },
+    {
+      "name": "DatabaseSync",
+      "unicode": "F842"
+    },
+    {
+      "name": "ReservationOrders",
+      "unicode": "F845"
+    },
+    {
+      "name": "TabOneColumn",
+      "unicode": "F849"
+    },
+    {
+      "name": "TabTwoColumn",
+      "unicode": "F84A"
+    },
+    {
+      "name": "TabThreeColumn",
+      "unicode": "F84B"
+    },
+    {
+      "name": "BulletedTreeList",
+      "unicode": "F84C"
+    },
+    {
+      "name": "MicrosoftTranslatorLogoGreen",
+      "unicode": "F852"
+    },
+    {
+      "name": "MicrosoftTranslatorLogoBlue",
+      "unicode": "F853"
+    },
+    {
+      "name": "InternalInvestigation",
+      "unicode": "F854"
+    },
+    {
+      "name": "AddReaction",
+      "unicode": "F85D"
+    },
+    {
+      "name": "ContactHeart",
+      "unicode": "F862"
+    },
+    {
+      "name": "VisuallyImpaired",
+      "unicode": "F866"
+    },
+    {
+      "name": "EventToDoLogo",
+      "unicode": "F869"
+    },
+    {
+      "name": "Variable2",
+      "unicode": "F86D"
+    },
+    {
+      "name": "ModelingView",
+      "unicode": "F871"
+    },
+    {
+      "name": "DisconnectVirtualMachine",
+      "unicode": "F873"
+    },
+    {
+      "name": "ReportLock",
+      "unicode": "F875"
+    },
+    {
+      "name": "Uneditable2",
+      "unicode": "F876"
+    },
+    {
+      "name": "Uneditable2Mirrored",
+      "unicode": "F877"
+    },
+    {
+      "name": "BarChartVerticalEdit",
+      "unicode": "F89D"
+    },
+    {
+      "name": "GlobalNavButtonActive",
+      "unicode": "F89F"
+    },
+    {
+      "name": "PollResults",
+      "unicode": "F8A0"
+    },
+    {
+      "name": "Rerun",
+      "unicode": "F8A1"
+    },
+    {
+      "name": "QandA",
+      "unicode": "F8A2"
+    },
+    {
+      "name": "QandAMirror",
+      "unicode": "F8A3"
+    },
+    {
+      "name": "BookAnswers",
+      "unicode": "F8A4"
+    },
+    {
+      "name": "AlertSettings",
+      "unicode": "F8B6"
+    },
+    {
+      "name": "TrimStart",
+      "unicode": "F8BB"
+    },
+    {
+      "name": "TrimEnd",
+      "unicode": "F8BC"
+    },
+    {
+      "name": "TableComputed",
+      "unicode": "F8F5"
+    },
+    {
+      "name": "DecreaseIndentLegacy",
+      "unicode": "E290"
+    },
+    {
+      "name": "IncreaseIndentLegacy",
+      "unicode": "E291"
+    },
+    {
+      "name": "SizeLegacy",
+      "unicode": "E2B2"
+    }
+  ]
+}

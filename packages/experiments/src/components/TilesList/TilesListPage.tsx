@@ -3,7 +3,6 @@ import { Link } from 'office-ui-fabric-react/lib/Link';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet } from '@uifabric/example-app-base';
 
-/* tslint:disable:max-line-length */
 import { TilesListBasicExample } from './examples/TilesList.Basic.Example';
 const TilesListBasicExampleCode = require('!raw-loader!@uifabric/experiments/src/components/TilesList/examples/TilesList.Basic.Example.tsx') as string;
 
@@ -23,7 +22,7 @@ export class TilesListPage extends React.Component<IComponentDemoPageProps, ITil
     super(props);
 
     this.state = {
-      size: 'large'
+      size: 'large',
     };
   }
 
@@ -64,11 +63,11 @@ export class TilesListPage extends React.Component<IComponentDemoPageProps, ITil
               <Link href="#/examples/List">
                 <code>List</code>
               </Link>{' '}
-              component. It is intended to represent items visual using a one or mote content-focused flowing grids.
+              component. It is intended to represent items visually using one or more content-focused flowing grids.
             </p>
             <p>
-              <code>TilesList</code> is designed to be used in conjunction with the <code>Tile</code> component. The <code>Tile</code>{' '}
-              component provides a standardized form of focusable and selectable content item.
+              <code>TilesList</code> is designed to be used in conjunction with the <code>Tile</code> component.{' '}
+              <code>Tile</code> provides a standardized form for a focusable and selectable content item.
             </p>
           </div>
         }
@@ -94,7 +93,7 @@ export class TilesListPage extends React.Component<IComponentDemoPageProps, ITil
 
   private _onIsLargeChanged = (event: React.FormEvent<HTMLInputElement>, checked: boolean): void => {
     this.setState({
-      size: checked ? 'large' : 'small'
+      size: checked ? 'large' : 'small',
     });
   };
 }

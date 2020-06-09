@@ -10,6 +10,146 @@
   },
   "glyphs": [
     {
+      "name": "Picture",
+      "unicode": "E8B9"
+    },
+    {
+      "name": "ChromeClose",
+      "unicode": "E8BB"
+    },
+    {
+      "name": "ShowResults",
+      "unicode": "E8BC"
+    },
+    {
+      "name": "Message",
+      "unicode": "E8BD"
+    },
+    {
+      "name": "CalendarDay",
+      "unicode": "E8BF"
+    },
+    {
+      "name": "CalendarWeek",
+      "unicode": "E8C0"
+    },
+    {
+      "name": "MailReplyAll",
+      "unicode": "E8C2"
+    },
+    {
+      "name": "Read",
+      "unicode": "E8C3"
+    },
+    {
+      "name": "Cut",
+      "unicode": "E8C6"
+    },
+    {
+      "name": "PaymentCard",
+      "unicode": "E8C7"
+    },
+    {
+      "name": "Copy",
+      "unicode": "E8C8"
+    },
+    {
+      "name": "Important",
+      "unicode": "E8C9"
+    },
+    {
+      "name": "MailReply",
+      "unicode": "E8CA"
+    },
+    {
+      "name": "GotoToday",
+      "unicode": "E8D1"
+    },
+    {
+      "name": "Font",
+      "unicode": "E8D2"
+    },
+    {
+      "name": "FontColor",
+      "unicode": "E8D3"
+    },
+    {
+      "name": "FolderFill",
+      "unicode": "E8D5"
+    },
+    {
+      "name": "Permissions",
+      "unicode": "E8D7"
+    },
+    {
+      "name": "DisableUpdates",
+      "unicode": "E8D8"
+    },
+    {
+      "name": "Unfavorite",
+      "unicode": "E8D9"
+    },
+    {
+      "name": "Italic",
+      "unicode": "E8DB"
+    },
+    {
+      "name": "Underline",
+      "unicode": "E8DC"
+    },
+    {
+      "name": "Bold",
+      "unicode": "E8DD"
+    },
+    {
+      "name": "MoveToFolder",
+      "unicode": "E8DE"
+    },
+    {
+      "name": "Dislike",
+      "unicode": "E8E0"
+    },
+    {
+      "name": "Like",
+      "unicode": "E8E1"
+    },
+    {
+      "name": "AlignCenter",
+      "unicode": "E8E3"
+    },
+    {
+      "name": "OpenFile",
+      "unicode": "E8E5"
+    },
+    {
+      "name": "ClearSelection",
+      "unicode": "E8E6"
+    },
+    {
+      "name": "FontDecrease",
+      "unicode": "E8E7"
+    },
+    {
+      "name": "FontIncrease",
+      "unicode": "E8E8"
+    },
+    {
+      "name": "FontSize",
+      "unicode": "E8E9"
+    },
+    {
+      "name": "CellPhone",
+      "unicode": "E8EA"
+    },
+    {
+      "name": "RepeatOne",
+      "unicode": "E8ED"
+    },
+    {
+      "name": "RepeatAll",
+      "unicode": "E8EE"
+    },
+    {
       "name": "Calculator",
       "unicode": "E8EF"
     },
@@ -230,6 +370,10 @@
       "unicode": "E949"
     },
     {
+      "name": "CalculatorPercentage",
+      "unicode": "E94C"
+    },
+    {
       "name": "CalculatorEqualTo",
       "unicode": "E94E"
     },
@@ -254,160 +398,16 @@
       "unicode": "E95E"
     },
     {
+      "name": "Webcam2",
+      "unicode": "E960"
+    },
+    {
       "name": "FrontCamera",
       "unicode": "E96B"
     },
     {
       "name": "ChevronUpSmall",
       "unicode": "E96D"
-    },
-    {
-      "name": "ChevronDownSmall",
-      "unicode": "E96E"
-    },
-    {
-      "name": "ChevronLeftSmall",
-      "unicode": "E96F"
-    },
-    {
-      "name": "ChevronRightSmall",
-      "unicode": "E970"
-    },
-    {
-      "name": "ChevronUpMed",
-      "unicode": "E971"
-    },
-    {
-      "name": "ChevronDownMed",
-      "unicode": "E972"
-    },
-    {
-      "name": "ChevronLeftMed",
-      "unicode": "E973"
-    },
-    {
-      "name": "ChevronRightMed",
-      "unicode": "E974"
-    },
-    {
-      "name": "Devices2",
-      "unicode": "E975"
-    },
-    {
-      "name": "PC1",
-      "unicode": "E977"
-    },
-    {
-      "name": "PresenceChickletVideo",
-      "unicode": "E979"
-    },
-    {
-      "name": "Reply",
-      "unicode": "E97A"
-    },
-    {
-      "name": "HalfAlpha",
-      "unicode": "E97E"
-    },
-    {
-      "name": "ConstructionCone",
-      "unicode": "E98F"
-    },
-    {
-      "name": "DoubleChevronLeftMed",
-      "unicode": "E991"
-    },
-    {
-      "name": "Volume0",
-      "unicode": "E992"
-    },
-    {
-      "name": "Volume1",
-      "unicode": "E993"
-    },
-    {
-      "name": "Volume2",
-      "unicode": "E994"
-    },
-    {
-      "name": "Volume3",
-      "unicode": "E995"
-    },
-    {
-      "name": "Chart",
-      "unicode": "E999"
-    },
-    {
-      "name": "Robot",
-      "unicode": "E99A"
-    },
-    {
-      "name": "Manufacturing",
-      "unicode": "E99C"
-    },
-    {
-      "name": "LockSolid",
-      "unicode": "E9A2"
-    },
-    {
-      "name": "FitPage",
-      "unicode": "E9A6"
-    },
-    {
-      "name": "FitWidth",
-      "unicode": "E9A7"
-    },
-    {
-      "name": "BidiLtr",
-      "unicode": "E9AA"
-    },
-    {
-      "name": "BidiRtl",
-      "unicode": "E9AB"
-    },
-    {
-      "name": "RightDoubleQuote",
-      "unicode": "E9B1"
-    },
-    {
-      "name": "Sunny",
-      "unicode": "E9BD"
-    },
-    {
-      "name": "CloudWeather",
-      "unicode": "E9BE"
-    },
-    {
-      "name": "Cloudy",
-      "unicode": "E9BF"
-    },
-    {
-      "name": "PartlyCloudyDay",
-      "unicode": "E9C0"
-    },
-    {
-      "name": "PartlyCloudyNight",
-      "unicode": "E9C1"
-    },
-    {
-      "name": "ClearNight",
-      "unicode": "E9C2"
-    },
-    {
-      "name": "RainShowersDay",
-      "unicode": "E9C3"
-    },
-    {
-      "name": "Rain",
-      "unicode": "E9C4"
-    },
-    {
-      "name": "Thunderstorms",
-      "unicode": "E9C6"
-    },
-    {
-      "name": "RainSnow",
-      "unicode": "E9C7"
     }
   ]
 }

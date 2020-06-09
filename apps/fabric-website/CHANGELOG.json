@@ -2,6 +2,1574 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Fri, 22 May 2020 12:37:35 GMT",
+      "tag": "@uifabric/fabric-website_v7.10.58",
+      "version": "7.10.58",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update documentation for fontSize prop",
+            "author": "krsiler@microsoft.com",
+            "commit": "200b1a0960dbc059918d92385b1a4bb9a5f44406",
+            "package": "@uifabric/fabric-website"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 21 May 2020 12:34:43 GMT",
+      "tag": "@uifabric/fabric-website_v7.10.57",
+      "version": "7.10.57",
+      "comments": {
+        "none": [
+          {
+            "comment": "Remove unnecessary devDependency",
+            "author": "elcraig@microsoft.com",
+            "commit": "2fccd9fec686c2c79cc654e6d857bf7945b5e363",
+            "package": "@uifabric/fabric-website"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 19 May 2020 12:34:06 GMT",
+      "tag": "@uifabric/fabric-website_v7.10.55",
+      "version": "7.10.55",
+      "comments": {
+        "patch": [
+          {
+            "comment": "grammer fix on iOS get started change",
+            "author": "hyshin@microsoft.com",
+            "commit": "434f841fbb7d79337bb277180cfe4fc17b26e089",
+            "package": "@uifabric/fabric-website"
+          },
+          {
+            "comment": "added blurb on the Cross platform Getting Started page that FURN controls only support Windows and Mac atm",
+            "author": "ejlayne@microsoft.com",
+            "commit": "b9df2288e3eaf78388223692f573306f49c47040",
+            "package": "@uifabric/fabric-website"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 18 May 2020 12:54:52 GMT",
+      "tag": "@uifabric/fabric-website_v7.10.53",
+      "version": "7.10.53",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixed broken URLs",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "4e6191ce33cfd662c1b9b582487276be4b5867ea",
+            "package": "@uifabric/fabric-website"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 15 May 2020 05:52:46 GMT",
+      "tag": "@uifabric/fabric-website_v7.10.50",
+      "version": "7.10.50",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fixed visited styles in website",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "2c54d7d2f5d6dc07d2bc01e6d9f22a34a556310a",
+            "package": "@uifabric/fabric-website"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 15 May 2020 00:07:39 GMT",
+      "tag": "@uifabric/fabric-website_v7.10.49",
+      "version": "7.10.49",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding new website content",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "7a613256ef792c037702a47fa07713cecacbc755",
+            "package": "@uifabric/fabric-website"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 04 May 2020 12:33:29 GMT",
+      "tag": "@uifabric/fabric-website_v7.10.39",
+      "version": "7.10.39",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updated office brand icons",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "07b02c8ee75dd5ca4e47f06f724fe51f21769cac",
+            "package": "@uifabric/fabric-website"
+          },
+          {
+            "comment": "Website: Updated Forms icon text",
+            "author": "micahgodbolt@gmail.com",
+            "commit": "d40f4629b7bde5795090e84eed6896190dab3f4e",
+            "package": "@uifabric/fabric-website"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 29 Apr 2020 12:34:58 GMT",
+      "tag": "@uifabric/fabric-website_v7.10.35",
+      "version": "7.10.35",
+      "comments": {
+        "patch": [
+          {
+            "comment": "update MessageBar colors",
+            "author": "chrismo@microsoft.com",
+            "commit": "6c2672609b55e65efb5b35484727ac33bfe93694",
+            "package": "@uifabric/fabric-website"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 21 Apr 2020 12:34:50 GMT",
+      "tag": "@uifabric/fabric-website_v7.10.29",
+      "version": "7.10.29",
+      "comments": {
+        "none": [
+          {
+            "comment": "Remove unnecessary lint rule overrides",
+            "author": "elcraig@microsoft.com",
+            "commit": "03aa5f753a01c7a4fe0fb6ba8591027e9d3c9db3",
+            "package": "@uifabric/fabric-website"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Always build dev bundle of website even in production mode",
+            "author": "elcraig@microsoft.com",
+            "commit": "89b53e7f43d70ffac4e9d308428356c90b8ac06b",
+            "package": "@uifabric/fabric-website"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 20 Apr 2020 15:55:12 GMT",
+      "tag": "@uifabric/fabric-website_v7.10.28",
+      "version": "7.10.28",
+      "comments": {
+        "patch": [
+          {
+            "comment": "guard against window and location not being available",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "268cfa142c6a06085678337222a840ebfe948ae8",
+            "package": "@uifabric/fabric-website"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Apr 2020 04:01:45 GMT",
+      "tag": "@uifabric/fabric-website_v7.10.23",
+      "version": "7.10.23",
+      "comments": {
+        "patch": [
+          {
+            "comment": "removing old and wrong filetype icon paths",
+            "author": "caperez@microsoft.com",
+            "commit": "c847450db51500f13847542b8f4c89dd277bb2bb",
+            "package": "@uifabric/fabric-website"
+          },
+          {
+            "comment": "explicitly set RTL false on website",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "3fc3e55205965c1fc603415b220a8e22ba379c95",
+            "package": "@uifabric/fabric-website"
+          },
+          {
+            "comment": "Update package description",
+            "author": "elcraig@microsoft.com",
+            "commit": "9e3c7c7d4b92e132820cdbcd61a667829c712ecb",
+            "package": "@uifabric/fabric-website"
+          },
+          {
+            "comment": "check for window before testing locadtion",
+            "author": "micahgodbolt@gmail.com",
+            "commit": "972a4a5b45f7042b9c127a7060ac0a76821307d5",
+            "package": "@uifabric/fabric-website"
+          }
+        ],
+        "none": [
+          {
+            "comment": "sync package version",
+            "author": "xgao@microsoft.com",
+            "commit": "6f39958352207acb3029458503db0969a4359806",
+            "package": "@uifabric/fabric-website"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 Apr 2020 12:24:31 GMT",
+      "tag": "@uifabric/fabric-website_v7.10.21",
+      "version": "7.10.21",
+      "comments": {
+        "none": [
+          {
+            "comment": "chore: bump @types/react",
+            "author": "olfedias@microsoft.com",
+            "commit": "1c25191a3a6a1b6e8a0aca3c7cf7f3a629171738"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 02 Apr 2020 12:30:40 GMT",
+      "tag": "@uifabric/fabric-website_v7.10.17",
+      "version": "7.10.17",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update homepage.htm mirror to always use bundled React",
+            "author": "elcraig@microsoft.com",
+            "commit": "b6b1b12b9430225883ec86c93258abb440da5b49"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 31 Mar 2020 12:27:26 GMT",
+      "tag": "@uifabric/fabric-website_v7.10.15",
+      "version": "7.10.15",
+      "comments": {
+        "patch": [
+          {
+            "comment": "update website banner and remove reference to fabric in context menu docs",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "f584afe2afbb834ac83c5a9b9f384cfac9c27b5d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 30 Mar 2020 19:10:08 GMT",
+      "tag": "@uifabric/fabric-website_v7.10.14",
+      "version": "7.10.14",
+      "comments": {
+        "patch": [
+          {
+            "comment": "More Fabric=>Fluent fixes",
+            "author": "elcraig@microsoft.com",
+            "commit": "682fe93832bc0cab071e8e29ceab1c97b6dc5585"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 25 Mar 2020 12:30:04 GMT",
+      "tag": "@uifabric/fabric-website_v7.10.12",
+      "version": "7.10.12",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating docs for fluent transition",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "e9fcc1a8ea263a19b8a2940e08f3fbf68d7367d7"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 23 Mar 2020 12:28:29 GMT",
+      "tag": "@uifabric/fabric-website_v7.10.11",
+      "version": "7.10.11",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Replace OfficeDev/office-ui-fabric-react with microsoft/fluentui",
+            "author": "elcraig@microsoft.com",
+            "commit": "94a0cc4f2c7129b66cb69159889f0ac95e8c88ee"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 19 Mar 2020 12:29:37 GMT",
+      "tag": "@uifabric/fabric-website_v7.10.10",
+      "version": "7.10.10",
+      "comments": {
+        "none": [
+          {
+            "comment": "Run prettier: 120 line length, trailing commas",
+            "author": "elcraig@microsoft.com",
+            "commit": "b55b99b22a9972f79dd9b0c45dcb983233b2c157"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 13 Mar 2020 12:30:22 GMT",
+      "tag": "@uifabric/fabric-website_v7.10.5",
+      "version": "7.10.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "new blog announcement, support jsx in message bar, move hig link",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "59f0c66f540deefe7a108a4be8e2760d16e2dc56"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 12 Mar 2020 12:35:00 GMT",
+      "tag": "@uifabric/fabric-website_v7.10.4",
+      "version": "7.10.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "use ms-Fabric--isFocusVisible instead of .is-focusVisible",
+            "author": "xgao@microsoft.com",
+            "commit": "56ef8bc2f930978aaa63be962726cff5a6ce5b87"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Sat, 07 Mar 2020 01:39:37 GMT",
+      "tag": "@uifabric/fabric-website_v7.10.2",
+      "version": "7.10.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "Remove trailing comma prevention hack",
+            "author": "elcraig@microsoft.com",
+            "commit": "eb6203e8aa6f934c2a86e1f5912d8cf5a2cfb1cb"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 04 Mar 2020 12:27:02 GMT",
+      "tag": "@uifabric/fabric-website_v7.10.0",
+      "version": "7.10.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Added ApplicationInsights to public site to enable usage tracking",
+            "author": "joschemd@microsoft.com",
+            "commit": "dd5ae96ef8d24ce591bb97214a16ee3da7b900eb"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 27 Feb 2020 12:23:46 GMT",
+      "tag": "@uifabric/fabric-website_v7.9.9",
+      "version": "7.9.9",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Controls page: fix links to controls with sub-pages",
+            "author": "elcraig@microsoft.com",
+            "commit": "be9de1a5cef64a5c98aa3ca666bfe61219c4b54c"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 25 Feb 2020 12:25:39 GMT",
+      "tag": "@uifabric/fabric-website_v7.9.7",
+      "version": "7.9.7",
+      "comments": {
+        "none": [
+          {
+            "comment": "Run prettier on all files",
+            "author": "elcraig@microsoft.com",
+            "commit": "ef95f984ea819393b994222b1d7b3c4c4f159b9f"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 19 Feb 2020 12:21:05 GMT",
+      "tag": "@uifabric/fabric-website_v7.9.3",
+      "version": "7.9.3",
+      "comments": {
+        "none": [
+          {
+            "comment": "Add syncpack and synchronize dependencies. Refresh fluent import.",
+            "author": "jagore@microsoft.com",
+            "commit": "fb51dde1a365f7aad0cffbe23f01254ba1f31ebf"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 17 Feb 2020 17:06:50 GMT",
+      "tag": "@uifabric/fabric-website_v7.9.2",
+      "version": "7.9.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "upgrading types for webpack-env",
+            "author": "kchau@microsoft.com",
+            "commit": "7d071a411865930641727e54da85d2d601c5722b"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 12 Feb 2020 12:24:27 GMT",
+      "tag": "@uifabric/fabric-website_v7.9.0",
+      "version": "7.9.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Replacing deprecated StatelessComponent references with FunctionComponent.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "a2d743b178cecab012e4a7335c7e518d0c9b26c7"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 11 Feb 2020 18:37:59 GMT",
+      "tag": "@uifabric/fabric-website_v7.8.10",
+      "version": "7.8.10",
+      "comments": {
+        "none": [
+          {
+            "comment": "fixing released versions",
+            "author": "kchau@microsoft.com",
+            "commit": "207521eb85f200e2cda239d06eacdf5f49efdadc"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 07 Feb 2020 12:41:31 GMT",
+      "tag": "@uifabric/fabric-website_v7.8.7",
+      "version": "7.8.7",
+      "comments": {
+        "none": [
+          {
+            "comment": "Remove unused config files",
+            "author": "elcraig@microsoft.com",
+            "commit": "96ccf88b8f44981d21a3903789874a13a2f79b1d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 06 Feb 2020 12:37:34 GMT",
+      "tag": "@uifabric/fabric-website_v7.8.6",
+      "version": "7.8.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Website: Fixing Card API reference tables not appearing on the component docs page.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "f5298bd0b9ddcbe8e4257c2092a95ebd81500f7c"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 31 Jan 2020 19:00:10 GMT",
+      "tag": "@uifabric/fabric-website_v7.8.3",
+      "version": "7.8.3",
+      "comments": {
+        "none": [
+          {
+            "comment": "bumping versions to fix broken publishes",
+            "author": "kchau@microsoft.com",
+            "commit": "1fd6f0a289e8f0f126c9609b8e775ac0ced03b81"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 28 Jan 2020 12:43:24 GMT",
+      "tag": "@uifabric/fabric-website_v7.8.0",
+      "version": "7.8.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Fabric website: Expose theme switcher tab on fabric website",
+            "author": "marygans@microsoft.com",
+            "commit": "19c61ba3c45d103495e07bacf8a4efd41f7d7227"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Rename all just configs to TS.",
+            "author": "jagore@microsoft.com",
+            "commit": "373c657b0bf9bf5d8e8433d8df8ccdccaec89e45"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 17 Jan 2020 02:32:17 GMT",
+      "tag": "@uifabric/fabric-website_v7.7.8",
+      "version": "7.7.8",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update tslib minver to first version containing __spreadArrays helper due to changes in how TS emits spreads.",
+            "author": "jagore@microsoft.com",
+            "commit": "52dc239bf89dbe76daa5f4776ee4368957938a1a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Jan 2020 12:28:58 GMT",
+      "tag": "@uifabric/fabric-website_v7.7.7",
+      "version": "7.7.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Don't make routes for page categories",
+            "author": "elcraig@microsoft.com",
+            "commit": "295eeb2ce32d167e5ebac6c0a6eea6053ccfa776"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 13 Jan 2020 12:28:56 GMT",
+      "tag": "@uifabric/fabric-website_v7.7.6",
+      "version": "7.7.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix UHF \"skip to main content\" link, and update focus properly when scrolling to anchors",
+            "author": "elcraig@microsoft.com",
+            "commit": "8b8801ab977cc1e8e1e64474ab5f99aefa7d6d47"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 08 Jan 2020 17:02:57 GMT",
+      "tag": "@uifabric/fabric-website_v7.7.5",
+      "version": "7.7.5",
+      "comments": {
+        "none": [
+          {
+            "comment": "Break up build task into build, bundle, test and lint tasks. Add parallelization pipeline using new tasks.",
+            "author": "jagore@microsoft.com",
+            "commit": "f1f07695f5d18c2c975eef382c5b777d7ccb52e2"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "bumping load-themed-styles to take advantage of es6 version of it",
+            "author": "kchau@microsoft.com",
+            "commit": "9041aee981e0ad058920172d078af2d2cc2292db"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 09 Dec 2019 12:29:23 GMT",
+      "tag": "@uifabric/fabric-website_v7.7.4",
+      "version": "7.7.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "updated Fabric Android Date Time Picker documentation",
+            "author": "willdo@microsoft.com",
+            "commit": "d54b49c19a8b0d775f731366dcee31b95bb2716e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 06 Dec 2019 12:33:21 GMT",
+      "tag": "@uifabric/fabric-website_v7.7.3",
+      "version": "7.7.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating RTL documentation.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "ad256851e84dbaf73817719133d30411473efb9a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 03 Dec 2019 12:36:28 GMT",
+      "tag": "@uifabric/fabric-website_v7.7.2",
+      "version": "7.7.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating mobile docs - including bottom navigation and iOS Shimmer.",
+            "author": "emlynam@microsoft.com",
+            "commit": "bfdafb8e0f7b62d4ea51d0668f183f5b3939ed19"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 28 Nov 2019 12:32:23 GMT",
+      "tag": "@uifabric/fabric-website_v7.7.1",
+      "version": "7.7.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update fabric core dependency in other package.json files",
+            "author": "v-mare@microsoft.com",
+            "commit": "ecd83e48e22fb2931fe575f8123671dd1c162960"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 06 Nov 2019 12:34:07 GMT",
+      "tag": "@uifabric/fabric-website_v7.7.0",
+      "version": "7.7.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "website: Fixes for high contrast",
+            "author": "jdh@microsoft.com",
+            "commit": "f5cf5ae4c2059ca823a4b0a560aa56592ea0b132"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 05 Nov 2019 23:43:46 GMT",
+      "tag": "@uifabric/fabric-website_v7.6.1",
+      "version": "7.6.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fixing the production flag to be respected in the webpackCliTask world",
+            "author": "kchau@microsoft.com",
+            "commit": "e35c4367b6f6f87ebf2d9372136a15c6b9eb190b"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 01 Nov 2019 12:25:57 GMT",
+      "tag": "@uifabric/fabric-website_v7.6.0",
+      "version": "7.6.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adds the SharePoint Figma toolkit to the Resources page of the website",
+            "author": "pejahn@microsoft.com",
+            "commit": "d2839f8cc09e37329c56e30399b5c046c9002f80"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 30 Oct 2019 19:36:52 GMT",
+      "tag": "@uifabric/fabric-website_v7.5.8",
+      "version": "7.5.8",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Prettier ignore ranges for markdown tables.",
+            "author": "emlynam@microsoft.com",
+            "commit": "a765f01cab3581f37315ba57b96a2219bdf2f204"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 29 Oct 2019 12:36:28 GMT",
+      "tag": "@uifabric/fabric-website_v7.5.7",
+      "version": "7.5.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add AppBar to mobile docs for Android.",
+            "author": "emlynam@microsoft.com",
+            "commit": "8596df20f8945ad3382066b7d90c662d4ce84665"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 28 Oct 2019 22:25:45 GMT",
+      "tag": "@uifabric/fabric-website_v7.5.6",
+      "version": "7.5.6",
+      "comments": {
+        "none": [
+          {
+            "comment": "Add missing tsx-editor dev dep",
+            "author": "elcraig@microsoft.com",
+            "commit": "da81d25a70517a242b31f2b25ee8b07975b6e539"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 15 Oct 2019 12:32:28 GMT",
+      "tag": "@uifabric/fabric-website_v7.5.6",
+      "version": "7.5.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Hide UHF flightPicker element that causes accessibility issues",
+            "author": "elcraig@microsoft.com",
+            "commit": "65758fcc9ae1837a6059731219d0c33989b6bb78"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 10 Oct 2019 12:32:08 GMT",
+      "tag": "@uifabric/fabric-website_v7.5.5",
+      "version": "7.5.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "added header examples and updated alt descriptions for BottomSheet",
+            "author": "willdo@microsoft.com",
+            "commit": "4da101885f9572d9f35f44784f0b919ca0f70a2e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 03 Oct 2019 23:14:46 GMT",
+      "tag": "@uifabric/fabric-website_v7.5.4",
+      "version": "7.5.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixes publish issue from beachball",
+            "author": "odbuild@microsoft.com",
+            "commit": "306c59d9c3dd07f3eca7717bfdc84e15bfd70b39"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 03 Oct 2019 01:14:35 GMT",
+      "tag": "@uifabric/fabric-website_v7.5.2",
+      "version": "7.5.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bundle React even in serve mode for more representative testing environment",
+            "author": "elcraig@microsoft.com",
+            "commit": "fe59f6fd3c26d9d1bf44bcc4ee44ed01c9816cf9"
+          },
+          {
+            "comment": "Adding iOS NavBar to website docs.",
+            "author": "emlynam@microsoft.com",
+            "commit": "e489bbd40878adc51a49c3d71b17b27809668e38"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 01 Oct 2019 12:33:48 GMT",
+      "tag": "@uifabric/fabric-website_v7.5.1",
+      "version": "7.5.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "add figma file to docs",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "d3acb2edb383b4c728b15df472e97003d05739aa"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 30 Sep 2019 12:35:16 GMT",
+      "tag": "@uifabric/fabric-website_v7.5.1",
+      "version": "7.5.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Don't load minified editor files",
+            "author": "elcraig@microsoft.com",
+            "commit": "d4b0254c3aa931b39801f2f71e33952fbc149480"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 23 Sep 2019 12:33:15 GMT",
+      "tag": "@uifabric/fabric-website_v7.5.0",
+      "version": "7.5.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Website: Update Powerapps theme color",
+            "author": "marygans@microsoft.com",
+            "commit": "42656124f9c42818bb6268870c858e94067ceae3"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 20 Sep 2019 12:34:28 GMT",
+      "tag": "@uifabric/fabric-website_v7.5.0",
+      "version": "7.5.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Website: Split Brand icons page into Brand Icons and File Type Icons pages",
+            "author": "marygans@microsoft.com",
+            "commit": "55b31ad0a74beb68b6316e5878c8b99551b1b9b5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 19 Sep 2019 13:05:24 GMT",
+      "tag": "@uifabric/fabric-website_v7.4.8",
+      "version": "7.4.8",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Use new way of consuming Monaco bundle",
+            "author": "elcraig@microsoft.com",
+            "commit": "90fbbbfd43f93dbe8d95c094f1cd988614ae39bd"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 12 Sep 2019 12:34:15 GMT",
+      "tag": "@uifabric/fabric-website_v7.4.7",
+      "version": "7.4.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update readme and fix minor IE compat issue",
+            "author": "elcraig@microsoft.com",
+            "commit": "485574797c272506647b6fb98d4ae5989d8eb9f9"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 09 Sep 2019 21:43:18 GMT",
+      "tag": "@uifabric/fabric-website_v7.4.6",
+      "version": "7.4.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "updated docs for BottomSheet and Drawer",
+            "author": "willdo@microsoft.com",
+            "commit": "07dff065fcd5b67559080e838627481af411c059"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 06 Sep 2019 12:34:51 GMT",
+      "tag": "@uifabric/fabric-website_v7.4.5",
+      "version": "7.4.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Hacked an examplecard msicon override for a specific DetailsList Drag and Drop page in fabric website",
+            "author": "kchau@microsoft.com",
+            "commit": "b988c64fa3b73070e9e58607d4100ba26ffa44ab"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 04 Sep 2019 04:09:58 GMT",
+      "tag": "@uifabric/fabric-website_v7.4.4",
+      "version": "7.4.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix version file",
+            "author": "kchau@microsoft.com",
+            "commit": "fbccfaf91bfe3c77d95c614ac2cb69b7c9e1dad1"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 02 Sep 2019 12:33:56 GMT",
+      "tag": "@uifabric/fabric-website_v7.4.3",
+      "version": "7.4.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add PopupMenu and BottomSheet to mobile docs.",
+            "author": "emlynam@microsoft.com",
+            "commit": "9be8ad3ec737d22c263d7516e9d3ea93d931234e"
+          },
+          {
+            "comment": "Add PopupMenu title",
+            "author": "emlynam@microsoft.com",
+            "commit": "8d4cfae2dabddb2fd3b620c12c36d1bb7c11e421"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 23 Aug 2019 12:35:28 GMT",
+      "tag": "@uifabric/fabric-website_v7.4.2",
+      "version": "7.4.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Get rid of monaco-editor-webpack-plugin",
+            "author": "elcraig@microsoft.com",
+            "commit": "8404e0edc3591a74cda292aedd1e4bff58768e7c"
+          },
+          {
+            "comment": "Fix up readme and package.json descriptions",
+            "author": "elcraig@microsoft.com",
+            "commit": "b1aef500b4b86eb5643d9f7db4c06114b5d7cc71"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 21 Aug 2019 12:34:09 GMT",
+      "tag": "@uifabric/fabric-website_v7.4.1",
+      "version": "7.4.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Use toggles for button example page knobs",
+            "author": "elcraig@microsoft.com",
+            "commit": "dc83b75a4a45fb5b4d5ad62f856b959d39b6c1da"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 15 Aug 2019 12:30:43 GMT",
+      "tag": "@uifabric/fabric-website_v7.4.0",
+      "version": "7.4.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Card: Showing examples on demo page and website",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "6a6de09946ec1473cf7fcc483474e11384508c1f"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Rename deprecated React lifecycle functions to prevent development mode warnings in React 16.9.",
+            "author": "jagore@microsoft.com",
+            "commit": "ce48383da2d27474122aef769af0c313e29281d0"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 08 Aug 2019 12:32:41 GMT",
+      "tag": "@uifabric/fabric-website_v7.3.2",
+      "version": "7.3.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update webpack configs to make Monaco work cross-domain",
+            "author": "elcraig@microsoft.com",
+            "commit": "3e6d5375a58386bc28819855d98c0c1a6b2d790f"
+          },
+          {
+            "comment": "Fix some markdown bookmarks to enable click navigation to the bookmarked sections.",
+            "author": "vibraga@microsoft.com",
+            "commit": "b8567798e866ede6bd95e5fcbc99f2f0cdcea830"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 07 Aug 2019 12:32:28 GMT",
+      "tag": "@uifabric/fabric-website_v7.3.1",
+      "version": "7.3.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add customization section to Typography pages",
+            "author": "naethell@microsoft.com",
+            "commit": "68361da1ab491641dc11bdf38447074eb360e680"
+          },
+          {
+            "comment": "Fix Keytips demo page by adding a KeytipLayer",
+            "author": "keyou@microsoft.com",
+            "commit": "007ad920796ff13326ec6f26eed425dd60a32369"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 02 Aug 2019 12:33:29 GMT",
+      "tag": "@uifabric/fabric-website_v7.3.0",
+      "version": "7.3.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Website changes to work with monaco editor state management",
+            "author": "t-nikaz@microsoft.com",
+            "commit": "0843c196be248757bd1fff674f900346490cd206"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 24 Jul 2019 12:27:56 GMT",
+      "tag": "@uifabric/fabric-website_v7.2.9",
+      "version": "7.2.9",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update colors implementation info",
+            "author": "elcraig@microsoft.com",
+            "commit": "fcb294422e187773b9769186b8bdada6b0ab4743"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 22 Jul 2019 12:28:42 GMT",
+      "tag": "@uifabric/fabric-website_v7.2.8",
+      "version": "7.2.8",
+      "comments": {
+        "none": [
+          {
+            "comment": "moving to lerna",
+            "author": "kchau@microsoft.com",
+            "commit": "181d2d537ec5feaaed43f35412d6f2d8b523d690"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Fix IE 11 incompatible syntax",
+            "author": "elcraig@microsoft.com",
+            "commit": "19929074bdec2913e519d675aac09a5831653f68"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Jul 2019 12:27:48 GMT",
+      "tag": "@uifabric/fabric-website_v7.2.7",
+      "version": "7.2.7",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update homepage.htm to match real one",
+            "author": "elcraig@microsoft.com",
+            "commit": "75c2288c35828886d8340d3976dc340f120ad419"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Jul 2019 18:58:57 GMT",
+      "tag": "@uifabric/fabric-website_v7.2.7",
+      "version": "7.2.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom.",
+            "author": "makotom@microsoft.com",
+            "commit": "4fa2fef6380c18877fcf379648d4e52146d59812"
+          }
+        ],
+        "none": [
+          {
+            "comment": "get rid of npx",
+            "author": "kchau@microsoft.com",
+            "commit": "472993033369aa470e59197a534045c02c24e852"
+          },
+          {
+            "comment": "bumping versions to match what was published already",
+            "author": "kchau@microsoft.com",
+            "commit": "75e4ad16a2e6a54672e4929a9e003c7fd6f6ae52"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Sat, 13 Jul 2019 22:20:41 GMT",
+      "tag": "@uifabric/fabric-website_v7.2.5",
+      "version": "7.2.5",
+      "comments": {
+        "none": [
+          {
+            "comment": "Use resolves for all package paths",
+            "author": "kchau@microsoft.com",
+            "commit": "f8887fbdac76e651b0161edf624014a33741cf86"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 09 Jul 2019 17:34:38 GMT",
+      "tag": "@uifabric/fabric-website_v7.2.5",
+      "version": "7.2.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix website version selection and delete stray Animate file",
+            "author": "elcraig@microsoft.com",
+            "commit": "9ea03099ee878a1d9c3f79e8212a142b5fe55bc6"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 03 Jul 2019 12:30:55 GMT",
+      "tag": "@uifabric/fabric-website_v7.2.4",
+      "version": "7.2.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "DetailsList cell update animation",
+            "author": "inateeg@microsoft.com",
+            "commit": "a3a32acde358ce34984ebc130a7f5684caf204bf"
+          }
+        ]
+      }
+    },
+    {
+      "version": "7.2.3",
+      "tag": "@uifabric/fabric-website_v7.2.3",
+      "date": "Tue, 02 Jul 2019 12:29:06 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add pivot for Fabric Icons page",
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "cbad6b35d1744956cb9d9a9428cc89efa534e936"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `^7.0.2` to `^7.1.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "7.2.2",
+      "tag": "@uifabric/fabric-website_v7.2.2",
+      "date": "Mon, 01 Jul 2019 18:51:42 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "adds react-app-polyfill",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "40245650abdfb17e9f1cd6472f3671380237bcc2"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^7.1.2` to `^7.1.3`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `^7.3.0` to `^7.4.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fabric-website-resources\" from `^7.1.0` to `^7.1.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/file-type-icons\" from `^7.0.3` to `^7.0.4`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.6.2` to `^7.6.3`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "7.2.1",
+      "tag": "@uifabric/fabric-website_v7.2.1",
+      "date": "Thu, 27 Jun 2019 22:14:22 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add fabric 7 to website version selector",
+            "author": "BalakrishnaReddyPolu <polu.balakrishna96@gmail.com>",
+            "commit": "6cfd57a8561f8e228d1e09058abe6c2f1f4a9b33"
+          }
+        ]
+      }
+    },
+    {
+      "version": "7.2.0",
+      "tag": "@uifabric/fabric-website_v7.2.0",
+      "date": "Thu, 27 Jun 2019 18:25:04 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "making all getting started links point to microsoft rather than kenotron",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "880264578d390878abde534f400849931dc4816b"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^7.1.1` to `^7.1.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `^7.2.3` to `^7.3.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.6.0` to `^7.6.1`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "7.1.6",
+      "tag": "@uifabric/fabric-website_v7.1.6",
+      "date": "Mon, 24 Jun 2019 23:11:20 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update website for Fabric 7",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "c0916cf97138fc6dbd2c05a5772f1472908778c7"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `^7.2.1` to `^7.2.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fabric-website-resources\" from `^7.0.3` to `^7.0.4`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.5.0` to `^7.5.1`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "7.1.5",
+      "tag": "@uifabric/fabric-website_v7.1.5",
+      "date": "Thu, 20 Jun 2019 12:27:38 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Renamed instances of \"Microsoft UI Fabric\" to \"UI Fabric\"",
+            "author": "Peter Jahn <pejahn@microsoft.com>",
+            "commit": "c13e7dcffebfffdb65c6e35165b1ebecad1380ae"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^7.1.0` to `^7.1.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `^7.1.1` to `^7.2.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.4.2` to `^7.4.3`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "7.1.4",
+      "tag": "@uifabric/fabric-website_v7.1.4",
+      "date": "Wed, 19 Jun 2019 12:27:03 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Get rid of references to _exampleStyles.scss",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "8bd274ad2c5df42865bc0254b11ec7ab9df2a5b3"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^7.0.4` to `^7.1.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fabric-website-resources\" from `^7.0.2` to `^7.0.3`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.4.1` to `^7.4.2`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "7.1.3",
+      "tag": "@uifabric/fabric-website_v7.1.3",
+      "date": "Tue, 18 Jun 2019 19:00:04 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Mobile: Added source code links, removed generic library link.",
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "69b4f8dd2f2dc416d4b287bf7b140f34991ca1c3"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.4.0` to `^7.4.1`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "7.1.2",
+      "tag": "@uifabric/fabric-website_v7.1.2",
+      "date": "Tue, 18 Jun 2019 12:26:19 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add overview and controls request sections to mobile pages.",
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "f5dee98562532e42770200076def7b25f923a047"
+          },
+          {
+            "comment": "Add theme slots page",
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "92abe8370a935219acf554c2f9454ae4a8f7735d"
+          },
+          {
+            "comment": "Add links to documentation pages.",
+            "author": "Vitalie Braga <vibraga@microsoft.com>",
+            "commit": "219b7fca507becd76c88d237c9b4271983797daf"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^7.0.3` to `^7.0.4`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `^7.1.0` to `^7.1.1`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.3.0` to `^7.4.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "7.1.1",
+      "tag": "@uifabric/fabric-website_v7.1.1",
+      "date": "Fri, 14 Jun 2019 12:26:30 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add more mobile docs, update screenshots.",
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "f283e3ac2420b35f7783cf911969bae9e77c3fc9"
+          },
+          {
+            "comment": "Fix missing assets in production build.",
+            "author": "JD Huntington <jdh@microsoft.com>",
+            "commit": "e1bebe54dd798847060baaf4a52956c2f6dd866b"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/api-docs\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^7.0.2` to `^7.0.3`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `^7.0.2` to `^7.0.3`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fabric-website-resources\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/file-type-icons\" from `^7.0.2` to `^7.0.3`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/theme-samples\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.1.0` to `^7.1.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/prettier-rules\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/tslint-rules\" from `^7.0.1` to `^7.0.2`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "7.1.0",
+      "tag": "@uifabric/fabric-website_v7.1.0",
+      "date": "Thu, 13 Jun 2019 00:24:48 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Clean up Site component life-cycle",
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "3a09a87c2d904ed636d32c0d0bced56626f48a75"
+          },
+          {
+            "comment": "Initial release of Fabric 7",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "9bc84498f2a95e5e822178214edce2a947adac38"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Bundles react with the site to prevent version mismatch issues",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "8af04c0dfaf4cf2c3510b9af2bf3b1e5d98328c2"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/api-docs\" from `^7.0.0` to `^7.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fabric-website-resources\" from `^7.0.0` to `^7.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/file-type-icons\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `^7.0.0` to `^7.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `^7.0.0` to `^7.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/theme-samples\" from `^7.0.0` to `^7.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/prettier-rules\" from `^7.0.0` to `^7.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/tslint-rules\" from `^7.0.0` to `^7.0.1`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.19.0",
+      "tag": "@uifabric/fabric-website_v6.19.0",
+      "date": "Wed, 12 Jun 2019 00:42:26 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update Calendar and DatePicker import paths",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "5e4f160e47e77f4ccdb0457160b22d321b25d4fc"
+          },
+          {
+            "comment": "Update and dedupe React deps.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "affa33fd7a25c857ad8d209349cb9e4ecc352ec6"
+          },
+          {
+            "comment": "Support slots API changes.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "37a52465422d2622d52b7339ac2f9b2f234300da"
+          },
+          {
+            "comment": "Nav, Calendar, and DatePicker move into office-ui-fabric-react",
+            "author": "JD Huntington <jdh@microsoft.com>",
+            "commit": "1226e0857e0fc16a9884d7d011ce0e738cfeb04e"
+          },
+          {
+            "comment": "Update Router imports",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "d908c018268568b386fdad27899dcb00c5f0806e"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Changes to support slots API refactoring",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "14b1d77fc97fffb1c333a3601d62c3e30c4cf3b0"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/api-docs\" from `^1.1.3` to `^1.1.4`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.23.1` to `^7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `^6.78.7` to `^7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fabric-website-resources\" from `^6.18.3` to `^6.18.4`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/file-type-icons\" from `^6.5.1` to `^7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `^0.16.10` to `^0.16.11`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/theme-samples\" from `^0.1.6` to `^0.1.7`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.189.4` to `^7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.18.11",
+      "tag": "@uifabric/fabric-website_v6.18.11",
+      "date": "Thu, 06 Jun 2019 12:22:24 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add redirects to new website",
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "b49a0013f2fe21404d01b7147e1c9acef571195e"
+          },
+          {
+            "comment": "Fix uhf style override className.",
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "d7150d59e62a7490f86836fbbdec004504ae26d1"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.189.0` to `^6.189.1`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.18.10",
       "tag": "@uifabric/fabric-website_v6.18.10",
       "date": "Fri, 31 May 2019 12:21:27 GMT",

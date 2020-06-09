@@ -4,12 +4,18 @@ import { PeoplePickerPageProps } from './PeoplePickerPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
 import { IPageSectionProps } from '@uifabric/example-app-base/lib/index2';
 
-const baseUrl = 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/apps/fabric-website/src/pages/Controls/PeoplePickerPage/';
+const baseUrl =
+  'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Controls/PeoplePickerPage/';
 
-export const PeoplePickerPage: React.StatelessComponent<IControlsPageProps> = props => {
+export const PeoplePickerPage: React.FunctionComponent<IControlsPageProps> = props => {
   const { platform } = props;
   return (
-    <ControlsAreaPage {...props} title="People Picker" {...PeoplePickerPageProps[platform]} otherSections={_otherSections(platform)} />
+    <ControlsAreaPage
+      {...props}
+      title="People Picker"
+      {...PeoplePickerPageProps[platform]}
+      otherSections={_otherSections(platform) as IPageSectionProps[]}
+    />
   );
 };
 
@@ -20,8 +26,8 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
         {
           sectionName: 'Implementation',
           editUrl: baseUrl + 'docs/android/PeoplePickerImplementation.md',
-          content: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/PeoplePickerPage/docs/android/PeoplePickerImplementation.md') as string
-        }
+          content: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/PeoplePickerPage/docs/android/PeoplePickerImplementation.md') as string,
+        },
       ];
   }
 }

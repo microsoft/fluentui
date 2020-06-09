@@ -1,9 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`] = `
-<div
-  className="docs-DatePickerExample"
->
+<div>
   <div
     className=
         ms-DatePicker
@@ -15,21 +13,19 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 400;
-          margin-bottom: 0px;
-          margin-left: 0px;
-          margin-right: 0px;
-          margin-top: 0px;
+          margin-bottom: 15px;
+          margin-left: 0;
+          margin-right: 0;
+          margin-top: 0;
+          max-width: 300px;
           padding-bottom: 0px;
           padding-left: 0px;
           padding-right: 0px;
           padding-top: 0px;
         }
-    placeholder="Select a date..."
   >
     <div
-      aria-expanded={false}
       aria-haspopup="true"
-      role="combobox"
     >
       <div
         className=
@@ -61,19 +57,17 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
             }
       >
         <div
-          className=
-              ms-TextField-wrapper
-
+          className="ms-TextField-wrapper"
         >
           <div
             className=
                 ms-TextField-fieldGroup
                 {
                   align-items: stretch;
-                  background-color: #f4f4f4;
                   background: #ffffff;
-                  border-color: #f4f4f4;
-                  border: 1px solid #a6a6a6;
+                  border-color: #f3f2f1;
+                  border-radius: 2px;
+                  border: 1px solid #605e5c;
                   box-shadow: none;
                   box-sizing: border-box;
                   cursor: default;
@@ -90,11 +84,12 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
                   padding-top: 0px;
                   position: relative;
                 }
-                @media screen and (-ms-high-contrast: active){&:hover {
-                  border-color: Highlight;
+                @media screen and (-ms-high-contrast: active){& {
+                  border-color: GrayText;
                 }
           >
             <input
+              aria-expanded={false}
               aria-invalid={false}
               aria-label="Select a date"
               className=
@@ -102,14 +97,14 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    background-color: transparent;
+                    background-color: #f3f2f1;
                     background: none;
-                    border-color: transparent;
+                    border-color: #f3f2f1;
                     border-radius: 0px;
                     border: none;
                     box-shadow: none;
                     box-sizing: border-box;
-                    color: #a6a6a6;
+                    color: #a19f9d;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
@@ -120,24 +115,49 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
                     min-width: 0px;
                     outline: 0px;
                     padding-bottom: 0;
-                    padding-left: 12px;
+                    padding-left: 8px;
                     padding-right: 24px;
                     padding-top: 0;
                     text-overflow: ellipsis;
                     width: 100%;
                   }
-                  &:active, &:focus, &:hover {
+                  &:active {
+                    outline: 0px;
+                  }
+                  &:focus {
+                    outline: 0px;
+                  }
+                  &:hover {
                     outline: 0px;
                   }
                   &::-ms-clear {
                     display: none;
                   }
                   &::placeholder {
-                    color: #a6a6a6;
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: #a19f9d;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
                     opacity: 1;
                   }
                   &:-ms-input-placeholder {
-                    color: #a6a6a6;
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: #a19f9d;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
+                    opacity: 1;
+                  }
+                  &::-ms-input-placeholder {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: #a19f9d;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
                     opacity: 1;
                   }
               disabled={true}
@@ -151,16 +171,18 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
               placeholder="Select a date..."
               readOnly={true}
               required={false}
+              role="combobox"
               type="text"
               value=""
             />
             <i
+              aria-hidden={true}
               className=
                   ms-DatePicker-event--without-label
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    color: #a6a6a6;
+                    color: #a19f9d;
                     cursor: default;
                     display: inline-block;
                     font-family: "FabricMDL2Icons";
@@ -168,15 +190,17 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
                     font-style: normal;
                     font-weight: normal;
                     line-height: 18px;
+                    padding-bottom: 5px;
+                    padding-left: 5px;
+                    padding-right: 5px;
+                    padding-top: 7px;
                     pointer-events: none;
                     position: absolute;
-                    right: 9px;
+                    right: 4px;
                     speak: none;
-                    top: 7px;
                   }
               data-icon-name="Calendar"
               onClick={[Function]}
-              role="presentation"
             >
               
             </i>
@@ -196,21 +220,19 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 400;
-          margin-bottom: 0px;
-          margin-left: 0px;
-          margin-right: 0px;
-          margin-top: 0px;
+          margin-bottom: 15px;
+          margin-left: 0;
+          margin-right: 0;
+          margin-top: 0;
+          max-width: 300px;
           padding-bottom: 0px;
           padding-left: 0px;
           padding-right: 0px;
           padding-top: 0px;
         }
-    placeholder="Select a date..."
   >
     <div
-      aria-expanded={false}
       aria-haspopup="true"
-      role="combobox"
     >
       <div
         className=
@@ -242,9 +264,7 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
             }
       >
         <div
-          className=
-              ms-TextField-wrapper
-
+          className="ms-TextField-wrapper"
         >
           <label
             className=
@@ -254,11 +274,11 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
                   -webkit-font-smoothing: antialiased;
                   box-shadow: none;
                   box-sizing: border-box;
-                  color: #a6a6a6;
+                  color: #a19f9d;
                   display: block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
-                  font-weight: 400;
+                  font-weight: 600;
                   margin-bottom: 0px;
                   margin-left: 0px;
                   margin-right: 0px;
@@ -273,8 +293,8 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
                 @media screen and (-ms-high-contrast: active){& {
                   color: GrayText;
                 }
-            htmlFor="DatePicker3-label"
-            required={false}
+            htmlFor="DatePicker5-label"
+            id="TextFieldLabel9"
           >
             Disabled (with label)
           </label>
@@ -283,10 +303,10 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
                 ms-TextField-fieldGroup
                 {
                   align-items: stretch;
-                  background-color: #f4f4f4;
                   background: #ffffff;
-                  border-color: #f4f4f4;
-                  border: 1px solid #a6a6a6;
+                  border-color: #f3f2f1;
+                  border-radius: 2px;
+                  border: 1px solid #605e5c;
                   box-shadow: none;
                   box-sizing: border-box;
                   cursor: default;
@@ -303,26 +323,28 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
                   padding-top: 0px;
                   position: relative;
                 }
-                @media screen and (-ms-high-contrast: active){&:hover {
-                  border-color: Highlight;
+                @media screen and (-ms-high-contrast: active){& {
+                  border-color: GrayText;
                 }
           >
             <input
+              aria-expanded={false}
               aria-invalid={false}
               aria-label="Select a date"
+              aria-labelledby="TextFieldLabel9"
               className=
                   ms-TextField-field
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    background-color: transparent;
+                    background-color: #f3f2f1;
                     background: none;
-                    border-color: transparent;
+                    border-color: #f3f2f1;
                     border-radius: 0px;
                     border: none;
                     box-shadow: none;
                     box-sizing: border-box;
-                    color: #a6a6a6;
+                    color: #a19f9d;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
@@ -333,28 +355,53 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
                     min-width: 0px;
                     outline: 0px;
                     padding-bottom: 0;
-                    padding-left: 12px;
+                    padding-left: 8px;
                     padding-right: 24px;
                     padding-top: 0;
                     text-overflow: ellipsis;
                     width: 100%;
                   }
-                  &:active, &:focus, &:hover {
+                  &:active {
+                    outline: 0px;
+                  }
+                  &:focus {
+                    outline: 0px;
+                  }
+                  &:hover {
                     outline: 0px;
                   }
                   &::-ms-clear {
                     display: none;
                   }
                   &::placeholder {
-                    color: #a6a6a6;
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: #a19f9d;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
                     opacity: 1;
                   }
                   &:-ms-input-placeholder {
-                    color: #a6a6a6;
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: #a19f9d;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
+                    opacity: 1;
+                  }
+                  &::-ms-input-placeholder {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: #a19f9d;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
                     opacity: 1;
                   }
               disabled={true}
-              id="DatePicker3-label"
+              id="DatePicker5-label"
               onBlur={[Function]}
               onChange={[Function]}
               onClick={[Function]}
@@ -364,17 +411,18 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
               placeholder="Select a date..."
               readOnly={true}
               required={false}
+              role="combobox"
               type="text"
               value=""
             />
             <i
+              aria-hidden={true}
               className=
                   ms-DatePicker-event--with-label
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    bottom: 5px;
-                    color: #a6a6a6;
+                    color: #a19f9d;
                     cursor: default;
                     display: inline-block;
                     font-family: "FabricMDL2Icons";
@@ -382,14 +430,17 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
                     font-style: normal;
                     font-weight: normal;
                     line-height: 18px;
+                    padding-bottom: 5px;
+                    padding-left: 5px;
+                    padding-right: 5px;
+                    padding-top: 7px;
                     pointer-events: none;
                     position: absolute;
-                    right: 9px;
+                    right: 4px;
                     speak: none;
                   }
               data-icon-name="Calendar"
               onClick={[Function]}
-              role="presentation"
             >
               
             </i>

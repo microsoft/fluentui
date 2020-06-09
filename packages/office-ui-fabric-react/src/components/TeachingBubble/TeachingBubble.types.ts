@@ -5,9 +5,10 @@ import { TeachingBubbleContentBase } from './TeachingBubbleContent.base';
 import { IImageProps } from '../../Image';
 import { IButtonProps } from '../../Button';
 import { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
-import { ICalloutProps, Target } from '../../Callout';
+import { ICalloutProps, ICalloutContentStyleProps, Target } from '../../Callout';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import { IFocusTrapZoneProps } from '../FocusTrapZone/index';
 
 /**
  * {@docCategory TeachingBubble}
@@ -21,7 +22,9 @@ export interface ITeachingBubble {
  * TeachingBubble component props.
  * {@docCategory TeachingBubble}
  */
-export interface ITeachingBubbleProps extends React.ClassAttributes<TeachingBubbleBase | TeachingBubbleContentBase>, IAccessiblePopupProps {
+export interface ITeachingBubbleProps
+  extends React.ClassAttributes<TeachingBubbleBase | TeachingBubbleContentBase>,
+    IAccessiblePopupProps {
   /**
    * Optional callback to access the ITeachingBubble interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -44,6 +47,11 @@ export interface ITeachingBubbleProps extends React.ClassAttributes<TeachingBubb
   calloutProps?: ICalloutProps;
 
   /**
+   * Properties to pass through for FocusTrapZone, reference detail properties in IFocusTrapZoneProps
+   */
+  focusTrapZoneProps?: IFocusTrapZoneProps;
+
+  /**
    * A headline for the Teaching Bubble.
    */
   headline?: string;
@@ -54,12 +62,17 @@ export interface ITeachingBubbleProps extends React.ClassAttributes<TeachingBubb
   hasCondensedHeadline?: boolean;
 
   /**
-   * Does the TeachingBubble have a close button in the top right corner?
+   * @deprecated Use `hasCloseButton`.
    */
   hasCloseIcon?: boolean;
 
   /**
-   * An Image for the Teaching Bubble.
+   * Whether the TeachingBubble renders close button in the top right corner.
+   */
+  hasCloseButton?: boolean;
+
+  /**
+   * An Image for the TeachingBubble.
    */
   illustrationImage?: IImageProps;
 
@@ -74,7 +87,8 @@ export interface ITeachingBubbleProps extends React.ClassAttributes<TeachingBubb
   secondaryButtonProps?: IButtonProps;
 
   /**
-   * Text that will be rendered in the footer of the TeachingBubble. May be rendered alongside primary and secondary buttons.
+   * Text that will be rendered in the footer of the TeachingBubble.
+   * May be rendered alongside primary and secondary buttons.
    */
   footerContent?: string | JSX.Element;
 
@@ -96,12 +110,13 @@ export interface ITeachingBubbleProps extends React.ClassAttributes<TeachingBubb
   onDismiss?: (ev?: any) => void;
 
   /**
-   * Whether or not the Teaching Bubble is wide, with image on the left side.
+   * Whether or not the TeachingBubble is wide, with image on the left side.
    */
   isWide?: boolean;
 
   /**
-   * A variation with smaller bold headline and margins to the body (hasCondensedHeadline takes precedence if it is also set to true).
+   * A variation with smaller bold headline and margins to the body.
+   * (`hasCondensedHeadline` takes precedence if it is also set to true.)
    */
   hasSmallHeadline?: boolean;
 
@@ -121,12 +136,16 @@ export interface ITeachingBubbleProps extends React.ClassAttributes<TeachingBubb
  */
 export type ITeachingBubbleStyleProps = Required<Pick<ITeachingBubbleProps, 'theme'>> &
   Pick<ITeachingBubbleProps, 'hasCondensedHeadline' | 'hasSmallHeadline' | 'isWide'> & {
-    /** Class name for callout. */
-    calloutClassName?: string;
+    /** Style props for callout. */
+    calloutProps?: ICalloutContentStyleProps;
     /** Class name for primary button. */
     primaryButtonClassName?: string;
     /** Class name for secondary button. */
     secondaryButtonClassName?: string;
+    /** If the close button is visible. */
+    hasCloseButton?: boolean;
+    /** If a headline has been specified. */
+    hasHeadline?: boolean;
   };
 
 /**
@@ -152,7 +171,7 @@ export interface ITeachingBubbleStyles {
  * {@docCategory TeachingBubble}
  */
 export interface ITeachingBubbleSubComponentStyles {
-  /** Refers to the callout that hosts the teaching bubble. */
+  /** Refers to the callout that hosts the TeachingBubble. */
   // TODO: this should be the interface once we're on TS 2.9.2 but otherwise causes errors in 2.8.4
   // callout: IStyleFunctionOrObject<ICalloutContentStyleProps, ICalloutContentStyles>;
   callout: IStyleFunctionOrObject<any, any>;

@@ -3,45 +3,44 @@
 exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
 <div
   className=
-      ms-BasicButtonsTwoUp
+      ms-Stack
       {
         display: flex;
-      }
-      & > * {
-        flex-grow: 1;
-      }
-      & .ms-Label {
-        margin-bottom: 10px;
+        flex-wrap: wrap;
+        height: auto;
+        overflow: visible;
+        width: auto;
       }
 >
-  <div>
-    <label
-      className=
-          ms-Label
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            box-shadow: none;
-            box-sizing: border-box;
-            color: #333333;
-            display: block;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 400;
-            margin-bottom: 0px;
-            margin-left: 0px;
-            margin-right: 0px;
-            margin-top: 0px;
-            overflow-wrap: break-word;
-            padding-bottom: 5px;
-            padding-left: 0;
-            padding-right: 0;
-            padding-top: 5px;
-            word-wrap: break-word;
-          }
-    >
-      Standard
-    </label>
+  <div
+    className=
+        ms-Stack-inner
+        {
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          height: calc(100% + 40px);
+          margin-bottom: -20px;
+          margin-left: -20px;
+          margin-right: -20px;
+          margin-top: -20px;
+          max-width: 100vw;
+          overflow: visible;
+          width: calc(100% + 40px);
+        }
+        & > * {
+          margin-bottom: 20px;
+          margin-left: 20px;
+          margin-right: 20px;
+          margin-top: 20px;
+          max-width: calc(100% - 40px);
+          text-overflow: ellipsis;
+        }
+        & > *:not(.ms-StackItem) {
+          flex-shrink: 1;
+        }
+  >
     <div
       aria-expanded={false}
       aria-haspopup={true}
@@ -61,13 +60,13 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
           }
           .ms-Fabric--isFocusVisible &:focus:after {
             border: 1px solid #ffffff;
-            bottom: 1px;
+            bottom: 3px;
             content: "";
-            left: 1px;
-            outline: 1px solid #666666;
+            left: 3px;
+            outline: 1px solid #605e5c;
             position: absolute;
-            right: 1px;
-            top: 1px;
+            right: 3px;
+            top: 3px;
             z-index: 1;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -77,10 +76,39 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
             right: -2px;
             top: -2px;
           }
+          & .ms-Button--default {
+            border-bottom-right-radius: 0;
+            border-right: none;
+            border-top-right-radius: 0;
+          }
+          & .ms-Button--primary {
+            border-bottom-right-radius: 0;
+            border-top-right-radius: 0;
+            border: none;
+          }
+          @media screen and (-ms-high-contrast: active){& .ms-Button--primary {
+            -ms-high-contrast-adjust: none;
+            background-color: WindowText;
+            color: Window;
+          }
+          & .ms-Button--primary + .ms-Button {
+            border: none;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover .ms-Button--primary {
+            background-color: Highlight;
+            color: Window;
+          }
+          &:hover .ms-Button.is-disabled {
+            color: #a19f9d;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover .ms-Button.is-disabled {
+            background-color: Window;
+            border-color: GrayText;
+            color: GrayText;
+          }
           &:focus {
             outline: none!important;
           }
-      data-automation-id="test"
       data-is-focusable={true}
       onClick={[Function]}
       onFocusCapture={[Function]}
@@ -101,24 +129,21 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
           className=
               ms-Button
               ms-Button--default
+              ms-Button--hasMenu
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                background-color: #f4f4f4;
-                border-radius: 0px;
-                border: 1px solid transparent;
+                background-color: #ffffff;
+                border-radius: 2px;
+                border: 1px solid #8a8886;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 height: 32px;
-                margin-bottom: 0px;
-                margin-left: 0px;
-                margin-right: 0px;
-                margin-top: 0px;
                 min-width: 80px;
                 outline: transparent;
                 padding-bottom: 0;
@@ -129,20 +154,19 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
               }
               &::-moz-focus-inner {
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -159,33 +183,27 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                 top: 0px;
               }
               &:hover {
-                background-color: #eaeaea;
-                color: #212121;
+                background-color: #f3f2f1;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
                 color: Highlight;
               }
               &:active {
-                background-color: #c8c8c8;
-                color: #212121;
+                background-color: #edebe9;
+                color: #201f1e;
               }
-          data-automation-id="test"
           data-is-focusable={false}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
           onKeyUp={[Function]}
           onMouseDown={[Function]}
           onMouseUp={[Function]}
-          style={
-            Object {
-              "height": "35px",
-            }
-          }
           tabIndex={-1}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -195,18 +213,21 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                   height: 100%;
                   justify-content: center;
                 }
+            data-automationid="splitbuttonprimary"
           >
-            <div
+            <span
               className=
                   ms-Button-textContainer
                   {
+                    display: block;
                     flex-grow: 1;
                   }
             >
-              <div
+              <span
                 className=
                     ms-Button-label
                     {
+                      display: block;
                       font-weight: 600;
                       line-height: 100%;
                       margin-bottom: 0;
@@ -216,21 +237,24 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                     }
                 id="id__0"
               >
-                Create account
-              </div>
-            </div>
-          </div>
+                Standard
+              </span>
+            </span>
+          </span>
         </button>
         <button
           aria-expanded={false}
           aria-haspopup={true}
-          aria-label="See 2 sample options"
+          aria-label="See 2 options"
           className=
               ms-Button
               {
-                background-color: #f4f4f4;
+                background-color: transparent;
+                border-bottom-right-radius: 2px;
+                border-left: none;
                 border-radius: 0px;
-                border: 0px;
+                border-top-right-radius: 2px;
+                border: 1px solid #8a8886;
                 box-sizing: border-box;
                 color: #ffffff;
                 cursor: pointer;
@@ -252,7 +276,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                 width: 32px;
               }
               &:hover {
-                background-color: #eaeaea;
+                background-color: #edebe9;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 color: Highlight;
@@ -267,7 +291,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
           tabIndex={-1}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -277,81 +301,80 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                   height: 100%;
                   justify-content: center;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <i
+              aria-hidden={true}
               className=
+                  ms-Icon
                   ms-Button-icon
                   ms-Button-menuIcon
+                  ms-Button-menuIcon
+                  {
+                    display: inline-block;
+                  }
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    color: #333333;
-                    display: inline-block;
-                    flex-shrink: 0;
                     font-family: "FabricMDL2Icons";
-                    font-size: 12px;
                     font-style: normal;
                     font-weight: normal;
+                    speak: none;
+                  }
+                  {
+                    color: #323130;
+                    flex-shrink: 0;
+                    font-size: 12px;
                     height: 16px;
                     line-height: 16px;
                     margin-bottom: 0;
                     margin-left: 4px;
                     margin-right: 4px;
                     margin-top: 0;
-                    speak: none;
                     text-align: center;
-                    vertical-align: middle;
+                  }
+                  {
+                    flex-shrink: 0;
+                    font-size: 12px;
+                    height: 16px;
+                    line-height: 16px;
+                    margin-bottom: 0;
+                    margin-left: 4px;
+                    margin-right: 4px;
+                    margin-top: 0;
+                    text-align: center;
                   }
               data-icon-name="ChevronDown"
               role="presentation"
+              style={
+                Object {
+                  "fontFamily": "\\"FabricMDL2Icons\\"",
+                }
+              }
             >
               
             </i>
-          </div>
+          </span>
         </button>
         <span
+          aria-hidden={true}
           className=
 
               {
-                background-color: #c8c8c8;
+                background-color: #c8c6c4;
                 bottom: 8px;
                 position: absolute;
                 right: 31px;
                 top: 8px;
                 width: 1px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                background-color: WindowText;
+              }
+          onClick={[Function]}
         />
       </span>
     </div>
-  </div>
-  <div>
-    <label
-      className=
-          ms-Label
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            box-shadow: none;
-            box-sizing: border-box;
-            color: #333333;
-            display: block;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 400;
-            margin-bottom: 0px;
-            margin-left: 0px;
-            margin-right: 0px;
-            margin-top: 0px;
-            overflow-wrap: break-word;
-            padding-bottom: 5px;
-            padding-left: 0;
-            padding-right: 0;
-            padding-top: 5px;
-            word-wrap: break-word;
-          }
-    >
-      Primary
-    </label>
     <div
       aria-expanded={false}
       aria-haspopup={true}
@@ -371,13 +394,13 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
           }
           .ms-Fabric--isFocusVisible &:focus:after {
             border: 1px solid #ffffff;
-            bottom: 1px;
+            bottom: 3px;
             content: "";
-            left: 1px;
-            outline: 1px solid #666666;
+            left: 3px;
+            outline: 1px solid #605e5c;
             position: absolute;
-            right: 1px;
-            top: 1px;
+            right: 3px;
+            top: 3px;
             z-index: 1;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -387,10 +410,39 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
             right: -2px;
             top: -2px;
           }
+          & .ms-Button--default {
+            border-bottom-right-radius: 0;
+            border-right: none;
+            border-top-right-radius: 0;
+          }
+          & .ms-Button--primary {
+            border-bottom-right-radius: 0;
+            border-top-right-radius: 0;
+            border: none;
+          }
+          @media screen and (-ms-high-contrast: active){& .ms-Button--primary {
+            -ms-high-contrast-adjust: none;
+            background-color: WindowText;
+            color: Window;
+          }
+          & .ms-Button--primary + .ms-Button {
+            border: none;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover .ms-Button--primary {
+            background-color: Highlight;
+            color: Window;
+          }
+          &:hover .ms-Button.is-disabled {
+            color: #a19f9d;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover .ms-Button.is-disabled {
+            background-color: Window;
+            border-color: GrayText;
+            color: GrayText;
+          }
           &:focus {
             outline: none!important;
           }
-      data-automation-id="test"
       data-is-focusable={true}
       onClick={[Function]}
       onFocusCapture={[Function]}
@@ -411,12 +463,13 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
           className=
               ms-Button
               ms-Button--primary
+              ms-Button--hasMenu
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: #0078d4;
-                border-radius: 0px;
-                border: 1px solid transparent;
+                border-radius: 2px;
+                border: 1px solid #0078d4;
                 box-sizing: border-box;
                 color: #ffffff;
                 cursor: pointer;
@@ -425,10 +478,6 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 32px;
-                margin-bottom: 0px;
-                margin-left: 0px;
-                margin-right: 0px;
-                margin-top: 0px;
                 min-width: 80px;
                 outline: transparent;
                 padding-bottom: 0;
@@ -439,20 +488,20 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
               }
               &::-moz-focus-inner {
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: none;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline-color: #ffffff;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -471,41 +520,40 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
               @media screen and (-ms-high-contrast: active){& {
                 -ms-high-contrast-adjust: none;
                 background-color: WindowText;
+                border-color: WindowText;
                 color: Window;
               }
               &:hover {
                 background-color: #106ebe;
+                border: 1px solid #106ebe;
                 color: #ffffff;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 background-color: Highlight;
+                border-color: Highlight;
                 color: Window;
               }
               &:active {
                 background-color: #005a9e;
+                border: 1px solid #005a9e;
                 color: #ffffff;
               }
               @media screen and (-ms-high-contrast: active){&:active {
                 -ms-high-contrast-adjust: none;
                 background-color: WindowText;
+                border-color: WindowText;
                 color: Window;
               }
-          data-automation-id="test"
           data-is-focusable={false}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
           onKeyUp={[Function]}
           onMouseDown={[Function]}
           onMouseUp={[Function]}
-          style={
-            Object {
-              "height": "35px",
-            }
-          }
           tabIndex={-1}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -515,18 +563,21 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                   height: 100%;
                   justify-content: center;
                 }
+            data-automationid="splitbuttonprimary"
           >
-            <div
+            <span
               className=
                   ms-Button-textContainer
                   {
+                    display: block;
                     flex-grow: 1;
                   }
             >
-              <div
+              <span
                 className=
                     ms-Button-label
                     {
+                      display: block;
                       font-weight: 600;
                       line-height: 100%;
                       margin-bottom: 0;
@@ -536,20 +587,24 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                     }
                 id="id__6"
               >
-                Create account
-              </div>
-            </div>
-          </div>
+                Primary
+              </span>
+            </span>
+          </span>
         </button>
         <button
           aria-expanded={false}
           aria-haspopup={true}
+          aria-label="See 2 options"
           className=
               ms-Button
               {
                 background-color: #0078d4;
+                border-bottom-right-radius: 2px;
+                border-left: none;
                 border-radius: 0px;
-                border: 0px;
+                border-top-right-radius: 2px;
+                border: 1px solid #8a8886;
                 box-sizing: border-box;
                 color: #ffffff;
                 cursor: pointer;
@@ -570,8 +625,11 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                 vertical-align: top;
                 width: 32px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                background-color: WindowText;
+              }
               &:hover {
-                background-color: #005a9e;
+                background-color: #106ebe;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 color: Highlight;
@@ -586,7 +644,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
           tabIndex={-1}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -596,39 +654,63 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                   height: 100%;
                   justify-content: center;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <i
+              aria-hidden={true}
               className=
+                  ms-Icon
                   ms-Button-icon
                   ms-Button-menuIcon
+                  ms-Button-menuIcon
+                  {
+                    display: inline-block;
+                  }
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    color: #ffffff;
-                    display: inline-block;
-                    flex-shrink: 0;
                     font-family: "FabricMDL2Icons";
-                    font-size: 12px;
                     font-style: normal;
                     font-weight: normal;
+                    speak: none;
+                  }
+                  {
+                    color: #ffffff;
+                    flex-shrink: 0;
+                    font-size: 12px;
                     height: 16px;
                     line-height: 16px;
                     margin-bottom: 0;
                     margin-left: 4px;
                     margin-right: 4px;
                     margin-top: 0;
-                    speak: none;
                     text-align: center;
-                    vertical-align: middle;
+                  }
+                  {
+                    flex-shrink: 0;
+                    font-size: 12px;
+                    height: 16px;
+                    line-height: 16px;
+                    margin-bottom: 0;
+                    margin-left: 4px;
+                    margin-right: 4px;
+                    margin-top: 0;
+                    text-align: center;
                   }
               data-icon-name="ChevronDown"
               role="presentation"
+              style={
+                Object {
+                  "fontFamily": "\\"FabricMDL2Icons\\"",
+                }
+              }
             >
               
             </i>
-          </div>
+          </span>
         </button>
         <span
+          aria-hidden={true}
           className=
 
               {
@@ -639,38 +721,13 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                 top: 8px;
                 width: 1px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                background-color: WindowText;
+              }
+          onClick={[Function]}
         />
       </span>
     </div>
-  </div>
-  <div>
-    <label
-      className=
-          ms-Label
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            box-shadow: none;
-            box-sizing: border-box;
-            color: #333333;
-            display: block;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 400;
-            margin-bottom: 0px;
-            margin-left: 0px;
-            margin-right: 0px;
-            margin-top: 0px;
-            overflow-wrap: break-word;
-            padding-bottom: 5px;
-            padding-left: 0;
-            padding-right: 0;
-            padding-top: 5px;
-            word-wrap: break-word;
-          }
-    >
-      Primary Action Disabled
-    </label>
     <div
       aria-expanded={false}
       aria-haspopup={true}
@@ -690,13 +747,13 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
           }
           .ms-Fabric--isFocusVisible &:focus:after {
             border: 1px solid #ffffff;
-            bottom: 1px;
+            bottom: 3px;
             content: "";
-            left: 1px;
-            outline: 1px solid #666666;
+            left: 3px;
+            outline: 1px solid #605e5c;
             position: absolute;
-            right: 1px;
-            top: 1px;
+            right: 3px;
+            top: 3px;
             z-index: 1;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -706,10 +763,39 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
             right: -2px;
             top: -2px;
           }
+          & .ms-Button--default {
+            border-bottom-right-radius: 0;
+            border-right: none;
+            border-top-right-radius: 0;
+          }
+          & .ms-Button--primary {
+            border-bottom-right-radius: 0;
+            border-top-right-radius: 0;
+            border: none;
+          }
+          @media screen and (-ms-high-contrast: active){& .ms-Button--primary {
+            -ms-high-contrast-adjust: none;
+            background-color: WindowText;
+            color: Window;
+          }
+          & .ms-Button--primary + .ms-Button {
+            border: none;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover .ms-Button--primary {
+            background-color: Highlight;
+            color: Window;
+          }
+          &:hover .ms-Button.is-disabled {
+            color: #a19f9d;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover .ms-Button.is-disabled {
+            background-color: Window;
+            border-color: GrayText;
+            color: GrayText;
+          }
           &:focus {
             outline: none!important;
           }
-      data-automation-id="test"
       data-is-focusable={true}
       onFocusCapture={[Function]}
       onKeyDown={[Function]}
@@ -729,26 +815,24 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
           aria-roledescription="split button"
           className=
               ms-Button
-              ms-Button--primary
+              ms-Button--default
+              ms-Button--hasMenu
               is-disabled
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                background-color: #f4f4f4;
-                border-radius: 0px;
-                border: 1px solid transparent;
+                background-color: #f3f2f1;
+                border-color: #f3f2f1;
+                border-radius: 2px;
+                border: 1px solid #8a8886;
                 box-sizing: border-box;
-                color: #a6a6a6;
+                color: #a19f9d;
                 cursor: default;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 height: 32px;
-                margin-bottom: 0px;
-                margin-left: 0px;
-                margin-right: 0px;
-                margin-top: 0px;
                 min-width: 80px;
                 outline: transparent;
                 padding-bottom: 0;
@@ -760,20 +844,19 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
               }
               &::-moz-focus-inner {
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -789,20 +872,17 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                 position: relative;
                 top: 0px;
               }
-              @media screen and (-ms-high-contrast: active){& {
-                -ms-high-contrast-adjust: none;
-                background-color: Window;
-                border-color: GrayText;
-                bordercolor: grayText;
-                color: GrayText;
-              }
               &:hover {
                 outline: 0px;
               }
               &:focus {
                 outline: 0px;
               }
-          data-automation-id="test"
+              @media screen and (-ms-high-contrast: active){& {
+                background-color: Window;
+                border-color: GrayText;
+                color: GrayText;
+              }
           data-is-focusable={false}
           disabled={true}
           onKeyDown={[Function]}
@@ -810,15 +890,10 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
           onKeyUp={[Function]}
           onMouseDown={[Function]}
           onMouseUp={[Function]}
-          style={
-            Object {
-              "height": "35px",
-            }
-          }
           tabIndex={-1}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -828,18 +903,21 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                   height: 100%;
                   justify-content: center;
                 }
+            data-automationid="splitbuttonprimary"
           >
-            <div
+            <span
               className=
                   ms-Button-textContainer
                   {
+                    display: block;
                     flex-grow: 1;
                   }
             >
-              <div
+              <span
                 className=
                     ms-Button-label
                     {
+                      display: block;
                       font-weight: 600;
                       line-height: 100%;
                       margin-bottom: 0;
@@ -849,20 +927,24 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                     }
                 id="id__12"
               >
-                Create account
-              </div>
-            </div>
-          </div>
+                Main action disabled
+              </span>
+            </span>
+          </span>
         </button>
         <button
           aria-expanded={false}
           aria-haspopup={true}
+          aria-label="See 2 options"
           className=
               ms-Button
               {
-                background-color: #0078d4;
+                background-color: transparent;
+                border-bottom-right-radius: 2px;
+                border-left: none;
                 border-radius: 0px;
-                border: 0px;
+                border-top-right-radius: 2px;
+                border: 1px solid #8a8886;
                 box-sizing: border-box;
                 color: #ffffff;
                 cursor: pointer;
@@ -884,7 +966,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                 width: 32px;
               }
               &:hover {
-                background-color: #005a9e;
+                background-color: #edebe9;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 color: Highlight;
@@ -899,7 +981,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
           tabIndex={-1}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -909,81 +991,80 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                   height: 100%;
                   justify-content: center;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <i
+              aria-hidden={true}
               className=
+                  ms-Icon
                   ms-Button-icon
                   ms-Button-menuIcon
+                  ms-Button-menuIcon
+                  {
+                    display: inline-block;
+                  }
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    color: #ffffff;
-                    display: inline-block;
-                    flex-shrink: 0;
                     font-family: "FabricMDL2Icons";
-                    font-size: 12px;
                     font-style: normal;
                     font-weight: normal;
+                    speak: none;
+                  }
+                  {
+                    color: #323130;
+                    flex-shrink: 0;
+                    font-size: 12px;
                     height: 16px;
                     line-height: 16px;
                     margin-bottom: 0;
                     margin-left: 4px;
                     margin-right: 4px;
                     margin-top: 0;
-                    speak: none;
                     text-align: center;
-                    vertical-align: middle;
+                  }
+                  {
+                    flex-shrink: 0;
+                    font-size: 12px;
+                    height: 16px;
+                    line-height: 16px;
+                    margin-bottom: 0;
+                    margin-left: 4px;
+                    margin-right: 4px;
+                    margin-top: 0;
+                    text-align: center;
                   }
               data-icon-name="ChevronDown"
               role="presentation"
+              style={
+                Object {
+                  "fontFamily": "\\"FabricMDL2Icons\\"",
+                }
+              }
             >
               
             </i>
-          </div>
+          </span>
         </button>
         <span
+          aria-hidden={true}
           className=
 
               {
-                background-color: #c8c8c8;
+                background-color: #c8c6c4;
                 bottom: 8px;
                 position: absolute;
                 right: 31px;
                 top: 8px;
                 width: 1px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                background-color: GrayText;
+              }
+          onClick={[Function]}
         />
       </span>
     </div>
-  </div>
-  <div>
-    <label
-      className=
-          ms-Label
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            box-shadow: none;
-            box-sizing: border-box;
-            color: #333333;
-            display: block;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 400;
-            margin-bottom: 0px;
-            margin-left: 0px;
-            margin-right: 0px;
-            margin-top: 0px;
-            overflow-wrap: break-word;
-            padding-bottom: 5px;
-            padding-left: 0;
-            padding-right: 0;
-            padding-top: 5px;
-            word-wrap: break-word;
-          }
-    >
-      Button Disabled
-    </label>
     <div
       aria-disabled={true}
       aria-expanded={false}
@@ -998,20 +1079,23 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
             position: relative;
           }
           @media screen and (-ms-high-contrast: active){& {
+            background-color: Window;
+            border-color: GrayText;
             border: none;
+            color: GrayText;
           }
           &::-moz-focus-inner {
             border: 0;
           }
           .ms-Fabric--isFocusVisible &:focus:after {
             border: 1px solid #ffffff;
-            bottom: 1px;
+            bottom: 3px;
             content: "";
-            left: 1px;
-            outline: 1px solid #666666;
+            left: 3px;
+            outline: 1px solid #605e5c;
             position: absolute;
-            right: 1px;
-            top: 1px;
+            right: 3px;
+            top: 3px;
             z-index: 1;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -1021,7 +1105,24 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
             right: -2px;
             top: -2px;
           }
-      data-automation-id="test"
+          & .ms-Button--default {
+            border-bottom-right-radius: 0;
+            border-right: none;
+            border-top-right-radius: 0;
+          }
+          & .ms-Button--primary {
+            border-bottom-right-radius: 0;
+            border-top-right-radius: 0;
+            border: none;
+          }
+          @media screen and (-ms-high-contrast: active){& .ms-Button--primary {
+            -ms-high-contrast-adjust: none;
+            background-color: WindowText;
+            color: Window;
+          }
+          & .ms-Button--primary + .ms-Button {
+            border: none;
+          }
       data-is-focusable={true}
       onFocusCapture={[Function]}
       onKeyDown={[Function]}
@@ -1041,26 +1142,24 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
           aria-roledescription="split button"
           className=
               ms-Button
-              ms-Button--primary
+              ms-Button--default
+              ms-Button--hasMenu
               is-disabled
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                background-color: #f4f4f4;
-                border-radius: 0px;
-                border: 1px solid transparent;
+                background-color: #f3f2f1;
+                border-color: #f3f2f1;
+                border-radius: 2px;
+                border: 1px solid #8a8886;
                 box-sizing: border-box;
-                color: #a6a6a6;
+                color: #a19f9d;
                 cursor: default;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 height: 32px;
-                margin-bottom: 0px;
-                margin-left: 0px;
-                margin-right: 0px;
-                margin-top: 0px;
                 min-width: 80px;
                 outline: transparent;
                 padding-bottom: 0;
@@ -1072,20 +1171,19 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
               }
               &::-moz-focus-inner {
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -1101,20 +1199,17 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                 position: relative;
                 top: 0px;
               }
-              @media screen and (-ms-high-contrast: active){& {
-                -ms-high-contrast-adjust: none;
-                background-color: Window;
-                border-color: GrayText;
-                bordercolor: grayText;
-                color: GrayText;
-              }
               &:hover {
                 outline: 0px;
               }
               &:focus {
                 outline: 0px;
               }
-          data-automation-id="test"
+              @media screen and (-ms-high-contrast: active){& {
+                background-color: Window;
+                border-color: GrayText;
+                color: GrayText;
+              }
           data-is-focusable={false}
           disabled={false}
           onKeyDown={[Function]}
@@ -1122,15 +1217,10 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
           onKeyUp={[Function]}
           onMouseDown={[Function]}
           onMouseUp={[Function]}
-          style={
-            Object {
-              "height": "35px",
-            }
-          }
           tabIndex={-1}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -1140,18 +1230,21 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                   height: 100%;
                   justify-content: center;
                 }
+            data-automationid="splitbuttonprimary"
           >
-            <div
+            <span
               className=
                   ms-Button-textContainer
                   {
+                    display: block;
                     flex-grow: 1;
                   }
             >
-              <div
+              <span
                 className=
                     ms-Button-label
                     {
+                      display: block;
                       font-weight: 600;
                       line-height: 100%;
                       margin-bottom: 0;
@@ -1161,22 +1254,26 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                     }
                 id="id__18"
               >
-                Create account
-              </div>
-            </div>
-          </div>
+                Disabled
+              </span>
+            </span>
+          </span>
         </button>
         <button
           aria-disabled={true}
           aria-expanded={false}
           aria-haspopup={true}
+          aria-label="See 2 options"
           className=
               ms-Button
               is-disabled
               {
-                background-color: #f4f4f4;
+                background-color: #f3f2f1;
+                border-bottom-right-radius: 2px;
+                border-left: none;
                 border-radius: 0px;
-                border: 0px;
+                border-top-right-radius: 2px;
+                border: none;
                 box-sizing: border-box;
                 color: #ffffff;
                 cursor: pointer;
@@ -1199,11 +1296,21 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                 width: 32px;
               }
               &:hover {
-                background-color: #f4f4f4;
+                background-color: #f3f2f1;
                 cursor: default;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 color: Highlight;
+              }
+              @media screen and (-ms-high-contrast: active){& .ms-Button--primary {
+                background-color: Window;
+                border-color: GrayText;
+                color: GrayText;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                background-color: Window;
+                border: 1px solid GrayText;
+                color: GrayText;
               }
           data-is-focusable={false}
           disabled={false}
@@ -1216,7 +1323,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
           tabIndex={-1}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -1226,360 +1333,80 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                   height: 100%;
                   justify-content: center;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <i
+              aria-hidden={true}
               className=
+                  ms-Icon
                   ms-Button-icon
                   ms-Button-menuIcon
+                  ms-Button-menuIcon
+                  {
+                    display: inline-block;
+                  }
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    color: #a6a6a6;
-                    display: inline-block;
-                    flex-shrink: 0;
                     font-family: "FabricMDL2Icons";
-                    font-size: 12px;
                     font-style: normal;
                     font-weight: normal;
+                    speak: none;
+                  }
+                  {
+                    color: #a19f9d;
+                    flex-shrink: 0;
+                    font-size: 12px;
                     height: 16px;
                     line-height: 16px;
                     margin-bottom: 0;
                     margin-left: 4px;
                     margin-right: 4px;
                     margin-top: 0;
-                    speak: none;
                     text-align: center;
-                    vertical-align: middle;
+                  }
+                  {
+                    flex-shrink: 0;
+                    font-size: 12px;
+                    height: 16px;
+                    line-height: 16px;
+                    margin-bottom: 0;
+                    margin-left: 4px;
+                    margin-right: 4px;
+                    margin-top: 0;
+                    text-align: center;
                   }
               data-icon-name="ChevronDown"
               role="presentation"
+              style={
+                Object {
+                  "fontFamily": "\\"FabricMDL2Icons\\"",
+                }
+              }
             >
               
             </i>
-          </div>
+          </span>
         </button>
         <span
+          aria-hidden={true}
           className=
 
               {
-                background-color: #c8c8c8;
+                background-color: #c8c6c4;
                 bottom: 8px;
                 position: absolute;
                 right: 31px;
                 top: 8px;
                 width: 1px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                background-color: GrayText;
+              }
+          onClick={[Function]}
         />
       </span>
     </div>
-  </div>
-</div>
-`;
-
-exports[`Component Examples renders Button.Split.Example.tsx correctly 2`] = `
-<div>
-  <label
-    className=
-        ms-Label
-        {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
-          box-shadow: none;
-          box-sizing: border-box;
-          color: #333333;
-          display: block;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
-          font-weight: 400;
-          margin-bottom: 0px;
-          margin-left: 0px;
-          margin-right: 0px;
-          margin-top: 0px;
-          overflow-wrap: break-word;
-          padding-bottom: 5px;
-          padding-left: 0;
-          padding-right: 0;
-          padding-top: 5px;
-          word-wrap: break-word;
-        }
-  >
-    Split button with icon and custom styles
-  </label>
-  <div
-    aria-expanded={false}
-    aria-haspopup={true}
-    aria-roledescription="split button"
-    className=
-
-        {
-          display: inline-flex;
-          outline: transparent;
-          position: relative;
-        }
-        &::-moz-focus-inner {
-          border: 0;
-        }
-        .ms-Fabric--isFocusVisible &:focus:after {
-          border: 1px solid #ffffff;
-          bottom: 1px;
-          content: "";
-          left: 1px;
-          outline: 1px solid #666666;
-          position: absolute;
-          right: 1px;
-          top: 1px;
-          z-index: 1;
-        }
-        @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-          border: none;
-          bottom: -2px;
-          left: -2px;
-          right: -2px;
-          top: -2px;
-        }
-        @media screen and (-ms-high-contrast: active){& {
-          border: none;
-        }
-        &:focus {
-          outline: none!important;
-        }
-    data-automation-id="test"
-    data-is-focusable={true}
-    onClick={[Function]}
-    onFocusCapture={[Function]}
-    onKeyDown={[Function]}
-    onTouchStart={[Function]}
-    role="button"
-    tabIndex={0}
-  >
-    <span
-      style={
-        Object {
-          "display": "flex",
-        }
-      }
-    >
-      <button
-        aria-roledescription="split button"
-        className=
-            ms-Button
-            ms-Button--icon
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              background-color: transparent;
-              border-radius: 0px;
-              border: none;
-              box-sizing: border-box;
-              color: #333333;
-              cursor: pointer;
-              display: inline-block;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
-              height: 32px;
-              margin-bottom: 0px;
-              margin-left: 0px;
-              margin-right: 0px;
-              margin-top: 0px;
-              outline: transparent;
-              padding-bottom: 0;
-              padding-left: 4px;
-              padding-right: 4px;
-              padding-top: 0;
-              position: relative;
-              text-align: center;
-              text-decoration: none;
-              user-select: none;
-              vertical-align: top;
-              width: 32px;
-            }
-            &::-moz-focus-inner {
-              border: 0;
-            }
-            .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #ffffff;
-              bottom: 0px;
-              content: "";
-              left: 0px;
-              outline: 1px solid #666666;
-              position: absolute;
-              right: 0px;
-              top: 0px;
-              z-index: 1;
-            }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-              border: none;
-              bottom: -2px;
-              left: -2px;
-              outline-color: ButtonText;
-              right: -2px;
-              top: -2px;
-            }
-            &:active > * {
-              left: 0px;
-              position: relative;
-              top: 0px;
-            }
-            &:hover {
-              color: #212121;
-            }
-            @media screen and (-ms-high-contrast: active){&:hover {
-              border-color: Highlight;
-              color: Highlight;
-            }
-            &:active {
-              color: #0078d4;
-            }
-        data-automation-id="test"
-        data-is-focusable={false}
-        onKeyDown={[Function]}
-        onKeyPress={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseUp={[Function]}
-        tabIndex={-1}
-        type="button"
-      >
-        <div
-          className=
-              ms-Button-flexContainer
-              {
-                align-items: center;
-                display: flex;
-                flex-wrap: nowrap;
-                height: 100%;
-                justify-content: center;
-              }
-        >
-          <i
-            className=
-                ms-Button-icon
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  display: inline-block;
-                  flex-shrink: 0;
-                  font-family: "FabricMDL2Icons";
-                  font-size: 16px;
-                  font-style: normal;
-                  font-weight: normal;
-                  height: 16px;
-                  line-height: 16px;
-                  margin-bottom: 0;
-                  margin-left: 4px;
-                  margin-right: 4px;
-                  margin-top: 0;
-                  speak: none;
-                  text-align: center;
-                  vertical-align: middle;
-                }
-            data-icon-name="Upload"
-            role="presentation"
-          >
-            
-          </i>
-          <div
-            className=
-                ms-Button-textContainer
-                {
-                  flex-grow: 1;
-                }
-          />
-        </div>
-      </button>
-      <button
-        aria-expanded={false}
-        aria-haspopup={true}
-        className=
-            ms-Button
-            {
-              background-color: white;
-              border-radius: 0px;
-              border: 0px;
-              box-sizing: border-box;
-              cursor: pointer;
-              display: inline-block;
-              height: auto;
-              margin-bottom: 0px;
-              margin-left: -1px;
-              margin-right: 0px;
-              margin-top: 0px;
-              outline: transparent;
-              padding-bottom: 6px;
-              padding-left: 6px;
-              padding-right: 6px;
-              padding-top: 6px;
-              text-align: center;
-              text-decoration: none;
-              user-select: none;
-              vertical-align: top;
-              width: 10px;
-            }
-        data-is-focusable={false}
-        onClick={[Function]}
-        onKeyDown={[Function]}
-        onKeyPress={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseUp={[Function]}
-        tabIndex={-1}
-        type="button"
-      >
-        <div
-          className=
-              ms-Button-flexContainer
-              {
-                align-items: center;
-                display: flex;
-                flex-wrap: nowrap;
-                height: 100%;
-                justify-content: center;
-              }
-        >
-          <i
-            className=
-                ms-Button-icon
-                ms-Button-menuIcon
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  display: inline-block;
-                  flex-shrink: 0;
-                  font-family: "FabricMDL2Icons";
-                  font-size: 12px;
-                  font-style: normal;
-                  font-weight: normal;
-                  height: 16px;
-                  line-height: 16px;
-                  margin-bottom: 0;
-                  margin-left: 4px;
-                  margin-right: 4px;
-                  margin-top: 0;
-                  speak: none;
-                  text-align: center;
-                  vertical-align: middle;
-                }
-            data-icon-name="ChevronDown"
-            role="presentation"
-          >
-            
-          </i>
-        </div>
-      </button>
-      <span
-        className=
-
-            {
-              border-left: 1px solid #c8c8c8;
-              bottom: 8px;
-              position: absolute;
-              right: 17px;
-              top: 8px;
-              width: 1px;
-            }
-      />
-    </span>
   </div>
 </div>
 `;

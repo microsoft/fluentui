@@ -1,5 +1,15 @@
 import * as React from 'react';
-import { Async, KeyCodes, divProperties, doesElementContainFocus, getDocument, getNativeProps, on } from '../../Utilities';
+import {
+  Async,
+  KeyCodes,
+  divProperties,
+  doesElementContainFocus,
+  getDocument,
+  getNativeProps,
+  on,
+  getWindow,
+  elementContains,
+} from '../../Utilities';
 import { IPopupProps } from './Popup.types';
 
 export interface IPopupState {
@@ -11,7 +21,7 @@ export interface IPopupState {
  */
 export class Popup extends React.Component<IPopupProps, IPopupState> {
   public static defaultProps: IPopupProps = {
-    shouldRestoreFocus: true
+    shouldRestoreFocus: true,
   };
 
   public _root = React.createRef<HTMLDivElement>();
@@ -26,13 +36,21 @@ export class Popup extends React.Component<IPopupProps, IPopupState> {
     this.state = { needsVerticalScrollBar: false };
   }
 
-  public componentWillMount(): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillMount(): void {
     this._originalFocusedElement = getDocument()!.activeElement as HTMLElement;
   }
 
   public componentDidMount(): void {
     if (this._root.current) {
-      this._disposables.push(on(this._root.current, 'focus', this._onFocus, true), on(this._root.current, 'blur', this._onBlur, true));
+      this._disposables.push(
+        on(this._root.current, 'focus', this._onFocus, true),
+        on(this._root.current, 'blur', this._onBlur, true),
+      );
+      const currentWindow = getWindow(this._root.current);
+      if (currentWindow) {
+        this._disposables.push(on(currentWindow, 'keydown', this._onKeyDown as any));
+      }
       if (doesElementContainFocus(this._root.current)) {
         this._containsFocus = true;
       }
@@ -48,19 +66,14 @@ export class Popup extends React.Component<IPopupProps, IPopupState> {
 
   public componentWillUnmount(): void {
     this._disposables.forEach((dispose: () => void) => dispose());
-    if (
-      this.props.shouldRestoreFocus &&
-      this._originalFocusedElement &&
-      this._containsFocus &&
-      (this._originalFocusedElement as any) !== window
-    ) {
-      // This slight delay is required so that we can unwind the stack, let react try to mess with focus, and then
-      // apply the correct focus. Without the setTimeout, we end up focusing the correct thing, and then React wants
-      // to reset the focus back to the thing it thinks should have been focused.
-      if (this._originalFocusedElement) {
-        this._originalFocusedElement.focus();
-      }
+
+    // tslint:disable-next-line:deprecation
+    if (this.props.shouldRestoreFocus) {
+      const { onRestoreFocus = defaultFocusRestorer } = this.props;
+      onRestoreFocus({ originalElement: this._originalFocusedElement, containsFocus: this._containsFocus });
     }
+    // De-reference DOM Node to avoid retainment via transpiled closure of _onKeyDown
+    delete this._originalFocusedElement;
   }
 
   public render(): JSX.Element {
@@ -128,7 +141,7 @@ export class Popup extends React.Component<IPopupProps, IPopupState> {
     }
     if (this.state.needsVerticalScrollBar !== needsVerticalScrollBar) {
       this.setState({
-        needsVerticalScrollBar: needsVerticalScrollBar
+        needsVerticalScrollBar: needsVerticalScrollBar,
       });
     }
   }
@@ -138,8 +151,28 @@ export class Popup extends React.Component<IPopupProps, IPopupState> {
   };
 
   private _onBlur = (ev: FocusEvent): void => {
-    if (this._root.current && this._root.current.contains(ev.relatedTarget as HTMLElement)) {
+    /** The popup should update this._containsFocus when:
+     * relatedTarget exists AND
+     * the relatedTarget is not contained within the popup.
+     * If the relatedTarget is within the popup, that means the popup still has focus
+     * and focused moved from one element to another within the popup.
+     * If relatedTarget is undefined or null that usually means that a
+     * keyboard event occured and focus didn't change
+     */
+    if (
+      this._root.current &&
+      ev.relatedTarget &&
+      !elementContains(this._root.current, ev.relatedTarget as HTMLElement)
+    ) {
       this._containsFocus = false;
     }
   };
+}
+
+function defaultFocusRestorer(options: { originalElement?: HTMLElement | Window; containsFocus: boolean }) {
+  const { originalElement, containsFocus } = options;
+
+  if (originalElement && containsFocus && originalElement !== window) {
+    originalElement.focus();
+  }
 }

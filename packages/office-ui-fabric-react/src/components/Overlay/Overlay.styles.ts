@@ -3,7 +3,7 @@ import { HighContrastSelector, getGlobalClassNames } from '../../Styling';
 
 const GlobalClassNames = {
   root: 'ms-Overlay',
-  rootDark: 'ms-Overlay--dark'
+  rootDark: 'ms-Overlay--dark',
 };
 
 export const getStyles = (props: IOverlayStyleProps): IOverlayStyles => {
@@ -28,23 +28,23 @@ export const getStyles = (props: IOverlayStyleProps): IOverlayStyles => {
         selectors: {
           [HighContrastSelector]: {
             border: '1px solid WindowText',
-            opacity: 0
-          }
-        }
+            opacity: 0,
+          },
+        },
       },
 
       isNone && {
-        visibility: 'hidden'
+        visibility: 'hidden',
       },
 
       isDark && [
         classNames.rootDark,
         {
-          backgroundColor: palette.blackTranslucent40
-        }
+          backgroundColor: palette.blackTranslucent40,
+        },
       ],
 
-      className
-    ]
+      className,
+    ],
   };
 };

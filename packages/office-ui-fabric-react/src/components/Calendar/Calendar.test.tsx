@@ -7,12 +7,25 @@ import { mount } from 'enzyme';
 
 import { Calendar } from './Calendar';
 import { DateRangeType, DayOfWeek } from './Calendar.types';
-import { addDays, compareDates } from '../../utilities/dateMath/DateMath';
-import { resetIds } from '../../Utilities';
+import { addDays, compareDates } from 'office-ui-fabric-react/lib/utilities/dateMath/DateMath';
+import { resetIds } from 'office-ui-fabric-react/lib/Utilities';
 
 describe('Calendar', () => {
   const dayPickerStrings = {
-    months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+    months: [
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December',
+    ],
 
     shortMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
 
@@ -20,7 +33,7 @@ describe('Calendar', () => {
 
     shortDays: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
 
-    goToToday: 'Go to today'
+    goToToday: 'Go to today',
   };
 
   beforeEach(() => {
@@ -39,7 +52,9 @@ describe('Calendar', () => {
 
     // Act
 
-    const renderedComponent = mount(<Calendar strings={dayPickerStrings} isMonthPickerVisible={true} value={defaultDate} />);
+    const renderedComponent = mount(
+      <Calendar strings={dayPickerStrings} isMonthPickerVisible={true} value={defaultDate} />,
+    );
 
     const today = renderedComponent.find('.ms-DatePicker-day--today');
     expect(+today.text()).toEqual(new Date().getDate());
@@ -49,9 +64,9 @@ describe('Calendar', () => {
     let renderedComponent: Calendar;
 
     beforeAll(() => {
-      renderedComponent = ReactTestUtils.renderIntoDocument(
-        <Calendar strings={dayPickerStrings} isMonthPickerVisible={false} />
-      ) as Calendar;
+      renderedComponent = (ReactTestUtils.renderIntoDocument(
+        <Calendar strings={dayPickerStrings} isMonthPickerVisible={false} />,
+      ) as unknown) as Calendar;
     });
 
     it('Renders simple calendar correctly', () => {
@@ -66,7 +81,10 @@ describe('Calendar', () => {
       const today = new Date();
       const monthName = dayPickerStrings.months[today.getMonth()];
       const year = today.getFullYear();
-      const dayPickerMonth = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-monthAndYear');
+      const dayPickerMonth = ReactTestUtils.findRenderedDOMComponentWithClass(
+        renderedComponent,
+        'ms-DatePicker-monthAndYear',
+      );
       expect(dayPickerMonth).toBeDefined();
       expect(dayPickerMonth.textContent).toEqual(monthName + ' ' + year.toString());
     });
@@ -118,7 +136,7 @@ describe('Calendar', () => {
         };
       };
 
-      renderedComponent = ReactTestUtils.renderIntoDocument(
+      renderedComponent = (ReactTestUtils.renderIntoDocument(
         <Calendar
           strings={dayPickerStrings}
           isMonthPickerVisible={true}
@@ -128,13 +146,16 @@ describe('Calendar', () => {
           autoNavigateOnSelection={true}
           onSelectDate={onSelectDate()}
           className="CalendarTestClass"
-        />
-      ) as Calendar;
+        />,
+      ) as unknown) as Calendar;
     });
 
     it('Verify day picker header', () => {
       const monthName = dayPickerStrings.months[defaultDate.getMonth()];
-      const dayPickerMonth = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-monthAndYear');
+      const dayPickerMonth = ReactTestUtils.findRenderedDOMComponentWithClass(
+        renderedComponent,
+        'ms-DatePicker-monthAndYear',
+      );
       expect(dayPickerMonth).toBeDefined();
       expect(dayPickerMonth.textContent).toEqual(monthName + ' ' + defaultDate.getFullYear().toString());
     });
@@ -157,13 +178,19 @@ describe('Calendar', () => {
     });
 
     it('Verify month picker seen', () => {
-      const monthPicker = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-monthPicker') as HTMLElement;
+      const monthPicker = ReactTestUtils.findRenderedDOMComponentWithClass(
+        renderedComponent,
+        'ms-DatePicker-monthPicker',
+      ) as HTMLElement;
       expect(monthPicker).toBeDefined();
       expect(monthPicker.style.display).not.toEqual('none');
     });
 
     it('Verify month picker header', () => {
-      const currentYear = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-currentYear');
+      const currentYear = ReactTestUtils.findRenderedDOMComponentWithClass(
+        renderedComponent,
+        'ms-DatePicker-currentYear',
+      );
       expect(currentYear).toBeDefined();
       expect(currentYear.textContent).toEqual(defaultDate.getFullYear().toString());
     });
@@ -220,7 +247,7 @@ describe('Calendar', () => {
       const defaultDate = new Date('Mar 16 2017');
       const minDate = new Date('Mar 6 2017');
       const maxDate = new Date('Mar 24 2017');
-      const renderedComponent = ReactTestUtils.renderIntoDocument(
+      const renderedComponent = (ReactTestUtils.renderIntoDocument(
         <Calendar
           strings={dayPickerStrings}
           value={defaultDate}
@@ -228,8 +255,8 @@ describe('Calendar', () => {
           dateRangeType={DateRangeType.Day}
           minDate={minDate}
           maxDate={maxDate}
-        />
-      ) as Calendar;
+        />,
+      ) as unknown) as Calendar;
 
       const days = ReactTestUtils.scryRenderedDOMComponentsWithClass(renderedComponent, 'ms-DatePicker-day-button');
 
@@ -248,7 +275,7 @@ describe('Calendar', () => {
           lastSelectedDateRange = dateRangeArray;
         };
       };
-      const renderedComponent = ReactTestUtils.renderIntoDocument(
+      const renderedComponent = (ReactTestUtils.renderIntoDocument(
         <Calendar
           strings={dayPickerStrings}
           value={defaultDate}
@@ -257,8 +284,8 @@ describe('Calendar', () => {
           minDate={minDate}
           maxDate={maxDate}
           onSelectDate={onSelectDate()}
-        />
-      ) as Calendar;
+        />,
+      ) as unknown) as Calendar;
 
       const days = ReactTestUtils.scryRenderedDOMComponentsWithClass(renderedComponent, 'ms-DatePicker-day-button');
       ReactTestUtils.Simulate.click(days[18]);
@@ -271,7 +298,7 @@ describe('Calendar', () => {
     const defaultDate = new Date('Mar 15 2017');
     const minDate = new Date('Mar 1 2017');
     const maxDate = new Date('Mar 31 2017');
-    const renderedComponent = ReactTestUtils.renderIntoDocument(
+    const renderedComponent = (ReactTestUtils.renderIntoDocument(
       <Calendar
         strings={dayPickerStrings}
         value={defaultDate}
@@ -279,8 +306,8 @@ describe('Calendar', () => {
         dateRangeType={DateRangeType.Day}
         minDate={minDate}
         maxDate={maxDate}
-      />
-    ) as Calendar;
+      />,
+    ) as unknown) as Calendar;
 
     const prevMonth = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-prevMonth');
     const nextMonth = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-nextMonth');
@@ -293,7 +320,7 @@ describe('Calendar', () => {
     const defaultDate = new Date('Mar 15 2017');
     const minDate = new Date('Mar 1 2017');
     const maxDate = new Date('Oct 1 2017');
-    const renderedComponent = ReactTestUtils.renderIntoDocument(
+    const renderedComponent = (ReactTestUtils.renderIntoDocument(
       <Calendar
         strings={dayPickerStrings}
         value={defaultDate}
@@ -301,8 +328,8 @@ describe('Calendar', () => {
         dateRangeType={DateRangeType.Day}
         minDate={minDate}
         maxDate={maxDate}
-      />
-    ) as Calendar;
+      />,
+    ) as unknown) as Calendar;
 
     const months = ReactTestUtils.scryRenderedDOMComponentsWithClass(renderedComponent, 'ms-DatePicker-monthOption');
 
@@ -315,7 +342,7 @@ describe('Calendar', () => {
     const defaultDate = new Date('Mar 15 2017');
     const minDate = new Date('Jan 1 2017');
     const maxDate = new Date('Dec 31 2017');
-    const renderedComponent = ReactTestUtils.renderIntoDocument(
+    const renderedComponent = (ReactTestUtils.renderIntoDocument(
       <Calendar
         strings={dayPickerStrings}
         value={defaultDate}
@@ -323,8 +350,8 @@ describe('Calendar', () => {
         dateRangeType={DateRangeType.Day}
         minDate={minDate}
         maxDate={maxDate}
-      />
-    ) as Calendar;
+      />,
+    ) as unknown) as Calendar;
 
     const prevMonth = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-prevYear');
     const nextMonth = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-nextYear');
@@ -338,23 +365,35 @@ describe('Calendar', () => {
     let defaultDate: Date;
     beforeAll(() => {
       defaultDate = new Date(2017, 2, 16);
-      renderedComponent = ReactTestUtils.renderIntoDocument(
-        <Calendar strings={dayPickerStrings} isMonthPickerVisible={true} value={defaultDate} />
-      ) as Calendar;
+      renderedComponent = (ReactTestUtils.renderIntoDocument(
+        <Calendar strings={dayPickerStrings} isMonthPickerVisible={true} value={defaultDate} />,
+      ) as unknown) as Calendar;
     });
 
     it('month header should have button role', () => {
-      const monthHeader = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-currentYear');
+      const monthHeader = ReactTestUtils.findRenderedDOMComponentWithClass(
+        renderedComponent,
+        'ms-DatePicker-currentYear',
+      );
       expect(monthHeader.getAttribute('role')).toBe('button');
     });
 
     it('year picker should show when clicking month header', () => {
-      const monthHeader = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-currentYear');
+      const monthHeader = ReactTestUtils.findRenderedDOMComponentWithClass(
+        renderedComponent,
+        'ms-DatePicker-currentYear',
+      );
       ReactTestUtils.Simulate.click(monthHeader);
-      const yearHeader = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-currentDecade');
+      const yearHeader = ReactTestUtils.findRenderedDOMComponentWithClass(
+        renderedComponent,
+        'ms-DatePicker-currentDecade',
+      );
       expect(yearHeader).toBeTruthy();
       // month header shouldn't actually be rendered
-      const monthHeaders = ReactTestUtils.scryRenderedDOMComponentsWithClass(renderedComponent, 'ms-DatePicker-currentYear');
+      const monthHeaders = ReactTestUtils.scryRenderedDOMComponentsWithClass(
+        renderedComponent,
+        'ms-DatePicker-currentYear',
+      );
       expect(monthHeaders.length).toBe(0);
     });
 
@@ -382,13 +421,22 @@ describe('Calendar', () => {
     });
 
     it('month picker on non-overlay calendar should show when clicking year header', () => {
-      const yearHeader = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-currentDecade');
+      const yearHeader = ReactTestUtils.findRenderedDOMComponentWithClass(
+        renderedComponent,
+        'ms-DatePicker-currentDecade',
+      );
       expect(yearHeader).toBeTruthy();
-      const monthHeaders = ReactTestUtils.scryRenderedDOMComponentsWithClass(renderedComponent, 'ms-DatePicker-currentYear');
+      const monthHeaders = ReactTestUtils.scryRenderedDOMComponentsWithClass(
+        renderedComponent,
+        'ms-DatePicker-currentYear',
+      );
       expect(monthHeaders.length).toBe(0);
       // click year header - month picker should become visible again
       ReactTestUtils.Simulate.click(yearHeader);
-      const monthHeader = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-currentYear');
+      const monthHeader = ReactTestUtils.findRenderedDOMComponentWithClass(
+        renderedComponent,
+        'ms-DatePicker-currentYear',
+      );
       expect(monthHeader).toBeTruthy();
     });
   });

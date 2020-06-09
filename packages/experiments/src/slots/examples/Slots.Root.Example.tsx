@@ -9,8 +9,16 @@ export class SlotsRootExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     return (
       <Stack {...stackProps}>
-        <Button icon="share" href="https://developer.microsoft.com/en-us/fabric" content="Root: Implicit 'a' via href prop" />
-        <Button icon="share" root={render => render((RootType, rootProps) => <RootType {...rootProps} />)} content="Root: Function" />
+        <Button
+          icon="share"
+          href="https://developer.microsoft.com/en-us/fluentui"
+          content="Root: Implicit 'a' via href prop"
+        />
+        <Button
+          icon="share"
+          content="Root: Function"
+          slots={{ root: { render: (rootProps, DefaultComponent) => <DefaultComponent {...rootProps} /> } }}
+        />
       </Stack>
     );
   }

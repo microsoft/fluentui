@@ -1,4 +1,5 @@
 export * from './warn/warn';
 export * from './warn/warnConditionallyRequiredProps';
+export * from './warn/warnControlledUsage';
 export * from './warn/warnDeprecations';
 export * from './warn/warnMutuallyExclusive';

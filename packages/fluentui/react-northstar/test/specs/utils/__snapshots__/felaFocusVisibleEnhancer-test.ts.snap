@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`felaFocusVisibleEnhancer replaces :focus-visible 1`] = `".a{border-color:green}.b:focus{border-color:yellow}html[data-whatinput=\\"keyboard\\"] .c:focus{border-color:red}"`;

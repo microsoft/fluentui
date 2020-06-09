@@ -7,7 +7,7 @@ import {
   IDetailsRowProps,
   IColumn,
   IGroup,
-  SelectionMode
+  SelectionMode,
 } from 'office-ui-fabric-react/lib/DetailsList';
 
 export interface ISemanticSlotsDetailsListProps {
@@ -27,13 +27,13 @@ interface ISemanticSlotsDetailsList {
   strongSlot: JSX.Element;
 }
 
-export const SemanticSlotsDetailsList: React.StatelessComponent<ISemanticSlotsDetailsListProps> = (
-  props: ISemanticSlotsDetailsListProps
+export const SemanticSlotsDetailsList: React.FunctionComponent<ISemanticSlotsDetailsListProps> = (
+  props: ISemanticSlotsDetailsListProps,
 ) => {
-  let countDefaults = 13;
+  let countDefaults = 17;
   let countLinks = 4;
-  let countButtons = 25;
-  let countInputs = 14;
+  let countButtons = 23;
+  let countInputs = 18;
   let countLists = 7;
   let countMenus = 8;
 
@@ -47,10 +47,10 @@ export const SemanticSlotsDetailsList: React.StatelessComponent<ISemanticSlotsDe
         root: {
           selectors: {
             ':hover': {
-              background: 'transparent'
-            }
-          }
-        }
+              background: 'transparent',
+            },
+          },
+        },
       };
       return <DetailsRow {...detailsRowProps!} styles={rowStyles} />;
     } else {
@@ -65,7 +65,7 @@ export const SemanticSlotsDetailsList: React.StatelessComponent<ISemanticSlotsDe
       noneSlot: props.noneSlots[i],
       neutralSlot: props.neutralSlots[i],
       softSlot: props.softSlots[i],
-      strongSlot: props.strongSlots[i]
+      strongSlot: props.strongSlots[i],
     });
   }
 
@@ -77,40 +77,40 @@ export const SemanticSlotsDetailsList: React.StatelessComponent<ISemanticSlotsDe
       name: 'Links',
       startIndex: countDefaults,
       count: countLinks,
-      isCollapsed: true
+      isCollapsed: true,
     },
 
     {
       key: 'button',
       name: 'Buttons',
-      startIndex: countLinks + countDefaults,
+      startIndex: countDefaults + countLinks,
       count: countButtons,
-      isCollapsed: true
+      isCollapsed: true,
     },
 
     {
       key: 'inputs',
       name: 'Inputs',
-      startIndex: countButtons + countLinks + countDefaults,
+      startIndex: countDefaults + countLinks + countButtons,
       count: countInputs,
-      isCollapsed: true
+      isCollapsed: true,
     },
 
     {
       key: 'lists',
       name: 'Lists',
-      startIndex: countInputs + countButtons + countLinks + countDefaults,
+      startIndex: countDefaults + countLinks + countButtons + countInputs,
       count: countLists,
-      isCollapsed: true
+      isCollapsed: true,
     },
 
     {
       key: 'menus',
       name: 'Menus',
-      startIndex: countLists + countInputs + countButtons + countLinks + countDefaults,
+      startIndex: countDefaults + countLinks + countButtons + countInputs + countLists,
       count: countMenus,
-      isCollapsed: true
-    }
+      isCollapsed: true,
+    },
   ];
 
   columns = [
@@ -118,7 +118,7 @@ export const SemanticSlotsDetailsList: React.StatelessComponent<ISemanticSlotsDe
     { key: 'noneSlot', name: 'None', fieldName: 'noneSlot', minWidth: 100, maxWidth: 200, isResizable: true },
     { key: 'neutralSlot', name: 'Netural', fieldName: 'neutralSlot', minWidth: 100, maxWidth: 200, isResizable: true },
     { key: 'softSlot', name: 'Soft', fieldName: 'softSlot', minWidth: 100, maxWidth: 200, isResizable: true },
-    { key: 'strongSlot', name: 'Strong', fieldName: 'strongSlot', minWidth: 100, maxWidth: 200, isResizable: true }
+    { key: 'strongSlot', name: 'Strong', fieldName: 'strongSlot', minWidth: 100, maxWidth: 200, isResizable: true },
   ];
 
   return (
@@ -132,7 +132,7 @@ export const SemanticSlotsDetailsList: React.StatelessComponent<ISemanticSlotsDe
         selectionMode={SelectionMode.none}
         onRenderRow={onRenderRow}
         groupProps={{
-          showEmptyGroups: true
+          showEmptyGroups: true,
         }}
       />
     </div>

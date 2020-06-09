@@ -12,16 +12,19 @@ export class SlotsIconExample extends React.Component<{}, {}> {
         <Button icon="share" content="Icon: String" />
         <Button icon={{ iconName: 'share' }} content="Icon: Props, iconName: 'share'" />
         <Button
-          icon={render =>
-            render((IconType, iconProps) => (
-              <b>
-                Icon: <IconType {...iconProps} iconName="upload" />
-              </b>
-            ))
-          }
+          icon="upload"
+          slots={{
+            icon: {
+              render: (iconProps, DefaultComponent) => (
+                <b>
+                  Icon: <DefaultComponent {...iconProps} />
+                </b>
+              ),
+            },
+          }}
           content="Icon: Function, Text + Icon"
         />
-        <Button icon={() => <Spinner />} content="Icon: Function, Spinner" />
+        <Button slots={{ icon: { render: () => <Spinner /> } }} content="Icon: Function, Spinner" />
       </Stack>
     );
   }

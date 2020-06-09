@@ -1,19 +1,19 @@
 import { IBaseProps, IRefObject, IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
-import {
-  ICalendarStrings,
-  DayOfWeek,
-  FirstWeekOfYear,
-  DateRangeType,
-  ICalendarIconStrings,
-  ICalendarFormatDateCallbacks
-} from '../Calendar.types';
+import { ICalendarStrings, ICalendarIconStrings, ICalendarFormatDateCallbacks } from '../Calendar.types';
 import { IStyle, ITheme } from '@uifabric/styling';
+import {
+  ICalendarDayGridProps,
+  ICalendarDayGridStyleProps,
+  ICalendarDayGridStyles,
+} from '../../CalendarDayGrid/CalendarDayGrid.types';
+
+export { ICalendarDayGridStyles };
 
 export interface ICalendarDay {
   focus(): void;
 }
 
-export interface ICalendarDayProps extends IBaseProps<ICalendarDay> {
+export interface ICalendarDayProps extends IBaseProps<ICalendarDay>, ICalendarDayGridProps {
   /**
    * Optional callback to access the ICalendarDay interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -41,21 +41,9 @@ export interface ICalendarDayProps extends IBaseProps<ICalendarDay> {
   strings: ICalendarStrings;
 
   /**
-   * The currently selected date
-   */
-  selectedDate: Date;
-
-  /**
    * The currently navigated date
    */
   navigatedDate: Date;
-
-  /**
-   * Callback issued when a date is selected
-   * @param date - The date the user selected
-   * @param selectedDateRangeArray - The resultant list of dates that are selected based on the date range type set for the component.
-   */
-  onSelectDate?: (date: Date, selectedDateRangeArray?: Date[]) => void;
 
   /**
    * Callback issued when a date in the calendar is navigated
@@ -70,34 +58,9 @@ export interface ICalendarDayProps extends IBaseProps<ICalendarDay> {
   onDismiss?: () => void;
 
   /**
-   * The first day of the week for your locale.
-   * @defaultvalue DayOfWeek.Sunday
-   */
-  firstDayOfWeek: DayOfWeek;
-
-  /**
-   * Defines when the first week of the year should start, FirstWeekOfYear.FirstDay,
-   * FirstWeekOfYear.FirstFullWeek or FirstWeekOfYear.FirstFourDayWeek are the possible values
-   * @defaultvalue FirstWeekOfYear.FirstDay
-   */
-  firstWeekOfYear: FirstWeekOfYear;
-
-  /**
-   * The date range type indicating how  many days should be selected as the user
-   * selects days
-   * @defaultValue DateRangeType.Day
-   */
-  dateRangeType: DateRangeType;
-
-  /**
    * Customize navigation icons using ICalendarIconStrings
    */
   navigationIcons: ICalendarIconStrings;
-
-  /**
-   * Value of today. If null, current time in client machine will be used.
-   */
-  today?: Date;
 
   /**
    * Callback function when the header is selected
@@ -109,7 +72,6 @@ export interface ICalendarDayProps extends IBaseProps<ICalendarDay> {
    * @defaultvalue false
    */
   showWeekNumbers?: boolean;
-
   /**
    * Apply additional formating to dates, for example localized date formatting.
    */
@@ -137,12 +99,6 @@ export interface ICalendarDayProps extends IBaseProps<ICalendarDay> {
   restrictedDates?: Date[];
 
   /**
-   * The days that are selectable when dateRangeType is WorkWeek. If dateRangeType is not WorkWeek this property does nothing.
-   * @defaultvalue [Monday,Tuesday,Wednesday,Thursday,Friday]
-   */
-  workWeekDays?: DayOfWeek[];
-
-  /**
    * Whether the close button should be shown or not
    * @defaultvalue false
    */
@@ -155,7 +111,7 @@ export interface ICalendarDayProps extends IBaseProps<ICalendarDay> {
   allFocusable?: boolean;
 }
 
-export interface ICalendarDayStyleProps {
+export interface ICalendarDayStyleProps extends ICalendarDayGridStyleProps {
   /**
    * Theme provided by High-Order Component.
    */
@@ -174,17 +130,12 @@ export interface ICalendarDayStyleProps {
   headerIsClickable?: boolean;
 
   /**
-   * The date range type
-   */
-  dateRangeType?: DateRangeType;
-
-  /**
    * Whether week numbers are being shown
    */
   showWeekNumbers?: boolean;
 }
 
-export interface ICalendarDayStyles {
+export interface ICalendarDayStyles extends Partial<ICalendarDayGridStyles> {
   /**
    * Style for the root element.
    */
@@ -201,11 +152,6 @@ export interface ICalendarDayStyles {
   monthAndYear: IStyle;
 
   /**
-   * The style for the table containing the grid
-   */
-  table: IStyle;
-
-  /**
    * The style for the wrapper around forward/back/close buttons
    */
   monthComponents: IStyle;
@@ -219,47 +165,4 @@ export interface ICalendarDayStyles {
    * The style to apply for disabled elements
    */
   disabledStyle: IStyle;
-
-  /**
-   * The style to apply to the grid cells for days
-   */
-  dayCell: IStyle;
-
-  /**
-   * The style to apply to grid cells for days in the selected range
-   */
-  daySelected: IStyle;
-
-  /**
-   * The style to apply to grid cells for week numbers
-   */
-  weekNumberCell: IStyle;
-
-  /**
-   * The style to apply to individual days that are outside the min/max date range
-   */
-  dayOutsideBounds: IStyle;
-
-  /**
-   * The style to apply to individual days that are outside the current month
-   */
-  dayOutsideNavigatedMonth: IStyle;
-
-  /**
-   * The style to apply to the button element within the day cells
-   */
-  dayButton: IStyle;
-
-  /**
-   * The style to apply to the individual button element that matches the "today" parameter
-   */
-  dayIsToday: IStyle;
-
-  /**
-   * The styles to apply to days for rounded corners. Can apply multiple to round multiple corners
-   */
-  topRightCornerDate: IStyle;
-  topLeftCornerDate: IStyle;
-  bottomRightCornerDate: IStyle;
-  bottomLeftCornerDate: IStyle;
 }

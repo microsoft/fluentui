@@ -7,6 +7,8 @@ import { primaryStyles, standardStyles } from '../ButtonThemes';
 
 export const getStyles = memoizeFunction(
   (theme: ITheme, customStyles?: IButtonStyles, primary?: boolean): IButtonStyles => {
+    const { fonts, palette } = theme;
+
     const baseButtonStyles: IButtonStyles = getBaseButtonStyles(theme);
     const splitButtonStyles: IButtonStyles = getSplitButtonStyles(theme);
     const compoundButtonStyles: IButtonStyles = {
@@ -14,18 +16,18 @@ export const getStyles = memoizeFunction(
         maxWidth: '280px',
         minHeight: '72px',
         height: 'auto',
-        padding: '20px'
+        padding: '16px 12px',
       },
 
       flexContainer: {
         flexDirection: 'row',
         alignItems: 'flex-start',
         minWidth: '100%',
-        margin: ''
+        margin: '',
       },
 
       textContainer: {
-        textAlign: 'left'
+        textAlign: 'left',
       },
 
       icon: {
@@ -34,83 +36,98 @@ export const getStyles = memoizeFunction(
         height: '1em',
         margin: '0px 8px 0px 0px',
         flexBasis: '1em',
-        flexShrink: '0'
+        flexShrink: '0',
       },
 
       label: {
         margin: '0 0 5px',
         lineHeight: '100%',
-        fontWeight: FontWeights.semibold
+        fontWeight: FontWeights.semibold,
       },
       description: [
-        theme.fonts.small,
+        fonts.small,
         {
-          lineHeight: '100%'
-        }
-      ]
+          lineHeight: '100%',
+        },
+      ],
     };
 
     const standardCompoundTheme: IButtonStyles = {
       description: {
-        color: theme.palette.neutralSecondary
+        color: palette.neutralSecondary,
       },
 
       descriptionHovered: {
-        color: theme.palette.neutralDark
+        color: palette.neutralDark,
       },
 
       descriptionPressed: {
-        color: 'inherit'
+        color: 'inherit',
       },
 
       descriptionChecked: {
-        color: 'inherit'
+        color: 'inherit',
       },
 
       descriptionDisabled: {
-        color: 'inherit'
-      }
+        color: 'inherit',
+      },
     };
 
     const primaryCompoundTheme: IButtonStyles = {
       description: {
-        color: theme.palette.white,
+        color: palette.white,
+        selectors: {
+          [HighContrastSelector]: {
+            backgroundColor: 'WindowText',
+            color: 'Window',
+            MsHighContrastAdjust: 'none',
+          },
+        },
+      },
+
+      descriptionHovered: {
+        color: palette.white,
+        selectors: {
+          [HighContrastSelector]: {
+            backgroundColor: 'Highlight',
+            color: 'Window',
+          },
+        },
+      },
+
+      descriptionPressed: {
+        color: 'inherit',
+
         selectors: {
           [HighContrastSelector]: {
             color: 'Window',
             backgroundColor: 'WindowText',
-            MsHighContrastAdjust: 'none'
-          }
-        }
-      },
-
-      descriptionHovered: {
-        color: theme.palette.white,
-        selectors: {
-          [HighContrastSelector]: {
-            color: 'Window',
-            backgroundColor: 'Highlight',
-            MsHighContrastAdjust: 'none'
-          }
-        }
-      },
-
-      descriptionPressed: {
-        color: 'inherit'
+            MsHighContrastAdjust: 'none',
+          },
+        },
       },
 
       descriptionChecked: {
-        color: 'inherit'
+        color: 'inherit',
+
+        selectors: {
+          [HighContrastSelector]: {
+            color: 'Window',
+            backgroundColor: 'WindowText',
+            MsHighContrastAdjust: 'none',
+          },
+        },
       },
 
       descriptionDisabled: {
         color: 'inherit',
         selectors: {
           [HighContrastSelector]: {
-            color: 'inherit'
-          }
-        }
-      }
+            color: 'inherit',
+          },
+        },
+      },
     };
 
     return concatStyleSets(
@@ -119,7 +136,7 @@ export const getStyles = memoizeFunction(
       primary ? primaryStyles(theme) : standardStyles(theme),
       primary ? primaryCompoundTheme : standardCompoundTheme,
       splitButtonStyles,
-      customStyles
+      customStyles,
     )!;
-  }
+  },
 );

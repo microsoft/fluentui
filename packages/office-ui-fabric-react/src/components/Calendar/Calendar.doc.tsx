@@ -1,21 +1,20 @@
 import * as React from 'react';
-import { DateRangeType, DayOfWeek } from 'office-ui-fabric-react/lib/Calendar';
-import { IDocPageProps } from '../../common/DocPage.types';
+import { DateRangeType, DayOfWeek } from '../../Calendar';
+import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
 import { CalendarButtonExample } from './examples/Calendar.Button.Example';
 import { CalendarInlineExample } from './examples/Calendar.Inline.Example';
-import { addMonths, addYears, addWeeks, addDays } from '../../utilities/dateMath/DateMath';
+import { addMonths, addYears, addWeeks, addDays } from 'office-ui-fabric-react/lib/utilities/dateMath/DateMath';
 
 const CalendarButtonExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Calendar/examples/Calendar.Button.Example.tsx') as string;
-const CalendarButtonExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Calendar/examples/Calendar.Button.Example.tsx') as string;
 const CalendarInlineExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Calendar/examples/Calendar.Inline.Example.tsx') as string;
-const CalendarInlineExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Calendar/examples/Calendar.Inline.Example.tsx') as string;
 
 const today = new Date(Date.now());
 
 export const CalendarPageProps: IDocPageProps = {
   title: 'Calendar',
   componentName: 'Calendar',
-  componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Calendar',
+  componentUrl:
+    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/Calendar',
   examples: [
     {
       title: 'Inline Calendar',
@@ -29,7 +28,6 @@ export const CalendarPageProps: IDocPageProps = {
           showGoToToday={true}
         />
       ),
-      codepenJS: CalendarInlineExampleCodepen
     },
     {
       title: 'Inline Calendar with overlaid month picker when header is clicked',
@@ -44,7 +42,7 @@ export const CalendarPageProps: IDocPageProps = {
           autoNavigateOnSelection={false}
           showGoToToday={false}
         />
-      )
+      ),
     },
     {
       title: 'Inline Calendar with month picker and overlaid year picker when month header is clicked',
@@ -58,7 +56,7 @@ export const CalendarPageProps: IDocPageProps = {
           highlightSelectedMonth={true}
           showGoToToday={true}
         />
-      )
+      ),
     },
     {
       title: 'Inline Calendar with week selection and overlaid year picker when month header is clicked',
@@ -73,7 +71,7 @@ export const CalendarPageProps: IDocPageProps = {
           showGoToToday={true}
           showNavigateButtons={true}
         />
-      )
+      ),
     },
     {
       title: `Inline Calendar with week selection, date boundary (minDate, maxDate), disabled dates (restrictedDates),
@@ -92,7 +90,7 @@ export const CalendarPageProps: IDocPageProps = {
           maxDate={addWeeks(today, 2)}
           restrictedDates={[addDays(today, -2), addDays(today, -8), addDays(today, 2), addDays(today, 8)]}
         />
-      )
+      ),
     },
     {
       title: 'Inline Calendar with month selection and overlaid year picker when month header is clicked',
@@ -107,7 +105,7 @@ export const CalendarPageProps: IDocPageProps = {
           showGoToToday={true}
           showNavigateButtons={true}
         />
-      )
+      ),
     },
     {
       title: 'Inline Calendar with week numbers',
@@ -121,7 +119,7 @@ export const CalendarPageProps: IDocPageProps = {
           showGoToToday={true}
           showWeekNumbers={true}
         />
-      )
+      ),
     },
     {
       title: 'Inline Calendar with 6 weeks display by default',
@@ -135,7 +133,7 @@ export const CalendarPageProps: IDocPageProps = {
           showGoToToday={true}
           showSixWeeksByDefault={true}
         />
-      )
+      ),
     },
     {
       title: 'Inline Calendar with month picker, no day picker, and overlaid year picker when month header is clicked',
@@ -150,7 +148,7 @@ export const CalendarPageProps: IDocPageProps = {
           highlightSelectedMonth={true}
           isDayPickerVisible={false}
         />
-      )
+      ),
     },
     {
       title: `Inline Calendar with date boundary (minDate, maxDate), disabled dates (restrictedDates),
@@ -168,7 +166,7 @@ export const CalendarPageProps: IDocPageProps = {
           maxDate={addYears(today, 1)}
           restrictedDates={[addDays(today, -2), addDays(today, -8), addDays(today, 2), addDays(today, 8)]}
         />
-      )
+      ),
     },
     {
       title: `Calendar with workWeekDays = [T W, F, Sa] provided, first day of week = M, and overlaid year picker when
@@ -185,14 +183,13 @@ export const CalendarPageProps: IDocPageProps = {
           showGoToToday={true}
           workWeekDays={[DayOfWeek.Tuesday, DayOfWeek.Wednesday, DayOfWeek.Friday, DayOfWeek.Saturday]}
         />
-      )
+      ),
     },
     {
       title: 'Calendar launched from a button',
       code: CalendarButtonExampleCode,
 
       view: <CalendarButtonExample highlightCurrentMonth={true} />,
-      codepenJS: CalendarButtonExampleCodepen
     },
     {
       title: 'Month picker launched from a button',
@@ -205,7 +202,7 @@ export const CalendarPageProps: IDocPageProps = {
           highlightSelectedMonth={true}
           buttonString={'Click for Month Picker'}
         />
-      )
+      ),
     },
     {
       title: 'Calendar with overlaid month picker launched from a button',
@@ -218,7 +215,7 @@ export const CalendarPageProps: IDocPageProps = {
           highlightSelectedMonth={true}
           buttonString={'Click for overlaid Day Picker and Month Picker'}
         />
-      )
+      ),
     },
     {
       title: 'Calendar with overlaid month picker launched from a button without show go to today button',
@@ -232,13 +229,13 @@ export const CalendarPageProps: IDocPageProps = {
           highlightSelectedMonth={true}
           buttonString={'Click for overlaid Day Picker and Month Picker without go to today button'}
         />
-      )
-    }
+      ),
+    },
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Calendar/docs/CalendarOverview.md'),
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Calendar/docs/CalendarDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Calendar/docs/CalendarDonts.md'),
   isHeaderVisible: true,
-  isFeedbackVisible: true
+  isFeedbackVisible: true,
 };

@@ -2,29 +2,67 @@
 
 exports[`ColorRectangle renders correctly 1`] = `
 <div
+  aria-describedby="ColorRectangle-description0"
+  aria-label="Saturation and brightness"
+  aria-valuemax={100}
+  aria-valuemin={0}
+  aria-valuenow={28}
+  aria-valuetext="Saturation 28 brightness 94"
   className=
       ms-ColorPicker-colorRect
       {
-        margin-bottom: 10px;
+        border-radius: 2px;
+        border: 1px solid #f3f2f1;
+        margin-bottom: 8px;
+        min-height: 220px;
+        min-width: 220px;
+        outline: none;
         position: relative;
       }
       @media screen and (-ms-high-contrast: active){& {
         -ms-high-contrast-adjust: none;
       }
+      .ms-Fabric--isFocusVisible &:focus {
+        outline: 1px solid #605e5c;
+      }
+  data-is-focusable={true}
+  onKeyDown={[Function]}
   onMouseDown={[Function]}
+  role="slider"
   style={
     Object {
       "backgroundColor": "#0080ff",
-      "minHeight": 220,
-      "minWidth": 220,
     }
   }
+  tabIndex={0}
 >
+  <div
+    className=
+
+        {
+          border: 0px;
+          height: 1px;
+          margin-bottom: -1px;
+          margin-left: -1px;
+          margin-right: -1px;
+          margin-top: -1px;
+          overflow: hidden;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          position: absolute;
+          width: 1px;
+        }
+    id="ColorRectangle-description0"
+  >
+    Use left and right arrow keys to set saturation. Use up and down arrow keys to set brightness.
+  </div>
   <div
     className=
         ms-ColorPicker-light
         {
-          background: linear-gradient(to right, white 0%, transparent 100%);
+          background: linear-gradient(to right, white 0%, transparent 100%) /*@noflip*/;
           bottom: 0px;
           left: 0px;
           position: absolute;
@@ -50,12 +88,23 @@ exports[`ColorRectangle renders correctly 1`] = `
         {
           background: white;
           border-radius: 50%;
-          border: 1px solid rgba(255,255,255,.8);
-          box-shadow: 0 0 15px -5px black;
+          border: 1px solid #8a8886;
+          box-shadow: 0 3.2px 7.2px 0 rgba(0, 0, 0, 0.132), 0 0.6px 1.8px 0 rgba(0, 0, 0, 0.108);
           height: 20px;
           position: absolute;
           transform: translate(-50%, -50%);
           width: 20px;
+        }
+        &:before {
+          border-radius: 50%;
+          border: 2px solid #ffffff;
+          bottom: 0px;
+          box-sizing: border-box;
+          content: "";
+          left: 0px;
+          position: absolute;
+          right: 0px;
+          top: 0px;
         }
     style={
       Object {

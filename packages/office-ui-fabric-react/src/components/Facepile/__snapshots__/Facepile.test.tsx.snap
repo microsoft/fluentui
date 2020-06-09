@@ -36,7 +36,6 @@ exports[`Facepile renders Facepile correctly 1`] = `
             padding-right: 0px;
             padding-top: 0px;
           }
-      role="listbox"
     >
       <li
         className=
@@ -49,7 +48,6 @@ exports[`Facepile renders Facepile correctly 1`] = `
               margin-right: 2px;
               margin-top: 2px;
             }
-        role="option"
       >
         <div
           className=
@@ -59,7 +57,6 @@ exports[`Facepile renders Facepile correctly 1`] = `
                 background-color: transparent;
                 border-radius: 50%;
                 border: none;
-                cursor: pointer;
                 display: inline;
                 padding-bottom: 0px;
                 padding-left: 0px;
@@ -75,11 +72,9 @@ exports[`Facepile renders Facepile correctly 1`] = `
                 padding-right: 0px;
                 padding-top: 0px;
               }
-          data="50%"
           data-is-focusable={true}
           onMouseMove={[Function]}
           onMouseOut={[Function]}
-          role="option"
           title="Annie Lindqvist"
         >
           <div
@@ -93,7 +88,7 @@ exports[`Facepile renders Facepile correctly 1`] = `
                   font-size: 14px;
                   font-weight: 400;
                 }
-            size={11}
+            role="presentation"
           >
             <div
               className=
@@ -105,6 +100,7 @@ exports[`Facepile renders Facepile correctly 1`] = `
                     text-align: center;
                     width: 32px;
                   }
+              role="presentation"
             >
               <div
                 className=
@@ -173,7 +169,6 @@ exports[`Facepile renders Facepile correctly 1`] = `
               margin-right: 2px;
               margin-top: 2px;
             }
-        role="option"
       >
         <div
           className=
@@ -183,7 +178,6 @@ exports[`Facepile renders Facepile correctly 1`] = `
                 background-color: transparent;
                 border-radius: 50%;
                 border: none;
-                cursor: pointer;
                 display: inline;
                 padding-bottom: 0px;
                 padding-left: 0px;
@@ -199,11 +193,9 @@ exports[`Facepile renders Facepile correctly 1`] = `
                 padding-right: 0px;
                 padding-top: 0px;
               }
-          data="$1,000"
           data-is-focusable={true}
           onMouseMove={[Function]}
           onMouseOut={[Function]}
-          role="option"
           title="Aaron Reid"
         >
           <div
@@ -217,7 +209,7 @@ exports[`Facepile renders Facepile correctly 1`] = `
                   font-size: 14px;
                   font-weight: 400;
                 }
-            size={11}
+            role="presentation"
           >
             <div
               className=
@@ -229,6 +221,7 @@ exports[`Facepile renders Facepile correctly 1`] = `
                     text-align: center;
                     width: 32px;
                   }
+              role="presentation"
             >
               <div
                 className=
@@ -297,7 +290,6 @@ exports[`Facepile renders Facepile correctly 1`] = `
               margin-right: 2px;
               margin-top: 2px;
             }
-        role="option"
       >
         <button
           className=
@@ -317,10 +309,6 @@ exports[`Facepile renders Facepile correctly 1`] = `
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
-                margin-bottom: 0px;
-                margin-left: 0px;
-                margin-right: 0px;
-                margin-top: 0px;
                 outline: transparent;
                 padding-bottom: 0px;
                 padding-left: 0px;
@@ -340,14 +328,14 @@ exports[`Facepile renders Facepile correctly 1`] = `
                 padding-top: 0px;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -363,7 +351,6 @@ exports[`Facepile renders Facepile correctly 1`] = `
                 position: relative;
                 top: 0px;
               }
-          data="75%"
           data-is-focusable={true}
           onClick={[Function]}
           onKeyDown={[Function]}
@@ -373,11 +360,10 @@ exports[`Facepile renders Facepile correctly 1`] = `
           onMouseMove={[Function]}
           onMouseOut={[Function]}
           onMouseUp={[Function]}
-          role="option"
           title="Alex Lundberg"
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -387,6 +373,7 @@ exports[`Facepile renders Facepile correctly 1`] = `
                   height: 100%;
                   justify-content: center;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div
               className=
@@ -399,7 +386,7 @@ exports[`Facepile renders Facepile correctly 1`] = `
                     font-size: 14px;
                     font-weight: 400;
                   }
-              size={11}
+              role="presentation"
             >
               <div
                 className=
@@ -411,17 +398,18 @@ exports[`Facepile renders Facepile correctly 1`] = `
                       text-align: center;
                       width: 32px;
                     }
+                role="presentation"
               >
                 <div
                   aria-hidden="true"
                   className=
                       ms-Persona-initials
                       {
-                        background-color: #1E7145;
+                        background-color: #8E562E;
                         border-radius: 50%;
                         color: #ffffff;
                         font-size: 14px;
-                        font-weight: 400;
+                        font-weight: 600;
                         height: 32px;
                         line-height: 32px;
                       }
@@ -432,6 +420,9 @@ exports[`Facepile renders Facepile correctly 1`] = `
                         box-sizing: border-box;
                         color: WindowText;
                       }
+                      & i {
+                        font-weight: 600;
+                      }
                 >
                   <span>
                     AL
@@ -439,7 +430,7 @@ exports[`Facepile renders Facepile correctly 1`] = `
                 </div>
               </div>
             </div>
-          </div>
+          </span>
         </button>
       </li>
     </ul>

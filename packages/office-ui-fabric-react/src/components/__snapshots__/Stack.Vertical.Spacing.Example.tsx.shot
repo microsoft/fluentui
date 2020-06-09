@@ -391,10 +391,10 @@ exports[`Component Examples renders Stack.Vertical.Spacing.Example.tsx correctly
               flex-direction: column;
               flex-wrap: nowrap;
               height: auto;
-              padding-bottom: 4px;
-              padding-left: 4px;
-              padding-right: 4px;
-              padding-top: 4px;
+              padding-bottom: 8px;
+              padding-left: 8px;
+              padding-right: 8px;
+              padding-top: 8px;
               width: auto;
             }
             & > * {

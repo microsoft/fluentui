@@ -1,4 +1,3 @@
-
 @import '../../../common/common';
 
 .root {
@@ -17,13 +16,13 @@
   width: 100%;
   font-size: 12px;
   &:hover {
-      background-color: $ms-color-neutralLighter;
-      cursor: pointer;
+    background-color: $ms-color-neutralLighter;
+    cursor: pointer;
   }
   // TODO: Works in Chrome, but not working in IE
   &:focus,
   &:active {
-      background-color: $ms-color-themeLight;
+    background-color: $ms-color-themeLight;
   }
 
   :global(.ms-Button-icon) {

@@ -1,9 +1,9 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-
+import { mount } from 'enzyme';
 import { resetIds } from '../../Utilities';
 
-import { Pivot, PivotItem, PivotLinkFormat, PivotLinkSize } from './index';
+import { Pivot, PivotItem, PivotLinkFormat, PivotLinkSize, IPivot } from './index';
 
 describe('Pivot', () => {
   beforeEach(() => {
@@ -16,10 +16,34 @@ describe('Pivot', () => {
       <Pivot>
         <PivotItem headerText="Test Link 1" />
         <PivotItem headerText="" />
-      </Pivot>
+      </Pivot>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  it('can be focused', () => {
+    const pivotRef = React.createRef<IPivot>();
+
+    mount(
+      <Pivot componentRef={pivotRef}>
+        <PivotItem headerText="Link 1" />
+        <PivotItem headerText="Link 2" />
+      </Pivot>,
+    );
+
+    // Instruct FocusZone to treat all elements as visible.
+    (HTMLElement.prototype as any).isVisible = true;
+
+    try {
+      expect(pivotRef.current).toBeTruthy();
+
+      pivotRef.current!.focus();
+      expect(document.activeElement).toBeTruthy();
+      expect(document.activeElement!.textContent?.trim()).toEqual('Link 1');
+    } finally {
+      delete (HTMLElement.prototype as any).isVisible;
+    }
   });
 
   it('supports JSX expressions', () => {
@@ -32,7 +56,7 @@ describe('Pivot', () => {
         <PivotItem headerText="Test Link 3">
           <div>This is Item 3</div>
         </PivotItem>
-      </Pivot>
+      </Pivot>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -43,7 +67,7 @@ describe('Pivot', () => {
       <Pivot linkSize={PivotLinkSize.large}>
         <PivotItem headerText="Test Link 1" />
         <PivotItem headerText="" />
-      </Pivot>
+      </Pivot>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -54,7 +78,7 @@ describe('Pivot', () => {
       <Pivot linkFormat={PivotLinkFormat.tabs}>
         <PivotItem headerText="Test Link 1" />
         <PivotItem headerText="" />
-      </Pivot>
+      </Pivot>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -65,7 +89,7 @@ describe('Pivot', () => {
       <Pivot linkFormat={PivotLinkFormat.tabs} linkSize={PivotLinkSize.large}>
         <PivotItem headerText="Test Link 1" />
         <PivotItem headerText="" />
-      </Pivot>
+      </Pivot>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -76,7 +100,7 @@ describe('Pivot', () => {
       <Pivot className="specialClassName">
         <PivotItem headerText="Test Link 1" className="specialClassName" />
         <PivotItem headerText="Test Link 2" />
-      </Pivot>
+      </Pivot>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -88,7 +112,7 @@ describe('Pivot', () => {
         <PivotItem itemCount={12} />
         <PivotItem headerText="Test Link" itemCount={12} />
         <PivotItem headerText="Text with icon" itemIcon="Recent" />
-      </Pivot>
+      </Pivot>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -99,7 +123,7 @@ describe('Pivot', () => {
       <Pivot>
         <PivotItem headerText="test" />
         <PivotItem headerText="Test Link" itemCount="20+" />
-      </Pivot>
+      </Pivot>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
