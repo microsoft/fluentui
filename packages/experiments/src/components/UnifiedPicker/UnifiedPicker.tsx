@@ -227,7 +227,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       <FocusZone direction={FocusZoneDirection.bidirectional} {...focusZoneProps}>
         <MarqueeSelection selection={selection} isEnabled={true}>
           <SelectionZone selection={selection} selectionMode={SelectionMode.multiple}>
-            <div className={css('ms-BasePicker-text', classNames.pickerText)} role="listitem">
+            <div className={css('ms-BasePicker-text', classNames.pickerText)} role="list">
               {headerComponent}
               {_renderSelectedItemsList()}
               {_canAddItems() && (
