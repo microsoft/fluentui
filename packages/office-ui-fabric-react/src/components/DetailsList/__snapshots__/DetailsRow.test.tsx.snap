@@ -1758,6 +1758,7 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
   data-is-focusable={true}
   data-item-index={0}
   data-selection-index={0}
+  data-selection-touch-invoke={true}
   onFocus={[Function]}
   onKeyDown={[Function]}
   onMouseDownCapture={[Function]}

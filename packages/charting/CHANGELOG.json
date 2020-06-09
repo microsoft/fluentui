@@ -2,6 +2,36 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Fri, 05 Jun 2020 05:09:39 GMT",
+      "tag": "@uifabric/charting_v2.2.29",
+      "version": "2.2.29",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Charting: Change charts callout UI",
+            "author": "v-satgar@microsoft.com",
+            "commit": "7a6867506a889767e0fcb7ff0d4a96e2d5f94a60",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 02 Jun 2020 12:36:30 GMT",
+      "tag": "@uifabric/charting_v2.2.27",
+      "version": "2.2.27",
+      "comments": {
+        "patch": [
+          {
+            "comment": "LineChart: Add datapoints for each line and accessibility for it",
+            "author": "v-satgar@microsoft.com",
+            "commit": "49592828383aeb1a4c9b199c99dad89ab2fafbae",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 25 May 2020 12:38:22 GMT",
       "tag": "@uifabric/charting_v2.2.23",
       "version": "2.2.23",

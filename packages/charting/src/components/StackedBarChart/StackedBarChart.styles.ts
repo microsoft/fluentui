@@ -6,7 +6,6 @@ export const getStyles = (props: IStackedBarChartStyleProps): IStackedBarChartSt
     className,
     width,
     barHeight,
-    legendColor,
     shouldHighlight,
     theme,
     href,
@@ -39,22 +38,6 @@ export const getStyles = (props: IStackedBarChartStyleProps): IStackedBarChartSt
     },
     legendContainer: {
       paddingTop: '4px',
-    },
-    hoverCardTextStyles: {
-      ...theme.fonts.medium,
-      lineHeight: '14px',
-    },
-    hoverCardDataStyles: {
-      ...theme.fonts.xxLarge,
-      color: legendColor === '' ? theme.palette.black : legendColor,
-      fontWeight: FontWeights.bold,
-      lineHeight: '31px',
-    },
-    hoverCardRoot: {
-      paddingLeft: '16px',
-      paddingRight: '22px',
-      paddingTop: '15px',
-      paddingBottom: '8px',
     },
     opacityChangeOnHover: {
       opacity: shouldHighlight ? '' : '0.1',

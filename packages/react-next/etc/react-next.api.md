@@ -4,6 +4,7 @@
 
 ```ts
 
+import { ComposePreparedOptions } from '@fluentui/react-compose';
 import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import { IButtonProps as IButtonProps_2 } from 'office-ui-fabric-react/lib/components/Button/Button.types';
 import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
@@ -258,6 +259,8 @@ export interface ILinkHTMLAttributes<T> extends React.HTMLAttributes<T> {
     // (undocumented)
     [index: string]: any;
     // (undocumented)
+    as?: React.ElementType;
+    // (undocumented)
     autoFocus?: boolean;
     // (undocumented)
     disabled?: boolean;
@@ -294,13 +297,20 @@ export interface ILinkHTMLAttributes<T> extends React.HTMLAttributes<T> {
 }
 
 // @public (undocumented)
+export interface ILinkOptions {
+}
+
+// @public (undocumented)
 export interface ILinkProps extends ILinkHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement> {
-    as?: string | React.ComponentClass | React.FunctionComponent;
     componentRef?: IRefObject<ILink>;
     disabled?: boolean;
     keytipProps?: IKeytipProps;
     styles?: IStyleFunctionOrObject<ILinkStyleProps, ILinkStyles>;
     theme?: ITheme;
+}
+
+// @public (undocumented)
+export interface ILinkSlots {
 }
 
 // @public (undocumented)
@@ -425,19 +435,14 @@ export interface IPivotItemProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 // @public (undocumented)
-export interface IPivotProps extends React.ClassAttributes<PivotBase>, React.HTMLAttributes<HTMLDivElement> {
+export interface IPivotProps extends React.HTMLAttributes<HTMLDivElement> {
     className?: string;
-    componentRef?: IRefObject<IPivot>;
-    defaultSelectedIndex?: number;
+    componentRef?: React.RefObject<IPivot>;
     defaultSelectedKey?: string;
     getTabId?: (itemKey: string, index: number) => string;
     headersOnly?: boolean;
-    // @deprecated
-    initialSelectedIndex?: number;
-    // @deprecated
-    initialSelectedKey?: string;
-    linkFormat?: PivotLinkFormat;
-    linkSize?: PivotLinkSize;
+    linkFormat?: PivotLinkFormatType;
+    linkSize?: PivotLinkSizeType;
     onLinkClick?: (item?: PivotItem, ev?: React.MouseEvent<HTMLElement>) => void;
     selectedKey?: string | null;
     styles?: IStyleFunctionOrObject<IPivotStyleProps, IPivotStyles>;
@@ -445,15 +450,7 @@ export interface IPivotProps extends React.ClassAttributes<PivotBase>, React.HTM
 }
 
 // @public (undocumented)
-export interface IPivotState {
-    // (undocumented)
-    selectedKey: string | undefined;
-}
-
-// @public (undocumented)
-export type IPivotStyleProps = Required<Pick<IPivotProps, 'theme'>> & Pick<IPivotProps, 'className'> & {
-    rootIsLarge?: boolean;
-    rootIsTabs?: boolean;
+export type IPivotStyleProps = Required<Pick<IPivotProps, 'theme'>> & Pick<IPivotProps, 'className'> & Pick<IPivotProps, 'linkSize'> & Pick<IPivotProps, 'linkFormat'> & {
     linkIsSelected?: boolean;
 };
 
@@ -846,10 +843,14 @@ export interface IToggle {
     focus: () => void;
 }
 
+// @public (undocumented)
+export interface IToggleOptions {
+}
+
 // @public
 export interface IToggleProps extends React.HTMLAttributes<HTMLElement> {
     ariaLabel?: string;
-    as?: IComponentAs<React.HTMLAttributes<HTMLElement>>;
+    as?: IComponentAs<React.HTMLAttributes<HTMLElement>> | React.ElementType;
     checked?: boolean;
     componentRef?: IRefObject<IToggle>;
     defaultChecked?: boolean;
@@ -872,9 +873,12 @@ export interface IToggleProps extends React.HTMLAttributes<HTMLElement> {
 }
 
 // @public (undocumented)
-export interface IToggleState {
-    // (undocumented)
-    checked: boolean;
+export type IToggleSlotProps = {
+    [key in keyof IToggleSlots]: IToggleProps[key];
+};
+
+// @public (undocumented)
+export interface IToggleSlots {
 }
 
 // @public
@@ -911,7 +915,12 @@ export enum KeyboardSpinDirection {
 export const Link: React.FunctionComponent<ILinkProps>;
 
 // @public (undocumented)
-export const LinkBase: React.FunctionComponent;
+export const LinkBase: import("@fluentui/react-compose").ComponentWithAs<"a", ILinkProps>;
+
+// @public (undocumented)
+export type LinkSlotProps = {
+    [key in keyof ILinkSlots]: ILinkProps[key];
+};
 
 // @public (undocumented)
 export class MaskedTextField extends React.Component<ITextFieldProps, IMaskedTextFieldState> implements ITextField {
@@ -977,13 +986,8 @@ export class OverflowSetBase extends React.Component<IOverflowSetProps, {}> impl
 // @public
 export const Pivot: React.FunctionComponent<IPivotProps>;
 
-// @public
-export class PivotBase extends React.Component<IPivotProps, IPivotState> {
-    constructor(props: IPivotProps);
-    focus(): void;
-    // (undocumented)
-    render(): JSX.Element;
-    }
+// @public (undocumented)
+export const PivotBase: React.FunctionComponent<IPivotProps>;
 
 // @public (undocumented)
 export class PivotItem extends React.Component<IPivotItemProps, {}> {
@@ -992,17 +996,23 @@ export class PivotItem extends React.Component<IPivotItemProps, {}> {
     render(): JSX.Element;
 }
 
-// @public (undocumented)
-export enum PivotLinkFormat {
-    links = 0,
-    tabs = 1
+// @public @deprecated (undocumented)
+export const enum PivotLinkFormat {
+    links = "links",
+    tabs = "tabs"
 }
 
-// @public (undocumented)
-export enum PivotLinkSize {
-    large = 1,
-    normal = 0
+// @public
+export type PivotLinkFormatType = 'links' | 'tabs';
+
+// @public @deprecated (undocumented)
+export const enum PivotLinkSize {
+    large = "large",
+    normal = "normal"
 }
+
+// @public
+export type PivotLinkSizeType = 'normal' | 'large';
 
 // @public
 export const Popup: React.ForwardRefExoticComponent<IPopupProps & React.RefAttributes<HTMLDivElement>>;
@@ -1115,7 +1125,13 @@ export { ThemeProviderProps }
 export const Toggle: React.FunctionComponent<IToggleProps>;
 
 // @public (undocumented)
-export const ToggleBase: React.FunctionComponent;
+export const ToggleBase: import("@fluentui/react-compose").ComponentWithAs<"div", IToggleProps>;
+
+// @public
+export const useLink: (props: ILinkProps, options: ComposePreparedOptions<{}, {}>) => any;
+
+// @public (undocumented)
+export const useToggle: (props: IToggleProps, options: ComposePreparedOptions<{}, {}>) => any;
 
 
 export * from "office-ui-fabric-react/lib/ActivityItem";

@@ -2,6 +2,63 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "date": "Tue, 02 Jun 2020 12:36:30 GMT",
+      "tag": "@uifabric/utilities_v7.20.3",
+      "version": "7.20.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Removing side effect code that was breaking webpack treeshaking.",
+            "author": "dzearing@microsoft.com",
+            "commit": "d5ed2c3804a58cb774bec86160df899fd7a8cb5a",
+            "package": "@uifabric/utilities"
+          },
+          {
+            "comment": "Removing side-effect code which was causing webpack to bail out of optimizations.",
+            "author": "dzearing@microsoft.com",
+            "commit": "8ea7b001f627900e4f85afc2bcbfad9e326d1f9a",
+            "package": "@uifabric/utilities"
+          },
+          {
+            "comment": "Fixed prototype pollution vulnerability.",
+            "author": "esteban.230@hotmail.com",
+            "commit": "8961cec412264cd6d30edc46df383c617adf83c4",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 28 May 2020 12:42:08 GMT",
+      "tag": "@uifabric/utilities_v7.20.2",
+      "version": "7.20.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add autoCapitalize property",
+            "author": "suprememilanfan@gmail.com",
+            "commit": "13bd77d6062dfbf0209043275a581536aa5cad56",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 27 May 2020 12:40:00 GMT",
+      "tag": "@uifabric/utilities_v7.20.1",
+      "version": "7.20.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Selection: respect 0 as selected key",
+            "author": "elcraig@microsoft.com",
+            "commit": "08fa1c9b45c9c9938241740e71b9091a97067d0f",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 25 May 2020 12:38:22 GMT",
       "tag": "@uifabric/utilities_v7.20.0",
       "version": "7.20.0",

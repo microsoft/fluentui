@@ -3,6 +3,7 @@ import {
   compose,
   ComponentWithAs,
   getElementType,
+  mergeVariablesOverrides,
   useAccessibility,
   useAutoControlled,
   useStyles,
@@ -12,7 +13,6 @@ import {
 } from '@fluentui/react-bindings';
 import { Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
-import { mergeComponentVariables } from '@fluentui/styles';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
@@ -256,11 +256,11 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
         }
         _.invoke(predefinedProps, 'onActiveChanged', e, props);
       },
-      variables: mergeComponentVariables(variables, predefinedProps.variables),
+      variables: mergeVariablesOverrides(variables, predefinedProps.variables),
     });
 
     const handleDividerOverrides = predefinedProps => ({
-      variables: mergeComponentVariables(variables, predefinedProps.variables),
+      variables: mergeVariablesOverrides(variables, predefinedProps.variables),
     });
 
     const renderItems = () => {
@@ -340,7 +340,7 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
       divider: MenuDivider,
       item: MenuItem,
     },
-    mapPropsToSlotProps: props => ({
+    slotProps: props => ({
       divider: {
         inSubmenu: props.submenu,
         pills: props.pills,

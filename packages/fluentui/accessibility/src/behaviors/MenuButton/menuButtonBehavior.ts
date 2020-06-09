@@ -19,6 +19,7 @@ import popupBehavior, { PopupBehaviorProps } from '../Popup/popupBehavior';
  */
 const menuButtonBehavior: Accessibility<MenuButtonBehaviorProps> = props => {
   const behavior = popupBehavior(props);
+
   return _.merge(behavior, {
     attributes: {
       trigger: {

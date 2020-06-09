@@ -2,6 +2,8 @@
  * NOTE! THIS FILE IS TEMPORARY AND SHOULD BE DELETED ONCE IT HAS MOVED TO `@fluentui/react-compose`.
  */
 
+import * as React from 'react';
+
 export type ComponentClasses<TClasses, TState> = Partial<TClasses> | ((state: TState) => Partial<TClasses>);
 
 export interface ComponentProps {
@@ -23,6 +25,9 @@ export type ComposeRender<TProps, TOptions> = (
 
 // tslint:disable-next-line:no-any
 export type ClassDictionary = any;
+
+// tslint:disable-next-line:no-any
+export type GenericDictionary = Record<string, any>;
 
 export interface ComposeOptions<TProps, TSlots, TSlotProps, TStatics> {
   render: ComposeRender<TProps, ComposeOptions<TProps, TSlots, TSlotProps, TStatics>>;

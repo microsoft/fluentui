@@ -607,5 +607,8 @@ Popup.handledProps = Object.keys(Popup.propTypes) as any;
 Popup.Content = PopupContent;
 
 Popup.create = createShorthandFactory({ Component: Popup, mappedProp: 'content' });
+Popup.shorthandConfig = {
+  mappedProp: 'content',
+};
 
 export default Popup;

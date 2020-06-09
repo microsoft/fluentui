@@ -124,9 +124,9 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
    */
   // tslint:disable-next-line function-name
   public UNSAFE_componentWillReceiveProps(newProps: ISpinButtonProps): void {
-    this._lastValidValue = this.state.value;
-
     if (newProps.value !== undefined) {
+      // Value from props is considered pre-validated
+      this._lastValidValue = newProps.value;
       this.setState({ value: newProps.value });
     }
     this._precision = this._calculatePrecision(newProps as ISpinButtonProps & DefaultProps);
@@ -297,8 +297,11 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
    * Gets the value of the spin button.
    */
   public get value(): string | undefined {
-    const { value = this.state.value } = this.props;
-    return value;
+    // TODO (version 8): value from props should ALWAYS override value from state.
+    // In a class component the code should be:
+    // const { value = this.state.value } = this.props;
+    // return value;
+    return this.state.value;
   }
 
   private _onFocus = (ev: React.FocusEvent<HTMLInputElement>): void => {
@@ -401,8 +404,8 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
   }
 
   /**
-   * This is used when validating text entry
-   * in the input (not when changed via the buttons)
+   * This is used when validating text entry in the input on blur or when enter key is pressed
+   * (not when changed via the buttons).
    * @param event - the event that fired
    */
   private _validate = (event: React.FocusEvent<HTMLInputElement> | React.KeyboardEvent<HTMLInputElement>): void => {
@@ -412,10 +415,15 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
       this._valueToValidate !== this._lastValidValue
     ) {
       const newValue = this._onValidate!(this._valueToValidate, event);
-      if (newValue) {
+      // Done validating this value, so clear it
+      this._valueToValidate = undefined;
+
+      if (newValue !== undefined) {
         this._lastValidValue = newValue;
-        this._valueToValidate = undefined;
         this.setState({ value: newValue });
+      } else {
+        // Value was invalid. Reset state to last valid value.
+        this.setState({ value: this._lastValidValue });
       }
     }
   };
@@ -446,7 +454,7 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
     stepFunction: (value: string) => string | void,
   ): void => {
     const newValue: string | void = stepFunction(this.value || '');
-    if (newValue) {
+    if (newValue !== undefined) {
       this._lastValidValue = newValue;
       this.setState({ value: newValue });
     }

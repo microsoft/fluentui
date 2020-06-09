@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Pivot: Adding `alwaysRender` prop to `PivotItem` to allow for persistent `PivotItems` to control the amount of re-renders that happen.",
-  "packageName": "office-ui-fabric-react",
-  "email": "herincon@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-04-19T23:24:23.500Z"
-}
