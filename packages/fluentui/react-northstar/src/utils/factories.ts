@@ -10,7 +10,7 @@ import { ShorthandValue, Props, PropsOf, ShorthandRenderFunction } from '../type
 type HTMLTag = 'iframe' | 'img' | 'input';
 type ShorthandProp = 'children' | 'src' | 'type';
 
-interface CreateShorthandOptions<P> {
+export interface CreateShorthandOptions<P> {
   /** Default props object */
   defaultProps?: () => Partial<Props<P>>;
 

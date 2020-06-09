@@ -421,6 +421,11 @@ class Sidebar extends React.Component<any, any> {
         title: { content: 'VirtualizedTable', as: NavLink, to: '/virtualized-table' },
         public: true,
       },
+      {
+        key: 'experimental-button',
+        title: { content: 'Experimental Button', as: NavLink, to: '/experimental-button' },
+        public: false,
+      },
     ];
 
     const componentTreeSection = {

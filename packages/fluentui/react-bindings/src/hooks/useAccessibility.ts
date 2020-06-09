@@ -13,7 +13,7 @@ type UseAccessibilityOptions<Props> = {
   rtl?: boolean;
 };
 
-type UseAccessibilityResult = (<SlotProps extends Record<string, any> & UserProps>(
+export type UseAccessibilityResult = (<SlotProps extends Record<string, any> & UserProps>(
   slotName: string,
   slotProps: SlotProps,
 ) => MergedProps<SlotProps>) & {
