@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { MergePropsResult } from './mergeProps';
 import { defaultMappedProps } from './defaultMappedProps';
-import { ComposePreparedOptions } from './types';
-import { getNativeElementProps } from '@uifabric/utilities';
+import { ComposePreparedOptions, GenericDictionary } from './types';
 
 export const NullRender = () => null;
 
@@ -26,11 +25,7 @@ export function resolveSlotProps<TProps, TState>(
   });
 
   //  Mix unrecognized props onto root, appropriate, excluding the handled props.
-  assignToMapObject(
-    slotProps,
-    'root',
-    getNativeElementProps(slots.root, state, [...(options.handledProps as string[]), 'className']),
-  );
+  assignToMapObject(slotProps, 'root', getUnhandledProps(state, options));
 
   // Iterate through slots and resolve shorthand values.
   Object.keys(slots).forEach((slotName: string) => {
@@ -80,4 +75,25 @@ function assignToMapObject(map: Record<string, {}>, key: string, value: {}) {
     }
     map[key] = { ...map[key], ...value };
   }
+}
+
+function getUnhandledProps<TProps, TState>(
+  props: GenericDictionary,
+  options: ComposePreparedOptions<TProps, TState>,
+): GenericDictionary {
+  const unhandledProps: GenericDictionary = {};
+  const slots = Object.keys(options.slots);
+
+  for (const key of Object.keys(props)) {
+    if (
+      key !== 'className' &&
+      key !== 'as' &&
+      options.handledProps.indexOf(key as keyof TProps) === -1 &&
+      slots.indexOf(key) === -1
+    ) {
+      unhandledProps[key] = props[key];
+    }
+  }
+
+  return unhandledProps;
 }

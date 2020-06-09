@@ -1,14 +1,14 @@
-import { Accessibility } from '@fluentui/accessibility';
+import { Accessibility, FormFieldBehaviorProps, formFieldBehavior } from '@fluentui/accessibility';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-
 import {
   childrenExist,
   createShorthandFactory,
   UIComponentProps,
   ChildrenComponentProps,
   commonPropTypes,
+  getOrGenerateIdFromShorthand,
 } from '../../utils';
 import {
   WithAsProp,
@@ -28,7 +28,7 @@ export interface FormFieldProps extends UIComponentProps, ChildrenComponentProps
   /**
    * Accessibility behavior if overridden by the user.
    */
-  accessibility?: Accessibility<never>;
+  accessibility?: Accessibility<FormFieldBehaviorProps>;
 
   /** A control for the form field. */
   control?: ShorthandValue<BoxProps>;
@@ -53,11 +53,23 @@ export interface FormFieldProps extends UIComponentProps, ChildrenComponentProps
 
   /** The HTML input type. */
   type?: string;
+
+  /** Message to be shown when input has error */
+  errorMessage?: ShorthandValue<TextProps>;
+
+  /** Indicator to be shown together with error message */
+  errorIndicator?: ShorthandValue<BoxProps>;
+
+  /** Indicator to be shown when field is required and non-empty */
+  successIndicator?: ShorthandValue<BoxProps>;
 }
 
 export const formFieldClassName = 'ui-form__field';
+export const formFieldMessageClassName = 'ui-form__field__message';
 
-export type FormFieldStylesProps = Required<Pick<FormFieldProps, 'type' | 'inline' | 'required'>>;
+export type FormFieldStylesProps = Required<Pick<FormFieldProps, 'type' | 'inline' | 'required'>> & {
+  hasErrorMessage: boolean;
+};
 
 const FormField: React.FC<WithAsProp<FormFieldProps>> & FluentComponentStaticProps<FormFieldProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
@@ -78,13 +90,23 @@ const FormField: React.FC<WithAsProp<FormFieldProps>> & FluentComponentStaticPro
     styles,
     variables,
     inline,
+    errorMessage,
   } = props;
 
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(FormField.handledProps, props);
+  const messageId = React.useRef<string>();
+  messageId.current = getOrGenerateIdFromShorthand('error-message-', message || errorMessage, messageId.current);
+  const labelId = React.useRef<string>();
+  labelId.current = getOrGenerateIdFromShorthand('form-label-', id, labelId.current);
 
-  const getA11yProps = useAccessibility<never>(props.accessibility, {
+  const getA11yProps = useAccessibility<FormFieldBehaviorProps>(props.accessibility, {
     debugName: FormField.displayName,
+    mapPropsToBehavior: () => ({
+      hasErrorMessage: !!errorMessage,
+      messageId: messageId.current,
+      labelId: labelId.current,
+    }),
     rtl: context.rtl,
   });
 
@@ -94,6 +116,7 @@ const FormField: React.FC<WithAsProp<FormFieldProps>> & FluentComponentStaticPro
       type,
       inline,
       required,
+      hasErrorMessage: !!errorMessage,
     }),
     mapPropsToInlineStyles: () => ({
       className,
@@ -105,21 +128,33 @@ const FormField: React.FC<WithAsProp<FormFieldProps>> & FluentComponentStaticPro
   });
 
   const labelElement = Text.create(label, {
-    defaultProps: () => ({
-      as: 'label',
-      htmlFor: id,
-      styles: resolvedStyles.label,
-    }),
+    defaultProps: () =>
+      getA11yProps('label', {
+        as: 'label',
+        htmlFor: id,
+        id: labelId.current,
+        styles: resolvedStyles.label,
+      }),
   });
 
-  const messageElement = Text.create(message, {
-    defaultProps: () => ({
-      styles: resolvedStyles.message,
-    }),
+  const messageElement = Text.create(errorMessage || message, {
+    defaultProps: () =>
+      getA11yProps('message', {
+        className: formFieldMessageClassName,
+        id: messageId.current,
+        styles: resolvedStyles.message,
+      }),
   });
 
   const controlElement = Box.create(control || {}, {
-    defaultProps: () => ({ required, id, name, type, styles: resolvedStyles.control }),
+    defaultProps: () =>
+      getA11yProps('control', {
+        required,
+        name,
+        type,
+        error: !!errorMessage || null,
+        styles: resolvedStyles.control,
+      }),
   });
 
   const shouldControlAppearFirst = () => {
@@ -155,7 +190,7 @@ FormField.propTypes = {
   ...commonPropTypes.createCommon({
     content: false,
   }),
-  control: customPropTypes.itemShorthand,
+  control: customPropTypes.shorthandAllowingChildren,
   id: PropTypes.string,
   inline: PropTypes.bool,
   label: customPropTypes.itemShorthand,
@@ -163,11 +198,13 @@ FormField.propTypes = {
   name: PropTypes.string,
   required: PropTypes.bool,
   type: PropTypes.string,
+  errorMessage: customPropTypes.shorthandAllowingChildren,
 };
 
 FormField.handledProps = Object.keys(FormField.propTypes) as any;
 
 FormField.defaultProps = {
+  accessibility: formFieldBehavior,
   as: 'div',
   control: { as: Input },
 };

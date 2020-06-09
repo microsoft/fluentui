@@ -8,6 +8,6 @@ const options: IChoiceGroupOption[] = [
   { key: 'D', text: 'Option D' },
 ];
 
-const scenario = <ChoiceGroup defaultSelectedKey="B" options={options} label="Pick one" required={true} />;
+const Scenario = () => <ChoiceGroup defaultSelectedKey="B" options={options} label="Pick one" required={true} />;
 
-export default scenario;
+export default Scenario;
