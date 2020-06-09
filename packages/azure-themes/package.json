@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/azure-themes",
-  "version": "7.1.22",
+  "version": "7.1.24",
   "description": "Azure themes for Fluent UI React",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -29,7 +29,7 @@
   "dependencies": {
     "@uifabric/merge-styles": "^7.14.1",
     "@uifabric/set-version": "^7.0.13",
-    "office-ui-fabric-react": "^7.117.4",
+    "office-ui-fabric-react": "^7.118.1",
     "tslib": "^1.10.0"
   }
 }

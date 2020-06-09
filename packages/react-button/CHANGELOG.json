@@ -2,6 +2,21 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Mon, 08 Jun 2020 12:34:34 GMT",
+      "tag": "@fluentui/react-button_v0.2.0",
+      "version": "0.2.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Cleaning up typings.",
+            "author": "dzearing@microsoft.com",
+            "commit": "c5f82f6bb84f97a0b8c0d2bb884885cf906b906c",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 05 Jun 2020 05:09:39 GMT",
       "tag": "@fluentui/react-button_v0.1.13",
       "version": "0.1.13",
