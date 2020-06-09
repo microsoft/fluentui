@@ -2,6 +2,21 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "date": "Tue, 09 Jun 2020 12:35:17 GMT",
+      "tag": "@uifabric/styling_v7.12.16",
+      "version": "7.12.16",
+      "comments": {
+        "patch": [
+          {
+            "comment": "getGlobalClassNames: correct return type",
+            "author": "xgao@microsoft.com",
+            "commit": "fdb7c21dc40542421b1f165323753326f8cf8807",
+            "package": "@uifabric/styling"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 02 Jun 2020 12:36:30 GMT",
       "tag": "@uifabric/styling_v7.12.15",
       "version": "7.12.15",
