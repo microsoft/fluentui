@@ -111,7 +111,7 @@ describe('UnifiedPicker', () => {
     function _startsWith(text: string, filterText: string): boolean {
       return text.toLowerCase().indexOf(filterText.toLowerCase()) === 0;
     }
-    let suggestionList;
+    let suggestionList: IFloatingSuggestionItem<ISimple>[] = [];
     const _onInputChange = (filterText: string): void => {
       const allColors = [
         'black',
@@ -132,7 +132,11 @@ describe('UnifiedPicker', () => {
       ];
       const colorSuggestions = allColors.filter((item: string) => _startsWith(item || '', filterText));
       suggestionList = colorSuggestions.map(item => {
-        return ({ item: item, isSelected: false } as unknown) as IFloatingSuggestionItem<ISimple>;
+        const newItem = {
+          key: item,
+          name: item,
+        };
+        return ({ item: newItem, isSelected: false } as unknown) as IFloatingSuggestionItem<ISimple>;
       });
     };
     const wrapper = mount(
@@ -157,7 +161,98 @@ describe('UnifiedPicker', () => {
     // Due to https://github.com/enzymejs/enzyme/issues/2042, enzyme does not re-render when
     // we call update. Will use the array to validate the right results are returned, till this
     // is fixed by enzyme.
-    wrapper.update();
+    // wrapper.update();
     expect(suggestionList).toHaveLength(2);
+    expect(suggestionList[0].item.name).toEqual('black');
+    expect(suggestionList[1].item.name).toEqual('blue');
+  });
+  it('Can hide and show picker', () => {
+    jest.useFakeTimers();
+
+    floatingPickerProps = ({
+      onRenderSuggestion: basicSuggestionRenderer,
+      targetElement: null,
+      suggestions: [
+        {
+          id: '1',
+          displayText: 'Suggestion 1',
+          item: { name: 'black', key: 'black' },
+          isSelected: false,
+          showRemoveButton: true,
+        },
+        {
+          id: '2',
+          displayText: 'Suggestion 2',
+          item: { name: 'blue', key: 'blue' },
+          isSelected: false,
+          showRemoveButton: true,
+        },
+      ],
+    } as unknown) as IBaseFloatingSuggestionsProps<ISimple>;
+
+    let suggestionList: IFloatingSuggestionItem<ISimple>[] = [];
+    function _startsWith(text: string, filterText: string): boolean {
+      return text.toLowerCase().indexOf(filterText.toLowerCase()) === 0;
+    }
+    const _onInputChange = (filterText: string): void => {
+      const allColors = [
+        'black',
+        'blue',
+        'brown',
+        'cyan',
+        'green',
+        'magenta',
+        'mauve',
+        'orange',
+        'pink',
+        'purple',
+        'red',
+        'rose',
+        'violet',
+        'white',
+        'yellow',
+      ];
+      const colorSuggestions = allColors.filter((item: string) => _startsWith(item || '', filterText));
+      suggestionList = colorSuggestions.map(item => {
+        const newItem = {
+          key: item,
+          name: item,
+        };
+        return ({ item: newItem, isSelected: false } as unknown) as IFloatingSuggestionItem<ISimple>;
+      });
+    };
+
+    const wrapper = mount(
+      <UnifiedPicker
+        floatingSuggestionProps={floatingPickerProps}
+        selectedItemsListProps={selectedItemsListProps}
+        onRenderFloatingSuggestions={basicRenderFloatingPicker}
+        onRenderSelectedItems={basicRenderSelectedItemsList}
+        onInputChange={_onInputChange}
+      />,
+    );
+
+    const inputElement: InputElementWrapper = wrapper.find('input');
+    expect(inputElement).toHaveLength(1);
+    inputElement.simulate('input', { target: { value: 'bl' } });
+    expect(wrapper.find('.ms-FloatingSuggestionsList-container')).toHaveLength(1);
+    // Both suggestions are shown, picker is shown
+    expect(wrapper.find('#FloatingSuggestionsItemId-0')).toHaveLength(1);
+    expect(wrapper.find('#FloatingSuggestionsItemId-1')).toHaveLength(1);
+    expect(wrapper.find('.ms-FloatingSuggestions-callout').length).toBeGreaterThan(1);
+
+    floatingPickerProps.isSuggestionsVisible = false;
+    const secondwrapper = mount(
+      <UnifiedPicker
+        floatingSuggestionProps={floatingPickerProps}
+        selectedItemsListProps={selectedItemsListProps}
+        onRenderFloatingSuggestions={basicRenderFloatingPicker}
+        onRenderSelectedItems={basicRenderSelectedItemsList}
+        onInputChange={_onInputChange}
+      />,
+    );
+    // Hidden suggestion, no picker
+    expect(secondwrapper.find('#FloatingSuggestionsItemId-0')).toHaveLength(0);
+    expect(secondwrapper.find('.ms-FloatingSuggestions-callout')).toHaveLength(0);
   });
 });
