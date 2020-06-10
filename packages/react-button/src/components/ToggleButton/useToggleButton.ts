@@ -6,7 +6,8 @@ import { ToggleButtonProps } from './ToggleButton.types';
  * The useToggleButton hook processes the Button component props and returns state.
  * @param props
  */
-export const useToggleButton = (props: ToggleButtonProps) => {
+// tslint:disable-next-line:no-any
+export const useToggleButton = (props: ToggleButtonProps): any => {
   const { checked: controlledChecked, defaultChecked = false, onClick: onButtonClick } = props;
   const [checked, setChecked] = useControllableValue(controlledChecked, defaultChecked);
 

@@ -108,7 +108,8 @@ export type ClassFunction = (state: GenericDictionary, slots: GenericDictionary)
 /**
  * Merged ComposeOptions.
  */
-export type ComposePreparedOptions<TProps = {}, TState = TProps> = {
+// tslint:disable-next-line:no-any
+export type ComposePreparedOptions<TProps = {}, TInputState = any, TParentState = TProps> = {
   className: string;
   classes: (undefined | ClassDictionary | ClassFunction)[];
 
@@ -126,7 +127,7 @@ export type ComposePreparedOptions<TProps = {}, TState = TProps> = {
   slotProps: ((props: TProps) => Record<string, object>)[];
 
   // tslint:disable-next-line:no-any
-  state: (props: TState, options: ComposePreparedOptions) => any;
+  state: (props: TParentState, options: ComposePreparedOptions) => TInputState;
 
   resolveSlotProps: <TResolvedProps>(props: TResolvedProps) => Record<string, object>;
   shorthandConfig: ShorthandConfig<TProps>;
