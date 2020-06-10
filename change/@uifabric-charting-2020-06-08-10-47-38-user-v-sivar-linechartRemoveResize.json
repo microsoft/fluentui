@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "removing resize event from chart and resizing the chart in CDU based on changes in height and width prop",
-  "packageName": "@uifabric/charting",
-  "email": "v-sivsar@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-06-08T05:17:38.066Z"
-}

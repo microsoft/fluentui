@@ -107,7 +107,7 @@ export const splitButtonClassName = 'ui-splitbutton';
 
 export type SplitButtonStylesProps = Required<Pick<SplitButtonProps, 'size'>> & { isFromKeyboard: boolean };
 
-export const SplitButton: React.FC<WithAsProp<SplitButtonProps>> &
+const SplitButton: React.FC<WithAsProp<SplitButtonProps>> &
   FluentComponentStaticProps<SplitButtonProps> & {
     Toggle: typeof SplitButtonToggle;
   } = props => {

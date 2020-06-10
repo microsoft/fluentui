@@ -24,8 +24,7 @@ export const dialogFooterClassName = 'ui-dialog__footer';
 
 export type DialogFooterStylesProps = never;
 
-export const DialogFooter: React.FC<WithAsProp<DialogFooterProps>> &
-  FluentComponentStaticProps<DialogFooterProps> = props => {
+const DialogFooter: React.FC<WithAsProp<DialogFooterProps>> & FluentComponentStaticProps<DialogFooterProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(DialogFooter.displayName, context.telemetry);
   setStart();
