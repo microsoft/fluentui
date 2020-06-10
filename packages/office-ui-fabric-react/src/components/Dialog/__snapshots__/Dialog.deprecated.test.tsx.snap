@@ -192,6 +192,7 @@ exports[`Dialog deprecated props renders Dialog with className 1`] = `
                         margin-left: 0;
                         margin-right: 0;
                         margin-top: 0;
+                        min-height: 20px;
                         padding-bottom: 20px;
                         padding-left: 24px;
                         padding-right: 46px;
@@ -500,6 +501,7 @@ exports[`Dialog deprecated props renders Dialog with containerClassName 1`] = `
                         margin-left: 0;
                         margin-right: 0;
                         margin-top: 0;
+                        min-height: 20px;
                         padding-bottom: 20px;
                         padding-left: 24px;
                         padding-right: 46px;
@@ -808,6 +810,7 @@ exports[`Dialog deprecated props renders Dialog with isBlocking set to true 1`] 
                         margin-left: 0;
                         margin-right: 0;
                         margin-top: 0;
+                        min-height: 20px;
                         padding-bottom: 20px;
                         padding-left: 24px;
                         padding-right: 46px;
@@ -1249,6 +1252,7 @@ exports[`Dialog deprecated props renders Dialog with isDarkOverlay set to true 1
                         margin-left: 0;
                         margin-right: 0;
                         margin-top: 0;
+                        min-height: 20px;
                         padding-bottom: 20px;
                         padding-left: 24px;
                         padding-right: 46px;

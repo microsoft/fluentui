@@ -17,7 +17,7 @@ const options: IComboBoxOption[] = [
   { key: 'J', text: 'Option J' },
 ];
 
-const scenario = (
+const Scenario = () => (
   <ComboBox
     multiSelect
     defaultSelectedKey={['C', 'E']}
@@ -28,4 +28,4 @@ const scenario = (
   />
 );
 
-export default scenario;
+export default Scenario;

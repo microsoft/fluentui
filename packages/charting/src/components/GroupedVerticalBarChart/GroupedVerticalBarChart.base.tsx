@@ -21,6 +21,7 @@ import {
   IGVSingleDataPoint,
   IGVBarChartSeriesPoint,
 } from '../../types/index';
+import { ChartHoverCard } from '@uifabric/charting';
 
 const getClassNames = classNamesFunction<IGroupedVerticalBarChartStyleProps, IGroupedVerticalBarChartStyles>();
 type stringAxis = D3Axis<string>;
@@ -183,14 +184,12 @@ export class GroupedVerticalBarChartBase extends React.Component<
             setInitialFocus={true}
             directionalHint={DirectionalHint.topRightEdge}
           >
-            <div className={this._classNames.hoverCardRoot}>
-              <div className={this._classNames.hoverCardTextStyles}>
-                {this.state.xCalloutValue ? this.state.xCalloutValue : this.state.titleForHoverCard}
-              </div>
-              <div className={this._classNames.hoverCardDataStyles}>
-                {this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard}
-              </div>
-            </div>
+            <ChartHoverCard
+              XValue={this.state.xCalloutValue}
+              Legend={this.state.titleForHoverCard}
+              YValue={this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard}
+              color={this.state.color}
+            />
           </Callout>
         ) : null}
       </div>

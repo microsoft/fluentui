@@ -2,6 +2,36 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Tue, 09 Jun 2020 12:35:17 GMT",
+      "tag": "@uifabric/charting_v2.2.31",
+      "version": "2.2.31",
+      "comments": {
+        "patch": [
+          {
+            "comment": "removing resize event from chart and resizing the chart in CDU based on changes in height and width prop",
+            "author": "v-sivsar@microsoft.com",
+            "commit": "11183e8b1e1073542d44a0a7a35dd8c3d181408e",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 05 Jun 2020 05:09:39 GMT",
+      "tag": "@uifabric/charting_v2.2.29",
+      "version": "2.2.29",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Charting: Change charts callout UI",
+            "author": "v-satgar@microsoft.com",
+            "commit": "7a6867506a889767e0fcb7ff0d4a96e2d5f94a60",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 02 Jun 2020 12:36:30 GMT",
       "tag": "@uifabric/charting_v2.2.27",
       "version": "2.2.27",
