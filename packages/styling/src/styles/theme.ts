@@ -18,16 +18,20 @@ let _onThemeChangeCallbacks: Array<(theme: ITheme) => void> = [];
 
 export const ThemeSettingName = 'theme';
 
-if (!Customizations.getSettings([ThemeSettingName]).theme) {
-  const win: any = getWindow(); // tslint:disable-line:no-any
+export function initializeThemeInCustomizations(): void {
+  if (!Customizations.getSettings([ThemeSettingName]).theme) {
+    const win: any = getWindow(); // tslint:disable-line:no-any
 
-  if (win?.FabricConfig?.theme) {
-    _theme = createTheme(win.FabricConfig.theme);
+    if (win?.FabricConfig?.theme) {
+      _theme = createTheme(win.FabricConfig.theme);
+    }
+
+    // Set the default theme.
+    Customizations.applySettings({ [ThemeSettingName]: _theme });
   }
-
-  // Set the default theme.
-  Customizations.applySettings({ [ThemeSettingName]: _theme });
 }
+
+initializeThemeInCustomizations();
 
 /**
  * Gets the theme object

@@ -1809,6 +1809,7 @@ export interface IBreadcrumbProps extends React.HTMLAttributes<HTMLElement> {
     focusZoneProps?: IFocusZoneProps;
     items: IBreadcrumbItem[];
     maxDisplayedItems?: number;
+    onGrowData?: (data: IBreadcrumbData) => IBreadcrumbData | undefined;
     onReduceData?: (data: IBreadcrumbData) => IBreadcrumbData | undefined;
     onRenderItem?: IRenderFunction<IBreadcrumbItem>;
     onRenderOverflowIcon?: IRenderFunction<IButtonProps>;
@@ -4206,6 +4207,7 @@ export interface IDocumentCardProps extends IBaseProps<IDocumentCard>, React.HTM
     componentRef?: IRefObject<IDocumentCard>;
     onClick?: (ev?: React.SyntheticEvent<HTMLElement>) => void;
     onClickHref?: string;
+    onClickTarget?: string;
     role?: string;
     styles?: IStyleFunctionOrObject<IDocumentCardStyleProps, IDocumentCardStyles>;
     theme?: ITheme;

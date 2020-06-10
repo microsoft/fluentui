@@ -1,8 +1,27 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 08 Jun 2020 12:34:34 GMT and should not be manually modified.
+This log was last generated on Wed, 10 Jun 2020 12:37:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.119.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.119.0)
+
+Wed, 10 Jun 2020 12:37:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.118.1..office-ui-fabric-react_v7.119.0)
+
+### Minor changes
+
+- DocumentCard: add prop to open link in a new tab. ([PR #13076](https://github.com/microsoft/fluentui/pull/13076) by mahesh8488@gmail.com)
+- Add onGrowData to Breadcrumb ([PR #13447](https://github.com/microsoft/fluentui/pull/13447) by tmichon@microsoft.com)
+
+## [7.118.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.118.1)
+
+Tue, 09 Jun 2020 12:35:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.118.0..office-ui-fabric-react_v7.118.1)
+
+### Patches
+
+- Link: fix broken href in examples ([PR #13511](https://github.com/microsoft/fluentui/pull/13511) by ololubek@microsoft.com)
 
 ## [7.118.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.118.0)
 
