@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "minor accessibility changes",
+  "comment": "SelectedItemsList: minor accessibility changes",
   "packageName": "@uifabric/experiments",
   "email": "nebhatna@microsoft.com",
   "dependentChangeType": "patch",
