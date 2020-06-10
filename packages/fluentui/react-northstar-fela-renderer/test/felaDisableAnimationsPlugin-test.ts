@@ -1,13 +1,12 @@
-import felaDisableAnimationsPlugin from 'src/utils/felaDisableAnimationsPlugin';
+import felaDisableAnimationsPlugin from '../src/felaDisableAnimationsPlugin';
+import { ICSSInJSStyle } from '@fluentui/styles';
 
-const disableAnimationsPlugin = felaDisableAnimationsPlugin();
-
-const stylesWithAnimationShorthand = {
+const stylesWithAnimationShorthand: ICSSInJSStyle = {
   animation: 'k1',
   margin: '0px 10px',
 };
 
-const stylesWithAnimationProps = {
+const stylesWithAnimationProps: ICSSInJSStyle = {
   animationName: 'k1',
   animationDuration: '1s',
   margin: '0px 10px',
@@ -15,12 +14,14 @@ const stylesWithAnimationProps = {
 
 describe('felaDisableAnimationsPlugin', () => {
   test('does not disable animations if the props are not provided', () => {
-    expect(disableAnimationsPlugin(stylesWithAnimationShorthand, 'RULE')).toMatchObject(stylesWithAnimationShorthand);
+    expect(felaDisableAnimationsPlugin(stylesWithAnimationShorthand, 'RULE')).toMatchObject(
+      stylesWithAnimationShorthand,
+    );
   });
 
   test('does not disable animations if the disableAnimations flag is undefined', () => {
     expect(
-      disableAnimationsPlugin(stylesWithAnimationShorthand, 'RULE', undefined, {
+      felaDisableAnimationsPlugin(stylesWithAnimationShorthand, 'RULE', undefined, {
         disableAnimations: undefined,
       }),
     ).toMatchObject(stylesWithAnimationShorthand);
@@ -28,7 +29,7 @@ describe('felaDisableAnimationsPlugin', () => {
 
   test('does not disable animations if the disableAnimations flag is false', () => {
     expect(
-      disableAnimationsPlugin(stylesWithAnimationProps, 'RULE', undefined, {
+      felaDisableAnimationsPlugin(stylesWithAnimationProps, 'RULE', undefined, {
         disableAnimations: false,
       }),
     ).toMatchObject(stylesWithAnimationProps);
@@ -36,7 +37,7 @@ describe('felaDisableAnimationsPlugin', () => {
 
   test('disables animations if the disableAnimations flag is true', () => {
     expect(
-      disableAnimationsPlugin(stylesWithAnimationProps, 'RULE', undefined, {
+      felaDisableAnimationsPlugin(stylesWithAnimationProps, 'RULE', undefined, {
         disableAnimations: true,
       }),
     ).toMatchObject({ margin: '0px 10px' });
@@ -44,7 +45,7 @@ describe('felaDisableAnimationsPlugin', () => {
 
   test('disables animations if the disableAnimations flag is true and the animation css shorthand is used', () => {
     expect(
-      disableAnimationsPlugin(stylesWithAnimationShorthand, 'RULE', undefined, {
+      felaDisableAnimationsPlugin(stylesWithAnimationShorthand, 'RULE', undefined, {
         disableAnimations: true,
       }),
     ).toMatchObject({ margin: '0px 10px' });

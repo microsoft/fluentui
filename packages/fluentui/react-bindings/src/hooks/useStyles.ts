@@ -9,12 +9,12 @@ import {
 import * as React from 'react';
 // @ts-ignore We have this export in package, but it is not present in typings
 import { ThemeContext } from 'react-fela';
+import { noopRenderer } from '@fluentui/styles';
 
 import {
   ComponentDesignProp,
   ComponentSlotClasses,
   PrimitiveProps,
-  RendererRenderRule,
   StylesContextPerformance,
   StylesContextValue,
 } from '../styles/types';
@@ -74,11 +74,11 @@ export const defaultPerformanceFlags: StylesContextPerformance = {
   enableBooleanVariablesCaching: false,
 };
 
-const defaultContext: StylesContextValue<{ renderRule: RendererRenderRule }> = {
+const defaultContext: StylesContextValue = {
   rtl: false,
   disableAnimations: false,
   performance: defaultPerformanceFlags,
-  renderer: { renderRule: () => '' },
+  renderer: noopRenderer,
   theme: emptyTheme,
   telemetry: undefined,
 };
@@ -87,8 +87,7 @@ const useStyles = <StyleProps extends PrimitiveProps>(
   displayName: string,
   options: UseStylesOptions<StyleProps>,
 ): UseStylesResult => {
-  const context: StylesContextValue<{ renderRule: RendererRenderRule }> =
-    React.useContext(ThemeContext) || defaultContext;
+  const context: StylesContextValue = React.useContext(ThemeContext) || defaultContext;
 
   const {
     className = process.env.NODE_ENV === 'production' ? '' : 'no-classname-🙉',

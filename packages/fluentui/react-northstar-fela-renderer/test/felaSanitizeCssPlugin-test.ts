@@ -1,21 +1,20 @@
-import { RendererParam } from '@fluentui/react-bindings';
-import { ICSSInJSStyle } from '@fluentui/styles';
+import { ICSSInJSStyle, RendererParam } from '@fluentui/styles';
 
-import felaSanitizeCss from 'src/utils/felaSanitizeCssPlugin';
-import { consoleUtil } from 'test/utils';
+import felaSanitizeCss from '../src/felaSanitizeCssPlugin';
+import * as consoleUtil from './consoleUtil';
 
-const sanitize = (styles: ICSSInJSStyle, options: { sanitizeCss?: boolean; skip?: string[] } = {}): ICSSInJSStyle => {
-  const { sanitizeCss = true, skip = [] } = options;
+const sanitize = (styles: ICSSInJSStyle, options: { sanitizeCss?: boolean } = {}): ICSSInJSStyle => {
+  const { sanitizeCss = true } = options;
 
   const felaParam: RendererParam = {
     displayName: 'Test',
     disableAnimations: false,
-    theme: {} as any,
+    direction: 'ltr',
     sanitizeCss,
   };
   const renderer = (() => {}) as any;
 
-  return felaSanitizeCss({ skip })(styles, 'RULE', renderer, felaParam);
+  return felaSanitizeCss(styles, 'RULE', renderer, felaParam);
 };
 
 const assertCssPropertyValue = (value: string, isValid: boolean) => {
@@ -61,16 +60,6 @@ describe('felaSanitizeCssPlugin', () => {
       display: 'inline',
       '::before': {},
     });
-  });
-
-  test('should skip excluded CSS props', () => {
-    const style = {
-      display: 'block',
-      margin: '0 0 0 0',
-      propertyWithInvalidValue: 'rgba(',
-    };
-
-    expect(sanitize(style, { skip: ['propertyWithInvalidValue'] })).toEqual(style);
   });
 
   describe('should properly filter invalid bracket sequences', () => {

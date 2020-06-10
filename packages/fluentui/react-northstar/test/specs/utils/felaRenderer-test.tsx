@@ -1,16 +1,20 @@
-import * as React from 'react';
+import { createFelaRenderer } from '@fluentui/react-northstar-fela-renderer';
+import { emptyTheme } from '@fluentui/styles';
 import { createSnapshot } from 'jest-react-fela';
-import { EmptyThemeProvider } from 'test/utils';
-import Box from 'src/components/Box/Box';
+import * as React from 'react';
+
 import Animation from 'src/components/Animation/Animation';
-import Provider from 'src/components/Provider/Provider';
+import Box from 'src/components/Box/Box';
 import Text from 'src/components/Text/Text';
-import { felaRenderer } from 'src/utils';
+import { EmptyThemeProvider } from 'test/utils';
+
+const fluentRenderer = createFelaRenderer();
+const felaRenderer = (fluentRenderer as any).getOriginalRenderer();
 
 describe('felaRenderer', () => {
   test('basic styles are rendered', () => {
     const snapshot = createSnapshot(
-      <EmptyThemeProvider>
+      <EmptyThemeProvider renderer={fluentRenderer}>
         <Box styles={{ color: 'red' }} />
       </EmptyThemeProvider>,
       {},
@@ -21,7 +25,7 @@ describe('felaRenderer', () => {
 
   test('CSS fallback values are rendered', () => {
     const snapshot = createSnapshot(
-      <EmptyThemeProvider>
+      <EmptyThemeProvider renderer={fluentRenderer}>
         <Box styles={{ color: ['red', 'blue'] as any }} />
       </EmptyThemeProvider>,
       {},
@@ -48,15 +52,17 @@ describe('felaRenderer', () => {
     };
 
     const snapshot = createSnapshot(
-      <Provider
+      <EmptyThemeProvider
         theme={{
+          ...emptyTheme,
           animations: { colorChanger },
         }}
+        renderer={fluentRenderer}
       >
         <Animation name="colorChanger">
           <Box />
         </Animation>
-      </Provider>,
+      </EmptyThemeProvider>,
       {},
       felaRenderer,
     );
@@ -78,15 +84,17 @@ describe('felaRenderer', () => {
     };
 
     const snapshot = createSnapshot(
-      <Provider
+      <EmptyThemeProvider
         theme={{
+          ...emptyTheme,
           animations: { colorChanger },
         }}
+        renderer={fluentRenderer}
       >
         <Animation name="colorChanger">
           <Box />
         </Animation>
-      </Provider>,
+      </EmptyThemeProvider>,
       {},
       felaRenderer,
     );
@@ -108,16 +116,18 @@ describe('felaRenderer', () => {
     };
 
     const snapshot = createSnapshot(
-      <Provider
+      <EmptyThemeProvider
         disableAnimations
         theme={{
+          ...emptyTheme,
           animations: { spinner },
         }}
+        renderer={fluentRenderer}
       >
         <Animation name="spinner">
           <Box />
         </Animation>
-      </Provider>,
+      </EmptyThemeProvider>,
       {},
       felaRenderer,
     );
@@ -126,9 +136,9 @@ describe('felaRenderer', () => {
 
   test('marginLeft is rendered into marginRight due to RTL', () => {
     const snapshot = createSnapshot(
-      <Provider rtl>
+      <EmptyThemeProvider renderer={fluentRenderer} rtl>
         <Text content="Hello" styles={{ marginLeft: '10px' }} />
-      </Provider>,
+      </EmptyThemeProvider>,
       {},
       felaRenderer,
     );
@@ -137,9 +147,9 @@ describe('felaRenderer', () => {
 
   test('marginLeft is rendered into marginLeft due to RTL with `noFlip`', () => {
     const snapshot = createSnapshot(
-      <Provider rtl>
+      <EmptyThemeProvider renderer={fluentRenderer} rtl>
         <Text content="Hello" styles={{ marginLeft: '10px /* @noflip */' }} />
-      </Provider>,
+      </EmptyThemeProvider>,
       {},
       felaRenderer,
     );
@@ -148,7 +158,7 @@ describe('felaRenderer', () => {
 
   test('styles are expanded to longhand values', () => {
     const snapshot = createSnapshot(
-      <EmptyThemeProvider>
+      <EmptyThemeProvider renderer={fluentRenderer}>
         <Box
           styles={{
             borderStyle: 'solid',
@@ -165,7 +175,7 @@ describe('felaRenderer', () => {
 
   test('prefixes required styles', () => {
     const snapshot = createSnapshot(
-      <EmptyThemeProvider>
+      <EmptyThemeProvider renderer={fluentRenderer}>
         <Box
           styles={{
             cursor: 'zoom-in',

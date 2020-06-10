@@ -14,9 +14,7 @@ exports[`felaRenderer CSS fallback values are rendered 1`] = `
 exports[`felaRenderer animations are not applied if animations are disabled 1`] = `
 "
 
-<div className=ui-provider dir=ltr data-uses-unhanded-props=true>
-  <div className=ui-box ui-animation data-uses-unhanded-props=true />
-</div>;
+<div className=ui-box ui-animation data-uses-unhanded-props=true />;
 "
 `;
 
@@ -63,9 +61,7 @@ exports[`felaRenderer array returned by keyframe results in CSS fallback values 
 }
 
 
-<div className=ui-provider dir=ltr data-uses-unhanded-props=true>
-  <div className=ui-box ui-animation a data-uses-unhanded-props=true />
-</div>;
+<div className=ui-box ui-animation a data-uses-unhanded-props=true />;
 "
 `;
 
@@ -114,9 +110,7 @@ exports[`felaRenderer keyframe colors are rendered 1`] = `
 }
 
 
-<div className=ui-provider dir=ltr data-uses-unhanded-props=true>
-  <div className=ui-box ui-animation a b data-uses-unhanded-props=true />
-</div>;
+<div className=ui-box ui-animation a b data-uses-unhanded-props=true />;
 "
 `;
 
@@ -126,11 +120,9 @@ exports[`felaRenderer marginLeft is rendered into marginLeft due to RTL with \`n
 }
 
 
-<div className=ui-provider dir=rtl data-uses-unhanded-props=true>
-  <span className=ui-text a dir=auto data-uses-unhanded-props=true>
-    Hello
-  </span>
-</div>;
+<span className=ui-text a dir=auto data-uses-unhanded-props=true>
+  Hello
+</span>;
 "
 `;
 
@@ -140,11 +132,9 @@ exports[`felaRenderer marginLeft is rendered into marginRight due to RTL 1`] = `
 }
 
 
-<div className=ui-provider dir=rtl data-uses-unhanded-props=true>
-  <span className=ui-text a dir=auto data-uses-unhanded-props=true>
-    Hello
-  </span>
-</div>;
+<span className=ui-text a dir=auto data-uses-unhanded-props=true>
+  Hello
+</span>;
 "
 `;
 

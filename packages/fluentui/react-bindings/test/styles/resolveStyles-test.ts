@@ -5,9 +5,12 @@ import {
   emptyTheme,
   ICSSInJSStyle,
   ThemePrepared,
+  RendererRenderRule,
+  noopRenderer,
 } from '@fluentui/styles';
+import { ResolveStylesOptions, StylesContextPerformance } from '@fluentui/react-bindings';
+
 import resolveStyles from '../../src/styles/resolveStyles';
-import { ResolveStylesOptions, StylesContextPerformance } from '../../src/styles/types';
 
 const testComponentStyles: ComponentSlotStylesPrepared<{}, { color: string }> = {
   root: ({ variables: v, rtl }): ICSSInJSStyle => ({
@@ -33,8 +36,10 @@ const resolveStylesOptions = (options?: {
   performance?: Partial<ResolveStylesOptions['performance']>;
   props?: ResolveStylesOptions['props'];
   rtl?: ResolveStylesOptions['rtl'];
+  renderRule?: RendererRenderRule;
 }): ResolveStylesOptions => {
-  const { componentStyles, displayNames = ['Test'], performance, props = {}, rtl = false } = options || {};
+  const { componentStyles, displayNames = ['Test'], performance, props = {}, renderRule = () => '', rtl = false } =
+    options || {};
 
   const theme: ThemePrepared = {
     ...emptyTheme,
@@ -51,7 +56,8 @@ const resolveStylesOptions = (options?: {
     rtl,
     disableAnimations: false,
     renderer: {
-      renderRule: () => '',
+      ...noopRenderer,
+      renderRule,
     },
     performance: { ...defaultPerformanceOptions, ...performance },
     saveDebug: () => {},
@@ -76,29 +82,29 @@ describe('resolveStyles', () => {
   });
 
   test('does not render classes if not fetched', () => {
-    const renderStyles = jest.fn();
-    const { resolvedStyles } = resolveStyles(resolveStylesOptions(), resolvedVariables, renderStyles);
+    const renderRule = jest.fn();
+    const { resolvedStyles } = resolveStyles(resolveStylesOptions({ renderRule }), resolvedVariables);
 
     expect(resolvedStyles.root).toMatchObject({ color: 'red' });
-    expect(renderStyles).not.toBeCalled();
+    expect(renderRule).not.toBeCalled();
   });
 
   test('renders classes when slot classes getter is accessed', () => {
-    const renderStyles = jest.fn().mockReturnValue('a');
-    const { classes } = resolveStyles(resolveStylesOptions(), resolvedVariables, renderStyles);
+    const renderRule = jest.fn().mockReturnValue('a');
+    const { classes } = resolveStyles(resolveStylesOptions({ renderRule }), resolvedVariables);
 
     expect(classes['root']).toBeDefined();
-    expect(renderStyles).toHaveBeenCalledWith(expect.objectContaining({ color: 'red' }));
+    expect(renderRule).toHaveBeenCalledWith(expect.objectContaining({ color: 'red' }), expect.anything());
   });
 
   test('caches rendered classes', () => {
-    const renderStyles = jest.fn().mockReturnValue('a');
-    const { classes } = resolveStyles(resolveStylesOptions(), resolvedVariables, renderStyles);
+    const renderRule = jest.fn().mockReturnValue('a');
+    const { classes } = resolveStyles(resolveStylesOptions({ renderRule }), resolvedVariables);
 
     expect(classes['root']).toBeDefined();
-    expect(renderStyles).toHaveBeenCalledWith(expect.objectContaining({ color: 'red' }));
+    expect(renderRule).toHaveBeenCalledWith(expect.objectContaining({ color: 'red' }), expect.anything());
     expect(classes['root']).toBeDefined();
-    expect(renderStyles).toHaveBeenCalledTimes(1);
+    expect(renderRule).toHaveBeenCalledTimes(1);
   });
 
   test('caches resolved styles for no props', () => {
@@ -114,15 +120,15 @@ describe('resolveStyles', () => {
   });
 
   test('caches classes for no props', () => {
-    const renderStyles = jest.fn().mockReturnValue('a');
-    const options = resolveStylesOptions({ displayNames: ['Test1'] });
-    const { classes } = resolveStyles(options, resolvedVariables, renderStyles);
-    const { classes: secondClasses } = resolveStyles(options, resolvedVariables, renderStyles);
+    const renderRule = jest.fn().mockReturnValue('a');
+    const options = resolveStylesOptions({ displayNames: ['Test1'], renderRule });
+    const { classes } = resolveStyles(options, resolvedVariables);
+    const { classes: secondClasses } = resolveStyles(options, resolvedVariables);
 
     expect(classes['root']).toBeDefined();
-    expect(renderStyles).toHaveBeenCalledWith(expect.objectContaining({ color: 'red' }));
+    expect(renderRule).toHaveBeenCalledWith(expect.objectContaining({ color: 'red' }), expect.anything());
     expect(secondClasses['root']).toBeDefined();
-    expect(renderStyles).toHaveBeenCalledTimes(1);
+    expect(renderRule).toHaveBeenCalledTimes(1);
   });
 
   test('caches resolved styles for the same props', () => {
@@ -141,18 +147,19 @@ describe('resolveStyles', () => {
   });
 
   test('caches classes for the same props', () => {
-    const renderStyles = jest.fn().mockReturnValue('a');
+    const renderRule = jest.fn().mockReturnValue('a');
     const options = resolveStylesOptions({
       displayNames: ['Test3'],
       props: { primary: true },
+      renderRule,
     });
-    const { classes } = resolveStyles(options, resolvedVariables, renderStyles);
-    const { classes: secondClasses } = resolveStyles(options, resolvedVariables, renderStyles);
+    const { classes } = resolveStyles(options, resolvedVariables);
+    const { classes: secondClasses } = resolveStyles(options, resolvedVariables);
 
     expect(classes['root']).toBeDefined();
-    expect(renderStyles).toHaveBeenCalledWith(expect.objectContaining({ color: 'red' }));
+    expect(renderRule).toHaveBeenCalledWith(expect.objectContaining({ color: 'red' }), expect.anything());
     expect(secondClasses['root']).toBeDefined();
-    expect(renderStyles).toHaveBeenCalledTimes(1);
+    expect(renderRule).toHaveBeenCalledTimes(1);
   });
 
   test('handles multiple displayNames', () => {
@@ -191,20 +198,21 @@ describe('resolveStyles', () => {
   });
 
   test('considers props when caching classes', () => {
-    const renderStyles = jest.fn().mockReturnValue('a');
+    const renderRule = jest.fn().mockReturnValue('a');
     const options = resolveStylesOptions({
       displayNames: ['Test5'],
       props: { primary: true },
+      renderRule,
     });
-    const { classes } = resolveStyles(options, resolvedVariables, renderStyles);
+    const { classes } = resolveStyles(options, resolvedVariables);
 
     options.props = { primary: false };
-    const { classes: secondClasses } = resolveStyles(options, resolvedVariables, renderStyles);
+    const { classes: secondClasses } = resolveStyles(options, resolvedVariables);
 
     expect(classes['root']).toBeDefined();
-    expect(renderStyles).toHaveBeenCalledWith(expect.objectContaining({ color: 'red' }));
+    expect(renderRule).toHaveBeenCalledWith(expect.objectContaining({ color: 'red' }), expect.anything());
     expect(secondClasses['root']).toBeDefined();
-    expect(renderStyles).toHaveBeenCalledTimes(2);
+    expect(renderRule).toHaveBeenCalledTimes(2);
   });
 
   test('does not cache styles if caching is disabled', () => {
@@ -221,17 +229,18 @@ describe('resolveStyles', () => {
   });
 
   test('does not cache classes if caching is disabled', () => {
-    const renderStyles = jest.fn().mockReturnValue('a');
+    const renderRule = jest.fn().mockReturnValue('a');
     const options = resolveStylesOptions({
       performance: { enableStylesCaching: false },
+      renderRule,
     });
-    const { classes } = resolveStyles(options, resolvedVariables, renderStyles);
-    const { classes: secondClasses } = resolveStyles(options, resolvedVariables, renderStyles);
+    const { classes } = resolveStyles(options, resolvedVariables);
+    const { classes: secondClasses } = resolveStyles(options, resolvedVariables);
 
     expect(classes['root']).toBeDefined();
-    expect(renderStyles).toHaveBeenCalledWith(expect.objectContaining({ color: 'red' }));
+    expect(renderRule).toHaveBeenCalledWith(expect.objectContaining({ color: 'red' }), expect.anything());
     expect(secondClasses['root']).toBeDefined();
-    expect(renderStyles).toHaveBeenCalledTimes(2);
+    expect(renderRule).toHaveBeenCalledTimes(2);
   });
 
   test('does not cache styles if there are inline overrides', () => {
@@ -268,7 +277,7 @@ describe('resolveStyles', () => {
   });
 
   test('does not cache classes if there are inline overrides', () => {
-    const renderStyles = jest.fn().mockReturnValue('a');
+    const renderRule = jest.fn().mockReturnValue('a');
     const propsInlineOverrides: ResolveStylesOptions['props'][] = [
       { styles: { fontSize: '10px' } },
       { design: { left: '10px' } },
@@ -281,69 +290,73 @@ describe('resolveStyles', () => {
       const options = resolveStylesOptions({
         props,
         performance: { enableStylesCaching: false },
+        renderRule,
       });
-      const { classes } = resolveStyles(options, resolvedVariables, renderStyles);
-      const { classes: secondClasses } = resolveStyles(options, resolvedVariables, renderStyles);
+      const { classes } = resolveStyles(options, resolvedVariables);
+      const { classes: secondClasses } = resolveStyles(options, resolvedVariables);
 
       expect(classes['root']).toBeDefined();
       expect(secondClasses['root']).toBeDefined();
     });
 
-    expect(renderStyles).toHaveBeenCalledTimes(propsInlineOverridesSize * 2);
+    expect(renderRule).toHaveBeenCalledTimes(propsInlineOverridesSize * 2);
   });
 
   test('computes new styles when "rtl" changes', () => {
-    const renderStyles = jest.fn().mockImplementation((style: ICSSInJSStyle) => style.content);
+    const renderRule = jest.fn().mockImplementation((style: ICSSInJSStyle) => style.content);
 
-    const ltrOptions = resolveStylesOptions({ rtl: false });
-    const rtlOptions = resolveStylesOptions({ rtl: true });
+    const ltrOptions = resolveStylesOptions({ rtl: false, renderRule });
+    const rtlOptions = resolveStylesOptions({ rtl: true, renderRule });
 
-    const ltrStyles = resolveStyles(ltrOptions, resolvedVariables, renderStyles);
-    const rtlStyles = resolveStyles(rtlOptions, resolvedVariables, renderStyles);
+    const ltrStyles = resolveStyles(ltrOptions, resolvedVariables);
+    const rtlStyles = resolveStyles(rtlOptions, resolvedVariables);
 
     expect(ltrStyles).toHaveProperty('resolvedStyles.root.content', expect.stringMatching(/rtl:false/));
     expect(ltrStyles).toHaveProperty('classes.root', expect.stringMatching(/rtl:false/));
-    expect(renderStyles).toHaveBeenCalledTimes(1);
+    expect(renderRule).toHaveBeenCalledTimes(1);
 
     expect(rtlStyles).toHaveProperty('resolvedStyles.root.content', expect.stringMatching(/rtl:true/));
     expect(rtlStyles).toHaveProperty('classes.root', expect.stringMatching(/rtl:true/));
-    expect(renderStyles).toHaveBeenCalledTimes(2);
+    expect(renderRule).toHaveBeenCalledTimes(2);
   });
 
   describe('enableBooleanVariablesCaching', () => {
     test('avoids "classes" computation when enabled', () => {
-      const renderStyles = jest.fn().mockReturnValue('a');
+      const renderRule = jest.fn().mockReturnValue('a');
       const options = resolveStylesOptions({
         props: { variables: { isFoo: true, isBar: null, isBaz: undefined } },
         performance: { enableBooleanVariablesCaching: true },
+        renderRule,
       });
 
-      expect(resolveStyles(options, resolvedVariables, renderStyles)).toHaveProperty('classes.root', 'a');
-      expect(resolveStyles(options, resolvedVariables, renderStyles)).toHaveProperty('classes.root', 'a');
-      expect(renderStyles).toHaveBeenCalledTimes(1);
+      expect(resolveStyles(options, resolvedVariables)).toHaveProperty('classes.root', 'a');
+      expect(resolveStyles(options, resolvedVariables)).toHaveProperty('classes.root', 'a');
+      expect(renderRule).toHaveBeenCalledTimes(1);
     });
 
     test('avoids "classes" computation when enabled and there is no variables', () => {
-      const renderStyles = jest.fn().mockReturnValue('a');
+      const renderRule = jest.fn().mockReturnValue('a');
       const options = resolveStylesOptions({
         performance: { enableBooleanVariablesCaching: true },
+        renderRule,
       });
 
-      expect(resolveStyles(options, resolvedVariables, renderStyles)).toHaveProperty('classes.root', 'a');
-      expect(resolveStyles(options, resolvedVariables, renderStyles)).toHaveProperty('classes.root', 'a');
-      expect(renderStyles).toHaveBeenCalledTimes(1);
+      expect(resolveStyles(options, resolvedVariables)).toHaveProperty('classes.root', 'a');
+      expect(resolveStyles(options, resolvedVariables)).toHaveProperty('classes.root', 'a');
+      expect(renderRule).toHaveBeenCalledTimes(1);
     });
 
     test('forces "classes" computation when disabled', () => {
-      const renderStyles = jest.fn().mockReturnValue('a');
+      const renderRule = jest.fn().mockReturnValue('a');
       const options = resolveStylesOptions({
         props: { variables: { isFoo: true, isBar: null, isBaz: undefined } },
         performance: { enableBooleanVariablesCaching: false },
+        renderRule,
       });
 
-      expect(resolveStyles(options, resolvedVariables, renderStyles)).toHaveProperty('classes.root', 'a');
-      expect(resolveStyles(options, resolvedVariables, renderStyles)).toHaveProperty('classes.root', 'a');
-      expect(renderStyles).toHaveBeenCalledTimes(2);
+      expect(resolveStyles(options, resolvedVariables)).toHaveProperty('classes.root', 'a');
+      expect(resolveStyles(options, resolvedVariables)).toHaveProperty('classes.root', 'a');
+      expect(renderRule).toHaveBeenCalledTimes(2);
     });
 
     test('avoids "styles" computation when enabled', () => {
