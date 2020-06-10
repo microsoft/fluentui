@@ -1114,10 +1114,10 @@ export const Toggle: React.FunctionComponent<IToggleProps>;
 export const ToggleBase: import("@fluentui/react-compose").ComponentWithAs<"div", IToggleProps>;
 
 // @public
-export const useLink: (props: ILinkProps, options: ComposePreparedOptions<{}, any, {}>) => any;
+export const useLink: (props: ILinkProps, options: ComposePreparedOptions<{}, {}>) => any;
 
 // @public (undocumented)
-export const useToggle: (props: IToggleProps, options: ComposePreparedOptions<{}, any, {}>) => any;
+export const useToggle: (props: IToggleProps, options: ComposePreparedOptions<{}, {}>) => any;
 
 
 export * from "office-ui-fabric-react/lib/ActivityItem";
