@@ -5,6 +5,7 @@ import { ICheckboxProps } from './Checkbox.types';
 
 const composeOptions: ComposeOptions = {
   classes: useCheckboxClasses,
+  displayName: 'Checkbox',
 };
 
 export const Checkbox = compose<'div', ICheckboxProps, {}, ICheckboxProps, {}>(CheckboxBase, composeOptions);

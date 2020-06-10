@@ -8,6 +8,7 @@ import { useCheckbox } from './useCheckbox';
 
 const defaultSlots: Omit<ICheckboxSlots, 'root'> = {
   input: 'input',
+  // TODO: add checkmark slot in parent component instead
   checkmark: Icon,
   container: 'label',
   text: 'span',
@@ -75,6 +76,4 @@ export const CheckboxBase = compose<'div', ICheckboxProps, {}, ICheckboxProps, {
   },
 );
 
-CheckboxBase.defaultProps = {
-  as: 'div',
-};
+CheckboxBase.defaultProps = {};

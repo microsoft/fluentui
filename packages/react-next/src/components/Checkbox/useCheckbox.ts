@@ -37,14 +37,14 @@ export const useCheckbox = (
   useComponentRef(props, isChecked, isIndeterminate, inputRef);
 
   const onChange = (ev: React.ChangeEvent<HTMLElement>): void => {
-    if (!isIndeterminate) {
-      setIsChecked(!isChecked, ev);
-    } else {
+    if (isIndeterminate) {
       // If indeterminate, clicking the checkbox *only* removes the indeterminate state (or if
       // controlled, lets the consumer know to change it by calling onChange). It doesn't
       // change the checked state.
       setIsChecked(!!isChecked, ev);
       setIsIndeterminate(false);
+    } else {
+      setIsChecked(!isChecked, ev);
     }
   };
 
@@ -109,7 +109,7 @@ function useComponentRef(
   props: ICheckboxProps,
   isChecked: boolean | undefined,
   isIndeterminate: boolean | undefined,
-  checkBox: React.RefObject<HTMLInputElement>,
+  checkBoxRef: React.RefObject<HTMLInputElement>,
 ) {
   React.useImperativeHandle(
     props.componentRef,
@@ -121,8 +121,8 @@ function useComponentRef(
         return !!isIndeterminate;
       },
       focus() {
-        if (checkBox.current) {
-          checkBox.current.focus();
+        if (checkBoxRef.current) {
+          checkBoxRef.current.focus();
         }
       },
     }),
