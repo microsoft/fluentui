@@ -30,6 +30,7 @@ import {
 } from 'office-ui-fabric-react/lib/utilities/positioning';
 
 import { AnimationClassNames, mergeStyles } from '../../../Styling';
+import { useMergedRefs } from '@uifabric/react-hooks';
 
 const OFF_SCREEN_STYLE = { opacity: 0 };
 
@@ -70,24 +71,28 @@ export const PositioningContainer = React.forwardRef(
 
     // @TODO rename to reflect the name of this class
     const contentHost = React.useRef<HTMLDivElement>(null);
+    /**
+     * The primary positioned div.
+     */
+    const positionedHost = React.useRef<HTMLDivElement>(null);
+    const rootRef = useMergedRefs(forwardedRef, positionedHost);
 
-    return <PositioningContainerClass {...props} contentHost={contentHost} />;
+    return <PositioningContainerClass {...props} hoistedProps={{ contentHost, positionedHost, rootRef }} />;
   },
 );
 PositioningContainer.displayName = 'PositioningContainer';
 
 interface IPositioningContainerClassProps extends IPositioningContainerProps {
-  contentHost: React.RefObject<HTMLDivElement>;
+  hoistedProps: {
+    contentHost: React.RefObject<HTMLDivElement>;
+    positionedHost: React.RefObject<HTMLDivElement>;
+    rootRef: React.Ref<HTMLDivElement>;
+  };
 }
 
 class PositioningContainerClass extends React.Component<IPositioningContainerClassProps, IPositioningContainerState>
   implements PositioningContainerClass {
   private _didSetInitialFocus: boolean;
-
-  /**
-   * The primary positioned div.
-   */
-  private _positionedHost = React.createRef<HTMLDivElement>();
 
   /**
    * Stores an instance of Window, used to check
@@ -187,7 +192,7 @@ class PositioningContainerClass extends React.Component<IPositioningContainerCla
         ? getContentMaxHeight
         : positioningContainerMaxHeight!;
     const content = (
-      <div ref={this._positionedHost} className={css('ms-PositioningContainer', styles.container)}>
+      <div ref={this.props.hoistedProps.rootRef} className={css('ms-PositioningContainer', styles.container)}>
         <div
           className={mergeStyles(
             'ms-PositioningContainer-layerHost',
@@ -201,7 +206,7 @@ class PositioningContainerClass extends React.Component<IPositioningContainerCla
           // Safari and Firefox on Mac OS requires this to back-stop click events so focus remains in the Callout.
           // See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#Clicking_and_focus
           tabIndex={-1}
-          ref={this.props.contentHost}
+          ref={this.props.hoistedProps.contentHost}
         >
           {children}
           {
@@ -242,7 +247,8 @@ class PositioningContainerClass extends React.Component<IPositioningContainerCla
   protected _dismissOnLostFocus(ev: Event): void {
     const target = ev.target as HTMLElement;
     const clickedOutsideCallout =
-      this._positionedHost.current && !elementContains(this._positionedHost.current, target);
+      this.props.hoistedProps.positionedHost.current &&
+      !elementContains(this.props.hoistedProps.positionedHost.current, target);
 
     if (
       (!this._target && clickedOutsideCallout) ||
@@ -258,13 +264,13 @@ class PositioningContainerClass extends React.Component<IPositioningContainerCla
 
   protected _setInitialFocus = (): void => {
     if (
-      this.props.contentHost.current &&
+      this.props.hoistedProps.contentHost.current &&
       this.props.setInitialFocus &&
       !this._didSetInitialFocus &&
       this.state.positions
     ) {
       this._didSetInitialFocus = true;
-      focusFirstChild(this.props.contentHost.current);
+      focusFirstChild(this.props.hoistedProps.contentHost.current);
     }
   };
 
@@ -296,8 +302,8 @@ class PositioningContainerClass extends React.Component<IPositioningContainerCla
     const { positions } = this.state;
     const { offsetFromTarget, onPositioned } = this.props;
 
-    const hostElement = this._positionedHost.current;
-    const positioningContainerElement = this.props.contentHost.current;
+    const hostElement = this.props.hoistedProps.positionedHost.current;
+    const positioningContainerElement = this.props.hoistedProps.contentHost.current;
 
     if (hostElement && positioningContainerElement) {
       let currentProps: IPositionProps | undefined;
@@ -398,7 +404,7 @@ class PositioningContainerClass extends React.Component<IPositioningContainerCla
   }
 
   private _setTargetWindowAndElement(target: HTMLElement | string | MouseEvent | Point | null): void {
-    const currentElement = this._positionedHost.current;
+    const currentElement = this.props.hoistedProps.positionedHost.current;
 
     if (target) {
       if (typeof target === 'string') {
@@ -430,13 +436,13 @@ class PositioningContainerClass extends React.Component<IPositioningContainerCla
    * Animates the height if finalHeight was given.
    */
   private _setHeightOffsetEveryFrame(): void {
-    if (this.props.contentHost && this.props.finalHeight) {
+    if (this.props.hoistedProps.contentHost && this.props.finalHeight) {
       this._setHeightOffsetTimer = this._async.requestAnimationFrame(() => {
-        if (!this.props.contentHost.current) {
+        if (!this.props.hoistedProps.contentHost.current) {
           return;
         }
 
-        const positioningContainerMainElem = this.props.contentHost.current.lastChild as HTMLElement;
+        const positioningContainerMainElem = this.props.hoistedProps.contentHost.current.lastChild as HTMLElement;
         const cardScrollHeight: number = positioningContainerMainElem.scrollHeight;
         const cardCurrHeight: number = positioningContainerMainElem.offsetHeight;
         const scrollDiff: number = cardScrollHeight - cardCurrHeight;
