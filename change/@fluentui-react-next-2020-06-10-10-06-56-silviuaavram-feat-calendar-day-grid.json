@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "Fix exports for date-time helper functions",
+  "packageName": "@fluentui/react-next",
+  "email": "pompomon@gmail.com",
+  "dependentChangeType": "none",
+  "date": "2020-06-10T08:06:56.882Z"
+}

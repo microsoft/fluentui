@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "Fix exports for date-time helper funcitons",
+  "packageName": "office-ui-fabric-react",
+  "email": "pompomon@gmail.com",
+  "dependentChangeType": "none",
+  "date": "2020-06-10T08:06:41.689Z"
+}
