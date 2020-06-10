@@ -1,8 +1,14 @@
 import { Accessibility, tableRowBehavior, GridRowBehaviorProps } from '@fluentui/accessibility';
-import { getElementType, useAccessibility, useStyles, useTelemetry, useUnhandledProps } from '@fluentui/react-bindings';
+import {
+  getElementType,
+  mergeVariablesOverrides,
+  useAccessibility,
+  useStyles,
+  useTelemetry,
+  useUnhandledProps,
+} from '@fluentui/react-bindings';
 import { Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
-import { mergeComponentVariables } from '@fluentui/styles';
 import * as _ from 'lodash';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
@@ -53,10 +59,6 @@ export interface TableRowProps extends UIComponentProps {
    */
   onClick?: ComponentEventHandler<TableRowProps>;
 }
-
-const handleVariablesOverrides = variables => predefinedProps => ({
-  variables: mergeComponentVariables(variables, predefinedProps.variables),
-});
 
 export const tableRowClassName = 'ui-table__row';
 
@@ -113,13 +115,12 @@ const TableRow: React.FC<WithAsProp<TableRowProps>> & FluentComponentStaticProps
   };
 
   const renderCells = () => {
-    return _.map(items, (item: TableCellProps, index: number) => {
-      const overrideProps = handleVariablesOverrides(variables);
+    return _.map(items, (item: TableCellProps) => {
       return TableCell.create(item, {
-        defaultProps: () =>
-          getA11yProps('cell', {
-            ...overrideProps,
-          }),
+        defaultProps: () => getA11yProps('cell', {}),
+        overrideProps: predefinedProps => ({
+          variables: mergeVariablesOverrides(variables, predefinedProps.variables),
+        }),
       });
     });
   };

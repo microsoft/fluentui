@@ -2,6 +2,95 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Tue, 09 Jun 2020 12:35:17 GMT",
+      "tag": "@uifabric/experiments_v7.26.1",
+      "version": "7.26.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "adding unit tests for floating suggestions composite",
+            "author": "nebhatna@microsoft.com",
+            "commit": "b8f95604f4dbd30395cf6368457950838f03a7b6",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 08 Jun 2020 12:34:34 GMT",
+      "tag": "@uifabric/experiments_v7.26.0",
+      "version": "7.26.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Added missing functionalities in UnifiedPeoplePicker and Example",
+            "author": "nebhatna@microsoft.com",
+            "commit": "acf0790fc9d409b408c9d899b798ebd3318f9a85",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 05 Jun 2020 05:09:39 GMT",
+      "tag": "@uifabric/experiments_v7.25.3",
+      "version": "7.25.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adjusting Tile scss",
+            "author": "dzearing@microsoft.com",
+            "commit": "508bd36b17dd15b3d9651d75f9b27a35a864e38a",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 29 May 2020 12:35:34 GMT",
+      "tag": "@uifabric/experiments_v7.25.0",
+      "version": "7.25.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix Tile border color declarations so they don't get elided",
+            "author": "tmichon@microsoft.com",
+            "commit": "972bb9584f4c1e0f08bbab6308a99e1e1516d53c",
+            "package": "@uifabric/experiments"
+          },
+          {
+            "comment": "Add dedicated touch invoke functionality to SelectionZone",
+            "author": "sebastian.oettl@microsoft.com",
+            "commit": "557a96005568e03981f184a7d663e6dc490ceffc",
+            "package": "@uifabric/experiments"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Add special folder icon signals for Desktop, Documents, and Pictures.",
+            "author": "taenri@microsoft.com",
+            "commit": "cfcf5178fb8304109274a68121c7762a91f55d5b",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 25 May 2020 12:38:22 GMT",
+      "tag": "@uifabric/experiments_v7.24.8",
+      "version": "7.24.8",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixed typos",
+            "author": "xia_tony@hotmail.com",
+            "commit": "1edf380e1d06a24c5f7f4dfb4f5d52e512d54315",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 21 May 2020 12:34:43 GMT",
       "tag": "@uifabric/experiments_v7.24.6",
       "version": "7.24.6",

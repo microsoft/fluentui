@@ -1,4 +1,4 @@
-import { Provider, themes, pxToRem, createTheme } from '@fluentui/react-northstar';
+import { Provider, pxToRem, createTheme, teamsDarkTheme } from '@fluentui/react-northstar';
 // This is loaded from a CDN, so it's not in dependencies.
 // @ts-ignore
 // eslint-disable-next-line import/no-extraneous-dependencies
@@ -95,7 +95,7 @@ class DocsLayout extends React.Component<any, any> {
       <>
         <Provider
           theme={mergeThemes(
-            themes.teamsDark,
+            teamsDarkTheme,
             createTheme(
               {
                 // adjust Teams' theme to Semantic UI's font size scheme

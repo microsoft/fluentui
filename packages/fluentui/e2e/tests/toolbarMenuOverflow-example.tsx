@@ -7,13 +7,13 @@ import {
   Ref,
   Button,
   toolbarClassName,
-  toolbarItemSlotClassNames,
+  toolbarItemWrapperClassName,
 } from '@fluentui/react-northstar';
 
 export const selectors = {
   toolbarItem: toolbarItemClassName,
   toolbar: toolbarClassName,
-  toolbarItemWrapper: toolbarItemSlotClassNames.wrapper,
+  toolbarItemWrapper: toolbarItemWrapperClassName,
   menuTrigger: 'menu-trigger',
   itemButtonId: 'item-button',
   toolbarMenu: toolbarMenuClassName,

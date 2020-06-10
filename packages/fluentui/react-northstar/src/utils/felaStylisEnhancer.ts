@@ -18,9 +18,10 @@ const stylis = new Stylis({
   semicolon: false,
 });
 
-const felaStylisEnhancer = (renderer: Renderer) => ({
-  ...renderer,
-  _emitChange: (change: RendererChange) => {
+const felaStylisEnhancer = (renderer: Renderer) => {
+  const existingEmitChange = renderer._emitChange.bind(renderer);
+
+  renderer._emitChange = (change: RendererChange) => {
     if (change.type === RULE_TYPE) {
       const prefixed: string = stylis('', change.declaration);
 
@@ -28,8 +29,10 @@ const felaStylisEnhancer = (renderer: Renderer) => ({
       change.declaration = prefixed.slice(1, -1);
     }
 
-    renderer._emitChange(change);
-  },
-});
+    existingEmitChange(change);
+  };
+
+  return renderer;
+};
 
 export default felaStylisEnhancer;

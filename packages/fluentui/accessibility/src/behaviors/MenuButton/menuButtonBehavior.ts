@@ -1,4 +1,4 @@
-import * as keyboardKey from 'keyboard-key';
+import { keyboardKey } from '@fluentui/keyboard-key';
 import * as _ from 'lodash';
 
 import { Accessibility } from '../../types';
@@ -19,6 +19,7 @@ import popupBehavior, { PopupBehaviorProps } from '../Popup/popupBehavior';
  */
 const menuButtonBehavior: Accessibility<MenuButtonBehaviorProps> = props => {
   const behavior = popupBehavior(props);
+
   return _.merge(behavior, {
     attributes: {
       trigger: {

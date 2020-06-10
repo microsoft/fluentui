@@ -865,6 +865,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                       data-is-focusable={true}
                       data-item-index={0}
                       data-selection-index={0}
+                      data-selection-touch-invoke={true}
                       onFocus={[Function]}
                       onKeyDown={[Function]}
                       onMouseDownCapture={[Function]}
@@ -1326,6 +1327,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                       data-is-focusable={true}
                       data-item-index={1}
                       data-selection-index={1}
+                      data-selection-touch-invoke={true}
                       onFocus={[Function]}
                       onKeyDown={[Function]}
                       onMouseDownCapture={[Function]}
@@ -1787,6 +1789,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                       data-is-focusable={true}
                       data-item-index={2}
                       data-selection-index={2}
+                      data-selection-touch-invoke={true}
                       onFocus={[Function]}
                       onKeyDown={[Function]}
                       onMouseDownCapture={[Function]}
@@ -2248,6 +2251,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                       data-is-focusable={true}
                       data-item-index={3}
                       data-selection-index={3}
+                      data-selection-touch-invoke={true}
                       onFocus={[Function]}
                       onKeyDown={[Function]}
                       onMouseDownCapture={[Function]}
@@ -2709,6 +2713,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                       data-is-focusable={true}
                       data-item-index={4}
                       data-selection-index={4}
+                      data-selection-touch-invoke={true}
                       onFocus={[Function]}
                       onKeyDown={[Function]}
                       onMouseDownCapture={[Function]}
@@ -3167,6 +3172,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
         data-is-focusable={true}
         data-item-index={-1}
         data-selection-index={-1}
+        data-selection-touch-invoke={true}
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}

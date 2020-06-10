@@ -1,9 +1,10 @@
-import * as themes from './themes';
+//
+// Themes
+//
+export { default as teamsTheme } from './themes/teams';
+export { default as teamsDarkTheme } from './themes/teams-dark';
+export { default as teamsHighContrastTheme } from './themes/teams-high-contrast';
 
-//
-// Theme
-//
-export { themes };
 export * from './themes/types';
 export * from './themes/colorUtils';
 
@@ -196,14 +197,26 @@ export * from './components/Toolbar/ToolbarDivider';
 export { default as ToolbarDivider } from './components/Toolbar/ToolbarDivider';
 export * from './components/Toolbar/ToolbarItem';
 export { default as ToolbarItem } from './components/Toolbar/ToolbarItem';
+export * from './components/Toolbar/ToolbarItemWrapper';
+export { default as ToolbarItemWrapper } from './components/Toolbar/ToolbarItemWrapper';
+export * from './components/Toolbar/ToolbarItemIcon';
+export { default as ToolbarItemIcon } from './components/Toolbar/ToolbarItemIcon';
 export * from './components/Toolbar/ToolbarMenu';
 export { default as ToolbarMenu } from './components/Toolbar/ToolbarMenu';
 export * from './components/Toolbar/ToolbarMenuDivider';
 export { default as ToolbarMenuDivider } from './components/Toolbar/ToolbarMenuDivider';
 export * from './components/Toolbar/ToolbarMenuItem';
 export { default as ToolbarMenuItem } from './components/Toolbar/ToolbarMenuItem';
+export * from './components/Toolbar/ToolbarMenuItemIcon';
+export { default as ToolbarMenuItemIcon } from './components/Toolbar/ToolbarMenuItemIcon';
+export * from './components/Toolbar/ToolbarMenuItemSubmenuIndicator';
+export { default as ToolbarMenuItemSubmenuIndicator } from './components/Toolbar/ToolbarMenuItemSubmenuIndicator';
+export * from './components/Toolbar/ToolbarMenuItemActiveIndicator';
+export { default as ToolbarMenuItemActiveIndicator } from './components/Toolbar/ToolbarMenuItemActiveIndicator';
 export * from './components/Toolbar/ToolbarMenuRadioGroup';
 export { default as ToolbarMenuRadioGroup } from './components/Toolbar/ToolbarMenuRadioGroup';
+export * from './components/Toolbar/ToolbarMenuRadioGroupWrapper';
+export { default as ToolbarMenuRadioGroupWrapper } from './components/Toolbar/ToolbarMenuRadioGroupWrapper';
 export * from './components/Toolbar/ToolbarRadioGroup';
 export { default as ToolbarRadioGroup } from './components/Toolbar/ToolbarRadioGroup';
 

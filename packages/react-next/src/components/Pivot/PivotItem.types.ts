@@ -64,4 +64,12 @@ export interface IPivotItemProps extends React.HTMLAttributes<HTMLDivElement> {
    * Optional keytip for this PivotItem
    */
   keytipProps?: IKeytipProps;
+
+  /**
+   * Defines whether to always render the pivot item (regardless of whether it is selected or not).
+   * Useful if you're rendering content that is expensive to mount.
+   *
+   * @defaultvalue false
+   */
+  alwaysRender?: boolean;
 }

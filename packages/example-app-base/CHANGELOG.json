@@ -2,6 +2,36 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "date": "Fri, 05 Jun 2020 05:09:39 GMT",
+      "tag": "@uifabric/example-app-base_v7.12.74",
+      "version": "7.12.74",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Tweaks to css modules",
+            "author": "dzearing@microsoft.com",
+            "commit": "508bd36b17dd15b3d9651d75f9b27a35a864e38a",
+            "package": "@uifabric/example-app-base"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 25 May 2020 12:38:22 GMT",
+      "tag": "@uifabric/example-app-base_v7.12.68",
+      "version": "7.12.68",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixed minor typos",
+            "author": "xia_tony@hotmail.com",
+            "commit": "8722f6c224ff811107129b41e8e62845e3106e78",
+            "package": "@uifabric/example-app-base"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 19 May 2020 12:34:06 GMT",
       "tag": "@uifabric/example-app-base_v7.12.64",
       "version": "7.12.64",

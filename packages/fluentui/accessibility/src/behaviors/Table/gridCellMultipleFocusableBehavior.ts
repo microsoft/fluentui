@@ -1,7 +1,7 @@
 import { Accessibility } from '../../types';
 import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
 import { FocusZoneDirection } from '../../focusZone/types';
-import * as keyboardKey from 'keyboard-key';
+import { keyboardKey } from '@fluentui/keyboard-key';
 
 /**
  * @specification

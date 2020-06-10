@@ -11,7 +11,7 @@ export const LinkPageProps: IDocPageProps = {
   componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/Link',
   examples: [
     {
-      title: 'Link',
+      title: 'Link Basic',
       code: LinkBasicExampleCode,
       view: <LinkBasicExample />,
       styles: ({ theme }) => {

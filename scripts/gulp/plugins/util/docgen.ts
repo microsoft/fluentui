@@ -94,6 +94,7 @@ const reactComponentSymbolNames = [
   'FunctionComponent',
 
   // magic for ComponentWithAs
+  'ComponentWithAs',
   '__type',
 ];
 

@@ -186,7 +186,18 @@ const Popper: React.FunctionComponent<PopperProps> = props => {
     };
 
     popperRef.current = PopperJs.createPopper(reference, contentRef.current, options);
-  }, [contentRef, computedModifiers, enabled, pointerTargetRef, positionFixed, proposedPlacement, targetRef]);
+  }, [
+    contentRef,
+    computedModifiers,
+    enabled,
+    flipBoundary,
+    overflowBoundary,
+    pointerTargetRef,
+    positionFixed,
+    proposedPlacement,
+    targetRef,
+    unstable_pinned,
+  ]);
 
   const destroyInstance = React.useCallback(() => {
     if (popperRef.current) {

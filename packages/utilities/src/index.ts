@@ -40,6 +40,7 @@ export * from './dom';
 export * from './extendComponent';
 export * from './focus';
 export * from './getId';
+export * from './getNativeElementProps';
 export * from './hoist';
 export * from './hoistStatics';
 export * from './initializeComponentRef';

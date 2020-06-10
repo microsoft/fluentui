@@ -7,6 +7,7 @@ const Usage = () => (
   <NonPublicSection title="Visual tests">
     <ComponentExample examplePath="components/Toolbar/Visual/ToolbarExampleVariables" />
     <ComponentExample examplePath="components/Toolbar/Visual/ToolbarExampleOverflowPositioning" />
+    <ComponentExample examplePath="components/Toolbar/Visual/ToolbarExampleCompose" />
   </NonPublicSection>
 );
 

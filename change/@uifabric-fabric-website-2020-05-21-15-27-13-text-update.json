@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Update documentation for fontSize prop",
-  "packageName": "@uifabric/fabric-website",
-  "email": "krsiler@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-05-21T22:27:13.518Z"
-}

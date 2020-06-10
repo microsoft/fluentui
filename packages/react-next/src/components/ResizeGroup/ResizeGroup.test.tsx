@@ -34,6 +34,7 @@ describe('ResizeGroup', () => {
   it('renders the ResizeGroup correctly', () => {
     const initialData = { content: 5 };
     const renderedDataId = 'onRenderDataId';
+    // tslint:disable-next-line:no-any
     const onRenderData = (data: any) => <div id={renderedDataId}> Rendered data: {data.content}</div>;
     expect(
       renderer
@@ -52,6 +53,7 @@ describe('ResizeGroup', () => {
   it('renders the result of onRenderData', () => {
     const initialData = { content: 5 };
     const renderedDataId = 'onRenderDataId';
+    // tslint:disable-next-line:no-any
     const onRenderData = (data: any) => <div id={renderedDataId}> Rendered data: {data.content}</div>;
 
     const wrapper = mount(

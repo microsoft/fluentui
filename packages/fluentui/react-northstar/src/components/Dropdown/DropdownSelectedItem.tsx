@@ -5,7 +5,7 @@ import * as PropTypes from 'prop-types';
 import * as _ from 'lodash';
 import { CloseIcon } from '@fluentui/react-icons-northstar';
 
-import keyboardKey from 'keyboard-key';
+import { getCode, keyboardKey } from '@fluentui/keyboard-key';
 import {
   ComponentEventHandler,
   ShorthandValue,
@@ -18,9 +18,8 @@ import {
 import { UIComponentProps } from '../../utils/commonPropInterfaces';
 import { createShorthandFactory, commonPropTypes } from '../../utils';
 import Image, { ImageProps } from '../Image/Image';
-import Label from '../Label/Label';
 import Box, { BoxProps } from '../Box/Box';
-import { useUnhandledProps, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import { useUnhandledProps, useStyles, useTelemetry, getElementType } from '@fluentui/react-bindings';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 
@@ -75,7 +74,7 @@ export const dropdownSelectedItemSlotClassNames: DropdownSelectedItemSlotClassNa
   image: `${dropdownSelectedItemClassName}__image`,
 };
 
-export type DropdownSelectedItemStylesProps = never;
+export type DropdownSelectedItemStylesProps = { hasImage: boolean };
 
 const DropdownSelectedItem: React.FC<WithAsProp<DropdownSelectedItemProps>> &
   FluentComponentStaticProps<DropdownSelectedItemProps> = props => {
@@ -86,6 +85,7 @@ const DropdownSelectedItem: React.FC<WithAsProp<DropdownSelectedItemProps>> &
   const { active, header, icon, image, className, design, styles, variables } = props;
 
   const itemRef = React.useRef<HTMLElement>();
+  const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(DropdownSelectedItem.handledProps, props);
 
   React.useEffect(() => {
@@ -98,6 +98,9 @@ const DropdownSelectedItem: React.FC<WithAsProp<DropdownSelectedItemProps>> &
     DropdownSelectedItem.displayName,
     {
       className: dropdownSelectedItemClassName,
+      mapPropsToStyles: () => ({
+        hasImage: !!image,
+      }),
       mapPropsToInlineStyles: () => ({
         className,
         design,
@@ -116,23 +119,23 @@ const DropdownSelectedItem: React.FC<WithAsProp<DropdownSelectedItemProps>> &
     _.invoke(props, 'onKeyDown', e, props);
   };
 
-  const handleIconOverrides = iconProps => (predefinedProps: BoxProps) => ({
+  const handleIconOverrides = iconProps => ({
     ...iconProps,
     onClick: (e: React.SyntheticEvent, iconProps: BoxProps) => {
       e.stopPropagation();
       _.invoke(props, 'onRemove', e, iconProps);
       _.invoke(props, 'onClick', e, iconProps);
     },
-    onKeyDown: (e: React.SyntheticEvent, iconProps: BoxProps) => {
+    onKeyDown: (e: React.KeyboardEvent, iconProps: BoxProps) => {
       e.stopPropagation();
-      if (keyboardKey.getCode(e) === keyboardKey.Enter) {
+      if (getCode(e) === keyboardKey.Enter) {
         _.invoke(props, 'onRemove', e, iconProps);
       }
       _.invoke(props, 'onKeyDown', e, iconProps);
     },
   });
 
-  const contentElement = Box.create(header, {
+  const headerElement = Box.create(header, {
     defaultProps: () => ({
       as: 'span',
       className: dropdownSelectedItemSlotClassNames.header,
@@ -140,49 +143,36 @@ const DropdownSelectedItem: React.FC<WithAsProp<DropdownSelectedItemProps>> &
     }),
   });
 
-  const iconProps = _.isNil(icon)
-    ? icon
-    : {
-        name: null,
-        children: (ComponentType, props) =>
-          Box.create(icon, {
-            defaultProps: () => ({
-              'aria-label': `Remove ${header} from selection.`, // TODO: Extract this in a behaviour.
-              className: dropdownSelectedItemSlotClassNames.icon,
-              styles: resolvedStyles.icon,
-            }),
-            overrideProps: handleIconOverrides(props),
-          }),
-      };
+  const iconElement = Box.create(icon, {
+    defaultProps: () => ({
+      'aria-label': `Remove ${header} from selection.`, // TODO: Extract this in a behaviour.
+      className: dropdownSelectedItemSlotClassNames.icon,
+      styles: resolvedStyles.icon,
+    }),
+    overrideProps: handleIconOverrides,
+  });
 
-  const imageProps = _.isNil(image)
-    ? image
-    : {
-        children: (ComponentType, props) =>
-          Image.create(image, {
-            defaultProps: () => ({
-              avatar: true,
-              className: dropdownSelectedItemSlotClassNames.image,
-              styles: resolvedStyles.image,
-            }),
-            overrideProps: props,
-          }),
-      };
+  const imageElement = Image.create(image, {
+    defaultProps: () => ({
+      avatar: true,
+      className: dropdownSelectedItemSlotClassNames.image,
+      styles: resolvedStyles.image,
+    }),
+  });
 
   const element = (
     <Ref innerRef={itemRef}>
-      <Label
+      <ElementType
         className={classes.root}
         tabIndex={active ? 0 : -1}
-        styles={resolvedStyles.root}
-        circular
         onClick={handleClick}
         onKeyDown={handleKeyDown}
-        content={contentElement}
-        icon={iconProps}
-        image={imageProps}
         {...unhandledProps}
-      />
+      >
+        {imageElement}
+        {headerElement}
+        {iconElement}
+      </ElementType>
     </Ref>
   );
 
@@ -209,6 +199,7 @@ DropdownSelectedItem.propTypes = {
 DropdownSelectedItem.handledProps = Object.keys(DropdownSelectedItem.propTypes) as any;
 
 DropdownSelectedItem.defaultProps = {
+  as: 'span',
   // TODO: fix me
   icon: <CloseIcon />,
 };

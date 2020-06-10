@@ -7,8 +7,7 @@ import {
 import * as React from 'react';
 import cx from 'classnames';
 import * as _ from 'lodash';
-// @ts-ignore
-import * as keyboardKey from 'keyboard-key';
+import { getCode, keyboardKey, SpacebarKey } from '@fluentui/keyboard-key';
 import * as ReactDOM from 'react-dom';
 import * as PropTypes from 'prop-types';
 
@@ -465,7 +464,7 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
    * Handle global tab presses so that we can patch tabindexes on the fly.
    */
   _onKeyDownCapture = (ev: KeyboardEvent) => {
-    if (keyboardKey.getCode(ev) === keyboardKey.Tab) {
+    if (getCode(ev) === keyboardKey.Tab) {
       _outerZones.forEach(zone => zone.updateTabIndexes());
     }
   };
@@ -583,8 +582,8 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
     } else if (ev.altKey) {
       return undefined;
     } else {
-      switch (keyboardKey.getCode(ev)) {
-        case keyboardKey.Spacebar:
+      switch (getCode(ev)) {
+        case SpacebarKey:
           // @ts-ignore
           if (this.tryInvokeClickForFocusable(ev.target as HTMLElement)) {
             break;

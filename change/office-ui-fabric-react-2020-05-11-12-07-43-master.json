@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "DocumentCard: add prop to open link in a new tab.",
+  "packageName": "office-ui-fabric-react",
+  "email": "mahesh8488@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-05-11T19:07:43.504Z"
+}

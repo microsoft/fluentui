@@ -110,6 +110,81 @@
   padding: var(--button-padding);
   transition: var(--button-transition);
   white-space: var(--button-whiteSpace, nowrap);
+
+  /**
+  * Modifiers
+  *
+  * Modifiers must align to the props on the component. They should:
+  *
+  * 1. Redefine the values for {component}-{property} tokens.
+  * 2. Map property definitions to variables using the format: {component}-{property}
+  * 3. Avoid defining styles directly.
+ **/
+  &._primary {
+    --button-fill: var(--accent-fill);
+    --button-fill-hovered: var(--accent-fill-hovered);
+    --button-fill-pressed: var(--accent-fill-pressed);
+
+    --button-text: var(--accent-text);
+    --button-text-hovered: var(--accent-text-hovered);
+    --button-text-pressed: var(--accent-text-pressed);
+
+    --button-borderColor: var(--accent-borderColor);
+
+    --button-icon: var(--accent-icon);
+    --button-icon-hovered: var(--accent-icon-hovered);
+    --button-icon-pressed: var(--accent-icon-pressed);
+  }
+
+  &._iconOnly {
+    width: var(--button-height);
+    --button-padding: 0;
+  }
+
+  &._circular {
+    --button-borderRadius: 50000px;
+    --button-minWidth: var(--button-height);
+  }
+
+  &._fluid {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  &._size_smallest {
+    --button-height: var(--button-size-smallest);
+  }
+
+  &._size_smaller {
+    --button-height: var(--button-size-smaller);
+  }
+
+  &._size_small {
+    --button-height: var(--button-size-small);
+  }
+
+  &._size_large {
+    --button-height: var(--button-size-large);
+  }
+
+  &._size_larger {
+    --button-height: var(--button-size-larger);
+  }
+  &._size_largest {
+    --button-height: var(--button-size-largest);
+  }
+
+  &._disabled {
+    pointer-events: none;
+    background-color: var(--button-fill-disabled);
+    color: var(--button-text-disabled);
+    border-color: var(--button-borderColor-disabled);
+    box-shadow: var(--button-boxShadow-disabled);
+
+    &.icon {
+      color: var(--button-icon-disabled, var(--button-text-disabled));
+    }
+  }
 }
 
 .content {
@@ -135,7 +210,7 @@
   margin-left: var(--button-contentGap);
 }
 
-.root:hovered {
+.root:hover {
   background-color: var(--button-fill-hovered, var(--button-fill));
   color: var(--button-text-hovered, var(--button-text));
   border-color: var(--button-borderColor-hovered, var(--button-borderColor));
@@ -160,7 +235,7 @@
   }
 }
 
-.root:focused::after {
+.root:focus::after {
   position: absolute;
   left: -1px;
   top: -1px;
@@ -171,76 +246,4 @@
   border-radius: var(--button-borderRadius);
   box-shadow: 0 0 0 var(--button-focusedInnerWidth, 1px) var(--button-focusedInner, var(--accent-text)) inset;
   border: var(--button-focusedWidth, 2px) solid var(--button-focused, var(--accent-fill));
-}
-
-/**
-  * Modifiers
-  *
-  * Modifiers must align to the props on the component. They should:
-  *
-  * 1. Redefine the values for {component}-{property} tokens.
-  * 2. Map property definitions to variables using the format: {component}-{property}
-  * 3. Avoid defining styles directly.
- **/
-
-.primary {
-  --button-fill: var(--accent-fill);
-  --button-fill-hovered: var(--accent-fill-hovered);
-  --button-fill-pressed: var(--accent-fill-pressed);
-
-  --button-text: var(--accent-text);
-  --button-text-hovered: var(--accent-text-hovered);
-  --button-text-pressed: var(--accent-text-pressed);
-
-  --button-borderColor: var(--accent-borderColor);
-
-  --button-icon: var(--accent-icon);
-  --button-icon-hovered: var(--accent-icon-hovered);
-  --button-icon-pressed: var(--accent-icon-pressed);
-}
-
-.iconOnly {
-  width: var(--button-height);
-  --button-padding: 0;
-}
-
-.circular {
-  --button-borderRadius: 50000px;
-  --button-minWidth: var(--button-height);
-}
-
-.fluid {
-  width: 100%;
-  max-width: 100%;
-}
-
-.disabled {
-  pointer-events: none;
-  background-color: var(--button-fill-disabled);
-  color: var(--button-text-disabled);
-  border-color: var(--button-borderColor-disabled);
-  box-shadow: var(--button-boxShadow-disabled);
-
-  .icon {
-    color: var(--button-icon-disabled, var(--button-text-disabled));
-  }
-}
-
-.size_smallest {
-  --button-height: var(--button-size-smallest);
-}
-.size_smaller {
-  --button-height: var(--button-size-smaller);
-}
-.size_small {
-  --button-height: var(--button-size-small);
-}
-.size_large {
-  --button-height: var(--button-size-large);
-}
-.size_larger {
-  --button-height: var(--button-size-larger);
-}
-.size_largest {
-  --button-height: var(--button-size-largest);
 }
