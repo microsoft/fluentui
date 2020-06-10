@@ -38,7 +38,6 @@ const useAnimationStyles = (displayName: string, props: AnimationProps): UseStyl
   const cacheKey = JSON.stringify(animation);
 
   if (cachePerTheme[cacheKey]) {
-    console.log('Returning from cache...');
     return cachePerTheme[cacheKey];
   }
 
