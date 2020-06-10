@@ -27,7 +27,7 @@ export function resolveClasses<TState>(
     }
   }
 
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   appendToSlotClassName(slotProps, 'root', (state as any).className);
 
   return result;

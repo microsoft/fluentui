@@ -107,9 +107,9 @@ export const UnifiedPeoplePickerExample = (): JSX.Element => {
     // and update the selectedItemsList to re-render everything.
     const finalList: IPersonaProps[] = [];
     if (pastedValue !== null) {
-      pastedValue.split(',').map(textValue => {
+      pastedValue.split(',').forEach(textValue => {
         if (textValue) {
-          people.map(suggestionItem => {
+          people.forEach(suggestionItem => {
             if (suggestionItem.text === textValue) {
               finalList.push(suggestionItem);
             }
@@ -173,6 +173,7 @@ export const UnifiedPeoplePickerExample = (): JSX.Element => {
         floatingSuggestionProps={floatingPeoplePickerProps}
         // eslint-disable-next-line react/jsx-no-bind
         onInputChange={_onInputChange}
+        // eslint-disable-next-line react/jsx-no-bind
         onPaste={_onPaste}
       />
     </>

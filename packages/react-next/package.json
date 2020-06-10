@@ -56,7 +56,7 @@
     "@fluentui/react-compose": "^0.9.0",
     "@fluentui/react-focus": "^7.12.6",
     "@fluentui/react-theme-provider": "^0.1.11",
-    "@uifabric/icons": "^7.3.48",
+    "@uifabric/icons": "^7.3.49",
     "@uifabric/merge-styles": "^7.14.1",
     "@uifabric/react-hooks": "^7.4.5",
     "@uifabric/set-version": "^7.0.13",
