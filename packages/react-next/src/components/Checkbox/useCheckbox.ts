@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ICheckboxProps, ICheckboxSlots, ICheckboxSlotProps } from './Checkbox.types';
+import { ICheckboxProps, ICheckboxSlots, ICheckboxSlotProps, ICheckboxState } from './Checkbox.types';
 import { ComposePreparedOptions, mergeProps } from '@fluentui/react-compose';
 import { useControllableValue, useId, useMergedRefs } from '@uifabric/react-hooks';
 import { useFocusRects, warnMutuallyExclusive } from '../../Utilities';
@@ -8,7 +8,7 @@ export const useCheckbox = (
   props: ICheckboxProps,
   options: ComposePreparedOptions,
   forwardedRef: React.Ref<HTMLDivElement>,
-): { state: ICheckboxProps; slots: ICheckboxSlots; slotProps: ICheckboxSlotProps } => {
+): { state: ICheckboxState; slots: ICheckboxSlots; slotProps: ICheckboxSlotProps } => {
   const {
     disabled,
     inputProps,
@@ -26,7 +26,7 @@ export const useCheckbox = (
   const id = useId('checkbox-', props.id);
 
   const rootRef = React.useRef<HTMLDivElement | null>(null);
-  const mergedRootRefs = useMergedRefs(rootRef, forwardedRef);
+  const mergedRootRefs: React.Ref<HTMLElement> = useMergedRefs(rootRef, forwardedRef);
   const inputRef = React.useRef<HTMLInputElement>(null);
 
   const [isChecked, setIsChecked] = useControllableValue(props.checked, props.defaultChecked, props.onChange);
@@ -48,7 +48,7 @@ export const useCheckbox = (
     }
   };
 
-  const handledProps = {
+  const handledProps: ICheckboxState = {
     ...props,
     ref: mergedRootRefs,
     checked: isChecked,
@@ -78,15 +78,16 @@ export const useCheckbox = (
     container: {
       htmlFor: id,
     },
-    text: {
+    label: {
+      children: props.label,
       title: props.title,
       'aria-hidden': 'true',
     },
   };
 
   // TODO: improve typing for mergeProps
-  return mergeProps<ICheckboxProps>(handledProps, options) as {
-    state: ICheckboxProps;
+  return mergeProps<ICheckboxProps, ICheckboxState>(handledProps, options) as {
+    state: ICheckboxState;
     slots: ICheckboxSlots;
     slotProps: ICheckboxSlotProps;
   };

@@ -11,17 +11,17 @@ const defaultSlots: Omit<ICheckboxSlots, 'root'> = {
   // TODO: add checkmark slot in parent component instead
   checkmark: Icon,
   container: 'label',
-  text: 'span',
+  label: 'span',
   checkbox: 'div',
 };
 
 export const CheckboxBase = compose<'div', ICheckboxProps, {}, ICheckboxProps, {}>(
   (props, forwardedRef, composeOptions) => {
     const { slotProps, slots, state } = useCheckbox(props, composeOptions, forwardedRef);
-    const { disabled, keytipProps, label } = state;
+    const { disabled, keytipProps } = state;
 
-    const onRenderLabel = (): JSX.Element | null => {
-      return label ? <slots.text {...slotProps.text}>{label}</slots.text> : null;
+    const onRenderLabel = (): JSX.Element => {
+      return <slots.label {...slotProps.label} />;
     };
 
     return (

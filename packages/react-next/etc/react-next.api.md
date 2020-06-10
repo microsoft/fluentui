@@ -135,9 +135,15 @@ export interface ICheckboxSlots {
     // (undocumented)
     input: React.ElementType;
     // (undocumented)
-    root: React.ElementType;
+    label: React.ElementType;
     // (undocumented)
-    text: React.ElementType;
+    root: React.ElementType;
+}
+
+// @public (undocumented)
+export interface ICheckboxState extends Omit<ICheckboxProps, 'label'>, Partial<ICheckboxSlotProps> {
+    // (undocumented)
+    ref: React.Ref<HTMLElement>;
 }
 
 // @public (undocumented)

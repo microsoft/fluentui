@@ -9,7 +9,7 @@ const GlobalClassNames: Omit<ICheckboxClasses, 'input'> = {
   container: 'ms-Checkbox-label',
   checkbox: 'ms-Checkbox-checkbox',
   checkmark: 'ms-Checkbox-checkmark',
-  text: 'ms-Checkbox-text',
+  label: 'ms-Checkbox-text',
 };
 
 const defaultClassResolver = createClassResolver(classes);

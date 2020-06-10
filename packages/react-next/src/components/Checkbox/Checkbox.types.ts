@@ -209,7 +209,7 @@ export interface ICheckboxSlots {
   container: React.ElementType;
   checkbox: React.ElementType;
   checkmark: React.ElementType;
-  text: React.ElementType;
+  label: React.ElementType;
 }
 
 /**
@@ -224,3 +224,7 @@ export type ICheckboxSlotProps = {
   // tslint:disable-next-line:no-any
   [key in keyof ICheckboxSlots]: any;
 };
+
+export interface ICheckboxState extends Omit<ICheckboxProps, 'label'>, Partial<ICheckboxSlotProps> {
+  ref: React.Ref<HTMLElement>;
+}
