@@ -7,6 +7,7 @@ export * from './StackedBarChart';
 export * from './VerticalBarChart';
 export * from './VerticalStackedBarChart';
 export * from './GroupedVerticalBarChart';
+export * from './AreaChart';
 export * from './types';
 export * from './utilities/ChartHoverCard';
 
