@@ -7,6 +7,8 @@ export { default as attachmentBehavior } from './Attachment/attachmentBehavior';
 export { default as buttonBehavior } from './Button/buttonBehavior';
 export * from './Button/buttonBehavior';
 export { default as buttonGroupBehavior } from './Button/buttonGroupBehavior';
+export { default as dropdownSelectedItemBehavior } from './Dropdown/dropdownSelectedItemBehavior';
+export * from './Dropdown/dropdownSelectedItemBehavior';
 export * from './Button/buttonGroupBehavior';
 export { default as toggleButtonBehavior } from './Button/toggleButtonBehavior';
 export * from './Image/imageBehavior';
