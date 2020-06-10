@@ -37,7 +37,7 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> impl
     this._bringFocusIntoZone();
     this._updateEventHandlers(this.props);
 
-    if (!this.props.disabled && this._root.current) {
+    if (!this.props.disabled && this._root.current && this.props.enableAriaHiddenSiblings) {
       this._modalizationElements = modalize(this._root.current);
     }
   }
@@ -64,14 +64,14 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> impl
       // Transition from forceFocusInsideTrap / FTZ disabled to enabled.
       // Emulate what happens when a FocusTrapZone gets mounted.
       this._bringFocusIntoZone();
-      if (!this._modalizationElements && this._root.current) {
+      if (!this._modalizationElements && this._root.current && this.props.enableAriaHiddenSiblings) {
         this._modalizationElements = modalize(this._root.current);
       }
     } else if ((prevForceFocusInsideTrap && !newForceFocusInsideTrap) || (!prevDisabled && newDisabled)) {
       // Transition from forceFocusInsideTrap / FTZ enabled to disabled.
       // Emulate what happens when a FocusTrapZone gets unmounted.
       this._returnFocusToInitiator();
-      if (this._modalizationElements) {
+      if (this._modalizationElements && this.props.enableAriaHiddenSiblings) {
         unmodalize(this._modalizationElements);
         delete this._modalizationElements;
       }
@@ -99,7 +99,7 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> impl
       this._disposeFocusHandler = undefined;
     }
 
-    if (this._modalizationElements) {
+    if (this._modalizationElements && this.props.enableAriaHiddenSiblings) {
       unmodalize(this._modalizationElements);
       delete this._modalizationElements;
     }
