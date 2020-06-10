@@ -24,11 +24,11 @@ export function mergeProps<
     slotProps: {},
   };
 
-  // Resolve slotProps/slots from state.
-  resolveSlotProps(result, options);
-
   // Resolve classes.
   resolveClasses(result, options.classes);
+
+  // Resolve slotProps/slots from state.
+  resolveSlotProps(result, options);
 
   // TODO: Resolve inline styles.
 
