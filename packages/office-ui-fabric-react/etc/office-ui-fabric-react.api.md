@@ -4661,6 +4661,7 @@ export interface IFocusTrapZoneProps extends React.HTMLAttributes<HTMLDivElement
     disabled?: boolean;
     disableFirstFocus?: boolean;
     elementToFocusOnDismiss?: HTMLElement;
+    enableAriaHiddenSiblings?: boolean;
     firstFocusableSelector?: string | (() => string);
     focusPreviouslyFocusedInnerElement?: boolean;
     forceFocusInsideTrap?: boolean;
@@ -5651,6 +5652,7 @@ export interface IModalProps extends React.ClassAttributes<ModalBase>, IWithResp
     componentRef?: IRefObject<IModal>;
     containerClassName?: string;
     dragOptions?: IDragOptions;
+    enableAriaHiddenSiblings?: boolean;
     isBlocking?: boolean;
     isDarkOverlay?: boolean;
     isModeless?: boolean;
