@@ -2,25 +2,13 @@ import * as React from 'react';
 import { create } from 'react-test-renderer';
 
 import { SelectedItemsList } from './SelectedItemsList';
-import {
-  ISelectedItemProps,
-  ISelectedItemsList,
-  BaseSelectedItem,
-  ISelectedItemsListProps,
-} from './SelectedItemsList.types';
+import { ISelectedItemProps, ISelectedItemsList } from './SelectedItemsList.types';
 import { mount } from 'enzyme';
 
 export interface ISimple {
   key: string;
   name: string;
 }
-
-export const SelectedTypedList = React.forwardRef(
-  <TPersona extends ISimple & BaseSelectedItem = ISimple>(
-    props: ISelectedItemsListProps<TPersona>,
-    ref: React.Ref<ISelectedItemsList<TPersona>>,
-  ) => <SelectedItemsList<TPersona> ref={ref} {...props} />,
-);
 
 const basicItemRenderer = (props: ISelectedItemProps<ISimple>) => {
   return <div id={props.item.name}>{props.item.name}</div>;
