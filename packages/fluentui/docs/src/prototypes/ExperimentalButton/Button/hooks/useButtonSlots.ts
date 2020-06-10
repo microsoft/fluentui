@@ -8,6 +8,7 @@ import {
   CreateShorthandOptions,
   ButtonContentProps,
   LoaderProps,
+  callable,
 } from '@fluentui/react-northstar';
 import * as React from 'react';
 import { UseAccessibilityResult, UseStylesResult } from '@fluentui/react-bindings';
@@ -72,7 +73,9 @@ const useButtonSlots = <P extends ButtonProps = ButtonProps>({
           ...(iconSlotProps.defaultProps && iconSlotProps.defaultProps()),
           ...(overrideSlotProps.icon.defaultProps && overrideSlotProps.icon.defaultProps()),
         }),
-      // TODO: add overrideProps
+      ...(overrideSlotProps.icon.overrideProps && {
+        overrideProps: callable(overrideSlotProps.icon.overrideProps)(props),
+      }),
     }),
     content: createShorthand(overridesSlots?.content || slots.content, props.content, {
       defaultProps: () =>
@@ -80,7 +83,9 @@ const useButtonSlots = <P extends ButtonProps = ButtonProps>({
           ...(contentSlotProps.defaultProps && contentSlotProps.defaultProps()),
           ...(overrideSlotProps.content.defaultProps && overrideSlotProps.content.defaultProps()),
         }),
-      // TODO: add overrideProps
+      ...(overrideSlotProps.content.overrideProps && {
+        overrideProps: callable(overrideSlotProps.content.overrideProps)(props),
+      }),
     }),
     loader: createShorthand(overridesSlots?.loader || slots.loader, props.loader || {}, {
       defaultProps: () =>
@@ -89,7 +94,9 @@ const useButtonSlots = <P extends ButtonProps = ButtonProps>({
           ...(loaderSlotProps.defaultProps && loaderSlotProps.defaultProps()),
           ...(overrideSlotProps.loader.defaultProps && overrideSlotProps.loader.defaultProps()),
         }),
-      // TODO: add overrideProps
+      ...(overrideSlotProps.loader.overrideProps && {
+        overrideProps: callable(overrideSlotProps.loader.overrideProps)(props),
+      }),
     }),
   };
 };

@@ -64,11 +64,10 @@
 //   const getA11yProps = useButtonAria({ props });
 //
 //   const element = useButtonTemplate({
-//     props,
+//     { ...props, as: ButtonRoot},
 //     getA11yProps,
 //     ref,
 //     slots: {
-//       root: ButtonRoot,
 //       icon: ButtonIcon,
 //       content: ButtonContent
 //     },

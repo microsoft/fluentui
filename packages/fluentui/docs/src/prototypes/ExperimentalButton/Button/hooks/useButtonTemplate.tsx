@@ -36,15 +36,14 @@ const useButtonTemplate = <P extends ButtonProps = ButtonProps>({
 
   const actionHandlers = useButtonActionHandlers(props, inputActionHandlers || {});
 
-  // TODO: should we support root?
-  const ElementType = (slots && (slots as any).root) || getElementType(props);
+  const ElementType = getElementType(props);
   const hasChildren = childrenExist(props.children);
 
   const handleFocus = e => {
     props.onFocus && props.onFocus(e, props);
   };
 
-  const unhandledProps = getNativeElementProps((props as any).as || 'button', props);
+  const unhandledProps = getNativeElementProps((props as any).as || 'button', props); // TODO: try to replace it with different utility
 
   const rest = {
     ...unhandledProps,
