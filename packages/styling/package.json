@@ -11,8 +11,7 @@
   "module": "lib/index.js",
   "sideEffects": [
     "lib/version.js",
-    "lib/index.js",
-    "lib/styles/theme.js"
+    "lib/index.js"
   ],
   "typings": "lib/index.d.ts",
   "scripts": {
