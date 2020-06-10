@@ -9,7 +9,7 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
   const renderedItems = React.useMemo(() => items, [items]);
 
   React.useEffect(() => {
-    updateItems(props.selectedItems || props.defaultSelectedItems || []);
+    updateItems(props.selectedItems || []);
   }, [props.selectedItems]);
 
   const removeItems = (itemsToRemove: TItem[]): void => {

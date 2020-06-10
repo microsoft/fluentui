@@ -70,11 +70,15 @@ describe('SelectedItemsList', () => {
     });
   });
 
-  it('render all default selected items in selectedItemsList', () => {
+  it('render between selected and default selected items in selectedItemsList', () => {
     const removeItems = jest.fn();
     const wrapper = mount<ISelectedItemsList<ISimple>>(
       <SelectedItemsList
         onRenderItem={basicItemRenderer}
+        selectedItems={[
+          { key: 'd1', name: 'da' },
+          { key: 'd2', name: 'db' },
+        ]}
         defaultSelectedItems={[
           { key: 'd1', name: 'da' },
           { key: 'd2', name: 'db' },
