@@ -1,20 +1,12 @@
 import * as React from 'react';
-import { ComposeOptions } from '@fluentui/react-compose';
 import { useControllableValue } from '@uifabric/react-hooks';
-import { ButtonProps } from '../Button/Button.types';
-import { ToggleButtonProps } from './ToggleButton.types';
+import { ToggleButtonProps, ToggleButtonState } from './ToggleButton.types';
 
 /**
  * The useToggleButton hook processes the Button component props and returns state.
  * @param props
  */
-export const useToggleButton: ComposeOptions<
-  ToggleButtonProps,
-  ToggleButtonProps,
-  ButtonProps,
-  ButtonProps
-  // tslint:disable-next-line:no-any
->['state'] = (props): any => {
+export const useToggleButton = (props: ToggleButtonProps): ToggleButtonState => {
   const { checked: controlledChecked, defaultChecked = false, onClick: onButtonClick } = props;
   const [checked, setChecked] = useControllableValue(controlledChecked, defaultChecked);
 

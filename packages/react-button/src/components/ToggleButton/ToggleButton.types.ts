@@ -18,6 +18,8 @@ export interface ToggleButtonProps extends ButtonProps {
   defaultChecked?: boolean;
 }
 
+export interface ToggleButtonState extends ToggleButtonProps {}
+
 export interface ToggleButtonSlots extends ButtonSlots {}
 
 export type ToggleButtonSlotProps = {

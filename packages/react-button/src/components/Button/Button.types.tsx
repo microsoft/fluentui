@@ -70,6 +70,8 @@ export interface ButtonProps extends ComponentProps, React.HTMLAttributes<HTMLBu
   // text?: boolean;
 }
 
+export interface ButtonState extends ButtonProps {}
+
 export interface ButtonSlots {
   icon: React.ElementType;
   content: React.ElementType;
