@@ -139,7 +139,7 @@ export class CoachmarkBase extends React.Component<ICoachmarkProps, ICoachmarkSt
   private _translateAnimationContainer = React.createRef<HTMLDivElement>();
   private _ariaAlertContainer = React.createRef<HTMLDivElement>();
   private _childrenContainer = React.createRef<HTMLDivElement>();
-  private _positioningContainer = React.createRef<HTMLDivElement>();
+  private _positioningContainer = React.createRef<IPositioningContainer>();
 
   /**
    * The target element the mouse would be in
@@ -250,7 +250,7 @@ export class CoachmarkBase extends React.Component<ICoachmarkProps, ICoachmarkSt
       <PositioningContainer
         target={target}
         offsetFromTarget={BEAK_HEIGHT}
-        ref={this._positioningContainer}
+        componentRef={this._positioningContainer}
         finalHeight={finalHeight}
         onPositioned={this._onPositioned}
         bounds={this._getBounds()}
