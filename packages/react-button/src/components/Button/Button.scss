@@ -1,5 +1,3 @@
-$defaultPrimaryBackground: rgb(98, 100, 167);
-
 /**
  * TODO: Once theming is updated, consider removing all of this.
  *
@@ -18,6 +16,8 @@ $defaultPrimaryBackground: rgb(98, 100, 167);
   --button-size-largest: 64px;
 
   --button-padding: 0 24px;
+  --button-margin: 0;
+  --button-width: auto;
   --button-height: var(--button-size-regular);
   --button-minWidth: 96px;
   --button-maxWidth: 280px;
@@ -29,10 +29,10 @@ $defaultPrimaryBackground: rgb(98, 100, 167);
   --button-borderRadius: 2px;
   --button-borderWidth: 1px;
   --button-boxShadow: 0px 2px 4px -0.75px rgba(0, 0, 0, 0.1);
-  --button-boxShadow-disabled: none;
+  --button-disabled-boxShadow: none;
 
   /* transforms */
-  --button-transform-pressed: scale(0.95);
+  --button-pressed-transform: scale(0.95);
   --button-transition: transform 0.1s linear;
 
   /* TODO: Remove. Fonts should only be defined in the theme. */
@@ -40,47 +40,61 @@ $defaultPrimaryBackground: rgb(98, 100, 167);
   --button-fontSize: 14px;
   --button-fontWeight: 600;
 
-  /* TODO: Remove. Colors should only be defined in the theme. */
-  --button-background: white;
-  --button-background-hovered: rgb(237, 235, 233);
-  --button-background-focused: var(--button-background);
-  --button-background-pressed: rgb(225, 223, 221);
-  --button-background-disabled: rgb(237, 235, 233);
-  --button-contentColor: rgb(44, 38, 33);
-  --button-contentColor-hovered: var(--button-contentColor);
-  --button-contentColor-focused: var(--button-contentColor);
-  --button-contentColor-pressed: var(--button-contentColor);
-  --button-contentColor-disabled: rgb(200, 198, 196);
-  --button-borderColor: rgb(225, 223, 221);
-  --button-borderColor-disabled: transparent;
-  --button-icon: inherit;
-  --button-iconColor-hovered: var(--button-icon);
-  --button-iconColor-pressed: var(--button-icon);
-  --button-iconColor-focused: var(--button-icon);
-  --button-iconColor-disabled: var(--button-contentColor-disabled);
+  /* TODO: Consider remove. Colors should only be defined in the theme. */
 
   --button-focusColor: #000;
   --button-focusInnerColor: #fff;
 
-  /* TODO: Remove. Accent should only be defined in the theme. */
+  --button-background: white;
+  --button-borderColor: rgb(225, 223, 221);
+  --button-contentColor: rgb(44, 38, 33);
+  --button-iconColor: inherit;
+
+  --button-hovered-background: rgb(237, 235, 233);
+  --button-hovered-borderColor: var(--button-borderColor);
+  --button-hovered-contentColor: var(--button-contentColor);
+  --button-hovered-iconColor: var(--button-iconColor);
+
+  --button-focused-background: var(--button-background);
+  --button-focused-borderColor: var(--button-borderColor);
+  --button-focused-contentColor: var(--button-contentColor);
+  --button-focused-iconColor: var(--button-iconColor);
+
+  --button-pressed-background: rgb(225, 223, 221);
+  --button-pressed-borderColor: var(--button-borderColor);
+  --button-pressed-contentColor: var(--button-contentColor);
+  --button-pressed-iconColor: var(--button-iconColor);
+
+  --button-disabled-background: rgb(237, 235, 233);
+  --button-disabled-borderColor: var(--button-disabled-background);
+  --button-disabled-contentColor: rgb(200, 198, 196);
+  --button-disabled-iconColor: var(--button-disabled-contentColor);
+
+  /* TODO: Remove. Accent should only be defined in the theme, though primary depends on it. */
   --accent-background: rgb(98, 100, 167);
-  --accent-background-focused: var(--accent-background, $defaultPrimaryBackground);
-  --accent-background-hovered: rgb(88, 90, 150);
-  --accent-background-pressed: rgb(70, 71, 117);
-  --accent-background-disabled: rgb(237, 235, 233);
-
-  --accent-contentColor: white;
-  --accent-contentColor-hovered: var(--accent-contentColor);
-  --accent-contentColor-focused: var(--accent-contentColor);
-  --accent-contentColor-pressed: var(--accent-contentColor);
-  --accent-contentColor-disabled: rgb(200, 198, 196);
   --accent-borderColor: transparent;
+  --accent-contentColor: white;
+  --accent-iconColor: inherit;
 
-  --accent-icon: inherit;
-  --accent-iconColor-hovered: var(--accent-icon);
-  --accent-iconColor-pressed: var(--accent-icon);
-  --accent-iconColor-focused: var(--accent-icon);
-  --accent-iconColor-disabled: var(--accent-contentColor-disabled);
+  --accent-hovered-background: rgb(88, 90, 150);
+  --accent-hovered-borderColor: var(--accent-borderColor);
+  --accent-hovered-contentColor: var(--accent-contentColor);
+  --accent-hovered-iconColor: var(--accent-icon);
+
+  --accent-focused-background: rgb(88, 90, 150);
+  --accent-focused-borderColor: var(--accent-borderColor);
+  --accent-focused-contentColor: var(--accent-contentColor);
+  --accent-focused-iconColor: var(--accent-iconColor);
+
+  --accent-pressed-background: rgb(70, 71, 117);
+  --accent-pressed-borderColor: var(--accent-borderColor);
+  --accent-pressed-contentColor: var(--accent-contentColor);
+  --accent-pressed-iconColor: var(--accent-iconColor);
+
+  --accent-disabled-background: rgb(237, 235, 233);
+  --accent-disabled-borderColor: var(--accent-disabled-background);
+  --accent-disabled-contentColor: rgb(200, 198, 196);
+  --accent-disabled-iconColor: var(--accent-disabled-contentColor);
 }
 
 /**
@@ -105,6 +119,7 @@ $defaultPrimaryBackground: rgb(98, 100, 167);
   position: relative;
   user-select: none;
   box-sizing: border-box;
+  vertical-align: middle;
 
   background: var(--button-background, white);
   color: var(--button-contentColor, rgb(44, 38, 33));
@@ -118,6 +133,10 @@ $defaultPrimaryBackground: rgb(98, 100, 167);
   transition: var(--button-transition);
   white-space: var(--button-whiteSpace, nowrap);
 
+  font-family: var(--button-fontFamily);
+  font-size: var(--button-fontSize);
+  font-weight: var(--button-fontWeight);
+
   /**
   * Modifiers
   *
@@ -129,18 +148,29 @@ $defaultPrimaryBackground: rgb(98, 100, 167);
  **/
   &._primary {
     --button-background: var(--accent-background);
-    --button-background-hovered: var(--accent-background-hovered);
-    --button-background-pressed: var(--accent-background-pressed);
-
-    --button-contentColor: var(--accent-contentColor);
-    --button-contentColor-hovered: var(--accent-contentColor-hovered);
-    --button-contentColor-pressed: var(--accent-contentColor-pressed);
-
     --button-borderColor: var(--accent-borderColor);
-
+    --button-contentColor: var(--accent-contentColor);
     --button-icon: var(--accent-icon);
-    --button-icon-hovered: var(--accent-icon-hovered);
-    --button-icon-pressed: var(--accent-icon-pressed);
+
+    --button-hovered-background: var(--accent-hovered-background);
+    --button-hovered-borderColor: var(--accent-hovered-borderColor);
+    --button-hovered-contentColor: var(--accent-hovered-contentColor);
+    --button-hovered-icon: var(--accent-icon-hovered);
+
+    --button-focused-background: var(--accent-focused-background);
+    --button-focused-borderColor: var(--accent-focused-borderColor);
+    --button-focused-contentColor: var(--accent-focused-contentColor);
+    --button-focused-iconColor: var(--accent-focused-icon);
+
+    --button-pressed-background: var(--accent-pressed-background);
+    --button-pressed-borderColor: var(--accent-pressed-borderColor);
+    --button-pressed-contentColor: var(--accent-pressed-contentColor);
+    --button-pressed-iconColor: var(--accent-pressed-icon);
+
+    --button-disabled-background: var(--accent-disabled-background);
+    --button-disabled-borderColor: var(--accent-disabled-borderColor);
+    --button-disabled-contentColor: var(--accent-disabled-contentColor);
+    --button-disabled-iconColor: var(--accent-disabled-icon);
   }
 
   &._iconOnly {
@@ -183,22 +213,15 @@ $defaultPrimaryBackground: rgb(98, 100, 167);
 
   &._disabled {
     pointer-events: none;
-    background-color: var(--button-background-disabled);
-    color: var(--button-contentColor-disabled);
-    border-color: var(--button-borderColor-disabled);
-    box-shadow: var(--button-boxShadow-disabled);
-
-    &.icon {
-      color: var(--button-icon-disabled, var(--button-contentColor-disabled));
-    }
+    background-color: var(--button-disabled-background);
+    color: var(--button-disabled-contentColor);
+    border-color: var(--button-disabled-borderColor);
+    box-shadow: var(--button-disabled-boxShadow);
   }
 }
 
-.content {
-  font-family: var(--button-fontFamily);
-  font-size: var(--button-fontSize);
-  font-weight: var(--button-fontWeight);
-}
+// .content {
+// }
 
 .icon {
   color: var(--button-icon);
@@ -208,11 +231,15 @@ $defaultPrimaryBackground: rgb(98, 100, 167);
   width: var(--button-iconSize);
   height: var(--button-iconSize);
   font-size: var(--button-iconSize, inherit);
+
+  &.disabled {
+    color: var(--button-disabled-icon, var(--button-disabled-contentColor));
+  }
 }
 
-.loader {
-  /* TODO: styling once we have a sample. */
-}
+// .loader {
+//   /* TODO: styling once we have a sample. */
+// }
 
 /* selectors */
 
@@ -221,27 +248,27 @@ $defaultPrimaryBackground: rgb(98, 100, 167);
 }
 
 .root:hover {
-  background: var(--button-background-hovered, var(--button-background));
-  color: var(--button-contentColor-hovered, var(--button-contentColor));
-  border-color: var(--button-borderColor-hovered, var(--button-borderColor));
-  box-shadow: var(--button-boxShadow-hovered, var(--button-boxShadow));
+  background: var(--button-hovered-background, var(--button-background));
+  color: var(--button-hovered-contentColor, var(--button-contentColor));
+  border-color: var(--button-hovered-borderColor, var(--button-borderColor));
+  box-shadow: var(--button-hovered-boxShadow, var(--button-boxShadow));
 
   .icon {
-    color: var(--button-iconColor-hovered, var(--button-contentColor-hovered));
+    color: var(--button-hovered-iconColor, var(--button-hovered-contentColor));
   }
 }
 
 .root:active {
-  background: var(--button-background-pressed, var(--button-background-hovered));
-  color: var(--button-contentColor-pressed, var(--button-contentColor-hovered, var(--button-contentColor)));
-  border-color: var(--button-borderColor-pressed, var(--button-borderColor-hovered, var(--button-borderColor)));
-  box-shadow: var(--button-boxShadow-pressed, var(--button-boxShadow-hovered, var(--button-boxShadow)));
+  background: var(--button-pressed-background, var(--button-hovered-background));
+  color: var(--button-pressed-contentColor, var(--button-hovered-contentColor, var(--button-contentColor)));
+  border-color: var(--button-pressed-borderColor, var(--button-hovered-borderColor, var(--button-borderColor)));
+  box-shadow: var(--button-pressed-boxShadow, var(--button-hovered-boxShadow, var(--button-boxShadow)));
 
-  transform: var(--button-transform-pressed);
-  transition: var(--button-transition-pressed);
+  transform: var(--button-pressed-transform);
+  transition: var(--button-pressed-transition);
 
   .icon {
-    color: var(--button-iconColor-pressed, var(--button-contentColor-pressed));
+    color: var(--button-pressed-iconColor, var(--button-pressed-contentColor));
   }
 }
 

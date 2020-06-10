@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { ComponentProps, ShorthandValue, ComposeStandardStatics } from '../../utils/tempTypes';
 import { ComposeOptions } from '@fluentui/react-compose';
+import { ColorPlateSet } from '@fluentui/react-theme-provider';
 
 export type RecursivePartial<T> = {
   [P in keyof T]?: T[P] extends (infer U)[]
@@ -94,17 +95,15 @@ export type ButtonSlotProps = {
 export interface ButtonOptions
   extends ComposeOptions<ButtonProps, ButtonSlots, ButtonSlotProps, ComposeStandardStatics> {}
 
-export interface ButtonTokens {
+export type ButtonTokens = ColorPlateSet & {
   /* sizing */
   padding: string;
   margin: string;
   height: string;
   minWidth: string;
   maxWidth: string;
-
   contentGap: string;
   iconSize: string;
-
   borderRadius: string;
   borderWidth: string;
 
@@ -118,43 +117,14 @@ export interface ButtonTokens {
     largest: string;
   };
 
-  transform: {
-    default: string;
-    hovered: string;
-    pressed: string;
-  };
-
+  transform: string;
   transition: string;
-
-  background: TokenColorSet;
-  contentColor: TokenColorSet;
-  iconColor: TokenColorSet;
-  borderColor: TokenColorSet;
-  focusColor: TokenColorSet;
-  focusInnerColor: TokenColorSet;
-
-  accent: {
-    background: TokenColorSet;
-    contentColor: TokenColorSet;
-    iconColor: TokenColorSet;
-    borderColor: TokenColorSet;
-    focusColor: TokenColorSet;
-    focusInnerColor: TokenColorSet;
-  };
 
   fontFamily: string;
   fontSize: string;
   fontWeight: string;
-}
 
-export type TokenColorSet = {
-  default: string;
-  hovered: string;
-  focused: string;
-  pressed: string;
-  checked: string;
-  checkedHovered: string;
-  checkedFocused: string;
-  checkedPressed: string;
-  disabled: string;
+  pressed: {
+    transform: string;
+  };
 };

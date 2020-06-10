@@ -6,8 +6,42 @@
 
 import * as React from 'react';
 
+// @public (undocumented)
+export type ColorPlateSet = ColorTokens & ColorTokenStates;
+
 // @public
-export const mergeThemes: (...themes: (ThemePrepared | Theme | undefined)[]) => ThemePrepared;
+export type ColorTokens = Partial<{
+    background: string;
+    contentColor: string;
+    subTextColor: string;
+    linkColor: string;
+    borderColor: string;
+    dividerColor: string;
+}>;
+
+// @public
+export type ColorTokenStates = Partial<{
+    hovered: ColorTokens;
+    pressed: ColorTokens;
+    disabled: ColorTokens;
+    checked: ColorTokens;
+    checkedHovered: ColorTokens;
+    checkedPressed: ColorTokens;
+}>;
+
+// @public (undocumented)
+export type FontTokens = Partial<{
+    fontFamily: string;
+    fontSize: string;
+    fontWeight: string;
+}>;
+
+// @public
+export const mergeThemes: (...themes: (Theme | PartialTheme | undefined)[]) => Theme;
+
+// @public
+export interface PartialTheme extends RecursivePartial<Theme> {
+}
 
 // @public
 export type RecursivePartial<T> = {
@@ -15,26 +49,12 @@ export type RecursivePartial<T> = {
 };
 
 // @public
-export interface Theme extends RecursivePartial<ThemePrepared> {
-}
-
-// @public
-export type ThemePlateSet = Partial<{
-    fill: ThemeStateSet;
-    text: ThemeStateSet;
-    subText: ThemeStateSet;
-    link: ThemeStateSet;
-    divider: ThemeStateSet;
-    [key: string]: ThemeStateSet;
-}>;
-
-// @public
-export interface ThemePrepared {
+export interface Theme {
     // (undocumented)
     stylesheets: string[];
     // (undocumented)
     tokens: {
-        body: ThemePlateSet;
+        body: ColorPlateSet & TokenSetType;
         [key: string]: TokenSetType;
     };
 }
@@ -44,19 +64,8 @@ export const ThemeProvider: React.ForwardRefExoticComponent<ThemeProviderProps &
 
 // @public
 export interface ThemeProviderProps extends React.HTMLAttributes<HTMLDivElement> {
-    theme?: Theme;
+    theme?: PartialTheme | Theme;
 }
-
-// @public
-export type ThemeStateSet = Partial<{
-    default: string;
-    hovered: string;
-    pressed: string;
-    disabled: string;
-    checked: string;
-    checkedHovered: string;
-    checkedPressed: string;
-}> | string;
 
 // @public
 export type TokenSetType = string | {
@@ -75,7 +84,7 @@ export const tokensToStyleObject: (tokens?: {
 };
 
 // @public
-export const useTheme: () => ThemePrepared;
+export const useTheme: () => Theme;
 
 
 // (No @packageDocumentation comment for this package)
