@@ -12,7 +12,7 @@ export interface ICoachmark {
   /**
    * Forces the Coachmark to dismiss
    */
-  dismiss?: (ev?: any) => void;
+  dismiss?: (ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => void;
 }
 
 /**
@@ -194,7 +194,7 @@ export interface ICoachmarkProps extends React.ClassAttributes<CoachmarkBase> {
   /**
    * Callback when the Coachmark tries to close.
    */
-  onDismiss?: (ev?: any) => void;
+  onDismiss?: (ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => void;
 
   /**
    * Theme provided by higher order component.

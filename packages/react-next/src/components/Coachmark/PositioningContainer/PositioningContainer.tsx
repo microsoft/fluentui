@@ -36,12 +36,12 @@ const OFF_SCREEN_STYLE = { opacity: 0 };
 // properly we need to set the border.
 // The value is abitrary.
 const BORDER_WIDTH = 1;
-const SLIDE_ANIMATIONS: { [key: number]: string } = {
+const SLIDE_ANIMATIONS = {
   [RectangleEdge.top]: 'slideUpIn20',
   [RectangleEdge.bottom]: 'slideDownIn20',
   [RectangleEdge.left]: 'slideLeftIn20',
   [RectangleEdge.right]: 'slideRightIn20',
-};
+} as const;
 
 export interface IPositioningContainerState {
   /**
@@ -165,7 +165,7 @@ export class PositioningContainer extends React.Component<IPositioningContainerP
     const styles = getClassNames();
 
     const directionalClassName =
-      positions && positions.targetEdge ? (AnimationClassNames as any)[SLIDE_ANIMATIONS[positions.targetEdge]] : '';
+      positions && positions.targetEdge ? AnimationClassNames[SLIDE_ANIMATIONS[positions.targetEdge]] : '';
 
     const getContentMaxHeight: number = this._getMaxHeight() + this.state.heightOffset!;
     const contentMaxHeight: number =

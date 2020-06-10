@@ -433,13 +433,15 @@ export class CoachmarkBase extends React.Component<ICoachmarkProps, ICoachmarkSt
     }
   }
 
-  private _onKeyDown = (e: any): void => {
+  private _onKeyDown = (e: KeyboardEvent): void => {
     // Open coachmark if user presses ALT + C (arbitrary keypress for now)
     if (
+      // tslint:disable-next-line: deprecation
       (e.altKey && e.which === KeyCodes.c) ||
+      // tslint:disable-next-line: deprecation
       (e.which === KeyCodes.enter &&
         this._translateAnimationContainer.current &&
-        this._translateAnimationContainer.current.contains(e.target))
+        this._translateAnimationContainer.current.contains(e.target as Node))
     ) {
       this._onFocusHandler();
     }
