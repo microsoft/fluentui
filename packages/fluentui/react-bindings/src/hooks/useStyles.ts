@@ -15,6 +15,7 @@ import {
   ComponentSlotClasses,
   PrimitiveProps,
   RendererRenderRule,
+  StylesContextPerformance,
   StylesContextValue,
 } from '../styles/types';
 import getStyles from '../styles/getStyles';
@@ -66,15 +67,17 @@ type InlineStyleProps<StyleProps> = {
   variables?: ComponentVariablesInput;
 };
 
+export const defaultPerformanceFlags: StylesContextPerformance = {
+  enableSanitizeCssPlugin: process.env.NODE_ENV !== 'production',
+  enableStylesCaching: true,
+  enableVariablesCaching: true,
+  enableBooleanVariablesCaching: false,
+};
+
 const defaultContext: StylesContextValue<{ renderRule: RendererRenderRule }> = {
   rtl: false,
   disableAnimations: false,
-  performance: {
-    enableSanitizeCssPlugin: process.env.NODE_ENV !== 'production',
-    enableStylesCaching: true,
-    enableVariablesCaching: true,
-    enableBooleanVariablesCaching: false,
-  },
+  performance: defaultPerformanceFlags,
   renderer: { renderRule: () => '' },
   theme: emptyTheme,
   telemetry: undefined,

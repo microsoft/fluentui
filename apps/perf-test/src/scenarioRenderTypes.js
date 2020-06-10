@@ -12,8 +12,7 @@ const AllRenderTypes = ['mount', 'virtual-rerender'];
 const DefaultRenderTypes = ['mount'];
 
 const scenarioRenderTypes = {
-  // TODO: uncomment to enable re-render tests
-  // ThemeProvider: AllRenderTypes,
+  ThemeProvider: AllRenderTypes,
 };
 
 module.exports = {

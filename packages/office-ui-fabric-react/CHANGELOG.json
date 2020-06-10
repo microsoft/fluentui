@@ -2,6 +2,42 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 10 Jun 2020 12:37:27 GMT",
+      "tag": "office-ui-fabric-react_v7.119.0",
+      "version": "7.119.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "DocumentCard: add prop to open link in a new tab.",
+            "author": "mahesh8488@gmail.com",
+            "commit": "52da3b627c30777bfc11db0b87f68494c6a6a86a",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Add onGrowData to Breadcrumb",
+            "author": "tmichon@microsoft.com",
+            "commit": "5175daa714e7880decfd63dfe7a7c8b6c2d442c1",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 09 Jun 2020 12:35:17 GMT",
+      "tag": "office-ui-fabric-react_v7.118.1",
+      "version": "7.118.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Link: fix broken href in examples",
+            "author": "ololubek@microsoft.com",
+            "commit": "4e058b89af037da8b421ecc16b628238de011107",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 08 Jun 2020 12:34:34 GMT",
       "tag": "office-ui-fabric-react_v7.118.0",
       "version": "7.118.0",

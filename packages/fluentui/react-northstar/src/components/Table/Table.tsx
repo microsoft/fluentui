@@ -62,7 +62,7 @@ export const tableSlotClassNames: TableSlotClassNames = {
 
 export type TableStylesProps = never;
 
-export const Table: React.FC<WithAsProp<TableProps>> &
+const Table: React.FC<WithAsProp<TableProps>> &
   FluentComponentStaticProps<TableProps> & {
     Cell: typeof TableCell;
     Row: typeof TableRow;
