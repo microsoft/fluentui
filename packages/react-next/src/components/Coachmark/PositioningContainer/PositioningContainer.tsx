@@ -103,49 +103,47 @@ function usePositions(
   const [positions, setPositions] = React.useState<IPositionedData | undefined>();
   const postitionAttempts = React.useRef<number>(0);
 
-  const updatePosition = (): void => {
-    const hostElement = positionedHost.current;
-
-    if (hostElement && positioningContainerElement.current) {
-      let currentProps: IPositionProps | undefined;
-      currentProps = assign(currentProps, props);
-      currentProps!.bounds = getBounds();
-      currentProps!.target = target.current ?? undefined;
-      if (document.body.contains(currentProps!.target as Node)) {
-        currentProps!.gapSpace = props.offsetFromTarget;
-        const newPositions: IPositionedData = positionElement(
-          currentProps!,
-          hostElement,
-          positioningContainerElement.current!,
-        );
-        // Set the new position only when the positions are not exists or one of the new positioningContainer positions
-        // are different. The position should not change if the position is within 2 decimal places.
-        if (
-          (!positions && newPositions) ||
-          (positions && newPositions && !arePositionsEqual(positions, newPositions) && postitionAttempts.current < 5)
-        ) {
-          // We should not reposition the positioningContainer more than a few times, if it is then the content is
-          // likely resizing and we should stop trying to reposition to prevent a stack overflow.
-          postitionAttempts.current++;
-          setPositions(newPositions);
-          props.onPositioned?.(newPositions);
-        } else {
-          postitionAttempts.current = 0;
-          props.onPositioned?.(newPositions);
-        }
-      } else if (positions !== undefined) {
-        setPositions(undefined);
-      }
-    }
-  };
-
   const updateAsyncPosition = () => {
-    async.requestAnimationFrame(updatePosition);
+    async.requestAnimationFrame((): void => {
+      const hostElement = positionedHost.current;
+
+      if (hostElement && positioningContainerElement.current) {
+        let currentProps: IPositionProps | undefined;
+        currentProps = assign(currentProps, props);
+        currentProps!.bounds = getBounds();
+        currentProps!.target = target.current ?? undefined;
+        if (document.body.contains(currentProps!.target as Node)) {
+          currentProps!.gapSpace = props.offsetFromTarget;
+          const newPositions: IPositionedData = positionElement(
+            currentProps!,
+            hostElement,
+            positioningContainerElement.current!,
+          );
+          // Set the new position only when the positions are not exists or one of the new positioningContainer
+          // positions are different. The position should not change if the position is within 2 decimal places.
+          if (
+            (!positions && newPositions) ||
+            (positions && newPositions && !arePositionsEqual(positions, newPositions) && postitionAttempts.current < 5)
+          ) {
+            // We should not reposition the positioningContainer more than a few times, if it is then the content is
+            // likely resizing and we should stop trying to reposition to prevent a stack overflow.
+            postitionAttempts.current++;
+            setPositions(newPositions);
+            props.onPositioned?.(newPositions);
+          } else {
+            postitionAttempts.current = 0;
+            props.onPositioned?.(newPositions);
+          }
+        } else if (positions !== undefined) {
+          setPositions(undefined);
+        }
+      }
+    });
   };
 
   React.useEffect(updateAsyncPosition);
 
-  return [positions, updatePosition, updateAsyncPosition] as const;
+  return [positions, updateAsyncPosition] as const;
 }
 
 function useTargets(props: IPositioningContainerProps, positionedHost: React.RefObject<HTMLDivElement>) {
@@ -276,7 +274,7 @@ export const PositioningContainer = React.forwardRef(
     const [targetRef, targetWindowRef] = useTargets(props, positionedHost);
 
     const getBounds = useCachedBounds(props, targetWindowRef);
-    const [positions, updatePosition, updateAsyncPosition] = usePositions(
+    const [positions, updateAsyncPosition] = usePositions(
       props,
       positioningContainer,
       positionedHost,
@@ -297,7 +295,6 @@ export const PositioningContainer = React.forwardRef(
         targetRef={targetRef}
         targetWindow={targetWindowRef}
         positions={positions}
-        updatePosition={updatePosition}
         getBounds={getBounds}
       />
     );
@@ -311,7 +308,6 @@ interface IPositioningContainerClassProps extends IPositioningContainerProps {
   targetRef: React.MutableRefObject<HTMLElement | MouseEvent | Point | null>;
   targetWindow: React.MutableRefObject<Window | null>;
   positions: IPositionedData | undefined;
-  updatePosition: () => void;
   getBounds: () => IRectangle;
 }
 
