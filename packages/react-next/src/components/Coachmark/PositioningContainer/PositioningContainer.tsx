@@ -14,7 +14,6 @@ import {
   focusFirstChild,
   getWindow,
   getDocument,
-  initializeComponentRef,
   Async,
   EventGroup,
   getPropsWithDefaults,
@@ -30,7 +29,7 @@ import {
 } from 'office-ui-fabric-react/lib/utilities/positioning';
 
 import { AnimationClassNames, mergeStyles } from '../../../Styling';
-import { useAsync } from '@uifabric/react-hooks';
+import { useAsync, useForceUpdate, useMergedRefs } from '@uifabric/react-hooks';
 
 const OFF_SCREEN_STYLE = { opacity: 0 };
 
@@ -145,6 +144,7 @@ function useTargets(props: IPositioningContainerProps, positionedHost: React.Ref
    */
   const targetWindowRef = React.useRef<Window | null>(null);
   const targetRef = React.useRef<HTMLElement | MouseEvent | Point | null>(null);
+  const forceUpdate = useForceUpdate();
 
   // If the target element changed, find the new one. If we are tracking
   // target with class name, always find element because we do not know if
@@ -157,6 +157,7 @@ function useTargets(props: IPositioningContainerProps, positionedHost: React.Ref
       if (!!(target as MouseEvent).stopPropagation) {
         targetWindowRef.current = getWindow((target as MouseEvent).target as HTMLElement)!;
         targetRef.current = target;
+        forceUpdate();
       } else if (
         // tslint:disable-next-line:deprecation
         ((target as Point).left !== undefined || (target as Point).x !== undefined) &&
@@ -165,13 +166,16 @@ function useTargets(props: IPositioningContainerProps, positionedHost: React.Ref
       ) {
         targetWindowRef.current = getWindow(currentElement)!;
         targetRef.current = target;
+        forceUpdate();
       } else {
         const targetElement: HTMLElement = target as HTMLElement;
         targetWindowRef.current = getWindow(targetElement)!;
         targetRef.current = target;
+        forceUpdate();
       }
     } else if (!!target) {
       targetWindowRef.current = getWindow(currentElement)!;
+      forceUpdate();
     }
   }, [props.target]);
 
@@ -183,6 +187,7 @@ function useTargets(props: IPositioningContainerProps, positionedHost: React.Ref
       const currentDoc: Document = getDocument()!;
       targetRef.current = currentDoc ? (currentDoc.querySelector(target) as HTMLElement) : null;
       targetWindowRef.current = getWindow(currentElement)!;
+      forceUpdate();
     }
   }, []);
 
@@ -294,6 +299,54 @@ function useHeightOffset(
   return heightOffset;
 }
 
+function useInitialFocus(
+  contentHost: React.RefObject<HTMLDivElement>,
+  props: IPositioningContainerProps,
+  positions: IPositionedData | undefined,
+) {
+  const didSetInitialFocus = React.useRef(false);
+  React.useEffect(() => {
+    if (!didSetInitialFocus.current && contentHost.current && props.setInitialFocus && positions) {
+      didSetInitialFocus.current = true;
+      focusFirstChild(contentHost.current);
+    }
+  });
+}
+
+function useMaxHeight(
+  { directionalHintFixed, offsetFromTarget, directionalHint }: IPositioningContainerProps,
+  targetRef: React.RefObject<HTMLElement | MouseEvent | Point | null>,
+  getBounds: () => IRectangle,
+) {
+  /**
+   * The maximum height the PositioningContainer can grow to
+   * without going being the window or target bounds
+   */
+  const maxHeight = React.useRef<number | undefined>();
+
+  React.useEffect(() => {
+    maxHeight.current = undefined;
+  }, [offsetFromTarget]);
+
+  /**
+   * Return the maximum height the container can grow to
+   * without going out of the specified bounds
+   */
+  const getMaxContainerHeight = (): number => {
+    if (!maxHeight.current) {
+      if (directionalHintFixed && targetRef.current) {
+        const gapSpace = offsetFromTarget ? offsetFromTarget : 0;
+        maxHeight.current = getMaxHeight(targetRef.current, directionalHint!, gapSpace, getBounds());
+      } else {
+        maxHeight.current = getBounds().height! - BORDER_WIDTH * 2;
+      }
+    }
+    return maxHeight.current!;
+  };
+
+  return getMaxContainerHeight;
+}
+
 export const PositioningContainer = React.forwardRef(
   (propsWithoutDefaults: IPositioningContainerProps, forwardedRef: React.Ref<HTMLDivElement>) => {
     const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
@@ -301,17 +354,18 @@ export const PositioningContainer = React.forwardRef(
 
     // @TODO rename to reflect the name of this class
     const contentHost = React.useRef<HTMLDivElement>(null);
-    const positioningContainer = React.useRef<HTMLDivElement>(null);
     /**
      * The primary positioned div.
      */
     const positionedHost = React.useRef<HTMLDivElement>(null);
+    const rootRef = useMergedRefs(positionedHost, forwardedRef);
     const [targetRef, targetWindowRef] = useTargets(props, positionedHost);
 
     const getBounds = useCachedBounds(props, targetWindowRef);
+    const getMaxContainerHeight = useMaxHeight(props, targetRef, getBounds);
     const [positions, updateAsyncPosition] = usePositions(
       props,
-      positioningContainer,
+      contentHost,
       positionedHost,
       targetRef,
       getBounds,
@@ -323,87 +377,27 @@ export const PositioningContainer = React.forwardRef(
 
     React.useEffect(() => props.onLayerMounted?.(), []);
 
-    return (
-      <PositioningContainerClass
-        {...props}
-        contentHost={contentHost}
-        positionedHost={positionedHost}
-        targetRef={targetRef}
-        targetWindow={targetWindowRef}
-        positions={positions}
-        getBounds={getBounds}
-        heightOffset={heightOffset}
-      />
-    );
-  },
-);
-PositioningContainer.displayName = 'PositioningContainer';
+    useInitialFocus(contentHost, props, positions);
 
-interface IPositioningContainerClassProps extends IPositioningContainerProps {
-  contentHost: React.RefObject<HTMLDivElement>;
-  positionedHost: React.RefObject<HTMLDivElement>;
-  targetRef: React.MutableRefObject<HTMLElement | MouseEvent | Point | null>;
-  targetWindow: React.MutableRefObject<Window | null>;
-  positions: IPositionedData | undefined;
-  getBounds: () => IRectangle;
-  heightOffset: number;
-}
-
-class PositioningContainerClass extends React.Component<IPositioningContainerClassProps, {}>
-  implements PositioningContainerClass {
-  private _didSetInitialFocus: boolean;
-
-  /**
-   * The maximum height the PositioningContainer can grow to
-   * without going being the window or target bounds
-   */
-  private _maxHeight: number | undefined;
-  private _async: Async;
-
-  constructor(props: IPositioningContainerClassProps) {
-    super(props);
-
-    initializeComponentRef(this);
-    this._async = new Async(this);
-
-    this._didSetInitialFocus = false;
-  }
-
-  public componentDidUpdate(): void {
-    this._setInitialFocus();
-  }
-
-  // tslint:disable-next-line function-name
-  public UNSAFE_componentWillUpdate(newProps: IPositioningContainerClassProps): void {
-    if (newProps.offsetFromTarget !== this.props.offsetFromTarget) {
-      this._maxHeight = undefined;
-    }
-  }
-
-  public componentWillUnmount(): void {
-    this._async.dispose();
-  }
-
-  public render(): JSX.Element | null {
     // If there is no target window then we are likely in server side rendering and we should not render anything.
-    if (!this.props.targetWindow.current) {
+    if (!targetWindowRef.current) {
       return null;
     }
 
-    const { className, positioningContainerWidth, positioningContainerMaxHeight, children, positions } = this.props;
+    const { className, positioningContainerWidth, positioningContainerMaxHeight, children } = props;
 
     const styles = getClassNames();
 
     const directionalClassName =
       positions && positions.targetEdge ? AnimationClassNames[SLIDE_ANIMATIONS[positions.targetEdge]] : '';
 
-    const getContentMaxHeight: number = this._getMaxHeight() + this.props.heightOffset!;
+    const getContentMaxHeight: number = getMaxContainerHeight() + heightOffset!;
     const contentMaxHeight: number =
       positioningContainerMaxHeight! && positioningContainerMaxHeight! > getContentMaxHeight
         ? getContentMaxHeight
         : positioningContainerMaxHeight!;
     const content = (
-      <div ref={this.props.positionedHost} className={css('ms-PositioningContainer', styles.container)}>
+      <div ref={rootRef} className={css('ms-PositioningContainer', styles.container)}>
         <div
           className={mergeStyles(
             'ms-PositioningContainer-layerHost',
@@ -417,7 +411,7 @@ class PositioningContainerClass extends React.Component<IPositioningContainerCla
           // Safari and Firefox on Mac OS requires this to back-stop click events so focus remains in the Callout.
           // See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#Clicking_and_focus
           tabIndex={-1}
-          ref={this.props.contentHost}
+          ref={contentHost}
         >
           {children}
           {
@@ -428,44 +422,10 @@ class PositioningContainerClass extends React.Component<IPositioningContainerCla
       </div>
     );
 
-    return this.props.doNotLayer ? content : <Layer>{content}</Layer>;
-  }
-
-  protected _setInitialFocus = (): void => {
-    if (
-      this.props.contentHost.current &&
-      this.props.setInitialFocus &&
-      !this._didSetInitialFocus &&
-      this.props.positions
-    ) {
-      this._didSetInitialFocus = true;
-      focusFirstChild(this.props.contentHost.current);
-    }
-  };
-
-  /**
-   * Return the maximum height the container can grow to
-   * without going out of the specified bounds
-   */
-  private _getMaxHeight(): number {
-    const { directionalHintFixed, offsetFromTarget, directionalHint } = this.props;
-
-    if (!this._maxHeight) {
-      if (directionalHintFixed && this.props.targetRef.current) {
-        const gapSpace = offsetFromTarget ? offsetFromTarget : 0;
-        this._maxHeight = getMaxHeight(
-          this.props.targetRef.current,
-          directionalHint!,
-          gapSpace,
-          this.props.getBounds(),
-        );
-      } else {
-        this._maxHeight = this.props.getBounds().height! - BORDER_WIDTH * 2;
-      }
-    }
-    return this._maxHeight!;
-  }
-}
+    return props.doNotLayer ? content : <Layer>{content}</Layer>;
+  },
+);
+PositioningContainer.displayName = 'PositioningContainer';
 
 function comparePositions(oldPositions: IPosition, newPositions: IPosition): boolean {
   for (const key in newPositions) {
