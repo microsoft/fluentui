@@ -970,6 +970,9 @@ export function mergeScopedSettings(oldSettings?: ISettings, newSettings?: ISett
 export function mergeSettings(oldSettings?: ISettings, newSettings?: ISettings | ISettingsFunction): ISettings;
 
 // @public
+export function modalize(target: HTMLElement): HTMLElement[];
+
+// @public
 export function nullRender(): JSX.Element | null;
 
 // @public
@@ -1194,6 +1197,9 @@ export const trProperties: string[];
 
 // @public
 export function unhoistMethods(source: any, methodNames: string[]): void;
+
+// @public
+export function unmodalize(affectedNodes: HTMLElement[]): void;
 
 // @public
 export function useCustomizationSettings(properties: string[], scopeName?: string, localSettings?: ICustomizations): ISettings;
