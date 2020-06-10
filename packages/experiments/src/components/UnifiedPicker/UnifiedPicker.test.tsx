@@ -216,6 +216,7 @@ describe('UnifiedPicker', () => {
     expect(inputElement).toHaveLength(1);
     inputElement.simulate('input', { target: { value: 'bl' } });
     expect(wrapper.find('.ms-FloatingSuggestionsList-container')).toHaveLength(1);
+    expect(suggestionList).toHaveLength(2);
     // Both suggestions are shown, picker is shown
     expect(wrapper.find('#FloatingSuggestionsItemId-0')).toHaveLength(1);
     expect(wrapper.find('#FloatingSuggestionsItemId-1')).toHaveLength(1);
