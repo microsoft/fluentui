@@ -11,10 +11,28 @@ import { ThemeContext } from 'react-fela';
 import * as _ from 'lodash';
 import { AnimationProps } from './Animation';
 
-const animationCache = new WeakMap<ThemePrepared, Record<string, UseStylesResult>>();
+type UseAnimationStylesResult = {
+  classes: UseStylesResult['classes'];
+  animationDuration?: string;
+  animationDelay?: string;
+};
+
+const animationCache = new WeakMap<ThemePrepared, Record<string, UseAnimationStylesResult>>();
 export const animationClassName = 'ui-animation';
 
-const useAnimationStyles = (displayName: string, props: AnimationProps): UseStylesResult => {
+const useAnimationStyles = (displayName: string, props: AnimationProps): UseAnimationStylesResult => {
+  const { theme, rtl, disableAnimations, renderer, performance } = React.useContext(ThemeContext);
+
+  if (disableAnimations) {
+    return {
+      classes: {
+        root: '',
+      },
+      animationDuration: '0ms',
+      animationDelay: '0ms',
+    };
+  }
+
   const animation: ComponentAnimationProp = {
     name: props.name,
     keyframeParams: props.keyframeParams,
@@ -27,21 +45,25 @@ const useAnimationStyles = (displayName: string, props: AnimationProps): UseStyl
     timingFunction: props.timingFunction,
   };
 
-  const { theme, rtl, disableAnimations, renderer } = React.useContext(ThemeContext);
+  const cacheEnabled = performance.enableStylesCaching;
 
-  // TODO: add check for cache enabled
-  if (!animationCache.has(theme)) {
-    animationCache.set(theme, {});
+  let cachePerTheme = {};
+  let cacheKey = '';
+
+  if (cacheEnabled) {
+    if (!animationCache.has(theme)) {
+      animationCache.set(theme, {});
+    }
+
+    cachePerTheme = animationCache.get(theme);
+    cacheKey = JSON.stringify(animation);
+
+    if (cachePerTheme[cacheKey]) {
+      return cachePerTheme[cacheKey];
+    }
   }
 
-  const cachePerTheme = animationCache.get(theme);
-  const cacheKey = JSON.stringify(animation);
-
-  if (cachePerTheme[cacheKey]) {
-    return cachePerTheme[cacheKey];
-  }
-
-  const result = getStyles({
+  const { classes, styles } = getStyles({
     allDisplayNames: [displayName],
     className: animationClassName,
     primaryDisplayName: displayName,
@@ -62,8 +84,16 @@ const useAnimationStyles = (displayName: string, props: AnimationProps): UseStyl
     theme,
   });
 
-  cachePerTheme[cacheKey] = result;
-  animationCache.set(theme, cachePerTheme);
+  const result = {
+    classes,
+    animationDuration: styles.root.animationDuration,
+    animationDelay: styles.root.animationDelay,
+  };
+
+  if (cacheEnabled) {
+    cachePerTheme[cacheKey] = result;
+    animationCache.set(theme, cachePerTheme);
+  }
   return result;
 };
 

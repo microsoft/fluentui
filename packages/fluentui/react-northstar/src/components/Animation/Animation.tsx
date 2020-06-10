@@ -11,7 +11,7 @@ import * as React from 'react';
 import { ThemeContext } from 'react-fela';
 import { Transition } from 'react-transition-group';
 
-import { childrenExist, StyledComponentProps, commonPropTypes, ChildrenComponentProps } from '../../utils';
+import { childrenExist, commonPropTypes, ChildrenComponentProps } from '../../utils';
 import { ComponentEventHandler, ProviderContextPrepared } from '../../types';
 import useAnimationStyles from './useAnimationStyles';
 
@@ -19,9 +19,7 @@ export { animationClassName } from './useAnimationStyles';
 
 export type AnimationChildrenProp = (props: { classes: string }) => React.ReactNode;
 
-export interface AnimationProps
-  extends StyledComponentProps,
-    ChildrenComponentProps<AnimationChildrenProp | React.ReactChild> {
+export interface AnimationProps extends ChildrenComponentProps<AnimationChildrenProp | React.ReactChild> {
   /** Additional CSS class name(s) to apply.  */
   className?: string;
 
@@ -158,8 +156,7 @@ const Animation: React.FC<AnimationProps> & {
     _.invoke(props, event, null, props);
   };
 
-  const { classes, styles: animationStyles } = useAnimationStyles(Animation.displayName, props);
-  const { animationDuration, animationDelay } = animationStyles.root;
+  const { classes, animationDuration, animationDelay } = useAnimationStyles(Animation.displayName, props);
   const timeoutResult = timeout || calculateAnimationTimeout(animationDuration, animationDelay) || 0;
 
   const unhandledProps = useUnhandledProps(Animation.handledProps, props);
