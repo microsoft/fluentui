@@ -174,7 +174,7 @@ export interface ICheckboxStyles {
 
 // @public (undocumented)
 export interface ICoachmark {
-    dismiss?: (ev?: any) => void;
+    dismiss?: (ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => void;
 }
 
 // @public
@@ -204,7 +204,7 @@ export interface ICoachmarkProps extends React.ClassAttributes<CoachmarkBase> {
     mouseProximityOffset?: number;
     onAnimationOpenEnd?: () => void;
     onAnimationOpenStart?: () => void;
-    onDismiss?: (ev?: any) => void;
+    onDismiss?: (ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => void;
     onMouseMove?: (e: MouseEvent) => void;
     persistentBeak?: boolean;
     positioningContainerProps?: IPositioningContainerProps;
