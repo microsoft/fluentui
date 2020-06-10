@@ -275,7 +275,7 @@ module.exports = async function getPerfRegressions() {
     outDir,
     tempDir,
     pageActions: async (page, options) => {
-      page.setDefaultTimeout(60000); // set 60s timeout, default is 30s.
+      page.setDefaultTimeout(0); // set no timeout
 
       await page.goto(options.url);
       await page.waitForSelector('#render-done');
