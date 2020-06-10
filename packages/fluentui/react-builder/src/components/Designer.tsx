@@ -2,7 +2,6 @@ import * as React from 'react';
 import { Text, Button } from '@fluentui/react-northstar';
 import { EventListener } from '@fluentui/react-component-event-listener';
 import { Editor, renderElementToJSX } from '@fluentui/docs-components';
-import { Ref } from '@fluentui/react-component-ref';
 
 import componentInfoContext from '../componentInfo/componentInfoContext';
 import { ComponentInfo } from '../componentInfo/types';
@@ -31,6 +30,7 @@ import {
   writeTreeToStore,
   writeTreeToURL,
 } from '../utils/treeStore';
+import { getUUID } from '../utils/getUUID';
 
 import { DesignerMode, JSONTreeElement } from './types';
 import { ComponentTree } from './ComponentTree';
@@ -39,11 +39,6 @@ import { codeToTree } from '../utils/codeToTree';
 import ErrorBoundary from './ErrorBoundary';
 
 const HEADER_HEIGHT = '3rem';
-
-const getUUID = () =>
-  Math.random()
-    .toString(36)
-    .slice(2);
 
 export type JSONTreeOrigin = 'store' | 'url';
 export type DesignerState = {
@@ -61,12 +56,12 @@ export type DesignerState = {
   showJSONTree: boolean;
 };
 
-class Designer extends React.Component<any, DesignerState> {
+class Designer extends React.Component<{}, DesignerState> {
   potentialDropTarget: JSONTreeElement | null = null;
   dropIndex: number = -1;
   dropParent: JSONTreeElement | null = null;
   draggingPosition: { x: number; y: number } = { x: 0, y: 0 };
-  draggingElementRef = React.createRef<HTMLElement>();
+  draggingElementRef = React.createRef<HTMLDivElement>();
 
   constructor(props) {
     super(props);
@@ -427,30 +422,29 @@ class Designer extends React.Component<any, DesignerState> {
           <>
             <EventListener type="mousemove" listener={this.handleDrag} target={document} />
             <EventListener type="mouseup" listener={this.handleDragAbort} target={document} />
-            <Ref innerRef={this.draggingElementRef}>
-              <div
-                style={{
-                  display: 'block',
-                  flex: '0 0 auto',
-                  position: 'fixed',
-                  padding: '4px',
-                  ...(this.draggingPosition && {
-                    left: this.draggingPosition.x,
-                    top: this.draggingPosition.y,
-                  }),
-                  pointerEvents: 'none',
-                  lineHeight: 1,
-                  border: `1px solid salmon`,
-                  backgroundColor: 'rgba(255, 255, 255, 0.5)',
-                  backgroundImage:
-                    'url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAKUlEQVQoU2NkYGAwZkAD////RxdiYBwKCv///4/hGUZGkNNRAeMQUAgAtxof+nLDzyUAAAAASUVORK5CYII=")',
-                  backgroundBlendMode: 'soft-light',
-                  zIndex: 999999,
-                }}
-              >
-                {renderJSONTreeToJSXElement(draggingElement)}
-              </div>
-            </Ref>
+            <div
+              ref={this.draggingElementRef}
+              style={{
+                display: 'block',
+                flex: '0 0 auto',
+                position: 'fixed',
+                padding: '4px',
+                ...(this.draggingPosition && {
+                  left: this.draggingPosition.x,
+                  top: this.draggingPosition.y,
+                }),
+                pointerEvents: 'none',
+                lineHeight: 1,
+                border: `1px solid salmon`,
+                backgroundColor: 'rgba(255, 255, 255, 0.5)',
+                backgroundImage:
+                  'url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAKUlEQVQoU2NkYGAwZkAD////RxdiYBwKCv///4/hGUZGkNNRAeMQUAgAtxof+nLDzyUAAAAASUVORK5CYII=")',
+                backgroundBlendMode: 'soft-light',
+                zIndex: 999999,
+              }}
+            >
+              {renderJSONTreeToJSXElement(draggingElement)}
+            </div>
           </>
         )}
 

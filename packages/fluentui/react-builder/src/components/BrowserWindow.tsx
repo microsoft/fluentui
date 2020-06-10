@@ -88,13 +88,20 @@ const styles: {
   },
 };
 
-const BrowserWindow: React.FC<{
-  [key: string]: any;
+export type BrowserWindowProps = {
   children: React.ReactNode | React.ReactNodeArray;
   showNavBar: boolean;
   style?: React.CSSProperties;
   headerItems?: React.ReactNode | React.ReactNodeArray;
-}> = ({ children, style, showNavBar, headerItems, ...rest }) => (
+} & React.HTMLAttributes<HTMLDivElement>;
+
+const BrowserWindow: React.FunctionComponent<BrowserWindowProps> = ({
+  children,
+  style,
+  showNavBar,
+  headerItems,
+  ...rest
+}) => (
   <div {...rest} style={{ ...styles.root, ...style }}>
     <div style={styles.header}>
       <div style={styles.close} />

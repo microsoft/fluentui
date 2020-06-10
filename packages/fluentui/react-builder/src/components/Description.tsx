@@ -1,14 +1,16 @@
 import * as React from 'react';
-import * as FUI from '@fluentui/react-northstar';
+import { Header } from '@fluentui/react-northstar';
 import { ComponentInfo } from '../componentInfo/types';
 import { JSONTreeElement } from './types';
 
-const ComponentDescription = ({
-  selectedJSONTreeElement,
-  componentInfo,
-}: {
+export type ComponentDescriptionProps = {
   selectedJSONTreeElement: JSONTreeElement;
   componentInfo: ComponentInfo;
+};
+
+const ComponentDescription: React.FunctionComponent<ComponentDescriptionProps> = ({
+  selectedJSONTreeElement,
+  componentInfo,
 }) => {
   if (!componentInfo) {
     return null;
@@ -16,9 +18,9 @@ const ComponentDescription = ({
 
   return (
     <div>
-      <FUI.Header as="h2" styles={{ display: 'inline-block', margin: 0 }}>
+      <Header as="h2" styles={{ display: 'inline-block', margin: 0 }}>
         {componentInfo.displayName}
-      </FUI.Header>{' '}
+      </Header>{' '}
       <code style={{ float: 'right' }}>uuid: {selectedJSONTreeElement.uuid}</code>
       <br />
       <span style={{ opacity: 0.5 }}>{componentInfo.docblock.description}</span>

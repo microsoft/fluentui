@@ -2,7 +2,13 @@ import * as React from 'react';
 import * as FUI from '@fluentui/react-northstar';
 import { ComponentInfo } from '../componentInfo/types';
 
-const ComponentAnatomy = ({ componentInfo }: { componentInfo: ComponentInfo }) => {
+type ComponentAnatomySlotProps = {
+  name: string;
+};
+
+const ComponentAnatomy: React.FunctionComponent<{ componentInfo: ComponentInfo }> & {
+  Slot: React.FunctionComponent<ComponentAnatomySlotProps>;
+} = ({ componentInfo }) => {
   const shorthandProps = componentInfo.props.filter(propDef =>
     propDef.types.some(type => {
       return type.name === 'ShorthandValue' || type.name === 'ShorthandCollection';
@@ -25,7 +31,7 @@ const ComponentAnatomy = ({ componentInfo }: { componentInfo: ComponentInfo }) =
   );
 };
 
-const ComponentAnatomySlot = ({ name }) => (
+const ComponentAnatomySlot: React.FunctionComponent<ComponentAnatomySlotProps> = ({ name }) => (
   <div
     style={{
       display: 'flex',

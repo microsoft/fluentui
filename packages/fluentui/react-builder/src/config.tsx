@@ -6,6 +6,7 @@ import * as FUI from '@fluentui/react-northstar';
 import * as FUIIcons from '@fluentui/react-icons-northstar';
 
 import { JSONTreeElement } from './components/types';
+import { getUUID } from './utils/getUUID';
 
 type FiberNavigator = FUI.FiberNavigator;
 
@@ -415,11 +416,6 @@ const toJSONTreeElement = input => {
   return result;
 };
 
-const getUUID = () =>
-  Math.random()
-    .toString(36)
-    .slice(2);
-
 export const resolveDraggingElement: (displayName: string, draggingElements?) => JSONTreeElement = (
   displayName,
   draggingElements = DRAGGING_ELEMENTS,
@@ -648,7 +644,7 @@ export const jsonTreeCloneElement = (tree: JSONTreeElement, element: any): JSONT
 /**
  * Displays a knob with the ability to switch between data `types`.
  */
-export const MultiTypeKnob: React.FC<{
+export const MultiTypeKnob: React.FunctionComponent<{
   label: string;
   types: ('boolean' | 'number' | 'string' | 'literal')[];
   value: any;

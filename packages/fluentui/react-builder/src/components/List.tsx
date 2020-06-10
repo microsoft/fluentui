@@ -8,13 +8,12 @@ import { EXCLUDED_COMPONENTS } from '../config';
 
 export type ListDisplayModes = 'Display Name' | 'Rendered';
 
-const List = ({
-  onDragStart,
-  style,
-}: {
-  onDragStart?: (componentInfo: ComponentInfo, e: MouseEvent) => any;
+export type ListProps = {
+  onDragStart?: (componentInfo: ComponentInfo, e: MouseEvent) => void;
   style?: React.CSSProperties;
-}) => {
+};
+
+const List: React.FunctionComponent<ListProps> = ({ onDragStart, style }) => {
   const [displayMode, setDisplayMode] = React.useState<ListDisplayModes>('Display Name');
   const [filter, setFilter] = React.useState<string>('');
 
@@ -120,10 +119,6 @@ const List = ({
         ))}
     </div>
   );
-};
-
-List.defaultProps = {
-  displayMode: 'rendered',
 };
 
 export default List;

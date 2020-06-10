@@ -3,20 +3,7 @@ import { Button, Checkbox, Image, RadioGroup, RadioGroupItemProps } from '@fluen
 import { DesignerMode } from './types';
 import { OpenOutsideIcon, TrashCanIcon } from '@fluentui/react-icons-northstar';
 
-const Toolbar = ({
-  isExpanding,
-  isSelecting,
-  onExpandLayoutChange,
-  onModeChange,
-  onReset,
-  onShowCodeChange,
-  onShowJSONTreeChange,
-  onSelectingChange,
-  mode,
-  showCode,
-  showJSONTree,
-  style,
-}: {
+export type ToolbarProps = {
   isExpanding: boolean;
   isSelecting: boolean;
   onExpandLayoutChange: (isExpanding: boolean) => void;
@@ -29,6 +16,21 @@ const Toolbar = ({
   showCode: boolean;
   showJSONTree: boolean;
   style?: React.CSSProperties;
+};
+
+const Toolbar: React.FunctionComponent<ToolbarProps> = ({
+  isExpanding,
+  isSelecting,
+  onExpandLayoutChange,
+  onModeChange,
+  onReset,
+  onShowCodeChange,
+  onShowJSONTreeChange,
+  onSelectingChange,
+  mode,
+  showCode,
+  showJSONTree,
+  style,
 }) => (
   <div
     style={{

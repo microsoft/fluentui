@@ -8,24 +8,7 @@ import { fiberNavFindJSONTreeElement, fiberNavFindOwnerInJSONTree, renderJSONTre
 import { DebugFrame } from './DebugFrame';
 import { DropSelector } from './DropSelector';
 
-const Canvas = ({
-  draggingElement,
-  isExpanding,
-  isSelecting,
-  jsonTree,
-  onDropPositionChange,
-  onMouseMove,
-  onMouseUp,
-  onSelectComponent,
-  onSelectorHover,
-  selectedComponent,
-  onCloneComponent,
-  onMoveComponent,
-  onDeleteComponent,
-  onGoToParentComponent,
-  renderJSONTreeElement,
-  style,
-}: {
+export type CanvasProps = {
   draggingElement: JSONTreeElement;
   jsonTree: JSONTreeElement;
   isExpanding?: boolean;
@@ -42,6 +25,25 @@ const Canvas = ({
   onGoToParentComponent?: () => void;
   renderJSONTreeElement?: (jsonTreeElement: JSONTreeElement) => JSONTreeElement;
   style?: React.CSSProperties;
+};
+
+const Canvas: React.FunctionComponent<CanvasProps> = ({
+  draggingElement,
+  isExpanding,
+  isSelecting,
+  jsonTree,
+  onDropPositionChange,
+  onMouseMove,
+  onMouseUp,
+  onSelectComponent,
+  onSelectorHover,
+  selectedComponent,
+  onCloneComponent,
+  onMoveComponent,
+  onDeleteComponent,
+  onGoToParentComponent,
+  renderJSONTreeElement,
+  style,
 }) => {
   const iframeId = React.useMemo(
     () =>

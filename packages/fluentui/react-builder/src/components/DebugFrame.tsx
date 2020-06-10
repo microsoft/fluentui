@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Ref } from '@fluentui/react-component-ref';
 import { CloneDebugButton, LevelUpDebugButton, TrashDebugButton, MoveDebugButton } from './DebugButtons';
 
 export type DebugFrameProps = {
@@ -22,7 +21,7 @@ export const DebugFrame: React.FunctionComponent<DebugFrameProps> = ({
   onMove,
   onGoToParent,
 }) => {
-  const frameRef = React.useRef<HTMLDivElement>();
+  const frameRef = React.useRef<HTMLPreElement>();
   const animationFrameId = React.useRef<number>();
 
   const setFramePosition = React.useCallback((frameEl, controlEl) => {
@@ -59,7 +58,6 @@ export const DebugFrame: React.FunctionComponent<DebugFrameProps> = ({
   }, [onDelete]);
 
   const handleGoToParent = React.useCallback(() => {
-    console.log('goto parent');
     onGoToParent?.();
   }, [onGoToParent]);
 
@@ -69,12 +67,10 @@ export const DebugFrame: React.FunctionComponent<DebugFrameProps> = ({
     }
 
     if (!frameRef.current) {
-      console.log('DebugFrame - no frameRef');
       return undefined;
     }
 
     const el = target.querySelectorAll(selector);
-    console.log('DebugFrame', { target, selector, el });
 
     animationFrameId.current =
       el.length === 1
@@ -85,46 +81,45 @@ export const DebugFrame: React.FunctionComponent<DebugFrameProps> = ({
   }, [target, selector, setFramePosition]);
 
   return (
-    <Ref innerRef={frameRef}>
-      <pre
-        style={{
-          position: 'fixed',
-          padding: 0,
-          margin: 0,
+    <pre
+      ref={frameRef}
+      style={{
+        position: 'fixed',
+        padding: 0,
+        margin: 0,
 
-          background: '#ffc65c11',
-          border: '1px solid #ffc65ccc',
-          color: '#444',
+        background: '#ffc65c11',
+        border: '1px solid #ffc65ccc',
+        color: '#444',
+        zIndex: 99999998,
+        pointerEvents: 'none',
+        userSelect: 'none',
+      }}
+    >
+      <div
+        style={{
+          position: 'absolute',
+          bottom: '100%',
+          padding: '2px 4px',
+          margin: '-1px 0 0 -1px',
+          left: 0,
+
+          whiteSpace: 'nowrap',
+          background: '#ffc65c',
+          border: '1px solid #ffc65c',
+          pointerEvents: 'initial',
+
+          display: 'flex',
+          alignItems: 'flex-end',
           zIndex: 99999998,
-          pointerEvents: 'none',
-          userSelect: 'none',
         }}
       >
-        <div
-          style={{
-            position: 'absolute',
-            bottom: '100%',
-            padding: '2px 4px',
-            margin: '-1px 0 0 -1px',
-            left: 0,
-
-            whiteSpace: 'nowrap',
-            background: '#ffc65c',
-            border: '1px solid #ffc65c',
-            pointerEvents: 'initial',
-
-            display: 'flex',
-            alignItems: 'flex-end',
-            zIndex: 99999998,
-          }}
-        >
-          <span style={{ fontWeight: 'bold' }}>{componentName}</span>
-          <LevelUpDebugButton onClick={handleGoToParent} />
-          <MoveDebugButton onClick={handleMove} />
-          <CloneDebugButton onClick={handleClone} />
-          <TrashDebugButton onClick={handleDelete} />
-        </div>
-      </pre>
-    </Ref>
+        <span style={{ fontWeight: 'bold' }}>{componentName}</span>
+        <LevelUpDebugButton onClick={handleGoToParent} />
+        <MoveDebugButton onClick={handleMove} />
+        <CloneDebugButton onClick={handleClone} />
+        <TrashDebugButton onClick={handleDelete} />
+      </div>
+    </pre>
   );
 };

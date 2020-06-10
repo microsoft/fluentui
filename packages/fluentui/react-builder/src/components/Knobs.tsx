@@ -66,7 +66,7 @@ type DesignKnobProps = {
   jsonTreeElement: JSONTreeElement;
 };
 
-const Knobs: React.FC<DesignKnobProps> = ({ onPropChange, info, jsonTreeElement }) => {
+const Knobs: React.FunctionComponent<DesignKnobProps> = ({ onPropChange, info, jsonTreeElement }) => {
   return (
     <div>
       <Header as="h3">Props</Header>
