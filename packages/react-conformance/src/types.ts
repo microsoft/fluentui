@@ -1,9 +1,9 @@
-export interface IsConformantOptions {
+import { ComponentDoc } from 'react-docgen-typescript';
+
+export interface TestingOptions {
   constructorName: string;
-  tests: String[];
   requiredProps?: object;
-  exportedAtTopLevel: boolean;
-  // packageRoot: any;
+  exportedAtTopLevel?: boolean;
 }
 
-export type ConformanceTest = () => void;
+export type ConformanceTest = (componentInfo: ComponentDoc, componentPath: string, testInfo: TestingOptions) => void;
