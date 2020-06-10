@@ -4,8 +4,8 @@ import felaPluginEmbedded from 'fela-plugin-embedded';
 import felaPluginFallbackValue from 'fela-plugin-fallback-value';
 import felaPluginPlaceholderPrefixer from 'fela-plugin-placeholder-prefixer';
 import felaPluginRtl from 'fela-plugin-rtl';
-import monolithic from 'fela-monolithic';
 
+import monolithic from './felaMono';
 import felaDisableAnimationsPlugin from './felaDisableAnimationsPlugin';
 import felaFocusVisibleEnhancer from './felaFocusVisibleEnhancer';
 import felaInvokeKeyframesPlugin from './felaInvokeKeyframesPlugin';
@@ -52,7 +52,7 @@ const filterClassName = (className: string): boolean =>
 const rendererConfig = {
   devMode: felaDevMode,
   filterClassName,
-  enhancers: [monolithic(), felaFocusVisibleEnhancer, felaStylisEnhancer],
+  enhancers: [monolithic, felaFocusVisibleEnhancer, felaStylisEnhancer],
   plugins: [
     felaDisableAnimationsPlugin(),
 
