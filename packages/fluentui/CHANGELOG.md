@@ -100,6 +100,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add `show` and `hide` animations in the `Popup` component @mnajdova ([#13439](https://github.com/microsoft/fluentui/pull/13439))
 - Added icons: `MeetingTimeIcon`, `VideomailIcon`, `ScreenshareIcon`, `Shift24hIcon`, `ShiftActivity`  @TanelVari ([#13513](https://github.com/microsoft/fluentui/pull/13513))
 - Extract `Renderer` related types to a separate package @layershifter ([#13616](https://github.com/microsoft/fluentui/pull/13616))
+- Add Emotion as an optional CSS-in-JS renderer @layershifter ([#13547](https://github.com/microsoft/fluentui/pull/13547))
 
 ### Performance
 - Omit `_.findKey()` usage in `focusVisibleEnhancer()` @layershifter ([#13343](https://github.com/microsoft/fluentui/pull/13343))

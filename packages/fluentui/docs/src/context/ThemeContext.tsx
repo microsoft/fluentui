@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-type ThemeName = 'teamsTheme' | 'teamsDarkTheme' | 'teamsHighContrastTheme';
+export type ThemeName = 'teamsTheme' | 'teamsDarkTheme' | 'teamsHighContrastTheme';
 type ThemeOption = { text: string; value: ThemeName };
 
 export type ThemeContextData = {
