@@ -74,7 +74,7 @@ export type CarouselNavigationStylesProps = Required<
 
 export const carouselNavigationClassName = 'ui-carousel__navigation';
 
-export const CarouselNavigation: React.FC<WithAsProp<CarouselNavigationProps>> &
+const CarouselNavigation: React.FC<WithAsProp<CarouselNavigationProps>> &
   FluentComponentStaticProps<CarouselNavigationProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(CarouselNavigation.displayName, context.telemetry);
