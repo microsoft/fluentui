@@ -1,6 +1,6 @@
 import { ConformanceTest, TestingOptions } from './types';
 import { ComponentDoc } from 'react-docgen-typescript';
-import { mountWithProvider as mount } from '../../fluentui/react-northstar/test/utils';
+import { mountWithProvider as mount } from './utilities/withProvider';
 import * as ReactIs from 'react-is';
 import * as React from 'react';
 

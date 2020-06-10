@@ -28,17 +28,33 @@
     "@types/react-is": "^16.7.1",
     "@uifabric/build": "^7.0.0",
     "@uifabric/tslint-rules": "^7.2.1",
+    "@fluentui/react-northstar": "^0.49.0",
+    "csstype": "^2.6.7",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
+    "fela-tools": "^10.6.1",
+    "inline-style-expand-shorthand": "^1.2.0",
     "jest": "~24.9.0",
+    "jest-react-fela": "^10.6.1",
+    "lodash": "^4.17.15",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
     "react-docgen-typescript": "^1.16.6",
     "react-dom": "16.8.6",
-    "react-is": "^16.6.3"
+    "react-is": "^16.6.3",
+    "stylis": "^3.5.4"
   },
   "dependencies": {
-    "tslib": "^1.10.0"
+    "tslib": "^1.10.0",
+    "@fluentui/react-bindings": "^0.49.0",
+    "@fluentui/styles": "^0.49.0",
+    "react-fela": "^10.6.1",
+    "fela": "^10.6.1",
+    "fela-plugin-embedded": "^10.6.1",
+    "fela-plugin-fallback-value": "^10.6.1",
+    "fela-plugin-placeholder-prefixer": "^10.6.1",
+    "fela-plugin-rtl": "^10.6.1",
+    "fela-utils": "^10.6.1"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <17.0.0",

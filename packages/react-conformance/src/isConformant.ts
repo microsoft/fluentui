@@ -1,4 +1,3 @@
-// import * as React from 'react';
 import { ConformanceTest, TestingOptions } from './types';
 import { withCustomConfig } from 'react-docgen-typescript';
 import * as path from 'path';

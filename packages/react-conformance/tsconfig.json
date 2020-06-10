@@ -7,15 +7,17 @@
     "jsx": "react",
     "declaration": true,
     "sourceMap": true,
+    "noImplicitAny": false,
     "experimentalDecorators": true,
     "importHelpers": true,
     "noUnusedLocals": true,
+    "noImplicitThis": false,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "moduleResolution": "node",
     "preserveConstEnums": true,
     "esModuleInterop": true,
-    "lib": ["es2017"],
+    "lib": ["es2017", "dom"],
     "types": ["jest", "node"]
   },
   "include": ["src"]
