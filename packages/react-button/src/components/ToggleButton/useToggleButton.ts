@@ -1,13 +1,20 @@
 import * as React from 'react';
+import { ComposeOptions } from '@fluentui/react-compose';
 import { useControllableValue } from '@uifabric/react-hooks';
+import { ButtonProps } from '../Button/Button.types';
 import { ToggleButtonProps } from './ToggleButton.types';
 
 /**
  * The useToggleButton hook processes the Button component props and returns state.
  * @param props
  */
-// tslint:disable-next-line:no-any
-export const useToggleButton = (props: ToggleButtonProps): any => {
+export const useToggleButton: ComposeOptions<
+  ToggleButtonProps,
+  ToggleButtonProps,
+  ButtonProps,
+  ButtonProps
+  // tslint:disable-next-line:no-any
+>['state'] = (props): any => {
   const { checked: controlledChecked, defaultChecked = false, onClick: onButtonClick } = props;
   const [checked, setChecked] = useControllableValue(controlledChecked, defaultChecked);
 
@@ -19,5 +26,5 @@ export const useToggleButton = (props: ToggleButtonProps): any => {
     setChecked(!checked);
   };
 
-  return { ...props, checked, setChecked, onClick };
+  return { ...props, checked, onClick };
 };
