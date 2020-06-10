@@ -2,6 +2,21 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "date": "Wed, 10 Jun 2020 12:37:27 GMT",
+      "tag": "@uifabric/styling_v7.12.17",
+      "version": "7.12.17",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ensure theme.ts is already included when importing from styling package",
+            "author": "xgao@microsoft.com",
+            "commit": "8e8238585646a6e308916ded83f539022d0a66fe",
+            "package": "@uifabric/styling"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 09 Jun 2020 12:35:17 GMT",
       "tag": "@uifabric/styling_v7.12.16",
       "version": "7.12.16",
