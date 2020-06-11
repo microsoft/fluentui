@@ -247,6 +247,63 @@ function useMaxHeight(
   return getCachedMaxHeight;
 }
 
+function useAutoDismissEvents(
+  { onDismiss, preventDismissOnScroll }: IPositioningContainerProps,
+  positionedHost: React.RefObject<HTMLDivElement | null>,
+  targetWindowRef: React.RefObject<Window | undefined>,
+  targetRef: React.RefObject<HTMLElement | MouseEvent | Point | null>,
+  positions: IPositionedData | undefined,
+  updateAsyncPosition: () => void,
+) {
+  const async = useAsync();
+
+  const onResize = (ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>): void => {
+    if (onDismiss) {
+      onDismiss(ev);
+    } else {
+      updateAsyncPosition();
+    }
+  };
+
+  const dismissOnScroll = (ev: Event): void => {
+    if (positions && !preventDismissOnScroll) {
+      dismissOnLostFocus(ev);
+    }
+  };
+
+  const dismissOnLostFocus = (ev: Event): void => {
+    const target = ev.target as HTMLElement;
+    const clickedOutsideCallout = positionedHost.current && !elementContains(positionedHost.current, target);
+
+    if (
+      (!targetRef.current && clickedOutsideCallout) ||
+      (ev.target !== targetWindowRef.current &&
+        clickedOutsideCallout &&
+        ((targetRef.current as MouseEvent).stopPropagation ||
+          !targetRef.current ||
+          (target !== targetRef.current && !elementContains(targetRef.current as HTMLElement, target))))
+    ) {
+      onResize(ev);
+    }
+  };
+
+  React.useEffect(() => {
+    const events = new EventGroup({});
+    // This is added so the positioningContainer will dismiss when the window is scrolled
+    // but not when something inside the positioningContainer is scrolled. The delay seems
+    // to be required to avoid React firing an async focus event in IE from
+    // the target changing focus quickly prior to rendering the positioningContainer.
+    async.setTimeout(() => {
+      events.on(targetWindowRef.current, 'scroll', async.throttle(dismissOnScroll, 10), true);
+      events.on(this.props.hoistedProps.targetWindowRef, 'resize', async.throttle(onResize, 10), true);
+      events.on(targetWindowRef.current?.document?.body, 'focus', dismissOnLostFocus, true);
+      events.on(targetWindowRef.current?.document?.body, 'click', dismissOnLostFocus, true);
+    }, 0);
+
+    return () => events.dispose();
+  }, []);
+}
+
 export const PositioningContainer = React.forwardRef(
   (propsWithoutDefaults: IPositioningContainerProps, forwardedRef: React.Ref<HTMLDivElement>) => {
     const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
@@ -271,6 +328,9 @@ export const PositioningContainer = React.forwardRef(
     const getCachedMaxHeight = useMaxHeight(props, targetRef, getCachedBounds);
 
     useSetInitialFocus(props, contentHost, positions);
+    useAutoDismissEvents(props, positionedHost, targetWindowRef, targetRef, positions, updateAsyncPosition);
+
+    React.useEffect(() => props.onLayerMounted?.(), []);
 
     return (
       <PositioningContainerClass
@@ -310,14 +370,12 @@ class PositioningContainerClass extends React.Component<IPositioningContainerCla
   implements PositioningContainerClass {
   private _setHeightOffsetTimer: number;
   private _async: Async;
-  private _events: EventGroup;
 
   constructor(props: IPositioningContainerClassProps) {
     super(props);
 
     initializeComponentRef(this);
     this._async = new Async(this);
-    this._events = new EventGroup(this);
 
     this.state = {
       heightOffset: 0,
@@ -325,7 +383,7 @@ class PositioningContainerClass extends React.Component<IPositioningContainerCla
   }
 
   public componentDidMount(): void {
-    this._onComponentDidMount();
+    this._setHeightOffsetEveryFrame();
   }
 
   // tslint:disable-next-line function-name
@@ -337,7 +395,6 @@ class PositioningContainerClass extends React.Component<IPositioningContainerCla
 
   public componentWillUnmount(): void {
     this._async.dispose();
-    this._events.dispose();
   }
 
   public render(): JSX.Element | null {
@@ -392,84 +449,6 @@ class PositioningContainerClass extends React.Component<IPositioningContainerCla
 
     return this.props.doNotLayer ? content : <Layer>{content}</Layer>;
   }
-
-  /**
-   * Deprecated, use `onResize` instead.
-   * @deprecated Use `onResize` instead.
-   */
-  public dismiss = (ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>): void => {
-    this.onResize(ev);
-  };
-
-  public onResize = (ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>): void => {
-    const { onDismiss } = this.props;
-    if (onDismiss) {
-      onDismiss(ev);
-    } else {
-      this.props.hoistedProps.updateAsyncPosition();
-    }
-  };
-
-  protected _dismissOnScroll(ev: Event): void {
-    const { preventDismissOnScroll } = this.props;
-    if (this.props.hoistedProps.positions && !preventDismissOnScroll) {
-      this._dismissOnLostFocus(ev);
-    }
-  }
-
-  protected _dismissOnLostFocus(ev: Event): void {
-    const target = ev.target as HTMLElement;
-    const clickedOutsideCallout =
-      this.props.hoistedProps.positionedHost.current &&
-      !elementContains(this.props.hoistedProps.positionedHost.current, target);
-
-    if (
-      (!this.props.hoistedProps.targetRef.current && clickedOutsideCallout) ||
-      (ev.target !== this.props.hoistedProps.targetWindowRef.current &&
-        clickedOutsideCallout &&
-        ((this.props.hoistedProps.targetRef.current as MouseEvent).stopPropagation ||
-          !this.props.hoistedProps.targetRef.current ||
-          (target !== this.props.hoistedProps.targetRef.current &&
-            !elementContains(this.props.hoistedProps.targetRef.current as HTMLElement, target))))
-    ) {
-      this.onResize(ev);
-    }
-  }
-
-  protected _onComponentDidMount = (): void => {
-    // This is added so the positioningContainer will dismiss when the window is scrolled
-    // but not when something inside the positioningContainer is scrolled. The delay seems
-    // to be required to avoid React firing an async focus event in IE from
-    // the target changing focus quickly prior to rendering the positioningContainer.
-    this._async.setTimeout(() => {
-      this._events.on(
-        this.props.hoistedProps.targetWindowRef,
-        'scroll',
-        this._async.throttle(this._dismissOnScroll, 10),
-        true,
-      );
-      this._events.on(this.props.hoistedProps.targetWindowRef, 'resize', this._async.throttle(this.onResize, 10), true);
-      this._events.on(
-        this.props.hoistedProps.targetWindowRef.current?.document?.body,
-        'focus',
-        this._dismissOnLostFocus,
-        true,
-      );
-      this._events.on(
-        this.props.hoistedProps.targetWindowRef.current?.document?.body,
-        'click',
-        this._dismissOnLostFocus,
-        true,
-      );
-    }, 0);
-
-    if (this.props.onLayerMounted) {
-      this.props.onLayerMounted();
-    }
-
-    this.props.hoistedProps.updateAsyncPosition();
-    this._setHeightOffsetEveryFrame();
-  };
 
   /**
    * Animates the height if finalHeight was given.
