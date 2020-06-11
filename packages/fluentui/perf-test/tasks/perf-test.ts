@@ -105,7 +105,10 @@ export default async function getPerfRegressions(baselineOnly: boolean = false) 
     outDir,
     tempDir,
     pageActions: async (page, options) => {
-      page.setDefaultTimeout(0); // set no timeout
+      // Occasionally during our CI, page takes unexpected amount of time to navigate (unsure about the root cause).
+      // Removing the timeout to avoid perf-test failures but be cautious about long test runs.
+      page.setDefaultTimeout(0);
+
       await page.goto(options.url);
     },
   };
