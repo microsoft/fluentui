@@ -17,7 +17,7 @@ import {
 import { IPositionedData, RectangleEdge, getOppositeEdge } from 'office-ui-fabric-react/lib/utilities/positioning';
 
 // Component Dependencies
-import { PositioningContainer, IPositioningContainer } from './PositioningContainer/index';
+import { PositioningContainer } from './PositioningContainer/index';
 import { Beak, BEAK_HEIGHT, BEAK_WIDTH } from './Beak/Beak';
 import { DirectionalHint } from '../../common/DirectionalHint';
 
@@ -139,7 +139,7 @@ export class CoachmarkBase extends React.Component<ICoachmarkProps, ICoachmarkSt
   private _translateAnimationContainer = React.createRef<HTMLDivElement>();
   private _ariaAlertContainer = React.createRef<HTMLDivElement>();
   private _childrenContainer = React.createRef<HTMLDivElement>();
-  private _positioningContainer = React.createRef<IPositioningContainer>();
+  private _positioningContainer = React.createRef<HTMLDivElement>();
 
   /**
    * The target element the mouse would be in
@@ -250,7 +250,7 @@ export class CoachmarkBase extends React.Component<ICoachmarkProps, ICoachmarkSt
       <PositioningContainer
         target={target}
         offsetFromTarget={BEAK_HEIGHT}
-        componentRef={this._positioningContainer}
+        ref={this._positioningContainer}
         finalHeight={finalHeight}
         onPositioned={this._onPositioned}
         bounds={this._getBounds()}
@@ -433,13 +433,15 @@ export class CoachmarkBase extends React.Component<ICoachmarkProps, ICoachmarkSt
     }
   }
 
-  private _onKeyDown = (e: any): void => {
+  private _onKeyDown = (e: KeyboardEvent): void => {
     // Open coachmark if user presses ALT + C (arbitrary keypress for now)
     if (
+      // tslint:disable-next-line: deprecation
       (e.altKey && e.which === KeyCodes.c) ||
+      // tslint:disable-next-line: deprecation
       (e.which === KeyCodes.enter &&
         this._translateAnimationContainer.current &&
-        this._translateAnimationContainer.current.contains(e.target))
+        this._translateAnimationContainer.current.contains(e.target as Node))
     ) {
       this._onFocusHandler();
     }

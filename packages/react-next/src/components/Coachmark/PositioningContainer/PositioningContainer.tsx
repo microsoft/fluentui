@@ -14,8 +14,6 @@ import {
   focusFirstChild,
   getWindow,
   getDocument,
-  initializeComponentRef,
-  Async,
   EventGroup,
   getPropsWithDefaults,
 } from '../../../Utilities';
@@ -44,14 +42,6 @@ const SLIDE_ANIMATIONS = {
   [RectangleEdge.left]: 'slideLeftIn20',
   [RectangleEdge.right]: 'slideRightIn20',
 } as const;
-
-export interface IPositioningContainerState {
-  /**
-   * Tracks the current height offset and updates during
-   * the height animation when props.finalHeight is specified.
-   */
-  heightOffset?: number;
-}
 
 const DEFAULT_PROPS = {
   preventDismissOnScroll: false,
@@ -304,6 +294,49 @@ function useAutoDismissEvents(
   }, []);
 }
 
+export function useHeightOffset(
+  { finalHeight }: IPositioningContainerProps,
+  contentHost: React.RefObject<HTMLDivElement | null>,
+) {
+  /**
+   * Tracks the current height offset and updates during
+   * the height animation when props.finalHeight is specified.
+   */
+  const [heightOffset, setHeightOffset] = React.useState<number>(0);
+  const async = useAsync();
+  const setHeightOffsetTimer = React.useRef<number>(0);
+
+  /**
+   * Animates the height if finalHeight was given.
+   */
+  const setHeightOffsetEveryFrame = (): void => {
+    if (contentHost && finalHeight) {
+      setHeightOffsetTimer.current = async.requestAnimationFrame(() => {
+        if (!contentHost.current) {
+          return;
+        }
+
+        const positioningContainerMainElem = contentHost.current.lastChild as HTMLElement;
+        const cardScrollHeight: number = positioningContainerMainElem.scrollHeight;
+        const cardCurrHeight: number = positioningContainerMainElem.offsetHeight;
+        const scrollDiff: number = cardScrollHeight - cardCurrHeight;
+
+        setHeightOffset(heightOffset + scrollDiff);
+
+        if (positioningContainerMainElem.offsetHeight < finalHeight) {
+          setHeightOffsetEveryFrame();
+        } else {
+          async.cancelAnimationFrame(setHeightOffsetTimer.current);
+        }
+      });
+    }
+  };
+
+  React.useEffect(setHeightOffsetEveryFrame, [finalHeight]);
+
+  return heightOffset;
+}
+
 export const PositioningContainer = React.forwardRef(
   (propsWithoutDefaults: IPositioningContainerProps, forwardedRef: React.Ref<HTMLDivElement>) => {
     const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
@@ -326,6 +359,7 @@ export const PositioningContainer = React.forwardRef(
       getCachedBounds,
     );
     const getCachedMaxHeight = useMaxHeight(props, targetRef, getCachedBounds);
+    const heightOffset = useHeightOffset(props, contentHost);
 
     useSetInitialFocus(props, contentHost, positions);
     useAutoDismissEvents(props, positionedHost, targetWindowRef, targetRef, positions, updateAsyncPosition);
@@ -345,6 +379,7 @@ export const PositioningContainer = React.forwardRef(
           updateAsyncPosition,
           getCachedBounds,
           getCachedMaxHeight,
+          heightOffset,
         }}
       />
     );
@@ -363,40 +398,12 @@ interface IPositioningContainerClassProps extends IPositioningContainerProps {
     updateAsyncPosition: () => void;
     getCachedBounds: () => IRectangle;
     getCachedMaxHeight: () => number;
+    heightOffset: number;
   };
 }
 
-class PositioningContainerClass extends React.Component<IPositioningContainerClassProps, IPositioningContainerState>
+class PositioningContainerClass extends React.Component<IPositioningContainerClassProps, {}>
   implements PositioningContainerClass {
-  private _setHeightOffsetTimer: number;
-  private _async: Async;
-
-  constructor(props: IPositioningContainerClassProps) {
-    super(props);
-
-    initializeComponentRef(this);
-    this._async = new Async(this);
-
-    this.state = {
-      heightOffset: 0,
-    };
-  }
-
-  public componentDidMount(): void {
-    this._setHeightOffsetEveryFrame();
-  }
-
-  // tslint:disable-next-line function-name
-  public UNSAFE_componentWillUpdate(newProps: IPositioningContainerClassProps): void {
-    if (newProps.finalHeight !== this.props.finalHeight) {
-      this._setHeightOffsetEveryFrame();
-    }
-  }
-
-  public componentWillUnmount(): void {
-    this._async.dispose();
-  }
-
   public render(): JSX.Element | null {
     // If there is no target window then we are likely in server side rendering and we should not render anything.
     if (!this.props.hoistedProps.targetWindowRef.current) {
@@ -416,7 +423,8 @@ class PositioningContainerClass extends React.Component<IPositioningContainerCla
     const directionalClassName =
       positions && positions.targetEdge ? AnimationClassNames[SLIDE_ANIMATIONS[positions.targetEdge]] : '';
 
-    const getContentMaxHeight: number = this.props.hoistedProps.getCachedMaxHeight() + this.state.heightOffset!;
+    const getContentMaxHeight: number =
+      this.props.hoistedProps.getCachedMaxHeight() + this.props.hoistedProps.heightOffset!;
     const contentMaxHeight: number =
       positioningContainerMaxHeight! && positioningContainerMaxHeight! > getContentMaxHeight
         ? getContentMaxHeight
@@ -448,34 +456,6 @@ class PositioningContainerClass extends React.Component<IPositioningContainerCla
     );
 
     return this.props.doNotLayer ? content : <Layer>{content}</Layer>;
-  }
-
-  /**
-   * Animates the height if finalHeight was given.
-   */
-  private _setHeightOffsetEveryFrame(): void {
-    if (this.props.hoistedProps.contentHost && this.props.finalHeight) {
-      this._setHeightOffsetTimer = this._async.requestAnimationFrame(() => {
-        if (!this.props.hoistedProps.contentHost.current) {
-          return;
-        }
-
-        const positioningContainerMainElem = this.props.hoistedProps.contentHost.current.lastChild as HTMLElement;
-        const cardScrollHeight: number = positioningContainerMainElem.scrollHeight;
-        const cardCurrHeight: number = positioningContainerMainElem.offsetHeight;
-        const scrollDiff: number = cardScrollHeight - cardCurrHeight;
-
-        this.setState({
-          heightOffset: this.state.heightOffset! + scrollDiff,
-        });
-
-        if (positioningContainerMainElem.offsetHeight < this.props.finalHeight!) {
-          this._setHeightOffsetEveryFrame();
-        } else {
-          this._async.cancelAnimationFrame(this._setHeightOffsetTimer);
-        }
-      });
-    }
   }
 }
 
