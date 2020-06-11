@@ -20,7 +20,6 @@ import {
   warnMutuallyExclusive,
 } from '../../Utilities';
 import { Callout } from '../../Callout';
-import { Checkbox, ICheckboxStyleProps, ICheckboxStyles } from '../../Checkbox';
 import { CommandButton } from '../../Button';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import {
@@ -46,6 +45,8 @@ import {
   getAllSelectedOptions,
   ISelectableDroppableTextProps,
 } from 'office-ui-fabric-react/lib/utilities/selectableOption/index';
+// import and use V7 Checkbox to ensure no breaking changes.
+import { Checkbox, ICheckboxStyleProps, ICheckboxStyles } from 'office-ui-fabric-react/lib/Checkbox';
 
 const getClassNames = classNamesFunction<IDropdownStyleProps, IDropdownStyles>();
 
