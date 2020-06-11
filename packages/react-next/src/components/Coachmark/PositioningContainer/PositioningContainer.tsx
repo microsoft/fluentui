@@ -285,7 +285,7 @@ function useAutoDismissEvents(
     // the target changing focus quickly prior to rendering the positioningContainer.
     async.setTimeout(() => {
       events.on(targetWindowRef.current, 'scroll', async.throttle(dismissOnScroll, 10), true);
-      events.on(this.props.hoistedProps.targetWindowRef, 'resize', async.throttle(onResize, 10), true);
+      events.on(targetWindowRef, 'resize', async.throttle(onResize, 10), true);
       events.on(targetWindowRef.current?.document?.body, 'focus', dismissOnLostFocus, true);
       events.on(targetWindowRef.current?.document?.body, 'click', dismissOnLostFocus, true);
     }, 0);
@@ -366,71 +366,25 @@ export const PositioningContainer = React.forwardRef(
 
     React.useEffect(() => props.onLayerMounted?.(), []);
 
-    return (
-      <PositioningContainerClass
-        {...props}
-        hoistedProps={{
-          contentHost,
-          positionedHost,
-          rootRef,
-          targetRef,
-          targetWindowRef,
-          positions,
-          updateAsyncPosition,
-          getCachedBounds,
-          getCachedMaxHeight,
-          heightOffset,
-        }}
-      />
-    );
-  },
-);
-PositioningContainer.displayName = 'PositioningContainer';
-
-interface IPositioningContainerClassProps extends IPositioningContainerProps {
-  hoistedProps: {
-    contentHost: React.RefObject<HTMLDivElement>;
-    positionedHost: React.RefObject<HTMLDivElement>;
-    rootRef: React.Ref<HTMLDivElement>;
-    targetRef: React.RefObject<HTMLElement | MouseEvent | Point | null>;
-    targetWindowRef: React.RefObject<Window | undefined>;
-    positions: IPositionedData | undefined;
-    updateAsyncPosition: () => void;
-    getCachedBounds: () => IRectangle;
-    getCachedMaxHeight: () => number;
-    heightOffset: number;
-  };
-}
-
-class PositioningContainerClass extends React.Component<IPositioningContainerClassProps, {}>
-  implements PositioningContainerClass {
-  public render(): JSX.Element | null {
     // If there is no target window then we are likely in server side rendering and we should not render anything.
-    if (!this.props.hoistedProps.targetWindowRef.current) {
+    if (!targetWindowRef.current) {
       return null;
     }
 
-    const {
-      className,
-      positioningContainerWidth,
-      positioningContainerMaxHeight,
-      children,
-      hoistedProps: { positions },
-    } = this.props;
+    const { className, positioningContainerWidth, positioningContainerMaxHeight, children } = props;
 
     const styles = getClassNames();
 
     const directionalClassName =
       positions && positions.targetEdge ? AnimationClassNames[SLIDE_ANIMATIONS[positions.targetEdge]] : '';
 
-    const getContentMaxHeight: number =
-      this.props.hoistedProps.getCachedMaxHeight() + this.props.hoistedProps.heightOffset!;
+    const getContentMaxHeight: number = getCachedMaxHeight() + heightOffset!;
     const contentMaxHeight: number =
       positioningContainerMaxHeight! && positioningContainerMaxHeight! > getContentMaxHeight
         ? getContentMaxHeight
         : positioningContainerMaxHeight!;
     const content = (
-      <div ref={this.props.hoistedProps.rootRef} className={css('ms-PositioningContainer', styles.container)}>
+      <div ref={rootRef} className={css('ms-PositioningContainer', styles.container)}>
         <div
           className={mergeStyles(
             'ms-PositioningContainer-layerHost',
@@ -444,7 +398,7 @@ class PositioningContainerClass extends React.Component<IPositioningContainerCla
           // Safari and Firefox on Mac OS requires this to back-stop click events so focus remains in the Callout.
           // See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#Clicking_and_focus
           tabIndex={-1}
-          ref={this.props.hoistedProps.contentHost}
+          ref={contentHost}
         >
           {children}
           {
@@ -455,9 +409,10 @@ class PositioningContainerClass extends React.Component<IPositioningContainerCla
       </div>
     );
 
-    return this.props.doNotLayer ? content : <Layer>{content}</Layer>;
-  }
-}
+    return props.doNotLayer ? content : <Layer>{content}</Layer>;
+  },
+);
+PositioningContainer.displayName = 'PositioningContainer';
 
 function arePositionsEqual(positions: IPositionedData, newPosition: IPositionedData): boolean {
   return comparePositions(positions.elementPosition, newPosition.elementPosition);
