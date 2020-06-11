@@ -207,6 +207,46 @@ function useSetInitialFocus(
   });
 }
 
+function useMaxHeight(
+  { directionalHintFixed, offsetFromTarget, directionalHint, target }: IPositioningContainerProps,
+  targetRef: React.RefObject<HTMLElement | MouseEvent | Point | null>,
+  getCachedBounds: () => IRectangle,
+) {
+  /**
+   * The maximum height the PositioningContainer can grow to
+   * without going beyond the window or target bounds
+   */
+  const maxHeight = React.useRef<number | undefined>();
+
+  // If the target element changed, reset the max height. If we are tracking
+  // target with class name, always reset because we do not know if
+  // fabric has rendered a new element and disposed the old element.
+  if (typeof target === 'string') {
+    maxHeight.current = undefined;
+  }
+  React.useEffect(() => {
+    maxHeight.current = undefined;
+  }, [target, offsetFromTarget]);
+
+  /**
+   * Return the maximum height the container can grow to
+   * without going out of the specified bounds
+   */
+  const getCachedMaxHeight = (): number => {
+    if (!maxHeight.current) {
+      if (directionalHintFixed && targetRef.current) {
+        const gapSpace = offsetFromTarget ? offsetFromTarget : 0;
+        maxHeight.current = getMaxHeight(targetRef.current, directionalHint!, gapSpace, getCachedBounds());
+      } else {
+        maxHeight.current = getCachedBounds().height! - BORDER_WIDTH * 2;
+      }
+    }
+    return maxHeight.current!;
+  };
+
+  return getCachedMaxHeight;
+}
+
 export const PositioningContainer = React.forwardRef(
   (propsWithoutDefaults: IPositioningContainerProps, forwardedRef: React.Ref<HTMLDivElement>) => {
     const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
@@ -228,6 +268,7 @@ export const PositioningContainer = React.forwardRef(
       targetRef,
       getCachedBounds,
     );
+    const getCachedMaxHeight = useMaxHeight(props, targetRef, getCachedBounds);
 
     useSetInitialFocus(props, contentHost, positions);
 
@@ -243,6 +284,7 @@ export const PositioningContainer = React.forwardRef(
           positions,
           updateAsyncPosition,
           getCachedBounds,
+          getCachedMaxHeight,
         }}
       />
     );
@@ -260,16 +302,12 @@ interface IPositioningContainerClassProps extends IPositioningContainerProps {
     positions: IPositionedData | undefined;
     updateAsyncPosition: () => void;
     getCachedBounds: () => IRectangle;
+    getCachedMaxHeight: () => number;
   };
 }
 
 class PositioningContainerClass extends React.Component<IPositioningContainerClassProps, IPositioningContainerState>
   implements PositioningContainerClass {
-  /**
-   * The maximum height the PositioningContainer can grow to
-   * without going being the window or target bounds
-   */
-  private _maxHeight: number | undefined;
   private _setHeightOffsetTimer: number;
   private _async: Async;
   private _events: EventGroup;
@@ -292,16 +330,6 @@ class PositioningContainerClass extends React.Component<IPositioningContainerCla
 
   // tslint:disable-next-line function-name
   public UNSAFE_componentWillUpdate(newProps: IPositioningContainerClassProps): void {
-    const newTarget = this._getTarget(newProps);
-    const oldTarget = this._getTarget();
-    if (newTarget !== oldTarget || typeof newTarget === 'string' || newTarget instanceof String) {
-      this._maxHeight = undefined;
-    }
-
-    if (newProps.offsetFromTarget !== this.props.offsetFromTarget) {
-      this._maxHeight = undefined;
-    }
-
     if (newProps.finalHeight !== this.props.finalHeight) {
       this._setHeightOffsetEveryFrame();
     }
@@ -331,7 +359,7 @@ class PositioningContainerClass extends React.Component<IPositioningContainerCla
     const directionalClassName =
       positions && positions.targetEdge ? AnimationClassNames[SLIDE_ANIMATIONS[positions.targetEdge]] : '';
 
-    const getContentMaxHeight: number = this._getMaxHeight() + this.state.heightOffset!;
+    const getContentMaxHeight: number = this.props.hoistedProps.getCachedMaxHeight() + this.state.heightOffset!;
     const contentMaxHeight: number =
       positioningContainerMaxHeight! && positioningContainerMaxHeight! > getContentMaxHeight
         ? getContentMaxHeight
@@ -444,29 +472,6 @@ class PositioningContainerClass extends React.Component<IPositioningContainerCla
   };
 
   /**
-   * Return the maximum height the container can grow to
-   * without going out of the specified bounds
-   */
-  private _getMaxHeight(): number {
-    const { directionalHintFixed, offsetFromTarget, directionalHint } = this.props;
-
-    if (!this._maxHeight) {
-      if (directionalHintFixed && this.props.hoistedProps.targetRef.current) {
-        const gapSpace = offsetFromTarget ? offsetFromTarget : 0;
-        this._maxHeight = getMaxHeight(
-          this.props.hoistedProps.targetRef.current,
-          directionalHint!,
-          gapSpace,
-          this.props.hoistedProps.getCachedBounds(),
-        );
-      } else {
-        this._maxHeight = this.props.hoistedProps.getCachedBounds().height! - BORDER_WIDTH * 2;
-      }
-    }
-    return this._maxHeight!;
-  }
-
-  /**
    * Animates the height if finalHeight was given.
    */
   private _setHeightOffsetEveryFrame(): void {
@@ -492,13 +497,6 @@ class PositioningContainerClass extends React.Component<IPositioningContainerCla
         }
       });
     }
-  }
-
-  private _getTarget(
-    props: IPositioningContainerClassProps = this.props,
-  ): HTMLElement | string | MouseEvent | Point | null {
-    const { target } = props;
-    return target!;
   }
 }
 
