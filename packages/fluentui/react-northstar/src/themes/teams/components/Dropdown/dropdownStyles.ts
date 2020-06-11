@@ -5,6 +5,7 @@ import { pxToRem } from '../../../../utils';
 import getBorderFocusStyles from '../../getBorderFocusStyles';
 import clearIndicatorUrl from './clearIndicatorUrl';
 import toggleIndicatorUrl from './toggleIndicatorUrl';
+import * as _ from 'lodash';
 
 type DropdownPropsAndState = DropdownProps & DropdownState;
 
@@ -36,22 +37,24 @@ const getWidth = (p: DropdownPropsAndState, v: DropdownVariables): string => {
   return v.width;
 };
 
+const isEmpty = prop => {
+  return typeof prop === 'object' && !prop.props && !_.get(prop, 'children') && !_.get(prop, 'content');
+};
+
 const dropdownStyles: ComponentSlotStylesPrepared<DropdownPropsAndState, DropdownVariables> = {
   root: ({ props: p }): ICSSInJSStyle => ({
     ...(p.inline && { display: 'inline-flex' }),
   }),
 
-  clearIndicator: ({ variables: v }) => ({
+  clearIndicator: ({ variables: v, props: p }) => ({
     alignItems: 'center',
     display: 'flex',
     justifyContent: 'center',
-
-    backgroundImage: clearIndicatorUrl(v.color),
+    ...(isEmpty(p.clearIndicator) && { backgroundImage: clearIndicatorUrl(v.color) }),
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
     cursor: 'pointer',
     userSelect: 'none',
-
     margin: 0,
     position: 'absolute',
     right: pxToRem(6),
