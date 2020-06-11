@@ -117,7 +117,7 @@ export const tableCell = ({
   ...(percentageRatio && { ...getCellColor(percentageRatio) }),
 });
 
-export const tableFooterCell = ({ align }: { align?: 'left' | 'right' | 'center' }): React.CSSProperties => ({
+export const tableFooterCell = ({ align }: { align?: CellAlign }): React.CSSProperties => ({
   fontWeight: 'bold',
   textAlign: 'right',
   ...(align && { textAlign: align }),
