@@ -15,7 +15,6 @@ export const useCheckbox = (props: ICheckboxProps, forwardedRef: React.Ref<HTMLD
     ariaSetSize,
     title,
     label,
-    checkmarkIconProps,
   } = props;
 
   const id = useId('checkbox-', props.id);
@@ -65,10 +64,6 @@ export const useCheckbox = (props: ICheckboxProps, forwardedRef: React.Ref<HTMLD
       'aria-posinset': ariaPositionInSet,
       'aria-setsize': ariaSetSize,
       'aria-checked': isIndeterminate ? 'mixed' : isChecked ? 'true' : 'false',
-    },
-    checkmark: {
-      iconName: 'CheckMark',
-      ...checkmarkIconProps,
     },
     container: {
       htmlFor: id,
