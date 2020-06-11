@@ -196,7 +196,7 @@ const ChatExampleInScrollableShorthand = () => {
 
   // container with transform: 'translate3d(0,0,0)' only for visual tests
   return (
-    <div style={{ width, willChange: 'transform' }}>
+    <>
       <div style={{ height, width, overflow: 'scroll', margin: 150, marginBottom: 0, marginLeft: 50 }}>
         <Chat items={items} styles={{ minHeight: '100%' }} />
       </div>
@@ -204,7 +204,7 @@ const ChatExampleInScrollableShorthand = () => {
       <button id="actions-to-max" onClick={() => setActionCount(actionItems.length)}>
         Set action count to max
       </button>
-    </div>
+    </>
   );
 };
 
