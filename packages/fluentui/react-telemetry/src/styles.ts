@@ -1,9 +1,21 @@
 import * as React from 'react';
 import { TelemetryPosition } from './useTelemetryState';
 
-const COLORS = ['#ffffcc', '#ffeda0', '#fed976', '#feb24c', '#fd8d3c', '#fc4e2a', '#e31a1c', '#bd0026', '#800026'];
+type CellColor = { backgroundColor: string; color: string };
+const CELL_COLORS: CellColor[] = [
+  { backgroundColor: '#ffffff', color: '#000000' },
+  { backgroundColor: '#ffffcc', color: '#000000' },
+  { backgroundColor: '#ffeda0', color: '#000000' },
+  { backgroundColor: '#fed976', color: '#000000' },
+  { backgroundColor: '#feb24c', color: '#000000' },
+  { backgroundColor: '#fd8d3c', color: '#000000' },
+  { backgroundColor: '#fc4e2a', color: '#000000' },
+  { backgroundColor: '#e31a1c', color: '#ffffff' },
+  { backgroundColor: '#bd0026', color: '#ffffff' },
+  { backgroundColor: '#800026', color: '#ffffff' },
+];
 
-export const getColor = (p: number): string => COLORS[Math.round((COLORS.length - 1) * p)];
+const getCellColor = (p: number): CellColor => CELL_COLORS[Math.round((CELL_COLORS.length - 1) * p)];
 
 export const controls = (): React.CSSProperties => ({
   border: '1px solid #e5e5e4',
@@ -26,15 +38,19 @@ export const panel = ({ position }: { position: TelemetryPosition }): React.CSSP
   minWidth: 500,
   zIndex: 1000,
 
-  ...(position === 'bottom' && {
+  ...(position === 'bottom-left' && {
+    left: 0,
+    bottom: 0,
+  }),
+  ...(position === 'bottom-right' && {
     right: 0,
     bottom: 0,
   }),
-  ...(position === 'left' && {
+  ...(position === 'top-left' && {
     left: 0,
     top: 0,
   }),
-  ...(position === 'right' && {
+  ...(position === 'top-right' && {
     right: 0,
     top: 0,
   }),
@@ -86,18 +102,24 @@ export const table = (): React.CSSProperties => ({
 });
 
 export const tableCell = ({
-  canSort,
+  align,
   percentageRatio,
 }: {
-  canSort?: boolean;
+  align?: 'left' | 'right' | 'center';
   percentageRatio?: number;
 }): React.CSSProperties => ({
   border: '1px solid #e5e5e4',
   padding: 2,
-  textAlign: 'left',
+  textAlign: 'right',
 
-  ...(canSort && { textAlign: 'right' }),
-  ...(percentageRatio && { backgroundColor: getColor(percentageRatio) }),
+  ...(align && { textAlign: align }),
+  ...(percentageRatio && { ...getCellColor(percentageRatio) }),
+});
+
+export const tableFooterCell = ({ align }: { align?: 'left' | 'right' | 'center' }): React.CSSProperties => ({
+  fontWeight: 'bold',
+  textAlign: 'right',
+  ...(align && { textAlign: align }),
 });
 
 export const tableCheckbox = (): React.CSSProperties => ({
@@ -110,7 +132,7 @@ export const tableControls = (): React.CSSProperties => ({
 
   alignItems: 'center',
   display: 'grid',
-  gridTemplateColumns: 'auto 100px 1fr auto',
+  gridTemplateColumns: 'auto 100px 1fr auto auto',
   gridGap: 5,
   padding: 6,
 });

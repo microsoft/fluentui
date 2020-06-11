@@ -77,6 +77,7 @@ export const TelemetryTable: React.FC<TelemetryTableProps> = props => {
       disableMultiSort: true,
 
       initialState: {
+        ...{ pageSize: 20 },
         ...(componentFilter && { filters: [{ id: 'componentName', value: componentFilter }] }),
         ...(sort && { sortBy: [{ id: sort.column, desc: sort.direction === 'desc' }] }),
       } as Partial<TableState>,
@@ -152,20 +153,29 @@ export const TelemetryTable: React.FC<TelemetryTableProps> = props => {
 
             return (
               <tr {...row.getRowProps()}>
-                {row.cells.map((cell: Cell & { column: UseSortByColumnProps<{}> & { showPercentage?: boolean } }) => (
-                  <td
-                    {...cell.getCellProps({
-                      style: styles.tableCell({
-                        canSort: cell.column.canSort,
-                        percentageRatio: cell.column.showPercentage
-                          ? cell.value / totals[cell.column.id as keyof TelemetryDataTotals]
-                          : undefined,
-                      }),
-                    })}
-                  >
-                    {cell.render('Cell')}
-                  </td>
-                ))}
+                {row.cells.map(
+                  (
+                    cell: Cell & {
+                      column: UseSortByColumnProps<{}> & {
+                        showPercentage?: boolean;
+                        align?: 'left' | 'right' | 'center';
+                      };
+                    },
+                  ) => (
+                    <td
+                      {...cell.getCellProps({
+                        style: styles.tableCell({
+                          align: cell.column.align,
+                          percentageRatio: cell.column.showPercentage
+                            ? cell.value / totals[cell.column.id as keyof TelemetryDataTotals]
+                            : undefined,
+                        }),
+                      })}
+                    >
+                      {cell.render('Cell')}
+                    </td>
+                  ),
+                )}
               </tr>
             );
           })}
@@ -174,7 +184,11 @@ export const TelemetryTable: React.FC<TelemetryTableProps> = props => {
           {footerGroups.map(group => (
             <tr {...group.getFooterGroupProps()}>
               {group.headers.find((header: HeaderGroup & { Footer: React.ReactElement }) => header.Footer) &&
-                group.headers.map(column => <td {...column.getFooterProps()}>{column.render('Footer')}</td>)}
+                group.headers.map((column: HeaderGroup & { align?: 'left' | 'right' | 'center' }) => (
+                  <td {...column.getFooterProps({ style: styles.tableFooterCell({ align: column.align }) })}>
+                    {column.render('Footer')}
+                  </td>
+                ))}
             </tr>
           ))}
         </tfoot>
@@ -191,11 +205,9 @@ export const TelemetryTable: React.FC<TelemetryTableProps> = props => {
             Collect telemetry
           </label>
         </div>
-
         <button onClick={() => telemetry.reset()} style={{ marginLeft: 10 }}>
           Clear data
         </button>
-
         <div>
           <label>Table refresh time</label>
           <select onChange={e => setInterval(Number(e.target.value))} style={{ marginLeft: 5 }} value={interval}>
@@ -205,7 +217,7 @@ export const TelemetryTable: React.FC<TelemetryTableProps> = props => {
             <option value="5000">5s</option>
           </select>
         </div>
-
+        <span>Total: {data.length} component(s)</span>
         <select
           value={pageSize}
           onChange={e => {

@@ -1,8 +1,8 @@
 import { defaultPerformanceFlags, StylesContextPerformance } from '@fluentui/react-bindings';
 import * as React from 'react';
 
-export type TelemetryPosition = 'left' | 'right' | 'bottom';
-export type TelemetryTabs = 'telemetry' | 'performance-flags' | 'help';
+export type TelemetryPosition = 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
+export type TelemetryTabs = 'telemetry' | 'performance-flags';
 export type TelemetryTableSort = { column: string; direction: 'asc' | 'desc' };
 
 export type TelemetryAction =
@@ -64,7 +64,7 @@ const defaultState: TelemetryState = {
   tableSort: undefined,
   tableExpandStyles: true,
 
-  position: 'bottom',
+  position: 'bottom-right',
   visible: false,
 };
 

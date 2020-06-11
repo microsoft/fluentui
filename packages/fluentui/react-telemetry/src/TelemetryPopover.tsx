@@ -57,12 +57,13 @@ export const TelemetryPopover: React.FC<TelemetryPopoverProps> = props => {
           <div style={styles.panel({ position: state.position })}>
             <div style={styles.controls()}>
               <div>
-                <button onClick={() => dispatch({ type: 'SET_POSITION', value: 'left' })}>Left</button>
-                <button onClick={() => dispatch({ type: 'SET_POSITION', value: 'right' })}>Right</button>
-                <button onClick={() => dispatch({ type: 'SET_POSITION', value: 'bottom' })}>Bottom</button>
+                <button onClick={() => dispatch({ type: 'SET_POSITION', value: 'top-left' })}>↖</button>
+                <button onClick={() => dispatch({ type: 'SET_POSITION', value: 'top-right' })}>↗</button>
+                <button onClick={() => dispatch({ type: 'SET_POSITION', value: 'bottom-left' })}>↙</button>
+                <button onClick={() => dispatch({ type: 'SET_POSITION', value: 'bottom-right' })}>↘</button>
               </div>
 
-              <button onClick={() => dispatch({ type: 'SET_VISIBILITY', value: false })}>X</button>
+              <button onClick={() => dispatch({ type: 'SET_VISIBILITY', value: false })}>✕</button>
             </div>
 
             {state.activeTab === 'telemetry' && (
@@ -83,12 +84,6 @@ export const TelemetryPopover: React.FC<TelemetryPopoverProps> = props => {
               />
             )}
 
-            {state.activeTab === 'help' && (
-              <div style={styles.help()}>
-                <b>TBD</b>
-              </div>
-            )}
-
             <div style={styles.tabs()}>
               <button
                 style={styles.tab({ active: state.activeTab === 'telemetry' })}
@@ -101,12 +96,6 @@ export const TelemetryPopover: React.FC<TelemetryPopoverProps> = props => {
                 onClick={() => dispatch({ type: 'SET_TELEMETRY_TAB', tab: 'performance-flags' })}
               >
                 Performance flags
-              </button>
-              <button
-                style={styles.tab({ active: state.activeTab === 'help' })}
-                onClick={() => dispatch({ type: 'SET_TELEMETRY_TAB', tab: 'help' })}
-              >
-                Help
               </button>
             </div>
           </div>,

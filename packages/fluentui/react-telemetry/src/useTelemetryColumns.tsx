@@ -18,12 +18,16 @@ const TelemetryTableFilter: React.FC<FilterProps<{}> & { column: UseFiltersColum
   );
 };
 
-const TelemetryTableRoundingCell: React.FC<CellProps<{}>> = ({ value }) => <>{_.round(value, 2)}</>;
+const TelemetryTableRoundingCell: React.FC<CellProps<{}>> = ({ value }) => <>{_.round(value, 2).toFixed(2)}</>;
 
 const TelemetryTableRoundingFooter: React.FC<HeaderProps<{}> & { totals: TelemetryDataTotals }> = ({
   column,
   totals,
-}) => <>{_.round(totals[column.id as keyof TelemetryDataTotals], 2)}</>;
+}) => <>{_.round(totals[column.id as keyof TelemetryDataTotals], 2).toFixed(2)}</>;
+
+const TelemetryTableSumFooter: React.FC<HeaderProps<{}> & { totals: TelemetryDataTotals }> = ({ column, totals }) => (
+  <>{totals[column.id as keyof TelemetryDataTotals]}</>
+);
 
 export function useTelemetryColumns(showDetails: boolean): Column[] {
   return React.useMemo(
@@ -37,22 +41,22 @@ export function useTelemetryColumns(showDetails: boolean): Column[] {
             {
               Header: 'Component',
               Filter: TelemetryTableFilter,
-              Footer: () => <b>Totals</b>,
+              Footer: 'Totals',
 
               accessor: 'componentName',
-              disableSortBy: true,
+              align: 'left',
               filter: 'text',
             },
             {
               Header: 'Instances',
-              Footer: TelemetryTableRoundingFooter,
+              Footer: TelemetryTableSumFooter,
 
               accessor: 'instances',
               disableFilters: true,
             },
             {
               Header: 'Renders',
-              Footer: TelemetryTableRoundingFooter,
+              Footer: TelemetryTableSumFooter,
 
               accessor: 'renders',
               disableFilters: true,
@@ -87,7 +91,7 @@ export function useTelemetryColumns(showDetails: boolean): Column[] {
 
             showDetails && {
               Cell: TelemetryTableRoundingCell,
-              Header: 'Variables',
+              Header: <span title="Merge component variables, resolve them with  site variables">Variables</span>,
               Footer: TelemetryTableRoundingFooter,
 
               accessor: 'msResolveVariablesTotal',
@@ -95,7 +99,7 @@ export function useTelemetryColumns(showDetails: boolean): Column[] {
             },
             showDetails && {
               Cell: TelemetryTableRoundingCell,
-              Header: 'Styles',
+              Header: <span title="Merge style objects, resolve them with variables">Merge</span>,
               Footer: TelemetryTableRoundingFooter,
 
               accessor: 'msResolveStylesTotal',
@@ -103,7 +107,11 @@ export function useTelemetryColumns(showDetails: boolean): Column[] {
             },
             showDetails && {
               Cell: TelemetryTableRoundingCell,
-              Header: 'Fela',
+              Header: (
+                <span title="Process style objects with CSSInJS plugins, generate CSS classes, inject styles into DOM">
+                  CSS
+                </span>
+              ),
               Footer: TelemetryTableRoundingFooter,
 
               accessor: 'msRenderStylesTotal',
