@@ -9,14 +9,14 @@
 **/
 :root {
   /* TODO: Remove. Colors should only be defined in the theme. */
-  --button-fill-checked: rgb(225, 223, 221);
-  --button-text-checked: var(--button-text);
-  --button-icon-checked: var(--button-icon);
+  --button-checked-background: rgb(225, 223, 221);
+  --button-checked-contentColor: var(--button-contentColor);
+  --button-checked-iconColor: var(--button-iconColor);
 
   /* TODO: Remove. Accent should only be defined in the theme. */
-  --accent-fill-checked: rgb(70, 71, 117);
-  --accent-text-checked: var(--accent-text);
-  --accent-icon-checked: var(--accent-text);
+  --accent-checked-background: rgb(70, 71, 117);
+  --accent-checked-contentColor: var(--accent-contentColor);
+  --accent-checked-iconColor: var(--accent-iconColor);
 }
 
 /**
@@ -42,7 +42,7 @@
    * 3. Avoid defining styles directly.
    */
   &._checked {
-    --button-fill: var(--button-fill-checked);
-    --accent-fill: var(--accent-fill-checked);
+    --button-background: var(--button-checked-background);
+    --accent-background: var(--accent-checked-background);
   }
 }
