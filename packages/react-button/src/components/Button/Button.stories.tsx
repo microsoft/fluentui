@@ -127,13 +127,11 @@ export const ButtonTokens = () => (
 
           hovered: {
             background: 'rgb(255, 50, 61)',
-            contentColor: 'rgb(17, 17, 17)',
             borderColor: '#a88734 #9c7e31 #846a29',
           },
 
           pressed: {
             background: 'rgb(229, 9, 20)',
-            contentColor: 'rgb(17, 17, 17)',
             borderColor: '#a88734 #9c7e31 #846a29',
           },
         }}
