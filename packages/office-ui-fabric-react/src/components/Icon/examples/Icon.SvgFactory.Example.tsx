@@ -10,10 +10,11 @@ const classes = mergeStyleSets({
     alignItems: 'center',
     margin: '80px',
     float: 'left',
+    height: '50px',
+    width: '50px',
   },
   icon: {
-    height: 50,
-    width: 50,
+    fontSize: '50px',
   },
   code: {
     background: '#f2f2f2',

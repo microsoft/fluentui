@@ -283,10 +283,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -294,8 +296,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -333,10 +334,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -344,8 +347,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -383,10 +385,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -394,8 +398,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -433,10 +436,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -444,8 +449,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -483,10 +487,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -494,8 +500,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -533,10 +538,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -544,8 +551,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -583,10 +589,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -594,8 +602,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -633,10 +640,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -644,8 +653,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -683,10 +691,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -694,8 +704,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -733,10 +742,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -744,8 +755,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -783,10 +793,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -794,8 +806,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -833,10 +844,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -844,8 +857,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -883,10 +895,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -894,8 +908,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -933,10 +946,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -944,8 +959,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -983,10 +997,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -994,8 +1010,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -1033,10 +1048,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -1044,8 +1061,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -1083,10 +1099,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -1094,8 +1112,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -1133,10 +1150,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -1144,8 +1163,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -1183,10 +1201,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -1194,8 +1214,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -1233,10 +1252,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -1244,8 +1265,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -1283,10 +1303,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -1294,8 +1316,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -1333,10 +1354,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -1344,8 +1367,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -1383,10 +1405,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -1394,8 +1418,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -1433,10 +1456,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -1444,8 +1469,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -1483,10 +1507,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -1494,8 +1520,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -1533,10 +1558,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -1544,8 +1571,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -1583,10 +1609,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -1594,8 +1622,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -1633,10 +1660,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -1644,8 +1673,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -1683,10 +1711,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -1694,8 +1724,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -1733,10 +1762,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -1744,8 +1775,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -1783,10 +1813,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -1794,8 +1826,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -1833,10 +1864,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -1844,8 +1877,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -1883,10 +1915,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -1894,8 +1928,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -1933,10 +1966,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -1944,8 +1979,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -1983,10 +2017,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -1994,8 +2030,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -2033,10 +2068,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -2044,8 +2081,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -2083,10 +2119,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -2094,8 +2132,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -2133,10 +2170,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -2144,8 +2183,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -2183,10 +2221,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -2194,8 +2234,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -2233,10 +2272,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -2244,8 +2285,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -2283,10 +2323,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -2294,8 +2336,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -2333,10 +2374,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -2344,8 +2387,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -2383,10 +2425,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -2394,8 +2438,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -2433,10 +2476,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -2444,8 +2489,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -2483,10 +2527,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -2494,8 +2540,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -2533,10 +2578,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -2544,8 +2591,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -2583,10 +2629,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -2594,8 +2642,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -2633,10 +2680,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -2644,8 +2693,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -2683,10 +2731,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -2694,8 +2744,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -2733,10 +2782,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -2744,8 +2795,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -2783,10 +2833,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -2794,8 +2846,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -2833,10 +2884,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -2844,8 +2897,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -2883,10 +2935,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -2894,8 +2948,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -2933,10 +2986,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -2944,8 +2999,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -2983,10 +3037,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -2994,8 +3050,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -3033,10 +3088,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -3044,8 +3101,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -3083,10 +3139,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -3094,8 +3152,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -3133,10 +3190,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -3144,8 +3203,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -3183,10 +3241,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -3194,8 +3254,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -3233,10 +3292,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -3244,8 +3305,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -3283,10 +3343,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -3294,8 +3356,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -3333,10 +3394,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -3344,8 +3407,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -3383,10 +3445,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -3394,8 +3458,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -3433,10 +3496,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -3444,8 +3509,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -3483,10 +3547,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -3494,8 +3560,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -3533,10 +3598,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -3544,8 +3611,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -3583,10 +3649,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -3594,8 +3662,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -3633,10 +3700,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -3644,8 +3713,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -3683,10 +3751,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -3694,8 +3764,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -3733,10 +3802,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -3744,8 +3815,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -3783,10 +3853,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -3794,8 +3866,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -3833,10 +3904,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -3844,8 +3917,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -3883,10 +3955,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -3894,8 +3968,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -3933,10 +4006,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -3944,8 +4019,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -3983,10 +4057,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -3994,8 +4070,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -4033,10 +4108,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -4044,8 +4121,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -4083,10 +4159,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -4094,8 +4172,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -4133,10 +4210,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -4144,8 +4223,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -4183,10 +4261,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -4194,8 +4274,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -4233,10 +4312,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -4244,8 +4325,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -4283,10 +4363,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -4294,8 +4376,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -4333,10 +4414,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -4344,8 +4427,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -4383,10 +4465,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -4394,8 +4478,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -4433,10 +4516,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -4444,8 +4529,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -4483,10 +4567,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -4494,8 +4580,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -4533,10 +4618,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -4544,8 +4631,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -4583,10 +4669,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -4594,8 +4682,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -4633,10 +4720,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -4644,8 +4733,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -4683,10 +4771,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -4694,8 +4784,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -4733,10 +4822,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -4744,8 +4835,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -4783,10 +4873,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -4794,8 +4886,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -4833,10 +4924,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -4844,8 +4937,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -4883,10 +4975,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -4894,8 +4988,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -4933,10 +5026,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -4944,8 +5039,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -4983,10 +5077,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -4994,8 +5090,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -5033,10 +5128,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -5044,8 +5141,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -5083,10 +5179,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -5094,8 +5192,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -5133,10 +5230,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -5144,8 +5243,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -5183,10 +5281,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -5194,8 +5294,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
@@ -5233,10 +5332,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             display: flex;
             flex-direction: column;
             float: left;
+            height: 50px;
             margin-bottom: 80px;
             margin-left: 80px;
             margin-right: 80px;
             margin-top: 80px;
+            width: 50px;
           }
     >
       <span
@@ -5244,8 +5345,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
         className=
 
             {
-              height: 50px;
-              width: 50px;
+              font-size: 50px;
             }
         role="presentation"
         style={Object {}}
