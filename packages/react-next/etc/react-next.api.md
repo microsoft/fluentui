@@ -260,8 +260,10 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
     indeterminate?: boolean;
     inputProps?: React.ButtonHTMLAttributes<HTMLElement | HTMLButtonElement>;
     keytipProps?: IKeytipProps;
-    label?: string;
+    // Warning: (ae-forgotten-export) The symbol "ShorthandValue" needs to be exported by the entry point index.d.ts
+    label?: ShorthandValue<React.HTMLAttributes<HTMLSpanElement>>;
     onChange?: (ev?: React.FormEvent<HTMLElement | HTMLInputElement>, checked?: boolean) => void;
+    // @deprecated
     onRenderLabel?: IRenderFunction<ICheckboxProps>;
     // @deprecated
     styles?: IStyleFunctionOrObject<ICheckboxStyleProps, ICheckboxStyles>;

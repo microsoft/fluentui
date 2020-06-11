@@ -68,11 +68,10 @@ export const useCheckbox = (props: ICheckboxProps, forwardedRef: React.Ref<HTMLD
     container: {
       htmlFor: id,
     },
-    label: {
-      children: props.label,
+    label: mergeShorthandProp(props.label, {
       title: props.title,
       'aria-hidden': 'true',
-    },
+    }),
   };
 
   return handledProps;

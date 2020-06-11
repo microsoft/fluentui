@@ -26,8 +26,29 @@ export const CheckboxOtherExample: React.FunctionComponent = () => {
 
       <Checkbox label="Checkbox with extra props for the input" inputProps={inputProps} />
 
-      <Checkbox label="Checkbox with link inside the label" onRenderLabel={_renderLabelWithLink} />
+      <Checkbox label={<span>Custom label 1</span>} />
+
+      <Checkbox label={{ className: 'label', children: 'Custom label 2' }} />
+
+      <Checkbox label={{ children: CustomLabel }} />
+
+      <Checkbox onRenderLabel={_renderLabelWithLink} />
     </Stack>
+  );
+};
+
+const CustomLabel: React.FunctionComponent<{
+  Component: React.ElementType;
+  props: React.HTMLAttributes<HTMLSpanElement>;
+}> = renderProps => {
+  const { Component, props } = renderProps;
+  return (
+    <Component {...props}>
+      Custom-rendered label with a{' '}
+      <Link href="https://www.microsoft.com" target="_blank">
+        link
+      </Link>
+    </Component>
   );
 };
 
