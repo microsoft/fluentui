@@ -65,6 +65,52 @@ const DEFAULT_PROPS = {
   directionalHint: DirectionalHint.bottomAutoEdge,
 };
 
+function useTargets({ target }: IPositioningContainerProps, positionedHost: React.RefObject<HTMLDivElement | null>) {
+  const previousTargetProp = React.useRef<HTMLElement | string | MouseEvent | Point | null | undefined>();
+
+  const targetRef = React.useRef<HTMLElement | MouseEvent | Point | null>(null);
+  /**
+   * Stores an instance of Window, used to check
+   * for server side rendering and if focus was lost.
+   */
+  const targetWindowRef = React.useRef<Window>();
+
+  // If the target element changed, find the new one. If we are tracking
+  // target with class name, always find element because we do not know if
+  // fabric has rendered a new element and disposed the old element.
+  if (target !== previousTargetProp.current || typeof target === 'string') {
+    const currentElement = positionedHost.current;
+
+    if (target) {
+      if (typeof target === 'string') {
+        const currentDoc: Document = getDocument()!;
+        targetRef.current = currentDoc ? (currentDoc.querySelector(target) as HTMLElement) : null;
+        targetWindowRef.current = getWindow(currentElement)!;
+      } else if (!!(target as MouseEvent).stopPropagation) {
+        targetWindowRef.current = getWindow((target as MouseEvent).target as HTMLElement)!;
+        targetRef.current = target;
+      } else if (
+        // tslint:disable-next-line:deprecation
+        ((target as Point).left !== undefined || (target as Point).x !== undefined) &&
+        // tslint:disable-next-line:deprecation
+        ((target as Point).top !== undefined || (target as Point).y !== undefined)
+      ) {
+        targetWindowRef.current = getWindow(currentElement)!;
+        targetRef.current = target;
+      } else {
+        const targetElement: HTMLElement = target as HTMLElement;
+        targetWindowRef.current = getWindow(targetElement)!;
+        targetRef.current = target;
+      }
+    } else {
+      targetWindowRef.current = getWindow(currentElement)!;
+    }
+    previousTargetProp.current = target;
+  }
+
+  return [targetRef, targetWindowRef] as const;
+}
+
 export const PositioningContainer = React.forwardRef(
   (propsWithoutDefaults: IPositioningContainerProps, forwardedRef: React.Ref<HTMLDivElement>) => {
     const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
@@ -77,7 +123,14 @@ export const PositioningContainer = React.forwardRef(
     const positionedHost = React.useRef<HTMLDivElement>(null);
     const rootRef = useMergedRefs(forwardedRef, positionedHost);
 
-    return <PositioningContainerClass {...props} hoistedProps={{ contentHost, positionedHost, rootRef }} />;
+    const [targetRef, targetWindowRef] = useTargets(props, positionedHost);
+
+    return (
+      <PositioningContainerClass
+        {...props}
+        hoistedProps={{ contentHost, positionedHost, rootRef, targetRef, targetWindowRef }}
+      />
+    );
   },
 );
 PositioningContainer.displayName = 'PositioningContainer';
@@ -87,18 +140,14 @@ interface IPositioningContainerClassProps extends IPositioningContainerProps {
     contentHost: React.RefObject<HTMLDivElement>;
     positionedHost: React.RefObject<HTMLDivElement>;
     rootRef: React.Ref<HTMLDivElement>;
+    targetRef: React.RefObject<HTMLElement | MouseEvent | Point | null>;
+    targetWindowRef: React.RefObject<Window | undefined>;
   };
 }
 
 class PositioningContainerClass extends React.Component<IPositioningContainerClassProps, IPositioningContainerState>
   implements PositioningContainerClass {
   private _didSetInitialFocus: boolean;
-
-  /**
-   * Stores an instance of Window, used to check
-   * for server side rendering and if focus was lost.
-   */
-  private _targetWindow: Window;
 
   /**
    * The bounds used when determing if and where the
@@ -112,7 +161,6 @@ class PositioningContainerClass extends React.Component<IPositioningContainerCla
    */
   private _maxHeight: number | undefined;
   private _positionAttempts: number;
-  private _target: HTMLElement | MouseEvent | Point | null;
   private _setHeightOffsetTimer: number;
   private _async: Async;
   private _events: EventGroup;
@@ -132,11 +180,6 @@ class PositioningContainerClass extends React.Component<IPositioningContainerCla
     this._positionAttempts = 0;
   }
 
-  // tslint:disable-next-line function-name
-  public UNSAFE_componentWillMount(): void {
-    this._setTargetWindowAndElement(this._getTarget());
-  }
-
   public componentDidMount(): void {
     this._onComponentDidMount();
   }
@@ -148,14 +191,10 @@ class PositioningContainerClass extends React.Component<IPositioningContainerCla
 
   // tslint:disable-next-line function-name
   public UNSAFE_componentWillUpdate(newProps: IPositioningContainerClassProps): void {
-    // If the target element changed, find the new one. If we are tracking
-    // target with class name, always find element because we do not know if
-    // fabric has rendered a new element and disposed the old element.
     const newTarget = this._getTarget(newProps);
     const oldTarget = this._getTarget();
     if (newTarget !== oldTarget || typeof newTarget === 'string' || newTarget instanceof String) {
       this._maxHeight = undefined;
-      this._setTargetWindowAndElement(newTarget!);
     }
 
     if (newProps.offsetFromTarget !== this.props.offsetFromTarget) {
@@ -174,7 +213,7 @@ class PositioningContainerClass extends React.Component<IPositioningContainerCla
 
   public render(): JSX.Element | null {
     // If there is no target window then we are likely in server side rendering and we should not render anything.
-    if (!this._targetWindow) {
+    if (!this.props.hoistedProps.targetWindowRef.current) {
       return null;
     }
 
@@ -251,12 +290,13 @@ class PositioningContainerClass extends React.Component<IPositioningContainerCla
       !elementContains(this.props.hoistedProps.positionedHost.current, target);
 
     if (
-      (!this._target && clickedOutsideCallout) ||
-      (ev.target !== this._targetWindow &&
+      (!this.props.hoistedProps.targetRef.current && clickedOutsideCallout) ||
+      (ev.target !== this.props.hoistedProps.targetWindowRef.current &&
         clickedOutsideCallout &&
-        ((this._target as MouseEvent).stopPropagation ||
-          !this._target ||
-          (target !== this._target && !elementContains(this._target as HTMLElement, target))))
+        ((this.props.hoistedProps.targetRef.current as MouseEvent).stopPropagation ||
+          !this.props.hoistedProps.targetRef.current ||
+          (target !== this.props.hoistedProps.targetRef.current &&
+            !elementContains(this.props.hoistedProps.targetRef.current as HTMLElement, target))))
     ) {
       this.onResize(ev);
     }
@@ -280,10 +320,25 @@ class PositioningContainerClass extends React.Component<IPositioningContainerCla
     // to be required to avoid React firing an async focus event in IE from
     // the target changing focus quickly prior to rendering the positioningContainer.
     this._async.setTimeout(() => {
-      this._events.on(this._targetWindow, 'scroll', this._async.throttle(this._dismissOnScroll, 10), true);
-      this._events.on(this._targetWindow, 'resize', this._async.throttle(this.onResize, 10), true);
-      this._events.on(this._targetWindow.document.body, 'focus', this._dismissOnLostFocus, true);
-      this._events.on(this._targetWindow.document.body, 'click', this._dismissOnLostFocus, true);
+      this._events.on(
+        this.props.hoistedProps.targetWindowRef,
+        'scroll',
+        this._async.throttle(this._dismissOnScroll, 10),
+        true,
+      );
+      this._events.on(this.props.hoistedProps.targetWindowRef, 'resize', this._async.throttle(this.onResize, 10), true);
+      this._events.on(
+        this.props.hoistedProps.targetWindowRef.current?.document?.body,
+        'focus',
+        this._dismissOnLostFocus,
+        true,
+      );
+      this._events.on(
+        this.props.hoistedProps.targetWindowRef.current?.document?.body,
+        'click',
+        this._dismissOnLostFocus,
+        true,
+      );
     }, 0);
 
     if (this.props.onLayerMounted) {
@@ -309,7 +364,7 @@ class PositioningContainerClass extends React.Component<IPositioningContainerCla
       let currentProps: IPositionProps | undefined;
       currentProps = assign(currentProps, this.props);
       currentProps!.bounds = this._getBounds();
-      currentProps!.target = this._target!;
+      currentProps!.target = this.props.hoistedProps.targetRef.current!;
       if (document.body.contains(currentProps!.target as Node)) {
         currentProps!.gapSpace = offsetFromTarget;
         const newPositions: IPositionedData = positionElement(currentProps!, hostElement, positioningContainerElement);
@@ -354,10 +409,10 @@ class PositioningContainerClass extends React.Component<IPositioningContainerCla
         currentBounds = {
           top: 0 + this.props.minPagePadding!,
           left: 0 + this.props.minPagePadding!,
-          right: this._targetWindow.innerWidth - this.props.minPagePadding!,
-          bottom: this._targetWindow.innerHeight - this.props.minPagePadding!,
-          width: this._targetWindow.innerWidth - this.props.minPagePadding! * 2,
-          height: this._targetWindow.innerHeight - this.props.minPagePadding! * 2,
+          right: this.props.hoistedProps.targetWindowRef.current!.innerWidth - this.props.minPagePadding!,
+          bottom: this.props.hoistedProps.targetWindowRef.current!.innerHeight - this.props.minPagePadding!,
+          width: this.props.hoistedProps.targetWindowRef.current!.innerWidth - this.props.minPagePadding! * 2,
+          height: this.props.hoistedProps.targetWindowRef.current!.innerHeight - this.props.minPagePadding! * 2,
         };
       }
       this._positioningBounds = currentBounds;
@@ -373,9 +428,14 @@ class PositioningContainerClass extends React.Component<IPositioningContainerCla
     const { directionalHintFixed, offsetFromTarget, directionalHint } = this.props;
 
     if (!this._maxHeight) {
-      if (directionalHintFixed && this._target) {
+      if (directionalHintFixed && this.props.hoistedProps.targetRef.current) {
         const gapSpace = offsetFromTarget ? offsetFromTarget : 0;
-        this._maxHeight = getMaxHeight(this._target, directionalHint!, gapSpace, this._getBounds());
+        this._maxHeight = getMaxHeight(
+          this.props.hoistedProps.targetRef.current,
+          directionalHint!,
+          gapSpace,
+          this._getBounds(),
+        );
       } else {
         this._maxHeight = this._getBounds().height! - BORDER_WIDTH * 2;
       }
@@ -401,35 +461,6 @@ class PositioningContainerClass extends React.Component<IPositioningContainerCla
       }
     }
     return true;
-  }
-
-  private _setTargetWindowAndElement(target: HTMLElement | string | MouseEvent | Point | null): void {
-    const currentElement = this.props.hoistedProps.positionedHost.current;
-
-    if (target) {
-      if (typeof target === 'string') {
-        const currentDoc: Document = getDocument()!;
-        this._target = currentDoc ? (currentDoc.querySelector(target) as HTMLElement) : null;
-        this._targetWindow = getWindow(currentElement)!;
-      } else if (!!(target as MouseEvent).stopPropagation) {
-        this._targetWindow = getWindow((target as MouseEvent).target as HTMLElement)!;
-        this._target = target;
-      } else if (
-        // tslint:disable-next-line:deprecation
-        ((target as Point).left !== undefined || (target as Point).x !== undefined) &&
-        // tslint:disable-next-line:deprecation
-        ((target as Point).top !== undefined || (target as Point).y !== undefined)
-      ) {
-        this._targetWindow = getWindow(currentElement)!;
-        this._target = target;
-      } else {
-        const targetElement: HTMLElement = target as HTMLElement;
-        this._targetWindow = getWindow(targetElement)!;
-        this._target = target;
-      }
-    } else {
-      this._targetWindow = getWindow(currentElement)!;
-    }
   }
 
   /**
