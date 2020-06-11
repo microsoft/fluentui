@@ -1,9 +1,9 @@
 import {
-  UseStylesResult,
   ComponentAnimationProp,
   unstable_getStyles as getStyles,
   unstable_createAnimationStyles as createAnimationStyles,
 } from '@fluentui/react-bindings';
+import { ProviderContextPrepared } from '../../types';
 import { ThemePrepared } from '@fluentui/styles';
 import * as React from 'react';
 // @ts-ignore
@@ -12,7 +12,7 @@ import * as _ from 'lodash';
 import { AnimationProps } from './Animation';
 
 type UseAnimationStylesResult = {
-  classes: UseStylesResult['classes'];
+  className: string;
   animationDuration?: string;
   animationDelay?: string;
 };
@@ -21,13 +21,13 @@ const animationCache = new WeakMap<ThemePrepared, Record<string, UseAnimationSty
 export const animationClassName = 'ui-animation';
 
 const useAnimationStyles = (displayName: string, props: AnimationProps): UseAnimationStylesResult => {
-  const { theme, rtl, disableAnimations, renderer, performance } = React.useContext(ThemeContext);
+  const { theme, rtl, disableAnimations, renderer, performance }: ProviderContextPrepared = React.useContext(
+    ThemeContext,
+  );
 
   if (disableAnimations) {
     return {
-      classes: {
-        root: '',
-      },
+      className: animationClassName,
       animationDuration: '0ms',
       animationDelay: '0ms',
     };
@@ -85,7 +85,7 @@ const useAnimationStyles = (displayName: string, props: AnimationProps): UseAnim
   });
 
   const result = {
-    classes,
+    className: classes.root,
     animationDuration: styles.root.animationDuration,
     animationDelay: styles.root.animationDelay,
   };

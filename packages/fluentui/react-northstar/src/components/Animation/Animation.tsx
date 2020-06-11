@@ -15,8 +15,6 @@ import { childrenExist, commonPropTypes, ChildrenComponentProps } from '../../ut
 import { ComponentEventHandler, ProviderContextPrepared } from '../../types';
 import useAnimationStyles from './useAnimationStyles';
 
-export { animationClassName } from './useAnimationStyles';
-
 export type AnimationChildrenProp = (props: { classes: string }) => React.ReactNode;
 
 export interface AnimationProps extends ChildrenComponentProps<AnimationChildrenProp | React.ReactChild> {
@@ -156,7 +154,10 @@ const Animation: React.FC<AnimationProps> & {
     _.invoke(props, event, null, props);
   };
 
-  const { classes, animationDuration, animationDelay } = useAnimationStyles(Animation.displayName, props);
+  const { className: animationClasses, animationDuration, animationDelay } = useAnimationStyles(
+    Animation.displayName,
+    props,
+  );
   const timeoutResult = timeout || calculateAnimationTimeout(animationDuration, animationDelay) || 0;
 
   const unhandledProps = useUnhandledProps(Animation.handledProps, props);
@@ -183,9 +184,11 @@ const Animation: React.FC<AnimationProps> & {
       onExiting={handleAnimationEvent('onExiting')}
       onExited={handleAnimationEvent('onExited')}
       {...unhandledProps}
-      className={!isChildrenFunction ? cx(classes.root, className, (child as any)?.props?.className) : ''}
+      className={!isChildrenFunction ? cx(animationClasses, className, (child as any)?.props?.className) : ''}
     >
-      {isChildrenFunction ? () => (children as AnimationChildrenProp)({ classes: cx(classes.root, className) }) : child}
+      {isChildrenFunction
+        ? () => (children as AnimationChildrenProp)({ classes: cx(animationClasses, className) })
+        : child}
     </Transition>
   );
   setEnd();
