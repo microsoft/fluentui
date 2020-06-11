@@ -151,3 +151,16 @@ export type SlotProps<TSlots extends BaseSlots, TProps, TRootProps extends React
 } & {
   root: TRootProps;
 };
+
+// ========================================================
+// Shorthand
+// ========================================================
+export type ShorthandRenderFunction<TProps> = (Component: React.ElementType<TProps>, props: TProps) => React.ReactNode;
+
+type ReactNode = React.ReactChild | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined;
+
+export type ObjectShorthandValue<TProps extends GenericDictionary> = TProps & {
+  children?: TProps['children'] | ShorthandRenderFunction<TProps>;
+};
+
+export type ShorthandValue<TProps> = ReactNode | ObjectShorthandValue<TProps>;
