@@ -1,0 +1,4 @@
+{
+  "packages": ["packages/react-button"],
+  "sandboxes": ["new", "vanilla"]
+}
