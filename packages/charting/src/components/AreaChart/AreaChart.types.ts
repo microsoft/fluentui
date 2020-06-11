@@ -79,6 +79,12 @@ export interface IAreaChartProps {
   showYAxisPath?: boolean;
 
   /**
+   * This prop used for to check is given x axis date or numeric.
+   * @default false;
+   */
+  isXAxisDateType?: boolean;
+
+  /**
    * this prop takes values that you want the Area chart to render on x-axis
    * This is a optional parameter if not specified D3 will decide which values appear on the x-axis for you
    * Please look at https://github.com/d3/d3-scale for more information on how D3 decides what data to appear on the axis of chart
