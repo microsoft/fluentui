@@ -7,7 +7,6 @@ import {
   getDocument,
   IRectangle,
   KeyCodes,
-  shallowCompare,
   getRTL,
   warnDeprecations,
   EventGroup,

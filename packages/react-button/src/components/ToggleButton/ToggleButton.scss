@@ -1,0 +1,48 @@
+@import '../Button/Button.scss';
+
+/**
+ * TODO: Once theming is updated, consider removing all of this.
+ *
+ * Note: All :root rules must be literals, OR references to variables
+ * defined as literals in the same scope. If you refer to variables,
+ * they will be resolved on the :root element only; not at usage time.
+**/
+:root {
+  /* TODO: Remove. Colors should only be defined in the theme. */
+  --button-fill-checked: rgb(225, 223, 221);
+  --button-text-checked: var(--button-text);
+  --button-icon-checked: var(--button-icon);
+
+  /* TODO: Remove. Accent should only be defined in the theme. */
+  --accent-fill-checked: rgb(70, 71, 117);
+  --accent-text-checked: var(--accent-text);
+  --accent-icon-checked: var(--accent-text);
+}
+
+/**
+ * Slot definitions
+ *
+ * Slot definitions must align to the names of the slots themselves. They should:
+ *
+ * 1. Contain the actual css property definitions (E.g. background-color: {value})
+ * 2. Property definitions should map to tokens using the format: {component}-{property}
+ * 3. Avoid hard coding values unless there are absolutely no use cases to change
+ *    the property value.
+ * 4. Order hardcoded css values first, tokens based second. This way we can identify
+ *    what is hardcoded easily.
+ */
+.root {
+  /**
+   * Modifiers
+   *
+   * Modifiers must align to the props on the component. They should:
+   *
+   * 1. Redefine the values for {component}-{property} tokens.
+   * 2. Map property definitions to variables using the format: {component}-{property}
+   * 3. Avoid defining styles directly.
+   */
+  &._checked {
+    --button-fill: var(--button-fill-checked);
+    --accent-fill: var(--accent-fill-checked);
+  }
+}

@@ -32,12 +32,13 @@ import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import { RectangleEdge } from 'office-ui-fabric-react/lib/utilities/positioning';
 import { ThemeProviderProps } from '@fluentui/react-theme-provider';
+import { useTheme } from '@fluentui/react-theme-provider';
 
 // @public (undocumented)
-export const Checkbox: React.FunctionComponent<ICheckboxProps>;
+export const Checkbox: import("@fluentui/react-compose").ComponentWithAs<"div", ICheckboxProps>;
 
 // @public (undocumented)
-export const CheckboxBase: React.ForwardRefExoticComponent<ICheckboxProps & React.RefAttributes<HTMLDivElement>>;
+export const CheckboxBase: import("@fluentui/react-compose").ComponentWithAs<"div", ICheckboxProps>;
 
 // @public (undocumented)
 export const Coachmark: React.FunctionComponent<ICoachmarkProps>;
@@ -60,8 +61,6 @@ export class CoachmarkBase extends React.Component<ICoachmarkProps, ICoachmarkSt
     dismiss: (ev?: Event | React.KeyboardEvent<HTMLElement> | React.MouseEvent<HTMLElement, MouseEvent> | undefined) => void;
     // (undocumented)
     render(): JSX.Element;
-    // (undocumented)
-    shouldComponentUpdate(newProps: ICoachmarkProps, newState: ICoachmarkState): boolean;
     // (undocumented)
     UNSAFE_componentWillReceiveProps(newProps: ICoachmarkProps): void;
 }
@@ -121,6 +120,11 @@ export interface ICheckbox {
     indeterminate: boolean;
 }
 
+// @public (undocumented)
+export type ICheckboxClasses = {
+    [key in keyof ICheckboxSlots]: string;
+};
+
 // @public
 export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement | HTMLInputElement> {
     ariaDescribedBy?: string;
@@ -128,6 +132,7 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
     ariaLabelledBy?: string;
     ariaPositionInSet?: number;
     ariaSetSize?: number;
+    as?: React.ElementType;
     boxSide?: 'start' | 'end';
     checked?: boolean;
     checkmarkIconProps?: IIconProps;
@@ -142,8 +147,36 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
     label?: string;
     onChange?: (ev?: React.FormEvent<HTMLElement | HTMLInputElement>, checked?: boolean) => void;
     onRenderLabel?: IRenderFunction<ICheckboxProps>;
+    // @deprecated
     styles?: IStyleFunctionOrObject<ICheckboxStyleProps, ICheckboxStyles>;
     theme?: ITheme;
+}
+
+// @public (undocumented)
+export type ICheckboxSlotProps = {
+    [key in keyof ICheckboxSlots]: any;
+};
+
+// @public (undocumented)
+export interface ICheckboxSlots {
+    // (undocumented)
+    checkbox: React.ElementType;
+    // (undocumented)
+    checkmark: React.ElementType;
+    // (undocumented)
+    container: React.ElementType;
+    // (undocumented)
+    input: React.ElementType;
+    // (undocumented)
+    label: React.ElementType;
+    // (undocumented)
+    root: React.ElementType;
+}
+
+// @public (undocumented)
+export interface ICheckboxState extends Omit<ICheckboxProps, 'label'>, Partial<ICheckboxSlotProps> {
+    // (undocumented)
+    ref: React.Ref<HTMLElement>;
 }
 
 // @public (undocumented)
@@ -176,7 +209,7 @@ export interface ICheckboxStyles {
 
 // @public (undocumented)
 export interface ICoachmark {
-    dismiss?: (ev?: any) => void;
+    dismiss?: (ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => void;
 }
 
 // @public
@@ -206,7 +239,7 @@ export interface ICoachmarkProps extends React.ClassAttributes<CoachmarkBase> {
     mouseProximityOffset?: number;
     onAnimationOpenEnd?: () => void;
     onAnimationOpenStart?: () => void;
-    onDismiss?: (ev?: any) => void;
+    onDismiss?: (ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => void;
     onMouseMove?: (e: MouseEvent) => void;
     persistentBeak?: boolean;
     positioningContainerProps?: IPositioningContainerProps;
@@ -567,7 +600,7 @@ export interface IPivotItemProps extends React.HTMLAttributes<HTMLDivElement> {
     alwaysRender?: boolean;
     ariaLabel?: string;
     componentRef?: IRefObject<{}>;
-    headerButtonProps?: IButtonProps & {
+    headerButtonProps?: IButtonProps | {
         [key: string]: string | number | boolean;
     };
     headerText?: string;
@@ -672,12 +705,6 @@ export interface IPositioningContainerProps extends IBaseProps<IPositioningConta
     targetPoint?: Point;
     // @deprecated
     useTargetPoint?: boolean;
-}
-
-// @public (undocumented)
-export interface IPositioningContainerState {
-    heightOffset?: number;
-    positions?: IPositionedData;
 }
 
 // @public @deprecated (undocumented)
@@ -1310,11 +1337,16 @@ export const Toggle: React.FunctionComponent<IToggleProps>;
 // @public (undocumented)
 export const ToggleBase: import("@fluentui/react-compose").ComponentWithAs<"div", IToggleProps>;
 
+// @public (undocumented)
+export function useHeightOffset({ finalHeight }: IPositioningContainerProps, contentHost: React.RefObject<HTMLDivElement | null>): number;
+
 // @public
-export const useLink: (props: ILinkProps, options: ComposePreparedOptions<{}, {}>) => any;
+export const useLink: (props: ILinkProps) => any;
+
+export { useTheme }
 
 // @public (undocumented)
-export const useToggle: (props: IToggleProps, options: ComposePreparedOptions<{}, {}>) => any;
+export const useToggle: (props: IToggleProps, options: ComposePreparedOptions<{}, any, {}>) => any;
 
 
 export * from "office-ui-fabric-react/lib/ActivityItem";

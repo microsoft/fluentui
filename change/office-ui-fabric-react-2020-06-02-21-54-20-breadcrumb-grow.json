@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Add onGrowData to Breadcrumb",
-  "packageName": "office-ui-fabric-react",
-  "email": "tmichon@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-06-03T04:54:20.794Z"
-}

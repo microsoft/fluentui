@@ -9,7 +9,7 @@ import {
   IDropdownOption,
   IStyle,
   TeachingBubbleContent,
-} from '../../../';
+} from '@fluentui/react-next';
 
 export interface ICoachmarkBasicExampleState {
   isCoachmarkVisible?: boolean;

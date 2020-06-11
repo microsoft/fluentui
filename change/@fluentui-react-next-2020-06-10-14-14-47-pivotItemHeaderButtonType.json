@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "PivotItem: Fixing typing error in headerButtonProps.",
+  "packageName": "@fluentui/react-next",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-06-10T21:14:47.890Z"
+}
