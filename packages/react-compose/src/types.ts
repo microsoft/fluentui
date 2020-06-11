@@ -83,10 +83,15 @@ export type ComposeOptions<
   state?: (props: TState, ref: React.Ref<HTMLElement>, options: ComposePreparedOptions) => any;
 };
 
-export type MergePropsResult<TState extends GenericDictionary> = {
+export type MergePropsResult<
+  TState extends GenericDictionary,
+  TSlots = GenericDictionary,
+  // tslint:disable-next-line:no-any
+  TSlotProps = { [key in keyof TSlots]: any }
+> = {
   state: TState;
-  slots: GenericDictionary;
-  slotProps: GenericDictionary;
+  slots: TSlots;
+  slotProps: TSlotProps;
 };
 
 /**
