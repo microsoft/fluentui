@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { compose } from '@fluentui/react-compose';
+import { CheckMarkIcon } from '@fluentui/react-icons';
 import { mergeAriaAttributeValues } from '../../Utilities';
-import { Icon } from '../../Icon';
 import { ICheckboxProps, ICheckboxSlots } from './Checkbox.types';
 import { KeytipData } from '../../KeytipData';
 import { useCheckbox } from './useCheckbox';
@@ -9,7 +9,7 @@ import { useCheckbox } from './useCheckbox';
 const defaultSlots: Omit<ICheckboxSlots, 'root'> = {
   input: 'input',
   // TODO: add checkmark slot in parent component instead
-  checkmark: Icon,
+  checkmark: CheckMarkIcon,
   container: 'label',
   label: 'span',
   checkbox: 'div',
