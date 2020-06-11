@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { compose } from '@fluentui/react-compose';
+import { compose, mergeProps } from '@fluentui/react-compose';
 import { mergeAriaAttributeValues } from '../../Utilities';
 import { Icon } from '../../Icon';
-import { ICheckboxProps, ICheckboxSlots } from './Checkbox.types';
+import { ICheckboxProps, ICheckboxSlots, ICheckboxState, ICheckboxSlotProps } from './Checkbox.types';
 import { KeytipData } from '../../KeytipData';
 import { useCheckbox } from './useCheckbox';
 
@@ -17,7 +17,16 @@ const defaultSlots: Omit<ICheckboxSlots, 'root'> = {
 
 export const CheckboxBase = compose<'div', ICheckboxProps, {}, ICheckboxProps, {}>(
   (props, forwardedRef, composeOptions) => {
-    const { slotProps, slots, state } = useCheckbox(props, composeOptions, forwardedRef);
+    // TODO: improve typing for mergeProps
+    const { slotProps, slots, state } = mergeProps<ICheckboxProps, ICheckboxState>(
+      composeOptions.state,
+      composeOptions,
+    ) as {
+      state: ICheckboxState;
+      slots: ICheckboxSlots;
+      slotProps: ICheckboxSlotProps;
+    };
+
     const { disabled, keytipProps } = state;
 
     const onRenderLabel = (): JSX.Element => {
@@ -50,6 +59,7 @@ export const CheckboxBase = compose<'div', ICheckboxProps, {}, ICheckboxProps, {
   },
   {
     slots: defaultSlots,
+    state: useCheckbox,
     displayName: 'CheckboxBase',
     handledProps: [
       'componentRef',

@@ -1,14 +1,9 @@
 import * as React from 'react';
-import { ICheckboxProps, ICheckboxSlots, ICheckboxSlotProps, ICheckboxState } from './Checkbox.types';
-import { ComposePreparedOptions, mergeProps } from '@fluentui/react-compose';
+import { ICheckboxProps, ICheckboxState } from './Checkbox.types';
 import { useControllableValue, useId, useMergedRefs } from '@uifabric/react-hooks';
 import { useFocusRects, warnMutuallyExclusive } from '../../Utilities';
 
-export const useCheckbox = (
-  props: ICheckboxProps,
-  options: ComposePreparedOptions,
-  forwardedRef: React.Ref<HTMLDivElement>,
-): { state: ICheckboxState; slots: ICheckboxSlots; slotProps: ICheckboxSlotProps } => {
+export const useCheckbox = (props: ICheckboxProps, forwardedRef: React.Ref<HTMLDivElement>): ICheckboxState => {
   const {
     disabled,
     inputProps,
@@ -85,12 +80,7 @@ export const useCheckbox = (
     },
   };
 
-  // TODO: improve typing for mergeProps
-  return mergeProps<ICheckboxProps, ICheckboxState>(handledProps, options) as {
-    state: ICheckboxState;
-    slots: ICheckboxSlots;
-    slotProps: ICheckboxSlotProps;
-  };
+  return handledProps;
 };
 
 function useDebugWarning(props: ICheckboxProps) {

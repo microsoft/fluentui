@@ -1154,7 +1154,7 @@ export const useLink: (props: ILinkProps) => any;
 export { useTheme }
 
 // @public (undocumented)
-export const useToggle: (props: IToggleProps, options: ComposePreparedOptions<{}, any, {}>) => any;
+export const useToggle: (props: IToggleProps, ref: React.Ref<HTMLDivElement>, options: ComposePreparedOptions<{}, any, {}>) => any;
 
 
 export * from "office-ui-fabric-react/lib/ActivityItem";
