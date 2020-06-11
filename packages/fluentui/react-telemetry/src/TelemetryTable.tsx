@@ -17,7 +17,7 @@ import {
 
 import * as styles from './styles';
 import { useIntervalUpdate } from './useIntervalUpdate';
-import { useTelemetryColumns } from './useTelemetryColumns';
+import { useTelemetryColumns, CellAlign } from './useTelemetryColumns';
 import { TelemetryDataTotals, useTelemetryData } from './useTelemetryData';
 import { TelemetryState } from './useTelemetryState';
 
@@ -158,7 +158,7 @@ export const TelemetryTable: React.FC<TelemetryTableProps> = props => {
                     cell: Cell & {
                       column: UseSortByColumnProps<{}> & {
                         showPercentage?: boolean;
-                        align?: 'left' | 'right' | 'center';
+                        align?: CellAlign;
                       };
                     },
                   ) => (
@@ -184,7 +184,7 @@ export const TelemetryTable: React.FC<TelemetryTableProps> = props => {
           {footerGroups.map(group => (
             <tr {...group.getFooterGroupProps()}>
               {group.headers.find((header: HeaderGroup & { Footer: React.ReactElement }) => header.Footer) &&
-                group.headers.map((column: HeaderGroup & { align?: 'left' | 'right' | 'center' }) => (
+                group.headers.map((column: HeaderGroup & { align?: CellAlign }) => (
                   <td {...column.getFooterProps({ style: styles.tableFooterCell({ align: column.align }) })}>
                     {column.render('Footer')}
                   </td>

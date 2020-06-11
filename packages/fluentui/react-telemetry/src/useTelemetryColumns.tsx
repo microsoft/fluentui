@@ -5,6 +5,8 @@ import { CellProps, Column, FilterProps, HeaderProps, UseFiltersColumnProps } fr
 import * as styles from './styles';
 import { TelemetryDataTotals } from './useTelemetryData';
 
+export type CellAlign = 'left' | 'right' | 'center';
+
 const TelemetryTableFilter: React.FC<FilterProps<{}> & { column: UseFiltersColumnProps<{}> }> = ({ column }) => {
   const { filterValue, setFilter } = column;
 

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { TelemetryPosition } from './useTelemetryState';
+import { CellAlign } from './useTelemetryColumns';
 
 type CellColor = { backgroundColor: string; color: string };
 const CELL_COLORS: CellColor[] = [
@@ -105,7 +106,7 @@ export const tableCell = ({
   align,
   percentageRatio,
 }: {
-  align?: 'left' | 'right' | 'center';
+  align?: CellAlign;
   percentageRatio?: number;
 }): React.CSSProperties => ({
   border: '1px solid #e5e5e4',
