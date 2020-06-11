@@ -14,8 +14,8 @@ const Entries = _buildEntries('office-ui-fabric-react');
 _buildEntries('@fluentui/react-next', Entries);
 
 // Create entries for single top level import.
-Entries['keyboard-key'] = resolvePath('@fluentui/keyboard-key');
 Entries['react-compose'] = resolvePath('@fluentui/react-compose');
+Entries['keyboard-key'] = resolvePath('@fluentui/keyboard-key');
 
 // Note: The experimental button bundle evaluation seems to be slowing down PRs
 // significantly. Commenting out for now.

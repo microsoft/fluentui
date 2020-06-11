@@ -37,6 +37,8 @@ import { FlexItemStylesProps } from '../../components/Flex/FlexItem';
 import { FlexStylesProps } from '../../components/Flex/Flex';
 import { FormStylesProps } from '../../components/Form/Form';
 import { FormFieldStylesProps } from '../../components/Form/FormField';
+import { FormLabelStylesProps } from '../../components/Form/FormLabel';
+import { FormMessageStylesProps } from '../../components/Form/FormMessage';
 import { GridProps } from '../../components/Grid/Grid';
 import { HeaderDescriptionStylesProps } from '../../components/Header/HeaderDescription';
 import { HeaderStylesProps } from '../../components/Header/Header';
@@ -130,6 +132,8 @@ export type TeamsThemeStylesProps = {
   FlexItem: FlexItemStylesProps;
   Form: FormStylesProps;
   FormField: FormFieldStylesProps;
+  FormLabel: FormLabelStylesProps;
+  FormMessage: FormMessageStylesProps;
   Grid: GridProps;
   Header: HeaderStylesProps;
   HeaderDescription: HeaderDescriptionStylesProps;

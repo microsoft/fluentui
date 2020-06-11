@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton } from '@fluentui/react-next/lib/CompatButton';
 import { FocusTrapZone } from '@fluentui/react-next/lib/FocusTrapZone';
 import { Stack, IStackStyles } from '@fluentui/react-next/lib/Stack';
 import { Toggle, IToggleStyles } from '@fluentui/react-next/lib/Toggle';

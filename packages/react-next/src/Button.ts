@@ -1,1 +1,1 @@
-export * from '@fluentui/react-button';
+export * from '@fluentui/react-button/lib/Button';

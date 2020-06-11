@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IconButton, IButtonStyles } from 'office-ui-fabric-react/lib/Button';
+import { IconButton, IButtonStyles } from '@fluentui/react-next/lib/CompatButton';
 import { Link } from '@fluentui/react-next/lib/Link';
 import { IOverflowSetItemProps, OverflowSet } from '@fluentui/react-next/lib/OverflowSet';
 
@@ -13,6 +13,7 @@ const onRenderItem = (item: IOverflowSetItemProps): JSX.Element => {
   );
 };
 
+// tslint:disable-next-line:no-any
 const onRenderOverflowButton = (overflowItems: any[] | undefined): JSX.Element => {
   const buttonStyles: Partial<IButtonStyles> = {
     root: {

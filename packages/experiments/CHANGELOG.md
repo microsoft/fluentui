@@ -1,8 +1,40 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Mon, 25 May 2020 12:38:22 GMT and should not be manually modified.
+This log was last generated on Mon, 08 Jun 2020 12:34:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.26.0](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.26.0)
+
+Mon, 08 Jun 2020 12:34:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.25.3..@uifabric/experiments_v7.26.0)
+
+### Minor changes
+
+- Added missing functionalities in UnifiedPeoplePicker and Example ([PR #13271](https://github.com/microsoft/fluentui/pull/13271) by nebhatna@microsoft.com)
+
+## [7.25.3](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.25.3)
+
+Fri, 05 Jun 2020 05:09:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.25.0..@uifabric/experiments_v7.25.3)
+
+### Patches
+
+- Adjusting Tile scss ([PR #13478](https://github.com/microsoft/fluentui/pull/13478) by dzearing@microsoft.com)
+
+## [7.25.0](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.25.0)
+
+Fri, 29 May 2020 12:35:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.24.8..@uifabric/experiments_v7.25.0)
+
+### Minor changes
+
+- Add special folder icon signals for Desktop, Documents, and Pictures. ([PR #13347](https://github.com/microsoft/fluentui/pull/13347) by taenri@microsoft.com)
+
+### Patches
+
+- Fix Tile border color declarations so they don't get elided ([PR #13386](https://github.com/microsoft/fluentui/pull/13386) by tmichon@microsoft.com)
+- Add dedicated touch invoke functionality to SelectionZone ([PR #13241](https://github.com/microsoft/fluentui/pull/13241) by sebastian.oettl@microsoft.com)
 
 ## [7.24.8](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.24.8)
 

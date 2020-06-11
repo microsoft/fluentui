@@ -10,7 +10,7 @@ import {
   inputProperties,
 } from '../../Utilities';
 
-import { IconButton } from 'office-ui-fabric-react/lib/Button';
+import { IconButton } from '@fluentui/react-next/lib/CompatButton';
 import { Icon } from '../../Icon';
 
 const getClassNames = classNamesFunction<ISearchBoxStyleProps, ISearchBoxStyles>();

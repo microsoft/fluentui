@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton } from '@fluentui/react-next/lib/CompatButton';
 import { Label } from '@fluentui/react-next/lib/Label';
 import { Pivot, PivotItem } from '@fluentui/react-next/lib/Pivot';
 

@@ -39,6 +39,6 @@ const treeBehavior: Accessibility<TreeBehaviorProps> = props => {
   };
 };
 
-type TreeBehaviorProps = Pick<AccessibilityAttributes, 'aria-labelledby'>;
+export type TreeBehaviorProps = Pick<AccessibilityAttributes, 'aria-labelledby'>;
 
 export default treeBehavior;

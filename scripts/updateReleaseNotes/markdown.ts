@@ -32,7 +32,7 @@ async function _getChangeComments(title: string, comments: ChangelogEntry[] | un
         // Prefer linking to the PR if we can find it (this is generally more useful than the commit)
         const pr = await getPullRequest(comment);
         if (pr) {
-          line += `PR #${pr.number} by [${pr.author}](${pr.author.url})`;
+          line += `PR #${pr.number} by [${pr.author.username}](${pr.author.url})`;
         } else {
           line += `[commit](https://github.com/${repoDetails.owner}/${repoDetails.repo}/commit/${comment.commit})`;
         }

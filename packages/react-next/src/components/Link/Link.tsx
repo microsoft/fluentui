@@ -1,10 +1,9 @@
 import * as React from 'react';
 import { getGlobalClassNames, ITheme } from '../../Styling';
-import { memoizeFunction, styled } from '../../Utilities';
-import { LinkBase } from './Link.base';
+import { css, memoizeFunction, styled } from '../../Utilities';
+import { LinkBase } from './LinkBase';
 import { ILinkProps, ILinkStyleProps, ILinkStyles } from './Link.types';
 import * as classes from './Link.scss';
-import { css } from 'office-ui-fabric-react/lib/Utilities';
 
 const GlobalClassNames = {
   root: 'ms-Link',

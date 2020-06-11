@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton } from '@fluentui/react-next/lib/CompatButton';
 import { Checkbox } from '@fluentui/react-next/lib/Checkbox';
 import { Stack } from '@fluentui/react-next/lib/Stack';
 import { Customizer } from '@fluentui/react-next/lib/Utilities';

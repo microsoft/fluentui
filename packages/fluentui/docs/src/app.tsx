@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { hot } from 'react-hot-loader/root';
 import { Provider, Debug, teamsTheme, teamsDarkTheme, teamsHighContrastTheme } from '@fluentui/react-northstar';
-
+import { TelemetryPopover } from '@fluentui/react-telemetry';
 import { mergeThemes } from '@fluentui/styles';
+
 import { ThemeContext, ThemeContextData, themeContextDefaults } from './context/ThemeContext';
 import Routes from './routes';
 
@@ -32,21 +33,23 @@ class App extends React.Component<any, ThemeContextData> {
     const { themeName } = this.state;
     return (
       <ThemeContext.Provider value={this.state}>
-        <Provider
-          as={React.Fragment}
-          theme={mergeThemes(themes[themeName], {
-            staticStyles: [
-              {
-                a: {
-                  textDecoration: 'none',
+        <TelemetryPopover>
+          <Provider
+            as={React.Fragment}
+            theme={mergeThemes(themes[themeName], {
+              staticStyles: [
+                {
+                  a: {
+                    textDecoration: 'none',
+                  },
                 },
-              },
-            ],
-          })}
-        >
-          <Debug />
-          <Routes />
-        </Provider>
+              ],
+            })}
+          >
+            <Debug />
+            <Routes />
+          </Provider>
+        </TelemetryPopover>
       </ThemeContext.Provider>
     );
   }

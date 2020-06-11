@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
+import { IButtonProps } from '@fluentui/react-next/lib/CompatButton';
 import { IRefObject, IRenderFunction } from '../../Utilities';
 import { IKeytipProps } from '../../Keytip';
 
@@ -27,7 +27,7 @@ export interface IPivotItemProps extends React.HTMLAttributes<HTMLDivElement> {
    * Props for the header command button. This provides a way to pass in native props, such as data-* and aria-*,
    * for each pivot header/link element.
    */
-  headerButtonProps?: IButtonProps & { [key: string]: string | number | boolean };
+  headerButtonProps?: IButtonProps | { [key: string]: string | number | boolean };
 
   /**
    * An required key to uniquely identify a pivot item.
@@ -64,4 +64,12 @@ export interface IPivotItemProps extends React.HTMLAttributes<HTMLDivElement> {
    * Optional keytip for this PivotItem
    */
   keytipProps?: IKeytipProps;
+
+  /**
+   * Defines whether to always render the pivot item (regardless of whether it is selected or not).
+   * Useful if you're rendering content that is expensive to mount.
+   *
+   * @defaultvalue false
+   */
+  alwaysRender?: boolean;
 }

@@ -45,6 +45,7 @@ const createComponentInternal = <P extends ObjectOf<any> = any>({
     const ref = React.useRef(null);
 
     const context: ProviderContextPrepared = React.useContext(ThemeContext);
+    const isFirstRenderRef = React.useRef<boolean>(true);
 
     return renderComponent(
       {
@@ -56,6 +57,7 @@ const createComponentInternal = <P extends ObjectOf<any> = any>({
         actionHandlers,
         render: config => render(config, props),
         saveDebug: fluentUIDebug => (ref.current = { fluentUIDebug }),
+        isFirstRenderRef,
       },
       context,
     );

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
+import { IButtonProps } from '@fluentui/react-next/lib/CompatButton';
 import { ITheme, IStyle } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import { IIconProps } from '../../Icon';

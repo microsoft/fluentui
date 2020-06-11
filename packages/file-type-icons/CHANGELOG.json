@@ -2,6 +2,21 @@
   "name": "@uifabric/file-type-icons",
   "entries": [
     {
+      "date": "Fri, 29 May 2020 12:35:34 GMT",
+      "tag": "@uifabric/file-type-icons_v7.3.0",
+      "version": "7.3.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add special folder icon types for file-type-icons.",
+            "author": "taenri@microsoft.com",
+            "commit": "cfcf5178fb8304109274a68121c7762a91f55d5b",
+            "package": "@uifabric/file-type-icons"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 25 May 2020 12:38:22 GMT",
       "tag": "@uifabric/file-type-icons_v7.2.49",
       "version": "7.2.49",
