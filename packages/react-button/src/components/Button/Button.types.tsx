@@ -1,15 +1,7 @@
 import * as React from 'react';
-import { ComponentProps, ShorthandValue, ComposeStandardStatics } from '../../utils/tempTypes';
+import { ComponentProps, ShorthandValue, ComposeStandardStatics, RecursivePartial } from '../../utils/tempTypes';
 import { ComposeOptions } from '@fluentui/react-compose';
 import { ColorPlateSet } from '@fluentui/react-theme-provider';
-
-export type RecursivePartial<T> = {
-  [P in keyof T]?: T[P] extends (infer U)[]
-    ? RecursivePartial<U>[]
-    : T[P] extends object
-    ? RecursivePartial<T[P]>
-    : T[P];
-};
 
 export type SizeValue = 'smallest' | 'smaller' | 'small' | 'medium' | 'large' | 'larger' | 'largest';
 

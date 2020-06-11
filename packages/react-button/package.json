@@ -47,6 +47,7 @@
   "dependencies": {
     "@uifabric/set-version": "^7.0.13",
     "@fluentui/react-compose": "^0.9.0",
+    "@fluentui/react-theme-provider": "^0.1.11",
     "@uifabric/react-hooks": "^7.4.5",
     "@uifabric/utilities": "^7.20.3",
     "tslib": "^1.10.0"
