@@ -4,6 +4,8 @@ import { mergeThemes, ThemeProvider, Theme } from '@fluentui/react-theme-provide
 import { UploadIcon } from '@fluentui/react-icons';
 import { Stack, Text, ColorPicker, IColor } from 'office-ui-fabric-react';
 
+// tslint:disable: jsx-ban-props
+
 const getThemes = (accent: string) => {
   const lightTheme = mergeThemes({
     tokens: {
