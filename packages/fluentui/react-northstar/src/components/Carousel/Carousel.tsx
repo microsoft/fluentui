@@ -128,7 +128,7 @@ export const carouselSlotClassNames: CarouselSlotClassNames = {
   navigation: `${carouselClassName}__navigation`,
 };
 
-export const Carousel: React.FC<WithAsProp<CarouselProps>> &
+const Carousel: React.FC<WithAsProp<CarouselProps>> &
   FluentComponentStaticProps<CarouselProps> & {
     Item: typeof CarouselItem;
     Navigation: typeof CarouselNavigation;

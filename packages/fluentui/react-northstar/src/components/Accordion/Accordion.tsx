@@ -105,7 +105,7 @@ export const accordionSlotClassNames: AccordionSlotClassNames = {
   title: `${accordionClassName}__title`,
 };
 
-export const Accordion: React.FC<WithAsProp<AccordionProps>> &
+const Accordion: React.FC<WithAsProp<AccordionProps>> &
   FluentComponentStaticProps<AccordionProps> & {
     Title: typeof AccordionTitle;
     Content: typeof AccordionContent;

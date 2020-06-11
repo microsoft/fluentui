@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "ensure theme.ts is already included when importing from styling package",
-  "packageName": "@uifabric/styling",
-  "email": "xgao@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-06-09T21:30:19.143Z"
-}
