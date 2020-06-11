@@ -1,4 +1,4 @@
-import { modalize, unmodalize } from './a11yModalize';
+import { modalize } from './modalize';
 // import * as React from 'react';
 // import * as ReactTestUtils from 'react-dom/test-utils';
 
@@ -36,8 +36,7 @@ describe('modalize', () => {
     });
 
     // modalize the target element, verify aria-hidden is correct on all elements
-    const affectedElements = modalize(document.getElementById('child')!);
-    expect(affectedElements).toBeDefined();
+    const unmodalize = modalize(document.getElementById('child')!);
     expect(root.getAttribute('aria-hidden')).toBeFalsy();
     expect(child.getAttribute('aria-hidden')).toBeFalsy();
     expect(grandchild.getAttribute('aria-hidden')).toBeFalsy();
@@ -48,7 +47,7 @@ describe('modalize', () => {
     expect(siblingAfterChild.getAttribute('aria-hidden')).toBeFalsy();
 
     // unmodalize, verify aria-hidden is correct on all elements
-    unmodalize(affectedElements);
+    unmodalize();
     expect(root.getAttribute('aria-hidden')).toBeFalsy();
     expect(child.getAttribute('aria-hidden')).toBeFalsy();
     expect(grandchild.getAttribute('aria-hidden')).toBeFalsy();

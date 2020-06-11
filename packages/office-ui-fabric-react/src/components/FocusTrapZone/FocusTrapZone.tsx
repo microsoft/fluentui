@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { modalize, unmodalize } from '@uifabric/utilities';
+import { modalize } from '@uifabric/utilities';
 import {
   elementContains,
   getNativeProps,
@@ -21,7 +21,7 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> impl
   private _firstBumper = React.createRef<HTMLDivElement>();
   private _lastBumper = React.createRef<HTMLDivElement>();
   private _hasFocus: boolean = false;
-  private _modalizationElements?: HTMLElement[];
+  private _unmodalize?: () => {};
 
   private _previouslyFocusedElementOutsideTrapZone: HTMLElement;
   private _previouslyFocusedElementInTrapZone?: HTMLElement;
@@ -38,7 +38,7 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> impl
     this._updateEventHandlers(this.props);
 
     if (!this.props.disabled && this._root.current && this.props.enableAriaHiddenSiblings) {
-      this._modalizationElements = modalize(this._root.current);
+      this._unmodalize = modalize(this._root.current);
     }
   }
 
@@ -64,16 +64,15 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> impl
       // Transition from forceFocusInsideTrap / FTZ disabled to enabled.
       // Emulate what happens when a FocusTrapZone gets mounted.
       this._bringFocusIntoZone();
-      if (!this._modalizationElements && this._root.current && this.props.enableAriaHiddenSiblings) {
-        this._modalizationElements = modalize(this._root.current);
+      if (!this._unmodalize && this._root.current && this.props.enableAriaHiddenSiblings) {
+        this._unmodalize = modalize(this._root.current);
       }
     } else if ((prevForceFocusInsideTrap && !newForceFocusInsideTrap) || (!prevDisabled && newDisabled)) {
       // Transition from forceFocusInsideTrap / FTZ enabled to disabled.
       // Emulate what happens when a FocusTrapZone gets unmounted.
       this._returnFocusToInitiator();
-      if (this._modalizationElements && this.props.enableAriaHiddenSiblings) {
-        unmodalize(this._modalizationElements);
-        delete this._modalizationElements;
+      if (this._unmodalize) {
+        this._unmodalize();
       }
     }
   }
@@ -99,9 +98,8 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> impl
       this._disposeFocusHandler = undefined;
     }
 
-    if (this._modalizationElements && this.props.enableAriaHiddenSiblings) {
-      unmodalize(this._modalizationElements);
-      delete this._modalizationElements;
+    if (this._unmodalize) {
+      this._unmodalize();
     }
 
     // Dispose of element references so the DOM Nodes can be garbage-collected

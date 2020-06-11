@@ -4,15 +4,18 @@
  * That way, all other elements on the page are hidden to the screen reader.
  */
 
-/** Call this on a target element to make it modal to screen readers.
- * This returns an array of elements, keep that array and pass it to removeModalize() when the target is no longer modal
- * or no longer on the page.
+import { getDocument } from './dom/getDocument';
+
+/**
+ * Call this on a target element to make it modal to screen readers.
+ * Returns a function that undoes the changes it made.
  */
-export function modalize(target: HTMLElement): HTMLElement[] {
-  const affectedNodes: HTMLElement[] = [];
+export function modalize(target: HTMLElement): () => void {
+  let affectedNodes: HTMLElement[] = [];
+  const targetDocument = getDocument(target) || document;
 
   // start at target, then recurse and do the same for parent, until we reach <body>
-  while (target !== document.body) {
+  while (target !== targetDocument.body) {
     // grab all siblings of current element
     for (const sibling of (target.parentElement!.children as unknown) as Array<HTMLElement>) {
       // but ignore elements that are already aria-hidden
@@ -20,7 +23,11 @@ export function modalize(target: HTMLElement): HTMLElement[] {
         affectedNodes.push(sibling);
       }
     }
-    target = target.parentElement!;
+
+    if (!target.parentElement) {
+      break;
+    }
+    target = target.parentElement;
   }
 
   // take all those elements and set aria-hidden=true on them
@@ -28,14 +35,16 @@ export function modalize(target: HTMLElement): HTMLElement[] {
     node.setAttribute('aria-hidden', 'true');
   });
 
-  return affectedNodes;
+  return () => {
+    unmodalize(affectedNodes);
+    affectedNodes = []; // dispose
+  };
 }
 
-/** Undoes the changes that modalize() did. Pass in the array that modalize() returned.
- * HIGHLY recommend that you `delete` the array after calling this, to free up memory and remove unnecessary pointers to
- * random elements.
+/**
+ * Undoes the changes that modalize() did.
  */
-export function unmodalize(affectedNodes: HTMLElement[]) {
+function unmodalize(affectedNodes: HTMLElement[]) {
   affectedNodes.forEach(node => {
     // set instead of removing in case other components explicitly set aria-hidden and do =="true" or =="false"
     node.setAttribute('aria-hidden', 'false');
