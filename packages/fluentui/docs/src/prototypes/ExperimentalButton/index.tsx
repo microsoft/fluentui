@@ -10,7 +10,7 @@ import {
   BookmarkIcon,
 } from '@fluentui/react-northstar';
 import Button from './Button/Button';
-import TeamsButton from './Button/variants/TeamsButton';
+import TeamsButton, { TeamsButtonWithInlineStyles, TertiaryButton } from './Button/variants/TeamsButton';
 import { RtlContextProvider } from './rtlContext';
 import CallingsButton from './Button/variants/CallingsButton';
 import CircularCallingsButton from './Button/variants/CircularCallingsButton';
@@ -37,6 +37,11 @@ export default function App() {
             <Header content="Custom styled Button" as="h3" />
             <TeamsButton onClick={handleClick} icon={<BookmarkIcon />} content="Default" />
             <TeamsButton onClick={handleClick} icon={<BookmarkIcon />} danger content="Small danger" size="small" />
+            {/*<TeamsButtonWithInlineStyles primary content={"Primary button"} />*/}
+            {/*<TeamsButtonWithInlineStyles onClick={handleClick} icon={<BookmarkIcon />} danger content="Small danger" size="small" />*/}
+            {/*<TeamsButtonWithInlineStyles onClick={handleClick} icon={<BookmarkIcon />} danger content="Small danger" size="small" />*/}
+            <TertiaryButton tertiery content={'Tertiery'} />
+            <TertiaryButton danger content={'Tertiery danger'} />
             <Divider />
             <Header content="Custom button" as="h4" />
             <Flex padding="padding.medium" style={{ backgroundColor: '#232323' }}>

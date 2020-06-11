@@ -23,6 +23,9 @@ type UseStylesOptions<StyleProps extends PrimitiveProps> = {
   /** A classname that will be added by default to all instances of a component on the `root` slot. */
   className?: string;
 
+  // TODO: re-work this... Hack for making caching work
+  classes?: Record<string, string>;
+
   /** An options from compose(), should be used only if component was created by `compose()`. */
   composeOptions?: ComposePreparedOptions;
 
@@ -106,6 +109,10 @@ const useStyles = <StyleProps extends PrimitiveProps>(
 
   // Stores debug information for component.
   const debug = React.useRef<{ fluentUIDebug: DebugData | null }>({ fluentUIDebug: null });
+  if (options.classes) {
+    console.log('yeeey, hit cache in useStyles');
+    return { classes: options.classes, styles: {} }; // dont care about styles for now, if we want to add those we can...
+  }
   const { classes, styles: resolvedStyles } = getStyles({
     // Input values
     allDisplayNames: composeOptions?.displayNames || [displayName],

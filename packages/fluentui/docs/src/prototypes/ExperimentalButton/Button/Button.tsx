@@ -18,6 +18,7 @@ export const buttonClassName = 'ui-button';
 
 export interface ButtonProps extends InternalButtonProps {
   fluentOverrideConfig?: UseButtonClassesInput;
+  classes?: Record<string, string>;
 }
 
 export interface ButtonStylesProps extends InternalButtonStylesProps {}
@@ -30,9 +31,9 @@ export interface ButtonStylesProps extends InternalButtonStylesProps {}
  */
 const Button = React.forwardRef((inputProps: ButtonProps, ref) => {
   // support compose
-  const { fluentOverrideConfig, ...props } = inputProps;
+  const { fluentOverrideConfig, classes: inputClasses, ...props } = inputProps;
 
-  const classes = useButtonClasses({ props, ...(fluentOverrideConfig || {}) });
+  const classes = useButtonClasses({ props, classes: inputClasses, ...(fluentOverrideConfig || {}) });
 
   const getA11yProps = useButtonAria({ props: { as: 'button', ...props } });
 
@@ -48,6 +49,7 @@ const Button = React.forwardRef((inputProps: ButtonProps, ref) => {
   Group: typeof ButtonGroup;
   Content: typeof ButtonContent;
   shorthandConfig: ShorthandConfig<ButtonProps>;
+  stylingTokensResolver: (props, stylingTokens) => Record<string, string | number | boolean>;
 };
 
 Button.displayName = 'Button';
@@ -57,5 +59,20 @@ Button.Content = ButtonContent;
 Button.shorthandConfig = {
   mappedProp: 'content',
 };
+
+Button.stylingTokensResolver = (props, stylingTokens) => ({
+  text: props.text,
+  primary: props.primary,
+  disabled: props.disabled,
+  circular: props.circular,
+  size: props.size,
+  loading: props.loading,
+  inverted: props.inverted,
+  iconOnly: props.iconOnly,
+  iconPosition: props.iconPosition,
+  fluid: props.fluid,
+  hasContent: !!props.content,
+  ...stylingTokens,
+});
 
 export default withSafeTypeForAs<typeof Button, ButtonProps, 'button'>(Button);

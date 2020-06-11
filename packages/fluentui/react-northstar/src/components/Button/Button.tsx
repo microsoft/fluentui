@@ -92,6 +92,8 @@ export interface ButtonProps
 
   /** A button can be sized. */
   size?: SizeValue;
+
+  classes?: Record<string, string>;
 }
 
 export type ButtonStylesProps = Pick<
@@ -160,6 +162,7 @@ const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
     });
     const { classes, styles: resolvedStyles } = useStyles<ButtonStylesProps>(composeOptions.displayName, {
       className: composeOptions.className,
+      classes: props.classes,
       mapPropsToStyles: () => ({
         text,
         primary,
@@ -307,6 +310,7 @@ const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
   shorthandConfig: ShorthandConfig<ButtonProps>;
   Content: typeof ButtonContent;
   Group: typeof ButtonGroup;
+  stylingTokensResolver: (props, stylingTokens) => Record<string, string | number | boolean>;
 };
 
 Button.defaultProps = {
@@ -344,5 +348,19 @@ Button.shorthandConfig = {
 };
 
 Button.create = createShorthandFactory({ Component: Button, mappedProp: 'content' });
+Button.stylingTokensResolver = (props, stylingTokens) => ({
+  text: props.text,
+  primary: props.primary,
+  disabled: props.disabled,
+  circular: props.circular,
+  size: props.size,
+  loading: props.loading,
+  inverted: props.inverted,
+  iconOnly: props.iconOnly,
+  iconPosition: props.iconPosition,
+  fluid: props.fluid,
+  hasContent: !!props.content,
+  ...stylingTokens,
+});
 
 export default Button;

@@ -8,6 +8,7 @@ export type UseButtonClassesInput<
 > = {
   props: P;
   displayName?: string;
+  classes?: UseStylesResult['classes'];
   overrides?: {
     stylingTokens: SP;
     className?: string;
@@ -15,14 +16,35 @@ export type UseButtonClassesInput<
   options?: Pick<ComposePreparedOptions, 'overrideStyles' | 'displayNames'>;
 };
 
+export const buttonStylingTokensResolver = (props, stylingTokens) => ({
+  text: props.text,
+  primary: props.primary,
+  disabled: props.disabled,
+  circular: props.circular,
+  size: props.size,
+  loading: props.loading,
+  inverted: props.inverted,
+  iconOnly: props.iconOnly,
+  iconPosition: props.iconPosition,
+  fluid: props.fluid,
+  hasContent: !!props.content,
+  ...stylingTokens,
+});
+
 const useButtonClasses = <P extends ButtonProps = ButtonProps, SP extends ButtonStylesProps = ButtonStylesProps>({
   props,
   displayName = 'Button',
+  classes: inputClasses,
   overrides,
   options,
 }: UseButtonClassesInput<P, SP>): UseStylesResult['classes'] => {
   const rtl = useRtl();
 
+  // TODO: fake early return, should be added to useStyles instead
+  if (inputClasses) {
+    // console.log("Yeeey hit cache in useButtonClasses");
+    return inputClasses;
+  }
   const {
     //inline overrides
     className,
@@ -35,23 +57,11 @@ const useButtonClasses = <P extends ButtonProps = ButtonProps, SP extends Button
 
   const { overrideStyles, displayNames } = options || {};
 
-  const resolvedStylingTokens = {
-    text: props.text,
-    primary: props.primary,
-    disabled: props.disabled,
-    circular: props.circular,
-    size: props.size,
-    loading: props.loading,
-    inverted: props.inverted,
-    iconOnly: props.iconOnly,
-    iconPosition: props.iconPosition,
-    fluid: props.fluid,
-    hasContent: !!props.content,
-    ...stylingTokens,
-  };
+  const resolvedStylingTokens = buttonStylingTokensResolver(props, stylingTokens);
 
   const { classes } = useStyles(displayName, {
     className: buttonClassName,
+    classes: inputClasses,
     mapPropsToStyles: () => resolvedStylingTokens,
     mapPropsToInlineStyles: () => ({
       className,
