@@ -192,6 +192,21 @@ function usePositionState(
   return [positions, updateAsyncPosition] as const;
 }
 
+function useSetInitialFocus(
+  { setInitialFocus }: IPositioningContainerProps,
+  contentHost: React.RefObject<HTMLDivElement | null>,
+  positions: IPositionedData | undefined,
+) {
+  const didSetInitialFocus = React.useRef(false);
+
+  React.useEffect((): void => {
+    if (!didSetInitialFocus.current && contentHost.current && setInitialFocus && positions) {
+      didSetInitialFocus.current = true;
+      focusFirstChild(contentHost.current);
+    }
+  });
+}
+
 export const PositioningContainer = React.forwardRef(
   (propsWithoutDefaults: IPositioningContainerProps, forwardedRef: React.Ref<HTMLDivElement>) => {
     const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
@@ -213,6 +228,8 @@ export const PositioningContainer = React.forwardRef(
       targetRef,
       getCachedBounds,
     );
+
+    useSetInitialFocus(props, contentHost, positions);
 
     return (
       <PositioningContainerClass
@@ -248,8 +265,6 @@ interface IPositioningContainerClassProps extends IPositioningContainerProps {
 
 class PositioningContainerClass extends React.Component<IPositioningContainerClassProps, IPositioningContainerState>
   implements PositioningContainerClass {
-  private _didSetInitialFocus: boolean;
-
   /**
    * The maximum height the PositioningContainer can grow to
    * without going being the window or target bounds
@@ -266,7 +281,6 @@ class PositioningContainerClass extends React.Component<IPositioningContainerCla
     this._async = new Async(this);
     this._events = new EventGroup(this);
 
-    this._didSetInitialFocus = false;
     this.state = {
       heightOffset: 0,
     };
@@ -274,10 +288,6 @@ class PositioningContainerClass extends React.Component<IPositioningContainerCla
 
   public componentDidMount(): void {
     this._onComponentDidMount();
-  }
-
-  public componentDidUpdate(): void {
-    this._setInitialFocus();
   }
 
   // tslint:disable-next-line function-name
@@ -397,18 +407,6 @@ class PositioningContainerClass extends React.Component<IPositioningContainerCla
       this.onResize(ev);
     }
   }
-
-  protected _setInitialFocus = (): void => {
-    if (
-      this.props.hoistedProps.contentHost.current &&
-      this.props.setInitialFocus &&
-      !this._didSetInitialFocus &&
-      this.props.hoistedProps.positions
-    ) {
-      this._didSetInitialFocus = true;
-      focusFirstChild(this.props.hoistedProps.contentHost.current);
-    }
-  };
 
   protected _onComponentDidMount = (): void => {
     // This is added so the positioningContainer will dismiss when the window is scrolled
