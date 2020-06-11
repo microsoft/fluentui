@@ -6,3 +6,7 @@ export interface TestingOptions {
 }
 
 export type ConformanceTest = (componentInfo: ComponentDoc, componentPath: string, testInfo: TestingOptions) => void;
+
+export interface TestObject {
+  [key: string]: ConformanceTest;
+}
