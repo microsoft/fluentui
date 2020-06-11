@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Checkbox: use CheckMarkIcon from react-icons",
+  "packageName": "@fluentui/react-next",
+  "email": "xgao@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-06-11T17:42:41.139Z"
+}
