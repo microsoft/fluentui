@@ -146,6 +146,8 @@ const FormField: React.FC<WithAsProp<FormFieldProps>> & FluentComponentStaticPro
       }),
   });
 
+  console.log(name);
+  console.log(required);
   const controlElement = Box.create(control || {}, {
     defaultProps: () =>
       getA11yProps('control', {

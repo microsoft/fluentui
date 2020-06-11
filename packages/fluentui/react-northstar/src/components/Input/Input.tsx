@@ -32,7 +32,7 @@ import {
   useStyles,
   useAccessibility,
 } from '@fluentui/react-bindings';
-import { ExclamationCircleIcon } from '@fluentui/react-icons-northstar';
+import { ExclamationCircleIcon, PresenceAvailableIcon } from '@fluentui/react-icons-northstar';
 
 export interface InputSlotClassNames {
   input: string;
@@ -155,7 +155,7 @@ const Input: React.FC<WithAsProp<InputProps>> & FluentComponentStaticProps<Input
     initialValue: '',
   });
   const hasValue: boolean = !!value && (value as string)?.length !== 0;
-  const requiredAndSuccessful = required && !!successIndicator && hasValue;
+  const requiredAndSuccessful = required && hasValue;
 
   const { styles: resolvedStyles } = useStyles<InputStylesProps>(Input.displayName, {
     className: inputClassName,
@@ -165,7 +165,7 @@ const Input: React.FC<WithAsProp<InputProps>> & FluentComponentStaticProps<Input
       inline,
       disabled,
       clearable,
-      hasIcon: !!icon || !!successIndicator || !!error,
+      hasIcon: !!icon || !!required || !!error,
       requiredAndSuccessful,
       iconPosition,
       hasValue,
@@ -321,6 +321,7 @@ Input.defaultProps = {
   wrapper: {},
   iconPosition: 'end',
   errorIndicator: <ExclamationCircleIcon />,
+  successIndicator: <PresenceAvailableIcon />,
 };
 
 Input.handledProps = Object.keys(Input.propTypes) as any;
