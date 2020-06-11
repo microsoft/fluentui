@@ -4,9 +4,10 @@ import { KeytipData } from '../../KeytipData';
 import { IToggleProps } from './Toggle.types';
 import { useToggle } from './useToggle';
 
-export const ToggleBase = compose<'div', IToggleProps, IToggleProps, {}, {}>(
-  (props, ref, composeOptions) => {
-    const { state, slots, slotProps } = useToggle(props, composeOptions);
+export const ToggleBase = compose<'div', IToggleProps, {}, IToggleProps, {}>(
+  (props, ref, options) => {
+    const { state: toggleState } = options;
+    const { state, slots, slotProps } = toggleState;
 
     const { checked } = state;
     const { 'aria-describedby': ariaDescribedBy, disabled, keytipProps, label, offText, onText } = props;
@@ -29,6 +30,7 @@ export const ToggleBase = compose<'div', IToggleProps, IToggleProps, {}, {}>(
     );
   },
   {
+    displayName: 'ToggleBase',
     slots: {
       label: 'span',
       container: 'div',
@@ -36,7 +38,7 @@ export const ToggleBase = compose<'div', IToggleProps, IToggleProps, {}, {}>(
       thumb: 'span',
       stateText: 'span',
     },
-    displayName: 'ToggleBase',
+    state: useToggle,
   },
 );
 
