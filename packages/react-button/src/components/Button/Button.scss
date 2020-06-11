@@ -150,27 +150,27 @@
     --button-background: var(--accent-background);
     --button-borderColor: var(--accent-borderColor);
     --button-contentColor: var(--accent-contentColor);
-    --button-icon: var(--accent-icon);
+    --button-iconColor: var(--accent-iconColor);
 
     --button-hovered-background: var(--accent-hovered-background);
     --button-hovered-borderColor: var(--accent-hovered-borderColor);
     --button-hovered-contentColor: var(--accent-hovered-contentColor);
-    --button-hovered-icon: var(--accent-icon-hovered);
+    --button-hovered-iconColor: var(--accent-hovered-iconColor);
 
     --button-focused-background: var(--accent-focused-background);
     --button-focused-borderColor: var(--accent-focused-borderColor);
     --button-focused-contentColor: var(--accent-focused-contentColor);
-    --button-focused-iconColor: var(--accent-focused-icon);
+    --button-focused-iconColor: var(--accent-focused-iconColor);
 
     --button-pressed-background: var(--accent-pressed-background);
     --button-pressed-borderColor: var(--accent-pressed-borderColor);
     --button-pressed-contentColor: var(--accent-pressed-contentColor);
-    --button-pressed-iconColor: var(--accent-pressed-icon);
+    --button-pressed-iconColor: var(--accent-pressed-iconColor);
 
     --button-disabled-background: var(--accent-disabled-background);
     --button-disabled-borderColor: var(--accent-disabled-borderColor);
     --button-disabled-contentColor: var(--accent-disabled-contentColor);
-    --button-disabled-iconColor: var(--accent-disabled-icon);
+    --button-disabled-iconColor: var(--accent-disabled-iconColor);
   }
 
   &._iconOnly {
@@ -220,26 +220,20 @@
   }
 }
 
-// .content {
-// }
-
 .icon {
-  color: var(--button-icon);
+  color: var(--button-iconColor);
   display: flex;
   align-items: center;
   justify-content: center;
   width: var(--button-iconSize);
   height: var(--button-iconSize);
   font-size: var(--button-iconSize, inherit);
+  font-weight: normal;
 
   &.disabled {
-    color: var(--button-disabled-icon, var(--button-disabled-contentColor));
+    color: var(--button-disabled-iconColor, var(--button-disabled-contentColor));
   }
 }
-
-// .loader {
-//   /* TODO: styling once we have a sample. */
-// }
 
 /* selectors */
 
