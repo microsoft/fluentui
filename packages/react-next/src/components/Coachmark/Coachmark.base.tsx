@@ -637,7 +637,7 @@ export class CoachmarkBase extends React.Component<ICoachmarkProps, ICoachmarkSt
         const mouseY = e.clientY;
         const mouseX = e.clientX;
         this._setTargetElementRect();
-        const isMouseInProximity = this._isInsideElement(mouseX, mouseY, mouseProximityOffset);
+        const isMouseInProximity = isInsideElement(this._targetElementRect, mouseX, mouseY, mouseProximityOffset);
 
         if (isMouseInProximity !== this.state.isMouseInProximity) {
           this._openCoachmark();
@@ -655,13 +655,18 @@ export class CoachmarkBase extends React.Component<ICoachmarkProps, ICoachmarkSt
       this._targetElementRect = this._translateAnimationContainer!.current!.getBoundingClientRect();
     }
   }
+}
 
-  private _isInsideElement(mouseX: number, mouseY: number, mouseProximityOffset: number = 0): boolean {
-    return (
-      mouseX > this._targetElementRect.left - mouseProximityOffset &&
-      mouseX < this._targetElementRect.left + this._targetElementRect.width + mouseProximityOffset &&
-      mouseY > this._targetElementRect.top - mouseProximityOffset &&
-      mouseY < this._targetElementRect.top + this._targetElementRect.height + mouseProximityOffset
-    );
-  }
+function isInsideElement(
+  targetElementRect: ClientRect,
+  mouseX: number,
+  mouseY: number,
+  mouseProximityOffset: number = 0,
+): boolean {
+  return (
+    mouseX > targetElementRect.left - mouseProximityOffset &&
+    mouseX < targetElementRect.left + targetElementRect.width + mouseProximityOffset &&
+    mouseY > targetElementRect.top - mouseProximityOffset &&
+    mouseY < targetElementRect.top + targetElementRect.height + mouseProximityOffset
+  );
 }
