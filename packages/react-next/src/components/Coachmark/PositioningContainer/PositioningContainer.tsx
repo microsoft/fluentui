@@ -30,7 +30,7 @@ import {
 } from 'office-ui-fabric-react/lib/utilities/positioning';
 
 import { AnimationClassNames, mergeStyles } from '../../../Styling';
-import { useMergedRefs } from '@uifabric/react-hooks';
+import { useMergedRefs, useAsync } from '@uifabric/react-hooks';
 
 const OFF_SCREEN_STYLE = { opacity: 0 };
 
@@ -46,11 +46,6 @@ const SLIDE_ANIMATIONS = {
 } as const;
 
 export interface IPositioningContainerState {
-  /**
-   * Current set of calcualted positions for the outermost parent container.
-   */
-  positions?: IPositionedData;
-
   /**
    * Tracks the current height offset and updates during
    * the height animation when props.finalHeight is specified.
@@ -111,6 +106,92 @@ function useTargets({ target }: IPositioningContainerProps, positionedHost: Reac
   return [targetRef, targetWindowRef] as const;
 }
 
+function useCachedBounds(props: IPositioningContainerProps, targetWindowRef: React.RefObject<Window | undefined>) {
+  /**
+   * The bounds used when determing if and where the
+   * PositioningContainer should be placed.
+   */
+  const positioningBounds = React.useRef<IRectangle>();
+
+  const getCachedBounds = (): IRectangle => {
+    if (!positioningBounds.current) {
+      let currentBounds = props.bounds;
+
+      if (!currentBounds) {
+        currentBounds = {
+          top: 0 + props.minPagePadding!,
+          left: 0 + props.minPagePadding!,
+          right: targetWindowRef.current!.innerWidth - props.minPagePadding!,
+          bottom: targetWindowRef.current!.innerHeight - props.minPagePadding!,
+          width: targetWindowRef.current!.innerWidth - props.minPagePadding! * 2,
+          height: targetWindowRef.current!.innerHeight - props.minPagePadding! * 2,
+        };
+      }
+      positioningBounds.current = currentBounds;
+    }
+    return positioningBounds.current;
+  };
+
+  return getCachedBounds;
+}
+
+function usePositionState(
+  props: IPositioningContainerProps,
+  positionedHost: React.RefObject<HTMLDivElement | null>,
+  contentHost: React.RefObject<HTMLDivElement | null>,
+  targetRef: React.RefObject<HTMLElement | MouseEvent | Point | null>,
+  getCachedBounds: () => IRectangle,
+) {
+  const async = useAsync();
+  /**
+   * Current set of calcualted positions for the outermost parent container.
+   */
+  const [positions, setPositions] = React.useState<IPositionedData>();
+  const positionAttempts = React.useRef(0);
+
+  const updateAsyncPosition = (): void => {
+    async.requestAnimationFrame(() => updatePosition());
+  };
+
+  const updatePosition = (): void => {
+    const { offsetFromTarget, onPositioned } = props;
+    const hostElement = positionedHost.current;
+    const positioningContainerElement = contentHost.current;
+
+    if (hostElement && positioningContainerElement) {
+      let currentProps: IPositionProps | undefined;
+      currentProps = assign(currentProps, props);
+      currentProps!.bounds = getCachedBounds();
+      currentProps!.target = targetRef.current!;
+      if (document.body.contains(currentProps!.target as Node)) {
+        currentProps!.gapSpace = offsetFromTarget;
+        const newPositions: IPositionedData = positionElement(currentProps!, hostElement, positioningContainerElement);
+        // Set the new position only when the positions are not exists or one of the new positioningContainer positions
+        // are different. The position should not change if the position is within 2 decimal places.
+        if (
+          (!positions && newPositions) ||
+          (positions && newPositions && !arePositionsEqual(positions, newPositions) && positionAttempts.current < 5)
+        ) {
+          // We should not reposition the positioningContainer more than a few times, if it is then the content is
+          // likely resizing and we should stop trying to reposition to prevent a stack overflow.
+          positionAttempts.current++;
+          setPositions(newPositions);
+          onPositioned?.(newPositions);
+        } else {
+          positionAttempts.current = 0;
+          onPositioned?.(newPositions);
+        }
+      } else if (positions !== undefined) {
+        setPositions(undefined);
+      }
+    }
+  };
+
+  React.useEffect(updateAsyncPosition);
+
+  return [positions, updateAsyncPosition] as const;
+}
+
 export const PositioningContainer = React.forwardRef(
   (propsWithoutDefaults: IPositioningContainerProps, forwardedRef: React.Ref<HTMLDivElement>) => {
     const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
@@ -124,11 +205,28 @@ export const PositioningContainer = React.forwardRef(
     const rootRef = useMergedRefs(forwardedRef, positionedHost);
 
     const [targetRef, targetWindowRef] = useTargets(props, positionedHost);
+    const getCachedBounds = useCachedBounds(props, targetWindowRef);
+    const [positions, updateAsyncPosition] = usePositionState(
+      props,
+      positionedHost,
+      contentHost,
+      targetRef,
+      getCachedBounds,
+    );
 
     return (
       <PositioningContainerClass
         {...props}
-        hoistedProps={{ contentHost, positionedHost, rootRef, targetRef, targetWindowRef }}
+        hoistedProps={{
+          contentHost,
+          positionedHost,
+          rootRef,
+          targetRef,
+          targetWindowRef,
+          positions,
+          updateAsyncPosition,
+          getCachedBounds,
+        }}
       />
     );
   },
@@ -142,6 +240,9 @@ interface IPositioningContainerClassProps extends IPositioningContainerProps {
     rootRef: React.Ref<HTMLDivElement>;
     targetRef: React.RefObject<HTMLElement | MouseEvent | Point | null>;
     targetWindowRef: React.RefObject<Window | undefined>;
+    positions: IPositionedData | undefined;
+    updateAsyncPosition: () => void;
+    getCachedBounds: () => IRectangle;
   };
 }
 
@@ -150,17 +251,10 @@ class PositioningContainerClass extends React.Component<IPositioningContainerCla
   private _didSetInitialFocus: boolean;
 
   /**
-   * The bounds used when determing if and where the
-   * PositioningContainer should be placed.
-   */
-  private _positioningBounds: IRectangle;
-
-  /**
    * The maximum height the PositioningContainer can grow to
    * without going being the window or target bounds
    */
   private _maxHeight: number | undefined;
-  private _positionAttempts: number;
   private _setHeightOffsetTimer: number;
   private _async: Async;
   private _events: EventGroup;
@@ -174,10 +268,8 @@ class PositioningContainerClass extends React.Component<IPositioningContainerCla
 
     this._didSetInitialFocus = false;
     this.state = {
-      positions: undefined,
       heightOffset: 0,
     };
-    this._positionAttempts = 0;
   }
 
   public componentDidMount(): void {
@@ -186,7 +278,6 @@ class PositioningContainerClass extends React.Component<IPositioningContainerCla
 
   public componentDidUpdate(): void {
     this._setInitialFocus();
-    this._updateAsyncPosition();
   }
 
   // tslint:disable-next-line function-name
@@ -217,8 +308,13 @@ class PositioningContainerClass extends React.Component<IPositioningContainerCla
       return null;
     }
 
-    const { className, positioningContainerWidth, positioningContainerMaxHeight, children } = this.props;
-    const { positions } = this.state;
+    const {
+      className,
+      positioningContainerWidth,
+      positioningContainerMaxHeight,
+      children,
+      hoistedProps: { positions },
+    } = this.props;
 
     const styles = getClassNames();
 
@@ -272,13 +368,13 @@ class PositioningContainerClass extends React.Component<IPositioningContainerCla
     if (onDismiss) {
       onDismiss(ev);
     } else {
-      this._updateAsyncPosition();
+      this.props.hoistedProps.updateAsyncPosition();
     }
   };
 
   protected _dismissOnScroll(ev: Event): void {
     const { preventDismissOnScroll } = this.props;
-    if (this.state.positions && !preventDismissOnScroll) {
+    if (this.props.hoistedProps.positions && !preventDismissOnScroll) {
       this._dismissOnLostFocus(ev);
     }
   }
@@ -307,7 +403,7 @@ class PositioningContainerClass extends React.Component<IPositioningContainerCla
       this.props.hoistedProps.contentHost.current &&
       this.props.setInitialFocus &&
       !this._didSetInitialFocus &&
-      this.state.positions
+      this.props.hoistedProps.positions
     ) {
       this._didSetInitialFocus = true;
       focusFirstChild(this.props.hoistedProps.contentHost.current);
@@ -345,80 +441,9 @@ class PositioningContainerClass extends React.Component<IPositioningContainerCla
       this.props.onLayerMounted();
     }
 
-    this._updateAsyncPosition();
+    this.props.hoistedProps.updateAsyncPosition();
     this._setHeightOffsetEveryFrame();
   };
-
-  private _updateAsyncPosition(): void {
-    this._async.requestAnimationFrame(() => this._updatePosition());
-  }
-
-  private _updatePosition(): void {
-    const { positions } = this.state;
-    const { offsetFromTarget, onPositioned } = this.props;
-
-    const hostElement = this.props.hoistedProps.positionedHost.current;
-    const positioningContainerElement = this.props.hoistedProps.contentHost.current;
-
-    if (hostElement && positioningContainerElement) {
-      let currentProps: IPositionProps | undefined;
-      currentProps = assign(currentProps, this.props);
-      currentProps!.bounds = this._getBounds();
-      currentProps!.target = this.props.hoistedProps.targetRef.current!;
-      if (document.body.contains(currentProps!.target as Node)) {
-        currentProps!.gapSpace = offsetFromTarget;
-        const newPositions: IPositionedData = positionElement(currentProps!, hostElement, positioningContainerElement);
-        // Set the new position only when the positions are not exists or one of the new positioningContainer positions
-        // are different. The position should not change if the position is within 2 decimal places.
-        if (
-          (!positions && newPositions) ||
-          (positions && newPositions && !this._arePositionsEqual(positions, newPositions) && this._positionAttempts < 5)
-        ) {
-          // We should not reposition the positioningContainer more than a few times, if it is then the content is
-          // likely resizing and we should stop trying to reposition to prevent a stack overflow.
-          this._positionAttempts++;
-          this.setState(
-            {
-              positions: newPositions,
-            },
-            () => {
-              if (onPositioned) {
-                onPositioned(newPositions);
-              }
-            },
-          );
-        } else {
-          this._positionAttempts = 0;
-          if (onPositioned) {
-            onPositioned(newPositions);
-          }
-        }
-      } else if (positions !== undefined) {
-        this.setState({
-          positions: undefined,
-        });
-      }
-    }
-  }
-
-  private _getBounds(): IRectangle {
-    if (!this._positioningBounds) {
-      let currentBounds = this.props.bounds;
-
-      if (!currentBounds) {
-        currentBounds = {
-          top: 0 + this.props.minPagePadding!,
-          left: 0 + this.props.minPagePadding!,
-          right: this.props.hoistedProps.targetWindowRef.current!.innerWidth - this.props.minPagePadding!,
-          bottom: this.props.hoistedProps.targetWindowRef.current!.innerHeight - this.props.minPagePadding!,
-          width: this.props.hoistedProps.targetWindowRef.current!.innerWidth - this.props.minPagePadding! * 2,
-          height: this.props.hoistedProps.targetWindowRef.current!.innerHeight - this.props.minPagePadding! * 2,
-        };
-      }
-      this._positioningBounds = currentBounds;
-    }
-    return this._positioningBounds;
-  }
 
   /**
    * Return the maximum height the container can grow to
@@ -434,33 +459,13 @@ class PositioningContainerClass extends React.Component<IPositioningContainerCla
           this.props.hoistedProps.targetRef.current,
           directionalHint!,
           gapSpace,
-          this._getBounds(),
+          this.props.hoistedProps.getCachedBounds(),
         );
       } else {
-        this._maxHeight = this._getBounds().height! - BORDER_WIDTH * 2;
+        this._maxHeight = this.props.hoistedProps.getCachedBounds().height! - BORDER_WIDTH * 2;
       }
     }
     return this._maxHeight!;
-  }
-
-  private _arePositionsEqual(positions: IPositionedData, newPosition: IPositionedData): boolean {
-    return this._comparePositions(positions.elementPosition, newPosition.elementPosition);
-  }
-
-  private _comparePositions(oldPositions: IPosition, newPositions: IPosition): boolean {
-    for (const key in newPositions) {
-      if (newPositions.hasOwnProperty(key)) {
-        const oldPositionEdge = oldPositions[key];
-        const newPositionEdge = newPositions[key];
-
-        if (oldPositionEdge && newPositionEdge) {
-          if (oldPositionEdge.toFixed(2) !== newPositionEdge.toFixed(2)) {
-            return false;
-          }
-        }
-      }
-    }
-    return true;
   }
 
   /**
@@ -497,4 +502,24 @@ class PositioningContainerClass extends React.Component<IPositioningContainerCla
     const { target } = props;
     return target!;
   }
+}
+
+function arePositionsEqual(positions: IPositionedData, newPosition: IPositionedData): boolean {
+  return comparePositions(positions.elementPosition, newPosition.elementPosition);
+}
+
+function comparePositions(oldPositions: IPosition, newPositions: IPosition): boolean {
+  for (const key in newPositions) {
+    if (newPositions.hasOwnProperty(key)) {
+      const oldPositionEdge = oldPositions[key];
+      const newPositionEdge = newPositions[key];
+
+      if (oldPositionEdge && newPositionEdge) {
+        if (oldPositionEdge.toFixed(2) !== newPositionEdge.toFixed(2)) {
+          return false;
+        }
+      }
+    }
+  }
+  return true;
 }
