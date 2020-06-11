@@ -15,8 +15,11 @@ export type ColorTokens = Partial<{
     contentColor: string;
     subTextColor: string;
     linkColor: string;
+    iconColor: string;
     borderColor: string;
     dividerColor: string;
+    focusColor: string;
+    focusInnerColor: string;
 }>;
 
 // @public
