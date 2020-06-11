@@ -330,10 +330,6 @@ export class CoachmarkBase extends React.Component<ICoachmarkProps, ICoachmarkSt
     }
   }
 
-  public shouldComponentUpdate(newProps: ICoachmarkProps, newState: ICoachmarkState): boolean {
-    return !shallowCompare(newProps, this.props) || !shallowCompare(newState, this.state);
-  }
-
   public componentDidUpdate(prevProps: ICoachmarkProps, prevState: ICoachmarkState): void {
     if (
       prevState.targetAlignment !== this.state.targetAlignment ||
