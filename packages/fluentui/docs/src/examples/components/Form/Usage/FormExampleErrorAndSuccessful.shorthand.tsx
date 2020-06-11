@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Form, Button } from '@fluentui/react-northstar';
-// import { PresenceAvailableIcon } from '@fluentui/react-icons-northstar';
 
 const fields = [
   {
