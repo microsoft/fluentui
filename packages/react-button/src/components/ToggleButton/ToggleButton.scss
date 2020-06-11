@@ -43,6 +43,10 @@
    */
   &._checked {
     --button-background: var(--button-checked-background);
+    --button-contentColor: var(--button-checked-contentColor);
+    --button-iconColor: var(--button-checked-iconColor);
     --accent-background: var(--accent-checked-background);
+    --accent-contentColor: var(--accent-checked-contentColor);
+    --accent-iconColor: var(--accent-checked-iconColor);
   }
 }
