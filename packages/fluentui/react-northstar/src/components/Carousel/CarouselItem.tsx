@@ -46,8 +46,7 @@ export const carouselItemSlotClassNames: CarouselItemSlotClassNames = {
   itemPositionText: `${carouselItemClassName}__itemPositionText`,
 };
 
-export const CarouselItem: React.FC<WithAsProp<CarouselItemProps>> &
-  FluentComponentStaticProps<CarouselItemProps> = props => {
+const CarouselItem: React.FC<WithAsProp<CarouselItemProps>> & FluentComponentStaticProps<CarouselItemProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(CarouselItem.displayName, context.telemetry);
   setStart();

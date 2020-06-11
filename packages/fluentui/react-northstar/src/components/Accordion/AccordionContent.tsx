@@ -48,7 +48,7 @@ export const accordionContentClassName = 'ui-accordion__content';
 
 export type AccordionContentStylesProps = Required<Pick<AccordionContentProps, 'active'>>;
 
-export const AccordionContent: React.FC<WithAsProp<AccordionContentProps>> &
+const AccordionContent: React.FC<WithAsProp<AccordionContentProps>> &
   FluentComponentStaticProps<AccordionContentProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(AccordionContent.displayName, context.telemetry);

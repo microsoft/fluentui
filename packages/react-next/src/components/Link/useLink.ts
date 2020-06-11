@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { ComposePreparedOptions } from '@fluentui/react-compose';
-import { classNamesFunction } from '../../Utilities';
+import { classNamesFunction, useFocusRects } from '../../Utilities';
 import { ILink, ILinkProps, ILinkStyleProps, ILinkStyles } from './Link.types';
 
 const getClassNames = classNamesFunction<ILinkStyleProps, ILinkStyles>({ useStaticStyles: true });
@@ -10,10 +9,11 @@ const getClassNames = classNamesFunction<ILinkStyleProps, ILinkStyles>({ useStat
  * state, slots and slotProps for consumption by the component.
  */
 // tslint:disable-next-line:no-any
-export const useLink = (props: ILinkProps, options: ComposePreparedOptions): any => {
+export const useLink = (props: ILinkProps): any => {
   const { as, className, disabled, href, onClick, ref, styles, theme } = props;
 
   useComponentRef(props, ref);
+  useFocusRects(ref);
 
   const classNames = getClassNames(styles!, {
     className,

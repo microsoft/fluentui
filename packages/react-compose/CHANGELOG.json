@@ -2,6 +2,52 @@
   "name": "@fluentui/react-compose",
   "entries": [
     {
+      "date": "Mon, 08 Jun 2020 12:34:34 GMT",
+      "tag": "@fluentui/react-compose_v0.9.0",
+      "version": "0.9.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Updating mergeProps to not use getNativeElementProps.",
+            "author": "dzearing@microsoft.com",
+            "commit": "c5f82f6bb84f97a0b8c0d2bb884885cf906b906c",
+            "package": "@fluentui/react-compose"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "compose: update classes option to allow array",
+            "author": "xgao@microsoft.com",
+            "commit": "ef676ae257d2c52d5795b8b08c6c6e9ee2643c9e",
+            "package": "@fluentui/react-compose"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 05 Jun 2020 05:09:39 GMT",
+      "tag": "@fluentui/react-compose_v0.8.0",
+      "version": "0.8.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Updating signature to createClassResolver to cache most of the resolution logic upfront.",
+            "author": "dzearing@microsoft.com",
+            "commit": "fb6496e5deebdebd955fccf500f2e3f923b0a160",
+            "package": "@fluentui/react-compose"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Adjusting class resolution to parse enums using conventions.",
+            "author": "dzearing@microsoft.com",
+            "commit": "8f0c78a3979e601a3bf3833e5cd04256d2906a82",
+            "package": "@fluentui/react-compose"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 02 Jun 2020 12:36:30 GMT",
       "tag": "@fluentui/react-compose_v0.7.0",
       "version": "0.7.0",
