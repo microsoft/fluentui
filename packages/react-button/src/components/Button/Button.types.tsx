@@ -76,13 +76,16 @@ export interface ButtonProps extends ComponentProps, React.HTMLAttributes<HTMLBu
 export interface ButtonState extends ButtonProps {}
 
 export interface ButtonSlots {
+  root: React.ElementType;
   icon: React.ElementType;
   content: React.ElementType;
   loader: React.ElementType;
 }
 
 export type ButtonSlotProps = {
-  [key in keyof ButtonSlots]: ButtonProps[key];
+  [key in keyof Omit<ButtonSlots, 'root'>]: ButtonProps[key];
+} & {
+  root: React.ButtonHTMLAttributes<HTMLButtonElement>;
 };
 
 export interface ButtonOptions

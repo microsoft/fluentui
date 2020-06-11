@@ -93,10 +93,14 @@ export type InputComposeComponent<TProps = {}> = React.FunctionComponent<TProps>
 };
 
 // @public
-export function mergeProps<TProps, TState = TProps, TSlots = GenericDictionary, TSlotProps = GenericDictionary>(state: TState, options: ComposePreparedOptions<TProps, TState>): MergePropsResult<TState, TSlots, TSlotProps>;
+export function mergeProps<TProps, TState = TProps, TSlots = GenericDictionary, TSlotProps = {
+    [key in keyof TSlots]: any;
+}>(state: TState, options: ComposePreparedOptions<TProps, TState>): MergePropsResult<TState, TSlots, TSlotProps>;
 
 // @public (undocumented)
-export type MergePropsResult<TState extends GenericDictionary, TSlots = GenericDictionary, TSlotProps = GenericDictionary> = {
+export type MergePropsResult<TState extends GenericDictionary, TSlots = GenericDictionary, TSlotProps = {
+    [key in keyof TSlots]: any;
+}> = {
     state: TState;
     slots: TSlots;
     slotProps: TSlotProps;

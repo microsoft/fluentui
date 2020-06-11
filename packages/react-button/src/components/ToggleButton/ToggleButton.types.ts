@@ -23,7 +23,9 @@ export interface ToggleButtonState extends ToggleButtonProps {}
 export interface ToggleButtonSlots extends ButtonSlots {}
 
 export type ToggleButtonSlotProps = {
-  [key in keyof ToggleButtonSlots]: ToggleButtonProps[key];
+  [key in keyof Omit<ToggleButtonSlots, 'root'>]: ToggleButtonProps[key];
+} & {
+  root: React.ButtonHTMLAttributes<HTMLButtonElement>;
 };
 
 export interface ToggleButtonOptions
