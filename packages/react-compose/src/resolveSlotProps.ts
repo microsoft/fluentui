@@ -1,14 +1,13 @@
 import * as React from 'react';
-import { MergePropsResult } from './mergeProps';
 import { defaultMappedProps } from './defaultMappedProps';
-import { ComposePreparedOptions, GenericDictionary } from './types';
+import { ComposePreparedOptions, GenericDictionary, MergePropsResult } from './types';
 
 export const NullRender = () => null;
 
 /**
  * Helper utility which resolves the slots and slot props derived from user input.
  */
-export function resolveSlotProps<TProps, TState>(
+export function resolveSlotProps<TProps, TState = TProps>(
   result: MergePropsResult<TState>,
   options: ComposePreparedOptions<TProps, TState>,
 ): MergePropsResult<TState> {
