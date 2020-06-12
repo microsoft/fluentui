@@ -35,7 +35,6 @@
   "devDependencies": {
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
-    "@types/es6-promise": "0.0.32",
     "@types/glob": "^7.1.1",
     "@types/jest": "~24.9.0",
     "@types/node": "^10.3.2",
@@ -54,9 +53,6 @@
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
     "enzyme-to-json": "^3.3.4",
-    "es6-map": "^0.1.5",
-    "es6-promise": "^4.1.0",
-    "es6-weak-map": "^2.0.2",
     "glob": "^7.1.2",
     "highlight.js": "^9.12.0",
     "jest-snapshot": "~24.9.0",

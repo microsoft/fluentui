@@ -39,7 +39,6 @@
     "@uifabric/tslint-rules": "7.2.1",
     "enzyme": "",
     "enzyme-adapter-react-16": "",
-    "es6-weak-map": "",
     "react": "",
     "react-app-polyfill": "",
     "react-dom": "",
