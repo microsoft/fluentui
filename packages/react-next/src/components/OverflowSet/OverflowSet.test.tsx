@@ -3,7 +3,7 @@ import { ReactWrapper, mount } from 'enzyme';
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import * as sinon from 'sinon';
-import { CommandBarButton } from '@fluentui/react-next/lib/CompatButton';
+import { CommandBarButton } from '../../CompatButton';
 import { IKeytipProps } from '../../Keytip';
 import { KeytipLayer, KeytipLayerBase } from '../../KeytipLayer';
 import { arraysEqual, find } from '../../Utilities';

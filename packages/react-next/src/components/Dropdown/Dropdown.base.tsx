@@ -20,7 +20,7 @@ import {
   warnMutuallyExclusive,
 } from '../../Utilities';
 import { Callout } from '../../Callout';
-import { CommandButton } from '@fluentui/react-next/lib/CompatButton';
+import { CommandButton } from '../../CompatButton';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import {
   DropdownMenuItemType,

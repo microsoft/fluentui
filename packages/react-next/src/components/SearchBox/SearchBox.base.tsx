@@ -10,7 +10,7 @@ import {
   inputProperties,
 } from '../../Utilities';
 
-import { IconButton } from '@fluentui/react-next/lib/CompatButton';
+import { IconButton } from '../../CompatButton';
 import { Icon } from '../../Icon';
 
 const getClassNames = classNamesFunction<ISearchBoxStyleProps, ISearchBoxStyles>();

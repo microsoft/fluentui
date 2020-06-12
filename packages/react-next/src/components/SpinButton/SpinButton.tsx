@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IconButton } from '@fluentui/react-next/lib/CompatButton';
+import { IconButton } from '../../CompatButton';
 import { Label } from '../../Label';
 import { Icon } from '../../Icon';
 import {
