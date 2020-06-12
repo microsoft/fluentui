@@ -22,7 +22,7 @@ const ContentList = () => (
 
 const App = () => (
   <BrowserRouter>
-    <Provider theme={teamsTheme}>
+    <Provider theme={teamsTheme} disableAnimations>
       <Switch>
         <Route exact path="/:exampleName" component={E2EExample} />
         <Route component={ContentList} />
