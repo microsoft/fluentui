@@ -17,7 +17,7 @@ const FormExampleErrorAndSatisfactory = () => (
         Error Message
       </Form.Message>
     </Form.Field>
-    <Form.Field label="Last name" name="LastName" id="last-name-shorthand-with-error" errorMessage="ERROR" required />
+    <Form.Field label="Last name" name="LastName" id="last-name-shorthand-with-error" errorMessage="You can not fix this error" required />
     <Form.Field>
       <Form.Label htmlFor="email-field">E-mail*</Form.Label>
       <Input
