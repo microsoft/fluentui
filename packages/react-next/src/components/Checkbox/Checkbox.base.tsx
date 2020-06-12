@@ -41,7 +41,9 @@ export const CheckboxBase = compose<'div', ICheckboxProps, {}, ICheckboxProps, {
           <slots.checkbox {...slotProps.checkbox} data-ktp-target={keytipAttributes['data-ktp-target']}>
             <slots.checkmark {...slotProps.checkmark} />
           </slots.checkbox>
-          {(props.onRenderLabel || onRenderLabel)(props, onRenderLabel)}
+
+          {// tslint:disable-next-line:deprecation
+          (props.onRenderLabel || onRenderLabel)(props, onRenderLabel)}
         </slots.container>
       </slots.root>
     );
