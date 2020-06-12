@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "x and y axis ticks fonts updated",
+  "packageName": "@uifabric/charting",
+  "email": "email not defined",
+  "dependentChangeType": "patch",
+  "date": "2020-06-12T11:07:39.463Z"
+}
