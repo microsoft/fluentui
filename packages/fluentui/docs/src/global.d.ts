@@ -25,3 +25,9 @@ declare interface Window {
   resetExternalLayout?: () => void;
   switchTheme?: (themeName: string) => void;
 }
+
+declare module 'csstype' {
+  interface Properties {
+    msGridRow?: any;
+  }
+}
