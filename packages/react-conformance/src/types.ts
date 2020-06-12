@@ -1,4 +1,5 @@
 import { ComponentDoc } from 'react-docgen-typescript';
+
 export interface TestingOptions {
   constructorName: string;
   requiredProps?: object;

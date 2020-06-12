@@ -11,16 +11,12 @@ export function isConformant(componentPath: string, options: TestingOptions, ext
   if (components.length === 1) {
     const componentInfo = components[0];
 
-    for (const test in defaultTests) {
-      if (test) {
-        defaultTests[test](componentInfo, componentPath, options);
-      }
+    for (const test of Object.keys(defaultTests)) {
+      defaultTests[test](componentInfo, componentPath, options);
     }
     if (extraTests) {
-      for (const test in extraTests) {
-        if (test) {
-          extraTests[test](componentInfo, componentPath, options);
-        }
+      for (const test of Object.keys(extraTests)) {
+        extraTests[test](componentInfo, componentPath, options);
       }
     }
   } else {

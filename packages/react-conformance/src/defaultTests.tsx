@@ -3,6 +3,8 @@ import { ComponentDoc } from 'react-docgen-typescript';
 import { mount } from 'enzyme';
 import * as ReactIs from 'react-is';
 import * as React from 'react';
+import * as _ from 'lodash';
+import * as path from 'path';
 
 /** For a reference of the tests, check the file rules.md in @fluentui/react-conformance */
 
@@ -14,55 +16,56 @@ export const defaultTests: TestObject = {
 
     // No need to check if the description is undefined, ComponentDoc.description is a "string" not "string | undefined"
     it(`has a docblock with ${minWords} to ${maxWords} words`, () => {
-      expect(componentInfo.description).toBeGreaterThanOrEqual(minWords);
-      expect(componentInfo.description).toBeLessThanOrEqual(maxWords);
+      expect(_.words(componentInfo.description)).toBeGreaterThanOrEqual(minWords);
+      expect(_.words(componentInfo.description)).toBeLessThanOrEqual(maxWords);
     });
   },
+
   /** Component file exports a valid React element type  */
   'exports-react-element': (componentInfo: ComponentDoc, componentPath: string, testInfo: TestingOptions) => {
     it(`file exports valid React Element type`, () => {
       expect(ReactIs.isValidElementType(require(componentPath))).toBe(true);
     });
   },
+
   /** Component file exports a valid React element and can render it */
   'component-renders': (componentInfo: ComponentDoc, componentPath: string, testInfo: TestingOptions) => {
-    const { requiredProps } = testInfo;
-    const Component = require(componentPath);
-    const mountedComponent = mount(<Component {...requiredProps} />);
-
     it(`renders`, () => {
-      expect(mountedComponent.exists()).toBe(true);
+      const { requiredProps } = testInfo;
+      const componentFile = require(componentPath);
+      const Component = componentFile.default || componentFile[componentInfo.displayName];
+      expect(Component).toBeDefined();
+      const mountedComponent = mount(<Component {...requiredProps} />);
+      expect(mountedComponent.exists()).toBeTruthy();
     });
   },
-  /** Component's constructor is a named function or component has a displayName */
-  'constructor-is-named-function': (componentInfo: ComponentDoc, componentPath: string, testInfo: TestingOptions) => {
-    const Component = require(componentPath);
-    const constructorName = Component.prototype.constructor.name;
 
-    it(`constructor's name is a named function or has displayName`, () => {
-      expect(constructorName || componentInfo.displayName).toBeTruthy();
-    });
+  /**
+   * if functional component: component has a displayName
+   * else: component's constructor is a named function and matches displayName
+   */
+  'component-has-displayname': (componentInfo: ComponentDoc, componentPath: string, testInfo: TestingOptions) => {
+    const componentFile = require(componentPath);
+    const Component = componentFile.default || componentFile[componentInfo.displayName];
+    if (Component.prototype.constructor) {
+      it(`constructor is a named function and matches displayName`, () => {
+        const constructorName = Component.prototype.constructor.name;
+        expect(constructorName).toEqual(Component.displayName);
+      });
+    } else {
+      it(`has a displayName`, () => {
+        expect(Component.displayName).toBeTruthy();
+      });
+    }
   },
-  /** Component has a static displayName matching constructor name */
-  'displayName-matches-constructor': (componentInfo: ComponentDoc, componentPath: string, testInfo: TestingOptions) => {
-    const Component = require(componentPath);
-    const constructorName = Component.prototype.constructor.name;
 
-    it(`has a static displayName that matches the constructor's name`, () => {
-      expect(Component.displayName).toEqual(constructorName);
-    });
-  },
   /** Constructor/component name matches filename */
   'name-matches-filename': (componentInfo: ComponentDoc, componentPath: string, testInfo: TestingOptions) => {
-    const Component = require(componentPath);
-    const fileName = componentPath
-      .split('/')
-      .pop()!
-      .replace('.tsx', '')
-      .replace('.ts', '');
-    const constructorName = Component.prototype.constructor.name;
-
     it(`Component/constructor name matches filename`, () => {
+      const Component = require(componentPath);
+      const fileName = path.basename(componentPath, path.extname(componentPath));
+      const constructorName = Component.prototype.constructor?.name;
+
       expect(componentInfo.displayName || constructorName).toEqual(fileName);
     });
   },
