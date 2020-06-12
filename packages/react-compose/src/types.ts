@@ -153,14 +153,14 @@ export type SlotProps<TSlots extends BaseSlots, TProps, TRootProps extends React
 };
 
 // ========================================================
-// Shorthand
+// Slot Prop / Shorthand
 // ========================================================
-export type ShorthandRenderFunction<TProps> = (Component: React.ElementType<TProps>, props: TProps) => React.ReactNode;
+export type SlotPropRenderFunction<TProps> = (Component: React.ElementType<TProps>, props: TProps) => React.ReactNode;
 
 type ReactNode = React.ReactChild | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined;
 
-export type ObjectShorthandValue<TProps extends GenericDictionary> = TProps & {
-  children?: TProps['children'] | ShorthandRenderFunction<TProps>;
+export type ObjectSlotProp<TProps extends GenericDictionary> = TProps & {
+  children?: TProps['children'] | SlotPropRenderFunction<TProps>;
 };
 
-export type ShorthandValue<TProps> = ReactNode | ObjectShorthandValue<TProps>;
+export type SlotProp<TProps> = ReactNode | ObjectSlotProp<TProps>;

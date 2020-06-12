@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { defaultMappedProps } from './defaultMappedProps';
 import { ComposePreparedOptions, GenericDictionary, MergePropsResult } from './types';
+import { mergeSlotProp } from './mergeSlotProp';
 
 export const NullRender = () => null;
 
@@ -30,20 +31,16 @@ export function resolveSlotProps<TProps, TState = TProps>(
   Object.keys(slots).forEach((slotName: string) => {
     const slot = slots[slotName];
     // tslint:disable-next-line:no-any
-    let slotProp = (state as any)[slotName];
+    const slotProp = (state as any)[slotName];
 
     if (slot && slotProp !== undefined && slotProp !== null) {
-      const slotPropType = typeof slotProp;
-      const isLiteral = slotPropType === 'string' || slotPropType === 'number' || slotPropType === 'boolean';
+      const mergedSlotProp = mergeSlotProp(
+        slotProp,
+        slotProps[slotName],
+        (slot && slot.shorthandConfig && slot.shorthandConfig.mappedProp) || defaultMappedProps[slot],
+      );
 
-      // If the slot prop is a literal or JSX, pass it as a child of the slot.
-      if (isLiteral || React.isValidElement(slotProp)) {
-        const mappedProp =
-          (slot && slot.shorthandConfig && slot.shorthandConfig.mappedProp) || defaultMappedProps[slot] || 'children';
-        slotProp = { [mappedProp]: slotProp };
-      }
-
-      if (typeof slotProp.children === 'function') {
+      if (typeof mergedSlotProp.children === 'function') {
         const { children, ...restProps } = slotProp;
         // If the children is a function, replace the slot.
         slots[slotName] = React.Fragment;
@@ -51,10 +48,7 @@ export function resolveSlotProps<TProps, TState = TProps>(
           children: slotProp.children({ Component: slot, props: { ...slotProps[slotName], ...restProps } }),
         };
       } else {
-        slotProps[slotName] = {
-          ...slotProps[slotName],
-          ...slotProp,
-        };
+        slotProps[slotName] = mergedSlotProp;
       }
     }
 

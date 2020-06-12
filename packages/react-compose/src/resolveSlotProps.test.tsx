@@ -24,7 +24,7 @@ describe('resolveSlotProps', () => {
     classes: [{ root: 'root' }, () => ({ foo: 'foo' }), { bar: 'bar', baz: 'baz' }],
   };
 
-  it('can expand strings, booleans, and numbers as children', () => {
+  fit('can expand strings, booleans, and numbers as children', () => {
     const state: { slot1: string; slot2: number; slot3: boolean } = {
       slot1: 'text',
       slot2: 0,
