@@ -7,9 +7,9 @@ const fields = [
     name: 'firstName',
     id: 'first-name-inline-shorthand',
     key: 'first-name',
+    required: true,
     control: {
       as: Input,
-      required: true,
       showSuccessIndicator: false,
     },
     inline: true,
@@ -19,9 +19,9 @@ const fields = [
     name: 'lastName',
     id: 'last-name-inline-shorthand',
     key: 'last-name',
+    required: true,
     control: {
       as: Input,
-      required: true,
       showSuccessIndicator: false,
     },
     inline: true,
