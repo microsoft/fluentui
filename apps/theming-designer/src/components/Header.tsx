@@ -54,17 +54,15 @@ const headerStackStyles = (p: IStackProps, theme: ITheme) => ({
 
 const codepenHeader = `const {
   createTheme,
-  loadTheme,
   Checkbox,
-  Customizations,
   DefaultButton,
   Fabric,
+  loadTheme,
   Pivot,
   PivotItem,
   PrimaryButton,
   Stack,
-  Toggle,
-  TooltipHost
+  Toggle
 } = Fabric;\n\n`;
 const codepenSamples = `\n\nloadTheme(myTheme);
 
