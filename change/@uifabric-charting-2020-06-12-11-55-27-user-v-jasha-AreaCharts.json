@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Date axis updated and code sorted",
+  "packageName": "@uifabric/charting",
+  "email": "email not defined",
+  "dependentChangeType": "patch",
+  "date": "2020-06-12T06:25:27.349Z"
+}

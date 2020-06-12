@@ -13,7 +13,7 @@ export class AreaChartStyledExample extends React.Component<Readonly<{}>, {}> {
     const chart1Points = [
       {
         x: 1590507549847,
-        y: 20,
+        y: 5,
       },
       {
         x: 1591101349817,
@@ -22,14 +22,6 @@ export class AreaChartStyledExample extends React.Component<Readonly<{}>, {}> {
       {
         x: 1591207249647,
         y: 6,
-      },
-      {
-        x: 1591307141817,
-        y: 30,
-      },
-      {
-        x: 1591407549847,
-        y: 10,
       },
       {
         x: 1591307141817,
@@ -48,27 +40,19 @@ export class AreaChartStyledExample extends React.Component<Readonly<{}>, {}> {
       },
       {
         x: 1591101349817,
-        y: 10,
+        y: 33,
       },
       {
         x: 1591207249647,
-        y: 71,
+        y: 21,
       },
       {
         x: 1591307141817,
-        y: 5,
+        y: 44,
       },
       {
         x: 1591407549847,
         y: 22,
-      },
-      {
-        x: 1591307141817,
-        y: 30,
-      },
-      {
-        x: 1591407549847,
-        y: 10,
       },
     ];
 
