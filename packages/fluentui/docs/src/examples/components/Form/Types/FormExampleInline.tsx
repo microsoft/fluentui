@@ -15,7 +15,7 @@ const FormExample = () => (
       required
       control={{
         as: Input,
-        showSuccessindicator: false,
+        showSuccessIndicator: false,
       }}
     />
     <Form.Field
@@ -26,7 +26,7 @@ const FormExample = () => (
       required
       control={{
         as: Input,
-        showSuccessindicator: false,
+        showSuccessIndicator: false,
       }}
     />
     <Form.Field
