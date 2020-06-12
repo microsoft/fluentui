@@ -37,7 +37,8 @@ export const getStyles = (props: IVerticalStackedBarChartStyleProps): IVerticalS
       {
         selectors: {
           text: {
-            ...theme.fonts.tiny,
+            ...theme.fonts.medium,
+            fill: theme.semanticColors.bodyText,
           },
           line: {
             opacity: 0.3,
@@ -58,7 +59,7 @@ export const getStyles = (props: IVerticalStackedBarChartStyleProps): IVerticalS
         selectors: {
           text: {
             ...theme.fonts.medium,
-            opacity: 1,
+            fill: theme.semanticColors.bodyText,
           },
           line: {
             opacity: 0.2,

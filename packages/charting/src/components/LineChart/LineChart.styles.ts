@@ -18,9 +18,8 @@ export const getStyles = (props: ILineChartStyleProps): ILineChartStyles => {
     xAxis: {
       selectors: {
         text: {
-          ...fonts.tiny,
-          stroke: theme.semanticColors.bodyText,
-          opacity: 0.6,
+          ...fonts.medium,
+          fill: theme.semanticColors.bodyText,
         },
         line: {
           opacity: 0.1,
@@ -35,8 +34,8 @@ export const getStyles = (props: ILineChartStyleProps): ILineChartStyles => {
     yAxis: {
       selectors: {
         text: {
-          opacity: 0.6,
-          stroke: theme.semanticColors.bodyText,
+          ...fonts.medium,
+          fill: theme.semanticColors.bodyText,
         },
         path: {
           display: 'none',

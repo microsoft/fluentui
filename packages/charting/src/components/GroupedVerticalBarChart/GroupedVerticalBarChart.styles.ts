@@ -18,7 +18,8 @@ export const getStyles = (props: IGroupedVerticalBarChartStyleProps): IGroupedVe
     xAxis: {
       selectors: {
         text: {
-          ...theme!.fonts.tiny,
+          ...theme.fonts.medium,
+          fill: theme.semanticColors.bodySubtext,
         },
         line: {
           opacity: 0.2,
@@ -34,6 +35,7 @@ export const getStyles = (props: IGroupedVerticalBarChartStyleProps): IGroupedVe
       selectors: {
         text: {
           ...theme.fonts.medium,
+          fill: theme.semanticColors.bodySubtext,
         },
         line: {
           opacity: 0.2,

@@ -35,17 +35,33 @@ export const getStyles = (props: IVerticalBarChartStyleProps): IVerticalBarChart
         ...theme.fonts.mediumPlus,
       },
     ],
+
     xAxis: [
+      { transform: `translate(${xOffset}px, ${height}px)` },
       {
-        transform: `translate(${xOffset}px, ${height}px)`,
+        selectors: {
+          text: {
+            ...theme.fonts.medium,
+            fill: theme.semanticColors.bodySubtext,
+          },
+        },
       },
     ],
+
     xAxisTicks: [],
+
     yAxis: [
+      { transform: `translate(${yOffset}px, 0px)` },
       {
-        transform: `translate(${yOffset}px, 0px)`,
+        selectors: {
+          text: {
+            ...theme.fonts.medium,
+            fill: theme.semanticColors.bodySubtext,
+          },
+        },
       },
     ],
+
     yAxisTicks: [
       {
         transform: 'scaleX(-1)',
