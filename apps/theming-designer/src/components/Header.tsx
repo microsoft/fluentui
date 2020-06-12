@@ -54,23 +54,41 @@ const headerStackStyles = (p: IStackProps, theme: ITheme) => ({
 
 const codepenHeader = `const {
   createTheme,
+  loadTheme,
+  Checkbox,
   Customizations,
   DefaultButton,
+  Fabric,
+  Pivot,
+  PivotItem,
   PrimaryButton,
+  Stack,
   Toggle,
   TooltipHost
 } = Fabric;\n\n`;
-const codepenSamples = `\n\nclass Content extends React.Component {
-    public render()
-    {
-      Customizations.applySettings({ theme: myTheme });
-      return (
-        <div>
-          <DefaultButton text="DefaultButton"/><PrimaryButton text="PrimaryButton"/>
-          <Toggle label="Enabled"/><Toggle label="Disabled" disabled={true}/>
-        </div>
-      );
-    }
+const codepenSamples = `\n\nloadTheme(myTheme);
+
+const Content = () => {
+    return (
+      <Fabric applyThemeToBody>
+        <Stack tokens={{childrenGap: 8, maxWidth: 300}}>
+          <Pivot>
+            <PivotItem headerText="Home" />
+            <PivotItem headerText="Pages" />
+            <PivotItem headerText="Documents" />
+            <PivotItem headerText="Activity" />
+          </Pivot>
+          <Stack horizontal gap={8}>
+            <DefaultButton text="DefaultButton"/>
+            <PrimaryButton text="PrimaryButton"/>
+          </Stack>
+          <Toggle label="Enabled"/>
+          <Toggle label="Disabled" disabled={true}/>
+          <Checkbox label="Checkbox"/>
+          <Checkbox checked label="Checkbox Checked" />
+        </Stack>
+      </Fabric>
+    );
 }
 ReactDOM.render(<Content />,document.getElementById('content'));`;
 
