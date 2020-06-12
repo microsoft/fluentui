@@ -160,7 +160,11 @@ const Input: React.FC<WithAsProp<InputProps>> & FluentComponentStaticProps<Input
   });
   const hasValue: boolean = !!value && (value as string)?.length !== 0;
 
-  const requiredAndSuccessful = ((required && hasValue) || showSuccessIndicator) && !error;
+  const isShowSuccessIndicatorUndefined = typeof showSuccessIndicator === 'undefined';
+
+  const requiredAndSuccessful = isShowSuccessIndicatorUndefined
+    ? ((required && hasValue) || showSuccessIndicator) && !error
+    : showSuccessIndicator;
 
   const { styles: resolvedStyles } = useStyles<InputStylesProps>(Input.displayName, {
     className: inputClassName,
@@ -170,7 +174,7 @@ const Input: React.FC<WithAsProp<InputProps>> & FluentComponentStaticProps<Input
       inline,
       disabled,
       clearable,
-      hasIcon: !!icon || showSuccessIndicator || required || !!error,
+      hasIcon: !!icon || showSuccessIndicator || (required && isShowSuccessIndicatorUndefined) || !!error,
       requiredAndSuccessful,
       iconPosition,
       hasValue,
