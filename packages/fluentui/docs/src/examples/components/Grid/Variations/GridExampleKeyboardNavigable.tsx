@@ -31,10 +31,11 @@ const imageButtonStyles = {
   background: '#fff',
 };
 
-const getMSGridPositions = (msGridColumn, msGridRow) => ({
-  msGridColumn,
-  msGridRow,
-});
+const getMSGridPositions = (msGridColumn, msGridRow) =>
+  ({
+    msGridColumn,
+    msGridRow,
+  } as React.CSSProperties);
 
 const renderImages = () => {
   return _.map(imageNames, (imageName, index) => (
