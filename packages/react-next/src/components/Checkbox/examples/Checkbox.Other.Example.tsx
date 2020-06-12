@@ -30,18 +30,14 @@ export const CheckboxOtherExample: React.FunctionComponent = () => {
 
       <Checkbox label={{ className: 'label', children: 'Custom label 2' }} />
 
-      <Checkbox label={{ children: CustomLabel }} />
+      <Checkbox label={{ children: _renderCustomLabel }} />
 
       <Checkbox onRenderLabel={_renderLabelWithLink} />
     </Stack>
   );
 };
 
-const CustomLabel: React.FunctionComponent<{
-  Component: React.ElementType;
-  props: React.HTMLAttributes<HTMLSpanElement>;
-}> = renderProps => {
-  const { Component, props } = renderProps;
+function _renderCustomLabel(Component: React.ElementType, props: React.HTMLAttributes<HTMLSpanElement>): JSX.Element {
   return (
     <Component {...props}>
       Custom-rendered label with a{' '}
@@ -50,7 +46,7 @@ const CustomLabel: React.FunctionComponent<{
       </Link>
     </Component>
   );
-};
+}
 
 function _renderLabelWithLink() {
   return (

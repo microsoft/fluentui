@@ -102,16 +102,15 @@ describe('resolveSlotProps', () => {
     });
   });
 
-  it('provide children function correct props', () => {
+  it('provide children function correct params', () => {
     // tslint:disable-next-line:no-any
-    const renderFunction = (props: any) => {
+    const renderFunction = (Component: React.ElementType, props: any) => {
+      expect(Component).toEqual(nullRenderer);
       expect(props).toEqual({
-        Component: nullRenderer,
-        props: {
-          className: 'slot1',
-          parentProp: 'parentProp',
-        },
+        className: 'slot1',
+        parentProp: 'parentProp',
       });
+
       return <button />;
     };
 

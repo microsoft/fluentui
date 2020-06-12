@@ -45,7 +45,7 @@ export function resolveSlotProps<TProps, TState = TProps>(
         // If the children is a function, replace the slot.
         slots[slotName] = React.Fragment;
         slotProps[slotName] = {
-          children: slotProp.children({ Component: slot, props: { ...slotProps[slotName], ...restProps } }),
+          children: slotProp.children(slot, { ...slotProps[slotName], ...restProps }),
         };
       } else {
         slotProps[slotName] = mergedSlotProp;
