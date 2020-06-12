@@ -1,7 +1,7 @@
 import * as React from 'react';
+import { ISvgIconProps } from '@fluentui/react-icons';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
-import { IIconProps } from '../../Icon';
 import { IKeytipProps } from '../../Keytip';
 
 /**
@@ -126,7 +126,7 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
   /**
    * Custom icon props for the check mark rendered by the checkbox
    */
-  checkmarkIconProps?: IIconProps;
+  checkmarkIconProps?: ISvgIconProps;
 
   /**
    * Optional keytip for this checkbox

@@ -20,6 +20,7 @@ import { ISettingsFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 import { IStyleSet } from 'office-ui-fabric-react/lib/Styling';
+import { ISvgIconProps } from '@fluentui/react-icons';
 import { ITheme } from 'office-ui-fabric-react/lib/Styling';
 import { Position } from 'office-ui-fabric-react/lib/utilities/positioning';
 import * as React from 'react';
@@ -102,7 +103,7 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
     as?: React.ElementType;
     boxSide?: 'start' | 'end';
     checked?: boolean;
-    checkmarkIconProps?: IIconProps;
+    checkmarkIconProps?: ISvgIconProps;
     className?: string;
     componentRef?: IRefObject<ICheckbox>;
     defaultChecked?: boolean;

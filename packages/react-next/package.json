@@ -45,6 +45,7 @@
   },
   "dependencies": {
     "@fluentui/react-compose": "^0.11.1",
+    "@fluentui/react-icons": "^0.1.28",
     "@fluentui/react-theme-provider": "^0.2.1",
     "@uifabric/set-version": "^7.0.13",
     "office-ui-fabric-react": "^7.120.1",
