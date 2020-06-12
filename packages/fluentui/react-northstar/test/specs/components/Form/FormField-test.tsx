@@ -76,7 +76,6 @@ describe('FormField', () => {
           control: {
             as: Input,
             successIndicator: <PresenceAvailableIcon />,
-            showSuccessIndicator: true,
           },
         }}
       />,
