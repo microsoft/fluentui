@@ -9,5 +9,3 @@ if (!fs.existsSync(path.resolve(__dirname, '../node_modules/lint-staged/bin/lint
   console.error('lint-staged version is out of date! Please run `yarn` to update dependencies.');
   process.exit(1);
 }
-
-require('lint-staged/bin/lint-staged.js');
