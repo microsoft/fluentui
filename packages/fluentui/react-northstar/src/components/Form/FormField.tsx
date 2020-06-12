@@ -63,7 +63,7 @@ export interface FormFieldProps extends UIComponentProps, ChildrenComponentProps
   /** Indicator to be shown when field is required and non-empty */
   successIndicator?: ShorthandValue<BoxProps>;
 
-  /** Set wether the successIndicator should be visible. */
+  /** Indicates whether the successIndicator should be visible. */
   showSuccessIndicator?: boolean;
 }
 

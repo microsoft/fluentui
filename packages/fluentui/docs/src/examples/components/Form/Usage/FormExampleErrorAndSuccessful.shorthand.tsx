@@ -7,7 +7,7 @@ const fields = [
     name: 'firstName',
     id: 'first-name-error',
     key: 'first-name',
-    errorMessage: 'ERROR',
+    errorMessage: 'You can not fix this error',
     required: true,
   },
   {
