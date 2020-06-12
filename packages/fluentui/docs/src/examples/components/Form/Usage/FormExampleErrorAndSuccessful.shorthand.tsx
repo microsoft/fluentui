@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Form, Button, Input } from '@fluentui/react-northstar';
+import { Form, Button } from '@fluentui/react-northstar';
 
 const fields = [
   {
@@ -15,11 +15,7 @@ const fields = [
     name: 'lastName',
     id: 'last-name-satisfactory',
     key: 'last-name',
-    control: {
-      as: Input,
-      showSuccessIndicator: true,
-      required: true,
-    },
+    required: true,
   },
   { control: { as: Button, content: 'Submit' }, key: 'submit' },
 ];

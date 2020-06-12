@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Form, Button, Checkbox } from '@fluentui/react-northstar';
+import { Form, Button, Checkbox, Input } from '@fluentui/react-northstar';
 
 const FormExampleCheckbox = () => (
   <Form
@@ -12,8 +12,12 @@ const FormExampleCheckbox = () => (
       name={'email'}
       id={'email-inline-shorthand'}
       key={'email'}
-      required={true}
-      inline={true}
+      required
+      inline
+      control={{
+        as: Input,
+        showSuccessindicator: false,
+      }}
     />
     <Form.Field
       control={{
