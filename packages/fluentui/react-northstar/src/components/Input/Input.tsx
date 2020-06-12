@@ -104,7 +104,7 @@ export interface InputProps extends UIComponentProps, ChildrenComponentProps, Su
   /** Optional Icon to display inside the Input if required and fulfilled. */
   successIndicator?: ShorthandValue<BoxProps>;
 
-  /** Set wether the successIndicator should be visible. */
+  /** Indicates whether the successIndicator should be visible. */
   showSuccessIndicator?: boolean;
 }
 
