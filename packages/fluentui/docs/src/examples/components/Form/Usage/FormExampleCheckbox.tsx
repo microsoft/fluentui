@@ -8,15 +8,15 @@ const FormExampleCheckbox = () => (
     }}
   >
     <Form.Field
-      label={'Email'}
-      name={'email'}
-      id={'email-inline-shorthand'}
-      key={'email'}
+      label="Email"
+      name="email"
+      id="email-inline-shorthand"
+      key="email"
       required
       inline
       control={{
         as: Input,
-        showSuccessindicator: false,
+        showSuccessIndicator: false,
       }}
     />
     <Form.Field
