@@ -159,7 +159,8 @@ const Input: React.FC<WithAsProp<InputProps>> & FluentComponentStaticProps<Input
     initialValue: '',
   });
   const hasValue: boolean = !!value && (value as string)?.length !== 0;
-  const requiredAndSuccessful = required && hasValue && showSuccessIndicator;
+  const requiredAndSuccessful =
+    ((required && hasValue && showSuccessIndicator) || (!required && showSuccessIndicator)) && !error;
 
   const { styles: resolvedStyles } = useStyles<InputStylesProps>(Input.displayName, {
     className: inputClassName,
