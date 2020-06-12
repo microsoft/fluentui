@@ -62,6 +62,9 @@ export interface FormFieldProps extends UIComponentProps, ChildrenComponentProps
 
   /** Indicator to be shown when field is required and non-empty */
   successIndicator?: ShorthandValue<BoxProps>;
+
+  /** Set wether the successIndicator should be visible. */
+  showSuccessIndicator?: boolean;
 }
 
 export const formFieldClassName = 'ui-form__field';
@@ -91,6 +94,7 @@ const FormField: React.FC<WithAsProp<FormFieldProps>> & FluentComponentStaticPro
     variables,
     inline,
     errorMessage,
+    showSuccessIndicator,
   } = props;
 
   const ElementType = getElementType(props);
@@ -152,6 +156,7 @@ const FormField: React.FC<WithAsProp<FormFieldProps>> & FluentComponentStaticPro
         required,
         name,
         type,
+        showSuccessIndicator,
         error: !!errorMessage || null,
         styles: resolvedStyles.control,
       }),
@@ -199,6 +204,7 @@ FormField.propTypes = {
   required: PropTypes.bool,
   type: PropTypes.string,
   errorMessage: customPropTypes.shorthandAllowingChildren,
+  showSuccessIndicator: PropTypes.bool,
 };
 
 FormField.handledProps = Object.keys(FormField.propTypes) as any;

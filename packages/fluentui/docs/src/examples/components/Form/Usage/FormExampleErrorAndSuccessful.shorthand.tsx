@@ -16,6 +16,7 @@ const fields = [
     id: 'last-name-satisfactory',
     key: 'last-name',
     required: true,
+    showSuccessIndicator: true,
   },
   { control: { as: Button, content: 'Submit' }, key: 'submit' },
 ];

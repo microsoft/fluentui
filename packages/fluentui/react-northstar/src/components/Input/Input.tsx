@@ -103,6 +103,9 @@ export interface InputProps extends UIComponentProps, ChildrenComponentProps, Su
 
   /** Optional Icon to display inside the Input if required and fulfilled. */
   successIndicator?: ShorthandValue<BoxProps>;
+
+  /** Set wether the successIndicator should be visible. */
+  showSuccessIndicator?: boolean;
 }
 
 export const inputClassName = 'ui-input';
@@ -142,6 +145,7 @@ const Input: React.FC<WithAsProp<InputProps>> & FluentComponentStaticProps<Input
     successIndicator,
     error,
     errorIndicator,
+    showSuccessIndicator,
   } = props;
   const inputRef = React.useRef<HTMLInputElement>();
 
@@ -155,7 +159,7 @@ const Input: React.FC<WithAsProp<InputProps>> & FluentComponentStaticProps<Input
     initialValue: '',
   });
   const hasValue: boolean = !!value && (value as string)?.length !== 0;
-  const requiredAndSuccessful = required && hasValue;
+  const requiredAndSuccessful = required && hasValue && showSuccessIndicator;
 
   const { styles: resolvedStyles } = useStyles<InputStylesProps>(Input.displayName, {
     className: inputClassName,
@@ -165,7 +169,7 @@ const Input: React.FC<WithAsProp<InputProps>> & FluentComponentStaticProps<Input
       inline,
       disabled,
       clearable,
-      hasIcon: !!icon || !!required || !!error,
+      hasIcon: !!icon || showSuccessIndicator || error,
       requiredAndSuccessful,
       iconPosition,
       hasValue,
@@ -313,6 +317,7 @@ Input.propTypes = {
   successIndicator: customPropTypes.shorthandAllowingChildren,
   error: PropTypes.bool,
   errorIndicator: customPropTypes.shorthandAllowingChildren,
+  showSuccessIndicator: PropTypes.bool,
 };
 
 Input.defaultProps = {

@@ -20,7 +20,13 @@ const FormExampleErrorAndSatisfactory = () => (
     <Form.Field label="Last name" name="LastName" id="last-name-shorthand-with-error" errorMessage="ERROR" required />
     <Form.Field>
       <Form.Label htmlFor="email-field">E-mail*</Form.Label>
-      <Input successIndicator={<PresenceAvailableIcon />} required name="email-field" id="email-field" />
+      <Input
+        successIndicator={<PresenceAvailableIcon />}
+        showSuccessIndicator
+        required
+        name="email-field"
+        id="email-field"
+      />
     </Form.Field>
     <Form.Field>
       <Button>Submit</Button>
