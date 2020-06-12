@@ -156,7 +156,7 @@ const FormField: React.FC<WithAsProp<FormFieldProps>> & FluentComponentStaticPro
         required,
         name,
         type,
-        showSuccessIndicator,
+        ...(showSuccessIndicator && { showSuccessIndicator }),
         error: !!errorMessage || null,
         styles: resolvedStyles.control,
       }),
