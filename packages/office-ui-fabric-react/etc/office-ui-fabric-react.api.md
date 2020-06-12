@@ -2812,7 +2812,7 @@ export interface IComboBoxState {
     currentPendingValue?: string;
     currentPendingValueValidIndex: number;
     currentPendingValueValidIndexOnHover: number;
-    focused?: boolean;
+    focusState?: 'none' | 'focused' | 'focusing';
     isOpen?: boolean;
     selectedIndices?: number[];
     suggestedDisplayValue?: string;
@@ -6283,7 +6283,7 @@ export interface IPivotItemProps extends React.HTMLAttributes<HTMLDivElement> {
     alwaysRender?: boolean;
     ariaLabel?: string;
     componentRef?: IRefObject<{}>;
-    headerButtonProps?: IButtonProps & {
+    headerButtonProps?: IButtonProps | {
         [key: string]: string | number | boolean;
     };
     headerText?: string;
