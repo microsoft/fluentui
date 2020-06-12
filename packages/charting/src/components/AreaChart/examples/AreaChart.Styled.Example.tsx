@@ -12,28 +12,40 @@ export class AreaChartStyledExample extends React.Component<Readonly<{}>, {}> {
   public render(): React.ReactNode {
     const chart1Points = [
       {
-        x: 1591101349817, // jun 2- 7.45 PM
+        x: 1590507549847,
+        y: 20,
+      },
+      {
+        x: 1591101349817,
         y: 16,
       },
       {
-        x: 1591207249647, // june 3 - 11.30PM
+        x: 1591207249647,
         y: 6,
       },
       {
-        x: 1591307141817, // jun 5- 3.15 AM
-        y: 32,
+        x: 1591307141817,
+        y: 30,
       },
       {
-        x: 1591407549847, // jun 6 7.09 AM
+        x: 1591407549847,
         y: 10,
       },
       {
-        x: 1591507549847, // jun 6 7.09 AM
-        y: 20,
+        x: 1591307141817,
+        y: 30,
+      },
+      {
+        x: 1591407549847,
+        y: 10,
       },
     ];
 
     const chart2Points = [
+      {
+        x: 1590507549847,
+        y: 10,
+      },
       {
         x: 1591101349817,
         y: 10,
@@ -50,6 +62,14 @@ export class AreaChartStyledExample extends React.Component<Readonly<{}>, {}> {
         x: 1591407549847,
         y: 22,
       },
+      {
+        x: 1591307141817,
+        y: 30,
+      },
+      {
+        x: 1591407549847,
+        y: 10,
+      },
     ];
 
     const chartPoints = [
@@ -58,11 +78,11 @@ export class AreaChartStyledExample extends React.Component<Readonly<{}>, {}> {
         data: chart1Points,
         color: DefaultPalette.accent,
       },
-      // {
-      //   legend: 'legend2',
-      //   data: chart2Points,
-      //   color: DefaultPalette.blueLight,
-      // },
+      {
+        legend: 'legend2',
+        data: chart2Points,
+        color: DefaultPalette.blueLight,
+      },
     ];
 
     const chartData = {

@@ -14,11 +14,11 @@ export class AreaChartMultipleExample extends React.Component<Readonly<{}>, {}> 
     const chart1Points = [
       {
         x: 20,
-        y: 30,
+        y: 9,
       },
       {
         x: 25,
-        y: 40,
+        y: 14,
       },
       {
         x: 30,
@@ -34,38 +34,38 @@ export class AreaChartMultipleExample extends React.Component<Readonly<{}>, {}> 
       },
       {
         x: 45,
-        y: 36,
+        y: 31,
       },
       {
         x: 50,
-        y: 45,
+        y: 29,
       },
       {
         x: 55,
-        y: 40,
+        y: 27,
       },
       {
         x: 60,
-        y: 55,
+        y: 37,
       },
       {
         x: 65,
-        y: 60,
+        y: 51,
       },
     ];
 
     const chart2Points = [
       {
         x: 20,
-        y: 30,
+        y: 21,
       },
       {
         x: 25,
-        y: 60,
+        y: 25,
       },
       {
         x: 30,
-        y: 40,
+        y: 10,
       },
       {
         x: 35,
@@ -73,23 +73,23 @@ export class AreaChartMultipleExample extends React.Component<Readonly<{}>, {}> 
       },
       {
         x: 40,
-        y: 40,
+        y: 14,
       },
       {
         x: 45,
-        y: 60,
+        y: 18,
       },
       {
         x: 50,
-        y: 50,
+        y: 9,
       },
       {
         x: 55,
-        y: 70,
+        y: 23,
       },
       {
         x: 60,
-        y: 30,
+        y: 7,
       },
       {
         x: 65,
@@ -100,15 +100,15 @@ export class AreaChartMultipleExample extends React.Component<Readonly<{}>, {}> 
     const chart3Points = [
       {
         x: 20,
-        y: 40,
+        y: 30,
       },
       {
         x: 25,
-        y: 50,
+        y: 35,
       },
       {
         x: 30,
-        y: 100,
+        y: 33,
       },
       {
         x: 35,
@@ -167,9 +167,6 @@ export class AreaChartMultipleExample extends React.Component<Readonly<{}>, {}> 
     return (
       <div className={mergeStyles(rootStyle)}>
         <AreaChart
-          showXAxisPath={true}
-          showYAxisPath={true}
-          showXAxisGridLines={true}
           showYAxisGridLines={true}
           height={400}
           width={650}

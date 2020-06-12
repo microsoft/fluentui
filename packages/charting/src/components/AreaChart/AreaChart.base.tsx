@@ -4,7 +4,7 @@ import { axisLeft as d3AxisLeft, axisBottom as d3AxisBottom, Axis as D3Axis } fr
 import { scaleLinear as d3ScaleLinear, scaleTime as d3ScaleTime } from 'd3-scale';
 import { select as d3Select } from 'd3-selection';
 import * as d3TimeFormat from 'd3-time-format';
-import { area as d3Area, stack as d3Stack, curveBasis as d3CurveBasis } from 'd3-shape';
+import { area as d3Area, stack as d3Stack, curveMonotoneX as d3CurveBasis } from 'd3-shape';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
 import { IAreaChartProps, IAreaChartStyleProps, IAreaChartStyles } from './AreaChart.types';
@@ -151,7 +151,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   }
 
   private _adjustProps(): void {
-    this._points = this.props.data.series ? this.props.data.series : []; // check again of []
+    this._points = this.props.data.series ? this.props.data.series : [];
     this._yAxisTickCount = this.props.yAxisTickCount || 4;
     this._showXAxisGridLines = this.props.showXAxisGridLines || false;
     this._showYAxisGridLines = this.props.showYAxisGridLines || false;
@@ -181,7 +181,6 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
         singleDataset.xVal = singleDataPoint.x;
         singleDataset[`chart${index}`] = singleDataPoint.y;
       });
-      console.log(singleDataset, 'singleDataset');
       dataSet.push(singleDataset);
 
       const val = tempArr[0].x; // removing compared objects from array
@@ -190,7 +189,6 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     return dataSet;
   };
 
-  // take care of date axis
   private _createDateXAxis = (tickValues?: Date[] | number[], tickFormat?: string) => {
     const xAxisData: Date[] = [];
     let sDate = new Date();
@@ -229,18 +227,15 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
 
   private _prepareDatapoints(maxVal: number, minVal: number): number[] {
     const val = Math.ceil((maxVal - minVal) / this._yAxisTickCount);
-    console.log(val, 'data diff val');
 
     const dataPointsArray: number[] = [minVal, minVal + val];
     while (dataPointsArray[dataPointsArray.length - 1] < maxVal) {
       dataPointsArray.push(dataPointsArray[dataPointsArray.length - 1] + val);
     }
-    console.log(dataPointsArray, 'dataPoints array');
     return dataPointsArray;
   }
 
   private _createYAxis = (maxOfYVal: number): numericAxis => {
-    console.log(maxOfYVal, 'max y value');
     const domainValues = this._prepareDatapoints(maxOfYVal, 0);
     const yAxisScale = d3ScaleLinear()
       .domain([0, domainValues[domainValues.length - 1]])
@@ -282,7 +277,6 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       .tickPadding(10)
       .ticks(7);
 
-    // add x axis format too
     this._showXAxisGridLines &&
       xAxis.tickSizeInner(-(this.state.containerHeight - this.margins.bottom - this.margins.top));
 
@@ -332,9 +326,8 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       });
       stackedData.push(currentStack);
     });
-    console.log(stackedValues, 'stacked valeus');
-    const maxOfYVal = d3Max(stackedValues[stackedValues.length - 1], dp => dp[1]);
-    this._createYAxis(maxOfYVal!); // Need max of Y value to build Y axis, So creating Y axis here
+    const maxOfYVal = d3Max(stackedValues[stackedValues.length - 1], dp => dp[1])!;
+    this._createYAxis(maxOfYVal); // Need max of Y value to build Y axis, So creating Y axis here
 
     const xMax = d3Max(this._points, (point: IAreaChartPoints) => {
       return d3Max(point.data, (item: IAreaChartDataPoint) => item.x as number);
@@ -344,24 +337,19 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       return d3Min(point.data, (item: IAreaChartDataPoint) => item.x);
     })!;
 
-    console.log(xMax, xMin, 'xmin and max');
-
     const xScale = d3ScaleLinear()
       .range([this.margins.left, this.state.containerWidth - this.margins.right])
       .domain([xMin, xMax]);
 
     const yScale = d3ScaleLinear()
       .range([this.state.containerHeight - this.margins.bottom, this.margins.top])
-      .domain([0, d3Max(stackedValues[stackedValues.length - 1], dp => dp[1])!]);
+      .domain([0, maxOfYVal]);
 
     const area = d3Area()
       // tslint:disable-next-line:no-any
       .x((d: any) => xScale(d.xVal))
       // tslint:disable-next-line:no-any
-      .y0((d: any) => {
-        console.log(d, 'd valeus', yScale);
-        return yScale(d.values[0]);
-      })
+      .y0((d: any) => yScale(d.values[0]))
       // tslint:disable-next-line:no-any
       .y1((d: any) => yScale(d.values[1]))
       .curve(d3CurveBasis);

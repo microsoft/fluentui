@@ -13,15 +13,15 @@ export class AreaChartBasicExample extends React.Component<Readonly<{}>, {}> {
     const chart1Points = [
       {
         x: 20,
-        y: 9000,
+        y: 7000,
       },
       {
         x: 25,
-        y: 10500,
+        y: 9000,
       },
       {
         x: 30,
-        y: 17000,
+        y: 13000,
       },
       {
         x: 35,
@@ -33,7 +33,7 @@ export class AreaChartBasicExample extends React.Component<Readonly<{}>, {}> {
       },
       {
         x: 45,
-        y: 1000,
+        y: 8760,
       },
       {
         x: 50,
@@ -45,7 +45,7 @@ export class AreaChartBasicExample extends React.Component<Readonly<{}>, {}> {
       },
       {
         x: 60,
-        y: 20000,
+        y: 17000,
       },
       {
         x: 65,
@@ -57,11 +57,11 @@ export class AreaChartBasicExample extends React.Component<Readonly<{}>, {}> {
       },
       {
         x: 75,
-        y: 1900,
+        y: 6876,
       },
       {
         x: 80,
-        y: 5000,
+        y: 12000,
       },
       {
         x: 85,
