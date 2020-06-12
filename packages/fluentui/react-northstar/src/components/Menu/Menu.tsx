@@ -340,7 +340,7 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
       divider: MenuDivider,
       item: MenuItem,
     },
-    mapPropsToSlotProps: props => ({
+    slotProps: props => ({
       divider: {
         inSubmenu: props.submenu,
         pills: props.pills,

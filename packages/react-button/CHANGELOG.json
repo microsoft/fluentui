@@ -2,6 +2,57 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Mon, 08 Jun 2020 12:34:34 GMT",
+      "tag": "@fluentui/react-button_v0.2.0",
+      "version": "0.2.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Cleaning up typings.",
+            "author": "dzearing@microsoft.com",
+            "commit": "c5f82f6bb84f97a0b8c0d2bb884885cf906b906c",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 05 Jun 2020 05:09:39 GMT",
+      "tag": "@fluentui/react-button_v0.1.13",
+      "version": "0.1.13",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating createClassResolver usage.",
+            "author": "dzearing@microsoft.com",
+            "commit": "fb6496e5deebdebd955fccf500f2e3f923b0a160",
+            "package": "@fluentui/react-button"
+          },
+          {
+            "comment": "Adjusting styling to adhere to conventions.",
+            "author": "dzearing@microsoft.com",
+            "commit": "8f0c78a3979e601a3bf3833e5cd04256d2906a82",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 02 Jun 2020 12:36:30 GMT",
+      "tag": "@fluentui/react-button_v0.1.12",
+      "version": "0.1.12",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Using new react-compose mergeProps.",
+            "author": "dzearing@microsoft.com",
+            "commit": "d5ed2c3804a58cb774bec86160df899fd7a8cb5a",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 01 Jun 2020 12:32:45 GMT",
       "tag": "@fluentui/react-button_v0.1.11",
       "version": "0.1.11",

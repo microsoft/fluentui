@@ -120,6 +120,11 @@ export interface ILineChartDataPoint {
   y: number;
 
   /**
+   * Defines the function that is executed on clicking  line
+   */
+  onDataPointClick?: () => void;
+
+  /**
    * Callout data for x axis
    */
   xAxisCalloutData?: string;

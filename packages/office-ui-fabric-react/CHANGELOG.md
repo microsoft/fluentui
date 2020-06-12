@@ -1,8 +1,73 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 29 May 2020 12:35:34 GMT and should not be manually modified.
+This log was last generated on Wed, 10 Jun 2020 12:37:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.119.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.119.0)
+
+Wed, 10 Jun 2020 12:37:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.118.1..office-ui-fabric-react_v7.119.0)
+
+### Minor changes
+
+- DocumentCard: add prop to open link in a new tab. ([PR #13076](https://github.com/microsoft/fluentui/pull/13076) by mahesh8488@gmail.com)
+- Add onGrowData to Breadcrumb ([PR #13447](https://github.com/microsoft/fluentui/pull/13447) by tmichon@microsoft.com)
+
+## [7.118.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.118.1)
+
+Tue, 09 Jun 2020 12:35:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.118.0..office-ui-fabric-react_v7.118.1)
+
+### Patches
+
+- Link: fix broken href in examples ([PR #13511](https://github.com/microsoft/fluentui/pull/13511) by ololubek@microsoft.com)
+
+## [7.118.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.118.0)
+
+Mon, 08 Jun 2020 12:34:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.117.4..office-ui-fabric-react_v7.118.0)
+
+### Minor changes
+
+- Dialog: min height for title to ensure subtext doesn't overlap 'close' button. ([PR #13492](https://github.com/microsoft/fluentui/pull/13492) by jdh@microsoft.com)
+
+### Patches
+
+- Dropdown and ContextualMenu doc comment clarifications ([PR #13471](https://github.com/microsoft/fluentui/pull/13471) by elcraig@microsoft.com)
+- Picker/PeoplePicker: Fix issue where default value wouldn't trigger suggestions ([PR #13480](https://github.com/microsoft/fluentui/pull/13480) by joschect@microsoft.com)
+- Deprecating defaultSelectedIndex props in Pivot.types.ts. ([PR #13479](https://github.com/microsoft/fluentui/pull/13479) by czearing@outlook.com)
+
+## [7.117.4](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.117.4)
+
+Fri, 05 Jun 2020 05:09:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.117.3..office-ui-fabric-react_v7.117.4)
+
+### Patches
+
+- Fixing GroupedList custom example aria error. ([PR #13457](https://github.com/microsoft/fluentui/pull/13457) by humbertomakotomorimoto@gmail.com)
+- Stack: Clarifying deprecated message of props replaced by tokens. ([PR #13476](https://github.com/microsoft/fluentui/pull/13476) by humbertomakotomorimoto@gmail.com)
+
+## [7.117.3](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.117.3)
+
+Thu, 04 Jun 2020 12:35:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.117.1..office-ui-fabric-react_v7.117.3)
+
+### Patches
+
+- CommandBar: Fixed caching to greatly improve performance for all users ([PR #13428](https://github.com/microsoft/fluentui/pull/13428) by mgodbolt@microsoft.com)
+- Pivot: replace onKeyPress with onKeyDown and ariaLabel with aria-label ([PR #13442](https://github.com/microsoft/fluentui/pull/13442) by behowell@microsoft.com)
+
+## [7.117.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.117.1)
+
+Tue, 02 Jun 2020 12:36:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.117.0..office-ui-fabric-react_v7.117.1)
+
+### Patches
+
+- Dialog: Fixing broken deprecated props and adding snapshot tests for them. ([PR #13425](https://github.com/microsoft/fluentui/pull/13425) by humbertomakotomorimoto@gmail.com)
+- Remove explicit blocking of Alt key ([PR #13389](https://github.com/microsoft/fluentui/pull/13389) by keyou@microsoft.com)
+- add aria-checked if the role is menuitemradio ([PR #13434](https://github.com/microsoft/fluentui/pull/13434) by makopch@microsoft.com)
 
 ## [7.117.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.117.0)
 

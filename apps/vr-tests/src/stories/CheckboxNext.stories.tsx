@@ -3,7 +3,13 @@ import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
-import { Checkbox, Persona, PersonaSize, ThemeProvider } from '@fluentui/react-next';
+import {
+  Checkbox,
+  ICheckboxProps,
+  Persona,
+  PersonaSize,
+  ThemeProvider,
+} from '@fluentui/react-next';
 
 storiesOf('Checkbox Next', module)
   .addDecorator(FabricDecorator)
@@ -48,7 +54,7 @@ storiesOf('Checkbox Next', module)
   .addStory('Custom render Checkbox', () => (
     <Checkbox
       label="Persona Checkbox"
-      onRenderLabel={props => {
+      onRenderLabel={(props: ICheckboxProps) => {
         return <Persona text={props!.label} size={PersonaSize.size32} />;
       }}
     />

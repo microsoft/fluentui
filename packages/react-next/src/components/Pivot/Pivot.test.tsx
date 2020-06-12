@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
 import { resetIds } from '../../Utilities';
-import { Pivot, PivotItem, PivotLinkFormat, PivotLinkSize, IPivot } from './index';
+import { Pivot, PivotItem, IPivot } from './index';
 
 describe('Pivot', () => {
   beforeEach(() => {
@@ -48,7 +48,7 @@ describe('Pivot', () => {
 
   it('supports JSX expressions', () => {
     const component = renderer.create(
-      <Pivot defaultSelectedIndex={1}>
+      <Pivot defaultSelectedKey="1">
         <PivotItem headerText="Test Link 1">
           <div>This is item 1</div>
         </PivotItem>
@@ -63,7 +63,7 @@ describe('Pivot', () => {
   });
   it('renders large link Pivot correctly', () => {
     const component = renderer.create(
-      <Pivot linkSize={PivotLinkSize.large}>
+      <Pivot linkSize="large">
         <PivotItem headerText="Test Link 1" />
         <PivotItem headerText="" />
       </Pivot>,
@@ -73,7 +73,7 @@ describe('Pivot', () => {
   });
   it('renders tabbed Pivot correctly', () => {
     const component = renderer.create(
-      <Pivot linkFormat={PivotLinkFormat.tabs}>
+      <Pivot linkFormat="tabs">
         <PivotItem headerText="Test Link 1" />
         <PivotItem headerText="" />
       </Pivot>,
@@ -83,7 +83,7 @@ describe('Pivot', () => {
   });
   it('renders large tabbed Pivot correctly', () => {
     const component = renderer.create(
-      <Pivot linkFormat={PivotLinkFormat.tabs} linkSize={PivotLinkSize.large}>
+      <Pivot linkFormat="tabs" linkSize="large">
         <PivotItem headerText="Test Link 1" />
         <PivotItem headerText="" />
       </Pivot>,
