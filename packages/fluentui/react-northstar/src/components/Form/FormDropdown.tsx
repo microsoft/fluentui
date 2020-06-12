@@ -1,32 +1,33 @@
 import { compose, ComponentWithAs, ShorthandConfig } from '@fluentui/react-bindings';
 import { commonPropTypes } from '../../utils';
 import * as customPropTypes from '@fluentui/react-proptypes';
-import FormField, { FormFieldProps, FormFieldStylesProps } from './FormField';
 import Dropdown, { DropdownProps } from '../Dropdown/Dropdown';
+import FormFieldCustom, { FormFieldCustomProps, FormFieldCustomStylesProps } from './FormFieldCustom';
 
 interface FormDropdownOwnProps extends Omit<DropdownProps, 'styles'> {}
 
-export interface FormDropdownProps extends FormFieldProps, FormDropdownOwnProps {}
+export interface FormDropdownProps extends FormFieldCustomProps, FormDropdownOwnProps {}
 export type FormDropdownStylesProps = never;
 
 export const FormDropdownClassName = 'ui-form-dropdown';
 
-const FormDropdown = compose<'div', FormDropdownProps, FormDropdownStylesProps, FormFieldProps, FormFieldStylesProps>(
-  FormField,
-  {
-    className: FormDropdownClassName,
-    displayName: 'FormDropdown',
-    overrideStyles: true,
-    shorthandConfig: {},
-    slotProps: ({ items, placeholder }) => ({
-      control: {
-        as: Dropdown,
-        items,
-        placeholder,
-      },
-    }),
-  },
-) as ComponentWithAs<'div', FormDropdownProps> & { shorthandConfig: ShorthandConfig<FormDropdownProps> };
+const FormDropdown = compose<
+  'div',
+  FormDropdownProps,
+  FormDropdownStylesProps,
+  FormFieldCustomProps,
+  FormFieldCustomStylesProps
+>(FormFieldCustom, {
+  className: FormDropdownClassName,
+  displayName: 'FormDropdown',
+  overrideStyles: true,
+  shorthandConfig: {},
+  slotProps: _ => ({
+    control: {
+      as: Dropdown,
+    },
+  }),
+}) as ComponentWithAs<'div', FormDropdownProps> & { shorthandConfig: ShorthandConfig<FormDropdownProps> };
 
 FormDropdown.defaultProps = {};
 

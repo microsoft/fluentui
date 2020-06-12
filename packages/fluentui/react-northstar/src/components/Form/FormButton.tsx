@@ -1,33 +1,33 @@
 import { compose, ComponentWithAs, ShorthandConfig } from '@fluentui/react-bindings';
 import { commonPropTypes } from '../../utils';
 import * as customPropTypes from '@fluentui/react-proptypes';
-import FormField, { FormFieldProps, FormFieldStylesProps } from './FormField';
 import Button, { ButtonProps } from '../Button/Button';
+import FormFieldCustom, { FormFieldCustomProps, FormFieldCustomStylesProps } from './FormFieldCustom';
 
 interface FormButtonOwnProps extends Omit<ButtonProps, 'styles' | 'accessibility'> {}
 
-export interface FormButtonProps extends FormFieldProps, FormButtonOwnProps {}
+export interface FormButtonProps extends FormFieldCustomProps, FormButtonOwnProps {}
 export type FormButtonStylesProps = never;
 
 export const FormButtonClassName = 'ui-form-button';
 
-const FormButton = compose<'div', FormButtonProps, FormButtonStylesProps, FormFieldProps, FormFieldStylesProps>(
-  FormField,
-  {
-    className: FormButtonClassName,
-    displayName: 'FormButton',
-    overrideStyles: true,
-    shorthandConfig: {
-      mappedProp: 'content',
+const FormButton = compose<
+  'div',
+  FormButtonProps,
+  FormButtonStylesProps,
+  FormFieldCustomProps,
+  FormFieldCustomStylesProps
+>(FormFieldCustom, {
+  className: FormButtonClassName,
+  displayName: 'FormButton',
+  overrideStyles: true,
+  shorthandConfig: {},
+  slotProps: _ => ({
+    control: {
+      as: Button,
     },
-    slotProps: ({ content }) => ({
-      control: {
-        as: Button,
-        content,
-      },
-    }),
-  },
-) as ComponentWithAs<'div', FormButtonProps> & { shorthandConfig: ShorthandConfig<FormButtonProps> };
+  }),
+}) as ComponentWithAs<'div', FormButtonProps> & { shorthandConfig: ShorthandConfig<FormButtonProps> };
 
 FormButton.defaultProps = {};
 
