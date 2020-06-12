@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-theme-provider
 
-This log was last generated on Thu, 21 May 2020 12:34:43 GMT and should not be manually modified.
+This log was last generated on Fri, 12 Jun 2020 18:29:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v0.2.0)
+
+Fri, 12 Jun 2020 18:29:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v0.1.6..@fluentui/react-theme-provider_v0.2.0)
+
+### Minor changes
+
+- Exporting utility to generate inline styles based on tokens. ([PR #13416](https://github.com/microsoft/fluentui/pull/13416) by dzearing@microsoft.com)
 
 ## [0.1.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v0.1.6)
 

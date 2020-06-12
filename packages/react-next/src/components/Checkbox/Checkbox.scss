@@ -10,8 +10,8 @@ $checkboxTransitionTiming: cubic-bezier(0.4, 0, 0.23, 1);
   position: relative;
   display: flex;
 
-  &:not(.disabled) {
-    &:not(.checked) {
+  &:not(._disabled) {
+    &:not(._checked) {
       &:hover {
         .checkbox {
           border-color: var($semanticColorsInputBorderHovered);
@@ -41,7 +41,7 @@ $checkboxTransitionTiming: cubic-bezier(0.4, 0, 0.23, 1);
       }
     }
 
-    &.checked:not(.indeterminate) {
+    &._checked:not(._indeterminate) {
       &:hover,
       &:focus {
         .checkbox {
@@ -71,7 +71,7 @@ $checkboxTransitionTiming: cubic-bezier(0.4, 0, 0.23, 1);
       }
     }
 
-    &.indeterminate {
+    &._indeterminate {
       &:hover {
         .checkbox,
         .checkbox:after {
@@ -102,7 +102,7 @@ $checkboxTransitionTiming: cubic-bezier(0.4, 0, 0.23, 1);
   opacity: 0;
 
   @include focus(true) {
-    + .label:before {
+    + .container:before {
       outline: 1px solid var($paletteNeutralSecondary);
       outline-offset: 2px;
 
@@ -113,7 +113,7 @@ $checkboxTransitionTiming: cubic-bezier(0.4, 0, 0.23, 1);
   }
 }
 
-.label {
+.container {
   @include fonts-medium;
 
   display: flex;
@@ -132,15 +132,15 @@ $checkboxTransitionTiming: cubic-bezier(0.4, 0, 0.23, 1);
     pointer-events: none;
   }
 
-  &.isUsingCustomLabelRender {
+  &._onRenderLabel {
     align-items: center;
   }
 
-  &.disabled {
+  &._disabled {
     cursor: default;
   }
 
-  &.reversed {
+  &._boxSide_end {
     flex-direction: row-reverse;
     justify-content: flex-end;
   }
@@ -169,7 +169,7 @@ $checkboxTransitionTiming: cubic-bezier(0.4, 0, 0.23, 1);
   /* in case the icon is bigger than the box */
   overflow: hidden;
 
-  &.indeterminate {
+  &._indeterminate {
     border-color: var($semanticColorsInputBackgroundChecked);
 
     @include high-contrast {
@@ -197,7 +197,7 @@ $checkboxTransitionTiming: cubic-bezier(0.4, 0, 0.23, 1);
       }
     }
 
-    &.disabled::after {
+    &._disabled::after {
       border-color: var($semanticColorsDisabledBodySubtext);
     }
   }
@@ -206,14 +206,14 @@ $checkboxTransitionTiming: cubic-bezier(0.4, 0, 0.23, 1);
   // is used, there will be only a 4px margin from checkbox to label. The label by default would have
   // another 4px margin for a total of 8px margin between checkbox and label. We don't combine the two
   // (and move it into the text) to not incur a breaking change for everyone using custom render atm.
-  &.reversed {
+  &._boxSide_end {
     margin-left: 4px;
   }
-  &:not(.reversed) {
+  &:not(._boxSide_end) {
     margin-right: 4px;
   }
 
-  &.checked:not(.disabled):not(.indeterminate) {
+  &._checked:not(._disabled):not(._indeterminate) {
     background: var($semanticColorsInputBackgroundChecked);
     border-color: var($semanticColorsInputBackgroundChecked);
 
@@ -223,7 +223,7 @@ $checkboxTransitionTiming: cubic-bezier(0.4, 0, 0.23, 1);
     }
   }
 
-  &.disabled {
+  &._disabled {
     border-color: var($semanticColorsDisabledBodySubtext);
 
     @include high-contrast {
@@ -231,7 +231,7 @@ $checkboxTransitionTiming: cubic-bezier(0.4, 0, 0.23, 1);
     }
   }
 
-  &.checked.disabled {
+  &._checked._disabled {
     background: var($semanticColorsDisabledBodySubtext);
     @include high-contrast {
       background: Window;
@@ -248,18 +248,18 @@ $checkboxTransitionTiming: cubic-bezier(0.4, 0, 0.23, 1);
     -ms-high-contrast-adjust: none;
   }
 
-  &.checked {
+  &._checked {
     opacity: 1;
   }
 
-  &.disabled {
+  &._disabled {
     @include high-contrast {
       color: GrayText;
     }
   }
 }
 
-.text {
+.label {
   color: var($semanticColorsBodyText);
   font-size: var($fontsMediumFontSize);
   line-height: 20px;
@@ -269,7 +269,7 @@ $checkboxTransitionTiming: cubic-bezier(0.4, 0, 0.23, 1);
     color: WindowText;
   }
 
-  &.disabled {
+  &._disabled {
     color: var($semanticColorsDisabledText);
 
     @include high-contrast {
@@ -277,10 +277,10 @@ $checkboxTransitionTiming: cubic-bezier(0.4, 0, 0.23, 1);
     }
   }
 
-  &.reversed {
+  &._boxSide_end {
     margin-right: 4px;
   }
-  &:not(.reversed) {
+  &:not(._boxSide_end) {
     margin-left: 4px;
   }
 }

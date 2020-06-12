@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { ComponentProps, ShorthandValue, ComposeStandardStatics } from '../../utils/tempTypes';
+import { ComponentProps, ShorthandValue, ComposeStandardStatics, RecursivePartial } from '../../utils/tempTypes';
 import { ComposeOptions } from '@fluentui/react-compose';
+import { ColorPlateSet } from '@fluentui/react-theme-provider';
 
 export type SizeValue = 'smallest' | 'smaller' | 'small' | 'medium' | 'large' | 'larger' | 'largest';
 
-// tslint:disable-next-line:no-any
 export interface ButtonProps extends ComponentProps, React.HTMLAttributes<HTMLButtonElement> {
   /**
    * Shorthand icon. A shorthand prop can be a literal, object,
@@ -69,7 +69,11 @@ export interface ButtonProps extends ComponentProps, React.HTMLAttributes<HTMLBu
   // TODO: Deprecate or rename to textOnly for alignment with iconOnly?
   /** A button can be formatted to show only text in order to indicate a less-pronounced action. */
   // text?: boolean;
+
+  tokens?: RecursivePartial<ButtonTokens>;
 }
+
+export interface ButtonState extends ButtonProps {}
 
 export interface ButtonSlots {
   icon: React.ElementType;
@@ -83,3 +87,37 @@ export type ButtonSlotProps = {
 
 export interface ButtonOptions
   extends ComposeOptions<ButtonProps, ButtonSlots, ButtonSlotProps, ComposeStandardStatics> {}
+
+export type ButtonTokens = ColorPlateSet & {
+  /* sizing */
+  padding: string;
+  margin: string;
+  height: string;
+  minWidth: string;
+  maxWidth: string;
+  contentGap: string;
+  iconSize: string;
+  borderRadius: string;
+  borderWidth: string;
+
+  size: {
+    smallest: string;
+    smaller: string;
+    small: string;
+    regular: string;
+    large: string;
+    larger: string;
+    largest: string;
+  };
+
+  transform: string;
+  transition: string;
+
+  fontFamily: string;
+  fontSize: string;
+  fontWeight: string;
+
+  pressed: {
+    transform: string;
+  };
+};
