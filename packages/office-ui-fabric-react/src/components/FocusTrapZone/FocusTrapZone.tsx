@@ -21,7 +21,7 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> impl
   private _firstBumper = React.createRef<HTMLDivElement>();
   private _lastBumper = React.createRef<HTMLDivElement>();
   private _hasFocus: boolean = false;
-  private _unmodalize?: () => {};
+  private _unmodalize?: () => void;
 
   private _previouslyFocusedElementOutsideTrapZone: HTMLElement;
   private _previouslyFocusedElementInTrapZone?: HTMLElement;
