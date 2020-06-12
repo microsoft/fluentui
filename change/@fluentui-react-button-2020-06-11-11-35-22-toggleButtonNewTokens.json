@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "ToggleButton: Updating to new css variables.",
+  "packageName": "@fluentui/react-button",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-06-11T18:35:22.772Z"
+}
