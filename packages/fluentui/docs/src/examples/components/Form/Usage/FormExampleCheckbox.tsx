@@ -7,7 +7,14 @@ const FormExampleCheckbox = () => (
       alert('Form submitted');
     }}
   >
-    <Form.Field label="Email" name="email" id="email-inline-shorthand" key="email" inline />
+    <Form.Field
+      label={'Email'}
+      name={'email'}
+      id={'email-inline-shorthand'}
+      key={'email'}
+      required={true}
+      inline={true}
+    />
     <Form.Field
       control={{
         as: Checkbox,

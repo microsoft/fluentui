@@ -7,6 +7,7 @@ const fields = [
     name: 'email',
     id: 'email-inline-shorthand',
     key: 'email',
+    required: true,
     inline: true,
   },
   {

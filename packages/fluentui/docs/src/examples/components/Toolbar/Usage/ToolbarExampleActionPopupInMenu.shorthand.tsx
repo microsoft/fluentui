@@ -12,6 +12,7 @@ const CustomPopup = ({ onConfirm }) => {
           name: 'firstName',
           id: 'first-name-inline-shorthand',
           key: 'first-name',
+          required: true,
           inline: true,
         },
         {
