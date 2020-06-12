@@ -28,6 +28,6 @@ declare interface Window {
 
 declare module 'csstype' {
   interface Properties {
-    msGridRow?: any;
+    msGridRow?: number | string;
   }
 }
