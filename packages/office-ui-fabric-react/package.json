@@ -33,6 +33,7 @@
     "codepen": "node ../../scripts/local-codepen.js"
   },
   "devDependencies": {
+    "@types/chalk": "^2.0.0",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/glob": "^7.1.1",
@@ -50,11 +51,10 @@
     "@uifabric/test-utilities": "^7.0.26",
     "@uifabric/tslint-rules": "^7.2.1",
     "@uifabric/webpack-utils": "^7.0.15",
+    "chalk": "^2.1.0",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
-    "enzyme-to-json": "^3.3.4",
     "glob": "^7.1.2",
-    "highlight.js": "^9.12.0",
     "jest-snapshot": "~24.9.0",
     "office-ui-fabric-core": "^11.0.0",
     "react": "16.8.6",
