@@ -68,12 +68,12 @@ export const TelemetryPopover: React.FC<TelemetryPopoverProps> = props => {
 
             {state.activeTab === 'telemetry' && (
               <TelemetryTable
-                expandStyles={state.tableExpandStyles}
+                expand={state.tableExpand}
                 componentFilter={state.tableComponentFilter}
                 sort={state.tableSort}
                 telemetry={telemetry}
                 onComponentFilterChange={filter => dispatch({ type: 'SET_TABLE_COMPONENT_FILTER', value: filter })}
-                onExpandStylesChange={show => dispatch({ type: 'SET_TABLE_EXPAND_STYLES', value: show })}
+                onExpandChange={(name, show) => dispatch({ type: 'SET_TABLE_EXPAND', name, value: show })}
                 onSortChange={value => dispatch({ type: 'SET_TABLE_SORT', value })}
               />
             )}

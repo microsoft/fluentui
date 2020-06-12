@@ -31,7 +31,13 @@ const TelemetryTableSumFooter: React.FC<HeaderProps<{}> & { totals: TelemetryDat
   <>{totals[column.id as keyof TelemetryDataTotals]}</>
 );
 
-export function useTelemetryColumns(showDetails: boolean): Column[] {
+export function useTelemetryColumns({
+  showStylesDetails,
+  showTotalDetails,
+}: {
+  showStylesDetails: boolean;
+  showTotalDetails: boolean;
+}): Column[] {
   return React.useMemo(
     () =>
       [
@@ -78,7 +84,36 @@ export function useTelemetryColumns(showDetails: boolean): Column[] {
 
               accessor: 'msTotal',
               disableFilters: true,
+              isShowDetails: 'total',
               showPercentage: true,
+              sortType: 'basic',
+            },
+            showTotalDetails && {
+              Cell: TelemetryTableRoundingCell,
+              Header: 'Min',
+              Footer: TelemetryTableRoundingFooter,
+
+              accessor: 'msMin',
+              disableFilters: true,
+              sortType: 'basic',
+            },
+            showTotalDetails && {
+              Cell: TelemetryTableRoundingCell,
+              Header: 'Max',
+              Footer: TelemetryTableRoundingFooter,
+
+              accessor: 'msMax',
+              disableFilters: true,
+              sortType: 'basic',
+            },
+            showTotalDetails && {
+              Cell: TelemetryTableRoundingCell,
+              Header: 'Avg',
+              Footer: TelemetryTableRoundingFooter,
+
+              accessor: 'msAvg',
+              disableFilters: true,
+              sortType: 'basic',
             },
             {
               Cell: TelemetryTableRoundingCell,
@@ -87,27 +122,30 @@ export function useTelemetryColumns(showDetails: boolean): Column[] {
 
               accessor: 'msStylesTotal',
               disableFilters: true,
-              isShowStyleDetails: true,
+              isShowDetails: 'styles',
               showPercentage: true,
+              sortType: 'basic',
             },
 
-            showDetails && {
+            showStylesDetails && {
               Cell: TelemetryTableRoundingCell,
               Header: <span title="Merge component variables, resolve them with  site variables">Variables</span>,
               Footer: TelemetryTableRoundingFooter,
 
               accessor: 'msResolveVariablesTotal',
               disableFilters: true,
+              sortType: 'basic',
             },
-            showDetails && {
+            showStylesDetails && {
               Cell: TelemetryTableRoundingCell,
               Header: <span title="Merge style objects, resolve them with variables">Merge</span>,
               Footer: TelemetryTableRoundingFooter,
 
               accessor: 'msResolveStylesTotal',
               disableFilters: true,
+              sortType: 'basic',
             },
-            showDetails && {
+            showStylesDetails && {
               Cell: TelemetryTableRoundingCell,
               Header: (
                 <span title="Process style objects with CSSInJS plugins, generate CSS classes, inject styles into DOM">
@@ -118,6 +156,7 @@ export function useTelemetryColumns(showDetails: boolean): Column[] {
 
               accessor: 'msRenderStylesTotal',
               disableFilters: true,
+              sortType: 'basic',
             },
           ].filter(Boolean),
         },
@@ -142,6 +181,6 @@ export function useTelemetryColumns(showDetails: boolean): Column[] {
           ],
         },
       ].filter(Boolean) as Column[],
-    [showDetails],
+    [showStylesDetails, showTotalDetails],
   );
 }

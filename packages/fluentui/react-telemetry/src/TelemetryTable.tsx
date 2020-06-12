@@ -19,36 +19,28 @@ import * as styles from './styles';
 import { useIntervalUpdate } from './useIntervalUpdate';
 import { useTelemetryColumns, CellAlign } from './useTelemetryColumns';
 import { TelemetryDataTotals, useTelemetryData } from './useTelemetryData';
-import { TelemetryState } from './useTelemetryState';
+import { TelemetryState, TelemetryTableExpandNames } from './useTelemetryState';
 
 type TelemetryTableProps = {
   telemetry: Telemetry;
 
   componentFilter: TelemetryState['tableComponentFilter'];
-  expandStyles: TelemetryState['tableExpandStyles'];
+  expand: TelemetryState['tableExpand'];
   sort: TelemetryState['tableSort'];
 
   onComponentFilterChange: (filter: string) => void;
-  onExpandStylesChange: (show: boolean) => void;
+  onExpandChange: (name: TelemetryTableExpandNames, show: boolean) => void;
   onSortChange: (sort: TelemetryState['tableSort'] | undefined) => void;
 };
 
 export const TelemetryTable: React.FC<TelemetryTableProps> = props => {
-  const {
-    expandStyles,
-    componentFilter,
-    sort,
-    onComponentFilterChange,
-    onExpandStylesChange,
-    onSortChange,
-    telemetry,
-  } = props;
+  const { expand, componentFilter, sort, onComponentFilterChange, onExpandChange, onSortChange, telemetry } = props;
 
   const [interval, setInterval] = React.useState(2000);
   const tick = useIntervalUpdate(interval);
 
   const { data, totals } = useTelemetryData(telemetry, tick);
-  const columns = useTelemetryColumns(expandStyles);
+  const columns = useTelemetryColumns({ showStylesDetails: expand?.styles, showTotalDetails: expand?.total });
 
   const {
     getTableProps,
@@ -115,13 +107,13 @@ export const TelemetryTable: React.FC<TelemetryTableProps> = props => {
                 (
                   column: HeaderGroup &
                     UseSortByColumnProps<{}> &
-                    UseFiltersColumnProps<{}> & { isShowStyleDetails?: boolean },
+                    UseFiltersColumnProps<{}> & { isShowDetails?: TelemetryTableExpandNames },
                 ) => (
                   <th
                     {...column.getHeaderProps({
                       style: styles.tableHeader({
                         canFilter: column.canFilter,
-                        isShowStyleDetails: column.isShowStyleDetails,
+                        isShowDetails: !!column.isShowDetails,
                       }),
                     })}
                   >
@@ -131,10 +123,10 @@ export const TelemetryTable: React.FC<TelemetryTableProps> = props => {
                         {column.isSorted ? (column.isSortedDesc ? ' 🔽' : ' 🔼') : ''}
                       </span>
                     </div>
-                    {column.isShowStyleDetails && (
+                    {column.isShowDetails && (
                       <input
-                        checked={expandStyles}
-                        onChange={e => onExpandStylesChange(e.target.checked)}
+                        checked={expand?.[column.isShowDetails]}
+                        onChange={e => onExpandChange(column.isShowDetails!, e.target.checked)}
                         style={styles.tableCheckbox()}
                         type="checkbox"
                       />

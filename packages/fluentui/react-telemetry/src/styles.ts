@@ -145,15 +145,15 @@ export const tableFilter = (): React.CSSProperties => ({
 
 export const tableHeader = ({
   canFilter,
-  isShowStyleDetails,
+  isShowDetails,
 }: {
   canFilter?: boolean;
-  isShowStyleDetails?: boolean;
+  isShowDetails?: boolean;
 }): React.CSSProperties => ({
   border: '1px solid #e5e5e4',
   padding: 4,
 
-  ...((canFilter || isShowStyleDetails) && {
+  ...((canFilter || isShowDetails) && {
     border: undefined,
 
     alignItems: 'center',
