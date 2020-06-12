@@ -185,6 +185,7 @@ export { default as Text } from './components/Text/Text';
 
 export * from './components/Animation/Animation';
 export { default as Animation } from './components/Animation/Animation';
+export { animationClassName } from './components/Animation/useAnimationStyles';
 
 export * from './components/TextArea/TextArea';
 export { default as TextArea } from './components/TextArea/TextArea';
