@@ -22,7 +22,6 @@ export const getStyles = (props: IDetailsListStyleProps): IDetailsListStyles => 
       theme.fonts.small,
       {
         position: 'relative',
-        background: semanticColors.listBackground,
         color: semanticColors.listText,
         selectors: {
           [`& .${classNames.listCell}`]: {

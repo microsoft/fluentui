@@ -79,7 +79,6 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
               -webkit-overflow-scrolling: touch;
-              background: #ffffff;
               color: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 12px;
@@ -147,11 +146,6 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
               onMouseDownCapture={[Function]}
               onMouseMove={[Function]}
               role="row"
-              style={
-                Object {
-                  "minWidth": 400,
-                }
-              }
             >
               <div
                 aria-colindex={1}
