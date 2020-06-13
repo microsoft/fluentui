@@ -28,7 +28,6 @@ const FormCheckbox = compose<
   shorthandConfig: {},
   handledProps: ['checkboxLabel', 'label'],
   slotProps: ({ checkboxLabel }) => ({
-    label: null,
     control: {
       as: Checkbox,
       label: checkboxLabel,
