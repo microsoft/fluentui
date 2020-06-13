@@ -132,6 +132,7 @@ export interface IPivotStyles {
   link: IStyle;
   linkContent: IStyle;
   linkIsSelected: IStyle;
+  menuLink: IStyle;
   text: IStyle;
   count: IStyle;
   icon: IStyle;

@@ -4,6 +4,8 @@
 @import '../../common/focusBorder';
 @import '../../common/common';
 
+$CONTEXTUAL_MENU_ITEM_HEIGHT: 36px;
+
 .root {
   @include fonts-medium;
   @include normalize;
@@ -13,40 +15,15 @@
 }
 
 .link,
+.menuLink,
 .overflowMenu {
   @include fonts-medium;
   color: var($semanticColorsActionLink);
-  display: inline-block;
-  line-height: 44px;
-  height: 44px;
-  margin-right: 8px;
   padding: 0 8px;
-  text-align: center;
   position: relative;
   background-color: transparent;
   border: 0;
   border-radius: 0;
-
-  &:before {
-    background-color: transparent;
-    bottom: 0;
-    content: '';
-    height: 2px;
-    left: 8px;
-    position: absolute;
-    right: 8px;
-    transition: left $animationDuration2 $animationEaseFunction2, right $animationDuration2 $animationEaseFunction2;
-  }
-
-  &:after {
-    color: transparent;
-    content: attr(data-content);
-    display: block;
-    font-weight: $fontWeightBold;
-    height: 1px;
-    overflow: hidden;
-    visibility: hidden;
-  }
 
   &:hover {
     background-color: var($semanticColorsButtonBackgroundHovered);
@@ -87,8 +64,38 @@
     }
 
     @include high-contrast {
-      color: Highlight;
+      color: HighlightText;
     }
+  }
+}
+
+.link,
+.overflowMenu {
+  text-align: center;
+  display: inline-block;
+  line-height: 44px;
+  height: 44px;
+  margin-right: 8px;
+
+  &:before {
+    background-color: transparent;
+    bottom: 0;
+    content: '';
+    height: 2px;
+    left: 8px;
+    position: absolute;
+    right: 8px;
+    transition: left $animationDuration2 $animationEaseFunction2, right $animationDuration2 $animationEaseFunction2;
+  }
+
+  &:after {
+    color: transparent;
+    content: attr(data-content);
+    display: block;
+    font-weight: $fontWeightBold;
+    height: 1px;
+    overflow: hidden;
+    visibility: hidden;
   }
 
   &.linkSize_large {
@@ -163,9 +170,32 @@
   }
 }
 
-.overflowMenu {
-  visibility: hidden;
+.menuLink {
+  width: '100%';
+  height: $CONTEXTUAL_MENU_ITEM_HEIGHT;
+  line-height: $CONTEXTUAL_MENU_ITEM_HEIGHT;
 }
+
+// .menuLink :global(.ms-ContextualMenu-link) {
+
+//   &:hover {
+//     // background-color: var($semanticColorsButtonBackgroundHovered);
+//     // color: var($semanticColorsButtonTextHovered);
+//     cursor: pointer;
+//   }
+// }
+
+// .menuLink.linkIsSelected :global(.ms-ContextualMenu-link) {
+//   font-weight: $fontWeightSemibold;
+
+//   &:before {
+//     background-color: var($semanticColorsInputBackgroundChecked);
+//     @include high-contrast {
+//       color: HighlightText;
+//       background-color: Highlight;
+//     }
+//   }
+// }
 
 .linkContent {
   flex: 0 1 100%;

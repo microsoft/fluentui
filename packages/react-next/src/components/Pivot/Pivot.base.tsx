@@ -115,11 +115,11 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef(
         updateSelectedItem(itemKey);
       }
     };
-
     const renderPivotLink = (
       renderLinkCollection: PivotLinkCollection,
       link: IPivotItemProps,
       renderPivotLinkSelectedKey: string | null | undefined,
+      isMenu?: boolean,
     ): JSX.Element => {
       const { itemKey, headerButtonProps } = link;
       const tabId = renderLinkCollection.keyToTabIdMapping[itemKey!];
@@ -139,7 +139,7 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef(
           {...headerButtonProps}
           id={tabId}
           key={itemKey}
-          className={css(classNames.link, isSelected && classNames.linkIsSelected)}
+          className={css(isMenu ? classNames.menuLink : classNames.link, isSelected && classNames.linkIsSelected)}
           onClick={onLinkClick.bind(this, itemKey)}
           onKeyPress={onKeyPress.bind(this, itemKey)}
           ariaLabel={link.ariaLabel}
@@ -154,43 +154,6 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef(
         </CommandButton>
       );
     };
-
-    // const renderPivotLinkMenuItem = (
-    //   renderLinkCollection: PivotLinkCollection,
-    //   link: IPivotItemProps,
-    //   renderPivotLinkSelectedKey: string | null | undefined,
-    // ): JSX.Element => {
-    //   const { itemKey, headerButtonProps } = link;
-    //   const tabId = renderLinkCollection.keyToTabIdMapping[itemKey!];
-    //   const { onRenderItemLink } = link;
-    //   let linkContent: JSX.Element | null;
-    //   const isSelected: boolean = renderPivotLinkSelectedKey === itemKey;
-    //   if (onRenderItemLink) {
-    //     linkContent = onRenderItemLink(link, renderLinkContent);
-    //   } else {
-    //     linkContent = renderLinkContent(link);
-    //   }
-    //   let contentString = link.headerText || '';
-    //   contentString += link.itemCount ? ' (' + link.itemCount + ')' : '';
-    //   contentString += link.itemIcon ? ' xx' : '';
-    //   return (
-    //     <ContextualMenuItem
-    //       {...headerButtonProps}
-    //       id={tabId}
-
-    //       key={itemKey}
-    //       className={css(classNames.link, isSelected && classNames.linkIsSelected)}
-    //       onClick={onLinkClick.bind(this, itemKey)}
-    //       onKeyPress={onKeyPress.bind(this, itemKey)}
-    //       aria-label={link.ariaLabel}
-    //       role="tab"
-    //       aria-selected={isSelected}
-    //       data-content={contentString}
-    //     >
-    //       {linkContent}
-    //     </ContextualMenuItem>
-    //   );
-    // };
 
     const onLinkClick = (itemKey: string, ev: React.MouseEvent<HTMLElement>): void => {
       ev.preventDefault();
@@ -268,21 +231,17 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef(
 
       if (overflowIndex !== undefined) {
         for (let i = overflowIndex; i < linkCollection.links.length; i++) {
-          const { itemKey, headerText, itemCount, itemIcon } = linkCollection.links[i];
-
-          let text = '';
-          if (headerText !== undefined) {
-            text += headerText;
-          }
-          if (itemCount !== undefined) {
-            text += ' (' + itemCount + ')';
-          }
+          const link = linkCollection.links[i];
+          const { itemKey, headerText, itemCount, itemIcon } = link;
+          const isSelected = selectedKey === itemKey;
 
           menuItems.push({
             key: itemKey || i + '',
-            text,
+            text: (headerText ? headerText : '') + (itemCount !== undefined ? ' (' + itemCount + ')' : ''),
             iconProps: { iconName: itemIcon },
+            className: css(classNames.menuLink, isSelected && classNames.linkIsSelected),
             onClick: updateSelectedItem.bind(this, itemKey),
+            onRender: renderPivotLink.bind(this, linkCollection, link, selectedKey, /*isMenu:*/ true),
           });
         }
       }
@@ -291,15 +250,9 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef(
         <CommandButton
           className={classNames.overflowMenu}
           ref={setOverflowMenuRef}
-          menuProps={{ items: menuItems }}
-          // menuIconProps={{ iconName: '' }}
-        >
-          {/* <span className={classNames.linkContent}>
-            <span className={classNames.icon}>
-              <Icon iconName="ExpandMenu" />
-            </span>
-          </span> */}
-        </CommandButton>
+          menuProps={{ items: menuItems, doNotLayer: true }}
+          menuIconProps={{ iconName: 'More' }}
+        />
       );
     };
 

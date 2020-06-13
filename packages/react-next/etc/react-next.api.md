@@ -474,6 +474,8 @@ export interface IPivotStyles {
     // (undocumented)
     linkIsSelected: IStyle;
     // (undocumented)
+    menuLink: IStyle;
+    // (undocumented)
     overflowMenu: IStyle;
     root: IStyle;
     // (undocumented)

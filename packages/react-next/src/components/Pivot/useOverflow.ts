@@ -2,9 +2,6 @@ import * as React from 'react';
 import { useEventListener } from '@fluentui/react-component-event-listener';
 import { useAsync } from '@uifabric/react-hooks';
 import { getWindow } from '@uifabric/utilities';
-import { memoizeFunction } from '../../Utilities';
-
-// const isPinnedX = (ele: HTMLElement) => ele.dataset.isPinned;
 
 export type OverflowCallbacks = {
   onOverflowChanged: (overflowIndex: number | undefined) => void;
@@ -19,14 +16,17 @@ export const useOverflow = (
   overflowMenuRef: React.RefObject<HTMLElement | undefined>,
   callbacks: OverflowCallbacks,
 ) => {
-  // Make sure we're using the window that contains the overflow container
-  const windowRef = React.useRef<Window | null>(getWindow() || null);
-  React.useLayoutEffect(() => {
-    windowRef.current = getWindow(overflowContainerRef.current) || null;
-  }, [overflowContainerRef]);
-
   // Keep track of the index of the first item in the overflow
   const overflowIndexRef = React.useRef<number | undefined>(undefined);
+
+  // Cache the computed styles from this render
+  let cachedStyle:
+    | undefined
+    | {
+        rtl: boolean;
+        containerPadding: number;
+        menuMargin: number;
+      } = undefined;
 
   const hideOverflowItems = useAsync().debounce(() => {
     const container = overflowContainerRef.current;
@@ -57,47 +57,55 @@ export const useOverflow = (
       overflowIndexRef.current = undefined;
     }
 
-    const getStyle = memoizeFunction((ele: HTMLElement) => win.getComputedStyle(ele));
+    if (cachedStyle === undefined) {
+      const containerStyle = win.getComputedStyle(container);
+      const menuStyle = win.getComputedStyle(menu);
+      const cachedRtl = containerStyle.direction === 'rtl';
 
-    const containerStyle = getStyle(container);
-    const rtl = containerStyle.direction === 'rtl';
-    const containerEnd = rtl
-      ? -container.getBoundingClientRect().left - parseFloat(containerStyle.paddingLeft)
-      : container.getBoundingClientRect().right - parseFloat(containerStyle.paddingRight);
+      cachedStyle = {
+        rtl: cachedRtl,
+        containerPadding: parseFloat(cachedRtl ? containerStyle.paddingLeft : containerStyle.paddingRight),
+        menuMargin: parseFloat(cachedRtl ? menuStyle.marginLeft : menuStyle.marginRight),
+      };
+    }
 
-    let isOverflowing = false;
-    let menuShown = false;
+    const { rtl, containerPadding, menuMargin } = cachedStyle;
+
+    const containerRect = container.getBoundingClientRect();
+    const containerEnd = (rtl ? -containerRect.left : containerRect.right) - containerPadding;
+
+    let lastVisibleElement: HTMLElement | undefined = undefined;
     for (let i = items.length - 1; i >= 0; i--) {
       const item = items[i];
       if (!(item instanceof HTMLElement) || item === menu) {
         continue;
       }
 
-      const itemIsPinned = isPinned(item);
-      if (isOverflowing && itemIsPinned) {
+      // Keep track of the last visible element, even if it's pinned
+      if (lastVisibleElement === undefined) {
+        lastVisibleElement = item;
+      }
+
+      if (isPinned(item)) {
         continue;
       }
 
-      const lastElement = isOverflowing ? menu : item;
-      const lastElementEnd = rtl
-        ? -lastElement.getBoundingClientRect().left + parseFloat(getStyle(lastElement).marginLeft)
-        : lastElement.getBoundingClientRect().right + parseFloat(getStyle(lastElement).marginRight);
+      const lastElementRect = lastVisibleElement.getBoundingClientRect();
+      const lastElementEnd = (rtl ? -lastElementRect.left : lastElementRect.right) + menuMargin;
 
       if (lastElementEnd <= containerEnd) {
         break; // Everything fits; we're done
       }
 
-      isOverflowing = true;
-
-      // Hide the item if it's not pinned
-      if (!itemIsPinned) {
-        setItemDisplayed(item, false);
-        overflowIndexRef.current = i;
-        if (!menuShown) {
-          setOverflowMenuVisible(true);
-          menuShown = true;
-        }
+      // Show the menu if it's not visible yet
+      if (lastVisibleElement !== menu) {
+        setOverflowMenuVisible(true);
+        lastVisibleElement = menu;
       }
+
+      // Hide the item
+      setItemDisplayed(item, false);
+      overflowIndexRef.current = i;
     }
 
     if (originalOverflowIndex !== overflowIndexRef.current) {
@@ -105,21 +113,16 @@ export const useOverflow = (
     }
   });
 
+  const windowRef = React.useRef<Window | null>(getWindow() || null);
   React.useLayoutEffect(() => {
-    let cookie: number | undefined = undefined;
+    windowRef.current = getWindow(overflowContainerRef.current) || null;
 
     const win = windowRef.current;
     if (win) {
-      win.requestAnimationFrame(() => {
-        hideOverflowItems();
-        cookie = undefined;
-      });
+      const requestId = win.requestAnimationFrame(hideOverflowItems);
+
+      return () => win.cancelAnimationFrame(requestId);
     }
-    return () => {
-      if (win && cookie !== undefined) {
-        win.cancelAnimationFrame(cookie);
-      }
-    };
   });
 
   useEventListener({
