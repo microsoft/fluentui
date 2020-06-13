@@ -9,7 +9,7 @@ interface FormSliderOwnProps extends Omit<SliderProps, 'accessibility'> {}
 export interface FormSliderProps extends FormFieldCustomProps, FormSliderOwnProps {}
 export type FormSliderStylesProps = never;
 
-export const FormSliderClassName = 'ui-form-radio_group';
+export const FormSliderClassName = 'ui-form-slider';
 
 const FormSlider = compose<
   'div',
