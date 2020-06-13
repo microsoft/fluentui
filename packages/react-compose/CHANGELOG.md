@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-compose
 
-This log was last generated on Mon, 08 Jun 2020 12:34:34 GMT and should not be manually modified.
+This log was last generated on Fri, 12 Jun 2020 18:29:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.11.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.11.0)
+
+Fri, 12 Jun 2020 18:29:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v0.9.0..@fluentui/react-compose_v0.11.0)
+
+### Minor changes
+
+- Compose: Adding replaceable state as part of compose. ([PR #13521](https://github.com/microsoft/fluentui/pull/13521) by humbertomakotomorimoto@gmail.com)
 
 ## [0.9.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.9.0)
 
