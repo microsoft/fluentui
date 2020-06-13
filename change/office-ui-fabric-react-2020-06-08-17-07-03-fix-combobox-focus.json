@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Combobox: Fix openOnKeyboard prop to work as expected",
-  "packageName": "office-ui-fabric-react",
-  "email": "joschect@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-06-09T00:07:03.206Z"
-}

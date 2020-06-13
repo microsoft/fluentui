@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Updating typings to conform with react-compose changes.",
-  "packageName": "@fluentui/react-button",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-06-02T02:07:57.653Z"
-}
