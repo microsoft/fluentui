@@ -26,7 +26,7 @@ const FormCheckbox = compose<
   displayName: 'FormCheckbox',
   overrideStyles: true,
   shorthandConfig: {},
-  handledProps: ['checkboxLabel', 'label'],
+  handledProps: ['checkboxLabel'],
   slotProps: ({ checkboxLabel }) => ({
     control: {
       as: Checkbox,

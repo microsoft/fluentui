@@ -20,11 +20,12 @@ const FormInput = compose<
 >(FormFieldCustom, {
   className: FormInputClassName,
   displayName: 'FormInput',
-  overrideStyles: true,
+  overrideStyles: false,
   shorthandConfig: {},
-  slotProps: _ => ({
+  slotProps: ({ errorMessage }) => ({
     control: {
       as: Input,
+      error: !!errorMessage,
     },
   }),
 }) as ComponentWithAs<'div', FormInputProps> & { shorthandConfig: ShorthandConfig<FormInputProps> };

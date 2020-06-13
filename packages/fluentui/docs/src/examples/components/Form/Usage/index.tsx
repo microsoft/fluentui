@@ -5,6 +5,11 @@ import ExampleSection from '../../../../components/ComponentDoc/ExampleSection';
 const Usage = () => (
   <ExampleSection title="Usage">
     <ComponentExample
+      title="Form Components"
+      description="Form Components are a simple way to use input components inside forms"
+      examplePath="components/Form/Usage/FormExampleComponents"
+    />
+    <ComponentExample
       title="Error Message and Successful Indicator"
       description="A form can have fields with error message or successful indicator."
       examplePath="components/Form/Usage/FormExampleErrorAndSuccessful"
