@@ -390,6 +390,7 @@ const Popup: React.FC<PopupProps> &
     const popupContent = Popup.Content.create(content || {}, {
       defaultProps: () =>
         getA11yProps('popup', {
+          ...getContentProps(),
           placement,
           pointing,
           pointerRef: pointerTargetRef,
