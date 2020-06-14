@@ -4,7 +4,7 @@ import { ITheme } from '../../Styling';
 
 export const TextStyles: ITextComponent['styles'] = (props: ITextProps, theme: ITheme): ITextStylesReturnType => {
   const { as, className, block, nowrap, variant } = props;
-  const { fonts } = theme;
+  const { fonts, semanticColors } = theme;
   const variantObject = fonts[variant || 'medium'];
 
   return {
@@ -15,7 +15,7 @@ export const TextStyles: ITextComponent['styles'] = (props: ITextProps, theme: I
         fontFamily: variantObject.fontFamily,
         fontSize: variantObject.fontSize,
         fontWeight: variantObject.fontWeight,
-        color: variantObject.color,
+        color: variantObject.color || semanticColors.bodyText,
         mozOsxFontSmoothing: variantObject.MozOsxFontSmoothing,
         webkitFontSmoothing: variantObject.WebkitFontSmoothing,
       },
