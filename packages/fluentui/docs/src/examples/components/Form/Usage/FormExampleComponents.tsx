@@ -53,7 +53,7 @@ const FormComponents = () => (
     <Form.Dropdown label="City" id="cities-id" items={['prague', 'new york']} />
     <Form.RadioGroup label="Pizza" vertical defaultCheckedValue="prosciutto" items={items} />
     <Form.Slider />
-    <Form.Checkbox checkboxLabel="I agree to the Terms and Conditions" id="conditions-inline" />
+    <Form.Checkbox label="I agree to the Terms and Conditions" id="conditions-inline" />
     <Form.Button content="Submit" />
   </Form>
 );
