@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { findDOMNode } from 'react-dom';
-import { warnDeprecations, KeyCodes, getNativeProps, divProperties, classNamesFunction, warn } from '../../Utilities';
+import { KeyCodes, getNativeProps, divProperties, classNamesFunction, warn } from '../../Utilities';
 import { CommandButton } from '../../Button';
 import { IPivotProps, IPivotStyleProps, IPivotStyles, IPivot } from './Pivot.types';
 import { IPivotItemProps } from './PivotItem.types';
@@ -8,7 +8,7 @@ import { FocusZone, FocusZoneDirection, IFocusZone } from '../../FocusZone';
 import { PivotItem } from './PivotItem';
 import { Icon } from '../../Icon';
 import { css } from 'office-ui-fabric-react';
-import { useId } from '@uifabric/react-hooks';
+import { useId, useControllableValue } from '@uifabric/react-hooks';
 import { useOverflow } from './useOverflow';
 import { IContextualMenuItem } from '../../ContextualMenu';
 
@@ -93,12 +93,6 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef(
       );
     };
 
-    const onKeyPress = (itemKey: string, ev: React.KeyboardEvent<HTMLElement>): void => {
-      if (ev.which === KeyCodes.enter) {
-        ev.preventDefault();
-        updateSelectedItem(itemKey);
-      }
-    };
     const renderPivotLink = (
       renderLinkCollection: PivotLinkCollection,
       link: IPivotItemProps,
@@ -187,14 +181,6 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef(
       );
     };
 
-    let linkCollection = getLinkItems(props, pivotId);
-    const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(props, divProperties);
-    let index = linkCollection.keyToIndexMapping[selectedKey];
-    const selectedTabId = linkCollection.keyToTabIdMapping[selectedKey];
-    const renderSelectedKey = selectedKey;
-    classNames = getClassNames();
-    const items = linkCollection.links.map(l => renderPivotLink(linkCollection, l, renderSelectedKey));
-
     const [overflowIndex, setOverflowIndex] = React.useState<number | undefined>(undefined);
 
     const overflowContainerRef = React.useRef<HTMLElement | null>();
@@ -242,6 +228,30 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef(
         />
       );
     };
+
+    const isKeyValid = (itemKey: string | null | undefined): boolean => {
+      return itemKey !== undefined && itemKey !== null && linkCollection.keyToIndexMapping[itemKey] !== undefined;
+    };
+
+    const getSelectedKey = () => {
+      if (isKeyValid(selectedKey)) {
+        return selectedKey;
+      }
+      if (linkCollection.links.length) {
+        return linkCollection.links[0].itemKey;
+      }
+      return undefined;
+    };
+
+    const { theme, linkSize, linkFormat } = props;
+    classNames = getClassNames(props.styles!, {
+      theme: theme!,
+      linkSize,
+      linkFormat,
+    });
+
+    const renderedSelectedKey = getSelectedKey();
+    const items = linkCollection.links.map(l => renderPivotLink(linkCollection, l, renderedSelectedKey));
 
     return (
       <div role="toolbar" {...divProps} ref={ref}>
