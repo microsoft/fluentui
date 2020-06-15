@@ -2,6 +2,21 @@
   "name": "@fluentui/react-theme-provider",
   "entries": [
     {
+      "date": "Fri, 12 Jun 2020 18:29:07 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.2.0",
+      "version": "0.2.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Exporting utility to generate inline styles based on tokens.",
+            "author": "dzearing@microsoft.com",
+            "commit": "7026390333eeeb5bb1765bca68389b3b43312a49",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 21 May 2020 12:34:43 GMT",
       "tag": "@fluentui/react-theme-provider_v0.1.6",
       "version": "0.1.6",

@@ -2,6 +2,21 @@
   "name": "@fluentui/react-icons",
   "entries": [
     {
+      "date": "Fri, 12 Jun 2020 18:29:07 GMT",
+      "tag": "@fluentui/react-icons_v0.1.27",
+      "version": "0.1.27",
+      "comments": {
+        "patch": [
+          {
+            "comment": "react-icons: remove dead code, use scss instead of merge-styles, css fixes",
+            "author": "xgao@microsoft.com",
+            "commit": "084561446b2b0012e34595d5e65c7a68083112bf",
+            "package": "@fluentui/react-icons"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 07 May 2020 01:06:55 GMT",
       "tag": "@fluentui/react-icons_v0.1.12",
       "version": "0.1.12",
