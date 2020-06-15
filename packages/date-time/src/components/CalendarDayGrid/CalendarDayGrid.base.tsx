@@ -20,7 +20,7 @@ import {
   getDateRangeArray,
   isInDateRangeArray,
   getWeekNumbersInMonth,
-} from '@uifabric/date-time-utilities/lib/dateMath/DateMath';
+} from '@fluentui/date-time-utilities/lib/dateMath/DateMath';
 import { ICalendarDayGridProps, ICalendarDayGridStyleProps, ICalendarDayGridStyles } from './CalendarDayGrid.types';
 import { IProcessedStyleSet } from '@uifabric/styling';
 import { DateRangeType, DayOfWeek } from '../Calendar/Calendar.types';

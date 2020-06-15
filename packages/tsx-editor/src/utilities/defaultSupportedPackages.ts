@@ -66,6 +66,7 @@ if (typesContext) {
     { packageName: '@fluentui/react-focus', loadTypes },
     { packageName: '@uifabric/styling', loadTypes },
     { packageName: '@uifabric/utilities', loadTypes },
+    { packageName: '@fliuentui/date-time-utilities', loadTypes },
   );
   hooksGroup.packages.push({ packageName: '@uifabric/react-hooks', loadTypes });
   exampleDataGroup.packages.push({ packageName: '@uifabric/example-data', loadTypes });

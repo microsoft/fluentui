@@ -50,7 +50,7 @@
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.10.26",
-    "@uifabric/date-time-utilities": "^0.1.0",
+    "@fluentui/date-time-utilities": "^7.0.0",
     "@uifabric/set-version": "^7.0.13",
     "@uifabric/styling": "^7.12.18",
     "@uifabric/utilities": "^7.21.0",

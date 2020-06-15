@@ -74,7 +74,7 @@
     "@fluentui/react-focus": "^7.12.8",
     "@fluentui/react-icons": "^0.1.28",
     "@microsoft/load-themed-styles": "^1.10.26",
-    "@uifabric/date-time-utilities": "^0.1.0",
+    "@fluentui/date-time-utilities": "^7.0.0",
     "@uifabric/foundation": "^7.7.25",
     "@uifabric/icons": "^7.3.51",
     "@uifabric/merge-styles": "^7.14.1",

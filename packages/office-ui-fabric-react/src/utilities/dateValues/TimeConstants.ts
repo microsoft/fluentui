@@ -1,1 +1,1 @@
-export * from '@uifabric/date-time-utilities/lib/dateValues/TimeConstants';
+export * from '@fluentui/date-time-utilities/lib/dateValues/TimeConstants';
