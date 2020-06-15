@@ -1,14 +1,14 @@
 {
   "name": "@fluentui/code-sandbox",
   "description": "Fluent UI tools for CodeSandbox.",
-  "version": "0.47.3",
+  "version": "0.47.4",
   "author": "Oleksandr Fediashov <a@fedyashov.com>",
   "bugs": "https://github.com/OfficeDev/office-ui-fabric-react/issues",
   "dependencies": {
-    "@fluentui/docs-components": "^0.47.3"
+    "@fluentui/docs-components": "^0.47.4"
   },
   "devDependencies": {
-    "@fluentui/react-northstar": "^0.47.3"
+    "@fluentui/react-northstar": "^0.47.4"
   },
   "files": [
     "dist"
