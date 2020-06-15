@@ -121,12 +121,9 @@ const resolveStyles = (
     disableAnimations,
   };
 
-  // Fela plugins rely on `direction` param in `theme` prop instead of RTL
-  // Our API should be aligned with it
   // Heads Up! Keep in sync with Design.tsx render logic
-  const direction = rtl ? 'rtl' : 'ltr';
   const rendererParam: RendererParam = {
-    direction,
+    direction: rtl ? 'rtl' : 'ltr',
     disableAnimations,
     displayName: allDisplayNames.join(':'), // does not affect styles, only used by useEnhancedRenderer in docs
     sanitizeCss: performanceFlags.enableSanitizeCssPlugin,
