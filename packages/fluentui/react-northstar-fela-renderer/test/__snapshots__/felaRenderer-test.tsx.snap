@@ -7,14 +7,14 @@ exports[`felaRenderer CSS fallback values are rendered 1`] = `
 }
 
 
-<div className=ui-box a data-uses-unhanded-props=true />;
+<div className=a />;
 "
 `;
 
 exports[`felaRenderer animations are not applied if animations are disabled 1`] = `
 "
 
-<div className=ui-box ui-animation data-uses-unhanded-props=true />;
+<div className />;
 "
 `;
 
@@ -61,7 +61,7 @@ exports[`felaRenderer array returned by keyframe results in CSS fallback values 
 }
 
 
-<div className=ui-box ui-animation a data-uses-unhanded-props=true />;
+<div className=a />;
 "
 `;
 
@@ -71,7 +71,7 @@ exports[`felaRenderer basic styles are rendered 1`] = `
 }
 
 
-<div className=ui-box a data-uses-unhanded-props=true />;
+<div className=a />;
 "
 `;
 
@@ -110,7 +110,7 @@ exports[`felaRenderer keyframe colors are rendered 1`] = `
 }
 
 
-<div className=ui-box ui-animation a b data-uses-unhanded-props=true />;
+<div className=a b />;
 "
 `;
 
@@ -120,9 +120,7 @@ exports[`felaRenderer marginLeft is rendered into marginLeft due to RTL with \`n
 }
 
 
-<span className=ui-text a dir=auto data-uses-unhanded-props=true>
-  Hello
-</span>;
+<div className=a />;
 "
 `;
 
@@ -132,9 +130,7 @@ exports[`felaRenderer marginLeft is rendered into marginRight due to RTL 1`] = `
 }
 
 
-<span className=ui-text a dir=auto data-uses-unhanded-props=true>
-  Hello
-</span>;
+<div className=a />;
 "
 `;
 
@@ -186,7 +182,7 @@ exports[`felaRenderer prefixes required styles 1`] = `
 }
 
 
-<div className=ui-box a b c d e f g h i data-uses-unhanded-props=true />;
+<div className=a b c d e f g h i />;
 "
 `;
 
@@ -195,28 +191,28 @@ exports[`felaRenderer styles are expanded to longhand values 1`] = `
   border-top-style: solid;
 }
 .b {
-  border-right-style: solid;
+  border-left-style: solid;
 }
 .c {
   border-bottom-style: solid;
 }
 .d {
-  border-left-style: solid;
+  border-right-style: solid;
 }
 .e {
   border-top-color: rgba(51, 204, 51, 1);
 }
 .f {
-  border-right-color: rgba(51, 0, 204, 1);
+  border-left-color: rgba(51, 0, 204, 1);
 }
 .g {
   border-bottom-color: rgba(51, 204, 51, 1);
 }
 .h {
-  border-left-color: rgba(51, 0, 204, 1);
+  border-right-color: rgba(51, 0, 204, 1);
 }
 
 
-<div className=ui-box a b c d e f g h data-uses-unhanded-props=true />;
+<div className=a b c d e f g h />;
 "
 `;
