@@ -64,9 +64,9 @@ const codepenHeader = `const {
   Stack,
   Toggle
 } = Fabric;\n\n`;
-const codepenSamples = `\n\nloadTheme(myTheme);
-
+const codepenSamples = `\n\n
 const Content = () => {
+    Customizations.applySettings({ theme: myTheme });
     return (
       <Fabric applyThemeToBody>
         <Stack tokens={{childrenGap: 8, maxWidth: 300}}>
