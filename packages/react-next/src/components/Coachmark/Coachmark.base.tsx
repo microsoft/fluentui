@@ -129,13 +129,17 @@ export const CoachmarkBase = React.forwardRef(
   (propsWithoutDefaults: ICoachmarkProps, forwardedRef: React.Ref<HTMLDivElement>) => {
     const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
 
-    return <CoachmarkBaseClass {...props} hoistedProps={{}} />;
+    const entityInnerHostElementRef = React.useRef<HTMLDivElement | null>(null);
+
+    return <CoachmarkBaseClass {...props} hoistedProps={{ entityInnerHostElementRef }} />;
   },
 );
 CoachmarkBase.displayName = COMPONENT_NAME;
 
 interface ICoachmarkPropsClassProps extends ICoachmarkProps {
-  hoistedProps: {};
+  hoistedProps: {
+    entityInnerHostElementRef: React.RefObject<HTMLDivElement>;
+  };
 }
 
 class CoachmarkBaseClass extends React.Component<ICoachmarkPropsClassProps, ICoachmarkState> implements ICoachmark {
@@ -147,7 +151,6 @@ class CoachmarkBaseClass extends React.Component<ICoachmarkPropsClassProps, ICoa
    * element.
    */
   private _entityHost = React.createRef<HTMLDivElement>();
-  private _entityInnerHostElement = React.createRef<HTMLDivElement>();
   private _translateAnimationContainer = React.createRef<HTMLDivElement>();
   private _ariaAlertContainer = React.createRef<HTMLDivElement>();
   private _childrenContainer = React.createRef<HTMLDivElement>();
@@ -315,7 +318,7 @@ class CoachmarkBaseClass extends React.Component<ICoachmarkPropsClassProps, ICoa
                     ),
                   ]}
                   <FocusTrapZone isClickableOutsideFocusTrap={true} forceFocusInsideTrap={false}>
-                    <div className={classNames.entityInnerHost} ref={this._entityInnerHostElement}>
+                    <div className={classNames.entityInnerHost} ref={this.props.hoistedProps.entityInnerHostElementRef}>
                       <div
                         className={classNames.childrenContainer}
                         ref={this._childrenContainer}
@@ -357,14 +360,14 @@ class CoachmarkBaseClass extends React.Component<ICoachmarkPropsClassProps, ICoa
   public componentDidMount(): void {
     this._async.requestAnimationFrame((): void => {
       if (
-        this._entityInnerHostElement.current &&
+        this.props.hoistedProps.entityInnerHostElementRef.current &&
         this.state.entityInnerHostRect.width + this.state.entityInnerHostRect.width === 0
       ) {
         this.setState({
           isMeasuring: false,
           entityInnerHostRect: {
-            width: this._entityInnerHostElement.current.offsetWidth,
-            height: this._entityInnerHostElement.current.offsetHeight,
+            width: this.props.hoistedProps.entityInnerHostElementRef.current.offsetWidth,
+            height: this.props.hoistedProps.entityInnerHostElementRef.current.offsetHeight,
           },
           isMeasured: true,
         });
@@ -597,12 +600,12 @@ class CoachmarkBaseClass extends React.Component<ICoachmarkPropsClassProps, ICoa
       this.props.onAnimationOpenStart();
     }
 
-    this._entityInnerHostElement.current &&
-      this._entityInnerHostElement.current.addEventListener('transitionend', (): void => {
+    this.props.hoistedProps.entityInnerHostElementRef.current &&
+      this.props.hoistedProps.entityInnerHostElementRef.current.addEventListener('transitionend', (): void => {
         // Need setTimeout to trigger narrator
         this._async.setTimeout(() => {
-          if (this._entityInnerHostElement.current) {
-            focusFirstChild(this._entityInnerHostElement.current);
+          if (this.props.hoistedProps.entityInnerHostElementRef.current) {
+            focusFirstChild(this.props.hoistedProps.entityInnerHostElementRef.current);
           }
         }, 1000);
 
