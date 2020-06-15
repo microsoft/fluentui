@@ -25,7 +25,7 @@ import { ICoachmarkProps, ICoachmarkStyles, ICoachmarkStyleProps } from './Coach
 import { COACHMARK_HEIGHT, COACHMARK_WIDTH } from './Coachmark.styles';
 import { FocusTrapZone } from '../../FocusTrapZone';
 import { getPropsWithDefaults } from '../../Utilities';
-import { useAsync } from '@uifabric/react-hooks';
+import { useAsync, useOnEvent } from '@uifabric/react-hooks';
 import { IBeakProps } from './Beak/Beak.types';
 
 const getClassNames = classNamesFunction<ICoachmarkStyleProps, ICoachmarkStyles>();
@@ -252,6 +252,49 @@ function useBeakPosition(
   ] as const;
 }
 
+function useListeners(
+  props: ICoachmarkProps,
+  translateAnimationContainer: React.RefObject<HTMLDivElement>,
+  isCollapsed: boolean,
+  openCoachmark: () => void,
+) {
+  const document = getDocument()?.documentElement;
+
+  useOnEvent(
+    document,
+    'keydown',
+    (e: KeyboardEvent) => {
+      // Open coachmark if user presses ALT + C (arbitrary keypress for now)
+      if (
+        // tslint:disable-next-line: deprecation
+        (e.altKey && e.which === KeyCodes.c) ||
+        // tslint:disable-next-line: deprecation
+        (e.which === KeyCodes.enter && translateAnimationContainer.current?.contains?.(e.target as Node) && isCollapsed)
+      ) {
+        openCoachmark();
+      }
+    },
+    true,
+  );
+
+  const dismissOnLostFocus = (ev: Event) => {
+    if (props.preventDismissOnLostFocus) {
+      const clickTarget = ev.target as HTMLElement;
+      const clickedOutsideCallout =
+        translateAnimationContainer.current && !elementContains(translateAnimationContainer.current, clickTarget);
+
+      const { target } = props;
+
+      if (clickedOutsideCallout && clickTarget !== target && !elementContains(target as HTMLElement, clickTarget)) {
+        props.onDismiss?.(ev);
+      }
+    }
+  };
+
+  useOnEvent(document, 'click', dismissOnLostFocus, true);
+  useOnEvent(document, 'focus', dismissOnLostFocus, true);
+}
+
 function useComponentRef(props: ICoachmarkProps) {
   React.useImperativeHandle(
     props.componentRef,
@@ -270,11 +313,13 @@ export const CoachmarkBase = React.forwardRef(
     const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
 
     const entityInnerHostElementRef = React.useRef<HTMLDivElement | null>(null);
+    const translateAnimationContainer = React.useRef<HTMLDivElement | null>(null);
 
     const [targetAlignment, targetPosition, onPositioned] = usePositionedData();
     const [isCollapsed, openCoachmark] = useCollapsedState(props, entityInnerHostElementRef);
     const [beakPositioningProps, transformOrigin] = useBeakPosition(props, targetAlignment, targetPosition);
 
+    useListeners(props, translateAnimationContainer, isCollapsed, openCoachmark);
     useComponentRef(props);
 
     return (
@@ -289,6 +334,7 @@ export const CoachmarkBase = React.forwardRef(
           onPositioned,
           beakPositioningProps,
           transformOrigin,
+          translateAnimationContainer,
         }}
       />
     );
@@ -299,6 +345,7 @@ CoachmarkBase.displayName = COMPONENT_NAME;
 interface ICoachmarkPropsClassProps extends ICoachmarkProps {
   hoistedProps: {
     entityInnerHostElementRef: React.RefObject<HTMLDivElement>;
+    translateAnimationContainer: React.RefObject<HTMLDivElement>;
     isCollapsed: boolean;
     targetAlignment: RectangleEdge | undefined;
     targetPosition: RectangleEdge | undefined;
@@ -318,7 +365,6 @@ class CoachmarkBaseClass extends React.Component<ICoachmarkPropsClassProps, ICoa
    * element.
    */
   private _entityHost = React.createRef<HTMLDivElement>();
-  private _translateAnimationContainer = React.createRef<HTMLDivElement>();
   private _ariaAlertContainer = React.createRef<HTMLDivElement>();
   private _childrenContainer = React.createRef<HTMLDivElement>();
   private _positioningContainer = React.createRef<HTMLDivElement>();
@@ -429,7 +475,10 @@ class CoachmarkBaseClass extends React.Component<ICoachmarkPropsClassProps, ICoa
             </div>
           )}
           <div className={classNames.pulsingBeacon} />
-          <div className={classNames.translateAnimationContainer} ref={this._translateAnimationContainer}>
+          <div
+            className={classNames.translateAnimationContainer}
+            ref={this.props.hoistedProps.translateAnimationContainer}
+          >
             <div className={classNames.scaleAnimationLayer}>
               <div className={classNames.rotateAnimationLayer}>
                 {this._positioningContainer.current && (isCollapsed || persistentBeak) && (
@@ -476,12 +525,6 @@ class CoachmarkBaseClass extends React.Component<ICoachmarkPropsClassProps, ICoa
     );
   }
 
-  public componentDidUpdate(prevProps: ICoachmarkPropsClassProps, prevState: ICoachmarkState): void {
-    if (prevProps.preventDismissOnLostFocus !== this.props.preventDismissOnLostFocus) {
-      this._addListeners();
-    }
-  }
-
   public componentDidMount(): void {
     this._async.requestAnimationFrame((): void => {
       if (
@@ -497,8 +540,6 @@ class CoachmarkBaseClass extends React.Component<ICoachmarkPropsClassProps, ICoa
           isMeasured: true,
         });
       }
-
-      this._addListeners();
 
       // We don't want to the user to immediately trigger the Coachmark when it's opened
       this._async.setTimeout(() => {
@@ -530,54 +571,6 @@ class CoachmarkBaseClass extends React.Component<ICoachmarkPropsClassProps, ICoa
     this._async.dispose();
     this._events.dispose();
   }
-
-  private _addListeners(): void {
-    const { preventDismissOnLostFocus } = this.props;
-    const currentDoc: Document = getDocument()!;
-
-    this._events.off();
-
-    if (currentDoc) {
-      this._events.on(currentDoc, 'keydown', this._onKeyDown, true);
-
-      if (!preventDismissOnLostFocus) {
-        this._events.on(currentDoc, 'click', this._dismissOnLostFocus, true);
-        this._events.on(currentDoc, 'focus', this._dismissOnLostFocus, true);
-      }
-    }
-  }
-
-  private _dismissOnLostFocus(ev: Event) {
-    const clickTarget = ev.target as HTMLElement;
-    const clickedOutsideCallout =
-      this._translateAnimationContainer.current &&
-      !elementContains(this._translateAnimationContainer.current, clickTarget);
-    const { target } = this.props;
-
-    if (clickedOutsideCallout && clickTarget !== target && !elementContains(target as HTMLElement, clickTarget)) {
-      this.props.onDismiss?.(ev);
-    }
-  }
-
-  private _onKeyDown = (e: KeyboardEvent): void => {
-    // Open coachmark if user presses ALT + C (arbitrary keypress for now)
-    if (
-      // tslint:disable-next-line: deprecation
-      (e.altKey && e.which === KeyCodes.c) ||
-      // tslint:disable-next-line: deprecation
-      (e.which === KeyCodes.enter &&
-        this._translateAnimationContainer.current &&
-        this._translateAnimationContainer.current.contains(e.target as Node))
-    ) {
-      this._onFocusHandler();
-    }
-  };
-
-  private _onFocusHandler = (): void => {
-    if (this.props.hoistedProps.isCollapsed) {
-      this.props.hoistedProps.openCoachmark();
-    }
-  };
 
   private _getBounds(): IRectangle | undefined {
     const { isPositionForced, positioningContainerProps } = this.props;
@@ -664,8 +657,8 @@ class CoachmarkBaseClass extends React.Component<ICoachmarkPropsClassProps, ICoa
   }
 
   private _setTargetElementRect(): void {
-    if (this._translateAnimationContainer && this._translateAnimationContainer.current) {
-      this._targetElementRect = this._translateAnimationContainer!.current!.getBoundingClientRect();
+    if (this.props.hoistedProps.translateAnimationContainer?.current) {
+      this._targetElementRect = this.props.hoistedProps.translateAnimationContainer.current.getBoundingClientRect();
     }
   }
 }
