@@ -2,6 +2,64 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Mon, 15 Jun 2020 12:45:48 GMT",
+      "tag": "office-ui-fabric-react_v7.120.1",
+      "version": "7.120.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "modalization for FocusTrapZone",
+            "author": "phkuo@microsoft.com",
+            "commit": "4dd6a5e2364c96dde8d2034979cddd7e7e84fa4d",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 12 Jun 2020 18:29:07 GMT",
+      "tag": "office-ui-fabric-react_v7.120.0",
+      "version": "7.120.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update Details and Grouped list chevron to rotate in the correct direction for RTL.",
+            "author": "bcoard@microsoft.com",
+            "commit": "2eb44fc44438f1dc06236c0216122dc1270ea738",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Combobox: Fix openOnKeyboard prop to work as expected",
+            "author": "joschect@microsoft.com",
+            "commit": "24933d5ac23e17b67e3191c08e3769cb7b76325c",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Fix some unnecessary DetailsList styles",
+            "author": "phkuo@microsoft.com",
+            "commit": "ce15e35abb689ed7d654f9394ff1df0852b93642",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Update react-icons example",
+            "author": "xgao@microsoft.com",
+            "commit": "084561446b2b0012e34595d5e65c7a68083112bf",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "PivotItem: Fixing typing error in headerButtonProps.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "e9b28261de77cbc2d57d04216d9bce2f05c3dd31",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 10 Jun 2020 12:37:27 GMT",
       "tag": "office-ui-fabric-react_v7.119.0",
       "version": "7.119.0",

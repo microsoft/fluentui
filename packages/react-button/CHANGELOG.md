@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Mon, 08 Jun 2020 12:34:34 GMT and should not be manually modified.
+This log was last generated on Fri, 12 Jun 2020 18:29:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.3.0)
+
+Fri, 12 Jun 2020 18:29:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.2.0..@fluentui/react-button_v0.3.0)
+
+### Minor changes
+
+- Adding inline tokens support to Button, fixing focus rects. ([PR #13416](https://github.com/microsoft/fluentui/pull/13416) by dzearing@microsoft.com)
+
+### Patches
+
+- ToggleButton: Updating to new css variables. ([PR #13569](https://github.com/microsoft/fluentui/pull/13569) by humbertomakotomorimoto@gmail.com)
+- Updating typings to conform with react-compose changes. ([PR #13521](https://github.com/microsoft/fluentui/pull/13521) by humbertomakotomorimoto@gmail.com)
 
 ## [0.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.2.0)
 

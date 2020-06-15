@@ -1,5 +1,13 @@
 import { knobComponents, KnobsSnippet } from '@fluentui/code-sandbox';
-import { CopyToClipboard, KnobInspector, KnobProvider, LogInspector } from '@fluentui/docs-components';
+import {
+  CopyToClipboard,
+  KnobInspector,
+  KnobProvider,
+  LogInspector,
+  Editor,
+  EDITOR_BACKGROUND_COLOR,
+  EDITOR_GUTTER_COLOR,
+} from '@fluentui/docs-components';
 import {
   ComponentVariablesInput,
   constants,
@@ -19,7 +27,6 @@ import qs from 'qs';
 import SourceRender from 'react-source-render';
 
 import { examplePathToHash, getFormattedHash, scrollToAnchor } from '../../../utils';
-import Editor, { EDITOR_BACKGROUND_COLOR, EDITOR_GUTTER_COLOR } from '../../Editor';
 import { babelConfig, importResolver } from '../../Playground/renderConfig';
 import ExampleContext, { ExampleContextValue } from '../../../context/ExampleContext';
 import ComponentControls from '../ComponentControls';
