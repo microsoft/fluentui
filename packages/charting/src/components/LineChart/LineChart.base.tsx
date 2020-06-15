@@ -1,4 +1,5 @@
 import * as React from 'react';
+import 'ts-polyfill';
 import { max as d3Max, min as d3Min } from 'd3-array';
 import { axisLeft as d3AxisLeft, axisBottom as d3AxisBottom } from 'd3-axis';
 import { scaleLinear as d3ScaleLinear, scaleTime as d3ScaleTime } from 'd3-scale';
