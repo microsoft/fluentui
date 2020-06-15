@@ -9,6 +9,10 @@ describe('convertCssTimeToNumber', () => {
     expect(calculateAnimationTimeout('20s', '2s')).toEqual(22000);
   });
 
+  test('converts decimal values to number', () => {
+    expect(calculateAnimationTimeout('2.5s', '2s')).toEqual(4500);
+  });
+
   test('converts other valid css values to 0', () => {
     expect(calculateAnimationTimeout('initial', '200ms')).toEqual(0);
     expect(calculateAnimationTimeout('inherit', '400ms')).toEqual(0);

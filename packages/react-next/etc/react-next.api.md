@@ -24,12 +24,13 @@ import { ITheme } from 'office-ui-fabric-react/lib/Styling';
 import { Position } from 'office-ui-fabric-react/lib/utilities/positioning';
 import * as React from 'react';
 import { ThemeProviderProps } from '@fluentui/react-theme-provider';
+import { useTheme } from '@fluentui/react-theme-provider';
 
 // @public (undocumented)
-export const Checkbox: React.FunctionComponent<ICheckboxProps>;
+export const Checkbox: import("@fluentui/react-compose").ComponentWithAs<"div", ICheckboxProps>;
 
 // @public (undocumented)
-export const CheckboxBase: React.ForwardRefExoticComponent<ICheckboxProps & React.RefAttributes<HTMLDivElement>>;
+export const CheckboxBase: import("@fluentui/react-compose").ComponentWithAs<"div", ICheckboxProps>;
 
 // @public (undocumented)
 export const ColorPickerGridCell: React.FunctionComponent<IColorPickerGridCellProps>;
@@ -97,6 +98,11 @@ export interface ICheckbox {
     indeterminate: boolean;
 }
 
+// @public (undocumented)
+export type ICheckboxClasses = {
+    [key in keyof ICheckboxSlots]: string;
+};
+
 // @public
 export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement | HTMLInputElement> {
     ariaDescribedBy?: string;
@@ -104,6 +110,7 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
     ariaLabelledBy?: string;
     ariaPositionInSet?: number;
     ariaSetSize?: number;
+    as?: React.ElementType;
     boxSide?: 'start' | 'end';
     checked?: boolean;
     checkmarkIconProps?: IIconProps;
@@ -118,8 +125,36 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
     label?: string;
     onChange?: (ev?: React.FormEvent<HTMLElement | HTMLInputElement>, checked?: boolean) => void;
     onRenderLabel?: IRenderFunction<ICheckboxProps>;
+    // @deprecated
     styles?: IStyleFunctionOrObject<ICheckboxStyleProps, ICheckboxStyles>;
     theme?: ITheme;
+}
+
+// @public (undocumented)
+export type ICheckboxSlotProps = {
+    [key in keyof ICheckboxSlots]: any;
+};
+
+// @public (undocumented)
+export interface ICheckboxSlots {
+    // (undocumented)
+    checkbox: React.ElementType;
+    // (undocumented)
+    checkmark: React.ElementType;
+    // (undocumented)
+    container: React.ElementType;
+    // (undocumented)
+    input: React.ElementType;
+    // (undocumented)
+    label: React.ElementType;
+    // (undocumented)
+    root: React.ElementType;
+}
+
+// @public (undocumented)
+export interface ICheckboxState extends Omit<ICheckboxProps, 'label'>, Partial<ICheckboxSlotProps> {
+    // (undocumented)
+    ref: React.Ref<HTMLElement>;
 }
 
 // @public (undocumented)
@@ -490,7 +525,7 @@ export interface IPivotItemProps extends React.HTMLAttributes<HTMLDivElement> {
     alwaysRender?: boolean;
     ariaLabel?: string;
     componentRef?: IRefObject<{}>;
-    headerButtonProps?: IButtonProps & {
+    headerButtonProps?: IButtonProps | {
         [key: string]: string | number | boolean;
     };
     headerText?: string;
@@ -507,14 +542,9 @@ export interface IPivotItemProps extends React.HTMLAttributes<HTMLDivElement> {
 export interface IPivotProps extends React.HTMLAttributes<HTMLDivElement> {
     className?: string;
     componentRef?: React.RefObject<IPivot>;
-    defaultSelectedIndex?: number;
     defaultSelectedKey?: string;
     getTabId?: (itemKey: string, index: number) => string;
     headersOnly?: boolean;
-    // @deprecated
-    initialSelectedIndex?: number;
-    // @deprecated
-    initialSelectedKey?: string;
     linkFormat?: PivotLinkFormatType;
     linkSize?: PivotLinkSizeType;
     onLinkClick?: (item?: PivotItem, ev?: React.MouseEvent<HTMLElement>) => void;
@@ -569,7 +599,7 @@ export interface IResizeGroup {
 }
 
 // @public (undocumented)
-export interface IResizeGroupProps extends React.HTMLAttributes<ResizeGroupBase | HTMLElement> {
+export interface IResizeGroupProps extends React.HTMLAttributes<HTMLDivElement> {
     className?: string;
     componentRef?: IRefObject<IResizeGroup>;
     data: any;
@@ -1144,24 +1174,10 @@ export type PivotLinkSizeType = 'normal' | 'large';
 export const Popup: React.ForwardRefExoticComponent<IPopupProps & React.RefAttributes<HTMLDivElement>>;
 
 // @public (undocumented)
-export const ResizeGroup: typeof ResizeGroupBase;
+export const ResizeGroup: import("react").ForwardRefExoticComponent<import("./ResizeGroup.types").IResizeGroupProps & import("react").RefAttributes<HTMLDivElement>>;
 
 // @public (undocumented)
-export class ResizeGroupBase extends React.Component<IResizeGroupProps, IResizeGroupState> {
-    constructor(props: IResizeGroupProps);
-    // (undocumented)
-    componentDidMount(): void;
-    // (undocumented)
-    componentDidUpdate(prevProps: IResizeGroupProps): void;
-    // (undocumented)
-    componentWillUnmount(): void;
-    // (undocumented)
-    remeasure(): void;
-    // (undocumented)
-    render(): JSX.Element;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(nextProps: IResizeGroupProps): void;
-    }
+export const ResizeGroupBase: React.ForwardRefExoticComponent<IResizeGroupProps & React.RefAttributes<HTMLDivElement>>;
 
 // @public (undocumented)
 export enum ResizeGroupDirection {
@@ -1270,10 +1286,12 @@ export const Toggle: React.FunctionComponent<IToggleProps>;
 export const ToggleBase: import("@fluentui/react-compose").ComponentWithAs<"div", IToggleProps>;
 
 // @public
-export const useLink: (props: ILinkProps, options: ComposePreparedOptions<{}, {}>) => any;
+export const useLink: (props: ILinkProps) => any;
+
+export { useTheme }
 
 // @public (undocumented)
-export const useToggle: (props: IToggleProps, options: ComposePreparedOptions<{}, {}>) => any;
+export const useToggle: (props: IToggleProps, options: ComposePreparedOptions<{}, any, {}>) => any;
 
 
 export * from "office-ui-fabric-react/lib/ActivityItem";

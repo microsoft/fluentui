@@ -1,8 +1,46 @@
 # Change Log - @fluentui/react-next
 
-This log was last generated on Tue, 02 Jun 2020 12:36:30 GMT and should not be manually modified.
+This log was last generated on Fri, 12 Jun 2020 18:29:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-alpha.39](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.39)
+
+Fri, 12 Jun 2020 18:29:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.37..@fluentui/react-next_v8.0.0-alpha.39)
+
+### Changes
+
+- PivotItem: Fixing typing error in headerButtonProps. ([PR #13550](https://github.com/microsoft/fluentui/pull/13550) by humbertomakotomorimoto@gmail.com)
+- Updating Link to use recomposable state. ([PR #13521](https://github.com/microsoft/fluentui/pull/13521) by humbertomakotomorimoto@gmail.com)
+- Checkbox: initial use compose ([PR #13435](https://github.com/microsoft/fluentui/pull/13435) by xgao@microsoft.com)
+
+## [8.0.0-alpha.37](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.37)
+
+Tue, 09 Jun 2020 12:35:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.36..@fluentui/react-next_v8.0.0-alpha.37)
+
+### Changes
+
+- Migrate ResizeGroup to function component ([PR #13013](https://github.com/microsoft/fluentui/pull/13013) by miclo@microsoft.com)
+
+## [8.0.0-alpha.36](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.36)
+
+Mon, 08 Jun 2020 12:34:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.34..@fluentui/react-next_v8.0.0-alpha.36)
+
+### Changes
+
+- Resolving Pivot Selected Key issue and cleaning up props. ([PR #13479](https://github.com/microsoft/fluentui/pull/13479) by czearing@outlook.com)
+
+## [8.0.0-alpha.34](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.34)
+
+Thu, 04 Jun 2020 12:35:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.33..@fluentui/react-next_v8.0.0-alpha.34)
+
+### Changes
+
+- Pivot: replace onKeyPress with onKeyDown and ariaLabel with aria-label ([PR #13442](https://github.com/microsoft/fluentui/pull/13442) by behowell@microsoft.com)
 
 ## [8.0.0-alpha.33](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.33)
 
