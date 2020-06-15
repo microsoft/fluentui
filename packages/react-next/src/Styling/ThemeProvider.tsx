@@ -4,7 +4,7 @@ import { useCustomizationSettings } from '../Utilities';
 import { convertLegacyTheme } from './convertLegacyTheme';
 import { ITheme } from '../Styling';
 
-export { ThemeProviderProps } from '@fluentui/react-theme-provider';
+export { ThemeProviderProps, useTheme } from '@fluentui/react-theme-provider';
 
 /**
  * A wrapper of ThemeProvider from react-theme-provider package.

@@ -376,7 +376,6 @@ const ToolbarItem = compose<'button', ToolbarItemProps, ToolbarItemStylesProps, 
       'design',
       'styles',
       'variables',
-
       'active',
       'disabled',
       'icon',
