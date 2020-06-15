@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "LineChart: Add polyfill to support array.find method in callout in IE11",
+  "packageName": "@uifabric/charting",
+  "email": "v-satgar@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-06-15T06:00:45.178Z"
+}
