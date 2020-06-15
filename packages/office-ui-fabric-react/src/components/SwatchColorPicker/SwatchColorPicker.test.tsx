@@ -2,7 +2,6 @@ import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
 import { SwatchColorPicker } from './SwatchColorPicker';
-import { resetIds } from '../../Utilities';
 import { IColorCellProps } from './ColorPickerGridCell.types';
 import { expectNodes, findNodes } from '../../common/testUtilities';
 
@@ -22,10 +21,6 @@ const DEFAULT_OPTIONS: IColorCellProps[] = [
 ];
 
 describe('SwatchColorPicker', () => {
-  beforeEach(() => {
-    resetIds();
-  });
-
   it('renders SwatchColorPicker correctly', () => {
     const component = renderer.create(<SwatchColorPicker colorCells={DEFAULT_OPTIONS} columnCount={4} />);
     const tree = component.toJSON();

@@ -4,6 +4,7 @@ import { mount } from 'enzyme';
 import { SwatchColorPicker } from './SwatchColorPicker';
 import { IColorCellProps } from './ColorPickerGridCell.types';
 import { expectNodes, findNodes } from '../../common/testUtilities';
+import { resetIds } from '@uifabric/utilities';
 
 const DEFAULT_OPTIONS: IColorCellProps[] = [
   { id: 'a', label: 'green', color: '#00ff00' },
@@ -21,6 +22,10 @@ const DEFAULT_OPTIONS: IColorCellProps[] = [
 ];
 
 describe('SwatchColorPicker', () => {
+  beforeEach(() => {
+    resetIds();
+  });
+
   it('renders SwatchColorPicker correctly', () => {
     const component = renderer.create(<SwatchColorPicker colorCells={DEFAULT_OPTIONS} columnCount={4} />);
     const tree = component.toJSON();
