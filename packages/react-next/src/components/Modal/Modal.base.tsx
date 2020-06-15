@@ -271,7 +271,7 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
               {!isModeless && (
                 <Overlay
                   isDarkThemed={isDarkOverlay}
-                  onClick={isBlocking ? undefined : (onDismiss as any)}
+                  onClick={isBlocking ? undefined : onDismiss}
                   allowTouchBodyScroll={this._allowTouchBodyScroll}
                   {...overlay}
                 />
