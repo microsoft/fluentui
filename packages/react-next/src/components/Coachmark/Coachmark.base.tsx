@@ -25,6 +25,7 @@ import { ICoachmark, ICoachmarkProps, ICoachmarkStyles, ICoachmarkStyleProps } f
 import { COACHMARK_HEIGHT, COACHMARK_WIDTH } from './Coachmark.styles';
 import { FocusTrapZone } from '../../FocusTrapZone';
 import { getPropsWithDefaults } from '../../Utilities';
+import { useAsync } from '@uifabric/react-hooks';
 
 const getClassNames = classNamesFunction<ICoachmarkStyleProps, ICoachmarkStyles>();
 
@@ -39,12 +40,6 @@ export interface IEntityRect {
 }
 
 export interface ICoachmarkState {
-  /**
-   * Is the Coachmark currently collapsed into
-   * a tear drop shape
-   */
-  isCollapsed: boolean;
-
   /**
    * Enables/Disables the beacon that radiates
    * from the center of the coachmark.
@@ -124,6 +119,40 @@ const DEFAULT_PROPS = {
   },
 };
 
+function useCollapsedState(props: ICoachmarkProps, entityInnerHostElementRef: React.RefObject<HTMLDivElement>) {
+  /**
+   * Is the Coachmark currently collapsed into
+   * a tear drop shape
+   */
+  const [isCollapsed, setIsCollapsed] = React.useState<boolean>(!!props.isCollapsed);
+  const async = useAsync();
+
+  const openCoachmark = () => {
+    setIsCollapsed(false);
+
+    props.onAnimationOpenStart?.();
+
+    entityInnerHostElementRef.current?.addEventListener?.('transitionend', (): void => {
+      // Need setTimeout to trigger narrator
+      async.setTimeout(() => {
+        if (entityInnerHostElementRef.current) {
+          focusFirstChild(entityInnerHostElementRef.current);
+        }
+      }, 1000);
+
+      props.onAnimationOpenEnd?.();
+    });
+  };
+
+  React.useEffect(() => {
+    if (!props.isCollapsed && isCollapsed) {
+      openCoachmark();
+    }
+  }, [props.isCollapsed]);
+
+  return [isCollapsed, openCoachmark] as const;
+}
+
 const COMPONENT_NAME = 'CoachmarkBase';
 export const CoachmarkBase = React.forwardRef(
   (propsWithoutDefaults: ICoachmarkProps, forwardedRef: React.Ref<HTMLDivElement>) => {
@@ -131,7 +160,9 @@ export const CoachmarkBase = React.forwardRef(
 
     const entityInnerHostElementRef = React.useRef<HTMLDivElement | null>(null);
 
-    return <CoachmarkBaseClass {...props} hoistedProps={{ entityInnerHostElementRef }} />;
+    const [isCollapsed, openCoachmark] = useCollapsedState(props, entityInnerHostElementRef);
+
+    return <CoachmarkBaseClass {...props} hoistedProps={{ entityInnerHostElementRef, isCollapsed, openCoachmark }} />;
   },
 );
 CoachmarkBase.displayName = COMPONENT_NAME;
@@ -139,6 +170,8 @@ CoachmarkBase.displayName = COMPONENT_NAME;
 interface ICoachmarkPropsClassProps extends ICoachmarkProps {
   hoistedProps: {
     entityInnerHostElementRef: React.RefObject<HTMLDivElement>;
+    isCollapsed: boolean;
+    openCoachmark(): void;
   };
 }
 
@@ -180,7 +213,6 @@ class CoachmarkBaseClass extends React.Component<ICoachmarkPropsClassProps, ICoa
 
     // Set defaults for state
     this.state = {
-      isCollapsed: props.isCollapsed!,
       isBeaconAnimating: true,
       isMeasuring: true,
       entityInnerHostRect: {
@@ -219,6 +251,7 @@ class CoachmarkBaseClass extends React.Component<ICoachmarkPropsClassProps, ICoa
       theme,
       className,
       persistentBeak,
+      hoistedProps: { isCollapsed },
     } = this.props;
 
     const {
@@ -226,7 +259,6 @@ class CoachmarkBaseClass extends React.Component<ICoachmarkPropsClassProps, ICoa
       beakTop,
       beakRight,
       beakBottom,
-      isCollapsed,
       isBeaconAnimating,
       isMeasuring,
       entityInnerHostRect,
@@ -335,14 +367,6 @@ class CoachmarkBaseClass extends React.Component<ICoachmarkPropsClassProps, ICoa
         </div>
       </PositioningContainer>
     );
-  }
-
-  // tslint:disable-next-line function-name
-  public UNSAFE_componentWillReceiveProps(newProps: ICoachmarkPropsClassProps): void {
-    if (this.props.isCollapsed && !newProps.isCollapsed) {
-      // The coachmark is about to open
-      this._openCoachmark();
-    }
   }
 
   public componentDidUpdate(prevProps: ICoachmarkPropsClassProps, prevState: ICoachmarkState): void {
@@ -459,8 +483,8 @@ class CoachmarkBaseClass extends React.Component<ICoachmarkPropsClassProps, ICoa
   };
 
   private _onFocusHandler = (): void => {
-    if (this.state.isCollapsed) {
-      this._openCoachmark();
+    if (this.props.hoistedProps.isCollapsed) {
+      this.props.hoistedProps.openCoachmark();
     }
   };
 
@@ -591,30 +615,6 @@ class CoachmarkBaseClass extends React.Component<ICoachmarkPropsClassProps, ICoa
     });
   };
 
-  private _openCoachmark = (): void => {
-    this.setState({
-      isCollapsed: false,
-    });
-
-    if (this.props.onAnimationOpenStart) {
-      this.props.onAnimationOpenStart();
-    }
-
-    this.props.hoistedProps.entityInnerHostElementRef.current &&
-      this.props.hoistedProps.entityInnerHostElementRef.current.addEventListener('transitionend', (): void => {
-        // Need setTimeout to trigger narrator
-        this._async.setTimeout(() => {
-          if (this.props.hoistedProps.entityInnerHostElementRef.current) {
-            focusFirstChild(this.props.hoistedProps.entityInnerHostElementRef.current);
-          }
-        }, 1000);
-
-        if (this.props.onAnimationOpenEnd) {
-          this.props.onAnimationOpenEnd();
-        }
-      });
-  };
-
   private _addProximityHandler(mouseProximityOffset: number = 0): void {
     /**
      * An array of cached ids returned when setTimeout runs during
@@ -649,14 +649,14 @@ class CoachmarkBaseClass extends React.Component<ICoachmarkPropsClassProps, ICoa
     // we want to check if inside of an element and
     // set the state with the result.
     this._events.on(document, 'mousemove', (e: MouseEvent) => {
-      if (this.state.isCollapsed) {
+      if (this.props.hoistedProps.isCollapsed) {
         const mouseY = e.clientY;
         const mouseX = e.clientX;
         this._setTargetElementRect();
         const isMouseInProximity = isInsideElement(this._targetElementRect, mouseX, mouseY, mouseProximityOffset);
 
         if (isMouseInProximity !== this.state.isMouseInProximity) {
-          this._openCoachmark();
+          this.props.hoistedProps.openCoachmark();
         }
       }
 
