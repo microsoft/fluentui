@@ -9,7 +9,7 @@ const FormExampleErrorAndSatisfactory = () => (
     }}
   >
     <Form.Field>
-      <Form.Label htmlFor="firstname" id="first-name-label">
+      <Form.Label htmlFor="firstname-with-error" id="first-name-label">
         First Name*
       </Form.Label>
       <Input error name="first-name" aria-labelledby="first-name-label message-id" id="firstname-with-error" />
@@ -21,14 +21,16 @@ const FormExampleErrorAndSatisfactory = () => (
       label="Last name"
       name="LastName"
       id="last-name-shorthand-with-error"
-      errorMessage={'ERROR'}
-      required={true}
+      errorMessage="You can not fix this error"
+      required
     />
     <Form.Field>
-      <Form.Label htmlFor="email">E-mail*</Form.Label>
+      <Form.Label htmlFor="email-field">E-mail*</Form.Label>
       <Input successIndicator={<PresenceAvailableIcon />} required name="email-field" id="email-field" />
     </Form.Field>
-    <Form.Field control={{ as: Button, content: 'Submit' }} />
+    <Form.Field>
+      <Button>Submit</Button>
+    </Form.Field>
   </Form>
 );
 

@@ -2,6 +2,135 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Mon, 15 Jun 2020 12:45:48 GMT",
+      "tag": "office-ui-fabric-react_v7.120.1",
+      "version": "7.120.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "modalization for FocusTrapZone",
+            "author": "phkuo@microsoft.com",
+            "commit": "4dd6a5e2364c96dde8d2034979cddd7e7e84fa4d",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 12 Jun 2020 18:29:07 GMT",
+      "tag": "office-ui-fabric-react_v7.120.0",
+      "version": "7.120.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update Details and Grouped list chevron to rotate in the correct direction for RTL.",
+            "author": "bcoard@microsoft.com",
+            "commit": "2eb44fc44438f1dc06236c0216122dc1270ea738",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Combobox: Fix openOnKeyboard prop to work as expected",
+            "author": "joschect@microsoft.com",
+            "commit": "24933d5ac23e17b67e3191c08e3769cb7b76325c",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Fix some unnecessary DetailsList styles",
+            "author": "phkuo@microsoft.com",
+            "commit": "ce15e35abb689ed7d654f9394ff1df0852b93642",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Update react-icons example",
+            "author": "xgao@microsoft.com",
+            "commit": "084561446b2b0012e34595d5e65c7a68083112bf",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "PivotItem: Fixing typing error in headerButtonProps.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "e9b28261de77cbc2d57d04216d9bce2f05c3dd31",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 10 Jun 2020 12:37:27 GMT",
+      "tag": "office-ui-fabric-react_v7.119.0",
+      "version": "7.119.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "DocumentCard: add prop to open link in a new tab.",
+            "author": "mahesh8488@gmail.com",
+            "commit": "52da3b627c30777bfc11db0b87f68494c6a6a86a",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Add onGrowData to Breadcrumb",
+            "author": "tmichon@microsoft.com",
+            "commit": "5175daa714e7880decfd63dfe7a7c8b6c2d442c1",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 09 Jun 2020 12:35:17 GMT",
+      "tag": "office-ui-fabric-react_v7.118.1",
+      "version": "7.118.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Link: fix broken href in examples",
+            "author": "ololubek@microsoft.com",
+            "commit": "4e058b89af037da8b421ecc16b628238de011107",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 08 Jun 2020 12:34:34 GMT",
+      "tag": "office-ui-fabric-react_v7.118.0",
+      "version": "7.118.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Dropdown and ContextualMenu doc comment clarifications",
+            "author": "elcraig@microsoft.com",
+            "commit": "ba5b0781e47e271abf27747f35b606e797029454",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Picker/PeoplePicker: Fix issue where default value wouldn't trigger suggestions",
+            "author": "joschect@microsoft.com",
+            "commit": "045f6d767dc0695b187dc18fdaa88dee574c741b",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Deprecating defaultSelectedIndex props in Pivot.types.ts.",
+            "author": "czearing@outlook.com",
+            "commit": "24e7759686ef88224d23ba35ac0e3add895357b6",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Dialog: min height for title to ensure subtext doesn't overlap 'close' button.",
+            "author": "jdh@microsoft.com",
+            "commit": "e43ea2e9faacf6b06a17caaa422807cc844b1ba5",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 05 Jun 2020 05:09:39 GMT",
       "tag": "office-ui-fabric-react_v7.117.4",
       "version": "7.117.4",

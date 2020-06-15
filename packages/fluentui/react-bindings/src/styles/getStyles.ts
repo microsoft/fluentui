@@ -14,6 +14,8 @@ export type GetStylesResult = {
 };
 
 const getStyles = (options: ResolveStylesOptions): GetStylesResult => {
+  const { primaryDisplayName, telemetry } = options;
+
   //
   // To compute styles we are going through three stages:
   // - resolve variables (siteVariables => componentVariables + props.variables)
@@ -21,12 +23,18 @@ const getStyles = (options: ResolveStylesOptions): GetStylesResult => {
   // - compute classes (with resolvedStyles)
   // - conditionally add sources for evaluating debug information to component
 
+  const telemetryPartStart = telemetry?.enabled ? performance.now() : 0;
   const resolvedVariables = resolveVariables(
     options.allDisplayNames,
     options.theme,
     options.props.variables,
     options.performance.enableVariablesCaching,
   );
+
+  if (telemetry?.enabled && telemetry.performance[primaryDisplayName]) {
+    telemetry.performance[primaryDisplayName].msResolveVariablesTotal += performance.now() - telemetryPartStart;
+  }
+
   const { classes, resolvedStyles, resolvedStylesDebug } = resolveStyles(options, resolvedVariables);
 
   // conditionally add sources for evaluating debug information to component
