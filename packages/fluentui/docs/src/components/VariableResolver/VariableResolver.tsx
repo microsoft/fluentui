@@ -33,8 +33,8 @@ const VariableResolver: React.FunctionComponent<VariableResolverProps> = props =
 
   useClassNamesListener(elementRef, onClassNamesChange);
 
-  return null;
   // TODO: fix this feature
+  return <div ref={elementRef}>{props.children}</div>;
   // return (
   //   <Provider renderer={renderer}>
   //     <div ref={elementRef}>{props.children}</div>
