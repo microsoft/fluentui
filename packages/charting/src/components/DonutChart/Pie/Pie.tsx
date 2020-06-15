@@ -6,7 +6,7 @@ import { IArcData } from '../Arc/Arc.types';
 import { IChartDataPoint } from '../index';
 
 export class Pie extends React.Component<IPieProps, {}> {
-  public static defaultProps = {
+  public static defaultProps: Partial<IPieProps> = {
     pie: shape
       .pie()
       .sort(null)
