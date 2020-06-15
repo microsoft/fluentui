@@ -3346,14 +3346,6 @@
     "@types/cheerio" "*"
     "@types/react" "*"
 
-"@types/enzyme@3.10.3":
-  version "3.10.3"
-  resolved "https://registry.yarnpkg.com/@types/enzyme/-/enzyme-3.10.3.tgz#fe7eeba3550369eed20e7fb565bfb74eec44f1f0"
-  integrity sha512-R+phe509UuUYy9Tk0YlSbipRpfVtIzb/9BHn5pTEtjJTF5LXvUjrIQcZvNyANNEyFrd2YGs196PniNT1fgvOQA==
-  dependencies:
-    "@types/cheerio" "*"
-    "@types/react" "*"
-
 "@types/es6-promise@0.0.32":
   version "0.0.32"
   resolved "https://registry.yarnpkg.com/@types/es6-promise/-/es6-promise-0.0.32.tgz#3bcf44fb1e429f3df76188c8c6d874463ba371fd"
