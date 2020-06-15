@@ -164,6 +164,17 @@ const FocusZoneComponent: React.FunctionComponent<FocusZoneComponentProps> = pro
   return getA11Props.unstable_wrapWithFocusZone(<ElementType {...getA11Props('root', {})}>{children}</ElementType>);
 };
 
+const UnstableBehaviorDefinitionComponent: React.FunctionComponent<TestComponentProps> = props => {
+  const { accessibility = testBehavior } = props;
+  const getA11Props = useAccessibility(accessibility, {
+    mapPropsToBehavior: () => ({
+      disabled: false,
+    }),
+  });
+
+  return <div {...getA11Props.unstable_behaviorDefinition().attributes.root} />;
+};
+
 describe('useAccessibility', () => {
   it('sets attributes', () => {
     const wrapper = shallow(<TestComponent />);
@@ -200,6 +211,19 @@ describe('useAccessibility', () => {
         .find('ChildComponent')
         .prop('accessibility'),
     ).toBe(childOverriddenBehavior);
+  });
+
+  it('it shoult return current definition from unstable_behaviorDefinition', () => {
+    expect(
+      shallow(<UnstableBehaviorDefinitionComponent />)
+        .find('div')
+        .prop('aria-disabled'),
+    ).toBe(false);
+    expect(
+      shallow(<UnstableBehaviorDefinitionComponent />)
+        .find('div')
+        .prop('tabIndex'),
+    ).toBe(1);
   });
 
   it('adds event handlers', () => {

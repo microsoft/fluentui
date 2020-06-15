@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { PivotBasicExample } from './examples/Pivot.Basic.Example';
-
-import { IDocPageProps } from '../../common/DocPage.types';
+import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
 import { PivotIconCountExample } from './examples/Pivot.IconCount.Example';
 import { PivotLargeExample } from './examples/Pivot.Large.Example';
 import { PivotTabsExample } from './examples/Pivot.Tabs.Example';

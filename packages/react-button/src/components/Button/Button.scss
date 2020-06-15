@@ -16,11 +16,12 @@
   --button-size-largest: 64px;
 
   --button-padding: 0 24px;
+  --button-margin: 0;
+  --button-width: auto;
   --button-height: var(--button-size-regular);
   --button-minWidth: 96px;
   --button-maxWidth: 280px;
 
-  --button-borderRadius: 3px;
   --button-contentGap: 10px;
   --button-iconSize: 16px;
 
@@ -28,10 +29,10 @@
   --button-borderRadius: 2px;
   --button-borderWidth: 1px;
   --button-boxShadow: 0px 2px 4px -0.75px rgba(0, 0, 0, 0.1);
-  --button-boxShadow-disabled: none;
+  --button-disabled-boxShadow: none;
 
   /* transforms */
-  --button-transform-pressed: scale(0.95);
+  --button-pressed-transform: scale(0.95);
   --button-transition: transform 0.1s linear;
 
   /* TODO: Remove. Fonts should only be defined in the theme. */
@@ -39,43 +40,61 @@
   --button-fontSize: 14px;
   --button-fontWeight: 600;
 
-  /* TODO: Remove. Colors should only be defined in the theme. */
-  --button-fill: white;
-  --button-fill-hovered: rgb(237, 235, 233);
-  --button-fill-focused: var(--button-fill);
-  --button-fill-pressed: rgb(225, 223, 221);
-  --button-fill-disabled: var(--button-fill-hovered);
-  --button-text: rgb(44, 38, 33);
-  --button-text-hovered: var(--button-text);
-  --button-text-focused: var(--button-text);
-  --button-text-pressed: var(--button-text);
-  --button-text-disabled: rgb(200, 198, 196);
+  /* TODO: Consider remove. Colors should only be defined in the theme. */
+
+  --button-focusColor: #000;
+  --button-focusInnerColor: #fff;
+
+  --button-background: white;
   --button-borderColor: rgb(225, 223, 221);
-  --button-borderColor-disabled: transparent;
-  --button-icon: inherit;
-  --button-icon-hovered: var(--button-icon);
-  --button-icon-pressed: var(--button-icon);
-  --button-icon-focused: var(--button-icon);
-  --button-icon-disabled: var(--button-text-disabled);
+  --button-contentColor: rgb(44, 38, 33);
+  --button-iconColor: inherit;
 
-  /* TODO: Remove. Accent should only be defined in the theme. */
-  --accent-fill: rgb(98, 100, 167);
-  --accent-fill-hovered: rgb(88, 90, 150);
-  --accent-fill-focused: var(--accent-fill);
-  --accent-fill-pressed: rgb(70, 71, 117);
-  --accent-fill-disabled: var(--accent-hovered);
-  --accent-text: white;
-  --accent-text-hovered: var(--accent-text);
-  --accent-text-focused: var(--accent-text);
-  --accent-text-pressed: var(--accent-text);
-  --accent-text-disabled: rgb(200, 198, 196);
+  --button-hovered-background: rgb(237, 235, 233);
+  --button-hovered-borderColor: var(--button-borderColor);
+  --button-hovered-contentColor: var(--button-contentColor);
+  --button-hovered-iconColor: var(--button-iconColor);
+
+  --button-focused-background: var(--button-background);
+  --button-focused-borderColor: var(--button-borderColor);
+  --button-focused-contentColor: var(--button-contentColor);
+  --button-focused-iconColor: var(--button-iconColor);
+
+  --button-pressed-background: rgb(225, 223, 221);
+  --button-pressed-borderColor: var(--button-borderColor);
+  --button-pressed-contentColor: var(--button-contentColor);
+  --button-pressed-iconColor: var(--button-iconColor);
+
+  --button-disabled-background: rgb(237, 235, 233);
+  --button-disabled-borderColor: var(--button-disabled-background);
+  --button-disabled-contentColor: rgb(200, 198, 196);
+  --button-disabled-iconColor: var(--button-disabled-contentColor);
+
+  /* TODO: Remove. Accent should only be defined in the theme, though primary depends on it. */
+  --accent-background: rgb(98, 100, 167);
   --accent-borderColor: transparent;
+  --accent-contentColor: white;
+  --accent-iconColor: inherit;
 
-  --accent-icon: inherit;
-  --accent-icon-hovered: var(--accent-icon);
-  --accent-icon-pressed: var(--accent-icon);
-  --accent-icon-focused: var(--accent-icon);
-  --accent-icon-disabled: var(--accent-text-disabled);
+  --accent-hovered-background: rgb(88, 90, 150);
+  --accent-hovered-borderColor: var(--accent-borderColor);
+  --accent-hovered-contentColor: var(--accent-contentColor);
+  --accent-hovered-iconColor: var(--accent-icon);
+
+  --accent-focused-background: rgb(88, 90, 150);
+  --accent-focused-borderColor: var(--accent-borderColor);
+  --accent-focused-contentColor: var(--accent-contentColor);
+  --accent-focused-iconColor: var(--accent-iconColor);
+
+  --accent-pressed-background: rgb(70, 71, 117);
+  --accent-pressed-borderColor: var(--accent-borderColor);
+  --accent-pressed-contentColor: var(--accent-contentColor);
+  --accent-pressed-iconColor: var(--accent-iconColor);
+
+  --accent-disabled-background: rgb(237, 235, 233);
+  --accent-disabled-borderColor: var(--accent-disabled-background);
+  --accent-disabled-contentColor: rgb(200, 198, 196);
+  --accent-disabled-iconColor: var(--accent-disabled-contentColor);
 }
 
 /**
@@ -99,81 +118,26 @@
   outline: none;
   position: relative;
   user-select: none;
+  box-sizing: border-box;
+  vertical-align: middle;
 
-  background: var(--button-fill);
+  background: var(--button-background, white);
+  color: var(--button-contentColor, rgb(44, 38, 33));
+
   border-color: var(--button-borderColor);
   border-radius: var(--button-borderRadius);
   border-width: var(--button-borderWidth);
   box-shadow: var(--button-boxShadow);
-  color: var(--button-text);
   height: var(--button-height);
   padding: var(--button-padding);
   transition: var(--button-transition);
   white-space: var(--button-whiteSpace, nowrap);
-}
 
-.content {
   font-family: var(--button-fontFamily);
   font-size: var(--button-fontSize);
   font-weight: var(--button-fontWeight);
-}
 
-.icon {
-  color: var(--button-icon);
-  display: inline-block;
-  width: var(--button-iconSize);
-  height: var(--button-iconSize);
-}
-
-.loader {
-  /* TODO: styling once we have a sample. */
-}
-
-/* selectors */
-
-.root > *:not(:first-child) {
-  margin-left: var(--button-contentGap);
-}
-
-.root:hovered {
-  background-color: var(--button-fill-hovered, var(--button-fill));
-  color: var(--button-text-hovered, var(--button-text));
-  border-color: var(--button-borderColor-hovered, var(--button-borderColor));
-  box-shadow: var(--button-boxShadow-hovered, var(--button-boxShadow));
-
-  .icon {
-    color: var(--button-icon-hovered, var(--button-text-hovered));
-  }
-}
-
-.root:active {
-  background-color: var(--button-fill-pressed, var(--button-fill-hovered));
-  color: var(--button-text-pressed, var(--button-text-hovered));
-  border-color: var(--button-borderColor-pressed, var(--button-borderColor-hovered, var(--button-borderColor)));
-  box-shadow: var(--button-boxShadow-pressed, var(--button-boxShadow-hovered, var(--button-boxShadow)));
-
-  transform: var(--button-transform-pressed);
-  transition: var(--button-transition-pressed);
-
-  .icon {
-    color: var(--button-icon-pressed, var(--button-text-pressed));
-  }
-}
-
-.root:focused::after {
-  position: absolute;
-  left: -1px;
-  top: -1px;
-  right: -1px;
-  bottom: -1px;
-  content: '';
-  box-sizing: border-box;
-  border-radius: var(--button-borderRadius);
-  box-shadow: 0 0 0 var(--button-focusedInnerWidth, 1px) var(--button-focusedInner, var(--accent-text)) inset;
-  border: var(--button-focusedWidth, 2px) solid var(--button-focused, var(--accent-fill));
-}
-
-/**
+  /**
   * Modifiers
   *
   * Modifiers must align to the props on the component. They should:
@@ -182,65 +146,135 @@
   * 2. Map property definitions to variables using the format: {component}-{property}
   * 3. Avoid defining styles directly.
  **/
+  &._primary {
+    --button-background: var(--accent-background);
+    --button-borderColor: var(--accent-borderColor);
+    --button-contentColor: var(--accent-contentColor);
+    --button-iconColor: var(--accent-iconColor);
 
-.primary {
-  --button-fill: var(--accent-fill);
-  --button-fill-hovered: var(--accent-fill-hovered);
-  --button-fill-pressed: var(--accent-fill-pressed);
+    --button-hovered-background: var(--accent-hovered-background);
+    --button-hovered-borderColor: var(--accent-hovered-borderColor);
+    --button-hovered-contentColor: var(--accent-hovered-contentColor);
+    --button-hovered-iconColor: var(--accent-hovered-iconColor);
 
-  --button-text: var(--accent-text);
-  --button-text-hovered: var(--accent-text-hovered);
-  --button-text-pressed: var(--accent-text-pressed);
+    --button-focused-background: var(--accent-focused-background);
+    --button-focused-borderColor: var(--accent-focused-borderColor);
+    --button-focused-contentColor: var(--accent-focused-contentColor);
+    --button-focused-iconColor: var(--accent-focused-iconColor);
 
-  --button-borderColor: var(--accent-borderColor);
+    --button-pressed-background: var(--accent-pressed-background);
+    --button-pressed-borderColor: var(--accent-pressed-borderColor);
+    --button-pressed-contentColor: var(--accent-pressed-contentColor);
+    --button-pressed-iconColor: var(--accent-pressed-iconColor);
 
-  --button-icon: var(--accent-icon);
-  --button-icon-hovered: var(--accent-icon-hovered);
-  --button-icon-pressed: var(--accent-icon-pressed);
-}
+    --button-disabled-background: var(--accent-disabled-background);
+    --button-disabled-borderColor: var(--accent-disabled-borderColor);
+    --button-disabled-contentColor: var(--accent-disabled-contentColor);
+    --button-disabled-iconColor: var(--accent-disabled-iconColor);
+  }
 
-.iconOnly {
-  width: var(--button-height);
-  --button-padding: 0;
-}
+  &._iconOnly {
+    width: var(--button-height);
+    --button-padding: 0;
+  }
 
-.circular {
-  --button-borderRadius: 50000px;
-  --button-minWidth: var(--button-height);
-}
+  &._circular {
+    --button-borderRadius: 50000px;
+    --button-minWidth: var(--button-height);
+  }
 
-.fluid {
-  width: 100%;
-  max-width: 100%;
-}
+  &._fluid {
+    width: 100%;
+    max-width: 100%;
+  }
 
-.disabled {
-  pointer-events: none;
-  background-color: var(--button-fill-disabled);
-  color: var(--button-text-disabled);
-  border-color: var(--button-borderColor-disabled);
-  box-shadow: var(--button-boxShadow-disabled);
+  &._size_smallest {
+    --button-height: var(--button-size-smallest);
+  }
 
-  .icon {
-    color: var(--button-icon-disabled, var(--button-text-disabled));
+  &._size_smaller {
+    --button-height: var(--button-size-smaller);
+  }
+
+  &._size_small {
+    --button-height: var(--button-size-small);
+  }
+
+  &._size_large {
+    --button-height: var(--button-size-large);
+  }
+
+  &._size_larger {
+    --button-height: var(--button-size-larger);
+  }
+  &._size_largest {
+    --button-height: var(--button-size-largest);
+  }
+
+  &._disabled {
+    pointer-events: none;
+    background-color: var(--button-disabled-background);
+    color: var(--button-disabled-contentColor);
+    border-color: var(--button-disabled-borderColor);
+    box-shadow: var(--button-disabled-boxShadow);
   }
 }
 
-.size_smallest {
-  --button-height: var(--button-size-smallest);
+.icon {
+  color: var(--button-iconColor);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--button-iconSize);
+  height: var(--button-iconSize);
+  font-size: var(--button-iconSize, inherit);
+  font-weight: normal;
+
+  &.disabled {
+    color: var(--button-disabled-iconColor, var(--button-disabled-contentColor));
+  }
 }
-.size_smaller {
-  --button-height: var(--button-size-smaller);
+
+/* selectors */
+
+.root > *:not(:first-child) {
+  margin-left: var(--button-contentGap);
 }
-.size_small {
-  --button-height: var(--button-size-small);
+
+.root:hover {
+  background: var(--button-hovered-background, var(--button-background));
+  color: var(--button-hovered-contentColor, var(--button-contentColor));
+  border-color: var(--button-hovered-borderColor, var(--button-borderColor));
+  box-shadow: var(--button-hovered-boxShadow, var(--button-boxShadow));
+
+  .icon {
+    color: var(--button-hovered-iconColor, var(--button-hovered-contentColor));
+  }
 }
-.size_large {
-  --button-height: var(--button-size-large);
+
+.root:active {
+  background: var(--button-pressed-background, var(--button-hovered-background));
+  color: var(--button-pressed-contentColor, var(--button-hovered-contentColor, var(--button-contentColor)));
+  border-color: var(--button-pressed-borderColor, var(--button-hovered-borderColor, var(--button-borderColor)));
+  box-shadow: var(--button-pressed-boxShadow, var(--button-hovered-boxShadow, var(--button-boxShadow)));
+
+  transform: var(--button-pressed-transform);
+  transition: var(--button-pressed-transition);
+
+  .icon {
+    color: var(--button-pressed-iconColor, var(--button-pressed-contentColor));
+  }
 }
-.size_larger {
-  --button-height: var(--button-size-larger);
-}
-.size_largest {
-  --button-height: var(--button-size-largest);
+
+.root:focus::after {
+  position: absolute;
+  left: -1px;
+  top: -1px;
+  right: -1px;
+  bottom: -1px;
+  content: '';
+  box-sizing: border-box;
+  border-radius: var(--button-borderRadius);
+  border: var(--button-focus-width, 2px) solid var(--button-focusColor);
+  box-shadow: 0 0 0 var(--button-focus-innerWidth, 1px) var(--button-focusInnerColor) inset;
 }

@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { PivotBase } from './Pivot.base';
 import { IStyle, ITheme } from '../../Styling';
-import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import { IStyleFunctionOrObject } from '../../Utilities';
 import { PivotItem } from './PivotItem';
 
 /**
@@ -17,12 +16,12 @@ export interface IPivot {
 /**
  * {@docCategory Pivot}
  */
-export interface IPivotProps extends React.ClassAttributes<PivotBase>, React.HTMLAttributes<HTMLDivElement> {
+export interface IPivotProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * Optional callback to access the IPivot interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: IRefObject<IPivot>;
+  componentRef?: React.RefObject<IPivot>;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
@@ -49,30 +48,6 @@ export interface IPivotProps extends React.ClassAttributes<PivotBase>, React.HTM
   defaultSelectedKey?: string;
 
   /**
-   * Default selected index for the pivot. Only provide this if the pivot is an uncontrolled component;
-   * otherwise, use the `selectedKey` property.
-   *
-   * This property is also mutually exclusive with `defaultSelectedKey`.
-   */
-  defaultSelectedIndex?: number;
-
-  /**
-   * Index of the pivot item initially selected. Mutually exclusive with `initialSelectedKey`.
-   * Only provide this if the pivot is an uncontrolled component; otherwise, use `selectedKey`.
-   *
-   * @deprecated Use `defaultSelectedIndex`
-   */
-  initialSelectedIndex?: number;
-
-  /**
-   * Key of the pivot item initially selected. Mutually exclusive with `initialSelectedIndex`.
-   * Only provide this if the pivot is an uncontrolled component; otherwise, use `selectedKey`.
-   *
-   * @deprecated Use `defaultSelectedKey`
-   */
-  initialSelectedKey?: string;
-
-  /**
    * Key of the selected pivot item. Updating this will override the Pivot's selected item state.
    * Only provide this if the pivot is a controlled component where you are maintaining the
    * current state; otherwise, use `defaultSelectedKey`.
@@ -85,14 +60,14 @@ export interface IPivotProps extends React.ClassAttributes<PivotBase>, React.HTM
   onLinkClick?: (item?: PivotItem, ev?: React.MouseEvent<HTMLElement>) => void;
 
   /**
-   * PivotLinkSize to use (normal, large)
+   * Link size (normal, large)
    */
-  linkSize?: PivotLinkSize;
+  linkSize?: PivotLinkSizeType;
 
   /**
-   * PivotLinkFormat to use (links, tabs)
+   * Link format (links, tabs)
    */
-  linkFormat?: PivotLinkFormat;
+  linkFormat?: PivotLinkFormatType;
 
   /**
    * Whether to skip rendering the tabpanel with the content of the selected tab.
@@ -112,11 +87,9 @@ export interface IPivotProps extends React.ClassAttributes<PivotBase>, React.HTM
  * {@docCategory Pivot}
  */
 export type IPivotStyleProps = Required<Pick<IPivotProps, 'theme'>> &
-  Pick<IPivotProps, 'className'> & {
-    /** Indicates whether Pivot has large format. */
-    rootIsLarge?: boolean;
-    /** Indicates whether Pivot has tabbed format. */
-    rootIsTabs?: boolean;
+  Pick<IPivotProps, 'className'> &
+  Pick<IPivotProps, 'linkSize'> &
+  Pick<IPivotProps, 'linkFormat'> & {
     /**
      * Indicates whether Pivot link is selected.
      * @deprecated Is not populated with valid value. Specify `linkIsSelected` styling instead.
@@ -143,30 +116,44 @@ export interface IPivotStyles {
 
 /**
  * {@docCategory Pivot}
+ * Display mode for the pivot links/tabs
  */
-export enum PivotLinkFormat {
+export type PivotLinkFormatType = 'links' | 'tabs';
+
+/**
+ * {@docCategory Pivot}
+ * Size of the pivot links/tabs
+ */
+export type PivotLinkSizeType = 'normal' | 'large';
+
+/**
+ * {@docCategory Pivot}
+ * @deprecated Use strings 'links' or 'tabs' instead of this enum
+ */
+export const enum PivotLinkFormat {
   /**
    * Display Pivot Links as links
    */
-  links = 0,
+  links = 'links',
 
   /**
    * Display Pivot Links as Tabs
    */
-  tabs = 1,
+  tabs = 'tabs',
 }
 
 /**
  * {@docCategory Pivot}
+ * @deprecated Use strings 'normal' or 'large' instead of this enum
  */
-export enum PivotLinkSize {
+export const enum PivotLinkSize {
   /**
    * Display Link using normal font size
    */
-  normal = 0,
+  normal = 'normal',
 
   /**
    * Display links using large font size
    */
-  large = 1,
+  large = 'large',
 }

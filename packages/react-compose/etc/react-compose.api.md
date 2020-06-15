@@ -9,6 +9,9 @@ import * as React from 'react';
 // @public
 export type ClassDictionary = Record<string, string>;
 
+// @public
+export type ClassFunction = (state: GenericDictionary, slots: GenericDictionary) => ClassDictionary;
+
 // @public (undocumented)
 export interface ComponentWithAs<TElementType extends React.ElementType = 'div', TProps = {}> extends React.FunctionComponent {
     // (undocumented)
@@ -32,45 +35,49 @@ export function compose<TElementType extends React.ElementType, TInputProps, TIn
 
 // @public (undocumented)
 export type ComposedComponent<TProps = {}> = React.FunctionComponent<TProps> & {
-    fluentComposeConfig: ComposePreparedOptions;
+    fluentComposeConfig: Required<ComposePreparedOptions>;
 };
 
 // @public (undocumented)
-export type ComposeOptions<TInputProps = {}, TInputStylesProps = {}, TParentProps = {}, TParentStylesProps = {}> = {
+export type ComposeOptions<TInputProps = {}, TInputStylesProps = {}, TParentProps = {}, TParentStylesProps = {}, TState = TParentProps & TInputProps> = {
     className?: string;
-    classes?: ClassDictionary;
+    classes?: ClassDictionary | ClassFunction | (ClassDictionary | ClassFunction)[];
     displayName?: string;
     mapPropsToStylesProps?: (props: TParentStylesProps & TInputProps) => TInputStylesProps;
     handledProps?: (keyof TInputProps | 'as')[];
     overrideStyles?: boolean;
     slots?: Record<string, React.ElementType>;
-    mapPropsToSlotProps?: (props: TParentProps & TInputProps) => Record<string, object>;
+    slotProps?: (props: TParentProps & TInputProps) => Record<string, object>;
     shorthandConfig?: ShorthandConfig<TParentProps & TInputProps>;
+    state?: (props: TState, options: ComposePreparedOptions) => any;
 };
 
-// @public (undocumented)
-export type ComposePreparedOptions<TProps = {}> = {
+// @public
+export type ComposePreparedOptions<TProps = {}, TInputState = any, TParentState = TProps> = {
     className: string;
-    classes: ClassDictionary;
+    classes: (undefined | ClassDictionary | ClassFunction)[];
     displayName: string;
     displayNames: string[];
     mapPropsToStylesPropsChain: ((props: object) => object)[];
     render: ComposeRenderFunction;
-    handledProps: (keyof TProps)[];
+    handledProps: (keyof TProps | 'as')[];
     overrideStyles: boolean;
     slots: Record<string, React.ElementType> & {
         __self: React.ElementType;
     };
-    mapPropsToSlotPropsChain: ((props: TProps) => Record<string, object>)[];
+    slotProps: ((props: TProps) => Record<string, object>)[];
+    state: (props: TParentState, options: ComposePreparedOptions) => TInputState;
     resolveSlotProps: <TResolvedProps>(props: TResolvedProps) => Record<string, object>;
     shorthandConfig: ShorthandConfig<TProps>;
 };
 
 // @public (undocumented)
-export type ComposeRenderFunction<TElementType extends React.ElementType = 'div', TProps = {}> = (props: TProps, ref: React.Ref<TElementType extends keyof HTMLElementTagNameMap ? HTMLElementTagNameMap[TElementType] : TElementType>, composeOptions: ComposePreparedOptions) => React.ReactElement | null;
+export type ComposeRenderFunction<TElementType extends React.ElementType = 'div', TProps = {}, TState = TProps> = (props: TProps, ref: React.Ref<TElementType extends keyof HTMLElementTagNameMap ? HTMLElementTagNameMap[TElementType] : TElementType>, options: ComposePreparedOptions & {
+    state: any;
+}) => React.ReactElement | null;
 
 // @public
-export const createClassResolver: (classes: Record<string, string>) => (state: Record<string, any>, slots: Record<string, any>) => Record<string, string>;
+export const createClassResolver: (classes: Record<string, string>) => (state: Record<string, any>) => Record<string, string>;
 
 // @public
 export type GenericDictionary = Record<string, any>;
@@ -82,7 +89,17 @@ export type Input<TElementType extends React.ElementType = 'div', TProps = {}> =
 
 // @public (undocumented)
 export type InputComposeComponent<TProps = {}> = React.FunctionComponent<TProps> & {
-    fluentComposeConfig?: ComposePreparedOptions;
+    fluentComposeConfig?: Required<ComposePreparedOptions>;
+};
+
+// @public
+export function mergeProps<TProps, TState = TProps>(state: TState, options: ComposePreparedOptions<TProps, TState>): MergePropsResult<TState>;
+
+// @public (undocumented)
+export type MergePropsResult<TState extends GenericDictionary> = {
+    state: TState;
+    slots: GenericDictionary;
+    slotProps: GenericDictionary;
 };
 
 // @public (undocumented)

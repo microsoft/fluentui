@@ -21,6 +21,7 @@ describe('SpinButton', () => {
       wrapper.unmount();
       wrapper = undefined;
     }
+    // tslint:disable-next-line:no-any
     if ((setTimeout as any).mock) {
       jest.useRealTimers();
     }

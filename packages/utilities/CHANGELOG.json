@@ -2,6 +2,48 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "date": "Mon, 15 Jun 2020 12:45:48 GMT",
+      "tag": "@uifabric/utilities_v7.21.0",
+      "version": "7.21.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "add new Modalization utility",
+            "author": "phkuo@microsoft.com",
+            "commit": "4dd6a5e2364c96dde8d2034979cddd7e7e84fa4d",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 02 Jun 2020 12:36:30 GMT",
+      "tag": "@uifabric/utilities_v7.20.3",
+      "version": "7.20.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Removing side effect code that was breaking webpack treeshaking.",
+            "author": "dzearing@microsoft.com",
+            "commit": "d5ed2c3804a58cb774bec86160df899fd7a8cb5a",
+            "package": "@uifabric/utilities"
+          },
+          {
+            "comment": "Removing side-effect code which was causing webpack to bail out of optimizations.",
+            "author": "dzearing@microsoft.com",
+            "commit": "8ea7b001f627900e4f85afc2bcbfad9e326d1f9a",
+            "package": "@uifabric/utilities"
+          },
+          {
+            "comment": "Fixed prototype pollution vulnerability.",
+            "author": "esteban.230@hotmail.com",
+            "commit": "8961cec412264cd6d30edc46df383c617adf83c4",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 28 May 2020 12:42:08 GMT",
       "tag": "@uifabric/utilities_v7.20.2",
       "version": "7.20.2",

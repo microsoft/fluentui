@@ -43,8 +43,7 @@ export type ButtonGroupStylesProps = Required<Pick<ButtonGroupProps, 'circular'>
 
 export const buttonGroupClassName = 'ui-buttons';
 
-export const ButtonGroup: React.FC<WithAsProp<ButtonGroupProps>> &
-  FluentComponentStaticProps<ButtonGroupProps> = props => {
+const ButtonGroup: React.FC<WithAsProp<ButtonGroupProps>> & FluentComponentStaticProps<ButtonGroupProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(ButtonGroup.displayName, context.telemetry);
   setStart();

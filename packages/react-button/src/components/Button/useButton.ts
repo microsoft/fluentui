@@ -1,11 +1,13 @@
-import { ButtonProps, ButtonSlots, ButtonSlotProps } from './Button.types';
-import { mergeProps } from '../../utils/mergeProps';
-import { ComposePreparedOptions } from '@fluentui/react-compose';
+import { tokensToStyleObject } from '@fluentui/react-theme-provider';
+import { ButtonProps, ButtonState } from './Button.types';
 
 /**
- * The useButton hook processes the Button component props and returns
- * state, slots, and slotProps for consumption by the component.
+ * The useButton hook processes the Button component props and returns state.
  * @param props
  */
-export const useButton = (props: ButtonProps, options: ComposePreparedOptions) =>
-  mergeProps<ButtonProps, ButtonSlots, ButtonSlotProps>(props, options);
+export const useButton = (props: ButtonProps): ButtonState => {
+  return {
+    ...props,
+    style: { ...props.style, ...tokensToStyleObject(props.tokens, '--button') },
+  };
+};
