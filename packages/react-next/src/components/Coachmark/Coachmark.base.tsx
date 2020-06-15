@@ -88,16 +88,6 @@ export interface ICoachmarkState {
   beakBottom?: string;
 
   /**
-   * Alignment edge of callout in relation to target
-   */
-  targetAlignment?: RectangleEdge;
-
-  /**
-   * Position of Coachmark/TeachingBubble in relation to target
-   */
-  targetPosition?: RectangleEdge;
-
-  /**
    * Transform origin of teaching bubble callout
    */
   transformOrigin?: string;
@@ -153,6 +143,27 @@ function useCollapsedState(props: ICoachmarkProps, entityInnerHostElementRef: Re
   return [isCollapsed, openCoachmark] as const;
 }
 
+function usePositionedData() {
+  const async = useAsync();
+
+  /**
+   * Alignment edge of callout in relation to target
+   */
+  const [targetAlignment, setTargetAlignment] = React.useState<RectangleEdge | undefined>();
+  /**
+   * Position of Coachmark/TeachingBubble in relation to target
+   */
+  const [targetPosition, setTargetPosition] = React.useState<RectangleEdge | undefined>();
+
+  const onPositioned = ({ alignmentEdge, targetEdge }: IPositionedData) =>
+    async.requestAnimationFrame(() => {
+      setTargetAlignment(alignmentEdge);
+      setTargetPosition(targetEdge);
+    });
+
+  return [targetAlignment, targetPosition, onPositioned] as const;
+}
+
 const COMPONENT_NAME = 'CoachmarkBase';
 export const CoachmarkBase = React.forwardRef(
   (propsWithoutDefaults: ICoachmarkProps, forwardedRef: React.Ref<HTMLDivElement>) => {
@@ -160,9 +171,22 @@ export const CoachmarkBase = React.forwardRef(
 
     const entityInnerHostElementRef = React.useRef<HTMLDivElement | null>(null);
 
+    const [targetAlignment, targetPosition, onPositioned] = usePositionedData();
     const [isCollapsed, openCoachmark] = useCollapsedState(props, entityInnerHostElementRef);
 
-    return <CoachmarkBaseClass {...props} hoistedProps={{ entityInnerHostElementRef, isCollapsed, openCoachmark }} />;
+    return (
+      <CoachmarkBaseClass
+        {...props}
+        hoistedProps={{
+          entityInnerHostElementRef,
+          isCollapsed,
+          openCoachmark,
+          targetAlignment,
+          targetPosition,
+          onPositioned,
+        }}
+      />
+    );
   },
 );
 CoachmarkBase.displayName = COMPONENT_NAME;
@@ -171,7 +195,10 @@ interface ICoachmarkPropsClassProps extends ICoachmarkProps {
   hoistedProps: {
     entityInnerHostElementRef: React.RefObject<HTMLDivElement>;
     isCollapsed: boolean;
+    targetAlignment: RectangleEdge | undefined;
+    targetPosition: RectangleEdge | undefined;
     openCoachmark(): void;
+    onPositioned(positionData: IPositionedData): void;
   };
 }
 
@@ -225,7 +252,7 @@ class CoachmarkBaseClass extends React.Component<ICoachmarkPropsClassProps, ICoa
   }
 
   private get _beakDirection(): RectangleEdge {
-    const { targetPosition } = this.state;
+    const { targetPosition } = this.props.hoistedProps;
     if (targetPosition === undefined) {
       return RectangleEdge.bottom;
     }
@@ -299,7 +326,7 @@ class CoachmarkBaseClass extends React.Component<ICoachmarkPropsClassProps, ICoa
         offsetFromTarget={BEAK_HEIGHT}
         ref={this._positioningContainer}
         finalHeight={finalHeight}
-        onPositioned={this._onPositioned}
+        onPositioned={this.props.hoistedProps.onPositioned}
         bounds={this._getBounds()}
         {...positioningContainerProps}
       >
@@ -371,8 +398,8 @@ class CoachmarkBaseClass extends React.Component<ICoachmarkPropsClassProps, ICoa
 
   public componentDidUpdate(prevProps: ICoachmarkPropsClassProps, prevState: ICoachmarkState): void {
     if (
-      prevState.targetAlignment !== this.state.targetAlignment ||
-      prevState.targetPosition !== this.state.targetPosition
+      prevProps.hoistedProps.targetAlignment !== this.props.hoistedProps.targetAlignment ||
+      prevProps.hoistedProps.targetPosition !== this.props.hoistedProps.targetPosition
     ) {
       this._setBeakPosition();
     }
@@ -488,15 +515,6 @@ class CoachmarkBaseClass extends React.Component<ICoachmarkPropsClassProps, ICoa
     }
   };
 
-  private _onPositioned = (positionData: IPositionedData): void => {
-    this._async.requestAnimationFrame((): void => {
-      this.setState({
-        targetAlignment: positionData.alignmentEdge,
-        targetPosition: positionData.targetEdge,
-      });
-    });
-  };
-
   private _getBounds(): IRectangle | undefined {
     const { isPositionForced, positioningContainerProps } = this.props;
     if (isPositionForced) {
@@ -538,7 +556,7 @@ class CoachmarkBaseClass extends React.Component<ICoachmarkPropsClassProps, ICoa
     let transformOriginX;
     let transformOriginY;
 
-    const { targetAlignment } = this.state;
+    const { targetAlignment } = this.props.hoistedProps;
     const distanceAdjustment = '3px'; // Adjustment distance for Beak to shift towards Coachmark bubble.
 
     switch (this._beakDirection) {
