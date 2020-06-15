@@ -26,6 +26,7 @@ import { COACHMARK_HEIGHT, COACHMARK_WIDTH } from './Coachmark.styles';
 import { FocusTrapZone } from '../../FocusTrapZone';
 import { getPropsWithDefaults } from '../../Utilities';
 import { useAsync } from '@uifabric/react-hooks';
+import { IBeakProps } from './Beak/Beak.types';
 
 const getClassNames = classNamesFunction<ICoachmarkStyleProps, ICoachmarkStyles>();
 
@@ -66,31 +67,6 @@ export interface ICoachmarkState {
    * Is the mouse in proximity of the default target element
    */
   isMouseInProximity: boolean;
-
-  /**
-   * The left position of the beak
-   */
-  beakLeft?: string;
-
-  /**
-   * The right position of the beak
-   */
-  beakTop?: string;
-
-  /**
-   * The right position of the beak
-   */
-  beakRight?: string;
-
-  /**
-   * The bottom position of the beak
-   */
-  beakBottom?: string;
-
-  /**
-   * Transform origin of teaching bubble callout
-   */
-  transformOrigin?: string;
 
   /**
    * ARIA alert text to read aloud with Narrator once the Coachmark is mounted
@@ -164,6 +140,118 @@ function usePositionedData() {
   return [targetAlignment, targetPosition, onPositioned] as const;
 }
 
+function useBeakPosition(
+  props: ICoachmarkProps,
+  targetAlignment: RectangleEdge | undefined,
+  targetPosition: RectangleEdge | undefined,
+) {
+  const beakDirection = targetPosition === undefined ? RectangleEdge.bottom : getOppositeEdge(targetPosition);
+
+  /**
+   * The left position of the beak
+   */
+  const [beakLeft, setBeakLeft] = React.useState<string>();
+
+  /**
+   * The right position of the beak
+   */
+  const [beakTop, setBeakTop] = React.useState<string>();
+
+  /**
+   * The right position of the beak
+   */
+  const [beakRight, setBeakRight] = React.useState<string>();
+
+  /**
+   * The bottom position of the beak
+   */
+  const [beakBottom, setBeakBottom] = React.useState<string>();
+
+  /**
+   * Transform origin of teaching bubble callout
+   */
+  const [transformOrigin, setTransformOrigin] = React.useState<string>();
+
+  React.useEffect(() => {
+    let transformOriginX;
+    let transformOriginY;
+
+    const distanceAdjustment = '3px'; // Adjustment distance for Beak to shift towards Coachmark bubble.
+
+    switch (beakDirection) {
+      // If Beak is pointing Up or Down
+      case RectangleEdge.top:
+      case RectangleEdge.bottom:
+        // If there is no target alignment, then beak is X-axis centered in callout
+        if (!targetAlignment) {
+          setBeakLeft(`calc(50% - ${BEAK_WIDTH / 2}px)`);
+          transformOriginX = 'center';
+        } else {
+          // Beak is aligned to the left of target
+          if (targetAlignment === RectangleEdge.left) {
+            setBeakLeft(`${COACHMARK_WIDTH / 2 - BEAK_WIDTH / 2}px`);
+            transformOriginX = 'left';
+          } else {
+            // Beak is aligned to the right of target
+            setBeakRight(`${COACHMARK_WIDTH / 2 - BEAK_WIDTH / 2}px`);
+            transformOriginX = 'right';
+          }
+        }
+
+        if (beakDirection === RectangleEdge.top) {
+          setBeakTop(distanceAdjustment);
+          transformOriginY = 'top';
+        } else {
+          setBeakBottom(distanceAdjustment);
+          transformOriginY = 'bottom';
+        }
+        break;
+      // If Beak is pointing Left or Right
+      case RectangleEdge.left:
+      case RectangleEdge.right:
+        // If there is no target alignment, then beak is Y-axis centered in callout
+        if (!targetAlignment) {
+          setBeakTop(`calc(50% - ${BEAK_WIDTH / 2}px)`);
+          transformOriginY = `center`;
+        } else {
+          // Beak is aligned to the top of target
+          if (targetAlignment === RectangleEdge.top) {
+            setBeakTop(`${COACHMARK_WIDTH / 2 - BEAK_WIDTH / 2}px`);
+            transformOriginY = `top`;
+          } else {
+            // Beak is aligned to the bottom of target
+            setBeakBottom(`${COACHMARK_WIDTH / 2 - BEAK_WIDTH / 2}px`);
+            transformOriginY = `bottom`;
+          }
+        }
+
+        if (beakDirection === RectangleEdge.left) {
+          if (getRTL(props.theme)) {
+            setBeakRight(distanceAdjustment);
+          } else {
+            setBeakLeft(distanceAdjustment);
+          }
+          transformOriginX = 'left';
+        } else {
+          if (getRTL(props.theme)) {
+            setBeakLeft(distanceAdjustment);
+          } else {
+            setBeakRight(distanceAdjustment);
+          }
+          transformOriginX = 'right';
+        }
+        break;
+    }
+
+    setTransformOrigin(`${transformOriginX} ${transformOriginY}`);
+  }, [targetAlignment, targetPosition]);
+
+  return [
+    { direction: beakDirection, top: beakTop, bottom: beakBottom, left: beakLeft, right: beakRight } as const,
+    transformOrigin,
+  ] as const;
+}
+
 const COMPONENT_NAME = 'CoachmarkBase';
 export const CoachmarkBase = React.forwardRef(
   (propsWithoutDefaults: ICoachmarkProps, forwardedRef: React.Ref<HTMLDivElement>) => {
@@ -173,6 +261,7 @@ export const CoachmarkBase = React.forwardRef(
 
     const [targetAlignment, targetPosition, onPositioned] = usePositionedData();
     const [isCollapsed, openCoachmark] = useCollapsedState(props, entityInnerHostElementRef);
+    const [beakPositioningProps, transformOrigin] = useBeakPosition(props, targetAlignment, targetPosition);
 
     return (
       <CoachmarkBaseClass
@@ -184,6 +273,8 @@ export const CoachmarkBase = React.forwardRef(
           targetAlignment,
           targetPosition,
           onPositioned,
+          beakPositioningProps,
+          transformOrigin,
         }}
       />
     );
@@ -197,6 +288,8 @@ interface ICoachmarkPropsClassProps extends ICoachmarkProps {
     isCollapsed: boolean;
     targetAlignment: RectangleEdge | undefined;
     targetPosition: RectangleEdge | undefined;
+    beakPositioningProps: Partial<IBeakProps>;
+    transformOrigin: string | undefined;
     openCoachmark(): void;
     onPositioned(positionData: IPositionedData): void;
   };
@@ -251,15 +344,6 @@ class CoachmarkBaseClass extends React.Component<ICoachmarkPropsClassProps, ICoa
     };
   }
 
-  private get _beakDirection(): RectangleEdge {
-    const { targetPosition } = this.props.hoistedProps;
-    if (targetPosition === undefined) {
-      return RectangleEdge.bottom;
-    }
-
-    return getOppositeEdge(targetPosition);
-  }
-
   public render(): JSX.Element {
     const {
       beaconColorOne,
@@ -278,21 +362,10 @@ class CoachmarkBaseClass extends React.Component<ICoachmarkPropsClassProps, ICoa
       theme,
       className,
       persistentBeak,
-      hoistedProps: { isCollapsed },
+      hoistedProps: { isCollapsed, transformOrigin, beakPositioningProps },
     } = this.props;
 
-    const {
-      beakLeft,
-      beakTop,
-      beakRight,
-      beakBottom,
-      isBeaconAnimating,
-      isMeasuring,
-      entityInnerHostRect,
-      transformOrigin,
-      alertText,
-      isMeasured,
-    } = this.state;
+    const { isBeaconAnimating, isMeasuring, entityInnerHostRect, alertText, isMeasured } = this.state;
 
     // Defaulting the main background before passing it to the styles because it is used for `Beak` too.
     let defaultColor = color;
@@ -346,14 +419,7 @@ class CoachmarkBaseClass extends React.Component<ICoachmarkPropsClassProps, ICoa
             <div className={classNames.scaleAnimationLayer}>
               <div className={classNames.rotateAnimationLayer}>
                 {this._positioningContainer.current && (isCollapsed || persistentBeak) && (
-                  <Beak
-                    left={beakLeft}
-                    top={beakTop}
-                    right={beakRight}
-                    bottom={beakBottom}
-                    direction={this._beakDirection}
-                    color={defaultColor}
-                  />
+                  <Beak {...beakPositioningProps} color={defaultColor} />
                 )}
                 <div
                   className={classNames.entityHost}
@@ -397,12 +463,6 @@ class CoachmarkBaseClass extends React.Component<ICoachmarkPropsClassProps, ICoa
   }
 
   public componentDidUpdate(prevProps: ICoachmarkPropsClassProps, prevState: ICoachmarkState): void {
-    if (
-      prevProps.hoistedProps.targetAlignment !== this.props.hoistedProps.targetAlignment ||
-      prevProps.hoistedProps.targetPosition !== this.props.hoistedProps.targetPosition
-    ) {
-      this._setBeakPosition();
-    }
     if (prevProps.preventDismissOnLostFocus !== this.props.preventDismissOnLostFocus) {
       this._addListeners();
     }
@@ -422,8 +482,6 @@ class CoachmarkBaseClass extends React.Component<ICoachmarkPropsClassProps, ICoa
           },
           isMeasured: true,
         });
-        this._setBeakPosition();
-        this.forceUpdate();
       }
 
       this._addListeners();
@@ -547,91 +605,6 @@ class CoachmarkBaseClass extends React.Component<ICoachmarkPropsClassProps, ICoa
       return undefined;
     }
   }
-
-  private _setBeakPosition = (): void => {
-    let beakLeft;
-    let beakTop;
-    let beakRight;
-    let beakBottom;
-    let transformOriginX;
-    let transformOriginY;
-
-    const { targetAlignment } = this.props.hoistedProps;
-    const distanceAdjustment = '3px'; // Adjustment distance for Beak to shift towards Coachmark bubble.
-
-    switch (this._beakDirection) {
-      // If Beak is pointing Up or Down
-      case RectangleEdge.top:
-      case RectangleEdge.bottom:
-        // If there is no target alignment, then beak is X-axis centered in callout
-        if (!targetAlignment) {
-          beakLeft = `calc(50% - ${BEAK_WIDTH / 2}px)`;
-          transformOriginX = 'center';
-        } else {
-          // Beak is aligned to the left of target
-          if (targetAlignment === RectangleEdge.left) {
-            beakLeft = `${COACHMARK_WIDTH / 2 - BEAK_WIDTH / 2}px`;
-            transformOriginX = 'left';
-          } else {
-            // Beak is aligned to the right of target
-            beakRight = `${COACHMARK_WIDTH / 2 - BEAK_WIDTH / 2}px`;
-            transformOriginX = 'right';
-          }
-        }
-
-        if (this._beakDirection === RectangleEdge.top) {
-          beakTop = distanceAdjustment;
-          transformOriginY = 'top';
-        } else {
-          beakBottom = distanceAdjustment;
-          transformOriginY = 'bottom';
-        }
-        break;
-      // If Beak is pointing Left or Right
-      case RectangleEdge.left:
-      case RectangleEdge.right:
-        // If there is no target alignment, then beak is Y-axis centered in callout
-        if (!targetAlignment) {
-          beakTop = `calc(50% - ${BEAK_WIDTH / 2}px)`;
-          transformOriginY = `center`;
-        } else {
-          // Beak is aligned to the top of target
-          if (targetAlignment === RectangleEdge.top) {
-            beakTop = `${COACHMARK_WIDTH / 2 - BEAK_WIDTH / 2}px`;
-            transformOriginY = `top`;
-          } else {
-            // Beak is aligned to the bottom of target
-            beakBottom = `${COACHMARK_WIDTH / 2 - BEAK_WIDTH / 2}px`;
-            transformOriginY = `bottom`;
-          }
-        }
-
-        if (this._beakDirection === RectangleEdge.left) {
-          if (getRTL(this.props.theme)) {
-            beakRight = distanceAdjustment;
-          } else {
-            beakLeft = distanceAdjustment;
-          }
-          transformOriginX = 'left';
-        } else {
-          if (getRTL(this.props.theme)) {
-            beakLeft = distanceAdjustment;
-          } else {
-            beakRight = distanceAdjustment;
-          }
-          transformOriginX = 'right';
-        }
-        break;
-    }
-
-    this.setState({
-      beakLeft: beakLeft,
-      beakRight: beakRight,
-      beakBottom: beakBottom,
-      beakTop: beakTop,
-      transformOrigin: `${transformOriginX} ${transformOriginY}`,
-    });
-  };
 
   private _addProximityHandler(mouseProximityOffset: number = 0): void {
     /**
