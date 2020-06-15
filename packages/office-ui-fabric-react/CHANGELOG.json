@@ -2,6 +2,21 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Mon, 15 Jun 2020 12:45:48 GMT",
+      "tag": "office-ui-fabric-react_v7.120.1",
+      "version": "7.120.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "modalization for FocusTrapZone",
+            "author": "phkuo@microsoft.com",
+            "commit": "4dd6a5e2364c96dde8d2034979cddd7e7e84fa4d",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 12 Jun 2020 18:29:07 GMT",
       "tag": "office-ui-fabric-react_v7.120.0",
       "version": "7.120.0",

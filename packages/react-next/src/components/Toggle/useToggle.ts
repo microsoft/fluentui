@@ -15,8 +15,12 @@ const getClassNames = classNamesFunction<IToggleStyleProps, IToggleStyles>({ use
 
 const COMPONENT_NAME = 'Toggle';
 
-// tslint:disable-next-line:no-any
-export const useToggle = (props: IToggleProps, options: ComposePreparedOptions): any => {
+export const useToggle = (
+  props: IToggleProps,
+  ref: React.Ref<HTMLDivElement>,
+  options: ComposePreparedOptions,
+  // tslint:disable-next-line:no-any
+): any => {
   const {
     ariaLabel,
     checked: controlledChecked,
