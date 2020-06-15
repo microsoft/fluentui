@@ -1,8 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 12 Jun 2020 18:29:07 GMT and should not be manually modified.
+This log was last generated on Mon, 15 Jun 2020 12:45:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.120.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.120.1)
+
+Mon, 15 Jun 2020 12:45:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.120.0..office-ui-fabric-react_v7.120.1)
+
+### Patches
+
+- modalization for FocusTrapZone ([PR #13281](https://github.com/microsoft/fluentui/pull/13281) by phkuo@microsoft.com)
 
 ## [7.120.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.120.0)
 

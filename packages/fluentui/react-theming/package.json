@@ -29,8 +29,8 @@
     "@types/classnames": "^2.2.9",
     "@types/jss": "^9.5.8",
     "@uifabric/merge-styles": "^7.14.1",
-    "@uifabric/utilities": "^7.20.3",
-    "@fluentui/react-theme-provider": "^0.2.0",
+    "@uifabric/utilities": "^7.21.0",
+    "@fluentui/react-theme-provider": "^0.2.1",
     "classnames": "^2.2.6",
     "jss": "^10.0.0",
     "jss-preset-default": "^10.0.0"
