@@ -24,6 +24,7 @@ import { DirectionalHint } from '../../common/DirectionalHint';
 import { ICoachmark, ICoachmarkProps, ICoachmarkStyles, ICoachmarkStyleProps } from './Coachmark.types';
 import { COACHMARK_HEIGHT, COACHMARK_WIDTH } from './Coachmark.styles';
 import { FocusTrapZone } from '../../FocusTrapZone';
+import { getPropsWithDefaults } from '../../Utilities';
 
 const getClassNames = classNamesFunction<ICoachmarkStyleProps, ICoachmarkStyles>();
 
@@ -112,20 +113,32 @@ export interface ICoachmarkState {
   alertText?: string;
 }
 
-const COMPONENT_NAME = 'Coachmark';
+const DEFAULT_PROPS = {
+  isCollapsed: true,
+  mouseProximityOffset: 10,
+  delayBeforeMouseOpen: 3600, // The approximate time the coachmark shows up
+  delayBeforeCoachmarkAnimation: 0,
+  isPositionForced: true,
+  positioningContainerProps: {
+    directionalHint: DirectionalHint.bottomAutoEdge,
+  },
+};
 
-export class CoachmarkBase extends React.Component<ICoachmarkProps, ICoachmarkState> implements ICoachmark {
-  public static defaultProps: Partial<ICoachmarkProps> = {
-    isCollapsed: true,
-    mouseProximityOffset: 10,
-    delayBeforeMouseOpen: 3600, // The approximate time the coachmark shows up
-    delayBeforeCoachmarkAnimation: 0,
-    isPositionForced: true,
-    positioningContainerProps: {
-      directionalHint: DirectionalHint.bottomAutoEdge,
-    },
-  };
+const COMPONENT_NAME = 'CoachmarkBase';
+export const CoachmarkBase = React.forwardRef(
+  (propsWithoutDefaults: ICoachmarkProps, forwardedRef: React.Ref<HTMLDivElement>) => {
+    const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
 
+    return <CoachmarkBaseClass {...props} hoistedProps={{}} />;
+  },
+);
+CoachmarkBase.displayName = COMPONENT_NAME;
+
+interface ICoachmarkPropsClassProps extends ICoachmarkProps {
+  hoistedProps: {};
+}
+
+class CoachmarkBaseClass extends React.Component<ICoachmarkPropsClassProps, ICoachmarkState> implements ICoachmark {
   private _async: Async;
   private _events: EventGroup;
 
@@ -146,7 +159,7 @@ export class CoachmarkBase extends React.Component<ICoachmarkProps, ICoachmarkSt
    */
   private _targetElementRect: ClientRect;
 
-  constructor(props: ICoachmarkProps) {
+  constructor(props: ICoachmarkPropsClassProps) {
     super(props);
 
     this._async = new Async(this);
@@ -322,14 +335,14 @@ export class CoachmarkBase extends React.Component<ICoachmarkProps, ICoachmarkSt
   }
 
   // tslint:disable-next-line function-name
-  public UNSAFE_componentWillReceiveProps(newProps: ICoachmarkProps): void {
+  public UNSAFE_componentWillReceiveProps(newProps: ICoachmarkPropsClassProps): void {
     if (this.props.isCollapsed && !newProps.isCollapsed) {
       // The coachmark is about to open
       this._openCoachmark();
     }
   }
 
-  public componentDidUpdate(prevProps: ICoachmarkProps, prevState: ICoachmarkState): void {
+  public componentDidUpdate(prevProps: ICoachmarkPropsClassProps, prevState: ICoachmarkState): void {
     if (
       prevState.targetAlignment !== this.state.targetAlignment ||
       prevState.targetPosition !== this.state.targetPosition
