@@ -11,7 +11,7 @@ const config: ScreenerTestsConfig = {
     builder => builder.click(selectors.message).snapshot('Focus the first message via mouse click'),
     (builder, keys) => builder.keys('body', keys.tab).snapshot('Focuses a message via keyboard'),
   ],
-  // browsers: ['ie11'],
+  browsers: ['ie11'],
 };
 
 export default config;

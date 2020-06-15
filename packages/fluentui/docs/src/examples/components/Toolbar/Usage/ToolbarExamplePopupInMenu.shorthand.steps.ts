@@ -10,7 +10,7 @@ const config: ScreenerTestsConfig = {
         .click(`.${toolbarMenuItemClassName}:nth-child(1)`)
         .snapshot('Shows popup'),
   ],
-  // browsers: ['ie11'],
+  browsers: ['ie11'],
 };
 
 export default config;

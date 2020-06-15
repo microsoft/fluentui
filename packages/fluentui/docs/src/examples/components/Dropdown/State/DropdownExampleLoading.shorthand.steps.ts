@@ -11,7 +11,7 @@ const config: ScreenerTestsConfig = {
     builder => builder.click(selectors.triggerButton).snapshot('List with loading state'),
     (builder, keys) => builder.keys(selectors.input, keys.upArrow).snapshot('showing loading in the bottom'),
   ],
-  // browsers: ['ie11'],
+  browsers: ['ie11'],
 };
 
 export default config;
