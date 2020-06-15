@@ -67,11 +67,6 @@ export interface ICoachmarkState {
    * Is the mouse in proximity of the default target element
    */
   isMouseInProximity: boolean;
-
-  /**
-   * ARIA alert text to read aloud with Narrator once the Coachmark is mounted
-   */
-  alertText?: string;
 }
 
 const DEFAULT_PROPS = {
@@ -388,6 +383,24 @@ function useComponentRef(props: ICoachmarkProps) {
   );
 }
 
+function useAriaAlert({ ariaAlertText }: ICoachmarkProps) {
+  const async = useAsync();
+
+  /**
+   * ARIA alert text to read aloud with Narrator once the Coachmark is mounted
+   */
+  const [alertText, setAlertText] = React.useState<string | undefined>();
+
+  React.useEffect(() => {
+    // Need to add RAF to have narrator read change in alert container
+    async.requestAnimationFrame(() => {
+      setAlertText(ariaAlertText);
+    });
+  }, []);
+
+  return alertText;
+}
+
 const COMPONENT_NAME = 'CoachmarkBase';
 export const CoachmarkBase = React.forwardRef(
   (propsWithoutDefaults: ICoachmarkProps, forwardedRef: React.Ref<HTMLDivElement>) => {
@@ -399,6 +412,7 @@ export const CoachmarkBase = React.forwardRef(
     const [targetAlignment, targetPosition, onPositioned] = usePositionedData();
     const [isCollapsed, openCoachmark] = useCollapsedState(props, entityInnerHostElementRef);
     const [beakPositioningProps, transformOrigin] = useBeakPosition(props, targetAlignment, targetPosition);
+    const alertText = useAriaAlert(props);
 
     useListeners(props, translateAnimationContainer, openCoachmark);
     useComponentRef(props);
@@ -417,6 +431,7 @@ export const CoachmarkBase = React.forwardRef(
           beakPositioningProps,
           transformOrigin,
           translateAnimationContainer,
+          alertText,
         }}
       />
     );
@@ -433,6 +448,7 @@ interface ICoachmarkPropsClassProps extends ICoachmarkProps {
     targetPosition: RectangleEdge | undefined;
     beakPositioningProps: Partial<IBeakProps>;
     transformOrigin: string | undefined;
+    alertText: string | undefined;
     openCoachmark(): void;
     onPositioned(positionData: IPositionedData): void;
   };
@@ -446,7 +462,6 @@ class CoachmarkBaseClass extends React.Component<ICoachmarkPropsClassProps, ICoa
    * element.
    */
   private _entityHost = React.createRef<HTMLDivElement>();
-  private _ariaAlertContainer = React.createRef<HTMLDivElement>();
   private _childrenContainer = React.createRef<HTMLDivElement>();
   private _positioningContainer = React.createRef<HTMLDivElement>();
 
@@ -496,10 +511,10 @@ class CoachmarkBaseClass extends React.Component<ICoachmarkPropsClassProps, ICoa
       theme,
       className,
       persistentBeak,
-      hoistedProps: { isCollapsed, transformOrigin, beakPositioningProps },
+      hoistedProps: { isCollapsed, transformOrigin, beakPositioningProps, alertText },
     } = this.props;
 
-    const { isBeaconAnimating, isMeasuring, entityInnerHostRect, alertText, isMeasured } = this.state;
+    const { isBeaconAnimating, isMeasuring, entityInnerHostRect, isMeasured } = this.state;
 
     // Defaulting the main background before passing it to the styles because it is used for `Beak` too.
     let defaultColor = color;
@@ -539,12 +554,7 @@ class CoachmarkBaseClass extends React.Component<ICoachmarkPropsClassProps, ICoa
       >
         <div className={classNames.root}>
           {ariaAlertText && (
-            <div
-              className={classNames.ariaContainer}
-              role="alert"
-              ref={this._ariaAlertContainer}
-              aria-hidden={!isCollapsed}
-            >
+            <div className={classNames.ariaContainer} role="alert" aria-hidden={!isCollapsed}>
               {alertText}
             </div>
           )}
@@ -613,17 +623,6 @@ class CoachmarkBaseClass extends React.Component<ICoachmarkPropsClassProps, ICoa
           },
           isMeasured: true,
         });
-      }
-
-      // Need to add setTimeout to have narrator read change in alert container
-      if (this.props.ariaAlertText) {
-        this._async.setTimeout(() => {
-          if (this.props.ariaAlertText && this._ariaAlertContainer.current) {
-            this.setState({
-              alertText: this.props.ariaAlertText,
-            });
-          }
-        }, 0);
       }
 
       if (!this.props.preventFocusOnMount) {
