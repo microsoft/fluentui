@@ -93,25 +93,33 @@ function useCollapsedState(props: ICoachmarkProps, entityInnerHostElementRef: Re
   const [isCollapsed, setIsCollapsed] = React.useState<boolean>(!!props.isCollapsed);
   const async = useAsync();
 
+  // Rather than pushing out logic elsewhere to prevent openCoachmark from being called repeatedly,
+  // we'll track it here and only invoke the logic once. We do this with a ref, rather than just the state,
+  // because the openCoachmark callback can be captured in scope for an effect
+  const hasCoachmarkBeenOpened = React.useRef(!isCollapsed);
+
   const openCoachmark = () => {
-    setIsCollapsed(false);
+    if (!hasCoachmarkBeenOpened.current) {
+      setIsCollapsed(false);
 
-    props.onAnimationOpenStart?.();
+      props.onAnimationOpenStart?.();
 
-    entityInnerHostElementRef.current?.addEventListener?.('transitionend', (): void => {
-      // Need setTimeout to trigger narrator
-      async.setTimeout(() => {
-        if (entityInnerHostElementRef.current) {
-          focusFirstChild(entityInnerHostElementRef.current);
-        }
-      }, 1000);
+      entityInnerHostElementRef.current?.addEventListener?.('transitionend', (): void => {
+        // Need setTimeout to trigger narrator
+        async.setTimeout(() => {
+          if (entityInnerHostElementRef.current) {
+            focusFirstChild(entityInnerHostElementRef.current);
+          }
+        }, 1000);
 
-      props.onAnimationOpenEnd?.();
-    });
+        props.onAnimationOpenEnd?.();
+      });
+      hasCoachmarkBeenOpened.current = true;
+    }
   };
 
   React.useEffect(() => {
-    if (!props.isCollapsed && isCollapsed) {
+    if (!props.isCollapsed) {
       openCoachmark();
     }
   }, [props.isCollapsed]);
@@ -255,7 +263,6 @@ function useBeakPosition(
 function useListeners(
   props: ICoachmarkProps,
   translateAnimationContainer: React.RefObject<HTMLDivElement>,
-  isCollapsed: boolean,
   openCoachmark: () => void,
 ) {
   const document = getDocument()?.documentElement;
@@ -269,7 +276,7 @@ function useListeners(
         // tslint:disable-next-line: deprecation
         (e.altKey && e.which === KeyCodes.c) ||
         // tslint:disable-next-line: deprecation
-        (e.which === KeyCodes.enter && translateAnimationContainer.current?.contains?.(e.target as Node) && isCollapsed)
+        (e.which === KeyCodes.enter && translateAnimationContainer.current?.contains?.(e.target as Node))
       ) {
         openCoachmark();
       }
@@ -293,6 +300,80 @@ function useListeners(
 
   useOnEvent(document, 'click', dismissOnLostFocus, true);
   useOnEvent(document, 'focus', dismissOnLostFocus, true);
+}
+
+function useProximityHandlers(
+  props: ICoachmarkProps,
+  translateAnimationContainer: React.RefObject<HTMLDivElement>,
+  openCoachmark: () => void,
+) {
+  const async = useAsync();
+
+  /**
+   * The target element the mouse would be in
+   * proximity to
+   */
+  const targetElementRect = React.useRef<DOMRect>();
+
+  const setTargetElementRect = (): void => {
+    if (translateAnimationContainer?.current) {
+      targetElementRect.current = translateAnimationContainer.current.getBoundingClientRect();
+    }
+  };
+
+  React.useEffect(() => {
+    const events = new EventGroup({});
+
+    // We don't want to the user to immediately trigger the Coachmark when it's opened
+    async.setTimeout(() => {
+      const { mouseProximityOffset = 0 } = props;
+      /**
+       * An array of cached ids returned when setTimeout runs during
+       * the window resize event trigger.
+       */
+      const timeoutIds: number[] = [];
+
+      // Take the initial measure out of the initial render to prevent
+      // an unnecessary render.
+      async.setTimeout(() => {
+        setTargetElementRect();
+
+        // When the window resizes we want to async
+        // get the bounding client rectangle.
+        // Every time the event is triggered we want to
+        // setTimeout and then clear any previous instances
+        // of setTimeout.
+        events.on(window, 'resize', (): void => {
+          timeoutIds.forEach((value: number): void => {
+            clearInterval(value);
+          });
+
+          timeoutIds.push(
+            async.setTimeout((): void => {
+              setTargetElementRect();
+            }, 100),
+          );
+        });
+      }, 10);
+
+      // Every time the document's mouse move is triggered
+      // we want to check if inside of an element and
+      // set the state with the result.
+      events.on(document, 'mousemove', (e: MouseEvent) => {
+        const mouseY = e.clientY;
+        const mouseX = e.clientX;
+        setTargetElementRect();
+
+        if (isInsideElement(targetElementRect.current!, mouseX, mouseY, mouseProximityOffset)) {
+          openCoachmark();
+        }
+
+        props.onMouseMove?.(e);
+      });
+    }, props.delayBeforeMouseOpen!);
+
+    return () => events.dispose();
+  }, []);
 }
 
 function useComponentRef(props: ICoachmarkProps) {
@@ -319,8 +400,9 @@ export const CoachmarkBase = React.forwardRef(
     const [isCollapsed, openCoachmark] = useCollapsedState(props, entityInnerHostElementRef);
     const [beakPositioningProps, transformOrigin] = useBeakPosition(props, targetAlignment, targetPosition);
 
-    useListeners(props, translateAnimationContainer, isCollapsed, openCoachmark);
+    useListeners(props, translateAnimationContainer, openCoachmark);
     useComponentRef(props);
+    useProximityHandlers(props, translateAnimationContainer, openCoachmark);
 
     return (
       <CoachmarkBaseClass
@@ -358,7 +440,6 @@ interface ICoachmarkPropsClassProps extends ICoachmarkProps {
 
 class CoachmarkBaseClass extends React.Component<ICoachmarkPropsClassProps, ICoachmarkState> {
   private _async: Async;
-  private _events: EventGroup;
 
   /**
    * The cached HTMLElement reference to the Entity Inner Host
@@ -369,17 +450,10 @@ class CoachmarkBaseClass extends React.Component<ICoachmarkPropsClassProps, ICoa
   private _childrenContainer = React.createRef<HTMLDivElement>();
   private _positioningContainer = React.createRef<HTMLDivElement>();
 
-  /**
-   * The target element the mouse would be in
-   * proximity to
-   */
-  private _targetElementRect: ClientRect;
-
   constructor(props: ICoachmarkPropsClassProps) {
     super(props);
 
     this._async = new Async(this);
-    this._events = new EventGroup(this);
     initializeComponentRef(this);
 
     warnDeprecations(COMPONENT_NAME, props, {
@@ -541,11 +615,6 @@ class CoachmarkBaseClass extends React.Component<ICoachmarkPropsClassProps, ICoa
         });
       }
 
-      // We don't want to the user to immediately trigger the Coachmark when it's opened
-      this._async.setTimeout(() => {
-        this._addProximityHandler(this.props.mouseProximityOffset);
-      }, this.props.delayBeforeMouseOpen!);
-
       // Need to add setTimeout to have narrator read change in alert container
       if (this.props.ariaAlertText) {
         this._async.setTimeout(() => {
@@ -569,7 +638,6 @@ class CoachmarkBaseClass extends React.Component<ICoachmarkPropsClassProps, ICoa
 
   public componentWillUnmount(): void {
     this._async.dispose();
-    this._events.dispose();
   }
 
   private _getBounds(): IRectangle | undefined {
@@ -602,63 +670,6 @@ class CoachmarkBaseClass extends React.Component<ICoachmarkPropsClassProps, ICoa
       }
     } else {
       return undefined;
-    }
-  }
-
-  private _addProximityHandler(mouseProximityOffset: number = 0): void {
-    /**
-     * An array of cached ids returned when setTimeout runs during
-     * the window resize event trigger.
-     */
-    const timeoutIds: number[] = [];
-
-    // Take the initial measure out of the initial render to prevent
-    // an unnecessary render.
-    this._async.setTimeout(() => {
-      this._setTargetElementRect();
-
-      // When the window resizes we want to async
-      // get the bounding client rectangle.
-      // Every time the event is triggered we want to
-      // setTimeout and then clear any previous instances
-      // of setTimeout.
-      this._events.on(window, 'resize', (): void => {
-        timeoutIds.forEach((value: number): void => {
-          clearInterval(value);
-        });
-
-        timeoutIds.push(
-          this._async.setTimeout((): void => {
-            this._setTargetElementRect();
-          }, 100),
-        );
-      });
-    }, 10);
-
-    // Every time the document's mouse move is triggered
-    // we want to check if inside of an element and
-    // set the state with the result.
-    this._events.on(document, 'mousemove', (e: MouseEvent) => {
-      if (this.props.hoistedProps.isCollapsed) {
-        const mouseY = e.clientY;
-        const mouseX = e.clientX;
-        this._setTargetElementRect();
-        const isMouseInProximity = isInsideElement(this._targetElementRect, mouseX, mouseY, mouseProximityOffset);
-
-        if (isMouseInProximity !== this.state.isMouseInProximity) {
-          this.props.hoistedProps.openCoachmark();
-        }
-      }
-
-      if (this.props.onMouseMove) {
-        this.props.onMouseMove(e);
-      }
-    });
-  }
-
-  private _setTargetElementRect(): void {
-    if (this.props.hoistedProps.translateAnimationContainer?.current) {
-      this._targetElementRect = this.props.hoistedProps.translateAnimationContainer.current.getBoundingClientRect();
     }
   }
 }
