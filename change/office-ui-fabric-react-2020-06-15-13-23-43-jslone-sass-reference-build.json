@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "_common.scss: Update import statement to not depend on dist folder (which doesn't exist until full build)",
+  "packageName": "office-ui-fabric-react",
+  "email": "jslone@microsoft.com",
+  "dependentChangeType": "none",
+  "date": "2020-06-15T20:23:43.312Z"
+}
