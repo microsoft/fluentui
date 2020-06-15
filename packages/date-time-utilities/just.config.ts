@@ -1,4 +1,3 @@
-const { preset, just } = require('@uifabric/build');
-const { chain } = just;
+const { preset } = require('@uifabric/build');
 
 preset();
