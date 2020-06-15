@@ -1,12 +1,15 @@
+import * as React from 'react';
 import { ComponentDoc } from 'react-docgen-typescript';
 
-export interface TestingOptions {
-  constructorName: string;
-  requiredProps?: object;
+export interface TestingOptions<TProps = {}> {
+  componentPath: string;
+  Component: React.ComponentType<TProps>;
+  requiredProps?: Partial<TProps>;
   exportedAtTopLevel?: boolean;
+  useDefaultExport?: boolean;
 }
 
-export type ConformanceTest = (componentInfo: ComponentDoc, componentPath: string, testInfo: TestingOptions) => void;
+export type ConformanceTest = (componentInfo: ComponentDoc, testInfo: TestingOptions) => void;
 
 export interface TestObject {
   [key: string]: ConformanceTest;
