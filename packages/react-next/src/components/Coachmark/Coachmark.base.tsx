@@ -42,31 +42,15 @@ export interface IEntityRect {
 
 export interface ICoachmarkState {
   /**
-   * Enables/Disables the beacon that radiates
-   * from the center of the coachmark.
-   */
-  isBeaconAnimating: boolean;
-
-  /**
    * Is the teaching bubble currently retreiving the
    * original dimensions of the hosted entity.
    */
   isMeasuring: boolean;
 
   /**
-   * Is the Coachmark done measuring the hosted entity
-   */
-  isMeasured: boolean;
-
-  /**
    * Cached width and height of _entityInnerHostElement
    */
   entityInnerHostRect: IEntityRect;
-
-  /**
-   * Is the mouse in proximity of the default target element
-   */
-  isMouseInProximity: boolean;
 }
 
 const DEFAULT_PROPS = {
@@ -482,14 +466,11 @@ class CoachmarkBaseClass extends React.Component<ICoachmarkPropsClassProps, ICoa
 
     // Set defaults for state
     this.state = {
-      isBeaconAnimating: true,
       isMeasuring: true,
       entityInnerHostRect: {
         width: 0,
         height: 0,
       },
-      isMouseInProximity: false,
-      isMeasured: false,
     };
   }
 
@@ -514,7 +495,7 @@ class CoachmarkBaseClass extends React.Component<ICoachmarkPropsClassProps, ICoa
       hoistedProps: { isCollapsed, transformOrigin, beakPositioningProps, alertText },
     } = this.props;
 
-    const { isBeaconAnimating, isMeasuring, entityInnerHostRect, isMeasured } = this.state;
+    const { isMeasuring, entityInnerHostRect } = this.state;
 
     // Defaulting the main background before passing it to the styles because it is used for `Beak` too.
     let defaultColor = color;
@@ -528,11 +509,9 @@ class CoachmarkBaseClass extends React.Component<ICoachmarkPropsClassProps, ICoa
       beaconColorTwo,
       className,
       isCollapsed,
-      isBeaconAnimating,
       isMeasuring,
       color: defaultColor,
       transformOrigin,
-      isMeasured,
       entityHostHeight: `${entityInnerHostRect.height}px`,
       entityHostWidth: `${entityInnerHostRect.width}px`,
       width: `${COACHMARK_WIDTH}px`,
@@ -621,7 +600,6 @@ class CoachmarkBaseClass extends React.Component<ICoachmarkPropsClassProps, ICoa
             width: this.props.hoistedProps.entityInnerHostElementRef.current.offsetWidth,
             height: this.props.hoistedProps.entityInnerHostElementRef.current.offsetHeight,
           },
-          isMeasured: true,
         });
       }
 
