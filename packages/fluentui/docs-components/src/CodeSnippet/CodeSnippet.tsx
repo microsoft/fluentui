@@ -31,6 +31,7 @@ const CodeSnippet: React.FunctionComponent<CodeSnippetProps> = props => {
       style={{
         fontSize: '12px',
         position: 'relative',
+        ...props.style,
       }}
     >
       <CodeSnippetLabel {...props} value={code} />

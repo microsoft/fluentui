@@ -313,7 +313,6 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
     // (undocumented)
     protected onChange(items?: T[]): void;
     protected onClick: (ev: React.MouseEvent<HTMLInputElement, MouseEvent>) => void;
-    // (undocumented)
     protected onEmptyInputFocus(): void;
     // (undocumented)
     protected onGetMoreResults: () => void;
@@ -373,7 +372,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
     protected updateSuggestionsList(suggestions: T[] | PromiseLike<T[]>, updatedValue?: string): void;
     // (undocumented)
     protected updateValue(updatedValue: string): void;
-}
+    }
 
 // @public (undocumented)
 export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BasePicker<T, P> {
@@ -1810,6 +1809,7 @@ export interface IBreadcrumbProps extends React.HTMLAttributes<HTMLElement> {
     focusZoneProps?: IFocusZoneProps;
     items: IBreadcrumbItem[];
     maxDisplayedItems?: number;
+    onGrowData?: (data: IBreadcrumbData) => IBreadcrumbData | undefined;
     onReduceData?: (data: IBreadcrumbData) => IBreadcrumbData | undefined;
     onRenderItem?: IRenderFunction<IBreadcrumbItem>;
     onRenderOverflowIcon?: IRenderFunction<IButtonProps>;
@@ -2812,7 +2812,7 @@ export interface IComboBoxState {
     currentPendingValue?: string;
     currentPendingValueValidIndex: number;
     currentPendingValueValidIndexOnHover: number;
-    focused?: boolean;
+    focusState?: 'none' | 'focused' | 'focusing';
     isOpen?: boolean;
     selectedIndices?: number[];
     suggestedDisplayValue?: string;
@@ -4207,6 +4207,7 @@ export interface IDocumentCardProps extends IBaseProps<IDocumentCard>, React.HTM
     componentRef?: IRefObject<IDocumentCard>;
     onClick?: (ev?: React.SyntheticEvent<HTMLElement>) => void;
     onClickHref?: string;
+    onClickTarget?: string;
     role?: string;
     styles?: IStyleFunctionOrObject<IDocumentCardStyleProps, IDocumentCardStyles>;
     theme?: ITheme;
@@ -4660,6 +4661,7 @@ export interface IFocusTrapZoneProps extends React.HTMLAttributes<HTMLDivElement
     disabled?: boolean;
     disableFirstFocus?: boolean;
     elementToFocusOnDismiss?: HTMLElement;
+    enableAriaHiddenSiblings?: boolean;
     firstFocusableSelector?: string | (() => string);
     focusPreviouslyFocusedInnerElement?: boolean;
     forceFocusInsideTrap?: boolean;
@@ -5650,6 +5652,7 @@ export interface IModalProps extends React.ClassAttributes<ModalBase>, IWithResp
     componentRef?: IRefObject<IModal>;
     containerClassName?: string;
     dragOptions?: IDragOptions;
+    enableAriaHiddenSiblings?: boolean;
     isBlocking?: boolean;
     isDarkOverlay?: boolean;
     isModeless?: boolean;
@@ -6282,7 +6285,7 @@ export interface IPivotItemProps extends React.HTMLAttributes<HTMLDivElement> {
     alwaysRender?: boolean;
     ariaLabel?: string;
     componentRef?: IRefObject<{}>;
-    headerButtonProps?: IButtonProps & {
+    headerButtonProps?: IButtonProps | {
         [key: string]: string | number | boolean;
     };
     headerText?: string;
@@ -6299,6 +6302,7 @@ export interface IPivotItemProps extends React.HTMLAttributes<HTMLDivElement> {
 export interface IPivotProps extends React.ClassAttributes<PivotBase>, React.HTMLAttributes<HTMLDivElement> {
     className?: string;
     componentRef?: IRefObject<IPivot>;
+    // @deprecated
     defaultSelectedIndex?: number;
     defaultSelectedKey?: string;
     getTabId?: (itemKey: string, index: number) => string;

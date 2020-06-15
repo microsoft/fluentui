@@ -124,7 +124,7 @@ export const alertSlotClassNames: AlertSlotClassNames = {
   body: `${alertClassName}__body`,
 };
 
-export const Alert: React.FC<WithAsProp<AlertProps>> &
+const Alert: React.FC<WithAsProp<AlertProps>> &
   FluentComponentStaticProps<AlertProps> & {
     DismissAction: typeof AlertDismissAction;
   } = props => {
