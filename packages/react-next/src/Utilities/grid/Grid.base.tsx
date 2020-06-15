@@ -48,6 +48,7 @@ export class GridBase extends React.Component<IGridProps, {}> implements IGrid {
     const classNames = getClassNames(styles!, { theme: this.props.theme! });
 
     // Array to store the cells in the correct row index
+    // tslint:disable-next-line:no-any
     const rowsOfItems: any[][] = toMatrix(items, columnCount);
 
     const content = (
@@ -60,10 +61,10 @@ export class GridBase extends React.Component<IGridProps, {}> implements IGrid {
         className={classNames.root}
       >
         <tbody>
-          {rowsOfItems.map((rows: any[], rowIndex: number) => {
+          {rowsOfItems.map((rows: [], rowIndex: number) => {
             return (
               <tr role={'row'} key={this._id + '-' + rowIndex + '-row'}>
-                {rows.map((cell: any, cellIndex: number) => {
+                {rows.map((cell, cellIndex: number) => {
                   return (
                     <td
                       role={'presentation'}

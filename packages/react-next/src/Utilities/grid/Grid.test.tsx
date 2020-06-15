@@ -4,6 +4,7 @@ import { getStyles } from './Grid.styles';
 import { DefaultButton } from '../../Button';
 import { shallow } from 'enzyme';
 
+// tslint:disable-next-line:no-any
 const DEFAULT_ITEMS: any[] = [
   { id: 'a', text: '0,0' },
   { id: 'b', text: '1,0' },
@@ -23,7 +24,7 @@ describe('Grid', () => {
         columnCount={4}
         styles={getStyles}
         // tslint:disable-next-line:jsx-no-lambda
-        onRenderItem={(item: any, index: number) => {
+        onRenderItem={(item, index: number) => {
           return <DefaultButton role="gridcell">item.text</DefaultButton>;
         }}
       />,
@@ -41,7 +42,7 @@ describe('Grid', () => {
         columnCount={2}
         styles={getStyles}
         // tslint:disable-next-line:jsx-no-lambda
-        onRenderItem={(item: any, index: number) => {
+        onRenderItem={(item, index: number) => {
           return <DefaultButton role="gridcell">item.text</DefaultButton>;
         }}
       />,
@@ -59,7 +60,7 @@ describe('Grid', () => {
         columnCount={2}
         styles={getStyles}
         // tslint:disable-next-line:jsx-no-lambda
-        onRenderItem={(item: any, index: number) => {
+        onRenderItem={(item, index: number) => {
           return <DefaultButton role="gridcell">item.text</DefaultButton>;
         }}
         positionInSet={1}

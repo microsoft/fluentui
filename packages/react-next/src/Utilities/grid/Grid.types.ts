@@ -13,6 +13,7 @@ export interface IGridProps extends React.TableHTMLAttributes<HTMLTableElement> 
   /**
    * Items to display in a grid with the specified number of columns
    */
+  // tslint:disable-next-line:no-any
   items: any[];
 
   /**
@@ -23,6 +24,7 @@ export interface IGridProps extends React.TableHTMLAttributes<HTMLTableElement> 
   /**
    * Custom renderer for the individual items
    */
+  // tslint:disable-next-line:no-any
   onRenderItem: (item: any, index: number) => JSX.Element;
 
   /**
