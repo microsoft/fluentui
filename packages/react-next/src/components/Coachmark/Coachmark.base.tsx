@@ -21,7 +21,7 @@ import { Beak, BEAK_HEIGHT, BEAK_WIDTH } from './Beak/Beak';
 import { DirectionalHint } from '../../common/DirectionalHint';
 
 // Coachmark
-import { ICoachmark, ICoachmarkProps, ICoachmarkStyles, ICoachmarkStyleProps } from './Coachmark.types';
+import { ICoachmarkProps, ICoachmarkStyles, ICoachmarkStyleProps } from './Coachmark.types';
 import { COACHMARK_HEIGHT, COACHMARK_WIDTH } from './Coachmark.styles';
 import { FocusTrapZone } from '../../FocusTrapZone';
 import { getPropsWithDefaults } from '../../Utilities';
@@ -252,6 +252,18 @@ function useBeakPosition(
   ] as const;
 }
 
+function useComponentRef(props: ICoachmarkProps) {
+  React.useImperativeHandle(
+    props.componentRef,
+    (ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => ({
+      dismiss() {
+        props.onDismiss?.(ev);
+      },
+    }),
+    [props.onDismiss],
+  );
+}
+
 const COMPONENT_NAME = 'CoachmarkBase';
 export const CoachmarkBase = React.forwardRef(
   (propsWithoutDefaults: ICoachmarkProps, forwardedRef: React.Ref<HTMLDivElement>) => {
@@ -262,6 +274,8 @@ export const CoachmarkBase = React.forwardRef(
     const [targetAlignment, targetPosition, onPositioned] = usePositionedData();
     const [isCollapsed, openCoachmark] = useCollapsedState(props, entityInnerHostElementRef);
     const [beakPositioningProps, transformOrigin] = useBeakPosition(props, targetAlignment, targetPosition);
+
+    useComponentRef(props);
 
     return (
       <CoachmarkBaseClass
@@ -295,7 +309,7 @@ interface ICoachmarkPropsClassProps extends ICoachmarkProps {
   };
 }
 
-class CoachmarkBaseClass extends React.Component<ICoachmarkPropsClassProps, ICoachmarkState> implements ICoachmark {
+class CoachmarkBaseClass extends React.Component<ICoachmarkPropsClassProps, ICoachmarkState> {
   private _async: Async;
   private _events: EventGroup;
 
@@ -517,14 +531,6 @@ class CoachmarkBaseClass extends React.Component<ICoachmarkPropsClassProps, ICoa
     this._events.dispose();
   }
 
-  public dismiss = (ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>): void => {
-    const { onDismiss } = this.props;
-
-    if (onDismiss) {
-      onDismiss(ev);
-    }
-  };
-
   private _addListeners(): void {
     const { preventDismissOnLostFocus } = this.props;
     const currentDoc: Document = getDocument()!;
@@ -549,7 +555,7 @@ class CoachmarkBaseClass extends React.Component<ICoachmarkPropsClassProps, ICoa
     const { target } = this.props;
 
     if (clickedOutsideCallout && clickTarget !== target && !elementContains(target as HTMLElement, clickTarget)) {
-      this.dismiss(ev);
+      this.props.onDismiss?.(ev);
     }
   }
 
