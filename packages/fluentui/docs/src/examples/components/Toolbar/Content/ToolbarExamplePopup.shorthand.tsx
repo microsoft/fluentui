@@ -14,6 +14,10 @@ const HighlightPopup = ({ onConfirm }) => {
           key: 'first-name',
           required: true,
           inline: true,
+          control: {
+            as: Input,
+            showSuccessIndicator: false,
+          },
         },
         {
           control: {

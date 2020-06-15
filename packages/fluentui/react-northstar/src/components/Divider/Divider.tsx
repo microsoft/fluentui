@@ -48,7 +48,7 @@ export type DividerStylesProps = Required<
 
 export const dividerClassName = 'ui-divider';
 
-export const Divider: React.FC<WithAsProp<DividerProps>> & FluentComponentStaticProps<DividerProps> = props => {
+const Divider: React.FC<WithAsProp<DividerProps>> & FluentComponentStaticProps<DividerProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(Divider.displayName, context.telemetry);
   setStart();

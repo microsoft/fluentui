@@ -16,7 +16,8 @@ export { default as useAutoControlled } from './hooks/useAutoControlled';
 export { default as unstable_useDispatchEffect } from './hooks/useDispatchEffect';
 export { default as useIsomorphicLayoutEffect } from './hooks/useIsomorphicLayoutEffect';
 export { default as useStateManager } from './hooks/useStateManager';
-export { default as useStyles } from './hooks/useStyles';
+export { default as useStyles, defaultPerformanceFlags } from './hooks/useStyles';
+export * from './hooks/useStyles';
 export { default as useUnhandledProps } from './hooks/useUnhandledProps';
 
 export { default as unstable_createAnimationStyles } from './styles/createAnimationStyles';

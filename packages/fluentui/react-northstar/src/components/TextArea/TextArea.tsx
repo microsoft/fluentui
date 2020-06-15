@@ -56,7 +56,7 @@ export type TextAreaStylesProps = Required<Pick<TextAreaProps, 'inverted' | 'res
 
 export const textAreaClassName = 'ui-textarea';
 
-export const TextArea: React.FC<WithAsProp<TextAreaProps>> & FluentComponentStaticProps<TextAreaProps> = props => {
+const TextArea: React.FC<WithAsProp<TextAreaProps>> & FluentComponentStaticProps<TextAreaProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(TextArea.displayName, context.telemetry);
 
