@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/date-time",
-  "version": "7.8.98",
+  "version": "7.8.99",
   "description": "Date and time related React components for building experiences for Microsoft 365.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -37,7 +37,7 @@
     "@types/react-test-renderer": "^16.0.0",
     "@types/webpack-env": "1.15.1",
     "@uifabric/build": "^7.0.0",
-    "@uifabric/example-app-base": "^7.12.77",
+    "@uifabric/example-app-base": "^7.12.78",
     "@uifabric/jest-serializer-merge-styles": "^7.0.26",
     "@uifabric/tslint-rules": "^7.2.1",
     "enzyme": "~3.10.0",
@@ -53,7 +53,7 @@
     "@uifabric/set-version": "^7.0.13",
     "@uifabric/styling": "^7.12.17",
     "@uifabric/utilities": "^7.20.3",
-    "office-ui-fabric-react": "^7.119.0",
+    "office-ui-fabric-react": "^7.120.0",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {
