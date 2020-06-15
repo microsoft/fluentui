@@ -3707,6 +3707,13 @@
   dependencies:
     "@types/react" "*"
 
+"@types/react-frame-component@^4.1.1":
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/@types/react-frame-component/-/react-frame-component-4.1.1.tgz#1d8293c062c1d43555ca80494a7b94e3088ad39e"
+  integrity sha512-7soxaTJ030rtC2lFlaFzzJyCY4rsPwOLxfw/eGnbEq/wq80e71outSL6dUXM9bOh2qMhM1xnp+EMEhjdVvIlkA==
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-is@^16.7.1":
   version "16.7.1"
   resolved "https://registry.yarnpkg.com/@types/react-is/-/react-is-16.7.1.tgz#d3f1c68c358c00ce116b55ef5410cf486dd08539"
@@ -17103,6 +17110,11 @@ react-focus-lock@^2.1.0:
     react-clientside-effect "^1.2.2"
     use-callback-ref "^1.2.1"
     use-sidecar "^1.0.1"
+
+react-frame-component@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/react-frame-component/-/react-frame-component-4.1.1.tgz#ea8f7c518ef6b5ad72146dd1f648752369826894"
+  integrity sha512-NfJp90AvYA1R6+uSYafQ+n+UM2HjHqi4WGHeprVXa6quU9d8o6ZFRzQ36uemY82dlkZFzf2jigFx6E4UzNFajA==
 
 react-helmet-async@^1.0.2:
   version "1.0.4"
