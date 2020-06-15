@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/utilities/dateValues/TimeConstants';
+export * from '@uifabric/date-time-utilities/lib/dateValues/TimeConstants';

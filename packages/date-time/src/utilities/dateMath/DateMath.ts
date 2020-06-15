@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/utilities/dateMath/DateMath';
+export * from '@uifabric/date-time-utilities/lib/dateMath/DateMath';
