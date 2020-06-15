@@ -17,7 +17,8 @@
     "@uifabric/utilities": "^7.21.0",
     "classnames": "^2.2.6",
     "lodash": "^4.17.15",
-    "prop-types": "^15.7.2"
+    "prop-types": "^15.7.2",
+    "react-fela": "^10.6.1"
   },
   "devDependencies": {
     "@types/classnames": "^2.2.9",
