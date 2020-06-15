@@ -1,4 +1,5 @@
 import { createFelaRenderer } from '@fluentui/react-northstar-fela-renderer';
+// @ts-ignore
 import { createSnapshot } from 'jest-react-fela';
 import * as React from 'react';
 import { FelaComponent } from 'react-fela';
