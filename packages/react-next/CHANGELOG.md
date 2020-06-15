@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-next
 
-This log was last generated on Tue, 09 Jun 2020 12:35:17 GMT and should not be manually modified.
+This log was last generated on Fri, 12 Jun 2020 18:29:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-alpha.39](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.39)
+
+Fri, 12 Jun 2020 18:29:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.37..@fluentui/react-next_v8.0.0-alpha.39)
+
+### Changes
+
+- PivotItem: Fixing typing error in headerButtonProps. ([PR #13550](https://github.com/microsoft/fluentui/pull/13550) by humbertomakotomorimoto@gmail.com)
+- Updating Link to use recomposable state. ([PR #13521](https://github.com/microsoft/fluentui/pull/13521) by humbertomakotomorimoto@gmail.com)
+- Checkbox: initial use compose ([PR #13435](https://github.com/microsoft/fluentui/pull/13435) by xgao@microsoft.com)
 
 ## [8.0.0-alpha.37](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.37)
 

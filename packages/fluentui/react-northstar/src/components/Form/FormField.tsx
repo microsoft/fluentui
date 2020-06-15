@@ -56,12 +56,6 @@ export interface FormFieldProps extends UIComponentProps, ChildrenComponentProps
 
   /** Message to be shown when input has error */
   errorMessage?: ShorthandValue<TextProps>;
-
-  /** Indicator to be shown together with error message */
-  errorIndicator?: ShorthandValue<BoxProps>;
-
-  /** Indicator to be shown when field is required and non-empty */
-  successIndicator?: ShorthandValue<BoxProps>;
 }
 
 export const formFieldClassName = 'ui-form__field';

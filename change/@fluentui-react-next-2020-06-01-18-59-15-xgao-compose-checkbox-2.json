@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Checkbox: initial use compose",
-  "packageName": "@fluentui/react-next",
-  "email": "xgao@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-06-02T01:59:15.799Z"
-}

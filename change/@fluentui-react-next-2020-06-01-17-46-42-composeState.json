@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Updating Link to use recomposable state.",
-  "packageName": "@fluentui/react-next",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-06-02T00:46:42.269Z"
-}
