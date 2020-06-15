@@ -5,11 +5,11 @@ import {
   ComponentVariablesInput,
   DebugData,
   emptyTheme,
+  noopRenderer,
 } from '@fluentui/styles';
 import * as React from 'react';
 // @ts-ignore We have this export in package, but it is not present in typings
 import { ThemeContext } from 'react-fela';
-import { noopRenderer } from '@fluentui/styles';
 
 import {
   ComponentDesignProp,
