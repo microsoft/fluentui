@@ -6,8 +6,6 @@ import * as React from 'react';
 import * as _ from 'lodash';
 import * as path from 'path';
 
-/** For a reference of the tests, check the file rules.md in @fluentui/react-conformance */
-
 export const defaultTests: TestObject = {
   /** Component has a docblock with 5 to 25 words */
   'has-docblock': (componentInfo: ComponentDoc, componentPath: string, testInfo: TestingOptions) => {
@@ -62,11 +60,12 @@ export const defaultTests: TestObject = {
   /** Constructor/component name matches filename */
   'name-matches-filename': (componentInfo: ComponentDoc, componentPath: string, testInfo: TestingOptions) => {
     it(`Component/constructor name matches filename`, () => {
-      const Component = require(componentPath);
+      const componentFile = require(componentPath);
+      const Component = componentFile.default || componentFile[componentInfo.displayName];
       const fileName = path.basename(componentPath, path.extname(componentPath));
       const constructorName = Component.prototype.constructor?.name;
 
-      expect(componentInfo.displayName || constructorName).toEqual(fileName);
+      expect(constructorName || componentInfo.displayName).toEqual(fileName);
     });
   },
 };
