@@ -4,6 +4,7 @@
 
 ```ts
 
+import { BaseSlots } from '@fluentui/react-compose';
 import { ComposePreparedOptions } from '@fluentui/react-compose';
 import { IBaseFloatingPickerProps } from 'office-ui-fabric-react/lib/FloatingPicker';
 import { IBaseProps } from 'office-ui-fabric-react/lib/Utilities';
@@ -273,7 +274,7 @@ export type ICheckboxSlotProps = {
 };
 
 // @public (undocumented)
-export interface ICheckboxSlots {
+export interface ICheckboxSlots extends BaseSlots {
     // (undocumented)
     checkbox: React.ElementType;
     // (undocumented)
@@ -284,8 +285,6 @@ export interface ICheckboxSlots {
     input: React.ElementType;
     // (undocumented)
     label: React.ElementType;
-    // (undocumented)
-    root: React.ElementType;
 }
 
 // @public (undocumented)

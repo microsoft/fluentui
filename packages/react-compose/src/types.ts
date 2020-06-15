@@ -136,3 +136,18 @@ export type ComposePreparedOptions<TProps = {}, TInputState = any, TParentState 
   resolveSlotProps: <TResolvedProps>(props: TResolvedProps) => Record<string, object>;
   shorthandConfig: ShorthandConfig<TProps>;
 };
+
+//
+// Component types
+//
+
+export interface BaseSlots {
+  root: React.ElementType;
+}
+
+export type SlotProps<TSlots extends BaseSlots, TProps, TRootProps extends React.HTMLAttributes<HTMLElement>> = {
+  // tslint:disable-next-line:no-any
+  [key in keyof Omit<TSlots, 'root'>]: key extends keyof TProps ? TProps[key] : any;
+} & {
+  root: TRootProps;
+};
