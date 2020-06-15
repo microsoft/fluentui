@@ -18,7 +18,7 @@ const VariableResolver: React.FunctionComponent<VariableResolverProps> = props =
   const latestVariables = React.useRef<UsedVariables>({});
 
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
-  const [, /*renderer*/ resolvedVariables] = useEnhancedRenderer(context.renderer);
+  const [, /* renderer */ resolvedVariables] = useEnhancedRenderer(context.renderer);
 
   const onClassNamesChange = React.useCallback(() => {
     if (!_.isEqual(resolvedVariables.current, latestVariables.current)) {
