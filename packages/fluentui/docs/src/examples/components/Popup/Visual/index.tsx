@@ -8,7 +8,6 @@ const Visual = () => (
     <ComponentExample examplePath="components/Popup/Visual/PopupExamplePointerOffset" />
     <ComponentExample examplePath="components/Popup/Visual/PopupExamplePointerMargin" />
     <ComponentExample
-      title="Transformed Container"
       examplePath="components/Popup/Visual/PopupExampleContainerTransformed"
     />
   </NonPublicSection>
