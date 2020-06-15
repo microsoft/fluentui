@@ -194,7 +194,6 @@ const ChatExampleInScrollableShorthand = () => {
     },
   ];
 
-  // container with transform: 'translate3d(0,0,0)' only for visual tests
   return (
     <>
       <div style={{ height, width, overflow: 'scroll', margin: 150, marginBottom: 0, marginLeft: 50 }}>
