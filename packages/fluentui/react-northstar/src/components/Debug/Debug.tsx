@@ -12,12 +12,12 @@ import DebugRect from './DebugRect';
 
 /* eslint-disable no-console */
 
-type DebugProps = {
+export type DebugProps = {
   /** Existing document the popup should add listeners. */
   mountDocument?: Document;
 };
 
-type DebugState = {
+export type DebugState = {
   debugPanelPosition?: 'left' | 'right';
   fiberNav: FiberNavigator;
   selectedFiberNav: FiberNavigator;

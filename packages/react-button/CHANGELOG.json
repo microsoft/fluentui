@@ -2,6 +2,35 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Fri, 12 Jun 2020 18:29:07 GMT",
+      "tag": "@fluentui/react-button_v0.3.0",
+      "version": "0.3.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding inline tokens support to Button, fixing focus rects.",
+            "author": "dzearing@microsoft.com",
+            "commit": "7026390333eeeb5bb1765bca68389b3b43312a49",
+            "package": "@fluentui/react-button"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "ToggleButton: Updating to new css variables.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "560a9b03d5230f997a6e1801357cce10b3a0008d",
+            "package": "@fluentui/react-button"
+          },
+          {
+            "comment": "Updating typings to conform with react-compose changes.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "8b0ffa8c39c7fe298596253b205134f9c9f8c3b5",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 08 Jun 2020 12:34:34 GMT",
       "tag": "@fluentui/react-button_v0.2.0",
       "version": "0.2.0",
