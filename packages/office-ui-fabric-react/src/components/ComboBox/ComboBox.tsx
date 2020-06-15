@@ -1383,7 +1383,6 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
           aria-selected={isSelected ? 'true' : 'false'}
           ariaLabel={this._getPreviewText(item)}
           disabled={item.disabled}
-          title={title}
         >
           {
             <span className={optionClassNames.optionTextWrapper} ref={isSelected ? this._selectedElement : undefined}>
