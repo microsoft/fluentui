@@ -16,7 +16,7 @@ const DEFAULT_HEIGHT = 32;
 const DEFAULT_MIN_WIDTH = 86;
 const LABEL_MARGIN = 10;
 
-const _getDisabledStyles = memoizeFunction(
+const getDisabledStyles = memoizeFunction(
   (theme: ITheme): IRawStyle => {
     const { semanticColors } = theme;
 
@@ -226,7 +226,7 @@ export const getStyles = memoizeFunction(
         },
       },
       spinButtonWrapperFocused: getInputFocusStyle(SpinButtonRootBorderColorFocused, effects.roundedCorner2),
-      spinButtonWrapperDisabled: _getDisabledStyles(theme),
+      spinButtonWrapperDisabled: getDisabledStyles(theme),
       input: {
         boxSizing: 'border-box',
         boxShadow: 'none',
@@ -259,13 +259,13 @@ export const getStyles = memoizeFunction(
           },
         },
       },
-      inputDisabled: _getDisabledStyles(theme),
+      inputDisabled: getDisabledStyles(theme),
       arrowButtonsContainer: {
         display: 'block',
         height: '100%',
         cursor: 'default',
       },
-      arrowButtonsContainerDisabled: _getDisabledStyles(theme),
+      arrowButtonsContainerDisabled: getDisabledStyles(theme),
     };
     return concatStyleSets(defaultStyles, customStyles) as ISpinButtonStyles;
   },
