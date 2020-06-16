@@ -94,12 +94,14 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Use `compose()` in `ToolbarMenu` @layershifter, @mnajdova ([#13320](https://github.com/microsoft/fluentui/pull/13320))
 - Add `compose()` support for submenus in `Toolbar` @mnajdova ([#13377](https://github.com/microsoft/fluentui/pull/13377))
 - Add `show` and `hide` animations in the `Popup` component @mnajdova ([#13439](https://github.com/microsoft/fluentui/pull/13439))
+- Added icons: `MeetingTimeIcon`, `VideomailIcon`, `ScreenshareIcon`, `Shift24hIcon`, `ShiftActivity`  @TanelVari ([#13513](https://github.com/microsoft/fluentui/pull/13513))
 
 ### Performance
 - Omit `_.findKey()` usage in `focusVisibleEnhancer()` @layershifter ([#13343](https://github.com/microsoft/fluentui/pull/13343))
 - Use `mergeVariablesOverrides()` to avoid cache breaks when variables are not passed in `Toolbar`, `Menu` & `Table` components @layershifter ([#13374](https://github.com/microsoft/fluentui/pull/13374))
 - Remove `camelCaseProperty` call inside Fela renderer @layershifter ([#13308](https://github.com/microsoft/fluentui/pull/13308))
 - Improved `Animation` perf by adding a cache that works across multiple instances @mnajdova ([#13509](https://github.com/microsoft/fluentui/pull/13509))
+- Improved the perf of the `convertCssTimeToNumber` utility used in `Animation` @layershifter, @mnajdova ([#13604](https://github.com/microsoft/fluentui/pull/13604))
 
 ### Documentation
 - `Toolbar` recommendation using toolbar based on aria  @kolaps33 ([#13143](https://github.com/microsoft/fluentui/pull/13143))

@@ -2298,10 +2298,10 @@
   dependencies:
     "@types/node" ">= 8"
 
-"@popperjs/core@^2.4.0":
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.4.0.tgz#0e1bdf8d021e7ea58affade33d9d607e11365915"
-  integrity sha512-NMrDy6EWh9TPdSRiHmHH2ye1v5U0gBD7pRYwSwJvomx7Bm4GG04vu63dYiVzebLOx2obPpJugew06xVP0Nk7hA==
+"@popperjs/core@^2.4.2":
+  version "2.4.2"
+  resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.4.2.tgz#7c6dc4ecef16149fd7a736710baa1b811017fdca"
+  integrity sha512-JlGTGRYHC2QK+DDbePyXdBdooxFq2+noLfWpRqJtkxcb/oYWzOF0kcbfvvbWrwevCC1l6hLUg1wHYT+ona5BWQ==
 
 "@reach/router@^1.2.1":
   version "1.2.1"
@@ -3704,6 +3704,13 @@
   version "16.8.4"
   resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-16.8.4.tgz#7fb7ba368857c7aa0f4e4511c4710ca2c5a12a88"
   integrity sha512-eIRpEW73DCzPIMaNBDP5pPIpK1KXyZwNgfxiVagb5iGiz6da+9A5hslSX6GAQKdO7SayVCS/Fr2kjqprgAvkfA==
+  dependencies:
+    "@types/react" "*"
+
+"@types/react-frame-component@^4.1.1":
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/@types/react-frame-component/-/react-frame-component-4.1.1.tgz#1d8293c062c1d43555ca80494a7b94e3088ad39e"
+  integrity sha512-7soxaTJ030rtC2lFlaFzzJyCY4rsPwOLxfw/eGnbEq/wq80e71outSL6dUXM9bOh2qMhM1xnp+EMEhjdVvIlkA==
   dependencies:
     "@types/react" "*"
 
@@ -17103,6 +17110,11 @@ react-focus-lock@^2.1.0:
     react-clientside-effect "^1.2.2"
     use-callback-ref "^1.2.1"
     use-sidecar "^1.0.1"
+
+react-frame-component@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/react-frame-component/-/react-frame-component-4.1.1.tgz#ea8f7c518ef6b5ad72146dd1f648752369826894"
+  integrity sha512-NfJp90AvYA1R6+uSYafQ+n+UM2HjHqi4WGHeprVXa6quU9d8o6ZFRzQ36uemY82dlkZFzf2jigFx6E4UzNFajA==
 
 react-helmet-async@^1.0.2:
   version "1.0.4"

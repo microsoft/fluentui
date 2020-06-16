@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "fix height and width check in the image component",
+  "packageName": "@fluentui/react-next",
+  "email": "nif_tony@outlook.com",
+  "dependentChangeType": "patch",
+  "date": "2020-06-10T06:15:55.621Z"
+}
