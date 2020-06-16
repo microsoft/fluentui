@@ -166,6 +166,11 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
     const divProps: React.HtmlHTMLAttributes<HTMLDivElement> =
       hasNoSuggestions || isLoading ? { role: 'dialog', id: suggestionsListId } : {};
 
+    const forceResolveId =
+      this.state.selectedActionType === SuggestionActionType.forceResolve ? 'sug-selectedAction' : undefined;
+    const searchForMoreId =
+      this.state.selectedActionType === SuggestionActionType.searchMore ? 'sug-selectedAction' : undefined;
+
     return (
       <div className={this._classNames.root} {...divProps}>
         <Announced message={this._getAlertText()} aria-live="polite" />
@@ -175,6 +180,7 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
           <CommandButton
             componentRef={this._forceResolveButton}
             className={this._classNames.forceResolveButton}
+            id={forceResolveId}
             onClick={this._forceResolve}
             data-automationid={'sug-forceResolve'}
           >
@@ -192,6 +198,7 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
             componentRef={this._searchForMoreButton}
             className={this._classNames.searchForMoreButton}
             iconProps={{ iconName: 'Search' }}
+            id={searchForMoreId}
             onClick={this._getMoreResults}
           >
             {searchForMoreText}
