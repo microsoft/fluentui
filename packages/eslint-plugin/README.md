@@ -1,6 +1,18 @@
 # @fluentui/eslint-plugin
 
-**Custom ESLint rules for Fluent UI**
+**ESLint configuration and custom rules for Fluent UI**
+
+## Configs
+
+Usage: `{ "extends": ["plugin:@fluentui/<name>"] }` or `{ "extends": ["plugin:@fluentui/eslint-plugin/<name>"] }`
+
+- `react`: For `@fluentui/react` (`office-ui-fabric-react`) and related packages
+  - `react--legacy`: Like `react` but requiring an `I` prefix for interfaces
+  - `node`: Like `react` but for packages which run in a Node environment (not the browser)
+  - `node--legacy`: Like `node` but requiring an `I` prefix for interfaces
+- `react-northstar`: For `@fluentui/react-northstar` and related packages
+
+Helpers for customizing configuration are exported under a `configHelpers` object.
 
 ## Rules
 
