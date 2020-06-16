@@ -199,6 +199,11 @@ export interface ICoachmarkProps {
    * Theme provided by higher order component.
    */
   theme?: ITheme;
+
+  /**
+   * Child nodes to render inside the Coachmark dialog
+   */
+  children?: React.ReactNode;
 }
 
 /**

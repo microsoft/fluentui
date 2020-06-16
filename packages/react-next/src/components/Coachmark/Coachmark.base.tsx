@@ -10,7 +10,6 @@ import {
   getRTL,
   warnDeprecations,
   EventGroup,
-  initializeComponentRef,
 } from '../../Utilities';
 import { IPositionedData, RectangleEdge, getOppositeEdge } from 'office-ui-fabric-react/lib/utilities/positioning';
 
@@ -25,7 +24,6 @@ import { COACHMARK_HEIGHT, COACHMARK_WIDTH } from './Coachmark.styles';
 import { FocusTrapZone } from '../../FocusTrapZone';
 import { getPropsWithDefaults } from '../../Utilities';
 import { useAsync, useOnEvent } from '@uifabric/react-hooks';
-import { IBeakProps } from './Beak/Beak.types';
 
 const getClassNames = classNamesFunction<ICoachmarkStyleProps, ICoachmarkStyles>();
 
@@ -388,6 +386,7 @@ function useAutoFocus({ preventFocusOnMount }: ICoachmarkProps) {
 
   return entityHost;
 }
+
 function useEntityHostMeasurements(entityInnerHostElementRef: React.RefObject<HTMLDivElement>) {
   /**
    * Is the teaching bubble currently retreiving the
@@ -415,6 +414,19 @@ function useEntityHostMeasurements(entityInnerHostElementRef: React.RefObject<HT
   return [isMeasuring, entityInnerHostRect] as const;
 }
 
+function useDeprecationWarning(props: ICoachmarkProps) {
+  React.useEffect(() => {
+    warnDeprecations(COMPONENT_NAME, props, {
+      teachingBubbleRef: undefined,
+      collapsed: 'isCollapsed',
+      beakWidth: undefined,
+      beakHeight: undefined,
+      width: undefined,
+      height: undefined,
+    });
+  }, []);
+}
+
 const COMPONENT_NAME = 'CoachmarkBase';
 export const CoachmarkBase = React.forwardRef(
   (propsWithoutDefaults: ICoachmarkProps, forwardedRef: React.Ref<HTMLDivElement>) => {
@@ -433,69 +445,8 @@ export const CoachmarkBase = React.forwardRef(
     useListeners(props, translateAnimationContainer, openCoachmark);
     useComponentRef(props);
     useProximityHandlers(props, translateAnimationContainer, openCoachmark);
+    useDeprecationWarning(props);
 
-    return (
-      <CoachmarkBaseClass
-        {...props}
-        hoistedProps={{
-          entityInnerHostElementRef,
-          isCollapsed,
-          openCoachmark,
-          targetAlignment,
-          targetPosition,
-          onPositioned,
-          beakPositioningProps,
-          transformOrigin,
-          translateAnimationContainer,
-          alertText,
-          entityHost,
-          isMeasuring,
-          entityInnerHostRect,
-        }}
-      />
-    );
-  },
-);
-CoachmarkBase.displayName = COMPONENT_NAME;
-
-interface ICoachmarkPropsClassProps extends ICoachmarkProps {
-  hoistedProps: {
-    entityInnerHostElementRef: React.RefObject<HTMLDivElement>;
-    entityHost: React.RefObject<HTMLDivElement>;
-    translateAnimationContainer: React.RefObject<HTMLDivElement>;
-    isCollapsed: boolean;
-    targetAlignment: RectangleEdge | undefined;
-    targetPosition: RectangleEdge | undefined;
-    beakPositioningProps: Partial<IBeakProps>;
-    transformOrigin: string | undefined;
-    alertText: string | undefined;
-    isMeasuring: boolean;
-    entityInnerHostRect: IEntityRect;
-    openCoachmark(): void;
-    onPositioned(positionData: IPositionedData): void;
-  };
-}
-
-class CoachmarkBaseClass extends React.Component<ICoachmarkPropsClassProps, {}> {
-  private _childrenContainer = React.createRef<HTMLDivElement>();
-  private _positioningContainer = React.createRef<HTMLDivElement>();
-
-  constructor(props: ICoachmarkPropsClassProps) {
-    super(props);
-
-    initializeComponentRef(this);
-
-    warnDeprecations(COMPONENT_NAME, props, {
-      teachingBubbleRef: undefined,
-      collapsed: 'isCollapsed',
-      beakWidth: undefined,
-      beakHeight: undefined,
-      width: undefined,
-      height: undefined,
-    });
-  }
-
-  public render(): JSX.Element {
     const {
       beaconColorOne,
       beaconColorTwo,
@@ -513,8 +464,7 @@ class CoachmarkBaseClass extends React.Component<ICoachmarkPropsClassProps, {}> 
       theme,
       className,
       persistentBeak,
-      hoistedProps: { isCollapsed, transformOrigin, beakPositioningProps, alertText, isMeasuring, entityInnerHostRect },
-    } = this.props;
+    } = props;
 
     // Defaulting the main background before passing it to the styles because it is used for `Beak` too.
     let defaultColor = color;
@@ -544,10 +494,9 @@ class CoachmarkBaseClass extends React.Component<ICoachmarkPropsClassProps, {}> 
       <PositioningContainer
         target={target}
         offsetFromTarget={BEAK_HEIGHT}
-        ref={this._positioningContainer}
         finalHeight={finalHeight}
-        onPositioned={this.props.hoistedProps.onPositioned}
-        bounds={this._getBounds()}
+        onPositioned={onPositioned}
+        bounds={getBounds(props)}
         {...positioningContainerProps}
       >
         <div className={classNames.root}>
@@ -557,18 +506,13 @@ class CoachmarkBaseClass extends React.Component<ICoachmarkPropsClassProps, {}> 
             </div>
           )}
           <div className={classNames.pulsingBeacon} />
-          <div
-            className={classNames.translateAnimationContainer}
-            ref={this.props.hoistedProps.translateAnimationContainer}
-          >
+          <div className={classNames.translateAnimationContainer} ref={translateAnimationContainer}>
             <div className={classNames.scaleAnimationLayer}>
               <div className={classNames.rotateAnimationLayer}>
-                {this._positioningContainer.current && (isCollapsed || persistentBeak) && (
-                  <Beak {...beakPositioningProps} color={defaultColor} />
-                )}
+                {(isCollapsed || persistentBeak) && <Beak {...beakPositioningProps} color={defaultColor} />}
                 <div
                   className={classNames.entityHost}
-                  ref={this.props.hoistedProps.entityHost}
+                  ref={entityHost}
                   tabIndex={-1}
                   data-is-focusable={true}
                   role="dialog"
@@ -588,12 +532,8 @@ class CoachmarkBaseClass extends React.Component<ICoachmarkPropsClassProps, {}> 
                     ),
                   ]}
                   <FocusTrapZone isClickableOutsideFocusTrap={true} forceFocusInsideTrap={false}>
-                    <div className={classNames.entityInnerHost} ref={this.props.hoistedProps.entityInnerHostElementRef}>
-                      <div
-                        className={classNames.childrenContainer}
-                        ref={this._childrenContainer}
-                        aria-hidden={isCollapsed}
-                      >
+                    <div className={classNames.entityInnerHost} ref={entityInnerHostElementRef}>
+                      <div className={classNames.childrenContainer} aria-hidden={isCollapsed}>
                         {children}
                       </div>
                     </div>
@@ -605,39 +545,39 @@ class CoachmarkBaseClass extends React.Component<ICoachmarkPropsClassProps, {}> 
         </div>
       </PositioningContainer>
     );
-  }
+  },
+);
+CoachmarkBase.displayName = COMPONENT_NAME;
 
-  private _getBounds(): IRectangle | undefined {
-    const { isPositionForced, positioningContainerProps } = this.props;
-    if (isPositionForced) {
-      // If directionalHint direction is the top or bottom auto edge, then we want to set the left/right bounds
-      // to the window x-axis to have auto positioning work correctly.
-      if (
-        positioningContainerProps &&
-        (positioningContainerProps.directionalHint === DirectionalHint.topAutoEdge ||
-          positioningContainerProps.directionalHint === DirectionalHint.bottomAutoEdge)
-      ) {
-        return {
-          left: 0,
-          top: -Infinity,
-          bottom: Infinity,
-          right: window.innerWidth,
-          width: window.innerWidth,
-          height: Infinity,
-        };
-      } else {
-        return {
-          left: -Infinity,
-          top: -Infinity,
-          bottom: Infinity,
-          right: Infinity,
-          width: Infinity,
-          height: Infinity,
-        };
-      }
+function getBounds({ isPositionForced, positioningContainerProps }: ICoachmarkProps): IRectangle | undefined {
+  if (isPositionForced) {
+    // If directionalHint direction is the top or bottom auto edge, then we want to set the left/right bounds
+    // to the window x-axis to have auto positioning work correctly.
+    if (
+      positioningContainerProps &&
+      (positioningContainerProps.directionalHint === DirectionalHint.topAutoEdge ||
+        positioningContainerProps.directionalHint === DirectionalHint.bottomAutoEdge)
+    ) {
+      return {
+        left: 0,
+        top: -Infinity,
+        bottom: Infinity,
+        right: window.innerWidth,
+        width: window.innerWidth,
+        height: Infinity,
+      };
     } else {
-      return undefined;
+      return {
+        left: -Infinity,
+        top: -Infinity,
+        bottom: Infinity,
+        right: Infinity,
+        width: Infinity,
+        height: Infinity,
+      };
     }
+  } else {
+    return undefined;
   }
 }
 
