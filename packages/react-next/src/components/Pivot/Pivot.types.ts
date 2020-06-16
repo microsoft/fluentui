@@ -106,9 +106,9 @@ export interface IPivotStyles {
    */
   root: IStyle;
   link: IStyle;
-  linkContent: IStyle;
+  linkInMenu: IStyle;
   linkIsSelected: IStyle;
-  menuLink: IStyle;
+  linkContent: IStyle;
   text: IStyle;
   count: IStyle;
   icon: IStyle;

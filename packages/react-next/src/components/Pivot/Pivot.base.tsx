@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { findDOMNode } from 'react-dom';
+import * as ReactDOM from 'react-dom';
 import { KeyCodes, getNativeProps, divProperties, classNamesFunction, warn } from '../../Utilities';
 import { CommandButton } from '../../Button';
 import { IPivotProps, IPivotStyleProps, IPivotStyles, IPivot } from './Pivot.types';
@@ -97,11 +97,10 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef(
       renderLinkCollection: PivotLinkCollection,
       link: IPivotItemProps,
       renderPivotLinkSelectedKey: string | null | undefined,
-      isMenu?: boolean,
+      className?: string,
     ): JSX.Element => {
-      const { itemKey, headerButtonProps } = link;
+      const { itemKey, headerButtonProps, onRenderItemLink } = link;
       const tabId = renderLinkCollection.keyToTabIdMapping[itemKey!];
-      const { onRenderItemLink } = link;
       let linkContent: JSX.Element | null;
       const isSelected: boolean = renderPivotLinkSelectedKey === itemKey;
 
@@ -120,7 +119,7 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef(
           {...headerButtonProps}
           id={tabId}
           key={itemKey}
-          className={css(isMenu ? classNames.menuLink : classNames.link, isSelected && classNames.linkIsSelected)}
+          className={css(className || classNames.link, isSelected && classNames.linkIsSelected)}
           onClick={onLinkClick.bind(this, itemKey)}
           onKeyDown={onKeyDown.bind(this, itemKey)}
           aria-label={link.ariaLabel}
@@ -129,7 +128,6 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef(
           name={link.headerText}
           keytipProps={link.keytipProps}
           data-content={contentString}
-          data-is-pinned={isSelected ? 'true' : undefined}
         >
           {linkContent}
         </CommandButton>
@@ -181,54 +179,6 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef(
       );
     };
 
-    const [overflowIndex, setOverflowIndex] = React.useState<number | undefined>(undefined);
-
-    const overflowContainerRef = React.useRef<HTMLElement | null>();
-    const overflowMenuRef = React.useRef<HTMLElement | null>();
-    const setOverflowMenuRef = (button: React.Component | null) => {
-      const node = findDOMNode(button);
-      overflowMenuRef.current = node instanceof HTMLElement ? node : null;
-      overflowContainerRef.current = overflowMenuRef.current?.parentElement;
-    };
-
-    useOverflow(overflowContainerRef, overflowMenuRef, {
-      onOverflowChanged: (newOverflowIndex: number | undefined) => {
-        if (overflowIndex !== newOverflowIndex) {
-          setOverflowIndex(newOverflowIndex);
-        }
-      },
-    });
-
-    const renderOverflowMenu = (): JSX.Element => {
-      const menuItems: IContextualMenuItem[] = [];
-
-      if (overflowIndex !== undefined) {
-        for (let i = overflowIndex; i < linkCollection.links.length; i++) {
-          const link = linkCollection.links[i];
-          const { itemKey, headerText, itemCount, itemIcon } = link;
-          const isSelected = selectedKey === itemKey;
-
-          menuItems.push({
-            key: itemKey || i + '',
-            text: (headerText ? headerText : '') + (itemCount !== undefined ? ' (' + itemCount + ')' : ''),
-            iconProps: { iconName: itemIcon },
-            className: css(classNames.menuLink, isSelected && classNames.linkIsSelected),
-            onClick: updateSelectedItem.bind(this, itemKey),
-            onRender: renderPivotLink.bind(this, linkCollection, link, selectedKey, /*isMenu:*/ true),
-          });
-        }
-      }
-
-      return (
-        <CommandButton
-          className={classNames.overflowMenu}
-          ref={setOverflowMenuRef}
-          menuProps={{ items: menuItems, doNotLayer: true }}
-          menuIconProps={{ iconName: 'More' }}
-        />
-      );
-    };
-
     const isKeyValid = (itemKey: string | null | undefined): boolean => {
       return itemKey !== undefined && itemKey !== null && linkCollection.keyToIndexMapping[itemKey] !== undefined;
     };
@@ -253,6 +203,37 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef(
     const renderedSelectedKey = getSelectedKey();
     const items = linkCollection.links.map(l => renderPivotLink(linkCollection, l, renderedSelectedKey));
 
+    const [overflowIndex, setOverflowIndex] = React.useState<number | undefined>(undefined);
+    const overflowContainerRef = React.useRef<HTMLElement | null>();
+    const overflowMenuRef = React.useRef<HTMLElement | null>();
+    const setOverflowMenuRef = (button: React.Component | null) => {
+      const node = ReactDOM.findDOMNode(button);
+      overflowMenuRef.current = node instanceof HTMLElement ? node : null;
+      overflowContainerRef.current = overflowMenuRef.current?.parentElement;
+    };
+
+    const overflowMenuItems: IContextualMenuItem[] = [];
+    if (overflowIndex !== undefined) {
+      for (let i = overflowIndex; i < linkCollection.links.length; i++) {
+        const link = linkCollection.links[i];
+        overflowMenuItems.push({
+          key: link.itemKey || `${i}`,
+          onRender: renderPivotLink.bind(this, linkCollection, link, renderedSelectedKey, classNames.linkInMenu),
+        });
+      }
+    }
+
+    useOverflow(overflowContainerRef, overflowMenuRef, {
+      onOverflowIndexChanged: setOverflowIndex,
+      isPinned: (ele: HTMLElement) => ele.className.includes(classNames.linkIsSelected),
+      setOverflowMenuVisible: (menu: HTMLElement, visible: boolean) => {
+        const ele = menu.querySelector(`.${classNames.overflowMenu}`);
+        if (ele instanceof HTMLElement) {
+          ele.style.visibility = visible ? 'visible' : 'hidden';
+        }
+      },
+    });
+
     return (
       <div role="toolbar" {...divProps} ref={ref}>
         <FocusZone
@@ -263,7 +244,12 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef(
         >
           <div>
             {items}
-            {renderOverflowMenu()}
+            <CommandButton
+              className={classNames.overflowMenu}
+              ref={setOverflowMenuRef}
+              menuProps={{ items: overflowMenuItems, alignTargetEdge: true, doNotLayer: true }}
+              menuIconProps={{ iconName: 'More' }}
+            />
           </div>
         </FocusZone>
         {renderedSelectedKey &&

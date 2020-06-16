@@ -4,8 +4,6 @@
 @import '../../common/focusBorder';
 @import '../../common/common';
 
-$CONTEXTUAL_MENU_ITEM_HEIGHT: 36px;
-
 .root {
   @include fonts-medium;
   @include normalize;
@@ -15,7 +13,7 @@ $CONTEXTUAL_MENU_ITEM_HEIGHT: 36px;
 }
 
 .link,
-.menuLink,
+.linkInMenu,
 .overflowMenu {
   @include fonts-medium;
   color: var($semanticColorsActionLink);
@@ -69,6 +67,7 @@ $CONTEXTUAL_MENU_ITEM_HEIGHT: 36px;
   }
 }
 
+// Additional styles for Links NOT in the overflow menu
 .link,
 .overflowMenu {
   text-align: center;
@@ -170,32 +169,17 @@ $CONTEXTUAL_MENU_ITEM_HEIGHT: 36px;
   }
 }
 
-.menuLink {
-  width: '100%';
+// Additional styles for links IN the overflow menu
+.linkInMenu {
+  text-align: left;
+  width: 100%;
   height: $CONTEXTUAL_MENU_ITEM_HEIGHT;
   line-height: $CONTEXTUAL_MENU_ITEM_HEIGHT;
 }
 
-// .menuLink :global(.ms-ContextualMenu-link) {
-
-//   &:hover {
-//     // background-color: var($semanticColorsButtonBackgroundHovered);
-//     // color: var($semanticColorsButtonTextHovered);
-//     cursor: pointer;
-//   }
-// }
-
-// .menuLink.linkIsSelected :global(.ms-ContextualMenu-link) {
-//   font-weight: $fontWeightSemibold;
-
-//   &:before {
-//     background-color: var($semanticColorsInputBackgroundChecked);
-//     @include high-contrast {
-//       color: HighlightText;
-//       background-color: Highlight;
-//     }
-//   }
-// }
+.overflowMenu {
+  visibility: hidden;
+}
 
 .linkContent {
   flex: 0 1 100%;

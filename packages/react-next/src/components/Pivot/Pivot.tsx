@@ -39,7 +39,7 @@ const getStaticStylesMemoized = memoizeFunction(
       linkContent: css(classes.linkContent, globalClassNames.linkContent, ...modifierClasses),
       // linkIsSelected is used as a modifier class, so it should not include ...modifierClasses
       linkIsSelected: css(classes.linkIsSelected, globalClassNames.linkIsSelected),
-      menuLink: css(classes.menuLink, ...modifierClasses),
+      linkInMenu: css(classes.linkInMenu, ...modifierClasses),
       text: css(classes.text, globalClassNames.text, ...modifierClasses),
       count: css(classes.count, globalClassNames.count, ...modifierClasses),
       icon: css(globalClassNames.icon, ...modifierClasses),

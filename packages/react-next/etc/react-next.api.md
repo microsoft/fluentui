@@ -502,9 +502,9 @@ export interface IPivotStyles {
     // (undocumented)
     linkContent: IStyle;
     // (undocumented)
-    linkIsSelected: IStyle;
+    linkInMenu: IStyle;
     // (undocumented)
-    menuLink: IStyle;
+    linkIsSelected: IStyle;
     // (undocumented)
     overflowMenu: IStyle;
     root: IStyle;
