@@ -1,6 +1,6 @@
 import { DayOfWeek, MonthOfYear, FirstWeekOfYear, DateRangeType } from '../dateValues/DateValues';
 import TimeConstants from '../dateValues/TimeConstants';
-import { assertNever } from '@uifabric/utilities';
+
 /**
  * Returns a date offset from the given date by the specified number of days.
  * @param date - The origin date
@@ -195,7 +195,7 @@ export function getDateRangeArray(
       break;
 
     default:
-      return assertNever(dateRangeType);
+      throw new Error('Unexpected object: ' + dateRangeType);
   }
 
   // Populate the dates array with the dates in range
