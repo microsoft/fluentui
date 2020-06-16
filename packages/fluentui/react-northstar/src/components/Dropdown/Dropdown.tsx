@@ -248,6 +248,9 @@ export interface DropdownProps extends UIComponentProps<DropdownProps, DropdownS
 
   /** Sets the dropdown's currently selected value(s) in controlled mode. */
   value?: ShorthandValue<DropdownItemProps> | ShorthandCollection<DropdownItemProps>;
+
+  /** Dropdown can have errors status  */
+  error?: boolean;
 }
 
 export interface DropdownState {
@@ -310,6 +313,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
     defaultSearchQuery: PropTypes.string,
     defaultValue: PropTypes.oneOfType([customPropTypes.itemShorthand, customPropTypes.collectionShorthand]),
     disabled: PropTypes.bool,
+    error: PropTypes.bool,
     fluid: PropTypes.bool,
     getA11ySelectionMessage: PropTypes.object,
     getA11yStatusMessage: PropTypes.func,

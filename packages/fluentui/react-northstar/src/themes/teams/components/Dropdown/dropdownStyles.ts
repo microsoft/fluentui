@@ -76,6 +76,7 @@ const dropdownStyles: ComponentSlotStylesPrepared<DropdownPropsAndState, Dropdow
     borderRadius: v.containerBorderRadius,
     ...(p.open && p.position === 'above' && { borderRadius: v.openAboveContainerBorderRadius }),
     ...(p.open && p.position === 'below' && { borderRadius: v.openBelowContainerBorderRadius }),
+    ...(p.error && { border: `${pxToRem(1)} solid ${v.borderError}` }),
     ':hover': {
       backgroundColor: v.backgroundColorHover,
       borderColor: v.borderColorHover,

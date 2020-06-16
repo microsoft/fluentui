@@ -335,6 +335,11 @@ class Sidebar extends React.Component<any, any> {
         public: true,
       },
       {
+        key: 'form-validation',
+        title: { content: 'Form Validation', as: NavLink, to: '/prototype-form-validation' },
+        public: true,
+      },
+      {
         key: 'dropdowns',
         title: { content: 'Dropdowns', as: NavLink, to: '/prototype-dropdowns' },
         public: false,

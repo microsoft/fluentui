@@ -53,6 +53,7 @@ import HexagonalAvatarPrototype from './prototypes/hexagonalAvatar';
 import TablePrototype from './prototypes/table';
 import VirtualizedTablePrototype from './prototypes/VirtualizedTable';
 import { PerfDataProvider } from './components/ComponentDoc/PerfChart';
+import FormValidationPrototype from './prototypes/FormValidation';
 
 const Routes = () => (
   // Remove trailing slash
@@ -88,6 +89,7 @@ const Routes = () => (
             <Route exact path="/prototype-hexagonal-avatar" component={HexagonalAvatarPrototype} />
             <Route exact path="/prototype-table" component={TablePrototype} />
             <Route exact path="/prototype-nested-popups-and-dialogs" component={NestedPopupsAndDialogsPrototype} />
+            <Route exact path="/prototype-form-validation" component={FormValidationPrototype} />
             <Route exact path="/virtualized-tree" component={VirtualizedTreePrototype} />
             <Route exact path="/virtualized-table" component={VirtualizedTablePrototype} />
             <Route exact path="/prototype-copy-to-clipboard" component={CopyToClipboardPrototype} />
