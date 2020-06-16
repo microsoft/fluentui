@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 
 import { Icon } from './index';
-import { TestImages } from 'office-ui-fabric-react/lib/common/TestImages';
+import { TestImages } from '@uifabric/example-data';
 
 describe('Icon', () => {
   it('renders Icon correctly', () => {
