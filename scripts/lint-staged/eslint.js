@@ -74,6 +74,7 @@ async function runEslintOnFilesGroupedPerPackage(filesGroupedByPackage) {
         cwd: packagePath,
         extensions: configHelpers.extensions,
         fix: true,
+        cache: true,
       });
       process.chdir(cwd);
 

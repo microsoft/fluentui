@@ -15,7 +15,8 @@
     "**/.git": true,
     "**/.DS_Store": true,
     "**/coverage": true,
-    "**/*.scss.ts": true
+    "**/*.scss.ts": true,
+    "**/.eslintcache": true
   },
   "files.watcherExclude": {
     "**/.git": true,
