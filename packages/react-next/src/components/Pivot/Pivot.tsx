@@ -44,7 +44,7 @@ const getStaticStylesMemoized = memoizeFunction(
       count: css(classes.count, globalClassNames.count, ...modifierClasses),
       icon: css(globalClassNames.icon, ...modifierClasses),
       itemContainer: css(classes.itemContainer, ...modifierClasses),
-      overflowMenu: css(classes.overflowMenu, ...modifierClasses),
+      overflowMenuButton: css(classes.overflowMenuButton, ...modifierClasses),
     };
   },
 );

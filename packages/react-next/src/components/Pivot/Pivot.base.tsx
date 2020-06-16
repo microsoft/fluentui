@@ -213,7 +213,7 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef(
       isPinned: ele => ele.className.includes(classNames.linkIsSelected),
       setItemDisplayed: (ele, displayed) => (ele.style.display = displayed ? '' : 'none'),
       setOverflowMenuButtonVisible: (ele, visible) => {
-        const menu = ele.querySelector(`.${classNames.overflowMenu}`);
+        const menu = ele.querySelector(`.${classNames.overflowMenuButton}`);
         if (menu instanceof HTMLElement) {
           menu.style.visibility = visible ? 'visible' : 'hidden';
         }
@@ -239,15 +239,13 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef(
           className={classNames.root}
           role="tablist"
         >
-          <div>
-            {items}
-            <CommandButton
-              className={classNames.overflowMenu}
-              ref={setOverflowMenuButtonRef}
-              menuProps={{ items: overflowMenuItems, alignTargetEdge: true, doNotLayer: true }}
-              menuIconProps={{ iconName: 'More' }}
-            />
-          </div>
+          {items}
+          <CommandButton
+            className={classNames.overflowMenuButton}
+            ref={setOverflowMenuButtonRef}
+            menuProps={{ items: overflowMenuItems, alignTargetEdge: true, doNotLayer: true }}
+            menuIconProps={{ iconName: 'More' }}
+          />
         </FocusZone>
         {renderedSelectedKey &&
           linkCollection.links.map(

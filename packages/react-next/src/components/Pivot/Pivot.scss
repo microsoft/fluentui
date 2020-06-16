@@ -14,7 +14,7 @@
 
 .link,
 .linkInMenu,
-.overflowMenu {
+.overflowMenuButton {
   @include fonts-medium;
   color: var($semanticColorsActionLink);
   padding: 0 8px;
@@ -69,7 +69,7 @@
 
 // Additional styles for Links NOT in the overflow menu
 .link,
-.overflowMenu {
+.overflowMenuButton {
   text-align: center;
   display: inline-block;
   line-height: 44px;
@@ -177,7 +177,7 @@
   line-height: $CONTEXTUAL_MENU_ITEM_HEIGHT;
 }
 
-.overflowMenu {
+.overflowMenuButton {
   visibility: hidden;
 }
 

@@ -112,7 +112,7 @@ export interface IPivotStyles {
   text: IStyle;
   count: IStyle;
   icon: IStyle;
-  overflowMenu: IStyle;
+  overflowMenuButton: IStyle;
   itemContainer?: IStyle;
 }
 
