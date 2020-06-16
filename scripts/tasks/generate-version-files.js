@@ -2,10 +2,10 @@
 
 const { spawnSync } = require('child_process');
 const path = require('path');
-const fs = require('fs');
+const fs = require('fs-extra');
 const glob = require('glob');
 
-const generateOnly = process.argv.indexOf('-g') > -1;
+const generateOnly = process.argv.includes('-g');
 const beachballBin = require.resolve('beachball/bin/beachball.js');
 const bumpCmd = [process.execPath, beachballBin, 'bump'];
 const findGitRoot = require('../monorepo/findGitRoot');
@@ -65,28 +65,29 @@ module.exports = function generateVersionFiles() {
   const packageJsons = glob.sync('+(packages|apps)/*/package.json', { cwd: gitRoot });
   packageJsons.forEach(packageJsonPath => {
     const versionFile = path.join(gitRoot, path.dirname(packageJsonPath), 'src/version.ts');
-    const packageJson = JSON.parse(fs.readFileSync(path.join(gitRoot, packageJsonPath), 'utf-8'));
+    const packageJson = fs.readJSONSync(path.join(gitRoot, packageJsonPath));
     const dependencies = packageJson.dependencies || {};
 
     if (
       !fs.existsSync(path.dirname(versionFile)) ||
-      packageJsonPath.indexOf('set-version') > -1 ||
+      packageJsonPath.includes('set-version') ||
       !dependencies['@uifabric/set-version']
     ) {
       return;
     }
 
     let shouldGenerate = true;
-    if (fs.existsSync(versionFile) && process.argv.indexOf('-f') < 0) {
+    const setCurrentVersion = `setVersion('${packageJson.name}', '${packageJson.version}');`;
+    if (fs.existsSync(versionFile) && process.argv.includes('-f')) {
       const originVersionFileContent = fs.readFileSync(versionFile).toString();
-      shouldGenerate = originVersionFileContent.indexOf(`${packageJson.name}@${packageJson.version}`) < 0;
+      shouldGenerate = !originVersionFileContent.includes(setCurrentVersion);
     }
 
     if (shouldGenerate) {
-      updatedVersionContents[versionFile] = `// ${packageJson.name}@${packageJson.version}
-// Do not modify this file, the file is generated as part of publish. The checked in version is a placeholder only.
+      updatedVersionContents[versionFile] = `// Do not modify this file; it is generated as part of publish.
+// The checked in version is a placeholder only and will not be updated.
 import { setVersion } from '@uifabric/set-version';
-setVersion('${packageJson.name}', '${packageJson.version}');`;
+${setCurrentVersion}`;
     }
   });
 

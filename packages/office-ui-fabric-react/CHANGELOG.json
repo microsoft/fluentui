@@ -2,6 +2,50 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Tue, 16 Jun 2020 17:35:36 GMT",
+      "tag": "office-ui-fabric-react_v7.120.2",
+      "version": "7.120.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "Clean up devDependencies and clarify version file placeholder comments",
+            "author": "elcraig@microsoft.com",
+            "commit": "695c29fcf6f07a903e7d849098c5e6c0ec178b3d",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 16 Jun 2020 12:40:00 GMT",
+      "tag": "office-ui-fabric-react_v7.120.2",
+      "version": "7.120.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Prevent ContextualMenu from destroying existing menu items on every repaint",
+            "author": "tmichon@microsoft.com",
+            "commit": "eb0a36ed6ad4719c7705d3b4735b9d54f938ab2c",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "fix height and width check in the image component",
+            "author": "nif_tony@outlook.com",
+            "commit": "bcf99c7fdb8758c25edf22aa736ed4a1cf0ac824",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "none": [
+          {
+            "comment": "_common.scss: Update import statement to not depend on dist folder (which doesn't exist until full build)",
+            "author": "jslone@microsoft.com",
+            "commit": "6bb7665448c135f84ab852ad264213670f7685cd",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 15 Jun 2020 12:45:48 GMT",
       "tag": "office-ui-fabric-react_v7.120.1",
       "version": "7.120.1",

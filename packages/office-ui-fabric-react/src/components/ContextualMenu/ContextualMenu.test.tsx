@@ -601,7 +601,7 @@ describe('ContextualMenu', () => {
       },
       {
         text: 'TestText 2',
-        key: 'TestKey3',
+        key: 'TestKey2',
       },
       {
         text: 'TestText 3',

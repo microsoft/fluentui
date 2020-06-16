@@ -6,6 +6,7 @@ const config = createConfig({
 
   moduleNameMapper: {
     'office-ui-fabric-react/lib/(.*)$': 'office-ui-fabric-react/lib-commonjs/$1',
+    '@fluentui/date-time-utilities/lib/(.*)$': '@fluentui/date-time-utilities/lib-commonjs/$1',
   },
 
   snapshotSerializers: [resolveMergeStylesSerializer()],
