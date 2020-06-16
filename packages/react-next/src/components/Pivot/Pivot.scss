@@ -12,6 +12,7 @@
   white-space: nowrap;
 }
 
+// Shared styles for tab links and links in the overflow menu
 .link,
 .linkInMenu,
 .overflowMenuButton {
@@ -75,6 +76,10 @@
   line-height: 44px;
   height: 44px;
   margin-right: 8px;
+
+  &[data-move-to-overflow='true'] {
+    display: none;
+  }
 
   &:before {
     background-color: transparent;
@@ -169,7 +174,7 @@
   }
 }
 
-// Additional styles for links IN the overflow menu
+// Additional styles for links in the overflow menu
 .linkInMenu {
   text-align: left;
   width: 100%;
@@ -179,6 +184,9 @@
 
 .overflowMenuButton {
   visibility: hidden;
+  &[data-show-overflow='true'] {
+    visibility: visible;
+  }
 }
 
 .linkContent {

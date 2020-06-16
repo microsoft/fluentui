@@ -211,11 +211,11 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef(
 
     const overflowIndex = useOverflow(overflowMenuButtonRef, {
       isPinned: ele => ele.className.includes(classNames.linkIsSelected),
-      setItemDisplayed: (ele, displayed) => (ele.style.display = displayed ? '' : 'none'),
+      setItemDisplayed: (ele, displayed) => (ele.dataset.moveToOverflow = `${!displayed}`),
       setOverflowMenuButtonVisible: (ele, visible) => {
-        const menu = ele.querySelector(`.${classNames.overflowMenuButton}`);
-        if (menu instanceof HTMLElement) {
-          menu.style.visibility = visible ? 'visible' : 'hidden';
+        const menuButton = ele.querySelector(`.${classNames.overflowMenuButton}`);
+        if (menuButton instanceof HTMLElement) {
+          menuButton.dataset.showOverflow = `${visible}`;
         }
       },
     });
