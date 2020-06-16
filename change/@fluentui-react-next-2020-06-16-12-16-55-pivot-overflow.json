@@ -1,5 +1,6 @@
 {
   "type": "prerelease",
+  "comment": "Implement overflow for Pivot when the tabs don't all fit",
   "packageName": "@fluentui/react-next",
   "email": "behowell@microsoft.com",
   "dependentChangeType": "patch",
