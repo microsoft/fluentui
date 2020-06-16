@@ -463,8 +463,8 @@ describe('SpinButton', () => {
     ReactTestUtils.Simulate.focus(inputDOM);
     ReactTestUtils.Simulate.input(inputDOM, mockEvent('99'));
     ReactTestUtils.Simulate.keyDown(inputDOM, { which: KeyCodes.enter });
-    expect(keyCode).toBe(KeyCodes.enter);
     expect(onValidate).toBeCalled();
+    expect(keyCode).toBe(KeyCodes.enter);
     ReactTestUtils.Simulate.blur(inputDOM);
     expect(onValidate).toHaveBeenCalledTimes(1);
   });

@@ -42,7 +42,7 @@ const useComponentRef = (
     props.componentRef,
     () => ({
       get value() {
-        return props.value === undefined ? value : props.value;
+        return value;
       },
       focus() {
         if (input.current) {
@@ -64,10 +64,18 @@ export const SpinButtonBase = (props: ISpinButtonProps) => {
   // as active when up/down arrow is pressed
   const [keyboardSpinDirection, setKeyboardSpinDirection] = React.useState(KeyboardSpinDirection.notSpinning);
 
+  const safeSetTimeout = useSetTimeout();
+
   const callCalculatePrecision = (calculatePrecisionProps: ISpinButtonProps) => {
     const { precision = Math.max(calculatePrecision(calculatePrecisionProps.step!), 0) } = calculatePrecisionProps;
     return precision;
   };
+
+  let { value = props.defaultValue } = props;
+  if (value === undefined) {
+    value = typeof props.min === 'number' ? String(props.min) : '0';
+  }
+  this._lastValidValue = value;
 
   const [state] = React.useState<ISpinButtonState>({
     inputId: getId('input'),
@@ -126,7 +134,7 @@ export const SpinButtonBase = (props: ISpinButtonProps) => {
 
   let currentValue: string = props.value !== undefined ? props.value : String(props.min);
 
-  state.lastValidValue = value;
+  // state.lastValidValue = value;
 
   if (props.defaultValue) {
     currentValue = String(Math.max(props.min as number, Math.min(props.max as number, Number(props.defaultValue))));
@@ -134,6 +142,7 @@ export const SpinButtonBase = (props: ISpinButtonProps) => {
 
   React.useEffect(() => {
     if (props.value !== undefined) {
+      // Value from props is considered pre-validated
       state.lastValidValue = props.value;
       setValue(currentValue);
     }
@@ -252,20 +261,17 @@ export const SpinButtonBase = (props: ISpinButtonProps) => {
     stepDelay: number,
     stepFunction: (value: string) => string | void,
   ): void => {
-    const safeSetTimeout = useSetTimeout();
     const newValue: string | void = stepFunction(value || '');
     if (newValue !== undefined) {
-      state.lastValidValue = newValue;
       setValue(newValue);
     }
 
     if (state.spinningByMouse !== shouldSpin) {
       state.spinningByMouse = shouldSpin;
     }
-
     if (shouldSpin) {
-      safeSetTimeout(() => {
-        updateValue(shouldSpin, stepDelay, stepFunction);
+      state.currentStepFunctionHandle = safeSetTimeout(() => {
+        updateValue(shouldSpin, state.stepDelay, stepFunction);
       }, stepDelay);
     }
   };
