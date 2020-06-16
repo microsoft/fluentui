@@ -2,7 +2,8 @@ import * as React from 'react';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
 import { ReactWrapper, mount } from 'enzyme';
-import { SpinButton, ISpinButtonState } from './SpinButton';
+import { ISpinButtonState } from './SpinButton.base';
+import { SpinButton } from './SpinButton';
 import { ISpinButton, ISpinButtonProps } from './SpinButton.types';
 import { KeyCodes, resetIds } from '../../Utilities';
 import { mockEvent } from 'office-ui-fabric-react/lib/common/testUtilities';
@@ -57,8 +58,8 @@ describe('SpinButton', () => {
 
     const inputDOM = wrapper.getDOMNode().querySelector('input')!;
 
-    expect(inputDOM.getAttribute('aria-valuemin')).toBe(String(SpinButton.defaultProps.min));
-    expect(inputDOM.getAttribute('aria-valuemax')).toBe(String(SpinButton.defaultProps.max));
+    expect(inputDOM.getAttribute('aria-valuemin')).toBe(0);
+    expect(inputDOM.getAttribute('aria-valuemax')).toBe(100);
   });
 
   it('respects min and max in DOM', () => {
