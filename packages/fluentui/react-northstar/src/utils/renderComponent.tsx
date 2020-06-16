@@ -11,6 +11,7 @@ import {
 } from '@fluentui/react-bindings';
 import {
   emptyTheme,
+  noopRenderer,
   ComponentSlotStylesResolved,
   ComponentVariablesObject,
   DebugData,
@@ -80,7 +81,7 @@ const renderComponent = <P extends {}>(
     disableAnimations: context.disableAnimations || false,
     primaryDisplayName: displayName,
     props: stateAndProps,
-    renderer: context.renderer || { renderRule: () => '' },
+    renderer: context.renderer || noopRenderer,
     rtl,
     saveDebug,
     theme: context.theme || emptyTheme,
