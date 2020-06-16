@@ -5,6 +5,7 @@
 ```ts
 
 import { ComposePreparedOptions } from '@fluentui/react-compose';
+import { IBaseProps } from 'office-ui-fabric-react/lib/Utilities';
 import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import { IButtonProps as IButtonProps_2 } from 'office-ui-fabric-react/lib/components/Button/Button.types';
 import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
@@ -13,6 +14,8 @@ import { ICustomizerContext } from 'office-ui-fabric-react/lib/Utilities';
 import { IFocusZoneProps } from '@fluentui/react-focus';
 import { IIconProps } from 'office-ui-fabric-react/lib/Icon';
 import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
+import { IPositionedData } from 'office-ui-fabric-react/lib/utilities/positioning';
+import { IRectangle } from 'office-ui-fabric-react/lib/Utilities';
 import { IRefObject } from 'office-ui-fabric-react/lib/Utilities';
 import { IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { ISettings } from 'office-ui-fabric-react/lib/Utilities';
@@ -20,9 +23,12 @@ import { ISettingsFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 import { IStyleSet } from 'office-ui-fabric-react/lib/Styling';
+import { ITeachingBubble } from 'office-ui-fabric-react/lib/TeachingBubble';
 import { ITheme } from 'office-ui-fabric-react/lib/Styling';
+import { Point } from 'office-ui-fabric-react/lib/Utilities';
 import { Position } from 'office-ui-fabric-react/lib/utilities/positioning';
 import * as React from 'react';
+import { RectangleEdge } from 'office-ui-fabric-react/lib/utilities/positioning';
 import { ThemeProviderProps } from '@fluentui/react-theme-provider';
 import { useTheme } from '@fluentui/react-theme-provider';
 
@@ -31,6 +37,33 @@ export const Checkbox: import("@fluentui/react-compose").ComponentWithAs<"div", 
 
 // @public (undocumented)
 export const CheckboxBase: import("@fluentui/react-compose").ComponentWithAs<"div", ICheckboxProps>;
+
+// @public (undocumented)
+export const Coachmark: React.FunctionComponent<ICoachmarkProps>;
+
+// @public (undocumented)
+export const COACHMARK_ATTRIBUTE_NAME = "data-coachmarkid";
+
+// @public (undocumented)
+export class CoachmarkBase extends React.Component<ICoachmarkProps, ICoachmarkState> implements ICoachmark {
+    constructor(props: ICoachmarkProps);
+    // (undocumented)
+    componentDidMount(): void;
+    // (undocumented)
+    componentDidUpdate(prevProps: ICoachmarkProps, prevState: ICoachmarkState): void;
+    // (undocumented)
+    componentWillUnmount(): void;
+    // (undocumented)
+    static defaultProps: Partial<ICoachmarkProps>;
+    // (undocumented)
+    dismiss: (ev?: Event | React.KeyboardEvent<HTMLElement> | React.MouseEvent<HTMLElement, MouseEvent> | undefined) => void;
+    // (undocumented)
+    render(): JSX.Element;
+    // (undocumented)
+    shouldComponentUpdate(newProps: ICoachmarkProps, newState: ICoachmarkState): boolean;
+    // (undocumented)
+    UNSAFE_componentWillReceiveProps(newProps: ICoachmarkProps): void;
+}
 
 // @public (undocumented)
 export const ColorPickerGridCell: React.FunctionComponent<IColorPickerGridCellProps>;
@@ -186,6 +219,109 @@ export interface ICheckboxStyles {
 }
 
 // @public (undocumented)
+export interface ICoachmark {
+    dismiss?: (ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => void;
+}
+
+// @public
+export interface ICoachmarkProps extends React.ClassAttributes<CoachmarkBase> {
+    ariaAlertText?: string;
+    ariaDescribedBy?: string;
+    ariaDescribedByText?: string;
+    ariaLabelledBy?: string;
+    ariaLabelledByText?: string;
+    beaconColorOne?: string;
+    beaconColorTwo?: string;
+    // @deprecated
+    beakHeight?: number;
+    // @deprecated
+    beakWidth?: number;
+    className?: string;
+    // @deprecated
+    collapsed?: boolean;
+    color?: string;
+    componentRef?: IRefObject<ICoachmark>;
+    delayBeforeCoachmarkAnimation?: number;
+    delayBeforeMouseOpen?: number;
+    // @deprecated
+    height?: number;
+    isCollapsed?: boolean;
+    isPositionForced?: boolean;
+    mouseProximityOffset?: number;
+    onAnimationOpenEnd?: () => void;
+    onAnimationOpenStart?: () => void;
+    onDismiss?: (ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => void;
+    onMouseMove?: (e: MouseEvent) => void;
+    persistentBeak?: boolean;
+    positioningContainerProps?: IPositioningContainerProps;
+    preventDismissOnLostFocus?: boolean;
+    preventFocusOnMount?: boolean;
+    styles?: IStyleFunctionOrObject<ICoachmarkStyleProps, ICoachmarkStyles>;
+    target: HTMLElement | string | null;
+    // @deprecated
+    teachingBubbleRef?: ITeachingBubble;
+    theme?: ITheme;
+    // @deprecated
+    width?: number;
+}
+
+// @public (undocumented)
+export interface ICoachmarkState {
+    alertText?: string;
+    beakBottom?: string;
+    beakLeft?: string;
+    beakRight?: string;
+    beakTop?: string;
+    entityInnerHostRect: IEntityRect;
+    isBeaconAnimating: boolean;
+    isCollapsed: boolean;
+    isMeasured: boolean;
+    isMeasuring: boolean;
+    isMouseInProximity: boolean;
+    targetAlignment?: RectangleEdge;
+    targetPosition?: RectangleEdge;
+    transformOrigin?: string;
+}
+
+// @public
+export interface ICoachmarkStyleProps {
+    beaconColorOne?: string;
+    beaconColorTwo?: string;
+    className?: string;
+    // @deprecated
+    collapsed?: boolean;
+    color?: string;
+    delayBeforeCoachmarkAnimation?: string;
+    entityHostHeight?: string;
+    entityHostWidth?: string;
+    height?: string;
+    isBeaconAnimating: boolean;
+    isCollapsed: boolean;
+    isMeasured: boolean;
+    isMeasuring: boolean;
+    theme?: ITheme;
+    transformOrigin?: string;
+    width?: string;
+}
+
+// @public
+export interface ICoachmarkStyles {
+    ariaContainer?: IStyle;
+    childrenContainer: IStyle;
+    collapsed?: IStyle;
+    entityHost?: IStyle;
+    entityInnerHost: IStyle;
+    pulsingBeacon?: IStyle;
+    root?: IStyle;
+    rotateAnimationLayer?: IStyle;
+    scaleAnimationLayer?: IStyle;
+    translateAnimationContainer?: IStyle;
+}
+
+// @public @deprecated (undocumented)
+export type ICoachmarkTypes = ICoachmarkProps;
+
+// @public (undocumented)
 export interface IColorCellProps {
     color?: string;
     id: string;
@@ -249,6 +385,14 @@ export interface ICustomizerProps {
     disableThemeProvider?: boolean;
     scopedSettings?: ISettings | ISettingsFunction;
     settings?: ISettings | ISettingsFunction;
+}
+
+// @public
+export interface IEntityRect {
+    // (undocumented)
+    height: number;
+    // (undocumented)
+    width: number;
 }
 
 // @public (undocumented)
@@ -592,6 +736,52 @@ export interface IPopupProps extends React.HTMLAttributes<HTMLDivElement> {
     // @deprecated
     shouldRestoreFocus?: boolean;
 }
+
+// @public (undocumented)
+export interface IPositioningContainer {
+}
+
+// @public (undocumented)
+export interface IPositioningContainerProps extends IBaseProps<IPositioningContainer> {
+    ariaDescribedBy?: string;
+    ariaLabel?: string;
+    ariaLabelledBy?: string;
+    backgroundColor?: string;
+    bounds?: IRectangle;
+    className?: string;
+    componentRef?: IRefObject<IPositioningContainer>;
+    coverTarget?: boolean;
+    // Warning: (ae-forgotten-export) The symbol "DirectionalHint" needs to be exported by the entry point index.d.ts
+    directionalHint?: DirectionalHint;
+    directionalHintFixed?: boolean;
+    directionalHintForRTL?: DirectionalHint;
+    doNotLayer?: boolean;
+    finalHeight?: number;
+    minPagePadding?: number;
+    offsetFromTarget?: number;
+    onDismiss?: (ev?: any) => void;
+    onLayerMounted?: () => void;
+    onPositioned?: (positions?: IPositionedData) => void;
+    positioningContainerMaxHeight?: number;
+    positioningContainerWidth?: number;
+    preventDismissOnScroll?: boolean;
+    role?: string;
+    setInitialFocus?: boolean;
+    target?: HTMLElement | string | MouseEvent | Point | null;
+    // @deprecated
+    targetPoint?: Point;
+    // @deprecated
+    useTargetPoint?: boolean;
+}
+
+// @public (undocumented)
+export interface IPositioningContainerState {
+    heightOffset?: number;
+    positions?: IPositionedData;
+}
+
+// @public @deprecated (undocumented)
+export type IPositioningContainerTypes = IPositioningContainerProps;
 
 // @public (undocumented)
 export interface IResizeGroup {
@@ -1174,6 +1364,37 @@ export type PivotLinkSizeType = 'normal' | 'large';
 export const Popup: React.ForwardRefExoticComponent<IPopupProps & React.RefAttributes<HTMLDivElement>>;
 
 // @public (undocumented)
+export class PositioningContainer extends React.Component<IPositioningContainerProps, IPositioningContainerState> implements PositioningContainer {
+    constructor(props: IPositioningContainerProps);
+    // (undocumented)
+    componentDidMount(): void;
+    // (undocumented)
+    componentDidUpdate(): void;
+    // (undocumented)
+    componentWillUnmount(): void;
+    // (undocumented)
+    static defaultProps: IPositioningContainerProps;
+    // @deprecated
+    dismiss: (ev?: Event | React.KeyboardEvent<HTMLElement> | React.MouseEvent<HTMLElement, MouseEvent> | undefined) => void;
+    // (undocumented)
+    protected _dismissOnLostFocus(ev: Event): void;
+    // (undocumented)
+    protected _dismissOnScroll(ev: Event): void;
+    // (undocumented)
+    protected _onComponentDidMount: () => void;
+    // (undocumented)
+    onResize: (ev?: Event | React.KeyboardEvent<HTMLElement> | React.MouseEvent<HTMLElement, MouseEvent> | undefined) => void;
+    // (undocumented)
+    render(): JSX.Element | null;
+    // (undocumented)
+    protected _setInitialFocus: () => void;
+    // (undocumented)
+    UNSAFE_componentWillMount(): void;
+    // (undocumented)
+    UNSAFE_componentWillUpdate(newProps: IPositioningContainerProps): void;
+    }
+
+// @public (undocumented)
 export const ResizeGroup: import("react").ForwardRefExoticComponent<import("./ResizeGroup.types").IResizeGroupProps & import("react").RefAttributes<HTMLDivElement>>;
 
 // @public (undocumented)
@@ -1303,7 +1524,6 @@ export * from "office-ui-fabric-react/lib/Calendar";
 export * from "office-ui-fabric-react/lib/Callout";
 export * from "office-ui-fabric-react/lib/Check";
 export * from "office-ui-fabric-react/lib/ChoiceGroup";
-export * from "office-ui-fabric-react/lib/Coachmark";
 export * from "office-ui-fabric-react/lib/Color";
 export * from "office-ui-fabric-react/lib/ColorPicker";
 export * from "office-ui-fabric-react/lib/ComboBox";
@@ -1338,7 +1558,6 @@ export * from "office-ui-fabric-react/lib/Overlay";
 export * from "office-ui-fabric-react/lib/Panel";
 export * from "office-ui-fabric-react/lib/Persona";
 export * from "office-ui-fabric-react/lib/Pickers";
-export * from "office-ui-fabric-react/lib/PositioningContainer";
 export * from "office-ui-fabric-react/lib/ProgressIndicator";
 export * from "office-ui-fabric-react/lib/Rating";
 export * from "office-ui-fabric-react/lib/ScrollablePane";
