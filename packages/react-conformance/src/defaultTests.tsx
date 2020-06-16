@@ -60,11 +60,10 @@ export const defaultTests: TestObject = {
   /** Constructor/component name matches filename */
   'name-matches-filename': (componentInfo: ComponentDoc, testInfo: TestingOptions) => {
     it(`Component/constructor name matches filename`, () => {
-      const { componentPath, Component } = testInfo;
-      const constructorName = Component.prototype.constructor?.name;
+      const { componentPath, displayName } = testInfo;
       const fileName = path.basename(componentPath, path.extname(componentPath));
 
-      expect(constructorName || testInfo.displayName).toEqual(fileName);
+      expect(displayName).toEqual(fileName);
     });
   },
 };
