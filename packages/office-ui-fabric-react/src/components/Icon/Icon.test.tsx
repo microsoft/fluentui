@@ -17,7 +17,7 @@ describe('Icon', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('renders Icon correctly as an image', () => {
+  it('renders Icon with imageProps correctly', () => {
     const component = renderer.create(<Icon iconName="CompassNW" imageProps={{ src: TestImages.iconOne }} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
