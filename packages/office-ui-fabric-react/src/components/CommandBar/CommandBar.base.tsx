@@ -93,6 +93,16 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
     // TODO We may need to elevate classNames from <FocusZone> into <ResizeGroup> ?
     const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties);
 
+    // Given the same cache key, RenderedData will return the same memoized JSX Element,
+    // avoiding any re-renders of the control
+    const onRenderData = (props: ICommandBarData) => {
+      const compareData = (prevProps: ICommandBarData, nextProps: ICommandBarData) => {
+        return prevProps.cacheKey === nextProps.cacheKey;
+      };
+      const RenderedData = React.memo(this._onRenderData, compareData);
+      return <RenderedData {...props} />;
+    };
+
     return (
       <ResizeGroup
         {...nativeProps}
@@ -100,7 +110,7 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
         data={commandBarData}
         onReduceData={onReduceData}
         onGrowData={onGrowData}
-        onRenderData={this._onRenderData}
+        onRenderData={onRenderData}
         dataDidRender={dataDidRender}
       />
     );
