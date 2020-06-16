@@ -204,10 +204,10 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef(
     const items = linkCollection.links.map(l => renderPivotLink(linkCollection, l, renderedSelectedKey));
 
     const [overflowIndex, setOverflowIndex] = React.useState<number | undefined>(undefined);
-    const overflowMenuRef = React.useRef<HTMLElement>();
-    const setOverflowMenuRef = (button: React.Component | null) => {
+    const overflowMenuButtonRef = React.useRef<HTMLElement>();
+    const setOverflowMenuButtonRef = (button: React.Component | null) => {
       const node = ReactDOM.findDOMNode(button);
-      overflowMenuRef.current = node instanceof HTMLElement ? node : undefined;
+      overflowMenuButtonRef.current = node instanceof HTMLElement ? node : undefined;
     };
 
     const overflowMenuItems: IContextualMenuItem[] = [];
@@ -221,10 +221,10 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef(
       }
     }
 
-    useOverflow(overflowMenuRef, {
+    useOverflow(overflowMenuButtonRef, {
       onOverflowIndexChanged: setOverflowIndex,
       isPinned: (ele: HTMLElement) => ele.className.includes(classNames.linkIsSelected),
-      setOverflowMenuVisible: (ele: HTMLElement, visible: boolean) => {
+      setOverflowMenuButtonVisible: (ele: HTMLElement, visible: boolean) => {
         const menu = ele.querySelector(`.${classNames.overflowMenu}`);
         if (menu instanceof HTMLElement) {
           menu.style.visibility = visible ? 'visible' : 'hidden';
@@ -244,7 +244,7 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef(
             {items}
             <CommandButton
               className={classNames.overflowMenu}
-              ref={setOverflowMenuRef}
+              ref={setOverflowMenuButtonRef}
               menuProps={{ items: overflowMenuItems, alignTargetEdge: true, doNotLayer: true }}
               menuIconProps={{ iconName: 'More' }}
             />
