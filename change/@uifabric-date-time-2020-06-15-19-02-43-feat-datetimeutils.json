@@ -1,5 +1,5 @@
 {
-  "type": "none",
+  "type": "patch",
   "comment": "Add Datetime utilities package",
   "packageName": "@uifabric/date-time",
   "email": "pompomon@gmail.com",

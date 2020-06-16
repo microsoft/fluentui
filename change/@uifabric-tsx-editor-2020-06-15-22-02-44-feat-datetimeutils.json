@@ -1,5 +1,5 @@
 {
-  "type": "none",
+  "type": "patch",
   "comment": "Add Datetime utilities package",
   "packageName": "@uifabric/tsx-editor",
   "email": "pompomon@gmail.com",

@@ -1,5 +1,5 @@
 {
-  "type": "none",
+  "type": "patch",
   "comment": "Add Datetime utilities package",
   "packageName": "@fluentui/date-time-utilities",
   "email": "pompomon@gmail.com",

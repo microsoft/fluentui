@@ -15,7 +15,6 @@
   "license": "MIT",
   "scripts": {
     "build": "just-scripts build",
-    "bundle": "just-scripts bundle",
     "test": "just-scripts test",
     "just": "just-scripts",
     "code-style": "just-scripts code-style",
@@ -25,7 +24,7 @@
     "update-api": "just-scripts update-api"
   },
   "devDependencies": {
-    "@types/jest": "^24.9.0",
+    "@types/jest": "~24.9.0",
     "@types/webpack-env": "1.15.1",
     "@uifabric/build": "^7.0.0",
     "@uifabric/tslint-rules": "^7.2.1"
