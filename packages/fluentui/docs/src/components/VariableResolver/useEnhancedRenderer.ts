@@ -1,5 +1,6 @@
 import { callable } from '@fluentui/styles';
-import { ComponentSlotStylesPrepared, Renderer } from '@fluentui/react-northstar';
+import { Renderer } from '@fluentui/react-northstar-styles-renderer';
+import { ComponentSlotStylesPrepared } from '@fluentui/react-northstar';
 import flat from 'flat';
 import * as _ from 'lodash';
 import * as React from 'react';
@@ -59,7 +60,10 @@ const useEnhancedRenderRule = (renderer: Renderer): [Renderer['renderRule'], Rea
 /** Enhances passed Fela renderer to get actual variables. */
 const useEnhancedRenderer = (originalRenderer: Renderer): [Renderer, React.RefObject<UsedVariables>] => {
   const [renderRule, variables] = useEnhancedRenderRule(originalRenderer);
-  const enhancedRenderer: Renderer = React.useMemo(() => ({ ...originalRenderer, renderRule }), [originalRenderer]);
+  const enhancedRenderer: Renderer = React.useMemo(() => ({ ...originalRenderer, renderRule }), [
+    originalRenderer,
+    renderRule,
+  ]);
 
   return [enhancedRenderer, variables];
 };

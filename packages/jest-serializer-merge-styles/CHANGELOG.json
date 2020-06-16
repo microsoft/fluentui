@@ -2,6 +2,21 @@
   "name": "@uifabric/jest-serializer-merge-styles",
   "entries": [
     {
+      "date": "Tue, 16 Jun 2020 17:35:36 GMT",
+      "tag": "@uifabric/jest-serializer-merge-styles_v7.0.26",
+      "version": "7.0.26",
+      "comments": {
+        "none": [
+          {
+            "comment": "Clean up devDependencies and clarify version file placeholder comments",
+            "author": "elcraig@microsoft.com",
+            "commit": "695c29fcf6f07a903e7d849098c5e6c0ec178b3d",
+            "package": "@uifabric/jest-serializer-merge-styles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 07 May 2020 01:06:55 GMT",
       "tag": "@uifabric/jest-serializer-merge-styles_v7.0.21",
       "version": "7.0.21",

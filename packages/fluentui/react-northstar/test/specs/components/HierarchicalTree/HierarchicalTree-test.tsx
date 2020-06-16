@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as keyboardKey from 'keyboard-key';
+import { keyboardKey } from '@fluentui/keyboard-key';
 
 import { isConformant } from 'test/specs/commonTests';
 import { mountWithProvider } from 'test/utils';

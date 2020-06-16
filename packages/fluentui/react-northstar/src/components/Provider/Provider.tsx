@@ -1,14 +1,14 @@
-import { IStyle } from 'fela';
 import * as _ from 'lodash';
 import {
   getElementType,
   useUnhandledProps,
-  Renderer,
   StylesContextPerformanceInput,
+  RendererContext,
   Telemetry,
   unstable_getStyles,
   useIsomorphicLayoutEffect,
 } from '@fluentui/react-bindings';
+import { Renderer } from '@fluentui/react-northstar-styles-renderer';
 import {
   mergeSiteVariables,
   StaticStyleObject,
@@ -21,7 +21,7 @@ import {
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 // @ts-ignore
-import { RendererProvider, ThemeProvider, ThemeContext } from 'react-fela';
+import { ThemeProvider, ThemeContext } from 'react-fela';
 
 import { ChildrenComponentProps, setUpWhatInput, tryCleanupWhatInput, UIComponentProps } from '../../utils';
 
@@ -31,7 +31,6 @@ import ProviderConsumer from './ProviderConsumer';
 import usePortalBox, { PortalBoxContext } from './usePortalBox';
 
 export interface ProviderProps extends ChildrenComponentProps, UIComponentProps {
-  renderer?: Renderer;
   rtl?: boolean;
   disableAnimations?: boolean;
   performance?: StylesContextPerformanceInput;
@@ -51,7 +50,7 @@ const renderFontFaces = (renderer: Renderer, theme: ThemeInput) => {
       throw new Error(`fontFaces must be objects, got: ${typeof font}`);
     }
 
-    renderer.renderFont(font.name, font.paths, font.props);
+    renderer.renderFont(font);
   };
 
   theme.fontFaces.forEach((font: FontFace) => {
@@ -66,13 +65,13 @@ const renderStaticStyles = (renderer: Renderer, theme: ThemeInput, siteVariables
 
   const renderObject = (object: StaticStyleObject) => {
     _.forEach(object, (style, selector) => {
-      renderer.renderStatic(style as IStyle, selector);
+      renderer.renderGlobal(style, selector);
     });
   };
 
   theme.staticStyles.forEach((staticStyle: StaticStyle) => {
     if (typeof staticStyle === 'string') {
-      renderer.renderStatic(staticStyle);
+      renderer.renderGlobal(staticStyle);
     } else if (_.isPlainObject(staticStyle)) {
       renderObject(staticStyle as StaticStyleObject);
     } else if (_.isFunction(staticStyle)) {
@@ -112,19 +111,19 @@ const Provider: React.FC<WithAsProp<ProviderProps>> & {
     return telemetryRef.current;
   }, [telemetryRef]);
   const inputContext: ProviderContextInput = {
-    theme: props.theme,
-    rtl: props.rtl,
     disableAnimations: props.disableAnimations,
     performance: props.performance,
-    renderer: props.renderer,
+    rtl: props.rtl,
     target: props.target,
     telemetry,
+    theme: props.theme,
   };
 
   const consumedContext: ProviderContextPrepared = React.useContext(ThemeContext);
   const incomingContext: ProviderContextInput | ProviderContextPrepared = overwrite ? {} : consumedContext;
+  const createRenderer = React.useContext(RendererContext);
 
-  const outgoingContext = mergeContexts(incomingContext, inputContext);
+  const outgoingContext = mergeContexts(createRenderer, incomingContext, inputContext);
 
   const rtlProps: { dir?: 'rtl' | 'ltr' } = {};
   // only add dir attribute for top level provider or when direction changes from parent to child
@@ -133,8 +132,9 @@ const Provider: React.FC<WithAsProp<ProviderProps>> & {
   }
 
   const { classes } = unstable_getStyles({
+    allDisplayNames: [Provider.displayName],
     className: providerClassName,
-    displayNames: [Provider.displayName],
+    primaryDisplayName: Provider.displayName,
     props: {
       className,
       design,
@@ -180,20 +180,16 @@ const Provider: React.FC<WithAsProp<ProviderProps>> & {
           ...rtlProps,
           ...unhandledProps,
         };
+  const RenderProvider = outgoingContext.renderer.Provider;
 
-  // rehydration disabled to avoid leaking styles between renderers
-  // https://github.com/rofrischmann/fela/blob/master/docs/api/fela-dom/rehydrate.md
   return (
-    <RendererProvider
-      renderer={outgoingContext.renderer}
-      {...{ rehydrate: false, targetDocument: outgoingContext.target }}
-    >
+    <RenderProvider>
       <ThemeProvider theme={outgoingContext} overwrite>
         <PortalBoxContext.Provider value={element}>
           <ElementType {...elementProps}>{children}</ElementType>
         </PortalBoxContext.Provider>
       </ThemeProvider>
-    </RendererProvider>
+    </RenderProvider>
   );
 };
 
@@ -228,7 +224,6 @@ Provider.propTypes = {
     staticStyles: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.object, PropTypes.func])),
     animations: PropTypes.object,
   }),
-  renderer: PropTypes.object as PropTypes.Validator<Renderer>,
   rtl: PropTypes.bool,
   disableAnimations: PropTypes.bool,
   // Heads Up!

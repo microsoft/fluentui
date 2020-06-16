@@ -1,7 +1,7 @@
 import { Accessibility } from '../../types';
 import { FocusZoneDirection } from '../../focusZone/types';
 import toolbarMenuItemBehavior from './toolbarMenuItemBehavior';
-import * as keyboardKey from 'keyboard-key';
+import { keyboardKey, SpacebarKey } from '@fluentui/keyboard-key';
 
 /**
  * @description
@@ -23,7 +23,7 @@ const toolbarMenuBehavior: Accessibility<ToolbarMenuBehaviorProps> = () => ({
   keyActions: {
     root: {
       performClick: {
-        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }],
+        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: SpacebarKey }],
       },
     },
   },

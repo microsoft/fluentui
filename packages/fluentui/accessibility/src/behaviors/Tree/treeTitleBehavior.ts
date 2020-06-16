@@ -1,4 +1,4 @@
-import * as keyboardKey from 'keyboard-key';
+import { SpacebarKey } from '@fluentui/keyboard-key';
 
 import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
 import { Accessibility, AriaRole } from '../../types';
@@ -33,7 +33,7 @@ const treeTitleBehavior: Accessibility<TreeTitleBehaviorProps> = props => {
     keyActions: {
       root: {
         performClick: {
-          keyCombinations: [{ keyCode: keyboardKey.Spacebar }],
+          keyCombinations: [{ keyCode: SpacebarKey }],
         },
       },
     },

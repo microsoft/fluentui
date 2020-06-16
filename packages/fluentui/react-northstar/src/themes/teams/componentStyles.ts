@@ -38,6 +38,8 @@ export { default as Embed } from './components/Embed/embedStyles';
 
 export { default as Form } from './components/Form/formStyles';
 export { default as FormField } from './components/Form/formFieldStyles';
+export { default as FormLabel } from './components/Form/formLabelStyles';
+export { default as FormMessage } from './components/Form/formMessageStyles';
 
 export { default as Flex } from './components/Flex/flexStyles';
 export { default as FlexItem } from './components/Flex/flexItemStyles';
@@ -108,7 +110,11 @@ export { default as ToolbarItem } from './components/Toolbar/toolbarItemStyles';
 export { default as ToolbarMenu } from './components/Toolbar/toolbarMenuStyles';
 export { default as ToolbarMenuDivider } from './components/Toolbar/toolbarMenuDividerStyles';
 export { default as ToolbarMenuItem } from './components/Toolbar/toolbarMenuItemStyles';
+export { default as ToolbarMenuItemIcon } from './components/Toolbar/toolbarMenuItemIconStyles';
+export { default as ToolbarMenuItemSubmenuIndicator } from './components/Toolbar/toolbarMenuItemSubmenuIndicatorStyles';
+export { default as ToolbarMenuItemActiveIndicator } from './components/Toolbar/toolbarMenuItemActiveIndicatorStyles';
 export { default as ToolbarMenuRadioGroup } from './components/Toolbar/toolbarMenuRadioGroupStyles';
+export { default as ToolbarMenuRadioGroupWrapper } from './components/Toolbar/toolbarMenuRadioGroupWrapperStyles';
 
 export { default as Tree } from './components/Tree/treeStyles';
 export { default as TreeItem } from './components/Tree/treeItemStyles';

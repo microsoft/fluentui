@@ -1,8 +1,73 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Fri, 15 May 2020 12:42:20 GMT and should not be manually modified.
+This log was last generated on Mon, 15 Jun 2020 12:45:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.21.0](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.21.0)
+
+Mon, 15 Jun 2020 12:45:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.20.3..@uifabric/utilities_v7.21.0)
+
+### Minor changes
+
+- add new Modalization utility ([PR #13281](https://github.com/microsoft/fluentui/pull/13281) by phkuo@microsoft.com)
+
+## [7.20.3](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.20.3)
+
+Tue, 02 Jun 2020 12:36:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.20.2..@uifabric/utilities_v7.20.3)
+
+### Patches
+
+- Removing side effect code that was breaking webpack treeshaking. ([PR #13360](https://github.com/microsoft/fluentui/pull/13360) by dzearing@microsoft.com)
+- Removing side-effect code which was causing webpack to bail out of optimizations. ([PR #13415](https://github.com/microsoft/fluentui/pull/13415) by dzearing@microsoft.com)
+- Fixed prototype pollution vulnerability. ([PR #13427](https://github.com/microsoft/fluentui/pull/13427) by esteban.230@hotmail.com)
+
+## [7.20.2](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.20.2)
+
+Thu, 28 May 2020 12:42:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.20.1..@uifabric/utilities_v7.20.2)
+
+### Patches
+
+- Add autoCapitalize property ([PR #13335](https://github.com/microsoft/fluentui/pull/13335) by suprememilanfan@gmail.com)
+
+## [7.20.1](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.20.1)
+
+Wed, 27 May 2020 12:40:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.20.0..@uifabric/utilities_v7.20.1)
+
+### Patches
+
+- Selection: respect 0 as selected key ([PR #13331](https://github.com/microsoft/fluentui/pull/13331) by elcraig@microsoft.com)
+
+## [7.20.0](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.20.0)
+
+Mon, 25 May 2020 12:38:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.19.0..@uifabric/utilities_v7.20.0)
+
+### Minor changes
+
+- findIndex: add fromIndex parameter ([PR #13295](https://github.com/microsoft/fluentui/pull/13295) by elcraig@microsoft.com)
+
+## [7.19.0](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.19.0)
+
+Fri, 22 May 2020 12:37:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.18.0..@uifabric/utilities_v7.19.0)
+
+### Minor changes
+
+- Adding `getNativeElementProps` helper which takes the element tag name in + props and filters out unrecognized props. ([PR #13272](https://github.com/microsoft/fluentui/pull/13272) by dzearing@microsoft.com)
+
+## [7.18.0](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.18.0)
+
+Thu, 21 May 2020 12:34:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.17.2..@uifabric/utilities_v7.18.0)
+
+### Minor changes
+
+- Add useCustomizationSettings hook ([PR #13146](https://github.com/microsoft/fluentui/pull/13146) by xgao@microsoft.com)
 
 ## [7.17.2](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.17.2)
 

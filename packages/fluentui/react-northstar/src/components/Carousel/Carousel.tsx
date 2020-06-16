@@ -128,7 +128,7 @@ export const carouselSlotClassNames: CarouselSlotClassNames = {
   navigation: `${carouselClassName}__navigation`,
 };
 
-export const Carousel: React.FC<WithAsProp<CarouselProps>> &
+const Carousel: React.FC<WithAsProp<CarouselProps>> &
   FluentComponentStaticProps<CarouselProps> & {
     Item: typeof CarouselItem;
     Navigation: typeof CarouselNavigation;
@@ -171,6 +171,8 @@ export const Carousel: React.FC<WithAsProp<CarouselProps>> &
 
   const itemRefs = React.useMemo<React.RefObject<HTMLElement>[]>(
     () => Array.from({ length: items?.length }, () => React.createRef()),
+    // As we are using "panels.length" it's fine to have dependency on them
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [items?.length],
   );
 
@@ -223,15 +225,19 @@ export const Carousel: React.FC<WithAsProp<CarouselProps>> &
   const paddleNextRef = React.useRef<HTMLElement>();
   const paddlePreviousRef = React.useRef<HTMLElement>();
 
-  const focusItemAtIndex = _.debounce((index: number) => {
-    itemRefs[index].current?.focus();
-  }, 400);
+  const focusItemAtIndex = React.useMemo(
+    () =>
+      _.debounce((index: number) => {
+        itemRefs[index].current?.focus();
+      }, 400),
+    [itemRefs],
+  );
 
   React.useEffect(() => {
     return () => {
       focusItemAtIndex.cancel();
     };
-  }, [items]);
+  }, [focusItemAtIndex, items]);
 
   const setActiveIndex = (e: React.SyntheticEvent, index: number, focusItem: boolean): void => {
     const lastItemIndex = items.length - 1;

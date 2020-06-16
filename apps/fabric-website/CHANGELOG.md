@@ -1,8 +1,26 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Tue, 19 May 2020 12:34:06 GMT and should not be manually modified.
+This log was last generated on Tue, 16 Jun 2020 17:35:36 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.10.71](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.10.71)
+
+Tue, 16 Jun 2020 17:35:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.10.58..@uifabric/fabric-website_v7.10.71)
+
+### Patches
+
+- Clean up dependencies and clarify version file placeholder comments ([PR #13585](https://github.com/microsoft/fluentui/pull/13585) by elcraig@microsoft.com)
+
+## [7.10.58](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.10.58)
+
+Fri, 22 May 2020 12:37:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.10.57..@uifabric/fabric-website_v7.10.58)
+
+### Patches
+
+- Update documentation for fontSize prop ([PR #13276](https://github.com/microsoft/fluentui/pull/13276) by krsiler@microsoft.com)
 
 ## [7.10.55](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.10.55)
 

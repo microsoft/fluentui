@@ -11,26 +11,6 @@ exports[`Pivot renders link Pivot correctly 1`] = `
         &:focus {
           outline: none;
         }
-        {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
-          box-shadow: none;
-          box-sizing: border-box;
-          color: #0078d4;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
-          font-weight: 400;
-          margin-bottom: 0px;
-          margin-left: 0px;
-          margin-right: 0px;
-          margin-top: 0px;
-          padding-bottom: 0px;
-          padding-left: 0px;
-          padding-right: 0px;
-          padding-top: 0px;
-          position: relative;
-          white-space: nowrap;
-        }
     data-focuszone-id="FocusZone1"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -49,22 +29,20 @@ exports[`Pivot renders link Pivot correctly 1`] = `
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
             background-color: transparent;
-            border-radius: 0px;
-            border: 0px;
+            border-radius: 2px;
+            border: 1px solid transparent;
             box-sizing: border-box;
             color: #323130;
             cursor: pointer;
             display: inline-block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
-            font-weight: 600;
-            height: 44px;
-            line-height: 44px;
-            margin-right: 8px;
+            font-weight: 400;
+            height: 40px;
             outline: transparent;
             padding-bottom: 0;
-            padding-left: 8px;
-            padding-right: 8px;
+            padding-left: 4px;
+            padding-right: 4px;
             padding-top: 0;
             position: relative;
             text-align: center;
@@ -75,12 +53,12 @@ exports[`Pivot renders link Pivot correctly 1`] = `
             border: 0;
           }
           .ms-Fabric--isFocusVisible &:focus:after {
-            border: 0px;
+            border: 1px solid transparent;
             bottom: 2px;
-            content: attr(data-content);
+            content: "";
             left: 2px;
             outline: 1px solid #605e5c;
-            position: relative;
+            position: absolute;
             right: 2px;
             top: 2px;
             z-index: 1;
@@ -99,9 +77,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
             top: 0px;
           }
           &:hover {
-            background-color: #f3f2f1;
-            color: #201f1e;
-            cursor: pointer;
+            color: #0078d4;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
@@ -110,48 +86,11 @@ exports[`Pivot renders link Pivot correctly 1`] = `
           &:hover .ms-Button-icon {
             color: #0078d4;
           }
-          &:focus {
-            outline: none;
-          }
           &:active {
-            background-color: #edebe9;
-            color: #201f1e;
+            color: #000000;
           }
           &:active .ms-Button-icon {
             color: #004578;
-          }
-          &:before {
-            background-color: #0078d4;
-            bottom: 0px;
-            content: "";
-            height: 2px;
-            left: 8px;
-            position: absolute;
-            right: 8px;
-            transition: left 0.267s cubic-bezier(.1,.25,.75,.9),
-                                right 0.267s cubic-bezier(.1,.25,.75,.9);
-          }
-          &:after {
-            color: transparent;
-            content: attr(data-content);
-            display: block;
-            font-weight: 700;
-            height: 1px;
-            overflow: hidden;
-            visibility: hidden;
-          }
-          .ms-Fabric--isFocusVisible &:focus {
-            outline: 1px solid #605e5c;
-          }
-          @media screen and (-ms-high-contrast: active){&:before {
-            background-color: Highlight;
-          }
-          &:hover::before {
-            left: 0px;
-            right: 0px;
-          }
-          @media screen and (-ms-high-contrast: active){& {
-            color: Highlight;
           }
       data-content="Test Link 1"
       data-is-focusable={true}
@@ -179,25 +118,10 @@ exports[`Pivot renders link Pivot correctly 1`] = `
         data-automationid="splitbuttonprimary"
       >
         <span
-          className=
-              ms-Pivot-linkContent
-              {
-                flex: 0 1 100%;
-              }
-              & > *  {
-                margin-left: 4px;
-              }
-              & > *:first-child {
-                margin-left: 0px;
-              }
+          className="ms-Pivot-linkContent"
         >
           <span
-            className=
-                ms-Pivot-text
-                {
-                  display: inline-block;
-                  vertical-align: top;
-                }
+            className="ms-Pivot-text"
           >
              
             Test Link 1
@@ -216,8 +140,8 @@ exports[`Pivot renders link Pivot correctly 1`] = `
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
             background-color: transparent;
-            border-radius: 0px;
-            border: 0px;
+            border-radius: 2px;
+            border: 1px solid transparent;
             box-sizing: border-box;
             color: #323130;
             cursor: pointer;
@@ -225,13 +149,11 @@ exports[`Pivot renders link Pivot correctly 1`] = `
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
-            height: 44px;
-            line-height: 44px;
-            margin-right: 8px;
+            height: 40px;
             outline: transparent;
             padding-bottom: 0;
-            padding-left: 8px;
-            padding-right: 8px;
+            padding-left: 4px;
+            padding-right: 4px;
             padding-top: 0;
             position: relative;
             text-align: center;
@@ -242,12 +164,12 @@ exports[`Pivot renders link Pivot correctly 1`] = `
             border: 0;
           }
           .ms-Fabric--isFocusVisible &:focus:after {
-            border: 0px;
+            border: 1px solid transparent;
             bottom: 2px;
-            content: attr(data-content);
+            content: "";
             left: 2px;
             outline: 1px solid #605e5c;
-            position: relative;
+            position: absolute;
             right: 2px;
             top: 2px;
             z-index: 1;
@@ -266,9 +188,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
             top: 0px;
           }
           &:hover {
-            background-color: #f3f2f1;
-            color: #201f1e;
-            cursor: pointer;
+            color: #0078d4;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
@@ -277,38 +197,11 @@ exports[`Pivot renders link Pivot correctly 1`] = `
           &:hover .ms-Button-icon {
             color: #0078d4;
           }
-          &:focus {
-            outline: none;
-          }
           &:active {
-            background-color: #edebe9;
-            color: #201f1e;
+            color: #000000;
           }
           &:active .ms-Button-icon {
             color: #004578;
-          }
-          &:before {
-            background-color: transparent;
-            bottom: 0px;
-            content: "";
-            height: 2px;
-            left: 8px;
-            position: absolute;
-            right: 8px;
-            transition: left 0.267s cubic-bezier(.1,.25,.75,.9),
-                                right 0.267s cubic-bezier(.1,.25,.75,.9);
-          }
-          &:after {
-            color: transparent;
-            content: attr(data-content);
-            display: block;
-            font-weight: 700;
-            height: 1px;
-            overflow: hidden;
-            visibility: hidden;
-          }
-          .ms-Fabric--isFocusVisible &:focus {
-            outline: 1px solid #605e5c;
           }
       data-content=""
       data-is-focusable={true}
@@ -336,25 +229,10 @@ exports[`Pivot renders link Pivot correctly 1`] = `
         data-automationid="splitbuttonprimary"
       >
         <span
-          className=
-              ms-Pivot-linkContent
-              {
-                flex: 0 1 100%;
-              }
-              & > *  {
-                margin-left: 4px;
-              }
-              & > *:first-child {
-                margin-left: 0px;
-              }
+          className="ms-Pivot-linkContent"
         >
           <span
-            className=
-                ms-Pivot-text
-                {
-                  display: inline-block;
-                  vertical-align: top;
-                }
+            className="ms-Pivot-text"
           >
              
             
@@ -364,7 +242,10 @@ exports[`Pivot renders link Pivot correctly 1`] = `
     </button>
   </div>
   <div
+    aria-hidden={false}
     aria-labelledby="Pivot0-Tab0"
+    className=""
+    hidden={false}
     role="tabpanel"
   >
     <div />

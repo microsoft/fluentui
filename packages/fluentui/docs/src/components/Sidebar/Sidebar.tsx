@@ -16,12 +16,12 @@ import {
 import { CopyToClipboard } from '@fluentui/docs-components';
 import Logo from '../Logo/Logo';
 import { getComponentPathname } from '../../utils';
-import keyboardKey from 'keyboard-key';
+import { getCode, keyboardKey } from '@fluentui/keyboard-key';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import { NavLink, NavLinkProps, withRouter } from 'react-router-dom';
-import { SearchIcon, TriangleDownIcon, TriangleUpIcon, FilesTxtIcon } from '@fluentui/react-icons-northstar';
+import { SearchIcon, TriangleDownIcon, TriangleUpIcon, FilesTxtIcon, EditIcon } from '@fluentui/react-icons-northstar';
 
 type ComponentMenuItem = { displayName: string; type: string };
 
@@ -68,7 +68,7 @@ class Sidebar extends React.Component<any, any> {
   };
 
   handleDocumentKeyDown = e => {
-    const code = keyboardKey.getCode(e);
+    const code = getCode(e);
     const isAZ = code >= 65 && code <= 90;
     const hasModifier = e.altKey || e.ctrlKey || e.metaKey;
     const bodyHasFocus = document.activeElement === document.body;
@@ -92,7 +92,7 @@ class Sidebar extends React.Component<any, any> {
   };
 
   keyDownCallback(e) {
-    if (keyboardKey.getCode(e) !== keyboardKey.Enter) {
+    if (getCode(e) !== keyboardKey.Enter) {
       return;
     }
     e.stopPropagation();
@@ -148,21 +148,21 @@ class Sidebar extends React.Component<any, any> {
             },
           },
           {
-            key: 'composition',
-            title: {
-              as: NavLink,
-              content: 'Composition',
-              activeClassName: 'active',
-              to: '/composition',
-            },
-          },
-          {
             key: 'shorthand',
             title: {
               as: NavLink,
               content: 'Shorthand Props',
               activeClassName: 'active',
               to: '/shorthand-props',
+            },
+          },
+          {
+            key: 'composition',
+            title: {
+              as: NavLink,
+              content: 'Composition',
+              activeClassName: 'active',
+              to: '/composition',
             },
           },
           {
@@ -558,6 +558,13 @@ class Sidebar extends React.Component<any, any> {
               <Image src="public/images/github.png" width="20px" height="20px" styles={{ float: 'right' }} />
             </Box>
           </a>
+          <NavLink to="/builder" exact style={topItemTheme} activeStyle={{ fontWeight: 'bold' }}>
+            <Box>
+              Builder
+              <span style={{ border: 'orange', color: 'orange', marginLeft: '0.5rem' }}>alpha</span>
+              <EditIcon styles={{ float: 'right' }} />
+            </Box>
+          </NavLink>
           <a href={changeLogUrl} target="_blank" rel="noopener noreferrer" style={topItemTheme}>
             <Box>
               CHANGELOG

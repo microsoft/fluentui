@@ -1,6 +1,7 @@
 import { Accessibility, AriaRole, IS_FOCUSABLE_ATTRIBUTE } from '@fluentui/accessibility';
-import { compose, ComposedComponent, FocusZone, Renderer, Telemetry } from '@fluentui/react-bindings';
+import { compose, ComposedComponent, FocusZone, Telemetry } from '@fluentui/react-bindings';
 import { Ref, RefFindNode } from '@fluentui/react-component-ref';
+import { Renderer } from '@fluentui/react-northstar-styles-renderer';
 import { ComponentSlotStylesPrepared, emptyTheme } from '@fluentui/styles';
 import * as faker from 'faker';
 import * as _ from 'lodash';
@@ -646,8 +647,8 @@ export default function isConformant(
 
         it('allows to define additional styles props', () => {
           const renderer: Partial<Renderer> = {
-            renderRule: rule => {
-              const props = (rule() as unknown) as ComposedComponentStylesProps;
+            renderRule: styles => {
+              const props = (styles as unknown) as ComposedComponentStylesProps;
 
               return props.stylesTest ? 'has-test' : 'has-not-test';
             },

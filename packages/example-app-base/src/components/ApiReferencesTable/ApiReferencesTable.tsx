@@ -326,7 +326,7 @@ function _referencesTableCell(
 function _renderDeprecatedMessage(deprecatedMessage?: string) {
   deprecatedMessage = (deprecatedMessage || '').trim();
   if (deprecatedMessage) {
-    // Ensure the messsage is formatted as a sentence
+    // Ensure the message is formatted as a sentence
     deprecatedMessage = deprecatedMessage[0].toUpperCase() + deprecatedMessage.slice(1);
     if (deprecatedMessage.slice(-1)[0] !== '.') {
       deprecatedMessage += '.';

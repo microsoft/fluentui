@@ -11,6 +11,9 @@ export interface ISlider {
   focus: () => void;
 }
 
+// tslint:disable-next-line:no-any
+export type ISliderState = any;
+
 /**
  * {@docCategory Slider}
  */
@@ -84,9 +87,14 @@ export interface ISliderProps extends React.ClassAttributes<HTMLElement> {
 
   /**
    * A description of the Slider for the benefit of screen readers.
+   * @deprecated use aria-label instead.
    */
   ariaLabel?: string;
 
+  /**
+   * A description of the Slider for the benefit of screen readers.
+   */
+  'aria-label'?: string;
   /**
    * A text description of the Slider number value for the benefit of screen readers.
    * This should be used when the Slider number value is not accurately represented by a number.

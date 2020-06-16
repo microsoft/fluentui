@@ -1,20 +1,33 @@
-import { Accessibility, loaderBehavior } from '@fluentui/accessibility';
+import { Accessibility, loaderBehavior, LoaderBehaviorProps } from '@fluentui/accessibility';
 import * as customPropTypes from '@fluentui/react-proptypes';
-import { ShorthandConfig } from '@fluentui/react-bindings';
+import {
+  ShorthandConfig,
+  useTelemetry,
+  getElementType,
+  useUnhandledProps,
+  useStyles,
+  useAccessibility,
+} from '@fluentui/react-bindings';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import {
-  UIComponent,
   createShorthandFactory,
   UIComponentProps,
   commonPropTypes,
   SizeValue,
-  ShorthandFactory,
   getOrGenerateIdFromShorthand,
 } from '../../utils';
-import { WithAsProp, ShorthandValue, withSafeTypeForAs } from '../../types';
+import {
+  WithAsProp,
+  ShorthandValue,
+  withSafeTypeForAs,
+  FluentComponentStaticProps,
+  ProviderContextPrepared,
+} from '../../types';
 import Box, { BoxProps } from '../Box/Box';
 import Text, { TextProps } from '../Text/Text';
+// @ts-ignore
+import { ThemeContext } from 'react-fela';
 
 export interface LoaderSlotClassNames {
   indicator: string;
@@ -24,7 +37,7 @@ export interface LoaderSlotClassNames {
 
 export interface LoaderProps extends UIComponentProps {
   /** Accessibility behavior if overridden by the user. */
-  accessibility?: Accessibility;
+  accessibility?: Accessibility<LoaderBehaviorProps>;
 
   /** Time in milliseconds after component mount before spinner is visible. */
   delay?: number;
@@ -60,102 +73,126 @@ export const loaderSlotClassNames: LoaderSlotClassNames = {
   svg: `${loaderClassName}__svg`,
 };
 
+export type LoaderStylesProps = Pick<LoaderProps, 'inline' | 'labelPosition' | 'size'>;
+
 /**
  * A loader alerts a user that content is being loaded or processed and they should wait for the activity to complete.
  */
-class Loader extends UIComponent<WithAsProp<LoaderProps>, LoaderState> {
-  static create: ShorthandFactory<LoaderProps>;
-  static displayName = 'Loader';
-  static deprecated_className = loaderClassName;
-  static shorthandConfig: ShorthandConfig<LoaderProps>;
+const Loader: React.FC<WithAsProp<LoaderProps>> &
+  FluentComponentStaticProps<LoaderProps> & {
+    shorthandConfig: ShorthandConfig<LoaderProps>;
+  } = props => {
+  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const { setStart, setEnd } = useTelemetry(Loader.displayName, context.telemetry);
+  setStart();
+  const { delay, label, indicator, svg, inline, labelPosition, className, design, styles, variables, size } = props;
 
-  static propTypes = {
-    ...commonPropTypes.createCommon({
-      children: false,
-      content: false,
+  const ElementType = getElementType(props);
+  const unhandledProps = useUnhandledProps(Loader.handledProps, props);
+
+  const delayTimer = React.useRef<number>();
+  const [visible, setVisible] = React.useState(props.delay === 0);
+
+  const labelId = React.useRef<string>();
+  labelId.current = getOrGenerateIdFromShorthand('loader-label-', label, labelId.current);
+
+  const { classes, styles: resolvedStyles } = useStyles<LoaderStylesProps>(Loader.displayName, {
+    className: loaderClassName,
+    mapPropsToStyles: () => ({
+      inline,
+      labelPosition,
+      size,
     }),
-    delay: PropTypes.number,
-    indicator: customPropTypes.itemShorthand,
-    inline: PropTypes.bool,
-    label: customPropTypes.itemShorthand,
-    labelPosition: PropTypes.oneOf(['above', 'below', 'start', 'end']),
-    size: customPropTypes.size,
-    svg: customPropTypes.itemShorthand,
-  };
+    mapPropsToInlineStyles: () => ({
+      className,
+      design,
+      styles,
+      variables,
+    }),
+    rtl: context.rtl,
+  });
 
-  static defaultProps = {
-    accessibility: loaderBehavior,
-    delay: 0,
-    indicator: {},
-    labelPosition: 'below',
-    svg: '',
-    size: 'medium',
-  };
+  const getA11yProps = useAccessibility<LoaderBehaviorProps>(props.accessibility, {
+    debugName: Loader.displayName,
+    mapPropsToBehavior: () => ({
+      labelId: labelId.current,
+    }),
+    rtl: context.rtl,
+  });
 
-  delayTimer: number;
-
-  constructor(props, context) {
-    super(props, context);
-
-    this.state = {
-      visible: this.props.delay === 0,
-      labelId: '',
-    };
-  }
-
-  static getDerivedStateFromProps(props, state) {
-    return {
-      labelId: getOrGenerateIdFromShorthand('loader-label-', props.label, state.labelId),
-    };
-  }
-
-  componentDidMount() {
-    const { delay } = this.props;
-
+  React.useEffect(() => {
     if (delay > 0) {
       // @ts-ignore We have a collision between types from DOM and @types/node
-      this.delayTimer = setTimeout(() => {
-        this.setState({ visible: true });
+      delayTimer.current = setTimeout(() => {
+        setVisible(true);
       }, delay);
     }
-  }
 
-  componentWillUnmount() {
-    clearTimeout(this.delayTimer);
-  }
+    return () => clearTimeout(delayTimer.current);
+  }, [delay]);
 
-  renderComponent({ ElementType, classes, accessibility, variables, styles, unhandledProps }) {
-    const { indicator, label, svg } = this.props;
-    const { visible, labelId } = this.state;
+  const svgElement = Box.create(svg, {
+    defaultProps: () => ({ className: loaderSlotClassNames.svg, styles: resolvedStyles.svg }),
+  });
 
-    const svgElement = Box.create(svg, {
-      defaultProps: () => ({ className: loaderSlotClassNames.svg, styles: styles.svg }),
-    });
+  const element = visible && (
+    <ElementType
+      {...getA11yProps('root', {
+        className: classes.root,
+        ...unhandledProps,
+      })}
+    >
+      {Box.create(indicator, {
+        defaultProps: () =>
+          getA11yProps('indicator', {
+            children: svgElement,
+            className: loaderSlotClassNames.indicator,
+            styles: resolvedStyles.indicator,
+          }),
+      })}
+      {Text.create(label, {
+        defaultProps: () =>
+          getA11yProps('label', {
+            className: loaderSlotClassNames.label,
+            styles: resolvedStyles.label,
+            id: labelId.current,
+          }),
+      })}
+    </ElementType>
+  );
+  setEnd();
+  return element;
+};
 
-    return (
-      visible && (
-        <ElementType className={classes.root} {...accessibility.attributes.root} {...unhandledProps}>
-          {Box.create(indicator, {
-            defaultProps: () => ({
-              children: svgElement,
-              className: loaderSlotClassNames.indicator,
-              styles: styles.indicator,
-            }),
-          })}
-          {Text.create(label, {
-            defaultProps: () => ({
-              className: loaderSlotClassNames.label,
-              styles: styles.label,
-              id: labelId,
-            }),
-          })}
-        </ElementType>
-      )
-    );
-  }
-}
+Loader.displayName = 'Loader';
+
+Loader.propTypes = {
+  ...commonPropTypes.createCommon({
+    children: false,
+    content: false,
+  }),
+  delay: PropTypes.number,
+  indicator: customPropTypes.itemShorthand,
+  inline: PropTypes.bool,
+  label: customPropTypes.itemShorthand,
+  labelPosition: PropTypes.oneOf(['above', 'below', 'start', 'end']),
+  size: customPropTypes.size,
+  svg: customPropTypes.itemShorthand,
+};
+
+Loader.defaultProps = {
+  accessibility: loaderBehavior,
+  delay: 0,
+  indicator: {},
+  labelPosition: 'below',
+  svg: '',
+  size: 'medium',
+};
+
+Loader.handledProps = Object.keys(Loader.propTypes) as any;
 
 Loader.create = createShorthandFactory({ Component: Loader, mappedProp: 'label' });
+
 Loader.shorthandConfig = { mappedProp: 'label' };
 
 /**

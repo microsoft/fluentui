@@ -1,4 +1,4 @@
-import * as keyboardKey from 'keyboard-key';
+import { keyboardKey, SpacebarKey } from '@fluentui/keyboard-key';
 
 import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
 import { Accessibility } from '../../types';
@@ -43,7 +43,7 @@ const menuItemAsToolbarButtonBehavior: Accessibility<MenuItemBehaviorProps> = pr
   keyActions: {
     wrapper: {
       performClick: {
-        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }],
+        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: SpacebarKey }],
       },
       closeMenuAndFocusTrigger: {
         keyCombinations: [{ keyCode: keyboardKey.Escape }],

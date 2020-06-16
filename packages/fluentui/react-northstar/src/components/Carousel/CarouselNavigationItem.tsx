@@ -82,7 +82,7 @@ export const carouselNavigationItemSlotClassNames: CarouselNavigationItemSlotCla
   content: `${carouselNavigationItemClassName}__content`,
 };
 
-export const CarouselNavigationItem: React.FC<WithAsProp<CarouselNavigationItemProps>> &
+const CarouselNavigationItem: React.FC<WithAsProp<CarouselNavigationItemProps>> &
   FluentComponentStaticProps<CarouselNavigationItemProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(CarouselNavigationItem.displayName, context.telemetry);

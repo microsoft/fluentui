@@ -38,7 +38,7 @@ const getShorthandItems = (props?: { disabledItem?: number }) => [
 ];
 
 describe('RadioGroup', () => {
-  isConformant(RadioGroup, { autoControlledProps: ['checkedValue'] });
+  isConformant(RadioGroup, { constructorName: 'RadioGroup', autoControlledProps: ['checkedValue'] });
 
   describe('accessibility', () => {
     handlesAccessibility(RadioGroup, {

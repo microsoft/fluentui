@@ -1,4 +1,4 @@
-import { Attachment, Button, Provider, themes } from '@fluentui/react-northstar';
+import { Attachment, Button, Provider, teamsTheme } from '@fluentui/react-northstar';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
@@ -30,7 +30,7 @@ const PortalFrame: React.FunctionComponent<PortalFrameProps> = ({ children }) =>
 const ProviderExampleTargetFrame = () => (
   <PortalFrame>
     {externalDocument => (
-      <Provider theme={themes.teams} target={externalDocument}>
+      <Provider theme={teamsTheme} target={externalDocument}>
         <Attachment actionable header="Document.docx" />
         <Button content="Hello world!" />
       </Provider>

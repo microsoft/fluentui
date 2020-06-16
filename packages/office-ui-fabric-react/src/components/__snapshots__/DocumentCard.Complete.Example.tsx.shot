@@ -145,6 +145,7 @@ Created by Annie Lindqvist in February 23, 2016. 432 views."
                   outline: none;
                 }
                 @media screen and (-ms-high-contrast: active){& {
+                  -ms-high-contrast-adjust: auto;
                   border-bottom: none;
                 }
                 &:active {
@@ -254,6 +255,7 @@ Created by Annie Lindqvist in February 23, 2016. 432 views."
                   outline: none;
                 }
                 @media screen and (-ms-high-contrast: active){& {
+                  -ms-high-contrast-adjust: auto;
                   border-bottom: none;
                 }
                 &:active {
@@ -363,6 +365,7 @@ Created by Annie Lindqvist in February 23, 2016. 432 views."
                   outline: none;
                 }
                 @media screen and (-ms-high-contrast: active){& {
+                  -ms-high-contrast-adjust: auto;
                   border-bottom: none;
                 }
                 &:active {

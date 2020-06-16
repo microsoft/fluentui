@@ -1,5 +1,6 @@
 import { StylesContextInputValue, StylesContextValue, Telemetry, ShorthandConfig } from '@fluentui/react-bindings';
 import * as React from 'react';
+
 import { ShorthandFactory } from './utils/factories';
 
 // Temporary workaround for @lodash dependency
@@ -63,7 +64,13 @@ type ReactNode = React.ReactChild | React.ReactNodeArray | React.ReactPortal | b
 
 export type ShorthandValue<P extends Props> = ReactNode | ObjectShorthandValue<P>;
 
-export type ShorthandCollection<P, K = never> = ShorthandValue<P & { kind?: K }>[];
+type KindSelector<T> = {
+  [P in keyof T]: { kind?: P } & T[P];
+}[keyof T];
+
+export type ShorthandCollection<Props, Kinds = Record<string, {}>> = ShorthandValue<
+  Props | (KindSelector<Kinds> & Props)
+>[];
 
 export type ObjectShorthandValue<P extends Props> = Props<P> & {
   children?: P['children'] | ShorthandRenderFunction<P>;

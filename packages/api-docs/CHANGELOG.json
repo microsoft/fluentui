@@ -2,6 +2,21 @@
   "name": "@uifabric/api-docs",
   "entries": [
     {
+      "date": "Mon, 25 May 2020 12:38:22 GMT",
+      "tag": "@uifabric/api-docs_v7.2.84",
+      "version": "7.2.84",
+      "comments": {
+        "none": [
+          {
+            "comment": "Fix tsconfig and just config issues",
+            "author": "elcraig@microsoft.com",
+            "commit": "ea77eb18bd42bdca8bb63df675abe01cf7bbd6b4",
+            "package": "@uifabric/api-docs"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 07 May 2020 01:06:55 GMT",
       "tag": "@uifabric/api-docs_v7.2.68",
       "version": "7.2.68",
