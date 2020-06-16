@@ -19,7 +19,6 @@ const defaultCallbacks = {
 };
 
 export const useOverflow = (
-  overflowContainerRef: React.RefObject<HTMLElement | undefined>,
   overflowMenuRef: React.RefObject<HTMLElement | undefined>,
   callbacks: OverflowCallbacks,
 ) => {
@@ -35,8 +34,8 @@ export const useOverflow = (
   let cachedStyle: CachedStyle | undefined = undefined;
 
   const hideOverflowItems = useAsync().debounce(() => {
-    const container = overflowContainerRef.current;
     const menu = overflowMenuRef.current;
+    const container = menu?.parentElement;
     const win = windowRef.current;
     if (!container || !menu || !win) {
       return;
@@ -65,12 +64,12 @@ export const useOverflow = (
     if (cachedStyle === undefined) {
       const containerStyle = win.getComputedStyle(container);
       const menuStyle = win.getComputedStyle(menu);
-      const cachedRtl = containerStyle.direction === 'rtl';
+      const _rtl = containerStyle.direction === 'rtl';
 
       cachedStyle = {
-        rtl: cachedRtl,
-        containerPadding: parseFloat(cachedRtl ? containerStyle.paddingLeft : containerStyle.paddingRight),
-        menuMargin: parseFloat(cachedRtl ? menuStyle.marginLeft : menuStyle.marginRight),
+        rtl: _rtl,
+        containerPadding: parseFloat(_rtl ? containerStyle.paddingLeft : containerStyle.paddingRight),
+        menuMargin: parseFloat(_rtl ? menuStyle.marginLeft : menuStyle.marginRight),
       };
     }
 
@@ -91,26 +90,25 @@ export const useOverflow = (
         lastVisibleElement = item;
       }
 
-      if (isPinned(item)) {
-        continue;
+      // Don't attempt to hide pinned items
+      if (!isPinned(item)) {
+        const lastElementRect = lastVisibleElement.getBoundingClientRect();
+        const lastElementEnd = (rtl ? -lastElementRect.left : lastElementRect.right) + menuMargin;
+
+        if (lastElementEnd <= containerEnd) {
+          break; // Everything fits; we're done
+        }
+
+        // Show the menu if it's not visible yet
+        if (lastVisibleElement !== menu) {
+          setOverflowMenuVisible(menu, true);
+          lastVisibleElement = menu;
+        }
+
+        // Hide the item
+        setItemDisplayed(item, false);
+        overflowIndexRef.current = i;
       }
-
-      const lastElementRect = lastVisibleElement.getBoundingClientRect();
-      const lastElementEnd = (rtl ? -lastElementRect.left : lastElementRect.right) + menuMargin;
-
-      if (lastElementEnd <= containerEnd) {
-        break; // Everything fits; we're done
-      }
-
-      // Show the menu if it's not visible yet
-      if (lastVisibleElement !== menu) {
-        setOverflowMenuVisible(menu, true);
-        lastVisibleElement = menu;
-      }
-
-      // Hide the item
-      setItemDisplayed(item, false);
-      overflowIndexRef.current = i;
     }
 
     if (originalOverflowIndex !== overflowIndexRef.current) {
@@ -118,11 +116,11 @@ export const useOverflow = (
     }
   });
 
-  const windowRef = React.useRef<Window | null>(getWindow() || null);
+  const windowRef = React.useRef(getWindow() || null);
   React.useLayoutEffect(() => {
-    const win = getWindow(overflowContainerRef.current) || null;
-    windowRef.current = win;
-    if (win) {
+    windowRef.current = getWindow(overflowMenuRef.current) || null;
+    if (windowRef.current) {
+      const win = windowRef.current;
       const requestId = win.requestAnimationFrame(hideOverflowItems);
       return () => win.cancelAnimationFrame(requestId);
     }
