@@ -18,7 +18,7 @@
     "@uifabric/experiments": "^7.26.4",
     "@uifabric/fabric-website": "^7.10.70",
     "@uifabric/fabric-website-resources": "^7.6.81",
-    "office-ui-fabric-react": "^7.120.1",
+    "office-ui-fabric-react": "^7.120.2",
     "perf-test": "^7.0.0",
     "theming-designer": "^7.0.0",
     "todo-app": "^7.0.0"

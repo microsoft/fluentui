@@ -2,6 +2,21 @@
   "name": "@fluentui/react-compose",
   "entries": [
     {
+      "date": "Tue, 16 Jun 2020 12:40:00 GMT",
+      "tag": "@fluentui/react-compose_v0.11.2",
+      "version": "0.11.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Pass forwarded ref as param in state option",
+            "author": "xgao@microsoft.com",
+            "commit": "2377f7afd141ff0203470e82b705ab29ed3cb044",
+            "package": "@fluentui/react-compose"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 12 Jun 2020 18:29:07 GMT",
       "tag": "@fluentui/react-compose_v0.11.0",
       "version": "0.11.0",
