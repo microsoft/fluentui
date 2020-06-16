@@ -1,8 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 15 Jun 2020 12:45:48 GMT and should not be manually modified.
+This log was last generated on Tue, 16 Jun 2020 12:40:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.120.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.120.2)
+
+Tue, 16 Jun 2020 12:40:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.120.1..office-ui-fabric-react_v7.120.2)
+
+### Patches
+
+- Prevent ContextualMenu from destroying existing menu items on every repaint ([PR #13357](https://github.com/microsoft/fluentui/pull/13357) by tmichon@microsoft.com)
+- fix height and width check in the image component ([PR #13544](https://github.com/microsoft/fluentui/pull/13544) by nif_tony@outlook.com)
 
 ## [7.120.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.120.1)
 

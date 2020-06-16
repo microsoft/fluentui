@@ -230,7 +230,7 @@
   font-size: var(--button-iconSize, inherit);
   font-weight: normal;
 
-  &.disabled {
+  &._disabled {
     color: var(--button-disabled-iconColor, var(--button-disabled-contentColor));
   }
 }

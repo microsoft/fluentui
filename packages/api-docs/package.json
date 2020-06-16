@@ -26,7 +26,7 @@
     "@uifabric/styling": "^7.12.18",
     "@uifabric/tslint-rules": "^7.2.1",
     "@uifabric/utilities": "^7.21.0",
-    "office-ui-fabric-react": "^7.120.1"
+    "office-ui-fabric-react": "^7.120.2"
   },
   "dependencies": {
     "@microsoft/api-extractor-model": "7.7.1",

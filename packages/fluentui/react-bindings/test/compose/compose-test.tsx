@@ -1,10 +1,5 @@
-import {
-  compose,
-  RendererRenderRule,
-  StylesContextValue,
-  useStyles,
-  useUnhandledProps,
-} from '@fluentui/react-bindings';
+import { compose, StylesContextValue, useStyles, useUnhandledProps } from '@fluentui/react-bindings';
+import { noopRenderer } from '@fluentui/react-northstar-styles-renderer';
 import { ComponentSlotStylesPrepared, emptyTheme, ThemeInput } from '@fluentui/styles';
 import cx from 'classnames';
 import { mount, shallow } from 'enzyme';
@@ -13,12 +8,11 @@ import * as React from 'react';
 import { ThemeContext } from 'react-fela';
 
 const TestProvider: React.FC<{ theme: ThemeInput }> = props => {
-  const value: StylesContextValue<{ renderRule: RendererRenderRule }> = {
+  const value: StylesContextValue = {
     disableAnimations: false,
     renderer: {
-      renderRule: rule => {
-        const props = rule();
-
+      ...noopRenderer,
+      renderRule: props => {
         return cx(
           props.color && `color-${props.color}`,
           props.hidden && `hidden-${props.hidden}`,

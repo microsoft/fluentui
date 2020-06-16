@@ -2,6 +2,21 @@
   "name": "@fluentui/react-icons",
   "entries": [
     {
+      "date": "Tue, 16 Jun 2020 17:35:36 GMT",
+      "tag": "@fluentui/react-icons_v0.1.28",
+      "version": "0.1.28",
+      "comments": {
+        "none": [
+          {
+            "comment": "Clean up devDependencies and clarify version file placeholder comments",
+            "author": "elcraig@microsoft.com",
+            "commit": "695c29fcf6f07a903e7d849098c5e6c0ec178b3d",
+            "package": "@fluentui/react-icons"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 12 Jun 2020 18:29:07 GMT",
       "tag": "@fluentui/react-icons_v0.1.27",
       "version": "0.1.27",

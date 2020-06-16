@@ -2,6 +2,33 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Tue, 16 Jun 2020 17:35:36 GMT",
+      "tag": "@uifabric/experiments_v7.26.4",
+      "version": "7.26.4",
+      "comments": {
+        "none": [
+          {
+            "comment": "adding selecteditemslist unit tests",
+            "author": "nebhatna@microsoft.com",
+            "commit": "89a67f742f79b55154724743c1a2509ad7c2da38",
+            "package": "@uifabric/experiments"
+          },
+          {
+            "comment": "UnifiedPicker: adding unit tests",
+            "author": "nebhatna@microsoft.com",
+            "commit": "7223e7607be6b3c2303eec9ac87078e963bfe2c2",
+            "package": "@uifabric/experiments"
+          },
+          {
+            "comment": "Clean up devDependencies and clarify version file placeholder comments",
+            "author": "elcraig@microsoft.com",
+            "commit": "695c29fcf6f07a903e7d849098c5e6c0ec178b3d",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 09 Jun 2020 12:35:17 GMT",
       "tag": "@uifabric/experiments_v7.26.1",
       "version": "7.26.1",

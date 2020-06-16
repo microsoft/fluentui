@@ -17,9 +17,9 @@
     "preserveConstEnums": true,
     "noImplicitThis": true,
     "skipLibCheck": true,
-    "lib": ["es5", "dom"],
+    "lib": ["es5", "dom", "es2015.promise"],
     "typeRoots": ["../../node_modules/@types", "../../typings"],
-    "types": ["jest", "webpack-env", "custom-global", "puppeteer", "es6-promise"]
+    "types": ["webpack-env", "custom-global"]
   },
   "include": ["src"]
 }
