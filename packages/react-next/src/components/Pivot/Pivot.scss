@@ -77,10 +77,6 @@
   height: 44px;
   margin-right: 8px;
 
-  &[data-move-to-overflow='true'] {
-    display: none;
-  }
-
   &:before {
     background-color: transparent;
     bottom: 0;
@@ -182,11 +178,18 @@
   line-height: $CONTEXTUAL_MENU_ITEM_HEIGHT;
 }
 
+// Links are hidden when they're overflowing
+.link[data-is-overflowing='true'] {
+  display: none;
+}
+
 .overflowMenuButton {
   visibility: hidden;
-  &[data-show-overflow='true'] {
-    visibility: visible;
-  }
+}
+
+// Show the overflow menu button if there's at least one link in the overflow
+.link[data-is-overflowing='true'] ~ * .overflowMenuButton {
+  visibility: visible;
 }
 
 .linkContent {
