@@ -15,12 +15,21 @@ export const useOverflow = (
   const [overflowIndex, setOverflowIndex] = React.useState<number | undefined>(undefined);
 
   // Cache the computed styles from this render
-  type CachedStyle = {
-    rtl: boolean;
-    containerPadding: number;
-    menuMargin: number;
+  let cachedStyle: { rtl: boolean; containerPadding: number; menuMargin: number } | undefined = undefined;
+  const getCachedStyle = (container: HTMLElement, menuButton: HTMLElement, win: Window) => {
+    if (cachedStyle === undefined) {
+      const containerStyle = win.getComputedStyle(container);
+      const menuStyle = win.getComputedStyle(menuButton);
+      const rtl = containerStyle.direction === 'rtl';
+
+      cachedStyle = {
+        rtl,
+        containerPadding: parseFloat(rtl ? containerStyle.paddingLeft : containerStyle.paddingRight),
+        menuMargin: parseFloat(rtl ? menuStyle.marginLeft : menuStyle.marginRight),
+      };
+    }
+    return cachedStyle;
   };
-  let cachedStyle: CachedStyle | undefined = undefined;
 
   const hideOverflowItems = (menuButton: HTMLElement, win: Window) => {
     const container = menuButton.parentElement;
@@ -40,26 +49,14 @@ export const useOverflow = (
       }
     }
 
-    let newOverflowIndex: number | undefined = undefined;
-
-    if (cachedStyle === undefined) {
-      const containerStyle = win.getComputedStyle(container);
-      const menuStyle = win.getComputedStyle(menuButton);
-      const _rtl = containerStyle.direction === 'rtl';
-
-      cachedStyle = {
-        rtl: _rtl,
-        containerPadding: parseFloat(_rtl ? containerStyle.paddingLeft : containerStyle.paddingRight),
-        menuMargin: parseFloat(_rtl ? menuStyle.marginLeft : menuStyle.marginRight),
-      };
-    }
-
-    const { rtl, containerPadding, menuMargin } = cachedStyle;
-
+    const { rtl, containerPadding, menuMargin } = getCachedStyle(container, menuButton, win);
     const containerRect = container.getBoundingClientRect();
     const containerEnd = (rtl ? -containerRect.left : containerRect.right) - containerPadding;
 
+    let newOverflowIndex: number | undefined = undefined;
     let lastVisibleElement: HTMLElement | undefined = undefined;
+
+    // Iterate over the items in reverse order, hiding them as necessary until everything fits within the container
     for (let i = items.length - 1; i >= 0; i--) {
       const item = items[i];
       if (!(item instanceof HTMLElement) || item === menuButton) {
