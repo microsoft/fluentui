@@ -1,3 +1,4 @@
+import { RendererParam } from '@fluentui/react-northstar-styles-renderer';
 import {
   ComponentSlotStylesInput,
   ComponentSlotStylesPrepared,
@@ -7,7 +8,6 @@ import {
   ICSSInJSStyle,
   isDebugEnabled,
   mergeComponentStyles,
-  RendererParam,
   ThemePrepared,
   withDebugId,
 } from '@fluentui/styles';

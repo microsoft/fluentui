@@ -1,14 +1,13 @@
 import * as _ from 'lodash';
+import { ResolveStylesOptions, StylesContextPerformance } from '@fluentui/react-bindings';
+import { RendererRenderRule, noopRenderer } from '@fluentui/react-northstar-styles-renderer';
 import {
   ComponentSlotStylesPrepared,
   ComponentVariablesObject,
   emptyTheme,
   ICSSInJSStyle,
   ThemePrepared,
-  RendererRenderRule,
-  noopRenderer,
 } from '@fluentui/styles';
-import { ResolveStylesOptions, StylesContextPerformance } from '@fluentui/react-bindings';
 
 import resolveStyles from '../../src/styles/resolveStyles';
 

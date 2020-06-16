@@ -1,4 +1,4 @@
-import { CreateRenderer, RendererParam } from '@fluentui/styles';
+import { CreateRenderer } from '@fluentui/react-northstar-styles-renderer';
 import { createRenderer, IRenderer, IStyle, TPlugin } from 'fela';
 import felaPluginEmbedded from 'fela-plugin-embedded';
 import felaPluginFallbackValue from 'fela-plugin-fallback-value';
@@ -14,6 +14,7 @@ import felaInvokeKeyframesPlugin from './felaInvokeKeyframesPlugin';
 import felaPerformanceEnhancer from './felaPerformanceEnhancer';
 import felaSanitizeCss from './felaSanitizeCssPlugin';
 import felaStylisEnhancer from './felaStylisEnhancer';
+import { FelaRendererParam } from './types';
 
 let felaDevMode = false;
 
@@ -76,8 +77,6 @@ const rendererConfig = {
     felaPluginRtl(),
   ],
 };
-
-type FelaRendererParam = Omit<RendererParam, 'RendererParam'> & { theme: { direction: 'rtl' | 'ltr' } };
 
 export const createFelaRenderer: CreateRenderer = target => {
   const felaRenderer = createRenderer(rendererConfig);

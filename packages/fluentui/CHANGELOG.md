@@ -95,6 +95,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add `compose()` support for submenus in `Toolbar` @mnajdova ([#13377](https://github.com/microsoft/fluentui/pull/13377))
 - Add `show` and `hide` animations in the `Popup` component @mnajdova ([#13439](https://github.com/microsoft/fluentui/pull/13439))
 - Added icons: `MeetingTimeIcon`, `VideomailIcon`, `ScreenshareIcon`, `Shift24hIcon`, `ShiftActivity`  @TanelVari ([#13513](https://github.com/microsoft/fluentui/pull/13513))
+- Extract `Renderer` related types to a separate package @layershifter ([#13616](https://github.com/microsoft/fluentui/pull/13616))
 
 ### Performance
 - Omit `_.findKey()` usage in `focusVisibleEnhancer()` @layershifter ([#13343](https://github.com/microsoft/fluentui/pull/13343))
