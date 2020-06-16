@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 
 import { Icon } from './index';
+import { TestImages } from 'office-ui-fabric-react/lib/common/TestImages';
 
 describe('Icon', () => {
   it('renders Icon correctly', () => {
@@ -12,6 +13,22 @@ describe('Icon', () => {
 
   it('renders Icon correctly using iconName', () => {
     const component = renderer.create(<Icon iconName="Upload" />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders Icon correctly as an image', () => {
+    const component = renderer.create(<Icon iconName="CompassNW" imageProps={{ src: TestImages.iconOne }} />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders Icon correctly that has children', () => {
+    const component = renderer.create(
+      <Icon iconName="Upload">
+        <span>This icon has children that are rendered inside of it</span>
+      </Icon>,
+    );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
