@@ -118,6 +118,18 @@ export const SharedSignal: Signal = (props: ISignalProps): JSX.Element => {
   return <IconSignal {...props} signalClass={SignalsStyles.shared} iconName="people" />;
 };
 
+export const DesktopSignal: Signal = (props: ISignalProps): JSX.Element => {
+  return <IconSignal {...props} signalClass={SignalsStyles.folder} iconName="desktopfolder" />;
+};
+
+export const DocumentsSignal: Signal = (props: ISignalProps): JSX.Element => {
+  return <IconSignal {...props} signalClass={SignalsStyles.folder} iconName="documentsfolder" />;
+};
+
+export const PicturesSignal: Signal = (props: ISignalProps): JSX.Element => {
+  return <IconSignal {...props} signalClass={SignalsStyles.folder} iconName="picturesfolder" />;
+};
+
 export const MalwareDetectedSignal: Signal = (props: ISignalProps): JSX.Element => {
   return <IconSignal {...props} signalClass={SignalsStyles.malwareDetected} iconName="BlockedSiteSolid12" />;
 };

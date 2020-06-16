@@ -1,28 +1,19 @@
 import { Accessibility } from '@fluentui/accessibility';
 import {
   getElementType,
+  mergeVariablesOverrides,
   useUnhandledProps,
   useAccessibility,
   useStyles,
   useTelemetry,
   compose,
-  ComponentWithAs,
 } from '@fluentui/react-bindings';
-import { mergeComponentVariables } from '@fluentui/styles';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
-
 import * as React from 'react';
+
 import { ProviderContextPrepared } from '../../types';
-import {
-  ChildrenComponentProps,
-  ContentComponentProps,
-  createShorthandFactory,
-  UIComponentProps,
-  commonPropTypes,
-  ShorthandFactory,
-  ShorthandConfig,
-} from '../../utils';
+import { ChildrenComponentProps, ContentComponentProps, UIComponentProps, commonPropTypes } from '../../utils';
 import { ToolbarVariablesContext } from './toolbarVariablesContext';
 
 export interface ToolbarDividerProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
@@ -57,7 +48,7 @@ const ToolbarDivider = compose<'div', ToolbarDividerProps, ToolbarDividerStylesP
         className,
         design,
         styles,
-        variables: mergeComponentVariables(parentVariables, variables),
+        variables: mergeVariablesOverrides(parentVariables, variables),
       }),
       rtl: context.rtl,
       composeOptions,
@@ -75,17 +66,14 @@ const ToolbarDivider = compose<'div', ToolbarDividerProps, ToolbarDividerStylesP
   {
     displayName: 'ToolbarDivider',
     className: toolbarDividerClassName,
+
+    shorthandConfig: {
+      mappedProp: 'content',
+    },
     handledProps: ['accessibility', 'as', 'children', 'className', 'content', 'styles', 'variables', 'design'],
   },
-) as ComponentWithAs<'div', ToolbarDividerProps> & {
-  create: ShorthandFactory<ToolbarDividerProps>;
-  shorthandConfig: ShorthandConfig<ToolbarDividerProps>;
-};
-ToolbarDivider.propTypes = commonPropTypes.createCommon();
+);
 
-ToolbarDivider.create = createShorthandFactory({ Component: ToolbarDivider, mappedProp: 'content' });
-ToolbarDivider.shorthandConfig = {
-  mappedProp: 'content',
-};
+ToolbarDivider.propTypes = commonPropTypes.createCommon();
 
 export default ToolbarDivider;

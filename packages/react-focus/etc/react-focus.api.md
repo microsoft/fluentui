@@ -95,6 +95,7 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
     shouldFocusInnerElementWhenReceivedFocus?: boolean;
     shouldFocusOnMount?: boolean;
     shouldInputLoseFocusOnArrowKey?: (inputElement: HTMLInputElement) => boolean;
+    shouldRaiseClicks?: boolean;
     shouldReceiveFocus?: (childElement?: HTMLElement) => boolean;
     shouldResetActiveElementWhenTabFromZone?: boolean;
     stopFocusPropagation?: boolean;

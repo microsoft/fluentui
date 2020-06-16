@@ -39,7 +39,7 @@ const CardExampleFocusableGrid = () => {
   const cardsNumber = 12;
 
   return (
-    <Grid accessibility={cardsContainerBehavior} columns="3">
+    <Grid accessibility={cardsContainerBehavior} columns={3}>
       {_.times(cardsNumber, i => {
         const nonZeroIndex = i + 1;
         return (

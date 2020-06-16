@@ -3,7 +3,7 @@ import { hierarchicalTreeItemBehavior } from '@fluentui/accessibility';
 describe('HierarchicalTreeItemBehavior', () => {
   describe('tabIndex', () => {
     test(`is added with '0' value to an item that is expandable`, () => {
-      const expectedResult = hierarchicalTreeItemBehavior({ items: [{ key: '1' }] });
+      const expectedResult = hierarchicalTreeItemBehavior({ hasItems: true });
       expect(expectedResult.attributes.root.tabIndex).toEqual(-1);
     });
 
@@ -13,7 +13,7 @@ describe('HierarchicalTreeItemBehavior', () => {
     });
 
     test(`is not added to a leaf item (empty items)`, () => {
-      const expectedResult = hierarchicalTreeItemBehavior({ items: [] });
+      const expectedResult = hierarchicalTreeItemBehavior({ hasItems: false });
       expect(expectedResult.attributes.root.tabIndex).toBeUndefined();
     });
   });
@@ -25,19 +25,22 @@ describe('HierarchicalTreeItemBehavior', () => {
     });
 
     test(`is added with 'false' value to an item that is expandable but not open`, () => {
-      const expectedResult = hierarchicalTreeItemBehavior({ items: [{ key: '1' }], open: false });
+      const expectedResult = hierarchicalTreeItemBehavior({
+        hasItems: true,
+        open: false,
+      });
       expect(expectedResult.attributes.root['aria-expanded']).toEqual(false);
     });
 
     test(`is added with 'false' value to an item that is expandable and open`, () => {
-      const expectedResult = hierarchicalTreeItemBehavior({ items: [{ key: '1' }], open: true });
+      const expectedResult = hierarchicalTreeItemBehavior({ hasItems: true, open: true });
       expect(expectedResult.attributes.root['aria-expanded']).toEqual(true);
     });
   });
 
   describe('role', () => {
     test(`is 'treeitem' if not a leaf`, () => {
-      const expectedResult = hierarchicalTreeItemBehavior({ items: [{ key: '1' }] });
+      const expectedResult = hierarchicalTreeItemBehavior({ hasItems: true });
       expect(expectedResult.attributes.root.role).toEqual('treeitem');
     });
 

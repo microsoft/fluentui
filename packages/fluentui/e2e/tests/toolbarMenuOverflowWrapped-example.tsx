@@ -1,11 +1,16 @@
 import React from 'react';
 import _ from 'lodash';
-import { Toolbar, toolbarItemSlotClassNames, toolbarClassName, toolbarItemClassName } from '@fluentui/react-northstar';
+import {
+  Toolbar,
+  toolbarItemWrapperClassName,
+  toolbarClassName,
+  toolbarItemClassName,
+} from '@fluentui/react-northstar';
 
 export const selectors = {
   toolbarItem: toolbarItemClassName,
   toolbar: toolbarClassName,
-  toolbarItemWrapper: toolbarItemSlotClassNames.wrapper,
+  toolbarItemWrapper: toolbarItemWrapperClassName,
 };
 
 export const itemsCount = 20;

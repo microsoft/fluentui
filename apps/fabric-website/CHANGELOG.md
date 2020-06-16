@@ -1,8 +1,45 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Fri, 15 May 2020 05:52:46 GMT and should not be manually modified.
+This log was last generated on Tue, 16 Jun 2020 17:35:36 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.10.71](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.10.71)
+
+Tue, 16 Jun 2020 17:35:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.10.58..@uifabric/fabric-website_v7.10.71)
+
+### Patches
+
+- Clean up dependencies and clarify version file placeholder comments ([PR #13585](https://github.com/microsoft/fluentui/pull/13585) by elcraig@microsoft.com)
+
+## [7.10.58](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.10.58)
+
+Fri, 22 May 2020 12:37:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.10.57..@uifabric/fabric-website_v7.10.58)
+
+### Patches
+
+- Update documentation for fontSize prop ([PR #13276](https://github.com/microsoft/fluentui/pull/13276) by krsiler@microsoft.com)
+
+## [7.10.55](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.10.55)
+
+Tue, 19 May 2020 12:34:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.10.53..@uifabric/fabric-website_v7.10.55)
+
+### Patches
+
+- grammer fix on iOS get started change ([PR #13211](https://github.com/microsoft/fluentui/pull/13211) by hyshin@microsoft.com)
+- added blurb on the Cross platform Getting Started page that FURN controls only support Windows and Mac atm ([PR #13215](https://github.com/microsoft/fluentui/pull/13215) by ejlayne@microsoft.com)
+
+## [7.10.53](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.10.53)
+
+Mon, 18 May 2020 12:54:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.10.50..@uifabric/fabric-website_v7.10.53)
+
+### Patches
+
+- Fixed broken URLs ([PR #13187](https://github.com/microsoft/fluentui/pull/13187) by mgodbolt@microsoft.com)
 
 ## [7.10.50](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.10.50)
 

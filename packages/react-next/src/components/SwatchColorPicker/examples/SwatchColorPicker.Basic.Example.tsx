@@ -30,7 +30,9 @@ const colorCellsExample2 = [
   { id: 'l', label: 'gray20', color: '#69797e' },
 ];
 
+// tslint:disable-next-line:no-any
 export class SwatchColorPickerBasicExample extends React.Component<any, IBasicSwatchColorPickerExampleState> {
+  // tslint:disable-next-line:no-any
   constructor(props: any) {
     super(props);
 

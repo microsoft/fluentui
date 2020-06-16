@@ -1,10 +1,5 @@
-import {
-  compose,
-  RendererRenderRule,
-  StylesContextValue,
-  useStyles,
-  useUnhandledProps,
-} from '@fluentui/react-bindings';
+import { compose, StylesContextValue, useStyles, useUnhandledProps } from '@fluentui/react-bindings';
+import { noopRenderer } from '@fluentui/react-northstar-styles-renderer';
 import { ComponentSlotStylesPrepared, emptyTheme, ThemeInput } from '@fluentui/styles';
 import cx from 'classnames';
 import { mount, shallow } from 'enzyme';
@@ -13,12 +8,11 @@ import * as React from 'react';
 import { ThemeContext } from 'react-fela';
 
 const TestProvider: React.FC<{ theme: ThemeInput }> = props => {
-  const value: StylesContextValue<{ renderRule: RendererRenderRule }> = {
+  const value: StylesContextValue = {
     disableAnimations: false,
     renderer: {
-      renderRule: rule => {
-        const props = rule();
-
+      ...noopRenderer,
+      renderRule: props => {
         return cx(
           props.color && `color-${props.color}`,
           props.hidden && `hidden-${props.hidden}`,
@@ -65,8 +59,15 @@ const BaseComponent: React.FC<BaseComponentProps> = compose<
     });
     const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
 
-    // @ts-ignore
-    return <button className={classes.root} onClick={() => setOpen(!open)} {...unhandledProps} ref={ref} />;
+    return (
+      <button
+        className={classes.root}
+        data-display-name={(composeOptions.slots.__self as typeof BaseComponent).displayName}
+        onClick={() => setOpen(!open)}
+        ref={ref}
+        {...unhandledProps}
+      />
+    );
   },
   {
     className: 'ui-base',
@@ -131,7 +132,6 @@ const BaseComponentWithSlots: React.FC<BaseComponentProps> = compose<
     const slotProps = composeOptions.resolveSlotProps(props);
 
     return (
-      // @ts-ignore
       <button className={classes.root} {...unhandledProps} ref={ref}>
         <Start className={classes.root} id="start" {...slotProps.start} />
         <Main className={classes.root} id="main" {...slotProps.main} />
@@ -148,7 +148,7 @@ const BaseComponentWithSlots: React.FC<BaseComponentProps> = compose<
       main: 'b',
       end: 'i',
     },
-    mapPropsToSlotProps: (props: any) => ({
+    slotProps: props => ({
       start: {
         'data-attr': props['data-start'],
       },
@@ -206,6 +206,12 @@ describe('useCompose', () => {
     expect(wrapper.find('#end').name()).toEqual('i');
   });
 
+  it('passes component definition as "__self"', () => {
+    const wrapper = shallow(<BaseComponent />);
+
+    expect(wrapper.find('button').prop('data-display-name')).toEqual('BaseComponent');
+  });
+
   it('applies mapped props to correct slots', () => {
     const wrapper = shallow(<BaseComponentWithSlots data-main={true} data-end={false} />);
 
@@ -229,7 +235,7 @@ describe('useCompose', () => {
     >(BaseComponentWithSlots, {
       className: 'ui-composed-with-slots',
       displayName: 'ComposedComponentWithSlots',
-      mapPropsToSlotProps: props => ({
+      slotProps: props => ({
         start: { 'data-attr': false },
         main: { 'data-main-composed': props['data-main-composed'] },
       }),

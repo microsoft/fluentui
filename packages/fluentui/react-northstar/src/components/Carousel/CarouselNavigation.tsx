@@ -1,6 +1,12 @@
 import { tabListBehavior, Accessibility } from '@fluentui/accessibility';
-import { useTelemetry, getElementType, useUnhandledProps, useAccessibility, useStyles } from '@fluentui/react-bindings';
-import { mergeComponentVariables } from '@fluentui/styles';
+import {
+  useTelemetry,
+  mergeVariablesOverrides,
+  getElementType,
+  useUnhandledProps,
+  useAccessibility,
+  useStyles,
+} from '@fluentui/react-bindings';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import * as customPropTypes from '@fluentui/react-proptypes';
@@ -68,7 +74,7 @@ export type CarouselNavigationStylesProps = Required<
 
 export const carouselNavigationClassName = 'ui-carousel__navigation';
 
-export const CarouselNavigation: React.FC<WithAsProp<CarouselNavigationProps>> &
+const CarouselNavigation: React.FC<WithAsProp<CarouselNavigationProps>> &
   FluentComponentStaticProps<CarouselNavigationProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(CarouselNavigation.displayName, context.telemetry);
@@ -119,7 +125,7 @@ export const CarouselNavigation: React.FC<WithAsProp<CarouselNavigationProps>> &
       _.invoke(props, 'onItemClick', e, itemProps);
       _.invoke(predefinedProps, 'onClick', e, itemProps);
     },
-    variables: mergeComponentVariables(variables, predefinedProps.variables),
+    variables: mergeVariablesOverrides(variables, predefinedProps.variables),
   });
 
   const renderItems = () => {

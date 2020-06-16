@@ -125,8 +125,10 @@ export const SwatchColorPickerBase = (props: ISwatchColorPickerProps) => {
          * Edge and IE expose a setActive() function for focusable divs that
          * sets the page focus but does not scroll the parent element.
          */
+        // tslint:disable-next-line:no-any
         if ((elements[index] as any).setActive) {
           try {
+            // tslint:disable-next-line:no-any
             (elements[index] as any).setActive();
           } catch (e) {
             /* no-op */

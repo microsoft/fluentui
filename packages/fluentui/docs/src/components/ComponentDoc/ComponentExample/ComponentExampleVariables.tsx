@@ -90,7 +90,7 @@ const ComponentExampleVariables: React.FunctionComponent<ComponentExampleVariabl
                 <Header as="h3" styles={{ marginTop: '4px', marginBottom: '4px' }}>
                   {groupName}
                 </Header>
-                <Grid columns="4">
+                <Grid columns={4}>
                   {_.map(variableNames, variableName => (
                     <ComponentExampleVariable
                       componentName={componentName}

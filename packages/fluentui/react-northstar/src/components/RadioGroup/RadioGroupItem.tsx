@@ -1,21 +1,29 @@
-import { Accessibility, radioGroupItemBehavior } from '@fluentui/accessibility';
+import { Accessibility, radioGroupItemBehavior, RadioGroupItemBehaviorProps } from '@fluentui/accessibility';
 import { Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import * as _ from 'lodash';
-
-import {
-  AutoControlledComponent,
-  createShorthandFactory,
-  UIComponentProps,
-  ChildrenComponentProps,
-  commonPropTypes,
-  applyAccessibilityKeyHandlers,
-  ShorthandFactory,
-} from '../../utils';
+import { createShorthandFactory, UIComponentProps, ChildrenComponentProps, commonPropTypes } from '../../utils';
 import Box, { BoxProps } from '../Box/Box';
-import { ComponentEventHandler, WithAsProp, ShorthandValue, withSafeTypeForAs } from '../../types';
+import {
+  ComponentEventHandler,
+  WithAsProp,
+  ShorthandValue,
+  withSafeTypeForAs,
+  FluentComponentStaticProps,
+  ProviderContextPrepared,
+} from '../../types';
+import {
+  useAutoControlled,
+  getElementType,
+  useAccessibility,
+  useStyles,
+  useTelemetry,
+  useUnhandledProps,
+} from '@fluentui/react-bindings';
+// @ts-ignore
+import { ThemeContext } from 'react-fela';
 
 export interface RadioGroupItemSlotClassNames {
   indicator: string;
@@ -23,7 +31,7 @@ export interface RadioGroupItemSlotClassNames {
 
 export interface RadioGroupItemProps extends UIComponentProps, ChildrenComponentProps {
   /** Accessibility behavior if overridden by the user. */
-  accessibility?: Accessibility;
+  accessibility?: Accessibility<RadioGroupItemBehaviorProps>;
 
   /** Whether or not radio item is checked. */
   checked?: boolean;
@@ -76,93 +84,126 @@ export const radioGroupItemSlotClassNames: RadioGroupItemSlotClassNames = {
   indicator: `${radioGroupItemClassName}__indicator`,
 };
 
-class RadioGroupItem extends AutoControlledComponent<WithAsProp<RadioGroupItemProps>, RadioGroupItemState> {
-  elementRef = React.createRef<HTMLElement>();
+export type RadioGroupItemStylesProps = Required<Pick<RadioGroupItemProps, 'disabled' | 'vertical' | 'checked'>>;
 
-  static create: ShorthandFactory<RadioGroupItemProps>;
+const RadioGroupItem: React.FC<WithAsProp<RadioGroupItemProps>> &
+  FluentComponentStaticProps<RadioGroupItemProps> = props => {
+  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const { setStart, setEnd } = useTelemetry(RadioGroupItem.displayName, context.telemetry);
+  setStart();
+  const { label, indicator, disabled, vertical, className, design, styles, variables, shouldFocus } = props;
+  const elementRef = React.useRef<HTMLElement>();
+  const ElementType = getElementType(props);
+  const unhandledProps = useUnhandledProps(RadioGroupItem.handledProps, props);
 
-  static displayName = 'RadioGroupItem';
+  const [checked, setChecked] = useAutoControlled({
+    defaultValue: props.defaultChecked,
+    value: props.checked,
+    initialValue: false,
+  });
 
-  static deprecated_className = radioGroupItemClassName;
+  const handleClick = (e: React.MouseEvent | React.KeyboardEvent) => {
+    _.invoke(props, 'onClick', e, props);
+    setChecked(prevChecked => {
+      _.invoke(props, 'onChange', undefined, { ...props, checked: !prevChecked });
+      return !prevChecked;
+    });
+  };
 
-  static propTypes = {
-    ...commonPropTypes.createCommon({
-      content: false,
+  React.useEffect(() => {
+    if (checked && shouldFocus) elementRef.current.focus();
+  }, [checked, shouldFocus]);
+
+  const { classes, styles: resolvedStyles } = useStyles<RadioGroupItemStylesProps>(RadioGroupItem.displayName, {
+    className: radioGroupItemClassName,
+    mapPropsToStyles: () => ({
+      vertical,
+      disabled,
+      checked,
     }),
-    checked: PropTypes.bool,
-    defaultChecked: PropTypes.bool,
-    disabled: PropTypes.bool,
-    indicator: customPropTypes.shorthandAllowingChildren,
-    label: customPropTypes.itemShorthand,
-    name: PropTypes.string,
-    onClick: PropTypes.func,
-    onChange: PropTypes.func,
-    shouldFocus: PropTypes.bool,
-    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    vertical: PropTypes.bool,
-  };
+    mapPropsToInlineStyles: () => ({
+      className,
+      design,
+      styles,
+      variables,
+    }),
+    rtl: context.rtl,
+  });
 
-  static defaultProps = {
-    accessibility: radioGroupItemBehavior,
-    indicator: {},
-  };
-
-  static autoControlledProps = ['checked'];
-
-  actionHandlers = {
-    performClick: e => {
-      e.preventDefault();
-      this.handleClick(e);
+  const getA11yProps = useAccessibility<RadioGroupItemBehaviorProps>(props.accessibility, {
+    debugName: RadioGroupItem.displayName,
+    actionHandlers: {
+      performClick: e => {
+        e.preventDefault();
+        handleClick(e);
+      },
     },
-  };
+    mapPropsToBehavior: () => ({
+      checked,
+      disabled,
+    }),
+    rtl: context.rtl,
+  });
 
-  handleClick = e => {
-    _.invoke(this.props, 'onClick', e, this.props);
-  };
-
-  handleChange = (e: React.ChangeEvent) => {
+  const handleChange = (e: React.ChangeEvent) => {
     // RadioGroupItem component doesn't present any `input` component in markup, however all of our
     // components should handle events transparently.
-    _.invoke(this.props, 'onChange', e, { ...this.props, checked: this.state.checked });
+    _.invoke(props, 'onChange', e, { ...props, checked });
   };
 
-  componentDidUpdate(prevProps, prevState) {
-    const checked = this.state.checked;
-    if (checked !== prevState.checked) {
-      checked && this.props.shouldFocus && this.elementRef.current.focus();
-      _.invoke(this.props, 'onChange', undefined, { ...this.props, checked });
-    }
-  }
+  const element = getA11yProps.unstable_wrapWithFocusZone(
+    <Ref innerRef={elementRef}>
+      <ElementType
+        {...getA11yProps('root', {
+          className: classes.root,
+          onClick: handleClick,
+          onChange: handleChange,
+          ...unhandledProps,
+        })}
+      >
+        {Box.create(indicator, {
+          defaultProps: () => ({
+            className: radioGroupItemSlotClassNames.indicator,
+            styles: resolvedStyles.indicator,
+          }),
+        })}
+        {Box.create(label, {
+          defaultProps: () => ({
+            as: 'span',
+          }),
+        })}
+      </ElementType>
+    </Ref>,
+  );
+  setEnd();
+  return element;
+};
 
-  renderComponent({ ElementType, classes, unhandledProps, styles, accessibility }) {
-    const { label, indicator } = this.props;
+RadioGroupItem.displayName = 'RadioGroupItem';
 
-    return (
-      <Ref innerRef={this.elementRef}>
-        <ElementType
-          onClick={this.handleClick}
-          onChange={this.handleChange}
-          className={classes.root}
-          {...accessibility.attributes.root}
-          {...unhandledProps}
-          {...applyAccessibilityKeyHandlers(accessibility.keyHandlers.root, unhandledProps)}
-        >
-          {Box.create(indicator, {
-            defaultProps: () => ({
-              className: radioGroupItemSlotClassNames.indicator,
-              styles: styles.indicator,
-            }),
-          })}
-          {Box.create(label, {
-            defaultProps: () => ({
-              as: 'span',
-            }),
-          })}
-        </ElementType>
-      </Ref>
-    );
-  }
-}
+RadioGroupItem.propTypes = {
+  ...commonPropTypes.createCommon({
+    content: false,
+  }),
+  checked: PropTypes.bool,
+  defaultChecked: PropTypes.bool,
+  disabled: PropTypes.bool,
+  indicator: customPropTypes.shorthandAllowingChildren,
+  label: customPropTypes.itemShorthand,
+  name: PropTypes.string,
+  onClick: PropTypes.func,
+  onChange: PropTypes.func,
+  shouldFocus: PropTypes.bool,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  vertical: PropTypes.bool,
+};
+
+RadioGroupItem.defaultProps = {
+  accessibility: radioGroupItemBehavior,
+  indicator: {},
+};
+
+RadioGroupItem.handledProps = Object.keys(RadioGroupItem.propTypes) as any;
 
 RadioGroupItem.create = createShorthandFactory({ Component: RadioGroupItem, mappedProp: 'label' });
 

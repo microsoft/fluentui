@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Callout, FocusZone, FocusZoneDirection, List } from 'office-ui-fabric-react';
-import { Textbox } from '@uifabric/charting';
 import { IEventAnnotation } from '../../../types/IEventAnnotation';
+import { Textbox } from './Textbox';
 
 export interface ILineDef extends IEventAnnotation {
   x: number;

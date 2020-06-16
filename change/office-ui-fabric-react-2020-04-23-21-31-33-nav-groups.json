@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Pass all relevant state to Nav group render override",
-  "packageName": "office-ui-fabric-react",
-  "email": "tmichon@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-04-24T04:31:33.602Z"
-}

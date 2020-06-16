@@ -1,7 +1,7 @@
 import { Accessibility } from '../../types';
 import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
 import { FocusZoneDirection } from '../../focusZone/types';
-import * as keyboardKey from 'keyboard-key';
+import { getCode, keyboardKey, SpacebarKey } from '@fluentui/keyboard-key';
 import gridCellBehavior from './gridCellBehavior';
 import { GridRowBehaviorProps } from './gridRowBehavior';
 
@@ -26,7 +26,7 @@ const gridRowNestedBehavior: Accessibility<GridRowBehaviorProps> = props => ({
   },
   focusZone: {
     props: {
-      shouldEnterInnerZone: event => keyboardKey.getCode(event) === keyboardKey.Enter,
+      shouldEnterInnerZone: event => getCode(event) === keyboardKey.Enter,
       direction: FocusZoneDirection.horizontal,
     },
   },
@@ -36,7 +36,7 @@ const gridRowNestedBehavior: Accessibility<GridRowBehaviorProps> = props => ({
         keyCombinations: [{ keyCode: keyboardKey.Tab, shiftKey: true }],
       },
       performClick: {
-        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }],
+        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: SpacebarKey }],
       },
     },
   },

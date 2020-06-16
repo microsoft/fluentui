@@ -72,6 +72,8 @@ export class VerticalBarChartStyledExample extends React.Component<IVerticalBarC
         yAxisTickCount={6}
         styles={customStyles}
         colors={customColors}
+        hideLegend={true}
+        hideTooltip={true}
         chartLabel={'Chart with Axis Labels and Custom Styles'}
       />
     );
