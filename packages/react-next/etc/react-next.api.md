@@ -4,12 +4,66 @@
 
 ```ts
 
+import { ActionButton } from 'office-ui-fabric-react/lib/Button';
+import { BaseButton } from 'office-ui-fabric-react/lib/Button';
+import { ButtonType } from 'office-ui-fabric-react/lib/Button';
+import { CommandBarButton } from 'office-ui-fabric-react/lib/Button';
+import { CommandButton } from 'office-ui-fabric-react/lib/Button';
+import { Button as CompatButton } from 'office-ui-fabric-react/lib/Button';
+import { Checkbox as CompatCheckbox } from 'office-ui-fabric-react/lib/Checkbox';
+import { CheckboxBase as CompatCheckboxBase } from 'office-ui-fabric-react/lib/Checkbox';
+import { Link as CompatLink } from 'office-ui-fabric-react/lib/Link';
+import { LinkBase as CompatLinkBase } from 'office-ui-fabric-react/lib/Link';
+import { Pivot as CompatPivot } from 'office-ui-fabric-react/lib/Pivot';
+import { PivotBase as CompatPivotBase } from 'office-ui-fabric-react/lib/Pivot';
+import { PivotItem as CompatPivotItem } from 'office-ui-fabric-react/lib/Pivot';
+import { PivotLinkFormat as CompatPivotLinkFormat } from 'office-ui-fabric-react/lib/Pivot';
+import { PivotLinkSize as CompatPivotLinkSize } from 'office-ui-fabric-react/lib/Pivot';
+import { Slider as CompatSlider } from 'office-ui-fabric-react/lib/Slider';
+import { SliderBase as CompatSliderBase } from 'office-ui-fabric-react/lib/Slider';
+import { Toggle as CompatToggle } from 'office-ui-fabric-react/lib/Toggle';
+import { ToggleBase as CompatToggleBase } from 'office-ui-fabric-react/lib/Toggle';
 import { ComposePreparedOptions } from '@fluentui/react-compose';
+import { CompoundButton } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
+import { ElementType } from 'office-ui-fabric-react/lib/Button';
+import { IBaseButtonProps } from 'office-ui-fabric-react/lib/Button';
+import { IBaseButtonState } from 'office-ui-fabric-react/lib/Button';
 import { IBaseProps } from 'office-ui-fabric-react/lib/Utilities';
-import { IButtonProps } from '@fluentui/react-next/lib/CompatButton';
-import { IButtonProps as IButtonProps_2 } from 'office-ui-fabric-react/lib/components/Button/Button.types';
-import { IButtonStyles } from '@fluentui/react-next/lib/CompatButton';
+import { IButton } from 'office-ui-fabric-react/lib/Button';
+import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
+import { IButtonProps as IButtonProps_2 } from '@fluentui/react-next/lib/CompatButton';
+import { IButtonProps as IButtonProps_3 } from 'office-ui-fabric-react/lib/components/Button/Button.types';
+import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
+import { IButtonStyles as IButtonStyles_2 } from '@fluentui/react-next/lib/CompatButton';
+import { ICheckbox as ICompatCheckbox } from 'office-ui-fabric-react/lib/Checkbox';
+import { ICheckboxProps as ICompatCheckboxProps } from 'office-ui-fabric-react/lib/Checkbox';
+import { ICheckboxState as ICompatCheckboxState } from 'office-ui-fabric-react/lib/Checkbox';
+import { ICheckboxStyleProps as ICompatCheckboxStyleProps } from 'office-ui-fabric-react/lib/Checkbox';
+import { ICheckboxStyles as ICompatCheckboxStyles } from 'office-ui-fabric-react/lib/Checkbox';
+import { ILink as ICompatLink } from 'office-ui-fabric-react/lib/Link';
+import { ILinkHTMLAttributes as ICompatLinkHTMLAttributes } from 'office-ui-fabric-react/lib/Link';
+import { ILinkProps as ICompatLinkProps } from 'office-ui-fabric-react/lib/Link';
+import { ILinkStyleProps as ICompatLinkStyleProps } from 'office-ui-fabric-react/lib/Link';
+import { ILinkStyles as ICompatLinkStyles } from 'office-ui-fabric-react/lib/Link';
+import { IPivot as ICompatPivot } from 'office-ui-fabric-react/lib/Pivot';
+import { IPivotItemProps as ICompatPivotItemProps } from 'office-ui-fabric-react/lib/Pivot';
+import { IPivotProps as ICompatPivotProps } from 'office-ui-fabric-react/lib/Pivot';
+import { IPivotState as ICompatPivotState } from 'office-ui-fabric-react/lib/Pivot';
+import { IPivotStyleProps as ICompatPivotStyleProps } from 'office-ui-fabric-react/lib/Pivot';
+import { IPivotStyles as ICompatPivotStyles } from 'office-ui-fabric-react/lib/Pivot';
+import { ISlider as ICompatSlider } from 'office-ui-fabric-react/lib/Slider';
+import { ISliderProps as ICompatSliderProps } from 'office-ui-fabric-react/lib/Slider';
+import { ISliderState as ICompatSliderState } from 'office-ui-fabric-react/lib/Slider';
+import { ISliderStyleProps as ICompatSliderStyleProps } from 'office-ui-fabric-react/lib/Slider';
+import { ISliderStyles as ICompatSliderStyles } from 'office-ui-fabric-react/lib/Slider';
+import { IToggle as ICompatToggle } from 'office-ui-fabric-react/lib/Toggle';
+import { IToggleProps as ICompatToggleProps } from 'office-ui-fabric-react/lib/Toggle';
+import { IToggleState as ICompatToggleState } from 'office-ui-fabric-react/lib/Toggle';
+import { IToggleStyleProps as ICompatToggleStyleProps } from 'office-ui-fabric-react/lib/Toggle';
+import { IToggleStyles as ICompatToggleStyles } from 'office-ui-fabric-react/lib/Toggle';
 import { IComponentAs } from 'office-ui-fabric-react/lib/Utilities';
+import { IconButton } from 'office-ui-fabric-react/lib/Button';
 import { ICustomizerContext } from 'office-ui-fabric-react/lib/Utilities';
 import { IFocusZoneProps } from '@fluentui/react-focus';
 import { IIconProps } from 'office-ui-fabric-react/lib/Icon';
@@ -25,12 +79,20 @@ import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 import { IStyleSet } from 'office-ui-fabric-react/lib/Styling';
 import { ITeachingBubble } from 'office-ui-fabric-react/lib/TeachingBubble';
 import { ITheme } from 'office-ui-fabric-react/lib/Styling';
+import { MessageBarButton } from 'office-ui-fabric-react/lib/Button';
 import { Point } from 'office-ui-fabric-react/lib/Utilities';
 import { Position } from 'office-ui-fabric-react/lib/utilities/positioning';
+import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import * as React from 'react';
 import { RectangleEdge } from 'office-ui-fabric-react/lib/utilities/positioning';
 import { ThemeProviderProps } from '@fluentui/react-theme-provider';
 import { useTheme } from '@fluentui/react-theme-provider';
+
+export { ActionButton }
+
+export { BaseButton }
+
+export { ButtonType }
 
 // @public (undocumented)
 export const Checkbox: import("@fluentui/react-compose").ComponentWithAs<"div", ICheckboxProps>;
@@ -76,14 +138,52 @@ export class ColorPickerGridCellBase extends React.PureComponent<IColorPickerGri
     render(): JSX.Element;
 }
 
+export { CommandBarButton }
+
+export { CommandButton }
+
+export { CompatButton }
+
+export { CompatCheckbox }
+
+export { CompatCheckboxBase }
+
+export { CompatLink }
+
+export { CompatLinkBase }
+
+export { CompatPivot }
+
+export { CompatPivotBase }
+
+export { CompatPivotItem }
+
+export { CompatPivotLinkFormat }
+
+export { CompatPivotLinkSize }
+
+export { CompatSlider }
+
+export { CompatSliderBase }
+
+export { CompatToggle }
+
+export { CompatToggleBase }
+
+export { CompoundButton }
+
 // @public
 export const Customizer: React.FunctionComponent<ICustomizerProps>;
 
 // @public (undocumented)
 export const DEFAULT_MASK_CHAR = "_";
 
+export { DefaultButton }
+
 // @public (undocumented)
 export type DefaultProps = Required<Pick<ISpinButtonProps, 'step' | 'min' | 'max' | 'disabled' | 'labelPosition' | 'label' | 'incrementButtonIcon' | 'decrementButtonIcon'>>;
+
+export { ElementType }
 
 // @public (undocumented)
 export const Fabric: React.FunctionComponent<IFabricProps>;
@@ -123,6 +223,16 @@ export const getNextResizeGroupStateProvider: (measurementCache?: {
     shouldRenderDataForMeasurement: (dataToMeasure: any) => boolean;
     getInitialResizeGroupState: (data: any) => IResizeGroupState;
 };
+
+export { IBaseButtonProps }
+
+export { IBaseButtonState }
+
+export { IButton }
+
+export { IButtonProps }
+
+export { IButtonStyles }
 
 // @public
 export interface ICheckbox {
@@ -378,6 +488,60 @@ export interface IColorPickerGridCellStyles {
     colorCell: IStyle;
     svg: IStyle;
 }
+
+export { ICompatCheckbox }
+
+export { ICompatCheckboxProps }
+
+export { ICompatCheckboxState }
+
+export { ICompatCheckboxStyleProps }
+
+export { ICompatCheckboxStyles }
+
+export { ICompatLink }
+
+export { ICompatLinkHTMLAttributes }
+
+export { ICompatLinkProps }
+
+export { ICompatLinkStyleProps }
+
+export { ICompatLinkStyles }
+
+export { ICompatPivot }
+
+export { ICompatPivotItemProps }
+
+export { ICompatPivotProps }
+
+export { ICompatPivotState }
+
+export { ICompatPivotStyleProps }
+
+export { ICompatPivotStyles }
+
+export { ICompatSlider }
+
+export { ICompatSliderProps }
+
+export { ICompatSliderState }
+
+export { ICompatSliderStyleProps }
+
+export { ICompatSliderStyles }
+
+export { ICompatToggle }
+
+export { ICompatToggleProps }
+
+export { ICompatToggleState }
+
+export { ICompatToggleStyleProps }
+
+export { ICompatToggleStyles }
+
+export { IconButton }
 
 // @public (undocumented)
 export interface ICustomizerProps {
@@ -669,7 +833,7 @@ export interface IPivotItemProps extends React.HTMLAttributes<HTMLDivElement> {
     alwaysRender?: boolean;
     ariaLabel?: string;
     componentRef?: IRefObject<{}>;
-    headerButtonProps?: IButtonProps | {
+    headerButtonProps?: IButtonProps_2 | {
         [key: string]: string | number | boolean;
     };
     headerText?: string;
@@ -832,7 +996,7 @@ export interface ISearchBox {
 export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElement> {
     ariaLabel?: string;
     className?: string;
-    clearButtonProps?: IButtonProps;
+    clearButtonProps?: IButtonProps_2;
     componentRef?: IRefObject<ISearchBox>;
     // @deprecated
     defaultValue?: string;
@@ -974,10 +1138,10 @@ export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement> {
     decrementButtonIcon?: IIconProps;
     defaultValue?: string;
     disabled?: boolean;
-    downArrowButtonStyles?: Partial<IButtonStyles>;
+    downArrowButtonStyles?: Partial<IButtonStyles_2>;
     // Warning: (ae-forgotten-export) The symbol "ISpinButtonClassNames" needs to be exported by the entry point index.d.ts
     getClassNames?: (theme: ITheme, disabled: boolean, isFocused: boolean, keyboardSpinDirection: KeyboardSpinDirection, labelPosition?: Position, className?: string) => ISpinButtonClassNames;
-    iconButtonProps?: IButtonProps_2;
+    iconButtonProps?: IButtonProps_3;
     iconProps?: IIconProps;
     incrementButtonAriaLabel?: string;
     incrementButtonIcon?: IIconProps;
@@ -997,7 +1161,7 @@ export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement> {
     styles?: Partial<ISpinButtonStyles>;
     theme?: ITheme;
     title?: string;
-    upArrowButtonStyles?: Partial<IButtonStyles>;
+    upArrowButtonStyles?: Partial<IButtonStyles_2>;
     value?: string;
 }
 
@@ -1306,6 +1470,8 @@ export const MeasuredContext: React.Context<{
     isMeasured: boolean;
 }>;
 
+export { MessageBarButton }
+
 // @public (undocumented)
 export const ONKEYDOWN_TIMEOUT_DURATION = 1000;
 
@@ -1393,6 +1559,8 @@ export class PositioningContainer extends React.Component<IPositioningContainerP
     // (undocumented)
     UNSAFE_componentWillUpdate(newProps: IPositioningContainerProps): void;
     }
+
+export { PrimaryButton }
 
 // @public (undocumented)
 export const ResizeGroup: import("react").ForwardRefExoticComponent<import("./ResizeGroup.types").IResizeGroupProps & import("react").RefAttributes<HTMLDivElement>>;
