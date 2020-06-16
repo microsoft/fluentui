@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { useConstCallback } from '@uifabric/react-hooks';
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { ISearchBoxStyles, SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
-import { Icon } from 'office-ui-fabric-react/lib/Icon';
-import { IContextualMenuListProps, IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
-import { IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { DefaultButton } from '@fluentui/react-next/lib/Button';
+import { ISearchBoxStyles, SearchBox } from '@fluentui/react-next/lib/SearchBox';
+import { Icon } from '@fluentui/react-next/lib/Icon';
+import { IContextualMenuListProps, IContextualMenuItem } from '@fluentui/react-next/lib/ContextualMenu';
+import { IRenderFunction } from '@fluentui/react-next/lib/Utilities';
 
 export const ContextualMenuWithCustomMenuListExample: React.FunctionComponent = () => {
   const [items, setItems] = React.useState(menuItems);

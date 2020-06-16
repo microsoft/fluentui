@@ -4,9 +4,9 @@ import {
   DirectionalHint,
   IContextualMenuProps,
   IContextualMenuItem,
-} from 'office-ui-fabric-react/lib/ContextualMenu';
-import { DefaultButton, IconButton } from 'office-ui-fabric-react/lib/Button';
-import { FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
+} from '@fluentui/react-next/lib/ContextualMenu';
+import { DefaultButton, IconButton } from '@fluentui/react-next/lib/Button';
+import { FocusZoneDirection } from '@fluentui/react-next/lib/FocusZone';
 import './ContextualMenuExample.scss';
 
 export const ContextualMenuCustomizationWithNoWrapExample: React.FunctionComponent = () => {

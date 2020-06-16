@@ -3,8 +3,8 @@ import {
   ContextualMenuItemType,
   IContextualMenuProps,
   IContextualMenuItem,
-} from 'office-ui-fabric-react/lib/ContextualMenu';
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
+} from '@fluentui/react-next/lib/ContextualMenu';
+import { DefaultButton } from '@fluentui/react-next/lib/Button';
 
 export const ContextualMenuPersistedExample: React.FunctionComponent = () => {
   return <DefaultButton text="Click for ContextualMenu" persistMenu={true} menuProps={menuProps} />;

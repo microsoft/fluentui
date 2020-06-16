@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ContextualMenu, ContextualMenuItemType, IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
+import { ContextualMenu, ContextualMenuItemType, IContextualMenuItem } from '@fluentui/react-next/lib/ContextualMenu';
 import { useConstCallback } from '@uifabric/react-hooks';
 
 export const ContextualMenuBasicExample: React.FunctionComponent = () => {
