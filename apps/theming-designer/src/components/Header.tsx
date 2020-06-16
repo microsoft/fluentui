@@ -55,6 +55,7 @@ const headerStackStyles = (p: IStackProps, theme: ITheme) => ({
 const codepenHeader = `const {
   createTheme,
   Checkbox,
+  Customizations,
   DefaultButton,
   Fabric,
   loadTheme,
