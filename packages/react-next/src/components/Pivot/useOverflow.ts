@@ -1,29 +1,18 @@
 import * as React from 'react';
-import { useEventListener } from '@fluentui/react-component-event-listener';
 import { useAsync } from '@uifabric/react-hooks';
 import { getWindow } from '@uifabric/utilities';
 
 export type OverflowCallbacks = {
-  onOverflowIndexChanged: (overflowIndex: number | undefined) => void;
-
   isPinned?: (item: HTMLElement) => boolean;
-  setItemDisplayed?: (item: HTMLElement, displayed: boolean) => void;
-  setOverflowMenuButtonVisible?: (menuButton: HTMLElement, visible: boolean) => void;
-};
-
-const defaultCallbacks = {
-  isPinned: () => false,
-  setItemDisplayed: (item: HTMLElement, displayed: boolean) => (item.style.display = displayed ? '' : 'none'),
-  setOverflowMenuButtonVisible: (menuButton: HTMLElement, visible: boolean) =>
-    (menuButton.style.visibility = visible ? 'visible' : 'hidden'),
+  setItemDisplayed: (item: HTMLElement, displayed: boolean) => void;
+  setOverflowMenuButtonVisible: (menuButton: HTMLElement, visible: boolean) => void;
 };
 
 export const useOverflow = (
   overflowMenuButtonRef: React.RefObject<HTMLElement | undefined>,
   callbacks: OverflowCallbacks,
 ) => {
-  // Keep track of the index of the first item in the overflow between renders
-  const overflowIndexRef = React.useRef<number | undefined>(undefined);
+  const [overflowIndex, setOverflowIndex] = React.useState<number | undefined>(undefined);
 
   // Cache the computed styles from this render
   type CachedStyle = {
@@ -33,34 +22,25 @@ export const useOverflow = (
   };
   let cachedStyle: CachedStyle | undefined = undefined;
 
-  const hideOverflowItems = useAsync().debounce(() => {
-    const menuButton = overflowMenuButtonRef.current;
-    const container = menuButton?.parentElement;
-    const win = windowRef.current;
-    if (!container || !menuButton || !win) {
+  const hideOverflowItems = (menuButton: HTMLElement, win: Window) => {
+    const container = menuButton.parentElement;
+    if (!container) {
       return;
     }
-
-    const isPinned = callbacks.isPinned || defaultCallbacks.isPinned;
-    const setItemDisplayed = callbacks.setItemDisplayed || defaultCallbacks.setItemDisplayed;
-    const setOverflowMenuButtonVisible =
-      callbacks.setOverflowMenuButtonVisible || defaultCallbacks.setOverflowMenuButtonVisible;
-
-    const originalOverflowIndex = overflowIndexRef.current;
     const items = container.children;
 
     // Reset the layout to show all items and hide the overflow menuButton
-    if (overflowIndexRef.current !== undefined) {
-      setOverflowMenuButtonVisible(menuButton, false);
-      for (let i = overflowIndexRef.current; i < items.length; i++) {
+    if (overflowIndex !== undefined) {
+      callbacks.setOverflowMenuButtonVisible(menuButton, false);
+      for (let i = overflowIndex; i < items.length; i++) {
         const item = items[i];
         if (item instanceof HTMLElement && item !== menuButton) {
-          setItemDisplayed(item, true);
+          callbacks.setItemDisplayed(item, true);
         }
       }
-
-      overflowIndexRef.current = undefined;
     }
+
+    let newOverflowIndex: number | undefined = undefined;
 
     if (cachedStyle === undefined) {
       const containerStyle = win.getComputedStyle(container);
@@ -86,13 +66,15 @@ export const useOverflow = (
         continue;
       }
 
+      const isPinned = callbacks.isPinned && callbacks.isPinned(item);
+
       // Keep track of the last visible element, even if it's pinned
       if (lastVisibleElement === undefined) {
         lastVisibleElement = item;
       }
 
       // Don't attempt to hide pinned items
-      if (!isPinned(item)) {
+      if (!isPinned) {
         const lastElementRect = lastVisibleElement.getBoundingClientRect();
         const lastElementEnd = (rtl ? -lastElementRect.left : lastElementRect.right) + menuMargin;
 
@@ -102,34 +84,41 @@ export const useOverflow = (
 
         // Show the overflow menu button if it's not visible yet
         if (lastVisibleElement !== menuButton) {
-          setOverflowMenuButtonVisible(menuButton, true);
+          callbacks.setOverflowMenuButtonVisible(menuButton, true);
           lastVisibleElement = menuButton;
         }
 
         // Hide the item
-        setItemDisplayed(item, false);
-        overflowIndexRef.current = i;
+        callbacks.setItemDisplayed(item, false);
+        newOverflowIndex = i;
       }
     }
 
-    if (originalOverflowIndex !== overflowIndexRef.current) {
-      callbacks.onOverflowIndexChanged(overflowIndexRef.current);
+    if (overflowIndex !== newOverflowIndex) {
+      setOverflowIndex(newOverflowIndex);
     }
-  });
+  };
 
-  const windowRef = React.useRef(getWindow() || null);
+  const async = useAsync();
+
   React.useLayoutEffect(() => {
-    windowRef.current = getWindow(overflowMenuButtonRef.current) || null;
-    if (windowRef.current) {
-      const win = windowRef.current;
-      const requestId = win.requestAnimationFrame(hideOverflowItems);
-      return () => win.cancelAnimationFrame(requestId);
+    const menuButton = overflowMenuButtonRef.current;
+    const win = getWindow(menuButton);
+
+    if (menuButton && win) {
+      const eventHandler = async.debounce(() => {
+        hideOverflowItems(menuButton, win);
+      });
+
+      const requestId = win.requestAnimationFrame(eventHandler);
+      win.addEventListener('resize', eventHandler, false);
+
+      return () => {
+        win.removeEventListener('resize', eventHandler, false);
+        win.cancelAnimationFrame(requestId);
+      };
     }
   });
 
-  useEventListener({
-    listener: hideOverflowItems,
-    targetRef: windowRef,
-    type: 'resize',
-  });
+  return overflowIndex;
 };

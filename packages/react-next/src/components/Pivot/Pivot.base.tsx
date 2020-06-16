@@ -203,12 +203,22 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef(
     const renderedSelectedKey = getSelectedKey();
     const items = linkCollection.links.map(l => renderPivotLink(linkCollection, l, renderedSelectedKey));
 
-    const [overflowIndex, setOverflowIndex] = React.useState<number | undefined>(undefined);
     const overflowMenuButtonRef = React.useRef<HTMLElement>();
     const setOverflowMenuButtonRef = (button: React.Component | null) => {
       const node = ReactDOM.findDOMNode(button);
       overflowMenuButtonRef.current = node instanceof HTMLElement ? node : undefined;
     };
+
+    const overflowIndex = useOverflow(overflowMenuButtonRef, {
+      isPinned: ele => ele.className.includes(classNames.linkIsSelected),
+      setItemDisplayed: (ele, displayed) => (ele.style.display = displayed ? '' : 'none'),
+      setOverflowMenuButtonVisible: (ele, visible) => {
+        const menu = ele.querySelector(`.${classNames.overflowMenu}`);
+        if (menu instanceof HTMLElement) {
+          menu.style.visibility = visible ? 'visible' : 'hidden';
+        }
+      },
+    });
 
     const overflowMenuItems: IContextualMenuItem[] = [];
     if (overflowIndex !== undefined) {
@@ -220,17 +230,6 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef(
         });
       }
     }
-
-    useOverflow(overflowMenuButtonRef, {
-      onOverflowIndexChanged: setOverflowIndex,
-      isPinned: (ele: HTMLElement) => ele.className.includes(classNames.linkIsSelected),
-      setOverflowMenuButtonVisible: (ele: HTMLElement, visible: boolean) => {
-        const menu = ele.querySelector(`.${classNames.overflowMenu}`);
-        if (menu instanceof HTMLElement) {
-          menu.style.visibility = visible ? 'visible' : 'hidden';
-        }
-      },
-    });
 
     return (
       <div role="toolbar" {...divProps} ref={ref}>
