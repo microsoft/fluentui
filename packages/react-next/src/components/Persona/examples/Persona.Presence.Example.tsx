@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { IPersonaSharedProps, Persona, PersonaSize, PersonaPresence } from 'office-ui-fabric-react/lib/Persona';
-import { Label } from 'office-ui-fabric-react/lib/Label';
-import { Stack } from 'office-ui-fabric-react/lib/Stack';
-import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
+import { IPersonaSharedProps, Persona, PersonaSize, PersonaPresence } from '@fluentui/react-next/lib/Persona';
+import { Label } from '@fluentui/react-next/lib/Label';
+import { Stack } from '@fluentui/react-next/lib/Stack';
+import { mergeStyles } from '@fluentui/react-next/lib/Styling';
 
 const examplePersona: IPersonaSharedProps = {
-  imageUrl: 'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png',
+  imageUrl: 'https://static2.sharepointonline.com/files/fabric/@fluentui/react-next-assets/persona-female.png',
   imageInitials: 'AL',
   text: 'Annie Lindqvist',
   secondaryText: 'Software Engineer',

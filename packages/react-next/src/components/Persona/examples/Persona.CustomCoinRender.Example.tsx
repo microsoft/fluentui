@@ -5,10 +5,10 @@ import {
   Persona,
   PersonaSize,
   PersonaPresence,
-} from 'office-ui-fabric-react/lib/Persona';
-import { Stack } from 'office-ui-fabric-react/lib/Stack';
+} from '@fluentui/react-next/lib/Persona';
+import { Stack } from '@fluentui/react-next/lib/Stack';
 import { TestImages } from '@uifabric/example-data';
-import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
+import { mergeStyles } from '@fluentui/react-next/lib/Styling';
 
 const customCoinClass = mergeStyles({
   borderRadius: 20,
