@@ -115,7 +115,7 @@ describe('_supportedPackageToGlobalMap', () => {
   it('works', () => {
     expect(_supportedPackageToGlobalMap(SUPPORTED_PACKAGES)).toEqual({
       'office-ui-fabric-react': 'Fabric',
-      '@fluentui/date-time-utilities': 'DateTimeUtilities',
+      '@fluentui/date-time-utilities': 'Fabric',
       '@fluentui/react-focus': 'Fabric',
       '@uifabric/foundation': 'Fabric',
       '@uifabric/icons': 'Fabric',
