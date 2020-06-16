@@ -495,6 +495,7 @@ export const CoachmarkBase = React.forwardRef(
         target={target}
         offsetFromTarget={BEAK_HEIGHT}
         finalHeight={finalHeight}
+        ref={forwardedRef}
         onPositioned={onPositioned}
         bounds={getBounds(props)}
         {...positioningContainerProps}
