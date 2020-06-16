@@ -22,11 +22,10 @@ export const defaultTests: TestObject = {
   'exports-component': (componentInfo: ComponentDoc, testInfo: TestingOptions) => {
     it(`exports component from file under correct name`, () => {
       const componentFile = require(testInfo.componentPath);
-      const constructorName = testInfo.Component.prototype.constructor?.name;
       if (testInfo.useDefaultExport) {
         expect(componentFile.default).toBe(testInfo.Component);
       } else {
-        expect(componentFile[constructorName]).toBe(testInfo.Component);
+        expect(componentFile[testInfo.displayName]).toBe(testInfo.Component);
       }
     });
   },
@@ -49,11 +48,11 @@ export const defaultTests: TestObject = {
     if (Component.prototype.constructor) {
       it(`constructor is a named function and matches displayName`, () => {
         const constructorName = Component.prototype.constructor.name;
-        expect(constructorName).toEqual(Component.displayName);
+        expect(constructorName).toEqual(testInfo.displayName);
       });
     } else {
       it(`has a displayName`, () => {
-        expect(Component.displayName).toBeTruthy();
+        expect(Component.displayName).toEqual(testInfo.displayName);
       });
     }
   },
@@ -65,7 +64,7 @@ export const defaultTests: TestObject = {
       const constructorName = Component.prototype.constructor?.name;
       const fileName = path.basename(componentPath, path.extname(componentPath));
 
-      expect(constructorName || componentInfo.displayName).toEqual(fileName);
+      expect(constructorName || testInfo.displayName).toEqual(fileName);
     });
   },
 };
