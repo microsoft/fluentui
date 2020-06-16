@@ -84,7 +84,7 @@ export interface InputProps extends UIComponentProps, ChildrenComponentProps, Su
   type?: string;
 
   /** Ref for input DOM node. */
-  inputRef?: React.Ref<HTMLElement>;
+  inputRef?: React.Ref<HTMLInputElement>;
 
   /** The value of the input. */
   value?: string | number;

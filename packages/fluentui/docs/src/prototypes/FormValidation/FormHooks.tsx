@@ -3,21 +3,16 @@ import { Form } from '@fluentui/react-northstar';
 import { useForm } from 'react-hook-form';
 
 const FormValidateHooks = () => {
-  const { register, handleSubmit, errors, setValue, getValues, triggerValidation } = useForm();
+  const { register, handleSubmit, errors, setValue, getValues, triggerValidation } = useForm({
+    mode: 'onBlur',
+    reValidateMode: 'onBlur',
+  });
   const onSubmit = data => {
     console.log('errors: ', errors);
     console.log('data: ', data);
   };
 
   React.useEffect(() => {
-    register(
-      { name: 'firstName' },
-      {
-        required: { value: true, message: 'first name is required' },
-        validate: val => (val.length < 4 ? 'Too Short' : null),
-      },
-    );
-
     register(
       { name: 'city' },
       {
@@ -34,15 +29,16 @@ const FormValidateHooks = () => {
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
       <Form.Input
-        errorMessage={errors.firstName?.message}
-        showSuccessIndicator={!errors.firstName && getValues().firstName?.length > 4}
         label="First Name"
         id="first-name-hooks"
         required
-        onBlur={() => triggerValidation('firstName')}
-        onChange={(e, { value }) => {
-          setValue('firstName', value);
-        }}
+        name="firstName"
+        inputRef={register({
+          required: { value: true, message: 'first name is required' },
+          validate: val => (val.length < 4 ? 'Too Short' : null),
+        })}
+        errorMessage={errors.firstName?.message}
+        showSuccessIndicator={!errors.firstName && getValues().firstName?.length > 4}
       />
       <Form.Dropdown
         onChange={(e, { value }) => {
