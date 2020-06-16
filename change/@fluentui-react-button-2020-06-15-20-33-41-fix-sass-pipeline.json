@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "The css output was being unintentionally botched by the postcss-clean minifier. Moving to clean-css directly without the postcss wrapping.",
+  "packageName": "@fluentui/react-button",
+  "email": "dzearing@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-06-16T03:33:41.228Z"
+}
