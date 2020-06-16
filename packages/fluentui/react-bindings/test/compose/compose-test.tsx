@@ -1,5 +1,6 @@
 import { compose, StylesContextValue, useStyles, useUnhandledProps } from '@fluentui/react-bindings';
-import { ComponentSlotStylesPrepared, emptyTheme, noopRenderer, ThemeInput } from '@fluentui/styles';
+import { noopRenderer } from '@fluentui/react-northstar-styles-renderer';
+import { ComponentSlotStylesPrepared, emptyTheme, ThemeInput } from '@fluentui/styles';
 import cx from 'classnames';
 import { mount, shallow } from 'enzyme';
 import * as React from 'react';
