@@ -1,1 +1,19 @@
-export * from 'office-ui-fabric-react/lib/Button';
+export {
+  ActionButton,
+  BaseButton,
+  Button as CompatButton,
+  ButtonType,
+  CommandBarButton,
+  CommandButton,
+  CompoundButton,
+  DefaultButton,
+  ElementType,
+  IBaseButtonProps,
+  IBaseButtonState,
+  IButton,
+  IButtonProps,
+  IButtonStyles,
+  IconButton,
+  MessageBarButton,
+  PrimaryButton,
+} from 'office-ui-fabric-react/lib/Button';
