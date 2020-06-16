@@ -1,8 +1,0 @@
-{
-  "type": "none",
-  "comment": "Clean up dependencies",
-  "packageName": "@uifabric/migration",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none",
-  "date": "2020-06-12T17:27:28.662Z"
-}

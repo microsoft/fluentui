@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/fabric-website-resources",
-  "version": "7.6.81",
+  "version": "7.6.82",
   "description": "Fluent UI React local demo app",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -48,7 +48,7 @@
     "@uifabric/set-version": "^7.0.13",
     "@uifabric/styling": "^7.12.18",
     "@uifabric/theme-samples": "^7.0.93",
-    "@uifabric/tsx-editor": "^0.11.93",
+    "@uifabric/tsx-editor": "^0.11.94",
     "@uifabric/utilities": "^7.21.0",
     "@uifabric/variants": "^7.1.83",
     "office-ui-fabric-core": "^11.0.0",

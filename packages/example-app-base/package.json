@@ -46,7 +46,7 @@
     "@uifabric/fluent-theme": "^7.1.96",
     "@uifabric/react-hooks": "^7.4.6",
     "@uifabric/set-version": "^7.0.13",
-    "@uifabric/tsx-editor": "^0.11.93",
+    "@uifabric/tsx-editor": "^0.11.94",
     "color-check": "0.0.2",
     "markdown-to-jsx": "6.6.1",
     "office-ui-fabric-core": "^11.0.0",
