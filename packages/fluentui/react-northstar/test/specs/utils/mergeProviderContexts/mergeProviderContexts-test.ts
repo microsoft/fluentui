@@ -1,7 +1,7 @@
 import mergeProviderContexts, { mergePerformanceOptions, getRenderer } from 'src/utils/mergeProviderContexts';
 import { ProviderContextInput } from 'src/types';
 
-describe('getOrCreateRenderer', () => {
+describe('getRenderer', () => {
   const createRenderer = jest.fn().mockImplementation(target => ({ target }));
 
   test(`without "target" defaults to a document`, () => {
