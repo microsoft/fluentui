@@ -3,9 +3,9 @@ import { useAsync } from '@uifabric/react-hooks';
 import { getWindow } from '@uifabric/utilities';
 
 export type OverflowCallbacks = {
-  isPinned?: (item: HTMLElement) => boolean;
   setItemDisplayed: (item: HTMLElement, displayed: boolean) => void;
   setOverflowMenuButtonVisible: (menuButton: HTMLElement, visible: boolean) => void;
+  isPinned?: (item: HTMLElement) => boolean;
 };
 
 export const useOverflow = (
@@ -106,15 +106,12 @@ export const useOverflow = (
     const win = getWindow(menuButton);
 
     if (menuButton && win) {
-      const eventHandler = async.debounce(() => {
-        hideOverflowItems(menuButton, win);
-      });
-
-      const requestId = win.requestAnimationFrame(eventHandler);
-      win.addEventListener('resize', eventHandler, false);
+      const updateOverflow = async.debounce(() => hideOverflowItems(menuButton, win));
+      const requestId = win.requestAnimationFrame(updateOverflow);
+      win.addEventListener('resize', updateOverflow, false);
 
       return () => {
-        win.removeEventListener('resize', eventHandler, false);
+        win.removeEventListener('resize', updateOverflow, false);
         win.cancelAnimationFrame(requestId);
       };
     }
