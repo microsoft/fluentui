@@ -1,4 +1,3 @@
-import cx from 'classnames';
 import {
   ComponentSlotStylesInput,
   ComponentSlotStylesPrepared,
@@ -8,11 +7,14 @@ import {
   ICSSInJSStyle,
   isDebugEnabled,
   mergeComponentStyles,
+  RendererParam,
   ThemePrepared,
   withDebugId,
 } from '@fluentui/styles';
-import { ComponentSlotClasses, RendererParam, ResolveStylesOptions } from './types';
+import cx from 'classnames';
 import * as _ from 'lodash';
+
+import { ComponentSlotClasses, ResolveStylesOptions } from './types';
 
 export type ResolveStylesResult = {
   resolvedStyles: ComponentSlotStylesResolved;
@@ -41,7 +43,6 @@ const stylesCache = new WeakMap<ThemePrepared, Record<string, ICSSInJSStyle>>();
 const resolveStyles = (
   options: ResolveStylesOptions,
   resolvedVariables: ComponentVariablesObject,
-  renderStylesInput?: (styles: ICSSInJSStyle) => string,
 ): ResolveStylesResult => {
   const {
     allDisplayNames,
@@ -120,18 +121,13 @@ const resolveStyles = (
     disableAnimations,
   };
 
-  // Fela plugins rely on `direction` param in `theme` prop instead of RTL
-  // Our API should be aligned with it
   // Heads Up! Keep in sync with Design.tsx render logic
-  const direction = rtl ? 'rtl' : 'ltr';
-  const felaParam: RendererParam = {
-    theme: { direction },
+  const rendererParam: RendererParam = {
+    direction: rtl ? 'rtl' : 'ltr',
     disableAnimations,
     displayName: allDisplayNames.join(':'), // does not affect styles, only used by useEnhancedRenderer in docs
     sanitizeCss: performanceFlags.enableSanitizeCssPlugin,
   };
-
-  const renderStyles = renderStylesInput || ((style: ICSSInJSStyle) => renderer.renderRule(() => style, felaParam));
 
   const resolvedStyles: Record<string, ICSSInJSStyle> = {};
   const resolvedStylesDebug: Record<string, { styles: Object }[]> = {};
@@ -262,8 +258,8 @@ const resolveStyles = (
         const styleObj = resolvedStyles[slotName];
         const telemetryPartStart = telemetry?.enabled ? performance.now() : 0;
 
-        if (renderStyles && styleObj) {
-          classes[lazyEvaluationKey] = renderStyles(styleObj);
+        if (styleObj) {
+          classes[lazyEvaluationKey] = renderer.renderRule(styleObj, rendererParam);
 
           if (cacheEnabled && theme) {
             classesCache.set(theme, {

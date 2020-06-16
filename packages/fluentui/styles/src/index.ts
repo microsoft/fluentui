@@ -1,3 +1,6 @@
+export { noopRenderer } from './renderer/noopRenderer';
+export * from './renderer/types';
+
 export { default as callable } from './callable';
 export { default as createTheme } from './createTheme';
 export { isEnabled as isDebugEnabled } from './debugEnabled';

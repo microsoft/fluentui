@@ -5,7 +5,7 @@
 //
 
 import { ICSSInJSStyle } from '@fluentui/styles';
-// eslint-disable-next-line import/no-extraneous-dependencies
+// @ts-ignore
 import cssifyDeclaration from 'css-in-js-utils/lib/cssifyDeclaration';
 import {
   // @ts-ignore
@@ -25,7 +25,9 @@ import {
   RULE_TYPE,
 } from 'fela-utils';
 
-function isPlainObject(val) {
+import { Renderer, RendererChange } from './types';
+
+function isPlainObject(val: any) {
   return val != null && typeof val === 'object' && Array.isArray(val) === false;
 }
 
@@ -71,7 +73,7 @@ function generateDeclarationReference(
 
 //
 
-export default function felaPerformanceEnhancer(renderer) {
+export default function felaPerformanceEnhancer(renderer: Renderer) {
   renderer._renderStyleToClassNames = function _renderStyleToClassNames(
     { _className, ...style }: ICSSInJSStyle & { _className: string },
     pseudo: string = '',
@@ -111,7 +113,7 @@ Check http://fela.js.org/docs/basics/Rules.html#styleobject for more information
           if (isUndefinedValue(value)) {
             renderer.cache[declarationReference] = {
               className: '',
-            };
+            } as RendererChange;
             /* eslint-disable no-continue */
             continue;
             /* eslint-enable */
