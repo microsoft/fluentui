@@ -10,7 +10,7 @@ import {
 } from '../../Utilities';
 import { ICommandBar, ICommandBarProps, ICommandBarItemProps } from './CommandBar.types';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
-import { ContextualMenu, IContextualMenuProps, IContextualMenuItem } from '../../ContextualMenu';
+import { ContextualMenu, IContextualMenuProps, IContextualMenuItem, ContextualMenuItemType } from '../../ContextualMenu';
 import { hasSubmenu } from '../../utilities/contextualMenu/index';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import {
@@ -115,7 +115,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
       );
     }
     // Total # of menu items is regular items + far items + 1 for the ellipsis, if necessary
-    const setSize = renderedItems!.length + renderedFarItems!.length + (renderedOverflowItems && renderedOverflowItems.length > 0 ? 1 : 0);
+    const setSize = this._getTotalFocusedItemCount(renderedItems) + this._getTotalFocusedItemCount(renderedFarItems) + (renderedOverflowItems && renderedOverflowItems.length > 0 ? 1 : 0);
     let posInSet = 1;
 
     return (
@@ -124,7 +124,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
         <FocusZone componentRef={ this._focusZone } className={ styles.container } direction={ FocusZoneDirection.horizontal } role='menubar' >
           <div className={ css('ms-CommandBar-primaryCommands', styles.primaryCommands) } ref={ this._commandSurface }>
             { renderedItems!.map(item => (
-              this._renderItemInCommandBar(item, posInSet++, setSize, expandedMenuItemKey!)
+              this._renderItemInCommandBar(item, this._needReviseAriaPosinset(item, posInSet) ? posInSet++ : posInSet, setSize, expandedMenuItemKey!, true)
             )).concat((renderedOverflowItems && renderedOverflowItems.length) ? [
               <div className={ css('ms-CommandBarItem', styles.item) } key={ OVERFLOW_KEY } ref={ this._overflow }>
                 <button
@@ -149,7 +149,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
           </div>
           <div className={ css('ms-CommandBar-sideCommands', styles.sideCommands) } ref={ this._farCommandSurface }>
             { renderedFarItems!.map(item => (
-              this._renderItemInCommandBar(item, posInSet++, setSize, expandedMenuItemKey!, true)
+              this._renderItemInCommandBar(item, this._needReviseAriaPosinset(item, posInSet) ? posInSet++ : posInSet, setSize, expandedMenuItemKey!, true)
             )) }
           </div>
         </FocusZone>
@@ -503,5 +503,28 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
 
   private _getContextualMenuPropsFromItem(item: IContextualMenuItem) {
     return item.subMenuProps || (item.items && { items: item.items });
+  }
+
+  private _getTotalFocusedItemCount(items?: IContextualMenuItem[]): number {
+    let totalItemCount = 0;
+    if (items && items.length > 0) {
+      for (const item of items) {
+        if (item.itemType === ContextualMenuItemType.Divider || item.itemType === ContextualMenuItemType.Header) {
+          continue;
+        }
+
+        ++totalItemCount;
+      }
+    }
+
+    return totalItemCount;
+  }
+
+  private _needReviseAriaPosinset(item: IContextualMenuItem, indexCorrection: number): boolean {
+    if (item.itemType === ContextualMenuItemType.Divider || item.itemType === ContextualMenuItemType.Header) {
+      return false;
+    }
+
+    return true;
   }
 }
