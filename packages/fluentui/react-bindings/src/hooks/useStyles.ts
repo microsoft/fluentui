@@ -1,4 +1,5 @@
 import { ComposePreparedOptions } from '@fluentui/react-compose';
+import { noopRenderer } from '@fluentui/react-northstar-styles-renderer';
 import {
   ComponentSlotStyle,
   ComponentSlotStylesResolved,
@@ -14,7 +15,6 @@ import {
   ComponentDesignProp,
   ComponentSlotClasses,
   PrimitiveProps,
-  RendererRenderRule,
   StylesContextPerformance,
   StylesContextValue,
 } from '../styles/types';
@@ -49,7 +49,7 @@ type UseStylesOptions<StyleProps extends PrimitiveProps> = {
   rtl?: boolean;
 };
 
-type UseStylesResult = {
+export type UseStylesResult = {
   classes: ComponentSlotClasses;
   styles: ComponentSlotStylesResolved;
 };
@@ -74,11 +74,11 @@ export const defaultPerformanceFlags: StylesContextPerformance = {
   enableBooleanVariablesCaching: false,
 };
 
-const defaultContext: StylesContextValue<{ renderRule: RendererRenderRule }> = {
+const defaultContext: StylesContextValue = {
   rtl: false,
   disableAnimations: false,
   performance: defaultPerformanceFlags,
-  renderer: { renderRule: () => '' },
+  renderer: noopRenderer,
   theme: emptyTheme,
   telemetry: undefined,
 };
@@ -87,8 +87,7 @@ const useStyles = <StyleProps extends PrimitiveProps>(
   displayName: string,
   options: UseStylesOptions<StyleProps>,
 ): UseStylesResult => {
-  const context: StylesContextValue<{ renderRule: RendererRenderRule }> =
-    React.useContext(ThemeContext) || defaultContext;
+  const context: StylesContextValue = React.useContext(ThemeContext) || defaultContext;
 
   const {
     className = process.env.NODE_ENV === 'production' ? '' : 'no-classname-🙉',

@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { Form, Button, Input } from '@fluentui/react-northstar';
-import { PresenceAvailableIcon } from '@fluentui/react-icons-northstar';
+import { Form, Button } from '@fluentui/react-northstar';
 
 const fields = [
   {
@@ -8,7 +7,7 @@ const fields = [
     name: 'firstName',
     id: 'first-name-error',
     key: 'first-name',
-    errorMessage: 'ERROR',
+    errorMessage: 'You can not fix this error',
     required: true,
   },
   {
@@ -16,10 +15,6 @@ const fields = [
     name: 'lastName',
     id: 'last-name-satisfactory',
     key: 'last-name',
-    control: {
-      as: Input,
-      successIndicator: <PresenceAvailableIcon />,
-    },
     required: true,
   },
   { control: { as: Button, content: 'Submit' }, key: 'submit' },

@@ -80,7 +80,7 @@ export type ComposeOptions<
   shorthandConfig?: ShorthandConfig<TParentProps & TInputProps>;
 
   // tslint:disable-next-line:no-any
-  state?: (props: TState, options: ComposePreparedOptions) => any;
+  state?: (props: TState, ref: React.Ref<HTMLElement>, options: ComposePreparedOptions) => any;
 };
 
 export type MergePropsResult<TState extends GenericDictionary> = {
@@ -126,8 +126,7 @@ export type ComposePreparedOptions<TProps = {}, TInputState = any, TParentState 
   slots: Record<string, React.ElementType> & { __self: React.ElementType };
   slotProps: ((props: TProps) => Record<string, object>)[];
 
-  // tslint:disable-next-line:no-any
-  state: (props: TParentState, options: ComposePreparedOptions) => TInputState;
+  state: (props: TParentState, ref: React.Ref<HTMLElement>, options: ComposePreparedOptions) => TInputState;
 
   resolveSlotProps: <TResolvedProps>(props: TResolvedProps) => Record<string, object>;
   shorthandConfig: ShorthandConfig<TProps>;
