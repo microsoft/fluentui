@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Merge remote-tracking branch 'upstream/master' into user/v-satgar/AddingPolyfill",
+  "packageName": "@uifabric/example-app-base",
+  "email": "v-satgar@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-06-16T13:38:13.577Z"
+}
