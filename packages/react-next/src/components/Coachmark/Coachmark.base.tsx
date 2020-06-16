@@ -385,6 +385,24 @@ function useAriaAlert({ ariaAlertText }: ICoachmarkProps) {
   return alertText;
 }
 
+function useAutoFocus({ preventFocusOnMount }: ICoachmarkProps) {
+  const async = useAsync();
+
+  /**
+   * The cached HTMLElement reference to the Entity Inner Host
+   * element.
+   */
+  const entityHost = React.useRef<HTMLDivElement | null>(null);
+
+  React.useEffect(() => {
+    if (!preventFocusOnMount) {
+      async.setTimeout(() => entityHost.current?.focus(), 1000);
+    }
+  }, []);
+
+  return entityHost;
+}
+
 const COMPONENT_NAME = 'CoachmarkBase';
 export const CoachmarkBase = React.forwardRef(
   (propsWithoutDefaults: ICoachmarkProps, forwardedRef: React.Ref<HTMLDivElement>) => {
@@ -397,6 +415,7 @@ export const CoachmarkBase = React.forwardRef(
     const [isCollapsed, openCoachmark] = useCollapsedState(props, entityInnerHostElementRef);
     const [beakPositioningProps, transformOrigin] = useBeakPosition(props, targetAlignment, targetPosition);
     const alertText = useAriaAlert(props);
+    const entityHost = useAutoFocus(props);
 
     useListeners(props, translateAnimationContainer, openCoachmark);
     useComponentRef(props);
@@ -416,6 +435,7 @@ export const CoachmarkBase = React.forwardRef(
           transformOrigin,
           translateAnimationContainer,
           alertText,
+          entityHost,
         }}
       />
     );
@@ -426,6 +446,7 @@ CoachmarkBase.displayName = COMPONENT_NAME;
 interface ICoachmarkPropsClassProps extends ICoachmarkProps {
   hoistedProps: {
     entityInnerHostElementRef: React.RefObject<HTMLDivElement>;
+    entityHost: React.RefObject<HTMLDivElement>;
     translateAnimationContainer: React.RefObject<HTMLDivElement>;
     isCollapsed: boolean;
     targetAlignment: RectangleEdge | undefined;
@@ -440,12 +461,6 @@ interface ICoachmarkPropsClassProps extends ICoachmarkProps {
 
 class CoachmarkBaseClass extends React.Component<ICoachmarkPropsClassProps, ICoachmarkState> {
   private _async: Async;
-
-  /**
-   * The cached HTMLElement reference to the Entity Inner Host
-   * element.
-   */
-  private _entityHost = React.createRef<HTMLDivElement>();
   private _childrenContainer = React.createRef<HTMLDivElement>();
   private _positioningContainer = React.createRef<HTMLDivElement>();
 
@@ -549,7 +564,7 @@ class CoachmarkBaseClass extends React.Component<ICoachmarkPropsClassProps, ICoa
                 )}
                 <div
                   className={classNames.entityHost}
-                  ref={this._entityHost}
+                  ref={this.props.hoistedProps.entityHost}
                   tabIndex={-1}
                   data-is-focusable={true}
                   role="dialog"
@@ -601,14 +616,6 @@ class CoachmarkBaseClass extends React.Component<ICoachmarkPropsClassProps, ICoa
             height: this.props.hoistedProps.entityInnerHostElementRef.current.offsetHeight,
           },
         });
-      }
-
-      if (!this.props.preventFocusOnMount) {
-        this._async.setTimeout(() => {
-          if (this._entityHost.current) {
-            this._entityHost.current.focus();
-          }
-        }, 1000);
       }
     });
   }
