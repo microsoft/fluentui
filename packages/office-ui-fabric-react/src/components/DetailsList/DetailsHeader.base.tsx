@@ -166,7 +166,6 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
       selectAllVisibility,
       ariaLabelForSelectionColumn,
       indentWidth,
-      rowWidth = 0,
       onColumnClick,
       onColumnContextMenu,
       onRenderColumnHeaderTooltip = this._onRenderColumnHeaderTooltip,
@@ -218,7 +217,6 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
         ref={this._onRootRef}
         onMouseMove={this._onRootMouseMove}
         data-automationid="DetailsHeader"
-        style={{ minWidth: rowWidth }}
         direction={FocusZoneDirection.horizontal}
       >
         {showCheckbox

@@ -2,6 +2,75 @@
   "name": "@fluentui/react-next",
   "entries": [
     {
+      "date": "Tue, 16 Jun 2020 17:35:36 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.42",
+      "version": "8.0.0-alpha.42",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Add missing dependencies",
+            "author": "elcraig@microsoft.com",
+            "commit": "695c29fcf6f07a903e7d849098c5e6c0ec178b3d",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 16 Jun 2020 12:40:00 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.41",
+      "version": "8.0.0-alpha.41",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Copying SwatchColorPicker to react-next, in preparation for converting to function component",
+            "author": "czearing@outlook.com",
+            "commit": "dc9a6f824c30d5c3a58762c314424b6732d66749",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "fix height and width check in the image component",
+            "author": "nif_tony@outlook.com",
+            "commit": "bcf99c7fdb8758c25edf22aa736ed4a1cf0ac824",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Checkbox: use state option",
+            "author": "xgao@microsoft.com",
+            "commit": "2377f7afd141ff0203470e82b705ab29ed3cb044",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 12 Jun 2020 18:29:07 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.39",
+      "version": "8.0.0-alpha.39",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "PivotItem: Fixing typing error in headerButtonProps.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "e9b28261de77cbc2d57d04216d9bce2f05c3dd31",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Updating Link to use recomposable state.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "8b0ffa8c39c7fe298596253b205134f9c9f8c3b5",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Checkbox: initial use compose",
+            "author": "xgao@microsoft.com",
+            "commit": "88e0f6eae8c7cb306d5f83fdb7ba5c06d521565e",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 09 Jun 2020 12:35:17 GMT",
       "tag": "@fluentui/react-next_v8.0.0-alpha.37",
       "version": "8.0.0-alpha.37",

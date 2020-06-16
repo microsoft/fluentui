@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-icons
 
-This log was last generated on Thu, 07 May 2020 01:06:55 GMT and should not be manually modified.
+This log was last generated on Fri, 12 Jun 2020 18:29:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.1.27](https://github.com/microsoft/fluentui/tree/@fluentui/react-icons_v0.1.27)
+
+Fri, 12 Jun 2020 18:29:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-icons_v0.1.12..@fluentui/react-icons_v0.1.27)
+
+### Patches
+
+- react-icons: remove dead code, use scss instead of merge-styles, css fixes ([PR #13517](https://github.com/microsoft/fluentui/pull/13517) by xgao@microsoft.com)
 
 ## [0.1.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-icons_v0.1.12)
 

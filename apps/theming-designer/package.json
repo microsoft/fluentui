@@ -14,7 +14,6 @@
     "start": "just-scripts dev"
   },
   "devDependencies": {
-    "@types/es6-promise": "0.0.32",
     "@types/react": "16.8.25",
     "@types/react-dom": "16.8.4",
     "@types/webpack-env": "1.15.1",
@@ -22,16 +21,14 @@
     "@uifabric/build": "^7.0.0"
   },
   "dependencies": {
-    "@uifabric/react-cards": "^0.109.97",
+    "@uifabric/react-cards": "^0.109.99",
     "@uifabric/merge-styles": "^7.14.1",
-    "@uifabric/example-app-base": "^7.12.77",
-    "@uifabric/variants": "^7.1.81",
+    "@uifabric/example-app-base": "^7.12.79",
+    "@uifabric/variants": "^7.1.83",
     "@uifabric/set-version": "^7.0.13",
-    "@uifabric/icons": "^7.3.50",
+    "@uifabric/icons": "^7.3.51",
     "@microsoft/load-themed-styles": "^1.10.26",
-    "es6-promise": "^4.1.0",
-    "immutability-helper": "~2.8.1",
-    "office-ui-fabric-react": "^7.119.0",
+    "office-ui-fabric-react": "^7.120.2",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",
