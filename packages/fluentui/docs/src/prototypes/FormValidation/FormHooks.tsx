@@ -19,7 +19,7 @@ const FormValidateHooks = () => {
     );
 
     register(
-      { name: 'city', mode: 'onBlur' },
+      { name: 'city' },
       {
         required: { value: true, message: 'first name is required' },
         validate: val => (val.length < 4 ? 'Too Short' : null),
@@ -39,7 +39,7 @@ const FormValidateHooks = () => {
         label="First Name"
         id="first-name-hooks"
         required
-        onBlurCapture={() => triggerValidation('firstName')}
+        onBlur={() => triggerValidation('firstName')}
         onChange={(e, { value }) => {
           setValue('firstName', value);
         }}
