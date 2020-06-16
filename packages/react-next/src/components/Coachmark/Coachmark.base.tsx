@@ -10,7 +10,6 @@ import {
   getRTL,
   warnDeprecations,
   EventGroup,
-  Async,
   initializeComponentRef,
 } from '../../Utilities';
 import { IPositionedData, RectangleEdge, getOppositeEdge } from 'office-ui-fabric-react/lib/utilities/positioning';
@@ -38,19 +37,6 @@ export const COACHMARK_ATTRIBUTE_NAME = 'data-coachmarkid';
 export interface IEntityRect {
   width: number;
   height: number;
-}
-
-export interface ICoachmarkState {
-  /**
-   * Is the teaching bubble currently retreiving the
-   * original dimensions of the hosted entity.
-   */
-  isMeasuring: boolean;
-
-  /**
-   * Cached width and height of _entityInnerHostElement
-   */
-  entityInnerHostRect: IEntityRect;
 }
 
 const DEFAULT_PROPS = {
@@ -402,6 +388,32 @@ function useAutoFocus({ preventFocusOnMount }: ICoachmarkProps) {
 
   return entityHost;
 }
+function useEntityHostMeasurements(entityInnerHostElementRef: React.RefObject<HTMLDivElement>) {
+  /**
+   * Is the teaching bubble currently retreiving the
+   * original dimensions of the hosted entity.
+   */
+  const [isMeasuring, setIsMeasuring] = React.useState<boolean>(true);
+  /**
+   * Cached width and height of _entityInnerHostElement
+   */
+  const [entityInnerHostRect, setEntityInnerHostRect] = React.useState<IEntityRect>({ width: 0, height: 0 });
+  const async = useAsync();
+
+  React.useEffect(() => {
+    async.requestAnimationFrame(() => {
+      if (entityInnerHostElementRef.current) {
+        setEntityInnerHostRect({
+          width: entityInnerHostElementRef.current.offsetWidth,
+          height: entityInnerHostElementRef.current.offsetHeight,
+        });
+        setIsMeasuring(false);
+      }
+    });
+  }, []);
+
+  return [isMeasuring, entityInnerHostRect] as const;
+}
 
 const COMPONENT_NAME = 'CoachmarkBase';
 export const CoachmarkBase = React.forwardRef(
@@ -414,6 +426,7 @@ export const CoachmarkBase = React.forwardRef(
     const [targetAlignment, targetPosition, onPositioned] = usePositionedData();
     const [isCollapsed, openCoachmark] = useCollapsedState(props, entityInnerHostElementRef);
     const [beakPositioningProps, transformOrigin] = useBeakPosition(props, targetAlignment, targetPosition);
+    const [isMeasuring, entityInnerHostRect] = useEntityHostMeasurements(entityInnerHostElementRef);
     const alertText = useAriaAlert(props);
     const entityHost = useAutoFocus(props);
 
@@ -436,6 +449,8 @@ export const CoachmarkBase = React.forwardRef(
           translateAnimationContainer,
           alertText,
           entityHost,
+          isMeasuring,
+          entityInnerHostRect,
         }}
       />
     );
@@ -454,20 +469,20 @@ interface ICoachmarkPropsClassProps extends ICoachmarkProps {
     beakPositioningProps: Partial<IBeakProps>;
     transformOrigin: string | undefined;
     alertText: string | undefined;
+    isMeasuring: boolean;
+    entityInnerHostRect: IEntityRect;
     openCoachmark(): void;
     onPositioned(positionData: IPositionedData): void;
   };
 }
 
-class CoachmarkBaseClass extends React.Component<ICoachmarkPropsClassProps, ICoachmarkState> {
-  private _async: Async;
+class CoachmarkBaseClass extends React.Component<ICoachmarkPropsClassProps, {}> {
   private _childrenContainer = React.createRef<HTMLDivElement>();
   private _positioningContainer = React.createRef<HTMLDivElement>();
 
   constructor(props: ICoachmarkPropsClassProps) {
     super(props);
 
-    this._async = new Async(this);
     initializeComponentRef(this);
 
     warnDeprecations(COMPONENT_NAME, props, {
@@ -478,15 +493,6 @@ class CoachmarkBaseClass extends React.Component<ICoachmarkPropsClassProps, ICoa
       width: undefined,
       height: undefined,
     });
-
-    // Set defaults for state
-    this.state = {
-      isMeasuring: true,
-      entityInnerHostRect: {
-        width: 0,
-        height: 0,
-      },
-    };
   }
 
   public render(): JSX.Element {
@@ -507,10 +513,8 @@ class CoachmarkBaseClass extends React.Component<ICoachmarkPropsClassProps, ICoa
       theme,
       className,
       persistentBeak,
-      hoistedProps: { isCollapsed, transformOrigin, beakPositioningProps, alertText },
+      hoistedProps: { isCollapsed, transformOrigin, beakPositioningProps, alertText, isMeasuring, entityInnerHostRect },
     } = this.props;
-
-    const { isMeasuring, entityInnerHostRect } = this.state;
 
     // Defaulting the main background before passing it to the styles because it is used for `Beak` too.
     let defaultColor = color;
@@ -601,27 +605,6 @@ class CoachmarkBaseClass extends React.Component<ICoachmarkPropsClassProps, ICoa
         </div>
       </PositioningContainer>
     );
-  }
-
-  public componentDidMount(): void {
-    this._async.requestAnimationFrame((): void => {
-      if (
-        this.props.hoistedProps.entityInnerHostElementRef.current &&
-        this.state.entityInnerHostRect.width + this.state.entityInnerHostRect.width === 0
-      ) {
-        this.setState({
-          isMeasuring: false,
-          entityInnerHostRect: {
-            width: this.props.hoistedProps.entityInnerHostElementRef.current.offsetWidth,
-            height: this.props.hoistedProps.entityInnerHostElementRef.current.offsetHeight,
-          },
-        });
-      }
-    });
-  }
-
-  public componentWillUnmount(): void {
-    this._async.dispose();
   }
 
   private _getBounds(): IRectangle | undefined {
