@@ -124,23 +124,28 @@ export const SpinButtonBase = (props: ISpinButtonProps) => {
     'className',
   ]);
 
-  state.lastValidValue = value;
   let currentValue: string = props.value !== undefined ? props.value : String(props.min);
+
+  state.lastValidValue = value;
+
   if (props.defaultValue) {
     currentValue = String(Math.max(props.min as number, Math.min(props.max as number, Number(props.defaultValue))));
   }
 
-  if (props.value !== undefined) {
-    setValue(currentValue);
-  }
-  state.precision = callCalculatePrecision(props as ISpinButtonProps);
+  React.useEffect(() => {
+    if (props.value !== undefined) {
+      state.lastValidValue = props.value;
+      setValue(currentValue);
+    }
+    state.precision = callCalculatePrecision(props as ISpinButtonProps);
+  }, [props.value]);
 
   // Validate function to use if one is not passed in
   const defaultOnValidate = (valueProp: string) => {
-    if (value === null || value.trim().length === 0 || isNaN(Number(value))) {
+    if (valueProp === null || valueProp.trim().length === 0 || isNaN(Number(valueProp))) {
       return state.lastValidValue;
     }
-    const newValue = Math.min(props.max as number, Math.max(props.min as number, Number(value)));
+    const newValue = Math.min(props.max as number, Math.max(props.min as number, Number(valueProp)));
     return String(newValue);
   };
 
@@ -153,14 +158,14 @@ export const SpinButtonBase = (props: ISpinButtonProps) => {
 
   // Increment function to use if one is not passed in
   const defaultOnDecrement = (valueProp: string): string | void => {
-    let newValue: number = Math.max(Number(value) - Number(step), min);
+    let newValue: number = Math.max(Number(valueProp) - Number(step), min);
     newValue = precisionRound(newValue, state.precision);
     return String(newValue);
   };
 
-  const validate = (event: React.FocusEvent<HTMLInputElement> | React.KeyboardEvent<HTMLInputElement>): void => {
+  const validate = (ev: React.FocusEvent<HTMLInputElement> | React.KeyboardEvent<HTMLInputElement>): void => {
     if (value !== undefined && state.valueToValidate !== undefined && state.valueToValidate !== state.lastValidValue) {
-      const newValue = onValidate!(state.valueToValidate, event);
+      const newValue = onValidate!(state.valueToValidate, ev);
       if (newValue) {
         state.lastValidValue = newValue;
         state.valueToValidate = undefined;
@@ -185,9 +190,9 @@ export const SpinButtonBase = (props: ISpinButtonProps) => {
     }
   };
 
-  const onValidate = (valueProp: string, event?: React.SyntheticEvent<HTMLElement>): string | void => {
+  const onValidate = (valueProp: string, ev?: React.SyntheticEvent<HTMLElement>): string | void => {
     if (props.onValidate) {
-      return props.onValidate(valueProp, event);
+      return props.onValidate(valueProp, ev);
     } else {
       return defaultOnValidate(valueProp);
     }
@@ -220,15 +225,11 @@ export const SpinButtonBase = (props: ISpinButtonProps) => {
     if (!input.current) {
       return;
     }
-
     if (state.spinningByMouse || keyboardSpinDirection !== KeyboardSpinDirection.notSpinning) {
       stop();
     }
-
     input.current.select();
-
     toggleIsFocused();
-
     if (props.onFocus) {
       props.onFocus(ev);
     }
@@ -252,14 +253,16 @@ export const SpinButtonBase = (props: ISpinButtonProps) => {
     stepFunction: (value: string) => string | void,
   ): void => {
     const safeSetTimeout = useSetTimeout();
-    const newValue: string | void = stepFunction(value);
-    if (newValue) {
+    const newValue: string | void = stepFunction(value || '');
+    if (newValue !== undefined) {
       state.lastValidValue = newValue;
       setValue(newValue);
     }
+
     if (state.spinningByMouse !== shouldSpin) {
       state.spinningByMouse = shouldSpin;
     }
+
     if (shouldSpin) {
       safeSetTimeout(() => {
         updateValue(shouldSpin, stepDelay, stepFunction);
@@ -281,15 +284,13 @@ export const SpinButtonBase = (props: ISpinButtonProps) => {
 
   //  Handle keydown on the text field. We need to update
   //  the value when up or down arrow are depressed
-  // @param event - the keyboardEvent that was fired
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>): void => {
+  const handleKeyDown = (ev: React.KeyboardEvent<HTMLInputElement>): void => {
     // eat the up and down arrow keys to keep focus in the spinButton
     // (especially when a spinButton is inside of a FocusZone)
-    if (event.which === KeyCodes.up || event.which === KeyCodes.down || event.which === KeyCodes.enter) {
-      event.preventDefault();
-      event.stopPropagation();
+    if (ev.which === KeyCodes.up || ev.which === KeyCodes.down || ev.which === KeyCodes.enter) {
+      ev.preventDefault();
+      ev.stopPropagation();
     }
-
     if (props.disabled) {
       stop();
       return;
@@ -297,7 +298,7 @@ export const SpinButtonBase = (props: ISpinButtonProps) => {
 
     let spinDirection = KeyboardSpinDirection.notSpinning;
 
-    switch (event.which) {
+    switch (ev.which) {
       case KeyCodes.up:
         spinDirection = KeyboardSpinDirection.up;
         updateValue(false /* shouldSpin */, state.initialStepDelay, onIncrement!);
@@ -307,7 +308,7 @@ export const SpinButtonBase = (props: ISpinButtonProps) => {
         updateValue(false /* shouldSpin */, state.initialStepDelay, onDecrement!);
         break;
       case KeyCodes.enter:
-        validate(event);
+        validate(ev);
         break;
       case KeyCodes.escape:
         if (value !== state.lastValidValue) {
@@ -317,7 +318,6 @@ export const SpinButtonBase = (props: ISpinButtonProps) => {
       default:
         break;
     }
-
     // style the increment/decrement button to look active
     // when the corresponding up/down arrow keys trigger a step
     if (keyboardSpinDirection !== spinDirection) {

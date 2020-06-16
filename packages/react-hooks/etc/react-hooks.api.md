@@ -47,6 +47,9 @@ export function useMergedRefs<T>(...refs: React.Ref<T>[]): (instance: T) => void
 // @public
 export function useOnEvent<TElement extends Element, TEvent extends Event>(element: React.RefObject<TElement | undefined | null> | TElement | Window | undefined | null, eventName: string, callback: (ev: TEvent) => void, useCapture?: boolean): void;
 
+// @public
+export const useSetTimeout: () => (func: () => void, duration: number) => number;
+
 
 // (No @packageDocumentation comment for this package)
 
