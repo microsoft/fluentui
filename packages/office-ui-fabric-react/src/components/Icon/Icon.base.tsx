@@ -65,7 +65,7 @@ export class IconBase extends React.Component<IIconProps, IIconState> {
 
     return (
       <RootType data-icon-name={iconName} {...containerProps} {...nativeProps} className={classNames.root}>
-        {isImage ? <ImageType {...imageProps} /> : children ? children : iconContentChildren}
+        {isImage ? <ImageType {...imageProps} /> : children || iconContentChildren}
       </RootType>
     );
   }
