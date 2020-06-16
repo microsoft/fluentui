@@ -32,6 +32,17 @@ export const Checkbox: import("@fluentui/react-compose").ComponentWithAs<"div", 
 // @public (undocumented)
 export const CheckboxBase: import("@fluentui/react-compose").ComponentWithAs<"div", ICheckboxProps>;
 
+// @public (undocumented)
+export const ColorPickerGridCell: React.FunctionComponent<IColorPickerGridCellProps>;
+
+// @public (undocumented)
+export class ColorPickerGridCellBase extends React.PureComponent<IColorPickerGridCellProps, {}> {
+    // (undocumented)
+    static defaultProps: Partial<IColorPickerGridCellProps>;
+    // (undocumented)
+    render(): JSX.Element;
+}
+
 // @public
 export const Customizer: React.FunctionComponent<ICustomizerProps>;
 
@@ -172,6 +183,64 @@ export interface ICheckboxStyles {
     label?: IStyle;
     root?: IStyle;
     text?: IStyle;
+}
+
+// @public (undocumented)
+export interface IColorCellProps {
+    color?: string;
+    id: string;
+    index?: number;
+    label?: string;
+}
+
+// @public (undocumented)
+export interface IColorPickerGridCellProps {
+    borderWidth?: number;
+    circle?: boolean;
+    color?: string;
+    disabled?: boolean;
+    height?: number;
+    // @deprecated
+    id?: string;
+    idPrefix?: string;
+    index?: number;
+    item: IColorCellProps;
+    label?: string;
+    onClick?: (item: IColorCellProps) => void;
+    // (undocumented)
+    onFocus?: (item: IColorCellProps) => void;
+    // (undocumented)
+    onHover?: (item?: IColorCellProps) => void;
+    // (undocumented)
+    onKeyDown?: (ev: React.KeyboardEvent<HTMLButtonElement>) => void;
+    onMouseEnter?: (ev: React.MouseEvent<HTMLButtonElement>) => boolean;
+    // (undocumented)
+    onMouseLeave?: (ev: React.MouseEvent<HTMLButtonElement>) => void;
+    onMouseMove?: (ev: React.MouseEvent<HTMLButtonElement>) => boolean;
+    // (undocumented)
+    onWheel?: (ev: React.MouseEvent<HTMLButtonElement>) => void;
+    selected: boolean;
+    styles?: IStyleFunctionOrObject<IColorPickerGridCellStyleProps, IColorPickerGridCellStyles>;
+    theme?: ITheme;
+    width?: number;
+}
+
+// @public (undocumented)
+export interface IColorPickerGridCellStyleProps {
+    borderWidth?: number;
+    circle?: boolean;
+    disabled?: boolean;
+    height?: number;
+    isWhite?: boolean;
+    selected?: boolean;
+    theme: ITheme;
+    width?: number;
+}
+
+// @public (undocumented)
+export interface IColorPickerGridCellStyles {
+    colorCell: IStyle;
+    svg: IStyle;
 }
 
 // @public (undocumented)
@@ -775,6 +844,58 @@ export interface ISpinButtonStyles {
 }
 
 // @public (undocumented)
+export interface ISwatchColorPickerProps {
+    ariaPosInSet?: number;
+    ariaSetSize?: number;
+    cellBorderWidth?: number;
+    cellHeight?: number;
+    cellMargin?: number;
+    cellShape?: 'circle' | 'square';
+    cellWidth?: number;
+    className?: string;
+    colorCells: IColorCellProps[];
+    columnCount: number;
+    disabled?: boolean;
+    doNotContainWithinFocusZone?: boolean;
+    focusOnHover?: boolean;
+    getColorGridCellStyles?: IStyleFunctionOrObject<IColorPickerGridCellStyleProps, IColorPickerGridCellStyles>;
+    id?: string;
+    isControlled?: boolean;
+    mouseLeaveParentSelector?: string | undefined;
+    onCellFocused?: (id?: string, color?: string) => void;
+    onCellHovered?: (id?: string, color?: string) => void;
+    onColorChanged?: (id?: string, color?: string) => void;
+    // @deprecated (undocumented)
+    positionInSet?: number;
+    selectedId?: string;
+    // @deprecated (undocumented)
+    setSize?: number;
+    shouldFocusCircularNavigate?: boolean;
+    styles?: IStyleFunctionOrObject<ISwatchColorPickerStyleProps, ISwatchColorPickerStyles>;
+    theme?: ITheme;
+}
+
+// @public (undocumented)
+export interface ISwatchColorPickerState {
+    // (undocumented)
+    selectedIndex?: number;
+}
+
+// @public
+export interface ISwatchColorPickerStyleProps {
+    cellMargin?: number;
+    className?: string;
+    theme: ITheme;
+}
+
+// @public
+export interface ISwatchColorPickerStyles {
+    focusedContainer?: IStyle;
+    root: IStyle;
+    tableCell: IStyle;
+}
+
+// @public (undocumented)
 export interface ITextField {
     blur: () => void;
     focus: () => void;
@@ -1104,6 +1225,22 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
     }
 
 // @public (undocumented)
+export const SwatchColorPicker: React.FunctionComponent<ISwatchColorPickerProps>;
+
+// @public (undocumented)
+export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerProps, ISwatchColorPickerState> {
+    constructor(props: ISwatchColorPickerProps);
+    // (undocumented)
+    componentWillUnmount(): void;
+    // (undocumented)
+    static defaultProps: ISwatchColorPickerProps;
+    // (undocumented)
+    render(): JSX.Element | null;
+    // (undocumented)
+    UNSAFE_componentWillReceiveProps(newProps: ISwatchColorPickerProps): void;
+}
+
+// @public (undocumented)
 export const TextField: React.FunctionComponent<ITextFieldProps>;
 
 // Warning: (ae-incompatible-release-tags) The symbol "TextFieldBase" is marked as @public, but its signature references "ITextFieldState" which is marked as @internal
@@ -1154,7 +1291,7 @@ export const useLink: (props: ILinkProps) => any;
 export { useTheme }
 
 // @public (undocumented)
-export const useToggle: (props: IToggleProps, options: ComposePreparedOptions<{}, any, {}>) => any;
+export const useToggle: (props: IToggleProps, ref: React.Ref<HTMLDivElement>, options: ComposePreparedOptions<{}, any, {}>) => any;
 
 
 export * from "office-ui-fabric-react/lib/ActivityItem";
@@ -1215,7 +1352,6 @@ export * from "office-ui-fabric-react/lib/Spinner";
 export * from "office-ui-fabric-react/lib/Stack";
 export * from "office-ui-fabric-react/lib/Sticky";
 export * from "office-ui-fabric-react/lib/Styling";
-export * from "office-ui-fabric-react/lib/SwatchColorPicker";
 export * from "office-ui-fabric-react/lib/TeachingBubble";
 export * from "office-ui-fabric-react/lib/Text";
 export * from "office-ui-fabric-react/lib/ThemeGenerator";
