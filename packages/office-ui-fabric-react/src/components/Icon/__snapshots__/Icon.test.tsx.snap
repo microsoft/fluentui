@@ -20,7 +20,90 @@ exports[`Icon renders Icon correctly 1`] = `
 </i>
 `;
 
-exports[`Icon renders Icon correctly as an image 1`] = `
+exports[`Icon renders Icon correctly using iconName 1`] = `
+<i
+  aria-hidden={true}
+  className=
+
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        display: inline-block;
+        font-family: "FabricMDL2Icons";
+        font-style: normal;
+        font-weight: normal;
+        speak: none;
+      }
+  data-icon-name="Upload"
+>
+  
+</i>
+`;
+
+exports[`Icon renders Icon with children correctly 1`] = `
+<i
+  aria-hidden={true}
+  className=
+
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        display: inline-block;
+        font-family: "FabricMDL2Icons";
+        font-style: normal;
+        font-weight: normal;
+        speak: none;
+      }
+  data-icon-name="Upload"
+>
+  <span>
+    This icon has children that are rendered inside of it
+  </span>
+</i>
+`;
+
+exports[`Icon renders Icon with custom styles 1`] = `
+<i
+  aria-hidden={true}
+  className=
+      root
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        display: inline-block;
+        font-family: "FabricMDL2Icons";
+        font-style: normal;
+        font-weight: normal;
+        speak: none;
+      }
+  data-icon-name="Upload"
+>
+  
+</i>
+`;
+
+exports[`Icon renders Icon with getStyles 1`] = `
+<i
+  aria-hidden={true}
+  className=
+      className
+      root
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        display: inline-block;
+        font-family: "FabricMDL2Icons";
+        font-style: normal;
+        font-weight: normal;
+        speak: none;
+      }
+  data-icon-name="Upload"
+>
+  
+</i>
+`;
+
+exports[`Icon renders Icon with imageProps correctly 1`] = `
 <span
   aria-hidden={true}
   className=
@@ -71,87 +154,4 @@ exports[`Icon renders Icon correctly as an image 1`] = `
     />
   </div>
 </span>
-`;
-
-exports[`Icon renders Icon correctly that has children 1`] = `
-<i
-  aria-hidden={true}
-  className=
-
-      {
-        -moz-osx-font-smoothing: grayscale;
-        -webkit-font-smoothing: antialiased;
-        display: inline-block;
-        font-family: "FabricMDL2Icons";
-        font-style: normal;
-        font-weight: normal;
-        speak: none;
-      }
-  data-icon-name="Upload"
->
-  <span>
-    This icon has children that are rendered inside of it
-  </span>
-</i>
-`;
-
-exports[`Icon renders Icon correctly using iconName 1`] = `
-<i
-  aria-hidden={true}
-  className=
-
-      {
-        -moz-osx-font-smoothing: grayscale;
-        -webkit-font-smoothing: antialiased;
-        display: inline-block;
-        font-family: "FabricMDL2Icons";
-        font-style: normal;
-        font-weight: normal;
-        speak: none;
-      }
-  data-icon-name="Upload"
->
-  
-</i>
-`;
-
-exports[`Icon renders Icon with custom styles 1`] = `
-<i
-  aria-hidden={true}
-  className=
-      root
-      {
-        -moz-osx-font-smoothing: grayscale;
-        -webkit-font-smoothing: antialiased;
-        display: inline-block;
-        font-family: "FabricMDL2Icons";
-        font-style: normal;
-        font-weight: normal;
-        speak: none;
-      }
-  data-icon-name="Upload"
->
-  
-</i>
-`;
-
-exports[`Icon renders Icon with getStyles 1`] = `
-<i
-  aria-hidden={true}
-  className=
-      className
-      root
-      {
-        -moz-osx-font-smoothing: grayscale;
-        -webkit-font-smoothing: antialiased;
-        display: inline-block;
-        font-family: "FabricMDL2Icons";
-        font-style: normal;
-        font-weight: normal;
-        speak: none;
-      }
-  data-icon-name="Upload"
->
-  
-</i>
 `;
