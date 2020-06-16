@@ -30,7 +30,6 @@ import { Point } from 'office-ui-fabric-react/lib/Utilities';
 import { Position } from 'office-ui-fabric-react/lib/utilities/positioning';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import { RectangleEdge } from 'office-ui-fabric-react/lib/utilities/positioning';
 import { ThemeProviderProps } from '@fluentui/react-theme-provider';
 import { useTheme } from '@fluentui/react-theme-provider';
 
@@ -47,23 +46,7 @@ export const Coachmark: React.FunctionComponent<ICoachmarkProps>;
 export const COACHMARK_ATTRIBUTE_NAME = "data-coachmarkid";
 
 // @public (undocumented)
-export class CoachmarkBase extends React.Component<ICoachmarkProps, ICoachmarkState> implements ICoachmark {
-    constructor(props: ICoachmarkProps);
-    // (undocumented)
-    componentDidMount(): void;
-    // (undocumented)
-    componentDidUpdate(prevProps: ICoachmarkProps, prevState: ICoachmarkState): void;
-    // (undocumented)
-    componentWillUnmount(): void;
-    // (undocumented)
-    static defaultProps: Partial<ICoachmarkProps>;
-    // (undocumented)
-    dismiss: (ev?: Event | React.KeyboardEvent<HTMLElement> | React.MouseEvent<HTMLElement, MouseEvent> | undefined) => void;
-    // (undocumented)
-    render(): JSX.Element;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(newProps: ICoachmarkProps): void;
-}
+export const CoachmarkBase: React.ForwardRefExoticComponent<ICoachmarkProps & React.RefAttributes<HTMLDivElement>>;
 
 // @public
 export const Customizer: React.FunctionComponent<ICustomizerProps>;
@@ -213,7 +196,7 @@ export interface ICoachmark {
 }
 
 // @public
-export interface ICoachmarkProps extends React.ClassAttributes<CoachmarkBase> {
+export interface ICoachmarkProps {
     ariaAlertText?: string;
     ariaDescribedBy?: string;
     ariaDescribedByText?: string;
@@ -225,6 +208,7 @@ export interface ICoachmarkProps extends React.ClassAttributes<CoachmarkBase> {
     beakHeight?: number;
     // @deprecated
     beakWidth?: number;
+    children?: React.ReactNode;
     className?: string;
     // @deprecated
     collapsed?: boolean;
@@ -254,24 +238,6 @@ export interface ICoachmarkProps extends React.ClassAttributes<CoachmarkBase> {
     width?: number;
 }
 
-// @public (undocumented)
-export interface ICoachmarkState {
-    alertText?: string;
-    beakBottom?: string;
-    beakLeft?: string;
-    beakRight?: string;
-    beakTop?: string;
-    entityInnerHostRect: IEntityRect;
-    isBeaconAnimating: boolean;
-    isCollapsed: boolean;
-    isMeasured: boolean;
-    isMeasuring: boolean;
-    isMouseInProximity: boolean;
-    targetAlignment?: RectangleEdge;
-    targetPosition?: RectangleEdge;
-    transformOrigin?: string;
-}
-
 // @public
 export interface ICoachmarkStyleProps {
     beaconColorOne?: string;
@@ -284,9 +250,7 @@ export interface ICoachmarkStyleProps {
     entityHostHeight?: string;
     entityHostWidth?: string;
     height?: string;
-    isBeaconAnimating: boolean;
     isCollapsed: boolean;
-    isMeasured: boolean;
     isMeasuring: boolean;
     theme?: ITheme;
     transformOrigin?: string;
