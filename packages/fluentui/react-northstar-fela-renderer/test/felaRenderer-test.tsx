@@ -1,9 +1,9 @@
 import { createFelaRenderer } from '@fluentui/react-northstar-fela-renderer';
+import { ICSSInJSStyle } from '@fluentui/styles';
 // @ts-ignore
 import { createSnapshot } from 'jest-react-fela';
 import * as React from 'react';
 import { FelaComponent } from 'react-fela';
-import { ICSSInJSStyle } from '@fluentui/styles';
 
 const felaRenderer = (createFelaRenderer() as any).getOriginalRenderer();
 

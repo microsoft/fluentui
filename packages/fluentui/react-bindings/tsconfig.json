@@ -28,6 +28,9 @@
     },
     {
       "path": "../react-northstar-fela-renderer"
+    },
+    {
+      "path": "../react-northstar-styles-renderer"
     }
   ]
 }

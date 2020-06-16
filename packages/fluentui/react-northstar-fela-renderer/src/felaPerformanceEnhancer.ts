@@ -25,7 +25,7 @@ import {
   RULE_TYPE,
 } from 'fela-utils';
 
-import { Renderer, RendererChange } from './types';
+import { FelaRenderer, FelaRendererChange } from './types';
 
 function isPlainObject(val: any) {
   return val != null && typeof val === 'object' && Array.isArray(val) === false;
@@ -73,7 +73,7 @@ function generateDeclarationReference(
 
 //
 
-export default function felaPerformanceEnhancer(renderer: Renderer) {
+export default function felaPerformanceEnhancer(renderer: FelaRenderer) {
   renderer._renderStyleToClassNames = function _renderStyleToClassNames(
     { _className, ...style }: ICSSInJSStyle & { _className: string },
     pseudo: string = '',
@@ -113,7 +113,7 @@ Check http://fela.js.org/docs/basics/Rules.html#styleobject for more information
           if (isUndefinedValue(value)) {
             renderer.cache[declarationReference] = {
               className: '',
-            } as RendererChange;
+            } as FelaRendererChange;
             /* eslint-disable no-continue */
             continue;
             /* eslint-enable */
