@@ -2,14 +2,12 @@
 
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import * as es6Promise from 'es6-promise';
 import { Fabric, setBaseUrl } from 'office-ui-fabric-react';
 import { initializeIcons } from '@uifabric/icons/lib/index';
 import {
   INavPage,
   ISiteDefinition,
   currentFabricBreakpoint,
-  jumpToAnchor,
   handleRedirects,
 } from '@uifabric/example-app-base/lib/index2';
 import { Route, Router } from '@uifabric/example-app-base';
@@ -26,7 +24,6 @@ const corePackageData = require<any>('office-ui-fabric-core/package.json');
 const corePackageVersion: string = (corePackageData && corePackageData.version) || '9.2.0';
 
 // Initialize
-es6Promise.polyfill();
 initializeIcons();
 
 // @TODO: This doesn't appear to do anything right now. Investigate removing.
@@ -61,7 +58,7 @@ export function createSite<TPlatforms extends string>(
   window.onunload = _onUnload;
 
   function _getBreakpoint(): void {
-    const currentBreakpoint = currentFabricBreakpoint();
+    currentFabricBreakpoint();
   }
 
   function _createRoutes(pages: INavPage<TPlatforms>[]): JSX.Element[] {

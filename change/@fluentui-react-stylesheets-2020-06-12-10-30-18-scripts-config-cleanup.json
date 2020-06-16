@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "Clean up devDependencies and clarify version file placeholder comments",
+  "packageName": "@fluentui/react-stylesheets",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "none",
+  "date": "2020-06-12T17:29:11.758Z"
+}
