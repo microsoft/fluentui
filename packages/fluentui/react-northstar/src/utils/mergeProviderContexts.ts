@@ -7,7 +7,7 @@ import isBrowser from './isBrowser';
 const defaultDocument = { document: 'document' };
 const registeredRenderers = new WeakMap<Document | typeof defaultDocument, Renderer>();
 
-export const getOrCreateRenderer = (createRenderer: CreateRenderer, target?: Document): Renderer => {
+export const getRenderer = (createRenderer: CreateRenderer, target?: Document): Renderer => {
   let actualTarget: Document | typeof defaultDocument = target || defaultDocument;
 
   // A valid comparisons, default renderer will be used
@@ -89,7 +89,7 @@ const mergeProviderContexts = (
 
       // Use provided renderer if it is defined
       acc.target = next.target || acc.target;
-      acc.renderer = getOrCreateRenderer(createRenderer, acc.target);
+      acc.renderer = getRenderer(createRenderer, acc.target);
 
       // Latest disableAnimations value wins
       const mergedDisableAnimations = mergeBooleanValues(acc.disableAnimations, next.disableAnimations);

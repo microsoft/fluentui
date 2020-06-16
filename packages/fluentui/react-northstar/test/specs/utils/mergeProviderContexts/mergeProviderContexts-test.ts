@@ -1,4 +1,4 @@
-import mergeProviderContexts, { mergePerformanceOptions, getOrCreateRenderer } from 'src/utils/mergeProviderContexts';
+import mergeProviderContexts, { mergePerformanceOptions, getRenderer } from 'src/utils/mergeProviderContexts';
 import { ProviderContextInput } from 'src/types';
 
 describe('getOrCreateRenderer', () => {
@@ -6,18 +6,18 @@ describe('getOrCreateRenderer', () => {
 
   test(`without "target" defaults to a document`, () => {
     // will be "undefined" as we call createRenderer() with "undefined"
-    expect(getOrCreateRenderer(createRenderer)).toHaveProperty('target', undefined);
+    expect(getRenderer(createRenderer)).toHaveProperty('target', undefined);
   });
 
   test(`with "target" equals a default document will use its renderer`, () => {
     // will be "undefined" as we call createRenderer() with "undefined"
-    expect(getOrCreateRenderer(createRenderer)).toHaveProperty('target', undefined);
+    expect(getRenderer(createRenderer)).toHaveProperty('target', undefined);
   });
 
   test(`creates a new renderer for a new "target" and keeps it`, () => {
     const target = document.implementation.createDocument('http://www.w3.org/1999/xhtml', 'html', null);
 
-    expect(getOrCreateRenderer(createRenderer, target)).toHaveProperty('target', target);
+    expect(getRenderer(createRenderer, target)).toHaveProperty('target', target);
   });
 });
 
