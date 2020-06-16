@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "Implement overflow for Pivot when the tabs don't all fit",
+  "comment": "Implement Pivot overflow: move tabs into a menu when they don't fit onscreen",
   "packageName": "@fluentui/react-next",
   "email": "behowell@microsoft.com",
   "dependentChangeType": "patch",
