@@ -23,7 +23,7 @@ describe('Icon', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('renders Icon correctly that has children', () => {
+  it('renders Icon with children correctly', () => {
     const component = renderer.create(
       <Icon iconName="Upload">
         <span>This icon has children that are rendered inside of it</span>
