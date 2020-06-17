@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Form, Input, Text } from '@fluentui/react-northstar';
+import { Form } from '@fluentui/react-northstar';
 
 const items = [
   {
@@ -20,30 +20,6 @@ const items = [
     key: 'Pepperoni',
     label: 'Pepperoni',
     value: 'pepperoni',
-  },
-  {
-    name: 'pizza',
-    key: 'Custom',
-    label: (
-      <Text>
-        Choose your own
-        <Input
-          input={{
-            tabIndex: 0,
-          }}
-          inline
-          styles={{
-            fontSize: '12px',
-            '& .ui-input__input': {
-              padding: '2px 8px',
-            },
-          }}
-          placeholder="flavour"
-        />
-      </Text>
-    ),
-    value: 'custom',
-    'aria-label': 'Press Tab to change flavour',
   },
 ];
 
