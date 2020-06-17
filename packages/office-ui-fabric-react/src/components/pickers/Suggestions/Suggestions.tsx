@@ -200,6 +200,7 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
             iconProps={{ iconName: 'Search' }}
             id={searchForMoreId}
             onClick={this._getMoreResults}
+            data-automationid={'sug-searchForMore'}
           >
             {searchForMoreText}
           </CommandButton>
