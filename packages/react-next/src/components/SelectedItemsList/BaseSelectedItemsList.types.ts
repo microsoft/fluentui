@@ -8,6 +8,10 @@ export interface IBaseSelectedItemsList<T> {
   items: T[] | undefined;
 
   addItems: (items: T[]) => void;
+  copyItems: (items: T[]) => void;
+  removeItem: (items: T) => void;
+
+  replaceItem: (itemToReplace: T, itemsToReplaceWith: T | T[]) => void;
 }
 
 export interface ISelectedItemProps<T> extends IPickerItemProps<T> {

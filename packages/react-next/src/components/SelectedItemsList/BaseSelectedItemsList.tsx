@@ -129,6 +129,29 @@ export class BaseSelectedItemsList<T extends IObjectWithKey, P extends IBaseSele
     return this.selection.getSelection() as T[];
   }
 
+  public copyItems(items: T[]): void {
+    if (this.props.onCopyItems) {
+      const copyText = this.props.onCopyItems(items);
+
+      const copyInput = document.createElement('input') as HTMLInputElement;
+      document.body.appendChild(copyInput);
+
+      try {
+        // Try to copy the text directly to the clipboard
+        copyInput.value = copyText;
+        copyInput.select();
+        if (!document.execCommand('copy')) {
+          // The command failed. Fallback to the method below.
+          throw new Error();
+        }
+      } catch (err) {
+        // no op
+      } finally {
+        document.body.removeChild(copyInput);
+      }
+    }
+  }
+
   // tslint:disable-next-line function-name
   public UNSAFE_componentWillUpdate(newProps: P, newState: IBaseSelectedItemsListState<IObjectWithKey>): void {
     if (newState.items && newState.items !== this.state.items) {
@@ -196,29 +219,6 @@ export class BaseSelectedItemsList<T extends IObjectWithKey, P extends IBaseSele
       this.updateItems(newItems);
     }
   };
-
-  protected copyItems(items: T[]): void {
-    if (this.props.onCopyItems) {
-      const copyText = this.props.onCopyItems(items);
-
-      const copyInput = document.createElement('input') as HTMLInputElement;
-      document.body.appendChild(copyInput);
-
-      try {
-        // Try to copy the text directly to the clipboard
-        copyInput.value = copyText;
-        copyInput.select();
-        if (!document.execCommand('copy')) {
-          // The command failed. Fallback to the method below.
-          throw new Error();
-        }
-      } catch (err) {
-        // no op
-      } finally {
-        document.body.removeChild(copyInput);
-      }
-    }
-  }
 
   private _onSelectedItemsUpdated(items?: T[], focusIndex?: number): void {
     this.onChange(items);
