@@ -13,8 +13,6 @@ function createDependencies(code: string) {
     (declaration, name) => declaration.required || new RegExp(`from ['|"]${name}['|"]`).exec(code),
   );
 
-  console.log(filteredPackages);
-
   return {
     ..._.mapValues(filteredPackages, pkg => pkg.version),
     // required to enable all features due old templates in https://github.com/codesandbox/codesandbox-importers
