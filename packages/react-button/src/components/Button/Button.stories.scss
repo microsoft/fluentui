@@ -2,14 +2,17 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  > *:not(:first-child) {
-    margin-left: var(--gap, 8px);
+  margin: calc(-1 * var(--gap, 8px) / 2);
+
+  > * {
+    margin: calc(var(--gap, 8px) / 2);
   }
 }
 
 .vStack {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   > *:not(:first-child) {
     margin-top: var(--gap, 8px);
   }

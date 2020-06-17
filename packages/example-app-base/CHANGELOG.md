@@ -1,8 +1,17 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Mon, 25 May 2020 12:38:22 GMT and should not be manually modified.
+This log was last generated on Fri, 05 Jun 2020 05:09:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.12.74](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.12.74)
+
+Fri, 05 Jun 2020 05:09:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.12.68..@uifabric/example-app-base_v7.12.74)
+
+### Patches
+
+- Tweaks to css modules ([PR #13478](https://github.com/microsoft/fluentui/pull/13478) by dzearing@microsoft.com)
 
 ## [7.12.68](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.12.68)
 

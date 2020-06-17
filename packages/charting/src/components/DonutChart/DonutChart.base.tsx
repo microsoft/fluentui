@@ -8,6 +8,7 @@ import { IProcessedStyleSet, IPalette } from 'office-ui-fabric-react/lib/Styling
 import { IChartDataPoint, IChartProps } from './index';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
+import { ChartHoverCard } from '@uifabric/charting';
 
 const getClassNames = classNamesFunction<IDonutChartStyleProps, IDonutChartStyles>();
 
@@ -128,19 +129,16 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
             coverTarget={true}
             isBeakVisible={false}
             directionalHint={DirectionalHint.bottomRightEdge}
-            gapSpace={10}
+            gapSpace={15}
             id={this._calloutId}
             onDismiss={this._closeCallout}
             preventDismissOnLostFocus={true}
           >
-            <div className={this._classNames.hoverCardRoot}>
-              <div className={this._classNames.hoverCardTextStyles}>
-                {this.state.xCalloutValue ? this.state.xCalloutValue : this.state.legend}
-              </div>
-              <div className={this._classNames.hoverCardDataStyles}>
-                {this.state.yCalloutValue ? this.state.yCalloutValue : this.state.value}
-              </div>
-            </div>
+            <ChartHoverCard
+              Legend={this.state.xCalloutValue ? this.state.xCalloutValue : this.state.legend}
+              YValue={this.state.yCalloutValue ? this.state.yCalloutValue : this.state.value}
+              color={this.state.color}
+            />
           </Callout>
         ) : null}
         <div className={this._classNames.legendContainer}>{!hideLegend && legendBars}</div>
