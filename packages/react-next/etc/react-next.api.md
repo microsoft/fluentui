@@ -183,11 +183,11 @@ export const getNextResizeGroupStateProvider: (measurementCache?: {
     getInitialResizeGroupState: (data: any) => IResizeGroupState;
 };
 
-// @public (undocumented)
-export function getSubmenuItems(item: IContextualMenuItem): IContextualMenuItem[] | undefined;
-
 // @public
 export function getPersonaInitialsColor(props: Pick<IPersonaProps, 'primaryText' | 'text' | 'initialsColor'>): string;
+
+// @public (undocumented)
+export function getSubmenuItems(item: IContextualMenuItem): IContextualMenuItem[] | undefined;
 
 // @public
 export interface ICheckbox {
