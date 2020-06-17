@@ -149,8 +149,7 @@ export class SelectedPeopleList extends React.Component<ISelectedPeopleProps> {
     this._selectedItemsList.current?.replaceItem?.(oldItem, newItem);
   };
 
-  // tslint:disable-next-line:no-any
-  private _createMenuItems(item: any): IContextualMenuItem[] {
+  private _createMenuItems(item: IExtendedPersonaProps): IContextualMenuItem[] {
     const menuItems: IContextualMenuItem[] = [];
 
     if (this.props.editMenuItemText && this.props.getEditingItemText) {
