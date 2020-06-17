@@ -1,10 +1,9 @@
 import * as React from 'react';
+import * as _ from 'lodash';
 import { compose } from '@fluentui/react-bindings';
 import { commonPropTypes } from '../../utils';
-
 import Input, { InputProps } from '../Input/Input';
 import FormFieldCustom, { FormFieldCustomProps, FormFieldCustomStylesProps } from './FormFieldCustom';
-import * as _ from 'lodash';
 
 interface FormInputOwnProps extends Omit<InputProps, 'styles' | 'accessibility'> {}
 
@@ -15,7 +14,7 @@ export const formInputClassName = 'ui-form-input';
 
 const FormInput = compose<
   'div',
-  FormFieldCustomProps,
+  FormInputProps,
   FormInputStylesProps,
   FormFieldCustomProps,
   FormFieldCustomStylesProps
