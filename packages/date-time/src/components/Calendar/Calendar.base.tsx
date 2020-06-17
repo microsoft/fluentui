@@ -2,7 +2,6 @@ import * as React from 'react';
 import {
   ICalendar,
   ICalendarProps,
-  ICalendarStrings,
   ICalendarIconStrings,
   ICalendarFormatDateCallbacks,
   ICalendarStyleProps,
@@ -25,6 +24,12 @@ import {
 import { IProcessedStyleSet } from '@uifabric/styling';
 import { DayPickerStrings } from './defaults';
 import { addMonths, addYears } from '@fluentui/date-time-utilities/lib/dateMath/DateMath';
+import {
+  formatMonthDayYear,
+  formatMonthYear,
+  formatDay,
+  formatYear,
+} from '@fluentui/date-time-utilities/lib/dateGrid/DateGrid';
 
 const getClassNames = classNamesFunction<ICalendarStyleProps, ICalendarStyles>();
 
@@ -46,12 +51,10 @@ export const defaultWorkWeekDays: DayOfWeek[] = [
 ];
 
 export const defaultDateTimeFormatterCallbacks: ICalendarFormatDateCallbacks = {
-  formatMonthDayYear: (date: Date, strings: ICalendarStrings) =>
-    strings.months[date.getMonth()] + ' ' + date.getDate() + ', ' + date.getFullYear(),
-  formatMonthYear: (date: Date, strings: ICalendarStrings) =>
-    strings.months[date.getMonth()] + ' ' + date.getFullYear(),
-  formatDay: (date: Date) => date.getDate().toString(),
-  formatYear: (date: Date) => date.getFullYear().toString(),
+  formatMonthDayYear,
+  formatMonthYear,
+  formatDay,
+  formatYear,
 };
 
 export interface ICalendarState {

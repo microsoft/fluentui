@@ -7,7 +7,6 @@ import {
   getRTLSafeKeyCode,
   format,
   classNamesFunction,
-  find,
   findIndex,
   initializeComponentRef,
 } from '@uifabric/utilities';
@@ -16,16 +15,20 @@ import {
   addDays,
   addWeeks,
   compareDates,
-  compareDatePart,
   getDateRangeArray,
-  isInDateRangeArray,
   getWeekNumbersInMonth,
 } from '@fluentui/date-time-utilities/lib/dateMath/DateMath';
+import {
+  getDayGrid,
+  getBoundedDateRange,
+  findAvailableDate,
+  isRestrictedDate,
+} from '@fluentui/date-time-utilities/lib/dateGrid/DateGrid';
 import { ICalendarDayGridProps, ICalendarDayGridStyleProps, ICalendarDayGridStyles } from './CalendarDayGrid.types';
 import { IProcessedStyleSet } from '@uifabric/styling';
 import { DateRangeType, DayOfWeek } from '../Calendar/Calendar.types';
-
-const DAYS_IN_WEEK = 7;
+import { IDay, IAvailableDateOptions } from '@fluentui/date-time-utilities/lib/dateGrid/DateGrid.types';
+import { DAYS_IN_WEEK } from '@fluentui/date-time-utilities/lib/dateValues/DateValues';
 
 const getClassNames = classNamesFunction<ICalendarDayGridStyleProps, ICalendarDayGridStyles>();
 
@@ -33,14 +36,7 @@ interface IWeekCorners {
   [key: string]: string;
 }
 
-export interface IDayInfo {
-  key: string;
-  date: string;
-  originalDate: Date;
-  isInMonth: boolean;
-  isToday: boolean;
-  isSelected: boolean;
-  isInBounds: boolean;
+export interface IDayInfo extends IDay {
   onSelected: () => void;
 }
 
@@ -317,6 +313,7 @@ export class CalendarDayGridBase extends React.Component<ICalendarDayGridProps, 
   ): void {
     let targetDate: Date | undefined = undefined;
     let direction = 1; // by default search forward
+    const { restrictedDates, minDate, maxDate } = this.props;
 
     if (ev.which === KeyCodes.up) {
       targetDate = addWeeks(date, -1);
@@ -335,13 +332,23 @@ export class CalendarDayGridBase extends React.Component<ICalendarDayGridProps, 
       return;
     }
 
+    const findAvailableDateOptions: IAvailableDateOptions = {
+      initialDate: date,
+      targetDate,
+      direction,
+      restrictedDates,
+      minDate,
+      maxDate,
+    };
+
     // target date is restricted, search in whatever direction until finding the next possible date,
     // stopping at boundaries
-    let nextDate = this._findAvailableDate(date, targetDate, direction);
+    let nextDate = findAvailableDate(findAvailableDateOptions);
 
     if (!nextDate) {
       // if no dates available in initial direction, try going backwards
-      nextDate = this._findAvailableDate(date, targetDate, -direction);
+      findAvailableDateOptions.direction = -direction;
+      nextDate = findAvailableDate(findAvailableDateOptions);
     }
 
     // if the nextDate is still inside the same focusZone area, let the focusZone handle setting the focus so we
@@ -363,28 +370,6 @@ export class CalendarDayGridBase extends React.Component<ICalendarDayGridProps, 
       this.props.onNavigateDate(nextDate, true);
       ev.preventDefault();
     }
-  }
-
-  private _findAvailableDate(initialDate: Date, targetDate: Date, direction: number): Date | undefined {
-    // if the target date is available, return it immediately
-    if (!this._getIsRestrictedDate(targetDate)) {
-      return targetDate;
-    }
-
-    while (
-      compareDatePart(initialDate, targetDate) !== 0 &&
-      this._getIsRestrictedDate(targetDate) &&
-      !this._getIsAfterMaxDate(targetDate) &&
-      !this._getIsBeforeMinDate(targetDate)
-    ) {
-      targetDate = addDays(targetDate, direction);
-    }
-
-    if (compareDatePart(initialDate, targetDate) !== 0 && !this._getIsRestrictedDate(targetDate)) {
-      return targetDate;
-    }
-
-    return undefined;
   }
 
   private _onDayKeyDown = (
@@ -411,13 +396,15 @@ export class CalendarDayGridBase extends React.Component<ICalendarDayGridProps, 
       maxDate,
       workWeekDays,
       daysToSelectInDayView,
+      restrictedDates,
     } = this.props;
+    const restrictedDatesOptions = { minDate, maxDate, restrictedDates };
 
     let dateRange = getDateRangeArray(selectedDate, dateRangeType, firstDayOfWeek, workWeekDays, daysToSelectInDayView);
-    dateRange = this._getBoundedDateRange(dateRange, minDate, maxDate);
+    dateRange = getBoundedDateRange(dateRange, minDate, maxDate);
 
     dateRange = dateRange.filter((d: Date) => {
-      return !this._getIsRestrictedDate(d);
+      return !isRestrictedDate(d, restrictedDatesOptions);
     });
 
     if (onSelectDate) {
@@ -444,121 +431,46 @@ export class CalendarDayGridBase extends React.Component<ICalendarDayGridProps, 
       selectedDate,
       dateRangeType,
       firstDayOfWeek,
+      firstWeekOfYear,
       today,
       minDate,
       maxDate,
       weeksToShow,
       workWeekDays,
       daysToSelectInDayView,
+      navigatedDate,
     } = propsToUse;
-
-    const todaysDate = today || new Date();
-
-    const navigatedDate = propsToUse.navigatedDate ? propsToUse.navigatedDate : todaysDate;
-
-    let date;
-    if (weeksToShow && weeksToShow <= 4) {
-      // if showing less than a full month, just use date == navigatedDate
-      date = new Date(navigatedDate.toString());
-    } else {
-      date = new Date(navigatedDate.getFullYear(), navigatedDate.getMonth(), 1);
-    }
-    const weeks: IDayInfo[][] = [];
-
-    // Cycle the date backwards to get to the first day of the week.
-    while (date.getDay() !== firstDayOfWeek) {
-      date.setDate(date.getDate() - 1);
-    }
-
-    // add the transition week as last week of previous range
-    date = addDays(date, -DAYS_IN_WEEK);
-
-    // a flag to indicate whether all days of the week are outside the month
-    let isAllDaysOfWeekOutOfMonth = false;
-
-    // in work week view if the days aren't contiguous we use week view instead
-    const selectedDateRangeType = this.getDateRangeTypeToUse(dateRangeType, workWeekDays);
-
-    let selectedDates = getDateRangeArray(
+    const dayGridOptions = {
       selectedDate,
-      selectedDateRangeType,
+      dateRangeType,
       firstDayOfWeek,
+      firstWeekOfYear,
+      today,
+      minDate,
+      maxDate,
+      weeksToShow,
       workWeekDays,
       daysToSelectInDayView,
-    );
-    selectedDates = this._getBoundedDateRange(selectedDates, minDate, maxDate);
+      navigatedDate,
+    };
+    const weeksGrid = getDayGrid(dayGridOptions);
+    const weeks: IDayInfo[][] = [];
 
-    let shouldGetWeeks = true;
-
-    for (let weekIndex = 0; shouldGetWeeks; weekIndex++) {
+    for (let weekIndex = 0; weekIndex < weeksGrid.length; weekIndex++) {
       const week: IDayInfo[] = [];
-
-      isAllDaysOfWeekOutOfMonth = true;
-
       for (let dayIndex = 0; dayIndex < DAYS_IN_WEEK; dayIndex++) {
-        const originalDate = new Date(date.toString());
+        const day = weeksGrid[weekIndex][dayIndex];
         const dayInfo: IDayInfo = {
-          key: date.toString(),
-          date: date.getDate().toString(),
-          originalDate: originalDate,
-          isInMonth: date.getMonth() === navigatedDate.getMonth(),
-          isToday: compareDates(todaysDate, date),
-          isSelected: isInDateRangeArray(date, selectedDates),
-          onSelected: this._onSelectDate.bind(this, originalDate),
-          isInBounds: !this._getIsRestrictedDate(date),
+          onSelected: this._onSelectDate.bind(this, day.originalDate),
+          ...day,
         };
 
         week.push(dayInfo);
-
-        if (dayInfo.isInMonth) {
-          isAllDaysOfWeekOutOfMonth = false;
-        }
-
-        date.setDate(date.getDate() + 1);
       }
-
-      // We append the condition of the loop depending upon the showSixWeeksByDefault prop.
-      shouldGetWeeks = weeksToShow ? weekIndex < weeksToShow + 1 : !isAllDaysOfWeekOutOfMonth || weekIndex === 0;
-
-      // we don't check shouldGetWeeks before pushing because we want to add one extra week for transition state
       weeks.push(week);
     }
 
     return weeks;
-  }
-
-  private _getIsRestrictedDate(date: Date): boolean {
-    const { restrictedDates, minDate, maxDate } = this.props;
-    if (!restrictedDates && !minDate && !maxDate) {
-      return false;
-    }
-    const inRestrictedDates =
-      restrictedDates &&
-      !!find(restrictedDates, (rd: Date) => {
-        return compareDates(rd, date);
-      });
-    return inRestrictedDates || this._getIsBeforeMinDate(date) || this._getIsAfterMaxDate(date);
-  }
-
-  private _getIsBeforeMinDate(date: Date): boolean {
-    const { minDate } = this.props;
-    return minDate ? compareDatePart(minDate, date) >= 1 : false;
-  }
-
-  private _getIsAfterMaxDate(date: Date): boolean {
-    const { maxDate } = this.props;
-    return maxDate ? compareDatePart(date, maxDate) >= 1 : false;
-  }
-
-  private _getBoundedDateRange(dateRange: Date[], minDate?: Date, maxDate?: Date): Date[] {
-    let boundedDateRange = [...dateRange];
-    if (minDate) {
-      boundedDateRange = boundedDateRange.filter((date: Date) => compareDatePart(date, minDate as Date) >= 0);
-    }
-    if (maxDate) {
-      boundedDateRange = boundedDateRange.filter((date: Date) => compareDatePart(date, maxDate as Date) <= 0);
-    }
-    return boundedDateRange;
   }
 
   /**

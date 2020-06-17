@@ -12,6 +12,8 @@ import { IBaseProps as IBaseProps_2 } from 'office-ui-fabric-react/lib/Utilities
 import { ICalendarStrings as ICalendarStrings_2 } from '@uifabric/date-time';
 import { ICalloutProps } from 'office-ui-fabric-react/lib/Callout';
 import { IComponentAs } from '@uifabric/utilities';
+import { IDayGridOptions } from '@fluentui/date-time-utilities/lib/dateGrid/DateGrid.types';
+import { IGridStrings } from '@fluentui/date-time-utilities/lib/dateGrid/DateGrid.types';
 import { IProcessedStyleSet } from '@uifabric/styling';
 import { IRefObject } from '@uifabric/utilities';
 import { IRefObject as IRefObject_2 } from 'office-ui-fabric-react/lib/Utilities';
@@ -121,8 +123,8 @@ export interface ICalendarDayProps extends IBaseProps_2<ICalendarDay>, ICalendar
 // @public (undocumented)
 export interface ICalendarFormatDateCallbacks {
     formatDay: (date: Date) => string;
-    formatMonthDayYear: (date: Date, strings?: ICalendarStrings) => string;
-    formatMonthYear: (date: Date, strings?: ICalendarStrings) => string;
+    formatMonthDayYear: (date: Date, strings?: IGridStrings) => string;
+    formatMonthYear: (date: Date, strings?: IGridStrings) => string;
     formatYear: (date: Date) => string;
 }
 
@@ -196,12 +198,10 @@ export interface ICalendarProps extends IBaseProps<ICalendar> {
 }
 
 // @public (undocumented)
-export interface ICalendarStrings {
+export interface ICalendarStrings extends IGridStrings {
     closeButtonAriaLabel?: string;
-    days: string[];
     goToToday: string;
     monthPickerHeaderAriaLabel?: string;
-    months: string[];
     nextMonthAriaLabel?: string;
     nextYearAriaLabel?: string;
     nextYearRangeAriaLabel?: string;
@@ -209,8 +209,6 @@ export interface ICalendarStrings {
     prevYearAriaLabel?: string;
     prevYearRangeAriaLabel?: string;
     selectedDateFormatString?: string;
-    shortDays: string[];
-    shortMonths: string[];
     todayDateFormatString?: string;
     weekNumberFormatString?: string;
     yearPickerHeaderAriaLabel?: string;
