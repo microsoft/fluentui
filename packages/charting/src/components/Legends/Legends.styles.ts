@@ -1,5 +1,10 @@
 import { ILegendsStyles, ILegendStyleProps } from './Legends.types';
-import { HighContrastSelector, getFocusStyle, IGetFocusStylesOptions } from 'office-ui-fabric-react/lib/Styling';
+import {
+  HighContrastSelector,
+  getFocusStyle,
+  IGetFocusStylesOptions,
+  IStyle,
+} from 'office-ui-fabric-react/lib/Styling';
 
 export const getStyles = (props: ILegendStyleProps): ILegendsStyles => {
   const { className, theme } = props;
@@ -37,7 +42,7 @@ export const getStyles = (props: ILegendStyleProps): ILegendsStyles => {
     rect: {
       selectors: {
         [HighContrastSelector]: {
-          backgroundColor: props.colorOnSelectedState,
+          backgroundImage: `linear-gradient(to right, ${props.colorOnSelectedState}, ${props.colorOnSelectedState})`,
           opacity: props.colorOnSelectedState === palette.white ? '0.6' : '',
         },
       },
@@ -57,6 +62,15 @@ export const getStyles = (props: ILegendStyleProps): ILegendsStyles => {
       borderTop: '10.4px solid',
       borderTopColor: props.colorOnSelectedState,
       marginRight: '8px',
+      selectors: {
+        [HighContrastSelector]: {
+          border: '0px',
+          height: '10.4px',
+          width: '10.4px',
+          clipPath: 'polygon(50% 100%, 0 0, 100% 0)',
+          backgroundImage: `linear-gradient(to right, ${props.colorOnSelectedState}, ${props.colorOnSelectedState})`,
+        } as IStyle,
+      },
     },
     text: {
       ...fonts.small,
