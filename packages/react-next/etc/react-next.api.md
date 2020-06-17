@@ -224,6 +224,9 @@ export const getNextResizeGroupStateProvider: (measurementCache?: {
     getInitialResizeGroupState: (data: any) => IResizeGroupState;
 };
 
+// @public
+export function getPersonaInitialsColor(props: Pick<IPersonaProps, 'primaryText' | 'text' | 'initialsColor'>): string;
+
 export { IBaseButtonProps }
 
 export { IBaseButtonState }
@@ -233,9 +236,6 @@ export { IButton }
 export { IButtonProps }
 
 export { IButtonStyles }
-
-// @public
-export function getPersonaInitialsColor(props: Pick<IPersonaProps, 'primaryText' | 'text' | 'initialsColor'>): string;
 
 // @public
 export interface ICheckbox {
@@ -1882,8 +1882,6 @@ export class PositioningContainer extends React.Component<IPositioningContainerP
     UNSAFE_componentWillUpdate(newProps: IPositioningContainerProps): void;
     }
 
-export { PrimaryButton }
-
 // @public (undocumented)
 export const presenceBoolean: (presence: PersonaPresence) => {
     isAvailable: boolean;
@@ -1893,6 +1891,8 @@ export const presenceBoolean: (presence: PersonaPresence) => {
     isDoNotDisturb: boolean;
     isOffline: boolean;
 };
+
+export { PrimaryButton }
 
 // @public (undocumented)
 export const ResizeGroup: import("react").ForwardRefExoticComponent<import("./ResizeGroup.types").IResizeGroupProps & import("react").RefAttributes<HTMLDivElement>>;
