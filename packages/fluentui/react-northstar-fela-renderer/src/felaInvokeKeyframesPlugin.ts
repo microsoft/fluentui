@@ -1,4 +1,4 @@
-import { callable, ICSSInJSStyle } from '@fluentui/styles';
+import { AnimationName, callable, ICSSInJSStyle } from '@fluentui/styles';
 import * as _ from 'lodash';
 
 /**
@@ -12,8 +12,10 @@ const felaInvokeKeyframesPlugin = (styles: ICSSInJSStyle): ICSSInJSStyle => {
   for (const property in styles) {
     if (_.isPlainObject(styles[property])) {
       if (property === 'animationName') {
-        if (styles[property].keyframe) {
-          styles[property] = callable(styles[property].keyframe)(styles[property].params || {});
+        const value = styles[property] as AnimationName;
+
+        if (value.keyframe) {
+          styles[property] = callable(value.keyframe)(value.params || {});
         }
 
         continue;
