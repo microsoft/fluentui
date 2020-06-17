@@ -103,16 +103,7 @@ module.exports = function preset() {
 
   task('build:node-lib', series('clean', 'copy', 'ts:commonjs-only')).cached();
 
-  task(
-    'build',
-    series(
-      'clean',
-      'copy',
-      'sass',
-      'ts',
-      condition('api-extractor:verify', () => fs.existsSync(path.join(process.cwd(), 'config/api-extractor.json'))),
-    ),
-  ).cached();
+  task('build', series('clean', 'copy', 'sass', 'ts', 'api-extractor:verify')).cached();
 
   task(
     'bundle',
