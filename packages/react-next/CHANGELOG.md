@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-next
 
-This log was last generated on Tue, 16 Jun 2020 12:40:00 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Jun 2020 12:37:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-alpha.43](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.43)
+
+Wed, 17 Jun 2020 12:37:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.42..@fluentui/react-next_v8.0.0-alpha.43)
+
+### Changes
+
+- Copy Persona component code to react-next project for migration ([PR #13510](https://github.com/microsoft/fluentui/pull/13510) by miclo@microsoft.com)
+- Copy Coachmark code to react-next to stage migration ([PR #13533](https://github.com/microsoft/fluentui/pull/13533) by miclo@microsoft.com)
+
+## [8.0.0-alpha.42](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.42)
+
+Tue, 16 Jun 2020 17:35:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.41..@fluentui/react-next_v8.0.0-alpha.42)
+
+### Changes
+
+- Add missing dependencies ([PR #13585](https://github.com/microsoft/fluentui/pull/13585) by elcraig@microsoft.com)
 
 ## [8.0.0-alpha.41](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.41)
 

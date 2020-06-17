@@ -14,7 +14,6 @@
     "start": "just-scripts dev"
   },
   "devDependencies": {
-    "@types/es6-promise": "0.0.32",
     "@types/react": "16.8.25",
     "@types/react-dom": "16.8.4",
     "@types/webpack-env": "1.15.1",
@@ -25,15 +24,13 @@
     "lodash": "^4.17.15"
   },
   "dependencies": {
-    "@fluentui/react-button": "^0.3.2",
-    "@fluentui/react-next": "^8.0.0-alpha.41",
+    "@fluentui/react-button": "^0.3.3",
+    "@fluentui/react-next": "^8.0.0-alpha.43",
     "@uifabric/set-version": "^7.0.13",
     "@uifabric/example-app-base": "^7.12.79",
     "@uifabric/experiments": "^7.26.4",
     "@microsoft/load-themed-styles": "^1.10.26",
-    "es6-promise": "^4.1.0",
-    "immutability-helper": "~2.8.1",
-    "office-ui-fabric-react": "^7.120.2",
+    "office-ui-fabric-react": "^7.120.3",
     "querystring": "^0.2.0",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",

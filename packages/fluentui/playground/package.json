@@ -47,7 +47,6 @@
     "@uifabric/build": "^7.0.0",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
-    "enzyme-to-json": "^3.3.4",
     "react": "16.8.6"
   },
   "peerDependencies": {
