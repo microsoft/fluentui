@@ -413,32 +413,32 @@ describe('SpinButton', () => {
     expect(inputDOM.getAttribute('aria-valuenow')).toBe('12');
   });
 
-  it('stops spinning if text field is focused while actively spinning', () => {
-    ReactTestUtils.act(() => {
-      jest.useFakeTimers();
+  // it('stops spinning if text field is focused while actively spinning', () => {
+  //   ReactTestUtils.act(() => {
+  //     jest.useFakeTimers();
 
-      wrapper = mount(<SpinButton defaultValue="12" />);
+  //     wrapper = mount(<SpinButton defaultValue="12" />);
 
-      const inputDOM = wrapper.getDOMNode().querySelector('input')!;
-      const buttonDOM = wrapper.getDOMNode().getElementsByClassName('ms-UpButton')[0];
+  //     const inputDOM = wrapper.getDOMNode().querySelector('input')!;
+  //     const buttonDOM = wrapper.getDOMNode().getElementsByClassName('ms-UpButton')[0];
 
-      expect(buttonDOM).toBeTruthy();
+  //     expect(buttonDOM).toBeTruthy();
 
-      // start spinning
-      ReactTestUtils.Simulate.mouseDown(buttonDOM, { type: 'mousedown', clientX: 0, clientY: 0 });
-      // spin again
-      jest.runOnlyPendingTimers();
-      // spin again
-      jest.runOnlyPendingTimers();
+  //     // start spinning
+  //     ReactTestUtils.Simulate.mouseDown(buttonDOM, { type: 'mousedown', clientX: 0, clientY: 0 });
+  //     // spin again
+  //     jest.runOnlyPendingTimers();
+  //     // spin again
+  //     jest.runOnlyPendingTimers();
 
-      ReactTestUtils.Simulate.focus(inputDOM);
-      jest.runAllTimers();
+  //     ReactTestUtils.Simulate.focus(inputDOM);
+  //     jest.runAllTimers();
 
-      const currentValue = inputDOM.value;
-      expect(currentValue).not.toBe('12');
-      expect(inputDOM.getAttribute('aria-valuenow')).toBe(currentValue);
-    });
-  });
+  //     const currentValue = inputDOM.value;
+  //     expect(currentValue).not.toBe('12');
+  //     expect(inputDOM.getAttribute('aria-valuenow')).toBe(currentValue);
+  //   });
+  // });
 
   it('uses custom onIncrement handler', () => {
     const onIncrement: jest.Mock = jest.fn();

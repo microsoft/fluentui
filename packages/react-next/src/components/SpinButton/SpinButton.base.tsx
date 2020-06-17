@@ -98,7 +98,7 @@ export const SpinButtonBase = (props: ISpinButtonProps) => {
   // keyboard spin direction, used to style the up or down button
   // as active when up/down arrow is pressed
   const [keyboardSpinDirection, setKeyboardSpinDirection] = React.useState(KeyboardSpinDirection.notSpinning);
-
+  //
   const safeSetTimeout = useSetTimeout();
 
   const callCalculatePrecision = (calculatePrecisionProps: ISpinButtonProps) => {
