@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Add Datetime utilities package",
-  "packageName": "@fluentui/date-time-utilities",
-  "email": "pompomon@gmail.com",
-  "dependentChangeType": "none",
-  "date": "2020-06-15T20:02:25.865Z"
-}

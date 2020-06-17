@@ -37,7 +37,7 @@
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.10.26",
-    "@uifabric/api-docs": "^7.2.95",
+    "@uifabric/api-docs": "^7.3.0",
     "@uifabric/azure-themes": "^7.1.27",
     "@uifabric/example-app-base": "^7.12.79",
     "@uifabric/fluent-theme": "^7.1.96",
@@ -48,11 +48,11 @@
     "@uifabric/set-version": "^7.0.13",
     "@uifabric/styling": "^7.12.18",
     "@uifabric/theme-samples": "^7.0.93",
-    "@uifabric/tsx-editor": "^0.11.94",
+    "@uifabric/tsx-editor": "^0.11.95",
     "@uifabric/utilities": "^7.21.0",
     "@uifabric/variants": "^7.1.83",
     "office-ui-fabric-core": "^11.0.0",
-    "office-ui-fabric-react": "^7.120.2",
+    "office-ui-fabric-react": "^7.120.3",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

@@ -2,6 +2,35 @@
   "name": "@fluentui/react-next",
   "entries": [
     {
+      "date": "Wed, 17 Jun 2020 12:37:16 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.43",
+      "version": "8.0.0-alpha.43",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Copy Persona component code to react-next project for migration",
+            "author": "miclo@microsoft.com",
+            "commit": "b8b74099659fba313055bb2a4440c88a9ad59196",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Copy Coachmark code to react-next to stage migration",
+            "author": "miclo@microsoft.com",
+            "commit": "1e78a8802e47cd5b2943c1c2712d7ca4dd448815",
+            "package": "@fluentui/react-next"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Add Datetime utilities package",
+            "author": "pompomon@gmail.com",
+            "commit": "ae2604b53ac23c13faf40e8dd7de76e324a1c456",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 16 Jun 2020 17:35:36 GMT",
       "tag": "@fluentui/react-next_v8.0.0-alpha.42",
       "version": "8.0.0-alpha.42",
