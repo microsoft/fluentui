@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { compose, ComponentWithAs, ShorthandConfig } from '@fluentui/react-bindings';
+import { compose } from '@fluentui/react-bindings';
 import { commonPropTypes } from '../../utils';
 
 import Input, { InputProps } from '../Input/Input';
@@ -11,7 +11,7 @@ interface FormInputOwnProps extends Omit<InputProps, 'styles' | 'accessibility'>
 export interface FormInputProps extends FormFieldCustomProps, FormInputOwnProps {}
 export type FormInputStylesProps = never;
 
-export const FormInputClassName = 'ui-form-input';
+export const formInputClassName = 'ui-form-input';
 
 const FormInput = compose<
   'div',
@@ -20,10 +20,9 @@ const FormInput = compose<
   FormFieldCustomProps,
   FormFieldCustomStylesProps
 >(FormFieldCustom, {
-  className: FormInputClassName,
+  className: formInputClassName,
   displayName: 'FormInput',
-  overrideStyles: false,
-  shorthandConfig: {},
+  overrideStyles: true,
   slotProps: ({ accessibility, styles, ...props }) => ({
     root: {
       children: (
@@ -40,8 +39,11 @@ const FormInput = compose<
         </>
       ),
     },
+    message: {
+      error: !!props.errorMessage,
+    },
   }),
-}) as ComponentWithAs<'div', FormInputProps> & { shorthandConfig: ShorthandConfig<FormInputProps> };
+});
 
 FormInput.propTypes = {
   ...commonPropTypes.createCommon({

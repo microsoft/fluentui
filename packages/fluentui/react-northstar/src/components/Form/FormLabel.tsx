@@ -5,11 +5,10 @@ import Box, { BoxProps } from '../Box/Box';
 interface FormLabelOwnProps {
   inline?: boolean;
   required?: boolean;
-  type?: string;
 }
 
 export interface FormLabelProps extends BoxProps, FormLabelOwnProps {}
-export type FormLabelStylesProps = Required<Pick<FormLabelOwnProps, 'inline' | 'required' | 'type'>>;
+export type FormLabelStylesProps = Required<Pick<FormLabelOwnProps, 'inline' | 'required'>>;
 
 export const FormLabelClassName = 'ui-form-label';
 
@@ -17,10 +16,9 @@ const FormLabel = compose<'label', FormLabelProps, FormLabelStylesProps, BoxProp
   className: FormLabelClassName,
   displayName: 'FormLabel',
   overrideStyles: true,
-  mapPropsToStylesProps: ({ inline, required, type }) => ({
+  mapPropsToStylesProps: ({ inline, required }) => ({
     inline,
     required,
-    type,
   }),
   handledProps: ['required', 'inline'],
 }) as ComponentWithAs<'label', FormLabelProps> & { shorthandConfig: ShorthandConfig<FormLabelProps> };

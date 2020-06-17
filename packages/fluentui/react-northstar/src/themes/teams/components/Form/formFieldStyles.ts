@@ -14,6 +14,20 @@ const formFieldStyles: ComponentSlotStylesPrepared<FormFieldStylesProps, FormFie
         }),
     };
   },
+  label: ({ props }): ICSSInJSStyle => {
+    const { type, inline, required } = props;
+    return {
+      ...((!type || (type !== 'radio' && type !== 'checkbox')) && {
+        display: 'block',
+      }),
+      ...(inline && { marginRight: pxToRem(10), display: 'inline' }),
+      ...(required && {
+        '::after': {
+          content: '"*"',
+        },
+      }),
+    };
+  },
   message: ({ props: p, variables: v }): ICSSInJSStyle => ({
     ...(p.hasErrorMessage && { color: v.colorScheme.red.foreground }),
     display: 'block',

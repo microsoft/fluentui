@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as _ from 'lodash';
-import { compose, ComponentWithAs, ShorthandConfig } from '@fluentui/react-bindings';
+import { compose } from '@fluentui/react-bindings';
 import { commonPropTypes, createShorthand } from '../../utils';
 import Dropdown, { DropdownProps } from '../Dropdown/Dropdown';
 import FormFieldCustom, { FormFieldCustomProps, FormFieldCustomStylesProps } from './FormFieldCustom';
@@ -10,7 +10,7 @@ interface FormDropdownOwnProps extends Omit<DropdownProps, 'styles'> {}
 export interface FormDropdownProps extends FormFieldCustomProps, FormDropdownOwnProps {}
 export type FormDropdownStylesProps = never;
 
-export const FormDropdownClassName = 'ui-form-dropdown';
+export const formDropdownClassName = 'ui-form-dropdown';
 
 const FormDropdown = compose<
   'div',
@@ -19,10 +19,9 @@ const FormDropdown = compose<
   FormFieldCustomProps,
   FormFieldCustomStylesProps
 >(FormFieldCustom, {
-  className: FormDropdownClassName,
+  className: formDropdownClassName,
   displayName: 'FormDropdown',
   overrideStyles: true,
-  shorthandConfig: {},
   slotProps: ({ styles, ...props }) => ({
     root: {
       children: (
@@ -40,10 +39,11 @@ const FormDropdown = compose<
         </>
       ),
     },
+    message: {
+      error: props.errorMessage,
+    },
   }),
-}) as ComponentWithAs<'div', FormDropdownProps> & { shorthandConfig: ShorthandConfig<FormDropdownProps> };
-
-FormDropdown.defaultProps = {};
+});
 
 FormDropdown.propTypes = {
   ...commonPropTypes.createCommon({

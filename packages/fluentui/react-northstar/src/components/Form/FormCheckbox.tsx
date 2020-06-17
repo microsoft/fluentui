@@ -1,20 +1,16 @@
 import * as React from 'react';
 import * as _ from 'lodash';
-import { compose, ComponentWithAs, ShorthandConfig } from '@fluentui/react-bindings';
+import { compose } from '@fluentui/react-bindings';
 import { commonPropTypes } from '../../utils';
 import Checkbox, { CheckboxProps } from '../Checkbox/Checkbox';
-import { ShorthandValue } from '../../types';
-import { TextProps } from '../Text/Text';
 import FormFieldCustom, { FormFieldCustomProps, FormFieldCustomStylesProps } from './FormFieldCustom';
 
-interface FormCheckboxOwnProps extends Omit<CheckboxProps, 'styles' | 'accessibility'> {
-  checkboxLabel?: ShorthandValue<TextProps>;
-}
+interface FormCheckboxOwnProps extends Omit<CheckboxProps, 'styles' | 'accessibility' | 'label'> {}
 
 export interface FormCheckboxProps extends FormFieldCustomProps, FormCheckboxOwnProps {}
 export type FormCheckboxStylesProps = never;
 
-export const FormCheckboxClassName = 'ui-form-checkbox';
+export const formCheckboxClassName = 'ui-form-checkbox';
 
 const FormCheckbox = compose<
   'div',
@@ -23,11 +19,9 @@ const FormCheckbox = compose<
   FormFieldCustomProps,
   FormFieldCustomStylesProps
 >(FormFieldCustom, {
-  className: FormCheckboxClassName,
+  className: formCheckboxClassName,
   displayName: 'FormCheckbox',
   overrideStyles: true,
-  shorthandConfig: {},
-  handledProps: ['checkboxLabel'],
   slots: {
     label: () => null,
   },
@@ -47,7 +41,7 @@ const FormCheckbox = compose<
       ),
     },
   }),
-}) as ComponentWithAs<'div', FormCheckboxProps> & { shorthandConfig: ShorthandConfig<FormCheckboxProps> };
+});
 
 FormCheckbox.defaultProps = {};
 

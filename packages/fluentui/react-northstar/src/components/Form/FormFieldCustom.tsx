@@ -4,16 +4,14 @@ import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import {
   childrenExist,
-  createShorthandFactory,
   UIComponentProps,
   ChildrenComponentProps,
   commonPropTypes,
   getOrGenerateIdFromShorthand,
-  ShorthandFactory,
   createShorthand,
 } from '../../utils';
 import { ShorthandValue, withSafeTypeForAs, ProviderContextPrepared } from '../../types';
-import { TextProps } from '../Text/Text';
+
 import Box from '../Box/Box';
 import {
   getElementType,
@@ -22,13 +20,11 @@ import {
   useStyles,
   useAccessibility,
   compose,
-  ComponentWithAs,
-  ShorthandConfig,
 } from '@fluentui/react-bindings';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
-import FormLabel from './FormLabel';
-import FormMessage from './FormMessage';
+import FormLabel, { FormLabelProps } from './FormLabel';
+import FormMessage, { FormMessageProps } from './FormMessage';
 
 export interface FormFieldCustomProps extends UIComponentProps, ChildrenComponentProps {
   /**
@@ -43,17 +39,16 @@ export interface FormFieldCustomProps extends UIComponentProps, ChildrenComponen
   id?: string;
 
   /** A label for the form field. */
-  label?: ShorthandValue<TextProps>;
+  label?: ShorthandValue<FormLabelProps>;
 
   /** Text message that will be displayed below the control (can be used for error, warning, success messages). */
-  message?: ShorthandValue<TextProps>;
+  message?: ShorthandValue<FormMessageProps>;
 
   /** Message to be shown when input has error */
-  errorMessage?: ShorthandValue<TextProps>;
+  errorMessage?: ShorthandValue<FormMessageProps>;
 }
 
 export const formFieldClassName = 'ui-form__field';
-export const formFieldMessageClassName = 'ui-form__field__message';
 
 export type FormFieldCustomStylesProps = Required<Pick<FormFieldCustomProps, 'inline'>> & {
   hasErrorMessage: boolean;
@@ -84,7 +79,7 @@ const FormFieldCustom = compose<'div', FormFieldCustomProps, FormFieldCustomStyl
       rtl: context.rtl,
     });
 
-    const { classes, styles: resolvedStyles } = useStyles<FormFieldCustomStylesProps>(FormFieldCustom.displayName, {
+    const { classes } = useStyles<FormFieldCustomStylesProps>(FormFieldCustom.displayName, {
       className: composeOptions.className,
       composeOptions,
       mapPropsToStyles: () => ({
@@ -104,10 +99,8 @@ const FormFieldCustom = compose<'div', FormFieldCustomProps, FormFieldCustomStyl
     const labelElement = createShorthand(composeOptions.slots.label, label, {
       defaultProps: () =>
         getA11yProps('label', {
-          as: 'label',
           htmlFor: id,
           id: labelId.current,
-          styles: resolvedStyles.label,
           inline,
           ...slotProps.label,
         }),
@@ -116,9 +109,7 @@ const FormFieldCustom = compose<'div', FormFieldCustomProps, FormFieldCustomStyl
     const messageElement = createShorthand(composeOptions.slots.message, errorMessage || message, {
       defaultProps: () =>
         getA11yProps('message', {
-          className: formFieldMessageClassName,
           id: messageId.current,
-          styles: resolvedStyles.message,
           ...slotProps.message,
         }),
     });
@@ -169,10 +160,7 @@ const FormFieldCustom = compose<'div', FormFieldCustomProps, FormFieldCustomStyl
     ],
     shorthandConfig: {},
   },
-) as ComponentWithAs<'div', FormFieldCustomProps> & {
-  create: ShorthandFactory<FormFieldCustomProps>;
-  shorthandConfig: ShorthandConfig<FormFieldCustomProps>;
-};
+);
 
 FormFieldCustom.propTypes = {
   ...commonPropTypes.createCommon({
@@ -188,8 +176,6 @@ FormFieldCustom.propTypes = {
 FormFieldCustom.defaultProps = {
   accessibility: formFieldBehavior,
 };
-
-FormFieldCustom.create = createShorthandFactory({ Component: FormFieldCustom });
 
 /**
  * A FormFieldCustom represents a Form element containing a label and an input.
