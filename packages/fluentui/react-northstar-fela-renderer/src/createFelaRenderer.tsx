@@ -1,9 +1,11 @@
-import { Renderer } from '@fluentui/react-bindings';
-import { createRenderer as createFelaRenderer } from 'fela';
+import { CreateRenderer } from '@fluentui/react-northstar-styles-renderer';
+import { createRenderer, IRenderer, IStyle, TPlugin } from 'fela';
 import felaPluginEmbedded from 'fela-plugin-embedded';
 import felaPluginFallbackValue from 'fela-plugin-fallback-value';
 import felaPluginPlaceholderPrefixer from 'fela-plugin-placeholder-prefixer';
 import felaPluginRtl from 'fela-plugin-rtl';
+import * as React from 'react';
+import { RendererProvider } from 'react-fela';
 
 import felaDisableAnimationsPlugin from './felaDisableAnimationsPlugin';
 import felaExpandCssShorthandsPlugin from './felaExpandCssShorthandsPlugin';
@@ -12,6 +14,7 @@ import felaInvokeKeyframesPlugin from './felaInvokeKeyframesPlugin';
 import felaPerformanceEnhancer from './felaPerformanceEnhancer';
 import felaSanitizeCss from './felaSanitizeCssPlugin';
 import felaStylisEnhancer from './felaStylisEnhancer';
+import { FelaRendererParam } from './types';
 
 let felaDevMode = false;
 
@@ -55,19 +58,17 @@ const rendererConfig = {
   filterClassName,
   enhancers: [felaPerformanceEnhancer, felaFocusVisibleEnhancer, felaStylisEnhancer],
   plugins: [
-    felaDisableAnimationsPlugin(),
+    felaDisableAnimationsPlugin as TPlugin,
 
     // is necessary to prevent accidental style typos
     // from breaking ALL the styles on the page
-    felaSanitizeCss({
-      skip: ['content', 'keyframe'],
-    }),
+    felaSanitizeCss as TPlugin,
 
     felaPluginPlaceholderPrefixer(),
-    felaInvokeKeyframesPlugin,
+    felaInvokeKeyframesPlugin as TPlugin,
     felaPluginEmbedded(),
 
-    felaExpandCssShorthandsPlugin(),
+    felaExpandCssShorthandsPlugin as TPlugin,
 
     // Heads up!
     // This is required after fela-plugin-prefixer to resolve the array of fallback values prefixer produces.
@@ -77,6 +78,40 @@ const rendererConfig = {
   ],
 };
 
-export const createRenderer = (): Renderer => createFelaRenderer(rendererConfig) as Renderer;
+export const createFelaRenderer: CreateRenderer = target => {
+  const felaRenderer = createRenderer(rendererConfig);
 
-export const felaRenderer = createRenderer();
+  // rehydration disabled to avoid leaking styles between renderers
+  // https://github.com/rofrischmann/fela/blob/master/docs/api/fela-dom/rehydrate.md
+  const Provider: React.FC = props => (
+    <RendererProvider renderer={felaRenderer} {...{ rehydrate: false, targetDocument: target }}>
+      {props.children}
+    </RendererProvider>
+  );
+
+  return {
+    renderFont: font => {
+      felaRenderer.renderFont(font.name, font.paths, font.props);
+    },
+    renderGlobal: felaRenderer.renderStatic,
+    renderRule: (styles, param) => {
+      const felaParam: FelaRendererParam = {
+        ...param,
+        theme: { direction: param.direction },
+      };
+
+      return felaRenderer.renderRule(() => (styles as unknown) as IStyle, felaParam);
+    },
+
+    // getOriginalRenderer() is implemented only for tests to be compatible with jest-react-fela expectations.
+    getOriginalRenderer: (): IRenderer => {
+      if (process.env.NODE_ENV !== 'test') {
+        throw new Error('This method implements private API and can be used only in tests');
+      }
+
+      return felaRenderer;
+    },
+
+    Provider,
+  };
+};
