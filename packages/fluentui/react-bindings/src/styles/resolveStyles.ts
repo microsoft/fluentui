@@ -57,7 +57,7 @@ const resolveStyles = (
   } = options;
 
   const { className, design, styles, variables, ...stylesProps } = props;
-  const noInlineStylesOverrides = !(design || styles);
+  const noInlineStylesOverrides = !styles;
 
   let noVariableOverrides = performanceFlags.enableBooleanVariablesCaching || !variables;
 
@@ -219,8 +219,8 @@ const resolveStyles = (
       },
       get(): string {
         let designClassName = '';
-        if (slotName === 'root' && props.design) {
-          const serializedValue = serializeStyles([props.design as any], {}, styleParam);
+        if (slotName === 'root' && design) {
+          const serializedValue = serializeStyles([design as any], {}, styleParam);
           designClassName = `design-${serializedValue.name}`;
           renderer.renderGlobal(serializedValue.styles, `.${componentClassName}.${designClassName}`);
         }
@@ -242,7 +242,7 @@ const resolveStyles = (
             }
 
             return slotName === 'root'
-              ? cx(componentClassName, classesThemeCache[slotCacheKey], className)
+              ? cx(componentClassName, classesThemeCache[slotCacheKey], designClassName, className)
               : classesThemeCache[slotCacheKey];
           }
         }
@@ -253,7 +253,7 @@ const resolveStyles = (
 
         if (classes[lazyEvaluationKey]) {
           return slotName === 'root'
-            ? cx(componentClassName, classes[lazyEvaluationKey], className)
+            ? cx(componentClassName, classes[lazyEvaluationKey], designClassName, className)
             : classes[lazyEvaluationKey];
         }
 
@@ -274,7 +274,7 @@ const resolveStyles = (
 
         const resultClassName =
           slotName === 'root'
-            ? cx(componentClassName, classes[lazyEvaluationKey], className)
+            ? cx(componentClassName, classes[lazyEvaluationKey], designClassName, className)
             : classes[lazyEvaluationKey];
 
         if (telemetry?.enabled && telemetry.performance[displayNames[0]]) {
