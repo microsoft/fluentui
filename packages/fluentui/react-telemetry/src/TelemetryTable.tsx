@@ -33,6 +33,13 @@ type TelemetryTableProps = {
   onSortChange: (sort: TelemetryState['tableSort'] | undefined) => void;
 };
 
+type TelemetryHeaderGroup = HeaderGroup &
+  UseSortByColumnProps<{}> &
+  UseFiltersColumnProps<{}> & {
+    isShowDetails?: TelemetryTableExpandNames;
+    subgroup: 'styles' | 'timers';
+  };
+
 export const TelemetryTable: React.FC<TelemetryTableProps> = props => {
   const { expand, componentFilter, sort, onComponentFilterChange, onExpandChange, onSortChange, telemetry } = props;
 
@@ -103,45 +110,39 @@ export const TelemetryTable: React.FC<TelemetryTableProps> = props => {
         <thead>
           {headerGroups.map(group => (
             <tr {...group.getHeaderGroupProps()}>
-              {group.headers.map(
-                (
-                  column: HeaderGroup &
-                    UseSortByColumnProps<{}> &
-                    UseFiltersColumnProps<{}> & {
-                      isShowDetails?: TelemetryTableExpandNames;
-                      subgroup: 'styles' | 'timers';
-                    },
-                  index,
-                ) => (
-                  <th
-                    {...column.getHeaderProps({
-                      style: styles.tableHeader({
-                        isFirstInSubgroup: column.subgroup && column.subgroup !== group.headers[index - 1]?.subgroup,
-                        isLastInSubgroup: column.subgroup && column.subgroup !== group.headers[index + 1]?.subgroup,
-                        subgroup: column.subgroup,
-                      }),
-                    })}
-                  >
-                    <div style={{ alignItems: 'center', display: 'flex' }}>
-                      <div {...column.getSortByToggleProps({ style: { flex: 1 } })}>
-                        {column.render('Header')}
-                        <span style={styles.tableSort()}>
-                          {column.isSorted ? (column.isSortedDesc ? ' 🔽' : ' 🔼') : ''}
-                        </span>
-                      </div>
-                      {column.isShowDetails && (
-                        <input
-                          checked={expand?.[column.isShowDetails]}
-                          onChange={e => onExpandChange(column.isShowDetails!, e.target.checked)}
-                          style={styles.tableCheckbox()}
-                          type="checkbox"
-                        />
-                      )}
-                      {column.canFilter && <div>{column.render('Filter')}</div>}
+              {group.headers.map((column: TelemetryHeaderGroup, index) => (
+                <th
+                  {...column.getHeaderProps({
+                    style: styles.tableHeader({
+                      isFirstInSubgroup:
+                        column.subgroup &&
+                        column.subgroup !== (group.headers[index - 1] as TelemetryHeaderGroup)?.subgroup,
+                      isLastInSubgroup:
+                        column.subgroup &&
+                        column.subgroup !== (group.headers[index + 1] as TelemetryHeaderGroup)?.subgroup,
+                      subgroup: column.subgroup,
+                    }),
+                  })}
+                >
+                  <div style={{ alignItems: 'center', display: 'flex' }}>
+                    <div {...column.getSortByToggleProps({ style: { flex: 1 } })}>
+                      {column.render('Header')}
+                      <span style={styles.tableSort()}>
+                        {column.isSorted ? (column.isSortedDesc ? ' 🔽' : ' 🔼') : ''}
+                      </span>
                     </div>
-                  </th>
-                ),
-              )}
+                    {column.isShowDetails && (
+                      <input
+                        checked={expand?.[column.isShowDetails]}
+                        onChange={e => onExpandChange(column.isShowDetails!, e.target.checked)}
+                        style={styles.tableCheckbox()}
+                        type="checkbox"
+                      />
+                    )}
+                    {column.canFilter && <div>{column.render('Filter')}</div>}
+                  </div>
+                </th>
+              ))}
             </tr>
           ))}
         </thead>
