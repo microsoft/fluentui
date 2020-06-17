@@ -229,9 +229,31 @@ const resolveStyles = (
         classes[lazyEvaluationKey] = val;
       },
       get(): string {
+        let designClasses = '';
+
+        if (slotName === 'root' && props.design) {
+          if (cacheEnabled) {
+            if (!designClassesCache.has(theme)) {
+              designClassesCache.set(theme, new WeakMap<ComponentDesignProp, string>());
+            }
+
+            const designClassesThemeCache = designClassesCache.get(theme) || new WeakMap<ComponentDesignProp, string>();
+
+            const cachedValue = designClassesThemeCache.get(props.design);
+            designClasses =
+              cachedValue || renderStyles({ [`&.${componentClassName}`]: callable(props.design)(styleParam) });
+
+            if (cachedValue !== designClasses) {
+              designClassesThemeCache.set(props.design, designClasses);
+              designClassesCache.set(theme, designClassesThemeCache);
+            }
+          } else {
+            designClasses = renderStyles({ [`&.${componentClassName}`]: callable(props.design)(styleParam) });
+          }
+        }
+
         if (cacheEnabled && theme) {
           const classesThemeCache = classesCache.get(theme) || {};
-          const designClassesThemeCache = designClassesCache.get(theme) || new WeakMap<ComponentDesignProp, string>();
 
           //
           // Cached styles
@@ -246,14 +268,6 @@ const resolveStyles = (
               }
             }
 
-            let designClasses = '';
-
-            if (slotName === 'root' && props.design) {
-              const cacheValue = designClassesThemeCache.get(props.design);
-              designClasses =
-                cacheValue || renderStyles({ [`&.${componentClassName}`]: callable(props.design)(styleParam) });
-            }
-
             return slotName === 'root'
               ? cx(componentClassName, classesThemeCache[slotCacheKey], designClasses, className)
               : classesThemeCache[slotCacheKey];
@@ -265,10 +279,6 @@ const resolveStyles = (
         //
 
         if (classes[lazyEvaluationKey]) {
-          let designClasses = '';
-          if (slotName === 'root' && props.design) {
-            designClasses = renderStyles({ [`&.${componentClassName}`]: callable(props.design)(styleParam) });
-          }
           return slotName === 'root'
             ? cx(componentClassName, classes[lazyEvaluationKey], designClasses, className)
             : classes[lazyEvaluationKey];
@@ -287,11 +297,6 @@ const resolveStyles = (
               [slotCacheKey]: classes[lazyEvaluationKey],
             });
           }
-        }
-
-        let designClasses = '';
-        if (slotName === 'root' && props.design) {
-          designClasses = renderStyles({ [`&.${componentClassName}`]: callable(props.design)(styleParam) });
         }
 
         const resultClassName =
