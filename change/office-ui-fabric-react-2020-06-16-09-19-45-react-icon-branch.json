@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Icon: Rendering children if passed down as props and adding snapshot tests for these scenarios.",
+  "packageName": "office-ui-fabric-react",
+  "email": "ololubek@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-06-16T16:19:45.090Z"
+}
