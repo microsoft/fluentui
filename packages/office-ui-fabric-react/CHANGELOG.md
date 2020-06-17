@@ -1,8 +1,70 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 08 Jun 2020 12:34:34 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Jun 2020 12:37:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.120.3](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.120.3)
+
+Wed, 17 Jun 2020 12:37:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.120.2..office-ui-fabric-react_v7.120.3)
+
+### Patches
+
+- Add Datetime utilities package ([PR #13605](https://github.com/microsoft/fluentui/pull/13605) by pompomon@gmail.com)
+
+## [7.120.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.120.2)
+
+Tue, 16 Jun 2020 12:40:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.120.1..office-ui-fabric-react_v7.120.2)
+
+### Patches
+
+- Prevent ContextualMenu from destroying existing menu items on every repaint ([PR #13357](https://github.com/microsoft/fluentui/pull/13357) by tmichon@microsoft.com)
+- fix height and width check in the image component ([PR #13544](https://github.com/microsoft/fluentui/pull/13544) by nif_tony@outlook.com)
+
+## [7.120.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.120.1)
+
+Mon, 15 Jun 2020 12:45:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.120.0..office-ui-fabric-react_v7.120.1)
+
+### Patches
+
+- modalization for FocusTrapZone ([PR #13281](https://github.com/microsoft/fluentui/pull/13281) by phkuo@microsoft.com)
+
+## [7.120.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.120.0)
+
+Fri, 12 Jun 2020 18:29:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.119.0..office-ui-fabric-react_v7.120.0)
+
+### Minor changes
+
+- PivotItem: Fixing typing error in headerButtonProps. ([PR #13550](https://github.com/microsoft/fluentui/pull/13550) by humbertomakotomorimoto@gmail.com)
+
+### Patches
+
+- Update Details and Grouped list chevron to rotate in the correct direction for RTL. ([PR #13514](https://github.com/microsoft/fluentui/pull/13514) by bcoard@microsoft.com)
+- Combobox: Fix openOnKeyboard prop to work as expected ([PR #13520](https://github.com/microsoft/fluentui/pull/13520) by joschect@microsoft.com)
+- Fix some unnecessary DetailsList styles ([PR #13540](https://github.com/microsoft/fluentui/pull/13540) by phkuo@microsoft.com)
+
+## [7.119.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.119.0)
+
+Wed, 10 Jun 2020 12:37:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.118.1..office-ui-fabric-react_v7.119.0)
+
+### Minor changes
+
+- DocumentCard: add prop to open link in a new tab. ([PR #13076](https://github.com/microsoft/fluentui/pull/13076) by mahesh8488@gmail.com)
+- Add onGrowData to Breadcrumb ([PR #13447](https://github.com/microsoft/fluentui/pull/13447) by tmichon@microsoft.com)
+
+## [7.118.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.118.1)
+
+Tue, 09 Jun 2020 12:35:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.118.0..office-ui-fabric-react_v7.118.1)
+
+### Patches
+
+- Link: fix broken href in examples ([PR #13511](https://github.com/microsoft/fluentui/pull/13511) by ololubek@microsoft.com)
 
 ## [7.118.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.118.0)
 

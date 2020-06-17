@@ -1,5 +1,6 @@
 import './version';
 
+export { ISvgIconProps } from './utils/SvgIcon.types';
 export { default as createSvgIcon } from './utils/createSvgIcon';
 
 export { default as AADLogoIcon } from './components/AADLogoIcon';

@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Tue, 16 Jun 2020 17:35:36 GMT",
+      "tag": "@fluentui/react_v7.120.2",
+      "version": "7.120.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "Clean up devDependencies and clarify version file placeholder comments",
+            "author": "elcraig@microsoft.com",
+            "commit": "695c29fcf6f07a903e7d849098c5e6c0ec178b3d",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 12 May 2020 23:23:51 GMT",
       "tag": "@fluentui/react_v7.113.0",
       "version": "7.113.0",

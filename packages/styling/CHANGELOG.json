@@ -2,6 +2,51 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "date": "Tue, 16 Jun 2020 17:35:36 GMT",
+      "tag": "@uifabric/styling_v7.12.18",
+      "version": "7.12.18",
+      "comments": {
+        "none": [
+          {
+            "comment": "Clean up devDependencies and clarify version file placeholder comments",
+            "author": "elcraig@microsoft.com",
+            "commit": "695c29fcf6f07a903e7d849098c5e6c0ec178b3d",
+            "package": "@uifabric/styling"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 10 Jun 2020 12:37:27 GMT",
+      "tag": "@uifabric/styling_v7.12.17",
+      "version": "7.12.17",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ensure theme.ts is already included when importing from styling package",
+            "author": "xgao@microsoft.com",
+            "commit": "8e8238585646a6e308916ded83f539022d0a66fe",
+            "package": "@uifabric/styling"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 09 Jun 2020 12:35:17 GMT",
+      "tag": "@uifabric/styling_v7.12.16",
+      "version": "7.12.16",
+      "comments": {
+        "patch": [
+          {
+            "comment": "getGlobalClassNames: correct return type",
+            "author": "xgao@microsoft.com",
+            "commit": "fdb7c21dc40542421b1f165323753326f8cf8807",
+            "package": "@uifabric/styling"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 02 Jun 2020 12:36:30 GMT",
       "tag": "@uifabric/styling_v7.12.15",
       "version": "7.12.15",

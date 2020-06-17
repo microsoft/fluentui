@@ -81,7 +81,7 @@ export const dropdownSearchInputSlotClassNames: DropdownSearchInputSlotClassName
 
 export type DropdownSearchInputStylesProps = Required<Pick<DropdownSearchInputProps, 'inline'>>;
 
-export const DropdownSearchInput: React.FC<WithAsProp<DropdownSearchInputProps>> &
+const DropdownSearchInput: React.FC<WithAsProp<DropdownSearchInputProps>> &
   FluentComponentStaticProps<DropdownSearchInputProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(DropdownSearchInput.displayName, context.telemetry);

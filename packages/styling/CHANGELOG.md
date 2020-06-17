@@ -1,8 +1,26 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Tue, 02 Jun 2020 12:36:30 GMT and should not be manually modified.
+This log was last generated on Wed, 10 Jun 2020 12:37:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.12.17](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.12.17)
+
+Wed, 10 Jun 2020 12:37:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/styling_v7.12.16..@uifabric/styling_v7.12.17)
+
+### Patches
+
+- ensure theme.ts is already included when importing from styling package ([PR #13537](https://github.com/microsoft/fluentui/pull/13537) by xgao@microsoft.com)
+
+## [7.12.16](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.12.16)
+
+Tue, 09 Jun 2020 12:35:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/styling_v7.12.15..@uifabric/styling_v7.12.16)
+
+### Patches
+
+- getGlobalClassNames: correct return type ([PR #13496](https://github.com/microsoft/fluentui/pull/13496) by xgao@microsoft.com)
 
 ## [7.12.15](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.12.15)
 

@@ -1,8 +1,17 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Tue, 02 Jun 2020 12:36:30 GMT and should not be manually modified.
+This log was last generated on Mon, 15 Jun 2020 12:45:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.21.0](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.21.0)
+
+Mon, 15 Jun 2020 12:45:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.20.3..@uifabric/utilities_v7.21.0)
+
+### Minor changes
+
+- add new Modalization utility ([PR #13281](https://github.com/microsoft/fluentui/pull/13281) by phkuo@microsoft.com)
 
 ## [7.20.3](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.20.3)
 
