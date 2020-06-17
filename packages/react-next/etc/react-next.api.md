@@ -13,6 +13,7 @@ import { IComponentAs } from 'office-ui-fabric-react/lib/Utilities';
 import { ICustomizerContext } from 'office-ui-fabric-react/lib/Utilities';
 import { IFocusZoneProps } from '@fluentui/react-focus';
 import { IIconProps } from 'office-ui-fabric-react/lib/Icon';
+import { IKeytipData } from 'office-ui-fabric-react/lib/KeytipData';
 import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
 import { IPositionedData } from 'office-ui-fabric-react/lib/utilities/positioning';
 import { IRectangle } from 'office-ui-fabric-react/lib/Utilities';
@@ -157,6 +158,7 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
     disabled?: boolean;
     indeterminate?: boolean;
     inputProps?: React.ButtonHTMLAttributes<HTMLElement | HTMLButtonElement>;
+    keytipData?: IKeytipData;
     keytipProps?: IKeytipProps;
     label?: string;
     onChange?: (ev?: React.FormEvent<HTMLElement | HTMLInputElement>, checked?: boolean) => void;
