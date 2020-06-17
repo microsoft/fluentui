@@ -7,7 +7,7 @@ import {
   DirectionalHint,
   IContextualMenuProps,
   IContextualMenuItem,
-} from '@fluentui/react-next/lib/ContextualMenu';
+} from '@fluentui/react-next';
 import { Dropdown, IDropdownOption } from '@fluentui/react-next/lib/Dropdown';
 import { getRTL } from '@fluentui/react-next/lib/Utilities';
 import './ContextualMenuExample.scss';

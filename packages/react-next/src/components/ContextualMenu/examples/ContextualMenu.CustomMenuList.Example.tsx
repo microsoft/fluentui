@@ -3,7 +3,7 @@ import { useConstCallback } from '@uifabric/react-hooks';
 import { DefaultButton } from '@fluentui/react-next/lib/Button';
 import { ISearchBoxStyles, SearchBox } from '@fluentui/react-next/lib/SearchBox';
 import { Icon } from '@fluentui/react-next/lib/Icon';
-import { IContextualMenuListProps, IContextualMenuItem } from '@fluentui/react-next/lib/ContextualMenu';
+import { IContextualMenuListProps, IContextualMenuItem } from '@fluentui/react-next';
 import { IRenderFunction } from '@fluentui/react-next/lib/Utilities';
 
 export const ContextualMenuWithCustomMenuListExample: React.FunctionComponent = () => {

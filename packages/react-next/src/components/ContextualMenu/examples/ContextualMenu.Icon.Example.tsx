@@ -7,7 +7,7 @@ import {
   IContextualMenuProps,
   IContextualMenuItem,
   IContextualMenuItemProps,
-} from '@fluentui/react-next/lib/ContextualMenu';
+} from '@fluentui/react-next';
 import { Icon } from '@fluentui/react-next/lib/Icon';
 import * as stylesImport from './ContextualMenuExample.scss';
 

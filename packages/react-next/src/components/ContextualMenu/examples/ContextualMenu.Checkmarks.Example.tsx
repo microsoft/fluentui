@@ -4,7 +4,7 @@ import {
   DirectionalHint,
   IContextualMenuItem,
   IContextualMenuProps,
-} from '@fluentui/react-next/lib/ContextualMenu';
+} from '@fluentui/react-next';
 import { DefaultButton } from '@fluentui/react-next/lib/Button';
 
 const keys: string[] = [

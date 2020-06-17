@@ -4,7 +4,7 @@ import {
   DirectionalHint,
   IContextualMenuProps,
   IContextualMenuItem,
-} from '@fluentui/react-next/lib/ContextualMenu';
+} from '@fluentui/react-next';
 import { DefaultButton, IconButton } from '@fluentui/react-next/lib/Button';
 import { FocusZoneDirection } from '@fluentui/react-next/lib/FocusZone';
 import './ContextualMenuExample.scss';
