@@ -2,6 +2,21 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Wed, 17 Jun 2020 16:07:40 GMT",
+      "tag": "@uifabric/experiments_v7.26.5",
+      "version": "7.26.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix icon names for DesktopSignal, DocumentsSignal, and PicturesSignal. Update example page.",
+            "author": "taenri@microsoft.com",
+            "commit": "f764406bbbf389aaaaf1edff36e84fc6f3fcbc4c",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 16 Jun 2020 17:35:36 GMT",
       "tag": "@uifabric/experiments_v7.26.4",
       "version": "7.26.4",

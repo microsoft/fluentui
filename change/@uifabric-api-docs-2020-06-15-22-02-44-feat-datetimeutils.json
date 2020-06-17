@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Add Datetime utilities package",
-  "packageName": "@uifabric/api-docs",
-  "email": "pompomon@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-06-15T20:02:13.966Z"
-}
