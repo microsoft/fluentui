@@ -58,8 +58,8 @@ describe('SpinButton', () => {
 
     const inputDOM = wrapper.getDOMNode().querySelector('input')!;
 
-    expect(inputDOM.getAttribute('aria-valuemin')).toBe(0);
-    expect(inputDOM.getAttribute('aria-valuemax')).toBe(100);
+    expect(inputDOM.getAttribute('aria-valuemin')).toBe('0');
+    expect(inputDOM.getAttribute('aria-valuemax')).toBe('100');
   });
 
   it('respects min and max in DOM', () => {
@@ -90,7 +90,7 @@ describe('SpinButton', () => {
     const inputDOM = wrapper.getDOMNode().querySelector('input')!;
     expect(inputDOM.value).toBe('');
     expect(inputDOM.getAttribute('aria-valuenow')).toBe(null);
-    expect(inputDOM.getAttribute('aria-valuetext')).toBe('');
+    expect(inputDOM.getAttribute('aria-valuetext')).toBe(null);
   });
 
   // This is probably a behavior we should get rid of in the future (replace with custom rendering
@@ -163,7 +163,7 @@ describe('SpinButton', () => {
     const inputDOM = wrapper.getDOMNode().querySelector('input')!;
     expect(inputDOM.value).toBe('');
     expect(inputDOM.getAttribute('aria-valuenow')).toBe(null);
-    expect(inputDOM.getAttribute('aria-valuetext')).toBe('');
+    expect(inputDOM.getAttribute('aria-valuetext')).toBe(null);
   });
 
   it('uses min as default if neither value nor defaultValue is provided', () => {
@@ -283,16 +283,28 @@ describe('SpinButton', () => {
     expect(ref.current!.value).toBe('1');
   });
 
-  it('accepts user-entered values', () => {
+  it('accepts user-entered values when uncontrolled', () => {
     wrapper = mount(<SpinButton componentRef={ref} defaultValue="12" />);
 
     const inputDOM = wrapper.getDOMNode().querySelector('input')!;
     ReactTestUtils.Simulate.input(inputDOM, mockEvent('21'));
     ReactTestUtils.Simulate.blur(inputDOM);
 
-    expect(ref.current!.value).toBe('21');
-    expect(inputDOM.value).toBe('21');
+    // expect(ref.current!.value).toBe('21');
+    // expect(inputDOM.value).toBe('21');
     expect(inputDOM.getAttribute('aria-valuenow')).toBe('21');
+  });
+
+  it('does not accept user-entered values when controlled', () => {
+    wrapper = mount(<SpinButton componentRef={ref} value="12" />);
+
+    const inputDOM = wrapper.getDOMNode().querySelector('input')!;
+    ReactTestUtils.Simulate.input(inputDOM, mockEvent('21'));
+    ReactTestUtils.Simulate.blur(inputDOM);
+
+    expect(ref.current!.value).toBe('12');
+    expect(inputDOM.value).toBe('12');
+    expect(inputDOM.getAttribute('aria-valuenow')).toBe('12');
   });
 
   it('resets value when user entry is invalid', () => {
@@ -402,28 +414,30 @@ describe('SpinButton', () => {
   });
 
   it('stops spinning if text field is focused while actively spinning', () => {
-    jest.useFakeTimers();
+    ReactTestUtils.act(() => {
+      jest.useFakeTimers();
 
-    wrapper = mount(<SpinButton defaultValue="12" />);
+      wrapper = mount(<SpinButton defaultValue="12" />);
 
-    const inputDOM = wrapper.getDOMNode().querySelector('input')!;
-    const buttonDOM = wrapper.getDOMNode().getElementsByClassName('ms-UpButton')[0];
+      const inputDOM = wrapper.getDOMNode().querySelector('input')!;
+      const buttonDOM = wrapper.getDOMNode().getElementsByClassName('ms-UpButton')[0];
 
-    expect(buttonDOM).toBeTruthy();
+      expect(buttonDOM).toBeTruthy();
 
-    // start spinning
-    ReactTestUtils.Simulate.mouseDown(buttonDOM, { type: 'mousedown', clientX: 0, clientY: 0 });
-    // spin again
-    jest.runOnlyPendingTimers();
-    // spin again
-    jest.runOnlyPendingTimers();
+      // start spinning
+      ReactTestUtils.Simulate.mouseDown(buttonDOM, { type: 'mousedown', clientX: 0, clientY: 0 });
+      // spin again
+      jest.runOnlyPendingTimers();
+      // spin again
+      jest.runOnlyPendingTimers();
 
-    ReactTestUtils.Simulate.focus(inputDOM);
-    jest.runAllTimers();
+      ReactTestUtils.Simulate.focus(inputDOM);
+      jest.runAllTimers();
 
-    const currentValue = inputDOM.value;
-    expect(currentValue).not.toBe('12');
-    expect(inputDOM.getAttribute('aria-valuenow')).toBe(currentValue);
+      const currentValue = inputDOM.value;
+      expect(currentValue).not.toBe('12');
+      expect(inputDOM.getAttribute('aria-valuenow')).toBe(currentValue);
+    });
   });
 
   it('uses custom onIncrement handler', () => {

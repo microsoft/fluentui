@@ -16,7 +16,7 @@ import { getArrowButtonStyles } from './SpinButton.styles';
 import { ISpinButtonProps, KeyboardSpinDirection, ISpinButtonStyleProps } from './SpinButton.types';
 import { Position } from 'office-ui-fabric-react/lib/utilities/positioning';
 import { KeytipData } from '../../KeytipData';
-import { useBoolean, useSetTimeout } from '@uifabric/react-hooks';
+import { useBoolean, useSetTimeout, useControllableValue } from '@uifabric/react-hooks';
 import { ISpinButtonStyles } from 'office-ui-fabric-react';
 
 export interface ISpinButtonState {
@@ -55,40 +55,6 @@ const useComponentRef = (
 };
 
 export const SpinButtonBase = (props: ISpinButtonProps) => {
-  const input = React.useRef<HTMLInputElement>(null);
-  // Is true when the control has focus
-  const [isFocused, { toggle: toggleIsFocused }] = useBoolean(false);
-  // The value of the spin button
-  const [value, setValue] = React.useState(props.value || props.defaultValue || String(props.min) || '0');
-  // keyboard spin direction, used to style the up or down button
-  // as active when up/down arrow is pressed
-  const [keyboardSpinDirection, setKeyboardSpinDirection] = React.useState(KeyboardSpinDirection.notSpinning);
-
-  const safeSetTimeout = useSetTimeout();
-
-  const callCalculatePrecision = (calculatePrecisionProps: ISpinButtonProps) => {
-    const { precision = Math.max(calculatePrecision(calculatePrecisionProps.step!), 0) } = calculatePrecisionProps;
-    return precision;
-  };
-
-  let { value = props.defaultValue } = props;
-  if (value === undefined) {
-    value = typeof props.min === 'number' ? String(props.min) : '0';
-  }
-  this._lastValidValue = value;
-
-  const [state] = React.useState<ISpinButtonState>({
-    inputId: getId('input'),
-    labelId: getId('Label'),
-    lastValidValue: '',
-    spinningByMouse: false,
-    valueToValidate: undefined,
-    precision: callCalculatePrecision(props as ISpinButtonProps),
-    currentStepFunctionHandle: -1,
-    initialStepDelay: 400,
-    stepDelay: 75,
-  });
-
   const {
     disabled = false,
     label = '',
@@ -117,6 +83,57 @@ export const SpinButtonBase = (props: ISpinButtonProps) => {
     styles,
   } = props as ISpinButtonProps;
 
+  const input = React.useRef<HTMLInputElement>(null);
+  // Is true when the control has focus
+  const [isFocused, { toggle: toggleIsFocused }] = useBoolean(false);
+  // The value of the spin button
+
+  const [value, setValue] = useControllableValue(
+    props.value,
+    props.defaultValue !== undefined ? props.defaultValue : String(min || '0'),
+  );
+  // const [value, setValue] = React.useState(props.defaultValue !== undefined ?
+  // props.defaultValue : String(min || '0'));
+
+  // keyboard spin direction, used to style the up or down button
+  // as active when up/down arrow is pressed
+  const [keyboardSpinDirection, setKeyboardSpinDirection] = React.useState(KeyboardSpinDirection.notSpinning);
+
+  const safeSetTimeout = useSetTimeout();
+
+  const callCalculatePrecision = (calculatePrecisionProps: ISpinButtonProps) => {
+    const { precision = Math.max(calculatePrecision(calculatePrecisionProps.step!), 0) } = calculatePrecisionProps;
+    return precision;
+  };
+
+  let { value: initialValue = props.defaultValue } = props;
+  if (initialValue === undefined) {
+    initialValue = typeof props.min === 'number' ? String(props.min) : '0';
+  }
+
+  const [state] = React.useState<ISpinButtonState>({
+    inputId: getId('input'),
+    labelId: getId('Label'),
+    lastValidValue: initialValue,
+    spinningByMouse: false,
+    valueToValidate: undefined,
+    precision: callCalculatePrecision(props as ISpinButtonProps),
+    currentStepFunctionHandle: -1,
+    initialStepDelay: 400,
+    stepDelay: 75,
+  });
+
+  React.useEffect(() => {
+    if (props.value !== undefined) {
+      // Value from props is considered pre-validated
+      state.lastValidValue = props.value;
+      setValue(currentValue);
+    }
+    state.precision = callCalculatePrecision(props as ISpinButtonProps);
+  }, [props.value]);
+
+  let currentValue: string = props.value !== undefined ? props.value : String(props.min);
+
   const classNames = getClassNames(styles, {
     theme: theme!,
     disabled,
@@ -132,22 +149,9 @@ export const SpinButtonBase = (props: ISpinButtonProps) => {
     'className',
   ]);
 
-  let currentValue: string = props.value !== undefined ? props.value : String(props.min);
-
-  // state.lastValidValue = value;
-
   if (props.defaultValue) {
     currentValue = String(Math.max(props.min as number, Math.min(props.max as number, Number(props.defaultValue))));
   }
-
-  React.useEffect(() => {
-    if (props.value !== undefined) {
-      // Value from props is considered pre-validated
-      state.lastValidValue = props.value;
-      setValue(currentValue);
-    }
-    state.precision = callCalculatePrecision(props as ISpinButtonProps);
-  }, [props.value]);
 
   // Validate function to use if one is not passed in
   const defaultOnValidate = (valueProp: string) => {
@@ -221,7 +225,6 @@ export const SpinButtonBase = (props: ISpinButtonProps) => {
 
   //  The method is needed to ensure we are updating the actual input value.
   //  without this our value will never change (and validation will not have the correct number)
-  //  @param event - the event that was fired
   const onInputChange = (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
     const element: HTMLInputElement = event.target as HTMLInputElement;
     const elementValue: string = element.value;
@@ -269,6 +272,7 @@ export const SpinButtonBase = (props: ISpinButtonProps) => {
     if (state.spinningByMouse !== shouldSpin) {
       state.spinningByMouse = shouldSpin;
     }
+
     if (shouldSpin) {
       state.currentStepFunctionHandle = safeSetTimeout(() => {
         updateValue(shouldSpin, state.stepDelay, stepFunction);
@@ -333,7 +337,6 @@ export const SpinButtonBase = (props: ISpinButtonProps) => {
 
   // Make sure that we have stopped spinning on keyUp
   // if the up or down arrow fired this event
-  // @param event - keyboard event
   const handleKeyUp = (event: React.KeyboardEvent<HTMLElement>): void => {
     if (props.disabled || event.which === KeyCodes.up || event.which === KeyCodes.down) {
       stop();
@@ -385,7 +388,11 @@ export const SpinButtonBase = (props: ISpinButtonProps) => {
               role="spinbutton"
               aria-labelledby={label && state.labelId}
               aria-valuenow={
-                !isNaN(Number(ariaValueNow)) ? ariaValueNow : !isNaN(Number(value)) ? Number(value) : undefined
+                typeof ariaValueNow === 'number'
+                  ? ariaValueNow
+                  : value && !isNaN(Number(value)) // Number('') is 0 which may not be desirable
+                  ? Number(value)
+                  : undefined
               }
               aria-valuetext={ariaValueText ? ariaValueText : isNaN(Number(value)) ? value : undefined}
               aria-valuemin={min}
