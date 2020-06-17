@@ -1,5 +1,6 @@
 import cx from 'classnames';
 import {
+  callable,
   ComponentSlotStylesInput,
   ComponentSlotStylesPrepared,
   ComponentSlotStylesResolved,
@@ -11,7 +12,7 @@ import {
   ThemePrepared,
   withDebugId,
 } from '@fluentui/styles';
-import { ComponentSlotClasses, RendererParam, ResolveStylesOptions } from './types';
+import { ComponentDesignProp, ComponentSlotClasses, RendererParam, ResolveStylesOptions } from './types';
 import * as _ from 'lodash';
 
 export type ResolveStylesResult = {
@@ -20,8 +21,11 @@ export type ResolveStylesResult = {
   classes: ComponentSlotClasses;
 };
 
-// this weak map is used as cache for the classes
+// this weak map is used as cache for the design classes
 const classesCache = new WeakMap<ThemePrepared, Record<string, string>>();
+
+// this weak map is used as cache for the classes
+const designClassesCache = new WeakMap<ThemePrepared, WeakMap<ComponentDesignProp, string>>();
 
 // this weak map is used as cache for the styles
 const stylesCache = new WeakMap<ThemePrepared, Record<string, ICSSInJSStyle>>();
@@ -57,7 +61,7 @@ const resolveStyles = (
   } = options;
 
   const { className, design, styles, variables, ...stylesProps } = props;
-  const noInlineStylesOverrides = !(design || styles);
+  const noInlineStylesOverrides = !styles;
 
   let noVariableOverrides = performanceFlags.enableBooleanVariablesCaching || !variables;
 
@@ -107,7 +111,6 @@ const resolveStyles = (
   if (!noInlineStylesOverrides) {
     mergedStyles = mergeComponentStyles(
       mergedStyles,
-      props.design && withDebugId({ root: props.design }, 'props.design'),
       props.styles && withDebugId({ root: props.styles } as ComponentSlotStylesInput, 'props.styles'),
     );
   }
@@ -228,6 +231,7 @@ const resolveStyles = (
       get(): string {
         if (cacheEnabled && theme) {
           const classesThemeCache = classesCache.get(theme) || {};
+          const designClassesThemeCache = designClassesCache.get(theme) || new WeakMap<ComponentDesignProp, string>();
 
           //
           // Cached styles
@@ -242,8 +246,16 @@ const resolveStyles = (
               }
             }
 
+            let designClasses = '';
+
+            if (slotName === 'root' && props.design) {
+              const cacheValue = designClassesThemeCache.get(props.design);
+              designClasses =
+                cacheValue || renderStyles({ [`&.${componentClassName}`]: callable(props.design)(styleParam) });
+            }
+
             return slotName === 'root'
-              ? cx(componentClassName, classesThemeCache[slotCacheKey], className)
+              ? cx(componentClassName, classesThemeCache[slotCacheKey], designClasses, className)
               : classesThemeCache[slotCacheKey];
           }
         }
@@ -253,8 +265,12 @@ const resolveStyles = (
         //
 
         if (classes[lazyEvaluationKey]) {
+          let designClasses = '';
+          if (slotName === 'root' && props.design) {
+            designClasses = renderStyles({ [`&.${componentClassName}`]: callable(props.design)(styleParam) });
+          }
           return slotName === 'root'
-            ? cx(componentClassName, classes[lazyEvaluationKey], className)
+            ? cx(componentClassName, classes[lazyEvaluationKey], designClasses, className)
             : classes[lazyEvaluationKey];
         }
 
@@ -273,9 +289,14 @@ const resolveStyles = (
           }
         }
 
+        let designClasses = '';
+        if (slotName === 'root' && props.design) {
+          designClasses = renderStyles({ [`&.${componentClassName}`]: callable(props.design)(styleParam) });
+        }
+
         const resultClassName =
           slotName === 'root'
-            ? cx(componentClassName, classes[lazyEvaluationKey], className)
+            ? cx(componentClassName, classes[lazyEvaluationKey], designClasses, className)
             : classes[lazyEvaluationKey];
 
         if (telemetry?.enabled && telemetry.performance[primaryDisplayName]) {
