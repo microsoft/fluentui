@@ -13,6 +13,8 @@ export interface ListItemVariables {
   // TODO: prod app uses 17.5px here, it should be 16px per the design guide!
   headerMediaLineHeight: string;
 
+  importantFontWeight: string;
+
   // Content
   contentFontSize: string;
   contentLineHeight: string;
@@ -43,6 +45,8 @@ export default (siteVariables: any): ListItemVariables => {
     headerMediaFontSize: siteVariables.fontSizes.small,
     // TODO: prod app uses 17.5px here, it should be 16px per the design guide!
     headerMediaLineHeight: siteVariables.lineHeightSmall,
+
+    importantFontWeight: siteVariables.fontWeightBold,
 
     // Content
     contentFontSize: siteVariables.fontSizes.small,

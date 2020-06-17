@@ -62,7 +62,7 @@ const listItemStyles: ComponentSlotStylesPrepared<ListItemStylesProps, ListItemV
         ...(p.selected && selectedStyle(v)),
       }),
       ...(p.important && {
-        fontWeight: siteVariables.fontWeightBold,
+        fontWeight: v.importantFontWeight,
       }),
     };
   },
