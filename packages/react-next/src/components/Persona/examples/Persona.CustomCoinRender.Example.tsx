@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IPersonaProps, IPersonaSharedProps, Persona, PersonaSize, PersonaPresence } from '../../../Persona';
+import { IPersonaProps, IPersonaSharedProps, Persona, PersonaSize, PersonaPresence } from '@fluentui/react-next';
 import { Stack } from 'office-ui-fabric-react/lib/Stack';
 import { TestImages } from '@uifabric/example-data';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';

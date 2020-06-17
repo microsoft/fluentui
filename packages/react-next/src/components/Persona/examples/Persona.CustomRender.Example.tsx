@@ -6,7 +6,7 @@ import {
   Persona,
   PersonaSize,
   PersonaPresence,
-} from '../../../Persona';
+} from '@fluentui/react-next';
 import { Icon, IIconStyles } from 'office-ui-fabric-react/lib/Icon';
 import { Stack } from 'office-ui-fabric-react/lib/Stack';
 import { TestImages } from '@uifabric/example-data';

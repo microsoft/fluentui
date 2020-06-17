@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IPersonaSharedProps, Persona, PersonaInitialsColor, PersonaSize } from '../../../Persona';
+import { IPersonaSharedProps, Persona, PersonaInitialsColor, PersonaSize } from '@fluentui/react-next';
 import { Stack } from 'office-ui-fabric-react/lib/Stack';
 
 const examplePersona: IPersonaSharedProps = {
