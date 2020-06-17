@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "Re-exporting react-button in react-next.",
+  "comment": "Creating compat layers for Button, Checkbox, Link, Pivot, Slider and Toggle components.",
   "packageName": "@fluentui/react-next",
   "email": "humbertomakotomorimoto@gmail.com",
   "dependentChangeType": "patch",
