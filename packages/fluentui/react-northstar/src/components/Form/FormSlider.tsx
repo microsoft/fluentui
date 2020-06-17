@@ -1,6 +1,7 @@
+import * as React from 'react';
+import * as _ from 'lodash';
 import { compose, ComponentWithAs, ShorthandConfig } from '@fluentui/react-bindings';
 import { commonPropTypes } from '../../utils';
-import * as customPropTypes from '@fluentui/react-proptypes';
 import FormFieldCustom, { FormFieldCustomProps, FormFieldCustomStylesProps } from './FormFieldCustom';
 import Slider, { SliderProps } from '../Slider/Slider';
 
@@ -22,9 +23,20 @@ const FormSlider = compose<
   displayName: 'FormSlider',
   overrideStyles: true,
   shorthandConfig: {},
-  slotProps: _ => ({
-    control: {
-      as: Slider,
+  slotProps: ({ styles, accessibility, ...props }) => ({
+    root: {
+      children: (
+        <>
+          {Slider.create(
+            {},
+            {
+              defaultProps: () => ({
+                ..._.pick(props, Slider.handledProps),
+              }),
+            },
+          )}
+        </>
+      ),
     },
   }),
 }) as ComponentWithAs<'div', FormSliderProps> & { shorthandConfig: ShorthandConfig<FormSliderProps> };
@@ -35,7 +47,6 @@ FormSlider.propTypes = {
   ...commonPropTypes.createCommon({
     content: 'shorthand',
   }),
-  control: customPropTypes.shorthandAllowingChildren,
 };
 
 export default FormSlider;

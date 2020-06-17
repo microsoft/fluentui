@@ -103,6 +103,9 @@ export interface DropdownProps extends UIComponentProps<DropdownProps, DropdownS
   /** A dropdown can fill the width of its container. */
   fluid?: boolean;
 
+  /** A dropdown can have error status */
+  error?: boolean;
+
   /** Object with callbacks for generating announcements for item selection and removal. */
   getA11ySelectionMessage?: {
     /**
@@ -310,6 +313,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
     defaultSearchQuery: PropTypes.string,
     defaultValue: PropTypes.oneOfType([customPropTypes.itemShorthand, customPropTypes.collectionShorthand]),
     disabled: PropTypes.bool,
+    error: PropTypes.bool,
     fluid: PropTypes.bool,
     getA11ySelectionMessage: PropTypes.object,
     getA11yStatusMessage: PropTypes.func,

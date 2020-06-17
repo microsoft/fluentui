@@ -1,6 +1,7 @@
+import * as React from 'react';
+import * as _ from 'lodash';
 import { compose, ComponentWithAs, ShorthandConfig } from '@fluentui/react-bindings';
 import { commonPropTypes } from '../../utils';
-import * as customPropTypes from '@fluentui/react-proptypes';
 import FormFieldCustom, { FormFieldCustomProps, FormFieldCustomStylesProps } from './FormFieldCustom';
 import RadioGroup, { RadioGroupProps } from '../RadioGroup/RadioGroup';
 
@@ -22,9 +23,20 @@ const FormRadioGroup = compose<
   displayName: 'FormRadioGroup',
   overrideStyles: true,
   shorthandConfig: {},
-  slotProps: _ => ({
-    control: {
-      as: RadioGroup,
+  slotProps: ({ accessibility, styles, ...props }) => ({
+    root: {
+      children: (
+        <>
+          {RadioGroup.create(
+            {},
+            {
+              defaultProps: () => ({
+                ..._.pick(props, RadioGroup.handledProps),
+              }),
+            },
+          )}
+        </>
+      ),
     },
   }),
 }) as ComponentWithAs<'div', FormRadioGroupProps> & { shorthandConfig: ShorthandConfig<FormRadioGroupProps> };
@@ -35,7 +47,6 @@ FormRadioGroup.propTypes = {
   ...commonPropTypes.createCommon({
     content: 'shorthand',
   }),
-  control: customPropTypes.shorthandAllowingChildren,
 };
 
 export default FormRadioGroup;
