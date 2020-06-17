@@ -856,8 +856,12 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
   };
 
   protected getActiveDescendant() {
-    const currentIndex = this.suggestionStore.currentIndex;
+    if (this.state.suggestionsLoading) {
+      return undefined;
+    }
 
+    const currentIndex = this.suggestionStore.currentIndex;
+    // if the suggestions element has actions and the currentIndex does not point to a suggestion, return the action id
     if (currentIndex < 0 && this.suggestionElement.current && this.suggestionElement.current.hasSuggestedAction()) {
       return 'sug-selectedAction';
     }
