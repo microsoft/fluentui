@@ -62,7 +62,6 @@ const FormFieldCustom = compose<'div', FormFieldCustomProps, FormFieldCustomStyl
     const slotProps = composeOptions.resolveSlotProps<FormFieldCustomProps>(props);
     const { children, message, className, design, styles, variables, inline, errorMessage, id, label } = props;
     const ElementType = getElementType(props);
-    // const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
     const messageId = React.useRef<string>();
     messageId.current = getOrGenerateIdFromShorthand('error-message-', message || errorMessage, messageId.current);
     const labelId = React.useRef<string>();
