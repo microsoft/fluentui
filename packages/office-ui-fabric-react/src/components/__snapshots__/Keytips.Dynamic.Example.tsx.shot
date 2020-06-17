@@ -118,7 +118,7 @@ Array [
                 margin-right: 4px;
                 margin-top: 0;
               }
-          id="id__0"
+          id="id__3"
         >
           Button 1
         </span>
@@ -238,7 +238,7 @@ Array [
                 margin-right: 4px;
                 margin-top: 0;
               }
-          id="id__3"
+          id="id__6"
         >
           Button 2
         </span>
@@ -358,7 +358,7 @@ Array [
                   margin-right: 4px;
                   margin-top: 0;
                 }
-            id="id__6"
+            id="id__9"
           >
             Button 3, active button is: Button 1
           </span>

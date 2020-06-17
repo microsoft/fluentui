@@ -5174,6 +5174,18 @@ export interface IInputProps extends React.InputHTMLAttributes<HTMLInputElement>
 }
 
 // @public (undocumented)
+export interface IKeytipData {
+    // (undocumented)
+    executeElementAttributes: {
+        [key: string]: string | undefined;
+    };
+    // (undocumented)
+    targetElementAttributes: {
+        [key: string]: string | undefined;
+    };
+}
+
+// @public (undocumented)
 export interface IKeytipLayer {
 }
 
@@ -8026,16 +8038,10 @@ export class Keytip extends React.Component<IKeytipProps, {}> {
 // Warning: (ae-forgotten-export) The symbol "IKeytipDataProps" needs to be exported by the entry point index.d.ts
 //
 // @public
-export class KeytipData extends React.Component<IKeytipDataProps & IRenderComponent<{}>, {}> {
-    // (undocumented)
-    componentDidMount(): void;
-    // (undocumented)
-    componentDidUpdate(prevProps: IKeytipDataProps & IRenderComponent<{}>): void;
-    // (undocumented)
-    componentWillUnmount(): void;
-    // (undocumented)
-    render(): JSX.Element;
-    }
+export const KeytipData: React.FunctionComponent<IKeytipDataProps & IRenderComponent<{}>>;
+
+// @public (undocumented)
+export type KeytipDataOptions = IKeytipDataProps;
 
 // @public (undocumented)
 export const KeytipLayer: React.FunctionComponent<IKeytipLayerProps>;
@@ -9590,6 +9596,9 @@ export function updateSV(color: IColor, s: number, v: number): IColor;
 
 // @public
 export function updateT(color: IColor, t: number): IColor;
+
+// @public (undocumented)
+export function useKeytipData(options: KeytipDataOptions): IKeytipData;
 
 // @public
 export enum ValidationState {
