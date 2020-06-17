@@ -13,13 +13,7 @@ import {
 import { ShorthandValue, withSafeTypeForAs, ProviderContextPrepared } from '../../types';
 
 import Box from '../Box/Box';
-import {
-  getElementType,
-  useTelemetry,
-  useStyles,
-  useAccessibility,
-  compose,
-} from '@fluentui/react-bindings';
+import { getElementType, useTelemetry, useStyles, useAccessibility, compose } from '@fluentui/react-bindings';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 import FormLabel, { FormLabelProps } from './FormLabel';
@@ -47,7 +41,7 @@ export interface FormFieldCustomProps extends UIComponentProps, ChildrenComponen
   errorMessage?: ShorthandValue<FormMessageProps>;
 }
 
-export const formFieldClassName = 'ui-form__field';
+export const formFieldClassName = 'ui-form__field__custom';
 
 export type FormFieldCustomStylesProps = Required<Pick<FormFieldCustomProps, 'inline'>> & {
   hasErrorMessage: boolean;
