@@ -28,10 +28,10 @@
   "dependencies": {
     "@fluentui/react-focus": "^7.12.8",
     "@microsoft/load-themed-styles": "^1.10.26",
-    "@uifabric/api-docs": "^7.2.95",
+    "@uifabric/api-docs": "^7.3.0",
     "@uifabric/azure-themes": "^7.1.27",
     "@uifabric/charting": "^2.2.34",
-    "@uifabric/date-time": "^7.8.100",
+    "@uifabric/date-time": "^7.8.101",
     "@uifabric/example-app-base": "^7.12.79",
     "@uifabric/example-data": "^7.0.15",
     "@uifabric/experiments": "^7.26.4",
@@ -46,7 +46,7 @@
     "@uifabric/styling": "^7.12.18",
     "@uifabric/utilities": "^7.21.0",
     "@uifabric/variants": "^7.1.83",
-    "office-ui-fabric-react": "^7.120.2",
+    "office-ui-fabric-react": "^7.120.3",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {
