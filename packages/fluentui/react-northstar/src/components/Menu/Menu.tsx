@@ -1,44 +1,47 @@
 import { Accessibility, menuBehavior, MenuBehaviorProps } from '@fluentui/accessibility';
 import {
-  useAccessibility,
+  compose,
+  ComponentWithAs,
   getElementType,
+  mergeVariablesOverrides,
+  useAccessibility,
+  useAutoControlled,
   useStyles,
   useTelemetry,
   useUnhandledProps,
-  useAutoControlled,
+  ShorthandConfig,
 } from '@fluentui/react-bindings';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
+import { Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
-import { mergeComponentVariables } from '@fluentui/styles';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-
+// @ts-ignore
+import { ThemeContext } from 'react-fela';
+import { ShorthandCollection, ShorthandValue, ComponentEventHandler, ProviderContextPrepared } from '../../types';
 import {
   childrenExist,
+  createShorthand,
   createShorthandFactory,
   UIComponentProps,
   ChildrenComponentProps,
   commonPropTypes,
   getKindProp,
   rtlTextContainer,
+  ShorthandFactory,
 } from '../../utils';
-
 import MenuItem, { MenuItemProps } from './MenuItem';
-import {
-  WithAsProp,
-  ShorthandCollection,
-  ShorthandValue,
-  withSafeTypeForAs,
-  ComponentEventHandler,
-  FluentComponentStaticProps,
-  ProviderContextPrepared,
-} from '../../types';
-import MenuDivider from './MenuDivider';
-import { BoxProps } from '../Box/Box';
+import MenuDivider, { MenuDividerProps } from './MenuDivider';
+import MenuItemIcon from './MenuItemIcon';
+import MenuItemContent from './MenuItemContent';
+import MenuItemIndicator, { MenuItemIndicatorProps } from './MenuItemIndicator';
+import MenuItemWrapper from './MenuItemWrapper';
+import { MenuContextProvider, MenuContextValue } from './menuContext';
 
-export type MenuShorthandKinds = 'divider' | 'item';
+export type MenuShorthandKinds = {
+  divider: MenuDividerProps;
+  item: MenuItemProps;
+};
 
 export interface MenuProps extends UIComponentProps, ChildrenComponentProps {
   /**
@@ -102,171 +105,302 @@ export interface MenuProps extends UIComponentProps, ChildrenComponentProps {
   submenu?: boolean;
 
   /** Shorthand for the submenu indicator. */
-  indicator?: ShorthandValue<BoxProps>;
+  indicator?: ShorthandValue<MenuItemIndicatorProps>;
 }
 
 export const menuClassName = 'ui-menu';
 
-export type MenuStylesProps = Required<
-  Pick<MenuProps, 'iconOnly' | 'fluid' | 'pointing' | 'pills' | 'primary' | 'underlined' | 'vertical' | 'submenu'>
+export type MenuStylesProps = Pick<
+  MenuProps,
+  'iconOnly' | 'fluid' | 'pointing' | 'pills' | 'primary' | 'underlined' | 'vertical' | 'submenu' | 'secondary'
 >;
 
-export const Menu: React.FC<WithAsProp<MenuProps>> &
-  FluentComponentStaticProps<MenuProps> & {
-    Item: typeof MenuItem;
-    Divider: typeof MenuDivider;
-  } = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
-  const { setStart, setEnd } = useTelemetry(Menu.displayName, context.telemetry);
-  setStart();
-  const {
-    iconOnly,
-    items,
-    pills,
-    pointing,
-    primary,
-    secondary,
-    underlined,
-    vertical,
-    submenu,
-    indicator,
-    children,
-    variables,
-    styles,
-    fluid,
-    className,
-    design,
-  } = props;
-  const ElementType = getElementType(props);
-  const unhandledProps = useUnhandledProps(Menu.handledProps, props);
+function useActualProps<P>(props: P) {
+  const actualProps = React.useRef<P>(props);
 
-  const getA11yProps = useAccessibility<MenuBehaviorProps>(props.accessibility, {
-    debugName: Menu.displayName,
-    mapPropsToBehavior: () => ({
-      vertical,
-    }),
-    rtl: context.rtl,
+  React.useEffect(() => {
+    actualProps.current = props;
   });
 
-  const { classes, styles: resolvedStyles } = useStyles<MenuStylesProps>(Menu.displayName, {
-    className: menuClassName,
-    mapPropsToStyles: () => ({
+  return actualProps;
+}
+
+function useSlotProps<SlotProps, SlotName extends keyof SlotProps>(
+  slotName: SlotName,
+  slotsProps: SlotProps,
+): SlotProps[SlotName] {
+  const slotProps = slotsProps[slotName];
+
+  return React.useMemo(
+    () => slotProps,
+    // `slotProps` has a stable order of keys so an amount of dependencies will not change between renders
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    _.values(slotProps),
+  );
+}
+
+/**
+ * A Menu is a component that offers a grouped list of choices to the user.
+ *
+ * @accessibility
+ * Implements ARIA [Menu](https://www.w3.org/TR/wai-aria-practices-1.1/#menu), [Toolbar](https://www.w3.org/TR/wai-aria-practices-1.1/#toolbar) or [Tabs](https://www.w3.org/TR/wai-aria-practices-1.1/#tabpanel) design pattern, depending on the behavior used.
+ * @accessibilityIssues
+ * [JAWS - navigation instruction for menubar](https://github.com/FreedomScientific/VFO-standards-support/issues/203)
+ * [JAWS - navigation instruction for menu with aria-orientation="horizontal"](https://github.com/FreedomScientific/VFO-standards-support/issues/204)
+ * [JAWS [VC] doesn't narrate menu item, when it is open from menu button](https://github.com/FreedomScientific/VFO-standards-support/issues/324)
+ * [JAWS [app mode] focus moves to second menu item, when it is open from menu button](https://github.com/FreedomScientific/VFO-standards-support/issues/325)
+ * [Enter into a tablist JAWS narrates: To switch pages, press Control+PageDown](https://github.com/FreedomScientific/VFO-standards-support/issues/337)
+ * 51114083 VoiceOver+Web narrate wrong position in menu / total count of menu items, when pseudo element ::after or ::before is used
+ */
+export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
+  (props, ref, composeOptions) => {
+    const context: ProviderContextPrepared = React.useContext(ThemeContext);
+    const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
+    setStart();
+    const {
       iconOnly,
-      fluid,
-      pointing,
+      items,
       pills,
+      pointing,
       primary,
       underlined,
       vertical,
       submenu,
-    }),
-    mapPropsToInlineStyles: () => ({
+      children,
+      variables,
+      styles,
+      fluid,
       className,
       design,
-      styles,
-      variables,
-    }),
-    rtl: context.rtl,
-  });
+      secondary,
+      accessibility,
+    } = props;
 
-  const [activeIndex, setIndex] = useAutoControlled({
-    defaultValue: props.defaultActiveIndex,
-    value: props.activeIndex,
-    initialValue: undefined,
-  });
+    const ElementType = getElementType(props);
 
-  const setActiveIndex = (e: React.SyntheticEvent, activeIndex: number) => {
-    _.invoke(props, 'onActiveIndexChange', e, { ...props, activeIndex });
-    setIndex(activeIndex);
-  };
+    const slotProps = composeOptions.resolveSlotProps(props);
 
-  const handleItemOverrides = predefinedProps => ({
-    onClick: (e, itemProps) => {
-      const { index } = itemProps;
+    const itemProps = useSlotProps('item', slotProps);
+    const dividerProps = useSlotProps('divider', slotProps);
 
-      setActiveIndex(e, index);
+    const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
 
-      _.invoke(props, 'onItemClick', e, itemProps);
-      _.invoke(predefinedProps, 'onClick', e, itemProps);
-    },
-    onActiveChanged: (e, props) => {
-      const { index, active } = props;
-      if (active) {
-        setActiveIndex(e, index);
-      } else if (activeIndex === index) {
-        setActiveIndex(e, null);
-      }
-      _.invoke(predefinedProps, 'onActiveChanged', e, props);
-    },
-    variables: mergeComponentVariables(variables, predefinedProps.variables),
-  });
-
-  const handleDividerOverrides = predefinedProps => ({
-    variables: mergeComponentVariables(variables, predefinedProps.variables),
-  });
-
-  const renderItems = () => {
-    const itemsCount = _.filter(items, item => getKindProp(item, 'item') !== 'divider').length;
-    let itemPosition = 0;
-
-    return _.map(items, (item, index) => {
-      const active = (typeof activeIndex === 'string' ? parseInt(activeIndex, 10) : activeIndex) === index;
-      const kind = getKindProp(item, 'item');
-
-      if (kind === 'divider') {
-        return MenuDivider.create(item, {
-          defaultProps: () =>
-            getA11yProps('divider', {
-              primary,
-              secondary,
-              vertical,
-              styles: resolvedStyles.divider,
-              inSubmenu: submenu,
-            }),
-          overrideProps: handleDividerOverrides,
-        });
-      }
-
-      itemPosition++;
-
-      return MenuItem.create(item, {
-        defaultProps: () =>
-          getA11yProps('item', {
-            iconOnly,
-            pills,
-            pointing,
-            primary,
-            secondary,
-            underlined,
-            vertical,
-            index,
-            itemPosition,
-            itemsCount,
-            active,
-            inSubmenu: submenu,
-            indicator,
-          }),
-        overrideProps: handleItemOverrides,
-      });
+    const getA11yProps = useAccessibility<MenuBehaviorProps>(props.accessibility, {
+      debugName: composeOptions.displayName,
+      mapPropsToBehavior: () => ({
+        vertical,
+      }),
+      rtl: context.rtl,
     });
-  };
 
-  const element = getA11yProps.unstable_wrapWithFocusZone(
-    <ElementType
-      {...getA11yProps('root', {
-        className: classes.root,
-        ...rtlTextContainer.getAttributes({ forElements: [children] }),
-        ...unhandledProps,
-      })}
-    >
-      {childrenExist(children) ? children : renderItems()}
-    </ElementType>,
-  );
-  setEnd();
-  return element;
+    const actualProps = useActualProps(props);
+
+    const { classes } = useStyles<MenuStylesProps>(composeOptions.displayName, {
+      className: composeOptions.className,
+      composeOptions,
+      mapPropsToStyles: () => ({
+        iconOnly,
+        fluid,
+        pointing,
+        pills,
+        primary,
+        underlined,
+        vertical,
+        secondary,
+        submenu,
+      }),
+      mapPropsToInlineStyles: () => ({
+        className,
+        design,
+        styles,
+        variables,
+      }),
+      rtl: context.rtl,
+      unstable_props: props,
+    });
+
+    const [activeIndex, setIndex] = useAutoControlled({
+      defaultValue: props.defaultActiveIndex,
+      value: props.activeIndex,
+      initialValue: undefined,
+    });
+
+    const setActiveIndex = React.useCallback(
+      (e: React.SyntheticEvent, activeIndex: number) => {
+        _.invoke(actualProps.current, 'onActiveIndexChange', e, { ...actualProps.current, activeIndex });
+        setIndex(activeIndex);
+      },
+      [actualProps, setIndex],
+    );
+
+    const handleClick = React.useCallback(
+      (e, itemProps) => {
+        const { index } = itemProps;
+        setActiveIndex(e, index);
+        _.invoke(actualProps.current, 'onItemClick', e, itemProps);
+      },
+      [actualProps, setActiveIndex],
+    );
+
+    const handleItemOverrides = (predefinedProps: MenuItemProps): MenuItemProps => ({
+      onClick: (e, itemProps) => {
+        handleClick(e, itemProps);
+        _.invoke(predefinedProps, 'onClick', e, itemProps);
+      },
+      onActiveChanged: (e, props) => {
+        const { index, active } = props;
+        if (active) {
+          setActiveIndex(e, index);
+        } else if (activeIndex === index) {
+          setActiveIndex(e, null);
+        }
+        _.invoke(predefinedProps, 'onActiveChanged', e, props);
+      },
+      variables: mergeVariablesOverrides(variables, predefinedProps.variables),
+    });
+
+    const handleDividerOverrides = predefinedProps => ({
+      variables: mergeVariablesOverrides(variables, predefinedProps.variables),
+    });
+
+    const renderItems = () => {
+      const itemsCount = _.filter(items, item => getKindProp(item, 'item') !== 'divider').length;
+      let itemPosition = 0;
+
+      return _.map(items, (item, index) => {
+        const kind = getKindProp(item, 'item');
+
+        if (kind === 'divider') {
+          return createShorthand(composeOptions.slots.divider, item, {
+            defaultProps: () => getA11yProps('divider', {}),
+            overrideProps: handleDividerOverrides,
+          });
+        }
+
+        itemPosition++;
+
+        return createShorthand(composeOptions.slots.item, item, {
+          defaultProps: () =>
+            getA11yProps('item', {
+              index,
+              itemPosition,
+              itemsCount,
+            }),
+          overrideProps: handleItemOverrides,
+        });
+      });
+    };
+
+    const childBehaviors = accessibility && accessibility(props).childBehaviors;
+
+    const childProps: MenuContextValue = {
+      activeIndex: +activeIndex,
+      onItemClick: handleClick,
+      variables,
+
+      slotProps: {
+        item: itemProps,
+        divider: dividerProps,
+      },
+
+      behaviors: {
+        item: childBehaviors?.item,
+        divider: childBehaviors?.divider,
+      },
+
+      slots: {
+        menu: composeOptions.slots.__self,
+      },
+    };
+
+    const element = getA11yProps.unstable_wrapWithFocusZone(
+      <ElementType
+        {...getA11yProps('root', {
+          className: classes.root,
+          ...rtlTextContainer.getAttributes({ forElements: [children] }),
+          ...unhandledProps,
+        })}
+      >
+        <MenuContextProvider value={childProps}>
+          {childrenExist(children) ? children : renderItems()}
+        </MenuContextProvider>
+      </ElementType>,
+    );
+    const wrappedElement = ref ? <Ref innerRef={ref}>{element}</Ref> : element;
+
+    setEnd();
+
+    return wrappedElement;
+  },
+  {
+    className: menuClassName,
+    displayName: 'Menu',
+
+    slots: {
+      divider: MenuDivider,
+      item: MenuItem,
+    },
+    slotProps: props => ({
+      divider: {
+        inSubmenu: props.submenu,
+        pills: props.pills,
+        pointing: props.pointing,
+        primary: props.primary,
+        secondary: props.secondary,
+        vertical: props.vertical,
+      },
+      item: {
+        iconOnly: props.iconOnly,
+        indicator: props.indicator,
+        inSubmenu: props.submenu,
+        pills: props.pills,
+        pointing: props.pointing,
+        primary: props.primary,
+        secondary: props.secondary,
+        vertical: props.vertical,
+        underlined: props.underlined,
+      },
+    }),
+
+    handledProps: [
+      'accessibility',
+      'as',
+      'className',
+      'children',
+      'design',
+      'styles',
+      'variables',
+      'activeIndex',
+      'defaultActiveIndex',
+      'fluid',
+      'iconOnly',
+      'items',
+      'onItemClick',
+      'onActiveIndexChange',
+      'pills',
+      'pointing',
+      'primary',
+      'secondary',
+      'underlined',
+      'vertical',
+      'submenu',
+      'indicator',
+    ],
+    shorthandConfig: {
+      mappedArrayProp: 'items',
+    },
+  },
+) as ComponentWithAs<'ul', MenuProps> & {
+  create: ShorthandFactory<MenuProps>;
+  shorthandConfig: ShorthandConfig<MenuProps>;
+
+  Item: typeof MenuItem;
+  ItemContent: typeof MenuItemContent;
+  ItemIcon: typeof MenuItemIcon;
+  ItemIndicator: typeof MenuItemIndicator;
+  ItemWrapper: typeof MenuItemWrapper;
+  Divider: typeof MenuDivider;
 };
-
-Menu.displayName = 'Menu';
 
 Menu.propTypes = {
   ...commonPropTypes.createCommon({
@@ -288,30 +422,18 @@ Menu.propTypes = {
   submenu: PropTypes.bool,
   indicator: customPropTypes.shorthandAllowingChildren,
 };
-
 Menu.defaultProps = {
   as: 'ul',
   accessibility: menuBehavior,
 };
 
-Menu.handledProps = Object.keys(Menu.propTypes) as any;
-
 Menu.Item = MenuItem;
+Menu.ItemIcon = MenuItemIcon;
+Menu.ItemContent = MenuItemContent;
+Menu.ItemWrapper = MenuItemWrapper;
+Menu.ItemIndicator = MenuItemIndicator;
 Menu.Divider = MenuDivider;
 
 Menu.create = createShorthandFactory({ Component: Menu, mappedArrayProp: 'items' });
 
-/**
- * A Menu is a component that offers a grouped list of choices to the user.
- *
- * @accessibility
- * Implements ARIA [Menu](https://www.w3.org/TR/wai-aria-practices-1.1/#menu), [Toolbar](https://www.w3.org/TR/wai-aria-practices-1.1/#toolbar) or [Tabs](https://www.w3.org/TR/wai-aria-practices-1.1/#tabpanel) design pattern, depending on the behavior used.
- * @accessibilityIssues
- * [JAWS - navigation instruction for menubar](https://github.com/FreedomScientific/VFO-standards-support/issues/203)
- * [JAWS - navigation instruction for menu with aria-orientation="horizontal"](https://github.com/FreedomScientific/VFO-standards-support/issues/204)
- * [JAWS [VC] doesn't narrate menu item, when it is open from menu button](https://github.com/FreedomScientific/VFO-standards-support/issues/324)
- * [JAWS [app mode] focus moves to second menu item, when it is open from menu button](https://github.com/FreedomScientific/VFO-standards-support/issues/325)
- * [Enter into a tablist JAWS narrates: To switch pages, press Control+PageDown](https://github.com/FreedomScientific/VFO-standards-support/issues/337)
- * 51114083 VoiceOver+Web narrate wrong position in menu / total count of menu items, when pseudo element ::after or ::before is used
- */
-export default withSafeTypeForAs<typeof Menu, MenuProps, 'ul'>(Menu);
+export default Menu;

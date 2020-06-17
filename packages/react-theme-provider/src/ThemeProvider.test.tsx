@@ -6,21 +6,21 @@ import { useTheme } from './useTheme';
 import { mount } from 'enzyme';
 import { mergeThemes } from './mergeThemes';
 
-const lightTheme: Theme = mergeThemes({
+const lightTheme = mergeThemes({
   stylesheets: [],
   tokens: {
     body: {
-      fill: 'white',
-      text: 'black',
+      background: 'white',
+      contentColor: 'black',
     },
   },
 });
 
-const darkTheme: Theme = mergeThemes({
+const darkTheme = mergeThemes({
   tokens: {
     body: {
-      fill: 'black',
-      text: 'white',
+      background: 'black',
+      contentColor: 'white',
     },
   },
 });
@@ -51,7 +51,7 @@ describe('ThemeProvider', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('can provide the theme through context', () => {
+  it('provide the theme through context', () => {
     let resolvedTheme: Theme | undefined = undefined;
     const TestComponent = () => {
       resolvedTheme = useTheme();

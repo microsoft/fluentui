@@ -34,7 +34,7 @@ function generateData(count: number, cachingEnabled: boolean, checked: boolean):
 
   let result: IOverflowData = {
     primary: dataItems,
-    overflow: [] as any[],
+    overflow: [],
   };
 
   if (cachingEnabled) {
@@ -106,6 +106,7 @@ export class ResizeGroupVerticalOverflowSetExample extends React.Component {
     );
   }
 
+  // tslint:disable-next-line:no-any
   private _onReduceData = (currentData: any): any => {
     if (currentData.primary.length === 0) {
       return undefined;

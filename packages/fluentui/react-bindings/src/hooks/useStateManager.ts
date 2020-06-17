@@ -33,7 +33,13 @@ const useStateManager = <State extends Record<string, any>, Actions extends Reco
     mapPropsToState = () => ({} as Partial<State>),
     sideEffects = [],
   } = options;
-  const latestActions = React.useMemo<Actions>(() => ({} as Actions), [managerFactory]);
+  const latestActions = React.useMemo<Actions>(
+    () => ({} as Actions),
+    // The change of `managerFactory` should trigger recreation of `latestActions` as they can be different between
+    // managers
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [managerFactory],
+  );
   const latestManager = React.useRef<Manager<State, Actions> | null>(null);
 
   // Heads up! forceUpdate() is used only for triggering rerenders, stateManager is SSOT

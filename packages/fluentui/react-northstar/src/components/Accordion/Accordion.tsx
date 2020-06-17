@@ -105,7 +105,7 @@ export const accordionSlotClassNames: AccordionSlotClassNames = {
   title: `${accordionClassName}__title`,
 };
 
-export const Accordion: React.FC<WithAsProp<AccordionProps>> &
+const Accordion: React.FC<WithAsProp<AccordionProps>> &
   FluentComponentStaticProps<AccordionProps> & {
     Title: typeof AccordionTitle;
     Content: typeof AccordionContent;
@@ -176,11 +176,6 @@ export const Accordion: React.FC<WithAsProp<AccordionProps>> &
     setfocusedIndex(index);
   };
 
-  React.useEffect(() => {
-    const targetComponent = itemRefs[focusedIndex] && itemRefs[focusedIndex].current;
-    targetComponent && targetComponent.focus();
-  }, [focusedIndex]);
-
   const getNavigationItemsSize = () => props.panels.length;
   const unhandledProps = useUnhandledProps(Accordion.handledProps, props);
   const ElementType = getElementType(props);
@@ -193,8 +188,15 @@ export const Accordion: React.FC<WithAsProp<AccordionProps>> &
 
   const itemRefs = React.useMemo<React.RefObject<HTMLElement>[]>(
     () => Array.from({ length: panels?.length }, () => React.createRef()),
+    // As we are using "panels.length" it's fine to have dependency on them
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [panels?.length],
   );
+
+  React.useEffect(() => {
+    const targetComponent = itemRefs[focusedIndex] && itemRefs[focusedIndex].current;
+    targetComponent && targetComponent.focus();
+  }, [itemRefs, focusedIndex]);
 
   const defaultAccordionTitleId = React.useMemo(() => _.uniqueId('accordion-title-'), []);
   const defaultAccordionContentId = React.useMemo(() => _.uniqueId('accordion-content-'), []);

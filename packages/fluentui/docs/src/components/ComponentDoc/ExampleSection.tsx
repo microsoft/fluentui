@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Grid, Extendable, Header, ICSSInJSStyle } from '@fluentui/react-northstar';
+import { Flex, Extendable, Header, ICSSInJSStyle } from '@fluentui/react-northstar';
 
 const headerStyle: ICSSInJSStyle = {
   marginTop: '1.5em',
@@ -18,9 +18,15 @@ const ExampleSection: React.FC<ExampleSectionProps> = ({ title, children }) => (
     <Header as="h2" align="center" styles={headerStyle} className="no-anchor">
       {title}
     </Header>
-    <Grid variables={{ gridGap: '2rem' }} columns="minmax(550px, 1fr)">
+    <Flex
+      gap="gap.large"
+      column
+      styles={{
+        minWidth: '550px',
+      }}
+    >
       {children}
-    </Grid>
+    </Flex>
   </>
 );
 

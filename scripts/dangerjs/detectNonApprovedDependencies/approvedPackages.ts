@@ -71,6 +71,8 @@ export default [
   'object-assign@4.1.1',
   'popper.js@1.15.0',
   '@popperjs/core@2.1.1',
+  '@popperjs/core@2.4.0',
+  '@popperjs/core@2.4.2',
   'prop-types@15.6.2',
   'prop-types@15.7.2',
   'raf-schd@4.0.2',

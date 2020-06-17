@@ -127,6 +127,13 @@ export const getStyles = (props: IPivotStyleProps): IPivotStyles => {
       rootIsTabs && classNames.rootIsTabs,
       className,
     ],
+    itemContainer: {
+      selectors: {
+        '&[hidden]': {
+          display: 'none',
+        },
+      },
+    },
     link: [
       classNames.link,
       ...linkStyles(props),

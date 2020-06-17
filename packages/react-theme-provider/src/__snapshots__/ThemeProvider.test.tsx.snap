@@ -2,14 +2,13 @@
 
 exports[`ThemeProvider renders a div 1`] = `
 <div
-  className=""
   style={
     Object {
-      "--body-divider": "#eee",
-      "--body-fill": "white",
-      "--body-link": "blue",
-      "--body-subText": "#333",
-      "--body-text": "black",
+      "--body-background": "white",
+      "--body-captionColor": "#333",
+      "--body-contentColor": "black",
+      "--body-dividerColor": "#eee",
+      "--body-linkColor": "blue",
     }
   }
 >
@@ -19,14 +18,13 @@ exports[`ThemeProvider renders a div 1`] = `
 
 exports[`ThemeProvider renders a div with styling 1`] = `
 <div
-  className=""
   style={
     Object {
-      "--body-divider": "#eee",
-      "--body-fill": "white",
-      "--body-link": "blue",
-      "--body-subText": "#333",
-      "--body-text": "black",
+      "--body-background": "white",
+      "--body-captionColor": "#333",
+      "--body-contentColor": "black",
+      "--body-dividerColor": "#eee",
+      "--body-linkColor": "blue",
     }
   }
 >
@@ -36,14 +34,13 @@ exports[`ThemeProvider renders a div with styling 1`] = `
 
 exports[`ThemeProvider renders nested themes 1`] = `
 <div
-  className=""
   style={
     Object {
-      "--body-divider": "#eee",
-      "--body-fill": "white",
-      "--body-link": "blue",
-      "--body-subText": "#333",
-      "--body-text": "black",
+      "--body-background": "white",
+      "--body-captionColor": "#333",
+      "--body-contentColor": "black",
+      "--body-dividerColor": "#eee",
+      "--body-linkColor": "blue",
     }
   }
 >
@@ -51,14 +48,13 @@ exports[`ThemeProvider renders nested themes 1`] = `
     Light theme
   </div>
   <div
-    className=""
     style={
       Object {
-        "--body-divider": "#eee",
-        "--body-fill": "black",
-        "--body-link": "blue",
-        "--body-subText": "#333",
-        "--body-text": "white",
+        "--body-background": "black",
+        "--body-captionColor": "#333",
+        "--body-contentColor": "white",
+        "--body-dividerColor": "#eee",
+        "--body-linkColor": "blue",
       }
     }
   >

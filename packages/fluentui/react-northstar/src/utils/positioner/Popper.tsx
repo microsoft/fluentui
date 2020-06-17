@@ -29,6 +29,29 @@ function useDeepMemo<TKey, TValue>(memoFn: () => TValue, key: TKey): TValue {
   return ref.current.value;
 }
 
+/** Checks if components was mounted the first time. */
+function useFirstMount(): boolean {
+  const isFirst = React.useRef(true);
+
+  if (isFirst.current) {
+    isFirst.current = false;
+    return true;
+  }
+
+  return isFirst.current;
+}
+
+/** Executes useIsomorphicLayoutEffect during only updates. */
+const useUpdateIsomorphicLayoutEffect: typeof React.useLayoutEffect = (effect, deps) => {
+  const isFirstMount = useFirstMount();
+
+  useIsomorphicLayoutEffect(() => {
+    if (!isFirstMount) {
+      return effect();
+    }
+  }, deps);
+};
+
 /**
  * Popper relies on the 3rd party library [Popper.js](https://github.com/FezVrasta/popper.js) for positioning.
  */
@@ -163,7 +186,18 @@ const Popper: React.FunctionComponent<PopperProps> = props => {
     };
 
     popperRef.current = PopperJs.createPopper(reference, contentRef.current, options);
-  }, [contentRef, computedModifiers, enabled, pointerTargetRef, positionFixed, proposedPlacement, targetRef]);
+  }, [
+    contentRef,
+    computedModifiers,
+    enabled,
+    flipBoundary,
+    overflowBoundary,
+    pointerTargetRef,
+    positionFixed,
+    proposedPlacement,
+    targetRef,
+    unstable_pinned,
+  ]);
 
   const destroyInstance = React.useCallback(() => {
     if (popperRef.current) {
@@ -183,7 +217,7 @@ const Popper: React.FunctionComponent<PopperProps> = props => {
     return destroyInstance;
   }, [createInstance]);
 
-  React.useEffect(scheduleUpdate, [...positioningDependencies, computedPlacement]);
+  useUpdateIsomorphicLayoutEffect(scheduleUpdate, [...positioningDependencies, computedPlacement]);
 
   const child =
     typeof children === 'function'

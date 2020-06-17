@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fixed broken URLs",
-  "packageName": "@uifabric/fabric-website",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-05-15T20:12:47.456Z"
-}

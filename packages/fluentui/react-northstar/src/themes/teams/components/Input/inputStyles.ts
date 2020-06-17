@@ -1,17 +1,17 @@
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { InputProps, InputState } from '../../../../components/Input/Input';
+import { InputStylesProps } from '../../../../components/Input/Input';
 import { InputVariables } from './inputVariables';
 import { PositionProperty } from 'csstype';
 import clearIndicatorUrl from './clearIndicatorUrl';
 import { pxToRem } from '../../../../utils';
 
-const inputStyles: ComponentSlotStylesPrepared<InputProps & InputState, InputVariables> = {
-  root: ({ props: p }): ICSSInJSStyle => ({
+const inputStyles: ComponentSlotStylesPrepared<InputStylesProps, InputVariables> = {
+  root: ({ props: p, variables: v }): ICSSInJSStyle => ({
     alignItems: 'center',
     display: 'inline-flex',
     position: 'relative',
     outline: 0,
-
+    ...(p.error && { border: `${pxToRem(1)} solid ${v.borderColorError}` }),
     ...(p.fluid && { width: '100%' }),
   }),
 
@@ -55,7 +55,7 @@ const inputStyles: ComponentSlotStylesPrepared<InputProps & InputState, InputVar
       borderColor: v.inputFocusBorderColor,
     },
     ...(p.clearable && { padding: v.inputPaddingWithIconAtEnd }),
-    ...(p.icon && {
+    ...(p.hasIcon && {
       padding: p.iconPosition === 'start' ? v.inputPaddingWithIconAtStart : v.inputPaddingWithIconAtEnd,
     }),
   }),
@@ -67,6 +67,10 @@ const inputStyles: ComponentSlotStylesPrepared<InputProps & InputState, InputVar
     alignItems: 'center',
     justifyContent: 'center',
     position: v.iconPosition as PositionProperty,
+    ...(p.error && { color: v.colorError }),
+    ...(p.requiredAndSuccessful && {
+      color: v.successfulColor,
+    }),
     ...(p.disabled && {
       color: v.colorDisabled,
     }),

@@ -15,3 +15,26 @@ export function disableBodyScroll(target: HTMLElement): void {
     target.addEventListener('touchmove', _disableIosBodyScroll, { passive: false, capture: false });
   }
 }
+
+const dialogsCounterAttribute = 'fluent-dialogs-count';
+
+export const lockBodyScroll = (target: Document) => {
+  const openDialogs = (+target.body.getAttribute(dialogsCounterAttribute) || 0) + 1;
+  target.body.setAttribute(dialogsCounterAttribute, `${openDialogs}`);
+
+  // Avoid to block scroll in nested dialogs
+  if (openDialogs === 1) {
+    disableBodyScroll(target.body);
+  }
+};
+
+export const unlockBodyScroll = (target: Document) => {
+  const openDialogs = (+target.body.getAttribute(dialogsCounterAttribute) || 0) - 1;
+  target.body.setAttribute(dialogsCounterAttribute, `${openDialogs}`);
+
+  // Only enables scroll if all dialogs are closed
+  if (openDialogs === 0) {
+    enableBodyScroll(target.body);
+    target.body.removeAttribute(dialogsCounterAttribute);
+  }
+};
