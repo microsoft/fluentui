@@ -187,6 +187,9 @@ export const getNextResizeGroupStateProvider: (measurementCache?: {
 export function getSubmenuItems(item: IContextualMenuItem): IContextualMenuItem[] | undefined;
 
 // @public
+export function getPersonaInitialsColor(props: Pick<IPersonaProps, 'primaryText' | 'text' | 'initialsColor'>): string;
+
+// @public
 export interface ICheckbox {
     checked: boolean;
     focus: () => void;
@@ -974,6 +977,148 @@ export interface IOverflowSetStyles {
 }
 
 // @public (undocumented)
+export interface IPersona {
+}
+
+// @public (undocumented)
+export interface IPersonaCoinProps extends IPersonaSharedProps {
+    className?: string;
+    componentRef?: IRefObject<{}>;
+    styles?: IStyleFunctionOrObject<IPersonaCoinStyleProps, IPersonaCoinStyles>;
+}
+
+// @public (undocumented)
+export interface IPersonaCoinStyleProps {
+    className?: string;
+    coinSize?: number;
+    showUnknownPersonaCoin?: boolean;
+    size?: PersonaSize;
+    theme: ITheme;
+}
+
+// @public (undocumented)
+export interface IPersonaCoinStyles {
+    // (undocumented)
+    coin: IStyle;
+    // (undocumented)
+    image: IStyle;
+    // (undocumented)
+    imageArea: IStyle;
+    // (undocumented)
+    initials: IStyle;
+    // (undocumented)
+    size10WithoutPresenceIcon: IStyle;
+}
+
+// @public (undocumented)
+export interface IPersonaPresenceProps extends IPersonaSharedProps {
+    componentRef?: IRefObject<{}>;
+    styles?: IStyleFunctionOrObject<IPersonaPresenceStyleProps, IPersonaPresenceStyles>;
+}
+
+// @public (undocumented)
+export type IPersonaPresenceStyleProps = Required<Pick<IPersonaSharedProps, 'theme'>> & Pick<IPersonaSharedProps, 'presence' | 'isOutOfOffice' | 'size' | 'presenceColors'> & Pick<IPersonaProps, 'className'>;
+
+// @public (undocumented)
+export interface IPersonaPresenceStyles {
+    // (undocumented)
+    presence: IStyle;
+    // (undocumented)
+    presenceIcon: IStyle;
+}
+
+// @public (undocumented)
+export interface IPersonaProps extends IPersonaSharedProps {
+    className?: string;
+    componentRef?: IRefObject<IPersona>;
+    onRenderOptionalText?: IRenderFunction<IPersonaProps>;
+    onRenderPrimaryText?: IRenderFunction<IPersonaProps>;
+    onRenderSecondaryText?: IRenderFunction<IPersonaProps>;
+    onRenderTertiaryText?: IRenderFunction<IPersonaProps>;
+    styles?: IStyleFunctionOrObject<IPersonaStyleProps, IPersonaStyles>;
+}
+
+// @public (undocumented)
+export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase | PersonaCoinBase | HTMLDivElement> {
+    allowPhoneInitials?: boolean;
+    coinProps?: IPersonaCoinProps;
+    coinSize?: number;
+    hidePersonaDetails?: boolean;
+    imageAlt?: string;
+    imageInitials?: string;
+    imageShouldFadeIn?: boolean;
+    imageShouldStartVisible?: boolean;
+    imageUrl?: string;
+    initialsColor?: PersonaInitialsColor | string;
+    isOutOfOffice?: boolean;
+    onPhotoLoadingStateChange?: (newImageLoadState: ImageLoadState) => void;
+    // @deprecated
+    onRenderCoin?: IRenderFunction<IPersonaSharedProps>;
+    onRenderInitials?: IRenderFunction<IPersonaSharedProps>;
+    onRenderPersonaCoin?: IRenderFunction<IPersonaSharedProps>;
+    optionalText?: string;
+    presence?: PersonaPresence;
+    presenceColors?: {
+        available: string;
+        away: string;
+        busy: string;
+        dnd: string;
+        offline: string;
+        oof: string;
+        background: string;
+    };
+    presenceTitle?: string;
+    // @deprecated
+    primaryText?: string;
+    secondaryText?: string;
+    showInitialsUntilImageLoads?: boolean;
+    // (undocumented)
+    showSecondaryText?: boolean;
+    showUnknownPersonaCoin?: boolean;
+    size?: PersonaSize;
+    tertiaryText?: string;
+    text?: string;
+    theme?: ITheme;
+}
+
+// @public (undocumented)
+export interface IPersonaState {
+    // (undocumented)
+    isImageError?: boolean;
+    // (undocumented)
+    isImageLoaded?: boolean;
+}
+
+// @public (undocumented)
+export interface IPersonaStyleProps {
+    className?: string;
+    coinSize?: number;
+    presence?: PersonaPresence;
+    // (undocumented)
+    showSecondaryText?: boolean;
+    size?: PersonaSize;
+    theme: ITheme;
+}
+
+// @public (undocumented)
+export interface IPersonaStyles {
+    // (undocumented)
+    details: IStyle;
+    // (undocumented)
+    optionalText: IStyle;
+    // (undocumented)
+    primaryText: IStyle;
+    // (undocumented)
+    root: IStyle;
+    // (undocumented)
+    secondaryText: IStyle;
+    // (undocumented)
+    tertiaryText: IStyle;
+    // (undocumented)
+    textContent: IStyle;
+}
+
+// @public (undocumented)
 export interface IPivot {
     focus(): void;
 }
@@ -1643,6 +1788,183 @@ export class OverflowSetBase extends React.Component<IOverflowSetProps, {}> impl
 }
 
 // @public
+export const Persona: React.FunctionComponent<IPersonaProps>;
+
+// @public
+export class PersonaBase extends React.Component<IPersonaProps, {}> {
+    constructor(props: IPersonaProps);
+    // (undocumented)
+    static defaultProps: IPersonaProps;
+    // (undocumented)
+    render(): JSX.Element;
+    }
+
+// @public
+export const PersonaCoin: React.FunctionComponent<IPersonaCoinProps>;
+
+// @public
+export class PersonaCoinBase extends React.Component<IPersonaCoinProps, IPersonaState> {
+    constructor(props: IPersonaCoinProps);
+    // (undocumented)
+    static defaultProps: IPersonaCoinProps;
+    // (undocumented)
+    render(): JSX.Element | null;
+    // (undocumented)
+    UNSAFE_componentWillReceiveProps(nextProps: IPersonaCoinProps): void;
+}
+
+// @public (undocumented)
+export enum PersonaInitialsColor {
+    // @deprecated
+    black = 11,
+    // (undocumented)
+    blue = 1,
+    // (undocumented)
+    burgundy = 19,
+    // (undocumented)
+    coolGray = 21,
+    // (undocumented)
+    cyan = 23,
+    // (undocumented)
+    darkBlue = 2,
+    // (undocumented)
+    darkGreen = 6,
+    // (undocumented)
+    darkRed = 14,
+    // (undocumented)
+    gold = 18,
+    gray = 22,
+    // (undocumented)
+    green = 5,
+    // (undocumented)
+    lightBlue = 0,
+    // (undocumented)
+    lightGreen = 4,
+    // (undocumented)
+    lightPink = 7,
+    // (undocumented)
+    lightRed = 17,
+    // (undocumented)
+    magenta = 9,
+    // (undocumented)
+    orange = 12,
+    // (undocumented)
+    pink = 8,
+    // (undocumented)
+    purple = 10,
+    // @deprecated
+    red = 13,
+    // (undocumented)
+    rust = 24,
+    // (undocumented)
+    teal = 3,
+    transparent = 15,
+    // (undocumented)
+    violet = 16,
+    // (undocumented)
+    warmGray = 20
+}
+
+// @public (undocumented)
+export enum PersonaPresence {
+    // (undocumented)
+    away = 3,
+    // (undocumented)
+    blocked = 5,
+    // (undocumented)
+    busy = 6,
+    // (undocumented)
+    dnd = 4,
+    // (undocumented)
+    none = 0,
+    // (undocumented)
+    offline = 1,
+    // (undocumented)
+    online = 2
+}
+
+// @public (undocumented)
+export namespace personaPresenceSize {
+    const // (undocumented)
+    size6 = "6px";
+    const // (undocumented)
+    size8 = "8px";
+    const // (undocumented)
+    size12 = "12px";
+    const // (undocumented)
+    size16 = "16px";
+    const // (undocumented)
+    size20 = "20px";
+    const // (undocumented)
+    size28 = "28px";
+    const // (undocumented)
+    size32 = "32px";
+    const // @deprecated (undocumented)
+    border = "2px";
+}
+
+// @public (undocumented)
+export enum PersonaSize {
+    // @deprecated
+    extraExtraSmall = 1,
+    // @deprecated
+    extraLarge = 6,
+    // @deprecated
+    extraSmall = 2,
+    // @deprecated
+    large = 5,
+    // @deprecated
+    regular = 4,
+    // @deprecated
+    size10 = 9,
+    size100 = 15,
+    size120 = 18,
+    // @deprecated
+    size16 = 8,
+    size24 = 10,
+    // @deprecated
+    size28 = 7,
+    size32 = 11,
+    size40 = 12,
+    size48 = 13,
+    size56 = 16,
+    size72 = 14,
+    size8 = 17,
+    // @deprecated
+    small = 3,
+    // @deprecated
+    tiny = 0
+}
+
+// @public (undocumented)
+export namespace personaSize {
+    const // (undocumented)
+    size8 = "20px";
+    const // (undocumented)
+    size10 = "20px";
+    const // (undocumented)
+    size16 = "16px";
+    const // (undocumented)
+    size24 = "24px";
+    const // (undocumented)
+    size28 = "28px";
+    const // (undocumented)
+    size32 = "32px";
+    const // (undocumented)
+    size40 = "40px";
+    const // (undocumented)
+    size48 = "48px";
+    const // (undocumented)
+    size56 = "56px";
+    const // (undocumented)
+    size72 = "72px";
+    const // (undocumented)
+    size100 = "100px";
+    const // (undocumented)
+    size120 = "120px";
+}
+
+// @public
 export const Pivot: React.FunctionComponent<IPivotProps>;
 
 // @public (undocumented)
@@ -1708,6 +2030,16 @@ export class PositioningContainer extends React.Component<IPositioningContainerP
     }
 
 // @public (undocumented)
+export const presenceBoolean: (presence: PersonaPresence) => {
+    isAvailable: boolean;
+    isAway: boolean;
+    isBlocked: boolean;
+    isBusy: boolean;
+    isDoNotDisturb: boolean;
+    isOffline: boolean;
+};
+
+// @public (undocumented)
 export const ResizeGroup: import("react").ForwardRefExoticComponent<import("./ResizeGroup.types").IResizeGroupProps & import("react").RefAttributes<HTMLDivElement>>;
 
 // @public (undocumented)
@@ -1736,6 +2068,27 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
     // (undocumented)
     UNSAFE_componentWillReceiveProps(newProps: ISearchBoxProps): void;
 }
+
+// @public (undocumented)
+export const sizeBoolean: (size: PersonaSize) => {
+    isSize8: boolean;
+    isSize10: boolean;
+    isSize16: boolean;
+    isSize24: boolean;
+    isSize28: boolean;
+    isSize32: boolean;
+    isSize40: boolean;
+    isSize48: boolean;
+    isSize56: boolean;
+    isSize72: boolean;
+    isSize100: boolean;
+    isSize120: boolean;
+};
+
+// @public (undocumented)
+export const sizeToPixels: {
+    [key: number]: number;
+};
 
 // @public (undocumented)
 export const Slider: React.FunctionComponent<ISliderProps>;
@@ -1868,7 +2221,6 @@ export * from "office-ui-fabric-react/lib/Modal";
 export * from "office-ui-fabric-react/lib/Nav";
 export * from "office-ui-fabric-react/lib/Overlay";
 export * from "office-ui-fabric-react/lib/Panel";
-export * from "office-ui-fabric-react/lib/Persona";
 export * from "office-ui-fabric-react/lib/Pickers";
 export * from "office-ui-fabric-react/lib/ProgressIndicator";
 export * from "office-ui-fabric-react/lib/Rating";
