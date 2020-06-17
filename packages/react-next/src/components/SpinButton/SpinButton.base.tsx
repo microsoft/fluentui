@@ -85,15 +85,13 @@ export const SpinButtonBase = (props: ISpinButtonProps) => {
 
   const input = React.useRef<HTMLInputElement>(null);
   // Is true when the control has focus
-  const [isFocused, { toggle: toggleIsFocused }] = useBoolean(false);
+  const [isFocused, { setTrue: setTrueIsFocused, setFalse: setFalseIsFocused }] = useBoolean(false);
   // The value of the spin button
 
   const [value, setValue] = useControllableValue(
     props.value,
     props.defaultValue !== undefined ? props.defaultValue : String(min || '0'),
   );
-  // const [value, setValue] = React.useState(props.defaultValue !== undefined ?
-  // props.defaultValue : String(min || '0'));
 
   // keyboard spin direction, used to style the up or down button
   // as active when up/down arrow is pressed
@@ -179,10 +177,14 @@ export const SpinButtonBase = (props: ISpinButtonProps) => {
   const validate = (ev: React.FocusEvent<HTMLInputElement> | React.KeyboardEvent<HTMLInputElement>): void => {
     if (value !== undefined && state.valueToValidate !== undefined && state.valueToValidate !== state.lastValidValue) {
       const newValue = onValidate!(state.valueToValidate, ev);
-      if (newValue) {
+      // Done validating this value, so clear it
+      state.valueToValidate = undefined;
+      if (newValue !== undefined) {
         state.lastValidValue = newValue;
-        state.valueToValidate = undefined;
         setValue(newValue);
+      } else {
+        // Value was invalid. Reset state to last valid value.
+        setValue(state.lastValidValue);
       }
     }
   };
@@ -241,7 +243,7 @@ export const SpinButtonBase = (props: ISpinButtonProps) => {
       stop();
     }
     input.current.select();
-    toggleIsFocused();
+    setTrueIsFocused();
     if (props.onFocus) {
       props.onFocus(ev);
     }
@@ -249,7 +251,7 @@ export const SpinButtonBase = (props: ISpinButtonProps) => {
 
   const onBlur = (ev: React.FocusEvent<HTMLInputElement>): void => {
     validate(ev);
-    toggleIsFocused();
+    setFalseIsFocused();
     if (props.onBlur) {
       props.onBlur(ev);
     }
