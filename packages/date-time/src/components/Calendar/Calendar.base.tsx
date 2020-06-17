@@ -7,7 +7,17 @@ import {
   ICalendarStyleProps,
   ICalendarStyles,
 } from './Calendar.types';
-import { DayOfWeek, FirstWeekOfYear, DateRangeType } from '@fluentui/date-time-utilities/lib/dateValues/DateValues';
+import {
+  DayOfWeek,
+  FirstWeekOfYear,
+  DateRangeType,
+  addMonths,
+  addYears,
+  formatMonthDayYear,
+  formatMonthYear,
+  formatDay,
+  formatYear,
+} from '@fluentui/date-time-utilities';
 import { CalendarDay } from './CalendarDay/CalendarDay';
 import { CalendarMonth } from './CalendarMonth/CalendarMonth';
 import { ICalendarDay } from './CalendarDay/CalendarDay.types';
@@ -23,13 +33,6 @@ import {
 } from '@uifabric/utilities';
 import { IProcessedStyleSet } from '@uifabric/styling';
 import { DayPickerStrings } from './defaults';
-import { addMonths, addYears } from '@fluentui/date-time-utilities/lib/dateMath/DateMath';
-import {
-  formatMonthDayYear,
-  formatMonthYear,
-  formatDay,
-  formatYear,
-} from '@fluentui/date-time-utilities/lib/dateGrid/DateGrid';
 
 const getClassNames = classNamesFunction<ICalendarStyleProps, ICalendarStyles>();
 

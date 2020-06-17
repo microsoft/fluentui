@@ -4,16 +4,16 @@
 
 ```ts
 
-import { DateRangeType } from 'office-ui-fabric-react/lib/utilities/dateValues/DateValues';
-import { DayOfWeek } from 'office-ui-fabric-react/lib/utilities/dateValues/DateValues';
-import { FirstWeekOfYear } from 'office-ui-fabric-react/lib/utilities/dateValues/DateValues';
+import { DateRangeType } from '@fluentui/date-time-utilities';
+import { DayOfWeek } from '@fluentui/date-time-utilities';
+import { FirstWeekOfYear } from '@fluentui/date-time-utilities';
 import { IBaseProps } from '@uifabric/utilities';
 import { IBaseProps as IBaseProps_2 } from 'office-ui-fabric-react/lib/Utilities';
 import { ICalendarStrings as ICalendarStrings_2 } from '@uifabric/date-time';
 import { ICalloutProps } from 'office-ui-fabric-react/lib/Callout';
 import { IComponentAs } from '@uifabric/utilities';
-import { IDayGridOptions } from '@fluentui/date-time-utilities/lib/dateGrid/DateGrid.types';
-import { IGridStrings } from '@fluentui/date-time-utilities/lib/dateGrid/DateGrid.types';
+import { IDayGridOptions } from '@fluentui/date-time-utilities';
+import { IGridStrings } from '@fluentui/date-time-utilities';
 import { IProcessedStyleSet } from '@uifabric/styling';
 import { IRefObject } from '@uifabric/utilities';
 import { IRefObject as IRefObject_2 } from 'office-ui-fabric-react/lib/Utilities';

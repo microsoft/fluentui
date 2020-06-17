@@ -8,7 +8,7 @@ import {
   AnimationDirection,
 } from '../Calendar/Calendar.types';
 import { IStyle, ITheme, IProcessedStyleSet } from '@uifabric/styling';
-import { IDayGridOptions } from '@fluentui/date-time-utilities/lib/dateGrid/DateGrid.types';
+import { IDayGridOptions } from '@fluentui/date-time-utilities';
 
 export interface ICalendarDayGrid {
   focus(): void;

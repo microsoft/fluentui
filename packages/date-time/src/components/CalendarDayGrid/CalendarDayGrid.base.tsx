@@ -17,18 +17,17 @@ import {
   compareDates,
   getDateRangeArray,
   getWeekNumbersInMonth,
-} from '@fluentui/date-time-utilities/lib/dateMath/DateMath';
-import {
   getDayGrid,
   getBoundedDateRange,
   findAvailableDate,
   isRestrictedDate,
-} from '@fluentui/date-time-utilities/lib/dateGrid/DateGrid';
+  IDay,
+  IAvailableDateOptions,
+  DAYS_IN_WEEK,
+} from '@fluentui/date-time-utilities';
 import { ICalendarDayGridProps, ICalendarDayGridStyleProps, ICalendarDayGridStyles } from './CalendarDayGrid.types';
 import { IProcessedStyleSet } from '@uifabric/styling';
 import { DateRangeType, DayOfWeek } from '../Calendar/Calendar.types';
-import { IDay, IAvailableDateOptions } from '@fluentui/date-time-utilities/lib/dateGrid/DateGrid.types';
-import { DAYS_IN_WEEK } from '@fluentui/date-time-utilities/lib/dateValues/DateValues';
 
 const getClassNames = classNamesFunction<ICalendarDayGridStyleProps, ICalendarDayGridStyles>();
 
