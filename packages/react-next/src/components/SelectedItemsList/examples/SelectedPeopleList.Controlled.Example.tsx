@@ -5,6 +5,7 @@ import {
   SelectedPeopleList,
   ISelectedPeopleItemProps,
   ExtendedSelectedItem,
+  IBaseSelectedItemsList,
 } from '@fluentui/react-next/lib/SelectedItemsList';
 import { Stack, IStackStyles } from '@fluentui/react-next/lib/Stack';
 import { people, groupOne, groupTwo } from '@uifabric/example-data';
@@ -21,7 +22,7 @@ const onCopyItems = (items: IExtendedPersonaProps[]): string => {
 export const SelectedPeopleListControlledExample: React.FunctionComponent = () => {
   const [nextPersonIndex, setNextPersonIndex] = React.useState(0);
   const [currentSelectedItems, setCurrentSelectedItems] = React.useState<IExtendedPersonaProps[]>([people[40]]);
-  const selectionList = React.useRef<SelectedPeopleList>(null);
+  const selectionList = React.useRef<IBaseSelectedItemsList<IExtendedPersonaProps>>(null);
 
   const onAddItemButtonClicked = (): void => {
     setCurrentSelectedItems([...currentSelectedItems, people[nextPersonIndex]]);

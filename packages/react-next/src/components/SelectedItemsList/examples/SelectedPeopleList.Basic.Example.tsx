@@ -5,6 +5,7 @@ import {
   SelectedPeopleList,
   ISelectedPeopleItemProps,
   ExtendedSelectedItem,
+  IBaseSelectedItemsList,
 } from '@fluentui/react-next/lib/SelectedItemsList';
 import { Stack } from '@fluentui/react-next/lib/Stack';
 import { people, groupOne, groupTwo } from '@uifabric/example-data';
@@ -19,7 +20,7 @@ const onCopyItems = (items: IExtendedPersonaProps[]): string => {
 
 export const SelectedPeopleListBasicExample: React.FunctionComponent = () => {
   const [nextPersonIndex, setNextPersonIndex] = React.useState(0);
-  const selectionList = React.useRef<SelectedPeopleList>(null);
+  const selectionList = React.useRef<IBaseSelectedItemsList<IExtendedPersonaProps>>(null);
   const onExpandItem = (item: IExtendedPersonaProps): void => {
     const expandedItem = item.text === 'Group One' ? groupOne : item.text === 'Group Two' ? groupTwo : [];
     selectionList.current!.replaceItem(item, expandedItem);

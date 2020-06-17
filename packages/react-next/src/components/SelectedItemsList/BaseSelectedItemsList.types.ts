@@ -7,7 +7,7 @@ export interface IBaseSelectedItemsList<T> {
   /** Gets the current value of the input. */
   items: T[] | undefined;
 
-  addItems: (items: T[]) => void;
+  addItems: (items: T[]) => Promise<void>;
   copyItems: (items: T[]) => void;
   removeItem: (items: T) => void;
 

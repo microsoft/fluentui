@@ -48,13 +48,19 @@ export interface ISelectedPeopleProps extends IBaseSelectedItemsListProps<IExten
   getEditingItemText?: (item: IExtendedPersonaProps) => string;
   onRenderFloatingPicker?: React.ComponentType<IBaseFloatingPickerProps<IPersonaProps>>;
   floatingPickerProps?: IBaseFloatingPickerProps<IPersonaProps>;
-  onRenderItem: (props: ISelectedPeopleItemProps) => JSX.Element;
 }
 
 /**
  * Standard People Picker.
+ * @remark This component doesn't forward its refs because the underlying component returns an array of JSX.Elements,
+ * with no single root.
  */
-export class SelectedPeopleList extends React.Component<ISelectedPeopleProps> {
+export const SelectedPeopleList = (props: ISelectedPeopleProps) => {
+  return <SelectedPeopleListClass {...props} />;
+};
+SelectedPeopleList.displayName = 'SelectedPeopleList';
+
+class SelectedPeopleListClass extends React.Component<ISelectedPeopleProps> {
   public static defaultProps = {
     onRenderItem: (props: ISelectedPeopleItemProps) => <ExtendedSelectedItem {...props} />,
   };
@@ -122,9 +128,7 @@ export class SelectedPeopleList extends React.Component<ISelectedPeopleProps> {
     } else {
       // This cast is here because we are guaranteed that onRenderItem is set
       // from static defaultProps
-      // TODO: Move this component to composition with required onRenderItem to remove
-      // this cast.
-      const renderedItem = this.props.onRenderItem(props);
+      const renderedItem = this.props.onRenderItem!(props);
       return hasContextMenu ? (
         <SelectedItemWithContextMenu
           key={props.key}

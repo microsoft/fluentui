@@ -19,7 +19,7 @@ export const EditingItem = React.forwardRef(
       editingFloatingPicker.current?.onQueryStringChanged?.(itemText);
       editingInput.current!.value = itemText;
       editingInput.current!.focus();
-    });
+    }, []);
 
     const onSuggestionSelected = (item: IExtendedPersonaProps): void => {
       props.onEditingComplete(props.item, item);
