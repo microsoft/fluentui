@@ -5,15 +5,6 @@ import { FormFieldVariables } from './formFieldVariables';
 
 const formFieldStyles: ComponentSlotStylesPrepared<FormFieldStylesProps, FormFieldVariables> = {
   root: ({ props, variables }): ICSSInJSStyle => ({}),
-  control: ({ props, variables: v }): ICSSInJSStyle => {
-    const { type } = props;
-    return {
-      ...(type &&
-        (type === 'radio' || type === 'checkbox') && {
-          marginRight: pxToRem(10),
-        }),
-    };
-  },
   label: ({ props }): ICSSInJSStyle => {
     const { type, inline, required } = props;
     return {
@@ -26,6 +17,15 @@ const formFieldStyles: ComponentSlotStylesPrepared<FormFieldStylesProps, FormFie
           content: '"*"',
         },
       }),
+    };
+  },
+  control: ({ props, variables: v }): ICSSInJSStyle => {
+    const { type } = props;
+    return {
+      ...(type &&
+        (type === 'radio' || type === 'checkbox') && {
+          marginRight: pxToRem(10),
+        }),
     };
   },
   message: ({ props: p, variables: v }): ICSSInJSStyle => ({
