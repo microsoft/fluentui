@@ -54,18 +54,15 @@ export class BasePeopleSelectedItemsList extends BaseSelectedItemsList<IExtended
  * Standard People Picker.
  */
 export class SelectedPeopleList extends BasePeopleSelectedItemsList {
-  // tslint:disable-next-line:no-any
-  public static defaultProps: any = {
+  public static defaultProps = {
     onRenderItem: (props: ISelectedPeopleItemProps) => <ExtendedSelectedItem {...props} />,
   };
 
   protected renderItems = (): JSX.Element[] => {
     const { items } = this.state;
-    // tslint:disable-next-line:no-any
     return items.map((item: IExtendedPersonaProps, index: number) => this._renderItem(item, index));
   };
 
-  // tslint:disable-next-line:no-any
   private _renderItem(item: IExtendedPersonaProps, index: number): JSX.Element {
     const { removeButtonAriaLabel } = this.props;
     const expandGroup = this.props.onExpandGroup;
@@ -83,7 +80,7 @@ export class SelectedPeopleList extends BasePeopleSelectedItemsList {
     };
 
     const hasContextMenu = props.menuItems.length > 0;
-    if ((item as IExtendedPersonaProps).isEditing && hasContextMenu) {
+    if (item.isEditing && hasContextMenu) {
       return (
         <EditingItem
           {...props}
@@ -119,8 +116,7 @@ export class SelectedPeopleList extends BasePeopleSelectedItemsList {
     this.forceUpdate();
   };
 
-  // tslint:disable-next-line:no-any
-  private _completeEditing = (oldItem: any, newItem: any): void => {
+  private _completeEditing = (oldItem: IExtendedPersonaProps, newItem: IExtendedPersonaProps): void => {
     oldItem.isEditing = false;
     this.replaceItem(oldItem, newItem);
   };

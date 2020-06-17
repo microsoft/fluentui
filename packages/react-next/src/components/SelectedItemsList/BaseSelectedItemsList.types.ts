@@ -47,7 +47,7 @@ export interface IBaseSelectedItemsListProps<T> extends React.ClassAttributes<an
   /**
    * A callback to process a selection after the user selects something from the picker.
    */
-  onItemSelected?: (selectedItem?: T | T[]) => T | PromiseLike<T> | T[] | PromiseLike<T[]>;
+  onItemSelected?: (selectedItem?: T | T[]) => T | PromiseLike<T | T[]> | T[];
   /**
    * The items that the base picker should currently display as selected.
    * If this is provided then the picker will act as a controlled component.

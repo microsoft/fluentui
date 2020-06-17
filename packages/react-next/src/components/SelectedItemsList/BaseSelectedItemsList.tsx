@@ -5,12 +5,11 @@ import { IBaseSelectedItemsList, IBaseSelectedItemsListProps, ISelectedItemProps
 import { initializeComponentRef } from '../../Utilities';
 import { IObjectWithKey } from '../../Utilities';
 
-export interface IBaseSelectedItemsListState<T> {
-  // tslint:disable-next-line:no-any
+export interface IBaseSelectedItemsListState<T extends IObjectWithKey> {
   items: T[];
 }
 
-export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
+export class BaseSelectedItemsList<T extends IObjectWithKey, P extends IBaseSelectedItemsListProps<T>>
   extends React.Component<P, IBaseSelectedItemsListState<T>>
   implements IBaseSelectedItemsList<T> {
   protected root: HTMLElement;
@@ -35,24 +34,13 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
     return this.state.items;
   }
 
-  public addItems = (items: T[]): void => {
-    const processedItems: T[] | PromiseLike<T[]> = this.props.onItemSelected
-      ? // tslint:disable-next-line:no-any
-        (this.props.onItemSelected as any)(items)
-      : items;
+  public addItems = async (items: T[]): Promise<void> => {
+    const processedItems: T | T[] = this.props.onItemSelected ? await this.props.onItemSelected(items) : items;
 
-    const processedItemObjects: T[] = processedItems as T[];
-    const processedItemPromiseLikes: PromiseLike<T[]> = processedItems as PromiseLike<T[]>;
+    const processedItemObjects: T[] = Array.isArray(processedItems) ? processedItems : [processedItems];
 
-    if (processedItemPromiseLikes && processedItemPromiseLikes.then) {
-      processedItemPromiseLikes.then((resolvedProcessedItems: T[]) => {
-        const newItems: T[] = this.state.items.concat(resolvedProcessedItems);
-        this.updateItems(newItems);
-      });
-    } else {
-      const newItems: T[] = this.state.items.concat(processedItemObjects);
-      this.updateItems(newItems);
-    }
+    const newItems: T[] = this.state.items.concat(processedItemObjects);
+    this.updateItems(newItems);
   };
 
   public removeItemAt = (index: number): void => {
@@ -77,23 +65,19 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
     this.removeItemAt(index);
   };
 
-  public replaceItem = (itemToReplace: T, itemsToReplaceWith: T[]): void => {
+  public replaceItem = (itemToReplace: T, itemsToReplaceWith: T | T[]): void => {
     const { items } = this.state;
     const index: number = items.indexOf(itemToReplace);
     if (index > -1) {
-      const newItems = items
-        .slice(0, index)
-        .concat(itemsToReplaceWith)
-        .concat(items.slice(index + 1));
+      const newItems = [...items];
+      newItems.splice(index, 1, ...(Array.isArray(itemsToReplaceWith) ? itemsToReplaceWith : [itemsToReplaceWith]));
       this.updateItems(newItems);
     }
   };
 
-  // tslint:disable-next-line:no-any
-  public removeItems = (itemsToRemove: any[]): void => {
+  public removeItems = (itemsToRemove: T[]): void => {
     const { items } = this.state;
     const itemsCanRemove = itemsToRemove.filter(item => this._canRemoveItem(item));
-    // tslint:disable-next-line:no-any
     const newItems: T[] = items.filter(item => itemsCanRemove.indexOf(item) === -1);
     const firstItemToRemove = itemsCanRemove[0];
     const index: number = items.indexOf(firstItemToRemove);
@@ -107,7 +91,7 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
 
   public removeSelectedItems(): void {
     if (this.state.items.length && this.selection.getSelectedCount() > 0) {
-      this.removeItems(this.selection.getSelection());
+      this.removeItems(this.selection.getSelection() as T[]);
     }
   }
 
@@ -169,8 +153,7 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
     }
   }
 
-  // tslint:disable-next-line:no-any
-  public render(): any {
+  public render() {
     return this.renderItems();
   }
 
@@ -179,8 +162,7 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
     const onRenderItem = this.props.onRenderItem as (props: ISelectedItemProps<T>) => JSX.Element;
 
     const { items } = this.state;
-    // tslint:disable-next-line:no-any
-    return items.map((item: any, index: number) =>
+    return items.map((item: T, index: number) =>
       onRenderItem({
         item,
         index,
@@ -217,8 +199,7 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
 
   protected copyItems(items: T[]): void {
     if (this.props.onCopyItems) {
-      // tslint:disable-next-line:no-any
-      const copyText = (this.props.onCopyItems as any)(items);
+      const copyText = this.props.onCopyItems(items);
 
       const copyInput = document.createElement('input') as HTMLInputElement;
       document.body.appendChild(copyInput);
