@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Dropdown, IDropdown } from '@fluentui/react-next/lib/Dropdown';
-import { PrimaryButton } from '@fluentui/react-next/lib/CompatButton';
+import { PrimaryButton } from '@fluentui/react-next/lib/compat/Button';
 import { IStackTokens, Stack } from '@fluentui/react-next/lib/Stack';
 
 const dropdownStyles = { dropdown: { width: 300 } };

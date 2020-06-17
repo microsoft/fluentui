@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { GridBase } from './Grid.base';
 import { getStyles } from './Grid.styles';
-import { DefaultButton } from '../../CompatButton';
+import { DefaultButton } from '../../compat/Button';
 import { shallow } from 'enzyme';
 
 // tslint:disable-next-line:no-any

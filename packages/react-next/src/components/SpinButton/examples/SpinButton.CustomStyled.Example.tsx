@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IButtonStyles } from '@fluentui/react-next/lib/CompatButton';
+import { IButtonStyles } from '@fluentui/react-next/lib/compat/Button';
 import { SpinButton, ISpinButtonStyles } from '@fluentui/react-next/lib/SpinButton';
 
 const styles: Partial<ISpinButtonStyles> = {

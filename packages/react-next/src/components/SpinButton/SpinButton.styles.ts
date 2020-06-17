@@ -6,7 +6,7 @@ import {
   IconFontSizes,
   getInputFocusStyle,
 } from '../../Styling';
-import { IButtonStyles } from '@fluentui/react-next/lib/CompatButton';
+import { IButtonStyles } from '@fluentui/react-next/lib/compat/Button';
 import { ISpinButtonStyles } from './SpinButton.types';
 import { memoizeFunction } from '../../Utilities';
 

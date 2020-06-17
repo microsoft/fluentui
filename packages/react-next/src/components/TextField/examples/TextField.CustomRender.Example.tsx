@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DefaultButton, IconButton, IButtonStyles } from '@fluentui/react-next/lib/CompatButton';
+import { DefaultButton, IconButton, IButtonStyles } from '@fluentui/react-next/lib/compat/Button';
 import { TextField, ITextFieldProps } from '@fluentui/react-next/lib/TextField';
 import { Icon, IIconStyles } from '@fluentui/react-next/lib/Icon';
 import { Callout } from '@fluentui/react-next/lib/Callout';

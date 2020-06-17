@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Position } from 'office-ui-fabric-react/lib/utilities/positioning';
-import { IButtonStyles } from '@fluentui/react-next/lib/CompatButton';
+import { IButtonStyles } from '@fluentui/react-next/lib/compat/Button';
 import { IIconProps } from '../../Icon';
 import { ITheme, IStyle } from '../../Styling';
 import { ISpinButtonClassNames } from './SpinButton.classNames';

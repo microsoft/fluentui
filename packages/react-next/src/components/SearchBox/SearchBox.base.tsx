@@ -10,7 +10,7 @@ import {
   inputProperties,
 } from '../../Utilities';
 
-import { IconButton } from '../../CompatButton';
+import { IconButton } from '../../compat/Button';
 import { Icon } from '../../Icon';
 
 const getClassNames = classNamesFunction<ISearchBoxStyleProps, ISearchBoxStyles>();
