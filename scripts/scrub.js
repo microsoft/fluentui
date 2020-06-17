@@ -54,7 +54,7 @@ function deleteNodeModulesSymlinks(packagePath, failedPaths) {
     return;
   }
   // Check node_modules for symlinks and manually remove those
-  // (odd way of iterating is since we're adding more modules to the list as we go)
+  // (using this odd way of iterating since we're adding more modules to the list as we go)
   const modules = fs.readdirSync(nodeModulesPath);
   /** @type {string} */
   let mod;
