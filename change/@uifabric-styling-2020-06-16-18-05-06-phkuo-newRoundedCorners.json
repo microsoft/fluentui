@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Add new rounded corners to theme",
+  "packageName": "@uifabric/styling",
+  "email": "phkuo@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-06-17T01:05:06.697Z"
+}
