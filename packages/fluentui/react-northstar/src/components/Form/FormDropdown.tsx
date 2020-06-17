@@ -20,11 +20,12 @@ const FormDropdown = compose<
 >(FormFieldCustom, {
   className: FormDropdownClassName,
   displayName: 'FormDropdown',
-  overrideStyles: true,
+  overrideStyles: false,
   shorthandConfig: {},
-  slotProps: _ => ({
+  slotProps: ({ errorMessage }) => ({
     control: {
       as: Dropdown,
+      error: !!errorMessage,
     },
   }),
 }) as ComponentWithAs<'div', FormDropdownProps> & { shorthandConfig: ShorthandConfig<FormDropdownProps> };
