@@ -10,12 +10,14 @@ function verifyApiExtractor() {
   const configFolder = path.resolve(process.cwd(), 'config');
   const done = () => {};
 
-  fs.readdirSync(configFolder).forEach(fileName => {
-    if (fileName.match(/^api-extractor(-[a-zA-Z]+)?\.json$/)) {
-      // @ts-ignore
-      apiExtractorVerifyTask(path.resolve(configFolder, fileName), undefined)(done);
-    }
-  });
+  if (fs.existsSync(configFolder)) {
+    fs.readdirSync(configFolder).forEach(fileName => {
+      if (fileName.match(/^api-extractor(-[a-zA-Z]+)?\.json$/)) {
+        // @ts-ignore
+        apiExtractorVerifyTask(path.resolve(configFolder, fileName), undefined)(done);
+      }
+    });
+  }
 }
 const updateApiExtractor = apiExtractorUpdateTask(configPath, undefined);
 
