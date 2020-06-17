@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "update expected data type for vertical bar charts",
+  "packageName": "@uifabric/charting",
+  "email": "seuberling@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-06-17T19:45:12.386Z"
+}
