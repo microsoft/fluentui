@@ -1,5 +1,4 @@
 import { ComponentSlotStylesResolved, ComponentVariablesObject, isDebugEnabled } from '@fluentui/styles';
-
 import * as _ from 'lodash';
 
 import { ComponentSlotClasses, ResolveStylesOptions, StylesContextValue } from '../styles/types';
