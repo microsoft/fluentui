@@ -1,6 +1,5 @@
 import { IDay, IDayGridOptions, IRestrictedDatesOptions, IAvailableDateOptions, IGridStrings } from './DateGrid.types';
 import { addDays, getDateRangeArray, compareDates, isInDateRangeArray, compareDatePart } from '../dateMath/DateMath';
-import { find } from '@uifabric/utilities';
 import { DAYS_IN_WEEK, DateRangeType, DayOfWeek } from '../dateValues/DateValues';
 
 export const getDayGrid = (options: IDayGridOptions): IDay[][] => {
@@ -97,11 +96,7 @@ export const isRestrictedDate = (date: Date, options: IRestrictedDatesOptions): 
   if (!restrictedDates && !minDate && !maxDate) {
     return false;
   }
-  const inRestrictedDates =
-    restrictedDates &&
-    !!find(restrictedDates, (rd: Date) => {
-      return compareDates(rd, date);
-    });
+  const inRestrictedDates = restrictedDates && restrictedDates.some((rd: Date) => compareDates(rd, date));
   return inRestrictedDates || isBeforeMinDate(date, options) || isAfterMaxDate(date, options);
 };
 
