@@ -107,31 +107,38 @@ export const TelemetryTable: React.FC<TelemetryTableProps> = props => {
                 (
                   column: HeaderGroup &
                     UseSortByColumnProps<{}> &
-                    UseFiltersColumnProps<{}> & { isShowDetails?: TelemetryTableExpandNames },
+                    UseFiltersColumnProps<{}> & {
+                      isShowDetails?: TelemetryTableExpandNames;
+                      subgroup: 'styles' | 'timers';
+                    },
+                  index,
                 ) => (
                   <th
                     {...column.getHeaderProps({
                       style: styles.tableHeader({
-                        canFilter: column.canFilter,
-                        isShowDetails: !!column.isShowDetails,
+                        isFirstInSubgroup: column.subgroup && column.subgroup !== group.headers[index - 1]?.subgroup,
+                        isLastInSubgroup: column.subgroup && column.subgroup !== group.headers[index + 1]?.subgroup,
+                        subgroup: column.subgroup,
                       }),
                     })}
                   >
-                    <div {...column.getSortByToggleProps()}>
-                      {column.render('Header')}
-                      <span style={styles.tableSort()}>
-                        {column.isSorted ? (column.isSortedDesc ? ' 🔽' : ' 🔼') : ''}
-                      </span>
+                    <div style={{ alignItems: 'center', display: 'flex' }}>
+                      <div {...column.getSortByToggleProps({ style: { flex: 1 } })}>
+                        {column.render('Header')}
+                        <span style={styles.tableSort()}>
+                          {column.isSorted ? (column.isSortedDesc ? ' 🔽' : ' 🔼') : ''}
+                        </span>
+                      </div>
+                      {column.isShowDetails && (
+                        <input
+                          checked={expand?.[column.isShowDetails]}
+                          onChange={e => onExpandChange(column.isShowDetails!, e.target.checked)}
+                          style={styles.tableCheckbox()}
+                          type="checkbox"
+                        />
+                      )}
+                      {column.canFilter && <div>{column.render('Filter')}</div>}
                     </div>
-                    {column.isShowDetails && (
-                      <input
-                        checked={expand?.[column.isShowDetails]}
-                        onChange={e => onExpandChange(column.isShowDetails!, e.target.checked)}
-                        style={styles.tableCheckbox()}
-                        type="checkbox"
-                      />
-                    )}
-                    {column.canFilter && <div>{column.render('Filter')}</div>}
                   </th>
                 ),
               )}
@@ -216,7 +223,7 @@ export const TelemetryTable: React.FC<TelemetryTableProps> = props => {
             setPageSize(Number(e.target.value));
           }}
         >
-          {[20, 30, 50, 100].map(pageSize => (
+          {[5, 10, 20, 30, 50, 100].map(pageSize => (
             <option key={pageSize} value={pageSize}>
               Show {pageSize}
             </option>
