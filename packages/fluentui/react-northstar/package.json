@@ -45,6 +45,7 @@
     "@types/react-dom": "16.8.4",
     "@types/react-is": "^16.7.1",
     "@types/simulant": "^0.2.0",
+    "@fluentui/react-conformance": "^0.1.0",
     "@uifabric/build": "^7.0.0",
     "csstype": "^2.6.7",
     "faker": "^4.1.0",

@@ -13,14 +13,14 @@ export const defaultTests: TestObject = {
 
     // No need to check if the description is undefined, ComponentDoc.description is a "string" not "string | undefined"
     it(`has a docblock with ${minWords} to ${maxWords} words`, () => {
-      expect(_.words(componentInfo.description)).toBeGreaterThanOrEqual(minWords);
-      expect(_.words(componentInfo.description)).toBeLessThanOrEqual(maxWords);
+      expect(_.words(componentInfo.description).length).toBeGreaterThanOrEqual(minWords);
+      expect(_.words(componentInfo.description).length).toBeLessThanOrEqual(maxWords);
     });
   },
 
   /** Component file exports a valid React element type  */
   'exports-component': (componentInfo: ComponentDoc, testInfo: TestingOptions) => {
-    it(`exports component from file under correct name`, () => {
+    it(`exports component from file under correct name ${testInfo.componentPath}`, () => {
       const componentFile = require(testInfo.componentPath);
       if (testInfo.useDefaultExport) {
         expect(componentFile.default).toBe(testInfo.Component);
@@ -33,8 +33,10 @@ export const defaultTests: TestObject = {
   /** Component file exports a valid React element and can render it */
   'component-renders': (componentInfo: ComponentDoc, testInfo: TestingOptions) => {
     it(`renders`, () => {
-      const { requiredProps, Component } = testInfo;
-      const mountedComponent = mount(<Component {...requiredProps} />);
+      const { requiredProps, Component, customMount } = testInfo;
+      const mountedComponent = customMount
+        ? customMount(<Component {...requiredProps} />)
+        : mount(<Component {...requiredProps} />);
       expect(mountedComponent.exists()).toBeTruthy();
     });
   },
@@ -45,16 +47,18 @@ export const defaultTests: TestObject = {
    */
   'component-has-displayname': (componentInfo: ComponentDoc, testInfo: TestingOptions) => {
     const { Component } = testInfo;
-    if (Component.prototype.constructor) {
-      it(`constructor is a named function and matches displayName`, () => {
-        const constructorName = Component.prototype.constructor.name;
-        expect(constructorName).toEqual(testInfo.displayName);
-      });
-    } else {
-      it(`has a displayName`, () => {
-        expect(Component.displayName).toEqual(testInfo.displayName);
-      });
-    }
+
+    it(`has a displayName or constructor name`, () => {
+      const constructorName = Component.prototype?.constructor.name;
+      let displayName = Component.displayName || constructorName;
+
+      if (constructorName === 'Wrapped') {
+        displayName = displayName.replace(/^Styled/, '');
+        displayName = displayName.replace(/Base$/, '');
+      }
+
+      expect(displayName).toEqual(testInfo.displayName);
+    });
   },
 
   /** Constructor/component name matches filename */
