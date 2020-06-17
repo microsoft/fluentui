@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Pass forwarded ref as param in state option",
-  "packageName": "@fluentui/react-compose",
-  "email": "xgao@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-06-11T19:21:32.178Z"
-}

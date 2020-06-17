@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Fri, 12 Jun 2020 18:29:07 GMT and should not be manually modified.
+This log was last generated on Tue, 16 Jun 2020 17:35:36 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.3.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.3.3)
+
+Tue, 16 Jun 2020 17:35:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.3.0..@fluentui/react-button_v0.3.3)
+
+### Patches
+
+- The css output was being unintentionally botched by the postcss-clean minifier. Moving to clean-css directly without the postcss wrapping. ([PR #13612](https://github.com/microsoft/fluentui/pull/13612) by dzearing@microsoft.com)
 
 ## [0.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.3.0)
 
