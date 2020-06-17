@@ -21,7 +21,7 @@ import {
 } from '../Persona.types';
 import { getPersonaInitialsColor } from '../PersonaInitialsColor';
 import { sizeToPixels } from '../PersonaConsts';
-import { getPropsWithDefaults } from 'office-ui-fabric-react';
+import { getPropsWithDefaults } from '@fluentui/react-next';
 
 const getClassNames = classNamesFunction<IPersonaCoinStyleProps, IPersonaCoinStyles>({
   // There can be many PersonaCoin rendered with different sizes.

@@ -7,8 +7,8 @@ import {
   PersonaSize,
   PersonaPresence,
 } from '@fluentui/react-next';
-import { Icon, IIconStyles } from 'office-ui-fabric-react/lib/Icon';
-import { Stack } from 'office-ui-fabric-react/lib/Stack';
+import { Icon, IIconStyles } from '@fluentui/react-next/lib/Icon';
+import { Stack } from '@fluentui/react-next/lib/Stack';
 import { TestImages } from '@uifabric/example-data';
 
 const personaStyles: Partial<IPersonaStyles> = { root: { margin: '0 0 10px 0' } };

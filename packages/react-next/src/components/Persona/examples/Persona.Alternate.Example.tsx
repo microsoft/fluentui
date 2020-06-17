@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IPersonaSharedProps, Persona, PersonaSize, PersonaPresence } from '@fluentui/react-next';
-import { Stack } from 'office-ui-fabric-react/lib/Stack';
+import { Stack } from '@fluentui/react-next/lib/Stack';
 import { TestImages } from '@uifabric/example-data';
 
 export const PersonaAlternateExample: React.FunctionComponent = () => {

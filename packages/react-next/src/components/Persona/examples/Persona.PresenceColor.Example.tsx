@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { IPersonaSharedProps, Persona, PersonaSize, PersonaPresence } from '@fluentui/react-next';
-import { Label } from 'office-ui-fabric-react/lib/Label';
-import { Stack } from 'office-ui-fabric-react/lib/Stack';
-import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
+import { Label } from '@fluentui/react-next/lib/Label';
+import { Stack } from '@fluentui/react-next/lib/Stack';
+import { mergeStyles } from '@fluentui/react-next/lib/Styling';
 
 const presenceColors = {
   available: '#fff',
