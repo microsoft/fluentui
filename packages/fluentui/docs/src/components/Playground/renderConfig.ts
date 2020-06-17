@@ -4,6 +4,7 @@ import * as Bindings from '@fluentui/react-bindings';
 import * as DocsComponent from '@fluentui/docs-components';
 import * as FluentUI from '@fluentui/react-northstar';
 import * as FluentUIIcons from '@fluentui/react-icons-northstar';
+import * as ReactFela from 'react-fela';
 import * as _ from 'lodash';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
@@ -24,13 +25,13 @@ export const babelConfig = {
   presets: ['es2015'],
 };
 
-type Import = {
+type CodeSandboxImport = {
   module: any;
   version: string;
   required: boolean;
 };
 
-export const imports: Record<string, Import> = {
+export const imports: Record<string, CodeSandboxImport> = {
   '@fluentui/accessibility': {
     version: accessibilityPackageJson.version,
     module: Accessibility,
@@ -80,6 +81,11 @@ export const imports: Record<string, Import> = {
     version: projectPackageJson.peerDependencies['react-dom'],
     module: ReactDOM,
     required: true,
+  },
+  'react-fela': {
+    version: projectPackageJson.dependencies['react-fela'],
+    module: ReactFela,
+    required: false,
   },
   prettier: {
     version: docsComponentsPackageJson.peerDependencies['prettier'],
