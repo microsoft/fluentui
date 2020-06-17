@@ -13,6 +13,7 @@ import {
 } from '@fluentui/styles';
 import { ComponentSlotClasses, RendererParam, ResolveStylesOptions } from '@fluentui/react-bindings';
 import * as _ from 'lodash';
+import { serializeStyles } from '@emotion/serialize';
 
 export type ResolveStylesResult = {
   resolvedStyles: ComponentSlotStylesResolved;
@@ -217,6 +218,13 @@ const resolveStyles = (
         classes[lazyEvaluationKey] = val;
       },
       get(): string {
+        let designClassName = '';
+        if (slotName === 'root' && props.design) {
+          const serializedValue = serializeStyles([props.design as any], {}, styleParam);
+          designClassName = `design-${serializedValue.name}`;
+          renderer.renderGlobal(serializedValue.styles, `.${componentClassName}.${designClassName}`);
+        }
+
         if (cacheEnabled && theme) {
           const classesThemeCache = classesCache.get(theme) || {};
 
