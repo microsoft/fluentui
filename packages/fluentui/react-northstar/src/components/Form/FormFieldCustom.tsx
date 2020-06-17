@@ -15,7 +15,6 @@ import { ShorthandValue, withSafeTypeForAs, ProviderContextPrepared } from '../.
 import Box from '../Box/Box';
 import {
   getElementType,
-  // useUnhandledProps,
   useTelemetry,
   useStyles,
   useAccessibility,
