@@ -9,6 +9,7 @@ import {
   unstable_getAccessibility as getAccessibility,
   unstable_getStyles as getStyles,
 } from '@fluentui/react-bindings';
+import { noopRenderer } from '@fluentui/react-northstar-styles-renderer';
 import {
   emptyTheme,
   ComponentSlotStylesResolved,
@@ -45,6 +46,7 @@ export interface RenderConfig<P> {
   actionHandlers: AccessibilityActionHandlers;
   render: RenderComponentCallback<P>;
   saveDebug: (debug: DebugData | null) => void;
+  isFirstRenderRef: React.MutableRefObject<boolean>;
 }
 
 const renderComponent = <P extends {}>(
@@ -57,7 +59,7 @@ const renderComponent = <P extends {}>(
     logProviderMissingWarning();
   }
 
-  const { setStart, setEnd } = getTelemetry(displayName, context.telemetry);
+  const { setStart, setEnd } = getTelemetry(displayName, context.telemetry, config.isFirstRenderRef);
   const rtl = context.rtl || false;
 
   setStart();
@@ -74,11 +76,12 @@ const renderComponent = <P extends {}>(
     actionHandlers,
   );
   const { classes, variables, styles, theme } = getStyles({
+    allDisplayNames: [displayName],
     className,
     disableAnimations: context.disableAnimations || false,
-    displayNames: [displayName],
+    primaryDisplayName: displayName,
     props: stateAndProps,
-    renderer: context.renderer || { renderRule: () => '' },
+    renderer: context.renderer || noopRenderer,
     rtl,
     saveDebug,
     theme: context.theme || emptyTheme,
@@ -88,6 +91,7 @@ const renderComponent = <P extends {}>(
       enableStylesCaching: false,
       enableBooleanVariablesCaching: false,
     },
+    telemetry: context.telemetry,
   });
 
   const resolvedConfig: RenderResultConfig<P> = {

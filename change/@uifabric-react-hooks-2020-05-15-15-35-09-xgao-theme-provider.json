@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Add useForceUdpate hook",
-  "packageName": "@uifabric/react-hooks",
-  "email": "xgao@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-05-15T22:34:52.463Z"
-}

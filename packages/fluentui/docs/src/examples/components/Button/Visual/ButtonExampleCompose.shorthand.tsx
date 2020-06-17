@@ -52,7 +52,7 @@ const TertiaryButton = compose<'button', TertiaryButtonProps, TertiaryButtonStyl
   mapPropsToStylesProps: props => ({ tertiary: props.tertiary }),
   handledProps: ['tertiary'],
   slots: { content: TertiaryButtonContent },
-  mapPropsToSlotProps: props => ({
+  slotProps: props => ({
     content: { tertiary: props.tertiary },
   }),
 });

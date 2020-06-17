@@ -1,8 +1,88 @@
 # Change Log - @fluentui/react-compose
 
-This log was last generated on Wed, 20 May 2020 12:31:10 GMT and should not be manually modified.
+This log was last generated on Tue, 16 Jun 2020 12:40:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.11.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.11.2)
+
+Tue, 16 Jun 2020 12:40:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v0.11.0..@fluentui/react-compose_v0.11.2)
+
+### Patches
+
+- Pass forwarded ref as param in state option ([PR #13570](https://github.com/microsoft/fluentui/pull/13570) by xgao@microsoft.com)
+
+## [0.11.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.11.0)
+
+Fri, 12 Jun 2020 18:29:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v0.9.0..@fluentui/react-compose_v0.11.0)
+
+### Minor changes
+
+- Compose: Adding replaceable state as part of compose. ([PR #13521](https://github.com/microsoft/fluentui/pull/13521) by humbertomakotomorimoto@gmail.com)
+
+## [0.9.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.9.0)
+
+Mon, 08 Jun 2020 12:34:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v0.8.0..@fluentui/react-compose_v0.9.0)
+
+### Minor changes
+
+- Updating mergeProps to not use getNativeElementProps. ([PR #13474](https://github.com/microsoft/fluentui/pull/13474) by dzearing@microsoft.com)
+
+### Patches
+
+- compose: update classes option to allow array ([PR #13493](https://github.com/microsoft/fluentui/pull/13493) by xgao@microsoft.com)
+
+## [0.8.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.8.0)
+
+Fri, 05 Jun 2020 05:09:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v0.7.0..@fluentui/react-compose_v0.8.0)
+
+### Minor changes
+
+- Updating signature to createClassResolver to cache most of the resolution logic upfront. ([PR #13448](https://github.com/microsoft/fluentui/pull/13448) by dzearing@microsoft.com)
+
+### Patches
+
+- Adjusting class resolution to parse enums using conventions. ([PR #13472](https://github.com/microsoft/fluentui/pull/13472) by dzearing@microsoft.com)
+
+## [0.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.7.0)
+
+Tue, 02 Jun 2020 12:36:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v0.6.1..@fluentui/react-compose_v0.7.0)
+
+### Minor changes
+
+- Adding `mergeProps` helper to package, to help resolving slots and slotProps given state and compose options. This decouples the props processing from compose, and adds more robustness by resolving slotProps, mixing native props into root, handling `as`, shorthand props, and merging classes. ([PR #13360](https://github.com/microsoft/fluentui/pull/13360) by dzearing@microsoft.com)
+
+## [0.6.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.6.1)
+
+Thu, 28 May 2020 12:42:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v0.6.0..@fluentui/react-compose_v0.6.1)
+
+### Patches
+
+- Typescript generic argument names cleaned up, removed react-is unlisted dependency usage, no breaking changes. Also split utils.ts into separate files. Each of these functions should have some unit tests. ([PR #13354](https://github.com/microsoft/fluentui/pull/13354) by dzearing@microsoft.com)
+
+## [0.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.6.0)
+
+Wed, 27 May 2020 12:40:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v0.5.1..@fluentui/react-compose_v0.6.0)
+
+### Minor changes
+
+- Adding createClassResolver to help with auto resolving class names given class map and props. ([PR #13330](https://github.com/microsoft/fluentui/pull/13330) by dzearing@microsoft.com)
+
+## [0.5.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.5.1)
+
+Tue, 26 May 2020 12:46:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v0.5.0..@fluentui/react-compose_v0.5.1)
+
+### Patches
+
+- fix: allow ParentProps in ComposeOptions ([PR #13316](https://github.com/microsoft/fluentui/pull/13316) by olfedias@microsoft.com)
 
 ## [0.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.5.0)
 

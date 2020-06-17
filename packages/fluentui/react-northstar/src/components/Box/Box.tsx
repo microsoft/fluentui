@@ -28,7 +28,7 @@ export interface BoxProps extends UIComponentProps<BoxProps>, ContentComponentPr
   /** Accessibility behavior if overridden by the user. */
   accessibility?: Accessibility<never>;
 }
-export type BoxStylesProps = never;
+export type BoxStylesProps = {};
 
 export const boxClassName = 'ui-box';
 

@@ -83,7 +83,7 @@ export const embedSlotClassNames: EmbedSlotClassNames = {
 
 export type EmbedStylesProps = Required<Pick<EmbedProps, 'active'>> & { iframeLoaded: boolean };
 
-export const Embed: React.FC<WithAsProp<EmbedProps>> & FluentComponentStaticProps<EmbedProps> = props => {
+const Embed: React.FC<WithAsProp<EmbedProps>> & FluentComponentStaticProps<EmbedProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(Embed.displayName, context.telemetry);
   setStart();

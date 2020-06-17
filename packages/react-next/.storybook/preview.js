@@ -1,13 +1,15 @@
-import React from 'react';
 import { initializeIcons } from '@uifabric/icons';
 import generateStoriesFromExamples from '@uifabric/build/storybook/generateStoriesFromExamples';
 import { configure, addParameters, addDecorator } from '@storybook/react';
 import { withA11y } from '@storybook/addon-a11y';
 import { withPerformance } from 'storybook-addon-performance';
-import { ThemeProvider } from '@fluentui/react-next';
+import { withKnobs } from '@storybook/addon-knobs';
+import { withThemeProvider } from './decorators/withThemeProvider';
 
 addDecorator(withA11y());
 addDecorator(withPerformance);
+addDecorator(withKnobs({ escapeHTML: false }));
+addDecorator(withThemeProvider);
 addParameters({
   a11y: {
     manual: true,
@@ -30,7 +32,7 @@ function loadStories() {
     Object.keys(story).forEach(exampleName => {
       const example = story[exampleName];
       if (typeof example === 'function') {
-        story[exampleName] = () => React.createElement(ThemeProvider, { children: example() });
+        story[exampleName] = () => example();
       }
     });
   }

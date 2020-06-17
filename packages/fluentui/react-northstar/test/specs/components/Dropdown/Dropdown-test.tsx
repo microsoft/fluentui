@@ -9,7 +9,7 @@ import { DropdownItemProps } from 'src/components/Dropdown/DropdownItem';
 import { ShorthandValue } from 'src/types';
 import List from 'src/components/List/List';
 
-jest.dontMock('keyboard-key');
+jest.dontMock('@fluentui/keyboard-key');
 jest.useFakeTimers();
 
 describe('Dropdown', () => {

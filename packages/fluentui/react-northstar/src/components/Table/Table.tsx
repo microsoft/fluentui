@@ -1,5 +1,12 @@
 import { Accessibility, tableBehavior, TableBehaviorProps } from '@fluentui/accessibility';
-import { getElementType, useTelemetry, useUnhandledProps, useAccessibility, useStyles } from '@fluentui/react-bindings';
+import {
+  getElementType,
+  useTelemetry,
+  mergeVariablesOverrides,
+  useUnhandledProps,
+  useAccessibility,
+  useStyles,
+} from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
 import * as _ from 'lodash';
@@ -11,7 +18,6 @@ import {
   childrenExist,
   createShorthandFactory,
 } from '../../utils';
-import { mergeComponentVariables } from '@fluentui/styles';
 import TableRow, { TableRowProps } from './TableRow';
 import TableCell from './TableCell';
 // @ts-ignore
@@ -49,10 +55,6 @@ export interface TableProps extends UIComponentProps, ChildrenComponentProps {
   compact?: boolean;
 }
 
-const handleVariablesOverrides = variables => predefinedProps => ({
-  variables: mergeComponentVariables(variables, predefinedProps.variables),
-});
-
 export const tableClassName = 'ui-table';
 export const tableSlotClassNames: TableSlotClassNames = {
   header: `${tableClassName}__header`,
@@ -60,7 +62,7 @@ export const tableSlotClassNames: TableSlotClassNames = {
 
 export type TableStylesProps = never;
 
-export const Table: React.FC<WithAsProp<TableProps>> &
+const Table: React.FC<WithAsProp<TableProps>> &
   FluentComponentStaticProps<TableProps> & {
     Cell: typeof TableCell;
     Row: typeof TableRow;
@@ -90,43 +92,33 @@ export const Table: React.FC<WithAsProp<TableProps>> &
   });
 
   const renderRows = () => {
-    return _.map(rows, (row: TableRowProps, index: number) => {
-      const props = {
-        compact,
-        onClick: (e, props) => {
-          _.invoke(row, 'onClick', e, props);
-        },
-      } as TableRowProps;
-      const overrideProps = handleVariablesOverrides(variables);
+    return _.map(rows, (row: TableRowProps) => {
       return TableRow.create(row, {
         defaultProps: () =>
           getA11yProps('row', {
-            ...props,
+            compact,
+            onClick: (e, props) => {
+              _.invoke(row, 'onClick', e, props);
+            },
           }),
-        overrideProps,
+        overrideProps: predefinedProps => ({
+          variables: mergeVariablesOverrides(variables, predefinedProps.variables),
+        }),
       });
     });
   };
 
   const renderHeader = () => {
-    if (!header) {
-      return null;
-    }
-
-    const headerRowProps = {
-      header: true,
-      compact,
-      className: tableSlotClassNames.header,
-    } as TableRowProps;
-
-    const overrideProps = handleVariablesOverrides(variables);
-
     return TableRow.create(header, {
       defaultProps: () =>
         getA11yProps('row', {
-          ...headerRowProps,
+          header: true,
+          compact,
+          className: tableSlotClassNames.header,
         }),
-      overrideProps,
+      overrideProps: predefinedProps => ({
+        variables: mergeVariablesOverrides(variables, predefinedProps.variables),
+      }),
     });
   };
 

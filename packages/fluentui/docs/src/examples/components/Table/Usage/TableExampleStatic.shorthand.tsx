@@ -4,7 +4,7 @@ import { Table } from '@fluentui/react-northstar';
 const header = {
   items: ['id', 'Name', 'Picture', 'Age'],
 };
-const rowsPlain = [
+const rows = [
   {
     key: 1,
     items: ['1', 'Roman van von der Longername', 'None', '30 years'],
@@ -19,6 +19,6 @@ const rowsPlain = [
   },
 ];
 
-const StaticTable = () => <Table header={header} rows={rowsPlain} aria-label="Static table" />;
+const TableExampleStaticShorthand = () => <Table header={header} rows={rows} aria-label="Static table" />;
 
-export default StaticTable;
+export default TableExampleStaticShorthand;

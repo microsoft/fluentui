@@ -131,7 +131,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                         ],
                         kind: 'property' as 'property',
                         description:
-                          'Font size of the Text in typographic points. Can either use a number, or use a predefined font size from IFontSizes.\n',
+                          'Font size of the Text in CSS pixels. Can either use a number, or use a predefined font size from IFontSizes.\n',
                         deprecated: false,
                       },
                       {

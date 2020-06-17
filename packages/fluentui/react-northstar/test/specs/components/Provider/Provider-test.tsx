@@ -1,3 +1,5 @@
+import { RendererContext } from '@fluentui/react-bindings';
+import { CreateRenderer, noopRenderer } from '@fluentui/react-northstar-styles-renderer';
 import { ThemeInput } from '@fluentui/styles';
 import { mount } from 'enzyme';
 import * as faker from 'faker';
@@ -5,7 +7,6 @@ import * as React from 'react';
 
 import Provider from 'src/components/Provider/Provider';
 import ProviderConsumer from 'src/components/Provider/ProviderConsumer';
-import { createRenderer } from 'src/utils/felaRenderer';
 import PortalInner from 'src/components/Portal/PortalInner';
 
 const createDocumentMock = (): Document => {
@@ -207,6 +208,11 @@ describe('Provider', () => {
   });
 
   describe('calls provided renderer', () => {
+    //
+    // We don't support changing renderer on the fly.
+    // So mocks for `target` are required to create a new renderer.
+    //
+
     test('calls renderFont', () => {
       const theme: ThemeInput = {
         fontFaces: [
@@ -217,13 +223,19 @@ describe('Provider', () => {
           },
         ],
       };
-      const renderer = createRenderer();
-      const renderFont = jest.spyOn(renderer, 'renderFont');
+
+      const renderFont = jest.fn();
+      const createRenderer: CreateRenderer = () => ({
+        ...noopRenderer,
+        renderFont,
+      });
 
       mount(
-        <Provider theme={theme} renderer={renderer}>
-          <div />
-        </Provider>,
+        <RendererContext.Provider value={createRenderer}>
+          <Provider theme={theme} target={createDocumentMock()}>
+            <div />
+          </Provider>
+        </RendererContext.Provider>,
       );
 
       expect(renderFont).toHaveBeenCalled();
@@ -240,16 +252,22 @@ describe('Provider', () => {
         },
       ],
     };
-    const renderer = createRenderer();
-    const renderStatic = jest.spyOn(renderer, 'renderStatic');
+    const renderGlobal = jest.fn();
+
+    const createRenderer: CreateRenderer = () => ({
+      ...noopRenderer,
+      renderGlobal,
+    });
 
     mount(
-      <Provider theme={theme} renderer={renderer}>
-        <div />
-      </Provider>,
+      <RendererContext.Provider value={createRenderer}>
+        <Provider theme={theme} target={createDocumentMock()}>
+          <div />
+        </Provider>
+      </RendererContext.Provider>,
     );
 
-    expect(renderStatic).toHaveBeenCalled();
+    expect(renderGlobal).toHaveBeenCalled();
   });
 
   describe('target', () => {

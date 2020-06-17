@@ -2,7 +2,7 @@ import { ReactWrapper } from 'enzyme';
 import * as React from 'react';
 import { isConformant, implementsShorthandProp, handlesAccessibility } from 'test/specs/commonTests';
 import { mountWithProvider, findIntrinsicElement } from 'test/utils';
-import * as keyboardKey from 'keyboard-key';
+import { keyboardKey } from '@fluentui/keyboard-key';
 
 import Attachment, { attachmentClassName } from 'src/components/Attachment/Attachment';
 import AttachmentAction, { attachmentActionClassName } from 'src/components/Attachment/AttachmentAction';

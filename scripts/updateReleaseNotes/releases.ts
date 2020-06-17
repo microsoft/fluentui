@@ -1,4 +1,4 @@
-import * as GitHubApi from '@octokit/rest';
+import { Octokit } from '@octokit/rest';
 import { repoDetails, github } from './init';
 import { IRelease } from './types';
 
@@ -32,7 +32,7 @@ export async function getReleases(tags?: string[]): Promise<Map<string, IRelease
     // Get all the releases
     console.log('Getting all releases...');
     try {
-      const res: GitHubApi.ReposListReleasesResponseItem[] = await github.paginate(
+      const res: Octokit.ReposListReleasesResponseItem[] = await github.paginate(
         github.repos.listReleases.endpoint.merge(repoDetails),
       );
 
