@@ -142,14 +142,15 @@ export const useOverflow = (
     const win = getWindow(menuButton);
 
     if (menuButton && win) {
-      const updateOverflow = async.debounce(() => hideOverflowItems(menuButton, win));
+      const updateOverflow = () => hideOverflowItems(menuButton, win);
+      const updateOverflowDebounced = async.debounce(updateOverflow, 16, { leading: true });
 
       const requestId = win.requestAnimationFrame(updateOverflow);
-      win.addEventListener('resize', updateOverflow, false);
+      win.addEventListener('resize', updateOverflowDebounced, false);
 
       return () => {
         win.cancelAnimationFrame(requestId);
-        win.removeEventListener('resize', updateOverflow, false);
+        win.removeEventListener('resize', updateOverflowDebounced, false);
         resetOverflowItems(menuButton);
       };
     }
