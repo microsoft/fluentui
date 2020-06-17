@@ -1,32 +1,42 @@
 import * as React from 'react';
-import { css, getId, initializeComponentRef } from '../../../../Utilities';
+import { css } from '../../../../Utilities';
 import { Persona, PersonaSize } from '../../../../Persona';
 import { ISelectedPeopleItemProps } from '../SelectedPeopleList';
 import { IconButton } from '../../../../Button';
 import * as stylesImport from './ExtendedSelectedItem.scss';
+import { useId } from '@uifabric/react-hooks';
 // tslint:disable-next-line:no-any
 const styles: any = stylesImport;
 
-export interface IPeoplePickerItemState {
-  contextualMenuVisible: boolean;
-}
+export const ExtendedSelectedItem = React.forwardRef(
+  (
+    {
+      item,
+      onExpandItem,
+      onRemoveItem,
+      removeButtonAriaLabel,
+      index,
+      selected,
+      renderPersonaCoin,
+      renderPrimaryText,
+    }: ISelectedPeopleItemProps,
+    forwardedRef: React.Ref<HTMLDivElement>,
+  ) => {
+    const itemId = useId();
 
-export class ExtendedSelectedItem extends React.Component<ISelectedPeopleItemProps, IPeoplePickerItemState> {
-  protected persona = React.createRef<HTMLDivElement>();
+    const onClickIconButton = (
+      action: (() => void) | undefined,
+    ): ((ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => void) => {
+      return (ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>): void => {
+        ev.stopPropagation();
+        ev.preventDefault();
+        action?.();
+      };
+    };
 
-  constructor(props: ISelectedPeopleItemProps) {
-    super(props);
-
-    initializeComponentRef(this);
-    this.state = { contextualMenuVisible: false };
-  }
-
-  public render(): JSX.Element {
-    const { item, onExpandItem, onRemoveItem, removeButtonAriaLabel, index, selected } = this.props;
-    const itemId = getId();
     return (
       <div
-        ref={this.persona}
+        ref={forwardedRef}
         className={css(
           'ms-PickerPersona-container',
           styles.personaContainer,
@@ -41,7 +51,7 @@ export class ExtendedSelectedItem extends React.Component<ISelectedPeopleItemPro
       >
         <div hidden={!item.canExpand || onExpandItem === undefined}>
           <IconButton
-            onClick={this._onClickIconButton(onExpandItem)}
+            onClick={onClickIconButton(onExpandItem)}
             iconProps={{ iconName: 'Add', style: { fontSize: '14px' } }}
             className={css('ms-PickerItem-removeButton', styles.expandButton, styles.actionButton)}
             ariaLabel={removeButtonAriaLabel}
@@ -51,13 +61,13 @@ export class ExtendedSelectedItem extends React.Component<ISelectedPeopleItemPro
           <div className={css('ms-PickerItem-content', styles.itemContent)} id={'selectedItemPersona-' + itemId}>
             <Persona
               {...item}
-              onRenderCoin={this.props.renderPersonaCoin}
-              onRenderPrimaryText={this.props.renderPrimaryText}
+              onRenderCoin={renderPersonaCoin}
+              onRenderPrimaryText={renderPrimaryText}
               size={PersonaSize.size32}
             />
           </div>
           <IconButton
-            onClick={this._onClickIconButton(onRemoveItem)}
+            onClick={onClickIconButton(onRemoveItem)}
             iconProps={{ iconName: 'Cancel', style: { fontSize: '14px' } }}
             className={css('ms-PickerItem-removeButton', styles.removeButton, styles.actionButton)}
             ariaLabel={removeButtonAriaLabel}
@@ -65,17 +75,6 @@ export class ExtendedSelectedItem extends React.Component<ISelectedPeopleItemPro
         </div>
       </div>
     );
-  }
-
-  private _onClickIconButton(
-    action: (() => void) | undefined,
-  ): (ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => void {
-    return (ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>): void => {
-      ev.stopPropagation();
-      ev.preventDefault();
-      if (action) {
-        action();
-      }
-    };
-  }
-}
+  },
+);
+ExtendedSelectedItem.displayName = 'ExtendedSelectedItem';
