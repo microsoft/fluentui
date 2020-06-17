@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { hot } from 'react-hot-loader/root';
 import { Provider, Debug, teamsTheme, teamsDarkTheme, teamsHighContrastTheme } from '@fluentui/react-northstar';
+import { RendererProvider } from '@fluentui/react-bindings';
+import { createFelaRenderer } from '@fluentui/react-northstar-fela-renderer';
 import { TelemetryPopover } from '@fluentui/react-telemetry';
 import { mergeThemes } from '@fluentui/styles';
 
@@ -46,8 +48,10 @@ class App extends React.Component<any, ThemeContextData> {
               ],
             })}
           >
-            <Debug />
-            <Routes />
+            <RendererProvider factory={createFelaRenderer}>
+              <Debug />
+              <Routes />
+            </RendererProvider>
           </Provider>
         </TelemetryPopover>
       </ThemeContext.Provider>

@@ -3,9 +3,9 @@ import {
   getElementType,
   useUnhandledProps,
   StylesContextPerformanceInput,
-  RendererContext,
   Telemetry,
   unstable_getStyles,
+  useCreateRenderer,
   useIsomorphicLayoutEffect,
 } from '@fluentui/react-bindings';
 import { Renderer } from '@fluentui/react-northstar-styles-renderer';
@@ -121,7 +121,7 @@ const Provider: React.FC<WithAsProp<ProviderProps>> & {
 
   const consumedContext: ProviderContextPrepared = React.useContext(ThemeContext);
   const incomingContext: ProviderContextInput | ProviderContextPrepared = overwrite ? {} : consumedContext;
-  const createRenderer = React.useContext(RendererContext);
+  const createRenderer = useCreateRenderer();
 
   const outgoingContext = mergeContexts(createRenderer, incomingContext, inputContext);
 
