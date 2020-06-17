@@ -179,8 +179,13 @@ function computeCoverStyle(
     // Determine the desired ratio using the width and height props.
     // If those props aren't available, measure measure the frame.
     let desiredRatio;
-    if (!!width && !!height && imageFit !== ImageFit.centerContain && imageFit !== ImageFit.centerCover) {
-      desiredRatio = (width as number) / (height as number);
+    if (
+      typeof width === 'number' &&
+      typeof height === 'number' &&
+      imageFit !== ImageFit.centerContain &&
+      imageFit !== ImageFit.centerCover
+    ) {
+      desiredRatio = width / height;
     } else {
       desiredRatio = frameElement.current.clientWidth / frameElement.current.clientHeight;
     }

@@ -63,6 +63,7 @@ function lintImports() {
     '@uifabric/merge-styles': 'Styling',
     '@uifabric/styling': 'Styling',
     '@uifabric/utilities': 'Utilities',
+    '@fluentui/date-time-utilities': 'DateTimeUtilities',
   };
 
   const packagesInfo = getAllPackageInfo();

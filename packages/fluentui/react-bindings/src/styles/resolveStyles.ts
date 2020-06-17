@@ -1,4 +1,4 @@
-import cx from 'classnames';
+import { RendererParam } from '@fluentui/react-northstar-styles-renderer';
 import {
   callable,
   ComponentSlotStylesInput,
@@ -12,8 +12,10 @@ import {
   ThemePrepared,
   withDebugId,
 } from '@fluentui/styles';
-import { ComponentDesignProp, ComponentSlotClasses, RendererParam, ResolveStylesOptions } from './types';
+import cx from 'classnames';
 import * as _ from 'lodash';
+
+import { ComponentSlotClasses, ResolveStylesOptions, ComponentDesignProp } from './types';
 
 export type ResolveStylesResult = {
   resolvedStyles: ComponentSlotStylesResolved;
@@ -21,10 +23,10 @@ export type ResolveStylesResult = {
   classes: ComponentSlotClasses;
 };
 
-// this weak map is used as cache for the design classes
+// this weak map is used as cache for the classes
 const classesCache = new WeakMap<ThemePrepared, Record<string, string>>();
 
-// this weak map is used as cache for the classes
+// this weak map is used as cache for the design classes
 const designClassesCache = new WeakMap<ThemePrepared, WeakMap<ComponentDesignProp, string>>();
 
 // this weak map is used as cache for the styles
@@ -45,7 +47,6 @@ const stylesCache = new WeakMap<ThemePrepared, Record<string, ICSSInJSStyle>>();
 const resolveStyles = (
   options: ResolveStylesOptions,
   resolvedVariables: ComponentVariablesObject,
-  renderStylesInput?: (styles: ICSSInJSStyle) => string,
 ): ResolveStylesResult => {
   const {
     allDisplayNames,
@@ -123,18 +124,13 @@ const resolveStyles = (
     disableAnimations,
   };
 
-  // Fela plugins rely on `direction` param in `theme` prop instead of RTL
-  // Our API should be aligned with it
   // Heads Up! Keep in sync with Design.tsx render logic
-  const direction = rtl ? 'rtl' : 'ltr';
-  const felaParam: RendererParam = {
-    theme: { direction },
+  const rendererParam: RendererParam = {
+    direction: rtl ? 'rtl' : 'ltr',
     disableAnimations,
     displayName: allDisplayNames.join(':'), // does not affect styles, only used by useEnhancedRenderer in docs
     sanitizeCss: performanceFlags.enableSanitizeCssPlugin,
   };
-
-  const renderStyles = renderStylesInput || ((style: ICSSInJSStyle) => renderer.renderRule(() => style, felaParam));
 
   const resolvedStyles: Record<string, ICSSInJSStyle> = {};
   const resolvedStylesDebug: Record<string, { styles: Object }[]> = {};
@@ -241,14 +237,18 @@ const resolveStyles = (
 
             const cachedValue = designClassesThemeCache.get(props.design);
             designClasses =
-              cachedValue || renderStyles({ [`&.${componentClassName}`]: callable(props.design)(styleParam) });
+              cachedValue ||
+              renderer.renderRule({ [`&.${componentClassName}`]: callable(props.design)(styleParam) }, rendererParam);
 
             if (cachedValue !== designClasses) {
               designClassesThemeCache.set(props.design, designClasses);
               designClassesCache.set(theme, designClassesThemeCache);
             }
           } else {
-            designClasses = renderStyles({ [`&.${componentClassName}`]: callable(props.design)(styleParam) });
+            designClasses = renderer.renderRule(
+              { [`&.${componentClassName}`]: callable(props.design)(styleParam) },
+              rendererParam,
+            );
           }
         }
 
@@ -288,8 +288,8 @@ const resolveStyles = (
         const styleObj = resolvedStyles[slotName];
         const telemetryPartStart = telemetry?.enabled ? performance.now() : 0;
 
-        if (renderStyles && styleObj) {
-          classes[lazyEvaluationKey] = renderStyles(styleObj);
+        if (styleObj) {
+          classes[lazyEvaluationKey] = renderer.renderRule(styleObj, rendererParam);
 
           if (cacheEnabled && theme) {
             classesCache.set(theme, {

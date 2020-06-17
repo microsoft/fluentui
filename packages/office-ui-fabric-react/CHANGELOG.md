@@ -1,8 +1,36 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 12 Jun 2020 18:29:07 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Jun 2020 12:37:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.120.3](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.120.3)
+
+Wed, 17 Jun 2020 12:37:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.120.2..office-ui-fabric-react_v7.120.3)
+
+### Patches
+
+- Add Datetime utilities package ([PR #13605](https://github.com/microsoft/fluentui/pull/13605) by pompomon@gmail.com)
+
+## [7.120.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.120.2)
+
+Tue, 16 Jun 2020 12:40:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.120.1..office-ui-fabric-react_v7.120.2)
+
+### Patches
+
+- Prevent ContextualMenu from destroying existing menu items on every repaint ([PR #13357](https://github.com/microsoft/fluentui/pull/13357) by tmichon@microsoft.com)
+- fix height and width check in the image component ([PR #13544](https://github.com/microsoft/fluentui/pull/13544) by nif_tony@outlook.com)
+
+## [7.120.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.120.1)
+
+Mon, 15 Jun 2020 12:45:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.120.0..office-ui-fabric-react_v7.120.1)
+
+### Patches
+
+- modalization for FocusTrapZone ([PR #13281](https://github.com/microsoft/fluentui/pull/13281) by phkuo@microsoft.com)
 
 ## [7.120.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.120.0)
 

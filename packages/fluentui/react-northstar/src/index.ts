@@ -66,6 +66,8 @@ export { default as Checkbox } from './components/Checkbox/Checkbox';
 
 export * from './components/Debug/Debug';
 export { default as Debug } from './components/Debug/Debug';
+export * from './components/Debug/DebugSelector';
+export { default as DebugSelector } from './components/Debug/DebugSelector';
 
 export * from './components/Design/Design';
 export { default as Design } from './components/Design/Design';
@@ -93,6 +95,9 @@ export { default as DropdownSearchInput } from './components/Dropdown/DropdownSe
 
 export * from './components/Embed/Embed';
 export { default as Embed } from './components/Embed/Embed';
+
+export * from './components/Debug/FiberNavigator';
+export { default as FiberNavigator } from './components/Debug/FiberNavigator';
 
 export * from './components/Flex/Flex';
 export { default as Flex } from './components/Flex/Flex';
