@@ -1838,19 +1838,12 @@ export const Toggle: React.FunctionComponent<IToggleProps>;
 export const ToggleBase: import("@fluentui/react-compose").ComponentWithAs<"div", IToggleProps>;
 
 // @public
-<<<<<<< HEAD
-export const useLink: (props: ILinkProps, options: ComposePreparedOptions<{}, any, {}>) => any;
-
-// @public (undocumented)
-export const useToggle: (props: IToggleProps, options: ComposePreparedOptions<{}, any, {}>) => any;
-=======
 export const useLink: (props: ILinkProps) => any;
 
 export { useTheme }
 
 // @public (undocumented)
 export const useToggle: (props: IToggleProps, ref: React.Ref<HTMLDivElement>, options: ComposePreparedOptions<{}, any, {}>) => any;
->>>>>>> e46bf9f50307191a6da7027a1857f4565baa10e3
 
 
 export * from "office-ui-fabric-react/lib/ActivityItem";

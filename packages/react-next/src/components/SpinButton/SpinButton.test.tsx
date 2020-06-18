@@ -421,7 +421,8 @@ describe('SpinButton', () => {
     wrapper = mount(<SpinButton defaultValue="12" />);
 
     const inputDOM = wrapper.getDOMNode().querySelector('input')!;
-    const buttonDOM = wrapper.getDOMNode().querySelector('.ms-UpButton');
+    // tslint:disable-next-line:no-any
+    const buttonDOM: any = wrapper.getDOMNode().querySelector('.ms-UpButton');
 
     expect(inputDOM.value).toBe('12');
     expect(buttonDOM).toBeTruthy();
