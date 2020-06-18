@@ -4,7 +4,7 @@ export default [
   '@babel/runtime@7.7.6',
   '@emotion/hash@0.7.4',
   '@emotion/memoize@0.7.4',
-  '@emotion/serialize@^0.11.15',
+  '@emotion/serialize@0.11.15',
   '@emotion/unitless@0.7.5',
   '@emotion/utils@0.11.3',
   'classnames@2.2.6',
