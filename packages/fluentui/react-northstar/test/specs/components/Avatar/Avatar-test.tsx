@@ -50,17 +50,17 @@ describe('Avatar', () => {
     });
 
     it('calculates an expected initials with a hypen', () => {
-      let result = getInitials('David Zearing-Goff');
+      const result = getInitials('David Zearing-Goff');
       expect(result).toEqual('DZ');
     });
 
     it('calculates an expected initials with numbers', () => {
-      let result = getInitials('4lex 5loo');
+      const result = getInitials('4lex 5loo');
       expect(result).toEqual('45');
     });
 
     it('calculates an expected initials with multiple parentheses, extra spaces, and unwanted characters', () => {
-      let result = getInitials(' !@#$%^&*()=+ (Alpha) David   (The man) `~<>,./?[]{}|   Goff   (Gamma)    ');
+      const result = getInitials(' !@#$%^&*()=+ (Alpha) David   (The man) `~<>,./?[]{}|   Goff   (Gamma)    ');
       expect(result).toEqual('!G');
     });
 
@@ -79,7 +79,7 @@ describe('Avatar', () => {
     });
 
     it('calculates an expected initials for Arabic names', () => {
-      let result = getInitials('خسرو رحیمی');
+      const result = getInitials('خسرو رحیمی');
       expect(result).toEqual('خر');
     });
 
