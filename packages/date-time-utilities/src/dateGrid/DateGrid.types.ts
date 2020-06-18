@@ -1,12 +1,19 @@
 import { DayOfWeek, DateRangeType, FirstWeekOfYear } from '../dateValues/dateValues';
 
 export interface IDay {
+  /** `Date.toString()` value of current date */
   key: string;
+  /** `Date.getDate()` value of current date */
   date: string;
+  /** `Date` object of current date */
   originalDate: Date;
+  /** Is current date is in the same month as "today" date */
   isInMonth: boolean;
+  /** Is current date is "today" date */
   isToday: boolean;
+  /** Is current date is selected */
   isSelected: boolean;
+  /** Is current date within restriction bboundaries */
   isInBounds: boolean;
 }
 

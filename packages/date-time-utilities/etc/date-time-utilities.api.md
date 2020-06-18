@@ -115,11 +115,8 @@ export function getYearStart(date: Date): Date;
 
 // @public (undocumented)
 export interface IAvailableDateOptions extends IRestrictedDatesOptions {
-    // (undocumented)
     direction: number;
-    // (undocumented)
     initialDate: Date;
-    // (undocumented)
     targetDate: Date;
 }
 
@@ -133,19 +130,12 @@ export interface IDateGridStrings {
 
 // @public (undocumented)
 export interface IDay {
-    // (undocumented)
     date: string;
-    // (undocumented)
     isInBounds: boolean;
-    // (undocumented)
     isInMonth: boolean;
-    // (undocumented)
     isSelected: boolean;
-    // (undocumented)
     isToday: boolean;
-    // (undocumented)
     key: string;
-    // (undocumented)
     originalDate: Date;
 }
 
