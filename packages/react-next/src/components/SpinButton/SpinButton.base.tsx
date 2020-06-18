@@ -13,7 +13,7 @@ import {
   divProperties,
 } from '../../Utilities';
 import { getArrowButtonStyles } from './SpinButton.styles';
-import { ISpinButtonProps, KeyboardSpinDirection, ISpinButtonStyleProps } from './SpinButton.types';
+import { ISpinButtonProps } from './SpinButton.types';
 import { Position } from 'office-ui-fabric-react/lib/utilities/positioning';
 import { KeytipData } from '../../KeytipData';
 import { useBoolean, useSetTimeout, useControllableValue } from '@uifabric/react-hooks';

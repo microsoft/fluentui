@@ -1,8 +1,35 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 29 May 2020 12:35:34 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Jun 2020 16:07:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.26.5](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.26.5)
+
+Wed, 17 Jun 2020 16:07:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.26.4..@uifabric/experiments_v7.26.5)
+
+### Patches
+
+- Fix icon names for DesktopSignal, DocumentsSignal, and PicturesSignal. Update example page. ([PR #13625](https://github.com/microsoft/fluentui/pull/13625) by taenri@microsoft.com)
+
+## [7.26.0](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.26.0)
+
+Mon, 08 Jun 2020 12:34:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.25.3..@uifabric/experiments_v7.26.0)
+
+### Minor changes
+
+- Added missing functionalities in UnifiedPeoplePicker and Example ([PR #13271](https://github.com/microsoft/fluentui/pull/13271) by nebhatna@microsoft.com)
+
+## [7.25.3](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.25.3)
+
+Fri, 05 Jun 2020 05:09:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.25.0..@uifabric/experiments_v7.25.3)
+
+### Patches
+
+- Adjusting Tile scss ([PR #13478](https://github.com/microsoft/fluentui/pull/13478) by dzearing@microsoft.com)
 
 ## [7.25.0](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.25.0)
 

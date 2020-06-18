@@ -8,13 +8,30 @@ interface IRootStyles {
   width: string;
 }
 
-export class LineChartMultipleExample extends React.Component<{}, {}> {
+interface ILineChartMultipleExampleState {
+  width: number;
+  height: number;
+}
+
+export class LineChartMultipleExample extends React.Component<{}, ILineChartMultipleExampleState> {
   constructor(props: ILineChartProps) {
     super(props);
+    this.state = {
+      width: 700,
+      height: 300,
+    };
   }
 
   public render(): JSX.Element {
-    return <div>{this._styledExample()}</div>;
+    return (
+      <>
+        <label>change Width:</label>
+        <input type="range" value={this.state.width} min={200} max={1000} onChange={this._onWidthChange} />
+        <label>change Height:</label>
+        <input type="range" value={this.state.height} min={200} max={1000} onChange={this._onHeightChange} />
+        <div>{this._styledExample()}</div>
+      </>
+    );
   }
 
   private _onLegendClickHandler = (selectedLegend: string | null): void => {
@@ -85,7 +102,7 @@ export class LineChartMultipleExample extends React.Component<{}, {}> {
       chartTitle: 'Line Chart',
       lineChartData: points,
     };
-    const rootStyle: IRootStyles = { width: '700px', height: '300px' };
+    const rootStyle: IRootStyles = { width: `${this.state.width}px`, height: `${this.state.height}px` };
     const timeFormat = '%m/%d';
     // Passing tick values is optional, for more control.
     // If you do not pass them the line chart will render them for you based on D3's standard.
@@ -105,8 +122,17 @@ export class LineChartMultipleExample extends React.Component<{}, {}> {
           tickFormat={timeFormat}
           tickValues={tickValues}
           enabledLegendsWrapLines={true}
+          height={this.state.height}
+          width={this.state.width}
         />
       </div>
     );
   }
+
+  private _onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    this.setState({ width: parseInt(e.target.value, 10) });
+  };
+  private _onHeightChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    this.setState({ height: parseInt(e.target.value, 10) });
+  };
 }

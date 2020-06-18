@@ -1,8 +1,8 @@
 import { TokenSetType } from './types';
 
 export const tokensToStyleObject = (
-  tokens: {
-    [key: string]: TokenSetType;
+  tokens?: {
+    [key: string]: TokenSetType | undefined;
   },
   prefix?: string,
   style: {

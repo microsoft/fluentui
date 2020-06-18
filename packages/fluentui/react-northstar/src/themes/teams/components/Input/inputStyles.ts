@@ -6,12 +6,12 @@ import clearIndicatorUrl from './clearIndicatorUrl';
 import { pxToRem } from '../../../../utils';
 
 const inputStyles: ComponentSlotStylesPrepared<InputStylesProps, InputVariables> = {
-  root: ({ props: p }): ICSSInJSStyle => ({
+  root: ({ props: p, variables: v }): ICSSInJSStyle => ({
     alignItems: 'center',
     display: 'inline-flex',
     position: 'relative',
     outline: 0,
-
+    ...(p.error && { border: `${pxToRem(1)} solid ${v.borderColorError}` }),
     ...(p.fluid && { width: '100%' }),
   }),
 
@@ -67,6 +67,10 @@ const inputStyles: ComponentSlotStylesPrepared<InputStylesProps, InputVariables>
     alignItems: 'center',
     justifyContent: 'center',
     position: v.iconPosition as PositionProperty,
+    ...(p.error && { color: v.colorError }),
+    ...(p.requiredAndSuccessful && {
+      color: v.successfulColor,
+    }),
     ...(p.disabled && {
       color: v.colorDisabled,
     }),
