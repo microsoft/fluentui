@@ -205,6 +205,12 @@ export interface DropdownProps extends UIComponentProps<DropdownProps, DropdownS
    */
   onChange?: (event: React.MouseEvent | React.KeyboardEvent | null, data: DropdownProps) => void;
 
+  /**
+   * Called when the focus moves out from dropdown.
+   * @param event - React's original SyntheticEvent.
+   */
+  onBlur?: (event: React.MouseEvent | React.KeyboardEvent | null) => void;
+
   /** A dropdown's open state can be controlled. */
   open?: boolean;
 
@@ -337,6 +343,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
     ]),
     onOpenChange: PropTypes.func,
     onSearchQueryChange: PropTypes.func,
+    onBlur: PropTypes.func,
     onChange: PropTypes.func,
     onActiveSelectedIndexChange: PropTypes.func,
     onHighlightedIndexChange: PropTypes.func,
@@ -912,6 +919,8 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
         if (state.isOpen && activeElement === this.listRef.current) {
           return {}; // won't change state in this case.
         }
+        _.invoke(this.props, 'onBlur', null);
+
       default:
         return changes;
     }
@@ -1014,6 +1023,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
         if (open) {
           newState.open = false;
           newState.highlightedIndex = null;
+          _.invoke(this.props, 'onBlur', null);
         }
 
         break;
