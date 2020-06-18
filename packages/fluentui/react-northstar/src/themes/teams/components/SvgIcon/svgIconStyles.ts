@@ -96,11 +96,11 @@ const svgIconStyles: ComponentSlotStylesPrepared<SvgIconStylesProps, SvgIconVari
         fill: v.disabledColor,
       }),
 
-      transform: `rotate(${rotate}deg)`,
-      // Use for Emotion:
-      // ...(rtl && {
-      //   transform: `rotate(${-1 * rotate}deg)`,
-      // }),
+      // Manual flipping to make it compatible with Emotion and Fela in the same time
+      transform: `rotate(${rotate}deg) /* @noflip */`,
+      ...(rtl && {
+        transform: `rotate(${-1 * rotate}deg) /* @noflip */`,
+      }),
     };
   },
 
@@ -109,9 +109,7 @@ const svgIconStyles: ComponentSlotStylesPrepared<SvgIconStylesProps, SvgIconVari
     return {
       ...callable(svgIconStyles.svg)(config),
       ...(rtl && {
-        // Use for Emotion:
-        // transform: `scaleX(-1) rotate(${props.rotate}deg)`,
-        transform: `scaleX(-1) rotate(${-1 * props.rotate}deg)`,
+        transform: `scaleX(-1) rotate(${props.rotate}deg) /* @noflip */`,
       }),
     };
   },
