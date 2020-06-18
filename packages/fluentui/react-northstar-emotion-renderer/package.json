@@ -40,7 +40,9 @@
     "build": "gulp bundle:package:no-umd",
     "clean": "gulp bundle:package:clean",
     "lint": "eslint --ext .js,.ts,.tsx .",
-    "lint:fix": "yarn lint --fix"
+    "lint:fix": "yarn lint --fix",
+    "test": "gulp test",
+    "test:watch": "gulp test:watch"
   },
   "sideEffects": false,
   "types": "dist/es/index.d.ts"
