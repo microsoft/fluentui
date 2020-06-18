@@ -4,14 +4,16 @@
 
 ```ts
 
-import { DateRangeType } from 'office-ui-fabric-react/lib/utilities/dateValues/DateValues';
-import { DayOfWeek } from 'office-ui-fabric-react/lib/utilities/dateValues/DateValues';
-import { FirstWeekOfYear } from 'office-ui-fabric-react/lib/utilities/dateValues/DateValues';
+import { DateRangeType } from '@fluentui/date-time-utilities';
+import { DayOfWeek } from '@fluentui/date-time-utilities';
+import { FirstWeekOfYear } from '@fluentui/date-time-utilities';
 import { IBaseProps } from '@uifabric/utilities';
 import { IBaseProps as IBaseProps_2 } from 'office-ui-fabric-react/lib/Utilities';
 import { ICalendarStrings as ICalendarStrings_2 } from '@uifabric/date-time';
 import { ICalloutProps } from 'office-ui-fabric-react/lib/Callout';
 import { IComponentAs } from '@uifabric/utilities';
+import { IDateGridStrings } from '@fluentui/date-time-utilities';
+import { IDayGridOptions } from '@fluentui/date-time-utilities';
 import { IProcessedStyleSet } from '@uifabric/styling';
 import { IRefObject } from '@uifabric/utilities';
 import { IRefObject as IRefObject_2 } from 'office-ui-fabric-react/lib/Utilities';
@@ -121,8 +123,8 @@ export interface ICalendarDayProps extends IBaseProps_2<ICalendarDay>, ICalendar
 // @public (undocumented)
 export interface ICalendarFormatDateCallbacks {
     formatDay: (date: Date) => string;
-    formatMonthDayYear: (date: Date, strings?: ICalendarStrings) => string;
-    formatMonthYear: (date: Date, strings?: ICalendarStrings) => string;
+    formatMonthDayYear: (date: Date, strings?: IDateGridStrings) => string;
+    formatMonthYear: (date: Date, strings?: IDateGridStrings) => string;
     formatYear: (date: Date) => string;
 }
 
@@ -196,12 +198,10 @@ export interface ICalendarProps extends IBaseProps<ICalendar> {
 }
 
 // @public (undocumented)
-export interface ICalendarStrings {
+export interface ICalendarStrings extends IDateGridStrings {
     closeButtonAriaLabel?: string;
-    days: string[];
     goToToday: string;
     monthPickerHeaderAriaLabel?: string;
-    months: string[];
     nextMonthAriaLabel?: string;
     nextYearAriaLabel?: string;
     nextYearRangeAriaLabel?: string;
@@ -209,8 +209,6 @@ export interface ICalendarStrings {
     prevYearAriaLabel?: string;
     prevYearRangeAriaLabel?: string;
     selectedDateFormatString?: string;
-    shortDays: string[];
-    shortMonths: string[];
     todayDateFormatString?: string;
     weekNumberFormatString?: string;
     yearPickerHeaderAriaLabel?: string;
@@ -387,8 +385,8 @@ export interface IWeeklyDayPickerStyles extends Partial<ICalendarDayGridStyles> 
 export const WeeklyDayPicker: React.FunctionComponent<IWeeklyDayPickerProps>;
 
 
-export * from "@fluentui/date-time-utilities/lib/dateMath/DateMath";
-export * from "@fluentui/date-time-utilities/lib/dateValues/DateValues";
+export * from "@fluentui/date-time-utilities/lib/dateMath/dateMath";
+export * from "@fluentui/date-time-utilities/lib/dateValues/dateValues";
 
 // (No @packageDocumentation comment for this package)
 
