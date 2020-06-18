@@ -16,16 +16,16 @@ const jestAliases = () => {
   const aliases = {};
 
   for (const { packageJson, packagePath } of packageDeps) {
-    const packageName = packageJson.name;
+    const { name, main } = packageJson;
     if (packagePath === process.cwd()) {
       // Special aliases to look at src for the current package
-      aliases[`^${packageName}$`] = '<rootDir>/src/';
-      aliases[`^${packageName}/lib/(.*)$`] = '<rootDir>/src/$1';
-    } else if (packageJson.main.includes('lib-commonjs')) {
+      aliases[`^${name}$`] = '<rootDir>/src/';
+      aliases[`^${name}/lib/(.*)$`] = '<rootDir>/src/$1';
+    } else if (main && main.includes('lib-commonjs')) {
       // Map package root and lib imports to the commonjs version
-      const main = `${packageName}/${packageJson.main.replace('.js', '')}`;
-      aliases[`^${packageName}$`] = main;
-      aliases[`^${packageName}/lib/(.*)$`] = main.replace('index', '$1');
+      const mainImportPath = `${name}/${main.replace('.js', '')}`;
+      aliases[`^${name}$`] = mainImportPath;
+      aliases[`^${name}/lib/(.*)$`] = mainImportPath.replace('index', '$1');
     }
   }
   console.dir(aliases);
