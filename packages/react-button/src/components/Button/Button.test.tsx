@@ -7,7 +7,6 @@ describe('Button', () => {
     componentPath: path.join(__dirname, 'Button.tsx'),
     Component: Button,
     displayName: 'Button',
-    exportedAtTopLevel: true,
     disabledTests: ['has-docblock'],
   });
 });

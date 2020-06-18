@@ -7,7 +7,6 @@ describe('ToggleButton', () => {
     componentPath: path.join(__dirname, 'ToggleButton.tsx'),
     Component: ToggleButton,
     displayName: 'ToggleButton',
-    exportedAtTopLevel: true,
     disabledTests: ['has-docblock'],
   });
 });
