@@ -5,13 +5,20 @@ import { IRefObject } from '../../Utilities';
 
 export interface IBaseSelectedItemsList<T> {
   /** Gets the current value of the input. */
-  items: T[] | undefined;
+  items: T[];
 
-  addItems: (items: T[]) => Promise<void>;
-  copyItems: (items: T[]) => void;
-  removeItem: (items: T) => void;
-
-  replaceItem: (itemToReplace: T, itemsToReplaceWith: T | T[]) => void;
+  addItems(items: T[]): Promise<void>;
+  copyItems(items: T[]): void;
+  removeItem(items: T): void;
+  removeItems(items: T[]): void;
+  removeSelectedItems(): void;
+  replaceItem(itemToReplace: T, itemsToReplaceWith: T | T[]): void;
+  removeItemAt(index: number): void;
+  updateItems(newItems: T[]): void;
+  hasSelectedItems(): boolean;
+  unselectAll(): void;
+  highlightedItems(): T[];
+  copyItems(itemsToCopy: T[]): void;
 }
 
 export interface ISelectedItemProps<T> extends IPickerItemProps<T> {

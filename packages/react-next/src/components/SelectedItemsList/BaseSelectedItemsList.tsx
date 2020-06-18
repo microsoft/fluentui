@@ -86,13 +86,6 @@ function useComponentRef<T extends IObjectWithKey>(
     setItems(newItems);
   };
 
-  const onCopy = (ev: React.ClipboardEvent<HTMLElement>): void => {
-    if (props.onCopyItems && selection.getSelectedCount() > 0) {
-      const selectedItems: T[] = selection.getSelection() as T[];
-      copyItems(selectedItems);
-    }
-  };
-
   const hasSelectedItems = (): boolean => {
     return selection.getSelectedCount() > 0;
   };
@@ -128,15 +121,6 @@ function useComponentRef<T extends IObjectWithKey>(
     }
   };
 
-  const onItemChange = (changedItem: T, index: number): void => {
-    if (index >= 0) {
-      const newItems: T[] = items;
-      newItems[index] = changedItem;
-
-      updateItems(newItems);
-    }
-  };
-
   const publicMethods = {
     get items() {
       return items;
@@ -148,12 +132,10 @@ function useComponentRef<T extends IObjectWithKey>(
     removeItems,
     removeSelectedItems,
     updateItems,
-    onCopy,
     hasSelectedItems,
     unselectAll,
     highlightedItems,
     copyItems,
-    onItemChange,
   };
 
   React.useImperativeHandle(props.componentRef, () => publicMethods, [publicMethods]);
@@ -161,9 +143,7 @@ function useComponentRef<T extends IObjectWithKey>(
   return publicMethods;
 }
 
-export const BaseSelectedItemsList = <T extends IObjectWithKey>(
-  props: IBaseSelectedItemsListProps<T>,
-): JSX.Element[] => {
+export const BaseSelectedItemsList = <T extends IObjectWithKey>(props: IBaseSelectedItemsListProps<T>): JSX.Element => {
   const [items = [], setItems] = useControllableValue(
     props.selectedItems,
     props.defaultSelectedItems || [],
@@ -172,21 +152,34 @@ export const BaseSelectedItemsList = <T extends IObjectWithKey>(
   const selection = useSelection(props, items);
   const publicMethods = useComponentRef(props, selection, items, setItems);
 
+  const onItemChange = (changedItem: T, index: number): void => {
+    if (index >= 0) {
+      const newItems: T[] = items;
+      newItems[index] = changedItem;
+
+      publicMethods.updateItems(newItems);
+    }
+  };
+
   const { removeButtonAriaLabel, onRenderItem } = props;
 
-  return onRenderItem
-    ? items.map((item: T, index: number) =>
-        onRenderItem({
-          item,
-          index,
-          key: item.key ? item.key : index,
-          selected: selection.isIndexSelected(index),
-          onRemoveItem: () => publicMethods.removeItem(item),
-          onItemChange: publicMethods.onItemChange,
-          removeButtonAriaLabel: removeButtonAriaLabel,
-          onCopyItem: (itemToCopy: T) => publicMethods.copyItems([itemToCopy]),
-        }),
-      )
-    : [];
+  return (
+    <>
+      {onRenderItem
+        ? items.map((item: T, index: number) =>
+            onRenderItem({
+              item,
+              index,
+              key: item.key ? item.key : index,
+              selected: selection.isIndexSelected(index),
+              onRemoveItem: () => publicMethods.removeItem(item),
+              onItemChange: onItemChange,
+              removeButtonAriaLabel: removeButtonAriaLabel,
+              onCopyItem: (itemToCopy: T) => publicMethods.copyItems([itemToCopy]),
+            }),
+          )
+        : []}
+    </>
+  );
 };
 BaseSelectedItemsList.displayName = 'BaseSelectedItemsList';

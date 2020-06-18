@@ -4,7 +4,7 @@ import * as ReactDOM from 'react-dom';
 /* tslint:enable:no-unused-variable */
 import * as renderer from 'react-test-renderer';
 
-import { IBaseSelectedItemsListProps, ISelectedItemProps } from './BaseSelectedItemsList.types';
+import { ISelectedItemProps, IBaseSelectedItemsList } from './BaseSelectedItemsList.types';
 import { BaseSelectedItemsList } from './BaseSelectedItemsList';
 
 export interface ISimple {
@@ -16,16 +16,10 @@ const basicItemRenderer = (props: ISelectedItemProps<ISimple>) => {
   return <div key={props.key}> {props.name} </div>;
 };
 
-export type TypedBaseSelectedItemsList = BaseSelectedItemsList<ISimple, IBaseSelectedItemsListProps<ISimple>>;
-
 describe('SelectedItemsList', () => {
   describe('BaseSelectedItemsList', () => {
-    const BaseSelectedItemsListWithType = BaseSelectedItemsList as new (
-      props: IBaseSelectedItemsListProps<ISimple>,
-    ) => BaseSelectedItemsList<ISimple, IBaseSelectedItemsListProps<ISimple>>;
-
     it('renders BaseSelectedItemsList correctly', () => {
-      const component = renderer.create(<BaseSelectedItemsListWithType />);
+      const component = renderer.create(<BaseSelectedItemsList<ISimple> />);
       const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
     });
@@ -38,36 +32,39 @@ describe('SelectedItemsList', () => {
         expect(items![0].name).toBe('b');
       };
 
-      const itemsList: TypedBaseSelectedItemsList = (ReactDOM.render(
-        <BaseSelectedItemsListWithType
+      const itemsList = React.createRef<IBaseSelectedItemsList<ISimple>>();
+      ReactDOM.render(
+        <BaseSelectedItemsList<ISimple>
           onRenderItem={basicItemRenderer}
           selectedItems={[
             { key: '1', name: 'a' },
             { key: '2', name: 'b' },
           ]}
           onChange={onChange}
+          componentRef={itemsList}
         />,
         root,
-      ) as unknown) as TypedBaseSelectedItemsList;
+      );
 
-      expect(itemsList.items.length).toEqual(2);
-      itemsList.removeItemAt(0);
+      expect(itemsList.current?.items?.length).toEqual(2);
+      itemsList.current?.removeItemAt?.(0);
     });
 
     it('can add items', () => {
       const root = document.createElement('div');
-      const itemsList: TypedBaseSelectedItemsList = (ReactDOM.render(
-        <BaseSelectedItemsListWithType onRenderItem={basicItemRenderer} />,
+      const itemsList = React.createRef<IBaseSelectedItemsList<ISimple>>();
+      ReactDOM.render(
+        <BaseSelectedItemsList<ISimple> onRenderItem={basicItemRenderer} componentRef={itemsList} />,
         root,
-      ) as unknown) as TypedBaseSelectedItemsList;
+      );
 
       const items: ISimple[] = [
         { key: '1', name: 'a' },
         { key: '2', name: 'b' },
       ];
-      itemsList.addItems(items);
+      itemsList.current!.addItems(items);
 
-      expect(itemsList.items.length).toEqual(2);
+      expect(itemsList.current!.items.length).toEqual(2);
     });
   });
 });

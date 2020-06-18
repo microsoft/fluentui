@@ -34,54 +34,10 @@ import { useTheme } from '@fluentui/react-theme-provider';
 import { ValidationState } from 'office-ui-fabric-react/lib/Pickers';
 
 // @public (undocumented)
-export class BaseSelectedItemsList<T extends IObjectWithKey, P extends IBaseSelectedItemsListProps<T>> extends React.Component<P, IBaseSelectedItemsListState<T>> implements IBaseSelectedItemsList<T> {
-    constructor(basePickerProps: P);
-    // (undocumented)
-    addItems: (items: T[]) => Promise<void>;
-    // (undocumented)
-    componentDidMount(): void;
-    // (undocumented)
-    copyItems(items: T[]): void;
-    // (undocumented)
-    hasSelectedItems(): boolean;
-    // (undocumented)
-    highlightedItems(): T[];
-    // (undocumented)
-    readonly items: T[];
-    // (undocumented)
-    protected onChange(items?: T[]): void;
-    // (undocumented)
-    onCopy: (ev: React.ClipboardEvent<HTMLElement>) => void;
-    // (undocumented)
-    protected onItemChange: (changedItem: T, index: number) => void;
-    // (undocumented)
-    protected onSelectionChanged: () => void;
-    // (undocumented)
-    removeItem: (item: T) => void;
-    // (undocumented)
-    removeItemAt: (index: number) => void;
-    // (undocumented)
-    removeItems: (itemsToRemove: T[]) => void;
-    // (undocumented)
-    removeSelectedItems(): void;
-    // (undocumented)
-    render(): JSX.Element[];
-    // (undocumented)
-    protected renderItems: () => JSX.Element[];
-    // (undocumented)
-    replaceItem: (itemToReplace: T, itemsToReplaceWith: T | T[]) => void;
-    // (undocumented)
-    protected root: HTMLElement;
-    // (undocumented)
-    protected selection: Selection;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(newProps: P): void;
-    // (undocumented)
-    UNSAFE_componentWillUpdate(newProps: P, newState: IBaseSelectedItemsListState<IObjectWithKey>): void;
-    // (undocumented)
-    unselectAll(): void;
-    updateItems(items: T[], focusIndex?: number): void;
-}
+export const BaseSelectedItemsList: {
+    <T extends IObjectWithKey>(props: IBaseSelectedItemsListProps<T>): JSX.Element;
+    displayName: string;
+};
 
 // @public (undocumented)
 export const Checkbox: import("@fluentui/react-compose").ComponentWithAs<"div", ICheckboxProps>;
@@ -154,14 +110,30 @@ export const getNextResizeGroupStateProvider: (measurementCache?: {
 // @public (undocumented)
 export interface IBaseSelectedItemsList<T> {
     // (undocumented)
-    addItems: (items: T[]) => Promise<void>;
+    addItems(items: T[]): Promise<void>;
     // (undocumented)
-    copyItems: (items: T[]) => void;
-    items: T[] | undefined;
+    copyItems(items: T[]): void;
     // (undocumented)
-    removeItem: (items: T) => void;
+    copyItems(itemsToCopy: T[]): void;
     // (undocumented)
-    replaceItem: (itemToReplace: T, itemsToReplaceWith: T | T[]) => void;
+    hasSelectedItems(): boolean;
+    // (undocumented)
+    highlightedItems(): T[];
+    items: T[];
+    // (undocumented)
+    removeItem(items: T): void;
+    // (undocumented)
+    removeItemAt(index: number): void;
+    // (undocumented)
+    removeItems(items: T[]): void;
+    // (undocumented)
+    removeSelectedItems(): void;
+    // (undocumented)
+    replaceItem(itemToReplace: T, itemsToReplaceWith: T | T[]): void;
+    // (undocumented)
+    unselectAll(): void;
+    // (undocumented)
+    updateItems(newItems: T[]): void;
 }
 
 // @public (undocumented)
@@ -181,12 +153,6 @@ export interface IBaseSelectedItemsListProps<T> extends React.ClassAttributes<an
     removeButtonAriaLabel?: string;
     selectedItems?: T[];
     selection?: Selection;
-}
-
-// @public (undocumented)
-export interface IBaseSelectedItemsListState<T extends IObjectWithKey> {
-    // (undocumented)
-    items: T[];
 }
 
 // @public
