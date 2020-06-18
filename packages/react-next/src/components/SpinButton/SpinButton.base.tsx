@@ -13,7 +13,7 @@ import {
   divProperties,
 } from '../../Utilities';
 import { getArrowButtonStyles } from './SpinButton.styles';
-import { ISpinButtonProps } from './SpinButton.types';
+import { ISpinButtonProps, ISpinButtonStyleProps, KeyboardSpinDirection } from './SpinButton.types';
 import { Position } from 'office-ui-fabric-react/lib/utilities/positioning';
 import { KeytipData } from '../../KeytipData';
 import { useBoolean, useSetTimeout, useControllableValue } from '@uifabric/react-hooks';
@@ -32,6 +32,8 @@ export interface ISpinButtonState {
 }
 
 const getClassNames = classNamesFunction<ISpinButtonStyleProps, ISpinButtonStyles>();
+
+const COMPONENT_NAME = 'SpinButton';
 
 const useComponentRef = (
   props: ISpinButtonProps,
@@ -454,3 +456,4 @@ export const SpinButtonBase = (props: ISpinButtonProps) => {
     </div>
   );
 };
+SpinButtonBase.displayName = COMPONENT_NAME;
