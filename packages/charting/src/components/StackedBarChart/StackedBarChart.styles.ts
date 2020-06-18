@@ -1,5 +1,5 @@
 import { IStackedBarChartStyleProps, IStackedBarChartStyles } from './StackedBarChart.types';
-import { FontSizes, FontWeights } from 'office-ui-fabric-react/lib/Styling';
+import { FontSizes, FontWeights, HighContrastSelector, IStyle } from 'office-ui-fabric-react/lib/Styling';
 
 export const getStyles = (props: IStackedBarChartStyleProps): IStackedBarChartStyles => {
   const {
@@ -31,10 +31,10 @@ export const getStyles = (props: IStackedBarChartStyleProps): IStackedBarChartSt
       marginBottom: '12px',
     },
     chartTitle: {
+      ...theme.fonts.small,
       display: 'flex',
       justifyContent: 'space-between',
       marginBottom: '5px',
-      fontSize: FontSizes.small,
     },
     legendContainer: {
       paddingTop: '4px',
@@ -69,6 +69,15 @@ export const getStyles = (props: IStackedBarChartStyleProps): IStackedBarChartSt
       borderTop: '7.8px solid',
       borderTopColor: benchmarkColor,
       marginBottom: '4px',
+      selectors: {
+        [HighContrastSelector]: {
+          border: '0px',
+          height: '7.8px',
+          width: '7.8px',
+          clipPath: 'polygon(50% 100%, 0 0, 100% 0)',
+          backgroundImage: `linear-gradient(to right, ${benchmarkColor}, ${benchmarkColor})`,
+        } as IStyle,
+      },
     },
     target: {
       position: 'absolute',
@@ -80,6 +89,15 @@ export const getStyles = (props: IStackedBarChartStyleProps): IStackedBarChartSt
       borderTop: '7.8px solid',
       borderTopColor: targetColor,
       marginBottom: '4px',
+      selectors: {
+        [HighContrastSelector]: {
+          border: '0px',
+          height: '7.8px',
+          width: '7.8px',
+          clipPath: 'polygon(50% 100%, 0 0, 100% 0)',
+          backgroundImage: `linear-gradient(to right, ${targetColor}, ${targetColor})`,
+        } as IStyle,
+      },
     },
   };
 };

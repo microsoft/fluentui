@@ -88,11 +88,10 @@ export class GroupedVerticalBarChartStyledExample extends React.Component<Readon
       <div className={mergeStyles(rootStyle)}>
         <GroupedVerticalBarChart
           data={data}
-          showXAxisGridLines
+          width={650}
+          height={400}
           showYAxisGridLines
           yAxisTickCount={10}
-          showXAxisPath
-          showYAxisPath
           barwidth={43}
         />
       </div>
