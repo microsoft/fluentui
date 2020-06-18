@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Keytip: add KeytipLayer storybook decorator and fix missing handled prop for link",
+  "packageName": "office-ui-fabric-react",
+  "email": "xgao@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-06-18T18:08:14.477Z"
+}
