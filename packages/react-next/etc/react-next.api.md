@@ -34,18 +34,14 @@ import { useTheme } from '@fluentui/react-theme-provider';
 import { ValidationState } from 'office-ui-fabric-react/lib/Pickers';
 
 // @public (undocumented)
-export class BasePeopleSelectedItemsList extends BaseSelectedItemsList<IExtendedPersonaProps, ISelectedPeopleProps> {
-}
-
-// @public (undocumented)
-export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>> extends React.Component<P, IBaseSelectedItemsListState<T>> implements IBaseSelectedItemsList<T> {
+export class BaseSelectedItemsList<T extends IObjectWithKey, P extends IBaseSelectedItemsListProps<T>> extends React.Component<P, IBaseSelectedItemsListState<T>> implements IBaseSelectedItemsList<T> {
     constructor(basePickerProps: P);
     // (undocumented)
-    addItems: (items: T[]) => void;
+    addItems: (items: T[]) => Promise<void>;
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
-    protected copyItems(items: T[]): void;
+    copyItems(items: T[]): void;
     // (undocumented)
     hasSelectedItems(): boolean;
     // (undocumented)
@@ -65,15 +61,15 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>> 
     // (undocumented)
     removeItemAt: (index: number) => void;
     // (undocumented)
-    removeItems: (itemsToRemove: any[]) => void;
+    removeItems: (itemsToRemove: T[]) => void;
     // (undocumented)
     removeSelectedItems(): void;
     // (undocumented)
-    render(): any;
+    render(): JSX.Element[];
     // (undocumented)
     protected renderItems: () => JSX.Element[];
     // (undocumented)
-    replaceItem: (itemToReplace: T, itemsToReplaceWith: T[]) => void;
+    replaceItem: (itemToReplace: T, itemsToReplaceWith: T | T[]) => void;
     // (undocumented)
     protected root: HTMLElement;
     // (undocumented)
@@ -114,13 +110,7 @@ export const DEFAULT_MASK_CHAR = "_";
 export type DefaultProps = Required<Pick<ISpinButtonProps, 'step' | 'min' | 'max' | 'disabled' | 'labelPosition' | 'label' | 'incrementButtonIcon' | 'decrementButtonIcon'>>;
 
 // @public (undocumented)
-export class ExtendedSelectedItem extends React.Component<ISelectedPeopleItemProps, IPeoplePickerItemState> {
-    constructor(props: ISelectedPeopleItemProps);
-    // (undocumented)
-    protected persona: React.RefObject<HTMLDivElement>;
-    // (undocumented)
-    render(): JSX.Element;
-}
+export const ExtendedSelectedItem: React.ForwardRefExoticComponent<ISelectedPeopleItemProps & React.RefAttributes<HTMLDivElement>>;
 
 // @public (undocumented)
 export const Fabric: React.FunctionComponent<IFabricProps>;
@@ -164,8 +154,14 @@ export const getNextResizeGroupStateProvider: (measurementCache?: {
 // @public (undocumented)
 export interface IBaseSelectedItemsList<T> {
     // (undocumented)
-    addItems: (items: T[]) => void;
+    addItems: (items: T[]) => Promise<void>;
+    // (undocumented)
+    copyItems: (items: T[]) => void;
     items: T[] | undefined;
+    // (undocumented)
+    removeItem: (items: T) => void;
+    // (undocumented)
+    replaceItem: (itemToReplace: T, itemsToReplaceWith: T | T[]) => void;
 }
 
 // @public (undocumented)
@@ -180,7 +176,7 @@ export interface IBaseSelectedItemsListProps<T> extends React.ClassAttributes<an
     // @deprecated
     onItemDeleted?: (deletedItem: T) => void;
     onItemsDeleted?: (deletedItems: T[]) => void;
-    onItemSelected?: (selectedItem?: T | T[]) => T | PromiseLike<T> | T[] | PromiseLike<T[]>;
+    onItemSelected?: (selectedItem?: T | T[]) => T | PromiseLike<T | T[]> | T[];
     onRenderItem?: (props: ISelectedItemProps<T>) => JSX.Element;
     removeButtonAriaLabel?: string;
     selectedItems?: T[];
@@ -188,7 +184,7 @@ export interface IBaseSelectedItemsListProps<T> extends React.ClassAttributes<an
 }
 
 // @public (undocumented)
-export interface IBaseSelectedItemsListState<T> {
+export interface IBaseSelectedItemsListState<T extends IObjectWithKey> {
     // (undocumented)
     items: T[];
 }
@@ -360,7 +356,7 @@ export interface IEditingSelectedPeopleItemProps extends ISelectedPeopleItemProp
     // (undocumented)
     getEditingItemText?: (item: IExtendedPersonaProps) => string;
     // (undocumented)
-    onEditingComplete: (oldItem: any, newItem: any) => void;
+    onEditingComplete: (oldItem: IExtendedPersonaProps, newItem: IExtendedPersonaProps) => void;
     // (undocumented)
     onRenderFloatingPicker?: React.ComponentType<IBaseFloatingPickerProps<IPersonaProps>>;
 }
@@ -655,12 +651,6 @@ export interface IOverflowSetStyles {
     item?: IStyle;
     overflowButton?: IStyle;
     root?: IStyle;
-}
-
-// @public (undocumented)
-export interface IPeoplePickerItemState {
-    // (undocumented)
-    contextualMenuVisible: boolean;
 }
 
 // @public (undocumented)
@@ -1386,12 +1376,10 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
 }
 
 // @public
-export class SelectedPeopleList extends BasePeopleSelectedItemsList {
-    // (undocumented)
-    static defaultProps: any;
-    // (undocumented)
-    protected renderItems: () => JSX.Element[];
-}
+export const SelectedPeopleList: {
+    (propsWithoutDefaults: ISelectedPeopleProps): JSX.Element;
+    displayName: string;
+};
 
 // @public (undocumented)
 export const Slider: React.FunctionComponent<ISliderProps>;

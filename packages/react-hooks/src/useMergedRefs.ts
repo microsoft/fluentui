@@ -5,7 +5,9 @@ import * as React from 'react';
  * updates all provided refs
  * @param refs- Refs to collectively update with one ref value.
  */
-export function useMergedRefs<T>(...refs: React.Ref<T>[]): (instance: T) => void {
+export function useMergedRefs<T>(
+  ...refs: (React.Ref<T> | undefined | null)[]
+): (instance: Exclude<T, undefined>) => void {
   return React.useCallback((value: T) => {
     refs.forEach(ref => {
       if (typeof ref === 'function') {
