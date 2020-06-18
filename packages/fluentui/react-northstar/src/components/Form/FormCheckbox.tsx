@@ -32,7 +32,6 @@ const FormCheckbox = compose<
   }),
 });
 
-FormCheckbox.defaultProps = {};
 
 FormCheckbox.propTypes = {
   ...commonPropTypes.createCommon({
