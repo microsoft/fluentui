@@ -1,1 +1,1 @@
-export * from '@fluentui/react-focus';
+export * from '@fluentui/react-focus/lib/FocusZone';
