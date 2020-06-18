@@ -1,3 +1,4 @@
+import { FontWeightProperty } from 'csstype';
 import { pxToRem } from '../../../../utils';
 
 export interface ListItemVariables {
