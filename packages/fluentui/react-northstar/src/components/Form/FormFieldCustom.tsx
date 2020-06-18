@@ -196,4 +196,4 @@ FormFieldCustom.defaultProps = {
 /**
  * A FormFieldCustom represents a Form element containing a label and an input.
  */
-export default withSafeTypeForAs<typeof FormFieldCustom, FormFieldCustomProps>(FormFieldCustom);
+export default FormFieldCustom;
