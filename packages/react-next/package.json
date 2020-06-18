@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-next",
-  "version": "8.0.0-alpha.43",
+  "version": "8.0.0-alpha.44",
   "beachball": {
     "disallowedChangeTypes": [
       "patch",
@@ -55,14 +55,14 @@
   },
   "dependencies": {
     "@fluentui/react-compose": "^0.11.2",
-    "@fluentui/react-focus": "^7.12.8",
+    "@fluentui/react-focus": "^7.12.9",
     "@fluentui/react-theme-provider": "^0.2.1",
-    "@uifabric/icons": "^7.3.51",
+    "@uifabric/icons": "^7.3.52",
     "@uifabric/merge-styles": "^7.14.1",
     "@uifabric/react-hooks": "^7.4.6",
     "@uifabric/set-version": "^7.0.13",
     "@uifabric/utilities": "^7.21.0",
-    "office-ui-fabric-react": "^7.120.3",
+    "office-ui-fabric-react": "^7.121.0",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {
