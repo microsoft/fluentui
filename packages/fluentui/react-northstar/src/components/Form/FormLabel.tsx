@@ -1,4 +1,4 @@
-import { compose, ComponentWithAs, ShorthandConfig } from '@fluentui/react-bindings';
+import { compose } from '@fluentui/react-bindings';
 import { commonPropTypes } from '../../utils';
 import Box, { BoxProps } from '../Box/Box';
 
@@ -21,15 +21,12 @@ const FormLabel = compose<'label', FormLabelProps, FormLabelStylesProps, BoxProp
     required,
   }),
   handledProps: ['required', 'inline'],
-}) as ComponentWithAs<'label', FormLabelProps> & { shorthandConfig: ShorthandConfig<FormLabelProps> };
+});
 
 FormLabel.defaultProps = {
   as: 'label',
 };
-FormLabel.propTypes = commonPropTypes.createCommon();
 
-FormLabel.shorthandConfig = {
-  mappedProp: 'content',
-};
+FormLabel.propTypes = commonPropTypes.createCommon();
 
 export default FormLabel;

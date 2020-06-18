@@ -10,8 +10,7 @@ import {
   getOrGenerateIdFromShorthand,
   createShorthand,
 } from '../../utils';
-import { ShorthandValue, withSafeTypeForAs, ProviderContextPrepared } from '../../types';
-import Input from '../Input/Input';
+import { ShorthandValue, ProviderContextPrepared } from '../../types';
 import Box, { BoxProps } from '../Box/Box';
 import {
   getElementType,

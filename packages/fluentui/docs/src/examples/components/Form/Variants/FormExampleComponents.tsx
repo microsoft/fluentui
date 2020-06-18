@@ -23,7 +23,7 @@ const items = [
   },
 ];
 
-const FormComponents = () => (
+const FormExampleComponents = () => (
   <Form>
     <Form.Input label="First name" name="firstName" id="first-name-inline" required />
     <Form.Dropdown label="City" id="cities-id" items={['prague', 'new york']} />
@@ -34,4 +34,4 @@ const FormComponents = () => (
   </Form>
 );
 
-export default FormComponents;
+export default FormExampleComponents;

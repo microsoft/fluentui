@@ -1,4 +1,4 @@
-import { compose, ComponentWithAs, ShorthandConfig } from '@fluentui/react-bindings';
+import { compose } from '@fluentui/react-bindings';
 import { commonPropTypes } from '../../utils';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import FormFieldCustom, { FormFieldCustomProps, FormFieldCustomStylesProps } from './FormFieldCustom';
@@ -27,9 +27,7 @@ const FormRadioGroup = compose<
       as: RadioGroup,
     },
   }),
-}) as ComponentWithAs<'div', FormRadioGroupProps> & { shorthandConfig: ShorthandConfig<FormRadioGroupProps> };
-
-FormRadioGroup.defaultProps = {};
+});
 
 FormRadioGroup.propTypes = {
   ...commonPropTypes.createCommon({
