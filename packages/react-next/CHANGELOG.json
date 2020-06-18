@@ -2,6 +2,21 @@
   "name": "@fluentui/react-next",
   "entries": [
     {
+      "date": "Thu, 18 Jun 2020 12:37:09 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.44",
+      "version": "8.0.0-alpha.44",
+      "comments": {
+        "none": [
+          {
+            "comment": "changing office-ui-fabric-react's path in react-next module mapper",
+            "author": "esteban.230@hotmail.com",
+            "commit": "e46bf9f50307191a6da7027a1857f4565baa10e3",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 17 Jun 2020 12:37:16 GMT",
       "tag": "@fluentui/react-next_v8.0.0-alpha.43",
       "version": "8.0.0-alpha.43",
