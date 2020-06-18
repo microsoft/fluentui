@@ -25,9 +25,10 @@ const jestAliases = () => {
       // Map package root and lib imports to the commonjs version
       const main = `${packageName}/${packageJson.main.replace('.js', '')}`;
       aliases[`^${packageName}$`] = main;
-      aliases[`^${packageName}`] = main.replace('index', '$1');
+      aliases[`^${packageName}/lib/(.*)$`] = main.replace('index', '$1');
     }
   }
+  console.dir(aliases);
 
   return aliases;
 };
