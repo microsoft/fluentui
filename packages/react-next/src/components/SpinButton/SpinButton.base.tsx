@@ -13,11 +13,10 @@ import {
   divProperties,
 } from '../../Utilities';
 import { getArrowButtonStyles } from './SpinButton.styles';
-import { ISpinButtonProps, ISpinButtonStyleProps, KeyboardSpinDirection } from './SpinButton.types';
+import { ISpinButtonProps, ISpinButtonStyleProps, ISpinButtonStyles, KeyboardSpinDirection } from './SpinButton.types';
 import { Position } from 'office-ui-fabric-react/lib/utilities/positioning';
 import { KeytipData } from '../../KeytipData';
 import { useBoolean, useSetTimeout, useControllableValue } from '@uifabric/react-hooks';
-import { ISpinButtonStyles } from 'office-ui-fabric-react';
 
 export interface ISpinButtonState {
   inputId: string;
