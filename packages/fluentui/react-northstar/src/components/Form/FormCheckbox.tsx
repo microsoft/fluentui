@@ -1,7 +1,7 @@
 import { compose } from '@fluentui/react-bindings';
 import { commonPropTypes } from '../../utils';
 import Checkbox, { CheckboxProps } from '../Checkbox/Checkbox';
-import _FormFieldBase, { FormFieldBaseProps } from './utils/formFieldCustom';
+import _FormFieldBase, { FormFieldBaseProps } from './utils/formFieldBase';
 
 interface FormCheckboxOwnProps extends CheckboxProps {}
 export type SelectedFormFieldCustomProps = Omit<

@@ -1,6 +1,6 @@
 import { compose } from '@fluentui/react-bindings';
 import { commonPropTypes } from '../../utils';
-import _FormFieldBase, { FormFieldBaseProps } from './utils/formFieldCustom';
+import _FormFieldBase, { FormFieldBaseProps } from './utils/formFieldBase';
 import RadioGroup, { RadioGroupProps } from '../RadioGroup/RadioGroup';
 
 interface FormRadioGroupOwnProps extends RadioGroupProps {}

@@ -1,6 +1,6 @@
 import { compose } from '@fluentui/react-bindings';
 import { commonPropTypes } from '../../utils';
-import _FormFieldBase, { FormFieldBaseProps } from './utils/formFieldCustom';
+import _FormFieldBase, { FormFieldBaseProps } from './utils/formFieldBase';
 import Slider, { SliderProps } from '../Slider/Slider';
 
 interface FormSliderOwnProps extends SliderProps {}
