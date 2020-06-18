@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { Selection } from '../../Selection';
 
-import { IBaseSelectedItemsList, IBaseSelectedItemsListProps, ISelectedItemProps } from './BaseSelectedItemsList.types';
-import { initializeComponentRef } from '../../Utilities';
+import { IBaseSelectedItemsListProps } from './BaseSelectedItemsList.types';
 import { IObjectWithKey } from '../../Utilities';
 import { useControllableValue, useForceUpdate, useConst } from '@uifabric/react-hooks';
 
@@ -19,140 +18,96 @@ function useSelection<T extends IObjectWithKey>(props: IBaseSelectedItemsListPro
   return selection;
 }
 
-export const BaseSelectedItemsList = <T extends IObjectWithKey>(props: IBaseSelectedItemsListProps<T>) => {
-  const [items, setItems] = useControllableValue(
-    props.selectedItems,
-    props.defaultSelectedItems || [],
-    (ev, newItems) => props.onChange?.(items),
-  );
-  const selection = useSelection(props, items!);
-
+function useComponentRef<T extends IObjectWithKey>(
+  props: IBaseSelectedItemsListProps<T>,
+  selection: Selection,
+  items: T[],
+  setItems: (items: T[]) => void,
+) {
   const canRemoveItem = (item: T): boolean => {
     return !props.canRemoveItem || props.canRemoveItem(item);
   };
 
-  return (
-    <BaseSelectedItemsListClass
-      {...props}
-      hoistedProps={{ items: items!, setItems: setItems as any, selection, canRemoveItem }}
-    />
-  );
-};
-BaseSelectedItemsList.displayName = 'BaseSelectedItemsList';
-
-interface IBaseSelectedItemsListClassProps<T> extends IBaseSelectedItemsListProps<T> {
-  hoistedProps: {
-    items: T[];
-    setItems: (items: T[]) => void;
-    selection: Selection;
-    canRemoveItem: (item: T) => boolean;
-  };
-}
-
-class BaseSelectedItemsListClass<T extends IObjectWithKey, P extends IBaseSelectedItemsListClassProps<T>>
-  extends React.Component<P, {}>
-  implements IBaseSelectedItemsList<T> {
-  protected root: HTMLElement;
-
-  constructor(basePickerProps: P) {
-    super(basePickerProps);
-
-    initializeComponentRef(this);
-  }
-
-  public get items(): T[] {
-    return this.props.hoistedProps.items;
-  }
-
-  public addItems = async (items: T[]): Promise<void> => {
-    const processedItems: T | T[] = this.props.onItemSelected ? await this.props.onItemSelected(items) : items;
+  const addItems = async (itemsToAdd: T[]): Promise<void> => {
+    const processedItems: T | T[] = props.onItemSelected ? await props.onItemSelected(itemsToAdd) : itemsToAdd;
 
     const processedItemObjects: T[] = Array.isArray(processedItems) ? processedItems : [processedItems];
 
-    const newItems: T[] = this.props.hoistedProps.items.concat(processedItemObjects);
-    this.updateItems(newItems);
+    const newItems: T[] = items.concat(processedItemObjects);
+    updateItems(newItems);
   };
 
-  public removeItemAt = (index: number): void => {
-    const { items } = this.props.hoistedProps;
-
-    if (this.props.hoistedProps.canRemoveItem(items[index])) {
+  const removeItemAt = (index: number): void => {
+    if (canRemoveItem(items[index])) {
       if (index > -1) {
-        if (this.props.onItemsDeleted) {
-          (this.props.onItemsDeleted as (item: T[]) => void)([items[index]]);
-        }
+        props.onItemsDeleted?.([items[index]]);
 
         const newItems = items.slice(0, index).concat(items.slice(index + 1));
-        this.updateItems(newItems);
+        updateItems(newItems);
       }
     }
   };
 
-  public removeItem = (item: T): void => {
-    const { items } = this.props.hoistedProps;
+  const removeItem = (item: T): void => {
     const index: number = items.indexOf(item);
 
-    this.removeItemAt(index);
+    removeItemAt(index);
   };
 
-  public replaceItem = (itemToReplace: T, itemsToReplaceWith: T | T[]): void => {
-    const { items } = this.props.hoistedProps;
+  const replaceItem = (itemToReplace: T, itemsToReplaceWith: T | T[]): void => {
     const index: number = items.indexOf(itemToReplace);
     if (index > -1) {
       const newItems = [...items];
       newItems.splice(index, 1, ...(Array.isArray(itemsToReplaceWith) ? itemsToReplaceWith : [itemsToReplaceWith]));
-      this.updateItems(newItems);
+      updateItems(newItems);
     }
   };
 
-  public removeItems = (itemsToRemove: T[]): void => {
-    const { items } = this.props.hoistedProps;
-    const itemsCanRemove = itemsToRemove.filter(item => this.props.hoistedProps.canRemoveItem(item));
+  const removeItems = (itemsToRemove: T[]): void => {
+    const itemsCanRemove = itemsToRemove.filter(item => canRemoveItem(item));
     const newItems: T[] = items.filter(item => itemsCanRemove.indexOf(item) === -1);
 
-    if (this.props.onItemsDeleted) {
-      (this.props.onItemsDeleted as (item: T[]) => void)(itemsCanRemove);
-    }
+    props.onItemsDeleted?.(itemsCanRemove);
 
-    this.updateItems(newItems);
+    updateItems(newItems);
   };
 
-  public removeSelectedItems(): void {
-    if (this.props.hoistedProps.items.length && this.props.hoistedProps.selection.getSelectedCount() > 0) {
-      this.removeItems(this.props.hoistedProps.selection.getSelection() as T[]);
+  const removeSelectedItems = (): void => {
+    if (items.length && selection.getSelectedCount() > 0) {
+      removeItems(selection.getSelection() as T[]);
     }
-  }
+  };
 
   /**
    * Controls what happens whenever there is an action that impacts the selected items.
    * If selectedItems is provided, this will act as a controlled component and will not update its own state.
    */
-  public updateItems(items: T[]): void {
-    this.props.hoistedProps.setItems(items);
-  }
+  const updateItems = (newItems: T[]): void => {
+    setItems(newItems);
+  };
 
-  public onCopy = (ev: React.ClipboardEvent<HTMLElement>): void => {
-    if (this.props.onCopyItems && this.props.hoistedProps.selection.getSelectedCount() > 0) {
-      const selectedItems: T[] = this.props.hoistedProps.selection.getSelection() as T[];
-      this.copyItems(selectedItems);
+  const onCopy = (ev: React.ClipboardEvent<HTMLElement>): void => {
+    if (props.onCopyItems && selection.getSelectedCount() > 0) {
+      const selectedItems: T[] = selection.getSelection() as T[];
+      copyItems(selectedItems);
     }
   };
 
-  public hasSelectedItems(): boolean {
-    return this.props.hoistedProps.selection.getSelectedCount() > 0;
-  }
+  const hasSelectedItems = (): boolean => {
+    return selection.getSelectedCount() > 0;
+  };
 
-  public unselectAll(): void {
-    this.props.hoistedProps.selection.setAllSelected(false);
-  }
+  const unselectAll = (): void => {
+    selection.setAllSelected(false);
+  };
 
-  public highlightedItems(): T[] {
-    return this.props.hoistedProps.selection.getSelection() as T[];
-  }
+  const highlightedItems = (): T[] => {
+    return selection.getSelection() as T[];
+  };
 
-  public copyItems(items: T[]): void {
-    if (this.props.onCopyItems) {
-      const copyText = this.props.onCopyItems(items);
+  const copyItems = (itemsToCopy: T[]): void => {
+    if (props.onCopyItems) {
+      const copyText = props.onCopyItems(itemsToCopy);
 
       const copyInput = document.createElement('input') as HTMLInputElement;
       document.body.appendChild(copyInput);
@@ -171,35 +126,67 @@ class BaseSelectedItemsListClass<T extends IObjectWithKey, P extends IBaseSelect
         document.body.removeChild(copyInput);
       }
     }
-  }
+  };
 
-  public render() {
-    const { removeButtonAriaLabel } = this.props;
-    const onRenderItem = this.props.onRenderItem as (props: ISelectedItemProps<T>) => JSX.Element;
-
-    const { items } = this.props.hoistedProps;
-    return items.map((item: T, index: number) =>
-      onRenderItem({
-        item,
-        index,
-        key: item.key ? item.key : index,
-        selected: this.props.hoistedProps.selection.isIndexSelected(index),
-        onRemoveItem: () => this.removeItem(item),
-        onItemChange: this.onItemChange,
-        removeButtonAriaLabel: removeButtonAriaLabel,
-        onCopyItem: (itemToCopy: T) => this.copyItems([itemToCopy]),
-      }),
-    );
-  }
-
-  protected onItemChange = (changedItem: T, index: number): void => {
-    const { items } = this.props.hoistedProps;
-
+  const onItemChange = (changedItem: T, index: number): void => {
     if (index >= 0) {
       const newItems: T[] = items;
       newItems[index] = changedItem;
 
-      this.updateItems(newItems);
+      updateItems(newItems);
     }
   };
+
+  const publicMethods = {
+    get items() {
+      return items;
+    },
+    addItems,
+    removeItemAt,
+    removeItem,
+    replaceItem,
+    removeItems,
+    removeSelectedItems,
+    updateItems,
+    onCopy,
+    hasSelectedItems,
+    unselectAll,
+    highlightedItems,
+    copyItems,
+    onItemChange,
+  };
+
+  React.useImperativeHandle(props.componentRef, () => publicMethods, [publicMethods]);
+
+  return publicMethods;
 }
+
+export const BaseSelectedItemsList = <T extends IObjectWithKey>(
+  props: IBaseSelectedItemsListProps<T>,
+): JSX.Element[] => {
+  const [items = [], setItems] = useControllableValue(
+    props.selectedItems,
+    props.defaultSelectedItems || [],
+    (ev, newItems) => props.onChange?.(newItems),
+  );
+  const selection = useSelection(props, items);
+  const publicMethods = useComponentRef(props, selection, items, setItems);
+
+  const { removeButtonAriaLabel, onRenderItem } = props;
+
+  return onRenderItem
+    ? items.map((item: T, index: number) =>
+        onRenderItem({
+          item,
+          index,
+          key: item.key ? item.key : index,
+          selected: selection.isIndexSelected(index),
+          onRemoveItem: () => publicMethods.removeItem(item),
+          onItemChange: publicMethods.onItemChange,
+          removeButtonAriaLabel: removeButtonAriaLabel,
+          onCopyItem: (itemToCopy: T) => publicMethods.copyItems([itemToCopy]),
+        }),
+      )
+    : [];
+};
+BaseSelectedItemsList.displayName = 'BaseSelectedItemsList';
