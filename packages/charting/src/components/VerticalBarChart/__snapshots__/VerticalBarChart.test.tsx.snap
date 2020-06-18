@@ -216,6 +216,7 @@ exports[`VerticalBarChart renders VerticalBarChart correctly 1`] = `
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active){& {
+                          background-image: linear-gradient(to right, undefined, undefined);
                           opacity: ;
                         }
                   />
@@ -304,6 +305,7 @@ exports[`VerticalBarChart renders VerticalBarChart correctly 1`] = `
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active){& {
+                          background-image: linear-gradient(to right, undefined, undefined);
                           opacity: ;
                         }
                   />
