@@ -25,6 +25,10 @@ export const KeytipsBasicExample: React.FunctionComponent = () => {
     keytipProps: keytipMap.CheckboxKeytip,
   });
 
+  const linkKeytipData = useKeytipData({
+    keytipProps: keytipMap.LinkKeytip,
+  });
+
   return (
     <div>
       <p>
@@ -38,7 +42,7 @@ export const KeytipsBasicExample: React.FunctionComponent = () => {
             <Toggle onText="Yes" offText="No" keytipProps={keytipMap.ToggleKeytip} />
             <span>
               Go to{' '}
-              <Link keytipProps={keytipMap.LinkKeytip} href="http://www.bing.com" target="_blank">
+              <Link keytipData={linkKeytipData} href="http://www.bing.com" target="_blank">
                 Bing
               </Link>
             </span>

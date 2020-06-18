@@ -131,12 +131,12 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
 
   /**
    * Optional keytip for this checkbox
-   * @deprecate use `useKeytipData` hook and pass keytipData prop instead.
+   * @deprecated use `useKeytipData` hook and pass keytipData prop instead.
    */
   keytipProps?: IKeytipProps;
 
   /**
-   * Optional keytip related attributes for this checkbox.
+   * Optional keytip related attributes.
    */
   keytipData?: IKeytipData;
 
