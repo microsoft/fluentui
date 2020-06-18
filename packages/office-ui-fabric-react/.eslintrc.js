@@ -4,9 +4,11 @@ const { configHelpers } = require('@fluentui/eslint-plugin');
 /** @type {import("eslint").Linter.Config} */
 module.exports = {
   extends: ['plugin:@fluentui/eslint-plugin/react--legacy'],
+  plugins: ['@fluentui'],
   root: true,
   rules: {
-    'react/forbid-component-props': 'off',
+    '@fluentui/ban-imports': ['error', { pathRegex: '^(\\.\\./)+Styling$', names: ['FontSizes'] }],
+    '@fluentui/jsx-ban-props': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
     'import/no-extraneous-dependencies': [
       'error',
@@ -14,7 +16,6 @@ module.exports = {
         devDependencies: [...configHelpers.devDependenciesFiles, 'src/common/{shallowUntilTarget,testUtilities}.ts'],
       },
     ],
-    // "import-blacklist": [true, { "../../Styling": ["FontSizes"] }]
   },
   overrides: [
     {

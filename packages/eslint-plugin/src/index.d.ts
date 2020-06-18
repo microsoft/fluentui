@@ -9,7 +9,9 @@ export declare const configs: {
 };
 
 export declare const rules: {
+  'ban-imports': Rule.RuleModule;
   'deprecated-keyboard-event-props': Rule.RuleModule;
+  'jsx-ban-props': Rule.RuleModule;
   'no-visibility-modifiers': Rule.RuleModule;
 };
 
@@ -25,12 +27,6 @@ export declare const configHelpers: {
 
   /** Files which may reference devDependencies: tests, docs (excluding examples), config/build */
   devDependenciesFiles: string[];
-
-  /**
-   * Returns a rule configuration for [`@typescript-eslint/naming-convention`](https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/naming-convention.md).
-   * @param prefixWithI - Whether to prefix interfaces with I
-   */
-  getNamingConventionRule: (prefixWithI: boolean) => Linter.RulesRecord;
 
   /**
    * Rules requiring type information should be defined in the `overrides` section since they must

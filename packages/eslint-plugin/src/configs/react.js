@@ -1,6 +1,12 @@
 // @ts-check
 const configHelpers = require('../utils/configHelpers');
 
+// Regular expression parts for the naming convention rule
+const camelOrPascalCase = '[a-zA-Z][a-zA-Z\\d]*'; // must start with letter
+const upperCase = '[A-Z][A-Z\\d]*(_[A-Z\\d]*)*'; // must start with letter, no consecutive underscores
+const camelOrPascalOrUpperCase = `(${camelOrPascalCase}|${upperCase})`;
+const builtins = '^(any|Number|number|String|string|Boolean|boolean|Undefined|undefined)$';
+
 /** @type {import("eslint").Linter.Config} */
 module.exports = {
   extends: [
@@ -12,7 +18,7 @@ module.exports = {
     'prettier/@typescript-eslint',
   ],
   parser: '@typescript-eslint/parser',
-  plugins: ['@typescript-eslint', 'deprecation', 'import', 'jest', 'jsx-a11y', 'react', 'react-hooks'],
+  plugins: ['@fluentui', '@typescript-eslint', 'deprecation', 'import', 'jest', 'jsx-a11y', 'react', 'react-hooks'],
   settings: {
     // Some config suggestions copied from https://github.com/alexgorbatchev/eslint-import-resolver-typescript#configuration
     'import/parsers': {
@@ -45,7 +51,49 @@ module.exports = {
     '**/*.scss.ts',
   ],
   rules: {
-    ...configHelpers.getNamingConventionRule(false /* prefixWithI */),
+    '@fluentui/jsx-ban-props': [
+      'error',
+      { name: 'style', message: 'Use className and provide CSS rules instead of using inline styles.' },
+    ],
+
+    // tslint: function-name, variable-name
+    '@typescript-eslint/naming-convention': [
+      'error',
+      { selector: 'function', format: ['camelCase'], leadingUnderscore: 'allow' },
+      { selector: 'method', modifiers: ['private'], format: ['camelCase'], leadingUnderscore: 'require' },
+      { selector: 'method', modifiers: ['protected'], format: ['camelCase'], leadingUnderscore: 'allow' },
+      // This will also pick up default-visibility methods and methods on plain objects,
+      // which is not really what we want, but there's not a good way around it.
+      { selector: 'method', modifiers: ['public'], format: ['camelCase'], leadingUnderscore: 'forbid' },
+      { selector: 'typeLike', format: ['PascalCase'], leadingUnderscore: 'forbid' },
+      // No leading I for interfaces
+      { selector: 'interface', format: ['PascalCase'], custom: { regex: '^I[A-Z]', match: false } },
+      {
+        selector: 'default',
+        format: ['camelCase', 'PascalCase', 'UPPER_CASE'],
+        leadingUnderscore: 'allow',
+        filter: {
+          // Allow leading and optional trailing __
+          // (the rest of the regex just enforces the same casing constraint listed above)
+          regex: `^__${camelOrPascalOrUpperCase}(__)?$`,
+          match: false,
+        },
+        custom: {
+          // Ban names overlapping with built-in types.
+          regex: builtins,
+          match: false,
+        },
+        // An alternative way to set up this rule is set `format: null` and pass a single custom
+        // regex which matches absolutely everything. However, this leads to unhelpful error messages:
+        //   "Variable name `whatever` must match the RegExp: /someAbsurdlyLongUnreadableRegex/"
+        // For reference in case we ever want this anyway:
+        // format: null,
+        // custom: {
+        //   regex: `(?!${builtins})^(_?${camelOrPascalOrUpperCase}|__${camelOrPascalOrUpperCase}(__)?)$`,
+        //   match: true
+        // }
+      },
+    ],
     '@typescript-eslint/no-empty-function': 'error',
     '@typescript-eslint/no-explicit-any': 'error', // tslint: no-any
     '@typescript-eslint/prefer-namespace-keyword': 'error',
@@ -91,9 +139,6 @@ module.exports = {
     'prefer-const': 'error',
     'prefer-arrow-callback': 'error', // tslint: no-function-expression
     radix: ['error', 'always'],
-    // Use className and provide css rules instead of using inline styles.
-    // TODO: this doesn't forbid style on built-in elements--do we care?
-    'react/forbid-component-props': ['error', { forbid: ['style'] }], // tslint: jsx-ban-props
     'react/jsx-key': 'error',
     'react/jsx-no-bind': [
       'error',
@@ -105,10 +150,6 @@ module.exports = {
     ],
     'react/no-string-refs': 'error',
     'react/self-closing-comp': 'error',
-
-    // TODO: find equivalents to these tslint rules
-    // used in certain packages:
-    // "import-blacklist": [true, { "../../Styling": ["FontSizes"] }]
 
     // airbnb or other config overrides (some temporary)
     // TODO: determine which rules we want to enable, and make needed changes (separate PR)
