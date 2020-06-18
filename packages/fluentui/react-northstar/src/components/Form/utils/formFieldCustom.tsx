@@ -9,23 +9,16 @@ import {
   commonPropTypes,
   getOrGenerateIdFromShorthand,
   createShorthand,
-} from '../../utils';
-import { ShorthandValue, ProviderContextPrepared } from '../../types';
-import Box, { BoxProps } from '../Box/Box';
-import {
-  getElementType,
-  useUnhandledProps,
-  useTelemetry,
-  useStyles,
-  useAccessibility,
-  compose,
-} from '@fluentui/react-bindings';
-import FormLabel, { FormLabelProps } from './FormLabel';
-import FormMessage, { FormMessageProps } from './FormMessage';
+} from '../../../utils';
+import { ShorthandValue, ProviderContextPrepared } from '../../../types';
+import Box, { BoxProps } from '../../Box/Box';
+import { getElementType, useUnhandledProps, useTelemetry, useAccessibility, compose } from '@fluentui/react-bindings';
+import FormLabel, { FormLabelProps } from '../FormLabel';
+import FormMessage, { FormMessageProps } from '../FormMessage';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 
-export interface FormFieldCustomProps extends UIComponentProps, ChildrenComponentProps {
+export interface FormFieldBaseProps extends UIComponentProps, ChildrenComponentProps {
   /**
    * Accessibility behavior if overridden by the user.
    */
@@ -50,21 +43,17 @@ export interface FormFieldCustomProps extends UIComponentProps, ChildrenComponen
   errorMessage?: ShorthandValue<FormMessageProps>;
 }
 
-export const formFieldClassName = 'ui-form__field__custom';
+export const formFieldClassName = 'ui-form__field__base';
 
-export type FormFieldCustomStylesProps = Required<Pick<FormFieldCustomProps, 'inline'>> & {
-  hasErrorMessage: boolean;
-};
-
-const FormFieldCustom = compose<'div', FormFieldCustomProps, FormFieldCustomStylesProps, {}, {}>(
+const _FormFieldBase = compose<'div', FormFieldBaseProps, {}, {}, {}>(
   (props, ref, composeOptions) => {
     const context: ProviderContextPrepared = React.useContext(ThemeContext);
     const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
     setStart();
 
-    const { children, message, className, design, styles, variables, inline, errorMessage, id, control, label } = props;
+    const { children, message, inline, errorMessage, id, control, label } = props;
 
-    const slotProps = composeOptions.resolveSlotProps<FormFieldCustomProps>(props);
+    const slotProps = composeOptions.resolveSlotProps<FormFieldBaseProps>(props);
     const ElementType = getElementType(props);
     const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
     const messageId = React.useRef<string>();
@@ -82,67 +71,43 @@ const FormFieldCustom = compose<'div', FormFieldCustomProps, FormFieldCustomStyl
       rtl: context.rtl,
     });
 
-    const { classes, styles: resolvedStyles } = useStyles<FormFieldCustomStylesProps>(FormFieldCustom.displayName, {
-      className: composeOptions.className,
-      composeOptions,
-      mapPropsToStyles: () => ({
-        inline,
-        hasErrorMessage: !!errorMessage,
-      }),
-      mapPropsToInlineStyles: () => ({
-        className,
-        design,
-        styles,
-        variables,
-      }),
-      rtl: context.rtl,
-      unstable_props: props,
-    });
-
-    const labelElement = createShorthand(composeOptions.slots.label, label, {
-      defaultProps: () =>
-        getA11yProps('label', {
-          htmlFor: id,
-          id: labelId.current,
-          inline,
-          ...slotProps.label,
-        }),
-    });
-
-    const messageElement = createShorthand(composeOptions.slots.message, errorMessage || message, {
-      defaultProps: () =>
-        getA11yProps('message', {
-          id: messageId.current,
-          ...slotProps.message,
-        }),
-    });
-
-    const controlElement = createShorthand(composeOptions.slots.control, control || {}, {
-      defaultProps: () =>
-        getA11yProps('control', {
-          error: !!errorMessage || null,
-          styles: resolvedStyles.control,
-          ...unhandledProps,
-          ...slotProps.control,
-        }),
-    });
-
-    const content = (
-      <>
-        {labelElement}
-        {controlElement}
-        {messageElement}
-      </>
-    );
-
     const element = (
       <ElementType
         {...getA11yProps('root', {
-          className: classes.root,
+          className: formFieldClassName,
           ref,
         })}
       >
-        {childrenExist(children) ? children : content}
+        {childrenExist(children) ? (
+          children
+        ) : (
+          <>
+            {createShorthand(composeOptions.slots.label, label, {
+              defaultProps: () =>
+                getA11yProps('label', {
+                  htmlFor: id,
+                  id: labelId.current,
+                  inline,
+                  ...slotProps.label,
+                }),
+            })}
+            {createShorthand(composeOptions.slots.message, errorMessage || message, {
+              defaultProps: () =>
+                getA11yProps('message', {
+                  id: messageId.current,
+                  ...slotProps.message,
+                }),
+            })}
+            {createShorthand(composeOptions.slots.control, control || {}, {
+              defaultProps: () =>
+                getA11yProps('control', {
+                  error: !!errorMessage || null,
+                  ...unhandledProps,
+                  ...slotProps.control,
+                }),
+            })}
+          </>
+        )}
       </ElementType>
     );
     setEnd();
@@ -150,7 +115,7 @@ const FormFieldCustom = compose<'div', FormFieldCustomProps, FormFieldCustomStyl
   },
   {
     className: formFieldClassName,
-    displayName: 'FormFieldCustom',
+    displayName: 'FormFieldBase',
     overrideStyles: true,
     slots: {
       label: FormLabel,
@@ -177,7 +142,7 @@ const FormFieldCustom = compose<'div', FormFieldCustomProps, FormFieldCustomStyl
   },
 );
 
-FormFieldCustom.propTypes = {
+_FormFieldBase.propTypes = {
   ...commonPropTypes.createCommon({
     content: false,
   }),
@@ -188,11 +153,11 @@ FormFieldCustom.propTypes = {
   errorMessage: customPropTypes.shorthandAllowingChildren,
 };
 
-FormFieldCustom.defaultProps = {
+_FormFieldBase.defaultProps = {
   accessibility: formFieldBehavior,
 };
 
 /**
- * A FormFieldCustom represents a Form element containing a label and an input.
+ * A FormFiedBase represents a Form element containing a label and an input.
  */
-export default FormFieldCustom;
+export default _FormFieldBase;
