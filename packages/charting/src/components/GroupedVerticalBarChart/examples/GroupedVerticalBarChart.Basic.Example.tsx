@@ -16,7 +16,7 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<Readonl
         series: [
           {
             key: 'series1',
-            data: 9,
+            data: 90000,
             color: DefaultPalette.accent,
             legend: 'MetaData1',
             xAxisCalloutData: '2020/04/30',
@@ -24,7 +24,7 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<Readonl
           },
           {
             key: 'series2',
-            data: 85,
+            data: 85000,
             color: DefaultPalette.blueMid,
             legend: 'MetaData2',
             xAxisCalloutData: '2020/04/30',
@@ -32,7 +32,7 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<Readonl
           },
           {
             key: 'series3',
-            data: 36,
+            data: 36000,
             color: DefaultPalette.blueLight,
             legend: 'MetaData3',
             xAxisCalloutData: '2020/04/30',
@@ -40,7 +40,7 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<Readonl
           },
           {
             key: 'series4',
-            data: 66,
+            data: 66000,
             color: DefaultPalette.blue,
             legend: 'MetaData4',
             xAxisCalloutData: '2020/04/30',
@@ -48,7 +48,7 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<Readonl
           },
           {
             key: 'series5',
-            data: 34,
+            data: 34000,
             color: DefaultPalette.blueDark,
             legend: 'MetaData5',
             xAxisCalloutData: '2020/04/30',
@@ -61,7 +61,7 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<Readonl
         series: [
           {
             key: 'series1',
-            data: 14,
+            data: 14000,
             color: DefaultPalette.accent,
             legend: 'MetaData1',
             xAxisCalloutData: '2020/04/30',
@@ -69,7 +69,7 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<Readonl
           },
           {
             key: 'series2',
-            data: 50,
+            data: 50000,
             color: DefaultPalette.blueMid,
             legend: 'MetaData2',
             xAxisCalloutData: '2020/04/30',
@@ -77,7 +77,7 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<Readonl
           },
           {
             key: 'series3',
-            data: 33,
+            data: 33000,
             color: DefaultPalette.blueLight,
             legend: 'MetaData3',
             xAxisCalloutData: '2020/04/30',
@@ -85,7 +85,7 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<Readonl
           },
           {
             key: 'series4',
-            data: 44,
+            data: 44000,
             color: DefaultPalette.blue,
             legend: 'MetaData4',
             xAxisCalloutData: '2020/04/30',
@@ -93,7 +93,7 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<Readonl
           },
           {
             key: 'series5',
-            data: 72,
+            data: 72000,
             color: DefaultPalette.blueDark,
             legend: 'MetaData5',
             xAxisCalloutData: '2020/04/30',
@@ -106,7 +106,7 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<Readonl
         series: [
           {
             key: 'series1',
-            data: 33,
+            data: 33000,
             color: DefaultPalette.accent,
             legend: 'MetaData1',
             xAxisCalloutData: '2020/04/30',
@@ -114,7 +114,7 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<Readonl
           },
           {
             key: 'series2',
-            data: 3,
+            data: 3000,
             color: DefaultPalette.blueMid,
             legend: 'MetaData2',
             xAxisCalloutData: '2020/04/30',
@@ -122,7 +122,7 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<Readonl
           },
           {
             key: 'series3',
-            data: 75,
+            data: 75000,
             color: DefaultPalette.blueLight,
             legend: 'MetaData3',
             xAxisCalloutData: '2020/04/30',
@@ -130,7 +130,7 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<Readonl
           },
           {
             key: 'series4',
-            data: 29,
+            data: 29000,
             color: DefaultPalette.blue,
             legend: 'MetaData4',
             xAxisCalloutData: '2020/04/30',
@@ -138,7 +138,7 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<Readonl
           },
           {
             key: 'series5',
-            data: 90,
+            data: 50000,
             color: DefaultPalette.blueDark,
             legend: 'MetaData5',
             xAxisCalloutData: '2020/04/30',
@@ -152,7 +152,7 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<Readonl
 
     return (
       <div className={mergeStyles(rootStyle)}>
-        <GroupedVerticalBarChart data={data} showYAxisGridLines />
+        <GroupedVerticalBarChart data={data} height={400} width={650} showYAxisGridLines />
       </div>
     );
   }
