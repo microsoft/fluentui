@@ -9,7 +9,16 @@ export interface IBaseSelectedItemsListState<T extends IObjectWithKey> {
   items: T[];
 }
 
-export class BaseSelectedItemsList<T extends IObjectWithKey, P extends IBaseSelectedItemsListProps<T>>
+export const BaseSelectedItemsList = <T extends IObjectWithKey>(props: IBaseSelectedItemsListProps<T>) => {
+  return <BaseSelectedItemsListClass {...props} hoistedProps={{}} />;
+};
+BaseSelectedItemsList.displayName = 'BaseSelectedItemsList';
+
+interface IBaseSelectedItemsListClassProps<T> extends IBaseSelectedItemsListProps<T> {
+  hoistedProps: {};
+}
+
+class BaseSelectedItemsListClass<T extends IObjectWithKey, P extends IBaseSelectedItemsListClassProps<T>>
   extends React.Component<P, IBaseSelectedItemsListState<T>>
   implements IBaseSelectedItemsList<T> {
   protected root: HTMLElement;
