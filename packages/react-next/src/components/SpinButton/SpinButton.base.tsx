@@ -122,8 +122,6 @@ export const SpinButtonBase = (props: ISpinButtonProps) => {
     stepDelay: 75,
   });
 
-  // let currentValue: string = props.value !== undefined ? props.value : String(min);
-
   if (props.value !== undefined) {
     state.lastValidValue = props.value;
   }
@@ -144,10 +142,6 @@ export const SpinButtonBase = (props: ISpinButtonProps) => {
     'onFocus',
     'className',
   ]);
-
-  // if (props.defaultValue) {
-  //   currentValue = String(Math.max(min as number, Math.min(max as number, Number(props.defaultValue))));
-  // }
 
   // Validate function to use if one is not passed in
   const defaultOnValidate = (valueProp: string) => {
