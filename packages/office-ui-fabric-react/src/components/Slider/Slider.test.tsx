@@ -29,7 +29,7 @@ describe('Slider', () => {
     componentPath: path.join(__dirname, 'Slider.tsx'),
     Component: Slider,
     displayName: 'Slider',
-    exportedAtTopLevel: true,
+    isInternal: false,
     disabledTests: ['has-docblock'],
   });
 

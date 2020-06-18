@@ -8,8 +8,7 @@ describe('Slider', () => {
     componentPath: __dirname.replace(/test.*/, 'src/components/Slider/Slider.tsx'),
     Component: Slider,
     displayName: 'Slider',
-    exportedAtTopLevel: true,
-    useDefaultExport: true,
+    isInternal: false,
     customMount: mount,
     disabledTests: ['has-docblock'],
   });
