@@ -3,7 +3,6 @@ import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import {
-  childrenExist,
   UIComponentProps,
   ChildrenComponentProps,
   commonPropTypes,
@@ -51,7 +50,7 @@ const _FormFieldBase = compose<'div', FormFieldBaseProps, {}, {}, {}>(
     const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
     setStart();
 
-    const { children, message, inline, errorMessage, id, control, label } = props;
+    const { message, inline, errorMessage, id, control, label } = props;
 
     const slotProps = composeOptions.resolveSlotProps<FormFieldBaseProps>(props);
     const ElementType = getElementType(props);
@@ -78,9 +77,7 @@ const _FormFieldBase = compose<'div', FormFieldBaseProps, {}, {}, {}>(
           ref,
         })}
       >
-        {childrenExist(children) ? (
-          children
-        ) : (
+        {
           <>
             {createShorthand(composeOptions.slots.label, label, {
               defaultProps: () =>
@@ -107,7 +104,7 @@ const _FormFieldBase = compose<'div', FormFieldBaseProps, {}, {}, {}>(
                 }),
             })}
           </>
-        )}
+        }
       </ElementType>
     );
     setEnd();
