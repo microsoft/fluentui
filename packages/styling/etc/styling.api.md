@@ -296,6 +296,8 @@ export interface IEffects {
     elevation64: string;
     elevation8: string;
     roundedCorner2: string;
+    roundedCorner4: string;
+    roundedCorner6: string;
 }
 
 export { IFontFace }

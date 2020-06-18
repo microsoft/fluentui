@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "adding css styles fixes, for both normal and high contrast mode",
+  "packageName": "@uifabric/charting",
+  "email": "v-sivsar@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-06-17T12:50:34.306Z"
+}

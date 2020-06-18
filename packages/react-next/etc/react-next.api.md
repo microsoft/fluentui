@@ -5,6 +5,7 @@
 ```ts
 
 import { ComposePreparedOptions } from '@fluentui/react-compose';
+import { IBaseProps } from 'office-ui-fabric-react/lib/Utilities';
 import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import { IButtonProps as IButtonProps_2 } from 'office-ui-fabric-react/lib/components/Button/Button.types';
 import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
@@ -13,6 +14,8 @@ import { ICustomizerContext } from 'office-ui-fabric-react/lib/Utilities';
 import { IFocusZoneProps } from '@fluentui/react-focus';
 import { IIconProps } from 'office-ui-fabric-react/lib/Icon';
 import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
+import { IPositionedData } from 'office-ui-fabric-react/lib/utilities/positioning';
+import { IRectangle } from 'office-ui-fabric-react/lib/Utilities';
 import { IRefObject } from 'office-ui-fabric-react/lib/Utilities';
 import { IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { ISettings } from 'office-ui-fabric-react/lib/Utilities';
@@ -20,9 +23,12 @@ import { ISettingsFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 import { IStyleSet } from 'office-ui-fabric-react/lib/Styling';
+import { ITeachingBubble } from 'office-ui-fabric-react/lib/TeachingBubble';
 import { ITheme } from 'office-ui-fabric-react/lib/Styling';
+import { Point } from 'office-ui-fabric-react/lib/Utilities';
 import { Position } from 'office-ui-fabric-react/lib/utilities/positioning';
 import * as React from 'react';
+import { RectangleEdge } from 'office-ui-fabric-react/lib/utilities/positioning';
 import { ThemeProviderProps } from '@fluentui/react-theme-provider';
 import { useTheme } from '@fluentui/react-theme-provider';
 
@@ -31,6 +37,44 @@ export const Checkbox: import("@fluentui/react-compose").ComponentWithAs<"div", 
 
 // @public (undocumented)
 export const CheckboxBase: import("@fluentui/react-compose").ComponentWithAs<"div", ICheckboxProps>;
+
+// @public (undocumented)
+export const Coachmark: React.FunctionComponent<ICoachmarkProps>;
+
+// @public (undocumented)
+export const COACHMARK_ATTRIBUTE_NAME = "data-coachmarkid";
+
+// @public (undocumented)
+export class CoachmarkBase extends React.Component<ICoachmarkProps, ICoachmarkState> implements ICoachmark {
+    constructor(props: ICoachmarkProps);
+    // (undocumented)
+    componentDidMount(): void;
+    // (undocumented)
+    componentDidUpdate(prevProps: ICoachmarkProps, prevState: ICoachmarkState): void;
+    // (undocumented)
+    componentWillUnmount(): void;
+    // (undocumented)
+    static defaultProps: Partial<ICoachmarkProps>;
+    // (undocumented)
+    dismiss: (ev?: Event | React.KeyboardEvent<HTMLElement> | React.MouseEvent<HTMLElement, MouseEvent> | undefined) => void;
+    // (undocumented)
+    render(): JSX.Element;
+    // (undocumented)
+    shouldComponentUpdate(newProps: ICoachmarkProps, newState: ICoachmarkState): boolean;
+    // (undocumented)
+    UNSAFE_componentWillReceiveProps(newProps: ICoachmarkProps): void;
+}
+
+// @public (undocumented)
+export const ColorPickerGridCell: React.FunctionComponent<IColorPickerGridCellProps>;
+
+// @public (undocumented)
+export class ColorPickerGridCellBase extends React.PureComponent<IColorPickerGridCellProps, {}> {
+    // (undocumented)
+    static defaultProps: Partial<IColorPickerGridCellProps>;
+    // (undocumented)
+    render(): JSX.Element;
+}
 
 // @public
 export const Customizer: React.FunctionComponent<ICustomizerProps>;
@@ -79,6 +123,9 @@ export const getNextResizeGroupStateProvider: (measurementCache?: {
     shouldRenderDataForMeasurement: (dataToMeasure: any) => boolean;
     getInitialResizeGroupState: (data: any) => IResizeGroupState;
 };
+
+// @public
+export function getPersonaInitialsColor(props: Pick<IPersonaProps, 'primaryText' | 'text' | 'initialsColor'>): string;
 
 // @public
 export interface ICheckbox {
@@ -175,11 +222,180 @@ export interface ICheckboxStyles {
 }
 
 // @public (undocumented)
+export interface ICoachmark {
+    dismiss?: (ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => void;
+}
+
+// @public
+export interface ICoachmarkProps extends React.ClassAttributes<CoachmarkBase> {
+    ariaAlertText?: string;
+    ariaDescribedBy?: string;
+    ariaDescribedByText?: string;
+    ariaLabelledBy?: string;
+    ariaLabelledByText?: string;
+    beaconColorOne?: string;
+    beaconColorTwo?: string;
+    // @deprecated
+    beakHeight?: number;
+    // @deprecated
+    beakWidth?: number;
+    className?: string;
+    // @deprecated
+    collapsed?: boolean;
+    color?: string;
+    componentRef?: IRefObject<ICoachmark>;
+    delayBeforeCoachmarkAnimation?: number;
+    delayBeforeMouseOpen?: number;
+    // @deprecated
+    height?: number;
+    isCollapsed?: boolean;
+    isPositionForced?: boolean;
+    mouseProximityOffset?: number;
+    onAnimationOpenEnd?: () => void;
+    onAnimationOpenStart?: () => void;
+    onDismiss?: (ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => void;
+    onMouseMove?: (e: MouseEvent) => void;
+    persistentBeak?: boolean;
+    positioningContainerProps?: IPositioningContainerProps;
+    preventDismissOnLostFocus?: boolean;
+    preventFocusOnMount?: boolean;
+    styles?: IStyleFunctionOrObject<ICoachmarkStyleProps, ICoachmarkStyles>;
+    target: HTMLElement | string | null;
+    // @deprecated
+    teachingBubbleRef?: ITeachingBubble;
+    theme?: ITheme;
+    // @deprecated
+    width?: number;
+}
+
+// @public (undocumented)
+export interface ICoachmarkState {
+    alertText?: string;
+    beakBottom?: string;
+    beakLeft?: string;
+    beakRight?: string;
+    beakTop?: string;
+    entityInnerHostRect: IEntityRect;
+    isBeaconAnimating: boolean;
+    isCollapsed: boolean;
+    isMeasured: boolean;
+    isMeasuring: boolean;
+    isMouseInProximity: boolean;
+    targetAlignment?: RectangleEdge;
+    targetPosition?: RectangleEdge;
+    transformOrigin?: string;
+}
+
+// @public
+export interface ICoachmarkStyleProps {
+    beaconColorOne?: string;
+    beaconColorTwo?: string;
+    className?: string;
+    // @deprecated
+    collapsed?: boolean;
+    color?: string;
+    delayBeforeCoachmarkAnimation?: string;
+    entityHostHeight?: string;
+    entityHostWidth?: string;
+    height?: string;
+    isBeaconAnimating: boolean;
+    isCollapsed: boolean;
+    isMeasured: boolean;
+    isMeasuring: boolean;
+    theme?: ITheme;
+    transformOrigin?: string;
+    width?: string;
+}
+
+// @public
+export interface ICoachmarkStyles {
+    ariaContainer?: IStyle;
+    childrenContainer: IStyle;
+    collapsed?: IStyle;
+    entityHost?: IStyle;
+    entityInnerHost: IStyle;
+    pulsingBeacon?: IStyle;
+    root?: IStyle;
+    rotateAnimationLayer?: IStyle;
+    scaleAnimationLayer?: IStyle;
+    translateAnimationContainer?: IStyle;
+}
+
+// @public @deprecated (undocumented)
+export type ICoachmarkTypes = ICoachmarkProps;
+
+// @public (undocumented)
+export interface IColorCellProps {
+    color?: string;
+    id: string;
+    index?: number;
+    label?: string;
+}
+
+// @public (undocumented)
+export interface IColorPickerGridCellProps {
+    borderWidth?: number;
+    circle?: boolean;
+    color?: string;
+    disabled?: boolean;
+    height?: number;
+    // @deprecated
+    id?: string;
+    idPrefix?: string;
+    index?: number;
+    item: IColorCellProps;
+    label?: string;
+    onClick?: (item: IColorCellProps) => void;
+    // (undocumented)
+    onFocus?: (item: IColorCellProps) => void;
+    // (undocumented)
+    onHover?: (item?: IColorCellProps) => void;
+    // (undocumented)
+    onKeyDown?: (ev: React.KeyboardEvent<HTMLButtonElement>) => void;
+    onMouseEnter?: (ev: React.MouseEvent<HTMLButtonElement>) => boolean;
+    // (undocumented)
+    onMouseLeave?: (ev: React.MouseEvent<HTMLButtonElement>) => void;
+    onMouseMove?: (ev: React.MouseEvent<HTMLButtonElement>) => boolean;
+    // (undocumented)
+    onWheel?: (ev: React.MouseEvent<HTMLButtonElement>) => void;
+    selected: boolean;
+    styles?: IStyleFunctionOrObject<IColorPickerGridCellStyleProps, IColorPickerGridCellStyles>;
+    theme?: ITheme;
+    width?: number;
+}
+
+// @public (undocumented)
+export interface IColorPickerGridCellStyleProps {
+    borderWidth?: number;
+    circle?: boolean;
+    disabled?: boolean;
+    height?: number;
+    isWhite?: boolean;
+    selected?: boolean;
+    theme: ITheme;
+    width?: number;
+}
+
+// @public (undocumented)
+export interface IColorPickerGridCellStyles {
+    colorCell: IStyle;
+    svg: IStyle;
+}
+
+// @public (undocumented)
 export interface ICustomizerProps {
     contextTransform?: (context: Readonly<ICustomizerContext>) => ICustomizerContext;
     disableThemeProvider?: boolean;
     scopedSettings?: ISettings | ISettingsFunction;
     settings?: ISettings | ISettingsFunction;
+}
+
+// @public
+export interface IEntityRect {
+    // (undocumented)
+    height: number;
+    // (undocumented)
+    width: number;
 }
 
 // @public (undocumented)
@@ -447,6 +663,148 @@ export interface IOverflowSetStyles {
 }
 
 // @public (undocumented)
+export interface IPersona {
+}
+
+// @public (undocumented)
+export interface IPersonaCoinProps extends IPersonaSharedProps {
+    className?: string;
+    componentRef?: IRefObject<{}>;
+    styles?: IStyleFunctionOrObject<IPersonaCoinStyleProps, IPersonaCoinStyles>;
+}
+
+// @public (undocumented)
+export interface IPersonaCoinStyleProps {
+    className?: string;
+    coinSize?: number;
+    showUnknownPersonaCoin?: boolean;
+    size?: PersonaSize;
+    theme: ITheme;
+}
+
+// @public (undocumented)
+export interface IPersonaCoinStyles {
+    // (undocumented)
+    coin: IStyle;
+    // (undocumented)
+    image: IStyle;
+    // (undocumented)
+    imageArea: IStyle;
+    // (undocumented)
+    initials: IStyle;
+    // (undocumented)
+    size10WithoutPresenceIcon: IStyle;
+}
+
+// @public (undocumented)
+export interface IPersonaPresenceProps extends IPersonaSharedProps {
+    componentRef?: IRefObject<{}>;
+    styles?: IStyleFunctionOrObject<IPersonaPresenceStyleProps, IPersonaPresenceStyles>;
+}
+
+// @public (undocumented)
+export type IPersonaPresenceStyleProps = Required<Pick<IPersonaSharedProps, 'theme'>> & Pick<IPersonaSharedProps, 'presence' | 'isOutOfOffice' | 'size' | 'presenceColors'> & Pick<IPersonaProps, 'className'>;
+
+// @public (undocumented)
+export interface IPersonaPresenceStyles {
+    // (undocumented)
+    presence: IStyle;
+    // (undocumented)
+    presenceIcon: IStyle;
+}
+
+// @public (undocumented)
+export interface IPersonaProps extends IPersonaSharedProps {
+    className?: string;
+    componentRef?: IRefObject<IPersona>;
+    onRenderOptionalText?: IRenderFunction<IPersonaProps>;
+    onRenderPrimaryText?: IRenderFunction<IPersonaProps>;
+    onRenderSecondaryText?: IRenderFunction<IPersonaProps>;
+    onRenderTertiaryText?: IRenderFunction<IPersonaProps>;
+    styles?: IStyleFunctionOrObject<IPersonaStyleProps, IPersonaStyles>;
+}
+
+// @public (undocumented)
+export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase | PersonaCoinBase | HTMLDivElement> {
+    allowPhoneInitials?: boolean;
+    coinProps?: IPersonaCoinProps;
+    coinSize?: number;
+    hidePersonaDetails?: boolean;
+    imageAlt?: string;
+    imageInitials?: string;
+    imageShouldFadeIn?: boolean;
+    imageShouldStartVisible?: boolean;
+    imageUrl?: string;
+    initialsColor?: PersonaInitialsColor | string;
+    isOutOfOffice?: boolean;
+    onPhotoLoadingStateChange?: (newImageLoadState: ImageLoadState) => void;
+    // @deprecated
+    onRenderCoin?: IRenderFunction<IPersonaSharedProps>;
+    onRenderInitials?: IRenderFunction<IPersonaSharedProps>;
+    onRenderPersonaCoin?: IRenderFunction<IPersonaSharedProps>;
+    optionalText?: string;
+    presence?: PersonaPresence;
+    presenceColors?: {
+        available: string;
+        away: string;
+        busy: string;
+        dnd: string;
+        offline: string;
+        oof: string;
+        background: string;
+    };
+    presenceTitle?: string;
+    // @deprecated
+    primaryText?: string;
+    secondaryText?: string;
+    showInitialsUntilImageLoads?: boolean;
+    // (undocumented)
+    showSecondaryText?: boolean;
+    showUnknownPersonaCoin?: boolean;
+    size?: PersonaSize;
+    tertiaryText?: string;
+    text?: string;
+    theme?: ITheme;
+}
+
+// @public (undocumented)
+export interface IPersonaState {
+    // (undocumented)
+    isImageError?: boolean;
+    // (undocumented)
+    isImageLoaded?: boolean;
+}
+
+// @public (undocumented)
+export interface IPersonaStyleProps {
+    className?: string;
+    coinSize?: number;
+    presence?: PersonaPresence;
+    // (undocumented)
+    showSecondaryText?: boolean;
+    size?: PersonaSize;
+    theme: ITheme;
+}
+
+// @public (undocumented)
+export interface IPersonaStyles {
+    // (undocumented)
+    details: IStyle;
+    // (undocumented)
+    optionalText: IStyle;
+    // (undocumented)
+    primaryText: IStyle;
+    // (undocumented)
+    root: IStyle;
+    // (undocumented)
+    secondaryText: IStyle;
+    // (undocumented)
+    tertiaryText: IStyle;
+    // (undocumented)
+    textContent: IStyle;
+}
+
+// @public (undocumented)
 export interface IPivot {
     focus(): void;
 }
@@ -523,6 +881,52 @@ export interface IPopupProps extends React.HTMLAttributes<HTMLDivElement> {
     // @deprecated
     shouldRestoreFocus?: boolean;
 }
+
+// @public (undocumented)
+export interface IPositioningContainer {
+}
+
+// @public (undocumented)
+export interface IPositioningContainerProps extends IBaseProps<IPositioningContainer> {
+    ariaDescribedBy?: string;
+    ariaLabel?: string;
+    ariaLabelledBy?: string;
+    backgroundColor?: string;
+    bounds?: IRectangle;
+    className?: string;
+    componentRef?: IRefObject<IPositioningContainer>;
+    coverTarget?: boolean;
+    // Warning: (ae-forgotten-export) The symbol "DirectionalHint" needs to be exported by the entry point index.d.ts
+    directionalHint?: DirectionalHint;
+    directionalHintFixed?: boolean;
+    directionalHintForRTL?: DirectionalHint;
+    doNotLayer?: boolean;
+    finalHeight?: number;
+    minPagePadding?: number;
+    offsetFromTarget?: number;
+    onDismiss?: (ev?: any) => void;
+    onLayerMounted?: () => void;
+    onPositioned?: (positions?: IPositionedData) => void;
+    positioningContainerMaxHeight?: number;
+    positioningContainerWidth?: number;
+    preventDismissOnScroll?: boolean;
+    role?: string;
+    setInitialFocus?: boolean;
+    target?: HTMLElement | string | MouseEvent | Point | null;
+    // @deprecated
+    targetPoint?: Point;
+    // @deprecated
+    useTargetPoint?: boolean;
+}
+
+// @public (undocumented)
+export interface IPositioningContainerState {
+    heightOffset?: number;
+    positions?: IPositionedData;
+}
+
+// @public @deprecated (undocumented)
+export type IPositioningContainerTypes = IPositioningContainerProps;
 
 // @public (undocumented)
 export interface IResizeGroup {
@@ -775,6 +1179,58 @@ export interface ISpinButtonStyles {
 }
 
 // @public (undocumented)
+export interface ISwatchColorPickerProps {
+    ariaPosInSet?: number;
+    ariaSetSize?: number;
+    cellBorderWidth?: number;
+    cellHeight?: number;
+    cellMargin?: number;
+    cellShape?: 'circle' | 'square';
+    cellWidth?: number;
+    className?: string;
+    colorCells: IColorCellProps[];
+    columnCount: number;
+    disabled?: boolean;
+    doNotContainWithinFocusZone?: boolean;
+    focusOnHover?: boolean;
+    getColorGridCellStyles?: IStyleFunctionOrObject<IColorPickerGridCellStyleProps, IColorPickerGridCellStyles>;
+    id?: string;
+    isControlled?: boolean;
+    mouseLeaveParentSelector?: string | undefined;
+    onCellFocused?: (id?: string, color?: string) => void;
+    onCellHovered?: (id?: string, color?: string) => void;
+    onColorChanged?: (id?: string, color?: string) => void;
+    // @deprecated (undocumented)
+    positionInSet?: number;
+    selectedId?: string;
+    // @deprecated (undocumented)
+    setSize?: number;
+    shouldFocusCircularNavigate?: boolean;
+    styles?: IStyleFunctionOrObject<ISwatchColorPickerStyleProps, ISwatchColorPickerStyles>;
+    theme?: ITheme;
+}
+
+// @public (undocumented)
+export interface ISwatchColorPickerState {
+    // (undocumented)
+    selectedIndex?: number;
+}
+
+// @public
+export interface ISwatchColorPickerStyleProps {
+    cellMargin?: number;
+    className?: string;
+    theme: ITheme;
+}
+
+// @public
+export interface ISwatchColorPickerStyles {
+    focusedContainer?: IStyle;
+    root: IStyle;
+    tableCell: IStyle;
+}
+
+// @public (undocumented)
 export interface ITextField {
     blur: () => void;
     focus: () => void;
@@ -1019,6 +1475,183 @@ export class OverflowSetBase extends React.Component<IOverflowSetProps, {}> impl
 }
 
 // @public
+export const Persona: React.FunctionComponent<IPersonaProps>;
+
+// @public
+export class PersonaBase extends React.Component<IPersonaProps, {}> {
+    constructor(props: IPersonaProps);
+    // (undocumented)
+    static defaultProps: IPersonaProps;
+    // (undocumented)
+    render(): JSX.Element;
+    }
+
+// @public
+export const PersonaCoin: React.FunctionComponent<IPersonaCoinProps>;
+
+// @public
+export class PersonaCoinBase extends React.Component<IPersonaCoinProps, IPersonaState> {
+    constructor(props: IPersonaCoinProps);
+    // (undocumented)
+    static defaultProps: IPersonaCoinProps;
+    // (undocumented)
+    render(): JSX.Element | null;
+    // (undocumented)
+    UNSAFE_componentWillReceiveProps(nextProps: IPersonaCoinProps): void;
+}
+
+// @public (undocumented)
+export enum PersonaInitialsColor {
+    // @deprecated
+    black = 11,
+    // (undocumented)
+    blue = 1,
+    // (undocumented)
+    burgundy = 19,
+    // (undocumented)
+    coolGray = 21,
+    // (undocumented)
+    cyan = 23,
+    // (undocumented)
+    darkBlue = 2,
+    // (undocumented)
+    darkGreen = 6,
+    // (undocumented)
+    darkRed = 14,
+    // (undocumented)
+    gold = 18,
+    gray = 22,
+    // (undocumented)
+    green = 5,
+    // (undocumented)
+    lightBlue = 0,
+    // (undocumented)
+    lightGreen = 4,
+    // (undocumented)
+    lightPink = 7,
+    // (undocumented)
+    lightRed = 17,
+    // (undocumented)
+    magenta = 9,
+    // (undocumented)
+    orange = 12,
+    // (undocumented)
+    pink = 8,
+    // (undocumented)
+    purple = 10,
+    // @deprecated
+    red = 13,
+    // (undocumented)
+    rust = 24,
+    // (undocumented)
+    teal = 3,
+    transparent = 15,
+    // (undocumented)
+    violet = 16,
+    // (undocumented)
+    warmGray = 20
+}
+
+// @public (undocumented)
+export enum PersonaPresence {
+    // (undocumented)
+    away = 3,
+    // (undocumented)
+    blocked = 5,
+    // (undocumented)
+    busy = 6,
+    // (undocumented)
+    dnd = 4,
+    // (undocumented)
+    none = 0,
+    // (undocumented)
+    offline = 1,
+    // (undocumented)
+    online = 2
+}
+
+// @public (undocumented)
+export namespace personaPresenceSize {
+    const // (undocumented)
+    size6 = "6px";
+    const // (undocumented)
+    size8 = "8px";
+    const // (undocumented)
+    size12 = "12px";
+    const // (undocumented)
+    size16 = "16px";
+    const // (undocumented)
+    size20 = "20px";
+    const // (undocumented)
+    size28 = "28px";
+    const // (undocumented)
+    size32 = "32px";
+    const // @deprecated (undocumented)
+    border = "2px";
+}
+
+// @public (undocumented)
+export enum PersonaSize {
+    // @deprecated
+    extraExtraSmall = 1,
+    // @deprecated
+    extraLarge = 6,
+    // @deprecated
+    extraSmall = 2,
+    // @deprecated
+    large = 5,
+    // @deprecated
+    regular = 4,
+    // @deprecated
+    size10 = 9,
+    size100 = 15,
+    size120 = 18,
+    // @deprecated
+    size16 = 8,
+    size24 = 10,
+    // @deprecated
+    size28 = 7,
+    size32 = 11,
+    size40 = 12,
+    size48 = 13,
+    size56 = 16,
+    size72 = 14,
+    size8 = 17,
+    // @deprecated
+    small = 3,
+    // @deprecated
+    tiny = 0
+}
+
+// @public (undocumented)
+export namespace personaSize {
+    const // (undocumented)
+    size8 = "20px";
+    const // (undocumented)
+    size10 = "20px";
+    const // (undocumented)
+    size16 = "16px";
+    const // (undocumented)
+    size24 = "24px";
+    const // (undocumented)
+    size28 = "28px";
+    const // (undocumented)
+    size32 = "32px";
+    const // (undocumented)
+    size40 = "40px";
+    const // (undocumented)
+    size48 = "48px";
+    const // (undocumented)
+    size56 = "56px";
+    const // (undocumented)
+    size72 = "72px";
+    const // (undocumented)
+    size100 = "100px";
+    const // (undocumented)
+    size120 = "120px";
+}
+
+// @public
 export const Pivot: React.FunctionComponent<IPivotProps>;
 
 // @public (undocumented)
@@ -1053,6 +1686,47 @@ export type PivotLinkSizeType = 'normal' | 'large';
 export const Popup: React.ForwardRefExoticComponent<IPopupProps & React.RefAttributes<HTMLDivElement>>;
 
 // @public (undocumented)
+export class PositioningContainer extends React.Component<IPositioningContainerProps, IPositioningContainerState> implements PositioningContainer {
+    constructor(props: IPositioningContainerProps);
+    // (undocumented)
+    componentDidMount(): void;
+    // (undocumented)
+    componentDidUpdate(): void;
+    // (undocumented)
+    componentWillUnmount(): void;
+    // (undocumented)
+    static defaultProps: IPositioningContainerProps;
+    // @deprecated
+    dismiss: (ev?: Event | React.KeyboardEvent<HTMLElement> | React.MouseEvent<HTMLElement, MouseEvent> | undefined) => void;
+    // (undocumented)
+    protected _dismissOnLostFocus(ev: Event): void;
+    // (undocumented)
+    protected _dismissOnScroll(ev: Event): void;
+    // (undocumented)
+    protected _onComponentDidMount: () => void;
+    // (undocumented)
+    onResize: (ev?: Event | React.KeyboardEvent<HTMLElement> | React.MouseEvent<HTMLElement, MouseEvent> | undefined) => void;
+    // (undocumented)
+    render(): JSX.Element | null;
+    // (undocumented)
+    protected _setInitialFocus: () => void;
+    // (undocumented)
+    UNSAFE_componentWillMount(): void;
+    // (undocumented)
+    UNSAFE_componentWillUpdate(newProps: IPositioningContainerProps): void;
+    }
+
+// @public (undocumented)
+export const presenceBoolean: (presence: PersonaPresence) => {
+    isAvailable: boolean;
+    isAway: boolean;
+    isBlocked: boolean;
+    isBusy: boolean;
+    isDoNotDisturb: boolean;
+    isOffline: boolean;
+};
+
+// @public (undocumented)
 export const ResizeGroup: import("react").ForwardRefExoticComponent<import("./ResizeGroup.types").IResizeGroupProps & import("react").RefAttributes<HTMLDivElement>>;
 
 // @public (undocumented)
@@ -1083,6 +1757,27 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
 }
 
 // @public (undocumented)
+export const sizeBoolean: (size: PersonaSize) => {
+    isSize8: boolean;
+    isSize10: boolean;
+    isSize16: boolean;
+    isSize24: boolean;
+    isSize28: boolean;
+    isSize32: boolean;
+    isSize40: boolean;
+    isSize48: boolean;
+    isSize56: boolean;
+    isSize72: boolean;
+    isSize100: boolean;
+    isSize120: boolean;
+};
+
+// @public (undocumented)
+export const sizeToPixels: {
+    [key: number]: number;
+};
+
+// @public (undocumented)
 export const Slider: React.FunctionComponent<ISliderProps>;
 
 // @public (undocumented)
@@ -1102,6 +1797,22 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
     UNSAFE_componentWillReceiveProps(newProps: ISpinButtonProps): void;
     readonly value: string | undefined;
     }
+
+// @public (undocumented)
+export const SwatchColorPicker: React.FunctionComponent<ISwatchColorPickerProps>;
+
+// @public (undocumented)
+export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerProps, ISwatchColorPickerState> {
+    constructor(props: ISwatchColorPickerProps);
+    // (undocumented)
+    componentWillUnmount(): void;
+    // (undocumented)
+    static defaultProps: ISwatchColorPickerProps;
+    // (undocumented)
+    render(): JSX.Element | null;
+    // (undocumented)
+    UNSAFE_componentWillReceiveProps(newProps: ISwatchColorPickerProps): void;
+}
 
 // @public (undocumented)
 export const TextField: React.FunctionComponent<ITextFieldProps>;
@@ -1154,7 +1865,7 @@ export const useLink: (props: ILinkProps) => any;
 export { useTheme }
 
 // @public (undocumented)
-export const useToggle: (props: IToggleProps, options: ComposePreparedOptions<{}, any, {}>) => any;
+export const useToggle: (props: IToggleProps, ref: React.Ref<HTMLDivElement>, options: ComposePreparedOptions<{}, any, {}>) => any;
 
 
 export * from "office-ui-fabric-react/lib/ActivityItem";
@@ -1166,7 +1877,6 @@ export * from "office-ui-fabric-react/lib/Calendar";
 export * from "office-ui-fabric-react/lib/Callout";
 export * from "office-ui-fabric-react/lib/Check";
 export * from "office-ui-fabric-react/lib/ChoiceGroup";
-export * from "office-ui-fabric-react/lib/Coachmark";
 export * from "office-ui-fabric-react/lib/Color";
 export * from "office-ui-fabric-react/lib/ColorPicker";
 export * from "office-ui-fabric-react/lib/ComboBox";
@@ -1199,9 +1909,7 @@ export * from "office-ui-fabric-react/lib/Modal";
 export * from "office-ui-fabric-react/lib/Nav";
 export * from "office-ui-fabric-react/lib/Overlay";
 export * from "office-ui-fabric-react/lib/Panel";
-export * from "office-ui-fabric-react/lib/Persona";
 export * from "office-ui-fabric-react/lib/Pickers";
-export * from "office-ui-fabric-react/lib/PositioningContainer";
 export * from "office-ui-fabric-react/lib/ProgressIndicator";
 export * from "office-ui-fabric-react/lib/Rating";
 export * from "office-ui-fabric-react/lib/ScrollablePane";
@@ -1215,7 +1923,6 @@ export * from "office-ui-fabric-react/lib/Spinner";
 export * from "office-ui-fabric-react/lib/Stack";
 export * from "office-ui-fabric-react/lib/Sticky";
 export * from "office-ui-fabric-react/lib/Styling";
-export * from "office-ui-fabric-react/lib/SwatchColorPicker";
 export * from "office-ui-fabric-react/lib/TeachingBubble";
 export * from "office-ui-fabric-react/lib/Text";
 export * from "office-ui-fabric-react/lib/ThemeGenerator";
