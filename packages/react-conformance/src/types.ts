@@ -30,8 +30,8 @@ export interface TestingOptions<TProps = {}> {
    */
   disabledTests?: Tests[];
   /**
-   * Opposite to exportedAtTopLevel, if set to false then it is said the component is exported at top level.
-   * @defaultvalue true
+   * Optional flag that means the component is not exported at top level.
+   * @defaultvalue false
    */
   isInternal?: boolean;
   /**
