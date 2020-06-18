@@ -4,10 +4,10 @@
 
 ```ts
 
-import { DateRangeType } from '@fluentui/date-time-utilities/lib/dateValues/DateValues';
-import { DayOfWeek } from '@fluentui/date-time-utilities/lib/dateValues/DateValues';
+import { DateRangeType } from '@fluentui/date-time-utilities/lib/dateValues/dateValues';
+import { DayOfWeek } from '@fluentui/date-time-utilities/lib/dateValues/dateValues';
 import { EventGroup } from '@uifabric/utilities';
-import { FirstWeekOfYear } from '@fluentui/date-time-utilities/lib/dateValues/DateValues';
+import { FirstWeekOfYear } from '@fluentui/date-time-utilities/lib/dateValues/dateValues';
 import { IBaseProps } from '@uifabric/utilities';
 import { IComponent } from '@uifabric/foundation';
 import { IComponentAs } from '@uifabric/utilities';
