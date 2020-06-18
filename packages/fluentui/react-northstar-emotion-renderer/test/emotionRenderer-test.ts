@@ -1,6 +1,8 @@
 import { createEmotionRenderer } from '@fluentui/react-northstar-emotion-renderer';
 import { RendererParam } from '@fluentui/react-northstar-styles-renderer';
 import { ICSSInJSStyle } from '@fluentui/styles';
+// @ts-ignore No typings :(
+import * as prettier from 'prettier';
 
 expect.addSnapshotSerializer({
   test(value) {
@@ -13,9 +15,11 @@ expect.addSnapshotSerializer({
       }, '');
     }
 
-    return Array.from(value.head.childNodes)
+    const insertedCSS = Array.from(value.head.childNodes)
       .map((node: HTMLStyleElement) => reduceRules((node?.sheet as unknown) as CSSStyleSheet))
       .join(';');
+
+    return prettier.format(insertedCSS, { parser: 'css' });
   },
 });
 
@@ -135,5 +139,6 @@ describe('emotionRenderer', () => {
       },
       defaultRendererParam,
     );
+    expect(document).toMatchSnapshot();
   });
 });
