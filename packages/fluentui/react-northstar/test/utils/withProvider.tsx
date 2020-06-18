@@ -1,5 +1,6 @@
 import { Telemetry } from '@fluentui/react-bindings';
-import { emptyTheme, ThemePrepared, Renderer, noopRenderer } from '@fluentui/styles';
+import { Renderer, noopRenderer } from '@fluentui/react-northstar-styles-renderer';
+import { emptyTheme, ThemePrepared } from '@fluentui/styles';
 import { mount, MountRendererProps, ComponentType } from 'enzyme';
 import * as React from 'react';
 import { ThemeProvider } from 'react-fela';

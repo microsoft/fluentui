@@ -12,7 +12,7 @@
   "include": ["src", "test"],
   "references": [
     {
-      "path": "../styles"
+      "path": "../react-northstar-styles-renderer"
     }
   ]
 }

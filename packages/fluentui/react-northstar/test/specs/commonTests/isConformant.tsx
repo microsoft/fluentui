@@ -1,7 +1,8 @@
 import { Accessibility, AriaRole, IS_FOCUSABLE_ATTRIBUTE } from '@fluentui/accessibility';
 import { compose, ComposedComponent, FocusZone, Telemetry } from '@fluentui/react-bindings';
 import { Ref, RefFindNode } from '@fluentui/react-component-ref';
-import { ComponentSlotStylesPrepared, emptyTheme, Renderer } from '@fluentui/styles';
+import { Renderer } from '@fluentui/react-northstar-styles-renderer';
+import { ComponentSlotStylesPrepared, emptyTheme } from '@fluentui/styles';
 import * as faker from 'faker';
 import * as _ from 'lodash';
 import * as React from 'react';

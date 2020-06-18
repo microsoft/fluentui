@@ -1,5 +1,6 @@
 import { RendererContext } from '@fluentui/react-bindings';
-import { CreateRenderer, noopRenderer, ThemeInput } from '@fluentui/styles';
+import { CreateRenderer, noopRenderer } from '@fluentui/react-northstar-styles-renderer';
+import { ThemeInput } from '@fluentui/styles';
 import { mount } from 'enzyme';
 import * as faker from 'faker';
 import * as React from 'react';

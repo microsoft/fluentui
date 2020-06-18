@@ -1,5 +1,5 @@
-import { ICSSInJSStyle, RendererParam } from '@fluentui/styles';
-import { Renderer } from './types';
+import { ICSSInJSStyle } from '@fluentui/styles';
+import { FelaRenderer, FelaRendererParam } from './types';
 
 const animationProps: (keyof ICSSInJSStyle)[] = [
   'animation',
@@ -24,8 +24,8 @@ const animationProps: (keyof ICSSInJSStyle)[] = [
 const felaDisableAnimationsPlugin = (
   styles: ICSSInJSStyle,
   type: string,
-  renderer?: Renderer,
-  props?: Partial<RendererParam>,
+  renderer?: FelaRenderer,
+  props?: Partial<FelaRendererParam>,
 ): ICSSInJSStyle => {
   if (props && props.disableAnimations && type === 'RULE') {
     return Object.keys(styles).reduce((acc, cssPropertyName: keyof ICSSInJSStyle) => {

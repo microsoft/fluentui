@@ -1,16 +1,17 @@
-import { ICSSInJSStyle, RendererParam } from '@fluentui/styles';
+import { ICSSInJSStyle } from '@fluentui/styles';
 
 import felaSanitizeCss from '../src/felaSanitizeCssPlugin';
+import { FelaRendererParam } from '../src/types';
 import * as consoleUtil from './consoleUtil';
 
 const sanitize = (styles: ICSSInJSStyle, options: { sanitizeCss?: boolean } = {}): ICSSInJSStyle => {
   const { sanitizeCss = true } = options;
 
-  const felaParam: RendererParam = {
+  const felaParam: FelaRendererParam = {
     displayName: 'Test',
     disableAnimations: false,
-    direction: 'ltr',
     sanitizeCss,
+    theme: { direction: 'ltr' },
   };
   const renderer = (() => {}) as any;
 

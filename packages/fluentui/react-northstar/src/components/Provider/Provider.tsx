@@ -8,6 +8,7 @@ import {
   unstable_getStyles,
   useIsomorphicLayoutEffect,
 } from '@fluentui/react-bindings';
+import { Renderer } from '@fluentui/react-northstar-styles-renderer';
 import {
   mergeSiteVariables,
   StaticStyleObject,
@@ -15,7 +16,6 @@ import {
   StaticStyleFunction,
   FontFace,
   ThemeInput,
-  Renderer,
   SiteVariablesPrepared,
 } from '@fluentui/styles';
 import * as PropTypes from 'prop-types';

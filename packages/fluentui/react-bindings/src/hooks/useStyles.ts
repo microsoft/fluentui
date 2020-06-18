@@ -1,11 +1,11 @@
 import { ComposePreparedOptions } from '@fluentui/react-compose';
+import { noopRenderer } from '@fluentui/react-northstar-styles-renderer';
 import {
   ComponentSlotStyle,
   ComponentSlotStylesResolved,
   ComponentVariablesInput,
   DebugData,
   emptyTheme,
-  noopRenderer,
 } from '@fluentui/styles';
 import * as React from 'react';
 // @ts-ignore We have this export in package, but it is not present in typings

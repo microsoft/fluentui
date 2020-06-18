@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/react-conformance",
   "version": "0.1.0",
-  "description": "Conformance testing",
+  "description": "Customizable conformance testing utility for Fluent UI React components.",
   "private": true,
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -25,6 +25,7 @@
     "@types/react": "16.8.25",
     "@types/react-dom": "16.8.4",
     "@types/react-test-renderer": "^16.0.0",
+    "@types/react-is": "^16.7.1",
     "@uifabric/build": "^7.0.0",
     "@uifabric/tslint-rules": "^7.2.1",
     "enzyme": "~3.10.0",
@@ -35,7 +36,10 @@
     "react-dom": "16.8.6"
   },
   "dependencies": {
-    "tslib": "^1.10.0"
+    "tslib": "^1.10.0",
+    "react-is": "^16.6.3",
+    "lodash": "^4.17.15",
+    "react-docgen-typescript": "^1.16.6"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <17.0.0",

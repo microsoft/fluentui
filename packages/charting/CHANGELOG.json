@@ -2,6 +2,56 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Thu, 18 Jun 2020 12:37:09 GMT",
+      "tag": "@uifabric/charting_v2.3.0",
+      "version": "2.3.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fontfamily inherited from fabric",
+            "author": "v-jasha@microsoft.com",
+            "commit": "bc06952b2cf7f449eb00c7e92159b5dec2d64449",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "Y axis ticks truncate issue resolved",
+            "author": "v-jasha@microsoft.com",
+            "commit": "234a67a0bffe1c02766ed20659349ffe4c15890c",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "adding css styles fixes, for both normal and high contrast mode",
+            "author": "v-sivsar@microsoft.com",
+            "commit": "6b4d855e852ce145b7146b947d7a5140275c94c3",
+            "package": "@uifabric/charting"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "adding focus border functionality to donut chart",
+            "author": "v-sivsar@microsoft.com",
+            "commit": "07a52661f56f5df7b4367ea8e0ade6e9a0dfaf64",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 16 Jun 2020 17:35:36 GMT",
+      "tag": "@uifabric/charting_v2.2.34",
+      "version": "2.2.34",
+      "comments": {
+        "none": [
+          {
+            "comment": "Clean up devDependencies and clarify version file placeholder comments",
+            "author": "elcraig@microsoft.com",
+            "commit": "695c29fcf6f07a903e7d849098c5e6c0ec178b3d",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 09 Jun 2020 12:35:17 GMT",
       "tag": "@uifabric/charting_v2.2.31",
       "version": "2.2.31",

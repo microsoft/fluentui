@@ -1,5 +1,6 @@
 import { StylesContextPerformance, StylesContextPerformanceInput } from '@fluentui/react-bindings';
-import { mergeThemes, CreateRenderer, Renderer } from '@fluentui/styles';
+import { CreateRenderer, Renderer } from '@fluentui/react-northstar-styles-renderer';
+import { mergeThemes } from '@fluentui/styles';
 
 import { ProviderContextPrepared, ProviderContextInput } from '../types';
 import isBrowser from './isBrowser';

@@ -1,5 +1,7 @@
-import { ICSSInJSStyle, Renderer, RendererParam } from '@fluentui/styles';
+import { ICSSInJSStyle } from '@fluentui/styles';
 import { TRuleType } from 'fela-utils';
+
+import { FelaRenderer, FelaRendererParam } from './types';
 
 /**
  * Checks whether provided CSS property value is safe for being rendered by Fela engine.
@@ -43,8 +45,8 @@ const cssPropertiesToSkip = ['content', 'keyframe'];
 const felaSanitizeCssPlugin = (
   styles: ICSSInJSStyle,
   type: TRuleType,
-  renderer: Renderer,
-  props: RendererParam,
+  renderer: FelaRenderer,
+  props: FelaRendererParam,
 ): ICSSInJSStyle => {
   if (!props.sanitizeCss) {
     return styles;

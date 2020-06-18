@@ -9,9 +9,9 @@ import {
   unstable_getAccessibility as getAccessibility,
   unstable_getStyles as getStyles,
 } from '@fluentui/react-bindings';
+import { noopRenderer } from '@fluentui/react-northstar-styles-renderer';
 import {
   emptyTheme,
-  noopRenderer,
   ComponentSlotStylesResolved,
   ComponentVariablesObject,
   DebugData,
