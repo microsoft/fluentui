@@ -27,6 +27,7 @@ export function useKeytipData(options: KeytipDataOptions): IKeytipData {
   );
 
   const keytipManager = useConst<KeytipManager>(KeytipManager.getInstance());
+
   React.useEffect(() => {
     // Register Keytip in KeytipManager
     if (keytipProps) {
@@ -41,8 +42,8 @@ export function useKeytipData(options: KeytipDataOptions): IKeytipData {
 
   const prevKeytipProps = usePrevious(keytipProps);
 
-  if (prevKeytipProps !== undefined && prevKeytipProps !== options.keytipProps) {
-    keytipProps && keytipManager.update(keytipProps, uniqueId!);
+  if (uniqueId && keytipProps && prevKeytipProps !== keytipProps) {
+    keytipManager.update(keytipProps, uniqueId);
   }
 
   let nativeKeytipProps: IKeytipData = {
@@ -73,8 +74,8 @@ function getKtpAttrs(
 
   // Construct aria-describedby and data-ktp-id attributes
   const ariaDescribedBy = mergeAriaAttributeValues(
-    getAriaDescribedBy(newKeytipProps.keySequences),
     describedByPrepend,
+    getAriaDescribedBy(newKeytipProps.keySequences),
   )!;
 
   let keySequences = [...newKeytipProps.keySequences];
