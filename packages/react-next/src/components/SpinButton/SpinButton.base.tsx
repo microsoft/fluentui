@@ -106,7 +106,7 @@ export const SpinButtonBase = (props: ISpinButtonProps) => {
 
   let { value: initialValue = props.defaultValue } = props;
   if (initialValue === undefined) {
-    initialValue = typeof props.min === 'number' ? String(props.min) : '0';
+    initialValue = typeof min === 'number' ? String(min) : '0';
   }
 
   const [state] = React.useState<ISpinButtonState>({
@@ -121,16 +121,13 @@ export const SpinButtonBase = (props: ISpinButtonProps) => {
     stepDelay: 75,
   });
 
-  React.useEffect(() => {
-    if (props.value !== undefined) {
-      // Value from props is considered pre-validated
-      state.lastValidValue = props.value;
-      setValue(currentValue);
-    }
-    state.precision = callCalculatePrecision(props as ISpinButtonProps);
-  }, [props.value]);
+  let currentValue: string = props.value !== undefined ? props.value : String(min);
 
-  let currentValue: string = props.value !== undefined ? props.value : String(props.min);
+  if (props.value !== undefined) {
+    state.lastValidValue = props.value;
+  }
+
+  state.precision = callCalculatePrecision(props as ISpinButtonProps);
 
   const classNames = getClassNames(styles, {
     theme: theme!,
@@ -148,7 +145,7 @@ export const SpinButtonBase = (props: ISpinButtonProps) => {
   ]);
 
   if (props.defaultValue) {
-    currentValue = String(Math.max(props.min as number, Math.min(props.max as number, Number(props.defaultValue))));
+    currentValue = String(Math.max(min as number, Math.min(max as number, Number(props.defaultValue))));
   }
 
   // Validate function to use if one is not passed in
@@ -156,7 +153,7 @@ export const SpinButtonBase = (props: ISpinButtonProps) => {
     if (valueProp === null || valueProp.trim().length === 0 || isNaN(Number(valueProp))) {
       return state.lastValidValue;
     }
-    const newValue = Math.min(props.max as number, Math.max(props.min as number, Number(valueProp)));
+    const newValue = Math.min(max as number, Math.max(min as number, Number(valueProp)));
     return String(newValue);
   };
 

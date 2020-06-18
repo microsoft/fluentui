@@ -285,10 +285,12 @@ describe('SpinButton', () => {
 
   it('accepts user-entered values when uncontrolled', () => {
     wrapper = mount(<SpinButton componentRef={ref} defaultValue="12" />);
-
     const inputDOM = wrapper.getDOMNode().querySelector('input')!;
-    ReactTestUtils.Simulate.input(inputDOM, mockEvent('21'));
-    ReactTestUtils.Simulate.blur(inputDOM);
+
+    ReactTestUtils.act(() => {
+      ReactTestUtils.Simulate.input(inputDOM, mockEvent('21'));
+      ReactTestUtils.Simulate.blur(inputDOM);
+    });
 
     expect(ref.current!.value).toBe('21');
     expect(inputDOM.value).toBe('21');
@@ -414,30 +416,33 @@ describe('SpinButton', () => {
   });
 
   it('stops spinning if text field is focused while actively spinning', () => {
+    jest.useFakeTimers();
+
+    wrapper = mount(<SpinButton defaultValue="12" />);
+
+    const inputDOM = wrapper.getDOMNode().querySelector('input')!;
+    const buttonDOM = wrapper.getDOMNode().querySelector('.ms-UpButton');
+
+    expect(inputDOM.value).toBe('12');
+    expect(buttonDOM).toBeTruthy();
+
+    // start spinning
     ReactTestUtils.act(() => {
-      jest.useFakeTimers();
-
-      wrapper = mount(<SpinButton defaultValue="12" />);
-
-      const inputDOM = wrapper.getDOMNode().querySelector('input')!;
-      const buttonDOM = wrapper.getDOMNode().getElementsByClassName('ms-UpButton')[0];
-
-      expect(buttonDOM).toBeTruthy();
-
-      // start spinning
       ReactTestUtils.Simulate.mouseDown(buttonDOM, { type: 'mousedown', clientX: 0, clientY: 0 });
+
       // spin again
       jest.runOnlyPendingTimers();
+
       // spin again
       jest.runOnlyPendingTimers();
 
       ReactTestUtils.Simulate.focus(inputDOM);
       jest.runAllTimers();
-
-      const currentValue = inputDOM.value;
-      expect(currentValue).not.toBe('12');
-      expect(inputDOM.getAttribute('aria-valuenow')).toBe(currentValue);
     });
+
+    const currentValue = inputDOM.value;
+    expect(currentValue).not.toBe('12');
+    expect(inputDOM.getAttribute('aria-valuenow')).toBe(currentValue);
   });
 
   it('uses custom onIncrement handler', () => {
