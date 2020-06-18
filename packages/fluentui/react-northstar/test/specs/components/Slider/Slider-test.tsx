@@ -1,5 +1,3 @@
-// import * as path from 'path';
-
 import { isConformant, handlesAccessibility } from 'test/specs/commonTests';
 import { isConformant as newIsConformant } from '@fluentui/react-conformance';
 import { mountWithProvider as mount } from 'test/utils';
@@ -16,16 +14,16 @@ describe('Slider', () => {
     disabledTests: ['has-docblock'],
   });
 
-  // isConformant(Slider, {
-  //   constructorName: 'Slider',
-  //   eventTargets: {
-  //     onChange: 'input',
-  //     onKeyDown: 'input',
-  //     onKeyPress: 'input',
-  //     onKeyUp: 'input',
-  //   },
-  //   autoControlledProps: ['value'],
-  // });
+  isConformant(Slider, {
+    constructorName: 'Slider',
+    eventTargets: {
+      onChange: 'input',
+      onKeyDown: 'input',
+      onKeyPress: 'input',
+      onKeyUp: 'input',
+    },
+    autoControlledProps: ['value'],
+  });
 
   describe('accessibility', () => {
     handlesAccessibility(Slider, { partSelector: 'input' });

@@ -2,21 +2,21 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as renderer from 'react-test-renderer';
 import * as ReactTestUtils from 'react-dom/test-utils';
-// import * as path from 'path';
+import * as path from 'path';
 
 import { mount, ReactWrapper } from 'enzyme';
 import { Slider } from './Slider';
 import { ISlider } from './Slider.types';
 import { ONKEYDOWN_TIMEOUT_DURATION } from './Slider.base';
-import { KeyCodes } from '../../Utilities';
-// import { isConformant } from '@fluentui/react-conformance';
+import { KeyCodes, resetIds } from '../../Utilities';
+import { isConformant } from '@fluentui/react-conformance';
 
 describe('Slider', () => {
   let wrapper: ReactWrapper | undefined;
 
-  // beforeEach(() => {
-  //   resetIds();
-  // });
+  beforeEach(() => {
+    resetIds();
+  });
 
   afterEach(() => {
     if (wrapper) {
@@ -25,13 +25,13 @@ describe('Slider', () => {
     }
   });
 
-  // isConformant({
-  //   componentPath: path.join(__dirname, 'Slider.tsx'),
-  //   Component: Slider,
-  //   displayName: 'Slider',
-  //   exportedAtTopLevel: true,
-  //   disabledTests: ['has-docblock'],
-  // });
+  isConformant({
+    componentPath: path.join(__dirname, 'Slider.tsx'),
+    Component: Slider,
+    displayName: 'Slider',
+    exportedAtTopLevel: true,
+    disabledTests: ['has-docblock'],
+  });
 
   it('renders correctly', () => {
     const component = renderer.create(<Slider label="I am a slider" />);
