@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useConst } from '@uifabric/react-hooks';
+import { useConst, usePrevious } from '@uifabric/react-hooks';
 import { mergeAriaAttributeValues } from '../../Utilities';
 import { IKeytipDataProps } from './KeytipData.types';
 import { IKeytipProps } from '../../Keytip';
@@ -15,27 +15,35 @@ export interface IKeytipData {
 
 export function useKeytipData(options: KeytipDataOptions): IKeytipData {
   let uniqueId: string | undefined;
-  const preparedKeytipProps: IKeytipProps = {
-    disabled: options.disabled,
-    ...options.keytipProps!,
-  };
+  const keytipProps: IKeytipProps | undefined = React.useMemo(
+    () =>
+      options.keytipProps
+        ? {
+            disabled: options.disabled,
+            ...options.keytipProps,
+          }
+        : undefined,
+    [options.keytipProps, options.disabled],
+  );
 
   const keytipManager = useConst<KeytipManager>(KeytipManager.getInstance());
   React.useEffect(() => {
     // Register Keytip in KeytipManager
-    if (options.keytipProps) {
-      uniqueId = keytipManager.register(preparedKeytipProps);
+    if (keytipProps) {
+      uniqueId = keytipManager.register(keytipProps);
     }
 
     return () => {
       // Unregister Keytip in KeytipManager
-      options.keytipProps && keytipManager.unregister(preparedKeytipProps, uniqueId!);
+      keytipProps && keytipManager.unregister(keytipProps, uniqueId!);
     };
   }, []);
 
-  React.useEffect(() => {
-    options.keytipProps && keytipManager.update(preparedKeytipProps, uniqueId!);
-  }, [options.keytipProps, options.disabled]);
+  const prevKeytipProps = usePrevious(keytipProps);
+
+  if (prevKeytipProps !== undefined && prevKeytipProps !== options.keytipProps) {
+    keytipProps && keytipManager.update(keytipProps, uniqueId!);
+  }
 
   let nativeKeytipProps: IKeytipData = {
     ariaDescribedBy: undefined,
@@ -43,8 +51,8 @@ export function useKeytipData(options: KeytipDataOptions): IKeytipData {
     executeElementAttributes: {},
   };
 
-  if (options.keytipProps) {
-    nativeKeytipProps = getKtpAttrs(keytipManager, preparedKeytipProps, options.ariaDescribedBy);
+  if (keytipProps) {
+    nativeKeytipProps = getKtpAttrs(keytipManager, keytipProps, options.ariaDescribedBy);
   }
 
   return nativeKeytipProps;
