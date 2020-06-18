@@ -48,7 +48,7 @@ export function createEmotionRenderer(target?: Document): Renderer {
     // return () => sheet.flush();
     // });
 
-    return React.createElement(React.Fragment, null, props.children);
+    return <>{props.children}</>;
   };
 
   const renderRule: RendererRenderRule = (styles, param) => {
