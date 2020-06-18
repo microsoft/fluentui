@@ -1,7 +1,19 @@
-import { IDay, IDayGridOptions, IRestrictedDatesOptions, IAvailableDateOptions, IGridStrings } from './DateGrid.types';
+import {
+  IDay,
+  IDayGridOptions,
+  IRestrictedDatesOptions,
+  IAvailableDateOptions,
+  IDateGridStrings,
+} from './DateGrid.types';
 import { addDays, getDateRangeArray, compareDates, isInDateRangeArray, compareDatePart } from '../dateMath/DateMath';
 import { DAYS_IN_WEEK, DateRangeType, DayOfWeek } from '../dateValues/DateValues';
 
+/**
+ * Generates a grid of days, given the options
+ * Returns one additional week at the begining from the previous range
+ * and one at the end from the future range
+ * @param options - parameters to specify date related restrictions for the resulting grid
+ */
 export const getDayGrid = (options: IDayGridOptions): IDay[][] => {
   const {
     selectedDate,
@@ -91,6 +103,11 @@ export const getDayGrid = (options: IDayGridOptions): IDay[][] => {
   return weeks;
 };
 
+/**
+ * Checks if the input @date param falls into the restricted options
+ * @param date - date to check
+ * @param options - restriction options (min date, max date and list of restricted dates)
+ */
 export const isRestrictedDate = (date: Date, options: IRestrictedDatesOptions): boolean => {
   const { restrictedDates, minDate, maxDate } = options;
   if (!restrictedDates && !minDate && !maxDate) {
@@ -100,16 +117,32 @@ export const isRestrictedDate = (date: Date, options: IRestrictedDatesOptions): 
   return inRestrictedDates || isBeforeMinDate(date, options) || isAfterMaxDate(date, options);
 };
 
+/**
+ * Checks if the input @date param happens earlier than min date
+ * @param date - date to check
+ * @param options - object with min date to check against
+ */
 export const isBeforeMinDate = (date: Date, options: IRestrictedDatesOptions): boolean => {
   const { minDate } = options;
   return minDate ? compareDatePart(minDate, date) >= 1 : false;
 };
 
+/**
+ * Checks if the input @date param happens later than max date
+ * @param date - date to check
+ * @param options - object with max date to check against
+ */
 export const isAfterMaxDate = (date: Date, options: IRestrictedDatesOptions): boolean => {
   const { maxDate } = options;
   return maxDate ? compareDatePart(date, maxDate) >= 1 : false;
 };
 
+/**
+ * Generates a list of dates, bounded by min and max dates
+ * @param dateRange - input date range
+ * @param minDate - min date to limit the range
+ * @param maxDate - max date to limit the range
+ */
 export const getBoundedDateRange = (dateRange: Date[], minDate?: Date, maxDate?: Date): Date[] => {
   let boundedDateRange = [...dateRange];
   if (minDate) {
@@ -122,8 +155,11 @@ export const getBoundedDateRange = (dateRange: Date[], minDate?: Date, maxDate?:
 };
 
 /**
- * When given work week, if the days are non-contiguous, the hover states look really weird. So for non-contiguous
- * work weeks, we'll just show week view instead.
+ * Return corrected date range type, given input date range type and list of working days.
+ * For non-contiguous working days and working week range type, returns general week range type.
+ * For other cases returns input date range type.
+ * @param dateRangeType - input type of range
+ * @param workWeekDays - list of working days in a week
  */
 export const getDateRangeTypeToUse = (
   dateRangeType: DateRangeType,
@@ -147,6 +183,16 @@ export const getDateRangeTypeToUse = (
   return dateRangeType;
 };
 
+/**
+ * Returns closest available date given the restriction options, or undefined otherwise
+ * @param options - list of options
+ * initialDate - date from which we start the search
+ * targetDate - ideal available date
+ * direction - direction of search (`1` - search in future / `-1` search in past)
+ * minDate - min date to consider
+ * maxDate - max date to consider
+ * restrtictedDates - list of unavailable dates
+ */
 export const findAvailableDate = (options: IAvailableDateOptions): Date | undefined => {
   const { targetDate, initialDate, direction, ...restrictedDateOptions } = options;
   let availableDate = targetDate;
@@ -171,9 +217,27 @@ export const findAvailableDate = (options: IAvailableDateOptions): Date | undefi
   return undefined;
 };
 
-export const formatMonthDayYear = (date: Date, strings: IGridStrings) =>
+/**
+ * Format date to a month-day-year string
+ * @param date - input date to format
+ * @param strings - localized strings
+ */
+export const formatMonthDayYear = (date: Date, strings: IDateGridStrings) =>
   strings.months[date.getMonth()] + ' ' + date.getDate() + ', ' + date.getFullYear();
-export const formatMonthYear = (date: Date, strings: IGridStrings) =>
+/**
+ * Format date to a month-year string
+ * @param date - input date to format
+ * @param strings - localized strings
+ */
+export const formatMonthYear = (date: Date, strings: IDateGridStrings) =>
   strings.months[date.getMonth()] + ' ' + date.getFullYear();
+/**
+ * Format date to a day string representation
+ * @param date - input date to format
+ */
 export const formatDay = (date: Date) => date.getDate().toString();
+/**
+ * Format date to a year string representation
+ * @param date - input date to format
+ */
 export const formatYear = (date: Date) => date.getFullYear().toString();

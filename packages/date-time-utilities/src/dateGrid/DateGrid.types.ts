@@ -1,6 +1,6 @@
 import { DayOfWeek, DateRangeType, FirstWeekOfYear } from '../dateValues/DateValues';
 
-export interface IGridStrings {
+export interface IDateGridStrings {
   /**
    * An array of strings for the full names of months.
    * The array is 0-based, so months[0] should be the full name of January.
@@ -72,21 +72,18 @@ export interface IDayGridOptions extends IRestrictedDatesOptions {
 
   /**
    * The first day of the week for your locale.
-   * @defaultvalue DayOfWeek.Sunday
    */
   firstDayOfWeek: DayOfWeek;
 
   /**
    * Defines when the first week of the year should start, FirstWeekOfYear.FirstDay,
    * FirstWeekOfYear.FirstFullWeek or FirstWeekOfYear.FirstFourDayWeek are the possible values
-   * @defaultvalue FirstWeekOfYear.FirstDay
    */
   firstWeekOfYear: FirstWeekOfYear;
 
   /**
    * The date range type indicating how  many days should be selected as the user
    * selects days
-   * @defaultValue DateRangeType.Day
    */
   dateRangeType: DateRangeType;
 
@@ -104,21 +101,18 @@ export interface IDayGridOptions extends IRestrictedDatesOptions {
 
   /**
    * Whether the calendar should show the week number (weeks 1 to 53) before each week row
-   * @defaultvalue false
    */
   showWeekNumbers?: boolean;
 
   /**
    * How many weeks to show by default. If not provided, will show enough weeks to display the current
    * month, between 4 and 6 depending
-   * @defaultvalue undefined
    */
   weeksToShow?: number;
 
   /**
    * The days that are selectable when `dateRangeType` is WorkWeek.
    * If `dateRangeType` is not WorkWeek this property does nothing.
-   * @defaultvalue [Monday,Tuesday,Wednesday,Thursday,Friday]
    */
   workWeekDays?: DayOfWeek[];
 }

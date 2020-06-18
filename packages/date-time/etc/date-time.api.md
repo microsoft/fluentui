@@ -12,8 +12,8 @@ import { IBaseProps as IBaseProps_2 } from 'office-ui-fabric-react/lib/Utilities
 import { ICalendarStrings as ICalendarStrings_2 } from '@uifabric/date-time';
 import { ICalloutProps } from 'office-ui-fabric-react/lib/Callout';
 import { IComponentAs } from '@uifabric/utilities';
+import { IDateGridStrings } from '@fluentui/date-time-utilities';
 import { IDayGridOptions } from '@fluentui/date-time-utilities';
-import { IGridStrings } from '@fluentui/date-time-utilities';
 import { IProcessedStyleSet } from '@uifabric/styling';
 import { IRefObject } from '@uifabric/utilities';
 import { IRefObject as IRefObject_2 } from 'office-ui-fabric-react/lib/Utilities';
@@ -123,8 +123,8 @@ export interface ICalendarDayProps extends IBaseProps_2<ICalendarDay>, ICalendar
 // @public (undocumented)
 export interface ICalendarFormatDateCallbacks {
     formatDay: (date: Date) => string;
-    formatMonthDayYear: (date: Date, strings?: IGridStrings) => string;
-    formatMonthYear: (date: Date, strings?: IGridStrings) => string;
+    formatMonthDayYear: (date: Date, strings?: IDateGridStrings) => string;
+    formatMonthYear: (date: Date, strings?: IDateGridStrings) => string;
     formatYear: (date: Date) => string;
 }
 
@@ -198,7 +198,7 @@ export interface ICalendarProps extends IBaseProps<ICalendar> {
 }
 
 // @public (undocumented)
-export interface ICalendarStrings extends IGridStrings {
+export interface ICalendarStrings extends IDateGridStrings {
     closeButtonAriaLabel?: string;
     goToToday: string;
     monthPickerHeaderAriaLabel?: string;

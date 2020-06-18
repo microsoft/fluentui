@@ -1,6 +1,6 @@
 import { DayOfWeek, DateRangeType, FirstWeekOfYear } from '../dateValues/DateValues';
 import * as DateGrid from './DateGrid';
-import { IDayGridOptions, IRestrictedDatesOptions, IAvailableDateOptions, IGridStrings } from './DateGrid.types';
+import { IDayGridOptions, IRestrictedDatesOptions, IAvailableDateOptions, IDateGridStrings } from './DateGrid.types';
 
 enum Months {
   Jan = 0,
@@ -24,7 +24,7 @@ describe('Timezones', () => {
 });
 
 describe('DateUtils', () => {
-  const strings: IGridStrings = {
+  const strings: IDateGridStrings = {
     days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
     months: [
       'January',

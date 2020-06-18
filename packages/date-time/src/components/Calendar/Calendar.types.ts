@@ -2,7 +2,7 @@ import { IRefObject, IBaseProps, IStyleFunctionOrObject } from '@uifabric/utilit
 import { IStyle, ITheme } from '@uifabric/styling';
 import { ICalendarDayProps, ICalendarDayGridStyles } from './CalendarDay/CalendarDay.types';
 import { ICalendarMonthProps } from './CalendarMonth/CalendarMonth.types';
-import { IGridStrings, DayOfWeek, FirstWeekOfYear, DateRangeType } from '@fluentui/date-time-utilities';
+import { IDateGridStrings, DayOfWeek, FirstWeekOfYear, DateRangeType } from '@fluentui/date-time-utilities';
 
 export { DayOfWeek, DateRangeType, FirstWeekOfYear, ICalendarDayProps, ICalendarDayGridStyles, ICalendarMonthProps };
 
@@ -183,7 +183,7 @@ export interface ICalendarProps extends IBaseProps<ICalendar> {
   allFocusable?: boolean;
 }
 
-export interface ICalendarStrings extends IGridStrings {
+export interface ICalendarStrings extends IDateGridStrings {
   /**
    * String to render for button to direct the user to today's date.
    */
@@ -277,12 +277,12 @@ export interface ICalendarFormatDateCallbacks {
   /**
    * Callback to apply formatting to mmmm d, yyyy formated dates
    */
-  formatMonthDayYear: (date: Date, strings?: IGridStrings) => string;
+  formatMonthDayYear: (date: Date, strings?: IDateGridStrings) => string;
 
   /**
    * Callback to apply formatting to the month and year in the Day Picker header
    */
-  formatMonthYear: (date: Date, strings?: IGridStrings) => string;
+  formatMonthYear: (date: Date, strings?: IDateGridStrings) => string;
 
   /**
    * Callback to apply formatting to the days in the Day Picker calendar

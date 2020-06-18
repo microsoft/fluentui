@@ -55,7 +55,7 @@ export enum DayOfWeek {
 // @public (undocumented)
 export const DAYS_IN_WEEK = 7;
 
-// @public (undocumented)
+// @public
 export const findAvailableDate: (options: IAvailableDateOptions) => Date | undefined;
 
 // @public
@@ -68,19 +68,19 @@ export enum FirstWeekOfYear {
     FirstFullWeek = 1
 }
 
-// @public (undocumented)
+// @public
 export const formatDay: (date: Date) => string;
 
-// @public (undocumented)
-export const formatMonthDayYear: (date: Date, strings: IGridStrings) => string;
+// @public
+export const formatMonthDayYear: (date: Date, strings: IDateGridStrings) => string;
 
-// @public (undocumented)
-export const formatMonthYear: (date: Date, strings: IGridStrings) => string;
+// @public
+export const formatMonthYear: (date: Date, strings: IDateGridStrings) => string;
 
-// @public (undocumented)
+// @public
 export const formatYear: (date: Date) => string;
 
-// @public (undocumented)
+// @public
 export const getBoundedDateRange: (dateRange: Date[], minDate?: Date | undefined, maxDate?: Date | undefined) => Date[];
 
 // @public
@@ -89,7 +89,7 @@ export function getDateRangeArray(date: Date, dateRangeType: DateRangeType, firs
 // @public
 export const getDateRangeTypeToUse: (dateRangeType: DateRangeType, workWeekDays: DayOfWeek[] | undefined) => DateRangeType;
 
-// @public (undocumented)
+// @public
 export const getDayGrid: (options: IDayGridOptions) => IDay[][];
 
 // @public
@@ -121,6 +121,14 @@ export interface IAvailableDateOptions extends IRestrictedDatesOptions {
     initialDate: Date;
     // (undocumented)
     targetDate: Date;
+}
+
+// @public (undocumented)
+export interface IDateGridStrings {
+    days: string[];
+    months: string[];
+    shortDays: string[];
+    shortMonths: string[];
 }
 
 // @public (undocumented)
@@ -156,30 +164,22 @@ export interface IDayGridOptions extends IRestrictedDatesOptions {
 }
 
 // @public (undocumented)
-export interface IGridStrings {
-    days: string[];
-    months: string[];
-    shortDays: string[];
-    shortMonths: string[];
-}
-
-// @public (undocumented)
 export interface IRestrictedDatesOptions {
     maxDate?: Date;
     minDate?: Date;
     restrictedDates?: Date[];
 }
 
-// @public (undocumented)
+// @public
 export const isAfterMaxDate: (date: Date, options: IRestrictedDatesOptions) => boolean;
 
-// @public (undocumented)
+// @public
 export const isBeforeMinDate: (date: Date, options: IRestrictedDatesOptions) => boolean;
 
 // @public
 export function isInDateRangeArray(date: Date, dateRange: Date[]): boolean;
 
-// @public (undocumented)
+// @public
 export const isRestrictedDate: (date: Date, options: IRestrictedDatesOptions) => boolean;
 
 // @public
