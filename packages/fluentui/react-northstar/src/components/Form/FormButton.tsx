@@ -1,8 +1,7 @@
-import * as React from 'react';
-import * as _ from 'lodash';
 import { compose } from '@fluentui/react-bindings';
 import { commonPropTypes } from '../../utils';
-import Button, { ButtonProps, buttonHandledProps } from '../Button/Button';
+import * as customPropTypes from '@fluentui/react-proptypes';
+import Button, { ButtonProps } from '../Button/Button';
 import FormFieldCustom, { FormFieldCustomProps, FormFieldCustomStylesProps } from './FormFieldCustom';
 
 interface FormButtonOwnProps extends Omit<ButtonProps, 'styles' | 'accessibility'> {}
@@ -22,20 +21,10 @@ const FormButton = compose<
   className: formButtonClassName,
   displayName: 'FormButton',
   overrideStyles: true,
-  slotProps: ({ accessibility, styles, ...props }) => ({
-    root: {
-      children: (
-        <>
-          {Button.create(
-            {},
-            {
-              defaultProps: () => ({
-                ..._.pick(props, buttonHandledProps),
-              }),
-            },
-          )}
-        </>
-      ),
+  shorthandConfig: {},
+  slotProps: () => ({
+    control: {
+      as: Button,
     },
   }),
 });
@@ -44,6 +33,7 @@ FormButton.propTypes = {
   ...commonPropTypes.createCommon({
     content: 'shorthand',
   }),
+  control: customPropTypes.shorthandAllowingChildren,
 };
 
 export default FormButton;

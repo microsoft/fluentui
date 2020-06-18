@@ -1,7 +1,6 @@
-import * as React from 'react';
-import * as _ from 'lodash';
 import { compose } from '@fluentui/react-bindings';
 import { commonPropTypes } from '../../utils';
+import * as customPropTypes from '@fluentui/react-proptypes';
 import Input, { InputProps } from '../Input/Input';
 import FormFieldCustom, { FormFieldCustomProps, FormFieldCustomStylesProps } from './FormFieldCustom';
 
@@ -21,25 +20,15 @@ const FormInput = compose<
 >(FormFieldCustom, {
   className: formInputClassName,
   displayName: 'FormInput',
-  overrideStyles: true,
-  slotProps: ({ accessibility, styles, ...props }) => ({
-    root: {
-      children: (
-        <>
-          {Input.create(
-            {},
-            {
-              defaultProps: () => ({
-                error: !!props.errorMessage,
-                ..._.pick(props, Input.handledProps),
-              }),
-            },
-          )}
-        </>
-      ),
+  overrideStyles: false,
+  shorthandConfig: {},
+  slotProps: ({ errorMessage }) => ({
+    control: {
+      as: Input,
+      error: !!errorMessage,
     },
     message: {
-      error: !!props.errorMessage,
+      error: !!errorMessage,
     },
   }),
 });
@@ -48,6 +37,7 @@ FormInput.propTypes = {
   ...commonPropTypes.createCommon({
     content: 'shorthand',
   }),
+  control: customPropTypes.shorthandAllowingChildren,
 };
 
 export default FormInput;

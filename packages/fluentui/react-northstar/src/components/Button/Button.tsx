@@ -103,32 +103,6 @@ export type ButtonStylesProps = Pick<
 
 export const buttonClassName = 'ui-button';
 
-export const buttonHandledProps = [
-  'accessibility',
-  'as',
-  'children',
-  'circular',
-  'className',
-  'content',
-  'design',
-  'disabled',
-  'fluid',
-  'icon',
-  'iconOnly',
-  'iconPosition',
-  'inverted',
-  'loader',
-  'loading',
-  'onClick',
-  'onFocus',
-  'primary',
-  'text',
-  'secondary',
-  'size',
-  'styles',
-  'variables',
-];
-
 /**
  * A Button enables users to take an action, such as submitting a form, opening a dialog, etc.
  *
@@ -301,7 +275,32 @@ const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
         role: undefined,
       },
     }),
-    handledProps: buttonHandledProps as any,
+
+    handledProps: [
+      'accessibility',
+      'as',
+      'children',
+      'circular',
+      'className',
+      'content',
+      'design',
+      'disabled',
+      'fluid',
+      'icon',
+      'iconOnly',
+      'iconPosition',
+      'inverted',
+      'loader',
+      'loading',
+      'onClick',
+      'onFocus',
+      'primary',
+      'text',
+      'secondary',
+      'size',
+      'styles',
+      'variables',
+    ],
   },
 ) as ComponentWithAs<'button', ButtonProps> & {
   create: ShorthandFactory<ButtonProps>;

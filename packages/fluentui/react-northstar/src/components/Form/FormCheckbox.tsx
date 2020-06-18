@@ -1,7 +1,6 @@
-import * as React from 'react';
-import * as _ from 'lodash';
 import { compose } from '@fluentui/react-bindings';
 import { commonPropTypes } from '../../utils';
+import * as customPropTypes from '@fluentui/react-proptypes';
 import Checkbox, { CheckboxProps } from '../Checkbox/Checkbox';
 import FormFieldCustom, { FormFieldCustomProps, FormFieldCustomStylesProps } from './FormFieldCustom';
 
@@ -25,20 +24,10 @@ const FormCheckbox = compose<
   slots: {
     label: () => null,
   },
-  slotProps: ({ styles, accessibility, ...props }) => ({
-    root: {
-      children: (
-        <>
-          {Checkbox.create(
-            {},
-            {
-              defaultProps: () => ({
-                ..._.pick(props, Checkbox.handledProps),
-              }),
-            },
-          )}
-        </>
-      ),
+  slotProps: ({ label }) => ({
+    control: {
+      as: Checkbox,
+      label,
     },
   }),
 });
@@ -49,6 +38,7 @@ FormCheckbox.propTypes = {
   ...commonPropTypes.createCommon({
     content: 'shorthand',
   }),
+  control: customPropTypes.shorthandAllowingChildren,
 };
 
 export default FormCheckbox;
