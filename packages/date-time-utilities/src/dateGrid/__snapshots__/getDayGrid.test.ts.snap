@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`DateUtils getDayGrid returns matrix with days 1`] = `
+exports[`getDayGrid returns matrix with days 1`] = `
 Array [
   Array [
     Object {

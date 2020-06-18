@@ -1,30 +1,4 @@
-import { DayOfWeek, DateRangeType, FirstWeekOfYear } from '../dateValues/DateValues';
-
-export interface IDateGridStrings {
-  /**
-   * An array of strings for the full names of months.
-   * The array is 0-based, so months[0] should be the full name of January.
-   */
-  months: string[];
-
-  /**
-   * An array of strings for the short names of months.
-   * The array is 0-based, so shortMonths[0] should be the short name of January.
-   */
-  shortMonths: string[];
-
-  /**
-   * An array of strings for the full names of days of the week.
-   * The array is 0-based, so days[0] should be the full name of Sunday.
-   */
-  days: string[];
-
-  /**
-   * An array of strings for the initials of the days of the week.
-   * The array is 0-based, so days[0] should be the initial of Sunday.
-   */
-  shortDays: string[];
-}
+import { DayOfWeek, DateRangeType, FirstWeekOfYear } from '../dateValues/dateValues';
 
 export interface IDay {
   key: string;
@@ -37,8 +11,11 @@ export interface IDay {
 }
 
 export interface IAvailableDateOptions extends IRestrictedDatesOptions {
+  /** Date from which we start the search */
   initialDate: Date;
+  /** Ideal available date */
   targetDate: Date;
+  /** Direction of search (`1` - search in future / `-1` search in past) */
   direction: number;
 }
 
