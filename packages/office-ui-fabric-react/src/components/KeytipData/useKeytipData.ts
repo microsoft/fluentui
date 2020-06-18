@@ -3,7 +3,7 @@ import { useConst } from '@uifabric/react-hooks';
 import { mergeAriaAttributeValues } from '../../Utilities';
 import { IKeytipDataProps } from './KeytipData.types';
 import { IKeytipProps } from '../../Keytip';
-import { KeytipManager, mergeOverflows, sequencesToID, getAriaDescribedBy } from '../../utilities/keytips';
+import { KeytipManager, mergeOverflows, sequencesToID, getAriaDescribedBy } from '../../utilities/keytips/index';
 
 export type KeytipDataOptions = IKeytipDataProps;
 
