@@ -191,7 +191,6 @@ FormFieldCustom.propTypes = {
 
 FormFieldCustom.defaultProps = {
   accessibility: formFieldBehavior,
-  control: { as: Input },
 };
 
 /**
