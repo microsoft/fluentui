@@ -6,7 +6,7 @@ import pointerSvg from '../../pointerSvgUrl';
 
 const tooltipContentStyles: ComponentSlotStylesPrepared<TooltipContentStylesProps, TooltipContentVariables> = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => ({
-    display: 'block',
+    display: 'none',
     position: 'absolute',
 
     maxWidth: v.maxWidth,
@@ -21,8 +21,8 @@ const tooltipContentStyles: ComponentSlotStylesPrepared<TooltipContentStylesProp
       }),
     }),
 
-    ...(!p.open && {
-      opacity: 0,
+    ...(p.open && {
+      display: 'block',
     }),
   }),
   pointer: ({ props: p, variables: v, rtl }): ICSSInJSStyle => ({

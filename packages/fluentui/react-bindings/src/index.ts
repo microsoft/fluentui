@@ -20,6 +20,8 @@ export { default as useStyles, defaultPerformanceFlags } from './hooks/useStyles
 export * from './hooks/useStyles';
 export { default as useUnhandledProps } from './hooks/useUnhandledProps';
 
+export { RendererContext } from './renderer/RendererContext';
+
 export { default as unstable_createAnimationStyles } from './styles/createAnimationStyles';
 export { default as unstable_calculateAnimationTimeout } from './styles/calculateAnimationTimeout';
 export { default as unstable_getStyles } from './styles/getStyles';

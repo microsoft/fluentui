@@ -15,6 +15,9 @@ const ButtonVariants = (props: ButtonProps) => (
 
 export const ButtonCss = () => (
   <Stack gap={20}>
+    <Text variant="xLarge">A button comes in default and `primary` flavors.</Text>
+    <ButtonVariants />
+
     <Text variant="xLarge">A button can appear round using the `circular` prop.</Text>
     <ButtonVariants circular />
 
