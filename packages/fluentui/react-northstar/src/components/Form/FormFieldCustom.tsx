@@ -57,7 +57,7 @@ const FormFieldCustom = compose<'div', FormFieldCustomProps, FormFieldCustomStyl
     const { children, message, className, design, styles, variables, inline, errorMessage, id, label } = props;
     const ElementType = getElementType(props);
     const messageId = React.useRef<string>();
-    messageId.current = getOrGenerateIdFromShorthand('error-message-', message || errorMessage, messageId.current);
+    messageId.current = getOrGenerateIdFromShorthand('error-message-', errorMessage || message, messageId.current);
     const labelId = React.useRef<string>();
     labelId.current = getOrGenerateIdFromShorthand('form-label-', id, labelId.current);
 
