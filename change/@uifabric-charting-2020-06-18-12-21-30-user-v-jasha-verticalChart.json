@@ -1,8 +1,8 @@
 {
   "type": "patch",
-  "comment": "high contract code updated",
+  "comment": "Vertical Bar chart code updated",
   "packageName": "@uifabric/charting",
-  "email": "email not defined",
+  "email": "v-jasha@microsoft.com",
   "dependentChangeType": "patch",
   "date": "2020-06-18T06:51:30.604Z"
 }
