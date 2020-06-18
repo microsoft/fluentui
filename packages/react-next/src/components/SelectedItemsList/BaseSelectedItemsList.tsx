@@ -4,22 +4,24 @@ import { Selection } from '../../Selection';
 import { IBaseSelectedItemsList, IBaseSelectedItemsListProps, ISelectedItemProps } from './BaseSelectedItemsList.types';
 import { initializeComponentRef } from '../../Utilities';
 import { IObjectWithKey } from '../../Utilities';
-
-export interface IBaseSelectedItemsListState<T extends IObjectWithKey> {
-  items: T[];
-}
+import { useControllableValue } from '@uifabric/react-hooks';
 
 export const BaseSelectedItemsList = <T extends IObjectWithKey>(props: IBaseSelectedItemsListProps<T>) => {
-  return <BaseSelectedItemsListClass {...props} hoistedProps={{}} />;
+  const [items, setItems] = useControllableValue(props.selectedItems, props.defaultSelectedItems || []);
+
+  return <BaseSelectedItemsListClass {...props} hoistedProps={{ items: items!, setItems: setItems as any }} />;
 };
 BaseSelectedItemsList.displayName = 'BaseSelectedItemsList';
 
 interface IBaseSelectedItemsListClassProps<T> extends IBaseSelectedItemsListProps<T> {
-  hoistedProps: {};
+  hoistedProps: {
+    items: T[];
+    setItems: (items: T[]) => void;
+  };
 }
 
 class BaseSelectedItemsListClass<T extends IObjectWithKey, P extends IBaseSelectedItemsListClassProps<T>>
-  extends React.Component<P, IBaseSelectedItemsListState<T>>
+  extends React.Component<P, {}>
   implements IBaseSelectedItemsList<T> {
   protected root: HTMLElement;
   protected selection: Selection;
@@ -28,10 +30,6 @@ class BaseSelectedItemsListClass<T extends IObjectWithKey, P extends IBaseSelect
     super(basePickerProps);
 
     initializeComponentRef(this);
-    const items: T[] = basePickerProps.selectedItems || basePickerProps.defaultSelectedItems || [];
-    this.state = {
-      items: items,
-    };
 
     // Create a new selection if one is not specified
     this.selection = this.props.selection
@@ -40,7 +38,7 @@ class BaseSelectedItemsListClass<T extends IObjectWithKey, P extends IBaseSelect
   }
 
   public get items(): T[] {
-    return this.state.items;
+    return this.props.hoistedProps.items;
   }
 
   public addItems = async (items: T[]): Promise<void> => {
@@ -48,12 +46,12 @@ class BaseSelectedItemsListClass<T extends IObjectWithKey, P extends IBaseSelect
 
     const processedItemObjects: T[] = Array.isArray(processedItems) ? processedItems : [processedItems];
 
-    const newItems: T[] = this.state.items.concat(processedItemObjects);
+    const newItems: T[] = this.props.hoistedProps.items.concat(processedItemObjects);
     this.updateItems(newItems);
   };
 
   public removeItemAt = (index: number): void => {
-    const { items } = this.state;
+    const { items } = this.props.hoistedProps;
 
     if (this._canRemoveItem(items[index])) {
       if (index > -1) {
@@ -68,14 +66,14 @@ class BaseSelectedItemsListClass<T extends IObjectWithKey, P extends IBaseSelect
   };
 
   public removeItem = (item: T): void => {
-    const { items } = this.state;
+    const { items } = this.props.hoistedProps;
     const index: number = items.indexOf(item);
 
     this.removeItemAt(index);
   };
 
   public replaceItem = (itemToReplace: T, itemsToReplaceWith: T | T[]): void => {
-    const { items } = this.state;
+    const { items } = this.props.hoistedProps;
     const index: number = items.indexOf(itemToReplace);
     if (index > -1) {
       const newItems = [...items];
@@ -85,7 +83,7 @@ class BaseSelectedItemsListClass<T extends IObjectWithKey, P extends IBaseSelect
   };
 
   public removeItems = (itemsToRemove: T[]): void => {
-    const { items } = this.state;
+    const { items } = this.props.hoistedProps;
     const itemsCanRemove = itemsToRemove.filter(item => this._canRemoveItem(item));
     const newItems: T[] = items.filter(item => itemsCanRemove.indexOf(item) === -1);
     const firstItemToRemove = itemsCanRemove[0];
@@ -99,7 +97,7 @@ class BaseSelectedItemsListClass<T extends IObjectWithKey, P extends IBaseSelect
   };
 
   public removeSelectedItems(): void {
-    if (this.state.items.length && this.selection.getSelectedCount() > 0) {
+    if (this.props.hoistedProps.items.length && this.selection.getSelectedCount() > 0) {
       this.removeItems(this.selection.getSelection() as T[]);
     }
   }
@@ -113,9 +111,8 @@ class BaseSelectedItemsListClass<T extends IObjectWithKey, P extends IBaseSelect
       // If the component is a controlled component then the controlling component will need to pass the new props
       this.onChange(items);
     } else {
-      this.setState({ items: items }, () => {
-        this._onSelectedItemsUpdated(items, focusIndex);
-      });
+      this.props.hoistedProps.setItems(items);
+      this._onSelectedItemsUpdated(items, focusIndex);
     }
   }
 
@@ -162,24 +159,18 @@ class BaseSelectedItemsListClass<T extends IObjectWithKey, P extends IBaseSelect
   }
 
   // tslint:disable-next-line function-name
-  public UNSAFE_componentWillUpdate(newProps: P, newState: IBaseSelectedItemsListState<IObjectWithKey>): void {
-    if (newState.items && newState.items !== this.state.items) {
-      this.selection.setItems(newState.items);
+  public UNSAFE_componentWillUpdate(newProps: P): void {
+    if (newProps.hoistedProps.items && newProps.hoistedProps.items !== this.props.hoistedProps.items) {
+      this.selection.setItems(newProps.hoistedProps.items);
     }
   }
 
   public componentDidMount(): void {
-    this.selection.setItems(this.state.items);
+    this.selection.setItems(this.props.hoistedProps.items);
   }
 
   // tslint:disable-next-line function-name
   public UNSAFE_componentWillReceiveProps(newProps: P): void {
-    const newItems = newProps.selectedItems;
-
-    if (newItems) {
-      this.setState({ items: newItems });
-    }
-
     if (newProps.selection) {
       this.selection = newProps.selection;
     }
@@ -193,7 +184,7 @@ class BaseSelectedItemsListClass<T extends IObjectWithKey, P extends IBaseSelect
     const { removeButtonAriaLabel } = this.props;
     const onRenderItem = this.props.onRenderItem as (props: ISelectedItemProps<T>) => JSX.Element;
 
-    const { items } = this.state;
+    const { items } = this.props.hoistedProps;
     return items.map((item: T, index: number) =>
       onRenderItem({
         item,
@@ -219,7 +210,7 @@ class BaseSelectedItemsListClass<T extends IObjectWithKey, P extends IBaseSelect
   }
 
   protected onItemChange = (changedItem: T, index: number): void => {
-    const { items } = this.state;
+    const { items } = this.props.hoistedProps;
 
     if (index >= 0) {
       const newItems: T[] = items;
