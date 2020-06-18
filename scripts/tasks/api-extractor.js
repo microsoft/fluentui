@@ -1,24 +1,35 @@
 // @ts-check
 
-const fs = require('fs');
+const glob = require('glob');
 const path = require('path');
-const { argv, apiExtractorVerifyTask, apiExtractorUpdateTask } = require('just-scripts');
+const { apiExtractorVerifyTask, apiExtractorUpdateTask, task, series } = require('just-scripts');
 
-const configPath = path.resolve(process.cwd(), argv().configPath || 'config/api-extractor.json');
+const apiExtractorConfigs = glob
+  .sync(path.join(process.cwd(), 'config/api-extractor*.json'))
+  .map(configPath => [configPath, configPath.replace(/.*\bapi-extractor(?:-(.*))?\.json$/, '$1') || 'default']);
 
 function verifyApiExtractor() {
-  const configFolder = path.resolve(process.cwd(), 'config');
-  const done = () => {};
-
-  if (fs.existsSync(configFolder)) {
-    fs.readdirSync(configFolder).forEach(fileName => {
-      if (fileName.match(/^api-extractor(-[a-zA-Z]+)?\.json$/)) {
-        // @ts-ignore
-        apiExtractorVerifyTask(path.resolve(configFolder, fileName), undefined)(done);
-      }
-    });
-  }
+  return apiExtractorConfigs.length
+    ? series(
+        ...apiExtractorConfigs.map(([configPath, configName]) => {
+          const taskName = `api-extractor:${configName}:verify`;
+          task(taskName, apiExtractorVerifyTask({ configJsonFilePath: configPath }));
+          return taskName;
+        }),
+      )
+    : 'no-op';
 }
-const updateApiExtractor = apiExtractorUpdateTask(configPath, undefined);
+
+function updateApiExtractor() {
+  return apiExtractorConfigs.length
+    ? series(
+        ...apiExtractorConfigs.map(([configPath, configName]) => {
+          const taskName = `api-extractor:${configName}:update`;
+          task(taskName, apiExtractorUpdateTask({ configJsonFilePath: configPath }));
+          return taskName;
+        }),
+      )
+    : 'no-op';
+}
 
 module.exports = { verifyApiExtractor, updateApiExtractor };
