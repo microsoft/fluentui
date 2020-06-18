@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "LineChart: Add polyfill to support array.find method in callout in IE11",
+  "comment": "LineChart: import find from office-ui-fabric-react/lib/Utilities to support IE11",
   "packageName": "@uifabric/charting",
   "email": "v-gorraj@microsoft.com",
   "dependentChangeType": "patch",
