@@ -40,14 +40,20 @@ describe('Button', () => {
   }
 
   it('renders DefaultButton correctly', () => {
-    const component = renderer.create(<DefaultButton text="Button" />);
-    const tree = component.toJSON();
+    let component: renderer.ReactTestRenderer;
+    renderer.act(() => {
+      component = renderer.create(<DefaultButton text="Button" />);
+    });
+    const tree = component!.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders ActionButton correctly', () => {
-    const component = renderer.create(<ActionButton>Button</ActionButton>);
-    const tree = component.toJSON();
+    let component: renderer.ReactTestRenderer;
+    renderer.act(() => {
+      component = renderer.create(<ActionButton>Button</ActionButton>);
+    });
+    const tree = component!.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
@@ -56,49 +62,61 @@ describe('Button', () => {
       content: 'A',
       keySequences: ['a'],
     };
-    const component = renderer.create(<DefaultButton text="Button" keytipProps={keytipProps} />);
-    const tree = component.toJSON();
+    let component: renderer.ReactTestRenderer;
+    renderer.act(() => {
+      component = renderer.create(<DefaultButton text="Button" keytipProps={keytipProps} />);
+    });
+    const tree = component!.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders CommandBarButton correctly', () => {
-    const component = renderer.create(
-      <CommandBarButton
-        iconProps={{ iconName: 'Add' }}
-        text="Create account"
-        menuProps={{
-          items: [
-            {
-              key: 'emailMessage',
-              text: 'Email message',
-              iconProps: { iconName: 'Mail' },
-            },
-            {
-              key: 'calendarEvent',
-              text: 'Calendar event',
-              iconProps: { iconName: 'Calendar' },
-            },
-          ],
-        }}
-      />,
-    );
-    const tree = component.toJSON();
+    let component: renderer.ReactTestRenderer;
+    renderer.act(() => {
+      component = renderer.create(
+        <CommandBarButton
+          iconProps={{ iconName: 'Add' }}
+          text="Create account"
+          menuProps={{
+            items: [
+              {
+                key: 'emailMessage',
+                text: 'Email message',
+                iconProps: { iconName: 'Mail' },
+              },
+              {
+                key: 'calendarEvent',
+                text: 'Calendar event',
+                iconProps: { iconName: 'Calendar' },
+              },
+            ],
+          }}
+        />,
+      );
+    });
+    const tree = component!.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders CompoundButton correctly', () => {
-    const component = renderer.create(
-      <CompoundButton secondaryText="You can create a new account here.">Create account</CompoundButton>,
-    );
-    const tree = component.toJSON();
+    let component: renderer.ReactTestRenderer;
+    renderer.act(() => {
+      component = renderer.create(
+        <CompoundButton secondaryText="You can create a new account here.">Create account</CompoundButton>,
+      );
+    });
+
+    const tree = component!.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders IconButton correctly', () => {
-    const component = renderer.create(
-      <IconButton iconProps={{ iconName: 'Emoji2' }} title="Emoji" ariaLabel="Emoji" />,
-    );
-    const tree = component.toJSON();
+    let component: renderer.ReactTestRenderer;
+    renderer.act(() => {
+      component = renderer.create(<IconButton iconProps={{ iconName: 'Emoji2' }} title="Emoji" ariaLabel="Emoji" />);
+    });
+
+    const tree = component!.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
