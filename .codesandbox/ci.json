@@ -1,4 +1,10 @@
 {
-  "packages": ["packages/react-button"],
+  "packages": [
+    "packages/react-button",
+    "@fluentui/react-northstar",
+    "office-ui-fabric-react",
+    "@fluentui/react-next",
+    "@fluentui/react-icons"
+  ],
   "sandboxes": ["u0e3w"]
 }
