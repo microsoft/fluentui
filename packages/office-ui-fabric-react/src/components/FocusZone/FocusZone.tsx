@@ -129,7 +129,6 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
 
     return (
       <Tag
-        role='presentation'
         {
         ...divProps
         }
