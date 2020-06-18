@@ -155,7 +155,7 @@ export const SelectedPeopleList = (propsWithoutDefaults: ISelectedPeopleProps) =
   };
 
   return (
-    <BaseSelectedItemsList<IExtendedPersonaProps, ISelectedPeopleProps>
+    <BaseSelectedItemsList<IExtendedPersonaProps>
       {...props}
       componentRef={mergedComponentRef}
       onRenderItem={renderItem}

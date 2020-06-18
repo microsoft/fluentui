@@ -4,12 +4,28 @@ import { Selection } from '../../Selection';
 import { IBaseSelectedItemsList, IBaseSelectedItemsListProps, ISelectedItemProps } from './BaseSelectedItemsList.types';
 import { initializeComponentRef } from '../../Utilities';
 import { IObjectWithKey } from '../../Utilities';
-import { useControllableValue } from '@uifabric/react-hooks';
+import { useControllableValue, useForceUpdate, useConst } from '@uifabric/react-hooks';
+
+function useSelection<T extends IObjectWithKey>(props: IBaseSelectedItemsListProps<T>, items: T[] = []) {
+  const forceUpdate = useForceUpdate();
+  const defaultSelection = useConst(() => new Selection({ onSelectionChanged: forceUpdate }));
+
+  const selection = props.selection ?? defaultSelection;
+
+  React.useEffect(() => {
+    selection.setItems(items);
+  }, [items]);
+
+  return selection;
+}
 
 export const BaseSelectedItemsList = <T extends IObjectWithKey>(props: IBaseSelectedItemsListProps<T>) => {
   const [items, setItems] = useControllableValue(props.selectedItems, props.defaultSelectedItems || []);
+  const selection = useSelection(props, items!);
 
-  return <BaseSelectedItemsListClass {...props} hoistedProps={{ items: items!, setItems: setItems as any }} />;
+  return (
+    <BaseSelectedItemsListClass {...props} hoistedProps={{ items: items!, setItems: setItems as any, selection }} />
+  );
 };
 BaseSelectedItemsList.displayName = 'BaseSelectedItemsList';
 
@@ -17,6 +33,7 @@ interface IBaseSelectedItemsListClassProps<T> extends IBaseSelectedItemsListProp
   hoistedProps: {
     items: T[];
     setItems: (items: T[]) => void;
+    selection: Selection;
   };
 }
 
@@ -24,17 +41,11 @@ class BaseSelectedItemsListClass<T extends IObjectWithKey, P extends IBaseSelect
   extends React.Component<P, {}>
   implements IBaseSelectedItemsList<T> {
   protected root: HTMLElement;
-  protected selection: Selection;
 
   constructor(basePickerProps: P) {
     super(basePickerProps);
 
     initializeComponentRef(this);
-
-    // Create a new selection if one is not specified
-    this.selection = this.props.selection
-      ? (this.props.selection as Selection)
-      : new Selection({ onSelectionChanged: this.onSelectionChanged });
   }
 
   public get items(): T[] {
@@ -97,8 +108,8 @@ class BaseSelectedItemsListClass<T extends IObjectWithKey, P extends IBaseSelect
   };
 
   public removeSelectedItems(): void {
-    if (this.props.hoistedProps.items.length && this.selection.getSelectedCount() > 0) {
-      this.removeItems(this.selection.getSelection() as T[]);
+    if (this.props.hoistedProps.items.length && this.props.hoistedProps.selection.getSelectedCount() > 0) {
+      this.removeItems(this.props.hoistedProps.selection.getSelection() as T[]);
     }
   }
 
@@ -117,22 +128,22 @@ class BaseSelectedItemsListClass<T extends IObjectWithKey, P extends IBaseSelect
   }
 
   public onCopy = (ev: React.ClipboardEvent<HTMLElement>): void => {
-    if (this.props.onCopyItems && this.selection.getSelectedCount() > 0) {
-      const selectedItems: T[] = this.selection.getSelection() as T[];
+    if (this.props.onCopyItems && this.props.hoistedProps.selection.getSelectedCount() > 0) {
+      const selectedItems: T[] = this.props.hoistedProps.selection.getSelection() as T[];
       this.copyItems(selectedItems);
     }
   };
 
   public hasSelectedItems(): boolean {
-    return this.selection.getSelectedCount() > 0;
+    return this.props.hoistedProps.selection.getSelectedCount() > 0;
   }
 
   public unselectAll(): void {
-    this.selection.setAllSelected(false);
+    this.props.hoistedProps.selection.setAllSelected(false);
   }
 
   public highlightedItems(): T[] {
-    return this.selection.getSelection() as T[];
+    return this.props.hoistedProps.selection.getSelection() as T[];
   }
 
   public copyItems(items: T[]): void {
@@ -158,22 +169,8 @@ class BaseSelectedItemsListClass<T extends IObjectWithKey, P extends IBaseSelect
     }
   }
 
-  // tslint:disable-next-line function-name
-  public UNSAFE_componentWillUpdate(newProps: P): void {
-    if (newProps.hoistedProps.items && newProps.hoistedProps.items !== this.props.hoistedProps.items) {
-      this.selection.setItems(newProps.hoistedProps.items);
-    }
-  }
-
   public componentDidMount(): void {
-    this.selection.setItems(this.props.hoistedProps.items);
-  }
-
-  // tslint:disable-next-line function-name
-  public UNSAFE_componentWillReceiveProps(newProps: P): void {
-    if (newProps.selection) {
-      this.selection = newProps.selection;
-    }
+    this.props.hoistedProps.selection.setItems(this.props.hoistedProps.items);
   }
 
   public render() {
@@ -190,7 +187,7 @@ class BaseSelectedItemsListClass<T extends IObjectWithKey, P extends IBaseSelect
         item,
         index,
         key: item.key ? item.key : index,
-        selected: this.selection.isIndexSelected(index),
+        selected: this.props.hoistedProps.selection.isIndexSelected(index),
         onRemoveItem: () => this.removeItem(item),
         onItemChange: this.onItemChange,
         removeButtonAriaLabel: removeButtonAriaLabel,
