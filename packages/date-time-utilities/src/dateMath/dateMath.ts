@@ -1,5 +1,5 @@
-import { DayOfWeek, MonthOfYear, FirstWeekOfYear, DateRangeType } from '../dateValues/DateValues';
-import TimeConstants from '../dateValues/TimeConstants';
+import { DayOfWeek, MonthOfYear, FirstWeekOfYear, DateRangeType } from '../dateValues/dateValues';
+import TimeConstants from '../dateValues/timeConstants';
 
 /**
  * Returns a date offset from the given date by the specified number of days.
