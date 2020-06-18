@@ -25,7 +25,6 @@ const FormValidateHooks = () => {
 
   const handleMultiChange = selectedOption => {
     setValue('city', selectedOption);
-    triggerValidation('city');
   };
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
@@ -45,6 +44,9 @@ const FormValidateHooks = () => {
       <Form.Dropdown
         onChange={(e, { value }) => {
           handleMultiChange(value);
+        }}
+        onBlur={() => {
+          triggerValidation('city');
         }}
         label="City"
         id="city"
