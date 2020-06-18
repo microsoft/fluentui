@@ -52,8 +52,9 @@ export const defaultTests: TestObject = {
       const constructorName = Component.prototype?.constructor.name;
       let displayName = Component.displayName || constructorName;
 
-      // This check is needed in case the Component is wrapped therefore the constructor's name is Wrapped,
-      // so we have to look at the display name and remove Base or Styled if the component was styled or is a base
+      // This check is needed in case the Component is wrapped with the v7 styled() helper, which returns a wrapper
+      // component with constructor name Wrapped, and adds a Styled prefix to the displayName. Components passed to
+      // styled() typically have Base in their name, so remove that too.
       if (constructorName === 'Wrapped') {
         displayName = displayName.replace(/^Styled/, '');
         displayName = displayName.replace(/Base$/, '');
