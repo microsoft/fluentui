@@ -20,11 +20,22 @@ function useSelection<T extends IObjectWithKey>(props: IBaseSelectedItemsListPro
 }
 
 export const BaseSelectedItemsList = <T extends IObjectWithKey>(props: IBaseSelectedItemsListProps<T>) => {
-  const [items, setItems] = useControllableValue(props.selectedItems, props.defaultSelectedItems || []);
+  const [items, setItems] = useControllableValue(
+    props.selectedItems,
+    props.defaultSelectedItems || [],
+    (ev, newItems) => props.onChange?.(items),
+  );
   const selection = useSelection(props, items!);
 
+  const canRemoveItem = (item: T): boolean => {
+    return !props.canRemoveItem || props.canRemoveItem(item);
+  };
+
   return (
-    <BaseSelectedItemsListClass {...props} hoistedProps={{ items: items!, setItems: setItems as any, selection }} />
+    <BaseSelectedItemsListClass
+      {...props}
+      hoistedProps={{ items: items!, setItems: setItems as any, selection, canRemoveItem }}
+    />
   );
 };
 BaseSelectedItemsList.displayName = 'BaseSelectedItemsList';
@@ -34,6 +45,7 @@ interface IBaseSelectedItemsListClassProps<T> extends IBaseSelectedItemsListProp
     items: T[];
     setItems: (items: T[]) => void;
     selection: Selection;
+    canRemoveItem: (item: T) => boolean;
   };
 }
 
@@ -64,7 +76,7 @@ class BaseSelectedItemsListClass<T extends IObjectWithKey, P extends IBaseSelect
   public removeItemAt = (index: number): void => {
     const { items } = this.props.hoistedProps;
 
-    if (this._canRemoveItem(items[index])) {
+    if (this.props.hoistedProps.canRemoveItem(items[index])) {
       if (index > -1) {
         if (this.props.onItemsDeleted) {
           (this.props.onItemsDeleted as (item: T[]) => void)([items[index]]);
@@ -95,16 +107,14 @@ class BaseSelectedItemsListClass<T extends IObjectWithKey, P extends IBaseSelect
 
   public removeItems = (itemsToRemove: T[]): void => {
     const { items } = this.props.hoistedProps;
-    const itemsCanRemove = itemsToRemove.filter(item => this._canRemoveItem(item));
+    const itemsCanRemove = itemsToRemove.filter(item => this.props.hoistedProps.canRemoveItem(item));
     const newItems: T[] = items.filter(item => itemsCanRemove.indexOf(item) === -1);
-    const firstItemToRemove = itemsCanRemove[0];
-    const index: number = items.indexOf(firstItemToRemove);
 
     if (this.props.onItemsDeleted) {
       (this.props.onItemsDeleted as (item: T[]) => void)(itemsCanRemove);
     }
 
-    this.updateItems(newItems, index);
+    this.updateItems(newItems);
   };
 
   public removeSelectedItems(): void {
@@ -117,14 +127,8 @@ class BaseSelectedItemsListClass<T extends IObjectWithKey, P extends IBaseSelect
    * Controls what happens whenever there is an action that impacts the selected items.
    * If selectedItems is provided, this will act as a controlled component and will not update its own state.
    */
-  public updateItems(items: T[], focusIndex?: number): void {
-    if (this.props.selectedItems) {
-      // If the component is a controlled component then the controlling component will need to pass the new props
-      this.onChange(items);
-    } else {
-      this.props.hoistedProps.setItems(items);
-      this._onSelectedItemsUpdated(items, focusIndex);
-    }
+  public updateItems(items: T[]): void {
+    this.props.hoistedProps.setItems(items);
   }
 
   public onCopy = (ev: React.ClipboardEvent<HTMLElement>): void => {
@@ -169,15 +173,7 @@ class BaseSelectedItemsListClass<T extends IObjectWithKey, P extends IBaseSelect
     }
   }
 
-  public componentDidMount(): void {
-    this.props.hoistedProps.selection.setItems(this.props.hoistedProps.items);
-  }
-
   public render() {
-    return this.renderItems();
-  }
-
-  protected renderItems = (): JSX.Element[] => {
     const { removeButtonAriaLabel } = this.props;
     const onRenderItem = this.props.onRenderItem as (props: ISelectedItemProps<T>) => JSX.Element;
 
@@ -194,16 +190,6 @@ class BaseSelectedItemsListClass<T extends IObjectWithKey, P extends IBaseSelect
         onCopyItem: (itemToCopy: T) => this.copyItems([itemToCopy]),
       }),
     );
-  };
-
-  protected onSelectionChanged = (): void => {
-    this.forceUpdate();
-  };
-
-  protected onChange(items?: T[]): void {
-    if (this.props.onChange) {
-      (this.props.onChange as (items?: T[]) => void)(items);
-    }
   }
 
   protected onItemChange = (changedItem: T, index: number): void => {
@@ -216,12 +202,4 @@ class BaseSelectedItemsListClass<T extends IObjectWithKey, P extends IBaseSelect
       this.updateItems(newItems);
     }
   };
-
-  private _onSelectedItemsUpdated(items?: T[], focusIndex?: number): void {
-    this.onChange(items);
-  }
-
-  private _canRemoveItem(item: T): boolean {
-    return !this.props.canRemoveItem || this.props.canRemoveItem(item);
-  }
 }
