@@ -1,4 +1,5 @@
 import { IVerticalBarChartStyleProps, IVerticalBarChartStyles } from './VerticalBarChart.types';
+import { HighContrastSelectorBlack } from 'office-ui-fabric-react/lib/Styling';
 
 export const getStyles = (props: IVerticalBarChartStyleProps): IVerticalBarChartStyles => {
   const { className, theme, shouldHighlight } = props;
@@ -29,12 +30,26 @@ export const getStyles = (props: IVerticalBarChartStyleProps): IVerticalBarChart
 
     xAxis: {
       selectors: {
-        text: {
-          ...theme!.fonts.tiny,
-        },
+        text: [
+          theme.fonts.tiny,
+          {
+            fill: theme.semanticColors.bodyText,
+            selectors: {
+              [HighContrastSelectorBlack]: {
+                fill: 'rgb(179, 179, 179)',
+              },
+            },
+          },
+        ],
         line: {
-          opacity: 0.4,
-          width: '2px',
+          opacity: 0.1,
+          width: '1px',
+          selectors: {
+            [HighContrastSelectorBlack]: {
+              opacity: 0.1,
+              stroke: 'rgb(179, 179, 179)',
+            },
+          },
         },
         path: {
           display: 'none',
@@ -44,12 +59,27 @@ export const getStyles = (props: IVerticalBarChartStyleProps): IVerticalBarChart
 
     yAxis: {
       selectors: {
-        text: {
-          ...theme.fonts.medium,
-        },
+        text: [
+          theme.fonts.tiny,
+          {
+            fill: theme.semanticColors.bodyText,
+            selectors: {
+              [HighContrastSelectorBlack]: {
+                fill: 'rgb(179, 179, 179)',
+              },
+            },
+          },
+        ],
         line: {
-          opacity: 0.4,
-          width: '3px',
+          opacity: 0.2,
+          width: '1px',
+          fill: theme.semanticColors.bodyText,
+          selectors: {
+            [HighContrastSelectorBlack]: {
+              opacity: 0.2,
+              stroke: 'rgb(179, 179, 179)',
+            },
+          },
         },
         path: {
           display: 'none',
