@@ -31,10 +31,10 @@ export const getStyles = (props: IStackedBarChartStyleProps): IStackedBarChartSt
       marginBottom: '12px',
     },
     chartTitle: {
+      ...theme.fonts.small,
       display: 'flex',
       justifyContent: 'space-between',
       marginBottom: '5px',
-      fontSize: FontSizes.small,
     },
     legendContainer: {
       paddingTop: '4px',
