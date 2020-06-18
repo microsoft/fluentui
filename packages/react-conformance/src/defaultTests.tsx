@@ -20,7 +20,7 @@ export const defaultTests: TestObject = {
 
   /** Component file exports a valid React element type  */
   'exports-component': (componentInfo: ComponentDoc, testInfo: TestingOptions) => {
-    it(`exports component from file under correct name ${testInfo.componentPath}`, () => {
+    it(`exports component from file under correct name`, () => {
       const componentFile = require(testInfo.componentPath);
       if (testInfo.useDefaultExport) {
         expect(componentFile.default).toBe(testInfo.Component);
@@ -52,6 +52,8 @@ export const defaultTests: TestObject = {
       const constructorName = Component.prototype?.constructor.name;
       let displayName = Component.displayName || constructorName;
 
+      // This check is needed in case the Component is wrapped therefore the constructor's name is Wrapped,
+      // so we have to look at the display name and remove Base or Styled if the component was styled or is a base
       if (constructorName === 'Wrapped') {
         displayName = displayName.replace(/^Styled/, '');
         displayName = displayName.replace(/Base$/, '');

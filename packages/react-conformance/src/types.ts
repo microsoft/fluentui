@@ -11,7 +11,7 @@ export interface TestingOptions<TProps = {}> {
   displayName: string;
   customMount?: typeof mount;
   disabledTests?: Tests[];
-  exportedAtTopLevel?: boolean;
+  isInternal?: boolean;
   extraTests?: TestObject;
   requiredProps?: Partial<TProps>;
   useDefaultExport?: boolean;
