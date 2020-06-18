@@ -397,8 +397,7 @@ export class LineChartBase extends React.Component<
     if (this.xAxisElement) {
       d3Select(this.xAxisElement)
         .call(xAxis)
-        .selectAll('text')
-        .style('font', '10px Segoe UI semibold');
+        .selectAll('text');
     }
   }
 
@@ -439,8 +438,7 @@ export class LineChartBase extends React.Component<
     if (this.xAxisElement) {
       d3Select(this.xAxisElement)
         .call(xAxis)
-        .selectAll('text')
-        .style('font', '10px Segoe UI Semibold');
+        .selectAll('text');
     }
   };
 
@@ -472,7 +470,6 @@ export class LineChartBase extends React.Component<
       ? d3Select(this.yAxisElement)
           .call(yAxis)
           .selectAll('text')
-          .style('font', '10px Segoe UI semibold')
       : '';
   };
 

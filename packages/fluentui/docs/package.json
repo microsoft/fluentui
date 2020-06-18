@@ -15,6 +15,8 @@
     "@fluentui/react-component-ref": "^0.50.0",
     "@fluentui/react-icons-northstar": "^0.50.0",
     "@fluentui/react-northstar": "^0.50.0",
+    "@fluentui/react-northstar-fela-renderer": "^0.50.0",
+    "@fluentui/react-northstar-emotion-renderer": "^0.50.0",
     "@fluentui/react-northstar-styles-renderer": "^0.50.0",
     "@fluentui/react-telemetry": "^0.50.0",
     "@fluentui/styles": "^0.50.0",

@@ -1,4 +1,5 @@
 import { ILineChartStyleProps, ILineChartStyles } from './LineChart.types';
+import { HighContrastSelectorBlack } from 'office-ui-fabric-react/lib/Styling';
 
 export const getStyles = (props: ILineChartStyleProps): ILineChartStyles => {
   const { className, theme } = props;
@@ -17,15 +18,27 @@ export const getStyles = (props: ILineChartStyleProps): ILineChartStyles => {
     ],
     xAxis: {
       selectors: {
-        text: {
-          ...fonts.tiny,
-          stroke: theme.semanticColors.bodyText,
-          opacity: 0.6,
-        },
+        text: [
+          theme.fonts.tiny,
+          {
+            fill: theme.semanticColors.bodyText,
+            selectors: {
+              [HighContrastSelectorBlack]: {
+                fill: 'rgb(179, 179, 179)',
+              },
+            },
+          },
+        ],
         line: {
           opacity: 0.1,
           stroke: theme.semanticColors.bodyText,
           width: '1px',
+          selectors: {
+            [HighContrastSelectorBlack]: {
+              opacity: 0.1,
+              stroke: 'rgb(179, 179, 179)',
+            },
+          },
         },
         path: {
           display: 'none',
@@ -34,16 +47,29 @@ export const getStyles = (props: ILineChartStyleProps): ILineChartStyles => {
     },
     yAxis: {
       selectors: {
-        text: {
-          opacity: 0.6,
-          stroke: theme.semanticColors.bodyText,
-        },
+        text: [
+          theme.fonts.tiny,
+          {
+            fill: theme.semanticColors.bodyText,
+            selectors: {
+              [HighContrastSelectorBlack]: {
+                fill: 'rgb(179, 179, 179)',
+              },
+            },
+          },
+        ],
         path: {
           display: 'none',
         },
         line: {
           opacity: 0.1,
-          stroke: theme.semanticColors.bodyText,
+          fill: theme.semanticColors.bodyText,
+          selectors: {
+            [HighContrastSelectorBlack]: {
+              opacity: 0.1,
+              stroke: 'rgb(179, 179, 179)',
+            },
+          },
         },
       },
     },

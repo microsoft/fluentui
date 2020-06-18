@@ -21,11 +21,10 @@ export const getMultiStackedBarChartStyles = (props: IMultiStackedBarChartStyleP
       height: barHeight ? barHeight : 16,
     },
     chartTitle: {
+      ...theme.fonts.small,
       display: 'flex',
       justifyContent: 'space-between',
       marginBottom: '5px',
-      fontSize: '12px',
-      fontFamily: 'Segoe UI',
     },
     singleChartRoot: {
       width: width ? width : '100%',
