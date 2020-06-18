@@ -6,7 +6,7 @@ import { isStyleObject } from './utils';
 
 // This code is taken from @emotion/core:
 // https://github.com/emotion-js/emotion/blob/a076e7fa5f78fec6515671b78801cfc9d6cf1316/packages/core/src/keyframes.js#L11
-export const keyframes = (
+const keyframes = (
   cache: EmotionCache,
   keyframe: AnimationName['keyframe'],
   params: AnimationName['params'] = {},
