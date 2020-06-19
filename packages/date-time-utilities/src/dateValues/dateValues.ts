@@ -51,3 +51,5 @@ export enum DateRangeType {
   Month = 2,
   WorkWeek = 3,
 }
+
+export const DAYS_IN_WEEK = 7;

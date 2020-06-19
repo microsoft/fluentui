@@ -1,1 +1,1 @@
-export * from '@fluentui/date-time-utilities/lib/dateMath/DateMath';
+export * from '@fluentui/date-time-utilities/lib/dateMath/dateMath';

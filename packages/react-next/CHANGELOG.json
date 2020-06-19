@@ -2,6 +2,50 @@
   "name": "@fluentui/react-next",
   "entries": [
     {
+      "date": "Fri, 19 Jun 2020 12:38:09 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.45",
+      "version": "8.0.0-alpha.45",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Keytip: add KeytipLayer storybook decorator and fix missing handled prop for link",
+            "author": "xgao@microsoft.com",
+            "commit": "ffb1099f3e09f1524d499b397a01377a7763066a",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Creating compat layers for Button, Checkbox, Link, Pivot, Slider and Toggle components.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "2437057f63caf20ffd76bfa5b16c234520b156d2",
+            "package": "@fluentui/react-next"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Adding new isConformant test",
+            "author": "esteban.230@hotmail.com",
+            "commit": "8800f1cab6daba604e97652c87c3a134994f8887",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Jun 2020 12:37:09 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.44",
+      "version": "8.0.0-alpha.44",
+      "comments": {
+        "none": [
+          {
+            "comment": "changing office-ui-fabric-react's path in react-next module mapper",
+            "author": "esteban.230@hotmail.com",
+            "commit": "e46bf9f50307191a6da7027a1857f4565baa10e3",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 17 Jun 2020 12:37:16 GMT",
       "tag": "@fluentui/react-next_v8.0.0-alpha.43",
       "version": "8.0.0-alpha.43",

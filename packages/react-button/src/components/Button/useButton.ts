@@ -15,7 +15,7 @@ const getStyle = (props: ButtonProps) => {
 
 /**
  * The useButton hook processes the Button component props and returns state.
- * @param props
+ * @param props - Button props to derive state from.
  */
 export const useButton = (props: ButtonProps): ButtonState => {
   const buttonRef = useRef<HTMLButtonElement | null>(null);

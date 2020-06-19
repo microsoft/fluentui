@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Tue, 16 Jun 2020 17:35:36 GMT and should not be manually modified.
+This log was last generated on Fri, 19 Jun 2020 12:38:09 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.3.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.3.6)
+
+Fri, 19 Jun 2020 12:38:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.3.5..@fluentui/react-button_v0.3.6)
+
+### Patches
+
+- react-button: Adding api-extractor configuration. ([PR #13654](https://github.com/microsoft/fluentui/pull/13654) by humbertomakotomorimoto@gmail.com)
+
+## [0.3.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.3.5)
+
+Thu, 18 Jun 2020 12:37:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.3.3..@fluentui/react-button_v0.3.5)
+
+### Patches
+
+- Button: Replacing height with min-height so Button can adapt in flex scenarios. ([PR #13655](https://github.com/microsoft/fluentui/pull/13655) by humbertomakotomorimoto@gmail.com)
 
 ## [0.3.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.3.3)
 
