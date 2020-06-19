@@ -2,6 +2,7 @@ import * as React from 'react';
 import { ButtonProps } from './Button.types';
 import { compose, mergeProps } from '@fluentui/react-compose';
 import { useButton } from './useButton';
+import { useMergedRefs } from '@uifabric/react-hooks';
 
 export const ButtonBase = compose<'button', ButtonProps, ButtonProps, {}, {}>(
   (props, ref, options) => {
@@ -9,7 +10,7 @@ export const ButtonBase = compose<'button', ButtonProps, ButtonProps, {}, {}>(
     const { slots, slotProps } = mergeProps(state, options);
 
     return (
-      <slots.root ref={ref} {...slotProps.root}>
+      <slots.root ref={useMergedRefs(ref, state.buttonRef)} {...slotProps.root}>
         {props.loading && <slots.loader {...slotProps.loader} />}
         {props.icon && props.iconPosition !== 'after' && <slots.icon {...slotProps.icon} />}
         {!props.iconOnly && props.content && <slots.content {...slotProps.content} />}

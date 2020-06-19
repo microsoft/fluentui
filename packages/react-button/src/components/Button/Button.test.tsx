@@ -15,7 +15,7 @@ describe('Button', () => {
   });
 
   /**
-   * Note: see more visual regression tests for Button in /apps/vr-tests
+   * Note: see more visual regression tests for Button in /apps/vr-tests.
    */
   it('renders a default state', () => {
     const component = renderer.create(<Button content="Default button" />);

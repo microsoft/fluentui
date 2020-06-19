@@ -88,7 +88,9 @@ export interface ButtonProps extends ComponentProps, React.HTMLAttributes<HTMLBu
   tokens?: RecursivePartial<ButtonTokens>;
 }
 
-export interface ButtonState extends ButtonProps {}
+export interface ButtonState extends ButtonProps {
+  buttonRef?: React.RefObject<HTMLButtonElement>;
+}
 
 export interface ButtonSlots {
   icon: React.ElementType;
