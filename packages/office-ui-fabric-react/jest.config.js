@@ -5,6 +5,8 @@ const config = createConfig({
   setupFiles: [path.resolve(path.join(__dirname, 'config', 'tests.js'))],
 
   moduleNameMapper: {
+    '@fluentui/react-conformance/lib/(.*)$': '@fluentui/react-conformance/lib-commonjs/$1',
+    '@fluentui/react-conformance$': '@fluentui/react-conformance/lib-commonjs/index',
     '@fluentui/react-focus/lib/(.*)$': '@fluentui/react-focus/lib-commonjs/$1',
     '@uifabric/react-hooks/lib/(.*)$': '@uifabric/react-hooks/lib-commonjs/$1',
     '@uifabric/utilities/lib/(.*)$': '@uifabric/utilities/lib-commonjs/$1',

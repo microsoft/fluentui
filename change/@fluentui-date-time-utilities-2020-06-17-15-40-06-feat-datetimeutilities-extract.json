@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Extract helper functions from date-time/Calendar",
+  "packageName": "@fluentui/date-time-utilities",
+  "email": "pompomon@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-06-17T13:39:57.097Z"
+}

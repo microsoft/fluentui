@@ -2,7 +2,7 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { TestImages } from '@uifabric/example-data';
-import { Icon } from 'office-ui-fabric-react/lib/Icon';
+import { Icon } from '../../Icon';
 import { setRTL, IRenderFunction } from '../../Utilities';
 import { Persona } from './Persona';
 import { mount, ReactWrapper } from 'enzyme';
