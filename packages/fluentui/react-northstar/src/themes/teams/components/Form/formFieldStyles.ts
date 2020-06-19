@@ -10,6 +10,7 @@ const formFieldStyles: ComponentSlotStylesPrepared<FormFieldStylesProps, FormFie
     return {
       ...((!type || (type !== 'radio' && type !== 'checkbox')) && {
         display: 'block',
+        marginBottom: pxToRem(4),
       }),
       ...(inline && { marginRight: pxToRem(10), display: 'inline' }),
       ...(required && {

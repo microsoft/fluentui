@@ -2,6 +2,21 @@
   "name": "@uifabric/date-time",
   "entries": [
     {
+      "date": "Fri, 19 Jun 2020 12:38:09 GMT",
+      "tag": "@uifabric/date-time_v7.9.0",
+      "version": "7.9.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Extract helper functions from date-time/Calendar",
+            "author": "pompomon@gmail.com",
+            "commit": "15dc5e8e782565c75bc5d637813cee8be2b8a384",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 17 Jun 2020 12:37:16 GMT",
       "tag": "@uifabric/date-time_v7.8.101",
       "version": "7.8.101",

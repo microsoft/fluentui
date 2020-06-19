@@ -1,11 +1,18 @@
-import { TestObject, TestingOptions } from './types';
-import { withCustomConfig } from 'react-docgen-typescript';
 import * as path from 'path';
+import * as fs from 'fs';
+
+import { TestingOptions } from './types';
+import { withCustomConfig } from 'react-docgen-typescript';
 import { defaultTests } from './defaultTests';
 
-export function isConformant(testInfo: TestingOptions, extraTests?: TestObject) {
-  const { componentPath, displayName } = testInfo;
+export function isConformant(testInfo: TestingOptions) {
+  const { componentPath, displayName, disabledTests = [], extraTests } = testInfo;
   const tsconfigPath = path.join(process.cwd(), 'tsconfig.json');
+
+  if (!fs.existsSync(componentPath)) {
+    throw new Error(`Path ${componentPath} does not exist`);
+  }
+
   const parser = withCustomConfig(tsconfigPath, {});
   const components = parser.parse(componentPath);
   const mainComponents = components.filter(comp => comp.displayName === displayName);
@@ -14,7 +21,9 @@ export function isConformant(testInfo: TestingOptions, extraTests?: TestObject) 
     const componentInfo = mainComponents[0];
 
     for (const test of Object.keys(defaultTests)) {
-      defaultTests[test](componentInfo, testInfo);
+      if (!disabledTests.includes(test)) {
+        defaultTests[test](componentInfo, testInfo);
+      }
     }
     if (extraTests) {
       for (const test of Object.keys(extraTests)) {

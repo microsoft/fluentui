@@ -102,7 +102,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     const chartData = data && data.chartData;
     return (
       <div className={this._classNames.root} ref={(rootElem: HTMLElement | null) => (this._rootElem = rootElem)}>
-        <FocusZone direction={FocusZoneDirection.horizontal}>
+        <FocusZone direction={FocusZoneDirection.horizontal} isCircularNavigation={true}>
           <div>
             <svg className={this._classNames.chart} ref={(node: SVGElement | null) => this._setViewBox(node)}>
               <Pie
@@ -129,7 +129,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
         {!this.props.hideTooltip && this.state.showHover ? (
           <Callout
             target={this._currentHoverElement}
-            coverTarget={true}
+            alignTargetEdge={true}
             isBeakVisible={false}
             directionalHint={DirectionalHint.bottomRightEdge}
             gapSpace={15}

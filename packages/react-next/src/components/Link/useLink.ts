@@ -69,7 +69,7 @@ const adjustPropsForRootType = (
   // Deconstruct the props so we remove props like `as`, `theme` and `styles`
   // as those will always be removed. We also take some props that are optional
   // based on the RootType.
-  const { as, disabled, target, href, theme, getStyles, styles, componentRef, ...restProps } = props;
+  const { as, disabled, target, href, theme, getStyles, styles, componentRef, keytipProps, ...restProps } = props;
 
   // RootType will be a string if we're dealing with an html component
   if (typeof RootType === 'string') {
