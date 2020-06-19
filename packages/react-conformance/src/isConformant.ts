@@ -6,7 +6,7 @@ import { withCustomConfig } from 'react-docgen-typescript';
 import { defaultTests } from './defaultTests';
 
 export function isConformant(testInfo: TestingOptions) {
-  const { componentPath, displayName, disabledTests = [], extraTests } = testInfo;
+  const { componentPath, displayName, disabledTests = [], extraTests, isInternal } = testInfo;
   const tsconfigPath = path.join(process.cwd(), 'tsconfig.json');
 
   if (!fs.existsSync(componentPath)) {
@@ -19,6 +19,10 @@ export function isConformant(testInfo: TestingOptions) {
 
   if (mainComponents.length === 1) {
     const componentInfo = mainComponents[0];
+
+    if (isInternal) {
+      disabledTests.push('exported-top-level');
+    }
 
     for (const test of Object.keys(defaultTests)) {
       if (!disabledTests.includes(test)) {

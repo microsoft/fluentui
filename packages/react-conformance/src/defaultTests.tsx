@@ -4,6 +4,7 @@ import { mount } from 'enzyme';
 import * as React from 'react';
 import * as _ from 'lodash';
 import * as path from 'path';
+import * as ReactIs from 'react-is';
 
 export const defaultTests: TestObject = {
   /** Component has a docblock with 5 to 25 words */
@@ -21,11 +22,12 @@ export const defaultTests: TestObject = {
   /** Component file exports a valid React element type  */
   'exports-component': (componentInfo: ComponentDoc, testInfo: TestingOptions) => {
     it(`exports component from file under correct name`, () => {
-      const componentFile = require(testInfo.componentPath);
+      const { componentPath, Component, displayName } = testInfo;
+      const componentFile = require(componentPath);
       if (testInfo.useDefaultExport) {
-        expect(componentFile.default).toBe(testInfo.Component);
+        expect(componentFile.default).toBe(Component);
       } else {
-        expect(componentFile[testInfo.displayName]).toBe(testInfo.Component);
+        expect(componentFile[displayName]).toBe(Component);
       }
     });
   },
@@ -71,6 +73,85 @@ export const defaultTests: TestObject = {
       const fileName = path.basename(componentPath, path.extname(componentPath));
 
       expect(displayName).toEqual(fileName);
+    });
+  },
+
+  'exported-top-level': (componentInfo: ComponentDoc, testInfo: TestingOptions) => {
+    if (!testInfo.isInternal) {
+      it(`is exported at top-level`, () => {
+        const { displayName, componentPath, Component } = testInfo;
+        const rootPath = componentPath.replace(/src.*/, '');
+        const indexFile = require(path.join(rootPath, 'src', 'index'));
+
+        expect(indexFile[displayName]).toBe(Component);
+      });
+    }
+  },
+
+  'has-top-level-file': (componentInfo: ComponentDoc, testInfo: TestingOptions) => {
+    if (!testInfo.isInternal) {
+      it(`has corresponding top-level file 'package/src/Component'`, () => {
+        const { displayName, componentPath, Component } = testInfo;
+        const rootPath = componentPath.replace(/src.*/, '');
+        const topLevelFile = require(path.join(rootPath, 'src', displayName));
+
+        expect(topLevelFile.default ? topLevelFile.default : topLevelFile[displayName]).toBe(Component);
+      });
+    }
+  },
+
+  'is-static-property': (componentInfo: ComponentDoc, testInfo: TestingOptions) => {
+    it(`is a static property of its parent`, () => {
+      const { componentPath, displayName, useDefaultExport } = testInfo;
+      const componentFolder = componentPath.replace(path.basename(componentPath) + path.extname(componentPath), '');
+      const dirName = path.basename(componentFolder).replace(path.extname(componentFolder), '');
+      const isParent = displayName === dirName;
+
+      if (!isParent) {
+        const subComponentName = displayName.replace(dirName, '');
+        const subComponentFile = require(path.join(componentFolder, subComponentName));
+        const SubComponent = useDefaultExport ? subComponentFile.default : subComponentFile[subComponentName];
+
+        expect(ReactIs.isValidElementType(SubComponent)).toBe(true);
+      }
+    });
+  },
+
+  'kebab-aria-attributes': (componentInfo: ComponentDoc, testInfo: TestingOptions) => {
+    it(`Aria attributes are kebab-cased`, () => {
+      const { Component, customMount, requiredProps } = testInfo;
+      const mountedComponent = customMount
+        ? customMount(<Component {...requiredProps} />)
+        : mount(<Component {...requiredProps} />);
+      const props = mountedComponent.props();
+
+      if (props) {
+        for (const prop of Object.keys(props)) {
+          if (prop.toLowerCase().includes('aria')) {
+            expect(prop.split(/[A-Z][a-z]+/)?.length).toBeLessThanOrEqual(1);
+            expect(prop.split('-').length).toBeGreaterThan(1);
+          }
+        }
+      }
+    });
+  },
+
+  'consistent-callback-names': (componentInfo: ComponentDoc, testInfo: TestingOptions) => {
+    it(`has consistent custom callback names`, () => {
+      const { Component, customMount, requiredProps } = testInfo;
+      const mountedComponent = customMount
+        ? customMount(<Component {...requiredProps} />)
+        : mount(<Component {...requiredProps} />);
+      const props = mountedComponent.props();
+
+      if (props) {
+        for (const prop of Object.keys(props)) {
+          if (prop.slice(0, 3) === 'on') {
+            const partAndEvent = prop.slice(3).split(/[A-Z][a-z]+/);
+            expect(partAndEvent.length).toEqual(2);
+          }
+        }
+      }
     });
   },
 };
