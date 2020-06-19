@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
 import * as ReactTestUtils from 'react-dom/test-utils';
-import * as renderer from 'react-test-renderer';
+import { create } from '@uifabric/utilities/lib/test';
 
 import { DefaultButton } from './DefaultButton/DefaultButton';
 import { IconButton } from './IconButton/IconButton';
@@ -40,20 +40,14 @@ describe('Button', () => {
   }
 
   it('renders DefaultButton correctly', () => {
-    let component: renderer.ReactTestRenderer;
-    renderer.act(() => {
-      component = renderer.create(<DefaultButton text="Button" />);
-    });
-    const tree = component!.toJSON();
+    const component = create(<DefaultButton text="Button" />);
+    const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders ActionButton correctly', () => {
-    let component: renderer.ReactTestRenderer;
-    renderer.act(() => {
-      component = renderer.create(<ActionButton>Button</ActionButton>);
-    });
-    const tree = component!.toJSON();
+    const component = create(<ActionButton>Button</ActionButton>);
+    const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
@@ -62,61 +56,47 @@ describe('Button', () => {
       content: 'A',
       keySequences: ['a'],
     };
-    let component: renderer.ReactTestRenderer;
-    renderer.act(() => {
-      component = renderer.create(<DefaultButton text="Button" keytipProps={keytipProps} />);
-    });
-    const tree = component!.toJSON();
+    const component = create(<DefaultButton text="Button" keytipProps={keytipProps} />);
+    const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders CommandBarButton correctly', () => {
-    let component: renderer.ReactTestRenderer;
-    renderer.act(() => {
-      component = renderer.create(
-        <CommandBarButton
-          iconProps={{ iconName: 'Add' }}
-          text="Create account"
-          menuProps={{
-            items: [
-              {
-                key: 'emailMessage',
-                text: 'Email message',
-                iconProps: { iconName: 'Mail' },
-              },
-              {
-                key: 'calendarEvent',
-                text: 'Calendar event',
-                iconProps: { iconName: 'Calendar' },
-              },
-            ],
-          }}
-        />,
-      );
-    });
-    const tree = component!.toJSON();
+    const component = create(
+      <CommandBarButton
+        iconProps={{ iconName: 'Add' }}
+        text="Create account"
+        menuProps={{
+          items: [
+            {
+              key: 'emailMessage',
+              text: 'Email message',
+              iconProps: { iconName: 'Mail' },
+            },
+            {
+              key: 'calendarEvent',
+              text: 'Calendar event',
+              iconProps: { iconName: 'Calendar' },
+            },
+          ],
+        }}
+      />,
+    );
+    const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders CompoundButton correctly', () => {
-    let component: renderer.ReactTestRenderer;
-    renderer.act(() => {
-      component = renderer.create(
-        <CompoundButton secondaryText="You can create a new account here.">Create account</CompoundButton>,
-      );
-    });
-
-    const tree = component!.toJSON();
+    const component = create(
+      <CompoundButton secondaryText="You can create a new account here.">Create account</CompoundButton>,
+    );
+    const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders IconButton correctly', () => {
-    let component: renderer.ReactTestRenderer;
-    renderer.act(() => {
-      component = renderer.create(<IconButton iconProps={{ iconName: 'Emoji2' }} title="Emoji" ariaLabel="Emoji" />);
-    });
-
-    const tree = component!.toJSON();
+    const component = create(<IconButton iconProps={{ iconName: 'Emoji2' }} title="Emoji" ariaLabel="Emoji" />);
+    const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
