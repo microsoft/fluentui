@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/examples",
-  "version": "0.1.81",
+  "version": "0.1.82",
   "description": "Example code and docs for Fluent UI packages.",
   "repository": {
     "type": "git",
@@ -30,8 +30,8 @@
     "@microsoft/load-themed-styles": "^1.10.26",
     "@uifabric/api-docs": "^7.3.1",
     "@uifabric/azure-themes": "^7.1.28",
-    "@uifabric/charting": "^2.3.0",
-    "@uifabric/date-time": "^7.8.102",
+    "@uifabric/charting": "^2.3.1",
+    "@uifabric/date-time": "^7.9.0",
     "@uifabric/example-app-base": "^7.12.80",
     "@uifabric/example-data": "^7.0.15",
     "@uifabric/experiments": "^7.26.5",
@@ -46,7 +46,7 @@
     "@uifabric/styling": "^7.13.0",
     "@uifabric/utilities": "^7.21.0",
     "@uifabric/variants": "^7.1.84",
-    "office-ui-fabric-react": "^7.121.0",
+    "office-ui-fabric-react": "^7.121.1",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

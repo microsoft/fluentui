@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Creating compat layers for Button, Checkbox, Link, Pivot, Slider and Toggle components.",
-  "packageName": "@fluentui/react-next",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-05-26T18:57:04.362Z"
-}
