@@ -1,8 +1,17 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Thu, 18 Jun 2020 12:37:09 GMT and should not be manually modified.
+This log was last generated on Fri, 19 Jun 2020 12:38:09 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.3.1](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.3.1)
+
+Fri, 19 Jun 2020 12:38:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.3.0..@uifabric/charting_v2.3.1)
+
+### Patches
+
+- doughnut chart circualr accessibility issue resolved ([PR #13662](https://github.com/microsoft/fluentui/pull/13662) by v-jasha@microsoft.com)
 
 ## [2.3.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.3.0)
 
