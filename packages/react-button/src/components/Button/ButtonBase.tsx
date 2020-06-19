@@ -10,10 +10,16 @@ export const ButtonBase = compose<'button', ButtonProps, ButtonProps, {}, {}>(
 
     return (
       <slots.root ref={ref} {...slotProps.root}>
-        {props.loading && <slots.loader {...slotProps.loader} />}
-        {props.icon && props.iconPosition !== 'after' && <slots.icon {...slotProps.icon} />}
-        {!props.iconOnly && props.content && <slots.content {...slotProps.content} />}
-        {props.icon && props.iconPosition === 'after' && <slots.icon {...slotProps.icon} />}
+        {state.children ? (
+          state.children
+        ) : (
+          <>
+            {props.loading && <slots.loader {...slotProps.loader} />}
+            {props.icon && props.iconPosition !== 'after' && <slots.icon {...slotProps.icon} />}
+            {!props.iconOnly && props.content && <slots.content {...slotProps.content} />}
+            {props.icon && props.iconPosition === 'after' && <slots.icon {...slotProps.icon} />}
+          </>
+        )}
       </slots.root>
     );
   },
