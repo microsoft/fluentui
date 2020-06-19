@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "Button: Adding focus method and tests.",
+  "comment": "Button: Adding componentRef, focus method and tests.",
   "packageName": "@fluentui/react-button",
   "email": "dzearing@microsoft.com",
   "dependentChangeType": "patch",
