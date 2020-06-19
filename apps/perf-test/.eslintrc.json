@@ -1,0 +1,8 @@
+{
+  "extends": ["plugin:@fluentui/eslint-plugin/react--legacy"],
+  "root": true,
+  "rules": {
+    "no-console": "off",
+    "@fluentui/jsx-ban-props": "off"
+  }
+}

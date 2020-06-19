@@ -44,6 +44,7 @@
     "react-vis": "^1.11.6"
   },
   "devDependencies": {
+    "@fluentui/eslint-plugin": "^0.50.0",
     "@types/classnames": "^2.2.9",
     "@types/color": "^3.0.0",
     "@types/faker": "^4.1.3",

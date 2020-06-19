@@ -1,0 +1,10 @@
+{
+  "extends": ["plugin:@fluentui/eslint-plugin/react--legacy"],
+  "root": true,
+  "rules": {
+    "@typescript-eslint/no-explicit-any": "off",
+    "deprecation/deprecation": "off",
+    "prefer-const": "off",
+    "@fluentui/jsx-ban-props": "off"
+  }
+}

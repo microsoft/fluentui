@@ -1,0 +1,8 @@
+{
+  "extends": ["plugin:@fluentui/eslint-plugin/react--legacy"],
+  "root": true,
+  "rules": {
+    "import/no-webpack-loader-syntax": "off", // ok in this project
+    "@fluentui/jsx-ban-props": "off"
+  }
+}
