@@ -805,6 +805,22 @@ describe('Dropdown', () => {
       );
     });
 
+    it('onChange is called after onSearchQueryChange', () => {
+      const onChange = jest.fn();
+      const onSearchQueryChange = jest.fn();
+
+      const { keyDownOnSearchInput } = renderDropdown({
+        defaultValue: items[2],
+        defaultSearchQuery: items[2],
+        onChange,
+        onSearchQueryChange,
+        search: true,
+      });
+
+      keyDownOnSearchInput('Escape');
+      expect(onChange.mock.invocationCallOrder[0]).toBeGreaterThan(onSearchQueryChange.mock.invocationCallOrder[0]);
+    });
+
     it('is set by clicking on item', () => {
       const itemSelectedIndex = 2;
       const { triggerButtonNode, clickOnItemAtIndex } = renderDropdown({ defaultOpen: true });
