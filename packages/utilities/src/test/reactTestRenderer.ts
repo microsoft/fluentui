@@ -1,13 +1,12 @@
-import { act, TestRendererOptions, ReactTestRenderer, create as defaultCreate } from 'react-test-renderer';
-import { ReactElement } from 'react';
+import { act, create as defaultCreate } from 'react-test-renderer';
 
 /**
  * Wrapping `create` from `react-test-renderer' with `act`.
  */
-export function create(nextElement: ReactElement, options?: TestRendererOptions): ReactTestRenderer {
-  let component: ReactTestRenderer;
+export function create(...args: Parameters<typeof defaultCreate>): ReturnType<typeof defaultCreate> {
+  let component: ReturnType<typeof defaultCreate>;
   act(() => {
-    component = defaultCreate(nextElement, options);
+    component = defaultCreate(...args);
   });
 
   return component!;
