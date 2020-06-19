@@ -2,11 +2,6 @@
 
 exports[`Button renders a default state 1`] = `
 <button
-  buttonRef={
-    Object {
-      "current": null,
-    }
-  }
   style={Object {}}
 >
   <span>

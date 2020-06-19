@@ -21,6 +21,7 @@ export const ButtonBase = compose<'button', ButtonProps, ButtonProps, {}, {}>(
   {
     displayName: 'ButtonBase',
     handledProps: [
+      'buttonRef',
       'componentRef',
       'circular',
       'content',
@@ -35,7 +36,8 @@ export const ButtonBase = compose<'button', ButtonProps, ButtonProps, {}, {}>(
       'secondary',
       'tokens',
       'size',
-    ],
+      // tslint:disable-next-line:no-any
+    ] as any,
     slots: {
       icon: 'span',
       content: 'span',

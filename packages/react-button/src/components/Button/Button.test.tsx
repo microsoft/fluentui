@@ -29,7 +29,7 @@ describe('Button', () => {
 
     wrapper = mount(<Button ref={rootRef} componentRef={componentRef} content="Focus me" />);
 
-    expect(typeof rootRef.current).toEqual('HTMLButtonElement');
+    expect(typeof rootRef.current).toEqual('object');
     expect(document.activeElement).not.toEqual(rootRef.current);
 
     componentRef.current?.focus();
