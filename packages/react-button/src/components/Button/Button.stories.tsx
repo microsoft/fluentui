@@ -56,6 +56,17 @@ export const ButtonCss = () => (
   </Stack>
 );
 
+export const ButtonTest = () => (
+  <Button
+    content={{
+      children: 'Foo',
+      onClick: () => {
+        console.log(222);
+      },
+    }}
+  />
+);
+
 export const ButtonTokens = () => (
   <Stack gap={20}>
     <Text variant="xLarge">A button can be colored using inline tokens.</Text>
