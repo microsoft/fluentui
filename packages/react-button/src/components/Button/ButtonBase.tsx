@@ -20,6 +20,7 @@ export const ButtonBase = compose<'button', ButtonProps, ButtonProps, {}, {}>(
   {
     displayName: 'ButtonBase',
     handledProps: [
+      'componentRef',
       'circular',
       'content',
       'disabled',
@@ -31,6 +32,7 @@ export const ButtonBase = compose<'button', ButtonProps, ButtonProps, {}, {}>(
       'loading',
       'primary',
       'secondary',
+      'tokens',
       'size',
     ],
     slots: {

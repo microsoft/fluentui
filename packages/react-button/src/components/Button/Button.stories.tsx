@@ -6,10 +6,10 @@ import { Stack, Text } from 'office-ui-fabric-react';
 
 const ButtonVariants = (props: ButtonProps) => (
   <div className={classes.hStack}>
-    <Button {...props} content="Hello, world" icon="X" />
-    <Button {...props} primary content="Hello, world" icon="X" />
-    <Button {...props} disabled content="Hello, world" icon="X" />
-    <Button {...props} primary disabled content="Hello, world" icon="X" />
+    <Button content={'Hello, world'} icon="O" {...props} />
+    <Button primary content="Hello, world" icon="X" {...props} />
+    <Button disabled content="Hello, world" icon="X" {...props} />
+    <Button primary disabled content="Hello, world" icon="X" {...props} />
   </div>
 );
 
@@ -149,7 +149,6 @@ export const ButtonTokens = () => (
           fontFamily: 'Circular, Helvetica, Arial, sans-serif',
           fontSize: '14px',
           fontWeight: '700',
-
           background: 'rgb(29, 185, 84) none repeat scroll 0% 0% / auto padding-box border-box',
           contentColor: 'rgb(255, 255, 255)',
           borderColor: 'rgb(255, 255, 255)',
@@ -187,19 +186,25 @@ export const ButtonTokens = () => (
     </div>
     <Text variant="xLarge">A tokenized button can be customized for any size or padding.</Text>
     <div className={classes.vStack}>
-      <ButtonVariants
+      <Button
+        content="I'm a small button with a large icon"
+        icon="O"
         tokens={{
           height: '24px',
           fontSize: '12px',
-          iconSize: '22px',
+          iconSize: '40px',
           padding: '0 8px',
+          contentGap: '4px',
         }}
       />
-      <ButtonVariants
+      <Button
+        content="I'm a large button with a small icon"
+        icon="O"
         tokens={{
           height: '70px',
-          fontSize: '48px',
-          iconSize: '48px',
+          fontSize: '24px',
+          iconSize: '12px',
+          padding: '0 40px',
         }}
       />
     </div>
